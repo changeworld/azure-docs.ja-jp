@@ -1,8 +1,11 @@
+
+
+
 1.  [Google Cloud Console][Google Cloud Console] Web サイトに移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
 
     ![][0]
 
-    > [WACOM.NOTE] 既にプロジェクトがある場合は、ログイン後に **[Projects]** ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、**[API Project]** を展開し、**[Other projects]** の下の **[Create]** をクリックして、プロジェクト名を入力してから **[Create project]** をクリックします。
+    >[WACOM.NOTE] 既にプロジェクトがある場合は、ログイン後に **[Projects]** ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、**[API Project]** を展開し、**[Other projects]** の下の **[Create]** をクリックして、プロジェクト名を入力してから **[Create project]** をクリックします。
 
 2.  プロジェクトの名前を入力し、サービスの条件に同意して、**[Create]** をクリックします。要求された SMS の確認を実行し、**[Create]** をもう一度クリックします。
 

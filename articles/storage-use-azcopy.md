@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="AzCopy" pageTitle="Microsoft Azure Storage で AzCopy を使用する方法" metaKeywords="Get started Azure AzCopy   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage   Azure file   Azure file storage   Azure file share   AzCopy" description="AzCopy ユーティリティを使用して BLOB やファイルの内容をアップロード、ダウンロード、およびコピーする方法を学習します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="How to use AzCopy with Microsoft Azure Storage" authors="tamram" manager="adinah" editor="cgronlun" />
+<properties urlDisplayName="AzCopy" pageTitle="Microsoft Azure Storage で AzCopy を使用する方法" metaKeywords="Get started Azure AzCopy   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage   Azure file   Azure file storage   Azure file share   AzCopy" description="AzCopy ユーティリティを使用して BLOB やファイルの内容をアップロード、ダウンロード、およびコピーする方法を学習します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="How to use AzCopy with Microsoft Azure Storage" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/17/2014" ms.author="tamram" />
 
@@ -10,7 +10,7 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 > また、このガイドでは、AzCopy のプレビュー リリースである AzCopy 4.0.0 についても取り上げます。このガイド内では、プレビュー リリースでのみ提供される機能を*プレビュー*と明示します。<br />
 > AzCopy 4.x に関しては、コマンド ラインのオプションとその機能が今後のリリースで変更される可能性があるため、注意してください。
 
-##目次
+## 目次
 
 - [AzCopy のダウンロードとインストール](#install)
 - [AzCopy コマンド ライン構文の理解](#syntax)
@@ -21,13 +21,13 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 - [AzCopy のバージョン](#versions)
 - [次のステップ](#next-steps)
 
-##<a id="install"></a> AzCopy のダウンロードとインストール
+## <a id="install"></a> AzCopy のダウンロードとインストール
 
 1. [AzCopy の最新バージョン](http://aka.ms/downloadazcopy)または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。
 2. インストールを実行します。既定では、AzCopy をインストールすると、`AzCopy` という名前のフォルダーが、`%ProgramFiles(x86)%\Microsoft SDKs\Azure\` (64 ビット Windows を実行しているコンピューターの場合) または `%ProgramFiles%\Microsoft SDKs\Azure\` (32 ビット Windows を実行しているコンピューターの場合) に作成されます。ただし、インストール パスはセットアップ ウィザードで変更できます。
 3. 必要に応じて、AzCopy のインストール先をシステム パスに追加できます。
 
-##<a id="syntax"></a> AzCopy コマンド ライン構文の理解
+## <a id="syntax"></a> AzCopy コマンド ライン構文の理解
 
 次に、コマンド ウィンドウを開き、`AzCopy.exe` 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。AzCopy コマンドの基本構文は次のとおりです。
 
@@ -373,13 +373,13 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 
 <br/>
 
-##<a id="limit-writes"></a> データのコピー中の同時書き込みの制限
+## <a id="limit-writes"></a> データのコピー中の同時書き込みの制限
 
 AzCopy を使用して BLOB またはファイルをコピーする場合は、コピー中に別のアプリケーションがそのデータを変更している可能性があることに注意してください。可能な場合は、コピーしているデータがコピー操作中に変更されないようにしてください。たとえば、Azure 仮想マシンに関連付けられている VHD をコピーしている場合は、その VHD に別のアプリケーションが書き込み中でないことを確認します。または、最初に VHD のスナップショットを作成してからそのスナップショットをコピーします。
 
 コピーしている BLOB またはファイルに対する他のアプリケーションによる書き込みを回避できない場合は、ジョブが終了した時点で、コピー対象のリソースがソース リソースとの間に完全なパリティを保持していない可能性があることを覚えておいてください。
 
-##<a id="copy-blobs"></a> AzCopy を使用した Azure BLOB のコピー
+## <a id="copy-blobs"></a> AzCopy を使用した Azure BLOB のコピー
 
 以下の例は、AzCopy を使用して BLOB をコピーするさまざまなシナリオを示したものです。
 
@@ -395,7 +395,7 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 
 ### サーバー側コピーを通じた BLOB のコピー
 
-BLOB を 1 つのストレージ アカウント内または複数のストレージ アカウント間でコピーする場合は、サーバー側でコピー操作が実行されます。サーバー側のコピー操作の詳細については、「[Introducing Asynchronous Cross-Account Copy Blob (非同期アカウント間での BLOB のコピーについて)]」を参照してください(http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)。
+BLOB を 1 つのストレージ アカウント内または複数のストレージ アカウント間でコピーする場合は、サーバー側でコピー操作が実行されます。サーバー側のコピー操作の詳細については、「[Introducing Asynchronous Cross-Account Copy Blob (非同期アカウント間での BLOB のコピーについて)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)」を参照してください。
 
 **1 つのストレージ アカウント内で BLOB をコピーする場合:**
 
@@ -705,7 +705,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 	AzCopy /Source:https://127.0.0.1:10004/myaccount/myfileshare/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
 
 
-##<a id="copy-files"></a> AzCopy を使用した Azure ファイル ストレージでのファイル コピー (プレビュー バージョンのみ)
+## <a id="copy-files"></a> AzCopy を使用した Azure ファイル ストレージでのファイル コピー (プレビュー バージョンのみ)
 
 以下の例は、AzCopy を使用して Azure ファイルをコピーするさまざまなシナリオを示したものです。
 
@@ -733,7 +733,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 	AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:ab* /S
 
-##<a id="copy-entities"></a> AzCopy を使用した Azure テーブルでのエンティティのコピー (プレビュー バージョンのみ)
+## <a id="copy-entities"></a> AzCopy を使用した Azure テーブルでのエンティティのコピー (プレビュー バージョンのみ)
 
 以下の例は、AzCopy を使用して Azure テーブル エンティティをコピーするさまざまなシナリオを示したものです。
 
@@ -791,7 +791,7 @@ AzCopy では、複数のファイルを区別できるように、分割した�
 インポート シナリオでは、オプション `/PKRS` を指定できません。同時操作を開始するためにオプション `/PKRS` を指定する必要があるエクスポート シナリオとは違って、エンティティをインポートすると、既定で同時操作が開始されます。開始される同時操作の既定数は、コア プロセッサの数と同じです。ただし、オプション `/NC` を使用して別の同時操作数を指定できます。詳細については、コマンド ラインに「`AzCopy /?:NC`」と入力してください。
 
 
-##<a id="versions"></a> AzCopy のバージョン
+## <a id="versions"></a> AzCopy のバージョン
 
 | バージョン | 新機能                                                                                      				|
 |---------|-----------------------------------------------------------------------------------------------------------------|

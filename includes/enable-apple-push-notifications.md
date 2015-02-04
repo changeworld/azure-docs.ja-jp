@@ -1,4 +1,4 @@
-﻿
+
 Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、[Apple Push Notification Service に関するページ](http://go.microsoft.com/fwlink/p/?LinkId=272584)を参照してください。
 
 ## 証明書の署名要求ファイルを生成する
@@ -40,7 +40,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![](./media/enable-apple-push-notifications/mobile-services-ios-push-03.png)
 
-これで、アプリケーション ID が生成され、情報の**サブミット**が求められます。**[Submit]** をクリックします。
+   	これで、アプリケーション ID が生成され、情報の**サブミット**が求められます。**[Submit]** をクリックします。
 
 
     ![](./media/enable-apple-push-notifications/mobile-services-ios-push-04.png)

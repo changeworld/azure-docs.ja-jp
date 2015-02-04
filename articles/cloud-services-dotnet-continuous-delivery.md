@@ -123,6 +123,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 6.  発行スクリプトの対象となる有効なクラウド サービスおよびストレージ アカウントがサブスクリプションに作成されていることを確認します。ストレージ アカウント (BLOB ストレージ) はアップロード用に使用され、デプロイを作成するときにデプロイ パッケージと config ファイルを一時的に格納します。
 
     -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、Azure の管理ポータルを使用することができます。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。 
+
             New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
     -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、Azure の管理ポータルを使用します。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
@@ -131,7 +132,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 7.  スクリプトは、Azure PowerShell から直接呼び出す以外に、ホスト ビルド自動化に関連付けてパッケージがビルドされるたびに実行されるように設定できます。
 
-    **警告: **このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザーへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
+    **警告:**このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザーへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
     **サンプル シナリオ 1:** サービスのステージング環境への継続的なデプロイ: 
 
@@ -170,7 +171,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     デプロイのアップグレード操作は、スクリプトで ($enableDeploymentUpgrade = 0)、またはパラメーターとして -enableDeploymentUpgrade 0 を渡すことによって無効にできます。これにより、スクリプトの動作が変更され、既存のデプロイが削除された後、新しいデプロイが作成されます。
 
-    **警告: **このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
+    **警告:**このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
 <h2><a name="step5"> </a>手順 5: TFS チーム ビルドを使用してパッケージを発行する (省略可能)</h2>
 
@@ -180,7 +181,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 2.  **[プロセス]** タブを選択します。
 
-3.	[これらの手順]に従って、(http://msdn.microsoft.com/library/dd647551.aspx) ビルド プロセス テンプレートのアクティビティ プロジェクトの追加、既定のテンプレートのダウンロードとプロジェクトへの追加、チェックインを行います。さらに、ビルド プロセス テンプレートに新しい名前を付けます (たとえば、AzureBuildProcessTemplate)。
+3.	[これらの手順](http://msdn.microsoft.com/library/dd647551.aspx) に従って、ビルド プロセス テンプレートのアクティビティ プロジェクトの追加、既定のテンプレートのダウンロードとプロジェクトへの追加、チェックインを行います。さらに、ビルド プロセス テンプレートに新しい名前を付けます (たとえば、AzureBuildProcessTemplate)。
 
 3.  **[プロセス]** タブに戻り、**[詳細の表示]** を使用して、使用可能なビルド プロセス テンプレートの一覧を表示します。**[新規]** ボタンを選択し、前の手順で追加およびチェックインしたプロジェクトに移動します。作成したテンプレートを確認できたら、**[OK]** を選択します。
 
@@ -237,45 +238,45 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 6.  [エージェントで実行] の最後に新しいシーケンスを追加します。
 
-    1.最初に、有効なスクリプト ファイルの有無をチェックする If ステートメント アクティビティを追加します。条件を次の値に設定します。
+    1.  最初に、有効なスクリプト ファイルの有無をチェックする If ステートメント アクティビティを追加します。条件を次の値に設定します。
 
             Not String.IsNullOrEmpty(PublishScriptLocation)
 
-    2.If ステートメントの Then ケースに、新しい Sequence アクティビティを追加します。表示名を "Start publish" に設定します。
+    2.  If ステートメントの Then ケースに、新しい Sequence アクティビティを追加します。表示名を "Start publish" に設定します。
 
-    3."Start publish" シーケンスが選択されている状態で、次の新しい変数を、ワークフロー デザイナーの変数タブに別の行項目として追加します。すべての変数について、変数の型として [文字列]、スコープとして [Start publish] を設定する必要があります。これらは、ビルド定義のパラメーターを、発行スクリプトを呼び出すワークフローに送るために使用されます。
+    3.  "Start publish" シーケンスが選択されている状態で、次の新しい変数を、ワークフロー デザイナーの変数タブに別の行項目として追加します。すべての変数について、変数の型として [文字列]、スコープとして [Start publish] を設定する必要があります。これらは、ビルド定義のパラメーターを、発行スクリプトを呼び出すワークフローに送るために使用されます。
 
         -   SubscriptionDataFilePath、[文字列] 型
 
         -   PublishScriptFilePath、[文字列] 型
 
-    ![][4]
+            ![][4]
 
-    4.TFS 2012 以前を使用している場合は、新しいシーケンスの先頭に ConvertWorkspaceItem アクティビティを追加します。TFS 2013 以降を使用している場合は、新しいシーケンスの先頭に GetLocalPath アクティビティを追加します。ConvertWorkspaceItem に対して、プロパティを設定します (Direction=ServerToLocal、DisplayName='Convert publish script filename'、Input=' PublishScriptLocation'、Result='PublishScriptFilePath', Workspace='Workspace')。GetLocalPath アクティビティに対して、IncomingPath プロパティを 'PublishScriptLocation' に設定し、Result プロパティを 'PublishScriptFilePath' に設定します。このアクティビティは、TFS サーバーの場所 (該当する場合) からの発行スクリプトへのパスを標準ローカル ディスク パスに変換します。
+    4.  TFS 2012 以前を使用している場合は、新しいシーケンスの先頭に ConvertWorkspaceItem アクティビティを追加します。TFS 2013 以降を使用している場合は、新しいシーケンスの先頭に GetLocalPath アクティビティを追加します。ConvertWorkspaceItem に対して、プロパティを設定します (Direction=ServerToLocal、DisplayName='Convert publish script filename'、Input=' PublishScriptLocation'、Result='PublishScriptFilePath', Workspace='Workspace')。GetLocalPath アクティビティに対して、IncomingPath プロパティを 'PublishScriptLocation' に設定し、Result プロパティを 'PublishScriptFilePath' に設定します。このアクティビティは、TFS サーバーの場所 (該当する場合) からの発行スクリプトへのパスを標準ローカル ディスク パスに変換します。
 
-    5.TFS 2012 以前を使用している場合は、新しいシーケンスの末尾に ConvertWorkspaceItem アクティビティをもう 1 つ追加します (Direction=ServerToLocal、DisplayName='Convert subscription filename'、Input=' SubscriptionDataFileLocation'、Result= 'SubscriptionDataFilePath'、Workspace='Workspace')。TFS 2013 以降を使用している場合は、GetLocalPath アクティビティをもう 1 つ追加します (IncomingPath='SubscriptionDataFileLocation'、Result='SubscriptionDataFilePath.')。
+    5.  TFS 2012 以前を使用している場合は、新しいシーケンスの末尾に ConvertWorkspaceItem アクティビティをもう 1 つ追加します (Direction=ServerToLocal、DisplayName='Convert subscription filename'、Input=' SubscriptionDataFileLocation'、Result= 'SubscriptionDataFilePath'、Workspace='Workspace')。TFS 2013 以降を使用している場合は、GetLocalPath アクティビティをもう 1 つ追加します (IncomingPath='SubscriptionDataFileLocation'、Result='SubscriptionDataFilePath.')。
 
-    6.InvokeProcess アクティビティを新しいシーケンスの末尾に追加します。         このアクティビティは、ビルド定義から渡された引数を使用して PowerShell.exe を呼び出します。
+    6.  InvokeProcess アクティビティを新しいシーケンスの末尾に追加します。         このアクティビティは、ビルド定義から渡された引数を使用して PowerShell.exe を呼び出します。
 
-        1.Arguments = String.Format(" -File ""{0}"" -serviceName {1}             -storageAccountName {2} -packageLocation ""{3}""             -cloudConfigLocation ""{4}"" -subscriptionDataFile ""{5}""             -selectedSubscription {6} -environment ""{7}""",             PublishScriptFilePath, ServiceName, StorageAccountName,             PackageLocation, CloudConfigLocation,             SubscriptionDataFilePath, SubscriptionName, Environment)
+        1.  Arguments = String.Format(" -File ""{0}"" -serviceName {1}             -storageAccountName {2} -packageLocation ""{3}""             -cloudConfigLocation ""{4}"" -subscriptionDataFile ""{5}""             -selectedSubscription {6} -environment ""{7}""",             PublishScriptFilePath, ServiceName, StorageAccountName,             PackageLocation, CloudConfigLocation,             SubscriptionDataFilePath, SubscriptionName, Environment)
 
-        2.DisplayName = Execute publish script
+        2.  DisplayName = Execute publish script
 
-        3.FileName = "PowerShell" (引用符を含みます)
+        3.  FileName = "PowerShell" (引用符を含みます)
 
-        4.OutputEncoding=
+        4.  OutputEncoding=
             System.Text.Encoding.GetEncoding(System.Globalization.CultureInfo.InstalledUICulture.TextInfo.OEMCodePage)
 
-    7.InvokeProcess の **[標準出力の処理]** セクションのテキスト ボックスで、値を "data" に設定します。これは、標準出力データを格納する変数です。
+    7.  InvokeProcess の **[標準出力の処理]** セクションのテキスト ボックスで、値を "data" に設定します。これは、標準出力データを格納する変数です。
 
-    8.**[標準出力の処理]** セクションのすぐ下に WriteBuildMessage アクティビティを追加します。重要度として 
+    8.  **[標準出力の処理]** セクションのすぐ下に WriteBuildMessage アクティビティを追加します。重要度として 
         'Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High' を設定し、メッセージとして 'data' を設定します。これにより、スクリプトの標準出力がビルド出力に書き込まれます。
 
-    9.InvokeProcess の **[エラー出力の処理]** セクションのテキスト ボックスで、値を "data" に設定します。これは、標準エラーのデータを格納する変数です。
+    9.  InvokeProcess の **[エラー出力の処理]** セクションのテキスト ボックスで、値を "data" に設定します。これは、標準エラーのデータを格納する変数です。
 
-    10.**[エラー出力の処理]** セクションのすぐ下に WriteBuildMessage アクティビティを追加します。メッセージとして "data" を設定します。これにより、スクリプトの標準エラーがビルド エラー出力に書き込まれます。
+    10. **[エラー出力の処理]** セクションのすぐ下に WriteBuildMessage アクティビティを追加します。メッセージとして "data" を設定します。これにより、スクリプトの標準エラーがビルド エラー出力に書き込まれます。
 
-	11.青色の感嘆符で示されたエラーを修正します。感嘆符の上にポインターを置くと、
+	11. 青色の感嘆符で示されたエラーを修正します。感嘆符の上にポインターを置くと、
 		エラーに関するヒントが表示されます。ワークフローを保存して 
 		エラーをクリアします。
 
@@ -324,27 +325,27 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 9.  [その他] セクションのパラメーター プロパティ値を次のように設定します。
 
-    1.CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg'   
+    1.  CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg'   
         * この値の派生元: 
         ($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
-    2.PackageLocation = 'c:\\drops\\app.publish\\ContactManager.Azure.cspkg'   
+    2.  PackageLocation = 'c:\\drops\\app.publish\\ContactManager.Azure.cspkg'   
         * この値の派生元:($PublishDir)($ProjectName).cspkg*
 
-    3.PublishScriptLocation = 'c:\\scripts\\WindowsAzure\\PublishCloudService.ps1'
+    3.  PublishScriptLocation = 'c:\\scripts\\WindowsAzure\\PublishCloudService.ps1'
 
-    4.ServiceName = 'mycloudservicename'   
+    4.  ServiceName = 'mycloudservicename'   
         *適切なクラウド サービス名を使用します*
 
-    5.Environment = 'Staging'
+    5.  Environment = 'Staging'
 
-    6.StorageAccountName = 'mystorageaccountname'   
+    6.  StorageAccountName = 'mystorageaccountname'   
         *適切なストレージ アカウント名を使用します*
 
-    7.SubscriptionDataFileLocation =
+    7.  SubscriptionDataFileLocation =
         'c:\\scripts\\WindowsAzure\\Subscription.xml'
 
-    8.SubscriptionName = 'default'
+    8.  SubscriptionName = 'default'
 
     ![][6]
 

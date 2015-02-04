@@ -1,4 +1,4 @@
-<properties urlDisplayName="configure-Azure-Site-Recovery" pageTitle="Azure Site Recovery の概要:Hyper-V レプリケーションによる内部設置型サイトの Azure への保護、"metakeywords="Azure Site Recovery, VMM, クラウド, 障害復旧" description="Azure Site Recovery は、内部設置型 VMM クラウドに配置された Hyper-V 仮想マシンの Azure へのレプリケーション、フェイルオーバー、および回復を調整します。" metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Getting Started with Azure Site Recovery: On-Premises VMM Site to Azure protection with Hyper-V Replication
+<properties urlDisplayName="configure-Azure-Site-Recovery" pageTitle="Azure Site Recovery の概要:Hyper-V レプリケーションによる内部設置型サイトの Azure への保護、" metaKeywords="Azure Site Recovery, VMM, クラウド, 障害復旧" description="Azure Site Recovery は、内部設置型 VMM クラウドに配置された Hyper-V 仮想マシンの Azure へのレプリケーション、フェイルオーバー、および回復を調整します。" metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Getting Started with Azure Site Recovery: On-Premises VMM Site to Azure protection with Hyper-V Replication
 " editor="jimbe" manager="johndaw" authors="raynew" />
 
 <tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/19/2014" ms.author="raynew" />
@@ -10,7 +10,7 @@
 
 <div class="dev-callout"> 
 
-<p>Azure Site Recovery は、さまざまな展開シナリオでの仮想マシンのレプリケーション、フェールオーバー、回復を調整して、ビジネスとワークロードの継続性戦略に貢献します。<p>
+<p>Azure Site Recovery は、さまざまな展開シナリオでの仮想マシンのレプリケーション、フェールオーバー、回復を調整して、ビジネスとワークロードの継続性戦略に貢献します。</p>
 
 <P>このチュートリアルでは、Hyper-V レプリケーションを使用して、内部設置型 VMM サイトと Azure との間の保護を調整するため、Azure Site Recovery をデプロイする方法について説明します。このチュートリアルでは、可能な限り、最も簡単な展開パスと既定の設定を使用します。</P>
 
@@ -39,6 +39,7 @@
 <LI><b>仮想マシン</b> - Azure 要件に準じた仮想マシンが必要です。計画ガイドの「<a href="http://go.microsoft.com/fwlink/?LinkId=402602">前提条件とサポート</a>」を参照してください。</LI>
 <LI>Azure にフェールオーバーするための仮想マシンのサポート要件の詳細については、を参照してください。  </LI>
 </UL>
+</div>
 
 
 <h2><a id="tutorial"></a>チュートリアルの手順</h2> 
@@ -116,7 +117,6 @@
 7. **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。
 8. **[サーバー名]** に、コンテナーで VMM サーバーを識別する表示名を入力します。
 
-	
 	![Server registration](./media/hyper-v-recovery-manager-configure-vault/SR_ProviderRegKeyServerName.png)
 
 8. **[初期クラウド メタデータ]** 同期で、VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期するかどうか選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。

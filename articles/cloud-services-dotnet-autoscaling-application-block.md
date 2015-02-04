@@ -10,25 +10,25 @@
 
 # オートスケーリング アプリケーション ブロックの使用方法
 
-このガイドでは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] のオートスケーリング アプリケーション ブロックを使用する一般的なシナリオの実行方法を示します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは、**ブロックのホスティング**、**制約規則の使用**、および**リアクティブ規則の使用**です。オートスケーリング アプリケーション ブロックの詳細については、「[次のステップ][]」を参照してください。
+このガイドでは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][Microsoft Enterprise Library 5.0 Integration Pack for Azure] のオートスケーリング アプリケーション ブロックを使用する一般的なシナリオの実行方法を示します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは、**ブロックのホスティング**、**制約規則の使用**、および**リアクティブ規則の使用**です。オートスケーリング アプリケーション ブロックの詳細については、「[次のステップ][次のステップ]」を参照してください。
 
 ## 目次
 
-[オートスケーリング アプリケーション ブロックとは][]   
- [概念][]   
- [ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集][]   
- [オートスケーリング アプリケーション ブロックのホスト アプリケーションのセットアップ][]   
- [方法: オートスケーラーをインスタンス化および実行する][] [方法: サービス モデルを定義する][]   
- [方法: オートスケーリング規則を定義する][]   
- [方法: オートスケーリング アプリケーション ブロックを構成する][]   
- [次のステップ][]
+[オートスケーリング アプリケーション ブロックとは][オートスケーリング アプリケーション ブロックとは]   
+ [概念][概念]   
+ [ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集][ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集]   
+ [オートスケーリング アプリケーション ブロックのホスト アプリケーションのセットアップ][オートスケーリング アプリケーション ブロックのホスト アプリケーションのセットアップ]   
+ [方法: オートスケーラーをインスタンス化および実行する][方法: オートスケーラーをインスタンス化および実行する] [方法: サービス モデルを定義する][方法: サービス モデルを定義する]   
+ [方法: オートスケーリング規則を定義する][方法: オートスケーリング規則を定義する]   
+ [方法: オートスケーリング アプリケーション ブロックを構成する][方法: オートスケーリング アプリケーション ブロックを構成する]   
+ [次のステップ][次のステップ]
 
 ## <a id="WhatIs"> </a>オートスケーリング アプリケーション ブロックとは
 
 オートスケーリング アプリケーション ブロックは、アプリケーション用に個別に定義した規則に基づいて、Microsoft Azure アプリケーションの規模を自動的に調整できます。これらの規則を使用すると、Azure アプリケーションがワークロードの変化に対応してスループットを維持できるようにすることができます。同時に、Azure でのアプリケーションのホストに関連するコストを制御することもできます。ブロックは、アプリケーション内のロール インスタンスの数を増減するスケーリングだけでなく、アプリケーションの特定の機能の調整、カスタム定義の操作の使用など、その他のスケーリング操作も利用できるようにします。
 
 ブロックを Azure ロールでホストするか、内部設置型アプリケーションでホストするかを選択できます。 
-オートスケーリング アプリケーション ブロックは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] の一部です。
+オートスケーリング アプリケーション ブロックは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][Microsoft Enterprise Library 5.0 Integration Pack for Azure] の一部です。
 
 ## <a id="Concepts"> </a>概念
 
@@ -52,7 +52,7 @@
 
 リアクティブ規則は、ロールのパフォーマンス カウンター データを規則定義の一部として使用できます。たとえば、リアクティブ規則は Azure ロールの CPU 使用率を監視して、ブロックがスケーリング操作を開始する必要があるかどうかを判断できます。ブロックは、パフォーマンス カウンター データを Azure Storage の **WADPerformanceCountersTable** という名前の Azure 診断テーブルから読み取ります。
 
-既定では、Azure はパフォーマンス カウンター データを Azure Storage の Azure 診断テーブルに書き込みません。そのため、パフォーマンス カウンター データの収集対象のロールで、このデータを保存するための変更を行う必要があります。アプリケーションでパフォーマンス カウンターを有効にする方法の詳細については、「[Using performance counters in Azure (Azure でのパフォーマンス カウンターの使用)][]」を参照してください。
+既定では、Azure はパフォーマンス カウンター データを Azure Storage の Azure 診断テーブルに書き込みません。そのため、パフォーマンス カウンター データの収集対象のロールで、このデータを保存するための変更を行う必要があります。アプリケーションでパフォーマンス カウンターを有効にする方法の詳細については、「[Using performance counters in Azure (Azure でのパフォーマンス カウンターの使用)][Using performance counters in Azure (Azure でのパフォーマンス カウンターの使用)]」を参照してください。
 
 ## <a id="CreateHost"> </a>オートスケーリング アプリケーション ブロックのホスト アプリケーションのセットアップ
 
@@ -60,7 +60,7 @@
 
 ### オートスケーリング アプリケーション ブロック NuGet パッケージの取得
 
-Visual Studio プロジェクトでオートスケーリング アプリケーション ブロックを使用する前に、オートスケーリング アプリケーション ブロック バイナリを取得し、それへの参照をプロジェクトに追加する必要があります。NuGet Visual Studio 拡張機能を使用すると、Visual Studio および Visual Web Developer でのライブラリやツールのインストールと更新を簡単に行うことができます。オートスケーリング アプリケーション ブロック NuGet パッケージは、オートスケーリング アプリケーション ブロック API を取得するための最も簡単な方法です。**NuGet** の詳細と、**NuGet** Visual Studio 拡張機能のインストールおよび使用の方法については、[NuGet][] Web サイトを参照してください。
+Visual Studio プロジェクトでオートスケーリング アプリケーション ブロックを使用する前に、オートスケーリング アプリケーション ブロック バイナリを取得し、それへの参照をプロジェクトに追加する必要があります。NuGet Visual Studio 拡張機能を使用すると、Visual Studio および Visual Web Developer でのライブラリやツールのインストールと更新を簡単に行うことができます。オートスケーリング アプリケーション ブロック NuGet パッケージは、オートスケーリング アプリケーション ブロック API を取得するための最も簡単な方法です。**NuGet** の詳細と、**NuGet** Visual Studio 拡張機能のインストールおよび使用の方法については、[NuGet][NuGet] Web サイトを参照してください。
 
 NuGet パッケージ マネージャーのインストール後、アプリケーションにオートスケーリング NuGet パッケージをインストールするには、次の手順を行います。
 
@@ -122,35 +122,35 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
 
 	次のコード サンプルは、**services.xml** ファイル内のサービス モデルの例を示しています。
 
-    <?xml version="1.0" encoding="utf-8" ?>
-    <serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel">
-      <subscriptions>
-        <subscription name="[subscriptionname]"
-                      certificateThumbprint="[managementcertificatethumbprint]"
-                      subscriptionId="[subscriptionid]"
-                      certificateStoreLocation="CurrentUser"
-                      certificateStoreName="My">
-          <services>
-            <service dnsPrefix="[hostedservicednsprefix]" slot="Staging">
-              <roles>
-                <role alias="AutoscalingApplicationRole"
-                      roleName="[targetrolename]"
-                      wadStorageAccountName="targetstorage"/>
-              </roles>
-            </service>
-          </services>
-          <storageAccounts>
-            <storageAccount alias="targetstorage"
-              connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]">
-            </storageAccount>
-          </storageAccounts>
-        </subscription>
-      </subscriptions>
-    </serviceModel>
+    	<?xml version="1.0" encoding="utf-8" ?>
+    	<serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel">
+      	<subscriptions>
+        	<subscription name="[subscriptionname]"
+                      	certificateThumbprint="[managementcertificatethumbprint]"
+                      	subscriptionId="[subscriptionid]"
+                      	certificateStoreLocation="CurrentUser"
+                      	certificateStoreName="My">
+          	<services>
+            	<service dnsPrefix="[hostedservicednsprefix]" slot="Staging">
+              	<roles>
+                	<role alias="AutoscalingApplicationRole"
+                      	roleName="[targetrolename]"
+                      	wadStorageAccountName="targetstorage"/>
+              	</roles>
+            	</service>
+          	</services>
+          	<storageAccounts>
+            	<storageAccount alias="targetstorage"
+              	connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]">
+            	</storageAccount>
+          	</storageAccounts>
+        	</subscription>
+      	</subscriptions>
+    	</serviceModel>
 
 角かっこ内の値は、環境とターゲット アプリケーションの固有の値に
 置き換える必要があります。それらの値の多くを見つけるには、
-[Azure の管理ポータル][]にログインする必要があります。
+[Azure の管理ポータル][Azure の管理ポータル]にログインする必要があります。
 
 管理ポータルにサインインします。
 
@@ -199,7 +199,7 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
     ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling09.png)
  
 
-サービス モデル ファイルの内容の詳細については、「[Storing Your Service Information Data (サービス情報データの格納)][]」を参照してください。
+サービス モデル ファイルの内容の詳細については、「[Storing Your Service Information Data (サービス情報データの格納)][Storing Your Service Information Data (サービス情報データの格納)]」を参照してください。
 
 ## <a id="DefineAutoscalingRules"> </a>方法:オートスケーリング規則を定義する
 
@@ -278,7 +278,7 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
 2.  **[ブロック]** メニューの **[オートスケーリングの設定の追加]** をクリックします。  
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling10.png)
   
-3.  **[オートスケーリングの設定]** を展開し、     **[データ ポイント格納ストレージ アカウント]** の横にある省略記号 (...) をクリックして、ブロックによって収集されたデータ ポイントの格納先となる Azure ストレージ アカウントの **[アカウント名]** および **[アカウント キー]** を追加します。これらの値の確認方法がわからない場合は、「[方法: サービス モデルを定義する][]」を参照してください。その後、**[OK]** をクリックします。  
+3.  **[オートスケーリングの設定]** を展開し、     **[データ ポイント格納ストレージ アカウント]** の横にある省略記号 (...) をクリックして、ブロックによって収集されたデータ ポイントの格納先となる Azure ストレージ アカウントの **[アカウント名]** および **[アカウント キー]** を追加します。これらの値の確認方法がわからない場合は、「[方法: サービス モデルを定義する][方法: サービス モデルを定義する]」を参照してください。その後、**[OK]** をクリックします。  
 
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling11.png)
 
@@ -358,17 +358,17 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
 
 これで、オートスケーリング アプリケーション ブロックの使用の基本を学習できました。より複雑なオートスケーリング シナリオを実装する方法については、次のリンク先を参照してください。
 
--   [Hosting the Autoscaling Application Block in a Worker Role (worker ロールでのオートスケーリング アプリケーション ブロックのホスト)][]
--   [Implementing Throttling Behavior (調整動作の実装)][]
--   [Understanding Rule Ranks and Reconciliation (規則の順位と調停について)][]
--   [Extending and Modifying the Autoscaling Application Block (オートスケーリング アプリケーション ブロックの拡張と変更)][]
--   [高周波振動を防ぎ、コストを最適化するための最適化スタビライザーの使用][]
--   [Using Notifications and Manual Scaling (通知と手動スケーリングの使用)][]
--   [Defining Scale Groups (スケール グループの定義)][]
--   [Using the WASABiCmdlets for manipulating the block via Windows PowerShell (Windows PowerShell でブロックを操作するための WASABiCmdlets の使用)][]
--   [Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure (Enterprise Library 5.0 Integration Pack for Azure 開発者ガイド)][]
--   [How Sage Reduces Azure Hosting Costs Using Autoscaling (Sage がオートスケーリングを使って Azure のホスティング コストを削減した方法)][]
--   [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure (Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減)][]
+-   [Hosting the Autoscaling Application Block in a Worker Role (worker ロールでのオートスケーリング アプリケーション ブロックのホスト)][Hosting the Autoscaling Application Block in a Worker Role (worker ロールでのオートスケーリング アプリケーション ブロックのホスト)]
+-   [Implementing Throttling Behavior (調整動作の実装)][Implementing Throttling Behavior (調整動作の実装)]
+-   [Understanding Rule Ranks and Reconciliation (規則の順位と調停について)][Understanding Rule Ranks and Reconciliation (規則の順位と調停について)]
+-   [Extending and Modifying the Autoscaling Application Block (オートスケーリング アプリケーション ブロックの拡張と変更)][Extending and Modifying the Autoscaling Application Block (オートスケーリング アプリケーション ブロックの拡張と変更)]
+-   [高周波振動を防ぎ、コストを最適化するための最適化スタビライザーの使用][高周波振動を防ぎ、コストを最適化するための最適化スタビライザーの使用]
+-   [Using Notifications and Manual Scaling (通知と手動スケーリングの使用)][Using Notifications and Manual Scaling (通知と手動スケーリングの使用)]
+-   [Defining Scale Groups (スケール グループの定義)][Defining Scale Groups (スケール グループの定義)]
+-   [Using the WASABiCmdlets for manipulating the block via Windows PowerShell (Windows PowerShell でブロックを操作するための WASABiCmdlets の使用)][Using the WASABiCmdlets for manipulating the block via Windows PowerShell (Windows PowerShell でブロックを操作するための WASABiCmdlets の使用)]
+-   [Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure (Enterprise Library 5.0 Integration Pack for Azure 開発者ガイド)][Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure (Enterprise Library 5.0 Integration Pack for Azure 開発者ガイド)]
+-   [How Sage Reduces Azure Hosting Costs Using Autoscaling (Sage がオートスケーリングを使って Azure のホスティング コストを削減した方法)][How Sage Reduces Azure Hosting Costs Using Autoscaling (Sage がオートスケーリングを使って Azure のホスティング コストを削減した方法)]
+-   [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure (Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減)][Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure (Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減)]
 
   [Microsoft Enterprise Library 5.0 Integration Pack for Azure]: http://go.microsoft.com/fwlink/?LinkID=235134
   [次のステップ]:  #NextSteps

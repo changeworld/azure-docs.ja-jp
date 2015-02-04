@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (.NET) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues C#, Azure queues .NET" description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは .NET API を使用して C# で記述されています。" metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use Service Bus Queues" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (.NET) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues C#, Azure queues .NET" description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは .NET API を使用して C# で記述されています。" metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use Service Bus Queues" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
@@ -14,13 +14,13 @@
 
 [WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-##Service Bus を使用するためのアプリケーションの構成
+## Service Bus を使用するためのアプリケーションの構成
 
 Service Bus を使用してアプリケーションを作成するときには、
 Service Bus アセンブリに対する参照を追加して、
 対応する名前空間を含める必要があります。
 
-##サービス バス NuGet パッケージの取得
+## サービス バス NuGet パッケージの取得
 
 Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio および Visual Studio Express 2012 for Web でのライブラリやツールのインストールと更新を簡単に行うことができます。
 
@@ -34,7 +34,7 @@ Service Bus **NuGet** パッケージは、Service Bus API を取得し、Servic
 これで、サービス バスに対応するコードを作成する準備ができました。
 
 
-##Service Bus の接続文字列の設定方法
+## Service Bus の接続文字列の設定方法
 
 サービス バスでは、接続文字列を使用してエンドポイントと資格情報を保存します。接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
 
@@ -85,7 +85,7 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
 
 前のセクションで説明したように管理ポータルから取得した発行者およびキーの値を使用します。
 
-##キューの作成方法
+## キューの作成方法
 
 **NamespaceManager** クラスによって Service Bus キューに対する管理操作を実行できます。**NamespaceManager** クラスには、キューの作成、列挙、および削除のためのメソッドが用意されています。 
 
@@ -128,7 +128,7 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
 
 **注: **指定した名前のキューがサービス空間に既に存在するかどうかを確認するには、**NamespaceManager** オブジェクトで **QueueExists** メソッドを使用できます。
 
-##メッセージをキューに送信する方法
+## メッセージをキューに送信する方法
 
 アプリケーションでは Service Bus キューにメッセージを送信するにあたって、接続文字列を使用して **QueueClient** オブジェクトが作成されます。
 
@@ -160,7 +160,7 @@ Service Bus キューに送信されたメッセージ (およびこのキュー
 
 Service Bus キューでは、最大 256 Kb までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーは、64 Kb が最大サイズです)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。
 
-##キューからメッセージを受信する方法
+## キューからメッセージを受信する方法
 
 キューからメッセージを受信する方法の中で最も簡単な方法は、**QueueClient** オブジェクトを使用することです。このオブジェクトには、2 つの異なる動作モードがあります。**ReceiveAndDelete** と **PeekLock** です。
 
@@ -197,7 +197,7 @@ Service Bus キューでは、最大 256 Kb までのメッセージをサポー
        }
     } 
 
-##アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
+## アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
 Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージについて (**Complete** メソッドの代わりに) **Abandon** メソッドを呼び出すことができます。このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
@@ -205,7 +205,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 メッセージが処理された後、**Complete** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般に、この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-##次のステップ
+## 次のステップ
 
 これで、Service Bus キューの基本を学習できました。さらに詳細な
 情報が必要な場合は、次のリンク先を参照してください。

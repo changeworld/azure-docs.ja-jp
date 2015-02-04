@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Hybrid Application" pageTitle="ハイブリッド内部設置型/クラウド アプリケーション (.NET) - Azure" metaKeywords="Azure Service Bus tutorial,hybrid .NET" description="Azure Service Bus Relay を使用して .NET 内部設置型/クラウド ハイブリッド アプリケーションを作成する方法について説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title=".NET On-Premises/Cloud Hybrid Application Using Service Bus Relay" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+<properties urlDisplayName="Hybrid Application" pageTitle="ハイブリッド内部設置型/クラウド アプリケーション (.NET) - Azure" metaKeywords="Azure Service Bus tutorial,hybrid .NET" description="Azure Service Bus Relay を使用して .NET 内部設置型/クラウド ハイブリッド アプリケーションを作成する方法について説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title=".NET On-Premises/Cloud Hybrid Application Using Service Bus Relay" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/15/2014" ms.author="sethm" />
 
@@ -152,15 +152,12 @@ Service Bus リソースのアドレス範囲を指定するコンテナーが�
 1.  メイン ウィンドウで、使用するサービス名前空間の名前をクリックします。   
 
 	![][39]
-  
 
 2.  **[接続情報]** をクリックします。   
 
 	![][40]
 
-
 3.  **[接続情報へのアクセス]** ウィンドウで、**[既定の発行者]** と **[既定のキー]** のエントリを探します。   
-    
 
 4.  キーを書き留めておくか、クリップボードにコピーしておいてください。
 
@@ -413,8 +410,8 @@ Service Bus API の取得およびアプリケーションの構成を
             }
         }
 
-2.  In the HomeController.cs file in Visual Studio, replace the existing
-    namespace definition with the following code:
+2.  Visual Studio で、HomeController.cs ファイルの既存の名前空間定義を、
+    次のコードに書き換えます。
 
         namespace ProductsWeb.Controllers
         {

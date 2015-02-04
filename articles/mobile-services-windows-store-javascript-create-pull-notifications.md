@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Define a custom API that supports pull notifications" pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" metaKeywords="" description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Define a custom API that supports pull notifications" pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" metaKeywords="" description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="11/22/2014" ms.author="glenga" />
 # 定期的な通知をサポートするカスタム API を定義します。
@@ -66,7 +66,7 @@
 		    }
 		};
 
-	This code returns the top 3 uncompleted items from the TodoItem table, then loads them into a JSON object passed to the **wns**.**createTileSquareText01** function. This function returns the following tile template XML:
+	このコードは、TodoItem テーブルから未完了の項目上位 3 件を返し、**wns**.**createTileSquareText01**  関数に渡された JSON オブジェクトに読み込みます。この関数から返されるタイル テンプレート XML は次のとおりです。
 
 		<tile>
 			<visual>

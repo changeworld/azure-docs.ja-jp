@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Create Web and Worker Roles" pageTitle="Web ロールとワーカー ロールを作成する" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="PHP" title="How to create PHP web and worker roles" authors="tomfitz" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="Create Web and Worker Roles" pageTitle="Web ロールとワーカー ロールを作成する" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="PHP" title="How to create PHP web and worker roles" authors="tomfitz" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="10/28/2014" ms.author="tomfitz" />
 
@@ -210,13 +210,13 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [Azure SDK for PHP]: /ja-jp/develop/php/common-tasks/download-php-sdk/
 [install ps and emulators]: http://go.microsoft.com/fwlink/?LinkId=253447&clcid=0x409
 [クラウド サービスとは]: /ja-jp/manage/services/cloud-services/what-is-a-cloud-service/
-[サービス定義 (.csdef)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758711.aspx
-[サービス構成 (.cscfg)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
+[サービス定義ファイル (.csdef)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758711.aspx
+[サービス構成ファイル (.cscfg)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
-[SQL ネイティブ クライアント]: http://msdn.microsoft.com/ja-jp/sqlserver/aa937733.aspx
-[sqlsrv ドライバー]: http://php.net/sqlsrv
+[sql native client]: http://msdn.microsoft.com/ja-jp/sqlserver/aa937733.aspx
+[sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
-[方法: Import publish settings (方法: 発行の設定をインポートする)]: /ja-jp/develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
-[方法: Deploy a cloud service to Azure (方法: Azure にクラウド サービスをデプロイする)]: /ja-jp/develop/php/how-to-guides/powershell-cmdlets/#Deploy
+[How to: Import publish settings (方法: 発行の設定をインポートする)]: /ja-jp/develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
+[How to: Deploy a cloud service to Azure (方法: Azure にクラウド サービスをデプロイする)]: /ja-jp/develop/php/how-to-guides/powershell-cmdlets/#Deploy
 
 <!--HONumber=35.1-->

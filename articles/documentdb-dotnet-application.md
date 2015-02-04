@@ -1,31 +1,31 @@
-﻿<properties title="Build a web application with ASP.NET MVC using DocumentDB" pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Azure" description="DocumentDB を使用して To Do List Web アプリケーションを作成する方法について説明します。データは Azure にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。"  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="ryancraw" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
+<properties title="Build a web application with ASP.NET MVC using DocumentDB" pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Azure" description="DocumentDB を使用して To Do List Web アプリケーションを作成する方法について説明します。データは Azure にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。."  metaKeywords="NoSQL, DocumentDB, database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="ryancraw" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
 
 <tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="ryancraw" />
 
-<a name="_Toc395809351">Build a web application with ASP.NET MVC using DocumentDB</a>
+<a name="_Toc395809351">DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築</a>
 =======================================================================================================
-<a name="_Toc395637758"></a> <a name="_Toc389865467"></a> <a name="_Toc389828008">Overview</a>
+<a name="_Toc395637758"></a> <a name="_Toc389865467"></a> <a name="_Toc389828008">概要</a>
 ==============================================================================================
 
-<a name="_Toc395637759">Scenario</a>
+<a name="_Toc395637759">シナリオ</a>
 ------------------------------------
 
-To highlight how customers can efficiently leverage Azure DocumentDB to store and query JSON documents, this document provides an end-to-end walk-through of building a ToDo List web application using Azure Document DB.
+このドキュメントでは、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を取り上げます。ToDo リストの Web アプリケーションを Azure DocumentDB を使って構築するエンド ツー エンドの手順を紹介しています。
 
-This walk-through shows you how to use DocumentDB service provided by Azure to store and access data from an ASP.NET MVC web application hosted on Azure and presumes that you have some prior experience using ASP.NET MVC and Azure Websites.
+この手順紹介では、Azure に用意されている DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。ASP.NET MVC と Azure Web サイトの使用経験がある読者を想定しています。
 
-You will learn:
+学習内容:
 
-1\. Creating and provisioning a DocumentDB Account
+1\. DocumentDB アカウントを作成してプロビジョニングする
 
-2\. Creating a ASP.NET MVC Application
+2\. ASP.NET MVC アプリケーションを作成する
 
-3\. Connecting to and using Azure DocumentDB from your web application
+3\. Web アプリケーションから Azure DocumentDB に接続して使用する
 
-4\. Deploying the Web Application to Azure Websites
+4\. Web アプリケーションを Azure Websites にデプロイする
 
-By following this walk-through, you will build a simple web-based task-management application that allows creating, retrieving and completing of tasks. The tasks will be stored as JSON documents in Azure DocumentDB.
+この手順では、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
 
 ![Alt text](./media/documentdb-dotnet-application/image1.png)
 
@@ -33,123 +33,122 @@ By following this walk-through, you will build a simple web-based task-managemen
 <a name="_Toc395637760">Prerequisites</a>
 ================================================================
 
-Before following the instructions in this article, you should ensure that you have the following installed:
+この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
 Git for Windows <http://www.git-scm.com/downloads>
 
-Visual Studio 2013 (or [Visual Studio Express][] which is the free version)
+Visual Studio 2013 (またはその無償版の [Visual Studio Express][])
 
-Azure SDK for .NET version 2.3 or higher, available through [Microsoft Web Platform Installer][]
+Azure SDK for .NET Version 2.3 以降[(Microsoft Web Platform Installer にて提供)][]
 
-All the screen shots in this document have been taken using Visual Studio 2013 with Update 3 applied and Azure SDK for .NET version 2.4. If your system is configured with different versions it is possible that your screens and options won't match entirely, but if you meet the above prerequisites this solution should work.
+このドキュメントに掲載されているすべてのスクリーンショットは、Visual Studio 2013 Update 3 および Azure SDK for .NET Version2.4 で撮影しました。ご利用のシステムにインストールされているバージョンと異なる場合、画面やオプション設定が一部異なる可能性もありますが、上記の前提条件を満たしていれば、アプリケーションの動作に支障はありません。
 
-<a name="_Toc395637761">Create a DocumentDB database account</a>
+<a name="_Toc395637761">DocumentDB データベース アカウントの作成</a>
 ================================================================
 
-To provision a DocumentDB database account in Azure, open the Azure Management Portal and either Click the Azure Gallery tile on the homepage or click "+" in the lower left hand corner of the screen.
+DocumentDB データベース アカウントを Azure にプロビジョニングするには、Azure の管理ポータルを開いて、ホームページにある Azure ギャラリー タイルをクリックするか、または、画面の左下隅にある [+] をクリックします。
 
 ![Alt text](./media/documentdb-dotnet-application/image2.png)
 
 
-This will open the Azure Gallery, where you can select from the many available Azure services. In the Gallery, select "Data, storage and backup" from the list of categories.
+これで Azure のギャラリーが開き、Azure に用意されているさまざまなサービスを選択できます。ギャラリーのカテゴリ一覧から [データ、ストレージ、バックアップ] を選択します。
 
 ![Alt text](./media/documentdb-dotnet-application/image3.png)
 
-From here, select the option for Azure DocumentDB
+その中から、Azure DocumentDB に該当するオプションを選択します。
 
 ![Alt text](./media/documentdb-dotnet-application/image4.png)
 
 
-Then select "Create" from the bottom of the screen
+次に、画面の一番下にある [作成] を選択します。
 
 ![Alt text](./media/documentdb-dotnet-application/image5.png)
 
-This will open up the "New DocumentDB" blade where you can specify the name, region, scale, resource group and other settings for your new account.
+[新しい DocumentDB] ブレードが開き、新しいアカウントの名前、リージョン、スケール、リソース グループなどの設定を指定できます。
 
 ![Alt text](./media/documentdb-dotnet-application/image6.png)
 
 
-Once you're done supplying the values for your account, click "Create" and the provisioning process will begin creating your database account.
-When the provisioning process is complete, you should see a notification appear in the notifications area of the portal and the tile on your start screen (if you selected to create one) will change to show the completed action.
+アカウントの値を指定した後、[作成] をクリックすると、プロビジョニング プロセスが開始されて、データベース アカウントが作成されます。
+プロビジョニング プロセスが完了すると、ポータルの通知領域にその旨が表示され、スタート画面上のタイル (タイルを作成する設定になっている場合) が、処理の完了を示す表示に変化します。
 
 ![Alt text](./media/documentdb-dotnet-application/image7.png)
 
 
-Once provisioning is complete, clicking the DocumentDB tile from the start screen will bring up the main blade for this newly created DocumentDB account.
+プロビジョニングの完了後、スタート画面から DocumentDB タイルをクリックすると、新しく作成した DocumentDB アカウントのメイン ブレードが表示されます。
 
 ![Alt text](./media/documentdb-dotnet-application/image8.png) 
 ![Alt text](./media/documentdb-dotnet-application/image9.png)
 
 
-Using the "Keys" button, access your endpoint URL and the Primary Key, copy these to your clipboard and keep them handy as we will use these values in the web application we will use these values in the web application we will create next.
+[キー] ボタンを使用してエンドポイントの URL とプライマリ キーを表示し、それらの値をクリップボードにコピーして、いつでも呼び出せる場所に保存してください。これから作成する Web アプリケーションの中でそれらの値を使用します。
 
-We will now walk through how to create a new ASP.NET MVC application from the ground-up. For your reference the complete solution can be downloaded [here].
+次のセクションで、新しい ASP.NET MVC アプリケーションをゼロから作成する方法について説明します。完成したソリューションは[こちら]のページからダウンロードできます。ご参照ください。
 
-<a name="_Toc395637762">Create a new ASP.NET MVC application</a>
+<a name="_Toc395637762">新しい ASP.NET MVC アプリケーションの作成</a>
 ================================================================
 
-In Visual Studio, click File - New Project and select the option to create a new ASP.NET MVC Web Application.
+Visual Studio で [ファイル]、[新しいプロジェクト] の順にクリックし、新しい ASP.NET MVC Web アプリケーションを作成するためのオプションを選択します。
 
 ![Alt text](./media/documentdb-dotnet-application/image10.png)
 
 
-Select where you would like to create the project, what you want the project to be called (I'm using "todo") and click Ok.
+プロジェクトを作成する場所と、そのプロジェクトの呼び方 (たとえば "todo" など) を選択して、[OK] をクリックします。
 
 ![Alt text](./media/documentdb-dotnet-application/image11.png)
 
 
-If you plan on hosting your application in Azure then select the box on the lower right to "Host in the cloud". We've selected to host in the cloud, and run the application hosted in an Azure Website. Selecting this option will pre-provision an Azure Website for you and make life a lot easier when it comes times to deploy the final working application. If you want to host this elsewhere or don't want to configure Azure upfront, then just un-check the "Host in the Cloud" option.
+アプリケーションを Azure でホスティングする場合は、右下にある [クラウドでホストする] チェック ボックスをオンにしてください。このチュートリアルでも、クラウドでホストするように選択しています (Azure Websites をホストとしてアプリケーションを実行します)。このオプションを選択すると、Azure Websites があらかじめ自動的にプロビジョニングされ、最終的に完成したアプリケーションをデプロイする作業が段違いにやりやすくなります。これを他の場所でホストする場合、または Azure を事前に設定しない場合は、[クラウドでホストする] オプションのチェックをはずします。
 
-Select OK and let Visual Studio do its thing around scaffolding the empty ASP.NET MVC template. If you chose to host this in the Cloud you will see at least one additional screen asking you to login to your Azure account and provide some values for your new Website. Proceed to supply all these Azure values and continue. 
+[OK] をクリックすると、Visual Studio のスキャフォールディング機能によって空の ASP.NET MVC テンプレートが作成されます。これをクラウドでホストすることを選択した場合、少なくとも 1 つの画面が表示され、Azure アカウントにログインして新しい Web サイトの値を指定するよう求められます。画面の指示に従って、Azure に関連したそれらの値をすべて入力したうえで続行してください。 
 
-I haven't chosen a "Database server" here because we're not using an Azure SQL Database Server here, we're going to be creating a new Azure DocumentDB Account later on in the management portal. 
+ここでは Azure SQL データベース サーバーを使用しないため、ここで [データベース サーバー] を選択していません。後で Azure DocumentDB アカウントを管理ポータルで作成する予定です。 
 
 ![Alt text](./media/documentdb-dotnet-application/image11_1.png)
 
-Once Visual Studio has finished creating the boilerplate MVC application you have an empty ASP.NET application that you can run locally.
+Visual Studio によってスケルトン MVC アプリケーションが作成されると、空の ASP.NET アプリケーションをローカルに実行できる状態となります。
 
-We'll skip running locally because I'm sure we've all seen the ASP.NET "Hello World" application. Let's go straight to adding DocumentDB to this project and building our application.
+読者の皆さんは、ASP.NET の "Hello World" アプリケーションで体験済みだと思いますので、ローカル実行する手順は省略します。早速このプロジェクトに DocumentDB を追加して、アプリケーションを構築しましょう。
 
 </h1>
-<a name="_Toc395637767">Adding DocumentDB to your project</a>
+<a name="_Toc395637767">プロジェクトへの DocumentDB の追加</a>
 =============================================================
 
-That takes care of most of the ASP.NET MVC plumbing that we need for
-this solution. Now let's get to the real purpose of this tutorial, adding Azure DocumentDB to our web application.
+以上で、このソリューションに必要な ASP.NET MVC の構成要素が完成しました。いよいよチュートリアルの本題に入ります。作成した Web アプリケーションに Azure DocumentDB を追加しましょう。
 
 ### 
 
-### <a name="_Toc395637764">Installing the NuGet package</a>
+### <a name="_Toc395637764">NuGet パッケージのインストール</a>
 
-The DocumentDB .NET SDK is packaged and distributed as a NuGet package. Using the NuGet package manager in Visual Studio (which you can get to by Right-Clicking on the Project and choosing "Manage NuGet Packages"
+DocumentDB .NET SDK は、NuGet パッケージの形式で配布されています。以降の作業には、Visual Studio で [プロジェクト] を右クリックし、[NuGet パッケージの管理] をクリックして表示される NuGet パッケージ マネージャーを使用します。
 
 ![Alt text](./media/documentdb-dotnet-application/image21.png)
 
-Search for Online for "Azure DocumentDB" and install the package. This will download and install the DocumentDB package as well as all dependencies, like Newtonsoft.Json.
+オンライン検索で "Azure DocumentDB" を検索し、パッケージをインストールします。これにより、DocumentDB パッケージだけでなく、依存関係のあるすべてのコンポーネント (Newtonsoft.Json など) がダウンロードされてインストールされます。
 
-**NOTE:** While the service is still in preview, the NuGet package is marked as "Prerelease" so you need to include the option to "Include Prerelease", else you will not find the package. 
+**注:** サービスはまだプレビューですが、NuGet パッケージは「プレリリース」とマークされるため、「プレリリースを含める」にオプションを含めないと、パッケージを見つけられません。
 
-Alternatively you could use the Package Command Console to install the package by typing;
+また、パッケージ コマンド コンソールを使用して、次のように入力し、パッケージをインストールすることもできます。
 
     Install-Package Microsoft.Azure.Documents.Client -Pre
 
-Once installed your Visual Studio solution should resemble the following with two new references added;
+以下の図は、インストール完了後の Visual Studio ソリューションの状態です。新しい参照が 2 つ追加されていることがわかります。
 
 ![Alt text](./media/documentdb-dotnet-application/image22.png)
 
 
-<a name="_Toc395637763">Setting up the ASP.NET MVC application</a>
+<a name="_Toc395637763">ASP.NET MVC アプリケーションのセットアップ</a>
 ==================================================================
 
 ### 
 
-### <a name="_Toc395637764">Add a Model</a>
+### <a name="_Toc395637764">モデルの追加</a>
 
-Let's begin by creating the **M** in MVC, the model. In Solution Explorer, right-click the *Models* folder and then click **Add**, then **Class**
+最初に作成するのは、MVC の **M** (モデル) です。ソリューション エクスプローラーで  *Models* フォルダーを右クリックし、[**追加**]、[**クラス**] の順にクリックします。
 
 ![Alt text](./media/documentdb-dotnet-application/image12.png)
 
-Name your new Class, **Item** and then add the following code in to this new Class
+新しいクラスに **Item** という名前を付け、次のコードを追加します。
 
     public class Item
     {
@@ -166,81 +165,81 @@ Name your new Class, **Item** and then add the following code in to this new Cla
         public bool Completed { get; set; }    
     }
 
-All data in DocumentDB is passed over the wire, and stored, as JSON. To control the way your objects are serialized/deserialized by JSON.NET you can use the JsonProperty attribute as demonstrated in the Item class we just created. You don't **have** to do this but i wanted to ensure that my properties followed the JSON camelCase naming conventions. 
+DocumentDB のすべてのデータは、JSON 形式でネットワーク越しに渡され、保存されます。JSON.NET によってオブジェクトをシリアル化または逆シリアル化する方法を制御するには、作成した Item クラスで示したとおり、JsonProperty 属性を使用できます。これを行う**必要はありません**が、プロパティが JSON camelCase 名前付け規則に従っていることを確認する必要があります。 
 
-Not only can you control the format of the property name when it goes in to JSON, but you can entirely rename your .NET properties like I did with the Description property. 
+JSON プロパティー名の形式を制御できるだけでなく、Description プロパティーに対して行ったように、.NET プロパティーの名前全体を変更することもできます。 
 
-You can, if you like, use JsonConverter objects here as well to completely control how serialization is handled.  
+必要があれば、ここで JsonConverter オブジェクトも使用して、シリアル化の方法を完全に制御できます。  
 
-In order to get Visual Studio to resolve the "JsonProperty" attribute used here you need to add the following using statement to the using section of your class file;
+ここで使用されている "JsonProperty" 属性を Visual Studio で解決するために、クラス ファイルの using セクションに次の using ステートメントを追加する必要があります。
 
     using Newtonsoft.Json;
 
-### <a name="_Toc395637765">Add a Controller</a>
+### <a name="_Toc395637765">コントローラーの追加</a>
 
-That takes care of the M, now let's create the **C** in MVC, a controller class.
-In **Solution Explorer**, right-click the *Controllers* folder and then click **Add**, then **Controller**.
+以上が、M (モデル) に相当する部分です。今度は、MVC の **C** に相当するコントローラー クラスを作成しましょう。
+**ソリューション エクスプローラー**で  *Controllers* フォルダーを右クリックし、[**追加**]、[**クラス**] の順にクリックします。
 
 ![Alt text](./media/documentdb-dotnet-application/image13.png)
 
 ![Alt text](./media/documentdb-dotnet-application/image14.png)
 
 
-In the **Add Scaffold** dialog box, click **MVC 5 Controller - Empty.** Click **Add.**
+[**スキャフォールディングの追加**] ダイアログ ボックスで [**MVC 5 コントローラー - 空]** をクリックし、[追加] をクリックします。**[追加]** をクリックします。
 
 ![Alt text](./media/documentdb-dotnet-application/image15.png)
 
-Name your new Controller, **ItemController.**
+新しいコントローラーに **ItemController** という名前を付けます。
 
-Visual Studio will now add the ItemController your Solution Explorer should look like similar to below.
+ソリューション エクスプローラーに ItemController が追加されます (下図参照)。
 
 ![Alt text](./media/documentdb-dotnet-application/image16.png)
 
-### <a name="_Toc395637766">Add Views</a>
+### <a name="_Toc395637766">ビューの追加</a>
 
-And finally, let's create the **V** in MVC, a view.
+最後に作成するのは MVC の **V** (ビュー) です。
 
 
-#### Add Item Index View
+#### 項目のインデックス ビューの追加
 
-Expand the ***Views***  folder in Solution Explorer and location the (empty) Item folder which Visual Studio would've created for you when you added the *ItemController* earlier. Right click on ***Item*** and choose to Add a new View.
+ソリューション エクスプローラーで ***Views*** フォルダーを展開し、先ほど  *ItemController* を追加したときに Visual Studio によって自動的に作成された (空の) Item フォルダーを探します。***Item*** を右クリックし、新しいビューを追加します。
 
 ![Alt text](./media/documentdb-dotnet-application/image17.png)
 
-In the "Add View" dialog. Call your view "***Index***", use the ***List*** Template, select the ***Item (todo.Models)*** which we created earlier as the class and finally use the ***~Views/Shared/_Layout.cshtml*** in the Solution as the Layout page.
+[ビューの追加] ダイアログで、ビューに "***Index***" という名前を付け、[テンプレート] には ***List*** を使用します。さらに、先ほど作成した ***Item (todo.Models)*** をクラスとして選択し、最後に、ソリューションのレイアウト ページとして ***~Views/Shared/_Layout.cshtml*** を指定します。
 
 ![Alt text](./media/documentdb-dotnet-application/image18.png)
 
 
-Once all these values are set, click Add and let Visual Studio create your view for you. Visual Studio will create a template view. Once it is done, it will open the cshtml file created. We can close this document in Visual Studio as we will come back to it later.
+以上の値をすべて設定し、[追加] をクリックして、Visual Studio で自動的にビューを作成します。これでテンプレートのビューが作成されます。完了すると、作成された cshtml ファイルが表示されます。このドキュメントは閉じてください。後で再度使用します。
 
-#### Add New Item View
+#### 新しい項目を作成するためのビューの追加
 
-In a similar fashion to above, create a new View for creating new Items as per the example shown below;
+同様に、項目を新規作成するためのビューを新たに作成します。以下の例を参照してください。
 
 ![Alt text](./media/documentdb-dotnet-application/image19.png)
 
-#### Add Edit Item View
+#### 項目を編集するためのビューの追加
 
 <a name="_Toc395888515"></a>
 ============================
 
-And finally, add one last View for editing an Item in the same way as before;
+最後にもう 1 つ、項目を編集するためのビューを同じように作成します。
 
 ![Alt text](./media/documentdb-dotnet-application/image20.png)
 
 
-Once this is done, close the cshtml documents in Visual Studio as we will return to these Views later.
+この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントは閉じてください。これらのビューは後で使用します。
 
 </h1>
-<a name="_Toc395637769">Wiring up DocumentDB</a>
+<a name="_Toc395637769">DocumentDB の接続</a>
 ------------------------------------------------
 
-### <a name="_Toc395637770">Listing Incomplete Items</a>
+### <a name="_Toc395637770">未完了項目の一覧表示</a>
 
-Open the **ItemController** and remove all the code within the class (but leave the class) that Visual Studio added. We'll rebuild it piece by piece using DocumentDB.
+**ItemController** を開いて、Visual Studio によって追加されたクラス内のコードをすべて削除してください (クラスそのものは残します)。DocumentDB を使用して最初から作り直します。
 
-Add the following code snippet within the now empty ItemController class;
+空になった ItemController クラス内に次のコード スニペットを追加します。
 
     public ActionResult Index()
     {
@@ -248,11 +247,11 @@ Add the following code snippet within the now empty ItemController class;
         return View(items);
     }
 
-This code also uses a "pseudo repository" class called DocumentDBRepository which we have yet to create. This is actually just a Helper class that contains all the DocumentDB specific code. For the purposes of this walk-through we aren't going to implement a full data access layer with dependency injection, and factories and repository patterns, as you would probably be doing if you were building a real world application. 
-For the purposes of this walk-through we're just going to put all the data access logic directly in to one project to keep things simple and focus on the DocumentDB specific bits.
+このコードはまた、まだ作成していない DocumentDBRepository という "擬似リポジトリ" クラスを使用します。これは実際には、DocumentDB 特有のコードをすべて含む Helper クラスです。このチュートリアルでは、その目的上、実際のアプリケーションを構築する場合とは異なり、ファクトリーおよびリポジトリ パターンと依存関係の挿入を用いた完全なデータ アクセス レイヤーを実装することはしません。 
+この手順では、簡潔さを優先し、すべてのデータ アクセス ロジックを 1 つのプロジェクトに配置して、DocumentDB 特定のビットに焦点を当てます。
 
-Add a new Class to your project and call it **DocumentDBRepository.**
-Replace the code in the class file with the following;
+新しいクラスをプロジェクトに追加して、名前を **DocumentDBRepository.** とします。
+クラス ファイルのコードを次のコードに置き換えます。
 
     public static class DocumentDBRepository
     {
@@ -332,10 +331,10 @@ Replace the code in the class file with the following;
 
 #### 
 
-Spend some time resolving all the namespaces in Visual Studio. All namespaces will be easy to resolve in Visual Studio as long as the NuGet package was installed successfully. The references to the ReadOrCreateDatabase and ReadOrCreateCollection methods will remain unresolved until we have added them, which comes next. 
+Visual Studio ですべての名前空間を解決するには、少し時間がかかります。NuGet パッケージが正しくインストールされていれば、Visual Studio 内のすべての名前空間はスムーズに解決されます。ReadOrCreateDatabase および ReadOrCreateCollection メソッドは、それらが追加されるまで未解決のままです。これについては後述します。 
 
-There are two method calls used here for reading or creating DocumentDB Databases and Document Collections.
-So add the following two methods to this class;
+ここで DocumentDB データベースおよびドキュメント コレクションを読み取る、または作成するために使用される 2 つのメソッド呼び出しがあります。
+次の 2 つのメソッドをクラスに追加します。
 
     private static DocumentCollection ReadOrCreateCollection(string databaseLink)
     {
@@ -371,10 +370,10 @@ So add the following two methods to this class;
 
 #### 
 
-This takes care setting up the Database, a DocumentCollection, and creating some code to connect to DocumentDB through the DocumentClient. 
+これにより、Database および DocumentCollection のセットアップと、DocumentClient を通じて DocumentDB に接続するいくつかのコードの作成が処理されます。 
 
-We're reading some values from configuration, so open the **web.config** and add the following lines under the
-<AppSettings\> section;
+設定からいくつかの値を読み取るので、**web.config** を開いて、以下の行を
+<AppSettings\> セクションに追加します。
 
     <add key="endpoint" value="enter you endpoint url from the Azure Management Portal"/>
     <add key="authKey" value="enter one of the keys from the Azure Management Portal"/>
@@ -395,7 +394,7 @@ ToDo リスト アプリケーションを使用して、最初に未完了の�
                 .ToList<Item>();
     }
     
-*CreateDocumentQuery* の参照を解決するためには、次の using ディレクティブを手動で追加する必要があります。
+ *CreateDocumentQuery* の参照を解決するためには、次の using ディレクティブを手動で追加する必要があります。
 
     using Microsoft.Azure.Documents.Linq;
 
@@ -403,7 +402,7 @@ ToDo リスト アプリケーションを使用して、最初に未完了の�
 
 ここで仮にアプリケーションを実行した場合は、Home コントローラーとその Index ビューが表示されます。これは、作業の開始時に選択した MVC テンプレート プロジェクトの既定の動作であって、期待していた動作ではありません。この MVC アプリケーションのルーティングに手を加えて、この動作を変更しましょう。
 
-***App\_Start\RouteConfig.cs*** を開き、"defaults:" で始まる行を見つけて、次のように変更します。
+***App\_Start\RouteConfig.cs*** を開いて、"defaults:" で始まる行を見つけ、以下と同様にその行を変更します。
 
     defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 
@@ -443,11 +442,11 @@ ToDo リスト アプリケーションを使用して、最初に未完了の�
     	return View(item);   
     }
 
-**セキュリティ上の注意**: [ValidateAntiForgeryToken] 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止に関するページ][]を参照してください。この記事の最後にあるダウンロードのリンクのソース コードから実装できます。
+**セキュリティ上の注意**:[ValidateAntiForgeryToken] 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止に関するページ](http://go.microsoft.com/fwlink/?LinkID=517254)を参照してください。この記事の最後にあるダウンロードのリンクのソース コードから実装できます。
 
-**セキュリティ上の注意**: メソッド パラメーターの [Bind] 属性も使用して、オーバーポスティング攻撃から保護します。詳細については、[ASP.NET MVC での基本的な CRUD 操作][]を参照してください。
+**セキュリティ上の注意**:メソッド パラメーターの [Bind] 属性も使用して、オーバーポスティング攻撃から保護します。詳細については、[ASP.NET MVC での基本的な CRUD 操作][]を参照してください。
 
-これで実装されました。Items Controller は、次のメソッドを DocumentDBRepository クラスに追加するために、フォームからリポジトリ クラスの CreateDocument メソッドに Item を  (安全に) 渡します。
+これで実装されました。Items Controller は、次のメソッドを DocumentDBRepository クラスに追加するために、フォームからリポジトリ クラスの CreateDocument メソッドに Item を (安全に) 渡します。
 
     public static async Task<Document> CreateItemAsync(Item item)
     {
@@ -534,7 +533,7 @@ DocumentDBRepository クラスに次のコードを追加してください。
 
 ![Alt text](./media/documentdb-dotnet-application/image24.png)
 
-1\. Item、Item Name、Category の各フィールドを使用して情報を入力し、**[Create New]** リンクをクリックして、いくつか値を指定してください。[Completed] チェック ボックスはオフのままとします。オンにした場合、新しい項目が完了済みの状態で追加されるため、最初のリストに表示されません。
+1\.Item、Item Name、Category の各フィールドを使用して情報を入力し、**[Create New]** リンクをクリックして、いくつか値を指定してください。[Completed] チェック ボックスはオフのままとします。オンにした場合、新しい項目が完了済みの状態で追加されるため、最初のリストに表示されません。
 
 ![Alt text](./media/documentdb-dotnet-application/image25.png)
 
@@ -544,7 +543,7 @@ DocumentDBRepository クラスに次のコードを追加してください。
 
 Todo リストに他にもいくつか項目を追加してみてください。
 
-2\. リストの項目の横にある [Edit] をクリックすると、[Edit] ビューが表示され、対象オブジェクトのプロパティを更新することができます。"Completed" フラグもこのビューで更新できます。このフラグをオンにした場合、項目が完了済みとしてマークされ、未完了タスクのリストから削除されます。
+2\.リストの項目の横にある [Edit] をクリックすると、[Edit] ビューが表示され、対象オブジェクトのプロパティを更新することができます。"Completed" フラグもこのビューで更新できます。このフラグをオンにした場合、項目が完了済みとしてマークされ、未完了タスクのリストから削除されます。
 
 ![Alt text](./media/documentdb-dotnet-application/image27.png)
 
@@ -573,16 +572,18 @@ Todo リストに他にもいくつか項目を追加してみてください。
 
 
 <a name="_Toc395637775">まとめ</a>
-======================================
+============================
 
 ### 
 
-ご利用ありがとうございます。ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC アプリケーションを作成し、Azure Websites に発行する方法を説明しました。ここで省略した詳細や削除の機能など、アプリケーション全体のソースコードは、[ここ][]でダウンロードできます。
+ご利用ありがとうございます。ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC アプリケーションを作成し、Azure Websites に発行する方法を説明しました。ここで省略した詳細や削除の機能など、アプリケーション全体のソースコードは、[ここ]()でダウンロードできます。
 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
-[Visual Studio Express]: http://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx
+[Visual Studio Express]: http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx
 [Microsoft Web プラットフォーム インストーラー]: http://www.microsoft.com/web/downloads/platform.aspx
-[ここ]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
+[ここからダウンロードします]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
 [クロスサイト リクエスト フォージェリの防止]: http://go.microsoft.com/fwlink/?LinkID=517254
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
+
+<!--HONumber=27-->

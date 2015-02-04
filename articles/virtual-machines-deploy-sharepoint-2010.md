@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="SharePoint on Azure" pageTitle="Azure Virtual Machines への SharePoint 2010 のデプロイ" metaKeywords="" description="Azure Virtual Machines で SharePoint 2010 を使用するときにサポートされるシナリオを理解します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="SharePoint 2010 Deployment on Azure Virtual Machines" authors="josephd" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="SharePoint on Azure" pageTitle="Azure Virtual Machines への SharePoint 2010 のデプロイ" metaKeywords="" description="Azure Virtual Machines で SharePoint 2010 を使用するときにサポートされるシナリオを理解します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="SharePoint 2010 Deployment on Azure Virtual Machines" authors="josephd" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/16/2014" ms.author="josephd" />
 
@@ -101,12 +101,12 @@ Azure の仮想マシンでは、開発者が目的の言語またはランタ�
 
 <h2>プロビジョニング プロセス</h2>
 
-ここでは Azure の基本について説明します。Azure の <strong>イメージ ライブラリ</strong> には、利用できる構成済みの VM が一覧表示されています。ユーザーは、SharePoint Server、SQL Server、Windows Server などの ISO/VHD をイメージ ライブラリに発行できます。VM の作成を単純にするために、作成された基本イメージはライブラリに発行されます。正規ユーザーはこのイメージを使用して目的の VM を生成できます。詳細については、Azure サイトにある「 <a href="/ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/">Windows Server 2008 R2 を実行する仮想マシンの作成</a> 」を参照してください。図 2 は、Azure の管理ポータルを使用して VM を作成する基本的な手順を示しています。
+ここでは Azure の基本について説明します。Azure の <strong>イメージ ライブラリ</strong> には、利用できる構成済みの VM が一覧表示されています。ユーザーは、SharePoint Server、SQL Server、Windows Server などの ISO/VHD をイメージ ライブラリに発行できます。VM の作成を単純にするために、作成された基本イメージはライブラリに発行されます。正規ユーザーはこのイメージを使用して目的の VM を生成できます。詳細については、Azure サイトにある「<a href="/ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/">Windows Server 2008 R2 を実行する仮想マシンの作成</a>」を参照してください。図 2 は、Azure の管理ポータルを使用して VM を作成する基本的な手順を示しています。
 
 <p class="caption">図 2:VM の作成手順の概要</p>
 ![azure-sharepoint-wp-2](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-2.png)
 
-ユーザーは Azure の管理ポータルに sysprep 済みイメージをアップロードすることもできます。詳細については、「 <a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">仮想ハード ディスクの作成とアップロード</a>」を参照してください。図 3 は、イメージをアップロードして VM を作成する基本的な手順を示しています。
+ユーザーは Azure の管理ポータルに sysprep 済みイメージをアップロードすることもできます。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">仮想ハード ディスクの作成とアップロード</a>」を参照してください。図 3 は、イメージをアップロードして VM を作成する基本的な手順を示しています。
 
 <p class="caption">図 3:イメージのアップロード手順の概要</p>
 ![azure-sharepoint-wp-3](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-3.png)
@@ -125,9 +125,9 @@ SharePoint 2010 を Azure にデプロイするには、次の手順に従いま
 
 <li>基本オペレーティング システムの VM を作成します。Azure の管理ポータルで、 <strong>[新規]</strong>、 <strong>[コンピューティング]</strong>、 <strong>[仮想マシン]</strong>、 <strong>[ギャラリーから]</strong> の順にクリックします。</li>
 
-<li>次のコードは、既存のユーザーの電話番号を変更します。 <strong>Choose an image</strong> ] ダイアログ ボックスが表示されます。 <strong>[Windows Server 2008 R2 SP1]</strong>  プラットフォーム イメージ、右矢印の順にクリックします。</li>
+<li>次のコードは、既存のユーザーの電話番号を変更します。 <strong>[Choose an image]</strong> ダイアログ ボックスが表示されます。 <strong>[Windows Server 2008 R2 SP1]</strong>  プラットフォーム イメージ、右矢印の順にクリックします。</li>
 
-<li>次のコードは、既存のユーザーの電話番号を変更します。 <strong><em>仮想マシンの構成 </em></strong>] ダイアログ ボックスが表示されます。次の情報を指定します。
+<li>次のコードは、既存のユーザーの電話番号を変更します。 <strong><em>[仮想マシンの構成]</em></strong> ダイアログ ボックスが表示されます。次の情報を指定します。
 
 <ul>
 <li>  <strong>[仮想マシン名]</strong> に入力します。
@@ -138,25 +138,25 @@ SharePoint 2010 を Azure にデプロイするには、次の手順に従いま
 </ul>
 </li>
 <li> <strong>[新しいユーザー名]</strong> に、ローカル管理者アカウントのユーザー名を入力します。</li>
-<li> <strong>[新しいパスワード]</strong>  ボックスに、強力なパスワードを入力します。</li>
-<li>[ <strong>パスワードの確認</strong> ] ボックスに、パスワードを再度入力し、右矢印をクリックします。</li>
+<li> <strong>[新しいパスワード]</strong> ボックスに、強力なパスワードを入力します。</li>
+<li> <strong>[パスワードの確認]</strong> ボックスに、パスワードを再度入力し、右矢印をクリックします。</li>
 </ul>
-<li>2 番目の [ <strong>仮想マシンの構成</strong> ] ダイアログ ボックスが表示されます。次の情報を指定します。
+<li>2 番目の <strong>[仮想マシンの構成]</strong> ダイアログ ボックスが表示されます。次の情報を指定します。
 <ul>
-<li>[ <strong>クラウド サービス</strong> ] ボックスで、次のいずれかを実行します。
+<li> <strong>[クラウド サービス]</strong> ボックスで、次のいずれかを実行します。
 <ul>
 <li><strong>[新しいクラウド サービスの作成]</strong>。こちらを選択する場合は、クラウド サービスの DNS 名も入力する必要があります。</li>
 <li>既存のクラウド サービスを選択する。</li>
 </ul>
 <li> <strong>[リージョン/アフィニティ グループ/仮想ネットワーク] </strong> ボックスで、この仮想イメージをホストするリージョンを選択します。</li>
-<li>[ <strong>ストレージ アカウント </strong>] ボックスで、次のいずれかを実行します。
+<li> <strong>[ストレージ アカウント]</strong> ボックスで、次のいずれかを実行します。
 <ul>
 <li><strong>[自動的に生成されたストレージ アカウントを使用]</strong>。</li>
 <li>既存のストレージ アカウント名を選択する。</li>
 <ul>
 <li>自動的に作成されるストレージ アカウントはリージョンあたり 1 つだけです。この設定で作成する他のすべての VM がこのストレージ アカウントに配置されます。</li>
 <li>ストレージ アカウントは 20 個に制限されています。</li>
-<li>詳細については、「 <a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/#createstorage">Azure でのストレージ アカウントの作成</a>」を参照してください。</li>
+<li>詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/#createstorage">Azure でのストレージ アカウントの作成</a>」を参照してください。</li>
 </ul>
 </li>
 <li>  <strong>[可用性セット]</strong>  ボックスの一覧の  <STRONG>[(なし)]</STRONG> を選択し、右矢印をクリックします。</li>
@@ -164,25 +164,25 @@ SharePoint 2010 を Azure にデプロイするには、次の手順に従いま
 </li>
 </ul>
 </li>
-<li>3 番目の <strong>仮想マシンの構成 </strong>ダイアログ ボックスで、チェック マークをクリックして VM を作成します。</li>
+<li>3 番目の <strong>仮想マシンの構成</strong> ダイアログ ボックスで、チェック マークをクリックして VM を作成します。</li>
 
 
 <li>VM に接続するには:
 <ul>
 <li>リモート デスクトップを使用して VM を開きます。</li>
 <li>Azure 管理ポータルで、VM を選択し、 <strong>[ダッシュボード]</strong>  ページをクリックします。</li>
-<li>[ <strong>接続</strong>] をクリックします。</li>
+<li><strong>[接続]</strong> をクリックします。</li>
 </ul>
 </li>
 <li>次のいずれかのオプションを使用して、SQL Server VM を構築します。
 <ul>
-<li>前の手順 1. から手順 7. に従って、SQL Server 2012 VM を作成します。ただし、 <strong>手順 3.</strong> では、Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用します。詳細については、「 <a href="/ja-jp/manage/windows/common-tasks/install-sql-server/">Azure での SQL Server 仮想マシンのプロビジョニング</a>」を参照してください。
+<li>前の手順 1. から手順 7. に従って、SQL Server 2012 VM を作成します。ただし、 <strong>手順 3.</strong> では、Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用します。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/install-sql-server/">Azure での SQL Server 仮想マシンのプロビジョニング</a>」を参照してください。
 <ul>
 <li>このオプションを選択した場合は、プロビジョニング プロセスで SQL Server 2012 セットアップ ファイルのコピーが  <em>C:\SQLServer_11.0_Full</em>  ディレクトリに残されるため、インストールをカスタマイズできます。たとえば、ライセンス キーを使用して SQL Server 2012 の評価版をライセンス版に変換できます。</li>
 </ul>
 </li>
-<li>SQL Server システム準備 (SysPrep) ツールを使用して、基本オペレーティング システムの VM に SQL Server をインストールします (上記の手順 1. ～ 7. を参照)。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用して、SQL Server 2012 をインストールします</a>」を参照してください。</li>
-<li>コマンド プロンプトを使用して SQL Server をインストールします。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/ms144259.aspx#SysPrep">コマンド プロンプトから SQL Server 2012 をインストールします</a>」を参照してください。</li>
+<li>SQL Server システム準備 (SysPrep) ツールを使用して、基本オペレーティング システムの VM に SQL Server をインストールします (上記の手順 1. ～ 7. を参照)。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用して、SQL Server 2012 をインストールします</a>」を参照してください。</li>
+<li>コマンド プロンプトを使用して SQL Server をインストールします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ms144259.aspx#SysPrep">コマンド プロンプトから SQL Server 2012 をインストールします</a>」を参照してください。</li>
 <li>サポートされている SQL Server メディアとライセンス キーを使用して、基本オペレーティング システムの VM に SQL Server をインストールします (上記の手順 1. ～ 7. を参照)。</li>
 </ul>
 </li>
@@ -194,23 +194,23 @@ SharePoint 2010 を Azure にデプロイするには、次の手順に従いま
 <li>SharePoint GUI を使用してプロビジョニングします。
 <ul>
 <li>SharePoint ファームを作成してプロビジョニングするには、 <a href="http://technet.microsoft.com/ja-jp/library/ee805948.aspx#CreateConfigure">Microsoft SharePoint Server ファームの作成に関するページ</a>を参照してください。</li>
-<li>ファームに Web またはアプリケーション サーバーを追加するには、「 <a href="http://technet.microsoft.com/ja-jp/library/cc261752.aspx">SharePoint 2010 で Web サーバーまたはアプリケーション サーバーをファームに追加する</a>」を参照してください。</li>
+<li>ファームに Web またはアプリケーション サーバーを追加するには、「<a href="http://technet.microsoft.com/ja-jp/library/cc261752.aspx">SharePoint 2010 で Web サーバーまたはアプリケーション サーバーをファームに追加する</a>」を参照してください。</li>
 <li>
-<p>データベース サーバーを既存のファームに追加するには、「 <a href="http://technet.microsoft.com/ja-jp/library/cc262781">Add a Database Server to an Existing Farm (既存のファームへのデータベース サーバーの追加)</a>」を参照してください。</p>
+<p>データベース サーバーを既存のファームに追加するには、「<a href="http://technet.microsoft.com/ja-jp/library/cc262781">Add a Database Server to an Existing Farm (既存のファームへのデータベース サーバーの追加)</a>」を参照してください。</p>
 <ul>
-<li>SharePoint ファームで SQL Server 2012 を使用するには、アプリケーションをインストールした後、サーバーの構成はしないで、SharePoint Server 2010 の Service Pack 1 をダウンロードしてインストールする必要があります。詳細については、「 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=26623">Service Pack 1 for SharePoint Server 2010</a>」を参照してください。</li>
-<li>SQL Server の BI 機能を活用するには、SharePoint Server をスタンドアロン サーバーではなくサーバー ファームとしてインストールすることをお勧めします。詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/hh231681(v=sql.110).aspx">SQL Server 2012 のビジネス インテリジェンス機能のインストール</a>」を参照してください。</li>
+<li>SharePoint ファームで SQL Server 2012 を使用するには、アプリケーションをインストールした後、サーバーの構成はしないで、SharePoint Server 2010 の Service Pack 1 をダウンロードしてインストールする必要があります。詳細については、「<a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=26623">Service Pack 1 for SharePoint Server 2010</a>」を参照してください。</li>
+<li>SQL Server の BI 機能を活用するには、SharePoint Server をスタンドアロン サーバーではなくサーバー ファームとしてインストールすることをお勧めします。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/hh231681(v=sql.110).aspx">SQL Server 2012 のビジネス インテリジェンス機能のインストール</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Microsoft Windows PowerShell を使用してプロビジョニングします。Psconfig コマンド ライン ツールを代わりに使用して、SharePoint 2010 製品のプロビジョニング方法を制御するいくつかの操作を実行できます。詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/cc263093.aspx">Psconfig コマンド ライン リファレンス</a>」を参照してください。</li>
+<li>Microsoft Windows PowerShell を使用してプロビジョニングします。Psconfig コマンド ライン ツールを代わりに使用して、SharePoint 2010 製品のプロビジョニング方法を制御するいくつかの操作を実行できます。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc263093.aspx">Psconfig コマンド ライン リファレンス</a>」を参照してください。</li>
 </ul>
 </li>
 <li>サブ手順 3.SharePoint を構成します。各 SharePoint VM の準備が完了したら、次のいずれかの方法で各 VM の SharePoint Server を構成します。
 <ul>
 <li>GUI 画面で SharePoint を構成します。</li>
-<li>Windows PowerShell を使用して SharePoint を構成します。詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」を参照してください。
+<li>Windows PowerShell を使用して SharePoint を構成します。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」を参照してください。
 <ul>
 <li>CodePlex プロジェクトの AutoSPInstaller を使用することもできます。これは Windows PowerShell スクリプト、XML 入力ファイル、Microsoft Windows 標準バッチ ファイルから構成されています。AutoSPInstaller は、Windows PowerShell に基づいた SharePoint 2010 インストール スクリプトのフレームワークです。詳細については、 <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller</a>のページを参照してください。
 
@@ -232,9 +232,9 @@ SharePoint 2010 を Azure にデプロイするには、次の手順に従いま
 
 <ol>
 <li>Create the Hyper-V-enabled image: Use Hyper-V Manager to create the Hyper-V-enabled VHD. For more information, go to <a href="http://technet.microsoft.com/ja-jp/library/cc742509">仮想ハード ディスクを作成します</a>。</li>
-<li>Azure にストレージ アカウントを作成します。VM の作成に使用できる VHD ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。このストレージ アカウントは、Azure の管理ポータルを使って作成できます。詳細については、「 <a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Azure でのストレージ アカウントの作成</a>」を参照してください。</li>
-<li>アップロードするイメージを準備します。イメージを Azure にアップロードする前に、SysPrep コマンドを使用してイメージを一般化する必要があります。詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/bb457073.aspx">Sysprep の使用方法: 紹介</a>」を参照してください。</li>
-<li>Azure にイメージをアップロードします。VHD ファイルに格納されたイメージをアップロードするには、管理証明書を作成してインストールする必要があります。証明書のサムプリントとサブスクリプション ID を取得する接続を設定し、CSUpload コマンド ライン ツールを使用して、VHD ファイルをアップロードします。詳細については、「 <a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Azure にイメージをアップロードします</a>」を参照してください。</li>
+<li>Azure にストレージ アカウントを作成します。VM の作成に使用できる VHD ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。このストレージ アカウントは、Azure の管理ポータルを使って作成できます。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Azure でのストレージ アカウントの作成</a>」を参照してください。</li>
+<li>アップロードするイメージを準備します。イメージを Azure にアップロードする前に、SysPrep コマンドを使用してイメージを一般化する必要があります。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/bb457073.aspx">Sysprep の使用方法: 紹介</a>」を参照してください。</li>
+<li>Azure にイメージをアップロードします。VHD ファイルに格納されたイメージをアップロードするには、管理証明書を作成してインストールする必要があります。証明書のサムプリントとサブスクリプション ID を取得する接続を設定し、CSUpload コマンド ライン ツールを使用して、VHD ファイルをアップロードします。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Azure にイメージをアップロードします</a>」を参照してください。</li>
 </ol>
 
 <h2>使用シナリオ</h2>
@@ -267,20 +267,20 @@ SharePoint 開発環境とテスト環境を Azure に実装するには、次�
 <li><em>Provision</em>: First, provision a VPN connection between on-premises and Azure using Azure Virtual Network. (Because Active Directory is not being used here, a VPN tunnel is needed.) For more information, go to <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (設計上の考慮事項とセキュリティで保護された接続のシナリオ)</a>。次に、管理ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい VM をプロビジョニングします。
 <ul>
 <li>内部設置型 SharePoint 開発およびテスト VM を Azure のストレージ アカウントにアップロードして、その VM をイメージ ライブラリから参照して必要な環境を構築することができます。</li>
-<li>Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用できます。詳細については、「 <a href="/ja-jp/manage/windows/common-tasks/install-sql-server/">Azure での SQL Server 仮想マシンのプロビジョニング</a>」を参照してください。</li>
+<li>Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用できます。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/install-sql-server/">Azure での SQL Server 仮想マシンのプロビジョニング</a>」を参照してください。</li>
 </ul>
 </li>
 <li><em>インストール</em>:リモート デスクトップ接続を使用して、SharePoint Server、Visual Studio、および SQL Server を VM にインストールします。
 <ul>
 <li>SharePoint Server のインストール オプションを選択します。
 <ul>
-<li>SharePoint 2010 簡易セットアップ スクリプトを使用して、SharePoint 開発マシンを構築します。詳細については、「 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=23415">SharePoint 2010 簡易セットアップ スクリプト</a>」を参照してください。</li>
-<li>Windows PowerShell を使用します。詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」を参照してください。</li>
+<li>SharePoint 2010 簡易セットアップ スクリプトを使用して、SharePoint 開発マシンを構築します。詳細については、「<a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=23415">SharePoint 2010 簡易セットアップ スクリプト</a>」を参照してください。</li>
+<li>Windows PowerShell を使用します。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」を参照してください。</li>
 <li>CodePlex プロジェクトの AutoSPInstaller を使用します。詳細については、 <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller </a>のページを参照してください。</li>
 </ul>
 </li>
-<li>Visual Studio をインストールします。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx">Visual Studio のインストール</a>」を参照してください。</li>
-<li>SQL Server をインストールします。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。
+<li>Visual Studio をインストールします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx">Visual Studio のインストール</a>」を参照してください。</li>
+<li>SQL Server をインストールします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。
 <ul>
 <li>SharePoint ファーム デプロイ用の SQL Server 2012 の作成と構成については、次のハンズオン ラボを参照してください: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint">Configuring SQL Server 2012 for SharePoint in Azure (Azure で SharePoint 用に SQL Server 2012 を構成)</a>。</li>
 <li>Active Directory を構成しシングル SQL Server データベースを使用する SharePoint ファームの作成については、次のハンズオン ラボを参照してください: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs">Deploying a SharePoint Farm with Azure Virtual Machines (Azure の仮想マシンを備えた SharePoint ファームのデプロイ)</a>。</li>
@@ -317,7 +317,7 @@ SharePoint 開発環境とテスト環境を Azure に実装するには、次�
 
 このシナリオの場合、SharePoint Server は公開された Web サイトをホストする土台として使用されます。安全で拡張性の高いクラウド インフラストラクチャ上で、ビジネス Web サイトの迅速なデプロイ、カスタマイズ、およびホストができます。Azure で SharePoint の公開 Web サイトを使用すると、トラフィックの増大に応じてサイズを変更し、使用した分だけ料金を支払うことができます。内部設置型と同様の一般的ツールを、Azure 上の SharePoint でもコンテンツのオーサリング、ワークフロー、および承認に使用できます。
 
-さらに、Azure の仮想マシンを使用すると、VM 上で動作しているステージング環境と運用環境を簡単に構成できます。Azure で作成した SharePoint の公開 VM は、仮想ストレージにバックアップできます。さらに、災害復旧目的で、連続的なジオ (主要地域) レプリケーション機能を利用して、あるデータ センターで実行されている VM を遠く離れた別のデータ センターに自動的にバックアップすることができます(詳細については、「 <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx">Introducing Geo-replication for Azure Storage (Azure のストレージの Geo (主要地域) レプリケーション入門)</a>」を参照してください)。
+さらに、Azure の仮想マシンを使用すると、VM 上で動作しているステージング環境と運用環境を簡単に構成できます。Azure で作成した SharePoint の公開 VM は、仮想ストレージにバックアップできます。さらに、災害復旧目的で、連続的なジオ (主要地域) レプリケーション機能を利用して、あるデータ センターで実行されている VM を遠く離れた別のデータ センターに自動的にバックアップすることができます(詳細については、「<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx">Introducing Geo-replication for Azure Storage (Azure のストレージの Geo (主要地域) レプリケーション入門)</a>」を参照してください)。
 
 Azure インフラストラクチャの VM は、SQL Server や SharePoint Server など他の Microsoft 製品でも動作することが検証されサポートされています。Azure および SharePoint Server は連携して利用すると一段と便利です。どちらも Microsoft ファミリであり、最適な体験を提供できるように両方をあわせて徹底的に統合、サポート、テストがなされています。どちらも SharePoint アプリケーションと Azure インフラストラクチャのサポートが一元化されています。
 
@@ -335,11 +335,11 @@ Azure インフラストラクチャの VM は、SQL Server や SharePoint Serve
 <ol>
 <li><em>Deploy Active Directory</em>: The fundamental requirements for deploying Active Directory on Azure Virtual Machines are similar"but not identical"to deploying it on VMs (and, to some extent, physical machines) on-premises. For more information about the differences, as well as guidelines and other considerations, go to <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090">Azure の仮想マシンでの Active Directory の展開ガイドライン</a>。Azure で Active Directory をデプロイするには、以下の手順を実行します。
 <ul>
-<li>VM を特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。詳細については、「 <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking (仮想ネットワークの構成)</a>」を参照してください。</li>
-<li>管理ポータルを使用して、Azure の新しい VM にドメイン コントローラーを作成してデプロイします。詳細については、「 <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller (ドメイン コントローラーのデプロイと作成)</a>」を参照してください。
+<li>VM を特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking (仮想ネットワークの構成)</a>」を参照してください。</li>
+<li>管理ポータルを使用して、Azure の新しい VM にドメイン コントローラーを作成してデプロイします。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller (ドメイン コントローラーのデプロイと作成)</a>」を参照してください。
 <ul>
-<li>Windows PowerShell スクリプトを参照し、Azure の仮想マシンと仮想ネットワークを使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。詳細については、「 <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))</a>」を参照してください。</li>
-<li>Azure の仮想ネットワーク上の VM に新しい Active Directory フォレストを作成する方法の詳細については、「 <a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」を参照してください。</li>
+<li>Windows PowerShell スクリプトを参照し、Azure の仮想マシンと仮想ネットワークを使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))</a>」を参照してください。</li>
+<li>Azure の仮想ネットワーク上の VM に新しい Active Directory フォレストを作成する方法の詳細については、「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
@@ -347,7 +347,7 @@ Azure インフラストラクチャの VM は、SQL Server や SharePoint Serve
 <li><em>VM のプロビジョニング</em>:管理ポータルを使用して、イメージ ギャラリーにあるストック イメージから新しい VM をプロビジョニングします。</li>
 <li><em>SharePoint ファームのデプロイ</em>:
 <ul>
-<li>新しくプロビジョニングした VM を使用して SharePoint をインストールし、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a> または <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller のページ</a>を参照してください。</li>
+<li>新しくプロビジョニングした VM を使用して SharePoint をインストールし、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a> または <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller のページ</a>を参照してください。</li>
 <li>SharePoint VM を構成して SharePoint ファームを作成し、このファームに接続します。</li>
 <li>管理ポータルを使用してロード バランサーを構成します。
 <ul>
@@ -388,9 +388,9 @@ BI コンポーネントの展開をスケール アウトするには、PowerPi
 Azure で BI 環境をスケール アウトするには、次の手順に従います。
 
 <ol>
-<li><em>Provision</em>:
+<li><em>プロビジョニング</em>:
 <ul>
-<li>Provision a VPN connection between on premises and Azure using Azure Virtual Network. For more information, go to <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (設計上の考慮事項とセキュリティで保護された接続のシナリオ)</a>。</li>
+<li>Azure の仮想ネットワークを使用して内部設置型システムおよび Azure との VPN 接続をプロビジョニングします. 詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (設計上の考慮事項とセキュリティで保護された接続のシナリオ)</a>」を参照してください。</li>
 <li>管理ポータルを使用して、イメージ ギャラリーにあるストック イメージから新しい VM をプロビジョニングします。
 <ul>
 <li>SharePoint Server または SQL Server の BI ワークロード イメージをイメージ ライブラリにアップロードすると、権限のあるユーザーがその BI コンポーネント VM を選択してスケール アウトした環境を構築できます。</li>
@@ -400,8 +400,8 @@ Azure で BI 環境をスケール アウトするには、次の手順に従い
 </li>
 <li><em>インストール</em>:SharePoint Server または SQL Server の BI コンポーネントの構築済みイメージがない場合は、リモート デスクトップ接続を使用して、SharePoint Server および SQL Server を VM にインストールします。
 <ul>
-<li>SharePoint のインストールの詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a> または <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller のページ</a>を参照してください。</li>
-<li>SQL Server のインストールの詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
+<li>SharePoint のインストールの詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a> または <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller のページ</a>を参照してください。</li>
+<li>SQL Server のインストールの詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
 <li>SharePoint ファーム デプロイ用の SQL Server 2012 の作成と構成については、次のハンズオン ラボを参照してください: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint">Configuring SQL Server 2012 for SharePoint in Azure (Azure で SharePoint 用に SQL Server 2012 を構成)</a>。</li>
 <li>Active Directory を構成しシングル SQL Server データベースを使用する SharePoint ファームの作成については、次のハンズオン ラボを参照してください: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs">Deploying a SharePoint Farm with Azure Virtual Machines (Azure の仮想マシンを備えた SharePoint ファームのデプロイ)</a>。</li>
 </ul>
@@ -445,11 +445,11 @@ Azure の仮想マシンを使用すると、経済的で高度なセキュリ�
 <ol>
 <li>Deploy Active Directory<em>: The fundamental requirements for deploying Active Directory on Azure Virtual Machines are similar"but not identical"to deploying it on VMs (and, to some extent, physical machines) on premises. For more information about the differences, as well as guidelines and other considerations, go to <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090">Azure の仮想マシンでの Active Directory の展開ガイドライン</a>。Azure で Active Directory をデプロイするには、以下の手順を実行します。</em>
 <ul>
-<li>VM を特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。詳細については、「 <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking (仮想ネットワークの構成)</a>」を参照してください。</li>
-<li>管理ポータルを使用して、Azure の新しい VM にドメイン コントローラーを作成してデプロイします。詳細については、「 <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller (ドメイン コントローラーのデプロイと作成)</a>」を参照してください。
+<li>VM を特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking (仮想ネットワークの構成)</a>」を参照してください。</li>
+<li>管理ポータルを使用して、Azure の新しい VM にドメイン コントローラーを作成してデプロイします。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller (ドメイン コントローラーのデプロイと作成)</a>」を参照してください。
 <ul>
-<li>Windows PowerShell スクリプトを参照し、Azure の仮想マシンと仮想ネットワークを使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。詳細については、「 <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))</a>」を参照してください。</li>
-<li>Azure の仮想ネットワーク上の VM に新しい Active Directory フォレストを作成する方法の詳細については、「 <a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」を参照してください。</li>
+<li>Windows PowerShell スクリプトを参照し、Azure の仮想マシンと仮想ネットワークを使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))</a>」を参照してください。</li>
+<li>Azure の仮想ネットワーク上の VM に新しい Active Directory フォレストを作成する方法の詳細については、「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
@@ -457,19 +457,19 @@ Azure の仮想マシンを使用すると、経済的で高度なセキュリ�
 <li><em>SQL Server のデプロイ</em>:
 <ul>
 <li>管理ポータルを使用して、イメージ ギャラリーにあるストック イメージから新しい VM をプロビジョニングします。</li>
-<li>VM で SQL Server を構成します。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
+<li>VM で SQL Server を構成します。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
 <li>新しく作成した Active Directory ドメインに VM を結合します。</li>
 </ul>
 </li>
 <li><em>マルチサーバー SharePoint ファームのデプロイ</em>:
 <ul>
-<li>仮想ネットワークを作成します。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (設計上の考慮事項とセキュリティで保護された接続のシナリオ)</a>」を参照してください。
+<li>仮想ネットワークを作成します。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (設計上の考慮事項とセキュリティで保護された接続のシナリオ)</a>」を参照してください。
 <ul>
 <li>SharePoint VM のデプロイ時には、プロビジョニング時にローカル Active Directory ボックスの DNS アドレスが使用できるように、SharePoint Server のサブネットを指定する必要があります。</li>
 </ul>
 </li>
 <li>管理ポータルを使用して VM を作成します。</li>
-<li>SharePoint Server をこの VM にインストールして、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「 <a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a> または <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller のページ</a>を参照してください。</li>
+<li>SharePoint Server をこの VM にインストールして、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a> または <a href="http://autospinstaller.codeplex.com/">CodePlex:AutoSPInstaller のページ</a>を参照してください。</li>
 <li>SharePoint VM を構成して SharePoint ファームを作成し、 <a href="http://technet.microsoft.com/ja-jp/library/ff607979.aspx">Join-SharePointFarm</a> コマンドを使用して SSH キーを追加する必要が発生する場合もあります。</li>
 <li>管理ポータルを使用してロード バランサーを構成します。
 <ul>

@@ -1,3 +1,4 @@
+
 1.  MainPage.xaml.cs ファイルで、次の using ステートメントを追加またはコメント解除します。
 
         using Microsoft.WindowsAzure.MobileServices;
@@ -15,9 +16,9 @@
             public bool Complete { get; set; }
         }
 
-    **JsonPropertyAttribute** は、クライアント型のプロパティ名と基になるデータ テーブル内の列名との間のマッピングを定義するために使用します。
+	**JsonPropertyAttribute** は、クライアント型のプロパティ名と基になるデータ テーブル内の列名との間のマッピングを定義するために使用します。
 
-    > [WACOM.NOTE] ユニバーサル Windows アプリ プロジェクトでは、TodoItem クラスは共有する DataModel フォルダーにある別のコード ファイルで定義されます。
+    >[WACOM.NOTE] ユニバーサル Windows アプリ プロジェクトでは、TodoItem クラスは共有する DataModel フォルダーにある別のコード ファイルで定義されます。
 
 3.  MainPage.xaml.cs では、既存の items コレクションを定義する行をコメントアウトするか削除します。その後、コメントを解除するか、次の行を追加して、*\<yourClient\>* を、モバイル サービスにプロジェクトを接続したとき App.xaml.cs ファイルに追加された `MobileServiceClient` フィールドで置き換えます。
 

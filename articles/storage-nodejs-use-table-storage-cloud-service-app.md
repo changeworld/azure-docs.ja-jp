@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Web App with Storage" pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter="nodejs" title="Node.js Web Application using Storage" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Web App with Storage" pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter="nodejs" title="Node.js Web Application using Storage" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="mwasson" />
 
@@ -13,8 +13,7 @@
 
 タスク項目は Azure ストレージに格納されます。Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。Azure ストレージには、データを格納してアクセスできるデータ構造がいくつか用意されています。Azure SDK for Node.js に含まれる API または REST API を通じて、そのストレージ サービスを活用できます。詳細については、「[Azure のデータの格納とアクセス]」を参照してください。
 
-このチュートリアルは、[[Node.js Web
-アプリケーション]] および [Node.js with Express][Node.js Web Application using Express] のチュートリアルを完了していることを前提としています。
+このチュートリアルは、[Node.js Web アプリケーション] および [Express を使用する Node.js][Express を使用する Node.js Web アプリケーション] のチュートリアルを完了していることを前提としています。
 
 学習内容:
 
@@ -70,7 +69,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 
 		PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
 
-	The output of this command should appear similar to the following:
+	このコマンドの出力は次のように表示されます。
 
 		node-uuid@1.4.1 node_modules\node-uuid
 
@@ -312,7 +311,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 
 **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 
-1. [Twitter Bootstrap] のファイルをダウンロードして展開します(http://getbootstrap.com/)。**bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
+1. [Twitter Bootstrap](http://getbootstrap.com/) のファイルをダウンロードして展開します。**bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 
 2. **views** フォルダーから、テキスト エディターで **layout.jade** を開き、内容を次の内容に置き換えます。
 

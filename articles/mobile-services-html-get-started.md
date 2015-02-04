@@ -1,4 +1,4 @@
-﻿<properties pageTitle="HTML 5 アプリ用 Azure Mobile Services の使用" metaKeywords="" description="次のチュートリアルに従って、HTML 開発用の Azure Mobile Services を使用します。 " metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="HTML 5 アプリ用 Azure Mobile Services の使用" metaKeywords="" description="次のチュートリアルに従って、HTML 開発用の Azure Mobile Services を使用します。 " metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="hero-article" ms.date="11/21/2014" ms.author="glenga" />
 
@@ -22,7 +22,7 @@
 
 <div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure 無料評価版</a>」を参照してください。</p></div>
 
-###その他の要件
+### その他の要件
 
 + このチュートリアルでは、ローカル コンピューター上で次のいずれかの Web サーバーが実行されている必要があります。
 
@@ -151,7 +151,7 @@
 
 [管理ポータル]: https://manage.windowsazure.com/
 [Microsoft Web プラットフォーム インストーラー]:  http://go.microsoft.com/fwlink/p/?LinkId=286333
-[Python の最新バージョン]: http://go.microsoft.com/fwlink/p/?LinkId=286342
+[最新バージョンの Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
 [Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
 [クロス オリジン リソース共有]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx
 

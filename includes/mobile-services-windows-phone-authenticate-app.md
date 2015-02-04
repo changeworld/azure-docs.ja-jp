@@ -1,4 +1,4 @@
-﻿1. mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
+1. mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
 	
         private MobileServiceUser user;
         private async System.Threading.Tasks.Task Authenticate()
@@ -22,7 +22,7 @@
             }
         }
 
-これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。
+    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。
 
     >[WACOM.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>MobileServiceAuthenticationProvider</strong> の値をプロバイダーに対応する値に変更してください。</p>
     </div>

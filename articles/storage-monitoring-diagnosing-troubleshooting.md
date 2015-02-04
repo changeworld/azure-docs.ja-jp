@@ -1202,7 +1202,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
   [Keynote]: http://www.keynote.com/solutions/monitoring/web-monitoring
   [Gomez]: https://www.gomeznetworks.com/?g=1
   [Understanding Windows Azure Storage Billing – Bandwidth, Transactions, and Capacity (Windows Azure ストレージの課金について - 帯域幅、トランザクション、および容量)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx
-  [0]: http://msdn.microsoft.com/ja-jp/library/azure/hh343260.aspx
+
   [Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Windows Azure ストレージの冗長オプションおよび読み取りアクセス地理冗長ストレージ)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx
   [REST API の一般的なエラー コード]: http://msdn.microsoft.com/ja-jp/library/azure/dd179357.aspx
   [BLOB サービスのエラー コード]: http://msdn.microsoft.com/ja-jp/library/azure/dd179439.aspx

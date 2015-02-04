@@ -1,28 +1,24 @@
-﻿<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピックの使用方法 (Java) - Azure" metaKeywords="Azure Service Bus トピックの使用, Service Bus トピックの使用, Azure 発行サブスクライブ メッセージング, Azure メッセージング トピックおよびサブスクリプション, Service Bus トピック Java" description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Java アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Java" title="How to Use Service Bus Topics/Subscriptions" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピックの使用方法 (Java) - Azure" metaKeywords="Azure Service Bus トピックの使用, Service Bus トピックの使用, Azure 発行サブスクライブ メッセージング, Azure メッセージング トピックおよびサブスクリプション, Service Bus トピック Java" description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Java アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Java" title="How to Use Service Bus Topics/Subscriptions" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
 
 # サービス バス トピック/サブスクリプションの使用方法
 
-このガイドでは、Service Bus トピックと
-サブスクリプションの使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][] を利用しています。ここでは、**トピックと
-サブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへの
-メッセージの送信**、**サブスクリプションからのメッセージの受信**、
-**トピックとサブスクリプションの削除**などのシナリオについて説明します。
+このガイドでは、Service Bus トピックとサブスクリプションの使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][Azure SDK for Java] を利用しています。ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
 
 ## 目次
 
--   [サービス バス トピックとサブスクリプションとは][]
--   [サービス名前空間の作成][]
--   [名前空間の既定の管理資格情報の取得][]
--   [サービス バスを使用するようにアプリケーションを構成する][]
--   [方法: トピックを作成する][]
--   [方法: サブスクリプションを作成する][]
--   [方法: メッセージをトピックに送信する][]
--   [方法: サブスクリプションからメッセージを受信する][]
--   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する][]
--   [方法: トピックとサブスクリプションを削除する][]
--   [次のステップ][]
+-   [サービス バス トピックとサブスクリプションとは][サービス バス トピックとサブスクリプションとは]
+-   [サービス名前空間の作成][サービス名前空間の作成]
+-   [名前空間の既定の管理資格情報の取得][名前空間の既定の管理資格情報の取得]
+-   [サービス バスを使用するようにアプリケーションを構成する][サービス バスを使用するようにアプリケーションを構成する]
+-   [方法: トピックを作成する][方法: トピックを作成する]
+-   [方法: サブスクリプションを作成する][方法: サブスクリプションを作成する]
+-   [方法: メッセージをトピックに送信する][方法: メッセージをトピックに送信する]
+-   [方法: サブスクリプションからメッセージを受信する][方法: サブスクリプションからメッセージを受信する]
+-   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する][方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]
+-   [方法: トピックとサブスクリプションを削除する][方法: トピックとサブスクリプションを削除する]
+-   [次のステップ][次のステップ]
 
 [WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
@@ -324,7 +320,7 @@ Service Bus には、
 # <a name="bkmk_NextSteps"> </a>次のステップ
 
 これで、Service Bus キューの基本を学習できました。詳細については、MSDN 
-トピック「[キュー、トピック、およびサブスクリプション][]」を参照してください。
+トピック「[キュー、トピック、およびサブスクリプション][キュー、トピック、およびサブスクリプション]」を参照してください。
 
   [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
   [サービス バス トピックとサブスクリプションとは]: #what-are-service-bus-topics
@@ -338,11 +334,6 @@ Service Bus には、
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #bkmk_HowToHandleAppCrash
   [方法: トピックとサブスクリプションを削除する]: #bkmk_HowToDeleteTopics
   [次のステップ]: #bkmk_NextSteps
-  [サービス バス トピックの図]: ../../../DevCenter/Java/Media/SvcBusTopics_01_FlowDiagram.jpg
-  [Azure 管理ポータル]: http://manage.windowsazure.com/
-  [[サービス バス] ノードのスクリーンショット]: ../../../DevCenter/dotNet/Media/sb-queues-03.png
-  [新しい名前空間の作成 ]: ../../../DevCenter/dotNet/Media/sb-queues-04.png
-  [名前空間の一覧のスクリーン ショット]: ../../../DevCenter/dotNet/Media/sb-queues-05.png
-  [[プロパティ] ウィンドウのスクリーン ショット]: ../../../DevCenter/dotNet/Media/sb-queues-06.png
-  [既定のキーのスクリーン ショット]: ../../../DevCenter/dotNet/Media/sb-queues-07.png
-  [サービス バス キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx
+  [サービス バス ノードのスクリーンショット]: ../../../DevCenter/dotNet/Media/sb-queues-03.png
+  [プロパティ ウィンドウのスクリーン ショット]: ../../../DevCenter/dotNet/Media/sb-queues-06.png
+  [キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx

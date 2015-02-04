@@ -1,9 +1,9 @@
-﻿<properties title="SharePoint Server Farm Configuration Details" pageTitle="SharePoint サーバー ファームの構成の詳細" description="SharePoint ファームの既定の構成について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="josephd" videoId="" scriptId="" manager="timlt"/>
+<properties title="SharePoint Server Farm Configuration Details" pageTitle="SharePoint サーバー ファームの構成の詳細" description="SharePoint ファームの既定の構成について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="josephd" videoId="" scriptId="" manager="timlt"/>
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-sharepoint" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="josephd" />
 
 
-#SharePoint サーバー ファームの構成の詳細#
+# SharePoint サーバー ファームの構成の詳細#
 
 SharePoint サーバー ファームは、事前構成された SharePoint Server 2013 ファームを自動で作成する Microsoft Azure プレビュー ポータルの機能です。ファームの構成には次の 2 種類があります。
 
@@ -14,7 +14,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 
 詳細については、「[SharePoint Server Farm (SharePoint サーバー ファーム)](../virtual-machines-sharepoint-farm-azure-preview/)」を参照してください。
 
-##基本的な SharePoint ファーム##
+## 基本的な SharePoint ファーム##
 
 基本的な SharePoint ファームは、次に示す構成の 3 台の仮想マシンで構成されます。
 
@@ -57,7 +57,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 	-	SharePoint ファーム パスフレーズ:初期構成中に指定されます。
 
 
-##高可用性##
+## 高可用性 ##
 
 高可用性 SharePoint ファームは、次に示す構成の 9 台の仮想マシンで構成されます。
 

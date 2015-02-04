@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) |モバイル デベロッパー センター"metakeywords ="" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) |モバイル デベロッパー センター" metakeywords="" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/19/2014" ms.author="glenga" />
 
@@ -30,7 +30,7 @@
 * アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-windows-store-dotnet-get-started-data%2F) を参照してください。
 * Visual Studio 2013。Windows ストア アプリをモバイル サービスに簡単に接続できる機能を備えています。 
 
-##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
+## <a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
 このチュートリアルは、Visual Studio 2013 の Windows ストア アプリケーション プロジェクトである [GetStartedWithMobileServices アプリケーション][Developer Code Samples site] に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。 
 
@@ -48,7 +48,7 @@
 
    	保存したテキストが、**[Query and update data]** の下の 2 番目の列に表示されます。
 
-##<a name="create-service"></a>Visual Studio からの新しいモバイル サービスの作成
+## <a name="create-service"></a>Visual Studio からの新しいモバイル サービスの作成
 
 [WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
 
@@ -64,17 +64,17 @@
 </li>
 </ol>
 
-##<a name="add-table"></a>データ ストレージへの新しいテーブルの追加
+## <a name="add-table"></a>データ ストレージへの新しいテーブルの追加
 
 [WACOM.INCLUDE [mobile-services-create-new-table-vs2013](../includes/mobile-services-create-new-table-vs2013.md)]
 
 >[WACOM.NOTE]Id、__createdAt、__updatedAt、および __version の列を含む新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、[動的スキーマ](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx) を参照してください。
 
-#<a name="update-app"></a>モバイル サービスを使用するためのアプリケーションの更新
+# <a name="update-app"></a>モバイル サービスを使用するためのアプリケーションの更新
 
 [WACOM.INCLUDE [mobile-services-windows-dotnet-update-data-app](../includes/mobile-services-windows-dotnet-update-data-app.md)]
 
-##<a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト
+## <a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト
 
 1. Visual Studio で、F5 キーを押してアプリケーションを実行します。
 
@@ -135,6 +135,7 @@
   
 <!-- Anchors. -->
 
+[Get the Windows Store app]: #download-app
 [Windows ストア アプリの入手]: #download-app
 [Visual Studio からのモバイル サービスの作成]: #create-service
 [ストレージへのデータ テーブルの追加]: #add-table
@@ -162,7 +163,7 @@
 [管理ポータル]: https://manage.windowsazure.com/
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-
+[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
 [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 
 <!--HONumber=35.2-->

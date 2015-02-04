@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Authenticate with single sign-on" pageTitle="Live Connect によるアプリケーションの認証 (JavaScript)" metaKeywords="Azure Live Connect, Azure SSO, SSO Live Connect, mobile services sso, Windows Store app sso, Azure JavaScript SSO" description="Windows ストア アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/" services="mobile-services" documentationCenter="Mobile" title="Authenticate your Windows Store app with Live Connect single sign-on" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Authenticate with single sign-on" pageTitle="Live Connect によるアプリケーションの認証 (JavaScript)" metaKeywords="Azure Live Connect, Azure SSO, SSO Live Connect, mobile services sso, Windows Store app sso, Azure JavaScript SSO" description="Windows ストア アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/" services="mobile-services" documentationCenter="Mobile" title="Authenticate your Windows Store app with Live Connect single sign-on" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="11/22/2014" ms.author="glenga" />
 
@@ -24,13 +24,13 @@
 + Microsoft Visual Studio 2012 Express for Windows 8 RC 以降のバージョン
 + また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。
 
-##<a name="register"></a>アプリケーションを Windows ストアに登録する
+## <a name="register"></a>アプリケーションを Windows ストアに登録する
 
 ユーザーを認証できるようにするには、アプリケーションを Windows ストアに提出する必要があります。その後、クライアント シークレットを登録して Live Connect をモバイル サービスと統合する必要があります。
 
 [WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md)]
 
-##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [WACOM.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
 
@@ -43,7 +43,7 @@
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 
 1. [Windows 向け Live SDK] をダウンロードしてインストールします。
 
@@ -126,7 +126,7 @@
 
     これにより、Live Connect クライアントの初期化、ログアウトの強制、Live Connect への新しいログイン要求の送信、モバイル サービスへの返された認証トークンの送信、およびログイン済みユーザーに関する情報の表示が行われます。このコードでは、アプリケーションの実行ごとに資格情報をユーザーに求めるために、可能な場合にはログアウトを強制します。これにより、認証が正常に動作していることを確認するために、複数の Microsoft アカウントを使用してアプリケーションをテストすることが容易になります。このメカニズムは、ログインしたユーザーが接続済みの Microsoft アカウントを持っていない場合のみ有効です。
 
-	>[WACOM.NOTE]アプリケーションを実行するたびに Live Connection 認証トークンまたは Mobile Services 認証トークンをリクエストしないようにします。これは非効率であるだけなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。よって、トークンをキャッシュし、キャッシュされた Mobile Services トークンをまず試してから、**LoginWithMicrosoftAccountAsync** を呼び出す方が効果的です。このトークンのキャッシュ方法の詳細については、「[モバイル サービスでの認証の使用]」を参照してください。(/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/#tokens)
+	>[WACOM.NOTE]アプリケーションを実行するたびに Live Connection 認証トークンまたは Mobile Services 認証トークンをリクエストしないようにします。これは非効率であるだけなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。よって、トークンをキャッシュし、キャッシュされた Mobile Services トークンをまず試してから、**LoginWithMicrosoftAccountAsync** を呼び出す方が効果的です。このトークンのキャッシュ方法の詳細については、「[モバイル サービスでの認証の使用](/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/#tokens)」を参照してください。
 	
 7. 前の手順に含まれる文字列 _<< ここにリダイレクト ドメインを挿入 >>_ を、Live Connect でアプリケーションを設定する際に指定されたリダイレクト ドメイン (**https://_service-name_.azure-mobile.net/** 形式) で更新します。
 		
@@ -168,8 +168,8 @@
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [既存のアプリケーションへの Mobile Services の追加]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users
-[スクリプトを使用したユーザーの承認]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts/
+[モバイル サービスでの認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users
+[スクリプトを使用したユーザーの認証]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts/
 
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 

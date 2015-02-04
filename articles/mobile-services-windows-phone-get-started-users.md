@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Authentication" pageTitle="認証の使用 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows Phone アプリのユーザーを認証する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Get Started with Authentication" pageTitle="認証の使用 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows Phone アプリのユーザーを認証する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="glenga" />
 
@@ -75,3 +75,4 @@
 [スクリプトを使用したユーザーの承認]: /ja-jp/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: /ja-jp/documentation/articles/mobile-services-windows-phone-single-sign-on
+[Authorize users with scripts]: /ja-jp/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts

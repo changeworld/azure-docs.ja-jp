@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Linux Agent guide" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="szarkos" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="Linux Agent guide" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="szarkos" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="szarkos" />
 
@@ -99,15 +99,15 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 - install:エージェントを手動でインストールします。
  * システムに対してインストールに必須の依存関係かあるかどうかを確認します。
 
- * SysV init スクリプト、 (/etc/init.d/waagent)logrotate 構成ファイルを  (/etc/logrotate.d/waagent and configures the image to run the init script on boot
+ * SysV init スクリプト、 (/etc/init.d/waagent) logrotate 構成ファイルを  (/etc/logrotate.d/waagent) を作成します。起動時に init スクリプトを実行するようにイメージを設定します。
 
- * Writes sample configuration file to /etc/waagent.conf
+ * サンプル構成ファイルを /etc/waagent.conf に書き込みます。
 
- * Any existing configuration file is moved to /etc/waagent.conf.old
+ * 既存の構成ファイルは、/etc/waagent.conf.old に移動されます
 
- * Detects kernel version and applies the VNUMA workaround if necessary
+ * カーネルのバージョンを検出し、必要に応じて VNUMA 回避策を適用します。
 
- * Moves udev rules that may interfere with networking (/lib/udev/rules.d/75-persistent-net-generator.rules, /etc/udev/rules.d/70-persistent-net.rules) /var/lib/waagent/ に作成します。  
+ * ネットワークを妨げる可能性のある udev ルール (/lib/udev/rules.d/75-persistent-net-generator.rules, /etc/udev/rules.d/70-persistent-net.rules) /var/lib/waagent/ に作成します。  
 
 - uninstall:waagent と関連するファイルを削除します。
  * システムから init スクリプトを登録解除して削除します。
@@ -129,7 +129,7 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 
  * ホスト名を localhost.localdomain にリセット
 
- **警告: **プロビジョニング解除により、イメージからすべての機密情報が削除され、イメージが再配布に適した状態になることが保証されるわけではありません。
+ **警告:**プロビジョニング解除により、イメージからすべての機密情報が削除され、イメージが再配布に適した状態になることが保証されるわけではありません。
 
 - deprovision+user:-deprovision の場合のすべての対象 (上記参照) を実行するほか、前回プロビジョニングされたユーザー アカウント (/var/lib/waagent から取得) および関連付けられたデータも削除します。このパラメーターは、Azure で先にプロビジョニングしたイメージのプロビジョニングを解除するため、取得して再使用できます。
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Python) | Microsoft Azure" metaKeywords="Azure table Python, creating table Azure, deleting table Azure, inserting table Azure, querying table Azure" description="Python からテーブル サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Table Storage Service from Python" authors="huvalo" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Python) | Microsoft Azure" metaKeywords="Azure table Python, creating table Azure, deleting table Azure, inserting table Azure, querying table Azure" description="Python からテーブル サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Table Storage Service from Python" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="09/19/2014" ms.author="robmcm" />
 
@@ -6,7 +6,8 @@
 
 
 
-# Python からテーブル ストレージ サービスを使用する方法このガイドでは、Microsoft Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、「[次のステップ][]」のセクションを参照してください。
+# Python からテーブル ストレージ サービスを使用する方法
+このガイドでは、Microsoft Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、「[次のステップ][]」のセクションを参照してください。
 
 ## 目次
 
@@ -29,7 +30,7 @@
 ## <a name="create-account"> </a>Azure のストレージ アカウントの作成
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-**注: **Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド]を参照してください(../python-how-to-install/)。
+**注:**Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド]を参照してください(../python-how-to-install/)。
 
 
 ## <a name="create-table"> </a>テーブルの作成方法
@@ -46,18 +47,10 @@
 
 ## <a name="add-entity"> </a>エンティティをテーブルに追加する方法
 
-エンティティを追加するには、最初に、エンティティの
-プロパティ名と値を定義するディクショナリを作成します。すべてのエンティティについて、
-**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、
-他のエンティティのプロパティより
-はるかに高速に照会できる値です。システムでは **PartitionKey** を使用して
-多くのストレージ ノードにテーブルのエンティティを自動的に配布します。
-**PartitionKey** が同じエンティティは同じノードに格納されます。次のコードは、既存のユーザーの電話番号を変更します。
-**RowKey** は、エンティティが属するパーティション内のエンティティの
+エンティティを追加するには、最初に、エンティティのプロパティ名と値を定義するディクショナリを作成します。すべてのエンティティについて、 **PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。システムでは **PartitionKey** を使用して多くのストレージ ノードにテーブルのエンティティを自動的に配布します。 **PartitionKey** が同じエンティティは同じノードに格納されます。次のコードは、既存のユーザーの電話番号を変更します。 **RowKey** は、エンティティが属するパーティション内のエンティティの
 一意の ID です。
 
-エンティティをテーブルに追加するには、
-ディクショナリ オブジェクトを **insert\_entity** メソッドに渡します。
+エンティティをテーブルに追加するには、ディクショナリ オブジェクトを **insert\_entity** メソッドに渡します。
 
 	task = {'PartitionKey': 'tasksSeattle', 'RowKey': '1', 'description' : 'Take out the trash', 'priority' : 200}
 	table_service.insert_entity('tasktable', task)
@@ -73,8 +66,7 @@
 
 ## <a name="update-entity"> </a>エンティティを更新する方法
 
-次のコードは、既存のエンティティの以前のバージョンを更新されたバージョンに置き換える方法を
-示しています。
+次のコードは、既存のエンティティの以前のバージョンを更新されたバージョンに置き換える方法を示しています。
 
 	task = {'description' : 'Take out the garbage', 'priority' : 250}
 	table_service.update_entity('tasktable', 'tasksSeattle', '1', task)
@@ -100,8 +92,7 @@
 
 ## <a name="query-for-entity"> </a>エンティティを照会する方法
 
-テーブル内のエンティティを照会するには、**get\_entity** メソッドを使用して、
-**PartitionKey** と **RowKey** を渡します。
+テーブル内のエンティティを照会するには、**get\_entity** メソッドを使用して、**PartitionKey** と **RowKey** を渡します。
 
 	task = table_service.get_entity('tasktable', 'tasksSeattle', '1')
 	print(task.description)
@@ -122,8 +113,7 @@
 
 次のコードのクエリは、テーブル内のエンティティの**説明**だけを返します。
 
-*次のスニペットはクラウド ストレージ サービスに対してのみ機能します。これはストレージ エミュレーターでは
-サポートされていません。*
+*次のスニペットはクラウド ストレージ サービスに対してのみ機能します。これはストレージ エミュレーターではサポートされていません。*
 
 	tasks = table_service.query_entities('tasktable', "PartitionKey eq 'tasksSeattle'", 'description')
 	for task in tasks:

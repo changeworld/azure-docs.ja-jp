@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Enable SSL" pageTitle="クラウド サービス向けの SSL の構成 - Azure" metaKeywords="Azure SSL, Azure HTTPS, Azure SSL, Azure HTTPS, .NET Azure SSL, .NET Azure HTTPS, C# Azure SSL, C# Azure HTTPS, VB Azure SSL, VB Azure HTTPS" description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Configuring SSL for an application in Azure" authors="adegeo" solutions="" manager="timlt" editor="mollybos" />
+<properties urlDisplayName="Enable SSL" pageTitle="クラウド サービス向けの SSL の構成 - Azure" metaKeywords="Azure SSL, Azure HTTPS, Azure SSL, Azure HTTPS, .NET Azure SSL, .NET Azure HTTPS, C# Azure SSL, C# Azure HTTPS, VB Azure SSL, VB Azure HTTPS" description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Configuring SSL for an application in Azure" authors="adegeo" solutions="" manager="timlt" editor="mollybos" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/14/2014" ms.author="adegeo" />
 
@@ -12,7 +12,7 @@
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 <div class="dev-callout">注
-<p>このタスクの手順は、Azure Cloud Services に適用されます。Websites については、「 <a href="../web-sites-configure-ssl-certificate/">Azure Website の SSL 証明書の構成</a>」を参照してください。</p>
+<p>このタスクの手順は、Azure Cloud Services に適用されます。Websites については、「<a href="../web-sites-configure-ssl-certificate/">Azure Website の SSL 証明書の構成</a>」を参照してください。</p>
 </div>
 
 このタスクの手順は次のとおりです。
@@ -58,6 +58,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
     **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。CA (証明機関) ストアにこの証明書を保存することを選択しましたが、その他のオプションを選択することもできます。詳細については、「[サービスと証明書の関連付け][]」を参照してください。
 
 2.  サービス定義ファイルで、**Endpoints** セクション内に **InputEndpoint** 要素を追加し、HTTPS を有効にします。 
+
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
             <Endpoints>
@@ -134,7 +135,7 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
 2.  Web ブラウザーで、**http** ではなく **https** を使用するようにリンクを修正し、ページにアクセスします。
 
-    **注: **自己署名証明書を使用している場合は、自己署名証明書に関連付けられている HTTPS エンドポイントを参照すると、ブラウザーで証明書エラーが表示されます。信頼された証明機関によって署名された証明書を使用すると、この問題は解消されます。それまでの間、このエラーは無視してかまいません(また、信頼された証明書機関のユーザーの証明書ストアに自己署名証明書を追加する方法もあります)。
+    **注:**自己署名証明書を使用している場合は、自己署名証明書に関連付けられている HTTPS エンドポイントを参照すると、ブラウザーで証明書エラーが表示されます。信頼された証明機関によって署名された証明書を使用すると、この問題は解消されます。それまでの間、このエラーは無視してかまいません(また、信頼された証明書機関のユーザーの証明書ストアに自己署名証明書を追加する方法もあります)。
 
     ![SSL example web site][3]
 
@@ -158,6 +159,6 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [2]: ./media/cloud-services-dotnet-configure-ssl-certificate/CopyURL.png
   [3]: ./media/cloud-services-dotnet-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificateComplete.png  
-  [How to configure an SSL certificate on an HTTPS endpoint]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff795779.aspx
+  [HTTPS エンドポイントでの SSL 証明書の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff795779.aspx
 
 <!--HONumber=35.1-->

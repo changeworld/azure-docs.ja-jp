@@ -1,4 +1,4 @@
-﻿
+
 1. アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリ送信のページ]に移動し、Microsoft アカウントでログインして、**[アプリ名]** をクリックします。
 
    	![](./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png)
@@ -23,7 +23,7 @@
 
    	![](./media/mobile-services-register-windows-store-app/mobile-services-select-app-name.png)
 
-この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。    
+   	この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。    
 
 7. 新しいアプリケーションに対応する Windows デベロッパー センター ページに戻り、**[サービス]** をクリックします。 
 
@@ -66,5 +66,5 @@
 
 <!-- URLs. -->
 [Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[アプリ送信のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure 管理ポータル]: https://manage.windowsazure.com/

@@ -1,4 +1,4 @@
-﻿<properties pageTitle="ASP.NET に対応した Azure Websites の概要" metaKeywords="" description="このチュートリアルでは、Visual Studio 2013 で ASP.NET Web プロジェクトを作成し、それを Azure Web サイトにデプロイする方法について説明します。15 分以内に、クラウドでアプリケーションを稼働状態にできます。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure Websites and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
+<properties pageTitle="ASP.NET に対応した Azure Websites の概要" metaKeywords="" description="このチュートリアルでは、Visual Studio 2013 で ASP.NET Web プロジェクトを作成し、それを Azure Web サイトにデプロイする方法について説明します。15 分以内に、クラウドでアプリケーションを稼働状態にできます。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure Websites and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="hero-article" ms.date="11/12/2014" ms.author="tdykstra" />
 
@@ -15,8 +15,8 @@
 
 このチュートリアルを完了するには、Azure アカウントが必要です。
 
-* [無料で Azure アカウントを開く]ことができます (/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F) - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。
-* [MSDN サブスクライバーの特典を有効にする]こともできます (/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) - MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。</li>
+* [無料で Azure アカウントを開く](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。
+* [MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます - MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。</li>
 
 > [WACOM.NOTE]
 > アカウントにサインアップする前に Azure Websites を試してみたい場合は、 <a href="https://trywebsites.azurewebsites.net">https://trywebsites.azurewebsites.net</a> で、有効期限が短い ASP.NET スターター サイトを Azure Websites に短時間で作成できます。
@@ -65,7 +65,7 @@
 
 	[MVC と Web フォーム](http://www.asp.net/get-started/websites) は Web サイトを作成するための ASP.NET のフレームワークです。このチュートリアルでは、いずれかを選択できますが、Web フォームを選択した場合は、後で *Default.aspx* を編集する必要があります。その場合 *Index.cshtml* を編集するように指示されます。
 
-7. **[認証の変更] ** をクリックします。 
+7. **[認証の変更]** をクリックします。 
 
 	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13changeauth.png)
 
@@ -73,7 +73,7 @@
 
 	![No Authentication](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
 
-	作成しているサンプル アプリケーションでは、ユーザーはログインできません。「[次のステップ](#next-steps) 」セクションは、認証と承認を実装するチュートリアルにリンクしています。
+	作成しているサンプル アプリケーションでは、ユーザーはログインできません。「[次のステップ](#next-steps)」セクションは、認証と承認を実装するチュートリアルにリンクしています。
 
 5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Azure]** の設定はそのままにして、**[OK]** をクリックします。 
 
@@ -103,7 +103,7 @@
 
 5. データベース フィールドは変更せずそのままにします。
 
-	このチュートリアルでは、データベースは使用しません。このチュートリアルの最後にある「[次のステップ](#next-steps) セクションには、データベースの使用方法を示したチュートリアルへのリンクがあります。
+	このチュートリアルでは、データベースは使用しません。このチュートリアルの最後にある「[次のステップ](#next-steps)」 セクションには、データベースの使用方法を示したチュートリアルへのリンクがあります。
 
 6. **[OK]** をクリックします。
 
@@ -149,7 +149,7 @@
 
 	**[構成]** および **[ファイル発行オプション]** には既定値を使用できます。
 
-	**[構成]** ドロップダウンでは、リモート デバッグ用のデバッグ ビルドをデプロイできます。このチュートリアルの最後にある「[次のステップ](#next-steps) 」セクションは、リモートのデバッグ モードで Visual Studio を実行する方法を示したチュートリアルにリンクしています。
+	**[構成]** ドロップダウンでは、リモート デバッグ用のデバッグ ビルドをデプロイできます。このチュートリアルの最後にある「[次のステップ](#next-steps)」セクションは、リモートのデバッグ モードで Visual Studio を実行する方法を示したチュートリアルにリンクしています。
 
 	**[ファイル発行オプション]** を展開すると、このチュートリアルでは使用していないシナリオを使用できる複数の設定が表示されます。
  
@@ -228,7 +228,7 @@
 
 [Azure の管理ポータル](/ja-jp/services/management-portal/) は、作成した Web サイトなどの Azure のサービスを管理および監視できる Web インターフェイスです。チュートリアルのこのセクションでは、ポータルで何ができるかを確認できます。
 
-1. ブラウザーで、[http://manage.windowsazure.com] に移動し、Azure 資格情報でサインインします。
+1. ブラウザーで、[http://manage.windowsazure.com]() に移動し、Azure 資格情報でサインインします。
 
 	このポータルには、Azure サービスの一覧が表示されます。
 
@@ -262,19 +262,19 @@
 
 **ヒント:**これらは新しい管理ポータルのプレビューで、最終的には現在使用中のポータルと置き換わります。詳細については、「[Azure Preview Portal (Azure プレビュー ポータル)](/ja-jp/overview/preview-portal/)」を参照してください。
 
-##<a name="next-steps"></a>次のステップ
+## 次のステップ
 
 このチュートリアルでは、Azure の Web サイトに単純な Web アプリケーションを作成してデプロイする方法について説明しました。詳細についての関連トピックとリソースがあります。
 
 * Web プロジェクトをデプロイする他の方法
 
-	このチュートリアルでは、サイトを作成して、オールインワン操作ですべてを展開する最も簡単な方法を説明しました。Visual Studio を使用したデプロイ方法や[デプロイメントの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)  ([ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から実行) によるデプロイ方法の概要については、「[How to Deploy an Azure Website (Azure Web サイトのデプロイ方法)](/ja-jp/documentation/articles/web-sites-deploy/"). 
+	このチュートリアルでは、サイトを作成して、オールインワン操作ですべてを展開する最も簡単な方法を説明しました。Visual Studio を使用したデプロイ方法や[デプロイメントの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)  ([ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から実行) によるデプロイ方法の概要については、「[How to Deploy an Azure Website (Azure Web サイトのデプロイ方法)](/ja-jp/documentation/articles/web-sites-deploy/")」. 
 
-	Visual Studio can also generate Windows PowerShell scripts that enable you to automate deployment. For more information, see [Automate Everything (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything).
+	Visual Studio は、デプロイメントを自動化する Windows PowerShell スクリプトも生成します。詳細については、「[Automate Everything (Building Real-World Cloud Apps with Azure) (すべてを自動化 - Azure での実際のクラウド アプリケーションのビルド)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)」を参照してください。
 
-* How to manage a website in Visual Studio
+* Visual Studio での Web サイトの管理方法
 
-	For information about site management functions that you can do in **Server Explorer**, see [Troubleshooting Azure Websites in Visual Studio](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
+	**サーバー エクスプローラー**で実行できるサイト管理機能については、「[Visual Studio での Azure の Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
 
 * Web サイトのトラブルシューティングの方法
 

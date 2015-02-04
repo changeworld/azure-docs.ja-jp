@@ -1,12 +1,12 @@
-﻿<properties title="Getting started using Storm with Hadoop in HDInsight" pageTitle="Microsoft Azure HDInsight (Hadoop) での Apache Storm の使用" description="HDInsight (Hadoop) で Apache Storm を使用して、リアルタイムでデータを処理する方法について説明します" metaKeywords="Azure hdinsight storm, Azure hdinsight realtime, azure hadoop storm, azure hadoop realtime, azure hadoop real-time, azure hdinsight real-time" services="hdinsight" solutions="" documentationCenter="big-data" authors="larryfr" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+<properties title="Getting started using Storm with Hadoop in HDInsight" pageTitle="Microsoft Azure HDInsight (Hadoop) での Apache Storm の使用" description="HDInsight (Hadoop) で Apache Storm を使用して、リアルタイムでデータを処理する方法について説明します" metaKeywords="Azure hdinsight storm, Azure hdinsight realtime, azure hadoop storm, azure hadoop realtime, azure hadoop real-time, azure hdinsight real-time" services="hdinsight" solutions="" documentationCenter="big-data" authors="larryfr" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/30/2014" ms.author="larryfr" />
 
-#HDInsight (Hadoop) での Storm の使用
+# HDInsight (Hadoop) での Storm の使用
 
 Apache Storm は、データ ストリームの処理を目的とした、拡張性の高い、フォールト トレランスに優れた、分散型のリアルタイム計算システムです。Azure HDInsight を使用して、Storm でリアルタイム データ分析を実行するクラウドベースの Hadoop クラスターを作成できます。
 
-##このチュートリアルでは、次の内容を説明します。
+## このチュートリアルでは、次の内容を説明します。
 
 * [HDInsight Storm クラスターのプロビジョニング方法](#provision)
 
@@ -20,7 +20,7 @@ Apache Storm は、データ ストリームの処理を目的とした、拡張
 
 * [次のステップ](#next)
 
-##開始する前に
+## 開始する前に
 
 このチュートリアルを正常に完了するには、次の条件を満たす必要があります。
 
@@ -30,7 +30,7 @@ Apache Storm は、データ ストリームの処理を目的とした、拡張
 
 * Apache Storm を使い慣れていない場合は、最初に「[HDInsight Storm の概要](/ja-jp/documentation/articles/hdinsight-storm-overview) 」を参照してください。
 
-##<a id="provision"></a>Azure ポータルでの Storm クラスターのプロビジョニング
+## <a id="provision"></a>Azure ポータルでの Storm クラスターのプロビジョニング
 
 [WACOM.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
 
@@ -58,7 +58,7 @@ Apache Storm は、データ ストリームの処理を目的とした、拡張
 
 	![storage account](./media/hdinsight-storm-getting-started/wizard4.png)
 
-##HDInsight Storm の使用
+## HDInsight Storm の使用
 
 HDInsight Storm のプレビュー リリースでは、Storm を操作するために、リモート デスクトップを使用してクラスターに接続する必要があります。次の手順に従って、HDInsight クラスターに接続し、Storm コマンドを使用します。
 
@@ -90,7 +90,7 @@ HDInsight Storm のプレビュー リリースでは、Storm を操作するた
 
 HDInsight クラスターには Storm トポロジの例がいくつか付属します。サンプルの **WordcountTopology** は次の手順で使用します。HDInsight Storm に付属する例の詳細については、「[次のステップ](#next)」を参照してください。
 
-###<a id="run"></a>Storm トポロジを実行するには
+### <a id="run"></a>Storm トポロジを実行するには
 
 **WordCountTopology** を実行するには、次のコマンドレットを使用します。
 
@@ -102,7 +102,7 @@ HDInsight クラスターには Storm トポロジの例がいくつか付属し
 
 コマンドを入力しても、何も返されません。**Storm トポロジがいったん開始されると、停止されるまで実行されます。**WordCountTopology はランダムな文を生成し、停止されるまで各単語の出現回数を計算します。
 
-###<a id="monitor"></a>Storm トポロジの状態を監視するには
+### <a id="monitor"></a>Storm トポロジの状態を監視するには
 
 WordCountTopology サンプルはディレクトリに出力を書き込みませんが、Storm UI Web ページを使用して、出力だけでなく、トポロジの状態を表示することができます。
 
@@ -143,7 +143,7 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
 
 	このスニペットから、スパウトが "snow white and the seven dwarfs" を発したことがわかりますが、これは個別の単語に分割されました。また、処理の開始以降、各単語がトポロジによって処理された回数が引き続き計算されています。たとえば、上の出力を見ると、単語 "dwarfs" はスパウトによって 8360 回発されています。
 
-###<a id="stop"></a>Storm トポロジを停止するには
+### <a id="stop"></a>Storm トポロジを停止するには
 
 **WordCountTopology** は停止されるまで実行されます。停止するには、次のコマンドを実行します。
 
@@ -151,7 +151,7 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
 
 このコマンドの直後に Storm UI Web ページを表示すると、**[Topology summary]** の **[wordcount]** の状態が "KILLED" に変更されていることがわかります。数秒後、トポロジは **[Topology summary]** セクションに表示されなくなります。
 
-##<a id="next"></a>次のステップ
+## <a id="next"></a>次のステップ
 
 * **サンプル ファイル** - HDInsight Storm クラスターでは、**%storm_home%\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
 

@@ -1,8 +1,8 @@
-﻿<properties title="Learn how to configure an Azure website to use a domain name registered with GoDaddy" pageTitle="Azure Web サイトの GoDaddy ドメイン名の構成" metaKeywords="Azure, Azure Web サイト, ドメイン名" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" manager="wpickett" />
+<properties title="Learn how to configure an Azure website to use a domain name registered with GoDaddy" pageTitle="Azure Web サイトの GoDaddy ドメイン名の構成" metaKeywords="Azure, Azure Web サイト, ドメイン名" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr, jroth" />
 
-#Azure Website のカスタム ドメイン名の構成 (GoDaddy)
+# Azure Website のカスタム ドメイン名の構成 (GoDaddy)
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">Custom Domain</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy" class="current">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
 <div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name/" title="Websites" class="current">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-godaddy-traffic-manager-custom-domain-name/" title="Website using Traffic Manager">Traffic Manager を使用する Web サイト</a></div>
@@ -38,9 +38,9 @@
 
 	![DNS Zone File tab](./media/web-sites-custom-domain-name/godaddy-zonetab.png)
 
-既存のレコードを追加するには、**[Add Record]** を選択します。
+	既存のレコードを追加するには、**[Add Record]** を選択します。
 
-既存のレコードを**編集**するには、レコードの横にあるペンと紙のアイコンを選択します。
+	既存のレコードを**編集**するには、レコードの横にあるペンと紙のアイコンを選択します。
 
 	> [WACOM.NOTE] 新しいレコードを追加する前に、GoDaddy では一般的なサブドメイン (Editor では **[Host]**) の DNS レコード (**[email]**、**[files]**、**[mail]** など) が既に作成されています。使用する名前が既に存在する場合は、新しいレコードを作成せずに既存のレコードを変更してください。
 
@@ -48,7 +48,7 @@
 
 	![select record type](./media/web-sites-custom-domain-name/godaddy-selectrecordtype.png)
 
-次に、**[Host]** (カスタム ドメインまたはサブドメイン) および **[Points to]** を指定する必要があります。
+	次に、**[Host]** (カスタム ドメインまたはサブドメイン) および **[Points to]** を指定する必要があります。
 
 	![add zone record](./media/web-sites-custom-domain-name/godaddy-addzonerecord.png)
 

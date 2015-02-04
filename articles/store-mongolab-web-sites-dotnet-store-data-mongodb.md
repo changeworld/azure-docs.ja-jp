@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Website with MongoDB on MongoLab" pageTitle="MongoLab の MongoDB を使用する Web サイトの作成 (.NET)" metaKeywords="" description="MongoLab によってホストされた MongoDB にデータを格納する Azure Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Create a C# ASP.NET Application on Azure with MongoDB using the MongoLab Add-On" authors="chris@mongolab.com, eric@mongolab.com" solutions="" manager="mongolab" editor="mollybos" />
+<properties urlDisplayName="Website with MongoDB on MongoLab" pageTitle="MongoLab の MongoDB を使用する Web サイトの作成 (.NET)" metaKeywords="" description="MongoLab によってホストされた MongoDB にデータを格納する Azure Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Create a C# ASP.NET Application on Azure with MongoDB using the MongoLab Add-On" authors="chris@mongolab.com, eric@mongolab.com" solutions="" manager="mongolab" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/17/2014" ms.author="chris@mongolab.com" />
 
@@ -230,7 +230,7 @@ MongoDB にアクセスしてメモを取得し保存する手段を確立する
         mongoServer = client.GetServer();
         MongoDatabase database = mongoServer.GetDatabase(dbName);
         MongoCollection<Note> noteCollection = database.GetCollection<Note>(collectionName);
-  There's nothing to change here; Just be aware that this is how you get a MongoCollection object for performing inserts, updates, and queries, such as the following in **GetAllNotes()**:  
+  変更は必要ありません。ただ、この方法で取得した MongoCollection オブジェクトを使用して、 **GetAllNotes()** の次のコードのように挿入、更新、およびクエリを実行することを知っておいてください。
 
         collection.FindAll().ToList<Note>();
 

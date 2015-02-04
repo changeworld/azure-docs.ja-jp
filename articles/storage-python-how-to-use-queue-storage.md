@@ -1,10 +1,11 @@
-﻿<properties urlDisplayName="Queue Service" pageTitle="キュー サービスを使用する方法 (Python) | Microsoft Azure" metaKeywords="Azure Queue Service messaging Python" description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Python で記述されています。" metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Queue Storage Service from Python" authors="huvalo" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Queue Service" pageTitle="キュー サービスを使用する方法 (Python) | Microsoft Azure" metaKeywords="Azure Queue Service messaging Python" description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Python で記述されています。" metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Queue Storage Service from Python" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="09/19/2014" ms.author="robmcm" />
 
 
 
-# Python からキュー ストレージ サービスを使用する方法このガイドでは、Microsoft Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][]」のセクションを参照してください。
+# Python からキュー ストレージ サービスを使用する方法
+このガイドでは、Microsoft Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][]」のセクションを参照してください。
 
 ## 目次
 
@@ -27,7 +28,7 @@
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 
-**注: **Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド]を参照してください(../python-how-to-install/)。
+**注:**Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド]を参照してください(../python-how-to-install/)。
 
 ## <a name="create-queue"> </a>方法:キューを作成する
 
@@ -118,6 +119,6 @@
   [方法: キューの長さを取得する]: #get-queue-length
   [方法: キューを削除する]: #delete-queue
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
 <!--HONumber=35.1-->

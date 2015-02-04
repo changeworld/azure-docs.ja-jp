@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Diagnostics" pageTitle="診断の使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure" authors="raynew" solutions="" manager="johndaw" editor="" />
+<properties urlDisplayName="Diagnostics" pageTitle="診断の使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure" authors="raynew" solutions="" manager="johndaw" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/23/2014" ms.author="raynew" />
 
@@ -95,7 +95,7 @@ Azure 診断では、次の種類の利用統計情報を収集できます。
 6.	ソリューションを構築してエラーが発生しないことを確認します。
 
 <h3>手順 2.コードをインストルメント化する</h3>
-WorkerRole.cs の内容を次のコードに置き換えます。[EventSource Class][] クラスから継承された SampleEventSourceWriter クラスは、4 つのログの作成メソッド (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。**WriteEvent** メソッドの最初のパラメーターは、各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
+WorkerRole.cs の内容を次のコードに置き換えます。[EventSource クラス][] クラスから継承された SampleEventSourceWriter クラスは、4 つのログの作成メソッド (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。**WriteEvent** メソッドの最初のパラメーターは、各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
 	using Microsoft.WindowsAzure.ServiceRuntime;
 	using System;
@@ -187,7 +187,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource Cl
 
 <h3>手順 4.診断構成ファイルを作成して拡張機能をインストールする</h3>
 1.	次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。
-2.	
+
 		(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
 2.	**WorkerRole1** プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]**、**[Visual C# アイテム]**、**[データ]**、**[XML ファイル]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。ファイルに「WadExample.xml」という名前を付けます。
@@ -255,6 +255,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 <h3>手順 2.アプリケーションを作成する</h3>
 1.	開発コンピューター上で Visual Studio 2013 を起動します。
 2.	.NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。
+
 	![CloudServices_diag_new_project](./media/cloud-services-dotnet-diagnostics/NewProject.png)
 3.	Program.cs の内容を次のコードに置き換えます。**SampleEventSourceWriter** クラスは、4 つのログの作成メソッド (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
@@ -755,7 +756,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 [Azure 診断 1.0 および 1.2 の比較]: #comparing
 [その他のリソース]: #additional
 [EventSource クラス]: http://msdn.microsoft.com/ja-jp/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
-  
+
 [Azure Cloud Services および Virtual Machines 用の診断の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn186185.aspx
 [クラウド サービスのデバッグ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx   
 [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433048.aspx

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Use Hadoop Oozie in HDInsight" pageTitle="HDInsight での Hadoop Oozie の使用 | Azure" metaKeywords="" description="ビッグ データ ソリューションとして HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadop Oozie in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Use Hadoop Oozie in HDInsight" pageTitle="HDInsight での Hadoop Oozie の使用 | Azure" metaKeywords="" description="ビッグ データ ソリューションとして HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadop Oozie in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/12/2014" ms.author="jgao" />
 
@@ -31,7 +31,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 		2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
 		...
 
-	The Hive script output is similar to:
+	Hive スクリプトの出力は次のようになります。
 	
 		[DEBUG] 434
 		[ERROR] 3
@@ -88,7 +88,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
 
 1. **DROP TABLE ステートメント**は、log4j Hive テーブルが存在する場合、削除します。
-2. **CREATE TABLE ステートメント**は、log4j ログ ファイルの場所を指す log4j Hive 外部テーブルを作成します。フィールド区切り記号はコンマ (,) です。既定の行区切り記号は "\n" です。Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
+2. **CREATE TABLE ステートメント**は、log4j ログ ファイルの場所を指す log4j Hive 外部テーブルを作成します。フィールド区切り記号はコンマ (,) です。既定の行区切り記号は "&#92;n" です。Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
 3. **INSERT OVERWRITE ステートメント**は、log4j Hive テーブルの各ログ レベル タイプの出現回数をカウントし、その出力を Azure Storage BLOB (WASB) の場所に保存します。 
 
 Hive パスには既知の問題があります。この問題に見舞われるのは、Oozie ジョブを送信するときです。この問題の解決方法は [TechNet Wiki][technetwiki-hive-error] をご覧ください。
@@ -109,7 +109,7 @@ Hive パスには既知の問題があります。この問題に見舞われる
 			
 	ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 		
-2. **C:\Tutorials\UseOozie\useooziewf.hql** としてファイルを保存します。エンコーディングは、**ANSI (ASCII)** を使用します (使っているテキスト エディターにこのオプションがない場合は、メモ帳を使用します)。チュートリアルでは、このスクリプト ファイルは後で HDInsight クラスターに展開されます。
+2. **C:&#92;Tutorials&#92;UseOozie&#92;useooziewf.hql** としてファイルを保存します。エンコーディングは、**ANSI (ASCII)** を使用します (使っているテキスト エディターにこのオプションがない場合は、メモ帳を使用します)。チュートリアルでは、このスクリプト ファイルは後で HDInsight クラスターに展開されます。
 
 
 
@@ -159,7 +159,7 @@ Hive パスには既知の問題があります。この問題に見舞われる
 			    <arg>-m</arg> 
 			    <arg>1</arg>
 			    <arg>--input-fields-terminated-by</arg>
-			    <arg>"\001"</arg>
+			    <arg>"&#92;001"</arg>
 		        </sqoop>
 		        <ok to="end"/>
 		        <error to="fail"/>
@@ -199,7 +199,7 @@ Hive パスには既知の問題があります。この問題に見舞われる
 
 	Oozie ワークフローとワークフロー アクションの使用法の詳細については、[Apache Oozie 4.0 のマニュアル][apache-oozie-400] (HDInsight クラスター Version 3.0) または [Apache Oozie 3.3.2 のマニュアル][apache-oozie-332] (HDInsight クラスター Version 2.1) を参照してください。
 
-2. ファイルを **C:\Tutorials\UseOozie\workflow.xml** という名前で保存します。エンコーディングは、ANSI (ASCII) を使用します (使っているテキスト エディターにこのオプションがない場合は、メモ帳を使用します)。
+2. ファイルを **C:&#92;Tutorials&#92;UseOozie&#92;workflow.xml** という名前で保存します。エンコーディングは、ANSI (ASCII) を使用します (使っているテキスト エディターにこのオプションがない場合は、メモ帳を使用します)。
 	
 ##<a id="deploy"></a>Oozie プロジェクトを展開してチュートリアルを準備する
 
@@ -270,8 +270,8 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		$sqlDatabaseTableName = "log4jLogsCount"
 		
 		# Oozie files for the tutorial	
-		$workflowDefinition = "C:\Tutorials\UseOozie\workflow.xml"
-		$hiveQLScript = "C:\Tutorials\UseOozie\useooziewf.hql"
+		$workflowDefinition = "C:&#92;Tutorials&#92;UseOozie&#92;workflow.xml"
+		$hiveQLScript = "C:&#92;Tutorials&#92;UseOozie&#92;useooziewf.hql"
 		
 		# WASB folder for storing the Oozie tutorial files.
 		$destFolder = "tutorials/useoozie"  # Do NOT use the long path here
@@ -462,7 +462,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 	    $oozieServerSatus = $jsonResponse[0].("systemMode")
 	    Write-Host "Oozie server status is $oozieServerSatus..."
 	
-5. Append the following to the script. This part creates and starts an Oozie job:	
+5. スクリプトの末尾に次のコードを追加します。この部分は、Oozie ジョブを作成して開始します。	
 
 	    # create Oozie job
 	    Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -479,7 +479,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 	    $clusterUriStartJob = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?action=start"
 	    $response = Invoke-RestMethod -Method Put -Uri $clusterUriStartJob -Credential $creds | Format-Table -HideTableHeaders #-debug
 		
-6. Append the following to the script. This part checks the Oozie job status:		
+6. スクリプトの末尾に次のコードを追加します。この部分は、Oozie ジョブの状態をチェックします。	
 
 	    # get job status
 	    Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until the job metadata is populated in the Oozie metastore..." -ForegroundColor Green
@@ -513,7 +513,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 **ジョブのエラー ログを確認するには**
 
 ワークフローのトラブルシューティング時に使用する Oozie のログ ファイルは、 
-クラスター ヘッドノードの *C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log* or *C:\apps\dist\oozie-4.0.0.2.0.7.0-1528\oozie-win-distro\logs\Oozie.log* にあります。RDP の詳細については、「[Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」を参照してください。
+クラスター ヘッドノードの *C:&#92;apps&#92;dist&#92;oozie-3.3.2.1.3.2.0-05&#92;oozie-win-distro&#92;logs&#92;Oozie.log* or *C:&#92;apps&#92;dist&#92;oozie-4.0.0.2.0.7.0-1528&#92;oozie-win-distro&#92;logs&#92;Oozie.log* にあります。RDP の詳細については、「[Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」を参照してください。
 
 **チュートリアルを再実行するには**
 

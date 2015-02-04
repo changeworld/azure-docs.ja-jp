@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="nodejs" title="How to Use the Table Service from Node.js" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="nodejs" title="How to Use the Table Service from Node.js" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="mwasson" />
 
@@ -33,7 +33,7 @@
 
 ## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービス][Node.js クラウド サービス](Windows PowerShell を使用)、または [WebMatrix を使用した Web サイト]に関するページを参照してください。
 
 ## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
 
@@ -111,7 +111,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 * **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて]」を参照してください(http://msdn.microsoft.com/library/azure/dd179338.aspx)。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて]」を参照してください](http://msdn.microsoft.com/library/azure/dd179338.aspx)。
 
 エンティティを定義する例を次に示します。**dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
@@ -186,7 +186,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 ## <a name="change-entities"> </a>エンティティのグループを操作する方法
 状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。これを実現するには、**TableBatch** クラスを使用してバッチを作成し、**TableService** の **executeBatch** メソッドを使用してバッチ操作を実行します。
 
- The following example demonstrates submitting two entities in a batch:
+ 次の例に、2 つのエンティティをバッチで送信する方法を示します。:
 
     var task1 = { 
 	  PartitionKey: {'_':'hometasks'},
@@ -434,6 +434,6 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [WebMatrix を使用した Web サイト]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
   [ストレージを使用する Node.js クラウド サービス]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
   [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
-  [Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
 
 <!--HONumber=35.1-->

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピックの使用方法 (Ruby) - Azure" metaKeywords="Get started Azure Service Bus topics, Get Started Service Bus topics, Azure publish subscribe messaging, Azure messaging topics and subscriptions, Service Bus topic ruby" description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Ruby アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Ruby" title="How to Use Service Bus Topics/Subscriptions" authors="tomfitz" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピックの使用方法 (Ruby) - Azure" metaKeywords="Get started Azure Service Bus topics, Get Started Service Bus topics, Azure publish subscribe messaging, Azure messaging topics and subscriptions, Service Bus topic ruby" description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Ruby アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Ruby" title="How to Use Service Bus Topics/Subscriptions" authors="tomfitz" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="11/25/2014" ms.author="tomfitz" />
 
@@ -37,16 +37,15 @@ Service Bus のトピックとサブスクリプションは、**メッセージ
 
 Service Bus のトピックとサブスクリプションを使用することで、多数のユーザーおよびアプリケーションの間でやり取りされる膨大な数のメッセージを処理することもできます。
 
-## <a id="create-a-service-namespace"</a>Create a Service Namespace
+## <a id="create-a-service-namespace"</a>サービス名前空間の作成
 
-To begin using Service Bus queues in Azure, you must first create a service namespace. A service namespace provides a scoping container for addressing Service Bus resources within 
-your application. You must create the namespace through the command-line interface because the Portal does not create the service bus with an ACS connection.
+Azure のサービス バス キューを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。名前空間はコマンドライン インターフェイスを使って作成する必要があります。ポータルでは、ACS 接続を利用するサービス バスは作成されないためです。
 
-To create a namespace:
+名前空間を作成するには、次の手順に従います。
 
-1. Open an Azure Powershell console.
+1. Azure Powershell コンソールを開きます。
 
-2. Type the command to create an Azure service bus namespace as shown below. Provide your own namespace value and specify the same region as your application. 
+2. 以下のとおり、Azure Service Bus 名前空間を作成するコマンドを入力します。独自の名前空間の値を入力し、アプリケーションと同じリージョンを指定します。
 
       New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -CreateACSNamespace $true
 
@@ -227,7 +226,7 @@ azure モジュールは、環境変数 **AZURE\_SERVICEBUS\_NAMESPACE** およ�
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   MSDN リファレンス:[Service Bus のキュー、トピック、サブスクリプション](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx)
--   [SqlFilter] に関する API リファレンス(http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx)
+-   [SqlFilter](http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx) に関する API リファレンス
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
 <!--HONumber=35.1-->

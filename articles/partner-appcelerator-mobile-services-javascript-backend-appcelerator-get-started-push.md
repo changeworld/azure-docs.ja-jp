@@ -1,4 +1,4 @@
-﻿<properties pageTitle="プッシュ通知の使用 (Appcelerator) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Appcelerator アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="プッシュ通知の使用 (Appcelerator) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Appcelerator アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="11/24/2014" ms.author="Appcelerator team;mahender" />
 
@@ -53,7 +53,7 @@
 
 ### モジュール作成のための Appcelerator Titanium Studio を準備する
 
-Android モジュールを作成する場合は、Appcelerator Titanium Studio 内に Java サポートをインストールする必要があります。インストールしていない場合は、Appcelerator の「[Installing the Java Development Tools (Java Development Tools のインストール)]」で簡単な手順を参照してください。
+Android モジュールを作成する場合は、Appcelerator Titanium Studio 内に Java サポートをインストールする必要があります。インストールしていない場合は、Appcelerator の「[Java 開発ツールのインストール]」で簡単な手順を参照してください。
 
 Android NDK をインストールする必要があります。該当する .zip ファイルを [http://developer.android.com/sdk/ndk/index.html](http://developer.android.com/sdk/ndk/index.html)  からダウンロードして、ディスク上のいずれかの場所で解凍してください。この場所を忘れないでください。 
 
@@ -358,11 +358,11 @@ Android NDK をインストールする必要があります。該当する .zip
 
 5.	Android 用に、次のコードで置き換えます。
 
-       var request = {
-    	'text' : alertTextField.getValue(),
-    	'complete' : false,
-    	'handle' : Alloy.Globals.tempRegId
-    }; 
+           var request = {
+    	    'text' : alertTextField.getValue(),
+    	    'complete' : false,
+    	    'handle' : Alloy.Globals.tempRegId
+             }; 
     
     
 
@@ -377,11 +377,11 @@ Android NDK をインストールする必要があります。該当する .zip
 
 7.	iOS 用に、次のコードで置き換えます。
 
-       var request = {
-    	'text' : alertTextField.getValue(),
-    	'complete' : false,
-    	'deviceToken' : Alloy.Globals.tempRegId
-    };
+           var request = {
+    	    'text' : alertTextField.getValue(),
+    	    'complete' : false,
+    	    'deviceToken' : Alloy.Globals.tempRegId
+           };
     
  
 アプリケーションは、iOS と Android の両方のプラットフォームでプッシュ通知をサポートするように更新されました。
@@ -454,8 +454,8 @@ Android NDK をインストールする必要があります。該当する .zip
 <!-- Anchors. -->
 [証明書の署名要求を作成する]:  #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]:  #register
-[アプリケーションのプロビジョニング プロファイルを作成する]:  #profile
-[Google Cloud Messaging を有効にする]:  #register-gcm
+[アプリケーションのプロビジョニング ファイルを作成する]:  #profile
+[Google クラウド メッセージングを有効にする]:  #register-gcm
 [Titanium 用の GCM モジュールを作成する]:  #gcm-module
 [モバイル サービスを構成する]:  #configure
 [アプリケーションにプッシュ通知を追加する]:  #add-push

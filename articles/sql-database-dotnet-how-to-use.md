@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="SQL Database" pageTitle="SQL データベースの使用方法 (.NET) - Azure の機能ガイド" metaKeywords="SQL Azure の使用, SQL Azure の使用, SQL Azure データベース接続, SQL Azure ADO.NET, SQL Azure ODBC, SQL Azure EntityClient" description="SQL Database を使ってみます。SQL Database インスタンスの作成方法および ADO.NET、ODBC、EntityClient プロバイダーを使用した接続方法について説明します。" metaCanonical="" services="sql-database" documentationCenter=".NET" title="How to use Azure SQL Database in .NET applications" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
+<properties urlDisplayName="SQL Database" pageTitle="SQL データベースの使用方法 (.NET) - Azure の機能ガイド" metaKeywords="SQL Azure の使用, SQL Azure の使用, SQL Azure データベース接続, SQL Azure ADO.NET, SQL Azure ODBC, SQL Azure EntityClient" description="SQL Database を使ってみます。SQL Database インスタンスの作成方法および ADO.NET、ODBC、EntityClient プロバイダーを使用した接続方法について説明します。" metaCanonical="" services="sql-database" documentationCenter=".NET" title="How to use Azure SQL Database in .NET applications" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/31/2015" ms.author="jeffreyg" />
 
@@ -44,7 +44,7 @@ SQL データベースは、Azure におけるリレーショナル データの
 
 <h3 name="createsrvr">データベース インスタンスと論理サーバーの作成</h3>
 
-1. [Azure 管理ポータル][]にサインインします。
+1. [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
 
 2. ページの下部にある **[+新規]** をクリックします。
 
@@ -67,7 +67,8 @@ SQL データベースは、Azure におけるリレーショナル データの
 	Azure で作成される各 SQL データベースには、実際にはそのデータベースのレプリカ
 が 3 つ作成されます。これは、高可用性を確保するためです。
 フェールオーバーは透過的な機能であり、サービスの一部です。[サービス レベル
-アグリーメント][]では、SQL データベースの 99.9% のアップタイムが約束されます。
+アグリーメント][サービス レベル
+アグリーメント]では、SQL データベースの 99.9% のアップタイムが約束されます。
 
 8. [サーバー] で、**[新しい SQL データベース サーバー]** を選択します。 
 
@@ -208,18 +209,16 @@ Entity Framework を使用することで、開発者は、リレーショナル
 
     metadata=res://*/SchoolModel.csdl|res://*/SchoolModel.ssdl|res://*/SchoolModel.msl;provider=System.Data.SqlClient;provider connection string="Data Source=xxxxxxxxxx.database.windows.net;Initial Catalog=School;Persist Security Info=True;User ID=MyAdmin;Password=***********"
 
-詳細については、「[Entity Framework 用の EntityClient
-プロバイダー][]」を参照してください。
+詳細については、「[Entity Framework 用の EntityClient プロバイダー][Entity Framework 用の EntityClient プロバイダー]」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 これで、SQL データベースへの接続の基本を学習できました。SQL データベースについてさらに詳細な情報が必要な場合は、次のリソースを参照してください。
 
--   [開発作業の方法に関するトピック (SQL データベース)][]
--   [SQL データベース][]
+-   [開発作業の方法に関するトピック (SQL データベース)][開発作業の方法に関するトピック (SQL データベース)]
+-   [SQL データベース](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336279.aspx)
 
 
-  [SQL データベースと]: #WhatIs
   [Azure へのサインイン]: #PreReq1
   [SQL データベースの作成と構成]: #PreReq2
   [SQL データベースに接続する]: #connect-db
@@ -227,16 +226,11 @@ Entity Framework を使用することで、開発者は、リレーショナル
   [ODBC を使用した接続]: #using-ODBC
   [EntityClient プロバイダーを使用した接続]: #using-entity
   [次のステップ]: #next-steps
-  [Azure 無料評価版]:{localLink:2187}「無料の試用期間」
+  [Azure 無料評価版]: {localLink:2187}「無料の試用期間」
   [Azure 管理ポータル]: http://manage.windowsazure.com
-  [方法: SQL データベース サーバーを作成する]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-server.aspx
-  [SQL データベースの管理ポータル]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg442309.aspx
-  [SQL データベースのファイアウォール]: http://social.technet.microsoft.com/wiki/contents/articles/sql-azure-firewall.aspx
-  [ツールとユーティリティのサポート (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621784.aspx
-  [Azure で SQL データベースを作成する方法]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-database.aspx
-  [サービス レベル アグリーメント]:{localLink:1132} 「SLA」
+  [サービス レベル アグリーメント]: {localLink:1132} "SLA"
   [Entity Framework 用の EntityClient プロバイダー]: http://msdn.microsoft.com/ja-jp/library/bb738561.aspx
   [開発作業の方法に関するトピック (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621787.aspx
-  [SQL データベース]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336279.aspx
+
 
 <!--HONumber=35.2-->

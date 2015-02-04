@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Access Control" pageTitle="Access Control の使用方法 (Java) - Azure の機能ガイド" metaKeywords="" description="Azure 上で Java により Access Control を開発および使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="Java" title="How to Authenticate Web Users with Azure Access Control Service Using Eclipse" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="Access Control" pageTitle="Access Control の使用方法 (Java) - Azure の機能ガイド" metaKeywords="" description="Azure 上で Java により Access Control を開発および使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="Java" title="How to Authenticate Web Users with Azure Access Control Service Using Eclipse" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
 
@@ -11,20 +11,20 @@
 
 ## 目次
 
--   [ACS とは][]
--   [概念][]
--   [前提条件][]
--   [ACS 名前空間の作成][]
--   [ID プロバイダーの追加][]
--   [証明書利用者アプリケーションの追加][]
--   [規則の作成][]
--   [ACS 名前空間への証明書のアップロード][]
--   [[アプリケーション統合] ページの確認][]
--   [Java Web アプリケーションの作成][]
--   [アプリケーションへの ACS Filter ライブラリの追加][]
--   [コンピューティング エミュレーターへのデプロイ][]
--   [Azure への展開][]
--   [次のステップ][]
+-   [ACS とは][ACS とは]
+-   [概念][概念]
+-   [前提条件][前提条件]
+-   [ACS 名前空間の作成][ACS 名前空間の作成]
+-   [ID プロバイダーの追加][ID プロバイダーの追加]
+-   [証明書利用者アプリケーションの追加](#add-RP)
+-   [規則の作成][規則の作成]
+-   [ACS 名前空間への証明書のアップロード][ACS 名前空間への証明書のアップロード]
+-   [[アプリケーション統合] ページの確認](#review-app-int)
+-   [Java Web アプリケーションの作成][Java Web アプリケーションの作成]
+-   [アプリケーションへの ACS Filter ライブラリの追加][アプリケーションへの ACS Filter ライブラリの追加]
+-   [コンピューティング エミュレーターへのデプロイ][コンピューティング エミュレーターへのデプロイ]
+-   [Azure への展開][Azure への展開]
+-   [次のステップ][次のステップ]
 
 ## <a name="what-is"></a>ACS とは
 
@@ -38,7 +38,7 @@ ACS では、次の機能を使用できます。
 -   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol (OData) ベースの管理サービス。
 -   ACS 設定への管理アクセスが可能な管理ポータル。
 
-ACS の詳細については、「[Access Control Service 2.0][]」を参照してください。
+ACS の詳細については、「[Access Control Service 2.0][Access Control Service 2.0]」を参照してください。
 
 ## <a name="concepts"></a>概念
 
@@ -90,7 +90,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、
 ACS 名前空間を作成する必要があります。名前空間では、 
 アプリケーション内から ACS リソースのアドレスを指定するための一意のスコープが提供されます。
 
-1. [Azure の管理ポータル][]にログインします。
+1. [Azure の管理ポータル][Azure の管理ポータル]にログインします。
 2. **[Active Directory]** をクリックします。 
 3. 新しい Access Control 名前空間を作成するには、**[新規]**、**[アプリ サービス]**、**[Access Control]**、**[簡易作成]** の順にクリックします。 
 4. 名前空間の名前を入力します。名前が一意であるかが確認されます。
@@ -105,7 +105,7 @@ ACS 名前空間を作成する必要があります。名前空間では、 
 このタスクでは、認証のために RP アプリケーションと共に使用できるように IP を追加します。デモンストレーションを目的として、このタスクでは Windows Live を IP として追加する方法を説明しますが、ACS 管理ポータルの一覧にある任意の IP を使用することができます。
 
 
-1.   [Azure 管理ポータル][]で、**[Active Directory]** をクリックし、Access Control 名前空間を選択して、**[管理]** をクリックします。ACS 管理ポータルが開きます。
+1.   [Azure の管理ポータル][Azure の管理ポータル]で、**[Active Directory]** をクリックし、Access Control 名前空間を選択して、**[管理]** をクリックします。ACS 管理ポータルが開きます。
 2.  ACS 管理ポータルの左のナビゲーション ウィンドウで、**[ID プロバイダー]** をクリックします。
 3.   Windows Live ID は既定で有効になっており、削除することはできません。このチュートリアルでは、Windows Live ID のみ使用します。この画面では、ただし **[追加]** ボタンをクリックして、ほかの IP を追加できます。
 
@@ -150,7 +150,7 @@ ACS 名前空間を作成する必要があります。名前空間では、 
 3.  **[トークン署名証明書またはキーの追加]** ページで、次の操作を行います。
     1. **[使用目的]** セクションで、**[証明書利用者アプリケーション]** をクリックし、**[Azure Web App]** (前の手順で設定した証明書利用者アプリケーションの名前) を選択します。
     2. **[型]** セクションで **[X.509 証明書]** を選択します。
-    3. **[証明書]** セクションで、参照ボタンをクリックし、使用する X.509 証明書ファイルに移動します。これが .PFX ファイルになります。そのファイルを選択し、**[開く]**   をクリックして、**[パスワード]** ボックスに証明書のパスワードを入力します。テスト目的で、自己署名証明書を使用してもかまいません。自己署名証明書を作成するには、**[ACS Filter Library]** ダイアログ ボックスの **[New]** ボタンを使用するか (後で説明)、または Azure Starter Kit for Java (Microsoft Open Technologies 提供) の[プロジェクト Web サイト][]の **encutil.exe** ユーティリティを使用します。
+    3. **[証明書]** セクションで、参照ボタンをクリックし、使用する X.509 証明書ファイルに移動します。これが .PFX ファイルになります。そのファイルを選択し、**[開く]**   をクリックして、**[パスワード]** ボックスに証明書のパスワードを入力します。テスト目的で、自己署名証明書を使用してもかまいません。自己署名証明書を作成するには、**[ACS Filter Library]** ダイアログ ボックスの **[New]** ボタンを使用するか (後で説明)、または Azure Starter Kit for Java (Microsoft Open Technologies 提供) の[プロジェクト Web サイト][プロジェクト Web サイト]の **encutil.exe** ユーティリティを使用します。
     4. **[プライマリにする]** チェック ボックスがオンになっていることを確認します。**[トークン署名証明書またはキーの追加]** ページは次のようになります。
         ![Add token-signing certificate][add_token_signing_cert]
     5. **[保存]** をクリックして設定を保存し、**[トークン署名証明書またはキーの追加]** ページを閉じます。
@@ -260,7 +260,7 @@ ACS Hello World アプリケーションの使用後はデプロイを削除す�
 
 ## <a name="next_steps"></a>次のステップ
 
-ACS によってアプリケーションに返される SAML (Security Assertion Markup Language) を調べる場合は、「[Azure の Access Control サービスによって返される SAML を表示する方法][]」を参照してください。さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0][]」を参照してください。
+ACS によってアプリケーションに返される SAML (Security Assertion Markup Language) を調べる場合は、「[Azure の Access Control サービスによって返される SAML を表示する方法][Azure の Access Control サービスによって返される SAML を表示する方法]」を参照してください。さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0][Access Control Service 2.0]」を参照してください。
 
 また、この例では **[Embed the certificate in the WAR file]** オプションも使用しています。このオプションを使用すると証明書のデプロイが簡単になります。代わりに WAR ファイル以外からの署名証明書を保存する場合は、次の手法を使用できます。
 
@@ -281,7 +281,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 
     5. **[OK]** をクリックします。
 
-これで、証明書はデプロイに追加されました。WAR ファイルに証明書を埋め込むか、コンポーネントとしてデプロイに追加するかにかかわらず、「[ACS 名前空間への証明書のアップロード][]」セクションで説明しているように、証明書を名前空間にアップロードする必要があることに注意してください。
+これで、証明書はデプロイに追加されました。WAR ファイルに証明書を埋め込むか、コンポーネントとしてデプロイに追加するかにかかわらず、「[ACS 名前空間への証明書のアップロード][ACS 名前空間への証明書のアップロード]」セクションで説明しているように、証明書を名前空間にアップロードする必要があることに注意してください。
 
 [ACS とは]: #what-is
 [概念]: #concepts
@@ -289,10 +289,8 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [Java Web アプリケーションの作成]: #create-java-app
 [ACS 名前空間の作成]: #create-namespace
 [ID プロバイダーの追加]: #add-IP
-[証明書利用者アプリケーションの追加]: #add-RP
 [規則の作成]: #create-rules
 [ACS 名前空間への証明書のアップロード]: #upload-certificate
-[[アプリケーション統合] ページの確認]: #review-app-int
 [ACS と ASP.NET Web アプリケーションとの信頼の構成]: #config-trust
 [アプリケーションへの ACS Filter ライブラリの追加]: #add_acs_filter_library
 [コンピューティング エミュレーターへのデプロイ]: #deploy_compute_emulator
@@ -303,7 +301,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
 [Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
-[Azure 管理ポータル]: https://manage.windowsazure.com
+[Azure の管理ポータル]: https://manage.windowsazure.com
 [acs_flow]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
 
 <!-- Eclipse-specific -->
@@ -320,51 +318,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
 
-For an examination of the Security Assertion Markup Language (SAML) returned by ACS to your application, see [How to view SAML returned by the Azure Access Control Service][]. To further explore ACS's functionality and to experiment with more sophisticated scenarios, see [Access Control Service 2.0][].
 
-Also, this example used the **Embed the certificate in the WAR file** option. This option makes it simple to deploy the certificate. If instead you want to keep your signing certificate separate from your WAR file, you can use the following technique:
-
-1. Within the **Security** section of the **Azure Access Control Services Filter** dialog, type **${env.JAVA_HOME}/mycert.cer** and uncheck **Embed the certificate in the WAR file**. (Adjust mycert.cer if your certificate file name is different.) Click **Finish** to close the dialog.
-2. Copy the certificate as a component in your deployment: In Eclipse's Project Explorer, expand **MyAzureACSProject**, right-click **WorkerRole1**, click **Properties**, expand **Azure Role**, and click **Components**.
-3. Click **Add**.
-4. Within the **Add Component** dialog:
-    1. In the **Import** section:
-        1. Use the **File** button to navigate to the certificate you want to use. 
-        2. For **Method**, select **copy**.
-    2. For **As Name**, click on the text box and accept the default name.
-    3. In the **Deploy** section:
-        1. For **Method**, select **copy**.
-        2. For **To directory**, type **%JAVA_HOME%**.
-    4. Your **Add Component** dialog should look similar to the following.
-
-        ![Add certificate component][add_cert_component]
-
-    5. Click **OK**.
-
-At this point, your certificate would be included in your deployment. Note that regardless of whether you embed the certificate in the WAR file or add it as a component to your deployment, you need to upload the certificate to your namespace as described in the [Upload a certificate to your ACS namespace][] section.
-
-[What is ACS?]: #what-is
-[Concepts]: #concepts
-[Prerequisites]: #pre
-[Create a Java web application]: #create-java-app
-[Create an ACS Namespace]: #create-namespace
-[Add Identity Providers]: #add-IP
-[Add a Relying Party Application]: #add-RP
-[Create Rules]: #create-rules
-[Upload a certificate to your ACS namespace]: #upload-certificate
-[Review the Application Integration Page]: #review-app-int
-[Configure Trust between ACS and Your ASP.NET Web Application]: #config-trust
-[Add the ACS Filter library to your application]: #add_acs_filter_library
-[Deploy to the compute emulator]: #deploy_compute_emulator
-[Deploy to Azure]: #deploy_azure
-[Next steps]: #next_steps
-[project website]: http://wastarterkit4java.codeplex.com/releases/view/61026
-[How to view SAML returned by the Azure Access Control Service]: /ja-jp/develop/java/how-to-guides/view-saml-returned-by-acs/
-[Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
-[Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
-[Azure Management Portal]: https://manage.windowsazure.com
-[acs_flow]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
 
 <!-- Eclipse-specific -->
 [add_acs_filter_lib]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddACSFilterLibrary.png

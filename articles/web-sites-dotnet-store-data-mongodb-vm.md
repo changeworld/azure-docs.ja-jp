@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Website with MongoDB VM" pageTitle="仮想マシン上の MongoDB を使用した .NET Web サイト - Azure" metaKeywords="Azure Git ASP.NET MongoDB, Git .NET, Git MongoDB, ASP.NET MongoDB, Azure MongoDB, Azure ASP.NET, Azure tutorial" description="仮想マシン上の MongoDB に接続された Azure の Web サイトに、Git を使用して ASP.NET Web アプリケーションをデプロイする方法を示すチュートリアル。" metaCanonical="" services="web-sites,virtual-machines" documentationCenter=".NET" title="Create an Azure website that connects to MongoDB running on a virtual machine in Azure" authors="cephalin" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Website with MongoDB VM" pageTitle="仮想マシン上の MongoDB を使用した .NET Web サイト - Azure" metaKeywords="Azure Git ASP.NET MongoDB, Git .NET, Git MongoDB, ASP.NET MongoDB, Azure MongoDB, Azure ASP.NET, Azure tutorial" description="仮想マシン上の MongoDB に接続された Azure の Web サイトに、Git を使用して ASP.NET Web アプリケーションをデプロイする方法を示すチュートリアル。" metaCanonical="" services="web-sites,virtual-machines" documentationCenter=".NET" title="Create an Azure website that connects to MongoDB running on a virtual machine in Azure" authors="cephalin" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/24/2014" ms.author="cephalin" />
 
@@ -359,7 +359,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	<div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-To add the ability to create a new task, right-click the *Views\Home\\* folder and **Add** a **View**.  Name the view *Create*. Replace the code with the following:
+新しいタスクを作成する機能を追加するために、 *Views\Home\\* フォルダーを右クリックして、**[追加]**、**[ビュー]**の順にクリックします。ビューの名前を「*Create*」にします。コードを次のコードに置き換えます。
 
 	@model MyTaskListApp.Models.MyTask
 	
@@ -470,7 +470,7 @@ MongoDB の接続文字列の詳細については、[MongoDB の接続に関す
 
 	![Deployment Complete][Image11]
 
-9. これで Azure Web サイトが使用可能になりました。**[ダッシュボード]** ページでサイトを確認し、**[サイトの URL]** フィールドでサイトの URL を確かめます。このチュートリアルの手順に従うと、サイトは次の URL で利用できるようになっています:: http://mytasklistapp.azurewebsites.net.
+9. これで Azure Web サイトが使用可能になりました。**[ダッシュボード]** ページでサイトを確認し、**[サイトの URL]** フィールドでサイトの URL を確かめます。このチュートリアルの手順に従うと、サイトは次の URL で利用できるようになっています: http://mytasklistapp.azurewebsites.net.
 
 ##まとめ##
 

@@ -1,8 +1,8 @@
-﻿<properties title="SharePoint Server Farm" pageTitle="SharePoint Server Farm" description="Azure プレビュー ポータルで利用できる SharePoint Server ファームの新機能について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="josephd" videoId="" scriptId="" manager="timlt"/>
+<properties title="SharePoint Server Farm" pageTitle="SharePoint Server Farm" description="Azure プレビュー ポータルで利用できる SharePoint Server ファームの新機能について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="josephd" videoId="" scriptId="" manager="timlt"/>
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-sharepoint" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="josephd" />
 
-#SharePoint Server Farm#
+# SharePoint Server Farm#
 
 Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使用して、事前構成された SharePoint Server 2013 ファームを作成します。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
@@ -47,7 +47,7 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 - Azure プレビュー ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続はありません。 
 - これらのサーバーはリモート デスクトップ接続を通じて管理できます。
 
-##構成の手順##
+## 構成の手順##
 
 SharePoint Farm を使用して SharePoint ファームを作成するには、以下の手順を実行します。
 
@@ -63,7 +63,7 @@ SharePoint Farm を使用して SharePoint ファームを作成するには、�
 10. 場所 (リージョン) を指定するには、矢印をクリックします。
 11. 準備ができたら **[作成]** をクリックします。
 
-##Azure リソース マネージャー##
+## Azure リソース マネージャー##
 
 SharePoint Server Farm は、Azure リソース マネージャーとスクリプトを使用して、SharePoint ファームのインフラストラクチャとサーバー構成を自動作成します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
 

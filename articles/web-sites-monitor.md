@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to monitor" pageTitle="Web サイトの監視方法 - Azure サービス管理" metaKeywords="Azure monitoring web sites, Azure Management Portal Monitor, Azure monitoring" description="管理ポータルの [監視] ページを使用して Azure の Web サイトを監視する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="How to Monitor Websites" authors="cephalin" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="How to monitor" pageTitle="Web サイトの監視方法 - Azure サービス管理" metaKeywords="Azure monitoring web sites, Azure Management Portal Monitor, Azure monitoring" description="管理ポータルの [監視] ページを使用して Azure の Web サイトを監視する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="How to Monitor Websites" authors="cephalin" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/24/2014" ms.author="cephalin" />
 
@@ -85,10 +85,10 @@ Web サイトがリソースの使用量クォータをどの程度消費して�
 Azure のストレージ アカウントの詳細については、「[ストレージ アカウントの管理方法](https://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/)」を参照してください。
 
 <div class="dev-callout"on> 
-<b>Note</b> 
-<p>Application logging to table or blob storage is only supported for .NET applications.</p> </div>
+<b>注</b> 
+<p>テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。</p> </div>
 
-Since application logging to storage requires using a storage client to view the log data, it is most useful when you plan on using a service or application that understands how to read and process the data directly from Azure Table or Blob Storage. Logging to the file system produces files that can be downloaded to your local computer using FTP or other utilities as described later in this section.
+アプリケーションのログ情報をストレージに記録した場合、ストレージ クライアントを使用してログ データを表示する必要があります。したがって、この方法は、Azure のテーブルや BLOB ストレージからデータを直接読み込んで処理するサービスまたはアプリケーションに適しています。ファイル システムにログを記録するとファイルが生成され、そのファイルを、このセクションで後述する FTP などのユーティリティを使用してローカル コンピューターにダウンロードできます。
 
 <div class="dev-callout"> 
 	<b>注</b> 
@@ -96,7 +96,7 @@ Since application logging to storage requires using a storage client to view the
 
 <div class="dev-callout"> 
 	<b>注</b> 
-	<p>診断を有効にするには、Azure PowerShell から <b>Set-AzureWebsite</b> コマンドレットを使用する方法もあります。</p><p>Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「 <a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/">Azure PowerShell のインストールおよび構成方法</a>」を参照してください。</p></div>
+	<p>診断を有効にするには、Azure PowerShell から <b>Set-AzureWebsite</b> コマンドレットを使用する方法もあります。</p><p>Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/">Azure PowerShell のインストールおよび構成方法</a>」を参照してください。</p></div>
 
 <div class="dev-callout"> 
 <b>注</b> 
@@ -202,7 +202,7 @@ Web サイトの診断を有効にしたら、**[構成]** 管理ページの下
 
 <div class="dev-callout"> 
 <b>注</b> 
-<p>メッセージが <b>azure</b> がインストールされていない場合は、「 <a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/">How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)</a> を参照して、インストールと構成を実行してください。</p>
+<p>メッセージが <b>azure</b> がインストールされていない場合は、「<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/">How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)</a> を参照して、インストールと構成を実行してください。</p>
 </div>
 
 ###ログ ファイルの読み込み###
@@ -254,7 +254,7 @@ Web サイトに対するログ記録またはトレース、あるいはその�
 
 エンドポイント監視を構成した後、各テスト場所から個々のエンドポイントにドリルダウンして、監視期間内の応答時間とアップタイム状態の詳細を確認することができます。また、エンドポイントの応答に時間がかかりすぎている場合などに対してアラート ルールを設定することもできます。 
 
-**:**
+**エンドポイント監視を構成するには**
 
 1.	**Web サイト**を開きます。構成する Web サイトの名前をクリックします。
 2.	**[構成]** タブをクリックします。 
