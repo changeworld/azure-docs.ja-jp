@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
@@ -18,12 +18,12 @@
 
 このチュートリアルは、前の「[モバイル サービスの使用]」または「[データの使用]」チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。  
 
-## <a name="string-length-validation"></a>Add validation
+## <a name="string-length-validation"></a>検証の追加
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-add-validation](../includes/mobile-services-dotnet-backend-add-validation.md)]
 
 
-## <a name="update-client-validation"></a>Update the client
+## <a name="update-client-validation"></a>クライアントの更新
 
 今度は、データを検証し、テキストの長さが無効な場合はエラー応答を送信するようにモバイル サービスを設定するため、検証からのエラー応答を処理できるようにアプリケーションを更新する必要があります。エラーは、クライアント アプリケーションによる `IMobileServiceTable<TodoItem].InsertAsync()` の呼び出しからの `MobileServiceInvalidOperationException` としてキャッチされます。
 
@@ -74,14 +74,14 @@
 
     ![][2]
 
-## <a name="add-timestamp"></a>Add a timestamp field for CompleteDate
+## <a name="add-timestamp"></a>CompleteDate に関するタイムスタンプ フィールドの追加
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-add-completedate](../includes/mobile-services-dotnet-backend-add-completedate.md)]
 
 
 
 
-## <a name="update-client-timestamp"></a>Update the client to display the CompleteDate
+## <a name="update-client-timestamp"></a>CompleteDate を表示するためのクライアントの更新
 
 最後の手順は、クライアントを更新してこの新しい **CompleteDate** データを表示することです。 
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Javascript Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Javascript Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="wesmc" />
 
@@ -159,7 +159,7 @@
 
 <!-- URLs. -->
 [Get started with Mobile Services (モバイル サービスの使用)]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[モバイル サービス ユーザーのサービス側の承認]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/
+[ユーザーのサービス側の承認]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/
 [Refine queries with paging (ページングを使用したクエリの改善)]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
 [Getting Started (作業の開始)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
@@ -168,4 +168,4 @@
 
 [管理ポータル]: https://manage.windowsazure.com/
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
