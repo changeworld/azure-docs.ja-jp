@@ -1,10 +1,24 @@
-﻿<properties urlDisplayName="Blob Service" pageTitle="BLOB ストレージを使用する方法 (Java) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Java" description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="How to use Blob Storage from Java" authors="robmcm" solutions="" manager="adinah" editor="" />
+﻿<properties 
+	pageTitle="BLOB ストレージを使用する方法 (Java) | Microsoft Azure" 
+	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。コード サンプルは Java で記述されています。" 
+	services="storage" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # Java から BLOB ストレージを使用する方法
 
-このガイドでは、Microsoft Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ]」(#NextSteps) セクションを参照してください。
+このガイドでは、Microsoft Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
 
 注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。 
 
@@ -16,25 +30,25 @@
 * [Java アプリケーションの作成](#CreateApplication)
 * [BLOB ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
 * [Azure のストレージ接続文字列の設定](#ConnectionString)
-* [方法: コンテナーを作成する](#CreateContainer)
-* [方法: コンテナーに BLOB をアップロードする](#UploadBlob)
-* [方法: コンテナー内の BLOB を一覧表示する](#ListBlobs)
-* [方法: BLOB をダウンロードする](#DownloadBlob)
-* [方法: BLOB を削除する](#DeleteBlob)
-* [方法: BLOB コンテナーを削除する](#DeleteContainer)
+* [方法:コンテナーを作成する](#CreateContainer)
+* [方法:コンテナーに BLOB をアップロードする](#UploadBlob)
+* [方法:コンテナー内の BLOB を一覧表示する](#ListBlobs)
+* [方法:BLOB をダウンロードする](#DownloadBlob)
+* [方法:BLOB を削除する](#DeleteBlob)
+* [方法:BLOB コンテナーを削除する](#DeleteContainer)
 * [次のステップ](#NextSteps)
 
-[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
+[AZURE.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 <h2><a id="CreateAccount"></a>Azure のストレージ アカウントの作成</h2>
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="CreateApplication"> </a>Java アプリケーションの作成
 
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
-そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、[Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
+そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
 
 ## <a name="ConfigureStorage"> </a>BLOB ストレージにアクセスするようにアプリケーションを構成する
 
@@ -46,7 +60,7 @@ Azure Storage API を使用して BLOB にアクセスする Java ファイル�
 
 ## <a name="ConnectionString"> </a>Azure のストレージ接続文字列の設定
 
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。 *AccountName* と  *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
     // Define the connection-string with your values
     public static final String storageConnectionString = 
@@ -54,7 +68,7 @@ Azure ストレージ クライアントでは、ストレージ接続文字列�
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-Microsoft Azure 上のロール内で実行されるアプリケーションでは、この文字列はサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、サービス構成ファイル内の *StorageConnectionString* という名前の **Setting** 要素から接続文字列を取得しています。
+Microsoft Azure 上のロール内で実行されるアプリケーションでは、この文字列はサービス構成ファイルである  *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、サービス構成ファイル内の  *StorageConnectionString* という名前の **Setting** 要素から接続文字列を取得しています。
 
     // Retrieve storage account from connection-string.
     String storageConnectionString = 
@@ -64,7 +78,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 ## <a name="CreateContainer"> </a>方法:コンテナーを作成する
 
-CloudBlobClient オブジェクトを使用すると、コンテナーと BLOB の参照オブジェクトを取得できます。次のコードでは、**CloudBlobClient** オブジェクトを作成しています。(注:**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure Storage クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
+CloudBlobClient オブジェクトを使用すると、コンテナーと BLOB の参照オブジェクトを取得できます。次のコードでは、**CloudBlobClient** オブジェクトを作成しています。(注:**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
 
 BLOB はすべてコンテナー内に格納されます。**CloudBlobClient** オブジェクトにより、使用するコンテナーへの参照を取得します。コンテナーが存在しない場合は、**createIfNotExists** メソッドを使用して作成できます。存在する場合は、このメソッドによって既存のコンテナーが返されます。既定では、新しいコンテナーはプライベートであるため、このコンテナーから BLOB をダウンロードするにはストレージ アクセス キーを指定する必要があります (前と同じ方法で)。
 
@@ -161,7 +175,10 @@ BLOB サービスには、コンテナー内のディレクトリの概念もあ
 
 たとえば、"photos" という名前のコンテナーを作成して、その中に "rootphoto1"、"2010/photo1"、"2010/photo2"、および "2011/photo1" という名前の BLOB をアップロードすることができます。このようにすると、"photos" コンテナー内に "2010" および "2011" という仮想ディレクトリが作成されます。"photos" コンテナーの **listBlobs** を呼び出すと、返されるコレクションには最上位レベルにあるディレクトリおよび BLOB を表す **CloudBlobDirectory** および **CloudBlob** オブジェクトが含まれています。この例の場合は、ディレクトリ "2010" および "2011" と、写真 "rootphoto1" が返されます。**instanceof** 演算子を使用してこれらのオブジェクトを区別できます。
 
-必要に応じて、**listBlobs** メソッドにパラメーターを渡すことができます。そのためには、**useFlatBlobListing** パラメーターに true を設定しておく必要があります。これにより、ディレクトリに関係なく、すべての BLOB が返されるようになります。詳細については、[Azure Storage クライアント SDK リファレンス]の **CloudBlobContainer.listBlobs** を参照してください。
+必要に応じて、**listBlobs** メソッドにパラメーターを渡すことができます。
+そのためには、**useFlatBlobListing** パラメーターに true を設定しておく必要があります。これにより、
+ディレクトリに関係なく、すべての BLOB が返されるようになります。HTTPS
+[Azure ストレージ クライアント SDK に関するページ]の **CloudBlobContainer.listBlobs** の項を参照してください。
 
 ## <a name="DownloadBlob"> </a>方法:BLOB をダウンロードする
 
@@ -250,15 +267,14 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 - [Azure Storage SDK for Java]
-- [Azure Storage クライアント SDK リファレンス]
+- [Azure ストレージ クライアント SDK リファレンス]
 - [Azure Storage REST API]
-- [Azure Storage チーム ブログ]
+- [Azure のストレージ チーム ブログ]
 
 [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
+[Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/ja-jp/library/azure/gg433040.aspx
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-
-<!--HONumber=35.1-->
+[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+<!--HONumber=42-->

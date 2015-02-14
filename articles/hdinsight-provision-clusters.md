@@ -1,20 +1,34 @@
-<properties urlDisplayName="HDInsight Administration" pageTitle="HDInsight での Hadoop クラスターのプロビジョニング | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="管理ポータル、PowerShell、コマンド ラインを使用して Azure HDInsight のクラスターをプロビジョニングする方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Provision Hadoop clusters in HDInsight" authors="jgao" />
+﻿<properties 
+	pageTitle="HDInsight での Hadoop クラスターのプロビジョニング | Azure" 
+	description="管理ポータル、PowerShell、コマンド ラインを使用して Azure HDInsight のクラスターをプロビジョニングする方法について説明します。" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="mumian"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/14/2014" ms.author="jgao" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/19/2014" 
+	ms.author="jgao"/>
 
-# カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング
+#カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング
 
-この記事では、Azure 管理ポータル、PowerShell、コマンド ライン ツール、または HDInsight .NET SDK を使用した、Azure HDInsight 上の Hadoop クラスターのさまざまなカスタム プロビジョニング方法について学習します。この記事では、Hadoop クラスターのプロビジョニングについて説明します。HBase クラスターのプロビジョニング方法については、「[HDInsight の Hadoop 環境で HBase を使用する][hdinsight-hbase-custom-provision]」を参照してください。詳細については、 <a href="http://go.microsoft.com/fwlink/?LinkId=510237">「What Is The Difference Between HBase and Hadoop/HDFS? (HBase と Hadoop/HDFS の違い)」</a> を参照してください。
+この記事では、Azure 管理ポータル、PowerShell、コマンド ライン ツール、または HDInsight .NET SDK を使用した、Azure HDInsight 上の Hadoop クラスターのさまざまなカスタム プロビジョニング方法について学習します。この記事では、Hadoop クラスターのプロビジョニングについて説明します。HBase クラスターのプロビジョニング方法については、]の「[Provision HBase cluster in HDInsight (HDInsight での HBase クラスターのプロビジョニング)][hdinsight-hbase-custom-provisi」を参照してください。詳細については、 <a href="http://go.microsoft.com/fwlink/?LinkId=510237">「What Is The Difference Between HBase and Hadoop/HDFS? (HBase と Hadoop/HDFS の違い)」</a> を参照してください。
 
 ## HDInsight クラスターについて
 
-Hadoop またはビッグデータを説明するときに、クラスターについて必ず触れるのはなぜでしょうか。その理由は、Hadoop がクラスターのさまざまなノードにまたがる大規模データの分散処理を可能にするためです。クラスターは、1 つのマスター (ヘッドノードまたは名前ノードともいいます) と任意の数のスレーブ (データ ノードともいいます) から成るマスター/スレーブ アーキテクチャを構成しています。詳細については、[Apache Hadoop][apache-hadoop]に関するページを参照してください。
+Hadoop またはビッグデータを説明するときに、クラスターについて必ず触れるのはなぜでしょうか。その理由は、Hadoop がクラスターのさまざまなノードにまたがる大規模データの分散処理を可能にするためです。クラスターは、1 つのマスター (ヘッドノードまたは名前ノードともいいます) と任意の数のスレーブ (データ ノードともいいます) から成るマスター/スレーブ アーキテクチャを構成しています。詳細については、[Apache Hadoop][apache-hadoop] に関する Web ページを参照してください。
 
 ![HDInsight Cluster][img-hdi-cluster]
 
-HDInsight クラスターでは、Hadoop の実装の詳細を抽象化しているため、クラスターの別のノードとの通信方法を心配する必要はありません。HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。詳細については、「[Introduction to Hadoop in HDInsight (HDInsight での Hadoop 入門)][hadoop-hdinsight-intro]」を参照してください。変更されるデータは、HDInsight のコンテキストでは *Azure Storage - BLOB* (WASB) とも呼ばれる Azure BLOB ストレージに格納されます。詳細については、「[HDInsight で Hadoop と互換性のある BLOB ストレージのビッグ データを分析のために照会する][hdinsight-storage]」を参照してください。
+HDInsight クラスターでは、Hadoop の実装の詳細を抽象化しているため、クラスターの別のノードとの通信方法を心配する必要はありません。HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。詳細については、「[HDInsight での Hadoop 入門][hadoop-hdinsight-intro]」を参照してください。変更されるデータは、HDInsight のコンテキストでは  *Azure Storage - Blob* (WASB) とも呼ばれる Azure BLOB ストレージに格納されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
-この記事では、クラスターをプロビジョニングするさまざまな手順を示します。クラスターをすばやくプロビジョニングする方法を調べる場合は、「[Get Started with Azure HDInsight (Azure HDInsight の概要)][hdinsight-get-started]」を参照してください。
+この記事では、クラスターをプロビジョニングするさまざまな手順を示します。クラスターをすばやくプロビジョニングする方法を調べる場合は、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
 
 **前提条件:**
 
@@ -22,24 +36,24 @@ HDInsight クラスターでは、Hadoop の実装の詳細を抽象化してい
 
 - Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。HDInsight PowerShell コマンドレットはサブスクリプションを使ってタスクを実行します。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 
-## この記事の内容
+##この記事の内容
 
 * [構成オプション](#configuration)
-* [Azure の管理ポータルの使用](#portal)
+* [Azure 管理ポータルの使用](#portal)
 * [Azure PowerShell の使用](#powershell)
 * [クロスプラットフォーム コマンド ラインの使用](#cli)
 * [HDInsight .NET SDK の使用](#sdk)
 * [次のステップ](#nextsteps)
 
-## <a id="configuration"></a>構成オプション
+##<a id="configuration"></a>構成オプション
 
-### その他のストレージ
+###その他のストレージ
 
 構成中に、Azure BLOB ストレージ アカウントと既定のコンテナーを指定する必要があります。このコンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターに関連付ける追加の BLOB も指定することができます。
 
-従属的な BLOB ストアの使用の詳細については、「[HDInsight の Hadoop での Azure BLOB ストレージの使用](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-blob-storage/)」を参照してください。
+従属的な BLOB ストアの使用の詳細については、「[HDInsight の Hadoop での BLOB ストレージの使用](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-blob-storage/)」を参照してください。
 
-### メタストア
+###メタストア
 
 メタストアには、Hive テーブル、パーティション、スキーマ、列などについての情報が格納されます。この情報は、データが HDFS (または HDInsight の WASB) のどこに格納されているかを見つけるために、Hive によって使用されます。既定では、Hive は組み込みデータベースを使用してこの情報を格納します。
 
@@ -47,12 +61,12 @@ HDInsight クラスターをプロビジョニングするとき、Hive のメ�
 
 ### クラスターのカスタマイズ
 
-HDInsight クラスターを作成するときに、追加のコンポーネントをインストールすることも、クラスター構成をカスタマイズすることもできます。クラスターの作成時に実行するスクリプトを記述することによって、クラスターをカスタマイズすることができます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは HDInsight PowerShell コマンドレットまたは HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Customize HDInsight cluster using Script Action (スクリプト操作を使用した HDInsight クラスターのカスタマイズ)][hdinsight-customize-cluster]」を参照してください。
+HDInsight クラスターを作成するときに、追加のコンポーネントをインストールすることも、クラスター構成をカスタマイズすることもできます。クラスターの作成時に実行するスクリプトを記述することによって、クラスターをカスタマイズすることができます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure 管理ポータル、HDInsight PowerShell コマンドレットまたは HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Customize HDInsight clusters using Script Action (Script Action を使って HDInsight をカスタマイズする)][hdinsight-customize-cluster]」を参照してください。
 
 
-### 仮想ネットワーク
+###仮想ネットワーク
 
-[Azure Virtual Network](http://azure.microsoft.com/ja-jp/documentation/services/virtual-network/)  によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure 仮想ネットワーク](http://azure.microsoft.com/ja-jp/documentation/services/virtual-network/)によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -68,28 +82,28 @@ HDInsight クラスターを作成するときに、追加のコンポーネン�
 
 	![diagram of point-to-site configuration](.\media\hdinsight-provision-clusters\point-to-site.png)
 
-仮想ネットワークの機能と利点の詳細については、「[仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
 
-> [WACOM.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)」を参照してください。
+> [AZURE.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)」を参照してください。
 >
 > Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
 >
 > 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 
-## <a id="portal"></a> Azure 管理ポータルの使用
+##<a id="portal"></a> Azure 管理ポータルの使用
 
-HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight で Hadoop と互換性のある BLOB ストレージのビッグ データを分析のために照会する][hdinsight-storage]」を参照してください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
+HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
 
 
-> [WACOM.NOTE] 現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、**米国中南部**だけです。
+> [AZURE.NOTE] 現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、および**米国中南部**のみです。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
 1. [Azure 管理ポータル][azure-management-portal]にサインインします。
 2. ページ下部の **[+ 新規]** をクリックし、**[データ サービス]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
-3. **[クラスターの詳細]** ページで、次の値を入力または選択します。
+3. [**クラスターの詳細**] ページで、次の値を入力または選択します。
 
-	![HDI.CustomCreateCluster][image-hdi-customcreatecluster]
+	![Provide Hadoop HDInsight cluster details][image-customprovision-page1]
 
     <table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -107,18 +121,19 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 
 	表に示されている値を入力または選択し、右矢印をクリックします。
 
-4. **[クラスターの構成]** ページで、次の値を入力または選択します。
+4. [**クラスターの構成**] ページで、次の値を入力または選択します。
 
 	<table border="1">
 	<tr><th>名前</th><th>値</th></tr>
-	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
+	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。 <br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
 	<tr><td>リージョン/仮想ネットワーク</td><td><p>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p><p>使用可能なリージョンは、 <strong>東アジア</strong>、 <strong>東南アジア</strong>、 <strong>北ヨーロッパ</strong>、 <strong>西ヨーロッパ</strong>、 <strong>米国東部</strong>、 <strong>米国西部</strong>、 <strong>米国中北部</strong>、 <strong>米国中南部</strong><br/>Azure 仮想ネットワークを作成した場合は、HDInsight クラスターで使用するよう構成するネットワークを選択できます。</p><p>Azure 仮想ネットワークの作成の詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx">仮想ネットワークの構成タスク</a>」を参照してください。</p></td></tr>
 	</table>
 
 
-5. **[クラスター ユーザーの構成]** ページで、次の値を指定します。
 
-    ![HDI.CustomCreateCluster.ClusterUser][image-hdi-customcreatecluster-clusteruser]
+5. [**クラスター ユーザーの構成**] ページで、次の情報を指定します。
+
+    ![Provide Hadoop HDInsight cluster user][image-customprovision-page3]
 
     <table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -136,14 +151,14 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 			<td>SQL データベース ユーザーのパスワードを指定します。</td></tr>
 	</table>
 
-	>[WACOM.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Windows Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+	>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Windows Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
     右矢印をクリックします。
 
 
 6. **[ストレージ アカウント]** ページで、次の情報を指定します。
 
-    ![HDI.CustomCreateCluster.StorageAccount][image-hdi-customcreatecluster-storageaccount]
+    ![Provide storage account for Hadoop HDInsight cluster][image-customprovision-page4]
 
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -172,20 +187,36 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 
 	右矢印をクリックします。
 
-7. **[ストレージ アカウント]** ページで、追加したストレージ アカウントのアカウント情報を入力します。
+7. クラスターの追加の記憶域を構成する場合、**ストレージ アカウント**ページで、追加のストレージ アカウントのアカウント情報を入力します。
 
-	![HDI.CustomCreateCluster.AddOnStorage][image-hdi-customcreatecluster-addonstorage]
+	![Provide additional storage details for HDInsight cluster][image-customprovision-page5]
 
     ここでも、既存のストレージを使用する、新しいストレージを作成する、別の Azure サブスクリプションのストレージを使用する、のいずれかを選択できます。値を指定するための手順は、前の手順と同様です。
 
-    チェック マークをクリックして、クラスターのプロビジョニングを開始します。プロビジョニングが完了すると、[状態] 列に **[実行中]** と表示されます。
+    > [AZURE.NOTE] HDInsight クラスター用の Azure ストレージ アカウントを選択した後は、そのアカウントを削除することも、別のアカウントに変更することもできません。
 
-	> [WACOM.NOTE] HDInsight クラスター用の Azure ストレージ アカウントを選択した後は、そのアカウントを削除することも、別のアカウントに変更することもできません。
+8. **スクリプト アクション**ページで、[**スクリプト アクションの追加**] をクリックして、クラスターの作成時に、クラスターのカスタマイズを実行するカスタム スクリプトに関する詳細を提供します。たとえば、スクリプト アクションを使用して、 <a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> をインストールするようにクラスターをカスタマイズできます。詳細については、「[Customize HDInsight clusters using Script Action (Script Action を使って HDInsight をカスタマイズする)][hdinsight-customize-cluster]」を参照してください。 
+	
+	![Configure Script Action to customize an HDInsight cluster][image-customprovision-page6]
 
-## <a id="powershell"></a> Azure PowerShell の使用
-Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、HDInsight クラスターをプロビジョニングする方法について説明します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。HDInsight で PowerShell を使用する方法の詳細については、「[Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-powershell]」を参照してください。HDInsight PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス][hdinsight-powershell-reference]」を参照してください。
+	<table border='1'>
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>名前</td>
+			<td>スクリプト操作の名前を指定します。</td></tr>
+		<tr><td>スクリプト URI</td>
+			<td>クラスターのカスタマイズに呼び出されるスクリプトへの URI を指定します。</td></tr>
+		<tr><td>ノードの種類</td>
+			<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>すべてのノード</b>、<b>ヘッド ノードのみ</b>、または <b>ワーカー ノードのみ</b>を選択できます。
+		<tr><td>パラメーター</td>
+			<td>スクリプトで必要な場合は、パラメーターを指定します。</td></tr>
+	</table>
 
-> [WACOM.NOTE] このセクションのスクリプトは、Azure Virtual Network の HDInsight クラスターの構成に使用できますが、Azure Virtual Network は作成されません。Azure Virtual Network の作成の詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)」を参照してください。
+	クラスターに複数のコンポーネントをインストールする 1 つ以上のスクリプト操作を追加することができます。スクリプトを追加した後、クラスターのプロビジョニングを開始するには、チェック マークをクリックします。 
+
+##<a id="powershell"></a> Azure PowerShell の使用
+Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、HDInsight クラスターをプロビジョニングする方法について説明します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。HDInsight PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス][hdinsight-powershell-refer]」を参照してください。
+
+> [AZURE.NOTE] このセクションのスクリプトは、Azure Virtual Network の HDInsight クラスターの構成に使用できますが、Azure Virtual Network は作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)」を参照してください。
 
 PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -214,7 +245,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 		# List the keys for a storage account
 		Get-AzureStorageKey "<StorageAccountName>"
 
-**Azure BLOB ストレージ コンテナーを作成するには**
+**Azure BLOB コンテナーを作成するには**
 
 - 次のコマンドを Azure PowerShell コンソール ウィンドウから実行します。
 
@@ -233,7 +264,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 
 **HDInsight クラスターをプロビジョニングするには**
 
-> [WACOM.NOTE] PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
+> [AZURE.NOTE] PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。  リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。  PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
 
 - 次のコマンドを Azure PowerShell コンソール ウィンドウから実行します。
 
@@ -262,7 +293,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 
 クラスターをプロビジョニングするときに、複数の Azure BLOB ストレージへの接続、仮想ネットワークの使用、Hive メタストアおよび Oozie メタストア用の Azure SQL データベースの使用など、その他の構成オプションを使用できます。これにより、データとメタデータの寿命を、クラスターの寿命と切り離すことができます。
 
-> [WACOM.NOTE] PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
+> [AZURE.NOTE] PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。  リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。  PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
 
 - 次のコマンドを Windows PowerShell ウィンドウから実行します。
 
@@ -305,7 +336,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 		    Add-AzureHDInsightMetastore -SqlAzureServerName "$oozieSQLDatabaseServerName.database.windows.net" -DatabaseName $oozieSQLDatabaseName -Credential $oozieCreds -MetastoreType OozieMetastore |
 		        New-AzureHDInsightCluster -Name $clusterName -Location $location -VirtualNetworkId $vnetID -SubnetName $subNetName
 
-	>[WACOM.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Windows Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+	>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Windows Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
 **HDInsight クラスターの一覧を表示するには**
 
@@ -314,11 +345,11 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 		Get-AzureHDInsightCluster -Name <ClusterName>
 
 
-## <a id="cli"></a> クロスプラットフォーム コマンド ラインの使用
+##<a id="cli"></a> クロスプラットフォーム コマンド ラインの使用
 
-> [WACOM.NOTE] 2014 年 8 月 29 日時点で、クロスプラットフォーム コマンド ライン インターフェイスは、クラスターと Azure Virtual Network 間の関連付けに使用できません。
+> [AZURE.NOTE] 2014 年 8 月 29 日時点で、クロスプラットフォーム コマンド ライン インターフェイスは、クラスターと Azure Virtual Network 間の関連付けに使用できません。
 
-HDInsight クラスターをプロビジョニングするもう 1 つの方法は、クロスプラットフォーム コマンド ライン インターフェイスです。コマンド ライン ツールは Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。コマンド ライン ツールはオープン ソースです。ソース コードは GitHub <a href= "https://github.com/Azure/azure-sdk-tools-xplat">(https://github.com/Azure/azure-sdk-tools-xplat)</a>で管理されています。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][azure-command-line-tools]」を参照してください。包括的なリファレンス ドキュメントについては、「[Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tool]」を参照してください。この記事では、Windows からコマンド ライン インターフェイスを使用する方法だけを取り上げます。
+HDInsight クラスターをプロビジョニングするもう 1 つの方法は、クロスプラットフォーム コマンド ライン インターフェイスです。コマンド ライン ツールは Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。コマンド ライン ツールはオープン ソースです。  ソース コードは GitHub <a href= "https://github.com/Azure/azure-sdk-tools-xplat">(https://github.com/Azure/azure-sdk-tools-xplat)</a>で管理されています。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][azure-command]」を参照してください。包括的なリファレンス ドキュメントについては、「[Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tool]」を参照してください。この記事では、Windows からコマンド ライン インターフェイスを使用する方法だけを取り上げます。
 
 クロスプラットフォーム コマンド ラインを使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -327,18 +358,18 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 - Azure のストレージ アカウントの作成
 - クラスターのプロビジョニング
 
-コマンド ライン インターフェイスは *Node.js パッケージ マネージャー (NPM)* または Windows インストーラーを使用してインストールできます。Microsoft では、この 2 つのオプションのいずれかを使用してインストールすることをお勧めします。
+コマンドライン インターフェイスは  *Node.js Package Manager (NPM)* または Windows インストーラーを使用してインストールできます。Microsoft では、この 2 つのオプションのいずれかを使用してインストールすることをお勧めします。
 
 **NPM を使用してコマンド ライン インターフェイスをインストールするには**
 
 1.	ブラウザーで **www.nodejs.org** を開きます。
 2.	**[INSTALL]** をクリックし、指示に従います。設定は既定の設定を使います。
-3.	コンピューターから**コマンド プロンプト** (または *Azure コマンド プロンプト*、または *VS2012 の開発者コマンド プロンプト*) を開きます。
+3.	コンピューターから **コマンド プロンプト** (または *Azure Command Prompt*、または  *Developer Command Prompt for VS2012*) を開きます。
 4.	コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
 		npm install -g azure-cli
 
-	> [WACOM.NOTE] NPM コマンドが見つからないというエラー メッセージが表示された場合は、次のパスが PATH 環境変数にあるか確認します。 <i>C:\Program Files (x86)\nodejs;C:\Users\[username]\AppData\Roaming\npm</i> または <i>C:\Program Files \nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
+	> [AZURE.NOTE] NPM コマンドが見つからないというエラー メッセージが表示された場合は、次のパスが PATH 環境変数にあるか確認します。 <i>C:\Program Files (x86)\nodejs;C:\Users\[username]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
 
 5.	次のコマンドを実行してインストールを確認します。
 
@@ -353,14 +384,14 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 
 **Windows インストーラーを使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	ブラウザーで **http://azure.microsoft.com/ja-jp/downloads/** を開きます。
+1.	**http://azure.microsoft.com/ja-jp/downloads/** を参照します。
 2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[クロスプラットフォーム コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラー ウィザードの指示に従います。
 
 **発行設定をダウンロードしてインポートするには**
 
 コマンド ライン インターフェイスを使用する前に、自分のコンピューターと Azure との接続を構成する必要があります。Azure のサブスクリプション情報は、コマンド ライン インターフェイスがアカウントにアクセスする際に使用されます。この情報は、Azure から発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、コマンド ライン インターフェイスの以降の操作にはこのファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
 
-> [WACOM.NOTE] 発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
+> [AZURE.NOTE] 発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
 
 
 1.	**コマンド プロンプト**を開きます。
@@ -387,9 +418,9 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 
 		azure storage account create [options] <StorageAccountName>
 
-	場所を指定するよう求められたら、HDINsight クラスターをプロビジョニングできる場所を選択します。このストレージは、HDInsight クラスターと同じ場所にある必要があります。現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、**米国中南部**だけです。  
+	場所を指定するよう求められたら、HDINsight クラスターをプロビジョニングできる場所を選択します。このストレージは、HDInsight クラスターと同じ場所にある必要があります。現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、および**米国中南部**のみです。  
 
-Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
+Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、または削除方法][azure-create-storageaccount]」を参照してください。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -402,9 +433,9 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
 	-- Lists the keys for a storage account
 	azure storage account keys list <StorageAccountName>
 
-管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの管理方法][azure-create-storageaccount]」の「ストレージ アクセス キーの表示、コピーおよび再生成」を参照してください。
+管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの作成、管理、または削除方法][azure-create-storageaccount]」の  *How to: View, copy and regenerate storage access keys* セクションを参照してください。
 
-HDInsight クラスターでは、ストレージ アカウント内にコンテナーも必要です。指定するストレージ アカウントにまだコンテナーがない場合は、*azure hdinsight cluster create* により、コンテナー名を指定するよう求められ、コンテナーも作成されます。ただし、コンテナーを事前に作成する場合は、次のコマンドを使用できます。
+HDInsight クラスターでは、ストレージ アカウント内にコンテナーも必要です。指定したストレージ アカウントにまだコンテナーがない場合、 *azure hdinsight cluster create* により、コンテナー名を指定して、コンテナーを作成することを求めるメッセージが表示されます。ただし、コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
 	azure storage container create --account-name <StorageAccountName> --account-key <StorageAccountKey> [ContainerName]
 
@@ -447,7 +478,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 		#Run this command to create a cluster using the config file
 		azure hdinsight cluster create --config <file>
 
-	>[WACOM.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Windows Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+	>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Windows Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
 
 	![HDI.CLIClusterCreationConfig][image-cli-clustercreation-config]
@@ -471,7 +502,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 
 
 
-## <a id="sdk"></a> HDInsight .NET SDK の使用
+##<a id="sdk"></a> HDInsight .NET SDK の使用
 HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。
 
 SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順を実行する必要があります。
@@ -484,9 +515,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 **HDInsight .NET SDK をインストールするには**
 
-公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
+公開されている SDK の最新のビルドを [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
-**自己署名証明書を取得するには**
+**自己署名証明書を作成するには**
 
 自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
 
@@ -501,22 +532,22 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 	<tr>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Property</th>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Value</th></tr>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">値</th></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Category</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Templates/Visual C#/Windows</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C#/Windows</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Template</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Console Application</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Name</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">CreateHDICluster</td></tr>
 	</table>
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
-5. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+5. **[ツール]** メニューで、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
 6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
@@ -589,7 +620,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 
 
-## <a id="nextsteps"></a> 次のステップ
+##<a id="nextsteps"></a> 次のステップ
 この記事では、HDInsight クラスターをプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started] - HDInsight クラスターの使用方法について説明されています。
@@ -597,6 +628,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 * [Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-powershell] - HDInsight で PowerShell を使用する方法について説明されています。
 * [HDInsight での Hadoop ジョブの送信][hdinsight-submit-jobs] - プログラムを使用して HDInsight にジョブを送信する方法について説明されています。
 * [HDInsight][hdinsight-sdk-documentation] - Azure HDInsight SDK について説明されています。
+
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/ja-jp/library/dn479185.aspx
 [hdinsight-hbase-custom-provision]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/
@@ -629,10 +661,12 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [image-hdi-customcreatecluster-storageaccount]: ./media/hdinsight-get-started/HDI.CustomCreateCluster.StorageAccount.png
 [image-hdi-customcreatecluster-addonstorage]: ./media/hdinsight-get-started/HDI.CustomCreateCluster.AddOnStorage.png
 
-[image-customprovision-page1]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page1.png
-[image-customprovision-page2]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page2.png
-[image-customprovision-page3]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page3.png
-[image-customprovision-page4]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page4.png
+[image-customprovision-page1]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page1.png "Provide Hadoop HDInsight cluster details"
+[image-customprovision-page3]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page3.png "Provide Hadoop HDInsight cluster users"
+[image-customprovision-page4]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page4.png "Provide storage account details for Hadoop HDInsight cluster"
+[image-customprovision-page5]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page5.png "Provide additional storage account details for Hadoop HDInsight cluster"
+[image-customprovision-page6]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page6.png "Configure Script Action to customize an HDInsight cluster"
+
 
 [image-cli-account-download-import]: ./media/hdinsight-provision-clusters/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-provision-clusters/HDI.CLIClusterCreation.png
@@ -644,5 +678,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [img-hdi-cluster]: ./media/hdinsight-provision-clusters/HDI.Cluster.png
 
   [89e2276a]: /ja-jp/documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

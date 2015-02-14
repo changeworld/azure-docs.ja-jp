@@ -1,5 +1,5 @@
 ﻿
-1. Eclipse の Package Explorer で ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
+1. Eclipse のパッケージ エクスプローラーで ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
 
 		import java.util.concurrent.ExecutionException;
 		import java.util.concurrent.atomic.AtomicBoolean;
@@ -34,19 +34,17 @@
 	}
 
 
-これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Google ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
+	これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Google ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    <div class="dev-callout"><b>注</b>
-	<p>Google 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡される値を、<em>MicrosoftAccount</em>、<em>Facebook</em>、<em>Twitter</em>、<em>windowsazureactivedirectory</em> のいずれかにします。</p>
-    </div>
+    > [AZURE.NOTE] Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡される値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかにします。
 
-3. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
+3. **onCreate** メソッドで、 `MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
 		authenticate();
 
 	この呼び出しで、認証プロセスが開始されます。
 
-4. **onCreate** メソッド内の `authenticate();` の後にある残りのコードを、新しい **createTable** メソッドに移動します。次のようになります。
+4. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動し、次のようにします。
 
 		private void createTable() {
 	
@@ -64,6 +62,6 @@
 			refreshItemsFromTable();
 		}
 
-9. **[Run]** メニューの **[Run]** をクリックしてアプリケーションを開始し、選択した ID プロバイダーでサインインします。 
+9. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。 
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。<!--HONumber=42-->

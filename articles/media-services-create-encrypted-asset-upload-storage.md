@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Create Encrypted Asset and Upload to Storage" pageTitle="暗号化されたアセットを作成してストレージにアップロードする - Azure" metaKeywords="" description="暗号化されたアセットを作成し、アップロードして、メディア サービスにメディア コンテンツを取得する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Create an encrypted Asset and upload to storage" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="暗号化されたアセットを作成してストレージにアップロードする - Azure" 
+	description="暗号化されたアセットを作成し、アップロードして、メディア サービスにメディア コンテンツを取得する方法について説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/30/2014" 
+	ms.author="juliako"/>
 
 
 
@@ -16,7 +30,7 @@
 - **AssetCreationOptions.CommonEncryptionProtected**: Common Encryption Protected (CENC) ファイル用。既に PlayReady で暗号化されている一連のファイルは、その例です 
 - **AssetCreationOptions.StorageEncrypted**: ストレージ暗号化。Azure ストレージへのアップロードの前にクリア入力ファイルを暗号化します。
 
-> WACOM.NOTE
+> AZURE.NOTE
 > Media Services では、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、資産のオンディスクでのストレージ暗号化を提供します。
 
 このサンプル コードでは、次のことが行われます。 
@@ -85,7 +99,7 @@ static public IAsset CreateAssetAndUploadMultipleFiles( AssetCreationOptions ass
         throw new FileNotFoundException(String.Format("No files in directory, check folderPath: {0}", folderPath));
     }
 
-    var uploadTasks = new List<Task>();
+    var uploadTasks = new List&lt;Task&gt;();
     foreach (var filePath in filePaths)
     {
         var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
@@ -118,8 +132,7 @@ static void  blobTransferClient_TransferProgressChanged(object sender, BlobTrans
 </code></pre>
 
 <h2>次のステップ</h2>
-これで、アセットをメディア サービスにアップロードできました。次は、「[方法: メディア プロセッサ インスタンスを取得する][]」トピックに進みます。
+これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
 
 [方法: メディア プロセッサ インスタンスを取得する]: ../media-services-get-media-processor/
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

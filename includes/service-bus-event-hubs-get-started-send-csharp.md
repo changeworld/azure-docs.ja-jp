@@ -9,17 +9,17 @@
 
 	[NuGet パッケージの管理] ダイアログ ボックスが表示されます。
 
-3. `Microsoft Azure Service Bus` を検索し、**[インストール]** をクリックして、使用条件に同意します。 
+3.  `Microsoft Azure Service Bus` を検索し、**[インストール]** をクリックして、使用条件に同意します。 
 
 	![][8]
 
 	これによりパッケージのダウンロードとインストールが実行され、<a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus ライブラリ NuGet パッケージ</a>への参照が追加されます。
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+4. **Program.cs** ファイルの先頭に次の  `using` ステートメントを追加します。
 
 		using Microsoft.ServiceBus.Messaging;
 
-5. **Program** クラスに次の `static` フィールドを追加し、**send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列を値に代入します。
+5. **Program** クラスに次の  `static` フィールドを追加し、**send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列を値に代入します。
 
 		static string eventHubName = "{event hub name}";
         static string connectionString = "{send connection string}";
@@ -60,4 +60,4 @@
 
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
-[8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
+[8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png<!--HONumber=42-->

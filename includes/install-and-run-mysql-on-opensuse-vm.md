@@ -41,7 +41,7 @@
 
 	行末のセミコロン (;) は、コマンドの終わりを示すために必要です。
 
-8. データベースを作成し、このデータベースに対するアクセス許可を `mysqluser` ユーザーに付与するには、次のコマンドを実行します。
+8. データベースを作成し、このデータベースに対するアクセス許可を  `mysqluser` ユーザーに付与するには、次のコマンドを実行します。
 
 		mysql> CREATE DATABASE testdatabase;
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
@@ -52,20 +52,20 @@
 
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
-	`ip-address` は、MySQL への接続元コンピューターの IP アドレスです。
+	 `ip-address` は、MySQL への接続元コンピューターの IP アドレスです。
 	
 10. MySQL データベース管理ユーティリティを終了するには、次のコマンドを実行します。
 
 		quit
 
-11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成します。アカウントを使用して [Azure の管理ポータル][AzurePreviewPortal] にログインします。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
+11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成します。[Azure の管理ポータル][AzurePreviewPortal]にログインします。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
 
 	![Endpoints][Image7]
 
 12. ページの下部にある **[追加]** をクリックします。
 	![Endpoints][Image8]
 
-13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** の両方に「3306」を指定します。これにより、MySQL にリモートで接続することができます。
+13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** に「3306」を指定します。これにより、MySQL にリモートで接続することができます。
 	![Endpoints][Image9]
 
 14. Azure の OpenSUSE 仮想マシンで実行されている MySQL にリモート接続するには、ローカル コンピューターで次のコマンドを実行します。
@@ -82,5 +82,4 @@
 [AzurePreviewPortal]: http://manage.windowsazure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

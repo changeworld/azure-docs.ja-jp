@@ -1,19 +1,16 @@
 ﻿#Azure で MySQL データベースを作成する方法
 
-このガイドでは、[ClearDB] を使用して [Azure ストア]から MySQL データベースを作成する方法と、[Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成する方法について説明します。[ClearDB] は、サービスとしてのフォルト トレラント データベース プロバイダーであり、Azure データセンターで MySQL データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。  
+このガイドでは、[ClearDB] を使用して [Azure ストア]から MySQL データベースを作成する方法と、[Azure Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成する方法について説明します。[ClearDB] は、サービスとしてのフォルト トレラント データベース プロバイダーであり、Azure データセンターで MySQL データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。  
 
 ##目次
 * [方法: Azure ストアからの MySQL データベースの作成](#CreateFromStore)
 * [方法: Azure Website のリンク済みリソースとしての MySQL データベースの作成](#CreateForWebSite)
 
-<div class="dev-callout"> 
-<b>注</b> 
-<p>MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。</p> 
-</div>
+> [AZURE.NOTE] MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。
 
 <h2><a id="CreateFromStore"></a>方法: Azure ストアからの MySQL データベースの作成</h2>
 
-[Azure ストア]から MySQL を作成するには、以下の手順を実行します。
+[Azure ストア]から MySQL データベースを作成するには、以下の手順を実行します。
 
 1. [Azure の管理ポータル][portal]にログインします。
 2. ページの下部にある **[+新規]** をクリックし、**[ストア]** を選択します。
@@ -36,21 +33,21 @@
 
 	![Manage MySQL database in Azure portal](./media/create-mysql-db/manage-mysql-add-on.png)
 
-7. ページの下部にある **[接続文字列]** をクリックして、データベース接続情報を取得できます。
+7. ページの下部にある **[接続文字列]** をクリックして、データベース接続情報を取得できます (上図を参照)。
 
 	![MySql connection information](./media/create-mysql-db/mysql-conn-info.png) 
 
 
 <h2><a id="CreateForWebSite"></a>方法: Azure Website のリンク済みリソースとしての MySQL データベースの作成</h2>
 
-[Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成するには、以下の手順を実行します。
+[Azure Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成するには、以下の手順を実行します。
 
 1. [Azure の管理ポータル][portal]にログインします。
 2. ページの下部にある **[+新規]** をクリックし、**[コンピューティング]**、**[Web サイト]**、**[データベースとともに作成]** の順に選択します。
 
 	![Create website with database](./media/create-mysql-db/custom_create.png)
 
-3. Web サイトの **URL** を指定して、サイトの**リージョン**を選択し、**[データベース]** ドロップダウン リストから **[新しい MySQL データベースを作成します]** を選択します。オプションで、接続文字列の既定の名前を置き換えることができます。ページの下部にある矢印をクリックします。
+3. Web サイトの **URL** を指定して、サイトの**リージョン**を選択し、**[データベース]** ボックスから **[新しい MySQL データベースを作成します]** を選択します。オプションで、接続文字列の既定の名前を置き換えることができます。ページの下部にある矢印をクリックします。
 
 	![Provide website details](./media/create-mysql-db/provide-website-details.png) 
 
@@ -74,10 +71,11 @@
 
 	![Shown connection string](./media/create-mysql-db/shown-conn-string.png)
 
-> [WACOM.NOTE]接続文字列には、Web サイト アプリケーションから接続文字列名によりアクセスできます。.NET アプリケーションでは、接続文字列は **connectionStrings** オブジェクトにあります。他のプログラミング言語では、接続文字列には環境変数としてアクセスできます。詳細については、「[Web サイトの構成方法][configure]」を参照してください。
+> [AZURE.NOTE] 接続文字列には、Web サイト アプリケーションから接続文字列名によりアクセスできます。.NET アプリケーションでは、接続文字列は **connectionStrings** オブジェクトにあります。他のプログラミング言語では、接続文字列には環境変数としてアクセスできます。詳細については、「[Web サイトの構成方法][configure]」を参照してください。
 
 [ClearDB]: http://www.cleardb.com/
 [waws]: /ja-jp/documentation/services/web-sites/
 [Azure ストア]: /ja-jp/gallery/store/
 [portal]: http://manage.windowsazure.com
 [configure]: ../web-sites-configure/
+<!--HONumber=42-->

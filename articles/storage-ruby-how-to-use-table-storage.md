@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Ruby) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Ruby, table storage Ruby" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Ruby API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Table Service from Ruby" authors="tomfitz" solutions="" manager="wpickett" editor="" />
+<properties 
+	pageTitle="テーブル ストレージを使用する方法 (Ruby) | Microsoft Azure" 
+	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Ruby API を使用して記述されています。" 
+	services="storage" 
+	documentationCenter="ruby" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="11/24/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="ruby" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="tomfitz"/>
 
 
 
@@ -8,7 +22,7 @@
 
 # Ruby からテーブル サービスを使用する方法
 
-このガイドでは、Microsoft Azure テーブル サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、「[次のステップ]」(#next-steps) セクションを参照してください。
+このガイドでは、Microsoft Azure テーブル サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、「[次のステップ](#next-steps)」 セクションを参照してください。
 
 ## 目次
 
@@ -18,30 +32,32 @@
 * [Ruby アプリケーションの作成](#create-a-ruby-application)
 * [アプリケーションからストレージへのアクセスの構成](#configure-your-application-to-access-storage)
 * [Azure のストレージ接続文字列の設定](#setup-a-windows-azure-storage-connection)
-* [方法: テーブルを作成する](#how-to-create-a-table)
-* [方法: エンティティをテーブルに追加する](#how-to-add-an-entity-to-a-table)
-* [方法: エンティティを更新する](#how-to-update-an-entity)
-* [方法: エンティティのグループを操作する](#how-to-work-with-groups-of-entities)
-* [方法: エンティティを照会する](#how-to-query-for-an-entity)
-* [方法: エンティティのセットを照会する](#how-to-query-a-set-of-entities)
-* [方法: エンティティ プロパティのサブセットを照会する](#how-to-query-a-subset-of-entity-properties)
-* [方法: エンティティを削除する](#how-to-delete-an-entity)
-* [方法: テーブルを削除する](#how-to-delete-a-table)
+* [方法:テーブルを作成する](#how-to-create-a-table)
+* [方法:エンティティをテーブルに追加する](#how-to-add-an-entity-to-a-table)
+* [方法:エンティティを更新する](#how-to-update-an-entity)
+* [方法:エンティティのグループを操作する](#how-to-work-with-groups-of-entities)
+* [方法:エンティティを照会する](#how-to-query-for-an-entity)
+* [方法:エンティティのセットを照会する](#how-to-query-a-set-of-entities)
+* [方法:エンティティ プロパティのサブセットを照会する](#how-to-query-a-subset-of-entity-properties)
+* [方法:エンティティを削除する](#how-to-delete-an-entity)
+* [方法:テーブルを削除する](#how-to-delete-a-table)
 * [次のステップ](#next-steps)
 
-[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
+[AZURE.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## <a id="create-a-windows-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a id="create-a-ruby-application"></a>Ruby アプリケーションを作成する
+## <a id="create-a-ruby-application"></a>Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、[Microsoft Azure での Ruby アプリケーションの作成に関するページ]を参照してください(/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)。
+Ruby アプリケーションを作成します。手順については、 
+「[Azure VM での Ruby on Rails Web アプリケーション](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)。」
 
 ## <a id="configure-your-application-to-access-storage"></a>アプリケーションからストレージへのアクセスの構成
 
-Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
+Azure Storage を使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。 
+このパッケージには、REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### RubyGems を使用してパッケージを取得する
 
@@ -57,14 +73,14 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## <a id="setup-a-windows-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Azure の管理ポータル]にログインします(https://manage.windowsazure.com/)。
+1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログインします。
 
 2. 使用するストレージ アカウントを表示します。
 
@@ -98,15 +114,15 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 * **update\_entity():** 既存のエンティティを置換することで更新します。
 * **merge\_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
 * **insert\_or\_merge\_entity():** 既存のエンティティを置換することで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
-* **insert\_or\_replace\_entity():**新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert\_or\_replace\_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-次の例に、**update\_entity()** を使用してエンティティを更新する方法を示します。
+次の例に、**update\_entity()**: を使用してエンティティを更新する方法を示します。
 
 	entity = { "content" => "test entity with updated content", 
 	  :PartitionKey => "test-partition-key", :RowKey => "1" }
 	azure_table_service.update_entity("testtable", entity)
 
-**update\_entity()** と **merge\_entity()** では、更新されるエンティティが存在しないと更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insert\_or\_replace\_entity()** または **insert\_or\_merge\_entity()** を使用する必要があります。
+**update\_entity()** および **merge\_entity()** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insert\_or\_replace\_entity()** または **insert\_or\_merge\_entity()** を使用する必要があります。
 
 ## <a id="how-to-work-with-groups-of-entities"></a>方法:エンティティのグループを操作する
 
@@ -152,7 +168,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## <a id="how-to-delete-a-table"></a>方法:テーブルを削除する
 
-テーブルを削除するには、**delete\_table()** を使用して、削除するテーブルの名前を渡します。
+テーブルを削除するには、**delete\_table()** メソッドを使用して、削除するテーブルの名前を渡します。
 
 		azure_table_service.delete_table("testtable")
 
@@ -163,5 +179,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 * MSDN リファレンス:[Azure のデータの格納とアクセス](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx)
 * [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 * GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

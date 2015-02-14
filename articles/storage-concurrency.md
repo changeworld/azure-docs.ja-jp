@@ -1,6 +1,20 @@
-﻿<properties title="Managing Concurrency in Microsoft Azure Storage" pageTitle="required" description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御の管理方法" metaKeywords="Optional" services="Optional" solutions="Optional" documentationCenter="Optional" authors="tamram" manager="adinah" videoId="Optional" scriptId="Optional" />
+<properties 
+	pageTitle="必須" 
+	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法" 
+	services="storage" 
+	documentationCenter="" 
+	authors="tamram" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/08/2014" ms.author="tamram" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/08/2014" 
+	ms.author="tamram"/>
 
 #Microsoft Azure Storage での同時実行制御の管理
 最新のインターネットを基盤とするアプリケーションでは、複数のユーザーが同時にデータを表示し、更新することが一般的です。このような場合、アプリケーション開発者は予測可能なエクスペリエンスをエンド ユーザーに提供する方法を注意深く検討する必要があり、特に複数のユーザーが同じデータを更新できる場合はこれが重要になります。開発者は、データの同時実行制御の主な戦略として、次の 3 つの方法を検討する場合が一般的です。  
@@ -27,12 +41,12 @@ Storage サービスでは、格納されているすべてのオブジェクト
 このプロセスの概要は次のとおりです。  
 
 1.	Storage サービスから BLOB を取得します。この応答に含まれる HTTP ETag ヘッダーの値が、Storage サービスに格納されているオブジェクトの現在のバージョンを示します。
-2.	BLOB を更新するときに、手順 1. でサービスに送信した要求の **If-Match** 条件ヘッダーで返された ETag の値を含めます。
+2.	BLOB を更新する場合は、サービスに送信する要求の **If-Match** 条件ヘッダーに、手順 1. で取得した ETag 値を追加します。
 3.	サービスによって、要求内の ETag の値と BLOB の現在の ETag の値が比較されます。
-4.	BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。これは、クライアントがこの BLOB を取得した後に、別のプロセスがこれを更新したことを示しています。
-5.	BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag と同じバージョンである場合、サービスは要求された処理を実行し、この BLOB の新しいバージョンが作成されたことを示すために現在の ETag の値を更新します。  
+4.	BLOB の現在の ETag 値のバージョンが、要求の **If-Match** 条件ヘッダーにある ETag と異なる場合、サービスはクライアントに 412 エラーを返します。これは、クライアントがこの BLOB を取得した後に、別のプロセスがこれを更新したことを示しています。
+5.	Blob の現在の ETag 値のバージョンが、要求の **If-Match** 条件ヘッダーの ETag と同じ場合は、サービスが要求された操作を実行し、新しいバージョンが作成されたことを示すために BLOB の現在の ETag 値を更新します。  
 
-次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。次に、BLOB を更新するときに **AccessCondition** オブジェクトを使用します。この **AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。完全なサンプルは[こちら](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)からダウンロードできます。  
+次の C# スニペット (Client Storage Library 4.2.0 を使用) は、BLOB のプロパティからアクセスできる、取得済みまたは挿入済みの ETag 値に基づいて **If-Match AccessCondition** を作成する方法の例を示します。BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。完全なサンプルは [こちら](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114) からダウンロードできます。  
 
 	// Retrieve the ETag from the newly created blob
 	// Etag is already populated as UploadText should cause a PUT Blob call 
@@ -65,11 +79,11 @@ Storage サービスでは、格納されているすべてのオブジェクト
 	        throw;
 	}  
 
-Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** の各条件ヘッダー、およびその組み合わせもサポートしています。詳細については、MSDN の「[BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/ja-jp/library/dd179371.aspx) 」を参照してください。  
+ストレージ サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** などの追加の条件ヘッダー、およびそれらを組み合わせたものを使用できます。詳細については、MSDN の [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/ja-jp/library/dd179371.aspx) を参照してください。  
 
-次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返すコンテナー操作をまとめたものです。  
+次の表は、要求に **If-Match** などの条件ヘッダーを使用でき、応答で ETag 値を返すコンテナー操作をまとめたものです。  
 
-操作	| コンテナーの ETag 値を返す |	条件ヘッダーを受け取る|
+操作	|コンテナー ETag 値を返す|	条件ヘッダーの使用|
 ------------|-----------------------|------------------------------------|
 Create Container|	Yes|	No|
 Get Container Properties|	Yes|	No|
@@ -83,9 +97,9 @@ List Blobs|	No|	No
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。  
 
-次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返す BLOB 操作をまとめたものです。  
+次の表は、要求に **If-Match** などの条件ヘッダーを使用でき、応答で ETag 値を返す BLOB 操作をまとめたものです。  
 
-操作	| ETag 値を返す	| 条件ヘッダーを受け取る|
+操作	|ETag 値を返す	|条件ヘッダーの使用|
 -----------|-------------------|----------------------------|
 Put Blob|	Yes|	Yes|
 Get Blob|	Yes|	Yes|
@@ -95,7 +109,7 @@ Get Blob Metadata|	Yes|	Yes|
 Set Blob Metadata|	Yes|	Yes|
 Lease Blob (*)|	Yes|	Yes|
 Snapshot Blob|	Yes|	Yes|
-Copy Blob|	Yes|	Yes (コピー元とコピー先の BLOB)|
+Copy Blob|	Yes|	Yes (コピー元およびコピー先 BLOB に対して)|
 Abort Copy Blob|	No|	No|
 Delete Blob|	No|	Yes|
 Put Block|	No|	No|
@@ -104,14 +118,14 @@ Get Block List|	Yes|	No|
 Put Page|	Yes|	Yes|
 Get Page Ranges|	Yes|	Yes
 
-(*) Lease BLOB では、BLOB の ETag は変更されません。  
+(*) Lease Blob では、BLOB の ETag は変更されません。  
 
 ##BLOB でのペシミスティック同時実行制御
-BLOB をロックして排他的に使用する場合は、[リース](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) を取得します。リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
+BLOB をロックして排他的に使用するには、BLOB の [リース](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) を取得します。リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
 
 リースでは、排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取りなど、さまざまな同期戦略がサポートされています。リースが存在する場合、Storage サービスは排他的書き込み (put、set、delete の各操作) を強制的に実行しますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。読み込み操作にリース ID を使用しない場合、共有読み取りになります。  
 
-次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。完全なサンプルは[こちら](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)からダウンロードできます。  
+次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。次のスニペットは、ストレージ サービスの BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用して、リース情報をカプセル化します。完全なサンプルは [こちら] からダウンロードできます(http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)。  
 
 	// Acquire lease for 15 seconds
 	string lease = blockBlob.AcquireLease(TimeSpan.FromSeconds(15), null);
@@ -138,7 +152,7 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 	        throw;
 	}  
 
-リース ID を渡さずにリースを取得した BLOB に対して書き込み操作を要求すると、412 エラーで失敗します。**UploadText** メソッドを呼び出す前にリース期間が終了したにもかかわらずリース ID を渡そうとすると、その要求も **412** エラーで失敗します。リースの有効期限とリース ID の管理の詳細については、「[Lease Blob](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) 」の REST ドキュメントを参照してください。  
+リース ID を渡さずにリースを取得した BLOB に対して書き込み操作を要求すると、412 エラーで失敗します。**UploadText** メソッドを呼び出す前にリースの有効期限が切れた場合、リース ID を渡すと、要求が失敗し、**412** エラーが表示されます。リースの有効期限とリース ID の管理の詳細については、[Lease Blob](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) の REST ドキュメントを参照してください。  
 
 次の BLOB 操作では、ペシミスティック同時実行制御の管理にリースを使用できます。  
 
@@ -177,7 +191,7 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 
 - [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/ja-jp/library/azure/dd179371.aspx)
 - [Lease Container](http://msdn.microsoft.com/ja-jp/library/azure/jj159103.aspx)
-- [Lease Blob ](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) 
+- [Lease Blob](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) 
 
 #Table サービスでの同時実行制御の管理
 エンティティを扱っている場合、Table サービスではオプティミスティック同時実行制御の確認が既定の動作として使用されます。一方、BLOB サービスの場合は、オプティミスティック同時実行制御の確認を実行するように明示的に選択する必要があります。これ以外の相違点としては、Table サービスではエンティティの同時実行制御しか管理できませんが、BLOB サービスではコンテナーと BLOB の両方の同時実行制御を管理できる点があります。  
@@ -185,14 +199,14 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 オプティミスティック同時実行制御を使用して、Table ストレージ サービスからエンティティを取得した後に他のプロセスがそれを更新していないか確認するには、Table サービスがエンティティを返す時に受け取った ETag の値を使用できます。このプロセスの概要は次のとおりです。  
 
 1.	Table ストレージ サービスからエンティティを取得します。この応答に含まれている ETag の値によって、ストレージ サービスでこのエンティティに関連付けられている現在の識別子を識別できます。
-2.	エンティティを更新するときに、手順 1. でサービスに送信した要求の必須の **If-Match** ヘッダーで返された ETag の値を含めます。
+2.	エンティティを更新する場合は、サービスに送信する要求の必須 **If-Match** ヘッダーに、手順 1. で取得した ETag の値を含めます。
 3.	サービスによって、要求内の ETag の値とエンティティの現在の ETag の値が比較されます。
-4.	エンティティの現在の ETag の値が、要求の必須 **If-Match** ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。これは、クライアントがこのエンティティを取得した後に、別のプロセスがこれを更新したことを示しています。
-5.	エンティティの現在の ETag の値が、要求に含まれる必須の **If-Match** ヘッダーの ETag の値と等しい場合、または **If-Match** ヘッダーにワイルドカード文字 (*) が含まれている場合、サービスは要求された処理を実行し、更新されたことを示すためにエンティティの ETag の値を更新します。  
+4.	エンティティの現在の ETag の値が、要求の必須 **If-Match** ヘッダーの ETag の値と異なる場合、サービスはクライアントに 412 エラーを返します。これは、クライアントがこのエンティティを取得した後に、別のプロセスがこれを更新したことを示しています。
+5.	エンティティの現在の ETag の値が、要求に含まれる必須 **If-Match** ヘッダーの ETag の値と等しい場合、または **If-Match** ヘッダーにワイルドカード文字 (*) が含まれている場合、サービスは要求された処理を実行し、更新されたことを示すためにエンティティの ETag の値を更新します。  
 
 BLOB サービスとは異なり、Table サービスではクライアントが更新要求に必ず **If-Match** ヘッダーを含める必要があります。ただし、クライアントが要求の **If-Match** ヘッダーにワイルドカード文字 (*) を設定していた場合、無条件の更新 (最終書き込み者優先戦略) を実行し、同時実行制御の確認を省略することができます。  
 
-次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスが同時実行制御の違反を確認できるようになっています。別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。完全なサンプルは[こちら](http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)からダウンロードできます。  
+次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスが同時実行制御の違反を確認できるようになっています。別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。完全なサンプルは [こちら] からダウンロードできます(http://code.msdn.microsoft.com/windowsazure/Managing-Concurrency-using-56018114)。
 
 	try
 	{
@@ -215,7 +229,7 @@ customer.ETag = "*";
 
 次の表は、Table エンティティで ETag の値がどのように使用されるかをまとめたものです。  
 
-操作	|ETag 値を返す	| If-Match 要求ヘッダーが必須|
+操作	|ETag 値を返す	|If-Match 要求ヘッダーが必須|
 ------------|-------------------|--------------------------------|
 Query Entities|	Yes|	No|
 Insert Entity|	Yes|	No|
@@ -225,7 +239,7 @@ Delete Entity|	No|	Yes|
 Insert or Replace Entity|	Yes|	No|
 Insert or Merge Entity|	Yes|	No 
 
-**Insert or Replace Entity** および **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません*。  
+**Insert or Replace Entity** および **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません。*  
 
 一般に、テーブルを利用するスケーラブルなアプリケーションを開発するときは、オプティミスティック同時実行制御を採用する必要があります。ペシミスティック同時実行制御のロックが必要な場合、テーブルにアクセスする際には、テーブルに対する操作が行われる前に各テーブルに指定した BLOB を関連付け、BLOB のリースの取得を試行するという手法を利用できます。この手法では、テーブルに対する操作が行われる前にすべてのデータのアクセス パスでリースが確実に取得されるようにアプリケーションを設計する必要があります。また、リース期間は最低 15 秒であるため、スケーラビリティについては慎重に考慮する必要があります。  
 
@@ -263,8 +277,7 @@ Azure Storage の詳細については、以下を参照してください。
 
 - [Microsoft Azure Storage のホーム ページ](http://azure.microsoft.com/ja-jp/services/storage/)
 - [Microsoft Azure Storage の概要](http://azure.microsoft.com/ja-jp/documentation/articles/storage-introduction/)
-- [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/)[How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/) [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/)
-- Storage Architecture - [Windows Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Storage アーキテクチャ - Windows Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- Storage Getting Started for [Blob](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/), [Table](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/) and [Queues](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/)
+- Storage Architecture - [Windows Azure Storage:A Highly Available Cloud Storage Service with Strong Consistency (Storage アーキテクチャ - Windows Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

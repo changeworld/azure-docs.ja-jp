@@ -32,3 +32,4 @@
 		    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
 		    UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 		}
+<!--HONumber=42-->

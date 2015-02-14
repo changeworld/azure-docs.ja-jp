@@ -1,31 +1,33 @@
-<properties linkid="manage-windows-howto-logon" urlDisplayName="Log on to a VM" pageTitle="Windows Server が実行されている仮想マシンへのログオン" metaKeywords="Azure logging on vm, vm portal" description="Windows Server 2008 R2 が実行されている仮想マシンに Azure の管理ポータルを使用してログオンする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server が実行されている仮想マシンにログオンする方法" authors="kathydav" solutions="" manager="dongill" editor="tysonn" />
+﻿<properties services="virtual-machines" title="Windows Server が実行されている仮想マシンにログオンする方法" authors="KBDAzure" solutions="" manager="timlt" editor="tysonn" />
 
-> [WACOM.NOTE] 要件とトラブルシューティングのヒントについては、「[RDP または SSH を使用した Azure 仮想マシンへの接続][RDP または SSH を使用した Azure 仮想マシンへの接続]」を参照してください。
+>[AZURE.NOTE] ユーザー名またはパスワードをリセットする必要がある場合、または仮想マシンで RDP を有効にする必要がある場合、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能を使用できます。要件やトラブルシューティングのヒントについては、「[RDP または SSH で Azure 仮想マシンに接続する](http://go.microsoft.com/fwlink/p/?LinkId=398294)」を参照してください。
 
-1.  まだサインインしていない場合は、[Azure の管理ポータル][Azure の管理ポータル]にサインインします。
+1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2.  **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
+2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
 
-3.  コマンド バーで、**[接続]** をクリックします。
+3. コマンド バーで、**[接続]** をクリックします。
 
-    ![仮想マシンへのログオン][仮想マシンへのログオン]
+	![Log on to the virtual machine](./media/virtual-machines-log-on-win-server/connectwindows.png)
 
-4.  **[開く]** をクリックして、仮想マシン用に自動的に作成されたリモート デスクトップ プロトコル ファイルを使用します。
+4. **[開く]** をクリックして、仮想マシン用に自動的に作成されたリモート デスクトップ プロトコル ファイルを使用します。
+	
+5. **[接続]** をクリックして続行します。
 
-5.  **[接続]** をクリックして接続処理を続行します。
+	![Continue with connecting](./media/virtual-machines-log-on-win-server/connectpublisher.png)
 
-    ![接続の続行][接続の続行]
+6. 仮想マシンで管理アカウントの資格情報を入力し、**[OK]** をクリックします。 
 
-6.  仮想マシンで管理アカウントのユーザー名とパスワードを入力して、**[OK]** をクリックします。
+ >[AZURE.TIP] 通常、これは仮想マシンの作成時に指定したユーザー名とパスワードとなります。ユーザー名のドメイン情報が正しいことを確認してください。
 
-7.  **[はい]** をクリックして、目的の仮想マシンであることを確認します。
+>- VM がユーザーの組織のドメインに属している場合は、ユーザー名にそのドメインの名前が含まれていることを確認してください。
+- VM がドメインに属していない場合は、ドメイン名を削除して行を '\' で開始するか、VM 名をドメイン名として使用します。たとえば、 `\MyUserName` や  `MyTestVM\MyUserName` となります。 
+- VM がドメイン コントローラーである場合っは、そのドメインのドメイン管理者アカウントのユーザー名とパスワードを入力します。
 
-    ![目的の仮想マシンであることを確認][目的の仮想マシンであることを確認]
+**[はい]** をクリックして、目的の仮想マシンであることを確認します。
 
-    これで、仮想マシンを他のサーバーとまったく同様に扱うことができます。
+![Verify the identity of the machine](./media/virtual-machines-log-on-win-server/connectverify.png)
 
-  [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://go.microsoft.com/fwlink/p/?LinkId=398294
-  [Azure の管理ポータル]: http://manage.windowsazure.com
-  [仮想マシンへのログオン]: ./media/virtual-machines-log-on-win-server/connectwindows.png
-  [接続の続行]: ./media/virtual-machines-log-on-win-server/connectpublisher.png
-  [目的の仮想マシンであることを確認]: ./media/virtual-machines-log-on-win-server/connectverify.png
+これで、仮想マシンをリモートで使用して作業できます。
+
+<!--HONumber=42-->

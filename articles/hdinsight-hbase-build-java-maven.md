@@ -1,16 +1,30 @@
-﻿<properties title="Build an HBase application using Maven" pageTitle="Maven を使用した HBase アプリケーションのビルド " description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし Azure HDInsight にデプロイする方法について説明します" metaKeywords="Maven hbase hadoop, hbase hadoop, maven java hbase, maven java hbase hadoop, maven java hadoop, hbase hdinsight, hbase java hdinsight, maven hdinsight, maven java hdinsight, hadoop database, hdinsight database" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" manager="paulettm" />
+﻿<properties 
+	pageTitle="Maven を使用した HBase アプリケーションのビルド" 
+	description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight にデプロイする方法について説明します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="blackmist" 
+	manager="paulettm" 
+	editor=""/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/20/2014" ms.author="larryfr" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/20/2014" 
+	ms.author="larryfr"/>
 
 ##Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)
 
-Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apache.org/) アプリケーションを作成およびビルドする方法について説明します。このアプリケーションを Azure HDInsight (Hadoop) で使用します。
+Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成およびビルドする方法について説明します。その後、このアプリケーションを Azure HDInsight (Hadoop) で使用します。
 
-[Maven](http://maven.apache.org/) Java プロジェクトのソフトウェア、ドキュメント、およびレポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。この記事では、このツールを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
+[Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、およびレポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。この記事では、このツールを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
 
 ##要件
 
-* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
+* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以上
 
 * [Maven](http://maven.apache.org/)
 
@@ -18,7 +32,7 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 ##プロジェクトを作成する
 
-1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。たとえば、 `cd code\hdinsight のように指定します。`
+1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。たとえば、 `cd code\hdinsight`
 
 2. Maven でインストールされた __mvn__ コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
@@ -26,9 +40,9 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 	これにより、__artifactID__ パラメーターにより指定された名前で、新しいディレクトリが現在のディレクトリに作成されます (この例では **hbaseapp**)。このディレクトリには、次の項目が含まれます。
 
-	* __pom.xml__ - プロジェクト オブジェクト モデル  ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+	* __pom.xml__ - プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
-	* __src__ - アプリケーションを作成する __main\java\com\microsoft\examples__ ディレクトリに含まれるディレクトリです。
+	* __src__ - アプリケーションを作成する __main\java\com\microsoft\examples__ ディレクトリを含むディレクトリです。
 
 3. __src\test\java\com\microsoft\examples\apptest.java__ ファイルはこの例では使用されないため、削除します。
 
@@ -42,9 +56,9 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
           <version>0.98.4-hadoop2</version>
         </dependency>
 
-	これは Maven に対して、__hbase-client__ のバージョン __0.98.4-hadoop2__ がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索]を使用して、(http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) この依存関係のその他の情報を表示できます。
+	これは Maven に対して、__hbase-client__ のバージョン __0.98.4-hadoop2__ がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)を使用して、この依存関係のその他の情報を表示できます。
 
-2. __pom.xml__ ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
+2. __pom.xml__ ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば、`</dependencies>` と `</project>` の間)。
 
 		<build>
 		  <sourceDirectory>src</sourceDirectory>
@@ -58,6 +72,14 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 	        </resource>
 	      </resources>
 		  <plugins>
+		    <plugin>
+        	  <groupId>org.apache.maven.plugins</groupId>
+        	  <artifactId>maven-compiler-plugin</artifactId>
+        	  <configuration>
+          	    <source>1.6</source>
+          	    <target>1.6</target>
+        	  </configuration>
+      		</plugin>
 		    <plugin>
 		      <groupId>org.apache.maven.plugins</groupId>
 		      <artifactId>maven-shade-plugin</artifactId>
@@ -82,9 +104,9 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 	これにより、HBase の構成情報が含まれているリソース (__conf\hbase-site.xml__) が構成されます。
 
-	> [WACOM.NOTE] コードを介して構成値を設定することもできます。その方法については、__CreateTable__ サンプル内のコメントを参照してください。
+	> [AZURE.NOTE] コードを介して構成値を設定することもできます。その方法については、__CreateTable__  サンプル内のコメントを参照してください。
 
-	これにより、Maven でビルドされる JAR 内のライセンスの重複を防ぐために使用する [maven-shade-plugin] が(http://maven.apache.org/plugins/maven-shade-plugin/)構成されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+	これによって、[maven-compiler-plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [maven-shade-plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。トポロジのコンパイルにはコンパイラ プラグインが使用されます。シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
 	また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uberjar (または fatjar) も生成します。
 
@@ -132,13 +154,13 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 	このファイルは、HDInsight クラスター用の HBase 構成の読み込みに使用されます。
 
-	> [WACOM.NOTE] これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。HDInsight で使用される完全バージョンの hbase-site.xml 構成ファイルの場合は、[リモート デスクトップで HDInsight クラスターにアクセスします]。(http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp)hbase-site.xml ファイルは C:\apps\dist\hbase-<version number>-hadoop2\conf ディレクトリにあります。ファイル パスの "version number" の部分は、クラスターで HBase が更新されると変わります。
+	> [AZURE.NOTE] これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。HDInsight で使用される完全バージョンの hbase-site.xml 構成ファイルの場合は、[リモート デスクトップで HDInsight クラスターにアクセス](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp)します。hbase-site.xml ファイルは、C:\apps\dist\hbase-&lt;version number>-hadoop2\conf ディレクトリにあります。ファイル パスの "version number" の部分は、クラスターで HBase が更新されると変わります。
 
 3. __hbase-site.xml__ ファイルを保存します。
 
 ##アプリケーションを作成する
 
-1. __hbaseapp\src\com\microsoft\examples__ ディレクトリに移動し、__app.java__ ファイルの名前を __CreateTable.java__ に変更します。
+1. __hbaseapp\src\main\java\com\microsoft\examples__ ディレクトリに移動し、app.java__ ファイルの名前を __CreateTable.java__ に変更します。
 
 2. __CreateTable.java__ ファイルを開き、既存の内容を次のコードで置き換えます。
 
@@ -285,7 +307,7 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 5. __SearchByEmail.java__ ファイルを保存します。
 
-6. __hbaseapp\src\main\java\com\microsoft\examples__ ディレクトリに、__DeleteTable.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+6. __hbaseapp\src\main\hava\com\microsoft\examples__ ディレクトリに、__DeleteTable.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
 		package com.microsoft.examples;
 		import java.io.IOException;
@@ -323,13 +345,13 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 3. コマンドが完了すると、__hbaseapp\target__ ディレクトリに __hbaseapp-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
-	> [WACOM.NOTE] __hbaseapp-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
+	> [AZURE.NOTE] __hbaseapp-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
 
 ##JAR をアップロードしてジョブを開始する
 
-> [WACOM.NOTE] 「[データを HDInsight にアップロードする方法]」で説明されているように、ファイルを HDInsight クラスターにアップロードするには多くの方法があります(/ja-jp/documentation/articles/hdinsight-upload-data/)。次の手順では、[Azure PowerShell] を使用しています(/ja-jp/documentation/articles/install-configure-powershell/)。
+> [AZURE.NOTE] 「[HDInsight での Hadoop ジョブ用データのアップロード](/ja-jp/documentation/articles/hdinsight-upload-data/)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、[Azure PowerShell](/ja-jp/documentation/articles/install-configure-powershell/) を使用しています。
 
-1. [Azure PowerShell] をインストールおよび構成した後で、(/ja-jp/documentation/articles/install-configure-powershell/)__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+1. [Azure PowerShell](/ja-jp/documentation/articles/install-configure-powershell/) をインストールおよび構成した後で、__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
 		<#
 		.SYNOPSIS
@@ -511,9 +533,9 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 
 	このファイルには 2 つのモジュールが含まれます。
 
-	* __Add-HDInsightFile__ - HDInsight へのファイルのアップロードに使用されます。
+	* __Add-HDInsightFile__ - HDInsight へのファイルのアップロードに使用されます
 
-	* __Start-HBaseExample__ - 前に作成されたクラスの実行に使用されます。
+	* __Start-HBaseExample__ - 前に作成されたクラスの実行に使用されます
 
 2. __hbase-runner.psm1__ ファイルを保存します。
 
@@ -552,7 +574,7 @@ Apache Maven を使用して Java ベースの [Apache HBase](http://hbase.apach
 		Gabriela Ingram - ID: 6
 		Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-	`-emailRegex` の値に __fabrikam.com__ を使用すると、__fabrikam.com__ が電子メール フィールドに含まれているユーザーが返されます。この検索は正規表現ベースのフィルターを使用して実装されるため、電子メールが "r" という文字で始まるエントリを返す __^r__ などの正規表現を使用することもできます。
+	`-emailRegex` の値に __fabrikam.com__ を使用すると、__fabrikam.com__ が電子メール フィールドに含まれているユーザーが返されます。この検索は正規表現ベースのフィルターを使用して実装されるため、電子メールが  'r' という文字で始まるエントリを返す __^r__ などの正規表現を使用することもできます。
 
 ##テーブルを削除する
 
@@ -567,5 +589,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 ###Start-HBaseExample を使用したときに、結果が表示されないか、予期しない結果が表示される
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された STDERR を表示します。
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

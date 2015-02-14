@@ -1,8 +1,8 @@
-﻿## Web API プロジェクトを作成する
+## Web API プロジェクトを作成する
 
 次の手順に従って、新しい ASP.NET WebAPI バックエンドを作成してクライアントを認証し、通知を生成するか、以前のプロジェクトまたは[認証ユーザーへのプッシュ通知の送信](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users/)に関するチュートリアルで使用した既存のバックエンドに変更を加えます。
 
-> [AZURE.NOTE] **重要**: このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。確認するには、Visual Studio を起動します。**[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。**NuGet Package Manager for Visual Studio 2013** を探し、バージョンが 2.8.50313.46 以降であることを確認します。違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
+> [AZURE.NOTE] **重要**:このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。確認するには、Visual Studio を起動します。**[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。**NuGet Package Manager for Visual Studio 2013** を探し、バージョンが 2.8.50313.46 以降であることを確認します。違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
 > 
 > ![][4]
 
@@ -13,7 +13,7 @@
 	
 	![][1]
 
-3. **[新しい ASP.NET MVC プロジェクト]** ダイアログ ボックスで **[Web API]**、**[OK]** を順にクリックします。
+3. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[Web API]**、**[OK]** の順にクリックします。
 
 	![][2]
 
@@ -33,11 +33,11 @@
 
 	![][6]
 
-9. Notifications.cs で、ファイルの先頭に以下の `using` ステートメントを追加します。
+9. Notifications.cs で、ファイルの先頭に以下の  `using` ステートメントを追加します。
 
         using Microsoft.ServiceBus.Notifications;
 
-10. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure の管理ポータル](http://manage.windowsazure.com) で確認できます) に置き換えてください。
+10. 次に、 `Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure の管理ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
 
 		public class Notifications
         {
@@ -50,9 +50,9 @@
             }
         }
 
-11. 次に、**AuthenticationTestHandler.cs** の新しいクラスを作成します。ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** を順にクリックします。新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。このクラスは、*基本認証*でユーザーを認証するために使用します。実際のアプリでは、任意の認証スキームを使用できます。
+11. 次に、**AuthenticationTestHandler.cs** の新しいクラスを作成します。ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** を順にクリックします。新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。このクラスは、 *Basic Authentication*でユーザーを認証するために使用します。実際のアプリでは、任意の認証スキームを使用できます。
 
-12. AuthenticationTestHandler.cs に次の `using` ステートメントを追加します。
+12. AuthenticationTestHandler.cs に次の  `using` ステートメントを追加します。
 
         using System.Net.Http;
         using System.Threading.Tasks;
@@ -61,7 +61,7 @@
         using System.Security.Principal;
         using System.Net;
 
-13. AuthenticationTestHandler.cs で、`AuthenticationTestHandler` クラス定義を以下に置き換えます。
+13. AuthenticationTestHandler.cs で、 `AuthenticationTestHandler` クラス定義を以下に置き換えます。
 
 		public class AuthenticationTestHandler : DelegatingHandler
 	    {
@@ -110,9 +110,9 @@
 	        }
 	    }
 
-	> [AZURE.NOTE] **セキュリティに関する注意**: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。				
+	> [AZURE.NOTE] **セキュリティ上の注意**: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。				
 
-14. **App_Start/WebApiConfig.cs** クラスの `Register` メソッドの末尾に、次のコードを追加します。
+14. **App_Start/WebApiConfig.cs** クラスの  `Register` メソッドの末尾に、次のコードを追加します。
 
 		config.MessageHandlers.Add(new AuthenticationTestHandler());
 
@@ -122,7 +122,7 @@
 
 	![][8]
 
-16. RegiterController.cs に次の `using` ステートメントを追加します。
+16. RegiterController.cs に次の  `using` ステートメントを追加します。
 
         using Microsoft.ServiceBus.Notifications;
         using AppBackend.Models;
@@ -130,7 +130,7 @@
         using Microsoft.ServiceBus.Messaging;
         using System.Web;
 
-17. `RegisterController` クラス定義に、次のコードを追加します。このコードでは、ハンドラーによって認証されたユーザーのユーザー タグを追加します。また、要求されたタグを登録する権限をユーザーが持っていることを確認するコードをオプションで追加することもできます。
+17.  `RegisterController` クラス定義内で、次のコードを追加します。このコードでは、ハンドラーによって認証されたユーザーのユーザー タグを追加します。また、要求されたタグを登録する権限をユーザーが持っていることを確認するコードをオプションで追加することもできます。
 
 		private NotificationHubClient hub;
 
@@ -138,7 +138,7 @@
         {
             hub = Notifications.Instance.Hub;
         }
-
+		
         public class DeviceRegistration
         {
             public string Platform { get; set; }
@@ -237,7 +237,7 @@
 
 18. **RegisterController** を作成したときの手順に従って、**NotificationsController** という新しいコントローラーを作成します。このコンポーネントは、デバイスが安全に通知を取得する方法を公開します。また、ユーザーがデバイスへの安全なプッシュをトリガーする方法も提供します。通知ハブに通知を送信するときに、通知の ID のみを含む (実際のメッセージは含まない) 直接通知を送信することに注意してください。
 
-19. NotificationsController.cs に次の `using` ステートメントを追加します。
+19. NotificationsController.cs に次の  `using` ステートメントを追加します。
 
         using AppBackend.Models;
         using System.Threading.Tasks;
@@ -250,28 +250,24 @@
             var user = HttpContext.Current.User.Identity.Name;
             var userTag = "username:"+user;
 
-
             // windows
             var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Hello, " + user + "</text></binding></visual></toast>";
             await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
-
 
             // apns
             var alert = "{\"aps\":{\"alert\":\"Hello\"}}";
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, userTag);
 
-
             // gcm
             var notif = "{ \"data\" : {\"msg\":\"Hello\"}}";
             await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, userTag);
-
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 21. **F5** キーを押して、アプリケーションを実行し、ここまでの作業に問題がないことを確認します。アプリにより、Web ブラウザーが起動し、ASP.NET ホーム ページが表示される必要があります。 
 
-22. 次に、このアプリを Azure の Web サイトにデプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
+22. 次に、このアプリを Azure の Web サイトにデプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして、**[発行]** を選択します。
 
 23. 発行先として Azure の Web サイトを選択します。
 
@@ -281,7 +277,7 @@
 
     ![][B16]
 
-25. **[接続]** タブの "**宛先 URL**" プロパティをメモしておきます。後で、この URL を*バックエンド エンドポイント*として参照します。**[発行]** をクリックします。
+25. **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *backend endpoint*として参照します。**[発行]** をクリックします。
 
     ![][B18]
 
@@ -298,3 +294,4 @@
 [B15]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users15.PNG
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
+<!--HONumber=42-->

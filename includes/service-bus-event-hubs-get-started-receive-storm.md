@@ -1,14 +1,14 @@
-﻿## Apache Storm を使用したメッセージの受信
+## Apache Storm を使用したメッセージの受信
 
 [**Apache Storm**](https://storm.incubator.apache.org) は、境界のないデータ ストリームを信頼性高く簡略化して処理する分散型リアルタイム計算システムです。このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
 Event Hub の受信パターンの詳細については、「[Event Hub の概要]」を参照してください。
 
-このチュートリアルでは、[HDInsight Storm] インストールを使用します。これは、Event Hub スパウトと共に既に利用できます。
+このチュートリアルでは、[HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に利用できます。
 
 1. [HDInsight Storm の使用](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-storm-getting-started/)の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
 
-2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。これには events-storm-spout が含まれています。
+2.  `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。これには events-storm-spout が含まれています。
 
 3. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。これにより、後の手順で Storm プロジェクトに参照として追加することができます。
 
@@ -216,8 +216,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 			}
 		}
 
-
-	このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
+  このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
 <!-- Links -->
 [Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn821413.aspx
@@ -228,4 +227,4 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
 [12]: ./media/service-bus-event-hubs-getstarted/create-storm1.png
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
-[14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
+[14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png<!--HONumber=42-->

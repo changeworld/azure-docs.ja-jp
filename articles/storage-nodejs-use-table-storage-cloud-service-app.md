@@ -1,6 +1,20 @@
-<properties urlDisplayName="Web App with Storage" pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter="nodejs" title="Node.js Web Application using Storage" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties 
+	pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure" 
+	description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" 
+	services="cloud-services, storage" 
+	documentationCenter="nodejs" 
+	authors="MikeWasson" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="mwasson" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="mwasson"/>
 
 
 
@@ -9,11 +23,11 @@
 
 # ストレージを使用する Node.js Web アプリケーション
 
-このチュートリアルでは、Node.js 用の Microsoft Azure クライアント ライブラリを使用して、[Express を使用する Node.js Web アプリケーション] のチュートリアルで作成したアプリケーションを拡張し、データ管理サービスを使用できるようにします。アプリケーションを拡張して、Azure にデプロイできる Web ベースのタスク一覧アプリケーションを作成します。このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
+このチュートリアルでは、Node.js 用の Windows Azure クライアント ライブラリを使用して、[Express を使用する Node.js Web アプリケーション]のチュートリアルで作成したアプリケーションを拡張し、データ管理サービスを使用できるようにします。アプリケーションを拡張して、Azure にデプロイできる Web ベースのタスク一覧アプリケーションを作成します。このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
 
 タスク項目は Azure ストレージに格納されます。Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。Azure ストレージには、データを格納してアクセスできるデータ構造がいくつか用意されています。Azure SDK for Node.js に含まれる API または REST API を通じて、そのストレージ サービスを活用できます。詳細については、「[Azure のデータの格納とアクセス]」を参照してください。
 
-このチュートリアルは、[Node.js Web アプリケーション] および [Express を使用する Node.js][Express を使用する Node.js Web アプリケーション] のチュートリアルを完了していることを前提としています。
+このチュートリアルは、[Node.js Web アプリケーション]、[Node.js with Express][Express を使用する Node.js Web アプリケーション]のチュートリアルを完了していることを前提としています。
 
 学習内容:
 
@@ -26,12 +40,10 @@
 
 ## Web.Config のストレージ資格情報の設定
 
-Azure ストレージにアクセスするには、ストレージ資格情報を渡す必要があります。そのためには、web.config アプリケーション設定を使用します。これらの設定は環境変数としてノードに渡され、その後 Azure SDK によって読み取られます。
+Azure ストレージにアクセスするには、ストレージ資格情報を渡す必要があります。そのためには、web.config アプリケーション設定を使用します。
+これらの設定は環境変数としてノードに渡され、その後 Azure SDK によって読み取られます。
 
-<div class="dev-callout">
-<strong>注</strong>
-<p>ストレージの資格情報は、アプリケーションが Azure にデプロイされた場合にのみ使用されます。エミュレーターで実行している場合、アプリケーションはストレージ エミュレーターを使用します。</p>
-</div>
+> [AZURE.NOTE] ストレージの資格情報は、アプリケーションが Azure にデプロイされた場合にのみ使用されます。エミュレーターで実行している場合、アプリケーションはストレージ エミュレーターを使用します。
 
 ストレージ アカウントの資格情報を取得し、web.config 設定に追加するには、次の手順を実行します。
 
@@ -45,10 +57,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 
 	これにより、ホステッド サービスに関連付けられたストレージ アカウントとアカウント キーのリストが取得されます。
 
-	<div class="dev-callout">
-	<strong>注</strong>
-	<p>Azure SDK では、サービスを展開するときにストレージ アカウントが作成されるので、以前のガイドでアプリケーションを展開したときから、ストレージ アカウントは既に存在しています。</p>
-	</div>
+	> [AZURE.NOTE] Azure SDK では、サービスを展開するときにストレージ アカウントが作成されるので、以前のガイドでアプリケーションを展開したときから、ストレージ アカウントは既に存在しています。
 
 4.  **ServiceDefinition.csdef** ファイルを開きます。このファイルには、アプリケーションを Azure にデプロイするときに使用される環境設定が含まれます。
 
@@ -67,7 +76,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 
 2. 次のコマンドを使用して、[azure]、[node-uuid]、[nconf]、および [async] モジュールをローカルにインストールし、これらのモジュールのエントリを **package.json** ファイルに保存します。
 
-		PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
+	    PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
 
 	このコマンドの出力は次のように表示されます。
 
@@ -188,7 +197,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 		  this.task = task;
 		}
 
-2. **tasklist.js** ファイルにさらに、**showTasks**、**addTask**、および **completeTasks** の各メソッドを追加します。
+2. Continue adding to the **tasklist.js** ファイルへの内容の追加を続行し、**showTasks**、**addTask**、**completeTasks** の各メソッドを追加します。
 
 		TaskList.prototype = {
 		  showTasks: function(req, res) {
@@ -249,7 +258,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 		app.use('/', routes);
 		app.use('/users', users);
 
-	これらの行を下のコードに置き換えます。これにより、ストレージ アカウントへの接続を使って、 <strong>タスク</strong> のインスタンスが初期化されます。これは  <strong>TaskList</strong> に渡され、TaskList ではこれを使用してテーブル サービスを操作します。
+	これらの行を下のコードに置き換えます。これにより、ストレージ アカウントへの接続を使って、<strong>Task</strong> のインスタンスが初期化されます。これは <strong>TaskList</strong> に渡され、TaskList ではこれを使用してテーブル サービスを操作します。
 
 		var TaskList = require('./routes/tasklist');
 		var Task = require('./models/task');
@@ -365,25 +374,26 @@ Windows PowerShell ウィンドウで、次のコマンドレットを呼び出�
 	WARNING: 2:22:49 PM - Instance WebRole1_IN_0 of role WebRole1 is ready.
 	WARNING: 2:22:50 PM - Created Website URL: http://tasklist.cloudapp.net/.
 
-前と同様に **-launch** オプションを指定しているため、発行が完了するとブラウザーが開かれ、Azure で実行されているアプリケーションが表示されます。
+前と同様に **-launch** オプションを指定してあるので、発行が完了するとブラウザーが開かれ、Azure で実行されているアプリケーションが表示されます。
 
-![My Task List ページを表示しているブラウザー ウィンドウ。URL から、ページが Azure でホストされていることがわかります](./media/storage-nodejs-use-table-storage-cloud-service-app/getting-started-1.png)
+![A browser window displaying the My Task List page. The URL indicates the page is now being hosted on Azure.](./media/storage-nodejs-use-table-storage-cloud-service-app/getting-started-1.png)
 
 ## アプリケーションの停止と削除
 
 アプリケーションのデプロイ後に、コストがかかることを避けたり、無料評価版の有効期間中に他のアプリケーションを作成してデプロイしたりするために、アプリケーションを無効にしたい場合があります。
 
-Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションを展開した直後からサーバー時間が消費されます。
+Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。
+インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションを展開した直後からサーバー時間が消費されます。
 
 次の手順では、アプリケーションの停止と削除の方法を示します。
 
-1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスのデプロイメントを停止します。
+1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスの展開を停止します。
 
         PS C:\node\tasklist\WebRole1> Stop-AzureService
 
 	サービスの停止には、数分間かかる場合があります。サービスが停止すると、停止したことを知らせるメッセージが表示されます。
 
-3.  サービスを削除するには、次のコマンドレットを呼び出します。
+2.  サービスを削除するには、次のコマンドレットを呼び出します。
 
         PS C:\node\tasklist\WebRole1> Remove-AzureService contosotasklist
 
@@ -393,7 +403,6 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
 
   [Express を使用する Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/web-app-with-express/
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
+  [Node.js Web Application]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
  
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

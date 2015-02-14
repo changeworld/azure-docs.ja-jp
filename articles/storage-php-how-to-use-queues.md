@@ -1,10 +1,24 @@
-﻿<properties title="How to use the queue service (PHP) - Azure feature guide" pageTitle="キュー サービスを使用する方法 (PHP) | Microsoft Azure" metaKeywords="Azure Queue Service messaging PHP" description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは PHP で記述されています。" documentationCenter="PHP" services="storage" authors="tamram" manager="adinah" />
+﻿<properties 
+	pageTitle="キュー サービスを使用する方法 (PHP) | Microsoft Azure" 
+	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは PHP で記述されています。" 
+	documentationCenter="php" 
+	services="storage" 
+	authors="tfitzmac" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="11/24/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="tomfitz"/>
 
 # PHP からキュー サービスを使用する方法
 
-このガイドでは、Azure キュー サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Windows SDK for PHP のクラスを利用して記述されています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ]」(#NextSteps) セクションを参照してください。
+このガイドでは、Azure キュー サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Windows SDK for PHP のクラスを利用して記述されています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
 
 ##目次
 
@@ -14,21 +28,21 @@
 * [PHP アプリケーションの作成](#create-app)
 * [Queue サービスにアクセスするようにアプリケーションを構成する](#configure-app)
 * [Azure のストレージ接続文字列の設定](#connection-string)
-* [方法: キューを作成する](#create-queue)
-* [方法: メッセージをキューに追加する](#add-message)
-* [方法: 次のメッセージをピークする](#peek-message)
-* [方法: 次のメッセージをデキューする](#dequeue-message)
-* [方法: キューに配置されたメッセージの内容を変更する](#change-message)
+* [方法:キューを作成する](#create-queue)
+* [方法:メッセージをキューに追加する](#add-message)
+* [方法:次のメッセージをピークする](#peek-message)
+* [方法:次のメッセージをデキューする](#dequeue-message)
+* [方法:キューに配置されたメッセージの内容を変更する](#change-message)
 * [メッセージのデキュー用の追加オプション](#additional-options)
-* [方法: キューの長さを取得する](#get-queue-length)
-* [方法: キューを削除する](#delete-queue)
+* [方法:キューの長さを取得する](#get-queue-length)
+* [方法:キューを削除する](#delete-queue)
 * [次のステップ](#next-steps)
 
-[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
+[AZURE.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-<h2><a id="create-account"></a>Azure のストレージ アカウントの作成</h2>
+<h2><a id="create-account"></a>Azure ストレージ アカウントの作成</h2>
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 <h2><a id="create-app"></a>PHP アプリケーションの作成</h2>
 
@@ -38,7 +52,7 @@ Azure キュー サービスにアクセスする PHP アプリケーション�
 
 <h2><a id="GetClientLibrary"></a>Azure クライアント ライブラリの入手</h2>
 
-[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
+[AZURE.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 <h2><a id="configure-app"></a>キュー サービスにアクセスするようにアプリケーションを構成する</h2>
 
@@ -49,14 +63,14 @@ Azure キュー サービス API を使用するには、次の要件があり�
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
-> [WACOM.NOTE]
-> この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE]
+> この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、 `WindowsAzure.php`オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
+この後のコード例では、 `require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
 
 <h2><a id="connection-string"></a>Azure のストレージ接続文字列の設定</h2>
 
@@ -75,7 +89,7 @@ Azure キュー サービス クライアントをインスタンス化するに
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
-	* 既定では 1 つの外部ソース (環境変数) のみサポートされています。
+	* 既定では 1 つの外部ソース - (環境変数) のみサポートされています。
 	* **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
 ここで概説している例では、接続文字列を直接渡します。
@@ -118,7 +132,7 @@ Azure キュー サービス クライアントをインスタンス化するに
 		echo $code.": ".$error_message."<br />";
 	}
 
-> [WACOM.NOTE]
+> [AZURE.NOTE]
 > メタデータ キーでは大文字と小文字は区別されません。すべてのキーはサービスから小文字で返されます。
 
 
@@ -196,7 +210,7 @@ Azure キュー サービス クライアントをインスタンス化するに
 
 <h2><a id="dequeue-message"></a>方法:次のメッセージをデキューする</h2>
 
-コードでは、2 つの手順でキューからメッセージを削除します。まず、**QueueRestProxy->listMessages** を呼び出すことです。このメソッドから返されたメッセージは、このキューからメッセージを読み取る他のコードからは参照できなくなります。既定では 30 秒、このメッセージは参照できなくなります (メッセージがこの時間内に削除されない場合、このキュー内で再び参照できるようになります)。キューからのメッセージの削除を完了するには、**QueueRestProxy->deleteMessage** を呼び出す必要があります。2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **deleteMessage** コードでは、メッセージが処理された直後に 
+コードでは、2 つの手順でキューからメッセージを削除します。まず、**QueueRestProxy->listMessages** を呼び出すことです。このメソッドから返されたメッセージは、このキューからメッセージを読み取る他のコードからは参照できなくなります。既定では 30 秒、このメッセージは参照できなくなります (メッセージがこの時間内に削除されない場合、このキュー内で再び参照できるようになります)。キューからのメッセージの削除を完了するには、**QueueRestProxy->deleteMessage** を呼び出す必要があります。2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
 	require_once 'vendor\autoload.php';
 
@@ -380,11 +394,10 @@ Azure キュー サービス クライアントをインスタンス化するに
 これで、Azure キュー サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 - MSDN リファレンス:[Azure のデータの格納とアクセス] []
-- Azure のストレージ チーム ブログ:<http://blogs.msdn.com/b/windowsazurestorage/>
+- Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+[ダウンロード]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://www.php.net/manual/en/function.require-once.php
-[Azure の管理ポータル]: http://manage.windowsazure.com/
+[Azure 管理ポータル]: http://manage.windowsazure.com/
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

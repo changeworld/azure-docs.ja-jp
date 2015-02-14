@@ -1,6 +1,20 @@
-﻿<properties linkid="manage-services-hdinsight-develop-Java-MapReduce-programs-for-HDInsight-Hadoop" urlDisplayName="HDInsight Tutorials" pageTitle="HDInsight での Hadoop 用 Java MapReduce プログラムの開発 | Azure" metaKeywords="hdinsight, hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce, Java" description="HDInsight Emulator で Java MapReduce プログラムを開発する方法、それらのプログラムを HDInsight にデプロイする方法について説明します。" services="hdinsight" title="Develop Java MapReduce programs for Hadoop in HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="nitinme" />
+﻿<properties 
+	pageTitle="HDInsight での Hadoop 用 Java MapReduce プログラムの開発 | Azure" 
+	description="HDInsight Emulator で Java MapReduce プログラムを開発する方法、それらのプログラムを HDInsight にデプロイする方法について説明します。" 
+	services="hdinsight" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	authors="nitinme" 
+	documentationCenter=""/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="10/10/2014" ms.author="nitinme" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="nitinme"/>
 
 # HDInsight での Hadoop 用 Java MapReduce プログラムの開発
 このチュートリアルでは、Apache Maven を使って Java でワード カウント Hadoop MapReduce ジョブを開発する場合の全工程にわたるシナリオについて説明します。さらに、アプリケーションを HDInsight Emulator でテストした後で Azure HDInsight クラスターにデプロイして実行する方法についても説明します。
@@ -10,9 +24,9 @@
 このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
 - Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][hdinsight-emulator]」を参照してください。
-- エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
+- エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成][powershell-install-configure]に関するページを参照してください。
 - エミュレーター コンピューターへの Java プラットフォーム JDK 7 以降のインストール。これはエミュレーター コンピューターで既に利用可能です。
-- [Apache Maven] のインストールおよび構成(http://maven.apache.org/)。
+- [Apache Maven](http://maven.apache.org/) のインストールおよび構成。
 - Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 
 ##この記事の内容
@@ -68,7 +82,7 @@
       	  <version>2.5.1</version>                                                                                            
     	</dependency>
 
-	これは、プロジェクトで特定のバージョン (<artifactId\> 内に記載) のライブラリ (<version\> 内に記載) を必要とすることを Maven に通知しています。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索]を使用して、(http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) その他の情報を表示できます。
+	これは、プロジェクトで特定のバージョン (<artifactId\> 内に記載) のライブラリ (<version\> 内に記載) を必要とすることを Maven に通知しています。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)を使用して、その他の情報を表示できます。
 
 2. __pom.xml__ ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
 
@@ -96,7 +110,7 @@
   		  </plugins>
 	    </build>
 
-	これにより、Maven でビルドされる JAR 内のライセンスの重複を防ぐために使用する [maven-shade-plugin] が(http://maven.apache.org/plugins/maven-shade-plugin/)構成されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+	これにより、Maven でビルドされる JAR 内のライセンスの重複を防ぐために使用する [maven-shade-plugin](http://maven.apache.org/plugins/maven-shade-plugin/) が構成されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
 	また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uberjar (または fatjar) も生成します。
 
@@ -193,7 +207,7 @@
 
 3. コマンドが完了すると、__wordcountjava\target__ ディレクトリに __wordcountjava-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
-	> [WACOM.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
+	> [AZURE.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
 
 
 ##<a name="test"></a>エミュレーターでプログラムをテストする
@@ -205,9 +219,9 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 3. ワード カウント MapReduce ジョブを実行する
 4. ジョブの結果を取得する
 
-HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][hdinsight-emulator-wasb]」を参照してください。 
+HDInsight Emulator は既定のファイル システムとして HDFS を使用します。  必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][hdinsight-emulator-wasb]」を参照してください。 
 
-このチュートリアルでは、HDFS *copyFromLocal* コマンドを使用して、データ ファイルを HDFS にアップロードします。次のセクションでは、Azure PowerShell を使用してファイルを Azure BLOB ストレージにアップロードする方法について説明します。Azure BLOB ストレージにファイルをアップロードするその他の方法については、「[HDInsight へのデータのアップロード][hdinsight-upload-data]」を参照してください。
+このチュートリアルでは、HDFS *copyFromLocal* コマンドを使用して、データ ファイルを HDFS にアップロードします。次のセクションでは、Azure PowerShell を使用してファイルを Azure BLOB ストレージにアップロードする方法について説明します。Azure BLOB ストレージにファイルをアップロードするその他の方法については、[HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
 このチュートリアルでは、次の HDFS フォルダー構造を使用します。
 
@@ -222,7 +236,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 このチュートリアルでは、%hadoop_home% ディレクトリにある .txt ファイルをデータ ファイルとして使用します。
 
-> [WACOM.NOTE] Hadoop HDFS のコマンドは大文字と小文字が区別されます。
+> [AZURE.NOTE] Hadoop HDFS のコマンドは大文字と小文字が区別されます。
 
 **データ ファイルをエミュレーター上の HDFS にコピーするには**
 
@@ -308,7 +322,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$containerName_Data = "<ContainerName>"
 		$location = "<MicrosoftDataCenter>"  # For example, "East US"
 
-	**$subscripionName** は、Azure サブスクリプションに関連付けられます。**$storageAccountName\_Data** と **$containerName\_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け]」を参照してください(http://msdn.microsoft.com/ja-jp/library/windowsazure/dd135715.aspx)。 
+	**$subscripionName** は Azure サブスクリプションに関連付けられた名前になります。**$storageAccountName\_Data** と **$containerName\_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け](http://msdn.microsoft.com/ja-jp/library/windowsazure/dd135715.aspx)」を参照してください 
 
 3. 次のコマンドを実行して、ストレージ アカウントと、そのアカウントの BLOB ストレージ コンテナーを作成します。
 
@@ -518,7 +532,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 3. スクリプトの最初の 6 つの変数を設定します。**$stringPrefix** は、指定した文字列をプレフィックスとして HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に付けるために使用されます。これらの名前の長さは 3 ～ 24 文字である必要があるため、指定する文字列とこのスクリプトで使用する名前の合計の長さが名前の文字制限を超えないように注意してください。**$stringPrefix** には、すべて小文字を使用する必要があります。 
  
-	**$storageAccountName\_Data** と **$containerName\_Data** は、データ ファイルとアプリケーションの格納に使用するストレージ アカウントとコンテナーです。**$location** は、データ ストレージ アカウントの場所と一致する必要があります。
+	**$storageAccountName\_Data** and **$containerName\_Data** are the storage account and container that are used for storing the data files and the application. **$location** must match the data storage account location.
 
 4. 残りの変数を確認します。
 5. スクリプト ファイルを保存します。
@@ -531,13 +545,13 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 
 ##<a name="retrieve"></a>MapReduce ジョブの出力を取得する
-このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]」と「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」を参照してください。
+このセクションでは、出力をダウンロードして表示する方法を示します。  Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]」と「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」を参照してください。
 
 
 **出力を取得するには**
 
 1. Azure PowerShell ウィンドウを開きます。
-2. ディレクトリを **C:\Tutorials\WordCountJava** に変更します。Azure PowerShell の既定のフォルダーは **C:\Windows\System32\WindowsPowerShell\v1.0** です。実行するコマンドレットによって出力ファイルが現在のフォルダーにダウンロードされます。出力ファイルをシステム フォルダーにダウンロードするアクセス許可はありません。
+2. ディレクトリを **C:\Tutorials\WordCountJava** に変更します。Azure PowerShell の既定のフォルダーは **C:\Windows\System32\WindowsPowerShell\v1.0** です。実行するコマンドレットによって出力ファイルが現在のフォルダーにダウンロードされます。  出力ファイルをシステム フォルダーにダウンロードするアクセス許可はありません。
 2. 次のコマンドを実行して、値を設定します。
 
 		$subscriptionName = "<AzureSubscriptionName>"
@@ -562,15 +576,15 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 このチュートリアルでは、Java MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce を実行する PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
 - [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][hdinsight-develop-streaming]
-- [Azure HDInsight の概要][hdinsight-get-started]
+- [Azure HDInsight の概要][hdinsight-get-started]に関するページ
 - [HDInsight Emulator の概要][hdinsight-emulator]
 - [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
-- [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
-- [HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]
-- [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
-- [Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]
-- [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]
+- [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]に関するページ
+- [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページ
+- [HDInsight での Hive の使用][hdinsight-use-hive]に関するページ
+- [HDInsight での Pig の使用][hdinsight-use-pig]に関するページ
+- [Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]に関するページ
+- [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]に関するページ
 
 [azure-purchase-options]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
@@ -589,7 +603,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 [hdinsight-admin-powershell]: ../hdinsight-administer-use-powershell/
 [hdinsight-use-hive]: ../hdinsight-use-hive/
-[hdinsight-use-pig]: ../hdinsight-use-pig/s
+[hdinsight-use-pig]: ../hdinsight-use-pig/
 [hdinsight-power-query]: ../hdinsight-connect-excel-power-query/
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
@@ -600,5 +614,4 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

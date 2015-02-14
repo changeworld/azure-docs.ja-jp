@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Debug HDInsight Hadoop Errors" pageTitle="HDInsight での Hadoop のデバッグ:エラー メッセージ | Azure" metaKeywords="hdinsight, hdinsight service, hdinsight azure, debug, error messages, errors" description="PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。" services="hdinsight" title="Debug Hadoop in HDInsight: Error messages" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="bradsev" />
+<properties 
+	pageTitle="HDInsight での Hadoop のデバッグ:エラー メッセージ | Azure" 
+	description="PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。" 
+	services="hdinsight" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	authors="bradsev" 
+	documentationCenter=""/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/10/2014" 
+	ms.author="bradsev"/>
 
 # HDInsight での Hadoop のデバッグ:エラー メッセージ
 
@@ -11,9 +25,9 @@
 
 ![HDI.Debugging.ErrorMessages.Portal][image-hdi-debugging-error-messages-portal]
 
-Azure PowerShell または Azure ポータルでユーザーが遭遇する可能性のあるエラーは、「[HDInsight エラー]」セクションに(#hdinsight-error-messages) 名前のアルファベット順に列挙され、各エラーは「[エラーの説明と対応策]」セクションの項目にリンクしています。(#discription-mitigation-errors) リンク先には、エラーについて以下の情報が示されています。
+Azure PowerShell または Azure ポータルでユーザーが遭遇する可能性のあるエラーは、「[HDInsight エラー](#hdinsight-error-messages)」セクションに名前のアルファベット順に列挙され、各エラーは「[エラーの説明と対応策](#discription-mitigation-errors)」セクションの項目にリンクしています。リンク先には、エラーについて以下の情報が示されています。
  	
-- **説明**: ユーザーが目にするエラー メッセージ	
+- **説明**: ユーザーに表示されるエラー メッセージ	
 - **対応策**: エラーから回復するために使用できる手順 
 
 ###HDInsight エラー
@@ -119,7 +133,7 @@ Azure PowerShell または Azure ポータルでユーザーが遭遇する可�
 - **対応策**:クラスターを削除して新しいクラスターを作成します。
 
 <h3><a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest</h3>
-- **説明**:クラスター コンテナー作成操作が重複しています。*nameOfYourContainer* のレコードが存在しますが、Etag が一致しません。   
+- **説明**:クラスター コンテナー作成操作が重複しています。 *nameOfYourContainer* のレコードが存在しますが、Etag が一致しません。   
 - **対応策**:一意の名前をコンテナーに付けて、作成操作をやり直します。 
 
 <h3><a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService</h3>
@@ -155,7 +169,7 @@ Azure PowerShell または Azure ポータルでユーザーが遭遇する可�
 - **対応策**:クラスターがエラー状態である場合は、クラスターを削除してやり直します。 
 
 <h3><a id="InsufficientResourcesCores"></a>InsufficientResourcesCores</h3>
-- **説明**:サブスクリプション ID *yourSubscriptionId* に、クラスター *yourClusterName* を作成するコアが残されていません。必要:*resourcesRequired*、利用可能: *resourcesAvailable*。  
+- **説明**:サブスクリプション ID *yourSubscriptionId* に、クラスター *yourClusterName* を作成するコアが残されていません。必要: *resourcesRequired*、利用可能: *resourcesAvailable*。  
 - **対応策**:サブスクリプションのリソースに空きを作るか、サブスクリプションで利用可能なリソースを増やして、クラスターの作成をやり直します。
 
 <h3><a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices</h3>
@@ -239,7 +253,7 @@ Azure PowerShell または Azure ポータルでユーザーが遭遇する可�
 - **対応策**:利用可能なバージョンを選択して、操作をやり直します。 
 
 <h3><a id="VersionNotSupported"></a>VersionNotSupported</h3>
-- **説明**:バージョン *specifiedVersion* がサポートされていません。   
+- **説明**:バージョン *specifiedVersion* はサポートされていません。   
 - **対応策**:サポートされているバージョンを選択して、操作をやり直します。
 
 <h3><a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion</h3>
@@ -263,5 +277,4 @@ Azure PowerShell または Azure ポータルでユーザーが遭遇する可�
 
 
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

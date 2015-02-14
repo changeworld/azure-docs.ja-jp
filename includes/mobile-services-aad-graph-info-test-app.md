@@ -6,7 +6,8 @@
 
     ![](./media/mobile-services-aad-graph-info-test-app/bob-login.png)
 
-2. カスタム API により、カスタムあいさつ文でユーザーのディレクトリ情報が返されます。この例では、ユーザーの住所を表示するために、*streetAddress*、*city*、*state*、および *postalCode* が必要です。
+2. カスタム API により、カスタムあいさつ文でユーザーのディレクトリ情報が返されます。この例では、ユーザーの住所を表示するために、 *streetAddress*, *city*, *state* および  *postalCode* が必要です。
 
     ![](./media/mobile-services-aad-graph-info-test-app/custom-greeting.png)
 
+<!--HONumber=42-->

@@ -20,13 +20,14 @@
 
 	モバイル サービスによって使用される通知ハブが、Windows Notification Services (WNS) の登録を使用して更新されます。これでモバイル サービスが、Azure の通知ハブを使用し、WNS と連携してアプリケーションに通知を送信できるようになりました。 
 
-	>[WACOM.NOTE]このチュートリアルでは、モバイル サービスのバックエンドから通知を送信する方法について説明しています。しかし同じ通知ハブの登録を使用して、任意のバックエンド サービスから通知を送信できます。詳細については、「[Notification Hubs の概要](http://msdn.microsoft.com/ja-jp/library/azure/jj927170.aspx)」を参照してください。
+	>[AZURE.NOTE]このチュートリアルでは、モバイル サービスのバックエンドから通知を送信する方法について説明しています。しかし同じ通知ハブの登録を使用して、任意のバックエンド サービスから通知を送信できます。詳細については、「[通知ハブの概要](http://msdn.microsoft.com/ja-jp/library/azure/jj927170.aspx)」を参照してください。
 
 5. ウィザードを完了すると、Visual Studio で新しく **[プッシュ設定はほぼ完了です]** ページが開きます。このページでは、モバイル サービス プロジェクトで通知の送信を構成するための別の方法として、このチュートリアルとは異なる方法が詳しく説明されています。 
 
-	>[WACOM.NOTE]プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。  
+	>[AZURE.NOTE]プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。  
 
 <!-- URLs. -->
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
 [Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /ja-jp/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
+<!--HONumber=42-->

@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="HDInsight Administration" pageTitle="HDInsight での Hadoop ジョブの送信 | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure, hive, mapreduce, HDInsight .NET SDK, powershell, submit mapreduce jobs, submit hive jobs, development, hadoop, apache" description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Submit  Hadoop jobs in HDInsight" authors="jgao" />
+﻿<properties 
+	pageTitle="HDInsight での Hadoop ジョブの送信 | Azure" 
+	description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="mumian"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/12/2014" ms.author="jgao" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/12/2014" 
+	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
 
@@ -10,11 +24,11 @@
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* Azure HDInsight クラスター。手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
+* Azure HDInsight クラスター。手順については、「[HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
 * Azure PowerShell のインストールおよび構成。手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
 
 
-##この記事の内容
+## この記事の内容
 
 * [PowerShell を使用して MapReduce ジョブを送信する](#mapreduce-powershell)
 * [PowerShell を使用して Hive ジョブを送信する](#hive-powershell)
@@ -24,10 +38,10 @@
 * [HDInsight .NET SDK を使用して Hive ジョブを送信する](#hive-sdk)
 * [次のステップ](#nextsteps)
 
-##<a id="mapreduce-powershell"></a> PowerShell を使用して MapReduce ジョブを送信する
-Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。HDInsight で PowerShell を使用する方法の詳細については、「[Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-powershell]」を参照してください。
+## <a id="mapreduce-powershell"></a> PowerShell を使用して MapReduce ジョブを送信する
+Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。
 
-Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには jar ファイル (*\example\jars\hadoop-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。Version 3.0 の HDInsight クラスターで、このファイルは hadoop-mapreduce-examples.jar という名前に変更されましたサンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、コンピューターから PowerShell を使用して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での Hadoop MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
+Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには jar ファイル (*\example\jars\hadoop-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。Version 3.0 の HDInsight クラスターで、このファイルは hadoop-mapreduce-examples.jar という名前に変更されましたサンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、コンピューターから PowerShell を使用して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
 
 **PowerShell を使用してワード カウント MapReduce プログラムを実行するには**
 
@@ -45,7 +59,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 		# Define the word count MapReduce job
 		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
-	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight で Hadoop と互換性のある BLOB ストレージのビッグ データを分析のために照会する][hdinsight-storage]」を参照してください。
+	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
 6. 次のコマンドを実行して、MapReduce ジョブを実行します。
 
@@ -80,7 +94,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 		$storageAccountName = "<StorageAccountName>"
 		$containerName = "<ContainerName>"			
 
-	Azure のストレージ アカウントは、HDInsight クラスターのプロビジョニング時に指定したアカウントです。ストレージ アカウントは、既定の HDInsight クラスター ファイル システムとして使用する BLOB コンテナーをホストするために使用されます。BLOB ストレージ コンテナー名は、クラスターのプロビジョニング時に別の名前を指定しない限り、通常、HDInsight クラスターと同じ名前です。
+	Azure のストレージ アカウントは、HDInsight クラスターのプロビジョニング時に指定したアカウントです。ストレージ アカウントは、既定の HDInsight クラスター ファイル システムとして使用する BLOB コンテナーをホストするために使用されます。  BLOB ストレージ コンテナー名は、クラスターのプロビジョニング時に別の名前を指定しない限り、通常、HDInsight クラスターと同じ名前です。
 
 3. 次のコマンドを実行して、Azure Storage のコンテキスト オブジェクトを作成します。
 
@@ -96,7 +110,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 		# Get the blob content
 		Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
-	次のコードは、既存のユーザーの電話番号を変更します。 */example/data/WordCountOutput* フォルダーは、MapReduce ジョブを実行するときに指定した出力フォルダーです。 *part-r-00000*  は、MapReduce ジョブの既定の出力ファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは *C:\example\data\WordCountOutput* フォルダーにダウンロードされます。
+	 *example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。 *part-r-00000* は MapReduce ジョブの既定の出力ファイル名です。  ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。  ファイルは  *C:\example\data\WordCountOutput\* フォルダーにダウンロードされます。
 
 5. 次のコマンドを実行して、MapReduce ジョブの出力ファイルの内容を表示します。
 
@@ -104,10 +118,10 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 	![HDI.GettingStarted.MRJobOutput][image-hdi-gettingstarted-mrjoboutput]
 
-	MapReduce ジョブは、単語と出現回数が記録された *part-r-00000* という名前のファイルを作成します。スクリプトでは findstr コマンドを使用して、"there" を含む単語をすべて表示しています。
+	MapReduce ジョブは、単語と出現回数が記録された  *part-r-00000* という名前のファイルを作成します。  スクリプトでは findstr コマンドを使用して、"there" を含む単語をすべて表示しています。
 
 
-> [WACOM.NOTE] MapReduce ジョブで出力された複数行を含む ./example/data/WordCountOutput/part-r-00000 ファイルをメモ帳で開いた場合、改行が正しく表示されません。これは予期されることです。
+> [AZURE.NOTE] MapReduce ジョブで出力された複数行を含む ./example/data/WordCountOutput/part-r-00000 ファイルをメモ帳で開いた場合、改行が正しく表示されません。これは予期されることです。
 
 
 
@@ -245,10 +259,10 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 
 
-##<a id="hive-powershell"></a> PowerShell を使用して Hive ジョブを送信する
-Apache [hdinsight-use-hive][apache-hive] では、HiveQL と呼ばれる SQL に似たスクリプト言語を使用して MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。 
+## <a id="hive-powershell"></a> PowerShell を使用して Hive ジョブを送信する
+Apache [hdinsight-use-hive][apache-hive] では、 *HiveQL* と呼ばれる SQL に似たスクリプト言語を使用して MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。 
 
-HDInsight クラスターには、*hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、PowerShell を使用して Hive ジョブを実行して、Hive テーブルのデータを表示する方法を説明します。 
+HDInsight クラスターには、 *hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、PowerShell を使用して Hive ジョブを実行して、Hive テーブルのデータを表示する方法を説明します。 
 
 **PowerShell を使用して Hive ジョブを実行するには**
 
@@ -273,14 +287,14 @@ HDInsight クラスターには、*hivesampletable* という Hive テーブル�
 
 	-File スイッチを使用して、HDFS 上の HiveQL スクリプト ファイルを指定できます。
 
-Hive の詳細については、「[HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]」を参照してください。
+Hive の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」を参照してください。
 
-##<a id="sqoop-powershell"></a>PowerShell を使用して Sqoop ジョブを送信する
+## <a id="sqoop-powershell"></a>PowerShell を使用して Sqoop ジョブを送信する
 
 「[HDInsight の Hadoop での Sqoop の使用][hdinsight-use-sqoop]」を参照してください。
 
-##<a id="mapreduce-sdk"></a> HDInsight .NET SDK を使用して MapReduce ジョブを送信する
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには jar ファイル (*\example\jars\hadoop-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での Hadoop MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
+## <a id="mapreduce-sdk"></a> HDInsight .NET SDK を使用して MapReduce ジョブを送信する
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには jar ファイル (*\example\jars\hadoop-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
 
 
 SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
@@ -291,7 +305,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 
 **HDInsight .NET SDK をインストールするには**
-公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started)からインストールできます。次の手順で、具体的な方法を説明します。
+公開されている SDK の最新のビルドを [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
 **Visual Studio コンソール アプリケーションを作成するには**
 
@@ -367,9 +381,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		string containerName = "<Blob container name>";
 		
 	
-	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション名は [Azure の管理ポータル][azure-management-portal]で確認できます。 
+	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション名は [Azure 管理ポータル][azure-management-portal]で確認できます。 
 
-	証明書については、「[Create and Upload a Management Certificate for Azure (Azure の管理証明書の作成とアップロード)][azure-certificate]」を参照してください。証明書を構成する簡単な方法は、PowerShell コマンドレットの *Get-AzurePublishSettingsFile* および *Import-AzurePublishSettingsFile* を実行することです。管理証明書が自動的に作成されアップロードされます。この PowerShell コマンドレットを実行した後、ワークステーションから *certmgr.msc* を開いて *[個人]、[証明書]* の順に展開すると、証明書が表示されます。PowerShell コマンドレットによって作成された証明書は、*[発行先]* と *[発行元]* の両方が *[Azure Tools]* になります。
+	証明書については、「[Azure の管理証明書の作成とアップロード][azure-certificate]」を参照してください。証明書を構成する簡単な方法は、PowerShell コマンドレットの  *Get-AzurePublishSettingsFile* および  *Import-AzurePublishSettingsFile* を実行することです。管理証明書が自動的に作成されアップロードされます。この PowerShell コマンドレットを実行した後、ワークステーションから  *certmgr.msc* を開いて  *Personal/Certificates* の順に展開すると、証明書が表示されます。PowerShell コマンドレットによって作成された証明書は、 *Issued To* と  *Issued By* の両方が  *Azure Tools* になります。
 
 	Azure のストレージ アカウント名は、HDInsight クラスターのプロビジョニング時に指定するアカウントです。既定のコンテナー名は、HDInsight クラスター名と同じです。
 	
@@ -386,7 +400,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
         mrJobDefinition.Arguments.Add("wasb:///example/data/gutenberg/davinci.txt");
         mrJobDefinition.Arguments.Add("wasb:///example/data/WordCountOutput");
 
-	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight で Hadoop と互換性のある BLOB ストレージのビッグ データを分析のために照会する][hdinsight-storage]」を参照してください。
+	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 		
 12. Main() 関数の最後に次のコードをコピーして、JobSubmissionCertificateCredential オブジェクトを作成します。
 
@@ -426,13 +440,13 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
         Console.WriteLine("Press ENTER to continue.");
 		Console.ReadLine();
 
-	出力フォルダーは MapReduce ジョブの定義時に指定します。既定のファイル名は *part-r-00000* です。
+	出力フォルダーは MapReduce ジョブの定義時に指定します。既定のファイル名は  *part-r-00000* です。
 
 **アプリケーションを実行するには**
 
 アプリケーションを Visual Studio で開いている間に、**F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態とアプリケーションの出力が表示されます。 
 
-##<a id="streaming-sdk"></a> HDInsight .NET SDK を使用して Hadoop ストリーミング ジョブを送信する
+## <a id="streaming-sdk"></a> HDInsight .NET SDK を使用して Hadoop ストリーミング ジョブを送信する
 HDInsight クラスターには、C# で開発されたワード カウント Hadoop ストリーミング プログラムが付属します。Mapper プログラムは */example/apps/cat.exe* で、Reduce プログラムは */example/apps/wc.exe* です。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。 
 
 MapReduce ジョブを送信する .NET アプリケーションの作成方法の詳細については、「[HDInsight .NET SDK を使用して MapReduce ジョブを送信する](#mapreduce-sdk)」を参照してください。
@@ -535,8 +549,8 @@ Hadoop ストリーミング ジョブの開発およびデプロイ方法の詳
 
 
 
-##<a id="hive-sdk"></a> HDInsight .NET SDK を使用して Hive ジョブを送信する 
-HDInsight クラスターには、*hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、.NET アプリケーションを作成して Hive ジョブを実行して、HDInsight クラスター上に作成された Hive テーブルを一覧表示する方法を説明します。Hive の使用法の詳細については、「[HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]」を参照してください。
+## <a id="hive-sdk"></a> HDInsight .NET SDK を使用して Hive ジョブを送信する 
+HDInsight クラスターには、 *hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、.NET アプリケーションを作成して Hive ジョブを実行して、HDInsight クラスター上に作成された Hive テーブルを一覧表示する方法を説明します。Hive の使用法の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」を参照してください。
 
 SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -546,7 +560,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 
 **HDInsight .NET SDK をインストールするには**
-公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started)からインストールできます。次の手順で、具体的な方法を説明します。
+公開されている SDK の最新のビルドを [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
 **Visual Studio コンソール アプリケーションを作成するには**
 
@@ -616,7 +630,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 	
 	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション ID はシステム管理者から入手できます。 
 
-	証明書については、「[Create and Upload a Management Certificate for Azure (Azure の管理証明書の作成とアップロード)][azure-certificate]」を参照してください。証明書を構成する簡単な方法は、PowerShell コマンドレットの  *Get-AzurePublishSettingsFile* と *Import-AzurePublishSettingsFile*  を実行することです。管理証明書が自動的に作成されアップロードされます。この PowerShell コマンドレットを実行した後、ワークステーションから *certmgr.msc* を開いて  **[個人]、[証明書]** の順に展開すると、証明書が表示されます。PowerShell コマンドレットによって作成された *証明書* は、 *[発行先]*  と  *[発行元] の両方が [Azure Tools] になります。* のみであるためです。
+	証明書については、「[Azure の管理証明書の作成とアップロード][azure-certificate]」を参照してください。証明書を構成する簡単な方法は、PowerShell コマンドレットの  *Get-AzurePublishSettingsFile* および  *Import-AzurePublishSettingsFile* を実行することです。管理証明書が自動的に作成されアップロードされます。この PowerShell コマンドレットを実行した後、ワークステーションから  *certmgr.msc* を開いて  *Personal/Certificates* の順に展開すると、証明書が表示されます。PowerShell コマンドレットによって作成された証明書は、 *Issued To* と  *Issued By* の両方が  *Azure Tools* になります。
 	
 11. Main() 関数の最後に次のコードをコピーして、Hive ジョブを定義します。
 
@@ -676,10 +690,10 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 
 
-##<a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 この記事では、HDInsight クラスターをプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
+* [Azure の HDInsight の概要][hdinsight-get-started]
 * [HDInsight クラスターのプロビジョニング][hdinsight-provision]
 * [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [HDInsight コマンドレット リファレンス ドキュメント][hdinsight-powershell-reference]
@@ -708,5 +722,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.MRJobOutput.png
 
 [apache-hive]: http://hive.apache.org/
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

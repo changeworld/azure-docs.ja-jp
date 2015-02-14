@@ -1,22 +1,22 @@
-﻿Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析とすべての API (Web、SMTP、イベント、解析、サブユーザー) を利用できるようになります。SendGrid の提供するその他のサービスについては、[SendGrid の特徴][]に関するページを参照してください。
+﻿Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と[すべての API][] (Web、SMTP、イベント、解析など) を利用できるようになります。SendGrid の提供するその他のサービスについては、[SendGrid の特徴][]に関するページを参照してください。
 
 ### SendGrid アカウントにサインアップするには
 
-1. [Azure の管理ポータル][]にログインします。
+1. [Azure 管理ポータル][]にログインします。
 
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 
 	![command-bar-new][command-bar-new]
 
-3. **[ストア]** をクリックします。
+3. **[Marketplace]** をクリックします。
 
 	![sendgrid-store][sendgrid-store]
 
-4. **[サービスの選択]** ダイアログで **[SendGrid]** を選択し、右矢印をクリックします。
+4. **[アプリケーションとサービスの選択]** だ部で **[SendGrid]** を選択し、右矢印をクリックします。
 
-5. **[個人用サービス]** ダイアログで、サインアップする **[SendGrid]** プランを選択します。
+5. **[アプリケーションとサービスの個人用設定]** ダイアログで、サインアップする **[SendGrid]** プランを選択します。
 
-6. Azure 設定で **SendGrid** サービスを特定する名前を入力するか、**SendGrid** の既定値を使用します。名前は 1 ～ 100 文字にする必要があります。また、名前に含めることができるのは英数字、ダッシュ、ピリオド、およびアンダースコアのみです。この名前は、Azure ストアのサブスクライブ項目の一覧で一意になっている必要があります。
+6. Azure 設定で **SendGrid** サービスを特定する名前を入力するか、**SendGridEmailDelivery.Simplified.SMTPWebAPI** の既定値を使用します。名前は 1 ～ 100 文字にする必要があります。また、名前に含めることができるのは英数字、ダッシュ、ピリオド、およびアンダースコアのみです。この名前は、Azure ストアのサブスクライブ項目の一覧で一意になっている必要があります。
 
 	![store-screen-2][store-screen-2]
 
@@ -28,13 +28,13 @@
 
 	![store-screen-3][store-screen-3]
 
-10. 購入を確認したら、アドオン ダッシュボードにリダイレクトされ、**[SendGrid を購入しています]** というメッセージが表示されます。
+10. 購入を確認したら、アドオン ダッシュボードにリダイレクトされ、"**SendGrid を購入しています**" というメッセージが表示されます。
 
 	![sendgrid-purchasing-message][sendgrid-purchasing-message]
 
-SendGrid アカウントが直ちにプロビジョニングされ、**[アドオン SendGrid の購入が完了しました]** というメッセージが表示されます。アカウントと資格情報が作成されました。この時点で、電子メールを送信する準備が整っています。 
+	SendGrid アカウントが直ちにプロビジョニングされ、"**アドオン SendGrid の購入が完了しました**" というメッセージが表示されます。アカウントと資格情報が作成されました。この時点で、電子メールを送信する準備が整っています。 
 
-	サブスクリプション プランを変更するか、SendGrid 連絡先設定を表示するには、SendGrid サービスの名前をクリックし、SendGrid アドオン ダッシュボードを開きます。 
+	サブスクリプション プランを変更するか、SendGrid 連絡先設定を表示するには、SendGrid サービスの名前をクリックし、SendGrid マーケットプレース ダッシュボードを開きます。 
 
 	![sendgrid-add-on-dashboard][sendgrid-add-on-dashboard]
 
@@ -46,15 +46,15 @@ SendGrid アカウントが直ちにプロビジョニングされ、**[アド�
 
 	![sendgrid-connection-info-button][sendgrid-connection-info-button]
 
-2. [*接続文字列*] ダイアログ ボックスで、このチュートリアルの後方で使用できるように**パスワード**とユーザー名をコピーします。
+2.  *Connection info* ダイアログ ボックスで、このチュートリアルの後半で使用できるように**パスワード**とユーザー名をコピーします。
 
 	![sendgrid-connection-info][sendgrid-connection-info]
 
-電子メール配信を設定するには、**[管理]** ボタンをクリックします。これにより Sendgrid.com Web インターフェイスが開き、ログインして SendGrid コントロール パネルを開くことができます。 
+	電子メール配信を設定するには、**[管理]** ボタンをクリックします。これにより Sendgrid.com Web インターフェイスが開き、ログインして SendGrid コントロール パネルを開くことができます。 
 
 	![sendgrid-control-panel][sendgrid-control-panel]
 
-SendGrid の概要については、[SendGrid の概要に関するページ][]を参照してください。
+	SendGrid の概要については、[SendGrid の概要に関するページ][]を参照してください。
 
 <!--images-->
 
@@ -71,8 +71,9 @@ SendGrid の概要については、[SendGrid の概要に関するページ][]�
 <!--Links-->
 
 [SendGrid の特徴]: http://sendgrid.com/features
-[Azure の管理ポータル]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [SendGrid の概要に関するページ]: http://sendgrid.com/docs
 [SendGrid のプロビジョニング プロセス]: https://support.sendgrid.com/hc/ja-jp/articles/200181628-Why-is-my-account-being-provisioned-
+[すべての API]: https://sendgrid.com/docs/API_Reference/index.html
 
-
+<!--HONumber=42-->

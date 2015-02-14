@@ -1,12 +1,26 @@
-﻿<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージの使用方法 (Java) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Java, table storage Java" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Table storage service from Java" authors="robmcm" solutions="" manager="wpickett" editor="" />
+<properties 
+	pageTitle="テーブル ストレージの使用方法 (Java) | Microsoft Azure" 
+	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。" 
+	services="storage" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # Java からテーブル ストレージを使用する方法
 
-このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**, **変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、「[次のステップ]」(#NextSteps) セクションを参照してください。
+このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
 
-注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。 
+注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android][] に関するページを参照してください。 
 
 ## <a name="Contents"> </a>目次
 
@@ -16,31 +30,31 @@
 * [Java アプリケーションの作成](#CreateApplication)
 * [テーブル ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
 * [Azure のストレージ接続文字列の設定](#ConnectionString)
-* [方法: テーブルを作成する](#CreateTable)
-* [方法: テーブルを一覧表示する](#ListTables)
-* [方法: エンティティをテーブルに追加する](#AddEntity)
-* [方法: エンティティのバッチを挿入する](#InsertBatch)
-* [方法: パーティション内のすべてのエンティティを取得する](#RetrieveEntities)
-* [方法: パーティション内の一定範囲のエンティティを取得する](#RetrieveRange)
-* [方法: 単一のエンティティを取得する](#RetriveSingle)
-* [方法: エンティティを変更する](#ModifyEntity)
-* [方法: エンティティ プロパティのサブセットを照会する](#QueryProperties)
-* [方法: エンティティの挿入または置換を行う](#InsertOrReplace)
-* [方法: エンティティを削除する](#DeleteEntity)
-* [方法: テーブルを削除する](#DeleteTable)
+* [方法:テーブルを作成する](#CreateTable)
+* [方法:テーブルを一覧表示する](#ListTables)
+* [方法:エンティティをテーブルに追加する](#AddEntity)
+* [方法:エンティティのバッチを挿入する](#InsertBatch)
+* [方法:パーティション内のすべてのエンティティを取得する](#RetrieveEntities)
+* [方法:パーティション内の一定範囲のエンティティを取得する](#RetrieveRange)
+* [方法:単一のエンティティを取得する](#RetriveSingle)
+* [方法:エンティティを変更する](#ModifyEntity)
+* [方法:エンティティ プロパティのサブセットを照会する](#QueryProperties)
+* [方法:エンティティの挿入または置換を行う](#InsertOrReplace)
+* [方法:エンティティを削除する](#DeleteEntity)
+* [方法:テーブルを削除する](#DeleteTable)
 * [次のステップ](#NextSteps)
 
-[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
+[AZURE.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ##<a name="CreateAccount"></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="CreateApplication"></a>Java アプリケーションの作成
 
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
-そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、[Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
+そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
 
 ## <a name="ConfigureStorage"> </a>テーブル ストレージにアクセスするようにアプリケーションを構成する
 
@@ -53,7 +67,7 @@ Windows Azure ストレージ API を使用してテーブルにアクセスす�
 
 ## <a name="ConnectionString"> </a>Azure のストレージ接続文字列の設定
 
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。 *AccountName* と  *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
     // Define the connection-string with your values.
     public static final String storageConnectionString = 
@@ -69,9 +83,11 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
-## <a name="CreateTable"> </a>方法:テーブルの作成
+## <a name="CreateTable"> </a>方法:テーブルを作成する
 
-**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しい **CloudTable** オブジェクトを作成します。この CloudTable オブジェクトは、"people" という名前のテーブルを表します(注:**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure Storage クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
+**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの
+参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、
+これを使用して新しい **CloudTable** オブジェクトを作成します。この CloudTable オブジェクトは、"people" という名前のテーブルを表します(注:**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
 
     try
     {
@@ -151,7 +167,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         }
     }
 
-エンティティに関連するテーブル操作には **TableOperation** オブジェクトが必要です。このオブジェクトを使用して、エンティティに対して実行する操作を定義します。定義した操作は、**CloudTable** オブジェクトを使用して実行できます。次のコードでは、顧客データの格納用に **CustomerEntity** クラスの新しいインスタンスを作成しています。次に、このコードでは **TableOperation.insertOrReplace** を呼び出し、テーブルへのエンティティの挿入用に  **TableOperation** オブジェクトを作成して、そのオブジェクトを新しい **CustomerEntity** に関連付けています。最後に、このコードでは **CloudTable** オブジェクトの **execute** メソッドを呼び出し、"people" テーブルと新しい **TableOperation** を指定しています。それにより、新しいユーザー エンティティを "people" テーブルに挿入する (そのエンティティが既に存在する場合は置き換える) 要求がストレージ サービスに送信されるようになっています。
+エンティティに関連するテーブル操作には **TableOperation** オブジェクトが必要です。このオブジェクトを使用して、エンティティに対して実行する操作を定義します。定義した操作は、**CloudTable** オブジェクトを使用して実行できます。次のコードでは、顧客データの格納用に **CustomerEntity** クラスの新しいインスタンスを作成しています。次に、このコードでは **TableOperation.insertOrReplace** を呼び出し、テーブルへのエンティティの挿入用に **TableOperation** オブジェクトを作成して、そのオブジェクトを新しい **CustomerEntity** に関連付けています。最後に、このコードでは **CloudTable** オブジェクトの **execute** メソッドを呼び出し、"people" テーブルと新しい **TableOperation** を指定しています。それにより、新しいユーザー エンティティを "people" テーブルに挿入する (そのエンティティが既に存在する場合は置き換える) 要求がストレージ サービスに送信されるようになっています。
 
     try
     {
@@ -184,7 +200,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 ## <a name="InsertBatch"> </a>方法:エンティティのバッチを挿入する
 
-1 回の書き込み操作でエンティティのバッチをテーブル サービスに挿入できます。次のコードでは、**TableBatchOperation** オブジェクトを作成し、3 つの挿入操作を追加しています。追加する各挿入操作では、新しいエンティティ オブジェクトを作成してその値を設定してから、**insert** オブジェクトの **TableBatchOperation** メソッドを呼び出して、エンティティを新しい挿入操作に関連付けています。次に、このコードでは **CloudTable** オブジェクトの **execute** を呼び出して、"people" テーブルと **TableBatchOperation** オブジェクトを指定しています。それにより、テーブル操作のバッチがストレージ サービスに 1 つの要求で送信されるようになっています。
+1 回の書き込み操作でエンティティのバッチをテーブル サービスに挿入できます。次のコードでは、**TableBatchOperation** オブジェクトを作成し、3 つの挿入操作を追加しています。追加する各挿入操作では、新しいエンティティ オブジェクトを作成してその値を設定してから、**TableBatchOperation** オブジェクトの **insert** メソッドを呼び出して、エンティティを新しい挿入操作に関連付けています。次に、このコードでは **CloudTable** オブジェクトの **execute** を呼び出して、"people" テーブルと **TableBatchOperation** オブジェクトを指定しています。それにより、テーブル操作のバッチがストレージ サービスに 1 つの要求で送信されるようになっています。
 
     try
     {
@@ -553,16 +569,15 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 - [Azure Storage SDK for Java]
-- [Azure Storage クライアント SDK リファレンス]
+- [Azure ストレージ クライアント SDK リファレンス]
 - [Azure Storage REST API]
-- [Azure Storage チーム ブログ]
+- [Azure のストレージ チーム ブログ]
 
 [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
+[Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/ja-jp/library/azure/gg433040.aspx
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

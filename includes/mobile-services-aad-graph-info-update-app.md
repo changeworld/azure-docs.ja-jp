@@ -3,7 +3,7 @@
 次の手順は、Windows ストア クライアント アプリのテストに適用されるものですが、Azure Mobile Services でサポートされている他のすべてのプラットフォームでこれをテストすることができます。 
 
 
-1. Visual Studio で MainPage.xaml.cs を開き、次の `using` ステートメントをファイルの最上部に追加します。
+1. Visual Studio で MainPage.xaml.cs を開き、次の  `using` ステートメントをファイルの最上部に追加します。
  
         using System.Net.Http;
 
@@ -19,7 +19,7 @@
         }
 
 
-3. MainPage.xaml.cs で、`AuthenticateAsync` メソッドを更新し、カスタム API を呼び出して、AAD からのユーザーに関する情報を返すようにします。 
+3. IMainPage.xaml.cs で、 `AuthenticateAsync` メソッドを更新し、カスタム API を呼び出して、AAD からのユーザーに関する追加情報を返すようにします。 
 
         private async System.Threading.Tasks.Task AuthenticateAsync()
         {
@@ -49,3 +49,4 @@
 
 
 4. 変更内容を保存して、構文エラーがないことを確認するためにサービスを構築します。  
+<!--HONumber=42-->

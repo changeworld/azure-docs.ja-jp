@@ -1,12 +1,26 @@
-﻿<properties urlDisplayName="Hadoop Samples in HDInsight" pageTitle="10 GB GraySort サンプル | Azure" metaKeywords="hdinsight, hadoop, hdinsight administration, hdinsight administration azure" description="このサンプル トピックでは、Azure PowerShell を使用して、HDInsight で Hadoop の汎用的な GraySort を実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The 10GB GraySort sample" authors="bradsev" />
+﻿<properties 
+	pageTitle="10 GB GraySort サンプル | Azure" 
+	description="Azure PowerShell を使用して HDInsight で Hadoop 上の非常に大量のデータ (通常 100 TB 以上) に汎用 Graysort を実行する方法について説明します。" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="bradsev"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/10/2014" 
+	ms.author="bradsev"/>
 
 # HDInsight での 10 GB GraySort Hadoop サンプル
  
 このサンプル トピックでは、Azure PowerShell を使用して、Azure HDInsight で汎用 GraySort Hadoop MapReduce プログラムを実行する方法について説明します。GraySort はベンチマーク ソートで、その評価尺度は、非常に大量のデータ、通常は最低でも 100 TB のデータをソートした際のソート速度 (TB/分) です。 
 
-このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/)    サイトを参照してください。
+このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/)   サイトを参照してください。
 
 このサンプルでは 3 組の MapReduce プログラムを使用します。	
  
@@ -22,15 +36,15 @@
 * Java で記述された MapReduce プログラムの実例。
 
 
-**前提条件**:	
+**前提条件**	
 
-- Azure アカウントが必要です。アカウントにサインアップする方法については、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/) 」を参照してください。
+- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://azure.microsoft.com/ja-jp/pricing/free-trial/)を参照してください。
 
-- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング]」を参照してください。(../hdinsight-provision-clusters/)
+- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](../hdinsight-provision-clusters/)」を参照してください。
 
-- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
+- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
-##この記事の内容
+## この記事の内容
 このトピックでは、サンプルを構成する一連の MapReduce プログラムを実行する方法を説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 	
 1. [Azure PowerShell を使用したサンプルの実行](#run-sample)	
@@ -49,23 +63,23 @@
 
 **TeraGen プログラムを実行するには**	
 
-1. Azure PowerShell を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
+1. Azure PowerShell を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
 2. 次のコマンドを実行して、2 つの変数を設定します。
 	
 		# Provide the Azure subscription name and the HDInsight cluster name.
 		$subscriptionName = "myAzureSubscriptionName"   
 		$clusterName = "myClusterName"
                  
-4. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。
+3. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。
 
 		# Create a MapReduce job definition for the TeraGen MapReduce program
 		$teragen = New-AzureHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-examples.jar" -ClassName "teragen" -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input" 
 
-	> [WACOM.NOTE] *hadoop-examples.jar* は、バージョン 2.1 の HDInsight クラスターに付属しています。バージョン 3.0 の HDInsight クラスターで、このファイルの名前は *hadoop-mapreduce.jar* に変更されました。
+	> [AZURE.NOTE] *hadoop-examples.jar* は、バージョン 2.1 の HDInsight クラスターに付属しています。バージョン 3.0 の HDInsight クラスターで、このファイルの名前は  *hadoop-mapreduce.jar* に変更されました。
 	
-	*"-Dmapred.map.tasks=50"* 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。引数 *100000000* は、生成するデータの量を指定しています。最後の引数 */example/data/10GB-sort-input* は、結果を保存する出力ディレクトリを指定しています (これが次のソート段階用の入力になります)。
+	"*-Dmapred.map.tasks=50*" 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。*100000000* 引数は、生成するデータの量を指定しています。最後の引数、  */example/data/10GB-sort-input* は、結果を保存する出力ディレクトリを指定しています (これが次のソート段階用の入力になります)。
 
-5. 次のコマンドを実行して、ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
+4. 次のコマンドを実行して、ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
 
 		# Run the TeraGen MapReduce job.
 		# Wait for the job to complete.
@@ -88,7 +102,7 @@
 		# Create a MapReduce job definition for the TeraSort MapReduce program
 		$terasort = New-AzureHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-examples.jar" -ClassName "terasort" -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-input", "/example/data/10GB-sort-output" 
 
-	*"-Dmapred.map.tasks=50"* 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。引数 *100000000* は、生成するデータの量を指定しています。最後の 2 つの引数は、入力ディレクトリと出力ディレクトリを指定しています。 
+	"*-Dmapred.map.tasks=50*" 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。*100000000* 引数は、生成するデータの量を指定しています。最後の 2 つの引数は、入力ディレクトリと出力ディレクトリを指定しています。 
 
 4. 次のコマンドを実行して、ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
 
@@ -113,7 +127,7 @@
 		#	Create a MapReduce job definition for the TeraValidate MapReduce program
 		$teravalidate = New-AzureHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-examples.jar" -ClassName "teravalidate" -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate" 
 
-	引数 *"-Dmapred.map.tasks=50"* は、ジョブを実行するために 50 個のマップを作成することを指定しています。引数 *"-Dmapred.reduce.tasks=25"* は、ジョブを実行するために 25 個の reduce タスクを作成することを指定しています。最後の 2 つの引数は、入力ディレクトリと出力ディレクトリを指定しています。  
+	"*-Dmapred.map.tasks=50*" 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。"*-Dmapred.reduce.tasks=25*" 引数は、ジョブを実行するために 25 個の reduce タスクを作成することを指定しています。最後の 2 つの引数は、入力ディレクトリと出力ディレクトリを指定しています。  
  
 
 4. 次のコマンドを実行して、MapReduce ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
@@ -404,10 +418,10 @@
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
+* [Get started with Azure HDInsight (HDInsight で Hadoop 2.4 を使用する)][hdinsight-get-started]
 * [サンプル:Pi 推定][hdinsight-sample-pi-estimator]
 * [サンプル:ワードカウント][hdinsight-sample-wordcount]
-* [サンプル:C# ストリーミング][hdinsight-sample-csharp-streaming]
+* [サンプル:C# Steaming][hdinsight-sample-csharp-streaming]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
@@ -429,5 +443,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [hdinsight-use-pig]: ../hdinsight-use-pig/
 
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

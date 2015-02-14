@@ -1,6 +1,20 @@
-﻿<properties title="Getting Started with Azure Storage" pageTitle="Azure Storage の使用" metaKeywords="Azure, Getting Started, Storage" description="" services="storage" documentationCenter="" authors="ghogen, kempb" />
+﻿<properties 
+	pageTitle="Azure Storage の使用" 
+	description="" 
+	services="storage" 
+	documentationCenter="" 
+	authors="kempb" 
+	manager="douge" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="vs-getting-started" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb" />
+<tags 
+	ms.service="storage" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vs-getting-started" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
 > - [Getting Started (概要)](/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
@@ -13,7 +27,7 @@
 > - [キュー](/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
 > - [テーブル](/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、「[NET からテーブル ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")」を参照してください。
+Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「[.NET からテーブル ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")」を参照してください。
 
 ASP.NET 5 プロジェクトでプログラムを使用してテーブルにアクセスするには、次の項目を追加する必要があります (存在していない場合)。
 
@@ -30,18 +44,18 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
 
-#####ストレージ接続文字列を取得する
+##### ストレージ接続文字列を取得する
 テーブルを使用した操作を行うには、テーブルを使用するストレージ アカウントの接続文字列を取得する必要があります。ストレージ アカウント情報を表すには、**CloudStorageAccount** 型を使用します。ASP.NET vNext プロジェクトを使用する場合、次のコードに示すように、構成オブジェクトの get メソッドを呼び出して Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得することができます。
 
-**メモ:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**注:** ASP.NET 5 で Azure ストレージへの呼び出しを実行する API は、非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードは、非同期のプログラミング方法が使用されていると仮定しています。
 
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       config.Get("MicrosoftAzureStorage:<storageAccountName>_AzureStorageConnectionString"));
 
-#####テーブルの作成
+##### テーブルを作成する
 **CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。コードは "people" という名前のテーブルを参照しようとします。この名前のテーブルが見つからない場合は作成します。
 
-**メモ:**  このガイドのすべてのコードでは、作成するアプリケーションが Azure Cloud Service プロジェクトであること、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用することを前提としています。また、このコードはすべて、以下のセクションのコードの前に使用してください。
+**注:** このガイドのすべてのコードでは、作成するアプリケーションが Azure Cloud Service プロジェクトであること、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用することを前提としています。また、このコードはすべて、以下のセクションのコードの前に使用してください。
 
 	// Create the table client.
 	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -50,7 +64,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 	CloudTable table = tableClient.GetTableReference("people");
 	await table.CreateIfNotExistsAsync();
 
-#####エンティティをテーブルに追加する
+##### エンティティをテーブルに追加する
 エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。次のコードは、ユーザーの名を行キーとし、姓をパーティション キーとして使用する **CustomerEntity** という名前のエンティティ クラスを定義します。
 
 	public class CustomerEntity : TableEntity
@@ -81,7 +95,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 	// Execute the insert operation.
 	await table.ExecuteAsync(insertOperation);
 
-#####エンティティのバッチを挿入する
+##### エンティティのバッチを挿入する
 1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用する **TableBatchOperation** オブジェクトにそれを追加します。その後、CloudTable.ExecuteBatchAsync を呼び出して操作を実行します。
 
 	// Create the CloudTable object that represents the "people" table.
@@ -107,8 +121,8 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 	// Execute the batch operation.
 	await table.ExecuteBatchAsync(batchOperation);
 
-#####パーティション内のすべてのエンティティを取得する
-テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**TableQuery** オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
+##### パーティション内のすべてのエンティティを取得する
+テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**TableQuery** オブジェクトを使用します。次のコード例は、 'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
 
 	// Construct the query operation for all customer entities where PartitionKey="Smith".
     TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
@@ -130,8 +144,8 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
     return View();
 
 
-#####単一のエンティティを取得する
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、TableResult.Result の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、**テーブル** サービスから単一のエンティティを取得するための最速の方法です。
+##### 単一のエンティティを取得する
+単一の特定のエンティティを取得するクエリを記述することができます。次のコード例では、**TableOperation** オブジェクトを使用して、 'Ben Smith' という名前の顧客を指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、TableResult.Result の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、**テーブル** サービスから単一のエンティティを取得するための最速の方法です。
 
 	// Create the CloudTable object that represents the "people" table.
 	CloudTable table = tableClient.GetTableReference("people");
@@ -148,7 +162,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 	else
 	   Console.WriteLine("The phone number could not be retrieved.");
 
-#####エンティティを削除する
+##### エンティティを削除する
 エンティティは、検索して削除できます。次のコードは、"Ben Smith" という名前のユーザー エンティティを検索し、見つかったら削除します。
 
 	// Create the CloudTable that represents the "people" table.
@@ -178,4 +192,5 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 	   Console.WriteLine("Couldn't delete the entity.");
 
 [Azure Storage の詳細を確認する](http://azure.microsoft.com/documentation/services/storage/)
-また、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx)」および「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。
+「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。
+<!--HONumber=42-->

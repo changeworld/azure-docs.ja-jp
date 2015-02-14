@@ -1,12 +1,14 @@
 ﻿## EventProcessorHost を使用したメッセージの受信
 
-[EventProcessorHost] は、永続的なチェックポイントの管理によって Event Hub のイベントの受信を簡素化し、並列してそれらの Event Hub から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケール アウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
+**EventProcessorHost** は、永続的なチェックポイントの管理によって Event Hub のイベントの受信を簡素化し、並列して Event Hub から受信する .NET クラスです。**EventProcessorHost** を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に **EventProcessorHost** を使用する方法を示します。[イベント処理のスケール アウトのサンプル]は、受信側が複数の場合に **EventProcessorHost** を使用する方法を示します。
 
-Event Hub の受信パターンの詳細については、「[Event Hub の概要]」を参照してください。
+Event Hubs の詳細については、「[Event Hubs 開発者ガイド]」を参照してください。
 
-[EventProcessorHost] を使用するには、[Azure ストレージ アカウント]が必要です。
+[EventProcessorHost] は、永続的なチェックポイントの管理によって Event Hub のイベントの受信を簡素化し、並列して Event Hub から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケール アウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
 
-1. [Azure の管理ポータル]にログオンし、画面下部にある **[新規]** をクリックします。
+[EventProcessorHost] を使用するには、[Azure Storage アカウント]が必要です。
+
+1. [Azure の管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
 
@@ -26,7 +28,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
 	**[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
 
-6. `Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索し、**[インストール]** をクリックして、使用条件に同意します。 
+6.  `Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索し、**[インストール]** をクリックして、使用条件に同意します。 
 
 	![][13]
 
@@ -67,25 +69,22 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 	            {
 	                string data = Encoding.UTF8.GetString(eventData.GetBytes());
 	                
-	                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{2}'",
+	                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
 	                    context.Lease.PartitionId, data));
 	            }
 	
 	            //Call checkpoint every 5 minutes, so that worker can resume processing from the 5 minutes back if it restarts.
-	            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
-	            {
-	                await context.CheckpointAsync();
-	                lock (this)
-	                {
-	                    this.checkpointStopWatch.Reset();
-	                }
-	            }
+	            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5)) 
+                { 
+                    await context.CheckpointAsync(); 
+                    this.checkpointStopWatch.Restart(); 
+                } 
 	        }
 	    }
 
-	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
+	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。 `SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
-8. **Program** クラスには、上部に次の `using` ステートメントを追加します。
+8. **Program** クラスには、上部に次の  `using` ステートメントを追加します。
 
 		using Microsoft.ServiceBus.Messaging;
 		using System.Threading.Tasks;
@@ -106,7 +105,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
         Console.WriteLine("Receiving. Press enter key to stop worker.");
         Console.ReadLine();
 
-> [AZURE.NOTE] このチュートリアルでは、[EventProcessorHost] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost] の複数のインスタンスを実行することをお勧めします ([イベント処理のスケール アウトのサンプル]を参照してください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要]」および [Event Hubs のプログラミング ガイド]を参照してください。
+> [AZURE.NOTE] このチュートリアルでは、[EventProcessorHost] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost] の複数のインスタンスを実行することをお勧めします ([イベント処理のスケール アウトのサンプル]を参照してください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でそれぞれ *all*イベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要]」および [Event Hubs のプログラミング ガイド]を参照してください。
 
 <!-- Links -->
 [Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn821413.aspx
@@ -121,4 +120,4 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-[Event Hubs のプログラミング ガイド]: http://msdn.microsoft.com/ja-jp/library/azure/dn789972.aspx
+[Event Hubs 開発者ガイド]: http://msdn.microsoft.com/ja-jp/library/azure/dn789972.aspx<!--HONumber=42-->

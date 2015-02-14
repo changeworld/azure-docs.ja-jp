@@ -1,14 +1,28 @@
-﻿<properties title="Analyzing sensor data with Storm and HDInsight" pageTitle="Microsoft Azure HDInsight (Hadoop) での Apache Storm と Microsoft Azure HDInsight (Hadoop) を使用したセンサー データの分析" description="HDInsight (Hadoop) で Apache Storm を使用して、リアルタイムでセンサー データを処理する方法について説明します" metaKeywords="Azure hdinsight storm, Azure hdinsight realtime, azure hadoop storm, azure hadoop realtime, azure hadoop real-time, azure hdinsight real-time" services="hdinsight" solutions="" documentationCenter="big-data" authors="larryfr" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Apache Storm と Microsoft Azure HDInsight (Hadoop) を使用したセンサー データの分析" 
+	description="HDInsight (Hadoop) で  リアルタイムにセンサー データを処理するために Apache Storm を使用する方法を説明します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="blackmist" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/30/2014" ms.author="larryfr" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/30/2014" 
+	ms.author="larryfr"/>
 
-#HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析
+# HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析
 
-Azure Event Hub で発生したセンサー データを処理するために HDInsight Storm クラスターを使用するソリューションを作成する方法を説明します。処理中、Storm のトポロジは、HBase クラスターに受信データを格納します。トポロジは、Azure Websites でホストされている Web ベースのダッシュボードを介してほぼリアルタイムの情報を提供するために、SignalR も使用します。
+Azure Event Hub で発生したセンサー データを処理するために HDInsight での Storm クラスターを使用するソリューションを作成する方法を説明します。処理中、Storm のトポロジは、HBase クラスターに受信データを格納します。トポロジは、Azure Websites でホストされている Web ベースのダッシュボードを介してほぼリアルタイムの情報を提供するために、SignalR も使用します。
 
-> [AZURE.NOTE] このプロジェクトの完全なバージョンは、[https://github.com/Blackmist/hdinsight-eventhub-example](https://github.com/Blackmist/hdinsight-eventhub-example) で利用できます。
+> [AZURE.NOTE] このプロジェクトの完全なバージョンは、[https://github.com/Blackmist/hdinsight-eventhub-example](https://github.com/Blackmist/hdinsight-eventhub-example)　で利用できます。
 
-##前提条件
+## 前提条件
 
 * Azure サブスクリプション
 
@@ -20,17 +34,17 @@ Azure Event Hub で発生したセンサー データを処理するために HD
 
 * [Git](http://git-scm.com/)
 
-> [AZURE.NOTE] Java、JDK、Maven、および Git は、[Chocolatey NuGet](http://chocolatey.org/)  パッケージ マネージャーからも入手できます。
+> [AZURE.NOTE] Java、JDK、Maven、および Git は、[Chocolatey NuGet](http://chocolatey.org/) パッケージ マネージャーからも入手できます。
 
-##ダッシュボードの作成
+## ダッシュボードの作成
 
-ダッシュボードは、ほぼリアルタイムのセンサー情報を表示するために使用されます。ここでは、ダッシュボードは Azure Web サイトにホストされている ASP.NET アプリケーションを意味します。アプリケーションの主目的は、メッセージが処理されるときに Storm トポロジから情報を受信する [SignalR](http://www.asp.net/signalr/overview/getting-started/introduction-to-signalr)  のハブとして機能することです。
+ダッシュボードは、ほぼリアルタイムのセンサー情報を表示するために使用されます。ここでは、ダッシュボードは Azure Web サイトにホストされている ASP.NET アプリケーションを意味します。アプリケーションの主目的は、メッセージが処理されるときに Storm トポロジから情報を受信する [SignalR](http://www.asp.net/signalr/overview/getting-started/introduction-to-signalr) のハブとして機能することです。
 
 Web サイトには静的な index.html ファイルも含まれます。このファイルは SignalR にも接続し、D3.js を使用して、Storm トポロジから送信されたデータをグラフ化します。
 
-> [WACOM.NOTE] SignalR の代わりに未加工の WebSockets を使用することもできますが、Web サイトをスケール アウトする必要があったとしても、WebSockets には組み込みのスケーリング メカニズムがありません。SignalR では、Azure Service Bus ([http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus](http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus)) を使用してスケールを変更することができます。
+> [AZURE.NOTE] SignalR の代わりに未加工の WebSockets を使用することもできますが、Web サイトをスケール アウトする必要があったとしても、WebSockets には組み込みのスケーリング メカニズムがありません。SignalR では、Azure Service Bus ([http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus](http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus)) を使用してスケールを変更することができます。
 >
-> Storm トポロジで未加工の WebSockets を使用して Python Web サイトと通信する例については、「[Storm Tweet Sentiment D3 Visualization (Storm Tweet の評判の D3 視覚化)](https://github.com/P7h/StormTweetsSentimentD3Viz) 」プロジェクトを参照してください。
+> Storm トポロジで未加工の WebSockets を使用して Python Web サイトと通信する例については、「[Storm Tweet Sentiment D3 Visualization (Storm Tweet の評判の D3 視覚化)](https://github.com/P7h/StormTweetsSentimentD3Viz)」プロジェクトを参照してください。
 
 1. Visual Studio で、**ASP.NET Web アプリケーション** プロジェクト テンプレートを使用して新しい C# アプリケーションを作成します。新しいアプリケーションに "**ダッシュボード**" という名前を付けます。
 
@@ -40,13 +54,13 @@ Web サイトには静的な index.html ファイルも含まれます。この�
 
 3. **[Windows Azure サイトの構成]** ダイアログで、Web サイトの**サイト名**と**リージョン**を入力し、**[OK]** をクリックします。これにより、ダッシュボードをホストする Azure Web サイトが作成されます。
 
-3. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[SignalR Hub クラス (v2)]** の順に選択します。クラスに「**DashHub.cs**」という名前を付けて、プロジェクトに追加します。これには、HDInsight とダッシュボード Web ページ間のデータ通信に使用される SignalR ハブが含まれます。
+4. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[SignalR Hub クラス (v2)]** の順に選択します。クラスに「**DashHub.cs**」という名前を付けて、プロジェクトに追加します。これには、HDInsight とダッシュボード Web ページ間のデータ通信に使用される SignalR ハブが含まれます。
 
 	> [AZURE.NOTE] Visual Studio 2012 を使用している場合、**SignalR Hub クラス (v2)** テンプレートは利用できません。DashHub と呼ばれるプレーンな**クラス**を代わりに追加できます。また、**[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に開き、次のコマンドを実行して、SignalR パッケージを手動でインストールする必要があります。
 	>
 	> `install-package Microsoft.AspNet.SignalR`
 
-4. **DashHub.cs** のコードを次のコードに置き換えます。
+5. **DashHub.cs** のコードを次のコードに置き換えます。
 
 		using System;
 		using System.Collections.Generic;
@@ -66,11 +80,11 @@ Web サイトには静的な index.html ファイルも含まれます。この�
 		    }
 		}
 
-5. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[OWIN Startup クラス]** の順に選択します。新しいクラスに "**Startup.cs**" という名前を付けます。
+6. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[OWIN Startup クラス]** の順に選択します。新しいクラスに "**Startup.cs**" という名前を付けます。
 
 	> [AZURE.NOTE] Visual Studio 2012 を使用している場合、**OWIN Startup クラス (v2)** テンプレートは利用できません。Startup という**クラス**を代わりに作成できます。
 
-6. **Startup.cs** の内容を次の内容に置き換えます。
+7. **Startup.cs** の内容を次の内容に置き換えます。
 
 		using System;
 		using System.Threading.Tasks;
@@ -91,9 +105,9 @@ Web サイトには静的な index.html ファイルも含まれます。この�
 		    }
 		}
 
-7. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[HTML ページ]** の順に選択します。新しいページに "**index.html**" という名前を付けます。このページには、このプロジェクトのリアルタイム ダッシュボードが表示されます。DashHub から情報を受信して、D3.js を使用したグラフを表示します。
+8. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[HTML ページ]** の順に選択します。新しいページに "**index.html**" という名前を付けます。このページには、このプロジェクトのリアルタイム ダッシュボードが表示されます。DashHub から情報を受信して、D3.js を使用したグラフを表示します。
 
-8. **ソリューション エクスプローラー**で、**[index.html]** を右クリックし、**[スタート ページに設定]** を選択します。
+9. **ソリューション エクスプローラー**で、**[index.html]** を右クリックし、**[スタート ページに設定]** を選択します。
 
 10. **index.html** ファイル内のコードを次のコードに置き換えます。
 
@@ -292,7 +306,7 @@ Web サイトには静的な index.html ファイルも含まれます。この�
 
 11. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[HTML ページ]** の順に選択します。新しいページに "**test.html**" という名前を付けます。このページは、メッセージの送受信による DashHub とダッシュボードのテストに使用できます。
 
-11. **test.html** ファイルのコードを次のコードに置き換えます。
+12. **test.html** ファイルのコードを次のコードに置き換えます。
 
 		<!DOCTYPE html>
 		<html>
@@ -349,43 +363,43 @@ Web サイトには静的な index.html ファイルも含まれます。この�
 		</body>
 		</html>
 
-11. **[すべて保存]** をプロジェクトでクリックします。
+13. **[すべて保存]** をプロジェクトでクリックします。
 
-12. **ソリューション エクスプローラー**で、**ダッシュボード** プロジェクトを右クリックして **[発行]** をクリックします。このプロジェクトのために作成した Web サイトを右クリックし、 **[発行]** をクリックします。
+14. **ソリューション エクスプローラー**で、**ダッシュボード** プロジェクトを右クリックして **[発行]** をクリックします。このプロジェクトのために作成した Web サイトを右クリックし、**[発行]** をクリックします。
 
-13. サイトが発行されると Web ページが開き、タイムラインの動きが表示されます。
+15. サイトが発行されると Web ページが開き、タイムラインの動きが表示されます。
 
-###ダッシュボードのテスト
+### ダッシュボードのテスト
 
-14. SignalR が動作していることと、SignalR に送信されたデータのグラフの線がダッシュボードに表示されることを確認するには、新しいブラウザー ウィンドウでこの Web サイトの  **test.html** ページを開きます。たとえば、 **http://mydashboard.azurewebsites.net/test.html**
+1. SignalR が動作していることと、SignalR に送信されたデータのグラフの線がダッシュボードに表示されることを確認するには、新しいブラウザー ウィンドウでこの Web サイトの **test.html** ページを開きます。たとえば、**http://mydashboard.azurewebsites.net/test.html** のように指定します。
 
-15. ダッシュボードは、**デバイス ID** と **温度**の値を持つ JSON 形式のデータを想定しています。たとえば、**{"device":0, "temperature":80}** という形式です。ダッシュボードが別のページで開いている間に、デバイス ID に 0 から 9 を使用して、**test.html** ページにテスト用の値をいくつか入力します。各デバイス ID の行は、別の色で表示されます。
+2. ダッシュボードは、**デバイス ID** と**温度**の値を持つ JSON 形式のデータを想定しています。たとえば、**{"device":0, "temperature":80}** という形式です。ダッシュボードが別のページで開いている間に、デバイス ID に 0 から 9 を使用して、**test.html** ページにテスト用の値をいくつか入力します。各デバイス ID の行は、別の色で表示されます。
 
-##Event Hub の構成
+## Event Hub の構成
 
 Event Hub は、センサーから発生するメッセージ (イベント) の受信に使用されます。新しい Event Hub を作成するには、次の手順に従います。
 
 1. [Azure ポータル](https://manage.windowsazure.com)から、**[新規作成]、[Service Bus]、[Event Hub]、[カスタム作成]** の順に選択します。
 
-2. **[新しい Event Hub の追加]** ダイアログで **Event Hub** 名を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。最後に、**矢印**をクリックします。
+2. **[新しい Event Hub の追加]** ダイアログで **Event Hub 名**を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。最後に、**矢印**をクリックします。
 
-2. **[Event Hub の構成]** ダイアログで、**パーティション カウント**と **メッセージ保持**の値を入力します。この例では、パーティション カウントに 10 を、メッセージ保持に 1 を使用します。
+3. **[Event Hub の構成]** ダイアログで、**パーティション カウント**と**メッセージ保持の値**を入力します。この例では、パーティション カウントに 10 を、メッセージ保持に 1 を使用します。
 
-3. Event Hub が作成されたら、名前空間を選択し、 **[Event Hubs]** を選択します。最後に、先ほど作成した Event Hub を選択します。
+4. Event Hub が作成されたら、名前空間を選択し、**[Event Hubs]** を選択します。最後に、先ほど作成した Event Hub を選択します。
 
-4. **[構成]** を選択し、次の情報を使用して新しいアクセス ポリシーを 2 つ作成します。
+5. **[構成]** を選択し、次の情報を使用して新しいアクセス ポリシーを 2 つ作成します。
 
 	<table>
-	<tr><th>Name</th><th>Permissions</th></tr>
-	<tr><td>devices</td><td>Send</td></tr>
-	<tr><td>storm</td><td>Listen</td></tr>
+	<tr><th>名前</th><th>アクセス許可</th></tr>
+	<tr><td>デバイス</td><td>Send</td></tr>
+	<tr><td>Storm</td><td>Listen</td></tr>
 	</table>
 
 	アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このハブへのメッセージの送信や、このハブから受信したメッセージの読み取りに使用される共有アクセス ポリシーが作成されます。
 
-5. ポリシーの保存後、ページの下部にある **[共有アクセス キー生成コンポーネント]** を使用して、**デバイス**と **Storm** のポリシーの両方のキーを取得します。後で使用できるように、これらを保存します。
+6. ポリシーの保存後、ページの下部にある **[共有アクセス キー生成コンポーネント]** を使用して、**デバイス**と **Storm** のポリシーの両方のキーを取得します。後で使用できるように、これらを保存します。
 
-###Event Hub へのメッセージ送信
+### Event Hub へのメッセージ送信
 
 だれでも利用できるセンサーの簡単な標準セットがないため、.NET アプリケーションを乱数の生成に使用します。次の手順で作成した .NET アプリケーションは、キーを押してアプリケーションが停止されるまで、毎秒 10 個のデバイスに対してイベントを生成します。
 
@@ -482,19 +496,19 @@ Event Hub は、センサーから発生するメッセージ (イベント) の
 
 	この時点では、Event クラスを参照する行で警告が発生します。これらは、この時点では無視してください。
 
-4. **Program.cs** ファイルで、ファイルの先頭にある次の変数の値を Azure の管理ポータルで Event Hub から取得した対応する値に設定します。
+5. **Program.cs** ファイルで、ファイルの先頭にある次の変数の値を Azure の管理ポータルで Event Hub から取得した対応する値に設定します。
 
 	<table>
 	<tr><th>設定する変数</th><th>設定する値</th></tr>
-	<tr><td>eventHubName</td><td>イベント ハブの名前。たとえば、 <strong>temperature</strong>.</td></tr>
-	<tr><td>eventHubNamespace</td><td>イベント ハブの名前空間。たとえば、 <strong>sensors-ns</strong>.</td></tr>
-	<tr><td>sharedAccessPolicyName</td><td>Send アクセス許可を使用して作成したポリシー。たとえば、 <strong>デバイス</strong>.</td></tr>
+	<tr><td>eventHubName</td><td>イベント ハブの名前。たとえば、 <strong>temperature</strong> など。</td></tr>
+	<tr><td>eventHubNamespace</td><td>イベント ハブの名前空間。たとえば、 <strong>sensors-ns</strong> など。</td></tr>
+	<tr><td>sharedAccessPolicyName</td><td>Send アクセス許可を使用して作成したポリシー。たとえば、 <strong>デバイス</strong>など。</td></tr>
 	<tr><td>sharedAccessPolicyKey</td><td>Send アクセス許可を使用して作成したポリシーのキー。</td></tr>
 	</table>
 
-4. **ソリューション エクスプローラー**で、**SendEvents** を右クリックし、**[追加]、[クラス]** の順にクリックします。新しいクラスに "**Event.cs**" という名前を付けます。これは、Event Hub に送信されるメッセージを表します。
+6. **ソリューション エクスプローラー**で、**SendEvents** を右クリックし、**[追加]、[クラス]** の順にクリックします。新しいクラスに "**Event.cs**" という名前を付けます。これは、Event Hub に送信されるメッセージを表します。
 
-5. **Event.cs** の内容を次の内容に置き換えます。
+7. **Event.cs** の内容を次の内容に置き換えます。
 
 		using System;
 		using System.Collections.Generic;
@@ -511,6 +525,8 @@ Event Hub は、センサーから発生するメッセージ (イベント) の
 		    	[DataMember]
 		    	public DateTime TimeStamp { get; set; }
 		        [DataMember]
+		        public DateTime TimeStamp { get; set; }
+		        [DataMember]
 		        public int DeviceId { get; set; }
 		        [DataMember]
 		        public int Temperature { get; set; }
@@ -519,13 +535,13 @@ Event Hub は、センサーから発生するメッセージ (イベント) の
 
 	このクラスは、送信するデータ (TimeStamp、DeviceID、Temperature の値) を表します。
 
-6. **[すべて保存]** をクリックし、アプリケーションを実行すると、Event Hub にメッセージが入力されます。
+8. **[すべて保存]** をクリックし、アプリケーションを実行すると、Event Hub にメッセージが入力されます。
 
-##Azure Virtual Network の作成
+## Azure Virtual Network の作成
 
 Storm クラスターで実行しているトポロジが HBase と直接通信できるように、両方のサーバーを Azure Virtual Network にプロビジョニングする必要があります。
 
-1.   [Azure の管理ポータル][azure-portal]にサインインします。.
+1. [Azure 管理ポータル][azure-portal]にサインインします。
 
 2. ページ下部で **[+ 新規]**、**[ネットワーク サービス]**、**[Virtual Network]** の順にクリックし、さらに **[簡易作成]** をクリックします。
 
@@ -535,7 +551,7 @@ Storm クラスターで実行しているトポロジが HBase と直接通信�
 	- **アドレス空間**:クラスター内のすべてのノードにアドレスを提供するために十分な大きさの、仮想ネットワークのアドレス空間を選択します。そうでないと、プロビジョニングは失敗します。
 	- **最大 VM 数**:最大 VM 数のいずれかを選択します。
 	- **場所**:場所は作成する HBase クラスターと同じである必要があります。
-	- **DNS サーバー**:この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、 [http://msdn.microsoft.com/library/azure/jj156088.aspx](http://msdn.microsoft.com/library/azure/jj156088.aspx) を参照してください。
+	- **DNS サーバー**:この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、[http://msdn.microsoft.com/library/azure/jj156088.aspx](http://msdn.microsoft.com/library/azure/jj156088.aspx) を参照してください。
 
 4. **[仮想ネットワークの作成]** をクリックします。新しい仮想ネットワーク名が一覧に表示されます。[ステータス] 列に **[作成済み]** が表示されるまで待機します。
 
@@ -549,55 +565,55 @@ Storm クラスターで実行しているトポロジが HBase と直接通信�
 
 9. ページの下部に示される既定のサブネット名は、**Subnet-1** です。**[サブネットの追加]** をクリックして "**Subnet-2**" を追加します。これらのサブネットには、Storm クラスターと HBase クラスターが収容されます。
 
-	> [WACOM.NOTE] この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、ワーカー ノード数に 7 (ゲートウェイ:2、ヘッドノード:2、Zookeeper:3)。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
+	> [AZURE.NOTE] この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、ワーカー ノード数に 7 (ゲートウェイ:2、ヘッドノード:2、Zookeeper:3)。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
 	>
 	> 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 
 11. ページの下部にある **[保存]** をクリックします。
 
-##HDInsight Storm クラスターの作成
+## HDInsight での Storm クラスターの作成
 
-1.   [Azure の管理ポータル][azureportal]にサインインします。
+1. [Azure 管理ポータル][azureportal]にサインインします。
 
 2. 左側にある **[HDInsight]** をクリックし、ページの左下隅にある **[+ 新規]** をクリックします。
 
-3. 2 番目の列にある HDInsight アイコンをクリックし、**[カスタム]** を選択します。
+3. 2 番目の列にある [HDInsight] アイコンをクリックし、**[カスタム]** を選択します。
 
 4. **[クラスターの詳細]** ページで、新しいクラスターの名前を入力し、**[クラスターの種類]** に **[Storm]** を選択します。矢印を選択して続行します。
 
 5. このクラスターで使用する**データ ノード**の数に 1 を入力します。**[リージョン/仮想ネットワーク]** に、先ほど作成した Azure Virtual Network を選択します。**[仮想ネットワーク サブネット]** に **Subnet-2** を選択します。
 
-	> [WACOM.NOTE] この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
+	> [AZURE.NOTE] この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
 
 6. 管理者の**ユーザー名**と**パスワード**を入力し、矢印を選択して続行します。
 
-4. **ストレージ アカウント**の場合、**[新しいストレージを作成する]** を選択するか、既存のストレージ アカウントを選択します。使用する**アカウント名**と**既定のコンテナー**を選択するか入力します。左下にあるチェック アイコンをクリックして、Storm クラスターを作成します。
+7. **ストレージ アカウント**の場合、**[新しいストレージを作成する]** を選択するか、既存のストレージ アカウントを選択します。使用する**アカウント名**と**既定のコンテナー**を選択するか、入力します。左下にあるチェック アイコンをクリックして、Storm クラスターを作成します。
 
-##HDInsight HBase クラスターの作成
+## HDInsight HBase クラスターの作成
 
-1.   [Azure の管理ポータル][azureportal]にサインインします。
+1. [Azure 管理ポータル][azureportal]にサインインします。
 
 2. 左側にある **[HDInsight]** をクリックし、ページの左下隅にある **[+ 新規]** をクリックします。
 
-3. 2 番目の列にある HDInsight アイコンをクリックし、**[カスタム]** を選択します。
+3. 2 番目の列にある [HDInsight] アイコンをクリックし、**[カスタム]** を選択します。
 
 4. **[クラスターの詳細]** ページで、新しいクラスターの名前を入力し、**[クラスターの種類]** に **[HBase]** を選択します。矢印を選択して続行します。
 
 5. このクラスターで使用する**データ ノード**の数に 1 を入力します。**[リージョン/仮想ネットワーク]** に、先ほど作成した Azure Virtual Network を選択します。**[仮想ネットワーク サブネット]** に **Subnet-1** を選択します。
 
-	> [WACOM.NOTE] この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
+	> [AZURE.NOTE] この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
 
 6. 管理者の**ユーザー名**と**パスワード**を入力し、矢印を選択して続行します。
 
-4. **ストレージ アカウント**の場合、**[新しいストレージを作成する]** を選択するか、既存のストレージ アカウントを選択します。使用する**アカウント名**と**既定のコンテナー**を選択するか入力します。左下にあるチェック アイコンをクリックして、Storm クラスターを作成します。
+7. **ストレージ アカウント**の場合、**[新しいストレージを作成する]** を選択するか、既存のストレージ アカウントを選択します。使用する**アカウント名**と**既定のコンテナー**を選択するか、入力します。左下にあるチェック アイコンをクリックして、Storm クラスターを作成します。
 
-	> [WACOM.NOTE] Storm クラスターに使用されるコンテナーとは別のコンテナーを使用する必要があります。
+	> [AZURE.NOTE] Storm クラスターに使用されるコンテナーとは別のコンテナーを使用する必要があります。
 
-###リモート デスクトップを有効にする
+### リモート デスクトップを有効にする
 
 このチュートリアルでは、リモート デスクトップを使用して Storm クラスターと HBase クラスターにアクセスする必要があります。次の手順に従って、両方のリモート デスクトップを有効にします。
 
-1.   [Azure の管理ポータル][azureportal]にサインインします。.
+1. [Azure 管理ポータル][azureportal]にサインインします。
 
 2. 左側にある **[HDInsight]** を選択して、リストから Storm クラスターを選択します。最後に、ページの上部にある **[構成]** をクリックします。
 
@@ -605,7 +621,7 @@ Storm クラスターで実行しているトポロジが HBase と直接通信�
 
 リモート デスクトップが有効になったら、ページの下部にある **[接続]** をクリックできます。メッセージに従ってクラスターに接続します。
 
-###HBase DNS サフィックスの探索
+### HBase DNS サフィックスの探索
 
 Storm クラスターから HBase に書き込むためには、HBase クラスターに完全修飾ドメイン名 (FQDN) を使用する必要があります。次の手順に従って、この情報を探索します。
 
@@ -613,11 +629,11 @@ Storm クラスターから HBase に書き込むためには、HBase クラス�
 
 2. クラスターに接続したら、Hadoop コマンド ラインを開き、**ipconfig** コマンドを実行して DNS サフィックスを取得します。**接続固有の DNS サフィックス**にサフィックスの値が含まれています。たとえば、**mycluster.b4.internal.cloudapp.net** などです。この情報は保存してください。
 
-##Storm トポロジの開発
+## Storm トポロジの開発
 
-> [WACOM.NOTE] このセクションの手順は、ローカル開発環境で実行する必要があります。
+> [AZURE.NOTE] このセクションの手順は、ローカル開発環境で実行する必要があります。
 
-###外部依存関係のダウンロードとビルド
+### 外部依存関係のダウンロードとビルド
 
 このプロジェクトで使用する依存関係のいくつかは、個別にダウンロードしてビルドしてから、開発環境の Maven のローカル リポジトリにインストールする必要があります。このセクションでは、以下のものをダウンロードしてインストールします。
 
@@ -625,19 +641,19 @@ Storm クラスターから HBase に書き込むためには、HBase クラス�
 
 * SignalR Java クライアント SDK
 
-####Event Hub スパウトのダウンロードとビルド
+#### Event Hub スパウトのダウンロードとビルド
 
 Event Hub からデータを受信するために、**eventhubs-storm-spout** を使用します。
 
 1. リモート デスクトップを使用して Storm クラスターに接続し、**%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** ファイルをローカル開発環境にコピーします。これには **events-storm-spout** が含まれています。
 
-6. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。これにより、Storm プロジェクトの参照として、後の手順で容易に追加できます。
+2. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。これにより、Storm プロジェクトの参照として、後の手順で容易に追加できます。
 
-		mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
+		mvn install:install-file -Dfile=target/eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
 
-####SignalR クライアントのダウンロードとビルド
+#### SignalR クライアントのダウンロードとビルド
 
-ASP.NET ダッシュボードにメッセージを送信するには、 [SignalR Java クライアント SDK を使用します](https://github.com/SignalR/java-client)。
+ASP.NET ダッシュボードにメッセージを送信するには、[SignalR client SDK for Java (SignalR Java クライアント SDK)](https://github.com/SignalR/java-client) を使用します。
 
 1. コマンド プロンプトを開きます。
 
@@ -652,22 +668,22 @@ ASP.NET ダッシュボードにメッセージを送信するには、 [SignalR
 		cd java-client\signalr-client-sdk
 		mvn package
 
-	> [WACOM.NOTE] **gson** 依存関係をダウンロードできないというエラーが発生した場合は、**java-client\signalr-client-sdk\pom.xml** ファイルの次の行を削除します。
-	> ```<repositories>
+	> [AZURE.NOTE] **gson** 依存関係をダウンロードできないというエラーが発生した場合は、**java-client\signalr-client-sdk\pom.xml** ファイルの次の行を削除します。
+	> 
 <repository>
 <id>central</id>
 <name>Central</name>
 <url>http://maven.eclipse.org/build</url>
 </repository>
 </repositories>
-```
-	> これらの行を削除すると Maven は中央リポジトリからファイルをプルします (既定の動作)。Maven で強制的にリポジトリからプルし直すには、`-U` コマンドを使用します。たとえば、`mvn package -U` のように指定します。
 
-6. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。これにより、Storm プロジェクトの参照として、後の手順で容易に追加できます。
+	> これらの行を削除すると Maven は中央リポジトリからファイルをプルします (既定の動作)。Maven で強制的にリポジトリからプルし直すには、`-U` コマンドを使用します。たとえば、 `mvn package -U`　のように指定します。
 
-		mvn install:install-file -Dfile=target\signalr-client-sdk-1.0.jar -DgroupId=microsoft.aspnet.signalr -DartifactId=signalr-client-sdk -Dversion=1.0 -Dpackaging=jar
+5. 次のコマンドを使用して Maven のローカル ストアにパッケージをインストールします。これにより、Storm プロジェクトの参照として、後の手順で容易に追加できます。
 
-###Storm トポロジ プロジェクトのスキャフォールディング
+		mvn install:install-file -Dfile=target/signalr-client-sdk-1.0.jar -DgroupId=microsoft.aspnet.signalr -DartifactId=signalr-client-sdk -Dversion=1.0 -Dpackaging=jar
+
+### Storm トポロジ プロジェクトのスキャフォールディング
 
 Event Hub スパウトと SignalR クライアントをローカル リポジトリにインストールした後は、Maven を使用して Storm トポロジ プロジェクトのスキャフォールディングを作成します。
 
@@ -681,11 +697,11 @@ Event Hub スパウトと SignalR クライアントをローカル リポジト
 
 	このコマンドは、次の処理を実行します。
 
-	* 指定された *artifactId* を使用して新しいディレクトリを作成します。例では **Temperature** が使用されます。
+	* 指定された  *artifactId* を使用して新しいディレクトリを作成します。例では **Temperature** が使用されます。
 	* **pom.xml** ファイルを作成します。このファイルにはこのプロジェクトの Maven 情報が含まれます。
 	* **src** ディレクトリ構造を作成します。このディレクトリ構造には基本的なコードとテストが含まれます。
 
-###依存関係とプラグインの追加
+### 依存関係とプラグインの追加
 
 次に、このプロジェクトの依存関係、およびビルドとパッケージ化の際に使用する Maven プラグインを参照するように、**pom.xml** を変更します。
 
@@ -746,7 +762,7 @@ Event Hub スパウトと SignalR クライアントをローカル リポジト
 	* storm-core - Storm の主要なクラス
 	* storm-hbase - HBase への書き込みを許可するクラス
 
-	> [WACOM.NOTE] 一部の依存関係は、Maven リポジトリからダウンロードしてアプリケーションのビルドとテストにローカルで使用する必要があることを示すために、**provided** のスコープでマークされていますが、ランタイム環境でも利用できるようになるため、コンパイルしてこのプロジェクトで作成した JAR に含める必要はありません。
+	> [AZURE.NOTE] 一部の依存関係は、Maven リポジトリからダウンロードしてアプリケーションのビルドとテストにローカルで使用する必要があることを示すために、**provided** のスコープでマークされていますが、ランタイム環境でも利用できるようになるため、コンパイルしてこのプロジェクトで作成した JAR に含める必要はありません。
 
 2. **pom.xml** ファイルの最後の、**&lt;/project>** エントリの直前に、次のコードを追加します。
 
@@ -820,11 +836,11 @@ Event Hub スパウトと SignalR クライアントをローカル リポジト
 	* **maven-shade-plugin** を使用して uberjar または fat jar をビルドする。このファイルには、このプロジェクトと必要な依存関係が含まれます。
 	* **exec-maven-plugin** を使用する。これにより、Hadoop クラスターなしでローカルでアプリケーションを実行できます。
 
-###構成ファイルの追加
+### 構成ファイルの追加
 
 **eventhubs-storm-spout** は構成情報を **Config.properties** ファイルから読み取ります。これは、接続先の Event Hub を指定します。クラスターでトポロジを開始するときに構成ファイルを指定できますが、プロジェクトに構成ファイルを 1 つを含めておくと、既知の既定の構成を使用できます。
 
-1. **Temperature** ディレクトリに、**conf** という名前の新しいディレクトリを作成します。
+1. **Temperature** ディレクトリに、"**conf**" という名前の新しいディレクトリを作成します。
 
 2. **conf** ディレクトリに、新しいファイルを 2 つ作成します。
 
@@ -838,8 +854,8 @@ Event Hub スパウトと SignalR クライアントをローカル リポジト
 		eventhubspout.password = <the key of the 'storm' policy>
 
 		eventhubspout.namespace = <the event hub namespace>
-		# The name of the event hub
-		eventhubspout.entitypath = temperature
+
+		eventhubspout.entitypath = <the event hub name>
 
 		eventhubspout.partitions.count = <the number of partitions for the event hub>
 
@@ -850,9 +866,13 @@ Event Hub スパウトと SignalR クライアントをローカル リポジト
 
 		eventhub.receiver.credits = 1024
 
-	**password** を、Event Hub で前に作成した **storm** ポリシーのキーで置き換えます。**namespace** を Event Hub の名前空間で置き換えます。
+	**password** を、Event Hub で前に作成した **storm** ポリシーのキーで置き換えます。
+	
+	**namespace** を Event Hub の名前空間で置き換えます。
+	
+	**entitpath** を Event Hub の名前で置き換えます。
 
-3. **hbase-site.xml** ファイルの内容として次のコードを使用します。
+4. **hbase-site.xml** ファイルの内容として次のコードを使用します。
 
 		<?xml version="1.0"?>
 		<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -892,11 +912,11 @@ Event Hub スパウトと SignalR クライアントをローカル リポジト
 		  </property>
 		</configuration>
 
-3. **hbase-site.xml** ファイルで、zookeeper エントリの **suffix** の値を、HBase のために前に取得した DNS サフィックスで置き換えます。たとえば、"**zookeeper0.mycluster.b4.internal.cloudapp.net, zookeeper1.mycluster.b4.internal.cloudapp.net, zookeeper2.mycluster.b4.internal.cloudapp.net**" のように指定します。
+5. **hbase-site.xml** ファイルで、zookeeper エントリの **suffix** の値を、HBase のために前に取得した DNS サフィックスで置き換えます。たとえば、"**zookeeper0.mycluster.b4.internal.cloudapp.net, zookeeper1.mycluster.b4.internal.cloudapp.net, zookeeper2.mycluster.b4.internal.cloudapp.net**" のように指定します。
 
-3. ファイルを保存します。
+6. ファイルを保存します。
 
-###ヘルパーの追加
+### ヘルパーの追加
 
 JSON との双方向のシリアル化をサポートするには、オブジェクト構造を定義するヘルパー クラスが必要になります。
 
@@ -929,7 +949,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 5. これらのファイルを保存して閉じます。
 
-###ボルトの追加
+### ボルトの追加
 
 トポロジの主要な処理を実行するのがボルトがです。このトポロジでは、3 つのボルトがあり、その 1 つが、プロジェクトのビルド時に自動的にダウンロードされる HBase ボルトです。
 
@@ -940,7 +960,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 	* **ParserBolt.java** - Event Hub から受信したメッセージを個別のフィールドへと解析し、2 つのストリームを発します。
 	* **DashboardBolt.java** - SignalR を介して Web のダッシュボードに情報を記録します。
 
-2. **ParserBolt.java** ファイルの内容として次のコードを使用します。
+3. **ParserBolt.java** ファイルの内容として次のコードを使用します。
 
 		package com.microsoft.examples;
 
@@ -991,7 +1011,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 		  }
 		}
 
-3. **DashboardBolt.java** ファイルの内容として次のコードを使用します。
+4. **DashboardBolt.java** ファイルの内容として次のコードを使用します。
 
 		package com.microsoft.examples;
 
@@ -1086,11 +1106,11 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 		  }
 		}
 
-	`http://yourwebsiteaddress` を、前にダッシュボードを発行した Azure Web サイトのアドレスで置き換えます。たとえば、http://mydashboard.azurewebsites.net です。
+	`http://dashboard.azurewebsites.net/` を、前にダッシュボードを発行した Azure Web サイトのアドレスで置き換えます。たとえば、http://mydashboard.azurewebsites.net です。
 
-2. ファイルを保存して閉じます。
+5. ファイルを保存して閉じます。
 
-###トポロジの定義
+### トポロジの定義
 
 トポロジは、トポロジ内のスパウトとボルトの間のデータ フローに加えて、トポロジの並列処理の次数およびトポロジ内のコンポーネントも表します。
 
@@ -1242,7 +1262,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 	> [AZURE.NOTE] **HBaseBolt** の行はコメント アウトされています。これは、次の手順でトポロジをローカルで実行するためです。HBaseBolt は HBase と直接対話するため、有効になっているとエラーが返されます。DNS サーバーで仮想ネットワークを構成し、ローカル マシンを仮想ネットワークにも結合している場合は別です。
 
-###ローカルでのトポロジのテスト
+### ローカルでのトポロジのテスト
 
 開発用コンピューターでファイルをコンパイルしてテストするには、次の手順を実行します。
 
@@ -1250,22 +1270,22 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 2. Web ブラウザーを開き、Azure Web サイトに前にデプロイした Web ダッシュボードを表示します。これにより、値がトポロジを介して動くにつれて、グラフに表示されるのを確認できます。
 
-2. 次のコマンドを使用してトポロジをローカルで開始します。
+3. 次のコマンドを使用してトポロジをローカルで開始します。
 
 	mvn compile exec:java -Dstorm.topology=com.microsoft.examples.Temperature
 
 	これでトポロジが開始され、Event Hub からファイルを読み取り、Azure Websites で実行されているダッシュボードにファイルを送信します。Web ダッシュボードに行が表示されます。
 
-3. 動作することを確認したら、Ctrl キーを押しながら C キーを押してトポロジを停止します。SendEvent アプリケーションを停止するには、ウィンドウを選択して任意のキーを押します。
+4. 動作することを確認したら、Ctrl キーを押しながら C キーを押してトポロジを停止します。SendEvent アプリケーションを停止するには、ウィンドウを選択して任意のキーを押します。
 
-###HBaseBolt の有効化と HBase の準備
+### HBaseBolt の有効化と HBase の準備
 
-1. **Temperature.java** ファイルを開き、 (//) 次の行からコメントを削除します。
+1. **Temperature.java** ファイルを開き、次の行からコメント (//) を削除します。
 
 		//topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	//  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
 
-	This enables the HBase bolt.
+	これで、HBase ボルトが有効になります。
 
 2. **Temperature.java** を保存します。
 
@@ -1286,9 +1306,9 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 現時点では、HBase シェルでこのプロントを開いたままにします。
 
-##HDInsight へのトポロジのパッケージ化とデプロイ
+## HDInsight へのトポロジのパッケージ化とデプロイ
 
-開発環境で、次の手順に従って HDInsight Storm クラスターで Temperature トポロジを実行します。
+開発環境で、次の手順に従って Storm クラスターで Temperature トポロジを  実行します。
 
 1. 次のコマンドを使用して、プロジェクトから JAR パッケージを作成します。
 
@@ -1298,43 +1318,42 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 2. イベントを読み込むことができるように、開発用のローカル コンピューターから **SendEvents** .NET アプリケーションを開始します。
 
-1. リモート デスクトップを使用して HDInsight Storm クラスターに接続し、**TemperatureMonitor-1.0-SNAPSHOT.jar** ファイルを **c:\apps\dist\storm&lt;version number>** ディレクトリにコピーします。
+3. リモート デスクトップを使用して HDInsight Storm クラスターに接続し、**TemperatureMonitor-1.0-SNAPSHOT.jar** ファイルを **c:\apps\dist\storm&lt;version number>** ディレクトリにコピーします。
 
-2. クラスターのデスクトップにある **[HDInsight コマンド ライン]** アイコンを使用して新しいコマンド プロンプトを開き、次のコマンドを使用してトポロジを実行します。
+4. クラスターのデスクトップにある **[HDInsight コマンド ライン]** アイコンを使用して新しいコマンド プロンプトを開き、次のコマンドを使用してトポロジを実行します。
 
 		cd %storm_home%
 		bin\storm jar TemperatureMonitor-1.0-SNAPSHOT.jar com.microsoft.examples.Temperature Temperature
 
-3. トポロジが開始されてから項目が Web ダッシュボードに表示されるまでに、数秒かかる場合があります。
+5. トポロジが開始されてから項目が Web ダッシュボードに表示されるまでに、数秒かかる場合があります。
 
-3. 項目がダッシュボードに表示されたら、HBase クラスターのリモート デスクトップ セッションに切り替えます。
+6. 項目がダッシュボードに表示されたら、HBase クラスターのリモート デスクトップ セッションに切り替えます。
 
-4. HBase シェルから、次のコマンドを入力します。
+7. HBase シェルから、次のコマンドを入力します。
 
 		scan 'SensorData'
 
 	これによって、Storm トポロジが書き込んだデータが数行返されます。
 
-5. トポロジを停止するには、Storm クラスターのリモート デスクトップ セッションに移動し、HDInsight コマンド ラインに次のコードを入力します。
+8. トポロジを停止するには、Storm クラスターのリモート デスクトップ セッションに移動し、HDInsight コマンド ラインに次のコードを入力します。
 
 		bin\storm kill Temperature
 
 	数秒でトポロジが停止します。
 
-##まとめ
+## まとめ
 
 ここでは、Storm を使用して、Event Hub からデータを読み取り、HBase にデータを格納し、SignalR と D3.js を使用して Storm からの情報を外部ダッシュボードに表示する方法について説明しました。
 
-* Apache Storm の詳細については、[https://storm.incubator.apache.org/] を参照してください。(https://storm.incubator.apache.org/)
+* Apache Storm の詳細については、[https://storm.incubator.apache.org/](https://storm.incubator.apache.org/) を参照してください。
 
-* HDInsight での HBase の詳細については、「[HDInsight HBase の概要]」を参照してください。(http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-overview/)
+* HDInsight での HBase の詳細については、「[HDInsight HBase の概要](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-overview/)」を参照してください。
 
-* SignalR の詳細については、「[ASP.NET SignalR]」を参照してください。(http://signalr.net/)
+* SignalR の詳細については、「[ASP.NET SignalR](http://signalr.net/)」を参照してください。
 
-* D3.js の詳細については、「[D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)]」を参照してください。(http://d3js.org/)
+* D3.js の詳細については、「[D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)](http://d3js.org/)」を参照してください。
 
-* .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で Stream Computing Platform と C# を使用したストリーミング データ処理アプリケーションの開発]」を参照してください。(/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/)
+* .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/)」を参照してください。
 
 [azure-portal]: https://manage.windowsazure.com/
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

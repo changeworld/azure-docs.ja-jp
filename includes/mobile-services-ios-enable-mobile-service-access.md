@@ -1,7 +1,7 @@
 ﻿
 モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。
 
-1. [Mobile Services iOS SDK](https://go.microsoft.com/fwLink/p/?LinkID=266533) をまだインストールしていない場合は、ここでインストールしてください。インストールしたら、WindowsAzureMobileServices.framework ディレクトリをコピーし、ダウンロードしたプロジェクトに含まれる WindowsAzureMobileServices.framework ディレクトリを上書きします。この方法で、最新の Azure Mobile Services SDK を使用します。
+1. [モバイル サービス iOS SDK](https://go.microsoft.com/fwLink/p/?LinkID=266533) をまだインストールしていない場合は、ここでインストールしてください。インストールしたら、WindowsAzureMobileServices.framework ディレクトリをコピーし、ダウンロードしたプロジェクトに含まれる WindowsAzureMobileServices.framework ディレクトリを上書きします。この方法で、最新の Azure Mobile Services SDK を使用します。
 
 2. TodoService.h ファイルで、次のコメントがあるコード行を見つけます。
 
@@ -67,7 +67,7 @@
 
         // Query the TodoItem table and update the items property with the results from the service
 
-そのコメントとそれに続く **completion** ブロックの呼び出しを、次のコードに置き換えます。
+   	そのコメントとそれに続く **completion** ブロックの呼び出しを、次のコードに置き換えます。
 
         [self.table readWhere:predicate completion:^(NSArray *results, NSInteger totalCount, NSError *error)
 		{
@@ -131,3 +131,4 @@
 
 
 バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
+<!--HONumber=42-->

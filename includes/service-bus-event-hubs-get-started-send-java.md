@@ -5,13 +5,13 @@
 
 2. **Qpid JMS AMQP 1.0** ライブラリの最新リリースを[ここ](http://qpid.apache.org/components/qpid-jms/index.html)からダウンロードします。
 
-3. アーカイブからファイルを抽出し、アーカイブの `qpid-amqp-1-0-client-jms\<version>\lib` ディレクトリから Eclipse **Sender** プロジェクトに次の jar ファイルをコピーします。
+3. アーカイブからファイルを抽出し、アーカイブの  `qpid-amqp-1-0-client-jms\<version>\lib` ディレクトリから Eclipse **Sender** プロジェクトに次の jar ファイルをコピーします。
 
 4. Eclipse Package Explorer で、**Sender** プロジェクトを右クリックし、**[Properties]** を選択します。ダイアログの左側のウィンドウで、**[Java Build Path]**、**[Libraries]** タブ、**[Add JARs]** の順にクリックします。前にコピーした jar ファイルを選択してから **[OK]** をクリックします。
 
 	![][8]
 
-5. 次の内容で、**servicebus.properties** という名前のファイルを **Sender** プロジェクトのルートに作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
+5. 次の内容で、**servicebus.properties** という名前のファイルを **Sender** プロジェクトのルートに作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は  `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
 
 		# servicebus.properties - sample JNDI configuration
 
@@ -24,7 +24,7 @@
 		# topic.[jndi_name] = [physical_name]
 		queue.EventHub = {event hub name}
 
-5. **Sender** という名前の新しいクラスを作成します。次の `import` ステートメントを追加します。
+5. **Sender** という名前の新しいクラスを作成します。次の  `import` ステートメントを追加します。
 
 		import java.io.BufferedReader;
 		import java.io.IOException;
@@ -92,4 +92,4 @@
 
 
 <!-- Images -->
-[8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
+[8]:./media/service-bus-event-hubs-getstarted/create-sender-java1.png<!--HONumber=42-->

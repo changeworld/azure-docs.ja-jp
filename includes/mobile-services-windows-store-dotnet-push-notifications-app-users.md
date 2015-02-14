@@ -5,7 +5,7 @@
 
 このメソッドでは、ウィザードによってプロジェクトに新しい push.register.cs ファイルが作成されています。
 
->[WACOM.NOTE]プッシュ通知の追加ウィザードは、現在 .NET バックエンド モバイル サービスについてのみサポートされています。
+>[AZURE.NOTE]プッシュ通知の追加ウィザードは、現在 .NET バックエンド モバイル サービスについてのみサポートされています。
 
 1. Visual Studio のソリューション エクスプローラーで、app.xaml.cs プロジェクト ファイルを開き、**OnLaunched** イベント ハンドラーで、**UploadChannel** メソッドの呼び出しをコメント化または削除します。 
 
@@ -48,7 +48,7 @@
 
 1. Visual Studio のソリューション エクスプローラーで、app.xaml.cs プロジェクト ファイルを開き、**OnLaunched** イベント ハンドラーで、**InitNotificationsAsync** メソッドの呼び出しをコメント化または削除します。 
  
-2. **InitNotificationsAsync** メソッドのアクセシビリティを `private` から `public` に変更し、`static` 修飾子を追加します。 
+2. **InitNotificationsAsync** メソッドへのアクセス制限を  `private` から  `public` に変更し、 `static` 修飾子を追加します。 
 
 3. MainPage.xaml.cs プロジェクト ファイルを開き、**OnNavigatedTo** メソッドのオーバーライドを次のコードに置き換えます。
 
@@ -57,4 +57,4 @@
             await AuthenticateAsync();            
             App.InitNotificationsAsync();
             RefreshTodoItems();
-        }
+        }<!--HONumber=42-->

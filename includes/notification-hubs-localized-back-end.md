@@ -22,7 +22,7 @@
 
 ## C# コンソール アプリケーションを使用して通知を送信するには ##
 
-1 つのテンプレート通知を送信するように、*SendNotificationAsync* メソッドを変更します。
+1 つのテンプレート通知を送信するように、 *SendNotificationAsync* メソッドを変更します。
 
 	var hub = NotificationHubClient.CreateClientFromConnectionString("<connection string>", "<hub name>");
     var notification = new Dictionary<string, string>() {
@@ -51,3 +51,4 @@
 	});
 	
 この場合、異なるロケールやプラットフォームに対して複数の通知を送信する必要はありません。
+<!--HONumber=42-->

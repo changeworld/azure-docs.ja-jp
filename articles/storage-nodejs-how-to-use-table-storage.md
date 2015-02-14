@@ -1,6 +1,20 @@
-<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="nodejs" title="How to Use the Table Service from Node.js" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties 
+	pageTitle="テーブル ストレージを使用する方法 (Node.js) | Microsoft Azure" 
+	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" 
+	services="storage" 
+	documentationCenter="nodejs" 
+	authors="MikeWasson" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="mwasson" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="mwasson"/>
 
 # Node.js からテーブル サービスを使用する方法
 
@@ -8,41 +22,40 @@
 
 ## 目次
 
-* [テーブル サービスとは][]   
-* [概念][]   
+* [テーブル サービスとは][]
+* [概念][]
 * [Azure のストレージ アカウントの作成](#create-account)
 * [Node.js アプリケーションの作成](#create-app)
 * [アプリケーションからストレージへのアクセスの構成](#configure-access)
 * [Azure のストレージ接続文字列の設定](#setup-connection-string)  
-* [方法: テーブルを作成する](#create-table)
-* [方法: エンティティをテーブルに追加する](#add-entity)
-* [方法: エンティティを更新する](#update-entity)
-* [方法: エンティティのグループを操作する](#change-entities)
-* [方法: エンティティを取得する](#query-for-entity)
-* [方法: エンティティのセットを照会する](#query-set-entities)
-* [方法: エンティティを削除する](#delete-entity)
-* [方法: テーブルを削除する](#delete-table)   
-* [方法: 共有アクセス署名を操作する](#sas)
+* [方法:テーブルを作成する](#create-table)
+* [方法:エンティティをテーブルに追加する](#add-entity)
+* [方法:エンティティを更新する](#update-entity)
+* [方法:エンティティのグループを操作する](#change-entities)
+* [方法:エンティティを取得する](#query-for-entity)
+* [方法:エンティティのセットを照会する](#query-set-entities)
+* [方法:エンティティを削除する](#delete-entity)
+* [方法:テーブルを削除する](#delete-table)   
+* [方法:共有アクセス署名を操作する](#sas)
 * [次のステップ][]
 
-[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
+[AZURE.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-<h2><a name="create-account"></a>Azure のストレージ アカウントの作成</h2>
+<h2><a name="create-account"></a>Azure ストレージ アカウントの作成</h2>
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="create-app"> </a>Node.js アプリケーションの作成
+## <a name="create-app"></a>Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービス][Node.js クラウド サービス](Windows PowerShell を使用)、または [WebMatrix を使用した Web サイト]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
 ## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
 
-Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための
-便利なライブラリのセットが含まれています。
+Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (UNIX) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
+1.  **PowerShell** (Windows)**、Terminal** (Mac)、または **Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
 2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると、次のような出力が生成されます。
 
@@ -66,9 +79,9 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 ## <a name="setup-connection-string"> </a>Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション]」を参照してください。
 
 ## <a name="create-table"> </a>テーブルの作成方法
 
@@ -84,7 +97,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 		}
 	});
 
-新しいテーブルが作成される場合、`result` は `true` になり、テーブルが既に存在する場合には `false` になります。`response` には要求に関する情報が含まれます。
+新しいテーブルが作成される場合、 `result` は  `true` になり、テーブルが既に存在する場合には  `false`になります。 `response` には要求に関する情報が含まれます。
 
 ###フィルター
 
@@ -111,7 +124,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 * **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて]」を参照してください](http://msdn.microsoft.com/library/azure/dd179338.aspx)。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 エンティティを定義する例を次に示します。**dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
@@ -122,7 +135,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  dueDate: {'_':new Date(2015, 6, 20), '$':'Edm.DateTime'}
 	};
 
-> [WACOM.NOTE] 各レコードには、エンティティが挿入または更新される場合に Azure により設定される **Timestamp** フィールドもあります。
+> [AZURE.NOTE] 各レコードには、エンティティが挿入または更新される場合に Azure により設定される **Timestamp** フィールドもあります。
 
 **entityGenerator** を使用してエンティティを作成することもできます。次の例では、**entityGenerator** を使用して同じタスク エンティティを作成しています。
 
@@ -134,8 +147,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
       dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20))),
     };
 
-エンティティをテーブルに追加するには、エンティティ オブジェクトを 
-**insertEntity** メソッドに渡します。
+エンティティをテーブルに追加するには、エンティティ オブジェクトを **insertEntity** メソッドに渡します。
 
 	tableSvc.insertEntity('mytable',task, function (error, result, response) {
 		if(!error){
@@ -143,9 +155,9 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 		}
 	});
 
-操作が成功した場合、`result` には挿入されたレコードの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag)  が含まれ、`response` には操作に関する情報が含まれます。
+操作が成功した場合、 `result` には挿入されたレコードの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) が含まれ、 `response` には操作に関する情報が含まれます。
 
-> [WACOM.NOTE] 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
+> [AZURE.NOTE] 既定では、**insertEntity** は、 `response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、 `result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 
@@ -169,24 +181,25 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
       }
     });
 
-> [WACOM.NOTE] 既定では、エンティティを更新するときに、更新対象のデータが以前に別のプロセスにより変更されているかどうかは確認されません。同時更新をサポートするには、次の手順を実行します。
+> [AZURE.NOTE] 既定では、エンティティを更新するときに、更新対象のデータが以前に別のプロセスにより変更されているかどうかは確認されません。同時更新をサポートするには、次の手順を実行します。
 > 
-> 1.更新するオブジェクトの ETag を取得します。これは、任意のエンティティに関連する操作の `response` の一部として返され、`response['.metadata'].etag` を通じて取得できます。
+> 1.更新するオブジェクトの ETag を取得します。これは、任意のエンティティに関連する操作の  `response` の一部として返され、 `response['.metadata'].etag` を通じて取得できます。
 > 
 > 2.エンティティで更新操作を実行する場合は、以前に取得した ETag 情報を新しいエンティティに追加します。次に例を示します。
 > 
 >     `entity2['.metadata'].etag = currentEtag;`
 >    
-> 3.更新操作を実行します。アプリケーションの別のインスタンスなど、ETag 値を取得した後でエンティティが更新されている場合は、要求で指定された更新の条件が満たされていないことを示す `error` が返されます。
+> 3.更新操作を実行します。アプリケーションの別のインスタンスなど、ETag 値を取得した後でエンティティが更新されている場合は、要求で指定された更新の条件が満たされていないことを示す  `error` が返されます。
     
 **updateEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用する必要があります。
 
-成功した更新操作の `result` には、更新されたエンティティの **Etag** が含まれます。
+成功した更新操作の  `result` には、更新されたエンティティの **Etag** が含まれます。
 
-## <a name="change-entities"> </a>エンティティのグループを操作する方法
+## <a name="change-entities"> </a> エンティティのグループを操作する方法
+
 状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。これを実現するには、**TableBatch** クラスを使用してバッチを作成し、**TableService** の **executeBatch** メソッドを使用してバッチ操作を実行します。
 
- 次の例に、2 つのエンティティをバッチで送信する方法を示します。:
+ 次の例に、2 つのエンティティをバッチで送信する方法を示します。
 
     var task1 = { 
 	  PartitionKey: {'_':'hometasks'},
@@ -212,11 +225,11 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-バッチ操作が成功した場合、`result` にはバッチ内の各操作の情報が含まれます。
+バッチ操作が成功した場合、 `result` にはバッチ内の各操作の情報が含まれます。
 
 ###バッチ操作の処理
 
-バッチに追加された操作は、`operations` プロパティで確認できます。次のメソッドを使用して操作を処理できます。
+バッチに追加された操作は、 `operations` プロパティで確認できます。次のメソッドを使用して操作を処理できます。
 
 * **clear** - バッチのすべての操作をクリアします。
 
@@ -238,20 +251,19 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
     });
 
-この操作が完了すると、`result` にエンティティが含まれます。
+この操作を完了すると、 `result` にはエンティティが含まれます。
 
 ## <a name="query-set-entities"> </a>エンティティのセットを照会する方法
 
-テーブルを照会するには、**TableQuery** オブジェクトを使用し、
-以下の句を使用してクエリ式を作成します。
+テーブルを照会するには、**TableQuery** オブジェクトを使用し、以下の句を使用してクエリ式を作成します。
 
 * **select** - クエリから返されるフィールド。
 
 * **where** - where 句。
 
-	* **and** - `and` where 条件。
+	* **and** -  `and` where 条件。
 
-	* **or** - `or` where 条件。
+	* **or** -  `or` where 条件。
 
 * **top** - 取得する項目の数。
 
@@ -270,7 +282,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は *null* 以外になり、さらに結果を取得するために、`result.continuationToken` を **queryEntities** の 3 番目のパラメーターとして使用できます。最初のクエリでは、3 番目のパラメーターは *null* にする必要があります。
+成功した場合は、 `result.entries` にはクエリに一致するエンティティの配列が含まれます。クエリですべてのエンティティを返すことができなかった場合、 `result.continuationToken` は *null* 以外になり、さらに結果を取得するために、`result.continuationToken` を **queryEntities** の 3 番目のパラメーターとして使用できます。最初のクエリでは、3 番目のパラメーターは  *null* にする必要があります。
 
 ###エンティティ プロパティのサブセットを照会する方法
 
@@ -284,10 +296,8 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 ## <a name="delete-entity"> </a>エンティティを削除する方法
 
-パーティション キーと行キーを使用してエンティティを削除できます。次の
-例では、**task1** オブジェクトに、削除するエンティティの **RowKey** と 
-**PartitionKey** の値が格納されます。次に、このオブジェクトが 
-**deleteEntity** メソッドに渡されます。
+パーティション キーと行キーを使用してエンティティを削除できます。この例では、**task1** オブジェクトに、削除するエンティティの **RowKey** と 
+**PartitionKey** の値が格納されます。次に、このオブジェクトが **deleteEntity** メソッドに渡されます。
 
 	var task = { 
 	  PartitionKey: {'_':'hometasks'},
@@ -300,7 +310,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-> [WACOM.NOTE] 項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[方法: エンティティを更新する][]」を参照してください。
+> [AZURE.NOTE] 項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[方法:エンティティを更新する][]」を参照してください。
 
 ## <a name="delete-table"> </a>テーブルを削除する方法
 
@@ -318,7 +328,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
 
-クラウドベースのサービスなど信頼されたアプリケーションは、**TableService** の **generateSharedAccessSignature** を使用して SAS を生成し、信頼されていない、または信頼性の低いアプリケーションに提供します。たとえば、モバイル アプリなどです。SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
+クラウドベースのサービスなどの信頼されたアプリケーションは、**TableService** の **generateSharedAccessSignature** を使用して SAS を生成し、信頼されていないか、部分的に信頼されたアプリケーションにこれを提供します。たとえば、モバイル アプリなどです。SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
 
 次の例では、SAS の保有者に対してテーブルのクエリ ('r') を許可し、作成時から 100 分後に期限が切れる、新しい共有アクセス ポリシーを作成しています。
 
@@ -400,7 +410,6 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 ## <a name="next-steps"> </a>次のステップ
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
-さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   MSDN リファレンス:[Azure のデータの格納とアクセス][]
 -   [Azure のストレージ チーム ブログ][]
@@ -410,30 +419,29 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [次のステップ]: #next-steps
   [テーブル サービスとは]: #what-is
   [概念]: #concepts
-  [Azure のストレージ アカウントの作成]: #create-account
-  [Node.js アプリケーションの作成]: #create-app
-  [アプリケーションからストレージへのアクセスの構成]: #configure-access
-  [Azure のストレージ接続文字列の設定]: #setup-connection-string
-  [方法: テーブルを作成する]: #create-table
-  [方法: エンティティをテーブルに追加する]: #add-entity
-  [方法: エンティティを更新する]: #update-entity
-  [方法: エンティティのグループを操作する]: #change-entities
-  [方法: エンティティを照会する]: #query-for-entity
-  [方法: エンティティのセットを照会する]: #query-set-entities
-  [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
-  [方法: エンティティを削除する]: #delete-entity
-  [方法: テーブルを削除する]: #delete-table
+  [Create an Azure Storage Account]: #create-account
+  [Create a Node.js Application]: #create-app
+  [Configure your Application to Access Storage]: #configure-access
+  [Setup an Azure Storage Connection]: #setup-connection-string
+  [How To: Create a Table]: #create-table
+  [How To: Add an Entity to a Table]: #add-entity
+  [方法:エンティティを更新する]: #update-entity
+  [How to: Work with Groups of Entities]: #change-entities
+  [How to: Query for an Entity]: #query-for-entity
+  [How to: Query a Set of Entities]: #query-set-entities
+  [How To: Query a Subset of Entity Properties]: #query-entity-properties
+  [How To: Delete an Entity]: #delete-entity
+  [How To: Delete a Table]: #delete-table
 
   [OData.org]: http://www.odata.org/
-  [REST API を使用する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
-  [Azure の管理ポータル]: http://manage.windowsazure.com
+  [using the REST API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+  [Azure Management Portal]: http://manage.windowsazure.com
 
-  [Node.js クラウド サービス]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [Node.js Cloud Service]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-  [WebMatrix を使用した Web サイト]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [ストレージを使用する Node.js クラウド サービス]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [Node.js Cloud Service with Storage]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
   [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

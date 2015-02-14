@@ -3,9 +3,9 @@
 
   	![][23]
 
-    > [WACOM.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要なのは、初めてアプリケーションを実行するときだけです。
+    > [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「新しい Mobile Services タスク」) を入力し、プラス記号 (**+**) のアイコンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「_A new Mobile Services task_」) を入力し、プラス (**+**) アイコンをクリックします。
 
   	![][24]
 
@@ -24,3 +24,4 @@
 [25]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png
 [26]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push4-ios.png
 
+<!--HONumber=42-->

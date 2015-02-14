@@ -1,9 +1,163 @@
-﻿<properties title="HDInsight Release Notes" pageTitle="HDInsight リリース ノート | Azure" description="HDInsight リリース ノート" metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure, release notes" services="HDInsight" solutions="" documentationCenter="" editor="cgronlun" manager="paulettm"  authors="bradsev" />
+﻿<properties 
+	pageTitle="HDInsight リリース ノート | Azure" 
+	description="HDInsight リリース ノート" 
+	services="hdinsight" 
+	documentationCenter="" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	authors="bradsev"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/05/2014" ms.author="bradsev" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/30/2015" 
+	ms.author="bradsev"/>
 
 
 #Microsoft HDInsight リリース ノート
+
+## HDinsight の 2015 年 1 月 29 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 	2.1.10.455.1309616	(HDP 1.3.9.0-01351 - 変更なし)
+* HDInsight 	3.0.6.455.1309616	(HDP 2.0.9.0-2097 -  変更なし)
+* HDInsight 	3.1.2.455.1309616	(HDP 2.1.9.0-2196 -  変更なし)
+* SDK			N/A
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 
+(例: サービス、OSS コンポーネント、SDK、PS、AUX)</p></th>
+<th>影響を受けるクラスターの種類 (例: Hadoop、HBase、Storm、すべて)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+
+<td> バグの修正</td>
+<td>Azure のアップグレード中に HDInsight クラスターの信頼性を向上させる重要な修正をいくつか行いました。</td>
+<td>サービス</td>
+<td></td>
+<td>該当なし</td>
+</tr>
+
+
+
+</table>
+<br>
+
+## HDinsight の 2015 年 1 月 5 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 	2.1.10.420.1246118	(HDP 1.3.9.0-01351 - 変更なし)
+* HDInsight 	3.0.6.420.1246118	(HDP 2.0.9.0-2097 - 変更なし)
+* HDInsight 	3.1.2.420.1246118	(HDP 2.1.9.0-2196 - 変更なし)
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>コンポーネント</th>
+<th>クラスターの種類</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>Twitter の傾向分析と Mahout に基づく映画のリコメンデーションのサンプル</td>
+<td><p>このリリースでは、HDInsight クエリ コンソールに 2 つの追加のサンプルがあります。</p>
+
+<p><b>Twitter の傾向分析</b><br>
+Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。このチュートリアルで Hive を使用して、特定の単語を含むツイートを最も多く送信した Twitter ユーザーの一覧を取得する方法について説明します。 </p>
+
+<p><b>Mahout 映画のリコメンデーション</b><br>
+Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。このチュートリアルでは、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。</p></td>
+<td>クエリ コンソール</td>
+<td>Hadoop</td>
+<td>該当なし</td>
+</tr>
+
+<tr>
+<td>hive config hive.auto.convert.join.noconditionaltask.size の既定値への変更</td>
+<td><p>このサイズ構成は、自動変換されたマップの結合に適用されます。この値は、メモリに収まる hashmap に変換できるテーブルのサイズの合計を表します。以前のリリースで、この値は既定値の 10MB から 128MB に増えました。ただし、128MB という新しい値がメモリ不足でジョブが失敗する原因になっていました。このリリースでは、既定値を 10MB に戻します。ユーザーは、クエリとテーブル サイズに応じて、クラスターの作成中にこの値を変更することができます。この設定および設定を変更する方法の詳細については、Hortonworks のドキュメントの <a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">「Optimize Auto Join Conversion (Auto Join Conversion の最適化)」</a> を参照してください。 </p></td>
+<td>Hive</td>
+<td>Hadoop、HBase</td>
+<td>該当なし</td>
+</tr>
+
+</table>
+<br>
+
+## HDinsight の 2014 年 12 月 23 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 	2.1.10.420.1246783	(HDP バージョンは変更なし)
+* HDInsight 	3.0.6.420.1246783	(HDP バージョンは変更なし)
+* HDInsight 	3.1.1.420.1246783	(HDP バージョンは変更なし)
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>コンポーネント</th>
+<th>クラスターの種類</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>負荷が高すぎることによる断続的なクラスター作成エラー</td>
+<td><p>クラスター作成中の HDP パッケージのダウンロード アルゴリズムの改良により、負荷の増加によるエラーをより確実に処理できます。この分野では、クラスター作成に関連した負荷の増加に合わせたスケーリングを向上させる改良がさらにいくつか期待されています。</p></td>
+<td>サービス</td>
+<td>Hadoop、Hbase、Storm</td>
+<td>該当なし</td>
+</tr>
+
+
+
+</table>
+<br>
+
+## HDinsight の 2014 年 12 月 18 日リリース ##
+
+このリリースでは、コンポーネントに対して以下の更新を実施しています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>コンポーネント</th>
+<th>クラスターの種類</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+<tr>
+<td><a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">クラスター カスタマイズの GA</a></td>
+<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight に展開できるようになりました。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる <b>スクリプト アクション</b>機能により実現されます。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、人気の高い <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、 <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、 <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、および <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールのインストール プロセスをドキュメントにまとめました。またこのリリースでは、ユーザーが Azure 管理ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパーメソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインの提供が行われます。 </p></td>
+<td>機能の GA</td>
+<td>すべて</td>
+<td>該当なし</td>
+</tr>
+
+
+</table>
+<br>
 
 ## HDinsight の 2014 年 12 月 5 日リリース ##
 
@@ -34,7 +188,7 @@
 </tr>
 
 <tr>
-<td>バグの修正:HDInsight クエリ コンソールが応答を停止することがある</td>
+<td>バグの修正:HDInsight クエリが時々ハングする  クエリ コンソール</td>
 <td>このエラーが発生すると、WebHCat ランチャー ジョブの WebHCat ログに以下の文言が表示されます。 <p>"org.apache.hive.hcatalog.templeton.CatchallExceptionMapper | org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.yarn.exceptions.YarnRuntimeException):Could not load history file {wasb url to the history file}"</p></td>
 <td>WebHCat</td>
 <td>Hadoop</td>
@@ -52,7 +206,7 @@
 <tr>
 <td>HDP jar ファイルの名称変更</td>
 <td>バージョン 3.0 の HDI クラスターでは、HDP によってイントールされる内部の jar ファイルの名称がいくつか変更になります。jetty-6.1.26.jar は、
- jetty-6.1.26.hwx.jar という名称に変更になります。jetty-util-6.1.26.jar は、jetty-util-6.1.26.hwx.jar という名称に変更になります。この変更は、Hadoop、Mahout、WebHCat、および Oozie プロジェクトに適用されます。**</td>
+ jetty-6.1.26.hwx.jar という名称に変更になります。jetty-util-6.1.26.jar は、jetty-util-6.1.26.hwx.jar という名称に変更になります。これらの変更は、Hadoop、Mahout、WebHCat および Oozie プロジェクトに適用されます。**</td>
 <td>Hadoop、Mahout、WebHCat、Oozie</td>
 <td>Hadoop、HBase</td>
 <td>該当なし</td>
@@ -92,7 +246,7 @@
 
 <tr>
 <td>IHdInsightClient.DeleteCluster でのリージョン名の指定 </td>
-<td>Azure HDInsight SDK で、**DeleteCluster** の使用時にリージョン名の指定が可能になりました。これまでは、別々のリージョンに同じ名前のリソースが 1 つずつある場合に、どちらかだけを削除することはできませんでした。この更新では、そのような問題が解消します。</td>
+<td>Azure HDInsight SDK で **DeleteCluster** の使用時にリージョン名の指定が可能になりました。これまでは、別々のリージョンに同じ名前のリソースが 1 つずつある場合に、どちらかだけを削除することはできませんでした。この更新では、そのような問題が解消します。</td>
 <td>SDK</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -100,7 +254,7 @@
 
 <tr>
 <td>ClusterDetails.DeploymentId</td>
-<td> **ClusterDetails** オブジェクトが、**DeploymentID** フィールドを返すようになりました。このフィールドは、クラスターを一意に識別する情報です。この情報は、同じ名前のクラスターを作成しようとしても常に一意の状態が確保されます。</td>
+<td>**ClusterDetails** オブジェクトが **DeploymentID** フィールドを返すようになりました。このフィールドは、クラスターを一意に識別する情報です。この情報は、同じ名前のクラスターを作成しようとしても常に一意の状態が確保されます。</td>
 <td>SDK</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -108,7 +262,7 @@
 </table>
 <br>
 
-## HDInsight ## の 2014 年 11 月 14 日リリース
+## HDInsight の 2014 年 11 月 14 日リリース ##
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -160,8 +314,8 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 注:クラスターのカスタマイズによって利用が可能になる新機能の例として、スクリプト アクションを使ってクラスターに Spark と R の 2 つのモジュールをインストールする手順が文書化されています。詳細については、以下を参照してください。
 
-* [Install and use Spark 1.0 on HDInsight clusters (HDInsight クラスターに Spark 1.0 をインストールして使用する)][hdinsight-install-spark]
-* [Install and use R on HDInsight Hadoop clusters (HDInsight Hadoop クラスターに R をインストールして使用する)][hdinsight-r-scripts]
+* [Install and use Spark 1.0 on HDInsight clusters (HDInsight クラスターで Spark をインストールして使用する)][hdinsight-install-spark]
+* [Install and use R on HDInsight Hadoop clusters (HDInsight Hadoop クラスターで R をインストールして使用する)][hdinsight-r-scripts]
 
 
 
@@ -222,7 +376,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 ## 2014 年 10 月 7 日リリース ##
 
-* Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
+* Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、 *host_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
 * HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントを参照してください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。 
  
@@ -242,20 +396,20 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 </table><br>
 
-HDInsight で使用される Hortonworks Data Platform で YARN および MapReduce によって使用されるメモリ構成の設定の詳細については、「[Determine HDP Memory Configuration Settings (HDP メモリ構成の設定の決定)]」を参照してください(http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)。Hortonworks は、適切なメモリ設定を計算するツールも提供しています。
+HDInsight で使用される Hortonworks Data Platform で YARN および MapReduce によって使用されるメモリ構成の設定の詳細については、「[Determine HDP Memory Configuration Settings (HDP メモリ構成の設定の決定)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)」を参照してください。Hortonworks は、適切なメモリ設定を計算するツールも提供しています。
 
-HDInsight PowerShell/SDK のエラー:クラスターが HTTP サービスのアクセス用に構成されていません*":
+HDInsight PowerShell/SDK のエラー:"*Cluster is not configured for Http Services access (クラスターが HTTP サービスのアクセス用に構成されていません)*":
 
-* このエラーは既知の[互換性の問題]であり、(https://social.msdn.microsoft.com/Forums/azure/en-US/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight) SDK/PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、SDK/PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。SDK API または PowerShell コマンドレットを使用してジョブ (**Use-AzureHDInsightCluster**、**Invoke-Hive**) を送信する場合、エラー メッセージ "*クラスター <クラスター名> が HTTP サービスのアクセス用に構成されていません*" または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
+* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/en-US/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、SDK/PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、SDK/PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。SDK API または PowerShell コマンドレットを使用して、ジョブ (**Use-AzureHDInsightCluster**, **Invoke-Hive**) を送信すると、エラー メッセージ "*Cluster <clustername> is not configured for Http Services access(クラスター <クラスタ名> は Http サービス アクセス用に構成されていません)*" または、操作によってはこれ以外にも、"*Cannot connect to cluster (クラスターに接続できません)*" などのエラー メッセージが表示されてこれらの操作が失敗する可能性があります。
 
-* これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。最新の HDInsight SDK は [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started)  でアクセスできます。Azure PowerShell ツールについては「[Azure PowerShell のインストールおよび構成方法]」を参照してください(http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)。
+* これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK に、「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)」から Azure PowerShell ツールにアクセスできます。
 
 * SDK および PowerShell は、クラスターのバージョンが同じである限り、クラスターへの新しい更新プログラムを引き続き処理すると想定できます。たとえば、クラスター Version 3.1 は、常に最新のバージョン SDK/PowerShell 1.3.1.6 および 0.8.8 と互換性があります。
 
 
 ## HDInsight 3.1 の 2014 年 9 月 12 日リリース##
 
-* このリリースは、Hortonworks Data Platform (HDP) 2.1.5 に基づくものです。このリリースで修正されたバグの一覧については、Hortonworks のサイトで「[Fixed in this Release (このリリースでの修正点)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html) 」を参照してください。
+* このリリースは、Hortonworks Data Platform (HDP) 2.1.5 に基づくものです。このリリースで修正されたバグの一覧については、Hortonworks のサイトで「[Fixed in this Release (このリリースでの修正点)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html)」ページを参照してください。
 * Pig ライブラリ フォルダーで、ファイル "avro-mapred-1.7.4.jar" が "avro-mapred-1.7.4-hadoop2.jar" に変更されています。これらのファイルの内容には、重要でない小さなバグ修正が含まれます。ファイルの名前が変更されたときにファイルが壊れるのを避けるため、JAR ファイル自体の名前と直接依存関係を持たないことをお勧めします。
 
 
@@ -280,7 +434,7 @@ HDInsight PowerShell/SDK のエラー:クラスターが HTTP サービスのア
 
 メッセージ "クラスター <クラスター名> がHTTP サービスのアクセス用に構成されていません" (操作によっては"クラスターに接続できません" などのその他のメッセージ) を伴う HDInsight PowerShell/SDK のエラーが、SDK/PowerShell とクラスターのバージョンが異なることが原因で発生する場合があります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。SDK/PowerShell の以前のバージョンでは、この機能が正しく解釈されません。その結果、ジョブの送信の操作で失敗します。SDK API または PowerShell コマンドレットを使用して Use-AzureHDInsightCluster や Invoke-AzureHDInsightHiveJob などのジョブを送信する場合、これらの操作は上に示したエラー メッセージで失敗する可能性があります。
 
-これらの互換性の問題は、SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。最新の HDInsight SDK は [nuget](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.HDInsight/)  でアクセスできます。また、[Microsoft Web PI] を使用すると Azure PowerShell ツールを入手できます(http://go.microsoft.com/?linkid=9811175&clcid=0x409)。
+これらの互換性の問題は、SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[NuGet](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.HDInsight/) から最新の HDInsight SDK に、「[Microsoft Web PI](http://go.microsoft.com/?linkid=9811175&clcid=0x409)」から Azure PowerShell ツールにアクセスできます。
 
 SDK および PowerShell は、クラスターのバージョンが同じである限り、クラスターへの新しい更新プログラムを引き続き処理すると想定できます。たとえば、クラスター Version 3.1 は、常に最新のバージョン SDK/PowerShell 1.3.1.6 および 0.8.8 と互換性があります。
 
@@ -291,7 +445,7 @@ SDK および PowerShell は、クラスターのバージョンが同じであ�
 	* 東アジア 
 	* 米国中北部 
 	* 米国中南部 
-* このリリースでは、HDInsight v1.6 (HDP1.1、Hadoop 1.0.3) および HDInsight v2.1 (HDP1.3、Hadoop 1.2) が Azure の管理ポータルから削除されています。これらのバージョンの Hadoop クラスターは、HDInsight PowerShell コマンドレット ([New-AzureHDInsightCluster](http://msdn.microsoft.com/ja-jp/library/dn593744.aspx)) または [HDInsight SDK] を使用すれば引き続き作成できます(http://msdn.microsoft.com/ja-jp/library/azure/dn469975.aspx)。詳細については、「[HDInsight で提供されるクラスター バージョンの新機能]」(http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/) 」のページを参照してください。
+* このリリースでは、HDInsight v1.6 (HDP1.1、Hadoop 1.0.3) および HDInsight v2.1 (HDP1.3、Hadoop 1.2) が Azure の管理ポータルから削除されています。これらのバージョンの Hadoop クラスターは、HDInsight PowerShell コマンドレット ([New-AzureHDInsightCluster](http://msdn.microsoft.com/ja-jp/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/ja-jp/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。詳細については、「[HDInsight で提供されるクラスター バージョンの新機能](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)」のページを参照してください。
 * このリリースでは、Hortonworks Data Platform (HDP) が以下のように変更されました。 
 
 <table border="1">
@@ -316,13 +470,13 @@ HBase を使用すると、大規模なデータセットを処理する対話�
 
 ### Apache Mahout が HDInsight 3.1 にプレインストール ###
 
- HDInsight 3.1 Hadoop クラスターには [Mahout](http://hortonworks.com/hadoop/mahout/)  がプレインストールされています。そのため、他のクラスター構成を追加することなく、Mahout ジョブを実行できます。たとえば、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターにリモート接続したり、以下のように、追加の手順なしで Hello world Mahout コマンドを実行したりできます。
+ HDInsight 3.1 Hadoop クラスターには [Mahout](http://hortonworks.com/hadoop/mahout/) がプレインストールされています。そのため、他のクラスター構成を追加することなく、Mahout ジョブを実行できます。たとえば、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターにリモート接続したり、以下のように、追加の手順なしで Hello world Mahout コマンドを実行したりできます。
 
 		mahout org.apache.mahout.classifier.df.tools.Describe -p /user/hdp/glass.data -f /user/hdp/glass.info -d I 9 N L  
 
 		mahout org.apache.mahout.classifier.df.BreimanExample -d /user/hdp/glass.data -ds /user/hdp/glass.info -i 10 -t 100
 
-この手順の詳しい説明については、Apache Mahout Web サイトのドキュメント「[Breiman Example (Breiman の例)]」を参照してください(https://mahout.apache.org/users/classification/breiman-example.html) 。 
+この手順の詳しい説明については、Apache Mahout Web サイトのドキュメント「[Breiman Example (Breiman の例)](https://mahout.apache.org/users/classification/breiman-example.html)」を参照してください。 
 
 
 ### HDInsight 3.1 で Hive クエリに Tez を使用可能 ###
@@ -333,9 +487,9 @@ HDInsight 3.1 で Hive 0.13 が利用可能になり、Tez を使用してクエ
 		set hive.execution.engine=tez;
 		select sc_status, count(*), histogram_numeric(sc_bytes,5) from website_logs_orc_local group by sc_status;
 
-Hortonworks では、Tez を使用した Hive クエリのパフォーマンスの向上について、標準ベンチマークによる詳細なブレークダウンを公開しています。詳細については、「[Benchmarking Apache Hive 13 for Enterprise Hadoop (Enterprise Hadoop 向け Apache Hive 13 のベンチマーク)]」を参照してください(http://hortonworks.com/blog/benchmarking-apache-hive-13-enterprise-hadoop/)。 
+Hortonworks では、Tez を使用した Hive クエリのパフォーマンスの向上について、標準ベンチマークによる詳細なブレークダウンを公開しています。詳細については、「[Benchmarking Apache Hive 13 for Enterprise Hadoop (Enterprise Hadoop 向け Apache Hive 13 のベンチマーク)](http://hortonworks.com/blog/benchmarking-apache-hive-13-enterprise-hadoop/)」を参照してください。 
 
-Tez を使用した Hive に関する詳細については、[Hive on Tez wiki page (wiki ページ「Tez を使用した Hive」)] を参照してください。(https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)。
+Tez を使用した Hive に関する詳細については、[Hive on Tez wiki page (wiki ページ「Tez を使用した Hive」)](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) を参照してください。
 
 ###グローバル対応
 Hadoop 2.2 対応の Azure HDInsight のリリースに伴い、すべての主要な Azure 地域で HDInsight が利用可能になりました。具体的には、西ヨーロッパと東南アジアのデータ センターがオンラインになりました。これで、お客様は、距離的に近く、コンプライアンス要件が似ていると思われる地域にあるデータ センター内のクラスターを見つけることができます。 
@@ -345,15 +499,15 @@ Hadoop 2.2 対応の Azure HDInsight のリリースに伴い、すべての主�
 
 **HDInsight 3.1 クラスターで使用される Oozie メタストアは HDInsight 2.1 クラスターとの下位互換性はなく、以前のバージョンで使用できません。**
 
-HDInsight 3.1 クラスターでデプロイされたカスタムの Oozie メタストア データベースは、HDInsight 2.1 クラスターでは再利用できません。これは、そのメタストアが最初に 2.1 クラスターで作成されたものであったとしても同じです。3.1 クラスターで使用するときにメタストア スキーマがアップグレードされるため、このシナリオはサポートされていません。そのため、2.1 クラスターで必要とされるメタストアとの互換性がなくなります。HDInsight 3.1 クラスターで使用されていた Oozie メタストアを再利用しようと試みると、2.1 クラスターが使用できなくなります。 
+HDInsight 3.1 クラスターでデプロイされたカスタム Oozie メタストア データベースは、HDInsight 2.1 クラスターでは再利用できません。これは、そのメタストアが最初に 2.1 クラスターで作成されたものであったとしても同じです。3.1 クラスターで使用するときにメタストア スキーマがアップグレードされるため、このシナリオはサポートされていません。そのため、2.1 クラスターで必要とされるメタストアとの互換性がなくなります。HDInsight 3.1 クラスターで使用されていた Oozie メタストアを再利用しようと試みると、2.1 クラスターが使用できなくなります。 
 
-**Oozie メタストアはクラスター間で共有できません**
+**Oozie メタストアはクラスター間で共有できない**
 より一般的な言い方をすれば、Oozie メタストアは特定のクラスターに接続されるものであり、クラスター間で共有することはできません。
 
 ###重大な変更
 
 **プレフィックスの構文**:
-HDInsight 3.0 および 3.1 クラスターでは、"wasb://" 構文のみがサポートされます。旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターまたは以降のバージョンではサポートされません。つまり、"asv://" 構文を明示的に使用するジョブを HDInsight 3.0 または 3.1 クラスターに送信すると、そのジョブは失敗します。代わりに、wasb:// 構文を使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.0 または 3.1 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、wasb:// を使用してリソースをアドレス指定するように再作成する必要があります。 
+HDInsight 3.0 および 3.1 クラスターでは、"wasb://" 構文のみがサポートされます。旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターまたは以降のバージョンではサポートされません。HDInsight 3.0  または 3.1 クラスターに送信され、明示的に "asv://" 構文を使用するジョブはすべて失敗します。代わりに、wasb:// 構文を使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.0 または 3.1 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、wasb:// を使用してリソースをアドレス指定するように再作成する必要があります。 
 
 
 **ポート**:HDInsight サービスで使用されるポートが変更されました。これまで使用されてきたポート番号は、Windows OS の一時的なポート範囲内の番号です。ポートは、短期間のインターネット プロトコル ベースの通信に対して一時的に事前定義される範囲から自動的に割り当てられます。今回 Hortonworks Data Platform (HDP) サービスに許可された新しいポート番号のセットは、この範囲の外部にあり、ヘッドノードで実行するサービスが使用するポート番号の競合の可能性が回避されます。新しいポート番号によって重大な変更が発生することはありません。今回使用される番号は以下のとおりです。
@@ -372,7 +526,7 @@ HDInsight 3.0 および 3.1 クラスターでは、"wasb://" 構文のみがサ
 <tr><td>templeton.port</td><td>30111</td></tr>
 </table><br>
 
- **HDInsight 3.0 および 3.1 (HDP 2.0 と 2.1)**
+ **HDInsight 3.0 および 3.1 (HDP 2.0 および 2.1)**
 <table border="1">
 <tr><th>名前</th><th>値</th></tr>
 <tr><td>dfs.namenode.http-address</td><td>namenodehost:30070</td></tr>
@@ -489,7 +643,7 @@ SQL Server JDBC ドライバーは HDInsight によって内部的に使用さ�
 
 ### バグの修正 ###
 
-このリリースでは、以下のバージョンの HDInsight (Hortonworks Data Platform - HDP) でバグが修正されました。
+このリリースで、次の HDInsight   (Hortonworks Data Platform - HDP) バージョンをいくつかのバグ修正により更新しました。
 
 * HDInsight 2.1 (HDP 1.3)
 * HDInsight 3.0 (HDP 2.0)
@@ -524,5 +678,4 @@ SQL Server JDBC ドライバーは HDInsight によって内部的に使用さ�
 
 
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

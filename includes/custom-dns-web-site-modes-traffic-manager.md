@@ -1,3 +1,5 @@
 ﻿Traffic Manager によって負荷分散される Web サイトのカスタム ドメイン名は、標準モードの Web サイトでのみ設定できます。Web サイトを無料 Web サイト モードから共有、基本、または標準モードに切り替える場合、最初に Web サイト サブスクリプションに設定されている使用制限を解除する必要があります。 
 
-サイトのモードの変更方法など、Websites のモードの詳細については、「[Web サイトの規模の設定方法](/ja-jp/documentation/articles/web-sites-scale/)」を参照してください。
+サイトのモードの変更方法など、Websites のモードの詳細については、次の情報を参照してください: [Web サイトの規模の設定方法](/ja-jp/documentation/articles/web-sites-scale/).
+
+<!--HONumber=42-->

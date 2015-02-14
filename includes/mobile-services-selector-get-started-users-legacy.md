@@ -1,17 +1,20 @@
-﻿> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
+> [AZURE.SELECTOR-LIST (Platform | Backend)]
 - [(iOS | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/)
 - [(iOS | JavaScript)](/ja-jp/documentation/articles/mobile-services-ios-get-started-users/)
-- [(Windows ストア C# | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)
-- [(Windows ストア C# | JavaScript)](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/)
-- [(Windows ストア JavaScript | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/)
-- [(Windows ストア JavaScript | JavaScript)](/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/)
+- [(Windows Store C# | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)
+- [(Windows Store C# | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/)
+- [(Windows Store JavaScript | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/)
+- [(Windows Store JavaScript | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/)
 - [(Windows Phone | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/)
-- [(Windows Phone | JavaScript)](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/)
+- [(Windows Phone | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/)
 - [(Android | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users/)
-- [(Android | JavaScript)](/ja-jp/documentation/articles/mobile-services-android-get-started-users/)
+- [(Android | Javascript)](/ja-jp/documentation/articles/mobile-services-android-get-started-users/)
 - [(Xamarin iOS | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-users/)
-- [(Xamarin iOS | JavaScript)](/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users/)
+- [(Xamarin iOS | Javascript)](/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users/)
 - [(Xamarin Android | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-users/)
-- [(Xamarin Android | JavaScript)](/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-users/)
-- [(HTML | JavaScript)](/ja-jp/documentation/articles/mobile-services-html-get-started-users/)
-- [(Appcelerator | JavaScript)](/ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users/)
+- [(Xamarin Android | Javascript)](/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-users/)
+- [(HTML | Javascript)](/ja-jp/documentation/articles/mobile-services-html-get-started-users/)
+- [(Appcelerator | Javascript)](/ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users/)
+
+
+<!--HONumber=42-->

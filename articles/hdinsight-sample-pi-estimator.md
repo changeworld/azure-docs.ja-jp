@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Hadoop Samples in HDInsight" pageTitle="HDInsight での Pi 推定 Hadoop サンプル | Azure" metaKeywords="hdinsight, hdinsight sample,  hadoop, mapreduce" description="HDInsight で Hadoop MapReduce サンプルを実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The Pi estimator Hadoop sample in HDInsight" authors="bradsev" />
+﻿<properties 
+	pageTitle="HDInsight での Pi 推定 Hadoop サンプル | Azure" 
+	description="HDInsight で Hadoop MapReduce サンプルを実行する方法について説明します。" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="bradsev"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/10/2014" 
+	ms.author="bradsev"/>
 
 # HDInsight での Pi 推定 Hadoop サンプル
  
@@ -14,7 +28,7 @@ mapper 関数と reducer 関数を含む PiEstimator Java コードを次に挙�
 
 Hadoop on Azure でアプリケーションを展開するときに必要なファイルを含む jar ファイルは zip ファイルでダウンロードできます。さまざまな圧縮ユーティリティを使ってファイルの圧縮を解除して、自由にファイルを調べることができます。
 
-HDInsight を使用して MapReduce ジョブをすばやく実行するのに役立つその他のサンプルは、その実行方法のリンクと共に、「[HDInsight での Hadoop のサンプルの実行][hdinsight-samples]」に挙げられています。
+HDInsight を使用して MapReduce ジョブをすばやく実行するのに役立つその他のサンプルは、その実行方法のリンクと共に、「[HDInsight サンプルの実行][hdinsight-samples]」に挙げられています。
 
 **学習内容:**
 		
@@ -23,13 +37,13 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 
 **前提条件**:	
 
-- Azure アカウントが必要です。アカウントにサインアップする方法については、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/) 」を参照してください。
+- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://azure.microsoft.com/ja-jp/pricing/free-trial/)を参照してください。
 
-- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング]」を参照してください。(../hdinsight-provision-clusters/)
+- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](../hdinsight-provision-clusters/)」を参照してください。
 
 - Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
 
-##この記事の内容	
+## この記事の内容	
 このトピックでは、サンプルを実行する方法について説明し、Pi 推定 MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 	
 1. [Azure PowerShell を使用したサンプルの実行](#run-sample)	
@@ -47,14 +61,14 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 		$subscriptionName = "<SubscriptionName>"   # Azure subscription name
 		$clusterName = "<ClusterName>"             # HDInsight cluster name
 
-4. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。	
+3. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。	
 
 		$piEstimatorJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" -ClassName "pi" -Arguments "16", "10000000" 
 
 	
 	最初の引数は作成するマップの数を示します (既定値は 16)。2 つ目の引数はマップごとに生成するサンプル数を示します (既定値は 1000 万)。つまりこのプログラムでは、Pi を推定するために 16 × 1,000 万 = 1 億 6,000 万のランダム ポイントが使用されます。3 つ目の引数は HDInsight 3.0 および 3.1 クラスターでサンプルを実行するときに使用される .jar ファイルの場所と名前を示します(このファイルの内容として以下の内容を使用します)。
 
-5. 次のコマンドを実行して、MapReduce ジョブを送信し、ジョブの完了を待ちます。
+4. 次のコマンドを実行して、MapReduce ジョブを送信し、ジョブの完了を待ちます。
 
 		# Run the Pi Estimator MapReduce job.
 		Select-AzureSubscription $subscriptionName
@@ -63,7 +77,7 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 		# Wait for the job to complete.  
 		$piJob | Wait-AzureHDInsightJob -Subscription $subscriptionName -WaitTimeoutInSeconds 3600  
 
-6. 次のコマンドを実行して、MapReduce ジョブの標準出力を取得します。
+5. 次のコマンドを実行して、MapReduce ジョブの標準出力を取得します。
 
 		# Print output and standard error file of the MapReduce job
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $piJob.JobId -StandardOutput
@@ -444,13 +458,13 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
+* [Azure の HDInsight の概要][hdinsight-get-started]
 * [サンプル:10 GB GraySort][hdinsight-sample-10gb-graysort]
 * [サンプル:ワードカウント][hdinsight-sample-wordcount]
 * [サンプル:C# ストリーミング][hdinsight-sample-csharp-streaming]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
-* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
+* [Azure の HDInsight SDK ドキュメント][hdinsight-sdk-documentation]
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
 
@@ -468,5 +482,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [hdinsight-use-pig]: ../hdinsight-use-pig/
  
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

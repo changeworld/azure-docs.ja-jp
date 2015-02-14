@@ -1,18 +1,32 @@
-﻿<properties urlDisplayName="Hadoop Samples in HDInsight" pageTitle="HDInsight での C# ストリーミング ワードカウント Hadoop サンプル | Azure" metaKeywords="hadoop, hdinsight, hdinsight administration, hdinsight administration azure" description="サンプル TBD を実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The C# streaming wordcount Hadoop sample in HDInsight" authors="bradsev" />
+﻿<properties 
+	pageTitle="HDInsight での C# ストリーミング ワードカウント Hadoop サンプル | Azure" 
+	description="Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法、および PowerShell コマンドレットを使用して HDInsight でプログラムを実行する方法。" 
+	editor="cgronlun" 
+	manager="paulettm" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="bradsev"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/10/2014" 
+	ms.author="bradsev"/>
 
-# HDInsight での C# ストリーミング ワードカウント Hadoop サンプル
+# HDInsight の Hadoop での C# ストリーミング ワードカウント MapReduce サンプル
  
-Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述することができます。このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法、および Azure PowerShell コマンドレットを使用して Azure HDInsight でプログラムを実行する方法を紹介します。 
+Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述することができます。このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法、および PowerShell コマンドレットを使用して HDInsight でプログラムを実行する方法を紹介します。 
 
 この例では、mapper と reducer はどちらも [stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
-**mappers** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。一方、mapper はプロセスの stdout から行指向の出力を収集して、各行をキーと値のペアに変換します。これが mapper の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) がデータです。行にタブ文字がない場合は、行全体がキーと見なされ、値は null になります。 
+**mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。一方、mapper はプロセスの stdout から行指向の出力を収集して、各行をキーと値のペアに変換します。これが mapper の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) がデータです。行にタブ文字がない場合は、行全体がキーと見なされ、値は null になります。 
 
-**reducers** 用の実行可能ファイルが指定されると、各 reducer タスクは reducer 開始時に別のプロセスとしてその実行可能ファイルを起動します。reducer タスクは実行されると、入力のキーと値のペアを行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。一方、reducer はプロセスの [stdout][stdin-stdout-stderr] から行指向の出力を収集して、各行をキーと値のペアに変換します。これが reducer の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) がデータです。 
+**reducer** 用の実行可能ファイルが指定されると、各 reducer タスクは reducer 開始時に別のプロセスとしてその実行可能ファイルを起動します。reducer タスクは実行されると、入力のキーと値のペアを行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。一方、reducer はプロセスの [stdout][stdin-stdout-stderr] から行指向の出力を収集して、各行をキーと値のペアに変換します。これが reducer の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) がデータです。 
 
-Hadoop ストリーミング インターフェイスの詳細については、[Hadoop ストリーミング][hadoop-streaming]に関するページを参照してください。 
+Hadoop ストリーミング インターフェイスの詳細については、[Hadoop ストリーミングに関するサイト][hadoop-streaming]を参照してください。 
  
 **学習内容:**	
 	
@@ -22,14 +36,14 @@ Hadoop ストリーミング インターフェイスの詳細については、
 
 **前提条件**:	
 
-- Azure アカウントが必要です。アカウントにサインアップする方法については、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/) 」を参照してください。
+- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://azure.microsoft.com/ja-jp/pricing/free-trial/)を参照してください。
 
-- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング]」を参照してください。(../hdinsight-provision-clusters/)
+- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](../hdinsight-provision-clusters/)」を参照してください。
 
-- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
+- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
 
-##この記事の内容
+## この記事の内容
 このトピックでは、サンプルを実行する方法について説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 	
 1. [Azure PowerShell を使用したサンプルの実行](#run-sample)	
@@ -41,22 +55,22 @@ Hadoop ストリーミング インターフェイスの詳細については、
 
 **MapReduce ジョブを実行するには**
 
-1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]」を参照してください。
+1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
 
-3. 次のコマンドを実行して、2 つの変数を設定します。
+2. 次のコマンドを実行して、2 つの変数を設定します。
 		
 		$subscriptionName = "<SubscriptionName>"   # Azure subscription name
 		$clusterName = "<ClusterName>"             # HDInsight cluster name
 
 
-2. 次のコマンドを実行して、MapReduce ジョブを定義します。
+3. 次のコマンドを実行して、MapReduce ジョブを定義します。
  
 		# Create a MapReduce job definition for the streaming job.
 		$streamingWC = New-AzureHDInsightStreamingMapReduceJobDefinition -Files "/example/apps/wc.exe", "/example/apps/cat.exe" -InputPath "/example/data/gutenberg/davinci.txt" -OutputPath "/example/data/StreamingOutput/wc.txt" -Mapper "cat.exe" -Reducer "wc.exe" 
 
 	パラメーターは mapper 関数と reducer 関数、入力ファイルと出力ファイルを指定します。
                  
-5. 次のコマンドを実行して、MapReduce ジョブを実行し、ジョブの完了を待ち、標準エラーを出力します。
+4. 次のコマンドを実行して、MapReduce ジョブを実行し、ジョブの完了を待ち、標準エラーを出力します。
 
 		# Run the C# Streaming MapReduce job.
 		# Wait for the job to complete.
@@ -64,7 +78,7 @@ Hadoop ストリーミング インターフェイスの詳細については、
 		Select-AzureSubscription $subscriptionName
 		$streamingWC | Start-AzureHDInsightJob -Cluster $clustername | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | Get-AzureHDInsightJobOutput -Cluster $clustername -StandardError 
 
-6. 次のコマンドを実行して、ワード カウントの結果を表示します。
+5. 次のコマンドを実行して、ワード カウントの結果を表示します。
 
 		$subscriptionName = "<SubscriptionName>"   
 		$storageAccountName = "<StorageAccountName>" 
@@ -149,7 +163,7 @@ cat.cs ファイルの mapper コードは、StreamReader オブジェクトを�
 	}
 
 
-wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブジェクトを使用して、mapper の cat.exe によって出力された標準入力ストリームから文字を読み取ります。[Console.Writeline][console-writeline] メソッドを使用して文字を読み取ると、各単語の末尾にある空白および改行文字をカウントして、[Console.Writeline][console-writeline] メソッドを使用して合計を標準出力ストリームに書き込みます。 
+wc.cs ファイルの reducer コードは、[StreamReader][streamreader]    オブジェクトを使用して、mapper の cat.exe によって出力された標準入力ストリームから文字を読み取ります。[Console.Writeline][console-writeline] メソッドを使用して文字を読み取ると、各単語の末尾にある空白および改行文字をカウントして、[Console.Writeline][console-writeline] メソッドを使用して合計を標準出力ストリームに書き込みます。 
 
 <h2><a id="summary"></a>まとめ</h2>
 
@@ -159,10 +173,10 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
+* [Get started with Azure HDInsight (HDInsight で Hadoop 2.4 を使用する)][hdinsight-get-started]
 * [サンプル:Pi 推定][hdinsight-sample-pi-estimator]
 * [サンプル:ワードカウント][hdinsight-sample-wordcount]
-* [サンプル:10 GB GraySort][hdinsight-sample-10gb-graysort]
+* [サンプル:10GB GraySort][hdinsight-sample-10gb-graysort]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
@@ -188,5 +202,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [hdinsight-use-pig]: ../hdinsight-use-pig/
 
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

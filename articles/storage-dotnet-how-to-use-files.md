@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="File Service" pageTitle="Azure File ストレージを使用する方法 | Microsoft Azure" metaKeywords="Get started Azure file  Azure file share  Azure file shares  Azure file   Azure file storage   Azure file .NET   Azure file C#   Azure file PowerShell" description="Microsoft Azure File ストレージを使用してファイル共有を作成し、ファイルの内容を管理する方法について説明します。サンプルは PowerShell および C# で記述されています。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use Microsoft Azure File storage in .NET" authors="tamram" manager="adinah" />
+<properties 
+	pageTitle="Azure File ストレージを使用する方法 | Microsoft Azure" 
+	description="Microsoft Azure File ストレージを使用してファイル共有を作成し、ファイルの内容を管理する方法について説明します。サンプルは PowerShell および C# で記述されています。" 
+	services="storage" 
+	documentationCenter=".net" 
+	authors="tamram" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/10/2014" ms.author="tamram" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/10/2014" 
+	ms.author="tamram"/>
 
 # Azure File ストレージを使用する方法
 
@@ -8,7 +22,7 @@
 
 Azure の仮想マシンやクラウド サービスだけでなく、内部設置型のアプリケーションから共有内のファイルにアクセスする必要があるユーザーのために、Azure .NET Storage クライアント ライブラリを使用してデスクトップ アプリケーションからファイル共有を利用する方法を説明します。
 
-> [WACOM.NOTE] このガイドの .NET コードの例を実行するには、Azure .NET Storage クライアント ライブラリ 4.x 以降が必要になります。Storage クライアント ライブラリは、[NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/)で入手できます。
+> [AZURE.NOTE] このガイドの .NET コードの例を実行するには、Azure .NET Storage クライアント ライブラリ 4.x 以降が必要になります。torage クライアント ライブラリは、[NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/) で入手できます。
 
 
 ##目次
@@ -44,40 +58,39 @@ File ストレージには次の構成要素があります。
 ![files-concepts][files-concepts]
 
 
--   **ストレージ アカウント:**Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx) 」を参照してください。
+-   **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)を参照してください。
 
--   **共有:**File ストレージ共有は、Azure 内の SMB 2.1 ファイル共有です。ディレクトリとファイルはすべて親の共有に作成する必要があります。アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。
+-   **共有:** 記憶域ファイル共有は、Azure での SMB 2.1 ファイル共有です。すべてのディレクトリとファイルは、親共有に作成する必要があります。アカウントに無制限の数の共有、格納できるあり、共有が無制限の数のストレージ アカウントの容量の上限まで、ファイルを保存できます。
 
--   **ディレクトリ:** ディレクトリの階層 (オプション)。 
+-   **ディレクトリ:** ディレクトリの階層 (オプション)。
 
--	**ファイル:** 共有内のファイル。ファイルのサイズの上限は 1 TB です。
+-	**ファイル:** 共有内のファイル。最大 1 TB までのファイルを使用できます。
 
--   **URL 形式:**ファイルは次の URL 形式でアドレス指定されます。https://`<ストレージ アカウント>`.file.core.windows.net/`<共有名>`/`<ディレクトリ (複数可)>`/`<ファイル名>`  
-    
-    次の例の URL を使用すると、上の図のいずれかのファイルをアドレス指定できます。  
-    `http://acmecorp.file.core.windows.net/cloudfiles/diagnostics/log.txt`
+-   **URL 形式:** ファイルは、次の形式を使用してアドレスを指定し、アクセスできます。 https://`<storageaccount>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
+次の例の URL を使用すると、上の図のいずれかのファイルをアドレス指定できます。
+`http://acmecorp.file.core.windows.net/cloudfiles/diagnostics/log.txt`
 
 
 
 共有、ディレクトリ、およびファイルの詳しい命名方法については、「[Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)](http://msdn.microsoft.com/ja-jp/library/azure/dn167011.aspx)」を参照してください。
 
-##<a name="create-account"></a>Azure のストレージ アカウントの作成
+##<a name="create-account"></a>Azure ストレージ アカウントの作成
 
-Azure File ストレージは現在プレビュー段階にあります。このプレビュー機能の利用を申し込むには[Microsoft Azure プレビューのページ](/ja-jp/services/preview/)で、**Azure Files** の利用を申し込んでください。申し込みが承認されると、File ストレージ プレビューを利用できるようになったという通知が送られます。その後で、File ストレージにアクセスするストレージ アカウントを作成できます。
+Azure File ストレージは現在プレビュー段階にあります。このプレビュー機能の利用を申し込むには、[Microsoft Azure プレビューのページ](/ja-jp/services/preview/)で、**Azure Files** の利用を申し込んでください。申し込みが承認されると、File ストレージ プレビューを利用できるようになったという通知が送られます。その後で、File ストレージにアクセスするストレージ アカウントを作成できます。
 
-> [WACOM.NOTE] File ストレージは現在、新規のストレージ アカウントでのみ利用できます。File ストレージ アカウントへのアクセスがサブスクリプションに許可された後で、このガイドで使用する新規ストレージ アカウントを作成してください。
+> [AZURE.NOTE] File ストレージは現在、新規のストレージ アカウントでのみ利用できます。File ストレージ アカウントへのアクセスがサブスクリプションに許可された後で、このガイドで使用する新規ストレージ アカウントを作成してください。
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ##<a name="use-cmdlets"></a>PowerShell を使用したファイル共有の作成
 
 ###Azure Storage 用の PowerShell コマンドレットのインストール
 
-PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。インストール先とインストール方法については、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールおよび構成方法)](/ja-jp/documentation/articles/install-configure-powershell/) 」を参照してください。
+PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。インストール先とインストール方法については、「[Azure PowerShell のインストールおよび構成方法](/ja-jp/documentation/articles/install-configure-powershell/)」を参照してください。
 
-> [WACOM.NOTE] File サービス用の PowerShell コマンドレットは、最新の Azure PowerShell モジュール (Version 0.8.5 以降) でのみ提供されています。最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
+> [AZURE.NOTE] File サービス用の PowerShell コマンドレットは、最新の Azure PowerShell モジュール (Version 0.8.5 以降) でのみ提供されています。最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
 
-**[スタート]** をクリックし、「**Windows Azure PowerShell**」と入力して、Azure PowerShell ウィンドウを開きます。Azure PowerShell ウィンドウに自動的に Azure Powershell モジュールが読み込まれます。
+**[スタート]**  をクリックし、「**Windows Azure PowerShell**」と入力して、Azure PowerShell ウィンドウを開きます。Azure PowerShell ウィンドウに自動的に Azure Powershell モジュールが読み込まれます。
 
 ###ストレージ アカウントおよびキーのコンテキストの作成
 
@@ -120,8 +133,8 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 
 Azure のファイル共有をマウントする方法を示すために、ここでは Azure の仮想マシンを作成し、リモート接続して、共有をマウントします。 
 
-1. 最初に、「[Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)](/ja-jp/documentation/articles/virtual-machines-windows-tutorial/)」の説明に従って、Azure の仮想マシンを新規作成します。
-2. 次に、「[How to Log on to a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンにログオンする方法)](/ja-jp/documentation/articles/virtual-machines-log-on-windows-server/)」の説明に従って仮想マシンにリモート接続します。
+1. 最初に、「[Windows Server を実行する仮想マシンの作成](/ja-jp/documentation/articles/virtual-machines-windows-tutorial/)」の説明に従って、Azure の仮想マシンを新規作成します。
+2. 次に、「[Windows Server を実行する仮想マシンにログオンする方法](/ja-jp/documentation/articles/virtual-machines-log-on-windows-server/)」の説明に従って仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。 
 
 ###ストレージ アカウントの資格情報を仮想マシンに適用
@@ -130,19 +143,19 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 	cmdkey /add:<storage-account>.file.core.windows.net /user:<storage-account> /pass:<account-key>
 
-これで、仮想マシンの再起動時に Windows が自動的にファイル共有に再接続するようになります。共有に再接続したことを確認するには、PowerShell ウィンドウ内から `net use` コマンドを実行します。
+これで、仮想マシンの再起動時に Windows が自動的にファイル共有に再接続するようになります。共有に再接続したことを確認するには、PowerShell ウィンドウ内から  `net use` コマンドを実行します。
 
 ###適用された資格情報を使用したファイル共有のマウント
 
-仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。次の構文を使用します。`<storage-account>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有の名前に置き換えてください。
+仮想マシンにリモート接続した後で、 `net use` コマンドを実行してファイル共有をマウントできます。次の構文を使用します。`<storage-account>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有の名前に置き換えてください。
 
-	net use z:\\<storage-account>.file.core.windows.net\<share-name>
+	net use z: \\<storage-account>.file.core.windows.net\<share-name>
 
-> [WACOM.NOTE] 前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、`net use` コマンドのパラメーターで資格情報を指定してください。`<storage-account>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有の名前に置き換え、さらに `<account-key>` を実際のストレージ アカウント キーに置き換えてください。
+> [AZURE.NOTE] 前の手順でストレージ アカウントの資格情報を適用したため、 `net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、 `net use` コマンドのパラメーターで資格情報を指定してください。`<storage-account>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有の名前に置き換え、さらに `<account-key>` を実際のストレージ アカウント キーに置き換えてください。
 	   
-	net use z:\\<storage-account>.file.core.windows.net\<share-name> /u:<storage-account> <account-key>
+	net use z: \\<storage-account>.file.core.windows.net\<share-name> /u:<storage-account> <account-key>
 
-これで、通常のドライブと同じように仮想マシンの中から File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/ja-jp/library/gg145019(v=vs.110)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。 
+これで、通常のドライブと同じように仮想マシンの中から File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/ja-jp/library/gg145019(v=vs.110).aspx)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。 
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
@@ -156,13 +169,13 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C# テンプレートの一覧から **[コンソール アプリケーション]** をクリックします。
+1. Visual Studio で、**[ファイル]** -> **[新しいプロジェクト]** の順にクリックした後、**[Windows]** -> **[コンソール アプリケーション]** (Visual C# テンプレートから) をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
 ###ストレージ アカウントの資格情報を app.config ファイルに保存
 
-次に、プロジェクトの app.config ファイルに資格情報を保存します。次の例のようになるように app.config ファイルを編集します。ここで、`myaccount` は実際のストレージ アカウント名に置き換え、`mykey` は実際のストレージ アカウント キーに置き換えてください。
+次に、プロジェクトの app.config ファイルに資格情報を保存します。次の例のようになるように app.config ファイルを編集します。ここで、 `myaccount` は実際のストレージ アカウント名に置き換え、 `mykey` は実際のストレージ アカウント キーに置き換えてください。
 
     <?xml version="1.0" encoding="utf-8" ?>
 	<configuration>
@@ -174,7 +187,7 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 		</appSettings>
 	</configuration>
 
-> [WACOM.NOTE] 最新バージョンの Azure ストレージ エミュレーターでは、File ストレージがサポートされません。接続文字列は、Azure Files プレビュー機能にアクセスできる、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
+> [AZURE.NOTE] 最新バージョンの Azure ストレージ エミュレーターでは、File ストレージがサポートされません。接続文字列は、Azure Files プレビュー機能にアクセスできる、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 
 ###名前空間宣言の追加
@@ -185,14 +198,14 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 	using Microsoft.WindowsAzure.Storage.File;
 
 ###プログラムによる接続文字列の取得
-`Microsoft.WindowsAzure.CloudConfigurationManager` クラスまたは System.Configuration.ConfigurationManager` クラスを使用して、app.config ファイルから保存済みの資格情報を取得することができます。この例では、`CloudConfigurationManager` クラスを使用して資格情報を取得し、それを `CloudStorageAccount` クラスによってカプセル化する方法を示します。program.cs の `Main()` メソッドに、次のコードを追加します。
+ `Microsoft.WindowsAzure.CloudConfigurationManager` クラスまたは  `System.Configuration.ConfigurationManager`  クラスを使用して、app.config ファイルから保存済みの資格情報を取得することができます。この例では、`CloudConfigurationManager` クラスを使用して資格情報を取得し、それを  `CloudStorageAccount` クラスによってカプセル化する方法を示します。rogram.cs の  `Main()` メソッドに、次のコードを追加します。
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
 ###プログラムによる File ストレージ共有へのアクセス
 
-次に、前に示したコードの後で、`Main()` メソッドに次のコードを追加し、接続文字列を取得します。このコードは、前の手順で作成したファイルへの参照を取得し、その内容をコンソール ウィンドウに出力します。
+次に、前に示したコードの後で、 `Main()` メソッドに次のコードを追加し、接続文字列を取得します。このコードは、前の手順で作成したファイルへの参照を取得し、その内容をコンソール ウィンドウに出力します。
 
 	//Create a CloudFileClient object for credentialed access to File storage.
     CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
@@ -246,10 +259,10 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
   </ul>
 </li><li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
-    <li>非構造化データの格納には、 <a href="/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/">BLOB ストレージ</a> を使用します。</li>
-    <li>構造化データの格納には、 <a href="/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/">テーブル ストレージ</a> を使用します。</li>
-    <li>メッセージを確実に格納するには、 <a href="/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/">キュー ストレージ</a> を使用します。</li>
-    <li>リレーショナル データの格納には、 <a href="/ja-jp/documentation/articles/sql-database-dotnet-how-to-use/">SQL Database</a> を使用します。</li>
+    <li>非構造化データの格納には、<a href="/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/">BLOB ストレージ</a>を使用します。</li>
+    <li>構造化データの格納には、<a href="/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/">テーブル ストレージ</a>を使用します。</li>
+    <li>メッセージを確実に格納するには、<a href="/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/">キュー ストレージ</a>を使用します。</li>
+    <li>リレーショナル データの格納には、<a href="/ja-jp/documentation/articles/sql-database-dotnet-how-to-use/">SQL データベース</a>を使用します。</li>
   </ul>
 </li>
 </ul>
@@ -264,5 +277,4 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 
 [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

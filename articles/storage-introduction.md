@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Introduction to Azure Storage" pageTitle="ストレージの概要 | Microsoft Azure" metaKeywords="Get started  Azure storage introduction  Azure storage overview  Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage  Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage  Azure file storage  Azure file  Azure file share  Azure " description="Microsoft Azure Storage の概要です。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="Introduction to Microsoft Azure Storage" authors="tamram" manager="adinah" />
+<properties 
+	pageTitle="ストレージの概要 | Microsoft Azure" 
+	description="Microsoft Azure Storage の概要です。" 
+	services="storage" 
+	documentationCenter="" 
+	authors="tamram" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/11/2014" ms.author="tamram" />
+<tags 
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/11/2014" 
+	ms.author="tamram"/>
 
 # Microsoft Azure Storage の概要
 
@@ -12,7 +26,7 @@
 - 冗長性およびレプリケーションによる Azure Storage のデータ保護の方法 
 - Azure Storage アプリケーションを初めて構築する場合に役立つ詳細情報
 
-## Azure Storage とは##
+## Azure Storage とは ##
 
 クラウド コンピューティングは、スケーラブルで、耐久性と高可用性に富んだストレージを必要とするアプリケーションに適した新しいシナリオを実現します。それこそがまさに、Microsoft が Azure Storage を開発した理由です。Azure Storage は、開発者が新しいシナリオをサポートするための大規模なアプリケーションの構築に使用できるだけでなく、Azure Virtual Machines の堅牢性を裏付けるストレージ基盤となります。 
 
@@ -26,39 +40,39 @@ Azure Storage は、世界中どこからでも、あらゆる種類のアプリ
 
 Azure ストレージは、多様なセットのオペレーティング システム (Windows および Linux を含む) と、多様なプログラミング言語 (.NET、Java、C++) を使用するクライアントをサポートしているため、アプリケーション開発に便利です。またデータ リソースには、HTTP/HTTPS の送受信機能を持つ任意のクライアントから、単純な REST API 経由でアクセスできます。
 
-Azure Premium Storage は現在プレビュー版として提供されています。Azure Premium Storage は、Azure Virtual Machines 上で実行される大量の I/O が発生するワークロード向けに高パフォーマンス、低待機時間のディスク サポートを提供します。Azure Premium Storage を使用すると、複数の永続データ ディスクを仮想マシンに接続し、パフォーマンス要件を満たすように構成できます。各データ ディスクは Azure Premium Storage の SSD ディスクによって最高の I/O パフォーマンスを実現しています。詳細については、「[Premium Storage:High-Performance Storage for Azure Virtual Machine Workloads (Premium Storage: Azure 仮想マシンのワークロード向け高パフォーマンス ストレージ)](http://go.microsoft.com/fwlink/?LinkId=521898) 」を参照してください。 
+Azure Premium Storage は現在プレビュー版として提供されています。Azure Premium Storage は、Azure Virtual Machines 上で実行される大量の I/O が発生するワークロード向けに高パフォーマンス、低待機時間のディスク サポートを提供します。Azure Premium Storage を使用すると、複数の永続データ ディスクを仮想マシンに接続し、パフォーマンス要件を満たすように構成できます。各データ ディスクは Azure Premium Storage の SSD ディスクによって最高の I/O パフォーマンスを実現しています。詳細については、[Premium Storage:High-Performance Storage for Azure Virtual Machine Workloads (プレミアム ストレージ: Azure 仮想マシン ワークロード用の高性能ストレージ)](http://go.microsoft.com/fwlink/?LinkId=521898) を参照してください。 
 
-## Azure Storage サービスの概要 ##
+## Azure ストレージ サービスの概要 ##
 
 Azure ストレージ アカウントは、Azure Storage のサービスにアクセスできる安全なアカウントです。ストレージ アカウントは、ストレージ リソースに対して一意の名前空間を提供します。ストレージ アカウントには、次の 2 種類があります。
 
 - 標準ストレージ アカウント。BLOB、テーブル、キュー、ファイル ストレージが含まれています。
-- Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Azure Premium Storage は、Azure の[プレビュー機能](/ja-jp/services/preview/)で要求すると利用できます。
+- Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Azure Premium Storage は、[Azure のプレビューに関するページ](/ja-jp/services/preview/) からリクエストすると利用できます。
 
-ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。1 つのサブスクリプションに対し、最大 100 の一意の名前を持つストレージ アカウントを作成できます。ストレージ容量、レプリケーション、トランザクションの詳細については、「[Azure Storage 料金](http://www.windowsazure.com/ja-jp/pricing/details/storage/) 」を参照してください。
+ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。1 つのサブスクリプションに対し、最大 100 の一意の名前を持つストレージ アカウントを作成できます。ボリューム ディスカウント料金の詳細については、[Azure Storage 料金](http://www.windowsazure.com/ja-jp/pricing/details/storage/) を参照してください。
 
-Azure は、まず[無料評価版](/ja-jp/pricing/free-trial/)で使用してみることができます。またプランの購入時には、さまざまな[購入オプション](/ja-jp/pricing/purchase-options/)から選択できます。[MSDN サブスクライバー](/ja-jp/pricing/member-offers/msdn-benefits-details/)には、毎月、Azure Storage を含む Azure サービスに使用できる無料使用分のクレジットが与えられます。
+Azure は、まず [無料評価版](/ja-jp/pricing/free-trial/) で使用してみることができます。プランを購入することを決定すると、さまざまな [購入オプション](/ja-jp/pricing/purchase-options/) から選択できます。[MSDN サブスクライバー](/ja-jp/pricing/member-offers/msdn-benefits-details/) である場合は、Azure Storage を含む Azure サービスで使用できる毎月の無料クレジットを受け取ることができます。
 
 ### 標準ストレージ アカウント
 
 標準ストレージ アカウントでは、BLOB ストレージ、テーブル ストレージ、キュー ストレージ、およびファイル ストレージにアクセスできます。
 
-- **Blob ストレージ**には、ファイル データが格納されます。ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを BLOB として保存できます。 
+- **BLOB ストレージ**には、ファイル データが格納されます。ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを BLOB として保存できます。 
 - **テーブル ストレージ**には、構造型データが格納されます。テーブル ストレージは、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
 - **キュー ストレージ**は、ワークフロー処理およびクラウド サービスのコンポーネント間通信のための、信頼性の高いメッセージング機能を提供します。
-- **ファイル ストレージ (プレビュー)** は、標準の SMB 2.1 プロトコルを使用して、レガシ アプリケーション用の共有ストレージを提供します。Azure の仮想マシンおよびクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。内部設置型のアプリケーションでは、ファイル サービス REST API を介して、共有内のファイル データにアクセスできます。ファイル ストレージは、Azure の[プレビュー機能](/ja-jp/services/preview/)で要求すると利用できます。 
+- **ファイル ストレージ (プレビュー)** は、標準の SMB 2.1 プロトコルを使用して、レガシ アプリケーション用の共有ストレージを提供します。Azure の仮想マシンおよびクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。内部設置型のアプリケーションでは、ファイル サービス REST API を介して、共有内のファイル データにアクセスできます。ファイル ストレージは、[Azure のプレビューに関するページ](/ja-jp/services/preview/) からリクエストすると利用できます。 
 
-各標準ストレージ アカウントには、最大 500 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、テーブル、ファイルのデータを格納できます。標準ストレージ アカウントの容量の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/windowsazure/dn249410.aspx) 」を参照してください。
+各標準ストレージ アカウントには、最大 500 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、テーブル、ファイルのデータを格納できます。標準ストレージ アカウントの容量の詳細については、[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/windowsazure/dn249410.aspx) を参照してください。
 
 以下の図は、標準ストレージ アカウントにおける Azure Storage のリソース間の関係を示したものです。
 
 ![Azure Storage Resources](./media/storage-introduction/storage-concepts.png)
 
-標準ストレージ アカウントを作成する準備ができたら、詳細を「[Create, manage, or delete a storage account (ストレージ アカウントを作成、管理、または削除する方法)](../storage-create-storage-account/) 」で確認してください。
+標準ストレージ アカウントを作成する準備ができたら、詳細を [Create, manage, or delete a storage account (ストレージ アカウントを作成、管理、または削除する方法)](../storage-create-storage-account/) で参照してください。
 
 ### Premium Storage アカウント (プレビュー)
 
-Azure Premium Storage は現在、Azure 仮想マシン ディスクでのみサポートされています。Azure Premium Storage は、[Azure のプレビューに関するページ](/ja-jp/services/preview/)からリクエストして入手できます。Azure Premium Storage の詳細については、「[Premium Storage:High-Performance Storage for Azure Virtual Machine Workloads (Premium Storage: Azure 仮想マシンのワークロード向け高パフォーマンス ストレージ)](http://go.microsoft.com/fwlink/?LinkId=521898)」を参照してください。
+Azure Premium Storage は現在、Azure 仮想マシン ディスクでのみサポートされています。Azure Premium Storage は、[Azure のプレビューに関するページ](/ja-jp/services/preview/) からリクエストすると利用できます。Azure Premium Storage の詳細については、[Premium Storage:High-Performance Storage for Azure Virtual Machine Workloads (プレミアム ストレージ: Azure 仮想マシン ワークロード用の高性能ストレージ)](http://go.microsoft.com/fwlink/?LinkId=521898) を参照してください。
 
 ## BLOB ストレージ ##
 
@@ -75,7 +89,7 @@ Azure Premium Storage は現在、Azure 仮想マシン ディスクでのみサ
 
 BLOB ストレージが提供する BLOB には、ブロック BLOB とページ BLOB (ディスク) の 2 種類があります。ブロック BLOB はストリーミングおよびクラウド オブジェクトの格納に最適化されているため、ドキュメント、メディア ファイル、バックアップ データなどの格納に適しています。ブロック BLOB は、最大 200 GB までサイズを拡大できます。ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
 
-ネットワーク上の制限があるために、有線接続経由で BLOB ストレージにデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure Import/Export サービス](http://azure.microsoft.com/ja-jp/documentation/articles/storage-import-export-service/)を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。 
+ネットワーク上の制限があるために、有線接続経由で BLOB ストレージにデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure インポート/エクスポート サービス](../articles/storage-import-export-service/) を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。 
 
 ## テーブル ストレージ ##
 
@@ -114,25 +128,25 @@ Azure の仮想マシンまたはクラウド サービスで実行している�
 
 ストレージ アカウントには、認証に使用される 2 つのプライベート アクセス キーが作成時に割り当てられます。2 つのキーを持つことで、通常のセキュリティ キーの管理手法に従って定期的にキーを再生成しても、アプリケーションが使用できます。
 
-ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名](../storage-dotnet-shared-access-signature-part-1/)を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。Azure ファイル ストレージでは、現在、共有アクセス署名をサポートしていません。
+ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名](../storage-dotnet-shared-access-signature-part-1/) を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。Azure ファイル ストレージでは、現在、共有アクセス署名をサポートしていません。
 
 最後に、コンテナーとそれに含まれるすべての BLOB、または特定の BLOB をパブリック アクセスで使用できるように指定できます。コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。パブリック コンテナーと BLOB は、Web サイトでホストされているメディアやドキュメントなどのリソースを公開する場合に便利です。グローバル ユーザーのネットワーク待ち時間を短縮するために、Web サイトで使用される BLOB データを Azure CDN によってキャッシュできます。
 
 ## レプリケーションによる持続性と高可用性 ##
 
-[WACOM.INCLUDE [storage-replication-options](../includes/storage-replication-options.md)]
+[AZURE.INCLUDE [storage-replication-options](../includes/storage-replication-options.md)]
 
 ## 料金 ##
 
 料金は、使用したストレージ容量、選択されているレプリケーション オプション、サービスに対する要求の数、および送信データ転送の 4 つの要素に基づいて課金されます。 
 
-ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。サービスに対する要求とは、Azure Storage に対するすべての読み取り、書き込み操作を指します。送信データ転送とは、Windows Azure のリージョン外に転送されるデータです。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Windows Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています) 
+ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。サービスに対する要求とは、Azure Storage に対するすべての読み取り、書き込み操作を指します。送信データ転送とは、Windows Azure のリージョン外に転送されるデータです。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Windows Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。 
 
-ストレージ容量、レプリケーション、トランザクションの詳細については、「[Azure の料金設定](/ja-jp/pricing/details/storage/) 」のページを参照してください。データ送信の料金の詳細については、「[Data Transfers (データ転送) の料金詳細](/ja-jp/pricing/details/data-transfers/) 」を参照してください。コストの見積には、[Azure Storage 計算ツール]を利用できます。(/ja-jp/pricing/calculator/?scenario=data-management) to help estimate your costs.
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、[Storage (ストレージ サービス) の料金詳細](/ja-jp/pricing/details/storage/) のページを参照してください。送信データ転送の料金の詳細については、[データ転送の料金の詳細](/ja-jp/pricing/details/data-transfers/) を参照してください。コストの見積には、[計算ツール](/ja-jp/pricing/calculator/?scenario=data-management) をご利用ください。
 
 ## ストレージに対する開発 ##
 
-Azure Storage では、HTTP/HTTPS 要求機能を持つ任意の言語を使用して [REST API](http://msdn.microsoft.com/library/windowsazure/dd179355.aspx) を呼び出すことで、リソースにアクセスできます。さらに、主要な複数の言語のプログラミング ライブラリも用意されています。これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure ストレージの使用に関するさまざまな側面が簡略化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
+Azure ストレージでは、HTTP/HTTPS 要求機能を持つ任意の言語を使用して [REST API](http://msdn.microsoft.com/library/windowsazure/dd179355.aspx) を呼び出すことで、リソースにアクセスできます。さらに、主要な複数の言語のプログラミング ライブラリも用意されています。これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure ストレージの使用に関するさまざまな側面が簡略化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
 
 - [.NET](http://go.microsoft.com/fwlink/?LinkID=390731)
 - [ネイティブ コード](http://msdn.microsoft.com/library/dn495438.aspx)
@@ -153,13 +167,13 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [Azure SDK とツール](http://azure.microsoft.com/ja-jp/downloads/)
 - [Azure Storage エミュレーター](http://www.microsoft.com/en-in/download/details.aspx?id=43709)
 
-### ソース コード 
+### ソース コード
 
 - [.NET 用 Microsoft Azure Storage ライブラリ](https://github.com/Azure/azure-storage-net)
 
-### ドキュメント:
+### ドキュメント
 
-- [Azure Storage のドキュメント](/ja-jp/documentation/services/storage/)
+- [Azure ストレージのドキュメント](/ja-jp/documentation/services/storage/)
 - [Azure Storage サービス REST API リファレンス](http://msdn.microsoft.com/ja-jp/library/dd179355.aspx)
 - [AzCopy コマンドライン ツール リファレンス](http://azure.microsoft.com/ja-jp/documentation/articles/storage-use-azcopy/)
 
@@ -196,12 +210,11 @@ Azure ストレージを導入するには、次のリソースを参照して�
 
 - [Ruby から BLOB ストレージを使用する方法](../storage-ruby-how-to-use-blob-storage/)
 - [Ruby からテーブル ストレージを使用する方法](../storage-ruby-how-to-use-table-storage/)
-- [Ruby からキュー ストレージを使用する方法)](../storage-ruby-how-to-use-queue-storage/)
+- [Ruby からキュー ストレージを使用する方法](../storage-ruby-how-to-use-queue-storage/)
 
 <h3>Python 開発者向け</h3>
 
 - [Python から BLOB ストレージを使用する方法](../storage-python-how-to-use-blob-storage/)
 - [Python からテーブル ストレージを使用する方法](../storage-python-how-to-use-table-storage/)
 - [Python からキュー ストレージを使用する方法](../storage-python-how-to-use-queue-storage/)
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

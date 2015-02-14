@@ -1,6 +1,20 @@
-﻿<properties title="How to use Giraph with HDInsight" pageTitle="Apache Giraph を Azure HDInsight で使用する方法 " description="Apache Giraph を使用して Azure HDInsight でグラフ処理を実行する方法について説明します" metaKeywords="Azure HDInsight Apache Giraph, hdinsight giraph, hdinsight graph, hadoop giraph, azure hadoop, hadoop graph" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" manager="paulettm" />
+﻿<properties 
+	pageTitle="Apache Giraph を HDInsight で使用する方法" 
+	description="Apache Giraph を使って Azure HDInsight でグラフ処理を実行する方法について説明します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="blackmist" 
+	manager="paulettm" 
+	editor=""/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/14/2014" ms.author="larryfr" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/14/2014" 
+	ms.author="larryfr"/>
 
 #Apache Giraph を Azure HDInsight (Hadoop) で使用する方法
 
@@ -20,7 +34,7 @@
 
 * [SimpleShortestPathsComputation サンプルを実行する](#run)
 
-	Giraph で提供されるその他のサンプルの一覧については、「[Package org.apache.giraph.examples (パッケージ org.apache.giraph.examples)]」を参照してください(https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html)。
+	Giraph で提供されるその他のサンプルの一覧については、[パッケージ org.apache.giraph.examples](https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html) のページを参照してください。
 
 * [発生する可能性のある問題のトラブルシューティングを行う](#tshoot)
 
@@ -36,9 +50,9 @@
 
 ##<a id="build"></a>Giraph のビルドとデプロイ
 
-Giraph は、HDInsight クラスターの一部としては提供されないため、ソースからビルドする必要があります。Giraph のビルドの詳細については、[Giraph リポジトリ]を参照してください(https://github.com/apache/giraph)。
+Giraph は、HDInsight クラスターの一部としては提供されないため、ソースからビルドする必要があります。Giraph のビルドの詳細については、[Giraph リポジトリ](https://github.com/apache/giraph)に関するページを参照してください。
 
-1. 現在 (2014 年 7 月 14 日)、Giraph では、HDInsight で使用される WASB ファイル ストレージを操作するためにパッチが必要です。このパッチは、Apache Giraph プロジェクトに提出済みですが、まだ承認されていません。[GIRAPH-930] の __atachments__ セクションからパッチをダウンロードし、(https://issues.apache.org/jira/browse/GIRAPH-930) __giraph-930.diff__ としてローカル ドライブに保存します。
+1. 現在 (2014 年 7 月 14 日)、Giraph では、HDInsight で使用される WASB ファイル ストレージを操作するためにパッチが必要です。このパッチは、Apache Giraph プロジェクトに提出済みですが、まだ承認されていません。__GIRAPH-930__ の [Attachments (添付ファイル)](https://issues.apache.org/jira/browse/GIRAPH-930) のセクションからパッチをダウンロードし、__giraph-930.diff__ としてローカル ドライブに保存します。
 
 1. コマンド ラインから、次の Git コマンドを使用して Giraph リポジトリのクローンを作成します。
 
@@ -74,15 +88,15 @@ Giraph は、HDInsight クラスターの一部としては提供されないた
 
 	コマンドが完了すると、JAR ファイルが wasb:///example/jars/giraph.jar にアップロードされています。
 
-	> [WACOM.NOTE] HDInsight へのファイルのアップロードに使用できるユーティリティの一覧については、「[HDInsight での Hadoop ジョブ用データのアップロード]」を参照してください(http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-upload-data/)。
+	> [AZURE.NOTE] HDInsight へのファイルのアップロードに使用できるユーティリティの一覧については、「[HDInsight での Hadoop ジョブ用データのアップロード](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-upload-data/)」を参照してください。
 
 ##<a id="run"></a>サンプルの実行
 
-SimpleShortestPathsComputation は、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel] (http://people.apache.org/~edwardyoon/documents/pregel.pdf) の実装を示します。次の手順を使用して、サンプル データをアップロードし、SimpleShortestPathsComputation サンプルでジョブを実行して、結果を表示します。
+SimpleShortestPathsComputation は、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) の実装を示します。次の手順を使用して、サンプル データをアップロードし、SimpleShortestPathsComputation サンプルでジョブを実行して、結果を表示します。
 
-> [WACOM.NOTE] このサンプルや他のサンプルのソースは、[GitHub リポジトリ]の (https://github.com/apache/giraph/tree/release-1.1) [release-1.1 branch] で入手できます(https://github.com/apache/giraph)。
+> [AZURE.NOTE] このサンプルや他のサンプルのソースは、[GitHub リポジトリ](https://github.com/apache/giraph/tree/release-1.1)の [release-1.1 branch](https://github.com/apache/giraph) で入手できます。
 
-1. __tiny_graph.txt__ という名前の新しいファイルを作成します。次の行が含まれます。
+1. __tiny\_graph.txt__ という名前の新しいファイルを作成します。次の行が含まれます。
 
 		[0,0,[[1,1],[3,3]]]
 		[1,0,[[0,1],[2,2],[3,1]]]
@@ -90,7 +104,7 @@ SimpleShortestPathsComputation は、グラフのオブジェクト間の最短�
 		[3,0,[[0,3],[1,1],[4,4]]]
 		[4,0,[[3,4],[2,4]]]
 
-	このデータは、[有向グラフ]内のオブジェクト間の関係を(http://en.wikipedia.org/wiki/Directed_graph)`[source_id,source_value,[[dest_id], [edge_value],...]]` の形式を使用して示しています。各行は、__source_id__ オブジェクトと 1 つ以上の __dest_id__ オブジェクトとの関係を表現しています。__edge_value__ (重み) は、__source_id__ と __dest_id__ の間のつながりの強さと距離であると考えられます。 
+	このデータは、`[source_id,source_value,[[dest_id], [edge_value],...]]` の形式を使用して、[有向グラフ](http://en.wikipedia.org/wiki/Directed_graph)内のオブジェクト間の関係を示しています。各行は、__source\_id__ オブジェクトと 1 つ以上の __dest\_id__ オブジェクトとの関係を表現しています。__edge\_value__ (重み) は、__source\_id__ と __dest\_id__ の間のつながりの強さと距離であると考えられます。 
 
 	この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
@@ -148,9 +162,9 @@ SimpleShortestPathsComputation は、グラフのオブジェクト間の最短�
 	1	0.0
 	3	1.0
 
-SimpleShortestPathComputation サンプルは、オブジェクト ID 1 から開始して他のオブジェクトへの最短パスを見つけるようにハードコーディングされています。したがって、出力は `destination_id distance` として読み取られます。distance はオブジェクト ID 1 とターゲット ID の間を結ぶエッジの値 (重み) です。
+SimpleShortestPathComputation サンプルは、オブジェクト ID 1 から開始して他のオブジェクトへの最短パスを見つけるようにハードコーディングされています。したがって、出力は  `destination_id distance` として読み取られます。distance はオブジェクト ID 1 とターゲット ID の間を結ぶエッジの値 (重み) です。
 
-これを視覚化して、ID 1 と他のすべてのオブジェクトの間で最短パスを結ぶことにより、結果を検証できます。ID 1 と ID 4 の最短パスは 5 です。これは、 <span style="color:orange">ID 1 と ID 3</span>、 <span style="color:red">ID 3 と ID 4 </span>の間の総距離です。
+これを視覚化して、ID 1 と他のすべてのオブジェクトの間で最短パスを結ぶことにより、結果を検証できます。ID 1 と ID 4 の最短パスは 5 です。これは、 <span style="color:orange">ID 1 と ID 3</span>、 <span style="color:red">ID 3 と ID 4</span>の間の総距離です。
 
 ![Drawing of objects as circles with shortest paths drawn between](.\media\hdinsight-giraph\giraph-graph-out.png)
 
@@ -166,13 +180,13 @@ Giraph ジョブは、指定された出力ディレクトリを実行時に作�
 
 この記事では PowerShell を介して Giraph ジョブを実行する方法を示していますが、Hadoop コマンド ラインでジョブを実行することもできます。
 
-> [WACOM.NOTE] Hadoop コマンド ラインは、リモート デスクトップを使用して HDInsight クラスターに接続している場合のみ利用可能です。
+> [AZURE.NOTE] Hadoop コマンド ラインは、リモート デスクトップを使用して HDInsight クラスターに接続している場合のみ利用可能です。
 > 
 > HDInsight クラスターなどの Azure コンピューティング リソースに対するリモート デスクトップのセッションは、Windows ベースのリモート デスクトップ クライアントからのみ動作します。
 
 HDInsight クラスターに接続するには、次の手順を実行します。
 
-1. [Azure 管理ポータル]を使用して、(https://manage.windowsazure.com)HDInsight クラスターを選択し、__[構成]__ を選択します。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)を使用して、HDInsight クラスターを選択し、__[構成]__ を選択します。
 
 2. ページ下部で、__[リモートを有効にする]__ を選択し、リモート デスクトップ接続のユーザー名、パスワード、および有効期限を入力します。
 
@@ -190,7 +204,7 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 
 ###旧バージョンの HDInsight
 
-旧バージョンの HDInsight で Giraph を使用する場合は、そのバージョンでサポートされる Hadoop バージョン用にコンパイルする必要があります。自分の HDInsight バージョンに対応する Hadoop バージョンを判断するには、「[HDInsight で提供されるクラスター バージョンの新機能]」(http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/) を参照してください。
+旧バージョンの HDInsight で Giraph を使用する場合は、そのバージョンでサポートされる Hadoop バージョン用にコンパイルする必要があります。自分の HDInsight バージョンに対応する Hadoop バージョンを判断するには、「[HDInsight で提供されるクラスター バージョンの新機能](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)」を参照してください。
 
 さらに、旧バージョンの HDInsight では、Giraph ジョブを Hadoop コマンド ラインから実行する必要がある場合もあります。PowerShell からジョブを実行してエラーが発生した場合は、[Hadoop コマンド ライン]からジョブを実行してみてください(#cmd)。
 
@@ -203,5 +217,4 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 [aps]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
 [pig]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-pig/
 [hive]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-hive/
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

@@ -1,20 +1,36 @@
-﻿<properties urlDisplayName="Analyze realt-time Twitter sentiment with Hbase in HDInsight" pageTitle="HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する | Azure" metaKeywords="" description="Learn how to do real-time analysis of big data using HBase in an HDInsight (Hadoop) cluster." metaCanonical="" services="hdinsight" documentationCenter="" title="Analyze real-time Twitter sentiment with HBase in HDInsight" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
+﻿<properties 
+	pageTitle="HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する | Azure" 
+	description="HDInsight (Hadoop) クラスターで HBase を使用してリアルタイムでビッグ データを分析する方法について説明します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/27/2015" 
+	ms.author="jgao"/>
 
 # HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する
 
-HDInsight (Hadoop) クラスターで、HBase を使用してリアルタイムでビッグ データの [センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について取り上げます。
+HDInsight (Hadoop) クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について説明します。
 
 
-Big Data の多くはソーシャル Web サイトからもたらされます。Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。このチュートリアルでは、以下の事柄を実行するためのコンソール ストリーミング サービス アプリケーションと ASP.NET Web アプリケーションを開発します。 
+Big Data の多くはソーシャル Web サイトからもたらされます。Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。このチュートリアルでは、以下の事柄を実行するためのコンソール ストリーミング サービス アプリケーションと ASP.NET Web アプリケーションを開発します。
 
 ![][img-app-arch]
 
-- Twitter streaming API を使用して、ジオタグ付けされたツイートをリアルタイムで取得します。
-- そうしたツイートのセンチメントを評価します。
-- センチメント情報を、Microsoft HBase SDK を使用して HBase に格納します。
-- リアルタイム統計結果を ASP.NET Web アプリケーションを使用して Bing マップにプロットします。ツイートを視覚化すると、次のようになります。
+- ストリーミングのアプリケーション
+	- Twitter streaming API を使用して、ジオタグ付けされたツイートをリアルタイムで取得します。
+	- そうしたツイートのセンチメントを評価します。
+	- センチメント情報を、Microsoft HBase SDK を使用して HBase に格納します。
+- Azure の Web アプリケーション
+	- リアルタイム統計結果を ASP.NET Web アプリケーションを使用して Bing マップにプロットします。ツイートを視覚化すると、次のようになります。
 
 	![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
 	
@@ -56,22 +72,22 @@ Visual Studio ソリューションの完全なサンプルは、[https://github
 - [前提条件](#prerequisites)
 - [Twitter アプリケーションを作成する](#twitter)
 - [簡単な Twitter ストリーミング サービスを作成する](#streaming)
-- [Azure Website を作成して、Twitter センチメントを視覚化する](#web)
+- [Twitter センチメントを視覚化する Azure Web サイトを作成する](#web)
 - [次のステップ](#nextsteps)
 
 ##<a id="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **HDInsight 環境の HBase クラスター**。クラスター プロビジョニングについては、「[HDInsight で Hadoop の HBase を使用して開始する][ hBase-get-started]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
+- **HDInsight 環境の HBase クラスター**。クラスター プロビジョニングについては、[HDInsight の Hadoop 環境での HBase の使用][hBase-get-started]に関するページを参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border="1">
-	<tr><th>クラスターのプロパティ</th><th>説明</th></tr>
-	<tr><td>HBase クラスター名</td><td>これは使用する HDInsight HBase クラスター名です。次に例を示します。https://myhbase.azurehdinsight.net/</td></tr>
-	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザーのアカウント名です。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
-	<tr><td>クラスター ユーザーのパスワード</td><td>Hadoop クラスター ユーザーのパスワードです。</td></tr>
+	<tr><th>クラスター プロパティ</th><th>説明</th></tr>
+	<tr><td>HBase クラスター名</td><td>これは、ご使用の HDInsight HBase クラスター名です。たとえば、次のように入力します。: https://myhbase.azurehdinsight.net/</td></tr>
+	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は  <strong>admin </strong>です。</td></tr>
+	<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
 	</table>
 
-Visual Studio 2013 がインストールされている- **ワークステーション**。手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx)」を参照してください。
+- Visual Studio 2013 がインストールされている**ワークステーション**。手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx)」を参照してください。
 
 
 
@@ -79,15 +95,13 @@ Visual Studio 2013 がインストールされている- **ワークステーシ
 
 ##<a id="twitter"></a>Twitter アプリケーション ID とシークレットを作成する
 
-Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承認します。 
-
-OAuth を使用するための最初の手順は、Twitter 開発者サイトで新しいアプリケーションを作成することです。
+Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承認します。OAuth を使用するための最初の手順は、Twitter 開発者サイトで新しいアプリケーションを作成することです。
 
 **Twitter アプリケーション ID とシークレットを作成するには**
 
-1. [https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
+1. [https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。Twitter アカウントを持っていない場合は、**[Sign up now]** リンクをクリックします。
 2. **[Create New App]** をクリックします。
-3. **名前**、**説明**、**Web サイト**を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
+3. **[Name]**、**[Description]**、**[Website]** を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
 
 	<table border="1">
 	<tr><th>フィールド</th><th>値</th></tr>
@@ -96,12 +110,14 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 	<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
 	</table>
 
+	> [WACOM.NOTE] Twitter アプリケーションの名前は一意の名前にする必要があります。  
+
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
-6. **[API Keys]** タブをクリックします。
+6. **[Keys and Access Tokens]** タブをクリックします。
 7. **[Create my access token]** をクリックします。
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
-9. **[API key]**、**[API secret]**、**[Access token]**、および **[Access token secret]** の内容を書き留めます。これらの値は後で必要になります。
+9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。これらの値は後で必要になります。
 
 	![hdi.hbase.twitter.sentiment.twitter.app][img-twitter-app]
 
@@ -138,17 +154,23 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 ツイートを取得し、ツイート センチメント スコアを計算し、処理したツイート ワードを HBase に送信するコンソール アプリケーションを作成します。
 
-**  Visual Studio ソリューションを作成するには**
+**センチメント辞書ファイルをダウンロードするには**
+
+1. [https://github.com/maxluk/tweet-sentiment](https://github.com/maxluk/tweet-sentiment) にアクセスします。
+2. **[ZIP のダウンロード]** をクリックします。
+3. このファイルをローカルに解凍します。
+4. **../tweet-sentiment/SimpleStreamingService/data/dictionary/dictionary.tsv** ファイルのパスをメモしておきます。この情報は後でアプリケーションで必要になります。
+
+**Visual Studio  ソリューションを作成するには**
 
 1. **Visual Studio** を開きます。
-2. **[ファイル]** メニューの**[新規]** をポイントし、**[プロジェクト]** をクリックします。
+2. **[ファイル]** メニューの **[新規]** をポイントし、**[プロジェクト]** をクリックします。
 3. 次の値を入力または選択します。
 
-	- テンプレート: **Visual C#**
-	- テンプレート: **コンソール アプリケーション**
-	- 名前: **TweetSentimentStreaming** 
-	- 場所: **C:\Tutorials**
-	- ソリューション名:  **TweetSentimentStreaming**
+	- テンプレート:**Visual C#/Windows デスクトップ/コンソール アプリケーション**
+	- 名前:**TweetSentimentStreaming** 
+	- 場所:**C:\Tutorials**
+	- ソリューション名:**TweetSentimentStreaming**
 
 4. **[OK]** をクリックして続行します。
  
@@ -156,24 +178,23 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **Nuget パッケージをインストールして SDK 参照を追加するには**
 
-1. **[ツール]** メニューで、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。コンソール パネルがページ下部で開きます。
+1. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。コンソール パネルがページ下部で開きます。
 2. 以下のコマンドを使用して [Tweetinvi](https://www.nuget.org/packages/TweetinviAPI/) パッケージ (Twitter API にアクセスするために使用します) と、[Protobuf-net](https://www.nuget.org/packages/protobuf-net/) パッケージ (オブジェクトのシリアル化と逆シリアル化に使用します) をインストールします。
 
 		Install-Package TweetinviAPI
 		Install-Package protobuf-net 
-
-	> [WACOM.NOTE]Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 26 日現在使用できません。Github リポジトリは [https://github.com/hdinsight/hbase-sdk-for-net](https://github.com/hdinsight/hbase-sdk-for-net) にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、「[HDInsight で Hadoop の HBase を使用して開始する][hBase-get-started]」を参照してください。
-
-3. **ソリューション エクスプローラーで**、**[参照]** を右クリックし、**[参照の追加]** をクリックします。
-4. 左のウィンドウで **[アセンブリ]** を展開し、**[フレームワーク]** をクリックします。
-5. 右のウィンドウで、**[System.Configuration]** の前にあるチェック ボックスをオンにし、**[OK]** をクリックします。
+		Install-Package Microsoft.HBase.Client
+	
+3. **ソリューション エクスプローラー**で、**[参照]** を右クリックし、**[参照の追加]** をクリックします。
+4. 左のウィンドウで、**[アセンブリ]** を展開し、**[フレームワーク]** をクリックします。
+5. 右のウィンドウで、**[System.Configuration]** の前にあるチェック ボックスを選択し、**[OK]** をクリックします。
 
 
 
 **Tweeter ストリーミング サービス クラスを定義するには**
 
-1. **ソリューション エクスプローラーで**、**[TweetSentimentStreaming]** を右クリックし、**[追加]** をポイントしてから **[クラス]** をクリックします。
-2. **[名前]** に「**HBaseWriter**」と入力して、**[追加]** をクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentStreaming]** を右クリックし、**[追加]** をポイントしてから **[クラス]** をクリックします。
+2. **[名前]** に、「**HBaseWriter**」と入力して、**[追加]** をクリックします。
 3. **HBaseWriter.cs** で、ファイルの上部に using ステートメントを使用した以下の内容を追加します。
 
 		using System.IO;		
@@ -183,7 +204,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		using Tweetinvi.Core.Interfaces;
 		using org.apache.hadoop.hbase.rest.protobuf.generated;
 
-4. **HbaseWriter.cs** 内に、**DictionaryItem** という新しいクラスを追加します。
+4. **HbaseWriter.cs** 内に、 **DictionaryItem** という新しいクラスを追加します。
 
 	    public class DictionaryItem
 	    {
@@ -199,42 +220,42 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 5. **HBaseWriter** クラス内で、以下の定数と変数を定義します。
 
-        // HDinsight HBase クラスターと HBase テーブルの情報
+        // HDinsight HBase cluster and HBase table information
         const string CLUSTERNAME = "https://<HBaseClusterName>.azurehdinsight.net/";
         const string HADOOPUSERNAME = "<HadoopUserName>"; //the default name is "admin"
         const string HADOOPUSERPASSWORD = "<HaddopUserPassword>";
         const string HBASETABLENAME = "tweets_by_words";
 
-        // センチメントの辞書ファイルと句読文字
+        // Sentiment dictionary file and the punctuation characters
         const string DICTIONARYFILENAME = @"..\..\data\dictionary\dictionary.tsv";
         private static char[] _punctuationChars = new[] { 
             ' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
 
-        // HBase への書き込み用
+        // For writting to HBase
         HBaseClient client;
 
-        // 予期されるセンチメント用のセンチメント辞書。物理ファイルから読み込まれます。
+        // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
         Dictionary<string, DictionaryItem> dictionary;
         
-        // マルチスレッド書き込みを使用します
+        // use multithread write
         Thread writerThread;
         Queue<ITweet> queue = new Queue<ITweet>();
         bool threadRunning = true;
 
-6. **&lt;HBaseClusterName>**、**&lt;HadoopUserName>**、**&lt;HaddopUserPassword>** などの定数値を設定します。HBase テーブル名を変更する場合には、それに応じて Web アプリケーション内のテーブル名も変更する必要があります。
+6. **&lt;HBaseClusterName>**、**&lt;HadoopUserName>**、**&lt;HaddopUserPassword>** などの定数値を設定します。HBase テーブル名を変更する場合には、それに応じて Web アプリケーション内のテーブル名も変更しなければなりません。
 
 	このチュートリアルで後ほど、dictionary.tsv ファイルをダウンロードして特定のフォルダーに移動します。
 
-7. **HBaseWriter** クラス内で以下の定数を定義します。
+7. **HBaseWriter** クラス内で以下の関数を定義します。
 
-		// この関数は HBase に接続し、センチメントの辞書を読み込み、書き込み用のスレッドを開始します。
+		// This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
         public HBaseWriter()
         {
             ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
             client = new HBaseClient(credentials);
 
-            // HBase テーブルが存在しない場合は作成します。
+            // create the HBase table if it doesn't exist
             if (!client.ListTables().name.Contains(HBASETABLENAME))
             {
                 TableSchema tableSchema = new TableSchema();
@@ -244,10 +265,10 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
                 Console.WriteLine("Table \"{0}\" is created.", HBASETABLENAME);
             }
 
-            // ファイルからセンチメント辞書を読み込みます
+            // Load sentiment dictionary from a file
             LoadDictionary();
 
-			// HBase へ書き込むためのスレッドを開始します
+			// Start a thread for writting to HBase
             writerThread = new Thread(new ThreadStart(WriterThreadFunction));
             writerThread.Start();
         }
@@ -257,7 +278,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
             threadRunning = false;
         }
 
-        // 受け取ったツイートをエンキューします
+        // Enqueue the Tweets received
         public void WriteTweet(ITweet tweet)
         {
             lock (queue)
@@ -266,7 +287,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
             }
         }
 
-        // ファイルからセンチメント辞書を読み込みます
+        // Load sentiment dictionary from a file
         private void LoadDictionary()
         {
             List<string> lines = File.ReadAllLines(DICTIONARYFILENAME).ToList();
@@ -295,7 +316,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
             }
         }
 
-        // センチメントのスコアを計算します
+        // Calculate sentiment score
         private int CalcSentimentScore(string[] words)
         {
             Int32 total = 0;
@@ -305,8 +326,8 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
                 {
                     switch (dictionary[word].Polarity)
                     {
-                        case "negative":total -= 1; break;
-                        case "positive":total += 1; break;
+                        case "negative": total -= 1; break;
+                        case "positive": total += 1; break;
                     }
                 }
             }
@@ -324,28 +345,28 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
             }
         }
 
-		// 一般的な CellSet オブジェクトを HBase に書き込みます
+		// Popular a CellSet object to be written into HBase
         private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
         {
-            // ツイートを単語に分割します
+            // Split the Tweet into words
             string[] words = tweet.Text.ToLower().Split(_punctuationChars);
 
-            // ワードに基づいてセンチメント スコアを計算します
+            // Calculate sentiment score base on the words
             int sentimentScore = CalcSentimentScore(words);
             var word_pairs = words.Take(words.Length - 1)
                                   .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
             var all_words = words.Concat(word_pairs).ToList();
 
-            // ツイートの 1 ワードごとに 1 行を HBase テーブルに追加します
+            // For each word in the Tweet add a row to the HBase table
             foreach (string word in all_words)
             {
                 string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
                 string key = word + "_" + time_index;
 
-                // 行を作成します
+                // Create a row
                 var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
 
-                // ツイートの識別子、言語、コーディネーター (利用可能な場合)、センチメントなどの列を先の行に追加します 
+                // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment 
                 var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
                 row.values.Add(value);
                 
@@ -366,7 +387,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
             }
         }
 
-        // ツイート (CellSet) を HBase に書き込みます
+        // Write a Tweet (CellSet) to HBase
         public void WriterThreadFunction()
         {
             try
@@ -385,28 +406,28 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
                             } while (queue.Count > 0);
                         }
 
-                        // ワード セルごとにツイートを書き込み、HBase テーブルに設定します
+                        // Write the Tweet by words cell set to the HBase table
                         client.StoreCells(HBASETABLENAME, set);
-                        Console.WriteLine("\tRows written:{0}", set.rows.Count);
+                        Console.WriteLine("\tRows written: {0}", set.rows.Count);
                     }
                     Thread.Sleep(100);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception:" + ex.Message);
+                Console.WriteLine("Exception: " + ex.Message);
             }
         }
 
 	このコードにより、以下の機能が提供されます。
 
-	- **Hbase [ HBaseWriter() ]**への接続: この HBase SDK により、クラスター URL と Hadoop ユーザー資格情報を使用して *ClusterCredentials* オブジェクトを作成してから、ClusterCredentials オブジェクトを使用して *HBaseClient* オブジェクトを作成します。
-	- **HBase テーブル [ HBaseWriter() ]**の作成: メソッド呼び出しは *HBaseClient.CreateTable()* です。
-	- **HBase テーブル [ WriterThreadFunction() ]**に書き込む: メソッド呼び出しは *HBaseClient.StoreCells()* です。
+	- **[ HBaseWriter() ]** への接続: この HBase SDK により、クラスター URL と Hadoop ユーザー資格情報を使用して *ClusterCredentials* オブジェクトを作成してから、ClusterCredentials オブジェクトを使用して *HBaseClient* オブジェクトを作成します。
+	- **HBase テーブル [ HBaseWriter()]** の作成: メソッド呼び出しは *HBaseClient.CreateTable()* です。
+	- **HBase テーブル [ WriterThreadFunction()]** への書き込み: メソッド呼び出しは *HBaseClient.StoreCells()* です。
 
 **Program.cs を完成させるには**
 
-1. **ソリューション エクスプローラー**で、**Program.cs** をダブルクリックして、このファイルを開きます。
+1. **ソリューション エクスプローラー**で **Program.cs** をダブルクリックして、このファイルを開きます。
 2. ファイルの先頭に以下の using ステートメントを追加します。
 
 		using System.Configuration;
@@ -451,7 +472,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
                         tweetCount++;
                         var tweet = args.Tweet;
 
-                        // HBase にツイートを書き込みます
+                        // Write Tweets to HBase
                         hbase.WriteTweet(tweet);
 
                         if (timer.ElapsedMilliseconds > 1000)
@@ -459,13 +480,13 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
                             if (tweet.Coordinates != null)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("\n{0}:{1} {2}", tweet.Id, tweet.Language.ToString(), tweet.Text);
+                                Console.WriteLine("\n{0}: {1} {2}", tweet.Id, tweet.Language.ToString(), tweet.Text);
                                 Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("\tLocation:{0}, {1}", tweet.Coordinates.Longitude, tweet.Coordinates.Latitude);
+                                Console.WriteLine("\tLocation: {0}, {1}", tweet.Coordinates.Longitude, tweet.Coordinates.Latitude);
                             }
 
                             timer.Restart();
-                            Console.WriteLine("\tTweets/sec:{0}", tweetCount);
+                            Console.WriteLine("\tTweets/sec: {0}", tweetCount);
                             tweetCount = 0;
                         }
                     };
@@ -474,22 +495,16 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Exception:{0}", ex.Message);
+                    Console.WriteLine("Exception: {0}", ex.Message);
                 }
             }
         }
 
-**センチメント辞書ファイルをダウンロードするには**
 
-1. [https://github.com/maxluk/tweet-sentiment](https://github.com/maxluk/tweet-sentiment) にアクセスします。
-2. **[ZIP のダウンロード]** をクリックします。
-3. このファイルをローカルに解凍します。
-4. ファイルを **../tweet-sentiment/SimpleStreamingService/data/dictionary/dictionary.tsv** からコピーします。
-5. このファイルを **TweetSentimentStreaming/TweetSentimentStreaming/data/dictionary/dictionary.tsv** の下のソリューションに貼り付けます。
 
 **ストリーム サービスを実行するには**
 
-1. Visual Studio で **F5** を押します。コンソール アプリケーションのスクリーンショットは次のようになります。
+1. Visual Studio で、**F5** を押します。コンソール アプリケーションのスクリーンショットは次のようになります。
 
 	![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
 2. Web アプリケーションの作成中はストリーミング コンソール アプリケーションを実行したままにし、さらに多くのデータを使用できるようにしてください。
@@ -520,7 +535,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 
 
-##<a id="web"></a> Azure Website を作成して、Twitter センチメントを視覚化する
+##<a id="web"></a> Twitter センチメントを視覚化する Azure Web サイトを作成する
 
 このセクションでは、リアルタイムのセンチメント データを HBase から読み取り、データを Bing マップにプロットする ASP.NET MVC Web アプリケーションを作成します。
 
@@ -530,10 +545,10 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 2. **[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックします。
 3. 次のように入力します。
 
-	- テンプレート カテゴリ: **Visual C#/Web**
-	- テンプレート: **ASP.NET Web アプリケーション**
-	- 名前: **TweetSentimentWeb**
-	- 場所: **C:\Tutorials** 
+	- テンプレート カテゴリ:**Visual C#/Web**
+	- テンプレート:**ASP.NET Web アプリケーション**
+	- 名前:**TweetSentimentWeb**
+	- 場所:**C:\Tutorials** 
 4. **[OK]** をクリックします。
 5. **[テンプレートの選択]** で、**[MVC]** をクリックします。 
 6. **[Windows Azure]** で、**[サブスクリプションの管理]** をクリックします。
@@ -546,16 +561,16 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **Nuget パッケージをインストールするには**
 
-1. **[ツール]** メニューで、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。コンソール パネルがページ下部で開きます。
-2. 以下のコマンドを使用して [Protobuf-net](https://www.nuget.org/packages/protobuf-net/) パッケージをインストールします。このパッケージはオブジェクトのシリアル化および逆シリアル化に使用します。
+1. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。コンソール パネルがページ下部で開きます。
+2. 以下のコマンドを使用して [Protobuf-net](https://www.nuget.org/packages/protobuf-net/) パッケージをインストールします。このパッケージは、オブジェクトのシリアル化および逆シリアル化に使用します。
 
 		Install-Package protobuf-net 
 
-	> [WACOM.NOTE]Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 20 日現在使用できません。Github リポジトリは [https://github.com/hdinsight/hbase-sdk-for-net](https://github.com/hdinsight/hbase-sdk-for-net) にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、「[HDInsight で Hadoop の HBase を使用して開始する][hBase-get-started]」を参照してください。
+	> [AZURE.NOTE] Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 20 日現在使用できません。Github リポジトリは [https://github.com/hdinsight/hbase-sdk-for-net](https://github.com/hdinsight/hbase-sdk-for-net) にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、[HDInsight の Hadoop 環境での HBase の使用][hdinsight-hbase-get-started]に関するページを参照してください。
 
 **HBaseReader クラスを追加するには**
 
-1. **ソリューション エクスプローラー**で、**TweetSentiment** を展開します。
+1. **ソリューション エクスプローラー**で、**[TweetSentiment]** を展開します。
 2. **[モデル]** を右クリックして、**[追加]**、**[クラス]** の順にクリックします。
 3. [名前] に、「**HBaseReader.cs**」と入力し、**[追加]** をクリックします。
 4. コードを次のコードに置き換えます。
@@ -575,16 +590,16 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		{
 		    public class HBaseReader
 		    {
-		        // ツイートのセンチメント データを HDInsight HBase で読み出します
+		        // For reading Tweet sentiment data from HDInsight HBase
 		        HBaseClient client;
 		
-		        // HDinsight HBase クラスターと HBase テーブルの情報
+		        // HDinsight HBase cluster and HBase table information
 		        const string CLUSTERNAME = "<HBaseClusterName>";
 		        const string HADOOPUSERNAME = "<HBaseClusterHadoopUserName>"
 		        const string HADOOPUSERPASSWORD = "<HBaseCluserUserPassword>";
 		        const string HBASETABLENAME = "tweets_by_words";
 		
-		        // コンストラクター
+		        // The constructor
 		        public HBaseReader()
 		        {
 		            ClusterCredentials creds = new ClusterCredentials(
@@ -594,12 +609,12 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		            client = new HBaseClient(creds);
 		        }
 		
-		        // HBase テーブルのツイートのセンチメント データを非同期的に照会します 
+		        // Query Tweets sentiment data from the HBase table asynchronously 
 		        public async Task<IEnumerable<Tweet>> QueryTweetsByKeywordAsync(string keyword)
 		        {
 		            List<Tweet> list = new List<Tweet>();
 		
-		            // 直近 6 時間のデータの行キーに対するフィルタリングを示します
+		            // Demonstrate Filtering the data from the past 6 hours the row key
 		            string timeIndex = (ulong.MaxValue -
 		                (ulong)DateTime.UtcNow.Subtract(new TimeSpan(6, 0, 0)).ToBinary()).ToString().PadLeft(20);
 		            string startRow = keyword + "_" + timeIndex;
@@ -611,7 +626,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		                endRow = Encoding.UTF8.GetBytes(endRow)
 		            };
 		
-		            // 非同期のスキャンを呼び出します
+		            // Make async scan call
 		            ScannerInformation scannerInfo =
 		                await client.CreateScannerAsync(HBASETABLENAME, scanSettings);
 		
@@ -621,7 +636,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		            {
 		                foreach (CellSet.Row row in next.rows)
 		                {
-		                    // 文字列パターンが "d:coor" のセルを検索します 
+		                    // find the cell with string pattern "d:coor" 
 		                    var coordinates =
 		                        row.values.Find(c => Encoding.UTF8.GetString(c.column) == "d:coor");
 		
@@ -669,23 +684,23 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 4. **HBaseReader** クラス内で、以下の定数値を変更します。
 
-	- **CLUSTERNAME**: HBase クラスター名。たとえば、*https://<HBaseClusterName>.azurehdinsight.net/* などです。 
-    - **HADOOPUSERNAME**: HBase クラスターの Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
-    - **HADOOPUSERPASSWORD**: HBase クラスターの Hadoop ユーザーのパスワード。
+	- **CLUSTERNAME**:HBase クラスター名。たとえば、*https://<HBaseClusterName>.azurehdinsight.net/* です。 
+    - **HADOOPUSERNAME**:HBase クラスターの Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
+    - **HADOOPUSERPASSWORD**:HBase クラスターの Hadoop ユーザーのパスワード。
     - **HBASETABLENAME** = "tweets_by_words";
 
-	HBase テーブル名は "tweets_by_words" です。値は、ストリーミング サービスで送信した値と同じである必要があります。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
+	HBase テーブル名は「tweets_by_words」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
 
 
 
 
 **TweetsController コントローラーを追加するには**
 
-1. **ソリューション エクスプローラー**で、**TweetSentimentWeb** を展開します。
-2. **[コントローラー]** を右クリックして、**[追加]**、**[コントローラー]** の順にクリックします。
-3. **[Web API 2 コントローラー - 空]** をクリックしてから **[追加]** をクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]** を展開します。
+2. **[コントローラー]** を右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
+3. **[Web API 2 コントローラー - 空]** をクリックしてから、**[追加]** をクリックします。
 4. [コントローラー名] に「**TweetsController**」と入力し、**[追加]** をクリックします。
-5. **ソリューション エクスプローラー**で TweetsController.cs をダブルクリックしてファイルを開きます。
+5. **ソリューション エクスプローラー**で、TweetsController.cs をダブルクリックしてファイルを開きます。
 5. ファイルを以下のように変更します。
 
 		using System;
@@ -700,7 +715,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		
 		namespace TweetSentimentWeb.Controllers
 		{
-		    public class TweetsController :ApiController
+		    public class TweetsController : ApiController
 		    {
 		        HBaseReader hbase = new HBaseReader();
 		
@@ -713,40 +728,40 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **heatmap.js を追加するには**
 
-1. **ソリューション エクスプローラー**で、**TweetSentimentWeb** を展開します。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]** を展開します。
 2. **[スクリプト]** を右クリックし、**[追加]**、**[JavaScript ファイル]** の順にクリックします。
 3. [項目名] に、「**heatmap.js**」と入力します。
 4. 以下のコードをコピーして、ファイルに貼り付けます。このコードの作成者は Alastair Aitchison です。詳細については、[http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/) を参照してください。
 
 		/*******************************************************************************
-		* 執筆者: Alastair Aitchison
-		* Web サイト: http://alastaira.wordpress.com
-		* 日付: 2011 年 4 月 15 日
+		* Author: Alastair Aitchison
+		* Website: http://alastaira.wordpress.com
+		* Date: 15th April 2011
 		* 
-		* 説明:  
-		* この JavaScript ファイルは、ヒートマップの
-		* オーバーレイを Bing Maps v7 コントロールで追加するために使用できるアルゴリズムを提供します。ヒートマップの輝度と温度のパレット
-		* は容易にカスタマイズが可能な設計になっています。
+		* Description: 
+		* This JavaScript file provides an algorithm that can be used to add a heatmap
+		* overlay on a Bing Maps v7 control. The intensity and temperature palette
+		* of the heatmap are designed to be easily customisable.
 		*
-		* 要件: 
-		* ヒートマップ レイヤーそのものはクライアント側で動的に、
-		* HTML5 <canvas> 要素を使用して作成されるため、この要素をサポートする
-		* ブラウザーが必要になります。IE9、Firefox 3.6/4、および 
-		* Chrome 10 の各種ブラウザーが検証済みです。動作する他のブラウザー、または
-		* 動作しないブラウザーについて確認された場合は、ぜひご連絡ください。
+		* Requirements:
+		* The heatmap layer itself is created dynamically on the client-side using
+		* the HTML5 <canvas> element, and therefore requires a browser that supports
+		* this element. It has been tested on IE9, Firefox 3.6/4 and 
+		* Chrome 10 browsers. If you can confirm whether it works on other browsers or
+		* not, I'd love to hear from you!
 		
-		* 用途: 
-		* HeatMapLayer コンストラクターの要件: 
-		* - マップ オブジェクトへの参照
-		* - 配列または Microsoft.Maps.Location 項目
-		* - レイヤーの外観をカスタマイズするためのオプションのパラメーター
-		*  (Radius、Unit、Intensity、ColourGradient)、およびコールバック関数
+		* Usage:
+		* The HeatMapLayer constructor requires:
+		* - A reference to a map object
+		* - An array or Microsoft.Maps.Location items
+		* - Optional parameters to customise the appearance of the layer
+		*  (Radius,, Unit, Intensity, and ColourGradient), and a callback function
 		*
 		*/
 		
 		var HeatMapLayer = function (map, locations, options) {
 		
-		    /* プライベート プロパティ */
+		    /* Private Properties */
 		    var _map = map,
 		      _canvas,
 		      _temperaturemap,
@@ -754,36 +769,36 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		      _viewchangestarthandler,
 		      _viewchangeendhandler;
 		
-		    // 既定のオプションを設定します
+		    // Set default options
 		    var _options = {
-		        // 各ヒート ポイントの中心の不透明度
+		        // Opacity at the centre of each heat point
 		        intensity: 0.5,
 		
-		        // 各ヒート ポイントが影響を及ぼす範囲
+		        // Affected radius of each heat point
 		        radius: 1000,
 		
-		        // 範囲は絶対ピクセル値とメートルのどちらか
-		        unit:'meters',
+		        // Whether the radius is an absolute pixel value or meters
+		        unit: 'meters',
 		
-		        // マップ上でグラデーションによって表される温度の色
+		        // Colour temperature gradient of the map
 		        colourgradient: {
-		            "0.00": 'rgba(255,0,255,20)',  // マゼンタ
-		            "0.25": 'rgba(0,0,255,40)',    // 青
-		            "0.50": 'rgba(0,255,0,80)',    // 緑
-		            "0.75": 'rgba(255,255,0,120)', // 黄
-		            "1.00": 'rgba(255,0,0,150)'    // 赤
+		            "0.00": 'rgba(255,0,255,20)',  // Magenta
+		            "0.25": 'rgba(0,0,255,40)',    // Blue
+		            "0.50": 'rgba(0,255,0,80)',    // Green
+		            "0.75": 'rgba(255,255,0,120)', // Yellow
+		            "1.00": 'rgba(255,0,0,150)'    // Red
 		        },
 		
-		        // ヒートマップ レイヤーの再描画後に実行されるコールバック関数 
-		        callback:null
+		        // Callback function to be fired after heatmap layer has been redrawn 
+		        callback: null
 		    };
 		
-		    /* プライベート メソッド */
+		    /* Private Methods */
 		    function _init() {
 		        var _mapDiv = _map.getRootElement();
 		
 		        if (_mapDiv.childNodes.length >= 3 && _mapDiv.childNodes[2].childNodes.length >= 2) {
-		            // キャンバスの要素を作成します
+		            // Create the canvas element
 		            _canvas = document.createElement('canvas');
 		            _canvas.style.position = 'relative';
 		
@@ -795,16 +810,16 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		
 		            _mapDiv.childNodes[2].childNodes[1].appendChild(container);
 		
-		            // コンストラクターに渡されたオプションで既定を上書きします
+		            // Override defaults with any options passed in the constructor
 		            _setOptions(options);
 		
-		            // 位置データの配列を読み込みます
+		            // Load array of location data
 		            _setPoints(locations);
 		
-		            // 指定されたカラー ストップから色のグラデーションを作成します
+		            // Create a colour gradient from the suppied colourstops
 		            _temperaturemap = _createColourGradient(_options.colourgradient);
 		
-		            // イベント ハンドラーを接続してヒートマップのキャンバスを再描画します
+		            // Wire up the event handler to redraw heatmap canvas
 		            _viewchangestarthandler = Microsoft.Maps.Events.addHandler(_map, 'viewchangestart', _clearHeatMap);
 		            _viewchangeendhandler = Microsoft.Maps.Events.addHandler(_map, 'viewchangeend', _createHeatMap);
 		
@@ -816,13 +831,13 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		        }
 		    }
 		
-		    // ヒート マップをリセットします
+		    // Resets the heat map
 		    function _clearHeatMap() {
 		        var ctx = _canvas.getContext("2d");
 		        ctx.clearRect(0, 0, _canvas.width, _canvas.height);
 		    }
 		
-		    // 初期化時に指定されたカラー ストップから色のグラデーションを作成します
+		    // Creates a colour gradient from supplied colour stops on initialisation
 		    function _createColourGradient(colourstops) {
 		        var ctx = document.createElement('canvas').getContext('2d');
 		        var grd = ctx.createLinearGradient(0, 0, 256, 0);
@@ -834,46 +849,46 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		        return ctx.getImageData(0, 0, 256, 1).data;
 		    }
 		
-		    // 輝度のマップに色のグラデーションを適用します
+		    // Applies a colour gradient to the intensity map
 		    function _colouriseHeatMap() {
 		        var ctx = _canvas.getContext("2d");
 		        var dat = ctx.getImageData(0, 0, _canvas.width, _canvas.height);
-		        var pix = dat.data; // pix は 4 バイトのデータと高さおよび幅を乗算したデータ (RGBA) が含まれた CanvasPixelArray 
+		        var pix = dat.data; // pix is a CanvasPixelArray containing height x width x 4 bytes of data (RGBA)
 		        for (var p = 0, len = pix.length; p < len;) {
-		            var a = pix[p + 3] * 4; // このピクセルのアルファを取得します
-		            if (a != 0) { // プロットするデータが存在する場合
-		                pix[p] = _temperaturemap[a]; // このアルファに対応するグラデーションの赤の値を設定します
-		                pix[p + 1] = _temperaturemap[a + 1]; // アルファに基づいて緑の値を設定します
-		                pix[p + 2] = _temperaturemap[a + 2]; // アルファに基づいて青の値を設定します
+		            var a = pix[p + 3] * 4; // get the alpha of this pixel
+		            if (a != 0) { // If there is any data to plot
+		                pix[p] = _temperaturemap[a]; // set the red value of the gradient that corresponds to this alpha
+		                pix[p + 1] = _temperaturemap[a + 1]; //set the green value based on alpha
+		                pix[p + 2] = _temperaturemap[a + 2]; //set the blue value based on alpha
 		            }
-		            p += 4; // 次のピクセルに移動します
+		            p += 4; // Move on to the next pixel
 		        }
 		        ctx.putImageData(dat, 0, 0);
 		    }
 		
-		    // 渡す任意のオプションを設定します
+		    // Sets any options passed in
 		    function _setOptions(options) {
 		        for (attrname in options) {
 		            _options[attrname] = options[attrname];
 		        }
 		    }
 		
-		    // Microsoft.Maps.Locations の配列からヒートマップ ポイントを設定します  
+		    // Sets the heatmap points from an array of Microsoft.Maps.Locations  
 		    function _setPoints(locations) {
 		        _locations = locations;
 		    }
 		
-		    // ヒートマップを描画するメインのメソッド
+		    // Main method to draw the heatmap
 		    function _createHeatMap() {
-		        // キャンバスがマップの現在の寸法に一致することを確認します
-		        // これはキャンバスのリセットにも影響を及ぼします
+		        // Ensure the canvas matches the current dimensions of the map
+		        // This also has the effect of resetting the canvas
 		        _canvas.height = _map.getHeight();
 		        _canvas.width = _map.getWidth();
 		
 		        _canvas.style.top = -_canvas.height / 2 + 'px';
 		        _canvas.style.left = -_canvas.width / 2 + 'px';
 		
-		        // 各ヒートポイントのピクセルの範囲を現在のマップの縮尺で計算します
+		        // Calculate the pixel radius of each heatpoint at the current map zoom
 		        if (_options.unit == "pixels") {
 		            radiusInPixel = _options.radius;
 		        } else {
@@ -882,12 +897,12 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		
 		        var ctx = _canvas.getContext("2d");
 		
-		        // 緯度と経度をピクセル位置に変換します
+		        // Convert lat/long to pixel location
 		        var pixlocs = _map.tryLocationToPixel(_locations, Microsoft.Maps.PixelReference.control);
 		        var shadow = 'rgba(0, 0, 0, ' + _options.intensity + ')';
 		        var mapWidth = 256 * Math.pow(2, _map.getZoom());
 		
-		        // 各位置をループして輝度マップを作成します
+		        // Create the Intensity Map by looping through each location
 		        for (var i = 0, len = pixlocs.length; i < len; i++) {
 		            var x = pixlocs[i].x;
 		            var y = pixlocs[i].y;
@@ -896,26 +911,26 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		                x += mapWidth * Math.ceil(Math.abs(x / mapWidth));
 		            }
 		
-		            // この地点を中心とする放射状のグラデーションを作成します
+		            // Create radial gradient centred on this point
 		            var grd = ctx.createRadialGradient(x, y, 0, x, y, radiusInPixel);
 		            grd.addColorStop(0.0, shadow);
 		            grd.addColorStop(1.0, 'transparent');
 		
-		            // ヒートポイントをキャンバスに描画します
+		            // Draw the heatpoint onto the canvas
 		            ctx.fillStyle = grd;
 		            ctx.fillRect(x - radiusInPixel, y - radiusInPixel, 2 * radiusInPixel, 2 * radiusInPixel);
 		        }
 		
-		        // 輝度のマップに指定色のグラデーションを適用します
+		        // Apply the specified colour gradient to the intensity map
 		        _colouriseHeatMap();
 		
-		        // 指定されている場合はコールバック関数を呼び出す
+		        // Call the callback function, if specified
 		        if (_options.callback) {
 		            _options.callback();
 		        }
 		    }
 		
-		    /* パブリック メソッド */
+		    /* Public Methods */
 		
 		    this.Show = function () {
 		        if (_canvas) {
@@ -929,22 +944,22 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		        }
 		    };
 		
-		    // 輝度、範囲、色のグラデーションなどのオプションを設定します
+		    // Sets options for intensity, radius, colourgradient etc.
 		    this.SetOptions = function (options) {
 		        _setOptions(options);
 		    }
 		
-		    // ヒートマップが作成される Microsoft.Maps.Locations の配列を設定します
+		    // Sets an array of Microsoft.Maps.Locations from which the heatmap is created
 		    this.SetPoints = function (locations) {
-		        // 既存のヒートマップ レイヤーをリセットします
+		        // Reset the existing heatmap layer
 		        _clearHeatMap();
-		        // 新しい位置セットを渡します
+		        // Pass in the new set of locations
 		        _setPoints(locations);
-		        // レイヤーを再作成します
+		        // Recreate the layer
 		        _createHeatMap();
 		    }
 		
-		    // DOM のヒートマップ レイヤーを削除します
+		    // Removes the heatmap layer from the DOM
 		    this.Remove = function () {
 		        _canvas.parentNode.parentNode.removeChild(_canvas.parentNode);
 		
@@ -959,17 +974,17 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		        _viewchangeendhandler = null;
 		    }
 		
-		    // 初期化のルーチンを呼び出します
+		    // Call the initialisation routine
 		    _init();
 		};
 		
-		// Module Loaded メソッドを呼び出します
+		// Call the Module Loaded method
 		Microsoft.Maps.moduleLoaded('HeatMapModule');
 
 
 **tweetStream.js を追加するには**
 
-1. **ソリューション エクスプローラー**で、**TweetSentimentWeb** を展開します。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]** を展開します。
 2. **[スクリプト]** を右クリックし、**[追加]**、**[JavaScript ファイル]** の順にクリックします。
 3. [項目名] に、「**twitterStream.js**」と入力します。
 4. 以下のコードをコピーして、ファイルに貼り付けます。
@@ -983,38 +998,38 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		var heatmapPos;
 		
 		function initialize() {
-		    // マップを初期化する
+		    // Initialize the map
 		    var options = {
-		        credentials:"AvFJTZPZv8l3gF8VC3Y7BPBd0r7LKo8dqKG02EAlqg9WAi0M7la6zSIT-HwkMQbx",
-		        center:new Microsoft.Maps.Location(23.0, 8.0),
-		        mapTypeId:Microsoft.Maps.MapTypeId.ordnanceSurvey,
-		        labelOverlay:Microsoft.Maps.LabelOverlay.hidden,
+		        credentials: "AvFJTZPZv8l3gF8VC3Y7BPBd0r7LKo8dqKG02EAlqg9WAi0M7la6zSIT-HwkMQbx",
+		        center: new Microsoft.Maps.Location(23.0, 8.0),
+		        mapTypeId: Microsoft.Maps.MapTypeId.ordnanceSurvey,
+		        labelOverlay: Microsoft.Maps.LabelOverlay.hidden,
 		        zoom: 2.5
 		    };
 		    var map = new Microsoft.Maps.Map(document.getElementById('map_canvas'), options);
 		
-		    // 肯定、中立、否定の各レイヤーのヒートマップ オプション
+		    // Heatmap options for positive, neutral and negative layers
 		
 		    var heatmapOptions = {
-		        // 各ヒート ポイントの中心の不透明度
+		        // Opacity at the centre of each heat point
 		        intensity: 0.5,
 		
-		        // 各ヒート ポイントが影響を及ぼす範囲
+		        // Affected radius of each heat point
 		        radius: 15,
 		
-		        // 範囲は絶対ピクセル値とメートルのどちらか
-		        unit:'pixels'
+		        // Whether the radius is an absolute pixel value or meters
+		        unit: 'pixels'
 		    };
 		
 		    var heatmapPosOptions = {
-		        // 各ヒート ポイントの中心の不透明度
+		        // Opacity at the centre of each heat point
 		        intensity: 0.5,
 		
-		        // 各ヒート ポイントが影響を及ぼす範囲
+		        // Affected radius of each heat point
 		        radius: 15,
 		
-		        // 範囲は絶対ピクセル値とメートルのどちらか
-		        unit:'pixels',
+		        // Whether the radius is an absolute pixel value or meters
+		        unit: 'pixels',
 		
 		        colourgradient: {
 		            0.0: 'rgba(0, 255, 255, 0)',
@@ -1031,14 +1046,14 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		    };
 		
 		    var heatmapNegOptions = {
-		        // 各ヒート ポイントの中心の不透明度
+		        // Opacity at the centre of each heat point
 		        intensity: 0.5,
 		
-		        // 各ヒート ポイントが影響を及ぼす範囲
+		        // Affected radius of each heat point
 		        radius: 15,
 		
-		        // 範囲は絶対ピクセル値とメートルのどちらか
-		        unit:'pixels',
+		        // Whether the radius is an absolute pixel value or meters
+		        unit: 'pixels',
 		
 		        colourgradient: {
 		            0.0: 'rgba(0, 255, 255, 0)',
@@ -1054,11 +1069,11 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		        }
 		    };
 		
-		    // Client Side HeatMap モジュールの登録と読み込み
+		    // Register and load the Client Side HeatMap Module
 		    Microsoft.Maps.registerModule("HeatMapModule", "scripts/heatmap.js");
 		    Microsoft.Maps.loadModule("HeatMapModule", {
-		        callback:function () {
-		            // 肯定、中立、否定の各ツイートにヒートマップ レイヤーを作成
+		        callback: function () {
+		            // Create heatmap layers for positive, neutral and negative tweets
 		            heatmapPos = new HeatMapLayer(map, liveTweetsPos, heatmapPosOptions);
 		            heatmap = new HeatMapLayer(map, liveTweets, heatmapOptions);
 		            heatmapNeg = new HeatMapLayer(map, liveTweetsNeg, heatmapNegOptions);
@@ -1082,7 +1097,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		            liveTweets = [];
 		            liveTweetsNeg = [];
 		
-		            // 成功すると、"data" にツイートのリストが含まれます。
+		            // On success, 'data' contains a list of tweets.
 		            $.each(data, function (key, item) {
 		                addTweet(item);
 		            });
@@ -1093,12 +1108,12 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		            onNeutralBtn();
 		        })
 		        .fail(function (jqXHR, textStatus, err) {
-		            $('#statustext').text('Error:' + err);
+		            $('#statustext').text('Error: ' + err);
 		        });
 		}
 		
 		function addTweet(item) {
-		    // ヒート マップの配列にツイートを追加します。
+		    //Add tweet to the heat map arrays.
 		    var tweetLocation = new Microsoft.Maps.Location(item.Latitude, item.Longtitude);
 		    if (item.Sentiment > 0) {
 		        liveTweetsPos.push(tweetLocation);
@@ -1122,7 +1137,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		    heatmapNeg.Hide();
 		    heatmap.Hide();
 		
-		    $('#statustext').text('Tweets:' + liveTweetsPos.length + "   " + getPosNegRatio());
+		    $('#statustext').text('Tweets: ' + liveTweetsPos.length + "   " + getPosNegRatio());
 		}
 		
 		function onNeutralBtn() {
@@ -1138,7 +1153,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		    heatmapNeg.Hide();
 		    heatmapPos.Hide();
 		
-		    $('#statustext').text('Tweets:' + liveTweets.length + "   " + getPosNegRatio());
+		    $('#statustext').text('Tweets: ' + liveTweets.length + "   " + getPosNegRatio());
 		}
 		
 		function onNegativeBtn() {
@@ -1154,7 +1169,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		    heatmap.Hide();;
 		    heatmapPos.Hide();;
 		
-		    $('#statustext').text('Tweets:' + liveTweetsNeg.length + "\t" + getPosNegRatio());
+		    $('#statustext').text('Tweets: ' + liveTweetsNeg.length + "\t" + getPosNegRatio());
 		}
 		
 		function getPosNegRatio() {
@@ -1164,14 +1179,14 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		    else {
 		        var ratio = liveTweetsPos.length / liveTweetsNeg.length;
 		        var str = parseFloat(Math.round(ratio * 10) / 10).toFixed(1);
-		        return "Positive/Negative Ratio:" + str;
+		        return "Positive/Negative Ratio: " + str;
 		    }
 		}
 
 
 **layout.cshtml を変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、**[Layout.cshtml]** をダブルクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開してから、_**Layout.cshtml** をダブルクリックします。
 2. 次のコンテンツに置き換えます。
 
 		<!DOCTYPE html>
@@ -1228,7 +1243,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		    </div>
 		    @Scripts.Render("~/bundles/jquery")
 		    @Scripts.Render("~/bundles/bootstrap")
-		    @RenderSection("scripts", required:false)
+		    @RenderSection("scripts", required: false)
 		</body>
 		</html>
 
@@ -1236,7 +1251,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **Index.cshtml を変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[ホーム]** の順に展開し、**[Index.cshtml]** をダブルクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[ホーム]** の順に展開してから、**Index.cshtml** をダブルクリックします。
 2. 次のコンテンツに置き換えます。
 
 		@{
@@ -1249,7 +1264,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **site.css ファイルを変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[コンテンツ]** の順に展開し、**[Site.css]**. をダブルクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[コンテンツ]** の順に展開してから、**Site.css** をダブルクリックします。
 2. ファイルに、以下のコードを追加します。
 		
 		/* make container, and thus map, 100% width */
@@ -1263,23 +1278,23 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 		}
 		
 		#tweets{
-		  position:absolute;
-		  top:60px;
-		  left:75px;
+		  position: absolute;
+		  top: 60px;
+		  left: 75px;
 		  z-index:1000;
-		  font-size:30px;
+		  font-size: 30px;
 		}
 
 **global.asax ファイルを変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]** を展開し、**[Global.asax]** をダブルクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]** を展開し、**Global.asax** をダブルクリックします。
 2. 次の using ステートメントを追加します。
 
 		using System.Web.Http;
 
 2. 以下の行を **Application_Start()** 関数内に追加します。
 
-		// API ルートの登録
+		// Register API routes
 		GlobalConfiguration.Configure(WebApiConfig.Register);
   
 	API ルートの登録を変更し、Web API コントローラーが MVC アプリケーション内で動作するようにします。
@@ -1290,22 +1305,22 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 2. **F5** を押して、Web アプリケーションを実行します。
 
 	![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-2. テキスト ボックスにキーワードを入力し、**[検索]** をクリックします。HBase テーブルで収集したデータによっては、キーワードが検出できない場合もあります。「love」、「xbox」、「playstation」などの一般的なキーワードを試してください。 
+2. テキスト ボックスにキーワードを入力し、**[検索]** をクリックします。  HBase テーブルで収集したデータによっては、キーワードが検出できない場合もあります。「love」、「xbox」、「playstation」などの一般的なキーワードを試してください。 
 3. **[肯定]**、**[中立]**、**[否定]** を切り替えて、対象のセンチメントを比較します。
 4. 別の時間帯にストリーミング サービスを実行し、同じキーワードを検索して結果を比較してください。
 
  
-Azure Web サイトにこのアプリケーションをデプロイすることもできます。手順については、「[Azure Web サイトと ASP.NET の使用][website-get-started]」を参照してください。
+Azure Web サイトにこのアプリケーションをデプロイすることもできます。  手順については、「[Azure Web Sites と ASP.NET を使用する][website-get-started]」を参照してください。
  
 ##<a id="nextsteps"></a>次のステップ
 
 このチュートリアルでは、ツイートを取得する方法、ツイートのセンチメントを分析する方法、センチメント データを HBase に保存する方法、およびリアルタイムの Twitter センチメント データを Bing マップに表示する方法について学習しました。詳細については、次を参照してください。
 
-- [HDInsight で Hadoop 2.4 を使用する][hdinsight-get-started]
+- [HDInsight の概要][hdinsight-get-started]に関するページ
 - [HDInsight での Hadoop を使用した Twitter データの分析][hdinsight-analyze-twitter-data]
-- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]
+- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]に関するページ
 - [HDInsight 用 C# Hadoop ストリーミング プログラムの開発][hdinsight-develop-streaming]
-- [Develop Java MapReduce program for HDInsight (HDInsight での Hadoop 用 Java MapReduce プログラムの開発)][hdinsight-develop-mapreduce]
+- [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]に関するページ
 
 
 [hbase-get-started]: ../hdinsight-hbase-get-started/
@@ -1349,3 +1364,4 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-power-query]: ../hdinsight-connect-excel-power-query/
 [hdinsight-hive-odbc]: ../hdinsight-connect-excel-hive-ODBC-driver/
 
+<!--HONumber=42-->

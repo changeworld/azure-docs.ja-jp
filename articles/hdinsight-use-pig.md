@@ -1,22 +1,36 @@
-﻿<properties urlDisplayName="Use Hadoop Pig in HDInsight" pageTitle="HDInsight の Hadoop での Pig の使用 | Azure" metaKeywords="" description="HDInsight で Pig を使用する方法について説明します。Pig Latin ステートメントを記述してアプリケーション ログ ファイルを分析し、データに対してクエリを実行して分析用の出力を生成します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadoop Pig in HDInsight" authors="jgao" solutions="big data" manager="paulettm" editor="cgronlun" />
+﻿<properties 
+	pageTitle="HDInsight での Hadoop Pig の使用 | Azure" 
+	description="HDInsight で Pig を使用する方法について説明します。Pig Latin ステートメントを記述してアプリケーション ログ ファイルを分析し、データに対してクエリを実行して分析用の出力を生成します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/25/2014" ms.author="jgao" />
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="jgao"/>
 
 
 
 # HDInsight の Hadoop での Pig の使用
 
-このチュートリアルでは、HDInsight で [Apache Pig][apachepig-home] ジョブを実行して、大規模なデータ ファイルを分析する方法について説明します。Pig には、*MapReduce* ジョブを実行するためのスクリプト言語が備わっており、Java コードの代わりに使用できます。Pig のスクリプト言語を *Pig Latin* といいます。
+このチュートリアルでは、HDInsight で [Apache Pig][apachepig-home] ジョブを実行して、大規模なデータ ファイルを分析する方法について説明します。Pig には、 *MapReduce*  ジョブを実行するためのスクリプト言語が備わっており、Java コードの代わりに使用できます。Pig のスクリプト言語を *Pig Latin* といいます。
 
 **前提条件**
 
-* Azure HDInsight クラスターのプロビジョニングを終えている必要があります。手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。チュートリアルを完了するために、クラスター名が必要となります。
+* Azure HDInsight クラスターのプロビジョニングを終えている必要があります。手順については、[Azure HDInsight の概要][hdinsight-get-started]または[HDInsight クラスターのプロビジョニング][hdinsight-provision]を参照してください。チュートリアルを完了するために、クラスター名が必要となります。
 
-* Azure PowerShell をコンピューターにインストールし構成しておく必要があります。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。 
+* Azure PowerShell をコンピューターにインストールし構成しておく必要があります。手順については、[Azure PowerShell のインストールおよび構成方法][powershell-install-configure]を参照してください。 
 
-**所要時間:** 30 分
+**推定所要時間:** 30 分
 
-##この記事の内容
+## この記事の内容
 
 * [Pig を使用する理由](#usage)
 * [このチュートリアルで実行する内容](#what)
@@ -26,12 +40,12 @@
 * [HDInsight .NET SDK を使用して Pig ジョブを送信する](#sdk)
 * [次のステップ](#nextsteps)
  
-##<a id="usage"></a>Pig を使用する理由
-リレーショナル データベースや統計/視覚化パッケージではビッグ データを適切に処理できません。こうした膨大なデータを実用的な速度で処理するには、数十台、数百台、あるいは数千台のサーバー上でソフトウェアを同時に実行する必要があります。Hadoop は、膨大な構造化データと非構造化データを処理するアプリケーションを記述するための *MapReduce* フレームワークです。クラスター化された多数のコンピューターでこれらのデータを並列処理することで、高い信頼性と耐障害性を実現します。
+## <a id="usage"></a>Pig を使用する理由
+リレーショナル データベースや統計/視覚化パッケージではビッグ データを適切に処理できません。こうした膨大なデータを実用的な速度で処理するには、数十台、数百台、あるいは数千台のサーバー上でソフトウェアを同時に実行する必要があります。Hadoop は、膨大な構造化データと非構造化データを処理するアプリケーションを記述するための *MapReduce*  フレームワークです。クラスター化された多数のコンピューターでこれらのデータを並列処理することで、高い信頼性と耐障害性を実現します。
 
 ![HDI.Pig.Architecture][image-hdi-pig-architecture]
 
-[Apache *Pig*][apachepig-home] は、Java ベースの MapReduce フレームワーク上に抽象化レイヤーを提供しており、ユーザーはそのレイヤーを使用してデータを分析できます。Java や MapReduce の知識は必要ありません。Pig は、*Pig Latin* と呼ばれる使いやすいデータフロー言語を使用して大規模なデータ セットを分析するためのプラットフォームです。Pig によって、mapper プログラムと reducer プログラムの記述に要する時間を短縮できます。Java の知識は必要ありません。Java コードと Pig を組み合わせることもできます。多くの複雑なアルゴリズムを、人間による判読が可能な数行の Pig コードで記述できます。 
+[Apache *Pig*][apachepig-home] は、Java ベースの MapReduce フレームワーク上に抽象化レイヤーを提供しており、ユーザーはそのレイヤーを使用してデータを分析できます。Java や MapReduce の知識は必要ありません。Pig は、 *Pig Latin* と呼ばれる使いやすいデータフロー言語を使用して大規模なデータ セットを分析するためのプラットフォームです。Pig によって、mapper プログラムと reducer プログラムの記述に要する時間を短縮できます。Java の知識は必要ありません。Java コードと Pig を組み合わせることもできます。多くの複雑なアルゴリズムを、人間による判読が可能な数行の Pig コードで記述できます。 
 
 Pig Latin ステートメントは一般的なフローに従います。   
 
@@ -39,9 +53,9 @@ Pig Latin ステートメントは一般的なフローに従います。
 - **Transform**:データを操作します。 
 - **Dump または store**:データを画面に出力します。または、処理できるように保存します。
 
-Pig Latin の詳細については、「[Pig Latin Reference Manual 1][piglatin-manual-1]」および「[Pig Latin Reference Manual 2][piglatin-manual-2]」を参照してください。
+Pig Latin の詳細については、[Pig Latin Reference Manual 1][piglatin-manual-1] および[Pig Latin Reference Manual 2][piglatin-manual-2]を参照してください。
 
-##<a id="what"></a>このチュートリアルで実行する内容
+## <a id="what"></a>このチュートリアルで実行する内容
 このチュートリアルでは、Apache ログ ファイル (*sample.log*) を分析して、INFO、DEBUG、TRACE などの異なるログ レベルの件数を判別します。この記事で完了する内容を次の 2 つの図で視覚的に示します。最初の図は、sample.log ファイルのスニペットです。
 
 ![Whole File Sample][image-hdi-log4j-sample]
@@ -52,17 +66,17 @@ Pig Latin の詳細については、「[Pig Latin Reference Manual 1][piglatin-
 
 このチュートリアルで作成する Pig ジョブは同じフローを辿ります。
 
-##<a id="data"></a>分析するデータの特定
+## <a id="data"></a>分析するデータの特定
 
-HDInsight は、Hadoop クラスター対応の既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。クラスター プロビジョニングの一部としていくつかのサンプル データ ファイルが BLOB ストレージに追加されています。これらのサンプル データ ファイルを使用して、クラスター上で Hive クエリを実行できます。必要な場合は、クラスターに関連付けられた BLOB ストレージ アカウントにユーザー専用のデータ ファイルをアップロードすることもできます。手順については、「[HDInsight でのデータのアップロード][hdinsight-upload-data]」を参照してください。HDInsight と共に Azure BLOB ストレージを使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
+HDInsight は、Hadoop クラスター対応の既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。クラスター プロビジョニングの一部としていくつかのサンプル データ ファイルが BLOB ストレージに追加されています。これらのサンプル データ ファイルを使用して、クラスター上で Hive クエリを実行できます。必要な場合は、クラスターに関連付けられた BLOB ストレージ アカウントにユーザー専用のデータ ファイルをアップロードすることもできます。手順については、[HDInsight でのデータのアップロード][hdinsight-upload-data] を参照してください。HDInsight と共に Azure BLOB ストレージを使用する方法の詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage] を参照してください。
 
 BLOB ストレージ内のファイルにアクセスするための構文は次のとおりです。
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
-> [WACOM.NOTE] HDInsight クラスター バージョン 3.0 では、*wasb://* 構文のみがサポートされます。旧バージョンの *asv://* 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされず、以降のバージョンでもサポートされません。
+> [AZURE.NOTE] HDInsight クラスター バージョン 3.0 では、 *wasb://*  構文のみがサポートされます。旧バージョンの  *asv://*  構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされず、以降のバージョンでもサポートされません。
 
-既定のファイル システム コンテナーに格納されているファイルは、次の URI のどれを使用しても HDInsight からアクセスできます (例として sample.log を使用しています。このファイルは、このチュートリアルで使用されるデータ ファイルです)。
+既定のファイル システム コンテナーに格納されているファイルは、次の URI のどれを使用しても HDInsight からアクセスできます (例として sample.log を使用しています。  このファイルは、このチュートリアルで使用されるデータ ファイルです)。
 
 	wasb://mycontainer@mystorageaccount.blob.core.windows.net/example/data/sample.log
 	wasb:///example/data/sample.log
@@ -72,22 +86,22 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 
 	example/data/sample.log
 
-この記事では *log4j* サンプル ファイルを使用します。このファイルは、HDInsight クラスターに付属しており、*\example\data\sample.log* に格納されています。実際のデータ ファイルのアップロードについては、「[HDInsight でのデータのアップロード][hdinsight-upload-data]」を参照してください。
+この記事では  *log4j* サンプル ファイルを使用します。このファイルは、HDInsight クラスターに付属しており、*\example\data\sample.log* に格納されています。実際のデータ ファイルのアップロードについては、[HDInsight でのデータのアップロード][hdinsight-upload-data]を参照してください。
 
 
 
 
-##<a id="understand"></a> Pig Latin について
+## <a id="understand"></a> Pig Latin について
 
 ここでは、いくつかの Pig Latin ステートメントと、その実行結果を確認します。次のセクションでは、PowerShell を使用して Pig ステートメントを一緒に実行し、サンプル ログ ファイルを分析します。HDInsight クラスター上で個々の Pig Latin ステートメントを直接実行する必要があります。
 
-1. 「[RDP を使用した HDInsight クラスターへの接続](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にします。クラスター ノードにログインし、デスクトップから、**[Hadoop コマンド ライン]** をクリックします。
+1. [RDP を使用した HDInsight クラスターへの接続](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp)の手順に従って、HDInsight クラスターのリモート デスクトップを有効にします。クラスター ノードにログインし、デスクトップから、**[Hadoop コマンド ライン]** をクリックします。
 
 2. コマンド ラインから、**Pig** がインストールされているディレクトリに移動します。次のコマンドを入力します。
 
 		C:\apps\dist\hadoop-<version>> cd %pig_home%\bin
 
-3. コマンド プロンプトで、*pig* と入力し、Enter キーを押して *grunt* シェルに切り替えます。
+3. コマンド プロンプトで、 *pig* と入力し、Enter キーを押して *grunt* シェルに切り替えます。
 
 		C:\apps\dist\pig-<version>\bin>pig
 		...
@@ -185,14 +199,14 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 	 	(ERROR,6)
 		(FATAL,2)
 
-##<a id="powershell"></a>PowerShell を使用して Pig ジョブを送信する
+## <a id="powershell"></a>PowerShell を使用して Pig ジョブを送信する
 
-ここでは PowerShell コマンドレットの使用手順を示します。このセクションを読み進める前に、まずローカル環境をセットアップし、Azure への接続を構成する必要があります。詳細については、「[Azure HDInsight の概要][hdinsight-get-started]」および「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。
+ここでは PowerShell コマンドレットの使用手順を示します。このセクションを読み進める前に、まずローカル環境をセットアップし、Azure への接続を構成する必要があります。詳細については、[Azure HDInsight の概要][hdinsight-get-started]および[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell] を参照してください。
 
 
 **PowerShell を使用して Pig Latin を実行するには**
 
-1. Windows PowerShell ISE を開きます。Windows 8 のスタート画面で、「**PowerShell_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Windows 8 と Windows での Windows PowerShell の起動][powershell-start]」を参照してください。
+1. Windows PowerShell ISE を開きます。Windows 8 のスタート画面で、**PowerShell_ISE**と入力し、**Windows PowerShell ISE** をクリックします。[Windows 8 と Windows での Windows PowerShell の起動][powershell-start]を参照してください。
 
 2. 下のウィンドウで、次のコマンドを実行して、Azure サブスクリプションに接続します。
 
@@ -200,7 +214,7 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 
 	Azure アカウント資格情報の入力を求められます。サブスクリプション接続を追加するこの方法はタイム アウトし、12 時間後には、このコマンドレットを再度実行する必要があります。 
 
-	> [WACOM.NOTE]  Azure サブスクリプションが複数あり、使用するサブスクリプションが既定のサブスクリプションではない場合は、 <strong>Select-AzureSubscription</strong> コマンドレットを使用して現在のサブスクリプションを選択します。
+	> [AZURE.NOTE] Azure サブスクリプションが複数あり、使用するサブスクリプションが既定のサブスクリプションではない場合は、 <strong>Select-AzureSubscription</strong> コマンドレットを使用して現在のサブスクリプションを選択します。
 2. スクリプト ウィンドウで、次のコードをコピーして貼り付けます。
 
 		$clusterName = "<HDInsightClusterName>" 	#Specify the cluster name
@@ -242,7 +256,7 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 		Write-Host "Display the standard output ..." -ForegroundColor Green
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardOutput
 
-	> [WACOM.NOTE] 次に示すスクリーンショットでは、出力を短縮するために、Get-AzureHDInsightJobOut コマンドレットの 1 つがコメント アウトされています。   
+	> [AZURE.NOTE] 次に示すスクリーンショットでは、出力を短縮するために、Get-AzureHDInsightJobOut コマンドレットの 1 つがコメント アウトされています。   
 
 7. **F5** キーを押して、スクリプトを実行します。
 
@@ -251,9 +265,9 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 	Pig ジョブがログの種類の出現回数を計算します。
 
 
-##<a id="sdk"></a>HDInsight .NET SDK を使用して Pig ジョブを送信する
+## <a id="sdk"></a>HDInsight .NET SDK を使用して Pig ジョブを送信する
 
-C# アプリケーションを使用して Pig ジョブを送信するには、以下の手順に従います。   Hadoop ジョブの送信用の C# アプリケーションを作成する方法については、「[プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]」を参照してください。
+C# アプリケーションを使用して Pig ジョブを送信するには、以下の手順に従います。   Hadoop ジョブの送信用の C# アプリケーションを作成する方法については、[プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]を参照してください。
 
 1. 自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
 
@@ -354,13 +368,13 @@ C# アプリケーションを使用して Pig ジョブを送信するには、
 		    }
 		}
 
-##<a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 Pig ではデータを分析できますが、HDInsight には便利なその他の言語も用意されています。Hive は SQL に似たクエリ言語であり、HDInsight に保存されているデータに対して簡単にクエリを実行できます。また、Java で記述された MapReduce ジョブでは複雑なデータ分析を実行できます。詳細については、次のトピックを参照してください。
 
 
-* [Azure HDInsight の概要][hdinsight-get-started]
-* [HDInsight へのデータのアップロード][hdinsight-upload-data]
+* [Azure の HDInsight の概要][hdinsight-get-started]
+* [データを HDInsight へアップロード][hdinsight-upload-data]
 * [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 
@@ -390,4 +404,4 @@ Pig ではデータを分析できますが、HDInsight には便利なその他
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!--HONumber=35.2-->
+<!--HONumber=42-->

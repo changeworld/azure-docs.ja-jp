@@ -19,10 +19,8 @@
             }];
         }
 
-    <div class="dev-callout"><b>注</b>
-	<p>Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>loginWithProvider</strong> メソッドに渡される値を<em>microsoftaccount</em>、<em>facebook</em>、<em>twitter</em>、<em>google</em>、<em>windowsazureactivedirectory</em> のいずれかに変更します。</p>
-    </div>
+    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の **loginWithProvider** に渡される値を_microsoftaccount_、_facebook_、_twitter_、_google_、_windowsazureactivedirectory_ のいずれかに変更します。
 		
-3. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。 
+3. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。<!--HONumber=42-->
