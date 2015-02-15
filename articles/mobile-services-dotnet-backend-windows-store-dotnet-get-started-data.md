@@ -1,4 +1,4 @@
-<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
@@ -255,15 +255,15 @@ This tutorial walks you through these basic steps:
 [1]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/mobile-data-sample-download-dotnet-vs13.png
 [2]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/mobile-service-overview-page.png
 [3]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/download-service-project.png
-[4]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/Add-Service-Project-To-Solution.png
-[5]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/Download-Publishing-Profile.png
-[6]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/Add-Existing-Project-Dialog.png
-[7]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/VS-Manage-NuGet-Packages.png
-[8]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/Manage-Nuget-Packages.png
-[9]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/Copy-MobileServiceClient-snippet.png
-[10]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/VS-pasted-MobileServiceClient.png
-[11]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/VS-Build-Solution.png
-[12]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/VS-Run-Solution.png
+[4]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/add-service-project-to-solution.png
+[5]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/download-publishing-profile.png
+[6]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/add-existing-project-dialog.png
+[7]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-manage-nuget-packages.png
+[8]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-nuget-packages.png
+[9]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/copy-mobileserviceclient-snippet.png
+[10]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-pasted-mobileserviceclient.png
+[11]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-build-solution.png
+[12]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-run-solution.png
 [16]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/azure-items.png
 [17]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-sql-azure-database.png
 [18]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/sql-azure-query.png
