@@ -1,10 +1,20 @@
-<properties urlDisplayName=".NET Client Library" pageTitle="Mobile Services .NET クライアント ライブラリの操作" metaKeywords="Azure Mobile Services、Mobile Services .NET クライアント、.NET クライアント" description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="How to use a .NET client for Azure Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Mobile Services .NET クライアント ライブラリの操作" 
+	description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/10/2014" ms.author="glenga" />
-
-
-
-
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="glenga" />
 
 # Azure モバイル サービス向け .NET クライアントを使用する方法
 
