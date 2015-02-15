@@ -18,11 +18,7 @@
 
 # Azure モバイル サービス向け .NET クライアントを使用する方法
 
-<div class="dev-center-tutorial-selector sublanding">
-  <a href="/ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework" class="current">.NET Framework</a>
-  	<a href="/ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
-</div>
-
+[AZURE.INCLUDE [mobile-services-selector-client-library](../includes/mobile-services-selector-client-library.md)]
 
 このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure Mobile Services 用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まずモバイル サービスのクイック スタートに関するチュートリアル ([Windows ストアのクイック スタート チュートリアル]/[Windows Phone のクイック スタート チュートリアル]) と .NET でのデータの使用に関するチュートリアル ([Windows ストアのデータ チュートリアル]/[Windows Phone のデータ チュートリアル]) を完了することを検討してください。このクイック スタート チュートリアルでは、[モバイル サービス SDK] が必要です。ここでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
