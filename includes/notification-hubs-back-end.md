@@ -100,4 +100,5 @@ Mobile Services を使用している場合は、「[Mobile Services アプリ�
 [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
 [Notification Hubs How-To for Windows Store (方法: 通知ハブ (Windows ストア アプリ))]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
 [通知ハブの REST API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
+
 <!--HONumber=42-->

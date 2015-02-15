@@ -78,4 +78,5 @@
 [Azure ストア]: /ja-jp/gallery/store/
 [portal]: http://manage.windowsazure.com
 [configure]: ../web-sites-configure/
+
 <!--HONumber=42-->

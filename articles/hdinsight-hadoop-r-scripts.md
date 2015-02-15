@@ -292,4 +292,5 @@ PowerShell コンソールを開き、プロジェクトを保存した場所に
 
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: ../hdinsight-hadoop-customize-cluster
-[hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/<!--HONumber=42-->
+[hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
+<!--HONumber=42-->

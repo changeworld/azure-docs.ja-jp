@@ -51,4 +51,5 @@
 <!-- URLs. -->
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
+
 <!--HONumber=42-->

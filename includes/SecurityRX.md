@@ -466,4 +466,5 @@ Azure AD Access Control のデプロイにおいては、次のセキュリテ�
 
 [Web SSO Design (Web SSO の設計)]: http://technet.microsoft.com/ja-jp/library/dd807033(WS.10).aspx
 [Federated Web SSO Design (フェデレーション Web SSO の設計)]: http://technet.microsoft.com/ja-jp/library/dd807050(WS.10).aspx
+
 <!--HONumber=42-->

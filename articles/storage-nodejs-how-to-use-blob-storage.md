@@ -412,4 +412,5 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Node.js Cloud Service]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+
 <!--HONumber=42-->

@@ -159,4 +159,5 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 ## その他のリソース
 
 -   <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680307.aspx">CDN コンテンツをカスタム ドメインにマッピングする方法</a>
+
 <!--HONumber=42-->

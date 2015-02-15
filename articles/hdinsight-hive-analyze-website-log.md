@@ -54,4 +54,5 @@ Azure HDInsight を使用したセンサー データの分析方法をサンプ
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis/
 
-[img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png<!--HONumber=42-->
+[img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
+<!--HONumber=42-->

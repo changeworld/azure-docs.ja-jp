@@ -206,4 +206,5 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
 [stormstarter]: https://github.com/apache/storm/tree/master/examples/storm-starter
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [azureportal]: https://manage.windowsazure.com/
+
 <!--HONumber=42-->

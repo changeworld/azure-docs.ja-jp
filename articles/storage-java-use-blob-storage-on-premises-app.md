@@ -383,4 +383,5 @@ Azure ストレージにアップロードするローカル ファイルを表�
   [ストレージ アカウントの作成方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-create-a-storage-account/
   [ストレージ アカウントの管理方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/
   [Java から BLOB ストレージを使用する方法]: http://www.windowsazure.com/ja-jp/develop/java/how-to-guides/blob-storage/
+
 <!--HONumber=42-->

@@ -244,4 +244,5 @@ SQL データベースでは、個々のデータベースを監視するのに�
   [SQL データベースの概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336230.aspx
   [SQL データベース プロビジョニング モデル]: http://msdn.microsoft.com/ja-jp/library/ee336227.aspx
   [SQL データベースへのユーザーの追加に関するページ]: http://blogs.msdn.com/b/sqlazure/archive/2010/06/21/10028038.aspx
+
 <!--HONumber=42-->

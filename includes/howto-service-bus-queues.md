@@ -78,4 +78,5 @@ Azure のサービス バス キューを使用するには、最初にサービ
   [Azure 管理ポータル]: http://manage.windowsazure.com
 
   [34]: ./media/howto-service-bus-queues/VSProperties.png
+
 <!--HONumber=42-->

@@ -400,4 +400,5 @@ Azure キュー サービス クライアントをインスタンス化するに
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure 管理ポータル]: http://manage.windowsazure.com/
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+
 <!--HONumber=42-->

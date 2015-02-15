@@ -45,4 +45,5 @@ Azure 向け PHP クライアント ライブラリを手動でダウンロー�
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [download-SDK-PHP]: ../php-download-sdk/
 [composer-phar]: http://getcomposer.org/composer.phar
+
 <!--HONumber=42-->

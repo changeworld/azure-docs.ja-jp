@@ -484,5 +484,6 @@ NuGet を使用して  `Microsoft.WindowsAzure.Storage.dll` アセンブリを�
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
+
 <!--HONumber=42-->
 [CO1]tag 272 represents "must". It should be deleted.

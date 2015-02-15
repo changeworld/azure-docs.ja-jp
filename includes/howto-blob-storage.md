@@ -46,4 +46,5 @@ BLOB サービスには、次のコンポーネントが含まれます。
 
 [Blob1]: ./media/howto-blob-storage/blob1.jpg
 
+
 <!--HONumber=42-->

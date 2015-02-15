@@ -116,4 +116,5 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
   [方法:サイズが大きい BLOB のダウンロードとアップロード]: #large-blobs
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+
 <!--HONumber=42-->

@@ -494,4 +494,5 @@ Azure テーブル サービス クライアントをインスタンス化する
 [table-data-model]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179338.aspx
 [filters]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894038.aspx
+
 <!--HONumber=42-->

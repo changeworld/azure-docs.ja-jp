@@ -103,4 +103,5 @@ PeekMessageAsync() メソッドを呼び出すと、キューの先頭にある�
 
 [Azure Storage の詳細を確認する](http://azure.microsoft.com/documentation/services/storage/)
 「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。
+
 <!--HONumber=42-->

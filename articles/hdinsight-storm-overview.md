@@ -148,4 +148,5 @@ Trident を使用している場合、これはタプルのバッチ処理を基
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [poweredby]: https://storm.incubator.apache.org/documentation/Powered-By.html
 [gettingstarted]: /ja-jp/documentation/articles/hdinsight-storm-getting-started
+
 <!--HONumber=42-->

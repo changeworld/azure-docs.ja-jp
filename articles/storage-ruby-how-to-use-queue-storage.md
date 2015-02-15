@@ -173,4 +173,5 @@ azure モジュールは、Azure Storage アカウントに接続するために
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
 この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法](/ja-jp/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx)」を参照してください。
+
 <!--HONumber=42-->

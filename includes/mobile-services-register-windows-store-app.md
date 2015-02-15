@@ -68,4 +68,5 @@
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure 管理ポータル]: https://manage.windowsazure.com/
+
 <!--HONumber=42-->

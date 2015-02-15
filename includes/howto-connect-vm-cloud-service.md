@@ -26,4 +26,5 @@
 [データ ディスクを Windows 仮想マシンに接続する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-windows-attach-disk/)
 
 
+
 <!--HONumber=42-->

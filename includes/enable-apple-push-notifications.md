@@ -129,4 +129,5 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 9. **[Targets]** の **[Quickstart]** をクリックし、**[Code Signing Identity]** を展開して、**[Debug]** で新しいプロファイルを選択します。これで、Xcode プロジェクトはコード署名のために新しいプロファイルを使用するようになります。次に、証明書を Azure にアップロードする必要があります。
 
    	![](./media/enable-apple-push-notifications/mobile-services-ios-push-step17.png)
+
 <!--HONumber=42-->

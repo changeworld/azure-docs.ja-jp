@@ -30,4 +30,5 @@
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
 [Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /ja-jp/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
+
 <!--HONumber=42-->

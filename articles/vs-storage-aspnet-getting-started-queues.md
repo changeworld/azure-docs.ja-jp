@@ -43,4 +43,5 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 [AZURE.INCLUDE [vs-storage-getting-started-queues-include](../includes/vs-storage-getting-started-queues-include.md)]
 
-詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。<!--HONumber=42-->
+詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
+<!--HONumber=42-->

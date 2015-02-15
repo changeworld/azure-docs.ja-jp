@@ -277,4 +277,5 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/ja-jp/library/azure/gg433040.aspx
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+
 <!--HONumber=42-->

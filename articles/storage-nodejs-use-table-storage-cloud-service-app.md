@@ -405,4 +405,5 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Node.js Web Application]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
  
+
 <!--HONumber=42-->

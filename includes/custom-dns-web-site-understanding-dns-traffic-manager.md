@@ -17,4 +17,5 @@ CNAME レコードは、**mail.contoso.com** や **www.contoso.com** などの *
 Traffic Manager に到着したトラフィックは、構成された負荷分散方法を使用して、Web サイトにルーティングされます。これは、Web サイトにアクセスするユーザーに対して透過的です。ユーザーのブラウザーには、カスタム ドメイン名のみが表示されます。
 
 > [AZURE.NOTE] いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (**www.contoso.com** など) ではなく、サブドメイン (**contoso.com** など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、<a href="http://en.wikipedia.org/wiki/CNAME_record">CNAME レコードに関するウィキペディア項目</a>、または「<a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)</a>」を参照してください。
+
 <!--HONumber=42-->

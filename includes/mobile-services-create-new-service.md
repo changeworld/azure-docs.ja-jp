@@ -36,4 +36,5 @@
 
 <!-- URLs. -->
 [管理ポータル]: https://manage.windowsazure.com/
+
 <!--HONumber=42-->

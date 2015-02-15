@@ -177,4 +177,5 @@ YARN (Yet Another Resource Negotiator) はアプリケーションのスケジ�
 [T-file]:https://issues.apache.org/jira/browse/HADOOP-3315
 [binary-format]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf 
 [YARN-concepts]:http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
+
 <!--HONumber=42-->

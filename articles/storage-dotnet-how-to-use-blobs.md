@@ -385,4 +385,5 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [空間]: http://nuget.org/packages/System.Spatial/5.0.2
+
 <!--HONumber=42-->

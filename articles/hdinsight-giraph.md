@@ -217,4 +217,5 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 [aps]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
 [pig]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-pig/
 [hive]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-hive/
+
 <!--HONumber=42-->

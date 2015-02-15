@@ -182,4 +182,5 @@ Hive クエリを作成および実行するには次の 2 つの方法があり
 [hdinsight.analyze.twitter.data]: ../hdinsight-analyze-twitter-data/
 
 
-[apache.hive]: http://hive.apache.org<!--HONumber=42-->
+[apache.hive]: http://hive.apache.org
+<!--HONumber=42-->

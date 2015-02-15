@@ -21,4 +21,5 @@
 
 
 [AZURE.INCLUDE [howto-detach-disk-windows-linux](../includes/howto-detach-disk-windows-linux.md)]
+
 <!--HONumber=42-->

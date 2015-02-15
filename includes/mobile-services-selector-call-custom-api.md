@@ -11,4 +11,5 @@
 - [(Android | Javascript)](/ja-jp/documentation/articles/mobile-services-android-call-custom-api/)
 - [(HTML | Javascript)](/ja-jp/documentation/articles/mobile-services-html-call-custom-api/)
 
+
 <!--HONumber=42-->

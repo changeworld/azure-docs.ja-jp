@@ -84,4 +84,5 @@
 
 5. アプリが Mobile Service に要求を送った場合、ユーザーが認証されるので、401 応答 (認証エラー) を受信します。これは、渡したユーザー トークンが期限切れになっていることを意味します。提供しているメソッドで Mobile Service と対話するすべてのメソッドについては、それぞれの完了ハンドラーで、401 応答が発生しているかどうかを調べることが可能であり、または 1 つの場所 (MSFilter の handleRequest メソッド) で処理を行うことができます。このシナリオへの対処方法については、[このブログ記事](http://www.thejoyofcode.com/Handling_expired_tokens_in_your_application_Day_11_.aspx)を参照してください。
 
+
 <!--HONumber=42-->

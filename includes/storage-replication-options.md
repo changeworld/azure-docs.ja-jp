@@ -19,4 +19,5 @@
 レプリケーション オプションの詳細については、[Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)および「[Azure Storage 冗長オプション](http://msdn.microsoft.com/ja-jp/library/azure/dn727290.aspx)」を参照してください。
 	
 さまざまなレプリケーション オプションの料金の差異については、[Storage 料金の詳細](/ja-jp/pricing/details/storage/) ページを参照してください。
+
 <!--HONumber=42-->

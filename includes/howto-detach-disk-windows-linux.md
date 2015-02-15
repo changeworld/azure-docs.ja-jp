@@ -46,4 +46,5 @@
 [attachdisk]:/ja-jp/manage/windows/how-to-guides/attach-a-disk/
 
 [Azure とは]:http://go.microsoft.com/fwlink/p/?LinkId=263439
+
 <!--HONumber=42-->

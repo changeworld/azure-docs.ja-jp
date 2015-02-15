@@ -32,4 +32,5 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
   
   [Table1]: ./media/storage-java-how-to-use-table-storage/table1.png
   [OData.org]: http://www.odata.org/
+
 <!--HONumber=42-->

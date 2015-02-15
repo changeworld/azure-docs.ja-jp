@@ -8,4 +8,5 @@
 
 	![](./media/mobile-services-dotnet-backend-test-local-service/mobile-service-startup.png)
 
-	モバイル サービスが正常に起動した後、Web ページが表示されます。<!--HONumber=42-->
+	モバイル サービスが正常に起動した後、Web ページが表示されます。
+<!--HONumber=42-->

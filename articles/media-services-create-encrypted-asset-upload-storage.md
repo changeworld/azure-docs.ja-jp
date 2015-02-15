@@ -135,4 +135,5 @@ static void  blobTransferClient_TransferProgressChanged(object sender, BlobTrans
 これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
 
 [方法: メディア プロセッサ インスタンスを取得する]: ../media-services-get-media-processor/
+
 <!--HONumber=42-->

@@ -88,4 +88,5 @@ HDInsight には次のサンプルが付属します。
 [hdinsight-use-hive]: ../hdinsight-use-hive/
 [hdinsight-use-pig]: ../hdinsight-use-pig/
 
+
 <!--HONumber=42-->

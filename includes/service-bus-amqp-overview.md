@@ -96,4 +96,5 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 
 [0]: ./media/service-bus-amqp-overview/Example1.png
 
+
 <!--HONumber=42-->

@@ -2,4 +2,5 @@
 
 サイトのモードの変更方法など、Websites のモードの詳細については、次の情報を参照してください: [Web サイトの規模の設定方法](/ja-jp/documentation/articles/web-sites-scale/).
 
+
 <!--HONumber=42-->

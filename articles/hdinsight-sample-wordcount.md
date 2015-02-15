@@ -226,4 +226,5 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [image-hdi-sample-wordcount-output]: ./media/hdinsight-sample-wordcount/HDI.Sample.WordCount.Output.png
 
 
+
 <!--HONumber=42-->

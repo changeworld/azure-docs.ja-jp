@@ -32,4 +32,5 @@
 	これで、モバイル サービスとアプリケーションの両方が、選択した認証プロバイダーと連係するように構成されました。
 
 <!-- URLs. -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/<!--HONumber=42-->
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+<!--HONumber=42-->

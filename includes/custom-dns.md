@@ -137,4 +137,5 @@ A レコードを作成するには、まず、クラウド サービスの仮�
   [カスタム ドメインの検証のダイアログ ボックス]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
   [CDN コンテンツをカスタム ドメインにマッピングする方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680307.aspx
   [vip]: ./media/custom-dns/csvip.png
-  [csurl]:./media/custom-dns/csurl.png<!--HONumber=42-->
+  [csurl]:./media/custom-dns/csurl.png
+<!--HONumber=42-->

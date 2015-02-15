@@ -23,5 +23,6 @@
     増分同期を無効にする場合は、 `null` をクエリ ID として渡します。この場合、 `PullAsync` への呼び出しごとにすべてのレコードが再取得され、場合によっては非効率となります。
 
 * モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。[CO1]有効にしない場合は、アプリで定期的に  `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
+
 <!--HONumber=42-->
 [CO1]unknown term: Soft Delete. I used the term from Term Studio.
