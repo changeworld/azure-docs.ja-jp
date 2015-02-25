@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Optimistic concurrency" pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) |モバイル デベロッパー センター" metaKeywords="" description="サーバーと Windows ストア アプリケーションの両方でデータベースへの書き込みの競合を処理する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" authors="wesmc" manager="dwrede" />
+<properties pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | モバイル デベロッパー センター" description="サーバーと Windows ストア アプリケーションの両方でデータベースへの書き込みの競合を処理する方法について説明します。" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"/>
 
 # データベースの書き込み競合の処理
 
@@ -23,16 +23,16 @@
 このチュートリアルには、次のものが必要です。
 
 + Microsoft Visual Studio 2012 Express for Windows 以降。
-+ このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。 
++ このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、[Mobile Services の使用]に関するチュートリアルを完了している必要があります。 
 + [Azure アカウント]
 + Azure モバイル サービス NuGet パッケージ 1.1.0 以降。最新バージョンを入手するには、次の手順に従います。
-	1. Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+	1.Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
-		![][19]
+	![][19]
 
-	2. **[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**Azure Mobile Services**」と入力します。**[Azure Mobile Services]** NuGet パッケージで **[インストール]** をクリックします。
+	2.**[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**Azure Mobile Services**」と入力します。**[Azure Mobile Services]** NuGet パッケージで **[インストール]** をクリックします。
 
-		![][20]
+	![][20]
 
 
  
@@ -43,7 +43,7 @@
 
 
 1. Visual Studio で、[モバイル サービスの使用] チュートリアルでダウンロードした TodoList プロジェクトを開きます。
-2. Visual Studio ソリューション エクスプローラーで MainPage.xaml を開き、その中の `ListView` 定義を次に示す `ListView` で置き換えて、変更を保存します。
+2. Visual Studio のソリューション エクスプローラーで MainPage.xaml を開き、その中の `ListView` 定義を次に示す `ListView` で置き換えて変更を保存します。
 
 		<ListView Name="ListItems" Margin="62,10,0,0" Grid.Row="1">
 			<ListView.ItemTemplate>
@@ -57,7 +57,7 @@
 		</ListView>
 
 
-3. MainPage.xaml.cs ファイルで、次の `using` ディレクティブをページの先頭に追加します。
+3. MainPage.xaml.cs で、次の `using` ディレクティブをページの上部に追加します。
 
 		using System.Threading.Tasks;
 
@@ -101,7 +101,7 @@
 
 <h2><a name="enableOC"></a>アプリケーションでの競合検出を有効にする</h2>
 
-シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。[オプティミスティック同時実行制御]では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。Azure のモバイル サービスはオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。前回のクエリ以降にレコードが変更されている場合、アプリケーションで更新しようとする際に `MobileServicePreconditionFailedException` が通知されます。その際、データベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ]に関するページを参照してください。
+シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。[オプティミスティック同時実行制御]では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。Azure のモバイル サービスはオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。前回のクエリ以降にレコードが変更されていた場合、アプリケーションで更新しようとしたときに `MobileServicePreconditionFailedException` によって通知されます。その際、データベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ]に関するページを参照してください。
 
 1. MainPage.xaml.cs で、**TodoItem** クラスの定義を次のコードに更新します。このコードには **__version** システム プロパティが含まれており、書き込み競合の検出がサポートされます。
 
@@ -116,15 +116,15 @@
 			public string Version { set; get; }
 		}
 
-	<div class="dev-callout"><strong>注</strong>
-	<p>型指定のないテーブルを使用する場合にオプティミスティック同時実行制御を有効にするには、テーブルの SystemProperties に Version フラグを追加します。</p>
-	<pre><code>//Enable optimistic concurrency by retrieving __version
-todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
-</code></pre>
-	</div>
+	> [AZURE.NOTE] 型指定のないテーブルを使用する場合にオプティミスティック同時実行制御を有効にするには、テーブルの SystemProperties に Version フラグを追加します。  
+	>
+	>````` 
+	//Enable optimistic concurrency by retrieving __version
+	todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 
-2. `TodoItem` クラスに `Version` プロパティを追加することで、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` 例外が通知されます。この例外には、サーバーから取得された最新バージョンの項目が含まれます。MainPage.xaml.cs に、例外を処理するための次のコードを `UpdateToDoItem()` メソッドに追加します。
+
+2.  `TodoItem` クラスに `Version` プロパティを追加することで、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` 例外が通知されます。この例外には、サーバーから取得された最新バージョンの項目が含まれます。MainPage.xaml.cs で、例外を処理するための次のコードを `UpdateToDoItem()` メソッドに追加します。
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -158,7 +158,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
         }
 
 
-3. MainPage.xaml.cs に、`UpdateToDoItem()` で参照される `ResolveConflict()` メソッドの定義を追加します。競合を解決する順序に注意してください。ローカル項目のバージョンをサーバーから取得された更新後のバージョンに設定した後で、ユーザーの決定をコミットします。この順序に従わない場合、競合が次々と発生します。
+3. MainPage.xaml.cs に、 `UpdateToDoItem()` で参照されている `ResolveConflict()` メソッドの定義を追加します。競合を解決する順序に注意してください。ローカル項目のバージョンをサーバーから取得された更新後のバージョンに設定した後で、ユーザーの決定をコミットします。この順序に従わない場合、競合が次々と発生します。
 
 
         private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
@@ -224,7 +224,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 	![][2]
 
 
-6. アプリケーション インスタンス 1 で、最後の項目のテキストを「**Test Write 1**」に更新した後、`LostFocus` イベント ハンドラーによってデータベースが更新されるように、別のテキスト ボックスをクリックします。次のスクリーンショットのようになります。
+6. アプリケーション インスタンス 1 で、最後の項目のテキストを「**Test Write 1**」に更新した後、 `LostFocus` イベント ハンドラーによってデータベースが更新されるように、別のテキスト ボックスをクリックします。次のスクリーンショットのようになります。
 	
 	アプリケーション インスタンス 1	
 	![][3]
@@ -232,7 +232,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 	アプリケーション インスタンス 2	
 	![][2]
 
-7. この時点で、アプリケーション インスタンス 2 内の対応する項目には古いバージョンが含まれています。このアプリケーション インスタンスで、`text` プロパティに「**Test Write 2**」と入力します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーは古い `_version` プロパティでデータベースを更新しようとします。
+7. この時点で、アプリケーション インスタンス 2 内の対応する項目には古いバージョンが含まれています。このアプリケーション インスタンスで、 `text` プロパティに「**Test Write 2**」と入力します。その後で別のテキスト ボックスをクリックすると、 `LostFocus` イベント ハンドラーは古い `_version` プロパティでデータベースを更新しようとします。
 
 	アプリケーション インスタンス 1	
 	![][4]
@@ -254,8 +254,8 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 サーバー スクリプトで書き込み競合を検出し、解決することができます。ユーザーの操作ではなくスクリプト ロジックによって競合を解決できる場合、この方法を使用することをお勧めします。このセクションでは、アプリケーションで使用する TodoItem テーブルにサーバー側スクリプトを追加します。このスクリプトで使用されるロジックでは、次の方法で競合を解決します。
 
-+  TodoItem の ` complete` フィールドが true に設定されている場合、これは完了していると見なされ、`text` を変更できなくなります。
-+  TodoItem の ` complete` フィールドが false のままである場合は、`text` の更新の試行がコミットされます。
++  TodoItem の ` complete` フィールドが true に設定されている場合、これは完了していると見なされ、 `text` を変更できなくなります。
++  TodoItem の ` complete` フィールドが false のままである場合、 `text` の更新の試行がコミットされます。
 
 次の手順で、サーバー更新スクリプトの追加とテストの方法を説明します。
 
@@ -288,7 +288,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 				}
 			}); 
 		}   
-5. 両方のコンピューターで **todolist** アプリケーションを実行します。インスタンス 2 で最後の項目における TodoItem の'text' を変更します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーによってデータベースが更新されます。
+5. 両方のコンピューターで **todolist** アプリケーションを実行します。インスタンス 2 で最後の項目における TodoItem `text` を変更します。その後で別のテキスト ボックスをクリックすると、 `LostFocus` イベント ハンドラーによってデータベースが更新されます。
 
 	アプリケーション インスタンス 1	
 	![][4]
@@ -296,7 +296,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 	アプリケーション インスタンス 2	
 	![][5]
 
-6. アプリケーション インスタンス 1 で、最後の text プロパティに別の値を入力します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーは誤った `__version` プロパティでデータベースを更新しようとします。
+6. アプリケーション インスタンス 1 で、最後の text プロパティに別の値を入力します。その後で別のテキスト ボックスをクリックすると、 `LostFocus` イベント ハンドラーは誤った `__version` プロパティでデータベースを更新しようとします。
 
 	アプリケーション インスタンス 1	
 	![][13]
@@ -320,7 +320,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 	アプリケーション インスタンス 2	
 	![][15]
 
-9. インスタンス 2 で、最後の TodoItem のテキストを更新し、`LostFocus` イベントを発生させます。この項目は既に完了しているため、スクリプトが更新を拒否することで競合が解決されます。 
+9. インスタンス 2 で、最後の TodoItem のテキストを更新し、 `LostFocus` イベントを発生させます。この項目は既に完了しているため、スクリプトが更新を拒否することで競合が解決されます。 
 
 	アプリケーション インスタンス 1	
 	![][17]
@@ -328,11 +328,11 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 	アプリケーション インスタンス 2	
 	![][18]
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Windows ストア アプリケーションでモバイル サービスのデータを操作する際の書き込み競合を処理できるようにする方法について説明しました。次に、データ シリーズの次のチュートリアルのいずれかを行うことをお勧めします。
 
-* [スクリプトでデータ検証および変更]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
 * [ページングを使用したクエリの改善]
@@ -340,10 +340,10 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 データ シリーズを完了した後は、次に示すいずれかの Windows ストア チュートリアルを行うことができます。
 
-* [認証の使用] 
+* [認証の使用]
   <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
  
 <!-- Anchors. -->
@@ -351,7 +351,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 [アプリケーションでの競合検出を有効にする]: #enableOC
 [アプリケーションでデータベース書き込み競合をテストする]: #test-app
 [サーバー スクリプトで競合の解決を自動的に処理する]: #scriptsexample
-[次のステップ]: #next-steps
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
@@ -378,9 +378,9 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 <!-- URLs. -->
 [オプティミスティック同時実行制御]: http://go.microsoft.com/fwlink/?LinkId=330935
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [Azure アカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
-[スクリプトでデータ検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
 [ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
@@ -392,6 +392,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
-[システムのプロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
+[システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

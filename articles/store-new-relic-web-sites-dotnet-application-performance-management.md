@@ -1,12 +1,27 @@
-﻿<properties urlDisplayName="New Relic App Performance Management" pageTitle="Azure の New Relic によるアプリケーション パフォーマンス管理" metaKeywords="new relic Azure, performance azure" description="Azure で New Relic のパフォーマンス監視を使用する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="New Relic Application Performance Management on Azure Websites" authors="new relic" solutions="" manager="carolz" editor="" />
+<properties 
+	pageTitle="Azure の New Relic によるアプリケーション パフォーマンス管理" 
+	description="Azure で New Relic のパフォーマンス監視を使用する方法について説明します。" 
+	services="web-sites" 
+	documentationCenter=".net" 
+	authors="stepsic-microsoft-com" 
+	manager="carolz" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/25/2014" ms.author="stepsic" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="stepsic"/>
 
 
 
 #Azure Web サイトの New Relic によるアプリケーション パフォーマンス管理
 
-このガイドでは、New Relic による世界クラスのパフォーマンスの監視を Azure Web サイトに追加する方法について説明します。アプリケーションに New Relic をすぐに追加できる簡単なプロセスについて説明し、New Relic の機能をいくつか紹介します。New Relic の使い方の詳細については、「[New Relic の使用](#using-new-relic)」を参照してください。
+このガイドでは、New Relic による世界クラスのパフォーマンスの監視を Azure Web サイトに追加する方法について説明します。アプリケーションに New Relic をすぐに追加できる簡単なプロセスについて説明し、
+New Relic の機能をいくつか紹介します。New Relic の使い方の詳細については、「[New Relic の使用](#using-new-relic)」をご覧ください。
 
 New Relic とは
 --
@@ -21,12 +36,9 @@ Azure ストアの New Relic 特別料金
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。
 New Relic Pro は、使用している Web サイト モード (および占有モードを使用している場合はインスタンス サイズ) に基づいて複数のパッケージで提供されます。
 
-料金情報については、[Azure ストアの New Relic のページ](http://www.windowsazure.com/ja-jp/gallery/store/new-relic/new-relic/)」を参照してください。
+料金情報については、[Azure ストアの New Relic のページ](http://www.windowsazure.com/ja-jp/gallery/store/new-relic/new-relic/)をご覧ください。
 
-<div class="dev-callout"> 
-<strong>注:</strong>
-<p>コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。</p>
-</div>
+> [AZURE.NOTE] コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
 
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
@@ -37,9 +49,9 @@ New Relic は、Azure の Web ロール、Worker ロール、および Web サ�
 
 Azure ストアから New Relic に直接サインアップするには、次の簡単な 4 つの手順を実行します。
 
-### 手順 1. Azure ストアからサインアップする
+### 手順 1.Azure ストアからサインアップする
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 3. **[ストア]** をクリックします。
 4. **[サービスの選択]** ダイアログで、**[New Relic]** をクリックし、**[次へ]** をクリックします。
@@ -48,13 +60,13 @@ Azure ストアから New Relic に直接サインアップするには、次の
 8. リージョンの値を選択します (たとえば **[米国西部]**)。
 9. **[次へ]** をクリックします。
 10. **[購入の確認]** ダイアログで、プランと料金情報を確認し、法律条項を確認します。条項に同意したら、**[購入]** をクリックします。
-11. **[購入]** をクリックすると、New Relic アカウントの作成プロセスが開始されます。その状態は、Azure 管理ポータルで監視できます。
-12. New Relic ライセンス キーを取得するには、前の手順で作成したアドオンをクリックし、**[出力値]** をクリックします。 
+11. **[購入]** をクリックすると、New Relic アカウントの作成プロセスが開始します。その状態は、Azure 管理ポータルで監視できます。
+12. New Relic ライセンス キーを取得するには、前の手順で作成したアドオンをクリックし、**[接続文字列]** をクリックします。 
 13. 表示されたライセンス キーをコピーします。このキーは、New Relic NuGet パッケージのインストール時に入力する必要があります。
 
 ### 手順 2.New Relic パッケージをインストールする
 
-New Relic Web サイト エージェントは、NuGet パッケージとして配布され、Visual Studio または WebMatrix を使用して Web サイトに追加できます。Azure Web サイトで Visual Studio や WebMatrix を使用する方法については、「[ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする][vswebsite]」または「[Microsoft WebMatrix を使用して Web サイトを開発してデプロイする][webmatrixwebsite]」を参照してください。
+New Relic Web サイト エージェントは、NuGet パッケージとして配布され、Visual Studio または WebMatrix を使用して Web サイトに追加できます。Azure Web サイトで Visual Studio や WebMatrix を使用する方法については、「[ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする][vswebsite]」または「[Microsoft WebMatrix を使用して Web サイトを開発してデプロイする][webmatrixwebsite]」をご覧ください。
 
 使用している開発環境に応じて次の手順を実行します。
 
@@ -62,7 +74,7 @@ New Relic Web サイト エージェントは、NuGet パッケージとして�
 
 1. Visual Studio の Web サイト ソリューションを開きます。
 
-2. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択し、パッケージ マネージャー コンソールを開きます。プロジェクトをパッケージ マネージャー コンソール ウィンドウの一番上に表示される既定のプロジェクトに設定します。
+2. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックし、パッケージ マネージャー コンソールを開きます。プロジェクトをパッケージ マネージャー コンソール ウィンドウの一番上に表示される既定のプロジェクトに設定します。
 
 	![Package manager console](./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelicAzureNuget04.png)
 
@@ -74,8 +86,7 @@ New Relic Web サイト エージェントは、NuGet パッケージとして�
 
 	![enter license key][vslicensekey]
 
-<!--5. Optional: At the application name prompt, enter your app's name as it will
-   appear in New Relic's dashboard. Or, use your solution name as the default.
+<!--5. 省略可能:アプリケーション名のダイアログで、New Relic のダッシュボードに表示されるアプリケーションの名前を入力します。または、既定のソリューション名を使用します。
 
 	![enter application name](./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelicAzureNuget08.png)-->
 
@@ -101,9 +112,9 @@ New Relic Web サイト エージェントは、NuGet パッケージとして�
 
 ### 手順 3.Web サイトを構成して、アプリケーションを発行する
 
-前の手順でアプリケーションに追加した New Relic パッケージの構成は、Azure Web サイトに**アプリケーション設定**を追加することで行います。これらの設定を追加するには、次の手順を実行します。
+前の手順でアプリケーションに追加した New Relic パッケージの構成は、Azure Web サイトに**アプリケーション設定**を追加して行います。これらの設定を追加するには、次の手順を実行します。
 
-1. [Azure 管理ポータル]にサインインします。(https://manage.windowsazure.com) Web サイトに移動します。
+1. [Azure の管理ポータル](https://manage.windowsazure.com)にサインインして、Web サイトにアクセスします。
 
 2. Web サイトから、**[構成]** を選択します。**[開発者分析]** セクションで、**[アドオン]** または **[カスタム]** を選択します。どちらの方法でも、出力は同じです。ただし、必要とされる入力はわずかに異なります。**[アドオン]** では、現在の New-Relic ライセンスが一覧に表示され、その中から 1 つを選択します。これに対して **[カスタム]** では、手動でライセンス キーを指定する必要があります。
 
@@ -143,10 +154,7 @@ New Relic Web サイト エージェントは、NuGet パッケージとして�
 	</tbody>
 	</table><br/>
 
-	<div class="dev-callout"> 
-	<strong>注</strong> 
-	<p>新しい <strong>アプリケーション設定</strong> が反映されるまで最大 30 秒かかる場合があります。設定をすぐに強制適用するには、Web サイトを再起動します。</p> 
-	</div>
+	> [AZURE.NOTE] 新しい<strong>アプリケーション設定</strong>が反映されるまで最大 30 秒かかる場合があります。設定をすぐに強制適用するには、Web サイトを再起動します。
 
 
 4. Visual Studio または WebMatrix を使用して、アプリケーションを発行します。
@@ -167,9 +175,9 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 ### <a id="using-new-relic"></a>New Relic の使用
 
-[アプリケーション] メニューの一覧からアプリケーションを選択すると、[概要] ダッシュボードに、現在のアプリ サーバーとブラウザーの情報が表示されます。2 つのビューを切り替えるには、**[アプリ サーバー]** または **[ブラウザー]** をクリックします。
+[アプリケーション] メニューの一覧からアプリを選択すると、[概要] ダッシュボードに、現在のアプリ サーバーとブラウザーの情報が表示されます。2 つのビューを切り替えるには、**[アプリ サーバー]** または **[ブラウザー]** をクリックします。
 
- <a href="https://newrelic.com/docs/site/the-new-relic-ui#functions">標準の New Relic UI</a> と <a href="https://newrelic.com/docs/site/the-new-relic-ui#drilldown">ダッシュボードのドリルダウン</a> の機能以外に、アプリケーションの [概要] ダッシュボードには追加の機能があります。
+<a href="https://newrelic.com/docs/site/the-new-relic-ui#functions">標準の New Relic UI</a> と<a href="https://newrelic.com/docs/site/the-new-relic-ui#drilldown">ダッシュボードのドリルダウン</a>機能のほかにも、アプリケーションの [概要] ダッシュボードにはさまざまな機能があります。
 
 <table border="1">
   <thead>
@@ -181,23 +189,23 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
   <tbody>
     <tr>
        <td>選択したアプリケーションのサーバーまたはブラウザーのダッシュボード情報を表示する</td>
-       <td> <b>[アプリ サーバー] </b> または <b> [ブラウザー]</b>  をクリックします。</td>
+       <td><b>[アプリ サーバー]</b> または <b>[ブラウザー]</b> をクリックします。</td>
     </tr>
      <tr>
-       <td>アプリケーションの  <a href="https://newrelic.com/docs/site/apdex" target="_blank">Apdex</a>  スコアのしきい値レベルを表示する</td>
-       <td>[Apdex スコア] の  <b>[?]<b> アイコンをポイントします。</b></b></td>
+       <td>アプリの <a href="https://newrelic.com/docs/site/apdex" target="_blank">Apdex</a> スコアのしきい値レベルを表示する</td>
+       <td>[Apdex スコア] の <b>[?]<b> アイコンをポイントします。</b></b></td>
     </tr>
     <tr>
        <td>世界規模の Apdex の詳細を表示する</td>
-       <td>[概要] の  <b>ブラウザー</b>  ビューで、グローバル Apdex マップの任意の場所をポイントします。<br /><b>ヒント:</b> 選択したアプリケーションの <a href="https://newrelic.com/docs/site/geography" target="_blank">[地理]</a>ダッシュボードに直接移動するには、 <b>グローバル Apdex </b> のタイトルをクリックするか、グローバル Apdex マップの任意の場所をクリックします。</td>
+       <td>[概要] の<b>ブラウザー</b> ビューで、グローバル Apdex マップの任意の場所をポイントします。<br /><b>ヒント:</b>選択したアプリの <a href="https://newrelic.com/docs/site/geography" target="_blank">[地理]</a> ダッシュボードに直接移動するには、<b>グローバル Apdex</b> のタイトルをクリックするか、グローバル Apdex マップの任意の場所をクリックします。</td>
     </tr>
     <tr>
-       <td> <a href="https://docs.newrelic.com/docs/applications-menu/transactions-dashboard" target="_blank">[Web トランザクション] </a> ダッシュボードを表示する</td>
-       <td>アプリケーションの [概要] ダッシュボードの [Web トランザクション] テーブルをクリックします。または、特定の Web トランザクションに関する詳細 ( <a href="https://newrelic.com/docs/site/key-transactions" target="_blank">主要トランザクション</a>など) を表示するには、その名前をクリックします。</td>
+       <td><a href="https://docs.newrelic.com/docs/applications-menu/transactions-dashboard" target="_blank">[Web トランザクション]</a> ダッシュボードを表示する</td>
+       <td>アプリケーションの [概要] ダッシュボードの [Web トランザクション] テーブルをクリックします。または、特定の Web トランザクションに関する詳細 (<a href="https://newrelic.com/docs/site/key-transactions" target="_blank">主要トランザクション</a>など) を表示するには、その名前をクリックします。</td>
     </tr>
     <tr>
-       <td> <a href="https://newrelic.com/docs/site/errors" target="_blank">[エラー] </a> ダッシュボードを表示する</td>
-       <td>アプリケーションの [概要] ダッシュボードの [エラー率] グラフのタイトルをクリックします。<br /><b>ヒント:</b> [エラー] ダッシュボードは、 <b>[アプリケーション]</b> 、(アプリ)、[イベント]、[エラー] の順にクリックして表示することもできます。</td>
+       <td><a href="https://newrelic.com/docs/site/errors" target="_blank">[エラー]</a> ダッシュボードを表示する</td>
+       <td>アプリケーションの [概要] ダッシュボードの [エラー率] グラフのタイトルをクリックします。<br /><b>ヒント:</b>[エラー] ダッシュボードは、<b>[アプリケーション]</b> &gt; (アプリ) &gt; [イベント] &gt; [エラー] の順にクリックして表示することもできます。</td>
     </tr>
     <tr>
        <td>アプリケーションのサーバーの詳細を表示する</td>
@@ -219,16 +227,15 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 ## 次のステップ
 
-詳細については、次に示すその他のリソースを参照してください。
+詳細については、次に示すその他のリソースをご覧ください。
 
- * [Installing the .NET Agent for Azure Web Sites (Azure の Web サイト用の .NET エージェントのインストール)](https://newrelic.com/docs/dotnet/azure-web-sites-beta#manual_install)。New Relic の .NET エージェントのインストール手順 
- * [The New Relic User Interface (New Relic ユーザー インターフェイス)](https://newrelic.com/docs/site/the-new-relic-ui)。 
+ * [Installing the .NET Agent for Azure Web Sites (Azure の Web サイト用の .NET エージェントのインストール)](https://newrelic.com/docs/dotnet/azure-web-sites-beta#manual_install)New Relic の .NET エージェントのインストール手順 
+ * 「[The New Relic User Interface (New Relic ユーザー インターフェイス)](https://newrelic.com/docs/site/the-new-relic-ui)」: 
 New Relic UI の概要、ユーザー権限とプロファイルの設定、標準機能の使用、およびダッシュボードのドリルダウンの詳細
- * [Applications Overview (アプリケーションの概要)](https://newrelic.com/docs/site/applications-overview)。New Relic のアプリケーションの [概要] ダッシュボードを使用する際の機能
- * [Apdex](https://newrelic.com/docs/site/apdex)。Apdex によってエンド ユーザーのアプリケーションに対する満足度がどのように測定されるかに関する概要
- * [Real User Monitoring](https://newrelic.com/docs/features/real-user-monitoring)。RUM を使用して、ユーザーのブラウザーで Web ページの読み込みにかかった時間、アクセス元の地域、 
-および使用しているブラウザーに関する詳細を確認する方法の概要
- * [Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help):New Relic のオンライン ヘルプ センターで利用できるリソース
+ * 「[Applications Overview (アプリケーションの概要)](https://newrelic.com/docs/site/applications-overview)」:New Relic のアプリケーションの [概要] ダッシュボードを使用する際の機能
+ * 「[Apdex](https://newrelic.com/docs/site/apdex)」:Apdex によってエンド ユーザーのアプリケーションに対する満足度がどのように測定されるかに関する概要
+ * 「[Real User Monitoring](https://newrelic.com/docs/features/real-user-monitoring)」:RUM を使用して、ユーザーのブラウザーで Web ページの読み込みにかかった時間、アクセス元の地域、および使用しているブラウザーに関する詳細を確認する方法の概要
+ * 「[Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help)」:New Relic のオンライン ヘルプ センターで利用できるリソース
 
 
 [webmatrixwebsite]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/website-with-webmatrix/
@@ -242,4 +249,5 @@ New Relic UI の概要、ユーザー権限とプロファイルの設定、標�
 [add-on]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nraddon.png
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

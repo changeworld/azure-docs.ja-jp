@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Website with MongoDB" pageTitle="MongoLab で MongoDB を使用した Node.js Web サイト - Azure" metaKeywords="" description="MongoLab にホストされた MongoDB インスタンスに接続する Node.js Azure Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites,virtual-machines" documentationCenter="nodejs" title="Create a Node.js Application on Azure with MongoDB using the MongoLab Add-On" authors="chris@mongolab.com" solutions="" manager="mongolab; partners@mongolab.com" editor="" />
+<properties 
+	pageTitle="MongoLab の MongoDB を使用した Node.js Web サイト - Azure" 
+	description="MongoLab にホストされた MongoDB インスタンスに接続する Node.js Azure Web サイトを作成する方法について説明します。" 
+	services="web-sites, virtual-machines" 
+	documentationCenter="nodejs" 
+	authors="chrischang12" 
+	manager="partners@mongolab.com" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="chris@mongolab.com" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="chris@mongolab.com"/>
 
 
 
@@ -13,23 +27,23 @@
 
 こんにちは、冒険家のみなさん。サービスとしての MongoDB にようこそ。このチュートリアルでは、次のことについて説明します。
 
-1. [データベースの準備][provision] - Azure ストアの [MongoLab](http://mongolab.com) アドオンは、Azure クラウドでホスティングされ MongoLab のクラウド データベース プラットフォームで管理された MongoDB データベースを提供します。
-2. [アプリケーションの作成][create] - タスク一覧を管理する単純な Node.js アプリケーションです。
-3. [アプリケーションの展開][deploy] - 構成フックをいくつか結び付けて、コードを簡単に配置できるようにします。
-4. [データベースの管理][manage] - 最後に、データの検索や視覚化、修正が簡単にできる MongoLab の Web ベースのデータベース管理ポータルを紹介します。
+1. [データベースの準備][準備] - Azure ストアの [MongoLab](http://mongolab.com) アドオンは、Azure クラウドでホスティングされ MongoLab のクラウド データベース プラットフォームで管理された MongoDB データベースを提供します。
+2. [アプリの作成][作成] - タスク一覧を管理する単純な Node.js アプリです。
+3. [アプリの展開][展開] - 構成フックをいくつか結び付けて、コードを簡単に配置できるようにします。
+4. [データベースの管理][管理] - 最後に、データの検索や視覚化、修正が簡単にできる MongoLab の Web ベースのデータベース管理ポータルを紹介します。
 
-このチュートリアルに関して質問がある場合は、いつでも遠慮なく [support@mongolab.com] にメールを送ってください。
+このチュートリアルに関して質問がある場合は、いつでも遠慮なく [support@mongolab.com](mailto:support@mongolab.com) にメールを送ってください。
 
-作業を続行する前に、次のソフトウェアがインストールされていることを確認してください。
+作業を続行する前に、次のソフトウェアがインストールされていることをご確認ください。
 
 * [Node.js] Version 0.10.29+
 
 * [Git]
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## クイック スタート
-Azure ストアにある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][provision]」に進んでください。
+Azure ストアにある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][準備]」に進んでください。
  
 1. Azure ストアを開きます。  
 ![Store][button-store]
@@ -44,8 +58,8 @@ Azure ストアにある程度慣れている場合は、このセクション�
 ![WebSiteConnectionStrings][focus-website-connectinfo]
 6. **[名前]** に「MONGOLAB\_URI」と入力します。
 7. **[値]** に、先にコピーした接続文字列を貼り付けます。
-8. [種類] ボックスの一覧の (既定値の **[SQLAzure]** の代わりに) **[カスタム]** をクリックします。
-9. `npm install mongoose` を実行して、Mongoose (MongoDB ノード ドライバー) を取得します。
+8. [種類] ドロップダウンで (既定値の **[SQLAzure]** の代わりに) **[カスタム]** を選択します。
+9.  `npm install mongoose` を実行して、Mongoose (MongoDB ノード ドライバー) を取得します。
 10. 環境変数から MongoLab 接続 URI を取得して接続するフックをコードに記述します。
 
         var mongoose = require('mongoose');  
@@ -60,9 +74,9 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
 <h2><a name="provision"></a>データベースの準備</h2>
 
-[WACOM.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
+[AZURE.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
 
-<h2><a name="create"></a>アプリケーションの作成</h2>
+<h2><a name="create"></a>アプリの作成</h2>
 
 ここでは、開発環境をセットアップし、Node.js、Express、および MongoDB を使用して、基本的なタスク一覧 Web アプリケーションのコードを作成します。[Express] は node の View Controller フレームワークを提供し、[Mongoose] は node で MongoDB と通信するためのドライバーです。
 
@@ -75,7 +89,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
 		npm install express -g
  
-	`-g` はグローバル モードを表します。これを使用すると、ディレクトリ パスを指定しなくても  <strong>express</strong>  モジュールを使用できます。ここで <strong>エラー:EPERM, chmod '/usr/local/bin/express'</strong> と表示された場合は、 <strong>sudo</strong>  を使用して、より高い権限レベルで npm を実行します。
+	`-g` はグローバル モードを示します。ディレクトリ パスを指定せずに <strong>express</strong> モジュールを利用できるようにするために使用します。"<strong>Error:EPERM, chmod '/usr/local/bin/express'</strong> というエラーが表示された場合は、<strong>sudo</strong> を使用して、より高い権限レベルで npm を実行します。
 
     このコマンドの出力は次のように表示されます。
 
@@ -108,7 +122,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
     express
 
-    このチュートリアルでは Express v4.x.x を使用していることに注意してください。システムに既に Express 3 アプリケーション ジェネレーターがインストールされている場合は、最初にアンインストールする必要があります。
+    このチュートリアルでは Express v4.x.x を使用していることにご注意ください。システムに既に Express 3 アプリケーション ジェネレーターがインストールされている場合は、最初にアンインストールする必要があります。
 
     npm uninstall -g express
 
@@ -351,7 +365,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
 #### app.js の置き換え
 
-1. **tasklist** ディレクトリ内の **app.js** ファイルを、テキスト エディターで開きます。このファイルは、先ほど **express** コマンドを実行することによって作成されたものです。
+1. **tasklist** ディレクトリ内の **app.js** ファイルを、テキスト エディターで開きます。このファイルは、先ほど **express** コマンドを実行したときに作成されたものです。
 2. **app.js** ファイルの先頭に次のコードを追加します。これによって、MongoDB サーバーの接続文字列を使用して **TaskList** が初期化されます。
 
 		var TaskList = require('./routes/tasklist');
@@ -379,7 +393,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
 5. **app.js** ファイルを保存します。
 
-<h2><a name="deploy"></a>アプリケーションの展開</h2>
+<h2><a name="deploy"></a>アプリの展開</h2>
 
 アプリケーションの開発が済んだため、今度はアプリケーションをホスティングする Azure の Web サイトを作成し、その Web サイトを構成して、コードを展開します。このセクションで中心になるのは、MongoDB 接続文字列 (URI) の使用法です。Web サイトではこの URI を設定した環境変数を構成して、コードから URI を分離します。データベースに接続する資格情報を含むため、URI は機密情報として扱う必要があります。
 
@@ -391,7 +405,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 	
 	npm install azure-cli -g
 
-既にAzure デベロッパー センターから  <strong>Azure SDK for Node.js</strong> を <a href="/ja-jp/develop/nodejs/">インストールしてある場合は、</a>コマンド ライン ツールも既にインストールされています。詳細については、「 <a href="/ja-jp/develop/nodejs/how-to-guides/command-line-tools/">Mac および Linux 用 Azure コマンド ライン ツール</a>」を参照してください。
+<a href="/ja-jp/develop/nodejs/">Azure デベロッパー センター</a>から、既に <strong>Azure SDK for Node.js</strong> をインストールしている場合は、コマンド ライン ツールもインストールされています。詳細については、「<a href="/ja-jp/develop/nodejs/how-to-guides/command-line-tools/">Mac および Linux 用 Azure コマンド ライン ツール</a>」をご覧ください。
 
 Azure コマンド ライン ツールは、主に Mac および Linux ユーザー向けに作成されていますが、Node.js に基づいているため、Node を実行できる任意のシステムで動作します。
 
@@ -440,11 +454,11 @@ Azure での Web サイトの作成は簡単です。初めて Azure の Web サ
 7. 前の手順で Web サイトを作成した場合、次のコマンドでプロセスを完了します。ただし、既に 1 つ以上の Azure Web サイトがある場合、前の手順をスキップして、次の同じコマンドを使用して新しい Web サイトを作成できます。**tasklist** プロジェクト ディレクトリから、次のコマンドを実行します。 
 
 		azure site create myuniquesitename --git  
-	"myuniquesitename" は作成する Web サイトの一意のサイト名に置き換えます。このコマンドで Web サイトが作成された場合、サイトが配置されるデータセンターを指定するよう求められます。一意の名前を指定し、使用する MongoLab データベースに地理的に近いデータセンターを選択します。
+	 'myuniquesitename' は作成する Web サイトの一意のサイト名に置き換えます。このコマンドで Web サイトが作成された場合、サイトが配置されるデータセンターを指定するよう求められます。一意の名前を指定し、使用する MongoLab データベースに地理的に近いデータセンターを選択します。
 	
 	`--git` パラメーターを指定すると、次のものが作成されます。
 	A. **tasklist** フォルダー内のローカル Git リポジトリ (存在しない場合)。
-	A. 'azure' という名前の [Git リモート]。アプリケーションを Azure に発行するために使用されます。
+	 'azure' という名前の [Git リモート]。アプリケーションを Azure に発行するために使用されます。
 	A. [iisnode.yml] ファイル。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。
 	A. .gitignore ファイル。node-modules フォルダーが .git に発行されることを防止します。  
 	  
@@ -489,28 +503,28 @@ Azure での Web サイトの作成は簡単です。初めて Azure の Web サ
 		To https://username@mongodbtasklist.azurewebsites.net/MongoDBTasklist.git
  		 * [new branch]      master -> master
  
-You're almost done!
+あともう少しで終了です。
 
 ### 環境の構成
 コード内の process.env.CUSTOMCONNSTR\_MONGOLAB\_URI を覚えていますか。この環境変数に、MongoLab データベースのプロビジョニング中に、Azure に対して指定された値を入力できます。
 
 #### MongoLab 接続文字列を取得する
 
-[WACOM.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
+[AZURE.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
 
 #### Web サイトの環境変数に接続文字列を追加する
 
-[WACOM.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
+[AZURE.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
 
 ## 成功です。
 
-プロジェクト ディレクトリから  `azure site browse` を実行して自動的にブラウザーを開くか、または、ブラウザーを開いて、手動で Web サイト URL (myuniquesite.azurewebsites.net) に移動します。
+プロジェクト ディレクトリから  `azure site browse` を実行して自動的にブラウザーを開くか、ブラウザーを開いて、手動で Web サイト URL (myuniquesite.azurewebsites.net) に移動します。
 
 ![A webpage displaying an empty tasklist][node-mongo-finished]
 
 <h2><a name="manage"></a>データベースの管理</h2>
 
-[WACOM.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
+[AZURE.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
 
 ご利用ありがとうございます。これで、MongoLab がホスティングする MongoDB データベースに支えられた Node.js アプリケーションが公開されました。MongoLab データベースを利用していて、データベースに関する疑問または不明点がある場合や、MongoDB や node ドライバーそのものに関するヘルプが必要な場合は、[support@mongolab.com](mailto:support@mongolab.com) にお問い合わせください。それではお元気で。
 
@@ -524,10 +538,10 @@ You're almost done!
 [button-connectioninfo]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/button-connectioninfo.png
 [screen-connectioninfo]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/dialog-mongolab_connectioninfo.png
 [focus-website-connectinfo]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/focus-mongolab-websiteconnectionstring.png
-[provision]: #provision
-[create]: #create
-[deploy]: #deploy
-[manage]: #manage
+[準備]: #provision
+[作成]: #create
+[展開]: #deploy
+[管理]: #manage
 [Node.js]: http://nodejs.org
 [MongoDB]: http://www.mongodb.org
 [Git]: http://git-scm.com
@@ -553,4 +567,5 @@ You're almost done!
 
 
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

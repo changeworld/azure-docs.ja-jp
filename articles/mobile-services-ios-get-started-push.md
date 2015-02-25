@@ -1,8 +1,8 @@
-﻿<properties urlDisplayName="Get Started with Push (iOS)" pageTitle="プッシュ通知の使用 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します (従来のプッシュ)。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" services="mobile-services" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services (legacy push)" solutions="" manager="dwrede" editor="" authors="krisragh" />
+﻿<properties pageTitle="プッシュ通知の使用 (iOS) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します (従来のプッシュ)。" services="mobile-services" documentationCenter="ios" manager="dwrede" editor="" authors="krisragh"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh"/>
 
-# Mobile Services アプリへのプッシュ通知の追加 (従来のプッシュ)
+# Mobile Services アプリケーションにプッシュ通知を追加する (従来のプッシュ)
 
 <div class="dev-center-tutorial-selector sublanding">
     <a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows ストア C#</a>
@@ -18,16 +18,16 @@
 このトピックでは、Azure Mobile Services を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple Push Notification Service (APNS) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
 
->[WACOM.NOTE]このトピックは、まだ Notification Hubs 統合を使用するように<em>アップグレードされていない</em>、<em>既存の</em>モバイル サービスを対象とします。<em>新しい</em>モバイル サービスを作成した場合は、この統合機能は自動的に有効になります。新しいモバイル サービスについては、「[プッシュ通知の使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/)」を参照してください。
+>[AZURE.NOTE]このトピックは、まだ Notification Hubs 統合を使用するように<em>アップグレードされていない</em>、<em>既存の</em>モバイル サービスを対象とします。<em>新しい</em>モバイル サービスを作成すると、この統合機能は自動的に有効になります。新しいモバイル サービスについては、「[プッシュ通知の使用]」(/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/) を参照してください。
 >
->Mobile Services は Azure Notification Hubs に統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。<em>可能な限り、既存のモバイル サービスをアップグレードして通知ハブを使用するようにしてください</em>。アップグレードしたら、「[Get started with push notifications (通知ハブの使用)](/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/)」を参照してください。
+>Mobile Services は Azure Notification Hubs に統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。<em>可能な場合には、既存のモバイル サービスをアップグレードして Notification Hubs を使用することをお勧めします</em>。アップグレード後は、このバージョンの「[プッシュ通知の使用]」(/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/) を参照してください。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
 1. [証明書の署名要求を生成する]
 2. [アプリケーションを登録し、プッシュ通知を有効にする]
-3. [アプリケーションのプロビジョニング プロファイルを作成する]
-3. [モバイル サービスを構成する]
+3. [アプリケーションのプロビジョニング ファイルを作成する]
+3. [Mobile Services を構成する]
 4. [アプリケーションにプッシュ通知を追加する]
 5. [プッシュ通知を送信するようにスクリプトを更新する]
 6. [データを挿入して通知を受け取る]
@@ -39,15 +39,15 @@
 + iOS 5.0 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 
-   > [WACOM.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、[Mobile Services の使用]に関するチュートリアルを完了している必要があります。
 
-[WACOM.INCLUDE [Apple プッシュ通知を有効にする](../includes/enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
 
 ## プッシュ要求を送信するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
+[AZURE.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
 
 ## アプリケーションにプッシュ通知を追加する
 
@@ -55,7 +55,7 @@
 
         @property (strong, nonatomic) NSString *deviceToken;
 
-    > [WACOM.NOTE] モバイル サービスで動的スキーマが有効になっていると、このプロパティを含む新しい項目が挿入されたときに、新しい "deviceToken" 列が自動的に**TodoItem** テーブルに追加されます。
+    > [AZURE.NOTE] モバイル サービスで動的スキーマが有効になっていると、このプロパティを含む新しい項目が挿入されたときに、新しい 'deviceToken' 列が自動的に **TodoItem** テーブルに追加されます。
 
 2. QSAppDelegate.m で、実装内の次のハンドラー メソッドを置き換えます。
 
@@ -109,7 +109,7 @@
 
         NSDictionary *item = @{ @"text" : itemText.text, @"complete" : @(NO) };
 
-   これを次のコードに置き換えます。
+   Replace this with the following code:
 
         // Get a reference to the AppDelegate to easily retrieve the deviceToken
         QSAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -121,9 +121,9 @@
             @"deviceToken" : delegate.deviceToken
         };
 
-   	これによって、デバイス トークンを取得するための参照が **QSAppDelegate** に追加され、要求ペイロードがそのデバイス トークンを含めるように変更されます。
+   	これによって、デバイス トークンを取得するための参照が **QSAppDelegate** に追加され、要求ペイロードがそのデバイス トークンを含むように変更されます。
 
-   	> [WACOM.NOTE] このコードを、<strong>addItem</strong> メソッドへの呼び出しの前に追加する必要があります。
+   	> [AZURE.NOTE] このコードを、<strong>addItem</strong> メソッドへの呼び出しの前に追加する必要があります。
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
@@ -155,10 +155,10 @@
             }, 2500);
         }
 
-   	これで、新しい insert スクリプトが登録されます。このスクリプトは [apns オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
+   	これで、新しい挿入スクリプトが登録されます。このスクリプトは [apns オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
 
-   	> [WACOM.NOTE] このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
+   	> [AZURE.NOTE] このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
 
 ## アプリケーションでプッシュ通知をテストする
 
@@ -166,9 +166,9 @@
 
   	![][23]
 
-    > [WACOM.NOTE]  アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要なのは、初めてアプリケーションを実行するときだけです。
+    > [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「新しい Mobile Services タスク」) を入力し、プラス記号 (**+**) のアイコンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「新しい Mobile Services タスク」) を入力し、プラス (**+**) アイコンをクリックします。
 
   	![][24]
 
@@ -189,8 +189,8 @@
 <!-- Anchors. -->
 [証明書の署名要求を生成する]: #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
-[モバイル サービスを構成する]: #configure
+[アプリケーションのプロビジョニング ファイルを作成する]: #profile
+[Mobile Services を構成する]: #configure
 [プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
 [アプリケーションにプッシュ通知を追加する]: #add-push
 [データを挿入して通知を受け取る]: #test
@@ -246,3 +246,6 @@
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
+
+
+<!--HONumber=42-->

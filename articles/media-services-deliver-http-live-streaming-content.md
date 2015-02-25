@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Deliver Apple HTTP Live Streaming (HLS)" pageTitle="Apple HTTP ライブ ストリーミング (HLS) を配信する方法 - Azure" metaKeywords="" description="Media Services の配信元サーバー上にある Apple HTTP ライブ ストリーミング (HLS) コンテンツへのロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Deliver Apple HLS streaming content" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Apple HTTP ライブ ストリーミング (HLS) を配信する方法 - Azure" 
+	description="Media Services の配信元サーバー上にある Apple HTTP ライブ ストリーミング (HLS) コンテンツへのロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/30/2014" 
+	ms.author="juliako"/>
 
 
 
@@ -8,7 +22,7 @@
 
 <h1>方法:Apple HLS ストリーミング コンテンツを配信する</h1>
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: 方法: ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content/)」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ストリーミング コンテンツを配信する方法](../media-services-deliver-streaming-content/)に関するページを参照してください。
 
 このトピックでは、ロケーターを作成して、メディア サービスの配信元サーバー上にある Apple HTTP ライブ ストリーミング (HLS) コンテンツをストリーミングする方法について説明します。その方法を使用すると、Apple HLS コンテンツの URL を構築して Apple iOS デバイスに提供し、再生することができます。ロケーター URL を構築する方法は基本的には変わりません。配信元サーバー上の Apple HLS ストリーミング アセット パスに対するロケーターを構築した後、ストリーミング コンテンツのマニフェストにリンクした完全な URL を構築します。
 
@@ -85,6 +99,5 @@ static ILocator GetStreamingHLSOriginLocator( string targetAssetID)
 [Media Services SDK for .NET の概要]: http://go.microsoft.com/fwlink/?linkid=252966
 [Azure Media Services REST API によるアプリケーション構築]: http://go.microsoft.com/fwlink/?linkid=252967
 [Media Services SDK for .NET によるアプリケーション構築]: http://go.microsoft.com/fwlink/?linkid=247821
-[Media Services フォーラム]: http://social.msdn.microsoft.com/Forums/en-US/MediaServices/threads
-
-<!--HONumber=35.1-->
+[Media Services フォーラム]: http://social.msdn.microsoft.com/Forums/ja-jp/MediaServices/threads
+\n<!--HONumber=42-->

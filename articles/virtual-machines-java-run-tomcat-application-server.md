@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Tomcat on Virtual Machine" pageTitle="仮想マシンで Tomcat を実行する - Azure チュートリアル" metaKeywords="Azure vm, creating vm Tomcat, configuring vm Tomcat" description="Windows 仮想マシンを作成し、Apache Tomcat アプリケーション サーバーを実行できるように仮想マシンを構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a Java application server on a virtual machine" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+﻿<properties pageTitle="仮想マシンで Tomcat を実行する - Azure チュートリアル" description="Windows 仮想マシンを作成し、Apache Tomcat アプリケーション サーバーを実行できるように仮想マシンを構成する方法について説明します。" services="virtual-machines" documentationCenter="java" authors="rmcmurray" manager="wpickett" editor="mollybos"/>
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm"/>
 
 # Java アプリケーション サーバーを仮想マシンで実行する方法
 
@@ -18,31 +18,31 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 
 ![Virtual machine running Apache Tomcat][virtual_machine_tomcat]
 
-[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
+[AZURE.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## 仮想マシンを作成するには
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
-2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。
 **[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
 4. **[次へ]** をクリックします。
 5. <strong>[仮想マシンの構成]</strong> ダイアログで次の作業を行います。
-    1.仮想マシンの名前を指定します。
-    2.仮想マシンに使用するサイズを指定します。
-    3.**[ユーザー名]** フィールドに、管理者の名前を入力します。この名前と次に入力するパスワードは忘れないでください。仮想マシンにリモート ログインするときに使用します。
-    4.**[新しいパスワード]** フィールドにパスワードを入力し、**[確認]** フィールドに再びパスワードを入力します。これは、Administrator アカウントのパスワードです。
-    5.**[次へ]** をクリックします。
-6. 次の [ <strong>仮想マシンの構成</strong> ] ダイアログで次の操作を実行します。
-    1.**[クラウド サービス]** には、既定の **[新しいクラウド サービスの作成]** を使用します。
-    2.**[クラウド サービス DNS 名]** の値は cloudapp.net 全体で一意であることが必要です。一意であることを示す表示になるように、必要に応じてこの値を修正してください。
-    2.リージョン、アフィニティ グループ、または仮想ネットワークを指定します。このチュートリアルでは、**[米国西部]** などのリージョンを指定します。
-    2.**[ストレージ アカウント]** で、**[自動的に生成されたストレージ アカウントを使用]** を選択します。
-    3.**[可用性セット]** は、**[(なし)]** を選択します。
-    4.**[次へ]** をクリックします。
-7. 最後の [ <strong>仮想マシンの構成</strong> ] ダイアログで次の操作を実行します。
-    1.既定のエンドポイント エントリをそのまま使用します。
-    2.**[完了]** をクリックします。
+    1. 仮想マシンの名前を指定します。
+    2. 仮想マシンに使用するサイズを指定します。
+    3. **[ユーザー名]** フィールドに、管理者の名前を入力します。この名前と次に入力するパスワードは忘れないでください。仮想マシンにリモート ログインするときに使用します。
+    4. **[新しいパスワード]** フィールドにパスワードを入力し、**[確認]** フィールドに再びパスワードを入力します。これは、Administrator アカウントのパスワードです。
+    5. **[次へ]** をクリックします。
+6. <strong>[仮想マシンの構成]</strong> ダイアログで次の作業を行います。
+    1. **[クラウド サービス]** には、既定の **[新しいクラウド サービスの作成]** を使用します。
+    2. **[クラウド サービス DNS 名]** の値は cloudapp.net 全体で一意であることが必要です。一意であることを示す表示になるように、必要に応じてこの値を修正してください。
+    2. リージョン、アフィニティ グループ、または仮想ネットワークを指定します。このチュートリアルでは、**[米国西部]** などのリージョンを指定します。
+    2. **[ストレージ アカウント]** で、**[自動的に生成されたストレージ アカウントを使用]** を選択します。
+    3. **[可用性セット]** は、**[(なし)]** を選択します。
+    4. **[次へ]** をクリックします。
+7. 最後の <strong>[仮想マシンの構成]</strong> ダイアログで次の作業を行います。
+    1. 既定のエンドポイント エントリをそのまま使用します。
+    2. **[完了]** をクリックします。
 
 ## 仮想マシンにリモート ログインするには
 
@@ -59,7 +59,7 @@ Java アプリケーション サーバーを仮想マシンにコピーする�
 
 このチュートリアルでは、Tomcat をインストールします。
 
-1. 仮想マシンにログオンした状態のまま、<http://tomcat.apache.org/download-70.cgi> のブラウザー セッションを開きます。
+1. 仮想マシンへのログオン状態のまま、<http://tomcat.apache.org/download-70.cgi> のブラウザー セッションを開きます。
 2. **32 ビット/64 ビット Windows サービスのインストーラー**のリンクをダブルクリックします。この場合、Tomcat は Windows サービスとしてインストールされます。
 3. 確認メッセージが表示されたら、インストーラーを実行します。
 4. **Apache Tomcat Setup** ウィザードの指示に従って、Tomcat をインストールします。このチュートリアルでは、既定値のまま進めて問題ありません。**[Completing the Apache Tomcat Setup Wizard]** ダイアログが表示されたら、必要に応じて **[Run Apache Tomcat]** チェック ボックスをオンにすることにより、Tomcat を起動することができます。**[Finish]** をクリックして Tomcat のセットアップ プロセスを完了します。
@@ -72,7 +72,7 @@ Java アプリケーション サーバーを仮想マシンにコピーする�
 Tomcat が実行されていることを外部コンピューターから確認するには、エンドポイントを作成してポートを開く必要があります。
 
 ## 仮想マシンのエンドポイントを作成するには
-1. [管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [管理ポータル](https://manage.windowsazure.com) にログインします。
 2. **[仮想マシン]** をクリックします。
 3. Java アプリケーション サーバーを実行している仮想マシンの名前をクリックします。
 4. **[エンドポイント]** をクリックします。
@@ -83,18 +83,18 @@ Tomcat が実行されていることを外部コンピューターから確認�
     2. プロトコルに **TCP** を指定します。
     3. [パブリック ポート] に **80** を指定します。
     4. [プライベート ポート] に **8080** を指定します。
-    5. **[完了]** をクリックしてダイアログを閉じます。これでエンドポイントが作成されます。
+    5. **[完了]** ボタンをクリックしてダイアログを閉じます。これでエンドポイントが作成されます。
 
 ## ファイアウォールで仮想マシン用にポートを開くには
 1. 仮想マシンにログインします。
-2. Windows の **[スタート]** をクリックします。
+2. **Windows の [スタート]** をクリックします。
 3. **[コントロール パネル]** をクリックします。
 4. **[システムとセキュリティ]**、**[Windows ファイアウォール]**、**[詳細設定]** の順にクリックします。
 5. **[受信の規則]**、**[新しい規則]** の順にクリックします。
 
  ![New inbound rule][NewIBRule]
 
-6. 新しい規則として、**[規則の種類]** の **[ポート]** を選択し、**[次へ]** をクリックします。
+6. 新しい規則として、**[規則の種類]** の **[ポート]** をクリックし、**[次へ]** をクリックします。
 
  ![New inbound rule port][NewRulePort]
 
@@ -125,7 +125,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
     自動的に開始する設定の利点は、仮想マシンが再起動された場合 (再起動を伴うソフトウェア更新プログラムのインストール後など) に、Tomcat を再開できる点です。
 
 ## 次のステップ
-* Azure ストレージ、Service Bus、SQL データベースなど、Java アプリケーションに含めることのできる他のサービスについて確認してください。詳細については、<http://www.windowsazure.com/ja-jp/develop/java/> を参照してください。
+* Azure のストレージ、Service Bus、SQL データベースなど、Java アプリケーションに含めることのできる他のサービスについて確認してください。詳細については、<http://www.windowsazure.com/ja-jp/develop/java/> を参照してください。
 
 [virtual_machine_tomcat]: ./media/virtual-machines-java-run-tomcat-application-server/WA_VirtualMachineRunningApacheTomcat.png
 
@@ -146,4 +146,5 @@ Tomcat が実行されていることを外部コンピューターから確認�
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

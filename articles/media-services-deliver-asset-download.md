@@ -1,17 +1,17 @@
-﻿<properties urlDisplayName="Delivering Media Assets" pageTitle="メディア アセットを配信する方法 - Azure" metaKeywords="" description="Azure で Media Services にアップロードされたメディア アセットを配信するオプションについて説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Deliver an Asset by Download" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="メディア アセットを配信する方法 - Azure" description="Azure で Media Services にアップロードされたメディア アセットを配信するオプションについて説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
 
 
 
 <h1>方法:ダウンロードによってアセットを配信する</h1>
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: ストレージ内のアセットを管理する](../media-services-manage-assets/)」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[アセットを管理する方法](../media-services-manage-assets/)に関するページを参照してください。
 
 このトピックでは、メディア サービスにアップロードされたメディア アセットを配信するためのオプションについて説明します。メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。メディア アセットをダウンロードするか、ロケーターを使用してアクセスすることができます。メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。パフォーマンスとスケーラビリティを高めるために、Azure CDN などのコンテンツ配信ネットワーク (CDN: Content Delivery Network) を使用してコンテンツを配信することもできます。
 
-この例では、メディア アセットをメディア サービスからダウンロードする方法を紹介しています。このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、**OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
+この例では、メディア アセットをメディア サービスからダウンロードする方法を紹介しています。このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、**OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。この  例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
 
 <pre><code> 
 // Download the output asset of the specified job to a local folder.
@@ -38,7 +38,7 @@ static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
         ParallelTransferThreadCount = 20
     };
 
-    var downloadTasks = new List<Task>();
+    var downloadTasks = new List&lt;Task&gt;();
     foreach (IAssetFile outputFile in outputAsset.AssetFiles)
     {
         // Use the following event handler to check download progress.
@@ -71,6 +71,7 @@ static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
 </ul>
 
 <h2>次のステップ</h2>
-このトピックでは、Azure ストレージからのアセットのダウンロードについて説明しました。アセットを配信する他の方法の情報については、「[方法: ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content/) 」トピックを参照してください。
+このトピックでは、Azure ストレージからのアセットのダウンロードについて説明しました。アセットを配信する他の方法の情報については、[ストリーミング コンテンツを配信する方法](../media-services-deliver-streaming-content/)に関するページを参照してください。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

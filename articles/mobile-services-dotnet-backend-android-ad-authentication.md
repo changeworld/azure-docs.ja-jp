@@ -1,6 +1,6 @@
-﻿<properties linkid="develop-mobile-tutorials-sso-android" urlDisplayName="Active Directory SSO Authentication with ADAL" pageTitle="Active Directory によるログインとリソースへのアクセス (Android) | モバイル デベロッパー センター" metaKeywords="" description="Active Directory を使用して認証をアプリに追加する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Authenticate your app with Active Directory" authors="wesmc,mahender" />
+﻿<properties pageTitle="Active Directory によるログインとリソースへのアクセス (Android) | モバイル デベロッパー センター" description="Active Directory を使用して認証をアプリに追加する方法を説明します。" documentationCenter="android" authors="mattchenderson" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.topic="article" ms.date="11/21/2014" ms.author="mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.topic="article" ms.date="11/21/2014" ms.author="mahender"/>
 
 # Active Directory によるアプリの認証
 
@@ -11,9 +11,9 @@
 <a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-ad-authentication" title="Android" class="current">Android</a>
 </div>
 
-Chris Risner のチュートリアル「[Accessing Resources Secured by Azure Active Directory with iOS and Android (iOS および Android で Azure Active Directory によってリソースに安全にアクセスする)]」に従って、Active Directory を使用してアプリを認証し、リソースにアクセスする方法を説明します。
+Chris Risner のチュートリアルの [iOS および Android で Azure Active Directory によってリソースに安全にアクセスする方法]に関するページに従って、Active Directory を使用してアプリを認証し、リソースにアクセスする方法を説明します。
 
 <!-- URLs. -->
-[Accessing Resources Secured by Azure Active Directory with iOS and Android (iOS および Android で Azure Active Directory によってリソースに安全にアクセスする)]: http://chrisrisner.com/Accessing-Resources-Secured-by-Azure-Active-Directory-with-iOS-and-Android
+[iOS および Android で Azure Active Directory によってリソースに安全にアクセスする方法]: http://chrisrisner.com/Accessing-Resources-Secured-by-Azure-Active-Directory-with-iOS-and-Android
 
-<!--HONumber=35.1-->
+<!--HONumber=42-->

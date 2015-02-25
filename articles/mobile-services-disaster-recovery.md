@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Recover your mobile service in the event of a disaster" pageTitle="障害発生時のモバイル サービスの復旧 - Azure Mobile Services" metaKeywords="" description="障害発生時にモバイル サービスを復旧する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Recover your mobile service in the event of a disaster" authors="brettsam" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="障害発生時のモバイル サービスの復旧 - Azure Mobile Services" description="障害発生時にモバイル サービスを復旧する方法について説明します。" services="mobile-services" documentationCenter="" authors="brettsam" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="brettsam" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="brettsam"/>
 
 # 障害発生時のモバイル サービスの復旧
 
@@ -10,8 +10,8 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 
 可用性の問題が発生した場合に簡単に復旧するには、あらかじめ対応する準備を整えておきます。 
 
-+ **Azure のモバイル サービスの SQL データベースのデータをバックアップする**
-	<br/>モバイル サービス アプリケーションのデータは Azure SQL データベースに格納されています。「[Windows Azure SQL データベースにおけるビジネス継続性]」の説明に従ってバックアップすることをお勧めします。
++ **Azure Mobile Services の SQL Database のデータをバックアップする**
+	<br/>モバイル サービス アプリケーションのデータは Azure SQL データベースに格納されています。「[Azure SQL データベースにおけるビジネス継続性]」の説明に従ってバックアップすることをお勧めします。
 + **モバイル サービス スクリプトをバックアップする**
 	<br/>[Team Foundation Service] や [GitHub] などのソース管理システムにモバイル サービス スクリプトを保存し、モバイル サービス自体でのコピーのみに頼らないようにすることをお勧めします。スクリプトは、モバイル サービスの[ソース管理機能]または [Azure コマンド ライン ツール]を使用して、Azure ポータルからダウンロードできます。ポータルで "プレビュー" というラベルが付いている機能には、細心の注意を払ってください。それらのスクリプトの復旧は保証されておらず、独自のソース管理の元のスクリプトから復旧することが必要になる場合があります。
 + **セカンダリ モバイル サービスを占有に設定する**
@@ -23,7 +23,7 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 次の状況は、復旧操作が必要となる可能性がある問題を示しています。
 
 + モバイル サービスに接続されているアプリケーションが長時間にわたってモバイル サービスと通信できない。
-+ [Azure ポータル]で、モバイル サービスの状態が "**Unhealthy**" と表示されている。
++ [Azure ポータル]で、モバイル サービスの状態が "**異常**" と表示されている。
 + Azure ポータルで、モバイル サービスのどのタブの上部にも "**異常**" というバナーが表示され、管理操作を実行するとエラー メッセージが生成される。
 + [Azure サービス ダッシュボード]に可用性の問題が示されている。
 
@@ -39,16 +39,14 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 
 2. 既にセカンダリ モバイル サービスを予約している場合は、この手順をスキップできます。
 
-   セカンダリ モバイル サービスをまだ占有に設定していない場合は、Azure の別のリージョンにセカンダリ モバイル サービスを 1 つ作成します。モードをプライマリ サービスのモードと同じか、それよりも高く設定します (プライマリ サービスが共有モードの場合、セカンダリ サービスは共有と占有のどちらかに設定できます。ただし、プライマリが占有の場合、セカンダリも占有である必要があります)。
+   セカンダリ モバイル サービスをまだ占有に設定していない場合は、Azure の別のリージョンにセカンダリ モバイル サービスを 1 つ作成します。モードをプライマリ サービスのモードと同じか、それよりも高く設定します(プライマリ サービスが共有モードの場合、セカンダリ サービスは共有と占有のどちらかに設定できます。ただし、プライマリが占有の場合、セカンダリも占有である必要があります)。
 
-3. 「[Automate mobile services with command-line tools (コマンド ライン ツールを使用したモバイル サービスの自動化)]」の説明に従って、サブスクリプションを操作できるように Azure コマンド ライン ツールを構成します。
+3. [コマンド ライン ツールを使用したモバイル サービスの自動化]に関するページの説明に従って、サブスクリプションを操作できるように Azure コマンド ライン ツールを構成します。
 
 4. これで、セカンダリ サービスを使用して、プライマリ サービスを復旧できます。
 
-    <div class="dev-callout"><b>重要</b>
-	<p>この手順のコマンドを実行すると、セカンダリ サービスの容量を使用してプライマリ サービスを復旧できるように、セカンダリ サービスは削除されます。スクリプトと設定を保持する場合は、コマンドを実行する前に、バックアップすることをお勧めします。</p>
-    </div>
-
+    > [AZURE.IMPORTANT] この手順のコマンドを実行すると、セカンダリ サービスの容量を使用してプライマリ サービスを復旧できるように、セカンダリ サービスは削除されます。スクリプトと設定を保持する場合は、コマンドを実行する前に、バックアップすることをお勧めします。
+    
    準備ができたら、次のコマンドを実行します。
 
 		azure mobile recover PrimaryService SecondaryService
@@ -60,9 +58,7 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 		info:    mobile recover command OK
 
 
-	<div class="dev-callout"><b>注</b>
-	<p>コマンドが完了してからポータルに変更が反映されるまでに数分かかる場合があります。</p>
-    </div>
+	> [AZURE.NOTE] コマンドが完了してからポータルに変更が反映されるまでに数分かかる場合があります。
 
 5. すべてのスクリプトをソース管理内の元のスクリプトと比較して、正しく復旧されていることを確認します。ほとんどの場合、スクリプトはデータが失われることなく自動的に復旧されます。ただし、相違がある場合は、そのスクリプトを手動で復旧できます。
 
@@ -77,11 +73,14 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure SQL データベースにおけるビジネス継続性]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh852669.aspx
+[Azure SQL データベースの継続性]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh852669.aspx
 [Team Foundation Service]: http://tfs.visualstudio.com/
 
 [ソース管理機能]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
-[コマンド ライン ツールの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
+[Azure コマンド ライン ツール]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
 [Azure ポータル]: http://manage.windowsazure.com/
 [Azure サービス ダッシュボード]: http://www.windowsazure.com/ja-jp/support/service-dashboard/
 [コマンド ライン ツールを使用したモバイル サービスの自動化]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
+
+
+<!--HONumber=42-->

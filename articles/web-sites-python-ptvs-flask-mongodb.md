@@ -1,19 +1,33 @@
-﻿<properties linkid="web-sites-python-ptvs-flask-mongodb" title="Flask and MongoDB on Azure with Python Tools 2.1 for Visual Studio" pageTitle="Azure における Flask と MongoDB (Python Tools 2.1 for Visual Studio の使用方法)" description="MongoDB データベース インスタンスにデータを格納する、Web サイトにデプロイ可能な Flask アプリケーションを Python Tools for Visual Studio を使用して作成する方法について説明します。" metaKeywords="" services="" solutions="" documentationCenter="Python" authors="huvalo" videoId="" scriptId="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Azure における Flask と MongoDB (Python Tools 2.1 for Visual Studio の使用方法)" 
+	description="Python Tools for Visual Studio を使って、MongoDB データベース インスタンスにデータを保存する Flask アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。" 
+	services="" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="10/10/2014" ms.author="huvalo" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="huvalo"/>
 
 
 
 
 # Azure における Flask と MongoDB (Python Tools 2.1 for Visual Studio の使用方法)
 
-このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ]でもご覧いただけます(https://www.youtube.com/watch?v=eql-crFgrAE)。
+このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=eql-crFgrAE)でもご覧いただけます。
 
 リポジトリの種類 (メモリ内、Azure テーブル ストレージ、MongoDB) を簡単に切り替えることができるよう、この投票アプリケーションのリポジトリは抽象化されています。
 
 ここでは、Azure 上のいずれかのホステッド MongoDB サービスを使用する方法、MongoDB を使用するためのアプリケーションの構成方法、アプリケーションを Azure Websites に発行する方法について説明します。
 
-MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]を参照してください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
+MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]をご覧ください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
 
 + [前提条件](#prerequisites)
 + [プロジェクトを作成する](#create-the-project)
@@ -33,7 +47,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
  - [Python 2.7 (32 ビット)][] または [Python 3.4 (32 ビット)][]
  - [RoboMongo][] (任意)
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##<a name="create-the-project"></a>プロジェクトを作成する
 
@@ -67,7 +81,7 @@ Azure 上で動作する独自の仮想マシンを作成し、MongoDB をイン
 
 MongoLab で次の手順に従い、無料評価版を作成できます。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure 管理ポータル][]にログインします。
 
 1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -111,7 +125,7 @@ MongoLab で次の手順に従い、無料評価版を作成できます。
 
 1.  MongoDB リポジトリを実装するコードは、**models/mongodb.py** にあります。
 
-1.  <kbd>F5</kbd> キーでアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが MongoDB にシリアル化されます。
+1.  <kbd>F5</kbd> を使用してアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが MongoDB にシリアル化されます。
 
 1.  アプリケーションの **[About]** ページに移動して、**MongoDB** リポジトリが使用されていることを確認します。
 
@@ -123,15 +137,15 @@ MongoDB データベースの照会と編集には、[RoboMongo][] などのア�
 
 1.  新しい接続を作成します。前のセクションで取得した **MONGOLAB\_URI** が必要となります。
 
-    Note the format of the URI: `mongodb://<name>:<password>@<address>:<port>/<name>`
+    URI の形式は次のとおりです。 `mongodb://<name>:<password>@<address>:<port>/<name>`
 
-    この名前は、Azure でのサービスの作成時に入力した名前と一致している必要があります。この名前が、データベース名とユーザー名の両方に使用されます。
+    名前は、Azure でサービスを作成したときに入力した名前と一致します。この名前が、データベース名とユーザー名の両方に使用されます。
 
-1.  接続ページの **[Name]** に、この接続の名前を設定します。**[Address]** フィールドと **[Port]** フィールドにも、**MONGOLAB\_URI** に基づく *address* と *port* を設定します。
+1.  接続ページの **[Name]** に、この接続の名前を設定します。**[Address]** フィールドと **[Port]** フィールドにも、**MONGOLAB\_URI** に基づく  *address* と  *port* を設定します。
 
   	![Connection Settings Dialog](./media/web-sites-python-ptvs-flask-mongodb/PollsCommonRobomongoCreateConnection1.png)
 
-1.  認証ページの **[Database]** と **[User name]** に、**MONGOLAB\_URI** に基づく *name* を設定します。**[Password]** にも、**MONGOLAB\_URI** に基づく *password* を設定します。
+1.  認証ページの **[Database]** と **[User name]** に、**MONGOLAB\_URI** に基づく  *name* を設定します。**[Password]** にも、**MONGOLAB\_URI** に基づく  *password* を設定します。
 
   	![Connection Settings Dialog](./media/web-sites-python-ptvs-flask-mongodb/PollsCommonRobomongoCreateConnection2.png)
 
@@ -141,7 +155,7 @@ MongoDB データベースの照会と編集には、[RoboMongo][] などのア�
 
 ##<a name="publish-to-an-azure-website"></a>Azure Websites に発行する
 
-作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイすることができます。
+作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイできます。
 
 1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
 
@@ -157,68 +171,69 @@ MongoDB データベースの照会と編集には、[RoboMongo][] などのア�
 
 1.  それ以外はすべて既定値のままにし、**[発行]** をクリックします。
 
-1.  Web ブラウザーが自動的に開いて、発行したサイトが表示されます。[About] ページに移動すると、**
+1.  Web ブラウザーが自動的に開いて、発行したサイトが表示されます。[About] ページに移動すると、**MongoDB** リポジトリではなく**メモリ内**リポジトリが使用されていることを確認できます。
 
-    That's because the environment variables are not set on the Azure Website, so it uses the default values specified in **settings.py**.
+    Azure Web サイト上で環境変数が設定されておらず、**settings.py** で指定された既定値が使用されているためです。
 
-##<a name="configure-the-azure-website"></a>Configure the Azure Website
+##<a name="configure-the-azure-website"></a>Azure Websites を構成する
 
-In this section, we'll configure environment variables for the site.
+このセクションでは、サイトに使用する環境変数を構成します。
 
-1.  In [Azure Management Portal][], click on the site created in the previous section.
+1.  [Azure の管理ポータル][]で、前のセクションで作成したサイトをクリックします。
 
-1.  In the top menu, click on **CONFIGURE**.
+1.  最上部のメニューの **[構成]** をクリックします。
 
   	![Top Menu](./media/web-sites-python-ptvs-flask-mongodb/PollsCommonWebSiteTopMenu.png)
 
-1.  Scroll down to the **app settings** section and set the values for **REPOSITORY\_NAME**, **MONGODB\_HOST** and **MONGODB\_DATABASE** as described in the section above.
+1.  下へスクロールして **[アプリケーション設定]** セクションに移動し、前のセクションの説明に従って **REPOSITORY\_NAME**、**MONGODB\_HOST**、**MONGODB\_DATABASE** の値を設定します。
 
   	![App Settings](./media/web-sites-python-ptvs-flask-mongodb/PollsCommonWebSiteConfigureSettingsMongoDB.png)
 
-1.  In the bottom menu, click on **SAVE**, then **RESTART** and finally **BROWSE**.
+1.  最下部のメニューの **[保存]**、**[再起動]** を順にクリックし、最後に **[参照]** をクリックします。
 
   	![Bottom Menu](./media/web-sites-python-ptvs-flask-mongodb/PollsCommonWebSiteConfigureBottomMenu.png)
 
-1.  You should see the application working as expected, using the **MongoDB** repository.
+1.  これでアプリケーションは、**MongoDB** リポジトリを使用して正しく動作します。
 
-    Congratulations!
+    ご利用ありがとうございます。
 
   	![Web Browser](./media/web-sites-python-ptvs-flask-mongodb/PollsFlaskAzureBrowser.png)
 
-##<a name="next-steps"></a>Next steps
+##<a name="next-steps"></a>次のステップ
 
-Follow these links to learn more about Python Tools for Visual Studio, Flask and MongoDB.
+Python Tools for Visual Studio、Flask、MongoDB の詳細については、以下のリンクをクリックしてください。
 
-- [Python Tools for Visual Studio Documentation][]
-  - [Web Projects][]
-  - [Cloud Service Projects][]
-  - [Remote Debugging on Microsoft Azure][]
-- [Flask Documentation][]
+- [Python Tools for Visual Studio のドキュメント][]
+  - [Web プロジェクト][]
+  - [クラウド サービス プロジェクト][]
+  - [Microsoft Azure でのリモート デバッグ][]
+- [Flask のドキュメント][]
 - [MongoDB][]
-- [PyMongo Documentation][]
+- [PyMongo のドキュメント][]
 - [PyMongo][]
 
 
 <!--Link references-->
-[Python Developer Center]: /ja-jp/develop/python/
-[Azure Cloud Services]: ../cloud-services-python-ptvs/
+[Python デベロッパー センター]: /ja-jp/develop/python/
+[Azure クラウド サービス]:../cloud-services-python-ptvs/
 
 <!--External Link references-->
-[Azure Management Portal]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [RoboMongo]: http://robomongo.org/
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
-[Python Tools 2.1 for Visual Studio Samples VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
-[Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190 
-[Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
-[Python Tools for Visual Studio Documentation]: http://pytools.codeplex.com/documentation
-[Flask Documentation]: http://flask.pocoo.org/
+[Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190 
+[Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
+[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
+[Flask のドキュメント]: http://flask.pocoo.org/
 [MongoDB]: http://www.mongodb.org/
 [PyMongo Documentation]: http://api.mongodb.org/python/current/
 [PyMongo]: https://github.com/mongodb/mongo-python-driver
-[Remote Debugging on Microsoft Azure]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
-[Web Projects]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
-[Cloud Service Projects]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
+[Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
+[Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
+[クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Scale mobile services backed by Azure SQL Database" pageTitle="Azure SQL Database に支えられたモバイル サービスのスケーリング - Azure Mobile Services" metaKeywords="" description="SQL Database を利用する Mobile Services で発生するスケーラビリティの問題を診断して解決する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Scale mobile services backed by Azure SQL Database" authors="donnam" solutions="" manager="dwrede" editor="mollybos" />
+﻿<properties pageTitle="Azure SQL Database に支えられたモバイル サービスのスケーリング - Azure Mobile Services" description="SQL Database を利用する Mobile Services で発生するスケーラビリティの問題を診断して解決する方法について説明します。" services="mobile-services" documentationCenter="" authors="lindydonna" manager="dwrede" editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="donnam" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="donnam"/>
 # Azure SQL Database に支えられたモバイル サービスのスケーリング
 
 Azure Mobile Services を使用すると、SQL データベースにデータを格納するクラウド ホステッド バックエンドに接続するアプリケーションを非常に簡単に利用および構築できます。アプリケーションの拡張に合わせて、サービス インスタンスをスケーリングするのは、ポータルでスケール設定を調整してコンピューティング容量やネットワーク容量を追加するのと同じくらい簡単です。ただし、サービスが受ける負荷の増加に合わせて、サービスを支えている SQL データベースをスケーリングするには、先を見越した計画や監視が必要になります。このドキュメントでは、SQL に基づいたモバイル サービスの高いパフォーマンスを維持するための一連のベスト プラクティスについて説明します。
@@ -17,12 +17,12 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 <a name="Diagnosing"></a>
 ## 問題の診断
 
-負荷のある状態でモバイル サービスに問題が発生している疑いがある場合は、まず **Azure の管理ポータル**でサービスの [[ダッシュボード]][] タブを確認します。ここでは、次の点について確認します。
+負荷のある状態で Mobile Services に問題が発生している疑いがある場合は、まず [Azure の管理ポータル][]でサービスの **[ダッシュボード]** タブを確認します。ここでは、次の点について確認します。
 
 - **API 呼び出し**や**アクティブなデバイス**の測定値など、使用量の測定値がクォータを超えていない
-- **エンドポイントの監視**ステータスで、サービスが稼働していることが示されている (サービスが Standard 階層を使用し、エンドポイントの監視が有効になっている場合のみ利用できます)
+- **エンドポイントの監視**ステータスで、サービスが稼働していることが示されている (サービスが Standard 階層を使用し、エンドポイントの監視が有効になっている場合のみ利用できます) 
 
-上のどちらも当てはまらない場合は、*[スケール]* タブでスケール設定を調整することを検討します。それでも問題が解決しない場合は、Azure SQL Database が問題の原因かどうかを調べます。この後のセクションでは、問題がある可能性のある箇所を診断する方法をいくつか紹介します。
+上のどちらも当てはまらない場合は、[ *Scale*] タブでスケール設定を調整することを検討します。それでも問題が解決しない場合は、Azure SQL Database が問題の原因かどうかを調べます。この後のセクションでは、問題がある可能性のある箇所を診断する方法をいくつか紹介します。
 
 ### 適切な SQL データベース階層の選択 
 
@@ -31,15 +31,15 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 - Web および Business Edition (使用中止)
 - Basic、Standard、および Premium Edition 
 
-Web および Business Edition は完全にサポートされていますが、「[Web および Business エディションの終了に関する FAQ](http://msdn.microsoft.com/en-US/library/azure/dn741330.aspx)」で説明しているように、2015 年 4 月 24 日にサポートが終了します。新しい顧客の場合は、この変更に備えて Basic、Standard、および Premium エディションの使用を開始することをお勧めします。この新しいエディションには、さまざまな新しい階層と、データベース パフォーマンスを非常に簡単に把握およびトラブルシューティングできる監視機能が用意されています。新しいモバイル サービスは、すべて新しいエディションを使用して作成されます。
+Web および Business エディションは完全にサポートされていますが、「[Web および Business エディションの終了に関する FAQ](http://msdn.microsoft.com/ja-jp/library/azure/dn741330.aspx)」で説明しているように、2015 年 4 月 24 日にサポートが終了します。新しい顧客の場合は、この変更に備えて Basic、Standard、および Premium エディションの使用を開始することをお勧めします。この新しいエディションには、さまざまな新しい階層と、データベース パフォーマンスを非常に簡単に把握およびトラブルシューティングできる監視機能が用意されています。新しい Mobile Services は、すべて新しいエディションを使用して作成されます。
 
 Web と Business エディションを使用してモバイル サービスを Basic、Standard、および Premium エディションに変換するには、次の手順を実行します。
 
-1. Azure の管理ポータル][]を起動します。
-2. ツール バーの **[+新規]** を選択し、**[データ サービス]**、**[SQL データベース]**、**[簡易作成]** の順に選択します。
-3. データベース名を入力し、**[サーバー]** フィールドで **[新しい SQL データベース サーバー]** を選択します。新しい Basic、Standard、および Premium Edition を使用するサーバーが作成されます。 
-4. 残りのフィールドを設定し、**[SQL データベースの作成]** を選択します。Basic 階層を使用する 100 MB のデータベースが作成されます。
-5. 作成したデータベースを使用するようにモバイル サービスを構成します。そのサービスの **[構成]** タブに移動し、ツール バーの **[データベースの変更]** を選択します。次の画面で、**[SQL データベース]** フィールドの **[既存の SQL データベースを使用します]** を選択し、**[次へ]** を選択します。次の画面で、手順 5. で作成したデータベースを選択し、**[OK]** を選択します。
+1. [Azure の管理ポータル][]を起動します。
+2. ツール バーの **[+新規]** を選択し、**[データ サービス]**、**[SQL Database]**、**[簡易作成]** の順にクリックします。
+3. データベース名を入力し、**[サーバー]** フィールドで **[新しい SQL Database サーバー]** を選択します。新しい Basic、Standard、および Premium Edition を使用するサーバーが作成されます。 
+4. 残りのフィールドを設定し、**[SQL Database の作成]** を選択します。Basic 階層を使用する 100 MB のデータベースが作成されます。
+5. 作成したデータベースを使用するように Mobile Services を構成します。そのサービスの **[構成]** タブに移動し、ツール バーの **[データベースの変更]** を選択します。次の画面で、**[SQL Database]** フィールドの **[既存の SQL Database を使用]** を選択し、**[次へ]** を選択します。次の画面で、手順 5. で作成したデータベースを選択し、**[OK]** を選択します。
 
 次に、データベースに適した階層を選択する際の推奨事項をいくつか示します。
 
@@ -47,7 +47,7 @@ Web と Business エディションを使用してモバイル サービスを B
 - **Standard** - 同時に複数のデータベース クエリを実行する運用サービスに使用する
 - **Premium** - 同時に多数のクエリを実行し、ピーク時の負荷が高く、すべての要求の待ち時間が短い必要がある大規模な運用サービスに使用する
 
-各階層をどのような場合に使うかの詳細については、「[新しいサービス階層を使用する理由](http://msdn.microsoft.com/en-US/library/azure/dn369873.aspx#Reasons)」を参照してください。
+各階層をどのような場合に使うかの詳細については、[新しいサービス階層を使用する理由](http://msdn.microsoft.com/ja-jp/library/azure/dn369873.aspx#Reasons)に関するトピックを参照してください。
 
 ### データベース メトリックの分析
 
@@ -56,18 +56,18 @@ Web と Business エディションを使用してモバイル サービスを B
 1. [Azure の管理ポータル][]を起動します。
 2. [モバイル サービス] タブで、使用するサービスを選択します。
 3. **[構成]** タブをクリックします。
-4. **[データベースの設定]** セクションで、**SQL データベース**名を選択します。ポータルの [Azure SQL データベース] タブに自動的に移動します。
+4. **[データベースの設定]** セクションで、**[SQL Database]** を選択します。ポータルの [Azure SQL データベース] タブに自動的に移動します。
 5. **[監視]** タブに移動します。
 6. **[メトリックの追加]** ボタンを使用して、関連するメトリックを表示します。次を含めます。
     - *CPU の割合* (Basic/Standard/Premium 階層でのみ使用できます)
-    - *物理データの読み取りの割合* (Basic/Standard/Premium 階層でのみ使用できます)
+    - *物理データの読み取りの割合* (Basic/Standard/Premium 階層でのみ使用できます) 
     - *ログ書き込みの割合* (Basic/Standard/Premium 階層でのみ使用できます)
-    - *ストレージ*
+    - *ストレージ* 
 7. サービスに問題が発生していた期間のメトリックを調べます。 
 
     ![Azure Management Portal - SQL Database Metrics][PortalSqlMetrics]
 
-If any metriいずれかのメトリックで使用率が長期間にわたって 80% を超えている場合は、パフォーマンスに問題がある可能性があります。データベースの使用率の詳細については、「[リソースの使用について](http://msdn.microsoft.com/en-US/library/azure/dn369873.aspx#Resource).」を参照してください。
+いずれかのメトリックで使用率が長期間にわたって 80% を超えている場合は、パフォーマンスに問題がある可能性があります。データベースの使用率の詳細については、「[リソースの使用について](http://msdn.microsoft.com/ja-jp/library/azure/dn369873.aspx#Resource)」を参照してください。
 
 データベースの使用率が高いことをメトリックが示している場合は、最初の対応策として、**より高いサービス層にデータベースをスケールアップする**ことを検討します。問題をすぐに解決するには、データベースの **[スケール]** タブを使用して、データベースをスケールアップすることを検討します。スケールアップすると、請求金額が増えます。
 ![Azure Management Portal - SQL Database Scale][PortalSqlScale]
@@ -75,7 +75,7 @@ If any metriいずれかのメトリックで使用率が長期間にわたっ�
 できるだけ早急に、次の追加の対応策について検討します。
 
 - **データベースを調整する。**
-多くの場合、データベースを最適化することで、データベースの使用率を低減させ、より高い階層にスケーリングすることを回避できます。 
+  多くの場合、データベースを最適化することで、データベースの使用率を低減させ、より高い階層にスケーリングすることを回避できます。 
 - **サービス アーキテクチャを検討する。**
   時間の経過と共にサービスの負荷が均等に分散されなくなり、その一方で、大きな需要が "急増" することがよくあります。データベースをスケールアップすると、需要の急増に対応できますが、需要が少ない期間は使用率が低下することになります。スケールアップする代わりに、サービス アーキテクチャを調整すると、多くの場合、そうした急増を避けることや、データベースにアクセスすることなく需要の急増に対応することができます。
 
@@ -88,25 +88,25 @@ If any metriいずれかのメトリックで使用率が長期間にわたっ�
 
 1. アラートを設定するデータベースの **[監視]** タブに移動します。
 2. 前のセクションで説明したように、関連するメトリックを表示します。
-3. アラートを設定するメトリックを選択し、**[ルールの追加]** を選択します。 
+3. アラートを設定するメトリックを選択し、**[ルールの追加]** を選択します。
     ![Azure Management Portal - SQL Alert][PortalSqlAddAlert]
-4. アラートの名前と説明を指定します。 
+4. アラートの名前と説明を指定します。
     ![Azure Management Portal - SQL Alert Name and Description][PortalSqlAddAlert2]
-5. アラートのしきい値として使用する値を指定します。対応時間を確保するために、**80%** を使用することを検討してください。また、積極的に監視する電子メール アドレスを必ず指定します。  
+5. アラートのしきい値として使用する値を指定します。対応時間を確保するために、**80%** を使用することを検討してください。また、積極的に監視する電子メール アドレスを必ず指定します。 
     ![Azure Management Portal - SQL Alert Threshold and Email][PortalSqlAddAlert3]
 
-SQL の問題の診断の詳細については、このドキュメントの下部にある「[高度な診断](#AdvancedDiagnosing)」を参照してください。
+SQL の問題の診断に関する詳細については、このドキュメントの下部にある「[高度な診断]」を(#AdvancedDiagnosing) 参照してください。
 
 <a name="Indexing"></a>
 ## インデックス作成
 
-クエリのパフォーマンスに問題が見られるようになったら、まずインデックスの設計を調べる必要があります。インデックスは、SQL エンジンがクエリを実行する方法に直接影響するため、重要です。
+クエリのパフォーマンスに問題が見られるようになったら、まずインデックスの設計を調べる必要があります。インデックスは、SQL エンジンがクエリを実行する方法に直接影響するため、重要です。 
 
 たとえば、特定のフィールドで要素を検索する必要があることが多い場合は、その列のインデックスを追加することを検討する必要があります。そうしないと、SQL エンジンは強制的にテーブル スキャンを実行し、各物理レコード (少なくともクエリ列) を読み取ります。また、レコードがディスク上でかなり分散する可能性があります。
 
-そのため、特定の列に対して WHERE または JOIN ステートメントを記述することが多い場合は、必ずそれらの列のインデックスを作成する必要があります。詳細については、「[インデックスの作成](#CreatingIndexes)」を参照してください。
+そのため、特定の列に対して WHERE または JOIN ステートメントを記述することが多い場合は、必ずそれらの列のインデックスを作成する必要があります。詳細については、「[インデックスの作成]」のセクション(#CreatingIndexes) を参照してください。
 
-インデックスが非常に効率が良く、テーブル スキャンが非常に効率が悪いなら、念のために、テーブルのすべての列にインデックスを作成しておく必要があるのでしょうか。手短に言えば、"おそらくありません"。インデックスは容量を消費するうえに、それ自体にオーバーヘッドがあります。テーブルにデータが挿入されるたびに、インデックス付きの各列のインデックス構造を更新する必要があります。列インデックスを選択する方法のガイドラインについては、以下を参照してください。
+インデックスが非常に効率が良く、テーブル スキャンが非常に効率が悪いなら、念のために、テーブルのすべての列にインデックスを作成しておく必要があるのでしょうか。手短に言えば、"おそらくありません"。インデックスは領域を占有し、オーバーヘッドを伴います。テーブルにデータが挿入されるたびに、インデックス付きの各列のインデックス構造を更新する必要があります。列インデックスを選択する方法のガイドラインについては、以下を参照してください。
 
 ### インデックスの設計ガイドライン
 
@@ -134,7 +134,7 @@ SQL の問題の診断の詳細については、このドキュメントの下�
 
 JavaScript バックエンドで列にインデックスを設定するには、次の手順を実行します。
 
-1. [Azure の管理ポータル][]でモバイル サービスを開きます。
+1. [Azure の管理ポータル][]で Mobile Services を開きます。
 2. **[データ]** タブをクリックします。
 3. 変更するテーブルを選択します。
 4. **[列]** タブをクリックします。
@@ -156,47 +156,47 @@ Entity Framework でインデックスを定義するには、インデックス
         public bool Complete { get; set; }
     }
 		 
-インデックスの詳細については、[Entity Framework のインデックス注釈に関するページ][]を参照してください。インデックスの最適化のヒントについては、このドキュメントの下部にある「[高度なインデックス](#AdvancedIndexing)」を参照してください。
+インデックスの詳細については、[Entity Framework のインデックス注釈][]に関するページを参照してください。インデックスの最適化に関するヒントについては、このドキュメントの下部にある「[高度なインデックス作成]」を(#AdvancedIndexing) 参照してください。
 
 <a name="Schema"></a>
 ## スキーマの設計
 
 ここでは、SQL データベースのスキーマに変換される、オブジェクトのデータ型を選択する際に注意する必要のある問題についていくつか説明します。SQL にはさまざまなデータ型のインデックス作成とストレージを処理するために最適化されたカスタムの方法が用意されているため、多くの場合、スキーマを調整すると、パフォーマンスを大幅に向上させることができます。
 
-- **提供された ID 列を使用する。**すべてのモバイル サービス テーブルには、主キーとして構成された既定の ID 列が用意されており、その列にインデックスが設定されています。追加の ID 列を作成する必要はありません。
-- **モデルの適切なデータ型を使用する。**モデルの特定のプロパティが数値またはブール値であることがわかっている場合は、文字列ではなく、モデルに従って定義します。JavaScript バックエンドでは、`"true"` の代わりに `true`、`"5"` の代わりに `5` など、リテラルを使用します。.NET バックエンドでは、モデルのプロパティを宣言するときに、`int` 型と `bool` 型を使用します。そうすると、SQL がこれらの型に適したスキーマを作成でき、クエリの効率が向上します。  
+- **提供された ID 列を使用する**。すべてのモバイル サービス テーブルには、主キーとして構成された既定の ID 列が用意されており、その列にインデックスが設定されています。追加の ID 列を作成する必要はありません。
+- **モデルに正しいデータ型を使用する。**モデルの特定のプロパティが数値またはブール値になることを認識している場合は、文字列の代わりに数値またはブール値を使用するようにモデルで定義します。JavaScript バックエンドでは、`"true"` の代わりに  `true`、`"5"` の代わりに `5` などのリテラルを使用します。.NET バックエンドでは、モデルのプロパティを宣言するときに  `int` 型および  `bool` 型を使用します。こうすることにより、SQL でこれらの型の正しいスキーマを作成でき、クエリの効率性が高まります。
 
 <a name="Query"></a>
 ## クエリの設計
 
 データベースを照会する際に考慮する必要があるガイドラインを次に示します。
 
-- **常にデータベースで結合操作を実行する。**共通のフィールドを共有している複数のテーブルのレコードをつなげる必要がよくあります (*結合*とも呼ばれます)。この操作は、両方のテーブルからすべてのエンティティを取得し、そのすべてを反復処理する場合があるため、適切に実行しないと、効率が悪くなることがあります。このような操作はデータベース自体に任せるのが最適ですが、誤ってクライアントまたはモバイル サービス コードで実行することがあります。
+- **データベースで常に結合操作を実行する。**多くの場合、2 個以上のテーブルのレコードを組み合わせることが必要になり、組み合わされたレコードは共通のフィールドを共有します ( *join*ともいいます)。この操作は、誤って実行すると、両方のテーブルのすべてのエンティティをプルダウンし、それら全体を対象に繰り返すことになる場合があるため、非効率的になる可能性があります。この種の操作は、データベース自体で実行することが最善ですが、クライアントで、または Mobile Services のコードで誤って実行されがちです。
     - アプリケーション コードで結合を実行しない
-    - モバイル サービス コードで結合を実行しないでください。JavaScript バックエンドを使用する場合は、[テーブル オブジェクト](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554210.aspx)では結合が処理されないことに注意してください。確実にデータベースで結合が実行されるように、直接 [mssql オブジェクト](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx)を使用します。詳細については、「[リレーショナル テーブルを結合する](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/#joins)」を参照してください。.NET バックエンドを使用し、LINQ 経由で照会する場合は、Entity Framework によってデータベース レベルで結合が自動的に処理されます。
-- **ページングを実装する。**データベースを照会すると、大量のレコードがクライアントに返されることがあります。操作のサイズと待機時間を最小限に抑えるには、ページングを実装することを検討します。
+    - モバイル サービス コードで結合を実行しない。JavaScript バックエンドを使用する場合は、[テーブル オブジェクト](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554210.aspx)では結合が処理されないことに注意してください。確実にデータベースで結合が実行されるように、直接 [mssql オブジェクト](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx)を使用します。詳細については、「[リレーショナル テーブルを結合する](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/#joins)」を参照してください。.NET バックエンドを使用し、LINQ 経由で照会する場合は、Entity Framework によってデータベース レベルで結合が自動的に処理されます。
+- **ページングを実装する。**データベースのクエリを実行すると、多数のレコードがクライアントに返されることになる場合があります。サイズと操作の待機時間を最小限に抑えるために、ページングを実装することを検討してください。
     - 既定では、モバイル サービスにより、すべての受信クエリのページ サイズが 50 に制限されるため、手動で要求できるレコードは最大 1,000 件になります。詳細については、[Windows ストア](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/#paging)、[iOS](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-ios-how-to-use-client-library/#paging)、[Android](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-android-how-to-use-client-library/#paging)、[HTML/JavaScript](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-html-how-to-use-client-library/#paging)、および [Xamarin](http://azure.microsoft.com/ja-jp/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library/#paging) の「ページにデータを返す」を参照してください。
     - モバイル サービス コードから実行するクエリには、既定のページ サイズがありません。アプリケーションにページングを実装していない場合だけでなく、防衛手段としても、クエリに既定の制限を適用することを検討してください。JavaScript バックエンドでは、[クエリ オブジェクト](http://msdn.microsoft.com/ja-jp/library/azure/jj613353.aspx)の **take** 演算子を使用します。.NET バックエンドを使用する場合は、LINQ クエリの一部として [Take メソッド](http://msdn.microsoft.com/ja-jp/library/vstudio/bb503062(v=vs.110).aspx)を使用することを検討してください。  
 
-クエリ プランを分析する方法など、クエリの設計の改善の詳細については、このドキュメントの下部にある「[高度なクエリの設計](#AdvancedQuery)」を参照してください。
+クエリ プランを分析する方法など、クエリの設計の改善の詳細については、このドキュメントの下部にある「[高度なクエリの設計]」を(#AdvancedQuery) 参照してください。
 
 <a name="Architecture"></a>
 ## サービス アーキテクチャ
 
 すべての顧客にアプリケーションの新しいコンテンツのチェックを求めるプッシュ通知を送信しようとしているとします。顧客が通知をタップすると、アプリケーションが起動し、おそらくモバイル サービスへの呼び出しと SQL データベースに対するクエリの実行がトリガーされます。何百万人もの顧客がわずか数分の間にこの操作を実行するため、SQL の負荷が急増し、アプリケーションの安定状態の負荷よりもはるかに高くなる可能性があります。急増時にアプリケーションを高い SQL 階層にスケーリングし、その後で元に戻すことで、この状況に対応することができます。ただし、その解決方法は、手動による介入が必要なうええに、コストの増加が伴います。モバイル サービス アーキテクチャを頻繁に微調整することで、クライアントによって引き起こされる SQL データベースに対する負荷の大部分のバランスを取り、問題のある需要の急増を削減することができます。これらの変更は、多くの場合、顧客の操作性にほとんど影響を与えることなく、容易に実装することができます。次に例をいくつか示します。
 
-- **負荷を時間的に分散する。**需要の急増を引き起こすと思われる特定のイベント (プッシュ通知のブロードキャストなど) のタイミングが変更可能なときに、それらのイベントのタイミングを制御する場合は、イベントを時間的に分散することを検討します。前の例では、アプリケーションの顧客にとって、新しいアプリケーションのコンテンツの通知が、ほぼ同時ではなく、1 日の間に複数のバッチに分けて送信されることはおそらく許容できます。顧客をグループに分け、各バッチに時差配信できるようにすることを検討します。Notification Hubs を使用する場合は、バッチを追跡するための追加のタグを適用し、そのタグにプッシュ通知を配信すると、この方法を簡単に実装できます。タグの詳細については、「[Notification Hubs を使用したニュース速報の送信](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/)」を参照してください。
-- **適切であれば、BLOB とテーブル ストレージを使用する。**多くの場合、顧客が急増時に表示するコンテンツはほとんど静的であり、そのコンテンツにリレーショナル クエリ機能が必要な可能性が低いため、SQL データベースに格納する必要はありません。その場合は、BLOB またはテーブル ストレージにコンテンツを格納することを検討します。BLOB ストレージのパブリック BLOB には、デバイスから直接アクセスできます。セキュリティで保護された方法で BLOB にアクセスしたり、テーブル ストレージを使用したりするには、ストレージ アクセス キーを保護するために、Mobile Services カスタム API を使用する必要があります。詳細については、「[Upload images to Azure Storage by using Mobile Services (Mobile Services を使用した Azure ストレージへのイメージのアップロード)](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage/)」を参照してください。
-- **メモリ内キャッシュを使用する。**他には、トラフィックの急増時によくアクセスされるデータを [Azure Cache](http://azure.microsoft.com/ja-jp/services/cache/) などのメモリ内キャッシュに格納する方法があります。この方法では、受け取った要求に対して、データベースを繰り返し照会することなく、メモリから必要な情報を取得することができます。
+- **時間の経過と共に負荷を分散する。**トラフィックの急増につながると想定される特定のイベント (たとえば、ブロードキャストのプッシュ通知など) のタイミングを制御する場合、それらのイベントのタイミングが重要ではないときは、時間の経過と共にそれらのイベントを分散することを検討してください。前の例では、アプリケーションの新しいコンテンツに関する通知を更新とほぼ同時に受ける代わりに、1 日分の通知をバッチで受けることもアプリケーションを使用する顧客に受け入れられると考えられます。顧客をバッチにまとめることを検討してください。そうすると、それぞれのバッチにずらして配信できるようになります。Notification Hubs を使用する場合は、追加のタグを適用してバッチを追跡し、プッシュ通知をそのタグに配信することにより、この戦略を容易に実装できます。タグの詳細については、「[通知ハブを使用したニュース速報の送信](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/)」を参照してください。
+- **適切な場合に BLOB とテーブル ストレージを使用する。**多くの場合、トラフィックの急増時に顧客が表示するコンテンツは、ほとんど静的であり、それらのコンテンツに対して関連するクエリ機能が必要になる可能性がないので、SQL Database に格納する必要はありません。この場合は、コンテンツを BLOB またはテーブル ストレージに格納することを検討してください。BLOB ストレージのパブリック BLOB には、デバイスから直接アクセスできます。安全な方法またはテーブル ストレージを使用する方法で BLOB にアクセスする場合は、ストレージ アクセス キーを保護するために、Mobile Services のカスタム API を使用することが必要になります。詳細については、「[モバイル サービスを使用した Azure ストレージへのイメージのアップロード](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage/)」を参照してください。
+- **メモリ内キャッシュを使用する**。他には、トラフィックの急増時によくアクセスされるデータを [Azure Cache](http://azure.microsoft.com/ja-jp/services/cache/) などのメモリ内キャッシュに格納する方法があります。この方法では、受け取った要求に対して、データベースを繰り返し照会することなく、メモリから必要な情報を取得することができます。
 
 <a name="Advanced"></a>
 ## 高度なトラブルシューティング
 このセクションでは、これまでの方法では十分に問題に対処できない場合に有用な、より高度な診断タスクについて説明します。
 
 ### 前提条件
-このセクションの一部の診断タスクを実行するには、**SQL Server Management Studio** などの SQL データベース管理ツールや **Azure の管理ポータル**に組み込まれている管理機能にアクセスできる必要があります。
+このセクションの一部の診断タスクを実行するには、**SQL Server Management Studio** などの SQL Database 管理ツールや、**Azure の管理ポータル**に組み込まれている管理機能にアクセスできる必要があります。
 
-SQL Server Management Studio は無料の Windows アプリケーションで、非常に高度な機能を備えています。(Mac を使用している場合など) Windows コンピューターにアクセスできない場合は、「[Windows Server を実行する仮想マシンの作成](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-windows-tutorial/)」に示すとおりに Azure の仮想マシンをプロビジョニングし、リモートからその仮想マシンに接続することを検討してください。VM の使用目的が主に SQL Server Management Studio を実行することである場合は、**Basic A0** (以前の "XS") インスタンスで十分です。 
+SQL Server Management Studio は無料の Windows アプリケーションで、非常に高度な機能を備えています。(Mac を使用している場合など) Windows コンピューターにアクセスできない場合は、[Windows Server を実行する Virtual Machines の作成](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-windows-tutorial/)に関するページに示すように Azure の Virtual Machines をプロビジョニングし、リモートからその Virtual Machines に接続することを検討してください。VM の使用目的が主に SQL Server Management Studio を実行することである場合は、**Basic A0** (以前の "XS") インスタンスで十分です。 
 
 Azure の管理ポータルには管理機能が組み込まれています。機能は限定的ですが、ローカルにインストールすることなく利用できます。
 
@@ -206,45 +206,45 @@ Azure の管理ポータルには管理機能が組み込まれています。�
 1. [Azure の管理ポータル][]を起動します。
 2. [モバイル サービス] タブで、使用するサービスを選択します。
 3. **[構成]** タブをクリックします。
-4. **[データベースの設定]** セクションで、**SQL データベース**名を選択します。ポータルの [Azure SQL データベース] タブに自動的に移動します。
-5. **[この IP アドレス用に Microsoft Azure ファイアウォール ルールを設定する]** を選択します。
-6. **[データベースに接続する]** セクションに表示されたサーバー アドレス(例: *mcml4otbb9.database.windows.net*) をメモしておきます。
+4. **[データベースの設定]** セクションで、**[SQL Database]** を選択します。ポータルの [Azure SQL データベース] タブに自動的に移動します。
+5. **[この IP アドレス用に Windows Azure ファイアウォール ルールを設定する]** を選択します。
+6. **[データベースに接続する]** セクションに表示された次のようなサーバー アドレスを書き留めます *mcml4otbb9.database.windows.net*
 
 #### SQL Server Management Studio
-1. [SQL Server Express Edition に関するページ](http://www.microsoft.com/ja-jp/server-cloud/products/sql-server-editions/sql-server-express.aspx)に移動します。
-2. **SQL Server Management Studio** のセクションを見つけ、その下の **[ダウンロード]** ボタンをクリックします。
+1. [SQL Server Express エディション](http://www.microsoft.com/ja-jp/server-cloud/products/sql-server-editions/sql-server-express.aspx)に関するページに移動します。
+2. **SQL Server Management Studio** のセクションを見つけ、そこにある **[ダウンロード]** を選択します。
 3. セットアップ手順を実行して、アプリケーションを正常に実行できるようにします。
 
     ![SQL Server Management Studio][SSMS]
 
 4. **[サーバーへの接続]** ダイアログで次の値を入力します。
-    - サーバー名:*先ほど取得したサーバー アドレス*
-    - 認証: *SQL Server 認証*
-    - ログイン:*サーバーの作成時に選択したログイン*
-    - パスワード:*サーバーの作成時に選択したパスワード*
+    - サーバー名:  *server address you obtained earlier*
+    - 認証:  *SQL Server Authentication*
+    - ログイン:  *login you picked when creating server*
+    - パスワード:  *password you picked when creating server*
 5. これで接続されます。
 
 #### SQL データベースの管理ポータル
-1. データベースの [Azure SQL データベース] タブで、**[管理]**ボタンをクリックします。 
+1. データベースの [Azure SQL Database] タブで、**[管理]** ボタンをクリックします。 
 2. 次の値で接続を構成します。
-    - サーバー:*事前に適切な値に設定されます*
-    - データベース:*空のままにします*
-    - ユーザー名:*サーバーの作成時に選択したログイン*
-    - パスワード:*サーバーの作成時に選択したパスワード*
+    - サーバー:  *should be pre-set to the right value*
+    - データベース:  *leave blank*
+    - ユーザー名:  *login you picked when creating server*
+    - パスワード:  *password you picked when creating server*
 3. これで接続されます。
 
     ![Azure Management Portal - SQL Database][PortalSqlManagement]
 
 <a name="AdvancedDiagnosing" />
-### 高度な診断
+### Advanced Diagnostics
 
-診断タスクの多くは、**Azure の管理ポータル**で簡単に実行できます。ただし、いくつかの高度な診断タスクは、**SQL Server Management Studio** または **SQL データベースの管理ポータル**でのみ実行できます。ここでは、動的管理ビュー (データベースに関する診断情報が自動的に設定される一連のビュー) を活用します。このセクションでは、さまざまなメトリックを調べるためにこれらのビューに対して実行できる一連のクエリを紹介します。詳細については、「[動的管理ビューを使用した SQL データベースの監視][]」を参照してください。
+診断タスクの多くは、**Azure の管理ポータル**で簡単に実行できます。ただし、いくつかの高度な診断タスクは、**SQL Server Management Studio** または **SQL Database の管理ポータル**でのみ実行できます。ここでは、動的管理ビュー (データベースに関する診断情報が自動的に設定される一連のビュー) を活用します。このセクションでは、さまざまなメトリックを調べるためにこれらのビューに対して実行できる一連のクエリを紹介します。詳細については、「[動的管理ビューを使用した Azure SQL データベースの監視][]」を参照してください。
 
 SQL Server Management Studio で前のセクションの手順を完了して、データベースに接続したら、**オブジェクト エクスプローラー**でデータベースを選択します。**[ビュー]**、**[システム ビュー]** の順に展開すると、管理ビューの一覧が表示されます。以下のクエリを実行するには、**オブジェクト エクスプローラー**でデータベースを選択している状態で、**[新しいクエリ]** を選択し、クエリを貼り付け、**[実行]** を選択します。
 
 ![SQL Server management Studio - dynamic management views][SSMSDMVs]
 
-代わりに SQL データベースの管理ポータルを使用する場合は、まずデータベースを選択し、**[新しいクエリ]** を選択します。
+代わりに SQL Database の管理ポータルを使用する場合は、まずデータベースを選択し、**[新しいクエリ]** を選択します。
 
 ![SQL Database Management Portal - new query][PortalSqlManagementNewQuery]
 
@@ -261,21 +261,21 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     WHERE database_name = 'todoitem_db' 
     ORDER BY start_time DESC
 
-> [WACOM.NOTE] 
-> このクエリは、サーバー上の**master**データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
+> [AZURE.NOTE] 
+> このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
 
-結果には、CPU (階層の制限の割合 (%))、ストレージ (MB)、物理データの読み取り (階層の制限の割合 (%))、ログの書き込み (階層の制限の割合 (%))、メモリ (階層の制限の割合 (%))、worker 数、セッション数などの有用なメトリックが含まれます。
+結果には、CPU (階層の制限の割合 (%))、ストレージ (MB)、物理データの読み取り (階層の制限の割合 (%))、ログの書き込み (階層の制限の割合 (%))、メモリ (階層の制限の割合 (%))、worker 数、セッション数などの有用なメトリックが含まれます。 
 
 #### SQL の接続イベント
 
-**[sys.event\_log](http://msdn.microsoft.com/ja-jp/library/azure/jj819229.aspx)** ビューには、接続関連のイベントの詳細が含まれています。
+**[sys.event\_log](http://msdn.microsoft.com/ja-jp/library/azure/jj819229.aspx)**ビューには、接続関連のイベントの詳細が含まれています。
 
     select * from sys.event_log 
     where database_name = 'todoitem_db'
     and event_type like 'throttling%'
     order by start_time desc
 
-> [WACOM.NOTE] 
+> [AZURE.NOTE] 
 > このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
 
 <a name="AdvancedIndexing" />
@@ -287,26 +287,26 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
 
 - **非クラスター化**。非クラスター化インデックスは、データ行とは別に保存され、インデックス値に基づいた検索に使用されます。テーブルのすべての非クラスター化インデックスでは、検索キーとしてクラスター化インデックスのキー値を使用します。
 
-現実世界に置き換えるために、本や技術マニュアルについて考えてみましょう。各ページの内容がレコード、ページ番号がクラスター化インデックス、本の末尾の索引が非クラスター化インデックスです。索引の各エントリはページ番号 (クラスター化インデックス) を指しています。
+現実の世界にたとえるには、本や技術マニュアルを考えてみてください。各ページの内容がレコード、ページ番号がクラスター化インデックス、本の末尾の索引が非クラスター化インデックスです。索引の各エントリはページ番号 (クラスター化インデックス) を指しています。
 
-> [WACOM.NOTE] 
-> 既定では、Azure Mobile Services の JavaScript バックエンドは、**_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
+> [AZURE.NOTE] 
+> 既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の「[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)」に必ず従ってください。.NET バックエンドでは、 `EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して、 `CreatedAt` がクラスター化インデックスとして定義されます。
 
 <a name="ClusteredIndexes"></a>
 #### クラスター化インデックスの設計ガイドライン
 
 すべてのテーブルには、次の特性を備えた列 (複合キーの場合は複数の列) にクラスター化インデックスを設定する必要があります。
 
-- 狭い - 小さなデータ型を使用しているか、少数の狭い列の[複合キー][Primary and Foreign Key Constraints] である
+- 狭い - 小さなデータ型を使用しているか、少数の狭い列の[複合キー][主キー制約と外部キー制約]である
 - 一意またはほぼ一意
 - 静的 - 値が頻繁に変更されない
 - 増え続ける 
-- (オプション) 固定長
+- (オプション) 固定幅
 - (オプション) null でない
 
 **狭い**という特性の理由は、クラスター化インデックスのキー値が、テーブルの他のすべてのインデックスで検索キーとして使用されるためです。本の末尾の索引の例では、クラスター化インデックスはページ番号であり、小さい数値です。代わりに章のタイトルがクラスター化インデックスに含まれている場合は、キー値が (章名、ページ番号) になるため、索引自体がかなり長くなります。
 
-レコードの物理的な位置を管理する必要性 (つまり、レコードを物理的に移動すること、またはレコードが格納されているページを分割してストレージを断片化させてしまうこと) を回避するには、キーが**静的**で**増え続ける**必要があります。 
+レコードの物理的な位置を管理する必要性 (つまり、レコードを物理的に移動すること、またはレコードが格納されているページを分割してストレージを断片化させること) を回避するには、キーが**静的**で**増え続ける**必要があります。 
 
 クラスター化インデックスは、次のようなクエリで非常に重要になります。
 
@@ -318,7 +318,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
 
 #### Entity Framework でのクラスター化インデックスの作成
 
-.NET バックエンドで Entity Framework を使用してクラスター化インデックスを設定するには、注釈の `IsClustered` プロパティを設定します。たとえば、次に示すのは `Microsoft.WindowsAzure.Mobile.Service.EntityData` の `CreatedAt` の定義です。
+.NET バックエンドで Entity Framework を使用してクラスター化インデックスを設定するには、注釈の  `IsClustered` プロパティを設定します。たとえば、次に示すのは  `Microsoft.WindowsAzure.Mobile.Service.EntityData` の  `CreatedAt` の定義です。
 
 	[Index(IsClustered = true)]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -344,7 +344,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
     ORDER BY avg_total_user_cost * avg_user_impact * (user_seeks + user_scans)
     DESC;
 
-次の例のクエリでは、これらのテーブルに対して結合を実行して、不足している各インデックスを構成する列の一覧を取得し、指定されたインデックスを検討する必要があるかどうかを判断するために 'index advantage (インデックスのメリット)' を計算します。
+次の例のクエリでは、これらのテーブルに対して結合を実行して、不足している各インデックスを構成する列の一覧を取得し、指定されたインデックスを検討する必要があるかどうかを判断するために  'index advantage' を計算します。
 
     SELECT * from 
     (
@@ -360,7 +360,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
       AND migs_adv.index_advantage > 10
     ORDER BY migs_adv.index_advantage DESC;
 
-詳細については、「[動的管理ビューを使用した SQL データベースの監視][]」および「[Missing Index Dynamic Management Views (不足しているインデックスの動的管理ビュー)](sys-missing-index-stats)」を参照してください。
+詳細については、「[動的管理ビューを使用した Azure SQL データベースの監視][]」および[不足しているインデックスの動的管理ビュー](sys-missing-index-stats)に関するページを参照してください。
 
 <a name="AdvancedQuery" />
 ### 高度なクエリの設計 
@@ -386,7 +386,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 	GROUP BY query_stats.query_hash
 	ORDER BY 2 DESC;
 
-詳細については、「[動的管理ビューを使用した SQL データベースの監視][]」を参照してください。**SQL データベースの管理ポータル**では、クエリを実行できるだけでなく、データベースの **[概要]**、**[クエリ パフォーマンス]** の順に選択することで、このデータをすぐに表示できます。
+詳細については、「[動的管理ビューを使用した Azure SQL データベースの監視][]」を参照してください。**SQL Database の管理ポータル**では、クエリを実行できるだけでなく、データベースの **[概要]**、**[クエリ パフォーマンス]** の順に選択することで、このデータをすぐに表示できます。
 
 ![SQL Database Management Portal - query performance][PortalSqlManagementQueryPerformance]
 
@@ -396,7 +396,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 
 ![SQL Server Management Studio - query plan][SSMSQueryPlan]
 
-**SQL データベースの管理ポータル**でクエリ プランを分析するには、強調表示されているツール バーのボタンを使用します。
+**SQL Database の管理ポータル**でクエリ プランを分析するには、強調表示されているツール バーのボタンを使用します。
 
 ![SQL Database Management Portal - query plan][PortalSqlManagementQueryPlan]
 
@@ -404,7 +404,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 
 - [Azure SQL Database のドキュメント][]
 - [Azure SQL データベースのパフォーマンスとスケーリング][]
-- [Troubleshooting Azure SQL Database (Azure SQL データベースのトラブルシューティング)][]
+- [Azure SQL Database のトラブルシューティング][]
 
 ### インデックス作成
 
@@ -413,11 +413,11 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 - [一意インデックスのデザイン ガイドライン][]
 - [クラスター化インデックスの設計ガイドライン][]
 - [主キー制約と外部キー制約][]
-- [How much does that key cost? (そのキーのコスト)][]
+- [そのキーのコスト][]
 
 ### Entity Framework
 - [Entity Framework 5 のパフォーマンスに関する考慮事項][]
-- [Code First Data Annotations (Code First のデータ注釈)][]
+- [Code First のデータ注釈][]
 
 <!-- IMAGES -->
  
@@ -438,13 +438,13 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 
 <!-- LINKS -->
 
-[Azure 管理ポータル]: http://manage.windowsazure.com
+[Azure の管理ポータル]: http://manage.windowsazure.com
 
 [Azure SQL Database のドキュメント]: http://azure.microsoft.com/ja-jp/documentation/services/sql-database/
-[SQL Server Management Studio を使用した SQL データベースの管理]: http://go.microsoft.com/fwlink/p/?linkid=309723&clcid=0x409
-[動的管理ビューを使用した Windows Azure SQL データベースの監視]: http://go.microsoft.com/fwlink/p/?linkid=309725&clcid=0x409
+[SQL Server Management Studio を使用した Azure SQL Database の管理]: http://go.microsoft.com/fwlink/p/?linkid=309723&clcid=0x409
+[動的管理ビューを使用した Azure SQL データベースの監視]: http://go.microsoft.com/fwlink/p/?linkid=309725&clcid=0x409
 [Azure SQL データベースのパフォーマンスとスケーリング]: http://go.microsoft.com/fwlink/p/?linkid=397217&clcid=0x409
-[Troubleshooting Azure SQL Database (Azure SQL データベースのトラブルシューティング)]: http://msdn.microsoft.com/ja-jp/library/azure/ee730906.aspx
+[Azure SQL Database のトラブルシューティング]: http://msdn.microsoft.com/ja-jp/library/azure/ee730906.aspx
 
 <!-- MSDN -->
 [PRIMARY KEY 制約の作成と変更]: http://technet.microsoft.com/ja-jp/library/ms181043(v=sql.105).aspx
@@ -454,7 +454,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 
 [主キー制約と外部キー制約]: http://msdn.microsoft.com/ja-jp/library/ms179610(v=sql.120).aspx
 [インデックスの基礎]: http://technet.microsoft.com/ja-jp/library/ms190457(v=sql.105).aspx
-[インデックスの設計の全般的なガイドライン]: http://technet.microsoft.com/ja-jp/library/ms191195(v=sql.105).aspx
+[インデックスの設計の全般的なガイドライン]: http://technet.microsoft.com/ja-jp/library/ms191195(v=sql.105).aspx 
 [一意インデックスのデザイン ガイドライン]: http://technet.microsoft.com/ja-jp/library/ms187019(v=sql.105).aspx
 [クラスター化インデックスの設計ガイドライン]: http://technet.microsoft.com/ja-jp/library/ms190639(v=sql.105).aspx
 
@@ -462,8 +462,11 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 
 <!-- EF -->
 [Entity Framework 5 のパフォーマンスに関する考慮事項]: http://msdn.microsoft.com/ja-jp/data/hh949853
-[Code First Data Annotations (Code First のデータ注釈)]: http://msdn.microsoft.com/ja-jp/data/jj591583.aspx
-[Entity Framework のインデックス注釈に関するページ]:http://msdn.microsoft.com/ja-jp/data/jj591583.aspx#Index
+[Code First のデータ注釈]: http://msdn.microsoft.com/ja-jp/data/jj591583.aspx
+[Entity Framework のインデックス注釈]:http://msdn.microsoft.com/ja-jp/data/jj591583.aspx#Index
 
 <!-- BLOG LINKS -->
-[How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
+[そのキーのコスト]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
+
+
+<!--HONumber=42-->

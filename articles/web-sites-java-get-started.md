@@ -1,16 +1,30 @@
-<properties urlDisplayName="Get started with Azure" pageTitle="Java を使用した Microsoft Azure Websites の概要" metaKeywords="" description="このチュートリアルでは、Java Web サイトを Microsoft Azure にデプロイする方法を示します。" metaCanonical="" services="web-sites" documentationCenter="Java" title="Get started with Azure and Java" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties 
+	pageTitle="Java を使用した Microsoft Azure Websites の概要" 
+	description="このチュートリアルでは、Java Web サイトを Microsoft Azure にデプロイする方法を示します。" 
+	services="web-sites" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # Azure Websites と Java の概要
 
-このチュートリアルでは、Azure のアプリケーション ギャラリーまたは Azure Website 構成 UI を利用して、Java を使用する Web サイトを Microsoft Azure に作成する方法を示します。 
+このチュートリアルでは、Azure のアプリケーション ギャラリーまたは Azure Websites 構成 UI を利用して、Java を使用する Web サイトを Microsoft Azure に作成する方法を示します。 
 
-これらの手法のいずれも使用しない場合、たとえば、アプリケーション コンテナーをカスタマイズする場合は、[Upload a custom Java web site to Azure (カスタム Java Web サイトを Azure にアップロードする)] を参照してください(../web-sites-java-custom-upload)。
+これらの手法のいずれも使用しない場合、たとえば、アプリケーション コンテナーをカスタマイズする場合は、[Upload a custom Java web site to Azure (カスタム Java Web サイトを Azure にアップロードする)](../web-sites-java-custom-upload) をご覧ください。
 
-> [WACOM.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントをお持ちでない場合は、 <a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする、</a> または <a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップしてください</a>。 
+> [AZURE.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a> か、<a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。 
 > 
-> アカウントにサインアップする前に、Azure Web サイトの使用を開始する場合は、Azure Web サイト <a href="https://trywebsites.azurewebsites.net/?language=java">https://trywebsites.azurewebsites.net</a>で、無料で期間限定の ASP.NET スターター サイト を作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
+> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=java">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
 # Azure のアプリケーション ギャラリーを使用して Java Web サイトを作成する
 
@@ -32,9 +46,9 @@
 6. リージョンを選択します。たとえば **[米国西部]** にします。
 7. **[完了]** をクリックします。
 
-すぐに Web サイトが作成されます。Web サイトを表示するには、Azure 管理ポータルの **[Web サイト]** ビューで。状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。
+すぐに Web サイトが作成されます。Web サイトを表示するには、Azure 管理ポータルの **[Web サイト]** ビューで、状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。
 
-これで、Web サイトとアプリケーション コンテナーが作成されました。アプリケーションを Web サイトにアップロードする方法については、「**次のステップ**」を参照してください。
+これで、Web サイトとアプリケーション コンテナーが作成されました。アプリケーションを Web サイトにアップロードする方法については、「**次のステップ**」をご覧ください。
 
 # Azure の構成 UI を使用して Java Web サイトを作成する
 
@@ -44,9 +58,8 @@
 2. **[新規]**、**[コンピューティング]**、**[Web サイト]**、**[簡易作成]** をクリックします。
 3. URL 名を指定します。
 4. リージョンを選択します。たとえば **[米国西部]** にします。
-5. **[完了]** をクリックします。すぐに Web サイトが作成されます。Web サイトを表示するには、Azure 管理ポータルの **[Web サイト]** ビューで。状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。
-6. 同じく Azure 管理ポータルの **[Websites]** ビューで、Web サイトの名前をクリックして、 
-ダッシュボードを開きます。
+5. **[完了]** をクリックします。すぐに Web サイトが作成されます。Web サイトを表示するには、Azure 管理ポータルの **[Web サイト]** ビューで、状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。
+6. 同じく Azure 管理ポータルの **[Websites]** ビューで、Web サイトの名前をクリックして、ダッシュボードを開きます。
 7. **[構成]** をクリックします。
 8. **[全般]** セクションで、使用できるバージョンをクリックすることで **[Java]** を有効にします。
 9. Web コンテナーのオプションとして Tomcat や Jetty などが表示されます。使用する Web コンテナーを選択します。 
@@ -54,10 +67,11 @@
 
 すぐに Web サイトが Java ベースになります。Java ベースになっていることを確認するには、Azure 管理ポータルの **[Websites]** ビューで、状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。開いたページには、新しいサイトが Java ベースの Web サイトであることを示すテキストが表示されます。
 
-これで、Web サイトとアプリケーション コンテナーが作成されました。アプリケーションを Web サイトにアップロードする方法については、「**次のステップ**」を参照してください。
+これで、Web サイトとアプリケーション コンテナーが作成されました。アプリケーションを Web サイトにアップロードする方法については、「**次のステップ**」をご覧ください。
 
 # 次のステップ
 
-この時点で、Java アプリケーション サーバーは Azure で Java Web サイトとして動作しています。独自のアプリケーションや Web ページを追加するには、「[Add an application or web page to your Java web site (Java Web サイトにアプリケーションや Web ページを追加する)] 」を参照してください(../web-sites-java-add-app)。
+この時点で、Java アプリケーション サーバーは Azure で Java Web サイトとして動作しています。独自のアプリケーションや Web ページを追加するには、[Add an application or web page to your Java web site (Java Web サイトにアプリケーションや Web ページを追加する)](../web-sites-java-add-app) をご覧ください。
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

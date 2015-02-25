@@ -1,6 +1,20 @@
-<properties urlDisplayName="Web w/ Storage" pageTitle="テーブル ストレージを使用した PHP Web サイト - Azure チュートリアル" metaKeywords="Azure table storage PHP, Azure PHP website, Azure PHP web site, Azure PHP tutorial, Azure PHP example" description="このチュートリアルでは、PHP Web サイトを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法を説明します。" metaCanonical="" services="web-sites,storage" documentationCenter="PHP" title="Create a PHP Website using Azure Storage" authors="tomfitz" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="テーブル ストレージを使用した PHP Web サイト - Azure チュートリアル" 
+	description="このチュートリアルでは、PHP Web サイトを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法を説明します。" 
+	services="web-sites, storage" 
+	documentationCenter="php" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="11/21/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="tomfitz"/>
 
 #Azure Storage を使用した PHP Web サイトを作成する
 
@@ -17,15 +31,15 @@
 
 ![Azure PHP web site][ws-storage-app]
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##Azure クライアント ライブラリのインストール
 
 Azure 向け PHP クライアント ライブラリを Composer 経由でインストールするには、次の手順に従います。
 
-1. [Git をインストール][install-git]します。
+1. [Git のインストール][install-git]
 
-	> [WACOM.NOTE]
+	> [AZURE.NOTE]
 	> Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
@@ -79,11 +93,11 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 	
 		UseDevelopmentStorage=true
 
-* `ServicesBuilder::createTableService` ファクトリ メソッドを使用して、テーブル サービス呼び出しのラッパーをインスタンス化します。
+*  `ServicesBuilder::createTableService` ファクトリ メソッドを使用して、テーブル サービス呼び出しのラッパーをインスタンス化します。
 
 		$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 	
-	`$tableRestProxy` には、Azure テーブルに対して使用可能なすべての REST 呼び出しに使用するメソッドが格納されます。
+	`$tableRestProxy` contains a method for every REST call available on Azure Tables.
 
 
 ## テーブルの作成
@@ -97,7 +111,7 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 		<?php
 		require_once "init.php";
 
-* 次に、テーブルの名前を渡して *createTable* を呼び出します。他の NoSQL テーブル ストアと同様、Azure テーブルにスキーマは必要ありません。
+* 次に、テーブルの名前を渡して  *createTable* を呼び出します。他の NoSQL テーブル ストアと同様、Azure テーブルにスキーマは必要ありません。
 	
 		try	{
 			$tableRestProxy->createTable('tasks');
@@ -140,7 +154,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 		<?php		
 		require_once "init.php";
 
-*  Azure テーブルに対して、*tasks* テーブルに格納されている**すべてのエンティティ**を照会するには、テーブル名のみを渡して *queryEntities* メソッドを呼び出します。後の「**エンティティの更新**」セクションでは、特定のエンティティを照会するためのフィルターを渡す方法についても確認します。
+* Azure テーブルに対して、 *tasks* テーブルに格納されている**すべてのエンティティ**を照会するには、テーブル名のみを渡して  *queryEntities* メソッドを呼び出します。後の **[エンティティの更新]** セクションでは、特定のエンティティを照会するためのフィルターを渡す方法についても確認します。
 
 		try {
 		    $result = $tableRestProxy->queryEntities('tasks');
@@ -157,7 +171,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 			
 		for ($i = 0; $i < count($entities); $i++) {
 
-* `Entity` を取得した後、データを読み取るには、`Entity->getPropertyValue('[name]')` という形式を使用します。
+*  `Entity` を取得した後、データを読み取るには  `Entity->getPropertyValue('[name]')` の形式を使用します。
 
 			if ($i == 0) {
 				echo "<table border='1'>
@@ -189,7 +203,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 			echo "<h3>No items on list.</h3>";
 		?>
 
-* 最後に、データをタスク挿入スクリプトに取り込むためのフォームを挿入して、HTML を完成する必要があります。
+* Last, you must insert the form that feeds data into the task insertion script and complete the HTML:
 
 			<hr/>
 			<form action="additem.php" method="post">
@@ -225,7 +239,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 		use WindowsAzure\Table\Models\Entity;
 		use WindowsAzure\Table\Models\EdmType;		
 
-* エンティティを挿入する最初の手順は、`Entity` オブジェクトをインスタンス化してプロパティを設定することです。
+* エンティティを挿入する最初の手順は、 `Entity` オブジェクトをインスタンス化してプロパティを設定することです。
 		
 		$entity = new Entity();
 		$entity->setPartitionKey('p1');
@@ -235,7 +249,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 		$entity->addProperty('date', EdmType::STRING, $_POST['date']);
 		$entity->addProperty('complete', EdmType::BOOLEAN, false);
 
-* 次に、作成した `$entity` を `insertEntity` メソッドに渡します。
+* 次に、作成した `$entity` を  `insertEntity` メソッドに渡します。
 
 		try{
 			$tableRestProxy->insertEntity('tasks', $entity);
@@ -253,7 +267,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 	
 ## エンティティの更新
 
-タスク一覧アプリケーションでは、アイテムに完了マークを付けることも外すこともできます。ホーム ページでは、エンティティの *RowKey* および *PartitionKey* と、対象の状態 (marked==1、unmarked==0) が渡されます。
+タスク一覧アプリケーションでは、アイテムに完了マークを付けることも外すこともできます。ホーム ページでは、エンティティの  *RowKey* および  *PartitionKey* と、対象の状態 (marked==1, unmarked==0) が渡されます。
 
 * **markitem.php** という名前のファイルを作成し、初期化の部分を追加します。
 
@@ -267,13 +281,13 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 		$entities = $result->getEntities();		
 		$entity = $entities[0];
 
-	`Key eq 'Value'` という形式のクエリ フィルターが渡されています。クエリ構文の詳しい説明については、[こちら][msdn-table-query-syntax]を参照してください。
+	`Key eq 'Value'` という形式のクエリ フィルターが渡されています。クエリ構文の詳しい説明については、[こちら][msdn-table-query-syntax]をご覧ください。
 
 * 次に、必要に応じてプロパティを変更できます。
 
 		$entity->setPropertyValue('complete', ($_GET['complete'] == 'true') ? true : false);
 
-* `updateEntity` メソッドにより、更新が実行されます。
+*  `updateEntity` メソッドにより、更新が実行されます。
 
 		try{
 			$result = $tableRestProxy->updateEntity('tasks', $entity);
@@ -292,7 +306,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 
 ## エンティティの削除
 
-アイテムの削除は、`deleteItem` を 1 回呼び出すことで実行できます。渡す値は **PartitionKey** と **RowKey** であり、これらの組み合わせがエンティティのプライマリ キーになります。**deleteitem.php** という名前のファイルを作成し、次のコードを挿入します。
+アイテムの削除は、 `deleteItem` を 1 回呼び出すことで実行できます。渡す値は **PartitionKey** と **RowKey** であり、これらの組み合わせがエンティティのプライマリ キーになります。**deleteitem.php** という名前のファイルを作成し、次のコードを挿入します。
 
 		<?php
 		
@@ -305,7 +319,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 
 ## Azure のストレージ アカウントの作成
 
-アプリケーションでデータをクラウドに保存するには、まず Azure にストレージ アカウントを作成し、適切な認証情報を *Configuration* クラスに渡す必要があります。
+アプリケーションでデータをクラウドに保存するには、まず Azure にストレージ アカウントを作成し、適切な認証情報を  *Configuration* クラスに渡す必要があります。
 
 1. [Azure 管理ポータル][management-portal]にログインします。
 
@@ -384,14 +398,14 @@ Azure Website を作成するには、次のステップに従います。
 
 Git でアプリケーションを発行するには、次の手順に従います。
 
-1. アプリケーションのルートにある **vendor/microsoft/windowsazure** フォルダーを開き、次のファイルとフォルダーを削除します。
+1. **vendor/microsoft/windowsazure** フォルダーを開き、次のファイルとフォルダーを削除します。
 	* .git
 	* .gitattributes
 	* .gitignore
 			
 	Composer パッケージ マネージャーが Azure クライアント ライブラリとその依存関係をダウンロードする際には、これらが格納されている GitHub リポジトリが複製されます。次の手順では、アプリケーションのルート フォルダーからリポジトリを作成することにより、Git 経由でアプリケーションを展開します。クライアント ライブラリがあるサブリポジトリは、リポジトリ固有のファイルが削除されていない限り無視されます。
 
-2. GitBash (Git が `PATH` にある場合はターミナル) を開き, ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します (**注:** これらは、前の「**Azure の Web サイトの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです)。
+2. GitBash (Git が  `PATH` にある場合はターミナル) を開き, ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します (**注:** これらは、前の「**Azure Website の作成と Git 発行の設定**」セクションの最後でメモした手順と同じです)。
 
 		git init
 		git add .
@@ -411,7 +425,7 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 アプリケーションへの変更を発行するには、次のステップに従います。
 
 1. ローカルでアプリケーションへの変更を行います。
-2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+2. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git add .
 		git commit -m "comment describing changes"
@@ -451,4 +465,5 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 [git-instructions]: ./media/web-sites-php-storage/git-instructions.png
 [where-is-code]: ./media/web-sites-php-storage/where_is_code.png
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

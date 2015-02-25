@@ -1,12 +1,26 @@
-﻿<properties urlDisplayName="Get Started with Authentication (Xamarin.iOS)" pageTitle="認証の使用 (Xamarin.iOS) - Mobile Services" metaKeywords="アプリケーションを登録する Azure, Azure 認証, アプリケーション認証, モバイル サービスの認証, Mobile Services Xamarin.iOS" description="Xamarin.iOS 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile"  services="mobile-services" title="Get started with authentication in Mobile Services" manager="dwrede" authors="donnam" />
+<properties 
+	pageTitle="認証の使用 (Xamarin.iOS) - Mobile Services" 
+	description="Xamarin.iOS 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。" 
+	documentationCenter="xamarin" 
+	services="mobile-services" 
+	manager="dwrede" 
+	authors="lindydonna" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="donnam" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-ios" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/23/2014" 
+	ms.author="donnam"/>
 
-# Mobile Services アプリへの認証の追加
+# モバイル サービス アプリケーションの認証を追加する
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、アプリケーションから Azure のモバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。  
+このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。  
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
@@ -20,12 +34,12 @@
 
 <h2><a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する</h2>
 
-[WACOM.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
+[AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
 <h2><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する</h2>
 
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
+[AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
 
 
 3. Xcode で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。 
@@ -58,9 +72,7 @@
             }
         }
 
-    <div class="dev-callout"><b>注</b>
-	<p>Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の <strong>LoginAsync</strong> メソッドに渡される値を<i>Facebook</i>、<i>Twitter</i>、<i>Google</i>、<i>WindowsAzureActiveDirectory</i> のいずれかに変更します。</p>
-    </div>
+	> [AZURE.NOTE] Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の **LoginAsync** メソッドに渡される値を_Facebook_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **TodoItem** テーブルに対する要求を、**TodoService** コンストラクターから **CreateTable** という名前の新しいメソッドに移動します。
 
@@ -99,7 +111,7 @@
         }
 6. **RefreshAsync** の元の呼び出しを **TodoListViewController.ViewDidLoad** から削除します。
 		
-7. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
+7. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
 
    	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
@@ -108,7 +120,7 @@
 
 ## <a name="next-steps"></a>次のステップ
 
-次の[スクリプトを使用したユーザーの認証に関するチュートリアル]では、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。 
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。 
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
@@ -124,15 +136,18 @@
 [15]: ./media/partner-xamarin-mobile-services-ios-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. TODO:: update completed example project link with project download -->
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/-get-started-with-push-xamarin-ios
-[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+[スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
+
+
+<!--HONumber=42-->

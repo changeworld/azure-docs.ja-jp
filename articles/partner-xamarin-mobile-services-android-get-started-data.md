@@ -1,50 +1,62 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Xamarin.Android) - Azure Mobile Services" metaKeywords="Azure Xamarin.Android データ, Azure モバイル サービス データ" description="Azure Mobile Services Xamarin.Android アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" services="mobile-services" />
+<properties 
+	pageTitle="データの使用 (Xamarin.Android) - Azure Mobile Services" 
+	description="Azure Mobile Services Xamarin.Android アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。" 
+	documentationCenter="xamarin" 
+	authors="lindydonna" 
+	manager="dwrede" 
+	services="mobile-services" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="donnam" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-android" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/24/2014" 
+	ms.author="donnam"/>
 
-# 既存のアプリケーションへの Mobile Services の追加
+# 既存のアプリにモバイル サービスを追加する
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]	
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]	
 
-<p>このトピックでは、Azure のモバイル サービスを使用して Xamarin.Android アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
+<p>このトピックでは、Azure Mobile Services を使用して Xamarin.Android アプリのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
 
-<div class="dev-callout"><b>注</b>
-<p>このチュートリアルの目的は、Azure を使用して Xamarin.Android アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-xamarin-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
-</div>
+> [AZURE.NOTE] このチュートリアルの目的は、Azure を使用して Xamarin.Android アプリのデータを格納および取得できるようにする Mobile Services のしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル [モバイル サービスの使用](/ja-jp/develop/mobile/tutorials/get-started-xamarin-android) を完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Xamarin.Android アプリ プロジェクトのダウンロード][GitHub] 
+1. [Xamarin.Android アプリ プロジェクトのダウンロード ][GitHub]
 2. [モバイル サービスの作成]
-3. [ストレージのデータ テーブルの追加]
+3. [ストレージへのデータ テーブルの追加]
 4. [モバイル サービスを使用するためのアプリケーションの更新]
 5. [モバイル サービスに対するアプリケーションのテスト]
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div> 
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5"%20target="_blank) をご覧ください。
 
-このチュートリアルには、[Azure Mobile Services コンポーネント]、[Xamarin.Android]、および Android SDK 4.2 以降のバージョンが必要です。 
+このチュートリアルには、[Azure モバイル サービス コンポーネント]、[Xamarin.Android]、および Android SDK 4.2 以降のバージョンが必要です。 
 
-<div class="dev-callout"><b>注</b>
-<p>ダウンロードした GetStartedWithData プロジェクトは、Android 4.2 以降のバージョンをターゲットとしています。ただし、モバイル サービス SDK は、Android 2.2 以降で動作します。</p>
-</div>
+> [AZURE.NOTE] ダウンロードした GetStartedWithData プロジェクトは、Android 4.2 以降のバージョンをターゲットとしています。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
 
 <h2><a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする</h2>
 
-このチュートリアルは、Xamarin.Android アプリケーションである [GetStartedWithData アプリケーション][GitHub]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービス Android のクイック スタートで生成したアプリケーションと同じです。 
+このチュートリアルは、Xamarin.Android アプリケーションである [GetStartedWithData アプリケーション][GitHub] に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービス Android のクイック スタートで生成したアプリケーションと同じです。 
 
-1. `GetStartedWithData` サンプル アプリケーションをダウンロードし、コンピューター上でファイルを展開します。 
+1. サンプル アプリケーション  `GetStartedWithData` をダウンロードし、コンピューター上でファイルを展開します。 
 
-2. Xamarin Studio で、**[ファイル]**、**[開く]** の順にクリックし、GetStartedWithData サンプル プロジェクトを展開した場所を参照します。**XamarinTodoQuickStart.Android.sln** を選択して開きます。
+2. Xamarin Studio で、**[File]**、**[Open]** の順にクリックし、GetStartedWithData サンプル プロジェクトを展開した場所を参照します。**XamarinTodoQuickStart.Android.sln** を選択して開きます。
 
 3. **TodoActivity** クラスを探して開きます。
 
-   	`// TODO` コメントに、このアプリケーションをモバイル サービスで実行するために必要な手順が指定されている点に注目してください。
+   	`// TODO::` コメントに、このアプリケーションをモバイル サービスで実行するために必要な手順が指定されている点に注目してください。
 
-5. **[実行]** メニューの **[デバッグしないで開始]** をクリックします。エミュレーターまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
+5. **[Run]** メニューの **[Start Without Debugging]** をクリックします。エミュレーターまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
 
-	<div class="dev-callout"><strong>メモ</strong> <p>このプロジェクトは、Android フォンまたは Android エミュレーターを使用して実行できます。Android フォンで実行するには、機器に固有の USB ドライバーをダウンロードする必要があります。</p><p>プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。</p></div>
+	> [AZURE.IMPORTANT] このプロジェクトは、Android フォンまたは Android エミュレーターを使用して実行できます。Android フォンで実行するには、機器に固有の USB ドライバーをダウンロードする必要があります。
+	> 
+	> プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
 
-6. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[追加]** をクリックします。
+6. アプリケーションで、意味のあるテキスト (たとえば、チュートリアルの完了) を入力し、**[Add]** をクリックします。
 
    	![][13]
 
@@ -52,7 +64,7 @@
 
 <h2><a name="create-service"></a>管理ポータルで新規モバイル サービスを作成する</h2>
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 <h2><a name="add-table"></a>新しいテーブルをモバイル サービスに追加する</h2>
 
@@ -72,20 +84,15 @@
 
   	これにより、既定のアクセス許可が設定された新しいストレージ テーブル **TodoItem** が作成されます。既定のアクセス許可とは、アプリケーションの任意のユーザーがテーブル内のデータにアクセスし、変更を加えることができることを表します。 
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>モバイル サービスのクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。</p> 
-	</div>
+    > [AZURE.NOTE] Mobile Services のクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。
 
 4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
 
-5. **[列]** タブをクリックし、自動的に作成される **id** 列のみがあることを確認します。
+5. **[列]** タブをクリックし、自動的に作成される **[id]** 列のみがあることを確認します。
 
   	これは、モバイル サービスのテーブルの最小要件です。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。</p>
-    </div>
+    > [AZURE.NOTE] モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。
 
 これで、新しいモバイル サービスをアプリケーションのデータ ストレージとして使用する準備が整いました。
 
@@ -93,7 +100,7 @@
 
 モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。 
 
-1. **Azure Mobile Services** が Components フォルダーに含まれていない場合は、**[コンポーネント]** を右クリックし、**[コンポーネントの取得]** を選択して、**Azure Mobile Services** を探します。
+1. **Azure Mobile Services**が Components フォルダーに含まれていない場合は、**[コンポーネント]** を右クリックし、**[コンポーネントの取得]** を選択して、**Azure Mobile Services** を探します。
 
   	これにより、モバイル サービス SDK コンポーネントがプロジェクトに追加されます。
 
@@ -107,11 +114,11 @@
 
 		using Microsoft.WindowsAzure.MobileServices;
  
-4. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、モバイル サービスで置き換えます。**TodoActivity** クラスで、既存の **todoItemList** リストを定義している次のコード行をコメント アウトします。
+4. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、モバイル サービスで置き換えます。**ToDoActivity** クラスで、既存の **toDoItemList** リストを定義している次のコード行をコメント アウトします。
 
 		public List<TodoItem> todoItemList = new ArrayList<TodoItem>();
 
-5. 前の手順を完了すると、プロジェクトのビルド エラーが示されます。`todoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント アウトします。 
+5. 前の手順を完了すると、プロジェクトのビルド エラーが示されます。 `todoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント アウトします。 
 
 6. 次に、モバイル サービスを追加します。次のコード行をコメント解除します。
 
@@ -144,9 +151,9 @@
 		// Get the Mobile Service Table instance to use
 		todoTable = client.GetTable<TodoItem>();    
 
-  	これで、モバイル サービスにアクセスするために使用される MobileServiceClient の新しいインスタンスが作成されます。さらに、モバイル サービス内のデータ ストレージをプロキシ経由で接続するために使用される MobileServiceTable の新しいインスタンスが作成されます。
+  	これで、モバイル サービスにアクセスするために使用される MobileServiceClient の新しいインスタンスが作成されます。また、モバイル サービス内のデータ ストレージをプロキシ経由で接続するために使用される MobileServiceTable の新しいインスタンスも作成されます。
 
-12. ファイルの末尾にある ProgressFilter クラスを探し、コメント解除します。このクラスは、MobileServiceClient がネットワーク操作を実行しているときに "読み込み中" インジケーターを表示します。
+12. ファイルの末尾にある ProgressFilter クラスを探し、コメント解除します。このクラスは、MobileServiceClient がネットワーク操作を実行しているときに  'loading' インジケーターを表示します。
 
 13. 次に示す **CheckItem** メソッドの行をコメント解除します。
 
@@ -200,7 +207,7 @@
 
 <h2><a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト</h2>
 
-1. **[実行]** メニューの **[デバッグしないで開始]** をクリックして、プロジェクトを開始します。既存のエミュレーター イメージまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
+1. **[Run]** メニューの **[Start Without Debugging]** をクリックして、プロジェクトを開始します。既存のエミュレーター イメージまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
 
 	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Xamarin.Android でビルドされ、実行されます。
 
@@ -214,7 +221,7 @@
 
    	![][9]
   
-   	**TodoItem** テーブルに、Mobile Services によって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+   	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
 これで、Xamarin.Android 向けの**データの使用**に関するチュートリアルは終了です。
 
@@ -227,10 +234,10 @@
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [ページングを使用したモバイル サービス クエリの改善]
+* [ページングを使用したクエリの改善]
   <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了した後は、次に示す、Xamarin.Android に関する他のチュートリアルを行うことをお勧めします。
@@ -239,13 +246,13 @@
 	<br/>アプリケーションのユーザーを認証する方法について説明します。
 
 * [プッシュ通知の使用]
-  <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 
 [Windows ストア アプリの入手]: #download-app
 [モバイル サービスの作成]: #create-service
-[ストレージのデータ テーブルの追加]: #add-table
+[ストレージへのデータ テーブルの追加]: #add-table
 [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
 [モバイル サービスに対するアプリケーションのテスト]: #test-app
 [次のステップ]:#next-steps
@@ -262,9 +269,9 @@
 [9]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-todoitem-data-browse.png
 [13]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-quickstart-startup-android.png
 
-<!-- URLs. TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+<!-- URLs.TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
@@ -278,3 +285,6 @@
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331302
+
+
+<!--HONumber=42-->

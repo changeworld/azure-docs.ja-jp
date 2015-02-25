@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Access SharePoint on behalf of the user" pageTitle="ユーザーの代理としての SharePoint へのアクセス | モバイル デベロッパー センター" metaKeywords="" description="ユーザーの代理として SharePoint への呼び出しを行う方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Access SharePoint on behalf of the user" authors="mahender" manager="dwrede" />
+﻿<properties pageTitle="ユーザーの代理としての SharePoint へのアクセス | モバイル デベロッパー センター" description="ユーザーの代理として SharePoint への呼び出しを行う方法について説明します。" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="mahender"/>
 
 # ユーザーの代理としての SharePoint へのアクセス
 
@@ -9,7 +9,7 @@
 <p>このトピックでは、現在ログインしているユーザーの代理として、SharePoint API にアクセスする方法について説明します。</p>
 <p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。ビデオでは、Windows ストア アプリを更新して SharePoint Online とやり取りする手順について、Mat Velloso が説明します。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('http://media.ch9.ms/ch9/f217/3f8cbf94-f36b-4162-b3da-1c00339ff217/AzureMobileServicesAADO365AuthenticationIdentityA_960.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">12:51:00</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="label">チュートリアルを見る</a><a style="background-image: url('http://media.ch9.ms/ch9/f217/3f8cbf94-f36b-4162-b3da-1c00339ff217/AzureMobileServicesAADO365AuthenticationIdentityA_960.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">12:51</span></div>
 </div>
 
 このチュートリアルでは、「Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証」チュートリアルのアプリケーションを更新し、新しい TodoItem が追加されたときに SharePoint Online で Word 文書を作成するようにします。
@@ -31,7 +31,7 @@
 ## <a name="configure-permissions"></a>SharePoint への委任アクセスのためにアプリケーションを構成する
 既定では、AAD から受け取るトークンは、アクセス許可が制限されています。サードパーティのリソースまたは SharePoint Online などの SaaS アプリケーションにアクセスするには、明示的にアクセスを許可する必要があります。
 
-1. [Azure の管理ポータルの **[Active Directory]** セクションに移動し、テナントを選択します。]モバイル サービス用に作成した Web アプリケーションに移動します。
+1. [Azure の管理ポータル]の **[Active Directory]** セクションに移動し、テナントを選択します。モバイル サービス用に作成した Web アプリケーションに移動します。
 
     ![][0]
 
@@ -43,7 +43,7 @@
 
 ## <a name="store-credentials"></a>モバイル サービスに SharePoint 情報を追加する
 
-SharePoint への呼び出しを作成するには、モバイル サービスが通信する必要があるエンドポイントを指定する必要があります。また、モバイル サービスの ID も証明できるようにする必要があります。これは、クライアント ID とクライアント シークレットのペアを使用して実行します。AAD ログインのセットアップの間に、既にモバイル サービスのクライアント ID を取得し、保存しています。これらは、機密性の高い資格情報であるため、コードではプレーンテキストで保存しないでください。代わりに、これらの値をモバイル サービスのアプリケーション設定として設定できます。
+SharePoint への呼び出しを作成するには、モバイル サービスが通信する必要があるエンドポイントを指定する必要があります。また、モバイル サービスの ID も証明できるようにする必要があります。これは、クライアント ID とクライアント シークレットのペアを使用して実行します。AAD ログインのセットアップの間に、既にモバイル サービスのクライアント ID を取得し、保存しています。これらは、機密性の高い資格情報であるため、コードではプレーンテキストで保存しないでください。代わりに、これらの値を Microsoft のモバイル サービスのアプリケーション設定として設定できます。
 
 1. テナントの [AAD アプリケーション] タブに戻り、モバイル サービスの Web アプリケーションを選択します。
 
@@ -51,7 +51,7 @@ SharePoint への呼び出しを作成するには、モバイル サービス�
 
     ![][2]
 
-3. 管理ポータルの [モバイル サービス] セクションで、[構成] タブに移動し、[アプリ設定] まで下へスクロールします。ここで、キーと値のペアを入力すると、必要な資格情報の参照に役立ちます。
+3. 管理ポータルの [Mobile Services] セクションで、[構成] タブに移動し、[アプリ設定] まで下へスクロールします。ここで、キーと値のペアを入力すると、必要な資格情報の参照に役立ちます。
 
     ![][3]
 
@@ -69,7 +69,7 @@ SharePoint にアクセスするには、SharePoint を対象ユーザーとす�
 
 1. Visual Studio で、Mobile Services バックエンド プロジェクトを開きます。
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
 
 2. Mobile Services バックエンド プロジェクトで、SharePointUploadContext という名前の新しいクラスを作成します。このクラスで、次のコードを追加します。
 
@@ -93,7 +93,7 @@ SharePoint にアクセスするには、SharePoint を対象ユーザーとす�
         {
             //Call ADAL and request a token to SharePoint with the access token
             AuthenticationContext ac = new AuthenticationContext(authority);
-            AuthenticationResult ar = ac.AcquireToken(sharepointURL, new UserAssertion(userToken), new ClientCredential(clientId, clientSecret));
+            AuthenticationResult ar = ac.AcquireToken(sharepointURL, new ClientCredential(clientId, clientSecret), new UserAssertion(userToken));
             accessToken = ar.AccessToken;
             string upn = ar.UserInfo.UserId;
             mySiteApiPath = "/personal/" + upn.Replace('@','_').Replace('.','_') + "/_api/web"; 
@@ -200,6 +200,8 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [アプリケーションをテストする]: #test-application
 
 <!-- URLs. -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
+
+<!--HONumber=42-->

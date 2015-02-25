@@ -1,16 +1,30 @@
-﻿<properties pageTitle="Xamarin iOS アプリでの Mobile Services の使用" metaKeywords="" description="次のチュートリアルに従って、Xamarin iOS 開発用の Azure Mobile Services を使用します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="craigd" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Xamarin iOS アプリでの Mobile Services の使用" 
+	description="次のチュートリアルに従って、Xamarin iOS 開発用の Azure Mobile Services を使用します。" 
+	services="mobile-services" 
+	documentationCenter="xamarin" 
+	authors="conceptdev" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="hero-article" ms.date="11/22/2014" ms.author="craig.dunn@xamarin.com" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-ios" 
+	ms.devlang="dotnet" 
+	ms.topic="hero-article" 
+	ms.date="11/22/2014" 
+	ms.author="craig.dunn@xamarin.com"/>
 
 # <a name="getting-started"> </a>モバイル サービスの使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure のモバイル サービスを使用して Xamarin.iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な  <em>To do list</em>  アプリケーションの両方を作成します。
+このチュートリアルでは、Azure Mobile Services を使用して Xamarin.iOS アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な <em>To do list</em> アプリケーションの両方を作成します。
 
 このチュートリアルのビデオを見る場合は、下のクリップでこのチュートリアルと同じ手順が表示されます。
 
-ビデオ:"Getting Started with Xamarin and Azure Mobile Services" (Xamarin と Azure モバイル サービスの使用)。Xamarin のデベロッパー エバンジェリスト Craig Dunn 氏 (再生時間: 10:05 分)
+ビデオ:"Getting Started with Xamarin and Azure Mobile Services" (Xamarin と Azure モバイル サービスの使用)。Xamarin のデベロッパー エバンジェリスト Craig Dunn 氏 (再生時間:10:05 分)
 
 > [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
 
@@ -22,19 +36,19 @@
 
 このチュートリアルを完了するには、XCode と、OS X 用 [Xamarin Studio] または Visual Studio 用 Xamarin Visual Studio プラグイン (Windows) が必要です。サンプルは iOS 5.0 以降で実行します。
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A643EE910&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-xamarin-ios%2F" target="_blank">Azure 無料評価版</a>を参照してください。</p></div>
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-xamarin-ios%2F"%20target="_blank)をご覧ください。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 <h2>新しい Xamarin.iOS アプリを作成する</h2>
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。 
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続できます。 
 
 ここでは、モバイル サービスに接続された新しい Xamarin.iOS アプリを作成します。
 
-1.  管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイックスタート] タブの **[プラットフォームの選択]** で、**[Xamarin.iOS]** を選択し、**[新しい Xamarin.iOS アプリを作成する]** を展開します。
 
@@ -62,7 +76,7 @@
 
 	![][9]
 
-2. **[実行]** をクリックしてプロジェクトをビルドし、このプロジェクトの既定である iPhone エミュレーターでアプリケーションを開始します。
+2. **[実行]** ボタンをクリックしてプロジェクトをビルドし、このプロジェクトの既定である iPhone エミュレーターでアプリケーションを開始します。
 
 3. アプリケーションで、意味のあるテキスト (「_Complete the tutorial_」など) を入力し、正符号 (**+**) アイコンをクリックします。
 
@@ -70,10 +84,7 @@
 
 	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	<div class="dev-callout"> 
-	<b>注</b> 
-   	<p>モバイル サービスにアクセスして TodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。</p> 
- 	</div>
+	> [AZURE.NOTE] モバイル サービスにアクセスして TodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
 
 4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
@@ -84,23 +95,22 @@
 	![][12]
 
 ## <a name="next-steps"> </a>次のステップ
-クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックをご覧ください。 
 
-* [データの使用]
-  <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+## 次のステップ
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックをご覧ください。 
 
 * [オフライン データの同期の使用]
-  <br/>オフライン データの同期を使用してアプリケーションの反応と信頼性を高める方法について説明します。
+  <br/>クイック スタートがオフライン データの同期を使用して、アプリケーションの応答性と信頼性を高める方法について説明します。
 
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-
 <!-- Anchors. -->
-[モバイル サービスの使用]:#getting-started
+[Mobile Services の使用]:#getting-started
 [新しいモバイル サービスを作成する]:#create-new-service
 [モバイル サービス インスタンスの定義]:#define-mobile-service-instance
 [次のステップ]:#next-steps
@@ -123,8 +133,9 @@
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
 
 [Xamarin Studio]: http://xamarin.com/download
-[Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [管理ポータル]: https://manage.windowsazure.com/
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

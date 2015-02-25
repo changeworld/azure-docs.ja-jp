@@ -1,21 +1,35 @@
-﻿<properties linkid="web-sites-python-ptvs-django-sql" title="Django and SQL Database on Azure with Python Tools 2.1 for Visual Studio" pageTitle="Azure における Django と SQL Database (Python Tools 2.1 for Visual Studio の使用方法)" description="SQL Database インスタンスにデータを格納する、Web サイトにデプロイ可能な Django アプリケーションを Python Tools for Visual Studio を使用して作成する方法について説明します。." metaKeywords="" services="" solutions="" documentationCenter="Python" authors="huvalo" videoId="" scriptId="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Azure における Django と SQL Database (Python Tools 2.1 for Visual Studio の使用方法)" 
+	description="Python Tools for Visual Studio を使って、SQL データベース インスタンスにデータを保存する Django アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。 
+	services="" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="10/10/2014" ms.author="huvalo" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="huvalo"/>
 
 
 
 
 # Azure における Django と SQL Database (Python Tools 2.1 for Visual Studio の使用方法) 
 
-このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ]でもご覧いただけます(https://www.youtube.com/watch?v=ZwcoGcIeHF4)。
+このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=ZwcoGcIeHF4)でもご覧いただけます。
 
 ここでは、Azure でホストされた SQL Database を使用する方法、SQL Database を使用するためのアプリケーションの構成方法、アプリケーションを Azure Websites に発行する方法について説明します。
 
-MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]を参照してください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
+MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]をご覧ください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
 
 + [前提条件](#prerequisites)
 + [プロジェクトを作成する](#create-the-project)
-+ [SQL Database を作成する](#create-a-sql-database)
++ [SQL データベースを作成する](#create-a-sql-database)
 + [プロジェクトを構成する](#configure-the-project)
 + [Azure Websites に発行する](#publish-to-an-azure-website)
 + [次のステップ](#next-steps)
@@ -28,7 +42,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
  - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2012][]
  - [Python 2.7 (32 ビット)][]
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##<a name="create-the-project"></a>プロジェクトを作成する
 
@@ -58,7 +72,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
   	![Django Management Console Window](./media/web-sites-python-ptvs-django-sql/PollsDjangoConsole.png)
 
-1.  <kbd>F5</kbd> キーを押してアプリケーションの動作を確認します。
+1.  <kbd>F5</kbd> キーを押して、アプリケーションが動作することを確認します。
 
 1.  一番上のナビゲーション バーの **[Log in]** をクリックします。
 
@@ -76,19 +90,19 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
   	![Web Browser](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqliteBrowser.png)
 
-##<a name="create-a-sql-database"></a>SQL データベースの作成
+##<a name="create-a-sql-database"></a>SQL データベースを作成する
 
 データベースに関しては、Azure SQL Database を作成します。
 
 データベースを作成するには、次のステップを実行します。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure 管理ポータル][]にログインします。
 
 1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
   	![New Button](./media/web-sites-python-ptvs-django-sql/PollsCommonAzurePlusNew.png)
 
-1.  **[データ サービス]**、**[SQL Database]**、**[簡易作成]** の順にクリックします。
+1.  **[データ サービス]**、**[SQL データベース]**、**[簡易作成]** の順にクリックします。
 
   	![Quick Create SQL Database](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlCreate.png)
 
@@ -114,11 +128,11 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 1.  このページには、データベース サーバーへの接続が許可されているすべてのコンピューターの IP アドレスが表示されます。ここに、自分のコンピューターの IP アドレスが表示されている必要があります。
 
-    サーバーへのアクセスが Azure サービスに許可されていることを、以下の **[使用できるサービス]** で確認してください。Azure Web サイトでアプリケーションを実行するときに (このチュートリアルの次のセクションで行います)、データベースへの接続がアプリケーションに許可されます。**[保存]** をクリックして変更を適用します。
+    サーバーへのアクセスが Azure サービスに許可されていることを、以下の **[使用できるサービス]** でご確認ください。Azure Web サイトでアプリケーションを実行するときに (このチュートリアルの次のセクションで行います)、データベースへの接続がアプリケーションに許可されます。**[保存]** をクリックして変更を適用します。
 
   	![Allowed Services](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlAllowedServices.png)
 
-1.  Visual Studio で、*ProjectName* フォルダーの **settings.py** を開きます。`DATABASES` の定義を編集します。
+1.  Visual Studio で、 *ProjectName* フォルダーの **settings.py** を開きます。 `DATABASES` の定義を編集します。
 
         DATABASES = {
             'default': {
@@ -141,11 +155,11 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 1.  ソリューション エクスプローラーの **[Python Environments]** で、対象の仮想環境を右クリックし、**[Install Python Package]** をクリックします。
 
-1.  **easy_install** を使用して `pyodbc` パッケージをインストールします。
+1.  **easy_install** を使用して  `pyodbc` パッケージをインストールします。
 
   	![Install Python Package Dialog](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackagePyodbc.png)
 
-1.  **pip** を使用して、`django-pyodbc-azure` パッケージをインストールします。
+1.  **pip** を使用して  `django-pyodbc-azure` パッケージをインストールします。
 
   	![Install Python Package Dialog](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackageDjangoPyodbcAzure.png)
 
@@ -155,12 +169,12 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
   	![Django Management Console Window](./media/web-sites-python-ptvs-django-sql/PollsDjangoConsole.png)
 
-1.  <kbd>F5</kbd> キーでアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが SQL Database にシリアル化されます。
+1.  <kbd>F5</kbd> を使用してアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが SQL Database にシリアル化されます。
 
 
 ##<a name="publish-to-an-azure-website"></a>Azure Websites に発行する
 
-作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイすることができます。
+作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイできます。
 
 1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
 
@@ -176,7 +190,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 1.  それ以外はすべて既定値のままにし、**[発行]** をクリックします。
 
-1.  Web ブラウザーが自動的に開いて、発行したサイトが表示されます。これでアプリケーションは、Azure 上にホストされた **SQL** Database を使用して正しく動作します。
+1.  Web ブラウザーが自動的に開いて、発行したサイトが表示されます。これでアプリケーションは、Azure 上にホストされた **SQL** データベースを使用して正しく動作します。
 
     ご利用ありがとうございます。
 
@@ -186,7 +200,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 Python Tools for Visual Studio、Django、SQL Database の詳細については、以下のリンクをクリックしてください。
 
-- [Python Tools for Visual Studio Documentation (Python Tools for Visual Studio のドキュメント)][]
+- [Python Tools for Visual Studio のドキュメント][]
   - [Web プロジェクト][]
   - [クラウド サービス プロジェクト][]
   - [Microsoft Azure でのリモート デバッグ][]
@@ -196,20 +210,21 @@ Python Tools for Visual Studio、Django、SQL Database の詳細については�
 
 <!--Link references-->
 [Python デベロッパー センター]: /ja-jp/develop/python/
-[Azure Cloud Services]: ../cloud-services-python-ptvs/
+[Azure クラウド サービス]: ../cloud-services-python-ptvs/
 
 <!--External Link references-->
-[Azure の管理ポータル]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190 
-[Python Tools for Visual Studio Documentation (Python Tools for Visual Studio のドキュメント)]: http://pytools.codeplex.com/documentation
+[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
 [Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
 [Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL データベース]: /ja-jp/documentation/services/sql-database/
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

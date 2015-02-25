@@ -1,6 +1,6 @@
-<properties urlDisplayName="Linux Agent guide" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="szarkos" solutions="" manager="timlt" editor="" />
+﻿<properties pageTitle="Azure Linux エージェント ユーザー ガイド" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" services="virtual-machines" documentationCenter="" authors="szarkos" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="szarkos" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="szarkos"/>
 
 
 
@@ -29,9 +29,9 @@ Azure Linux エージェント (waagent) は仮想マシンと Azure ファブ�
   - 仮想 NUMA の構成
   - /dev/random の Hyper-V エントロピの使用
   - root デバイス (リモート デバイス) の SCSI タイムアウトの構成
-* **Diagnostics**
+* **診断**
   - シリアル ポートへのコンソールのリダイレクト
-* **SCVMM のデプロイ**
+* **SCVMM の展開**
     - System Center Virtual Machine Manager 2012 R2 環境で実行されているときに Linux 用の VMM エージェントを検出およびブートストラップ
 
 プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
@@ -99,15 +99,15 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 - install:エージェントを手動でインストールします。
  * システムに対してインストールに必須の依存関係かあるかどうかを確認します。
 
- * SysV init スクリプト、 (/etc/init.d/waagent) logrotate 構成ファイルを  (/etc/logrotate.d/waagent) を作成します。起動時に init スクリプトを実行するようにイメージを設定します。
+ * SysV の init スクリプト (/etc/init.d/waagent) と logrotate 構成ファイル (/etc/logrotate.d/waagent) を作成します。起動時に init スクリプトを実行するようにイメージを設定します。
 
  * サンプル構成ファイルを /etc/waagent.conf に書き込みます。
 
- * 既存の構成ファイルは、/etc/waagent.conf.old に移動されます
+ * 既存の構成ファイルは、/etc/waagent.conf.old に移動されます。
 
  * カーネルのバージョンを検出し、必要に応じて VNUMA 回避策を適用します。
 
- * ネットワークを妨げる可能性のある udev ルール (/lib/udev/rules.d/75-persistent-net-generator.rules, /etc/udev/rules.d/70-persistent-net.rules) /var/lib/waagent/ に作成します。  
+ * ネットワークを妨げる可能性のある udev ルール (/lib/udev/rules.d/75-persistent-net-generator.rules, /etc/udev/rules.d/70-persistent-net.rules) を /var/lib/waagent/ に移動します。  
 
 - uninstall:waagent と関連するファイルを削除します。
  * システムから init スクリプトを登録解除して削除します。
@@ -144,7 +144,7 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 
 ##構成
 
-構成ファイルが  (/etc/waagent.conf) waagent の動作を管理します。 
+構成ファイル (/etc/waagent.conf) を使用して waagent の動作を制御します。 
 サンプル構成ファイルを次に示します。
 	
 	#
@@ -176,7 +176,7 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 **Role.StateConsumer:**
 
 次のコマンドを入力します。文字列  
-既定: None
+既定:None
 
 実行可能プログラムへのパスを指定した場合は、waagent がイメージのプロビジョニングを完了し、"Ready" 状態がファブリックにレポートされようとするときに呼び出されます。プログラムに指定された引数が "Ready" になります。エージェントはプログラムから制御が返るのを待たずに処理を続行します。
 
@@ -250,7 +250,7 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 次のコマンドを入力します。文字列  
 既定:/mnt/resource 
 
-リソース ディスクがマウントされるパスを指定します。リソース ディスクは *"一時ディスク"* であるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。
+リソース ディスクがマウントされるパスを指定します。リソース ディスクは  *temporary* であるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。
 
 **ResourceDisk.EnableSwap:**
 
@@ -314,7 +314,7 @@ OS ディスクおよびデータ ドライブの SCSI タイムアウトを秒�
 	    <PrivilegeLevel mode="max" />
 	    <AdditionalProperties><CgiHandlers></CgiHandlers></AdditionalProperties></HostingEnvironmentSettings>
 	    <ApplicationSettings>
-	      <Setting name="__ModelData" value="<m role=&quot;LinuxVM&quot; xmlns=&quot;urn:azure:m:v1&quot;><r name=&quot;LinuxVM&quot;><e name=&quot;HTTP&quot; /><e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp&quot; /><e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput&quot; /><e name=&quot;SSH&quot; /></r></m>" />
+	      <Setting name="__ModelData" value="&lt;m role=&quot;LinuxVM&quot; xmlns=&quot;urn:azure:m:v1&quot;>&lt;r name=&quot;LinuxVM&quot;>&lt;e name=&quot;HTTP&quot; />&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp&quot; />&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput&quot; />&lt;e name=&quot;SSH&quot; />&lt;/r>&lt;/m>" />
 	      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="..." />
 	      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2015-11-06T23:59:59.0000000-08:00" />
 	      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="rdos" />
@@ -405,4 +405,5 @@ OS ディスクおよびデータ ドライブの SCSI タイムアウトを秒�
 	  </Instances>
 	</SharedConfig>
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

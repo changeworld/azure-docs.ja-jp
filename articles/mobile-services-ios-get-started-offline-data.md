@@ -1,14 +1,12 @@
-﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データ同期の使用 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using Offline data sync in Mobile Services" authors="krisragh" manager="dwrede" />
+﻿<properties pageTitle="Mobile Services でのオフライン データ同期の使用 (iOS) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" documentationCenter="ios" authors="krisragh" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/16/2015" ms.author="krisragh,donnam"/>
 
 # モバイル サービスでのオフライン データの同期の使用
 
+[AZURE.INCLUDE [mobile-services-selector-offline](../includes/mobile-services-selector-offline.md)]
 
-[WACOM.INCLUDE [mobile-services-selector-offline](../includes/mobile-services-selector-offline.md)]
-
-
-このチュートリアルでは、iOS 上の Mobile Services のオフライン同期機能について説明します。開発者はこの機能を使用して、エンド ユーザーがネットワークにアクセスできなくても使用可能なアプリケーションを作成できます。
+このチュートリアルでは、iOS での Mobile Services のオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。変更は、ローカル データベースに格納されます。デバイスがオンラインに戻ると、これらの変更は、リモート サービスと同期されます。
 
 オフライン同期には、いくつかの潜在的な用途があります。
 
@@ -17,401 +15,237 @@
 * エンド ユーザーがネットワークにアクセスできなくてもデータを作成および変更できるようにすることで、接続がほとんどまたはまったく得られないような状況をサポートする。
 * 複数のデバイス間でデータを同期させ、同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
 
-このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用したアプリケーションを更新し、Azure Mobile Services のオフライン機能をサポートできるようにする方法を説明します。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
->[WACOM.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。
-
-このチュートリアルの目的は、Mobile Services が Windows ストア アプリのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初にチュートリアル「[Mobile Services の使用]」を完了することをお勧めします。
-
->[WACOM.NOTE] このセクションをスキップして、Getting Started プロジェクトのバージョンをダウンロードすることもできます。このプロジェクトは、既にオフラインをサポートしており、このトピックで説明されているすべての要素が含まれています。  オフライン サポートが有効になっているプロジェクトをダウンロードするには、[iOS 用のオフライン サンプルの使用]に関するページを参照してください。
-
+Mobile Services を初めて使用する場合は、最初にチュートリアル「[Mobile Services の使用]」を完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [サンプルのクイック スタート アプリケーションの取得]
-2. [Preview SDK のダウンロードとフレームワークの更新]
-3. [Core Data の設定]
-4. [Core Data モデルの定義]
-5. [同期テーブルと同期コンテキストの初期化と使用]
-6. [アプリケーションをテストする]
+1. [サンプル アプリケーションの取得]
+2. [Mobile Services 同期コードのレビュー]
+3. [Core Data モデルのレビュー]
+4. [アプリケーションの同期動作の変更]
+5. [アプリケーションをテストする]
 
-## <a name="get-app"></a>サンプルのクイック スタート アプリケーションの取得
+## <a name="get-app"></a>オフラインの ToDo サンプル アプリケーションの取得
 
-「[Mobile Services の使用]」の手順に従って、クイック スタート プロジェクトをダウンロードします。
+[GitHub の Mobile Services サンプル リポジトリ]で、リポジトリを複製し、プロジェクト [オフライン iOS サンプル]を Xcode で開きます。
 
-## <a name="update-app"></a>Preview SDK のダウンロードとフレームワークの更新
+### ベータ SDK
+オフライン サポートを既存のアプリケーションに追加するには、最新の[ベータ iOS SDK](http://aka.ms/gc6fex) を取得します。
 
-1. アプリケーションにオフライン サポートを追加するために、オフライン同期をサポートしている iOS 用 Mobile Services SDK のバージョンを取得しましょう。これはプレビュー機能としてリリースされているため、まだ正式にダウンロード可能な SDK ではありません。[Preview SDK はここからダウンロードできます]。
+## <a name="review-sync"></a>Mobile Services 同期コードのレビュー
 
-2. 次に、Xcode のプロジェクトから既存の **WindowsAzureMobileServices.framework** リファレンスを削除します。リファレンスを選択し、**[Edit]** メニューの [Move to Trash] を選択すると、実際のファイルが削除されます。
+Azure Mobile Services のオフライン同期を使用すると、ネットワークにアクセスできない場合でも、エンド ユーザーはローカル データベースとのやり取りができます。アプリケーションでこれらの機能を使用するには、 `MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、 `MSSyncTable` インターフェイスを使用してテーブルを参照します。
 
-      ![][update-framework-1]
+このセクションでは、サンプルのオフライン同期に関連するコードについて説明します。
 
-3. 新しい Preview SDK を解凍し、以前の SDK の場所に新しい **WindowsAzureMobileServices.framework** SDK をドラッグ アンド ドロップします。[Copy items into destination group's folder (if needed)] が選択されていることを確認します。
+1. **QSTodoService.m** で、メンバーの種類  `syncTable` が  `MSSyncTable` であることを確認します。オフライン同期では、 `MSTable` の代わりにこの同期インターフェイスを使用します。同期テーブルが使用されると、すべての操作はローカル ストアを参照し、明示的なプッシュ操作とプル操作を使用したリモート サービスとのみ同期されます。
 
-      ![][update-framework-2]
+    同期テーブルへの参照を取得するには、メソッド  `syncTableWithName` を使用します。オフラインの同期機能を削除するには、代わりに  `tableWithName` を使用します。
 
+3. テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。これは、 `QSTodoService.init` メソッドの関連するコードです。
 
-## <a name="setup-core-data"></a>Core Data の設定
+        MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
+        
+        self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
 
-1. iOS 用 Mobile Services SDK では、**MSSyncContextDataSource** プロトコルに準拠している限り、任意の永続ストアを使用できます。SDK には、[Core Data] に基づいてこのプロトコルを実装するデータ ソースが含まれています。
+    これにより、Mobile Services SDK で提供されるインターフェイス  `MSCoreDataStore` を使用して、ローカル ストアを作成します。代わりに、 `MSSyncContextDataSource` プロトコルを実装することで、別のローカル ストアを提供できます。
 
-2. アプリケーションで Core Data を使用するため、**[Targets]** の **[Build Phases]** に移動し、**[Link Binary with Libraries]** に **CoreData.framework** を追加します。
+     `initWithDelegate` の最初のパラメーターは、競合ハンドラーを指定するために使用します。 `nil` を渡したため、既定の競合ハンドラーを取得します。この競合ハンドラーは、競合が発生すると失敗します。カスタム競合ハンドラーを実装する方法の詳細についてには、[Mobile Services のオフライン サポートでの競合の処理]に関するチュートリアルを参照してください。
 
-      ![][core-data-1]
+4. メソッド  `pullData` と  `syncData` は、実際の同期操作を実行します。最初に  `syncData` は新しい変更をプッシュしてから、 `pullData` を呼び出してリモート サービスからデータを取得します。
 
-      ![][core-data-2]
-
-3. Core Data を追加している Xcode 内の既存のプロジェクトは、まだ Core Data をサポートしていません。そのため、プロジェクトのさまざまな部分に定型コードを追加する必要があります。まず、**QSAppDelegate.h** に次のコードを追加します。
-
-        #import <UIKit/UIKit.h>  
-        #import <CoreData/CoreData.h>  
-
-        @interface QSAppDelegate : UIResponder <UIApplicationDelegate>  
-
-        @property (strong, nonatomic) UIWindow *window;  
-
-        @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;  
-        @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;  
-        @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;  
-
-        - (void)saveContext;  
-        - (NSURL *)applicationDocumentsDirectory;  
-
-        @end
-
-4. 次に、**QSAppDelegate.m** の内容を以下のコードに置き換えます。このコードは、Xcode で新しいアプリケーションを作成し、[Use Core Data] チェック ボックスをオンにしたときに取得されるコードとほぼ同じです。**_managedObjectContext** の初期化でコンカレント タイプのプライベート キューを使用している点だけが異なります。この変更により、Core Data を使用する準備がほぼ整いましたが、まだ Core Data を使用して何もしていません。
-
-        #import "QSAppDelegate.h"
-
-        @implementation QSAppDelegate
-
-        @synthesize managedObjectContext = _managedObjectContext;
-        @synthesize managedObjectModel = _managedObjectModel;
-        @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+        -(void)syncData:(QSCompletionBlock)completion
         {
-            return YES;
+            // push all changes in the sync context, then pull new data
+            [self.client.syncContext pushWithCompletion:^(NSError *error) {
+                [self logErrorIfNotNil:error];
+                [self pullData:completion];
+            }];
         }
 
-        - (void)saveContext
+    同様に、メソッド `pullData` がクエリに一致する新しいデータを取得します。
+
+        -(void)pullData:(QSCompletionBlock)completion
         {
-            NSError *error = nil;
-            NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-            if (managedObjectContext != nil) {
-                if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-                    // Replace this implementation with code to handle the error appropriately.
-                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                    abort();
+            MSQuery *query = [self.syncTable query];
+            
+            // Pulls data from the remote server into the local table.
+            // We're pulling all items and filtering in the view
+            // query ID is used for incremental sync
+            [self.syncTable pullWithQuery:query queryId:@"allTodoItems" completion:^(NSError *error) {
+                [self logErrorIfNotNil:error];
+                
+                // Let the caller know that we have finished
+                if (completion != nil) {
+                    dispatch_async(dispatch_get_main_queue(), completion);
                 }
-            }
-        }
+            }];
+        }   
 
-        #pragma mark - Core Data stack
+    `syncData` で、最初に同期コンテキストで `pushWithCompletion` を呼び出します。このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブル自体ではなく `MSSyncContext` のメンバーです。何らかの方法で (CUD 操作により) ローカルで変更されたレコードだけが、サーバー宛てに送信されます。次にヘルパー `pullData` が呼び出されます。これは、`MSSyncTable.pullWithQuery` を呼び出してリモート データを取得し、ローカル データベースに格納します。 
 
-        // Returns the managed object context for the application.
-        // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-        - (NSManagedObjectContext *)managedObjectContext
-        {
-            if (_managedObjectContext != nil) {
-                return _managedObjectContext;
-            }
+    この例では、プッシュ操作は必ずしも必要ありません。プッシュ操作を行っているテーブルの同期コンテキストで保留中の変更がある場合は、プルは必ず最初にプッシュを発行します。ただし、複数の同期テーブルを使用している場合は、関連するテーブル全体で一貫性を保つよう、明示的にプッシュを呼び出す方法が最も適切です。
 
-            NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-            if (coordinator != nil) {
-                _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-                [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-            }
-            return _managedObjectContext;
-        }
+    メソッド `pullWithQuery` を使用すると、取得するレコードをフィルターするクエリを指定できます。この例では、クエリは、リモートの `TodoItem` テーブルのレコードをすべて取得するだけです。
 
-        // Returns the managed object model for the application.
-        // If the model doesn't already exist, it is created from the application's model.
-        - (NSManagedObjectModel *)managedObjectModel
-        {
-            if (_managedObjectModel != nil) {
-                return _managedObjectModel;
-            }
-            NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"QSTodoDataModel" withExtension:@"momd"];
-            _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-            return _managedObjectModel;
-        }
+    `pullWithQuery` に対する 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、前回の同期以降に変更されたレコードだけを、レコードの  `UpdatedAt` タイムスタンプ (ローカル ストアでは  `ms_updatedAt` といいます) を使用して取得します。クエリ ID は、アプリケーションの論理クエリごとに一意のわかりやすい文字列にする必要があります。増分同期を解除するには、`nil` をクエリ ID として渡します。これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
 
-        // Returns the persistent store coordinator for the application.
-        // If the coordinator doesn't already exist, it is created and the application's store added to it.
-        - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-        {
-            if (_persistentStoreCoordinator != nil) {
-                return _persistentStoreCoordinator;
-            }
+    >[AZURE.NOTE] モバイル サービスのデータベースからレコードが削除された場合に、デバイスのローカル ストアからレコードを削除するには、[論理削除]を有効にする必要があります。有効にしない場合、アプリケーションは定期的に  `MSSyncTable.purgeWithQuery` を呼び出し、ローカル ストアを削除します。
 
-            NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"qstodoitem.sqlite"];
+5. クラス `QSTodoService` では、 `syncData` メソッドは、データを変更する操作である `addItem` と `completeItem`の後に呼び出されます。また、 `QSTodoListViewController.refresh` からも呼び出されるため、ユーザーは、更新ジェスチャを実行するたびに最新のデータを取得します。 `QSTodoListViewController.init` は  `refresh` を呼び出すため、アプリケーションは起動時に同期も実行します。
 
-            NSError *error = nil;
-            _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-            if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-                /*
-                 Replace this implementation with code to handle the error appropriately.
+    データが変更されるたびに `syncData` が呼び出されることから、このアプリケーションは、データが編集されるたびにユーザーがオンラインであると想定します。別のセクションでは、アプリケーションを更新して、ユーザーがオフラインのときにも編集できるようにします。
 
-                 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+## <a name="review-core-data"></a>Core Data モデルのレビュー
 
-                 Typical reasons for an error here include:
-                 * The persistent store is not accessible;
-                 * The schema for the persistent store is incompatible with current managed object model.
-                 Check the error message to determine what the actual problem was.
+Core Data オフライン ストアを使用するときは、データ モデルで特定のテーブルとフィールドを定義する必要があります。サンプル アプリケーションには、あらかじめ適切な形式でデータ モデルが含まれています。このセクションでは、これらのテーブルとその使用方法を説明します。
 
-                 If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
+- **QSDataModel.xcdatamodeld** を開きます。4 つのテーブルが定義済みです。3 つは SDK で使用し、1 つはそれ自体が Todo 項目になっています。
+      * MS_TableOperations:サーバーと同期する必要がある項目の追跡用
+      * MS_TableOperationErrors:オフライン同期中に発生するエラーの追跡用 
+      * MS_TableConfig:すべてのプル操作に対する最後の同期操作の最終更新時刻の追跡用
+      * TodoItem:Todo 項目の格納用。システム列 **ms_createdAt**、**ms_updatedAt**、および **ms_version** は省略可能なシステム プロパティです。 
 
-                 If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-                 * Simply deleting the existing store:
-                 [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+>[AZURE.NOTE] Mobile Services SDK では、"**`ms_`**" が付く列名を予約しています。システム列以外でこのプレフィックスを使用しないでください。使用すると、リモート サービスを使用する場合に、列名が変更されます。
 
-                 * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-                 @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
+- オフライン同期機能を使用する場合は、次のようにシステム テーブルを定義する必要があります。
 
-                 Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-
-                 */
-
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }
-
-            return _persistentStoreCoordinator;
-        }
-
-        #pragma mark - Application's Documents directory
-
-        // Returns the URL to the application's Documents directory.
-        - (NSURL *)applicationDocumentsDirectory
-        {
-            return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        }
-
-        @end
-
-## <a name="defining-core-data"></a>Core Data モデルの定義
-
-1. Core Data を使用したアプリケーション設定の続きとして、データ モデルを定義しましょう。すぐにこのデータ モデルの使用を開始できるわけではありません。最初に、Core Data のモデル (スキーマ) を定義します。この定義を行うには、**[File]**、**[New File]** を順にクリックし、**[Core Data]** セクションで **[Data Model]** を選択します。ファイル名を入力するように求められたら、「**QSTodoDataModel.xcdatamodeld**」と入力します。
-
-      ![][defining-core-data-main-screen]
-
-2. 次に、必要な実際のエンティティ (テーブル) を定義します。ここでは、Core Data Model Editor を使用して 3 つのテーブル (エンティティ) を作成します。詳細については、[Core Data Model Editor のヘルプ]を参照してください。
-
-  * TodoItem: 項目自体の格納用
-  * MS_TableOperations: サーバーと同期する必要がある項目の追跡用 (オフライン機能の動作に必要)
-  * MS_TableOperationErrors: オフライン同期中に発生したすべてのエラーの追跡用 (オフライン機能の動作に必要)
-
-      ![][defining-core-data-model-editor]
-
-3. 次に示すように、3 つのエンティティを定義します。モデルを保存し、プロジェクトをビルドして、問題がないことを確認します。これで、Core Data を使用するためのアプリケーションの設定が完了しましたが、アプリケーションはまだ Core Data を使用していません。
-
-      ![][defining-core-data-todoitem-entity]
-
-      ![][defining-core-data-tableoperations-entity]
-
-      ![][defining-core-data-tableoperationerrors-entity]
-
-
-    **TodoItem**
-
-    | 属性  |  型   |
-    |----------- |  ------ |
-    | id         | 文字列  |
-    | complete   | ブール値 |
-    | text       | 文字列  |
-    | ms_version | 文字列  |
+    ### システム テーブル
 
     **MS_TableOperations**
+
+    ![][defining-core-data-tableoperations-entity]
 
     | 属性  |    型     |
     |----------- |   ------    |
     | id         | 整数 64  |
-    | properties | バイナリ データ |
     | itemId     | 文字列      |
+    | properties | バイナリ データ |
     | table      | 文字列      |
+    | tableKind  | Integer 16  |
 
-    **MS_TableOperationErrors**
+    <br>**MS_TableOperationErrors**
+
+    ![][defining-core-data-tableoperationerrors-entity]
 
     | 属性  |    型     |
     |----------- |   ------    |
     | id         | 文字列      |
+    | operationID | 整数 64 |
     | properties | バイナリ データ |
+    | tableKind  | Integer 16  |
 
-## <a name="setup-sync"></a> 同期テーブルと同期コンテキストの初期化と使用
+    <br>**MS_TableConfig**
 
-1. オフラインのデータ キャッシュを開始するために、モバイル サービスにアクセスする際に **MSTable** の代わりに **MSSyncTable** を使用しましょう。通常の **MSTable** とは異なり、同期テーブルは論理テーブルのように、ローカルで加えられた変更をリモート テーブルにプッシュしたり、ローカルに変更をプルしたりすることができます。**QSTodoService.h** で、**table** プロパティの定義を削除します。
+    ![][defining-core-data-tableconfig-entity]
 
-        @property (nonatomic, strong)   MSTable *table;
+    | 属性  |    型     |
+    |----------- |   ------    |
+    | id         | 整数 64  |
+    | key        | 文字列      |
+    | keyType    | 整数 64  |
+    | table      | 文字列      |
+    | value      | 文字列      |
 
-    Add a new line to define the **syncTable** property:
+    ### データ テーブル
 
-        @property (nonatomic, strong)   MSTable *syncTable;
+    ![][defining-core-data-todoitem-entity]
 
-2. Add the following import statement at the top of **QSTodoService.m**:
+    **TodoItem**
 
-        #import "QSAppDelegate.h"
+    | 属性    |  型   | 注                                                       | 
+    |-----------   |  ------ | -----------------------------------------------------------|
+    | id           | 文字列  | リモート ストア内のプライマリ キー                                |
+    | complete     | ブール値 | Todo 項目のフィールド                                            |
+    | text         | 文字列  | Todo 項目のフィールド                                            |
+    | ms_createdAt | 日付    | *(省略可能)* `__createdAt` システム プロパティにマプ         |
+    | ms_updatedAt | 日付    | *(省略可能)* `__updatedAt` システム プロパティにマプ        |
+    | ms_version   | 文字列  | *(省略可能)* 競合の検出に使用、`__version` にマップ |
 
-3. **QSTodoService.m** で、**init** の次の 2 行を削除します。
 
-        // Create an MSTable instance to allow us to work with the TodoItem table
-        self.table = [_client tableWithName:@"TodoItem"];
+## <a name="setup-sync"></a>アプリケーションの同期動作の変更
 
-    Instead, add these two new lines in its place:
+このセクションでは、アプリケーションの起動時または項目の挿入や更新時ではなく、[ジェスチャの更新] ボタンの実行時にだけ、アプリケーションが同期するようアプリケーションを変更します。 
 
-        // Create an MSSyncTable instance to allow us to work with the TodoItem table
-        self.syncTable = [self.client syncTableWithName:@"TodoItem"];
+1. **QSTodoListViewController.m** で、**viewDidLoad** メソッドを変更し、メソッドの最後にある `[self refresh]` への呼び出しを削除します。これで、アプリケーションの起動時にデータはサーバーと同期されなくなりますが、代わりにデータはローカル ストアのコンテンツになります。
 
-4. 次に、**QSTodoService.m** に戻り、先ほど実装した Core Data ベースのデータ ストアを使用して、**MSClient** 内の同期コンテキストを初期化します。このコンテキストは、ローカルでどの項目が変更されたかを追跡し、プッシュ操作が開始されたときにそれらをサーバーに送信する役目を果たします。コンテキストを初期化するには、データ ソース (プロトコルの **MSCoreDataStore** 実装) とオプションの **MSSyncContextDelegate** 実装が必要です。先ほど挿入した 2 行の直前に、以下の行を挿入します。
+2. **QSTodoService.m** で、 `addItem` 定義を変更して、項目の挿入後に同期しないようにします。 `self syncData` ブロックを削除して、次に置き換えます。
 
-        QSAppDelegate *delegate = (QSAppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
-        MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
+            if (completion != nil) {
+                dispatch_async(dispatch_get_main_queue(), completion);
+            }
 
-        self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
+3. 上のように  `completeItem` の定義を変更し、 `self syncData` のブロックを削除して、次に置き換えます。
 
-5. 次に、通常のテーブルの代わりに同期テーブルを使用するように、**QSTodoService.m** の操作を更新します。まず、**refreshDataOnSuccess** を次の実装に置き換えます。これによってサービスからデータが取得されます。同期テーブルを使用するように更新したら、条件と一致する項目のみを取得するよう同期テーブルに指示し、ローカルの同期テーブルからサービスの **items** プロパティへのデータの読み込みを開始します。このコードでは、  **refreshDataOnSuccess** がリモート テーブルからローカル (同期) テーブルにデータをプルします。通常は、必要でないかもしれない情報でクライアントに過剰な負荷をかけないように、テーブルのサブセットのみをプルする必要があります。
-
-    この操作とこれ以降で実行する残りの操作では、完了ブロックの呼び出しをメイン スレッドの **dispatch_async** 呼び出しにラップしています。同期コンテキストを初期化する際にコールバック パラメーターを渡していないため、フレームワークによって既定のシリアル キューが作成され、すべての syncTable 操作の結果がバックグラウンド スレッドにディスパッチされます。UI コンポーネントを変更する際は、コードを UI スレッドにディスパッチする必要があります。
-
-          -(void) refreshDataOnSuccess:(QSCompletionBlock)completion
-          {
-              NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
-              MSQuery *query = [self.syncTable queryWithPredicate:predicate];
-
-              [query orderByAscending:@"text"];
-              [query readWithCompletion:^(MSQueryResult *result, NSError *error) {
-                  [self logErrorIfNotNil:error];
-
-                  self.items = [result.items mutableCopy];
-
-                  // Let the caller know that we finished
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                      completion();
-                  });
-              }];
-          }
-
-6. 次に、**QSTodoService.m** 内の **addItem** を次のように置き換えます。この変更により、操作がキューに追加されます。操作が実行されると、変更がリモート サービスにプッシュされ、すべてのユーザーに表示されるようになります。
-
-        -(void)addItem:(NSDictionary *)item completion:(QSCompletionWithIndexBlock)completion
-        {
-            // Insert the item into the TodoItem table and add to the items array on completion
-            [self.syncTable insert:item completion:^(NSDictionary *result, NSError *error)
-             {
-                 [self logErrorIfNotNil:error];
-
-                 NSUInteger index = [items count];
-                 [(NSMutableArray *)items insertObject:result atIndex:index];
-
-                 // Let the caller know that we finished
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     completion(index);
-                 });
-             }];
-        }
-
-7. **QSTodoService.m** 内の **completeItem** を次のように更新します。**MSTable** とは異なり、**MSSyncTable** に対する **update** 操作の完了ブロックには更新された項目が含まれません。**MSTable** の場合は、更新対象の項目がサーバーで変更され、その変更がクライアントに反映されます。**MSSyncTable** の場合は、更新対象の項目は変更されず、完了ブロックにパラメーターはありません。
-
-        -(void) completeItem:(NSDictionary *)item completion:(QSCompletionWithIndexBlock)completion
-        {
-            // Cast the public items property to the mutable type (it was created as mutable)
-            NSMutableArray *mutableItems = (NSMutableArray *) items;
-
-            // Set the item to be complete (we need a mutable copy)
-            NSMutableDictionary *mutable = [item mutableCopy];
-            [mutable setObject:@YES forKey:@"complete"];
-
-            // Replace the original in the items array
-            NSUInteger index = [items indexOfObjectIdenticalTo:item];
-            [mutableItems replaceObjectAtIndex:index withObject:item];
-
-            // Update the item in the TodoItem table and remove from the items array on completion
-            [self.syncTable update:mutable completion:^(NSError *error) {
-
-                [self logErrorIfNotNil:error];
-
-                NSUInteger index = [items indexOfObjectIdenticalTo:mutable];
-                if (index != NSNotFound)
-                {
-                    [mutableItems removeObjectAtIndex:index];
-                }
-
-                // Let the caller know that we have finished
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(index);
-                });
-
-            }];
-        }
-
-8. 以下の **syncData** 操作宣言を **QSTodoService.h** に追加します。
-
-        - (void)syncData:(QSCompletionBlock)completion;
-
-     Add the corresponding implementation of **syncData** to **QSTodoService.m**. We're adding this operation to update the sync table with remote changes.
-
-          -(void)syncData:(QSCompletionBlock)completion
-           {
-              // Create a predicate that finds items where complete is false
-              NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
-
-              MSQuery *query = [self.syncTable queryWithPredicate:predicate];
-
-              // Pulls data from the remote server into the local table. We're only
-              // pulling the items which we want to display (complete == NO).
-              [self.syncTable pullWithQuery:query completion:^(NSError *error) {
-                  [self logErrorIfNotNil:error];
-                  [self refreshDataOnSuccess:completion];
-           }];
-          }
-
-9. Back in **QSTodoListViewController.m**, change the implementation of **refresh** to call **syncData** instead of **refreshDataOnSuccess**:
-
-        -(void) refresh
-        {
-            [self.refreshControl beginRefreshing];
-            [self.todoService syncData:^
-             {
-                  [self.refreshControl endRefreshing];
-                  [self.tableView reloadData];
-             }];
-        }
-
-10. **QSTodoListViewController.m** に戻り、**viewDidLoad** 操作の最後にある **[self refresh]** の呼び出しを次のコードに置き換えます。
-
-        // load the local data, but don't pull from server
-        [self.todoService refreshDataOnSuccess:^
-         {
-             [self.refreshControl endRefreshing];
-             [self.tableView reloadData];
-         }];
-
-11. では、アプリケーションをオフラインで実際にテストしてみましょう。アプリケーションにいくつかの項目を追加し、Azure の管理ポータルにアクセスして、アプリケーションの **[データ]** タブを確認してください。まだ項目が追加されていないことがわかります。
-
-12. 次に、上部からドラッグしてアプリの更新ジェスチャを実行します。再度 Azure の管理ポータルにアクセスし、**[データ]** タブを確認してください。今度はデータがクラウドに保存されていることがわかります。項目を追加した後で (または、アプリケーションで項目を編集する機能が有効になっている場合は、項目を編集した後で) アプリケーションを閉じることもできます。アプリケーションを再度起動すると、アプリケーションがサーバーと同期し、変更が保存されます。
-
-13. クライアントがローカルで項目に変更を加えると、それらの変更はサーバーに送信されるために同期コンテキストに格納されます。追跡された変更が *push* 操作によってリモート サーバーに送信されますが、ここではサーバーへの push 呼び出しはありません。ただし、*一般的には、プルが実行される前に保留中の操作がサーバーにプッシュされるため、*競合を避けるためにプッシュが自動的に実行されます。このアプリケーションに *push* の明示的な呼び出しがないのはそのためです。
+            if (completion != nil) {
+                dispatch_async(dispatch_get_main_queue(), completion);
+            }
 
 ## <a name="test-app"></a>アプリケーションをテストする
 
-最後に、アプリケーションをオフラインでテストしてみましょう。アプリケーションに項目をいくつか追加します。ポータルに移動し、データを参照します (または PostMan や Fiddler などのネットワーク ツールを使用して、このテーブルに直接クエリを実行します)。
+このセクションでは、シミュレーターの Wi-Fi をオフにして、オフライン シナリオを作成します。データ項目を追加すると、ローカル Core Data ストアに保持されますが、モバイル サービスとは同期されません。
 
-まだ項目がサービスに追加されていないことがわかります。上部からドラッグして、アプリケーション インスタンスの更新ジェスチャを実行します。今度はデータがクラウドに保存されていることがわかります。項目をいくつか追加した後でアプリケーションを閉じることもできます。アプリケーションを再度起動すると、サーバーと同期し、変更が保存されます。
+1. iOS シミュレーターの Wi-Fi をオフにします。
+
+2. いくつかの Todo 項目を追加するか、一部の項目を完了します。シミュレーターを終了し (またはアプリケーションを強制的に閉じて)、再起動します。変更内容が保存されていることを確認します。
+
+3. リモートの TodoItem テーブルの内容を表示します。
+   - JavaScript バックエンドの場合は、管理ポータルで [データ] タブをクリックし、 `TodoItem` テーブルの内容を表示します。
+   - .NET バックエンドの場合は、SQL Server Management Studio のような SQL ツールまたは Fiddler や Postman のような REST クライアントを使用して、テーブルの内容を表示します。
+
+    新しい項目が、サーバーと同期 *されなかった*ことを確認します。
+
+4. iOS シミュレーターで Wi-Fi をオンにし、項目の一覧をプルダウンして更新ジェスチャを実行します。進行状況を示すスピナーとテキスト "同期中..." が表示されます。
+
+5. TodoItem データをもう一度表示します。新しく変更した TodoItems が表示されます。
+
+## まとめ
+
+モバイル サービスのオフライン機能をサポートするために、 `MSSyncTable` インターフェイスを使用して、ローカル ストアにより  `MSClient.syncContext` を初期化しました。この例では、ローカル ストアは、Core Data に基づいたデータベースでした。 
+
+Core Data ローカル ストアを使用する場合、[正しいシステム プロパティ][Core Data モデルのレビュー]を使用して、複数のテーブルを定義する必要があります。
+
+モバイル サービスに対する通常の CRUD 操作は、まるでアプリケーションが接続されているかのように機能しますが、すべての操作はローカル ストアに対して実施されます。
+
+ローカル ストアをサーバーと同期する場合は、 `MSSyncTable.pullWithQuery` メソッドと  `MSClient.syncContext.pushWithCompletion` メソッドを使用しました。
+
+*  サーバーに変更をプッシュするために、`Core Data モデルのレビュー`を呼び出しました。このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブルではなく  `MSSyncContext` のメンバーです。
+
+    何らかの方法で (CUD 操作により) ローカルで変更されたレコードだけが、サーバー宛てに送信されます。
+   
+* サーバー上のテーブルからアプリケーションにデータをプルするために、 `MSSyncTable.pullWithQuery` を呼び出しました。
+
+    プルは必ず、最初にプッシュを実行します。これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。
+
+     `query` パラメーターをカスタマイズすると、 `pullWithQuery` を使用して、クライアントに格納されたデータをフィルターできます。 
+
+* 増分同期を有効にするには、 `pullWithQuery` にクエリ ID を渡します。クエリ ID を使用して、最後のプル操作の結果から、最後に更新されたタイムスタンプを格納します。クエリ ID は、アプリケーションの論理クエリごとに一意のわかりやすい文字列にする必要があります。クエリにパラメーターがある場合、同じパラメーター値をクエリ ID の一部にする必要があります。
+
+    増分同期を除外する場合は、 `nill` をクエリ ID として渡します。その場合は、 `pullWithQuery` を呼び出すたびにすべてのレコードが取得されます。よって、非効率となる可能性があります。
+
+* モバイル サービスのデータベースからレコードが削除された場合に、デバイスのローカル ストアからレコードを削除するには、[論理削除]を有効にする必要があります。そのようにしない場合は、リモート サービスでレコードが削除されていたら、アプリケーションで定期的に  `MSSyncTable.purgeWithQuery` を呼び出し、ローカル データベースからレコードを削除する必要があります。
+
 
 ## 次のステップ
 
-* [モバイル サービスのオフライン サポートでの競合を処理する]
+* [Mobile Services のオフライン サポートでの競合の処理]に関するページ
+
+* [Mobile Services での論理削除の使用方法][論理削除]
+
+## その他のリソース
+
+* [Cloud Cover:Azure Mobile Services でのオフラインの同期]に関するページ
+
+* [Azure Friday:Azure Mobile Services のオフライン対応アプリケーション]に関するページ \(注: デモは、Windows 向けですが、機能の説明はすべてのプラットフォームに対して適用されます\)
 
 <!-- URLs. -->
 
-[サンプルのクイック スタート アプリケーションの取得]: #get-app
-[Preview SDK のダウンロードとフレームワークの更新]: #update-app
-[Core Data の設定]: #setup-core-data
-[Core Data モデルの定義]: #defining-core-data
-[同期テーブルと同期コンテキストの初期化と使用]: #setup-sync
+[サンプル アプリケーションの取得]: #get-app
+[Core Data モデルのレビュー]: #review-core-data
+[Mobile Services 同期コードのレビュー]: #review-sync
+[アプリケーションの同期動作の変更]: #setup-sync
 [アプリケーションをテストする]: #test-app
 
 [core-data-1]: ./media/mobile-services-ios-get-started-offline-data/core-data-1.png
@@ -421,25 +255,30 @@
 [defining-core-data-model-editor]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-model-editor.png
 [defining-core-data-tableoperationerrors-entity]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-tableoperations-entity.png
+[defining-core-data-tableconfig-entity]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 [update-framework-1]: ./media/mobile-services-ios-get-started-offline-data/update-framework-1.png
 [update-framework-2]: ./media/mobile-services-ios-get-started-offline-data/update-framework-2.png
 
-
-
-
-[Core Data Model Editor のヘルプ]: https://developer.apple.com/library/mac/recipes/xcode_help-core_data_modeling_tool/Articles/about_cd_modeling_tool.html
+[コア データ モデル エディターのヘルプ]: https://developer.apple.com/library/mac/recipes/xcode_help-core_data_modeling_tool/Articles/about_cd_modeling_tool.html
 [コンセント接続の作成]: https://developer.apple.com/library/mac/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html
-[ユーザー インターフェイスの構築]: https://developer.apple.com/library/mac/documentation/ToolsLanguages/Conceptual/Xcode_Overview/Edit_User_Interfaces/edit_user_interface.html
-[Storyboard のシーン間へのセグエの追加]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardSegue.html#//apple_ref/doc/uid/TP40014225-CH25-SW1
-[Storyboard へのシーンの追加]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardScene.html
+[ユーザー インターフェイスの作成]: https://developer.apple.com/library/mac/documentation/ToolsLanguages/Conceptual/Xcode_Overview/Edit_User_Interfaces/edit_user_interface.html
+[ストーリーボード内のシーン間へのセグエの追加]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardSegue.html#//apple_ref/doc/uid/TP40014225-CH25-SW1
+[シーンのストーリーボードへの追加]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardScene.html
 
-[Core Data]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html
-[Preview SDK はここからダウンロードできます]: http://aka.ms/Gc6fex
-[iOS 用 Mobile Services クライアント ライブラリの使用方法]: /ja-jp/documentation/articles/mobile-services-ios-how-to-use-client-library/
-[iOS 用のオフライン サンプルの使用]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
-
+[中核となるデータ]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html
+[Preview SDK をここからダウンロード]: http://aka.ms/Gc6fex
+[IOS 向けモバイル サービスのクライアント ライブラリを使用する方法]: /ja-jp/documentation/articles/mobile-services-ios-how-to-use-client-library/
+[オフライン iOS サンプル]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
+[GitHub の Mobile Services サンプル リポジトリ]: https://github.com/Azure/mobile-services-samples
 
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
 [データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
-[モバイル サービスのオフライン サポートでの競合を処理する]: /ja-jp/documentation/articles/mobile-services-ios-handling-conflicts-offline-data/
+[Mobile Services のオフライン サポートでの競合の処理]に関するページ: /ja-jp/documentation/articles/mobile-services-ios-handling-conflicts-offline-data/
+[論理削除]: /ja-jp/documentation/articles/mobile-services-using-soft-delete/
+
+[Cloud Cover:Azure Mobile Services でのオフラインの同期]に関するページ: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Friday:Azure Mobile Services のオフライン対応アプリケーション]に関するページ: http://azure.microsoft.com/ja-jp/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+
+
+<!--HONumber=42-->

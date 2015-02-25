@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Use the Mobile Services .NET Backend" pageTitle="Mobile Services .NET バックエンドの使用 - Azure Mobile Services" metaKeywords="" description="テーブル データ、API、認証、スケジュールされたジョブの操作方法を含め、Azure Mobile Services 向けの .NET バックエンド プログラミング モデルの詳細を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="Use the Mobile Services .NET Backend" authors="mahender" solutions="" manager="dwrede" editor="mollybos" />
+﻿<properties pageTitle="Mobile Services .NET バックエンドの使用 - Azure Mobile Services" description="テーブル データ、API、認証、スケジュールされたジョブの操作方法を含め、Azure Mobile Services 向けの .NET バックエンド プログラミング モデルの詳細を示します。" services="" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="mahender"/>
 # Mobile Services .NET バックエンドの使用
 
 <div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use/" title=".NET backend" class="current">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/"  title="JavaScript backend">JavaScript バックエンド</a></div>
@@ -18,4 +18,6 @@ Mobile Services .NET バックエンドにより、[ASP.NET Web API](http://www.
 
 Mobile Services .NET バックエンドは、データベース ストレージ用の CRUD ベースの HTTP API を表す汎用的な "テーブル" 抽象化を提供します。この抽象化では、データ ストレージの問題をビジネス ロジックから分離し、モバイル サービスがさまざまなストアを一貫した JSON ベースのワイヤ形式で公開できるようにします。この形式は、クロスプラットフォームの Mobile Services クライアント SDK によって容易に認識されます。 
 
-このプログラミング モデルの根幹となるのは[**TableController<T>**](http://msdn.microsoft.com/library/dn643359.aspx) クラスです。これは単なる通常の Web API [**ApiController**](http://msdn.microsoft.com/library/system.web.http.apicontroller.aspx) で、CRUD のデータ アクセス パターンに合わせてカスタマイズでされます。**TableController** では、SQL ([Entity Framework](http://msdn.microsoft.com/data/ef.aspx) 経由)、[Azure テーブル ストレージ](http://azure.microsoft.com/documentation/services/storage/)、[MongoDB](http://www.mongodb.org)、または独自のカスタム ストアを含む、さまざまなデータ ストアを使用できます。
+このプログラミング モデルの根幹となるのは [**TableController<T>**](http://msdn.microsoft.com/library/dn643359.aspx) クラスです。これは単なる通常の Web API [**ApiController**](http://msdn.microsoft.com/library/system.web.http.apicontroller.aspx) で、CRUD のデータ アクセス パターンに合わせてカスタマイズでされます。**TableController** では、SQL ([Entity Framework](http://msdn.microsoft.com/data/ef.aspx) 経由)、[Azure テーブル ストレージ](http://azure.microsoft.com/documentation/services/storage/)、[MongoDB](http://www.mongodb.org)、または独自のカスタム ストアを含む、さまざまなデータ ストアを使用できます。
+
+<!--HONumber=42-->

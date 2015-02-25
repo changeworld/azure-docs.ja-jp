@@ -1,188 +1,144 @@
-﻿<properties urlDisplayName="Resources" pageTitle="Azure Websites でのデジタル マーケティング キャンペーンの作成" metaKeywords="" description="このガイドでは、Azure Websites を使用してデジタル マーケティング キャンペーンを作成する方法 (技術概要) を説明します。デプロイメント、ソーシャル メディアの統合、スケールの戦略、監視も取り上げます。" metaCanonical="" services="" documentationCenter="" title="Create a Digital Marketing Campaign on Azure Websites" authors="jroth" solutions="" manager="wpickett" editor="mollybos" />
+<properties 
+	pageTitle="Azure Websites でのデジタル マーケティング キャンペーンの作成" 
+	description="このガイドでは、Azure Websites を使用してデジタル マーケティング キャンペーンを作成する方法 (技術概要) を説明します。デプロイメント、ソーシャル メディアの統合、スケールの戦略、監視も取り上げます。" 
+	editor="jimbe" 
+	manager="wpickett" 
+	authors="cephalin" 
+	services="web-sites" 
+	documentationCenter=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/01/2014" ms.author="jroth" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/02/2014" 
+	ms.author="cephalin"/>
 
-# Azure Websites でのデジタル マーケティング キャンペーンの作成
-このガイドでは、Azure Websites を使用してデジタル マーケティング キャンペーンを作成する方法 (技術概要) を説明します。通常、デジタル マーケティング キャンペーンは、短期的なマーケティング目標を達成するため一定期間のみ実施されます。この場合、主に 2 つのシナリオが考えられます。1 つは、サードパーティのマーケティング会社が顧客のためにキャンペーンを作成し、販促期間中はそのマーケティング会社がキャンペーンを管理するシナリオです。もう 1 つは、デジタル マーケティング キャンペーンをマーケティング会社が作成した後、そのリソースの所有権を顧客へ譲渡するシナリオです。その後は、顧客が単独でデジタル マーケティング キャンペーンを運営管理します。 
+# Azure Websites でのデジタル マーケティング キャンペーン
+デジタル マーケティング キャンペーンには、[Azure Websites] が最適です。通常、デジタル マーケティング キャンペーンは、短期的なマーケティング目標を達成するため一定期間のみ実施されます。この場合、主に 2 つのシナリオが考えられます。1 つは、サードパーティのマーケティング会社が顧客のためにキャンペーンを作成し、販促期間中はそのマーケティング会社がキャンペーンを管理するシナリオです。もう 1 つは、デジタル マーケティング キャンペーンをマーケティング会社が作成した後、そのリソースの所有権を顧客へ譲渡するシナリオです。その後は顧客側でデジタル マーケティング キャンペーンが運営管理されます。Azure Websites はどちらのシナリオにも適しています。 
 
-[Azure Websites][websitesoverview] はこれら両方のシナリオに適しており、キャンペーンを短期間で作成できる、複数のフレームワークと言語をサポートする、ユーザーの需要に応じて規模を設定できる、多数のデプロイ システムやソース管理システムに対応できるなどのメリットがあります。また、Azure を使用すれば他の Azure サービス (メディア サービスなど) にもアクセスできるので、マーケティング キャンペーンの効果がさらに高まります。
+> [AZURE.NOTE] アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-> [WACOM.NOTE]
-> アカウントにサインアップする前に Azure Websites を試してみたい場合は、 <a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a>で、有効期限が短い ASP.NET スターター サイトを Azure Websites に無料で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+Azure Websites を使用したグローバルなマルチ チャンネル デジタル マーケティング キャンペーンの例を以下に示します。技術的な投資を最小限に抑え、Azure Websites と他のサービスと組み合わせるだけで何ができるかを示しています。**詳細については、図の中の要素をクリックしてください。** 
 
-[Azure Cloud Services][csoverview] または [Azure Virtual Machines][vmoverview] を使用して Web サイトをホストすることもできますが、Azure Websites にはない重要な機能を備えているのでない限り、このシナリオには適していません。オプションの詳細については、「[Azure Web Sites, Cloud Services, and VMs:When to use which? (Azure Websites、Azure Cloud Services、Azure Virtual Machines: いつ、どれを使用するか)][chooseservice]」を参照してください。
-
-このガイドの内容は次のとおりです。
-
-- [既存の Web サイトのデプロイ](#deployexisting)
-- [ソーシャル メディアの統合](#socialmedia)
-- [ユーザーの需要に応じた規模設定 (スケーリング)](#scale)
-- [その他のサービスの統合](#integrate)
-- [キャンペーンの監視](#monitor)
-
-> [WACOM.NOTE]
-> このガイドで取り上げるのは公開 .COM サイト開発で必要となる最も一般的な分野やタスクですが、Azure Websites には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、 <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a> と <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview">ビジネス アプリケーション</a>のガイドを参照してください。
-
-##<a name="deployexisting"></a>既存の Web サイトのデプロイ
-"グローバル Web プレゼンス" シナリオでは、新しい Web サイトを作成してデプロイするためのさまざまな方法を検討しました。Azure Websites を初めて使用する場合は、まず[こちらのトピック][scenarioglobalweb]をお読みください。デジタル マーケティング キャンペーンを頻繁に作成しており、既に Web アセットが存在する場合は、それらをカスタマイズして別のプロモーションで使用できます。このセクションでは、ソース管理からさまざまな種類の Web サイトをデプロイする方法について詳しく説明します。
-
-同じ Web アセットを複数の目的で利用する場合、ソース管理システムをまだ使用していなければ、ぜひ導入を検討してください。一般的な Web ソリューションのテンプレートを保存しておき、それぞれの顧客に合わせてカスタマイズできます。Web サイトには、さまざまなソース コード リポジトリを同期する機能が備わっています。**[ダッシュボード]** タブで **[ソース管理からのデプロイの設定]** リンクをクリックします。
-
-![DigitalMarketingDeploy1][DigitalMarketingDeploy1]
-
-ソース コードの選択ダイアログ ボックスが開き、すべての機能を備えたソース管理システム (TFS など) やシンプルな展開ソリューション (Dropbox など) が表示されます。
-
-![DigitalMarketingDeploy2][DigitalMarketingDeploy2]
-
-各種のソース管理機能を使用し、既存のテンプレートに基づいて新しいプロジェクトを管理できます。たとえば、以前に保存したリポジトリをコピーして新しいプロジェクトを開始したり、現在のプロジェクトの要件に合わせてカスタマイズしたりできます。同じソース管理リポジトリを基にさまざまなデプロイメントを管理する方法の実例については、「[Multiple Environments with Azure Web Sites (複数の環境での Azure Websites の使用)][gitstaging]」を参照してください。この記事では、Git 分岐を使用してステージング環境と運用環境を管理する方法を紹介します。
-
-Web サイトをソース管理に接続した後は、ポータルからデプロイを構成してトラッキングできます。Azure Websites でソース管理を使用する方法の詳細については、「[Publishing from Source Control to Azure Web Sites (ソース管理から Azure Websites への発行)][publishingwithgit]」」を参照してください。
-
-既存の Web アセットを使用する場合、各種の Web サイトをホストする柔軟性が重要になります。**[構成]** タブでは、Web サイトの .NET サポートと PHP サポートを両方選択できます。 
-
-![DigitalMarketingFrameworkVersions][DigitalMarketingFrameworkVersions]
-
-これらの構成オプションに加え、Websites は Python 2.7 と Node.js も自動的にサポートします。既定の Node.js バージョンは 0.10.5 です。
-
-また、ステージング サイトをすばやく Web にデプロイできることも Azure Websites のメリットの 1 つです。サイトの計画段階、プロトタイピング、開発の初期段階で、代理店とその顧客は、キャンペーン サイトを運用する前に実際と同じ状態で動作を確認できます。サイトの運用準備が整った時点で、代理店は顧客に代わって運用展開を管理するか、キャンペーンを展開および管理するための Web アセットを顧客に提供できます。
-
-##<a name="socialmedia"></a>ソーシャル メディアの統合
-ほとんどのデジタル マーケティング キャンペーンでは、Facebook や Twitter などのソーシャル メディア サイトを利用します。これらを統合するには、ソーシャル メディア ID を使って認証する方法があります。ASP.NET アプリケーションでのこの手法の使用例については、「[Deploy a Secure ASP.NET MVC app with Membership, OAuth, and SQL Database to an Azure Web Site (メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトにデプロイする)][deploysecurewebsite]」を参照してください。
-
-ただし、多くのデジタル マーケティング キャンペーンは認証にとどまらず、重要な戦略としてソーシャル メディアを統合しています。通常、ソーシャル メディア サイトには、それぞれのサービスをアプリケーションに統合する方法を紹介する開発者セクションがあります。REST API を提供するサービスはほとんどの Web フレームワークで使用できますが、言語に固有の情報もあります。たとえば Twitter では、.NET、Node.js、PHP など、[Twitter API をサポートしているライブラリの一覧][twitter]を参照できます。この他にもさまざまな情報が公開されているので、対象となるソーシャル メディア サイトの開発者向けガイダンスを参照してください。
-
-Facebook を対象とする ASP.NET 開発者向けとして、Visual Studio には MVC 4 Facebook のテンプレートが用意されています。  
-
-![DigitalMarketingFacebook][DigitalMarketingFacebook]
-
-Web サイトでこのテンプレートを使用するための手順については、「[Creating a Facebook app using ASP.NET MVC Facebook Templates and hosting them for free on Azure Websites (ASP.NET MVC Facebook テンプレートを使用して Facebook アプリケーションを作成し、それらのアプリケーションを Azure Websites で無料でホストする)][fbtutorial]」を参照してください。詳しいチュートリアルとサンプル アプリケーションについては、[ASP.NET MVC Facebook Birthday App (ASP.NET MVC Facebook の誕生日アプリ)][fbbirthdayapp]」および「[The new Facebook application template and library for ASP.NET MVC (ASP.NET MVC 向けの新しい Facebook アプリケーション テンプレートとライブラリ)][fbvstemplate]」を参照してください。
-
-ASP.NET アプリケーションを開発する場合、ソーシャル メディアを統合する方法は Visual Studio に用意されているテンプレートだけでないことに注意してください。テンプレートを利用すればソーシャル メディアを容易に統合できますが、前述のように、各ソーシャル メディア サイトでは、.NET およびその他多数の言語やフレームワークから接続するさまざまな方法が公開されています。
-
-##<a name="scale"></a>ユーザーの需要に応じた規模設定 (スケーリング)
-クラウド コンピューティングは負荷を予測できない場合に役立ちます。デジタル マーケティング キャンペーンもその 1 つです。運用期間が比較的短いマーケティング サイトの需要を予測するのは容易ではありません。ユーザーの関心をどの程度引き付けられるか、関連するソーシャル メディアからマーケティング サイトへのアクセスがどの程度発生するかに大きく左右されるためです。Azure には、Web サイトとクラウド サービスの両方について、いくつかのスケーリング オプションが用意されています。
-
-- [Azure の管理ポータル][managementportal]で手動で規模を設定する
-- [サービス管理 API][servicemanagementapi] または [PowerShell スクリプト][powershell]を使用してプログラムから規模を設定する
-- 自動スケール (プレビュー) 機能を使用して自動的に規模を設定する
-
-管理ポータルで、Web サイトの the **[スケール]** タブへ移動します。規模設定 (スケーリング) に関するいくつかの設定オプションが表示されます。最初のオプションでは Web サイトのモードを設定します。**[無料]**、**[共有]**、または **[標準]** を選択できます。 
-
-![DigitalMarketingScale][DigitalMarketingScale]
-
-サイトの拡張性はモード設定によって異なります。たとえば、**[無料]** モードのサイトはインスタンスを増やすことができませんが、**[共有]** モードのサイトは 6 インスタンスまで拡張できます。**[標準]** モードを選択した場合も規模拡張が可能です。このモードのサイトは専用の仮想マシン上で運用され、S サイズ、M サイズ、L サイズの仮想マシンを選択できます。仮想マシンのサイズを指定した後、さらにインスタンス数を増やすこともできます。**[標準]** モードでは最大 10 インスタンスまで拡張可能です。これら 3 つのモードの相違点については、[Azure Websites の料金に関するガイドライン][pricing]を参照してください。
-
-**[標準]** モードを選択した場合は、自動スケール (プレビュー) 機能も使用できます。自動スケールは、CPU の使用率に応じてインスタンス数を増減する機能です。**[ターゲット CPU]** は、Web サイトのインスタンスによるプロセッサ使用率の目標範囲です。CPU の平均使用率がこのターゲット値を下回る場合、Azure によってインスタンス数が減らされます。少ない数のインスタンスで同じ負荷を処理すれば、結果として CPU の使用率が高くなります。ただし、最小**インスタンス数**より小さい値を指定することはできません。同様に、CPU の平均使用率が**[ターゲット CPU]** を上回る場合は、Azure によってインスタンス数が増やされます。より多くの仮想マシンに負荷が分散されるので、仮想マシン 1 台あたりの CPU 使用率が下がります。この場合も、最大**インスタンス数**より大きい値を指定することはできません。
-
-![DigitalMarketingAutoScale][DigitalMarketingAutoScale]
-
-自動スケールのメリットはリソースを効率的に利用できることです。たとえば、デジタル マーケティング キャンペーンは夜間と週末にアクセスが集中します。その際、キャンペーンの需要を予測するのは容易ではありません。自動スケール機能を使用すれば、負荷の変動に応じてインスタンス (およびコスト) を効率的に増減できます。 
-
-Web サイトのスケール機能の詳細については、「[How to Scale Web Sites (Web サイトの規模の設定方法)][scalewebsite]」を参照してください。Web サイトの規模設定は監視機能とも密接に関連しています。詳細については、このガイドの「[キャンペーンの監視](#monitor)」を参照してください。
+<object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/digital-marketing-notitle.svg" width="100%" height="100%"></object>
 
 > [WACOM.NOTE]
-> クラウド サービスと Web ロールを使用する Web アプリケーションでは、キュー内のメッセージ数に基づく規模設定 (スケーリング) も可能です。クラウド サービスの場合、バックエンド キューを処理するロールはアーキテクチャ パターンが共通しています。クラウド サービスの詳細については、「 <a href="http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-scale-a-cloud-service/">アプリケーションのスケールの設定方法</a>」を参照してください。
+> このガイドで取り上げるのは Azure Websites のデジタル マーケティング キャンペーンで必要となる最も一般的な分野やタスクですが、Azure Websites で実装できるその他の一般的なソリューションも備わっています。これらのソリューションについては、<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a>および<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview">基幹業務アプリケーション</a>のガイドをご覧ください。
 
-##<a name="integrate"></a>その他のサービスの統合
-多くのデジタル マーケティング サイトは、動画ストリーミングなどのリッチ メディアを取り入れています。Azure には、これらのサイトですぐに役立つサービスが用意されています。たとえば、Azure Media Services を使用すれば、Web サイトの動画をエンコードしてストリーミング配信できます。Media Services の詳細については、「[Azure Media Services の概念][mediaservices]」を参照してください。
+### 資産を最初から作成する、または既存の資産を移行する
 
-Azure には、信頼性の高いアプリケーションを作成するためのサービスも用意されています。たとえば、新しい [Azure Cache Service (プレビュー)][caching] の分散キャッシュを Websites で利用したり、Azure ストレージ サービスを使用してアプリケーションのデータとリソースを格納したりできます。この場合、グラフィックスやビデオなど、サイズの大きいファイルを BLOB に永続的に格納できます。Azure SQL データベースや MySQL などのデータベース サービスを使用してリレーショナル データを管理することもできます。
+ギャラリーでよく使われる CMS からすぐに新しいサイトを作成するか、さまざまな言語やフレームワークから既存の Web 資産を Azure Websites に移行できます。
 
-##<a name="monitor"></a>キャンペーンの監視
-**[監視]** タブには、デジタル マーケティング サイトの運用状況や成果を評価するときに役立つメトリックが表示されます。
+Azure ギャラリーは、一般的な Web サイト コンテンツ管理システム (CMS) ([Orchard]、[Umbraco]、[Drupal]、[WordPress] など) からテンプレートを提供します。お気に入りの CMS フレーバーを使用して Web サイトを作成できます。ユーザーは、さまざまなデータベース バックエンド ([Azure SQL データベース]、[MySQL] など) から選択してニーズを満たすことができます。
 
-![DigitalMarketingMonitor][DigitalMarketingMonitor]
+既存の Web 資産は Azure Websites 上で、.NET、PHP、Java、Node.js、Python に関係なく実行できます。これらをよく知られている [FTP] ツールを使用して、Azure Websites に移行できます。デジタル マーケティング キャンペーンを頻繁に作成しているユーザーは、既にソース管理システムに Web 資産を持っている可能性があります。その場合は、一般的なソース管理オプション ([Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など))から Azure Websites ディレクトリに直接デプロイできます。
 
-たとえば、**CPU 時間**、**要求数**、**送信データ**などのメトリック データから利用パターンや利用レベルがわかります。これらすべてのメトリックは、マーケティング キャンペーンが普及するにつれて値が大きくなります。利用状況に関する情報から、スケールアウトまたはスケールアップの時期を決定できます。詳細については、「[Web サイトの監視方法][monitoring]」を参照してください。
+### 迅速性の維持
 
-**[無料]** モードと **[共有]** モードでは、リソースのクォータにも気を配る必要があります。管理ポータルの **[ダッシュボード]** タブには、各クォータの現在の利用統計データとリセットされるタイミングが表示されます。これらの利用統計データは選択したモードによって異なります。次のスクリーンショットは **[無料]** モードの統計データです。**[共有]** モードを選択した場合は **[送信データ]** のクォータがありません。**[標準]** モードでは、**[ファイル システム ストレージ]** と  **[サイズ]** のみが表示されます。
+Azure Websites で、既存のソース管理から直接、継続的に発行することで迅速性を維持し、A/B テストを実行します。 
 
-![DigitalMarketingUsageOverview][DigitalMarketingUsageOverview]
+サイトの計画段階、プロトタイピング、開発の初期段階で、ユーザーとその顧客は、Azure Website の[ステージング スロットにデプロイする]ことで、キャンペーン サイトを運用する前に実際と同じ状態で動作を確認できます。ソース管理と Azure Websites を統合することで、ステージング スロットに[継続的に発行する]、準備ができるとダウンタイムなしで運用サイトにスワップします。 
 
-これらのクォータの上限に近づいていることがわかったら、**[無料]** から **[共有]** へ、または **[共有]** から **[標準]** への切り替えを検討してください。**[標準]** モードでは、S サイズ、M サイズ、または L サイズの仮想マシン上に専用リソースが配置されます。 
+また、実際の Web サイトへの変更を計画する場合、運用テスト機能を使用して、提案された更新について容易に [A/B テストを実行]し、実際のユーザーの操作を分析することで、サイト設計について情報に基づいた判断を下すことができます。
 
-これらの情報を管理ポータルで閲覧するほか、高度な Web サイト監視機能を備えたサードパーティ製ツールで表示する方法もあります。Azure ストアからインストールできる New Relic アドオンもその 1 つです。New Relic での監視方法については、「[New Relic Application Performance Management on Azure (Azure の New Relic によるアプリケーション パフォーマンス管理)][newrelic]」を参照してください。 
 
-さらに、標準モードの Web サイトでは、エンドポイントの監視機能とアラート機能を使用できます。この機能では、エンドポイント モニターが定期的に Web サイトにアクセスして応答時間を報告します。さらに、応答時間が所定のしきい値を上回る場合は、その旨を電子メールで警告します。詳細については、[グローバル Web プレゼンス][scenarioglobalweb] シナリオの監視に関するセクション、および「[方法:Azure でアラート通知を受け取り、アラート ルールを管理する][receivealerts]」を参照してください。
+### ソーシャル化
 
-##<a name="summary"></a>まとめ
-Azure Websites は、同じ Web コンテンツを個々のマーケティング キャンペーンに合わせてカスタマイズする場合に適しています。Azure Websites は一般的な多くの言語、フレームワーク、およびソース管理システムをサポートしているので、これらのアセットやワークフローをクラウドへ容易に移行できます。ASP.NET Facebook アプリケーション テンプレートを使用すれば Facebook アプリケーションを簡単に作成できますが、サードパーティのほとんどのソーシャル メディア統合機能も Web インターフェイスをサポートしています。Azure メディア サービスと Azure のその他の関連サービスには、適切に設計されたキャンペーン サイトを作成するためのツールも用意されています。また、予測が難しいユーザー需要に対応するには、手動および自動の規模設定 (スケール) 機能が役立ちます。詳細については、次の技術解説記事を参照してください。
+Azure Websites のデジタル マーケティング キャンペーンは、Facebook や Twitter などの人気のあるプロバイダーで認証することでソーシャル メディアと統合できます。ASP.NET アプリケーションでのこの手法の使用例については、「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトに展開する]」をご覧ください。 
 
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="top">領域</th>
-   <th align="left" valign="top">リソース</th>
-</tr>
-<tr>
-   <td valign="middle"><strong>計画</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service">Azure Websites、Cloud Services、および Virtual Machines:いつ、どれを使用するか</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>作成</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites/">Web サイトの作成/デプロイ方法</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>展開</strong></td>
-   <td valign="top">- <a href="http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-deploy/">Azure Web サイトのデプロイ方法</a><br/>- <a href="http://www.windowsazure.com/ja-jp/develop/net/common-tasks/publishing-with-git/">ソース管理から Azure Websites への発行</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>ソーシャル メディア</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/">メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトにデプロイする</a><br/>- <a href="http://blogs.msdn.com/b/africaapps/archive/2013/02/20/creating-a-facebook-app-using-asp-net-mvc-facebook-templates-and-hosting-them-for-free-on-windows-azure-websites.aspx">ASP.NET MVC Facebook テンプレートを使用して Facebook アプリケーションを作成する</a><br/>- <a href="http://blogs.msdn.com/b/webdev/archive/2012/12/13/the-new-facebook-application-template-and-library-for-asp.net-mvc.aspx">ASP.NET MVC 向けの Facebook アプリケーション テンプレートとライブラリ</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>スケール</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-scale-websites/">Web サイトの規模の設定方法</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>リッチ メディア</strong></td>
-   <td valign="top">- <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223282.aspx">Introduction to Azure Media Services Concepts and Scenarios (Azure メディア サービスの概念とシナリオ)</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>監視</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/">Web サイトの監視方法</a><br/>- <a href="http://msdn.microsoft.com/library/windowsazure/dn306638.aspx">方法:Azure でのアラート通知の受信とアラート ルールの管理</a></td>
-</tr>
-</table>
+さらに、各ソーシャル メディア サイトでは、通常、.NET や他の多くのフレームワークから他の統合方法に関する情報を提供しています。
 
-  [websitesoverview]:/ja-jp/documentation/services/web-sites/
-  [csoverview]:/ja-jp/documentation/services/cloud-services/
-  [vmoverview]:/ja-jp/documentation/services/virtual-machines/
-  [chooseservice]:/ja-jp/manage/services/web-sites/choose-web-app-service
-  [scenarioglobalweb]:/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/
+### リッチ メディアの使用とすべてのデバイスへの接続
+
+他の Azure サービスを使用して、デジタル マーケティング キャンペーンを強化します。
+
+-  [Azure Media Services] を使用したグローバルなビデオのアップロードおよびストリーミング
+-  [Azure Marketplace の SendGrid サービス]を使用したユーザーへの電子メールの送信
+-  [Mobile Services] を使用した、Windows、iOS、Android デバイスでの存在感の確立
+-  [通知ハブ]を使用した数百万台のデバイスへのプッシュ通知の送信
+
+### グローバル化
+
+Azure Traffic Manager を使用した地域サイトへのサービス提供と、Azure CDN を使用した超高速のコンテンツ配信によってグローバル化します。
+
+それぞれのリージョンでグローバルな顧客にサービスを提供するために、[Azure Traffic Manager] を使用して、サイトの利用者を最高のパフォーマンスを提供する地域サイトに導きます。また、サイトの負荷を、複数のリージョンにホストされている Web サイトの複数のコピーに均等に分散することもできます。
+
+[Web サイトと Azure CDN を統合する]ことで、グローバルにユーザーに超高速の静的コンテンツを配信します。Azure CDN は、静的コンテンツをユーザーに最も近い [CDN ノード]にキャッシュすることで、待ち時間と Web サイトへの接続を最小限に抑えます。
+
+### 最適化
+
+自動スケールによる自動サイズ設定、Azure Redis Cache によるキャッシング、Web ジョブによるバックグラウンド タスクの実行、Azure Traffic Manager による高可用性の維持によってサイトを最適化します。
+
+Azure Website の[スケールアップとスケールアウト]の機能は、予期できないワークロードに最適です。これはデジタル マーケティング キャンペーンに当てはまります。手動で Web サイトをスケールアウトする場合は、[Azure 管理ポータル]から行います。プログラムを使用する場合は、[サービス管理 API] または [PowerShell スクリプト]、自動で行う場合は自動スケール機能から行います。**標準**のホスティング プランでは、自動スケールを使用して、CPU 使用率に基づいて Web サイトを自動的にスケールアウトできます。この機能を使用すると、ユーザー操作に基づいて必要な場合にのみ Web サイトをスケールアウトすることで、最大の俊敏性と最小のコストを同時に実現できます。ベスト プラクティスについては、「[Troy Hunt]'s [10 things I learned about rapidly scaling websites with Azure (Azure による迅速な Web サイトのスケーリングで私が学んだ 10 の事項)]」をご覧ください。
+
+[Azure Redis Cache] を使用して、Web サイトの応答性を高めます。これは、バックエンド データベースからのデータや、[ASP.NET セッション状態]や[出力キャッシュ]などのデータをキャッシュします。
+
+[Azure Traffic Manager] を使用して Web サイトの高可用性を維持します。プライマリ サイトに問題がある場合、Traffic Manager は**フェールオーバー** メソッドを使用して自動的にセカンダリ サイトにトラフィックをルーティングします。
+
+### 監視と分析
+
+Azure またはサードパーティ製ツールを使用して、Web サイトのパフォーマンスを最新の状態に維持します。Web サイトの重要なイベントに関するアラートを受信します。Application Insight や HDInsight からの Web ログ分析を使用して、簡単にユーザーを分析できます。 
+
+Azure Websites のダッシュボードでは、Web サイトの現在のパフォーマンス メトリックとリソース クォータの[概要]を取得します。アプリケーションの可用性、パフォーマンス、使用状況のすべての情報に対しては、[Azure Application Insights] を使用して、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を行います。または、[New Relic] などのサードパーティ製ツールを使用して、Web サイトに対して高度なデータ監視を行います。
+
+**標準**のホスティング プランでは、サイトの応答性を監視し、サイトが応答しなくなると電子メール通知を受信します。詳細については、「[方法:Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)][方法:Azure でアラート通知を受け取り、アラート ルールを管理する]」をご覧ください。
+
+## その他のリソース
+
+- [Azure Websites のドキュメント](/ja-jp/documentation/services/websites/)
+- [Learning map for Azure Websites (Azure Websites のラーニング マップ)](/ja-jp/documentation/articles/websites-learning-map/)
+- [Azure Web ブログ](/blog/topics/web/)
+
+
+[Azure Websites]:/ja-jp/services/websites/
+
+[Orchard]:/ja-jp/documentation/articles/web-sites-dotnet-orchard-cms-gallery/
+[Umbraco]:/ja-jp/documentation/articles/web-sites-gallery-umbraco/
+[Drupal]:/ja-jp/documentation/articles/web-sites-php-migrate-drupal/
+[WordPress]:/ja-jp/documentation/articles/web-sites-php-web-site-gallery/
   
-  
-  [publishingwithgit]:/ja-jp/develop/net/common-tasks/publishing-with-git/
-  [gitstaging]:http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites
-  [deploysecurewebsite]:/ja-jp/develop/net/tutorials/web-site-with-sql-database/
-  [twitter]:https://dev.twitter.com/docs/twitter-libraries#dotnet
-  [fbtutorial]:http://blogs.msdn.com/b/africaapps/archive/2013/02/20/creating-a-facebook-app-using-asp-net-mvc-facebook-templates-and-hosting-them-for-free-on-windows-azure-websites.aspx
-  [fbbirthdayapp]:http://www.asp.net/mvc/tutorials/mvc-4/aspnet-mvc-facebook-birthday-app
-  [fbvstemplate]:http://blogs.msdn.com/b/webdev/archive/2012/12/13/the-new-facebook-application-template-and-library-for-asp.net-mvc.aspx
-  [managementportal]:http://manage.windowsazure.com/
-  [servicemanagementapi]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
-  [powershell]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
-  [pricing]:https://www.windowsazure.com/ja-jp/pricing/details/web-sites/
-  [scalewebsite]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
-  
-  [mediaservices]:http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223282.aspx
-  [caching]:http://msdn.microsoft.com/ja-jp/library/windowsazure/dn386094.aspx
-  [monitoring]:/ja-jp/manage/services/web-sites/how-to-monitor-websites/
-  [newrelic]:/ja-jp/develop/net/how-to-guides/new-relic/
-  [receivealerts]:http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
-  
-  
-  
-   [DigitalMarketingDeploy1]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Deploy1.png
-  [DigitalMarketingDeploy2]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Deploy2.png
-  [DigitalMarketingFrameworkVersions]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_FrameworkVersions.png
-  [DigitalMarketingFacebook]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Facebook.png
-  [DigitalMarketingScale]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Scale.png
-  [DigitalMarketingAutoScale]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_AutoScale.png
-  [DigitalMarketingMonitor]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Monitor.png
-  [DigitalMarketingUsageOverview]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_UsageOverview.png
-  
-  
-  
-  
-  
+[MySQL]:/ja-jp/documentation/articles/web-sites-php-mysql-deploy-use-git/
+[Azure SQL データベース]:/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
+[FTP]:/ja-jp/documentation/articles/web-sites-deploy/#ftp
+[Visual Studio]:/ja-jp/documentation/articles/web-sites-dotnet-get-started/
+[Visual Studio Online]:/ja-jp/documentation/articles/cloud-services-continuous-delivery-use-vso/
+[Git]:/ja-jp/documentation/articles/web-sites-publish-source-control/
 
-<!--HONumber=35.1-->
+[ステージング スロットにデプロイする]:/ja-jp/documentation/articles/web-sites-staged-publishing/ 
+[継続的に発行する]:http://rickrainey.com/2014/01/21/continuous-deployment-github-with-azure-web-sites-and-staged-publishing/
+[A/B テストを実行]:http://blogs.msdn.com/b/tomholl/archive/2014/11/10/a-b-testing-with-azure-websites.aspx
+
+[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトに展開する]:/ja-jp/develop/net/tutorials/web-site-with-sql-database/
+
+[Azure Media Services]:http://blogs.technet.com/b/cbernier/archive/2013/09/03/windows-azure-media-services-and-web-sites.aspx
+[Azure Marketplace の SendGrid サービス]:/ja-jp/documentation/articles/sendgrid-dotnet-how-to-send-email/
+[Mobile Services]:/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users/
+[通知ハブ]:/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users/
+
+[Azure Traffic Manager]:http://www.hanselman.com/blog/CloudPowerHowToScaleAzureWebsitesGloballyWithTrafficManager.aspx
+[Web サイトと Azure CDN を統合する]:/ja-jp/documentation/articles/cdn-websites-with-cdn/ 
+[CDN ノード]:https://msdn.microsoft.com/library/azure/gg680302.aspx
+
+[スケール アップとスケール アウト]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
+[Azure 管理ポータル]:http://manage.windowsazure.com/
+[サービス管理 API]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
+[PowerShell スクリプト]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
+[Troy Hunt]:https://twitter.com/troyhunt
+[10 things I learned about rapidly scaling websites with Azure (Azure による迅速な Web サイトのスケーリングで私が学んだ 10 の事項)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
+[Azure Redis Cache]:/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/
+[ASP.NET セッション状態]:https://msdn.microsoft.com/ja-jp/library/azure/dn690522.aspx
+[出力キャッシュ]:https://msdn.microsoft.com/ja-jp/library/azure/dn798898.aspx
+
+[概要]:/ja-jp/manage/services/web-sites/how-to-monitor-websites/
+[Azure Application Insights]:http://blogs.msdn.com/b/visualstudioalm/archive/2015/01/07/application-insights-and-azure-websites.aspx
+[New Relic]:/ja-jp/develop/net/how-to-guides/new-relic/
+[方法:Azure でアラート通知を受け取り、アラート ルールを管理する]:http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
+
+  
+  [gitstaging]:http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites  
+
+
+<!--HONumber=42-->

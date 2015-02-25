@@ -1,12 +1,26 @@
-<properties title="Using Mobile Services with Cordova Projects" pageTitle="" metaKeywords="Azure, Cordova, Mobile Services" description="" services="mobile-services" documentationCenter="" authors="ghogen" />
+﻿<properties 
+	pageTitle="" 
+	description="Using mobile services in Cordova projects" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="patshea" 
+	manager="douge" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/11/2014" ms.author="ghogen" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/11/2014" 
+	ms.author="patshea"/>
 
 ### Visual Studio 2015 Preview の Cordova プロジェクトでの Mobile Services の使用
 
 Visual Studio 2015 Preview の Cordova プロジェクトで Azure Mobile Services を使用するには、次の回避策を適用する必要があります。
 
-1. Visual Studio 2015 Preview の Cordova プロジェクトで、Config.xml を開き、[**プラグイン**] タブで、**Microsoft Azure Mobile Services** プラグインを有効にします。<br/>
+1. Visual Studio 2015 Preview の Cordova プロジェクトで、Config.xml を開き、**[プラグイン]** タブで、**Microsoft Azure Mobile Services** プラグインを有効にします。<br/>
 ![][1]
 
 2. Index.html で、**MobileServices.Web-1.2.2.min.js** を参照している行を削除します。<br/>
@@ -48,3 +62,5 @@ Visual Studio 2015 Preview の Cordova プロジェクトで Azure Mobile Servic
 		});
 
 [1]: ./media/vs-mobile-services-cordova-vs2015/AzureMobileServicesPlugIn.png 
+
+<!--HONumber=42-->

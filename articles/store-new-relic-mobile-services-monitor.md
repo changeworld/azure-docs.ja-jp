@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Use New Relic to monitor Mobile Services" pageTitle="ソース管理へのサーバー スクリプトの保存 - Azure Mobile Services" metaKeywords="" description="New Relic アドオンを使用して、モバイル サービスを監視する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" documentationCenter="Mobile" title="Use New Relic to monitor Mobile Services" authors="new relic" manager="carolz" />
+<properties 
+	pageTitle="ソース管理へのサーバー スクリプトの保存 - Azure Mobile Services" 
+	description="New Relic アドオンを使用して、モバイル サービスを監視する方法について説明します。" 
+	documentationCenter="" 
+	authors="stepsic-microsoft-com" 
+	manager="carolz" 
+	editor="" 
+	services="mobile-services"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/25/2014" ms.author="stepsic" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="stepsic"/>
 
 # New Relic を使用したモバイル サービスの監視
 
@@ -8,10 +22,10 @@
 
 このチュートリアルでは、以下の各手順について説明します。
 
-1. [Azure ストアを使用して New Relic にサインアップする]。
-2. [New Relic モジュールをインストールする]。
-3. [モバイル サービスに対する New Relic 開発者分析を有効にする]。
-4. [New Relic ダッシュボードでモバイル サービスを監視する]。
+1. [Azure ストアを使用して New Relic にサインアップする]
+2. [New Relic モジュールをインストールする]
+3. [モバイル サービスに対する New Relic 開発者分析を有効にする]
+4. [New Relic ダッシュボードでモバイル サービスを監視する]
 
 このチュートリアルを完了するには、「[モバイル サービスの使用]」または「[データの使用]」チュートリアルを完了して、モバイル サービスを既に作成してある必要があります。
 
@@ -19,7 +33,7 @@
 
 最初に、New Relic サービスを購入します。このチュートリアルでは、Azure ストアからこのサービスを購入する方法を紹介します。モバイル サービスでは、Azure ストア以外で購入した New Relic サブスクリプションもサポートされます。
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com) にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 
@@ -37,19 +51,19 @@
 
 10. **[購入の確認]** ダイアログで、プランと料金情報を確認し、法律条項を確認します。条項に同意したら、**[購入]** をクリックします。
 
-11. **[購入]** をクリックすると、New Relic アカウントの作成プロセスが開始されます。その状態は、Azure 管理ポータルで監視できます。
+11. **[購入]** をクリックすると、New Relic アカウントの作成プロセスが開始します。その状態は、Azure 管理ポータルで監視できます。
 
 ##<a name="install-module"></a>New Relic モジュールをインストールする
 
 New Relic サービスにサインアップしたら、New Relic の Node.js モジュールをモバイル サービスにインストールする必要があります。このモジュールをアップロードするには、モバイル サービスに対するソース管理を有効にしておく必要があります。
 
-1. まだそうしていない場合は、チュートリアル「[ソース管理へのサーバー スクリプトの保存]」の手順に従ってモバイル サービスのソース管理を有効にし、リポジトリを複製して、 <a href="http://nodejs.org/" target="_blank">ノード パッケージ マネージャー (NPM)</a> をインストールします。
+1. まだそうしていない場合は、チュートリアル「[ソース管理へのサーバー スクリプトの保存]」の手順に従ってモバイル サービスのソース管理を有効にし、リポジトリを複製して、<a href="http://nodejs.org/" target="_blank">ノード パッケージ マネージャー (NPM)</a> をインストールします。
 
-2. コマンド プロンプトで、ローカル Git リポジトリの `.\service` フォルダーに移動し、次のコマンドを実行します。
+2. コマンド プロンプトで、ローカル Git リポジトリの  `.\service` フォルダーに移動し、次のコマンドを実行します。
 
 		npm install newrelic
 
-	NPM により、[New Relic モジュール][newrelic]が `\newrelic` サブディレクトリにインストールされます。 
+	NPM により、[New Relic モジュール][newrelic]が  `\newrelic` サブディレクトリにインストールされます。 
 
 3. **GitBash** (Windows) や **Bash** (Unix シェル) などの Git コマンド ライン ツールを開き、Git コマンド プロンプトで次のコマンドを入力します。 
 
@@ -57,17 +71,17 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 		$ git commit -m "added newrelic module"
 		$ git push origin master
 		
-	これにより、新しい `newrelic` モジュールがモバイル サービスにアップロードされます。 
+	これで、新しい  `newrelic` モジュールがモバイル サービスにアップロードされます。 
 
-次に、[管理ポータル][Azure Management Portal]でモバイル サービスに対する New Relic 監視を有効にします。 
+次に、[管理ポータル][Azure 管理ポータル]でモバイル サービスの New Relic 監視を有効にします。 
 
-##<a name="enable-service"></a>モバイル サービスに対する New Relic 開発者分析を有効にする。
+##<a name="enable-service"></a>モバイル サービスに対する New Relic 開発者分析を有効にする
 
-1. [管理ポータル][Azure Management Portal]で、モバイル サービスを選択し、**[構成]** タブをクリックします。
+1. [管理ポータル][Azure 管理ポータル]で、モバイル サービスを選択し、**[構成]** タブをクリックします。
 
 	![][0]
 
-2. 下へスクロールして **[開発者分析]** を表示し、New Relic サブスクリプションをどのように購入したかに応じて、次のいずれかの手順を実行します。
+2. 下へスクロールして **[開発者分析]** を表示し、New Relic サブスクリプションをどのように購入したかに応じて、次のどちらかの手順を実行します。
 
 	+ Azure ストアで購入した場合:
 
@@ -93,7 +107,7 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 
 2. データが処理されるまで数分待った後で、New Relic ダッシュボードに移動します。
 
-	New Relic サブスクリプションをアドオンとして購入した場合、[管理ポータル][Azure Management Portal]でそれを選択して、**[管理]** をクリックします。
+	New Relic サブスクリプションをアドオンとして購入した場合、[管理ポータル][Azure 管理ポータル]でそれを選択して、**[管理]** をクリックします。
 
 3. [New Relic] で **[アプリケーション]** をクリックし、対象のモバイル サービスをクリックします。
 
@@ -105,9 +119,9 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 
 ##<a name="next-steps"> </a>次のステップ
 
-+ **iOS** や **Android** モバイル アプリのパフォーマンスを最適化する方法については、[New Relic Mobile のページ]を参照してください。
-+ 料金情報については、[Azure ストアの New Relic のページ]を参照してください。
-+ New Relic の使用方法については、New Relic ドキュメントの「[Applications Overview (アプリケーションの概要)]」を参照してください。 
++ **iOS** や **Android** モバイル アプリのパフォーマンスを最適化する方法については、[New Relic Mobile のページ]をご覧ください。
++ 料金情報については、[Windows Azure ストアの New Relic のページ]をご覧ください。
++ New Relic の使用方法については、New Relic ドキュメントの「[Applications Overview (アプリケーションの概要)]」をご覧ください。 
 
 <!-- Anchors. -->
 [Azure ストアを使用して New Relic にサインアップする]: #sign-up
@@ -128,15 +142,16 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 [ソース管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Mobile Services のサーバー スクリプトの操作]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts.md
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Node.js API ドキュメント:モジュール]: http://nodejs.org/api/modules.html
 [ソース管理へのサーバー スクリプトの保存]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
 [newrelic]: https://npmjs.org/package/newrelic
-[Azure ストアの New Relic のページ]: /ja-jp/gallery/store/new-relic/new-relic/
+[Windows Azure ストアの New Relic のページ]: /ja-jp/gallery/store/new-relic/new-relic/
 [Applications Overview (アプリケーションの概要)]: https://docs.newrelic.com/docs/applications-dashboards/applications-overview
-[Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started/
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
 [New Relic Mobile のページ]: http://newrelic.com/mobile-monitoring
 
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

@@ -1,6 +1,20 @@
-<properties urlDisplayName="Website with MongoDB on MongoLab" pageTitle="MongoLab の MongoDB を使用する Web サイトの作成 (.NET)" metaKeywords="" description="MongoLab によってホストされた MongoDB にデータを格納する Azure Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Create a C# ASP.NET Application on Azure with MongoDB using the MongoLab Add-On" authors="chris@mongolab.com, eric@mongolab.com" solutions="" manager="mongolab" editor="mollybos" />
+<properties 
+	pageTitle="MongoLab の MongoDB を使用する Web サイトの作成 (.NET)" 
+	description="MongoLab によってホストされた MongoDB にデータを格納する Azure Web サイトを作成する方法について説明します。" 
+	services="web-sites" 
+	documentationCenter=".net" 
+	authors="chrischang12" 
+	manager="partners@mongolab.com" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/17/2014" ms.author="chris@mongolab.com" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/17/2014" 
+	ms.author="chris@mongolab.com"/>
 
 
 
@@ -10,15 +24,15 @@
 
 こんにちは、冒険家のみなさん。サービスとしての MongoDB にようこそ。このチュートリアルでは、次のことについて説明します。
 
-1. [データベースの準備][provision] - Azure ストアの [MongoLab ](http://mongolab.com) アドオンは、Azure クラウドでホスティングされ MongoLab のクラウド データベース プラットフォームで管理されている MongoDB データベースを提供します。
-1. [アプリケーションの作成][create] - メモをとるための単純な C# ASP.NET MVC アプリケーションです。
-1. [アプリケーションのデプロイ][deploy] - 構成フックをいくつか結び付けて、コードを簡単に配置できるようにします。
-1. [データベースの管理][manage] - 最後に、データの検索や視覚化、修正が簡単にできる MongoLab の Web ベースのデータベース管理ポータルを紹介します。
+1. [データベースの準備][準備] - Azure ストアの [MongoLab](http://mongolab.com) アドオンは、Azure クラウドでホスティングされ MongoLab のクラウド データベース プラットフォームで管理された MongoDB データベースを提供します。
+1. [アプリの作成][作成] - メモをとるための単純な C# ASP.NET MVC アプリです。
+1. [アプリの展開][展開] - 構成フックをいくつか結び付けて、コードを簡単に配置できるようにします。
+1. [データベースの管理][管理] - 最後に、データの検索や視覚化、修正が簡単にできる MongoLab の Web ベースのデータベース管理ポータルを紹介します。
 
 このチュートリアルに関して質問がある場合は、いつでも遠慮なく [support@mongolab.com](mailto:support@mongolab.com) にメールを送ってください。
 
 ## クイック スタート
-作業対象の Azure アプリケーションと Web サイトが既にある場合、または Azure ストアにある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][provision]」に進んでください。
+作業対象の Azure アプリケーションと Web サイトが既にある場合、または Azure ストアにある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][準備]」に進んでください。
  
 1. Azure ストアを開きます。  
 ![Store][button-store]
@@ -33,7 +47,7 @@
 ![WebSiteConnectionStrings][focus-website-connectinfo]
 1. **[名前]** に「MONGOLAB\_URI」と入力します。
 1. **[値]** に、先にコピーした接続文字列を貼り付けます。
-1. [種類] ボックスの一覧の (既定値の **[SQLAzure]** の代わりに) **[カスタム]** を選択します。
+1. [種類] ドロップダウンで (既定値の **[SQLAzure]** の代わりに) **[カスタム]** を選択します。
 1. Visual Studio で Mongo C# ドライバーをインストールします。**[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択します。パッケージ マネージャー コンソールで「**Install-Package mongocsharpdriver**」と入力し、**Enter** キーを押します。
 1. 環境変数から MongoLab 接続 URI を取得するフックをコードに記述します。
 
@@ -43,15 +57,15 @@
         ...
         MongoUrl url = new MongoUrl(connectionString);
         MongoClient client = new MongoClient(url);
-注:Azure では、宣言された元の接続文字列名に **CUSTOMCONNSTR\_** というプレフィックスが追加されます。そのためコードでは **MONGOLAB\_URI** ではなく **CUSTOMCONNSTR\_MONGOLAB\_URI** を参照しています。
+注: Azure では、宣言された元の接続文字列名に **CUSTOMCONNSTR\_** というプレフィックスが追加されます。そのためコードでは **MONGOLAB\_URI** ではなく **CUSTOMCONNSTR\_MONGOLAB\_URI.** を参照しています。
 
 では完全なチュートリアルに進みましょう...
 
 <h2><a name="provision"></a>データベースの準備</h2>
 
-[WACOM.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
+[AZURE.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
 
-<h2><a name="create"></a>アプリケーションの作成</h2>
+<h2><a name="create"></a>アプリの作成</h2>
 
 このセクションでは、C# ASP.NET Visual Studio プロジェクトを作成し、単純なメモ アプリケーションを作成するために C# MongoDB ドライバーの使用法を説明します。自分の Web サイトを開いて、メモを書き込み、残されたすべてのメモを表示できるようになります。
 
@@ -63,7 +77,7 @@
 1. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。[新しいプロジェクト] ダイアログ ボックスが表示されます。    
 ![NewProject][dialog-mongolab-csharp-newproject]
 1. **[インストール済み]、[テンプレート]、[Visual C#]、[Web]** の順に選択します。
-1. [.NET バージョン] ボックスの一覧の **[.NET Framework 4.5]** を選択します。
+1. [.NET バージョン] ドロップダウン メニューの **[.NET Framework 4.5]** を選択します。
 1. **[MVC アプリケーション]** を選択します。  
 1. **[プロジェクト名]** ボックスに「_mongoNotes_」と入力します。別の名前にした場合は、このチュートリアルで用意されているコードを修正する必要があります。
 1. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択します。パッケージ マネージャー コンソールで「**Install-Package mongocsharpdriver**」と入力し、**Enter** キーを押します。  
@@ -75,7 +89,7 @@ MongoDB C# ドライバーがこのプロジェクトに統合され、_packages
 ### メモ モデルを追加する
 まず、単純に日付とテキスト コンテンツを保持するメモ用のモデルを作成します。
 
-1. ソリューション エクスプローラーで、**[Models]** フォルダーを右クリックし、**[追加]、[クラス]** の順に選択します。この新しいクラスの名前を「*Note.cs*」とします。
+1. ソリューション エクスプローラーで、**[Models]** フォルダーを右クリックし、**[追加]、[クラス]** の順に選択します。この新しいクラスの名前を「 *Note.cs*」とします。
 1. このクラス用に自動生成されたコードを次のコードに置き換えます。  
 
         using System;
@@ -115,7 +129,7 @@ MongoDB C# ドライバーがこのプロジェクトに統合され、_packages
 MongoDB にアクセスしてメモを取得し保存する手段を確立することが重要です。データ アクセス レイヤーは、Note モデルを使用し、後で HomeController に結び付けられます。
 
 1. ソリューション エクスプローラーで **mongoNotes** プロジェクトを右クリックして、**[追加]、[新しいフォルダー]** の順に選択します。フォルダー名を「**DAL**」とします。
-1. ソリューション エクスプローラーで、**[DAL]** を右クリックし、**[追加]、[クラス]** の順に選択します。この新しいクラスの名前を「*Dal.cs*」とします。
+1. ソリューション エクスプローラーで、**[DAL]** を右クリックし、**[追加]、[クラス]** の順に選択します。この新しいクラスの名前を「 *Dal.cs*」とします。
 1. このクラス用に自動生成されたコードを次のコードに置き換えます。  
 
         using System;
@@ -217,7 +231,7 @@ MongoDB にアクセスしてメモを取得し保存する手段を確立する
                 # endregion
             }
         }
-1. 上のコードのうち次のコードに注意してください。  
+1. 上のコードのうち次のコードにご注意ください。  
             
         private string connectionString = System.Environment.GetEnvironmentVariable("CUSTOMCONNSTR_MONGOLAB_URI");
         private string dbName = "myMongoApp";  
@@ -230,11 +244,11 @@ MongoDB にアクセスしてメモを取得し保存する手段を確立する
         mongoServer = client.GetServer();
         MongoDatabase database = mongoServer.GetDatabase(dbName);
         MongoCollection<Note> noteCollection = database.GetCollection<Note>(collectionName);
-  変更は必要ありません。ただ、この方法で取得した MongoCollection オブジェクトを使用して、 **GetAllNotes()** の次のコードのように挿入、更新、およびクエリを実行することを知っておいてください。
+  変更は必要ありません。ただ、この方法で取得した MongoCollection オブジェクトを使用して、 **GetAllNotes()** の次のコードのように挿入、更新、およびクエリを実行することを知っておいてください。  
 
         collection.FindAll().ToList<Note>();
 
-C# MongoDB ドライバーの活用方法の詳細については、mongodb.org にある [CSharp ドライバー クイック スタートに関するページ](http://www.mongodb.org/display/DOCS/CSharp+Driver+Quickstart "CSharp Driver Quickstart") を確認してください。
+C# MongoDB ドライバーの活用方法の詳細については、mongodb.org にある [CSharp ドライバー クイック スタートに関するページ](http://www.mongodb.org/display/DOCS/CSharp+Driver+Quickstart "CSharp Driver Quickstart")をご確認ください。
 
 ### 作成ビューを追加する
 次は新しいメモを作成するビューを追加します。
@@ -382,14 +396,14 @@ C# MongoDB ドライバーの活用方法の詳細については、mongodb.org 
         }
     
     
-<h2><a name="deploy"></a>アプリケーションの展開</h2>
+<h2><a name="deploy"></a>アプリの展開</h2>
 
 アプリケーションの開発が済んだため、今度はアプリケーションをホスティングする Azure の Web サイトを作成し、その Web サイトを構成して、コードを展開します。このセクションで中心になるのは、MongoDB 接続文字列 (URI) の使用法です。Web サイトではこの URI を設定した環境変数を構成して、コードから URI を分離します。データベースに接続する資格情報を含むため、URI は機密情報として扱う必要があります。
 
 ### 新しい Web サイトを作成して発行設定ファイルを取得する
 Azure で Web サイトを作成するのは、特に Azure では Visual Studio 用の発行プロファイルが自動生成されるため、とても簡単です。
 
-1. Azure ポータルで **[新規]** をクリックします。  
+1. Azure ポータルで、**[新規]** をクリックします  
 ![New][button-new]
 1. **[コンピューティング]、[Web サイト]、[簡易作成]** の順に選択します。  
 ![CreateSite][screen-mongolab-newwebsite]
@@ -404,11 +418,11 @@ Visual Studio で直接 Web サイトを構成することもできます。Azur
 
 ### MongoLab 接続文字列を取得する
 
-[WACOM.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
+[AZURE.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
 
 ### Web サイトの環境変数に接続文字列を追加する
 
-[WACOM.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
+[AZURE.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
 
 ### Web サイトを発行する
 1. Visual Studio のソリューション エクスプローラーで、**mongoNotes** プロジェクトを右クリックし、**[発行]** をクリックします。[発行] ダイアログ ボックスが表示されます。  
@@ -421,7 +435,7 @@ Visual Studio で直接 Web サイトを構成することもできます。Azur
 
 <h2><a name="manage"></a>データベースの管理</h2>
 
-[WACOM.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
+[AZURE.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
 
 ご利用ありがとうございます。これで、MongoLab がホスティングする MongoDB データベースに支えられた C# ASP.NET アプリケーションが公開されました。MongoLab データベースを利用していて、データベースに関する疑問または不明点がある場合や、MongoDB や C# ドライバーそのものに関するヘルプが必要な場合は、[support@mongolab.com](mailto:support@mongolab.com) にお問い合わせください。それではお元気で。
 
@@ -439,10 +453,11 @@ Visual Studio で直接 Web サイトを構成することもできます。Azur
 [button-connectioninfo]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/button-connectioninfo.png
 [screen-connectioninfo]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/dialog-mongolab_connectioninfo.png
 [focus-website-connectinfo]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/focus-mongolab-websiteconnectionstring.png
-[provision]: #provision
-[create]: #create
-[deploy]: #deploy
-[manage]: #manage
+[準備]: #provision
+[作成]: #create
+[展開]: #deploy
+[管理]: #manage
 
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

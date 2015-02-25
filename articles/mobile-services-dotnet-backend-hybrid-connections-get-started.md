@@ -1,8 +1,9 @@
-﻿<properties urlDisplayName="Connect to an on-premises SQL Server from an Azure mobile service using Hybrid Connections" pageTitle="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する - Azure Mobile Services" metaKeywords="" description="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Connect to an on-premises SQL Server from an Azure mobile service using Hybrid Connections" authors="mahender" solutions="" manager="dwrede" editor="mollybos" />
+﻿<properties pageTitle="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する - Azure Mobile Services" description="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する方法について説明します。" services="" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/22/2014" ms.author="glenga"/>
+
   
-# ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する 
+# ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する 
 
 企業がクラウドに移行する際に、技術、コンプライアンス、またはセキュリティ上の理由で、アセットを内部設置型にすることが必要になる場合があります。Mobile Services を使用すると、クラウドでホストされるモビリティ レイヤーをアセットの上部に容易に作成できるのと同時に、これらをハイブリッド接続を使用して安全に社内に接続できます。サポートされているアセットには、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。 
 
@@ -14,7 +15,7 @@
 2. [SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](#InstallSQL)
 3. [ハイブリッド接続を作成する](#CreateHC)
 4. [内部設置型の Hybrid Connection Manager をインストールして接続を完了する](#InstallHCM)
-5. [接続を使用するようにモバイル サービスを変更する](#CreateService)
+5. [接続を使用するように Mobile Service を変更する](#CreateService)
 
 <a name="Prerequisites"></a>
 ##前提条件##
@@ -27,14 +28,14 @@
 ハイブリッド接続を使用して Azure に接続する内部設置型のコンピューターも必要になります。このコンピューターは次の条件を満足している必要があります。
 
 - ポート 5671 経由で Azure に接続できる
-- 接続する内部設置型のリソースの *hostname*:*portnumber* にアクセスできる。リソースが同じコンピューターでホストされているかどうかは問いません。 
+- 接続する内部設置型のリソースの  *hostname*:*portnumber*にアクセスできる。リソースが同じコンピューターでホストされているかどうかは問いません。 
 
 <a name="InstallSQL"></a>
 ## SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する
 
 ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server の既定のインスタンスは静的ポート 1433 を使用しますが、名前付きインスタンスは静的ポート 1433 を使用しません。 
 
-上に示した条件を満たすように SQL Server を構成する方法の詳細な手順については、「[SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](/ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#InstallSQL)」を参照してください。上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[内部設置型の SQL Server を作成する](/ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#CreateSQLDB)」から開始できます。 
+上に示した条件を満たすように SQL Server を構成する方法の詳細な手順については、[SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](/ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#InstallSQL).方法に関するページを参照してください。上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、その手順をスキップし、[内部設置型の SQL Server データベースを作成する](/ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#CreateSQLDB). 方法から開始できます。
 
 このチュートリアルでは、データベース名が **OnPremisesDB** で、ポート **1433** で実行され、コンピューターのホスト名が **onPremisesServer** であると想定しています。
 
@@ -42,7 +43,7 @@
 ## ハイブリッド接続を作成する
 1. 内部設置型のコンピューターで、[Azure の管理ポータル](http://go.microsoft.com/fwlink/p/?linkid=213885&clcid=0x409)にログオンします。
 
-2. ナビゲーション ペインの下部にある **[+新規]** を選択し、**[アプリケーション サービス]**、[**BizTalk サービス**]、[**カスタム作成**] の順に選択します。
+2. ナビゲーション ペインの下部にある **[+新規]** を選択し、**[アプリケーション サービス]**、**[BizTalk サービス]**、**[カスタム作成]** の順に選択します。
 
 	![Create BizTalk Service][CreateBTS]
 
@@ -58,7 +59,7 @@
 
 	これで、新しいハイブリッド接続が作成されます。
 
-5. ハイブリッド接続の**名前**と**ホスト名**を指定し、**ポート**を `1433` に設定します。 
+5. ハイブリッド接続の**名前**と**ホスト名**を指定し、**ポート**を `1433`. に設定します。 
   
 	![Configure Hybrid Connection][ConfigureHC]
 
@@ -91,7 +92,7 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 
 	![Hybrid Connection Manager setup][HCMSetup]
 
-	インストールが完了すると、ハイブリッド接続の状態が **"1 インスタンス接続済み"** に変更されます。ブラウザーの表示を更新し、数分間待つことが必要になる場合があります。内部設置型設定がこれで完了しました。
+	インストールが完了すると、ハイブリッド接続の状態が "**1 インスタンス接続済み**" に変更されます。ブラウザーの表示を更新し、数分間待つことが必要になる場合があります。内部設置型設定がこれで完了しました。
 
 	![Hybrid Connection connected][HCConnected]
 
@@ -100,7 +101,7 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 ### ハイブリッド接続とサービスの関連付け
 1. ポータルの **[モバイル サービス]** タブをクリックし、既存のモバイル サービスを選択するか、新しいモバイル サービスを作成します。 
 
-	>[WACOM.NOTE]必ず、.NET バックエンドを使用して作成されたサービスを選択するか、新しい .NET バックエンド モバイル サービスを作成してください。新しい .NET バックエンド モバイル サービスを作成する方法については、「[モバイル サービスの使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/) 」を参照してください。
+	>[AZURE.NOTE]必ず、.NET バックエンドを使用して作成されたサービスを選択するか、新しい .NET バックエンド モバイル サービスを作成してください。新しい .NET バックエンド モバイル サービスを作成する方法については、「[Mobile Services の使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/) 」を参照してください。
 
 2. モバイル サービスの **[構成]** タブで、**[ハイブリッド接続]** セクションを見つけて、**[ハイブリッド接続の追加]** を選択します。
 
@@ -115,19 +116,19 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 ### 内部設置型接続文字列を使用するためのサービスの更新
 最後に、内部設置型の SQL Server に接続文字列の値を格納するためのアプリケーション設定を作成する必要があります。新しい接続文字列を使用するには、モバイル サービスを変更する必要があります。 
 
-1. **[接続文字列]** の **[構成]** タブで、`OnPremisesDatabase` という名前の新しい接続文字列を追加し、`Server=onPremisesServer,1433;Database=OnPremisesDB;User ID=sa;Password={password}` のような値を設定します。
+1. **[接続文字列]** の **[構成]** タブで、 `OnPremisesDatabase` という名前の新しい接続文字列を追加し、 `Server=onPremisesServer,1433;Database=OnPremisesDB;User ID=sa;Password={password}` のような値を設定します。
 
 	![Connection string for on-premises database][ConnectionString]
 
-	`{password}` を、内部設置型データベースのセキュリティ保護されたパスワードと置き換えます。
+	 `{password}` をセキュリティ保護されたパスワードと置き換えます。
 
 2. **[保存]** をクリックして、作成したハイブリッド接続と接続文字列を保存します。
 
 3. Visual Studio 2013 で、.NET ベースのモバイル サービスを定義したプロジェクトを開きます。 
 
-	.NET バックエンド プロジェクトのダウンロード方法については、「[モバイル サービスの使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/)」を参照してください。
+	.NET バックエンド プロジェクトのダウンロード方法については、「[Mobile Services の使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/) .」を参照してください。
  
-4. ソリューション エクスプローラーで **Models** フォルダーを展開し、*Context.cs* で終わるデータ モデル ファイルを開きます。
+4. ソリューション エクスプローラーで **Models** フォルダーを展開し、 *Context.cs* で終わるデータ モデル ファイルを開きます。
 
 6. **DbContext** インスタンス コンストラクターを次のスニペットのように変更します。
 
@@ -147,7 +148,7 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 
 6. SQL Server が実行されている内部設置型のコンピューターの SQL Management Studio を開き、オブジェクト エクスプローラーで、**OnPremisesDB** データベースを展開し、**Tables** を展開します。 
 
-9. **hybridService1.TodoItems** テーブルを右クリックし、**[先頭の 1000 行を選択]** をクリックして、結果を表示します。
+9. **hybridService1.TodoItems** テーブルを右クリックし、**[先頭の 1000 行を選択]** をクリックすると、結果が表示されます。
 
 	![SQL Management Studio][SMS]
 
@@ -157,7 +158,7 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
  
 + [ハイブリッド接続の Web サイト](http://azure.microsoft.com/ja-jp/services/biztalk-services/)
 + [ハイブリッド接続の概要](http://go.microsoft.com/fwlink/p/?LinkID=397274)
-+ [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
++ [BizTalk Services:[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
 
 <!-- IMAGES -->
  
@@ -174,3 +175,6 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 [ConnectionString]:./media/mobile-services-dotnet-backend-hybrid-connections-get-started/11.png
 [SMS]:./media/mobile-services-dotnet-backend-hybrid-connections-get-started/12.png
 [DownloadHCM]:./media/mobile-services-dotnet-backend-hybrid-connections-get-started/5-1.png
+
+
+<!--HONumber=42-->

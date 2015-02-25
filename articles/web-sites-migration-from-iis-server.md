@@ -1,16 +1,31 @@
-﻿<properties urlDisplayName="Migrate from IIS to Azure Websites with Migration Assistant" pageTitle="Migration Assistant を使用して IIS の Web サイトを Azure Websites に移行する"metakeywords ="Azure Websites,移行,移行する,IIS" description="Azure Websites 移行アシスタントを使用して既存の IIS Web サイトを Azure Websites に手軽に移行する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Migrate your IIS Websites to Azure Websites using the Migration Assistant" authors="cephalin,anwestg"  solutions="" writer="cephalin" manager="wpickett" editor=""  />
+﻿<properties 
+	pageTitle="Migration Assistant を使用して IIS Web サイトを Azure Websites へ移行する" 
+	description="Azure Websites 移行アシスタントを使用して既存の IIS Web サイトを Azure Websites に手軽に移行する方法について説明します。" 
+	services="web-sites" 
+	documentationCenter="" 
+	authors="cephalin" 
+	writer="cephalin" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="cephalin" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/20/2014" 
+	ms.author="cephalin"/>
 
-# Migration Assistant を使用して IIS の web サイトを Azure Websites に移行する#
-インターネット インフォメーション サービス (IIS) 6 以降で実行されている既存の Web サイトを簡単に Azure Websites に移行できます。[Azure Websites の Migration Assistant](https://www.movemetothecloud.net/) では、IIS サーバーのインストールを分析し、どのサイトを Azure Websites に移行できるかを識別し、移行できない要素またはプラットフォームでサポートされていない要素を強調表示してから、Web サイトおよび関連するデータベースを Azure に移行できます。
+# Migration Assistant を使用して IIS の Web サイトを Azure Websites に移行する#
+インターネット インフォメーション サービス (IIS) 6 以降で実行されている既存の Web サイトを簡単に Azure Websites に移行できます。[Azure Websites Migration Assistant](https://www.movemetothecloud.net/) では、IIS サーバーのインストールを分析し、どのサイトを Azure Websites に移行できるかを識別し、移行できない要素またはプラットフォームでサポートされていない要素を強調表示してから、Web サイトおよび関連するデータベースを Azure に移行できます。
 
->[WACOM.NOTE] Windows Server 2003 は、2015 年 7 月 14 日でサポートが終了します。現在 Windows Server 2003 の IIS サーバーに Web サイトが置かれている場合、Azure Websites により、低リスク、低コスト、および低干渉で Web サイトがオンラインの状態に保たれます。また、Azure Websites の Migration Assistant により移行プロセスが自動化されます。 
+>[AZURE.NOTE]  Windows Server 2003 は、2015 年 7 月 14 日でサポートが終了します。現在 Windows Server 2003 の IIS サーバーに Web サイトが置かれている場合、Azure Websites により、低リスク、低コスト、および低干渉で Web サイトがオンラインの状態に保たれます。また、Azure Websites Migration Assistant により移行プロセスが自動化されます。 
 
 ## 互換性の分析中に検証される要素 ##
-Azure Websites の Migration Assistant により対応状況レポートが作成されます。このレポートを使用して、考えられる問題点を識別し、内部設置型の IIS から Azure Websites への移行を妨げる可能性のある問題点をブロックします。注意すべき主な項目のいくつかを次に示します。
+Azure Websites Migration Assistant により対応状況レポートが作成されます。このレポートを使用して、考えられる問題点を識別し、内部設置型の IIS から Azure Websites への移行を妨げる可能性のある問題点をブロックします。注意すべき主な項目のいくつかを次に示します。
 
--	ポートのバインド - Azure Websites でサポートされるポートは、HTTP トラフィック用のポート 80、および HTTPS トラフィック用のポート 443 のみです。それ以外のポート構成は無視され、トラフィックは 80 または 443 にルーティングされます。
+-	ポートのバインド - Azure Websites でサポートされるポートは、HTTP トラフィック用のポート 80、および HTTPS トラフィック用のポート 443 のみです。それ以外のポート構成は無視され、トラフィックは 80 または 443 にルーティングされます。 
 -	認証 - Azure Websites では、匿名認証が既定でサポートされていますが、アプリケーションによってフォーム認証が指定される場合もあります。Azure Active Directory および ADFS と統合する場合に限り、Windows 認証を使用できます。基本認証など、その他すべての認証形式は現在サポートされていません。 
 -	グローバル アセンブリ キャッシュ (GAC) - GAC は Azure Websites でサポートされていません。アプリケーションで、通常 GAC にデプロイするアセンブリを参照する場合は、Azure Websites でアプリケーションの bin フォルダーにデプロイする必要があります。 
 -	IIS5 互換性モード - Azure Websites でサポートされていません。 
@@ -21,7 +36,7 @@ Azure Websites の Migration Assistant により対応状況レポートが作�
 	-	[Web.config](http://www.iis.net/configreference/system.webserver/isapifilters) を使用して DLL を登録します。
 	-	次の内容を含むサイト ルートに、applicationHost.xdt ファイルを配置します。
 
-			?xml version="1.0"?
+			<?xml version="1.0"?>
 			<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
 			<configSections>
 			    <sectionGroup name="system.webServer">
@@ -30,14 +45,14 @@ Azure Websites の Migration Assistant により対応状況レポートが作�
 			  </configSections>
 			</configuration>
 
-		Web サイトで XML ドキュメントの変換を使用する方法の例については、「[Transform your Microsoft Azure Web Site (Microsoft Azure の Web サイトの変換)](http://blogs.msdn.com/b/waws/archive/2014/06/17/transform-your-microsoft-azure-web-site.aspx)」を参照してください。
+		Web サイトで XML ドキュメントの変換を使用する方法の例については、[Transform your Microsoft Azure Web Site (Microsoft Azure の Web サイトの変換)](http://blogs.msdn.com/b/waws/archive/2014/06/17/transform-your-microsoft-azure-web-site.aspx) をご覧ください。
 
 -	SharePoint、Front Page Server Extensions (FPSE)、FTP、SSL 証明書など、その他のコンポーネントは移行されません。
 
 ## Azure Websites Migration Assistant の使用方法 ##
 このセクションでは、SQL Server データベースを使用して、内部設置型の Windows Server 2003 R2 (IIS 6.0) マシンで実行されている、いくつかの Web サイトを移行する場合の例を紹介します。
 
-1.	IIS サーバーまたはクライアント コンピューターで、[https://www.movemetothecloud.net/](https://www.movemetothecloud.net/) に移動します。
+1.	IIS サーバーまたはクライアント コンピューターで、 [https://www.movemetothecloud.net/](https://www.movemetothecloud.net/) に移動します。 
 
 	![](./media/web-sites-migration-from-iis-server/migration-tool-homepage.png)
 
@@ -46,7 +61,7 @@ Azure Websites の Migration Assistant により対応状況レポートが作�
 
 	![](./media/web-sites-migration-from-iis-server/install-page.png)
 
-	>[WACOM.NOTE]また、**[オフライン インストール用のダウンロード]** をクリックして ZIP ファイルをダウンロードし、インターネットに接続していないサーバーにインストールすることもできます。または、**[既存の移行準備レポートのアップロード]** をクリックすることもできます。これは、以前に生成した既存の移行準備レポート (後述) を使用する場合の高度なオプションです。
+	>[AZURE.NOTE] また、**[オフライン インストール用のダウンロード]** をクリックして ZIP ファイルをダウンロードし、インターネットに接続していないサーバーにインストールすることもできます。または、**[既存の移行準備レポートのアップロード]** をクリックすることもできます。これは、以前に生成した既存の移行準備レポート (後述) を使用する場合の高度なオプションです。
 
 5.	**[アプリケーションのインストール]** 画面で **[インストール]** をクリックして、アプリケーションをコンピューターにインストールします。必要に応じて、Web Deploy、DacFX、IIS などの対応する依存関係もインストールされます。 
 
@@ -91,9 +106,9 @@ Azure Websites の Migration Assistant により対応状況レポートが作�
 
 	![](./media/web-sites-migration-from-iis-server/migration-settings.png)
 
-	>[WACOM.NOTE] カスタム設定で **[Azure Active Directory を有効にする]** チェック ボックスをオンにすると、Azure Web サイトが [Azure Active Directory](http://azure.microsoft.com/ja-jp/documentation/articles/active-directory-whatis/) (**既定のディレクトリ**) に統合されます。内部設置型 Active Directory と Azure Active Directory の同期の詳細については、「[ディレクトリ統合](http://msdn.microsoft.com/library/jj573653)」を参照してください。
+	>[AZURE.NOTE] カスタム設定で **[Azure Active Directory を有効にする]** チェック ボックスをオンにすると、Azure Web サイトが [Azure Active Directory](http://azure.microsoft.com/ja-jp/documentation/articles/active-directory-whatis/) (**既定のディレクトリ**) に統合されます。内部設置型 Active Directory と Azure Active Directory の同期の詳細については、 [ディレクトリ統合](http://msdn.microsoft.com/library/jj573653) をご覧ください。
 
-16.	必要な変更をすべて行ったら、**[作成]** をクリックして移行プロセスを開始します。移行ツールにより、Azure SQL データベースと Azure Web サイトが作成され、Web サイトのコンテンツとデータベースが発行されます。移行の進行状況が移行ツールで明確に表示され、最後に概要のページが表示されます。このページには、移行されたサイトの詳細情報、移行が正しく行われたかどうか、新しく作成された Azure Web サイトへのリンクなどが表示されます。 
+16.	 必要な変更をすべて行ったら、**[作成]** をクリックして移行プロセスを開始します。移行ツールにより、Azure SQL データベースと Azure Web サイトが作成され、Web サイトのコンテンツとデータベースが発行されます。移行の進行状況が移行ツールで明確に表示され、最後に概要のページが表示されます。このページには、移行されたサイトの詳細情報、移行が正しく行われたかどうか、新しく作成された Azure Web サイトへのリンクなどが表示されます。 
 
 	移行中にエラーが発生した場合、移行ツールでエラーの詳細が明確に表示され、変更がロールバックされます。**[エラー報告を送信する]** をクリックすると、キャプチャされたエラーのコール スタックとメッセージ本文と共に、エンジニアリング チームに直接エラー レポートを送信できます。 
 
@@ -101,6 +116,9 @@ Azure Websites の Migration Assistant により対応状況レポートが作�
 
 	移行が問題なく完了した場合は、**[フィードバックの送信]** をクリックして直接フィードバックを提示することもできます。 
  
-20.	Azure Web サイトへのリンクをクリックし、移行が完了したことを確認します。
+20.	Azure websites へのリンクをクリックし、移行が完了したことを確認します。
 
 
+
+
+<!--HONumber=42-->

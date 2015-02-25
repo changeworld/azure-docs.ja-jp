@@ -1,45 +1,45 @@
-﻿<properties urlDisplayName="Role Based Access Control with Azure Active Directory" pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Role Based Access Control in Mobile Services and Azure Active Directory" authors="wesmc" manager="dwrede" />
+<properties pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | モバイル デベロッパー センター" description="Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/14/2014" ms.author="wesmc" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/14/2014" ms.author="wesmc"/>
 
 # Mobile Services と Azure Active Directory でのロール ベースのアクセス制御
 
-[WACOM.INCLUDE [mobile-services-selector-rbac](../includes/mobile-services-selector-rbac.md)]
+[AZURE.INCLUDE [mobile-services-selector-rbac](../includes/mobile-services-selector-rbac.md)]
 
 ロール ベースのアクセス制御 (RBAC) は、ユーザーが保持できるロールにアクセス許可を割り当てる機能であり、特定のクラスのユーザーが実行できることとできないことの境界線を明確に定義します。このチュートリアルでは、Azure Mobile Services に基本的な RBAC を追加する方法について説明します。
 
 このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、.NET モバイル サービス バックエンドで Azure Active Directory 用の [Graph Client Library] を使って行います。Sales グループに属するユーザーのみが、データの照会を許可されます。
 
 
->[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、[アプリへの認証の追加]に関するチュートリアルを完了しておく必要があります。このチュートリアルでは、[アプリへの認証の追加]に関するチュートリアルで使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
 
-このチュートリアルでは、次の手順について説明します。
+このチュートリアルでは、次の手順について説明します。:
 
 1. [Sales グループとメンバーシップを作成する]
 2. [統合アプリケーションのキーを生成する]
-3. [カスタム承認属性を作成する] 
+3. [カスタム承認属性を作成する]
 4. [データベース操作にロール ベースのアクセス確認を追加する]
 5. [クライアントのアクセスをテストする]
 
-このチュートリアルには、次のものが必要です。
+このチュートリアルには、次のものが必要です。:
 
 * Windows 8.1 で実行されている Visual Studio 2013。
-* Azure Active Directory 認証プロバイダーを使用して、[アプリへの認証の追加]に関するチュートリアルを完了していること。
-* 「[ソース管理へのサーバー スクリプトの保存]」チュートリアルを完了し、Git リポジトリを使用してサーバー スクリプトを格納する方法に習熟していること。
+* Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了していること。
+* チュートリアル「[ソース管理へのプロジェクト コードの保存]」を完了し、Git リポジトリを使用してサーバー スクリプトを格納する方法に習熟していること。
  
 
 
 ## <a name="create-group"></a>Sales グループとメンバーシップを作成する
 
-[WACOM.INCLUDE [mobile-services-aad-rbac-create-sales-group](../includes/mobile-services-aad-rbac-create-sales-group.md)]
+[AZURE.INCLUDE [mobile-services-aad-rbac-create-sales-group](../includes/mobile-services-aad-rbac-create-sales-group.md)]
 
 
 ## <a name="generate-key"></a>統合アプリケーションのキーを生成する
 
 
-「[アプリへの認証の追加]に関するチュートリアルでは、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
+チュートリアル「[アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
 
-[WACOM.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../includes/mobile-services-generate-aad-app-registration-access-key.md)]
+[AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
 
 
@@ -103,9 +103,9 @@
             }
         }
 
-9. AuthorizeAadRole.cs で、次の `GetAADToken` メソッドを `AuthorizeAadRole` クラスに追加します。
+9. AuthorizeAadRole.cs で、 `AuthorizeAadRole` クラスに次の `GetAADToken` メソッドを追加します。
 
-    >[WACOM.NOTE] アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、[Graph Client Library] の説明に記載されているとおり、トークンの使用を試みたときに AccessTokenExpiredException 例外がスローされた場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。  
+    >[AZURE.NOTE] アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、[Graph Client Library] の説明に記載されているとおり、トークンの使用を試みたときに AccessTokenExpiredException 例外がスローされた場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。  
 
         private string GetAADToken(ApiServices services)
         {
@@ -140,9 +140,9 @@
             return token;
         }
 
-10. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `OnAuthorization` メソッドを次のコードで更新します。このコードは、[Graph Client Library] を使用して、ロールに対応する Active Directory グループを検索します。その後、そのグループ内のユーザーのメンバーシップを確認して、ユーザーを承認します。
+10. AuthorizeAadRole.cs で、 `AuthorizeAadRole` クラスの `OnAuthorization` メソッドを次のコードで更新します。このコードは、[Graph Client Library] を使用して、ロールに対応する Active Directory グループを検索します。その後、そのグループ内のユーザーのメンバーシップを確認して、ユーザーを承認します。
 
-    >[WACOM.NOTE] このコードは、Active Directory グループを名前で検索します。多くの場合には、モバイル サービス アプリケーションの設定としてグループ ID を格納する方が適切です。これは、グループ名は変更される場合がありますが、ID は同じままであるためです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。  
+    >[AZURE.NOTE] このコードは、Active Directory グループを名前で検索します。多くの場合には、モバイル サービス アプリケーションの設定としてグループ ID を格納する方が適切です。これは、グループ名は変更される場合がありますが、ID は同じままであるためです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。  
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
@@ -275,7 +275,7 @@
 
 ## <a name="test-client"></a>クライアントのアクセスをテストする
 
-[WACOM.INCLUDE [mobile-services-aad-rbac-test-app](../includes/mobile-services-aad-rbac-test-app.md)]
+[AZURE.INCLUDE [mobile-services-aad-rbac-test-app](../includes/mobile-services-aad-rbac-test-app.md)]
 
 
 
@@ -295,10 +295,12 @@
 
 <!-- URLs. -->
 [アプリへの認証の追加]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/
-[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[ディレクトリ同期シナリオ]: http://msdn.microsoft.com/library/azure/jj573653.aspx
-[ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control/
+[Azure Active Directory 認証用の登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[ディレクトリ統合]: http://msdn.microsoft.com/library/azure/jj573653.aspx
+[ソース管理へのプロジェクト コードの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control/
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 [Graph Client Library]: http://go.microsoft.com/fwlink/?LinkId=510536
-[IsMemberOf]: http://msdn.microsoft.com/ja-jp/library/azure/dn151601.aspx
+[グループ メンバーシップの確認 (推移的)]: http://msdn.microsoft.com/ja-jp/library/azure/dn151601.aspx
+
+<!--HONumber=42-->

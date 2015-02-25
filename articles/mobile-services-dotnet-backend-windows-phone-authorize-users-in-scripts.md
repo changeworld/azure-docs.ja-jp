@@ -1,10 +1,10 @@
-﻿<properties pageTitle="サービス側の承認 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services の .NET バックエンドでユーザーを承認する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Service-side authorization of Mobile Services users" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="サービス側の承認 (Windows Phone) | モバイル デベロッパー センター" description="Azure Mobile Services の .NET バックエンドでユーザーを承認する方法について説明します。" services="" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/29/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/29/2014" ms.author="glenga"/>
 
 # モバイル サービス ユーザーのサービス側の承認
 
-[WACOM.INCLUDE [mobile-services-selector-service-auth-users](../includes/mobile-services-selector-service-auth-users.md)]
+[AZURE.INCLUDE [mobile-services-selector-service-auth-users](../includes/mobile-services-selector-service-auth-users.md)]
 
 
 このトピックでは、認証済みのユーザーを承認し、Azure Mobile Services のデータに Windows Phone アプリケーションからアクセスできるようにする方法を説明します。このチュートリアルでは、コントローラー内にあるデータ アクセス メソッドに、認証済みのユーザーの ID に基づいてクエリにフィルター処理を実施するコードを追加します。これによって、それぞれのユーザーが自分のデータのみを閲覧できる状態を実現できます。
@@ -13,7 +13,7 @@
 
 ## <a name="register-scripts"></a>データ アクセス メソッドの変更
 
-[WACOM.INCLUDE [mobile-services-filter-user-results-dotnet-backend](../includes/mobile-services-filter-user-results-dotnet-backend.md)] 
+[AZURE.INCLUDE [mobile-services-filter-user-results-dotnet-backend](../includes/mobile-services-filter-user-results-dotnet-backend.md)] 
 
 
 ## アプリケーションをテストする
@@ -24,7 +24,7 @@
 
    	このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点に注意してください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
 
-3. そのアプリケーションで、テキスト ボックスにテキストを入力し、**[Save]** をクリックします。
+3. そのアプリケーションで、テキスト ボックスにテキストを入力し、**[保存]** をクリックします。
 
    	![][3]
 
@@ -39,10 +39,10 @@
 * [データの使用]
   <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
   
-* [モバイル サービス .NET の使用方法の概念リファレンス]
+* [Mobile Services .NET の使用方法の概念リファレンス]
   <br/>.NET で Mobile Services を使用する方法について説明します。
 
 <!-- Anchors. -->
@@ -59,4 +59,7 @@
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push
 
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
+[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
+
+
+<!--HONumber=42-->

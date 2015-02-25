@@ -1,9 +1,23 @@
-﻿       <properties title="Getting Started with Mobile Services" pageTitle="" metaKeywords="Azure, Getting Started, Mobile Services" description="" services="mobile-services" documentationCenter="" authors="ghogen, kempb" />
+﻿<properties 
+	pageTitle="" 
+	description="" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="kempb" 
+	manager="douge" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="web" ms.tgt_pltfrm="vs-what-happened" ms.devlang="na" ms.topic="article" ms.date="10/8/2014" ms.author="ghogen, kempb" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vs-what-happened" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/8/2014" 
+	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-mobile-services-dotnet-getting-started/)
+> - [作業の開始](/documentation/articles/vs-mobile-services-dotnet-getting-started/)
 > - [変更内容](/documentation/articles/vs-mobile-services-dotnet-what-happened/)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
@@ -23,3 +37,5 @@
 選択したモバイル サービスのアプリケーション URL とアプリケーション キーを使用して、App.xaml.cs ファイル内に **MobileServiceClient** オブジェクトが作成されました。 
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
+
+<!--HONumber=42-->

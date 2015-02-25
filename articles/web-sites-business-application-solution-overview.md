@@ -1,216 +1,126 @@
-﻿<properties urlDisplayName="Create a Line-of-Business Application on Azure Websites" pageTitle="Azure Websites での基幹業務アプリケーションの作成" metaKeywords="Web Sites" description="このガイドでは、Azure Websites を使用してイントラネットの基幹業務アプリケーションを作成する方法 (技術概要) について説明します。これには、認証方式、Service Bus リレー、監視も含まれます。" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="wpickett" title="Create a Line-of-Business Application on Azure Websites" authors="jroth" />
+<properties 
+	pageTitle="Azure Websites での基幹業務アプリケーションの作成" 
+	description="このガイドでは、Azure Websites を使用してイントラネットの基幹業務アプリケーションを作成する方法 (技術概要) について説明します。これには、認証方式、Service Bus リレー、監視も含まれます。 
+	editor="jimbe" 
+	manager="wpickett" 
+	authors="cephalin" 
+	services="web-sites" 
+	documentationCenter=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/01/2014" ms.author="jroth" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/02/2014" 
+	ms.author="cephalin"/>
 
 
 
 # Azure Websites での基幹業務アプリケーションの作成
 
-このガイドでは、Azure Websites を使用して基幹業務アプリケーションを作成する方法 (技術概要) について説明します。ここで作成するのは、セキュリティで保護された社内業務用のイントラネット アプリケーションです。基幹業務アプリケーションには 2 つの特性があります。まず、認証 (通常は社内ディレクトリに対する認証) が必要です。次に、内部設置型のデータやサービスにアクセスできるようにするか、またはこれらを統合する必要があります。このガイドで紹介するのは、[Azure Websites][websitesoverview] でビジネス アプリケーションを構築する方法ですが、要件によっては、[Azure Cloud Services][csoverview] または [Azure Virtual Machines][vmoverview] の方が適している場合もあります。トピック「[Azure Web Sites, Cloud Services, and VMs:When to use which? (Azure Websites、Azure Cloud Services、Azure Virtual Machines: いつ、どれを使用するか)][chooseservice]」を参照し、これらのオプションの相違点を確認してください。 
+基幹業務アプリケーションには、[Azure Websites] が最適です。基幹業務アプリケーションとは、社内業務用にセキュリティで保護する必要があるイントラネット アプリケーションです。通常は、会社のディレクトリ、社内のデータとサービスへの一部のアクセスや統合に対して認証が必要です。 
 
-このガイドの内容は次のとおりです。
+基幹業務アプリケーションを Azure Websites に移行すると、次のような大きなメリットがあります。
 
-- [メリットの検討](#benefits)
-- [認証方式の選択](#authentication)
-- [認証をサポートする Azure の Web サイトの作成](#createintranetsite)
-- [Service Bus を使用したオンプレミス リソースの統合](#servicebusrelay)
-- [アプリケーションの監視](#monitor)
+-  年間の業績考査を処理するアプリケーションなど、動的なワークロード のスケールを上下できます。考査期間になると (特に大規模な会社では) トラフィックが急増します。Azure では負荷が増大する考査期間中にインスタンスを増やし、それ以外の期間は元に戻すことができるので、コスト節約につながります。 
+-  インフラストラクチャの取得や管理よりも、アプリケーション開発に集中できます。
+-  従業員やパートナーがどこからでもアプリケーションを使用できるようにサポートできます。アプリケーションを使用する際、ユーザーは社内ネットワークに接続する必要がありません。IT スタッフは複雑なリバース プロキシの設定から解放されます。社内アプリケーションへのアクセスを保護する手段として、いくつかの認証方式があります。
+
+次の図は、Azure Websites で実行されている基幹業務アプリケーションの一例です。技術的な投資を最小限にしながら Azure Websites と他のサービスと組み合わせるだけで何ができるかを示しています。**詳細については、図の中の要素をクリックしてください。** 
+
+<object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/web-app-notitle.svg" width="100%" height="100%"></object>
 
 <div class="dev-callout">
 <strong>注</strong>
-<p>このガイドで取り上げるのは公開 .COM サイト開発で必要となる最も一般的な分野やタスクですが、Azure Websites には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、 <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a> と <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>に関するガイドを参照してください。</p>
+<p>このガイドで取り上げるのは基幹業務アプリケーションと連携する最も一般的な分野やタスクですが、Azure Websites には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a>および<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>に関するガイドをご覧ください。</p>
 </div>
 
-##<a name="benefits"></a>メリットの検討
-通常、基幹業務アプリケーションは社内ユーザーを対象としているので、オンプレミスのリソースやインフラストラクチャとクラウドを比較し、クラウドならではのメリットを検討する必要があります。クラウドへ移行した場合のメリットの 1 つとして、作業負荷の変動に合わせた規模調整 (スケール) があります。たとえば、年間業績評価を処理するアプリケーションを利用しているとします。このようなアプリケーションの場合、1 年の大半は処理すべきトラフィックがほとんど発生しませんが、考査期間になると (特に大規模な会社では) トラフィックが急増します。Azure では負荷が増大する考査期間中にインスタンスを増やし、それ以外の期間は元に戻すことができるので、コスト節約につながります。また、クラウドには、インフラストラクチャの購入と管理に伴う負荷を軽減し、アプリケーション開発に集中できるようにするというメリットがあります。
+### 既存の資産の移行
 
-そのほかにもクラウドにはさまざまなメリットがあります。たとえば、業務アプリケーションをクラウドに配置すると、従業員やパートナーはどこからでもアプリケーションを使用できるようになります。アプリケーションを使用する際、ユーザーは社内ネットワークに接続する必要がありません。IT スタッフは複雑なリバース プロキシの設定から解放されます。社内アプリケーションへのアクセスを保護する手段として、いくつかの認証方式があります。この後のセクションでは、これらの認証方法について説明します。
+既存の Web 資産をさまざまな言語やフレームワークから Azure Websites に移行します。
 
-##<a name="authentication"></a>認証方式の選択
-基幹業務アプリケーションの場合、どのような認証方式を採用するかは最も重要な決定事項の 1 つです。次のような認証方式があります。
+既存の Web 資産は Azure Websites 上で、.NET、PHP、Java、Node.js、Python のどれであろうと実行できます。Azure Websites への移行は、使い慣れた [FTP] ツールやソース管理システムを使用して行うことができます。Azure Websites は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) のような一般的なソース管理オプションからの直接発行をサポートしています。
 
-- [Azure Active Directory サービス][adoverview]を使用する。単独のディレクトリとして使用するか、または内部設置型の Active Directory と同期することができます。この場合、アプリケーションは Azure の Active Directory とやり取りしてユーザーを認証します。この方法の概要については、「[Using Azure Active Directory (Azure Active Directory の使用)][adusing]」を参照してください。
-- Azure Virtual Machines と Virtual Network を使用して Active Directory をインストールする。この方法では、内部設置型の Active Directory 環境をクラウドへ拡張できます。さらに、Active Directory フェデレーション サービス (ADFS) を使用して、ID 要求を内部設置型 AD と連携することも可能です。Azure アプリケーションの認証は、ADFS を経由して内部設置型 Active Directory へ送られます。この方式の詳細については、「[Running Windows Server Active Directory in VMs (VM での Windows Server Active Directory の実行)][adwithvm]」および「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン][addeployguidelines]」を参照してください。 
-- [Azure Access Control Service][acs2] (ACS) などの中間サービスを介し、複数の ID サービスを使用してユーザーを認証する。これは、Active Directory または別の ID プロバイダーを介してユーザーを認証するための抽象化です。詳細については、「[Using Azure Active Directory Access Control (Azure Active Directory Access Control の使用)][acsusing]」を参照してください。
+### 資産の保護
 
-ここで紹介する最初の基幹業務アプリケーションのシナリオでは、Azure の Active Directory を使用します。アプリケーションの認証方式を最も短期間で実装できます。これ以降の説明は Azure の Active Directory が中心となりますが、ビジネス要件によっては他の 2 つの方法の方が適している場合もあります。たとえば、ID 情報をクラウドと共有できない場合は ADFS ソリューションが適しており、他の ID プロバイダー (Facebook など) をサポートする必要がある場合は ACS ソリューションが適しています。
+暗号化によって資産を保護し、社内でも社外でも企業ユーザーを認証し、資産の使用を承認します。 
 
-新しい Azure の Active Directory をセットアップする前に、既存のサービス (Office 365 や Windows Intune など) が既に Azure の Active Directory を使用しているかどうか確認してください。その場合、既存のサブスクリプションを Azure サブスクリプションに関連付けます。詳細については、「[Azure AD ディレクトリとは][adtenant]」を参照してください。
+[HTTPS] を使用して盗聴から内部資産を保護します。既に **\*.azurewebsites.net** というドメイン名が SSL 証明書に記載されているため、カスタム ドメインを使用する場合はその SSL 証明書を Azure Websites に移行できます。SSL 証明書ごとに月額料金 (時間単位) がかかります。詳細については、「[Websites 料金の詳細]」をご覧ください。
 
-現在、どのサービスでも Azure の Active Directory を使用していない場合は、管理ポータルで新しいディレクトリを作成できます。管理ポータルの **[Active Directory]** セクションで新しいディレクトリを作成します。
+会社のディレクトリに対して[ユーザーを認証]します。Azure Websites は、Active Directory フェデレーション サービス (AD FS) などの自社の ID プロバイダーや、コーポレート Active Directory の展開で同期された Azure Active Directory テナントを使用してユーザーを認証できます。ユーザーは、社内でも社外でもシングル サインオンで Azure Websites の Web プロパティにアクセスできます。Windows Intune、Office 365 などの既存のサービスは、既に Azure Active Directory を使用しています。お使いの Web サイトに対する同じ Azure Active Directory テナントを[簡単に認証]できます。 
 
-![BusinessApplicationsAzureAD][BusinessApplicationsAzureAD]
+Web サイトのプロパティを使用する際に[ユーザーを承認]します。追加のコードを最小限に抑え、[[ユーザーの認証]] 修飾を使用するなどして、同一のオンプレミスの ASP.NET コーディング パターンを Azure Websites に移行できます。詳細なアクセス制御に対して、自社で管理するアプリケーションと同様の柔軟性を維持します。
 
-ディレクトリを作成すると、ユーザー、統合アプリケーション、ドメインを作成および管理するためのオプションが表示されます。
+### 社内リソースへの接続 ###
 
-![BusinessApplicationsADUsers][BusinessApplicationsADUsers]
+パフォーマンス向上のためにクラウドにある場合でもコンプライアンスのために社内にある場合でも、自分の Web サイト データやリソースに接続できます。Azure でデータを保持する方法の詳細については、「[Azure のトラスト センター]」をご覧ください。 
 
-これらの詳しい手順については、「[Azure AD を使用してサインオンを Web アプリケーションに追加][adsso]」を参照してください。新しく作成したディレクトリを単独リソースとして使用する場合、次は、そのディレクトリを組み込んだアプリケーションを開発します。ただし、内部設置型の Active Directory ID を使用している場合は、それらを新しい Azure の Active Directory と同期させます。詳しい手順については、「[ディレクトリ統合][dirintegration]」を参照してください。
+Web サイトで必要なものを [Azure SQL データベース] や [MySQL] など Azure のさまざまなデータベース バックエンドから選択できます。Azure でデータを安全に保持することで、地理的に Web サイトに近い場所でデータを保つことになり、パフォーマンスを最大限に高めることができます。
 
-ディレクトリを作成して設定したら、認証を要求する Web アプリケーションを作成し、それらのアプリケーションをディレクトリと連携させる必要があります。これらの手順については、この後の 2 つのセクションで説明します。
+ただし、業務の状況によってはデータを社内に保持することが求められる場合もあります。Azure Websites を使用すると、データベース バックエンドなど社内リソースへの[ハイブリッド接続]を簡単に設定できます。社内のネットワークを一元管理したい場合は、多くの Azure Websites を、サイト間 VPN を持つ 1 つの [Azure の仮想ネットワーク] に統合します。ユーザーは、Azure Websites があたかも社内にあるかのように、内部設置型リソースにアクセスできます。[Enterprise Pizza - Service Bus][enterprisepizza] を使用して Web サイトから社内に接続します。
 
-##<a name="createintranetsite"></a>認証をサポートする Azure Website の作成
-"グローバル Web プレゼンス" シナリオでは、新しい Web サイトを作成してデプロイするためのさまざまな方法を検討しました。Azure Websites を初めて使用する場合は、まず[こちらのトピック][scenarioglobalweb]をお読みください。Windows 認証を使用するイントラネット Web アプリケーションが必要な場合、通常は Visual Studio で ASP.NET アプリケーションを作成します。その理由の 1 つとして、ASP.NET と Visual Studio による緊密な統合とサポートがあります。
+### 最適化
 
-たとえば、Visual Studio で ASP.NET MVC 4 プロジェクトを作成する場合、プロジェクトの作成ダイアログ ボックスで**[イントラネット アプリケーション]** を選択できます。
+Autoscale 機能による自動サイズ設定、Azure Redis Cache によるキャッシュ、Web ジョブによるバックグラウンド タスクの実行、Azure Traffic Manager による高可用性の維持を通じて、基幹業務アプリケーションを最適化できます。
 
-![BusinessApplicationsVSIntranetApp][BusinessApplicationsVSIntranetApp]
+Azure Websites の[Web サイトの規模の設定]機能は、ワークロードの規模にかかわらず基幹業務アプリケーションのニーズを満たします。手動で Web サイトをスケールアウトする場合は、[Azure 管理ポータル]から行います。プログラムを使用する場合は、[サービス管理 API] または [PowerShell スクリプト]、自動で行う場合は自動スケール機能から行います。**標準**のホスティング プランでは、自動スケールを使用して、CPU 使用率に基づいて Web サイトを自動的にスケールアウトできます。ベスト プラクティスについては、「[Troy Hunt]'s [10 things I learned about rapidly scaling websites with Azure] (Troy Hunt の Azure による迅速な Web サイトのスケーリングで私が学んだ 10 の事項)」をご覧ください。
 
-これによって、Windows 認証をサポートするようにプロジェクト設定が変更されます。具体的には、web.config ファイルで、**authentication** 要素の **mode** 属性が **Windows** に設定されます。別の ASP.NET プロジェクト (Web フォーム プロジェクトなど) を作成する場合、または既存のプロジェクトで作業する場合は、この設定を手動で変更する必要があります。
+[Azure Redis Cache] を使用して、Web サイトの応答性を高められます。これにより、バックエンド データベースからのデータや、[ASP.NET セッション状態]や[出力キャッシュ]などのデータをキャッシュできます。
 
-MVC プロジェクトでは、[プロジェクトのプロパティ] ウィンドウでさらに 2 つの値を変更します。 **[Windows 認証]** を **[有効]** に設定し、**[匿名認証]** を **[無効]** に設定します。
+[Azure Traffic Manager] を使用して Web サイトの可用性を高く維持できます。プライマリ サイトに問題がある場合、Traffic Manager は**Failover** メソッドを使用して自動的にセカンダリ サイトにトラフィックをルーティングします。
 
-![BusinessApplicationsVSProperties][BusinessApplicationsVSProperties]
+### 監視と分析
 
-Azure の Active Directory で認証するには、このアプリケーションをディレクトリに登録し、アプリケーション構成を変更して接続できるようにする必要があります。Visual Studio にはそのための方法が 2 つ用意されています。
+Azure かサードパーティ製ツールを使用して、Web サイトのパフォーマンスを最新の状態に保つことができます。Web サイトの重要なイベントに関するアラートを受信します。Application Insight や HDInsight からの Web ログ分析を使用して、簡単にユーザーの分析を行うことができます。 
 
-- [Visual Studio 向け Identity and Access ツール](#identityandaccessforvs)
-- [Azure の Active Directory 向け Microsoft ASP.NET ツール](#aspnettoolsforwaad)
+Azure Websites のダッシュボードでは、Web サイトの現在のパフォーマンス メトリックとリソース クォータの[概要]を取得できます。アプリケーションの可用性、パフォーマンス、使用状況などあらゆる情報に対して [Azure Application Insights] を使用して、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を行います。または、[New Relic] などのサードパーティ製ツールを使用して、Web サイトに対する高度なデータ監視を行います。
 
-###<a name="identityandaccessforvs"></a>Visual Studio 向け Identity and Access ツール:
-1 つは、[Identity and Access ツール][identityandaccess]を使用する方法です (ダウンロードしてインストールできます)。このツールでは、プロジェクト コンテキスト メニューに Visual Studio が統合されています。次の手順説明とスクリーンショットは Visual Studio 2012 のものです。プロジェクトを右クリックし、**[Identity and Access]** を選択します。3 つのオプションを設定する必要があります。**[Providers]** タブで、**STS メタデータ ドキュメントのパス**と **APP ID URI** を指定します (これらの値を取得する方法については「[Azure Active Directory にアプリケーションを登録する](#registerwaadapp)」を参照してください)。
+**標準**のホスティング プランでは、サイトの応答性を監視し、サイトが応答しなくなるメール通知を受信します。詳細については、「[方法:Azure でアラート通知を受け取り、アラート ルールを管理する]」をご覧ください。
 
-![BusinessApplicationsVSIdentityAndAccess][BusinessApplicationsVSIdentityAndAccess]
+## その他のリソース
 
-最後に、**[Identity and Access]** ダイアログ ボックスの  **[Configuration]** タブで構成を変更します。**[Enable web farm cookies]** チェック ボックスをオンにしてください。詳しい手順については、「[Azure AD を使用してサインオンを Web アプリケーションに追加][adsso]」を参照してください。
-
-####<a name="registerwaadapp"></a>Azure Active Directory にアプリケーションを登録する:
-**[Providers]** タブに情報を入力するには、Azure Active Directory にアプリケーションを登録する必要があります。Azure の管理ポータルの **[Active Directory]** セクションで目的のディレクトリを選択し、**[アプリケーション]** タブへ移動します。Azure Website の URL を追加するためのオプションが表示されます。これらの手順を実行するときは、とりあえず、Visual Studio でのローカル デバッグ時に使用する localhost アドレスの URL を設定しておきます。後でデプロイする際、Web サイトの実際の URL に変更します。
-
-![BusinessApplicationsADIntegratedApps][BusinessApplicationsADIntegratedApps]
-
-管理ポータルに、STS メタデータ ドキュメントのパス (**フェデレーション メタデータ ドキュメントの URL**) と **APP ID URI** の両方が表示されます。これらの値は、Visual Studio の **[Identity and Access]** ダイアログ ボックスにある **[Providers]** タブで使用します。 
-
-![BusinessApplicationsADAppAdded][BusinessApplicationsADAppAdded]
-
-###<a name="aspnettoolsforwaad"></a>Azure Active Directory 用 Microsoft ASP.NET ツール:
-もう 1 つは、[Azure Active Directory 用 Microsoft ASP.NET ツール][aspnettools]を使用する方法です。このツールを使用するには、Visual Studio の **[プロジェクト]** で **[Azure 認証を有効にする]** をクリックします。(アプリケーションの URL ではなく) Azure の Active Directory ドメインのアドレスを尋ねるシンプルなダイアログ ボックスが表示されます。
-
-![BusinessApplicationsVSEnableAuth][BusinessApplicationsVSEnableAuth]
-
-Active Directory ドメインの管理者である場合は、**[Azure AD でこのアプリケーションをプロビジョニングする]** チェック ボックスをオンにします。これでアプリケーションが Active Directory に登録されます。管理者でない場合は、このチェックボックスをオフにして、表示された情報を管理者に通知してください。管理者は管理ポータルから Identity and Access ツールを使用し、前の手順に従って統合アプリケーションを作成できます。Azure Active Directory 用 ASP.NET ツールを使用する詳しい手順については、「[Windows Azure Authentication (Microsoft Azure 認証)][azureauthtutorial]」を参照してください。
-
-基幹業務アプリケーションを管理する際、サポートされているすべてのソース コード管理システムを使用して展開できます。ただし、このシナリオでは Visual Studio が密に統合されているので、Team Foundation Service (TFS) を選択するのが一般的です。この場合、Azure Websites に TFS が統合されていることに注意してください。管理ポータルで、目的の Web サイトの **[ダッシュボード]** タブを開きます。次に **[ソース管理からのデプロイの設定]** を選択します。TFS の使用手順に従います。 
-
-![BusinessApplicationsDeploy][BusinessApplicationsDeploy]
-
-##<a name="servicebusrelay"></a>サービス バスを使用して内部設置型リソースを統合
-多くの基幹業務アプリケーションでは、オンプレミスのデータやサービスを統合する必要があります。いくつかの理由により、一部のデータはクラウドへ移動できません。これらの理由には実際的なものと規制によるものがあります。どのデータを Azure でホストし、どのデータを内部設置のままにするかを計画するときは、[Azure のトラスト センター][trustcenter]でリソースを確認することが重要です。ハイブリッド Web アプリケーションは Azure で実行され、内部設置のリソースにアクセスします。
-
-仮想マシンまたはクラウド サービスを使用すれば、仮想ネットワークを介して Azure のアプリケーションを社内ネットワークに接続できます。ただし、Web サイトは仮想ネットワークをサポートしないので、[Azure Service Bus Relay サービス][sbrelay]を使用して Web サイトを統合するのが最適といえます。サービス バス リレー サービスを使用すれば、クラウドのアプリケーションから社内ネットワーク上の WCF サービスへ安全に接続できます。その際、ファイアウォール ポートを開く必要がありません。 
-
-次の図では、クラウド アプリケーションと内部設置型 WCF サービスの両方が、以前に作成した名前空間を介してサービス バスと通信します。内部設置型の WCF サービスは、クラウドへ移動できない内部データとサービスにアクセスできます。WCF サービスはこの名前空間にエンドポイントを登録します。Azure で実行される Web サイトは、Service Bus のこのエンドポイントにも接続します。そのために必要なのは、パブリック HTTP 要求を発行することだけです。
-
-![BusinessApplicationsServiceBusRelay][BusinessApplicationsServiceBusRelay]
-
-さらに、サービス バスはクラウド アプリケーションを内部設置型 WCF サービスへ接続します。これは、両方 (Azure と内部設置型) のサービスやリソースを使用するハイブリッド アプリケーションを作成するための基本的なアーキテクチャです。詳細については、「[How to Use the Service Bus Relay Service (Service Bus Relay サービスの使用方法)][sbrelayhowto]」および「 [Service Bus によって中継型メッセージングのチュートリアル][sbrelaytutorial]」を参照してください。この手法の具体例については、「[Enterprise Pizza - Connecting Web Sites to On-premise Using Service Bus (Enterprise Pizza - Service Bus を使用して Web サイトを内部設置型環境に接続する)][enterprisepizza]」を参照してください。
-
-##<a name="monitor"></a>アプリケーションの監視
-基幹業務アプリケーションでは、スケーリングや監視など Web サイトの標準機能が役立ちます。曜日や時間帯によって負荷が変動する業務アプリケーションでは、自動スケール (プレビュー) 機能を使ってサイトの規模を調整することでリソースを効率的に活用できます。監視機能にはエンドポイントの監視とクォータの監視があります。詳細については、[グローバル Web プレゼンス][scenarioglobalweb]および[デジタル マーケティング キャンペーン][scenariodigitalmarketing]のシナリオを参照してください。
-
-監視要件は、基幹業務に対するビジネス アプリケーションの重要性によって異なります。重要度の高い基幹業務アプリケーションでは、[New Relic][newrelic] などサードパーティ製監視ソリューションの導入を検討してください。
-
-一般に、基幹業務アプリケーションは IT スタッフが管理します。詳細ログを有効にしておけば、予期しないエラーや動作が発生した場合にログ データを分析し、トラブルの原因を突き止めることができます。管理ポータルで**[構成]** タブに移動し、**[アプリケーション診断]** セクションと **[サイト診断]** セクションでオプションを確認します。 
-
-![BusinessApplicationsDiagnostics][BusinessApplicationsDiagnostics]
-
-各種のアプリケーション ログとサイト ログを使用して、Web サイトのトラブルを解決します。一部のオプションでは**ファイル システム**を指定します。サイト内の指定したファイル システムにログ ファイルが保存されます。これらのログ ファイルには、FTP、Azure PowerShell、または Azure コマンドライン ツールからアクセスできます。その他のオプションでは**ストレージ**を指定します。指定した Azure のストレージ アカウントに情報が送信されます。**[Web サーバーのログ記録]**では、ファイル システムのディスク クォータまたはストレージの保有ポリシーを指定することもできます。これは、保存するログ データが際限なく増加するのを防ぐための機能です。
-
-![BusinessApplicationsDiagRetention][BusinessApplicationsDiagRetention]
-
-これらのログ設定の詳細については、「[How to:Configure diagnostics and download logs for a web site (方法: Web サイトの診断の構成とログのダウンロード)][configurediagnostics]」を参照してください。
-
-FTP やストレージ ユーティリティ (Azure ストレージ エクスプローラーなど) で未加工のログを表示するほか、Visual Studio でもログ情報を表示できます。トラブル発生時にこれらのログを使用する方法については、「[Troubleshooting Azure Web Sites in Visual Studio (Visual Studio での Azure Websites トラブルシューティング)][troubleshootwebsites]」を参照してください。
-
-##<a name="summary"></a>まとめ
-Azure を使用すれば、安全なイントラネット アプリケーションをクラウドでホストできます。Azure の Active Directory にはユーザー認証機能が備わっているので、自社の従業員のみにアプリケーションへのアクセスを許可できます。サービス バス リレー サービスは、Web アプリケーションが内部設置型のサービスやデータと通信するための仕組みです。このハイブリッド アプリケーション方式を採用すれば、業務用のデータやサービスをすべて移行する必要がないので、業務アプリケーションをクラウドへ容易に公開できます。基幹業務アプリケーションをデプロイした後は、規模設定 (スケール) や監視など、Azure Websites が提供する標準機能を利用できます。詳細については、次の技術解説記事を参照してください。
-
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="top">領域</th>
-   <th align="left" valign="top">リソース</th>
-</tr>
-<tr>
-   <td valign="middle"><strong>計画</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service">Azure Websites、Cloud Services、および Virtual Machines:いつ、どれを使用するか</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>作成およびデプロイ</strong></td>
-   <td valign="top">- <a href ="http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/">Azure Web サイトへの ASP.NET Web アプリケーションのデプロイ</a><br/>- <a href="http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/">Azure への安全な ASP.NET MVC アプリケーションのデプロイ</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>認証</strong></td>
-   <td valign="top">- <a href ="http://www.windowsazure.com/ja-jp/manage/windows/fundamentals/identity/">Azure ID のオプションについて</a><br/>- <a href="http://www.windowsazure.com/ja-jp/documentation/services/active-directory/">Azure Active Directory サービス</a><br/>- <a href="http://technet.microsoft.com/ja-jp/library/jj573650.aspx">Azure AD テナントとは</a><br/>- <a href="http://msdn.microsoft.com/library/windowsazure/dn151790.aspx">Azure AD を使用した Web アプリケーションへのサインオンの追加</a><br/>- <a href="http://www.asp.net/aspnet/overview/aspnet-and-visual-studio-2012/windows-azure-authentication">Azure 認証に関するチュートリアル</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>サービス バス リレー</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-relay/">サービス バス リレー サービスの使用方法</a><br/>- <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/ee706736.aspx">Service Bus Relay を使用したメッセージングに関するチューニング</a></td>
-</tr>
-<tr>
-   <td valign="middle"><strong>監視</strong></td>
-   <td valign="top">- <a href ="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/">Web サイトの監視方法</a><br/>- <a href="http://msdn.microsoft.com/library/windowsazure/dn306638.aspx">方法:Azure でのアラート通知の受信とアラート ルールの管理</a><br/>- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/#howtoconfigdiagnostics">方法:Web サイトの診断の構成とログのダウンロード</a><br/>- <a href="http://www.windowsazure.com/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/">Visual Studio での Azure Web サイトのトラブルシューティング</a></td>
-</tr>
-</table>
-
-  [websitesoverview]:/ja-jp/documentation/services/web-sites/
-  [csoverview]:/ja-jp/documentation/services/cloud-services/
-  [vmoverview]:/ja-jp/documentation/services/virtual-machines/
-  [chooseservice]:/ja-jp/manage/services/web-sites/choose-web-app-service
-  [scenarioglobalweb]:/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/
-  [scenariodigitalmarketing]:/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview
-  [adoverview]:/ja-jp/documentation/services/active-directory/
-  [adusing]:/ja-jp/manage/windows/fundamentals/identity/#ad
-  [adwithvm]:/ja-jp/manage/windows/fundamentals/identity/#adinvm
-  [addeployguidelines]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx
-  [acs2]:http://msdn.microsoft.com/library/windowsazure/hh147631.aspx
-  [acsusing]:/ja-jp/manage/windows/fundamentals/identity/#ac
-  [adtenant]:http://technet.microsoft.com/ja-jp/library/jj573650.aspx
-  [adsso]:http://msdn.microsoft.com/library/windowsazure/dn151790.aspx
-  [dirintegration]:http://technet.microsoft.com/ja-jp/library/jj573653.aspx
-  [identityandaccess]:http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e
-  [aspnettools]:http://go.microsoft.com/fwlink/?LinkID=282306
-  [azureauthtutorial]:http://www.asp.net/aspnet/overview/aspnet-and-visual-studio-2012/windows-azure-authentication
-  [trustcenter]:/ja-jp/support/trust-center/
-  [sbrelay]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860549.aspx
-  [sbrelayhowto]:/ja-jp/develop/net/how-to-guides/service-bus-relay/
-  [sbrelaytutorial]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee706736.aspx
-  [enterprisepizza]:http://code.msdn.microsoft.com/windowsazure/Enterprise-Pizza-e2d8f2fa
-  [newrelic]:http://newrelic.com/azure
-  [configurediagnostics]:/ja-jp/manage/services/web-sites/how-to-monitor-websites/#howtoconfigdiagnostics
-  [troubleshootwebsites]:/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
-  [BusinessApplicationsAzureAD]: ./media/web-sites-business-application-solution-overview/BusinessApplications_AzureAD.png
-  [BusinessApplicationsADUsers]: ./media/web-sites-business-application-solution-overview/BusinessApplications_AD_Users.png
-  [BusinessApplicationsVSIntranetApp]: ./media/web-sites-business-application-solution-overview/BusinessApplications_VS_IntranetApp.png
-  [BusinessApplicationsVSProperties]: ./media/web-sites-business-application-solution-overview/BusinessApplications_VS_Properties.png
-  [BusinessApplicationsVSIdentityAndAccess]: ./media/web-sites-business-application-solution-overview/BusinessApplications_VS_IdentityAndAccess.png
-  [BusinessApplicationsADIntegratedApps]: ./media/web-sites-business-application-solution-overview/BusinessApplications_AD_IntegratedApps.png
-  [BusinessApplicationsADAppAdded]: ./media/web-sites-business-application-solution-overview/BusinessApplications_AD_AppAdded.png
-  [BusinessApplicationsVSEnableAuth]: ./media/web-sites-business-application-solution-overview/BusinessApplications_VS_EnableAuth.png
-  [BusinessApplicationsDeploy]: ./media/web-sites-business-application-solution-overview/BusinessApplications_Deploy.png
-  [BusinessApplicationsServiceBusRelay]: ./media/web-sites-business-application-solution-overview/BusinessApplications_ServiceBusRelay.png
-  [BusinessApplicationsDiagnostics]: ./media/web-sites-business-application-solution-overview/BusinessApplications_Diagnostics.png
-  [BusinessApplicationsDiagRetention]: ./media/web-sites-business-application-solution-overview/BusinessApplications_Diag_Retention.png
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+- [Azure Websites のドキュメント](/ja-jp/documentation/services/websites/)
+- [Learning map for Azure Websites (Azure Websites のラーニング マップ)](/ja-jp/documentation/articles/websites-learning-map/)
+- [Azure Web ブログ](/blog/topics/web/)
 
 
 
+[Azure Websites]:/ja-jp/services/websites/
 
-  
+[FTP]:/ja-jp/documentation/articles/web-sites-deploy/#ftp
+[Visual Studio]:/ja-jp/documentation/articles/web-sites-dotnet-get-started/
+[Visual Studio Online]:/ja-jp/documentation/articles/cloud-services-continuous-delivery-use-vso/
+[Git]:/ja-jp/documentation/articles/web-sites-publish-source-control/
+
+[HTTPS]:/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
+[Websites 料金の詳細]:/ja-jp/pricing/details/web-sites/#service-ssl
+[ユーザーの認証]:/ja-jp/documentation/articles/web-sites-authentication-authorization/
+[簡単な認証]:/blog/2014/11/13/azure-websites-authentication-authorization/
+[ユーザーの承認]:/ja-jp/documentation/articles/web-sites-authentication-authorization/
+
+[Azure のトラスト センター]:/ja-jp/support/trust-center/
+[MySQL]:/ja-jp/documentation/articles/web-sites-php-mysql-deploy-use-git/
+[Azure SQL データベース]:/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
+[ハイブリッド接続]:/ja-jp/documentation/articles/web-sites-hybrid-connection-get-started/
+[Azure の仮想ネットワーク]:/ja-jp/documentation/articles/web-sites-integrate-with-vnet/
+
+[スケール アップとスケール アウト]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
+[Azure 管理ポータル]:http://manage.windowsazure.com/
+[サービス管理 API]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
+[PowerShell スクリプト]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
+[Troy Hunt]:https://twitter.com/troyhunt
+[10 things I learned about rapidly scaling websites with Azure (Azure による迅速な Web サイトのスケーリングで私が学んだ 10 の事項)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
+[Azure Redis Cache]:/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/
+[ASP.NET セッション状態]:https://msdn.microsoft.com/ja-jp/library/azure/dn690522.aspx
+[出力キャッシュ]:https://msdn.microsoft.com/ja-jp/library/azure/dn798898.aspx
+
+[概要]:/ja-jp/manage/services/web-sites/how-to-monitor-websites/
+[Azure Application Insights]:http://blogs.msdn.com/b/visualstudioalm/archive/2015/01/07/application-insights-and-azure-websites.aspx
+[New Relic]:/ja-jp/develop/net/how-to-guides/new-relic/
+[方法:Azure でアラート通知を受け取り、アラート ルールを管理する]:http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
 
 
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

@@ -1,12 +1,12 @@
-﻿<properties pageTitle="Android アプリ用 Azure Mobile Services の使用" metaKeywords="Azure android application, mobile service android, getting started Azure android, azure droid, getting started droid windows" description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="Android アプリ用 Azure Mobile Services の使用" description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" services="mobile-services" documentationCenter="android" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/20/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/20/2014" ms.author="glenga"/>
 
-# <a name="getting-started"> </a>モバイル サービスの使用
+# <a name="getting-started"></a>Mobile Services の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure Mobile Services を使用して Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの [JavaScript バックエンド バージョン](/ja-jp/documentation/articles/mobile-services-android-get-started/)を参照してください。
+このチュートリアルでは、Azure モバイル サービスを使用して Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成するには、このトピックの「[JavaScript バックエンド バージョン](/ja-jp/documentation/articles/mobile-services-android-get-started/)」 を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -14,13 +14,13 @@
 
 このチュートリアルを完了するには、Eclipse 統合開発環境 (IDE)、Android Developer Tools (ADT) プラグイン、および最新の Android プラットフォームを含む [Android Developer Tools][Android SDK] が必要です。このほか、Android のバージョン 4.2 以降が必要になります。 
 
-ダウンロードしたクイック スタート プロジェクトには、Android 向けのモバイル サービス SDK が含まれています。このプロジェクトではバージョン 4.2 以降の Android が必要であるものの、モバイル サービス SDK ではバージョン 2.2 以降があれば問題ありません。
+ダウンロードしたクイック スタート プロジェクトには、Android 向けのモバイル サービス SDK が含まれています。このプロジェクトではバージョン 4.2 以降の Android が必要であるものの、モバイル サービス SDK では Android バージョン 2.2 以降があれば問題ありません。
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28"%20target="_blank) を参照してください。
 
-## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
+## <a name="create-new-service"></a>新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 ## ローカル コンピューターにモバイル サービスをダウンロードする
 
@@ -40,11 +40,11 @@
 
 ## モバイル サービスをテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 ## モバイル サービスを発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## 新しい Android アプリを作成する
 
@@ -56,7 +56,7 @@
  
 	![][2]  
 
-3. まだインストールしていない場合は、[Android Developer Tools][Android SDK] をダウンロードしてローカル コンピューターまたは仮想マシンにインストールします。
+3. まだインストールしていない場合は、[Android Developer Tools][Android SDK]をダウンロードしてローカル コンピューターまたは仮想マシンにインストールします。
 
 4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。 
 
@@ -68,7 +68,7 @@
 
 1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開します。
 
-2. Eclipse で、**[File]**、**[Import]** の順にクリックし、**[Android]** を展開します。**[Existing Android Code into Workspace]** をクリックし、**[Next]**  をクリックします。
+2. Eclipse で、**[File]**、**[Import]** の順にクリックし、**[Android]** を展開します。**[Existing Android Code into Workspace]** をクリックし、**[Next]** をクリックします。 
 
  	![][14]
 
@@ -82,21 +82,19 @@
 
 4. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
 
-	<div class="dev-callout"><strong>注</strong> <p>プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。</p></div>
+	> [AZURE.IMPORTANT]プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
 
-5. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
+5. アプリケーションで、意味のあるテキスト (たとえば、チュートリアルの完了) を入力し、**[Add]** をクリックします。
 
    	![][10]
 
    	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	<div class="dev-callout"><strong>注</strong> 
-   	<p>モバイル サービスにアクセスして ToDoActivity.java ファイルにあるデータを照会および挿入するコードを確認できます。</p>
- 	</div>
+	> [AZURE.NOTE] モバイル サービスにアクセスして ToDoActivity.java ファイルにあるデータを照会および挿入するコードを確認できます。
 
-<!--This shows how to run your new client app against the mobile service running in Azure. Before you can test the Android app with the mobile service running on a local computer, you must configure the Web server and firewall to allow access from your Android development computer. For more information, see [Configure the local web server to allow connections to a local mobile service](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express).-->
+<!--これで、Azure で実行されているモバイル サービスに対して新しいクライアント アプリケーションを実行する方法が示されます。 Android アプリをローカル コンピューターで実行しているモバイル サービスでテストする前に、Android 開発コンピューターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。 詳細については、[Configure the local web server to allow connections to a local mobile service](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express).-->
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
 
 * [データの使用]
@@ -105,14 +103,14 @@
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Troubleshoot a Mobile Services .NET backend (Mobile Services .NET バックエンドのトラブルシューティング)]
+* [Mobile Services .NET バックエンドのトラブルシューティング]
   <br/> Mobile Services の .NET バックエンドで発生する問題を診断して解決する方法について説明します。 
 
 <!-- Anchors. -->
-[モバイル サービスの使用]:#getting-started
+[Mobile Services の使用]:#getting-started
 [新しいモバイル サービスを作成する]:#create-new-service
 [モバイル サービス インスタンスの定義]:#define-mobile-service-instance
 [次のステップ]:#next-steps
@@ -139,7 +137,10 @@
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-[モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Troubleshoot a Mobile Services .NET backend (Mobile Services .NET バックエンドのトラブルシューティング)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-troubleshoot/
+[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[Mobile Services .NET バックエンドのトラブルシューティング]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-troubleshoot/
 
 [管理ポータル]: https://manage.windowsazure.com/
+
+
+<!--HONumber=42-->

@@ -1,17 +1,31 @@
-﻿<properties linkid="web-sites-python-ptvs-django-mysql" title="Django and MySQL on Azure with Python Tools 2.1 for Visual Studio" pageTitle="Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法)" description="Python Tools for Visual Studio を使って、MySQL データベース インスタンスにデータを保存する Django アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。" metaKeywords="" services="" solutions="" documentationCenter="Python" authors="huvalo" videoId="" scriptId="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法)" 
+	description="Python Tools for Visual Studio を使って、MySQL データベース インスタンスにデータを保存する Django アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。 
+	services="" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="10/10/2014" ms.author="huvalo" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="huvalo"/>
 
 
 
 
 # Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法) 
 
-このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ]でもご覧いただけます(https://www.youtube.com/watch?v=oKCApIrS0Lo)。
+このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=oKCApIrS0Lo)でもご覧いただけます
 
 ここでは、Azure でホストされた MySQL サービスを使用する方法、MySQL を使用するためのアプリケーションの構成方法、アプリケーションを Azure Websites に発行する方法について説明します。
 
-MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]を参照してください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
+MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]をご覧ください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
 
 + [前提条件](#prerequisites)
 + [プロジェクトを作成する](#create-the-project)
@@ -24,14 +38,14 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
  - Visual Studio 2012 または 2013
  - [Python Tools 2.1 for Visual Studio][]
- - [Python Tools 2.1 for Visual Studio サンプル VSIX][]
+ - [Python Tools 2.1 for Visual Studio Samples VSIX][]
  - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2012][]
  - [Python 2.7 (32 ビット)][]
 
-> [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 <a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にするか、</a> または <a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップすることができます</a>。
+> [AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップ</a>してください。
 > 
-> アカウントにサインアップする前に Azure Websites を試してみたい場合は、 <a href="https://trywebsites.azurewebsites.net/?language=python">https://trywebsites.azurewebsites.net</a> で、有効期限が短い ASP.NET スターター サイトを Azure Websites に無料で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=python">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
 ##<a name="create-the-project"></a>プロジェクトを作成する
 
@@ -61,7 +75,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
   	![Django Management Console Window](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
-1.  <kbd>F5</kbd> キーを押してアプリケーションの動作を確認します。
+1.  <kbd>F5</kbd> キーを押して、アプリケーションが動作することを確認します。
 
 1.  一番上のナビゲーション バーの **[Log in]** をクリックします。
 
@@ -87,7 +101,7 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
 次の手順に従い、無料プランでデータベースを作成できます。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure 管理ポータル][]にログインします。
 
 1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -115,7 +129,7 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
   	![Connection Info Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLConnectionInfo.png)
 
-1.  Visual Studio で、*ProjectName* フォルダーの **settings.py** を開きます。接続文字列を一時的にエディターに貼り付けます。この接続文字列の形式を次に示します。
+1.  Visual Studio で、 *ProjectName* フォルダーの **settings.py** を開きます。接続文字列を一時的にエディターに貼り付けます。この接続文字列の形式を次に示します。
 
         Database=<NAME>;Data Source=<HOST>;User Id=<USER>;Password=<PASSWORD>
 
@@ -135,7 +149,7 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
 1.  ソリューション エクスプローラーの **[Python Environments]** で、対象の仮想環境を右クリックし、**[Install Python Package]** をクリックします。
 
-1. **easy_install** を使用して `mysql-python` パッケージをインストールします。
+1. **easy_install** を使用して  `mysql-python` パッケージをインストールします。
 
   	![Install Package Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
 
@@ -145,11 +159,11 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
   	![Django Management Console Window](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
-1.  <kbd>F5</kbd> キーでアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが MySQL データベースにシリアル化されます。
+1.  <kbd>F5</kbd> を使用してアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが MySQL データベースにシリアル化されます。
 
 ##<a name="publish-to-an-azure-website"></a>Azure Websites に発行する
 
-作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイすることができます。
+作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイできます。
 
 1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
 
@@ -175,7 +189,7 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
 Python Tools for Visual Studio、Django、MySQL の詳細については、以下のリンクをクリックしてください。
 
-- [Python Tools for Visual Studio Documentation (Python Tools for Visual Studio のドキュメント)][]
+- [Python Tools for Visual Studio のドキュメント][]
   - [Web プロジェクト][]
   - [クラウド サービス プロジェクト][]
   - [Microsoft Azure でのリモート デバッグ][]
@@ -185,20 +199,21 @@ Python Tools for Visual Studio、Django、MySQL の詳細については、以�
 
 <!--Link references-->
 [Python デベロッパー センター]: /ja-jp/develop/python/
-[Azure Cloud Services]: ../cloud-services-python-ptvs/
+[Azure クラウド サービス]: ../cloud-services-python-ptvs/
 
 <!--External Link references-->
-[Azure の管理ポータル]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190 
-[Python Tools for Visual Studio Documentation (Python Tools for Visual Studio のドキュメント)]: http://pytools.codeplex.com/documentation
+[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
 [Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
 [Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
 [Django のドキュメント]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

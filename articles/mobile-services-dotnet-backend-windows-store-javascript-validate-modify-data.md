@@ -1,12 +1,12 @@
-<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Javascript Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Javascript Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" services="mobile-services" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="wesmc" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="wesmc"/>
 
 # .NET バックエンドを使用した Mobile Services のデータの検証および変更
 
-[WACOM.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
 
-このトピックでは、.NET バックエンド Azure Mobile Services 内でコードを使用してデータを検証および変更する方法について説明します。.NET バックエンド サービスは、Web API フレームワークを使用して構築した HTTP サービスです。Web API フレームワークで定義されている `ApiController` クラスを扱ったことがある方であれば、Mobile Services で提供される `TableController` クラスを直感的に理解できます。`TableController` は、`ApiController` クラスから派生し、データベース テーブルとやり取りするための追加機能を提供します。挿入や更新の対象となるデータを操作する目的で使用でき、このチュートリアルで示す検証やデータの変更もその中に含まれます。 
+このトピックでは、.NET バックエンド Azure Mobile Services 内でコードを使用してデータを検証および変更する方法について説明します。.NET バックエンド サービスは、Web API フレームワークを使用して構築した HTTP サービスです。Web API フレームワークで定義されている `ApiController` クラスについて理解している場合は、Mobile Services によって提供されている `TableController` クラスは非常に直感的に把握できます。 `TableController` は、 `ApiController` クラスから派生したもので、データベース テーブルとやり取りするための追加機能を提供します。挿入や更新の対象となるデータを操作する目的で使用でき、このチュートリアルで示す検証やデータの変更もその中に含まれます。 
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -16,11 +16,11 @@
 4. [CompleteDate に関するタイムスタンプ フィールドの追加]
 5. [CompleteDate を表示するためのクライアントの更新]
 
-このチュートリアルは、前の「[Getting Started (作業の開始)]」または「[データの使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/)」チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[Getting Started (作業の開始)]」または「[データの使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/)」を完了している必要があります。  
+このチュートリアルは、以前のチュートリアルである「[作業の開始]」または「[データの使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/)」に関する手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[作業の開始]」または「[データの使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/)」を完了している必要があります。  
 
 ## <a name="string-length-validation"></a>モバイル サービスへの検証コードの追加
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-add-validation](../includes/mobile-services-dotnet-backend-add-validation.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-add-validation](../includes/mobile-services-dotnet-backend-add-validation.md)]
 
 
 ## <a name="update-client-validation"></a>クライアントの更新
@@ -51,9 +51,9 @@
 
 ## <a name="test-length-validation"></a>長さの検証テスト
 
-1. Visual Studio のソリューション エクスプローラーで、JavaScript クライアント アプリケーション プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックします。
+1. Visual Studio のソリューション エクスプローラー ウィンドウで JavaScript クライアント アプリケーション プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックします。
 
-2. 新しい todo 項目に対して 10 文字を超える長さのテキストを入力し、**[Save]** をクリックします。
+2. 新しい todo 項目に対して 10 文字を超える長さのテキストを入力し、**[保存]** をクリックします。
 
     ![][1]
 
@@ -64,14 +64,14 @@
 ## <a name="add-timestamp"></a>CompleteDate に関するタイムスタンプ フィールドの追加
 
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-add-completedate](../includes/mobile-services-dotnet-backend-add-completedate.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-add-completedate](../includes/mobile-services-dotnet-backend-add-completedate.md)]
 
 ## <a name="update-client-timestamp"></a>completeDate を表示するためのクライアントの更新
 
 最後の手順は、クライアントを更新して新しい **completeDate** データを表示することです。 
 
 
-1. Visual Studio のソリューション エクスプローラーで JavaScript クライアント プロジェクトを使用し、default.html ファイルを開きます。バインディング テンプレートの `div` タグ要素を、次の定義に置き換えます。その後、ファイルを保存します。これにより、`div` タグに対して、**completeDate** にバインドされている innerText プロパティが追加されます。
+1. Visual Studio のソリューション エクスプローラーで JavaScript クライアント プロジェクトを使用し、default.html ファイルを開きます。バインディング テンプレートの `div` タグ要素を、次の定義に置き換えます。その後、ファイルを保存します。これにより、 `div` タグに対して、**completeDate** にバインドされている innerText プロパティが追加されます。
 	      
         <div id="TemplateItem" data-win-control="WinJS.Binding.Template">
           <div style="display: -ms-grid; -ms-grid-columns: 3">
@@ -88,7 +88,7 @@
 
 
 
-2. default.js で、既存の **refreshTodoItems** 関数内にある `.Where` 句関数を削除します。その結果、完了した todoitems が結果の中に含まれるようになります。
+2. default.js で、既存の **refreshTodoItems** 関数内にある  `.Where` 句関数を削除します。その結果、完了した todoitems が結果の中に含まれるようになります。
 
             var refreshTodoItems = function () {
                 // This code refreshes the entries in the list view be querying the TodoItems table.
@@ -101,7 +101,7 @@
             };
 
 
-3. default.js 内で、**UpdateCheckedTodoItem** 関数を次のように更新します。その結果、更新を行った後に項目の表示が更新され、完了した項目はリストから削除されなくなります。その後、ファイルを保存します。	
+3. default.js 内で、**updateCheckedTodoItem** 関数を次のように更新します。その結果、更新を行った後に項目の表示が更新され、完了した項目はリストから削除されなくなります。その後、ファイルを保存します。	
 
             var updateCheckedTodoItem = function (todoItem) {
                 // This code takes a freshly completed TodoItem and updates the database. 
@@ -111,7 +111,7 @@
             };
 
 
-4. Visual Studio の ソリューション エクスプローラー ウィンドウで **[ソリューション]** を右クリックし、**ソリューションのリビルド** をクリックして、クライアントと .NET バックエンド サービスの両方をリビルドします。両方のプロジェクトがエラーなしでビルドされることを確認します。
+4. Visual Studio のソリューション エクスプローラー ウィンドウで **[ソリューション]** を右クリックし、**[ソリューションのリビルド]** をクリックして、クライアントと .NET バックエンド サービスの両方をリビルドします。両方のプロジェクトがエラーなしでビルドされることを確認します。
 
     ![][3]
 	
@@ -119,14 +119,14 @@
 
     ![][4]
 
-6. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクトを右クリックし、**[発行]** をクリックします。Azure のポータルからダウンロードした発行設定ファイルを使用して、.NET バックエンド サービスを Microsoft Azure に発行します。
+6. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクトを右クリックし、**[発行]** をクリックします。Azure ポータルからダウンロードした発行設定ファイルを使用して、.NET バックエンド サービスを Microsoft Azure に発行します。
 
 7. モバイル サービス アドレスへの接続をコメント解除して、クライアント プロジェクトに対応する default.js ファイルを更新します。Azure アカウント内でホストされている .NET バックエンドに対してアプリケーションをテストします。
 
 
 
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
 
@@ -135,11 +135,11 @@
 * [ユーザーのサービス側の承認]
   <br/>認証されたユーザーの ID に基づきデータをフィルター処理する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [モバイル サービス .NET の使用方法の概念リファレンス]
-  <br/>.NET で Mobile Services を使用する方法について説明します。
+* [Mobile Services .NET の使用方法の概念リファレンス]
+  <br/>.NET でモバイル サービスを使用する方法について説明します
 
 <!-- Anchors. -->
 [文字列の長さの検証の追加]: #string-length-validation
@@ -158,14 +158,17 @@
 
 
 <!-- URLs. -->
-[Get started with Mobile Services (モバイル サービスの使用)]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [ユーザーのサービス側の承認]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/
-[Refine queries with paging (ページングを使用したクエリの改善)]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
-[Getting Started (作業の開始)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+[作業の開始]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/
-[JavaScript and HTML (JavaScript と HTML)]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-js
+[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-js
 
 [管理ポータル]: https://manage.windowsazure.com/
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+
+
+<!--HONumber=42-->

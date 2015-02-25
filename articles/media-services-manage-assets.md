@@ -1,13 +1,13 @@
-﻿<properties urlDisplayName="Manage Assets in Media Services" pageTitle="Media Services でアセットを管理する方法 - Azure" metaKeywords="" description="メディア サービスでアセットを管理する方法について説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Manage Assets in storage" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Media Services でアセットを管理する方法 - Azure" description="メディア サービスでアセットを管理する方法について説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
 
 
 <h1>方法:ストレージ内のアセットを管理する</h1>
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: アセットを保護する](../media-services-protect-asset/)」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[アセットを保護する方法](../media-services-protect-asset/)に関するページを参照してください。
 
 メディア アセットを作成してメディア サービスにアップロードした後、サーバー上のそのアセットにアクセスして管理することができます。サーバー上には、それ以外にも、ジョブ、タスク、アクセス ポリシー、ロケーターなど、メディア サービスのさまざまなオブジェクトが存在しますが、それらのオブジェクトも管理対象にすることができます。
 
@@ -80,6 +80,7 @@ foreach (IAsset asset in _context.Assets)
 
 
 <h2>次のステップ</h2>
-これで、アセットの管理方法を学習できました。次は、「[How to: Deliver an Asset by Download (方法: ダウンロードによってアセットを配信する)](../media-services-deliver-asset-download/) 」に進みます。
+これで、アセットの管理方法を学習できました。次は、[ダウンロードによってアセットを配信する方法](../media-services-deliver-asset-download/)に関するトピックに進みます。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

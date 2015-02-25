@@ -1,10 +1,10 @@
-﻿<properties urlDisplayName="Set up endpoints" pageTitle="Azure 仮想マシンのエンドポイントのセットアップ" metaKeywords="Azure config setup, configuring vm connection" description="Azure 仮想マシンとの通信のセットアップ方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="timlt" solutions="" manager="timlt" editor="" />
+<properties pageTitle="Azure 仮想マシンのエンドポイントのセットアップ" description="Azure 仮想マシンとの通信のセットアップ方法について説明します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2014" ms.author="kathydav" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2014" ms.author="kathydav"/>
 
 #仮想マシンに対してエンドポイントを設定する方法
 
-**メモ**:仮想マシンをホスト名によって直接接続する、またはクロスプレミス接続を設定する場合、「[Azure の仮想ネットワークの概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+**注**:仮想マシンをホスト名によって直接接続する、またはクロスプレミス接続を設定する場合、「[Azure 仮想ネットワークの概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
 同じクラウド サービスまたは仮想ネットワーク内であれば、Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを使用して他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるリソースと通信するには、仮想マシンへの着信ネットワーク トラフィックを処理するエンドポイントが必要になります。 
 
@@ -22,7 +22,7 @@
 
 ###エンドポイントの作成###
 
-1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. まだサインインしていない場合は、[Azure 管理ポータル](http://manage.windowsazure.com) にサインインします。
 
 2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
 
@@ -50,11 +50,11 @@
 
 ###エンドポイントの ACL の管理###
 
-エンドポイントの ACL を追加、変更、削除するには、次のステップに従います。
+ネットワーク エンドポイントにおけるアクセス制御リスト (ACL) は、発信元 IP に基づいてトラッフィックを制限し、仮想マシンで作成されたエンドポイントを保護できます。エンドポイントの ACL を追加、変更、削除するには、次の手順に従います。
 
-**メモ**:エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
+**注**:エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
 
-1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインしてください。
+1. まだサインインしていない場合は、[Azure 管理ポータル](http://manage.windowsazure.com) にサインインします。
 
 2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
 
@@ -70,6 +70,7 @@
 
     ![Specify ACL details](./media/virtual-machines-set-up-endpoints/EndpointACLdetails.png)
 
-6. 一覧の行を使用して、ACL のルールの追加、削除、編集を行います。[リモート サブネット] の値は、ルールで許可または拒否できる IP アドレス範囲に対応します。ルールの評価は、一覧の最初に示されているルールから開始され、最後に示されているルールで終了します。つまり、一覧には、制限の最も少ないルールから制限の最も多いルールの順に設定する必要があります。例と詳細については、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/p/?LinkId=303816)」を参照してください。
+6. 一覧の行を使用して、ACL のルールの追加、削除、編集を行います。[リモート サブネット] の値は、ルールで許可または拒否できる IP アドレス範囲に対応します。ルールの評価は、一覧の最初に示されているルールから開始され、最後に示されているルールで終了します。つまり、一覧には、制限の最も少ないルールから制限の最も多いルールの順に設定する必要があります。使用例と詳細については、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/p/?LinkId=303816)」を参照してください。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

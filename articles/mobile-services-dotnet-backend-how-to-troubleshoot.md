@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Troubleshoot the Mobile Services .NET Backend" pageTitle="Mobile Services .NET バックエンドのトラブルシューティング - Azure Mobile Services" metaKeywords="" description=".NET バックエンドを使用する Mobile Services で問題を診断して解決する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Troubleshoot the Mobile Services .NET Backend" authors="mahender" solutions="" manager="dwrede" editor="mollybos" />
+﻿<properties pageTitle="Mobile Services .NET バックエンドのトラブルシューティング - Azure Mobile Services" description=".NET バックエンドを使用する Mobile Services で問題を診断して解決する方法について説明します。" services="" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="wesmc"/>
 # Mobile Services .NET バックエンドのトラブルシューティング
 
 Mobile Services を使用した開発は、通常は手間もかからないのですが、場合によっては問題が発生することもあります。このチュートリアルでは、Mobile Services .NET バックエンドで発生する可能性がある一般的な問題のトラブルシューティングの手法をいくつか説明します。 
@@ -21,7 +21,7 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 1. **Visual Studio 2013 Update 2** 以降で Mobile Services サーバー プロジェクトを開いて開始します。すぐにプロジェクトを用意できない場合は、**[ファイル]**、**[新規作成]**、**[プロジェクト]** を順に選択してプロジェクトを作成できます。次に、**[クラウド]** ノード、**[Microsoft Azure Mobile Services]** テンプレートを順に選択します。
 2. **F5** キーを押して、アプリケーションをビルドおよび実行します。スタート ページで、**[試してみる]** を選択します。 
 
-    >[WACOM.NOTE] 
+    >[AZURE.NOTE] 
     > サービスがローカルでホストされている場合は、リンクをクリックすると次のページに進みます。ただし、クラウドでホストされている場合は、一連の資格情報を入力するよう求められます。これにより、認証されていないユーザーは、開発者の API とペイロードに関する情報にアクセスできなくなります。ページを参照するには、**空のユーザー名**と、パスワードに**アプリケーション キー**を入力してログインする必要があります。アプリケーション キーを入手するには、**Azure の管理ポータル**で、モバイル サービスの **[ダッシュボード]** タブに移動して、**[キーの管理]** を選択します。
     >
     > ![Authentication prompt to access help page][HelpPageAuth]
@@ -30,7 +30,7 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
     ![Help page][HelpPage]
 
-4.   表示されたページには、API に必要な要求と応答に関するドキュメントと JSON の例が表示されます。**[試してみる]** ボタンをクリックします。
+4. 表示されたページには、API に必要な要求と応答に関するドキュメントと JSON の例が表示されます。**[試してみる]** ボタンをクリックします。
 
     ![Test page for an API][HelpPageApi]
 
@@ -58,9 +58,9 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
  
     ![Configure symbol server][SymbolServer]
 
-4. デバッグするコードの一部にブレークポイントを設定します。たとえば、Visual Studio の Mobile Services プロジェクト テンプレートに付属する **TodoItemController** の **GetAllTodoItems()** メソッドにブレークポイントを設定します。
+4. デバッグするコードの一部にブレークポイントを設定します。たとえば、Visual Studio の Mobile Services プロジェクト テンプレートに付属する **TodoItemController** の **GetAllTodoItems()**  メソッドにブレークポイントを設定します。
 5. **F5** キーを押して、ローカルでサービスをデバッグします。Visual Studio が Mobile Services .NET バックエンドのシンボルをダウンロードするため、最初の読み込みに時間がかかる場合があります。
-6. 前の HTTP デバッグのセクションで説明したように、テスト クライアントを使用して、ブレークポイントを設定したメソッドに HTTP 要求を送信します。たとえば、**GetAllTodoItems()** メソッドに要求を送信するには、ヘルプ ページで **GET tables/TodoItem** を選択してから、**[試してみる]**、**[送信]** の順に選択します。
+6. 前の HTTP デバッグのセクションで説明したように、テスト クライアントを使用して、ブレークポイントを設定したメソッドに HTTP 要求を送信します。たとえば、**GetAllTodoItems()**  メソッドに要求を送信するには、ヘルプ ページで **GET tables/TodoItem** を選択してから、**[試してみる]**、**[送信]** の順に選択します。
 7. 設定したブレークポイントで Visual Studio が一時停止し、ソース コード付きの完全なスタック トレースが Visual Studio の **[コール スタック]** ウィンドウで利用できます。
 
     ![Hitting a breakpoint][Breakpoint]
@@ -75,7 +75,7 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
     ![Attach debugger][AttachDebugger]
 
-12. 手順 6. で実行したように、HTTP 要求を送信して、ブレークポイントを設定したメソッドを起動します。今回は、Azure でホストされるモバイル サービスのヘルプ ページとテスト クライアントを使用します。
+12. 手順 6 で実行したように、HTTP 要求を送信して、ブレークポイントを設定したメソッドを起動します。今回は、Azure でホストされるモバイル サービスのヘルプ ページとテスト クライアントを使用します。
 13. ブレークポイントで Visual Studio が一時停止します。
 
 これで、ローカルでの開発と Azure のライブ モバイル サービスに対する開発に Visual Studio デバッガーの機能を十分に利用できます。
@@ -102,9 +102,9 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 
 モバイル サービスを Azure に発行すると、モバイル サービスは Mobile Services のホスティング環境によって読み込まれ、コントローラー コードをホストする HTTP パイプラインに対してシームレスにアップグレードとパッチが適用されます。これには、[.NET バックエンド NuGet パッケージ](http://www.nuget.org/packages?q=%22mobile+services+.net+backend%22)が参照するすべてのアセンブリが含まれます。チームは、常にサービスを更新して、これらのアセンブリの最新バージョンを使用します。 
 
-必要なアセンブリの*異なるメジャー バージョン*を参照することでバージョンの競合が起こる可能性があります (*マイナー* バージョンは異なってもかまいません)。この現象は、Mobile Services .NET バックエンドが使用するいずれかのパッケージの最新バージョンにアップグレードするよう NuGet から求められるときに頻繁に発生します。 
+必要なアセンブリの *different major versions*を参照することでバージョンの競合が起こる可能性があります ( *minor* バージョンは異なってもかまいません)。この現象は、Mobile Services .NET バックエンドが使用するいずれかのパッケージの最新バージョンにアップグレードするよう NuGet から求められるときに頻繁に発生します。 
 
->[WACOM.NOTE] Mobile Services は、現在 ASP.NET 5.1 のみに対応しています。現時点で ASP.NET 5.2 はサポートされていません。お使いの ASP.NET NuGet パッケージを 5.2.* にアップグレードすると、デプロイ後にエラーが発生する可能性があります。
+>[AZURE.NOTE] Mobile Services は、現在 ASP.NET 5.1 のみに対応しています。現時点で ASP.NET 5.2 はサポートされていません。お使いの ASP.NET NuGet パッケージを 5.2.* にアップグレードすると、デプロイ後にエラーが発生する可能性があります。
 
 更新されたサービスを Azure に発行するときに、そのいずれかのパッケージをアップグレードする場合は、次のように競合を示す警告ページが表示されます。
 
@@ -112,16 +112,16 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 
 この現象と共に、次と類似する例外メッセージがサービス ログに記録されます。
 
-    同じ依存アセンブリ 'Microsoft.ServiceBus' の異なるバージョン間で競合が見つかりました: 2.2.0.0、2.3.0.0。ホスティング環境で現在サポートされているバージョン '2.2.0.0' を使用するようにプロジェクトを変更してください。
+    同じ依存アセンブリ  'Microsoft.ServiceBus' の異なるバージョン間で競合が見つかりました:2.2.0.0、2.3.0.0。ホスティング環境で現在サポートされているバージョン '2.2.0.0' を使用するようにプロジェクトを変更してください。
 
 この問題の修正は容易です。必要なアセンブリのバージョンをサポートされているバージョンに戻して、サービスを再発行するだけです。
 
 <a name="EFMigrations"></a>
 ## Entity Framework の移行に関するトラブルシューティング
 
-SQL データベースと共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 (*スキーマ*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/ja-jp/data/jj591621) とも呼ばれます。
+SQL データベースと共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 ( *schema*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/ja-jp/data/jj591621) とも呼ばれます。
 
-移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、「[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations/)」を参照してください。
+移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、「[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations/).」を参照してください。
 
 <!-- IMAGES -->
 
@@ -139,3 +139,5 @@ SQL データベースと共に Mobile Services .NET バックエンドを使用
 [LogsServerExplorer]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/12.png
 [LogsPortal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
 [HelpConflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
+
+<!--HONumber=42-->

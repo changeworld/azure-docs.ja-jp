@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Upload an Ubuntu Linux VHD" pageTitle="Azure 上での Ubuntu Linux VHD の作成とアップロード" metaKeywords="Azure VHD, uploading Linux VHD, Ubuntu" description="Ubuntu Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Creating and Uploading a Virtual Hard Disk that Contains an Ubuntu Linux Operating System" authors="szarkos" solutions="" manager="timlt" editor="tysonn" />
+﻿<properties pageTitle="Azure 上での Ubuntu Linux VHD の作成とアップロード" description="Ubuntu Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" services="virtual-machines" documentationCenter="" authors="szarkos" manager="timlt" editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="06/05/2014" ms.author="szarkos" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/13/2015" ms.author="szarkos"/>
 
 
 # Azure 用の Ubuntu 仮想マシンの準備
@@ -20,7 +20,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## <a id="ubuntu"> </a>Ubuntu 12.04+ ##
+## <a id="ubuntu"></a>Ubuntu 12.04 以上 ##
 
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
@@ -83,9 +83,9 @@
 
 	c) この行の下の文を **set timeout=5** に変更します。
 
-	d) 'sudo update-grub' を実行します。
+	d)  'sudo update-grub' を実行します。
 
-6. Grub のカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、`GRUB_CMDLINE_LINUX_DEFAULT` という変数を探して (または、必要であれば追加して)、次のパラメーターが含まれるように編集します。
+6. Grub のカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、 `GRUB_CMDLINE_LINUX_DEFAULT` という変数を探して (または、必要であれば追加して)、次のパラメーターが含まれるように編集します。
 
 		GRUB_CMDLINE_LINUX_DEFAULT="console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
 
@@ -98,7 +98,7 @@
 		# sudo apt-get update
 		# sudo apt-get install walinuxagent
 
-	`NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
+	 `NetworkManager` パッケージおよび  `NetworkManager-gnome` パッケージがインストールされている場合、 `walinuxagent` パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
 
 10.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
@@ -106,8 +106,7 @@
 		# export HISTSIZE=0
 		# logout
 
-11. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+11. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
-
-<!--HONumber=35.1-->
+<!--HONumber=42-->

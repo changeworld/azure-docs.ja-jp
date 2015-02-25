@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Encrypt Assets in Media Services" pageTitle="Media Services でアセットを暗号化する方法 - Azure" metaKeywords="" description="Microsoft PlayReady Protection を使用して Media Services でアセットを暗号化する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Protect an Asset with PlayReady Protection" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Media Services でアセットを暗号化する方法 - Azure" description="Microsoft PlayReady Protection を使用して Media Services でアセットを暗号化する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
 
@@ -8,13 +8,13 @@
 
 <h1><a name="playready"></a>方法:PlayReady Protection でアセットを保護する</h1>
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: ジョブの進行状況をチェックする](../media-services-check-job-progress/)」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ジョブの進行状況をチェックする方法](../media-services-check-job-progress/)に関するページを参照してください。
 
 Azure メディア サービスでは、Microsoft PlayReady Protection と連携してアセットを暗号化するジョブを送信できます。このセクションで紹介するコードは、入力フォルダーから複数のストリーミング ファイルを取得してタスクを作成し、PlayReady Protection を使ってそれらを暗号化します。 
 
 次の例は、PlayReady Protection を提供する単純なジョブを作成する方法を示しています。
 
-   1. 構成データを取得します。サンプルの構成ファイルは「[Azure Media Encryptor 用のタスク プリセット](http://msdn.microsoft.com/ja-jp/library/hh973610.aspx) 」トピックから入手できます。
+   1. 構成データを取得します。サンプルの構成ファイルは「[Microsoft Azure Media Encryptor のタスク プリセット](http://msdn.microsoft.com/ja-jp/library/hh973610.aspx)」トピックから入手できます。
    2. MP4 入力ファイルをアップロードします。
    3. MP4 ファイルをスムーズ ストリーミング アセットに変換します。
    4. アセットを PlayReady で暗号化します。
@@ -78,7 +78,7 @@ private static IJob CreatePlayReadyProtectionJob(string inputMediaFilePath, stri
 
     // Use the following event handler to check job progress. 
     job.StateChanged += new
-            EventHandler<JobStateChangedEventArgs>(StateChanged);
+            EventHandler&lt;JobStateChangedEventArgs&gt;(StateChanged);
 
     // Launch the job.
     job.Submit();
@@ -114,6 +114,7 @@ PlayReady Protection の詳細については、以下を参照してくださ�
 </ul>
 
 <h2>次のステップ</h2>
-これで、メディア サービスでアセットを保護する方法を学習できました。次は、「[方法: ストレージ内のアセットを管理する](../media-services-manage-assets/) 」トピックに進みます。
+これで、Media Services でアセットを保護する方法を学習できました。次は、[アセットの管理方法](../media-services-manage-assets/)に関するトピックに進みます。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

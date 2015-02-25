@@ -1,23 +1,37 @@
-﻿<properties linkid="web-sites-python-ptvs-bottle-table-storage" title="Bottle and Azure Table Storage on Azure with Python Tools 2.1 for Visual Studio" pageTitle="Azure における Bottle と Azure テーブル ストレージ (Python Tools 2.1 for Visual Studio の使用方法)" description="Azure テーブル ストレージにデータを格納する、Web サイトにデプロイ可能な Bottle アプリケーションを Python Tools for Visual Studio を使用して作成する方法について説明します。" metaKeywords="" services="web-sites" solutions="" documentationCenter="Python" authors="huvalo" videoId="" scriptId="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Azure における Bottle と Azure テーブル ストレージ (Python Tools 2.1 for Visual Studio の使用方法)" 
+	description="Python Tools for Visual Studio を使って、Azure テーブル ストレージにデータを保存する Bottle アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。 
+	services="web-sites" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="10/10/2014" ms.author="huvalo" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="huvalo"/>
 
 
 
 
 # Azure における Bottle と Azure テーブル ストレージ (Python Tools 2.1 for Visual Studio の使用方法) 
 
-このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ]でもご覧いただけます(https://www.youtube.com/watch?v=GJXDGaEPy94)。
+このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=GJXDGaEPy94)でもご覧いただけます
 
 リポジトリの種類 (メモリ内、Azure テーブル ストレージ、MongoDB) を簡単に切り替えることができるよう、この投票アプリケーションのリポジトリは抽象化されています。
 
 ここでは、Azure ストレージ アカウントを作成する方法、Azure テーブル ストレージを使用するためのアプリケーションの構成方法、アプリケーションを Azure Websites に発行する方法について説明します。
 
-MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]を参照してください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
+MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]をご覧ください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
 
 + [前提条件](#prerequisites)
 + [プロジェクトを作成する](#create-the-project)
-+ [Azure のストレージ アカウントの作成](#create-an-azure-storage-account)
++ [Azure のストレージ アカウントを作成する](#create-an-azure-storage-account)
 + [プロジェクトを構成する](#configure-the-project)
 + [Azure テーブル ストレージを照会する](#explore-the-azure-table-storage)
 + [Azure Websites に発行する](#publish-to-an-azure-website)
@@ -32,7 +46,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
  - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2012][]
  - [Python 2.7 (32 ビット)][] または [Python 3.4 (32 ビット)][]
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##<a name="create-the-project"></a>プロジェクトを作成する
 
@@ -52,17 +66,17 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
   	![Add Virtual Environment Dialog](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAddVirtualEnv.png)
 
-1.  <kbd>F5</kbd> キーを押してアプリケーションの動作を確認します。既定では、構成作業の一切不要なメモリ内リポジトリが使用されます。Web サーバーが停止すると、すべてのデータが失われます。
+1.  <kbd>F5</kbd> キーを押して、アプリケーションが動作することを確認します。既定では、構成作業の一切不要なメモリ内リポジトリが使用されます。Web サーバーが停止すると、すべてのデータが失われます。
 
 1.  **[Create Sample Polls]** をクリックし、投票内容をクリックして投票します。
 
   	![Web Browser](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleInMemoryBrowser.png)
 
-##<a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
+##<a name="create-an-azure-storage-account"></a>Azure ストレージ アカウントを作成する
 
 ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure 管理ポータル][]にログインします。
 
 1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -104,9 +118,9 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
     Windows コントロール パネルを使用して環境変数を定義してもかまいません。ソース コードやプロジェクト ファイルに資格情報を保存するのを避ける必要がある場合は、こちらの方法をお勧めします。新しい環境変数の値をアプリケーションから利用するためには、Visual Studio を再起動する必要があります。
 
-1.  Azure テーブル ストレージ リポジトリを実装するコードは、**models/azuretablestorage.py** にあります。Table サービスを Python から使用する方法の詳細については、[こちらのドキュメント]を参照してください。
+1.  Azure テーブル ストレージ リポジトリを実装するコードは、**models/azuretablestorage.py** にあります。Table サービスを Python から使用する方法の詳細については、[こちらのドキュメント]をご覧ください。
 
-1.  <kbd>F5</kbd> キーでアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが Azure テーブル ストレージにシリアル化されます。
+1.  <kbd>F5</kbd> を使用してアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが Azure テーブル ストレージにシリアル化されます。
 
 1.  アプリケーションの **[About]** ページに移動して、**Azure テーブル ストレージ** リポジトリが使用されていることを確認します。
 
@@ -114,9 +128,9 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 ##<a name="explore-the-azure-table-storage"></a>Azure テーブル ストレージを照会する
 
-ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりすることができます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
+ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりできます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
 
-> [WACOM.NOTE] この作業を行うには、Microsoft Azure Tools がインストールされている必要があります。Microsoft Azure Tools は、[Azure SDK for .NET][] に付属します。
+> [AZURE.NOTE] この作業を行うには、Microsoft Azure Tools がインストールされている必要があります。Microsoft Azure Tools は、[Azure SDK for .NET][] に付属します。
 
 1.  **サーバー エクスプローラー**を開きます。**[Azure]**、**[ストレージ]**、使用ストレージ アカウント、**[テーブル]** の順に展開します。
 
@@ -128,7 +142,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 ##<a name="publish-to-an-azure-website"></a>Azure Websites に発行する
 
-作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイすることができます。
+作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイできます。
 
 1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
 
@@ -176,24 +190,24 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 Python Tools for Visual Studio、Bottle、Azure テーブル ストレージの詳細については、以下のリンクをクリックしてください。
 
-- [Python Tools for Visual Studio Documentation (Python Tools for Visual Studio のドキュメント)][]
+- [Python Tools for Visual Studio のドキュメント][]
   - [Web プロジェクト][]
   - [クラウド サービス プロジェクト][]
   - [Microsoft Azure でのリモート デバッグ][]
 - [Bottle のドキュメント][]
-- [Azure Storage][]
+- [Azure ストレージ][]
 - [Azure SDK for Python][]
 - [Python からテーブル ストレージ サービスを使用する方法][]
 
 
 <!--Link references-->
 [Python デベロッパー センター]: /ja-jp/develop/python/
-[Azure Cloud Services]: ../cloud-services-python-ptvs/
+[Azure クラウド サービス]: ../cloud-services-python-ptvs/
 [ドキュメント]: ../storage-python-how-to-use-table-storage/
 [Python からテーブル ストレージ サービスを使用する方法]: ../storage-python-how-to-use-table-storage/
 
 <!--External Link references-->
-[Azure の管理ポータル]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [Azure SDK for .NET]: http://azure.microsoft.com/ja-jp/downloads/
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
@@ -201,12 +215,13 @@ Python Tools for Visual Studio、Bottle、Azure テーブル ストレージの�
 [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190 
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
-[Python Tools for Visual Studio Documentation (Python Tools for Visual Studio のドキュメント)]: http://pytools.codeplex.com/documentation
+[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
 [Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
 [Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
-[Azure Storage]: http://azure.microsoft.com/ja-jp/documentation/services/storage/
+[Azure ストレージ]: http://azure.microsoft.com/ja-jp/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

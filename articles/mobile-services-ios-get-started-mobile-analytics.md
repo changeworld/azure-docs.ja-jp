@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Get Started with Mobile Analytics" pageTitle="モバイル分析の使用 | モバイル デベロッパー センター" metaKeywords="" description="モバイル分析の使用" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get Started with Mobile Analytics" authors="mahender" manager="dwrede"/>
+﻿<properties pageTitle="モバイル分析の使用 | モバイル デベロッパー センター" description="モバイル分析の使用" documentationCenter="ios" authors="mattchenderson" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="10/10/2014" ms.author="mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="multiple" ms.topic="article" ms.date="10/10/2014" ms.author="mahender"/>
 
 # モバイル分析の使用 (Capptain)
 
@@ -16,7 +16,7 @@
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Capptain SDK の開始]
+1. [Capptain SDK の初期化]
 2. [UIViewController のオーバーロード]
 
 このチュートリアルには、次のものが必要です。
@@ -24,14 +24,14 @@
 * [Capptain] アカウント
 * [Mobile Services Standard レベル]のアプリ
 
-## <a name="initialize"></a>Capptain SDK の開始
+## <a name="initialize"></a>Capptain SDK の初期化
 
 1. Capptain に登録済みのアプリの **[アプリケーションの詳細]** ページに移動します。[SDK] タブをクリックして、パッケージをダウンロードします。
 
 2. [XCode] で、プロジェクトを右クリックし、[ファイルの追加] を選択して、Capptain SDK をプロジェクトに追加します。CapptainSDK フォルダーを選択します。
 
 3. プロジェクトを選択します。**[フェーズの作成]** タブの下で、**[バイナリとライブラリをリンク]** を選択して、次のフレームワークを追加します。
-    * AdSupport.framework - リンクをオプションとして設定します
+    * AdSupport.framework - set the link as Optional
     * SystemConfiguration.framework
     * CoreTelephony.framework
     * CFNetwork.framework
@@ -57,7 +57,7 @@
 
 ## <a name="instrument"></a>UIViewController のオーバーロード
 
-1. プロジェクト内で `UIViewController` の子を見つけ、それぞれ代わりに `CapptainViewController` から継承していることを確認します。
+1. プロジェクト内で  `UIViewController` の子を見つけ、それぞれ代わりに  `CapptainViewController` から継承していることを確認します。
 
         #import <UIKit/UIKit.h>
         #import "CapptainViewController.h"
@@ -71,20 +71,21 @@
         @property (nonatomic, retain) IBOutlet UITextField* myTextField1;
         @property (nonatomic, retain) IBOutlet UITextField* myTextField2;
 
-2. プロジェクト内で `UITableViewController` の子を見つけ、それぞれ代わりに `CapptainTableViewController` から継承していることを確認します。
+2. プロジェクト内で  `UITableViewController` の子を見つけ、それぞれ代わりに  `CapptainTableViewController` から継承していることを確認します。
 
     これで、アプリは分析データを Capptain に送信するように構成されました。
 
 ## 次のステップ
-Capptain がアプリに対して実行できる機能の詳細については、[http://www.capptain.com] を参照してください。(http://www.capptain.com)
+Capptain がアプリに対して実行できる機能の詳細については、[http://www.capptain.com](http://www.capptain.com) を参照してください。
 
 <!-- Anchors. -->
-[Capptain SDK の開始]: #initialize
+[Capptain SDK の初期化]: #initialize
 [UIViewController のオーバーロード]: #instrument
 
 
 <!-- URLs. -->
 [Capptain]: http://www.capptain.com
-[Mobile Services 料金]: /ja-jp/pricing/details/mobile-services/
+[Mobile Services Standard レベル]: /ja-jp/pricing/details/mobile-services/
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

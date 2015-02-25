@@ -1,12 +1,12 @@
-﻿<properties pageTitle="プッシュ通知 (従来のプッシュ) の使用 | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します (従来のプッシュ)。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services (legacy push)" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="プッシュ通知の使用 (従来のプッシュ) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します (従来のプッシュ)。" services="mobile-services, notification-hubs" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="glenga"/>
 
 
 # モバイル サービスでのプッシュ通知の使用 (従来のプッシュ)
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#" >Windows ストア C#</a>
+    <a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#" >Windows Store C#</a>
     <a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows ストア JavaScript</a>
     <a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone" class="current">Windows Phone</a>
     <a href="/ja-jp/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a>
@@ -22,9 +22,9 @@
 このトピックでは、Azure Mobile Services を使用して Windows Phone 8 アプリケーションにプッシュ通知を送信する方法について説明します。 
 このチュートリアルでは、Microsoft Push Notification Service (MPNS) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
->[WACOM.NOTE]このトピックは、まだ Notification Hubs 統合を使用するように<em>アップグレードされていない</em>、<em>既存の</em>モバイル サービスを対象とします。<em>新しい</em>モバイル サービスを作成した場合は、この統合機能は自動的に有効になります。新しいモバイル サービスについては、「[プッシュ通知の使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)」を参照してください。
+>[AZURE.NOTE]このトピックは、まだ Notification Hubs 統合を使用するように<em>アップグレードされていない</em>、<em>既存の</em>モバイル サービスを対象とします。<em>新しい</em>モバイル サービスを作成すると、この統合機能は自動的に有効になります。新しいモバイル サービスについては、[プッシュ通知の使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)に関するページを参照してください。
 >
->Mobile Services は Azure Notification Hubs に統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。<em>可能な限り、既存のモバイル サービスをアップグレードして通知ハブを使用するようにしてください</em>。アップグレードしたら、「[通知ハブの使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)」を参照してください。
+>Mobile Services は Azure Notification Hubs に統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。<em>可能な場合には、既存のモバイル サービスをアップグレードして Notification Hubs を使用することをお勧めします</em>。アップグレード後は、このバージョンの[プッシュ通知の使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)に関するページを参照してください。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
@@ -35,13 +35,13 @@
 
 このチュートリアルには、[Visual Studio 2012 Express for Windows Phone] 以降のバージョンが必要です。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、[Mobile Services の使用]に関するチュートリアルを完了している必要があります。 
 
-   >[WACOM.NOTE]ユーザーあたり 500 通を超えるメッセージを毎日送信する場合は、通知ハブを使用する必要があります。詳細については、「<a href="/ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/">通知ハブの使用</a>」を参照してください。
+   >[AZURE.NOTE]ユーザーあたり 500 通を超えるメッセージを毎日送信する場合は、Notification Hubs を使用する必要があります。詳細については、「<a href="/ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/">通知ハブの使用</a>」を参照してください。
 
 ## <a name="create-table"></a>新しいテーブルを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-push-table](../includes/mobile-services-create-new-push-table.md)]
+[AZURE.INCLUDE [mobile-services-create-new-push-table](../includes/mobile-services-create-new-push-table.md)]
 
 <h2><a name="add-push"></a>アプリケーションにプッシュ通知を追加する</h2>
 		
@@ -83,18 +83,16 @@
 
    	このコードでは、プッシュ通知サブスクリプションのチャネルが取得および保存され、アプリケーションの既定のタイルにバインドされます。
 
-	<div class="dev-callout"><b>注</b>
-		<p>このチュートリアルでは、モバイル サービスにより、フリップ タイル通知がデバイスに送信されます。トースト通知を送信する場合は、チャネルの <strong>BindToShellToast</strong> メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、<strong>BindToShellTile</strong> と <strong>BindToShellToast</strong> の両方を呼び出します。</p>
-	</div>
+	> [AZURE.NOTE] このチュートリアルでは、モバイル サービスにより、フリップ タイル通知がデバイスに送信されます。トースト通知を送信する場合は、チャネルの **BindToShellToast** メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、**BindToShellTile** と **BindToShellToast** の両方を呼び出します。
     
 4. App.xaml.cs 内で、**Application_Launching** イベント ハンドラーの先頭に、次に示す新しい **AcquirePushChannel** メソッドへの呼び出しを追加します。
 
         AcquirePushChannel();
 
-   	これにより、アプリケーションが起動されるたびに必ず **CurrentChannel** プロパティが初期化されます。
+   	これにより、アプリケーションが開始されるたびに必ず **CurrentChannel** プロパティが初期化されます。
 
 
-5.	 ソリューション エクスプローラーで、**[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブをクリックして、**ID___CAP___PUSH_NOTIFICATION** 機能がオンであることを確認します。
+5.	ソリューション エクスプローラーで、**[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブをクリックして、**ID___CAP___PUSH_NOTIFICATION** 機能がオンであることを確認します。
 
    	![][1]
 
@@ -102,7 +100,7 @@
 
 <h2><a name="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する</h2>
 
-[WACOM.INCLUDE [mobile-services-update-registrations-script](../includes/mobile-services-update-registrations-script.md)]
+[AZURE.INCLUDE [mobile-services-update-registrations-script](../includes/mobile-services-update-registrations-script.md)]
 
 4. **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。 
 
@@ -160,30 +158,30 @@
 
   	これにより、追加された項目を保存するための挿入要求がモバイル サービスに送信されます。
 
-6. **[スタート]** ボタンを押して [スタート] メニューに戻ります。 
+6. **[スタート]** ボタンを押してスタート メニューに戻ります。 
 
   	![][5]
 
   	アプリケーションがプッシュ通知を受信したため、タイルのタイトルが **hello push** になっています。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Mobile Services に用意されている基本的なプッシュ通知機能を示します。より高度な機能 (たとえば、クロスプラットフォーム通知の送信、サブスクリプション ベースのルーティング、大ボリューム) を必要とする場合は、モバイル サービスで Azure 通知ハブを使用することを検討してください。詳細については、Notification Hubs に関する次のトピックのいずれかを参照してください。
+このチュートリアルでは、モバイル サービスに用意されている基本的なプッシュ通知機能を示します。より高度な機能 (たとえば、クロスプラットフォーム通知の送信、サブスクリプション ベースのルーティング、大ボリューム) を必要とする場合は、モバイル サービスで Azure 通知ハブを使用することを検討してください。詳細については、通知ハブに関する次のトピックのいずれかを参照してください。
 
-+ [通知ハブの使用]
++ [Notification Hubs の使用]
   <br/>Windows ストア アプリで Notification Hubs を活用する方法について説明します。
 
-+ [Windows Azure 通知ハブとは]
++ [Notification Hubs とは]
 	<br/>プッシュ通知を作成して複数のプラットフォームのユーザーにプッシュ通知を送信する方法について説明します。
 
 + [登録者への通知の送信]
 	<br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-<!--+ [Send notifications to users]
-	<br/>Learn how to send push notifications from a Mobile Service to specific users on any device.
+<!--+ [ユーザーへの通知の送信]
+	<br/>モバイル サービスから任意のデバイスの特定のユーザーにプッシュ通知を送信する方法について説明します。
 
-+ [Send cross-platform notifications to users]
-	<br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
++ [ユーザーへのクロスプラットフォーム通知の送信]
+	<br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 -->
 
 次のモバイル サービスのトピックの詳細を確認することをお勧めします。
@@ -197,8 +195,8 @@
 * [モバイル サービスのサーバー スクリプト リファレンス]
   <br/>サーバー スクリプトの登録および使用について説明します。
 
-* [モバイル サービス .NET の使用方法の概念リファレンス]
-  <br/>.NET で Mobile Services  を使用する方法について説明します。 
+* [Mobile Services .NET の使用方法の概念リファレンス]
+  <br/>.NET で Mobile Services を使用する方法について説明します。 
 
 <!-- Anchors. -->
 [Registrations テーブルを作成する]: #create-table
@@ -230,9 +228,12 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [mpns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=271130
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/
-[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[Windows Azure 通知ハブとは]: /ja-jp/develop/net/how-to-guides/service-bus-notification-hubs/
+[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/
+[Notification Hubs の使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
+[Notification Hubs とは]: /ja-jp/develop/net/how-to-guides/service-bus-notification-hubs/
 [登録者への通知の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-wp8/
 [ユーザーへの通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users/
 [ユーザーへのクロスプラットフォーム通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+
+
+<!--HONumber=42-->

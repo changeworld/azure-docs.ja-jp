@@ -1,13 +1,27 @@
-﻿<properties urlDisplayName="Send Email Using SendGrid" pageTitle="SendGrid を使用した電子メール送信 - Azure モバイル サービス" metaKeywords="Azure SendGrid, SendGrid サービス, Azure 電子メール送信, モバイル サービスからの電子メール" description="SendGrid サービスを使用して Azure Mobile Services アプリケーションから電子メールを送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Send email from Mobile Services with SendGrid" authors="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" solutions="" manager="wpickett" editor="" />
+<properties 
+	pageTitle="SendGrid を使用して電子メールを送信する - Azure Mobile Services" 
+	description="SendGrid サービスを使用して Azure Mobile Services アプリケーションから電子メールを送信する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="thinkingserious" 
+	manager="sendgrid" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="10/27/2014" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="10/27/2014" 
+	ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"/>
 
 
 # SendGrid を使用したモバイル サービスからの電子メールの送信
 
-このトピックでは、モバイル サービスに電子メール機能を追加する方法を示します。このチュートリアルでは、サーバー側スクリプトを追加し、SendGrid を使用して電子メールを送信します。完了すると、モバイル サービスは、レコードが挿入されるたびに電子メールを送信します。
+このトピックでは、モバイル サービスに電子メール機能を追加する方法について説明します。このチュートリアルでは、サーバー側スクリプトを追加し、SendGrid を使用して電子メールを送信します。完了すると、モバイル サービスは、レコードが挿入されるたびに電子メールを送信します。
 
-SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウド ベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。詳細については、<http://sendgrid.com> を参照してください。
+SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。詳細については、<http://sendgrid.com> をご覧ください。
 
 このチュートリアルでは、電子メール機能を有効にするための、次の基本的な手順について説明します。
 
@@ -19,11 +33,11 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 <h2><a name="sign-up"></a>新しい SendGrid アカウントを作成する</h2>
 
-[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
+[AZURE.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 <h2><a name="add-script"></a>電子メールを送信する新しいスクリプトを登録する</h2>
 
-1.  [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
+1. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、モバイル サービスをクリックします。
 
 2. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。 
 
@@ -68,15 +82,13 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 5. スクリプトに含まれるプレースホルダーを次に示す正しい値に置き換えます。
 
-	- **_username_ および _password_**: 「[SendGrid アカウントを作成する]」で特定した SendGrid の資格情報。
+	- **_username_ および _password_**: 「[SendGrid アカウントを作成する]」で指定した SendGrid の資格情報。
 
-	- **_email-address_**: 電子メールの送信先アドレス。実際のアプリケーションでは、テーブルを使用して、電子メール アドレスを保存および取得することができます。アプリケーションをテストする際には、自分の電子メールを使用してください。
+	- **_email-address_**: 電子メールの送信先アドレス。実際のアプリでは、テーブルを使用して、電子メール アドレスを保存および取得できます。アプリをテストする際には、自分の電子メールを使用してください。
 
 	- **_from-address_**: 電子メールの送信元アドレス。組織に属する登録済みドメイン アドレスの使用を検討してください。 
 
-     <div class="dev-callout"><b>注</b>
-     <p>登録済みドメインがない場合は、モバイル サービスのドメインを <strong>notifications@<i>your-mobile-service</i>.azure-mobile.net</strong> という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。</p>
-    </div> 
+     > [AZURE.NOTE] 登録済みドメインがない場合は、モバイル サービスのドメインを  *notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
 
 6. **[保存]** をクリックします。これで、**TodoItem** テーブルにレコードが挿入されるたびに電子メールが送信されるように、スクリプトを構成できました。
 
@@ -86,7 +98,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 	このトピックでは、クイック スタートの Windows ストア バージョンを示します。
 
-2. アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
+2. アプリで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
 	![][3]
 
@@ -98,11 +110,12 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## <a name="nextsteps"> </a>次のステップ
 
-モバイル サービスで SendGrid 電子メール サービスを簡単に使用できることがわかりました。SendGrid の詳細については、次のリンク先を参照してください。
+モバイル サービスで SendGrid 電子メール サービスを簡単に使用できることがわかりました。
+SendGrid の詳細については、次のリンク先をご覧ください。
 
--   SendGrid API に関するドキュメント: 
+-   SendGrid API に関するドキュメント:
     <https://sendgrid.com/docs>
--   Azure ユーザー向けの SendGrid 特別プラン: 
+-   Azure ユーザー向けの SendGrid 特別プラン:
     <https://sendgrid.com/windowsazure.html>
 
 <!-- Anchors. -->
@@ -124,3 +137,6 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 [クラウド ベースの電子メール サービス]: https://sendgrid.com/email-solutions
 [トランザクション電子メール配信]: https://sendgrid.com/transactional-email
 
+
+
+<!--HONumber=42-->

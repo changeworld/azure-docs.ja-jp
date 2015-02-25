@@ -1,13 +1,13 @@
-﻿<properties urlDisplayName="Create a Media Processor" pageTitle="メディア プロセッサを作成する方法 - Azure" metaKeywords="" description="メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Get a Media Processor Instance" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="メディア プロセッサを作成する方法 - Azure" description="メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
 
 
 
 <h1>方法:メディア プロセッサ インスタンスを取得する</h1>
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: 暗号化されたアセットを作成してストレージにアップロードする](../media-services-create-encrypted-asset-upload-storage/)」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[暗号化されたアセットを作成してストレージにアップロードする方法](../media-services-create-encrypted-asset-upload-storage/)に関するページを参照してください。
 
 メディア プロセッサは、メディア サービスのコンポーネントとして、メディア コンテンツのエンコード、形式変換、暗号化、復号化など、特定の処理タスクを担います。通常、メディア コンテンツのエンコード、暗号化、形式変換を行うタスクの作成時にメディア プロセッサを作成します。
 
@@ -51,7 +51,7 @@
 
 <br />
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。「[方法:メディア サービスにプログラムから接続する]」を参照してください。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。「[方法: メディア サービスにプログラムから接続する」]を参照してください。
 
 <pre><code>
 private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
@@ -67,10 +67,10 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 </code></pre>
 
 <h2>次のステップ</h2>
-これで、プロセッサ インスタンスの取得方法を学習できました。次は、「[方法: アセットをエンコードする][]」トピックに進みます。このトピックでは、Azure メディア エンコーダーを使用してアセットをエンコードする方法が説明されています。
+これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
 
-[方法: アセットをエンコードする]: ../media-services-encode-asset/
-[Azure Media Encoder 用のタスク プリセット文字列]: http://msdn.microsoft.com/ja-jp/library/jj129582.aspx
-[方法: メディア サービスにプログラムから接続する]: ../media-services-set-up-computer/
+[アセットをエンコードする方法]: ../media-services-encode-asset/
+[Azure Media Encoder 用のタスク プリセット文字]: http://msdn.microsoft.com/ja-jp/library/jj129582.aspx
+[方法: Media Services にプログラムから接続する]: ../media-services-set-up-computer/
 
-<!--HONumber=35.1-->
+<!--HONumber=42-->

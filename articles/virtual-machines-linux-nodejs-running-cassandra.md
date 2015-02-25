@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Cassandra with Linux" pageTitle="Azure 上の Linux での Cassandra の実行" metaKeywords="" description="Azure の仮想マシンの Linux で Cassandra クラスターを実行する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="nodejs" title="Running Cassandra with Linux on Azure and Accessing it from Node.js" authors="hanuk" solutions="" manager="timlt" editor="" />
+<properties pageTitle="Azure 上の Linux での Cassandra の実行" description="Azure の仮想マシンの Linux で Cassandra クラスターを実行する方法について説明します。" services="virtual-machines" documentationCenter="nodejs" authors="hanuk" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="12/01/2014" ms.author="hanuk" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="12/01/2014" ms.author="hanuk"/>
 
 
 
@@ -9,7 +9,7 @@
 <h1><a id = ""></a>Azure 上の Linux で Cassandra を実行して Node.js からアクセスする </h1>
 **執筆者:** Hanu Kommalapati
 
-## 目次 ##
+## 目次##
 
 - [概要] []
 - [単一リージョン デプロイ] []
@@ -26,7 +26,7 @@ Microsoft Azure は Microsoft のソフトウェアと Microsoft 以外のソフ
 
 基本的にはこの記事では、Docker、Chef、Puppet と比較して、インフラストラクチャのデプロイを大幅に簡略化可能な Cassandra クラスターの構築の関連事項を説明します。  
 
-##<a id="depmodels"> </a>配置モデル ##
+##<a id="depmodels"></a>配置モデル ##
 Windows Azure のネットワークでは、ネットワークのセキュリティのきめ細かな設定を実現するためにアクセスを制限できる分離プライベート クラスターのデプロイが可能です。この記事は Cassandra のデプロイの基本を説明することを目的としているため、一貫性レベル、およびスループットに最適化したストレージ設計については焦点を当てません。仮想クラスターのネットワーク要件の一覧を次に示します。
 
 - 外部システムは、Azure の内部からも外部からも Cassandra データベースにアクセスできない
@@ -118,14 +118,14 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 <tr><td>JRE	</td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
 <tr><td>JNA	</td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
-<tr><td>Ubuntu	</td><td>[Microsoft Azure ポータル](http://azure.microsoft.com) </td><td>14.04 LTS</td></tr>
+<tr><td>Ubuntu	</td><td>[Mcrosoft Azure ポータル](http://azure.microsoft.com) </td><td>14.04 LTS</td></tr>
 </table>
 
 JRE のダウンロードには、Oracle のライセンスの手動での承認が必要です。そのため、デプロイを簡略化するには、クラスターのデプロイの前段階として作成する Ubuntu テンプレート イメージに後でアップロードするために、必要なすべてのソフトウェアをあらかじめデスクトップにダウンロードしておく必要があります。 
 
 上記のソフトウェアは、ローカル デスクトップ上のダウンロード ディレクトリ (Windows の %TEMP%/downloads や Linux や Mac の ~/downloads など) に、ダウンロードします。 
 
-### Ubuntu VM の作成###
+### Ubuntu VM の作成 ###
 必要なソフトウェアを含む Ubuntu イメージを作成し、複数の Cassandra ノードのプロビジョニングに、イメージを再利用できるようにします。  
 ####手順 1.SSH キー ペアの生成####
 Azure では、プロビジョニング時に PEM または DER でエンコードされた X509 公開キーが必要です。「Azure 上の Linux における SSH の使用方法」の指示に従って公開キーと秘密キーのペアを生成します。Windows または Linux で SSH クライアントとして putty.exe を使用する場合は、PEM でエンコードされた RSA 秘密キーを、puttygen.exe を使用して PPK 形式に変換する必要があります。手順については、上記の Web ページを参照してください。 
@@ -156,7 +156,7 @@ Azure では、プロビジョニング時に PEM または DER でエンコー�
 <tr><td> クラウド サービス DNS 名	</td><td>ubuntu-template.cloudapp.net	</td><td>マシンとは独立したロード バランサー名を指定します。</td></tr>
 <tr><td> リージョン/アフィニティ グループ/仮想ネットワーク </td><td>	米国西部	</td><td> Cassandra クラスターにアクセスする Web アプリケーションのリージョンを選択します。</td></tr>
 <tr><td>ストレージ アカウント </td><td>	既定値を使用します。	</td><td>既定のストレージ アカウント、または特定のリージョンに事前に作成したストレージ アカウントを使用します。</td></tr>
-<tr><td>可用性セット </td><td>	None </td><td>	空白のままにします。</td></tr>
+<tr><td>可用性セット </td><td>	なし </td><td>	空白のままにします。</td></tr>
 <tr><td>エンドポイント	</td><td>既定値を使用します。 </td><td>	既定の SSH 構成を使用します。 </td></tr>
 </table>
 
@@ -170,7 +170,7 @@ Azure では、プロビジョニング時に PEM または DER でエンコー�
 
 上記のコマンドを、JRE および Cassandra ビットにも繰り返します。 
 
-####手順 2.ディレクトリ構造を準備し、アーカイブを抽出 ####
+####手順 2.ディレクトリ構造を準備し、アーカイブを抽出####
 VM にログインして、スーパー ユーザーとして次の bash スクリプトを使用して、ディレクトリ構造を作成し、ソフトウェアを抽出します。
 
 	#!/bin/bash
@@ -309,8 +309,8 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 <tr><th>VM の属性名</th><th>値</th><th>解説</th></tr>
 <tr><td>名前</td><td>vnet-cass-west-us</td><td></td></tr>	
 <tr><td>リージョン</td><td>米国西部</td><td></td></tr>	
-<tr><td>DNS サーバー	</td><td>None</td><td>DNS サーバーを使用していないため、無視します。</td></tr>
-<tr><td>ポイント対サイト VPN の構成</td><td>None</td><td> 無視します。</td></tr>
+<tr><td>DNS サーバー	</td><td>なし</td><td>DNS サーバーを使用していないため、無視します。</td></tr>
+<tr><td>ポイント対サイト VPN の構成</td><td>なし</td><td> 無視します。</td></tr>
 <tr><td>サイト間 VPN の構成</td><td>None</td><td> 無視します。</td></tr>
 <tr><td>アドレス空間</td><td>10.1.0.0/16</td><td></td></tr>	
 <tr><td>開始 IP</td><td>10.1.0.0</td><td></td></tr>	
@@ -532,7 +532,7 @@ Set-AzureVNetGatewayKey -VNetName hk-vnet-west-us -LocalNetworkSiteName hk-lnet-
 ###手順 6.VNET 間接続の確立###
 Azure サービス管理ポータルで、両方の仮想ネットワークの [ダッシュボード] メニューを使用して、ゲートウェイ間接続を確立します。下部のツールバーで、[接続] メニュー項目を使用します。数分後に、ダッシュボードに、接続の詳細情報がグラフィックで表示されます。
 
-###手順 7.リージョン 2 への仮想マシンの作成 ####
+###手順 7.リージョン 2 への仮想マシンの作成 ###
 リージョン 1 のデプロイで説明された手順と同じ方法で Ubuntu イメージを作成、または、イメージ VHD ファイルをリージョン 2 にある Azure ストレージ アカウントにコピーしてイメージを作成します。このイメージを使用して、新しいクラウド サービス hk-c-svc-east-us に、次のリストの仮想マシンを作成します。 
 
 <table>
@@ -702,7 +702,7 @@ $CASS_HOME/bin/cassandra
 		readCustomer(ksConOptions)
 
 
-##<a id="conclusion"> </a>まとめ##
+##<a id="conclusion"></a>まとめ##
 Microsoft Azure は、この演習でもわかるように、オープン ソース ソフトウェアと Microsoft のソフトウェアの両方を実行できる柔軟性の高いプラットフォームです。可用性の高い Cassandra クラスターは、クラスター ノードを複数の障害ドメインに分散させることで、単一のデータ センターにデプロイすることができます。また、災害に耐えられるシステムを実現するために、Cassandra クラスターを、複数の地理的に離れている Azure リージョンにまたがってデプロイできます。Azure と Cassandra を一緒に使用することで、今日のインターネット規模のサービスに必要な、拡張性と可用性が高く災害復旧が可能なクラウド サービスの構築が可能になります。  
 
 [概要]: #overview
@@ -718,5 +718,4 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 - [http://www.datastax.com](http://www.datastax.com) 
 - [http://www.nodejs.org](http://www.nodejs.org) 
 
-
-<!--HONumber=35.2-->
+<!--HONumber=42-->

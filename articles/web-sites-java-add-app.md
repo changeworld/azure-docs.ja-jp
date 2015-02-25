@@ -1,16 +1,33 @@
-﻿<properties urlDisplayName="Add an application to your Java website" pageTitle="Java Web サイトへのアプリケーションの追加" metaKeywords="" description="このチュートリアルでは、ページまたはアプリケーションを Microsoft Azure 上の Java Web サイトに追加する方法を示します。" metaCanonical="" services="web-sites" documentationCenter="Java" title="Add an application to your Java website" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties 
+	pageTitle="Java Web サイトへのアプリケーションの追加" 
+	description="このチュートリアルでは、ページまたはアプリケーションを Microsoft Azure 上の Java Web サイトに追加する方法を示します。" 
+	services="web-sites" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # Azure の Java Web サイトへのアプリケーションの追加
 
-「[Microsoft Azure Websites と Java の概要](../web-sites-java-get-started)」の説明にあるように Java Web サイトを初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードすることができます。
+「[Microsoft Azure Websites と Java の概要](../web-sites-java-get-started)」の説明にあるように Java Web サイトを初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードできます。
 
 **webapps** フォルダーへのナビゲーション パスは Web サイトの設定方法によって異なります。
 
 - Azure のアプリケーション ギャラリーを使用して Web サイトを設定した場合、**webapps** フォルダーへのパスは、**d:\home\site\wwwroot\bin\application\_server\webapps** という形式になります (**application\_server** は、Web サイトで有効になっているアプリケーション サーバーの名前です)。 
 - Azure の構成 UI を使用して Web サイトを設定した場合、**webapps** フォルダーへのパスは、**d:\home\site\wwwroot\webapps** という形式になります。 
 
-継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure Web サイトへの発行](../web-sites-publish-source-control)」を参照してください。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
+継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure Web サイトへの発行](../web-sites-publish-source-control)」をご覧ください。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
 
-Tomcat Web サイトに関する注意: WAR ファイルを **webapps** フォルダーにアップロードすると、Tomcat アプリケーション サーバーで WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Tomcat Java Web サイトの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。 
+Tomcat Web サイトに関する注意:WAR ファイルを **webapps** フォルダーにアップロードすると、Tomcat アプリケーション サーバーで WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Tomcat Java Web サイトの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。 
+
+
+<!--HONumber=42-->

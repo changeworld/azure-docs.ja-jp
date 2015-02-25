@@ -1,16 +1,14 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (iOS) |モバイル デベロッパー センター" metaKeywords="Azure iOS データ, Azure モバイル サービスのデータ, " description="Mobile Services を使用して iOS アプリでデータを活用する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="krisragh" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="データの使用 (iOS) | モバイル デベロッパー センター" description="Mobile Services を使用して iOS アプリでデータを活用する方法について説明します。" services="" documentationCenter="ios" authors="krisragh" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
-このトピックでは、Azure のモバイル サービスを使用して iOS アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
+このトピックでは、Azure Mobile Services を使用して iOS アプリのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
-<div class="dev-callout"><b>注</b>
-<p>このチュートリアルの目的は、モバイル サービスが iOS アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「 <a href="/ja-jp/develop/mobile/tutorials/get-started-ios">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
-</div>
+> [AZURE.NOTE] このチュートリアルの目的は、モバイル サービスが iOS アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初に [Mobile Services の使用](/ja-jp/develop/mobile/tutorials/get-started-ios)に関するチュートリアルを完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -22,14 +20,14 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [モバイル サービス iOS SDK]、[XCode 4.5][Install Xcode]、iOS 5.0 以降のバージョン。
-+ Microsoft Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-ios%2F" target="_blank">Azure 無料評価版</a>」を参照してください。</p></div>
++ [Mobile Services iOS SDK] と [XCode 4.5][Install Xcode] および iOS 5.0 以降のバージョン。
++ Microsoft Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-ios%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-このチュートリアルは、iOS アプリの [GetStartedWithData][GitHub] アプリケーションに基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービス iOS のクイック スタートで生成したアプリケーションと同じです。
+このチュートリアルは、iOS アプリの 1 つである [GetStartedWithData アプリ ][GitHub] をベースにしています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービス iOS のクイック スタートで生成したアプリケーションと同じです。
 
-1. GetStartedWithData [サンプル アプリケーション][GitHub] をダウンロードします。
+1. GetStartedWithData [サンプル アプリ ][GitHub] をダウンロードします。
 
 2. Xcode で、ダウンロードしたプロジェクトを開き、TodoService.m ファイルを確認します。
 
@@ -45,15 +43,15 @@
 
 ##<a name="create-service"></a>管理ポータルで新規モバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 ##<a name="add-table"></a>新しいテーブルをモバイル サービスに追加する
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data-2](../includes/mobile-services-create-new-service-data-2.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service-data-2](../includes/mobile-services-create-new-service-data-2.md)]
 
 ##<a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する
 
-[WACOM.INCLUDE [mobile-services-ios-enable-mobile-service-access](../includes/mobile-services-ios-enable-mobile-service-access.md)]
+[AZURE.INCLUDE [mobile-services-ios-enable-mobile-service-access](../includes/mobile-services-ios-enable-mobile-service-access.md)]
 
 ##<a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト
 
@@ -81,7 +79,7 @@
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [スクリプトでデータ検証および変更]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
 * [ページングを使用したクエリの改善]
@@ -118,18 +116,19 @@
 
 
 <!-- URLs. -->
-[スクリプトでデータ検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
 [ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [Xcode のインストール]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [GitHub]:  http://go.microsoft.com/fwlink/p/?LinkId=268622
 [GitHub のリポジトリ]: http://go.microsoft.com/fwlink/p/?LinkId=268784
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

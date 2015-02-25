@@ -1,10 +1,24 @@
-﻿<properties urlDisplayName="Validate Data" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Xamarin Android) | モバイル デベロッパー センター" metaKeywords="データへのアクセスと変更, Azure Mobile Services, モバイル デバイス, Azure, モバイル, Xamarin.Android" description="Xamarin.Android アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" services="mobile-services"  title="Validate and modify data in Mobile Services by using server scripts" authors="donnam" manager="dwrede" />
+﻿<properties 
+	pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Xamarin Android) | モバイル デベロッパー センター" 
+	description="Xamarin.Android アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" 
+	documentationCenter="xamarin" 
+	services="mobile-services" 
+	authors="lindydonna" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="donnam" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-android" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/26/2014" 
+	ms.author="donnam"/>
 
 # サーバー スクリプトを使用したモバイル サービスのデータの検証および変更
 
-[WACOM.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
 
 このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように Android アプリも更新します。完成したコードは、[ValidateModifyData アプリケーション][GitHub] サンプルで参照できます。
 
@@ -21,7 +35,7 @@
 
 ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. [Azure の管理ポータル]にログインし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
+1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
 
 	![][0]
 
@@ -43,11 +57,9 @@
             }
         }
 
-        このスクリプトは、**text** プロパティの長さを調べ、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
+    このスクリプトは、**text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>登録したスクリプトを <strong>[スクリプト]</strong> タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>
+    > [AZURE.TIP] 登録したスクリプトを **[スクリプト]** タブで削除できます。**[クリア]** をクリックし、**[保存]** をクリックします。
 
 ## <a name="update-client-validation"></a>クライアントの更新
 
@@ -63,7 +75,7 @@
 
 	これにより、モバイル サービスから返されたエラー メッセージが表示されます。 
 
-3. **[実行]** をクリックして、アプリケーションを開始します。次に、テキスト ボックスに 10 文字より長いテキストを入力し、**[追加]** をクリックします。
+3. **[Run]** をクリックして、アプリケーションを開始します。次に、テキスト ボックスに 10 文字より長いテキストを入力し、**[Add]** をクリックします。
 
   	エラーが処理され、エラー メッセージがユーザーに表示されることに注目してください。
 
@@ -71,7 +83,7 @@
 
 前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
-1. 管理ポータル**の [スクリプト]** タブで、現在の[] **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -84,9 +96,7 @@
 
     この関数は、**request**.**execute** の呼び出しで、オブジェクトへの挿入前に、新しい **createdAt** タイムスタンプ プロパティをそのオブジェクトに追加することにより、前の挿入スクリプトを強化しています。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>createdAt</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。</p>
-    </div>
+    > [AZURE.IMPORTANT] 挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって **TodoItem** テーブルに **createdAt** 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。
 
 2. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。次に、テキスト ボックスに 10 文字未満のテキストを入力し、**[Add]** をクリックします。
 
@@ -107,9 +117,7 @@
         [DataMember(Name = "createdAt")]
         public DateTime? CreatedAt { get; set; }
   
-    <div class="dev-callout"><b>注</b>
-	<p><code>DataMember の Name</code> 注釈は、アプリケーション内の新しい <code>CreatedAt</code> プロパティを、別の名前を持つ TodoItem テーブルに定義された <code> [createdAt]</code>  列にマップするように、クライアントに指示します。この注釈を使用することにより、使用しているアプリケーションで、SQL データベース内の列名と異なるオブジェクトにプロパティ名を持つことができます。この注釈がない場合は、大文字と小文字が区別されるため、エラーが発生します。</p>
-    </div>
+    > [AZURE.NOTE]  `DataMember's Name` 注釈は、アプリケーション内の新しい  `CreatedAt` プロパティを、別の名前を持つ TodoItem テーブルで定義された  `createdAt` 列にマップするように、クライアントに指示します。この注釈を使用することにより、使用しているアプリケーションで、SQL データベース内の列名と異なるオブジェクトにプロパティ名を持つことができます。この注釈がない場合は、大文字と小文字が区別されるため、エラーが発生します。
 
 2. GetView メソッドで、<code>checkBox.Text</code> を <code>currentItem.Text</code> に設定する現在のコードの直前に、次のコードを追加します。
 
@@ -119,13 +127,13 @@
 
    	これにより、タイムスタンプ値が存在する場合は、フォーマットされた日付文字列が作成されます。 
 
-3. コードの checkBox.Text = currentItem.Text を探し、このコード行を次のコードで置き換えます。
+3. コード  `checkBox.Text = currentItem.Text` をもう一度探し、このコード行を次のものに置き換えます。
 
 		checkBox.Text = string.Format("{0} - {1}", currentItem.Text, displayDate);
 
 	これにより、タイムスタンプ日付が表示用に項目に追加されます。
 	
-4. **[実行]** メニューの **[実行]** をクリックして、アプリケーションを開始します。 
+4. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。 
 
 	挿入スクリプトを更新した後で、タイムスタンプが挿入された項目にのみ表示されることに注目してください。
 
@@ -137,7 +145,7 @@
 
 	このメソッドは、クエリを更新し、タイムスタンプ値を保持しない項目をフィルターで除きます。
 	
-6. **[実行]** メニューの **[実行]** をクリックして、アプリケーションを開始します。
+6. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
   	タイムスタンプ値なしで作成されたすべての項目が UI から消去されていることに注目してください。
 
@@ -145,9 +153,9 @@
 
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
+このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]
 
-サーバー スクリプトは、ユーザーを認証するときに、およびプッシュ通知の送信のためにも使用されます。詳細については、次のチュートリアルを参照してください。
+サーバー スクリプトは、ユーザーを認証するときに、およびプッシュ通知の送信のためにも使用されます。詳細については、次のチュートリアルをご覧ください。
 
 * [スクリプトを使用したユーザーの承認]
   <br/>認証されたユーザーの ID に基づきデータをフィルター処理する方法について説明します。
@@ -176,7 +184,7 @@
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android
@@ -184,3 +192,6 @@
 [管理ポータル]: https://manage.windowsazure.com/
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331330
+
+
+<!--HONumber=42-->

@@ -1,6 +1,6 @@
-﻿<properties title="How to install and configure Trend on an Azure VM" pageTitle="Azure VM に Trend Micro Deep Security as a Service をインストールして構成する方法" description="Azure の VM に Trend Micro のセキュリティをインストールし、構成する方法を説明します。" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" manager="timlt" videoId="" scriptId="" />
+<properties pageTitle="How to install and configure Trend Micro Deep Security as a Service on an Azure VM (Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法)" description="Azure VM に Trend Micro Security をインストールし、構成する方法について説明します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="09/24/2014" ms.author="kathydav" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="09/24/2014" ms.author="kathydav"/>
 
 #How to install and configure Trend Micro Deep Security as a Service on an Azure VM (Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法)
 
@@ -12,7 +12,7 @@
 
 ## 新しい仮想マシンに Deep Security Agent をインストールする
 
-[Azure の管理ポータル](http://manage.windowsazure.com) を使用すると、**From Gallery** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend の保護機能を追加する最も簡単な方法です。
+**[ギャラリーから]** オプションを使用して仮想マシンを作成する際に、[Azure 管理ポータル](http://manage.windowsazure.com)で、VM エージェントと Trend のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend の保護機能を追加する最も簡単な方法です。
 
 この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Trend のセキュリティ拡張機能をインストールします。一般的な手順については、「[Windows Server を実行する仮想マシンの作成](http://go.microsoft.com/fwlink/p/?LinkId=403943)」を参照してください。ウィザードの最後のページで、次の手順を実行します。
 
@@ -39,12 +39,12 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 	<p>`$name = MyVmName`
 	<p>`$vm = Get-AzureVM -ServiceName $servicename -Name $name`
 
-	> [WACOM.NOTE] クラウド サービス名と VM 名がわからない場合には、Get-AzureVM を実行します。現在のサブスクリプションのすべての VM に対するこれらの情報が表示されます。
+	> [AZURE.NOTE] クラウド サービス名と VM 名がわからない場合には、Get-AzureVM を実行します。現在のサブスクリプションのすべての VM に対するこれらの情報が表示されます。
 
 2.	仮想マシンに Deep Security Agent を追加します。
 <p> `Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA -VM $vm.VM`
 
-	> [WACOM.NOTE] 特定のバージョンをインストールする場合は、次のコマンドを実行して、利用できるバージョンの一覧を表示します。`Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA`次に、Set-AzureVMExtension を実行するときに、目的のバージョンのパラメーターを含めます。
+	> [AZURE.NOTE] 特定のバージョンをインストールする場合は、次のコマンドを実行して、利用できるバージョンの一覧を表示します。 `Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA`次に、Set-AzureVMExtension を実行するときに、目的のバージョンのパラメーターを含めます。
 
 3.	次のコードで VM を更新します。これによって Deep Security Agent がインストールされます。
 <p> `Update-AzureVM -ServiceName $servicename -Name $name -VM $vm.VM`
@@ -54,8 +54,8 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 エージェントがインストールされると、起動までに数分かかります。起動後、仮想マシン上で Deep Security をアクティブにする必要があります。これは Deep Security Manager で管理できるようにするためです。次の記事を参照してください。
 
 - このソリューションに関する Trend の記事「[Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)](http://go.microsoft.com/fwlink/?LinkId=404101)」
-- 仮想マシンを構成するための [Windows PowerShell のサンプル スクリプト](http://go.microsoft.com/fwlink/?LinkId=404100) 。
-- このサンプルについての[指示](http://go.microsoft.com/fwlink/?LinkId=404099)  。
+- 仮想マシンを構成するための [Windows PowerShell サンプル スクリプト](http://go.microsoft.com/fwlink/?LinkId=404100)
+- 上記サンプルについての[説明](http://go.microsoft.com/fwlink/?LinkId=404099)
 
 
 
@@ -72,4 +72,5 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 
 
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

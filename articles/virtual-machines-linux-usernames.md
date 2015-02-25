@@ -1,18 +1,18 @@
-﻿ <properties urlDisplayName="User Names in Linux" pageTitle="Azure 上の Linux に対応するユーザー名の選択" metaKeywords="" description="Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Selecting User Names for Linux on Azure" authors="szark" solutions="" manager="timlt" editor="" />
+﻿<properties pageTitle="Azure 上の Linux に対応するユーザー名の選択" description="Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" services="virtual-machines" documentationCenter="" authors="szarkos" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="11/18/2014" ms.author="szark" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="11/18/2014" ms.author="szark"/>
 
 
 
 #Azure 上の Linux に対応するユーザー名の選択#
 
-Azure 上で Linux 仮想マシン インスタンスを作成するときに、プロビジョニングするユーザー名を選択することができます (既定のユーザー名は azureuser)。ほとんどの場合、この新規ユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。VM ユーザーが既に基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に渡された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
+Azure 上で Linux 仮想マシン インスタンスを作成するときに、プロビジョニングするユーザー名を選択することができます (既定のユーザー名は *azureuser*)。ほとんどの場合、この新規ユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。VM ユーザーが既に基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に渡された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
 
-**ただし**、Linux では、使用しないようがよいユーザー名が定められています。UID 0 ～ 99 で定義されている既存のシステム ユーザーを使用して Linux VM をプロビジョニングしようとすると、プロビジョニング プロセスは**失敗**します。典型例は `root` ユーザー (UID 0) です。
+**ただし**、Linux では、使用しない方がよいユーザー名が定められています。UID 0 ～ 99 で定義されている既存のシステム ユーザーを使用して Linux VM をプロビジョニングしようとすると、プロビジョニング プロセスは**失敗**します。典型的な例は  `root` ユーザー (UID 0) です。
 
- - 関連項目:[Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
+ - 関連項目: [Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
-Linux 仮想マシンのプロビジョニング時に使用しないようがよいユーザー名を次に示します。使用するとプロビジョニング プロセスが失敗するおそれがあるため、**これらのユーザー名を使用しない**ことをお勧めします。
+Linux 仮想マシンのプロビジョニング時に使用しない方がよいユーザー名を次に示します。使用するとプロビジョニング プロセスが失敗するおそれがあるため、**これらのユーザー名を使用しない**ことをお勧めします。
 
 
 ## openSUSE
@@ -60,7 +60,7 @@ Linux 仮想マシンのプロビジョニング時に使用しないようが�
 - sync
 - sys
 - tape
-- テスト
+- test
 - tcpdump
 - tty
 - users
@@ -104,7 +104,7 @@ Linux 仮想マシンのプロビジョニング時に使用しないようが�
 - shadow
 - sshd
 - sys
-- テスト
+- test
 - trusted
 - tty
 - users
@@ -163,7 +163,7 @@ Linux 仮想マシンのプロビジョニング時に使用しないようが�
 - sync
 - sys
 - tape
-- テスト
+- test
 - tcpdump
 - tty
 - users
@@ -229,6 +229,7 @@ Linux 仮想マシンのプロビジョニング時に使用しないようが�
 - voice
 - whoopsie
 - www-data
- 
 
-<!--HONumber=35.1-->
+
+
+<!--HONumber=42-->

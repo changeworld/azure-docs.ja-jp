@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Web w/ MySQL + Git" pageTitle="MySQL と Git を使用した PHP Web サイト - Azure チュートリアル" metaKeywords="" description="MySQL にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter="PHP" title="Create a PHP-MySQL Azure website and deploy using Git" authors="tomfitz" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+﻿<properties 
+	pageTitle="MySQL と Git を使用した PHP Web サイト - Azure チュートリアル" 
+	description="MySQL にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" 
+	services="web-sites" 
+	documentationCenter="php" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="11/14/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="11/14/2014" 
+	ms.author="tomfitz"/>
 
 #PHP-MySQL Azure Web サイトを作成して Git で展開する
 
@@ -15,17 +29,17 @@
 
 ![Azure PHP web site][running-app]
 
-> [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure Websites の機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A74E0F923" target="_blank">Azure 無料評価版</a>」を参照してください。
+> [AZURE.NOTE]
+> このチュートリアルを完了するには、Azure Websites の機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A74E0F923" target="_blank">Azure の無料評価版サイト</a>をご覧ください。
 > 
-> アカウントにサインアップする前に Azure Websites を試してみたい場合は、 <a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
 ##開発環境を設定する
 
 このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。
 
-> [WACOM.NOTE]
-> このチュートリアルを Windows で実行する場合は、 <a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a> をインストールすることで、コンピューターを PHP 用に設定し、自動的に IIS (Windows のビルトイン Web サーバー) を構成することができます。
+> [AZURE.NOTE]
+> このチュートリアルを Windows で実行する場合は、<a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a> をインストールすることで、コンピューターを PHP 用に設定し、自動的に IIS (Windows のビルトイン Web サーバー) を構成できます。
 
 ##<a id="create-web-site-and-set-up-git"></a>Azure Web サイトの作成と Git 発行の設定
 
@@ -77,11 +91,11 @@ Azure Websites で実行されている MySQL データベースに接続する�
 
 	![Get database connection information][connection-string-info]
 	
-2. `Database`、`Data Source`、`User Id`、および `Password` の値をメモします。
+2.  `Database`、 `Data Source`、 `User Id`、 `Password` の各値を記録します。
 
 ##アプリケーションの作成とローカル テスト
 
-Azure Web サイトを作成したので、アプリケーションをローカルで作成し、それをテストした後に展開することができます。 
+Azure Web サイトを作成したので、アプリケーションをローカルで作成し、それをテストした後に展開できます。 
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
@@ -89,7 +103,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部)、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
-1. 先ほどメモしておいた `Data Source`、`User Id`、`Password`、`Database` の各値を使用して、リモートの MySQL サーバーに接続します。
+1. 先ほどメモしておいた  `Data Source`、 `User Id`、 `Password`、 `Database` の各値を使用して、リモートの MySQL サーバーに接続します。
 
 		mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
 
@@ -97,11 +111,11 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 		mysql>
 
-3. 次の `CREATE TABLE` コマンドを貼り付けます。これにより、データベース内に `registration_tbl` テーブルが作成されます。
+3. 次の  `CREATE TABLE` コマンドを貼り付けます。これにより、データベース内に  `registration_tbl` テーブルが作成されます。
 
 		mysql> CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
 
-4. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に `index.php` というファイルを作成します。
+4. Web サーバーのルート ディレクトリで、 `registration` というフォルダーを作成し、その中に  `index.php` というファイルを作成します。
 
 5. テキスト エディターまたは IDE で **index.php** ファイルを開き、次のコードを追加します。`//TODO:` コメントの箇所を必要に応じて変更します。
 
@@ -197,14 +211,14 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure Web サイトに発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
-> [WACOM.NOTE]
+> [AZURE.NOTE]
 > これらは、上の「Azure Web サイトの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
 
 1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、ポータルの [展開] タブに移動します。
 	
 	![Get Git URL][git-instructions]
 
-1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+1. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
 		git add .
@@ -227,7 +241,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 アプリケーションへの変更を発行するには、次のステップに従います。
 
 1. ローカルでアプリケーションへの変更を行います。
-2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+2. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git add .
 		git commit -m "comment describing changes"
@@ -241,7 +255,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	![Azure PHP web site][running-app]
 
-4. Azure の管理ポータルの [展開] タブで、新しい展開を確認することもできます。
+4. Azure の管理ポータルの  'Deployments' タブで、新しい展開を確認することもできます。
 
 	![List of web site deployments][deployments-list]
 
@@ -269,4 +283,5 @@ Registration アプリケーションは、名前と電子メール アドレス
 [management-portal]: https://manage.windowsazure.com
 [sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

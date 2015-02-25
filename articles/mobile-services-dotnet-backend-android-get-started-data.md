@@ -1,18 +1,16 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="データの使用 (Android) | モバイル デベロッパー センター" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" services="mobile-services" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/24/2014" ms.author="ricksal" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/24/2014" ms.author="ricksal"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure Mobile Services を Android アプリのバックエンド データソースとして使用する方法について説明します。このチュートリアルでは、新しいモバイル サービスの作成、メモリにデータを格納するアプリケーション用の Eclipse Android のダウンロード、モバイル サービスとアプリケーションとの統合、アプリケーションの実行時にデータに加えられた変更の表示について説明します。
 
-このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの [JavaScript バックエンド バージョン]を参照してください。
+このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
 
-<div class="dev-callout"><b>注</b>
-<p>このチュートリアルには、Visual Studio 2013 が必要です。</p>
-</div>
+> [AZURE.IMPORTANT]このチュートリアルには、Visual Studio 2013 が必要です。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -26,51 +24,51 @@
 5. [発行されたモバイル サービスに対してアプリケーションをテストする]
 
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div> 
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F"%20target="_blank) を参照してください。 
 
 
 <h2><a name="create-service"></a>新しいモバイル サービスを作成する</h2>
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 
 <h2><a name="download-the-service"></a>ローカル コンピューターにサービスをダウンロードする</h2>
 
-[WACOM.INCLUDE [mobile-services-download-service-locally](../includes/mobile-services-download-service-locally.md)]
+[AZURE.INCLUDE [mobile-services-download-service-locally](../includes/mobile-services-download-service-locally.md)]
 
 <h2><a name="test-the-service"></a>モバイル サービスをテストする</h2>
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 <h2><a name="publish-the-service"></a>モバイル サービスを Azure に発行する</h2>
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 <h2><a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする</h2>
 
 ###サンプル コードの取得
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/download-android-sample-code.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/download-android-sample-code.md)]
 
 ###Android SDK バージョンの検証
 
-[WACOM.INCLUDE [mobile-services-verify-android-sdk-version](../includes/mobile-services-verify-android-sdk-version.md)]
+[AZURE.INCLUDE [mobile-services-verify-android-sdk-version](../includes/mobile-services-verify-android-sdk-version.md)]
 
 
 ###サンプル コードの確認と実行
 
-[WACOM.INCLUDE [mobile-services-android-run-sample-code](../includes/mobile-services-android-run-sample-code.md)]
+[AZURE.INCLUDE [mobile-services-android-run-sample-code](../includes/mobile-services-android-run-sample-code.md)]
 
 <h2><a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する</h2>
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-data](../includes/mobile-services-android-getting-started-with-data.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../includes/mobile-services-android-getting-started-with-data.md)]
 
 <h2><a name="test-app"></a>発行されたモバイル サービスに対してアプリケーションをテストする</h2>
 
 
 バック エンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、Android エミュレーターまたは Android フォンを使用して、モバイル サービスに対してアプリケーションをテストします。
 
-1. **[Run]** メニューの **[Run]** をクリックして、プロジェクトを開始します。
+1. **[実行]** メニューの **[実行]** をクリックして、プロジェクトを開始します。
 
 	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
 
@@ -78,33 +76,33 @@
 
    	これにより、新しい項目が挿入としてモバイル サービスに送信されます。
 
-    アプリケーションを再起動して、変更内容が Azure のデータベースに保持されたことを確認できます。また、Azure の管理ポータルを使用して、データベースを確認することもできます。  次の 2 つのステップでは、Azure の管理ポータルを使用してデータベースの変更を表示します。
+    アプリケーションを再起動して、変更内容が Azure のデータベースに保持されたことを確認できます。Azure の管理ポータルを使用してデータベースを確認することもできます。次の 2 つのステップでは、データベースの変更を表示します。
 
 
 4. Azure の管理ポータルで、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
     ![](./media/mobile-services-dotnet-backend-android-get-started-data/manage-sql-azure-database.png)
 
-5. 管理ポータルで、クエリを実行して Windows ストア アプリによって加えられた変更を表示します。クエリは次のようになりますが、`todolist` の代わりにデータベースの名前を使用します。
+5. 管理ポータルで、クエリを実行して Windows ストア アプリによって加えられた変更を表示します。クエリは次のようになりますが、 `todolist` の代わりにデータベースの名前を使用します。
 
-        SELECT * FROM [todolist].[todoitems]
+        SELECT * FROM [todolist].[todoitems]	
 
     ![](./media/mobile-services-dotnet-backend-android-get-started-data/sql-azure-query.png)
 
-これで、Android 向けの**データの使用**に関するチュートリアルはおしまいです。
+これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
 
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Android アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。 
 
-<!--Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+<!--次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [Validate and modify data with scripts]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [ページングを使用したモバイル サービス クエリの改善]
+* [ページングを使用したクエリの改善]
   <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了したら、次のチュートリアルを行うことをお勧めします。
@@ -115,10 +113,10 @@
 * [認証の使用]
   <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [モバイル サービス .NET の使用方法の概念リファレンス]
+* [Mobile Services .NET の使用方法の概念リファレンス]
   <br/>.NET で Mobile Services を使用する方法について説明します。
   
 <!-- Anchors. -->
@@ -164,18 +162,20 @@
 
 
 <!-- URLs. -->
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
 [JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js
 [JavaScript バックエンド バージョン]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
 [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library  
+
+<!--HONumber=42-->

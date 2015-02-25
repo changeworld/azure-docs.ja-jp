@@ -1,17 +1,17 @@
-﻿<properties urlDisplayName="Validate Data" pageTitle="サーバー スクリプトを使用したデータの検証 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="Windows Phone アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="サーバー スクリプトを使用したデータの検証 (Windows Phone) | モバイル デベロッパー センター" description="Windows Phone アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
 
 # サーバー スクリプトを使用したモバイル サービスのデータの検証および変更
 
-[WACOM.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
 
 <p>このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように Windows Phone 8 アプリも更新します。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=298629" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-validate-modify-data-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=298629" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">11:36</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=298629" target="_blank" class="label">チュートリアルを見る</a><a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-validate-modify-data-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=298629" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">11:36</span></div>
 </div>
 
 このチュートリアルでは、次の基本的な手順について説明します。
@@ -21,13 +21,13 @@
 3. [挿入時のタイムスタンプの追加]
 4. [タイムスタンプを表示するためのクライアントの更新]
 
-このチュートリアルは、前の[既存のアプリへのモバイル サービスの追加](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/)に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このため、このチュートリアルの前に、前のチュートリアルを完了している必要があります。  
+このチュートリアルは、前のチュートリアル「[既存のアプリケーションへの Mobile Services の追加](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/)」の手順およびサンプル アプリケーションに基づいています。このため、このチュートリアルの前に、前のチュートリアルを完了している必要があります。  
 
 ## <a name="string-length-validation"></a>検証の追加
 
 ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. [Azure の管理ポータル]にログインし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
+1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
 
 	![][0]
 
@@ -51,9 +51,7 @@
 
     このスクリプトは、**TodoItem.text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>登録したスクリプトを <strong>[スクリプト]</strong> タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>
+    > [AZURE.TIP] 登録したスクリプトを **[スクリプト]** タブで削除できます。**[クリア]** をクリックし、**[保存]** をクリックします。	
 
 ## <a name="update-client-validation"></a>クライアントの更新
 
@@ -93,17 +91,16 @@
 
 前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
-<div class="dev-callout"><b>注</b>
-<p>ここで紹介する <b>createdAt</b> タイムスタンプ プロパティは、現在は冗長になっています。モバイル サービスによって、各テーブルに対応する <b>__createdAt</b> システム プロパティが自動的に作成されます。このシステム プロパティをアプリケーションで利用するには、単純に次のメンバーを TodoItem クラスに追加します。</p>
+> [AZURE.NOTE] ここで紹介する **createdAt** タイムスタンプ プロパティは、現在は冗長になっています。Mobile Services によって、各テーブルに対応する **__createdAt** システム プロパティが自動的に作成されます。このシステム プロパティをアプリケーションで利用するには、単純に次のメンバーを TodoItem クラスに追加します。  
+> 
+`````
 <pre><code>
 [JsonProperty(PropertyName = "__createdAt")]
 public DateTime createdAt { set; get; }
-</code></pre>
-</div>
+`````
 
 
-
-1. 管理ポータル**の [スクリプト]** タブで、現在の[] **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **Insert** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -116,9 +113,7 @@ public DateTime createdAt { set; get; }
 
     この関数は、**request**.**execute** の呼び出しで、オブジェクトへの挿入前に、新しい **createdAt** タイムスタンプ プロパティをそのオブジェクトに追加することにより、前の挿入スクリプトを強化しています。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>createdAt</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows Phone ストアに発行する前に無効にする必要があります。</p>
-    </div>
+    > [AZURE.IMPORTANT] この挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点で Mobile Services によって **TodoItem** テーブルに **createdAt** 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows Phone ストアに発行する前に無効にする必要があります。
 
 2. Visual Studio で、**F5** キーを押してアプリケーションを実行し、テキスト ボックスに 10 文字未満のテキストを入力して、**[Save]** をクリックします。
 
@@ -152,11 +147,9 @@ public DateTime createdAt { set; get; }
 	
     新しいクラス定義には、null 値を許容する DateTime 型として新しいタイムスタンプ プロパティが含まれます。
   
-    <div class="dev-callout"><b>注</b>
-	<p><strong>DataMemberAttribute</strong> は、アプリケーション内の新しい <strong>CreatedAt</strong> プロパティを、TodoItem テーブルに定義された (大文字と小文字が異なる) <strong>createdAt</strong> 列にマップするように、クライアントに指示します。この属性を使用することにより、アプリケーションでは、SQL データベース内の列名と異なるプロパティ名をオブジェクトに対して使用することができます。この属性がなければ、大文字と小文字が異なるため、エラーが発生します。</p>
-    </div>
+    > [AZURE.NOTE] **DataMemberAttribute** は、アプリケーション内の新しい **CreatedAt** プロパティを、TodoItem テーブルに定義された (大文字と小文字が異なる) **createdAt** 列にマップするように、クライアントに指示します。この属性を使用することにより、アプリケーションでは、SQL データベース内の列名と異なるプロパティ名をオブジェクトに対して使用することができます。この属性がなければ、大文字と小文字が異なるため、エラーが発生します。
 
-5. MainPage.xaml ファイル内の **CheckBoxComplete** 要素のすぐ下に、次の XAML 要素を追加します。	      
+5. MainPage.xaml ファイル内の **CheckBoxComplete** 要素のすぐ下に、次の XAML 要素を追加します。
 	      
         <TextBlock Name="WhenCreated" Text="{Binding CreatedAt}" VerticalAlignment="Center"/>
 
@@ -188,7 +181,7 @@ public DateTime createdAt { set; get; }
 
 これで、データの使用に関するチュートリアルは終了です。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。 
 
@@ -220,10 +213,13 @@ public DateTime createdAt { set; get; }
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
 
 [管理ポータル]: https://manage.windowsazure.com/
 [Azure 管理ポータル]: https://manage.windowsazure.com/
+
+
+<!--HONumber=42-->

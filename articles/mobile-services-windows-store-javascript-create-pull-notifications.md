@@ -1,6 +1,6 @@
-<properties urlDisplayName="Define a custom API that supports pull notifications" pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" metaKeywords="" description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="11/22/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="11/22/2014" ms.author="glenga"/>
 # 定期的な通知をサポートするカスタム API を定義します。
 
 <div class="dev-center-tutorial-selector"> 
@@ -9,17 +9,17 @@
 
 このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要]」を参照してください。 
 
-チュートリアル「[Mobile Services の使用]」または「[既存のアプリケーションへの Mobile Services の追加]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
+「[モバイル サービスの使用]」または[既存のアプリケーションへの Mobile Services の追加]に関するチュートリアルの最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
 
 1. [カスタム API を定義する]
 2. [アプリケーションを更新して定期的な通知を有効にする]
-3. [アプリケーションをテストする] 
+3. [アプリケーションをテストする]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」または「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。  
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または[既存のアプリケーションへの Mobile Services の追加]に関するチュートリアルを完了しておく必要があります。  
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
-1. [Azure の管理ポータル]にログインし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。
+1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
@@ -66,24 +66,22 @@
 		    }
 		};
 
-	このコードは、TodoItem テーブルから未完了の項目上位 3 件を返し、**wns**.**createTileSquareText01**  関数に渡された JSON オブジェクトに読み込みます。この関数から返されるタイル テンプレート XML は次のとおりです。
+	このコードは、TodoItem テーブルから未完了の項目上位 3 件を返し、**wns**.**createTileSquareText01** 関数に渡された JSON オブジェクトに読み込みます。この関数から返されるタイル テンプレート XML は次のとおりです。
 
 		<tile>
 			<visual>
 				<binding template="TileSquareText01">
-
-
-
-
+					<text id="1">My todo list</text>
+					<text id="2">Task 1</text>
+					<text id="3">Task 2</text>
+					<text id="4">Task 3</text>
 				</binding>
 			</visual>
 		</tile>
 
 	クライアントは、GET 要求を送信してタイル テンプレートにアクセスすることになるため、**exports.get** 関数が使用されます。
 
-   	<div class="dev-callout"><b>注</b>
-   		<p>このカスタム API スクリプトは、Node.js <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns モジュールを使用します。</a>このモジュールは、 <strong>require</strong> 関数を使用して参照されます。このモジュールは、サーバー スクリプトからプッシュ通知を送信するために使用される、 <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">push オブジェクトによって</a> 返される <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx">wns オブジェクト</a>とは異なります。</p>
-   	</div>
+   	> [AZURE.NOTE] このカスタム API スクリプトには、Node.js の [wns モジュール](http://go.microsoft.com/fwlink/p/?LinkId=306750)が使用されており、**require** 関数を使って参照されています。このモジュールは、[push オブジェクト](http://go.microsoft.com/fwlink/p/?LinkId=260591)から返される [wns オブジェクト](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx)とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。
 
 次に、クイック スタート アプリケーションに変更を加えます。ライブ タイルを更新する定期的な通知を開始するために、新しいカスタム API を要求します。
 
@@ -93,7 +91,7 @@
 
 2. 少なくとも 1 個の項目が表示されることを確認します。1 つも項目が表示されない場合は、アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
-3. Visual Studio のソリューション エクスプローラーで `\js` フォルダーを展開し、default.js プロジェクトを開いて、**client** 変数を定義するコードの後に次のコード行を追加します。
+3. Visual Studio のソリューション エクスプローラーで `\js` フォルダーを展開し、default.js プロジェクトを開いて **client** 変数を定義するコードの後に、次のコード行を追加します。
 
         var notifications = Windows.UI.Notifications;
         var recurrence = notifications.PeriodicUpdateRecurrence.hour;
@@ -139,13 +137,14 @@
 <!-- URLs. -->
 [Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started
+[マイ アプリ ダッシュ ボード]: http://go.microsoft.com/fwlink/?LinkId=262039
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started
 [既存のアプリケーションへの Mobile Services の追加]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[定期的な通知]: http://msdn.microsoft.com/ja-jp/library/windows/apps/jj150587.aspx
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[定期的な通知の概要]: http://msdn.microsoft.com/ja-jp/library/windows/apps/jj150587.aspx
 
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

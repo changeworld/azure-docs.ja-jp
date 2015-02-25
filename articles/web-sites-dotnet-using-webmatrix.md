@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Website with WebMatrix" pageTitle="WebMatrix を使用した .NET Web サイト - Azure チュートリアル" metaKeywords="WebMatrix Azure, WebMatrix Azure, Azure Web サイト WebMatrix, Azure Web サイト WebMatrix, Web Matrix Azure, WebMatrix Azure" description="WebMatrix を使用して Azure の Web サイトを開発してデプロイする方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Develop and deploy a website with Microsoft WebMatrix" authors="tomfitz" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="WebMatrix を使用した .NET Web サイト - Azure チュートリアル" 
+	description="WebMatrix を使用して Azure の Web サイトを開発してデプロイする方法について説明します。" 
+	services="web-sites" 
+	documentationCenter=".net" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/27/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/27/2014" 
+	ms.author="tomfitz"/>
 
 
 
@@ -9,15 +23,15 @@
 #Microsoft WebMatrix を使用して Web サイトを開発してデプロイする
 このガイドでは、Microsoft WebMatrix を使用して Web サイトを作成し、それを Azure にデプロイする方法について説明します。WebMatrix のサイト テンプレートにあるサンプル アプリケーションを使用します。
 
-学習内容:
+学習内容: 
 
 * WebMatrix 内から Azure にサインインする方法
 * WebMatrix による組み込みテンプレートを使用してサイトを作成する方法 
 * カスタマイズした Web サイトを直接 WebMatrix から Azure にデプロイする方法
 
-> [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 <a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする、</a> または <a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップしてください</a>。
-> アカウントにサインアップする前に、Azure Web サイトの使用を開始する場合は、Azure Web サイト <a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a>で、無料で期間限定の ASP.NET スターター サイト を作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
+> [AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a> か、<a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップ</a>してください。
+> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
 ## Azure へのサインイン
 
@@ -41,7 +55,7 @@
 
 	![Create Site from Template][sitefromtemplatedetails]
 
-3. Azure にサインインしている場合は、ここでローカル サイト用の Azure Websites を作成することができます。一意の名前を選択し、サイトの作成先のデータ センターを選択します。 
+3. Azure にサインインしている場合は、ここでローカル サイト用の Azure Websites を作成できます。一意の名前を選択し、サイトの作成先のデータ センターを選択します。 
 
 	![Create site on Azure][sitefromtemplateazure]
 
@@ -53,7 +67,7 @@
 
 パン屋のサンプルには、シミュレーションとして、注文品目を記載したメールを送信する注文フォームが用意されています。サイトから電子メールを送信するには、Azure で SendGrid 電子メール サービスを使用します。
 
-1. 「[SendGrid を使用した Azure での電子メールの送信方法][sendgridexample]」チュートリアルの手順に従い、SendGrid アカウントを設定して、接続情報を取得します。チュートリアル全体を実行する必要はありません。接続情報を取得に関する部分のみ実行してください。
+1. [SendGrid を使用した Azure での電子メールの送信方法][sendgridexample] チュートリアルの手順に従い、SendGrid アカウントを設定して、接続情報を取得します。チュートリアル全体を実行する必要はありません。接続情報を取得に関する部分のみ実行してください。
 
 2. WebMatrix プロジェクトへの SendGrid NuGet パッケージを追加します。まず、[NuGet] ボタンをクリックします。
 
@@ -63,18 +77,18 @@
 
     ![Install SendGrid][installsendgrid]
 
-    パッケージのインストールの完了後に、SendGrid のアセンブリが bin に追加されることに注意してください。
+    パッケージのインストールの完了後に、SendGrid のアセンブリが bin に追加されることにご注意ください。
 
     ![SendGrid added][binsendgrid]
 
-3. ファイル名をダブルクリックして、*Order.cshtml* ページを開きます。
+3. ファイル名をダブルクリックして、 *Order.cshtml* ページを開きます。
 
 	![][modify2]
 
 4. ファイルの先頭に、次のコードを追加します。
 
         @using SendGrid;
-        @using System.Net.Mail;
+        @using System.Net.Mail;	
 
 4. 「//SMTP Configuration for Hotmail」というコメントを探し、WebMail メールを使用するためのコードをすべて削除またはコメント アウトします。
 
@@ -137,7 +151,7 @@
 
 7. 商品の 1 つで **[Order Now]** をクリックして、注文を自分に送信します。
 
-8. 注文の確認メールを受け取ったことを確認します。メールを正しく送信できない場合は、ASP.NET Web ページ (Razor) のトラブルシューティング ガイドにある「[Issues with Sending Email (メール送信関連の問題)][sendmailissues]」を参照してください。
+8. 注文の確認メールを受け取ったことを確認します。メールを正しく送信できない場合は、ASP.NET Web ページ (Razor) のトラブルシューティング ガイドにある [Issues with Sending Email (メール送信関連の問題)][sendmailissues] をご覧ください。
  
 
 ## カスタマイズした Web サイトを WebMatrix から Azure にデプロイする
@@ -158,9 +172,9 @@
 
 ## Web サイトを修正して Azure Web サイトに再発行する
 
-WebMatrix を使用してサイトを修正し、それを Azure Web サイトに再発行することができます。以下の手順では、注文がギフトであることを示すチェック ボックスを追加します。
+WebMatrix を使用してサイトを修正し、それを Azure Web サイトに再発行できます。以下の手順では、注文がギフトであることを示すチェック ボックスを追加します。
 
-1. *Order.cshtml* のページを開きます。
+1.  *Order.cshtml* ページを開きます。
 
 2. "shipping" クラスのフォーム定義を見つけます。&lt;li&gt; ブロックの直後に次のコードを挿入します。
 		
@@ -173,7 +187,7 @@ WebMatrix を使用してサイトを修正し、それを Azure Web サイト�
 
 	![][modify5]
 
-3. ファイルから var shipping = Request["orderShipping"]; 行を見つけて、その直後に次のコード行を挿入します。
+3. ファイルから "var shipping = Request["orderShipping"];" 行を見つけて、その直後に次のコード行を挿入します。
 
 		var gift = Request["isGift"];
 
@@ -183,7 +197,7 @@ WebMatrix を使用してサイトを修正し、それを Azure Web サイト�
 			body += "This is a gift." + "<br/>";
 		}
 
-	*order.cshtml* ファイルは次の図のようになります。
+	 *order.cshtml* ファイルは次の図のようになります。
 
 	![][modify6]
 
@@ -199,7 +213,7 @@ WebMatrix を使用してサイトを修正し、それを Azure Web サイト�
 
 # 次のステップ
 
-これで WebMatrix から Web サイトを作成して Azure に展開する方法はわかりました。WebMatrix の詳細については、次のリソースを参照してください。
+これで WebMatrix から Web サイトを作成して Azure にデプロイする方法はわかりました。WebMatrix の詳細については、次のリソースをご覧ください。
 
 * [Azure 用 WebMatrix の概要](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
 
@@ -236,4 +250,5 @@ WebMatrix を使用してサイトを修正し、それを Azure Web サイト�
 [sendmailissues]: http://go.microsoft.com/fwlink/?LinkId=253001#email
 [sendgridexample]: http://azure.microsoft.com/ja-jp/documentation/articles/sendgrid-dotnet-how-to-send-email/
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

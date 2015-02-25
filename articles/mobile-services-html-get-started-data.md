@@ -1,14 +1,14 @@
-﻿<properties urlDisplayName="Get Started with Data (HTML5)" pageTitle="データの使用 (HTML 5) |モバイル デベロッパー センター"metakeywords ="" description="Mobile Services を使用して HTML アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="データの使用 (HTML 5) | モバイル デベロッパー センター" description="Mobile Services を使用して HTML アプリでデータを活用する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="09/24/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="09/24/2014" ms.author="glenga"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure のモバイル サービスを使用して HTML アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
->[WACOM.NOTE]このチュートリアルの目的は、モバイル サービスが HTML アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「 <a href="/ja-jp/develop/mobile/tutorials/get-started-html">モバイル サービスの使用</a>」を完了することをお勧めします。
+>[AZURE.NOTE]このチュートリアルの目的は、モバイル サービスが HTML アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-html">Mobile Services の使用</a>」を完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -18,11 +18,11 @@
 4. [モバイル サービスを使用するためのアプリケーションの更新]
 5. [モバイル サービスに対するアプリケーションのテスト]
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F" target="_blank">Azure 無料評価版</a>」を参照してください。</p></div> 
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F"%20target="_blank)を参照してください。
 
 ###その他の要件
 
-GetStartedWithData アプリケーションは、任意の Web サーバーでホストできます。ただし、便宜を図るために、アプリケーションを http://localhost:8000 で実行できるようにするスクリプトが提供されています。
+GetStartedWithData アプリケーションは、任意の Web サーバーでホストできます。ただし、便宜を図るために、アプリケーションを `http://localhost:8000` で実行できるようにするスクリプトが提供されています。
  
 + localhost を使用するには、ローカル コンピューター上で次のいずれかの Web サーバーが実行されている必要があります。
 
@@ -34,11 +34,11 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 + HTML5 をサポートする Web ブラウザー。
 
-<h2><a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする</h2>
+<h2><a name="download-app"></a>GetStartedWithData プロジェクトのダウンロード</h2>
 
 このチュートリアルは、HTML5 アプリケーションの [GetStartedWithData アプリケーション]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。 
 
-1. [HTML アプリケーション プロジェクト ファイルをダウンロードする][GetStartedWithData app]。
+1. [HTML アプリケーション プロジェクト ファイルをダウンロードします][GetStartedWithData app]。
 
 2. HTML エディターで、ダウンロードしたプロジェクトを開き、app.js ファイルを確認します。
 
@@ -46,19 +46,17 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 3. **server** サブフォルダーから次のいずれかのコマンド ファイルを実行します。
 
-	+ **launch-windows** (Windows コンピューター) 
+	+ **launch-windows** (Windows コンピューター)
 	+ **launch-mac.command** (Mac OS X コンピューター)
 	+ **launch-linux.sh** (Linux コンピューター)
 
-	<div class="dev-callout"><b>注</b>
-		<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「R」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
-	</div>
+	> [AZURE.NOTE] Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「R」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。
 	
 	これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
-4. Web ブラウザーで <a href="http://localhost:8000/" target="_blank"> http://localhost:8000/ </a> を開いて、アプリケーションを開始します。
+4. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を開いて、アプリケーションを開始します。
 
-5. アプリケーションで、意味のあるテキスト (たとえば、チュートリアルの完了) を **[Enter new task]** に入力し、**[Add]** をクリックします。
+5. アプリケーションで、意味のあるテキスト (たとえば、_Complete the tutorial_) を **[Enter new task]** に入力し、**[Add]** をクリックします。
 
    	![][0]  
 
@@ -66,7 +64,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 <h2><a name="create-service"></a>管理ポータルで新規モバイル サービスを作成する</h2>
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 <h2><a name="add-table"></a>新しいテーブルをモバイル サービスに追加する</h2>
 
@@ -80,16 +78,13 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
    	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. **[テーブル名]** に「TodoItem」と入力し、チェック ボタンをクリックします。
+3. **[テーブル名]** に「_TodoItem_」と入力し、チェック ボタンをクリックします。
 
   	![][6]
 
   	これにより、既定のアクセス許可が設定された新しいストレージ テーブル **TodoItem** が作成されます。これは、アプリケーションと共に配布されるアプリケーション キーを使用してだれもがテーブル内のデータにアクセスし、変更を加えることができることを表します。
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>Mobile Services のクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。</p> 
-	</div>
+    > [AZURE.NOTE] Mobile Services のクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。
 
 4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
 
@@ -104,12 +99,12 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
  	<tr>
  	<td>id</td>
  	<td>string</td>
- 	<td>インデックス設定済み</td>
+ 	<td>Indexed</td>
  	</tr>
  	<tr>
  	<td>__createdAt</td>
  	<td>date</td>
- 	<td>インデックス設定済み</td>
+ 	<td>Indexed</td>
  	</tr>
  	<tr>
  	<td>__updatedAt</td>
@@ -125,17 +120,13 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
   	これは、モバイル サービスのテーブルの最小要件です。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。</p>
-    </div>
+    > [AZURE.NOTE] モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。
 
-6. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に localhost が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「localhost」と入力し、**[保存]** をクリックします。
+6. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に  `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「 `localhost`」と入力して、**[保存]** をクリックします。
 
   	![][11]
 
-	<div class="dev-callout"><b>注</b>
-		<p>localhost 以外の Web サーバーにクイック スタート アプリケーションを展開する場合は、[ホスト名からの要求を許可する] の一覧に <strong>Web サーバーのホスト名を追加する必要</strong> があります。詳細については「 <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx" target="_blank">クロス オリジン リソース共有</a>」を参照してください。</p>
-	</div>
+	> [AZURE.IMPORTANT] localhost 以外の Web サーバーにクイック スタート アプリケーションを展開する場合は、**[ホスト名からの要求を許可する]** の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「[クロス オリジン リソース共有](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx"%20target="_blank)」を参照してください。
 
 これで、新しいモバイル サービスをアプリケーションのデータ ストレージとして使用する準備が整いました。
 
@@ -173,7 +164,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
         todoItemTable = client.getTable('todoitem');
 
-   	このコードでは、SQL データベース **TodoItem** のプロキシ オブジェクト (**todoItemTable**) を作成します。 
+   	このコードでは、SQL Database **TodoItem** のプロキシ オブジェクト (**todoItemTable**) を作成します。 
 
 7. **$('#add-item').submit** イベント ハンドラーを次のコードで置き換えます。
 
@@ -191,7 +182,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
   	このコードでは、新しい項目をテーブルに挿入します。
 
-8. **refreshTodoItems** メソッドを次のコードで置き換えます。
+8. **refreshTodoItems** メソッドを次のコードに置き換えます。
 
 		function refreshTodoItems() {
 
@@ -241,11 +232,9 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 <h2><a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト</h2>
 
-4. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank"> http://localhost:8000/ </a> を再ロードして、アプリケーションを開始します。
+4. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を再読み込みしてアプリケーションを開始します。
 
-    <div class="dev-callout"><b>注</b>
-	<p>Web サーバーを再起動する必要がある場合は、最初のセクションの手順を繰り返してください。</p>
-    </div>
+    > [AZURE.NOTE] Web サーバーを再起動する必要がある場合は、最初のセクションの手順を繰り返してください。
 
 2. 前回と同様、**[Enter new task]** にテキストを入力し、**[Add]** をクリックします。 
 
@@ -257,13 +246,13 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
    	![][9]
   
-   	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+   	**TodoItem** テーブルに、Mobile Services によって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
 5. アプリケーションで、リストの項目の 1 つをチェックします。ポータルの **[参照]** タブに戻り、[最新の情報に更新] をクリックします。 
 
   	"complete" 値が **false** から **true** に変更されます。
 
-6. app.js プロジェクト ファイルで、**RefreshTodoItems** メソッドを見つけ、query を定義しているコード行を次のコード行で置き換えます。
+6. app.js プロジェクト ファイルで、**RefreshTodoItems** メソッドを見つけ、 `query` を定義しているコード行を次のコード行で置き換えます。
 
    		var query = todoItemTable.where({ complete: false });
 
@@ -273,11 +262,11 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 これで、**データの使用**に関するチュートリアルはおしまいです。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、HTML アプリケーションでモバイル サービスのデータを操作できるようにするための基本について説明しました。次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [スクリプトでデータ検証および変更]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
 * [ページングを使用したクエリの改善]
@@ -308,7 +297,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 [11]: ./media/mobile-services-html-get-started-data/mobile-services-set-cors-localhost.png
 
 <!-- URLs. -->
-[スクリプトでデータ検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html
 [ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
@@ -317,9 +306,10 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 [管理ポータル]: https://manage.windowsazure.com/
 [GetStartedWithData アプリケーション]:  http://go.microsoft.com/fwlink/?LinkID=286345
 
-[モバイル サービス Html/Javascript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
+[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
 
 [クロス オリジン リソース共有]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx
 
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

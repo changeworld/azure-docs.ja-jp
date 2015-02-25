@@ -1,16 +1,16 @@
-﻿<properties urlDisplayName="Register for Azure Active Directory Authentication" pageTitle="Azure Active Directory 認証用の登録 - Mobile Services" metaKeywords="Azure registering application, Azure Active Directory authentication, application authenticate, authenticate mobile services" description="Mobile Services アプリケーションで Azure Active Directory 認証用に登録する方法について説明します。" title="Register your account to use an Azure Active Directory account login" authors="wesmc" services="mobile-services" documentationCenter="Mobile" manager="dwrede" />
+﻿<properties pageTitle="Azure Active Directory 認証用の登録 - Mobile Services" description="Mobile Services アプリケーションで Azure Active Directory 認証用に登録する方法について説明します。" authors="wesmc7777" services="mobile-services" documentationCenter="" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"/>
 
 # アプリケーションを登録して Azure Active Directory アカウント ログインを使用する
 
 このトピックでは、Azure モバイル サービスの認証プロバイダーとして Azure Active Directory を使用できるようにアプリケーションを登録する方法について説明します。 
 
 
->[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/dn283952.aspx)を使用する場合に「[Add Authentication to your Mobile Services app (Mobile Services アプリへの認証の追加)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」チュートリアルと併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/jj710106.aspx)が必要な場合は、「[Authenticate your app with Active Directory Authentication Library Single Sign-On (Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証)](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/)」チュートリアルに従ってください。
+>[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/jj710106.aspx)が必要な場合は、チュートリアル「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/)」に従ってください。
 
 
-1.  [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
+1. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
     ![][1]
 
@@ -18,13 +18,13 @@
 
     ![][2]
 
-3. **Azure active directory** ID プロバイダーのセクションまで下へスクロールし、そこに表示されている**アプリケーション URL** をコピーします。
+3. **Azure Active Directory** ID プロバイダーのセクションまで下にスクロールし、そこに表示されている**アプリケーション URL** をコピーします。
 
     ![][3]
 
 4. 管理ポータルの **[Active Directory]** に移動し、目的のディレクトリをクリックします。
 
-    ![][4] 
+    ![][4] 	
 
 5. 上部にある **[アプリケーション]** タブをクリックし、アプリケーションの **[追加]** をクリックします。 
 
@@ -32,7 +32,7 @@
 
 6. **[組織で開発中のアプリケーションを追加]** をクリックします。
 
-7. アプリケーションの追加ウィザードで、アプリケーションの**名前**を入力し、種類として   **[Web アプリケーションや Web API]** をクリックします。その後、クリックして続行します。
+7. アプリケーションの追加ウィザードで、アプリケーションの**名前**を入力し、種類として **[Web アプリケーションや Web API]** をクリックします。その後、クリックして続行します。
 
     ![][5]
 
@@ -43,7 +43,7 @@
 
 9. アプリケーションが追加されたら **[構成]** タブをクリックします。その後、アプリケーションの**クライアント ID** をコピーします。
 
-    モバイル サービスに .Net バックエンドを使用するモバイル サービスを作成した場合、**[シングル サインオン]** の **[応答 URL]** を編集して、モバイル サービスの URL の末尾のパスが _signin-aad_.になるようにします。たとえば、`https://todolist.azure-mobile.net/signin-aad` のように指定します。
+    モバイル サービスに .Net バックエンドを使用するモバイル サービスを作成した場合、**[シングル サインオン]** の **[応答 URL]** を編集して、モバイル サービスの URL の末尾のパスが _signin-aad_ になるようにします。たとえば、 `https://todolist.azure-mobile.net/signin-aad` のように指定します。
 
     ![][8]
 
@@ -82,5 +82,8 @@
 [11]:./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-default-domain.png
 
 <!-- URLs. -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 
+
+
+<!--HONumber=42-->

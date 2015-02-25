@@ -1,10 +1,24 @@
-﻿<properties urlDisplayName="iOS Media Player Framework" pageTitle="iOS Media Player フレームワークを Azure Media Services と共に使用する" metaKeywords="" description="Media Services iOS Media Player フレームワーク ライブラリを使用して、動的なリッチ アプリケーションを作成する方法を説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to use the Azure Media Services iOS Media Player Framework" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="iOS Media Player フレームワークを Azure Media Services と共に使用する" 
+	description="Media Services iOS Media Player フレームワーク ライブラリを使用して、動的なリッチ アプリケーションを作成する方法を説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="mobile-ios" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/30/2014" 
+	ms.author="juliako"/>
 
 
 
-#Azure Media Services iOS Media Player フレームワークを使用する方法
+# Azure Media Services iOS Media Player フレームワークを使用する方法
 
 Azure メディア サービス iOS Media Player フレームワーク ライブラリを使用すると、iPod、iPhone、iPad の開発者は、ビデオとオーディオのストリームをその場で作成およびミックスするダイナミックなリッチ クライアント アプリケーションを容易に作成できます。たとえば、スポーツ コンテンツを表示するアプリケーションでは、選んだ箇所に広告を容易に挿入することができ、メイン コンテンツが巻き戻された場合も含めて、広告を表示する頻度を制御できます。教育用アプリケーションでも同じ機能を使用して、たとえば、メイン コンテンツに戻る前に、メインの講義に応じた余談 (または補足説明) を加えるようなコンテンツを作成することができます。
 
@@ -37,7 +51,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 4. iPad フォルダーには 2 つの .xib ファイル、**SeekbarViewController** および **SamplePlayerViewController** があります。これらは、iPad アプリケーションの UI レイアウトを作成します。iPhone フォルダーにも 2 つの .xib ファイルがあり、これらはシーク バーとコントローラーを定義しています。 
 
-6. メイン アプリケーションのロジックは、`共有` フォルダー内の **SamplePlayerViewController.m** に記述されています。以下に示すコード スニペットのほとんどは、このファイルに含まれています。 
+6. メイン アプリケーションのロジックは、 `Shared` フォルダー内の **SamplePlayerViewController.m** に記述されています。以下に示すコード スニペットのほとんどは、このファイルに含まれています。 
 
 ## UI レイアウトについて
 プレーヤーのインターフェイスは、2 つの .xib ファイルで定義されています(以下の説明では例として iPad のレイアウトを使用していますが、iPhone でもレイアウトはこれとよく似ており、基本的な概念は同じです)。
@@ -51,17 +65,17 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 ### SeekbarViewController_iPad.xib
 ![Seek Bar Controller](http://mingfeiy.com/wp-content/uploads/2013/01/controller.png)
-* **[再生] ボタンは、**メディアの再生と一時停止に使用します。
+* **[再生]** ボタンは、メディアの再生と一時停止に使用します。
 
-* **シーク バーは、**再生タイムライン全体を表します。シーク時には、シーク バーのシーク ボタンを押したまま希望の位置までドラッグして放します。 
+* **シーク バー**は、再生タイムライン全体を表します。シーク時には、シーク バーのシーク ボタンを押したまま希望の位置までドラッグして放します。 
 
-**メモ**:シーク中に広告の位置に達すると、広告の長さの新しいシーク バーが表示されます。メイン シーク バーが表示されるのは、メイン コンテンツの時間内のみです (つまり、メイン シーク バーでは広告の長さが 0 になります)。
+**注**:シーク中に広告の位置に達すると、広告の長さの新しいシーク バーが表示されます。メイン シーク バーが表示されるのは、メイン コンテンツの時間内のみです (つまり、メイン シーク バーでは広告の長さが 0 になります)。
 
 * **[プレーヤー時間]** コントロールには、2 つの時間 (`Label:playerTime`) が 00:23/02:10 のように表示されます。この場合、00:23 は現在の再生時間、02:10 はメディア全体の長さを表します。 
 
-* **[前方へのスキップ] と [後方へのスキップ] ボタン**は現在、正しく動作しません。更新バージョンが間もなくリリースされます。
+* **[前方へのスキップ] と [後方へのスキップ] ボタン**  は現在、正しく動作しません。更新バージョンが間もなくリリースされます。
 
-* メイン コンテンツの再生中に **[ここにスケジュール設定] ボタン**を押すと、広告が挿入されます (広告ソースの URL はコード ビハインドで定義できます)。注:現在のバージョンでは、広告の再生中に他の広告をスケジュール設定することはできません。 
+* メイン コンテンツの再生中に **[ここにスケジュール設定]** ボタンを押すと、広告が挿入されます (広告ソースの URL はコード ビハインドで定義できます)。注:現在のバージョンでは、広告の再生中に他の広告をスケジュール設定することはできません。 
 
 ### メイン コンテンツをスケジュールする方法
 コンテンツ クリップの 0 秒から 80 秒までをスケジュールしました。
@@ -83,10 +97,10 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 * **MediaTime** オブジェクトは、メイン コンテンツとしてスケジュールされるビデオ クリップを制御します。上の例では、ビデオ クリップの長さが 80 秒間 (0 秒目から 80 秒目まで) になるようにスケジュールされます。
 * **clipBeginMediaTime** は、ビデオ再生の開始位置を時間で表します。たとえば、**clipBeginMediaTime** = 5 の場合、このビデオ クリップはビデオ クリップ内の 5 秒目から開始されます。
 * **clipEndMediaTime** は、ビデオ再生の終了位置を時間で表します。**clipEndMediaTime**=100 の場合、ビデオの再生はビデオ クリップ内の 100 秒目で終了します。
-* **MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して構成されています 
- (`[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`)。
+***MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して設定されています
+ (`[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`。
 
-**注: **メイン コンテンツのスケジュール設定は、必ず (プリロール広告の場合も含めて) 広告のスケジュール設定より前に行ってください。 
+**注:** メイン コンテンツのスケジュール設定は、必ず (プリロール広告の場合も含めて) 広告のスケジュール設定より前に行ってください。 
 
 ### バリエーション:2 つのメイン コンテンツ クリップを再生する場合、次のコードを使用して 2 つ目のクリップを 1 つ目の後にスケジュールすることもできます。
 
@@ -100,13 +114,13 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
         [self logFrameworkError];
     }
 
-前のコードに続いてこの処理を行うと、2 つのコンテンツ ストリームがメイン コンテンツのタイムライン上でスケジュールされます。1 つ目は `URLWithString:url` に基づいてスケジュールされ、2 つ目のコンテンツは `URLWithString:secondContent` に基づいてスケジュールされます。2 つ目のコンテンツは、メディア ストリームの先頭から 30 秒の位置から開始され、80 秒の位置で終了します。 
+前のコードに続いてこの処理を行うと、2 つのコンテンツ ストリームがメイン コンテンツのタイムライン上でスケジュールされます。1 つ目のコンテンツは  `URLWithString:url` に基づいてスケジュールされ、2 つ目のコンテンツは  `URLWithString:secondContent` に基づいてスケジュールされます。2 つ目のコンテンツは、メディア ストリームの先頭から 30 秒の位置から開始され、80 秒の位置で終了します。 
 
 ## 広告のスケジュール設定 
 現在のリリースでは、**pauseTimeline=false** の広告のみがサポートされています。これは、広告の終了後に、メイン コンテンツが中断された箇所から再生が再開されることを意味します。 
 
 次に重要なポイントをいくつか示します。
-<ul><li> 広告をスケジュールする際に、**LinearTime.duration** はすべて 0 にする必要があります。needs to be 0 when scheduling an advertisement.</li>
+<ul><li> 広告をスケジュールする際に、**LinearTime.duration** はすべて 0 にする必要があります。</li>
 <li> **clipEndMediaTime** が広告の長さを超える場合、クリップの末尾より後に再生が終了し、例外はスローされません。広告によるビジネス チャンスを逃すことのないよう、広告の自然な長さがレンダリング時間 (**clipEndMediaTime**) に収まるかどうかを確認することをお勧めします。</li> 
 <li> プリロール、ミッドロール、およびポストロールの広告がサポートされています。プリロール広告は、すべてのコンテンツの先頭のみにスケジュールできます。たとえば、ラフ カット編集 (RCE) のシナリオで、プリロール広告を 2 番目のコンテンツとしてスケジュールすることはできません。 </li>
 <li> Sticky 広告および Play-once 広告がサポートされており、これらをプリロール、ミッドロール、およびポストロール広告と組み合わせて使用することができます。</li>
@@ -114,7 +128,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 </ul>
 ### プリロール広告、ミッドロール広告、ポストロール広告、Ad Pod をスケジュールする方法
 
-####プリロール広告のスケジュール設定
+#### プリロール広告のスケジュール設定
 
     LinearTime *adLinearTime = [[[LinearTime alloc] init] autorelease];
     NSString *adURLString = @"http://smoothstreamingdemo.blob.core.windows.net/videoasset/WA-BumpShort_120530-1.mp4";
@@ -134,16 +148,16 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 **AdInfo** オブジェクトは、広告クリップに関するすべての情報を表します。
 * **ClipURL** はクリップ ソースの URL です。
-* **mediaTime** プロパティは、広告を再生する時間の長さを示します。(**clipBeginMediaTime** は広告の開始時間で、**clipEndMediaTime** は広告の終了を定義します。)上のサンプル コードでは、クリップの 0 秒目から 5 秒目まで、5 秒間の広告をスケジュールしています。
+* **mediaTime** プロパティは、広告を再生する時間の長さを示します(**clipBeginMediaTime** は広告の開始時間、**clipEndMediaTime** は広告の終了時間です)。上のサンプル コードでは、クリップの 0 秒目から 5 秒目まで、5 秒間の広告をスケジュールしています。
 * **Policy** オブジェクトは、現在フレームワークでは使用されていません。
 * Ad Pod ではない場合は、**appendTo** の値を -1 に設定する必要があります。 
 * **type** の値には、プリロール、ミッドロール、ポストロール、または Ad Pod を指定できます。プリロールまたはポストロールの場合、関連付けられているタイミングがないため、type の指定が必要です。 
 
-####ミッドロール広告のスケジュール設定
+#### ミッドロール広告のスケジュール設定
 
 前のコード サンプルに `adLinearTime.startTime = 23;` を追加すると、広告の再生はメイン コンテンツのタインムラインの 23 秒目から開始されます。
 
-####ポストロール広告のスケジュール設定
+#### ポストロール広告のスケジュール設定
 
     //Schedule Post Roll Ad
     NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -195,14 +209,13 @@ Ad Pod は、複数の広告が連続して再生される広告ブレークで�
     }
 
 いくつかの点について説明します。
-* 最初のクリックでは、**appendTo** は -1 です。`[framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex]` を呼び出すと、Ad Pod の `adIndex` はこの最初のクリップの終了を示す一意の値を受け取ります。Ad Pod 内の 2 つ目のクリップについては、**appendTo** を `adpodInfo2.appendTo = adIndex;` (1 つ目の終了位置を 2 つ目のクリップの開始位置とする) として設定することにより、2 つ目の広告の先頭と 1 つ目の末尾を揃えています。 
-* さらに、type を `AdType_Pod` として設定することにより、Ad Pod であることを示す必要があります。 
+* 最初のクリックでは、**appendTo** は -1 です。`[framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex]` を呼び出す際に、 `adIndex` は、Ad Pod 内で 1 つ目であるこのクリップの終わりを示す一意の値を受け取ります。Ad Pod 内の 2 つ目のクリップについては、**appendTo** を `adpodInfo2.appendTo = adIndex;` (1 つ目の終了位置を 2 つ目のクリップの開始位置とする) として設定することにより、2 つ目の広告の先頭と 1 つ目の末尾を揃えています。 
+* さらに、type を  `AdType_Pod` として設定することにより、Ad Pod であることを示す必要があります。 
 
 ### Play-Once 広告または "Sticky" 広告をスケジュールする方法
     AdInfo *oneTimeInfo = [[[AdInfo alloc] init] autorelease];
     oneTimeInfo.deleteAfterPlay = YES;
 
 上のコード例で示されているように、**deleteAfterPlay** を **YES** に設定すると、この広告は 1 度だけ再生されます。**deleteAfterPlay** を **NO** に設定すると、この広告は連続して再生されます。これを Sticky 広告といいます。
-### 詳細については、[Azure Media Player フレームワークの wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki)  を参照してください。
-
-<!--HONumber=35.1-->
+### 詳細については、[Azure Media Player フレームワークの wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki) を参照してください。
+\n<!--HONumber=42-->

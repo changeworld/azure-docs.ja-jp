@@ -1,43 +1,47 @@
-﻿<properties urlDisplayName="Handle Conflicts with Offline Data" pageTitle="モバイル サービスでのオフライン データとの競合の処理 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling conflicts with offline data in Mobile Services" authors="krisragh" manager="dwrede"/>
+﻿<properties pageTitle="Mobile Services におけるオフライン データとの競合の処理 (iOS) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" documentationCenter="ios" authors="krisragh" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="dotnet" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/26/2015" ms.author="krisragh,donnam"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data" title="Windows Store C#">Windows ストア C#</a>
-<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data" title="Windows Phone">Windows Phone</a>
-<a href="/ja-jp/documentation/articles/mobile-services-ios-handling-conflicts-offline-data" title="iOS" class="current">iOS</a>
-</div>
+[WACOM.INCLUDE [mobile-services-selector-offline-conflicts](../includes/mobile-services-selector-offline-conflicts.md)]
 
 このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルは、前の [オフライン データの使用] チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、[オフライン データの使用] チュートリアルを完了している必要があります。
 
->[WACOM.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure 無料評価版</a>」を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。
+
+このチュートリアルでは、次の基本的な手順について説明します。
+
+1. [アプリケーション プロジェクトを編集可能に更新]
+2. [Todo リスト ビュー コントローラーの更新]
+3. [Todo 項目ビューのコントローラーの追加]
+4. [Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加]
+5. [項目の詳細の Todo 項目ビュー コントローラーへの追加]
+6. [編集内容を保存するためのサポートの追加]
+7. [競合処理の問題]
+8. [競合処理をサポートするための QSTodoService の更新]
+9. [競合処理をサポートするための UI アラート ビュー ヘルパーの追加]
+10. [競合ハンドラーの Todo リスト ビュー コントローラーへの追加]
+11. [アプリケーションのテスト]
 
 ## 「オフライン データの使用」チュートリアルの完了
 
 [オフライン データの使用] チュートリアルの手順に従って、そのプロジェクトを完了します。そのチュートリアルで完了したプロジェクトを、このチュートリアルの起点として使用します。
 
-## アプリ プロジェクトを編集可能に更新
+## <a name="update-app"></a>アプリケーション プロジェクトを編集可能に更新
 
 [オフライン データの使用] で完了したプロジェクトを更新し、項目を編集可能にします。現時点では、この同じアプリを 2 台の電話で稼働し、両方の電話で同じ項目をローカルに変更して、変更内容をサーバーにプッシュすると、競合が生じて失敗します。
 
 SDK のオフライン同期機能を使用すると、コードを介してこのような競合を扱い、競合している項目への対処方法を動的に判断できます。クイックスタート プロジェクトを変更することで、この機能を体験できます。
 
-### Todo リスト ビュー コントローラーの更新
+### <a name="update-list-view"></a>Todo リスト ビュー コントローラーの更新
 
-1. iPhone ストーリーボードを更新します。iPad で作業している場合は、iPad ストーリーボードで同じ手順に従ってください。
-
-2. Xcode プロジェクト ナビゲーターで **MainStoryboard_iPhone.storyboard** を選択し、次に、**[Todo リスト ビュー コントローラー]** を選択します。最上部のメニューで、**[エディタ]、[埋め込み]、[ナビゲーション コントローラ]** の順にクリックします。
-
-      ![][update-todo-list-view-controller-1]
-
-3. **[Todo リスト ビュー コントローラー]** で、テーブル ビュー セルを選択して、そのアクセサリ モードを**ディスクロージャー インジケーター**に設定します。ディスクロージャー インジケーターは、関連付けられたテーブル ビュー コントローラーをタップすると、新しいビューが表示されることをユーザーに示します。ディスクロージャー インジケーターは、イベントを生成しません。
+1. Xcode プロジェクト ナビゲーターで **MainStoryboard_iPhone.storyboard** を選択し、次に、**[Todo リスト ビュー コントローラー]** を選択します。テーブル ビュー セルを選択して、そのアクセサリ モードを**ディスクロージャー インジケーター**に設定します。ディスクロージャー インジケーターは、関連付けられたテーブル ビュー コントローラーをタップすると、新しいビューが表示されることをユーザーに示します。ディスクロージャー インジケーターは、イベントを生成しません。
 
       ![][update-todo-list-view-controller-2]
 
-4. **TodoListViewController.m** で、次の操作とそのコンテンツを一緒に削除します。それらは必要ありません。
+2. **TodoListViewController.m** で、次の操作とそのコンテンツを一緒に削除します。それらは必要ありません。
 
         -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 
@@ -46,28 +50,29 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
         -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
          forRowAtIndexPath:(NSIndexPath *)indexPath
 
-### Todo 項目ビュー コントローラー
+### <a name="add-view-controller"></a>Todo 項目ビューのコントローラーの追加
 
-1. **UIViewController** から派生した **QSTodoItemViewController** という新しい Objective-C クラスをプロジェクトに追加します。
+1. **UIViewController** から派生した **QSItemViewController** という名前の新しい Cocoa Touch クラスを作成します。
 
-      ![][add-todo-item-view-controller-1]
+2. **QSItemViewController.h** で、次のような型の定義を追加します。
 
-      ![][add-todo-item-view-controller-2]
+        typedef void (^ItemEditCompletionBlock) (NSDictionary *editedItem);
 
-2. **QSTodoItemViewController.h** で、変更する項目を保持するためのプロパティを追加します。
+3. **QSItemViewController.h** で、変更する項目を保持するプロパティと、ユーザーが詳細ビューで [戻る] ボタンを押した後に呼び出されるコールバックのプロパティを追加します。
 
         @property (nonatomic, weak) NSMutableDictionary *item;
+        @property (nonatomic, strong) ItemEditCompletionBlock editCompleteBlock;
 
-3. **QSTodoItemViewController.m** で、編集する 2 つの Todo 項目のフィールド (Todo 項目自体の完了ステータスとテキスト) に対応した 2 つのプライベート プロパティを追加します。
+4. **QSItemViewController.m** で、編集する 2 つの Todo 項目のフィールド (Todo 項目自体の完了ステータスとテキスト) に対応した 2 つのプライベート プロパティを追加します。
 
-        @interface QSTodoItemViewController ()
+        @interface QSItemViewController ()
 
         @property (nonatomic, strong) IBOutlet UITextField *itemText;
         @property (nonatomic, strong) IBOutlet UISegmentedControl *itemComplete;
 
         @end
 
-4. **QSTodoItemViewController.m** で、**viewDidLoad** のスタブ実装を次のコードに更新します。
+5. **QSItemViewController.m** で、**viewDidLoad** のスタブ実装を次のコードに更新します。
 
         - (void)viewDidLoad
         {
@@ -87,8 +92,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
                         forControlEvents:UIControlEventValueChanged];
         }
 
-5. **QSTodoItemViewController.m** で、複数のイベントを処理するための 4 つのメソッドを追加します。
-
+6. **QSItemViewController.m** で、編集したコントロールのイベントを処理するための 4 つのメソッドを追加します。
 
         - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
             [textField resignFirstResponder];
@@ -105,61 +109,87 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
             [[self view] endEditing:YES];
         }
 
-        - (void)viewWillDisappear:(BOOL)animated {
-            [self.item setValue:[self.itemText text] forKey:@"text"];
-            [self.item setValue:[NSNumber numberWithBool:self.itemComplete.selectedSegmentIndex == 0] forKey:@"complete"];
+7. **QSItemViewController** で、次のメソッドも追加します。このメソッドは、ユーザーがナビゲーション バーで **[戻る]** ボタンを押したときに呼び出されます。このメソッドは、他のイベントで呼び出すこともできるため、親ビューを最初に確認します。項目に変更があった場合は、**self.item** が変更されてコールバック **editCompleteBlock** が呼び出されます。
+
+        - (void)didMoveToParentViewController:(UIViewController *)parent
+        {
+            if (![parent isEqual:self.parentViewController]) {
+                NSNumber *completeValue = [NSNumber numberWithBool:self.itemComplete.selectedSegmentIndex == 0];
+                
+                Boolean changed =
+                    [self.item valueForKey:@"text"] != [self.itemText text] ||
+                    [self.item valueForKey:@"complete"] != completeValue;
+                
+                if (changed) {
+                    [self.item setValue:[self.itemText text] forKey:@"text"];
+                    [self.item setValue:completeValue forKey:@"complete"];
+                    
+                    self.editCompleteBlock(self.item);
+                }
+            }
         }
 
-### Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加
+### <a name="add-segue"></a>Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加
 
 1. プロジェクト ナビゲーターを使用して、**MainStoryboard_iPhone.storyboard** ファイルに戻ります。
 
-2. Todo 項目の新しいビュー コントローラーをストーリーボードの既存の **Todo リスト ビュー コントローラー** の右に追加します。この新しいビュー コントローラーのカスタム クラスを **QSTodoItemViewController** に設定します。詳細については、[Adding a Scene to a Storyboard (シーンのストーリーボードへの追加)] を参照してください。
+2. Todo 項目の新しいビュー コントローラーをストーリーボードの既存の **Todo リスト ビュー コントローラー**の右に追加します。この新しいビュー コントローラーのカスタム クラスを **QSItemViewController** に設定します。詳細については、[Adding a Scene to a Storyboard (シーンのストーリーボードへの追加)] を参照してください。
 
-3. プッシュ セグエを **Todo リスト ビュー コントローラー**から **Todo 項目ビュー コントローラー**に追加し、セグエに **detailSegue** という名前を付けます。詳細については、[Adding a Segue Between Scenes in a Storyboard (ストーリーボード内のシーン間へのセグエの追加)] を参照してください。このセグエは、元のビュー コントローラーのセルまたはボタンからは作成しないでください。代わりに、ストーリーボード インターフェイスの **Todo リスト ビュー コントローラー** の下にあるビュー コントローラー アイコンを Ctrl キーを押しながら、**Todo 項目ビュー コントローラー** へドラッグします。間違ってセルからセグエを作成した場合は、アプリの実行時にセグエが 2 回トリガーされ、次のエラーが表示されます。
+3. **Show** セグエを **Todo リスト ビュー コントローラー**から **Todo 項目ビュー コントローラー**に追加します。次に、属性インスペクターでセグエの識別子を **detailSegue** に設定します。 
 
-        破損しているナビゲーション バーではプッシュ アニメーションが入れ子になる場合があります。
+    このセグエは、元のビュー コントローラーのセルまたはボタンからは作成しないでください。代わりに、ストーリーボード インターフェイスの **Todo リスト ビュー コントローラー**の上にあるビュー コントローラー アイコンを Ctrl キーを押しながら、**Todo 項目ビュー コントローラー**へドラッグします。
+
+    ![][todo-list-view-controller-add-segue]
+
+    間違ってセルからセグエを作成した場合は、アプリの実行時にセグエが 2 回トリガーされ、次のエラーが表示されます。
+
+        Nested push animation can result in corrupted navigation bar
+
+    セグエの詳細については、[ストーリーボード内のシーン間へのセグエの追加]に関するページを参照してください。 
 
 4. 項目テキスト用のテキスト フィールドと完了ステータス用のセグメント化コントロールを、ラベルと共に新しい **Todo 項目ビュー コントローラー** に追加します。セグメント化されたコントロールで、**セグメント 0** のタイトルを **[はい]**、**セグメントの 1** のタイトルを **[いいえ]** に設定します。これらの新しいフィールドをコード内のコンセントに接続します。詳細については、[Build a User Interface (ユーザー インターフェイスの作成)] および [Segmented Controls (セグメント化コントロール)] を参照してください。
 
       ![][add-todo-item-view-controller-3]
 
-5. これらの新しいフィールドを、既に **QSTodoItemViewController.m** に追加されている対応するアウトレットに接続します。項目テキスト フィールドを **itemText** アウトレットに接続し、完了ステータス セグメント化コントロールを **itemComplete** アウトレットに接続します。詳細については、[Creating an Outlet Connection (アウトレット接続の作成)] を参照してください。
+5. これらの新しいフィールドを、既に **QSItemViewController.m** に追加されている対応するアウトレットに接続します。項目テキスト フィールドを **itemText** アウトレットに接続し、完了ステータス セグメント化コントロールを **itemComplete** アウトレットに接続します。詳細については、[Creating an Outlet Connection (アウトレット接続の作成)] を参照してください。
 
-6. テキスト フィールドのデリゲートをビュー コントローラーに設定します。これにより、最終的に項目を編集し、Return キーを押したときに、テキスト フィールドが撤退します。テキスト フィールドからストーリーボード インターフェイスの **Todo 項目ビュー コントローラー** の下にあるビュー コントローラー アイコンまで Ctrl キーを押しながらドラッグし、デリゲート アウトレットを選択します。この操作はストーリーボードに、このテキスト フィールドのデリゲートがこのビュー コントローラーであることを示します。
+6. テキスト フィールドのデリゲートをビュー コントローラーに設定します。テキスト フィールドからストーリーボード インターフェイスの **Todo 項目ビュー コントローラー**の下にあるビュー コントローラー アイコンまで Ctrl キーを押しながらドラッグし、デリゲート アウトレットを選択します。この操作はストーリーボードに、このテキスト フィールドのデリゲートがこのビュー コントローラーであることを示します。
 
 7. ここまでで加えたすべての変更を反映してアプリが動作することを確認します。シミュレーターでアプリを実行します。項目を todo リストに追加し、それらをクリックします。項目ビュー コントローラー (現在は空) が表示されます。
 
-      ![][add-todo-item-view-controller-4]
+      ![][add-todo-item-view-controller-4]          ![][add-todo-item-view-controller-5]
 
-      ![][add-todo-item-view-controller-5]
+### <a name="add-item-details"></a>項目の詳細の Todo 項目ビュー コントローラーへの追加
 
-### 項目の詳細の Todo 項目ビュー コントローラーへの追加
+1. **QSTodoListViewController.m** から **QSItemViewController** を参照します。そのため、**QSTodoListViewController.m** で、**QSItemViewController.h** をインポートするための行を追加します。
 
-1. **QSTodoListViewController.m** から **QSTodoItemViewController** を参照します。そのため、**QSTodoListViewController.m** で、**QSTodoItemViewController.h** をインポートするための行を追加します。
+        #import "QSItemViewController.h"
 
-        #import "QSTodoItemViewController.h"
+2. **QSTodoListViewController.m で、編集する項目を格納するための新しいプロパティを ****QSTodoListViewController** インターフェイスに追加します。
 
-2. **QSTodoListViewController.m** で、編集する項目を格納するための 2 つの新しいプロパティを **QSTodoListViewController** に追加します。
-
-        @property (nonatomic)           NSInteger       editedItemIndex;
-        @property (strong, nonatomic)   NSMutableDictionary *editedItem;
+        @property (strong, nonatomic)   NSDictionary *editingItem;
 
 3. 編集した項目を保存してから、セグエを呼び出して詳細ビューを表示するために、**QSTodoListViewController.m** で **tableView:didSelectRowAtIndexPath:** を実装します。
 
-          - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-              self.editedItemIndex = [indexPath row];
-              self.editedItem = [[self.todoService.items objectAtIndex:[indexPath row]] mutableCopy];
+        - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+            NSManagedObject *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            self.editingItem = [MSCoreDataStore tableItemFromManagedObject:item]; // map from managed object to dictionary
+            
+            [self performSegueWithIdentifier:@"detailSegue" sender:self];
+        }
 
-              [self performSegueWithIdentifier:@"detailSegue" sender:self];
-          }
-
-4. **Todo 項目ビュー コントローラー** に項目を渡すため、**QSTodoListViewController.m** で **prepareForSegue:sender:** を実装します。
+4. 項目を **Todo 項目ビュー コントローラー**に渡すために、**QSTodoListViewController.m** で **prepareForSegue:sender:** を実装し、ユーザーが詳細ビューを終了したときにコールバックを指定します。
 
         - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
             if ([[segue identifier] isEqualToString:@"detailSegue"]) {
-                QSTodoItemViewController *ivc = (QSTodoItemViewController *)[segue destinationViewController];
-                ivc.item = self.editedItem;
+                QSItemViewController *ivc = (QSItemViewController *) [segue destinationViewController];
+                ivc.item = [self.editingItem mutableCopy];
+                
+                ivc.editCompleteBlock = ^(NSDictionary *editedValue) {
+                    [self.todoService updateItem:editedValue completion:^(NSUInteger index) {
+                        self.editingItem = nil;
+                    }];
+                };
             }
         }
 
@@ -167,103 +197,46 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
       ![][add-todo-item-view-controller-6]
 
-### 編集内容を保存するためのサポートの追加
+### <a name="saving-edits"></a>編集内容を保存するためのサポートの追加
 
-1. ナビゲーション ビューで [戻る] ボタンをクリックすると、編集内容は失われます。データは詳細ビューに送信されましたが、データはマスター ビューに送信されていません。既にポインターを項目のコピーに渡しているため、そのポインターを使用して、項目に加えられた更新の一覧を取得し、それを使用してサーバーを更新できます。開始するにはまず **completeItem** 操作を削除して新しい **updateItem** 操作を追加し、**QSTodoService** のサーバー ラッパー クラスを **QSTodoService.m** で更新します。これは、**completeItem** が完了として項目をマークするのみのため、代わりに、**updateItem** によって項目を更新します。
+1. ナビゲーション ビューで [戻る] ボタンをクリックすると、編集内容は失われます。データは詳細ビューに送信しましたが、データはマスター ビューに送信されていません。既にポインターを項目のコピーに渡しているため、そのポインターを使用して、項目に加えられた更新の一覧を取得し、それを使用してサーバーを更新できます。開始するにはまず **completeItem** 操作を削除して新しい **updateItem** 操作を追加し、**QSTodoService** のサーバー ラッパー クラスを **QSTodoService.m** で更新します。これは、**completeItem** が完了として項目をマークするのみのため、代わりに、**updateItem** によって項目を更新します。
 
-        - (void)updateItem:(NSDictionary *)item atIndex:(NSInteger)index completion:(QSCompletionWithIndexBlock)completion {
-            // Cast the public items property to the mutable type (it was created as mutable)
-            NSMutableArray *mutableItems = (NSMutableArray *) items;
-
-            // Replace the original in the items array
-            [mutableItems replaceObjectAtIndex:index withObject:item];
-
+        - (void)updateItem:(NSDictionary *)item completion:(QSCompletionBlock)completion
+        {
+            // Set the item to be complete (we need a mutable copy)
+            NSMutableDictionary *mutable = [item mutableCopy];
+            
             // Update the item in the TodoItem table and remove from the items array when we mark an item as complete
-            [self.syncTable update:item completion:^(NSError *error) {
+            [self.syncTable update:mutable completion:^(NSError *error) {
                 [self logErrorIfNotNil:error];
-
-                NSInteger index = -1;
-                if (!error) {
-                    BOOL isComplete = [[item objectForKey:@"complete"] boolValue];
-                    NSString *remoteId = [item objectForKey:@"id"];
-                    index = [items indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                        return [remoteId isEqualToString:[obj objectForKey:@"id"]];
-                    }];
-
-                    if (index != NSNotFound && isComplete)
-                    {
-                        [mutableItems removeObjectAtIndex:index];
-                    }
+                
+                if (completion != nil) {
+                    dispatch_async(dispatch_get_main_queue(), completion);
                 }
-
-                // Let the caller know that we have finished
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(index);
-                });
             }];
         }
 
 2. **QSTodoService.h** から **completeItem** の宣言を削除し、この **updateItem** の宣言を追加します。
 
-        - (void)updateItem:(NSDictionary *)item atIndex:(NSInteger)index completion:(QSCompletionWithIndexBlock)completion;
+        - (void)updateItem:(NSDictionary *)item completion:(QSCompletionBlock)completion;
 
-3. **QSTodoListViewController.m** で、操作 **viewWillAppear** を追加します。これは、詳細ビュー コントローラーから戻った後、マスター ビューが表示されるたびに更新メソッドを呼び出します。
+3. ここで、アプリをテストします。ここまでで加えたすべての変更を反映してアプリが動作することを確認します。シミュレーターでアプリを実行します。項目を todo リストに追加し、それらをクリックします。項目の編集を試みて、元に戻ります。アプリのマスター ビューで項目の説明が更新されていることを確認します。下へのドラッグ ジェスチャでアプリを更新し、編集内容がリモート サービス内で反映されていることを確認します。
 
-        - (void)viewWillAppear:(BOOL)animated {
-            if (self.editedItem && self.editedItemIndex >= 0) {
-                // Returning from the details view controller
-                NSDictionary *item = [self.todoService.items objectAtIndex:self.editedItemIndex];
+### <a name="conflict-handling-problem"></a>競合処理の問題
 
-                BOOL changed = ![item isEqualToDictionary:self.editedItem];
-                if (changed) {
-                    [self.tableView setUserInteractionEnabled:NO];
-
-                    // Change the appearance to look greyed out until we remove the item
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.editedItemIndex inSection:0];
-
-                    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-                    cell.textLabel.textColor = [UIColor grayColor];
-
-                    // Ask the todoService to update the item, and remove the row if it's been completed
-                    [self.todoService updateItem:self.editedItem atIndex:self.editedItemIndex completion:^(NSUInteger index) {
-                        if ([[self.editedItem objectForKey:@"complete"] boolValue]) {
-                            // Remove the row from the UITableView
-                            [self.tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                                                  withRowAnimation:UITableViewRowAnimationTop];
-                        } else {
-                            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                                  withRowAnimation:UITableViewRowAnimationAutomatic];
-                        }
-
-                        [self.tableView setUserInteractionEnabled:YES];
-
-                        self.editedItem = nil;
-                        self.editedItemIndex = -1;
-                    }];
-                } else {
-                    self.editedItem = nil;
-                    self.editedItemIndex = -1;
-                }
-            }
-        }
-
-4. ここで、アプリをテストします。ここまでで加えたすべての変更を反映してアプリが動作することを確認します。シミュレーターでアプリを実行します。項目を todo リストに追加し、それらをクリックします。項目の編集を試みて、元に戻ります。アプリのマスター ビューで項目の説明が更新されていることを確認します。下へのドラッグ ジェスチャでアプリを更新し、編集内容がクラウド内で反映されていることを確認します。
-
-### 競合処理の問題
-
-1. 2 台の異なるクライアントが、同時にデータの同じ部分の変更を試みると何が起きるかを調べます。以下に一覧した例では、項目 "Hello world 3" があります。これを一方のデバイスでは "Hello world 13" に変更し、もう一方のデバイスでは "Hello world 23" に変更します。
+1. 2 台の異なるクライアントが、同時にデータの同じ部分の変更を試みると何が起きるかを調べます。次の例の一覧では、「Mobile Services はかっこいい」という項目があります。たとえば、この項目を 1 つのデバイスでは「Mobile Services が大好きです」、別のデバイスでは「Azure が大好きです」に変更してみましょう。
 
       ![][conflict-handling-problem-1]
 
 2. 2 台の iOS デバイス、またはシミュレーターと 1 台の iOS デバイスの 2 か所でアプリを起動します。テスト用の物理デバイスがない場合は、シミュレーター内で 1 つのインスタンスを起動し、REST クライアントを使用して、PATCH 要求を Mobile Service へ送信します。PATCH 要求の URL には、Mobile Service の名前、todo 項目テーブルの名前、および編集中の todo 項目テーブルの ID が反映され、x-zumo-application ヘッダーはアプリケーション キーとなります。
 
-        PATCH https://todolist.azure-mobile.net/tables/todoitem/D265929E-B17B-42D1-8FAB-D0ADF26486FA?__systemproperties=__version
+        PATCH https://donnam-tutorials.azure-mobile.net/tables/todoitem/D265929E-B17B-42D1-8FAB-D0ADF26486FA?__systemproperties=__version
         Content-Type: application/json
-        x-zumo-application: shYOoDFdKhmzLEbnMQqPYrCLhwGOVA10
+        x-zumo-application: xuAdWVDcLuCNfkTvOfaqzCCSBVHqoy96
 
         {
-            "id": "D265929E-B17B-42D1-8FAB-D0ADF26486FA",
-            "text": "Hello world 23"
+            "id": "CBBF4464-E08A-47C9-B6FB-6DCB30ACCE7E",
+            "text": "I love Azure!"
         }
 
 3. ここで、アプリの 2 つのインスタンス内の項目を更新します。Xcode コードの出力ログにエラーが表示されます。
@@ -274,7 +247,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
   これは、**pullWithQuery:completion:** を呼び出したときの完了ブロックに起因しており、エラー パラメーターは nil ではないため、**NSLog** を介した出力にエラーが返されました。
 
-### 競合処理をサポートするための QSTodoService の更新
+### <a name="service-add-conflict-handling"></a>競合処理をサポートするための QSTodoService の更新
 
 1. クライアント内で競合を扱うことで、競合に対処する方法を決定します。これを実行するため、**MSSyncContextDelegate** プロトコルを実装します。**QSTodoService.h** と **QSTodoService.m** の両方で、**(QSTodoService *)defaultService;** 工場出荷時のメソッド宣言を以下のステートメントに変更します。これによって、パラメーターとして同期コンテキスト デリゲートを受信できます。
 
@@ -282,7 +255,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 2. **QSTodoService.m** で、以下に示すように、**init** 行を変更します。これも、パラメーターとして同期コンテキスト デリゲートを受信します。
 
-        -(QSTodoService *)initWithDelegate:(id)syncDelegate
+€
 
 3. **QSTodoService.m** で、**defaultServiceWithDelegate** 内の **init** 呼び出しを **initWithDelegate** に変更します。
 
@@ -292,7 +265,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
         self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:syncDelegate dataSource:store callback:nil];
 
-### 競合処理をサポートするための UI アラート ビュー ヘルパーの追加
+### <a name="add-alert-view"></a>競合処理をサポートするための UI アラート ビュー ヘルパーの追加
 
 1. 競合がある場合、ユーザーは、保持するバージョンを選択できます。
   * クライアント バージョンを保持する (サーバー上のバージョンを上書きする)
@@ -367,15 +340,15 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
         @end
 
-### 競合ハンドラーの Todo リスト ビュー コントローラーへの追加
+### <a name="add-conflict-handling"></a>競合ハンドラーの Todo リスト ビュー コントローラーへの追加
 
-1. **QSTodoListViewController.m** で、以下に示すように、**viewDidLoad** 内の **defaultService** への呼び出しを、**defaultServiceWithDelegate** への呼び出しに置き換えます。
+1. **QSTodoListViewController.m** で、**viewDidLoad** を編集します。**defaultService** への呼び出しを、**defaultServiceWithDelegate** への呼び出しに置き換えます。
 
         self.todoService = [QSTodoService defaultServiceWithDelegate:self];
 
-2. **QSTodoListViewController.h** で、**<MSSyncContextDelegate>** をインターフェイス宣言に追加し、**MSSyncContextDelegate** プロトコルを実装します。
+2. **QSTodoListViewController.h** で、**&lt;MSSyncContextDelegate&gt;** をインターフェイス宣言に追加し、**MSSyncContextDelegate** プロトコルを実装します。
 
-        @interface QSTodoListViewController : UITableViewController<MSSyncContextDelegate>
+        @interface QSTodoListViewController : UITableViewController<MSSyncContextDelegate, NSFetchedResultsControllerDelegate>
 
 3. **QSTodoListViewController.m** の最上部に次の import ステートメントを追加します。
 
@@ -426,9 +399,14 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
             }];
         }
 
-### アプリケーションをテストする
+### <a name="test-app"></a>アプリケーションのテスト
 
-競合するアプリケーションをテストします。稼働中のアプリケーションの 2 つの異なるインスタンス内の同じ項目を同時に編集します。上部からドラッグして、アプリ インスタンス内で更新ジェスチャを実行します。これで、変更を調整するためのプロンプトが表示されます。
+競合するアプリケーションをテストします。稼働中のアプリケーションの 2 つの異なるインスタンス内の同じ項目を同時に編集するか、またはアプリケーションと REST クライアントを使用します。 
+
+上部からドラッグして、アプリケーション インスタンス内で更新ジェスチャを実行します。これで、競合を調整するためのプロンプトが表示されます。
+
+![][conflict-ui]
+
 
 ### まとめ
 
@@ -442,15 +420,28 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 <!-- URLs. -->
 
-[add-todo-item-view-controller-1]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-1.png
-[add-todo-item-view-controller-2]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-2.png
+[アプリケーション プロジェクトを編集可能に更新]: #update-app
+[Todo リスト ビュー コントローラーの更新]: #update-list-view
+[Todo 項目ビューのコントローラーの追加]: #add-view-controller
+[Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加]: #add-segue
+[項目の詳細の Todo 項目ビュー コントローラーへの追加]: #add-item-details
+[編集内容を保存するためのサポートの追加]: #saving-edits
+[競合処理の問題]: #conflict-handling-problem
+[競合処理をサポートするための QSTodoService の更新]: #service-add-conflict-handling
+[競合処理をサポートするための UI アラート ビュー ヘルパーの追加]: #add-alert-view
+[競合ハンドラーの Todo リスト ビュー コントローラーへの追加]: #add-conflict-handling
+[アプリケーションのテスト]: #test-app
+
+
 [add-todo-item-view-controller-3]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-3.png
 [add-todo-item-view-controller-4]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-4.png
 [add-todo-item-view-controller-5]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-5.png
 [add-todo-item-view-controller-6]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-6.png
-[conflict-handling-problem-1]: ./media/mobile-services-ios-handling-conflicts-offline-data/conflict-handling-problem-1.png
-[update-todo-list-view-controller-1]: ./media/mobile-services-ios-handling-conflicts-offline-data/update-todo-list-view-controller-1.png
+[todo-list-view-controller-add-segue]: ./media/mobile-services-ios-handling-conflicts-offline-data/todo-list-view-controller-add-segue.png
 [update-todo-list-view-controller-2]: ./media/mobile-services-ios-handling-conflicts-offline-data/update-todo-list-view-controller-2.png
+[conflict-handling-problem-1]: ./media/mobile-services-ios-handling-conflicts-offline-data/conflict-handling-problem-1.png
+[conflict-ui]: ./media/mobile-services-ios-handling-conflicts-offline-data/conflict-ui.png
+
 
 [セグメント化コントロール]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISegmentedControl.html
 [コア データ モデル エディターのヘルプ]: https://developer.apple.com/library/mac/recipes/xcode_help-core_data_modeling_tool/Articles/about_cd_modeling_tool.html
@@ -466,4 +457,5 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
 [データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

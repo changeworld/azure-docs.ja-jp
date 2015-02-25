@@ -1,12 +1,26 @@
-﻿<properties urlDisplayName="Web w/ SQL + Git" pageTitle="SQL Database と Git を使用した PHP Web サイト - Azure チュートリアル" metaKeywords="" description="SQL Database にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" metaCanonical="" services="web-sites,sql-database" documentationCenter="PHP" title="Create a PHP website with a SQL Database and deploy using Git" authors="tomfitz" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+﻿<properties 
+	pageTitle="SQL Database と Git を使用した PHP Web サイト - Azure チュートリアル" 
+	description="SQL Database にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" 
+	services="web-sites, sql-database" 
+	documentationCenter="php" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="11/18/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="tomfitz"/>
 
 #SQL Database を使用する PHP Web サイトを作成して Git でデプロイする
 
 このチュートリアルでは、Azure SQL Database を使用する PHP Azure Website を作成する方法と、Git を使用してそれをデプロイする方法を説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP][install-drivers]、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。このチュートリアルを完了すると、Azure で動作する PHP-SQL データベース Web サイトが完成します。
 
-> [WACOM.NOTE]
+> [AZURE.NOTE]
 > <a href="http://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web プラットフォーム インストーラー</a>を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP、およびインターネット インフォメーション サービス (IIS) をインストールおよび構成できます。
 
 学習内容:
@@ -18,16 +32,16 @@
 
 ![Azure PHP Web Site][running-app]
 
-> [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効</a>にしたり、<a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップ</a>することもできます。
+> [AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップ</a>してください。
 > 
-> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
 ##Azure Website の作成と Git 発行の設定
 
 Azure Websites と SQL データベースを作成するには、次の手順に従います。
 
-1. [Azure の管理ポータル][management-portal]にログインします。
+1. [Azure 管理ポータル][management-portal] にログインします。
 2. ポータルの左下にある **[新規]** アイコンをクリックします。
 ![Create New Azure Web Site][new-website]
 
@@ -61,7 +75,7 @@ Azure Websites と SQL データベースを作成するには、次の手順に
 
 Azure Websites で実行されている SQL データベース インスタンスに接続するには、接続情報が必要になります。SQL データベースの接続情報を取得するには、次の手順に従います。
 
-1. Azure の管理ポータルで、**[リンク済みリソース]** をクリックし、目的のデータベース名をクリックします。
+1. Azure 管理ポータルで、**[リンク済みリソース]** をクリックし、目的のデータベース名をクリックします。
 
 	![Linked Resources][linked-resources]
 
@@ -69,27 +83,27 @@ Azure Websites で実行されている SQL データベース インスタン�
 
 	![Connection string][connection-string]
 	
-3. 表示されたダイアログの **[PHP]** セクションから、`サーバー`、`データベース`、および`ユーザー名`の値をメモします。
+3. 表示されたダイアログの **[PHP]** セクションから、 `SERVER`、 `DATABASE`、および  `USERNAME` の値をメモします。
 
 ##アプリケーションの作成とローカル テスト
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は SQL データベース インスタンスに保存されます。アプリケーションは、次の 2 つのファイルで構成されます (下にあるコードをコピーし、貼り付けて使用できます)。
 
-* **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
-* **createtable.php**: アプリケーション用の SQL データベース テーブルを作成します。このファイルは 1 度しか使用されません。
+* **index.php**:登録用のフォームと登録者情報が含まれたテーブルを表示します。
+* **createtable.php**:アプリケーション用の SQL データベース テーブルを作成します。このファイルは 1 度しか使用されません。
 
 アプリケーションをローカルで実行するには、次の手順に従います。これらの手順は、ローカル コンピューターに PHP、SQL Server Express、および Web サーバーがセットアップされており、[SQL Server 用 PDO 拡張機能][pdo-sqlsrv]が有効になっていることを前提としています。
 
-1. `registration` という SQL Server データベースを作成します。これには、`sqlcmd` コマンド プロンプトで次のコマンドを実行します。
+1.  `registration` という SQL Server データベースを作成します。これには、 `sqlcmd` コマンド プロンプトで次のコマンドを実行します。
 
 		>sqlcmd -S localhost\sqlexpress -U <local user name> -P <local password>
 		1> create database registration
 		2> GO	
 
 
-2. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に 2 つのファイル (`createtable.php` と `index.php`) を作成します。
+2. Web サーバーのルート ディレクトリで、 `registration` というフォルダーを作成し、その中に 2 つのファイル ( `createtable.php` と  `index.php`) を作成します。
 
-3. `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。このコードは、`registration` データベースに `registration_tbl` テーブルを作成するために使用します。
+3.  `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。このコードは、 `registration` データベースに  `registration_tbl` テーブルを作成するために使用します。
 
 		<?php
 		// DB connection info
@@ -114,9 +128,9 @@ Registration アプリケーションは、名前と電子メール アドレス
 		echo "<h3>Table created.</h3>";
 		?>
 
-	ここで、 <code>$user </code> と <code> $pwd </code> の値は、ローカルの SQL Server ユーザー名とパスワードに置き換える必要があります。
+	ここで、 <code>$user</code> と <code>$pwd</code> の値は、ローカルの SQL Server ユーザー名とパスワードに置き換える必要があります。
 
-4. Web ブラウザーを開いて、**http://localhost/registration/createtable.php** にアクセスします。このコードは、データベースに `registration_tbl` テーブルを作成するために使用します。
+4. Web ブラウザーを開いて、**http://localhost/registration/createtable.php** にアクセスします。このコードは、データベースに  `registration_tbl` テーブルを作成するために使用します。
 
 5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
 
@@ -167,7 +181,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 			die(var_dump($e));
 		}
 
-    ここでも、 <code>$user </code> と <code> $pwd </code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+    ここでも、 <code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
 7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
 
@@ -212,11 +226,11 @@ Registration アプリケーションは、名前と電子メール アドレス
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-これで、**http://localhost/registration/index.php** にアクセスしてアプリケーションをテストできます。
+これで、**http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
 
 ##アプリケーションの発行
 
-アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure Website に発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL データベースの接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、`createdatabase.php` ファイルと `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure Website に発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL データベース接続情報を取得する**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと  `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
 
 	// DB connection info
 	$host = "tcp:<value of SERVER>";
@@ -224,17 +238,17 @@ Registration アプリケーションは、名前と電子メール アドレス
 	$pwd = "<your password>";
 	$db = "<value of DATABASE>";
 
-> [WACOM.NOTE]
->  <code>$host </code>の SERVER の値は、 <code>tcp: </code>で始める必要があります。また、 <code>$user </code> には、USERNAME の値と '@'、さらに、該当するサーバー ID を連結した値を指定します。サーバー ID は、SERVER の値の先頭 10 文字です。
+> [AZURE.NOTE]
+> [[CO1] <code>$host</code>の SERVER の値は、 <code>tcp:</code>で始める必要があります。また、 <code>$user</code> には、USERNAME の値と '@'、さらに、該当するサーバー ID を連結した値を指定します。サーバー ID は、SERVER の値の先頭 10 文字です。
 
 
 これで、Git 発行を設定してアプリケーションを発行する準備ができました。
 
-> [WACOM.NOTE]
+> [AZURE.NOTE]
 > これらは、上の「Azure の Web サイトの作成と Git 発行の設定」セクションの最後でメモした手順と同じです。
 
 
-1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+1. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
 		git add .
@@ -244,8 +258,8 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	先ほど作成したパスワードを入力するように求められます。
 
-2. アプリケーション用の MySQL テーブルを作成するには、**http://[site name].azurewebsites.net/createtable.php** に移動します。
-3. アプリケーションの使用を開始するには、**http://[site name].azurewebsites.net/index.php** に移動します。
+2. アプリケーション用の MySQL テーブルを作成するには、**http://[サイト名].azurewebsites.net/createtable.php** に移動します。
+3. アプリケーションの使用を開始するには、**http://[サイト名].azurewebsites.net/index.php** に移動します。
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。 
 
@@ -254,7 +268,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 アプリケーションへの変更を発行するには、次のステップに従います。
 
 1. ローカルでアプリケーションへの変更を行います。
-2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+2. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git add .
 		git commit -m "comment describing changes"
@@ -262,7 +276,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	先ほど作成したパスワードを入力するように求められます。
 
-3. 変更内容を確認できるように、**http://[site name].azurewebsites.net/index.php** に移動します。
+3. 変更内容を確認できるように、**http://[サイト名].azurewebsites.net/index.php** に移動します。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-SQLExpress]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
@@ -287,4 +301,6 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
 [where-is-code]: ./media/web-sites-php-sql-database-deploy-use-git/setupgit.png
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->
+[CO1]please pay attention during post edit.

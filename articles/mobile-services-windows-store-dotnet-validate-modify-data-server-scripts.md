@@ -1,16 +1,16 @@
-﻿<properties urlDisplayName="Validate and Modify Data" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="サーバー スクリプトを使用して、Azure Mobile Services で Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Windows ストア) | モバイル デベロッパー センター" description="サーバー スクリプトを使用して、Azure Mobile Services で Windows ストア アプリのデータを検証、変更、強化する方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
 
 # サーバー スクリプトを使用したモバイル サービスのデータの検証および変更
 
-[WACOM.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように Windows ストア アプリも更新します。</p>
+<p>このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように Windows ストア アプリケーションも更新します。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Validate-and-Modify-Data-with-Server-Scripts-in-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/validate-data-windows-store-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Validate-and-Modify-Data-with-Server-Scripts-in-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">09:54:00</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Validate-and-Modify-Data-with-Server-Scripts-in-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a><a style="background-image: url('/media/devcenter/mobile/videos/validate-data-windows-store-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Validate-and-Modify-Data-with-Server-Scripts-in-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">9:54</span></div>
 </div>
 
 このチュートリアルでは、次の基本的な手順について説明します。
@@ -26,11 +26,11 @@
 
 ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1.  [Azure の管理ポータル]にログインし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
+1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
 
    	![][0]
 
-2.  **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+2. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][1]
 
@@ -38,7 +38,7 @@
 
    	![][2]
 
-4. 既存のスクリプトを次の関数に置き換え、[保存]** をクリックします。**
+4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -48,11 +48,9 @@
             }
         }
 
-    このスクリプトは、**TodoItem.text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute**  メソッドが呼び出されて挿入を完了します。
+    このスクリプトは、**TodoItem.text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>登録したスクリプトを  <strong>[スクリプト]</strong>  タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>
+    > [AZURE.TIP] 登録したスクリプトを **[スクリプト]** タブで削除できます。**[クリア]** をクリックし、**[保存]** をクリックします。
 
 ## <a name="update-client-validation"></a>クライアントの更新
 
@@ -60,11 +58,11 @@
 
 1. Visual Studio 2012 Express for Windows 8 で、[データの使用]に関するチュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. **F5** キーを押してアプリケーションを実行し、**[Insert a TodoItem]** ボックスに 10 文字を超える長さのテキストを入力して、**[Save]** をクリックします。
+2. **F5** キーを押してアプリケーションを実行し、**[TodoItem の挿入]** ボックスに 10 文字を超える長さのテキストを入力して、**[保存]** をクリックします。
 
    	モバイル サービスから返された応答 400 (正しくない要求) の結果として、処理されない **MobileServiceInvalidOperationException** が発生します。	
 
-6. 	MainPage.xaml.cs ファイルを開き、次の **using**  ステートメントを追加します。
+6. 	MainPage.xaml.cs ファイルを開き、次の **using** ステートメントを追加します。
 
         using Windows.UI.Popups;
 
@@ -97,16 +95,15 @@
 前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
 
-<div class="dev-callout"><b>注</b>
-<p>ここで紹介する <b>createdAt</b> タイムスタンプ プロパティは、現在は冗長になっています。モバイル サービスによって、各テーブルに対応する <b>__createdAt</b> システム プロパティが自動的に作成されます。このシステム プロパティをアプリケーションで利用するには、単純に次のメンバーを TodoItem クラスに追加します。</p>
-<pre><code>
+> [AZURE.NOTE] ここで紹介する **createdAt** タイムスタンプ プロパティは、現在は冗長になっています。Mobile Services によって、各テーブルに対応する **__createdAt** システム プロパティが自動的に作成されます。このシステム プロパティをアプリケーションで利用するには、単純に次のメンバーを TodoItem クラスに追加します。  
+> 
+`````
 [JsonProperty(PropertyName = "__createdAt")]
 public DateTime createdAt { set; get; }
-</code></pre>
-</div>
+`````
 
 
-1. 管理ポータル**の [スクリプト]** タブで、現在の[] **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **Insert** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -119,9 +116,7 @@ public DateTime createdAt { set; get; }
 
     この関数は、**request**.**execute** の呼び出しで、オブジェクトへの挿入前に、新しい **createdAt** タイムスタンプ プロパティをそのオブジェクトに追加することにより、前の挿入スクリプトを強化しています。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>createdAt</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。</p>
-    </div>
+    > [AZURE.IMPORTANT] 挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点で Mobile Services によって **TodoItem** テーブルに **createdAt** 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。
 
 2. Visual Studio で、**F5** キーを押してアプリケーションを実行し、**[Insert a TodoItem]** に 10 文字未満のテキストを入力して、**[Save]** をクリックします。
 
@@ -155,11 +150,9 @@ public DateTime createdAt { set; get; }
 	
     新しいクラス定義には、null 値を許容する DateTime 型として新しいタイムスタンプ プロパティが含まれます。
   
-    <div class="dev-callout"><b>注</b>
-	<p> <code>DataMemberAttribute</code> は、アプリケーション内の新しい <code>CreatedAt</code> プロパティを、TodoItem テーブルに定義された (大文字と小文字が異なる) <code>createdAt</code> 列にマップするように、クライアントに指示します。この属性を使用することにより、アプリケーションでは、SQL データベース内の列名と異なるプロパティ名をオブジェクトに対して使用することができます。この属性がなければ、大文字と小文字が異なるため、エラーが発生します。</p>
-    </div>
+    > [AZURE.NOTE]  `DataMemberAttribute` は、アプリケーション内の新しい `CreatedAt` プロパティを、TodoItem テーブルで定義された (大文字と小文字が異なる) `createdAt` 列にマップするように、クライアントに指示します。この属性を使用することにより、アプリケーションでは、SQL データベース内の列名と異なるプロパティ名をオブジェクトに対して使用することができます。この属性がなければ、大文字と小文字が異なるため、エラーが発生します。
 
-5. MainPage.xaml ファイル内の **CheckBoxComplete** 要素のすぐ下に、次の XAML 要素を追加します。	      
+5. MainPage.xaml ファイル内の **CheckBoxComplete** 要素のすぐ下に、次の XAML 要素を追加します。
 	      
         <TextBlock Name="WhenCreated" Text="{Binding CreatedAt}" VerticalAlignment="Center"/>
 
@@ -191,7 +184,7 @@ public DateTime createdAt { set; get; }
 
 これで、データの使用に関するチュートリアルは終了です。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
 
@@ -206,7 +199,7 @@ public DateTime createdAt { set; get; }
 * [モバイル サービスのサーバー スクリプト リファレンス]
   <br/>サーバー スクリプトの登録および使用について説明します。
 
-* [モバイル サービス .NET の使用方法の概念リファレンス]
+* [Mobile Services .NET の使用方法の概念リファレンス]
   <br/>.NET で Mobile Services を使用する方法について説明します。
 
 <!-- Anchors. -->
@@ -226,7 +219,7 @@ public DateTime createdAt { set; get; }
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet
@@ -234,4 +227,7 @@ public DateTime createdAt { set; get; }
 
 [管理ポータル]: https://manage.windowsazure.com/
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+
+
+<!--HONumber=42-->

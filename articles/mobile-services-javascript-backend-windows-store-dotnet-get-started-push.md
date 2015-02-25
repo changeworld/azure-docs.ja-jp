@@ -1,16 +1,16 @@
-﻿<properties pageTitle="プッシュ通知の使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services と Notification Hubs を使用して Windows ストア アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor=""  />
+﻿<properties pageTitle="プッシュ通知の使用 (Windows ストア) | モバイル デベロッパー センター" description="Azure Mobile Services と Notification Hubs を使用して Windows ストア アプリにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="glenga"/>
 
 
-# Mobile Services アプリケーションにプッシュ通知を追加する
+# Mobile Services アプリへのプッシュ通知の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-push-legacy](../includes/mobile-services-selector-get-started-push-legacy.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push-legacy](../includes/mobile-services-selector-get-started-push-legacy.md)]
 
 このトピックでは、Azure Mobile Services を使用して Windows アプリケーションにプッシュ通知を送信する方法について説明します。 
 このチュートリアルでは、クイック スタート プロジェクトへの Azure 通知ハブを使用したプッシュ通知を有効にします。完了すると、モバイル サービスは、レコードが挿入されるたびに通知ハブを使用してプッシュ通知を送信します。作成する通知ハブはモバイル サービスでは無料で、モバイル サービスから独立して管理することができ、他のアプリケーションおよびサービスで使用できます。
 
->[WACOM.NOTE]このトピックでは Windows ストア プロジェクトで Mobile Services を使用して、プッシュ通知を手動で構成する方法について説明します。Visual Studio 2013 を使用して同じプッシュ通知を Windows ストア プロジェクトに追加できます。詳細については、このチュートリアルの[ユニバーサル Windows アプリ バージョン](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push/) を参照してください。 
+>[AZURE.NOTE]このトピックでは Windows ストア プロジェクトで Mobile Services を使用して、プッシュ通知を手動で構成する方法について説明します。Visual Studio 2013 を使用して同じプッシュ通知を Windows ストア プロジェクトに追加できます。詳細については、このチュートリアルの[ユニバーサル Windows アプリ バージョン](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push/)を参照してください。 
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
@@ -21,19 +21,19 @@
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[モバイル サービスでのデータの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。モバイル サービスが接続されていない場合は、プッシュ通知の追加ウィザードによってこの接続が作成されます。 
 
->[WACOM.NOTE]このトピックは Windows Phone ストア 8.1 アプリをサポートします。プッシュ通知を Windows Phone 8 または Windows Phone Silverlight 8.1 アプリに追加するには、このバージョンの「[Mobile Services アプリへのプッシュ通知の追加](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)」を参照してください。
+>[AZURE.NOTE]このトピックは Windows Phone ストア 8.1 アプリをサポートします。プッシュ通知を Windows Phone 8 アプリまたは Windows Phone Silverlight 8.1 アプリに追加するには、こちらのバージョンの「[Mobile Services アプリへのプッシュ通知の追加](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)」を参照してください。
 
-##<a id="register"></a> アプリケーションを WNS に登録し、モバイル サービスを構成する
+##<a id="register"></a>アプリケーションを WNS に登録し、Mobile Services を構成する
 
-[WACOM.INCLUDE [mobile-services-notification-hubs-register-windows-store-app](../includes/mobile-services-notification-hubs-register-windows-store-app.md)]
+[AZURE.INCLUDE [mobile-services-notification-hubs-register-windows-store-app](../includes/mobile-services-notification-hubs-register-windows-store-app.md)]
 
-これで、WNS および通知ハブと連携するようにモバイル サービスとアプリケーションが構成されました。次に、ユニバーサル Windows ストア アプリを更新して通知に登録します。
+これで、WNS および Notification Hubs と連携するようにモバイル サービスとアプリケーションが構成されました。次に、ユニバーサル Windows ストア アプリを更新して通知に登録します。
 
-##<a id="update-app"></a> アプリケーションを更新して通知に登録する
+##<a id="update-app"></a>アプリケーションを更新して通知に登録する
 
 アプリケーションがプッシュ通知を受信するには、通知チャネルを登録する必要があります。
 
-1. Visual Studio で App.xaml.cs ファイルを開き、次の `using` ステートメントを追加します。
+1. Visual Studio で App.xaml.cs ファイルを開き、次の  `using` ステートメントを追加します。
 
         using Windows.Networking.PushNotifications;
 		using Windows.UI.Popups;
@@ -67,17 +67,17 @@
 
    	これにより、アプリケーションでトースト通知の使用が有効になります。ダウンロードしたクイック スタート プロジェクトでは、トースト通知があらかじめ有効になっています。
 
-##<a id="update-scripts"></a> サーバー スクリプトを更新してプッシュ通知を送信する
+##<a id="update-scripts"></a>サーバー スクリプトを更新してプッシュ通知を送信する
 
-[WACOM.INCLUDE [mobile-services-javascript-update-script-notification-hubs](../includes/mobile-services-javascript-update-script-notification-hubs.md)]
+[AZURE.INCLUDE [mobile-services-javascript-update-script-notification-hubs](../includes/mobile-services-javascript-update-script-notification-hubs.md)]
 
-##<a id="test"></a> アプリケーションでプッシュ通知をテストする
+##<a id="test"></a>アプリケーションでプッシュ通知をテストする
 
-[WACOM.INCLUDE [mobile-services-windows-store-test-push](../includes/mobile-services-windows-store-test-push.md)]
+[AZURE.INCLUDE [mobile-services-windows-store-test-push](../includes/mobile-services-windows-store-test-push.md)]
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Windows ストア アプリでモバイル サービスおよび通知ハブを使用してプッシュ通知を送信できるようにするための基本について説明しました。次に、次のチュートリアルのいずれかを完了します。
+このチュートリアルでは、Windows ストア アプリで Mobile Services および Notification Hubs を使用してプッシュ通知を送信できるようにするための基本について説明しました。次に、次のチュートリアルのいずれかを完了します。
 
 + [認証されたユーザーへのプッシュ通知の送信]
 	<br/>タグを使用してモバイル サービスから認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
@@ -99,11 +99,11 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 * [Notification Hubs とは]
   <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
-* [通知ハブのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
+* [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
   </br>Notification Hubs ソリューションのトラブルシューティングおよびデバッグのガイダンスについて説明します。 
 
 * [Mobile Services .NET の使用方法の概念リファレンス]
-  <br/>.NET でモバイル サービスを使用する方法について説明します
+  <br/>.NET で Mobile Services を使用する方法について説明します。
 
 * [モバイル サービスのサーバー スクリプト リファレンス]
   <br/>モバイル サービスでビジネス ロジックを実装する方法を説明します。
@@ -119,8 +119,8 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 <!-- URLs. -->
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started
 [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users
 
@@ -134,4 +134,5 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
 [通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

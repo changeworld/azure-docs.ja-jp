@@ -1,10 +1,24 @@
-﻿<properties urlDisplayName="Get Started with Authentication (Xamarin.Android)" pageTitle="認証の使用 (Xamarin.Android) - Mobile Services の使用" metaKeywords="アプリケーションを登録する Azure, Azure 認証, アプリケーション認証, モバイル サービスの認証, Mobile Services Xamarin.Android" description="Xamarin.Android 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with authentication in Mobile Services" services="mobile-services" documentationCenter="Mobile" manager="dwrede" authors="donnam"/>
+<properties 
+	pageTitle="認証の使用 (Xamarin.Android) - Mobile Services" 
+	description="Xamarin.Android 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="xamarin" 
+	manager="dwrede" 
+	authors="lindydonna" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="donnam" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-android" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/23/2014" 
+	ms.author="donnam"/>
 
-# Mobile Services アプリへの認証の追加
+# モバイル サービス アプリケーションの認証を追加する
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
 <p>このトピックでは、Xamarin.Android アプリから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。</p>
 
@@ -20,12 +34,12 @@
 
 <h2><a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する</h2>
 
-[WACOM.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
+[AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
 <h2><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する</h2>
 
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
+[AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
 
 
 3. Eclipse で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。 
@@ -38,7 +52,7 @@
 
 <h2><a name="add-authentication"></a>アプリケーションに認証を追加する</h2>
 
-1. **ToDoActivity** クラスに次のメソッドを追加します。
+1. **TodoActivity** クラスに次のプロパティを追加します。
 
 			private MobileServiceUser user;
 
@@ -59,17 +73,15 @@
 
     これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Microsoft アカウント ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    <div class="dev-callout"><b>注</b>
-	<p>Microsoft 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡される値を、<i>Facebook</i>、<i>Google</i>、<i>Twitter</i>、<i>WindowsAzureActiveDirectory</i>.</p> のいずれかにします。
-    </div>
+    > [AZURE.NOTE] Microsoft 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡される値を_Facebook_、_Google_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかにします。
 
-3. **OnCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
+3. **OnCreate** メソッドで、 `MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
 		await Authenticate();
 
 	この呼び出しは、認証プロセスを開始し、認証プロセスを非同期に待機します。
 
-4. **OnCreate** メソッド内の `await Authenticate();` の後にある残りのコードを、新しい **CreateTable** メソッドに移動します。次のようになります。
+4. **OnCreate** メソッド内の `await Authenticate();` の後の残りのコードを新しい **CreateTable** メソッドに移動し、次のようにします。
 
 	        private async Task CreateTable()
 	        {
@@ -92,7 +104,7 @@
 		await CreateTable();
 
 
-6. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを開始し、選択した ID プロバイダーでサインインします。 
+6. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。 
 
    	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
@@ -101,7 +113,7 @@
 
 ## <a name="next-steps"></a>次のステップ
 
-次の[スクリプトを使用したユーザーの認証に関するチュートリアル]では、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。 
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。 
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
@@ -119,15 +131,18 @@
 
 <!-- URLs. -->
 
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android
-[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
+[スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
+
+
+<!--HONumber=42-->

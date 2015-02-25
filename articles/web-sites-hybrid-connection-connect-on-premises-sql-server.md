@@ -1,28 +1,42 @@
-﻿<properties title="Hybrid Connections Step-by-Step: Connect to on-premises SQL Server from an Azure website" pageTitle="ハイブリッド接続を使用してAzure の Web サイトから内部設置型の SQL Server に接続する" description="Microsoft Azure で Web サイトを作成し、それを内部設置型の SQL Server データベースに接続します。" metaKeywords="" services="web-sites" solutions="web" documentationCenter="" authors="cephalin" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="ハイブリッド接続を使用してAzure の Web サイトから内部設置型の SQL Server に接続する" 
+	description="Microsoft Azure で Web サイトを作成し、それを内部設置型の SQL Server データベースに接続します。" 
+	services="web-sites" 
+	documentationCenter="" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/24/2014" ms.author="cephalin" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="cephalin"/>
 
 #ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する
 
 ##はじめに##
 ハイブリッド接続を使用することで、Microsoft Azure の Web サイトを、静的 TCP ポートを使用する内部設置型のリソースに接続できます。サポートされているリソースには、Microsoft SQL Server、MySQL、HTTP Web APIs、Mobile Services、およびほとんどのカスタム Web サービスが含まれます。 
 
-このチュートリアルでは、Azure プレビュー ポータルでの Web サイトの作成方法、新しいハイブリッド接続機能を使用したローカルの内部設置型の SQL Server データベースへの Web サイトの接続方法、ハイブリッド接続を使用する単純な ASP.NET の Web アプリケーションの作成方法、および Azure の Web サイトへのアプリケーションのデプロイ方法について学習します。完成した Azure の Web サイトは、ユーザーの資格情報を内部設置型のメンバーシップ データベースに保存します。このチュートリアルは、Azure または ASP.NET を使用した経験がない読者を対象に作成されています。
+このチュートリアルでは、Azure プレビュー ポータルでの Web サイトの作成方法、新しいハイブリッド接続機能を使用したローカルの内部設置型の SQL Server データベースへの Web サイトの接続方法、ハイブリッド接続を使用する単純な ASP.NET の Web アプリケーションの作成方法、および Azure の Web サイトへのアプリケーションのデプロイ方法について説明します。完成した Azure の Web サイトは、ユーザーの資格情報を内部設置型のメンバーシップ データベースに保存します。このチュートリアルは、Azure または ASP.NET を使用した経験がない読者を対象に作成されています。
 
-> [WACOM.NOTE] ハイブリッド接続機能の Websites 部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ利用できます。BizTalk Services で接続を作成するには、「[ハイブリッド接続の概要](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。  
+> [AZURE.NOTE] ハイブリッド接続機能の Web サイト部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」をご覧ください。  
 
 ##前提条件##
 このチュートリアルを完了するには、以下の製品が必要です。すべて無料版を利用できるため、Azure の開発を完全に無料で始めることができます。
 
-- **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/)」を参照してください。 
+- **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/)」をご覧ください。
 
-- **Visual Studio 2013** - Visual Studio 2013 の無料試用版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」を参照してください。これをインストールしてから、次に進みます。
+- **Visual Studio 2013** - Visual Studio 2013 の無料試用版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」をご覧ください。これをインストールしてから、次に進みます。
 
-- **Microsoft .NET Framework 3.5 Service Pack 1** - オペレーティング システムが Windows 8.1、Windows Server 2012 R2、Windows 8、Windows Server 2012、Windows 7、または Windows Server 2008 R2 の場合は、[コントロール パネル]、[プログラムと機能]、[Windows の機能の有効化または無効化] の順に選択してこれを実行できます。そうでない場合は、[Microsoft Download Center](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=22)からダウンロードできます。
+- **Microsoft .NET Framework 3.5 Service Pack 1** - オペレーティング システムが Windows 8.1、Windows Server 2012 R2、Windows 8、Windows Server 2012、Windows 7、または Windows Server 2008 R2 の場合は、[コントロール パネル]、[プログラムと機能]、[Windows の機能の有効化または無効化] の順に選択してこれを実行できます。そうでない場合は、[Microsoft Download Center](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=22) からダウンロードできます。
 
-- **SQL Server 2014 Express with Tools** - [Microsoft Web プラットフォーム データベースのページ](http://www.microsoft.com/web/platform/database.aspx)で Microsoft SQL Server Express の無料版をダウンロードします。**Express** (LocalDB ではない) 版を選択します。**Express with Tools** 版には、このチュートリアルで使用する SQL Server Management Studio が含まれています。
+- **SQL Server 2014 Express with Tools** - [Microsoft Web プラットフォーム データベースのページ](http://www.microsoft.com/web/platform/database.aspx) で Microsoft SQL Server Express を無料でダウンロードします。**Express** (LocalDB ではない) 版を選択します。**Express with Tools** 版には、このチュートリアルで使用する SQL Server Management Studio が含まれています。
 
-- **SQL Server Management Studio Express** - これは、上記の SQL Server 2014 Express with Tools のダウンロードに含まれていますが、個別にインストールする必要がある場合は、[SQL Server Express のダウンロードのページ](http://www.microsoft.com/web/platform/database.aspx)からダウンロードしてインストールすることができます。
+- **SQL Server Management Studio Express** - これは、上記の SQL Server 2014 Express with Tools のダウンロードに含まれていますが、個別にインストールする必要がある場合は、[SQL Server Express のダウンロードのページ](http://www.microsoft.com/web/platform/database.aspx)でダウンロードしてインストールできます。
 
 このチュートリアルでは、Azure サブスクリプションを持っている、Visual Studio 2013 をインストールしている、および .NET Framework 3.5 をインストールしているか有効にしていると想定しています。このチュートリアルでは、Azure のハイブリッド接続機能 (静的 TCP ポートの既定のインスタンス) を使用する構成に SQL Server 2014 Express をインストールする方法を説明します。SQL Server をインストールしていない場合は、チュートリアルを開始する前に、上記の場所から SQL Server 2014 Express with Tools をダウンロードしてください。
 
@@ -40,28 +54,28 @@
     </tr>
     <tr>
         <td>80</td>
-        <td><strong>必須</strong> 証明書の検証用およびオプションでデータ接続用の HTTP ポート。</td>
+        <td>証明書の検証用およびオプションでデータ接続用の HTTP ポートに<strong>必要</strong>。</td>
     </tr>
     <tr>
         <td>443</td>
-        <td><strong>省略可能。</strong> データ接続用。443 への送信接続ができない場合は、TCP ポート 80 を使用します。</td>
+        <td>データ接続の場合は<strong>省略可能</strong>。443 への送信接続ができない場合は、TCP ポート 80 を使用します。</td>
     </tr>
 	<tr>
         <td>5671 と 9352</td>
-        <td><strong>推奨。</strong> ただし、データ接続の場合は省略可能。このモードでは通常、スループットが高くなります。これらのポートへの送信接続ができない場合は、TCP ポート 443 を使用します。</td>
+        <td>データ接続には<strong>推奨</strong>しますが、省略することもも可能です。このモードでは通常、スループットが高くなります。これらのポートへの送信接続ができない場合は、TCP ポート 443 を使用します。</td>
 	</tr>
 </table>
 
-- 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
+- 内部設置型のリソースの  *hostname*:*portnumber* に到達できること。 
 
 この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
-上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[内部設置型の SQL Server を作成する](#CreateSQLDB)」から開始できます。
+上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[内部設置型の SQL Server を作成する]」で開始できます(#CreateSQLDB)。
 
 ##この記事の内容##
 [A. SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](#InstallSQL)
 
-[B Azure プレビュー ポータルで Web サイトを作成する](#CreateSite)
+[B. Azure プレビュー ポータルで Web サイトを作成する](#CreateSite)
 
 [C. ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)
 
@@ -82,7 +96,7 @@
 	
 	![SQL Server Install][SQLServerInstall]
 	
-2. **[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックします。指示に従って、**[インスタンスの構成]** ページが表示されるまで、既定の選択と設定を使用します。
+2. **[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** を選択します。指示に従って、**[インスタンスの構成]** ページが表示されるまで、既定の選択と設定を使用します。
 	
 3. **[インスタンスの構成]** ページで、**[既定のインスタンス]** を選択します。
 	
@@ -92,7 +106,7 @@
 	
 4. **[サーバーの構成]** ページでは既定値をそのまま使用します。
 	
-5. **[データベース エンジンの構成]** ページの **[認証モード]**, で、**[混合モード (SQL Server 認証と Windows 認証)]**を選択して、パスワードを入力します。
+5. **[データベース エンジンの構成]** ページの **[認証モード]** で、**[混合モード (SQL Server 認証と Windows 認証)]** を選択して、パスワードを入力します。
 	
 	![Choose Mixed Mode][ChooseMixedMode]
 	
@@ -101,17 +115,17 @@
 6. ウィザードの残りの手順を実行し、インストールを完了します。
 
 ###TCP/IP を有効にする###
-TCP/IP を有効にするには、SQL Server Express をインストールした際にインストールされた SQL Server 構成マネージャーを使用します。次に進む前に、「[SQL Server の TCP/IP ネットワーク プロトコルの有効化](http://technet.microsoft.com/ja-jp/library/hh231672%28v=sql.110%29.aspx) 」の手順に従ってください。
+TCP/IP を有効にするには、SQL Server Express をインストールした際にインストールされた SQL Server 構成マネージャーを使用します。次に進む前に、「[SQL Server の TCP/IP ネットワーク プロトコルの有効化](http://technet.microsoft.com/ja-jp/library/hh231672%28v=sql.110%29.aspx)」の手順に従ってください。
 
 <a name="CreateSQLDB"></a>
 ###内部設置型の SQL Server データベースを作成する###
 
 Visual Studio Web アプリケーションには、Azure がアクセスできるメンバーシップ データベースが必要です。これには、(既定で MVC テンプレートが使用する LocalDB データベースではなく) SQL Server または SQL Server Express データベースが必要なため、次にメンバーシップ データベースを作成します。 
 
-1. SQL Server Management Studio で、インストールした SQL Server に接続します(**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの **[オブジェクト エクスプローラー] ** に移動し、**[接続]**,、次に **[データベース エンジン]** をクリックします)。  	
+1. SQL Server Management Studio で、インストールした SQL Server に接続します(**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの **[オブジェクト エクスプローラー]** に移動し、**[接続]**、次に **[データベース エンジン]** をクリックします。) 	
 	![Connect to Server][SSMSConnectToServer]
 	
-	**[サーバーの種類]** には、**[データベース エンジン]** を選択します。**[サーバー名]** には、**localhost ** 、または使用しているコンピューターの名前を使用します。**[SQL Server 認証]** を選択し、前に作成したユーザー名とパスワードでログインします。 
+	**[サーバーの種類]** には、**[データベース エンジン]** を選択します。**[サーバー名]** には、**[localhost]**、または使用しているコンピューターの名前を使用します。**[SQL Server 認証]** を選択し、前に作成したユーザー名とパスワードでログインします。 
 	
 2. SQL Server Management Studio を使用して新しいデータベースを作成するには、オブジェクト エクスプローラーで **[データベース]** を右クリックしてから、**[新しいデータベース]** をクリックします。
 	
@@ -121,7 +135,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![Provide database name][SSMSprovideDBname]
 	
-	この時点では、データベースに変更を加えることはできないことに注意してください。メンバーシップ情報は、後で Web アプリケーションを実行すると、自動的に追加されます。
+	この時点では、データベースに変更を加えることはできないことにご注意ください。メンバーシップ情報は、後で Web アプリケーションを実行すると、自動的に追加されます。
 	
 4. オブジェクト エクスプローラーで、**[データベース]** を展開すると、メンバーシップ データベースが作成されたことが示されます。
 	
@@ -130,7 +144,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 <a name="CreateSite"></a>
 ## B. Azure プレビュー ポータルで Web サイトを作成する ##
 
-> [WACOM.NOTE] このチュートリアルを使用するために、既に Azure プレビュー ポータルで Web サイトを作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC) 」から開始してください。
+> [AZURE.NOTE] このチュートリアルを使用するために、既に Azure プレビュー ポータルで Web サイトを作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する]」(#CreateHC) から開始してください。
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)の左下端の **[新規作成]** をクリックして、**[Web サイト]** を選択します。
 	
@@ -142,7 +156,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![Website name][WebsiteCreationBlade]
 	
-3. しばらくすると、Web サイトが作成され、Web サイトのブレードが表示されます。ブレードは縦方向にスクロールできるダッシュボードで、サイトを管理することができます。
+3. しばらくすると、Web サイトが作成され、Web サイトのブレードが表示されます。ブレードは縦方向にスクロールできるダッシュボードで、サイトを管理できます。
 	
 	![Website running][WebSiteRunningBlade]
 	
@@ -165,18 +179,18 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![Add a hybrid connnection][CreateHCAddHC]
 	
-3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** があらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
+3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** オプションがあらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
 	
 	![Create a hybrid connection][TwinCreateHCBlades]
 	
-	**[ハイブリッド接続の作成]** ブレードで、次の手順を実行します。
+	**[ハイブリッド接続の作成] **ブレードで、次の手順を実行します。
 	- **[名前]** に、接続の名前を入力します。
 	- **[ホスト名]** には、SQL Server ホスト コンピューターのコンピューター名を入力します。
 	- **[ポート]** には、1433 (SQL Server の既定のポート) を入力します。
-	- **[Biz Talk サービス]** をクリックします。
+	- **[BizTalk サービス]** をクリックします。
 
 
-4. **[BizTalk サービスの作成]** ブレードが開きます。BizTalk Services の名前を入力し、**[OK]** をクリックします。
+4. **[BizTalk サービスの作成]** ブレードが開きます。BizTalk サービスの名前を入力し、**[OK]** をクリックします。
 	
 	![Create BizTalk service][CreateHCCreateBTS]
 	
@@ -190,7 +204,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![Success notification][CreateHCSuccessNotification]
 	
-7. Web サイト ブレードに、ハイブリッド接続が 1 つ作成されたことを示す**[ハイブリッド接続]** アイコンが表示されます。
+7. Web サイト ブレードに、ハイブリッド接続が 1 つ作成されたことを示す **[ハイブリッド接続]** アイコンが表示されます。
 	
 	![One hybrid connection created][CreateHCOneConnectionCreated]
 	
@@ -253,7 +267,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![Choose ASP.NET Web Application][HCVSChooseASPNET]
 	
-3. **[新しい ASP.NET プロジェクト]** ダイアログで、**[MVC]** を選択し、**[OK]**をクリックします。
+3. **[新しい ASP.NET プロジェクト]** ダイアログで、**[MVC]** を選択し、**[OK]** をクリックします。
 	
 	![Choose MVC][HCVSChooseMVC]
 	
@@ -265,7 +279,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 この手順では、ローカル SQL Server Express データベースの場所をアプリケーションに伝える接続文字列を編集します。接続文字列は、アプリケーションの Web.config ファイルにあり、アプリケーションの構成情報が含まれています。 
 
-> [WACOM.NOTE] アプリケーションで、Visual Studio の既定の LocalDB ではなく、SQL Server Express で作成したデータベースを使用するためには、プロジェクトを実行する前にこの手順を完了することが重要です。
+> [AZURE.NOTE] アプリケーションで、Visual Studio の既定の LocalDB ではなく、SQL Server Express で作成したデータベースを使用するためには、プロジェクトを実行する前にこの手順を完了することが重要です。
 
 1. ソリューション エクスプローラーで、Web.config ファイルをダブルクリックします。
 	
@@ -277,7 +291,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	接続文字列を作成する際には、次の事項に留意してください。
 	
-	- 既定のインスタンスではなく、名前付きインスタンス (YourServer\SQLEXPRESS など) に接続している場合は、静的ポートを使用するように SQL Server を構成する必要があります。静的ポートの構成の詳細については、「[特定のポートでリッスンするように SQL Server を構成する方法](http://support.microsoft.com/kb/823938)」を参照してください。既定では、名前付きインスタンスは動的ポートと UDP を使用します。これはハイブリッド接続ではサポートされません。 
+	- 既定のインスタンスではなく、名前付きインスタンス (YourServer\SQLEXPRESS など) に接続している場合は、静的ポートを使用するように SQL Server を構成する必要があります。静的ポートの構成の詳細については、「[特定のポートでリッスンするように SQL Server を構成する方法](http://support.microsoft.com/kb/823938)」をご覧ください。既定では、名前付きインスタンスは動的ポートと UDP を使用します。これはハイブリッド接続ではサポートされません。 
 	
 	- ポート (例に示すように既定では 1433) を接続文字列に指定することをお勧めします。これにより、ローカル SQL Server で TCP が有効になり、正しいポートが使用されます。 
 	
@@ -336,7 +350,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![Click Publish][HCVSClickPublish]
 	
-	**[発行]**をクリックします。
+	**[発行]** をクリックします。
 	
 	発行が完了すると、ブラウザーが起動し、見慣れた Web サイトが表示されますが、Azure クラウドでライブになっているという点が違います。
 
@@ -372,7 +386,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 [ハイブリッド接続の Web サイト](http://azure.microsoft.com/ja-jp/services/biztalk-services/)
 
-[BizTalk Services:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk サービス:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
 
 [シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする (チャネル 9 ビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
@@ -434,4 +448,5 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 [HCTestSSMSTree]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

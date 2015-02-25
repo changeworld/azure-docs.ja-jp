@@ -1,47 +1,51 @@
-<properties title="How To Change the Drive Letter of the Windows Temporary Disk" pageTitle="How To Change the Drive Letter of the Windows Temporary Disk" description="Describes how to remap the temporary disk on a Windows VM in Azure" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
+<properties pageTitle="Windows 一時ディスクのドライブ文字を変更する方法" description="Azure の Windows VM で一時ディスクを再マップする方法について説明します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/15/2015" ms.author="kathydav"/>
 
-# Windows 一時ディスクのドライブ文字を変更する方法
+#Windows 一時ディスクのドライブ文字を変更する方法
 
-D ドライブを他の目的に使用する必要がある場合は、一時ディスクのドライブ文字を変更できます。この変更は、常時 D ドライブをストレージとして使用するアプリケーションやサービスをサポートする場合などに実行します。
+D ドライブを使用してデータを格納する必要がある場合、次の手順に従って一時ディスク用の別のドライブを使用します。維持する必要があるデータは、一時ドライブに格納しないでください。
 
-開始する前に、次の項目が準備されていることを確認してください。
+始める前に、この手順の間に Windows ページファイル (pagefile.sys) を保存できるように、仮想マシンにデータ ディスクを接続しておく必要があります。接続していない場合は、「[データ ディスクを Windows 仮想マシンに接続する方法]」を参照してください。接続されているディスクを調べるには、「[Azure の仮想マシンのディスクについて]」のディスクの管理セクションを参照してください。
 
--   この手順で Windows ページ ファイル (pagefile.sys) の保存に使用するデータ ディスクが 1 つ接続されていること。手順については、「[データ ディスクを Virtual Machine に接続する方法][データ ディスクを Virtual Machine に接続する方法]」を参照してください。
--   D ドライブ上にある既存のデータ ディスクの VHD を使用する場合は、ストレージ アカウントに 1 つの VHD がアップロードされていること。手順については、「[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード][Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]」のステップ 3 と 4 を参照してください。
+D ドライブの既存のデータ ディスクを使用する場合は、そのストレージ アカウントに VHD をアップロード済みであることも確認してください。手順については、「[Windows Server VHD の作成と Azure へのアップロード]」のステップ 3 と 4 を参照してください。
 
-## ドライブ文字の変更
+> [AZURE.WARNING] 仮想マシンのサイズを変更して別のホストに移動する場合は、一時ドライブは再度 D ドライブに変更されます。
 
-1.  仮想マシンにログインします。
+##ドライブ文字の変更
 
-2.  pagefile.sys を D ドライブから別のドライブに移動します。
+1. 仮想マシンにログインします。 
 
-3.  仮想マシンを再起動します。
+2. pagefile.sys を D ドライブから別のドライブに移動します。
 
-4.  再びログインして、ドライブ文字を D から E に変更します。
+3. 仮想マシンを再起動します。
 
-5.  [Azure 管理ポータル][Azure 管理ポータル]から、既存のデータ ディスクか、空のデータ ディスクを接続します。
+4. 	再びログインして、ドライブ文字を D から E に変更します。
 
-6.  仮想マシンに再ログインして、直前の手順で接続したディスクを初期化し、ドライブ文字 D を割り当てます。
+5.	[Azure 管理ポータル](http://manage.windowsazure.com)から、既存のデータ ディスクか、空のデータ ディスクを接続します。
 
-7.  一時ストレージ ディスクに E がマップされていることを確認します。
+6.	仮想マシンに再ログインして、直前の手順で接続したディスクを初期化し、ドライブ文字 D を割り当てます。
 
-8.  pagefile.sys を別のドライブから E ドライブに移動します。
+7.	一時ストレージ ディスクに E がマップされていることを確認します。
 
-## その他のリソース
+8.	pagefile.sys を別のドライブから E ドライブに移動します。
 
-[Windows Server が実行されている仮想マシンにログオンする方法][Windows Server が実行されている仮想マシンにログオンする方法]
+##その他のリソース
+[Windows Server が実行されている仮想マシンにログオンする方法]
 
-[データ ディスクを仮想マシンから切断する方法][データ ディスクを仮想マシンから切断する方法]
+[データ ディスクを仮想マシンから切断する方法]
 
-[ストレージ アカウントとは][ストレージ アカウントとは]
+[Azure ストレージ アカウントについて]
 
 <!--Link references-->
+[データ ディスクを Windows 仮想マシンに接続する方法]: ../storage-windows-attach-disk
+[Azure の仮想マシンのディスクについて]: ../http://msdn.microsoft.com/ja-jp/library/azure/dn790303.aspx
+[Windows Server VHD の作成と Azure へのアップロード]: ../virtual-machines-create-upload-vhd-windows-server/
+[Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
+[データ ディスクを仮想マシンから切断する方法]: ../storage-windows-detach-disk/
+[Azure ストレージ アカウントについて]: ../storage-whatis-account/
 
-  [データ ディスクを Virtual Machine に接続する方法]: ../storage-windows-attach-disk
-  [Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: ../virtual-machines-create-upload-vhd-windows-server/
-  [Azure 管理ポータル]: http://manage.windowsazure.com
-  [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
-  [データ ディスクを仮想マシンから切断する方法]: ../storage-windows-detach-disk/
-  [ストレージ アカウントとは]: ../storage-whatis-account/
+
+
+
+<!--HONumber=42-->

@@ -1,11 +1,11 @@
-﻿<properties urlDisplayName="Get Started with Push (iOS)" pageTitle="プッシュ通知の使用 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" solutions="" manager="dwrede" editor="" authors="krisragh" />
+<properties pageTitle="プッシュ通知の使用 (iOS) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="ios" manager="dwrede" editor="" authors="krisragh"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="12/15/2014" ms.author="krisragh"/>
 
 
 # Mobile Services アプリへのプッシュ通知の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
 このトピックでは、Azure Mobile Services を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple Push Notification Service (APNS) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
@@ -14,15 +14,12 @@
 
 1. [証明書の署名要求を生成する]
 2. [アプリケーションを登録し、プッシュ通知を有効にする]
-3. [アプリケーションのプロビジョニング プロファイルを作成する]
-4. [サービスをローカルにダウンロードする]
-5. [モバイル サービスをテストする]
-6. [サーバーを更新してプッシュ通知を送信する](#update-server)
-7. [モバイル サービスを Azure に発行する]
-8. [アプリケーションにプッシュ通知を追加する]
-9. [プッシュ通知を送信するようにスクリプトを更新する]
-10. [ローカル テストのためにプッシュ通知を有効にする](#local-testing)
-11. [発行されたモバイル サービスに対してアプリケーションをテストする]
+3. [アプリケーションのプロビジョニング ファイルを作成する]
+4. [サーバーを更新してプッシュ通知を送信する](#update-server)
+5. [モバイル サービスを Azure に発行する]
+6. [アプリケーションにプッシュ通知を追加する]
+7. [ローカル テストのためにプッシュ通知を有効にする](#local-testing)
+8. [発行されたモバイル サービスに対してアプリケーションをテストする]
 
 このチュートリアルには、次のものが必要です。
 
@@ -31,35 +28,28 @@
 + iOS 6.0 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 
-   > [WACOM.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」または「[既存のアプリケーションへの Mobile Services の追加][データの使用]」を完了している必要があります。
 
 
-[WACOM.INCLUDE [Apple プッシュ通知を有効にする](../includes/enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
 
 
 ## プッシュ要求を送信するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
+[AZURE.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
 
-<h2><a name="download-the-service"></a>ローカル コンピューターにサービスをダウンロードする</h2>
-
-[WACOM.INCLUDE [mobile-services-ios-download-service-locally](../includes/mobile-services-ios-download-service-locally.md)]
-
-<h2><a name="test-the-service"></a>モバイル サービスをテストする</h2>
-
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 ##<a id="update-server"></a>サーバーを更新してプッシュ通知を送信する
 
-1. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクト内の **[コントローラー]** フォルダーを右クリックします。TodoItemController.cs を開きます。ファイルの先頭に次の `using` ステートメントを追加します。
+1. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクト内の **[コントローラー]** フォルダーを右クリックします。TodoItemController.cs を開きます。ファイルの先頭に、次の  `using` ステートメントを追加します。
 
 
 		using System;
 		using System.Collections.Generic;
 
-2. `PostTodoItem` メソッドの定義を次のコードで置き換えます。  
+2. 次のコードで  `PostTodoItem` メソッドの定義を更新します。  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -84,11 +74,11 @@
 
 <h2><a name="publish-the-service"></a>モバイル サービスを Azure に発行する</h2>
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## アプリケーションにプッシュ通知を追加する
 
-1. QSAppDelegate.m で、Mobile Services iOS SDK をインポートするための次のスニペットを挿入します。
+1. QSAppDelegate.m で、次のスニペットを挿入し、Mobile Services iOS SDK をインポートします。
 
         #import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 
@@ -103,7 +93,7 @@
             return YES;
         }
 
-3. QSAppDelegate.m で、実装内に次のハンドラー メソッドを追加します。Mobile Services の URL とアプリケーション キーの値をコピーし、プレースホルダーと置き換えます。
+3. QSAppDelegate.m で、実装内に次のハンドラー メソッドを追加します。必ず、Mobile Service URL とアプリケーション キーの値をプレースホルダーにコピーして、値を置き換えます。
 
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:
         (NSData *)deviceToken {
@@ -139,13 +129,13 @@
             [alert show];
         }
 
-   > [WACOM.NOTE] このコードを、<strong>addItem</strong> メソッドの呼び出しの前に追加する必要があります。
+   > [AZURE.NOTE] このコードを、<strong>addItem</strong> メソッドの呼び出しの前に追加する必要があります。
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
-##<a id="local-testing"></a> ローカル テストのためにプッシュ通知を有効にする
+##<a id="local-testing"></a>ローカル テストのためにプッシュ通知を有効にする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../includes/mobile-services-dotnet-backend-configure-local-push.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../includes/mobile-services-dotnet-backend-configure-local-push.md)]
 
 ## アプリケーションでプッシュ通知をテストする
 
@@ -153,9 +143,9 @@
 
   	![][23]
 
-    > [WACOM.NOTE]  アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要なのは、初めてアプリケーションを実行するときだけです。
+    > [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「新しい Mobile Services タスク」) を入力し、プラス記号 (**+**) のアイコンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「_A new Mobile Services task_」) を入力し、正符号 (**+**) アイコンをクリックします。
 
   	![][24]
 
@@ -171,15 +161,15 @@
 
 ## 次のステップ
 
-このチュートリアルでは、iOS アプリケーションで Mobile Services と Notification Hubs を使用してプッシュ通知を送信できるようにする方法の基本について説明しました。次は、タグを使用して、プッシュ通知を Mobile Services から認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[プッシュ通知を認証ユーザーに送信する]」を行うことをお勧めします。
+このチュートリアルでは、iOS アプリケーションで Mobile Services と Notification Hubs を使用してプッシュ通知を送信できるようにする方法の基本について説明しました。次は、タグを使用して、プッシュ通知をモバイル サービスから認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[認証されたユーザーへのプッシュ通知の送信]」を行うことをお勧めします。
 
-<!--+ [Send push notifications to authenticated users]
-	<br/>タグを使用して Mobile Service から認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
+<!--+ [認証されたユーザーへのプッシュ通知の送信]
+	<br/>タグを使用してモバイル サービスから認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
 
-+ [登録者へのブロードキャスト通知の送信]
++ [通知ハブを使用したニュース速報の送信]
 	<br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-+ [登録者へのテンプレートベース通知の送信]
++ [通知ハブを使用したローカライズ ニュース速報の送信]
 	<br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 -->
 Mobile Services と通知ハブについては次のトピックを参照してください。
@@ -188,19 +178,19 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
 
 * [認証の使用]
-  <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
+  <br/>Mobile Services を使用して、別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [Windows Azure 通知ハブとは]
-  <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは]
+  <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
-* [通知ハブのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
-  </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。 
+* [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
+  </br>Notification Hubs ソリューションのトラブルシューティングおよびデバッグのガイダンスについて説明します。 
 
 <!-- Anchors.  -->
 [証明書の署名要求を生成する]: #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
-[モバイル サービスを構成する]: #configure
+[アプリケーションのプロビジョニング ファイルを作成する]: #profile
+[Mobile Services を構成する]: #configure
 [プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
 [アプリケーションにプッシュ通知を追加する]: #add-push
 [データを挿入して通知を受け取る]: #test
@@ -252,15 +242,18 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started
+[Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
+[apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
 [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
 
 [認証されたユーザーへのプッシュ通知の送信]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users/
 
-[Windows Azure 通知ハブとは]: /ja-jp/documentation/articles/notification-hubs-overview/
-[登録者へのブロードキャスト通知の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/
-[登録者へのテンプレートベース通知の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/
+[Notification Hubs とは]: /ja-jp/documentation/articles/notification-hubs-overview/
+[通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/
+[通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/
+
+
+<!--HONumber=42-->

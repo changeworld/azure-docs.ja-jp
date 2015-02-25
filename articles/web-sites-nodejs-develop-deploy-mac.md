@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Website" pageTitle="Mac で Node.js Web サイトを作成する - Azure チュートリアル" metaKeywords="Azure で Web サイトのノードを作成する、Web サイト Node.js、ノード Web サイトをデプロイする" description="Azure で Node.js Web サイトを構築してデプロイする方法について説明します。サンプル コードは Java で記述されています。" metaCanonical="" services="web-sites" documentationCenter="nodejs" title="Build and deploy a Node.js website to Azure" authors="larryfr" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Mac での Node.js Web サイトの作成 - Azure チュートリアル" 
+	description="Azure で Node.js Web サイトを構築してデプロイする方法について説明します。サンプル コードは Java で記述されています。" 
+	services="web-sites" 
+	documentationCenter="nodejs" 
+	authors="blackmist" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="larryfr"/>
 
 
 
@@ -22,10 +36,10 @@
 
 Azure Web サイトを作成し、Web サイトの Git 発行を有効にするには、次の手順に従います。
 
-> [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure 無料評価版</a>を参照してください。
+> [AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料評価版サイト</a> をご覧ください。
 > 
-> アカウントにサインアップする前に、Azure Web サイトの使用を開始する場合は、Azure Web サイト <a href="https://trywebsites.azurewebsites.net/?language=nodejs">https://trywebsites.azurewebsites.net</a>で、無料で期間限定の ASP.NET スターター サイト を作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
+> アカウントにサインアップする前に Azure Web サイトを実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=nodejs">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Web サイトで、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 1. [Azure 管理ポータル] にログインします。
 
@@ -59,7 +73,7 @@ Azure Web サイトを作成し、Web サイトの Git 発行を有効にする�
 
 ##アプリケーションの作成とローカル テスト
 
-ここでは、[nodejs.org] から入手した 'hello world' の例を含む **server.js** ファイルを作成します。この例は、Azure Web サイトで実行するときにリッスンするポートとして process.env.PORT を追加することで、元の例から変更されています。
+ここでは、[nodejs.org] から入手した  'hello world' の例を含む **server.js** ファイルを作成します。この例は、Azure Web サイトで実行するときにリッスンするポートとして process.env.PORT を追加することで、元の例から変更されています。
 
 1. テキスト エディターを使用して、**helloworld** ディレクトリに **server.js** という名前の新しいファイルを作成します。**helloworld** ディレクトリがない場合は作成します。
 2. **server.js** ファイルの内容として次の内容を追加し、ファイルを保存します。
@@ -75,7 +89,7 @@ Azure Web サイトを作成し、Web サイトの Git 発行を有効にする�
 
         node server.js
 
-4. Web ブラウザーを開き、http://localhost:1337/ に移動します。次のスクリーンショットのように、Web ページが開き "Hello World" と表示されます。
+4. Web ブラウザーを開き、http://localhost:1337 に移動します。次のスクリーンショットのように、Web ページが開き "Hello World" と表示されます。
 
     ![A browser displaying the 'Hello World' message.][helloworld-localhost]
 
@@ -85,9 +99,8 @@ Azure Web サイトを作成し、Web サイトの Git 発行を有効にする�
 
 		git init
 
-	<div class="dev-callout"><strong>Git コマンドが使用できない場合</strong>
-	<p><a href="http://git-scm.com/" target="_blank">Git</a> は、Azure Web サイトのデプロイに使用できる分散型バージョン コントロール システムです。プラットフォームへのインストール手順については、 <a href="http://git-scm.com/download" target="_blank">Git のダウンロード ページを参照してください</a>。</p>
-	</div>
+	> [AZURE.NOTE] **Git コマンドが使用できない場合**
+	[Git](http://git-scm.com/%20target="_blank) は、Azure Web サイトのデプロイに使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")をご覧ください。
 
 2. 次のコマンドを使用して、リポジトリにファイルを追加します。
 
@@ -129,7 +142,7 @@ Azure Web サイトを作成し、Web サイトの Git 発行を有効にする�
 
 ##アプリケーションへの変更の発行
 
-1. テキスト エディターで **server.js** ファイルを開き、'Hello World\n' を 'Hello Azure\n' に変更します。ファイルを保存します。
+1. テキスト エディターで **server.js** ファイルを開き、 'Hello World\n' を  'Hello Azure\n' に変更します。ファイルを保存します。
 2. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを実行します。
 
 		git add .
@@ -150,17 +163,17 @@ Azure Web サイトを作成し、Web サイトの Git 発行を有効にする�
 
 この記事の手順では、Azure ポータルを使用して Web サイトを作成しましたが、[Mac および Linux 用 Azure コマンド ライン ツール] を使用して同じ操作を行うこともできます。
 
-Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Azure Web サイトでモジュールを使用する方法については、[(Azure アプリケーションでの Node.js モジュールの使用] を参照してください(/ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/)。
+Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Azure Web サイトでモジュールを使用する方法については、「[Using Node.js Modules with Azure Applications (Azure アプリケーションでの Node.js モジュールの使用)](/ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/).」をご覧ください
 
-Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、 [Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)] を参照してください(/ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/)。
+Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](/ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/).」をご覧ください
 
-Azure への展開後にアプリケーションで問題が発生した場合は、[How to debug a Node.js application in Azure Web Sites (Azure の Web サイトでの Node.js アプリケーションのデバッグ方法)](/ja-jp/documentation/articles/web-sites-nodejs-debug/) を参照してください。
+Azure への展開後にアプリケーションで問題が発生した場合は、「[How to debug a Node.js application in Azure Web Sites (Azure の Web サイトでの Node.js アプリケーションのデバッグ方法)](/ja-jp/documentation/articles/web-sites-nodejs-debug/) for information on diagnosing the problem.」をご覧ください
 
 
 ##その他のリソース
 
 * [Azure PowerShell]
-* [Mac および Linux 用のAzure コマンド ライン ツール]
+* [Mac および Linux 用 Azure コマンド ライン ツール]
 
 [Azure PowerShell]: /ja-jp/documentation/articles/install-configure-powershell/
 
@@ -168,7 +181,7 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 [Git]: http://git-scm.com
 
 [Azure 管理ポータル]: http://manage.windowsazure.com
-[Mac および Linux 用のAzure コマンド ライン ツール]: /ja-jp/documentation/articles/xplat-cli/
+[Mac および Linux 用 Azure コマンド ライン ツール]: /ja-jp/documentation/articles/xplat-cli/
 
 [helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
 [helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png
@@ -185,4 +198,5 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 [go-to-dashboard]: ./media/web-sites-nodejs-develop-deploy-mac/go_to_dashboard.png
 [where-is-code]: ./media/web-sites-nodejs-develop-deploy-mac/where_is_code.png
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

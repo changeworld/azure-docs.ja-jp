@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Notify iOS app users by using Mobile Services" pageTitle="モバイル サービスを使用して現在のユーザーをプッシュ通知に登録 - Notification Hubs" metaKeywords="Azure の登録アプリケーション, Notification Hubs, Azure のプッシュ通知, プッシュ通知 iOS アプリケーション" description="Azure Mobile Services により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Register the current user for push notifications by using a mobile service" authors="yuaxu" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="モバイル サービスを使用した現在のユーザーのプッシュ通知への登録 - 通知ハブ" description="Azure Mobile Services により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="" authors="ysxu" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu"/>
 
 # モバイル サービスを使用した現在のユーザーのプッシュ通知への登録
 
@@ -8,7 +8,7 @@
     <a href="/ja-jp/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/" title="Windows Store C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/" title="iOS" class="current">iOS</a>
 </div>
 
-このトピックでは、Azure のモバイル サービスにより登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。  
+このトピックでは、Azure のモバイル サービスにより登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」をご覧ください。  
 
 1. Xcode で、前提条件のチュートリアルである「[認証の使用]」を実行したときに作成したプロジェクトの QSTodoService.h ファイルを開き、次の **deviceToken** プロパティを追加します。
 
@@ -43,9 +43,7 @@
 
 	これにより、**deviceToken** プロパティが更新されます。
 
-	<div class="dev-callout"><b>注</b>
-	<p>この時点では、このメソッドに他のコードは存在しません。チュートリアル「<a href="/ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/" target="_blank">通知ハブの使用</a>」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。</p>
-	</div>
+	> [AZURE.NOTE] この時点では、このメソッドに他のコードは存在しません。「[通知ハブの使用](/ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank") 」のチュートリアルを完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメントにするか、削除する必要があります。
 
 5.  (省略可能) QSAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
 
@@ -77,7 +75,7 @@
 
 	このメソッドは、デバイス トークンを含む json ペイロードを作成します。その後、モバイル サービスでカスタム API を呼び出して通知に登録します。このメソッドは、プッシュ通知のデバイス トークンを作成し、通知ハブで登録を作成するカスタム API メソッドに、デバイスの種類と共に送信します。このカスタム API は、「[通知ハブによるユーザーへの通知]」で定義されたものです。
 
-7.	最後の点として、ユーザーが正常に認証された後、**viewDidAppear** メソッド内の新しい **registerForNotificationsWithBackEnd** メソッドにこのメソッドへの呼び出しを追加します。次に例を示します。
+7.	最後に、ユーザーが正常に認証された後、**viewDidAppear** メソッド内の新しい **registerForNotificationsWithBackEnd** メソッドにこのメソッドへの呼び出しを追加します。次に例を示します。
 
 			- (void)viewDidAppear:(BOOL)animated
 			{
@@ -93,10 +91,8 @@
 			    }];
 			}
 
-	<div class="dev-callout"><b>注</b>
-	<p>これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。</p>
-	</div>
-
+	> [AZURE.NOTE] これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。
+	
 これで、クライアント アプリケーションが更新されました。「[通知ハブによるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
 
 <!-- Anchors. -->
@@ -110,3 +106,6 @@
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/
+
+
+<!--HONumber=42-->

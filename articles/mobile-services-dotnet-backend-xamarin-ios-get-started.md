@@ -1,14 +1,14 @@
-﻿<properties urlDisplayName="Get Started with Mobile Services for Xamarin iOS apps" pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 - Azure Mobile Services" metaKeywords="" description="次のチュートリアルに従って、Xamarin iOS 開発用の Azure Mobile Services を使用します。" metaCanonical="" services="" documentationCenter="Mobile" title="Get Started with Mobile Services for Xamarin iOS apps" authors="donnam" solutions="" manager="dwrede" editor="mollybos" />
+﻿<properties pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 - Azure Mobile Services" description="次のチュートリアルに従って、Xamarin iOS 開発用の Azure Mobile Services を使用します。" services="" documentationCenter="xamarin" authors="lindydonna" manager="dwrede" editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="donnam" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="donnam"/>
 
-# <a name="getting-started"> </a>モバイル サービスの使用
+# <a name="getting-started"></a>Mobile Services の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure Mobile Services を使用して Xamarin iOS アプリケーションにクラウドベースのバックエンド サービスを追加する方法について説明します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
+このチュートリアルでは、Azure Mobile Services を使用して Xamarin iOS アプリケーションにクラウドベースのバックエンド サービスを追加する方法について説明します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
 
->[WACOM.NOTE]このトピックでは、Azure の管理ポータルを使用して、新しいモバイル サービス プロジェクトを作成する方法について説明します。Visual Studio 2013 更新プログラム 2 を使用して、新しいモバイル サービス プロジェクトを既存の Visual Studio ソリューションに追加することもできます。詳細については、Windows デベロッパー センターの[モバイル サービスの追加 (.NET バックエンド)](http://msdn.microsoft.com/ja-jp/library/windows/apps/dn629482.aspx)」を参照してください。
+>[AZURE.NOTE]このトピックでは、Azure の管理ポータルを使用して、新しいモバイル サービス プロジェクトを作成する方法について説明します。Visual Studio 2013 更新プログラム 2 を使用して、新しいモバイル サービス プロジェクトを既存の Visual Studio ソリューションに追加することもできます。詳細については、Windows デベロッパー センターの[モバイル サービスの追加 (.NET バックエンド)](http://msdn.microsoft.com/ja-jp/library/windows/apps/dn629482.aspx)」を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -17,11 +17,11 @@
 
 このチュートリアルを完了することは、Xamarin iOS アプリケーションの他のすべての Mobile Services チュートリアルの前提条件です。 
 
->[WACOM.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-xamarin-ios-get-started" target="_blank">無料評価版のサイト</a>を参照してください。<br />このチュートリアルには <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> が必要です。無料評価版が利用できます。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-xamarin-ios-get-started" target="_blank">Azure の無料評価版サイト</a>を参照してください。<br />このチュートリアルには、<a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> が必要です。無料評価版が利用できます。
 
 ## 新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 ## 新しい Xamarin iOS アプリケーションを作成する
 
@@ -51,11 +51,11 @@
 
 ## モバイル サービスをテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 ## モバイル サービスを発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## Xamarin iOS アプリケーションを実行する
 
@@ -69,32 +69,32 @@
 
 2. **[実行]** ボタンを押してクライアント プロジェクトをビルドし、iPhone エミュレーターでアプリケーションを開始します。
 
-3.  アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了」) を入力し、プラス ([**+**]) アイコンをクリックします。
+3. アプリケーションで、意味のあるテキスト (たとえば、「_Complete the tutorial_」) を入力し、正符号 (**+**) アイコンをクリックします。
 
 	![][10]
 
 	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
->[WACOM.NOTE]モバイル サービスにアクセスして QSTodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
+>[AZURE.NOTE]モバイル サービスにアクセスして QSTodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
 
     
 ## 次のステップ
 クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
 
 * [オフライン データ同期の使用]
-  <br/>オフライン データの同期を使用して、アプリケーションの応答性と信頼性を高める方法について説明します。
+  <br/>クイック スタートでオフライン データの同期を使用して、アプリケーションの応答性と信頼性を高める方法について説明します。
 
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Troubleshoot a Mobile Services .NET backend (Mobile Services .NET バックエンドのトラブルシューティング)]
+* [Mobile Services .NET バックエンドのトラブルシューティング]
   <br/> Mobile Services の .NET バックエンドで発生する問題を診断して解決する方法について説明します。 
 
 <!-- Anchors. -->
-[モバイル サービスの使用]:#getting-started
+[Mobile Services の使用]:#getting-started
 [新しいモバイル サービスを作成する]:#create-new-service
 [次のステップ]:#next-steps
 
@@ -114,13 +114,15 @@
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-push
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[JavaScript and HTML (JavaScript と HTML)]: mobile-services-win8-javascript/
+[JavaScript と HTML]: mobile-services-win8-javascript/
 [管理ポータル]: https://manage.windowsazure.com/
 [JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started
-[Visual Studio 2012 を使用したモバイル サービスでのデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data-vs2012
-[Troubleshoot a Mobile Services .NET backend (Mobile Services .NET バックエンドのトラブルシューティング)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-troubleshoot/
+[Visual Studio 2012 を使用した Mobile Services でのデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data-vs2012
+[Mobile Services .NET バックエンドのトラブルシューティング]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-troubleshoot/
 
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Windows 用 Xamarin]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
+
+<!--HONumber=42-->

@@ -1,25 +1,39 @@
-﻿<properties urlDisplayName="How to create" pageTitle="Web サイトの作成方法 - Azure サービス管理" metaKeywords="Azure creating website, Azure deleting website" description="Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="How to Create and Deploy a Website" authors="cephalin" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Web サイトの作成方法 - Azure サービス管理" 
+	description="Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" 
+	services="web-sites" 
+	documentationCenter="" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/24/2014" ms.author="cephalin" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="cephalin"/>
 
 #Web サイトを作成する方法
 
 このトピックでは、管理ポータルを使用してギャラリーから Web サイトを作成する方法について説明します。
 
-作成した Azure Web サイトにコンテンツをデプロイする方法については、「[Azure Websites]」の「**展開**(/ja-jp/documentation/services/web-sites/)」セクションを参照してください。
+作成した Azure Web サイトにコンテンツをデプロイする方法については、「[Azure Websites](/ja-jp/documentation/services/web-sites/).」の「**展開**」セクションをご覧ください。
 
 ## 目次 ##
 
-- [方法: 管理ポータルの使用による Web サイトの作成](#createawebsiteportal)
-- [方法: ギャラリーからの Web サイトの作成](#howtocreatefromgallery)
-- [方法: Web サイトの削除](#deleteawebsite)
+- [方法:管理ポータルの使用による Web サイトの作成](#createawebsiteportal)
+- [方法:ギャラリーからの Web サイトの作成](#howtocreatefromgallery)
+- [方法:Web サイトの削除](#deleteawebsite)
 - [次のステップ](#nextsteps)
 
 ##<a name="createawebsiteportal"></a>方法:管理ポータルの使用による Web サイトの作成
 
 Azure で Web サイトを作成するには、次の手順に従います。
 	
-1. [Azure の管理ポータル]にログインします(http://manage.windowsazure.com/)。
+1. [Azure 管理ポータル](http://manage.windowsazure.com/) にログインします。
 
 2. 管理ポータルの左下にある **[新規作成]** アイコンをクリックします。
 
@@ -37,19 +51,20 @@ Azure で Web サイトを作成するには、次の手順に従います。
 	- SSL バインド
 	- カスタム ドメイン名
 	- ログ オプション
-	- Azure 環境向けのアプリ設定 (現在の開発環境の Web.config 内の <appSettings> の上書きなど)
+	- Azure 環境のアプリケーション設定 (現在の開発環境の Web.config 内の <appSettings> の上書きなど)
 	- 接続文字列 (現在の開発環境の Web.config 内の <connectionStrings> の上書きなど)
 	- *.php など、特定のファイル拡張子に対するスクリプト プロセッサ
 
 ##<a name="howtocreatefromgallery"></a>方法:ギャラリーからの Web サイトの作成
 
-[WACOM.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
+[AZURE.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
 
 ##<a name="deleteawebsite"></a>方法:Web サイトの削除
 Web サイトは、Azure の管理ポータルの **[削除]** アイコンを使用して削除します。**[削除]** アイコンは、Azure ポータル (**[Web サイト]** をクリックして Web サイトをすべて表示したとき) と各 Web サイトの管理ページの下部に表示されます。
 
 ##<a name="nextsteps"></a>次のステップ
 
-詳細については、[Azure Websites のページ](/ja-jp/documentation/services/web-sites/)を参照してください。
+詳細については、[Azure Websites のページ](/ja-jp/documentation/services/web-sites/).をご覧ください。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

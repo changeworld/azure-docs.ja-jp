@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="iOS Client Library" pageTitle="iOS クライアント ライブラリの使用方法 - Azure Mobile Services" metaKeywords="Azure Mobile Services, Mobile Service iOS client library, iOS client library" description="Azure Mobile Services 向け iOS クライアント ライブラリを使用する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="How to use the iOS client library for Mobile Services" authors="krisragh" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="iOS クライアント ライブラリの使用方法 - Azure Mobile Services" description="Azure Mobile Services 向け iOS クライアント ライブラリを使用する方法について説明します。" services="" documentationCenter="ios" authors="krisragh" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh"/>
 
 
 
@@ -10,36 +10,36 @@
   <a href="/ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS" class="current">iOS</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
 </div>
 
-このガイドでは、Azure Mobile Services 向け iOS クライアントを使用して一般的なシナリオを実行する方法について説明します。サンプルは Objective-C で記述され、[Mobile Services SDK] を必要とします。  このチュートリアルには、[iOS SDK] も必要です。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services quickstart (Mobile Services クイック スタート)][Get started with Mobile Services]」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
+このガイドでは、Azure Mobile Services 向け iOS クライアントを使用して一般的なシナリオを実行する方法について説明します。サンプルは Objective-C で記述され、[モバイル サービス SDK] を必要とします。さらに、このチュートリアルには、[iOS SDK] も必要です。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず [Mobile Services のクイック スタート][Get started with Mobile Services]を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
 ## 目次
 
-- [モバイル サービスとは][]
+- [Mobile Services とは][]
 - [概念][]
 - [セットアップと前提条件][]
-- [方法: モバイル サービス クライアントを作成する][]
-- [方法: テーブル参照を作成する][]
-- [方法: モバイル サービスのデータを照会する][]
+- [方法:モバイル サービス クライアントを作成する][]
+- [方法:テーブル参照を作成する][]
+- [方法:モバイル サービスのデータを照会する][]
 	- [返されるデータをフィルター処理する]
-    - [MSQuery オブジェクトの使用][How to: Use MSQuery]
+    - [MSQuery オブジェクトの使用][方法:MSQuery の使用]
 	- [特定の列を選択する]
-- [方法: モバイル サービスにデータを挿入する]
-- [方法: モバイル サービスのデータを変更する]
-- [方法: データをユーザー インターフェイスにバインドする]
-- [方法: ユーザーを認証する]
-- [方法: エラーを処理する]
+- [方法:モバイル サービスにデータを挿入する]
+- [方法:モバイル サービスのデータを変更する]
+- [方法:データをユーザー インターフェイスにバインドする]
+- [方法:ユーザーを認証する]
+- [方法:エラーを処理する]
 
-<!--- [How to: Design unit tests]
-- [How to: Customize the client]
-	- [Customize request headers]
-	- [Customize data type serialization]
-- [Next steps][]-->
+<!--- [方法:単体テストを設計する]
+- [方法:クライアントをカスタマイズする]
+	- [要求ヘッダーをカスタマイズする]
+	- [データ型のシリアル化をカスタマイズする]
+- [次のステップ][]-->
 
-[WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
+[AZURE.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 ##<a name="Setup"></a>セットアップと前提条件
 
-このガイドでは、モバイル サービスとテーブルが作成済みであることを前提としています。  詳細については、「[テーブルの作成]」を参照するか、[Get started with Mobile Services (Mobile Services の使用)] チュートリアルで作成した `ToDoItem` テーブルを再利用してください。このトピックの例では、次の列を持つ `ToDoItem` という名前のテーブルを使用しています。
+このガイドでは、前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成]」を参照するか、「[Mobile Services の使用]」チュートリアルで作成した  `ToDoItem` テーブルを再利用してください。このトピックの例では、次の列を持つ `ToDoItem` という名前のテーブルを使用しています。
 
 + `id`
 + `text`
@@ -47,34 +47,34 @@
 + `duration`
 
 
-iOS アプリケーションを初めて作成する場合は、`WindowsAzureMobileServices.framework` をアプリケーションの [**[Link Binary With Libraries]**](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/AddingaLibrarytoaTarget.html) 設定に追加してください。このステップで、[Add Other] をクリックし、ダウンロードした Microsoft Azure Mobile Services SDK の場所に移動して、その場所を選択します。
+iOS アプリケーションを初めて作成する場合は、 `WindowsAzureMobileServices.framework` をアプリケーションの [**[Link Binary With Libraries]**](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/AddingaLibrarytoaTarget.html) 設定に追加してください。このステップで、[Add Other] をクリックし、ダウンロードした Microsoft Azure Mobile Services SDK の場所に移動して、その場所を選択します。
 
 さらに、適切なファイルまたはアプリケーションの .pch ファイルに次の参照を追加する必要があります。
 
 	#import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 
-<h2><a name="create-client"></a>方法: モバイル サービス クライアントを作成する</h2>
+<h2><a name="create-client"></a>方法:モバイル サービス クライアントを作成する</h2>
 
 次のコードでは、モバイル サービスにアクセスするために使用されるモバイル サービス クライアント オブジェクトを作成します。
 
 	MSClient *client = [MSClient clientWithApplicationURLString:@"MobileServiceUrl" applicationKey:@"AppKey"]
 
-上記のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーでそれぞれ置き換えます。モバイル サービスのためのこれらの設定を確認するには、Azure の管理ポータルでモバイル サービスを選択し、**[ダッシュボード]** をクリックします。
+前のコードの  `MobileServiceUrl` と  `AppKey` を、モバイル サービスの URL とアプリケーション キーでそれぞれ置き換えます。モバイル サービスのためのこれらの設定を確認するには、Azure 管理ポータルでモバイル サービスを選択し、**[ダッシュボード]** をクリックします。
 
 また、次に示すように、サービスの URL である **NSURL** オブジェクトからクライアントを作成することもできます。
 
 	MSClient *client = [MSClient clientWithApplicationURL:[NSURL URLWithString:@"MobileServiceUrl"] applicationKey:@"AppKey"];
 
-<h2><a name="table-reference"></a>方法: テーブル参照を作成する</h2>
+<h2><a name="table-reference"></a>方法:テーブル参照を作成する</h2>
 
-モバイル サービスからデータにアクセスするには、項目を照会、更新、または削除するテーブルへの参照を事前に取得する必要があります。次の例で、`ToDoItem` はテーブル名です。
+モバイル サービスからデータにアクセスするには、項目を照会、更新、または削除するテーブルへの参照を事前に取得する必要があります。次の例では、 `ToDoItem` はテーブル名です。
 
 	MSTable *table = [client tableWithName:@"ToDoItem"];
 
 
-<h2><a name="querying"></a>方法: モバイル サービスのデータを照会する</h2>
+<h2><a name="querying"></a>方法:モバイル サービスのデータを照会する</h2>
 
-MSTable オブジェクトを作成した後は、クエリを作成します。  次の単純なクエリは、ToDoItem テーブル内のすべての項目を取得します。
+MSTable オブジェクトを作成した後は、クエリを作成します。次の単純なクエリは、ToDoItem テーブル内のすべての項目を取得します。
 
 	[table readWithCompletion:^(NSArray *items, NSInteger totalCount, NSError *error) {
 		if(error) {
@@ -90,11 +90,11 @@ MSTable オブジェクトを作成した後は、クエリを作成します。
 
 次のパラメーターは、コールバック内で指定されます。
 
-+ _items_: クエリに一致したレコードの **NSArray**。
-+ _totalCount_: クエリのすべてのページの項目の合計数 (現在のページで返された項目の数ではありません)。要求で合計数を明示的に要求しない限り、この値は -1 に設定されます。詳細については、「[ページにデータを返す]」を参照してください。
-+ _error_: 発生したエラー。エラーが発生していない場合は `nil`。
++ _items_:クエリに一致したレコードの **NSArray**。
++ _totalCount_:クエリのすべてのページの項目の合計数 (現在のページで返された項目の数ではありません)。要求で合計数を明示的に要求しない限り、この値は -1 に設定されます。詳細については、「[ページにデータを返す]」を参照してください。
++ _error_:発生したエラー。エラーが発生していない場合は  `nil`.
 
-### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
+### <a name="filtering"></a>方法:返されるデータをフィルター処理する
 
 結果をフィルター処理するには、いくつかのオプションがあります。
 
@@ -125,7 +125,7 @@ MSTable オブジェクトを作成した後は、クエリを作成します。
 		}
 	}];
 
-この場合、コールバック パラメーターがわずかに異なることに注意してください。  結果の配列と省略可能な数を取得する代わりに、1 個のレコードを取得します。
+この場合、コールバック パラメーターがわずかに異なることに注意してください。結果の配列と省略可能な数を取得する代わりに、1 個のレコードを取得します。
 
 ### <a name="query-object"></a>MSQuery オブジェクトの使用
 
@@ -145,7 +145,7 @@ MSQuery オブジェクトを使用すると、クエリの動作を次のよう
 
 加えて、1 つ以上の関数を適用してクエリを定義できます。定義したクエリは、**readWithCompletion** 関数を呼び出すことによって実行します。
 
-#### <a name="sorting"></a>返されるデータの並べ替え
+#### <a name="sorting"></a>返されるデータを並べ替える
 
 並べ替えに使用するフィールドを指定するには、次の関数を使用します。
 
@@ -162,7 +162,7 @@ MSQuery オブジェクトを使用すると、クエリの動作を次のよう
 
 #### <a name="paging"></a>ページにデータを返す
 
-モバイル サービスでは、1 つの応答で返されるレコードの量が制限されます。ユーザーに表示されるレコードの数を制御するには、ページング システムを実装する必要があります。  ページングを行うには、**MSQuery** オブジェクトの次の 3 つのプロパティを使用します。
+モバイル サービスでは、1 つの応答で返されるレコードの量が制限されます。ユーザーに表示されるレコードの数を制御するには、ページング システムを実装する必要があります。ページングを行うには、**MSQuery** オブジェクトの次の 3 つのプロパティを使用します。
 
 +	`BOOL includeTotalCount`
 +	`NSInteger fetchLimit`
@@ -191,7 +191,7 @@ MSQuery オブジェクトを使用すると、クエリの動作を次のよう
 
 #### <a name="selecting"></a>返されるフィールドの制限
 
-クエリによって返されるフィールドを制限するには、単に **selectFields** プロパティに目的のフィールドの名前を指定します。次の例では、text フィールドと completed フィールドのみが返されます:
+クエリによって返されるフィールドを制限するには、単に **selectFields** プロパティに目的のフィールドの名前を指定します。次の例では、text フィールドと completed フィールドのみが返されます。
 
 	query.selectFields = @[@"text", @"completed"];
 
@@ -207,7 +207,7 @@ MSQuery オブジェクトを使用すると、クエリの動作を次のよう
 これらのパラメーターは、`myKey1=value1&myKey2=value2` のように、クエリ URI に追加されます。
 詳細については、「[方法: カスタム パラメーターにアクセスする]」を参照してください。
 
-<h2><a name="inserting"></a>方法: モバイル サービスにデータを挿入する</h2>
+<h2><a name="inserting"></a>方法:モバイル サービスにデータを挿入する</h2>
 
 新しい行をテーブルに挿入するには、新しい [NSDictionary オブジェクト]を作成して insert 関数に渡します。次のコードでは、新しい Todo 項目をテーブルに挿入しています。
 
@@ -249,19 +249,19 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 	}
 
 
-アプリケーションが ID の値を指定すると、Mobile Services はそれをそのまま格納します。これには、前後の空白文字も含まれます。値から空白文字が除去されることはありません。
+アプリケーションが ID の値を指定すると、モバイル サービスはそれをそのまま格納します。これには、前後の空白文字も含まれます。値から空白文字が除去されることはありません。
 
-`ID` の値は一意である必要があり、次のセット内の文字を含まないようにする必要があります。
+ `id` の値は一意である必要があり、次のセット内の文字を含まないようにする必要があります。
 
-+ 制御文字: [0x0000-0x001F] および [0x007F-0x009F]。詳細については、[ASCII 制御コード C0 および C1 に関するページ]を参照してください。
-+  印刷可能文字: **"**(0x0022)、**\+** (0x002B)、**/** (0x002F)、**?** (0x003F)、**\\** (0x005C)、**`** (0x0060)
++ 制御文字:[0x0000-0x001F] および [0x007F-0x009F]。詳細については、[ASCII 制御コード C0 および C1 に関するページ]を参照してください。
++  印刷可能文字:**"**(0x0022)、**\+** (0x002B)、**/** (0x002F)、**?**(0x003F)、**\\** (0x005C)、**`** (0x0060)
 +  ID "." および ".."
 
-また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[モバイル サービス テーブルの管理用コマンド]」を参照してください。
+また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、 `mobile table create` コマンドで --integerId オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[モバイル サービス テーブルの管理用コマンド]」を参照してください。
 
 動的スキーマが有効な場合、挿入または更新の要求に含まれるオブジェクトのフィールドに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ]」を参照してください。
 
-<h2><a name="modifying"></a>方法: モバイル サービスのデータを変更する</h2>
+<h2><a name="modifying"></a>方法:モバイル サービスのデータを変更する</h2>
 
 既存のオブジェクトを更新するには、前のクエリから返された項目を変更し、**update** 関数を呼び出します。
 
@@ -290,9 +290,9 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 		//handle errors or any additional logic as needed
 	}];
 
-更新操作や削除操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
+更新操作や削除操作を行う場合は、少なくとも  `id` 属性を設定する必要があります。
 
-<h2><a name="authentication"></a>方法: ユーザーを認証する</h2>
+<h2><a name="authentication"></a>方法:ユーザーを認証する</h2>
 
 モバイル サービスでは、次の ID プロバイダーを使用して、ユーザーを認証できます。
 
@@ -302,7 +302,7 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 - Twitter
 - Azure Active Directory
 
-ID プロバイダーの構成の詳細については、「[モバイル サービスでの認証の使用]」を参照してください。
+ID プロバイダーの構成の詳細については、「[認証の使用]」を参照してください。
 
 モバイル サービスでは、次の 2 つの認証ワークフローがサポートされます。
 
@@ -335,7 +335,7 @@ Microsoft アカウントを使用してログインする方法の例を次に�
 			[alert show];
 	}];
 
-注: Microsoft アカウント用以外の ID プロバイダーを使用している場合は、上のログイン メソッドに渡される値を次のいずれかに変更します:`facebook`、`twitter`、`google`、または `windowsazureactivedirectory` のいずれかに変更します。
+注: Microsoft アカウント用以外の ID プロバイダーを使用している場合は、上のログイン メソッドに渡される値を  `facebook`、 `twitter`、 `google`、 `windowsazureactivedirectory` のいずれかに変更します。
 
 次に示すように、MSLoginController への参照を取得し、これを表示することもできます。
 
@@ -345,7 +345,7 @@ Microsoft アカウントを使用してログインする方法の例を次に�
 
 ログイン プロセスがモバイル サービス クライアントの外部で実行される場合もあります。このような操作は、シングル サインオン サービス機能を有効にする場合や、アプリケーションでユーザー情報を取得するために直接 ID プロバイダーにアクセスする必要がある場合に使用します。これらのケースでは、サポートされて ID プロバイダーから個別に取得したトークンを提供することによって、モバイル サービスにログインできます。
 
-次の例では、[Live Connect SDK] を使用して、iOS アプリのシングル サインオンを有効にしています。
+次の例では、[Live Connect SDK] を使用して、iOS アプリケーションのシングル サインオンを有効にしています。
 
 	[client loginWithProvider:@"microsoftaccount"
 		token:@{@"authenticationToken" : self.liveClient.session.authenticationToken}
@@ -360,11 +360,11 @@ Microsoft アカウントを使用してログインする方法の例を次に�
 			[alert show];
 	}];
 
-This code assumes that you have previously created a コントローラーに `liveClient` という名前の **LiveConnectClient** インスタンスが作成されていて、ユーザーがログインしています。
+このコードでは、コントローラーに  `liveClient` という名前の **LiveConnectClient** インスタンスが以前に作成されていて、ユーザーがログインしている状況を想定しています。
 
-###<a name="caching-tokens"></a>方法: 認証トークンをキャッシュする
+###<a name="caching-tokens"></a>方法:認証トークンをキャッシュする
 
-ユーザーがアプリケーションを使用するたびに認証が求められるのを回避するには、ログイン後に現在のユーザー ID をキャッシュします。次にこの情報を使用して、ユーザーを直接作成してログイン プロセスをバイパスします。  そのためには、ユーザー ID と認証トークンをローカルに保存する必要があります。次の例では、トークンが [KeyChain] に安全にキャッシュされます。
+ユーザーがアプリケーションを使用するたびに認証が求められるのを回避するには、ログイン後に現在のユーザー ID をキャッシュします。次にこの情報を使用して、ユーザーを直接作成してログイン プロセスをバイパスします。そのためには、ユーザー ID と認証トークンをローカルに保存する必要があります。次の例では、トークンが [KeyChain] に安全にキャッシュされます。
 
 	- (NSMutableDictionary *) createKeyChainQueryWithClient:(MSClient *)client andIsSearch:(bool)isSearch
 	{
@@ -422,21 +422,19 @@ This code assumes that you have previously created a コントローラーに `l
 			}];
 		}
 
-<div class="dev-callout"><strong>注</strong>
-<p>トークンは慎重な扱いを要するデータであり、デバイスの紛失や盗難に備えて暗号化して保存する必要があります。</p>
-</div>
+> [AZURE.NOTE] トークンは慎重な扱いを要するデータであり、デバイスの紛失や盗難に備えて暗号化して保存する必要があります。
 
-キャッシュされたトークンを使用しているとき、ユーザーはトークンの期限が切れるまで再度ログインする必要はありません。トークンの有効期限が切れているときにユーザーがログインしようとすると、"401 許可されていません" 応答が返されます。この段階で、ユーザーは、再度ログインして新しいトークンを取得する必要があります。この新しいトークンはキャッシュできます。フィルターを使用すると、アプリケーションがモバイル サービスを呼び出すすべての場所に有効期限切れのトークンを処理するコードを書かずに済みます。  フィルターを使用して、モバイル サービスの呼び出しとモバイル サービスからの応答を取得することができますフィルターのコードでは、401 の応答の有無をテストし、トークンが有効期限切れの場合はログイン プロセスをトリガーし、401 を生成した要求を再試行します。詳細については、[アプリケーションで期限切れのトークンを処理する方法に関するページ]を参照してください。
+キャッシュされたトークンを使用しているとき、ユーザーはトークンの期限が切れるまで再度ログインする必要はありません。トークンの有効期限が切れているときにユーザーがログインしようとすると、"401 許可されていません" 応答が返されます。この段階で、ユーザーは、再度ログインして新しいトークンを取得する必要があります。この新しいトークンはキャッシュできます。フィルターを使用すると、アプリケーションがモバイル サービスを呼び出すすべての場所に有効期限切れのトークンを処理するコードを書かずに済みます。フィルターを使用して、モバイル サービスの呼び出しとモバイル サービスからの応答を取得することができます。フィルターのコードでは、401 の応答の有無をテストし、トークンが有効期限切れの場合はログイン プロセスをトリガーし、401を生成した要求を再試行します。詳細については、[期限切れのトークンの処理]に関するページを参照してください。
 
-<h2><a name="errors"></a>方法: エラーを処理する</h2>
+<h2><a name="errors"></a>方法:エラーを処理する</h2>
 
-モバイル サービスを呼び出したとき、完了ブロックには `NSError *error` パラメーターが含まれます。エラーが発生すると、このパラメーターに null 以外の値が返されます。コードでは、このパラメーターを確認し、必要に応じてエラーを処理する必要があります。
+モバイル サービスを呼び出したとき、完了ブロックには  `NSError *error` パラメーターが含まれます。エラーが発生すると、このパラメーターに null 以外の値が返されます。コードでは、このパラメーターを確認し、必要に応じてエラーを処理する必要があります。
 
 発生したエラーに関しては、コードに MSError.h ファイルを含めることによって詳細情報を取得することができます。
 
     #import <WindowsAzureMobileServices/MSError.h>
 
-このファイルでは、次の定数を定義します。これらの定数を使用して、`[[error userInfo]]` からの追加データにアクセスできます。
+このファイルでは、次の定数を定義します。これらの定数を使用して、[error userInfo] からの追加データにアクセスできます。
 
 + **MSErrorResponseKey**: エラーに関連付けられた HTTP 応答データ
 * **MSErrorRequestKey**: エラーに関連付けられた HTTP 要求データ
@@ -446,21 +444,21 @@ This code assumes that you have previously created a コントローラーに `l
 検証と処理の例については、「[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]」を参照してください。このトピックでは、サーバー スクリプトを使用してサーバー側の検証が実装されています。無効なデータが送信されるとエラー応答が返され、この応答がクライアントによって処理されます。
 
 <!--
-<h2><a name="#unit-testing"></a>方法: 単体テストを設計する</h2>
+<h2><a name="#unit-testing"></a>方法:単体テストを設計する</h2>
 
 _(省略可能) このセクションでは、クライアント ライブラリを使用しているときに単体テストを作成する方法について説明します (Yavor からの情報)。_
 
-<h2><a name="#customizing"></a>方法: クライアントをカスタマイズする</h2>
+<h2><a name="#customizing"></a>方法:クライアントをカスタマイズする</h2>
 
 _(省略可能) このセクションでは、クライアント動作のカスタマイズを送信する方法について説明します。_
 
-###<a name="custom-headers"></a>方法: 要求ヘッダーをカスタマイズする
+###<a name="custom-headers"></a>方法:要求ヘッダーをカスタマイズする
 
 _(省略可能) このセクションでは、カスタム要求ヘッダーを送信する方法について説明します。_
 
 詳細については、サーバー側でのヘッダーの処理に関する新しいトピックを参照してください。
 
-###<a name="custom-serialization"></a>方法: シリアル化をカスタマイズする
+###<a name="custom-serialization"></a>方法:シリアル化をカスタマイズする
 
 _(省略可能) このセクションでは、属性を使用してデータ型のシリアル化の方法をカスタマイズする方法について説明します。_
 
@@ -471,29 +469,29 @@ _(省略可能) このセクションでは、属性を使用してデータ型�
 
 <!-- Anchors. -->
 
-[モバイル サービスとは]: #what-is
+[Mobile Services とは]: #what-is
 [概念]: #concepts
 [セットアップと前提条件]: #Setup
-[方法: モバイル サービス クライアントを作成する]: #create-client
-[方法: テーブル参照を作成する]: #table-reference
-[方法: モバイル サービスのデータを照会する]: #querying
+[方法:モバイル サービス クライアントを作成する]: #create-client
+[方法:テーブル参照を作成する]: #table-reference
+[方法:モバイル サービスのデータを照会する]: #querying
 [返されるデータをフィルター処理する]: #filtering
 [返されるデータを並べ替える]: #sorting
 [ページにデータを返す]: #paging
 [特定の列を選択する]: #selecting
-[方法: データをユーザー インターフェイスにバインドする]: #binding
-[方法: モバイル サービスにデータを挿入する]: #inserting
-[方法: モバイル サービスのデータを変更する]: #modifying
-[方法: ユーザーを認証する]: #authentication
+[方法:データをユーザー インターフェイスにバインドする]: #binding
+[方法:モバイル サービスにデータを挿入する]: #inserting
+[方法:モバイル サービスのデータを変更する]: #modifying
+[方法:ユーザーを認証する]: #authentication
 [認証トークンをキャッシュする]: #caching-tokens
-[方法: イメージおよびサイズの大きいファイルをアップロードする]: #blobs
-[方法: エラーを処理する]: #errors
-[方法: 単体テストを設計する]: #unit-testing
-[方法: クライアントをカスタマイズする]: #customizing
+[方法:イメージおよびサイズの大きいファイルをアップロードする]: #blobs
+[方法:エラーを処理する]: #errors
+[方法:単体テストを設計する]: #unit-testing
+[方法:クライアントをカスタマイズする]: #customizing
 [要求ヘッダーをカスタマイズする]: #custom-headers
 [データ型のシリアル化をカスタマイズする]: #custom-serialization
 [次のステップ]: #next-steps
-[方法: Use MSQuery]: #query-object
+[方法:MSQuery の使用]: #query-object
 
 <!-- Images. -->
 
@@ -504,13 +502,16 @@ _(省略可能) このセクションでは、属性を使用してデータ型�
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
 
-[期限切れのトークンを処理する]: http://go.microsoft.com/fwlink/p/?LinkId=301955
+[期限切れのトークンの処理]に関するページ: http://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
-[アクセス許可]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193161.aspx
-[スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
+[権限]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193161.aspx
+[スクリプトを使用したユーザーの認証]に関するページ: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
 [動的スキーマ]: http://go.microsoft.com/fwlink/p/?LinkId=296271
-[方法: カスタム パラメーターにアクセスする]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts#access-headers
+[方法: カスタム パラメーターへのアクセス]に関するページ: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [テーブルの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193162.aspx
-[NSDictionary オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=301965
+[NSDictionary オブジェクト]に関するページ: http://go.microsoft.com/fwlink/p/?LinkId=301965
 [ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[モバイル サービス テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[Mobile Services テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+
+
+<!--HONumber=42-->

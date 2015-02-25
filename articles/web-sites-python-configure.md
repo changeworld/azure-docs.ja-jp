@@ -1,133 +1,404 @@
-﻿<properties urlDisplayName="Configuring Python with Azure Websites" pageTitle="Azure Websites での Python の構成" metaKeywords="" description="このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure Websites に作成して構成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="Python" title="Configuring Python with Azure Websites" authors="huvalo" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Azure Websites での Python の構成" 
+	description="このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure Websites に作成して構成する方法について説明します。" 
+	services="web-sites" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="08/01/2014" ms.author="huvalo" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
+	ms.date="12/17/2014" 
+	ms.author="huvalo"/>
 
 
 
 
-# Azure Websites での Python の構成 #
+# Azure Websites での Python の構成
 
-このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure Websites に作成して構成する方法について説明します。Azure Websites は簡単に使い始めることができ、Python アプリケーションを自由に他の Azure サービスに拡張することができます。Azure Websites プラットフォームには、Python (2.7.3 または 3.4.0 のどちらか適切な方) が用意されているほか、Python 向けの汎用 wfastcgi.py FastCGI ハンドラーが含まれています。Python ハンドラーを使用するように Web サイトを構成するだけでよく、それ以外の作業は必要ありません。 
+このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure Websites に作成して構成する方法について説明します。
 
-> [WACOM.NOTE] Azure Websites ポータルで使用する Python のバージョンを選択するには、Web サイトの [構成] タブを開き、**[Python バージョン]** の設定を変更します。
+仮想環境や、requirements.txt を使用したパッケージ インストールなどの Git デプロイの追加の機能を説明します。
 
-Azure Websites に Django フレームワークを構成する、より高度な例については、チュートリアルを参照してください  
-([http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django])(http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django)。  
++ [Bottle、Django、Flask](#bottle-django-flask)
++ [ポータルでの Web サイトの作成](#website-creation-on-portal)
++ [Git 発行](#git-publishing)
++ [アプリケーションの概要](#application-overview)
++ [WSGI ハンドラー](#wsgi-handler)
++ [仮想環境](#next-steps)
++ [パッケージの管理](#next-steps)
++ [Python バージョン](#next-steps)
++ [仮想環境のプロキシ](#virtual-environment-proxy)
++ [Git デプロイのカスタマイズ](#customize-git-deployment)
++ [トラブルシューティング - デプロイ](#troubleshooting-deployment)
++ [トラブルシューティング - パッケージのインストール](#troubleshooting-package-installation)
++ [トラブルシューティング - 仮想環境](#troubleshooting-virtual-environment)
 
-## WSGI サポート
 
-WSGI は、[PEP 3333]で規定された Python の標準です。(http://www.python.org/dev/peps/pep-3333/) Web サーバーと Python 間のインターフェイスを定義します。各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。今日普及している Python Web フレームワークには WSGI が使用されています。Web フレームワークに必要な機能は Azure Websites に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
+<h2><a name="bottle-django-flask"></a>Bottle、Django、Flask</h2>
 
-## Web サイトの作成
+Azure ギャラリーには、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。最初の Azure Web サイトを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
 
-このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure 管理ポータルにアクセスできることを前提としています。Web サイトを作成するにあたっての詳しいガイダンスについては、[http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites] を参照してください(http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites)。
- 
-簡単に言えば、既存の Web サイトがない場合、Azure 管理ポータルから自分で作成することができます。[Web サイト] 機能を選択し、目的の Web サイトの URL を指定して、[簡易作成] オプションを使用します。
+- [Bottle を使用した Web サイトの作成][]
+- [Django を使用した Web サイトの作成][]
+- [Flask を使用した Web サイトの作成][]
+
+
+<h2><a name="website-creation-on-portal"></a>ポータルでの Web サイトの作成</h2>
+
+このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure 管理ポータルにアクセスできることを前提としています。
+
+既存の Web サイトがない場合、Azure 管理ポータルから自分で作成できます。左下の [新規] ボタンをクリックします。ウィンドウが表示されます。[コンピューティング]、[Web サイト]、[簡易作成] の順にクリックします。
 
 ![](./media/web-sites-python-configure/configure-python-create-website.png)
 
-## Git 発行
 
-Git 発行を構成するには、新たに作成した Web サイトの [クイック スタート] タブまたは [ダッシュボード] タブを使用します。このチュートリアルでは、Python Web サイトの作成と管理、Azure Websites への発行を Git を使用して行います。 
+<h2><a name="git-publishing"></a>Git 発行</h2>
+
+Git 発行を構成するには、新たに作成した Web サイトの [クイック スタート] タブまたは [ダッシュボード] タブを使用します。このチュートリアルでは、Python Web サイトの作成と管理、Azure Websites への発行を Git を使用して行います。
 
 ![](./media/web-sites-python-configure/configure-python-git.png)
 
 Git 発行の設定が完了すると、Git リポジトリが作成されて Web サイトに関連付けられます。このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web サイトのコンテンツを Azure Websites にプッシュしてください。
 
-## Web サイトの内容
 
-基本的な Python アプリケーションを例として取り上げます。Azure Websites で Python サポートを活かすために最低限必要な作業がわかりやすいように、このアプリケーションには基本的な WSGI ハンドラーが備わっています。このスケルトン Python アプリケーションを土台にして、さまざまなソリューションを作成することができます。次の例の難易度を超えた、本格的な Web フレームワークを作成することも可能です。  
+<h2><a name="application-overview"></a>アプリケーションの概要</h2>
 
-次に示しているのは、基本的な WSGI ハンドラーのコードです。[PEP 3333] 仕様において、(http://www.python.org/dev/peps/pep-3333/) WSGI に準拠したアプリケーションのスターティング ポイントとして推奨されているコードと似ています。Web サイト ルートの ConfigurePython フォルダーに ConfigurePython.py という名前のファイルを作成し、この内容を保存しました。
+次のセクションでは、次のファイルが作成されます。これらは、Git リポジトリのルートに配置する必要があります。
 
-	def application(environ, start_response):
-	    status = '200 OK'
-	    response_headers = [('Content-type', 'text/plain')]
-	    start_response(status, response_headers)
-	    yield 'Hello from Azure Websites\n'
-
-*application* は Python の呼び出し可能型です。WSGI 準拠サーバーから呼び出されるエントリ ポイントとして機能します。この呼び出し可能型オブジェクトは、次に示す 2 つの位置指定引数を受け取ります。 
-
-* *environ*: 各種の環境変数を登録したディクショナリ
-* *start_response*: HTTP ステータスと応答ヘッダーの転送を目的に Web サーバーから渡される呼び出し可能型。
-
-このハンドラーは、要求を受け取るとその都度 "Hello from Azure Websites" というプレーンテキストを返します。
-
-## 構成の方法
-
-Azure Websites に対する Python アプリケーションの構成には 2 とおりの方法があります。
-
-<h3 id="option1">方法 1:ポータル</h3>
-
-1.1.ポータルの [構成] タブで FastCGI ハンドラーを登録します。
-この例では、Azure Websites に用意されている Python 用 FastCGI ハンドラーを使用しています。同じようにするには、スクリプト プロセッサと FastCGI ハンドラーの引数に次のパスを使用します。
-
-* Python スクリプト プロセッサのパス:D:\python27\python.exe
-* Python FastCGI ハンドラーのパス:D:\python27\scripts\wfastcgi.py
-
-![](./media/web-sites-python-configure/configure-python-handler-mapping.png)
-
-1.2.同じくポータルの [構成] タブでアプリケーションの設定を構成します。
-アプリケーションの設定は環境変数に変換されます。Python アプリケーションで必要となる構成値には、この機構を使用できます。ここでは、基本的なアプリケーションの例として、次のように構成しました。
-
-* PYTHONPATH は、モジュールの検索先ディレクトリに関する情報を Python に伝えます。Azure Websites では、便宜的に D:\home\site\wwwroot が Web サイトのルートとして指定されます。 
-* WSGI\_HANDLER は、モジュール (またはパッケージ) の名前と使用する属性を記録します。
-
-![](./media/web-sites-python-configure/configure-python-app-settings.png)
-
-<h3 id="option2">方法 2: web.config</h3>
-もう 1 つは、Web サイトのルートにある web.config ファイルを使用して、この後説明する各種処理を実行する方法です。web.config を使用した方が、Web アプリケーションの移植性は高くなります。Web アプリケーションには、2 とおりのアプローチで要求をルーティングすることが可能です。1 つは、"*" というパスを処理するようにハンドラーを設定する方法です。この場合、IIS は、受信したすべての要求を Python 経由でルーティングします。もう 1 つは、パスを具体的に設定する方法です。この場合、Python は、設定されたパスだけを処理対象とし、URL の書き換えによって、あらかじめ決められたパスに各種 URL をリダイレクトします。実際にお勧めするのは、後者のアプローチです。要求のターゲットとして機能する空のハンドラー ファイル (この例では handler.fcgi) を Web サイト ルート配下に置くことで、より高いパフォーマンスが得られます。前者のシナリオでは、静的なコンテンツ (画像ファイル、スタイル シートなど) への要求を含め、すべての要求が Python を経由しなければならず、Web サーバーが静的ファイル用に備えているアクセス最適化の効果が活かされません。後者のアプローチを採用することで、静的コンテンツを効率的に返すことができ、Python の呼び出しを必要最小限に抑えることができます。
-
-2.1.PYTHONPATH 変数を指定します。 
-> これは、アプリケーション コードの検索先を Python に伝える変数です。この場合も D:\home\site\wwwroot が Web サイトの絶対パスとして使用されます。
-
-2.2.WSGI\_HANDLER 変数を設定します。
-> この値は、WSGI ハンドラーの呼び出しを Python に命令するために Azure Websites が使用します。この変数は Python の式を値として持ち、実行時に、呼び出し可能型を WSGI ハンドラーとして返します。 
-
-2.3.Python のハンドラーを追加します。
-> handler.fcgi というパスに対する要求が Python によって処理されることを、このハンドラーで Azure Websites に伝えます。独自の FastCGI ハンドラーや Python 開発スタックを採用する場合を除き、ハンドラーの構文は、次の例に示している &lt;handlers&gt; タグ内の体裁を厳密に踏襲することが大切です。
-
-2.4.handler.fcgi. の URL を書き換えます。
-> 常時 handler.fcgi を要求することは、決して最善の方法とは言えません。Python ハンドラーによって処理されるファイルのパスを選ぶために、ここでは URL の書き換えを使用し、すべての URL が独自の Python ハンドラーによって処理されるようにしています。
-
-	<configuration>
-  		<appSettings>
-    		<add key="pythonpath" value="D:\home\site\wwwroot\ConfigurePython" />
-    		<add key="WSGI_HANDLER" value="ConfigurePython.application" />
-  		</appSettings>
-  		<system.webServer>
-    		<handlers>
-      			<add name="PythonHandler" 
-           		verb="*" path="handler.fcgi" 
-           		modules="FastCgiModule" 
-           		scriptProcessor="D:\Python27\Python.exe|D:\Python27\Scripts\wfastcgi.py" 
-           		resourceType="Either" />
-   			</handlers>
-			<rewrite>
-	    		<rules>
-					<rule name="Configure Python" stopProcessing="true">
-		    			<match url="(.*)" ignoreCase="false" />
-		    			<conditions>
-							<add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-		    			</conditions>
-		    			<action type="Rewrite" url="handler.fcgi/{R:1}" appendQueryString="true" />
-					</rule>
-	    		</rules>
-			</rewrite>
-  		</system.webServer>
-	</configuration> 
-
-この例で Web サイト ルートのフォルダー構造は、次のようになっています (Python のフォルダー名とファイル名は大文字と小文字が区別されるため、web.config にそのとおり反映されています)。
-
-* ConfigurePython\ConfigurePython.py
-* web.config
-* handler.fcgi
-
-handler.fcgi に対するすべての URL を書き換えて、そのパスを FastCGI 経由で Python に渡すため、同じ名前のプレースホルダー ファイルを作成する必要があります。そのようにしないと、IIS から HTTP 404 エラーが返されます。これは、IIS FastCGI モジュールの内部的な動作です。要求されたファイルは、実際に存在しない限り、指定されたスクリプト プロセッサ アプリケーションに渡せないようになっています。
-
-Web サイトにアクセスして正しく構成されたかをテストしてみましょう。アクセスすると、"Hello from Azure Websites" というメッセージが表示されます。
-
-![](./media/web-sites-python-configure/configure-python-result.png)
+    app.py
+    requirements.txt
+    runtime.txt
+    web.config
+    ptvs_virtualenv_proxy.py
 
 
-<!--HONumber=35.1-->
+<h2><a name="wsgi-handler"></a>WSGI ハンドラー</h2>
+
+WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定された Python の標準です。Web サーバーと Python 間のインターフェイスを定義します。各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。今日普及している Python Web フレームワークには WSGI が使用されています。Web フレームワークに必要な機能は Azure Websites に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
+
+次は、カスタム ハンドラーを定義する  `app.py` の例です。
+
+    def wsgi_app(environ, start_response):
+        status = '200 OK'
+        response_headers = [('Content-type', 'text/plain')]
+        start_response(status, response_headers)
+        response_body = 'Hello World'
+        yield response_body.encode()
+
+    if __name__ == '__main__':
+        from wsgiref.simple_server import make_server
+
+        httpd = make_server('localhost', 5555, wsgi_app)
+        httpd.serve_forever()
+
+ `python app.py` を使用してこのアプリケーションをローカルで実行し、その後 Web ブラウザーで `http://localhost:5555` を参照できます。
+
+
+<h2><a name="virtual-environment"></a>仮想環境</h2>
+
+上記の例のアプリは外部パッケージを必要としませんが、アプリケーションによっては外部パッケージが必要になる場合があります。
+
+外部のパッケージとの依存関係を管理するために、Azure の Git デプロイでは、仮想環境の作成がサポートされています。
+
+Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、 `env` という名前の仮想環境が自動的に作成されます。これは、最初のデプロイ、または選択した Python ランタイムを変更した後のデプロイ時に発生します。
+
+デプロイ用に仮想環境をローカルで作成する場合、Git リポジトリには含めないでください。
+
+
+<h2><a name="package-management"></a>パッケージの管理</h2>
+
+requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。これはデプロイごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
+
+例 `requirements.txt`:
+
+    azure==0.8.4
+
+
+<h2><a name="python-version"></a>Python バージョン</h2>
+
+[AZURE.INCLUDE [web-sites-python-customizing-runtime](../includes/web-sites-python-customizing-runtime.md)]
+
+例 `runtime.txt`:
+
+    python-2.7
+
+
+<h2><a name="web-config"></a>Web.config</h2>
+
+サーバーによる要求の処理方法を指定するには、web.config ファイルを作成する必要があります。
+
+リポジトリに web.x.y.config ファイルがある場合は (ここでは x.y は選択した Python ランタイム)、Azure が適切なファイルを web.config として自動的にコピーします。
+
+次の例の web.config は、次のセクションで説明する仮想環境プロキシ スクリプトに依存します。これらの例は、上記の  `app.py` の例で使用した WSGI ハンドラーによって動作します。
+
+Python 2.7 用の  `web.config` の例:
+
+    <?xml version="1.0"?>
+    <configuration>
+      <appSettings>
+        <add key="WSGI_ALT_VIRTUALENV_HANDLER" value="app.wsgi_app" />
+        <add key="WSGI_ALT_VIRTUALENV_ACTIVATE_THIS"
+             value="D:\home\site\wwwroot\env\Scripts\activate_this.py" />
+        <add key="WSGI_HANDLER"
+             value="ptvs_virtualenv_proxy.get_virtualenv_handler()" />
+        <add key="PYTHONPATH" value="D:\home\site\wwwroot" />
+      </appSettings>
+      <system.web>
+        <compilation debug="true" targetFramework="4.0" />
+      </system.web>
+      <system.webServer>
+        <modules runAllManagedModulesForAllRequests="true" />
+        <handlers>
+          <remove name="Python273_via_FastCGI" />
+          <remove name="Python340_via_FastCGI" />
+          <add name="Python FastCGI"
+               path="handler.fcgi"
+               verb="*"
+               modules="FastCgiModule"
+               scriptProcessor="D:\Python27\python.exe|D:\Python27\Scripts\wfastcgi.py"
+               resourceType="Unspecified"
+               requireAccess="Script" />
+        </handlers>
+        <rewrite>
+          <rules>
+            <rule name="Static Files" stopProcessing="true">
+              <conditions>
+                <add input="true" pattern="false" />
+              </conditions>
+            </rule>
+            <rule name="Configure Python" stopProcessing="true">
+              <match url="(.*)" ignoreCase="false" />
+              <conditions>
+              </conditions>
+              <action type="Rewrite"
+                      url="handler.fcgi/{R:1}"
+                      appendQueryString="true" />
+            </rule>
+          </rules>
+        </rewrite>
+      </system.webServer>
+    </configuration>
+
+
+Python 3.4 用の  `web.config` の例:
+
+    <?xml version="1.0"?>
+    <configuration>
+      <appSettings>
+        <add key="WSGI_ALT_VIRTUALENV_HANDLER" value="app.wsgi_app" />
+        <add key="WSGI_ALT_VIRTUALENV_ACTIVATE_THIS"
+             value="D:\home\site\wwwroot\env\Scripts\python.exe" />
+        <add key="WSGI_HANDLER"
+             value="ptvs_virtualenv_proxy.get_venv_handler()" />
+        <add key="PYTHONPATH" value="D:\home\site\wwwroot" />
+      </appSettings>
+      <system.web>
+        <compilation debug="true" targetFramework="4.0" />
+      </system.web>
+      <system.webServer>
+        <modules runAllManagedModulesForAllRequests="true" />
+        <handlers>
+          <remove name="Python273_via_FastCGI" />
+          <remove name="Python340_via_FastCGI" />
+          <add name="Python FastCGI"
+               path="handler.fcgi"
+               verb="*"
+               modules="FastCgiModule"
+               scriptProcessor="D:\Python34\python.exe|D:\Python34\Scripts\wfastcgi.py"
+               resourceType="Unspecified"
+               requireAccess="Script" />
+        </handlers>
+        <rewrite>
+          <rules>
+            <rule name="Static Files" stopProcessing="true">
+              <conditions>
+                <add input="true" pattern="false" />
+              </conditions>
+            </rule>
+            <rule name="Configure Python" stopProcessing="true">
+              <match url="(.*)" ignoreCase="false" />
+              <conditions>
+              </conditions>
+              <action type="Rewrite" url="handler.fcgi/{R:1}" appendQueryString="true" />
+            </rule>
+          </rules>
+        </rewrite>
+      </system.webServer>
+    </configuration>
+
+
+パフォーマンスを向上させるために、静的ファイルは、Python コードを介さずに、Web サーバーによって直接処理されます。
+
+上記の例では、静的ファイルのディスク上の場所は URL の場所と一致する必要があります。つまり、 `http://pythonapp.azurewebsites.net/static/site.css` への要求は、ディスクの  `\static\site.css` にあるファイルを使用します。
+
+URL の場所とは別のディスク上の場所にあるファイルを使用するように、ルール  `Static Files` を構成することもできます。次のルール定義では、 `http://pythonapp.azurewebsites.net/static/site.css` への要求は、 `\static\site.css` ではなく、ディスクの  `\FlaskWebProject\static\site.css` にあるファイルを使用します。
+
+    <rule name="Static Files" stopProcessing="true">
+      <match url="^/static/.*" ignoreCase="true" />
+      <action type="Rewrite" url="^/FlaskWebProject/static/.*" appendQueryString="true" />
+    </rule>
+
+`WSGI_ALT_VIRTUALENV_HANDLER` は、WSGI ハンドラーを指定した場所です。上記の例では、ハンドラーはルート フォルダーの  `app.py` の  `wsgi_app` という名前の関数であるため、 `app.wsgi_app` になります。
+
+`PYTHONPATH` はカスタマイズ可能ですが、requirements.txt で指定することで、仮想環境にすべての依存関係をインストールする場合は、変更する必要はありません。
+
+
+<h2><a name="virtual-environment-proxy"></a>仮想環境のプロキシ</h2>
+
+次のスクリプトは、WSGI ハンドラーの取得、仮想環境のアクティブ化、エラーの記録に使用されます。修正することなく、汎用的に使用できます。
+
+ `ptvs_virtualenv_proxy.py` の内容: 
+
+     # ############################################################################
+     #
+     # Copyright (c) Microsoft Corporation. 
+     #
+     # This source code is subject to terms and conditions of the Apache License, Version 2.0. A 
+     # copy of the license can be found in the License.html file at the root of this distribution. If 
+     # you cannot locate the Apache License, Version 2.0, please send an email to 
+     # vspython@microsoft.com. By using this source code in any fashion, you are agreeing to be bound 
+     # by the terms of the Apache License, Version 2.0.
+     #
+     # You must not remove this notice, or any other, from this software.
+     #
+     # ###########################################################################
+
+    import datetime
+    import os
+    import sys
+
+    if sys.version_info[0] == 3:
+        def to_str(value):
+            return value.decode(sys.getfilesystemencoding())
+
+        def execfile(path, global_dict):
+            """Execute a file"""
+            with open(path, 'r') as f:
+                code = f.read()
+            code = code.replace('\r\n', '\n') + '\n'
+            exec(code, global_dict)
+    else:
+        def to_str(value):
+            return value.encode(sys.getfilesystemencoding())
+
+    def log(txt):
+        """Logs fatal errors to a log file if WSGI_LOG env var is defined"""
+        log_file = os.environ.get('WSGI_LOG')
+        if log_file:
+            f = open(log_file, 'a+')
+            try:
+                f.write('%s: %s' % (datetime.datetime.now(), txt))
+            finally:
+                f.close()
+
+    ptvsd_secret = os.getenv('WSGI_PTVSD_SECRET')
+    if ptvsd_secret:
+        log('Enabling ptvsd ...\n')
+        try:
+            import ptvsd
+            try:
+                ptvsd.enable_attach(ptvsd_secret)
+                log('ptvsd enabled.\n')
+            except: 
+                log('ptvsd.enable_attach failed\n')
+        except ImportError:
+            log('error importing ptvsd.\n');
+
+    def get_wsgi_handler(handler_name):
+        if not handler_name:
+            raise Exception('WSGI_HANDLER env var must be set')
+        
+        if not isinstance(handler_name, str):
+            handler_name = to_str(handler_name)
+
+        module_name, _, callable_name = handler_name.rpartition('.')
+        should_call = callable_name.endswith('()')
+        callable_name = callable_name[:-2] if should_call else callable_name
+        name_list = [(callable_name, should_call)]
+        handler = None
+
+        while module_name:
+            try:
+                handler = __import__(module_name, fromlist=[name_list[0][0]])
+                for name, should_call in name_list:
+                    handler = getattr(handler, name)
+                    if should_call:
+                        handler = handler()
+                break
+            except ImportError:
+                module_name, _, callable_name = module_name.rpartition('.')
+                should_call = callable_name.endswith('()')
+                callable_name = callable_name[:-2] if should_call else callable_name
+                name_list.insert(0, (callable_name, should_call))
+                handler = None
+
+        if handler is None:
+            raise ValueError('"%s" could not be imported' % handler_name)
+
+        return handler
+
+    activate_this = os.getenv('WSGI_ALT_VIRTUALENV_ACTIVATE_THIS')
+    if not activate_this:
+        raise Exception('WSGI_ALT_VIRTUALENV_ACTIVATE_THIS is not set')
+
+    def get_virtualenv_handler():
+        log('Activating virtualenv with %s\n' % activate_this)
+        execfile(activate_this, dict(__file__=activate_this))
+
+        log('Getting handler %s\n' % os.getenv('WSGI_ALT_VIRTUALENV_HANDLER'))
+        handler = get_wsgi_handler(os.getenv('WSGI_ALT_VIRTUALENV_HANDLER'))
+        log('Got handler: %r\n' % handler)
+        return handler
+
+    def get_venv_handler():
+        log('Activating venv with executable at %s\n' % activate_this)
+        import site
+        sys.executable = activate_this
+        old_sys_path, sys.path = sys.path, []
+        
+        site.main()
+        
+        sys.path.insert(0, '')
+        for item in old_sys_path:
+            if item not in sys.path:
+                sys.path.append(item)
+
+        log('Getting handler %s\n' % os.getenv('WSGI_ALT_VIRTUALENV_HANDLER'))
+        handler = get_wsgi_handler(os.getenv('WSGI_ALT_VIRTUALENV_HANDLER'))
+        log('Got handler: %r\n' % handler)
+        return handler
+
+
+<h2><a name="customize-git-deployment"></a>Git デプロイのカスタマイズ</h2>
+
+[AZURE.INCLUDE [web-sites-python-customizing-runtime](../includes/web-sites-python-customizing-deployment.md)]
+
+
+<h2><a name="troubleshooting-deployment"></a>トラブルシューティング - デプロイ</h2>
+
+[AZURE.INCLUDE [web-sites-python-troubleshooting-deployment](../includes/web-sites-python-troubleshooting-deployment.md)]
+
+
+<h2><a name="troubleshooting-package-installation"></a>トラブルシューティング - パッケージのインストール</h2>
+
+[AZURE.INCLUDE [web-sites-python-troubleshooting-package-installation](../includes/web-sites-python-troubleshooting-package-installation.md)]
+
+
+<h2><a name="troubleshooting-virtual-environment"></a>トラブルシューティング - 仮想環境</h2>
+
+[AZURE.INCLUDE [web-sites-python-troubleshooting-virtual-environment](../includes/web-sites-python-troubleshooting-virtual-environment.md)]
+
+
+
+[Bottle を使用した Web サイトの作成]: ../web-sites-python-create-deploy-bottle-app
+[Django を使用した Web サイトの作成]: ../web-sites-python-create-deploy-django-app
+[Flask を使用した Web サイトの作成]: ../web-sites-python-create-deploy-flask-app
+
+
+<!--HONumber=42-->

@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Enable diagnostic logging" pageTitle="診断ログの有効化 - Azure Websites" metaKeywords="Azure 診断 Web サイト, Azure の管理ポータル診断, Azure の診断, Web サイト診断, Web サイト デバッグ" description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Enable diagnostic logging for Azure Websites" authors="larryfr" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="診断ログの有効化 - Azure Web サイト" 
+	description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。" 
+	services="web-sites" 
+	documentationCenter=".net" 
+	authors="blackmist" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="larryfr"/>
 
 
 
@@ -10,28 +24,28 @@
 
 Azure では、組み込みの診断機能により、Azure Websites でホストされるアプリケーションのデバッグを容易に行うことができます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-> [WACOM.NOTE] この記事では、Azure の管理ポータル、Azure PowerShell、および Azure クロスプラットフォーム コマンドライン インターフェイスで診断ログを使用する方法を説明します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
+> [AZURE.NOTE] この記事では、Azure の管理ポータル、Azure PowerShell、および Azure クロスプラットフォーム コマンドライン インターフェイスで診断ログを使用する方法を説明します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).」をご覧ください。
 
-##目次##
+##目次 ##
 
-- [Web サイト診断とは](#whatisdiag)
-- [方法: 診断を有効化する](#enablediag)
-- [方法: ログをダウンロードする](#download)
-- [方法: ログをストリーミングする](#streamlogs)
-- [方法: 診断ログを読む](#understandlogs)
+- [新機能:Web サイトの診断。](#whatisdiag)
+- [方法:診断を有効化する](#enablediag)
+- [方法:ログをダウンロードする](#download)
+- [方法:ログをストリーミングする](#streamlogs)
+- [方法:診断ログを読む](#understandlogs)
 - [次のステップ](#nextsteps)
 
 <a name="whatisdiag"></a><h2>Web サイト診断とは</h2>
 
-Azure Websites は、Web サーバーと Web アプリケーション両方からのログ情報の診断機能を備えています。これらは論理的に**サイト診断**と**アプリケーション診断**に分けられます。
+Azure Web サイトは、Web サーバーと Web アプリケーション両方からのログ情報の診断機能を備えています。これらは論理的に**サイト診断**と**アプリケーション診断**に分けられます。
 
 ###サイト診断
 
 サイト診断では、次の機能を有効または無効にできます。
 
-- **詳細なエラー ログ**: 障害 (ステータス コード 400 以上) を示す HTTP ステータス コードの詳細なエラー情報をログに記録します。このログには、サーバーがエラー コードを返した理由の特定に役立つ情報が記録されている場合があります。
-- **失敗した要求トレース**: 要求の処理に使用されたコンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報をログに記録します。このログは、サイトのパフォーマンス向上、または特定の HTTP エラーが返される原因の切り分けに役立つ場合があります。
-- **Web サーバーのログ記録**: [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して、Web サイト上のすべての HTTP トランザクションをログに記録します。このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
+- **詳細なエラー ログ** - 障害 (ステータス コード 400 以上) を示す HTTP ステータス コードの詳細なエラー情報をログに記録します。このログには、サーバーがエラー コードを返した理由を特定するために役立つ情報が記録されている場合があります。
+- **失敗した要求トレース** - 要求の処理に使用されたコンポーネントのトレースや各 IIS コンポーネントにかかった時間など、失敗した要求の詳細情報をログに記録します。このログが便利なのは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーが返される理由を特定したりする場合です。
+- **Web サーバーのログ記録** - [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して、Web サイト上のすべての HTTP トランザクションをログに記録します。このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 ###アプリケーション診断
 
@@ -39,57 +53,57 @@ Azure Websites は、Web サーバーと Web アプリケーション両方か�
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-アプリケーション診断では、コードの特定の部分が使用されるときの情報を取り込むことにより、実行中のアプリケーションのトラブルシューティングを行うことができます。この診断は、コードが特定の経路をとる理由を突き止めるときに最も役立ちます。通常は、その経路がエラーやその他の望ましくない動作につながる場合です。
+アプリケーション診断では、コードの特定の部分が使用されるときの情報を取り込むことにより、実行中のアプリケーションのトラブルシューティングを行うことができます。この診断が便利なのは、特定のパスがコードによって取られる理由を特定するときです。そのパスの多くは、エラーやその他の望ましくない動作につながるものです。
 
-Visual Studio でアプリケーション診断を使用する方法の詳細については、「[Visual Studio での Azure Web サイトのトラブルシューティング](http://www.windowsazure.com/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
+Visual Studio でアプリケーション診断を使用する方法の詳細については、「[Visual Studio での Azure Web サイトのトラブルシューティング](http://www.windowsazure.com/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」をご覧ください。
 
-> [WACOM.NOTE] web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
+> [AZURE.NOTE] web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
-Azure Websites では、Web サイトにアプリケーションを発行したときにデプロイメント情報もログに記録されます。これは自動的に行われ、展開ログの構成設定はありません。展開ログでは、展開が失敗した理由を特定できます。たとえば、カスタムのデプロイメント スクリプトを使用している場合は、デプロイメント ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
+Azure Web サイトでは、Web サイトにアプリケーションを発行したときにデプロイメント情報もログに記録されます。これは自動的に行われ、展開ログの構成設定はありません。展開ログでは、展開が失敗した理由を特定できます。たとえば、カスタムの展開スクリプトを使用している場合は、展開ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
-<a name="enablediag"></a><h2>方法: 診断を有効化する</h2>
+<a name="enablediag"></a><h2>方法:診断を有効化する</h2>
 
-診断は、[Azure の管理ポータル](https://manage.microsoft.com)で、Azure Web サイトの **[構成]** ページにアクセスすることで有効にできます。**[構成]** ページで、**アプリケーション診断**および**サイト診断**セクションを使用してログを有効にします。
+診断は、[Azure の管理ポータル](https://manage.microsoft.com)で Azure Web サイトの **[構成]** ページにアクセスすることで有効にできます。**[構成]** ページで、**アプリケーション診断**と**サイト診断**を使用してログを有効にします。
 
-**アプリケーション診断**を有効にした場合、**ログ レベル**の選択も必要で、さらに**ファイル システム**、**テーブル ストレージ**、または **BLOB ストレージ**に対してログを有効にするかどうかの選択も必要になります。ログの保存先である 3 つのストレージでは、いずれもログが記録されたイベントについて同じ基本情報が得られますが、**テーブル ストレージ**と **BLOB ストレージ**では、インスタンス ID、スレッド ID、および**ファイル システム**のログよりも精細なタイムスタンプ (目盛り形式) など、追加の情報がログとして記録されます。
+**アプリケーション診断**を有効にした場合、**ログ レベル**と、**ファイル システム**、**テーブル ストレージ**、または **BLOB ストレージ**へのログを有効にするかどうかも選択する必要があります。ログ書き込み先の 3 つの場所のいずれでも、ログ記録されたイベントについて同じ基本的な情報が得られますが、**テーブル ストレージ**と **BLOB ストレージ**には、インスタンス ID、スレッド ID、より詳細なタイムスタンプ (目盛り形式) など、追加の情報がログ記録されます。**ファイル システム**には、このような情報はログ記録されません。
 
-**サイト診断**を有効にすると、**[Web サーバーのログ記録]** で **[ストレージ]** または **[ファイル システム]** を選択する必要があります。**[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。**サイト診断**用のその他すべてのログは、ファイル システムにのみ書き込まれます。
+**サイト診断**を有効にすると、**[Web サーバーのログ記録]** で **[ストレージ]** または **[ファイル システム]** を選択する必要があります。**[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。**サイト診断**用のその他のすべてのログはファイル システムにのみ書き込まれます。
 
-> [WACOM.NOTE]**テーブル ストレージ**または **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションのみがアクセスできます。たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。[Azure SDK](http://www.windowsazure.com/ja-jp/downloads/#) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
+> [AZURE.NOTE] **テーブル ストレージ**または **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。[Azure SDK](http://www.windowsazure.com/ja-jp/downloads/#) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
 
-次に示すのは、**アプリケーション診断**を有効にすると使用できる設定です。
+次に示しているのは、**アプリケーション診断**を有効にすると使用できる設定です。
 
-* **ログ レベル** - 取得された情報を、**情報**、**警告**、**エラー**情報にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。**ログ レベル**は、**ファイル システム**、**テーブル ストレージ**、および **BLOB ストレージ**に対して、それぞれ異なるレベルを設定できます。
+* **ログ レベル** - 取得された情報を、**情報**、**警告**または**エラー**情報にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。**ログ レベル**は、**ファイル システム**、**テーブル ストレージ**、および **BLOB ストレージ**のログ に対して、それぞれ異なるレベルを設定できます。
 * **ファイル システム** - アプリケーション診断情報が Web サイトのファイル システムに保存されます。これらのファイルは、FTP によってアクセスするか、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードできます。
-* **テーブル ストレージ** - 指定された Azure Storage アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
+* **テーブルストレージ** - 指定された Azure Storage アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
 * **BLOB ストレージ** - 指定された Azure Storage アカウントおよび BLOB コンテナーにアプリケーション診断情報が保存されます。
 * **保有期間** - 既定では、**BLOB ストレージ**からログが自動的に削除されることはありません。ログを自動的に削除するには、**[保有期間の設定]** を選択して、ログを保有する日数を入力します。
 
-> [WACOM.NOTE]ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にすることができます。また、それぞれ個別にログ レベルを設定できます。たとえば、BLOB ストレージへの長期にわたるエラーと警告のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にすることができます。
+> [AZURE.NOTE] ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にできます。また、それぞれ個別にログ レベルを設定できます。たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にできます。
 
-> [WACOM.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
+> [AZURE.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
-<a name="download"></a><h2>方法: ログをダウンロードする</h2>
+<a name="download"></a><h2>方法:ログをダウンロードする</h2>
 
 Web サイト ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。さらに、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードすることもできます。
 
 ログが保存されるディレクトリ構造は次のとおりです。
 
-* **アプリケーション ログ**: /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
+* **アプリケーション ログ** - /LogFiles/Application/.このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 
-* **失敗した要求トレース**: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
+* **失敗した要求トレース** - /LogFiles/W3SVC#########/.このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
-* **詳細なエラー ログ**: /LogFiles/DetailedErrors/。このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。 
+* **詳細なエラー ログ** - /LogFiles/DetailedErrors/.このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。 
 
-* **Web サーバー ログ**: /LogFiles/http/RawLogs。このフォルダーには、[W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。 
+* **Web サーバーのログ** - /LogFiles/http/RawLogs.このフォルダーには、[W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。 
 
-* **デプロイ ログ**: /LogFiles/Git。このフォルダーには、Git デプロイメントのログだけでなく、Azure Websites が使用する内部デプロイメント プロセスによって生成されたログも格納されます。
+* **展開ログ** - /LogFiles/Git.このフォルダーには、Git デプロイのログだけでなく、Azure Websites が使用する内部デプロイ プロセスによって生成されたログも格納されます。
 
 ###FTP
 
-FTP を使用して診断情報にアクセスするには、Azure の管理ポータル内 Web サイトの**ダッシュボード**にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[デプロイ/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
+FTP を使用して診断情報にアクセスするには、Azure の管理ポータル内 Web サイトの **[ダッシュボード]** にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[展開/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
 
-> [WACOM.NOTE]**[デプロイ/FTP ユーザー]** エントリが設定されていない場合や、このユーザーのパスワードを忘れた場合は、**ダッシュボード**の **[概要]** セクションで **[展開資格情報のリセット]** リンクを使用することで、新しいユーザーとパスワードを作成できます。
+> [AZURE.NOTE] **[展開/FTP ユーザー]** エントリが設定されていない場合や、このユーザーのパスワードを忘れた場合は、**ダッシュボード**の **[概要]** セクションで**ダッシュボード** リンクを使用することで、新しいユーザーとパスワードを作成できます。
 
 ###Azure PowerShell を使用してダウンロードする
 
@@ -99,7 +113,7 @@ FTP を使用して診断情報にアクセスするには、Azure の管理ポ�
 
 これにより、**-Name** パラメーターにより指定された Web サイトのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
 
-> [WACOM.NOTE]Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
+> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
 ###Azure コマンド ライン ツールを使用してダウンロードする
 
@@ -107,17 +121,17 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 	azure site log download websitename
 
-これにより、"websitename" という名前の Web サイトのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
+これにより、 'websitename' という名前の Web サイトのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
-> [WACOM.NOTE]Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」を参照してください。
+> [AZURE.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」をご覧ください。
 
-<a name="streamlogs"></a><h2>方法: ログをストリーミングする</h2>
+<a name="streamlogs"></a><h2>方法:ログをストリーミングする</h2>
 
 アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。これは、Azure PowerShell または Azure コマンド ライン ツールを使用して開発環境にログ情報をストリーミングすることで実現できます。
 
-> [WACOM.NOTE]一部の種類のログ バッファーはログ ファイルに書き込まれるため、ストリーミング中に無効な順序エラーが発生する可能性があります。たとえば、ユーザーがページにアクセスしたときに発生するアプリケーション ログ エントリは、ページ要求の該当する HTTP ログ エントリより前のストリームに表示されることがあります。
+> [AZURE.NOTE] 一部の種類のログ バッファーはログ ファイルに書き込まれるため、ストリーミング中に無効な順序エラーが発生する可能性があります。たとえば、ユーザーがページにアクセスしたときに発生するアプリケーション ログ エントリは、ページ要求の該当する HTTP ログ エントリより前のストリームに表示されることがあります。
 
-> [WACOM.NOTE] ログのストリーミングでは、**D:\\home\\LogFiles\\** フォルダーに格納されているテキスト ファイルに書き込まれた情報がストリーミングされます。
+> [AZURE.NOTE] ログのストリーミングでは、**D:\\home\\LogFiles\\** に格納されているテキスト ファイルに書き込まれた情報もすべてストリーミングされます。
 
 ###Azure PowerShell を使用してストリーミングする
 
@@ -125,7 +139,7 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 	Get-AzureWebSiteLog -Name websitename -Tail
 
-これによって **-Name** パラメーターにより指定された Web サイトに接続され、ログ イベントが Web サイトで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
+これによって **-Name** パラメーターにより指定された Web サイトに接続され、ログ イベントが Web サイトで発生すると、PowerShell ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかのファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
 特定のイベント (エラーなど) をフィルター処理するには、**-Message** パラメーターを使用します。次に例を示します。
 
@@ -137,7 +151,7 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
 
-> [WACOM.NOTE]Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
+> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
 ###Azure コマンド ライン ツールを使用してストリーミングする
 
@@ -145,25 +159,25 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 	azure site log tail websitename
 
-これにより "websitename" という名前の Web サイトに接続され、ログ イベントが Web サイトで発生したら、ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
+これによって  'websitename' という名前の Web サイトに接続され、ログ イベントが Web サイトで発生したら、ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかのファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-特定のイベント (エラーなど) をフィルター処理するには、**-Filter** パラメーターを使用します。次に例を示します。
+特定のイベント (エラーなど) をフィルター処理するには、**--Filter** パラメーターを使用します。次に例を示します。
 
 	azure site log tail websitename --filter Error
 
-特定のログの種類 (HTTP など) をフィルター処理するには、**-Path** パラメーターを使用します。次に例を示します。
+特定のログの種類 (HTTP など) をフィルター処理するには、**--Path** パラメーターを使用します。次に例を示します。
 
 	azure site log tail websitename --path http
 
-> [WACOM.NOTE]Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」を参照してください。
+> [AZURE.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」をご覧ください。
 
-<a name="understandlogs"></a><h2>方法: 診断ログを読む</h2>
+<a name="understandlogs"></a><h2>方法:診断ログを読む</h2>
 
 ###アプリケーション診断ログ
 
-アプリケーション診断では、ファイル システム、テーブル ストレージ、BLOB ストレージのうち、どれにログを保存するかに応じて、.NET アプリケーション向けの特定の形式で情報が保存されます。格納される一連の基本的なデータは 3 種類すべてのストレージ間で同じで、イベントが発生した日時、イベントを生成したプロセスの ID、イベントの種類 (情報、警告、エラー)、イベントのメッセージから成ります。
+アプリケーション診断では、ファイル システム、テーブル ストレージ、BLOB ストレージのうち、どれにログを保存するかに応じて、.NET アプリケーション向けの特定の形式で情報が保存されます。格納される一連の基本的なデータは、3 種類のすべてのストレージ間で同じで、イベントが発生した日時、イベントを生成したプロセスの ID、イベントの種類 (情報、警告、エラー)、イベントのメッセージです。
 
-__ファイル システム__
+__File system__
 
 ファイル システムにログが記録される行またはストリーミングによって受信する行は、それぞれ以下の形式になります。
 
@@ -175,7 +189,7 @@ __ファイル システム__
 
 ファイル システムにログ記録する場合は、使用できる 3 つのログ記録方法のうちで最も基本的な情報が提供され、時間、プロセス ID、イベント レベル、メッセージのみを確認できます。
 
-__テーブル ストレージ__
+__Table storage__
 
 テーブル ストレージにログを記録する場合は、追加のプロパティを使用して、テーブルに格納されているデータだけでなく、イベントに関するより詳細な情報も簡単に検索できます。テーブルに格納される各エンティティ (行) に次のプロパティ (列) が使用されます。
 
@@ -212,7 +226,7 @@ __テーブル ストレージ__
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">EventId</td>
-<td style="border:1px solid black;vertical-align:top">このイベントの ID<br>何も指定しない場合は既定で 0</td>
+<td style="border:1px solid black;vertical-align:top">このイベントのイベント ID<br>指定されていない場合は既定値は 0</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">InstanceId</td>
@@ -232,7 +246,7 @@ __テーブル ストレージ__
 </tr>
 </table>
 
-__BLOB ストレージ__
+__Blob storage__
 
 BLOB ストレージにログを記録するときには、値をコンマで区切った (CSV) 形式で格納されます。テーブル ストレージと同様、追加のフィールドがログに記録されて、イベントについてより詳細な情報が提供されます。CSV 内の各行に次のプロパティが使用されます。
 
@@ -265,7 +279,7 @@ BLOB ストレージにログを記録するときには、値をコンマで区
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">EventId</td>
-<td style="border:1px solid black;vertical-align:top">このイベントの ID<br>何も指定しない場合は既定で 0</td>
+<td style="border:1px solid black;vertical-align:top">このイベントのイベント ID<br>指定されていない場合は既定値は 0</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Pid</td>
@@ -286,7 +300,7 @@ BLOB に格納されるデータは次のようになります。
 	date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
 	2014-01-30T16:36:52,Error,mywebsite,6ee38a,635266966128818593,0,3096,9,An error occurred
 
-> [WACOM.NOTE] この例に示しているように、ログの最初の行は列ヘッダーになります。
+> [AZURE.NOTE] この例に示しているように、ログの最初の行は列ヘッダーになります。
 
 ###失敗した要求トレース
 
@@ -302,7 +316,7 @@ BLOB に格納されるデータは次のようになります。
 
 Web サーバー ログは [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)で書式設定されます。この情報は、テキスト エディターを使用して表示したり、[Log Parser](http://go.microsoft.com/fwlink/?LinkId=246619) などのユーティリティで解析したりできます。
 
-> [WACOM.NOTE] Azure Websites によって生成されるログでは __s-computername__、__s-ip__、または __cs-version__ のフィールドはサポートされていません。
+> [AZURE.NOTE] Windows Azure の Web サイトによって生成されるログでは、__s-computername__、__s-ip__、__cs-version__ のフィールドはサポートされていません。
 
 <a name="nextsteps"></a><h2>次のステップ</h2>
 
@@ -311,3 +325,6 @@ Web サーバー ログは [W3C 拡張ログ ファイル形式](http://msdn.mic
 - [Visual Studio での Azure Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
 - [HDInsight での Web サイト ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
+
+
+<!--HONumber=42-->

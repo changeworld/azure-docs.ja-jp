@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Compute Intensive .NET Task" pageTitle="仮想マシン上で多くのコンピューティング処理を要する .NET タスク - Azure" metaKeywords="deploying compute .NET application, vm .NET application, Service Bus queue monitoring, remote monitoring" description="Azure の仮想マシンに多くのコンピューティング処理を要する .NET アプリケーションをデプロイして実行する方法と、Service Bus キューを使用して進捗をリモート監視する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter=".NET" title="How to run a compute-intensive task in .NET on an Azure virtual machine" authors="wpickett" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+﻿<properties pageTitle="仮想マシン上で多くのコンピューティング処理を要する .NET タスク - Azure" description="Azure の仮想マシンに多くのコンピューティング処理を要する .NET アプリケーションをデプロイして実行する方法と、Service Bus キューを使用して進捗をリモート監視する方法について説明します。" services="virtual-machines" documentationCenter=".net" authors="" manager="wpickett" editor="mollybos"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/24/2014" ms.author="wpickett" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/24/2014" ms.author="wpickett"/>
 
 # Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法
 
@@ -26,11 +26,11 @@ Azure では、仮想マシンを使用して多くのコンピューティン�
 
 ![Traveling Salesman Problem client][client_output]
 
-[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
+[AZURE.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 <h2>仮想マシンを作成するには</h2>
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]** をクリックします。
 3. **[仮想マシン]** をクリックします。
 4. **[簡易作成]** をクリックします。
@@ -43,7 +43,7 @@ Azure では、仮想マシンを使用して多くのコンピューティン�
 
 <h2>仮想マシンにリモート ログインするには</h2>
 
-1. [管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [管理ポータル](https://manage.windowsazure.com)にログオンします。
 2. **[仮想マシン]** をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
 4. **[接続]** をクリックします。
@@ -55,7 +55,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 サービス名前空間を作成するには:
 
-1.  [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1.  [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2.  管理ポータルの左のナビゲーション ウィンドウで、**[サービス バス]** をクリックします。
 3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。
 
@@ -64,10 +64,9 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
     ![Create a namespace dialog][create_namespace_dialog]
 5.  入力した名前が利用できることを確認できたら、名前空間をホストするリージョンを選択します (仮想マシンをホストするリージョンと同じリージョンを必ず使用してください)。
-    <div class="dev-callout">
-    <strong>重要</strong>
-    <p>仮想マシンが使用するリージョンまたは使用する予定のリージョンと**同じリージョン**を選択してください。そうすることで、パフォーマンスが最高になります。</p>
-    </div>
+
+    > [AZURE.IMPORTANT]仮想マシンが使用するリージョンまたは使用する予定のリージョンと**同じリージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
+
 6. ログオンしたアカウントに複数の Azure サブスクリプションがある場合は、名前空間で使用するサブスクリプションを選択します(ログオンしたアカウントにサブスクリプションが 1 つしかない場合、サブスクリプションのドロップダウン リストは表示されません)。
 7. チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し終わるまでに、数分間かかる場合があります。
 
@@ -79,7 +78,8 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。
 
-1.  左側のナビゲーション ウィンドウで **[サービス バス]** ノードをクリックして、利用可能な名前空間の一覧を表示します。   
+1.  左のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックして、
+    使用できる名前空間の一覧を表示します。   
     ![Available namespaces screenshot][available_namespaces]
 2.  表示された一覧から先ほど作成した名前空間を選択します。   
     ![Namespace list screenshot][namespace_list]
@@ -514,12 +514,12 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 プログラムはすべての経路の調査が完了すると終了します。
 
-> [WACOM.NOTE]
+> [AZURE.NOTE]
 > 指定した数値が大きいほど、プログラムの実行時間は長くなります。たとえば、14 都市の場合は数分で実行できても、15 都市になると実行に数時間かかることがありえます。16 都市以上にすると実行時間が数日になる可能性があります (最終的には数週間、数か月、数年かかります)。これは都市数が増えるにつれてプログラムが評価する順列の数が急増するためです。
  
 <h3>監視用のクライアント アプリケーションの実行方法</h3>
 1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** のように指定します。
 3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を c:\TSP フォルダーにコピーします。
 4. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
 5. 次のコマンドを実行します。
@@ -539,7 +539,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 問題を解くアプリケーションとクライアント アプリケーションのどちらでも、**Ctrl + C** キーを押すと、通常の処理が完了する前にアプリケーションが終了します。
 
 <h2>TSPSolver を使用しないでキューを作成し削除する方法</h2>
-TSPSolver を使用してキューを作成したり削除したりする代わりに、[Azure の管理ポータル](https://manage.windowsazure.com)を使用してキューの作成と削除を行うこともできます。管理ポータルの  サービス バス セクションには、キューを作成し削除する機能のほかに、接続文字列や発行者、アクセス キーを取得する機能も用意されています。また、サービス バス キューのダッシュボードを表示して、発着信メッセージのメトリックを表示することもできます。 
+TSPSolver を使用してキューを作成したり削除したりする代わりに、[Azure 管理ポータル](https://manage.windowsazure.com)を使用してキューの作成と削除を行うこともできます。管理ポータルの  サービス バス セクションには、キューを作成し削除する機能のほかに、接続文字列や発行者、アクセス キーを取得する機能も用意されています。また、サービス バス キューのダッシュボードを表示して、発着信メッセージのメトリックを表示することもできます。 
 
 [solver_output]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPSolver.png
 [client_output]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPClient.png
@@ -550,4 +550,5 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
 [namespace_list]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

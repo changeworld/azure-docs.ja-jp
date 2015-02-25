@@ -1,12 +1,12 @@
-﻿<properties urlDisplayName="Validate Data - HTML5" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (HTML 5) | モバイル デベロッパー センター" metaKeywords="" description="HTML アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="サーバー スクリプトを使用したデータの検証および変更 (HTML 5) | モバイル デベロッパー センター" description="HTML アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
 
 # サーバー スクリプトを使用したモバイル サービスのデータの検証および変更 
 
-[WACOM.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
 
-このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように HTML アプリも更新します。
+このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように HTML アプリケーションも更新します。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -21,7 +21,7 @@
 
 ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
+1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
 
    	![][0]
 
@@ -47,23 +47,19 @@
 
     このスクリプトは、**TodoItem.text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** 関数が呼び出されて挿入を完了します。
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>登録したスクリプトを <strong>[スクリプト]</strong> タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>	
+    > [AZURE.TIP] 登録したスクリプトを **[スクリプト]** タブで削除できます。**[クリア]** をクリックし、**[保存]** をクリックします。	
 
 ## <a name="update-client-validation"></a>クライアントの更新
 
 モバイル サービスはデータを検証してエラー応答を送信するため、検証からのエラー応答を処理できるようにアプリケーションを更新する必要があります。
 
-1. 「[データの使用]」チュートリアルを実行したときに変更したプロジェクトの **server** サブフォルダーから次のコマンド ファイルのいずれかを実行します。
+1. チュートリアル「[データの使用]」を実行したときに変更したプロジェクトの **server** サブフォルダーから次のコマンド ファイルのいずれかを実行します。
 
-	+ **launch-windows** (Windows コンピューター) 
+	+ **launch-windows** (Windows コンピューター)
 	+ **launch-mac.command** (Mac OS X コンピューター)
 	+ **launch-linux.sh** (Linux コンピューター)
 
-	<div class="dev-callout"><b>注</b>
-		<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
-	</div>
+	> [AZURE.NOTE] Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。
 
 	これにより、アプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
@@ -90,11 +86,9 @@
 
 前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
-<div class="dev-callout"><b>注</b>
-<p>ここで紹介する <b>createdAt</b> タイムスタンプ プロパティは、現在は冗長になっています。モバイル サービスによって、各テーブルに対応する <b>__createdAt</b> システム プロパティが自動的に作成されます。</p>
-</div>
+> [AZURE.NOTE] ここで紹介する **createdAt** タイムスタンプ プロパティは、現在は冗長になっています。Mobile Services によって、各テーブルに対応する **__createdAt** システム プロパティが自動的に作成されます。
 
-1. 管理ポータル**の [スクリプト]** タブで、現在の[] **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **Insert** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -107,11 +101,9 @@
             }
         }
 
-    この関数は、**request**.**execute** の呼び出しで、オブジェクトへの挿入前に、新しい **createdAt** タイムスタンプ プロパティをそのオブジェクトに追加することにより、前の挿入スクリプトを強化しています。 
+    この関数は、前の挿入スクリプトを強化するものです。新しい **createdAt** タイムスタンプ プロパティを、**request**.**execute** の呼び出しによりオブジェクトの挿入前にそのオブジェクトに追加します。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>createdAt</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。</p>
-    </div>
+    > [AZURE.IMPORTANT] 挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点で Mobile Services によって **TodoItem** テーブルに **createdAt** 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。
 
 2. Web ブラウザーで、ページを再読み込みし、**[Add new task]** にテキストを入力し (10 文字未満)、**[Add]** をクリックします。
 
@@ -131,7 +123,7 @@
 
 		function refreshTodoItems() {
 			var query = todoItemTable.where(function () {
-                return (this.complete === false && this.createdAt !== null);
+                return (this.complete === false);
             });
 
 			query.read().then(function(todoItems) {
@@ -156,7 +148,7 @@
 
    	これにより、新しい **createdAt** プロパティの日付部分が表示されます。 
 
-2. エディターで、style.css ファイルを開き、`item-text` クラスのスタイルを次のコードで置き換えます。
+2. エディターで、style.css ファイルを開き、 `item-text` クラスのスタイルを次のコードで置き換えます。
 
 		.item-text { width: 70%; height: 26px; line-height: 24px; 
 			border: 1px solid transparent; background-color: transparent; }
@@ -182,11 +174,11 @@
 
 これで、データの使用に関するチュートリアルは終了です。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
 
-詳細については、「[Work with server scripts (サーバー スクリプトの使用)]」と「[Mobile Services HTML/JavaScript How-to Conceptual Reference (Mobile Services HTML/JavaScript の使用方法の概念リファレンス)]」を参照してください。
+詳細については、「[サーバー スクリプトの操作]」と「[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]」を参照してください
 
 
 <!-- Anchors. -->
@@ -203,13 +195,16 @@
 
 
 <!-- URLs. -->
-[Work with server scripts (サーバー スクリプトの使用)]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts
+[サーバー スクリプトの使用]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-html
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-html
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
 
 [管理ポータル]: https://manage.windowsazure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
+
+
+<!--HONumber=42-->

@@ -1,10 +1,24 @@
-﻿<properties pageTitle="Appcelerator Titanium での Azure Mobile Services の使用" metaKeywords="" description="次のチュートリアルに従って、Appcelerator 開発用の Azure Mobile Services を使用します。 " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Appcelerator Titanium での Azure Mobile Services の使用" 
+	description="次のチュートリアルに従って、Appcelerator 開発用の Azure Mobile Services を使用します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="11/24/2014" ms.author="Appcelerator team;mahender" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-appcelerator" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="mahender"/>
 
 # <a name="getting-started"> </a>モバイル サービスの使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
 このチュートリアルでは、Appcelerator で構築したアプリケーションで Azure Mobile Services を活用する方法について説明します。
 
@@ -18,7 +32,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 新しい Appcelerator アプリケーションを作成する
 
@@ -32,7 +46,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 5. Mobile Services ポータルに戻り、**ダッシュボード**で **[キーの管理]** をクリックし、**アプリケーション キー**をコピーします。
 
-5. アプリケーションの index.js で、`<---App Name---->` および `<------------APP KEY------------>` を、使用するモバイル サービスの値と置き換えます。
+5. アプリケーションの index.js で、`<---App Name---->` と `<------------APP KEY------------>` をモバイル サービスの値で置き換えます。
 
 ## 新しい Appcelerator アプリケーションを実行する ##
 
@@ -50,7 +64,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
     ![][2]
 
-4.	プロジェクト セクションで選択したプロジェクトが表示されます。または、[Copy projects into workspace] オプションをオンにすると、ダウンロードしたプロジェクトがワークスペースにコピーされます。最後に、[Finish] をクリックして、Titanium Studio でプロジェクトを開きます。
+4.	プロジェクト セクションで選択したプロジェクトが表示されます。または、&quot;[Copy projects into workspace]&quot; オプションをオンにすると、ダウンロードしたプロジェクトがワークスペースにコピーされます。最後に、[Finish] をクリックして、Titanium Studio でプロジェクトを開きます。
 
     ![][3]
 
@@ -64,7 +78,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
     ![][5]
 
-8.	次の画面で、正符号 (+) アイコンをクリックし、「このチュートリアルを完了する」など意味のあるテキストを入力して [保存] をクリックします。<br />
+8.	次の画面で、正符号 (+) アイコンをクリックし、&quot;このチュートリアルを完了する&quot; など意味のあるテキストを入力して [保存] をクリックします。
 
     ![][6]
 
@@ -75,7 +89,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 ![][8]
 
 
->[WACOM.NOTE] モバイル サービスにアクセスして TodoService.m ファイルにあるデータを照会および挿入するコードを確認できます。
+>[AZURE.NOTE] モバイル サービスにアクセスして TodoService.m ファイルにあるデータを照会および挿入するコードを確認できます。
 
 4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
@@ -87,12 +101,12 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 
 ## <a name="next-steps"> </a>次のステップ
-クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックをご覧ください。 
 
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 
@@ -116,4 +130,5 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 [認証の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users
 [プッシュ通知の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

@@ -1,10 +1,10 @@
-﻿<properties linkid="develop-mobile-tutorials-get-started-with-data-android" urlDisplayName="Get Started with Data - Android" pageTitle="データの使用 (Android) |モバイル デベロッパー センター"metakeywords ="Azure android データ, Azure モバイル サービス データ, windows droid, windows android, microsoft droid, microsoft android" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="ricksal,glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="データの使用 (Android) | モバイル デベロッパー センター" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" services="mobile-services" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal,glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal,glenga"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
@@ -12,14 +12,13 @@
 <p>このトピックでは、Azure のモバイル サービスを使用して Android アプリのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
 
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-data-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">15:32</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a><a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-data-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">15:32</span></div>
 </div>
 
-<div class="dev-callout"><b>注</b>
-<p>このチュートリアルの目的は、モバイル サービスが Android アプリのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
-<p>完成したアプリケーションのソース コードを確認するには、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithData/Android/GetStartedWithData">こちち</a>をご覧ください。
-</p>
-</div>
+> [AZURE.NOTE] このチュートリアルの目的は、モバイル サービスが Android アプリのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初に [Mobile Services の使用](/ja-jp/develop/mobile/tutorials/get-started-android).に関するチュートリアルを完了することをお勧めします。
+> 
+> 完成したアプリケーションのソース コードは、[ここ](https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithData/Android/GetStartedWithData)で確認できます。
+
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -29,42 +28,40 @@
 4. [モバイル サービスを使用するためのアプリケーションの更新]
 5. [モバイル サービスに対するアプリケーションのテスト]
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AED8DE357" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div> 
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AED8DE357"%20target="_blank) を参照してください。 
 
-このチュートリアルを実行するには、[モバイル サービス Android SDK]、Eclipse 統合開発環境 (IDE) と Android Developer Tools (ADT) プラグインを含む <a href="https://go.microsoft.com/fwLink/p/?LinkID=280125" target="_blank">Android SDK</a>、および Android 4.2 以降のバージョンが必要です。 
+このチュートリアルを実行するには、[Mobile Services Android SDK]、Eclipse 統合開発環境 (IDE) と Android Developer Tools (ADT) プラグインを含む <a href="https://go.microsoft.com/fwLink/p/?LinkID=280125" target="_blank">Android SDK</a>、および Android 4.2 以降のバージョンが必要です。 
 
-<div class="dev-callout"><b>注</b>
-<p>このチュートリアルでは、Android SDK とモバイル サービス Android SDK の両方をインストールする手順について説明します。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。</p>
-</div>
+> [AZURE.NOTE] このチュートリアルでは、Android SDK とモバイル サービス Android SDK の両方をインストールする手順について説明します。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
 
->[AZURE.NOTE] このチュートリアルでは、Mobile Services SDK の最新バージョンを使用します。互換性を確保する目的で<a href="http://go.microsoft.com/fwlink/p/?LinkID=280126">ここ</a> から以前のバージョンを入手できますが、これらのチュートリアルに含まれているコードは以前のバージョンでは動作しません。
+>[AZURE.NOTE] このチュートリアルでは、Mobile Services SDK の最新バージョンを使用します。互換性を確保する目的で<a href="http://go.microsoft.com/fwlink/p/?LinkID=280126">ここ</a>から以前のバージョンを入手できますが、これらのチュートリアルに含まれているコードは以前のバージョンでは動作しません。
 
 <h2><a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする</h2>
 
 ###サンプル コードの取得
 
-[WACOM.INCLUDE [download-android-sample-code](../includes/download-android-sample-code.md)]
+[AZURE.INCLUDE [download-android-sample-code](../includes/download-android-sample-code.md)]
 
 ###Android SDK バージョンの検証
 
-[WACOM.INCLUDE [Verify SDK](../includes/mobile-services-verify-android-sdk-version.md)]
+[AZURE.INCLUDE [SDKの確認](../includes/mobile-services-verify-android-sdk-version.md)]
 
 
 ###サンプル コードの確認と実行
 
-[WACOM.INCLUDE [mobile-services-android-run-sample-code](../includes/mobile-services-android-run-sample-code.md)]
+[AZURE.INCLUDE [mobile-services-android-run-sample-code](../includes/mobile-services-android-run-sample-code.md)]
 
 <h2><a name="create-service"></a>管理ポータルで新規モバイル サービスを作成する</h2>
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 <h2><a name="add-table"></a>新しいテーブルをモバイル サービスに追加する</h2>
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data-2](../includes/mobile-services-create-new-service-data-2.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service-data-2](../includes/mobile-services-create-new-service-data-2.md)]
 
 <h2><a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する</h2>
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-data](../includes/mobile-services-android-getting-started-with-data.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../includes/mobile-services-android-getting-started-with-data.md)]
 
 
 <h2><a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト</h2>
@@ -134,10 +131,11 @@
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス Android SDK]: http://aka.ms/Iajk6q
+[Mobile Services Android SDK]: http://aka.ms/Iajk6q
 [GitHub]:  http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-<!--HONumber=35.2-->
+
+<!--HONumber=42-->

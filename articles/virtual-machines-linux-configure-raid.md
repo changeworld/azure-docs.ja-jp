@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Configure RAID on Linux" pageTitle="Azure 内の Linux を実行する仮想マシンでのソフトウェア RAID の構成" metaKeywords="raid in Azure, mdadm Azure, stripe disks in Azure" description="mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/manage/linux/articles/virtual-machines-linux-configure-raid" services="virtual-machines" documentationCenter="" title="" authors="szark" solutions="" writer="szark" manager="timlt" editor=""  />
+﻿<properties pageTitle="Azure 内の Linux を実行する仮想マシンでのソフトウェア RAID の構成" description="mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。" services="virtual-machines" documentationCenter="" authors="szarkos" writer="szark" manager="timlt" editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="09/18/2014" ms.author="szark" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="09/18/2014" ms.author="szark"/>
 
 
 
@@ -9,9 +9,9 @@
 
 
 ## データ ディスクをアタッチする
-2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/#attachempty) 」を参照してください。
+2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Windows Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/#attachempty)」を参照してください。
 
->[WACOM.NOTE] XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。VM のサイズとサポートされているデータ ディスクの数の詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx) 」を参照してください。
+>[AZURE.NOTE] XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Windows Azure (Windows Azure の仮想マシンとクラウド サービスのサイズ)](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx)」を参照してください。
 
 
 ## mdadm ユーティリティをインストールする
@@ -70,7 +70,7 @@
 		Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
 		Using default value 1305
 
-- 次に、パーティションの ID とタイプを変更します (コマンド "**t**")。既定の ID "83" (Linux) から ID "fd" (Linux raid auto) に変更してください。
+- 次に、パーティションの ID とタイプを変更します (コマンド "**t**")。既定の ID "83" (Linux) から ID 'fd' (Linux raid auto) に変更してください。
 
 		Command (m for help): t
 		Selected partition 1
@@ -89,7 +89,7 @@
 		# sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
 		  /dev/sdc1 /dev/sdd1 /dev/sde1
 
-この例では、このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを `mdadm` コマンドに追加してください。
+この例では、このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを  `mdadm` コマンドに追加してください。
 
 
 2. 新しい RAID デバイスにファイル システムを作成します。
@@ -107,18 +107,18 @@
 		# sudo -i chkconfig --add boot.md
 		# sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
 
-	>[WACOM.NOTE] SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。
+	>[AZURE.NOTE] SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。
 
 
 ## 新しいファイル システムを /etc/ fstab に追加する
 
-**注意事項:**/etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+**警告:** /etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
 
 1. 新しいファイル システムに必要なマウント ポイントを作成します。たとえば、次のようになります。
 
 		# sudo mkdir /data
 
-2. /etc/fstab を編集するとき、**UUID** デバイス名ではなくファイル システムを参照するために使用する必要があります。新しいファイル システムの UUID を調べるには、`blkid` ユーティリティを使用します。
+2. /etc/fstab を編集するとき、**UUID** は、デバイス名ではなくファイル システムを参照するために使用する必要があります。新しいファイル システムの UUID を調べるには、 `blkid` ユーティリティを使用します。
 
 		# sudo /sbin/blkid
 		...........
@@ -132,7 +132,7 @@
 
 		/dev/disk/by-uuid/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext3  defaults  0  2
 
-	Then, save and close /etc/fstab.
+	その後、/etc/fstab を保存して閉じます。
 
 4. /etc/fstab のエントリが正しいことをテストします。
 
@@ -140,7 +140,7 @@
 
 	このコマンドによりエラー メッセージが表示された場合は、/etc/fstab ファイル内の構文を確認してください。
 
-	次に、`mount` コマンドを実行して、ファイル システムがマウントされていることを確認します。
+	次に、 `mount` コマンドを実行して、ファイル システムがマウントされていることを確認します。
 
 		# mount
 		.................
@@ -148,7 +148,7 @@
 
 5. 省略可能なパラメーター
 
-	多くのディストリビューションでは、`nobootwait` または `nofail` のいずれかのマウント パラメーターが /etc/fstab ファイルに追加されている場合があります。これらのパラメーターにより、特定のファイル システムをマウントしているときのエラーが許容されます。RAID ファイル システムを適切にマウントできない場合でも、Linux システムの起動を続行できるようになります。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
+	多くのディストリビューションでは、 `nobootwait` または  `nofail` のいずれかのマウント パラメーターが /etc/fstab ファイルに追加されている場合があります。これらのパラメーターにより、特定のファイル システムをマウントしているときのエラーが許容されます。RAID ファイル システムを適切にマウントできない場合でも、Linux システムの起動を続行できるようになります。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
 	例 (Ubuntu):
 
@@ -156,7 +156,8 @@
 
 	これらのパラメーターのほかにも、カーネル パラメーター "`bootdegraded=true`" では、RAID が破損または劣化として認識された場合、たとえばデータ ドライブが誤って仮想マシンから削除された場合でも、システムを起動できるようになります。既定では、この場合はシステムが起動できなくなる可能性があります。
 
-	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
+	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の  `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

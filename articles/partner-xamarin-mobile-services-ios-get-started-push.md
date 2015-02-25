@@ -1,18 +1,32 @@
-<properties urlDisplayName="Get Started with Push Notifications" pageTitle="プッシュ通知 (Xamarin.iOS) - Mobile Services" metaKeywords="" description="Azure Mobile Services を使用する Xamarin.iOS アプリでプッシュ通知を使用する方法について説明します。" metaCanonical="" disqusComments="0" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="yuaxu" manager="dwrede" services="mobile-services"/>
+﻿<properties 
+	pageTitle="プッシュ通知 (Xamarin.iOS) - Mobile Services" 
+	description="Azure Mobile Services を使用する Xamarin.iOS アプリでプッシュ通知を使用する方法について説明します。" 
+	documentationCenter="xamarin" 
+	authors="ysxu" 
+	manager="dwrede" 
+	services="mobile-services" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="Java" ms.topic="article" ms.date="10/20/2014" ms.author="yuaxu" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-ios" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/20/2014" 
+	ms.author="yuaxu"/>
 
-# Mobile Services アプリへのプッシュ通知の追加
+# Mobile Services アプリケーションにプッシュ通知を追加する
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-push-xamarin](../includes/mobile-services-selector-get-started-push-xamarin.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push-xamarin](../includes/mobile-services-selector-get-started-push-xamarin.md)]
 
-<p>このトピックでは、Azure Mobile Services を使用して Xamarin.iOS 8 アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知サービス (APNS) を使用したプッシュ通知を [Mobile Services の使用]プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。</p>
+<p>このトピックでは、Azure Mobile Services を使用して Xamarin.iOS 8 アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知サービス (APNS) を使用したプッシュ通知を[モバイル サービスの使用]プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。</p>
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
-1. [証明書の署名要求を生成する]
+1. [証明書の署名要求を作成する]
 2. [アプリケーションを登録し、プッシュ通知を有効にする]
-3. [アプリケーションのプロビジョニング プロファイルを作成する]
+3. [アプリケーションのプロビジョニング ファイルを作成する]
 4. [モバイル サービスを構成する]
 5. [Xamarin.iOS アプリケーションを構成する]
 6. [アプリケーションにプッシュ通知を追加する]
@@ -24,13 +38,11 @@
 + iOS 8 デバイス
 + iOS Developer Program メンバーシップ
 + [Xamarin.iOS Studio]
-+ [Azure モバイル サービス コンポーネント]
++ [Azure Mobile Services コンポーネント]
 
-   <div class="dev-callout"><b>注</b>
-   <p>プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。</p>
-   </div>
+   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、[Apple Push Notification Service に関するページ]を参照してください。
+Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」をご覧ください。
 
 ## <a name="certificates"></a>証明書の署名要求ファイルを生成する
 
@@ -58,7 +70,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 モバイル サービスから iOS アプリケーションにプッシュ通知を送信可能にするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。 
 
-1. アプリケーションをまだ登録していない場合は、Apple デベロッパー センターで <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に移動し、Apple ID でログインして、**[Identifiers]** をクリックします。次に **[App IDs]** をクリックし、最後に、**+** 記号をクリックして、アプリケーションのアプリケーション ID を作成します。
+1. アプリケーションをまだ登録していない場合は、Apple デベロッパー センターで <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に移動し、Apple ID でログインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックしてアプリケーションの App ID を作成します。
     
     ![][102]
 
@@ -66,11 +78,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![][103]
    
-これで、アプリケーション ID が生成され、情報の**サブミット**が求められます。**[Submit]** をクリックします。
+    これで、アプリケーション ID が生成され、情報の**サブミット**が求められます。**[Submit]** をクリックします。
    
     ![][104] 
    
-   **[Submit]** をクリックすると、以下のような **[Registration complete]** 画面が表示されます。**[Done]** をクリックします。
+    **[Submit]** をクリックすると、以下のような **[Registration complete]** 画面が表示されます。**[Done]** をクリックします。
    
     ![][105]    
 
@@ -78,7 +90,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![][106]
    
-   アプリケーションの ID をクリックすると、そのアプリケーションの詳細と ID が表示されます。**[Settings]** をクリックします。
+    アプリケーション ID をクリックすると、アプリケーションとアプリケーション ID の詳細が表示されます。**[Settings]** をクリックします。
    
     ![][107] 
    
@@ -88,7 +100,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     これで、[Add iOS Certificate] アシスタントが表示されます。
    
-注: このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。証明書をモバイル サービスにアップロードするときと同じ証明書タイプを設定してください。
+    注:このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。証明書をモバイル サービスにアップロードするときと同じ証明書タイプを設定してください。
 
 5. **[Choose File]** をクリックして、前に CSR ファイルを保存した場所に移動してから、**[Generate]** をクリックします。 
 
@@ -102,7 +114,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![][9] 
 
-注: 既定では、ダウンロードした開発証明書ファイルの名前は <strong>aps_development.cer</strong> になっています。
+    注:既定では、ダウンロードした開発証明書ファイルの名前は <strong>aps_development.cer</strong> になっています。
 
 7. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。
 
@@ -110,13 +122,13 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![][10]
 
-注: 証明書の名前は異なることがありますが、名前の前に <strong>Apple Development iOS Push Notification Services:</strong> が付けられます。
+    注:証明書の名前は異なることがありますが、名前の前に <strong>Apple Development iOS Push Notification Services:</strong> が付けられます。
 
 後で、この証明書を使用して .p12 ファイルを生成し、それをモバイル サービスにアップロードして APNS による認証を有効にします。
 
-## <a name="profile"></a>アプリケーションのプロビジョニング プロファイルを作成する
+## <a name="profile"></a>アプリケーションのプロビジョニング ファイルを作成する
  
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **[+]** をクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
 
     ![][112]
 
@@ -126,7 +138,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![][113]
 
-4. **[Select certificates]** 画面で、前に作成した証明書を選択し、**[Continue]**. をクリックします。
+4. **[Select certificates]** 画面で、前に作成した証明書を選択し、**[Continue]** をクリックします。
 
     ![][114]
 
@@ -184,7 +196,7 @@ APNS と連携するようにモバイル サービスが構成されました�
 
     ![][120]
 
-    これで、Xamarin プロジェクトはコード署名のために新しいプロファイルを使用するようになります。公式の Xamarin デバイス プロビジョニングのドキュメントについては、[Xamarin Device Provisioning (Xamarin デバイス プロビジョニング)]を参照してください。
+    これで、Xamarin プロジェクトはコード署名のために新しいプロファイルを使用するようになります。公式の Xamarin デバイス プロビジョニングのドキュメントについては、[Xamarin Device Provisioning (Xamarin デバイス プロビジョニング)] をご覧ください。
 
 ## <a name="add-push"></a>アプリケーションにプッシュ通知を追加する
 
@@ -261,7 +273,7 @@ APNS と連携するようにモバイル サービスが構成されました�
 
 8. **TodoListViewController** で、**AppDelegeate** に格納されているデバイス トークンを取得し、これを追加される **TodoItem** に格納するように **OnAdd** アクションを変更します。
 
-string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
+        string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
 
         var newItem = new TodoItem() 
         {
@@ -300,11 +312,9 @@ string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).Dev
             }, 2500);
         }
 
-    これで、新しい insert スクリプトが登録されます。このスクリプトは [apns オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。 
+    これで、新しい挿入スクリプトが登録されます。このスクリプトは [apns オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。 
 
-    <div class="dev-callout"><b>注</b>
-   <p>このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。</p>
-   </div> 
+   > [AZURE.NOTE] このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
 
 ## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 
@@ -312,11 +322,9 @@ string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).Dev
 
     ![][23]
 
-    <div class="dev-callout"><b>注</b>
-    <p> アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要なのは、初めてアプリケーションを実行するときだけです。</p>
-    </div>
+   > [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「新しい Mobile Services タスク」) を入力し、プラス記号 (**+**) のアイコンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「_A new Mobile Services task_」) を入力し、プラス (**+**) アイコンをクリックします。
 
     ![][24]
 
@@ -331,9 +339,9 @@ string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).Dev
 これで、このチュートリアルは終了です。
 
 <!-- Anchors. -->
-[証明書の署名要求を生成する]: #certificates
+[証明書の署名要求を作成する]: #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
+[アプリケーションのプロビジョニング ファイルを作成する]: #profile
 [モバイル サービスを構成する]: #configure-mobileServices
 [Xamarin.iOS アプリケーションを構成する]: #configure-app
 [プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
@@ -399,5 +407,8 @@ string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).Dev
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
-[Azure モバイル サービス コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
+[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331303
+
+
+<!--HONumber=42-->

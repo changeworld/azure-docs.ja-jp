@@ -1,19 +1,33 @@
-﻿<properties urlDisplayName="Authorize Users in Scripts (Xamarin.iOS)" pageTitle="スクリプトでのユーザーの承認 (Xamarin.iOS) - Azure Mobile Services" metaKeywords="ユーザーを承認する Azure, Xamarin.iOS スクリプト承認, モバイル サービスの承認" description="Xamarin.iOS 向け Azure Mobile Services アプリケーションでスクリプトを使用してユーザーを承認する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Use scripts to authorize users in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" />
+<properties 
+	pageTitle="スクリプトを使用したユーザーの承認 (Xamarin.iOS) - Azure Mobile Services" 
+	description="Xamarin.iOS 向け Azure Mobile Services アプリケーションでスクリプトを使用してユーザーを承認する方法について説明します。" 
+	documentationCenter="xamarin" 
+	authors="lindydonna" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="donnam" />
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-ios" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/11/2014" 
+	ms.author="donnam"/>
 
 # モバイル サービスでユーザー承認にスクリプトを使用する
 
-[WACOM.INCLUDE [mobile-services-selector-service-auth-users](../includes/mobile-services-selector-service-auth-users.md)]	
+[AZURE.INCLUDE [mobile-services-selector-service-auth-users](../includes/mobile-services-selector-service-auth-users.md)]	
 
-このトピックでは、認証済みのユーザーをサーバー スクリプトで承認し、Azure Mobile Services のデータに Xamarin.iOS アプリケーションからアクセスできるようにする方法を説明します。このチュートリアルでは、認証済みのユーザーの ID に基づいてクエリにフィルター処理を実施するスクリプトをモバイル サービスに登録します。これによって、それぞれのユーザーが自分のデータのみを閲覧できる状態を実現できます。
+このトピックでは、認証済みのユーザーをサーバー スクリプトで承認し、Azure Mobile Services のデータに Xamarin.iOS アプリケーションからアクセスできるようにする方法を説明します。このチュートリアルでは、認証済みのユーザーのユーザー ID に基づいてクエリをフィルター処理するスクリプトを Mobile Services に登録します。これによって、それぞれのユーザーが自分のデータのみを閲覧できる状態を実現できます。
 
 このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前の[認証の使用]に関するチュートリアルの内容を前提としています。このため、このチュートリアルの前に、[認証の使用]に関するチュートリアルを完了している必要があります。  
 
 ## <a name="register-scripts"></a>スクリプトを登録する
 クイック スタート アプリケーションでは、データの読み取りおよび挿入を実行します。このため、TodoItem テーブルにそのような操作を実行するためのスクリプトを登録する必要があります。
 
-1. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
+1. [Azure の管理ポータル] にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
 
    	![][0]
 
@@ -21,7 +35,7 @@
 
    	![][1]
 
-3. **[スクリプト]** をクリックし、**挿入**操作を選択します。
+3. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
 
    	![][2]
 
@@ -32,11 +46,9 @@
           request.execute();
         }
 
-このスクリプトは、ユーザー ID の値 (認証済みのユーザーの ID) を TodoItem テーブルに挿入する前に、項目に追加するためのものです。 
+    このスクリプトは、ユーザー ID の値 (認証済みのユーザーの ID) を TodoItem テーブルに挿入する前に、項目に追加するためのものです。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>[ユーザー ID]</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。</p>
-    </div>
+    > [AZURE.NOTE] 挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって **TodoItem** テーブルに **[ユーザー ID]** 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。
 
 
 5. 手順 3. および 4. を繰り返し、既存の**読み取り**操作を以下の関数で置き換えます。
@@ -50,21 +62,21 @@
 
 ## アプリケーションをテストする
 
-1. Xamarin Studio または Visual Studio で、「[認証の使用」チュートリアルを実行したときに変更したプロジェクトを開きます。]
+1. Xamarin Studio または Visual Studio で、「[認証の使用]」チュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。 
+2. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。 
 
-このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点に注意してください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
+   	このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点にご注意ください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
 
-3. そのアプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
+3. そのアプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[保存]** をクリックします。
 
    	![][3]
 
-この操作によって、モバイル サービスの TodoItem テーブルにテキストおよびユーザー ID が挿入されます。新しい項目に正しいユーザー ID が設定されたため、モバイル サービスでその項目が返され、2 番目の列に表示されるようになります。
+   	この操作によって、モバイル サービスの TodoItem テーブルにテキストおよびユーザー ID が挿入されます。新しい項目に正しいユーザー ID が設定されたため、モバイル サービスでその項目が返され、2 番目の列に表示されるようになります。
 
-5. [管理ポータル][Azure の管理ポータル]の **todoitem** テーブルに戻り、**[参照]** をクリックして、新しく追加された項目に対してユーザー ID の値が設定されているかどうかを確認します。
+5. [管理ポータル][Azure の管理ポータル] の **TodoItem** テーブルに戻り、**[参照]** をクリックして、新しく追加された項目に対して関連付けられているユーザー ID の値が設定されているかどうかを確認します。
 
-6. (省略可能) ログイン アカウントが他にある場合には、ユーザーがそれぞれ自分のデータのみを閲覧できる状態になっていることを確認できます。これにはまず、アプリケーションを終了して再度実行します。ログイン資格情報の入力を求めるダイアログが表示されたら別のログインを入力し、前のアカウントで入力した項目が表示されないことを確認してください。
+6. (省略可能) ログイン アカウントが他にある場合には、ユーザーがそれぞれ自分のデータのみを閲覧できる状態になっていることを確認できます。これにはまず、アプリケーションを終了して再度実行します。ログイン資格情報の入力を求めるダイアログが表示されたら別のログインを入力し、前のアカウントで入力した項目が表示されないことをご確認ください。
 
 ## 次のステップ
 
@@ -93,10 +105,13 @@
 
 [Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/p/?LinkID=257677
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
-[マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリ ダッシュ ボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+
+
+<!--HONumber=42-->

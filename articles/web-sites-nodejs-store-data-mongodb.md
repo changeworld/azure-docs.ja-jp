@@ -1,6 +1,21 @@
-﻿<properties urlDisplayName="Website with MongoDB" pageTitle="仮想マシン上の MongoDB を使用した Node.js Web サイト - Azure チュートリアルl" metaKeywords="Azure チュートリアル MongoDB、MongoDB 格納データ、アクセス データ MongoDB ノード、Azure ノード アプリ" description="MongoDB を使用して、Azure でホストされる Node アプリケーションのデータを格納する方法やデータにアクセスする方法を示すチュートリアル。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/" services="web-sites,virtual-machines" documentationCenter="nodejs" title="Node.js Web Application with Storage on MongoDB (Virtual Machine)" authors="larryfr"  solutions="" writer="" manager="wpickett" editor=""  />
+﻿<properties 
+	pageTitle="VM 上の MongoDB を使用した Node.js Web サイト - Azure チュートリアル" 
+	description="MongoDB を使用して、Azure でホストされる Node アプリケーションのデータを格納する方法やデータにアクセスする方法を示すチュートリアル。" 
+	services="web-sites, virtual-machines" 
+	documentationCenter="nodejs" 
+	authors="blackmist" 
+	writer="" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="larryfr"/>
 
 
 # 仮想マシン上の MongoDB を使用した Azure での Node.js アプリケーションの作成
@@ -15,13 +30,13 @@
 
 このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。タスクは MongoDB に格納されます。
 
-> [WACOM.NOTE] このチュートリアルでは、仮想マシンにインストールした MongoDB のインスタンスを使用します。Mongolab が提供するホスト型 MongoDB インスタンスを使用する場合は次を参照してください。 <a href="/ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/">MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js アプリケーションを作成する</a>。
+> [AZURE.NOTE] このチュートリアルでは、仮想マシンにインストールした MongoDB のインスタンスを使用します。MongoLab が提供するホステッド MongoDB インスタンスを使用する場合は、「<a href="/ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/">Create a Node.js Application on Azure with MongoDB using the MongoLab Add-On (MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js アプリケーションを作成する)</a>」をご覧ください。
  
 このチュートリアルのプロジェクト ファイルは **tasklist** という名前のディレクトリに保存され、作成されるアプリケーションは次のようになります。
 
 ![A web page displaying an empty tasklist][node-mongo-finished]
 
-> [WACOM.NOTE] 以下に示す手順の多くでは、コマンド ラインを使用します。これらの手順では、__Windows PowerShell__ (Windows) や __Bash__ (Unix Shell) など、お使いのオペレーティング システムのコマンド ラインを使用してください。OS X システムでは、ターミナル アプリケーションを使用してコマンド ラインにアクセスできます。
+> [AZURE.NOTE] 以下に示す手順の多くでは、コマンド ラインを使用します。これらの手順では、__Windows PowerShell__ (Windows) や __Bash__ (Unix Shell) など、お使いのオペレーティング システムのコマンド ラインを使用してください。OS X システムでは、ターミナル アプリケーションを使用してコマンド ラインにアクセスできます。
 
 ##前提条件
 
@@ -29,21 +44,21 @@ Node.js を使用するこのチュートリアルの手順では、開発環境
 
 また、アプリケーションを Azure Website にデプロイする際に使用するため、開発環境のコマンド ラインから [Git] を使用できる必要があります。
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##仮想マシンの作成
 
-<!--This tutorial assumes you have created a virtual machine in Azure. After creating the virtual machine you need to install MongoDB on the virtual machine:
+<!--このチュートリアルは、Azure に仮想マシンが作成済みであることを前提としています。仮想マシンの作成後、仮想マシンに MongoDB をインストールする必要があります。
 
-* To create a Linux virtual machine and install MongoDB, see [Installing MongoDB on a Linux Virtual machine].
+* Linux 仮想マシンを作成して MongoDB をインストールする方法については、「[Linux 仮想マシンへの MongoDB のインストール]」をご覧ください。
 
-After you have created the virtual machine in Azure and installed MongoDB, be sure to remember the DNS name of the virtual machine ("testlinuxvm.cloudapp.net", for example) and the external port for MongoDB that you specified in the endpoint.  You will need this information later in the tutorial.-->
+Azure に仮想マシンを作成して MongoDB をインストールしたら、仮想マシンの DNS 名 (たとえば "testlinuxvm.cloudapp.net") とエンドポイントで指定した MongoDB 用の外部ポートを忘れずに記録してください。この情報は後で必要になります。.-->
 
 新しい VM を作成してから [MongoDB のインストール ガイド][installguides]に従ってその VM に MongoDB をインストールすることはできますが、この作業の大部分はコミュニティによって既に実行されており、VM Depot で利用できます。次の手順では、MongoDB が既にインストールされて構成されている、VM Depot のイメージを使用する方法を示します。 
 
-> [WACOM.NOTE] このチュートリアルで使用するコミュニティ イメージは、MongoDB データを OS ディスクに格納します。これはチュートリアルの目的には十分ですが、MongoDB データをデータ ディスクに格納するとパフォーマンスが向上します。データ ディスクなどの新しい VM を作成して MongoDB データをデータ ディスクに格納する手順については、 [inux on Azure への MongoDB のインストール][mongodbonazure] を参照してください。
+> [AZURE.NOTE] このチュートリアルで使用するコミュニティ イメージは、MongoDB データを OS ディスクに格納します。これはチュートリアルの目的には十分ですが、MongoDB データをデータ ディスクに格納するとパフォーマンスが向上します。データ ディスクなどの新しい VM を作成して MongoDB データをデータ ディスクに格納する手順については、「[Linux on Azure への MongoDB のインストール][mongodbonazure]」をご覧ください。
 
-1. [Azure 管理ポータル][azureportal] にログインし、 [Virtual Machines]、 [Images]、[VM Depot] の順に選択します。
+1. [Azure 管理ポータル][azureportal] にログインし、__Virtual Machines__、__Images__、__VM Depot__ の順に選択します。
 
 	![screenshot of selecting VM Depot][selectdepo]
 
@@ -51,7 +66,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 	![screenshot of selected mongodb v2.2.3 on hardened ubuntu image][selectedimage]
 
-	> [WACOM.NOTE] イメージに関するすべての情報を表示するには、[項目表示] を必ず選択してください。イメージによっては、イメージを使用して VM を作成した後に追加の構成が必要になる場合があります。
+	> [AZURE.NOTE] イメージに関するすべての情報を表示するには、__More__ を必ず選択してください。イメージによっては、イメージを使用して VM を作成した後に追加の構成が必要になる場合があります。
 
 	下部にある矢印をクリックして次の画面に進みます。
 
@@ -59,13 +74,13 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 	
 	![screenshot of choose a storage account][selectstorage]
 
-	> [WACOM.NOTE] これによって、指定したストレージ アカウントに VM Depot のイメージをコピーするコピー プロセスが開始されます。これには、長い時間 (15 分以上) がかかる場合があります。
+	> [AZURE.NOTE] これによって、指定したストレージ アカウントに VM Depot のイメージをコピーするコピー プロセスが開始されます。これには、長い時間 (15 分以上) がかかる場合があります。
 
-4. イメージの状態が [登録を保留しています] に変わったら、[登録] を選択して、新しいイメージのフレンドリ名を入力します。チェック マークをクリックして続行します。
+4. イメージの状態が __Pending registration__ に変わったら、__Register__ を選択して、新しいイメージのフレンドリ名を入力します。チェック マークをクリックして続行します。
 
 	![screenshot of registering an image][register]
 
-5. イメージの状態が [利用可能] に変わったら、[+ 新規]、[Virtual Machine]、[ギャラリーから] の順に選択します。[イメージの選択] を求められたら、[マイ イメージ] を選択し、前の手順で作成したイメージを選択します。矢印をクリックして続行します。
+5. イメージの状態が __Available__ に変わったら、__+ New__、__Virtual Machine__、__From Gallery__ の順に選択します。__Choose an Image__ を求められたら、__My Images__ を選択し、前の手順で作成したイメージを選択します。矢印をクリックして続行します。
 
 	![screenshot of the image][myimage]
 
@@ -73,9 +88,9 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 	![screenshot of the vm name, user name, etc.][vmname]
 
-	>[WACOM.NOTE] このチュートリアルでは、SSH を使用して VM にリモート接続する必要はありません。SSH での証明書の使用に慣れていない場合は、**[パスワードを使用する]** を選択してパスワードを指定します。
+	>[AZURE.NOTE] このチュートリアルでは、SSH を使用して VM にリモート接続する必要はありません。SSH での証明書の使用に慣れていない場合は、**[パスワードを使用する]** を選択してパスワードを指定します。
 	>
-	> Azure 上の Linux VM で SSH を使用する方法の詳細については、[How to use SSH with Linux on Azure （Azure 上の Linux における SSH の使用方法）][sshazure] を参照してください。
+	> Azure 上の Linux VM で SSH を使用する方法の詳細については、「[How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)][sshazure]」をご覧ください。
 
 7. 新しい Cloud Service と既存の Cloud Service のどちらを使用するかを選択し、VM を作成するリージョンを選択します。矢印をクリックして続行します。
 
@@ -83,23 +98,23 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 8. VM に追加のエンドポイントを設定します。この VM 上の MongoDB にアクセスするため、次の情報を使用して新しいエンドポイントを追加します。
 
-	* 名前 - MongoDB
-	* プロトコル - TCP
-	* パブリック ポート - 27017
-	* プライベート ポート - 27017
+	* Name - MongoDB
+	* Protocol - TCP
+	* Public port - 27017
+	* private port - 27017
 
 	MongoDB Web ポータルを公開するには、次の情報を使用してエンドポイントをもう 1 つ追加します。
 
-	* 名前 - MongoDBWeb
-	* プロトコル - TCP
-	* パブリック ポート - 28017
-	* プライベート ポート - 28017
+	* Name - MongoDBWeb
+	* Protocol - TCP
+	* Public port - 28017
+	* Private port - 28017
 	
 	最後に、チェック マークをオンにして仮想マシンを構成します。
 
 	![screenshot of the endpoint configuration][vmendpoint]
 
-9. 仮想マシンの状態が [実行中] に変わったら、Web ブラウザーを開いて http://&lt;YourVMDNSName&gt;.cloudapp.net:28017/ にアクセスし、MongoDB が実行されていることを確認できます。ページの下部に、サービスに関する情報を示す次のようなログが表示されます。
+9. 仮想マシンの状態が __Running__ に変わったら、Web ブラウザーを開いて __http://&lt;YourVMDNSName&gt;.cloudapp.net:28017/__ にアクセスし、MongoDB が実行されていることを確認できます。ページの下部に、サービスに関する情報を示す次のようなログが表示されます。
 
 		Fri Mar  7 18:57:16 [initandlisten] MongoDB starting : pid=1019 port=27017 dbpath=/var/lib/mongodb 64-bit host=localhost.localdomain
            18:57:16 [initandlisten] db version v2.2.3, pdfile version 4.5
@@ -110,7 +125,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
            18:57:16 [initandlisten] recover : no journal files present, no recovery needed
            18:57:17 [initandlisten] waiting for connections on port 27017
 
-	ログでエラーが表示される場合は、[MongoDB のドキュメント][mongodocs]でトラブルシューティング手順を確認してください。
+	ログでエラーが表示される場合は、[MongoDB のドキュメント][mongodocs]でトラブルシューティング手順をご確認ください。
 
 
 ##モジュールのインストールとスキャフォールディングの生成
@@ -121,13 +136,13 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 1. コマンド ラインで、**tasklist** ディレクトリに移動します。**tasklist** ディレクトリがない場合は作成します。
 
-	> [WACOM.NOTE] このチュートリアルでは、「tasklist」フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (~/node/tasklist や c:\node\tasklist など) に作成してください。
+	> [AZURE.NOTE] このチュートリアルでは、__tasklist__ フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (__~/node/tasklist__ や __c:\node\tasklist_ など) に作成してください。
 
 2. 次のコマンドを入力して、express コマンドをインストールします。
 
 	npm install express-generator -g
  
-	> [WACOM.NOTE] 一部のオペレーティング システムで "-g" パラメーターを使用する場合、___Error のエラーが発生する場合があります。EPERM, chmod '/usr/local/bin/express' というエラーが表示され、管理者としてアカウントを実行することを要求されることがあります。このような場合は、sudo コマンドを使用して、より高い権限レベルで npm を実行します。
+	> [AZURE.NOTE] 一部のオペレーティング システムで "-g" パラメーターを使用すると、___Error: EPERM, chmod '/usr/local/bin/express'___ というエラーが表示され、管理者としてアカウントを実行することを要求される場合があります。このような場合は、 `sudo` コマンドを使用して、より高い権限レベルで npm を実行します。
 
     このコマンドの出力は次のように表示されます。
 
@@ -135,7 +150,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── mkdirp@0.3.5
 		└── commander@1.3.2 (keypress@0.1.0)                                                                         
  
-	> [WACOM.NOTE] express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく express コマンドにアクセスして、Web サイトのスキャフォールディングを生成できるようにするためです。
+	> [AZURE.NOTE] express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく ___express___ コマンドにアクセスして、Web サイトのスキャフォールディングを生成できるようにするためです。
 
 4. このアプリケーションで使用するスキャフォールディングを作成するには、**express** コマンドを使用します。
 
@@ -251,7 +266,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── mquery@0.5.3
 		└── mongodb@1.3.23 (kerberos@0.0.3, bson@0.2.5)         
 
-    > [WACOM.NOTE] C++ bson パーサーのインストールに関するメッセージは無視してかまいません。
+    > [AZURE.NOTE] C++ bson パーサーのインストールに関するメッセージは無視してかまいません。
 
 ##node アプリケーションでの MongoDB の使用
 
@@ -285,7 +300,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 1. **tasklist/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
-2. 次のコードを **tasklist.js** ファイルに追加します。これによって、mongoose モジュールと **task.js** で定義された task モデルが読み込まれます。TaskList 関数は、**connection** 値に基づいて MongoDB サーバーへの接続を作成するために使用されます。
+2. **tasklist.js** に次のコードを追加します。これによって、mongoose モジュールと **task.js** で定義された task モデルが読み込まれます。TaskList 関数は、**connection** 値に基づいて MongoDB サーバーへの接続を作成するために使用されます。
 
 		var mongoose = require('mongoose'),
 	        task = require('../models/task.js');
@@ -296,7 +311,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
   		  mongoose.connect(connection);
 		}
 
-2. Continue adding to the **tasklist.js** ファイルへの内容の追加を続行し、**showTasks**、**addTask**、**completeTasks** の各メソッドを追加します。
+2. **tasklist.js** ファイルへの内容の追加を続行し、**showTasks**、**addTask**、**completeTasks** の各メソッドを追加します。
 
 		TaskList.prototype = {
   		  showTasks: function(req, res) {
@@ -340,7 +355,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 ### app.js の変更
 
-1. **tasklist** ディレクトリ内の **app.js** ファイルを、テキスト エディターで開きます。このファイルは、先ほど **express** コマンドを実行することによって作成されたものです。
+1. **tasklist** ディレクトリ内の **app.js** ファイルを、テキスト エディターで開きます。このファイルは、先ほど **express** コマンドを実行したことによって作成されたものです。
 
 2. **app.js** ファイルの先頭に次のコードを追加します。これによって、MongoDB サーバーの接続文字列を使用して **TaskList** が初期化されます。
 
@@ -368,7 +383,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 1. **views** ディレクトリに移動し、テキスト エディターで **index.jade** ファイルを開きます。
 
-2. **index.jade** ファイルの内容を、以下のコードに置き換えます。これにより、既存のタスクを表示するビューと、新しいタスクの追加とタスクの完了済みのマーク付けを実行するためのフォームを定義します。
+2. **index.jade** ファイルの内容を次のコードに置き換えます。これにより、既存のタスクを表示するビューと、新しいタスクの追加とタスクの完了済みのマーク付けを実行するためのフォームを定義します。
 
 		h1= title
 		form(action="/completetask", method="post")
@@ -404,24 +419,24 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 3. **index.jade** ファイルを保存して閉じます。
 
-<!-- ##Run your application locally
+<!-- ##ローカルでのアプリケーションの実行
 
 ローカル コンピューターでアプリケーションをテストするには、次の手順を実行します。
 
 1. コマンド ラインで、**tasklist** ディレクトリに移動します。
 
-2. MongoDB をホストする仮想マシンをポイントするように開発環境で MONGODB_URI 環境変数を設定します。次の例では、[mymongodb] を仮想マシンの名前に置き換えます。
+2. MongoDB をホストする仮想マシンをポイントするように開発環境で MONGODB_URI 環境変数を設定します。次の例では、__mymongodb__ を仮想マシンの名前に置き換えます。
 
 	Windows のシステムでは、次を使用して環境変数を設定します。
 
 		set MONGODB_URI=mongodb://mymongodb.cloudapp.net/tasks
 
-	OS X または Linux ベースのシステムについては、次を使用して環境変数を設定します。.
+	OS X または Linux ベースのシステムについては、次を使用して環境変数を設定します。
 
 		set MONGODB_URI=mongodb://mymongodb.cloudapp.net/tasks
 		export MONGODB_URI
 
-	これによって、アプリケーションを前の手順で作成した [mymongodb.cloudapp.net] 仮想マシン上の MongoDB に接続して、「tasks」という名前の DB を使用するように指示されます。
+	これによって、アプリケーションを前の手順で作成した __mymongodb.cloudapp.net__ 仮想マシン上の MongoDB に接続して、 'tasks' という名前の DB を使用するように指示されます。
 
 2. 次のコマンドを使用して、ローカルでアプリケーションを起動します。
 
@@ -431,7 +446,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
     ![A webpage displaying an empty tasklist][node-mongo-finished]
 
-4.  表示された **Item Name** と **Item Category**のフィールドを使用して情報を入力し、**[Add item]** をクリックします。
+4. 表示された **Item Name** と **Item Category** のフィールドを使用して情報を入力し、**[Add item]** をクリックします。
 
     ![An image of the add item field with populated values.][node-mongo-add-item]
 
@@ -439,37 +454,37 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
     ![An image of the new item in the list of tasks][node-mongo-list-items]
 
-6.  タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** をクリックします。**[Update tasks]** をクリックしても視覚的には何も変化しませんが、MongoDB 内のドキュメントのエントリは完了済みとマークされています。
+6. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** をクリックします。**[Update tasks]** をクリックしても視覚的には何も変化しませんが、MongoDB 内のドキュメントのエントリは完了済みとマークされています。
 
-7. ノード プロセスを停止するには、コマンド ラインで、**CTRL** キーを押しながら **C** キーを押します。-->
+7. ノード プロセスを停止するには、コマンド ラインで、**Ctrl** キーを押しながら **C** キーを押します。-->
 
 ##Azure へのアプリケーションのデプロイ
 
 ここで説明する手順では、Azure コマンド ライン ツールを使用して新しい Azure の Web サイトを作成し、Git を使用してアプリケーションをデプロイします。これらの手順を実行するには、Azure サブスクリプションが必要です。
 
-> [WACOM.NOTE] これらの手順は、Azure ポータルを使用して実行することもできます。Azure ポータルを使用して Node.js アプリケーションをデプロイする手順については、次を参照してください。 <a href="/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/">Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ</a>。
+> [AZURE.NOTE] これらの手順は、Azure ポータルを使用して実行することもできます。Azure ポータルを使用して Node.js アプリケーションをデプロイする手順については、「<a href="/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/">Node.js アプリケーションの作成と Azure Web サイトへのデプロイ</a>」をご覧ください。
 
-> [WACOM.NOTE] 初めて Azure の Web サイトを作成した場合は、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
+> [AZURE.NOTE] 初めて Azure の Web サイトを作成した場合は、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
 
 ###Azure クロス プラットフォーム コマンド ライン インターフェイスのインストール
 
-Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) では、Azure サービスの管理操作を行うことができます。開発環境に xplat-cli をインストールおよび構成していない場合は、「[Install and configure the Azure Cross-Platform Command-Line Interface (Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成)][xplatcli]」で手順を確認してください。
+Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) では、Azure サービスの管理操作を行うことができます。開発環境に xplat-cli をインストールおよび構成していない場合は、「[Install and configure the Azure Cross-Platform Command-Line Interface (Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成)][xplatcli]」で手順をご確認ください。
 
 ###Azure Website の作成
 
 1. コマンド ラインで、**tasklist** ディレクトリに移動します。
 
-2. 新しい Azure Website を作成するには、次のコマンドを使用します。"myuniquesitename" は作成する Web サイトの一意のサイト名に置き換えます。この値は、完成した Web サイトの URL の一部として使用されます。
+2. 新しい Azure Website を作成するには、次のコマンドを使用します。 'myuniquesitename' は作成する Web サイトの一意のサイト名に置き換えます。この値は、完成した Web サイトの URL の一部として使用されます。
 
 		azure site create myuniquesitename --git
 		
 	サイトが配置されるデータセンターを指定するよう求められます。現在の場所に地理的に近いデータセンターを選択します。
 	
-	`--git` パラメーターを指定すると、 **tasklist** フォルダー内にローカルに Git リポジトリが作成されます (存在しない場合)。また、'azure' という名前の [Git リモート]も作成されます。これは、Azure にアプリケーションを発行するために使用されます。[iisnode.yml] ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。最後に、.gitignore ファイルも作成されます。このファイルは、node-modules フォルダーが .git に発行されないように除外します。
+	`--git` パラメーターを指定すると、**tasklist** フォルダー内にローカルに Git リポジトリが作成されます (存在しない場合)。また、 'azure' という名前の [Git リモート]も作成されます。これは、Azure にアプリケーションを発行するために使用されます。[iisnode.yml] ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。最後に、.gitignore ファイルも作成されます。このファイルは、node-modules フォルダーが .git に発行されないように除外します。
 	
-	> [WACOM.NOTE] 既に Git リポジトリが含まれているディレクトリからこのコマンドを実行した場合、ディレクトリは再初期化されません。
+	> [AZURE.NOTE] 既に Git リポジトリが含まれているディレクトリからこのコマンドを実行した場合、ディレクトリは再初期化されません。
 	
-	> [WACOM.NOTE] "--git" パラメーターを省略した場合でも、ディレクトリには Git リポジトリが含まれ、"azure" リモートが作成されます。
+	> [AZURE.NOTE] "--git" パラメーターを省略した場合でも、ディレクトリには Git リポジトリが含まれ、 'azure' リモートが作成されます。
 	
 	このコマンドが完了すると、次のような出力が表示されます。**Created website at** で始まる行には、Web サイトの URL が含まれています。
 
@@ -484,7 +499,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 		info:   Executing `git remote add azure http://username@mongodbtasklist.azurewebsites.net/mongodbtasklist.git`
 		info:   site create command OK
 
-	> [WACOM.NOTE> これがサブスクリプションで最初の Azure Website である場合、ポータルを使用して Web サイトを作成するように指示するメッセージが表示されます。詳細については、次を参照してください。 <a href="/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/">Node.js アプリケーションの作成と Azure Web サイトへのデプロイ</a>。
+	> [AZURE.NOTE]> これがサブスクリプションで最初の Azure Website である場合、ポータルを使用して Web サイトを作成するように指示するメッセージが表示されます。詳細については、「<a href="/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/">Node.js アプリケーションの作成と Azure Web サイトへのデプロイ</a>」をご覧ください。
 
 ###MONGODB_URI 環境変数の設定
 
@@ -492,7 +507,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 
 	azure site config add MONGODB_URI=mongodb://mymongodb.cloudapp.net/tasks
 
-これで、Web サイトの新しいアプリケーション設定が作成されます。この設定は、Web サイトによって読み取られる MONGODB_URI 環境変数を設定する際に使用されます。値 "mymongodb.cloudapp.net" を、MongoDB をインストールした仮想マシンの名前に置き換えます。
+これで、Web サイトの新しいアプリケーション設定が作成されます。この設定は、Web サイトによって読み取られる MONGODB_URI 環境変数を設定する際に使用されます。値  'mymongodb.cloudapp.net' を、MongoDB をインストールした仮想マシンの名前に置き換えます。
 
 ###アプリケーションの発行
 
@@ -507,7 +522,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 
 		git push azure master
 	
-	You will see output similar to the following. As the deployment takes place Azure will download all npm modules. 
+	次のような出力が表示されます。展開時に、Azure によってすべての npm モジュールがダウンロードされます。 
 
 		Counting objects: 17, done.
 		Delta compression using up to 8 threads.
@@ -525,15 +540,15 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 		To https://username@mongodbtasklist.azurewebsites.net/MongoDBTasklist.git
  		 * [new branch]      master -> master
  
-4. プッシュ操作が完了したら、`azure site browse` コマンドを使用して Web サイトに移動し、アプリケーションを表示します。
+4. プッシュ操作が完了したら、 `azure site browse` コマンドで Web サイトに移動してアプリケーションを表示します。
 
 ##次のステップ
 
-この記事の手順では、MongoDB を使用して情報を格納する方法を説明しましたが、Azure テーブル サービスを使用することもできます。詳細については、「[Node.js Web Application with the Azure Table Service (Azure テーブル サービスを使用する Node.js Web アプリケーション)]」を参照してください。
+この記事の手順では、MongoDB を使用して情報を格納する方法を説明しましたが、Azure テーブル サービスを使用することもできます。詳細については、「[Node.js Web Application with the Azure Table Service (Azure テーブル サービスを使用する Node.js Web アプリケーション)]」をご覧ください。
 
-MongoLab が提供するホスト型 MongoDB インスタンスを使用する方法については、[Create a Node.js Application on Azure with MongoDB using the MongoLab Add-On (MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js アプリケーションを作成する)] を参照してください。(/ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/)。
+MongoLab が提供するホスト型 MongoDB インスタンスを使用する方法については、「[Create a Node.js Application on Azure with MongoDB using the MongoLab Add-On (MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js アプリケーションを作成する)](/ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/).」をご覧ください。
 
-MongoDB をセキュリティ保護する方法については、「[MongoDB Security (MongoDB セキュリティ)][mongosecurity]」を参照してください。
+MongoDB をセキュリティ保護する方法については、「[MongoDB Security (MongoDB セキュリティ)][mongosecurity]」をご覧ください。
 
 ##その他のリソース
 
@@ -578,4 +593,4 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 [sshazure]: http://www.windowsazure.com/ja-jp/documentation/articles/linux-use-ssh-key/
 [mongodbonazure]: http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-linux-in-azure/ 
 
-<!--HONumber=35.2-->
+<!--HONumber=42-->

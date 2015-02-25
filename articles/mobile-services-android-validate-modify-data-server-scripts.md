@@ -1,10 +1,10 @@
-﻿<properties urlDisplayName="Validate Data - Android" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Android アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="ricksal" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Android) | モバイル デベロッパー センター" description="Android アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" services="mobile-services" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="ricksal" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="ricksal"/>
 
 # サーバー スクリプトを使用したモバイル サービスのデータの検証および変更
 
-[WACOM.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
+[AZURE.INCLUDE [mobile-services-selector-validate-modify-data](../includes/mobile-services-selector-validate-modify-data.md)]
 
 このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように Android アプリも更新します。
 
@@ -21,7 +21,7 @@
 
 ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
+1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
 
    	![][0]
 
@@ -43,11 +43,9 @@
             }
         }
 
-        このスクリプトは、**text** プロパティの長さを調べ、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
+    このスクリプトは、**text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
-    <div class="dev-callout"> 
-	<b>注</b> 
-	<p>登録したスクリプトを <strong>[スクリプト]</strong> タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>
+   > [AZURE.TIP] 登録したスクリプトを **[スクリプト]** タブで削除できます。**[クリア]** をクリックし、**[保存]** をクリックします。
 
 ## <a name="update-client-validation"></a>クライアントの更新
 
@@ -69,11 +67,9 @@
 
 前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
-<div class="dev-callout"><b>注</b>
-<p>ここで紹介する <b>createdAt</b> タイムスタンプ プロパティは、現在は冗長になっています。モバイル サービスによって、各テーブルに対応する <b>__createdAt</b> システム プロパティが自動的に作成されます。</p>
-</div>
+> [AZURE.NOTE] ここで紹介する **createdAt** タイムスタンプ プロパティは、現在は冗長になっています。Mobile Services によって、各テーブルに対応する **__createdAt** システム プロパティが自動的に作成されます。
 
-1. 管理ポータル**の [スクリプト]** タブで、現在の[] **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **Insert** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -86,9 +82,7 @@
 
     この関数は、**request**.**execute** の呼び出しで、オブジェクトへの挿入前に、新しい **createdAt** タイムスタンプ プロパティをそのオブジェクトに追加することにより、前の挿入スクリプトを強化しています。 
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>createdAt</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。</p>
-    </div>
+    > [AZURE.IMPORTANT] 挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点で Mobile Services によって **TodoItem** テーブルに **createdAt** 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。
 
 2. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。次に、テキスト ボックスに 10 文字未満のテキストを入力し、**[Add]** をクリックします。
 
@@ -116,9 +110,7 @@
 		@com.google.gson.annotations.SerializedName("createdAt")
 		private Date mCreatedAt;
   
-    <div class="dev-callout"><b>注</b>
-	<p><code>SerializedName</code> 注釈は、アプリケーション内の新しい <code>mCreatedAt</code> プロパティを、別の名前を持つ TodoItem テーブルに定義された <code>[createdAt]</code> 列にマップするように、クライアントに指示します。この注釈を使用することにより、使用しているアプリケーションで、SQL データベース内の列名と異なるオブジェクトにプロパティ名を持つことができます。この注釈がない場合は、大文字と小文字が区別されるため、エラーが発生します。</p>
-    </div>
+    > [AZURE.NOTE]  `SerializedName` 注釈は、アプリケーション内の新しい  `mCreatedAt` プロパティを、別の名前を持つ TodoItem テーブルに定義された  `createdAt` 列にマップするように、クライアントに指示します。この注釈を使用することにより、使用しているアプリケーションで、SQL データベース内の列名と異なるオブジェクトにプロパティ名を持つことができます。この注釈がない場合は、大文字と小文字が区別されるため、エラーが発生します。
 
 2. 次のメソッドを ToDoItem クラスに追加し、新しい mCreatedAt プロパティを取得および設定します。
 
@@ -194,7 +186,7 @@
 
 これで、データの使用に関するチュートリアルは終了です。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
 
@@ -203,7 +195,7 @@
 * [スクリプトを使用したユーザーの承認]
   <br/>認証されたユーザーの ID に基づきデータをフィルター処理する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [モバイル サービスのサーバー スクリプト リファレンス]
@@ -227,10 +219,13 @@
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-android
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
 
 [管理ポータル]: https://manage.windowsazure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+
+
+<!--HONumber=42-->

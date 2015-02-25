@@ -1,13 +1,13 @@
-﻿<properties urlDisplayName="Check Job Progress" pageTitle="Media Services でジョブの進行状況をチェックする方法 - Azure" metaKeywords="" description="イベント ハンドラー コードを使用してジョブの進行状況をチェックし、ステータス更新を送信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="How to: Check Job Progress" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Media Services でジョブの進行状況をチェックする方法 - Azure" description="イベント ハンドラー コードを使用してジョブの進行状況をチェックし、ステータス更新を送信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
 
 
 
 <h1>方法:ジョブの進行状況をチェックする</h1>
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックは、「[方法: アセットをエンコードする](http://go.microsoft.com/fwlink/?LinkID=301753&clcid=0x409)です。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[アセットをエンコードする方法](http://go.microsoft.com/fwlink/?LinkID=301753&clcid=0x409)に関するページを参照してください。
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。次のコード例では、StateChanged イベント ハンドラーを定義しています。このイベント ハンドラーはジョブの進行状況を追跡し、状態によってステータスを更新します。このコードでは、LogJobStop メソッドも定義しています。このヘルパー メソッドは、エラー詳細のログ記録を行います。
 
@@ -88,6 +88,7 @@ private static string JobIdAsFileName(string jobID)
 }
 </code></pre>
 <h2>次のステップ</h2>
-これで、ジョブを作成して進行状況を追跡する方法を学習できました。次のステップはアセットを保護することです。詳細については、「[How to Protect an Asset with Azure Media Services (Azure メディア サービスでアセットを保護する方法)](http://go.microsoft.com/fwlink/?LinkID=301813&clcid=0x409)」を参照してください。
+これで、ジョブを作成して進行状況を追跡する方法を学習できました。次のステップはアセットを保護することです。詳細については、[Azure Media Services でアセットを保護する方法](http://go.microsoft.com/fwlink/?LinkID=301813&clcid=0x409)に関するページを参照してください。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

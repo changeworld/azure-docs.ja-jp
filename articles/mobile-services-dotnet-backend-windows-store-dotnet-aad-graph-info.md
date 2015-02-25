@@ -1,30 +1,30 @@
-﻿<properties urlDisplayName="Accessing Azure Active Directory Graph Information" pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Accessing Azure Active Directory Graph Information" authors="wesmc" manager="dwrede" />
+<properties pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | モバイル デベロッパー センター" description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="" services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/14/2014" ms.author="wesmc" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/14/2014" ms.author="wesmc"/>
 
 # Azure Active Directory Graph 情報へのアクセス
 
-[WACOM.INCLUDE [mobile-services-selector-aad-graph](../includes/mobile-services-selector-aad-graph.md)]
+[AZURE.INCLUDE [mobile-services-selector-aad-graph](../includes/mobile-services-selector-aad-graph.md)]
 
 
 
-Mobile Services で提供する他の ID プロバイダーと同様に、Azure Active Directory (AAD) プロバイダーも、ディレクトリにプログラムでアクセスできるリッチな [Graph Client Library] をサポートしています。このチュートリアルでは、[Graph Client Library] を使用してディレクトリから取得したユーザーの詳細情報に基づいて、認証されたユーザーのアプリケーション エクスペリエンスを個人用に設定できるように、ToDoList アプリケーションを更新します。
+Mobile Services で提供する他の ID プロバイダーと同様に、Azure Active Directory (AAD) プロバイダーも、ディレクトリにプログラムでアクセスできるリッチな[ Graph Client Library] をサポートしています。このチュートリアルでは、[Graph Client Library] を使用してディレクトリから取得したユーザーの詳細情報に基づいて、認証されたユーザーのアプリケーション エクスペリエンスを個人用に設定できるように、ToDoList アプリケーションを更新します。
 
->[AZURE.NOTE] このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、[アプリへの認証の追加]に関するチュートリアルを完了しておく必要があります。このチュートリアルでは、[アプリへの認証の追加]に関するチュートリアルで使用した TodoItem アプリケーションを引き続き更新します。 
-
-
-
-このチュートリアルでは、次の手順について説明します。
+>[AZURE.NOTE] このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用してチュートリアル、「[アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。 
 
 
-1. [AAD でのアプリケーション登録のアクセス キーを生成する] 
-2. [GetUserInfo カスタム API を作成する] 
+
+このチュートリアルでは、次の手順について説明します。:
+
+
+1. [AAD でのアプリケーション登録のアクセス キーを生成する]
+2. [GetUserInfo カスタム API を作成する]
 3. [カスタム API を使用するようにアプリケーションを更新する]
 4. [アプリケーションをテストする]
 
 ##前提条件 
 
-このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
+このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。:
 
 + [認証の使用]<br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
@@ -35,9 +35,9 @@ Mobile Services で提供する他の ID プロバイダーと同様に、Azure 
 ## <a name="generate-key"></a>AAD でのアプリケーション登録のアクセス キーを生成する
 
 
-「[アプリへの認証の追加]に関するチュートリアルでは、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
+チュートリアル「[Mobile Services アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
 
-[WACOM.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../includes/mobile-services-generate-aad-app-registration-access-key.md)]
+[AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
 
 ## <a name="create-api"></a>GetUserInfo カスタム API を作成する
@@ -52,7 +52,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 4. Visual Studio で、モバイル サービス プロジェクトの **Controllers** フォルダーを右クリックし、**[追加]** をクリックして、`GetUserInfoController` という名前の新しい **Microsoft Azure Mobile Services カスタム コントローラー**を追加します。クライアントがこの API を呼び出して、Active Directory からユーザー情報を取得します。
 
-5. 新しい GetUserInfoController.cs ファイルで、次の `using` ステートメントを追加します。
+5. 新しい GetUserInfoController.cs ファイルに、次の `using` ステートメントを追加します。
 
         using Microsoft.WindowsAzure.Mobile.Service.Security;
         using Microsoft.Azure.ActiveDirectory.GraphClient;
@@ -147,15 +147,15 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 ## <a name="update-app"></a>GetUserInfo を使用するようにアプリケーションを更新する
 
-このセクションでは、カスタム API を呼び出し、AAD からユーザーに関する追加情報を返すように、[アプリへの認証の追加]に関するチュートリアルで実装した `AuthenticateAsync` メソッドを更新します。 
+このセクションでは、カスタム API を呼び出し、AAD からユーザーに関する追加情報を返すように、チュートリアル「[アプリへの認証の追加]」で実装した `AuthenticateAsync` メソッドを更新します。 
 
-[WACOM.INCLUDE [mobile-services-aad-graph-info-update-app](../includes/mobile-services-aad-graph-info-update-app.md)]
+[AZURE.INCLUDE [mobile-services-aad-graph-info-update-app](../includes/mobile-services-aad-graph-info-update-app.md)]
   
 
 
 ## <a name="test-app"></a>アプリケーションをテストする
 
-[WACOM.INCLUDE [mobile-services-aad-graph-info-test-app](../includes/mobile-services-aad-graph-info-test-app.md)]
+[AZURE.INCLUDE [mobile-services-aad-graph-info-test-app](../includes/mobile-services-aad-graph-info-test-app.md)]
 
 
 
@@ -179,11 +179,14 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 <!-- URLs. -->
 [アプリへの認証の追加]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
-[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure Active Directory 認証用の登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [カスタム API に関するチュートリアル]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api/
-[ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control/
+[ソース管理へのプロジェクト コードの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control/
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 [Graph Client Library]: http://go.microsoft.com/fwlink/?LinkId=510536
 [ユーザーの取得]: http://msdn.microsoft.com/ja-jp/library/azure/dn151678.aspx
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/
+
+
+<!--HONumber=42-->

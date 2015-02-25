@@ -1,11 +1,11 @@
-﻿<properties urlDisplayName="Deliver Streaming Content from Media Services" pageTitle="メディア サービスからストリーミング コンテンツを配信する方法 â€" Azure" metaKeywords="" description="直接の URL を使用して Media Services からストリーミング コンテンツを配信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="How to: Deliver streaming content" authors="juliako" manager="dwrede" />
+﻿<properties pageTitle="メディア サービスからストリーミング コンテンツを配信する方法 â€" Azure" description="直接の URL を使用して Media Services からストリーミング コンテンツを配信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" authors="juliako" manager="dwrede" editor="" services="media-services" documentationCenter=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
-#方法:ストリーミング コンテンツを配信する
+# 方法:ストリーミング コンテンツを配信する
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: ダウンロードによってアセットを配信する](../media-services-deliver-asset-download/)」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ダウンロードによってアセットを配信する方法](../media-services-deliver-asset-download/)に関するページを参照してください。
 
 メディア コンテンツをメディア サービスからダウンロードする以外にも、アダプティブ ビットレート ストリーミングを使ってコンテンツを配信することができます。たとえば、直接の URL (ロケーター) を作成して、メディア サービスの配信元サーバー上のコンテンツをストリーミングすることができます。Microsoft Silverlight などのクライアント アプリケーションは、ロケーターからストリーミング コンテンツを直接再生できます。
 
@@ -13,10 +13,10 @@
 
 ストリーミング コンテンツの配信元ロケーターを作成するには、次の手順を実行します。
 
-   1.アセット内のストリーミング マニフェスト ファイル (.ism) への参照を取得します。 
-   2.アクセス ポリシーを定義します。
-   3.CreateLocator メソッドを呼び出して配信元ロケーターを作成します。 
-   4.マニフェスト ファイルの URL を構築します。 
+   1. アセット内のストリーミング マニフェスト ファイル (.ism) への参照を取得します。 
+   2. アクセス ポリシーを定義します。
+   3. CreateLocator メソッドを呼び出して配信元ロケーターを作成します。 
+   4. マニフェスト ファイルの URL を構築します。 
 
 この手順を実装したコード例を次に示します。
 <pre><code>
@@ -76,6 +76,7 @@ private static ILocator GetStreamingOriginLocator( string targetAssetID)
 </ul>
 
 <h2>次のステップ</h2>
-これまで、Azure Storage からのダウンロードとスムーズ ストリーミングの使用によるメディアの配信について説明しました。次のトピック「[方法: Apple HLS ストリーミング コンテンツを配信する](../media-services-deliver-http-live-streaming-content/) 」では、Apple HTTP ライブ ストリーミング (HLS) を使用したストリーミング コンテンツの配信について説明します。
+これまで、Azure Storage からのダウンロードとスムーズ ストリーミングの使用によるメディアの配信について説明しました。次の[HLS コンテンツを配信する方法](../media-services-deliver-http-live-streaming-content/)に関するトピックでは、Apple HTTP Live Streaming (HLS) を使用したストリーミング コンテンツの配信について説明します。
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

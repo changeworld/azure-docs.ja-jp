@@ -1,10 +1,10 @@
-﻿<properties urlDisplayName="Get Started with Push (JS)" pageTitle="プッシュ通知の使用 (Android JavaScript) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Android JavaScript アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services " authors="ricksal"  solutions="" writer="ricksal" manager="dwrede" editor=""   />
+﻿<properties pageTitle="プッシュ通知の使用 (Android JavaScript) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して Android JavaScript アプリにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="android" authors="RickSaling" writer="ricksal" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal"/>
 
-# Mobile Services アプリケーションにプッシュ通知を追加する
+# Mobile Services アプリへのプッシュ通知の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
 このトピックでは、Azure Mobile Services で Google Cloud Messaging (GCM) を使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、クイック スタート プロジェクトへの Azure 通知ハブを使用したプッシュ通知を有効にします。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
@@ -17,35 +17,33 @@
 5. [データを挿入して通知を受け取る](#test)
 
 
->[AZURE.NOTE] アプリケーション全体のソース コードを参照するには、 <a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithPush/Android" target="_blank">ここ</a>にアクセスします。
+>[AZURE.NOTE] 完成したアプリケーションのソース コードは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithPush/Android" target="_blank">ここ</a>で確認できます。
 
 ##前提条件
 
-[WACOM.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]
+[AZURE.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
->[WACOM.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスします。
+>[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
-[WACOM.INCLUDE [GCM を有効にする](../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 次に、この API キー値を使用して、モバイル サービスが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
-##<a id="configure"></a>プッシュ要求を送信するようにモバイル サービスを構成する
+##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 
-1. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。
+1. [Azure 管理ポータル] にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![](./media/mobile-services-android-get-started-push/mobile-services-selection.png)
 
 2. **[プッシュ]** タブをクリックし、前の手順で GCM から取得した **API キー**値を入力して、**[保存]** をクリックします。
 
-	>[WACOM.NOTE]古いモバイル サービスを使用してこのチュートリアルを実行する場合は、**[プッシュ]** タブの下に、**[拡張プッシュの有効化]** というリンクが表示される場合があります。このリンクをクリックすると、モバイル サービスが更新され、Notification Hubs と統合されます。この変更を元に戻すことはできません。運用環境のモバイル サービスで拡張プッシュ通知を有効にする方法の詳細については、 <a href="http://go.microsoft.com/fwlink/p/?LinkId=391951">このガイダンスを参照してください</a>。
+	>[AZURE.NOTE]古いモバイル サービスを使用してこのチュートリアルを実行する場合は、**[プッシュ]** タブの下に、**[拡張プッシュの有効化]** というリンクが表示される場合があります。このリンクをクリックすると、モバイル サービスが更新され、Notification Hubs と統合されます。この変更を元に戻すことはできません。運用環境のモバイル サービスで拡張プッシュ通知を有効にする方法の詳細については、<a href="http://go.microsoft.com/fwlink/p/?LinkId=391951">このガイダンス</a>を参照してください。
 
    	![](./media/mobile-services-android-get-started-push/mobile-push-tab-android.png)
 
-    <div class="dev-callout"><b>重要</b>
-	<p>ポータルの [プッシュ] タブで拡張プッシュ通知に対応する GCM の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が通知ハブと共有されます。</p>
-    </div>
+	> [AZURE.IMPORTANT] ポータルの [プッシュ] タブで拡張プッシュ通知に対応する GCM の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が通知ハブと共有されます。
 
 
 これで、GCM および通知ハブと連携するようにモバイル サービスとアプリケーションが構成されました。
@@ -54,7 +52,7 @@
 
 ###Android SDK バージョンの検証
 
-[WACOM.INCLUDE [SDK を検証する](../includes/mobile-services-verify-android-sdk-version.md)]
+[AZURE.INCLUDE [Verify SDK](../includes/mobile-services-verify-android-sdk-version.md)]
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。 
 
@@ -62,11 +60,11 @@
 
 ###プロジェクトへの Google Play Services の追加
 
-[WACOM.INCLUDE [Play Services を追加する](../includes/mobile-services-add-Google-play-services.md)]
+[AZURE.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ###コードの追加
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
 
 
 ##<a id="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
@@ -75,7 +73,7 @@
 
    	![](./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png)
 
-2. **[todoitem]** で **[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
+2. **[todoitem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
   	![](./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png)
 
@@ -111,7 +109,7 @@
 		  });
 		}
 
-   	これで、新しい insert スクリプトが登録されます。このスクリプトは [gcmオブジェクト]を使用して、挿入が成功した後に、登録されているすべてのデバイスにプッシュ通知を送信します。 
+   	これで、新しい insert スクリプトが登録されます。このスクリプトは [gcm オブジェクト]を使用して、挿入が成功した後に、登録されているすべてのデバイスにプッシュ通知を送信します。 
 
 ##<a id="test"></a>アプリケーションでプッシュ通知をテストする
 
@@ -121,7 +119,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 このアプリケーションをエミュレーターで実行する場合は、Google API をサポートしている Android Virtual Device (AVD) を使用してください。
 
-1. Eclipse を再開し、Package Explorer でプロジェクトを右クリックして、**[Properties]**、**[Android]** の順にクリックし、**[Google APIs]** をオンにしてから **[OK]** をクリックします。
+1. Eclipse を再開し、Package Explorer でプロジェクトを右クリックします。**[Properties]**、**[Android]** の順にクリックし、**[Google APIs]** をオンにしてから **[OK]** をクリックします。
 
 	![](./media/mobile-services-android-get-started-push/mobile-services-import-android-properties.png)
 
@@ -141,7 +139,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 1. Eclipse で **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「_A new Mobile Services task_」) を入力し、**[Add]** ボタンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「新しいモバイル サービス タスク」) を入力し、**[Add]** ボタンをクリックします。
 
   	![](./media/mobile-services-android-get-started-push/mobile-quickstart-push1-android.png)
 
@@ -151,18 +149,18 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 これで、このチュートリアルは終了です。
 
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
-<!---This tutorial demonstrated the basics of enabling an Android app to use Mobile Services and Notification Hubs to send push notifications. Next, consider completing the next tutorial, [Send push notifications to authenticated users], which shows how to use tags to send push notifications from a Mobile Service to only an authenticated user.
+<!---このチュートリアルでは、Android アプリケーションで Mobile Services と Notification Hubs を使用してプッシュ通知を送信できるようにする方法の基本について説明しました。次は、タグを使用して、プッシュ通知をモバイル サービスから認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[認証されたユーザーへのプッシュ通知の送信]」を行うことをお勧めします。
 
-+ [Send push notifications to authenticated users]
-	<br/>Learn how to use tags to send push notifications from a Mobile Service to only an authenticated user.
++ [認証されたユーザーへのプッシュ通知の送信]
+	<br/>タグを使用してモバイル サービスから認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
 
-+ [Send broadcast notifications to subscribers]
-	<br/>Learn how users can register and receive push notifications for categories they're interested in.
++ [通知ハブを使用したニュース速報の送信]
+	<br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-+ [Send template-based notifications to subscribers]
-	<br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
++ [通知ハブを使用したローカライズ ニュース速報の送信]
+	<br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 -->
 
 Mobile Services と通知ハブについては次のトピックを参照してください。
@@ -176,13 +174,13 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 * [Notification Hubs とは]
   <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
-* [通知ハブのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
+* [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
   </br>Notification Hubs ソリューションのトラブルシューティングおよびデバッグのガイダンスについて説明します。 
 
 * [Mobile Services 向け Android クライアント ライブラリの使用方法]
   <br/>Android で Mobile Services を使用する方法について説明します。
 
-* [Mobile Services server script reference]
+* [モバイル サービスのサーバー スクリプト リファレンス]
   <br/>モバイル サービスでビジネス ロジックを実装する方法を説明します。
 
 
@@ -200,8 +198,8 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 <!-- URLs. -->
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-android-get-started/
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started/
 [データの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-data/
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-users
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
@@ -222,4 +220,5 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-android-send-breaking-news/
 [通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-android-send-localized-breaking-news/
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

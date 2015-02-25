@@ -1,14 +1,14 @@
-﻿<properties urlDisplayName="How to scale" pageTitle="メディア サービスの規模の設定方法 | Azure ドキュメント" metaKeywords="" description="アカウントにプロビジョニングする [オンデマンド ストリーミング占有ユニット] および [エンコード占有ユニット] の数を指定することでメディア サービスの規模を設定する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to Scale a Media Service" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="メディア サービスの規模の設定方法 | Azure ドキュメント" description="アカウントにプロビジョニングする [オンデマンド ストリーミング占有ユニット] および [エンコード占有ユニット] の数を指定することでメディア サービスの規模を設定する方法について説明します。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
-
-
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
 
 
 
-#メディア サービスの規模の設定方法  
 
-[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
+
+# メディア サービスの規模の設定方法  
+
+[AZURE.INCLUDE [免責事項](../includes/disclaimer.md)]
 
 
 メディア サービスは、アカウントのプロビジョニングに使用する**オンデマンド ストリーミング占有ユニット**および**エンコード占有ユニット**の数を指定することで規模を設定できます。 
@@ -16,7 +16,7 @@
 
 <h2>オンデマンド ストリーミング占有ユニット</h2>
 
-オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、[動的パッケージ化機能](http://go.microsoft.com/fwlink/?LinkId=276874)などの追加機能を利用できるようになります。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。 
+オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、  [動的パッケージ化機能](http://go.microsoft.com/fwlink/?LinkId=276874)などの追加機能を利用できるようになります。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。 
 
 オンデマンド ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
@@ -36,7 +36,7 @@
 	 
 	>[Azure.Note] 現在のところ、オンデマンド ストリーミング占有ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
-	>[Azure.Note] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure の料金設定](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+	>[Azure.Note] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)に関するページを参照してください。
 
 <h2>エンコード占有ユニット</h2>
 
@@ -48,13 +48,13 @@
 
 2. [エンコード] ページを選択します。 
 	
-	[エンコード] ページでは、以下に示すように、Basic、Standard、Premium の 3 種類のエンコード占有ユニットから選択できます。
+	[エンコード] ページでは、以下に示すように、  Basic、Standard、Premium の 3 種類のエンコード占有ユニットから選択できます。
 
 	![Processors page](./media/media-services-how-to-scale/media-services-encoding-scale.png)
 
 	エンコード スライダーを使用して、選択した占有ユニットの種類のユニット数を変更できます。  
 	
-	占有ユニットの種類間の大きな違いは速度です。たとえば、同じエンコード ジョブを実行した場合、Standard 占有ユニットの方が Basic 占有ユニットに比べ高速です。詳細については、[Milan Gada](http://azure.microsoft.com/blog/author/milanga/) によるブログのトピック「Encoding Reserved Unit Types (エンコード占有ユニットの種類)」を参照してください。
+	占有ユニットの種類間の大きな違いは速度です。たとえば、同じエンコード ジョブを実行した場合、Standard 占有ユニットの方が Basic 占有ユニットに比べ高速です。詳細については、[Milan Gada](http://azure.microsoft.com/blog/author/milanga/) によるエンコード占有ユニットの種類に関するブログを参照してください。
 
 	>[Azure.Note] シンガポール、香港、大阪、北京、上海のデータ センターでは、Premium 占有ユニットが提供されません。
 
@@ -72,7 +72,7 @@
 サポート チケットを開くには、以下の手順を実行します。 
 
 1. [管理ポータル](http://manage.windowsazure.com)の Azure アカウントにログインします。
-2. [サポート](http://www.windowsazure.com/ja-jp/support/contact/)に移動します。
+2. [[サポート]](http://www.windowsazure.com/ja-jp/support/contact/) に移動します。
 3. [サポートの要求] をクリックします。
 4. サブスクリプションを選択します。
 5. サポートの種類として [技術] を選択します。
@@ -93,4 +93,5 @@
 
 
 
-<!--HONumber=35.1-->
+
+<!--HONumber=42-->

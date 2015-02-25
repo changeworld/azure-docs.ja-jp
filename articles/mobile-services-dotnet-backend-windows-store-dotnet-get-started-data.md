@@ -1,10 +1,10 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" services="mobile-services" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data-legacy](../includes/mobile-services-selector-get-started-data-legacy.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data-legacy](../includes/mobile-services-selector-get-started-data-legacy.md)]
 
 <div class="dev-center-tutorial-subselector">
 	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title=".NET backend" class="current">.NET バックエンド</a> | 
@@ -13,11 +13,11 @@
 
 このトピックでは、Azure Mobile Services を Windows ストア アプリのバックエンド データ ソースとして使用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションの Visual Studio 2013 プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合し、アプリケーションの実行時にデータに加えられた変更を表示します。
 
-このチュートリアルで作成するモバイル サービスは .NET バックエンド モバイル サービスです。.NET バックエンドによって、モバイル サービスにおけるサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できるようになります。さらに、ローカル コンピューターでモバイル サービスを実行し、デバックすることができます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの JavaScript バックエンド バージョンを参照してください。
+このチュートリアルで作成するモバイル サービスは .NET バックエンド モバイル サービスです。.NET バックエンドによって、モバイル サービスにおけるサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できるようになります。さらに、ローカル コンピューターでモバイル サービスを実行し、デバックすることができます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「JavaScript バックエンド バージョン」を参照してください。
 
->[WACOM.NOTE] このトピックでは、Azure Mobile Services を Windows ストア プロジェクトに追加する方法を説明します。Visual Studio 2013 ツールを使用して同じ .NET バックエンド モバイル サービスをユニバーサル Windows アプリ プロジェクトに追加できます。詳細については、[ユニバーサル Windows アプリ バージョン](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data) of this tutorial.を参照してください。
+>[AZURE.NOTE]このトピックでは、Azure Mobile Services を Windows ストア プロジェクトに追加する方法を説明します。Visual Studio 2013 ツールを使用して同じ .NET バックエンド モバイル サービスをユニバーサル Windows アプリ プロジェクトに追加できます。詳細については、このチュートリアルの [ユニバーサル Windows アプリのバージョン](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data) を参照してください。
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。:
 
 1. [Windows ストア アプリ プロジェクトのダウンロード]
 2. [新しいモバイル サービスを作成する]
@@ -29,12 +29,12 @@ This tutorial walks you through these basic steps:
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F)を参照してください。
 * <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>。無料評価版が利用できます。
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-このチュートリアルは、Visual Studio 2013 の Windows ストア アプリ プロジェクトの [GetStartedWithMobileServices アプリケーション][デベロッパー サンプル コード集のサイト]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。 
+このチュートリアルは、Visual Studio 2013 の Windows ストア アプリケーション プロジェクトである [GetStartedWithMobileServices アプリケーション][デベロッパー サンプル コード集のサイト]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。 
 
 1. C# バージョンの GetStartedWithMobileServices サンプル アプリケーションを[デベロッパー サンプル コード集のサイト]からダウンロードします。 
 
@@ -44,7 +44,7 @@ This tutorial walks you through these basic steps:
 
    	追加された **TodoItem** オブジェクトはメモリ内の **ObservableCollection&lt;TodoItem&gt;** に格納されます。
 
-4. **F5** キーを押してプロジェクトを再ビルドし、アプリケーションを開始します。
+4. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
 5. アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Save]** をクリックします。
 
@@ -54,11 +54,11 @@ This tutorial walks you through these basic steps:
 
 ##<a name="create-service"></a>新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 ##<a name="download-the-service-locally"></a>モバイル サービス プロジェクトをダウンロードしてソリューションに追加する
 
-1. [Azure の管理ポータル]で、新しいモバイル サービスまたはそのクラウド アイコン タブをクリックして、[概要] ページに移動します。
+1. [Azure の管理ポータル]で、新しい Mobile Service またはそのクラウド アイコン タブをクリックして、[概要] ページに移動します。
 
     ![][2]
 
@@ -68,7 +68,7 @@ This tutorial walks you through these basic steps:
 
 3. **[作業の開始]** セクションの一番下の **[クラウドへのサービスの発行]** というステップまでスクロールします。下のスクリーン ショットに表示されるリンクをクリックして、ダウンロードしたモバイル サービスの発行プロファイル ファイルをダウンロードします。 
 
-    > [WACOM.NOTE] Azure アカウントに関連する機密性の高い情報が含まれているために、ファイルは安全な場所に保存します。このファイルは、このチュートリアルで後でモバイル サービスを発行した後、削除されます。 
+    > [AZURE.NOTE] Azure アカウントに関連する機密性の高い情報が含まれているために、ファイルは安全な場所に保存します。このファイルは、このチュートリアルで後でモバイル サービスを発行した後、削除されます。 
 
     ![][5]
 
@@ -77,7 +77,7 @@ This tutorial walks you through these basic steps:
 
     ![][26]
 
-5. 次に Visual Studio のソリューション エクスプ ローラーで、Windows ストア アプリのデータの使用のためのソリューションを右クリックします。**[追加]**、**[既存のプロジェクト]** の順にクリックします。
+5. 次に Visual Studio のソリューション エクスプ ローラーで、Windows ストア アプリのデータの使用のためのソリューションを右クリックします。**[追加]** をクリックし、**[既存のプロジェクト]** をクリックします。
 
     ![][4]
 
@@ -85,15 +85,15 @@ This tutorial walks you through these basic steps:
 
     ![][6]
 
-7. Visual Studio のソリューション エクスプ ローラーで、追加したサービス プロジェクトを右クリックし、**[ビルド]** をクリックして、エラーなしでビルドされることを確認します。ビルド中に NuGet パッケージ マネージャーは、プロジェクトで参照されている一部の NuGet パッケージの復元が必要になる場合があります。
+7. Visual Studio のソリューション エクスプローラーで、追加したサービス プロジェクトを右クリックし、**[ビルド]** をクリックして、エラーなしでビルドされることを確認します。ビルド中に NuGet パッケージ マネージャーは、プロジェクトで参照されている一部の NuGet パッケージの復元が必要になる場合があります。
 
     ![][20]
 
-8. サービス プロジェクトをもう一度右クリックします。今回は、**[デバッグ]** コンテキスト メニューの **[新しいインスタンスを開始]** をクリックします。
+8. サービス プロジェクトをもう一度右クリックします。今回は、**デバッグ** コンテキスト メニューの **[新しいインスタンスを開始]** をクリックします。
 
     ![][21]
 
-    Visual Studio によってサービスの既定の Web ページが表示されます。既定の Web ページで **[今すぐ試す]** をクリックして、モバイル サービスのメソッドをテストできます。
+    Visual Studio では、サービスの既定の Web ページが表示されます。既定の Web ページで **[今すぐ試す]** をクリックして、モバイル サービスのメソッドをテストできます。
 
     ![][22]
 
@@ -110,11 +110,11 @@ This tutorial walks you through these basic steps:
 
     ![][7]
 
-2. [NuGet パッケージの管理] ダイアログで、オンライン パッケージ コレクションの **WindowsAzure.MobileServices** を検索し、クリックして Azure のモバイル サービス Nuget パッケージをインストールします。次に、ダイアログを閉じます。
+2. [NuGet パッケージの管理] ダイアログで、オンライン パッケージ コレクションの **WindowsAzure.MobileServices** を検索し、クリックして Azure Mobile Services Nuget パッケージをインストールします。次に、ダイアログを閉じます。
 
     ![][8]
 
-3. Azure 管理ポータルに戻り、**アプリケーションを接続してサービスにデータを保存する**というステップを検索します。**C#** 言語が選択されていることを確認します。`MobileServiceClient` 接続を作成するコード スニペットをコピーします。
+3. Azure の管理ポータルに戻り、"**アプリケーションを接続してサービスにデータを保存する**" というステップを検索します。**C#** 言語が選択されていることを確認します。`MobileServiceClient` 接続を作成するコード スニペットをコピーします。
 
     ![][9]
 
@@ -131,7 +131,7 @@ This tutorial walks you through these basic steps:
 
 6. Visual Studio の MainPage.xaml.cs ファイルで、`MainPage` クラス定義を次の定義に置き換え、ファイルを保存します。 
 
-    このコードはモバイル サービス SDK を使用して、アプリケーションがそのデータをローカルでメモリ内に保存する代わりにサービスによって提供されるテーブルに保存できるようにします。主な方法には、`InsertTodoItem`、`RefreshTodoItems`、および `UpdateCheckedTodoItem` の 3 つがあります。これら 3 つの方法では、データ コレクションを Azure のテーブルに非同期的に挿入、照会、および更新できます。
+    このコードはモバイル サービス SDK を使用して、アプリケーションがそのデータをローカルでメモリ内に保存する代わりにサービスによって提供されるテーブルに保存できるようにします。主な方法には、`InsertTodoItem`、`RefreshTodoItems`、`UpdateCheckedTodoItem` の 3 つがあります。これら 3 つの方法では、データ コレクションを Azure のテーブルに非同期的に挿入、照会、および更新できます。
 
         public sealed partial class MainPage : Page
         {
@@ -180,11 +180,11 @@ This tutorial walks you through these basic steps:
 
 ##<a name="test-locally-hosted"></a>ローカルでホストされているサービスで、Windows ストア アプリケーションをテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service-data](../includes/mobile-services-dotnet-backend-test-local-service-data.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service-data](../includes/mobile-services-dotnet-backend-test-local-service-data.md)]
 
 ##<a name="publish-mobile-service"></a>モバイル サービスを Azure に発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ##<a name="test-azure-hosted"></a>Azure に発行したモバイル サービスをテストする
 
@@ -206,26 +206,26 @@ This tutorial walks you through these basic steps:
 2. Visual Studio で F5 キーを押すか、または [デバッグ] メニューの **[デバッグ開始]** をクリックします。これにより、Azure でリモートでホストされるモバイル サービスに接続するためにアプリケーションを実行する前に、Windows ストア アプリは前の変更で再ビルドされます。 
 
 
-3. 新しい todoitems をいくつか入力し、それぞれについて **[保存]** をクリックします。チェック ボックスをオンにして、いくつかの新しい項目を完了します。それぞれの新しい todoItem は、Azure の管理ポータルでモバイル サービスに以前に構成した SQL データベースで保存および更新されます。 
+3. 新しい todoitems をいくつか入力し、それぞれについて **[保存]** をクリックします。チェック ボックスをオンにして、いくつかの新しい項目を完了します。それぞれの新しい todoItem は、Azure 管理ポータルでモバイル サービスに以前に構成した SQL データベースで保存および更新されます。 
 
     ![][16]
 
     アプリケーションを再起動して、変更内容が Azure のデータベースに保持されたことを確認できます。 
 
-##<a name="view-stored-data"></a>SQL データベースに格納されているデータの表示
+##<a name="view-stored-data"></a>SQL Database に格納されているデータの表示
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-view-sql-data](../includes/mobile-services-dotnet-backend-view-sql-data.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-view-sql-data](../includes/mobile-services-dotnet-backend-view-sql-data.md)]
 
 これで、**データの使用**に関するチュートリアルはおしまいです。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Windows ストア アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [ページングを使用したモバイル サービス クエリの改善]
+* [ページングを使用したクエリの改善]
   <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了した後は、次に示す他のチュートリアルのいずれかを行うことをお勧めします。
@@ -233,10 +233,10 @@ This tutorial walks you through these basic steps:
 * [認証の使用]
   <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [モバイル サービス .NET の使用方法の概念リファレンス]
+* [Mobile Services .NET の使用方法の概念リファレンス]
   <br/>.NET で Mobile Services を使用する方法について説明します。
   
 <!-- Anchors. -->
@@ -277,16 +277,18 @@ This tutorial walks you through these basic steps:
 
 
 <!-- URLs. -->
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
+[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
 [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
+
+<!--HONumber=42-->
