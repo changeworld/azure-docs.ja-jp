@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル" metaKeywords="" description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news" authors="ricksal" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル" metaKeywords="" description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 # 通知ハブを使用したローカライズ ニュース速報の送信
@@ -25,7 +25,7 @@
 
 
 
-##前提条件 ##
+## 前提条件 ##
 
 「[Notification Hubs を使用したニュース速報の送信]」のチュートリアルを完了し、コードが使用可能な状態になっている必要があります。このチュートリアルは、そのコードが基になっているためです。 
 
@@ -205,7 +205,7 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [Notification Hubs によるユーザーへの通知: ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
 [Notification Hubs によるユーザーへの通知: Mobile Services]: /ja-jp/manage/services/notification-hubs/notify-users
 [Notification Hubs を使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet 
-
+[通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet 
 [アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
@@ -220,5 +220,7 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
+[Notification Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
+[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
 [方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store (方法: Windows Azure 通知ハブ (Windows ストア アプリ))]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
+[方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx

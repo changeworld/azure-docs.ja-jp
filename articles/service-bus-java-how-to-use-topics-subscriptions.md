@@ -76,8 +76,8 @@ Azure との唯一の通信ポイントです。
     topicInfo.setMaxSizeInMegabytes(maxSizeInMegabytes); 
     CreateTopicResult result = service.createTopic(topicInfo);
 
-ServiceBusContract オブジェクトの **listTopics** メソッドを使用すると、
-****指定した名前のトピックがサービス名前空間に
+**ServiceBusContract** オブジェクトの **listTopics** メソッドを使用すると、
+指定した名前のトピックがサービス名前空間に
 既に存在するかどうか確認できます。
 
 ## <a name="bkmk_HowToCreateSubscrip"> </a>サブスクリプションの作成方法
@@ -166,7 +166,7 @@ SqlFilter.SqlExpression 構文の説明を参照してください。
 アプリケーションに固有のカスタム プロパティの保持に使用するディクショナリが用意されており、
 任意のアプリケーション データの本体が格納されます。アプリケーションでは、
 BrokeredMessage のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。
-****その後で、適切な **DataContractSerializer** を使用して
+その後で、適切な **DataContractSerializer** を使用して
 オブジェクトをシリアル化します。この方法に代わって、
 **java.io.InputStream** を使用できます。
 
@@ -289,8 +289,7 @@ Service Bus には、
 トピック内でロックされているメッセージにはタイムアウトも設定されています。
 アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、
 メッセージのロックが自動的に解除され、
-再度受信できる状態に変わります
-。
+再度受信できる状態に変わります。
 
 メッセージが処理された後、
 **deleteMessage** 要求が発行される前にアプリケーションがクラッシュした場合は、

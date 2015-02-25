@@ -1,20 +1,6 @@
-﻿<properties 
-	pageTitle="Azure ポータルを使用した HDInsight Hadoop クラスターの管理 | Azure" 
-	description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。." 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="mumian" 
-	manager="paulettm" 
-	editor="cgronlun"/>
+<properties pageTitle="Azure ポータルを使用した HDInsight Hadoop クラスターの管理 | Azure" description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。." services="hdinsight" documentationCenter="" authors="mumian" manager="paulettm" editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/21/2014" 
-	ms.author="jgao"/>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/21/2014" ms.author="jgao"/>
 
 
 
@@ -97,7 +83,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 リモート デスクトップ接続を使用したクラスターでのカスタム ソフトウェアのインストールはサポートされていません。クラスターを再作成する必要がある場合は、ヘッド ノードのドライブは失われるため、これらのドライブにファイルを保存しないでください。Azure BLOB ストレージにファイルを保存することをお勧めします。BLOB ストレージは永続的です。
 
 ##<a id="password"></a> HDInsight クラスターのユーザー名とパスワードの変更
-HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。HDInsight クラスターのユーザー アカウントは、プロビジョニング処理中に作成されます。RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。「[リモート デスクトップを有効にする]」を参照してください。(#enablerdp)。
+HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。HDInsight クラスターのユーザー アカウントは、プロビジョニング処理中に作成されます。RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。「[リモート デスクトップを有効にする](#enablerdp)」を参照してください。
 
 **HDInsight クラスターのユーザー名とパスワードを変更するには**
 
@@ -250,5 +236,6 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop command line"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterCreate.UploadCert.png
+
 
 <!--HONumber=42-->

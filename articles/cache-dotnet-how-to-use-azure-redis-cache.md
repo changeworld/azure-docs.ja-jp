@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Azure Redis Cache の使用方法" metaKeywords="" description="Azure Redis Cache でキャッシュを作成して使用する方法について説明します。" metaCanonical="" services="cache" documentationCenter="API Management" title="How to Use Azure Redis Cache" authors="sdanie" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="Azure Redis Cache の使用方法" metaKeywords="" description="Azure Redis Cache でキャッシュを作成して使用する方法について説明します。" metaCanonical="" services="cache" documentationCenter="API Management" title="How to Use Azure Redis Cache" authors="sdanie" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="cache" ms.workload="tbd" ms.tgt_pltfrm="cache-redis" ms.devlang="dotnet" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
 
@@ -88,7 +88,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 Azure Redis Cache を使用して作成されたキャッシュには、あらゆる Azure アプリケーションからアクセスすることができます。Visual Studio で開発した .NET アプリケーションであれば、**StackExchange.Redis** キャッシュ クライアントを使用できます。キャッシュ クライアント アプリケーションの構成は、NuGet パッケージを使用すると簡単です。 
 
->[AZURE.NOTE] 詳細については、GitHub の [StackExchange.Redis][] に関するページと [StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
+>[AZURE.NOTE] 詳細については、GitHub の [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis) に関するページと [StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
 
 Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
@@ -136,7 +136,7 @@ SSL を使用しない場合は、`ssl=false`　を設定するか、または�
 
 	connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,password=...");
 
->[AZURE.NOTE] 高度な接続構成オプションの詳細については、[StackExchange.Redis][] の構成モデルを参照してください。
+>[AZURE.NOTE] 高度な接続構成オプションの詳細については、[StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis) の構成モデルを参照してください。
 
 キャッシュのエンドポイントとキーは、ご利用のキャッシュ インスタンスの Azure 管理プレビュー ポータル ブレードから取得できます。
 
@@ -218,7 +218,7 @@ Visual Studio で Redis Cache Session State NuGet パッケージを使用して
 
 NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis Cache Session State プロバイダーを使用するために必要な構成を記述した以下のセクションが追加されます。
 
-  <sessionState mode="Custom" customProvider="MySessionStateStore">
+    <sessionState mode="Custom" customProvider="MySessionStateStore">
       <providers>
         <!--
           <add name="MySessionStateStore" 
@@ -355,18 +355,17 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
 [キャッシュの料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/cache/
 [管理ポータル]: https://manage.windowsazure.com/
 
-[Azure Redis Cache の概要]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
 
 [Azure Redis Cache への移行]: http://go.microsoft.com/fwlink/?LinkId=317347
 [Azure Redis Cache のサンプル]: http://go.microsoft.com/fwlink/?LinkId=320840
 [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/
 
-[StackExchange.Redis]: http://github.com/StackExchange/StackExchange.Redis
 [StackExchange.Redis キャッシュ クライアントのドキュメント]: http://github.com/StackExchange/StackExchange.Redis#documentation
 
 [Redis]: http://redis.io/documentation
-[Redis データ型]: http://redis.io/topics/data-types
+[redis のデータ型]: http://redis.io/topics/data-types
 [redis のデータ型の概念に関するページ]: http://redis.io/topics/data-types-intro
 
 [Windows Azure Web サイト:How Application Strings and Connection Strings Work (Windows Azure Web サイト: アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/

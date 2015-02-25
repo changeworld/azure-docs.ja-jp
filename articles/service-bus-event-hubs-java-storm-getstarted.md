@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, イベント ハブ, Event Hubs の開始方法" description="このチュートリアルでは、Java でイベントを送信する Azure Event Hubs を使用する方法と、Apache Storm クラスターでそれを受信する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
+<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, イベント ハブ, Event Hubs の開始方法" description="このチュートリアルでは、Java でイベントを送信する Azure Event Hubs を使用する方法と、Apache Storm クラスターでそれを受信する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="service-bus" ms.workload="core" ms.tgt_pltfrm="java" ms.devlang="java" ms.topic="hero-article" ms.date="10/27/2014" ms.author="elioda" />
 
@@ -83,11 +83,11 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [22]: ./media/service-bus-event-hubs-getstarted/receive-storm2.png
 
 <!-- Links -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn836025.aspx
 
 [Apache Storm]: https://storm.incubator.apache.org
 [HDInsight Storm の概要]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-storm-overview/
-[Storm と HDInsight を使用したセンサー データの分析]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis/
-[HDInsight と Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
+[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis/
+[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/

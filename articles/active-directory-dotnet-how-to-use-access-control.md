@@ -6,7 +6,7 @@
 
 このガイドでは、Microsoft、Google、Yahoo、Facebook などの ID プロバイダーのユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Azure Active Directory の Access Control (Access Control サービス (ACS) とも呼ばれます) を使用する方法について説明します。
 
-## <span class="short-header">目次</span>
+<h2>目次</h2>
 
 -   [ACS とは][ACS とは]
 -   [概念][概念]
@@ -20,7 +20,7 @@
 -   [ID プロバイダーを追加する][ID プロバイダーを追加する]
 -   [参照トピック][参照トピック]
 
-## <span class="short-header">ACS とは</span>
+<h2>ACS とは</h2>
 
 ほとんどの開発者は ID の専門家ではなく、アプリケーションやサービスの認証と承認のメカニズムの開発に時間をかけたくはありません。ACS は、Web アプリケーションとサービスにアクセスするユーザーを認証するための簡単な方法を提供する Azure サービスです。これを使えば、複雑な認証ロジックをコードに追加する必要はありません。
 
@@ -34,7 +34,7 @@ ACS では、次の機能を使用できます。
 
 ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][アクセス制御サービス 2.0 に関するページ]を参照してください。
 
-## <span class="short-header">概念</span>
+<h2>概念</h2>
 
 ACS はクレームベース ID のプリンシパルに基づいており、これは内部またはクラウドで実行されているアプリケーションの認証メカニズムを作成するための一貫した方法になっています。クレームベース ID は、アプリケーションとサービスが組織内、他の組織内、およびインターネット上のユーザーに関する必要な ID 情報を取得するための一般的な方法を提供します。
 
@@ -206,15 +206,15 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 2.  HomeController クラスに、*Claims* メソッドを追加します。
 
-    public ActionResult Claims()
-    {
-     ViewBag.Message = "Your claims page.";
+        public ActionResult Claims()
+        {
+        ViewBag.Message = "Your claims page.";
 
         ViewBag.ClaimsIdentity = Thread.CurrentPrincipal.Identity;
 
         return View();
 
-    }
+        }
 
 3.  *Claims* メソッドを右クリックし、**[ビューの追加]** を選択します。
 

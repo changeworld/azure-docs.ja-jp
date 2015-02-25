@@ -1,21 +1,6 @@
-﻿<properties 
-	pageTitle="HDInsight Emulator の概要 | Azure" 
-	description="HDInsight Emulator for Azure の使用方法について説明します。" 
-	editor="cgronlun" 
-	manager="paulettm" 
-	services="hdinsight" 
-	author="nitinme" 
-	authors="nitinme" 
-	documentationCenter=""/>
+<properties pageTitle="HDInsight Emulator の概要 | Azure" description="HDInsight Emulator for Azure の使用方法について説明します。" editor="cgronlun" manager="paulettm" services="hdinsight" author="nitinme" authors="nitinme" documentationCenter=""/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/06/2015" 
-	ms.author="nitinme"/>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/06/2015" ms.author="nitinme"/>
 
 # HDInsight Emulator の概要 
 
@@ -84,7 +69,7 @@ Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用し
 
 インストールが終わると、いくつかのローカル サービスもインストールされます。[サービス] ウィンドウのスクリーンショットは次のようになります。
 
-![HDI.Emulator.Services][0]
+![HDI.Emulator.Services][image-hdi-emulator-services]
 
 HDInsight Emulator に関連するサービスは既定で自動的に開始されません。サービスを開始するには、Hadoop コマンド ラインで、<system drive\>\hdp の **start\_local\_hdp_services.cmd** を実行します。コンピューターの再起動後にサービスが自動的に開始されるようにするには、**set-onebox-autostart.cmd** を実行します。  
 
@@ -469,7 +454,7 @@ Emulator をインストールしたコンピューターでコントロール �
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]に関するページ
 - [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][hdinsight-develop-deploy-streaming]
 - [HDInsight Emulator リリース ノート][hdinsight-emulator-release-notes]
-- [HDInsight について議論する MSDN フォーラム](http://social.msdn.microsoft.com/Forums/en-US/hdinsight)
+- [HDInsight について議論する MSDN フォーラム](http://social.msdn.microsoft.com/Forums/ja-jp/hdinsight)
 
 
 

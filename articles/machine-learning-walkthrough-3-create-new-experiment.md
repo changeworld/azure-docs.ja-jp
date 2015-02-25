@@ -1,4 +1,4 @@
-﻿<properties title="Step 3: Create a new Azure Machine Learning experiment" pageTitle="手順 3.Machine Learning の新しい実験を作成する | Azure" description="手順 3.Azure Machine Learning Studio で新しいトレーニング実験を作成する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
+<properties title="Step 3: Create a new Azure Machine Learning experiment" pageTitle="手順 3.Machine Learning の新しい実験を作成する | Azure" description="手順 3.Azure Machine Learning Studio で新しいトレーニング実験を作成する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/02/2014" ms.author="garye" />
 
@@ -33,7 +33,7 @@
 3.	実験キャンバスの左側にあるモジュール パレットの **[保存されたデータセット]** を展開します。
 4.	作成したデータセットを見つけ、キャンバスにドラッグします。パレットの上にある **[検索]** ボックスに名前を入力してデータセットを見つけることもできます。  
 
-##データを準備する
+## データを準備する
 データセットの出力ポートを右クリックして **[視覚化]** を選択すると、データの最初の 100 行とデータセット全体の統計情報を表示できます。各列のデータ型は、ML Studio によってこの時点で特定されています。また、データ ファイルには列見出しが含まれていないため、汎用の見出しも追加されています。  
 
 列見出しは必須ではありませんが、モデルのデータを操作する際に便利です。また、最終的にモデルを Web サービスに公開する際に、見出しが設定されていることによってサービスのユーザーが列を見つけやすくなります。  
@@ -59,7 +59,7 @@
 
 ![Adding Metadata Editor][2]
  
-##トレーニング用およびテスト用のデータセットを作成する
+## トレーニング用およびテスト用のデータセットを作成する
 実験の次のステップでは、モデルのトレーニングとテストに使用するデータセットをそれぞれ生成します。これには**分割**モジュールを使用します。  
 
 1.	**分割**モジュールを見つけてキャンバスにドラッグし、最後に使用した**メタデータ エディター** モジュールに接続します。

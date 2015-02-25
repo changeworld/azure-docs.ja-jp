@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Cloud Service" pageTitle="Node.js 概要ガイド - Azure チュートリアル" metaKeywords="Azure node.js getting started, Azure Node.js tutorial, Azure Node.js tutorial" description="シンプルな Node.js Web アプリケーションの開発および Azure へのデプロイに役立つエンド ツー エンドのチュートリアルです。" metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build and deploy a Node.js application to an Azure Cloud Service" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Cloud Service" pageTitle="Node.js 概要ガイド - Azure チュートリアル" metaKeywords="Azure node.js getting started, Azure Node.js tutorial, Azure Node.js tutorial" description="シンプルな Node.js Web アプリケーションの開発および Azure へのデプロイに役立つエンド ツー エンドのチュートリアルです。" metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build and deploy a Node.js application to an Azure Cloud Service" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
 
@@ -24,7 +24,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-<p><img src="https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png" alt="Hello World ページを表示するブラウザー ウィンドウ。この URL は、ページが Azure でホストされていることを示します。">
+<p><img src="https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png" alt="Hello World ページを表示するブラウザー ウィンドウ。この URL は、ページが Azure でホストされていることを示します。">
 </p>
 
 
@@ -56,16 +56,15 @@
 
 	**New-AzureServiceProject** コマンドレットによって作成されるファイルは、次のとおりです。
 
-	-   **ServiceConfiguration.Cloud.cscfg**,
-        **ServiceConfiguration.Local.cscfg** and **ServiceDefinition.csdef** are
-        Azure-specific files necessary for publishing your
-        application.
+	-   **ServiceConfiguration.Cloud.cscfg**
+        **ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef** は、アプリ
+        ケーションの発行に必要な、Windows Azure 固有のファイルです。
 		
-	For more information about these files, see
-        [Overview of Creating a Hosted Service for Azure][].
+	これらのファイルの詳細については、「[Azure 対応のホステッド サービスの作成の概要][]」
+        を参照してください。.
 
-	-   **deploymentSettings.json** stores local settings that are used by
-        the Azure PowerShell deployment cmdlets.
+	-   **deploymentSettings.json** には、Windows Azure PowerShell 
+        デプロイ コマンドレットによって使用されるローカル設定が格納されます。
 
 4.  次のコマンドを入力して、新しい Web ロールを追加します。**Add-AzureNodeWebRole コマンドレット**を使用します。
 
@@ -162,7 +161,7 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
 
 2.  **ストレージ アカウント**が存在しない場合は、新たに作成します。Azure ストレージ アカウントは、展開中にアプリケーション パッケージを格納するために使用されます。展開が完了したら、ストレージ アカウントを削除してかまいません。
 
-3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure に展開したアプリケーションがホストされるコンテナーです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
+3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure に展開したアプリケーションがホストされるコンテナーです。詳細については、「[Azure 対応のホステッド サービスの作成の概要][]」を参照してください。
 
 4.  展開パッケージを Azure に発行します。
 
@@ -207,7 +206,7 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
 </div>
 
 
-[Azure SDK Node.js エントリが展開された Windows の [スタート] メニュー]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-menu.png
+[Azure SDK Node.js エントリが展開された Windows の スタート メニュー]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-menu.png
 [mkdir]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png
 [nodejs.org]: http://nodejs.org/
 [helloworld フォルダーのディレクトリ一覧です。]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-7.png
@@ -216,7 +215,7 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
 [タスク バーから Windows Azure エミュレーターを右クリックすると表示されるメニュー。]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-11.png
 [無料評価版のリンクをハイライト表示して http://www.windowsazure.com/ を表示するブラウザー ウィンドウ]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-12.png
 [LiveID サインイン ページを表示するブラウザー ウィンドウ]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-13.png
-[publishSettings ファイルの [名前を付けて保存] ダイアログ ボックスを表示する Internet Explorer。]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-14.png
+[publishSettings ファイルの 名前を付けて保存 ダイアログ ボックスを表示する Internet Explorer。]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-14.png
 
 [Publish-AzureService コマンドの完全な状態出力]: ./media/cloud-services-nodejs-develop-deploy-app/node20.png
 [Azure サブスクリプションからストレージ アカウントを削除する方法]: https://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/

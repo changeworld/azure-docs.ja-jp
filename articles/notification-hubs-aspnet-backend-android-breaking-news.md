@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Breaking News" pageTitle="Notification Hubs ニュース速報チュートリアル - Android" metaKeywords="" description="Azure Service Bus Notification Hubs を使用して Android デバイスにニュース速報通知を送信する方法を説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="ricksal" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Breaking News" pageTitle="Notification Hubs ニュース速報チュートリアル - Android" metaKeywords="" description="Azure Service Bus Notification Hubs を使用して Android デバイスにニュース速報通知を送信する方法を説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="11/22/2014" ms.author="ricksal" />
 
@@ -22,7 +22,7 @@
 
 このトピックは、「[通知ハブの使用][get-started]」で作成したアプリケーションが基になります。このチュートリアルを開始する前に、「[通知ハブの使用][get-started]」を完了している必要があります。
 
-##<a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
+## <a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
 
 最初の手順として、既存のメイン アクティビティに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。 
 
@@ -209,7 +209,7 @@
 
 これで、アプリケーションがデバイス上のローカル ストレージに一連のカテゴリを格納したり、ユーザーがカテゴリの選択を変更したときに通知ハブに登録できるようになりました。 
 
-##<a name="register"></a>通知を登録する
+## <a name="register"></a>通知を登録する
 
 この手順では、ローカル ストレージに格納されたカテゴリを使用して、起動時に通知ハブに通知します。 
 
@@ -262,7 +262,7 @@
 
 [WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
-##<a name="test-app"></a>アプリケーションを実行して通知を生成する
+## <a name="test-app"></a>アプリケーションを実行して通知を生成する
 
 1. Eclipse で、アプリケーションをビルドし、デバイスまたはエミュレーターで起動します。
 	
@@ -304,11 +304,11 @@
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
 
 <!-- URLs.-->
-[通知ハブの使用]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
+[get-started]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
 [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/ 
 [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
 [モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started/
-[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
+[Notification Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
 [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Caching" pageTitle="インロール キャッシュの使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure cache, Azure caching, Azure cache, Azure caching, Azure store session state, Azure cache .NET, Azure cache C#" description="Azure インロール キャッシュの使用方法をについて説明します。サンプルは C# コードで記述され、.NET API を利用しています。" metaCanonical="" services="cache" documentationCenter=".NET" title="How to Use In-Role Cache for Azure Cache" authors="sdanie" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Caching" pageTitle="インロール キャッシュの使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure cache, Azure caching, Azure cache, Azure caching, Azure store session state, Azure cache .NET, Azure cache C#" description="Azure インロール キャッシュの使用方法をについて説明します。サンプルは C# コードで記述され、.NET API を利用しています。" metaCanonical="" services="cache" documentationCenter=".NET" title="How to Use In-Role Cache for Azure Cache" authors="sdanie" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
 
@@ -138,7 +138,7 @@ VM サイズの合計メモリは、次のとおりです。
 
 NuGet パッケージは、いくつかの処理を行います。必要な構成をロールの config ファイルに追加したり、キャッシュ クライアントの診断レベル設定を Azure アプリケーションの ServiceConfiguration.cscfg ファイルに追加したり、必要なアセンブリ参照を追加したりします。
 
->ASP.NET Web ロールでは、Caching NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法:ASP.NET セッション状態をキャッシュに格納する]」および「[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
+>ASP.NET Web ロールでは、Caching NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法:ASP.NET セッション状態をキャッシュに格納する]」および「[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]」
 
 NuGet パッケージは、次の構成要素をロールの web.config または app.config に追加します。**dataCacheClients** セクションおよび **cacheDiagnostics** セクションは、**configSections** 要素の下に追加されます。**configSections** 要素が存在しない場合は、**configuration** 要素の子として作成されます。
 
@@ -156,7 +156,7 @@ NuGet パッケージは、次の構成要素をロールの web.config また�
                allowDefinition="Everywhere" />
     </configSections>
 
-These new sections include references to a **dataCacheClients** element and a **cacheDiagnostics** element. These elements are also added to the **configuration** element.
+これらの新しいセクションには、**dataCacheClients** 要素および **cacheDiagnostics** 要素への参照が含まれています。 これらの要素も **configuration** 要素に追加されます。
 
     <dataCacheClients>
       <dataCacheClient name="default">
@@ -168,7 +168,7 @@ These new sections include references to a **dataCacheClients** element and a **
       <crashDump dumpLevel="Off" dumpStorageQuotaInMB="100" />
     </cacheDiagnostics>
 
-After the configuration is added, replace **[cache cluster role name]** with the name of the role that hosts the cache cluster.
+構成が追加された後で、**[cache cluster role name]** を、キャッシュ クラスターをホストするロールの名前に置き換えます。
 
 >**[[cache cluster role name]]** を、キャッシュ クラスターをホストするロールの名前に置き換えないと、キャッシュがアクセスされたときに **TargetInvocationException** がスローされます。その内部に、"そのようなロールは存在しません" というメッセージを持つ **DatacacheException** が含まれています。
 
@@ -356,12 +356,13 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 ここまでで、インロール キャッシュの基本について説明しました。
 次のリンクでは、さらに複雑なキャッシュ タスクを実行する方法について説明します。
 
--   MSDN リファレンス:[インロール キャッシュ][]
+-   MSDN リファレンス:[インロール キャッシュ](http://go.microsoft.com/fwlink/?LinkId=252658)
 -   インロール キャッシュへの移行方法を確認する:[Windows Azure のキャッシュのインロール キャッシュへの移行][]
 -   サンプルをチェックする:[インロール キャッシュのサンプル (Windows Azure のキャッシュ)][]
--	TechEd 2013 の「[Maximum Performance:Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)][]」セッションで、インロール キャッシュに関する説明を参照してください。
+-	TechEd 2013 の「[最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する][]」セッションで、インロール キャッシュに関する説明を参照してください。
 
 <!-- INTRA-TOPIC LINKS -->
+[次の手順]: #next-steps
 [次のステップ]: #next-steps
 [インロール キャッシュとは]: #what-is
 [Azure Cache の作成]: #create-cache
@@ -397,19 +398,19 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 [方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg618003.aspx
 [方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/z852zf6b.aspx
 [方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/zd1ysf1y.aspx
-[インロール キャッシュの容量計画に関する考慮事項]: http://go.microsoft.com/fwlink/?LinkId=252651
+[インロール キャッシュの容量計画に関する考慮事項のページ]: http://go.microsoft.com/fwlink/?LinkId=252651
 [インロール キャッシュのサンプル (Windows Azure のキャッシュ)]: http://msdn.microsoft.com/ja-jp/library/jj189876.aspx
-[インロール キャッシュ]: http://go.microsoft.com/fwlink/?LinkId=252658
-[インロール キャッシュ]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
-[最大のパフォーマンス:Azure Caching によってクラウド サービス アプリケーションを高速化する]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
+[インロール キャッシュ_remove]: http://go.microsoft.com/fwlink/?LinkId=252658
+[インロール キャッシュ_remove]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
+[最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
 [Windows Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/ja-jp/library/hh914163.aspx
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
-[インロール キャッシュの出力キャッシュ プロバイダー]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185662.aspx
-[OutputCache ディレクティブ]: http://go.microsoft.com/fwlink/?LinkId=251979
-[インロール キャッシュの概要]: http://go.microsoft.com/fwlink/?LinkId=254172
-[インロール キャッシュのセッション状態プロバイダー]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185668.aspx
+[インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185662.aspx
+[OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
+[インロール キャッシュの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=254172
+[インロール キャッシュのセッション状態プロバイダーに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185668.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
-[インロール キャッシュのトラブルシューティングと診断]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh914135.aspx
+[インロール キャッシュのトラブルシューティングと診断に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh914135.aspx
 [Azure AppFabric Cache:セッション状態のキャッシュ]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure 管理ポータル]: http://windows.azure.com/
 [Azure Shared Caching]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg278356.aspx

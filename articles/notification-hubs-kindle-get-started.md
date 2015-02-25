@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started" pageTitle="Azure Notification Hubs の使用" metaKeywords="" description="Azure Notification Hubs を使用してプッシュ通知を送信する方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="piyushjo" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Get Started" pageTitle="Azure Notification Hubs の使用" metaKeywords="" description="Azure Notification Hubs を使用してプッシュ通知を送信する方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="piyushjo" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-kindle" ms.devlang="Java" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
@@ -14,7 +14,7 @@
 + Android SDK (前提条件として Eclipse を使用する必要があります) は、<a href="http://go.microsoft.com/fwlink/?LinkId=389797">ここ</a>からダウンロードできます。
 + <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">ここ</a> に表示される指示に従って、Kindle の開発環境を設定します。
 
-##開発者ポータルへの新しいアプリの追加
+## 開発者ポータルへの新しいアプリの追加
 
 1. 最初に、[開発者ポータル]でアプリケーションを作成します。
 
@@ -58,8 +58,8 @@
 ## アプリケーションの設定
 
 <div class="dev-callout"><b>注</b>
-    <p>アプリケーションを作成する場合は、API レベル 17 以上を使用します。</p>
-    </div>
+<p>アプリケーションを作成する場合は、API レベル 17 以上を使用します。</p>
+</div>
 
 ADM ライブラリを Eclipse プロジェクトに追加します。
 

@@ -1,4 +1,4 @@
-﻿<properties title="Step 2: Upload existing data into an Azure Machine Learning experiment" pageTitle="手順 2.Machine Learning の実験にデータをアップロードする | Azure" description="手順 2.Azure Machine Learning Studio に既存のパブリック データをアップロードする" metaKeywords="" services="machine-learning" solutions="big-data" documentationCenter="" authors="garye" videoId="" scriptId="" manager="paulettm" editor="cgronlun" />
+<properties title="Step 2: Upload existing data into an Azure Machine Learning experiment" pageTitle="手順 2.Machine Learning の実験にデータをアップロードする | Azure" description="手順 2.Azure Machine Learning Studio に既存のパブリック データをアップロードする" metaKeywords="" services="machine-learning" solutions="big-data" documentationCenter="" authors="garye" videoId="" scriptId="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/02/2014" ms.author="garye" />
 
@@ -23,7 +23,7 @@
 
 ----------
 
-#手順 2.Azure Machine Learning の実験に既存のデータをアップロードする  
+# 手順 2.Azure Machine Learning の実験に既存のデータをアップロードする  
 
 信用リスクの予測モデルを開発するために、UCI Machine Learning Repository の "UCI Statlog データ セット (ドイツの信用貸付データセット)" を使用します。詳細についてはこちらを参照してください:   
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
@@ -38,7 +38,7 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 興味深い展開を次に示します。データセットの説明から、実際は信用リスクの高い個人が誤って低く分類された場合、低い信用リスクを誤って高く分類したときと比較して、金融機関は 5 倍のコストを強いられることがわかります。実験でこれを考慮するための 1 つの簡単な方法に、高い信用リスクを示す個人のエントリを重複 (5 回) させる方法があります。このとき、このモデルが、高い信用リスクを誤って低く分類すると、重複エントリごとに 1 回、合計 5 回分類を誤ることになります。これにより、トレーニング結果でこのエラーのコストが増加します。  
 
-##データセットの形式の変換
+## データセットの形式の変換
 元のデータセットは、空白で区切られた形式を使用しています。ML Studio で使用するにはコンマ区切り (CSV) ファイルの方が適しているため、空白をコンマに置き換えてデータセットを変換します。  
 
 これは、次の Windows PowerShell コマンドを使用して実行できます。   
@@ -49,7 +49,7 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 	sed 's/ /,/g' german.data > german.csv  
 
-##ML Studio へのデータセットのアップロード
+## ML Studio へのデータセットのアップロード
 
 データを CSV 形式に変換したら、それを ML Studio にアップロードする必要があります。  
 

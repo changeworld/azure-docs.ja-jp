@@ -1,9 +1,9 @@
-﻿<properties urlDisplayName="Azure Notification Hubs" pageTitle="Azure Notification Hubs" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, Azure のメッセージング" description="Azure でのプッシュ通知の使用方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="sethm" manager="dwrede" />
+<properties urlDisplayName="Azure Notification Hubs" pageTitle="Azure Notification Hubs" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, Azure のメッセージング" description="Azure でのプッシュ通知の使用方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="sethm" manager="dwrede" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 
-#Azure 通知ハブ
+# Azure 通知ハブ
 
 
 Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。
@@ -80,7 +80,7 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Notification Hubs のチュートリアルとガイド]: http://azure.microsoft.com/ja-jp/documentation/services/notification-hubs
   [iOS]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started
   [Android]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-android-get-started
-  [Windows ユニバーサル]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started
+  [Windows Universal]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started
   [Windows Phone]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started
   [Kindle]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-kindle-get-started
   [Xamarin.iOS]: http://azure.microsoft.com/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started

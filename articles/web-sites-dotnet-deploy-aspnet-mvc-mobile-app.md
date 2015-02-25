@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="ASP.NET MVC 5 mobile website" pageTitle="NET ASP.NET MVC 5 モバイル Web サイト - Azure チュートリアル" metaKeywords="Azure tutorial, Azure web app tutorial, Azure mobile app, Azure ASP.NET MVC 5,,ASP.NET MVC" description="ASP.NET MVC 5 Web アプリケーションのモバイル機能を使用して Web アプリケーションを Azure の Web サイトにデプロイする方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy an ASP.NET MVC Mobile Web Application on Azure Websites" authors="cephalin,riande" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="ASP.NET MVC 5 mobile website" pageTitle="NET ASP.NET MVC 5 モバイル Web サイト - Azure チュートリアル" metaKeywords="Azure tutorial, Azure web app tutorial, Azure mobile app, Azure ASP.NET MVC 5,,ASP.NET MVC" description="ASP.NET MVC 5 Web アプリケーションのモバイル機能を使用して Web アプリケーションを Azure の Web サイトにデプロイする方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy an ASP.NET MVC Mobile Web Application on Azure Websites" authors="cephalin,riande" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="cephalin,riande" />
 
@@ -136,8 +136,9 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
               //"~/Content/bootstrap.css",
               "~/Content/site.css"));
 
-Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
- 折りたたみ可能なナビゲーション バーが、通常の順不同一覧として表示されます。**[Browse by tag]** を再度クリックし、**[ASP.NET]** をクリックします。モバイル エミュレーター ビューが画面に合わせてズームされないため、テーブルの右側を表示するには横方向にスクロールする必要があります。
+`Ctrl キーを押しながら F5` キーを押してアプリケーションを実行します。
+
+折りたたみ可能なナビゲーション バーが、通常の順不同一覧として表示されます。**[Browse by tag]** を再度クリックし、**[ASP.NET]** をクリックします。モバイル エミュレーター ビューが画面に合わせてズームされないため、テーブルの右側を表示するには横方向にスクロールする必要があります。
 
 ![][SessionsByTagASP.NETNoBootstrap]
 
@@ -556,7 +557,7 @@ AngularJS]** リンクをタップします。
 関連項目
 --------
 
--   [レスポンシブ Web デザインの 9 つの基本原則][http://blog.froont.com/9-basic-principles-of-responsive-web-design/]
+-   [レスポンシブ Web デザインの 9 つの基本原則](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
 -   [ブートストラップ][BootstrapSite]のサイト
 -   [ブートストラップの公式ブログ][]
 -   [Tutorial Republic による Twitter Bootstrap のチュートリアル][]

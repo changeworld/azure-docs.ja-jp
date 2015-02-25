@@ -1,4 +1,4 @@
-﻿<properties title="Step 1: Create an Azure Machine Learning workspace" pageTitle="手順 1.Machine Learning ワークスペースの作成 | Azure" description="手順 1.新しい Azure Machine Learning Studio ワークスペースを作成する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+<properties title="Step 1: Create an Azure Machine Learning workspace" pageTitle="手順 1.Machine Learning ワークスペースの作成 | Azure" description="手順 1.新しい Azure Machine Learning Studio ワークスペースを作成する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
 
@@ -27,7 +27,7 @@
 
 ML Studio を使用するには、ML ワークスペースを作成する必要があります。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
 
-##ワークスペースを作成するには  
+## ワークスペースを作成するには  
 
 1.	Microsoft Azure のアカウントを使用してサインインします。
 2.	Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。  

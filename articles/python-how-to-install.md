@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Install Python" pageTitle="Python と SDK のインストール - Azure" metaKeywords="Azure Python SDK" description="Azure で使用するための Python と SDK のインストール方法について説明します。" metaCanonical="" services="" documentationCenter="Python" title="Installing Python and the SDK" authors="huvalo" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Install Python" pageTitle="Python と SDK のインストール - Azure" metaKeywords="Azure Python SDK" description="Azure で使用するための Python と SDK のインストール方法について説明します。" metaCanonical="" services="" documentationCenter="Python" title="Installing Python and the SDK" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="11/10/2014" ms.author="huvalo" />
 
@@ -175,6 +175,7 @@ Linux VM を設定する方法については、「[Linux Management (Linux の�
 [Azure での IPython Notebook]: /ja-jp/documentation/articles/virtual-machines-python-ipython-notebook
 [Cloud Services と Web サイトへのデプロイ]: /ja-jp/documentation/articles/cloud-services-web-sites-python-django-app-with-ptvs/
 [Python Tools for Visual Studio on CodePlex (CodePlex の Python Tools for Visual Studio)]: http://pytools.codeplex.com 
+[CodePlex の Python Tools for Visual Studio]: http://pytools.codeplex.com 
 [Python Package Index (PyPI)]: http://pypi.python.org/pypi
 [Virtualenv]: http://pypi.python.org/pypi/virtualenv 
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281&clcid=0x409

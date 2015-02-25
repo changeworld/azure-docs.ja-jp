@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="" pageTitle="Azure マネージ キャッシュ サービスの使用方法" metaKeywords="" description="" metaCanonical="" services="cache" documentationCenter="" title="How to Use Azure Managed Cache Service" authors="sdanie" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="" pageTitle="Azure マネージ キャッシュ サービスの使用方法" metaKeywords="" description="" metaCanonical="" services="cache" documentationCenter="" title="How to Use Azure Managed Cache Service" authors="sdanie" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
 
@@ -183,7 +183,7 @@ Cache NuGet パッケージを使用してクライアント アプリケーシ�
 
 NuGet パッケージは、いくつかの処理を行います。アプリケーションの構成ファイルに必要な構成を追加したり、必要なアセンブリ参照を追加したりします。クラウド サービス プロジェクトの場合、クラウド サービスの ServiceConfiguration.cscfg ファイルにキャッシュ クライアント診断レベル設定も追加します。
 
->ASP.NET Web プロジェクトでは、Cache NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法:ASP.NET セッション状態をキャッシュに格納する]」および「[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
+>ASP.NET Web プロジェクトでは、Cache NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法:ASP.NET セッション状態をキャッシュに格納する]」および「[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]」
 
 NuGet パッケージは、次の構成要素をロールの web.config または app.config に追加します。**dataCacheClients** セクションおよび **cacheDiagnostics** セクションは、**configSections** 要素の下に追加されます。**configSections** 要素が存在しない場合は、**configuration** 要素の子として作成されます。
 
@@ -426,7 +426,7 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [最適なキャッシュの種類]: #choosing-cache
 [Azure Cache を使用するための Visual Studio プロジェクトの準備]: #prepare-vs
 [Caching を使用するようにアプリケーションを構成する]: #configure-app
-[マネージ キャッシュ サービス の概要]: #getting-started-cache-service
+[マネージ キャッシュ サービスの概要]: #getting-started-cache-service
 [キャッシュの作成]: #create-cache
 [キャッシュの構成]: #enable-caching
 [キャッシュ クライアントの構成]: #NuGet
@@ -459,7 +459,7 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg618003.aspx
 [Azure Cache のセッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache:セッション状態のキャッシュ]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[Azure Cache 用キャッシュ プロバイダーの出力]: http://go.microsoft.com/fwlink/?LinkId=320837
+[Azure のキャッシュの出力キャッシュ プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320837
 [Azure Shared Caching]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg278356.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
@@ -468,18 +468,18 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
 [方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/zd1ysf1y.aspx
 [方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/z852zf6b.aspx
-[Azure マネージ キャッシュ サービスの概要]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Azure マネージ キャッシュ サービスの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [マネージ キャッシュ サービス]: http://go.microsoft.com/fwlink/?LinkId=320830
-[OutputCache ディレクティブ]: http://go.microsoft.com/fwlink/?LinkId=251979
-[トラブルシューティングと診断]: http://go.microsoft.com/fwlink/?LinkId=320839
+[OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
+[Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
 [キャッシュの料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/cache/
 [管理ポータル]: https://manage.windowsazure.com/
-[キャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
+[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
 [容量計画]: http://go.microsoft.com/fwlink/?LinkId=320167
 [Azure のキャッシュ サービス (プレビュー) の有効期限と削除]: http://go.microsoft.com/fwlink/?LinkId=317278
-[高可用性]: http://go.microsoft.com/fwlink/?LinkId=317329
-[通知]: http://go.microsoft.com/fwlink/?LinkId=317276
+[Azure のキャッシュ サービス (プレビュー) の高可用性]: http://go.microsoft.com/fwlink/?LinkId=317329
+[Azure のキャッシュ サービス (プレビュー) の通知]: http://go.microsoft.com/fwlink/?LinkId=317276
 [マネージ キャッシュ サービスへの移行]: http://go.microsoft.com/fwlink/?LinkId=317347
 [マネージ キャッシュ サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=320840
 [New-AzureManagedCache]: http://go.microsoft.com/fwlink/?LinkId=400495

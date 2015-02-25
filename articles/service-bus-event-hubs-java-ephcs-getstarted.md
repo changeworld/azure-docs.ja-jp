@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, イベント ハブ, Event Hubs の開始方法" description="このチュートリアルでは、Java でイベントを送信する Azure Event Hubs を使用する方法と、EventProcessorHost を使用して C# でイベントを受信する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
+<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, イベント ハブ, Event Hubs の開始方法" description="このチュートリアルでは、Java でイベントを送信する Azure Event Hubs を使用する方法と、EventProcessorHost を使用して C# でイベントを受信する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="service-bus" ms.workload="core" ms.tgt_pltfrm="csharp" ms.devlang="csharp" ms.topic="hero-article" ms.date="10/27/2014" ms.author="elioda" />
 
@@ -85,6 +85,6 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 [22]: ./media/service-bus-event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn836025.aspx

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Multi-Tenant Web Application Pattern" pageTitle="マルチテナント Web アプリケーションのパターン - Azure アーキテクチャ" metaKeywords="" description="Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" metaCanonical="" services="" documentationCenter=".NET" title="Multitenant Applications in Azure" authors="wpickett" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="Multi-Tenant Web Application Pattern" pageTitle="マルチテナント Web アプリケーションのパターン - Azure アーキテクチャ" metaKeywords="" description="Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" metaCanonical="" services="" documentationCenter=".NET" title="Multitenant Applications in Azure" authors="wpickett" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wpickett" />
 
@@ -58,7 +58,7 @@
 
 Azure には、マルチテナント システムの設計時に発生する主要な問題に対処できる、多数の機能が用意されています。 
 
-**分離: ** 
+**分離:** 
 
 - ホスト ヘッダー内の SSL 通信の有無で Web サイト テナントを分割する。
 - クエリ パラメーター別に Web サイト テナントを分割する。
@@ -104,11 +104,11 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 	- 	マスター参照データベースからのコピー 
 	- 	データベースのインポートとエクスポートによるファイルからの新しいデータベースのプロビジョニング 
 
-][].
+
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/ja-jp/library/hh534480.aspx
+[Azure 上のマルチテナント アプリケーションのホスト]: http://msdn.microsoft.com/ja-jp/library/hh534480.aspx
 [Windows Azure 上のマルチテナント アプリケーションの設計]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh689716
 
 

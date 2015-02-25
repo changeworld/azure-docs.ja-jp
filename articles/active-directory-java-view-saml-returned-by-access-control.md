@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="View ACS SAML" pageTitle="Access Control サービスによって返される SAML の表示 (Java)" metaKeywords="" description="Azure でホストされる Java アプリケーションで Access Control サービスによって返される SAML を表示する方法について説明します。" metaCanonical="" services="" documentationCenter="Java" title="How to view SAML returned by the Azure Access Control Service" authors="robmcm" videoId="" scriptId="" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="View ACS SAML" pageTitle="Access Control サービスによって返される SAML の表示 (Java)" metaKeywords="" description="Azure でホストされる Java アプリケーションで Access Control サービスによって返される SAML を表示する方法について説明します。" metaCanonical="" services="" documentationCenter="Java" title="How to view SAML returned by the Azure Access Control Service" authors="robmcm" videoId="" scriptId="" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
 
@@ -187,5 +187,5 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 [アプリケーションの実行]: #run_application
 [次のステップ]: #next_steps
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[ Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
+[Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png

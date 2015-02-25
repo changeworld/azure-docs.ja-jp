@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="SendGrid Email Service" pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) - Azure" metaKeywords="Azure SendGrid, Azure 電子メール サービス, Azure SendGrid Node.js, Azure 電子メール Node.js" description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="" documentationCenter="nodejs" title="How to Send Email Using SendGrid from Node.js" authors="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com" solutions="" manager="wpickett" editor="" />
+<properties urlDisplayName="SendGrid Email Service" pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) - Azure" metaKeywords="Azure SendGrid, Azure 電子メール サービス, Azure SendGrid Node.js, Azure 電子メール Node.js" description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="" documentationCenter="nodejs" title="How to Send Email Using SendGrid from Node.js" authors="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="10/30/2014" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com" />
 
@@ -241,10 +241,10 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [特別プラン]: https://sendgrid.com/windowsazure.html
   
   
-  [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
-  [SMTP vs. Web API]: https://sendgrid.com/docs/Integrate/index.html
+  [sendgrid-nodejs に関するページ]: https://github.com/sendgrid/sendgrid-nodejs
+  [SMTP と Web API を比較した SendGrid ドキュメント]: https://sendgrid.com/docs/Integrate/index.html
   
-  [Filter Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
-  [SendGrid API documentation]: https://sendgrid.com/docs
-  [cloud-based email service]: https://sendgrid.com/email-solutions
-  [transactional email delivery]: https://sendgrid.com/transactional-email
+  [フィルター設定に関するページ]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
+  [SendGrid API に関するドキュメント]: https://sendgrid.com/docs
+  [クラウド ベースの電子メール サービス]: https://sendgrid.com/email-solutions
+  [トランザクション電子メール配信]: https://sendgrid.com/transactional-email

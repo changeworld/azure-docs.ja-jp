@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Specifying a Node.js Version" pageTitle="Node.js のバージョンの指定" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title="Specifying a Node.js version in an Azure application" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="Specifying a Node.js Version" pageTitle="Node.js のバージョンの指定" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title="Specifying a Node.js version in an Azure application" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="na" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
@@ -10,7 +10,7 @@
 
 Node.js アプリケーションをホストするときに、アプリケーションで特定のバージョンの Node.js を使用することが必要になる場合があります。Azure でホストされるアプリケーションについてこれを行うには、いくつかの方法があります。
 
-##既定のバージョン
+## 既定のバージョン
 
 現在、Azure では Node.js Version 0.6.17、0.6.20、および 0.8.4 を提供しています。特に指定しない場合、0.6.20 が既定のバージョンとして使用されます。
 
@@ -20,7 +20,7 @@ Node.js アプリケーションをホストするときに、アプリケーシ
 </div>
 
 
-##package.json でバージョンを指定する
+## package.json でバージョンを指定する
 
 次の内容を **package.json** ファイルに追加することによって、使用する Node.js のバージョンを指定できます。
 
@@ -32,7 +32,7 @@ Node.js アプリケーションをホストするときに、アプリケーシ
 
 0.6.22 はホスティング環境で利用可能なバージョンには含まれていないため、0.8 シリーズで利用可能な最も高いバージョンである 0.8.4 が代わりに使用されます。
 
-##PowerShell でクラウド サービスのバージョンを指定する
+## PowerShell でクラウド サービスのバージョンを指定する
 
 クラウド サービスでアプリケーションをホストしている場合で、Azure PowerShell を使用してアプリケーションをデプロイしている場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
 
@@ -40,7 +40,7 @@ Node.js アプリケーションをホストするときに、アプリケーシ
 
 また、**Get-AzureServiceProjectRoleRuntime** を使用して、クラウド サービスとしてホストされるアプリケーションで利用可能な Node.js のバージョンの一覧を取得できます。
 
-##Azure Websites でカスタム バージョンを使用する
+## Azure Websites でカスタム バージョンを使用する
 
 Azure には Node.js の既定のバージョンが複数用意されていますが、既定以外のバージョンを使用することもできます。アプリケーションが Azure Website としてホストされている場合、**iisnode.yml** ファイルを使用してこれを実現できます。以下の手順では、Azure Website で Node.Js のカスタム バージョンを使用するプロセスを説明します。
 
@@ -80,11 +80,11 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 
 	アプリケーションが発行された後、ブラウザーで Web サイトを開きます。"Hello from Windows Azure running node version: v0.8.1" というメッセージが表示されます。
 
-##次のステップ
+## 次のステップ
 
 アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、デプロイする方法]、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
 
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: /ja-jp/documentation/articles/xplat-cli/
 [Azure コマンドライン ツール]: /ja-jp/documentation/articles/xplat-cli/
-[モジュールの使用]: /ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/
-[Node.js Web サイトの構築と展開]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+[モジュールの使用方法]: /ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/
+[Node.js Web サイトを構築、デプロイする方法]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/

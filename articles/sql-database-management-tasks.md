@@ -1,4 +1,4 @@
-﻿<properties umbracoNaviHide="0" pageTitle="SQL データベースの管理方法" metaKeywords="Azure SQL データベース, SQL データベース, SQL データベースの管理, ログインの追加, SQL データベースへの接続" description="Azure SQL Database の管理方法について説明します。" urlDisplayName="Cloud Services" headerExpose="" footerExpose="" disqusComments="1" title="How to Manage SQL Database" authors="jeffreyg" manager="jeffreyg" />
+<properties umbracoNaviHide="0" pageTitle="SQL データベースの管理方法" metaKeywords="Azure SQL データベース, SQL データベース, SQL データベースの管理, ログインの追加, SQL データベースへの接続" description="Azure SQL Database の管理方法について説明します。" urlDisplayName="Cloud Services" headerExpose="" footerExpose="" disqusComments="1" title="How to Manage SQL Database" authors="jeffreyg" manager="jeffreyg" />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/31/2015" ms.author="jeffreyg" />
 
@@ -7,7 +7,7 @@
 
 このドキュメントでは、Azure SQL データベースで単純な管理タスクを実行する方法を示します。 
 
-##目次##
+## 目次##
 
 * [方法: Management Studio を使用して Azure 上の SQL データベースに接続する](#connect)
 * [方法: Azure 上の SQL データベースにログインとユーザーを追加する](#addlogins)
@@ -23,7 +23,7 @@ Management Studio には、構文チェック機能や、再利用の目的で�
 
 接続する前に、ローカル システムのポート 1433 で送信要求を許可するファイアウォールの例外を作成する必要が生じることがあります。既定でセキュリティにより保護されたコンピューターでは通常、ポート 1433 が開かれていません。 
 
-##内部設置型サーバーのファイアウォールの構成
+## 内部設置型サーバーのファイアウォールの構成
 
 1. セキュリティが強化された Windows ファイアウォールで、新しい送信の規則を作成します。
 
@@ -32,7 +32,7 @@ Management Studio には、構文チェック機能や、再利用の目的で�
 3. *WindowsAzureSQLDatabase (tcp-out) port 1433* など、わかりやすい名前を指定します。 
 
 
-##論理サーバーに接続する
+## 論理サーバーに接続する
 
 1. Management Studio の [サーバーに接続する] で、データベース エンジンが選択されていることを確認し、*servername*.database.widnows.net という形式で論理サーバー名を入力します。
 
@@ -45,7 +45,7 @@ Management Studio には、構文チェック機能や、再利用の目的で�
 4. [データベースへの接続] で **master** を指定します。
 
 
-##内部設置型サーバーに接続する
+## 内部設置型サーバーに接続する
 
 1. Management Studio の [サーバーに接続する] で、データベース エンジンが選択されていることを確認し、*servername*\\*instancename* という形式でローカル インスタンスの名前を入力します。サーバーがローカルであり、既定のインスタンスを使用している場合は、「*localhost*」と入力します。
 
@@ -62,7 +62,7 @@ Management Studio には、構文チェック機能や、再利用の目的で�
 
 2 つ目のスクリプトは、データベース ユーザーにアクセス許可を割り当てます。このスクリプトでは、既に Azure に読み込まれているデータベースに接続します。
 
-##ログインを作成する
+## ログインを作成する
 
 1. Management Studio で、Azure 上の論理サーバーに接続し、データベース フォルダーを開き、**master** を右クリックして、**[新しいクエリ]** をクリックします。
 
@@ -82,7 +82,7 @@ Management Studio には、構文チェック機能や、再利用の目的で�
 </pre></div>
 
 
-##データベース ユーザーを作成する
+## データベース ユーザーを作成する
 
 1. データベース フォルダーを展開し、**school** を右クリックして、**[新しいクエリ]** をクリックします。
 
@@ -104,7 +104,7 @@ Management Studio には、構文チェック機能や、再利用の目的で�
     GRANT VIEW DATABASE STATE to 'sqlops';
 </pre></div>
 
-##ログインを表示およびテストする
+## ログインを表示およびテストする
 
 1.  [新しいクエリ] ウィンドウで **master** に接続し、次のステートメントを実行します。 
 
