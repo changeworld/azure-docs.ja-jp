@@ -1007,4 +1007,4 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-\n<!--HONumber=42-->
+<!--HONumber=42-->

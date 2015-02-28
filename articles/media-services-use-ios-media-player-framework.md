@@ -218,4 +218,5 @@ Ad Pod は、複数の広告が連続して再生される広告ブレークで�
 
 上のコード例で示されているように、**deleteAfterPlay** を **YES** に設定すると、この広告は 1 度だけ再生されます。**deleteAfterPlay** を **NO** に設定すると、この広告は連続して再生されます。これを Sticky 広告といいます。
 ### 詳細については、[Azure Media Player フレームワークの wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki) を参照してください。
-\n<!--HONumber=42-->
+
+<!--HONumber=42-->

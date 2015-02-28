@@ -252,4 +252,5 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 <!--Image references-->
 [1]: ./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png
-\n<!--HONumber=42-->
+
+<!--HONumber=42-->
