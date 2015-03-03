@@ -1,4 +1,4 @@
-<properties pageTitle="仮想マシンの可用性管理 - Azure" description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。" services="virtual-machines" documentationCenter="" authors="kenazk" manager="timlt" editor="tysonn"/>
+﻿<properties pageTitle="仮想マシンの可用性管理 - Azure" description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。" services="virtual-machines" documentationCenter="" authors="kenazk" manager="timlt" editor="tysonn"/>
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/26/2014" ms.author="kenazk"/>
 
@@ -14,10 +14,10 @@
 ## ベスト プラクティスに基づいて高可用性のアプリケーションを設計する
 前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
 
-* [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
-* [各アプリケーション層に対して別々の可用性セットを構成する]
-* [ロード バランサーと可用性セットを結合する]
-* [可用性セット内の仮想マシンが 1 つのみにならないようにする] 
+* [冗長性実現のために複数の仮想マシンを可用性セット内に構成する] []
+* [各アプリケーション層に対して別々の可用性セットを構成する] []
+* [ロード バランサーと可用性セットを結合する] []
+* [可用性セット内の仮想マシンが 1 つのみにならないようにする] [] 
 
 ### 冗長性実現のために複数の仮想マシンを可用性セット内に構成する 
 アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。このような構成により、計画済み、または計画外メンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。サービス レベル アグリーメントの詳細については、 [サービス レベル アグリーメント](../../../support/legal/sla/) の「クラウド サービス、仮想マシン、仮想ネットワーク」のセクションを参照してください。 
