@@ -1,6 +1,20 @@
-<properties pageTitle="Azure Linux VM 上での MySQL のパフォーマンスを最適化する" description="Linux を実行する Azure の仮想マシン (VM) で実行されている MySQL を最適化する方法について説明します。" services="virtual-machines" documentationCenter="" authors="NingKuang" manager="timlt" editor="tysonn"/>
+﻿<properties 
+	pageTitle="Azure Linux VM 上での MySQL のパフォーマンスを最適化する" 
+	description="Linux を実行する Azure の仮想マシン (VM) で実行されている MySQL を最適化する方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="NingKuang" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="10/27/2014" ms.author="ningk"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/27/2014" 
+	ms.author="ningk"/>
 
 #Azure Linux VM 上での MySQL のパフォーマンスを最適化する 
 
@@ -9,13 +23,13 @@ Azure では、仮想ハードウェアの選択、およびソフトウェア�
 ##Azure の仮想マシン上での RAID の使用 
 ストレージは、クラウド環境でデータベースのパフォーマンスに影響を与える重要な要素です。RAID は、1 つのディスクと比較して、同時実行制御を使用して高速アクセスを提供できます。詳細については、[標準の RAID レベル](http://en.wikipedia.org/wiki/Standard_RAID_levels) を参照してください。   
 
-ディスク I/O のスループットと Azure での I/O の応答時間は、RAID によって大幅に向上されます。ラボ テストでは、RAID のディスクの数が 2 倍 (2 から 4、4 から 8 など) になると、スループットが 2 倍になり I/O の応答時間は半分に短縮されました。詳細については、[付録 A](#AppendixA) を参照してください。  
+ディスク I/O のスループットと Azure での I/O の応答時間は、RAID によって大幅に向上されます。ラボ テストでは、RAID のディスクの数が 2 倍 (2 から 4、4 から 8 など) になると、スループットが 2 倍になり I/O の応答時間は半分に短縮されました。詳細については、[付録 A] を参照して(#AppendixA) ください。  
 
-ディスク I/O の他に、RAID レベルを上げると、MySQL のパフォーマンスが向上します。詳細については、[付録 B](#AppendixB) を参照してください。  
+ディスク I/O の他に、RAID レベルを上げると、MySQL のパフォーマンスが向上します。詳細については、[付録 B] を参照して(#AppendixB) ください。  
 
-チャンク サイズを考慮することもできます。一般にチャンクのサイズを大きくした場合、特に大量の書き込みに対してオーバーヘッドが低くなります。ただし、チャンク サイズが大きすぎる場合は、追加のオーバーヘッドが追加され、RAID を活用することはできません。現在の既定のサイズは 512 KB で、最も一般的な運用環境に最適であることがわかっています。詳細については、[付録 C](#AppendixC) を参照してください。   
+チャンク サイズを考慮することもできます。一般にチャンクのサイズを大きくした場合、特に大量の書き込みに対してオーバーヘッドが低くなります。ただし、チャンク サイズが大きすぎる場合は、追加のオーバーヘッドが追加され、RAID を活用することはできません。現在の既定のサイズは 512 KB で、最も一般的な運用環境に最適であることがわかっています。詳細については、[付録 C] を参照して(#AppendixC) ください。   
 
-別の仮想マシン タイプに追加できるディスクの数には制限があることに注意してください。これらの制限の詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx) を参照してください。より少ないディスクで RAID を設定することもできますが、この記事では RAID 例の説明に、4 つの接続されたデータ ディスクが必要です。  
+別の仮想マシン タイプに追加できるディスクの数には制限があることに注意してください。これらの制限の詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。より少ないディスクで RAID を設定することもできますが、この記事では RAID 例の説明に、4 つの接続されたデータ ディスクが必要です。  
 
 この記事では、Linux 仮想マシンを既に作成していること、および MYSQL をインストールして構成していることを前提としています。作業の開始の詳細については、「Azure で MySQL をインストールする方法」を参照してください。  
   
@@ -23,7 +37,7 @@ Azure では、仮想ハードウェアの選択、およびソフトウェア�
 次の手順は、Windows Azure の管理ポータルを使用して Azure に RAID を作成する方法を説明しています。Windows PowerShell スクリプトを使用して RAID を設定することもできます。 
 この例では 4 つのディスクで RAID 0 を構成します。  
 
-####手順 1: 仮想マシンにデータ ディスクを追加する  
+####手順 1:仮想マシンにデータ ディスクを追加する  
 
 Azure 管理ポータルの [仮想マシン] ページで、データ ディスクを追加する仮想マシンをクリックします。この例では、仮想マシンは mysqlnode1 です。  
 
@@ -50,10 +64,10 @@ Azure 管理ポータルの [仮想マシン] ページで、データ ディス
 
 	sudo grep SCSI /var/log/dmesg
 
-####手順 2: 追加のディスクで RAID を作成する
+####手順 2:追加のディスクで RAID を作成する
 詳細な RAID 設定の手順については、この記事で説明しています。  
 
-[http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-linux-configure-RAID/](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-linux-configure-RAID/)
+[http://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-RAID/](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-RAID/)
 
 >[AZURE.NOTE] XFS ファイル システムを使用している場合は RAID を作成した後に次の手順に従ってください。
 
@@ -66,17 +80,17 @@ Fedora、CentOS、または RHEL に XFS をインストールするには、次
 	yum -y install xfsprogs  xfsdump 
 
 
-####手順 3: 新しいストレージのパスを設定します。
+####手順 3:新しいストレージのパスを設定します。
 次のコマンドを使用します。  
 
 	root@mysqlnode1:~# mkdir -p /RAID0/mysql
 
-####手順 4: 新しいストレージ パスに、元のデータをコピーします。
+####手順 4:新しいストレージ パスに、元のデータをコピーします。
 次のコマンドを使用します。  
 
 	root@mysqlnode1:~# cp -rp /var/lib/mysql/* /RAID0/mysql/
 
-####手順 5: MySQL がデータ ディスクにアクセス (読み取り、書き込み) できるようにアクセス許可を変更します。
+####手順 5:MySQL がデータ ディスクにアクセス (読み取り、書き込み) できるようにアクセス許可を変更します。
 次のコマンドを使用します。  
 
 	root@mysqlnode1:~# chown -R mysql.mysql /RAID0/mysql && chmod -R 755 /RAID0/mysql
@@ -98,7 +112,7 @@ SSD およびその他の機器では、NOOP アルゴリズムまたは期限�
 
 次の例では、既定のスケジューラを確認して NOOP アルゴリズムに設定する方法を説明しています。  
 
-Debian 配布ファミリ: 
+Debian 配布ファミリ:
 
 ###手順 1. 現在の I/O スケジューラを表示します。
 次のコマンドを使用します。  
@@ -110,7 +124,7 @@ Debian 配布ファミリ:
 	noop [deadline] cfq 
 
 
-###手順 2. I/O スケジューリング アルゴリズムの現在のデバイス (/dev/sda) を変更します。
+###手順 2.I/O スケジューリング アルゴリズムの現在のデバイス (/dev/sda) を変更します。
 次のコマンドを使用します。  
 
 	azureuser@mysqlnode1:~$ sudo su -
@@ -140,7 +154,7 @@ Redhat 配布ファミリでは、次のコマンドのみが必要です。
  
 Atime のログ記録を無効にするには、ファイル システムの構成ファイルの /etc/fstab を変更し、**noatime** オプションを追加する必要があります。  
 
-たとえば、次のように vim/etc/fstab ファイルを編集して、noatime を追加します。  
+たとえば、  vim /etc/fstab ファイルを編集し、次のように noatime を追加します。  
 
 	# CLOUD_IMG: This file was created/modified by the Cloud Image build process
 	UUID=3cc98c06-d649-432d-81df-6dcd2a584d41       /        ext4   defaults,discard        0 0
@@ -165,21 +179,21 @@ Atime のログ記録を無効にするには、ファイル システムの構�
 ##高い同時実行性を実現するためにシステム処理の最大数を増やす
 MySQL は同時実行性の高いデータベースです。同時実行処理の既定数は、Linuxでは 1024 ですが、必ずしも十分ではありません。**次の手順で、システムの同時実行処理の最大数を増やして、MySQL の高い同時実行性をサポートします**。
 
-###手順 1: Limits.conf ファイルを変更します。
+###手順 1:Limits.conf ファイルを変更します。
 /etc/security/limits.conf ファイルで、次の 4 つの行を追加して、許可される同時実行処理の最大数を増やします。システムがサポートできる最大数は 65536 であることに注意してください。   
 
-	* soft nofile 65536
-	* hard nofile 65536
-	* soft nproc 65536
-	* hard nproc 65536
+	* ソフト nofile 65536
+	* ハード nofile 65536
+	* ソフト nproc 65536
+	* ハード nproc 65536
 
-###手順 2: 新しい制限値にシステムを更新します。
+###手順 2:新しい制限値にシステムを更新します。
 次のコマンドを実行します。  
 
 	ulimit -SHn 65536
 	ulimit -SHu 65536 
 
-###手順 3:  制限値は起動時に更新されることを確認します。
+###手順 3:制限値は起動時に更新されることを確認します。
 起動するたびに有効になるように /etc/rc.local ファイルに次の起動コマンドを入力します。  
 
 	echo "ulimit -SHn 65536" >>/etc/rc.local
@@ -191,7 +205,7 @@ MySQL は同時実行性の高いデータベースです。同時実行処理�
 メインの I/O の最適化のルールは、次のとおりです。   
 
 -	キャッシュ サイズを増加する。
--	I/O 応答時間を短縮する。
+-	I/O 応答時間を短縮する。  
 
 MySQL サーバーの設定を最適化するために、サーバーとクライアント コンピューターの両方の既定の構成ファイルである my.cnf file を更新することができます。  
 
@@ -204,9 +218,9 @@ MySQL サーバーの設定を最適化するために、サーバーとクラ�
 	MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
 -	**innodb_flush_log_at_trx_commit**: 既定値は 1 に、範囲は 0 ～ 2 に設定されています。既定値は、スタンドアロン MySQL DB の最も適切なオプションです。2 の設定は、ほとんどのデータの整合性を実現し、MySQL のクラスターのマスターに適しています。0 の設定は、信頼性に影響を与えるデータ損失が発生する可能性がありますが、優れたパフォーマンスを実現する場合もあり、MySQL のクラスター内のスレーブに適してします。
 -	**Innodb_log_buffer_size**: ログ バッファーによって、トランザクションがコミットする前にログをディスクにフラッシュすることなくトランザクションを実行できます。ただし、ラージ バイナリ オブジェクトまたはテキスト フィールドがある場合、キャッシュが非常に簡単に使用され、頻繁にディスク I/O がトリガーされます。Innodb_log_waits 状態変数が 0 でない場合は、バッファー サイズを大きくすることが推奨されます。
--	**query_cache_size**: 最善のオプションは、最初から無効することです。query_cache_size は、0 (これは MySQL 5.6 では既定の設定です)  に設定し、その他のメソッドを使用してクエリを高速化します。  
+-	**query_cache_size**:   最善のオプションは、最初から無効することです。query_cache_size は、0 (これは MySQL 5.6 では既定の設定です)  に設定し、その他のメソッドを使用してクエリを高速化します。  
   
-最適化後のパフォーマンスを比較するには、[付録 D](AppendixD) を参照してください。
+最適化後のパフォーマンスを比較するには、[付録 D] (AppendixD) を参照してください。
 
 
 ##パフォーマンスのボトルネックを分析するためには、MySQL 低速クエリ ログを有効にします。
@@ -214,16 +228,16 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 既定ではこれが有効ではないことに注意してください。低速クエリ ログを有効化すると CPU リソースを消費する可能性があります。そのため、この機能はパフォーマンスのボトルネックのトラブルシューティングのために、一時的に有効にすることを推奨します。
 
-###手順 1: 次の行を最後に追加して my.cnf ファイルを変更します。   
+###手順 1:次の行を最後に追加して my.cnf ファイルを変更します。   
 
 	long_query_time = 2
 	slow_query_log = 1
 	slow_query_log_file = /RAID0/mysql/mysql-slow.log
 
-###手順 2: Mysql server を再起動します。
+###手順 2:Mysql server を再起動します。
 	service  mysql  restart
 
-###手順 3: 「表示」コマンドを使用して設定が有効になっているかどうかを確認します。
+###手順 3:「表示」コマンドを使用して設定が有効になっているかどうかを確認します。
  
 ![][7]   
    
@@ -239,44 +253,45 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 以下は、対象となるラボ環境で生成されたサンプル パフォーマンス テストのデータで、さまざまなパフォーマンス チューニング アプローチによる一般的な情報を提供していますが、結果は環境または製品バージョンによって異なる可能性があります。 
 
-<a name="AppendixA"></a>付録 A: **さまざまな RAID レベルでのディスク パフォーマンス (IOPS)** 
+<a name="AppendixA"></a>付録 A:  
+**さまざまな RAID レベルでのディスク パフォーマンス (IOPS)** 
 
 
 ![][9]
  
-**テスト コマンド: **
+**テスト コマンド:**  
 
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=5G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 
->AZURE.NOTE: このテストの作業負荷は、RAID の上限に到達するために、64 のスレッドを使用します。
+>AZURE.NOTE:このテストの作業負荷は、RAID の上限に到達するために、64 のスレッドを使用します。
 
-<a name="AppendixB"></a>付録 B: 
-**さまざまな RAID レベルと MySQL のパフォーマンス (スループット) の比較**
+<a name="AppendixB"></a>付録 B:  
+**さまざまな RAID レベルでの MySQL のパフォーマンス (スループット) の比較**   
 (XFS ファイル システム)
 
  
 ![][10]  
 ![][11]
 
-**テスト コマンド: **
+**テスト コマンド:**
 
 	mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write -engine=innodb
 
-**さまざまな RAID レベルと MySQL のパフォーマンス (OLTP) の比較**
+**さまざまな RAID レベルでの MySQL のパフォーマンス (OLTP) の比較**  
 ![][12]
 
-**テスト コマンド: **
+**テスト コマンド:**
 
 	time sysbench --test=oltp --db-driver=mysql --mysql-user=root --mysql-password=0ps.123  --mysql-table-engine=innodb --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-socket=/var/run/mysqld/mysqld.sock --mysql-db=test --oltp-table-size=1000000 prepare
 
-<a name="AppendixC"></a>付録 C: 
-**別のチャンク サイズのディスク パフォーマンス (IOPS) の比較**
+<a name="AppendixC"></a>付録 C:   
+**さまざまなチャンク サイズのディスク パフォーマンス (IOPS) の比較**  
 (XFS ファイル システム)
 
  
 ![][13]
 
-**テスト コマンド: **
+**テスト コマンド:**  
 
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=30G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=1G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite  
@@ -284,22 +299,22 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 このテストに使用するファイルのサイズは RAID 0 (4 ディスク) XFS ファイル システムで、それぞれ 30 GB、1 GB であることに注意してください。
 
 
-<a name="AppendixD"></a>付録 D: 
-**最適化前後の MySQL のパフォーマンス (スループット) の比較**
+<a name="AppendixD"></a>付録 D:  
+**最適化前後の MySQL のパフォーマンス (スループット) の比較**  
 (XFS ファイル システム)
 
   
 ![][14]
 
-**テスト コマンド: **
+**テスト コマンド:**
 
 	mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write -engine=innodb,misam
 
-**既定の構成設定と最適化は、次のとおりです。**
+**既定と最適化の構成設定は、次のとおりです。**
 
 |パラメーター|既定|最適化
 |-----------|-----------|-----------
-|**innodb_buffer_pool_size**	|なし|7G
+|**innodb_buffer_pool_size**	|None	|7G
 |**innodb_log_file_size**	|5M	|512M
 |**max_connections**	|100	|5000
 |**innodb_file_per_table**	|0	|1
@@ -314,9 +329,9 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 [http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method)
 
-**テスト環境**
+**テスト環境**  
 
-|ハードウェア|の詳細
+|ハードウェア	|詳細
 |-----------|-------
 |CPU	|AMD Opteron (tm) プロセッサ 4171 HE/4 コア
 |メモリ	|14G
@@ -340,5 +355,4 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [13]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

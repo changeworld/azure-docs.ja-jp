@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Azure 上での SUSE Linux VHD の作成とアップロード" description="SUSE Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" services="virtual-machines" documentationCenter="" authors="szarkos" manager="timlt" editor="tysonn"/>
+﻿<properties 
+	pageTitle="Azure 上での SUSE Linux VHD の作成とアップロード" 
+	description="SUSE Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="szarkos" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/13/2015" ms.author="szarkos"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/13/2015" 
+	ms.author="szarkos"/>
 
 
 # Azure 用の SLES または openSUSE 仮想マシンの準備
@@ -10,7 +24,7 @@
 
 ##前提条件##
 
-この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションなど複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションを含め、複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
 
 
 **SLES/openSUSE のインストールに関する一般的な注記**
@@ -29,7 +43,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## <a id="sles11"> </a>SUSE Linux Enterprise Server 11 SP3 を準備する ##
+## <a id="sles11"> </a>SUSE Linux Enterprise Server 11 SP3 を準備します。 ##
 
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
@@ -51,7 +65,7 @@
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
-7.	"/etc/sysconfig/network/dhcp" ファイルを編集して、次のように  `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
+7.	"/etc/sysconfig/network/dhcp" ファイルを編集して、次のように `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
 
 		DHCLIENT_SET_HOSTNAME="no"
 
@@ -64,7 +78,7 @@
 
 10.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは *一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -83,13 +97,13 @@
 
 ----------
 
-## <a id="osuse"> </a>openSUSE 13.1 以上の準備 ##
+## <a id="osuse"> </a>openSUSE 13.1 以上を準備する ##
 
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. シェルでコマンド "`zypper lr`" を実行します。このコマンドによって次のような出力が返されます (バージョン番号は異なる場合があります)。
+3. シェルでコマンド '`zypper lr`' を実行します。このコマンドによって次のような出力が返されます (バージョン番号は異なる場合があります)。
 
 		# | Alias                 | Name                  | Enabled | Refresh
 		--+-----------------------+-----------------------+---------+--------
@@ -105,7 +119,7 @@
 		# sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
 		# sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
 
-	"`zypper lr`" コマンドをもう一度実行してリポジトリが追加されたことを確認できます。更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
+	'`zypper lr`' コマンドをもう一度実行してリポジトリが追加されたことを確認できます。更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
 
 		# sudo zypper mr -e [NUMBER OF REPOSITORY]
 
@@ -114,7 +128,7 @@
 
 		# sudo zypper up kernel-default
 
-	または、次のように、すべての最新のパッチでシステムを更新します。
+	Or to update the system with all the latest patches:
 
 		# sudo zypper update
 
@@ -130,7 +144,7 @@
 
 		libata.atapi_enabled=0 reserve=0x1f0,0x8
 
-7.	"/etc/sysconfig/network/dhcp" ファイルを編集して、次のように  `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
+7.	"/etc/sysconfig/network/dhcp" ファイルを編集して、次のように `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
 
 		DHCLIENT_SET_HOSTNAME="no"
 
@@ -143,7 +157,7 @@
 
 10.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは *一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -165,5 +179,4 @@
 
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

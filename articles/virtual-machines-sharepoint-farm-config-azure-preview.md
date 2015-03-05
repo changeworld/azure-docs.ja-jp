@@ -1,6 +1,20 @@
-<properties pageTitle="SharePoint サーバー ファームの構成の詳細" description="SharePoint ファームの既定の構成について説明します。" services="virtual-machines" documentationCenter="" authors="JoeDavies-MSFT" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="SharePoint サーバー ファームの構成の詳細" 
+	description="SharePoint ファームの既定の構成について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-sharepoint" ms.devlang="na" ms.topic="article" ms.date="1/26/2015" ms.author="josephd"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-sharepoint" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="1/26/2015" 
+	ms.author="josephd"/>
 
 
 #SharePoint サーバー ファームの構成の詳細#
@@ -27,7 +41,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	ストレージ アカウント:初期構成中に指定されます。
 -	仮想ネットワーク 	
 	-   次のコマンドを入力します。クラウドのみ	
-    -	アドレス空間: 192.168.16.0/26    
+    -	アドレス空間:192.168.16.0/26    
 
 - 仮想マシン
 	-	*HostNamePrefix*-DC (AD DS ドメイン コントローラー)
@@ -70,7 +84,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	ストレージ アカウント:初期構成中に指定されます。
 -	仮想ネットワーク	
 	-	次のコマンドを入力します。クラウドのみ
-	-	アドレス空間: 192.168.16.0/26	
+	-	アドレス空間:192.168.16.0/26	
 
 -	仮想マシン
 	-	*HostNamePrefix*-DC1 (AD DS ドメイン コントローラー)
@@ -111,5 +125,4 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

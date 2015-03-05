@@ -1,6 +1,20 @@
-<properties pageTitle="How to install and configure Symantec Endpoint Protection on an Azure VM (Azure VM に Symantec Endpoint Protection をインストールし、構成する方法)" description="Azure VM に Symantec Endpoint Protection をインストールし、構成する方法について説明します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="How to install and configure Symantec Endpoint Protection on an Azure VM (Azure VM に Symantec Endpoint Protection をインストールし、構成する方法)" 
+	description="Azure VM に Symantec Endpoint Protection をインストールし、構成する方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="KBDAzure" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="1/26/2015" ms.author="kathydav"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-multiple" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="1/26/2015" 
+	ms.author="kathydav"/>
 
 #How to install and configure Symantec Endpoint Protection on an Azure VM (Azure VM に Symantec Endpoint Protection をインストールし、構成する方法)
 
@@ -8,7 +22,7 @@
 
 このクライアントは、VM エージェントを使用することにより、セキュリティ拡張機能としてインストールできます。新しい仮想マシンの場合は、Endpoint Protection クライアントと同時に VM エージェントをインストールします。VM エージェントがない既存の仮想マシンの場合には、最初に VM エージェントをダウンロードしてインストールする必要があります。この記事では、この両方の場合について説明します。
 
-Symantec のオンプレミス ソリューション用サブスクリプションが既にある場合には、それを使用して Azure の仮想マシンを保護できます。サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。このソリューションの詳細については、「[Symantec Endpoint Protection on Microsoft's Azure platform (Microsoft Azure プラットフォームでの Symantec Endpoint Protection)](http://go.microsoft.com/fwlink/p/?LinkId=403942)」を参照してください。このページには、ライセンス情報へのリンクがあります。また、既に Symantec の顧客である場合には、クライアントをインストールする別の方法の説明もあります。
+Symantec のオンプレミス ソリューション用サブスクリプションが既にある場合には、それを使用して Azure の仮想マシンを保護できます。サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。このソリューションの詳細については、[Microsoft の Azure プラットフォーム上の Symantec Endpoint Protection](http://go.microsoft.com/fwlink/p/?LinkId=403942) に関するページを参照してください。このページには、ライセンス情報へのリンクがあります。また、既に Symantec の顧客である場合には、クライアントをインストールする別の方法の説明もあります。
 
 ##新しい仮想マシンに Symantec Endpoint Protection をインストールする
 
@@ -16,7 +30,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 
 この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Symantec のセキュリティ拡張機能をインストールします。 
 
-一般的な手順については、「[Windows Server を実行する仮想マシンの作成](http://go.microsoft.com/fwlink/p/?LinkId=403943)」を参照してください。ウィザードの最後のページで、次の手順を実行します。
+一般的な手順については、[Windows を実行する仮想マシンの作成](http://go.microsoft.com/fwlink/p/?LinkId=403943)に関するページを参照してください。ウィザードの最後のページで、次の手順を実行します。
 
 1.	[VM エージェント] で **[VM エージェントをインストールする]** チェック ボックスがオンになっている必要があります。
 
@@ -67,5 +81,4 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 [拡張機能の管理]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

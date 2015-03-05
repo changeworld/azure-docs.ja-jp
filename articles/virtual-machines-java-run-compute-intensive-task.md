@@ -1,6 +1,20 @@
-﻿<properties pageTitle="VM で多くのコンピューティング処理を要する Java アプリケーションを実行する - Azure" description="Azure の仮想マシンを作成し、多くのコンピューティング処理を要する Java アプリケーションを実行して、別の Java アプリケーションで監視する方法について説明します。" services="virtual-machines" documentationCenter="java" authors="rmcmurray" manager="wpickett" editor="mollybos"/>
+﻿<properties 
+	pageTitle="VM で多くのコンピューティング処理を要する Java アプリケーションを実行する - Azure" 
+	description="Azure の仮想マシンを作成し、多くのコンピューティング処理を要する Java アプリケーションを実行して、別の Java アプリケーションで監視する方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-windows" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # 仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 
@@ -30,7 +44,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 
 ## 仮想マシンを作成するには
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。
 **[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
@@ -54,7 +68,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 
 ## 仮想マシンにリモート ログインするには
 
-1. [管理ポータル](https://manage.windowsazure.com)にログオンします。
+1. [管理ポータル](https://manage.windowsazure.com) にログオンします。
 2. **[仮想マシン]** をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
 4. **[接続]** をクリックします。
@@ -64,18 +78,20 @@ Azure のサービス バス機能により、JRE の **cacerts** ストアの�
 
 ## サービス バス名前空間の作成方法
 
-Azure のサービス バス キューを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内でサービス バス リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure の Service Bus キューを使用するには、最初に
+サービス名前空間を作成する必要があります。サービス名前空間により、アプリケーション内で
+Service Bus リソースのアドレス範囲を指定するコンテナーが提供されます。
 
 サービス名前空間を作成するには:
 
-1.  [Azure 管理ポータル](https://manage.windowsazure.com)にログオンします。
+1.  [Azure 管理ポータル](https://manage.windowsazure.com)へのログオン
 2.  管理ポータルの左下のナビゲーション ウィンドウで、**[Service Bus、Access Control、Caching]** をクリックします。
 3.  管理ポータルの左上のウィンドウで、**[Service
     Bus]** ノードをクリックし、**[新規]** ボタンをクリックします。  
     ![Service Bus Node screenshot][svc_bus_node]
 4.  **[新しいサービス名前空間の作成]** ダイアログで、
     **名前空間**を入力し、これが一意であることを確認するために
-    **[利用可能かどうかを確認]** ボタンをクリックします。
+    **[有効か確認]** をクリックします。  
     ![Create a New Namespace screenshot][create_namespace]
 5.  入力した名前が利用できることを確認できたら、名前空間を
     ホストする国または地域を選択し、**[名前空間の作成]** ボタンをクリックします。  
@@ -85,16 +101,20 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。
+新しい名前空間へのキューの作成などの管理操作を実行するには、
+その名前空間の管理の資格情報を取得する
+必要があります。
 
 1.  左のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックして、
     使用できる名前空間の一覧を表示します。   
     ![Available Namespaces screenshot][avail_namespaces]
 2.  表示された一覧から先ほど作成した名前空間を選択します。   
     ![Namespace List screenshot][namespace_list]
-3.  右側の **[プロパティ]** ウィンドウに、新しい名前空間のプロパティが表示されます。   
+3.  右側の **[プロパティ]** ウィンドウには、新しい名前空間のプロパティ
+    が一覧表示されます。   
     ![Properties Pane screenshot][properties_pane]
-4.  **[既定のキー]** は表示されません。**[表示]** をクリックしてセキュリティ資格情報を表示します。
+4.  **[既定のキー]** は表示されません。**[表示]** をクリックしてセキュリティ資格情報
+    を表示します。   
     ![Default Key screenshot][default_key]
 5.  **[既定の発行者]** と **[既定のキー]** をメモしておきます。
     この情報は、この後に名前空間に対して操作を実行するときに使用する
@@ -102,8 +122,8 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 ## 多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの作成方法
 
-1. 開発用コンピューター上で (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for Java](http://www.windowsazure.com/ja-jp/develop/java/) をダウンロードします。
-2. このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPSolver.java** を使用します。**your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれ自分の Service Bus の **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
+1. 開発用コンピューター上で (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for Java](http://azure.microsoft.com/develop/java/) をダウンロードします。
+2. このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPSolver.java** を使用します。**your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
 3. コーディング後、実行可能な Java アーカイブ (JAR) にアプリケーションをエクスポートして、生成される JAR に、必要なライブラリをパッケージ化します。このチュートリアルでは、生成される JAR 名として **TSPSolver.jar** を使用します。
 
 <p/>
@@ -414,7 +434,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 ### 多くのコンピューティング処理を要するアプリケーションの実行方法
 
 1. 仮想マシンにログオンします。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** のように指定します。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
 3. **TSPSolver.jar** を **c:\TSP** にコピーします。
 4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
@@ -486,7 +506,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
  
 ### 監視用のクライアント アプリケーションの実行方法
 1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** のように指定します。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
 3. **TSPClient.jar** を **c:\TSP** にコピーします。
 4. JRE の bin フォルダーが PATH 環境変数に指定されていることを確認します。
 5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
@@ -505,7 +525,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
     プログラムはすべての経路の調査が完了すると終了します。 
 
 ## Java アプリケーションの停止方法
-問題を解くアプリケーションとクライアント アプリケーションのどちらでも、**Ctrl+C** キーを押すと、通常の処理が完了する前にアプリケーションが終了します。
+問題を解くアプリケーションとクライアント アプリケーションのどちらでも、**Ctrl + C** キーを押すと、通常の処理が完了する前にアプリケーションが終了します。
 
 
 [solver_output]: ./media/virtual-machines-java-run-compute-intensive-task/WA_JavaTSPSolver.png
@@ -519,4 +539,5 @@ Azure のサービス バス キューを使用するには、最初にサービ
 [add_ca_cert]: ../java-add-certificate-ca-store
 
 
-<!--HONumber=42-->
+
+<!--HONumber=45--> 

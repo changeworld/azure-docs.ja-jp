@@ -1,6 +1,20 @@
-<properties pageTitle="SharePoint Server Farm" description="Azure プレビュー ポータルで利用できる SharePoint Server ファームの新機能について説明します。" services="virtual-machines" documentationCenter="" authors="JoeDavies-MSFT" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="SharePoint Server Farm" 
+	description="Azure プレビュー ポータルで利用できる SharePoint Server ファームの新機能について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-sharepoint" ms.devlang="na" ms.topic="article" ms.date="1/26/2015" ms.author="josephd"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-sharepoint" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="1/26/2015" 
+	ms.author="josephd"/>
 
 #SharePoint Server Farm#
 
@@ -24,7 +38,7 @@ Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使�
 
 SharePoint Server Farm のテンプレートを使用して SharePoint ファームを作成するには、以下の手順を実行します。
 
-1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/) で、**[新規]**、**[SharePoint Server Farm]** をクリックします。
+1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[新規]**、**[SharePoint Server Farm]** をクリックします。
 2. **[SharePoint ファームの作成]** ウィンドウにリソース グループの名前を入力します。
 3. ファームの各仮想マシンのローカル管理者アカウントのユーザー名とパスワードを入力します。推測されにくい名前とパスワードを選んで登録し、安全な場所に保管します。
 4. 高可用性ファームを希望する場合は、**[高可用性を有効にする]** をクリックします。
@@ -47,7 +61,7 @@ SharePoint Server Farm のテンプレートを使用して SharePoint ファー
 6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
 7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
 
-SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」 を参照してください。SharePoint サーバーの全体管理サイトにアクセスするには:
+SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」を参照してください。SharePoint サーバーの全体管理サイトにアクセスするには:
 
 1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。 
 2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
@@ -67,13 +81,12 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 ##Azure リソース マネージャー##
 
-SharePoint Server Farm は、Azure リソース マネージャーとスクリプトを使用して、SharePoint ファームのインフラストラクチャとサーバー構成を自動作成します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
+SharePoint Server Farm は、Azure リソース マネージャーとスクリプトを使用して、SharePoint ファームのインフラストラクチャとサーバー構成を自動作成します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](http://azure.microsoft.com/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
 
 ##その他のリソース
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-[Set up a SharePoint intranet farm in a hybrid cloud for testing (テスト用ハイブリッド クラウドでの SharePoint イントラネット ファームの設定)](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
+[Set up a SharePoint intranet farm in a hybrid cloud for testing (テスト用ハイブリッド クラウドでの SharePoint イントラネット ファームの設定)](http://azure.microsoft.com/documentation/articles/virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

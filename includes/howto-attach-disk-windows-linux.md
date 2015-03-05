@@ -1,4 +1,4 @@
-
+﻿
 ディスクの詳細については、「[Azure の仮想マシンのディスクについて](http://go.microsoft.com/fwlink/p/?LinkId=403697)」を参照してください。
 
 ##<a id="attachempty"></a>方法:空のディスクの接続
@@ -8,17 +8,20 @@
 
 2. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 
+
 	![Attach an empty disk](./media/howto-attach-disk-window-linux/AttachEmptyDisk.png)
 
 3.	**[空のディスクの接続]** ダイアログ ボックスが表示されます。
 
+
 	![Attach a new empty disk](./media/howto-attach-disk-window-linux/AttachEmptyDetail.png)
+
  
 	以下の手順を実行します。
 
 	- **[ファイル名]** で、ディスクに使用する .vhd ファイルのファイル名として自動的に生成される名前を受け入れるか、別の名前を入力します。.vhd ファイルの別の名前を入力した場合でも、データ ディスクには自動的に生成された名前が使用されます。
 
-	- データ ディスクの**サイズ (GB)** を入力します。 
+	- データ ディスクの **[サイズ (GB)]** を入力します。 
 
 	- チェック マークをクリックして、完了します。
 
@@ -34,9 +37,12 @@
 
 2. コマンド バーで **[接続]** をクリックし、**[ディスクの接続]** を選択します。
 
+
 	![Attach data disk](./media/howto-attach-disk-window-linux/AttachExistingDisk.png)
 
 	**[ディスクの接続]** ダイアログ ボックスが表示されます。
+
+
 
 	![Enter data disk details](./media/howto-attach-disk-window-linux/AttachExistingDetail.png)
 
@@ -46,6 +52,7 @@
  
 5.	データ ディスクが接続されると、仮想マシンのダッシュボードに表示されます。
 
+
 	![Data disk successfully attached](./media/howto-attach-disk-window-linux/AttachExistingSuccess.png)
 
 > [AZURE.NOTE] 
@@ -54,4 +61,4 @@
 
 
 
-<!--HONumber=42-->
+<!--HONumber=45--> 

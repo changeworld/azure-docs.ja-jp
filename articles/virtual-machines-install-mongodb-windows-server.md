@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Windows Server 仮想マシンに MongoDB をインストールする" description="Windows Server を実行する Azure VM に MongoDB をインストールする方法について説明します。." services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor="tysonn"/>
+﻿<properties 
+	pageTitle="Windows Server 仮想マシンに MongoDB をインストールする" 
+	description="Windows Server を実行する Azure VM に MongoDB をインストールする方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="KBDAzure" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="11/24/2014" ms.author="kathydav"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="kathydav"/>
 
 #Windows Server を実行する仮想マシンに MongoDB をインストールする
 
@@ -13,7 +27,7 @@
 - 仮想マシンにデータ ディスクを接続する。
 - 仮想マシンに MongoDB をインストールする。
 
-## Windows Server を実行する仮想マシンの作成
+## Windows Server を実行する仮想マシンの作成する
 
 次に示すのは、一般的な方法です。この方法は、エンドポイントを作成することによって、MongoDB にリモートからアクセスできるように変更できます(エンドポイントの作成は後からでもできます。これについては、MongoDB のインストール方法の後で説明します)。ウィザードの最後のページでエンドポイントを追加し、次のように構成します。
 
@@ -28,18 +42,17 @@
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../includes/howto-attach-disk-windows-linux.md)]
 
-ディスクを初期化する方法については、「[データ ディスクを Windows 仮想マシンに接続する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-windows-attach-disk/)」の「方法: Windows Server での新しいデータ ディスクの初期化」を参照してください。
+ディスクを初期化する方法については、「[データ ディスクを Windows Virtual Machines に接続する方法](http://azure.microsoft.com/documentation/articles/storage-windows-attach-disk/)」の「方法: Windows Server での新しいデータ ディスクの初期化」を参照してください。
 
 ## 仮想マシンへの MongoDB のインストールと実行 
 
 [AZURE.INCLUDE [install-and-run-mongo-on-win2k8-vm](../includes/install-and-run-mongo-on-win2k8-vm.md)]
 
 ##まとめ
-このチュートリアルでは、Windows Server 仮想マシンを作成する方法、リモートから仮想マシンに接続する方法、データ ディスクを接続する方法について学習しました。Windows 仮想マシンに MongoDB をインストールして構成する方法も学習しました。MongoDB の詳細については、[MongoDB のドキュメント][MongoDocs].を参照してください。
+このチュートリアルでは、Windows Server 仮想マシンを作成する方法、リモートから仮想マシンに接続する方法、データ ディスクを接続する方法について学習しました。Windows 仮想マシンに MongoDB をインストールして構成する方法も学習しました。MongoDB の詳細については、[MongoDB のドキュメント][MongoDocs]に関するページを参照してください。
 
 [MongoDocs]: http://www.mongodb.org/display/DOCS/Home
 [MongoDB]: http://www.mongodb.org/
 [AzureManagementPortal]: http://manage.windowsazure.com
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

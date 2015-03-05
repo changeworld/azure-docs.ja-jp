@@ -1,6 +1,20 @@
-<properties pageTitle="Azure 上での CentOS ベースの Linux VHD の作成とアップロード" description="CentOS ベースの Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" services="virtual-machines" documentationCenter="" authors="szarkos" manager="timlt" editor="tysonn"/>
+﻿<properties 
+	pageTitle="Azure 上での CentOS ベースの Linux VHD の作成とアップロード" 
+	description="CentOS ベースの Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="szarkos" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/13/2015" ms.author="szarkos"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/13/2015" 
+	ms.author="szarkos"/>
 
 # Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -9,7 +23,7 @@
 
 ##前提条件##
 
-この記事では、既に CentOS (または同様な派生版) Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションなど複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+この記事では、既に CentOS (または同様な派生版) Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションを含め、複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
 
 
 **CentOS のインストールに関する注記**
@@ -35,14 +49,14 @@
 
 		# sudo rpm -e --nodeps NetworkManager
 
-	**注意:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されることが想定されます。
+	**注:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されることが想定されます。
 
-4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
+4.	`/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
 		NETWORKING=yes
 		HOSTNAME=localhost.localdomain
 
-5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前でファイルを作成し、次のテキストを追加します。
+5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
 
 		DEVICE=eth0
 		ONBOOT=yes
@@ -58,13 +72,15 @@
 		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
 		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/
 
+
 7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
 		# sudo chkconfig network on
 
+
 8. **CentOS 6.3 のみ**:Linux Integration Services 用ドライバーをインストールします
 
-	**重要: この手順は CentOS 6.3 以下にのみ有効です。**CentOS 6.4 以上では、Linux Integration Services は *カーネルに組み込み済み*です。
+	**重要: この手順は CentOS 6.3 以下にのみ有効です。**  CentOS 6.4 以上では、Linux Integration Services は *already available in the kernel*。
 
 	a) [Microsoft ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=41554)から Linux Integration Services 用ドライバーが格納されている .iso ファイルを入手します。
 
@@ -138,7 +154,8 @@
 		enabled=0
 		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-	**注意:** これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
+	**注:** これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
+
 
 11.	/etc/yum.conf ファイルに次の行を追加します。
 
@@ -166,13 +183,14 @@
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、CentOS 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。
 
-	そのほかにも、次のパラメーターを *削除*することをお勧めします。
+	そのほかにも、次のパラメーターを*remove*することをお勧めします。 
 
 		rhgb quiet crashkernel=auto
 
 	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-	必要に応じて  `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+
 
 16.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
@@ -184,7 +202,7 @@
 
 18.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは *一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -221,12 +239,12 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-3.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
+3.	`/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
 		NETWORKING=yes
 		HOSTNAME=localhost.localdomain
 
-4.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前でファイルを作成し、次のテキストを追加します。
+4.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
 
 		DEVICE=eth0
 		ONBOOT=yes
@@ -296,24 +314,24 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 		
 
 
-	**注意:** これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
+	**注:** これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
 
 9.	次のコマンドを実行して、現在の yum メタデータをクリアし、更新をインストールします。
 
 		# sudo yum clean all
 		# sudo yum -y update
 
-10.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、 `GRUB_CMDLINE_LINUX` パラメーターを編集します。
+10.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、`GRUB_CMDLINE_LINUX` パラメーターを編集します。
 
 		GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。そのほかにも、次のパラメーターを *削除*することをお勧めします。
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。そのほかにも、次のパラメーターを*remove*することをお勧めします。 
 
 		rhgb quiet crashkernel=auto
 
 	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-	必要に応じて  `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
 11. 上記のとおりに "/etc/default/grub" の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
@@ -327,7 +345,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 14.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは *一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -341,7 +359,8 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 		# export HISTSIZE=0
 		# logout
 
-16. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+16. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
-<!--HONumber=42-->
+
+<!--HONumber=45--> 

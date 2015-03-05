@@ -1,6 +1,20 @@
-<properties pageTitle="Azure Virtual Machines のセキュリティに関する提言" description="Azure VM の主要なセキュリティ機能の概要と、詳細へのリンクを示します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="Azure Virtual Machines のセキュリティに関する提言" 
+	description="Azure VM の主要なセキュリティ機能の概要と、詳細へのリンクを示します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="KBDAzure" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="01/23/2015" ms.author="kathydav"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-multiple" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/23/2015" 
+	ms.author="kathydav"/>
 
 #Azure Virtual Machines のセキュリティに関する提言
 
@@ -21,12 +35,11 @@ Azure はウイルスまたはマルウェアへの対策に使用できる数�
 
 ##仮想マシン エンドポイントに対するネットワーク アクセス制御リスト (ACL) を使用する
 
-ネットワーク アクセス制御リスト (ACL) を使用すると、仮想マシン エンドポイントで受信するトラフィックを選択的に許可または拒否できます。このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。この機能の詳細と手順のリンクについては、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/?LinkId=506655)」を参照してください。.
+ネットワーク アクセス制御リスト (ACL) を使用すると、仮想マシン エンドポイントで受信するトラフィックを選択的に許可または拒否できます。このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。この機能の詳細と手順のリンクについては、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/?LinkId=506655)」を参照してください。
 
 ##その他のリソース
-Microsoft Azure のトラスト センターの[リソース](http://azure.microsoft.com/ja-jp/support/trust-center/resources/)
+Microsoft Azure のトラスト センターの[リソース](http://azure.microsoft.com/support/trust-center/resources/)
 
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

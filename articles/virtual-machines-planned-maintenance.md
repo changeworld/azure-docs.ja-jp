@@ -1,6 +1,20 @@
-<properties pageTitle="Azure Virtual Machines に対する計画的なメンテナンス" description="Azure の計画的なメンテナンスの概要と、それが Azure で実行されている仮想マシンに及ぼす影響について説明します。" services="virtual-machines" documentationCenter="" authors="kenazk" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="Azure Virtual Machines に対する計画的なメンテナンス" 
+	description="Azure の計画的なメンテナンスの概要と、それが Azure で実行されている仮想マシンに及ぼす影響について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="kenazk" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="11/26/2014" ms.author="kenazk"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-multiple" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/26/2014" 
+	ms.author="kenazk"/>
 
 
 # Azure Virtual Machines に対する計画的なメンテナンス
@@ -10,22 +24,22 @@
 
 <!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
 
-* [仮想マシンの構成]
+* [仮想マシンの構成]  
 * [マルチインスタンスの更新]
 * [単一インスタンスの更新]
 * [電子メール通知]
 
 
 ## 仮想マシンの構成
-仮想マシンの構成には、マルチインスタンスと単一インスタンスの 2 種類があります。マルチインスタンスの仮想マシンは、1 つの可用性セットに同一の仮想マシンを複数配置することで構成します。マルチインスタンス構成では冗長性が得られます。アプリケーションの可用性を確保するために、この構成の使用をお勧めします。可用性セットには、いずれもほぼ同一の仮想マシンを配置し、それぞれのアプリケーションに対する目的も同じにする必要があります。高可用性を達成するための仮想マシン構成の詳細については、「<a href="http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-manage-availability/">仮想マシンの可用性管理</a>」を参照してください。 
+仮想マシンの構成には、マルチインスタンスと単一インスタンスの 2 種類があります。マルチインスタンスの仮想マシンは、1 つの可用性セットに同一の仮想マシンを複数配置することで構成します。マルチインスタンス構成では冗長性が得られます。アプリケーションの可用性を確保するために、この構成の使用をお勧めします。可用性セットには、いずれもほぼ同一の仮想マシンを配置し、それぞれのアプリケーションに対する目的も同じにする必要があります。高可用性の仮想マシンの構成の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability/">仮想マシンの可用性管理</a>」を参照してください。 
 
-対照的に、単一インスタンスの仮想マシンは、可用性セットに配置されていないスタンドアロンの仮想マシンです。単一インスタンスの仮想マシンは、それ自体では、複数の仮想マシンが同一の可用性セットにデプロイされていることを必要とするサービス レベル アグリーメント (SLA) の対象になりません。SLA の詳細については、[サービス レベル アグリーメント](http://azure.microsoft.com/ja-jp/support/legal/sla/) の「クラウド サービス、仮想マシンおよび仮想ネットワーク」のセクションを参照してください。
+対照的に、単一インスタンスの仮想マシンは、可用性セットに配置されていないスタンドアロンの仮想マシンです。単一インスタンスの仮想マシンは、それ自体では、複数の仮想マシンが同一の可用性セットにデプロイされていることを必要とするサービス レベル アグリーメント (SLA) の対象になりません。SLA の詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」のクラウド サービス、仮想マシン、仮想ネットワークに関するセクションを参照してください。
 
 
 ## マルチインスタンスの更新
 計画的なメンテナンス時に、Azure プラットフォームは最初にホスト コンピューターのセットを更新します。これらのコンピューターは単一のマルチインスタンス構成に含まれる複数の仮想マシンをホストしているため、更新により、それらの仮想マシンの再起動が行われます。マルチインスタンス構成内の仮想マシンは、それぞれがセット内の他のマシンと同様の機能を提供していると仮定し、更新プロセス全体にわたって可用性が維持されるように更新されます。基盤を成す Azure プラットフォームにより、可用性セット内の各仮想マシンに更新ドメイン (UD) と障害ドメイン (FD) が割り当てられます。各 UD は同じ時間帯に再起動される仮想マシンのグループです。また、各 FD は共通の電源とネットワーク スイッチを使用する仮想マシンのグループです。 
 
-UD および FD の詳細については、「<a href="http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-manage-availability/#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy">Configure multiple virtual machines in an Availability Set for redundancy (冗長性を得るために単一の可用性セットに複数の仮想マシンを構成する)</a>」を参照してください。
+UD および FD の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability/#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy">冗長性実現のために複数の仮想マシンを可用性セット内に構成する</a>」を参照してください。
 
 Microsoft Azure は、どのような計画的メンテナンス イベントでも、2 つの異なる UD に属する仮想マシンが同時にオフラインにならないことを保証します。メンテナンスは、それぞれの仮想マシンをシャットダウンし、ホスト コンピューターに更新を適用した後、仮想マシンを再起動して、次の UD に移るという流れで進行します。すべての UD が更新されると、計画的メンテナンス イベントは終了します。計画的なメンテナンス中に UD が順番に再起動されるとは限りませんが、一度に 1 つの UD のみが再起動されます。現在、マルチインスタンス構成内の仮想マシンに対して、計画的なメンテナンスの事前通知は一切行われません。
 
@@ -57,5 +71,4 @@ Azure は単一インスタンス構成の仮想マシンに対してのみ、�
 [仮想マシンの可用性管理]: ../virtual-machines-windows-tutorial/
 [計画済み、または計画外メンテナンスについて理解する]: ../virtual-machines-manage-availability/#Understand-planned-versus-unplanned-maintenance/ 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

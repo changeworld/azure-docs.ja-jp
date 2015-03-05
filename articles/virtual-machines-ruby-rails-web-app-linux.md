@@ -1,6 +1,20 @@
-<properties pageTitle="Linux VM を使用した Azure での Ruby on Rails Web アプリケーション" description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" services="virtual-machines" documentationCenter="ruby" authors="blackmist" manager="wpickett" editor=""/>
+﻿<properties 
+	pageTitle="Linux VM を使用した Azure での Ruby on Rails Web アプリケーション" 
+	description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" 
+	services="virtual-machines" 
+	documentationCenter="ruby" 
+	authors="blackmist" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="ruby" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="larryfr"/>
 
 
 
@@ -44,7 +58,7 @@
 
 1. 開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルでは、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** と **ruby-build** のインストールを検証しました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
+	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** および **ruby-build** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
 
 	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
 
@@ -225,7 +239,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 	* **パブリック ポート**:80
 
-	* **プライベート ポート**:&lt;前の手順 3 で確認したポート情報&gt;
+	* **プライベート ポート**:&lt;前の手順 3. で確認したポート情報&gt;
 
 	これにより、プライベート ポート 3000 にトラフィックをルーティングするパブリック ポート 80 が作成されます。ルーティング先のプライベート ポートは、Rails がリッスンしています。
 
@@ -245,7 +259,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 この記事では、基本的なフォーム ベースの Rails アプリケーションを作成し、Azure の仮想マシンに発行する方法について説明しました。ほとんどの操作は手動で実行しましたが、通常、運用環境では自動化が求められます。また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。
 
-Rails アプリケーションのデプロイの自動化や、Unicorn Web サーバーと NginX の使用方法については、「[Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする][unicorn-nginx-capistrano]」を参照してください。
+Rails アプリケーションのデプロイの自動化や、Unicorn Web サーバーと NginX の使用方法については、[Azure VM での Unicorn、NginX、Capistrano][unicorn-nginx-capistrano] に関するページを参照してください。
 
 Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][rails-guides]を参照してください。
 
@@ -294,5 +308,4 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 [new-endpoint]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

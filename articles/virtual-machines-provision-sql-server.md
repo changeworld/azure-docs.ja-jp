@@ -1,6 +1,20 @@
-<properties pageTitle="Azure での SQL Server 仮想マシンのプロビジョニング" description="Azure で SQL Server 仮想マシンを作成して構成する方法を学習するチュートリアルです。" services="virtual-machines" documentationCenter="" authors="Selcin" manager="jhubbard" editor="monicar"/>
+﻿<properties 
+	pageTitle="Azure での SQL Server 仮想マシンのプロビジョニング" 
+	description="Azure で SQL Server 仮想マシンを作成して構成する方法を学習するチュートリアルです。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="Selcin" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/30/2014" ms.author="selcint"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/30/2014" 
+	ms.author="selcint"/>
 
 
 
@@ -17,9 +31,9 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 * [別のコンピューター上の SQL Server Management Studio を使用して、仮想マシンに接続する構成手順を完了します。](#SSMS)
 * [次のステップ](#Optional)
 
-##<a id="Provision">Azure 管理ポータルに接続し、ギャラリーから仮想マシンのプロビジョニング</a>
+##<a id="Provision">Azure の管理ポータルに接続し、ギャラリーから仮想マシンのプロビジョニングを行う</a>
 
-1. アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com) にログインします。Azure アカウントを持っていない場合は、[Azure 無料評価版](http://www.windowsazure.com/ja-jp/pricing/free-trial/) にアクセスしてください。。
+1. アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com) にログインします。Azure アカウントを持っていない場合は、[Azure の無料評価版](http://azure.microsoft.com/pricing/free-trial/)に関するページにアクセスしてください。
 
 2. Web ページの左下にある、Azure の管理ポータルで次のようにクリックします。 **[+ 新規]**、**[コンピューティング]**、**[バーチャル マシン]**、**[ギャラリーから]** の順にクリックします。
 
@@ -27,25 +41,25 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
     >[AZURE.NOTE] プラットフォーム イメージの SQL Server 評価エディションを使用して仮想マシンを作成した場合、それをギャラリーにある分単位課金エディション イメージにアップグレードすることはできません。次の 2 つのオプションのいずれかを選択できます。
     
-    > - ギャラリーにある分単位課金エディションの SQL Server を使用して新しい仮想マシンを作成し、[SQL Server データベース ファイルとデータ ディスクを使用して azure の仮想マシン間でのスキーマを移行する方法](http://go.microsoft.com/fwlink/p/?LinkId=294738) の手順で、データベース ファイルをこの新しい仮想マシンを移行します。**または**、
+    > - ギャラリーにある分単位課金エディションの SQL Server を使用して新しい仮想マシンを作成し、「[Azure の仮想マシン間でデータ ディスクを使用して SQL Server のデータベース ファイルとスキーマを移行する方法](http://go.microsoft.com/fwlink/p/?LinkId=294738)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移行します。**または**、
 
-    > - [SQL Server 2014 の別のエディションへのアップグレード (セットアップ)](http://go.microsoft.com/fwlink/?LinkId=396915) の手順に従って、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://www.windowsazure.com/ja-jp/pricing/license-mobility/) の合意に基づき、SQL Server 評価エディションの既存のインスタンスを異なるエディションの SQL Server にアップグレードします。SQL Server のライセンス コピーを購入する方法の詳細については、「[SQL Server の購入方法](http://www.microsoft.com/ja-jp/sqlserver/get-sql-server/how-to-buy.aspx)」を参照してください。
+    > - [SQL Server 2014 の別のエディションへのアップグレード](http://go.microsoft.com/fwlink/?LinkId=396915)に関するページの手順に従って、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の合意に基づき、SQL Server 評価エディションの既存のインスタンスを異なるエディションの SQL Server にアップグレードできます。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/ja-jp/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
    
 
 4. 最初の **[仮想マシンの構成]** ページで、次の情報を指定します。
 	- **[仮想マシン名]**に入力します。
 	- **[新しいユーザー名]**ボックスに、VM ローカル管理者アカウントの一意のユーザー名を入力します。
-	- **[新しいパスワード]**ボックスに、強力なパスワードを入力します。詳細については、[強力なパスワード](http://msdn.microsoft.com/library/ms161962.aspx) を参照してくだい。
+	- **[新しいパスワード]**ボックスに、強力なパスワードを入力します。詳細については、「[強力なパスワード](http://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
 	- **[パスワードの確認入力]**ボックスで、パスワードを再度入力します。
 	- ドロップ ダウン リストから適切な**[サイズ]**を選択します。 
 
 	>[AZURE.NOTE] 仮想マシンのサイズは、プロビジョニング中に指定します。
- 	> 運用環境のワークロードで推奨される最小サイズは A2 です。 
+ 	> A運用環境のワークロードで推奨される最小サイズは 2 です。 
     > SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。
     > SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。
    	> SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。  
    	> SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。 
-   	> 選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報は、「[Azure の仮想マシンのサイズ](http://msdn.microsoft.com/ja-jp/library/azure/dn197896.aspx)」を参照してください。
+   	> T選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
 	右下にある次へ進む矢印をクリックして続行します。
 
@@ -57,7 +71,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 	- **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、 **TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。 
 	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
 	- **[ストレージ アカウント]** で、既存のストレージ アカウントか、自動的に生成されたストレージ アカウントを選択します。
-	- **[可用性セット]** ボックスの一覧で **[(なし)]** を選択します。
+	- **[可用性セット]** ボックスで、**[(なし)]** を選択します。
 	- 法律条項を読み、同意します。
 	
 
@@ -85,11 +99,11 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 	
 3. **[Windows セキュリティ]** ダイアログ ボックスで、先ほど指定したローカル管理者アカウントのパスワードを入力します(仮想マシンの資格情報を確認するように求められることがあります)。
 
-4. この仮想マシンに初めてログオンした場合は、デスクトップのセットアップや Windows の更新プログラムの適用、Windows の初期構成タスク (sysprep) の完了など複数のプロセスが必要になる場合があります。Windows sysprep の完了後、SQL Server セットアップによって構成タスクが完了されます。これらのタスクを完了するには、数分の遅延が発生します。 `SELECT @@SERVERNAME` はSQL Server セットアップが完了するまで、正しい名前を返さず、SQL Server Management Studio がスタート ページに表示されない場合があります。
+4. この仮想マシンに初めてログオンした場合は、デスクトップのセットアップや Windows の更新プログラムの適用、Windows の初期構成タスク (sysprep) の完了など複数のプロセスが必要になる場合があります。Windows sysprep の完了後、SQL Server セットアップによって構成タスクが完了されます。これらのタスクを完了するには、数分の遅延が発生します。`SELECT @@SERVERNAME` は SQL Server セットアップが完了するまで、正しい名前を返さず、SQL Server Management Studio がスタート ページに表示されない場合があります。
 
 Windows リモート デスクトップで仮想マシンに接続すると、仮想マシンは他のコンピューターと同様に使用できます。SQL Server Management Studio (仮想マシン上で実行) を使用して、通常どおりに SQL Server の既定インスタンスに接続します。 
 
-##<a id="SSMS">別のコンピューター上の SQL Server Management Studio を使用して、仮想マシンに接続する構成手順を完了する</a>
+##<a id="SSMS">別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する</a>
 
 インターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
 
@@ -116,7 +130,7 @@ Windows リモート デスクトップで仮想マシンに接続すると、�
 2. 新しく作成した仮想マシンをクリックします。仮想マシンに関する情報が表示されます。
 	
 
-3. ページの上部にある **[エンドポイント]** を選択し、ページの下部にある **[追加]**.をクリックします
+3. ページの上部にある ** [エンドポイント]** を選択し、ページの下部にある **[追加]**.をクリックします
 	
 
 4. **[仮想マシンにエンドポイントを追加します]** ページで、**[スタンドアロン エンドポイントの追加]** をクリックし、次へ進む矢印をクリックして続行します。
@@ -125,20 +139,20 @@ Windows リモート デスクトップで仮想マシンに接続すると、�
 5. **[エンドポイントの詳細を指定します]** ページで、次の情報を指定します。
 
 	- **名前**ボックスで、エンドポイントの名前を入力します。
-	- **[プロトコル]** ボックスで **[TCP]**.を選択します。**[パブリック ポート]** ボックスに 「**57500**」と入力することもできます。同様に、 **[プライベート ポート]** ボックスに、SQL Server の既定のリスニング ポートである 「**1433**」と入力することもできます。多くの組織は、悪意のある攻撃を避けるために異なるポート番号を選択することに注意してください。 
+	- **[プロトコル]** ボックスで **[TCP]**.を選択します。**[パブリック ポート]** ボックスに **「57500」**と入力することもできます。同様に、 **[プライベート ポート]** ボックスに、SQL Server の既定のリスニング ポートである 「**Private Port**」と入力することもできます。多くの組織は、悪意のある攻撃を避けるために異なるポート番号を選択することに注意してください。 
 
 
 6. チェック マークをクリックして続行します。エンドポイントが作成されます。
 	
 
-###<a id="FW">データベース エンジンの既定のインスタンスについて、Windows ファイアウォールで TCP ポートを開く</a>
+###<a id="FW">データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く</a>
 
 1. Windows リモート デスクトップを介して仮想マシンに接続します。ログインしたら、[スタート] メニューで、**[ファイル名を指定して実行]** をクリックします。次に、「**WF.msc**」と入力して **[OK]** をクリックします。Windows Server 2012 以降を実行している場合は、[スタート] メニューで「**WF**」と入力して **[セキュリティが強化された Windows ファイアウォール]** を選択することもできます。
 
 	![Start the Firewall Program][Image12]
 2. **[セキュリティが強化された Windows ファイアウォール]** の左ペインで、**[受信の規則]** を右クリックし、[操作] ペインの **[新しい規則]** をクリックします。
 
-	![新しいルール][Image13]
+	![New Rule][Image13]
 
 3. **[規則の種類]** ダイアログ ボックスで、**[ポート]** を選択して **[次へ]** をクリックします。
 
@@ -150,13 +164,13 @@ Windows リモート デスクトップで仮想マシンに接続すると、�
 
 6. **[操作]** ダイアログ ボックスで、**[接続を許可する]** を選択し、**[次へ]** をクリックします。
 
-	**セキュリティに関するメモ:**を選択すると**場合は、セキュリティで保護された接続を許可する**追加のセキュリティを提供することができます。環境内で追加のセキュリティ オプションを構成する場合は、このオプションを選択します。
+	**セキュリティ上の注意:** **[セキュリティで保護されている場合のみ接続を許可する]** を選択するとセキュリティが追加されます。環境内で追加のセキュリティ オプションを構成する場合は、このオプションを選択してください。
 
 	![Allow Connections][Image15]
 
 7. **[プロファイル]** ダイアログ ボックスで、**[パブリック]** をオンにし、**[次へ]** をクリックします。 
 
-    **セキュリティに関するメモ:****[パブリック]** をオンにすると、インターネット経由のアクセスが許可されます。可能であれば、できるだけ制限の厳しいプロファイルを選択してください。
+    **セキュリティ上の注意:** **[パブリック]** を選択するとインターネット経由のアクセスが許可されます。可能であれば、できるだけ制限の厳しいプロファイルを選択してください。
 
 	![Public Profile][Image16]
 
@@ -164,12 +178,12 @@ Windows リモート デスクトップで仮想マシンに接続すると、�
 
 	![Rule Name][Image17]
 
-必要に応じて他のコンポーネント用に追加のポートを開きます。詳細については、「[SQL Server のアクセスを許可するための Windows ファイアウォールを構成する](http://msdn.microsoft.com/ja-jp/library/cc646023.aspx)」を参照してください。
+必要に応じて他のコンポーネント用に追加のポートを開きます。詳細については、「[SQL Server のアクセスを許可するための Windows ファイアウォールの構成](http://msdn.microsoft.com/library/cc646023.aspx)」を参照してください。
 
 
 ###<a id="TCP">TCP プロトコルでリッスンするように SQL Server を構成する</a>
 
-1. リモート デスクトップを使用して仮想マシンに接続している状態で、[スタート] メニューの **[すべてのプログラム]** をクリックし、**[Microsoft SQL Server]** *version*、**[構成ツール]**、**[SQL Server 構成マネージャー]** の順にクリックします。
+1. リモート デスクトップを使用して仮想マシンに接続している状態で、[スタート] メニューの **[すべてのプログラム]** をクリックし、**[Microsoft SQL Server** *version]*、**[構成ツール]**、**[SQL Server 構成マネージャー]** の順にクリックします。
 	
 	![Open SSCM][Image9]
 
@@ -183,13 +197,13 @@ Windows リモート デスクトップで仮想マシンに接続すると、�
 
 5. コンソール ペインで、**[SQL Server のサービス]** をクリックします(データベース エンジンの再起動は次の手順が完了するまで延期されることがあります)。
 
-6. 詳細ペインで **[SQL Server (_インスタンス名_)]**(既定のインスタンスでは、**[SQL Server (MSSQLSERVER)]**) を右クリックして、**[再起動]** をクリックします。 これで、SQL Server のインスタンスが停止し、再起動されます。 
+6. 詳細ペインで **[SQL Server (_インスタンス名_)]** (既定のインスタンスでは **[SQL Server (MSSQLSERVER)]**) を右クリックして、**[再起動]** をクリックします。これにより、SQL Server のインスタンスが停止し、再起動されます。 
 
 	![Restart Database Engine][Image11]
 
 7. SQL Server 構成マネージャーを閉じます。
 
-SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「[Enable or Disable a Server Network Protocol (サーバー ネットワーク プロトコルの有効化または無効化)](http://msdn.microsoft.com/ja-jp/library/ms191294.aspx)」を参照してください。
+SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「[サーバー ネットワーク プロトコルの有効化または無効化](http://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
 
 ###<a id="Mixed">混合モード認証用に SQL Server を構成する</a>
 
@@ -201,7 +215,7 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
 
 	初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。これには数分かかることがあります。
 
-2. Management Studio が開くと、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに**[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスの **[_VM 名_\_ローカル管理者_]** はそのままにしておきます。**[接続]** をクリックします。
+2. Management Studio が開くと、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスの **[_VM 名_\_ローカル管理者_]** はそのままにしておきます。**[接続]** をクリックします。
 
 	![Connect to Server][Image19]
 
@@ -251,13 +265,13 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
 
 11. これが初めて作成するログインである場合は、このログインを SQL Server 管理者専用に使用することが考えられます。その場合は、**[サーバー ロール]** ページで、**[sysadmin]** をオンにします。 
 
-	**セキュリティに関する注意:** sysadmin 固定サーバー ロールのメンバーには、データベース エンジンに対する完全な制御権が与えられています。このロールのメンバーシップは慎重に制限する必要があります。
+	**セキュリティ上の注意:** sysadmin 固定サーバー ロールのメンバーには、データベース エンジンに対する完全な制御権が与えられています。このロールのメンバーは、適切なユーザーのみに限定してください。
 
 	![sysadmin][Image25]
 
 12. [OK] をクリックします。
 
-SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/ja-jp/library/aa337562.aspx)」を参照してください。
+SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
 
 
 
@@ -274,7 +288,7 @@ SQL Server のログインの詳細については、「[ログインの作成](
  
 1. インターネットに接続されたコンピューターで、SQL Server Management Studio を開きます。
 
-2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに仮想マシン (前のタスクで決定される) のDNS 名と、 *DNSName,portnumber***tutorialtestVM.cloudapp.net,57500**などの形式で.パブリック エンドポイントのポート番号を入力します。
+2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに、前のタスクで決定した仮想マシンの DNS 名と、パブリック エンドポイントのポート番号を *DNSName,portnumber* という形式で入力します (例: **tutorialtestVM.cloudapp.net,57500**)。
 
 3. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
 
@@ -286,7 +300,7 @@ SQL Server のログインの詳細については、「[ログインの作成](
 
 	![Connect using SSMS][Image33]
 
-### <a id="cdea">アプリケーションからデータベース エンジンに接続する</a>
+### <a id="cdea"> アプリケーションからデータベース エンジンに接続する</a>
 
 Azure の仮想マシンで実行されている SQL Server のインスタンスに Management Studio から接続できる場合は、次のような接続文字列を使用して接続できます。
 
@@ -350,7 +364,7 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 [Azure の仮想マシンにおける SQL Server の技術記事](http://msdn.microsoft.com/library/azure/dn248435.aspx)
 
-- [ホワイト ペーパー:Understand Azure SQL Database and SQL Server in Azure Virtual Machines (Azure Virtual Machines における Azure SQL Database と SQL Server について)](http://azure.microsoft.com/ja-jp/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas/)
+- [ホワイト ペーパー:Understand Azure SQL Database and SQL Server in Azure Virtual Machines (Azure Virtual Machines における Azure SQL Database と SQL Server について)](http://azure.microsoft.com/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas/)
 
 - [ホワイト ペーパー:Azure の仮想マシンにおける SQL Server のアプリケーション パターンと開発計画](http://msdn.microsoft.com/library/azure/dn574746.aspx)
 
@@ -388,5 +402,4 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 [Image32]: ./media/virtual-machines-provision-sql-server/32DNS-Name.png
 [Image33]: ./media/virtual-machines-provision-sql-server/33Connect-SSMS.png
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

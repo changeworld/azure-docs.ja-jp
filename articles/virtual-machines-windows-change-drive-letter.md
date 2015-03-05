@@ -1,6 +1,20 @@
-<properties pageTitle="Windows 一時ディスクのドライブ文字を変更する方法" description="Azure の Windows VM で一時ディスクを再マップする方法について説明します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="Windows 一時ディスクのドライブ文字を変更する方法" 
+	description="Azure の Windows VM で一時ディスクを再マップする方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="KBDAzure" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/15/2015" ms.author="kathydav"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/15/2015" 
+	ms.author="kathydav"/>
 
 #Windows 一時ディスクのドライブ文字を変更する方法
 
@@ -22,7 +36,7 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 4. 	再びログインして、ドライブ文字を D から E に変更します。
 
-5.	[Azure 管理ポータル](http://manage.windowsazure.com)から、既存のデータ ディスクか、空のデータ ディスクを接続します。
+5.	[Azure の管理ポータル](http://manage.windowsazure.com)から、既存のデータ ディスクか、空のデータ ディスクを接続します。
 
 6.	仮想マシンに再ログインして、直前の手順で接続したディスクを初期化し、ドライブ文字 D を割り当てます。
 
@@ -39,7 +53,7 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 <!--Link references-->
 [データ ディスクを Windows 仮想マシンに接続する方法]: ../storage-windows-attach-disk
-[Azure の仮想マシンのディスクについて]: ../http://msdn.microsoft.com/ja-jp/library/azure/dn790303.aspx
+[Azure の仮想マシンのディスクについて]: ../http://msdn.microsoft.com/library/azure/dn790303.aspx
 [Windows Server VHD の作成と Azure へのアップロード]: ../virtual-machines-create-upload-vhd-windows-server/
 [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
 [データ ディスクを仮想マシンから切断する方法]: ../storage-windows-detach-disk/
@@ -47,5 +61,4 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

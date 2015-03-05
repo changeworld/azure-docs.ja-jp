@@ -1,10 +1,24 @@
-﻿<properties pageTitle="Azure での Linux 用 Docker VM 拡張機能の使用" description="Docker と Azure 仮想マシン拡張機能について説明し、azure-cli コマンド インターフェイスを使用してコマンド ラインから Azure 上に Docker ホストである仮想マシンをプログラムで作成する方法を示します。" services="virtual-machines" documentationCenter="" authors="squillace" manager="timlt" editor=""/>
+﻿<properties 
+	pageTitle="Azure での Linux 用 Docker VM 拡張機能の使用" 
+	description="Docker と Azure 仮想マシン拡張機能について説明し、azure-cli コマンド インターフェイスを使用してコマンド ラインから Azure 上に Docker ホストである仮想マシンをプログラムで作成する方法を示します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="squillace" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.devlang="multiple" ms.topic="article" ms.tgt_pltfrm="vm-linux" ms.workload="infrastructure-services" ms.date="10/21/2014" ms.author="rasquill"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.workload="infrastructure-services" 
+	ms.date="02/11/2015" 
+	ms.author="rasquill"/>
 <!--The next line, with one pound sign at the beginning, is the page title--> 
 # Azure ポータルでの Docker VM 拡張機能の使用
 
-[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント]に対して Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。 
+[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つであり、データの分離と共有リソースでのコンピューティングの手段として、仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を用います。[Azure Linux エージェント]で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。 
 
 <!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
 このセクションの内容
@@ -15,7 +29,7 @@
 + [Docker クライアントと Azure Docker ホストのテスト]
 + [次のステップ]
 
-> [AZURE.NOTE] このトピックでは、Azure ポータルで Docker VM を作成する方法について説明します。コマンド ラインで Docker VM を作成する方法については、「[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]」を参照してください。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。 
+> [AZURE.NOTE] このトピックでは、Azure ポータルで Docker VM を作成する方法について説明します。コマンド ラインで Docker VM を作成する方法については、「[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]」を参照してください。コンテナーとその利点に関する概要については、[Docker の概要についてのホワイトボード](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)のページを参照してください。 
 
 ## <a id='createvm'>イメージ ギャラリーからの新しい VM の作成</a>
 最初のステップとして、Docker VM 拡張機能をサポートする Linux イメージから Azure VM を作成する必要があります。イメージ ギャラリーから取得した Ubuntu 14.04 LTS イメージをサンプルのサーバー イメージとして、Ubuntu 14.04 デスクトップをクライアントとして使用します。ポータルで、左下の **[+ 新規]** をクリックし、新しい VM インスタンスを作成します。下図に示すように、使用可能な選択項目か、すべて表示されるイメージ ギャラリーから、Ubuntu 14.04 LTS イメージを選択します。 
@@ -26,9 +40,9 @@
 
 ## <a id'dockercerts'>Docker 証明書の作成</a>
 
-VM の作成が完了したら、クライアント コンピューターに Docker がインストールされていることを確認します(詳細については、[Docker のインストール手順](https://docs.docker.com/installation/#installation)を参照してください)。 
+VM の作成が完了したら、クライアント コンピューターに Docker がインストールされていることを確認します(詳細については、[Docker のインストール手順](https://docs.docker.com/installation/#installation)に関するページを参照してください)。 
 
-「[Running Docker with https (https を使用した Docker の実行)]」に記載された手順に従って Docker の通信用の証明書とキー ファイルを作成し、クライアント コンピューターの **`~/.docker`** ディレクトリに配置します。 
+[HTTPS による Docker の実行]に関するページに従って Docker の通信用の証明書とキー ファイルを作成し、クライアント コンピューターの **`~/.docker`** ディレクトリに配置します。 
 
 > [AZURE.NOTE] 現時点では、ポータルの Docker VM 拡張機能には Base64 でエンコードした証明書が必要です。
 
@@ -47,6 +61,7 @@ VM の作成が完了したら、クライアント コンピューターに Doc
 
 ## <a id'adddockerextension'>Docker VM 拡張機能の追加</a>
 Docker VM 拡張機能を追加するには、作成した VM インスタンスを見つけ、下図に示す **[拡張機能]** まで下へスクロールし、クリックして VM 拡張機能を表示します。
+> [AZURE.NOTE] この機能はプレビュー ポータルでのみサポートされます。: https://portal.azure.com/
 
 ![](./media/virtual-machines-docker-with-portal/ClickExtensions.png)
 ### 拡張機能の追加
@@ -78,7 +93,7 @@ Docker VM 拡張機能を選択します。この操作により、Docker の説
 
 
 ## <a id='testclientandserver'>Docker クライアントと Azure Docker ホストのテスト</a>
-VM のドメイン名を見つけてコピーし、クライアント コンピューターのコマンド ラインで、「docker --tls -H tcp://`*dockerextension*`.cloudapp.net:4243 info」と入力します ( *dockerextension* は、使用している VM のサブドメインに置き換えます)。 
+VM のドメイン名を見つけてコピーし、クライアント コンピューターのコマンド ラインで、「`docker --tls -H tcp://`*dockerextension*`.cloudapp.net:4243 info`」と入力します (*dockerextension* は、使用している VM のサブドメインに置き換えてください)。 
 
 結果は次のようになります。
 
@@ -101,10 +116,12 @@ Kernel Version: 3.13.0-36-generic
 WARNING: No swap limit support
 ```
 
+これまでの手順を完了すると、Azure VM で実行する Docker ホストが正常に機能し、別のクライアントからリモートで接続されるように構成された状態になります。
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-「[Docker ユーザー ガイド]」にアクセスして Docker VM の使用を開始する準備が整いました。Azure で Docker VM を短時間で繰り返し作成する方法については、「[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]」を参照してください。
+「[Docker ユーザー ガイド]」にアクセスして Docker VM の使用を開始する準備が整いました。コマンド ライン インターフェイスから Azure VM の Docker ホストを自動的に作成する方法については、[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]に関するページを参照してください。
 
 <!--Anchors-->
 [イメージ ギャラリーからの新しい VM の作成]: #createvm
@@ -127,12 +144,11 @@ WARNING: No swap limit support
 
 
 <!--Link references-->
-[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-docker-with-xplat-cli/
+[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
 [Azure Linux エージェント]: ../virtual-machines-linux-agent-user-guide/
-[別の azure.microsoft.com ドキュメント トピックへのリンク 3]: ../storage-whatis-account/
+[別の azure.microsoft.com ドキュメントのトピックへのリンク 3]: ../storage-whatis-account/
 
-[https を使用した Docker の実行]: http://docs.docker.com/articles/https/
+[HTTPS による Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

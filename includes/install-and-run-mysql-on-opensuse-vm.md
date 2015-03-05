@@ -41,7 +41,7 @@
 
 	行末のセミコロン (;) は、コマンドの終わりを示すために必要です。
 
-8. データベースを作成し、このデータベースに対するアクセス許可を  `mysqluser` ユーザーに付与するには、次のコマンドを実行します。
+8. データベースを作成し、このデータベースに対するアクセス許可を `mysqluser` ユーザーに付与するには、次のコマンドを実行します。
 
 		mysql> CREATE DATABASE testdatabase;
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
@@ -52,7 +52,7 @@
 
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
-	 `ip-address` は、MySQL への接続元コンピューターの IP アドレスです。
+	`ip-address` は、MySQL への接続元コンピューターの IP アドレスです。
 	
 10. MySQL データベース管理ユーティリティを終了するには、次のコマンドを実行します。
 
@@ -83,4 +83,4 @@
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!--HONumber=42-->
+<!--HONumber=45--> 

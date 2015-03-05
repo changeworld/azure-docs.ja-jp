@@ -1,18 +1,32 @@
-<properties pageTitle="Azure 上での Linux VHD の作成とアップロード" description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" services="virtual-machines" documentationCenter="" authors="KBDAzure" manager="timlt" editor="tysonn"/>
+﻿<properties 
+	pageTitle="Azure 上での Linux VHD の作成とアップロード" 
+	description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="KBDAzure" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/13/2015" ms.author="kathydav, szarkos"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/13/2015" 
+	ms.author="kathydav, szarkos"/>
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
 ここでは、仮想ハードディスク (VHD) を作成およびアップロードし、それをイメージとして活用して Azuere 内で仮想マシンを作成する方法を示します。そのイメージに基づいて複数の仮想マシンを作成できるよう、オペレーティング システムを準備する方法についても説明します。  
 
-> [AZURE.NOTE] この記事内の手順は、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ](http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/)を参照してください。 
+> [AZURE.NOTE] この記事内の手順は、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)に関するページを参照してください。 
 
-Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。Azure でのディスクとイメージの詳細については、「[ディスクおよびイメージの管理](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj672979.aspx)」を参照してください。
+Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。Azure でのディスクとイメージの詳細については、「[ディスクおよびイメージの管理](http://msdn.microsoft.com/library/windowsazure/jj672979.aspx)」を参照してください。
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/)」を参照してください。
 
-**重要**:Azure プラットフォームの SLA は、動作保証済みディストリビューションのいずれか 1 つを[この記事](http://support.microsoft.com/kb/2805216)で指定されている構成で使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
+**重要**: Azure プラットフォームの SLA は、動作保証済みディストリビューションのいずれか 1 つを[この記事](http://support.microsoft.com/kb/2805216)で指定されている構成で使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
 
 ##前提条件##
@@ -20,15 +34,15 @@ Azure の仮想マシンでは、仮想マシンの作成時に選択したイ�
 
 - **管理証明書** - VHD をアップロードするサブスクリプションの管理証明書を作成し、その証明書を .cer ファイルにエクスポートしました。証明書の作成方法の詳細については、「[Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/library/windowsazure/gg551722.aspx)」を参照してください。 
 
-- **.vhd ファイルにインストールされている Linux オペレーティング システム** - サポートされている Linux オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+- **.vhd ファイルにインストールされている Linux オペレーティング システム**  - サポートされている Linux オペレーティング システムを仮想ハード ディスクにインストールしています。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
 
-	**重要**:新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+	**重要**: 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
 	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions)」を参照してください。または、この記事の末尾の「[動作保証外のディストリビューションに関する情報](../virtual-machines-linux-create-upload-vhd-generic)」のセクションを参照してください。
 
 - **Linux 用 Azure コマンド ライン ツール** - Linux オペレーティング システムを使用してイメージを作成する場合は、[Mac および Linux 用 Azure コマンド ライン ツール](http://go.microsoft.com/fwlink/?LinkID=253691&clcid=0x409)を使用して VHD ファイルをアップロードします。
 
-- **Azure Powershell ツール** -  `Add-AzureVhd` コマンドレットを使用して、VHD をアップロードすることもできます。Azure Powershell コマンドレットをダウンロードするには、「[Azure Downloads (Azure のダウンロード)](http://azure.microsoft.com/ja-jp/downloads/)」を参照してください。詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/library/windowsazure/dn495173.aspx)を参照してください。
+- **Azure Powershell ツール** - `Add-AzureVhd` コマンドレットを使用して、VHD をアップロードすることもできます。Azure Powershell コマンドレットをダウンロードするには、[Azure のダウンロード](http://azure.microsoft.com/downloads/) ページを参照してください。詳細については、[Add-AzureVhd](http://msdn.microsoft.com/library/windowsazure/dn495173.aspx) に関するページを参照してください。
 
 
 このタスクの手順は次のとおりです。
@@ -38,7 +52,7 @@ Azure の仮想マシンでは、仮想マシンの作成時に選択したイ�
 - [手順 3.Azure への接続を準備する] []
 - [手順 4.Azure にイメージをアップロードする] []
 
-## <a id="prepimage"> </a>手順 1.アップロードするイメージを準備する ##
+## <a id="prepimage"> </a>手順 1:アップロードするイメージを準備する ##
 
 Microsoft Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
@@ -53,7 +67,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 上のガイドに説明されている次の手順を行うと、Azure にアップロードする VHD ファイルの準備が整います。
 
 
-## <a id="createstorage"> </a>手順 2.Azure でストレージ アカウントを作成する ##
+## <a id="createstorage"> </a>手順 2:Azure でストレージ アカウントを作成する ##
 
 ストレージ アカウントは、ストレージ サービスにアクセスするための最高レベルの名前空間を表し、Azure サブスクリプションに関連付けられています。仮想マシンの作成に使用できる .vhd ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure の管理ポータルを使って作成できます。
 
@@ -77,14 +91,14 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
  
 - ストレージ アカウントの Geo レプリケーションを使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で対処できない大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。
 
-5. [ストレージ アカウントの作成] をクリックします。
+5. **[ストレージ アカウントの作成]** をクリックします。
 
 	作成したアカウントが **[ストレージ アカウント]** に表示されます。
 
 	![Storage account successfully created](./media/virtual-machines-linux-create-upload-vhd/Storagenewaccount.png)
 
 
-## <a id="connect"> </a>手順 3.Azure への接続を準備する ##
+## <a id="connect"> </a>手順 3:Azure への接続を準備する ##
 
 .vhd ファイルをアップロードする前に、コンピューターと Azure のサブスクリプションの間にセキュリティで保護された接続を確立する必要があります。 
 
@@ -104,10 +118,10 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 	ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。 
 
-	詳細については、「[Azure コマンドレットの概要](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx)」を参照してください。 
+	詳細については、「[Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照してください。 
 
 
-## <a id="upload"> </a>手順 4.Azure にイメージをアップロードする ##
+## <a id="upload"> </a>手順 4:Azure にイメージをアップロードする ##
 
 .vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために管理ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。 
 
@@ -117,7 +131,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 		`Add-AzureVhd -Destination <BlobStorageURL>/<YourImagesFolder>/<VHDName> -LocalFilePath <PathToVHDFile>`
 
-	詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn205185.aspx)を参照してください。
+	詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/library/windowsazure/dn205185.aspx)を参照してください。
 
 - Linux コマンド ライン ツールを使用してイメージをアップロードします。次のコマンドを使用してイメージをアップロードできます。
 
@@ -126,10 +140,9 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 
 [手順 1.アップロードするイメージを準備する]: #prepimage
-[手順 2.Azure にストレージ アカウントを作成する]: #createstorage
+[手順 2.Azure でストレージ アカウントを作成する]: #createstorage
 [手順 3.Azure への接続を準備する]: #connect
 [手順 4.Azure にイメージをアップロードする]: #upload
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 
