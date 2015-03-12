@@ -1,47 +1,58 @@
-﻿<properties urlDisplayName="Publishing with Visual Studio Online" pageTitle="Visual Studio Online を使用した Azure への継続的な配信" metaKeywords="" description="Visual Studio Online チーム プロジェクトを自動的にビルドして Azure Web サイトまたはクラウド サービスにデプロイするための構成方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Continuous delivery to Azure using Visual Studio Online" authors="ghogen" solutions="" manager="douge" editor="" />
+<properties 
+	pageTitle="Visual Studio Online を使用した Azure への継続的な配信" 
+	description="Visual Studio Online チーム プロジェクトを自動的にビルドして Azure Web サイトまたはクラウド サービスにデプロイするための構成方法について説明します。" 
+	services="web-sites" 
+	documentationCenter=".net" 
+	authors="kempb" 
+	manager="douge" 
+	editor="tglee"/>
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="ghogen" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/17/2015" 
+	ms.author="kempb"/>
 
 
 # Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)
 
-  Visual Studio Online チーム プロジェクトを、自動的にビルドして Azure Web サイトまたはクラウド サービスにデプロイするように構成できます。*内部設置型* Team Foundation Server を使用した継続的なビルドおよびデプロイ システムのセットアップ方法については、「[Azure でのクラウド サービスの継続的な配信](../cloud-services-dotnet-continuous-delivery)」を参照してください。
+  Visual Studio Online チーム プロジェクトを、自動的にビルドして Azure Web サイトまたはクラウド サービスにデプロイするように構成できます。( *on-premises* Team Foundation Server を使用した継続的なビルドおよびデプロイ システムのセットアップ方法については、「[Azure でのクラウド サービスの継続的な配信](../cloud-services-dotnet-continuous-delivery)」を参照してください。)
 
-このチュートリアルは、Visual Studio 2013 と Azure SDK がインストール済みであることを前提としています。Visual Studio 2013 がない場合は、[www.visualstudio.com]** で無料利用の開始**リンクをクリックしてダウンロードします(http://www.visualstudio.com)。Azure SDK を[ここ]からインストールしてください(http://go.microsoft.com/fwlink/?LinkId=239540)。
+このチュートリアルは、Visual Studio 2013 と Azure SDK がインストール済みであることを前提としています。Visual Studio 2013 がない場合は、[www.visualstudio.com](http://www.visualstudio.com) で**無料利用の開始**リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
-<div class="wa-note">
-  <span class="wa-icon-bulb"></span>
-  <h5><a name="note"></a>このチュートリアルを完了するには、Visual Studio Online アカウントが必要です。</h5>
-<p>Visual Studio Online アカウントは <a href="http://go.microsoft.com/fwlink/p/?LinkId=512979">無料で開くことができます</a>。</p>
-</div>
+> [AZURE.NOTE] このチュートリアルを完了するには、Visual Studio Online アカウントが必要です。
+> [Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
 Visual Studio Online を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
--   [手順 1: チーム プロジェクトを作成する。][]
+-   [手順 1.チーム プロジェクトを作成する。][]
 
--   [手順 2: プロジェクトをソース管理にチェックインする。][]
+-   [手順 2.プロジェクトをソース管理にチェックインする。][]
 
--   [手順 3: プロジェクトを Azure に接続する。][]
+-   [手順 3.プロジェクトを Azure に接続する。][]
 
--   [手順 4: 変更を行い、リビルドと再デプロイをトリガーする。][]
+-   [手順 4.変更を行い、リビルドと再デプロイをトリガーする。][]
 
--   [手順 5: 以前のビルドを再デプロイする (省略可能)][]
+-   [手順 5.以前のビルドを再デプロイする (省略可能)][]
 
--   [手順 6: 運用デプロイを変更する (クラウド サービスのみ)][]
+-   [手順 6.運用デプロイを変更する (クラウド サービスのみ)][]
 
--	[手順 7: 単体テストを実行する (省略可能)][]
+-	[手順 7.単体テストを実行する (省略可能)][]
 
-<h2> <a name="step1"></a>手順 1.チーム プロジェクトの作成</h2>
+<h2> <a name="step1"></a>手順 1:チーム プロジェクトの作成</h2>
 
-[この]手順に従って、(http://go.microsoft.com/fwlink/?LinkId=512980) チーム プロジェクトを作成し、Visual Studio にリンクさせます。このチュートリアルでは、ソース管理ソリューションとして Team Foundation バージョン管理 (TFVC) を使用していることを前提としています。バージョン管理に Git を使用する場合は、[このチュートリアルの Git バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397358)を参照してください。
+[この](http://go.microsoft.com/fwlink/?LinkId=512980)手順に従って、チーム プロジェクトを作成し、Visual Studio にリンクさせます。このチュートリアルでは、ソース管理ソリューションとして Team Foundation バージョン管理 (TFVC) を使用していることを前提としています。バージョン管理に Git を使用する場合は、[このチュートリアルの Git バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397358)を参照してください。
 
-<h2><a name="step2"> </a>手順 2.プロジェクトをソース管理にチェックイン</h2>
+<h2><a name="step2"> </a>手順 2:プロジェクトをソース管理にチェックイン</h2>
 
 1. Visual Studio で、デプロイするソリューションを開くか、新しいソリューションを作成します。
 このチュートリアルの手順に従って、Web サイトまたはクラウド サービス (Azure アプリケーション) をデプロイできます。
 新しいソリューションを作成する場合は、新しい Azure クラウド サービス プロジェクトか、
 新しい ASP.NET MVC プロジェクトを作成します。プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。
-Web サイトを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。「[Azure Websites と ASP.NET を使用する](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/)」を参照してください。
+Web サイトを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure と ASP.NET の使用に関するページ](http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)を参照してください。
 
 2. ソリューションのコンテキスト メニューを開き、**[ソリューションをソース管理に追加]** を選択します。<br/>
 ![][5]
@@ -59,9 +70,9 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 チェックイン時に特定の変更を含める、または除外するオプションに注意してください。必要な変更が除外されている場合は、**[すべて含む]** を選択します。<br/>
 ![][9]
 
-<h2> <a name="step3"> </a>手順 3.プロジェクトを Azure に接続する</h2>
+<h2> <a name="step3"> </a>手順 3:プロジェクトを Azure に接続する</h2>
 
-1. ソース コードが含まれる VSO チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Azure ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web サイトを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web サイト]**を選択して、**[簡易作成]** を選択します。**[Visual Studio Online を使用した発行の設定]** を選択します。<br/>
+1. ソース コードが含まれる VSO チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Azure ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web サイトを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web サイト]** を選択して、**[簡易作成]** を選択します。**[Visual Studio Online 発行の設定]** を選択します。<br/>
 ![][10]
 
 2. ウィザードで、テキスト ボックスに Visual Studio Online アカウントの名前を入力し、**[今すぐ承認]** をクリックします。サインインを求められることがあります。<br/>
@@ -76,7 +87,7 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 5. プロジェクトがリンクされると、変更を Visual Studio Online チーム プロジェクトにチェックインするための手順が表示されます。次のチェックイン時に、Visual Studio Online はプロジェクトをビルドして Azure にデプロイします。これを試すには、**[Visual Studio 2012 からチェックインする]** をクリックし、**[Visual Studio 2012 を起動]** をクリックします (または、同等のコマンド バーの **[Visual Studio]** ボタンをクリックします)。<br/>
 ![][14]
 
-<h2><a name="step4"> </a>手順 4.リビルドをトリガーし、プロジェクトを再デプロイする</h2>
+<h2><a name="step4"> </a>手順 4:リビルドをトリガーし、プロジェクトを再デプロイする</h2>
 
 1. Visual Studio のチーム エクスプローラーで、**[ソース管理エクスプローラー]** をクリックします。<br/>
 ![][15]
@@ -99,7 +110,7 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 7. [ホーム] ボタンを選択して、チーム エクスプローラーのホーム ページに戻ります。<br/>
 ![][21]
 
-8. **[ビルド]** リンクを選択して処理中のビルドを表示します。<br/>
+8. **[ビルド]** を選択して、処理中のビルドを表示します。<br/>
 ![][22]
 <br/>
 チーム エクスプローラーに、チェックインのためにビルドが開始されたことが表示されます。<br/>
@@ -130,8 +141,8 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 </table>
 <br/>
 
-複数のサービス構成 (.cscfg ファイル) を使用している場合は、**[ビルド]、[詳細設定]、[MSBuild] の各引数**の設定で目的のサービス構成を指定できます。たとえば、ServiceConfiguration.Test.cscfg を使用するには、MSBuild 引数ライン オプション /p:TargetProfile=Test を設定します。<br/>
-![][37]
+複数のサービス構成 (.cscfg ファイル) を使用している場合は、**[Build、Advanced、MSBuild 引数]** 設定で目的のサービス構成を指定できます。たとえば、ServiceConfiguration.Test.cscfg を使用するには、MSBuild 引数ライン オプション /p:TargetProfile=Test を設定します。<br/>
+![][38]
 
 11. このころまでには、ビルドが正常に完了しています。<br/>
 ![][28]
@@ -139,10 +150,10 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 12. ビルド名をダブルクリックすると、関連付けられた単体テスト プロジェクトのテスト結果を含む **[ビルドの概要]** が表示されます。<br/>
 ![][29]
 
-13. [Azure ポータル](http://manage.windowsazure.com)では、ステージング環境が選択されると、関連付けられたデプロイが [デプロイ] タブに表示されます。<br/>
+13. [Azure ポータル](http://manage.windowsazure.com)では、ステージング環境が選択されたとき、関連付けられたデプロイが [デプロイ] タブに表示されます。<br/>
 ![][30]
 
-14.	目的のサイトの URL に移動します。Web サイトの場合は、コマンド バーの参照ボタンをクリックします。クラウド サービスの場合は、クラウド サービスのステージング環境を示す **[ダッシュボード]** ページの **[概要]** セクションで URL を選択します。クラウド サービス向けの継続的な統合からのデプロイは、既定ではステージング環境に発行されます。代替クラウド サービス環境プロパティを [運用] に設定することで、これを変更できます。このスクリーンショットでは、クラウド サービスのダッシュボード ページにサイト URL が表示されています。 <br/>
+14.	目的のサイトの URL に移動します。Web サイトの場合は、コマンド バーの参照ボタンをクリックします。クラウド サービスのステージング環境を示す **[ダッシュボード]** ページの **[概要]** セクションで URL を選択します。クラウド サービス向けの継続的な統合からのデプロイは、既定ではステージング環境に発行されます。代替クラウド サービス環境プロパティを [運用] に設定することで、これを変更できます。このスクリーンショットでは、クラウド サービスのダッシュボード ページにサイト URL が表示されています。 <br/>
 ![][31]
 <br/>
 新しいブラウザー タブが開いて、実行中のサイトが表示されます。<br/>
@@ -151,19 +162,19 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 15.	クラウド サービスの場合は、プロジェクトにその他の変更を加えると、さらにビルドが実行され、複数のデプロイが累積されます。最新のデプロイは [アクティブ] とマークされます。<br/>
 ![][33]
 
-<h2> <a name="step5"> </a>手順 5.以前のビルドを再デプロイする</h2>
+<h2> <a name="step5"> </a>手順 5:以前のビルドを再デプロイする</h2>
 
 この手順の内容は、クラウド サービスのみに適用され、省略可能です。管理ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。<br/>
 ![][34]
 
-<h2> <a name="step6"> </a>手順 6.運用デプロイを変更する</h2>
+<h2> <a name="step6"> </a>手順 6:運用デプロイを変更する</h2>
 
 この手順の内容は、クラウド サービスのみに適用され、Web サイトには適用されません。準備が整ったら、管理ポータルで [スワップ] を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイは異なることはありますが、最近のビルドのデプロイ履歴は環境にかかわらず同じです。<br/>
 ![][35]
 
-<h2> <a name="step7"> </a>手順 7.単体テストの実行</h2>
+<h2> <a name="step7"> </a>手順 7:単体テストの実行</h2>
 
-ライブまたはステージング環境の展開にクオリティ ゲートを配置するには、単体テストを実行できます。失敗した場合は、展開を停止できます。
+この手順の内容は、Web サイトのみに適用され、クラウド サービスには適用されません。デプロイにクオリティ ゲートを配置するには、単体テストを実行できます。失敗した場合は、デプロイを停止できます。
 
 1.  Visual Studio で、単体テスト プロジェクトを追加します。<br/>
 ![][39]
@@ -211,13 +222,13 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 <br/>
 ![][47]
 
-8.  失敗するテストを作成してみます。最初のテストをコピーして新しいテストを追加し、その名前を変更して、NotImplementedException をスローするコード行をコメントアウトします。 
+8.  失敗するテストを作成してみます。最初のテストをコピーして新しいテストを追加し、その名前を変更して、NotImplementedException が予期される例外であるコード行をコメントアウトします。 
 
 		[TestMethod]
-		[ExpectedException(typeof(NotImplementedException))]
+		//[ExpectedException(typeof(NotImplementedException))]
 		public void TestMethod2()
 		{
-		    //throw new NotImplementedException();
+		    throw new NotImplementedException();
 		}
 
 9. 変更をチェックインし、新しいビルドをキューに追加します。<br/>
@@ -230,15 +241,15 @@ Web サイトを作成する場合は、ASP.NET Web アプリケーション プ
 
 Visual Studio Online での単位テストの詳細については、「[ビルド プロセスでのテストの実行](http://go.microsoft.com/fwlink/p/?LinkId=510474)」を参照してください。
 
-詳細については、[Visual Studio Online に関するページ](http://go.microsoft.com/fwlink/?LinkId=253861)を参照してください。Git を使用している場合は、「[Git でコードを共有する](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx) 」および「[Publishing to Azure Websites with Git (Git を使用した Azure Websites への発行)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-publish-source-control)」を参照してください。
+詳細については、[Visual Studio Online に関するページ](http://go.microsoft.com/fwlink/?LinkId=253861)を参照してください。Git を使用している場合は、「[Git でコードを共有する](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)」および「[Publishing from Source Control to Azure Websites (ソース管理から Azure Websites への発行)](http://azure.microsoft.com/documentation/articles/web-sites-publish-source-control)」を参照してください。
 
-[手順 1: チーム プロジェクトを作成する。]: #step1
-[手順 2: プロジェクトをソース管理にチェックインする。]: #step2
-[手順 3: プロジェクトを Azure に接続する。]: #step3
-[手順 4: 変更を行い、リビルドと再デプロイをトリガーする。]: #step4
-[手順 5: 以前のビルドを再デプロイする (省略可能)]: #step5
-[手順 6: 運用デプロイを変更する (クラウド サービスのみ)]: #step6
-[手順 7: 単体テストを実行する (省略可能)]: #step7
+[手順 1.チーム プロジェクトを作成する。]: #step1
+[手順 2.プロジェクトをソース管理にチェックインする。]: #step2
+[手順 3.プロジェクトを Azure に接続する。]: #step3
+[手順 4.変更を行い、リビルドと再デプロイをトリガーする。]: #step4
+[手順 5.以前のビルドを再デプロイする (省略可能)]: #step5
+[手順 6.運用デプロイを変更する (クラウド サービスのみ)]: #step6
+[手順 7.単体テストを実行する (省略可能)]: #step7
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs1.png
 [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs2.png
@@ -291,4 +302,4 @@ Visual Studio Online での単位テストの詳細については、「[ビル�
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!--HONumber=35.1-->
+<!--HONumber=45--> 

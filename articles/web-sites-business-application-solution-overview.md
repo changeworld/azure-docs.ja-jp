@@ -34,7 +34,7 @@
 
 <div class="dev-callout">
 <strong>注</strong>
-<p>このガイドで取り上げるのは基幹業務アプリケーションと連携する最も一般的な分野やタスクですが、Azure Websites には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a>および<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>に関するガイドをご覧ください。</p>
+<p>このガイドで取り上げるのは基幹業務アプリケーションと連携する最も一般的な分野やタスクですが、Azure Websites には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、<a href="http://azure.microsoft.com/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a>および<a href="http://azure.microsoft.com/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>に関するガイドをご覧ください。</p>
 </div>
 
 ### 既存の資産の移行
@@ -108,8 +108,8 @@ Azure Websites のダッシュボードでは、Web サイトの現在のパフ�
 
 [スケール アップとスケール アウト]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
 [Azure 管理ポータル]:http://manage.windowsazure.com/
-[サービス管理 API]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
-[PowerShell スクリプト]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
+[サービス管理 API]:http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[PowerShell スクリプト]:http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 [Troy Hunt]:https://twitter.com/troyhunt
 [10 things I learned about rapidly scaling websites with Azure (Azure による迅速な Web サイトのスケーリングで私が学んだ 10 の事項)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
 [Azure Redis Cache]:/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/

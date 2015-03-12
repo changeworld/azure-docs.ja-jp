@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="BizTalk Services: Troubleshoot using operation logs" pageTitle="BizTalk サービス: 操作ログを使用したトラブルシューティング | Azure" metaKeywords="" description="BizTalk サービス:操作ログを使用したトラブルシューティング" metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Troubleshoot using ops logs" authors="mandia"  solutions="" writer="nitinme" manager="dwrede" editor="cgronlun"  />
+﻿<properties 
+	pageTitle="BizTalk サービス:操作ログを使用したトラブルシューティング | Azure" 
+	description="操作ログを使用して BizTalk Services のトラブルシューティングを行います。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="nitinme" 
+	manager="dwrede" 
+	editor="cgronlun"/>
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
+<tags 
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="mandia"/>
 
 
 # BizTalk サービス: 操作ログを使用したトラブルシューティング
@@ -8,7 +22,7 @@
 操作ログは、Azure の管理ポータルで使用できる管理サービス機能で、BizTalk サービスを含む Azure サービスで実行された操作の履歴ログを表示することができます。BizTalk サービス サブスクリプションにおける管理操作に関する履歴データを 180 日間分、確認できます。
 
 <div class="dev-callout"><b>注</b>
-<p>この機能は、サービスの開始やバックアップなど、BizTalk サービスでの管理操作のログのみを記録します。このような管理操作は、Azure 管理ポータルから実行したか、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn232347.aspx">BizTalk サービスの REST API</a> を使用して実行したかを問わず、常に追跡されます。管理サービスを使用して追跡される操作の完全な一覧については、「<a href="#bizops">Azure 管理サービスを使用して追跡される操作</a>」を参照してください。</p>
+<p>この機能は、サービスの開始やバックアップなど、BizTalk サービスでの管理操作のログのみを記録します。このような管理操作は、Azure 管理ポータルから実行したか、<a href="http://msdn.microsoft.com/library/windowsazure/dn232347.aspx">BizTalk サービスの REST API</a> を使用して実行したかを問わず、常に追跡されます。管理サービスを使用して追跡される操作の完全な一覧については、「<a href="#bizops">Azure 管理サービスを使用して追跡される操作</a>」を参照してください。</p>
 <p>この機能は、BizTalk サービスのランタイムに関連するアクティビティのログは記録しません (ブリッジが処理するメッセージなど)。このようなログを表示するには、BizTalk サービス ポータルの [追跡] ビューを使用する必要があります。詳細については、「<a HREF="http://msdn.microsoft.com/library/windowsazure/hh949805.aspx">Tracking Messages (メッセージの追跡)</a>」を参照してください。</p>
 </div>
 
@@ -99,3 +113,5 @@ Azure 管理サービスを使用して追跡される操作の一覧を次の�
 - [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
+
+<!--HONumber=46--> 

@@ -1,6 +1,21 @@
-﻿<properties pageTitle="HTML クライアントからのカスタム API 呼び出し - Mobile Services" description="カスタム API を定義し、Microsoft Azure Mobile Services を使用する HTML アプリからそれを呼び出す方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" writer="jparrel" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="HTML クライアントからのカスタム API 呼び出し - Mobile Services" 
+	description="カスタム API を定義し、Microsoft Azure Mobile Services を使用する HTML アプリからそれを呼び出す方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	Writer="jparrel" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-html" 
+	ms.devlang="javascript" 
+	ms.topic="article" 
+	ms.date="09/26/2014" 
+	ms.author="glenga"/>
 
 # HTML アプリケーションからのカスタム API 呼び出し
 

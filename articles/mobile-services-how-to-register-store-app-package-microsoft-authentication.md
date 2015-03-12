@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Windows ストア アプリ パッケージを Microsoft 認証に登録する" description="Azure Mobile Services アプリケーションで Microsoft 認証用に Windows ストア アプリを登録する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Windows ストア アプリ パッケージを Microsoft 認証に登録する" 
+	description="Azure Mobile Services アプリケーションで Microsoft 認証用に Windows ストア アプリを登録する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 # Windows ストア アプリ パッケージを Microsoft 認証に登録する
 

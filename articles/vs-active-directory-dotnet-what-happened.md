@@ -1,6 +1,20 @@
-﻿<properties title="Getting Started with Active Directory Authentication - What Happened" pageTitle="Active Directory 認証の使用 - 変更内容" metaKeywords="Azure, Getting Started, Active Directory" description="" services="active-directory" documentationCenter="" authors="ghogen, kempb" />
+﻿<properties 
+	pageTitle="Active Directory 認証の使用 - 変更内容" 
+	description="Visual Studio の Azure Active Directory プロジェクトでの変更内容について説明します。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="kempb" 
+	manager="douge" 
+	editor="tglee"/>
   
-<tags ms.service="active-directory" ms.workload="web" ms.tgt_pltfrm="vs-what-happened" ms.devlang="na" ms.topic="article" ms.date="10/8/2014" ms.author="ghogen, kempb" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vs-what-happened" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/02/2015" 
+	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
 > - [Getting Started (概要)](/documentation/articles/vs-active-directory-dotnet-getting-started/)
@@ -60,3 +74,5 @@
 ウィザードで選択したディレクトリに Azure AD アプリケーションが作成されました。 
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
+
+<!--HONumber=46--> 

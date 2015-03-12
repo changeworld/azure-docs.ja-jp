@@ -1,6 +1,18 @@
-﻿<properties title="Track custom usage events and metrics in your web app with Application Insights" pageTitle="Application Insights を使用した Web アプリケーションにおける使用状況イベントおよびメトリックの追跡" description="コードを数行挿入し、Web サイトでユーザーが行っている操作を確認します。" metaKeywords="analytics monitoring application insights" authors="awills" manager="kamrani"  />
+﻿<properties 
+	pageTitle="Application Insights API を使用した Web アプリケーションでの使用状況とイベントのトレース" 
+	description="使用状況を追跡し、問題を診断するためのコード行をいくつか挿入します。" 
+	services="application-insights" 
+	authors="alancameronwills" 
+	manager="kamrani"/>
  
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-10-01" ms.author="awills" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2015-02-06" 
+	ms.author="awills"/>
 
 # Web アプリケーションにおけるカスタムの利用状況イベントおよびメトリックの追跡
 
@@ -254,3 +266,5 @@ TelemetryContext に、既定値を設定できます。既定値は、コンテ
 
 
 
+
+<!--HONumber=46--> 

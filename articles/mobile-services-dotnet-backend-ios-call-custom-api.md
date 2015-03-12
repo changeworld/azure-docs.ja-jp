@@ -1,6 +1,21 @@
-﻿<properties pageTitle="iOS アプリケーションからのカスタム API の呼び出し | Mobile Services" description="カスタム API を定義し、Microsoft Azure Mobile Services を使用する iOS アプリからそれを呼び出す方法について説明します。" services="mobile-services" documentationCenter="ios" authors="krisragh" writer="krisragh" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="iOS アプリケーションからのカスタム API の呼び出し | Mobile Services" 
+	description="カスタム API を定義し、Microsoft Azure Mobile Services を使用する iOS アプリからそれを呼び出す方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="ios" 
+	authors="krisragh" 
+	Writer="krisragh" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="krisragh"/>
 
 
 # クライアントからのカスタム API 呼び出し

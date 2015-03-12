@@ -1,6 +1,20 @@
-﻿<properties title="How to Create a DocumentDB Account" pageTitle="データベース アカウントの作成 | Azure" description="ドキュメントに DocumentDB NoSQL、データベース アカウントを作成し、Azure プレビュー ポータルでアカウントの設定を選択する方法について説明します。"  metaKeywords="NoSQL, DocumentDB, database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="mimig" manager="jhubbard" editor="monicar" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="データベース アカウントの作成 | Azure" 
+	description="Azure プレビュー ポータルで DocumentDB NoSQL ドキュメント データベース アカウントを作成し、アカウントの設定を選択する方法について説明します。" 
+	services="documentdb" 
+	documentationCenter="" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/09/2014" ms.author="mimig" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/09/2014" 
+	ms.author="mimig"/>
 
 #How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 Microsoft Azure DocumentDB を使用するには、DocumentDB アカウントを作成する必要があります。このトピックでは、Azure プレビュー管理ポータルで DocumentDB アカウントを作成する方法について説明します。  
@@ -25,7 +39,7 @@ Microsoft Azure DocumentDB を使用するには、DocumentDB アカウントを
 
 	- **[省略可能な構成]**レンズは、DocumentDB アカウントに割り当てられる初期の容量を指定するときに使用されます。DocumentDB では、容量単位を利用して、占有データベース ストレージとスループットが各容量単位に含まれる、DocumentDB アカウントを拡張できます。既定では、1 つの容量単位がプロビジョニングされます。DocumentDB アカウントで利用可能な容量単位の数は、[プレビュー管理ポータル](https://portal.azure.com/#gallery/Microsoft.DocumentDB)でいつでも調整できます。DocumentDB アカウントの容量およびスループットの詳細については、「[DocumentDB の容量とパフォーマンスの管理][documentdb-manage]」という記事を参照してください。
 
-	- **[リソース グループ]** で、DocumentDB アカウントのリソース グループを選択または作成します。既定では、新しいリソース グループが作成されます。ただし、DocumentDB アカウントを追加する既存のリソース グループを選択することもできます。詳細については、「[リソース グループを使用した Azure リソースの管理](http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/)」を参照してください。
+	- **[リソース グループ]** で、DocumentDB アカウントのリソース グループを選択または作成します。既定では、新しいリソース グループが作成されます。ただし、DocumentDB アカウントを追加する既存のリソース グループを選択することもできます。詳細については、「[リソース グループを使用した Azure リソースの管理](http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups/)」を参照してください。
 
 	- **[サブスクリプション]** で、DocumentDB アカウントに使用する Azure サブスクリプションを選択します。アカウントのサブスクリプションが 1 つである場合は、そのアカウントが自動的に選択されます。*
  
@@ -73,3 +87,5 @@ DocumentDB について詳しくは、[azure.com](http://go.microsoft.com/fwlink
 [8]: ./media/documentdb-create-account/ca8.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

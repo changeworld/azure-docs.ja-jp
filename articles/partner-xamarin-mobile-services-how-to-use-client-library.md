@@ -83,7 +83,7 @@
 
 <h2><a name="instantiating"></a>方法:テーブル参照を作成する</h2>
 
-モバイル サービスのテーブル データにアクセスするコードとそのデータを変更するコードは、必ず  `MobileServiceTable` オブジェクトで関数を呼び出します。 `MobileServiceClient` のインスタンスで [GetTable](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554275.aspx) 関数を呼び出して、テーブルへの参照を取得します。 
+モバイル サービスのテーブル データにアクセスするコードとそのデータを変更するコードは、必ず  `MobileServiceTable` オブジェクトで関数を呼び出します。 `MobileServiceClient` のインスタンスで [GetTable](http://msdn.microsoft.com/library/windowsazure/jj554275.aspx) 関数を呼び出して、テーブルへの参照を取得します。 
 
     IMobileServiceTable<TodoItem> todoTable = 
 		client.GetTable<TodoItem>();
@@ -177,7 +177,7 @@
 					.Take(3);                              
 	List<TodoItem> items = await query.ToListAsync();
 			
-また、[IncludeTotalCount](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj730933.aspx) メソッドを使用すると、指定された take paging/limit 句を無視して、返される<i>すべての</i>レコードの合計数を取得できます。
+また、[IncludeTotalCount](http://msdn.microsoft.com/library/windowsazure/jj730933.aspx) メソッドを使用すると、指定された take paging/limit 句を無視して、返される<i>すべての</i>レコードの合計数を取得できます。
 
 	query = query.IncludeTotalCount();
 
@@ -498,11 +498,11 @@ Xamarin コンポーネント クライアントは厳密に型指定された�
 [Refine queries with paging Android]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
 [Authorize users with scripts iOS]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 [Authorize users with scripts Android]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-[LoginAsync メソッド]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
-[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
-[MobileServiceUser]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
-[UserID]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
-[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
+[LoginAsync メソッド]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
+[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
+[MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
+[UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
+[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
 
 
 <!--HONumber=42-->

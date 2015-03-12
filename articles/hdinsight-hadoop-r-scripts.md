@@ -43,9 +43,9 @@ R プロジェクト <a href="http://www.r-project.org/" target="_blank">は</a>
 
 HDInsight クラスターに R をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure の管理ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
 
-1. [カスタム オプションを使用したクラスターのプロビジョニング](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-provision-clusters/#portal)に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
+1. [カスタム オプションを使用したクラスターのプロビジョニング](http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/#portal)に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、Script Action の詳細を指定します。
 
 	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "Use Script Action to customize a cluster")
@@ -69,7 +69,7 @@ HDInsight クラスターに R をインストールするサンプル スクリ
 ## <a name="useR"></a>HDInsight で R スクリプトを実行する方法
 このセクションでは、HDInsight で Hadoop クラスター上の R スクリプトを実行する方法について説明します。
 
-1. **クラスターへのリモート デスクトップ接続の確立**:Azure 管理ポータルから、R をインストールして作成したクラスターに対してリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、 <a href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>を参照してください。
+1. **クラスターへのリモート デスクトップ接続の確立**:Azure 管理ポータルから、R をインストールして作成したクラスターに対してリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、 <a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>を参照してください。
 
 2. **R コンソールの起動**:R をインストールすると、ヘッドノードのデスクトップに R コンソールへのリンクが設定されます。それをクリックして、R コンソールを開きます。
 
@@ -94,7 +94,7 @@ HDInsight クラスターに R をインストールするサンプル スクリ
 
 ## <a name="usingPS"></a>PowerShell を使用して HDInsight に R をインストールする
 
-このセクションでは、Script Action を使用してクラスターのカスタマイズを行うスクリプトを呼び出すコマンドレット **<a href = "http://msdn.microsoft.com/ja-jp/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** を使用します。次に進む前に、PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、[Azure PowerShell のインストールおよび構成][powershell-install-configure]に関するページを参照してください。
+このセクションでは、Script Action を使用してクラスターのカスタマイズを行うスクリプトを呼び出すコマンドレット **<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** を使用します。次に進む前に、PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、[Azure PowerShell のインストールおよび構成][powershell-install-configure]に関するページを参照してください。
 
 次の手順に従います。
 
@@ -259,7 +259,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
             Version = "3.1"
         };        
 
-10. [ScriptAction](http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx) クラスを使用して R をインストールするカスタム スクリプトを呼び出すために、次のコードを Main() 関数に追加します。
+10. [ScriptAction](http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx) クラスを使用して R をインストールするカスタム スクリプトを呼び出すために、次のコードを Main() 関数に追加します。
 
 		// ADD THE SCRIPT ACTION TO INSTALL R
 
@@ -293,4 +293,4 @@ PowerShell コンソールを開き、プロジェクトを保存した場所に
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: ../hdinsight-hadoop-customize-cluster
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
-<!--HONumber=42-->
+\<!--HONumber=42-->

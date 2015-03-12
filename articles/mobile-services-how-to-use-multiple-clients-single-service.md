@@ -1,5 +1,19 @@
-<properties pageTitle="シングル モバイル サービス バックエンドで複数のクライアントを使用する方法 | Azure Mobile" description="Windows ストアや Windows Phone など、さまざまなモバイル プラットフォームを対象とする複数のクライアント アプリから単一の Mobile Services バックエンドを使用する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor="mollybos"/>
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="08/15/2014" ms.author="glenga"/>
+<properties 
+	pageTitle="シングル モバイル サービス バックエンドで複数のクライアントを使用する方法 | Azure Mobile" 
+	description="Windows ストアや Windows Phone など、さまざまなモバイル プラットフォームを対象とする複数のクライアント アプリから単一の Mobile Services バックエンドを使用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor="mollybos"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="08/15/2014" 
+	ms.author="glenga"/>
 
 # シングル モバイル サービスから複数のデバイス プラットフォームをサポートする
  
@@ -36,11 +50,11 @@ Mobile Services についての一般情報については、[Mobile Services �
 
 ###.NET バックエンド
 
-.NET バックエンド モバイル サービスでは、[ApiServices.Push](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.apiservices.push.aspx) プロパティから取得した [PushClient](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.notifications.pushclient.aspx) オブジェクトで [SendAsync] メソッドを呼び出して通知を送信します。送信したプッシュ通知 (ネイティブまたはテンプレート) は次のテーブルで示すように、[SendAsync] メソッドに渡された特定の [IPushMessage](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.notifications.ipushmessage.aspx) 派生オブジェクトによって異なります。 
+.NET バックエンド モバイル サービスでは、[ApiServices.Push](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.apiservices.push.aspx) プロパティから取得した [PushClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.pushclient.aspx) オブジェクトで [SendAsync] メソッドを呼び出して通知を送信します。送信したプッシュ通知 (ネイティブまたはテンプレート) は次のテーブルで示すように、[SendAsync] メソッドに渡された特定の [IPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.ipushmessage.aspx) 派生オブジェクトによって異なります。 
 
 |プラットフォーム |[APNS](/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push)|[GCM](/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push) |[WNS](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) |[MPNS](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push)|
 |-----|-----|----|----|-----|
-|ネイティブ|[ApplePushMessage](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.applepushmessage.aspx)   |[GooglePushMessage](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.googlepushmessage.aspx)     |[WindowsPushMessage](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.windowspushmessage.aspx) | [MpnsPushMessage](http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.mpnspushmessage.aspx) |
+|ネイティブ|[ApplePushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.applepushmessage.aspx)   |[GooglePushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.googlepushmessage.aspx)     |[WindowsPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.windowspushmessage.aspx) | [MpnsPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.mpnspushmessage.aspx) |
 
 次のコードは .NET バックエンド サービスからすべての iOS および Windows ストア デバイス登録にプッシュ通知を送信します。 
 
@@ -75,7 +89,7 @@ JavaScript バックエンド モバイル サービスでは、次のテーブ�
 
 |プラットフォーム |[APNS](/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push)|[GCM](/ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push) |[WNS](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push) |[MPNS](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)|
 |-----|-----|----|----|-----|
-|ネイティブ|[apns object](http://msdn.microsoft.com/ja-jp/library/azure/jj839711.aspx)   |[gcm object](http://msdn.microsoft.com/ja-jp/library/azure/dn126137.aspx)     |[wns object](http://msdn.microsoft.com/ja-jp/library/azure/jj860484.aspx) | [mpns object](http://msdn.microsoft.com/ja-jp/library/azure/jj871025.aspx) |
+|ネイティブ|[apns object](http://msdn.microsoft.com/library/azure/jj839711.aspx)   |[gcm object](http://msdn.microsoft.com/library/azure/dn126137.aspx)     |[wns object](http://msdn.microsoft.com/library/azure/jj860484.aspx) | [mpns object](http://msdn.microsoft.com/library/azure/jj871025.aspx) |
 
 次のコードはすべての Android および Windows Phone 登録にプッシュ通知を送信します。 
 
@@ -133,22 +147,22 @@ JavaScript バックエンド モバイル サービスでは、次のテーブ�
  
 + [**PhoneGap**](https://go.microsoft.com/fwLink/p/?LinkID=390707)**/**[**Cordova**](http://cordova.apache.org/)<br/>PhoneGap (Apache Cordova プロジェクトのディストリビューション) は無料のオープン ソース フレームワークで、標準化された Web API、HTML、JavaScript を使用して Android、iOS、Windows デバイスで実行するシングル アプリを開発できます。PhoneGap では Web 表示ベースの UI を提供しますが、プッシュ通知や加速度計、カメラ、ストレージ、位置情報、アプリ内ブラウザなどデバイスのネイティブ リソースへのアクセスによって操作環境が強化されます。詳細については、[PhoneGap クイックスタート チュートリアル][PhoneGap]を参照してください。 
 	
-	Visual Studio では Visual Studio の Multi-Device Hybrid アプリ拡張機能 (プレリリース ソフトウェア) を使用してクロスプラットフォームの Cordova アプリを構築できます。詳細については、[HTML および JavaScript を使用した Multi-Device Hybrid アプリの概要](http://msdn.microsoft.com/ja-jp/library/dn771545.aspx)に関するページを参照してください。 
+	Visual Studio では Visual Studio の Multi-Device Hybrid アプリ拡張機能 (プレリリース ソフトウェア) を使用してクロスプラットフォームの Cordova アプリを構築できます。詳細については、[HTML および JavaScript を使用した Multi-Device Hybrid アプリの概要](http://msdn.microsoft.com/library/dn771545.aspx)に関するページを参照してください。 
 
 + [**Sencha Touch**](http://go.microsoft.com/fwlink/p/?LinkId=509988)<br/>Sencha Touch では、1 つの HTML および JavaScript コード ベースからさまざまなモバイル デバイスにネイティブのような操作環境を提供する、タッチ画面用に最適化された一連のコントロールを提供します。Sencha Touch は PhoneGap や Cordova ライブラリと併用し、ネイティブ デバイス リソースへのアクセスをユーザーに提供できます。詳細については、[Sencha Touch クイックスタート チュートリアル][Sencha]を参照してください。
 
 + [**Xamarin**](https://go.microsoft.com/fwLink/p/?LinkID=330242)<br/>Xamarin では、iOS および Android デバイス向けに完全なネイティブ UI とすべてのデバイス リソースへのアクセスを持つ、完全にネイティブなアプリを作成できます。Xamarin アプリは Objective-C と Java ではなく、 C# でコード化されています。これにより、.NET 開発者は iOS と Android にアプリを発行し、Windows プロジェクトからのコードを共有できます。Xamarin では iOS と Android デバイスの両方に C# コードから完全にネイティブの操作環境を提供します。これにより、Windows アプリからのモバイル サービス コードを iOS や Android デバイスで再利用できるようになります。詳細については、以下の「[Xamarin 開発](#xamarin) 」を参照してください。 
 
-	Xamarin アプリは、Xamarin Studio または Visual Studio 2013 を使用して構築できます。詳細については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/ja-jp/library/dn771552.aspx)」を参照してください。
+	Xamarin アプリは、Xamarin Studio または Visual Studio 2013 を使用して構築できます。詳細については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」を参照してください。
 
 
 ##<a id="shared-vs"></a>Visual Studio プロジェクトにおける共有とコードの再利用
 
 モバイル サービスには .NET クライアント ライブラリが含まれています。これはすべての Windows プラットフォームの開発をサポートする .NET Framework ポータブル クラス ライブラリ (PCL) です。詳細については、「[Azure Mobile Services 向け .NET クライアントを使用する方法]」を参照してください。これにより、複数の C# プロジェクトにおいてデータ アクセスや認証などの同じモバイル サービス コードを簡単に再利用できます。
 
-プロジェクト間で C# コードを共有し、再利用する上での一般的なアプローチの 1 つは、Model-View-ViewModel (MVVM) パターンを実装し、複数のプラットフォームでアセンブリを共有することです。Visual Studio のポータブル クラス ライブラリ プロジェクトでモデル クラスとビュー モデル クラスを実装し、各種プラットフォーム用にカスタマイズされたビューを作成することができます。プラットフォーム間の共通モデル コードでは、(例として) モバイル サービスなどのソースからプラットフォームに依存しない方法でデータを取得できます。MSDN ライブラリでは、<a href="http://msdn.microsoft.com/ja-jp/library/gg597391(v=vs.110)">概要と例</a>、<a href="http://msdn.microsoft.com/ja-jp/library/gg597392(v=vs.110)">API の相違点</a>の説明、<a href="http://msdn.microsoft.com/ja-jp/library/hh563947(v=vs.110)">ポータブル クラス ライブラリを使用した MVVM パターンの実装</a>の例、その他の<a href="http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/jj714086(v=vs.105).aspx">規範的なガイダンス</a>、およびポータブル クラス ライブラリ プロジェクトでの<a href="http://msdn.microsoft.com/ja-jp/library/hh871422(v=vs.110)">リソースの管理</a>に関する情報が提供されています。
+プロジェクト間で C# コードを共有し、再利用する上での一般的なアプローチの 1 つは、Model-View-ViewModel (MVVM) パターンを実装し、複数のプラットフォームでアセンブリを共有することです。Visual Studio のポータブル クラス ライブラリ プロジェクトでモデル クラスとビュー モデル クラスを実装し、各種プラットフォーム用にカスタマイズされたビューを作成することができます。プラットフォーム間の共通モデル コードでは、(例として) モバイル サービスなどのソースからプラットフォームに依存しない方法でデータを取得できます。MSDN ライブラリでは、<a href="http://msdn.microsoft.com/library/gg597391(v=vs.110)">概要と例</a>、<a href="http://msdn.microsoft.com/library/gg597392(v=vs.110)">API の相違点</a>の説明、<a href="http://msdn.microsoft.com/library/hh563947(v=vs.110)">ポータブル クラス ライブラリを使用した MVVM パターンの実装</a>の例、その他の<a href="http://msdn.microsoft.com/library/windowsphone/develop/jj714086(v=vs.105).aspx">規範的なガイダンス</a>、およびポータブル クラス ライブラリ プロジェクトでの<a href="http://msdn.microsoft.com/library/hh871422(v=vs.110)">リソースの管理</a>に関する情報が提供されています。
 
-この一般的なガイダンスのほか、Visual Studio ではモバイル サービス コードを複数のクライアント アプリ プロジェクトで再利用するための特別機能を提供します。この機能については以下のセクションで説明します。Visual Studio 2013 を使用してクロスプラットフォーム アプリを構築するための一般情報については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/ja-jp/library/dn771552.aspx)」を参照してください。  
+この一般的なガイダンスのほか、Visual Studio ではモバイル サービス コードを複数のクライアント アプリ プロジェクトで再利用するための特別機能を提供します。この機能については以下のセクションで説明します。Visual Studio 2013 を使用してクロスプラットフォーム アプリを構築するための一般情報については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」を参照してください。  
 
 ### ユニバーサル Windows アプリ
 
@@ -160,7 +174,7 @@ Visual Studio 2013 Update 2 ではユニバーサル Windows アプリ プロジ
 
 ###<a id="xamarin"></a>Xamarin 開発
 
-Visual Studio と C# 開発経験を活用し、Xamarin と Visual Studio または Xamarin Studio を使用して iOS および Android 向けのアプリを開発できます。Xamarin では .NET Framework のクロスプラットフォーム実装を使用するため、C# コードで iOS および Android アプリを開発できます。Xamarin を使用すると、モバイル サービス NET クライアント ライブラリを使用した プロジェクトから既存のコードを活用してモバイル サービスにアクセスできます。詳細については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/ja-jp/library/dn771552.aspx)」を参照してください。
+Visual Studio と C# 開発経験を活用し、Xamarin と Visual Studio または Xamarin Studio を使用して iOS および Android 向けのアプリを開発できます。Xamarin では .NET Framework のクロスプラットフォーム実装を使用するため、C# コードで iOS および Android アプリを開発できます。Xamarin を使用すると、モバイル サービス NET クライアント ライブラリを使用した プロジェクトから既存のコードを活用してモバイル サービスにアクセスできます。詳細については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」を参照してください。
 
 Mobile Services を使用する Xamarin アプリの構築を開始するには、Xamarin クイックスタート チュートリアル ([iOS](/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started)/[Android](/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started)) を参照してください。
 
@@ -187,15 +201,15 @@ Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用し�
 [プッシュの使用 Windows Phone]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8/
 [プッシュの使用 iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios/
 [プッシュの使用 Android]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android/
-[動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
+[動的スキーマ]: http://msdn.microsoft.com/library/windowsazure/jj193175.aspx
 [Azure Mobile Services 向け .NET クライアントを使用する方法]: ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
-[push オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx
-[TemplatePushMessage]:http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobile.service.templatepushmessage.aspx
+[push オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554217.aspx
+[TemplatePushMessage]:http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.templatepushmessage.aspx
 [PhoneGap]: /ja-jp/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/
 [Sencha]: /ja-jp/documentation/articles/partner-sencha-mobile-services-get-started/
 [Appcelerator]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
-[SendAsync]: http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
-[Windows Phone 8 開発者にとっての選択肢]: http://msdn.microsoft.com/ja-jp/library/windows/apps/dn655121(v=vs.105).aspx
+[SendAsync]: http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
+[Windows Phone 8 開発者にとっての選択肢]: http://msdn.microsoft.com/library/windows/apps/dn655121(v=vs.105).aspx
 [すべての Windows デバイスを対象としたユニバーサル Windows アプリの構築]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [MVVM を使用した Azure Mobile Services のユニバーサル Windows アプリ プロジェクト]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 

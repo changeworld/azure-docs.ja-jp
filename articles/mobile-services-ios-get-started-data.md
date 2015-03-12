@@ -1,6 +1,20 @@
-﻿<properties pageTitle="データの使用 (iOS) | モバイル デベロッパー センター" description="Mobile Services を使用して iOS アプリでデータを活用する方法について説明します。" services="" documentationCenter="ios" authors="krisragh" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="データの使用 (iOS) | モバイル デベロッパー センター" 
+	description="Mobile Services を使用して iOS アプリでデータを活用する方法について説明します。" 
+	services="" 
+	documentationCenter="ios" 
+	authors="krisragh" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="krisragh"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
@@ -21,7 +35,7 @@
 このチュートリアルには、次のものが必要です。
 
 + [Mobile Services iOS SDK] と [XCode 4.5][Install Xcode] および iOS 5.0 以降のバージョン。
-+ Microsoft Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-ios%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
++ Microsoft Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-ios%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 

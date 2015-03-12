@@ -1,6 +1,20 @@
-﻿<properties title="Get started with Azure Search" pageTitle="Azure Search の使用" description="Azure Search の使用" metaKeywords="" services="Azure Search" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Search の使用" 
+	description="Azure Search の使用" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="01/16/2015" 
+	ms.author="heidist"/>
 
 # Azure Search の使用
 
@@ -292,7 +306,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
  
    ![][19]
 
-次のクエリ例は、MSDN の「[Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/dn798927.aspx)」に記載されているものです。このトピックのクエリ例の多くに、Fiddler では許可されないスペースが含まれています。Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。 
+次のクエリ例は、MSDN の「[Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))](http://msdn.microsoft.com/library/dn798927.aspx)」に記載されているものです。このトピックのクエリ例の多くに、Fiddler では許可されないスペースが含まれています。Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。 
 
 **スペースを置き換える前:**
 
@@ -357,9 +371,9 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 - [Microsoft Azure で検索ソリューションを管理する](../search-manage/) 
 
-- [Azure Search の技術概要](http://msdn.microsoft.com/ja-jp/library/dn798933.aspx)
+- [Azure Search の技術概要](http://msdn.microsoft.com/library/dn798933.aspx)
 
-- [Azure Search REST API](http://msdn.microsoft.com/ja-jp/library/dn798935.aspx)
+- [Azure Search REST API](http://msdn.microsoft.com/library/dn798935.aspx)
 
 - [Channel 9 のビデオ:Introduction to Azure Search (Azure Search の概要)](http://channel9.msdn.com/Shows/Data-Exposed/Introduction-To-Azure-Search)
 
@@ -402,3 +416,5 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [Azure Search を使用した地理空間検索アプリを作成する]: ../search-create-geospatial/
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

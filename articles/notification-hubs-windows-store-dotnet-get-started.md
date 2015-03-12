@@ -1,12 +1,26 @@
-﻿<properties urlDisplayName="Get started with notification hubs" pageTitle="Azure Notification Hubs の使用" metaKeywords="" description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Getting Started with Notification Hubs" authors="glenga" solutions="" manager="dwrede" editor="dwrede" />
+<properties 
+	pageTitle="Azure Notification Hubs の使用" 
+	description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" 
+	services="notification-hubs" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor="dwrede"/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="glenga" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="dotnet" 
+	ms.topic="hero-article" 
+	ms.date="09/24/2014" 
+	ms.author="glenga"/>
 
-# 通知ハブの使用
+# Notification Hubs の使用
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal" class="current">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
 
-このトピックでは、Azure Notification Hubs を使用して Windows ストアや Windows Phone 8.1 (Silverlight 以外) アプリケーションにプッシュ通知を送信する方法について説明します。Windows Phone 8.1 Silverlight を対象としている場合は、[Windows Phone](/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/) バージョンを参照してください。 
+このトピックでは、Azure Notification Hubs を使用して Windows ストアや Windows Phone 8.1 (Silverlight 以外) のアプリケーションにプッシュ通知を送信する方法について説明します。Windows Phone 8.1 Silverlight を対象としている場合は、[Windows Phone](/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/) バージョンを参照してください。 
 このチュートリアルでは、Windows プッシュ通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ストア アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
@@ -16,17 +30,17 @@
 3. [通知ハブにアプリケーションを接続する]
 4. [バックエンドから通知を送信する]
 
-このチュートリアルでは、通知ハブを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。通知ハブを使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。このチュートリアルには、次のものが必要です。
+このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。このチュートリアルには、次のものが必要です。
 
-+ Microsoft Visual Studio Express 2013 for Windows with Update 2<br/>Visual Studio のこのバージョンでは、ユニバーサル アプリ プロジェクトを作成する必要があります。Windows ストア アプリのみを作成する場合は、Visual Studio 2012 Express for Windows 8 が必要です。
++ Microsoft Visual Studio Express 2013 for Windows with Update 2<br/>ユニバーサル アプリ プロジェクトを作成するにはこのバージョンの Visual Studio が必要です。Windows ストア アプリのみを作成する場合は、Visual Studio 2012 Express for Windows 8 が必要です。
 
 + アクティブな Windows ストア アカウント
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント <br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
-このチュートリアルを完了することは、Windows ストア アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。 
+Windows ストア アプリケーションの他のすべての Notification Hubs のチュートリアルに進む前に、このチュートリアルを完了する必要があります。 
 
-##<a name="register"></a>アプリケーションを Windows ストアに登録する
+## <a name="register"></a>アプリケーションを Windows ストアに登録する
 
 モバイル サービスから Windows ストア アプリにプッシュ通知を送信するには、アプリケーションを Windows ストアに提出する必要があります。さらに、WNS に統合するために通知ハブを構成する必要があります。
 
@@ -34,7 +48,7 @@
 
    	![][0]
 
-2. **[アプリ名]** にアプリケーションの名前を入力し、**[アプリ名の予約]** をクリックして、**[保存]** をクリックします。
+2. **[アプリ名]** にアプリケーションの名前を入力し、**[アプリの名前の予約]** をクリックして、**[保存]** をクリックします。
 
    	![][1]
 
@@ -44,15 +58,15 @@
 
    	![][2]
 
-4. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
+4. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける...]** の順にクリックします。 
 
    	![][3]
 
-   	**アプリケーションを Windows ストアと関連付ける**ウィザードが表示されます。
+   	**[アプリケーションを Windows ストアと関連付ける]** ウィザードが表示されます。
 
 5. ウィザードで **[サインイン]** をクリックし、Microsoft アカウントでログインします。
 
-6. 手順 2. で登録したアプリケーションをクリックし、**[次へ]**、**[関連付け]** の順にクリックします。
+6. ステップ 2. で登録したアプリケーションをクリックし、**[次へ]**、**[関連付け]** の順にクリックします。
 
    	![][4]
 
@@ -60,11 +74,11 @@
 
 7. (省略可能) Windows Phone ストア アプリ プロジェクトのステップ 4.～6. を繰り返します。  
 
-7. 新しいアプリケーションに対応する Windows デベロッパー センター ページに戻り、**[サービス]** をクリックします。 
+7. 新しいアプリケーションの Windows デベロッパー センター ページに戻り、**[サービス]** をクリックします。 
 
    	![][5] 
 
-8. **[サービス]** ページで **[Microsoft Azure のモバイル サービス]** の **[ライブ サービス サイト]** をクリックします。
+8. **[サービス]** ページで **[Microsoft Azure Mobile Services]** の **[ライブ サービス サイト]** をクリックします。
 
    	![][17]
 
@@ -72,13 +86,12 @@
 
    	![][6]
 
- 	<div class="dev-callout"><b>セキュリティに関する注意</b>
-	<p>クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。</p>
-    </div>
+ 	> [AZURE.NOTE] **セキュリティに関する注意**
+	クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
-##<a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-hub"></a>通知ハブを構成する
 
-1. [Azure の管理ポータル] にログオンし、画面下部にある **[新規]** をクリックします。
+1. [Azure の管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -88,7 +101,7 @@
 
    	![][8]
 
-4. 前の手順で作成した名前空間 (通常は***通知ハブ名*-ns**) をクリックし、上部にある **[構成]** タブをクリックします。
+4. 前の手順で作成した名前空間 (通常は ***notification hub name*-ns**) をクリックし、上部にある **[構成]** タブをクリックします。
 
    	![][9]
 
@@ -96,29 +109,29 @@
 
    	![][10]
 
-6. 上部にある **[構成]** タブを選択し、前のセクションで WNS から取得した **[クライアント シークレット]** と **[パッケージ SID]** の値を入力て、**[保存]** をクリックします。
+6. 上部にある **[構成]** タブを選択し、前のセクションで WNS から取得した **[クライアント シークレット]** と **[パッケージ SID]** の値を入力して、**[保存]** をクリックします。
 
    	![][11]
 
-7.  上部にある **[ダッシュボード]** タブを選択し、**[接続情報]** をクリックします。2 つの接続文字列をメモします。
+7. 上部にある **[ダッシュボード]** タブを選択し、**[接続情報]** をクリックします。2 つの接続文字列をメモします。
 
    	![][12]
 
 これで、通知ハブが WNS と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
 
-##<a name="connecting-app"></a>通知ハブにアプリケーションを接続する
+## <a name="connecting-app"></a>通知ハブにアプリケーションを接続する
 
 1. Visual Studio でソリューションを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
 	[NuGet パッケージの管理] ダイアログ ボックスが表示されます。
 
-2. `WindowsAzure.Messaging.Managed` を検索し、**[インストール]** をクリックして、ソリューション内のプロジェクトをすべて選択し、使用条件に同意します。
+2.  `WindowsAzure.Messaging.Managed` を検索して **[インストール]** をクリックし、ソリューション内のすべてのプロジェクトを選択して、使用条件に同意します。 
 
 	![][20]
 
-	これによりダウンロードとインストールが実行され、<a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet パッケージ</a>を使用して Windows 用 Azure メッセージング ライブラリへの参照がすべてのプロジェクトに追加されます。 
+	こうすることで、<a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet パッケージ</a>を使用して、Windows の Azure メッセージング ライブラリにすべてのプロジェクトの参照がダウンロード、インストール、追加されます。 
 
-3. App.xaml.cs プロジェクト ファイルを開き、次の `using` ステートメントを追加します。
+3. App.xaml.cs プロジェクト ファイルを開き、次の  `using` ステートメントを追加します。
 
         using Windows.Networking.PushNotifications;
         using Microsoft.WindowsAzure.Messaging;
@@ -147,7 +160,7 @@
 	
     このコードにより、WNS からアプリケーションの ChannelURI が取得され、その ChannelURI が通知ハブに登録されます。
 
-    >[WACOM.NOTE]"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される通知ハブの名前 (たとえば、前の例では **mynotificationhub2**) に置き換えてください。また、接続文字列プレースホルダーを、前のセクションで取得した接続文字列 **DefaultListenSharedAccessSignature** に置き換えます。
+    >[AZURE.NOTE]"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される通知ハブの名前 (たとえば、前の例では **mynotificationhub2**) に置き換えてください。また、接続文字列プレースホルダーを、先に取得した **DefaultListenSharedAccessSignature** 接続文字列に置き換えます。
     
 5. App.xaml.cs 内で、**OnLaunched** イベント ハンドラーの先頭に、次に示す新しい **InitNotificationsAsync** メソッドへの呼び出しを追加します。
 
@@ -159,7 +172,7 @@
 
    	![][18]
 
-   	**[ファイル]** メニューから、**[すべて保存]** をクリックします。
+   	**[ファイル]** メニューの **[すべて保存]** をクリックします。
 
 7. (省略可能) Windows Phone ストア アプリ プロジェクトの前のステップを繰り返します。
 
@@ -171,11 +184,11 @@
 
 これで、アプリケーションがトースト通知を受信する準備が整いました。
 
-##<a name="send"></a>バックエンドから通知を送信する
+## <a name="send"></a>バックエンドから通知を送信する
 
-Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知が送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「**Mobile Services でのプッシュ通知の使用**」 ([.NET バックエンド](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/) | [JavaScript バックエンド](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/)) を参照してください。REST API を使用して通知を送信する方法の例については、「**Java/PHP から Notification Hubs を使用する方法**」 ([Java](/ja-jp/documentation/articles/notification-hubs-java-backend-how-to/) | [PHP](/ja-jp/documentation/articles/notification-hubs-php-backend-how-to/)) を参照してください。
+Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知が送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「**Get started with push notifications in Mobile Services (Mobile Services でのプッシュ通知の使用)**」 ([.NET バックエンド](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/) | [JavaScript バックエンド](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/)) を参照してください。REST API を使用して通知を送信する方法の例については、「**Java/PHP から Notification Hubs を使用する方法**」 ([Java](/ja-jp/documentation/articles/notification-hubs-java-backend-how-to/) | [PHP](/ja-jp/documentation/articles/notification-hubs-php-backend-how-to/)) を参照してください。
 
-1. ソリューションを右クリックし、**[追加]**、**[新しいプロジェクト]** の順に選択します。次に、**[Visual C#]** で **[Windows]** および **[コンソール アプリケーション]** をクリックし、**[OK]** をクリックします。 
+1. ソリューションを右クリックし、**[追加]**、**[新しいプロジェクト...]** の順に選択します。次に、**[Visual C#]** で、**[Windows]** および **[コンソール アプリケーション]** をクリックし、**[OK]** をクリックします。 
 
    	![][13]
 
@@ -191,7 +204,7 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
     
 	これで、<a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure Service Bus SDK への参照が追加されます。 
 
-5. Program.cs ファイルを開き、次の "using" ステートメントを追加します。
+5. Program.cs ファイルを開き、次の  `using` ステートメントを追加します。
 
         using Microsoft.ServiceBus.Notifications;
 
@@ -207,7 +220,7 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
 
    	"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される通知ハブの名前に置き換えてください。また、接続文字列のプレースホルダーは、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えてください。 
 
-	>[WACOM.NOTE]**リッスン** アクセスではなく**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列に通知を送信するアクセス許可はありません。
+	>[AZURE.NOTE]**リッスン** アクセスではなく、**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列に通知を送信するアクセス許可はありません。
 
 7. 次に、**Main** メソッド内に次の行を追加します。
 
@@ -218,13 +231,13 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
 
    	![][14]
 
-	登録したすべてのデバイスがトースト通知を受信します。トースト バナーをクリックまたはタップすると、アプリを読み込みます。
+	登録したすべてのデバイスでトースト通知を受信します。トースト バナーをクリックまたはタップすると、アプリを読み込みます。
 
-MSDN の[トースト カタログ]、[タイル カタログ]、および[バッジの概要]のトピックに、使用できるすべてのペイロードが記載されています。
+MSDN の [トースト カタログ]、[タイル カタログ]、[バッジの概要]トピックに、サポートされるすべてのペイロードが記載されています。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
-この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
+この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。特定のユーザーをターゲットとするには、「[Use Notification Hubs to push notifications to users (Notification Hubs を使用したユーザーへのプッシュ通知)]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
 
 <!-- Anchors. -->
 [アプリケーションをプッシュ通知に登録する]: #register
@@ -257,9 +270,9 @@ MSDN の[トースト カタログ]、[タイル カタログ]、および[バ�
 [20]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-windows-universal-app-install-package.png
 
 <!-- URLs. -->
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
@@ -268,13 +281,15 @@ MSDN の[トースト カタログ]、[タイル カタログ]、および[バ�
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-[通知ハブを使用したユーザーへのプッシュ通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
-[通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
+[Use Notification Hubs to push notifications to users (Notification Hubs を使用したユーザーへのプッシュ通知)]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
+[Notification Hubs を使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
 
-[トースト カタログ]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh761494.aspx
-[タイル カタログ]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh761491.aspx
-[バッジの概要]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh779719.aspx
+[トースト カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
+[タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
+[バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+
+<!--HONumber=45--> 

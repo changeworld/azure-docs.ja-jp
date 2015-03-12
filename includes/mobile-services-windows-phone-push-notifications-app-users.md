@@ -13,4 +13,4 @@
             App.AcquirePushChannel();
             RefreshTodoItems();
         }
-<!--HONumber=42-->
+\<!--HONumber=42-->

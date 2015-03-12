@@ -1,6 +1,20 @@
-﻿<properties title="Forecasting-Exponential Smoothing" pageTitle="予測指数平滑法 | Azure" description="Web サービス:予測指数平滑法" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+<properties 
+	pageTitle="予測指数平滑法 | Azure" 
+	description="Web サービス: 予測指数平滑法" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="jaymathe" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/08/2014" ms.author="jaymathe" /> 
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/11/2015" 
+	ms.author="jaymathe"/> 
 
 
 #予測指数平滑法 
@@ -72,7 +86,7 @@
 
 ##Web サービスの作成 
 
->この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+>この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
 Azure ML 内で、新しい空白の実験が作成されました。入力データのサンプルは、事前定義済みのデータ スキーマにアップロードされました。データ スキーマには "R スクリプトの実行" モジュールがリンクされ、R の 'ets' と 'forecast' 関数を使用して、ARIMA の予測モデルを生成します。 
 
@@ -117,8 +131,10 @@ Azure ML 内で、新しい空白の実験が作成されました。入力デ�
 これは、ETS 予測のきわめて簡単な例です。上のコード例からわかるように、エラーのキャッチは実装されません。このサービスは、すべての変数が連続した正の値で、頻度を 1 より大きい整数とする必要があります。日付と値のベクターの長さは同じにします。日付変数の形式は、'/mm/dd/yyyy' とします。
 
 ##FAQ
-Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-marketplace-faq)を参照してください。
+Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/documentation/articles/machine-learning-marketplace-faq)を参照してください。
 
 [1]: ./media/machine-learning-r-csharp-forecasting-exponential-smoothing/ets-img1.png
 [2]: ./media/machine-learning-r-csharp-forecasting-exponential-smoothing/ets-img2.png
 [3]: ./media/machine-learning-r-csharp-forecasting-exponential-smoothing/ets-img3.png
+
+<!--HONumber=46--> 

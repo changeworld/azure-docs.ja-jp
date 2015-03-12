@@ -27,7 +27,7 @@
 > - [キュー](/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
 > - [テーブル](/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「[.NET からテーブル ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")」を参照してください。
+Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「[.NET からテーブル ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")」を参照してください。
 
 ASP.NET 5 プロジェクトでプログラムを使用してテーブルにアクセスするには、次の項目を追加する必要があります (存在していない場合)。
 
@@ -192,6 +192,5 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 	   Console.WriteLine("Couldn't delete the entity.");
 
 [Azure Storage の詳細を確認する](http://azure.microsoft.com/documentation/services/storage/)
-「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。
-
+「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。
 <!--HONumber=42-->

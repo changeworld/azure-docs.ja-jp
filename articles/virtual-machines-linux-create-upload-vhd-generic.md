@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure 上での Linux VHD の作成とアップロード" 
 	description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
 	services="virtual-machines" 
@@ -19,9 +19,9 @@
 
 # <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報 #
 
-**重要**: Azure プラットフォームの SLA は、[動作保証済みディストリビューション] (../virtual-machines-linux-endorsed-distributions) のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
+**重要**:Azure プラットフォームの SLA は、[動作保証済みディストリビューション](../virtual-machines-linux-endorsed-distributions)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
-- [Azure 上の Linux での動作保証済みディストリビューション](../virtual-machines-linux-endorsed-distributions)
+- [Azure での動作保証済み Linux ディストリビューション](../virtual-machines-linux-endorsed-distributions)
 - [マイクロソフト Azure での Linux のイメージのサポート](http://support2.microsoft.com/kb/2941892)
 
 Azure 上で動作するすべてのディストリビューションは、プラットフォーム上で適切に実行できるように、いくつかの前提条件を満たす必要があります。この記事は決して包括的なものではありません。前提条件はディストリビューションによって異なるためです。次に示している条件をすべて満たす場合でも、プラットフォーム上で適切に動作するように Linux システムを微調整する必要があります。
@@ -51,35 +51,35 @@ Azure 上で動作するすべてのディストリビューションは、プ�
 
 ### Hyper-V を使用しない Linux のインストール ###
 
-Linux インストーラーは、Linux が HYPER-V 環境を実行していることを検出しない限り、初期 RAM ディスク (initrd または initramfs) に HYPER-V 用のドライバーを含まない場合があります。別の仮想化システム (Virtualbox、KVM など) を使用して Linux イメージを準備する場合は、少なくとも `hv_vmbus` と `hv_storvsc` のカーネル モジュールを初期 RAM ディスクで確実に使用できるように initrd の再構築が必要になる場合があります。これは少なくとも、アップ ストリームの Red Hat ディストリビューションに基づくシステムの既知の問題です。
+Linux インストーラーは、Linux が HYPER-V 環境を実行していることを検出しない限り、初期 RAM ディスク (initrd または initramfs) に HYPER-V 用のドライバーを含まない場合があります。別の仮想化システム (Virtualbox、KVM など) を使用して Linux イメージを準備する場合は、少なくとも  `hv_vmbus` と  `hv_storvsc` のカーネル モジュールを初期 RAM ディスクで確実に使用できるように initrd の再構築が必要になる場合があります。これは少なくとも、アップ ストリームの Red Hat ディストリビューションに基づくシステムの既知の問題です。
 
-initrd または initramfs イメージの再構築のためのメカニズムは、ディストリビューションによって異なる場合があります。適切な手順については、使用しているディストリビューションのドキュメントまたはサポートを参照してください。次は、`mkinitrd` ユーティリティを使用して initrd を再構築する方法の 1 つの例です。
+initrd または initramfs イメージの再構築のためのメカニズムは、ディストリビューションによって異なる場合があります。適切な手順については、使用しているディストリビューションのドキュメントまたはサポートを参照してください。次は、 `mkinitrd` ユーティリティを使用して initrd を再構築する方法の 1 つの例です。
 
 まず、既存の initrd イメージをバックアップします。
 
 	# cd /boot
 	# sudo cp initrd-`uname -r`.img  initrd-`uname -r`.img.bak
 
-次に、`hv_vmbus` と `hv_storvsc` のカーネル モジュールを使用して initrd を再構築します。
+次に、 `hv_vmbus` と  `hv_storvsc` のカーネル モジュールを使用して initrd を再構築します。
 
 	# sudo mkinitrd --preload=hv_storvsc --preload=hv_vmbus -v -f initrd-`uname -r`.img `uname -r`
 
 
 ### VHD のサイズ変更 ###
 
-Azure の VHD イメージは、1 MB に整列された仮想サイズが必要です。通常、HYPER-V を使用して作成された VHD は既に正しく整列されている必要があります。VHD が正しく整列されていない場合は、VHD から*image*を作成しようとすると、次のようなエラー メッセージが表示される場合があります。
+Azure の VHD イメージは、1 MB に整列された仮想サイズが必要です。通常、HYPER-V を使用して作成された VHD は既に正しく整列されている必要があります。VHD が正しく整列されていない場合は、VHD から *イメージ*を作成しようとすると、次のようなエラー メッセージが表示される場合があります。
 
 	"The VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. The size must be a whole number (in MBs)."
 
-これを修正するには、HYPER-V マネージャー コンソールまたは[Resize-VHD](http://technet.microsoft.com/ library/hh848535.aspx) Powershell コマンドレットを使用して、VM のサイズを変更できます。
+これを修正するには、HYPER-V マネージャー コンソールまたは[Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) Powershell コマンドレットを使用して、VM のサイズを変更できます。
 
 Windows 環境で実行していない場合は、qemu-img を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
- 1. `qemu-img` または `vbox-manage` などのツールを使用して直接 VHD のサイズを変更すると、VHD が起動できなくなる可能性があります。そのため、最初に VHD を RAW ディスク イメージに変換することをお勧めします。既に VM イメージを RAW ディスク イメージとして作成している場合は (KVM などの一部のハイパーバイザーでは既定)、この手順を省略できます。
+ 1.  `qemu-img` または  `vbox-manage` などのツールを使用して直接 VHD のサイズを変更すると、VHD が起動できなくなる可能性があります。そのため、最初に VHD を RAW ディスク イメージに変換することをお勧めします。既に VM イメージを RAW ディスク イメージとして作成している場合は (KVM などの一部のハイパーバイザーでは既定)、この手順を省略できます。
 
 		# qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
 
- 2. ディスク イメージの必要なサイズを計算して、仮想サイズが 1 MB に整列されていることを確認します。次の bash シェル スクリプトは、これを行うのに役立ちます。このスクリプトは "`qemu-img info`" を使用してディスク イメージの仮想サイズを決定し、次の 1 MB までサイズを計算します。
+ 2. ディスク イメージの必要なサイズを計算して、仮想サイズが 1 MB に整列されていることを確認します。次の bash シェル スクリプトは、これを行うのに役立ちます。このスクリプトは「`qemu-img info`」を使用してディスク イメージの仮想サイズを決定し、次の 1 MB までサイズを計算します。
 
 		rawdisk="MyLinuxVM.raw"
 		vhddisk="MyLinuxVM.vhd"
@@ -105,7 +105,7 @@ Windows 環境で実行していない場合は、qemu-img を使用して変換
 
 Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。最新の Linux カーネル バージョン (つまり 3.x) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](../linux-endorsed-distributions)を実行することをお勧めします。
 
-Red Hat Enterprise Linux Version **6.0-6.3** のバリアントを実行する場合は、Hyper-V 用の最新の LIS ドライバーをインストールする必要があります。ドライバーは[この場所](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)にあります。RHEL **6.4 以上** (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、Azure 上でこれらのシステムを実行するために追加のインストール パッケージは必要ありません。
+Red Hat Enterprise Linux Version **6.0-6.3** の変形を実行する場合は、Hyper-V 用の最新の LIS ドライバーをインストールする必要があります。ドライバーは[この場所](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)にあります。RHEL **6.4 以上** (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、Azure 上でこれらのシステムを実行するために追加のインストール パッケージは必要ありません。
 
 カスタム カーネルが必要な場合は、最新のカーネル バージョン (つまり **3.8 以上**) の使用を強くお勧めします。独自のカーネルを維持するディストリビューションまたはベンダーの場合は、アップストリームのカーネルの LIS ドライバーをカスタム カーネルにバックポートすることをお勧めします。比較的最新のカーネル バージョンを既に実行している場合でも、一般的には LIS ドライバーのアップストリームの修正を常に追跡し、必要に応じてパックポートすることをお勧めします。LIS ドライバーのソース ファイルの場所は、次の Linux カーネルのソース ツリーの [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) ファイルに記載されています。
 
@@ -129,7 +129,7 @@ Red Hat Enterprise Linux Version **6.0-6.3** のバリアントを実行する�
 
 ## Azure Linux エージェント ##
 
-[Azure Linux エージェント](../virtual-machines-linux-agent-user-guide) (waagent) は、Azure で Linux 仮想マシンを適切にプロビジョニングするために必要です。[Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、プル要求の提出を行うことができます。
+[Azure Linux エージェント](../virtual-machines-linux-agent-user-guide) (waagent) は、Azure で Linux 仮想マシンを適切にプロビジョニングするために必要です。[Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、プル リクエストの提出が行うことができます。
 
 - Linux エージェントは、Apache 2.0 ライセンス下でリリースされています。数多くのディストリビューションでは、このエージェント用の RPM パッケージや deb パッケージを既に提供しているため、場合によっては、ほとんど労力をかけずにこのエージェントをインストールし、更新することができます。
 
@@ -148,13 +148,13 @@ Red Hat Enterprise Linux Version **6.0-6.3** のバリアントを実行する�
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
-	そのほかにも、次のパラメーターを*remove*することをお勧めします (ある場合)。 
+	そのほかにも、次のパラメーターを *削除*することをお勧めします (ある場合)。
 
 		rhgb quiet crashkernel=auto
 
 	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて  `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
 - Azure Linux エージェントをインストールします。
 
@@ -164,7 +164,7 @@ Red Hat Enterprise Linux Version **6.0-6.3** のバリアントを実行する�
 
 - OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは *一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -186,5 +186,4 @@ Red Hat Enterprise Linux Version **6.0-6.3** のバリアントを実行する�
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
 
-
-<!--HONumber=45--> 
+<!--HONumber=42-->

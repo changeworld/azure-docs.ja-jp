@@ -3,9 +3,9 @@
 	description="Web サイト用の仮想マシンを作成します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="ghogen" 
 	manager="douge" 
-	editor="tglee"/>
+	editor=""/>
 
 <tags 
 	ms.service="virtual-machines" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vm-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kempb"/>
+	ms.date="09/24/2014" 
+	ms.author="ghogen"/>
 
 # Visual Studio で Web サイト用の仮想マシンを作成する
 
@@ -45,7 +45,7 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 12. 仮想マシンがプロビジョニングされている間に、ソリューションの **PublishScripts** ノード内で発行スクリプトが作成されます。発行スクリプトの実行により Azure 内で仮想マシンがプロビジョニングされます。**[出力]** ウィンドウに状態が表示されます。このスクリプトは、仮想マシンを作成するために以下の操作を行います。
 
 	* 既存の仮想マシンがない場合は、作成します。
-	* `devtest` で始まる名前のストレージ アカウントを作成します。ただし、指定リージョンにこのストレージ アカウントがない場合に限ります。
+	*  `devtest` で始まる名前のストレージ アカウントを作成します。ただし、指定リージョンにこのストレージ アカウントがない場合に限ります。
 	* 仮想マシン用のコンテナーとしてクラウド サービスを作成し、Web サイト用の Web ロールを作成します。
 	* 仮想マシンで Web 配置を構成します。
 	* 仮想マシンで IIS および ASP.NET を構成します。
@@ -57,7 +57,7 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 
 # 次のステップ
 
-発行スクリプトをカスタマイズする場合の詳細については、[こちら](http://msdn.microsoft.com/library/dn642480.aspx)を参照してください。
+発行スクリプトをカスタマイズする場合の詳細については、[ここ](http://msdn.microsoft.com/library/dn642480.aspx)を参照してください。
 
 [0]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG
@@ -65,4 +65,5 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 [3]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_Provisioning.png
 [4]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SolutionExplorer.png
 
-<!--HONumber=45--> 
+
+<!--HONumber=42-->

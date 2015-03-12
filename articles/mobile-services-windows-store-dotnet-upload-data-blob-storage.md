@@ -1,6 +1,20 @@
-<properties pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows ストア) | Mobile Services" description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードし、その画像に Windows ストア アプリからアクセスする方法を説明します。" services="mobile-services, storage" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows ストア) | Mobile Services" 
+	description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードし、その画像に Windows ストア アプリからアクセスする方法を説明します。" 
+	services="mobile-services, storage" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/26/2014" 
+	ms.author="glenga"/>
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
 
@@ -89,7 +103,7 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 [ストレージ アカウントの作成方法]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
 [ストア アプリケーション用の Azure ストレージ クライアント ライブラリ]: http://go.microsoft.com/fwlink/p/?LinkId=276866 
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
-[アプリケーション設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
 
 <!--HONumber=42-->

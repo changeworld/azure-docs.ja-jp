@@ -1,6 +1,20 @@
-﻿<properties title="Interact with DocumentDB resources" pageTitle="DocumentDB リソースとの対話 | Azure" description="DocumentDB には、.NET、Python、Node.js、JavaScript 向けのクライアント SDK が用意されています。いずれも基になる REST API を包み込み、それぞれの違いを吸収しながら簡単に利用できるようになっています。" metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="DocumentDB リソースの RESTful な操作 | Azure" 
+	description="HTTP 動詞を使用して Microsoft Azure DocumentDB リソースの RESTful な操作を行う方法について説明します。" 
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar" 
+	documentationCenter=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/03/2015" 
+	ms.author="mimig"/>
 
 #DocumentDB リソースとの対話 
 DocumentDB は、HTTP を介したシンプルで開かれた RESTful なプログラミング モデルを可能にします。DocumentDB のプレビュー リリースには、.NET、Python、Node.js、JavaScript 向けのクライアント SDK が用意されています。いずれも基になる REST API を包み込み、それぞれの違いを吸収しながら簡単に利用できるようになっています。今後のリリースでは、C++ と Java の SDK も提供する予定です。マイクロソフトと同様、多くの企業が、その固有のプログラミング環境に対応した独自の SDK を作成し、コミュニティでシェアすることが期待されます。 
@@ -334,3 +348,5 @@ DocumentDB に採用されている論理アドレス モデルでは、すべ�
 
 [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources1.png
 [2]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
+
+<!--HONumber=46--> 

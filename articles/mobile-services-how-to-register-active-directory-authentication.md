@@ -1,13 +1,27 @@
-﻿<properties pageTitle="Azure Active Directory 認証用の登録 - Mobile Services" description="Mobile Services アプリケーションで Azure Active Directory 認証用に登録する方法について説明します。" authors="wesmc7777" services="mobile-services" documentationCenter="" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Azure Active Directory 認証用の登録 - Mobile Services" 
+	description="Mobile Services アプリケーションで Azure Active Directory 認証用に登録する方法について説明します。" 
+	authors="wesmc7777" 
+	services="mobile-services" 
+	documentationCenter="" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="09/23/2014" 
+	ms.author="wesmc"/>
 
 # アプリケーションを登録して Azure Active Directory アカウント ログインを使用する
 
 このトピックでは、Azure モバイル サービスの認証プロバイダーとして Azure Active Directory を使用できるようにアプリケーションを登録する方法について説明します。 
 
 
->[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/jj710106.aspx)が必要な場合は、チュートリアル「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/)」に従ってください。
+>[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、チュートリアル「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/)」に従ってください。
 
 
 1. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。

@@ -102,7 +102,7 @@ Azure Websites に Drupal をデプロイした後は、引き続き Git また�
   [Settings.php を修正する]: #modify-settingsphp
   [Drupal コードをデプロイする]: #deploy-drupalcode
   [関連情報]: #related-information
-  [PHP-MySQL Azure の Web サイトを作成して Git で展開する]: http://www.windowsazure.com/ja-jp/develop/php/tutorials/website-w-mysql-and-git/
+  [PHP-MySQL Azure の Web サイトを作成して Git で展開する]: http://azure.microsoft.com/develop/php/tutorials/website-w-mysql-and-git/
   
   [Azure Websites, a PHP Perspective (Azure の Web サイト - PHP について)]: http://blogs.msdn.com/b/silverlining/archive/2012/06/12/windows-azure-websites-a-php-perspective.aspx
   [Azure Web Sites, Cloud Services, and VMs:When to use which? (Azure Websites、Azure Cloud Services、Azure Virtual Machines: いつ、どれを使用するか)]: http://go.microsoft.com/fwlink/?LinkId=310123

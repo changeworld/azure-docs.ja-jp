@@ -1,6 +1,20 @@
-﻿<properties title="Create a geospatial search solution using Azure Search" pageTitle="Azure Search を使用した地理空間検索アプリの作成" description="Bing と Azure Search を使用した地理空間検索アプリの作成" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Search を使用した地理空間検索アプリの作成" 
+	description="Bing と Azure Search を使用した地理空間検索アプリの作成" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="01/16/2015" 
+	ms.author="heidist"/>
 
 # Azure Search を使用した地理空間検索アプリの作成
 
@@ -25,7 +39,7 @@
 
 <h2 id="sub-1">前提条件</h2>
 
-+	Visual Studio 2012 またはそれ以上、および ASP.NET MVC 4 と SQL Server がインストールされていること。ソフトウェアをまだインストールしていない場合は、無料の Express エディションである [Visual Studio 2013 Express](http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx) と [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/ja-jp/evalcenter/dn434042.aspx) をダウンロードできます。
++	Visual Studio 2012 またはそれ以上、および ASP.NET MVC 4 と SQL Server がインストールされていること。ソフトウェアをまだインストールしていない場合は、無料の Express エディションである [Visual Studio 2013 Express](http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx) と [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/evalcenter/dn434042.aspx) をダウンロードできます。
 +	Azure Search サービス。Search サービス名および管理キーが必要です。詳細については、「[Azure Search の使用](../search-get-started/)」を参照してください。
 +	Bing マップ サービスおよびサービスにアクセスするためのキー。次のセクションで手順について説明します。
 +	[CodePlex の Azure Search GeoSearch Sample](https://azuresearchgeospatial.codeplex.com/)。[SOURCE CODE] タブで、**[Download]** をクリックしてソリューションの zip ファイルを取得してください。 
@@ -158,3 +172,5 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 <!--Image references-->
 [7]: ./media/search-create-geospatial/AzureSearch-geo1-App.PNG
 [12]: ./media/search-create-geospatial/AzureSearch_Create2_CodeplexDownload.PNG
+
+<!--HONumber=46--> 

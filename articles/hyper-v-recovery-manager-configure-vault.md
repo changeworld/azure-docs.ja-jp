@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="configure-Azure-Site-Recovery" pageTitle="Azure Site Recovery の概要:Hyper-V レプリケーションによる内部設置型サイトの内部設置型 VMM サイトへの保護、"metakeywords="Azure Site Recovery, VMM, クラウド, 障害復旧" description="Azure Site Recovery は、レプリケーション、フェールオーバーおよび内部設置型 VMM のサイト間での HYPER-V 仮想マシンの回復を調整します。" metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Getting Started with Azure Site Recovery:  On-Premises to On-Premises VMM Site Protection with Hyper-V Replication" editor="jimbe" manager="johndaw" authors="raynew" />
+﻿<properties 
+	pageTitle="チュートリアル:内部設置型 VMM サイト間の保護の設定" 
+	description="Azure Site Recovery は、内部設置型 VMM サイト間で、Hyper-V 仮想マシンのレプリケーション、フェイルオーバー、回復を調整します。" 
+	services="site-recovery" 
+	documentationCenter="" 
+	authors="raynew" 
+	manager="jwhit" 
+	editor="tysonn"/>
 
-<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/19/2014" ms.author="raynew" />
+<tags 
+	ms.service="site-recovery" 
+	ms.workload="backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/18/2015" 
+	ms.author="raynew"/>
 
 
 # Azure Site Recovery の概要:Hyper-V レプリケーションによる内部設置型サイトの内部設置型 VMM サイトへの保護
@@ -241,3 +255,5 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 </UL>
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

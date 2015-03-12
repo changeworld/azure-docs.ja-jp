@@ -1,6 +1,20 @@
-<properties pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" 
+	description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="11/22/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="javascript" 
+	ms.topic="article" 
+	ms.date="11/22/2014" 
+	ms.author="glenga"/>
 # 定期的な通知をサポートするカスタム API を定義します。
 
 <div class="dev-center-tutorial-selector"> 
@@ -44,7 +58,8 @@
 		exports.get = function(request, response) {
 		    var wns = require('wns');
 		    var todoItems = request.service.tables.getTable('TodoItem');
-		    todoItems.where({
+		    todoIte
+	ms.where({
 		        complete: false
 		    }).read({
 		        success: sendResponse
@@ -81,7 +96,7 @@
 
 	クライアントは、GET 要求を送信してタイル テンプレートにアクセスすることになるため、**exports.get** 関数が使用されます。
 
-   	> [AZURE.NOTE] このカスタム API スクリプトには、Node.js の [wns モジュール](http://go.microsoft.com/fwlink/p/?LinkId=306750)が使用されており、**require** 関数を使って参照されています。このモジュールは、[push オブジェクト](http://go.microsoft.com/fwlink/p/?LinkId=260591)から返される [wns オブジェクト](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx)とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。
+   	> [AZURE.NOTE] このカスタム API スクリプトには、Node.js の [wns モジュール](http://go.microsoft.com/fwlink/p/?LinkId=306750)が使用されており、**require** 関数を使って参照されています。このモジュールは、[push オブジェクト](http://go.microsoft.com/fwlink/p/?LinkId=260591)から返される [wns オブジェクト](http://msdn.microsoft.com/library/windowsazure/jj554217.aspx)とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。
 
 次に、クイック スタート アプリケーションに変更を加えます。ライブ タイルを更新する定期的な通知を開始するために、新しいカスタム API を要求します。
 
@@ -143,7 +158,7 @@
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[定期的な通知の概要]: http://msdn.microsoft.com/ja-jp/library/windows/apps/jj150587.aspx
+[定期的な通知の概要]: http://msdn.microsoft.com/library/windows/apps/jj150587.aspx
 
 
 

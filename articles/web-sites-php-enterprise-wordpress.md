@@ -61,7 +61,7 @@ Azure [Traffic Manager][trafficmanager] を使用すると、WordPress サイト
 
 ###メディア ストレージとキャッシュを用いる複数リージョンのデプロイメント
 
-サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](http://azure.microsoft.com/ja-jp/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/ja-jp/gallery/store/memcachier/memcachier/)、または [Azure ストア](http://azure.microsoft.com/ja-jp/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
+サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](http://azure.microsoft.com/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/gallery/store/memcachier/memcachier/)、または [Azure ストア](http://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
 
 ![an Azure Website, hosted in multiple regions, using CDBR High Availability router for MySQL, with Managed Cache, Blob storage, and CDN][performance-diagram]
 
@@ -95,7 +95,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 目的| 方法
 ------------------------|-----------
 **Web サイト インスタンス機能について学ぶ** | [Web サイトの各サイズやモードでの機能と料金の詳細][websitepricing]
-**リソースのキャッシュ** | [Redis キャッシュ][rediscache]、[Memcache クラウド](http://azure.microsoft.com/ja-jp/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/ja-jp/gallery/store/memcachier/memcachier/)、[Azure ストア](http://azure.microsoft.com/ja-jp/gallery/store/)で取り扱われている別のキャッシュ オファリングのいずれか
+**リソースのキャッシュ** | [Redis キャッシュ][rediscache]、[Memcache クラウド](http://azure.microsoft.com/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/gallery/store/memcachier/memcachier/)、[Azure ストア](http://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングのいずれか
 **アプリケーションの規模の設定** | [Azure Web サイトの規模の設定][websitescale]および [ClearDB High Availability ルーティング][cleardbscale]。独自の MySQL インストールをホストし、管理する場合は、[MySQL Cluster CGE][cge] によるスケール アウトを検討してください。
 
 ####移行
@@ -193,9 +193,9 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 ------------- | -----------
 **Web サイトのモードとサイズを設定し、規模の設定を有効にする** | [ Web サイトの規模の設定方法][websitescale]
 **永続的なデータベース接続の有効化** <p>既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。</p>  | <ol><li><p><strong>wp-includes/wp-db.php</strong> ファイルを編集します。</p></li><li><p>次の行を見つけます。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>この行を次の行で置き換えます。</p><code>$this->dbh = mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); <br/>if ( false !== $error_reporting ) { /br/>&nbsp;&nbsp;error_reporting( $error_reporting ); <br/>} </code></li><li><p>次の行を見つけます。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>この行を次の行で置き換えます。</p><code>$this->dbh = @mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); </code></li><li><p><strong>wp-includes/wp-db.php</strong> ファイルを保存して、サイトを再デプロイします。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><h5><a name="note"></a>注:</h5><p>これらの変更は、WordPress の更新時に上書きされます。</p><p>WordPress は既定で自動更新を行いますが、この設定は <strong>wp-config.php</strong> ファイルを編集し * を追加することで、無効にできます。[CO3] <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p>または、WebJob を使用して更新に対応する方法もあります。WebJob は <strong>wp-db.php</strong> ファイルを監視して、ファイルが更新されるたびに前述の変更を実行します。詳細については、<a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs についての紹介記事</a>をご覧ください。</p></div>
-**パフォーマンスの向上** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Web サイトのインスタンスで WordPress を実行している場合に、パフォーマンスを向上させる方法です。</p></li><li><p>キャッシュの有効化。<a href="http://msdn.microsoft.com/ja-jp/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="http://azure.microsoft.com/ja-jp/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">WordPress を WinCache で高速化する方法</a> - WinCache は既定で Web サイト用に有効になっています。</p></li><li><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/">Web サイトの規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>または <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a> を使用します。</p></li></ul>
-**ストレージ用 BLOB の使用** | <ol><li><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/">Azure のストレージ アカウントの作成</a></p></li><li><p>「<a href="http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/">Azure 用 CDN の使用</a>」の方法を理解し、BLOB を用いて地理的に分散したデータ保存を実施します。</p></li><li><p><a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress プラグイン</a>をインストールし、構成します。</p><p>このプラグインに関する詳細な設定と構成の情報については、<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">ユーザー ガイド</a>をご覧ください。</p> </li></ol>
-**電子メールの有効化** | <ol><li><p><a href="http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします</a>。</p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">WordPress 用の SendGrid プラグインをインストールします</a>。</p></li></ol>
+**パフォーマンスの向上** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Web サイトのインスタンスで WordPress を実行している場合に、パフォーマンスを向上させる方法です。</p></li><li><p>キャッシュの有効化。<a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="http://azure.microsoft.com/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">WordPress を WinCache で高速化する方法</a> - WinCache は既定で Web サイト用に有効になっています。</p></li><li><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-scale/">Web サイトの規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>または <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a> を使用します。</p></li></ul>
+**ストレージ用 BLOB の使用** | <ol><li><p><a href="http://azure.microsoft.com/documentation/articles/storage-create-storage-account/">Azure のストレージ アカウントの作成</a></p></li><li><p>「<a href="http://azure.microsoft.com/documentation/articles/cdn-how-to-use/">Azure 用 CDN の使用</a>」の方法を理解し、BLOB を用いて地理的に分散したデータ保存を実施します。</p></li><li><p><a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress プラグイン</a>をインストールし、構成します。</p><p>このプラグインに関する詳細な設定と構成の情報については、<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">ユーザー ガイド</a>をご覧ください。</p> </li></ol>
+**電子メールの有効化** | <ol><li><p><a href="http://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします</a>。</p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">WordPress 用の SendGrid プラグインをインストールします</a>。</p></li></ol>
 **カスタム ドメイン名の構成** | [Azure Web サイトでのカスタム ドメイン名の使用][customdomain]
 **カスタム ドメイン名に対する HTTPS の有効化** | [Azure Web サイトでの HTTPS の使用][httpscustomdomain]
 **サイトの負荷分散または地理的分散** | [Azure の Traffic Manager を使用したトラフィックのルーティング][trafficmanager]。カスタム ドメインを使用する場合は、カスタム ドメイン名と Traffic Manager の使用の詳細について、[Azure Web サイトでのカスタム ドメイン名の使用][customdomain]に関するページをご覧ください。
@@ -206,7 +206,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 
 * [WordPress の最適化](http://codex.wordpress.org/WordPress_Optimization)
 
-* [WordPress サイトの Multisite への変換](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-php-convert-wordpress-multisite/)
+* [WordPress サイトの Multisite への変換](http://azure.microsoft.com/documentation/articles/web-sites-php-convert-wordpress-multisite/)
 
 * [Azure 用の ClearDB アップグレード ウィザード](http://www.cleardb.com/store/azure/upgrade)
 
@@ -249,40 +249,40 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [cdbnstore]: http://www.cleardb.com/store/azure
 [storageplugin]: https://wordpress.org/plugins/windows-azure-storage/
 [sendgridplugin]: http://wordpress.org/plugins/sendgrid-email-delivery-simplified/
-[phpwebsite]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-php-configure/
-[customdomain]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/
+[phpwebsite]: http://azure.microsoft.com/documentation/articles/web-sites-php-configure/
+[customdomain]: http://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/
 [trafficmanager]: http://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/
-[backup]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/
-[restore]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-restore/
-[rediscache]: http://msdn.microsoft.com/ja-jp/library/azure/dn690470.aspx
-[managedcache]: http://msdn.microsoft.com/ja-jp/library/azure/dn386122.aspx
-[websitescale]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/
-[managedcachescale]: http://msdn.microsoft.com/ja-jp/library/azure/dn386113.aspx
+[backup]: http://azure.microsoft.com/documentation/articles/web-sites-backup/
+[restore]: http://azure.microsoft.com/documentation/articles/web-sites-restore/
+[rediscache]: http://msdn.microsoft.com/library/azure/dn690470.aspx
+[managedcache]: http://msdn.microsoft.com/library/azure/dn386122.aspx
+[websitescale]: http://azure.microsoft.com/documentation/articles/web-sites-scale/
+[managedcachescale]: http://msdn.microsoft.com/library/azure/dn386113.aspx
 [cleardbscale]: http://www.cleardb.com/developers/cdbr/introduction
-[staging]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-staged-publishing/
-[monitor]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-monitor/
-[log]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-enable-diagnostic-log/
-[httpscustomdomain]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
-[mysqlwindows]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-mysql-windows-server-2008r2/
-[mysqllinux]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-linux-mysql-use-opensuse/
+[staging]: http://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/
+[monitor]: http://azure.microsoft.com/documentation/articles/web-sites-monitor/
+[log]: http://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/
+[httpscustomdomain]: http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/
+[mysqlwindows]: http://azure.microsoft.com/documentation/articles/virtual-machines-mysql-windows-server-2008r2/
+[mysqllinux]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-use-opensuse/
 [cge]: http://www.mysql.com/products/cluster/
 [websitepricing]: https://azure.microsoft.com/ja-jp/pricing/details/web-sites/
 [export]: http://en.support.wordpress.com/export/
 [import]: http://wordpress.org/plugins/wordpress-importer/
 [wordpressbackup]: http://wordpress.org/plugins/wordpress-importer/
 [wordpressdbbackup]: http://codex.wordpress.org/Backing_Up_Your_Database
-[createwordpress]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-php-web-site-gallery/
+[createwordpress]: http://azure.microsoft.com/documentation/articles/web-sites-php-web-site-gallery/
 [velvet]: https://wordpress.org/plugins/velvet-blues-update-urls/
 [mgmtportal]: https://manage.windowsazure.com/
 [wordpressbackup]: http://codex.wordpress.org/WordPress_Backups
 [wordpressdbbackup]: http://codex.wordpress.org/Backing_Up_Your_Database
 [workbench]: http://www.mysql.com/products/workbench/
 [searchandreplace]: http://interconnectit.com/124/search-and-replace-for-wordpress-databases/
-[deploy]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-deploy/
-[posh]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
-[xplat-cli]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/
-[storesendgrid]: http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/
-[cdn]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/
+[deploy]: http://azure.microsoft.com/documentation/articles/web-sites-deploy/
+[posh]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[xplat-cli]: http://azure.microsoft.com/documentation/articles/xplat-cli/
+[storesendgrid]: http://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/
+[cdn]: http://azure.microsoft.com/documentation/articles/cdn-how-to-use/
 
 
 <!--HONumber=42-->

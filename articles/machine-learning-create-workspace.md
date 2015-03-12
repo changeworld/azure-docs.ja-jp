@@ -1,6 +1,20 @@
-﻿<properties title="Create an Azure Machine Learning workspace" pageTitle="Machine Learning ワークスペースの作成 | Azure" description="Azure Machine Learning Studio のワークスペースの作成" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Machine Learning ワークスペースの作成 | Azure" 
+	description="Azure Machine Learning Studio のワークスペースの作成方法" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/06/2014" 
+	ms.author="garye"/>
 
 
 # Azure Machine Learning ワークスペースの作成 
@@ -31,3 +45,5 @@ Microsoft Azure Machine Learning ワークスペース (ML ワークスペース
 
 
 <!--Link references-->
+
+<!--HONumber=46--> 

@@ -51,7 +51,7 @@ HDInsight クラスターでは、Hadoop の実装の詳細を抽象化してい
 
 構成中に、Azure BLOB ストレージ アカウントと既定のコンテナーを指定する必要があります。このコンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターに関連付ける追加の BLOB も指定することができます。
 
-従属的な BLOB ストアの使用の詳細については、「[HDInsight の Hadoop での BLOB ストレージの使用](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-blob-storage/)」を参照してください。
+従属的な BLOB ストアの使用の詳細については、「[HDInsight の Hadoop での BLOB ストレージの使用](http://azure.microsoft.com/documentation/articles/hdinsight-use-blob-storage/)」を参照してください。
 
 ###メタストア
 
@@ -66,7 +66,7 @@ HDInsight クラスターを作成するときに、追加のコンポーネン�
 
 ###仮想ネットワーク
 
-[Azure 仮想ネットワーク](http://azure.microsoft.com/ja-jp/documentation/services/virtual-network/)によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure 仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/)によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -84,7 +84,7 @@ HDInsight クラスターを作成するときに、追加のコンポーネン�
 
 仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
 
-> [AZURE.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)」を参照してください。
+> [AZURE.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/library/azure/jj156206.aspx)」を参照してください。
 >
 > Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
 >
@@ -126,7 +126,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 	<table border="1">
 	<tr><th>名前</th><th>値</th></tr>
 	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。 <br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
-	<tr><td>リージョン/仮想ネットワーク</td><td><p>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p><p>使用可能なリージョンは、 <strong>東アジア</strong>、 <strong>東南アジア</strong>、 <strong>北ヨーロッパ</strong>、 <strong>西ヨーロッパ</strong>、 <strong>米国東部</strong>、 <strong>米国西部</strong>、 <strong>米国中北部</strong>、 <strong>米国中南部</strong><br/>Azure 仮想ネットワークを作成した場合は、HDInsight クラスターで使用するよう構成するネットワークを選択できます。</p><p>Azure 仮想ネットワークの作成の詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx">仮想ネットワークの構成タスク</a>」を参照してください。</p></td></tr>
+	<tr><td>リージョン/仮想ネットワーク</td><td><p>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p><p>使用可能なリージョンは、 <strong>東アジア</strong>、 <strong>東南アジア</strong>、 <strong>北ヨーロッパ</strong>、 <strong>西ヨーロッパ</strong>、 <strong>米国東部</strong>、 <strong>米国西部</strong>、 <strong>米国中北部</strong>、 <strong>米国中南部</strong><br/>Azure 仮想ネットワークを作成した場合は、HDInsight クラスターで使用するよう構成するネットワークを選択できます。</p><p>Azure 仮想ネットワークの作成の詳細については、「 <a href="http://msdn.microsoft.com/library/azure/jj156206.aspx">仮想ネットワークの構成タスク</a>」を参照してください。</p></td></tr>
 	</table>
 
 
@@ -216,7 +216,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 ##<a id="powershell"></a> Azure PowerShell の使用
 Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、HDInsight クラスターをプロビジョニングする方法について説明します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。HDInsight PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス][hdinsight-powershell-refer]」を参照してください。
 
-> [AZURE.NOTE] このセクションのスクリプトは、Azure Virtual Network の HDInsight クラスターの構成に使用できますが、Azure Virtual Network は作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)」を参照してください。
+> [AZURE.NOTE] このセクションのスクリプトは、Azure Virtual Network の HDInsight クラスターの構成に使用できますが、Azure Virtual Network は作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/library/azure/jj156206.aspx)」を参照してください。
 
 PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -384,7 +384,7 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 
 **Windows インストーラーを使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	**http://azure.microsoft.com/ja-jp/downloads/** を参照します。
+1.	**http://azure.microsoft.com/downloads/** を参照します。
 2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[クロスプラットフォーム コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラー ウィザードの指示に従います。
 
 **発行設定をダウンロードしてインポートするには**
@@ -630,8 +630,8 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 * [HDInsight][hdinsight-sdk-documentation] - Azure HDInsight SDK について説明されています。
 
 
-[hdinsight-sdk-documentation]: http://msdn.microsoft.com/ja-jp/library/dn479185.aspx
-[hdinsight-hbase-custom-provision]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/
+[hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
+[hdinsight-hbase-custom-provision]: http://azure.microsoft.com/documentation/articles/hdinsight-hbase-get-started/
 
 [hdinsight-customize-cluster]: ../hdinsight-hadoop-customize-cluster/
 [hdinsight-get-started]: ../hdinsight-get-started/
@@ -639,7 +639,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-admin-powershell]: ../hdinsight-administer-use-powershell/
 [hadoop-hdinsight-intro]: ../hdinsight-hadoop-introduction/
 [hdinsight-submit-jobs]: ../hdinsight-submit-hadoop-jobs-programmatically/
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
+[hdinsight-powershell-reference]: http://msdn.microsoft.com/library/windowsazure/dn479228.aspx
 
 [azure-management-portal]: https://manage.windowsazure.com/
 
@@ -648,10 +648,10 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
 [apache-hadoop]: http://go.microsoft.com/fwlink/?LinkId=510084
-[azure-purchase-options]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
-[hdi-remote]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[hdi-remote]: http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp
 
 
 [Powershell-install-configure]: ../install-configure-powershell/
@@ -678,5 +678,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [img-hdi-cluster]: ./media/hdinsight-provision-clusters/HDI.Cluster.png
 
   [89e2276a]: /ja-jp/documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
-
 <!--HONumber=42-->

@@ -425,7 +425,7 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 
 	AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 
-ストレージ アクセス キーの操作の詳細については、「[方法: ストレージ アクセス キーの表示、コピーおよび再生成]( http://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/#regeneratestoragekeys)」を参照してください。
+ストレージ アクセス キーの操作の詳細については、「[方法: ストレージ アクセス キーの表示、コピーおよび再生成]( http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#regeneratestoragekeys)」を参照してください。
 
 ### サーバー側コピーを通じた BLOB のコピー
 
@@ -885,9 +885,9 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 
 ### Azure Storage のドキュメント:
 
-- [Microsoft Azure Storage の概要](http://azure.microsoft.com/ja-jp/documentation/articles/storage-introduction/)
-- [How to use Blob Storage from .NET (.NET での BLOB ストレージの使用方法)](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/)
-- [How to Use Azure File storage (Azure ファイル ストレージの使用方法)](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-files/)
+- [Microsoft Azure Storage の概要](http://azure.microsoft.com/documentation/articles/storage-introduction/)
+- [How to use Blob Storage from .NET (.NET での BLOB ストレージの使用方法)](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/)
+- [How to Use Azure File storage (Azure ファイル ストレージの使用方法)](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/)
 
 ### Azure Storage に関するブログの投稿:
 - [AzCopy:Introducing synchronous copy and customized content type (同期コピーとカスタマイズしたコンテンツの種類の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx) 
@@ -898,6 +898,5 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy:Transfer data with re-startable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 - [AzCopy:Using cross-account Copy Blob (AzCopy - アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy:Uploading/downloading files for Windows Azure Blobs (AzCopy - Windows Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-
 
 <!--HONumber=42-->

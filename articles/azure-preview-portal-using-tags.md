@@ -1,13 +1,28 @@
-﻿<properties urlDisplayName="" pageTitle="タグを使用した Azure リソースの整理" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Using tags to organize your Azure resources" authors="Michael Flanakin" solutions="" writer="" manager="carolz" editor=""  />
+﻿<properties 
+	pageTitle="タグを使用した Azure リソースの整理" 
+	description="" 
+	services="" 
+	documentationCenter="" 
+	authors="flanakin" 
+	writer="" 
+	manager="carolz" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="10/08/2014" ms.author="micflan" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/08/2014" 
+	ms.author="micflan"/>
 
 
 # タグを使用した Azure リソースの整理
 
 Azure プレビュー ポータルとその基になるリソース マネージャーを使うと、リソースを整理したり、ユーザーに合わせて操作方法をカスタマイズしたりできます。 
 
-完全な Azure ポータルでは、サブスクリプションがリソースを分類およびグループ化する唯一の方法になります。プレビュー ポータルでは、関連するエンティティをグループ化する方法として、[リソース グループが採用されていました](http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups)。この機能は、[ロールベースのアクセスを導入](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-configure)した際に、より価値が高まりました。現在は、同じ目的で、キーと値のペアを使用してリソースをタグ付けすることにより、リソースをさらに分類し、異なるリソース グループ間、およびポータル内の異なるサブスクリプション間にわたってリソースを表示することができます。
+完全な Azure ポータルでは、サブスクリプションがリソースを分類およびグループ化する唯一の方法になります。プレビュー ポータルでは、関連するエンティティをグループ化する方法として、[リソース グループが採用されていました](http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups)。この機能は、[ロールベースのアクセスを導入](http://azure.microsoft.com/documentation/articles/role-based-access-control-configure)した際に、より価値が高まりました。現在は、同じ目的で、キーと値のペアを使用してリソースをタグ付けすることにより、リソースをさらに分類し、異なるリソース グループ間、およびポータル内の異なるサブスクリプション間にわたってリソースを表示することができます。
 
 チーム、プロジェクト、または環境に基づいてリソースをグループ化すれば、必要なときに表示したい情報だけにフォーカスすることができます。 
 
@@ -27,9 +42,9 @@ Azure プレビュー ポータルとその基になるリソース マネージ
 
 ## PowerShell を使用したタグ付け
 
-最初に、最新の [Azure PowerShell モジュール](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)を入手します。Azure PowerShell モジュールを初めて使用する場合は、参考として[このドキュメントをお読みください](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell)。この記事では、既にアカウントを追加し、タグを付けるリソースを含むサブスクリプションを選択しているものと想定しています。
+最初に、最新の [Azure PowerShell モジュール](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)を入手します。Azure PowerShell モジュールを初めて使用する場合は、参考として[このドキュメントをお読みください](http://azure.microsoft.com/documentation/articles/install-configure-powershell)。この記事では、既にアカウントを追加し、タグを付けるリソースを含むサブスクリプションを選択しているものと想定しています。
 
-タグ付けは、[リソース マネージャー](http://msdn.microsoft.com/ja-jp/library/azure/dn790568.aspx)で使用可能なリソースおよびリソース グループに対してのみ行うことができます。そこで、次の作業として、リソース マネージャーを使用するための操作を行います。詳細については、「[Using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用)](http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
+タグ付けは、[リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)で使用可能なリソースおよびリソース グループに対してのみ行うことができます。そこで、次の作業として、リソース マネージャーを使用するための操作を行います。詳細については、「[Using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用)](http://azure.microsoft.com/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
 
   Switch-AzureMode AzureResourceManager
 
@@ -50,7 +65,7 @@ Azure プレビュー ポータルとその基になるリソース マネージ
 
 ## リソース マネージャーを使用したタグ付け
 
-プレビュー ポータルと PowerShell のどちらも、バックグラウンドで[リソース マネージャーの REST API](http://msdn.microsoft.com/ja-jp/library/azure/dn790568.aspx) を使用します。別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。
+プレビュー ポータルと PowerShell のどちらも、バックグラウンドで[リソース マネージャーの REST API](http://msdn.microsoft.com/library/azure/dn790568.aspx) を使用します。別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。
 
 
 ## 分類の管理
@@ -74,3 +89,5 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 ![Pin tags to the Startboard](./media/azure-preview-portal-using-tags/pin-tags.png)
 
+
+<!--HONumber=46--> 

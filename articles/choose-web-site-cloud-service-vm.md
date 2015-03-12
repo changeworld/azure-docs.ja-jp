@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Azure Web サイト、クラウド サービス、および仮想マシンの比較" metaKeywords="Cloud Services, Virtual Machines, Web Sites" description="Web アプリケーションをホストするにあたり、どのようなときにどのサービス (Azure Websites、Cloud Services、Virtual Machines) を使用するかについて説明します。" metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title="Azure Websites, Cloud Services, and Virtual Machines comparison" authors="tdykstra" solutions="" manager="wpickett" editor="jimbe" />
+﻿<properties 
+	pageTitle="Azure Web サイト、クラウド サービス、および仮想マシンの比較" 
+	description="Web アプリケーションをホストするにあたり、どのようなときにどのサービス (Azure Websites、Cloud Services、Virtual Machines) を使用するかについて説明します。" 
+	services="web-sites, virtual-machines, cloud-services" 
+	documentationCenter="" 
+	authors="tdykstra" 
+	manager="wpickett" 
+	editor="jimbe"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/24/2014" 
+	ms.author="tdykstra"/>
 
 # Azure Websites、Cloud Services、および Virtual Machines の比較
 
@@ -346,15 +360,17 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
   [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
   [ClearDB]: http://www.cleardb.com/
   [Web ジョブ]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
-  [Azure の Web サイトでの HTTPS の有効化]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/enable-ssl-web-site/
-  [azurestore]: http://www.windowsazure.com/ja-jp/gallery/store/
-  [scripting]: http://www.windowsazure.com/ja-jp/documentation/scripts/?services=web-sites
-  [dotnet]: http://www.windowsazure.com/ja-jp/develop/net/
-  [nodejs]: http://www.windowsazure.com/ja-jp/develop/nodejs/
-  [PHP]: http://www.windowsazure.com/ja-jp/develop/php/
-  [Python]: http://www.windowsazure.com/ja-jp/develop/python/
-  [servicebus]: http://www.windowsazure.com/ja-jp/documentation/services/service-bus/
-  [sqldatabase]: http://www.windowsazure.com/ja-jp/documentation/services/sql-database/
-  [Storage]: http://www.windowsazure.com/ja-jp/documentation/services/storage/
+  [Azure の Web サイトでの HTTPS の有効化]: http://azure.microsoft.com/develop/net/common-tasks/enable-ssl-web-site/
+  [azurestore]: http://azure.microsoft.com/gallery/store/
+  [scripting]: http://azure.microsoft.com/documentation/scripts/?services=web-sites
+  [dotnet]: http://azure.microsoft.com/develop/net/
+  [nodejs]: http://azure.microsoft.com/develop/nodejs/
+  [PHP]: http://azure.microsoft.com/develop/php/
+  [Python]: http://azure.microsoft.com/develop/python/
+  [servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
+  [sqldatabase]: http://azure.microsoft.com/documentation/services/sql-database/
+  [Storage]: http://azure.microsoft.com/documentation/services/storage/
 
 <!--HONumber=35.1-->
+
+<!--HONumber=46--> 

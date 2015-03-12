@@ -1,12 +1,26 @@
-﻿<properties urlDisplayName="How to scale" pageTitle="クラウド サービスのスケールの設定方法 - Azure" metaKeywords="Azure link resource, scaling cloud service" description="Azure でクラウド サービスおよびリンク済みリソースのスケールを設定する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="How to Scale an Application" authors="davidmu" solutions="" manager="timlt" editor="" />
+﻿<properties 
+	pageTitle="クラウド サービスのスケールの設定方法 - Azure" 
+	description="Azure でクラウド サービスおよびリンク済みリソースのスケールを設定する方法について説明します。" 
+	services="cloud-services" 
+	documentationCenter="" 
+	authors="Thraka" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/21/2014" ms.author="davidmu" />
+<tags 
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/21/2014" 
+	ms.author="adegeo"/>
 
 
 
 
 
-#アプリケーションのスケールの設定方法
+# アプリケーションのスケールの設定方法
 
 
 Azure の管理ポータルの [スケール] ページで、アプリケーションのスケールを手動で設定するか、パラメーターを指定して自動的にスケールを設定することができます。Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションのスケールを設定できます。Web ロールまたは Worker ロールのインスタンスを実行しているアプリケーションのスケールを設定するには、ロール インスタンスを追加または削除してワーク ロードを調整します。
@@ -15,10 +29,10 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 
 アプリケーションのスケールの設定を構成する前に、以下に示す情報を考慮してください。
 
-- 仮想マシンを使用するアプリケーションのスケールを設定するには、作成するマシンを可用性セットに追加する必要があります。追加する仮想マシンは最初はオンでもオフでもかまいませんが、スケールアップ操作ではオンに、スケールダウン操作ではオフに設定されます。仮想マシンと可用性セットの詳細については、「[仮想マシンの可用性管理](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-manage-availability/)」を参照してください。
-- スケール設定はコア使用量の影響を受けます。より大きいロール インスタンスまたは仮想マシンは、より多くのコアを使用します。アプリケーションのスケールの設定は、サブスクリプションのコア数の制限内でのみ行うことができます。たとえば、サブスクリプションにコア数 20 の制限があり、アプリケーションを 2 つの中スケールの仮想マシンで実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスの展開は 16 コアまでしかスケールアップできません。アプリケーションのスケールの設定に使用される可用性セット内のすべての仮想マシンは、同じサイズである必要があります。コア使用量とマシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/ja-jp/library/dn197896.aspx)」を参照してください。
-- メッセージのしきい値に基づいてアプリケーションのスケールを設定する前に、キューを作成してロールまたは可用性セットに関連付ける必要があります。詳細については、「[How to use the Queue Storage Service (キュー ストレージ サービスの使用方法)](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/queue-service)」を参照してください。
-- クラウド サービスにリンクされたリソースのスケールを設定できます。リソースのリンクの詳細については、「[方法: クラウド サービスに対するリソースのリンク](http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-manage-a-cloud-service/#linkresources)」を参照してください。
+- 仮想マシンを使用するアプリケーションのスケールを設定するには、作成するマシンを可用性セットに追加する必要があります。追加する仮想マシンは最初はオンでもオフでもかまいませんが、スケールアップ操作ではオンに、スケールダウン操作ではオフに設定されます。仮想マシンと可用性セットの詳細については、「[仮想マシンの可用性管理](http://azure.microsoft.com/ documentation/articles/virtual-machines-manage-availability/)」を参照してください。
+- スケール設定はコア使用量の影響を受けます。より大きいロール インスタンスまたは仮想マシンは、より多くのコアを使用します。アプリケーションのスケールの設定は、サブスクリプションのコア数の制限内でのみ行うことができます。たとえば、サブスクリプションにコア数 20 の制限があり、アプリケーションを 2 つの中スケールの仮想マシンで実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスの展開は 16 コアまでしかスケールアップできません。アプリケーションのスケールの設定に使用される可用性セット内のすべての仮想マシンは、同じサイズである必要があります。コア使用量とマシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/dn197896.aspx)」を参照してください。
+- メッセージのしきい値に基づいてアプリケーションのスケールを設定する前に、キューを作成してロールまたは可用性セットに関連付ける必要があります。詳細については、「[How to use the Queue Storage Service (キュー ストレージ サービスの使用方法)](http://azure.microsoft.com/develop/net/how-to-guides/queue-service)」を参照してください。
+- クラウド サービスにリンクされたリソースのスケールを設定できます。リソースのリンクの詳細については、「[方法:クラウド サービスに対するリソースのリンク」](http://azure.microsoft.com/manage/services/cloud-services/how-to-manage-a-cloud-service/#linkresources)を参照してください。
 - アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスまたは仮想マシンと共に展開する必要があります。詳細については、「[サービス レベル アグリーメント](https://www.windowsazure.com/ja-jp/support/legal/sla/)」を参照してください。
 
 クラウド サービスに対して次のスケール設定操作を実行できます。
@@ -70,7 +84,7 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 
 4. 各ロールまたは可用性セットには、使用できるインスタンスの数を変更するスライダーがあります。使用できるインスタンスの最大数を設定するには、右側のバーを右にドラッグします。使用できるインスタンスの最小数を設定するには、左側のバーを左にドラッグします。
 
-	**注: **[スケール] ページの **[インスタンス]** は、ロール インスタンスまたは仮想マシンのインスタンスを表します。
+	**注:** [スケール] ページの **[インスタンス]** は、ロール インスタンスまたは仮想マシンのインスタンスを表します。
 
 	![Instance range][instance_range]
 
@@ -119,7 +133,7 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 
 	![Queue range][queue_range]
 
-	**注: **[スケール] ページの **[インスタンス]** は、ロール インスタンスまたは仮想マシンのインスタンスを表します。
+	**注:** [スケール] ページの **[インスタンス]** は、ロール インスタンスまたは仮想マシンのインスタンスを表します。
 	
 	インスタンスの最大数は、サブスクリプションで使用できるコア数で制限されます。スライダーの色は、サブスクリプションで使用しているコアと使用できるコアを表します。
 	- ブルーは、ロールが使用できる最大コア数を表します。
@@ -180,7 +194,7 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 
 - **昼夜**: このオプションを使用すると、昼夜の特定の時刻にスケール設定を指定できます。
 
-**注: **仮想マシンを使用するアプリケーションには、現在のところスケジュールを使用できません。
+**注:** 仮想マシンを使用するアプリケーションには、現在のところスケジュールを使用できません。
 
 1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックしてダッシュボードを開きます。
 2. **[スケール]** をクリックします。
@@ -213,4 +227,4 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 [linked_resources]: ./media/cloud-services-how-to-scale/CloudServices_ScaleLinkedResources.png
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
 
-<!--HONumber=35.1-->
+<!--HONumber=45--> 

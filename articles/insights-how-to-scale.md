@@ -1,6 +1,20 @@
-﻿<properties title="How to scale a website" pageTitle="Web サイトの規模の変更方法" description="Azure でホスティング プランのスケールを設定する方法について説明します。" authors="stepsic" manager="kamrani" />
+﻿<properties 
+	pageTitle="Web サイトの規模の変更方法" 
+	description="Azure でホスティング プランのスケールを設定する方法について説明します。" 
+	authors="stepsic-microsoft-com" 
+	manager="kamrani" 
+	editor="" 
+	services="application-insights" 
+	documentationCenter=""/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-11-04" ms.author="stepsic" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2014-11-04" 
+	ms.author="stepsic"/>
 
 # Web サイトのスケールの変更方法
 
@@ -70,3 +84,5 @@ CPU に加えて、次のものに基づくスケール変更も利用できま�
 2. CPU 使用率が 85% を超える場合は、インスタンス 3 つ分のスケール アップ
 
 後者の追加ルールにより、スケール アクションが実施される前にロードが 85% を超えた場合は、インスタンス 1 つ分だけではなく、さらに 2 つの追加インスタンスを取得することになります。 
+
+<!--HONumber=46--> 

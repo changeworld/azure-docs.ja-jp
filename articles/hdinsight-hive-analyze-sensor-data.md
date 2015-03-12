@@ -20,7 +20,7 @@
 
 Hive を HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 
-このサンプルでは、Hive を使用して、暖房、換気、および空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別します。学習内容:
+このサンプルでは、Hive を使用して、暖房、換気、空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別します。学習内容:
 
 - 値をコンマで区切った (CSV) 形式で格納されたデータを照会するための HIVE テーブルの作成
 - データを分析するための HIVE クエリの作成
@@ -31,7 +31,7 @@ Hive を HDInsight (Hadoop) と共に使用してセンサー データを分析
 
 ##前提条件:
 
-* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](/ja-jp/documentation/articles/hdinsight-provision-clusters/)に関するページを参照してください。
+* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](/ja-jp/documentation/articles/hdinsight-provision-clusters/)に関するページをご覧ください。
 
 * Microsoft Excel 2013
 
@@ -51,4 +51,4 @@ Hive を HDInsight (Hadoop) と共に使用してセンサー データを分析
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!--HONumber=42-->
+<!--HONumber=45--> 

@@ -1,6 +1,20 @@
-<properties pageTitle="How manage developer accounts in Azure API Management" metaKeywords="" description="Learn how to create or invite developers in Azure API Management" metaCanonical="" services="" documentationCenter="API Management" title="How manage developer accounts in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management の開発者アカウントの管理方法" 
+	description="<作成または Azure API Management の開発者を招待する方法をについてください。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management で開発者アカウントを管理する方法
 
@@ -79,3 +93,5 @@ API Management (プレビュー) では、開発者は、API Management を使�
   [Invite confirmation]: ./media/api-management-howto-create-or-invite-developers/api-management-invite-developer-confirmation.png
   [電子メール テンプレートの構成]: ../api-management-howto-configure-notifications/#email-templates
   [How to create and use groups (グループを作成して使用する方法)]: ../api-management-howto-create-groups
+
+<!--HONumber=46--> 

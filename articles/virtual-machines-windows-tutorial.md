@@ -1,6 +1,5 @@
-﻿<properties 
-	pageTitle="Azure 上で Windows を実行する仮想マシンの作成" 
-	description="Azure で Windows 仮想マシン (VM) を作成し、ログオンしてデータ ディスクを接続する方法について説明します" 
+<properties 
+	pageTitle="Azure 上で Windows を実行する仮想マシンの作成" description="Azure で Windows 仮想マシン (VM) を作成し、ログオンしてデータ ディスクを接続する方法について説明します" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="KBDAzure" 
@@ -24,13 +23,13 @@
 
 このチュートリアルでは、Azure 仮想マシン (VM) を簡単に作成する方法を示します。ここでは Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。使用可能なイメージには、Windows オペレーティング システム、Linux ベースのオペレーティング システム、プレインストールされているアプリケーションのイメージなどがあります。選択できるイメージは、ご利用のサブスクリプションの種類によって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
-> [AZURE.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できますが、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)に関するページを参照してください。 
+> [AZURE.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できますが、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、「[Azure アカウントの作成](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)」を参照してください。 
 
 このチュートリアルは、以下について説明します。
 
 - [仮想マシンの作成方法](#createvirtualmachine)
 - [仮想マシンを作成後、ログオンする方法](#logon)
-- [新しい仮想マシンにデータ ディスクを接続する方法](#attachdisk)
+- [データ ディスクを仮想マシンに接続する方法](#attachdisk)
 
 さらに詳しい内容は、「[仮想マシン](http://go.microsoft.com/fwlink/p/?LinkID=271224)」を参照してください。
 
@@ -39,7 +38,7 @@
 
 このセクションでは、管理ポータルの **[ギャラリーから]** オプションを使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合は、**[ギャラリーから]** オプションを使用する必要があります。
 
-> [AZURE.NOTE] さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、複数の仮想マシンのアプリケーション テンプレートのデプロイの自動化、VM の強化された監視や診断の機能の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な VM の構成オプションには、性質上、重複するものもありますが、まったく同じではありません。  
+> [AZURE.NOTE] さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com) を使用すれば、仮想マシンの作成、複数の仮想マシンのアプリケーション テンプレートのデプロイの自動化、VM の強化された監視や診断の機能の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な VM の構成オプションには、性質上、重複するものもありますが、まったく同じではありません。  
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../includes/virtual-machines-create-WindowsVM.md)]
 
@@ -49,11 +48,11 @@
 
 [AZURE.INCLUDE [virtual-machines-log-on-win-server](../includes/virtual-machines-log-on-win-server.md)]
 
-## <a id="attachdisk"> </a>新しい仮想マシンにデータ ディスクを接続する方法 ##
+## <a id="attachdisk"> </a>データ ディスクを仮想マシンに接続する方法 ##
 
-このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。既存のディスクの接続方法など、詳細については、[データ ディスクを仮想マシンに接続する方法](http://azure.microsoft.com/documentation/articles/storage-windows-attach-disk/)に関するページを参照してください。
+このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。既存のディスクの接続方法など、詳細については、「[データ ディスクを仮想マシンに接続する方法](http://azure.microsoft.com/documentation/articles/storage-windows-attach-disk/)」を参照してください。
 
-1. Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. Azure [管理ポータル](http://manage.windowsazure.com) にサインインします。
 
 2. **[仮想マシン]** をクリックし、次に **[MyTestVM]** 仮想マシンを選択します。
 
@@ -82,7 +81,7 @@
 
 	データ ディスクを接続するときは、ディスクはオフラインになり初期化されません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
 
-7. 仮想マシンに接続してログオンするには、前のセクション「[仮想マシンを作成後、ログオンする方法]」の手順を使用します (#logon)。
+7. 仮想マシンに接続してログオンするには、前のセクション「[仮想マシンを作成後、ログオンする方法]」の手順を使用します。
 
 8. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
@@ -137,7 +136,8 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 [Azure での仮想マシンについて]: #virtualmachine
 [仮想マシンの作成方法]: #custommachine
 [仮想マシンを作成後、ログオンする方法]: #logon
-[新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
+[データ ディスクを仮想マシンに接続する方法]: #attachdisk
 [仮想マシン間の通信をセットアップする方法]: #endpoints
 
-<!--HONumber=45--> 
+
+<!--HONumber=42-->

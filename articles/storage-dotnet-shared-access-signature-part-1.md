@@ -225,14 +225,13 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
 
 [共有アクセス署名、第 2 部 : BLOB サービスによる SAS の作成および使用](../storage-dotnet-shared-access-signature-part-2/)
 
-[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx)
+[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/windowsazure/ee393343.aspx)
 
-[共有アクセス署名によるアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee395415.aspx)
+[共有アクセス署名によるアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/library/windowsazure/ee395415.aspx)
 
 [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
-
 
 
 <!--HONumber=42-->

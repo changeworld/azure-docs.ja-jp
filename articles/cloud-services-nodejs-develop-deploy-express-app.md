@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Web App with Express" pageTitle="Express を使用した Web アプリケーション (Node.js) - Azure チュートリアル" metaKeywords="Azure Node.js Hello World チュートリアル, Azure Node.js Hello World, Azure Node.js 概要チュートリアル, Azure Node.js チュートリアル, Azure Node.js Express チュートリアル" description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。" metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build a Node.js web application using Express on an Azure Cloud Service" authors="larryfr" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="Express を使用した Web アプリケーション (Node.js) - Azure チュートリアル" 
+	description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。" 
+	services="cloud-services" 
+	documentationCenter="nodejs" 
+	authors="" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
+<tags 
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="wpickett"/>
 
 
 
@@ -9,31 +23,34 @@
 
 # Azure Cloud Services での Express を使用した Node.js Web アプリケーションの構築
 
-node.js には、コア ランタイムの最小限の機能セットが含まれます。多くの場合、開発者は Node.js アプリケーションを開発するときに、サード パーティ モジュールを使用して追加機能を指定します。このチュートリアルでは、Express モジュールを使用して新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
+node.js には、コア ランタイムの最小限の機能セットが含まれます。
+多くの場合、開発者は Node.js アプリケーションを開発するときに、サード パーティ モジュールを使用して追加機能を指定します
+。このチュートリアルでは、
+[Express][] モジュールを使用して新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![A web browser displaying Welcome to Express in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-##クラウド サービス プロジェクトの作成
+## クラウド サービス プロジェクトの作成
 
-"expressapp" という名前の新しいクラウド サービス プロジェクトを作成するには、次の手順を実行します。
+'expressapp' という名前の新しいクラウド サービス プロジェクトを作成するには、次の手順を実行します。
 
 1. **[スタート] メニュー**または**スタート画面**で、「**Azure PowerShell**」を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
 	![Azure PowerShell icon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 
-	[WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
+	[AZURE.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
-2. **c:\node** ディレクトリに移動し、次のコマンドを入力して **expressapp** という名前の新しいソリューションと **WebRole1** という名前の Web ロールを作成します。
+2.**c:\node** ディレクトリに移動し、次のコマンドを入力して **expressapp** という名前の新しいソリューションと **WebRole1** という名前の Web ロールを作成します。
 
 		PS C:\node> New-AzureServiceProject expressapp
 		PS C:\Node\expressapp> Add-AzureNodeWebRole
 		PS C:\Node\expressapp> Set-AzureServiceProjectRole WebRole1 node 0.10.21
 
-	> [WACOM.NOTE] 既定では、**Add-AzureNodeWebRole** は古いバージョンの Node.js を使用します。上記の **Set-azureserviceprojectrole** ステートメントは v0.10.21 のノードを使用するように Azure に指示します。 
+	> [AZURE.NOTE] 既定では、**Add-AzureNodeWebRole** は古いバージョンの Node.js を使用します。上記の **Set-azureserviceprojectrole** ステートメントは v0.10.21 のノードを使用するように Azure に指示します。 
 
-##Express のインストール
+## Express のインストール
 
 1. 次のコマンドを発行して Express ジェネレーターをインストールします。
 
@@ -52,7 +69,8 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 	![The output of the express command](./media/cloud-services-nodejs-develop-deploy-express-app/node23.png)
 
 
-5.  package.json ファイルに定義された依存関係をインストールするには、次のコマンドを入力します。
+5.  package.json ファイルに定義された追加の依存関係をインストールするには、
+    次のコマンドを入力します。
 
         PS C:\node\expressapp\WebRole1> npm install
 
@@ -74,7 +92,8 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
 	ファイル (以前の **bin/www**) を必要なアプリケーション ファイルと同じディレクトリに移動しているため、この変更が必要です。この変更を行った後、**server.js** ファイルを保存します。
 
-8.  次のコマンドを使用して、アプリケーションを Windows Azure エミュレーターで実行します。
+8.  次のコマンドを使用して、アプリケーションを
+    Microsoft Azure エミュレーターで実行します。
 
         PS C:\node\expressapp\WebRole1> Start-AzureEmulator -launch
 
@@ -91,7 +110,8 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
     ![The contents of the index.jade file.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
 
-    Jade は Express アプリケーションで使用される既定のビュー エンジンです。Jade ビュー エンジンの詳細については、[http://jade-lang.com][] を参照してください。
+    Jade は Express アプリケーションで使用される既定のビュー エンジンです。Jade ビュー エンジンの詳細については、
+    [http://jade-lang.com][] を参照してください。
 
 2.  テキストの最後の行に **in Azure** を追加します。
 
@@ -105,7 +125,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
 アプリケーションのテストが終了したら、**Stop-AzureEmulator** コマンドレットを使用してエミュレーターを停止します。
 
-##Azure にアプリケーションをデプロイする
+## Azure にアプリケーションをデプロイする
 
 Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマンドレットを使用してアプリケーションをクラウド サービスにデプロイします。
 
@@ -116,9 +136,9 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
 ![A web browser displaying the Express page. The URL indicates it is now hosted on Azure.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 
-  [Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
+  [Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
   [Express]: http://expressjs.com/
   [http://jade-lang.com]: http://jade-lang.com
 
 
-<!--HONumber=35.2-->
+<!--HONumber=45--> 

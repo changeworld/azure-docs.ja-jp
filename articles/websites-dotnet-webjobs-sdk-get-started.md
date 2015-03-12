@@ -147,7 +147,7 @@ Azure Storage アカウントは、キューおよび BLOB データをクラウ
  
 	ファイルには、BLOB とキューを操作するための SQL 接続文字列と Azure Storage 接続文字列が含まれます。 
 
-	SQL 接続文字列は [SQL Server Express LocalDB](http://msdn.microsoft.com/ja-jp/library/hh510202.aspx) データベースを指しています。
+	SQL 接続文字列は [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) データベースを指しています。
  
 	SQL 接続文字列は、ストレージ アカウント名とアクセス キーのプレースホルダーを持つ場合の例です。これをストレージ アカウント名とアクセス キーを持つ SQL 接続文字列に置き換えます。  
 
@@ -652,7 +652,7 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 		queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSeconds(3), 3);
 		imagesQueue = queueClient.GetQueueReference("blobnamerequest");
 
-コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。ただし、ファイルをアップロードして BLOB ストレージに保存する  `Create` メソッドは例外です。モデル バインダーは、このメソッドに [HttpPostedFileBase](http://msdn.microsoft.com/ja-jp/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
+コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。ただし、ファイルをアップロードして BLOB ストレージに保存する  `Create` メソッドは例外です。モデル バインダーは、このメソッドに [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]

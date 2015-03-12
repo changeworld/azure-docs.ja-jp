@@ -91,10 +91,9 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 
 *    [Service Bus .NET API で AMQP 1.0 を使用する方法](http://aka.ms/lym3vk)
 *    [サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法](http://aka.ms/ll1fm3)
-*    [サービス バス AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/jj841071.aspx)
+*    [サービス バス AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)
 *    [OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0 の仕様](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 
 [0]: ./media/service-bus-amqp-overview/Example1.png
-
 
 <!--HONumber=42-->

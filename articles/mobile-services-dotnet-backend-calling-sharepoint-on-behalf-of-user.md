@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ユーザーの代理としての SharePoint へのアクセス | モバイル デベロッパー センター" description="ユーザーの代理として SharePoint への呼び出しを行う方法について説明します。" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="" services=""/>
+﻿<properties 
+	pageTitle="ユーザーの代理としての SharePoint へのアクセス | モバイル デベロッパー センター" 
+	description="ユーザーの代理として SharePoint への呼び出しを行う方法について説明します。" 
+	documentationCenter="windows" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="mahender"/>
 
 # ユーザーの代理としての SharePoint へのアクセス
 
@@ -202,6 +216,6 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 <!-- URLs. -->
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
-[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
+[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
 
 <!--HONumber=42-->

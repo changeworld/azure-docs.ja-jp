@@ -1,6 +1,20 @@
-﻿<properties title="What Is Azure Machine Learning Studio?" pageTitle="Machine Learning Studio とは| Azure" description="Azure Machine Learning Studio の概要" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Machine Learning Studio とは| Azure" 
+	description="Azure Machine Learning Studio とその基本コンポーネントの概要" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/11/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2014" 
+	ms.author="garye"/>
 
 # Azure Machine Learning Studio とは
 
@@ -39,8 +53,8 @@ ML Studio を初めて起動したときには、以下のタブが左側に表�
 - モジュールのすべての入力ポートが、何らかの形でデータ フローに接続されている。 
 - モジュールの必須パラメーターがすべて設定されている。 
 
-簡単な実験を作成する例については、「[Azure Machine Learning Studio での簡単な実験の作成](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-create-experiment/)」を参照してください。 
-予測分析ソリューションのより詳しいチュートリアルについては、「[Azure Machine Learning を使用した予測ソリューションの開発](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/)」を参照してください。
+簡単な実験を作成する例については、「[Azure Machine Learning Studio での簡単な実験の作成](http://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/)」を参照してください。 
+予測分析ソリューションのより詳しいチュートリアルについては、「[Azure Machine Learning を使用した予測ソリューションの開発](http://azure.microsoft.com/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/)」を参照してください。
 
 ### データセット
 
@@ -67,3 +81,5 @@ ML Studio を初めて起動したときには、以下のタブが左側に表�
 
 
 [ml-studio-overview]:./media/machine-learning-what-is-ml-studio/context.jpg
+
+<!--HONumber=46--> 

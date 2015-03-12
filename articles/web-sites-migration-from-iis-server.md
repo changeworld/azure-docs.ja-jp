@@ -106,7 +106,7 @@ Azure Websites Migration Assistant により対応状況レポートが作成さ
 
 	![](./media/web-sites-migration-from-iis-server/migration-settings.png)
 
-	>[AZURE.NOTE] カスタム設定で **[Azure Active Directory を有効にする]** チェック ボックスをオンにすると、Azure Web サイトが [Azure Active Directory](http://azure.microsoft.com/ja-jp/documentation/articles/active-directory-whatis/) (**既定のディレクトリ**) に統合されます。内部設置型 Active Directory と Azure Active Directory の同期の詳細については、 [ディレクトリ統合](http://msdn.microsoft.com/library/jj573653) をご覧ください。
+	>[AZURE.NOTE] カスタム設定で **[Azure Active Directory を有効にする]** チェック ボックスをオンにすると、Azure Web サイトが [Azure Active Directory](http://azure.microsoft.com/documentation/articles/active-directory-whatis/) (**既定のディレクトリ**) に統合されます。内部設置型 Active Directory と Azure Active Directory の同期の詳細については、 [ディレクトリ統合](http://msdn.microsoft.com/library/jj573653) をご覧ください。
 
 16.	 必要な変更をすべて行ったら、**[作成]** をクリックして移行プロセスを開始します。移行ツールにより、Azure SQL データベースと Azure Web サイトが作成され、Web サイトのコンテンツとデータベースが発行されます。移行の進行状況が移行ツールで明確に表示され、最後に概要のページが表示されます。このページには、移行されたサイトの詳細情報、移行が正しく行われたかどうか、新しく作成された Azure Web サイトへのリンクなどが表示されます。 
 

@@ -1,6 +1,20 @@
-﻿<properties title="Monitor and manage Azure Data Factory using Azure PowerShell" pageTitle="Azure PowerShell を使用した Azure Data Factory の監視と管理" description="Azure PowerShell を使用して、作成した Azure データ ファクトリを監視および管理する方法について説明します。" metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
+﻿<properties 
+	pageTitle="Azure PowerShell を使用した Azure Data Factory の監視と管理" 
+	description="Azure PowerShell を使用して、作成した Azure データ ファクトリを監視および管理する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
-<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/13/2014" ms.author="spelluru" />
+<tags 
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/10/2015" 
+	ms.author="spelluru"/>
 
 # Azure PowerShell を使用した Azure Data Factory の監視と管理
 次の表は、Azure PowerShell を使用した Azure Data Factory の監視と管理に使用できるコマンドレットの一覧です。 
@@ -411,3 +425,5 @@ Resume-AzureDataFactoryPipeline コマンドレットは、Azure Data Factory �
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

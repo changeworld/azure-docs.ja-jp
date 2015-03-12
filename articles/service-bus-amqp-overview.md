@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Service Bus AMQP Overview" pageTitle="Service Bus AMQP の概要 - Azure "metaKeywords="" description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title="" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+﻿<properties 
+	pageTitle="Service Bus AMQP の概要 - Azure" 
+	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
+	editor="mattshel"/>
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
+<tags 
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="02/11/2015" 
+	ms.author="sethm"/>
 
 
 
@@ -8,3 +22,5 @@
 [WACOM.INCLUDE [service-bus-amqp-overview](../includes/service-bus-amqp-overview.md)]
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

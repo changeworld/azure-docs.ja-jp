@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Use Content from a CDN in Your Web Application" pageTitle="Web アプリケーションで CDN からコンテンツを使用する" metaKeywords="Azure tutorial, Azure web app tutorial, ASP.NET, CDN" description="CDN からのコンテンツを使用して、Web アプリケーションのパフォーマンスを高める方法を説明するチュートリアル。" metaCanonical="" services="cdn" documentationCenter=".NET" title="Use Content from a CDN in Your Web Application" authors="cephalin" solutions="" manager="wpickett" editor="tysonn" />
+﻿<properties 
+	pageTitle="Web アプリケーションで CDN からコンテンツを使用する" 
+	description="CDN からのコンテンツを使用して、Web アプリケーションのパフォーマンスを高める方法を説明するチュートリアル。" 
+	services="cdn" 
+	documentationCenter=".net" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor="tysonn"/>
 
-<tags ms.service="cdn" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/02/2014" ms.author="cephalin" />
+<tags 
+	ms.service="cdn" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/02/2014" 
+	ms.author="cephalin"/>
 
 # Web アプリケーションで Azure CDN からコンテンツを配信する #
 
@@ -25,7 +39,7 @@
 
 このチュートリアルの前提条件は次のとおりです。
 
--	アクティブな [Microsoft Azure アカウント](http://azure.microsoft.com/ja-jp/account/)。試用アカウントにサインアップできます。
+-	アクティブな [Microsoft Azure アカウント](http://azure.microsoft.com/account/)。試用アカウントにサインアップできます。
 -	Visual Studio 2013 と BLOB 管理 GUI 用 [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 -	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」で使用)
 
@@ -33,8 +47,8 @@
   <span class="wa-icon-bulb"></span>
   <h5><a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。</h5>
   <ul>
-    <li><a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
-    <li><a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
+    <li><a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
+    <li><a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
   <ul>
 </div>
 
@@ -76,7 +90,7 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-4.PNG)
 
-	すべての CDN ノードの場所の一覧については、「[Azure コンテンツ配信ネットワーク (CDN) ノードの場所](http://msdn.microsoft.com/ja-jp/library/azure/gg680302.aspx)」を参照してください。
+	すべての CDN ノードの場所の一覧については、「[Azure コンテンツ配信ネットワーク (CDN) ノードの場所](http://msdn.microsoft.com/library/azure/gg680302.aspx)」を参照してください。
 
 3. Azure ポータルに戻り、**[CDN]** タブで、作成した CDN エンドポイントの名前をクリックします。
 
@@ -140,7 +154,7 @@
 <a name="upload"></a>
 ## ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する ##
 
-ASP.NET Web アプリケーション内にあるすべての静的コンテンツを簡単に CDN エンドポイントにアップロードする場合や、継続的な配信を使用して Web アプリケーションをデプロイする場合 (例については、「[Azure でのクラウド サービスの継続的な配信](http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-continuous-delivery/)」を参照) には、Azure PowerShell を使用して、Web アプリケーションをデプロイするたびに最新コンテンツ ファイルと Azure BLOB が自動的に同期されるように設定できます。たとえば、「[Upload Content Files from ASP.NET Application to Azure Blobs (ASP.NET アプリケーションから Azure BLOB へのコンテンツ ファイルのアップロード)](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)」でスクリプトを実行し、ASP.NET アプリケーション内のすべてのコンテンツ ファイルをアップロードすることができます。スクリプトを使用するには、次の手順に従います。
+ASP.NET Web アプリケーション内にあるすべての静的コンテンツを簡単に CDN エンドポイントにアップロードする場合や、継続的な配信を使用して Web アプリケーションをデプロイする場合 (例については、「[Azure でのクラウド サービスの継続的な配信](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-continuous-delivery/)」を参照) には、Azure PowerShell を使用して、Web アプリケーションをデプロイするたびに最新コンテンツ ファイルと Azure BLOB が自動的に同期されるように設定できます。たとえば、「[Upload Content Files from ASP.NET Application to Azure Blobs (ASP.NET アプリケーションから Azure BLOB へのコンテンツ ファイルのアップロード)](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)」でスクリプトを実行し、ASP.NET アプリケーション内のすべてのコンテンツ ファイルをアップロードすることができます。スクリプトを使用するには、次の手順に従います。
 
 4. **[スタート]** メニューの **[Windows Azure PowerShell]** を選択します。
 5. [Azure PowerShell] ウィンドウで `Get-AzurePublishSettingsFile` を実行し、Azure アカウントの発行設定ファイルをダウンロードします。
@@ -171,7 +185,7 @@ ASP.NET Web アプリケーション内にあるすべての静的コンテン�
 
 	<img alt="Mugshot" src="http://az623979.vo.msecnd.net/MyMvcApp/Content/cephas_lin.png" />
 
-PowerShell スクリプトを継続的な配信構成に統合する例については、「[Azure でのクラウド サービスの継続的な配信](http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-continuous-delivery/)」を参照してください。 
+PowerShell スクリプトを継続的な配信構成に統合する例については、「[Azure でのクラウド サービスの継続的な配信](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-continuous-delivery/)」を参照してください。 
 
 <a name="update"></a>
 ## 必要なコンテンツの更新が反映されるように CDN キャッシュを構成する ##
@@ -242,17 +256,17 @@ CSS 更新を発行して、CSS URL で別のバージョン番号を使用す�
 
 ## ASP.NET にバンドルされているスクリプトおよびスタイルシートについて ##
 
-[Azure Websites](http://azure.microsoft.com/ja-jp/services/websites/) および [Azure Cloud Services](http://azure.microsoft.com/ja-jp/services/cloud-services/) では、[ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)を Azure CDN へ最適に統合できます。 
+[Azure Websites](http://azure.microsoft.com/services/websites/) および [Azure Cloud Services](http://azure.microsoft.com/services/cloud-services/) では、[ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)を Azure CDN へ最適に統合できます。 
 
 Azure CDN と Azure Websites または Azure Cloud Services の統合には、次の利点があります。
 
-- コンテンツの展開 (イメージ、スクリプト、およびスタイルシート) を、Azure Websites の[継続的な展開](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-publish-source-control/)プロセスの一部として統合
+- コンテンツの展開 (イメージ、スクリプト、およびスタイルシート) を、Azure Websites の[継続的な展開](http://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/)プロセスの一部として統合
 - JQuery や Bootstrap のバージョンなど、CDN によって配信される NuGet パッケージを簡単にアップグレード 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 
 関連するチュートリアルは、次の項目を参照してください。
-- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-websites-with-cdn/)
-- [クラウド サービスと Azure CDN との統合](http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-cloud-service-with-cdn/)
+- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/documentation/articles/cdn-websites-with-cdn/)
+- [クラウド サービスと Azure CDN との統合](http://azure.microsoft.com/Documentation/Articles/cdn-cloud-service-with-cdn/)
 
 Azure Websites または Azure Cloud Services と統合しなくても、Azure CDN をスクリプト バンドルに使用することはできますが、次の点に注意してください。
 
@@ -263,7 +277,9 @@ Azure Websites または Azure Cloud Services と統合しなくても、Azure C
 
 # 詳細 #
 - [Azure コンテンツ配信ネットワーク (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-websites-with-cdn/)
-- [クラウド サービスと Azure CDN との統合](http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-cloud-service-with-cdn/)
+- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/documentation/articles/cdn-websites-with-cdn/)
+- [クラウド サービスと Azure CDN との統合](http://azure.microsoft.com/Documentation/Articles/cdn-cloud-service-with-cdn/)
 - [カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
-- [Azure 用 CDN の使用](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/)
+- [Azure 用 CDN の使用](http://azure.microsoft.com/documentation/articles/cdn-how-to-use/)
+
+<!--HONumber=46--> 

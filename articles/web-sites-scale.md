@@ -24,7 +24,7 @@ Azure Websites の規模を拡大するには、Web ホスティング プラン
 
 モードの変更と構成は、管理ポータルの [規模の設定] タブで簡単に実行できます。必要に応じて、規模の拡大または縮小が可能です。これらの変更は適用に数秒を要するのみで、Web ホスティング プランに含まれるすべての Web サイトに反映されます。コードの変更やアプリケーションの再展開は必要ありません。
 
-Web ホスティング プランについては、[Web ホスティング プランとは](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-web-hosting-plan-overview/) と [Azure Websites の Web ホスティング プランの詳細情報](http://www.azure.microsoft.com/ja-jp/Documentation/Articles/azure-web-sites-web-hosting-plans-in-depth-overview/) をご覧ください。各 Web ホスティング プランの料金や機能については、[Websites の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/) をご覧ください。  
+Web ホスティング プランについては、[Web ホスティング プランとは](http://azure.microsoft.com/documentation/articles/web-sites-web-hosting-plan-overview/) と [Azure Websites の Web ホスティング プランの詳細情報](http://www.azure.microsoft.com/ja-jp/Documentation/Articles/azure-web-sites-web-hosting-plans-in-depth-overview/) をご覧ください。各 Web ホスティング プランの料金や機能については、[Websites の料金詳細](http://azure.microsoft.com/pricing/details/web-sites/) をご覧ください。  
 
 > [AZURE.NOTE] Web サイトの Web ホスティング プランのモードを**無料**から**基本**または**標準**に切り替える前に、まず Azure Websites サブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure Websites サブスクリプションのオプションを表示または変更するには、[Microsoft Azure サブスクリプション][azuresubscriptions] に関するページをご覧ください。
 
@@ -142,7 +142,7 @@ Web ホスティング プランについては、[Web ホスティング プラ
 	
 14. **[スケジュールのスケール設定の編集]** ボックスの項目を変更したら、ページ下部のコマンド バーにある **[保存]** アイコンをクリックします。すべてのスケジュール設定が一度に保存されます (各スケジュールを個別に保存する必要はありません)。
 
-> [AZURE.NOTE] [Azure プレビュー ポータル](https://portal.azure.com/) では、CPU 使用率だけでなく、さらにメモリの割合、ディスク キューの長さ、HTTP キューの長さ、データイン、およびデータアウトというメトリックに基づいてスケールを設定できます。また、スケーリングのカスタム コントロールをさらに充実させるための 1 つ以上のスケールアップおよびスケールダウンのルールを作成できます。詳細については、Azure プレビュー ポータルのドキュメントの [Web サイトのスケールの変更方法](http://azure.microsoft.com/ja-jp/documentation/articles/insights-how-to-scale/) をご覧ください。
+> [AZURE.NOTE] [Azure プレビュー ポータル](https://portal.azure.com/) では、CPU 使用率だけでなく、さらにメモリの割合、ディスク キューの長さ、HTTP キューの長さ、データイン、およびデータアウトというメトリックに基づいてスケールを設定できます。また、スケーリングのカスタム コントロールをさらに充実させるための 1 つ以上のスケールアップおよびスケールダウンのルールを作成できます。詳細については、Azure プレビュー ポータルのドキュメントの [Web サイトのスケールの変更方法](http://azure.microsoft.com/documentation/articles/insights-how-to-scale/) をご覧ください。
 
 <a name="ScalingSQLServer"></a>
 ##サイトに接続されている SQL Server データベースの規模の変更	
@@ -179,40 +179,40 @@ Web ホスティング プランのモードに応じて、次の開発者向け
 
 **Web エンドポイントの監視**
 
-- Web エンドポイントの監視機能は、Web ホスティング プランの基本および標準モードで使用できます。Web エンドポイントの監視の詳細については、[Web サイトの監視方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-monitor/) をご覧ください。
+- Web エンドポイントの監視機能は、Web ホスティング プランの基本および標準モードで使用できます。Web エンドポイントの監視の詳細については、[Web サイトの監視方法](http://azure.microsoft.com/documentation/articles/web-sites-monitor/) をご覧ください。
 
-- すべてのユーザー (開発者を含む) が関心のある料金や機能など、Web ホスティング プランのその他すべての機能の詳細については、[Websites の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/) をご覧ください。
+- すべてのユーザー (開発者を含む) が関心のある料金や機能など、Web ホスティング プランのその他すべての機能の詳細については、[Websites の料金詳細](http://azure.microsoft.com/pricing/details/web-sites/) をご覧ください。
 
 <a name="Next Steps"></a>	
 ## 次のステップ
 
-- Azure を利用し始めるには、[Microsoft Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/) をご覧ください。
+- Azure を利用し始めるには、[Microsoft Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/) をご覧ください。
 
 - 料金、サポート、および SLA については、次のリンクをご覧ください。
 	
-	[データ転送の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/data-transfers/)
+	[データ転送の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)
 	
-	[Azure のサポート プラン](http://www.windowsazure.com/ja-jp/support/plans/)
+	[Azure のサポート プラン](http://azure.microsoft.com/support/plans/)
 	
-	[サービス レベル アグリーメント](http://www.windowsazure.com/ja-jp/support/legal/sla/)
+	[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)
 	
-	[SQL データベースの料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/sql-database/)
+	[SQL データベースの料金詳細](http://azure.microsoft.com/pricing/details/sql-database/)
 	
 	[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ)][vmsizes]
 	
-	[Websites の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/)
+	[Websites の料金詳細](http://azure.microsoft.com/pricing/details/web-sites/)
 	
-	[Websites の料金詳細 - SSL 接続](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/#ssl-connections)
+	[Websites の料金詳細 - SSL 接続](http://azure.microsoft.com/pricing/details/web-sites/#ssl-connections)
 
 - スケーラビリティと回復力に優れたアーキテクチャの構築など、Azure Websites におけるベスト プラクティスについては、[ベスト プラクティス: Windows Azure Websites (WAWS)](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx) をご覧ください。
 
 - Azure Websites のスケールに関するビデオ: 
 	
-	[Azure Websites のスケールを設定する タイミング - Stefan Schackow 共演](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
+	[Azure Websites のスケールを設定する タイミング - Stefan Schackow 共演](http://azure.microsoft.com/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
 	
-	[Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](http://www.windowsazure.com/ja-jp/documentation/videos/auto-scaling-azure-web-sites/)
+	[Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](http://azure.microsoft.com/documentation/videos/auto-scaling-azure-web-sites/)
 
-	[Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](http://www.windowsazure.com/ja-jp/documentation/videos/how-azure-web-sites-scale/)
+	[Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](http://azure.microsoft.com/documentation/videos/how-azure-web-sites-scale/)
 
 
 

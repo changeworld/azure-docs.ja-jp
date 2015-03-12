@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Add a Cert to the CA Store" pageTitle="Java CA ストアへの証明書の追加 - Azure" metaKeywords="Azure Twilio Java, Twilio Java Certificate, Azure Service Bus Certificate" description="Twilio サービスまたは Azure Service Bus に必要な証明機関 (CA) の証明書を Java CA 証明書 (cacerts) ストアに追加する方法について説明します。" metaCanonical="" services="" documentationCenter="Java" title="Adding a Certificate to the Java CA Certificates Store" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+﻿<properties 
+	pageTitle="Java CA ストアへの証明書の追加 - Azure" 
+	description="Twilio サービスまたは Azure Service Bus に必要な証明機関 (CA) の証明書を Java CA 証明書 (cacerts) ストアに追加する方法について説明します。" 
+	services="" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # 証明書を Java CA 証明書ストアに追加する方法
 次の手順では、証明機関 (CA) の証明書を Java CA 証明書 (cacerts) ストアに追加する方法について説明します。例として使用するのは Twilio サービスに必要な CA 証明書です。このトピックの後半では、Azure Service Bus 用の CA 証明書をインストールする方法について説明します。 
@@ -38,3 +52,5 @@ Baltimore CyberTrust Root を追加する必要がある場合、そのシリア
 
 Azure で使用するルート証明書の詳細については、「[Windows Azure Root Certificate Migration (Windows Azure のルート証明書の移行)](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)」を参照してください。
 
+
+<!--HONumber=46--> 

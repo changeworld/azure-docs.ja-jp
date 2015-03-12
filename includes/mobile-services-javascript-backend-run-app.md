@@ -21,5 +21,4 @@
 
    	![](./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png)
 
-
 <!--HONumber=42-->

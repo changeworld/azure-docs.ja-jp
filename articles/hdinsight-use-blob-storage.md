@@ -62,7 +62,7 @@ Hadoop は、既定のファイル システムの概念をサポートしてい
 - **クラスターに接続されていないストレージ アカウント内のパブリック コンテナーまたはパブリック BLOB:** コンテナー内の BLOB に対する読み取り専用のアクセス許可が与えられます。
 
 	> [AZURE.NOTE]
-        > パブリック コンテナーの場合、そのコンテナー内に配置されているすべての BLOB のリストとコンテナー メタデータを取得できます。パブリック BLOB の場合、  正確な URL がわかっているときのみ、その BLOB にアクセスできます。詳細については「 <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179354.aspx">Restrict access to containers and blobs (コンテナーと BLOB へのアクセスの制限)</a>」を参照してください。
+        > パブリック コンテナーの場合、そのコンテナー内に配置されているすべての BLOB のリストとコンテナー メタデータを取得できます。パブリック BLOB の場合、  正確な URL がわかっているときのみ、その BLOB にアクセスできます。詳細については「 <a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">Restrict access to containers and blobs (コンテナーと BLOB へのアクセスの制限)</a>」を参照してください。
 
 - **クラスターに接続されていないストレージ アカウント内のプライベート コンテナー:** WebHCat ジョブを送信するときに、ストレージ アカウントを定義しない限り、コンテナー内の blob にアクセスできません。存在は、記事の後半で説明します。
 
@@ -296,11 +296,10 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [hdinsight-use-pig]: ../hdinsight-use-pig/
 
 [Powershell-install]: ../install-configure-powershell/
-[blob-storage-restAPI]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd135733.aspx
+[blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx
 [azure-storage-create]: ../storage-create-storage-account/
 
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-use-blob-storage/HDI.PowerShell.BlobCommands.png 
 [img-hdi-quick-create]: ./media/hdinsight-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-use-blob-storage/HDI.CustomCreateStorageAccount.png  
-
 <!--HONumber=42-->

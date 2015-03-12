@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="" pageTitle="アーキテクチャ" metaKeywords="" description="一般的な設計パターンについて説明するアーキテクチャの概要" metaCanonical="" services="" documentationCenter="" videoId="" scriptId="" title="Architecture Overview" authors="robb" solutions="" manager="johndaw" editor="mattshel" />
+<properties 
+	pageTitle="アーキテクチャ" 
+	description="一般的な設計パターンを対象とするアーキテクチャの概要" 
+	services="" 
+	documentationCenter="" 
+	authors="Rboucher" 
+	manager="jwhit" 
+	editor="mattshel"/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/25/2014" ms.author="robb" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="robb"/>
 
 #アーキテクチャ
 Microsoft Azure を使用するアプリケーションを構築するためのリソースです。
@@ -25,12 +39,12 @@ Microsoft は、Microsoft Azure サービスを使用する特定の種類のシ
 ![Azure Symbol/Icon set][azure_symbols]
 
 ##設計パターン
-Microsoft Patterns and Practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍[「クラウド設計パターン」](http://msdn.microsoft.com/ja-jp/library/dn568099.aspx)を発行しました。すべてのパターンを一覧表示する大型のポスターもあります。 
+Microsoft Patterns and Practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍[「クラウド設計パターン」](http://msdn.microsoft.com/library/dn568099.aspx)を発行しました。すべてのパターンを一覧表示する大型のポスターもあります。 
 
 ![Patterns and Practices Cloud Patterns Poster][PnPPoster]
 
 ##アーキテクチャのインフォグラフィック
-Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](http://azure.microsoft.com/ja-jp/documentation/infographics/building-real-world-cloud-apps/)と[クラウド サービスへの対応](http://azure.microsoft.com/ja-jp/documentation/infographics/cloud-services/)が含まれています。 
+Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](http://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)と[クラウド サービスへの対応](http://azure.microsoft.com/documentation/infographics/cloud-services/)が含まれています。 
 
 
 ![Azure Architecture Infographics][AzureInfographic]
@@ -43,3 +57,5 @@ Microsoft は、ポスター/インフォグラフィックに関連するいく
 [AzureInfographic]: ./media/architecture-overview/AzureArchInfographicThumb.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

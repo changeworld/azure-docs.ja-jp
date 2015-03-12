@@ -108,10 +108,10 @@ Event Hubs の詳細については、「[Event Hubs 開発者ガイド]」を�
 > [AZURE.NOTE] このチュートリアルでは、[EventProcessorHost] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost] の複数のインスタンスを実行することをお勧めします ([イベント処理のスケール アウトのサンプル]を参照してください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でそれぞれ *all*イベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要]」および [Event Hubs のプログラミング ガイド]を参照してください。
 
 <!-- Links -->
-[Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn821413.aspx
+[Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn821413.aspx
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
-[Azure ストレージ アカウント]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
-[EventProcessorHost]: http://msdn.microsoft.com/ja-jp/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx 
+[Azure ストレージ アカウント]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx 
 
 <!-- Images -->
 
@@ -120,5 +120,4 @@ Event Hubs の詳細については、「[Event Hubs 開発者ガイド]」を�
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-[Event Hubs 開発者ガイド]: http://msdn.microsoft.com/ja-jp/library/azure/dn789972.aspx
-<!--HONumber=42-->
+[Event Hubs 開発者ガイド]: http://msdn.microsoft.com/library/azure/dn789972.aspx<!--HONumber=42-->

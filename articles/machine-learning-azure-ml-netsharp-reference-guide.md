@@ -1,6 +1,20 @@
-﻿<properties title="Guide to the Net# Neural Networks Specification Language for Azure ML" pageTitle="Azure ML 用の Net# ニューラル ネットワーク仕様言語について " description="Net# ニューラル ネットワーク仕様言語の構文と、Microsoft Azure ML で Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例を示します。 " metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jeannt" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure ML 用の Net# ニューラル ネットワーク仕様言語について" 
+	description="Net# ニューラル ネットワーク仕様言語の構文と、Microsoft Azure ML で Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例を示します。" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/08/2014" ms.author="jeannt" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/08/2014" 
+	ms.author="jeannt"/>
 
 
 
@@ -377,3 +391,5 @@ Net# では、オプションで、共有の重みを持つ複数のバンドル
 -	ここで、**Sharing**[d] は、d == 0 の場合にのみ false であることから、カーネルの数は、**MapCount** * **NodeCount**\[0] = 10 * 5 = 50 になります。 
 
 [1]:./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-﻿<properties title="Frequently asked questions about DocumentDB" pageTitle="DocumentDB に関してよく寄せられる質問 | Azure" description="Azure DocumentDB nosql ドキュメント データベース サービスに関してよく寄せられる質問に対する回答を示します。容量と要求単位について説明し、アプリケーションのニーズに合わせてスケールを変更する方法を確認します。" metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, faq"   services="documentdb" solutions="data-management"   authors="spelluru" manager="jhubbard" editor="monicar" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="DocumentDB に関してよく寄せられる質問 | Azure" 
+	description="Azure DocumentDB nosql ドキュメント データベース サービスに関してよく寄せられる質問に対する回答を示します。容量と要求単位について説明し、アプリケーションのニーズに合わせてスケールを変更する方法を確認します。" 
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar" 
+	documentationCenter=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/22/2014" 
+	ms.author="mimig"/>
 
 
 #DocumentDB に関してよく寄せられる質問
@@ -32,7 +46,7 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 DocumentDB は、拡張性、パフォーマンス、およびスキーマフリー データでのクエリが重要である新しい Web アプリケーションやモバイル アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、DocumentDB の一般的な使用事例です。  
 
 ###どのような拡張性と容量の制限がありますか?
-各 Azure DocumentDB アカウントでは、Azure ポータルで構成できる容量単位の最大数をサポートします。追加の容量単位が必要な場合は、サポートに連絡して、アカウント クォータの増加を依頼してください。リソースのクォータの詳細については、「[プレビュー リリースにおける DocumentDB の制限](http://azure.microsoft.com/en-us/documentation/articles/documentdb-limits/) 」を参照してください。
+各 Azure DocumentDB アカウントでは、Azure ポータルで構成できる容量単位の最大数をサポートします。追加の容量単位が必要な場合は、サポートに連絡して、アカウント クォータの増加を依頼してください。リソースのクォータの詳細については、「[プレビュー リリースにおける DocumentDB の制限](http://azure.microsoft.com/documentation/articles/documentdb-limits/) 」を参照してください。
 
 
 ###Microsoft Azure DocumentDB の料金はいくらですか?
@@ -87,3 +101,5 @@ DocumentDB によるストアド プロシージャのサポートにより、�
 
 [preview-portal]: https://portal.azure.com
 [query]: ../documentdb-sql-query/
+
+<!--HONumber=46--> 

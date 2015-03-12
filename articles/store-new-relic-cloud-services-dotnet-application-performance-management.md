@@ -35,7 +35,7 @@ Azure ストアの New Relic 特別料金
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。
 New Relic Pro は、Azure クラウド サービスのインスタンス サイズに基づいて提供されます
 
-料金情報については、[Azure ストアの New Relic のページ](http://www.windowsazure.com/ja-jp/gallery/store/new-relic/new-relic/)をご覧ください。
+料金情報については、[Azure ストアの New Relic のページ](http://azure.microsoft.com/gallery/store/new-relic/new-relic/)をご覧ください。
 
 > [AZURE.NOTE] コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
 

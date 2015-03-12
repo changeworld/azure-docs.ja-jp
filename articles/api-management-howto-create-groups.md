@@ -1,6 +1,20 @@
-<properties pageTitle="How to create and use groups to manage developer accounts in Azure API Management" metaKeywords="" description="Learn how to manage developer accounts using groups in Azure API Management" metaCanonical="" services="" documentationCenter="API Management" title="How to create and use groups to manage developer accounts in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management でグループを作成および使用して開発者アカウントを管理する方法" 
+	description="Azure API Management でグループを使用して開発者アカウントを管理する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
 
@@ -89,3 +103,5 @@ API Management には、次に示す組み込みのグループが用意され�
   [2]: ./media/api-management-howto-create-groups/api-management-add-group-to-product-visibility.png
   [Add developer to group]: ./media/api-management-howto-create-groups/api-management-add-group-to-developer.png
   [Azure API Management で成果物を作成して発行する方法]: ../api-management-howto-add-products
+
+<!--HONumber=46--> 

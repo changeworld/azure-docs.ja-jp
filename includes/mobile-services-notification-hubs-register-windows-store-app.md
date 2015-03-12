@@ -58,5 +58,4 @@
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-
 <!--HONumber=42-->

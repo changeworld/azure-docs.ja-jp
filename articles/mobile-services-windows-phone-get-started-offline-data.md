@@ -1,6 +1,20 @@
-<properties pageTitle="Mobile Services でのオフライン データの使用 (Windows Phone) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して、Windows Phone アプリケーションのオフライン データを同期する方法を説明します。" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="Mobile Services でのオフライン データの使用 (Windows Phone) | モバイル デベロッパー センター" 
+	description="Azure Mobile Services を使用して、Windows Phone アプリケーションのオフライン データを同期する方法を説明します。" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="12/10/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="12/10/2014" 
+	ms.author="wesmc"/>
 
 # Mobile Services でのオフライン データの同期の使用
 
@@ -30,7 +44,7 @@
 * [Azure Mobile Services SQLite ストア Version 1.0.0 (またはそれ以降)][SQLite ストア NuGet]
 * [SQLite for Windows Phone 8]
 
->[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。 
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。 
 
 ## <a name="enable-offline-app"></a>オフライン機能をサポートするようにアプリケーションを更新する
 

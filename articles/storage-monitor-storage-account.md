@@ -18,9 +18,9 @@
 
 # <a id="createstorageaccount"></a>Azure の監視ポータルでのストレージ アカウントの監視
 
-ストレージ アカウントは、Azure の管理ポータルで監視できます。ポータルを通じて監視するためのストレージ アカウントを構成する場合、Azure ストレージでは [Storage Analytics](http://msdn.microsoft.com/ja-jp/library/azure/hh343270.aspx) を使用してアカウントのメトリックを追跡し、要求データを記録します。 
+ストレージ アカウントは、Azure の管理ポータルで監視できます。ポータルを通じて監視するためのストレージ アカウントを構成する場合、Azure ストレージでは [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx) を使用してアカウントのメトリックを追跡し、要求データを記録します。 
 
-> [AZURE.NOTE] 管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。 <br />
+> [AZURE.NOTE] 管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。 <br />
 
 > Azure ファイル サービスは、現時点では Storage Analytics をサポートしていません。
 
@@ -65,7 +65,7 @@
 
 監視レベルと保有ポリシーを設定した後、管理ポータルで監視する利用可能なメトリック、およびメトリック チャートにプロットするメトリックを選択できます。監視レベルごとに既定のメトリック セットが表示されます。**[メトリックの追加]** を使用してメトリック一覧のメトリックを追加または削除できます。
 
-メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、[Storage Analytics Metrics について] (http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx)。
+メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、[Storage Analytics Metrics について] (http://msdn.microsoft.com/library/windowsazure/hh343258.aspx)。
 
 
 <h2><a id="customizestoragemonitoring"></a>方法:ダッシュボードの監視用のカスタマイズ</h2>
@@ -109,7 +109,7 @@
 
 	![Monitoring_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
-	> [AZURE.NOTE] メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx)。
+	> [AZURE.NOTE] メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/library/windowsazure/hh360997.aspx)。
 
 3. **[メトリックの追加]** をクリックします。 
 
@@ -164,6 +164,5 @@
 
 4. **[保存]** をクリックします。
 
-診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、[Storage Analytics Logging について] (http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343262.aspx)。
-
+診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、[Storage Analytics Logging について] (http://msdn.microsoft.com/library/windowsazure/hh343262.aspx)。
 <!--HONumber=42-->

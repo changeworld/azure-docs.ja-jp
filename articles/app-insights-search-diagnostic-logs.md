@@ -1,6 +1,18 @@
-﻿<properties title="Search diagnostic logs with Application Insights" pageTitle="診断ログを検索する" description="Trace、NLog、または Log4Net で生成されたログを検索します。" metaKeywords="analytics web test" authors="awills"  manager="kamrani" />
+﻿<properties 
+	pageTitle="診断ログを検索する" 
+	description="Trace、NLog、または Log4Net で生成されたログを検索します。" 
+	services="application-insights" 
+	authors="alancameronwills" 
+	manager="kamrani"/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-09-24" ms.author="awills" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2015-01-09" 
+	ms.author="awills"/>
  
 # Application Insights 内での診断検索
 
@@ -306,3 +318,5 @@ Application Insights をインストールしないでログ アダプターの 
 
 
 
+
+<!--HONumber=46--> 

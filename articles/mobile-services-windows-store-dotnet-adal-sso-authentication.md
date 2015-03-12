@@ -1,17 +1,31 @@
-<properties pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Windows ストア) | モバイル デベロッパー センター" description="Windows ストア アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Windows ストア) | モバイル デベロッパー センター" 
+	description="Windows ストア アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/14/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/14/2014" 
+	ms.author="wesmc"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
 
 [AZURE.INCLUDE [mobile-services-selector-adal-sso](../includes/mobile-services-selector-adal-sso.md)]
 
-このチュートリアルでは、Azure Active Directory で[クライアント主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/jj710106.aspx)をサポートする Active Directory 認証ライブラリを使用してクイックスタート プロジェクトに認証を追加します。Azure Active Directory で[サービス主導型ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/dn283952.aspx)をサポートするには、「[Mobile Services アプリへの認証の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」チュートリアルから開始します。
+このチュートリアルでは、Azure Active Directory で[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)をサポートする Active Directory 認証ライブラリを使用してクイックスタート プロジェクトに認証を追加します。Azure Active Directory で[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)をサポートするには、「[Mobile Services アプリへの認証の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」チュートリアルから開始します。
 
 ユーザーを認証できるようにするには、Azure Active Directory (AAD) にアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、モバイル サービスを登録し、モバイル サービスに対するアクセス許可を公開する必要があります。次に、Windows ストア アプリを登録してこれらのアクセス許可へのアクセス権を付与する必要があります。
 
 
->[AZURE.NOTE] このチュートリアルの目的は、[クライアント主導ログイン操作](http://msdn.microsoft.com/ja-jp/library/azure/jj710106.aspx)を使用して Windows ストア アプリのシングル サインオン Azure Active Directory 認証を Mobile Services で有効にする方法について、理解を深めることです。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了することをお勧めします。
+>[AZURE.NOTE] このチュートリアルの目的は、[クライアント主導ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)を使用して Windows ストア アプリのシングル サインオン Azure Active Directory 認証を Mobile Services で有効にする方法について、理解を深めることです。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 

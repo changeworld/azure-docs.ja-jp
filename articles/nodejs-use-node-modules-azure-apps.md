@@ -1,6 +1,21 @@
-﻿<properties urlDisplayName="Working with Node.js Modules" pageTitle="Node.js モジュールの操作" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title="Using Node.js Modules with Azure applications" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
+<properties 
+	pageTitle="Node.js モジュールの操作" 
+	description="" 
+	services="" 
+	documentationCenter="nodejs" 
+	title="Using Node.js Modules with Azure applications" 
+	authors="larryfr" 
+	manager="wpickett" 
+	editor="mollybos" />
 
-<tags ms.service="na" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags 
+	ms.service="na" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="larryfr" />
 
 
 
@@ -83,3 +98,5 @@ Azure で Node.js モジュールを使用する方法が理解できたら、[N
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
 
 
+
+<!--HONumber=46--> 

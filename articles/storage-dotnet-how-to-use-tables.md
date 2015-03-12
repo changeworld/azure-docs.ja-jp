@@ -56,7 +56,7 @@
 <h3>アセンブリの取得</h3>
 NuGet を使用して  `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://www.windowsazure.com/ja-jp/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは  `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\` ディレクトリにインストールされます。
+`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://azure.microsoft.com/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは  `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\` ディレクトリにインストールされます。
 
 <h3>名前空間宣言</h3>
 プログラムを使用して Azure Storage にアクセスするすべての C\# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
@@ -434,10 +434,10 @@ NuGet を使用して  `Microsoft.WindowsAzure.Storage.dll` アセンブリを�
   <ul>
     <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355">REST API リファレンス</a></li>
+    <li><a href="http://msdn.microsoft.com/library/windowsazure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Azure Storage を使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li>
+<li>Azure Storage を使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/library/windowsazure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li>
 <li><a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK</a> を使用して Azure Storage で作業するためのコードの記述を簡略化する方法を説明します。</li>
 <li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
@@ -468,7 +468,7 @@ NuGet を使用して  `Microsoft.WindowsAzure.Storage.dll` アセンブリを�
   [方法:エンティティを削除する]: #delete-entity
   [方法:テーブルを削除する]: #delete-table
   [Azure SDK for .NET のダウンロードとインストール]: /ja-jp/develop/net/
-  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx
+  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/library/windowsazure/ee405487.aspx
   
   [BLOB5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
   [BLOB6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
@@ -478,12 +478,11 @@ NuGet を使用して  `Microsoft.WindowsAzure.Storage.dll` アセンブリを�
   
   [ブログの投稿]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
   [.NET クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [Azure でのデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure でのデータの格納とアクセス]: http://msdn.microsoft.com/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-  [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
+  [接続文字列の構成]: http://msdn.microsoft.com/library/windowsazure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
-
 <!--HONumber=42-->
 [CO1]tag 272 represents "must". It should be deleted.

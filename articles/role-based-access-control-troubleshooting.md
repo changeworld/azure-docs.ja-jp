@@ -1,19 +1,34 @@
-﻿<properties urlDisplayName="" pageTitle="役割ベースのアクセス制御のトラブルシューティング" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Role based access control troubleshooting" authors="Stephen Siciliano"  solutions="" writer="" manager="terrylan" editor=""  />
+﻿<properties 
+	pageTitle="役割ベースのアクセス制御のトラブルシューティング" 
+	description="" 
+	services="" 
+	documentationCenter="" 
+	authors="stepsic-microsoft-com" 
+	writer="" 
+	manager="terrylan" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="11/03/2014" ms.author="Stephen Siciliano" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/03/2014" 
+	ms.author="stepsic"/>
 
 # 役割ベースのアクセス制御のトラブルシューティング
 
 ## はじめに
 
-[役割ベースのアクセス制御](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-configure/)は強力な機能で、Azure のリソースに対するきめ細かいアクセスを委任できます。つまり、まさに必要な権限を特定の人物に確実に付与できます。しかし、Azure リソースのリソース モデルが複雑で、どのようなアクセス許可を付与すればよいのか正確に把握しにくい場合もあります。
+[役割ベースのアクセス制御](http://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)は強力な機能で、Azure のリソースに対するきめ細かいアクセスを委任できます。つまり、まさに必要な権限を特定の人物に確実に付与できます。しかし、Azure リソースのリソース モデルが複雑で、どのようなアクセス許可を付与すればよいのか正確に把握しにくい場合もあります。
 
 このドキュメントでは、プレビュー ポータルで新しい役割を使用する場合に想定されることについて説明します。このリリースでは、以下の 3 つの役割が事前に構築されて組み込まれています。
 * 所有者
 * 共同作成者
 * 閲覧者
 
-所有者と共同作成者には管理操作に対するフル アクセス許可があります。両者の違いは、共同作成者が他のユーザーやグループにアクセス権を付与できないことです。閲覧者の役割はさらに興味深いので、以下で詳しく考慮します。正確にアクセス権を付与する方法の詳細については、[この記事](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-configure/)を参照してください。
+所有者と共同作成者には管理操作に対するフル アクセス許可があります。両者の違いは、共同作成者が他のユーザーやグループにアクセス権を付与できないことです。閲覧者の役割はさらに興味深いので、以下で詳しく考慮します。正確にアクセス権を付与する方法の詳細については、[この記事](http://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を参照してください。
 
 ## Web サイトのワークロード
 
@@ -74,3 +89,5 @@ Web サイトと同様、仮想マシン ブレード上の機能にも、仮想
     * アラート ルール
     
 これらのいずれかにアクセスできない場合、管理者に問い合わせてリソース グループに対する共同作成者アクセス権を得る必要があります。
+
+<!--HONumber=46--> 

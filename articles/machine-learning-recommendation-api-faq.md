@@ -1,6 +1,20 @@
-﻿<properties title="FAQ for setting up and using the Machine Learning Recommendations API" pageTitle="Machine Learning Recommendations API の設定と使用に関する FAQ | Azure" description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Machine Learning Recommendations API の設定と使用に関する FAQ | Azure" 
+	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="jaymathe" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/14/2014" ms.author="jaymathe" /> 
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/30/2014" 
+	ms.author="jaymathe"/> 
 
 # Machine Learning Recommendations API の設定と使用に関する FAQ
 バージョン 1.0
@@ -88,7 +102,7 @@ Recommendations が一般公開になったとき、その時点のサブスク�
 
 重要:請求と使用に関係しますので、アップグレードする前に、ダイアログ ボックスに表示された内容をよくご確認ください。
 
-サブスクリプションの詳細については、[ここ](http://msdn.microsoft.com/ja-jp/library/gg312164.aspx)をクリックしてください。
+サブスクリプションの詳細については、[ここ](http://msdn.microsoft.com/library/gg312164.aspx)をクリックしてください。
 
 ###Recommendations のサブスクリプションはいつ終了しますか。
 取り消した時点で、お客様のサブスクリプションが終了します。サブスクリプションを取り消す場合は、以下の手順を参照してください。
@@ -143,3 +157,5 @@ API ドキュメントは、[ここ](https://onedrive.live.com/view.aspx?cid=853
 (c) 2014 Microsoft. All rights reserved. 
 
 
+
+<!--HONumber=46--> 

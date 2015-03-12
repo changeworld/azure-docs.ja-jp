@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Mobile Services .NET バックエンドのトラブルシューティング - Azure Mobile Services" description=".NET バックエンドを使用する Mobile Services で問題を診断して解決する方法について説明します。" services="" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="mollybos"/>
+﻿<properties 
+	pageTitle="Mobile Services .NET バックエンドのトラブルシューティング - Azure Mobile Services" 
+	description=".NET バックエンドを使用する Mobile Services で問題を診断して解決する方法について説明します。" 
+	services="" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="wesmc"/>
 # Mobile Services .NET バックエンドのトラブルシューティング
 
 Mobile Services を使用した開発は、通常は手間もかからないのですが、場合によっては問題が発生することもあります。このチュートリアルでは、Mobile Services .NET バックエンドで発生する可能性がある一般的な問題のトラブルシューティングの手法をいくつか説明します。 
@@ -119,7 +133,7 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 <a name="EFMigrations"></a>
 ## Entity Framework の移行に関するトラブルシューティング
 
-SQL データベースと共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 ( *schema*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/ja-jp/data/jj591621) とも呼ばれます。
+SQL データベースと共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 ( *schema*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/data/jj591621) とも呼ばれます。
 
 移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、「[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations/).」を参照してください。
 

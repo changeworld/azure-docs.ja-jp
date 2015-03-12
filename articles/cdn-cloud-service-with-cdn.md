@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Integrate a cloud service with Azure CDN" pageTitle="クラウド サービスと Azure CDN との統合" metaKeywords="Azure tutorial, Azure web app tutorial, ASP.NET, CDN, MVC, cloud service" description="統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル" metaCanonical="" services="cdn,cloud-services" documentationCenter=".NET" title="Integrate a cloud service with Azure CDN" authors="cephalin" solutions="" manager="wpickett" editor="tysonn" />
+﻿<properties 
+	pageTitle="<クラウド サービスと Azure CDN との統合" 
+	description="統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル" 
+	services="cdn, cloud-services" 
+	documentationCenter=".net" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor="tysonn"/>
 
-<tags ms.service="cdn" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/02/2014" ms.author="cephalin" />
+<tags 
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/02/2014" 
+	ms.author="cephalin"/>
 
 <a name="intro"></a>
 # クラウド サービスと Azure CDN との統合 #
@@ -31,15 +45,15 @@
 
 このチュートリアルの前提条件は次のとおりです。
 
--	アクティブな [Microsoft Azure アカウント](http://azure.microsoft.com/ja-jp/account/)
+-	アクティブな [Microsoft Azure アカウント](http://azure.microsoft.com/account/)
 -	Visual Studio 2013 と [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 
 <div class="wa-note">
   <span class="wa-icon-bulb"></span>
   <h5><a name="note"></a>You need an Azure account to complete this tutorial:</h5>
   <ul>
-    <li>You can <a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">open an Azure account for free</a> - You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Websites.</li>
-    <li>You can <a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">activate MSDN subscriber benefits</a> - Your MSDN subscription gives you credits every month that you can use for paid Azure services.</li>
+    <li>You can <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F">open an Azure account for free</a> - You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Websites.</li>
+    <li>You can <a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">activate MSDN subscriber benefits</a> - Your MSDN subscription gives you credits every month that you can use for paid Azure services.</li>
   <ul>
 </div>
 
@@ -81,7 +95,7 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png)
 
-	>[WACOM.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「Azure Tools を使用したクラウド サービスの発行」を参照してください。(http://msdn.microsoft.com/ja-jp/library/ff683672.aspx).
+	>[WACOM.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「Azure Tools を使用したクラウド サービスの発行」を参照してください。(http://msdn.microsoft.com/library/ff683672.aspx).
 
 	**[Windows Azure のアクティビティ ログ]** に発行状態が **[完了]** と表示されたら、このクラウド サービスと統合される CDN エンドポイントを作成します。 
 
@@ -413,7 +427,7 @@ Azure Web ロールでこの Razor コードが実行されると、次のよう
 
 ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合するには、次の手順に従います。
 
-1. *App_Start\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター] (http://msdn.microsoft.com/ja-jp/library/jj646464.aspx) を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
+1. *App_Start\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター] (http://msdn.microsoft.com/library/jj646464.aspx) を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
 	<pre class="prettyprint">
 	public static void RegisterBundles(BundleCollection bundles)
 	{
@@ -507,9 +521,9 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 何かの理由で Azure CDN エンドポイントに障害が発生した場合に備えて、JavaScript または Bootstrap を読み込むためのフォールバック オプションとしてオリジン Web サーバーにアクセスできるようにしておくと便利です。CDN が利用できないために Web サイトの画像が失われることは深刻な事態ですが、スクリプトやスタイルシートで提供される重要なページ機能が失われることは、さらに深刻な事態です。
 
-[Bundle] (http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression] プロパティがあります (http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) 。このプロパティを使用するには、次の手順に従います。
+[Bundle] (http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression] プロパティがあります (http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) 。このプロパティを使用するには、次の手順に従います。
 
-1. Web ロール プロジェクトで、それぞれの [Bundle コンストラクター] (http://msdn.microsoft.com/ja-jp/library/jj646464.aspx) に CDN URL を追加した *App_Start\BundleConfig.cs* を開き、次の強調表示された変更を加えて、既定のバンドルにフォールバック メカニズムを追加します。  
+1. Web ロール プロジェクトで、それぞれの [Bundle コンストラクター] (http://msdn.microsoft.com/library/jj646464.aspx) に CDN URL を追加した *App_Start\BundleConfig.cs* を開き、次の強調表示された変更を加えて、既定のバンドルにフォールバック メカニズムを追加します。  
 	<pre class="prettyprint">
 	public static void RegisterBundles(BundleCollection bundles)
 	{
@@ -615,9 +629,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 # 詳細 #
 - [Azure コンテンツ配信ネットワーク (CDN) の概要] (http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Web アプリケーションで Azure CDN からコンテンツを配信する](http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-serve-content-from-cdn-in-your-web-application/)
-- [Azure CDN と Azure Web サイトの統合](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-websites-with-cdn/)
+- [Web アプリケーションで Azure CDN からコンテンツを配信する](http://azure.microsoft.com/Documentation/Articles/cdn-serve-content-from-cdn-in-your-web-application/)
+- [Azure CDN と Azure Web サイトの統合](http://azure.microsoft.com/documentation/articles/cdn-websites-with-cdn/)
 - [Bundling and Minification (バンドルおよび縮小)](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-- [Azure 用 CDN の使用](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/)
+- [Azure 用 CDN の使用](http://azure.microsoft.com/documentation/articles/cdn-how-to-use/)
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

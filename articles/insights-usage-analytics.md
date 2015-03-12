@@ -1,6 +1,18 @@
-﻿<properties title="How to use end user analytics in Azure" pageTitle="エンド ユーザー分析の使用方法" description="Microsoft Azure Websites のエンド ユーザー分析です。" authors="awills" manager="kamrani" />
+﻿<properties 
+	pageTitle="エンド ユーザー分析の使用方法" 
+	description="Microsoft Azure Websites のエンド ユーザー分析です。" 
+	services="application-insights" 
+	authors="alancameronwills" 
+	manager="kamrani"/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-10-02" ms.author="awills" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2015-01-09" 
+	ms.author="awills"/>
 
 # Microsoft Azure Web サイトの分析
 
@@ -31,3 +43,5 @@
     ![Top Pages](./media/insights-usage-analytics/Insights_TopPages.png)
 - 過去 1 週間における最も遅いページも表示されるため、ビジネスの目標と目的を満たすために、それらのページ改善することができます。
 
+
+<!--HONumber=46--> 

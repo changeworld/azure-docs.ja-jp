@@ -1,6 +1,21 @@
-﻿<properties pageTitle="Windows ストア クライアントからのカスタム API の呼び出し - Mobile Services" description="カスタム API を定義し、Windows Azure モバイル サービスを使用した Windows ストア アプリから呼び出す方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" writer="glenga" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Windows ストア クライアントからのカスタム API の呼び出し - Mobile Services" 
+	description="カスタム API を定義し、Windows Azure モバイル サービスを使用した Windows ストア アプリから呼び出す方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	Writer="glenga" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/26/2014" 
+	ms.author="glenga"/>
 
 # クライアントからのカスタム API 呼び出し
 

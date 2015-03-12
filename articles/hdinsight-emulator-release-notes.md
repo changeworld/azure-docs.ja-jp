@@ -34,7 +34,7 @@
 
 ### 新機能 
  
-* サービスの Version 3.1 に対応させるために[ Hadoop コンポーネントのバージョンが更新されました。](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)これには、Hive 0.13 と Tez のサポートが含まれます。
+* サービスの Version 3.1 に対応させるために[ Hadoop コンポーネントのバージョンが更新されました。](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)これには、Hive 0.13 と Tez のサポートが含まれます。
 
 ## v1.0.0.0、2013 年 10 月 28 日リリース
 
@@ -92,7 +92,7 @@
  
 * ローカル インストールのほか、Azure HDInsight サービスを使用してリモート実行されているクラスターも含めて、複数のクラスターに接続します。 
  
-* HDInsight サービスの詳細については、[http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/](http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/) を参照してください。
+* HDInsight サービスの詳細については、[http://azure.microsoft.com/documentation/services/hdinsight/](http://azure.microsoft.com/documentation/services/hdinsight/) を参照してください。
 
 * ローカル クラスター上の WASB を構成します。
 
@@ -284,6 +284,5 @@
 
 
 [hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator/
-
 
 <!--HONumber=42-->

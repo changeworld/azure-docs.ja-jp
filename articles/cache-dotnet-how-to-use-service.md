@@ -1,6 +1,20 @@
-<properties urlDisplayName="" pageTitle="Azure マネージ キャッシュ サービスの使用方法" metaKeywords="" description="" metaCanonical="" services="cache" documentationCenter="" title="How to Use Azure Managed Cache Service" authors="sdanie" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Azure マネージ キャッシュ サービスの使用方法" 
+	description="" 
+	services="cache" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
+<tags 
+	ms.service="cache" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure マネージ キャッシュ サービスの使用方法
 
@@ -456,24 +470,24 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
    
 <!-- LINKS -->
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg618003.aspx
+[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Azure Cache のセッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache:セッション状態のキャッシュ]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure のキャッシュの出力キャッシュ プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320837
-[Azure Shared Caching]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg278356.aspx
+[Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
 [仮想マシンのサイズの構成方法]: http://go.microsoft.com/fwlink/?LinkId=164387
 [Azure Cache の容量計画に関する考慮事項]: http://go.microsoft.com/fwlink/?LinkId=320167
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
-[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/zd1ysf1y.aspx
-[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/z852zf6b.aspx
+[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
 [Azure マネージ キャッシュ サービスの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [マネージ キャッシュ サービス]: http://go.microsoft.com/fwlink/?LinkId=320830
 [OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
 [Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
-[キャッシュの料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/cache/
+[キャッシュの料金詳細]: http://azure.microsoft.com/pricing/details/cache/
 [管理ポータル]: https://manage.windowsazure.com/
 [Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
 [容量計画]: http://go.microsoft.com/fwlink/?LinkId=320167
@@ -485,9 +499,11 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [New-AzureManagedCache]: http://go.microsoft.com/fwlink/?LinkId=400495
 [Azure マネージ キャッシュ コマンドレット]: http://go.microsoft.com/fwlink/?LinkID=398555
 [Azure PowerShell のインストールおよび構成方法]: http://go.microsoft.com/fwlink/?LinkId=400494
-[Add-AzureAccount]: http://msdn.microsoft.com/ja-jp/library/dn495128.aspx
-[Select-AzureSubscription]: http://msdn.microsoft.com/ja-jp/library/dn495203.aspx
+[Add-AzureAccount]: http://msdn.microsoft.com/library/dn495128.aspx
+[Select-AzureSubscription]: http://msdn.microsoft.com/library/dn495203.aspx
 
-[どの Azure Cache を利用すればよいですか。]: http://msdn.microsoft.com/ja-jp/library/azure/dn766201.aspx
+[どの Azure Cache を利用すればよいですか。]: http://msdn.microsoft.com/library/azure/dn766201.aspx
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

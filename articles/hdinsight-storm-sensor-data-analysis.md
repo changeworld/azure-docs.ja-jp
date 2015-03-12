@@ -26,7 +26,7 @@ Azure Event Hub で発生したセンサー データを処理するために HD
 
 * Azure サブスクリプション
 
-* Visual Studio と [Microsoft Azure SDK for .NET](http://azure.microsoft.com/ja-jp/downloads/archive-net-downloads/)
+* Visual Studio と [Microsoft Azure SDK for .NET](http://azure.microsoft.com/downloads/archive-net-downloads/)
 
 * [Java と JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -1347,7 +1347,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 * Apache Storm の詳細については、[https://storm.incubator.apache.org/](https://storm.incubator.apache.org/) を参照してください。
 
-* HDInsight での HBase の詳細については、「[HDInsight HBase の概要](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-overview/)」を参照してください。
+* HDInsight での HBase の詳細については、「[HDInsight HBase の概要](http://azure.microsoft.com/documentation/articles/hdinsight-hbase-overview/)」を参照してください。
 
 * SignalR の詳細については、「[ASP.NET SignalR](http://signalr.net/)」を参照してください。
 
@@ -1356,5 +1356,4 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 * .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/)」を参照してください。
 
 [azure-portal]: https://manage.windowsazure.com/
-
 <!--HONumber=42-->

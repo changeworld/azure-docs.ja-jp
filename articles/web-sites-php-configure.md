@@ -121,8 +121,8 @@ Azure Websites では、既定の PHP ランタイムを使用する代わりに
 [http://windows.php.net/download/]: http://windows.php.net/download/
 [http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[Azure での Web サイトの作成、監視、および規模変更]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/
-[Azure SDK for PHP をダウンロードする]: http://www.windowsazure.com/ja-jp/develop/php/common-tasks/download-php-sdk/
+[Azure での Web サイトの作成、監視、および規模変更]: http://azure.microsoft.com/manage/services/web-sites/
+[Azure SDK for PHP をダウンロードする]: http://azure.microsoft.com/develop/php/common-tasks/download-php-sdk/
 
 
 <!--HONumber=42-->

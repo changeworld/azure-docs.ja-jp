@@ -1,6 +1,20 @@
-<properties pageTitle="カスタム認証の使用 | モバイル デベロッパー センター" description="ユーザー名とパスワードを使用してユーザーを認証する方法について説明します。" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="カスタム認証の使用 | モバイル デベロッパー センター" 
+	description="ユーザー名とパスワードを使用してユーザーを認証する方法について説明します。" 
+	documentationCenter="windows" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="mahender"/>
 
 # カスタム認証の使用
 

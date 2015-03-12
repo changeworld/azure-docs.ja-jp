@@ -45,7 +45,7 @@ JavaScript バックエンド モバイル サービスの場合は、TodoItem �
 
 	IMobileServiceTable<TodoItem> todoTable = App.<yourClient>.GetTable<TodoItem>();
 
-このコードは、**アプリケーション キーを持つユーザー**に対するアクセス許可がテーブルに設定されている場合に機能します。モバイル サービスの安全を確保するためにアクセス許可を変更する場合、ユーザー認証サポートを追加する必要があります。詳細については、「[Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users/)」をご覧ください。
+このコードは、**アプリケーション キーを持つユーザー**に対するアクセス許可がテーブルに設定されている場合に機能します。モバイル サービスの安全を確保するためにアクセス許可を変更する場合、ユーザー認証サポートを追加する必要があります。詳細については、「[Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)](http://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users/)」をご覧ください。
 
 #####エントリを追加する 
 

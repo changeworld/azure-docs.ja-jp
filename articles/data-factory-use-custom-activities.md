@@ -1,6 +1,20 @@
-﻿<properties title="Use custom activities in an Azure Data Factory pipeline" pageTitle="Azure Data Factory パイプラインでカスタム アクティビティを使用する" description="カスタム アクティビティを作成して Azure データ ファクトリ パイプラインで使用する方法について説明します。" metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
+﻿<properties 
+	pageTitle="Azure Data Factory パイプラインでカスタム アクティビティを使用する" 
+	description="カスタム アクティビティを作成して Azure データ ファクトリ パイプラインで使用する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
-<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelluru" />
+<tags 
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/10/2015" 
+	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
 Azure Data Factory は、パイプライン内で使用され、データの移動や処理を行う**コピー アクティビティ**や **HDInsight アクティビティ**といった組み込みのアクティビティをサポートしています。独自の変換/処理ロジックでカスタム アクティビティを作成し、それをパイプライン内で使用することも可能です。カスタム アクティビティは、HDInsight クラスター上でマップ専用のジョブとして動作するため、パイプライン内でカスタム アクティビティ用に HDInsight クラスターをリンクすることが必要になります。
@@ -488,7 +502,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 
 [nuget-package]: http://go.microsoft.com/fwlink/?LinkId=517478
-[azure-developer-center]: http://azure.microsoft.com/ja-jp/develop/net/
+[azure-developer-center]: http://azure.microsoft.com/develop/net/
 [adf-developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [azure-preview-portal]: https://portal.azure.com/
 
@@ -502,3 +516,5 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-ouput-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-﻿<properties title="Role Based Access Control in Azure Preview Portal" pageTitle="Azure プレビュー ポータルでの役割ベースのアクセス制御" description="ロール ベースのアクセス制御のしくみとその設定方法について説明します。" metaKeywords="" services="multiple" solutions="" documentationCenter="" authors="justinha" videoId="" scriptId="" manager="terrylan" />
+﻿<properties 
+	pageTitle="Azure プレビュー ポータルでの役割ベースのアクセス制御" 
+	description="ロール ベースのアクセス制御のしくみとその設定方法について説明します。" 
+	services="" 
+	documentationCenter="" 
+	authors="Justinha" 
+	manager="terrylan" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.devlang="dotnet" ms.topic="article" ms.tgt_pltfrm="Ibiza" ms.workload="infrastructure-services" ms.date="09/12/2014" ms.author="justinha;Justinha@microsoft.com" />
+<tags 
+	ms.service="multiple" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="Ibiza" 
+	ms.workload="infrastructure-services" 
+	ms.date="02/06/2015" 
+	ms.author="justinha"/>
 
 <!--This is a basic template that shows you how to use mark down to create a topic that includes a TOC, sections with subheadings, links to other azure.microsoft.com topics, links to other sites, bold text, italic text, numbered and bulleted lists, code snippets, and images. For fancier markdown, find a published topic and copy the markdown or HTML you want. For more details about using markdown, see http://sharepoint/sites/azurecontentguidance/wiki/Pages/Content%20Guidance%20Wiki%20Home.aspx.-->
 
@@ -124,7 +138,7 @@ Windows PowerShell 用の Microsoft Azure モジュールを使って役割の�
 
 	PS C:\> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
 
-Windows PowerShell を使ったアクセス権の追加や削除の詳細については、「[Windows PowerShell を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-powershell/)」を参照してください。 
+Windows PowerShell を使ったアクセス権の追加や削除の詳細については、「[Windows PowerShell を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/documentation/articles/role-based-access-control-powershell/)」を参照してください。 
 
 <h3><a id="remove"></a>アクセス権の削除</h2>
 
@@ -165,7 +179,7 @@ Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削�
  
 <h2><a id="knownissues"></a>役割ベースのアクセス制御を使用する際の既知の問題</h2>
 
-プレビュー版で役割ベースのアクセス制御機能の使用時に問題が発生した場合は、その問題に関連している可能性がある既知の問題について「[役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/)」を参照してください。
+プレビュー版で役割ベースのアクセス制御機能の使用時に問題が発生した場合は、その問題に関連している可能性がある既知の問題について「[役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/documentation/articles/role-based-access-control-troubleshooting/)」を参照してください。
 
 
 <h2><a id="feedback"></a>フィードバックを提供する方法</h2>
@@ -177,12 +191,12 @@ Azure RBAC を試用して、[feedback](http://aka.ms/azurerbacfeedback). をお
 
 役割ベースのアクセス制御の使用法に関するその他のリソースを以下に示します。 
 
-+ [Windows PowerShell を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-powershell/)
-+ [XPLAT CLI を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-xplat-cli/)
-+ [役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/)
++ [Windows PowerShell を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/documentation/articles/role-based-access-control-powershell/)
++ [XPLAT CLI を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/documentation/articles/role-based-access-control-xplat-cli/)
++ [役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/documentation/articles/role-based-access-control-troubleshooting/)
 + [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx)
-+ [Azure Active Directory Premium および Basic](http://msdn.microsoft.com/ja-jp/library/azure/dn532272.aspx)
-+ [Azure サブスクリプションを Azure AD に関連付ける方法](http://msdn.microsoft.com/ja-jp/library/azure/dn629581.aspx)
++ [Azure Active Directory Premium および Basic](http://msdn.microsoft.com/library/azure/dn532272.aspx)
++ [Azure サブスクリプションを Azure AD に関連付ける方法](http://msdn.microsoft.com/library/azure/dn629581.aspx)
 + セキュリティ グループに関するセルフサービス グループ管理の概要については、「[Active Directory Team Blog (Active Directory チームのブログ)](http://blogs.technet.com/b/ad/archive/2014/02/24/more-preview-enhancements-for-windows-azure-ad-premium.aspx)」を参照してください。
 
 
@@ -200,3 +214,5 @@ Azure RBAC を試用して、[feedback](http://aka.ms/azurerbacfeedback). をお
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
 
+
+<!--HONumber=46--> 

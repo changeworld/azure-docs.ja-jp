@@ -37,7 +37,7 @@ Microsoft Azure SQL Database Elastic Scale には、自己ホスト型サービ�
 
 %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 
-* WDK from [[Windows 8.1: キットとツールのダウンロード] から WDK を入手します。](http://msdn.microsoft.com/en-US/windows/hardware/gg454513#drivers)
+* WDK from [[Windows 8.1: キットとツールのダウンロード] から WDK を入手します。](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ##    <a name="to-configure-ssl-cert"></a>SSL 証明書を構成するには
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。

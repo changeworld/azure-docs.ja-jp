@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Microsoft Azure Cross-Platform Command-Line Interface" pageTitle="リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用" title="リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用" metaKeywords="windows azure クロスプラットフォーム コマンドライン インターフェイス リソース マネージャー, windows azure コマンドライン リソース マネージャー, azure コマンドライン リソース マネージャー, azure cli リソース マネージャー" description="リソース マネージャーでの Microsoft Azure クロスプラットフォーム コマンドライン インターフェイスの使用" metaCanonical="http://www.windowsazure.com/ja-jp/script/xplat-cli-intro" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="need to identify contact" documentationCenter="" solutions="" authors="larryfr" services="" />
+﻿<properties 
+	pageTitle="リソース マネージャーでの Microsoft Azure クロスプラットフォーム コマンドライン インターフェイスの使用" 
+	description="リソース マネージャーでの Microsoft Azure クロスプラットフォーム コマンドライン インターフェイスの使用" 
+	editor="tysonn" 
+	manager="timlt" 
+	documentationCenter="" 
+	authors="squillace" 
+	services=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="command-line-interface" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/05/2015" 
+	ms.author="rasquill"/>
 
 #リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用
 
@@ -162,8 +176,10 @@ Microsoft では先ごろ、Microsoft Azure の新しい管理方法として、
 *  Azure クロスプラットフォーム コマンド ライン インターフェイスの使用方法については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成][xplatsetup]」を参照してください。
 * リソース マネージャーで Windows Azure PowerShell を使用する方法の詳細については、「[Getting Started using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用方法の概要)][psrm]」を参照してください。
 
-[signuporg]: http://www.windowsazure.com/ja-jp/documentation/articles/sign-up-organization/
-[adtenant]: http://technet.microsoft.com/ja-jp/library/jj573650#createAzureTenant
+[signuporg]: http://azure.microsoft.com/documentation/articles/sign-up-organization/
+[adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [portal]: https://manage.windowsazure.com/
 [xplatsetup]: /ja-jp/documentation/articles/xplat-cli/
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
+
+<!--HONumber=46--> 

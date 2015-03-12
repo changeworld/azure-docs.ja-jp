@@ -1,6 +1,20 @@
-﻿<properties pageTitle="認証の使用 (Windows ストア) | モバイル デベロッパー センター" description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows ストア アプリのユーザーを認証する方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="認証の使用 (Windows ストア) | モバイル デベロッパー センター" 
+	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows ストア アプリのユーザーを認証する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/18/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/18/2014" 
+	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加
 
@@ -37,7 +51,7 @@
 
 <ol start="3">
 <li><p>Visual Studio で、TodoList アプリの Windows ストア プロジェクトを右クリックして、<strong>[スタートアップ プロジェクトに設定]</strong> をクリックします。</p></li>
-<li><p>共有プロジェクトで、App.xaml.cs プロジェクト ファイルを開き、<a href="http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx">MobileServiceClient</a> の定義を見つけ、Azure で実行されているモバイル サービスに接続するように構成されていることを確認します。</p>
+<li><p>共有プロジェクトで、App.xaml.cs プロジェクト ファイルを開き、<a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx">MobileServiceClient</a> の定義を見つけ、Azure で実行されているモバイル サービスに接続するように構成されていることを確認します。</p>
 <p>Visual Studio ツールを使用してアプリをモバイル サービスに接続する場合、ツールはクライアント プラットフォームごとに 1 つずつ、<strong>MobileServiceClient</strong> 定義を合計 2 セット生成します。この機会に、<code>#if...#endif</code> でラップされた <strong>MobileServiceClient</strong> 義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを単純化することができます。Azure の管理ポータルからクイック スタート アプリをダウンロードした場合は、これを行う必要はありません。</p>
 </li> 
 <li><p>F5 キーを押して、Windows ストア アプリを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>

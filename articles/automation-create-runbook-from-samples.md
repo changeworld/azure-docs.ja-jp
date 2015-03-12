@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Get Started with Azure Automation" pageTitle="Azure オートメーションの使用" metaKeywords="" description="Azure でオートメーション ジョブをインポートして実行する方法について説明します。" metaCanonical="" services="automation" documentationCenter="" title="Get Started with Azure Automation" authors="bwren" solutions="" manager="stevenka" editor="" />
+﻿<properties 
+	pageTitle="Azure オートメーションの使用" 
+	description="Azure でオートメーション ジョブをインポートして実行する方法について説明します。" 
+	services="automation" 
+	documentationCenter="" 
+	authors="bwren" 
+	manager="stevenka" 
+	editor=""/>
 
-<tags ms.service="automation" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/21/2014" ms.author="bwren" />
+<tags 
+	ms.service="automation" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="1/13/2015" 
+	ms.author="bwren"/>
 
 
 # Azure オートメーションの使用
@@ -9,7 +23,7 @@
 
 このチュートリアルでは、Azure オートメーションにサンプルの「Hello World」Runbook をインポートし、その Runbook を実行して、出力を表示する手順について説明します。
 
->[WACOM.NOTE] [Azure PowerShell コマンドレット](http://msdn.microsoft.com/ja-jp/library/jj156055.aspx)を使用する Azure の操作を自動化する方法については、 <a href="http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/">「Azure Automation:Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)」を参照してください</a>。
+>[WACOM.NOTE] [Azure PowerShell コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)を使用する Azure の操作を自動化する方法については、 <a href="http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/">「Azure Automation:Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)」を参照してください</a>。
 
 ## サンプル Runbook とユーティリティ Runbook
 
@@ -117,7 +131,7 @@ Azure オートメーション チームはさまざまな Runbook サンプル�
 
 
 # Runbook からの Azure サービスの管理 
-この例では、Azure サービスを管理しない簡単な Runbook を示しています。[Azure コマンドレット](http://msdn.microsoft.com/ja-jp/library/jj156055.aspx)は Azure の認証を要求します。Azure オートメーションによる管理のために Azure サブスクリプションを構成するには、「[Azure Automation:Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)]」(http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)の指示に従います。
+この例では、Azure サービスを管理しない簡単な Runbook を示しています。[Azure コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)は Azure の認証を要求します。Azure オートメーションによる管理のために Azure サブスクリプションを構成するには、「[Azure Automation:Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)]」(http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)の指示に従います。
 
 # 関連項目
 
@@ -127,3 +141,5 @@ Azure オートメーション チームはさまざまな Runbook サンプル�
 - [Azure Automation:Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Twilio Voice/SMS Service" pageTitle="音声および SMS に Twilio を使用する方法 (Ruby) - Azure" metaKeywords="Azure Ruby Twilio, Azure 電話, Azure 電話, Azure twilio, Azure SMS, Azure SMS, Azure 音声通話, azure 音声通話, Azure テキスト メッセージ, Azure テキスト メッセージ" description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Ruby で記述されています。" metaCanonical="" services="" documentationCenter="Ruby" title="How to Use Twilio for Voice and SMS Capabilities in PHP" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
+﻿<properties 
+	pageTitle="音声および SMS に Twilio を使用する方法 (Ruby) - Azure" 
+	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Ruby で記述されています。" 
+	services="" 
+	documentationCenter="ruby" 
+	authors="devinrader" 
+	manager="twilio" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="11/25/2014" ms.author="MicrosoftHelp@twilio.com" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="ruby" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="MicrosoftHelp@twilio.com"/>
 
 
 
@@ -27,7 +41,7 @@ Twilio は、既存の Web 言語およびスキルを使用して音声およ�
 **Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。**Twilio SMS** を使用すると、アプリケーションで SMS メッセージの送受信を行うことができます。**Twilio Client** を使用すると、アプリケーションに (モバイル接続を含む) 既存のインターネット接続を使用した音声通信を組み込むことができます。
 
 ## <a id="Pricing"></a>Twilio の料金および特別プラン
-Twilio の料金については、[Twilio の料金に関するページ] [twilio_pricing] でご確認ください。Azure ユーザーには、[特別プラン][special_offer] として、1,000 件のテキストまたは 1,000 分の着信通話相当の無料クレジットが用意されています。この特別プランにサインアップする、または詳細を確認するには、[http://ahoy.twilio.com/azure][special_offer] を参照してください。  
+Twilio の料金については、[Twilio の料金に関するページ] [twilio_pricing] でご確認ください。Azure ユーザーには、[特別プランとして][special_offer]: 1,000 件のテキストまたは 1,000 分の着信通話相当の無料クレジットが用意されています。この特別プランにサインアップする、または詳細を確認するには、[http://ahoy.twilio.com/azure][special_offer] を参照してください。  
 
 ## <a id="Concepts"></a>概念
 Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。クライアント ライブラリはさまざまな言語で用意されています。言語の一覧については、[Twilio API ライブラリに関するページ] [twilio_libraries] を参照してください。
@@ -42,7 +56,7 @@ TwiML は、通話または SMS をどのように処理するかを Twilio に�
        <Say>Hello World</Say>
     </Response>
 
-すべての TwiML ドキュメントにはルート要素として `<Response>` があります。ここから、Twilio 動詞を使用してアプリケーションの動作を定義します。
+すべての TwiML ドキュメントには、`<Response>` がルート要素として存在します。ここから、Twilio 動詞を使用してアプリケーションの動作を定義します。
 
 ### <a id="Verbs"></a>TwiML 動詞
 Twilio 動詞は、何を**実行する**かを Twilio に通知する XML タグです。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。 
@@ -65,17 +79,17 @@ Twilio の動詞と属性、および TwiML の詳細については、[TwiML] [
 ## <a id="CreateAccount"></a>Twilio アカウントを作成する
 Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ] [try_twilio] でサインアップします。無料アカウントで始め、後でアカウントをアップグレードすることができます。
 
-Twilio アカウントにサインアップすると、アプリケーションで使用できる無料の電話番号が与えられます。さらに、アカウント SID と認証トークンも受け取ります。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント SID と認証トークンは、[Twilio アカウント ページ][twilio_account] の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
+Twilio アカウントにサインアップすると、アプリケーションで使用できる無料の電話番号が与えられます。さらに、アカウント SID と認証トークンも受け取ります。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント SID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
 ### <a id="VerifyPhoneNumbers"></a>電話番号を確認する
 Twilio から与えられた番号の他に、自分で管理している番号 (携帯電話や自宅の電話番号) を確認してアプリケーションで使用することもできます。 
 
 電話番号を確認する方法の詳細については、「[Manage Numbers (番号の管理)] [verify_phone]」を参照してください。
 
-## <a id="create_app"></a>Ruby アプリケーションの作成
-Twilio サービスを使用し、Azure で動作している Ruby アプリケーションと、Twilio サービスを使用するその他の Ruby アプリケーションに違いはありません。Twilio サービスは REST ベースであり、Ruby から複数の方法で呼び出すことができますが、この記事では、Twilio サービスの呼び出しに [Ruby 用 Twilio ヘルパー ライブラリ][twilio_ruby] を使用する方法について重点的に説明します。
+## <a id="create_app"></a>Ruby アプリケーションを作成する
+Twilio サービスを使用し、Azure で動作している Ruby アプリケーションと、Twilio サービスを使用するその他の Ruby アプリケーションに違いはありません。Twilio サービスは REST ベースであり、Ruby から複数の方法で呼び出すことができますが、この記事では、Twilio サービスの呼び出しに [Ruby 用 Twilio ヘルパー ライブラリ][twilio_ruby]を使用する方法について重点的に説明します。
 
-まず、新しい Ruby Web アプリケーションのホストとして動作する [新しい Azure Linux VM をセットアップ][azure_vm_setup] します。Rails アプリケーションの作成に関する手順は無視し、VM のセットアップだけを行ってください。作成するエンドポイントは、外部ポートを 80、内部ポートを 5000 としてください。
+まず、新しい Ruby Web アプリケーションのホストとして動作する[新しい Azure Linux VM をセットアップ][azure_vm_setup]します。Rails アプリケーションの作成に関する手順は無視し、VM のセットアップだけを行ってください。作成するエンドポイントは、外部ポートを 80、内部ポートを 5000 としてください。
 
 以下の例では、Ruby 用の非常にシンプルな Web フレームワークである [Sinatra][sinatra] を使用しています。もちろん、Ruby on Rails などの他の Web フレームワークで Twilio ヘルパー ライブラリを使用することもできます。
 
@@ -85,7 +99,7 @@ Twilio サービスを使用し、Azure で動作している Ruby アプリケ�
     gem 'sinatra'
     gem 'thin'
 
-コマンド ラインで `bundle install` を実行します。これにより、上に示した依存関係がインストールされます。次に、`web.rb` というファイルを作成します。これが Web アプリケーションのコードを記述する場所になります。このファイルに次のコードを貼り付けます。
+コマンド ラインで、`bundle install` を実行します。これにより、上に示した依存関係がインストールされます。次に、`web.rb` というファイルを作成します。これが Web アプリケーションのコードを記述する場所になります。このファイルに次のコードを貼り付けます。
 
     require 'sinatra'
 
@@ -100,7 +114,7 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 
     gem 'twilio-ruby'
 
-コマンド ラインで `bundle install` を実行します。`web.rb` を開き、先頭に次の行を追加します。
+コマンド ラインで、`bundle install` を実行します。`web.rb` を開き、先頭に次の行を追加します。
 
     require 'twilio-ruby'
 
@@ -111,25 +125,25 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 
 次の関数を `web.md` に追加します。
 
-    # アカウント ID と認証トークンを設定します。
+    # Set your account ID and authentication token.
 	sid = "your_twilio_account_sid";
 	token = "your_twilio_authentication_token";
 
-	# 呼び出しを開始する電話番号です
-    # これは、Twilio 番号または確認済みの番号のいずれかにする必要があります。
+	# The number of the phone initiating the the call.
+    # This should either be a Twilio number or a number that you've verified
 	from = "NNNNNNNNNNN";
 
-	# 呼び出しを受ける電話番号です。
+	# The number of the phone receiving call.
 	to = "NNNNNNNNNNN";
 
-	# TwiML 応答には Twilio が提供したサイトを使用します。
+	# Use the Twilio-provided site for the TwiML response.
     url = "http://yourdomain.cloudapp.net/voice_url";
       
     get '/make_call' do
 	  # Create the call client.
 	  client = Twilio::REST::Client.new(sid, token);
       
-      # 通話します
+      # Make the call
       client.account.calls.create(to: to, from: from, url: url)
     end
 
@@ -139,14 +153,14 @@ Twilio ライブラリを使用するように Web アプリケーションを�
        </Response>"
     end
     
-ブラウザーで `http://yourdomain.cloudapp.net/make_call` を開くと、通話を発信する Twilio API の呼び出しがトリガーされます。`client.account.calls.create` の最初の 2 つのパラメーターは、文字どおり、呼び出し `元` の番号と呼び出し `先` の番号です。 
+ブラウザーで `http://yourdomain.cloudapp.net/make_call` を開くと、通話を発信する Twilio API の呼び出しがトリガーされます。`client.account.calls.create` の最初の 2 つのパラメーターは、文字どおり、呼び出し元 (`from`) と呼び出し先 (`to`) の番号です。 
 
 3 つ目のパラメーター (`url`) は、通話がつながったときの動作に関する指示を受け取るために Twilio が要求する URL です。この例では、単純な TwiML ドキュメントを返す URL (`http://yourdomain.cloudapp.net`) を設定し、テキストを音声に変換する `<Say>` 動詞を使用して、通話の受信者に "Hello Monkey" という音声を届けます。
 
 ## <a id="howto_recieve_sms"></a>方法:SMS メッセージを受信する
 前の例では、**発信**通話を開始しました。今度は、Twilio へのサインアップ時に受け取った電話番号を使用して、**受信** SMS メッセージを処理します。
 
-まず、[Twilio ダッシュボード][twilio_account] にログインします。上部のナビゲーションで [Numbers] をクリックし、自分の Twilio 番号をクリックします。構成できる URL が 2 つ表示されます。Voice Request URL と、SMS Request URL です。これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。これらの URL は "Web フック" とも呼ばれます。
+まず、[Twilio ダッシュボード][twilio_account]にログインします。上部のナビゲーションで [Numbers] をクリックし、自分の Twilio 番号をクリックします。構成できる URL が 2 つ表示されます。Voice Request URL と、SMS Request URL です。これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。これらの URL は "Web フック" とも呼ばれます。
 
 今回は受信 SMS メッセージを処理するので、URL を `http://yourdomain.cloudapp.net/sms_url` に更新します。ページの下部にある [Save Changes] をクリックします。`web.rb` に戻り、アプリケーションをプログラミングして次の処理を追加します。
 
@@ -164,10 +178,10 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 ### <a id="NextSteps"></a>次のステップ
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* [Twilio に関するセキュリティ ガイドライン][twilio_security_guidelines]
+* [Twilio に関するセキュリティ ガイドライン] [twilio_security_guidelines]
 * [Twilio に関する方法とコード例のページ] [twilio_howtos]
 * [Twilio に関するクイック スタート チュートリアルのページ][twilio_quickstarts] 
-* [GitHub 上の Twilio に関するページ][twilio_on_github]
+* [GitHub 上の Twilio に関するページ] [twilio_on_github]
 * [Twilio に関するサポートへの連絡のページ] [twilio_support]
 
 [twilio_ruby]: https://www.twilio.com/docs/ruby/install
@@ -191,6 +205,6 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: http://www.windowsazure.com/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
+[azure_vm_setup]: http://azure.microsoft.com/develop/ruby/tutorials/web-app-with-linux-vm/
 
-<!--HONumber=35.2-->
+<!--HONumber=45-->

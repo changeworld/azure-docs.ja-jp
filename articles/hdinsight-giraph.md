@@ -88,7 +88,7 @@ Giraph は、HDInsight クラスターの一部としては提供されないた
 
 	コマンドが完了すると、JAR ファイルが wasb:///example/jars/giraph.jar にアップロードされています。
 
-	> [AZURE.NOTE] HDInsight へのファイルのアップロードに使用できるユーティリティの一覧については、「[HDInsight での Hadoop ジョブ用データのアップロード](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-upload-data/)」を参照してください。
+	> [AZURE.NOTE] HDInsight へのファイルのアップロードに使用できるユーティリティの一覧については、「[HDInsight での Hadoop ジョブ用データのアップロード](http://azure.microsoft.com/documentation/articles/hdinsight-upload-data/)」を参照してください。
 
 ##<a id="run"></a>サンプルの実行
 
@@ -204,7 +204,7 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 
 ###旧バージョンの HDInsight
 
-旧バージョンの HDInsight で Giraph を使用する場合は、そのバージョンでサポートされる Hadoop バージョン用にコンパイルする必要があります。自分の HDInsight バージョンに対応する Hadoop バージョンを判断するには、「[HDInsight で提供されるクラスター バージョンの新機能](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)」を参照してください。
+旧バージョンの HDInsight で Giraph を使用する場合は、そのバージョンでサポートされる Hadoop バージョン用にコンパイルする必要があります。自分の HDInsight バージョンに対応する Hadoop バージョンを判断するには、「[HDInsight で提供されるクラスター バージョンの新機能](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)」を参照してください。
 
 さらに、旧バージョンの HDInsight では、Giraph ジョブを Hadoop コマンド ラインから実行する必要がある場合もあります。PowerShell からジョブを実行してエラーが発生した場合は、[Hadoop コマンド ライン]からジョブを実行してみてください(#cmd)。
 
@@ -214,8 +214,7 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 
 [giraph]: http://giraph.apache.org
 [tools]: https://github.com/Blackmist/hdinsight-tools
-[aps]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
-[pig]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-pig/
-[hive]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-hive/
-
+[aps]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[pig]: http://azure.microsoft.com/documentation/articles/hdinsight-use-pig/
+[hive]: http://azure.microsoft.com/documentation/articles/hdinsight-use-hive/
 <!--HONumber=42-->

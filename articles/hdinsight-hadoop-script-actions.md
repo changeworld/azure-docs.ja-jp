@@ -123,7 +123,7 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 - [HDInsight クラスターに Solr をインストールして使用する](../hdinsight-hadoop-solr-install) 
 - [HDInsight クラスターに Giraph をインストールして使用する](../hdinsight-hadoop-giraph-install)  
 
-> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
 
 ## <a name="testScript"></a>HDInsight Emulator のカスタム スクリプトをテストする方法
 
@@ -131,7 +131,7 @@ HDInsight の Script Action コマンドで使用する前に、カスタム ス
 
 このセクションでは、テストの目的でローカルで HDInsight Emulator を使用するための手順を説明しますが、VM を使用する手順と同様です。
 
-**HDInsight Emulator のインストール**:Script Actions をローカルで実行するには、HDInsight Emulator をインストールしておく必要があります。インストールする方法の手順については、「[HDInsight Emulator の概要](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-get-started-emulator/)」を参照してください。
+**HDInsight Emulator のインストール**:Script Actions をローカルで実行するには、HDInsight Emulator をインストールしておく必要があります。インストールする方法の手順については、「[HDInsight Emulator の概要](http://azure.microsoft.com/documentation/articles/hdinsight-get-started-emulator/)」を参照してください。
 
 **Azure PowerShell の実行ポリシーの設定:** Microsoft Azure PowerShell を開き、(管理者として) 次のコマンドを実行して実行ポリシーを  *LocalMachine* および  *Unrestricted* に設定します。
  
@@ -214,4 +214,4 @@ Spark および R クラスターを使用する際、必要なデータ ファ�
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
 [powershell-install-configure]: ../install-configure-powershell/
-<!--HONumber=42-->
+\<!--HONumber=42-->

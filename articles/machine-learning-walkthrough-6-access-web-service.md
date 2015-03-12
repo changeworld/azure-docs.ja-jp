@@ -1,6 +1,20 @@
-﻿<properties title="Step 6: Access the Azure Machine Learning web service" pageTitle="手順 6.Machine Learning Web サービスにアクセスする | Azure" description="手順 6.アクティブな Azure Machine Learning API Web サービスにアクセスする" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+<properties 
+	pageTitle="手順 6: Machine Learning Web サービスにアクセスする | Azure" 
+	description="ソリューションのチュートリアル手順 6: アクティブな Azure Machine Learning API Web サービスにアクセスする" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/06/2014" 
+	ms.author="garye"/>
 
 
 これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][develop]」の最後の手順です。
@@ -79,3 +93,5 @@ API ヘルプ ページには、R、C#、Python の各プログラミング言�
 	result = h$value()
 
 
+
+<!--HONumber=46--> 

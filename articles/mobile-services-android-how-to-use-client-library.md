@@ -1,6 +1,20 @@
-<properties pageTitle="Mobile Services 向け Android クライアント ライブラリの操作" description="Azure Mobile Services 向け Android クライアントを使用する方法について説明します。" services="mobile-services" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="Mobile Services 向け Android クライアント ライブラリの操作" 
+	description="Azure Mobile Services 向け Android クライアントを使用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="android" 
+	authors="RickSaling" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/20/2014" ms.author="ricksal"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="Mobile-Android" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/20/2014" 
+	ms.author="ricksal"/>
 
 # モバイル サービス向け Android クライアント ライブラリの使用方法
 
@@ -882,7 +896,7 @@ Android クライアント API に関する Javadocs リファレンスについ
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?linkid=280126
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android/
 [ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
 
 
 <!--HONumber=42-->

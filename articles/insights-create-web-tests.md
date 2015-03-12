@@ -1,6 +1,18 @@
-﻿<properties title="How to create web test" pageTitle="Web テストの作成方法" description="Azure で Web テストを作成する方法について説明します。" authors="awills" manager="kamrani" />
+﻿<properties 
+	pageTitle="Web テストの作成方法" 
+	description="Azure で Web テストを作成する方法について説明します。" 
+	services="application-insights" 
+	authors="alancameronwills" 
+	manager="kamrani"/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-09-29" ms.author="awills"  />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2015-01-17" 
+	ms.author="awills"/>
 
 # Microsoft Azure Web サイトの Web テスト
 Azure Web サイトは引き続き実行されているでしょうか。正常に応答しており、十分速いでしょうか。Web テストを構成し、Web サイトを定期的にテストしてください。サイトがダウンした場合や、応答が遅いか不適切な場合は、電子メール アラートが配信されます。時間の経過に伴う、サイトの可用性と応答時間を示すグラフが表示されます。  
@@ -47,3 +59,5 @@ Web テストの結果、成功の条件を満たさなかった場合は、そ�
 ![Open in VS](./media/insights-create-web-tests/Insights_OpenInVS.png)
 
 [availability]: ../app-insights-monitor-web-app-availability/
+
+<!--HONumber=46--> 

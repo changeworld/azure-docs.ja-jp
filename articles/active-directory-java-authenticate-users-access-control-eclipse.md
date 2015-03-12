@@ -1,6 +1,20 @@
-<properties urlDisplayName="Access Control" pageTitle="Access Control の使用方法 (Java) - Azure の機能ガイド" metaKeywords="" description="Azure 上で Java により Access Control を開発および使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="Java" title="How to Authenticate Web Users with Azure Access Control Service Using Eclipse" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties 
+	pageTitle="Access Control の使用方法 (Java) - Azure の機能ガイド" 
+	description="Azure 上で Java により Access Control を開発および使用する方法について説明します。" 
+	services="active-directory" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="robmcm"/>
 
 # Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法
 
@@ -80,9 +94,9 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 - Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/>  からダウンロードできます。
 - Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
 - Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
-- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690946.aspx)」を参照してください。
+- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
 - アプリケーションで使用する X.509 証明書。この証明書は .cer (公開証明書) と .PFX (Personal Information Exchange) の両方の形式のものが必要です。(この証明書の作成方法についてはこのチュートリアルで後で説明)。
-- 「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターにデプロイする手法に精通していること。
+- 「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターにデプロイする手法に精通していること。
 
 ## <a name="create-namespace"></a>ACS 名前空間の作成
 
@@ -217,7 +231,7 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
 
 1. Eclipse の Project Explorer で、**MyACSHelloWorld** を右クリックし、**[Azure]**、**[Package for Azure]** の順にクリックします。
 2. **[Project name]** で、「**MyAzureACSProject**」と入力し、**[Next]** をクリックします。
-3. JDK とアプリケーション サーバーを選択します(これらの手順の詳細については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」のチュートリアルを参照)。
+3. JDK とアプリケーション サーバーを選択します(これらの手順の詳細については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」のチュートリアルを参照)。
 4. **[Finish]** をクリックします。
 5. **[Run in Azure Emulator]** ボタンをクリックします。
 6. Java Web アプリケーションがコンピューティング エミュレーターで起動した後、ブラウザーのすべてのインスタンスを閉じます (ブラウザー セッションが開いていると ACS ログイン テストの妨げになるためです)。
@@ -251,11 +265,11 @@ Azure に展開するには、ACS 名前空間の証明書利用者領域と戻�
 
 13. **[Finish]** をクリックして、**[Edit Library]** ダイアログ ボックスを閉じます。
 14. **[OK]** をクリックして **[Properties for MyACSHelloWorld]** ダイアログ ボックスを閉じます。
-15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」の「**To deploy your application to Azure (アプリケーションを Azure にデプロイするには)**」で行ったものと同様です。 
+15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」の「**To deploy your application to Azure (アプリケーションを Azure にデプロイするには)**」で行ったものと同様です。 
 
 Web アプリケーションのデプロイ後、開いているブラウザー セッションをすべて閉じてから、Web アプリケーションを実行します。Windows Live ID 資格情報でログインするように求められます。その資格情報は証明書利用者アプリケーションの戻り先 URL に送信されます。
 
-ACS Hello World アプリケーションの使用後はデプロイを削除することを忘れないでください (デプロイメントの削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」を参照)。
+ACS Hello World アプリケーションの使用後はデプロイを削除することを忘れないでください (デプロイメントの削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」を参照)。
 
 
 ## <a name="next_steps"></a>次のステップ
@@ -333,3 +347,5 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
+
+<!--HONumber=46--> 

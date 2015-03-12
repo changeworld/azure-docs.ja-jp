@@ -1,6 +1,20 @@
-﻿<properties pageTitle="SignalR および Mobile Services を使用したリアルタイム プッシュの使用 | モバイル デベロッパー センター" description="SignalR と Mobile Services を使用してリアルタイム プッシュを行う方法について説明します。" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="" services=""/>
+﻿<properties 
+	pageTitle="SignalR および Mobile Services を使用したリアルタイム プッシュの使用 | モバイル デベロッパー センター" 
+	description="SignalR と Mobile Services を使用してリアルタイム プッシュを行う方法について説明します。" 
+	documentationCenter="windows" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="08/19/2014" ms.author="mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="08/19/2014" 
+	ms.author="mahender"/>
 
 # SignalR および Mobile Services を使用したリアルタイム プッシュの使用
 

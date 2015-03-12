@@ -1,6 +1,20 @@
-<properties pageTitle="Azure ポータルを使用した HDInsight Hadoop クラスターの管理 | Azure" description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。." services="hdinsight" documentationCenter="" authors="mumian" manager="paulettm" editor="cgronlun"/>
+﻿<properties 
+	pageTitle="Azure ポータルを使用した HDInsight Hadoop クラスターの管理 | Azure" 
+	description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。." 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/21/2014" ms.author="jgao"/>
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="jgao"/>
 
 
 
@@ -83,7 +97,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 リモート デスクトップ接続を使用したクラスターでのカスタム ソフトウェアのインストールはサポートされていません。クラスターを再作成する必要がある場合は、ヘッド ノードのドライブは失われるため、これらのドライブにファイルを保存しないでください。Azure BLOB ストレージにファイルを保存することをお勧めします。BLOB ストレージは永続的です。
 
 ##<a id="password"></a> HDInsight クラスターのユーザー名とパスワードの変更
-HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。HDInsight クラスターのユーザー アカウントは、プロビジョニング処理中に作成されます。RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。「[リモート デスクトップを有効にする](#enablerdp)」を参照してください。
+HDInsight クラスターは、2 つのユーザー アカウントを持つことができます。HDInsight クラスターのユーザー アカウントは、プロビジョニング処理中に作成されます。RDP を使用してクラスターにアクセスするために、RDP ユーザー アカウントを作成することもできます。「[リモート デスクトップを有効にする]」を参照してください。(#enablerdp)。
 
 **HDInsight クラスターのユーザー名とパスワードを変更するには**
 
@@ -218,15 +232,15 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [hdinsight-submit-jobs]: ../hdinsight-submit-hadoop-jobs-programmatically/
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 [hdinsight-versions]: ../hdinsight-component-versioning/
-[hdinsight-support]: http://azure.microsoft.com/ja-jp/support/options/
-[makecert-info]: http://msdn.microsoft.com/ja-jp/library/bfsktky3(v=vs.110).aspx
+[hdinsight-support]: http://azure.microsoft.com/support/options/
+[makecert-info]: http://msdn.microsoft.com/library/bfsktky3(v=vs.110).aspx
 
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
 [azure-management-portal]: https://manage.windowsazure.com/
 
-[azure-purchase-options]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 
 [hadoop-command-reference]: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html
@@ -236,6 +250,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop command line"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterCreate.UploadCert.png
-
-
 <!--HONumber=42-->

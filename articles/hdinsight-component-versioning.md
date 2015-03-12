@@ -50,7 +50,7 @@ HDInsight クラスターのバージョンに関連付けられたコンポー�
 
 **リリース ノート**	
 
-HDInsight の最新バージョンの追加のリリース ノートについては、[HDInsight リリース ノート](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/)に関するページを参照してください。
+HDInsight の最新バージョンの追加のリリース ノートについては、[HDInsight リリース ノート](http://azure.microsoft.com/documentation/articles/hdinsight-release-notes/)に関するページを参照してください。
 
 ### HDInsight クラスターのプロビジョニング時にバージョンを選択
 
@@ -90,7 +90,7 @@ HDInsight PowerShell コマンドレットまたは HDInsight .NET SDK を使用
 次の表に、現在使用できる HDInsight のバージョン、該当する Hortonworks Data Platform (HDP) のバージョン、そのリリース日を示します。非推奨となった場合は、サポート有効期限とその日付も記載されます。以下に注意してください。
 
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1、3.0、および 3.1 クラスターでは既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
-* 特定のバージョンのサポート期限が切れると、Azure の管理ポータルから利用できなくなる可能性があります。次の表に、Azure の管理ポータルで利用できるバージョンを示します。クラスター バージョンは、PowerShell の [New-AzureHDInsightCluster](http://msdn.microsoft.com/ja-jp/library/dn593744.aspx) コマンドと  .NET SDK の  `Version` パラメーターを使用して、廃止日まで継続して利用できます。 
+* 特定のバージョンのサポート期限が切れると、Azure の管理ポータルから利用できなくなる可能性があります。次の表に、Azure の管理ポータルで利用できるバージョンを示します。クラスター バージョンは、PowerShell の [New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx) コマンドと  .NET SDK の  `Version` パラメーターを使用して、廃止日まで継続して利用できます。 
 
 <table border="1">
 <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure の管理ポータルで利用可能</th><th>サポート有効期限</th><th>非推奨となる日</th></tr>
@@ -113,7 +113,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 **廃止日**とは、クラスター バージョンが HDInsight で作成できなくなった翌日です。
 
-> [AZURE.NOTE] HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](http://msdn.microsoft.com/ja-jp/library/azure/ee924680.aspx#explanation) で実行されます。 
+> [AZURE.NOTE] HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](http://msdn.microsoft.com/library/azure/ee924680.aspx#explanation) で実行されます。 
 
 ## HDInsight バージョンに対応する Hortonworks リリース ノート##
 
@@ -128,7 +128,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [image-hdi-versioning-versionscreen]: ./media/hdinsight-component-versioning/hdi-versioning-version-screen.png
 
-[wa-forums]: http://azure.microsoft.com/ja-jp/support/forums/
+[wa-forums]: http://azure.microsoft.com/support/forums/
 
 [connect-excel-with-hive-ODBC]: ../hdinsight-connect-excel-hive-ODBC-driver/
 
@@ -145,5 +145,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [zookeeper]: http://zookeeper.apache.org/ 
-
 <!--HONumber=42-->

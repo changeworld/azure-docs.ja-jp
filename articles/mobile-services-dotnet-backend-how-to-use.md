@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Mobile Services .NET バックエンドの使用 - Azure Mobile Services" description="テーブル データ、API、認証、スケジュールされたジョブの操作方法を含め、Azure Mobile Services 向けの .NET バックエンド プログラミング モデルの詳細を示します。" services="" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="mollybos"/>
+﻿<properties 
+	pageTitle="Mobile Services .NET バックエンドの使用 - Azure Mobile Services" 
+	description="テーブル データ、API、認証、スケジュールされたジョブの操作方法を含め、Azure Mobile Services 向けの .NET バックエンド プログラミング モデルの詳細を示します。" 
+	services="" 
+	documentationCenter="windows" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/11/2014" 
+	ms.author="mahender"/>
 # Mobile Services .NET バックエンドの使用
 
 <div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use/" title=".NET backend" class="current">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/"  title="JavaScript backend">JavaScript バックエンド</a></div>

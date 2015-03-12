@@ -1,12 +1,25 @@
-﻿<properties linkid="batch-technical-overview" urlDisplayName="" pageTitle="Azure Batch の技術概要" metaKeywords="" description="Azure Batch サービスの概念、ワークフロー、シナリオについて説明します。" metaCanonical="" services="batch" documentationCenter="" title="Azure Batch technical overview" authors="danlep" solutions="" manager="timlt" editor="tysonn" />
+﻿<properties 
+	pageTitle="Azure Batch の技術概要" 
+	description="Azure Batch サービスの概念、ワークフロー、シナリオについて説明します。" 
+	services="batch" 
+	documentationCenter="" 
+	authors="dlepow" 
+	manager="timlt"/>
 
-<tags ms.service="batch" ms.workload="big-compute" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/08/2014" ms.author="danlep" />
+<tags 
+	ms.service="batch" 
+	ms.workload="big-compute" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/30/2015" 
+	ms.author="danlep"/>
 
 
 #Azure Batch の技術概要
 Azure Batch は、コンピューティング リソースのジョブ スケジューリングおよび自動スケーリングをプラットフォーム サービスとして提供して、大規模な並列および高パフォーマンス コンピューティング (HPC) アプリケーションをクラウドで容易に実行できるようにします。Batch SDK と Batch サービスを使用すると、管理された仮想マシンのコレクションでオンデマンド実行またはスケジュール実行するようにバッチ ワークロードを構成できます。基になるプラットフォームでのジョブのスケジューリングやリソースの管理に伴う複雑さに悩む必要はありません。
  
->[WACOM.NOTE]Batch はプレビュー段階です。Batch を使用するには、Azure のアカウントが必要です。さらに、サブスクリプションで Batch プレビューを有効にする必要があります。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure アカウントの作成](http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/)に関するページを参照してください。 
+>[WACOM.NOTE]Batch はプレビュー段階です。Batch を使用するには、Azure のアカウントが必要です。さらに、サブスクリプションで Batch プレビューを有効にする必要があります。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure アカウントの作成](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)に関するページを参照してください。 
 
 
 この記事では、次の項目について概説します。
@@ -53,7 +66,7 @@ REST ベースの Batch API は、Batch サービスでバッチ ワークロー
 
 <h2 id="BKMK_Entities">Batch の概念</h2>
 
-Batch サービスと API を操作するための主要な概念を次のセクションで概説します。詳細については、「[Azure Batch の API の基本](http://azure.microsoft.com/ja-jp/documentation/articles/batch-api-basics)」を参照してください。 
+Batch サービスと API を操作するための主要な概念を次のセクションで概説します。詳細については、「[Azure Batch の API の基本](http://azure.microsoft.com/documentation/articles/batch-api-basics)」を参照してください。 
 
 * [Batch アカウント](#BKMK_Account)
 * [タスク仮想マシンとプール](#BKMK_TVM)
@@ -173,8 +186,8 @@ Batch を使用した開発で使用する API に応じて、作業項目、ジ
 	
 <h2 id="BKMK_Resources">その他のリソース</h2>
 
-* [.NET 向け Azure Batch ライブラリの概要](http://azure.microsoft.com/ja-jp/documentation/articles/batch-dotnet-get-started/)
-* [Azure Batch 開発ライブラリおよびツール](http://azure.microsoft.com/ja-jp/documentation/articles/batch-development-libraries-tools/)
+* [.NET 向け Azure Batch ライブラリの概要](http://azure.microsoft.com/documentation/articles/batch-dotnet-get-started/)
+* [Azure Batch 開発ライブラリおよびツール](http://azure.microsoft.com/documentation/articles/batch-development-libraries-tools/)
 * [Azure Batch REST API リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=517803)
 * [Azure Batch Apps REST API リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=517804)
 
@@ -186,3 +199,5 @@ Batch を使用した開発で使用する API に応じて、作業項目、ジ
 [app_pub_workflow]: ./media/batch-technical-overview/app_pub_workflow.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

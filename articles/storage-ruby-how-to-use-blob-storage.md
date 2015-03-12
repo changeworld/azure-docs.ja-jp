@@ -162,8 +162,7 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス:[Azure のデータの格納とアクセス](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx)
+-   MSDN リファレンス:[Azure のデータの格納とアクセス](http://msdn.microsoft.com/library/windowsazure/gg433040.aspx)
 -   [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 -   GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
-
 <!--HONumber=42-->

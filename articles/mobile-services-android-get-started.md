@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Android アプリ用 Azure Mobile Services の使用" description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" services="" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Android アプリ用 Azure Mobile Services の使用" 
+	description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" 
+	services="" 
+	documentationCenter="android" 
+	authors="RickSaling" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="hero-article" ms.date="10/16/2014" ms.author="ricksal,glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="Mobile-Android" 
+	ms.devlang="Java" 
+	ms.topic="hero-article" 
+	ms.date="10/16/2014" 
+	ms.author="ricksal,glenga"/>
 
 # <a name="getting-started"></a>Mobile Services の使用
 
@@ -20,7 +34,7 @@
 
 ダウンロードしたクイック スタート プロジェクトには、Android 向けのモバイル サービス SDK が含まれています。このプロジェクトではバージョン 4.2 以降の Android が必要であるものの、モバイル サービス SDK では Android バージョン 2.2 以降があれば問題ありません。
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28"%20target="_blank) を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28"%20target="_blank) を参照してください。
 
 >[AZURE.NOTE] 完成したアプリケーションのソース コードは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStarted/Android" target="_blank">ここ</a>で確認できます。
 
@@ -75,7 +89,7 @@
 	- 	**TodoActivity.java** の **OnCreate** メソッド内で、モバイル サービス クライアントをインスタンス化するコードを見つけます。前の図にこのコードが示されています。
 	- 	"MobileServiceUrl" を、モバイル サービスの実際の URL に置き換えます。
 	- 	"AppKey" を、モバイル サービスのキーに置き換えます。
-	- 	詳細については、チュートリアル「<a href="http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-android-get-started-data/">既存のアプリケーションへの Mobile Services の追加</a>」を参照してください。 
+	- 	詳細については、チュートリアル「<a href="http://azure.microsoft.com/documentation/articles/mobile-services-android-get-started-data/">既存のアプリケーションへの Mobile Services の追加</a>」を参照してください。 
 
 
 

@@ -19,7 +19,7 @@
 
 #Microsoft Azure Website の復元
 
-この記事では、Azure Websites のバックアップ機能を使用して以前にバックアップした Web サイトを復元する方法について説明します。詳細については、[Microsoft Azure の Web サイトのバックアップに関するページ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-backup/)をご覧ください。 
+この記事では、Azure Websites のバックアップ機能を使用して以前にバックアップした Web サイトを復元する方法について説明します。詳細については、[Microsoft Azure の Web サイトのバックアップに関するページ](http://azure.microsoft.com/documentation/articles/web-sites-backup/)をご覧ください。 
 
 Azure Websites の復元機能を使用して、オンデマンドで Web サイトを以前の状態に復元したり、元のサイトのいずれかのバックアップに基づいて新しい Web サイトを作成できます。最新バージョンと並列で実行する新しい Web サイトを作成すると、A/B テストを実施する場合に役立ちます。
 

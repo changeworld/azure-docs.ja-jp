@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Azure クロス プラットフォーム コマンド ライン インターフェイスによる役割ベースのアクセス制御の管理" metaKeywords="ResourceManager, Azure クロスプラットフォーム コマンド ライン インターフェイス, azure cli, azure コマンド ライン, azure cli, RBAC" description="クロスプラットフォームのコマンド ライン インターフェイスによる役割ベースのアクセス制御の管理" metaCanonical="" services="" documentationCenter="" title="Managing Role-Based Access Control with Cross-Platform Command-Line Interface" authors="guayan" solutions="" manager="terrylan" editor="mollybos" />
+﻿<properties 
+	pageTitle="Azure クロスプラットフォーム コマンドライン インターフェイスによる役割ベースのアクセス制御の管理" 
+	description="クロスプラットフォームのコマンド ライン インターフェイスによる役割ベースのアクセス制御の管理" 
+	services="" 
+	documentationCenter="" 
+	authors="guangyang" 
+	manager="terrylan" 
+	editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="11/03/2014" ms.author="guayan" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="command-line-interface" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/03/2014" 
+	ms.author="guayan"/>
 
 # クロスプラットフォームのコマンド ライン インターフェイスによる役割ベースのアクセス制御の管理 #
 
@@ -16,8 +30,8 @@ Azure プレビュー ポータルと Azure リソース マネージャー API 
 
 xplat-cli を使用して RBAC を管理する前に、以下を用意する必要があります。
 
-- Azure クロスプラットフォーム コマンド ライン インターフェイス バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/)」を参照してください。
-- また、次のチュートリアルをお読みになり、Azure クロスプラットフォーム コマンド ライン インターフェイスでの Azure リソース マネージャーのセット アップと使用について詳しく理解してください。[リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用](http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli-azure-resource-manager/)
+- Azure クロスプラットフォーム コマンド ライン インターフェイス バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](http://azure.microsoft.com/documentation/articles/xplat-cli/)」を参照してください。
+- また、次のチュートリアルをお読みになり、Azure クロスプラットフォーム コマンド ライン インターフェイスでの Azure リソース マネージャーのセット アップと使用について詳しく理解してください。[リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用](http://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/)
 
 ## このチュートリアルの内容 ##
 
@@ -33,7 +47,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 
     azure config mode arm
 
-詳細については、「[リソース マネージャーでの Azure クロスプラットフォーム コマンド ライン インターフェイスの使用](http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli-azure-resource-manager/)」を参照してください。
+詳細については、「[リソース マネージャーでの Azure クロスプラットフォーム コマンド ライン インターフェイスの使用](http://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/)」を参照してください。
 
 ご使用の Azure サブスクリプションに接続するには、以下のように入力します。
 
@@ -48,7 +62,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
     # サブスクリプション名を使用して、目的のサブスクリプションを選択します。
     azure account set <サブスクリプション名>
 
-詳細については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/)」を参照してください。
+詳細については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](http://azure.microsoft.com/documentation/articles/xplat-cli/)」を参照してください。
 
 ## <a id="check"></a>既存の役割の割り当ての確認 ##
 
@@ -125,10 +139,12 @@ Azure AD ディレクトリ内の特定のユーザー (リソース グルー�
 
 xplat-cli を使用した役割ベースのアクセス制御の管理の詳細と、関連トピックについては、以下を参照してください。
 
-- [Windows Azure での役割ベースのアクセス制御](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-configure/)
-- [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/)
-- [リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用](http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli-azure-resource-manager/)
-- [リソース グループを使用した Azure リソースの管理](http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups): Azure の管理ポータルでリソース グループを作成および管理する方法について説明します。
+- [Windows Azure での役割ベースのアクセス制御](http://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)
+- [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](http://azure.microsoft.com/documentation/articles/xplat-cli/)
+- [リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用](http://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/)
+- [リソース グループを使用した Azure リソースの管理](http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups): Azure の管理ポータルでリソース グループを作成および管理する方法について説明します。
 - [Azure のブログ](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
-- [Windows PowerShell を使用した役割ベースのアクセス制御の構成](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-powershell/)
-- [役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/)
+- [Windows PowerShell を使用した役割ベースのアクセス制御の構成](http://azure.microsoft.com/documentation/articles/role-based-access-control-powershell/)
+- [役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/documentation/articles/role-based-access-control-troubleshooting/)
+
+<!--HONumber=46--> 

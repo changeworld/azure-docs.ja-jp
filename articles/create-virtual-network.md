@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Tutorial: Create a cloud-only virtual network" pageTitle="チュートリアル: クラウド専用仮想ネットワークを作成する" metaKeywords="" description="このチュートリアルでは、サンプルのクラウド専用 Azure Virtual Network を作成する方法について説明します。" metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="Tutorial: Create a Clound-only Virtual Network in Azure" authors="cherylmc" solutions="" manager="adinah" editor="" />
+﻿<properties 
+	pageTitle="チュートリアル:クラウド専用の仮想ネットワークを作成する" 
+	description="このチュートリアルでは、サンプルのクラウド専用 Azure Virtual Network を作成する方法について説明します。" 
+	services="virtual-machines, virtual-network" 
+	documentationCenter="" 
+	authors="cherylmc" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/29/2014" ms.author="cherylmc" />
+<tags 
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/29/2014" 
+	ms.author="cherylmc"/>
 
 <h1 id="vnettut1">チュートリアル: Azure でのクラウド専用仮想ネットワークの作成</h1>
 
@@ -25,7 +39,7 @@
 
 ##  前提条件
 
-*  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションがない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップすることもできます。MSDN サブスクリプションがある場合は、[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/)を参照してください。
+*  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションがない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップすることもできます。MSDN サブスクリプションがある場合は、[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を参照してください。
 
 ##  このチュートリアル用の仮想ネットワークの作成
 
@@ -71,9 +85,9 @@
 
 Azure インフラストラクチャ サービスについてさらに学習するには、以下を参照してください。
 
-- [カスタム仮想マシンの作成方法](http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/) - このトピックでは仮想ネットワークに仮想マシンをインストールします。仮想マシンとインストール オプションの詳細については、「[Azure Virtual Machines](http://www.windowsazure.com/ja-jp/manage/windows/)」を参照してください。
+- [カスタム仮想マシンの作成方法](http://azure.microsoft.com/manage/windows/how-to-guides/custom-create-a-vm/) - このトピックでは仮想ネットワークに仮想マシンをインストールします。仮想マシンとインストール オプションの詳細については、「[Azure Virtual Machines](http://azure.microsoft.com/manage/windows/)」を参照してください。
 
-- [Azure の仮想ネットワークでの Active Directory フォレストのインストール](http://www.windowsazure.com/ja-jp/manage/services/networking/active-directory-forest/) - このトピックでは、他のネットワークに接続しない、新しい Windows Server Active Directory (AD) フォレストをインストールします。このチュートリアルでは、新しいフォレストのインストール用に仮想マシン (VM) を作成する具体的な手順について説明します。このチュートリアルに進む場合は、管理ポータルを使用して VM を作成しないでください。詳細については、「[Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+- [Azure の仮想ネットワークでの Active Directory フォレストのインストール](http://azure.microsoft.com/manage/services/networking/active-directory-forest/) - このトピックでは、他のネットワークに接続しない、新しい Windows Server Active Directory (AD) フォレストをインストールします。このチュートリアルでは、新しいフォレストのインストール用に仮想マシン (VM) を作成する具体的な手順について説明します。このチュートリアルに進む場合は、管理ポータルを使用して VM を作成しないでください。詳細については、「[Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)」を参照してください。
 
 この仮想ネットワークを削除するには、選択して **[削除]**、**[はい]** の順にクリックします。
 
@@ -90,7 +104,7 @@ Azure インフラストラクチャ サービスについてさらに学習す�
 
 -  [仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)
 
--  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156097.aspx)
+-  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/library/windowsazure/jj156097.aspx)
 
 -  [名前解決 (DNS)](http://go.microsoft.com/fwlink/?LinkId=248097)
 
@@ -103,3 +117,5 @@ Azure インフラストラクチャ サービスについてさらに学習す�
 [Image7]: ./media/create-virtual-network/createVNet_07_VNetExampleSpaces.png
 [Image8]: ./media/create-virtual-network/createVNet_07_VNetExampleSpaces.png
 
+
+<!--HONumber=46--> 

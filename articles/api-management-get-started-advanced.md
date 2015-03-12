@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Azure API Management の詳細な構成について" metaKeywords="" description="呼び出しのトレース、レート制限とクォータ ポリシーの構成、開発者ポータルのカスタマイズの方法について説明します。" metaCanonical="" services="api-management" documentationCenter="API Management" title="Get started with advanced Azure API Management configuration" authors="sdanie" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management の詳細な構成について" 
+	description="呼び出しのトレース、レート制限とクォータ ポリシーの構成、開発者ポータルのカスタマイズの方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management の詳細な構成について
 
@@ -22,3 +36,5 @@
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

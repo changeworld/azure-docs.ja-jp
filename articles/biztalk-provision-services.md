@@ -1,6 +1,20 @@
-<properties urlDisplayName="Provision BizTalk Services in management portal" pageTitle="管理ポータルでの BizTalk サービスの作成 | Azure" metaKeywords="Get started Azure biztalk services, provision, Azure unstructured data" description="Azure の管理ポータルで BizTalk サービスをプロビジョニングする方法と、オプションの SQL データベース サーバーおよびストレージ アカウントを作成する方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/manage/services/biztalk-services/provisioning-biztalk-service" services="biztalk-services" documentationCenter="" title="BizTalk サービス: Azure の管理ポータルを使用したプロビジョニング" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
+﻿<properties 
+	pageTitle="管理ポータルでの BizTalk サービスの作成 | Azure" 
+	description="Azure の管理ポータルで BizTalk サービスをプロビジョニングし、作成する方法について説明します。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
+	editor="cgronlun"/>
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
+<tags 
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="mandia"/>
 
 # Azure 管理ポータルを使用して BizTalk サービスを作成する
 
@@ -351,3 +365,5 @@ BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシ
   [BizTalk サービス: 発行者名および発行者キー]: http://go.microsoft.com/fwlink/p/?LinkID=303941
   [Azure BizTalk サービス SDK の使用開始に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=302335
   [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
+
+<!--HONumber=46--> 

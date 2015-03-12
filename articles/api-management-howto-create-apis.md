@@ -1,6 +1,20 @@
-<properties pageTitle="How to create APIs in Azure API Management" metaKeywords="" description="Learn how to create and configure APIs in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="How to create APIs in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management で API を作成する方法" 
+	description="Azure API Management で API を作成して構成する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management で API を作成する方法
 
@@ -72,3 +86,5 @@ API を作成し、設定を構成した後は、操作を API に追加しま�
   [API summary]: ./media/api-management-howto-create-apis/api-management-api-summary.png
   [API settings]: ./media/api-management-howto-create-apis/api-management-api-settings.png
   [Basic authentication settings]: ./media/api-management-howto-create-apis/api-management-api-settings-credentials.png
+
+<!--HONumber=46--> 

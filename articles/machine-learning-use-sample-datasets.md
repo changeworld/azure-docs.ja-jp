@@ -1,6 +1,20 @@
-﻿<properties title="Use the sample datasets in Azure Machine Learning Studio" pageTitle="Machine Learning Studio におけるサンプル データセットの使用 | Azure" description="Azure Machine Learning Studio におけるサンプル データセットの使用" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Machine Learning Studio におけるサンプル データセットの使用 | Azure" 
+	description="Azure Machine Learning Studio に含まれるサンプル データセットの説明" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/16/2014" 
+	ms.author="garye"/>
 
 
 # Azure Machine Learning Studio におけるサンプル データセットの使用
@@ -338,3 +352,5 @@ ML Studio のモジュール間で渡されるプライマリ コンテナー (<
 </td>
 </tr>
 </table>
+
+<!--HONumber=46--> 

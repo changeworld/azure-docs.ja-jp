@@ -1,6 +1,20 @@
-<properties urlDisplayName="Caching" pageTitle="インロール キャッシュの使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure cache, Azure caching, Azure cache, Azure caching, Azure store session state, Azure cache .NET, Azure cache C#" description="Azure インロール キャッシュの使用方法をについて説明します。サンプルは C# コードで記述され、.NET API を利用しています。" metaCanonical="" services="cache" documentationCenter=".NET" title="How to Use In-Role Cache for Azure Cache" authors="sdanie" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="インロール キャッシュの使用方法 (.NET) - Azure の機能ガイド" 
+	description="Azure のインロール キャッシュの使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。" 
+	services="cache" 
+	documentationCenter=".net" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
+<tags 
+	ms.service="cache" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 
 
@@ -395,26 +409,28 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
   
 <!-- LINKS -->
 [仮想マシンのサイズの構成方法]: http://go.microsoft.com/fwlink/?LinkId=164387
-[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg618003.aspx
-[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/z852zf6b.aspx
-[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/zd1ysf1y.aspx
+[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
+[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
+[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [インロール キャッシュの容量計画に関する考慮事項のページ]: http://go.microsoft.com/fwlink/?LinkId=252651
-[インロール キャッシュのサンプル (Windows Azure のキャッシュ)]: http://msdn.microsoft.com/ja-jp/library/jj189876.aspx
+[インロール キャッシュのサンプル (Windows Azure のキャッシュ)]: http://msdn.microsoft.com/library/jj189876.aspx
 [インロール キャッシュ_remove]: http://go.microsoft.com/fwlink/?LinkId=252658
 [インロール キャッシュ_remove]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
 [最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
-[Windows Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/ja-jp/library/hh914163.aspx
+[Windows Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/library/hh914163.aspx
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
-[インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185662.aspx
+[インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
 [OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
 [インロール キャッシュの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=254172
-[インロール キャッシュのセッション状態プロバイダーに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185668.aspx
+[インロール キャッシュのセッション状態プロバイダーに関するページ]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
-[インロール キャッシュのトラブルシューティングと診断に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh914135.aspx
+[インロール キャッシュのトラブルシューティングと診断に関するページ]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
 [Azure AppFabric Cache:セッション状態のキャッシュ]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure 管理ポータル]: http://windows.azure.com/
-[Azure Shared Caching]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg278356.aspx
+[Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
-[どの Azure Cache を利用すればよいですか。]: http://msdn.microsoft.com/ja-jp/library/azure/dn766201.aspx
+[どの Azure Cache を利用すればよいですか。]: http://msdn.microsoft.com/library/azure/dn766201.aspx
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

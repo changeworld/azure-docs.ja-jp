@@ -308,11 +308,11 @@ Git を使用して Azure Websites に発行する場合に発生する一般的
 * [Git に関するドキュメント]
 * [プロジェクト Kudu](https://github.com/projectkudu/kudu/wiki)
 
-[Azure デベロッパー センター]: http://www.windowsazure.com/ja-jp/develop/overview/
+[Azure デベロッパー センター]: http://azure.microsoft.com/develop/overview/
 [Azure ポータル]: http://manage.windowsazure.com
 [Git の web サイト]: http://git-scm.com
 [Git のインストール]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/
+[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
 [Git に関するドキュメント]: http://git-scm.com/documentation
 
@@ -333,6 +333,5 @@ Git を使用して Azure Websites に発行する場合に発生する一般的
 [Create a Repo (BitBucket) (Repo の作成 (BitBucket))]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Quick Start - Mercurial (Mercurial のクイック スタート)]: http://mercurial.selenic.com/wiki/QuickStart
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
-[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/publishing-with-tfs/
-
+[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: http://azure.microsoft.com/develop/net/common-tasks/publishing-with-tfs/
 <!--HONumber=42-->

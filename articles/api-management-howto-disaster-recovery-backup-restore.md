@@ -1,6 +1,20 @@
-<properties pageTitle="How to implement disaster recovery using service backup and restore in Azure API Management" metaKeywords="" description="Learn how to use backup and restore to perform disaster recovery in Azure API Management." metaCanonical="" services="api-management" documentationCenter="API Management" title="How to implement disaster recovery using service backup and restore in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法" 
+	description="Azure API Management でバックアップと復元を使用して障害復旧を行う方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
 
@@ -81,7 +95,9 @@ API Management サービスをバックアップするには、次の HTTP 要�
 -   復元先のサービスの**層**は、復元されるバックアップ サービスの層と**一致しなければなりません**。
 -   復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**上書きされることがあります**。
 
-  [Azure リソース マネージャーの要求の認証]: http://msdn.microsoft.com/ja-jp/library/dn790557.aspx
+  [Azure リソース マネージャーの要求の認証]: http://msdn.microsoft.com/library/dn790557.aspx
   [API Management サービスのバックアップ]: #step1
   [API Management サービスの復元]: #step2
-  [Azure API Management REST API]: http://msdn.microsoft.com/ja-jp/library/azure/dn781421.aspx
+  [Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
+
+<!--HONumber=46--> 

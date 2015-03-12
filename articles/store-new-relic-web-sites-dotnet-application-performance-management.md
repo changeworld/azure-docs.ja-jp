@@ -36,7 +36,7 @@ Azure ストアの New Relic 特別料金
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。
 New Relic Pro は、使用している Web サイト モード (および占有モードを使用している場合はインスタンス サイズ) に基づいて複数のパッケージで提供されます。
 
-料金情報については、[Azure ストアの New Relic のページ](http://www.windowsazure.com/ja-jp/gallery/store/new-relic/new-relic/)をご覧ください。
+料金情報については、[Azure ストアの New Relic のページ](http://azure.microsoft.com/gallery/store/new-relic/new-relic/)をご覧ください。
 
 > [AZURE.NOTE] コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
 
@@ -238,8 +238,8 @@ New Relic UI の概要、ユーザー権限とプロファイルの設定、標�
  * 「[Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help)」:New Relic のオンライン ヘルプ センターで利用できるリソース
 
 
-[webmatrixwebsite]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/website-with-webmatrix/
-[vswebsite]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/
+[webmatrixwebsite]: http://azure.microsoft.com/develop/net/tutorials/website-with-webmatrix/
+[vswebsite]: http://azure.microsoft.com/develop/net/tutorials/get-started/
 
 [wmnugetbutton]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrwmnugetbutton.png
 [wmnugetgallery]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrwmnugetgallery.png

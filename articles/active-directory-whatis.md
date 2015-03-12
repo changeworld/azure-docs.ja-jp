@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="What is Azure AD?" pageTitle="Azure の Active Directory とは" metaKeywords="" description="Azure の Active Directory を使用して、管理およびエンド ユーザー エクスペリエンスを強化する目的で既存の内部設置型 ID をクラウドに拡張します。一方、Microsoft では高い拡張性と可用性、および統合障害復旧を備えたクラウドで、Active Directory を実行し続けます。あるいは、ユーザーまたはその他の組織を対象とした Azure AD 統合アプリケーションを開発します。" metaCanonical="" services="active-directory" documentationCenter="" title="What is Azure Active Directory?" authors="justinha" solutions="" manager="terrylan" editor="" />
+﻿<properties 
+	pageTitle="Azure の Active Directory とは" 
+	description="Azure の Active Directory を使用して、管理およびエンド ユーザー エクスペリエンスを強化する目的で既存の内部設置型 ID をクラウドに拡張します。一方、Microsoft では高い拡張性と可用性、および統合障害復旧を備えたクラウドで、Active Directory を実行し続けます。あるいは、ユーザーまたはその他の組織を対象とした Azure AD 統合アプリケーションを開発します。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="Justinha" 
+	manager="terrylan" 
+	editor=""/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/03/2014" ms.author="justinha" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/03/2015" 
+	ms.author="justinha"/>
 
 
 
@@ -28,3 +42,5 @@ Azure AD は組織のスタンドアロン クラウド ディレクトリとし
 * [Azure への組織としてのサインアップ](/ja-jp/manage/services/identity/organizational-account/)
 * [Azure ID](/ja-jp/manage/windows/fundamentals/identity/)
 * [MSDN の Azure AD ライブラリ](http://go.microsoft.com/fwlink/?LinkId=293425)
+
+<!--HONumber=46--> 

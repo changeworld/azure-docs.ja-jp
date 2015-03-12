@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Azure .NET SDK とは" metaKeywords="azure .net sdk" description="Azure .NET SDK に含まれるものを紹介します。" documentationCenter=".NET" title="What is the Azure SDK for .NET" authors="tdykstra" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties 
+	pageTitle="Azure .NET SDK とは" 
+	description="Azure .NET SDK に含まれるものを紹介します。" 
+	documentationCenter=".net" 
+	authors="tdykstra" 
+	manager="wpickett" 
+	editor="mollybos" 
+	services=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/19/2015" 
+	ms.author="tdykstra"/>
 
 # Azure SDK for .NET とは
 
@@ -40,7 +54,7 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 * [Azure の Web サイトに Web プロジェクトを発行する](../web-sites-dotnet-get-started/)。
 * [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](../websites-dotnet-deploy-webjobs/)。
 * [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](../web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。
-* [PowerShell デプロイメント スクリプトを作成して、新規の Web サイトを作成する](http://msdn.microsoft.com/ja-jp/library/dn642480.aspx)。
+* [PowerShell デプロイメント スクリプトを作成して、新規の Web サイトを作成する](http://msdn.microsoft.com/library/dn642480.aspx)。
 * [サーバー エクスプローラーで Azure Web サイトの管理とトラブルシューティングを行う](../web-sites-dotnet-troubleshoot-visual-studio/#sitemanagement)。
 * [Web サイトおよび Web ジョブに対してリモート デバッグを実行する](../web-sites-dotnet-troubleshoot-visual-studio/#remotedebug)。 
 
@@ -51,28 +65,28 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 この製品を利用すると、Azure のクラウド サービスおよび仮想マシンで次のことができるようになります。
 
 * [クラウド サービス プロジェクトを作成、公開、発行する](../cloud-services-dotnet-get-started/)。
-* [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/ja-jp/library/ff683672.aspx)。
+* [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)。
 * [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](../virtual-machines-dotnet-create-visual-studio-powershell/)。
-* [PowerShell スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/ja-jp/library/dn642480.aspx)。
-* [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/ja-jp/library/ee405486.aspx)。
-* サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/ja-jp/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/ja-jp/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/ja-jp/library/jj149828.aspx)を表示し、管理する。 
-* [クラウド サービスおよび仮想マシンに対してリモート デバッグを実行する](http://msdn.microsoft.com/ja-jp/library/ff683670.aspx)。
+* [PowerShell スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)。
+* [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)。
+* サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する。 
+* [クラウド サービスおよび仮想マシンに対してリモート デバッグを実行する](http://msdn.microsoft.com/library/ff683670.aspx)。
 
 ###<a id="auth"></a>Microsoft Azure Authoring Tools
 
 この製品には次のツールが含まれています。
 
-* [CSPack コマンド ライン ツール](http://msdn.microsoft.com/ja-jp/library/gg432988.aspx)。デプロイメント パッケージを作成する場合に使用します。
-* [CSEncrypt コマンド ライン ツール](http://msdn.microsoft.com/ja-jp/library/hh404001.aspx)。リモート デスクトップ接続を介してクラウド サービスのロール インスタンスにアクセスする際のパスワードを暗号化するために使用します。
+* [CSPack コマンド ライン ツール](http://msdn.microsoft.com/library/gg432988.aspx)。デプロイメント パッケージを作成する場合に使用します。
+* [CSEncrypt コマンド ライン ツール](http://msdn.microsoft.com/library/hh404001.aspx)。リモート デスクトップ接続を介してクラウド サービスのロール インスタンスにアクセスする際のパスワードを暗号化するために使用します。
 * クラウド サービス プロジェクトがランタイム環境と通信し、診断する場合に必要な各種のランタイム バイナリ。これらのバイナリは、NuGet パッケージでは利用できません。
 
 ###<a id="emulator"></a>Microsoft Azure エミュレーター
 
-[Azure エミュレーター](http://msdn.microsoft.com/ja-jp/library/dn339018.aspx)は、クラウド サービス環境をシミュレートします。これにより、クラウド サービス プロジェクトを Azure にデプロイする前に、ローカルのコンピューターでテストできます。
+[Azure エミュレーター](http://msdn.microsoft.com/library/dn339018.aspx)は、クラウド サービス環境をシミュレートします。これにより、クラウド サービス プロジェクトを Azure にデプロイする前に、ローカルのコンピューターでテストできます。
 
 ###<a id="stgemulator"></a>Microsoft Azure ストレージ エミュレーター
 
-[Azure ストレージ エミュレーター](http://msdn.microsoft.com/ja-jp/library/hh403989.aspx)は、SQL Server のインスタンスとローカル ファイル システムを使用して Azure のストレージ (キュー、テーブル、BLOB) をシミュレートします。これにより、ローカルのコンピューターでテストできます。 
+[Azure ストレージ エミュレーター](http://msdn.microsoft.com/library/hh403989.aspx)は、SQL Server のインスタンスとローカル ファイル システムを使用して Azure のストレージ (キュー、テーブル、BLOB) をシミュレートします。これにより、ローカルのコンピューターでテストできます。 
 
 ###<a id="stgtools"></a>Microsoft Azure Storage Tools
 
@@ -83,11 +97,11 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 この製品には次のツールが含まれています。
 
 * Azure のストレージ、サービス バス、キャッシュ用の NuGet パッケージ。このパッケージは、ユーザーのコンピューターに格納されるため、Visual Studio による新規のクラウド サービス プロジェクトの作成がオフラインでできるようになります。
-* Visual Studio プラグイン。Visual Studio で [In-Role Cache](http://msdn.microsoft.com/ja-jp/library/dn386103.aspx) プロジェクトの実行がローカルでできるようになります。 
+* Visual Studio プラグイン。Visual Studio で [In-Role Cache](http://msdn.microsoft.com/library/dn386103.aspx) プロジェクトの実行がローカルでできるようになります。 
 
 ###<a id="ls"></a>LightSwitch Azure Publishing add-on for Visual Studio
 
-この製品を使用すると、[LightSwitch プロジェクトを Azure の Web サイトに発行](http://msdn.microsoft.com/ja-jp/library/jj131261.aspx)できます。LightSwitch アドオンは、Visual Studio のアップグレードの他、Azure SDK for .NET にも含まれています。この SDK をインストールすると、アドオンの最新バージョンを使用できます。 
+この製品を使用すると、[LightSwitch プロジェクトを Azure の Web サイトに発行](http://msdn.microsoft.com/library/jj131261.aspx)できます。LightSwitch アドオンは、Visual Studio のアップグレードの他、Azure SDK for .NET にも含まれています。この SDK をインストールすると、アドオンの最新バージョンを使用できます。 
 
 ##<a id="notincluded"></a>Azure SDK for .NET のインストールに含まれないもの
 
@@ -139,7 +153,7 @@ SDK でクライアント ライブラリがインストールされるのは、
 
 ###<a id="guestos"></a>Azure SDK for .NET との互換性があるゲスト OS を教えてください。
 
-「[Azure ゲスト OS リリースと SDK の互換性対応表](http://msdn.microsoft.com/ja-jp/library/ee924680.aspx)」を参照してください。
+「[Azure ゲスト OS リリースと SDK の互換性対応表](http://msdn.microsoft.com/library/ee924680.aspx)」を参照してください。
 
 
 
@@ -150,3 +164,5 @@ Azure SDK for .NET またはクライアント ライブラリをダウンロー
 Azure SDK for .NET (クライアント ライブラリを含む) のソース コードについては、[GitHub.com/Azure の Web サイト](https://github.com/azure/)を参照してください。
 
 Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](/ja-jp/develop/net/reference/)を参照してください。 
+
+<!--HONumber=46--> 

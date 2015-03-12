@@ -1,6 +1,21 @@
-<properties urlDisplayName="Specifying a Node.js Version" pageTitle="Node.js のバージョンの指定" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title="Specifying a Node.js version in an Azure application" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
+<properties 
+	pageTitle="Node.js のバージョンの指定" 
+	description="" 
+	services="" 
+	documentationCenter="nodejs" 
+	title="Specifying a Node.js version in an Azure application" 
+	authors="larryfr" 
+	manager="wpickett" 
+	editor="mollybos" />
 
-<tags ms.service="na" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags 
+	ms.service="na" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/17/2014" 
+	ms.author="larryfr" />
 
 
 
@@ -88,3 +103,5 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 [Azure コマンドライン ツール]: /ja-jp/documentation/articles/xplat-cli/
 [モジュールの使用方法]: /ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/
 [Node.js Web サイトを構築、デプロイする方法]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+
+<!--HONumber=46--> 

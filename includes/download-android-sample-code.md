@@ -19,5 +19,4 @@
 
 <!-- URLs. -->
 [GitHub]:  http://go.microsoft.com/fwlink/p/?LinkID=282122
-
 <!--HONumber=42-->

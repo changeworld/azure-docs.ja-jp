@@ -1,18 +1,33 @@
-﻿<properties urlDisplayName="Active Directory forest" pageTitle="Azure の仮想ネットワークでの Active Directory フォレストのインストール" metaKeywords="" description="Azure の仮想ネットワーク上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。" metaCanonical="" services="active-directory,virtual-network" documentationCenter="" title="Install a new Active Directory forest in Azure" authors="Justinha"  solutions="" writer="Justinha" manager="TerryLan" editor="LisaToft"  />
+﻿<properties 
+	pageTitle="Azure の仮想ネットワークでの Active Directory フォレストのインストール" 
+	description="Azure の仮想ネットワーク上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。" 
+	services="active-directory, virtual-network" 
+	documentationCenter="" 
+	authors="Justinha" 
+	writer="Justinha" 
+	manager="TerryLan" 
+	editor="LisaToft"/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/30/2014" ms.author="Justinha" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/12/2014" 
+	ms.author="Justinha"/>
 
 
 
 
 #Azure の仮想ネットワークでの Active Directory フォレストのインストール
 
-このトピックでは、[Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)上の仮想マシン (VM) に新しい Windows Server Active Directory 環境を作成する方法を示します。この場合、Azure の仮想ネットワークは内部設置型のネットワークには接続されません。 
+このトピックでは、[Azure の仮想ネットワーク](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)上の仮想マシン (VM) に新しい Windows Server Active Directory 環境を作成する方法を示します。この場合、Azure の仮想ネットワークは内部設置型のネットワークには接続されません。 
 
 必要に応じて次の関連するトピックも参照してください。
 
-- [管理ポータル ウィザードを使用してサイト間 VPN を構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn133795.aspx)した後、新しいフォレストをインストールするか、内部設置型のフォレストを Azure の仮想ネットワークに拡張することもできます。これらの手順については、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://www.windowsazure.com/ja-jp/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/)」を参照してください。
--  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+- [管理ポータル ウィザードを使用してサイト間 VPN を構成](http://msdn.microsoft.com/library/windowsazure/dn133795.aspx)した後、新しいフォレストをインストールするか、内部設置型のフォレストを Azure の仮想ネットワークに拡張することもできます。これらの手順については、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://azure.microsoft.com/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/)」を参照してください。
+-  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイガイドライン](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)」を参照してください。
 -  AD DS を含む Azure でのテスト ラボ環境を作成する手順については、[「Test Lab Guide: Windows Server 2012 R2 Base Configuration in Azure (テスト ラボ ガイド: Azure での Windows Server 2012 R2 の基本構成) ](http://www.microsoft.com/ja-jp/download/details.aspx?id=41684)」を参照してください。
 
 
@@ -62,7 +77,7 @@
 	**クラウド サービス**  | <p>クラウド サービス: <b>[新しいクラウド サービスの作成]</b></p><p>クラウド サービス名:既定値をそのまま使用する</p><p>リージョン/アフィニティ グループ/仮想ネットワーク:作成した仮想ネットワークを選択する</p><p>仮想ネットワーク サブネット:作成したサブネットを選択する </p><p>ストレージ アカウント: <b>[自動的に生成されたストレージ アカウントを使用]</b></p><p>可用性セット: <b>None</b></p><p>エンドポイント:既定値をそのまま使用する</p>
 	**VM エージェント**  | **[VM エージェントのインストール]** を選択する
 
-1. VM に既定で割り当てられる動的 IP アドレスはクラウド サービスの期間中に有効です。ただし、VM がシャットダウンされた場合は変更されます。静的 IP アドレスを割り当てるには、[Azure PowerShell コマンドレット Set-AzureStaticVNetIP を実行](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn630228.aspx)してください。これにより、仮想マシンのシャットダウンが必要になっても IP アドレスは保持されます。 
+1. VM に既定で割り当てられる動的 IP アドレスはクラウド サービスの期間中に有効です。ただし、VM がシャットダウンされた場合は変更されます。静的 IP アドレスを割り当てるには、[Azure PowerShell コマンドレット Set-AzureStaticVNetIP を実行](http://msdn.microsoft.com/library/windowsazure/dn630228.aspx)してください。これにより、仮想マシンのシャットダウンが必要になっても IP アドレスは保持されます。 
 2. Active Directory データベース、ログ、SYSVOL を格納する追加のディスクを VM にアタッチします。 
   3.[VM] <b>、</b> [コンピューティング] <b>、</b> [コンピューティング] <b>の順に</b>クリックします。 
   4.サイズ (10 GB など) を指定し、他のすべての既定値をそのまま使用します。
@@ -118,23 +133,23 @@
 
 -  [Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/library/azure/jj156090.aspx)
 
--  [管理ポータルでのクラウド専用仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/dn631643.aspx)
+-  [管理ポータルでのクラウド専用仮想ネットワークの構成](http://msdn.microsoft.com/library/dn631643.aspx)
 
--  [管理ポータルでのサイト間 VPN の構成](http://msdn.microsoft.com/ja-jp/library/dn133795.aspx)
+-  [管理ポータルでのサイト間 VPN の構成](http://msdn.microsoft.com/library/dn133795.aspx)
 
--  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/)
+-  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://azure.microsoft.com/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/)
 
 -  [Windows Azure IT プロフェッショナル IaaS:(01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 
 -  [Windows Azure IT プロフェッショナル IaaS:(05) 仮想ネットワークとクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 
--  [Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure の仮想ネットワーク](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)
 
--  [Azure PowerShell のインストールおよび構成方法](http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/)
+-  [Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)
 
--  [Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)
+-  [Azure PowerShell](http://msdn.microsoft.com/library/windowsazure/jj156055.aspx)
 
--  [Azure の管理コマンドレット](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)
+-  [Azure の管理コマンドレット](http://msdn.microsoft.com/library/windowsazure/jj152841)
 
 -  [Azure VM の静的 IP アドレスの設定](http://windowsitpro.com/windows-azure/set-azure-vm-static-ip-address)
 
@@ -142,9 +157,11 @@
 
 -  [新しい Active Directory フォレストのインストール](http://technet.microsoft.com/library/jj574166.aspx)
 
--  [Active Directory ドメイン サービス (AD DS) の仮想化 (レベル 100) の概要](http://technet.microsoft.com/ja-jp/library/hh831734.aspx)
+-  [Active Directory ドメイン サービス (AD DS) の仮想化 (レベル 100) の概要](http://technet.microsoft.com/library/hh831734.aspx)
 
 -  [テスト ラボ ガイド:Windows Server 2012 R2 Base Configuration in Azure (テスト ラボ ガイド: Azure での Windows Server 2012 R2 の基本構成)](http://www.microsoft.com/ja-jp/download/details.aspx?id=41684)
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

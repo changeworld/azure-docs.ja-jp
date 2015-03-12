@@ -32,7 +32,7 @@ ASP.NET Web アプリケーションでセッション状態を使用してい�
 * [セッション オブジェクトを使用して、キャッシュされたアイテムを保存および取得します。](#usesessionobject)
 
 <h2><a id="createcache"></a>キャッシュを作成する</h2>
-[ここにある手順](http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-cache) に従ってキャッシュを作成します。
+[ここにある手順](http://azure.microsoft.com/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-cache) に従ってキャッシュを作成します。
 
 <h2><a id="configureproject"></a>RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加します。</h2>
 NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソール (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択) からインストールするには、次のコマンドを使用します。
@@ -41,14 +41,14 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
   
 **[ツール]** > **[NuGet パッケージ マネージャー]** > **[ソリューションの NugGet パッケージの管理]** からインストールするには、 `RedisSessionStateProvider` を検索し、nd be sure to specify **[プレリリースを含める]** を必ず指定します。
 
-詳細については、[NuGet RedisSessionStateProvider のページ](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/ ) および [キャッシュ クライアントの構成に関するセクション](http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#NuGet) をご覧ください。
+詳細については、[NuGet RedisSessionStateProvider のページ](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/ ) および [キャッシュ クライアントの構成に関するセクション](http://azure.microsoft.com/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#NuGet) をご覧ください。
 
 <h2><a id="configurewebconfig"></a>Web.Config ファイルを修正する</h2>
 キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは  *web.config* ファイルにスタブ エントリを追加します。 
 
 1.  *web.config* を開き、**sessionState** 要素を見つけます。
 
-1.  `host`、 `accessKey`、 `port` (SSL ポートは 6380 とする必要があります) の値を入力し、 `SSL` を  `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの Azure 管理プレビュー ポータル ブレードから取得できます。詳細については、[キャッシュに接続する](http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#connect-to-cache) をご覧ください。
+1.  `host`、 `accessKey`、 `port` (SSL ポートは 6380 とする必要があります) の値を入力し、 `SSL` を  `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの Azure 管理プレビュー ポータル ブレードから取得できます。詳細については、[キャッシュに接続する](http://azure.microsoft.com/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#connect-to-cache) をご覧ください。
 次のマークアップは、 *web.config* ファイルに対する変更を示しています。
 
 
@@ -99,8 +99,8 @@ ASP.NET セッション状態の詳しい使用方法については、[ASP.NET 
 
   *著者: [Rick Anderson](https://twitter.com/RickAndMSFT)*
   
-  [installed the latest]: http://www.windowsazure.com/ja-jp/downloads/?sdk=net  
-  [ASP.NET Session State Overview]: http://msdn.microsoft.com/ja-jp/library/ms178581.aspx
+  [installed the latest]: http://azure.microsoft.com/downloads/?sdk=net  
+  [ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
   [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
   [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png

@@ -44,12 +44,12 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 ## Azure BLOB ストレージ サービスのコンポーネント 
 
 * ストレージ アカウント:ストレージ アカウントはすべてのストレージ サービスの出発点となります。Azure BLOB ストレージ サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。ストレージ アカウントの名前とアクセス キー プロパティが Azure BLOB ストレージ サービスとそのコンポーネントに対する認証に必要です。 
-Azure BLOB ストレージ サービスの詳細については、「[How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/blob-storage/)」を参照してください。
+Azure BLOB ストレージ サービスの詳細については、「[How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](http://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)」を参照してください。
 
 * コンテナー:コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。SQL Server のバックアップを Azure BLOB サービスに書き込むには、少なくとも root コンテナーが作成されている必要があります。 
 
 * BLOB:任意の種類およびサイズのファイルです。Azure BLOB ストレージ サービスに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。SQL Server のバックアップでは、BLOB の種類としてページ BLOB を使用します。BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます。 `https://<storage account>.blob.core.windows.net/<container>/<blob>`
-ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について」](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx)を参照してください。
+ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について」](http://msdn.microsoft.com/library/windowsazure/ee691964.aspx)を参照してください。
 
 ## SQL Server のコンポーネント
 
@@ -61,7 +61,7 @@ BACKUP コマンドで URL を指定する例を次に示します。
 <b>重要</b>:
 バックアップ ファイルをコピーして Azure BLOB ストレージ サービスにアップロードする場合、そのファイルを復元処理に使用する予定があれば、ストレージ オプションの BLOB の種類としてページ BLOB を使用する必要があります。BLOB の種類としてブロック BLOB を使用すると、RESTORE がエラーで失敗します。 
 
-* 資格情報:Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。その資格情報にストレージ アカウントの名前とアクセス キーを保存します。作成した資格情報は、BACKUP/RESTORE ステートメントの発行時に WITH CREDENTIAL オプションで指定する必要があります。ストレージ アカウントのアクセス キーの表示、コピー、再生成方法の詳細については、「[Azure ストレージ アカウントのアクセス キーを表示、コピー、再生成する方法](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531566.aspx)」を参照してください。
+* 資格情報:Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。その資格情報にストレージ アカウントの名前とアクセス キーを保存します。作成した資格情報は、BACKUP/RESTORE ステートメントの発行時に WITH CREDENTIAL オプションで指定する必要があります。ストレージ アカウントのアクセス キーの表示、コピー、再生成方法の詳細については、「[Azure ストレージ アカウントのアクセス キーを表示、コピー、再生成する方法](http://msdn.microsoft.com/library/windowsazure/hh531566.aspx)」を参照してください。
 SQL Server 資格情報を作成する手順の詳細については、「[Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元の概要](http://go.microsoft.com/fwlink/?LinkId=271615)」を参照してください。
 
 ## Azure BLOB を使用した SQL Server データベースのバックアップと復元 - 概念とタスク:
@@ -82,7 +82,6 @@ SQL Server 資格情報を作成する手順の詳細については、「[Azure
 
 
 	
-
 
 
 

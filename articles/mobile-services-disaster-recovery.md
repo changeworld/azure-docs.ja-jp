@@ -1,6 +1,20 @@
-﻿<properties pageTitle="障害発生時のモバイル サービスの復旧 - Azure Mobile Services" description="障害発生時にモバイル サービスを復旧する方法について説明します。" services="mobile-services" documentationCenter="" authors="brettsam" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="障害発生時のモバイル サービスの復旧 - Azure Mobile Services" 
+	description="障害発生時にモバイル サービスを復旧する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="brettsam" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="brettsam"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/11/2014" 
+	ms.author="brettsam"/>
 
 # 障害発生時のモバイル サービスの復旧
 
@@ -73,14 +87,14 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure SQL データベースの継続性]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh852669.aspx
+[Azure SQL データベースの継続性]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx
 [Team Foundation Service]: http://tfs.visualstudio.com/
 
-[ソース管理機能]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
-[Azure コマンド ライン ツール]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
+[ソース管理機能]: http://azure.microsoft.com/develop/mobile/tutorials/store-scripts-in-source-control/
+[Azure コマンド ライン ツール]: http://azure.microsoft.com/develop/mobile/tutorials/command-line-administration/
 [Azure ポータル]: http://manage.windowsazure.com/
-[Azure サービス ダッシュボード]: http://www.windowsazure.com/ja-jp/support/service-dashboard/
-[コマンド ライン ツールを使用したモバイル サービスの自動化]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
+[Azure サービス ダッシュボード]: http://azure.microsoft.com/support/service-dashboard/
+[コマンド ライン ツールを使用したモバイル サービスの自動化]: http://azure.microsoft.com/develop/mobile/tutorials/command-line-administration/
 
 
 <!--HONumber=42-->

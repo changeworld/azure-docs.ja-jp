@@ -1,6 +1,20 @@
-<properties title="Azure Machine Learning を使用した予測ソリューションの開発" pageTitle="Machine Learning を使用した予測ソリューションの開発 | Azure" description="Azure Machine Learning Studio で予測的な分析手法を作成する方法の段階的説明" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Machine Learning を使用した予測ソリューションの開発 | Azure" 
+	description="Azure Machine Learning Studio で予測的な分析手法を作成する方法の段階的説明" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/06/2014" 
+	ms.author="garye"/>
 
 # Azure Machine Learning を使用した予測ソリューションの開発
 
@@ -29,3 +43,5 @@
   [Web サービスを発行する]: ../machine-learning-walkthrough-5-publish-web-service/
   [Web サービスにアクセスする]: ../machine-learning-walkthrough-6-access-web-service/
   [Credit risk prediction sample experiment (信用リスク予測のサンプル実験)]: ../machine-learning-sample-credit-risk-prediction/
+
+<!--HONumber=46--> 

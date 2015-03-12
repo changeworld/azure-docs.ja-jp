@@ -23,7 +23,7 @@
 
 Socket.IO は、WebSocket を使用して node.js サーバーとクライアントの間のリアルタイム通信を提供します。また、古いブラウザーで動作する他のトランスポート (ロング ポーリングなど) へのフォールバックもサポートします。このチュートリアルでは、Azure Website として Socket.IO ベースのチャット アプリケーションをホストする手順を説明します。Socket.IO の詳細については、[http://socket.io/][socketio] をご覧ください。
 
-> [AZURE.NOTE] このタスクの手順は、Azure Websites に適用されます。クラウド サービスについては、「<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/app-using-socketio/">Azure Cloud Service での Socket.IO を使用する Node.js チャット アプリケーションの構築</a>」をご覧ください。
+> [AZURE.NOTE] このタスクの手順は、Azure Websites に適用されます。クラウド サービスについては、「<a href="http://azure.microsoft.com/develop/nodejs/tutorials/app-using-socketio/">Azure Cloud Service での Socket.IO を使用する Node.js チャット アプリケーションの構築</a>」をご覧ください。
 
 
 ## <a id="Download"></a>チャットのサンプルのダウンロード
@@ -96,7 +96,7 @@ app.js に対する変更を保存してから、次の手順で必要な
 
 Azure Website を作成し、Git 発行を有効にして、Web サイトの WebSocket サポートを有効にするには、次の手順に従います。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料評価版サイト</a>をご覧ください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料評価版サイト</a>をご覧ください。
 
 1. コマンド ラインで **\\node\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Website を作成し、Web サイトとローカル ディレクトリの Git リポジトリを有効にします。 'azure' という名前の Git リモートも作成されます。
 

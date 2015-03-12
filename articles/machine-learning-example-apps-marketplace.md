@@ -1,6 +1,20 @@
-﻿<properties title="Machine Learning example apps in the Azure Marketplace" pageTitle="Azure Marketplace での Machine Learning のアプリケーション例 | Azure" description="Azure Machine Learning アプリの例を通じて、Machine Learning サービスを Azure Marketplace に公開し、料金を支払っているサブスクライバーがアプリで使用できるようにする方法を示します。" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Marketplace での Machine Learning のアプリケーション例 | Azure" 
+	description="Azure Machine Learning Marketplace アプリの例を通じて、Machine Learning サービスを Azure Marketplace に公開し、料金を支払っているサブスクライバーがアプリで使用できるようにする方法を示します。" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="luisca" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/16/2014" ms.author="jaymathe" /> 
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/10/2015" 
+	ms.author="luiscabrer"/> 
 
 # Azure Marketplace での Machine Learning のアプリケーション例
 
@@ -17,3 +31,5 @@ Azure Machine Learning は、データ サイエンティストに対して、�
 * [Anomaly detection](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) - 時系列データ (サーバーの遠隔測定、センサー ベースのデータなど) で異常なイベントを見つけることができる API です。
 
 これらの API を利用することで、自分自身がデータ サイエンティストである必要も、多くの開発時間を費やす必要もなしに、単に独自のデータを用意するだけで、Azure ML 上に構築された強力な機械学習ベースのサービスを使用できます。
+
+<!--HONumber=46--> 

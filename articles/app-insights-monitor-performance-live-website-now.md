@@ -1,6 +1,18 @@
-﻿<properties title="Diagnose performance issues on a running website" pageTitle="実行中の Web サイトのパフォーマンスの問題の診断" description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。" metaKeywords="analytics monitoring application insights" authors="awills"  manager="kamrani" />
+﻿<properties 
+	pageTitle="実行中の Web サイトのパフォーマンスの問題の診断" 
+	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。スタンドアロンでの使用または Application Insights SDK との併用" 
+	services="application-insights" 
+	authors="alancameronwills" 
+	manager="kamrani"/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-09-24" ms.author="awills" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2015-01-23" 
+	ms.author="awills"/>
  
 
 # ライブ Web サーバーの監視を今すぐ始める
@@ -98,3 +110,5 @@ Azure のアカウントを開いた後、Application Insights を参照して�
 
 
 
+
+<!--HONumber=46--> 

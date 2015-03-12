@@ -1,8 +1,22 @@
-﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azureプッシュ通知, Azure 通知ハブ, 安全なプッシュ" description="セキュリティで保護されたプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="yuaxu" manager="dwrede" />
+<properties 
+	pageTitle="Azure Notification Hubs の安全なプッシュ" 
+	description="セキュリティで保護されたプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" 
+	documentationCenter="ios" 
+	authors="ysxu" 
+	manager="dwrede" 
+	editor="" 
+	services="notification-hubs"/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="yuaxu"/>
 
-#Azure Notification Hubs の安全なプッシュ
+# Azure Notification Hubs の安全なプッシュ
 
 <div class="dev-center-tutorial-selector sublanding">
     	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS" class="current">iOS</a>
@@ -26,31 +40,31 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは **ユーザーへの通知** チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE] このチュートリアルでは、[通知ハブの使用 (iOS)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/) での説明に従って通知が作成され、構成されていると想定しています。
+> [AZURE.NOTE] このチュートリアルでは、[通知ハブの使用 (iOS)](http://azure.microsoft.com/ documentation/articles/notification-hubs-ios-get-started/) での説明に従って通知が作成され、構成されていると想定しています。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
+[AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## iOS プロジェクトを変更する
 
-通知の*id* だけを送信するようにアプリケーション バックエンドを変更したため、iOS アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
+通知の  *id* だけを送信するようにアプリケーション バックエンドを変更したため、iOS アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
 
 そのためには、アプリケーション バックエンドから安全なコンテンツを取得するロジックを作成する必要があります。
 
 1. **AppDelegate.m** で、アプリケーションがサイレント通知に登録されていることを確認し、バックエンドから送信された通知 id を処理できるようにします。didFinishLaunchingWithOption に **UIRemoteNotificationTypeNewsstandContentAvailability** オプションを追加します。
 
-		[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
+		[[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 
 2. **AppDelegate.m** で、次の宣言を使用して実装セクションを先頭に追加します。
 
 		@interface AppDelegate ()
-		- (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
+		- (void) retrieveSecurePayloadWithId:(int)payloadId completion:(void(^)(NSString*, NSError*)) completion;
 		@end
 
-3. 次に、次のコードを実装セクションに追加します。プレースホルダー `{back-end endpoint}` を前に取得したバックエンドのエンドポイントで置き換えます。
+3. 次に、実装セクションに次のコードを追加します。これにより、プレースホルダー  `{back-end endpoint}` を前に取得したバックエンドのエンドポイントで置き換えます。
 
 		NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
 
-		- (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
+		- (void) retrieveSecurePayloadWithId:(int)payloadId completion:(void(^)(NSString*, NSError*)) completion;
 		{
 		    // check if authenticated
 		    ANHViewController* rvc = (ANHViewController*) self.window.rootViewController;
@@ -74,15 +88,15 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 		        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
 		        if (!error && httpResponse.statusCode == 200)
 		        {
-		            NSLog(@"Received secure payload: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+		            NSLog(@"Received secure payload:%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 
-		            NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+		            NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 
 		            completion([json objectForKey:@"Payload"], nil);
 		        }
 		        else
 		        {
-		            NSLog(@"Error status: %ld, request: %@", (long)httpResponse.statusCode, error);
+		            NSLog(@"Error status:%ld, request:%@", (long)httpResponse.statusCode, error);
 		            if (error)
 		                completion(nil, error);
 		            else {
@@ -139,4 +153,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
 
-<!--HONumber=35.2-->
+<!--HONumber=45--> 

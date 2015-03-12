@@ -74,7 +74,7 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 	> [AZURE.NOTE] > Azure HDInsight は場所ベースの Virtual Network のみをサポートし、アフィニティ グループ ベースの Virtual Network は現在取り扱っていません。
 
-	* **仮想ネットワークを作成および構成する手順**については、[仮想ネットワークの構成タスク」を参照してください](http://msdn.microsoft.com/ja-jp/library/azure/jj156206.aspx)。
+	* **仮想ネットワークを作成および構成する手順**については、[仮想ネットワークの構成タスク」を参照してください](http://msdn.microsoft.com/library/azure/jj156206.aspx)。
 
 		* SQL Server を使用する場合**、データ センターで**、 *site-to-site*または *point-to-site*として、仮想ネットワークを構成する必要があります　
 
@@ -362,7 +362,7 @@ SQL データベースまたは SQL Server で 2 つのテーブルを作成し�
 
 > [AZURE.NOTE] 接続文字列情報を除き、このセクションの手順は、Azure SQL Database または SQL Server のいずれでも動作します。これらの手順は次の構成でテスト済みです。
 > 
-> * **Azure Virtual Network ポイント対サイト構成** - HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、[管理ポータルでのポイント対サイト VPN の構成](http://msdn.microsoft.com/ja-jp/library/azure/dn133792.aspx)を参照してください。
+> * **Azure Virtual Network ポイント対サイト構成** - HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、[管理ポータルでのポイント対サイト VPN の構成](http://msdn.microsoft.com/library/azure/dn133792.aspx)を参照してください。
 > * **Azure の HDInsight 3.1** -　仮想ネットワークで、クラスターを作成する方法については、[カスタム オプションを使用した HDInsight クラスターのプロビジョニングの Hadoop](//en-私たちとドキュメント/記事/hdinsight--クラスターのプロビジョニング/) を参照してください。
 > * **SQL Server 2014 **- SQL 認証と、VPN クライアント構成パッケージを実行している仮想ネットワークに安全に接続を許可する構成
 
@@ -648,11 +648,10 @@ SQL データベースまたは SQL Server で 2 つのテーブルを作成し�
 [sqldatabase-get-started]: ../sql-database-get-started/
 [sqldatabase-create-configue]: ../sql-database-create-configure/
 
-[powershell-start]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx
+[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: ../install-configure-powershell
-[powershell-script]: http://technet.microsoft.com/ja-jp/library/ee176949.aspx
+[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
-
 
 <!--HONumber=42-->

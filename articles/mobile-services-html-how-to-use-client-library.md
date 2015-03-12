@@ -1,6 +1,20 @@
-﻿<properties pageTitle="HTML クライアントの使用方法 - Azure Mobile Services" description="Azure Mobile Services 向け HTML クライアントを使用する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="HTML クライアントの使用方法 - Azure Mobile Services" 
+	description="Azure Mobile Services 向け HTML クライアントを使用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-html" 
+	ms.devlang="javascript" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 
 # Azure モバイル サービス向け HTML/JavaScript クライアントを使用する方法
@@ -261,7 +275,8 @@ select 関数のパラメーターは、取得するテーブルの列の名で�
 	    todoItemTable.read("$filter=substringof('search_text',text)").then(function(items) {
 	        var itemElements = $.map(items, createUiForTodoItem);
 	        $("#todo-items").empty().append(itemElements);
-	        $("#no-items").toggle(items.length === 0);
+	        $("#no-items").toggle(ite
+	ms.length === 0);
 	    }, handleError);
 	}
 
@@ -380,12 +395,14 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 			query.read().then(function (todoItems) {
 			   // The space specified by 'placeToInsert' is an unordered list element <ul> ... </ul>
 			   var listOfItems = document.getElementById('placeToInsert');
-			   for (var i = 0; i < todoItems.length; i++) {
+			   for (var i = 0; i < todoIte
+	ms.length; i++) {
 			      var li = document.createElement('li');
 			      var div = document.createElement('div');
 			      div.innerText = todoItems[i].text;
 			      li.appendChild(div);
-			      listOfItems.appendChild(li);
+			      listOfIte
+	ms.appendChild(li);
 			   }
 			}).read().done(function (results) {
 			   alert(JSON.stringify(results));
@@ -616,32 +633,32 @@ promise はいくつかの異なる方法で使用することができます。
 <!-- URLs. -->
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-html
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[データの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-html/
+[データの使用]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-html/
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
 [認証 Windows ストアの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
-[then]: http://msdn.microsoft.com/ja-jp/library/windows/apps/br229728.aspx
-[done]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh701079.aspx
-[then と done の違いについてはこのページを参照してください]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh700334.aspx
-[promise を使ってエラーを処理する方法 ]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh700337.aspx
+[then]: http://msdn.microsoft.com/library/windows/apps/br229728.aspx
+[done]: http://msdn.microsoft.com/library/windows/apps/hh701079.aspx
+[then と done の違いについてはこのページを参照してください]: http://msdn.microsoft.com/library/windows/apps/hh700334.aspx
+[promise を使ってエラーを処理する方法 ]: http://msdn.microsoft.com/library/windows/apps/hh700337.aspx
 
-[sessionStorage]: http://msdn.microsoft.com/ja-jp/library/cc197062(v=vs.85).aspx
-[localStorage]: http://msdn.microsoft.com/ja-jp/library/cc197062(v=vs.85).aspx
+[sessionStorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx
+[localStorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx
 
-[ListView]: http://msdn.microsoft.com/ja-jp/library/windows/apps/br211837.aspx
-[データ バインディング (JavaScript と HTML を使った Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh758311.aspx
-[Windows ストア JavaScript に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started
-[HTML に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-html
-[Windows ストア JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-js
-[HTML/JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-html/
-[このシナリオを設定する方法の例については、このページを参照してください]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-js/
+[ListView]: http://msdn.microsoft.com/library/windows/apps/br211837.aspx
+[データ バインディング (JavaScript と HTML を使った Windows ストア アプリ)]: http://msdn.microsoft.com/library/windows/apps/hh758311.aspx
+[Windows ストア JavaScript に関するクイック スタート]: http://azure.microsoft.com/develop/mobile/tutorials/get-started
+[HTML に関するクイック スタート]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-html
+[Windows ストア JavaScript でのデータの使用]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-js
+[HTML/JavaScript でのデータの使用]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-html/
+[このシナリオを設定する方法の例については、このページを参照してください]: http://azure.microsoft.com/develop/mobile/tutorials/single-sign-on-windows-8-js/
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
 [スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html
 [ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html
-[login]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554236.aspx
+[login]: http://msdn.microsoft.com/library/windowsazure/jj554236.aspx
 [シングル サインオンによるアプリの認証]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
 [ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
 [OData システム クエリ オプションのリファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
 

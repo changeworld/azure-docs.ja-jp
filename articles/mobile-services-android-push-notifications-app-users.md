@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ユーザーへのプッシュ通知 (Android) | モバイル デベロッパー センター" description="Mobile Services を使用して Android アプリのユーザーにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="ユーザーへのプッシュ通知 (Android) | モバイル デベロッパー センター" 
+	description="Mobile Services を使用して Android アプリのユーザーにプッシュ通知を送信する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="android" 
+	authors="RickSaling" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/07/2014" ms.author="ricksal"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="Mobile-Android" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/07/2014" 
+	ms.author="ricksal"/>
 
 # モバイル サービスによるユーザーへのプッシュ通知
 

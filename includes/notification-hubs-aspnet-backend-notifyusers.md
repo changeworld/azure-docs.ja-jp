@@ -1,12 +1,12 @@
-## Web API プロジェクトを作成する
+﻿## Web API プロジェクトを作成する
 
-次の手順に従って、新しい ASP.NET WebAPI バックエンドを作成してクライアントを認証し、通知を生成するか、以前のプロジェクトまたは[認証ユーザーへのプッシュ通知の送信](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users/)に関するチュートリアルで使用した既存のバックエンドに変更を加えます。
+次の手順に従って、新しい ASP.NET WebAPI バックエンドを作成してクライアントを認証し、通知を生成するか、以前のプロジェクトまたは[認証ユーザーへのプッシュ通知の送信](http://azure.microsoft.com/ documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users/)に関するチュートリアルで使用した既存のバックエンドに変更を加えます。
 
 > [AZURE.NOTE] **重要**:このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。確認するには、Visual Studio を起動します。**[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。**NuGet Package Manager for Visual Studio 2013** を探し、バージョンが 2.8.50313.46 以降であることを確認します。違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
 > 
 > ![][4]
 
-> [AZURE.NOTE] Web サイトのデプロイメント用に Visual Studio [Azure SDK](http://azure.microsoft.com/ja-jp/downloads/) がインストールされていることを確認してください。
+> [AZURE.NOTE] Web サイトのデプロイメント用に Visual Studio [Azure SDK](http://azure.microsoft.com/ downloads/) がインストールされていることを確認してください。
 
 1. Visual Studio または Visual Studio Express を起動します。
 2. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** を順にクリックし、**[テンプレート]**、**[Visual C#]** を順に展開します。次に、**[Web]**、**[ASP.NET Web アプリケーション]** を順にクリックし、「**AppBackend**」という名前を入力して、**[OK]** をクリックします。 
@@ -110,7 +110,7 @@
 	        }
 	    }
 
-	> [AZURE.NOTE] **セキュリティ上の注意**: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。				
+	> [AZURE.NOTE] **セキュリティ上の注意**:  `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。				
 
 14. **App_Start/WebApiConfig.cs** クラスの  `Register` メソッドの末尾に、次のコードを追加します。
 
@@ -138,7 +138,7 @@
         {
             hub = Notifications.Instance.Hub;
         }
-		
+
         public class DeviceRegistration
         {
             public string Platform { get; set; }
@@ -250,17 +250,21 @@
             var user = HttpContext.Current.User.Identity.Name;
             var userTag = "username:"+user;
 
+
             // windows
             var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Hello, " + user + "</text></binding></visual></toast>";
             await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+
 
             // apns
             var alert = "{\"aps\":{\"alert\":\"Hello\"}}";
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, userTag);
 
+
             // gcm
             var notif = "{ \"data\" : {\"msg\":\"Hello\"}}";
             await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, userTag);
+
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
@@ -295,4 +299,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!--HONumber=42-->
+<!--HONumber=45--> 

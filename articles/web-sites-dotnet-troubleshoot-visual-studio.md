@@ -288,18 +288,18 @@ Web.config ファイルを編集することは、Azure Web サイトにある�
           <httpRuntime targetFramework="4.5" />
         </system.web>
 
-* デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。詳細については、「[ステップ実行をマイ コードのみに制限する](http://msdn.microsoft.com/ja-jp/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code)」をご覧ください。
+* デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。詳細については、「[ステップ実行をマイ コードのみに制限する](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code)」をご覧ください。
 
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。必要に応じて、この機能を何回でも簡単に有効に戻すことができます。積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
 
-* 手動でデバッガーを Web サイト プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ](http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx)」をご覧ください。
+* 手動でデバッガーを Web サイト プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」をご覧ください。
 
 <h2><a name="logsoverview"></a>診断ログの概要</h2>
 
 Azure Web サイトで動作する ASP.NET アプリケーションでは、次の種類のログが作成されます。
 
 * **アプリケーション トレース ログ**<br/>
-  アプリケーションが [System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/system.diagnostics.trace.aspx) クラスのメソッドを呼び出すことによって作成されます。
+  アプリケーションが [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) クラスのメソッドを呼び出すことによって作成されます。
 * **Web サーバーのログ**<br/>
   Web サーバーは、サイトに届くすべての HTTP 要求について、それぞれログ エントリを作成します。
 * **詳細なエラー メッセージ ログ**<br/>
@@ -394,7 +394,7 @@ Web ジョブでアプリケーション ログを作成する方法について
 
 	 `WebPageTraceListener` を使用すると、ブラウザーから  `/trace.axd` にアクセスすることでトレース出力を表示できます。
 
-3. 次のように、Web.config ファイルの `<system.web>` の下に、<a href="http://msdn.microsoft.com/ja-jp/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a> を追加します。
+3. 次のように、Web.config ファイルの `<system.web>` の下に、<a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a> を追加します。
 
 		<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 
@@ -638,7 +638,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 	![Storage logs in table view](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png)
 
-	この画面には、他の画面では確認できないフィールドが表示されます。専用のクエリ ビルダー UI を使用してクエリを作成し、ログにフィルターを適用することもできます。詳細については、[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683677.aspx) の「テーブル リソースの操作」にある「エンティティのフィルター処理」をご覧ください。
+	この画面には、他の画面では確認できないフィールドが表示されます。専用のクエリ ビルダー UI を使用してクエリを作成し、ログにフィルターを適用することもできます。詳細については、[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/windowsazure/ff683677.aspx) の「テーブル リソースの操作」にある「エンティティのフィルター処理」をご覧ください。
 
 7. 行の詳細を見るには、行の 1 つをダブルクリックします。
 
@@ -727,7 +727,7 @@ Azure Web サイト (WAWS) のトラブルシューティングの詳細につ�
 
 ### Visual Studio でのデバッグ 
 
-Visual Studio のデバッグ モードの使い方については、MSDN のトピック [Visual Studio でのデバッグ](http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx) と [Visual Studio 2010 でのデバッグのヒントに関するページ](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx) をご覧ください。
+Visual Studio のデバッグ モードの使い方については、MSDN のトピック [Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) と [Visual Studio 2010 でのデバッグのヒントに関するページ](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx) をご覧ください。
 
 ### Azure でのリモート デバッグ
 
@@ -746,14 +746,14 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 
 * [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。<br> 
   Azure クラウド アプリケーションをトレースするためのベスト プラクティスを掲載した E-Book の章。
-* [ASP.NET トレース](http://msdn.microsoft.com/ja-jp/library/ms972204.aspx)<br/>
+* [ASP.NET トレース](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
   最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
-* [トレース リスナー](http://msdn.microsoft.com/ja-jp/library/4y5y10s7.aspx)<br/>
-  トレース リスナーについて書かれていますが、[WebPageTraceListener](http://msdn.microsoft.com/ja-jp/library/system.web.webpagetracelistener.aspx) には触れていません。
-* [チュートリアル:ASP.NET トレースと System.Diagnostics トレースの統合](http://msdn.microsoft.com/ja-jp/library/b0ectfxd.aspx)<br/>
+* [トレース リスナー](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
+  トレース リスナーについて書かれていますが、[WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) には触れていません。
+* [チュートリアル:ASP.NET トレースと System.Diagnostics トレースの統合](http://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
 * [ASP.NET MVC Razor ビューでのトレース](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](http://msdn.microsoft.com/ja-jp/library/bb397417.aspx)」で紹介されている Global.asax サンプルをご覧ください。MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
+  Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](http://msdn.microsoft.com/library/bb397417.aspx)」で紹介されている Global.asax サンプルをご覧ください。MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
 
         try
         {
@@ -767,7 +767,7 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 
 * [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。[Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。 
-* [David Ebbo による Azure の Web サイトのログ記録と診断の使用](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-site-logging-and-diagnostics/) および [David Ebbo による Azure の Web サイトからストリーミング ログ](http://www.windowsazure.com/ja-jp/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [David Ebbo による Azure の Web サイトのログ記録と診断の使用](http://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) および [David Ebbo による Azure の Web サイトからストリーミング ログ](http://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Scott Hanselman と David Ebbo によるビデオ。
 
 エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、[ELMAH](http://nuget.org/packages/elmah/) のようなオープン ソースのログ記録フレームワークを使う方法があります。詳細については、[Scott Hanselman が ELMAH についてまとめたブログ記事](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)をご覧ください。
@@ -791,7 +791,7 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 ### クラウド サービスのデバッグ
 
-Web サイトではなく Azure クラウド サービスをデバッグする場合、[クラウド サービスのデバッグに関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx)をご覧ください。
+Web サイトではなく Azure クラウド サービスをデバッグする場合、[クラウド サービスのデバッグに関するページ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)をご覧ください。
 
 
 

@@ -21,7 +21,7 @@
 
 Azure Websites を使用すると、Web サイト内でプログラムやスクリプトを "オンデマンドで実行"、"連続的に実行"、および "スケジュールに従って実行" のうちいずれかの方法で実行できます。Microsoft Azure Web ジョブの使用に追加コストはかかりません。
 
-この記事では、Azure の管理ポータルを使用して Web ジョブをデプロイする方法について説明します。Visual Studio または継続的な配信を使用したデプロイ方法の詳細については、「[Azure Web ジョブの Azure Azure Websites へのデプロイ方法](http://azure.microsoft.com/ja-jp/documentation/articles/websites-dotnet-deploy-webjobs)」をご覧ください。
+この記事では、Azure の管理ポータルを使用して Web ジョブをデプロイする方法について説明します。Visual Studio または継続的な配信を使用したデプロイ方法の詳細については、「[Azure Web ジョブの Azure Azure Websites へのデプロイ方法](http://azure.microsoft.com/documentation/articles/websites-dotnet-deploy-webjobs)」をご覧ください。
 
 Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング タスクを簡略化しています。詳細については、「[Azure Web ジョブ SDK とは](../websites-dotnet-webjobs-sdk).」をご覧ください。
 

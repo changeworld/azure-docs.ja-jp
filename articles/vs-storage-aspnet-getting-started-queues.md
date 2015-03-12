@@ -27,7 +27,7 @@
 > - [キュー](/documentation/articles/vs-storage-aspnet-getting-started-queues/)
 > - [テーブル](/documentation/articles/vs-storage-aspnet-getting-started-tables/)
 
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[.NET からキュー ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/)」を参照してください。
+Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[.NET からキュー ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-queues/)」を参照してください。
 
 プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
 
@@ -43,5 +43,4 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 [AZURE.INCLUDE [vs-storage-getting-started-queues-include](../includes/vs-storage-getting-started-queues-include.md)]
 
-詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
-<!--HONumber=42-->
+詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。<!--HONumber=42-->

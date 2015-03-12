@@ -1,6 +1,20 @@
-﻿<properties title="Survival Analysis" pageTitle="生存分析 | Azure" description="生存分析" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="生存分析 | Azure" 
+	description="生存分析イベントの発生確率" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="jaymathe" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/08/2014" ms.author="jaymathe" /> 
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/11/2015" 
+	ms.author="jaymathe"/> 
 
 
 #生存分析 
@@ -70,7 +84,7 @@
 
 ##Web サービスの作成
 
->この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+>この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
 Azure ML 内で、新しい空白の実験が作成され、ワークスペース上に 2 つの "R スクリプトの実行" を取得しました。データ スキーマは、Web サービス用の入力データ スキーマを定義する、単純な "R スクリプトの実行" で作成されました。このモジュールは、主要な作業を行う 2 つ目の "R スクリプトの実行" モジュールにリンクされます。このモジュールは、データの前処理、モデル構築、および予測を実行します。データの前処理手順で、長い文字列で表された入力データが変換され、データ フレームに変換されます。モデル構築手順では、生存分析を実施するため、外部の R パッケージ "survival_2.37 7.zip" が最初にインストールされます。一連のデータ処理タスクの後に "coxph" 関数が実行されます。生存分析のための "coxph" 関数の詳細については、R のドキュメントを参照してください。予測手順では、"surfit" 関数でトレーニング済みのモデルにテスト インスタンスが入力され、このテストのインスタンスの生存曲線が "curve" 変数として生成されます。最後に、関心のある時間の確率が取得されます。 
 
@@ -172,6 +186,8 @@ Azure ML 内で、新しい空白の実験が作成され、ワークスペー�
 この Web サービスでは、特徴変数として数値変数 (列) のみを使用できます。"event" 列には 0 または 1 の値のみを指定できます。"time" 列は、正の整数である必要があります。
 
 ##FAQ
-Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-marketplace-faq)を参照してください。
+Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/documentation/articles/machine-learning-marketplace-faq)を参照してください。
 
 [1]: ./media/machine-learning-r-csharp-survival-analysis/survive_img2.png
+
+<!--HONumber=46--> 

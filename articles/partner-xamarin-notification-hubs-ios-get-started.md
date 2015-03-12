@@ -1,40 +1,52 @@
-﻿<properties urlDisplayName="Get Started" pageTitle="通知ハブの使用 (Xamarin iOS アプリケーション)" metaKeywords="" description="Azure Notification Hubs を使用して Xamarin iOS アプリケーションにプッシュ通知を送信する方法について説明します。" metaCanonical="" disqusComments="0" umbracoNaviHide="1" services="mobile-services,notification-hubs" documentationCenter="" title="Get started with Notification Hubs" authors="donnam" manager="dwrede" />
+<properties 
+	pageTitle="通知ハブの使用 (Xamarin iOS アプリケーション)" 
+	description="Azure Notification Hubs を使用して Xamarin iOS アプリケーションにプッシュ通知を送信する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="xamarin" 
+	authors="lindydonna" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="donnam" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="dotnet" 
+	ms.topic="hero-article" 
+	ms.date="11/11/2014" 
+	ms.author="donnam"/>
 
 # 通知ハブの使用
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS" class="current">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
 
 このトピックでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。 
-このチュートリアルでは、Apple プッシュ通知サービス (APNs) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション][GitHub]サンプルで参照できます。
+このチュートリアルでは、Apple プッシュ通知サービス (APNs) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション ][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
 1. [証明書の署名要求を生成する]
 2. [アプリケーションを登録し、プッシュ通知を有効にする]
-3. [アプリケーションのプロビジョニング プロファイルを作成する]
-4. [通知ハブを構成する]
-5. [通知ハブにアプリケーションを接続する]
+3. [アプリケーションのプロビジョニング ファイルを作成する]
+4. [Notification Hubs を構成する]
+5. [Notification Hubs にアプリケーションを接続する]
 6. [バックエンドから通知を送信する]
 
 このチュートリアルでは、通知ハブを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。このチュートリアルの前提条件は次のとおりです。
 
-+ [XCode 5.0][Install Xcode]
++ [XCode 5.0][Xcode のインストール]
 + iOS 5.0 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 + [Xamarin.iOS]
-+ [Azure モバイル サービス コンポーネント]
++ [Azure Mobile Services コンポーネント]
 
-   <div class="dev-callout"><b>注</b>
-   <p>プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。</p>
-   </div>
+   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
 このチュートリアルを完了することは、Xamarin.iOS アプリの他のすべての通知ハブ チュートリアルの前提条件です。 
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A643EE910&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fmanage%2Fservices%2Fnotification-hubs%2Fgetting-started-xamarin-ios%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fmanage%2Fservices%2Fnotification-hubs%2Fgetting-started-xamarin-ios%2F"%20target="_blank)を参照してください。
 
-Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、[Apple Push Notification Service に関するページ]を参照してください。
+Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
 
 
@@ -44,31 +56,31 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 1. Utilities フォルダーから [Keychain Access] ツールを実行します。
 
-2. **[キーチェーン アクセス]** をクリックし、**[証明書アシスタント]** を展開して、**[認証局に証明書を要求]** をクリックします。
+2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
   	![][5]
 
-3. **[ユーザーのメール アドレス]** を選択し、**[通称]** と **[CA のメール アドレス]** の値を入力します。**[ディスクに保存]** が選択されていることを確認し、**[続ける]** をクリックします。
+3. **[User Email Address]** を選択し、**[Common Name]** と **[CA Email Address]** の値を入力します。**[Saved to disk]** が選択されていることを確認し、**[Continue]** をクリックします。
 
   	![][6]
 
-4. **[名前と付けて保存]** に証明書署名要求 (CSR) ファイルの名前を入力し、**[場所]** で保存場所を選択して、**[保存]** をクリックします。
+4. **[Save As]** に証明書署名要求 (CSR) ファイルの名前を入力し、**[Where]** で保存場所を選択して **[Save]** をクリックします。
 
   	![][7]
   
-指定選択した場所に CSR ファイルが保存されます。既定の場所はデスクトップです。このファイル用に選択した場所を忘れないでください。
+  	指定選択した場所に CSR ファイルが保存されます。既定の場所はデスクトップです。このファイル用に選択した場所を忘れないでください。
 
 次に、アプリケーションを Apple に登録し、プッシュ通知を有効にし、このエクスポートした CSR をアップロードしてプッシュ通知を作成します。
 
 <h2><a name="register"></a>アプリケーションをプッシュ通知に登録する</h2>
 
-モバイル サービスから iOS アプリケーションにプッシュ通知を送信可能にするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。  
+モバイル サービスから iOS アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。  
 
 1. アプリケーションをまだ登録していない場合は、Apple デベロッパー センターで <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に移動し、Apple ID でログインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリケーションを登録します。
 
    	![][105] 
 
-2. Type a name for your app in **Description**, and a value for **Bundle Identifier**, check the "Push Notifications" option in the "App Services" section, and then click **Continue**.
+2. **[Description]** にアプリケーションの名前を入力し、**[Bundle Identifier]** に値を入力します。[App Services] セクションの [Push Notifications] オプションをオンにして、**[Continue]** をクリックします。
 
    	![][106]
 
@@ -77,17 +89,15 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
    	![][108]
    
 
-これで、アプリケーション ID が生成され、情報のサブミットが求められます。**[Submit]** をクリックします。
+	これで、アプリケーション ID が生成され、情報のサブミットが求められます。**[Submit]** をクリックします。
    
    	![][109] 
    
-	Once you click **Submit**, you will see the **Registration complete** screen, as shown below. Click **Done**.
+	**[Submit]** をクリックすると、以下のような **[Registration complete]** 画面が表示されます。**[Done]** をクリックします。
    
    	![][110]
 
-	<div class="dev-callout"><b>注</b>
-	<p><strong>[Bundle Identifier]</strong> に <b>MobileServices.Quickstart</b> 以外の値を指定する場合は、Xcode プロジェクトでバンドル ID の値も更新する必要があります。</p>
-	 </div>
+	> [AZURE.NOTE] **[Bundle Identifier]** に **MobileServices.Quickstart** 以外の値を指定する場合は、Xcode プロジェクトでバンドル ID の値も更新する必要があります。
 
 3. 作成したアプリケーション ID を見つけ、その行をクリックします。 
 
@@ -103,15 +113,13 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![][114] 
 
-	This displays the "Add iOS Certificate" assistant.
+	これで、[Add iOS Certificate] アシスタントが表示されます。
    
    	![][115] 
 
-	<div class="dev-callout"><b>Note</b>
-	<p>This tutorial uses a development certificate. The same process is used when registering a production certificate. Just make sure that you set the same certificate type when you upload the certificate to Mobile Services.</p>
-	</div>
+	> [AZURE.NOTE] このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。証明書をモバイル サービスにアップロードするときと同じ証明書タイプを設定してください。
 
-5. Click **Choose File**, browse to the location in which you saved the CSR file that you created in the first task, and then click **Generate**. 
+5. **[Choose File]** をクリックして、最初の作業で CSR ファイルを保存した場所に移動し、**[Generate]** をクリックします。 
 
   	![][116]
   
@@ -121,21 +129,19 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
   	![][119]  
   
-   	This downloads the signing certificate and saves it to your computer in your **Downloads** folder. 
+   	これによって、署名証明書がダウンロードされ、コンピューターの **Downloads** フォルダーに保存されます。 
 
   	![][9] 
 
-    <div class="dev-callout"><b>Note</b>
-	<p>By default, the downloaded file a development certificate is named <strong>aps_development.cer</strong>.</p>
-    </div>
+    > [AZURE.NOTE] 既定では、ダウンロードした開発証明書ファイルの名前は **aps_development.cer** になっています。
 
-7. Double-click the downloaded push certificate **aps_development.cer**.
+7. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。
 
-	This installs the new certificate in the Keychain, as shown below:
+	下図のように、新しい証明書が Keychain にインストールされます。
 
    	![][10]
 
-	> [WACOM.NOTE]
+	> [AZURE.NOTE]
 	> 証明書の名前は異なることがありますが、名前の前に <strong>Apple Development iOS Push Notification Services:</strong> が付けられます。
 
 	後で、この証明書を使用して .p12 ファイルを生成し、それを通知ハブにアップロードして APNS によるプッシュ通知を有効にします。
@@ -182,9 +188,9 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 これで、Xcode プロジェクトはコード署名のために新しいプロファイルを使用するようになります。次に、証明書を通知ハブにアップロードする必要があります。
 
-<h2><a name="configure-hub"></a>通知ハブを構成する</h2>
+<h2><a name="configure-hub"></a>Notification Hubs を構成する</h2>
 
-1. [Azure の管理ポータル] にログオンし、画面下部にある **[+ 新規]** をクリックします。
+1. [Azure の管理ポータル]にログオンし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -212,11 +218,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 これで、通知ハブが APN と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
 
-<h2><a name="connecting-app"></a>通知ハブにアプリケーションを接続する</h2>
+<h2><a name="connecting-app"></a>Notification Hubs にアプリケーションを接続する</h2>
 
 ### WindowsAzure.Messaging ライブラリをダウンロードする
 
-このアセンブリは、Azure Notification Hubs に登録するための簡単な方法を提供します。ここに示す手順に従ってダウンロードしてください。[サンプル ダウンロード][GitHub]にもあります。
+このアセンブリは、Azure Notification Hubs に登録するための簡単な方法を提供します。ここに示す手順に従ってダウンロードしてください。[サンプル ダウンロード ][GitHub] にもあります。
 
 1. GitHub から [WindowsAzure.Messaging] のソースをダウンロードします。
 
@@ -231,12 +237,12 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 2. まず、Azure Mobile Services コンポーネントへの参照を追加します。[Solution] ビューで、プロジェクトの **[Components]** フォルダーを右クリックし、**[Get More Components]** を選択します。**Azure モバイル サービス** コンポーネントを検索し、そのコンポーネントをプロジェクトに追加します。
 
-3. ここで、前にダウンロードした WindowsAzure.Messaging ライブラリへの参照を追加します。**[参照]** フォルダーを右クリックし、**[参照の編集]** を選択します。**[.Net アセンブリ]** タブで、**WindowsAzure.Messaging.dll** を見つけます。
+3. ここで、前にダウンロードした WindowsAzure.Messaging ライブラリへの参照を追加します。**[参照]** フォルダーを右クリックし、**[参照の編集]** を選択します。**[.Net アセンブリ]** タブで、**WindowsAzure.Messaging.dll** を見つけます。 
 
 4. **AppDelegate.cs** で、次の using ステートメントを追加します。
 
 		using Microsoft.WindowsAzure.MobileServices;
-    using WindowsAzure.Messaging;
+	    using WindowsAzure.Messaging;
 
 5. **SBNotificationHub** のインスタンスを宣言します。
 
@@ -324,24 +330,22 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
             }
         }
 
-    <div class="dev-callout"><b>注</b>
-	<p>ネットワーク接続がないなどの状況に対処するために、**FailedToRegisterForRemoteNotifications()** をオーバーライドすることを選択できます。</p>
-    </div>
+    > [AZURE.NOTE] **ネットワーク接続がないなどの状況に対処するために、**FailedToRegisterForRemoteNotifications() をオーバーライドすることを選択できます。
 
 	
 11. デバイスでアプリケーションを実行します。
 
-<h2><a name="send"></a>バックエンドから通知を送信する</h2>
+<h2><a name="send"></a>Send notification from your back-end</h2>
 
-通知は、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからも通知ハブを使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションと、ノード スクリプトを使用するモバイル サービスで通知を送信します。
+通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションと、ノード スクリプトを使用するモバイル サービスで通知を送信します。
 
 .NET アプリケーションを使用して通知を送信するには
 
-1.  Visual C# の新しいコンソール アプリケーションを作成します。 
+1. Visual C# の新しいコンソール アプリケーションを作成します。 
 
    	![][213]
 
-2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a> を使用して Azure Service Bus SDK への参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力します。
+2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure Service Bus SDK への参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力します。
 
         Install-Package WindowsAzure.ServiceBus and press Enter.
 
@@ -349,7 +353,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
         using Microsoft.ServiceBus.Notifications;
 
-3. `Program` クラスで、次のメソッドを追加します。
+3.  `Program` クラスで、次のメソッドを追加します。
 
         private static async void SendNotificationAsync()
         {
@@ -358,12 +362,12 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
             await hub.SendAppleNativeNotificationAsync(alert);
         }
 
-4. 次に、`Main` メソッド内に次の行を追加します。
+4. 次に、 `Main` メソッドに次の行を追加します。
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-5.  F5 キーを押してアプリケーションを実行します。デバイスでアラートを受信します。Wi-fi を使用している場合、接続が機能していることを確認します。
+5. F5 キーを押してアプリケーションを実行します。デバイスでアラートを受信します。Wi-fi を使用している場合、接続が機能していることを確認します。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべてのペイロードが記載されています。
 
@@ -379,9 +383,9 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 
    	![][216]
 
-4.  ジョブが作成されたら、ジョブ名をクリックします。上部のバーにある **[スクリプト]** タブをクリックします。
+4. ジョブが作成されたら、ジョブ名をクリックします。上部のバーにある **[スクリプト]** タブをクリックします。
 
-5.  スケジューラ関数内に次のスクリプトを挿入します。必ず、プレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。**[保存]** をクリックします。
+5. スケジューラ関数内に次のスクリプトを挿入します。必ず、プレースホルダーを、通知ハブの名前と既に取得してある  *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。**[保存]** をクリックします。
 
 		var azure = require('azure');
 		var notificationHubService = azure.createNotificationHubService('<Hubname>', '<SAS Full access >');
@@ -401,18 +405,18 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 		);
 
 
-6.  下部のバーにある **[一度だけ実行する]** をクリックします。デバイスでアラートを受信します。
+6. 下部のバーにある **[一度だけ実行する]** をクリックします。デバイスでアラートを受信します。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要]」と「[方法: Windows Azure 通知ハブ (iOS アプリ)]」を参照してください。
 
 <!-- Anchors. -->
 [証明書の署名要求を生成する]: #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
-[通知ハブを構成する]: #configure-hub
-[通知ハブにアプリケーションを接続する]: #connecting-app
+[アプリケーションのプロビジョニング ファイルを作成する]: #profile
+[Notification Hubs を構成する]: #configure-hub
+[Notification Hubs にアプリケーションを接続する]: #connecting-app
 [バックエンドから通知を送信する]: #send
 [次のステップ]:#next-steps
 
@@ -471,24 +475,26 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 
 <!-- URLs. -->
 [モバイル サービス iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-[方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927168.aspx
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
 [Xcode のインストール]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [通知ハブを使用したユーザーへのプッシュ通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
 [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
 
-[ローカルおよびプッシュ通知プログラミング ガイド]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
-[Azure モバイル サービス コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
+[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
+
+<!--HONumber=45--> 

@@ -1,6 +1,20 @@
-﻿<properties title="Manage your Search service on Microsoft Azure" pageTitle="Microsoft Azure で検索サービスを管理する" description="Microsoft Azure で検索サービスを管理する" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Microsoft Azure で検索サービスを管理する" 
+	description="Microsoft Azure で検索サービスを管理する" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="01/16/2015" 
+	ms.author="heidist"/>
 
 # Microsoft Azure で検索サービスを管理する
 
@@ -11,7 +25,7 @@ Azure Search は、カスタム検索アプリケーションで使用できる�
 
 この記事では、新しい [Azure プレビュー ポータル](https://portal.azure.com)で検索サービスを管理する方法について説明します。
 
-または、管理 REST API を使用することができます。詳細については、「[Get started with Azure Search Management REST API (Azure Search 管理 REST API の使用)](http://azure.microsoft.com/ja-jp/documentation/articles/search-get-started-management-api/)」と「[Azure Search Management REST API reference (Azure Search REST API リファレンス)](http://msdn.microsoft.com/ja-jp/library/azure/dn832684.aspx)」を参照してください。
+または、管理 REST API を使用することができます。詳細については、「[Get started with Azure Search Management REST API (Azure Search 管理 REST API の使用)](http://azure.microsoft.com/documentation/articles/search-get-started-management-api/)」と「[Azure Search Management REST API reference (Azure Search REST API リファレンス)](http://msdn.microsoft.com/library/azure/dn832684.aspx)」を参照してください。
 
 <!--TOC-->
 
@@ -34,7 +48,7 @@ Azure Search は、カスタム検索アプリケーションで使用できる�
 
 容量を考慮して計画し、課金の影響を理解するには、以下のリンクをお勧めします。
 
-+	[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/dn798934.aspx)
++	[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/dn798934.aspx)
 +	[Pricing Details (料金の詳細)](http://go.microsoft.com/fwlink/p/?LinkdID=509792)
 
 サインアップの準備ができたら、「[Azure Search の使用](../search-get-started/)」を参照してください。
@@ -98,10 +112,10 @@ API キーを取得または再生成するには、サービス ダッシュボ
 
 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。
 
-Search サービス API を使用して、ドキュメントとインデックスの数を取得できます。料金レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/dn798934.aspx)」を参照してください。 
+Search サービス API を使用して、ドキュメントとインデックスの数を取得できます。料金レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/dn798934.aspx)」を参照してください。 
 
-+	[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/dn798942.aspx)
-+	[Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))](http://msdn.microsoft.com/ja-jp/library/dn798924.aspx)
++	[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](http://msdn.microsoft.com/library/dn798942.aspx)
++	[Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))](http://msdn.microsoft.com/library/dn798924.aspx)
 
 > [WACOM.NOTE] キャッシング動作により、一時的に制限を超える場合があります。たとえば、共有サービスの使用時に、ドキュメント数がハードウェアの制限である 10,000 個を超える場合があります。この超過は一時的であり、次の制限強制チェックで検出されます。 
 
@@ -141,7 +155,7 @@ Search サービス API を使用して、ドキュメントとインデック�
 
 特定のパーティションにどのインデックス シャードが格納されているかを検出する方法はありません。各パーティションで約 25 GB のストレージが提供されるため、現在のパーティションの数で対応できるサイズまでストレージを削減する必要があります。1 つのパーティションに戻す場合は、12 個のシャードをすべて収める必要があります。
 
-将来の計画を立てるには、ストレージをチェックして (「[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/dn798942.aspx)」を使用) 実際にどのくらい使用したか確認します。 
+将来の計画を立てるには、ストレージをチェックして (「[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](http://msdn.microsoft.com/library/dn798942.aspx)」を使用) 実際にどのくらい使用したか確認します。 
 
 
 <!---->
@@ -157,7 +171,7 @@ Search サービス API を使用して、ドキュメントとインデック�
 <!---->
 <h2 id="sub-8">管理アクセスのロールを設定する</h2>
 
-Azure は、カスタム管理ツールを使用している場合、プレビュー ポータルで、または、Azure リソース マネージャー API で管理するすべてのサービスに対して、グローバルなロールベースの承認モデルを用意しています。所有者、共同作成者、および閲覧者のロールは、各ロールに割り当てる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対するサービス管理レベルを設定します。ロール メンバーシップの詳細については、「[Role-based access control in Azure Preview Portal (Azure プレビュー ポータルのロール ベースのアクセス制御)](http://azure.microsoft.com/ja-jp/updates/role-based-access-control-in-azure-preview-portal/)」を参照してください。
+Azure は、カスタム管理ツールを使用している場合、プレビュー ポータルで、または、Azure リソース マネージャー API で管理するすべてのサービスに対して、グローバルなロールベースの承認モデルを用意しています。所有者、共同作成者、および閲覧者のロールは、各ロールに割り当てる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対するサービス管理レベルを設定します。ロール メンバーシップの詳細については、「[Role-based access control in Azure Preview Portal (Azure プレビュー ポータルのロール ベースのアクセス制御)](http://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)」を参照してください。
 
 Azure Search の観点から、ロールベースのアクセス制御は次の管理タスクを決定します。
 
@@ -185,7 +199,7 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 </tr>
 </table>
 
-ロールは、サービス エンドポイントへのアクセス権を付与しないことに注意してください。インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。詳細については、「[Role-based access control in Azure Preview Portal Azure (Azure プレビュー ポータルのロール ベースのアクセス制御)](http://azure.microsoft.com/ja-jp/updates/role-based-access-control-in-azure-preview-portal/)」で「管理のための承認とデータ操作」を参照してください。
+ロールは、サービス エンドポイントへのアクセス権を付与しないことに注意してください。インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。詳細については、「[Role-based access control in Azure Preview Portal Azure (Azure プレビュー ポータルのロール ベースのアクセス制御)](http://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)」で「管理のための承認とデータ操作」を参照してください。
 
 ロールは、サービスが作成された後のアクセス制御を行います。サブスクリプションの管理者だけが、サブスクリプションに検索サービスを追加できます。
 
@@ -213,3 +227,5 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 [Azure Search 開発ワークフロー]: ../search-workflow/
 [最初の Azure Search ソリューションを作成する]: ../search-create-first-solution/
 
+
+<!--HONumber=46--> 

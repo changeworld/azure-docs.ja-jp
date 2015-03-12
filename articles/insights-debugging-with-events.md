@@ -1,6 +1,20 @@
-﻿<properties title="How to debug with events" pageTitle="イベントに関連したデバッグの方法" description="Azure でイベントを表示する方法について説明します。" authors="hanikn" manager="kamrani" />
+﻿<properties 
+	pageTitle="イベントに関連したデバッグの方法" 
+	description="Azure でイベントを表示する方法について説明します。" 
+	authors="HaniKN-MSFT" 
+	manager="kamrani" 
+	editor="" 
+	services="application-insights" 
+	documentationCenter=""/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="hanikn" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/24/2014" 
+	ms.author="hanikn"/>
 
 # Azure のリソースまたはリソース グループに影響を与えるイベントの監視
 
@@ -18,3 +32,5 @@
     ![Resource groups](./media/insights-debugging-with-events/Insights_EventDetails.png)  
     イベントに関して多くの詳細を示す新しいブレードが表示されます。**[失敗]** イベントに関しては、このページで通常、デバッグの目的で役立つ詳細を示す **[サブステータス]** および **[プロパティ]** というセクションが表示されます。
 
+
+<!--HONumber=46--> 

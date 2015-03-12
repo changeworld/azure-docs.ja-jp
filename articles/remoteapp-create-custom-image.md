@@ -1,6 +1,20 @@
-<properties title="How to create a custom template image for RemoteApp" pageTitle="RemoteApp のカスタム テンプレート イメージの作成方法" description="RemoteApp のカスタム テンプレート イメージを作成する方法について説明します。このテンプレートは、ハイブリッド デプロイメントまたはクラウド デプロイメントで使用できます。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="mbaldwin" />
+﻿<properties 
+	pageTitle="RemoteApp のカスタム テンプレート イメージの作成方法" 
+	description="RemoteApp のカスタム テンプレート イメージを作成する方法について説明します。このテンプレートは、ハイブリッド デプロイメントまたはクラウド デプロイメントで使用できます。" 
+	services="remoteapp" 
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" 
+	editor=""/>
 
-<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/12/2014" ms.author="elizapo" ms.manager="mbaldwin" />
+<tags 
+	ms.service="remoteapp" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/17/2015" 
+	ms.author="elizapo"/>
 
 # RemoteApp のカスタム テンプレート イメージの作成方法
 Azure RemoteApp では、ユーザーと共有するすべてのプログラムをホスティングするために Windows Server 2012 R2 のテンプレート イメージを使用します。カスタム RemoteApp テンプレート イメージを作成するには、既存のイメージを使うことも新しく作成することもできます。Azure RemoteApp で使用するためにアップロードできるイメージの要件は次のとおりです。
@@ -23,10 +37,10 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 
 サービスを作成する前に、以下の操作が必要です。
 
-- RemoteApp にサインアップする。これは [http://azure.microsoft.com/ja-jp/services/remoteapp/](http://azure.microsoft.com/ja-jp/services/remoteapp/) で行うことができます。
-- RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。詳細については、「[RemoteApp の Azure Active Directory を構成する](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-ad/)」を参照してください。
+- RemoteApp にサインアップする。これは [http://azure.microsoft.com/services/remoteapp/](http://azure.microsoft.com/services/remoteapp/) で行うことができます。
+- RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。詳細については、「[RemoteApp の Azure Active Directory を構成する](http://azure.microsoft.com/documentation/articles/remoteapp-ad/)」を参照してください。
 - オンプレミスのネットワークに関する情報を収集します。IP アドレスの情報と VPN デバイスの詳細情報が含まれます。
-- [Azure PowerShell](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/) モジュールをインストールします。
+- [Azure PowerShell](http://azure.microsoft.com/documentation/articles/install-configure-powershell/) モジュールをインストールします。
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 
 
@@ -115,8 +129,10 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 これでカスタム テンプレート イメージを作成し終えたので、次にこのイメージを RemoteApp デプロイにアップロードする必要があります。以下の記事の情報を利用して、コレクションを作成してください。
 
 
-- [RemoteApp のクラウド ハイブリッド コレクションの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/) 
-- [RemoteApp のクラウド コレクションの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/)
+- [RemoteApp のクラウド ハイブリッド コレクションの作成方法](http://azure.microsoft.com/documentation/articles/remoteapp-create-hybrid-deployment/) 
+- [RemoteApp のクラウド コレクションの作成方法](http://azure.microsoft.com/documentation/articles/remoteapp-create-cloud-deployment/)
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

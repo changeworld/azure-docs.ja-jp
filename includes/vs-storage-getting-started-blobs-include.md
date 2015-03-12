@@ -66,7 +66,7 @@ BLOB ファイルをコンテナーにアップロードするには、コンテ
     	}
 	}
 
-BLOB コンテナーの内容を一覧表示する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob)」を参照してください。
+BLOB コンテナーの内容を一覧表示する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob)」を参照してください。
 
 #####BLOB をダウンロードする
 BLOB をダウンロードするには、まず BLOB の参照を取得し、次にその DownloadToStream() メソッドを呼び出します。次の例は、DownloadToStream() メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
@@ -80,7 +80,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
     	blockBlob.DownloadToStream(fileStream);
 	}
 
-BLOB をファイルとして保存する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)」を参照してください。
+BLOB をファイルとして保存する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)」を参照してください。
 
 #####BLOB を削除する
 BLOB を削除するには、まず BLOB の参照を取得し、次にその Delete() メソッドを呼び出します。
@@ -92,5 +92,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその De
 	blockBlob.Delete();
 
 [Azure Storage の詳細を確認する](http://azure.microsoft.com/documentation/services/storage/)
-「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx)」も参照してください。
-<!--HONumber=42-->
+「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」も参照してください。<!--HONumber=42-->

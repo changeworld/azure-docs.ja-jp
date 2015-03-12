@@ -1,6 +1,20 @@
-<properties title="Step 2: Upload existing data into an Azure Machine Learning experiment" pageTitle="手順 2.Machine Learning の実験にデータをアップロードする | Azure" description="手順 2.Azure Machine Learning Studio に既存のパブリック データをアップロードする" metaKeywords="" services="machine-learning" solutions="big-data" documentationCenter="" authors="garye" videoId="" scriptId="" manager="paulettm" editor="cgronlun" />
+﻿<properties 
+	pageTitle="手順 2:Machine Learning の実験にデータをアップロードする | Azure" 
+	description="ソリューションのチュートリアル、手順 2: Azure Machine Learning Studio に既存のパブリック データをアップロードする" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/02/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/06/2015" 
+	ms.author="garye"/>
 
 これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][develop]」の 2 番目の手順です。
 
@@ -70,3 +84,5 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 **次の手順: [新しい実験を作成する][create-new]**
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
+
+<!--HONumber=46--> 

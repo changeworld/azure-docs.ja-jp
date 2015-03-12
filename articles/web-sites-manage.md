@@ -83,7 +83,7 @@ Azure ポータルでの Web サイトの管理は、一連のページまたは
 **[監視]** 管理ページには、Web サイトの使用状況を示すグラフが表示されます。このグラフには、「ダッシュボード」で説明した **[ダッシュボード]** ページのグラフと同じメトリックが既定で表示されます。グラフは、メトリック [HTTP 成功]、[HTTP リダイレクト]、[HTTP 401 エラー]、[HTTP 403 エラー]、[HTTP 404 エラー]、および [HTTP 406 エラー] が表示されるように構成することもできます。これらのメトリックの詳細については、[Web サイトの監視方法][監視] をご覧ください。
 
 ##Web ジョブ##
-[Web ジョブ] 管理ページでは、Web サイトに対してオンデマンドで実行するタスク、スケジュールに従って実行するタスク、または連続的に実行するタスクを作成できます。詳細については、[Microsoft Azure の Web サイトで Web ジョブを使用してバックグラウンド タスクを実行する方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-create-web-jobs/) をご覧ください。
+[Web ジョブ] 管理ページでは、Web サイトに対してオンデマンドで実行するタスク、スケジュールに従って実行するタスク、または連続的に実行するタスクを作成できます。詳細については、[Microsoft Azure の Web サイトで Web ジョブを使用してバックグラウンド タスクを実行する方法](http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/) をご覧ください。
 
 ##構成##
 **[構成]** 管理ページでは、アプリケーション固有の設定を行います。
@@ -102,7 +102,7 @@ Web サイトのスケール オプションを構成する方法の詳細につ
 **[リンク済みリソース]** 管理ページでは、SQL データベース、MySQL データベース、Azure ストレージ アカウントなど、Web サイトで使用している Microsoft Azure リソースが一覧表示されます。リソースを管理するにはリソースの名前をクリックします。
 
 ##バックアップ##
-**[バックアップ]** 管理ページでは、Web サイトの自動バックアップや手動バックアップの作成、以前の状態への Web サイトの復元、またはいずれかのバックアップに基づいた新しい Web サイトの作成が可能です。詳細については、[Microsoft Azure の Web サイトのバックアップ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-backup/) および [Microsoft Azure の Web サイトの復元](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-restore/) をご覧ください。
+**[バックアップ]** 管理ページでは、Web サイトの自動バックアップや手動バックアップの作成、以前の状態への Web サイトの復元、またはいずれかのバックアップに基づいた新しい Web サイトの作成が可能です。詳細については、[Microsoft Azure の Web サイトのバックアップ](http://azure.microsoft.com/documentation/articles/web-sites-backup/) および [Microsoft Azure の Web サイトの復元](http://azure.microsoft.com/documentation/articles/web-sites-restore/) をご覧ください。
 
 ##管理ページのアイコン##
 アイコンは、Web サイトの管理ページそれぞれの下部に表示されます。これらのアイコンのうち一部は複数のページに表示され、いくつかのアイコンは特定の 1 ページだけに表示されます。以下のアイコンは、**[ダッシュボード]** 管理ページの下部に表示されます。
@@ -210,11 +210,11 @@ FTP の完全なユーザー名は、"Web サイト\ユーザー名" の形式�
 
 [azuresdk]:http://go.microsoft.com/fwlink/?LinkId=246928
 
-[構成]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-configure-websites
+[構成]: http://azure.microsoft.com/manage/services/web-sites/how-to-configure-websites
 
-[監視]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/
+[監視]: http://azure.microsoft.com/manage/services/web-sites/how-to-monitor-websites/
 
-[スケール]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-scale-websites
+[スケール]: http://azure.microsoft.com/manage/services/web-sites/how-to-scale-websites
 
 
 <!-- Anchors. -->

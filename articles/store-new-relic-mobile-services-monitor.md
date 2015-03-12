@@ -139,7 +139,7 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 [5]: ./media/store-new-relic-mobile-services-monitor/mobile-new-relic-dashboard-2.png
 
 <!-- URLs. -->
-[ソース管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
+[ソース管理]: http://msdn.microsoft.com/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Mobile Services のサーバー スクリプトの操作]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts.md
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/

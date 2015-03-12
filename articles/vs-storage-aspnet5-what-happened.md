@@ -41,5 +41,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 ##### Azure Storage の接続文字列の追加 
 選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの config.json ファイル内に要素が作成されました。
 
-詳細については、「[ASP.NET 5](http://www.asp.net/vnext)」を参照してください。
-<!--HONumber=42-->
+詳細については、「[ASP.NET 5](http://www.asp.net/vnext)」を参照してください。<!--HONumber=42-->

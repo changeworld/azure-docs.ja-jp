@@ -31,6 +31,5 @@ Django アプリケーションで静的なファイルの収集をスキップ�
 
 これらのファイルが存在しない場合、Azure によって一時的なデプロイメント スクリプトが作成され、それが実行されます。スクリプトは上記のコマンドで作成したのと同じです。
 
-[Azure コマンド ライン インターフェイス]: http://azure.microsoft.com/ja-jp/downloads/
-
+[Azure コマンド ライン インターフェイス]: http://azure.microsoft.com/downloads/
 <!--HONumber=42-->

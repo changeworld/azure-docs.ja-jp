@@ -1,6 +1,20 @@
-<properties pageTitle="JavaScript バックエンド モバイル サービスを操作する" description="Azure Mobile Services でサーバー スクリプトを定義、登録、使用する方法の例を提供します。" services="mobile-services" documentationCenter="" authors="RickSaling" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="JavaScript バックエンド モバイル サービスを操作する" 
+	description="Azure Mobile Services でサーバー スクリプトを定義、登録、使用する方法の例を提供します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="RickSaling" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="ricksal"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="ricksal"/>
 
 
 # JavaScript バックエンド モバイル サービスを操作する
@@ -231,7 +245,8 @@ error ハンドラーを渡した場合は、**respond** が呼び出された�
 		    }
 
 		    function insertItemIfNotComplete(existingItems) {
-		        if (existingItems.length > 0) {
+		        if (existingIte
+	ms.length > 0) {
 		            request.respond(statusCodes.CONFLICT, 
                         "Duplicate items are not allowed.");
 		        } else {
@@ -945,34 +960,34 @@ Mobile Services の多くのシナリオでは、サーバー スクリプトが
 [4]: ./media/mobile-services-how-to-use-server-scripts/4-mobile-source-local-cli.png
 
 <!-- URLs. -->
-[モバイル サービスのサーバー スクリプト リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554226.aspx
+[モバイル サービスのサーバー スクリプト リファレンス]: http://msdn.microsoft.com/library/windowsazure/jj554226.aspx
 [モバイル サービスでのバックエンド ジョブの計画]: /ja-jp/develop/mobile/tutorials/schedule-backend-tasks/
-[request オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554218.aspx
-[response オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303373.aspx
-[user オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554220.aspx
-[push object]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx
-[insert function]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554229.aspx
-[insert 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554229.aspx
-[update function]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554214.aspx
-[delete function]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554215.aspx
-[read function]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554224.aspx
-[update 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554214.aspx
-[delete 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554215.aspx
-[read 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554224.aspx
-[query オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj613353.aspx
-[apns オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj839711.aspx
-[mpns オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj871025.aspx
-[wns オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860484.aspx
-[table オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554210.aspx
-[tables オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj614364.aspx
-[mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
-[console オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554209.aspx
-[データの読み取りおよび書き込み]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631640.aspx
-[データの検証]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631638.aspx
-[要求の変更]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631635.aspx
-[応答の変更]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631631.aspx
+[request オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554218.aspx
+[response オブジェクト]: http://msdn.microsoft.com/library/windowsazure/dn303373.aspx
+[user オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554220.aspx
+[push object]: http://msdn.microsoft.com/library/windowsazure/jj554217.aspx
+[insert function]: http://msdn.microsoft.com/library/windowsazure/jj554229.aspx
+[insert 関数]: http://msdn.microsoft.com/library/windowsazure/jj554229.aspx
+[update function]: http://msdn.microsoft.com/library/windowsazure/jj554214.aspx
+[delete function]: http://msdn.microsoft.com/library/windowsazure/jj554215.aspx
+[read function]: http://msdn.microsoft.com/library/windowsazure/jj554224.aspx
+[update 関数]: http://msdn.microsoft.com/library/windowsazure/jj554214.aspx
+[delete 関数]: http://msdn.microsoft.com/library/windowsazure/jj554215.aspx
+[read 関数]: http://msdn.microsoft.com/library/windowsazure/jj554224.aspx
+[query オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj613353.aspx
+[apns オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj839711.aspx
+[mpns オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj871025.aspx
+[wns オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj860484.aspx
+[table オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554210.aspx
+[tables オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj614364.aspx
+[mssql オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554212.aspx
+[console オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554209.aspx
+[データの読み取りおよび書き込み]: http://msdn.microsoft.com/library/windowsazure/jj631640.aspx
+[データの検証]: http://msdn.microsoft.com/library/windowsazure/jj631638.aspx
+[要求の変更]: http://msdn.microsoft.com/library/windowsazure/jj631635.aspx
+[応答の変更]: http://msdn.microsoft.com/library/windowsazure/jj631631.aspx
 [管理ポータル]: https://manage.windowsazure.com/
-[ジョブのスケジュール]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860528.aspx
+[ジョブのスケジュール]: http://msdn.microsoft.com/library/windowsazure/jj860528.aspx
 [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
 [Azure Mobile Services の管理用コマンド]: /ja-jp/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services/#Mobile_Scripts
 [Windows ストアのプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/
@@ -980,7 +995,7 @@ Mobile Services の多くのシナリオでは、サーバー スクリプトが
 [iOS のプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios/
 [Android のプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android/
 [Azure SDK for Node.js]: http://go.microsoft.com/fwlink/p/?LinkId=275539
-[HTTP 要求の送信]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631641.aspx
+[HTTP 要求の送信]: http://msdn.microsoft.com/library/windowsazure/jj631641.aspx
 [SendGrid を使用したモバイル サービスからの電子メールの送信]: /ja-jp/develop/mobile/tutorials/send-email-with-sendgrid/
 [認証の使用]: http://go.microsoft.com/fwlink/p/?LinkId=287177
 [crypto API]: http://go.microsoft.com/fwlink/p/?LinkId=288802
@@ -989,16 +1004,16 @@ Mobile Services の多くのシナリオでは、サーバー スクリプトが
 [url API]: http://go.microsoft.com/fwlink/p/?LinkId=288805
 [util API]: http://go.microsoft.com/fwlink/p/?LinkId=288806
 [zlib API]: http://go.microsoft.com/fwlink/p/?LinkId=288807
-[カスタム API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn280974.aspx
+[カスタム API]: http://msdn.microsoft.com/library/windowsazure/dn280974.aspx
 [クライアントからのカスタム API 呼び出し]: /ja-jp/develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
 [express.js ライブラリ]: http://go.microsoft.com/fwlink/p/?LinkId=309046
 [定期的な通知をサポートするカスタム API の定義]: /ja-jp/develop/mobile/tutorials/create-pull-notifications-dotnet/
 [express.js 内の express オブジェクト]: http://expressjs.com/api.html#express
 [ソース管理へのサーバー スクリプトの保存]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
 [サーバー スクリプトで共有コードと Node.js モジュールを活用する]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/#use-npm
-[service オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303371.aspx
-[アプリ設定]: http://msdn.microsoft.com/ja-jp/library/dn529070.aspx
-[config モジュール]: http://msdn.microsoft.com/ja-jp/library/dn508125.aspx
+[service オブジェクト]: http://msdn.microsoft.com/library/windowsazure/dn303371.aspx
+[アプリ設定]: http://msdn.microsoft.com/library/dn529070.aspx
+[config モジュール]: http://msdn.microsoft.com/library/dn508125.aspx
 [Azure Mobile Services 内での package.json のサポート]: http://go.microsoft.com/fwlink/p/?LinkId=391036
 
 

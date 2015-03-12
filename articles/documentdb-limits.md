@@ -1,6 +1,20 @@
-﻿<properties title="DocumentDB limits for the preview release" pageTitle="プレビュー リリースにおける DocumentDB の制限 | Azure" description="DocumentDB のプレビュー リリースの制限とクォータの適用について説明します。" metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="プレビュー リリースにおける DocumentDB の制限 | Azure" 
+	description="DocumentDB のプレビュー リリースの制限とクォータの適用について説明します。" 
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="cgronlun" 
+	documentationCenter=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/29/2015" 
+	ms.author="mimig"/>
 
 
 #プレビュー リリースにおける DocumentDB の制限
@@ -37,3 +51,5 @@
 |クエリあたりの最大 JOIN 数    |2
 |クエリあたりの AND 句の最大数      |5
 |クエリあたりの OR 句の最大数       |5
+
+<!--HONumber=46--> 

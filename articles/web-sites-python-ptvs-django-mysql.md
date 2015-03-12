@@ -43,7 +43,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
  - [Python 2.7 (32 ビット)][]
 
 > [AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップ</a>してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/pricing/free-trial/">無料評価版にサインアップ</a>してください。
 > 
 > アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=python">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 

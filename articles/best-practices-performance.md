@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Performance" pageTitle="パフォーマンスのベスト プラクティス - Azure" metaKeywords="Azure 最適化, Azure ベスト プラクティス パフォーマンス" description="Azure でのパフォーマンスのベスト プラクティスについて説明します。" metaCanonical="" services="cloud-services,sql-database,storage,service-bus,virtual-network" documentationCenter=".NET" title="" authors="robb" solutions="" manager="johndaw" editor="" />
+﻿<properties 
+	pageTitle="パフォーマンスのベスト プラクティス - Azure" 
+	description="Azure でのパフォーマンスのベスト プラクティスについて説明します。" 
+	services="cloud-services, sql-database, storage, service-bus, virtual-network" 
+	documentationCenter=".net" 
+	authors="Rboucher" 
+	manager="jwhit" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="9/1/2014" ms.author="robb" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="9/1/2014" 
+	ms.author="robb"/>
 
 # Azure アプリケーションのパフォーマンスに関するベスト プラクティス  #
 
@@ -103,7 +117,7 @@ Azure テーブル ストレージを使用するかどうかを決定すると�
 
 テーブル ストレージの詳細については、次の資料を参照してください。 
 
-* [Azure テーブル ストレージと Azure SQL データベースの比較](http://msdn.microsoft.com/ja-jp/library/jj553018.aspx)
+* [Azure テーブル ストレージと Azure SQL データベースの比較](http://msdn.microsoft.com/library/jj553018.aspx)
 * [Azure Table Storage Performance Considerations (Azure テーブル ストレージ)](http://go.microsoft.com/fwlink/?LinkId=252663) 
 * [SQL データベースと Azure テーブル ストレージ](http://go.microsoft.com/fwlink/?LinkId=252664) 
 * [Azure テーブル ストレージ挿入のバッチ処理によるパフォーマンスの向上に関するページ](http://go.microsoft.com/fwlink/?LinkID=252665)。一部のパフォーマンス結果について説明しています。
@@ -343,3 +357,5 @@ Transact-SQL コマンド SET STATISTICS を使用し、SQL Server Management St
 * [Azure のプランニング - 既存環境への Azure の統合に関する意思決定後のガイド](http://go.microsoft.com/fwlink/?LinkId=252884)
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

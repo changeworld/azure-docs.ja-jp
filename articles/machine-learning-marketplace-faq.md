@@ -1,6 +1,20 @@
-﻿<properties title="FAQ for publishing and using Machine Learning apps in the Azure Marketplace" pageTitle="Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ | Azure" description="よく寄せられる質問" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ | Azure" 
+	description="よく寄せられる質問" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="luisca" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/13/2014" ms.author="jaymathe" /> 
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/10/2015" 
+	ms.author="luisca"/> 
 
 #Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
 
@@ -16,7 +30,7 @@
 
 ###質問 3: [このデータセットの参照] で Web サービスに対してデータを入力した後に、次のエラーが表示されます。このエラーはなぜ発生するのですか。
 要求の処理中に予期しないエラーが発生しました。もう一度実行してください。
-回答: Marketplace の [このデータセットの参照] ページで Web サービスを使用するときに、Web サービスの 1 つまたは複数の入力パラメーターが長さの制限を超過した可能性があります。HTTP POST メソッドを使用すると、より長い入力長でサービスを呼び出すことができます。サンプル サービスの下にサンプル コードを示しています (http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-r-csharp-web-service-examples/)。
+回答: Marketplace の [このデータセットの参照] ページで Web サービスを使用するときに、Web サービスの 1 つまたは複数の入力パラメーターが長さの制限を超過した可能性があります。HTTP POST メソッドを使用すると、より長い入力長でサービスを呼び出すことができます。サンプル サービスの下にサンプル コードを示しています (http://azure.microsoft.com/documentation/articles/machine-learning-r-csharp-web-service-examples/)。
 
 ###
 
@@ -44,3 +58,5 @@
 
 
 
+
+<!--HONumber=46--> 

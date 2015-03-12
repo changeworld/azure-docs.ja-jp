@@ -123,7 +123,7 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 * <a target="_blank" href="http://www.microsoft.com/ja-jp/download/details.aspx?id=39379">Microsoft Power Query for Excel のダウンロード</a> 
 * <a target="_blank" href="http://www.microsoft.com/ja-jp/download/details.aspx?id=40886">Microsoft Hive ODBC ドライバーのダウンロード</a>
 * <a target="_blank" href="http://www.microsoft.com/ja-jp/server-cloud/solutions/business-intelligence/analysis.aspx">SQL Server Analysis Services の詳細</a>
-* <a target="_blank" href="http://msdn.microsoft.com/ja-jp/library/ms159106.aspx">SQL Server Reporting Services の詳細</a>
+* <a target="_blank" href="http://msdn.microsoft.com/library/ms159106.aspx">SQL Server Reporting Services の詳細</a>
 
 ## <a name="advantage"></a>クラウドで Hadoop を使用するメリット
 
@@ -166,9 +166,9 @@ HDInsight の Hadoop を試す場合は、[HDInsight のドキュメント ペ�
 
 ### Azure 上の SQL Database:	
 		
-* [Azure SQL データベース](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336279.aspx): SQL データベースの MSDN ドキュメント。
+* [Azure SQL データベース](http://msdn.microsoft.com/library/windowsazure/ee336279.aspx): SQL データベースの MSDN ドキュメント。
 	
-* [SQL データベースの管理ポータル](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg442309.aspx): 軽量で使いやすいデータベース管理ツール。クラウド環境で SQL データベースを管理する際に役立ちます。
+* [SQL データベースの管理ポータル](http://msdn.microsoft.com/library/windowsazure/gg442309.aspx): 軽量で使いやすいデータベース管理ツール。クラウド環境で SQL データベースを管理する際に役立ちます。
 
 * [SQL データベース用の Adventure Works](http://msftdbprodsamples.codeplex.com/releases/view/37304): SQL データベースのサンプル データベースのダウンロード ページ。	
 
@@ -194,5 +194,4 @@ HDInsight の Hadoop を試す場合は、[HDInsight のドキュメント ペ�
 [component-versioning]: ../hdinsight-component-versioning/
 
 [zookeeper]: http://zookeeper.apache.org/ 
-
 <!--HONumber=42-->

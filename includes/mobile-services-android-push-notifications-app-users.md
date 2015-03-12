@@ -26,5 +26,4 @@
             refreshItemsFromTable();
         }	
 
-
 <!--HONumber=42-->

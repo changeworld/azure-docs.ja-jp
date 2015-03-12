@@ -23,7 +23,7 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 > [AZURE.NOTE] ハイブリッド接続機能の Web サイト部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」をご覧ください。  
 
 ##前提条件
-- Azure サブスクリプション。無料サブスクリプションについては、「[Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/)」をご覧ください。 
+- Azure サブスクリプション。無料サブスクリプションについては、「[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。 
 
 - ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server は静的ポート 1433 を使用するため、SQL Server で既定のインスタンスを使用することをお勧めします。ハイブリッド接続で使用するための SQL Server Express のインストールと構成の詳細については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
 
@@ -165,7 +165,7 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 
 - ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
 
-- モバイル サービスでのハイブリッド接続の使用の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/)」をご覧ください。
+- モバイル サービスでのハイブリッド接続の使用の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](http://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/)」をご覧ください。
 
 ###その他のリソース
 
@@ -173,9 +173,9 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 
 [Josh Twist によるハイブリッド接続の紹介 (チャネル 9 ビデオ)](http://channel9.msdn.com/Shows/Azure-Friday/Josh-Twist-introduces-hybrid-connections)
 
-[ハイブリッド接続の Web サイト](http://azure.microsoft.com/ja-jp/services/biztalk-services/)
+[ハイブリッド接続の Web サイト](http://azure.microsoft.com/services/biztalk-services/)
 
-[BizTalk サービス:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk サービス:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
 
 [シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする (チャネル 9 ビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 

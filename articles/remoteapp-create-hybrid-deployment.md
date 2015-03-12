@@ -1,6 +1,20 @@
-﻿<properties title="How to create a hybrid deployment of RemoteApp" pageTitle="RemoteApp のハイブリッド デプロイメントの作成方法" description="内部ネットワークに接続する RemoteApp のデプロイメントを作成する方法について説明します。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties 
+	pageTitle="RemoteApp のハイブリッド コレクションの作成方法" 
+	description="内部ネットワークに接続する RemoteApp のデプロイメントを作成する方法について説明します。" 
+	services="remoteapp" 
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" 
+	editor=""/>
 
-<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/12/2014" ms.author="elizapo" ms.manager="kathyw" />
+<tags 
+	ms.service="remoteapp" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/17/2015" 
+	ms.author="elizapo"/>
 
 #RemoteApp のハイブリッド デプロイメントの作成方法
 
@@ -11,7 +25,7 @@ RemoteApp のデプロイメントには、次の 2 種類の方法がありま�
 
 このチュートリアルでは、ハイブリッド デプロイメントを作成する手順について説明します。以下の 7 つのステップがあります。 
 
-1.	[RemoteApp のカスタム テンプレート イメージ](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/)を作成します。
+1.	[RemoteApp のカスタム テンプレート イメージ](http://azure.microsoft.com/documentation/articles/remoteapp-create-custom-image/)を作成します。
 2.	RemoteApp サービスを作成する。
 2.	仮想ネットワークに関連付ける。
 3.	テンプレート イメージに関連付ける。
@@ -23,12 +37,12 @@ RemoteApp のデプロイメントには、次の 2 種類の方法がありま�
 
 サービスを作成する前に、以下の操作が必要です。
 
-- RemoteApp のプレビューにサインアップします。これは、[http://azure.microsoft.com/ja-jp/services/remoteapp/](http://azure.microsoft.com/ja-jp/services/remoteapp/) で行うことができます。
+- RemoteApp のプレビューにサインアップします。これは、[http://azure.microsoft.com/services/remoteapp/](http://azure.microsoft.com/services/remoteapp/) で行うことができます。
 - RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 - オンプレミスのネットワークに関する情報を収集します。IP アドレスの情報と VPN デバイスの詳細情報が含まれます。
-- [Azure PowerShell](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/) モジュールをインストールします。
+- [Azure PowerShell](http://azure.microsoft.com/documentation/articles/install-configure-powershell/) モジュールをインストールします。
 - アクセス権を付与するユーザーとグループに関する情報を集めます。この情報とは、ユーザーまたはグループの Microsoft アカウントの情報または Active Directory の職場アカウントの情報です。
-- テンプレート イメージを作成します。RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細な手順については、「[RemoteApp のカスタム テンプレート イメージの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/)」を参照してください。 
+- テンプレート イメージを作成します。RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細な手順については、「[RemoteApp のカスタム テンプレート イメージの作成方法](http://azure.microsoft.com/documentation/articles/remoteapp-create-custom-image/)」を参照してください。 
 
 
 
@@ -74,7 +88,7 @@ RemoteApp サービスが作成されたら、RemoteApp の **[クイック ス�
 
 ## **手順 3.RemoteApp テンプレート イメージを関連付ける** ##
 
-RemoteApp テンプレート イメージにはユーザーと共有するプログラムが含まれています。(「[RemoteApp のカスタム テンプレート イメージの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/)」の手順で) 作成した新しいテンプレート イメージをアップロードするか、または既存のイメージ (既に Azure にアップロードしたイメージ) にリンクできます。
+RemoteApp テンプレート イメージにはユーザーと共有するプログラムが含まれています。(「[RemoteApp のカスタム テンプレート イメージの作成方法](http://azure.microsoft.com/documentation/articles/remoteapp-create-custom-image/)」の手順で) 作成した新しいテンプレート イメージをアップロードするか、または既存のイメージ (既に Azure にアップロードしたイメージ) にリンクできます。
 
 新しいイメージをアップロードする場合は、イメージの名前を入力して場所を選択する必要があります。ウィザードの次のページに PowerShell コマンドレットのセットが表示されます。特定のイメージをアップロードするために、このコマンドレットをコピーして管理者特権の Windows PowerShell プロンプトから実行します。
 
@@ -110,3 +124,5 @@ RemoteApp サービスには複数のプログラムを発行できます。[Rem
 これで、RemoteApp ハイブリッドのデプロイメントの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、RemoteApp の [クイック スタート] ページにあります。次に、ユーザーがクライアントにログインし、発行した RemoteApp プログラムにアクセスします。
 
 
+
+<!--HONumber=46--> 

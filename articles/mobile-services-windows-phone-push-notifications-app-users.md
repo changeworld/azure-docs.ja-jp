@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ユーザーへのプッシュ通知 (Windows Phone) | モバイル デベロッパー センター" description="Mobile Services を使用して Windows Phone アプリのユーザーにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="ユーザーへのプッシュ通知 (Windows Phone) | モバイル デベロッパー センター" 
+	description="Mobile Services を使用して Windows Phone アプリのユーザーにプッシュ通知を送信する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="10/07/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/07/2014" 
+	ms.author="glenga"/>
 
 # モバイル サービスによるユーザーへのプッシュ通知
 

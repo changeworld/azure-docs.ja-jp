@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する - Azure Mobile Services" description="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する方法について説明します。" services="" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor="mollybos"/>
+﻿<properties 
+	pageTitle="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する - Azure Mobile Services" 
+	description="ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する方法について説明します。" 
+	services="" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/22/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/22/2014" 
+	ms.author="glenga"/>
 
   
 # ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する 
@@ -156,9 +170,9 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 
 ##関連項目##
  
-+ [ハイブリッド接続の Web サイト](http://azure.microsoft.com/ja-jp/services/biztalk-services/)
++ [ハイブリッド接続の Web サイト](http://azure.microsoft.com/services/biztalk-services/)
 + [ハイブリッド接続の概要](http://go.microsoft.com/fwlink/p/?LinkID=397274)
-+ [BizTalk Services:[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
++ [BizTalk Services:[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](http://azure.microsoft.com/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
 
 <!-- IMAGES -->
  

@@ -19,7 +19,7 @@
 
 # サイトの変換と拡張
 
-[XML ドキュメント変換](http://msdn.microsoft.com/ja-jp/library/dd465326.aspx) (XDT) の宣言を使用して、Windows Azure Websites 内の [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) ファイルを変換できます。また、XDT 宣言を使用して、プライベート サイト拡張機能を追加し、カスタム サイト管理アクションを有効にすることもできます。この記事には、Web インターフェイスを使用して PHP 設定の管理を有効にする、サンプルの PHP Manager サイト拡張機能が含まれています。
+[XML ドキュメント変換](http://msdn.microsoft.com/library/dd465326.aspx) (XDT) の宣言を使用して、Windows Azure Websites 内の [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) ファイルを変換できます。また、XDT 宣言を使用して、プライベート サイト拡張機能を追加し、カスタム サイト管理アクションを有効にすることもできます。この記事には、Web インターフェイスを使用して PHP 設定の管理を有効にする、サンプルの PHP Manager サイト拡張機能が含まれています。
 
 
 <!-- MINI TOC -->

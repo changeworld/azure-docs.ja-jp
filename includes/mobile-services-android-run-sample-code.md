@@ -14,5 +14,4 @@
 
    	![](./media/download-android-sample-code/mobile-quickstart-startup-android.png)
 
-   	保存したテキストがメモリ内のコレクションに格納され、下のリストに表示されます。
-<!--HONumber=42-->
+   	保存したテキストがメモリ内のコレクションに格納され、下のリストに表示されます。<!--HONumber=42-->

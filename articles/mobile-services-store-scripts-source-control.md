@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ソース管理へのプロジェクト コードの保存 - Azure Mobile Services" description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="ソース管理へのプロジェクト コードの保存 - Azure Mobile Services" 
+	description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 <div class="dev-center-tutorial-subselector">
 	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-store-code-source-control/" title=".NET backend">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-store-scripts-source-control/"  title="JavaScript backend" class="current">JavaScript バックエンド</a>
@@ -155,7 +169,7 @@ Node.js モジュールをモバイル サービスに追加するための推�
 
 <!-- URLs. -->
 [Git の web サイト]: http://git-scm.com
-[ソース管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
+[ソース管理]: http://msdn.microsoft.com/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Git のインストール]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
 [既存のアプリにモバイル サービスを追加する]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/

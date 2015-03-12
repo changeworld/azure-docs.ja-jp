@@ -1,4 +1,4 @@
-﻿1. Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料評価版](http://azure.microsoft.com/pricing/free-trial/)をお試しください。
+﻿1. [Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料評価版](http://azure.microsoft.com/pricing/free-trial/)をお試しください。
 
 2. ウィンドウの下部にあるコマンド バーで、**[新規]** をクリックします。
 
@@ -27,7 +27,7 @@
  
 	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** では、現在の場所に対応するリージョンを指定します。代わりに仮想ネットワークを指定することもできます。
  
-	>[AZURE.NOTE] 仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。****仮想マシンの作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、[Azure Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)に関するページを参照してください。
+	>[AZURE.NOTE] 仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。****仮想マシンの作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、「[仮想ネットワークの概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
 	- エンドポイントの構成の詳細については、「[仮想マシンに対してエンドポイントを設定する方法](http://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/)」を参照してください。
 
@@ -43,4 +43,5 @@
 8. 仮想マシンが作成されると、管理ポータルの **[仮想マシン]** に新しい仮想マシンが表示されます。対応するクラウド サービスとストレージ アカウントも作成され、それぞれのセクションに表示されます。仮想マシンとクラウド サービスはどちらも自動的に開始され、管理ポータル上では状態が **[実行中]** と表示されます。 
 
 	![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-create-WindowsVM/vmcreated.png)
-<!--HONumber=45--> 
+
+<!--HONumber=42-->

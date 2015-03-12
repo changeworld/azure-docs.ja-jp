@@ -1,6 +1,20 @@
-﻿<properties pageTitle="API Management の重要概念" metaKeywords="" description="Api、製品、ロール、グループ、およびその他の API 管理の主要な概念について説明します。" metaCanonical="" services="api-management" documentationCenter="API Management" title="API Management key concepts" authors="sdanie" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="API Management の重要概念" 
+	description="API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 #API Management の重要概念
 
@@ -90,3 +104,5 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

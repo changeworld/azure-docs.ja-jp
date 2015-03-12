@@ -1,6 +1,20 @@
-<properties linkid="develop-php-how-to-guides-web-sso" urlDisplayName="Web SSO" pageTitle="Single sign-on with Azure Active Directory (PHP)" metaKeywords="Azure PHP web app, Azure single sign-on, Azure PHP Active Directory" description="Learn how to create a PHP web application that uses single sign-on with Azure Active Directory." metaCanonical="" services="active-directory" documentationCenter="PHP" title="Web Single Sign-On with PHP and Azure Active Directory" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Active Directory によるシングル サインオン (PHP)" 
+	description="Azure Active Directory によるシングル サインオンを使用する PHP Web アプリケーションを作成する方法について説明します。" 
+	services="active-directory" 
+	documentationCenter="php" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="tomfitz"/>
 
 # PHP と Azure Active Directory による Web シングル サインオン
 
@@ -199,3 +213,5 @@ PHP Web サイト用に Azure Active Directory とシングル サインオン�
   [手順 2.会社のディレクトリ テナントでアプリケーションをプロビジョニングする]: #provisionapp
   [手順 3.WS-Federation を従業員のサインインに使用してアプリケーションを保護する]: #protectapp
   [まとめ]: #summary
+
+<!--HONumber=46--> 

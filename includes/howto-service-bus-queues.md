@@ -68,7 +68,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 ###管理資格情報をサーバー エクスプローラーから取得するには
 
-管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、「[Azure Tools for Visual Studio の概要](http://http://msdn.microsoft.com/ja-jp/library/windowsazure/ff687127.aspx), 」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。 
+管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、「[Azure Tools for Visual Studio の概要](http://http://msdn.microsoft.com/library/windowsazure/ff687127.aspx), 」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。 
 
 **SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
 
@@ -78,5 +78,4 @@ Azure のサービス バス キューを使用するには、最初にサービ
   [Azure 管理ポータル]: http://manage.windowsazure.com
 
   [34]: ./media/howto-service-bus-queues/VSProperties.png
-
 <!--HONumber=42-->

@@ -33,5 +33,4 @@
 [waws]: /ja-jp/manage/services/web-sites/
 [Azure ストア]: /ja-jp/store/overview/
 [portal]: http://windows.azure.com/
-
 <!--HONumber=42-->

@@ -89,7 +89,7 @@ Azure の管理ポータルの Web ジョブ ダッシュ ボードは、Web ジ
 * [Simple Web Site Backup retention policy with WebJobs (Web ジョブを使用した簡単な Web サイトのバックアップ保持ポリシー)](http://azure.microsoft.com/blog/2014/04/28/simple-web-site-backup-retention-policy-with-webjobs/)
 * [Windows Azure WebSites and Cloud Services Slow on First Request (Microsoft Azure Websites および Cloud Services が、最初の要求時には応答が遅い)](http://wp.sjkp.dk/windows-azure-websites-and-cloud-services-slow-on-first-request/)Web ジョブを使用して、標準レベルの Websites でのみ使用可能な AlwaysOn 機能をシミュレートする方法を示しています。
 * [WebJobs Graceful Shutdown (Web ジョブのグレースフル シャットダウン)](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.U72Il_5OWUl)Web ジョブ SDK のグレースフル シャットダウンについては、[グレースフル シャットダウン] をご覧ください(../websites-dotnet-webjobs-sdk-storage-queues-how-to/#graceful)。
-* [Scaling Your Web Application with Azure Websites (Azure Websites を使用した Web アプリケーションのスケーリング)](http://msdn.microsoft.com/ja-jp/magazine/dn786914.aspx)
+* [Scaling Your Web Application with Azure Websites (Azure Websites を使用した Web アプリケーションのスケーリング)](http://msdn.microsoft.com/magazine/dn786914.aspx)
 * ビデオ
 	* [Scaling out Web Jobs (Web ジョブのスケール アウト)](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 	* [Magnus Mårtensson 氏による Azure Web ジョブ ビデオ](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)

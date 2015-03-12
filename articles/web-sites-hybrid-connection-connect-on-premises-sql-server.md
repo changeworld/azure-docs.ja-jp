@@ -28,7 +28,7 @@
 ##前提条件##
 このチュートリアルを完了するには、以下の製品が必要です。すべて無料版を利用できるため、Azure の開発を完全に無料で始めることができます。
 
-- **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/)」をご覧ください。
+- **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 
 - **Visual Studio 2013** - Visual Studio 2013 の無料試用版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」をご覧ください。これをインストールしてから、次に進みます。
 
@@ -115,7 +115,7 @@
 6. ウィザードの残りの手順を実行し、インストールを完了します。
 
 ###TCP/IP を有効にする###
-TCP/IP を有効にするには、SQL Server Express をインストールした際にインストールされた SQL Server 構成マネージャーを使用します。次に進む前に、「[SQL Server の TCP/IP ネットワーク プロトコルの有効化](http://technet.microsoft.com/ja-jp/library/hh231672%28v=sql.110%29.aspx)」の手順に従ってください。
+TCP/IP を有効にするには、SQL Server Express をインストールした際にインストールされた SQL Server 構成マネージャーを使用します。次に進む前に、「[SQL Server の TCP/IP ネットワーク プロトコルの有効化](http://technet.microsoft.com/library/hh231672%28v=sql.110%29.aspx)」の手順に従ってください。
 
 <a name="CreateSQLDB"></a>
 ###内部設置型の SQL Server データベースを作成する###
@@ -384,13 +384,13 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 [Josh Twist によるハイブリッド接続の紹介 (チャネル 9 ビデオ)](http://channel9.msdn.com/Shows/Azure-Friday/Josh-Twist-introduces-hybrid-connections)
 
-[ハイブリッド接続の Web サイト](http://azure.microsoft.com/ja-jp/services/biztalk-services/)
+[ハイブリッド接続の Web サイト](http://azure.microsoft.com/services/biztalk-services/)
 
-[BizTalk サービス:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk サービス:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
 
 [シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする (チャネル 9 ビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
-[ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/)
+[ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する](http://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/)
 
 [ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する (チャネル 9 ビデオ)](http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Connect-to-an-on-premises-SQL-Server-from-Azure-Mobile-Services-using-Hybrid-Connections)
 

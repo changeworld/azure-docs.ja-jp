@@ -1,6 +1,20 @@
-<properties pageTitle="Get started with Azure API Management" metaKeywords="" description="Learn how to create APIs, operations, and get started with API Management." metaCanonical="" services="" documentationCenter="API Management" title="Get started with Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management の使用" 
+	description="API とその操作を作成する方法のほか、API Management の基本操作について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/11/2015" 
+	ms.author="sdanie"/>
 
 # Azure API Management の使用
 
@@ -244,7 +258,7 @@ My Echo API のグラフの上にマウス ポインターを合わせると、�
   [開発者ポータルから操作を呼び出す]: #call-operation
   [分析結果の表示]: #view-analytics
   [次のステップ]: #next-steps
-  [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=api_management_hero_a
+  [Azure の無料評価版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
   [管理ポータル]: https://manage.windowsazure.com/
   [API Management new instance]: ./media/api-management-get-started/api-management-create-instance-menu.png
   [New API Management service]: ./media/api-management-get-started/api-management-create-instance-step1.png
@@ -282,3 +296,5 @@ My Echo API のグラフの上にマウス ポインターを合わせると、�
   [Summary]: ./media/api-management-get-started/api-management-api-summary-metrics.png
   [Overview]: ./media/api-management-get-started/api-management-analytics-overview.png
   [Azure API Management の詳細な構成について]: ../api-management-get-started-advanced
+
+<!--HONumber=46--> 

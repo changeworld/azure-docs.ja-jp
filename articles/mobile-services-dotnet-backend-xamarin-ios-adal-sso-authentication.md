@@ -1,6 +1,20 @@
-<properties pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Xamarin.iOS) | モバイル デベロッパー センター" description="Xamarin.iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" documentationCenter="xamarin" authors="wesmc7777" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Xamarin.iOS) | モバイル デベロッパー センター" 
+	description="Xamarin.iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
+	documentationCenter="xamarin" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="09/29/2014" ms.author="wesmc,mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-ios" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/29/2014" 
+	ms.author="wesmc,mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
 

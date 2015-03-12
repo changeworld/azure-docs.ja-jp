@@ -107,7 +107,7 @@ Azure Web サイトで PHP Web サイトを作成したため、サイトの管�
 [configure-php]: /ja-jp/develop/php/common-tasks/configure-php-web-site/
 [website-mysql-git]: /ja-jp/develop/php/tutorials/website-w-mysql-and-git/
 [wordpress-gallery]: /ja-jp/develop/php/tutorials/website-from-gallery/
-[websites-pricing]: http://www.windowsazure.com/ja-jp/pricing/details/#header-1
+[websites-pricing]: http://azure.microsoft.com/pricing/details/#header-1
 [scale-websites]: /ja-jp/manage/services/web-sites/how-to-scale-websites/
 
 

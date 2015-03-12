@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Mobile Services 向け .NET クライアント ライブラリの操作" description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" services="" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Mobile Services 向け .NET クライアント ライブラリの操作" 
+	description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" 
+	services="" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/10/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="glenga"/>
 
 
 
@@ -80,7 +94,7 @@
 
 <h2><a name="instantiating"></a>方法:テーブル参照を作成する</h2>
 
-Mobile Services のテーブル データにアクセスするコードとそのデータを変更するコードは、必ず `MobileServiceTable` オブジェクトで関数を呼び出します。 `MobileServiceClient` のインスタンスで [GetTable](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554275.aspx) 関数を呼び出して、テーブルへの参照を取得します。
+Mobile Services のテーブル データにアクセスするコードとそのデータを変更するコードは、必ず `MobileServiceTable` オブジェクトで関数を呼び出します。 `MobileServiceClient` のインスタンスで [GetTable](http://msdn.microsoft.com/library/windowsazure/jj554275.aspx) 関数を呼び出して、テーブルへの参照を取得します。
 
     IMobileServiceTable<TodoItem> todoTable =
 		client.GetTable<TodoItem>();
@@ -158,14 +172,16 @@ Mobile Services のテーブル データにアクセスするコードとその
 
 既定では、サーバーは最初の 50 行のみを返します。[Take] メソッドを呼び出すことによって、返される行の数を増やすことができます。[Skip] メソッドと共に `Take` を使用して、クエリによって返されるデータセット全体のうち特定の "ページ" を要求します。次のクエリを実行すると、テーブルの最初の上位 3 つの項目が返されます。
 
-	// Define a filtered query that returns the top 3 items.
+	// Define a filtered query that returns the top 3 ite
+	ms.
 	MobileServiceTableQuery<TodoItem> query = todoTable
 					.Take(3);
 	List<TodoItem> items = await query.ToListAsync();
 
 次の変更されたクエリは、最初の 3 つの結果をスキップし、その後の 3 つを返します。ページ サイズが 3 つの項目である場合、これは実質的にデータの 2 番目の "ページ" になります。
 
-	// Define a filtered query that skips the top 3 items and returns the next 3 items.
+	// Define a filtered query that skips the top 3 items and returns the next 3 ite
+	ms.
 	MobileServiceTableQuery<TodoItem> query = todoTable
 					.Skip(3)
 					.Take(3);
@@ -407,7 +423,8 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 
 このセクションでは、返されたデータ オブジェクトを UI 要素を使用して表示する方法について説明します。 `todoTable` で未完了の項目を照会し、ごくシンプルな一覧で表示するために、次のコード例を実行して、クエリで一覧のソースをバインドします。 `MobileServiceCollection` を使用すると、Mobile Services 対応のバインディング コレクションが作成されます。
 
-	// This query filters out completed TodoItems.
+	// This query filters out completed TodoIte
+	ms.
 	MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
 		.Where(todoItem => todoItem.Complete == false)
 		.ToCollectionAsync();
@@ -419,7 +436,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 	ListBox lb = new ListBox();
 	lb.ItemsSource = items;
 
-Windows ランタイムの一部のコントロールは、[ISupportIncrementalLoading](http://msdn.microsoft.com/ja-jp/library/windows/apps/Hh701916) と呼ばれるインターフェイスをサポートします。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、 `MobileServiceIncrementalLoadingCollection` による Windows ストア アプリ用の組み込みのサポートがあり、コントロールからの呼び出しが自動的に処理されます。Windows ストア アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
+Windows ランタイムの一部のコントロールは、[ISupportIncrementalLoading](http://msdn.microsoft.com/library/windows/apps/Hh701916) と呼ばれるインターフェイスをサポートします。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、 `MobileServiceIncrementalLoadingCollection` による Windows ストア アプリ用の組み込みのサポートがあり、コントロールからの呼び出しが自動的に処理されます。Windows ストア アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
 
 			MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
 		items =  todoTable.Where(todoItem => todoItem.Complete == false)
@@ -432,7 +449,8 @@ Windows ランタイムの一部のコントロールは、[ISupportIncrementalL
 Windows Phone で新しいコレクションを使用するには、 `IMobileServiceTableQuery<T>` や `IMobileServiceTable<T>` で `ToCollection` 拡張メソッドを使用します。実際にデータを読み込むには、 `LoadMoreItemsAsync()` を呼び出します。
 
 	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
-	await items.LoadMoreItemsAsync();
+	await ite
+	ms.LoadMoreItemsAsync();
 
  `ToCollectionAsync` または `ToCollection` を呼び出して作成されたコレクションを使用する場合は、UI コントロールにバインドできるコレクションを取得します。このコレクションはページングに対応しています。つまり、コントロールが "項目をさらに読み込む" ようにコレクションに依頼し、コレクションがそれを実行します。その時点で、ユーザー コードは関係せず、コントロールはフローを開始します。ただし、コレクションはネットワークからデータを読み込むため、読み込みが失敗することもあると想定されます。このようなエラーを処理するために、 `MobileServiceIncrementalLoadingCollection` で `OnException` メソッドをオーバーライドし、コントロールが実行する `LoadMoreItemsAsync` の呼び出しの結果として生じる例外を処理する必要があります。
 
@@ -583,7 +601,8 @@ Mobile Services はデータを検証してエラー応答をサーバー側に�
 		try
 		{
 			await todoTable.InsertAsync(todoItem);
-			items.Add(todoItem);
+			ite
+	ms.Add(todoItem);
 		}
 		catch (MobileServiceInvalidOperationException e)
 		{
@@ -639,7 +658,7 @@ Mobile Services はデータを検証してエラー応答をサーバー側に�
 
 ### <a name="serialization"></a>方法:シリアル化をカスタマイズする
 
-[MobileServiceClient](http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) クラスは、[JsonSerializerSettings](http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_JsonSerializerSettings.htm) 型の  `SerializerSettings` プロパティを公開します。
+[MobileServiceClient](http://msdn.microsoft.com/library/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) クラスは、[JsonSerializerSettings](http://james.newtonking.com/projects/json/help/?topic=html/T_Newtonsoft_Json_JsonSerializerSettings.htm) 型の  `SerializerSettings` プロパティを公開します。
 
 このプロパティを使用すると、Json.NET のプロパティ (多数あり) を設定できます。たとえば、すべてのプロパティを小文字に変換する場合は次のようになります。
 
@@ -704,33 +723,33 @@ Mobile Services はデータを検証してエラー応答をサーバー側に�
 <!-- URLs. -->
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Windows ストアのクイック スタート チュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started/
-[Windows Phone のクイック スタート チュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-wp8/
-[Windows ストアのデータ チュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
-[Windows Phone のデータ チュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-wp8/
-[Windows ストアの認証]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Windows Phone の認証]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-users-wp8/
-[PasswordVault]: http://msdn.microsoft.com/ja-jp/library/windows/apps/windows.security.credentials.passwordvault.aspx
+[Windows ストアのクイック スタート チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started/
+[Windows Phone のクイック スタート チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-wp8/
+[Windows ストアのデータ チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-dotnet/
+[Windows Phone のデータ チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-wp8/
+[Windows ストアの認証]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-users-dotnet/
+[Windows Phone の認証]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-users-wp8/
+[PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[ProtectedData]: http://msdn.microsoft.com/ja-jp/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
+[ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [モバイル サービス SDK]: http://nuget.org/packages/WindowsAzure.MobileServices/
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
 [スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
 [ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
-[LoginAsync メソッド]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
-[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
-[MobileServiceUser]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
-[UserID]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
-[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
+[LoginAsync メソッド]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
+[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
+[MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
+[UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
+[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
 [ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
-[オプティミスティック同時実行制御チュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/
+[Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[オプティミスティック同時実行制御チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/
 
-[IncludeTotalCount]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn250560.aspx
-[Skip]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn250573.aspx
-[Take]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn250574.aspx
+[IncludeTotalCount]: http://msdn.microsoft.com/library/windowsazure/dn250560.aspx
+[Skip]: http://msdn.microsoft.com/library/windowsazure/dn250573.aspx
+[Take]: http://msdn.microsoft.com/library/windowsazure/dn250574.aspx
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure Mobile Services クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [ クライアントからのカスタム API 呼び出し]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api/

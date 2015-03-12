@@ -103,7 +103,7 @@ Visual Studio から Azure Web サイトをデプロイする方法について�
 * [Azure と ASP.NET を使ってみる](../web-sites-dotnet-get-started/)。Visual Studio と Web Deploy を使用して簡単な ASP.NET MVC Web プロジェクトを作成し、デプロイする方法。
 * [How to Deploy Azure WebJobs to Azure Websites (Azure Web ジョブを Azure Web サイトにデプロイする方法)](../websites-dotnet-deploy-webjobs/)。コンソール アプリケーション プロジェクトを Web ジョブとしてデプロイするための構成方法。  
 * [ メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web Site に展開する](../web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。Visual Studio、Web Deploy、Entity Framework、Code First Migrations を使用して、ASP.NET MVC Web プロジェクトを SQL データベースと共に配置する方法。
-* [Visual Studio と ASP.NET に関する Web デプロイの概要](http://msdn.microsoft.com/ja-jp/library/dd394698.aspx)。Visual Studio を使用して Web デプロイを実行するための基本的な概要です。作成以来期間が経過していますが、現在も引き続き当てはまる情報が掲載されており、その中には Web アプリケーションと共にデータベースをデプロイするためのオプションの概要、実行する必要が生じる可能性のある付加的なデプロイ タスクの一覧、Visual Studio を独自に手動で構成する方法が含まれています。このトピックには、Azure Web サイトへのデプロイのみではなく、デプロイ全般に関する情報も掲載されています。
+* [Visual Studio と ASP.NET に関する Web デプロイの概要](http://msdn.microsoft.com/library/dd394698.aspx)。Visual Studio を使用して Web デプロイを実行するための基本的な概要です。作成以来期間が経過していますが、現在も引き続き当てはまる情報が掲載されており、その中には Web アプリケーションと共にデータベースをデプロイするためのオプションの概要、実行する必要が生じる可能性のある付加的なデプロイ タスクの一覧、Visual Studio を独自に手動で構成する方法が含まれています。このトピックには、Azure Web サイトへのデプロイのみではなく、デプロイ全般に関する情報も掲載されています。
 * [Visual Studio を使用した ASP.NET Web デプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction)。12 部構成のチュートリアル シリーズであり、このリスト内に掲載されている他のリソースより詳細にデプロイ タスクの範囲を網羅しています。一部の Azure のデプロイメント機能は、チュートリアルの作成後に追加されたため、後から追加したメモでその内容を説明しています。 
 * [Git リポジトリから ASP.NET Web サイトを Visual Studio 2012 内にある Azure へ直接のデプロイ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)。Visual Studio 内で ASP.NET Web プロジェクトをデプロイし、Git プラグインを使用してコードを Git にコミットして、Azure を Git リポジトリに接続する方法について説明します。Visual Studio 2013 以降は Git のサポートが組み込まれているため、プラグインをインストールする必要はありません。
 
@@ -111,9 +111,9 @@ Visual Studio から Azure Web サイトをデプロイする方法について�
 
 WebMatrix から Azure Web サイトをデプロイする方法については、次のリソースをご覧ください。
 
-* [Microsoft WebMatrix を使用して Web サイトを開発およびデプロイする](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-using-webmatrix/)。WebMatrix テンプレートを使用して簡単な ASP.NET Web サイトを作成し、WebMatrix と Web Deploy を使用してその Web サイトを Azure Web サイトにデプロイする方法。
-* [WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/)。
-* [WebMatrix を使用して PHP-MySQL Azure の Web サイトを作成およびデプロイする](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-php-mysql-use-webmatrix/)。
+* [Microsoft WebMatrix を使用して Web サイトを開発およびデプロイする](http://azure.microsoft.com/documentation/articles/web-sites-dotnet-using-webmatrix/)。WebMatrix テンプレートを使用して簡単な ASP.NET Web サイトを作成し、WebMatrix と Web Deploy を使用してその Web サイトを Azure Web サイトにデプロイする方法。
+* [WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ](http://azure.microsoft.com/documentation/articles/web-sites-nodejs-use-webmatrix/)。
+* [WebMatrix を使用して PHP-MySQL Azure の Web サイトを作成およびデプロイする](http://azure.microsoft.com/documentation/articles/web-sites-php-mysql-use-webmatrix/)。
 * [WebMatrix 3:Git を統合し、Azure にデプロイします。](http://www.codeproject.com/Articles/577581/Webmatrixplus3-3aplusIntegratedplusGitplusandplusD)WebMatrix を使用して、Git ソース管理リポジトリからデプロイを実行する方法です。
 
 ##<a name="ftp"></a>FTP ユーティリティを使用したデプロイ
@@ -186,12 +186,12 @@ Azure の Web サイト用に [FTP と FTPS](http://en.wikipedia.org/wiki/File_T
 
 ###<a name="powershell"></a>Windows PowerShell
 
-[Windows PowerShell](http://msdn.microsoft.com/ja-jp/library/dd835506.aspx) から MSBuild または FTP デプロイメント機能を実行できます。この機能を実行する場合は、Azure の REST 管理 API を簡単に呼び出せる一連の Windows PowerShell コマンドレットを使用することもできます。
+[Windows PowerShell](http://msdn.microsoft.com/library/dd835506.aspx) から MSBuild または FTP デプロイメント機能を実行できます。この機能を実行する場合は、Azure の REST 管理 API を簡単に呼び出せる一連の Windows PowerShell コマンドレットを使用することもできます。
 
 詳細については、次のリソースをご覧ください。
 
 * [Azure での実際のクラウド アプリケーションのビルド - すべてを自動化](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。電子書籍の中に掲載されているサンプル アプリケーションが、Windows PowerShell スクリプトをどのように使用して Azure テスト環境を作成し、その環境をデプロイするかを説明する、電子書籍の章。Azure PowerShell の他のドキュメントへのリンクを掲載している「[リソース](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything#resources)」セクションをご覧ください。
-* [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](http://msdn.microsoft.com/ja-jp/library/dn642480.aspx)。Visual Studio を生成する Windows PowerShell デプロイメント スクリプトを使用する方法。
+* [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](http://msdn.microsoft.com/library/dn642480.aspx)。Visual Studio を生成する Windows PowerShell デプロイメント スクリプトを使用する方法。
 
 ###<a name="api"></a>.NET 管理 API
 
@@ -216,7 +216,7 @@ Mac または Linux マシンでコマンド ラインを使用し、FTP を使�
 詳細については、次のリソースをご覧ください。
 
 * [Simple Azure Websites: Deployment (簡単な Azure Web サイト: デプロイメント)](http://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。David Ebbo 氏によって作成された、Web Deploy を使用しやすくするツールに関するブログ。
-* [Web 配置 ツール](http://technet.microsoft.com/ja-jp/library/dd568996)。Microsoft TechNet サイトの公式ドキュメント。作成以来期間が経過していますが、現在も有効な出発点として使用できます。
+* [Web 配置 ツール](http://technet.microsoft.com/library/dd568996)。Microsoft TechNet サイトの公式ドキュメント。作成以来期間が経過していますが、現在も有効な出発点として使用できます。
 * [Using Web Deploy (Web Deploy の使用)](http://www.iis.net/learn/publish/using-web-deploy)。Microsoft IIS.NET サイトの公式ドキュメント。同じく作成以来期間が経過していますが、現在も有効な出発点として使用できます。
 * [StackOverflow](http://www.stackoverflow.com)。コマンドラインから Web Deploy を使用する方法に関する最新の情報を掲載した、出発点として最適な場所です。
 * [Visual Studio を使用した ASP.NET Web デプロイ: コマンド ライン デプロイメント](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment).MSBuild は Visual Studio によって使用されるビルド エンジンであり、Web アプリケーションを Azure Web サイトにデプロイする目的でコマンド ラインから使用することもできます。このチュートリアルは、Visual Studio のデプロイに注目したシリーズの一部です。

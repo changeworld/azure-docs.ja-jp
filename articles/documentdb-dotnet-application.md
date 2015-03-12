@@ -1,7 +1,21 @@
-<properties title="Build a web application with ASP.NET MVC using DocumentDB" pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Azure" description="DocumentDB を使用して To Do List Web アプリケーションを作成する方法について説明します。データは Azure にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。."  metaKeywords="NoSQL, DocumentDB, database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="ryancraw" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Azure" 
+	description="DocumentDB を使用して To Do List Web アプリケーションを作成する方法について説明します。データは Azure にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。" 
+	services="documentdb" 
+	documentationCenter="" 
+	authors="ryancrawcour" 
+	manager="jhubbard" 
+	editor="cgronlun"/>
 
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="ryancraw" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/12/2015" 
+	ms.author="ryancraw"/>
 
 <a name="_Toc395809351">DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築</a>
 =======================================================================================================
@@ -587,3 +601,5 @@ Todo リストに他にもいくつか項目を追加してみてください。
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 
 <!--HONumber=27-->
+
+<!--HONumber=46--> 

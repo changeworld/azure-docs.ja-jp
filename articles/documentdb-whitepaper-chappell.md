@@ -1,6 +1,20 @@
-﻿<properties title="DocumentDB whitepaper by David Chappell" pageTitle="David Chappell による DocumentDB に関するホワイトペーパー | Azure" description="David Chappell によるホワイトペーパーをダウンロードできます。Azure における管理された NoSQL データベースである DocumentDB に関する説明です。" metaKeywords="" services="documentdb" solutions="" documentationCenter="" authors="adlevin" videoId="" scriptId="" manager="jhubbard" />
+﻿<properties 
+	pageTitle="David Chappell による DocumentDB に関するホワイトペーパー | Azure" 
+	description="<David Chappell によるホワイトペーパーをダウンロードできます。Azure における管理された NoSQL データベースである DocumentDB に関する説明です。" 
+	services="documentdb" 
+	documentationCenter="" 
+	authors="adlevin" 
+	manager="jhubbard" 
+	editor=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="adlevin" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/10/2015" 
+	ms.author="adlevin"/>
 
 
 
@@ -23,3 +37,5 @@
 
 **ダウンロード:** [Introducing DocumentDB - A NoSQL Database for Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=511318)
 
+
+<!--HONumber=46--> 

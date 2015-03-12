@@ -154,7 +154,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	このファイルは、HDInsight クラスター用の HBase 構成の読み込みに使用されます。
 
-	> [AZURE.NOTE] これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。HDInsight で使用される完全バージョンの hbase-site.xml 構成ファイルの場合は、[リモート デスクトップで HDInsight クラスターにアクセス](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp)します。hbase-site.xml ファイルは、C:\apps\dist\hbase-&lt;version number>-hadoop2\conf ディレクトリにあります。ファイル パスの "version number" の部分は、クラスターで HBase が更新されると変わります。
+	> [AZURE.NOTE] これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。HDInsight で使用される完全バージョンの hbase-site.xml 構成ファイルの場合は、[リモート デスクトップで HDInsight クラスターにアクセス](http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp)します。hbase-site.xml ファイルは、C:\apps\dist\hbase-&lt;version number>-hadoop2\conf ディレクトリにあります。ファイル パスの "version number" の部分は、クラスターで HBase が更新されると変わります。
 
 3. __hbase-site.xml__ ファイルを保存します。
 
@@ -482,7 +482,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 		    # Is the Azure module installed?
 		    if (-not(Get-Module -ListAvailable Azure))
 		    {
-		        throw "Windows Azure PowerShell not found! For help, see http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/"
+		        throw "Windows Azure PowerShell not found! For help, see http://azure.microsoft.com/documentation/articles/install-configure-powershell/"
 		    }
 		
 		    # Is there an active Azure subscription?
@@ -589,5 +589,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 ###Start-HBaseExample を使用したときに、結果が表示されないか、予期しない結果が表示される
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された STDERR を表示します。
-
 <!--HONumber=42-->

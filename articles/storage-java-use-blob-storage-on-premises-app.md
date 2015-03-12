@@ -379,9 +379,8 @@ Azure ストレージにアップロードするローカル ファイルを表�
   [前提条件]: #bkmk_prerequisites
   [Azure BLOB ストレージを使用してファイルをアップロードするには]: #bkmk_uploadfile
   [コンテナーを削除するには]: #bkmk_deletecontainer
-  [Azure SDK for Java のダウンロード]: http://www.windowsazure.com/ja-jp/develop/java/
-  [ストレージ アカウントの作成方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-create-a-storage-account/
-  [ストレージ アカウントの管理方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/
-  [Java から BLOB ストレージを使用する方法]: http://www.windowsazure.com/ja-jp/develop/java/how-to-guides/blob-storage/
-
+  [Azure SDK for Java のダウンロード]: http://azure.microsoft.com/develop/java/
+  [ストレージ アカウントの作成方法]: http://azure.microsoft.com/manage/services/storage/how-to-create-a-storage-account/
+  [ストレージ アカウントの管理方法]: http://azure.microsoft.com/manage/services/storage/how-to-manage-a-storage-account/
+  [Java から BLOB ストレージを使用する方法]: http://azure.microsoft.com/develop/java/how-to-guides/blob-storage/
 <!--HONumber=42-->

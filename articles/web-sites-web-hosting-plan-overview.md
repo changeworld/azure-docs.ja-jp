@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Web ホスティング プランとは" description="Web ホスティング プランの概要" title="What is a web hosting plan?" services="web-sites" authors="adamab" manager="wpickett" />
+﻿<properties 
+	pageTitle="Web ホスティング プランとは" 
+	description="Web ホスティング プランの概要" 
+	services="web-sites" 
+	authors="adamabdelhamed" 
+	manager="wpickett" 
+	editor="" 
+	documentationCenter=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/17/2014" 
+	ms.author="adamab"/>
 
 #  Web ホスティング プランとは #
 
@@ -48,10 +62,12 @@ Web ホスティング プランは、Web サイト間で共有できる一連�
 
 ### 次のステップ ###
 
-Azure を利用し始めるには、「[1 か月間の無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/)」を参照してください。
+Azure を利用し始めるには、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 <!-- Images. -->
 [BrowseEverythingScreenshot]: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
 [WebHostingPlanResourceMapScreenshot]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
 [WebHostingPlanBladeScreenshot]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-blade.png
 [BrowseWebHostingPlansScreenshot]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
+
+<!--HONumber=46--> 

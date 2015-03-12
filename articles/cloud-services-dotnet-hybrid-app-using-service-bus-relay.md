@@ -1,6 +1,20 @@
-<properties urlDisplayName="Hybrid Application" pageTitle="ハイブリッド内部設置型/クラウド アプリケーション (.NET) - Azure" metaKeywords="Azure Service Bus tutorial,hybrid .NET" description="Azure Service Bus Relay を使用して .NET 内部設置型/クラウド ハイブリッド アプリケーションを作成する方法について説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title=".NET On-Premises/Cloud Hybrid Application Using Service Bus Relay" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+﻿<properties 
+	pageTitle="ハイブリッド内部設置型/クラウド アプリケーション (.NET) - Azure" 
+	description="Azure Service Bus Relay を使用して .NET 内部設置型/クラウド ハイブリッド アプリケーションを作成する方法について説明します。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
+	editor="mattshel"/>
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/15/2014" ms.author="sethm" />
+<tags 
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/10/2015" 
+	ms.author="sethm"/>
 
 
 
@@ -163,7 +177,7 @@ Service Bus リソースのアドレス範囲を指定するコンテナーが�
 
 ###Visual Studio のサーバー エクスプローラーを使用したサービス名前空間の管理:
 
-管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、「[Azure Tools for Visual Studio の概要](http://http://msdn.microsoft.com/ja-jp/library/windowsazure/ff687127.aspx)」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。 
+管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、「[Azure Tools for Visual Studio の概要](http://http://msdn.microsoft.com/library/windowsazure/ff687127.aspx)」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。 
 
 ![][44]
 
@@ -502,7 +516,7 @@ Service Bus API の取得およびアプリケーションの構成を
 
     <h2>アプリケーションを AZURE にデプロイする準備を完了させる</h2>
 
-    アプリケーションは、Azure Cloud Service または Azure Websites にデプロイできます。Azure Cloud Service と Azure Websites の違いについては、「[Azure Execution Models (Azure 実行モデル)][」を参照してください。]Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/)」を参照してください。このセクションには、アプリケーションを Azure Cloud Service にデプロイする詳細な手順が記載されています。
+    アプリケーションは、Azure Cloud Service または Azure Websites にデプロイできます。Azure Cloud Service と Azure Websites の違いについては、「[Azure Execution Models (Azure 実行モデル)][」を参照してください。]Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](http://azure.microsoft.com/develop/net/tutorials/get-started/)」を参照してください。このセクションには、アプリケーションを Azure Cloud Service にデプロイする詳細な手順が記載されています。
 
     アプリケーションをクラウド サービスにデプロイするには、クラウド サービス プロジェクトのデプロイ プロジェクトをソリューションに追加します。
     デプロイメント プロジェクトには、
@@ -790,7 +804,9 @@ Azure では、消費されたサーバー時間の 1 時間単位の 料金が 
   [43]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
   [44]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/VSProperties.png
 
-  [sbmsdn]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee732537.aspx  
+  [sbmsdn]: http://msdn.microsoft.com/library/windowsazure/ee732537.aspx  
   [sbwacom]: /ja-jp/documentation/services/service-bus/  
   [sbwacomqhowto]: /ja-jp/develop/net/how-to-guides/service-bus-queues/
-  [executionmodels]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/compute/
+  [executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
+
+<!--HONumber=46--> 

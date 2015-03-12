@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Load Testing Pattern" pageTitle="アプリケーション パターンのロード テスト - Azure アーキテクチャ パターン" metaKeywords="" description="アーキテクチャの概要と、ロード テスト システムを Azure に実装する方法について説明するデザイン パターンを検索します。" metaCanonical="" services="" documentationCenter=".NET" title="Load Testing in Azure" authors="robb" solutions="" manager="johndaw" editor="" />
+﻿<properties 
+	pageTitle="<アプリケーション パターンのロード テスト - Azure アーキテクチャ パターン" 
+	description="Azure にロード テスト システムを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" 
+	services="" 
+	documentationCenter=".net" 
+	authors="Rboucher" 
+	manager="jwhit" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/25/2014" ms.author="robb" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="robb"/>
 
 # Azure のロード テスト
 
@@ -9,8 +23,8 @@
 <!--links-->
 
 [Azure と Visual Studio Ultimate]: http://www.microsoft.com/visualstudio/eng/products/visual-studio-ultimate-2012#product-edition-ultimate-details
-[混在環境でロード テストの実行]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh966776.aspx
-[Azure ロールでの Visual Studio ロード テストの使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh674491.aspx
+[混在環境でロード テストの実行]: http://msdn.microsoft.com/library/windowsazure/hh966776.aspx
+[Azure ロールでの Visual Studio ロード テストの使用]: http://msdn.microsoft.com/library/windowsazure/hh674491.aspx
 
 <!--images-->
 
@@ -18,3 +32,5 @@
  
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

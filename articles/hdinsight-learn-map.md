@@ -26,5 +26,4 @@ HDInsight を使用すると、Hadoop、HBase、およびカスタマイズさ�
 
 
 
-
 <!--HONumber=42-->

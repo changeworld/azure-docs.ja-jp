@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ストリーミング ログとコンソール" description="ストリーミング ログとコンソールの概要" title="Streaming logs and console" authors="adamab" manager="wpickett" />
+﻿<properties 
+	pageTitle="ストリーミング ログとコンソール" 
+	description="ストリーミング ログとコンソールの概要" 
+	authors="adamabdelhamed" 
+	manager="wpickett" 
+	editor="" 
+	services="web-sites" 
+	documentationCenter=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/17/2014" 
+	ms.author="adamab"/>
 
 #ストリーミング ログとコンソール
 
@@ -78,3 +92,5 @@ cd
 [BrowseSitesScreenshot]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
+
+<!--HONumber=46--> 

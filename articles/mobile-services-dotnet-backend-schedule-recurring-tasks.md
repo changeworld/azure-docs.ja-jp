@@ -1,6 +1,21 @@
-﻿<properties pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" description="Windows Azure モバイル サービス スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" services="mobile-services" documentationCenter="windows" authors="ggailey777" writer="" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
+	description="Windows Azure モバイル サービス スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	Writer="" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/26/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="09/26/2014" 
+	ms.author="glenga"/>
 
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
 
@@ -297,7 +312,7 @@
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-twitter-authentication
 [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[アプリケーション設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクト]: http://linqtotwitter.codeplex.com/
 
 <!--HONumber=42-->

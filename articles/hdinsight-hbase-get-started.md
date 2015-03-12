@@ -44,7 +44,7 @@ HBase は、ビッグ データのオンライン トランザクション処理
 
 - **Azure サブスクリプション**。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 - **Azure ストレージ アカウント**。詳しい手順については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
-- Visual Studio 2013 がインストールされている**ワークステーション**。手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx)」を参照してください。
+- Visual Studio 2013 がインストールされている**ワークステーション**。手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
 
 ##<a name="create-hbase-cluster"></a>Azure ポータルで HBase クラスターをプロビジョニングする
 
@@ -322,16 +322,15 @@ HDInsight の Hadoop クラスターで HBase を使用してリアルタイム�
 [hdinsight-hbase-provision-vnet]: ../hdinsight-hbase-provision-vnet
 [hdinsight-versions]: ../hdinsight-component-versioning/
 [hbase-twitter-sentiment]: ../hdinsight-hbase-analyze-twitter-sentiment/
-[azure-purchase-options]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/ 
+[azure-create-storageaccount]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/ 
 
 [img-hdinsight-hbase-cluster-quick-create]: ./media/hdinsight-hbase-get-started/hdinsight-hbase-quick-create.png
 [img-hdinsight-hbase-hive-editor]: ./media/hdinsight-hbase-get-started/hdinsight-hbase-hive-editor.png
 [img-hdinsight-hbase-file-browser]: ./media/hdinsight-hbase-get-started/hdinsight-hbase-file-browser.png
-
 
 
 

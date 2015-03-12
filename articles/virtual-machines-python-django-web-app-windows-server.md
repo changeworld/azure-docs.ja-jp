@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Django を使用した Python Web アプリケーション - Azure チュートリアル" 
 	description="Windows Server 2012 R2 Datacenter 仮想マシンを使用して Azure で Django ベースの Web サイトをホストする方法について説明するチュートリアルです。" 
 	services="virtual-machines" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="02/05/2015" 
+	ms.date="09/25/2014" 
 	ms.author="huvalo"/>
 
 
@@ -43,28 +43,29 @@ Azure で Django ベースの Web サイトをホストする方法について�
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
-1. [ここ][portal-vm]に記載されている手順に従って *Windows Server 2012 R2 Datacenter* ディストリビューションの Azure 仮想マシンを作成します。
+1. [ここ][portal-vm]に記載されている手順に従って、  *Windows Server 2012 R2 Datacenter* ディストリビューションの Azure 仮想マシンを作成します。
 
 1. Azure で、ポート **80** トラフィックを Web から仮想マシン上のポート **80** に転送します。
- - Azure ポータルで新しく作成した仮想マシンに移動し、[*ENDPOINTS*] タブをクリックします。
- - 画面の下部にある [*ADD*] をクリックします。
+ - Azure ポータルで新しく作成した仮想マシンに移動し、 *[エンドポイント]* タブをクリックします。
+ - 画面の下部にある  *[追加]* ボタンをクリックします。
 	![add endpoint](./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png)
 
- - *TCP* プロトコルの *PUBLIC PORT 80* を *PRIVATE PORT 80* として開きます。
+ -  *TCP* プロトコルの *パブリック ポート 80* を *プライベート ポート 80* として開きます。
 ![][port80]
-1. [*DASHBOARD*] タブで [*CONNECT*] をクリックし、新たに作成した Azure 仮想マシンに*Remote Desktop*を使ってリモートでログインします。  
+1.  *[ダッシュボード]* タブで  *[接続]* をクリックし、新たに作成した Azure 仮想マシンに *リモート デスクトップ*を使ってリモートでログインします。  
 
-**重要:** 次に示しているすべての手順では、仮想マシンに正しくログインしており、ローカル コンピューターではなく仮想マシンでコマンドを発行することを前提としています。 
+**重要:** 次に示しているすべての手順では、仮想マシンに正しくログインしており、ローカル コンピューターではなく仮想マシンでコマンドを発行することを前提としています。
 
 ## <a id="setup"> </a>Python と Django の設定
 
 **注:** Internet Explorer を使ってダウンロードするには、IE ESC 設定の構成が必要になる場合があります。具体的には、[スタート]、[管理ツール]、[サーバー マネージャー]、[ローカル サーバー] の順にクリックしてから、**[IE セキュリティ強化の構成]** をクリックし、[オフ] に設定します。
 
-1. [Web Platform Installer][] をインストールします。
+1. [Web Platform Installer] をインストールします[]。
 1. Web Platform Installer を使用して、Python と WFastCGI をインストールします。これにより、wfastcgi.py が Python スクリプト フォルダーにインストールされます。
-	1. Web Platform Installer を起動します。
-	1. 検索バーに「WFastCGI」と入力します。 
-	1. 使用する Python のバージョン (2.7 または 3.4) に対応した WFactCGI エントリを選択します。これにより、Python が WFastCGI の依存コンポーネントとしてインストールされます。 
+	1.Web Platform Installer を起動します。
+	1.検索バーに「WFastCGI」と入力します。 
+	1.使用する Python のバージョン (2.7 または 3.4) に対応した WFactCGI エントリを選択します。これにより、Python が WFastCGI の依存コンポーネントとしてインストールされます。 
+1. Python 2.7 をインストールした場合は、[この手順に従って pip を手動でインストールします](https://pip.pypa.io/en/latest/installing.html) (Python 3.4 の場合は pip は既にインストールされています)。
 1. pip を使用して Django をインストールします。
 
     Python 2.7:
@@ -172,7 +173,7 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 
 
-1.  *C:\inetpub\wwwroot\helloworld\helloworld* ディレクトリで、**views.py** という名前の新しいファイルを作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、次のコードを入力します。
+1.   *C:\inetpub\wwwroot\helloworld\helloworld* ディレクトリで、**views.py** という名前の新しいファイルを作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、次のコードを入力します。
 		
 		from django.http import HttpResponse
 		def home(request):
@@ -202,5 +203,4 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 
-
-<!--HONumber=45--> 
+<!--HONumber=42-->

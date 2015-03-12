@@ -28,7 +28,7 @@ Azure の Web サイトで実行されている、.COM の Web サイトの例�
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/corp-website-visio.svg" width="100%" height="100%"></object>
 
 > [WACOM.NOTE]
-> このガイドでは、Azure の Web サイトでの公開 .COM サイトの実行に必要な最も一般的な領域とタスクの一部を取り上げています。ただし、Azure の Web サイトで実装できるその他の一般的な解決方法があります。これらの解決方法については、「<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>」および「<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview">ビジネス アプリケーション</a>」のその他のガイドをご覧ください。
+> このガイドでは、Azure の Web サイトでの公開 .COM サイトの実行に必要な最も一般的な領域とタスクの一部を取り上げています。ただし、Azure の Web サイトで実装できるその他の一般的な解決方法があります。これらの解決方法については、「<a href="http://azure.microsoft.com/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>」および「<a href="http://azure.microsoft.com/manage/services/web-sites/business-application-solution-overview">ビジネス アプリケーション</a>」のその他のガイドをご覧ください。
 
 ### 最初から作成する、または既存のアセットを表示する
 
@@ -122,8 +122,8 @@ Web サイトの現在のパフォーマンス メトリックの[概要]と Azu
 
 [スケール アップとスケール アウト]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
 [Azure 管理ポータル]:http://manage.windowsazure.com/
-[サービス管理 API]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
-[PowerShell スクリプト]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
+[サービス管理 API]:http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[PowerShell スクリプト]:http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 [Troy Hunt]:https://twitter.com/troyhunt
 [10 things I learned about rapidly scaling websites with Azure (Azure を使用して Web サイトを迅速にスケーリングする 10 の方法)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
 [Azure Redis Cache]:/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/

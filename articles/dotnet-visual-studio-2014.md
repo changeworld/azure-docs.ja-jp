@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Visual Studio 14 CTP" pageTitle="Azure SDK 2.4 for Visual Studio 14 CTP2 のインストール" metaKeywords="Visual Studio, Azure SDK" description="Azure SDK 2.4 と Visual Studio 14 CTP2 のインストール" metaCanonical="" services="" documentationCenter="" title="Installing Azure SDK 2.4 for Visual Studio 14 CTP" authors="ghogen" solutions="" manager="douge" editor="" />
+﻿<properties 
+	pageTitle="Azure SDK 2.4 for Visual Studio 14 CTP2 のインストール" 
+	description="Azure SDK 2.4 と Visual Studio 14 CTP2 のインストール" 
+	services="visual-studio-online" 
+	documentationCenter=".net" 
+	authors="kempb" 
+	manager="douge" 
+	editor="tglee"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="ghogen" />
+<tags 
+	ms.service="visual-studio-online" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/02/2015" 
+	ms.author="kempb"/>
 
 # Azure SDK 2.4 for Visual Studio "14" CTP のインストール
 
@@ -32,3 +46,5 @@ Azure SDK 2.4 for .NET をインストールするには、次の手順に従い
 ## リリース ノート
 
 Azure SDK 2.4 の[リリース ノート](http://go.microsoft.com/fwlink/?LinkId=507517)を参照してください。
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-<properties pageTitle="リソース マネージャーでの Windows PowerShell の使用" metaKeywords="ResourceManager, PowerShell, Azure PowerShell" description="Windows PowerShell を使用してリソース グループを作成" metaCanonical="" services="" documentationCenter="" title="Using Windows PowerShell with Resource Manager" authors="stevenka; juneb" solutions="" manager="stevenka" editor="mollybos" />
+﻿<properties 
+	pageTitle="リソース マネージャーでの Windows PowerShell の使用" 
+	description="Windows PowerShell を使用したリソース グループの作成" 
+	services="" 
+	documentationCenter="" 
+	authors="sdkaczmarek" 
+	manager="stevenka" 
+	editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="stevenka; juneb" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="powershell" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/02/2014" 
+	ms.author="stevenka"/>
 
 # リソース マネージャーでの Windows PowerShell の使用
 
@@ -483,8 +497,10 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
   [Azure プロファイル コマンドレット]: http://go.microsoft.com/fwlink/?LinkID=394766
   [Switch-AzureMode]: http://go.microsoft.com/fwlink/?LinkID=394398
   [Azure Resource Manager コマンドレット]: http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409
-  [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups
-  [リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用]: http://www.windowsazure.com/ja-jp/documentation/articles/xplat-cli-azure-resource-manager/
+  [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups
+  [リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用]: http://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/
   [Azure のブログ]: http://blogs.msdn.com/windowsazure
   [Windows PowerShell のブログ]: http://blogs.msdn.com/powershell
   ["Hey, Scripting Guy!"ブログ]: http://blogs.technet.com/b/heyscriptingguy/
+
+<!--HONumber=46--> 

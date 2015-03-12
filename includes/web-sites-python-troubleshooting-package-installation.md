@@ -64,8 +64,7 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 仮想環境が自動的に管理された場合にファイルが残らないように、サイト上の既存の仮想環境を削除することをお勧めします。
 
 
-[Windows を実行する仮想マシンの作成]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-windows-tutorial/
+[Windows を実行する仮想マシンの作成]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
 [Python 2.7 用の Microsoft Visual C++ コンパイラ]: http:://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
-
 <!--HONumber=42-->

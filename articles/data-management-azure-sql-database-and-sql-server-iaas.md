@@ -237,15 +237,15 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
    <td valign="middle">ライブラリのドキュメントへのリンク</td>   
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/azure/jj879332.aspx">Azure SQL Database と SQL Server -- パフォーマンスとスケーラビリティの比較</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/azure/jj879332.aspx">Azure SQL Database と SQL Server -- パフォーマンスとスケーラビリティの比較</p></td>
    <td valign="middle">この記事は、Azure SQL Database と内部設置型または VM 内で実行している SQL Server を使用する場合のパフォーマンスの違いとトラブルシューティング手法について説明します。 </td>   
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/dn574746.aspx">Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/dn574746.aspx">Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画</p></td>
    <td valign="middle">この記事では、Azure VM における SQL Server と Azure SQL Database などのハイブリッド シナリオに適用される最も一般的なアプリケーション パターンについて説明しています。 </td>   
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/hh680934(v=PandP.50).aspx">Microsoft Enterprise Library Transient Fault Handling Application Block (Microsoft Enterprise ライブラリの一時的なエラー処理のアプリケーション ブロック)</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/hh680934(v=PandP.50).aspx">Microsoft Enterprise Library Transient Fault Handling Application Block (Microsoft Enterprise ライブラリの一時的なエラー処理のアプリケーション ブロック)</p></td>
    <td valign="middle">開発者は、このライブラリの堅牢な一時的エラー処理ロジックを追加することで、Azure SQL Database で実行するアプリケーションの復元性を高めることができます。一時的な障害とは、ネットワーク接続の問題やサービスを利用できない状況などの一時的な状態が原因で発生するエラーです。Azure SQL Database はマルチテナント サービスであるため、アプリケーションのダウンタイムを最小限に抑えるには、このようなエラーの処理が重要になります。 </td>   
 </tr>
 </table>
@@ -253,4 +253,4 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 <!--Image references-->
 [1]: ./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png
 
-<!--HONumber=42-->
+\<!--HONumber=42-->

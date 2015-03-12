@@ -1,6 +1,20 @@
-﻿<properties pageTitle="iOS クライアント ライブラリの使用方法 - Azure Mobile Services" description="Azure Mobile Services 向け iOS クライアント ライブラリを使用する方法について説明します。" services="" documentationCenter="ios" authors="krisragh" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="iOS クライアント ライブラリの使用方法 - Azure Mobile Services" 
+	description="Azure Mobile Services 向け iOS クライアント ライブラリを使用する方法について説明します。" 
+	services="" 
+	documentationCenter="ios" 
+	authors="krisragh" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="krisragh"/>
 
 
 
@@ -176,7 +190,8 @@ MSQuery オブジェクトを使用すると、クエリの動作を次のよう
 
 		query.includeTotalCount = YES;
 		query.fetchLimit = 20;
-		query.fetchOffset = self.loadedItems.count;
+		query.fetchOffset = self.loadedIte
+	ms.count;
 
 		[query readWithCompletion:^(NSArray *items, NSInteger totalCount, NSError *error) {
 			if(!error) {
@@ -184,7 +199,8 @@ MSQuery オブジェクトを使用すると、クエリの動作を次のよう
 				[self.loadedItems addObjectsFromArray:items];
 
 				// Set a flag to keep track if there are any additional records we need to load
-				self.moreResults = (self.loadedItems.count < totalCount);
+				self.moreResults = (self.loadedIte
+	ms.count < totalCount);
 			}
 		}];
 	}
@@ -504,14 +520,14 @@ _(省略可能) このセクションでは、属性を使用してデータ型�
 
 [期限切れのトークンの処理]に関するページ: http://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
-[権限]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193161.aspx
+[権限]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [スクリプトを使用したユーザーの認証]に関するページ: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
 [動的スキーマ]: http://go.microsoft.com/fwlink/p/?LinkId=296271
 [方法: カスタム パラメーターへのアクセス]に関するページ: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts#access-headers
-[テーブルの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193162.aspx
+[テーブルの作成]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary オブジェクト]に関するページ: http://go.microsoft.com/fwlink/p/?LinkId=301965
 [ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
 
 
 <!--HONumber=42-->

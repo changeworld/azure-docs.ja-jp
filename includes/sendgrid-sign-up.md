@@ -76,5 +76,4 @@
 [SendGrid のプロビジョニング プロセス]: https://support.sendgrid.com/hc/ja-jp/articles/200181628-Why-is-my-account-being-provisioned-
 [すべての API]: https://sendgrid.com/docs/API_Reference/index.html
 
-
 <!--HONumber=42-->

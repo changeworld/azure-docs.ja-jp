@@ -1,6 +1,20 @@
-﻿<properties linkid="manage-services-Stream-Analytics-get-started" urlDisplayName="Get Started" pageTitle="Azure Stream Analytics の使用 | Azure" metaKeywords="" description="Azure Stream Analytics を使用して、Azure Service Bus Event Hub 内のイベントを処理して変換し、Azure SQL Database にその結果を格納します。" metaCanonical="" services="stream analytics" documentationCenter="" title="Get started with Azure Stream Analytics" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
+﻿<properties 
+	pageTitle="Azure Stream Analytics の使用 | Azure" 
+	description="Azure Stream Analytics を使用して、Azure Service Bus Event Hub 内のイベントを処理して変換し、Azure SQL Database にその結果を格納します。" 
+	services="stream-analytics" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="paulettm" 
+	editor="cgronlun" />
 
-<tags ms.service="stream analytics" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/28/2014" ms.author="jgao" />
+<tags 
+	ms.service="stream-analytics" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="data-services" 
+	ms.date="2/17/2015" 
+	ms.author="jgao" />
 
 
 # Azure Stream Analytics の使用
@@ -73,7 +87,7 @@ Azure Stream Analytics は、Azure SQL データベース、Azure BLOB ストレ
 1.	管理ポータルで、**[新規]**、**[データ サービス]**、**[SQL データベース]**、**[簡易作成]** の順にクリックします。既存または新しい SQL データベース サーバーのデータベース名を指定します。
 2.	新しく作成したデータベースを選択します。
 3.	**[ダッシュボード]** をクリックして、ページの右側のペインにある **[接続文字列を表示する]** をクリックしてから、**ADO.NET** 接続文字列をコピーします。この情報は後で使用します。  
-4.	サーバー レベルのファイアウォール設定で必ずデータベースに接続できるようにします。これは、[サーバーの構成] タブの下に新しい IP ルールを追加することで実行できます。動的な IP の処理方法など、詳細については、[http://msdn.microsoft.com/ja-jp/library/azure/ee621782.aspx](http://msdn.microsoft.com/ja-jp/library/azure/ee621782.aspx) を参照してください。
+4.	サーバー レベルのファイアウォール設定で必ずデータベースに接続できるようにします。これは、[サーバーの構成] タブの下に新しい IP ルールを追加することで実行できます。動的な IP の処理方法など、詳細については、[http://msdn.microsoft.com/library/azure/ee621782.aspx](http://msdn.microsoft.com/library/azure/ee621782.aspx) を参照してください。
 
 ###出力テーブルの作成
 1.	Visual Studio または SQL Server Management Studio を開きます。
@@ -264,13 +278,13 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 [img.stream.analytics.operation.log.details]: ./media/stream-analytics-get-started/StreamAnalytics.operation.log.details.png
 
 
-[azure.sql.database.firewall]: http://msdn.microsoft.com/ja-jp/library/azure/ee621782.aspx
-[azure.event.hubs.documentation]: http://azure.microsoft.com/ja-jp/services/event-hubs/
-[azure.sql.database.documentation]: http://azure.microsoft.com/ja-jp/services/sql-database/
+[azure.sql.database.firewall]: http://msdn.microsoft.com/library/azure/ee621782.aspx
+[azure.event.hubs.documentation]: http://azure.microsoft.com/services/event-hubs/
+[azure.sql.database.documentation]: http://azure.microsoft.com/services/sql-database/
 
-[sql.database.introduction]: http://azure.microsoft.com/ja-jp/services/sql-database/
-[event.hubs.introduction]: http://azure.microsoft.com/ja-jp/services/event-hubs/
-[azure.blob.storage]: http://azure.microsoft.com/ja-jp/documentation/services/storage/
+[sql.database.introduction]: http://azure.microsoft.com/services/sql-database/
+[event.hubs.introduction]: http://azure.microsoft.com/services/event-hubs/
+[azure.blob.storage]: http://azure.microsoft.com/documentation/services/storage/
 [azure.sdk.net]: ../dotnet-sdk/
 
 [stream.analytics.introduction]: ../stream-analytics-introduction/
@@ -286,3 +300,5 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 [azure.management.portal]: https://manage.windowsazure.com
 
+
+<!--HONumber=46--> 

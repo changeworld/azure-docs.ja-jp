@@ -26,7 +26,7 @@
 
 ## 必要なツールのダウンロード ##
 
-- [Visual Studio 2012](http://msdn.microsoft.com/ja-jp/library/windows/apps/br211384) では、Windows ストア アプリケーションのビルド、デバッグ、ローカライズ、パッケージ化、および展開を簡単に実行できます。
+- [Visual Studio 2012](http://msdn.microsoft.com/library/windows/apps/br211384) では、Windows ストア アプリケーションのビルド、デバッグ、ローカライズ、パッケージ化、および展開を簡単に実行できます。
 - [Windows ランタイム用 Azure ストレージ クライアント ライブラリ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/05/windows-azure-storage-client-library-for-windows-runtime.aspx)は、Azure ストレージを操作するためのクラス ライブラリを提供します。
 - [Windows ストア アプリケーション用 WCF Data Services ツール](http://www.microsoft.com/ja-jp/download/details.aspx?id=30714)は、Visual Studio 2012 以降の [サービス参照の追加] 機能を拡張し、Windows ストア アプリケーション用のクライアント側 OData サポートを行います。
 
@@ -49,7 +49,7 @@ Visual Studio 2012 以降で、新しい Windows ストア アプリケーショ
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
     
-次に、ページにボタンを追加します。次のコードをボタンの **Click** イベントに追加し、イベント ハンドラー メソッドを [async キーワード](http://msdn.microsoft.com/en-US/library/vstudio/hh156513.aspx)で変更します。
+次に、ページにボタンを追加します。次のコードをボタンの **Click** イベントに追加し、イベント ハンドラー メソッドを [async キーワード](http://msdn.microsoft.com/library/vstudio/hh156513.aspx)で変更します。
     
     var credentials = new StorageCredentials(accountName, accountKey);
     var account = new CloudStorageAccount(credentials, true);
@@ -90,5 +90,4 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 [store-apps-storage-vs-project]: ./media/storage-use-store-apps/store-apps-storage-vs-project.png
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
-
 <!--HONumber=42-->

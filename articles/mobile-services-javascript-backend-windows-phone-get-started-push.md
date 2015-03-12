@@ -1,6 +1,20 @@
-﻿<properties pageTitle="プッシュ通知の使用 (Windows ストア) | モバイル デベロッパー センター" description="Azure Mobile Services と Notification Hubs を使用して Windows ストア アプリにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="プッシュ通知の使用 (Windows ストア) | モバイル デベロッパー センター" 
+	description="Azure Mobile Services と Notification Hubs を使用して Windows ストア アプリにプッシュ通知を送信する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/24/2014" 
+	ms.author="glenga"/>
 
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -130,7 +144,7 @@
 
 	![][5]
 
-	>[AZURE.NOTE]アプリケーションが開いている場合は通知を受信しません。アプリケーションの実行中にトースト通知を受信するには、[ShellToastNotificationReceived](http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived(v=vs.105).aspx) イベントを処理する必要があります。
+	>[AZURE.NOTE]アプリケーションが開いている場合は通知を受信しません。アプリケーションの実行中にトースト通知を受信するには、[ShellToastNotificationReceived](http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived(v=vs.105).aspx) イベントを処理する必要があります。
 
 
 
@@ -183,7 +197,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users
 
-[認証済み Web サービスを設定して Windows Phone のプッシュ通知を送信する]に関するページ: http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[認証済み Web サービスを設定して Windows Phone のプッシュ通知を送信する]に関するページ: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library

@@ -1,7 +1,7 @@
-## Web API プロジェクト
+﻿## Web API プロジェクト
 
 1. Visual Studio で、**ユーザーへの通知**チュートリアルで作成した **AppBackend** プロジェクトを開きます。
-2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。これらの価は [Azure の管理ポータル](http://manage.windowsazure.com)から取得できます。ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
+2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。これらの値は [Azure の管理ポータル](http://manage.windowsazure.com)から取得できます。ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
 
 		public class Notification
 	    {
@@ -9,6 +9,7 @@
 	        public string Payload { get; set; }
 	        public bool Read { get; set; }
 	    }
+    
     
 	    public class Notifications
 	    {
@@ -72,6 +73,7 @@
             // gcm
             await Notifications.Instance.Hub.SendGcmNativeNotificationAsync("{\"data\": {\"secureId\": \"" + secureNotificationInTheBackend.Id.ToString() + "\"}}", usernameTag);
 
+
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -81,4 +83,5 @@
 21. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして、**[発行]** を選択します。
 
 24. 発行先として Azure の Web サイトを選択します。Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *backend endpoint*として参照します。**[発行]** をクリックします。
-<!--HONumber=42-->
+
+<!--HONumber=45--> 

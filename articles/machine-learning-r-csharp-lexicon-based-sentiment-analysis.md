@@ -1,6 +1,20 @@
-﻿<properties title="Lexicon Based Sentiment Analysis" pageTitle="手順 1.辞書ベースのセンチメント分析 | Azure" description="辞書ベースのセンチメント分析" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="手順 1:辞書ベースのセンチメント分析 | Azure" 
+	description="辞書ベースのセンチメント分析" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="jaymathe" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/08/2014" ms.author="jaymathe" /> 
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/11/2015" 
+	ms.author="jaymathe"/>
 
 
 
@@ -61,7 +75,7 @@ Facebook の投稿記事、ツイート、レビューなど、オンライン �
 入力が "Today is a good day." (今日はいい日ですね) で、出力が "1" です。これは入力された文書に対する正のセンチメントを示します。 
 
 ##Web サービスの作成
->この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+>この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
 
 Azure ML 内で、新しい空白の実験が作成されました。次の図は、辞書ベースのセンチメント分析の実験フローを示します。"Sent_dict.csv" は MPQA 主観性辞書であり、"R スクリプトの実行" の入力の 1 つとして設定されています。他の入力は、Amazon レビューのデータセットからテスト用にサンプリングされたレビューです。選択、列名の変更、分割操作を実行しました。ハッシュ パッケージを使用して主観性辞書をメモリに格納し、スコアの計算プロセスを高速化します。テキスト全体は、"tm" パッケージによってトークン化され、センチメント辞書の単語と比較されます。最後に、テキストの主観的な各単語の重みを追加して、スコアが計算されます。 
@@ -129,7 +143,7 @@ Azure ML 内で、新しい空白の実験が作成されました。次の図�
 アルゴリズムの観点からは、辞書ベースのセンチメント分析は一般的なセンチメント分析ツールであり、特定のフィールドに対する分類方法より優れた分析を行うことはできません。否定の問題にはうまく対応できません。プログラムには、いくつかの否定単語をハードコーディングしていますが、否定の辞書を使用して、ルールをいくつか構築する方をお勧めします。この Web サービスは、Amazon レビューなどの長くて複雑な文章より、ツイート、Facebook の投稿など短くて簡潔な文書でパフォーマンスが向上します。 
 
 ##FAQ
-Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-marketplace-faq)を参照してください。
+Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/documentation/articles/machine-learning-marketplace-faq)を参照してください。
 
 [1]: ./media/machine-learning-r-csharp-lexicon-based-sentiment-analysis/sentiment_analysis_1.png
 [2]: ./media/machine-learning-r-csharp-lexicon-based-sentiment-analysis/sentiment_analysis_2.png
@@ -141,3 +155,5 @@ Web サービスの使用、または Marketplace への発行に関するよく
 
 
 
+
+<!--HONumber=46--> 

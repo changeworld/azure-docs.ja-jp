@@ -25,12 +25,12 @@ Azure サービス管理クライアント ライブラリまたはサービス�
     アプリケーションのデプロイ先と同じリージョンを
     選択してください。
 
-6. 必要に応じて、アカウントで使用するレプリケーションのタイプを選択できます。既定のレプリケーションのタイプは Geo 冗長レプリケーションで、最高度の持続性が提供されます。レプリケーションのオプションの詳細については、「[Azure Storage 冗長オプション](http://msdn.microsoft.com/ja-jp/library/azure/dn727290.aspx)」と「[Azure Storage Team Blog (Azure ストレージ チーム ブログ)](http://blogs.msdn.com/b/windowsazurestorage/)」を参照してください。
+6. 必要に応じて、アカウントで使用するレプリケーションのタイプを選択できます。既定のレプリケーションのタイプは Geo 冗長レプリケーションで、最高度の持続性が提供されます。レプリケーションのオプションの詳細については、「[Azure Storage 冗長オプション](http://msdn.microsoft.com/library/azure/dn727290.aspx)」と「[Azure Storage Team Blog (Azure ストレージ チーム ブログ)](http://blogs.msdn.com/b/windowsazurestorage/)」を参照してください。
 
 6.  **[ストレージ アカウントの作成]** をクリックします。
 
-[REST API の使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+[REST API の使用]: http://msdn.microsoft.com/library/windowsazure/hh264518.aspx
 [Azure 管理ポータル]: http://manage.windowsazure.com
 [plus-new]: ./media/create-storage-account/plus-new.png
 [quick-create-storage]: ./media/create-storage-account/quick-storage-2.png
-<!--HONumber=41-->
+<!--HONumber=42-->

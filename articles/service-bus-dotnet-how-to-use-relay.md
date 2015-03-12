@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Service Bus Relay" pageTitle="サービス バス リレー (.NET) の使用方法- Azure" metaKeywords="get started azure Service Bus Relay C# " description="Azure Service Bus リレー サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use the Service Bus Relay Service" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+﻿<properties 
+	pageTitle="Service Bus リレーの使用方法 (.NET) - Azure" 
+	description="Azure Service Bus リレー サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
+	editor="mattshel"/>
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
+<tags 
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/10/2015" 
+	ms.author="sethm"/>
 
 
 
@@ -260,9 +274,11 @@ App.config ファイルを使用してクライアントを構成することも
   [サービス バス NuGet パッケージの取得]: #get_nuget_package
   [方法: サービス バスを使用して SOAP Web サービスを TCP で公開および使用する]: #how_soap
   [Azure 管理ポータル]: http://manage.windowsazure.com
-  [Service Bus による共有アクセス署名認証]: http://msdn.microsoft.com/ja-jp/library/dn170477.aspx
-  [サービス バス用のサービスの構築]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee173564.aspx
-  [サービス バス クライアント アプリケーションの構築]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee173543.aspx
+  [Service Bus による共有アクセス署名認証]: http://msdn.microsoft.com/library/dn170477.aspx
+  [サービス バス用のサービスの構築]: http://msdn.microsoft.com/library/windowsazure/ee173564.aspx
+  [サービス バス クライアント アプリケーションの構築]: http://msdn.microsoft.com/library/windowsazure/ee173543.aspx
   [Azure のサンプル]: http://code.msdn.microsoft.com/windowsazure
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

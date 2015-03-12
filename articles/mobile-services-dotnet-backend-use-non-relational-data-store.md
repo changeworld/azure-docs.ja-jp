@@ -1,6 +1,20 @@
-<properties pageTitle="非リレーショナル データ ストアを使用するサービスの作成 - Azure Mobile Services" description="MongoDB や Azure テーブル ストレージなどの非リレーショナル データ ストアを .NET ベースのモバイル サービスで使用する方法について説明します。" services="" documentationCenter="windows" authors="mattchenderson" manager="dwrede" editor="mollybos"/>
+<properties 
+	pageTitle="非リレーショナル データ ストアを使用するサービスの作成 - Azure Mobile Services" 
+	description="MongoDB や Azure テーブル ストレージなどの非リレーショナル データ ストアを .NET ベースのモバイル サービスで使用する方法について説明します。" 
+	services="" 
+	documentationCenter="windows" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor="mollybos"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="mahender"/>
 
 # .NET バックエンドによる MongoDB をデータ ストアとして使用するサービスの作成
 

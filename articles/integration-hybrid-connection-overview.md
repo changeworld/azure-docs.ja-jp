@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Hybrid Connections Overview - BizTalk Services" pageTitle="ハイブリッド接続の概要 |Azure" metaKeywords="BizTalk Services, BizTalk, websites, web sites, hybrid connections, Azure" description="セキュリティを含め、ハイブリッド接続について説明します。" metaCanonical="" services="integration-services" documentationCenter="" title="Hybrid Connections Overview" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
+﻿<properties 
+	pageTitle="ハイブリッド接続の概要 |Azure" 
+	description="セキュリティ、TCP ポート、サポートされる構成を含め、ハイブリッド接続について説明します。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
+	editor="cgronlun"/>
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="mandia" />
+<tags 
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/17/2015" 
+	ms.author="mandia"/>
 
 
 
@@ -62,7 +76,7 @@
 
 ハイブリッド接続では、アプリケーションや内部設置型の Hybrid Connection Manager にシームレスかつ安全にキーを配布できます。 
 
-「[ハイブリッド接続の作成と管理](http://azure.microsoft.com/ja-jp/documentation/articles/integration-hybrid-connection-create-manage)」を参照してください。 
+「[ハイブリッド接続の作成と管理](http://azure.microsoft.com/documentation/articles/integration-hybrid-connection-create-manage)」を参照してください。 
 
 **アプリケーションの承認は、ハイブリッド接続とは独立しています**。適切であればどのような種類の承認方法でも使用できます。承認方法は、Azure クラウドと内部設置型コンポーネントとの間でサポートされているエンド ツー エンドの承認方法によって異なります。たとえば、Azure アプリケーションは内部設置型 SQL Server にアクセスします。このシナリオでは、SQL 承認を、サポートされるエンド ツー エンドの承認方法として使用できます。
 
@@ -97,10 +111,10 @@
 
 ## 次へ
 
-- [ハイブリッド接続の作成と管理](http://azure.microsoft.com/ja-jp/documentation/articles/integration-hybrid-connection-create-manage)
+- [ハイブリッド接続の作成と管理](http://azure.microsoft.com/documentation/articles/integration-hybrid-connection-create-manage)
 - [Connect an Azure Website to an On-Premises Resource using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトの内部設置型リソースへの接続)](http://go.microsoft.com/fwlink/p/?LinkId=397538)
 - [ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)
-- [Connect to an on-premises SQL Server from Azure mobile services using Hybrid Connections (ハイブリッド接続を使用した Azure モバイル サービスから内部設置型 SQL Server への接続)](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started)
+- [Connect to an on-premises SQL Server from Azure mobile services using Hybrid Connections (ハイブリッド接続を使用した Azure モバイル サービスから内部設置型 SQL Server への接続)](http://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started)
 
 
 ## 関連項目
@@ -114,3 +128,5 @@
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
+
+<!--HONumber=46--> 

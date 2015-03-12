@@ -1,5 +1,5 @@
 ﻿## Event Hub へのメッセージ送信
-このセクションでは、Java アプリを記述して、イベントを Event Hub に送信します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[ここ](http://azure.microsoft.com/ja-jp/documentation/articles/service-bus-java-how-to-use-jms-api-amqp/)に示すように、Java 経由の AMQP を Service Bus キューおよび Topics と使用するのに似ています。詳細については、[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)および [Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)を参照してください。
+このセクションでは、Java アプリを記述して、イベントを Event Hub に送信します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[ここ](http://azure.microsoft.com/documentation/articles/service-bus-java-how-to-use-jms-api-amqp/)に示すように、Java 経由の AMQP を Service Bus キューおよび Topics と使用するのに似ています。詳細については、[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)および [Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)を参照してください。
 
 1. Eclipse で、**Sender** という名前の新しい Java プロジェクトを作成します。
 
@@ -92,5 +92,4 @@
 
 
 <!-- Images -->
-[8]:./media/service-bus-event-hubs-getstarted/create-sender-java1.png
-<!--HONumber=42-->
+[8]:./media/service-bus-event-hubs-getstarted/create-sender-java1.png<!--HONumber=42-->

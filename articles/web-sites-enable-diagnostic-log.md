@@ -49,13 +49,13 @@ Azure Web サイトは、Web サーバーと Web アプリケーション両方�
 
 ###アプリケーション診断
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
 アプリケーション診断では、コードの特定の部分が使用されるときの情報を取り込むことにより、実行中のアプリケーションのトラブルシューティングを行うことができます。この診断が便利なのは、特定のパスがコードによって取られる理由を特定するときです。そのパスの多くは、エラーやその他の望ましくない動作につながるものです。
 
-Visual Studio でアプリケーション診断を使用する方法の詳細については、「[Visual Studio での Azure Web サイトのトラブルシューティング](http://www.windowsazure.com/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」をご覧ください。
+Visual Studio でアプリケーション診断を使用する方法の詳細については、「[Visual Studio での Azure Web サイトのトラブルシューティング](http://azure.microsoft.com/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」をご覧ください。
 
 > [AZURE.NOTE] web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
@@ -69,7 +69,7 @@ Azure Web サイトでは、Web サイトにアプリケーションを発行し
 
 **サイト診断**を有効にすると、**[Web サーバーのログ記録]** で **[ストレージ]** または **[ファイル システム]** を選択する必要があります。**[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。**サイト診断**用のその他のすべてのログはファイル システムにのみ書き込まれます。
 
-> [AZURE.NOTE] **テーブル ストレージ**または **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。[Azure SDK](http://www.windowsazure.com/ja-jp/downloads/#) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
+> [AZURE.NOTE] **テーブル ストレージ**または **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。[Azure SDK](http://azure.microsoft.com/downloads/#) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
 
 次に示しているのは、**アプリケーション診断**を有効にすると使用できる設定です。
 
@@ -81,7 +81,7 @@ Azure Web サイトでは、Web サイトにアプリケーションを発行し
 
 > [AZURE.NOTE] ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にできます。また、それぞれ個別にログ レベルを設定できます。たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にできます。
 
-> [AZURE.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
+> [AZURE.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
 <a name="download"></a><h2>方法:ログをダウンロードする</h2>
 
@@ -113,7 +113,7 @@ FTP を使用して診断情報にアクセスするには、Azure の管理ポ�
 
 これにより、**-Name** パラメーターにより指定された Web サイトのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
 
-> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
+> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
 ###Azure コマンド ライン ツールを使用してダウンロードする
 
@@ -123,7 +123,7 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 これにより、 'websitename' という名前の Web サイトのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
-> [AZURE.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」をご覧ください。
+> [AZURE.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/command-line-tools/)」をご覧ください。
 
 <a name="streamlogs"></a><h2>方法:ログをストリーミングする</h2>
 
@@ -151,7 +151,7 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
 
-> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
+> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
 ###Azure コマンド ライン ツールを使用してストリーミングする
 
@@ -169,7 +169,7 @@ Azure コマンド ライン ツールを使用してログ ファイルをダ�
 
 	azure site log tail websitename --path http
 
-> [AZURE.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」をご覧ください。
+> [AZURE.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/command-line-tools/)」をご覧ください。
 
 <a name="understandlogs"></a><h2>方法:診断ログを読む</h2>
 

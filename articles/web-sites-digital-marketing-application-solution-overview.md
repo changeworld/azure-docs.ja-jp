@@ -26,7 +26,7 @@ Azure Websites を使用したグローバルなマルチ チャンネル デジ
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/digital-marketing-notitle.svg" width="100%" height="100%"></object>
 
 > [WACOM.NOTE]
-> このガイドで取り上げるのは Azure Websites のデジタル マーケティング キャンペーンで必要となる最も一般的な分野やタスクですが、Azure Websites で実装できるその他の一般的なソリューションも備わっています。これらのソリューションについては、<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a>および<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview">基幹業務アプリケーション</a>のガイドをご覧ください。
+> このガイドで取り上げるのは Azure Websites のデジタル マーケティング キャンペーンで必要となる最も一般的な分野やタスクですが、Azure Websites で実装できるその他の一般的なソリューションも備わっています。これらのソリューションについては、<a href="http://azure.microsoft.com/manage/services/web-sites/global-web-presence-solution-overview/">グローバル Web プレゼンス</a>および<a href="http://azure.microsoft.com/manage/services/web-sites/business-application-solution-overview">基幹業務アプリケーション</a>のガイドをご覧ください。
 
 ### 資産を最初から作成する、または既存の資産を移行する
 
@@ -124,8 +124,8 @@ Azure Websites のダッシュボードでは、Web サイトの現在のパフ�
 
 [スケール アップとスケール アウト]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
 [Azure 管理ポータル]:http://manage.windowsazure.com/
-[サービス管理 API]:http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
-[PowerShell スクリプト]:http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
+[サービス管理 API]:http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[PowerShell スクリプト]:http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 [Troy Hunt]:https://twitter.com/troyhunt
 [10 things I learned about rapidly scaling websites with Azure (Azure による迅速な Web サイトのスケーリングで私が学んだ 10 の事項)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
 [Azure Redis Cache]:/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/

@@ -56,7 +56,7 @@ Web サイトの構成オプションを設定するには:
 
 <strong>[プラットフォーム]</strong>。アプリケーションが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。Free モードと Shared モードは常に 32 ビット環境で実行されます。
 
-<strong>[Web ソケット]</strong>。WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web サイトで [ASP.NET SignalR](http://www.asp.net/signalr) または [socket.io](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-nodejs-chat-app-socketio/) を使用する場合)。
+<strong>[Web ソケット]</strong>。WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web サイトで [ASP.NET SignalR](http://www.asp.net/signalr) または [socket.io](http://azure.microsoft.com/documentation/articles/web-sites-nodejs-chat-app-socketio/) を使用する場合)。
 
 <strong>[常時接続]</strong>。既定では、アイドル状態がしばらく続くと Web サイトはアンロードされます。これにより、システムではリソースを節約できます。基本モードと標準モードでは、<strong>[常時接続]</strong> を有効にすると、サイトが常に読み込まれた状態になります。サイトで継続的な Web ジョブを実行する場合は、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
@@ -67,17 +67,17 @@ Web サイトの構成オプションを設定するには:
 
 ### 証明書
 
-基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードできます。詳細については、「[Azure Web サイトでの HTTPS の有効化](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/)」をご覧ください。 
+基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードできます。詳細については、「[Azure Web サイトでの HTTPS の有効化](http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/)」をご覧ください。 
 
 アップロードした証明書はここに表示されます。証明書をアップロードすると、サブスクリプションとリージョンのすべての Web サイトにそれを割り当てることができます。ワイルドカード証明書は、その証明書が有効であるドメイン内の任意のサイトで使用できます。証明書は、その証明書に対するアクティブなバインドが存在しない場合にのみ、削除できます。
 
 ### ドメイン名
 
-Web サイトの追加のドメイン名を表示または追加します。詳細については、「[Azure Web サイトのカスタム ドメイン名の構成](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-custom-domain-name/)」をご覧ください。
+Web サイトの追加のドメイン名を表示または追加します。詳細については、「[Azure Web サイトのカスタム ドメイン名の構成](http://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/)」をご覧ください。
 
 ### SSL バインド
 
-SSL 証明書をアップロードしている場合は、それらをカスタム ドメイン名にバインドできます。詳細については、「[Azure Web サイトでの HTTPS の有効化](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/)」をご覧ください。
+SSL 証明書をアップロードしている場合は、それらをカスタム ドメイン名にバインドできます。詳細については、「[Azure Web サイトでの HTTPS の有効化](http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/)」をご覧ください。
 
 ### 展開
 
@@ -93,7 +93,7 @@ SSL 証明書をアップロードしている場合は、それらをカスタ�
 
 ログ記録をサポートする Web アプリケーションの診断ログの書き込みに関するオプション: 
 
-- <strong>[ファイル システム]</strong>。Web サイトのファイル システムにログを書き込みます。ファイル システム ログは 12 時間記録されます。Web サイトの FTP 共有からログにアクセスできます(「[FTP 資格情報](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。
+- <strong>[ファイル システム]</strong>。Web サイトのファイル システムにログを書き込みます。ファイル システム ログは 12 時間記録されます。Web サイトの FTP 共有からログにアクセスできます(「[FTP 資格情報](http://azure.microsoft.com/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。
 - <strong>[テーブル ストレージ]</strong>。Azure テーブル ストレージにログを書き込みます。時間制限はなく、ログ記録は無効にするまで有効なままです。 
 - <strong>[BLOB ストレージ]</strong>。Azure BLOB ストレージにログを書き込みます。時間制限はなく、ログ記録は無効にするまで有効なままです。
 
@@ -109,13 +109,13 @@ Web サイトの診断情報を収集するためのオプションです。
 
 <strong>[Web サーバーのログ記録]</strong>。Web サーバーのログ記録を有効にします。ログは W3C 拡張ログ ファイル形式で保存されます。これらのログは Azure Storage または Web サイトのファイル システムに保存できます。
  
-- <strong>[ファイル システム]</strong> を選択した場合、[ダッシュボード] ページの "[FTP 診断ログ]" に表示される FTP サイトにログが保存されます。(「[FTP 資格情報](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。 
+- <strong>[ファイル システム]</strong> を選択した場合、[ダッシュボード] ページの "[FTP 診断ログ]" に表示される FTP サイトにログが保存されます。(「[FTP 資格情報](http://azure.microsoft.com/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。 
 - **[ファイル システム]** を選択した場合は、<strong>[クォータ]</strong> ボックスを使用して、ログ ファイルに割り当てる最大ディスク容量を設定します。指定可能な最小容量は 25 MB、最大容量は 100 MB。既定値は 35MB. です。設定したクォータに達すると、最も古いファイルから順に最新ファイルで上書きされます。100 MB を超える履歴を保存する場合は、ストレージ容量が大きい Azure Storage を使用してください。
 - 必要に応じて、<strong>[保有期間の設定]</strong> をクリックすると、期間終了後にファイルが自動的に削除されます。既定では、ログは一切削除されません。   
 
-<strong>[詳細なエラー メッセージ]</strong>。有効にすると、詳細なエラー メッセージが .htm ファイルとして保存されます。ファイルを表示するには、[ダッシュボード] ページの "[FTP 診断ログ]" に示されている FTP サイトに移動します。ファイルは FTP サイトの /LogFiles/DetailedErrors に保存されます。(「[FTP 資格情報](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。
+<strong>[詳細なエラー メッセージ]</strong>。有効にすると、詳細なエラー メッセージが .htm ファイルとして保存されます。ファイルを表示するには、[ダッシュボード] ページの "[FTP 診断ログ]" に示されている FTP サイトに移動します。ファイルは FTP サイトの /LogFiles/DetailedErrors に保存されます。(「[FTP 資格情報](http://azure.microsoft.com/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。
 
-<strong>[失敗した要求トレース]</strong>。有効にすると、失敗した要求が XML ファイルに記録されます。ファイルを表示するには、[ダッシュボード] ページの "[FTP 診断ログ]" に示されている FTP サイトに移動します。(「[FTP 資格情報](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。ファイルは /LogFiles/W3SVC*xxx* に保存されます (xxx は一意の識別子)。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルのコンテンツの書式設定とフィルター処理を行う役割を果たすため、必ずダウンロードしてください。
+<strong>[失敗した要求トレース]</strong>。有効にすると、失敗した要求が XML ファイルに記録されます。ファイルを表示するには、[ダッシュボード] ページの "[FTP 診断ログ]" に示されている FTP サイトに移動します。(「[FTP 資格情報](http://azure.microsoft.com/documentation/articles/web-sites-manage#ftp-credentials)」をご覧ください)。ファイルは /LogFiles/W3SVC*xxx* に保存されます (xxx は一意の識別子)。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルのコンテンツの書式設定とフィルター処理を行う役割を果たすため、必ずダウンロードしてください。
 
 <strong>[リモート デバッグ]</strong> は、リモート デバッグを有効にします。これを有効にすると、Visual Studio でリモート デバッガーを使用して、Azure Web サイトに直接接続できます。リモート デバッグは 48 時間有効です。
 
@@ -132,7 +132,7 @@ Web サイトの診断情報を収集するためのオプションです。
 
 <strong>[アドオン]</strong> を指定した場合、分析アドオンを一覧から選択するか、Azure ストアへ移動して分析アドオンを選択します。<strong>[カスタム]</strong> を指定した場合は、New Relic などの分析プロバイダーを一覧から選択します。カスタム プロバイダーを使用する場合、<strong>[プロバイダー キー]</strong> ボックスにライセンス キーを入力する必要があります。 
 
-Azure Websites で New Relic を使用する方法の詳細については、「<a href="http://www.windowsazure.com/ja-jp/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/">Azure Websites の New Relic によるアプリケーション パフォーマンス管理</a>」をご覧ください。
+Azure Websites で New Relic を使用する方法の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/">Azure Websites の New Relic によるアプリケーション パフォーマンス管理</a>」をご覧ください。
 
 ### アプリケーション設定
 
@@ -210,17 +210,17 @@ MySQL データベースを使用するように Web サイトを構成するに
 
 ##<a name="howtodomain"></a>方法:カスタム ドメイン名の構成
 
-Azure の Web サイトのカスタム ドメイン名の構成の詳細については、「[Azure Web サイトのカスタム ドメイン名の構成](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-custom-domain-name/)」をご覧ください。
+Azure の Web サイトのカスタム ドメイン名の構成の詳細については、「[Azure Web サイトのカスタム ドメイン名の構成](http://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/)」をご覧ください。
 
 ##<a name="howtoconfigSSL"></a>方法:SSL を使用する Web サイトの構成##
 
-Azure でカスタム ドメインの SSL を構成する方法については、「[Enable HTTPS for an Azure web site (Azure の Web サイトでの HTTPS の有効化)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/)」をご覧ください。 
+Azure でカスタム ドメインの SSL を構成する方法については、「[Enable HTTPS for an Azure web site (Azure の Web サイトでの HTTPS の有効化)](http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/)」をご覧ください。 
 
 ##<a name="next"></a>次のステップ
 
-* [How to scale Web SitesWeb (サイトの規模変更方法)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/)
+* [How to scale Web SitesWeb (サイトの規模変更方法)](http://azure.microsoft.com/documentation/articles/web-sites-scale/)
 
-* [How to monitor Web Sites (Web サイトの監視方法)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-monitor/)
+* [How to monitor Web Sites (Web サイトの監視方法)](http://azure.microsoft.com/documentation/articles/web-sites-monitor/)
 
 
 

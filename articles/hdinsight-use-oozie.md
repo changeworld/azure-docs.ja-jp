@@ -474,7 +474,7 @@ Invoke-RestMethod を使用して Oozie Web サービスを呼び出すことが
 	    $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $creds -OutVariable $OozieServerStatus 
 	    
 	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-	    $oozieServerSatus = $jsonResponse[0].("systemMode")
+	    $oozieServerSatus = $jsonResponse[0)]"systemMode")
 	    Write-Host "Oozie server status is $oozieServerSatus..."
 	
 5. スクリプトの末尾に次のコードを追加します。この部分は、Oozie ジョブを作成して開始します。	
@@ -486,7 +486,7 @@ Invoke-RestMethod を使用して Oozie Web サービスを呼び出すことが
 	    $response = Invoke-RestMethod -Method Post -Uri $clusterUriCreateJob -Credential $creds -Body $OoziePayload -ContentType "application/xml" -OutVariable $OozieJobName #-debug
 	
 	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-	    $oozieJobId = $jsonResponse[0].("id")
+	    $oozieJobId = $jsonResponse[0)]"id")
 	    Write-Host "Oozie job id is $oozieJobId..."
 	
 	    # start Oozie job
@@ -504,7 +504,7 @@ Invoke-RestMethod を使用して Oozie Web サービスを呼び出すことが
 	    $clusterUriGetJobStatus = "https://$clusterName.azurehdinsight.net:443/oozie/v2/job/" + $oozieJobId + "?show=info"
 	    $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
 	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-	    $JobStatus = $jsonResponse[0].("status")
+	    $JobStatus = $jsonResponse[0)]"status")
 	
 	    while($JobStatus -notmatch "SUCCEEDED|KILLED")
 	    {
@@ -512,7 +512,7 @@ Invoke-RestMethod を使用して Oozie Web サービスを呼び出すことが
 	        Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
 	        $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
 	        $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-	        $JobStatus = $jsonResponse[0].("status")
+	        $JobStatus = $jsonResponse[0)]"status")
 	    }
 	
 	    Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
@@ -616,11 +616,11 @@ Invoke-RestMethod を使用して Oozie Web サービスを呼び出すことが
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
 [apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
 
-[powershell-download]: http://azure.microsoft.com/ja-jp/downloads/
+[powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: ../install-and-configure-powershell/
-[powershell-start]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx
-[powershell-script]: http://technet.microsoft.com/ja-jp/library/ee176949.aspx
+[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
@@ -629,5 +629,4 @@ Invoke-RestMethod を使用して Oozie Web サービスを呼び出すことが
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png 
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
-
 <!--HONumber=42-->

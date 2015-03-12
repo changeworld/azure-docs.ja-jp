@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Dashboard, Monitor, Scale, Configure and Hybrid Connections tabs" pageTitle="BizTalk Services のダッシュボード、監視、スケール | Azure" metaKeywords="BizTalk Services, Azure, dashboard, monitor, scale, wabs, mabs" description="BizTalk Services の [管理ポータル] タブのコントロール ([ダッシュボード]、[監視]、[スケール]) について説明します。" metaCanonical="" services="biztalk-services" documentationCenter="" title=" Monitor and Scale tabs" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
+﻿<properties 
+	pageTitle="BizTalk Services のダッシュボード、監視、スケール | Azure" 
+	description="BizTalk Services の [管理ポータル] タブのコントロールについて説明し、パフォーマンスを監視します。[ダッシュボード]、[監視]、[スケール]、[構成]、[ハイブリッド接続] タブがあります。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
+	editor="cgronlun"/>
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
+<tags 
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="mandia"/>
 
 
 
@@ -47,7 +61,7 @@ BizTalk サービスのエディションによっては、ここに示したオ
 
 <tr>
         <td><strong>BizTalk サービスの詳細</strong></td>
-        <td>Azure BizTalk サービスの詳細については、<a HREF="http://azure.microsoft.com/ja-jp/documentation/services/biztalk-services/">学習センター</a>を参照してください。</td>
+        <td>Azure BizTalk サービスの詳細については、<a HREF="http://azure.microsoft.com/documentation/services/biztalk-services/">学習センター</a>を参照してください。</td>
 </tr>
 </table>
 
@@ -341,7 +355,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 Azure Websites でハイブリッド接続を作成するには、「[Connect an Azure website to an on-premises resource using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトの内部設置型リソースへの接続)](http://go.microsoft.com/fwlink/p/?LinkId=397538)」を参照してください。
 
-Azure Mobile Services でハイブリッド接続を使用するには、[Azure Mobile Services とハイブリッド接続に関するページ](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started)を参照してください。
+Azure Mobile Services でハイブリッド接続を使用するには、[Azure Mobile Services とハイブリッド接続に関するページ](http://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started)を参照してください。
 
 Azure BizTalk Services でハイブリッド接続を作成または管理するには、「[Hybrid Connections Overview (ハイブリッド接続の概要)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
 
@@ -365,3 +379,5 @@ Azure BizTalk Services でハイブリッド接続を作成または管理する
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png
 [GrayedMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
+
+<!--HONumber=46--> 

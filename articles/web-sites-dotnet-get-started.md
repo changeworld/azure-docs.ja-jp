@@ -304,11 +304,11 @@
 	SSL および独自のドメイン (contoso.azurewebsites.net の代わりに www.contoso.com など) の使用方法については、次のリソースをご覧ください。
 
 	* [Azure の Web サイトのカスタム ドメイン名の構成](/ja-jp/documentation/articles/web-sites-custom-domain-name/). 
-	* [Azure の Web サイトでの HTTPS の有効化](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/)
+	* [Azure の Web サイトでの HTTPS の有効化](http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/)
 
 * アイドル時間終了後のウェイクアップの待機時間を回避する方法 
 
-	既定では、アイドル状態がしばらく続いている Web サイトはアンロードされます。アイドル状態後の初回要求は、サイトが再度読み込まれるまで待機する必要があります。この待機時間を回避するために、AlwaysOn 機能を有効にできます。詳細については、[Web サイトの構成方法](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure/) 構成オプションをご覧ください。
+	既定では、アイドル状態がしばらく続いている Web サイトはアンロードされます。アイドル状態後の初回要求は、サイトが再度読み込まれるまで待機する必要があります。この待機時間を回避するために、AlwaysOn 機能を有効にできます。詳細については、[Web サイトの構成方法](http://azure.microsoft.com/documentation/articles/web-sites-configure/) 構成オプションをご覧ください。
 
 * リアルタイム機能 (チャットなど) の追加方法
 

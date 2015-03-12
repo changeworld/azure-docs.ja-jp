@@ -44,11 +44,10 @@ IP アドレスだけでなく、Web サイトの **awverify** 名と **.azurewe
 
 	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-	> [AZURE.NOTE] **[ドメインの管理]** が有効ではない場合、使用しているのは無料 Web サイトです。無料 Web サイトではカスタム ドメイン名を使用できません。また、共有、基本、または標準モードにアップグレードする必要があります。サイトのモードの変更方法など、Web サイトのモードの詳細については、「[Web サイトの規模の設定方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/)」を参照してください。
+	> [AZURE.NOTE] **[ドメインの管理]** が有効ではない場合、使用しているのは無料 Web サイトです。無料 Web サイトではカスタム ドメイン名を使用できません。また、共有、基本、または標準モードにアップグレードする必要があります。サイトのモードの変更方法など、Web サイトのモードの詳細については、「[Web サイトの規模の設定方法](http://azure.microsoft.com/documentation/articles/web-sites-scale/)」を参照してください。
 
 6. **[カスタム ドメインの管理]** ダイアログ ボックスに、**awverify** の情報、現在割り当てられている **.azurewebsites.net** ドメイン名、および仮想 IP アドレスが表示されます。DNS レコードを作成する際に使用するため、この情報を保存します。
 
 	![](./media/custom-dns-web-site/managecustomdomains.png)
-
 
 <!--HONumber=42-->

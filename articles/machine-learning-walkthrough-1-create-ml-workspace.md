@@ -1,6 +1,20 @@
-<properties title="Step 1: Create an Azure Machine Learning workspace" pageTitle="手順 1.Machine Learning ワークスペースの作成 | Azure" description="手順 1.新しい Azure Machine Learning Studio ワークスペースを作成する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+<properties 
+	pageTitle="手順 1: Machine Learning ワークスペースの作成 | Azure" 
+	description="ソリューションのチュートリアル手順 1: 新しい Azure Machine Learning Studio ワークスペースを作成する" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/29/2015" 
+	ms.author="garye"/>
 
 
 これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][develop]」の最初の手順です。
@@ -47,3 +61,5 @@ ML ワークスペースが作成されると、**[Machine Learning]** ページ
 **次の手順: [既存のデータをアップロードする][upload-data]**
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-﻿<properties title="Azure Websites Web Hosting Plans In-Depth Overview" pageTitle="詳解 Azure Websites の Web ホスティング プラン - Windows Azure 機能ガイド" description="Azure Websites の Web ホスティング プランのしくみと、それが管理エクスペリエンスにもたらすメリットについて説明します。" metaKeywords="Azure Web Sites, Azure Websites, WHP, Web Hosting Plan, Web Hosting Plans, Resource Groups" services="web-sites" solutions="web" documentationCenter="Infrastructure" authors="Byron Tardif and Yochay Kiryaty" videoId="" scriptId="" manager="wpickett" />
+﻿<properties 
+	pageTitle="詳解 Azure Websites の Web ホスティング プラン - Windows Azure 機能ガイド" 
+	description="Azure Websites の Web ホスティング プランのしくみと、それが管理エクスペリエンスにもたらすメリットについて説明します。" 
+	services="web-sites" 
+	documentationCenter="" 
+	authors="btardif" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="11/17/2014" ms.author="Byron Tardif and Yochay Kiryaty" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/17/2014" 
+	ms.author="byvinyal, yochayk"/>
 </br>
 #詳解 Azure Websites の Web ホスティング プラン#
 </br>
@@ -189,3 +203,5 @@ Web ホスティング プラン内のインスタンス数を増やすことに
 Web ホスティング プランは、Web サイト間で共有できる一連の機能と容量を表します。Web ホスティング プランを使用することで、一連のリソース (仮想マシン) に対するサイトの割り当てを柔軟に行えるようになり、Web サイトの目的に合わせて Azure リソースを割り当てて使用することができます。
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

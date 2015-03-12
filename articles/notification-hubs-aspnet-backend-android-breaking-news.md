@@ -1,11 +1,25 @@
-<properties urlDisplayName="Breaking News" pageTitle="Notification Hubs ニュース速報チュートリアル - Android" metaKeywords="" description="Azure Service Bus Notification Hubs を使用して Android デバイスにニュース速報通知を送信する方法を説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="ricksal" solutions="" manager="dwrede" editor="" />
+<properties 
+	pageTitle="Notification Hubs ニュース速報チュートリアル - Android" 
+	description="Azure Service Bus Notification Hubs を使用して Android デバイスにニュース速報通知を送信する方法を説明します。" 
+	services="notification-hubs" 
+	documentationCenter="android" 
+	authors="RickSaling" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="11/22/2014" ms.author="ricksal" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="java" 
+	ms.topic="article" 
+	ms.date="11/22/2014" 
+	ms.author="ricksal"/>
 
 
-# 通知ハブを使用したニュース速報の送信
+# Notification Hubs を使用したニュース速報の送信
 <div class="dev-center-tutorial-selector sublanding">     	
-	<a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/" title="Windows Universal" >Windows ユニバーサル</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a>
+	<a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/" title="Windows Universal" >Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a>
 	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/" title="Android" class="current">Android</a>
 </div>
 
@@ -20,7 +34,7 @@
 3. [バックエンドから通知を送信する]
 4. [アプリケーションを実行して通知を生成する]
 
-このトピックは、「[通知ハブの使用][get-started]」で作成したアプリケーションが基になります。このチュートリアルを開始する前に、「[通知ハブの使用][get-started]」を完了している必要があります。
+このトピックは、「[Notification Hubs の使用][get-started]」で作成したアプリケーションが基になります。このチュートリアルを開始する前に、「[Notification Hubs の使用][get-started]」を完了している必要があります。
 
 ## <a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -153,11 +167,9 @@
 
 	このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
 
-4. 上のコードで、`<hub name>` と `<connection string with listen access>` のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultListenSharedAccessSignature* の接続文字列に置き換えます。
+4. 上記のコードで `<hub name>` と `<connection string with listen access>` のプレースホルダーを通知ハブ名に、接続文字列を既に取得済みの  *DefaultListenSharedAccessSignature* に置き換えます。
 
-	<div class="dev-callout"><strong>注</strong> 
-		<p>クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。</p>
-	</div> 
+	> [AZURE.NOTE] クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
 
 4. **MainActivity** クラスで、**NotificationHub** および **GoogleCloudMessaging** のプライベート フィールドを削除し、**Notifications** に対するフィールドを追加します。
 
@@ -213,9 +225,7 @@
 
 この手順では、ローカル ストレージに格納されたカテゴリを使用して、起動時に通知ハブに通知します。 
 
-<div class="dev-callout"><strong>注</strong> 
-	<p>Google Cloud Messaging (GCM) によって割り当てられた registrationId はいつでも変更できるので、通知の失敗を回避するため、通知を頻繁に登録するようにしてください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。</p>
-</div> 
+> [AZURE.NOTE] Google Cloud Messaging (GCM) によって割り当てられた registrationId はいつでも変更できるので、通知の失敗を回避するため、通知を頻繁に登録するようにしてください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
 
 1. **Notifications** クラスに、次のコードを追加します。
 
@@ -230,7 +240,7 @@
 
 		notifications.subscribeToCategories(notifications.retrieveCategories());
 
-	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。「[通知ハブの使用]」チュートリアルの一部として **InitNotificationsAsync** メソッドが作成されましたが、このトピックでは必要ありません。
+	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。「[Notification Hubs の使用]」チュートリアルの一部として **InitNotificationsAsync** メソッドが作成されましたが、このトピックでは必要ありません。
 
 3. その後、次のメソッドを **MainActivity** に追加します。
 
@@ -260,7 +270,7 @@
 
 <h2><a name="send"></a>バックエンドから通知を送信する</h2>
 
-[WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
+[AZURE.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
 ## <a name="test-app"></a>アプリケーションを実行して通知を生成する
 
@@ -276,19 +286,19 @@
 
 	+ **.NET コンソール アプリケーション:** コンソール アプリケーションを起動します。
 
-	+ **Java/PHP:** アプリケーション/スクリプトを実行します。
+	+ **Java/PHP:** アプリケーションとスクリプトを実行します。
 
 	選択されたカテゴリの通知がトースト通知として表示されます。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ニュース速報をカテゴリごとにブロードキャストする方法について説明しました。他の高度な通知ハブ シナリオを取り上げている、次のいずれかのチュートリアルを行うことをお勧めします。
 
-+ [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]
++ [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]
 
 	ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。 
 
-+ [通知ハブによるユーザーへの通知]
++ [Notification Hubs によるユーザーへの通知]
 
 	認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 
@@ -305,16 +315,16 @@
 
 <!-- URLs.-->
 [get-started]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
-[通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/ 
-[通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
+[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/ 
+[Notification Hubs によるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
 [モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started/
-[Notification Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-[方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]: http://msdn.microsoft.com/library/jj927172.aspx
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!--HONumber=35.1-->
+<!--HONumber=45--> 

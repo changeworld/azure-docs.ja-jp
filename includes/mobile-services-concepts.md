@@ -36,5 +36,4 @@ Mobile Services の主要な機能と概念は次のとおりです:
 
 
   
-
 <!--HONumber=42-->

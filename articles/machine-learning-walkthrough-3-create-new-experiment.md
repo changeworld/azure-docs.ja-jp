@@ -1,6 +1,20 @@
-<properties title="Step 3: Create a new Azure Machine Learning experiment" pageTitle="手順 3.Machine Learning の新しい実験を作成する | Azure" description="手順 3.Azure Machine Learning Studio で新しいトレーニング実験を作成する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="手順 3:Machine Learning の新しい実験を作成する | Azure" 
+	description="ソリューションのチュートリアル、手順 3: Azure Machine Learning Studio で新しいトレーニング実験を作成する" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/02/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/29/2015" 
+	ms.author="garye"/>
 
 
 これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][develop]」の 3 番目の手順です。
@@ -100,3 +114,5 @@ UCI での説明のとおり、高い信用リスクを誤って低リスクと�
 [1]: ./media/machine-learning-walkthrough-3-create-new-experiment/create1.png
 [2]: ./media/machine-learning-walkthrough-3-create-new-experiment/create2.png
 [3]: ./media/machine-learning-walkthrough-3-create-new-experiment/create3.png
+
+<!--HONumber=46--> 

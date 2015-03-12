@@ -31,7 +31,7 @@ Web アプリケーションの開発における課題の 1 つが、セキュ�
  
 ##<a name="https"></a>セキュリティで保護された通信
 
-Web サイト用に作成された ***.azurewebsites.net** ドメイン名を使用している場合は、SSL 証明書がすべての ** *.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。サイトで [カスタム ドメイン名](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/) を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して HTTPS を有効にできます。
+Web サイト用に作成された ***.azurewebsites.net** ドメイン名を使用している場合は、SSL 証明書がすべての ** *.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。サイトで [カスタム ドメイン名](http://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/) を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して HTTPS を有効にできます。
 
 ##<a name="develop"></a>セキュリティで保護された開発 
 
@@ -74,7 +74,7 @@ Azure プラットフォームのセキュリティ、**セキュリティ イ�
 
 Azure Websites の **web.config** または **applicationhost.config** ファイルの詳細については、[Configuration options unlocked in Azure Web Sites (Azure Web サイトでロック解除される構成オプション)](http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/) をご覧ください。
 
-攻撃の検出に役立つことのある Azure Websites のログ情報の詳細については、[Azure Websites の診断ログの有効化] (http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-enable-diagnostic-log/) をご覧ください。
+攻撃の検出に役立つことのある Azure Websites のログ情報の詳細については、[Azure Websites の診断ログの有効化] (http://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/) をご覧ください。
 
 
 <!--HONumber=42-->

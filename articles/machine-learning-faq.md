@@ -1,6 +1,20 @@
-<properties title="Microsoft Azure Machine Learning に関してよく寄せられる質問 (FAQ)" pageTitle="Azure Machine Learning の FAQ | Azure" description="Microsoft Azure Machine Learning についてよくある質問" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="pamehta" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Machine Learning の FAQ | Azure" 
+	description="Microsoft Azure Machine Learning についてよくある質問" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="pablissima" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="pamehta" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/17/2015" 
+	ms.author="paulettm"/>
 
 # Microsoft Azure Machine Learning に関してよく寄せられる質問 (FAQ)
 
@@ -36,11 +50,11 @@ Azure ML Studio サービスはアクティブな実験のコンピューティ�
 -   API サービス予測時間 - この測定値には、運用環境での Web サービスの実行によって発生したコンピューティング料金が含まれます。
 -   API サービス予測 (1,000 回単位) - この測定値には、運用 Web サービスへの呼び出しごとに発生した料金が含まれます。
 
-料金の詳細については、料金ページ (<http://azure.microsoft.com/ja-jp/pricing/details/machine-learning/>) を参照してください。
+料金の詳細については、料金ページ (<http://azure.microsoft.com/pricing/details/machine-learning/>) を参照してください。
 
 **6. Azure Machine Learning に無料評価版はありますか。**
 
-Azure ML は、Azure の無料評価版の一部です。Azure の無料評価版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。Azure の無料評価版の詳細については、<http://azure.microsoft.com/ja-jp/pricing/free-trial-faq/> を参照してください。
+Azure ML は、Azure の無料評価版の一部です。Azure の無料評価版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。Azure の無料評価版の詳細については、<http://azure.microsoft.com/pricing/free-trial-faq/> を参照してください。
 
 ### Machine Learning Studio
 
@@ -108,12 +122,14 @@ Machine Learning Center には継続的に新しい資料が追加されます�
 
 **18. どのようにして Azure ML のサポートを受けることができますか。**
 
-Azure ML は、Azure のサポート サービスの提供の一環としてサポートされます。Azure ML のテクニカル サポートを利用するには、サービスで Machine Learning を選択すると、サポート チケットを登録するためのトピックのカテゴリが指示されます。サポート サービスの提供の詳細については、<http://azure.microsoft.com/ja-jp/support/options/> を参照してください。
+Azure ML は、Azure のサポート サービスの提供の一環としてサポートされます。Azure ML のテクニカル サポートを利用するには、サービスで Machine Learning を選択すると、サポート チケットを登録するためのトピックのカテゴリが指示されます。サポート サービスの提供の詳細については、<http://azure.microsoft.com/support/options/> を参照してください。
 
 Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure ML に関連する質問をすることができます。このフォーラムは Azure ML チームが監視しています。[Azure フォーラム][Azure フォーラム]にアクセスしてください。
 
   [Azure Machine Learning を利用する]: http://go.microsoft.com/fwlink/?LinkId=404226
-  [Azure Machine Learning Center]: http://azure.microsoft.com/ja-jp/documentation/services/machine-learning/
+  [Azure Machine Learning Center]: http://azure.microsoft.com/documentation/services/machine-learning/
   [ユーザー フィードバック フォーラム]: http://go.microsoft.com/fwlink/?LinkId=404231
   [1]: https://windowsazure.uservoice.com/forums/257792-machine-learning
   [Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/home?forum=MachineLearning
+
+<!--HONumber=46--> 

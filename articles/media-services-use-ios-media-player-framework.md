@@ -18,7 +18,7 @@
 
 
 
-# Azure Media Services iOS Media Player フレームワークを使用する方法
+#Azure Media Services iOS Media Player フレームワークを使用する方法
 
 Azure メディア サービス iOS Media Player フレームワーク ライブラリを使用すると、iPod、iPhone、iPad の開発者は、ビデオとオーディオのストリームをその場で作成およびミックスするダイナミックなリッチ クライアント アプリケーションを容易に作成できます。たとえば、スポーツ コンテンツを表示するアプリケーションでは、選んだ箇所に広告を容易に挿入することができ、メイン コンテンツが巻き戻された場合も含めて、広告を表示する頻度を制御できます。教育用アプリケーションでも同じ機能を使用して、たとえば、メイン コンテンツに戻る前に、メインの講義に応じた余談 (または補足説明) を加えるようなコンテンツを作成することができます。
 
@@ -42,7 +42,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
     `git clone https://github.com/WindowsAzure/azure-media-player-framework`
 
-2. `azure-media-player-framework/src/iOS/HLSClient/` にあるプロジェクト **SamplePlayer.xcodeproj** を開きます。
+2. `azure-media-player-framework/src/iOS/HLSClient/`:**SamplePlayer.xcodeproj** を開きます。
 
  
 3. SamplePlayer の構造は、次のとおりです。
@@ -73,7 +73,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 * **[プレーヤー時間]** コントロールには、2 つの時間 (`Label:playerTime`) が 00:23/02:10 のように表示されます。この場合、00:23 は現在の再生時間、02:10 はメディア全体の長さを表します。 
 
-* **[前方へのスキップ] と [後方へのスキップ] ボタン**  は現在、正しく動作しません。更新バージョンが間もなくリリースされます。
+* **[前方へのスキップ/後方へのスキップ] ボタン**は現在、正しく動作しません。更新バージョンが間もなくリリースされます。
 
 * メイン コンテンツの再生中に **[ここにスケジュール設定]** ボタンを押すと、広告が挿入されます (広告ソースの URL はコード ビハインドで定義できます)。注:現在のバージョンでは、広告の再生中に他の広告をスケジュール設定することはできません。 
 
@@ -114,7 +114,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
         [self logFrameworkError];
     }
 
-前のコードに続いてこの処理を行うと、2 つのコンテンツ ストリームがメイン コンテンツのタイムライン上でスケジュールされます。1 つ目のコンテンツは  `URLWithString:url` に基づいてスケジュールされ、2 つ目のコンテンツは  `URLWithString:secondContent` に基づいてスケジュールされます。2 つ目のコンテンツは、メディア ストリームの先頭から 30 秒の位置から開始され、80 秒の位置で終了します。 
+前のコードに続いてこの処理を行うと、2 つのコンテンツ ストリームがメイン コンテンツのタイムライン上でスケジュールされます。1 つ目のコンテンツは　 `URLWithString:url` に基づいてスケジュールされ、2 つ目のコンテンツは  `URLWithString:secondContent` に基づいてスケジュールされます。2 つ目のコンテンツは、メディア ストリームの先頭から 30 秒の位置から開始され、80 秒の位置で終了します。 
 
 ## 広告のスケジュール設定 
 現在のリリースでは、**pauseTimeline=false** の広告のみがサポートされています。これは、広告の終了後に、メイン コンテンツが中断された箇所から再生が再開されることを意味します。 
@@ -128,7 +128,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 </ul>
 ### プリロール広告、ミッドロール広告、ポストロール広告、Ad Pod をスケジュールする方法
 
-#### プリロール広告のスケジュール設定
+####プリロール広告のスケジュール設定
 
     LinearTime *adLinearTime = [[[LinearTime alloc] init] autorelease];
     NSString *adURLString = @"http://smoothstreamingdemo.blob.core.windows.net/videoasset/WA-BumpShort_120530-1.mp4";
@@ -153,11 +153,11 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 * Ad Pod ではない場合は、**appendTo** の値を -1 に設定する必要があります。 
 * **type** の値には、プリロール、ミッドロール、ポストロール、または Ad Pod を指定できます。プリロールまたはポストロールの場合、関連付けられているタイミングがないため、type の指定が必要です。 
 
-#### ミッドロール広告のスケジュール設定
+####ミッドロール広告のスケジュール設定
 
 前のコード サンプルに `adLinearTime.startTime = 23;` を追加すると、広告の再生はメイン コンテンツのタインムラインの 23 秒目から開始されます。
 
-#### ポストロール広告のスケジュール設定
+####ポストロール広告のスケジュール設定
 
     //Schedule Post Roll Ad
     NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -219,4 +219,4 @@ Ad Pod は、複数の広告が連続して再生される広告ブレークで�
 上のコード例で示されているように、**deleteAfterPlay** を **YES** に設定すると、この広告は 1 度だけ再生されます。**deleteAfterPlay** を **NO** に設定すると、この広告は連続して再生されます。これを Sticky 広告といいます。
 ### 詳細については、[Azure Media Player フレームワークの wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki) を参照してください。
 
-<!--HONumber=42-->
+<!--HONumber=45--> 

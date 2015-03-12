@@ -1,6 +1,20 @@
-<properties pageTitle="クラウドへの無数のモノの接続" metaKeywords="Service Bus, internet of things" description="Microsoft Azure を使用してクラウドへ無数のものを接続する方法について学習します。" services="service-bus" documentationCenter=".NET" title="クラウドへの無数のモノの接続" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+﻿<properties 
+	pageTitle="クラウドへの無数のモノの接続" 
+	description="Microsoft Azure を使用してクラウドへ無数のものを接続する方法について学習します。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
+	editor="mattshel"/>
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
+<tags 
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="02/10/2015" 
+	ms.author="sethm"/>
 
 # クラウドへの無数の "モノ" の接続
 
@@ -28,13 +42,15 @@
 -   [Azure Active Directory][Azure Active Directory]
 -   [Cloud Services][Cloud Services]
 
-  [Event Hubs]: http://msdn.microsoft.com/ja-jp/library/dn789973.aspx
-  [シャーディング パターン]: http://msdn.microsoft.com/ja-jp/library/dn589797.aspx
-  [Service Bus と AMQP 1.0]: http://msdn.microsoft.com/ja-jp/library/azure/jj841071.aspx
-  [Service Bus の概要]: http://azure.microsoft.com/ja-jp/documentation/services/service-bus/
-  [メッセージング エンティティのパーティション分割]: http://msdn.microsoft.com/ja-jp/library/azure/dn520246.aspx
-  [Service Bus トピック]: http://azure.microsoft.com/ja-jp/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-  [Azure Linux VM に Apache Qpid Proton-C をインストールする]: http://msdn.microsoft.com/ja-jp/library/azure/dn235560.aspx
+  [Event Hubs]: http://msdn.microsoft.com/library/dn789973.aspx
+  [シャーディング パターン]: http://msdn.microsoft.com/library/dn589797.aspx
+  [Service Bus と AMQP 1.0]: http://msdn.microsoft.com/library/azure/jj841071.aspx
+  [Service Bus の概要]: http://azure.microsoft.com/documentation/services/service-bus/
+  [メッセージング エンティティのパーティション分割]: http://msdn.microsoft.com/library/azure/dn520246.aspx
+  [Service Bus トピック]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+  [Azure Linux VM に Apache Qpid Proton-C をインストールする]: http://msdn.microsoft.com/library/azure/dn235560.aspx
   [Service Assisted Communication for Connected Devices (接続されたデバイスに対するサービスが支援する通信)]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx
-  [Azure Active Directory]: http://azure.microsoft.com/ja-jp/documentation/services/active-directory/
-  [Cloud Services]: http://azure.microsoft.com/ja-jp/documentation/services/cloud-services/
+  [Azure Active Directory]: http://azure.microsoft.com/documentation/services/active-directory/
+  [Cloud Services]: http://azure.microsoft.com/documentation/services/cloud-services/
+
+<!--HONumber=46--> 

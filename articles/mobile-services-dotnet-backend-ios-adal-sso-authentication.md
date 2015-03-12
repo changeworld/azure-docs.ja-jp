@@ -1,6 +1,20 @@
-<properties pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | モバイル デベロッパー センター" description="iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" documentationCenter="ios" authors="wesmc7777" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | モバイル デベロッパー センター" 
+	description="iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
+	documentationCenter="ios" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="wesmc,mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="wesmc,mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
 

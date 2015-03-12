@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Microsoft 認証用の登録 - モバイル サービス" description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。" authors="ggailey777" services="mobile-services" documentationCenter="" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Microsoft 認証用の登録 - モバイル サービス" 
+	description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。" 
+	authors="ggailey777" 
+	services="mobile-services" 
+	documentationCenter="" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 # Microsoft アカウント ログインを使用するためのアプリケーションの登録
 

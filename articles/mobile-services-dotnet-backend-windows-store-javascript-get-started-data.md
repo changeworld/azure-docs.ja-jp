@@ -1,6 +1,20 @@
-<properties pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" services="mobile-services" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" 
+	description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/27/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="javascript" 
+	ms.topic="article" 
+	ms.date="09/27/2014" 
+	ms.author="wesmc"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
 
@@ -24,7 +38,7 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started-data%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started-data%2F)を参照してください。
 * <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>。無料評価版が利用できます。
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
@@ -130,7 +144,8 @@
                 // Mobile Services assigns each item an id and the 
                 // item is added to the Binding List
                 todoTable.insert(todoItem).done(function (item) {
-                    todoItems.push(item);
+                    todoIte
+	ms.push(item);
                 });
             };
             var refreshTodoItems = function () {
@@ -140,7 +155,9 @@
                     .read()
                     .done(function (results) {
                         todoItems = new WinJS.Binding.List(results);
-                        listItems.winControl.itemDataSource = todoItems.dataSource;
+                        listIte
+	ms.winControl.itemDataSource = todoIte
+	ms.dataSource;
                     });
             };
             var updateCheckedTodoItem = function (todoItem) {
@@ -148,7 +165,9 @@
                 // When the MobileService responds, 
                 // the item is removed from the list 
                 todoTable.update(todoItem).done(function (item) {
-                    todoItems.splice(todoItems.indexOf(item), 1);
+                    todoIte
+	ms.splice(todoIte
+	ms.indexOf(item), 1);
                 });
             };
             buttonSave.addEventListener("click", function () {
@@ -160,7 +179,8 @@
             buttonRefresh.addEventListener("click", function () {
                 refreshTodoItems();
             });
-            listItems.addEventListener("change", function (eventArgs) {
+            listIte
+	ms.addEventListener("change", function (eventArgs) {
                 var todoItem = eventArgs.target.dataContext.backingData;
                 todoItem.complete = eventArgs.target.checked;
                 updateCheckedTodoItem(todoItem);
@@ -265,7 +285,8 @@
 [11]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-build-solution.png
 [12]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-run-solution.png
 
-[16]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/azure-items.png
+[16]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/azure-ite
+	ms.png
 [17]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/manage-sql-azure-database.png
 [18]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/sql-azure-query.png
 [19]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-mobileservices-script-reference.png

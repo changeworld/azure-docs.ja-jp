@@ -1,6 +1,20 @@
-<properties pageTitle="Azure API Management Policy Reference" metaKeywords="" description="Learn about the policies available to configure API Management." metaCanonical="" services="" documentationCenter="API Management" title="Azure API Management Policy Reference" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management ポリシー リファレンス" 
+	description="API Management の構成に使用できるポリシーについて説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/11/2015" 
+	ms.author="sdanie"/>
 
 # Azure API Management ポリシー リファレンス
 
@@ -636,3 +650,5 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
   [クロスドメイン呼び出しを許可]: #allow-cross-domain-calls
   [JSONP]: #jsonp
   [CORS]: #cors
+
+<!--HONumber=46--> 

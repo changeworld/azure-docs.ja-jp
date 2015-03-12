@@ -1,6 +1,20 @@
-<properties pageTitle="How to add operations to an API in Azure API Management" metaKeywords="" description="Learn how to add operations to an API in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="How to add operations to an API in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management で API に操作を追加する方法" 
+	description="Azure API Management で API に操作を追加する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management で API に操作を追加する方法
 
@@ -141,3 +155,5 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
   [Body content type]: ./media/api-management-howto-add-operations/api-management-response-body-content-type.png
   [Response body]: ./media/api-management-howto-add-operations/api-management-response-body.png
   [Azure API Management で成果物を作成して発行する方法]: ../api-management-howto-add-products
+
+<!--HONumber=46--> 

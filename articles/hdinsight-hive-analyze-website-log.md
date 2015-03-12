@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/14/2014" 
+	ms.date="02/06/2015" 
 	ms.author="nitinme"/>
 
 # Web サイトのログを分析するための HDInsight での Hive の使用
@@ -31,7 +31,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 
 ##前提条件
 
-- **HDInsight クラスター**のプロビジョニングを終えている必要があります。手順については、[HDInsight クラスターのプロビジョニング][hdinsight-provision]に関するページを参照してください。 
+- **HDInsight クラスター**のプロビジョニングを終えている必要があります。手順については、「[HDInsight での Hadoop クラスターのプロビジョニング ][hdinsight-provision]」をご覧ください。 
 - Microsoft Excel 2010 または Microsoft Excel 2013 がインストールされていること。
 - Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/ja-jp/download/details.aspx?id=40886)があること。
 
@@ -48,11 +48,11 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
 ##次のステップ
-Azure HDInsight を使用したセンサー データの分析方法をサンプルで試します。[Hive を HDInsight と共に使用したセンサー データの分析][hdinsight-sensor-data-sample]に関するページを参照してください。
+Azure HDInsight を使用したセンサー データの分析方法をサンプルで試します。[Hive を HDInsight と共に使用したセンサー データの分析][hdinsight-sensor-data-sample]に関するページをご覧ください。
 
 
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis/
 
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
-<!--HONumber=42-->
+<!--HONumber=45--> 

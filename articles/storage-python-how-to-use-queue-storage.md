@@ -137,7 +137,6 @@
   [方法:メッセージのデキュー用の追加オプション]: #advanced-get
   [方法:キューの長さを取得する]: #get-queue-length
   [方法:キューを削除する]: #delete-queue
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-
 <!--HONumber=42-->

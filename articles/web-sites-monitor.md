@@ -61,7 +61,7 @@ Web サイトがリソースの使用量クォータをどの程度消費して�
 	-	**[ファイル システム ストレージ]** - クォータの制限に達すると、ファイル システム ストレージには引き続きアクセスできますが、通常の Web サイト アクティビティに必要な操作も含めて、すべての書き込み操作がブロックされます。ファイルの使用量を減らすか、クォータの大きい Web ホスティング プランに Web サイトを移行すると、書き込み操作が再開されます。
 	-	**[リンク済みリソース]** - データベースやストレージなど、Web サイトのリンク済みリソースのクォータが表示されます。
 
-	クォータは、Web ホスティング プランごとに適用されるものと、サイトごとに適用されるものがあります。各 Web ホスティング プランの使用量のクォータの詳細については、「[Web サイトの制限](http://azure.microsoft.com/ja-jp/documentation/articles/azure-subscription-service-limits/#websiteslimits)」をご覧ください。
+	クォータは、Web ホスティング プランごとに適用されるものと、サイトごとに適用されるものがあります。各 Web ホスティング プランの使用量のクォータの詳細については、「[Web サイトの制限](http://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/#websiteslimits)」をご覧ください。
 
 
 ##<a name="resourceusage"></a>方法:クォータ制限の超過の回避
@@ -106,7 +106,7 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 
 > [AZURE.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。
 > 
-> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
+> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)」をご覧ください。
 
 > [AZURE.NOTE] アプリケーション ログ記録は、アプリケーションが生成するログ情報に依存しています。ログ情報を生成する方法およびログ情報の形式は、アプリケーションの開発言語によって異なります。各言語でのアプリケーション ログ記録の使用方法については、次の記事をご覧ください。
 > 
@@ -173,7 +173,7 @@ Web サイトの診断を有効にしたら、**[構成]** 管理ページの下
 
 1. **スタート画面**または **[スタート] メニュー**で、「**Azure PowerShell**」を検索します。**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
-	> [AZURE.NOTE] **Azure PowerShell** がインストールされていない場合は、「[Azure コマンドレットの概要](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx)」を参照して、インストールと構成を実行してください。
+	> [AZURE.NOTE] **Azure PowerShell** がインストールされていない場合は、「[Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照して、インストールと構成を実行してください。
 
 2. Azure PowerShell プロンプトで次のコマンドを使用して、ログ ファイルをダウンロードします。
 
@@ -201,7 +201,7 @@ Web サイトの診断を有効にしたら、**[構成]** 管理ページの下
 
 これは、コマンドが実行されたコマンド プロンプト、PowerShell、bash、またはターミナル セッションにログ情報を表示します。
 
-> [AZURE.NOTE] **azure** コマンドがインストールされていない場合は、「[How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」を参照して、インストールと構成を実行してください。
+> [AZURE.NOTE] **azure** コマンドがインストールされていない場合は、「[How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)](http://azure.microsoft.com/develop/nodejs/how-to-guides/command-line-tools/)」を参照して、インストールと構成を実行してください。
 
 ###ログ ファイルの読み込み###
 
@@ -276,9 +276,9 @@ Web サイトに対するログ記録またはトレース、あるいはその�
 
 Web サイトのエンドポイントの監視の詳細については、次のビデオをご覧ください。
 
-- [Scott Guthrie による Azure Websites の紹介とエンドポイント監視の設定](http://www.windowsazure.com/ja-jp/documentation/videos/websites-and-endpoint-monitoring-scottgu/)
+- [Scott Guthrie による Azure Websites の紹介とエンドポイント監視の設定](http://azure.microsoft.com/documentation/videos/websites-and-endpoint-monitoring-scottgu/)
 
-- [Azure Websites の保持とエンドポイントの監視 - Stefan Schackow 共演](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)
+- [Azure Websites の保持とエンドポイントの監視 - Stefan Schackow 共演](http://azure.microsoft.com/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)
 
 
 

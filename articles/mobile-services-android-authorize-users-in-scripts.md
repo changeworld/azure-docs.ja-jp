@@ -1,6 +1,20 @@
-<properties pageTitle="サービス側の承認 (Android) | モバイル デベロッパー センター" description="Azure Mobile Services の JavaScript バックエンドでユーザーを承認する方法について説明します。" services="" documentationCenter="android" authors="ggailey777" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="サービス側の承認 (Android) | モバイル デベロッパー センター" 
+	description="Azure Mobile Services の JavaScript バックエンドでユーザーを承認する方法について説明します。" 
+	services="" 
+	documentationCenter="android" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/29/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="Mobile-Android" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/29/2014" 
+	ms.author="glenga"/>
 
 # モバイル サービス ユーザーのサービス側の承認
 

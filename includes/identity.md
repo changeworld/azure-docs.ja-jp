@@ -49,7 +49,7 @@ Azure VM で Windows Server AD を実行することは、いくつかの状況�
 
 - 障害復旧に Azure を使用している組織は、アクティブな VM の小規模なセット (ドメイン コントローラーなど) をクラウドに保持していることがあります。その場合、必要に応じてこのサイトを拡張し、他の場所で障害が発生したときに引き継ぎを行う準備を整えることができます。
 
-他の可能性もあります。たとえば、クラウドの Windows Server AD を内部設置型データセンターに接続する必要がないとします。特定のユーザー セットにサービスを提供する SharePoint ファームを実行する場合 (たとえば、すべてのユーザーがクラウド ベースの ID だけを使用してログインする場合など)、Azure にスタンドアロン フォレストを作成できます。このテクノロジの利用方法は、目標が何であるかによって決まります(Azure で Windows Server AD を使用する方法の詳細については、[ここを参照](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)してください)。
+他の可能性もあります。たとえば、クラウドの Windows Server AD を内部設置型データセンターに接続する必要がないとします。特定のユーザー セットにサービスを提供する SharePoint ファームを実行する場合 (たとえば、すべてのユーザーがクラウド ベースの ID だけを使用してログインする場合など)、Azure にスタンドアロン フォレストを作成できます。このテクノロジの利用方法は、目標が何であるかによって決まります(Azure で Windows Server AD を使用する方法の詳細については、[ここを参照](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)してください)。
 
 ## <a name="ad"></a>Azure Active Directory の使用
 
@@ -121,5 +121,4 @@ ID の処理は、ほとんどすべてのアプリケーションにとって�
 ##著者について
 
 David Chappell は、カリフォルニア州サンフランシスコに拠点を置く Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) の社長です。講演、執筆、コンサルティングを通じて、
-
 <!--HONumber=42-->

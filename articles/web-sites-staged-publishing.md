@@ -72,7 +72,7 @@
 
 	-	 
 
-このスロットにコンテンツはありません。スロットには、異なるリポジトリ分岐、またはまったく異なるリポジトリから展開できます。またスロットの構成を変更することもできます。コンテンツの更新には、展開スロットに関連付けられた発行プロファイルまたは展開資格情報を使用してください。たとえば、[Git を使用してこのスロットに発行する](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-publish-source-control/) ことができます
+このスロットにコンテンツはありません。スロットには、異なるリポジトリ分岐、またはまったく異なるリポジトリから展開できます。またスロットの構成を変更することもできます。コンテンツの更新には、展開スロットに関連付けられた発行プロファイルまたは展開資格情報を使用してください。たとえば、[Git を使用してこのスロットに発行する](http://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/) ことができます
 
 <a name="AboutConfiguration"></a>
 ##展開スロットの構成について##
@@ -147,7 +147,7 @@ Azure Websites のポータル ページの下部にあるコマンド バーで
 
 Azure PowerShell は、Azure Websites の展開スロットの管理サポートを含む、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです。 
 
-- Azure PowerShell のインストールと構成、Windows Azure サブスクリプションを使用した Azure PowerShell の認証については、[Windows Azure PowerShell のインストールおよび構成方法](http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell) をご覧ください。  
+- Azure PowerShell のインストールと構成、Windows Azure サブスクリプションを使用した Azure PowerShell の認証については、[Windows Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell) をご覧ください。  
 
 - PowerShell で Azure Websites に使用できるコマンドレットの一覧を表示するには、 `help AzureWebsite` を呼び出してください。 
 
@@ -202,7 +202,7 @@ Azure PowerShell は、Azure Websites の展開スロットの管理サポート
 
 Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) には、Azure Websites での展開スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。 
 
-- Azure サブスクリプションへの xplat-cli の接続方法に関する情報など、xplat-cli のインストールと構成手順については、[Install and Configure the Azure Cross-Platform Command-Line Interface (Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成)](http://www.windowsazure.com/ja-jp/documentation/articles/xplat-cli) をご覧ください。 
+- Azure サブスクリプションへの xplat-cli の接続方法に関する情報など、xplat-cli のインストールと構成手順については、[Install and Configure the Azure Cross-Platform Command-Line Interface (Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成)](http://azure.microsoft.com/documentation/articles/xplat-cli) をご覧ください。 
 
 -  xplat-cli で Azure Websites に使用できるコマンドの一覧を表示するには、 `azure site -h` を呼び出してください。 
 
@@ -238,7 +238,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 ## 次のステップ ##
 [Azure Web Sites - block web access to non-production deployment slots (Azure Web サイト - 運用環境以外の展開スロットへの Web アクセスの禁止)](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-[Microsoft Azure 無料評価版](http://azure.microsoft.com/ja-jp/pricing/free-trial/)
+[Microsoft Azure 無料評価版](http://azure.microsoft.com/pricing/free-trial/)
 
 
 <!-- IMAGES -->

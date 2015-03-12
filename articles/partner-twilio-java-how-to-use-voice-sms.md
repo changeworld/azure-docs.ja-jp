@@ -1,10 +1,24 @@
-﻿<properties urlDisplayName="Twilio Voice/SMS Service" pageTitle="音声および SMS に Twilio を使用する方法 (Java) -  Azure" metaKeywords="Twilio, Twilio API, phone calls, SMS message, TwiML responses, Azure Twilio Java" description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Java で記述されています。" metaCanonical="" services="" videoId="" scriptId="" documentationCenter="Java" title="How to Use Twilio for Voice and SMS Capabilities in Java" authors="MicrosoftHelp@twilio.com; robmcm" solutions="" manager="twilio" editor="mollybos" />
+<properties 
+	pageTitle="音声および SMS に Twilio を使用する方法 (Java) -  Azure" 
+	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Java で記述されています。" 
+	services="" 
+	documentationCenter="java" 
+	authors="devinrader" 
+	manager="twilio" 
+	editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="11/25/2014" ms.author="MicrosoftHelp@twilio.com; robmcm" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="microsofthelp@twilio.com"/>
 
 # Java で音声および SMS 機能に Twilio を使用する方法
 
-このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、[次のステップ] (#NextSteps) セクションを参照してください。
+このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、[次のステップ](#NextSteps) セクションを参照してください。
 
 ## 目次
 * [Twilio とは](#WhatIs)
@@ -125,7 +139,7 @@ Java Server Page (JSP) ソース ファイルの場合:
 
 **CallFactory.create** メソッドに渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] を参照してください。
 
-既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、[方法: 独自の Web サイトから TwiML 応答を返す] を参照してください(#howto_provide_twiml_responses)。
+既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)を参照してください(#howto_provide_twiml_responses)。
 
 <h2><a id="howto_send_sms"></a>方法:SMS メッセージを送信する</h2>
 次のコードは、**SmsFactory** クラスを使用して SMS メッセージを送信する方法を示しています。試用アカウントで SMS メッセージを送信できるように、**From** の番号として **4155992671** が Twilio から提供されます。コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
@@ -155,7 +169,7 @@ Java Server Page (JSP) ソース ファイルの場合:
 **SmsFactory.create** メソッドに渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] を参照してください。
 
 <h2><a id="howto_provide_twiml_responses"></a>方法:独自の Web サイトから TwiML 応答を返す</h2>
-アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallFactory.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています(TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば [http://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt;Response&gt;** 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、**&lt;Say&gt;** 要素を格納している **&lt;Response&gt;** 要素が表示されます。
+アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallFactory.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています(TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message][twimlet_message_url] をクリックして、空の **&lt;Response&gt;** 要素を確認します。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックして、**&lt;Say&gt;** 要素を格納している **&lt;Response&gt;** 要素を確認します)。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは任意の言語で作成できます。このトピックでは、JSP ページで URL をホストすることを前提としています。
 
@@ -166,7 +180,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
         <Say>Hello World</Say>
     </Response>
 
-The following JSP page results in a TwiML response that says some text, has several pauses, and says information about the Twilio API version and the Azure role name.
+次の JSP ページでは、複数の言葉と間合いのポーズを含む TwiML 応答が返され、Twilio API バージョンと Azure ロール名に関する情報が読み上げられます。
 
 
     <%@ page contentType="text/xml" %>
@@ -202,17 +216,17 @@ Azure 上の Java で Twilio を使用する方法の詳細については、「
 <h2><a id="NextSteps"></a>次のステップ</h2>
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* [Twilio に関するセキュリティ ガイドライン][twilio_security_guidelines]
+* [Twilio に関するセキュリティ ガイドライン] [twilio_security_guidelines]
 * [Twilio に関する方法とコード例のページ] [twilio_howtos]
-* [Twilio に関するクイック スタート チュートリアルのページ][twilio_quickstarts]
-* [GitHub 上の Twilio に関するページ][twilio_on_github]
+* [Twilio に関するクイック スタート チュートリアルのページ][twilio_quickstarts] 
+* [GitHub 上の Twilio に関するページ] [twilio_on_github]
 * [Twilio に関するサポートへの連絡のページ] [twilio_support]
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
 [add_ca_cert]: ../java-add-certificate-ca-store
 [howto_phonecall_java]: ../partner-twilio-java-phone-call-example
-[misc_role_config_settings]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690945.aspx
+[misc_role_config_settings]: http://msdn.microsoft.com/library/windowsazure/hh690945.aspx
 [twimlet_message_url]: http://twimlets.com/message
 [twimlet_message_url_hello_world]: http://twimlets.com/message?Message%5B0%5D=Hello%20World
 [twilio_rest_making_calls]: http://www.twilio.com/docs/api/rest/making-calls
@@ -232,4 +246,4 @@ Azure 上の Java で Twilio を使用する方法の詳細については、「
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!--HONumber=35.2-->
+<!--HONumber=45-->

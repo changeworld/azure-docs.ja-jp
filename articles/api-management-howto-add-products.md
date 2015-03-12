@@ -1,6 +1,20 @@
-<properties pageTitle="How create and publish a product in Azure API Management" metaKeywords="" description="Learn how to create and publish products in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="How create and publish a product in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management で成果物を作成して発行する方法" 
+	description="Azure API Management で成果物を作成して発行する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/11/2015" 
+	ms.author="sdanie"/>
 
 # Azure API Management で成果物を作成して発行する方法
 
@@ -106,3 +120,5 @@ Azure API Management (プレビュー) の成果物には、少なくとも 1 �
   [Product visibility]: ./media/api-management-howto-add-products/api-management-product-visibility.png
   [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法]: ../api-management-howto-create-groups
   [Azure API Management で成果物を作成して詳細設定を行う方法]: ../api-management-howto-product-with-rules
+
+<!--HONumber=46--> 

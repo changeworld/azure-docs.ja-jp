@@ -1,6 +1,20 @@
-﻿<properties pageTitle="ユーザーの登録と成果物のサブスクリプションを委任する方法" metaKeywords="" description="ユーザーの登録と製品のサブスクリプションを Azure API Management でサード パーティに委任する方法について説明します。" metaCanonical="" services="api-management" documentationCenter="API Management" title="How to delegate user registration and product subscription in Azure API Management" authors="antonba" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="ユーザーの登録と成果物のサブスクリプションを委任する方法" 
+	description="ユーザーの登録と製品のサブスクリプションを Azure API Management でサード パーティに委任する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="antonba" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="antonba" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="1/14/2015" 
+	ms.author="antonba"/>
 
 # ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -150,3 +164,5 @@
 [コードの例を以下に提示]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
+
+<!--HONumber=46--> 

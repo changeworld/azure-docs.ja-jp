@@ -33,7 +33,7 @@
 
 Azure Website を作成するには、次のステップに従います。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure Websites の機能を有効にした Azure アカウントが必要です。<br />アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E"%20target="_blank") をご覧ください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure Websites の機能を有効にした Azure アカウントが必要です。<br />アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A7171371E"%20target="_blank") をご覧ください。
 <br />
 
 1. WebMatrix の起動
@@ -102,7 +102,7 @@ Azure Website を作成するには、次のステップに従います。
 
 Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](/ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/).」をご覧ください。[CO1]
 
-Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/Debug-Website/)」をご覧ください。
+Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/Debug-Website/)」をご覧ください。
 
 
 [Azure 管理ポータル]: http://manage.windowsazure.com

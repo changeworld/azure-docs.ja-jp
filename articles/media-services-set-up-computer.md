@@ -1,6 +1,20 @@
-﻿<properties pageTitle="メディア サービス用にコンピューターをセットアップする方法 - Azure" description="Media Services SDK for .NET を使用した Media Services の前提条件について説明します。Visual Studio アプリケーションを作成する方法についても説明します。" services="media-services" documentationCenter="" authors="juliako" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="メディア サービス用にコンピューターをセットアップする方法 - Azure" 
+	description="Media Services SDK for .NET を使用した Media Services の前提条件について説明します。Visual Studio アプリケーションを作成する方法についても説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako"/>
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/30/2014" 
+	ms.author="juliako"/>
 
 
 
@@ -61,7 +75,7 @@ Media Services アカウントを設定するには、Azure の管理ポータ�
 	_context = new CloudMediaContext(_cachedCredentials);
 
 
-多くの場合、サーバー コンテキストへの参照を保持するように **CloudMediaContext** 型のモジュール レベル変数を定義する際に役立ちます。詳細については、「[Media Services SDK による Media Services への接続](http://msdn.microsoft.com/ja-jp/library/azure/jj129571.aspx)」を参照してください。
+多くの場合、サーバー コンテキストへの参照を保持するように **CloudMediaContext** 型のモジュール レベル変数を定義する際に役立ちます。詳細については、「[Media Services SDK による Media Services への接続](http://msdn.microsoft.com/library/azure/jj129571.aspx)」を参照してください。
 
 このトピックのコード例では以降、**_context** という変数を使用してサーバー コンテキストを参照します。 
 

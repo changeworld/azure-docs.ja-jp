@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="BizTalk Services: Service state chart" pageTitle="BizTalk サービス: サービスの状態のチャート | Azure" metaKeywords="" description="" metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk Services: Service state chart" authors="mandia" solutions="integration" manager="dwrede" editor="cgronlun" />
+﻿<properties 
+	pageTitle="BizTalk サービス:サービスの状態のチャート | Azure" 
+	description="TMABS のさまざまな状態で許可されるアクションと操作: 停止、開始、再起動、中断、再開、削除、拡張、上の構成、およびバックアップの更新" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
+	editor="cgronlun"/>
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
+<tags 
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/01/2015" 
+	ms.author="mandia"/>
 
 
 
@@ -251,3 +265,5 @@ RestoreFailed<br/></b></td>
 - [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-<properties pageTitle="How to use the API Inspector to trace calls in Azure API Management" metaKeywords="" description="Learn how to trace calls using the API Inspector in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="How to use the API Inspector to trace calls in Azure API Management" authors="s****danie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management で API Inspector を使用して呼び出しをトレースする方法" 
+	description="Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management で API Inspector を使用して呼び出しをトレースする方法
 
@@ -194,3 +208,5 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
   [API Management developer portal]: ./media/api-management-howto-api-inspector/api-management-developer-portal-menu.png
   [Open console]: ./media/api-management-howto-api-inspector/api-management-open-console.png
   [Azure API Management の詳細な構成について]: ../api-management-get-started-advanced
+
+<!--HONumber=46--> 

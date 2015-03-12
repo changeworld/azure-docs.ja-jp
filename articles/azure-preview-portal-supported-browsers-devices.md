@@ -1,6 +1,21 @@
-﻿<properties urlDisplayName="" pageTitle="サポートされているブラウザーとデバイス" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Supported browsers and devices" authors="Justin Beckwith"  solutions="" writer="" manager="need to identify contact" editor=""  />
+﻿<properties 
+	pageTitle="サポートされているブラウザーとデバイス" 
+	description="" 
+	services="" 
+	documentationCenter="" 
+	authors="JustinBeckwith" 
+	writer="" 
+	manager="carolz" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="11/16/2014" ms.author="Justin Beckwith" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/16/2014" 
+	ms.author="justbe"/>
 
 #サポートされているブラウザーとデバイス
 Microsoft Azure プレビュー ポータルは、最新の主要なデスクトップ デバイスとタブレット デバイス、および最新の主要なブラウザーで動作します。
@@ -20,3 +35,5 @@ Microsoft Azure プレビュー ポータルは、最新の主要なデスクト
  
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

@@ -99,5 +99,4 @@ Service Bus 自体はクラウド (つまり、Microsoft の Azure データセ�
 [キュー]: ./media/hybrid-solutions/SvcBus_02_queues.png
 [topics-subs]: ./media/hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [リレー]: ./media/hybrid-solutions/SvcBus_04_relay.png
-
 <!--HONumber=42-->

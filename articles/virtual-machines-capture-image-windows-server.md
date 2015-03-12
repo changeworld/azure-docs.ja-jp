@@ -20,7 +20,7 @@
 
 ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際のテンプレートのように使用する方法を示します。このテンプレートには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
-Azure ではこのテンプレートをイメージとして扱い、**[マイ イメージ]** に格納します。アップロードしたすべてのイメージがこの場所に格納されます。イメージの詳細については、「[Azure のバーチャル マシン イメージについて]」を参照してください[]。
+Azure ではこのテンプレートをイメージとして扱い、**[マイ イメージ]** に格納します。アップロードしたすべてのイメージがこの場所に格納されます。イメージの詳細については、「[Azure の仮想マシン イメージについて][]」を参照してください。
 
 ##開始する前に##
 
@@ -36,13 +36,13 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 2.	管理者としてコマンド プロンプト ウィンドウを開きます。
 
 
-3.	ディレクトリを `%windir%\system32\sysprep` に変更し、sysprep.exe を実行します。
+3.	ディレクトリを  `%windir%\system32\sysprep` に変更し、sysprep.exe を実行します。
 
 
 4. 	**[システム準備ツール]** ダイアログ ボックスが表示されます。以下の手順を実行します。
 
 
-	- **[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。Sysprep の使い方の詳細については、[Sysprep の使用方法: 紹介] を参照してください。
+	- **[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。Sysprep の使い方の詳細については、「[Sysprep の使用方法:紹介][]」を参照してください。
 
 	- **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
 
@@ -67,20 +67,21 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 
 12.	チェック マークをクリックしてイメージをキャプチャします。 
 
-  **注:一般化した仮想マシンのイメージをキャプチャすると、その仮想マシンは削除されます。**
+  **注:一般化した仮想マシンのイメージをキャプチャしたら、その仮想マシンは削除されます。**
 
- これで **[イメージ]** で新しいイメージが使用可能になりました。
- ![Image capture successful](./media/virtual-machines-capture-image-windows-server/VMCapturedImageAvailable.png)
+	これで **[イメージ]** で新しいイメージが使用可能になりました。
+
+	![Image capture successful](./media/virtual-machines-capture-image-windows-server/VMCapturedImageAvailable.png)
 
 ##次のステップ##
 イメージの準備ができましたので、これをテンプレートとして使用して仮想マシンを作成します。そのためには、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成します。手順については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 	
-[Azure のバーチャル マシン イメージについて]: http://msdn.microsoft.com/library/azure/dn790290.aspx
+[Azure の仮想マシン イメージについて]: http://msdn.microsoft.com/library/azure/dn790290.aspx
 [カスタム仮想マシンの作成方法]: ../virtual-machines-create-custom/
 [データ ディスクを仮想マシンに接続する方法]: ../storage-windows-attach-disk/
 [Windows Server が実行されている仮想マシンにログオンする方法]:http://azure.microsoft.com/manage/windows/how-to-guides/log-on-a-windows-vm/
-[Sysprep の使用方法: 紹介]:http://technet.microsoft.com/ library/bb457073.aspx
+[Sysprep の使用方法:紹介]:http://technet.microsoft.com/library/bb457073.aspx
 [Sysprep.exe の実行]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
 [Sysprep.exe オプションの入力]: ./media/virtual-machines-capture-image-windows-server/SysprepGeneral.png
 [仮想マシンの停止]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
@@ -89,4 +90,5 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 [イメージのキャプチャの成功]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [キャプチャしたイメージの使用]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!--HONumber=45--> 
+
+<!--HONumber=42-->

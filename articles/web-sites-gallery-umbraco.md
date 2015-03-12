@@ -1,6 +1,20 @@
-﻿<properties title="Create an Umbraco website from the gallery in Microsoft Azure" pageTitle="Microsoft Azure でギャラリーから Umbraco Web サイトを作成する" description="必須" metaKeywords="Azure, gallery, Umbraco, web site, website" services="web-sites" solutions="web" documentationCenter="" authors="tomfitz" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Microsoft Azure でギャラリーから Umbraco Web サイトを作成する" 
+	description="必須" 
+	services="web-sites" 
+	documentationCenter="" 
+	authors="tfitzmac" 
+	manager="wpickett" 
+	editor="mollybos"/>
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="10/21/2014" ms.author="tomfitz" />
+<tags 
+	ms.service="web-sites" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/21/2014" 
+	ms.author="tomfitz"/>
 
 #Microsoft Azure でギャラリーから Umbraco Web サイトを作成する
 
@@ -88,13 +102,13 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 
 [Umbraco Video Tutorials (Umbraco ビデオ チュートリアル)](https://umbraco.com/help-and-support/video-tutorials.aspx)
 
-[DevOps は最高 (Microsoft Azure プレビュー ポータルの概要)](http://azure.microsoft.com/ja-jp/overview/preview-portal/)
+[DevOps は最高 (Microsoft Azure プレビュー ポータルの概要)](http://azure.microsoft.com/overview/preview-portal/)
 
-[これまでになかったクラウド ポータル (Microsoft Azure プレビュー ポータルのドキュメント)](http://azure.microsoft.com/ja-jp/documentation/preview-portal/)
+[これまでになかったクラウド ポータル (Microsoft Azure プレビュー ポータルのドキュメント)](http://azure.microsoft.com/documentation/preview-portal/)
 
 [Azure Preview Portal (Channel 9) (Azure プレビュー ポータル (チャネル 9))](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal) 
 
-[Web サイト (Microsoft Azure Web サイトのドキュメント)](http://azure.microsoft.com/ja-jp/documentation/services/web-sites/)
+[Web サイト (Microsoft Azure Web サイトのドキュメント)](http://azure.microsoft.com/documentation/services/web-sites/)
 
 
 <!-- IMAGES -->
@@ -114,3 +128,5 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [15CreateItemUnderOverflow]: ./media/web-sites-gallery-umbraco/15CreateItemUnderOverflow.PNG
 [16EnterAName]: ./media/web-sites-gallery-umbraco/16EnterAName.PNG
 [17MyPage]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
+
+<!--HONumber=46--> 

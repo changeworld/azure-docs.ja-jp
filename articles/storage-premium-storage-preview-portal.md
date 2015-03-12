@@ -214,7 +214,7 @@ Premium Storage と DS シリーズの VM の料金についての詳細は、�
 ###<a id="howto3">Azure プレビュー ポータル:Premium Storage アカウントの作成</a>
 このセクションでは、Azure プレビュー ポータルを使用した Premium Storage アカウントの作成方法を説明します。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料評価版](http://www.windowsazure.com/pricing/free-trial/)をお試しください。 
+1.	[Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料評価版](http://azure.microsoft.com/pricing/free-trial/)をお試しください。 
 
 
     >[AZURE.NOTE] Azure 管理ポータルにログインする場合は、ポータルの右上にあるユーザー アカウント名をクリックします。次に、**[新しいポータルに切り替え]** をクリックします。
@@ -236,7 +236,7 @@ Azure 環境に関する詳細なチュートリアルは、「[Windows を実�
 ###<a id="howto2">Azure PowerShell:Premium Storage アカウントの作成と、基本的な VM 操作での使用</a>
 このセクションでは、Azure PowerShell を使用した Premium Storage アカウントの作成方法、仮想マシンを作成しデータ ディスクを VM にアタッチする際のアカウントの使用方法を説明します。
 
-1. 「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)」の手順に従って、PowerShell 環境を設定します。
+1. 「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」の手順に従って、PowerShell 環境を設定します。
 2. PowerShell コンソールを起動してサブスクリプションに接続し、コンソール ウィンドウで次の PowerShell コマンドレットを実行します。この PowerShell ステートメントで分かるように、Premium Storage アカウントを作成する場合は、**Type** パラメーターを **Premium_LRS** に指定する必要があります。
 
 		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
@@ -277,5 +277,4 @@ Azure 環境に関する詳細なチュートリアルは、「[Windows を実�
 [MSDN リファレンス](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
-
 <!--HONumber=42-->

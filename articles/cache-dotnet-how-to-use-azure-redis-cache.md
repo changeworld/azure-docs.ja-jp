@@ -1,6 +1,20 @@
-<properties pageTitle="Azure Redis Cache の使用方法" metaKeywords="" description="Azure Redis Cache でキャッシュを作成して使用する方法について説明します。" metaCanonical="" services="cache" documentationCenter="API Management" title="How to Use Azure Redis Cache" authors="sdanie" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Azure Redis Cache の使用方法" 
+	description="Azure Redis Cache でキャッシュを作成して使用する方法について説明します。" 
+	services="cache" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="cache" ms.workload="tbd" ms.tgt_pltfrm="cache-redis" ms.devlang="dotnet" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
+<tags 
+	ms.service="cache" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="cache-redis" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="1/20/2015" 
+	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
 
@@ -332,27 +346,27 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
 <!-- LINKS -->
 [Azure Redis セッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=398249
 [Azure 管理ポータル]: http://windows.azure.com/
-[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg618003.aspx
+[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Azure Cache のセッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric キャッシュ:セッション状態のキャッシュ]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure Cache 用キャッシュ プロバイダーの出力]: http://go.microsoft.com/fwlink/?LinkId=320837
-[Azure Shared Caching]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg278356.aspx
+[Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
 [仮想マシンのサイズの構成方法]: http://go.microsoft.com/fwlink/?LinkId=164387
 [Azure Cache の容量計画に関する考慮事項]: http://go.microsoft.com/fwlink/?LinkId=320167
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
-[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/zd1ysf1y.aspx
-[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/z852zf6b.aspx
-[Azure Redis Cache でのキャッシュの構成]: http://msdn.microsoft.com/ja-jp/library/azure/dn793612.aspx
+[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
+[Azure Redis Cache でのキャッシュの構成]: http://msdn.microsoft.com/library/azure/dn793612.aspx
 
 [StackExchange.Redis 構成モデル]: http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md
 
-[キャッシュ内で .NET オブジェクトを使用する]: http://msdn.microsoft.com/ja-jp/library/dn690521.aspx#Objects
+[キャッシュ内で .NET オブジェクトを使用する]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
 
 
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
-[キャッシュの料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/cache/
+[キャッシュの料金詳細]: http://azure.microsoft.com/pricing/details/cache/
 [管理ポータル]: https://manage.windowsazure.com/
 
 [Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
@@ -360,7 +374,7 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
 
 [Azure Redis Cache への移行]: http://go.microsoft.com/fwlink/?LinkId=317347
 [Azure Redis Cache のサンプル]: http://go.microsoft.com/fwlink/?LinkId=320840
-[リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/
+[リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups/
 
 [StackExchange.Redis キャッシュ クライアントのドキュメント]: http://github.com/StackExchange/StackExchange.Redis#documentation
 
@@ -371,3 +385,5 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
 [Windows Azure Web サイト:How Application Strings and Connection Strings Work (Windows Azure Web サイト: アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

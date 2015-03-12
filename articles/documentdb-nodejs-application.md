@@ -1,6 +1,20 @@
-<properties title="Build a Node.js web application using DocumentDB" pageTitle="Build a Node.js web application using DocumentDB | Azure" description="Learn how to use Azure DocumentDB to store and access data from a Node.js application hosted on Azure." metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, getting started"   services="documentdb" solutions="data-management" documentationCenter=""  authors="ryancraw" manager="jhubbard" editor="cgronlun" scriptId="" />
+﻿<properties 
+	pageTitle="DocumentDB を使用した Node.js Web アプリケーションの作成 | Azure" 
+	description="Microsoft Azure DocumentDB を使用して、Azure にホストされた Node.js アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。" 
+	services="documentdb" 
+	documentationCenter="" 
+	authors="ryancrawcour" 
+	manager="jhubbard" 
+	editor="cgronlun"/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="ryancraw" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="ryancraw"/>
 
 # <a name="_Toc395783175">DocumentDB を使用した Node.js Web アプリケーションの作成</a>
 
@@ -506,9 +520,9 @@ Visual Studio によって Azure サブスクリプションに接続され、
   [0]: ./media/documentdb-nodejs-application/image1.png
   [Node.js]: http://nodejs.org/
   [Git]: http://git-scm.com/
-  [Visual Studio 2013]: http://msdn.microsoft.com/ja-jp/vstudio/cc136611.aspx
+  [Visual Studio 2013]: http://msdn.microsoft.com/vstudio/cc136611.aspx
   [Node.js Tools for Visual Studio]: https://nodejstools.codeplex.com/
-  [Azure CLI]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/
+  [Azure CLI]: http://azure.microsoft.com/documentation/articles/xplat-cli/
   [Azure の管理ポータル]: http://portal.azure.com
   [1]: ./media/documentdb-nodejs-application/image2.png
   [2]: ./media/documentdb-nodejs-application/image3.png
@@ -531,3 +545,5 @@ Visual Studio によって Azure サブスクリプションに接続され、
   [19]: ./media/documentdb-nodejs-application/image20.png
   [20]: ./media/documentdb-nodejs-application/image21.png
   [こちら]: http://go.microsoft.com/fwlink/?LinkID=509839&clcid=0x409
+
+<!--HONumber=46--> 

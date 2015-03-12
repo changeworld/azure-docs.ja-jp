@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Twilio Voice and SMS Service" pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title=" VoIP" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
+﻿<properties 
+	pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" 
+	description="" 
+	services="" 
+	documentationCenter="nodejs" 
+	authors="devinrader" 
+	manager="twilio" 
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="11/25/2014" ms.author="MicrosoftHelp@twilio.com" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="11/25/2014" 
+	ms.author="MicrosoftHelp@twilio.com"/>
 
 
 # Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
@@ -24,7 +38,7 @@ Twilio は、開発者が簡単に音声通話の発着信処理、テキスト 
 
 ### 通話とテキスト メッセージの受信
 
-Twilio を使用すると、開発者は[プログラム可能な電話番号を購入][purchase_phone] できます。この番号は、通話およびテキスト メッセージの送信と受信の両方に使用できます。Twilio 番号が受信通話またはテキストを受け取ると、Twilio は Web アプリケーションに HTTP POST または GET 要求を送信し、通話またはテキストの処理方法に関する命令を求めます。サーバーは Twilio の HTTP 要求に [TwiML][twiml] で応答します。これは、通話またはテキストの処理方法についての命令を含む XML タグの単純なセットです。TwiML の例は、すぐ後で示します。
+Twilio を使用すると、開発者は[プログラム可能な電話番号を購入][purchase_phone]できます。この番号は、通話およびテキスト メッセージの送信と受信の両方に使用できます。Twilio 番号が受信通話またはテキストを受け取ると、Twilio は Web アプリケーションに HTTP POST または GET 要求を送信し、通話またはテキストの処理方法に関する命令を求めます。サーバーは Twilio の HTTP 要求に [TwiML][twiml] で応答します。これは、通話またはテキストの処理方法についての命令を含む XML タグの単純なセットです。TwiML の例は、すぐ後で示します。
 
 ### 通話の発信とテキスト メッセージの送信
 
@@ -32,12 +46,12 @@ Twilio Web サービス API に対する HTTP 要求を作成することで、�
 
 ### UI コード (JavaScript、iOS、または Android) への VoIP 機能の埋め込み
 
-Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。ブラウザーで実行される Twilio JavaScript SDK のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode] で詳細を読むことができます。
+Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。ブラウザーで実行される Twilio JavaScript SDK のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode]で詳細を読むことができます。
 
 <a id="signup"/>
 ## Twilio へのサインアップ (Microsoft ディスカウント)
 
-Twilio サービスを使用する前に、まず、[アカウントにサインアップ][signup] する必要があります。Microsoft Azure のお客様は特別割引をご利用いただけます。[こちらからサインアップ][signup] してください。
+Twilio サービスを使用する前に、まず、[アカウントにサインアップ][signup]する必要があります。Microsoft Azure のお客様は特別割引をご利用いただけます。[こちらからサインアップ][signup]してください。
 
 <a id="azuresite"/>
 ## node.js Azure Web サイトの作成およびデプロイ
@@ -47,7 +61,7 @@ Twilio サービスを使用する前に、まず、[アカウントにサイン
 * まだ Azure アカウントを持っていない場合は、サインアップする
 * Azure 管理コンソールを使用して新しい Web サイトを作成する
 * ソース管理サポートを追加する (git が使用されたことを想定)
-* シンプルな node.js Web アプリケーションと共にファイル `server.js`  を作成する
+* シンプルな node.js Web アプリケーションでファイル `server.js` を作成する
 * このシンプルなアプリケーションを Azure にデプロイする
 
 <a id="twiliomodule"/>
@@ -83,7 +97,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
     }
   }
 
-このコードは、一般的な [express Web フレームワーク][express] および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。これで設定はすべて終わりました。コードの記述を始めましょう。
+このコードは、一般的な [express Web フレームワーク][express]および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。これで設定はすべて終わりました。コードの記述を始めましょう。
 
 <a id="makecall"/>
 ## 発信通話の実行
@@ -231,7 +245,7 @@ Azure で node.js と Twilio を活用してください。
 [purchase_phone]: https://www.twilio.com/user/account/phone-numbers/available/local
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: http://ahoy.twilio.com/azure
-[azure_new_site]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+[azure_new_site]: http://azure.microsoft.com/develop/nodejs/tutorials/create-a-website-(mac)/
 [twilio_dashboard]: https://www.twilio.com/user/account
 [npm]: http://npmjs.org
 [express]: http://expressjs.com
@@ -244,4 +258,4 @@ Azure で node.js と Twilio を活用してください。
 
 
 
-<!--HONumber=35.2-->
+<!--HONumber=45--> 

@@ -1,6 +1,20 @@
-<properties pageTitle="Mobiles Services でのオフライン データの競合の処理 (Windows ストア) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して、Windows ストア アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" documentationCenter="windows" authors="wesmc7777" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="Mobiles Services でのオフライン データの競合の処理 (Windows ストア) | モバイル デベロッパー センター" 
+	description="Azure Mobile Services を使用して、Windows ストア アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/26/2014" 
+	ms.author="wesmc"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理

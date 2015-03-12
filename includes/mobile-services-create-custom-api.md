@@ -40,7 +40,7 @@
 	このコードは [mssql オブジェクト]を使用し、**todoitem** テーブルに直接アクセスしてすべての項目の完了フラグを設定します。**exports.post** 関数を使用するため、クライアントは POST 要求を送信して操作を実行します。変更された行数は整数値としてクライアントに返されます。
 
 > [AZURE.NOTE]
-> カスタム API の関数に指定されている<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554218.aspx" target="_blank">要求</a>と<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303373.aspx" target="_blank">応答</a>オブジェクトが、<a href="http://go.microsoft.com/fwlink/p/?LinkId=309046" target="_blank">Express.js library</a> ライブラリで実装されます。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn280974.aspx" target="_blank">カスタム API</a>」を参照してください。 
+> カスタム API の関数に指定されている<a href="http://msdn.microsoft.com/library/windowsazure/jj554218.aspx" target="_blank">要求</a>と<a href="http://msdn.microsoft.com/library/windowsazure/dn303373.aspx" target="_blank">応答</a>オブジェクトが、<a href="http://go.microsoft.com/fwlink/p/?LinkId=309046" target="_blank">Express.js library</a> ライブラリで実装されます。詳細については、「<a href="http://msdn.microsoft.com/library/windowsazure/dn280974.aspx" target="_blank">カスタム API</a>」を参照してください。 
 
 次に、quickstart アプリケーションを変更し、新しいボタンと、非同期的に新しいカスタム API を呼び出すコードを追加します。
 
@@ -50,6 +50,5 @@
 
 <!-- URLs. -->
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
-
+[mssql オブジェクト]: http://msdn.microsoft.com/library/windowsazure/jj554212.aspx
 <!--HONumber=42-->

@@ -77,7 +77,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 
 1.	ブラウザーで、[Azure の管理ポータル](https://manage.windowsazure.com)を開きます。
 2.	**[Web サイト]** タブでサイト名をクリックし、**[ダッシュボード]** を選択します。
-3.	ページの下部にある **[ドメインの管理]** をクリックします(このオプションが無効な場合は、共有、基本、または標準モードを使用していることを確認します。詳細については、「[Web サイトの規模の設定方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/)」をご覧ください)。 
+3.	ページの下部にある **[ドメインの管理]** をクリックします(このオプションが無効な場合は、共有、基本、または標準モードを使用していることを確認します。詳細については、「[Web サイトの規模の設定方法](http://azure.microsoft.com/documentation/articles/web-sites-scale/)」をご覧ください)。 
 
 	![](media/web-sites-custom-domain-name/dncmntask-cname-6.png)
 

@@ -48,7 +48,7 @@ Apache Storm は分散型のコンピューター システムで、Hadoop ク�
 
 SCP にはライブラリもあるため、.NET を使用して簡単に Storm ソリューションを作成できます。HDInsight のストーム クラスターには、作成した SCP ソリューションを実行するために必要なサーバー側コンポーネントが含まれます。
 
-HDInsight Storm の詳細については、[「HDInsight Storm の概要」](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-storm-overview/)を参照してください。
+HDInsight Storm の詳細については、[「HDInsight Storm の概要」](http://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/)を参照してください。
 
 ###SCP ソリューションの設計
 
@@ -69,7 +69,7 @@ SCP で提供されるインターフェイスにより、次のような Storm 
 
 ##SCP SDK のインストール
 
-SCP SDK は、HDInsight Storm クラスターで提供されています。[HDInsight Storm クラスターの作成](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-storm-getting-started/)後、次の手順に従い、SDK をローカル開発環境にダウンロードします。
+SCP SDK は、HDInsight Storm クラスターで提供されています。[HDInsight Storm クラスターの作成](http://azure.microsoft.com/documentation/articles/hdinsight-storm-getting-started/)後、次の手順に従い、SDK をローカル開発環境にダウンロードします。
 
 1. [Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 
@@ -1003,5 +1003,4 @@ Strom に組み込まれているフィールドのグループ化は、SCP.NET 
 
 
 [1]: ./media/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application-01.png
-
 <!--HONumber=42-->

@@ -29,7 +29,7 @@
 
 <h2 id="BKMK_Prereq">前提条件</h2>
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure アカウントの作成](http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/)に関するページを参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure アカウントの作成](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)に関するページを参照してください。
 
 さらに、このチュートリアルでは次のものが必要です。
 
@@ -306,7 +306,7 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 * [HPC Pack 2012 R2 と HPC Pack 2012](http://go.microsoft.com/fwlink/p/?LinkID=263697)
 * [Microsoft HPC Pack を使用した Azure へのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)
 * [Azure VM の Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?linkid=330375)
-* [Azure のビッグ コンピューティング:HPC および Batch](http://azure.microsoft.com/ja-jp/solutions/big-compute/)
+* [Azure のビッグ コンピューティング:HPC および Batch](http://azure.microsoft.com/solutions/big-compute/)
 
 
 [Overview]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/hybrid_cluster_overview.png
@@ -346,4 +346,4 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 [stop_node4]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/stop_node4.png
 [view_instances2]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/view_instances2.png
 
-<!--HONumber=42-->
+\<!--HONumber=42-->

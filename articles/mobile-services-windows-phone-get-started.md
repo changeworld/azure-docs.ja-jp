@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Windows Phone アプリ用 Azure Mobile Services の使用" description="次のチュートリアルに従って、Windows Phone 開発用の Azure Mobile Services を使用します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Windows Phone アプリ用 Azure Mobile Services の使用" 
+	description="次のチュートリアルに従って、Windows Phone 開発用の Azure Mobile Services を使用します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="hero-article" ms.date="11/22/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="dotnet" 
+	ms.topic="hero-article" 
+	ms.date="11/22/2014" 
+	ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 

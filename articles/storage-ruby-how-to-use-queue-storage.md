@@ -168,10 +168,9 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-- MSDN リファレンス:[Azure のデータの格納とアクセス](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx)
+- MSDN リファレンス:[Azure のデータの格納とアクセス](http://msdn.microsoft.com/library/windowsazure/gg433040.aspx)
 - [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法](/ja-jp/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx)」を参照してください。
-
+この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法](/ja-jp/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較](http://msdn.microsoft.com/library/windowsazure/hh767287.aspx)」を参照してください。
 <!--HONumber=42-->

@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Azure Subscription and Service Limits, Quotas, and Constraints" pageTitle="Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約" metaKeywords="クラウド サービス, 仮想マシン, Web サイト, 仮想ネットワーク, SQL データベース, サブスクリプション, ストレージ" description="Azure の一般的なサブスクリプションとサービス制限、上限の一覧表を掲載しています。" metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title="" authors="jroth" solutions="" manager="jeffreyg" editor="mollybos" />
+﻿<properties 
+	pageTitle="Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約" 
+	description="Azure の一般的なサブスクリプションとサービス制限、上限の一覧表を掲載しています。" 
+	services="" 
+	documentationCenter="" 
+	authors="rothja" 
+	manager="jeffreyg" 
+	editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/21/2014" ms.author="jroth" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -30,22 +44,22 @@
    <th align="left" valign="middle">上限</th>
 </tr>
 <tr>
-   <td valign="middle"><p>サブスクリプションあたりの <a href="http://msdn.microsoft.com/ja-jp/library/azure/hh531793.aspx">コア数</a><sup>1</sup></p></td>
+   <td valign="middle"><p>サブスクリプションあたりの <a href="http://msdn.microsoft.com/library/azure/hh531793.aspx">コア数</a><sup>1</sup></p></td>
    <td valign="middle"><p>20</p></td>
    <td valign="middle"><p>10,000</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/azure/gg456328.aspx">サブスクリプションあたりの</a> 共同管理者数</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/azure/gg456328.aspx">サブスクリプションあたりの</a> 共同管理者数</p></td>
    <td valign="middle"><p>200</p></td>
    <td valign="middle"><p>200</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/storage-whatis-account/">サブスクリプションあたりの</a> ストレージ アカウント数</p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/storage-whatis-account/">サブスクリプションあたりの</a> ストレージ アカウント数</p></td>
    <td valign="middle"><p>100</p></td>
    <td valign="middle"><p>100</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-what-is/">サブスクリプションあたりの</a> クラウド サービス数</p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/cloud-services-what-is/">サブスクリプションあたりの</a> クラウド サービス数</p></td>
    <td valign="middle"><p>20</p></td>
    <td valign="middle"><p>200</p></td>
 </tr>
@@ -55,7 +69,7 @@
    <td valign="middle"><p>100</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/jj157100.aspx">サブスクリプションあたりの</a> ローカル ネットワーク数</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/jj157100.aspx">サブスクリプションあたりの</a> ローカル ネットワーク数</p></td>
    <td valign="middle"><p>10</p></td>
    <td valign="middle"><p>100</p></td>
 </tr>
@@ -85,18 +99,18 @@
    <td valign="middle"><p>400</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx">サブスクリプションあたりの</a> アフィニティ グループ数</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/azure/jj156085.aspx">サブスクリプションあたりの</a> アフィニティ グループ数</p></td>
    <td valign="middle"><p>256</p></td>
    <td valign="middle"><p>256</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/">サブスクリプションあたりの</a> リソース グループ数</p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups/">サブスクリプションあたりの</a> リソース グループ数</p></td>
    <td valign="middle"><p>300</p></td>
    <td valign="middle"><p>300</p></td>
 </tr>
 
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/ja-jp/services/batch/">リージョンあたり、サブスクリプションあたりの</a> バッチ プレビュー アカウント数</p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/services/batch/">リージョンあたり、サブスクリプションあたりの</a> バッチ プレビュー アカウント数</p></td>
    <td valign="middle"><p>1</p></td>
    <td valign="middle"><p>50</p></td>   
 </tr>
@@ -115,22 +129,22 @@
    <th align="left" valign="middle">上限</th>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-what-is/">デプロイあたりの Web/worker ロール数<sup>1</sup></a></p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/cloud-services-what-is/">デプロイあたりの Web/worker ロール数<sup>1</sup></a></p></td>
    <td valign="middle"><p>25</p></td>
    <td valign="middle"><p>25</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/gg557552.aspx#InstanceInputEndpoint">デプロイあたりの</a> インスタンス入力エンドポイント</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/gg557552.aspx#InstanceInputEndpoint">デプロイあたりの</a> インスタンス入力エンドポイント</p></td>
    <td valign="middle"><p>25</p></td>
    <td valign="middle"><p>25</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/gg557552.aspx#InputEndpoint">デプロイあたりの</a> 入力エンドポイント</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/gg557552.aspx#InputEndpoint">デプロイあたりの</a> 入力エンドポイント</p></td>
    <td valign="middle"><p>25</p></td>
    <td valign="middle"><p>25</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/ja-jp/library/gg557552.aspx#InternalEndpoint">デプロイあたりの</a> 内部エンドポイント</p></td>
+   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/gg557552.aspx#InternalEndpoint">デプロイあたりの</a> 内部エンドポイント</p></td>
    <td valign="middle"><p>25</p></td>
    <td valign="middle"><p>25</p></td>
 </tr>
@@ -147,7 +161,7 @@
    <th align="left" valign="middle">上限</th>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/ja-jp/documentation/services/virtual-machines/">クラウド サービスあたりの</a> 仮想マシン数<sup>1</sup></p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/services/virtual-machines/">クラウド サービスあたりの</a> 仮想マシン数<sup>1</sup></p></td>
    <td valign="middle"><p>50</p></td>
    <td valign="middle"><p>50</p></td>
 </tr>
@@ -314,18 +328,20 @@ Azure Active Directory (AD) については、次のトピックを参照して�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ][vmsizes]
 
-  [customersupportfaq]: http://azure.microsoft.com/ja-jp/support/faq/
+  [customersupportfaq]: http://azure.microsoft.com/support/faq/
   [azurelimitsblogpost]: http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-  [gateway]: http://msdn.microsoft.com/ja-jp/library/azure/jj156210.aspx 
+  [gateway]: http://msdn.microsoft.com/library/azure/jj156210.aspx 
   [storagelimits]: http://msdn.microsoft.com/library/azure/dn249410.aspx
   [georedundantstorage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx
-  [sqldblimits]: http://msdn.microsoft.com/ja-jp/library/azure/dn338081.aspx
-  [sqltiers]: http://msdn.microsoft.com/ja-jp/library/azure/dn741340.aspx
-  [sqltiersperflevels]: http://msdn.microsoft.com/ja-jp/library/azure/dn741336.aspx
-  [sqlDTU]: http://msdn.microsoft.com/ja-jp/library/azure/ee336245.aspx#DTUs
-  [vmsizes]: http://msdn.microsoft.com/ja-jp/library/azure/dn197896.aspx
+  [sqldblimits]: http://msdn.microsoft.com/library/azure/dn338081.aspx
+  [sqltiers]: http://msdn.microsoft.com/library/azure/dn741340.aspx
+  [sqltiersperflevels]: http://msdn.microsoft.com/library/azure/dn741336.aspx
+  [sqlDTU]: http://msdn.microsoft.com/library/azure/ee336245.aspx#DTUs
+  [vmsizes]: http://msdn.microsoft.com/library/azure/dn197896.aspx
   [georedundantstorage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx
   [locallyredundantstorage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/08/introducing-locally-redundant-storage-for-windows-azure-storage.aspx
-  [adlimitsandrestrictions]: http://msdn.microsoft.com/ja-jp/library/azure/dn764971.aspx
+  [adlimitsandrestrictions]: http://msdn.microsoft.com/library/azure/dn764971.aspx
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

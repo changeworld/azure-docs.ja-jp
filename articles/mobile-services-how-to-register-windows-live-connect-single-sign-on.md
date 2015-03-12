@@ -1,6 +1,20 @@
-﻿<properties pageTitle="シングル サインオン用の登録 - Azure Mobile Services" description="Azure Mobile Services アプリケーションでシングル サインオン認証用に登録する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="シングル サインオン用の登録 - Azure Mobile Services" 
+	description="Azure Mobile Services アプリケーションでシングル サインオン認証用に登録する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 # Windows Live Connect シングル サインオンを使用するための Windows ストア アプリの登録
 

@@ -1,6 +1,20 @@
-<properties linkid="Install-Config-Windows-Azure-PowerShell" urlDisplayName="Azure PowerShell" pageTitle="How to install and configure Azure PowerShell" description="Learn how to install and configure Azure PowerShell." umbracoNaviHide="0" disqusComments="1" editor="tysonn" manager="stevenka" documentationCenter="" services="" solutions="" authors="stevenka" title="How to install and configure Azure PowerShell" />
+﻿<properties 
+	pageTitle="Azure PowerShell のインストールおよび構成方法" 
+	description="Azure PowerShell のインストールと構成の方法について説明します。" 
+	editor="tysonn" 
+	manager="stevenka" 
+	documentationCenter="" 
+	services="" 
+	authors="coreyp69"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="stevenka;juneb" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="powershell" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/26/2014" 
+	ms.author="coreyp"/>
 
 # Azure PowerShell のインストールおよび構成方法
 
@@ -274,13 +288,15 @@ Azure や Windows PowerShell の使用方法を学習するためのリソース
   [Azure を使ってみる]: http://go.microsoft.com/fwlink/p/?LinkId=320795
   [アカウント、サブスクリプション、管理者ロールを管理する]: http://go.microsoft.com/fwlink/?LinkId=324796
   [Azure 管理ポータル]: https://manage.windowsazure.com
-  [Microsoft Azure への組織としてのサインアップ]: http://azure.microsoft.com/ja-jp/documentation/articles/sign-up-organization/
+  [Microsoft Azure への組織としてのサインアップ]: http://azure.microsoft.com/documentation/articles/sign-up-organization/
   [2]: http://manage.windowsazure.com
-  [」を参照してください。]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg456328.aspx
-  [Azure コマンドレット リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554330.aspx
+  [」を参照してください。]: http://msdn.microsoft.com/library/windowsazure/gg456328.aspx
+  [Azure コマンドレット リファレンス]: http://msdn.microsoft.com/library/windowsazure/jj554330.aspx
   [MSDN 上の Azure フォーラム]: http://go.microsoft.com/fwlink/p/?LinkId=320212
   [Stackoverflow]: http://go.microsoft.com/fwlink/?LinkId=320213
   [TechNet スクリプト センター]: http://go.microsoft.com/fwlink/p/?LinkId=320211
   [Windows PowerShell]: http://go.microsoft.com/fwlink/p/?LinkId=320210
   [スクリプトのサポート]: http://go.microsoft.com/fwlink/p/?LinkId=320627
   [Windows PowerShell を使用して Azure AD を管理する]: http://go.microsoft.com/fwlink/p/?LinkId=320628
+
+<!--HONumber=46--> 

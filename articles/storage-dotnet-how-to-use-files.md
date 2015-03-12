@@ -58,7 +58,7 @@ File ストレージには次の構成要素があります。
 ![files-concepts][files-concepts]
 
 
--   **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)を参照してください。
+-   **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](http://msdn.microsoft.com/library/dn249410.aspx)を参照してください。
 
 -   **共有:** 記憶域ファイル共有は、Azure での SMB 2.1 ファイル共有です。すべてのディレクトリとファイルは、親共有に作成する必要があります。アカウントに無制限の数の共有、格納できるあり、共有が無制限の数のストレージ アカウントの容量の上限まで、ファイルを保存できます。
 
@@ -72,7 +72,7 @@ File ストレージには次の構成要素があります。
 
 
 
-共有、ディレクトリ、およびファイルの詳しい命名方法については、「[Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)](http://msdn.microsoft.com/ja-jp/library/azure/dn167011.aspx)」を参照してください。
+共有、ディレクトリ、およびファイルの詳しい命名方法については、「[Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)](http://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
 
 ##<a name="create-account"></a>Azure ストレージ アカウントの作成
 
@@ -155,7 +155,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 	   
 	net use z: \\<storage-account>.file.core.windows.net\<share-name> /u:<storage-account> <account-key>
 
-これで、通常のドライブと同じように仮想マシンの中から File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/ja-jp/library/gg145019(v=vs.110).aspx)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。 
+これで、通常のドライブと同じように仮想マシンの中から File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/library/gg145019(v=vs.110).aspx)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。 
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
@@ -248,7 +248,7 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
   <ul>
     <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/ja-jp/library/azure/dn167006.aspx">File サービスの REST API リファレンス</a></li>
+    <li><a href="http://msdn.microsoft.com/library/azure/dn167006.aspx">File サービスの REST API リファレンス</a></li>
   </ul>
 </li>
 <li>File サービスに関連する Azure Storage チームのブログ記事を参照してください。
@@ -276,6 +276,5 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 [File ストレージを利用する内部設置型アプリケーションの作成]: #create-console-app
 
 [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
-
 
 <!--HONumber=42-->

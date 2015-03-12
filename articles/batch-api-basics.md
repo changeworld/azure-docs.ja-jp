@@ -1,7 +1,20 @@
-﻿
-<properties title="API basics for Azure Batch" pageTitle="Azure Batch の API の基本" description="開発者に Azure Batch API と Batch サービスについて知ってもらうための概念" metaKeywords="" services="batch" solutions="" documentationCenter=".NET" authors="yidingz, karran.batta" videoId="" scriptId="" manager="timlt" />
+﻿<properties 
+	pageTitle="Azure Batch の API の基本" 
+	description="開発者に Azure Batch API と Batch サービスについて知ってもらうための概念" 
+	services="batch" 
+	documentationCenter=".net" 
+	authors="yidingzhou" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="batch" ms.devlang="multiple" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="big-compute" ms.date="10/27/2014" ms.author="yidingz, karran.batta" />
+<tags 
+	ms.service="batch" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="big-compute" 
+	ms.date="02/02/2015" 
+	ms.author="yidingz, kabatta"/>
 
 
 <!--The next line, with one pound sign at the beginning, is the page title--> 
@@ -57,7 +70,7 @@ Batch アカウントは、Batch サービス内で一意に識別されるエ�
 
 ### <a name="taskvm"></a>タスク仮想マシン
 
-タスク仮想マシン (TVM) は、アプリケーションの特定のワークロード専用の Azure VM です。TVM のサイズによって、CPU コアの数、メモリ容量、および TVM に割り当てられるローカル ファイル システムのサイズが決まります。TVM には、「[Virtual Machine and Cloud Service Sizes for Azure (Azure の仮想マシンとクラウド サービスのサイズ)](http://msdn.microsoft.com/ja-jp/library/dn197896.aspx)」に説明されているように、サイズが "小"、"大"、または "特大" の仮想マシンを使用できます。
+タスク仮想マシン (TVM) は、アプリケーションの特定のワークロード専用の Azure VM です。TVM のサイズによって、CPU コアの数、メモリ容量、および TVM に割り当てられるローカル ファイル システムのサイズが決まります。TVM には、「[Virtual Machine and Cloud Service Sizes for Azure (Azure の仮想マシンとクラウド サービスのサイズ)](http://msdn.microsoft.com/library/dn197896.aspx)」に説明されているように、サイズが "小"、"大"、または "特大" の仮想マシンを使用できます。
 
 TVM で実行できるプログラムの種類には、実行可能ファイル (.exe)、コマンド ファイル (.cmd)、バッチ ファイル (.bat)、およびスクリプト ファイルが含まれます。また、TVM は、次の属性を持ちます。
 
@@ -340,3 +353,5 @@ Batch アカウントに証明書を追加するには、証明書の追加操�
 これらのシステム定義の変数を上書きすることはできません。
 
 環境設定の値を取得するには、タスクの取得操作を使用します。
+
+<!--HONumber=46--> 

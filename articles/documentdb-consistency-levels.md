@@ -1,6 +1,20 @@
-﻿<properties title="Consistency levels in DocumentDB" pageTitle="DocumentDB の一貫性レベル" description="DocumentDB には 4 つの一貫性レベルと、それに関連付けられたパフォーマンス レベルがあります。これを利用して、アプリケーション開発者は、一貫性、可用性、待機時間のトレードオフを予測のうえ決定できます。" metaKeywords="Optional" services="documentdb" solutions="data-management" authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="Optional" scriptId="Optional" />
+﻿<properties 
+	pageTitle="DocumentDB の一貫性レベル" 
+	description="DocumentDB には 4 つの一貫性レベルと、それに関連付けられたパフォーマンス レベルがあります。これを利用して、アプリケーション開発者は、一貫性、可用性、待機時間のトレードオフを予測のうえ決定できます。" 
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="cgronlun" 
+	documentationCenter=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/05/2015" 
+	ms.author="mimig"/>
 
 #DocumentDB の一貫性レベル
 強い一貫性 (Strong) を選ぶか、結果的な一貫性 (Eventual) を選ぶかは、多くの開発者を悩ませる問題です。現実には二者択一ではなく、その間にも、いくつかの一貫性レベルが存在します。実世界のほとんどのシナリオでは、一貫性、可用性、待機時間のトレードオフをきめ細かく選べることが、アプリケーションにとっての有益性につながります。DocumentDB には、明確に定義された 4 つの一貫性レベルが用意されており、それぞれにパフォーマンス レベルが関連付けられています。そのため、アプリケーション開発者は、確かな見通しに基づいて一貫性、可用性、待機時間のトレードオフを検討することができます。  
@@ -49,3 +63,5 @@ Replicated Data Consistency explained through baseball (レプリケート デ�
 [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 -	Eventual Consistent - Revisited (結果的な一貫性 - 改訂版) (Werner Vogels 著)    
 [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
+
+<!--HONumber=46--> 

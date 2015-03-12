@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Command-Line Tools" pageTitle="Mac および Linux 用 Azure コマンド ライン ツール" metaKeywords="Azure command-line, Azure tools Mac, Azure tools Linux" description="Azure の Mac および Linux 用コマンド ライン ツールの使用方法について説明します。" metaCanonical="" services="web-sites,virtual-machines,mobile-services,cloud-services" documentationCenter="" title="" authors="carolz" solutions="" manager="need to identify contact" editor="" />
+﻿<properties 
+	pageTitle="Mac および Linux 用 Azure コマンド ライン ツール" 
+	description="Azure の Mac および Linux 用コマンド ライン ツールの使用方法について説明します。" 
+	services="web-sites, virtual-machines, mobile-services, cloud-services" 
+	documentationCenter="" 
+	authors="squillace" 
+	manager="timlt" 
+	editor="tysonn"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="carolz" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="command-line-interface" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/13/2014" 
+	ms.author="rasquill"/>
 
 #Mac および Linux 用 Azure コマンド ライン ツール
 
@@ -659,7 +673,7 @@ Azure クラウド サービスは、Web ロールや Worker ロールでホス�
 
 ##<a name="Commands_to_manage_your_Azure_certificates"></a>Azure 証明書の管理用コマンド
 
-Azure 証明書は、Azure アカウントに接続される SSL 証明書です。Azure 証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/ja-jp/library/azure/gg981929.aspx)」を参照してください。
+Azure 証明書は、Azure アカウントに接続される SSL 証明書です。Azure 証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/library/azure/gg981929.aspx)」を参照してください。
 
 **service cert list [options]**
 
@@ -1467,7 +1481,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###<a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](http://www.windowsazure.com/ja-jp/develop/mobile/how-to-guides/work-with-server-scripts/)を参照してください。
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](http://azure.microsoft.com/develop/mobile/how-to-guides/work-with-server-scripts/)を参照してください。
 
 **mobile script list [options] [servicename]**
 
@@ -1526,7 +1540,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###<a name="Mobile_Jobs"></a>スケジュールされたジョブを管理するコマンド
 
-このセクションのコマンドは、モバイル サービスに属するスケジュールされたジョブの管理に使用します。詳細については、「[ジョブのスケジュール](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860528.aspx)」を参照してください。
+このセクションのコマンドは、モバイル サービスに属するスケジュールされたジョブの管理に使用します。詳細については、「[ジョブのスケジュール](http://msdn.microsoft.com/library/windowsazure/jj860528.aspx)」を参照してください。
 
 **mobile job list [options] [servicename]**
 
@@ -1600,7 +1614,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###<a name="Mobile_Scale"></a>モバイル サービスの規模を設定するコマンド
 
-このセクションのコマンドは、モバイル サービスの規模を設定するために使用されます。詳細については、「[モバイル サービスの拡張](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193178.aspx)」を参照してください。
+このセクションのコマンドは、モバイル サービスの規模を設定するために使用されます。詳細については、「[モバイル サービスの拡張](http://msdn.microsoft.com/library/windowsazure/jj193178.aspx)」を参照してください。
 
 **mobile scale show [options] [servicename]**
 
@@ -2377,3 +2391,5 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	Delete the DNS server entry dns-4 ( 77.88.99.11 ) %s ? (y/n) y
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
+
+<!--HONumber=46--> 

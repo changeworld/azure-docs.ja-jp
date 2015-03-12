@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Mobile Services の概要 | モバイル デベロッパー センター" description="Mobile Services について説明します。" documentationCenter="" authors="mattchenderson" manager="dwrede" services="mobile-services" editor=""/>
+﻿<properties 
+	pageTitle="Mobile Services の概要 | モバイル デベロッパー センター" 
+	description="Mobile Services について説明します。" 
+	documentationCenter="" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	services="mobile-services" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="08/19/2014" ms.author="mahender"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="08/19/2014" 
+	ms.author="mahender"/>
 
 # Mobile Services の概要
 

@@ -1,14 +1,21 @@
-﻿<properties title="Azure Notification Hubs Rich Push" pageTitle="Azure Notification Hubs のリッチなプッシュ" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, リッチなプッシュ" description="機能豊富なプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" documentationCenter="Mobile" metaCanonical="" services="notification-hubs" authors="yuaxu" manager="timlt" />
+﻿<properties pageTitle="Azure Notification Hubs のリッチなプッシュ" description="機能豊富なプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" documentationCenter="ios" services="notification-hubs" authors="ysxu" manager="timlt" editor=""/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="yuaxu"/>
 
-#Azure Notification Hubs のリッチなプッシュ
+# Azure Notification Hubs のリッチなプッシュ
 
 <div class="dev-center-tutorial-selector sublanding">
         <a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-rich-push/" title="iOS" class="current">iOS</a>
 </div>
 
-手軽なリッチ コンテンツでユーザーの関心を引くために、アプリケーションはプレーン テキストを超えるべきかもしれません。これらのリッチな通知は、ユーザー インタラクションや、URL、音声、画像、クーポンといったプレゼント コンテンツの成長を促進します。このチュートリアルは「[ユーザーへの通知](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/)」のトピックに基づき、画像などのペイロードを含むプッシュ通知を送信する方法について説明しています。
+手軽なリッチ コンテンツでユーザーの関心を引くために、アプリケーションはプレーン テキストを超えるべきかもしれません。これらのリッチな通知は、ユーザー インタラクションや、URL、音声、画像、クーポンといったプレゼント コンテンツの成長を促進します。このチュートリアルは「[ユーザーへの通知](http://azure.microsoft.com/ documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/)」のトピックに基づき、画像などのペイロードを含むプッシュ通知を送信する方法について説明しています。
 
 このチュートリアルは iOS 7 および 8 に対応しています。
     ![][IOS1]
@@ -25,7 +32,7 @@
 
 ## Web API プロジェクト
 
-1. Visual Studio で、「[ユーザーへの通知](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/)」チュートリアルで作成した **AppBackend** プロジェクトを開きます。
+1. Visual Studio で、**ユーザーへの通知**チュートリアルで作成した [AppBackend](http://azure.microsoft.com/ documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/) プロジェクトを開きます。
 2. ユーザーへの通知に使用したい画像を取得し、プロジェクト ディレクトリの **img** フォルダーに格納します。
 3. ソリューション エクスプローラーで **[すべてのファイルを表示]** をクリックし、フォルダーを右クリックして **[プロジェクトに含める]** をクリックします。
 4. 画像が選択された状態で、プロパティ ウィンドウでビルド アクションを **[埋め込まれたリソース]** に変更します。
@@ -113,25 +120,25 @@
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-8. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
+8. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして、**[発行]** を選択します。
 
-9. 発行先として Azure の Web サイトを選択します。Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を*バックエンド エンドポイント*として参照します。**[発行]** をクリックします。
+9. 発行先として Azure の Web サイトを選択します。Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *backend endpoint*として参照します。**[発行]** をクリックします。
 
 ## iOS プロジェクトを変更する
 
-アプリケーション バックエンドを変更して通知の *ID* だけを送信したので、次はその ID でバックエンドからリッチ メッセージを取得できるよう iOS アプリケーションを変更します。
+アプリケーション バックエンドを変更して通知の  *id* だけを送信したので、次はその ID でバックエンドからリッチ メッセージを取得できるよう iOS アプリケーションを変更します。
 
-1. iOS プロジェクトを開き、**[Targets]** セクションのメイン アプリケーション ターゲット に移動し、リモート通知を有効にします。
+1. iOS プロジェクトを開き、**[Targets]** セクションのメイン アプリケーション ターゲットに移動し、リモート通知を有効にします。
 
 2. **[Capabilities]** をクリックし、**[Background Modes]** を開いて **[Remote Notifications]** チェックボックスをオンにします。
 
     ![][IOS3]
 
-3. **Main.storyboard** に移動し、「[ユーザーへの通知](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/)」チュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。
+3. **Main.storyboard** に移動し、「[ユーザーへの通知](http://azure.microsoft.com/ documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/)」チュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。
 
 4. **Navigation Controller** をストーリーボードに加え、Home View Controller に control キーを押しながらドラッグして、ナビゲーションの **ルート ビュー** にします。Attributes inspector の **[Is Initial View Controller]** が選択されているのが、Navigation Controller のみであることを確認します。
 
-5. **View Controller** をストーリボードに追加し、**Image View** を追加します。これは、ユーザーが情報を得るために通知をクリックすると表示されるページです。ストーリーボードは次のようになります。
+5. **View Controller** をストーリーボードに追加し、**Image View** を追加します。これは、ユーザーが情報を得るために通知をクリックすると表示されるページです。ストーリーボードは次のようになります。
 
     ![][IOS4]
 
@@ -222,7 +229,7 @@
         homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
         hvc.deviceToken = deviceToken;
 
-15. その後、次のメソッドを **AppDelegate.m** に追加してエンドポイントから画像を取得し、取得の完了時にローカル通知を送信します。忘れずにプレースホルダー `{backend endpoint}`  をバックエンド エンドポイントで置き換えます。
+15. Then, add the following methods to **AppDelegate.m** to retrieve the image from your endpoint and send a local notification when retrieval is complete. Make sure to substitute the placeholder `{backend endpoint}` with your backend endpoint:
 
         NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
 
@@ -365,3 +372,5 @@
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
+
+<!--HONumber=45--> 

@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Azure API Management の使用" metaKeywords="" description="API とその操作を作成する方法のほか、API Management の基本操作について説明します。" metaCanonical="" services="api-management" documentationCenter="API Management" title="Get started with Azure API Management" authors="sdanie" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Azure API Management の使用" 
+	description="API とその操作を作成する方法のほか、API Management の基本操作について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/18/2014" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/11/2015" 
+	ms.author="sdanie"/>
 
 # Azure API Management の使用
 
@@ -156,7 +170,7 @@ Administrator ユーザーには、すべての成果物に対するサブスク
 -   開発者ポータルのカスタマイズ
 -   API Inspector を使用した呼び出しのトレース
 
-[Azure 無料評価版]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
+[Azure 無料評価版]: http://azure.microsoft.com/pricing/free-trial/
 
 [API Management インスタンスの作成]: #create-service-instance
 [API の作成]: #create-api
@@ -203,3 +217,5 @@ Administrator ユーザーには、すべての成果物に対するサブスク
 [api-management-invoke-get-response]: ./media/api-management-get-started-b/api-management-invoke-get-response.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

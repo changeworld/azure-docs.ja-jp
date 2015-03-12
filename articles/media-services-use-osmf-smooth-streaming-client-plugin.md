@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="Open Source Media Framework 用スムーズ ストリーミング プラグイン" 
 	description="Adobe Open Source Media Framework 用 Azure Media Services スムーズ ストリーミング プラグインを使用する方法について説明します。" 
 	services="media-services" 
@@ -20,7 +20,7 @@
 
 # Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法 #
 
-## 概要 ##
+##概要 ##
 Open Source Media Framework 2.0 用 Microsoft スムーズ ストリーミング プラグイン (OSMF 用 SS) は、OSMF の既定の機能を拡張し、新規または既存の OSMF プレーヤーに Microsoft スムーズ ストリーミング コンテンツ再生機能を追加します。また、このプラグインは、Strobe Media Playback (SMP) にもスムーズ ストリーミング再生機能を追加します。
 
 OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが含まれています。
@@ -31,7 +31,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 
 このドキュメントでは、OSMF および OSMF プラグインに関する一般的な実務知識を持つ読者を想定しています。OSMF の詳細については、[OSMF の公式サイト](http://osmf.org/)にあるドキュメントを参照してください。
 
-### OSMF 2.0 用スムーズ ストリーミング プラグイン
+###OSMF 2.0 用スムーズ ストリーミング プラグイン
 
 このプラグインは、オンデマンド スムーズ ストリーミング コンテンツの読み込みおよび再生を次の機能でサポートしています。
 
@@ -66,9 +66,9 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 
 - 動的読み込み:動的に読み込むには、プリコンパイル済みファイル (SWF) ファイルが必要です。動的プラグインはランタイムに読み込まれ、プロジェクト出力(コンパイル済み出力) には含まれません。動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
 
-静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグイン](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)に関するページを参照してください。
+静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグインに関するページ](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)を参照してください。
 
-### OSMF 用 SS の静的読み込み
+###OSMF 用 SS の静的読み込み
 次のコード スニペットは、OSMF 用 SS プラグインを静的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、プロジェクト参照に静的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" が含まれていることを確認してください。
 
 <pre><code>
@@ -204,7 +204,7 @@ package
 </code></pre>
 
 
-### OSMF 用 SS の動的読み込み
+###OSMF 用 SS の動的読み込み
 
 次のコード スニペットは、OSMF 用 SS プラグインを動的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、動的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" をプロジェクト フォルダーにコピー (FILE プロトコルを使用して読み込む場合) するか、Web サーバーにコピー (HTTP プロトコルを使用して読み込む場合) してください。プロジェクト参照に "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" を含める必要はありません。
 
@@ -342,7 +342,7 @@ package
 }
 </code></pre>
 
-## Strobe Media   Playback と OSMF 用 SS 動的プラグイン
+##Strobe Media Playback と OSMF 用 SS 動的プラグイン
 OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
 1.	[Strobe Media Playback セットアップ ページ](http://osmf.org/dev/2.0gm/setup.html)に移動します。 
@@ -402,5 +402,6 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 6. 	HTML ページを保存して、Web サーバーに発行します。Flash&reg; Player 対応の好みのインターネット ブラウザー (Internet Explorer、Chrome、Firefox など) を使用して、発行済みの Web ページに移動します。
 7. 	Adobe&reg; Flash&reg; Player でスムーズ ストリーミング コンテンツをお楽しみください。
 
-全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発](http://osmf.org/resources.html)に関するページを参照してください。
-\n<!--HONumber=42-->
+全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ](http://osmf.org/resources.html)を参照してください。
+
+<!--HONumber=45--> 

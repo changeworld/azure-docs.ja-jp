@@ -1,12 +1,26 @@
-﻿<properties pageTitle="Mobile Services での論理削除の使用方法 (Windows ストア) | モバイル デベロッパー センター" description="アプリケーション内で Azure Mobile Services の論理削除機能を使用する方法を説明します。" documentationCenter="" authors="wesmc7777" manager="dwrede" editor="" services="mobile-services"/>
+﻿<properties 
+	pageTitle="Mobile Services での論理削除の使用方法 (Windows ストア) | モバイル デベロッパー センター" 
+	description="アプリケーション内で Azure Mobile Services の論理削除機能を使用する方法を説明します。" 
+	documentationCenter="" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services="mobile-services"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/25/2014" 
+	ms.author="wesmc"/>
 
 # Mobile Services での論理削除の使用方法
 
 JavaScript または .NET バックエンドで作成されたテーブルは、オプションで論理削除を有効にすることができます。論理削除を使用する場合、*\__deleted* という [SQL bit 型]の新しい列がデータベースに追加されます。論理削除を有効にすると、削除操作では列をデータベースから物理的に削除しませんが、deleted 列の値が TRUE に設定されます。
 
-論理削除が有効なテーブルのレコードをクエリした場合、既定では、クエリで削除済みの行が返されることはありません。これらの行を要求するには、クエリ パラメーター *\__includeDeleted=true* を [REST クエリ操作](http://msdn.microsoft.com/ja-jp/library/azure/jj677199.aspx)に渡す必要があります。.NET クライアント SDK では、ヘルパー メソッドの  `IMobileServiceTable.IncludeDeleted()` を使用することもできます。.
+論理削除が有効なテーブルのレコードをクエリした場合、既定では、クエリで削除済みの行が返されることはありません。これらの行を要求するには、クエリ パラメーター *\__includeDeleted=true* を [REST クエリ操作](http://msdn.microsoft.com/library/azure/jj677199.aspx)に渡す必要があります。.NET クライアント SDK では、ヘルパー メソッドの  `IMobileServiceTable.IncludeDeleted()` を使用することもできます。.
 
 .NET バックエンド対応の論理削除サポートは、最初に、Microsoft Azure Mobile Services .NET バックエンドのバージョン 1.0.402 でリリースされました。最新の NuGet パッケージは、[Microsoft Azure Mobile Services .NET バックエンド](http://go.microsoft.com/fwlink/?LinkId=513165)のページから入手できます。.
 
@@ -87,8 +101,10 @@ JavaScript バックエンドの既存のテーブルで論理削除を有効に
             Services.Log.Info("Purging old records");
             var monthAgo = DateTimeOffset.UtcNow.AddDays(-30);
      
-            var toDelete = context.TodoItems.Where(x => x.Deleted == true && x.UpdatedAt <= monthAgo).ToArray();
-            context.TodoItems.RemoveRange(toDelete);
+            var toDelete = context.TodoIte
+	ms.Where(x => x.Deleted == true && x.UpdatedAt <= monthAgo).ToArray();
+            context.TodoIte
+	ms.RemoveRange(toDelete);
             context.SaveChanges();
      
             return Task.FromResult(true);
@@ -153,7 +169,7 @@ JavaScript バックエンド Mobile Services でのスケジュールされた�
 [2]: ./media/mobile-services-using-soft-delete/enable-soft-delete-new-table.png
 
 <!-- URLs. -->
-[SQL bit 型]: http://msdn.microsoft.com/ja-jp/library/ms177603.aspx
+[SQL bit 型]: http://msdn.microsoft.com/library/ms177603.aspx
 [Mobile Services でのオフライン データの同期]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data/
 [管理ポータル]: https://manage.windowsazure.com/
 

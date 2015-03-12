@@ -1,6 +1,20 @@
-﻿<properties pageTitle="コマンド ラインでの Mobile Services の管理 - Azure チュートリアル" description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、および管理する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="コマンド ラインでの Mobile Services の管理 - Azure チュートリアル" 
+	description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、および管理する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 # コマンド ライン ツールを使用したモバイル サービスの自動化 
 
@@ -18,9 +32,9 @@
 
 Azure コマンド ライン ツールを使用してモバイル サービスを管理するには、Azure モバイル サービス機能を有効にした Azure アカウントが必要です。
 
-+ アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/" target="_blank">Azure の無料評価版サイト</a>を参照してください。.
++ アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/" target="_blank">Azure の無料評価版サイト</a>を参照してください。.
 
-+ 既にアカウントがあっても、Azure Mobile Services のプレビューを有効にする必要がある場合は、<a href="http://azure.microsoft.com/ja-jp/documentation/articles/php-create-account/#enable" target="_blank">Azure プレビュー機能の有効化</a>に関するページを参照してください。
++ 既にアカウントがあっても、Azure Mobile Services のプレビューを有効にする必要がある場合は、<a href="http://azure.microsoft.com/documentation/articles/php-create-account/#enable" target="_blank">Azure プレビュー機能の有効化</a>に関するページを参照してください。
 
 このトピックでは、Azure コマンド ライン ツールでサポートされている一般的な管理タスクを取り上げます。詳細については、[Azure コマンド ライン ツールに関するドキュメント][reference-docs]を参照してください。
 
@@ -137,7 +151,8 @@ Azure コマンド ライン ツールを使用してモバイル サービス�
 
 この操作では、JavaScript (.js) ファイルがローカル コンピューターからアップロードされます。ファイル名はテーブル名と操作名で構成し、ファイルは、コマンドを実行する場所の  `table` サブフォルダーに配置する必要があります。たとえば、次の操作では、 `TodoItems` テーブルに対する新しい  `insert` スクリプトがアップロードおよび登録されます。
 
-		azure mobile script upload todolist table/todoitems.insert.js
+		azure mobile script upload todolist table/todoite
+	ms.insert.js
 
 スクリプト ファイル内の関数宣言は、登録されているテーブル操作にも一致する必要があります。つまり、 `insert` スクリプトの場合は、アップロードされたスクリプトに、次のシグネチャを持つ関数が含まれるということです。
 

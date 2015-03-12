@@ -79,7 +79,7 @@ Storage サービスでは、格納されているすべてのオブジェクト
 	        throw;
 	}  
 
-ストレージ サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** などの追加の条件ヘッダー、およびそれらを組み合わせたものを使用できます。詳細については、MSDN の [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/ja-jp/library/dd179371.aspx) を参照してください。  
+ストレージ サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** などの追加の条件ヘッダー、およびそれらを組み合わせたものを使用できます。詳細については、MSDN の [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/dd179371.aspx) を参照してください。  
 
 次の表は、要求に **If-Match** などの条件ヘッダーを使用でき、応答で ETag 値を返すコンテナー操作をまとめたものです。  
 
@@ -121,7 +121,7 @@ Get Page Ranges|	Yes|	Yes
 (*) Lease Blob では、BLOB の ETag は変更されません。  
 
 ##BLOB でのペシミスティック同時実行制御
-BLOB をロックして排他的に使用するには、BLOB の [リース](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) を取得します。リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
+BLOB をロックして排他的に使用するには、BLOB の [リース](http://msdn.microsoft.com/library/azure/ee691972.aspx) を取得します。リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
 
 リースでは、排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取りなど、さまざまな同期戦略がサポートされています。リースが存在する場合、Storage サービスは排他的書き込み (put、set、delete の各操作) を強制的に実行しますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。読み込み操作にリース ID を使用しない場合、共有読み取りになります。  
 
@@ -152,7 +152,7 @@ BLOB をロックして排他的に使用するには、BLOB の [リース](htt
 	        throw;
 	}  
 
-リース ID を渡さずにリースを取得した BLOB に対して書き込み操作を要求すると、412 エラーで失敗します。**UploadText** メソッドを呼び出す前にリースの有効期限が切れた場合、リース ID を渡すと、要求が失敗し、**412** エラーが表示されます。リースの有効期限とリース ID の管理の詳細については、[Lease Blob](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) の REST ドキュメントを参照してください。  
+リース ID を渡さずにリースを取得した BLOB に対して書き込み操作を要求すると、412 エラーで失敗します。**UploadText** メソッドを呼び出す前にリースの有効期限が切れた場合、リース ID を渡すと、要求が失敗し、**412** エラーが表示されます。リースの有効期限とリース ID の管理の詳細については、[Lease Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx) の REST ドキュメントを参照してください。  
 
 次の BLOB 操作では、ペシミスティック同時実行制御の管理にリースを使用できます。  
 
@@ -189,9 +189,9 @@ BLOB をロックして排他的に使用するには、BLOB の [リース](htt
 
 詳細情報  
 
-- [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/ja-jp/library/azure/dd179371.aspx)
-- [Lease Container](http://msdn.microsoft.com/ja-jp/library/azure/jj159103.aspx)
-- [Lease Blob](http://msdn.microsoft.com/ja-jp/library/azure/ee691972.aspx) 
+- [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)
+- [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
+- [Lease Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx) 
 
 #Table サービスでの同時実行制御の管理
 エンティティを扱っている場合、Table サービスではオプティミスティック同時実行制御の確認が既定の動作として使用されます。一方、BLOB サービスの場合は、オプティミスティック同時実行制御の確認を実行するように明示的に選択する必要があります。これ以外の相違点としては、Table サービスではエンティティの同時実行制御しか管理できませんが、BLOB サービスではコンテナーと BLOB の両方の同時実行制御を管理できる点があります。  
@@ -245,7 +245,7 @@ Insert or Merge Entity|	Yes|	No
 
 詳細情報  
 
-- [エンティティに対する操作](http://msdn.microsoft.com/ja-jp/library/azure/dd179375.aspx)  
+- [エンティティに対する操作](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 #キュー サービスでの同時実行制御の管理
 キュー サービスでの同時実行制御について注意が必要なケースとして、複数のクライアントが 1 つのキューからメッセージを取得する場合があります。キューからメッセージを取得するときの応答には、メッセージと、メッセージを削除するときに必要な pop receipt 値が含まれます。メッセージはキューから自動的に削除されることはありませんが、取得された後、visibilitytimeout パラメーターで指定された期間は他のクライアントに表示されなくなります。メッセージを取得するクライアントは、メッセージの処理後、応答の TimeNextVisible 要素で指定された時刻までにメッセージを削除します。この時刻は visibilitytimeout パラメーターの値に基づいて算出されます。visibilitytimeout の値をメッセージの取得時刻に加算することで、TimeNextVisible の値が決定されます。  
@@ -254,8 +254,8 @@ Insert or Merge Entity|	Yes|	No
 
 詳細情報  
 
-- [キュー サービスの REST API](http://msdn.microsoft.com/ja-jp/library/azure/dd179363.aspx)
-- [Get Messages](http://msdn.microsoft.com/ja-jp/library/azure/dd179474.aspx)  
+- [キュー サービスの REST API](http://msdn.microsoft.com/library/azure/dd179363.aspx)
+- [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 #ファイル サービスでの同時実行制御の管理
 ファイル サービスでは、SMB と REST の 2 種類のプロトコルを使用してエンドポイントにアクセスできます。REST サービスではオプティミスティック同時実行制御とペシミスティック同時実行制御のいずれもサポートされておらず、すべての更新操作は最終書き込み者優先戦略に従います。ファイル共有をマウントする SMB クライアントではファイル システムのロック機構を使用して、共有ファイルへのアクセスを管理できます。ペシミスティック同時実行制御も実行できます。SMB クライアントがファイルを開くときに、ファイルのアクセス権と共有モードの両方が指定されます。ファイルのアクセス権のオプションが "Write" または "Read/Write" に設定され、同時にファイル共有モードが "None" に設定された場合、そのファイルは閉じられるまで SMB クライアントによってロックします。SMB クライアントがロックしているファイルに REST 操作を実行しようとすると、REST サービスはステータス コード 409 (Conflict) およびエラー コード SharingViolation を返します。  
@@ -264,7 +264,7 @@ SMB クライアントがファイルを開いて削除する場合、そのフ�
 
 詳細情報  
 
-- [Managing File Locks (ファイルのロックの管理)](http://msdn.microsoft.com/ja-jp/library/azure/dn194265.aspx)  
+- [Managing File Locks (ファイルのロックの管理)](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 #概要と次のステップ
 Microsoft Azure Storage サービスは、非常に複雑なオンライン アプリケーションのニーズに対応するように設計されていますが、開発者は、同時実行制御やデータの整合性など、当然のように想定されるようになった主要設計項目を再検討したり、妥協したりする必要がありません。  
@@ -275,10 +275,9 @@ Microsoft Azure Storage サービスは、非常に複雑なオンライン ア�
 
 Azure Storage の詳細については、以下を参照してください。  
 
-- [Microsoft Azure Storage のホーム ページ](http://azure.microsoft.com/ja-jp/services/storage/)
-- [Microsoft Azure Storage の概要](http://azure.microsoft.com/ja-jp/documentation/articles/storage-introduction/)
-- Storage Getting Started for [Blob](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/), [Table](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/) and [Queues](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/)
+- [Microsoft Azure Storage のホーム ページ](http://azure.microsoft.com/services/storage/)
+- [Microsoft Azure Storage の概要](http://azure.microsoft.com/documentation/articles/storage-introduction/)
+- Storage Getting Started for [Blob](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/), [Table](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/) and [Queues](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-queues/)
 - Storage Architecture - [Windows Azure Storage:A Highly Available Cloud Storage Service with Strong Consistency (Storage アーキテクチャ - Windows Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
-
 
 <!--HONumber=42-->

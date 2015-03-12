@@ -217,7 +217,7 @@ SQL データベースでは、個々のデータベースを監視するのに�
 * [SQL データベースへのユーザーの追加に関するページ][]   
 * [Transact-SQL リファレンス (SQL データベース)][]
 
-  [How to use Azure SQL Database (Azure SQL データベースの使用方法)]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/sql-azure/
+  [How to use Azure SQL Database (Azure SQL データベースの使用方法)]: http://azure.microsoft.com/develop/net/how-to-guides/sql-azure/
   [手順 1:SQL Server Management Studio を入手する]: #Step1
   [手順 2:SQL データベースに接続する]: #Step2
   [手順 3:データベースを作成および管理する]: #Step3
@@ -231,18 +231,17 @@ SQL データベースでは、個々のデータベースを監視するのに�
   [Get SQL Database server name from Management Portal (管理ポータルからの SQL データベース サーバー名の取得)]: /media/portal_get_database_name.png
   [Connect to SSMS (SSMS への接続)]: /media/ssms_connect.png
   [Connect to SSMS -- properties (SSMS への接続 -- プロパティ)]: /media/ssms_connect_properties.png
-  [Transact-SQL リファレンス (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/bb510741(v=sql.120).aspx
-  [CREATE DATABASE (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336274.aspx
-  [ALTER DATABASE (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394109.aspx
-  [DROP DATABASE (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336259.aspx
-  [SQL データベースにおけるデータベースとログインの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336235.aspx
-  [CREATE LOGIN (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336268.aspx
-  [CREATE USER (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/ee336277.aspx
-  [sp_addrolemember (Transact-SQL)]: http://msdn.microsoft.com/ja-jp/library/ms187750.aspx
-  [ALTER LOGIN (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336254.aspx
-  [動的管理ビューを使用した SQL データベースの監視]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394114.aspx
-  [SQL データベースの概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336230.aspx
-  [SQL データベース プロビジョニング モデル]: http://msdn.microsoft.com/ja-jp/library/ee336227.aspx
+  [Transact-SQL リファレンス (SQL データベース)]: http://msdn.microsoft.com/library/bb510741(v=sql.120).aspx
+  [CREATE DATABASE (SQL データベース)]: http://msdn.microsoft.com/library/windowsazure/ee336274.aspx
+  [ALTER DATABASE (SQL データベース)]: http://msdn.microsoft.com/library/windowsazure/ff394109.aspx
+  [DROP DATABASE (SQL データベース)]: http://msdn.microsoft.com/library/windowsazure/ee336259.aspx
+  [SQL データベースにおけるデータベースとログインの管理]: http://msdn.microsoft.com/library/windowsazure/ee336235.aspx
+  [CREATE LOGIN (SQL データベース)]: http://msdn.microsoft.com/library/windowsazure/ee336268.aspx
+  [CREATE USER (SQL データベース)]: http://msdn.microsoft.com/library/ee336277.aspx
+  [sp_addrolemember (Transact-SQL)]: http://msdn.microsoft.com/library/ms187750.aspx
+  [ALTER LOGIN (SQL データベース)]: http://msdn.microsoft.com/library/windowsazure/ee336254.aspx
+  [動的管理ビューを使用した SQL データベースの監視]: http://msdn.microsoft.com/library/windowsazure/ff394114.aspx
+  [SQL データベースの概要]: http://msdn.microsoft.com/library/windowsazure/ee336230.aspx
+  [SQL データベース プロビジョニング モデル]: http://msdn.microsoft.com/library/ee336227.aspx
   [SQL データベースへのユーザーの追加に関するページ]: http://blogs.msdn.com/b/sqlazure/archive/2010/06/21/10028038.aspx
-
 <!--HONumber=42-->

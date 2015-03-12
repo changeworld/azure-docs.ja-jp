@@ -1,6 +1,20 @@
-<properties title="Error During Authentication Detection" pageTitle="認証の検出時のエラー" metaKeywords="" description="" services="active-directory" documentationCenter="" authors="ghogen, kempb" />
+﻿<properties 
+	pageTitle="認証の検出時のエラー" 
+	description="Active Directory の接続ウィザードで、サポートされていない認証の種類が検出された" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="kempb" 
+	manager="douge" 
+	editor="tglee"/>
   
-<tags ms.service="active-directory" ms.workload="web" ms.tgt_pltfrm="vs-getting-started" ms.devlang="na" ms.topic="article" ms.date="10/8/2014" ms.author="ghogen, kempb" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vs-getting-started" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/02/2015" 
+	ms.author="kempb"/>
 
 ###認証の検出時のエラー 
 ウィザードが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。   
@@ -78,3 +92,5 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度ウィザードを実行します。
 
 詳細については、「[Azure AD の認証シナリオ](http://msdn.microsoft.com/library/azure/dn499820.aspx)」を参照してください。
+
+<!--HONumber=46--> 

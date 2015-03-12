@@ -1,6 +1,20 @@
-﻿<properties title="Create your first search solution using Azure Search" pageTitle="Azure Search による最初の検索ソリューションの作成" description="Azure Search による最初の検索ソリューションの作成" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Search による最初の検索ソリューションの作成" 
+	description="Azure Search による最初の検索ソリューションの作成" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="01/16/2015" 
+	ms.author="heidist"/>
 
 # Azure Search による最初の検索ソリューションの作成
 
@@ -29,7 +43,7 @@
 
 <h2 id="sub-1">前提条件</h2>
 
-+	Visual Studio 2012 以上および ASP.NET MVC 4 と SQL Server がインストールされていること。ソフトウェアをまだインストールしていない場合は、無料の Express エディションである[Visual Studio 2013 Express](http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx) および [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/ja-jp/evalcenter/dn434042.aspx)。
++	Visual Studio 2012 以上および ASP.NET MVC 4 と SQL Server がインストールされていること。ソフトウェアをまだインストールしていない場合は、無料の Express エディションである[Visual Studio 2013 Express](http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx) および [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/evalcenter/dn434042.aspx)。
 +	Azure Search サービス。Search サービス名および管理キーが必要です。詳細については、「[Get started with Azure Search (Azure Search で開始する)]」(../search-get-started/) 」を参照してください。
 +	[Adventure Works Azure Search Demo project on CodePlex (CodePlex の Adventure Works Azure Search デモ)](http://go.microsoft.com/fwlink/p/?LinkID=510972)。[SOURCE CODE] タブで、**[Download]** をクリックしてソリューションの zip ファイルを取得してください。 
 
@@ -89,7 +103,7 @@
 
 4.	同じファイルの `ApplyChanges` に移動します。この関数によって、既存のインデックスが削除された後 (`DeleteCatalogIndex`)、"catalog" という名前の新しいインデックスが作成される (`CreateCatalogIndex`) ことがわかります。  
 
-5.	`CreateCatalogIndex`関数に進みます。ここでは、SQL Server の Products テーブルの列に一致するスキーマを使用してインデックスが作成されることがわかります。各フィールドには、これらのフィールドの用途を定義する属性と型 (`Edm.String` または `Edm.Double`) があります。これらの属性の詳細については、[Azure Search REST API documentation (Azure Search REST API のドキュメント)](http://msdn.microsoft.com/ja-jp/library/azure/dn798935.aspx) を参照してください。
+5.	`CreateCatalogIndex`関数に進みます。ここでは、SQL Server の Products テーブルの列に一致するスキーマを使用してインデックスが作成されることがわかります。各フィールドには、これらのフィールドの用途を定義する属性と型 (`Edm.String` または `Edm.Double`) があります。これらの属性の詳細については、[Azure Search REST API documentation (Azure Search REST API のドキュメント)](http://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。
 
 6.	`ApplyChanges` 関数に戻ります。この関数は、`ChangeSet` で列挙された変更のすべてのデータをループ処理します。変更を 1 つずつ適用するのではなく、1000 個単位のグループにバッチ化してから Search サービスに適用します。この方法は、ドキュメントを 1 つずつ適用するよりはるかに効率的です。
 
@@ -147,7 +161,7 @@
 
 5.	まだ実行中のアプリケーションがある場合は停止し、[ビュー | ホーム] で **Index.cshtml** ファイルを開きます。このファイルの最後に、`JQuery $(function ())` を使用する JavaScript 関数があることがわかります。この関数は、ページが読み込まれたときに呼び出されます。JQuery オートコンプリート関数を使用し、この関数を "q" という ID で、検索テキスト ボックスからのコールバックとしてリンクします。テキスト ボックスに入力されるたびに、この自動補完の関数が呼び出され、今度は、入力された内容によって /home/suggest が呼び出されます。`/home/suggest` は **HomeController.cs** 内の `Suggest` という関数への参照です。
 
-6.	**HomeController.cs** を開いて、Suggest 関数に移動します。このコードは、`_catalogSearch` オブジェクトを使用して **CatalogSearch.cs** 内の `Suggest` という関数を呼び出す点で、Search 関数とよく似ています。`Suggest` 関数は、検索クエリを作成する代わりに、[Suggestions API](http://msdn.microsoft.com/ja-jp/library/azure/dn798936.aspx) を呼び出します。この API は、テキスト ボックスに入力された語句を使用して、想定される候補のリストを作成します。値は **Index.cshtml** ファイルに返され、入力に先行して表示されるオプションとして、検索ボックスに自動的に一覧表示されます。
+6.	**HomeController.cs** を開いて、Suggest 関数に移動します。このコードは、`_catalogSearch` オブジェクトを使用して **CatalogSearch.cs** 内の `Suggest` という関数を呼び出す点で、Search 関数とよく似ています。`Suggest` 関数は、検索クエリを作成する代わりに、[Suggestions API](http://msdn.microsoft.com/library/azure/dn798936.aspx) を呼び出します。この API は、テキスト ボックスに入力された語句を使用して、想定される候補のリストを作成します。値は **Index.cshtml** ファイルに返され、入力に先行して表示されるオプションとして、検索ボックスに自動的に一覧表示されます。
 
 ここで、候補を作成するフィールドを Azure Search がどのように認識するのか、考えてみましょう。その答えは、インデックスを作成した時点にあります。**CatalogIndexer** プロジェクトの Program.cs ファイルに含まれている `CreateCatalogIndex` 関数には `Suggestions` という名前の属性があります。この属性を `True` に設定すると、Azure Search が候補を取得するフィールドとして常にこれを使用できるようになります。
 
@@ -176,11 +190,11 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 
 追加で行う自習として、Search 結果のいずれかをユーザーがクリックしたときに開く [詳細] ページを追加することを検討してください。準備として以下のことができます。
 
-+	[Lookup API (API の検索)](http://msdn.microsoft.com/ja-jp/library/azure/dn798929.aspx)  を読んで、Azure Search で特定のドキュメントを返すためのクエリを作成できる (productID を渡すなどが可能な) API について理解します。
++	[Lookup API (API の検索)](http://msdn.microsoft.com/library/azure/dn798929.aspx)  を読んで、Azure Search で特定のドキュメントを返すためのクエリを作成できる (productID を渡すなどが可能な) API について理解します。
 +	**HomeController.cs** ファイルに Details という新しい関数を追加します。この検索の結果を受け取り、結果を表示するために、対応する **Details.cshtml** ビューを追加します。
 +	地理空間検索に関する追加のコード サンプルとビデオである、[チャネル 9 - Azure の検索と地理空間データ ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) および [CodePlex:Azure の検索 GeoSearch サンプル](http://azuresearchgeospatial.codeplex.com)
 
-さらに、MSDN の [Azure Search サービス REST API](http://msdn.microsoft.com/ja-jp/library/azure/dn798935.aspx) も参照できます。
+さらに、MSDN の [Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) も参照できます。
 
 
 <!--Anchors-->
@@ -201,3 +215,5 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [12]: ./media/search-create-first-solution/AzureSearch_Create1_CodeplexDownload.PNG
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

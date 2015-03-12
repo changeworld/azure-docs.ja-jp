@@ -26,35 +26,35 @@
 - [Web サイトの運用中]
 - [Web サイトの更新時]
 
-Azure ポータルでは、多くの Web サイト管理作業を実行できます。詳細については、[Azure 管理ポータルによる Web サイトの管理](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-manage/) をご覧ください。
+Azure ポータルでは、多くの Web サイト管理作業を実行できます。詳細については、[Azure 管理ポータルによる Web サイトの管理](http://azure.microsoft.com/documentation/articles/web-sites-manage/) をご覧ください。
 
 ## サイトを運用環境にデプロイする前
 
 ### レベルの選択
 
-Azure Websites は、4 つの階層で提供します。無料、共有、基本および標準です。それぞれのレベルの機能と料金については、[料金の詳細](http://azure.microsoft.com/ja-jp/pricing/details/websites/) をご覧ください。 
+Azure Websites は、4 つの階層で提供します。無料、共有、基本および標準です。それぞれのレベルの機能と料金については、[料金の詳細](http://azure.microsoft.com/pricing/details/websites/) をご覧ください。 
 
-- [Web ホスティング プラン](http://azure.microsoft.com/ja-jp/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview) により、複数の Web サイトを同じレベルにグループ化できます。
-- Web サイト作成後、いつでも [レベルの切り替え](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/) が可能です。
+- [Web ホスティング プラン](http://azure.microsoft.com/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview) により、複数の Web サイトを同じレベルにグループ化できます。
+- Web サイト作成後、いつでも [レベルの切り替え](http://azure.microsoft.com/documentation/articles/web-sites-scale/) が可能です。
 
 ### 構成
 
-さまざまな構成オプションを設定するには、[Azure 管理ポータル](https://manage.windowsazure.com/) を使用します。詳しくは、[Web サイトの設定方法](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure/) をご覧ください。以下にクイック チェックリストを示します。
+さまざまな構成オプションを設定するには、[Azure 管理ポータル](https://manage.windowsazure.com/) を使用します。詳しくは、[Web サイトの設定方法](http://azure.microsoft.com/documentation/articles/web-sites-configure/) をご覧ください。以下にクイック チェックリストを示します。
 
 - 必要に応じて、.NET、PHP、Java、または Python の **[ランタイム バージョン]** を選択します。
-- Web サイトで WebSocket プロトコルを使用する場合、**[WebSockets]** を有効にします。(これには [ASP.NET SignalR](http://www.asp.net/signalr) や [socket.io](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-nodejs-chat-app-socketio/) を使用するアプリが含まれます。)
+- Web サイトで WebSocket プロトコルを使用する場合、**[WebSockets]** を有効にします。(これには [ASP.NET SignalR](http://www.asp.net/signalr) や [socket.io](http://azure.microsoft.com/documentation/articles/web-sites-nodejs-chat-app-socketio/) を使用するアプリが含まれます。)
 - 継続的な Web ジョブを実行していますか?そうであれば、**[常時接続]** を有効にします。
 - index.html など、**既定文書**を設定します。
 
 これらの基本的な設定に加えて、以下の設定もあります。
 
-- **Secure Socket Layer (SSL)** 暗号化。カスタム ドメイン名で SSL を使用するには、SSL 証明書を取得し、それを使用するように Web サイトを設定する必要があります。[Azure の Web サイトでの HTTPS の有効化](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/) をご覧ください。
-- **カスタムドメイン名。** Web サイトごとに、azurewebsites.net の下にサブドメインが 1 つ自動的に用意されます。contoso.com などのカスタム ドメイン名を関連付けることができます。[カスタム ドメイン名の構成](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/) をご覧ください。
+- **Secure Socket Layer (SSL)** 暗号化。カスタム ドメイン名で SSL を使用するには、SSL 証明書を取得し、それを使用するように Web サイトを設定する必要があります。[Azure の Web サイトでの HTTPS の有効化](http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/) をご覧ください。
+- **カスタムドメイン名。** Web サイトごとに、azurewebsites.net の下にサブドメインが 1 つ自動的に用意されます。contoso.com などのカスタム ドメイン名を関連付けることができます。[カスタム ドメイン名の構成](http://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/) をご覧ください。
 
 言語固有の構成: 
 
-- **PHP**: [Azure Websites での PHP の構成方法](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-php-configure/).
-- **Python**: [Azure Websites での Python の構成](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-python-configure/)
+- **PHP**: [Azure Websites での PHP の構成方法](http://azure.microsoft.com/documentation/articles/web-sites-php-configure/).
+- **Python**: [Azure Websites での Python の構成](http://azure.microsoft.com/documentation/articles/web-sites-python-configure/)
 
 
 ## Web サイトの運用中
@@ -63,36 +63,36 @@ Azure Websites は、4 つの階層で提供します。無料、共有、基本
 
 ### 監視
 
-- 管理ポータルにより、CPU 使用率やクライアント要求の数などの [パフォーマンス メトリックを追加する](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-monitor) ことができます。
-- 詳細に分析するには、New Relic を使用してパフォーマンスを監視および管理してください。[Azure Websites の New Relic によるアプリケーション パフォーマンス管理](http://azure.microsoft.com/ja-jp/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/) をご覧ください。
-- トラフィックに応じた [Web サイトのスケーリング](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。標準プランの場合には、自動スケーリングを設定できます。その場合、サイトは、固定スケジュールに従って、または負荷に応じて、自動的にスケーリングされます。  
+- 管理ポータルにより、CPU 使用率やクライアント要求の数などの [パフォーマンス メトリックを追加する](http://azure.microsoft.com/documentation/articles/web-sites-monitor) ことができます。
+- 詳細に分析するには、New Relic を使用してパフォーマンスを監視および管理してください。[Azure Websites の New Relic によるアプリケーション パフォーマンス管理](http://azure.microsoft.com/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/) をご覧ください。
+- トラフィックに応じた [Web サイトのスケーリング](http://azure.microsoft.com/documentation/articles/web-sites-scale/)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。標準プランの場合には、自動スケーリングを設定できます。その場合、サイトは、固定スケジュールに従って、または負荷に応じて、自動的にスケーリングされます。  
  
 ### バックアップ
 
-- Web サイトの [自動バックアップ](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/) を設定します。バックアップについては、[このビデオ](http://azure.microsoft.com/ja-jp/documentation/videos/azure-websites-automatic-and-easy-backup/) をご覧ください。
-- Azure SQL データベースの [データベース復旧](http://msdn.microsoft.com/ja-jp/library/azure/hh852669.aspx) のさまざまなオプションをご確認ください。
+- Web サイトの [自動バックアップ](http://azure.microsoft.com/documentation/articles/web-sites-backup/) を設定します。バックアップについては、[このビデオ](http://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/) をご覧ください。
+- Azure SQL データベースの [データベース復旧](http://msdn.microsoft.com/library/azure/hh852669.aspx) のさまざまなオプションをご確認ください。
 
 ### トラブルシューティング
 
-- 問題がある場合、クラウドで診断ログおよびライブ デバッグ機能を使用することにより、[Visual Studio でのトラブルシューティング](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#remotedebug) を実行できます。 
-- Visual Studio 以外にも、診断ログ収集のためのさまざまな方法があります。[診断ログの有効化: Azure Websites](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-enable-diagnostic-log/) をご覧ください。
-- Node.js アプリケーションについては、[Azure Websites での Node.js アプリケーションのデバッグ方法](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-nodejs-debug/) をご覧ください。
+- 問題がある場合、クラウドで診断ログおよびライブ デバッグ機能を使用することにより、[Visual Studio でのトラブルシューティング](http://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#remotedebug) を実行できます。 
+- Visual Studio 以外にも、診断ログ収集のためのさまざまな方法があります。[診断ログの有効化: Azure Websites](http://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/) をご覧ください。
+- Node.js アプリケーションについては、[Azure Websites での Node.js アプリケーションのデバッグ方法](http://azure.microsoft.com/documentation/articles/web-sites-nodejs-debug/) をご覧ください。
 
 ### データの復元
 
-- 以前にバックアップを取った Web サイトを [復元](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-restore/) します。
+- 以前にバックアップを取った Web サイトを [復元](http://azure.microsoft.com/documentation/articles/web-sites-restore/) します。
 
 
 ## Web サイトの更新時
 
-自動バックアップを有効にしていない場合は、[手動バックアップ](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/) を作成できます。
+自動バックアップを有効にしていない場合は、[手動バックアップ](http://azure.microsoft.com/documentation/articles/web-sites-backup/) を作成できます。
 
-[ステージング デプロイ](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-staged-publishing/) の使用を考慮してください。このオプションを使用すると、運用デプロイと併用実行されるステージング デプロイへ更新を公開できます。 
+[ステージング デプロイ](http://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/) の使用を考慮してください。このオプションを使用すると、運用デプロイと併用実行されるステージング デプロイへ更新を公開できます。 
 
 Visual Studio Online を使用する場合は、ソース管理から継続的デプロイを設定できます。
 
-- [Team Foundation バージョン管理 (TFVC) の使用](http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-continuous-delivery-use-vso/) 
-- [Git の使用](http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-continuous-delivery-use-vso-git/)
+- [Team Foundation バージョン管理 (TFVC) の使用](http://azure.microsoft.com/documentation/articles/cloud-services-continuous-delivery-use-vso/) 
+- [Git の使用](http://azure.microsoft.com/documentation/articles/cloud-services-continuous-delivery-use-vso-git/)
  
 
  

@@ -1,6 +1,20 @@
-<properties pageTitle="Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成" description="Azure Mobile Services と .NET バックエンドを使用して Windows ストア アプリケーションを作成する方法について説明します。" documentationCenter="windows" authors="MikeWasson" manager="dwrede" editor="" services=""/>
+<properties 
+	pageTitle="Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成" 
+	description="Azure Mobile Services と .NET バックエンドを使用して Windows ストア アプリケーションを作成する方法について説明します。" 
+	documentationCenter="windows" 
+	authors="MikeWasson" 
+	manager="dwrede" 
+	editor="" 
+	services=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="mwasson"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/23/2014" 
+	ms.author="mwasson"/>
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
 
@@ -80,7 +94,7 @@ Visual Studio 2013 Update 3 では、ASP.NET Web アプリケーション プロ
 
 ## データ モデルを追加する
 
-[EF Code First](http://msdn.microsoft.com/ja-jp/data/ee712907#codefirst) を使用して、データベース テーブルを定義します。DataObjects フォルダーに、`Player` という名前のクラスを追加します。
+[EF Code First](http://msdn.microsoft.com/data/ee712907#codefirst) を使用して、データベース テーブルを定義します。DataObjects フォルダーに、`Player` という名前のクラスを追加します。
 
 	using Microsoft.WindowsAzure.Mobile.Service;
 	
@@ -109,9 +123,9 @@ Visual Studio 2013 Update 3 では、ASP.NET Web アプリケーション プロ
 	    }
 	}
 
-これらのクラスはいずれも **EntityData** クラスから継承しています。**EntityData** から派生することで、アプリケーションは Azure Mobile Services 用のクロスプラットフォーム クライアント ライブラリを使用して、データを簡単に使用できるようになります。**また、EntityData** によって、アプリケーションで[データベースの書き込み競合](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/)を処理するのが簡単になります。
+これらのクラスはいずれも **EntityData** クラスから継承しています。**EntityData** から派生することで、アプリケーションは Azure Mobile Services 用のクロスプラットフォーム クライアント ライブラリを使用して、データを簡単に使用できるようになります。**また、EntityData** によって、アプリケーションで[データベースの書き込み競合](http://azure.microsoft.com/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/)を処理するのが簡単になります。
 
-`PlayerRank`クラスには、関連する `Player` エンティティを指す[ナビゲーション プロパティ](http://msdn.microsoft.com/ja-jp/data/jj713564.aspx)があります。**[ForeignKey]** 属性は、`Player` プロパティが外部キーを表すことを EF に示します。
+`PlayerRank`クラスには、関連する `Player` エンティティを指す[ナビゲーション プロパティ](http://msdn.microsoft.com/data/jj713564.aspx)があります。**[ForeignKey]** 属性は、`Player` プロパティが外部キーを表すことを EF に示します。
 
 # Web API コントローラーを追加する
 
@@ -139,7 +153,7 @@ Controllers フォルダーを右クリックし、[追加] を選択し、[新�
 
 コントローラーは、**TableController<T>** から派生します。このクラスは **ApiController** を継承しますが、Azure Mobile Services 用に特化されています。
  
-- ルーティング:**TableController** の既定のルートは  `/tables/{table_name}/{id}` であり、*table_name* はエンティティ名に一致します。したがって、Player コントローラーのルートは */tables/player/{id}* となります。このルーティング規則により、**TableController** は Mobile Services の [REST API](http://msdn.microsoft.com/ja-jp/library/azure/jj710104.aspx) との間に一貫性を持ちます。
+- ルーティング:**TableController** の既定のルートは  `/tables/{table_name}/{id}` であり、*table_name* はエンティティ名に一致します。したがって、Player コントローラーのルートは */tables/player/{id}* となります。このルーティング規則により、**TableController** は Mobile Services の [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx) との間に一貫性を持ちます。
 - データ アクセス:**TableController** クラスは、データベース操作に対して、データ アクセスの抽象化を定義する **IDomainManager** インターフェイスを使用します。スキャフォールディングでは **EntityDomainManager** を使用します。これは、EF コンテキストをラップする **IDomainManager** の具象的な実装です。 
 
 次に、PlayerRank エンティティ用の第 2 のコントローラーを追加します。同じ手順を実行しますが、モデル クラスに PlayerRank を選択します。同じデータ コンテキスト クラスを使用し、新しいクラスは作成しません。コントローラーに "PlayerRankController" という名前を付けます。

@@ -95,7 +95,7 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 
 ここでは、いくつかの Pig Latin ステートメントと、その実行結果を確認します。次のセクションでは、PowerShell を使用して Pig ステートメントを一緒に実行し、サンプル ログ ファイルを分析します。HDInsight クラスター上で個々の Pig Latin ステートメントを直接実行する必要があります。
 
-1. [RDP を使用した HDInsight クラスターへの接続](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/#rdp)の手順に従って、HDInsight クラスターのリモート デスクトップを有効にします。クラスター ノードにログインし、デスクトップから、**[Hadoop コマンド ライン]** をクリックします。
+1. [RDP を使用した HDInsight クラスターへの接続](http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp)の手順に従って、HDInsight クラスターのリモート デスクトップを有効にします。クラスター ノードにログインし、デスクトップから、**[Hadoop コマンド ライン]** をクリックします。
 
 2. コマンド ラインから、**Pig** がインストールされているディレクトリに移動します。次のコマンドを入力します。
 
@@ -397,12 +397,11 @@ Pig ではデータを分析できますが、HDInsight には便利なその他
 
 [Powershell-install-configure]: ../install-configure-powershell/
 
-[powershell-start]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx
+[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 
 [image-hdi-log4j-sample]: ./media/hdinsight-use-pig/HDI.wholesamplefile.png
 [image-hdi-pig-data-transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
-
 
 <!--HONumber=42-->

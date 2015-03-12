@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Apple のプッシュ通知を有効にする方法" description="このチュートリアルでは、Azure Mobile Services を使用して新しいサービスを作成する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="ios" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Apple のプッシュ通知を有効にする方法" 
+	description="このチュートリアルでは、Azure Mobile Services を使用して新しいサービスを作成する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="ios" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 # Apple のプッシュ通知を有効にする方法
 

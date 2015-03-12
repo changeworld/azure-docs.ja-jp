@@ -1,6 +1,20 @@
-﻿<properties title="Manage DocumentDB capacity and performance" pageTitle="DocumentDB の容量とパフォーマンスの管理 | Azure" description="アプリケーションのパフォーマンスとストレージのニーズに合わせて DocumentDB のスケールを柔軟に設定する方法について説明します。" metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="DocumentDB の容量とパフォーマンスの管理 | Azure" 
+	description="アプリケーションのパフォーマンスとストレージのニーズに合わせて DocumentDB のスケールを柔軟に設定する方法について説明します。" 
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="cgronlun" 
+	documentationCenter=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/13/2015" 
+	ms.author="mimig"/>
 
 #DocumentDB の容量とパフォーマンスの管理
 DocumentDB は、完全に管理された、きわめて拡張性の高いドキュメント指向の NoSQL データベース サービスです。  DocumentDB 内では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを行ったり、障害復旧の心配をしたりする必要はありません。Microsoft のエンジニアによって運用され、継続的な監視が行われる DocumentDB は、卓越した可用性、パフォーマンス、データ保護を提供します。  
@@ -66,3 +80,5 @@ SSD ベースのドキュメント ストレージとスループットから構
 
 既定では、DocumentDB によって自動的にすべてのドキュメントのインデックスが作成されます。ただし、インデックス オーバーヘッドを調整する場合は、ドキュメントの挿入時または置換時におけるインデックス作成の対象から特定のドキュメントを除外することができます。コレクション内のすべてのドキュメントをインデックス作成の対象から除外するように DocumentDB コレクションを構成できます。また、JSON ドキュメントのワイルドカードを使用して特定のプロパティまたはパスに関してのみ選択的にインデックスを作成するように DocumentDB コレクションを構成することもできます。  プロパティまたはドキュメントを除外すると書き込みスループットが向上し、消費する要求単位が少なくなります。   
  
+
+<!--HONumber=46--> 

@@ -1,30 +1,43 @@
-﻿
-<properties urlDisplayName="Notify iOS app users by using Web API" pageTitle="Web API を使用して現在のユーザーをプッシュ通知に登録 - Notification Hubs" metaKeywords="Azure の登録アプリケーション, Notification Hubs, Azure のプッシュ通知, プッシュ通知 iOS アプリケーション" description="ASP.NET Web API により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="" title="Register the current user for push notifications by using ASP.NET" authors="yuaxu" solutions="" manager="dwrede" editor="" />
+﻿<properties 
+	pageTitle="Web API を使用した現在のユーザーのプッシュ通知への登録 - Notification Hubs" 
+	description="ASP.NET Web API により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。" 
+	services="notification-hubs" 
+	documentationCenter="ios" 
+	authors="ysxu" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="yuaxu"/>
 # ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/ja-jp/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows Store C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS" class="current">iOS</a>
+    <a href="/ja-jp/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows Store C#">Windows Store C#</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS" class="current">iOS</a>
 </div>
 
-このトピックでは、ASP.NET Web API により登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。  
+このトピックでは、ASP.NET Web API により登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[Notification Hubs によるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[Notification Hubs によるユーザーへの通知]」を参照してください。  
 
 1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
-	+ **ラベル**: "Push to User with Notification Hubs"
-	+ **ラベル**: "InstallationId"
-	+ **ラベル**: "User"
-	+ **テキスト フィールド**: "User"
-	+ **ラベル**: "Password"
-	+ **テキスト フィールド**: "Password"
-	+ **ボタン**: "Login"
+	+ **ラベル**:"Push to User with Notification Hubs"
+	+ **ラベル**:"InstallationId"
+	+ **ラベル**:"User"
+	+ **テキスト フィールド**:"User"
+	+ **ラベル**:"Password"
+	+ **テキスト フィールド**:"Password"
+	+ **ボタン**:"Login"
 
 	この時点で、ストーリーボードは次のようになります。
 
    	![][0]
 
-2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドと View Controller (デリゲート) を接続して、**ログイン** ボタンの**アクション**を作成します。
+2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドとビュー コントローラー (デリゲート) を接続して、**ログイン** ボタンの**アクション**を作成します。
 
    	![][1]
 
@@ -83,7 +96,7 @@
 
 		[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 
-	最初の行では、**DeviceInfo** シングルトンが初期化されます。2 行目では、プッシュ通知の登録が開始されます。「[通知ハブの使用]」のチュートリアルを既に終えている場合、この登録は既に存在しています。
+	最初の行では、**DeviceInfo** シングルトンが初期化されます。2 行目では、プッシュ通知の登録が開始されます。チュートリアル「[Notification Hubs の使用]」を既に終えている場合、この登録は既に存在しています。
 
 9. PushToUserAppDelegate.m で、AppDelegate に **didRegisterForRemoteNotificationsWithDeviceToken** メソッドを実装し、次のコードを追加します。
 
@@ -91,9 +104,7 @@
 
 	これにより、要求のデバイス トークンが設定されます。
 
-	<div class="dev-callout"><b>注</b>
-	<p>この時点では、このメソッドに他のコードは存在しません。チュートリアル「<a href="/ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/" target="_blank">通知ハブの使用</a>」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。</p>
-	</div>
+	> [AZURE.NOTE] この時点では、このメソッドに他のコードは存在しません。「[Notification Hubs の使用](/ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/%20target="_blank")」のチュートリアルを完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメントにするか、削除する必要があります。
 
 10.	PushToUserAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
 
@@ -204,9 +215,9 @@
 		        }
 		    }];
 
-	このメソッドは、プッシュ通知のインストール ID とチャネルの両方を取得し、通知ハブで登録を作成する認証された Web API メソッドに、デバイスの種類と共に送信します。この Web API は、「[通知ハブによるユーザーへの通知]」で定義されたものです。
+	このメソッドは、プッシュ通知のインストール ID とチャネルの両方を取得します。これらの ID とチャネルは、デバイスの種類と共に、通知ハブで登録を作成する認証済みの Web API メソッドに送信されます。この Web API は、「[Notification Hubs によるユーザーへの通知]」で定義されたものです。
 
-これで、クライアント アプリケーションが更新されました。「[通知ハブによるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
+これで、クライアント アプリケーションが更新されました。「[Notification Hubs によるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
 
 <!-- Anchors. -->
 
@@ -215,7 +226,9 @@
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
+[Notification Hubs によるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios
+[Notification Hubs の使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios
+
+<!--HONumber=45--> 

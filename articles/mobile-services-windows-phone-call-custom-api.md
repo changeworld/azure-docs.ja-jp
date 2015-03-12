@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Windows Phone クライアントからのカスタム API 呼び出し - Mobile Services" description="カスタム API を定義し、Azure Mobile Services を使用する Windows Phone アプリケーションからそれを呼び出す方法について説明します。" services="mobile-services" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Windows Phone クライアントからのカスタム API 呼び出し - Mobile Services" 
+	description="カスタム API を定義し、Azure Mobile Services を使用する Windows Phone アプリケーションからそれを呼び出す方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="10/06/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="10/06/2014" 
+	ms.author="glenga"/>
 
 # クライアントからのカスタム API 呼び出し
 

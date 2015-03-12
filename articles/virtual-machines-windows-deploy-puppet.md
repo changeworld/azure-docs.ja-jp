@@ -25,7 +25,7 @@ Puppet はクライアント サーバー システムです。Puppet マスタ�
 - Puppet マスターは、Ubuntu サーバーにインストールされた構成済みのイメージとして利用できます。既存のサーバーに Puppet Enterprise をインストールすることもできますが、イメージを使用して開始する方法が最も簡単です。エージェントを設定するには、サーバーについての情報が必要です。 
 - Puppet Enterprise エージェントは仮想マシン拡張機能として利用でき、仮想マシンの作成時にインストールできるほか、既存の仮想マシンにインストールすることも可能です。
 
-手順については、[Microsoft Windows と Azure](http://puppetlabs.com/solutions/microsoft) に関するページから、『Getting Started Guide (ファースト ステップ ガイド)』をダウンロードしてください。  
+手順については、「[Microsoft Windows and Azure (Microsoft Windows と Azure)](http://puppetlabs.com/solutions/microsoft)」から、『Getting Started Guide (ファースト ステップ ガイド)』をダウンロードしてください。  
 
 
 ##その他のリソース
@@ -38,11 +38,12 @@ Puppet はクライアント サーバー システムです。Puppet マスタ�
 [拡張機能の管理]
 
 <!--Link references-->
-[Microsoft Azure および Visual Studio との新しい統合に関するページ]: http://puppetlabs.com/blog/new-integrations-windows-azure-and-visual-studio
+[New Integrations with Microsoft Azure and Visual Studio (Microsoft Azure および Visual Studio との新しい統合)]: http://puppetlabs.com/blog/new-integrations-windows-azure-and-visual-studio
 [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
 [Linux を実行する仮想マシンにログオンする方法]: ../virtual-machines-linux-how-to-log-on
 [Azure VM 拡張機能と機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
 
 
-<!--HONumber=45--> 
+
+<!--HONumber=42-->

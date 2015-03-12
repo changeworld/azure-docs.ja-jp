@@ -1,6 +1,20 @@
-﻿<properties title="Azure Stream Analytics limitations in the preview release" pageTitle=" Stream Analytics プレビュー リリースの制限事項 | Azure" description="Azure Stream Analytics ジョブのパブリック プレビュー リリースにおける制限事項について説明します。" metaKeywords="" services="stream analytics" solutions="" documentationCenter="" authors="jgao" videoId="" scriptId="" manager="paulettm" editor="cgronlun"/>
+﻿<properties 
+	pageTitle="Stream Analytics プレビュー リリースの制限事項 | Azure" 
+	description="Azure Stream Analytics ジョブのパブリック プレビュー リリースにおける制限事項について説明します。" 
+	services="stream-analytics" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="stream-analytics" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="data-services" ms.date="10/28/2014" ms.author="jgao" />
+<tags 
+	ms.service="stream-analytics" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="data-services" 
+	ms.date="2/10/2015" 
+	ms.author="jgao"/>
 
 #Azure Stream Analytics プレビューの制限事項と既知の問題
 
@@ -131,8 +145,10 @@ LEFT OUTER JOIN 操作は、Stream Analytics クエリ言語で有効になっ�
 
 
 [microsoft.support]: http://support.microsoft.com/
-[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/ja-jp/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx
 
 [別の azure.microsoft.com ドキュメント トピックへのリンク 1]: ../virtual-machines-windows-tutorial/
 [別の azure.microsoft.com ドキュメント トピックへのリンク 2]: ../web-sites-custom-domain-name/
 [別の azure.microsoft.com ドキュメント トピックへのリンク 3]: ../storage-whatis-account/
+
+<!--HONumber=46--> 

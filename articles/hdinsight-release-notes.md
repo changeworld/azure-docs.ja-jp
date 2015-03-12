@@ -148,8 +148,8 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </tr>
 
 <tr>
-<td><a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">クラスター カスタマイズの GA</a></td>
-<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight に展開できるようになりました。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる <b>スクリプト アクション</b>機能により実現されます。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、人気の高い <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、 <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、 <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、および <a href = "http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールのインストール プロセスをドキュメントにまとめました。またこのリリースでは、ユーザーが Azure 管理ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパーメソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインの提供が行われます。 </p></td>
+<td><a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">クラスター カスタマイズの GA</a></td>
+<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight に展開できるようになりました。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる <b>スクリプト アクション</b>機能により実現されます。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、人気の高い <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、 <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、 <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、および <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールのインストール プロセスをドキュメントにまとめました。またこのリリースでは、ユーザーが Azure 管理ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパーメソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインの提供が行われます。 </p></td>
 <td>機能の GA</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -402,7 +402,7 @@ HDInsight PowerShell/SDK のエラー:"*Cluster is not configured for Http Servi
 
 * このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/en-US/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、SDK/PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、SDK/PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。SDK API または PowerShell コマンドレットを使用して、ジョブ (**Use-AzureHDInsightCluster**, **Invoke-Hive**) を送信すると、エラー メッセージ "*Cluster <clustername> is not configured for Http Services access(クラスター <クラスタ名> は Http サービス アクセス用に構成されていません)*" または、操作によってはこれ以外にも、"*Cannot connect to cluster (クラスターに接続できません)*" などのエラー メッセージが表示されてこれらの操作が失敗する可能性があります。
 
-* これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK に、「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)」から Azure PowerShell ツールにアクセスできます。
+* これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK に、「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」から Azure PowerShell ツールにアクセスできます。
 
 * SDK および PowerShell は、クラスターのバージョンが同じである限り、クラスターへの新しい更新プログラムを引き続き処理すると想定できます。たとえば、クラスター Version 3.1 は、常に最新のバージョン SDK/PowerShell 1.3.1.6 および 0.8.8 と互換性があります。
 
@@ -445,7 +445,7 @@ SDK および PowerShell は、クラスターのバージョンが同じであ�
 	* 東アジア 
 	* 米国中北部 
 	* 米国中南部 
-* このリリースでは、HDInsight v1.6 (HDP1.1、Hadoop 1.0.3) および HDInsight v2.1 (HDP1.3、Hadoop 1.2) が Azure の管理ポータルから削除されています。これらのバージョンの Hadoop クラスターは、HDInsight PowerShell コマンドレット ([New-AzureHDInsightCluster](http://msdn.microsoft.com/ja-jp/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/ja-jp/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。詳細については、「[HDInsight で提供されるクラスター バージョンの新機能](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)」のページを参照してください。
+* このリリースでは、HDInsight v1.6 (HDP1.1、Hadoop 1.0.3) および HDInsight v2.1 (HDP1.3、Hadoop 1.2) が Azure の管理ポータルから削除されています。これらのバージョンの Hadoop クラスターは、HDInsight PowerShell コマンドレット ([New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。詳細については、「[HDInsight で提供されるクラスター バージョンの新機能](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)」のページを参照してください。
 * このリリースでは、Hortonworks Data Platform (HDP) が以下のように変更されました。 
 
 <table border="1">
@@ -675,7 +675,6 @@ SQL Server JDBC ドライバーは HDInsight によって内部的に使用さ�
 
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
-
 
 
 

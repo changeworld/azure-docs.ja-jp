@@ -123,7 +123,7 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 		}
 		?>
 
-	エラー コードとメッセージについてはこちらをご覧ください: [http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx][msdn-errors]
+	エラー コードとメッセージについてはこちらをご覧ください: [http://msdn.microsoft.com/library/windowsazure/dd179438.aspx][msdn-errors]
 
 
 ##テーブルの照会
@@ -441,11 +441,11 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [composer-phar]: http://getcomposer.org/composer.phar
 
-[msdn-errors]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
+[msdn-errors]: http://msdn.microsoft.com/library/windowsazure/dd179438.aspx
 
 
 
-[msdn-table-query-syntax]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894031.aspx
+[msdn-table-query-syntax]: http://msdn.microsoft.com/library/windowsazure/dd894031.aspx
 [ws-storage-app]: ./media/web-sites-php-storage/ws-storage-app.png
 [management-portal]: https://manage.windowsazure.com
 [new-website]: ./media/web-sites-php-storage/new_website.jpg

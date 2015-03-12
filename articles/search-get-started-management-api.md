@@ -1,6 +1,20 @@
-﻿<properties title="Get started with Azure Search Management REST API" pageTitle="Azure Search 管理 REST API の使用" description="Azure Search 管理 REST API の使用" metaKeywords="" services="Azure Search" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Search 管理 REST API の使用" 
+	description="Azure Search 管理 REST API の使用" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="10/10/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="01/16/2015" 
+	ms.author="heidist"/>
 # Azure Search 管理 REST API の使用 #
 
 Azure Search REST 管理 API は、ポータルでプログラムを使用して管理タスクを実行するものです。サービス管理操作には、サービスの作成または削除、サービスのスケーリング、およびキーの管理があります。このチュートリアルには、サービス管理 API を示すサンプル クライアント アプリケーションが用意されています。また、ローカル開発環境でサンプルを実行するのに必要な構成手順も含まれます。
@@ -24,11 +38,11 @@ Codeplex のクライアント アプリケーションは、「[Azure Search Ma
 
 <h2 id="config">アプリケーションの構成</h2>
 
-サンプル アプリケーションを実行する前に、認証を有効にして、クライアント アプリケーションからリソース マネージャー エンドポイントに送信された要求が許可されるようにする必要があります。認証要件は、[Azure リソース マネージャー](http://msdn.microsoft.com/ja-jp/library/azure/dn790568.aspx)が基になり、Search サービス管理関連も含め、API を使用して要求されたすべてのポータル関連操作の基盤となります。Azure Search のサービス管理 API は、Azure リソース マネージャーの拡張機能であるため、その依存関係を継承しています。  
+サンプル アプリケーションを実行する前に、認証を有効にして、クライアント アプリケーションからリソース マネージャー エンドポイントに送信された要求が許可されるようにする必要があります。認証要件は、[Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)が基になり、Search サービス管理関連も含め、API を使用して要求されたすべてのポータル関連操作の基盤となります。Azure Search のサービス管理 API は、Azure リソース マネージャーの拡張機能であるため、その依存関係を継承しています。  
 
 Azure リソース マネージャーには、ID プロバイダーとして Azure Active Directory サービスが必要です。 
 
-リソース マネージャーへの要求を許可するアクセス トークンを取得するには、クライアント アプリケーションに Active Directory を呼び出すためのコード セグメントが必要です。このコード セグメントと、コード セグメントを使用する前提条件となる手順は、記事「[Azure Resource Manager 要求の認証](http://msdn.microsoft.com/ja-jp/library/azure/dn790557.aspx)」から借用しています。
+リソース マネージャーへの要求を許可するアクセス トークンを取得するには、クライアント アプリケーションに Active Directory を呼び出すためのコード セグメントが必要です。このコード セグメントと、コード セグメントを使用する前提条件となる手順は、記事「[Azure Resource Manager 要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」から借用しています。
 
 前述のリンクの指示に従うか、またはチュートリアルをひととおり実行する場合はこのドキュメントの手順に従ってください。
 
@@ -39,7 +53,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 1. ダウンロードしたサンプル クライアント アプリケーションの詳細を登録することによる、AD アプリケーションの構成
 1. 要求の認証を取得するための値を使用したサンプル クライアント アプリケーションのロード
 
-> [WACOM.NOTE]次のリンクは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。[Azure リソース マネージャー REST API リファレンス](http://msdn.microsoft.com/ja-jp/library/azure/dn790568.aspx)、[Azure Resource Manager 要求の認証](http://msdn.microsoft.com/ja-jp/library/azure/dn790557.aspx)、[Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx)。
+> [WACOM.NOTE]次のリンクは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。[Azure リソース マネージャー REST API リファレンス](http://msdn.microsoft.com/library/azure/dn790568.aspx)、[Azure Resource Manager 要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)、[Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx)。
 
 <h3>Active Directory サービスの作成</h3>
 
@@ -140,7 +154,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
 アセンブリ参照に関する問題によって、ソリューションの構築が妨げられる可能性があります。このセクションでは、それらのいくつかの対処法を提供します。
 
-- Microsoft.IdentityModel.Clients.ActiveDirectory をインストールする必要があります ([Active Directory 認証ライブラリ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)のインストール方法の詳細については、「[Azure Resource Manager 要求](http://msdn.microsoft.com/ja-jp/library/azure/dn790557.aspx)」を参照してください)。
+- Microsoft.IdentityModel.Clients.ActiveDirectory をインストールする必要があります ([Active Directory 認証ライブラリ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)のインストール方法の詳細については、「[Azure Resource Manager 要求](http://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください)。
 - アセンブリを再インストールして、問題を解決することもできます。**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に移動します。PM> プロンプトに、「*Update-package -reinstall Microsoft.IdentityModel.Clients.ActiveDirectory*」と入力します。
 - このソリューションでは、Newtonsoft.Json も参照されます。このアセンブリのエラーが発生した場合は、プロジェクトから削除して、追加し直します。**[参照]**、**[NuGet パッケージの管理]**、**[インストールされたパッケージ]** の順に右クリックします。**[Json.Net]** を選択し、アンインストールします。**[オンライン]** を展開して、**[Json.Net]**、**[インストール]** の順に選択します。
 
@@ -155,13 +169,13 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
  
 3. 指定された `subscriptionID` に対して、Azure リソース マネージャーのエンドポイント `https://management.azure.com/subscriptions` に対する要求の実行に **ExecuteArmRequest** が使用されることに注意してください。このメソッドはプログラム全体で使用され、Azure リソース マネージャー API または Search 管理 API を使用して操作を実行します。
 
-3. Azure リソース マネージャーへの要求は認証および承認される必要があります。これには **GetAuthorizationHeader** メソッドを使用します。このメソッドは **ExecuteArmRequest** メソッドによって呼び出されます。これは、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/ja-jp/library/azure/dn790557.aspx)」から流用しています。**GetAuthorizationHeader** は `https://management.core.windows.net` を呼び出してアクセス トークンを取得することに注意してください。
+3. Azure リソース マネージャーへの要求は認証および承認される必要があります。これには **GetAuthorizationHeader** メソッドを使用します。このメソッドは **ExecuteArmRequest** メソッドによって呼び出されます。これは、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」から流用しています。**GetAuthorizationHeader** は `https://management.core.windows.net` を呼び出してアクセス トークンを取得することに注意してください。
 
 4. サブスクリプションに対して有効なユーザー名とパスワードを使用してサインインすることが求められます。
 
 5. 次に、Azure リソース マネージャーのプロバイダーに新しい Azure Search サービスが登録されます。これも **ExecuteArmRequest** メソッドです。ここではこのメソッドを使用し、`providers/Microsoft.Search/register` を介して、サブスクリプションに対する Azure の検索サービスを作成します。 
 
-6. プログラムの残りの部分では、[Azure Search 管理 REST API](http://msdn.microsoft.com/ja-jp/library/dn832684.aspx) を使用します。この API の `api-version` は Azure リソース マネージャーの API バージョンとは異なることに注意してください。たとえば、`/listAdminKeys?api-version=2014-07-31-Preview` は、Azure Search 管理 REST の `api-version` を示しています。
+6. プログラムの残りの部分では、[Azure Search 管理 REST API](http://msdn.microsoft.com/library/dn832684.aspx) を使用します。この API の `api-version` は Azure リソース マネージャーの API バージョンとは異なることに注意してください。たとえば、`/listAdminKeys?api-version=2014-07-31-Preview` は、Azure Search 管理 REST の `api-version` を示しています。
 
 	次の一連の操作では、今作成したサービス定義および管理 API キーの取得、キーの再生成と取得、レプリカとパーティションの変更、最後にサービスの削除を行います。
 
@@ -173,8 +187,8 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
 このチュートリアルを完了した後は、次の記事によって Active Directory サービスでのサービスの管理または認証について詳しく知ることができます。
 
-- クライアント アプリケーションと Active Directory との統合の詳細については、「[Azure Active Directory へのアプリケーションの登録](http://msdn.microsoft.com/ja-jp/library/azure/dn151122.aspx)」を参照してください。
-- Azure のその他のサービス管理操作の詳細については、「[サービスの管理](http://msdn.microsoft.com/ja-jp/library/azure/dn578292.aspx)」を参照してください。
+- クライアント アプリケーションと Active Directory との統合の詳細については、「[Azure Active Directory へのアプリケーションの登録](http://msdn.microsoft.com/library/azure/dn151122.aspx)」を参照してください。
+- Azure のその他のサービス管理操作の詳細については、「[サービスの管理](http://msdn.microsoft.com/library/azure/dn578292.aspx)」を参照してください。
 
 <!--Anchors-->
 [サンプル アプリケーションのダウンロード]: #Download
@@ -197,3 +211,5 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 [Azure Search を使用した地理空間検索アプリの作成]: ../search-create-geospatial/
 
 
+
+<!--HONumber=46--> 

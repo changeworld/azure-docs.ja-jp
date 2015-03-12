@@ -369,7 +369,7 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [方法:キューの長さを取得する]: #get-queue-length
   [方法:キューを削除する]: #delete-queue
   [方法:共有アクセス署名を操作する]: #sas
-  [using the REST API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+  [using the REST API]: http://msdn.microsoft.com/library/windowsazure/hh264518.aspx
   [Azure Management Portal]: http://manage.windowsazure.com
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
   [Node.js Cloud Service with Storage]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
@@ -383,8 +383,7 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   
   
   [Node.js Cloud Service]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
-
 <!--HONumber=42-->

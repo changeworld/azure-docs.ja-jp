@@ -1,6 +1,20 @@
-<properties pageTitle="API Management key concepts" metaKeywords="" description="Learn about APIs, products, roles, groups, and other API Management key concepts." metaCanonical="" services="" documentationCenter="API Management" title="API Management key concepts" authors="sdanie" solutions="" manager="" editor="" />
+﻿<properties 
+	pageTitle="API Management の重要概念" 
+	description="API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
 
 # Azure API Management で API の定義を操作と共にインポートする方法
 
@@ -79,3 +93,5 @@ API を作成して操作をインポートした後は、追加の設定を確�
   [Export API format]: ./media/api-management-howto-import-api/api-management-export-api-format.png
   [API 設定の構成]: ../api-management-howto-create-apis/#configure-api-settings
   [Azure API Management で成果物を作成して発行する方法]: ../api-management-howto-add-products
+
+<!--HONumber=46--> 

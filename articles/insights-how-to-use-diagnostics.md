@@ -1,6 +1,20 @@
-﻿<properties title="How to use diagnostics" pageTitle="診断の使用方法" description="Azure でリソースの診断を設定する方法について説明します。" authors="stepsic" manager="kamrani" />
+﻿<properties 
+	pageTitle="診断の使用方法" 
+	description="Azure でリソースの診断を設定する方法について説明します。" 
+	authors="stepsic-microsoft-com" 
+	manager="kamrani" 
+	editor="" 
+	services="application-insights" 
+	documentationCenter=""/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-11-04" ms.author="stepsic" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2014-11-04" 
+	ms.author="stepsic"/>
 
 # 診断を設定する
 
@@ -66,3 +80,5 @@ Azure ポータル プレビューでは、Windows 仮想マシンおよびス�
 グラフに、過去のメトリックと比較したアラートしきい値のプレビューが表示されます。**[保存]** をクリックしてから数分以内で、選択したメトリックがしきい値を超えたかどうかが通知されます。 
 
 プレビュー ポータルにのみ表示されるメトリックは、フル ポータルではアラートを通知することはできないという点に注意してください。そのため、プレビュー ポータルのアラート ルールの中には、フル ポータルでは表示されないものがあります。
+
+<!--HONumber=46--> 

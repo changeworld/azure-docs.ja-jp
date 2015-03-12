@@ -1,6 +1,20 @@
-﻿<properties pageTitle="PhoneGap での Mobile Services の使用 | モバイル デベロッパー センター" description="このチュートリアルでは、iOS、Android、Windows Phone 用に PhoneGap の開発を行う場合に Azure Mobile Services を使用する方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="PhoneGap での Mobile Services の使用 | モバイル デベロッパー センター" 
+	description="このチュートリアルでは、iOS、Android、Windows Phone 用に PhoneGap の開発を行う場合に Azure Mobile Services を使用する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-phonegap" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-phonegap" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
@@ -14,7 +28,7 @@
 
 ### <a name="additional-requirements"></a>その他の要件
 
-このチュートリアルを完了するには、PhoneGap ツール (Windows Phone 8 プロジェクトの場合は v3.2 以降が必要です) が必要です)。 
+このチュートリアルを完了するには、PhoneGap ツール (Windows Phone 8 プロジェクトの場合は v3.2 以降が必要です) が必要です。 
 
 PhoneGap は、複数のプラットフォーム向けの開発をサポートします。PhoneGap ツール自体に加えて、対象としている各プラットフォーム用のツールをインストールする必要があります。
 

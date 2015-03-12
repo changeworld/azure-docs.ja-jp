@@ -1,6 +1,20 @@
-﻿<properties title="Step 5: Publish the Azure Machine Learning web service" pageTitle="手順 5.Machine Learning Web サービスを発行する | Azure" description="手順 5.Azure Machine Learning Studio でスコア付け実験を ML API Web サービスとして発行する" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="手順 5:Machine Learning Web サービスを発行する | Azure" 
+	description="ソリューションのチュートリアル、手順 5: Azure Machine Learning Studio でスコア付け実験を Azure Machine Learning Web サービスとして発行する" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/29/2015" 
+	ms.author="garye"/>
 
 
 これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][develop]」の 5 番目の手順です。
@@ -144,3 +158,5 @@ Web サービスによって生成された結果がダッシュボードの下�
 [1]: ./media/machine-learning-walkthrough-5-publish-web-service/publish1.png
 [2]: ./media/machine-learning-walkthrough-5-publish-web-service/publish2.png
 [3]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3.png
+
+<!--HONumber=46--> 

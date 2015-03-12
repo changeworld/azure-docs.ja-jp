@@ -1,6 +1,21 @@
-﻿<properties pageTitle="プッシュ通知の使用 (Android JavaScript) | モバイル デベロッパー センター" description="Azure Mobile Services を使用して Android JavaScript アプリにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="android" authors="RickSaling" writer="ricksal" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="プッシュ通知の使用 (Android JavaScript) | モバイル デベロッパー センター" 
+	description="Azure Mobile Services を使用して Android JavaScript アプリにプッシュ通知を送信する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="android" 
+	authors="RickSaling" 
+	Writer="ricksal" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="Mobile-Android" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/16/2014" 
+	ms.author="ricksal"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
 

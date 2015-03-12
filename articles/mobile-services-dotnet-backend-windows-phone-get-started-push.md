@@ -1,6 +1,21 @@
-<properties pageTitle=".NET ランタイム モバイル サービスを使用したプッシュ通知ハブの使用" description="Microsoft Azure .Net ランタイム モバイル サービスと Notification Hubs を使用してプッシュ通知を Windows Phone アプリに送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="windows" authors="wesmc7777" writer="wesmc" manager="dwrede" editor=""/>
+<properties 
+	pageTitle=".NET ランタイム モバイル サービスを使用したプッシュ通知ハブの使用" 
+	description="Microsoft Azure .Net ランタイム モバイル サービスと Notification Hubs を使用してプッシュ通知を Windows Phone アプリに送信する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	Writer="wesmc" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/23/2014" 
+	ms.author="wesmc"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
 
@@ -131,7 +146,7 @@
 
    	![][4]
 
-	>[AZURE.NOTE]このチュートリアルでは、非認証モードで MPNS を使用します。このモードでは、MPNS はデバイス チャネルに送信できる通知の数を制限します。この制限を削除するには、<strong>[アップロード]</strong> をクリックして証明書を生成してアップロードし、その証明書を選択する必要があります。証明書を生成する方法の詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/ff941099(v=vs.105).aspx">Windows Phone 8 のプッシュ通知を送信するように認証済み Web サービスを設定する</a>」を参照してください。
+	>[AZURE.NOTE]このチュートリアルでは、非認証モードで MPNS を使用します。このモードでは、MPNS はデバイス チャネルに送信できる通知の数を制限します。この制限を削除するには、<strong>[アップロード]</strong> をクリックして証明書を生成してアップロードし、その証明書を選択する必要があります。証明書を生成する方法の詳細については、「<a href="http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx">Windows Phone 8 のプッシュ通知を送信するように認証済み Web サービスを設定する</a>」を参照してください。
 
 これにより、非認証モードで MPNS に接続するモバイル サービスがプッシュ通知を送信できるようになります。
 
@@ -210,7 +225,7 @@
 
 
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-html-how-to-use-client-library
-[Windows Phone Silverlight 8.1 アプリ]: http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/dn642082(v=vs.105).aspx
+[Windows Phone Silverlight 8.1 アプリ]: http://msdn.microsoft.com/library/windowsphone/develop/dn642082(v=vs.105).aspx
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
 

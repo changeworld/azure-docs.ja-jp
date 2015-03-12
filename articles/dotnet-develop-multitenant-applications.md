@@ -1,6 +1,20 @@
-<properties urlDisplayName="Multi-Tenant Web Application Pattern" pageTitle="マルチテナント Web アプリケーションのパターン - Azure アーキテクチャ" metaKeywords="" description="Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" metaCanonical="" services="" documentationCenter=".NET" title="Multitenant Applications in Azure" authors="wpickett" solutions="" manager="wpickett" editor="" />
+﻿<properties 
+	pageTitle="マルチテナント Web アプリケーションのパターン - Azure アーキテクチャ" 
+	description="Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" 
+	services="" 
+	documentationCenter=".net" 
+	authors="" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wpickett" />
+<tags 
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="11/19/2014" 
+	ms.author="wpickett"/>
 
 
 <div>
@@ -108,7 +122,9 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 
 <!--links-->
 
-[Azure 上のマルチテナント アプリケーションのホスト]: http://msdn.microsoft.com/ja-jp/library/hh534480.aspx
-[Windows Azure 上のマルチテナント アプリケーションの設計]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh689716
+[Azure 上のマルチテナント アプリケーションのホスト]: http://msdn.microsoft.com/library/hh534480.aspx
+[Windows Azure 上のマルチテナント アプリケーションの設計]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
 
+
+<!--HONumber=46--> 

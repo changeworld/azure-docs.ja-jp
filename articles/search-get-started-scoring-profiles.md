@@ -1,6 +1,20 @@
-﻿<properties title="Get started with scoring profiles in Azure Search" pageTitle="Azure Search のスコアリング プロファイルの使用" description="Azure Search のスコアリング プロファイルの使用" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Azure Search でのスコアリング プロファイルの使用方法" 
+	description="Azure Search のスコアリング プロファイルの使用" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="10/16/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="02/10/2015" 
+	ms.author="heidist"/>
 
 # Azure Search のスコアリング プロファイルの使用
 
@@ -43,7 +57,7 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 
 アプリケーションの構築と実行の準備はこれでほぼ整いましたが、その前に、インデックスを作成し設定する JSON ファイルを見てみましょう。
 
-**Schema.json** は、このデモで重視しているスコアリング プロファイルを含む、インデックスを定義します。スキーマは、インデックスで使用するすべてのフィールドを定義します。スコアリング プロファイルで使用できる `margin` など検索できないフィールドも含まれることに注意してください。スコアリング プロファイルの構文は、「[Add a scoring profile to an Azure Search index (検索インデックスへのスコアリング プロファイルの追加 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/azure/dn798928.aspx)」に記載されています。
+**Schema.json** は、このデモで重視しているスコアリング プロファイルを含む、インデックスを定義します。スキーマは、インデックスで使用するすべてのフィールドを定義します。スコアリング プロファイルで使用できる `margin` など検索できないフィールドも含まれることに注意してください。スコアリング プロファイルの構文は、「[Add a scoring profile to an Azure Search index (検索インデックスへのスコアリング プロファイルの追加 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798928.aspx)」に記載されています。
 
 **Data1 3.json** は、データとして、いくつかのジャンルの 246 件のアルバムを提供します。このデータは、実際のアルバムとアーティストの情報を組み合わせたもので、検索操作を示すための `price` と `margin` のような架空のフィールドがあります。データ ファイルは、インデックスに準拠し、Azure Search サービスにアップロードされます。データがアップロードされ、インデックスが作成されると、そのデータに対するクエリを実行することができます。
 
@@ -85,9 +99,9 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 
 <h2 id="next-steps">次のステップ</h2>
 
-スコアリング プロファイルについて詳細に学習します。詳細については、「[Add a scoring profile to an Azure Search index (検索インデックスへのスコアリング プロファイルの追加 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/azure/dn798928.aspx)」を参照してください。
+スコアリング プロファイルについて詳細に学習します。詳細については、「[Add a scoring profile to an Azure Search index (検索インデックスへのスコアリング プロファイルの追加 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
 
-検索構文とクエリ パラメーターについて詳細に学習します。詳細については、「[Search Documents (Azure Search REST API) (検索ドキュメント (Azure Search REST API))](http://msdn.microsoft.com/ja-jp/library/azure/dn798927.aspx)」を参照してください。
+検索構文とクエリ パラメーターについて詳細に学習します。詳細については、「[Search Documents (Azure Search REST API) (検索ドキュメント (Azure Search REST API))](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
 インデックスの作成について前に戻って詳しく学習する必要がありますか。[このビデオ](http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)で、基本を理解してください。
 
@@ -104,3 +118,5 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 [11]: ./media/search-get-started-scoring-profiles/AzureSearch_Scoring_AppConfig.PNG
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
 [9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG
+
+<!--HONumber=46--> 

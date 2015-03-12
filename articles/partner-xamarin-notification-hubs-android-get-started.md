@@ -1,19 +1,33 @@
-﻿<properties urlDisplayName="" pageTitle="通知ハブの使用 (Xamarin.Android アプリケーション)" metaKeywords="" description="Azure Notification Hubs を使用して Xamarin Android アプリケーションにプッシュ通知を送信する方法について説明します。" metaCanonical="" authors="donnam" solutions="" manager="dwrede" editor="" services="mobile-services,notification-hubs" documentationCenter="" title="Get started with Notification Hubs" />
+<properties 
+	pageTitle="通知ハブの使用 (Xamarin.Android アプリケーション)" 
+	description="Azure Notification Hubs を使用して Xamarin Android アプリケーションにプッシュ通知を送信する方法について説明します。 
+	authors="lindydonna" 
+	manager="dwrede" 
+	editor="" 
+	services="mobile-services" 
+	documentationCenter="xamarin"/>
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="donnam" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="" 
+	ms.devlang="dotnet" 
+	ms.topic="hero-article" 
+	ms.date="11/11/2014" 
+	ms.author="donnam"/>
 
 # 通知ハブの使用
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
 
 このトピックでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。 
-このチュートリアルでは、Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション][GitHub]サンプルで参照できます。
+このチュートリアルでは、Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション ][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
 1. [Google Cloud Messaging を有効にする]
-2. [通知ハブを構成する]
-3. [通知ハブにアプリケーションを接続する]
+2. [Notification Hubs を構成する]
+3. [Notification Hubs にアプリケーションを接続する]
 4. [エミュレーターを使用してアプリケーションを実行する]
 5. [バックエンドから通知を送信する]
 
@@ -21,28 +35,24 @@
 
 + [Xamarin.Android]
 + アクティブな Google アカウント
-+ [Azure モバイル サービス コンポーネント]
++ [Azure Mobile Services コンポーネント]
 + [Google Cloud Messaging コンポーネント]
 
 このチュートリアルを完了することは、Xamarin.Android アプリの他のすべての通知ハブ チュートリアルの前提条件です。 
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fmanage%2Fservices%2Fnotification-hubs%2Fgetting-started-xamarin-android%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fmanage%2Fservices%2Fnotification-hubs%2Fgetting-started-xamarin-android%2F"%20target="_blank)を参照してください。
 
 <h2><a name="register"></a>Google Cloud Messaging を有効にする</h2>
 
 <p></p>
 
-<div class="dev-callout"><b>注</b>
-<p>このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。</p>
-</div> 
+> [AZURE.IMPORTANT] このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、[accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302"%20target="_blank) にアクセスしてください。 
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動し、Google アカウント資格情報でサインインして、**[プロジェクトの作成]** をクリックします。
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動し、Google アカウント資格情報でサインインして、[**Create project...**] をクリックします。
 
    	![][1]   
 	
-	<div class="dev-callout"><b>注</b>
-	<p>既にプロジェクトがある場合は、ログイン後に <strong>[Dashboard]</strong> ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、<strong>[API Project]</strong> を展開し、<strong>[Other projects]</strong> の下の <strong>[Create...]</strong> をクリックして、プロジェクト名を入力してから <strong>[Create project]</strong> をクリックします。</p>
-    </div>
+	> [AZURE.NOTE] 既にプロジェクトがある場合は、ログイン後に **[Dashboard]** ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、**[API Project]** を展開し、**[Other projects]** の下の **[Create...]** をクリックして、プロジェクト名を入力してから **[Create project]** をクリックします。
 
 2. 左側の列の **[Overview]** をクリックし、**[Dashboard]** セクションのプロジェクト番号をメモします。 
 
@@ -50,7 +60,7 @@
 
 3. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> ページで **[Services]** をクリックし、トグルをクリックして **[Google Cloud Messaging for Android]** を有効にし、サービスの条件に同意します。 
 
-4. **[API Access]** をクリックし、**[Create new Server key]** をクリックします。 
+4. **[API Access]** をクリックし、**[Create new Server key...]** をクリックします。 
 
    	![][2]
 
@@ -64,9 +74,9 @@
 
 次に、この API キー値を使用して、通知ハブが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
-<h2><a name="configure-hub"></a>通知ハブを構成する</h2>
+<h2><a name="configure-hub"></a>Notification Hubs を構成する</h2>
 
-1. [Azure の管理ポータル]にログオンし、画面下部にある**[+ 新規]**をクリックします。
+1. [Azure 管理ポータル] にログオンし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -94,7 +104,7 @@
 
 これで、通知ハブが GCM と連動するように構成されました。接続文字列にアプリケーションを登録し、プッシュ通知を送信できます。
 
-<h2><a name="connecting-app"></a>通知ハブにアプリケーションを接続する</h2>
+<h2><a name="connecting-app"></a>Notification Hubs にアプリケーションを接続する</h2>
 
 ### 新しいプロジェクトを作成する
 
@@ -107,21 +117,19 @@
 
    	![][15]
 
-3. **[最小 Android バージョン]** を [API レベル 8] に設定します。
+3. **[Minimum Android version]** を [API Level 8] に設定します。
 
-4. **[ターゲットの Android バージョン]** を、ターゲットとする API バージョンに設定します (API レベル 8 以上にする必要があります)。
+4. **[Target Android version]** を、ターゲットとする API バージョンに設定します (API レベル 8 以上にする必要があります)。
 
 5. **パッケージ名**の先頭の文字は、小文字にしてください。
 
-	<div class="dev-callout"><b>注</b>
-    <p>パッケージ名の先頭の文字は、小文字にする必要があります。小文字にしないと、以下のプッシュ通知に **BroadcastReceiver** と **IntentFilter** を登録するときに、アプリケーション マニフェスト エラーが発生します。</p>
-    </div> 
+	> [AZURE.IMPORTANT] パッケージ名の先頭の文字は、小文字にする必要があります。小文字にしないと、以下のプッシュ通知に **BroadcastReceiver** と **IntentFilter** を登録するときに、アプリケーション マニフェスト エラーが発生します。
 
 ### Google Cloud Messaging クライアントをプロジェクトに追加する
 
 Xamarin コンポーネント ストアから入手できる Google Cloud Messaging クライアントにより、Xamarin.Android でプッシュ通知をサポートするプロセスが効率化されます。
 
-1. Xamarin.Android アプリケーションの [コンポーネント] フォルダーを右クリックし、**[コンポーネントの取得]** を選択します。
+1. Xamarin.Android アプリケーションの [Components] フォルダーを右クリックし、**[Get More Components...]** を選択します。
 
 2. **Google Cloud Messaging クライアント** コンポーネントを検索します。
 
@@ -129,7 +137,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 ### Xamarin.NotificationHub をプロジェクトに追加する
 
-このアセンブリは、Azure Notification Hubs に登録するための簡単な方法を提供します。ここに示す手順に従ってダウンロードしてください。[サンプル ダウンロード][GitHub]にもあります。
+このアセンブリは、Azure Notification Hubs に登録するための簡単な方法を提供します。ここに示す手順に従ってダウンロードしてください。[サンプル ダウンロード ][GitHub] にもあります。
 
 1. [Xamarin.NotificationHub Github ページ]にアクセスし、ソース フォルダーをダウンロードしてビルドします。
 
@@ -137,9 +145,9 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 3. Xamarin.Android プロジェクトを Xamarin Studio (または Visual Studio) で開きます。
 
-4. プロジェクトの **References** フォルダーを右クリックし、**[Edit References]** を選択します。
+4. プロジェクトの **References** フォルダーを右クリックし、**[Edit References...]** を選択します。
 
-5. **[.Net アセンブリ]** タブに移動します。プロジェクトの **_external** フォルダーを参照し、前の手順でビルドした **ByteSmith.WindowsAzure.Messaging.Android.dll** を選択し、**[追加]** をクリックします。[OK] をクリックしてダイアログ ボックスを閉じます。 
+5. **[.Net Assembly]** タブに移動します。プロジェクトの **external** フォルダーを参照し、前の手順でビルドした **ByteSmith.WindowsAzure.Messaging.Android.dll** を選択し、**[Add]** をクリックします。[OK] をクリックしてダイアログ ボックスを閉じます。 
 
 ### プロジェクトで通知ハブを設定する
 
@@ -171,9 +179,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 4. 新しい **MyBroadcastReceiver** クラスを作成します。
 
-	<div class="dev-callout"><b>注</b>
-    <p>**BroadcastReceiver** を新しく作成する手順を説明します。ただし、以下の **MyBroadcastReceiver.cs** を手動ですばやく作成する代わりの手順として、GitHub のサンプル Xamarin.Android プロジェクトにある **GcmService.cs** ファイルを参照してください。**GcmService.cs** を複製してクラス名を変更する方法も利用できます。</p>
-    </div> 
+	> [AZURE.NOTE] 次に **BroadcastReceiver** を 1 から作成する手順を説明します。ただし、**MyBroadcastReceiver.cs** を手動ですばやく作成する代わりの手順として、GitHub のサンプル Xamarin.Android プロジェクトにある **GcmService.cs** ファイルを参照してください。**GcmService.cs** を複製してクラス名を変更する方法も利用できます。
 
 5. 次の using ステートメントを、(前の追加したコンポーネントとアセンブリを参照する) **MyBroadcastReceiver.cs** に追加します。
 
@@ -191,7 +197,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 		[assembly: UsesPermission(Name = "android.permission.INTERNET")]
 		[assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
-6. In **MyBroadcastReceiver.cs** change the **MyBroadcastReceiver** class to match the following:
+6. **MyBroadcastReceiver.cs** で、**MyBroadcastReceiver** クラスを変更して次の内容に合わせます。
 
     	[BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
@@ -204,7 +210,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
             public const string TAG = "MyBroadcastReceiver-GCM";
         }
         
-7. Add another class in **MyBroadcastReceiver.cs** named **PushHandlerService** which derives from **PushHandlerServiceBase**. Make sure to use the **Service** directive on the class:
+7. **MyBroadcastReceiver.cs** に、**PushHandlerService** という名前の別のクラスを追加します (**PushHandlerServiceBase** から派生)。クラスでは必ず **Service** ディレクティブを使用してください。
 
     	[Service] //Must use the service tag
     	public class GcmService : GcmServiceBase
@@ -254,9 +260,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
             }
         }
 
-	<div class="dev-callout"><b>注</b>
-    <p>上の **OnRegistered()** コードでは、特定のメッセージング チャネルを登録するタグを指定できる点に注目してください。</p>
-    </div> 
+	> [AZURE.NOTE] 上の **OnRegistered()** コードでは、特定のメッセージング チャネルを登録するタグを指定できる点に注目してください。
     
 10. **PushHandlerService** 内の **OnMessage** メソッドを次のコードでオーバーライドします。
 
@@ -324,23 +328,21 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 3. 上部のツール バーで、**[Run]** をクリックし、アプリケーションを選択します。これによりエミュレーターが起動し、アプリケーションが実行されます。
 
-4. アプリケーションにより、GCM から *registrationId* が取得され、Notification Hub に登録されます。
+4. アプリケーションにより、GCM から  *registrationId* が取得され、Notification Hubs に登録されます。
 
-	<div class="dev-callout"><b>注</b>
-    <p>プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります (エミュレーターで、**[Settings]** に移動して **[Add Account]** をクリックします)。また、エミュレーターがインターネットに接続されていることも確認してください。</p>
-    </div> 
+	> [AZURE.IMPORTANT] プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります (エミュレーターで、**[Settings]** に移動して **[Add Account]** をクリックします)。さらに、エミュレーターがインターネットに接続されていることを確認します。
 
 <h2><a name="send"></a>バックエンドから通知を送信する</h2>
 
-Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知が送信できます。このチュートリアルでは、.NET コンソール アプリケーションと、ノード スクリプトを使用するモバイル サービスで通知を送信します。
+通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションと、ノード スクリプトを使用するモバイル サービスで通知を送信します。
 
 .NET アプリケーションを使用して通知を送信するには
 
-1.  Visual C# の新しいコンソール アプリケーションを作成します。 
+1. Visual C# の新しいコンソール アプリケーションを作成します。 
 
    	![][20]
 
-2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a> を使用して Azure Service Bus SDK への参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力します。
+2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure Service Bus SDK への参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力します。
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -350,7 +352,7 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
 
         using Microsoft.ServiceBus.Notifications;
 
-3. `Program` クラスで、次のメソッドを追加します。
+3.  `Program` クラスで、次のメソッドを追加します。
 
         private static async void SendNotificationAsync()
         {
@@ -363,13 +365,13 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
          SendNotificationAsync();
 		 Console.ReadLine();
 
-5.  F5 キーを押してアプリケーションを実行します。トースト通知を受信します。
+5. F5 キーを押してアプリケーションを実行します。トースト通知を受信します。
 
    	![][21]
 
 モバイル サービスを使用して通知を送信するには、「[モバイル サービスの使用]」に従った後、次の手順を実行します。
 
-1. [Azure の管理ポータル]にログオンし、[モバイル サービス] をクリックします。
+1. [Azure 管理ポータル]にログオンし、[モバイル サービス] をクリックします。
 
 2. 上部にある **[スケジューラ]** タブを選択します。
 
@@ -379,9 +381,9 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
 
    	![][23]
 
-4.  ジョブが作成されたら、ジョブ名をクリックします。上部のバーにある **[スクリプト]** タブをクリックします。
+4. ジョブが作成されたら、ジョブ名をクリックします。上部のバーにある **[スクリプト]** タブをクリックします。
 
-5.  スケジューラ関数内に次のスクリプトを挿入します。必ず、プレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。**[保存]** をクリックします。
+5. スケジューラ関数内に次のスクリプトを挿入します。必ず、プレースホルダーを、通知ハブの名前と既に取得してある  *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。**[保存]** をクリックします。
 
         var azure = require('azure');
 		var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -398,16 +400,16 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
           }
 	    );
 
-6.  下部のバーにある **[一度だけ実行する]** をクリックします。トースト通知を受信します。
+6. 下部のバーにある **[一度だけ実行する]** をクリックします。トースト通知を受信します。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要]」と「[方法: Windows Azure 通知ハブ (Android アプリ)]」を参照してください。
 
 <!-- Anchors. -->
 [Google Cloud Messaging を有効にする]: #register
-[通知ハブを構成する]: #configure-hub
-[通知ハブにアプリケーションを接続する]: #connecting-app
+[Notification Hubs を構成する]: #configure-hub
+[Notification Hubs にアプリケーションを接続する]: #connecting-app
 [エミュレーターを使用してアプリケーションを実行する]: #run-app
 [バックエンドから通知を送信する]: #send
 [次のステップ]:#next-steps
@@ -438,22 +440,24 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/ja-jp/
 [23]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-scheduler2.png
 
 <!-- URLs. -->
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-[方法: Windows Azure 通知ハブ (Android アプリ)]: http://msdn.microsoft.com/ja-jp/library/dn282661.aspx
+[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[方法: Windows Azure 通知ハブ (Android アプリ)]: http://msdn.microsoft.com/library/dn282661.aspx
 
 [通知ハブを使用したユーザーへのプッシュ通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
 [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
-[GCMClient Component page]: http://components.xamarin.com/view/GCMClient
+[GCMClient コンポーネント ページ]: http://components.xamarin.com/view/GCMClient
 [Xamarin.NotificationHub Github ページ]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin.Android]: http://xamarin.com/download/
-[Azure モバイル サービス コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
+[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [Google Cloud Messaging コンポーネント]: http://components.xamarin.com/view/GCMClient/
+
+<!--HONumber=45--> 

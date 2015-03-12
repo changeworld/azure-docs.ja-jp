@@ -1,6 +1,20 @@
-﻿<properties title="How to create a cloud collection of RemoteApp" pageTitle="RemoteApp のクラウド コレクションの作成方法" description="Azure クラウドにデータを保存する RemoteApp のデプロイメントを作成する方法について学習します。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties 
+	pageTitle="RemoteApp のクラウド コレクションの作成方法" 
+	description="Azure クラウドにデータを保存する RemoteApp のデプロイメントを作成する方法について学習します。" 
+	services="remoteapp" 
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" 
+	editor=""/>
 
-<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/12/2014" ms.author="elizapo" ms.manager="kathyw" />
+<tags 
+	ms.service="remoteapp" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2/17/2015" 
+	ms.author="elizapo"/>
 
 #RemoteApp のクラウド コレクションの作成方法
 
@@ -20,10 +34,10 @@ RemoteApp のコレクションには、次の 2 種類があります:
 
 コレクションを作成する前に以下の操作が必要です:
 
-- RemoteApp にサインアップする。これは [http://azure.microsoft.com/ja-jp/services/remoteapp/](http://azure.microsoft.com/ja-jp/services/remoteapp/) で行うことができます。
+- RemoteApp にサインアップする。これは [http://azure.microsoft.com/services/remoteapp/](http://azure.microsoft.com/services/remoteapp/) で行うことができます。
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 - この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。 
-- カスタム アプリケーションまたは LOB プログラムが必要な場合は、新しい [Custom Template Image (カスタム テンプレート イメージ)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/) を作成してクラウド コレクションで使用してください。
+- カスタム アプリケーションまたは LOB プログラムが必要な場合は、新しい [Custom Template Image (カスタム テンプレート イメージ)](http://azure.microsoft.com/documentation/articles/remoteapp-create-custom-image/) を作成してクラウド コレクションで使用してください。
 
 ## **手順 1:RemoteApp コレクションを作成する** ##
 
@@ -36,7 +50,7 @@ RemoteApp のコレクションには、次の 2 種類があります:
 4. 使用する標準的なまたは基本的なプランを選択します。
 5. このコレクションに使用するテンプレートを選択します。 
 
-	**ヒント:** RemoteApp のサブスクリプションには、Word などの公開されたプログラムおよび公開する準備の完了したプログラムを含む Office 365 または Office 2013 (評価版) プログラムが含まれている [Template Images (テンプレート イメージ)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-images/) が付属しています。また、新しい [Custom Template Image (カスタム テンプレート イメージ)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/) を作成し、クラウド コレクションで使用することができます。
+	**ヒント:** RemoteApp のサブスクリプションには、Word などの公開されたプログラムおよび公開する準備の完了したプログラムを含む Office 365 または Office 2013 (評価版) プログラムが含まれている [Template Images (テンプレート イメージ)](http://azure.microsoft.com/documentation/articles/remoteapp-images/) が付属しています。また、新しい [Custom Template Image (カスタム テンプレート イメージ)](http://azure.microsoft.com/documentation/articles/remoteapp-create-custom-image/) を作成し、クラウド コレクションで使用することができます。
 
 
 1. **[RemoteApp コレクションの作成]**をクリックします。
@@ -48,7 +62,7 @@ RemoteApp コレクションが作成されたら、RemoteApp の **[クイッ�
 
 ## **手順 2:Active Directory ディレクトリの同期の構成 (オプション)** ##
 
-Active Directory を使用する場合、RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Configuring Active Directory for Azure RemoteApp (Azure RemoteApp の Active Directory を構成する)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-ad/)」を参照してください。
+Active Directory を使用する場合、RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Configuring Active Directory for Azure RemoteApp (Azure RemoteApp の Active Directory を構成する)](http://azure.microsoft.com/documentation/articles/remoteapp-ad/)」を参照してください。
 
 ## **手順 3:RemoteApp のアプリを発行する** ##
 
@@ -80,3 +94,5 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

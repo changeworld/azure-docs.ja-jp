@@ -1,6 +1,20 @@
-﻿<properties pageTitle="発行設定ファイルを Visual Studio 2013 にインポートする | Mobile Services" description="Visual Studio 2013 で Azure Mobile Services アプリケーションのサブスクリプション発行設定ファイルをインポートする方法について説明します。" documentationCenter="windows" services="mobile-services" manager="dwrede" editor="" authors="ggailey777"/>
+﻿<properties 
+	pageTitle="発行設定ファイルを Visual Studio 2013 にインポートする | Mobile Services" 
+	description="Visual Studio 2013 で Azure Mobile Services アプリケーションのサブスクリプション発行設定ファイルをインポートする方法について説明します。" 
+	documentationCenter="windows" 
+	services="mobile-services" 
+	manager="dwrede" 
+	editor="" 
+	authors="ggailey777"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="glenga"/>
 
 # サブスクリプション発行設定ファイルを Visual Studio 2013 にインポートする
 

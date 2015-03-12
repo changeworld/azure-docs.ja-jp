@@ -1,6 +1,20 @@
-﻿<properties title="Introduction to Azure Data Factory" pageTitle="Azure Data Factory の概要" description="Azure データ ファクトリ サービスを使用してデータ処理、データ保存、データ移動のサービスを構成し、信頼済みの情報を生成するパイプラインを作成する方法について説明します。" metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
+﻿<properties 
+	pageTitle="Azure Data Factory の概要" 
+	description="Azure データ ファクトリ サービスを使用してデータ処理、データ保存、データ移動のサービスを構成し、信頼済みの情報を生成するパイプラインを作成する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
-<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/13/2014" ms.author="spelluru" />
+<tags 
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/13/2015" 
+	ms.author="spelluru"/>
 
 # Azure Data Factory サービスの概要
 **Azure Data Factory** は完全に管理されたサービスで、データの保存、処理、移動の各サービスを効率的かつスケーラブルで信頼性の高いデータ生成パイプラインとして構成します。開発者は Data Factory を使用して、内部設置型ソースやクラウド ソースからの半構造化、非構造化、および構造化データを信頼できる情報に変換できます。また、内部設置型、クラウドベース、およびインターネット サービスから取得したデータを結合、集計、変換するデータ ドリブン ワークフロー (パイプライン) を構築し、シンプルな JSON スクリプトを使用して複雑なデータ処理を設定できます。Azure Data Factory サービスでは、Azure プレビュー ポータルが提供する充実したビジュアル エクスペリエンスを通じて、これらのパイプラインの監視と管理をひとめで行えます。パイプラインによって生成された情報は、BI ツールや分析ツールなどのアプリケーションで簡単に利用でき、重要なビジネスに関する洞察と意思決定を信頼できる方法で後押しします。
@@ -175,3 +189,5 @@ Microsoft Data Management Gateway は、内部設置型のデータ ソースを
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

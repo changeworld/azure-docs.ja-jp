@@ -1,6 +1,20 @@
-﻿<properties title="DocumentDB resource model and concepts" pageTitle="DocumentDB のリソース モデルと概念 | Azure" description="DocumentDB nosql ドキュメント データベースでは、論理 URI で一意に識別されるリソースを管理します。管理者は、HTTP 動詞、要求/応答ヘッダー、ステータス コードを使用してこれを操作できます。" metaKeywords="" services="documentdb" solutions="data-management" documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="DocumentDB のリソース モデルと概念 | Azure" 
+	description="Microsoft Azure DocumentDB は完全に管理された NoSQL ドキュメント データベースであり、データベース アカウント、データベース、コレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイル、メディア、ユーザー、リソースの管理権限の階層モデルを使用します。"  
+	services="documentdb" 
+	documentationCenter="" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/03/2015" 
+	ms.author="mimig"/>
 
 #DocumentDB のリソース モデルと概念
 
@@ -460,3 +474,5 @@ DocumentDB のユーザーは、アクセス許可をグループ化するため
 [2]: ./media/documentdb-resources/resources2.png
 [3]: ./media/documentdb-resources/resources3.png
 [4]: ./media/documentdb-resources/resources4.png
+
+<!--HONumber=46--> 

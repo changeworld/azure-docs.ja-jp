@@ -1,6 +1,20 @@
-﻿<properties title="Create a simple experiment in Azure Machine Learning Studio" pageTitle="Machine Learning Studio での簡単な実験の作成 | Azure" description="Azure Machine Learning Studio で実験を作成して単純なモデルをトレーニングおよびテストする方法" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Machine Learning Studio での簡単な実験の作成 | Azure" 
+	description="Azure Machine Learning Studio で実験を作成して単純なモデルをトレーニングおよびテストする方法" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/22/2014" ms.author="garye" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/07/2015" 
+	ms.author="garye"/>
 
 #Azure Machine Learning Studio での簡単な実験の作成 
  
@@ -173,7 +187,7 @@ ML Studio には、多数のサンプル データセットが含まれており
 
 作成したモデルが期待どおりであれば、Web サービスとして公開し、新しいデータを使用した自動車価格の予測に使用できます。詳細については、ML Studio のヘルプ トピック「**Publishing Experiments (実験の公開)**」を参照してください。
 
-予測モデルの作成、トレーニング、スコア付け、および公開の広範囲にわたる詳しい手順については、「[チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発](http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/)」を参照してください。 
+予測モデルの作成、トレーニング、スコア付け、および公開の広範囲にわたる詳しい手順については、「[チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発](http://azure.microsoft.com/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/)」を参照してください。 
 
 
 <!-- Images -->
@@ -191,3 +205,5 @@ ML Studio には、多数のサンプル データセットが含まれており
 [screen8a]:./media/machine-learning-create-experiment/screen8a.png
 [screen9]:./media/machine-learning-create-experiment/screen9.png
 [screen10]:./media/machine-learning-create-experiment/screen10.png
+
+<!--HONumber=46--> 

@@ -49,7 +49,7 @@ Azure ストレージ アカウントは、Azure Storage のサービスにア�
 - 標準ストレージ アカウント。BLOB、テーブル、キュー、ファイル ストレージが含まれています。
 - Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Azure Premium Storage は、[Azure のプレビューに関するページ](/ja-jp/services/preview/) からリクエストすると利用できます。
 
-ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。1 つのサブスクリプションに対し、最大 100 の一意の名前を持つストレージ アカウントを作成できます。ボリューム ディスカウント料金の詳細については、[Azure Storage 料金](http://www.windowsazure.com/ja-jp/pricing/details/storage/) を参照してください。
+ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。1 つのサブスクリプションに対し、最大 100 の一意の名前を持つストレージ アカウントを作成できます。ボリューム ディスカウント料金の詳細については、[Azure Storage 料金](http://azure.microsoft.com/pricing/details/storage/) を参照してください。
 
 Azure は、まず [無料評価版](/ja-jp/pricing/free-trial/) で使用してみることができます。プランを購入することを決定すると、さまざまな [購入オプション](/ja-jp/pricing/purchase-options/) から選択できます。[MSDN サブスクライバー](/ja-jp/pricing/member-offers/msdn-benefits-details/) である場合は、Azure Storage を含む Azure サービスで使用できる毎月の無料クレジットを受け取ることができます。
 
@@ -164,7 +164,7 @@ Azure ストレージを導入するには、次のリソースを参照して�
 ### ダウンロード
 
 - [Azure Storage NuGet パッケージ - .NET、Windows Phone、および Windows Runtime 用クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
-- [Azure SDK とツール](http://azure.microsoft.com/ja-jp/downloads/)
+- [Azure SDK とツール](http://azure.microsoft.com/downloads/)
 - [Azure Storage エミュレーター](http://www.microsoft.com/en-in/download/details.aspx?id=43709)
 
 ### ソース コード
@@ -174,15 +174,15 @@ Azure ストレージを導入するには、次のリソースを参照して�
 ### ドキュメント
 
 - [Azure ストレージのドキュメント](/ja-jp/documentation/services/storage/)
-- [Azure Storage サービス REST API リファレンス](http://msdn.microsoft.com/ja-jp/library/dd179355.aspx)
-- [AzCopy コマンドライン ツール リファレンス](http://azure.microsoft.com/ja-jp/documentation/articles/storage-use-azcopy/)
+- [Azure Storage サービス REST API リファレンス](http://msdn.microsoft.com/library/dd179355.aspx)
+- [AzCopy コマンドライン ツール リファレンス](http://azure.microsoft.com/documentation/articles/storage-use-azcopy/)
 
 <h3>PowerShell ユーザー向け</h3>
-- [Azure Storage コマンドレット](http://msdn.microsoft.com/ja-jp/library/azure/dn806401.aspx)
+- [Azure Storage コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
 
 <h3>.NET 開発者向け</h3>
 
-- [.NET クライアント ライブラリ リファレンス](http://msdn.microsoft.com/ja-jp/library/wa_storage_30_reference_home.aspx)
+- [.NET クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/wa_storage_30_reference_home.aspx)
 - [.NET から BLOB ストレージを使用する方法](../storage-dotnet-how-to-use-blobs/)
 - [.NET からテーブル ストレージを使用する方法](../storage-dotnet-how-to-use-tables/)
 - [.NET からキュー ストレージを使用する方法](../storage-dotnet-how-to-use-queues/)
@@ -217,5 +217,4 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [Python から BLOB ストレージを使用する方法](../storage-python-how-to-use-blob-storage/)
 - [Python からテーブル ストレージを使用する方法](../storage-python-how-to-use-table-storage/)
 - [Python からキュー ストレージを使用する方法](../storage-python-how-to-use-queue-storage/)
-
 <!--HONumber=42-->

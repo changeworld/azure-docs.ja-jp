@@ -36,7 +36,7 @@ JavaScript バックエンド モバイル サービスの場合は、TodoItem �
 
 	var todoTable = mobileServiceClient.getTable('TodoItem');
 
-これらの例を使用するには、テーブルのアクセス許可を **[アプリケーション キーを持つユーザー]** に設定する必要があります。後で、認証を設定できます。詳細については、「[Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)](http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-html-get-started-users/)」をご覧ください。
+これらの例を使用するには、テーブルのアクセス許可を **[アプリケーション キーを持つユーザー]** に設定する必要があります。後で、認証を設定できます。詳細については、「[Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)](http://azure.microsoft.com/documentation/articles/mobile-services-html-get-started-users/)」をご覧ください。
 
 #####エントリを追加する 
 

@@ -208,7 +208,7 @@ Python Tools for Visual Studio、Bottle、Azure テーブル ストレージの�
 
 <!--External Link references-->
 [Azure 管理ポータル]: https://manage.windowsazure.com
-[Azure SDK for .NET]: http://azure.microsoft.com/ja-jp/downloads/
+[Azure SDK for .NET]: http://azure.microsoft.com/downloads/
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
@@ -220,7 +220,7 @@ Python Tools for Visual Studio、Bottle、Azure テーブル ストレージの�
 [Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
 [Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
-[Azure ストレージ]: http://azure.microsoft.com/ja-jp/documentation/services/storage/
+[Azure ストレージ]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
 
 

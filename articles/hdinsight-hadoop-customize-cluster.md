@@ -24,7 +24,7 @@ HDInsight クラスターは、その他さまざまな方法でカスタマイ�
 
 
 
-> [AZURE.NOTE] Script Action を使用したクラスターのカスタマイズは、HDInsight クラスター バージョン 3.1 でのみサポートされます。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
+> [AZURE.NOTE] Script Action を使用したクラスターのカスタマイズは、HDInsight クラスター バージョン 3.1 でのみサポートされます。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
 
 
 
@@ -65,7 +65,7 @@ Azure 管理ポータル、PowerShell コマンドレット、または HDInsigh
 
 **管理ポータルからの場合**
 
-1. [カスタム オプションを使用したクラスターのプロビジョニング](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-provision-clusters/#portal)に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
+1. [カスタム オプションを使用したクラスターのプロビジョニング](http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/#portal)に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
 2. ウィザードの [スクリプトのアクション] ページで、**[スクリプト アクションの追加]** をクリックし、以下に示す Script Action についての詳細を入力します。
 
 	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-customize-cluster/HDI.CustomProvision.Page6.png "Use Script Action to customize a cluster")
@@ -86,7 +86,7 @@ Azure 管理ポータル、PowerShell コマンドレット、または HDInsigh
   
 **PowerShell コマンドレットを使用する場合**
 
-HDInsight PowerShell のコマンドを使用して、1 つまたは複数の Script Action を実行します。カスタム スクリプトの呼び出しには、**<a href = "http://msdn.microsoft.com/ja-jp/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** コマンドレットを使用できます。これらのコマンドレットを使用するには Azure PowerShell をインストールし、構成しておく必要があります。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、[Azure PowerShell のインストールおよび構成][powershell-install-configure]に関するページを参照してください。
+HDInsight PowerShell のコマンドを使用して、1 つまたは複数の Script Action を実行します。カスタム スクリプトの呼び出しには、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** コマンドレットを使用できます。これらのコマンドレットを使用するには Azure PowerShell をインストールし、構成しておく必要があります。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、[Azure PowerShell のインストールおよび構成][powershell-install-configure]に関するページを参照してください。
 
 次の PowerShell コマンドを使用して、HDInsight クラスターのデプロイ時に、1 つの Script Action を実行します。
 
@@ -106,13 +106,13 @@ HDInsight PowerShell のコマンドを使用して、1 つまたは複数の Sc
 
 **HDInsight .NET SDK を使用する場合**
 
-HDInsight .NET SDK では、 <a href="http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx" target="_blank">カスタム スクリプトを呼び出すための</a> ScriptAction クラスが用意されています。HDInsight .NET SDK を使用するには:
+HDInsight .NET SDK では、 <a href="http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx" target="_blank">カスタム スクリプトを呼び出すための</a> ScriptAction クラスが用意されています。HDInsight .NET SDK を使用するには:
 
 1. Visual Studio アプリケーションを作成し、Nuget から SDK をインストールします。**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。コンソールで次のコマンドを実行して、パッケージをインストールします。
 
 		Install-Package Microsoft.WindowsAzure.Management.HDInsight
 
-2. SDK を使用してクラスターを作成します。手順については、[.NET SDK を使用した HDInsight クラスターのプロビジョニング](http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-provision-clusters/#sdk)に関するページを参照してください。
+2. SDK を使用してクラスターを作成します。手順については、[.NET SDK を使用した HDInsight クラスターのプロビジョニング](http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/#sdk)に関するページを参照してください。
 
 3. 以下に示すように、**ScriptAction** クラスを使用してカスタム スクリプトを呼び出します。
 
@@ -145,11 +145,11 @@ HDInsight には、HDInsight クラスターに次の各コンポーネントを
 - **Giraph のインストール**。[HDInsight クラスターに Giraph をインストールして使用します。](../hdinsight-hadoop-giraph-install)
 
 ## <a name="support"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
-Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。Azure サポート FAQ Web サイトのサポート範囲のセクションでも説明しているように、Microsoft Azure では、 <a href="http://azure.microsoft.com/ja-jp/support/faq/" target="_blank">オープン ソース テクノロジについて一般的なレベルのサポートを提供しています</a>。これに加え、HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
+Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。Azure サポート FAQ Web サイトのサポート範囲のセクションでも説明しているように、Microsoft Azure では、 <a href="http://azure.microsoft.com/support/faq/" target="_blank">オープン ソース テクノロジについて一般的なレベルのサポートを提供しています</a>。これに加え、HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
-- **組み込みコンポーネント**。これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。たとえば、Yarn リソース マネージャー、Hive クエリ言語、Mahout ライブラリなどがこのカテゴリに属します。すべてのクラスター コンポーネントの一覧は、 <a href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/" target="_blank">ここから入手できます</a>。
+- **組み込みコンポーネント**。これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。たとえば、Yarn リソース マネージャー、Hive クエリ言語、Mahout ライブラリなどがこのカテゴリに属します。すべてのクラスター コンポーネントの一覧は、 <a href="http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/" target="_blank">ここから入手できます</a>。
 - **カスタム コンポーネント**。クラスターのユーザーは、コミュニティで入手できるコンポーネントや自作のコンポーネントを、インストールするか、ワークロード内で使用することができます。
 
 組み込みコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離および解決については、Microsoft サポートが支援します。
@@ -174,5 +174,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Stages during cluster provisioning"
-
 <!--HONumber=42-->

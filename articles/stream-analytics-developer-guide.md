@@ -1,6 +1,20 @@
-﻿<properties title="Azure Stream Analytics developer guide" pageTitle="Stream Analytics 開発者ガイド | Azure" description="Azure Stream Analytics アプリケーションを開発する方法について説明します。" metaKeywords="" services="stream analytics" solutions="" documentationCenter="" authors="jgao" videoId="" scriptId="" manager="paulettm" editor="cgronlun"/>
+﻿<properties 
+	pageTitle="Stream Analytics 開発者ガイド | Azure" 
+	description="Azure Stream Analytics アプリケーションを開発する方法について説明します。" 
+	services="stream-analytics" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="paulettm" 
+	editor="cgronlun"/>
 
-<tags ms.service="stream-analytics" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="data-services" ms.date="10/28/2014" ms.author="jgao" />
+<tags 
+	ms.service="stream-analytics" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="data-services" 
+	ms.date="2/17/2015" 
+	ms.author="jgao"/>
 
 
 # Azure Stream Analytics 開発者ガイド 
@@ -187,11 +201,11 @@ Stream Analytics では、次ジョブの最上位レベルの設定を調整す
 
 
 <!--Link references-->
-[azure.blob.storage]: http://azure.microsoft.com/ja-jp/documentation/services/storage/
-[azure.blob.storage.use]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage]: http://azure.microsoft.com/documentation/services/storage/
+[azure.blob.storage.use]: http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
 
-[azure.event.hubs]: http://azure.microsoft.com/ja-jp/services/event-hubs/
-[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/ja-jp/library/azure/dn789972.aspx
+[azure.event.hubs]: http://azure.microsoft.com/services/event-hubs/
+[azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx
 
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.forum]: http://go.microsoft.com/fwlink/?LinkId=512151
@@ -203,3 +217,5 @@ Stream Analytics では、次ジョブの最上位レベルの設定を調整す
 [stream.analytics.limitations]: ../stream-analytics-limitations/
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+
+<!--HONumber=46--> 

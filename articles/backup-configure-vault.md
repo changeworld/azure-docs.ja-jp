@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Configure a Backup Vault" pageTitle="Windows Server のバックアップをすばやく簡単に行うための Azure Recovery Services の構成" metaKeywords="障害復旧" description="このチュートリアルを使用し、Microsoft の Azure クラウド ソリューションの Backup サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。" metaCanonical="" services="recovery-services" documentationCenter="" title="Configure Azure Backup to quickly and easily back-up Windows Server" authors="markgal" solutions="" manager="johndaw" editor="tysonn" />
+﻿<properties 
+	pageTitle="Windows Server のバックアップをすばやく簡単に行うための Azure Recovery Services の構成" 
+	description="このチュートリアルを使用し、Microsoft の Azure クラウド ソリューションの Backup サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。" 
+	services="site-recovery" 
+	documentationCenter="" 
+	authors="markgalioto" 
+	manager="jwhit" 
+	editor="tysonn"/>
 
-<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/21/2014" ms.author="markgal" />
+<tags 
+	ms.service="site-recovery" 
+	ms.workload="backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/21/2014" 
+	ms.author="markgal"/>
 
 
 
@@ -61,8 +75,8 @@
 
 3. [クイック スタート] ページで、ダウンロードするエージェントの種類を選択します。**[Azure Backup エージェントのダウンロード]**、**[Windows Server と System Center Data Protection Manager]**、または **[Windows Server Essentials]** を選択できます。詳細情報
 
-	* [Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager の Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/ja-jp/library/hh831761.aspx#BKMK_installagent)
-	* [Windows Server 2012 Essentials の Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/ja-jp/library/jj884318.aspx)
+	* [Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager の Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/library/hh831761.aspx#BKMK_installagent)
+	* [Windows Server 2012 Essentials の Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/library/jj884318.aspx)
 
 エージェントがインストールされたら、適切なローカル管理インターフェイス (Microsoft 管理コンソール スナップイン、System Center Data Protection Manager コンソール、Windows Server Essentials ダッシュボードなど) を使用して、サーバーのバックアップ ポリシーを構成できます。
 	
@@ -101,3 +115,5 @@
 [protected-itmes]: ./media/backup-configure-vault/RS_protecteditems.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

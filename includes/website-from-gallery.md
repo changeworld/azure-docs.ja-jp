@@ -11,7 +11,7 @@
 
 ![Wordpress blog][13]
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ](http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/"%20target="_blank")を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/"%20target="_blank")を参照してください。
 
 ## ポータルでの Web サイトの作成
 
@@ -79,7 +79,6 @@
 [11]: ./media/website-from-gallery/wordpressgallery-07.png
 [12]: ./media/website-from-gallery/wordpressgallery-08.png
 [13]: ./media/website-from-gallery/wordpressgallery-09.png
-
 
 
 

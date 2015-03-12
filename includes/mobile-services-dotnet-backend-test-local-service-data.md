@@ -18,5 +18,4 @@
 
     ![](./media/mobile-services-dotnet-backend-test-local-service-data/vs-show-local-table-data.png)
 
-
 <!--HONumber=42-->

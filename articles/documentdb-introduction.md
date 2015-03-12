@@ -1,6 +1,20 @@
-﻿<properties title="Introduction to Microsoft Azure DocumentDB" pageTitle="Microsoft Azure DocumentDB の概要 | Azure" description="Azure DocumentDB、NoSQL ドキュメント データベース、およびクラウドとモバイル アプリケーションの価値について説明します。データを管理する方法と、アプリケーションの開発で使用する方法について説明します。" metaKeywords="" services="documentdb" solutions="data-management"  authors="spelluru" manager="jhubbard" editor="monicar" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="Microsoft Azure DocumentDB の概要 | Azure" 
+	description="Azure DocumentDB (NoSQL ドキュメント データベース) とは何か、また、それがクラウド アプリケーションやモバイル アプリケーションにどのような価値をもたらすかについて説明します。Azure DocumentDB におけるデータの管理や、アプリケーション開発における Azure DocumentDB の活用方法について説明します。" 
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar" 
+	documentationCenter=""/>
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/05/2014" ms.author="mimig" />
+<tags 
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/18/2015" 
+	ms.author="mimig"/>
 
 #Microsoft Azure DocumentDB の概要
 
@@ -83,3 +97,5 @@ Azure DocumentDB を導入するには、次のリソースを参照してくだ
 [1]: ./media/documentdb-introduction/intro.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

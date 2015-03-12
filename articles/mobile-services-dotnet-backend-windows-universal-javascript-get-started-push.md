@@ -1,6 +1,20 @@
-﻿<properties pageTitle=".NET バックエンド モバイル サービスを使用したプッシュ通知の使用" description="Azure Mobile Services と Notification Hubs を使用してユニバーサル Windows アプリにプッシュ通知を送信する方法について説明します。" services="mobile-services, notification-hubs" documentationCenter="windows" authors="ggailey777" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle=".NET バックエンド モバイル サービスを使用したプッシュ通知の使用" 
+	description="Azure Mobile Services と Notification Hubs を使用してユニバーサル Windows アプリにプッシュ通知を送信する方法について説明します。" 
+	services="mobile-services, notification-hubs" 
+	documentationCenter="windows" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/27/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="javascript" 
+	ms.topic="article" 
+	ms.date="09/27/2014" 
+	ms.author="glenga"/>
 
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -54,7 +68,7 @@
 
 <ol start="5">
 <li><p> <code>\services\mobileServices\settings</code> プロジェクト フォルダーに移動し、生成された &lt;<em>your_service_name</em>&gt;.js スクリプト ファイルを共有  <code>\js</code>  フォルダーにコピーしてから、Windows アプリ プロジェクトと WindowsPhone アプリ プロジェクトの両方からこのファイルを削除します。さらに、このファイルが各アプリ プロジェクトの  <code>\services\mobileServices\scripts</code>  フォルダーにも存在する場合は、そこからも削除します。</p></li> 
-<li><p>このスクリプト ファイルを共有 <code>\js</code>  プロジェクト フォルダーで開き、Azure で実行されているモバイル サービスへのアクセスに使用する <a href="http://msdn.microsoft.com/ja-jp/library/azure/jj554219.aspx">MobileServiceClient object</a>を定義する既存のコードをコメント アウトします。</p></li>
+<li><p>このスクリプト ファイルを共有 <code>\js</code>  プロジェクト フォルダーで開き、Azure で実行されているモバイル サービスへのアクセスに使用する <a href="http://msdn.microsoft.com/library/azure/jj554219.aspx">MobileServiceClient object</a>を定義する既存のコードをコメント アウトします。</p></li>
 <li><p>同じ名前で、ローカル ホストの URL を使用する新しい <strong>MobileServiceClient</strong> オブジェクト定義を次のようにコンストラクターに追加します。</p>
 <pre><code>// This MobileServiceClient has been configured to communicate with your local
 // test project for debugging purposes.

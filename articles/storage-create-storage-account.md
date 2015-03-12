@@ -33,7 +33,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 - トランザクションには、Azure ストレージに対するすべての読み取り操作と書き込み操作が含まれます。 
 - 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。  
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、[Storage (ストレージ サービス) の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/#storage) のページを参照してください。送信データ転送の料金の詳細については、[データ転送の料金の詳細](http://www.windowsazure.com/ja-jp/pricing/details/data-transfers/) を参照してください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、[Storage (ストレージ サービス) の料金詳細](http://azure.microsoft.com/pricing/details/#storage) のページを参照してください。送信データ転送の料金の詳細については、[データ転送の料金の詳細](http://azure.microsoft.com/pricing/details/data-transfers/) を参照してください。
 
 ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/windowsazure/dn249410.aspx) を参照してください。
 
@@ -101,7 +101,7 @@ Azure Storage に格納するすべてのオブジェクトは一意の URL ア�
 
 *アフィニティ グループ*は、Azure ストレージ アカウント内で Azure サービスと仮想マシンを地理的にまとめたグループです。アフィニティ グループは、コンピューティング ワークロードを同じデータ センター内または対象ユーザーの近くに配置することにより、サービス パフォーマンスを向上させることができます。また、同じアフィニティ グループに属している別のサービスがストレージ アカウント内のデータにアクセスする場合には、課金されません。
 
-> [AZURE.NOTE]  アフィニティ グループを作成するには、管理ポータルの <b>[設定]</b> 領域を開き、<b>[アフィニティ グループ]</b> をクリックして、<b>[新しいアフィニティ グループの追加]</b> または <b>[追加]</b> をクリックします。また、Azure サービス管理 API を使用してアフィニティ グループを作成し管理することもできます。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460798.aspx">アフィニティ グループに対する操作</a> を参照してください。
+> [AZURE.NOTE]  アフィニティ グループを作成するには、管理ポータルの <b>[設定]</b> 領域を開き、<b>[アフィニティ グループ]</b> をクリックして、<b>[新しいアフィニティ グループの追加]</b> または <b>[追加]</b> をクリックします。また、Azure サービス管理 API を使用してアフィニティ グループを作成し管理することもできます。詳細については、<a href="http://msdn.microsoft.com/library/windowsazure/ee460798.aspx">アフィニティ グループに対する操作</a> を参照してください。
 
 
 ### <a id="replication-options"></a>ストレージ アカウント レプリケーションのオプション
@@ -119,7 +119,7 @@ Azure Storage に格納するすべてのオブジェクトは一意の URL ア�
 
 ### ストレージ アクセス キーのコピー ###
 
-**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスする接続文字列の構成方法の詳細については、「[Azure 接続文字列の構成方法](http://msdn.microsoft.com/ja-jp/library/ee758697.aspx)」を参照してください。.
+**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスする接続文字列の構成方法の詳細については、「[Azure 接続文字列の構成方法](http://msdn.microsoft.com/library/ee758697.aspx)」を参照してください。.
 
 1. [管理ポータル](http://manage.windowsazure.com)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
@@ -171,10 +171,9 @@ Azure Storage に格納するすべてのオブジェクトは一意の URL ア�
 
 ## <a id="next"></a>次のステップ
 
-- Azure Storage の詳細については、[azure.com](http://azure.microsoft.com/ja-jp/documentation/services/storage/) および [MSDN](http://msdn.microsoft.com/ja-jp/library/gg433040.aspx) で Azure Storage のドキュメントを参照してください。 
+- Azure Storage の詳細については、[azure.com](http://azure.microsoft.com/documentation/services/storage/) および [MSDN](http://msdn.microsoft.com/library/gg433040.aspx) で Azure Storage のドキュメントを参照してください。 
 
 - [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/) を参照してください。
-
 
 
 

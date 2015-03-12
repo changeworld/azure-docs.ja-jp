@@ -31,7 +31,7 @@
 
 # パート 1: コンソール アプリケーションの作成と共有アクセス署名の生成 #
 
-まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。クライアント ライブラリの最新アセンブリを含む [NuGet パッケージ](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet package") をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。また、[Azure SDK for .NET](http://www.windowsazure.com/ja-jp/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
+まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。クライアント ライブラリの最新アセンブリを含む [NuGet パッケージ](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet package") をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。また、[Azure SDK for .NET](http://azure.microsoft.com/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
 
 Visual Studio で、新しい Windows コンソール アプリケーションを作成し、**GenerateSharedAccessSignatures** という名前を付けます。次の方法のいずれかを使用して、**Microsoft.WindowsAzure.Configuration.dll** および **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
 
@@ -535,14 +535,13 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
 
 [共有アクセス署名、パート 1: SAS モデルについて](../storage-dotnet-shared-access-signature-part-1/)
 
-[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx)
+[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/windowsazure/ee393343.aspx)
 
-[共有アクセス署名によるアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee395415.aspx)
+[共有アクセス署名によるアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/library/windowsazure/ee395415.aspx)
 
 [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 
 [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
 [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
-
 
 <!--HONumber=42-->

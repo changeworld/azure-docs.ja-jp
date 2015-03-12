@@ -691,5 +691,4 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
 [Node.js Web サイトの構築と Azure へのデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-
 <!--HONumber=42-->

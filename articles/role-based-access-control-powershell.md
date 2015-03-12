@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Windows PowerShell " metaKeywords="ResourceManager、PowerShell、Azure PowerShell、RBAC によるロール ベースのアクセス制御の管理" description="Windows PowerShell を使用した役割ベースのアクセス制御の管理" metaCanonical="" services="" documentationCenter="" title="Managing Role-Based Access Control with Windows PowerShell" authors="guayan" solutions="" manager="terrylan" editor="mollybos" />
+﻿<properties 
+	pageTitle="Windows PowerShell を使用した役割ベースのアクセス制御の管理" 
+	description="Windows PowerShell を使用した役割ベースのアクセス制御の管理" 
+	services="" 
+	documentationCenter="" 
+	authors="guangyang" 
+	manager="terrylan" 
+	editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="11/03/2014" ms.author="guayan" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="powershell" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/03/2014" 
+	ms.author="guayan"/>
 
 # Windows PowerShell # によるロール ベースのアクセス制御の管理
 
@@ -18,9 +32,9 @@ Windows PowerShell を使って RBAC を管理するには、その前に以下�
 
 - Windows PowerShell、Version 3.0 または 4.0。Windows PowerShell のバージョンを確認するには、「$PSVersionTable」と入力し、PSVersion の値が 3.0 または 4.0 であることを確認します。互換性のあるバージョンをインストールするには、「[Windows Management Framework 3.0 ](http://www.microsoft.com/ja-jp/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=40855)」を参照してください。
 
-- Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Windows Azure PowerShell (Windows Azure PowerShell のインストールおよび構成方法)](http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/)」を参照してください。
+- Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Windows Azure PowerShell (Windows Azure PowerShell のインストールおよび構成方法)](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」を参照してください。
 
-このチュートリアルは、Windows PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/ja-jp/library/hh857337.aspx)」を参照してください。
+このチュートリアルは、Windows PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
 
 このチュートリアルに表示されているすべてのコマンドレットの詳細なヘルプを取得するには、Get-Help コマンドレットを使用します。 
 
@@ -32,8 +46,8 @@ Windows PowerShell を使って RBAC を管理するには、その前に以下�
 
 また、次のチュートリアルをお読みになり、Windows PowerShell での Azure リソース マネージャーのセット アップと使用について詳しく理解してください。
 
-- [How to install and configure Azure PowerShell (Azure PowerShell のインストールおよび構成方法)](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)
-- [Using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用)](http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/)
+- [How to install and configure Azure PowerShell (Azure PowerShell のインストールおよび構成方法)](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)
+- [Using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用)](http://azure.microsoft.com/documentation/articles/powershell-azure-resource-manager/)
 
 ## このチュートリアルの内容##
 
@@ -49,7 +63,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 
     PS C:\> Switch-AzureMode -Name AzureResourceManager
 
-詳細については、「[Using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用)](http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
+詳細については、「[Using Windows PowerShell with Resource Manager (リソース マネージャーでの Windows PowerShell の使用)](http://azure.microsoft.com/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
 
 ご使用の Azure サブスクリプションに接続するには、以下のように入力します。
 
@@ -64,7 +78,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
     # サブスクリプション名を使用して、作業を行う使用するサブスクリプションを選択します。
     PS C:\> Select-AzureSubscription -SubscriptionName <subscription name>
 
-詳細については、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールおよび構成方法)](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)」を参照してください。
+詳細については、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールおよび構成方法)](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」を参照してください。
 
 ## <a id="check"></a>既存の役割の割り当ての確認 ##
 
@@ -139,13 +153,15 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 Windows PowerShell を使用した役割ベースのアクセス制御の管理の詳細と、関連トピックについては、以下を参照してください。
  
-- [Role based access control in Windows Azure (Windows Azure での役割ベースのアクセス制御)](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-configure/)
+- [Role based access control in Windows Azure (Windows Azure での役割ベースのアクセス制御)](http://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)
 - [Azure Resource Manager Cmdlets (Azure Resource Manager コマンドレット)](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409):AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
-- [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups):Azure 管理ポータルでリソース グループを作成および管理する方法について説明します。
+- [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups):Azure 管理ポータルでリソース グループを作成および管理する方法について説明します。
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure):Azure の新機能について説明します。
 - [Windows PowerShell blog (Windows PowerShell のブログ)](http://blogs.msdn.com/powershell):Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!"ブログ](http://blogs.technet.com/b/heyscriptingguy/):実際のヒントとテクニックを Windows PowerShell コミュニティから取得します。
-- [Configure role based access control using XPLAT CLI (XPLAT CLI を使用した役割ベースのアクセス制御の構成)](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-xplat-cli/)
-- [Troubleshooting role based access control (役割ベースのアクセス制御のトラブルシューティング)](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/)
+- [Configure role based access control using XPLAT CLI (XPLAT CLI を使用した役割ベースのアクセス制御の構成)](http://azure.microsoft.com/documentation/articles/role-based-access-control-xplat-cli/)
+- [Troubleshooting role based access control (役割ベースのアクセス制御のトラブルシューティング)](http://azure.microsoft.com/documentation/articles/role-based-access-control-troubleshooting/)
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

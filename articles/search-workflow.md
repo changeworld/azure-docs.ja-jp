@@ -1,6 +1,20 @@
-﻿<properties title="Search Service: workflow for developers" pageTitle="検索サービス: 開発者のためのワークフロー" description="検索サービス: 開発者のためのワークフロー" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties 
+	pageTitle="検索サービス: 開発者のためのワークフロー" 
+	description="検索サービス: 開発者のためのワークフロー" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" 
+	editor=""/>
 
-<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="01/16/2015" 
+	ms.author="heidist"/>
 
 # Azure Search: 開発ワークフロー
 
@@ -21,7 +35,7 @@
 
 クエリは、検索データと属性が含まれる検索インデックスを対象にします。そのため、サービスをプロビジョニングした後の最初の手順は、JSON 形式でインデックス スキーマを定義し、HTTPS PUT 要求を実行してサービスにインデックスを作成することです。 
 
-インデックスは、アプリケーション コードで構成されます。ユーザー インターフェイスでインデックスを定義するための組み込みツールやエディターはありません。さまざまなインデックスの構築方法を示す例には、Program.cs にスキーマが指定される「[Create your first search solution using Azure Search (Azure Search による最初の検索ソリューションの作成)](../search-create-first-solution/)」、およびスタンドアロンの JSON スキーマ ファイルにインデックスを提供する「[Azure Search のスコアリング プロファイルの使用](../search-get-started-scoring-profiles)」などがあります。インデックスの作成の詳細については、MSDN の「[Create Index (Azure Search API) (インデックスの作成 (Azure Search API))](http://msdn.microsoft.com/ja-jp/library/dn798941.aspx)」を参照してください。
+インデックスは、アプリケーション コードで構成されます。ユーザー インターフェイスでインデックスを定義するための組み込みツールやエディターはありません。さまざまなインデックスの構築方法を示す例には、Program.cs にスキーマが指定される「[Create your first search solution using Azure Search (Azure Search による最初の検索ソリューションの作成)](../search-create-first-solution/)」、およびスタンドアロンの JSON スキーマ ファイルにインデックスを提供する「[Azure Search のスコアリング プロファイルの使用](../search-get-started-scoring-profiles)」などがあります。インデックスの作成の詳細については、MSDN の「[Create Index (Azure Search API) (インデックスの作成 (Azure Search API))](http://msdn.microsoft.com/library/dn798941.aspx)」を参照してください。
 
 <h2 id="sub-2">手順 2.ドキュメントの追加</h2>
 
@@ -40,8 +54,8 @@ POST 要求に対する全体的なステータス コードがあります。�
 
 ドキュメントのインデックスが作成された後で、検索クエリを実行できます。OData または単純なクエリ構文を使用して、一度に 1 つのインデックスを照会できます。
 
-+	[OData expression syntax for Azure Search (Azure Search の OData 式構文)](http://msdn.microsoft.com/ja-jp/library/dn798921.aspx)
-+	[Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)](http://msdn.microsoft.com/ja-jp/library/dn798920.aspx)
++	[OData expression syntax for Azure Search (Azure Search の OData 式構文)](http://msdn.microsoft.com/library/dn798921.aspx)
++	[Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)](http://msdn.microsoft.com/library/dn798920.aspx)
 
 <h2 id="sub-4">手順 4.インデックスとドキュメントの更新または削除</h2>
 
@@ -55,7 +69,7 @@ Azure Search は、検索操作で使用するインデックスおよびドキ�
 
 ドキュメント内のすべてのフィールドが検索可能ではありません。たとえば、アプリケーションが音楽やビデオのオンライン カタログである場合は、Azure BLOB サービスやその他のストレージ形式にバイナリ ファイルを格納することをお勧めします。バイナリ ファイル自体は検索可能ではないため、Azure Search ストレージにそれらを保存する必要はありません。その他のサービスや場所にイメージ、ビデオ、およびオーディオ ファイルを格納する必要がありますが、ファイルの場所への URL を参照するフィールドを含める必要があります。この方法で、検索結果の一部として、外部データを返すことができます。 
 
-インデックスやドキュメントの作成の詳細については、「[Azure Search Rest API (Azure Search Rest API)](http://msdn.microsoft.com/ja-jp/library/dn798935.aspx)」を参照してください。
+インデックスやドキュメントの作成の詳細については、「[Azure Search Rest API (Azure Search Rest API)](http://msdn.microsoft.com/library/dn798935.aspx)」を参照してください。
 
 
 <!--Anchors-->
@@ -73,3 +87,5 @@ Azure Search は、検索操作で使用するインデックスおよびドキ�
 [Microsoft Azure で検索サービスを管理する]: ../search-manage/
 [Azure Search による最初の検索ソリューションの作成]: ../search-create-first-solution/
 
+
+<!--HONumber=46--> 

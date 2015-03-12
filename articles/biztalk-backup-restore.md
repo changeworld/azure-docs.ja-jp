@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="BizTalk Services: Backup and Restore" pageTitle="BizTalk サービス: バックアップと復元 | Azure" metaKeywords="" description="BizTalk Services には、バックアップ機能と復元機能が備わっています。バックアップを作成すると、BizTalk Services 構成のスナップショットが取得されます。" metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Backup and Restore" authors="mandia"  solutions="" writer="mandia" manager="dwrede" editor="cgronlun"  />
+﻿<properties 
+	pageTitle="BizTalk サービス:バックアップと復元 | Azure" 
+	description="BizTalk Services には、バックアップと復元の機能が備わっています。バックアップを作成して復元する方法を説明すると共に、何がバックアップされるのかを確認します。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
+	editor="cgronlun"/>
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/14/2014" ms.author="mandia" />
+<tags 
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="mandia"/>
 
 
 # BizTalk サービス: バックアップと復元
@@ -16,7 +30,7 @@ BizTalk Services のバックアップは、[BizTalk Services の REST API](http
 
 ##<a name="beforebackup"></a>開始する前に
 
-- バックアップと復元は、どのエディションでもできるとは限りません。「[BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-editions-feature-chart/)」を参照してください。
+- バックアップと復元は、どのエディションでもできるとは限りません。「[BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://azure.microsoft.com/documentation/articles/biztalk-editions-feature-chart/)」を参照してください。
 
 	**注** ハイブリッド接続は、エディションにかかわらずバックアップされません。
 
@@ -227,3 +241,5 @@ Azure BizTalk Services を Azure の管理ポータルで作成するには、�
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
+
+<!--HONumber=46--> 

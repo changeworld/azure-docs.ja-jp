@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Import/Export を使用した BLOB ストレージへのデータの転送 | Microsoft Azure" 
 	description="Azure の管理ポータルでインポート ジョブおよびエクスポート ジョブを作成し、データを BLOB ストレージに転送する方法について説明します。" 
 	authors="tamram" 
@@ -28,7 +28,7 @@
 - Azure 管理ポータルを使用する。
 - サービスへの REST インターフェイスを使用する。
 
-この記事では、インポート/エクスポート サービスの概要を示し、管理ポータルを使用してインポート/エクスポート サービスを操作する方法を説明します。REST API の詳細については、[インポート/エクスポート サービス REST API リファレンス] を参照してください(http://go.microsoft.com/fwlink/?LinkID=329099)。
+この記事では、インポート/エクスポート サービスの概要を示し、管理ポータルを使用してインポート/エクスポート サービスを操作する方法を説明します。REST API の詳細については、[インポート/エクスポート サービス REST API リファレンス](http://go.microsoft.com/fwlink/?LinkID=329099) を参照してください。
 
 ## インポート/エクスポート サービスの概要 ##
 
@@ -298,7 +298,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 	> [AZURE.IMPORTANT] 発送する物理メディアが国境を越える場合があることに注意してください。お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
 
-- パッケージを発送する際には、[Microsoft Azure サービス条件] の規定に従う必要があります(http://azure.microsoft.com/ja-jp/support/legal/services-terms/)。 
+- パッケージを発送する際には、[Microsoft Azure サービス条件](http://azure.microsoft.com/support/legal/services-terms/) の規定に従う必要があります。 
 
 **インポート/エクスポート ジョブのドライブを Microsoft から購入できますか。**
 
@@ -313,5 +313,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [import-job-03]: ./media/storage-import-export-service/import-job-03.png
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
-
 <!--HONumber=42-->

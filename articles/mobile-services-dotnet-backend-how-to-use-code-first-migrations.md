@@ -1,6 +1,21 @@
-﻿<properties pageTitle="データ モデルの変更を .NET バックエンド モバイル サービスに加える方法" description="このトピックでは、データ モデル初期化子と、データ モデルの変更を .NET バックエンド モバイル サービスに加える方法について説明します。" services="mobile-services" documentationCenter="" authors="ggailey777" writer="glenga" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="データ モデルの変更を .NET バックエンド モバイル サービスに加える方法" 
+	description="このトピックでは、データ モデル初期化子と、データ モデルの変更を .NET バックエンド モバイル サービスに加える方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="" 
+	authors="ggailey777" 
+	Writer="glenga" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="09/27/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/27/2014" 
+	ms.author="glenga"/>
 
 # データ モデルの変更を .NET バックエンド モバイル サービスに加える方法
 
@@ -117,7 +132,8 @@ Code First Migrations は、実行されたときにスナップショットの�
 
 次のコードでは、UserId 列のみを登録します。
  		    
-        context.TodoItems.AddOrUpdate(
+        context.TodoIte
+	ms.AddOrUpdate(
             t => t.UserId,
                 new TodoItem { UserId = 1 },
                 new TodoItem { UserId = 1 },
@@ -137,10 +153,10 @@ Code First Migrations は、実行されたときにスナップショットの�
 [2]: ./media/mobile-services-dotnet-backend-how-to-use-code-first-migrations/sql-database-drop-tables.png
 
 <!-- URLs -->
-[DropCreateDatabaseIfModelChanges]: http://msdn.microsoft.com/ja-jp/library/gg679604(v=vs.113).aspx
-[Seed]: http://msdn.microsoft.com/ja-jp/library/hh829453(v=vs.113).aspx
+[DropCreateDatabaseIfModelChanges]: http://msdn.microsoft.com/library/gg679604(v=vs.113).aspx
+[Seed]: http://msdn.microsoft.com/library/hh829453(v=vs.113).aspx
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[DbContext]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.dbcontext(v=vs.113).aspx
-[AddOrUpdate]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
+[DbContext]: http://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.113).aspx
+[AddOrUpdate]: http://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
 
 <!--HONumber=42-->

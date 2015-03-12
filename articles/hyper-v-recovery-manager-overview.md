@@ -1,6 +1,20 @@
-<properties linkid="Azure Site Recovery Overview" urlDisplayName="Azure Site Recovery Overview" pageTitle="Azure Site Recovery Overview" metaKeywords="Azure Site Recovery, on-premises, clouds, Azure, VMM, Hyper-V" description="Deploy Azure Site Recovery to protect virtual machines on Hyper-V host servers that are located in VMM clouds. You can deploy from one on-premises site to another, or from an on-premises site to Azure." metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Azure Site Recovery Overview" editor="jimbe" manager="cfreeman" authors="raynew" />
+﻿<properties 
+	pageTitle="チュートリアル:内部設置型 VMM サイトと Azure の間の保護の設定" 
+	description="Azure Site Recovery は、内部設置型 VMM クラウドに配置された Hyper-V 仮想マシンの Azure へのレプリケーション、フェイルオーバー、および回復を調整します。" 
+	services="site-recovery" 
+	documentationCenter="" 
+	authors="raynew" 
+	manager="jwhit" 
+	editor=""/>
 
-<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="raynew" />
+<tags 
+	ms.service="site-recovery" 
+	ms.workload="backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/18/2015" 
+	ms.author="raynew"/>
 
 # Azure Site Recovery の概要
 
@@ -109,3 +123,5 @@ Azure Site Recovery をデプロイして、System Center Virtual Machine Manage
   [Azure の Hyper-V 回復マネージャーの構成]: http://go.microsoft.com/fwlink/?LinkId=398765
   [Azure Site Recovery のデプロイ: オンプレミスと Azure 間の保護]: http://go.microsoft.com/fwlink/?LinkId=398764
   [Azure Recovery Services Forum (Azure 復旧サービス フォーラム)]: http://go.microsoft.com/fwlink/?LinkId=313628
+
+<!--HONumber=46--> 

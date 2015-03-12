@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Azure Cross-Platform Command-Line Interface" pageTitle="Azure クロスプラットフォーム コマンド ライン インターフェイス" title="Azure クロスプラットフォーム コマンド ライン インターフェイス" metaKeywords="Azure クロスプラットフォーム コマンド ライン インターフェイス, Azure コマンド ライン, azure コマンドライン, azure cli" description="Azure クロスプラットフォーム コマンドライン インターフェイスをインストールして構成し、Azure サービスを監視します。" metaCanonical="http://www.windowsazure.com/ja-jp/script/xplat-cli-intro" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="need to identify contact" documentationCenter="" solutions="" authors="carolz" services="" />
+﻿<properties 
+	pageTitle="Azure クロスプラットフォーム コマンドライン インターフェイス" 
+	description="Azure クロスプラットフォーム コマンドライン インターフェイスをインストールして構成し、Azure サービスを監視します。" 
+	editor="tysonn" 
+	manager="timlt" 
+	documentationCenter="" 
+	authors="squillace" 
+	services=""/>
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="carolz" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="command-line-interface" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="1/16/2015" 
+	ms.author="rasquill"/>
 
 #Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成
 
@@ -389,15 +403,17 @@ xplat-cli では、エラー情報を STDERR にログ出力しますが、エ�
 
 [mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
 [windows-installer]: http://go.microsoft.com/?linkid=9828653&clcid=0x409
-[authandsub]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531793.aspx#BKMK_AccountVCert
+[authandsub]: http://msdn.microsoft.com/library/windowsazure/hh531793.aspx#BKMK_AccountVCert
 
 [Azure Web Site]: ../media/freetrial.png
 [プレビュー機能を選択する]: ../media/antares-iaas-preview-02.png
 [サブスクリプションを選択する]: ../media/antares-iaas-preview-03.png
-[無料評価版]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E
+[無料評価版]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A7171371E
 [advanced-bash]: http://tldp.org/LDP/abs/html/
 [script (スクリプト)]: http://en.wikipedia.org/wiki/Shell_script
-[batch (バッチ)]: http://technet.microsoft.com/ja-jp/library/bb490890.aspx
+[batch (バッチ)]: http://technet.microsoft.com/library/bb490890.aspx
 [xplatarm]: /ja-jp/documentation/articles/xplat-cli-azure-resource-manager/
 [portal]: https://manage.windowsazure.com
-[signuporg]: http://www.windowsazure.com/ja-jp/documentation/articles/sign-up-organization/
+[signuporg]: http://azure.microsoft.com/documentation/articles/sign-up-organization/
+
+<!--HONumber=46--> 

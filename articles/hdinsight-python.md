@@ -149,7 +149,7 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 
 ##<a name="running"></a>例を実行する
 
-次の手順では、Windows Azure PowerShell を使用します。まだインストールと構成が終了していない場合は、以下の手順に進む前に「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/)」を参照してください。
+次の手順では、Windows Azure PowerShell を使用します。まだインストールと構成が終了していない場合は、以下の手順に進む前に「[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」を参照してください。
 
 
 1. Python の例 [streaming.py](#streamingpy) と [jython.py](#jythonpy)を使用して、開発用コンピューター上のファイルのローカル コピーを作成します。
@@ -279,5 +279,4 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 既定では提供されない Python モジュールを読み込む必要がある場合は、方法を「[How to deploy a Python module to Windows Azure HDInsight (Python モジュールを Windows Azure HDInsight にデプロイする方法)](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)」で参照してください。
 
 PowerShell を使用せずに HDInsight のジョブをリモートで実行する場合は、「[How to use HDInsight from Linux (Linux から HDInsight を使用する方法)](http://blogs.msdn.com/b/benjguin/archive/2014/02/18/how-to-use-hdinsight-from-linux.aspx)」で、WebHCat REST API を通じて Python を使用する例を参照してください。
-
 <!--HONumber=42-->

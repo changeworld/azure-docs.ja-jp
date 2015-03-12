@@ -29,7 +29,7 @@
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 
-使用を開始するには、Azure Storage アカウントを作成し、このストレージ内に 1 つ以上のコンテナーを作成する必要があります。たとえば、"Scrapbook" という名前のストレージを作成し、このストレージに、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成します。コンテナーを作成すると、個々の BLOB ファイルをコンテナーにアップロードできるようになります。プログラムを使用して BLOB を操作する方法の詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET")」を参照してください。
+使用を開始するには、Azure Storage アカウントを作成し、このストレージ内に 1 つ以上のコンテナーを作成する必要があります。たとえば、"Scrapbook" という名前のストレージを作成し、このストレージに、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成します。コンテナーを作成すると、個々の BLOB ファイルをコンテナーにアップロードできるようになります。プログラムを使用して BLOB を操作する方法の詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET")」を参照してください。
 
 ASP.NET 5 プロジェクトでプログラムを使用して BLOB にアクセスするには、次の項目を追加する必要があります (存在していない場合)。
 
@@ -123,7 +123,7 @@ BLOB ファイルをコンテナーにアップロードするには、コンテ
             }
         } while (token != null);
 
-BLOB コンテナーの内容を一覧表示する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob)」を参照してください。
+BLOB コンテナーの内容を一覧表示する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob)」を参照してください。
 
 ##### BLOB をダウンロードする
 BLOB をダウンロードするには、まず BLOB の参照を取得し、次にその **DownloadToStreamAsync()** メソッドを呼び出します。次の例は、**DownloadToStreamAsync()** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
@@ -137,7 +137,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
     	await blockBlob.DownloadToStreamAsync(fileStream);
 	}
 
-BLOB をファイルとして保存する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)」を参照してください。
+BLOB をファイルとして保存する方法は他にもあります。詳細については、「[.NET から BLOB ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)」を参照してください。
 
 ##### BLOB を削除する
 BLOB を削除するには、まず BLOB の参照を取得し、次にその **DeleteAsync()** メソッドを呼び出します。
@@ -149,5 +149,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 	await blockBlob.DeleteAsync();
 
 [Azure Storage の詳細を確認する](http://azure.microsoft.com/documentation/services/storage/)
-「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。
-<!--HONumber=42-->
+「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」も参照してください。<!--HONumber=42-->

@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Mobile Service のローカル テストのための IIS Express の構成" description="テストのためにローカル モバイル サービス プロジェクトに接続できるように IIS Express を構成する方法について説明します。" authors="ggailey777" manager="dwrede" services="mobile-services" documentationCenter="windows" editor=""/>
+﻿<properties 
+	pageTitle="Mobile Service のローカル テストのための IIS Express の構成" 
+	description="テストのためにローカル モバイル サービス プロジェクトに接続できるように IIS Express を構成する方法について説明します。" 
+	authors="ggailey777" 
+	manager="dwrede" 
+	services="mobile-services" 
+	documentationCenter="windows" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/20/2014" ms.author="glenga"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="11/20/2014" 
+	ms.author="glenga"/>
 
 # ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成 
 

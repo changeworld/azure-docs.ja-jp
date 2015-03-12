@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Windows Azure 多要素認証とは" 
 	description="Azure Multi-Factor Authentication (複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法) について説明します。" 
 	services="active-directory, multi-factor-authentication" 
@@ -38,15 +38,15 @@
 
 ## <a name="what-is"> </a>サービス管理とは
 
-Azure には、Azure の仮想マシンの管理を含め、[サービス管理操作のための REST API](http://msdn.microsoft.com/library/windowsazure/ee460799.aspx) が用意されています。Azure SDK for Ruby は、**Azure::VirtualMachineSerivce** クラスを通じて仮想マシンの管理操作を公開します。[Azure の管理ポータル](https://manage.windowsazure.com)を通じて使用できる仮想マシン管理機能の大半は、このクラスを使用してアクセスできます。
+Azure には、Azure の仮想マシンの管理も含め、[サービス管理操作のための REST API ](http://msdn.microsoft.com/library/windowsazure/ee460799.aspx) が用意されています。Azure SDK for Ruby は、**Azure::VirtualMachineSerivce** クラスを通じて仮想マシンの管理操作を公開します。[Azure の管理ポータル](https://manage.windowsazure.com)を通じて使用できる仮想マシン管理機能の大半は、このクラスを使用してアクセスできます。
 
 サービス管理 API を使用して、Azure にホストされたさまざまなサービスを管理することもできますが、このドキュメントでは、Azure の仮想マシンの管理に関する詳細のみを扱います。
 
 ## <a name="concepts"> </a>概念
 
-Azure の仮想マシンは、クラウド サービス内では 'roles' として実装されます。各クラウド サービスには、デプロイへと論理的にグループ化される 1 つ以上のロールを含めることができます。ロールでは、使用可能なメモリの量、CPU コアの数など、VM の物理的な特性全体が定義されます。
+Azure の仮想マシンは、クラウド サービス内では 'ロール' として実装されます。各クラウド サービスには、デプロイへと論理的にグループ化される 1 つ以上のロールを含めることができます。ロールでは、使用可能なメモリの量、CPU コアの数など、VM の物理的な特性全体が定義されます。
 
-各 VM には OS ディスクもあり、これには起動可能なオペレーティング システムが含まれます。VM には 1 つ以上のデータ ディスクを含めることができます。これは、アプリケーション データの格納に使用する追加ディスクです。ディスクは、Azure BLOB ストレージ内に格納される仮想ハード ドライブ (VHD) として実装されます。VHD は 'images' としても公開されます。これは、VM の作成時に VM が使用するディスクを作成するためのテンプレートです。たとえば、Ubuntu イメージを使用する新しい VM を作成すると、Ubuntu イメージから新しい OS ディスクが作成されます。
+各 VM には OS ディスクもあり、これには起動可能なオペレーティング システムが含まれます。VM には 1 つ以上のデータ ディスクを含めることができます。これは、アプリケーション データの格納に使用する追加ディスクです。ディスクは、Azure BLOB ストレージ内に格納される仮想ハード ドライブ (VHD) として実装されます。VHD は 'イメージ' としても公開されます。これは、VM の作成時に VM が使用するディスクを作成するためのテンプレートです。たとえば、Ubuntu イメージを使用する新しい VM を作成すると、Ubuntu イメージから新しい OS ディスクが作成されます。
 
 ほとんどのイメージは Microsoft またはパートナーから提供されますが、独自のイメージを作成することも、Azure にホストされた VM からイメージを作成することもできます。
 
@@ -74,7 +74,7 @@ xplat-cli を構成した後で、次の手順で Azure サブスクリプショ
 
 新しい Ruby アプリケーションを作成します。このドキュメントで使用するサンプルは、単一の **.rb** ファイルで実装できます。
 
-## <a name="configure-access"></a>アプリケーションの構成
+## <a name="configure-access"></a>アプリケーションの作成
 
 Azure サービスを管理するには、Azure SDK for Ruby が含まれる Azure gem をダウンロードして使用する必要があります。
 
@@ -112,13 +112,13 @@ Azure サービスを管理するには、Azure SDK for Ruby が含まれる Azu
 
 	require 'azure'
 
-## <a name="setup-connection"> </a>方法:サービス管理への接続
+## <a name="setup-connection"> </a>方法:サービス管理に接続する
 
-Azure でサービス管理操作を正しく実行するには、「[Azure の管理証明書の作成]」セクションで取得したサブスクリプション ID と証明書を指定する必要があります(#setup-certificate) 。その最も簡単な方法は、次の環境変数を使用して ID と証明書ファイルのパスを指定する方法です。
+Azure でサービス管理操作を正しく実行するには、「[Azure の管理証明書の作成](#setup-certificate)」セクションで取得したサブスクリプション ID と証明書を指定する必要があります。その最も簡単な方法は、次の環境変数を使用して ID と証明書ファイルのパスを指定する方法です。
 
 * AZURE\_MANAGEMENT\_CERTIFICATE - 管理証明書を含む .PEM ファイルのパス。
 
-* AZURE\_SUBSCRIPTION\_ID - 使用している Azure サブスクリプションに対応するサブスクリプション ID。
+* AZURE\_SUBSCRIPTION\_ID - 使用している Azure サブスクリプションのサブスクリプション ID。
 
 これらの値は、アプリケーションでプログラムを使って設定することもできます。それには次のコマンドを使用します。
 
@@ -137,13 +137,13 @@ Azure の仮想マシンの管理操作は、**Azure::VirtualMachineService** �
 
 **Paramaters**
 
-* **:vm\_name** - 仮想マシンの名前。
+* **:vm\_name** - 仮想マシンの名前
 
-* **:vm\_user** - root または admin ユーザー名。
+* **:vm\_user** - root または admin ユーザー名
 
-* **:password** - root または admin ユーザーに使用するパスワード。
+* **:password** - root または admin ユーザーに使用するパスワード
 
-* **:image** - この VM の OS ディスクの作成に使用する OS イメージ。OS ディスクは、BLOB ストレージ内に作成された VHD に格納されます。
+* **:image** - この VM の OS ディスクを作成するのに使用する OS イメージ。OS ディスクは、BLOB ストレージ内に作成された VHD に格納されます。
 
 * **:location** - VM を作成するリージョン。この VM で使用するディスクを含むストレージ アカウントと同じリージョンである必要があります。
 
@@ -181,9 +181,9 @@ VM の作成の既定の動作をオーバーライドできるオプション �
 
 * **:service\_location** - VM 上のターゲット証明書ストアの場所。Windows ベースの VM にのみ適用されます。
 
-* **:ssh\_private\_key\_file** - プライベート キーを含むファイル。Linux ベースの VM への SSH アクセスを保護するために使用されます。HTTPS トランスポートが選択されている場合は、WinRM の保護に使用する証明書を指定するためにも使用されます。**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を省略した場合、SSH はパスワード認証のみを使用します。
+* **:ssh\_private\_key\_file** - プライベート キーを含むファイル。Linux ベースの VM への SSH アクセスの保護に使用されます。HTTPS トランスポートが選択されている場合は、WinRM の保護に使用する証明書を指定するためにも使用されます。**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を省略した場合、SSH はパスワード認証のみを使用します。
 
-* **:ssh\_certificate\_file** - 証明書ファイルを含むファイル。Linux ベースの VM への SSH アクセスを保護するために使用されます。HTTPS トランスポートが選択されている場合は、WinRM の保護に使用する証明書を指定するためにも使用されます。**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を省略した場合、SSH はパスワード認証のみを使用します。
+* **:ssh\_certificate\_file** - 証明書ファイルを含むファイル。Linux ベースの VM への SSH アクセスの保護に使用されます。HTTPS トランスポートが選択されている場合は、WinRM の保護に使用する証明書を指定するためにも使用されます。**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を省略した場合、SSH はパスワード認証のみを使用します。
 
 * **:ssh\_port** - SSH 通信に使用されるパブリック ポート。省略した場合は、既定の SSH ポートは 22 になります。
 
@@ -232,7 +232,7 @@ Azure サブスクリプションの既存の仮想マシンの一覧を表示�
 	vm_mgr = Azure::VirtualMachineService.new
 	vm = vm_mgr.delete_virtual_machine('myvm', 'mycloudservice')
 
-> [AZURE.WARNING] **delete_virtual_machine** メソッドは、仮想マシンに関連付けられているすべてのディスクとクラウド サービスを削除します。
+> [AZURE.WARNING] **delete_virtual_machine** メソッドは、仮想マシンに関連づけられているすべてのディスクとクラウド サービスを削除します。
 
 ###方法:仮想マシンをシャットダウンする
 
@@ -250,7 +250,7 @@ Azure サブスクリプションの既存の仮想マシンの一覧を表示�
 
 ##<a name="vm-images"> </a>方法:仮想マシン イメージとディスクを操作する
 
-仮想マシン イメージに対する操作は、**Azure::VirtualMachineImageService** クラスを使用して実行します。ディスクに対する操作は、**Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService** クラスを使用して実行します。
+仮想  マシン イメージに対する操作は、**Azure::VirtualMachineImageService** クラスを使用して実行します。ディスクに対する操作は、**Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService** クラスを使用して実行します。
 
 ###方法:仮想マシン イメージの一覧を表示する
 
@@ -277,13 +277,13 @@ Azure サブスクリプションに対応するディスクの一覧を表示�
 
 Azure クラウド サービスの管理操作は、**Azure::CloudService** クラスを使用して実行します。
 
-###方法:クラウド サービスの作成
+###方法:クラウド サービスを作成する
 
 新しいクラウド サービスを作成するには、**create\_cloud\_service** メソッドを使用し、オプションの名前とハッシュを指定します。有効なオプションは次のとおりです。
 
-* **:location** - *Required*。クラウド サービスの作成先リージョンです。
+* **:location** - *必須*。クラウド サービスの作成先リージョンです。
 
-* **:description** - クラウド サービスの説明。
+* **:description** - クラウド サービスの説明です。
 
 以下のコマンドは、米国東部リージョンで新しいクラウド サービスを作成します。
 
@@ -304,7 +304,7 @@ Azure サブスクリプションのクラウド サービスの一覧を表示�
 	cs_mgr = Azure::CloudService.new
 	cs_exists = cs_mgr.get_cloud_service('mycloudservice')
 
-###方法:クラウド サービスの削除
+###方法:クラウド サービスを削除する
 
 クラウド サービスを削除するには、**delete\_cloud\_service** メソッドを使用し、クラウド サービスの名前を指定します。
 
@@ -326,7 +326,7 @@ Azure クラウド サービスの管理操作は、**Azure::StorageService** �
 
 新しいストレージ アカウントを作成するには、**create\_storage\_account** メソッドを使用し、オプションの名前とハッシュを指定します。有効なオプションは次のとおりです。
 
-* **:location** - *Required*。ストレージ アカウントの作成先リージョンです。
+* **:location** - *必須*。ストレージ アカウントの作成先リージョンです。
 
 * **:description** - ストレージ アカウントの説明。
 
@@ -349,7 +349,7 @@ Azure サブスクリプションのストレージ アカウントの一覧を�
 	storage_mgr = Azure::StorageService.new
 	store_exists = storage_mgr.get_storage_account('mystorage')
 
-###方法:ストレージ アカウントの削除
+###方法:ストレージ アカウントを削除する
 
 ストレージ アカウントを削除するには、**delete\_storage\_account** メソッドを使用し、ストレージ アカウントの名前を指定します。
 
@@ -364,4 +364,6 @@ Azure サブスクリプションのストレージ アカウントの一覧を�
 *  MSDN リファレンス:[仮想マシン](http://msdn.microsoft.com/library/windowsazure/jj156003.aspx)
 * [仮想マシンでの Ruby on Rails アプリケーション](http://azure.microsoft.com/develop/ruby/tutorials/web-app-with-linux-vm/)をホストする方法を確認
 
-<!--HONumber=45--> 
+
+
+<!--HONumber=42-->

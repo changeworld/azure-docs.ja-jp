@@ -1,6 +1,21 @@
-﻿<properties urlDisplayName="Replica domain controller" pageTitle="Azure でのレプリカ ドメイン コントローラーのインストール" metaKeywords="" description="Azure の仮想マシンでは、内部設置型 Active Directory フォレストからドメイン コント ローラーをインストールする方法について説明するチュートリアルです。" metaCanonical="" services="virtual-network" documentationCenter="" title="Install a Replica Active Directory Domain Controller on an Azure Virtual Network" authors="Justinha" solutions="" writer="Justinha" manager="TerryLan" editor="LisaToft" />
+﻿<properties 
+	pageTitle="Azure でのレプリカ ドメイン コントローラーのインストール" 
+	description="このチュートリアルでは、Azure の仮想マシンに内部設置型の Active Directory フォレストからドメイン コントローラーをインストールする方法について説明します。" 
+	services="virtual-network" 
+	documentationCenter="" 
+	authors="Justinha" 
+	writer="Justinha" 
+	manager="TerryLan" 
+	editor="LisaToft"/>
 
-<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/04/2014" ms.author="Justinha" />
+<tags 
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/12/2015" 
+	ms.author="Justinha"/>
 
 
 #Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
@@ -154,7 +169,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 VM のプロビジョニングには、管理ポータルを使用する代わりに、Microsoft Azure の Windows PowerShell を使用することもできます。最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、 <a href = "http://msdn.microsoft.com/library/azure/dn495159.aspx">New-AzureVMConfig </a> と <a href = "http://msdn.microsoft.com/library/azure/dn495299.aspx"> Add-AzureProvisioningConfig</a> を使用し、VM を作成するには、 <a href = "http://msdn.microsoft.com/library/azure/dn495254.aspx">New-AzureVM</a>  を使用します。 
 </p>
 
-Windows PowerShell の使い方の詳細については、[Azure PowerShell の概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)および [Azure 管理コマンドレットに関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)を参照してください。
+Windows PowerShell の使い方の詳細については、[Azure PowerShell の概要に関するページ](http://msdn.microsoft.com/library/windowsazure/jj156055.aspx)および [Azure 管理コマンドレットに関するページ](http://msdn.microsoft.com/library/windowsazure/jj152841)を参照してください。
 
 
 <h2><a id="resources"></a>その他のリソース</h2>
@@ -179,3 +194,5 @@ Windows PowerShell の使い方の詳細については、[Azure PowerShell の�
 [1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

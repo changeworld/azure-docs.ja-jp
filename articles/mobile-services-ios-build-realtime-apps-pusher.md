@@ -1,6 +1,20 @@
-﻿<properties pageTitle="Pusher を使用したリアルタイム アプリケーションの構築 (iOS) - モバイル サービス" description="Pusher を使用して iOS 上の Azure Media Services アプリケーションに通知を送信する方法について説明します。" services="" documentationCenter="ios" authors="lindydonna" manager="dwrede" editor=""/>
+﻿<properties 
+	pageTitle="Pusher を使用したリアルタイム アプリケーションの構築 (iOS) - モバイル サービス" 
+	description="Pusher を使用して iOS 上の Azure Media Services アプリケーションに通知を送信する方法について説明します。" 
+	services="" 
+	documentationCenter="ios" 
+	authors="lindydonna" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="donnam"/>
+<tags 
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-ios" 
+	ms.devlang="objective-c" 
+	ms.topic="article" 
+	ms.date="10/10/2014" 
+	ms.author="donnam"/>
 
 
 # モバイル サービスおよび Pusher を使用したリアルタイム アプリケーションの構築

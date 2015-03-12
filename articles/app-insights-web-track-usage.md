@@ -1,6 +1,18 @@
-﻿<properties title="Track usage in web applications with Application Insights" pageTitle="Web アプリケーションの利用状況の追跡" description="ユーザーのアクティビティをログに記録します。" metaKeywords="analytics monitoring application insights" authors="awills" manager="kamrani" />
+﻿<properties 
+	pageTitle="Web アプリケーションの利用状況の追跡" 
+	description="ユーザーのアクティビティをログに記録します。" 
+	services="application-insights" 
+	authors="alancameronwills" 
+	manager="kamrani"/>
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-11-21" ms.author="awills" />
+<tags 
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="2015-01-09" 
+	ms.author="awills"/>
  
 # Web アプリケーションの使用状況の追跡
 
@@ -119,3 +131,5 @@ Web サイトを実行し、少し使用して利用統計情報を生成しま�
 
 
 <!--HONumber=35.2-->
+
+<!--HONumber=46--> 

@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Tutorial: Create a Cross-Premises Virtual Network for Site-to-Site Connectivity" pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成 " metaKeywords="" description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="Create a Virtual Network for Site-to-Site Cross-Premises Connectivity" authors="cherylmc" solutions="" manager="adinah" editor="" />
+﻿<properties 
+	pageTitle="チュートリアル:サイト間クロスプレミス接続用の仮想ネットワークの作成" 
+	description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。" 
+	services="virtual-network" 
+	documentationCenter="" 
+	authors="cherylmc" 
+	manager="adinah" 
+	editor=""/>
 
-<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/23/2014" ms.author="cherylmc" />
+<tags 
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/23/2014" 
+	ms.author="cherylmc"/>
 
 
 
@@ -10,9 +24,9 @@
 
 このチュートリアルでは、サイト間接続のクロスプレミス仮想ネットワークのサンプルを作成する手順について説明します。
 
-クラウド専用の仮想ネットワークを作成するには、「[チュートリアル: Azure でのクラウド専用仮想ネットワークの作成](http://azure.microsoft.com/ja-jp/documentation/articles/create-virtual-network/)」を参照してください。証明書と VPN クライアントを使用してポイント対サイト VPN を作成する場合は、「[Configure a Point-to-Site VPN in the Management Portal (管理ポータルでのポイント対サイト VPN の構成)](http://go.microsoft.com/fwlink/?LinkId=296653)」を参照してください。
+クラウド専用の仮想ネットワークを作成するには、「[チュートリアル: Azure でのクラウド専用仮想ネットワークの作成](http://azure.microsoft.com/documentation/articles/create-virtual-network/)」を参照してください。証明書と VPN クライアントを使用してポイント対サイト VPN を作成する場合は、「[Configure a Point-to-Site VPN in the Management Portal (管理ポータルでのポイント対サイト VPN の構成)](http://go.microsoft.com/fwlink/?LinkId=296653)」を参照してください。
 
-このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、読者がクロスプレミス仮想ネットワークのサンプルの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[仮想ネットワークの概要](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)」を参照してください。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、読者がクロスプレミス仮想ネットワークのサンプルの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[仮想ネットワークの概要](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)」を参照してください。
 
 このチュートリアルを完了すると、クロスプレミス仮想ネットワークのサンプルが作成されます。次の図は、このチュートリアルの設定例に基づいた詳細を示しています。
 
@@ -28,7 +42,7 @@
 
 -  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
 
-AD DS を Azure Virtual Machines にデプロイする方法に関するガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+AD DS を Azure Virtual Machines にデプロイする方法に関するガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)」を参照してください。
 
 仮想ネットワーク構成のその他の手順と設定については、「[仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)」を参照してください。
 
@@ -42,7 +56,7 @@ AD DS を Azure Virtual Machines にデプロイする方法に関するガイ�
 
 ##  前提条件
 
--  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションがない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップすることもできます。MSDN サブスクリプションがある場合は、[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/)を参照してください。
+-  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションがない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップすることもできます。MSDN サブスクリプションがある場合は、[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を参照してください。
 
 このチュートリアルを使用して、組織向けにカスタマイズされた実用のクロスプレミス仮想ネットワークを構成する場合は、下記が必要です。
 
@@ -103,7 +117,7 @@ RRAS の構成情報については、「[Routing and Remote Access Service temp
 
 	-  **名前: **たとえば、このチュートリアルでは「**YourCorpHQ**」と入力します。
 
-	-  **VPN デバイスの IP アドレス: **たとえば、このチュートリアルでは「**3.2.1.1**」と入力します。または、VPN デバイスのパブリック IP アドレスを入力します。この情報がない場合は、ウィザードの次の手順に進む前にそれを取得する必要があります。VPN デバイスは NAT の背後に配置することはできません。VPN デバイスの詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156075.aspx)」を参照してください。
+	-  **VPN デバイスの IP アドレス: **たとえば、このチュートリアルでは「**3.2.1.1**」と入力します。または、VPN デバイスのパブリック IP アドレスを入力します。この情報がない場合は、ウィザードの次の手順に進む前にそれを取得する必要があります。VPN デバイスは NAT の背後に配置することはできません。VPN デバイスの詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://msdn.microsoft.com/library/windowsazure/jj156075.aspx)」を参照してください。
 
 	-  **アドレス空間: **たとえば、このチュートリアルでは「**10.1.0.0/16**」と入力します。
 	-  **アドレス空間の追加: ** このチュートリアルでは、追加のアドレス空間は必要ありません。
@@ -244,15 +258,15 @@ a.	セキュリティ ポリシー
 
 ## 関連項目
 
--  [Azure 仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure 仮想ネットワーク](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)
 
 -  [仮想ネットワーク FAQ](http://msdn.microsoft.com/library/windowsazure/dn133803.aspx)
 
--  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156097.aspx)
+-  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/library/windowsazure/jj156097.aspx)
 
--  [仮想ネットワークへの仮想マシンの追加](http://www.windowsazure.com/ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/)
+-  [仮想ネットワークへの仮想マシンの追加](http://azure.microsoft.com/manage/services/networking/add-a-vm-to-a-virtual-network/)
 
--  [仮想ネットワークの VPN デバイスについて](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156075.aspx)
+-  [仮想ネットワークの VPN デバイスについて](http://msdn.microsoft.com/library/windowsazure/jj156075.aspx)
 
 -  [名前解決 (DNS)](http://go.microsoft.com/fwlink/?LinkId=248097)
 
@@ -260,3 +274,5 @@ a.	セキュリティ ポリシー
 
 
 
+
+<!--HONumber=46--> 

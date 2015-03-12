@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Service Bus AMQP" pageTitle=".NET Service Bus API で AMQP 1.0 を使用する方法 - Azure" metaKeywords="" description="Azure .NET Service Bus API で Advanced Message Queuing Protodol (AMQP) 1.0 を使用する方法について説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to use AMQP 1.0 with the Service Bus .NET API" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+<properties 
+	pageTitle=".NET Service Bus API で AMQP 1.0 を使用する方法 - Azure" 
+	description="Azure .NET Service Bus API で Advanced Message Queuing Protodol (AMQP) 1.0 を使用する方法について説明します。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
+	editor="mattshel"/>
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
+<tags 
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="02/12/2015" 
+	ms.author="sethm"/>
 
 
 
@@ -29,7 +43,7 @@ AMQP 1.0 のサポートは、Service Bus SDK バージョン 2.1 以降で使�
 
 既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使って Service Bus サービスと通信します。既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、サービス バス接続文字列を明示的に構成する必要があります。AMQP 1.0 を使用する際、アプリケーション コードはこの変更以外には基本的に変更されません。
 
-現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。サポートされていない機能については、後ほど「サポートされていない機能と制限」で紹介します。そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。それらの設定は、この短いガイドでは使用しませんが、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)」で詳しく説明されています。
+現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。サポートされていない機能については、後ほど「サポートされていない機能と制限」で紹介します。そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。それらの設定は、この短いガイドでは使用しませんが、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/windowsazure/jj841071.aspx)」で詳しく説明されています。
 
 ### App.config による構成
 
@@ -213,7 +227,7 @@ AMQP を使用するときには、接続文字列の末尾に ";TransportType=A
 
 上で説明したサンプル .NET アプリケーションと、Java 版のガイド ([サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ](http://aka.ms/ll1fm3)) に含まれている同様の Java アプリケーションを使用すると、.NET と Java の間でメッセージを交換することができます。 
 
-Service Bus と AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)」を参照してください。
+Service Bus と AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/windowsazure/jj841071.aspx)」を参照してください。
 
 ### JMS から .NET
 
@@ -285,19 +299,21 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 * セッション ロックの更新
 * いくつかの動作の小さな違い
 
-詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)」を参照してください。このトピックには、サポートされていない API の詳細なリストが含まれています。
+詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/windowsazure/jj841071.aspx)」を参照してください。このトピックには、サポートされていない API の詳細なリストが含まれています。
 
 <h2>まとめ</h2>
 
 このガイドでは、AMQP 1.0 と Service Bus .NET API を使って .NET からサービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明しました。
 
-Service Bus AMQP 1.0 のサポートは、Java、C、Python、PHP など、その他の言語からも使用できます。Service Bus で AMQP 1.0 を使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)」を参照してください。
+Service Bus AMQP 1.0 のサポートは、Java、C、Python、PHP など、その他の言語からも使用できます。Service Bus で AMQP 1.0 を使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/windowsazure/jj841071.aspx)」を参照してください。
 
 <h2>詳細情報</h2>
 
 * [Azure のサービス バスの AMQP 1.0 のサポートに関するページ](http://aka.ms/pgr3dp)
 * [サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ](http://aka.ms/ll1fm3)
-* [サービス バス AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)
-* [サービス バス キューの使用方法](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-queues/)
+* [サービス バス AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/library/windowsazure/jj841071.aspx)
+* [サービス バス キューの使用方法](http://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/)
 
-[サービス バス キューの使用方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-queues/
+[サービス バス キューの使用方法]: http://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/
+
+<!--HONumber=46--> 
