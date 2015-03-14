@@ -100,7 +100,7 @@ Azure 診断では、次の種類の利用統計情報を収集できます。
 このチュートリアルでは、.NET EventSource クラスを使用して利用統計情報を生成する Azure Worker ロールの実装方法について説明します。Azure 診断を使用して利用統計情報を収集し、これを Azure ストレージ アカウントに格納します。Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
 
 <h3>前提条件</h3>
-この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成していることを確認してください。][]
+この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成していることを確認してください。](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)
 
 <h3>手順 1:Worker ロールを作成する</h3>
 1.	**Visual Studio 2013** を起動します。
@@ -787,8 +787,8 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 [Azure アプリケーションのデバッグ]: http://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
 [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス]: http://msdn.microsoft.com/library/windowsazure/hh771389.aspx
-[無料評価版]: http://azure.microsoft.com/ pricing/free-trial/
-[Azure PowerShell Version 0.8.7 以降をインストールして構成]: http://azure.microsoft.com/ documentation/articles/install-configure-powershell/
+[無料評価版]: http://azure.microsoft.com/pricing/free-trial/
+[Azure PowerShell Version 0.8.7 以降をインストールして構成]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
 [Azure Diagnostics 1.2 Configuration Schema (Azure 診断 1.2 構成スキーマ)]: http://msdn.microsoft.com/library/azure/dn782207.aspx
 [Set-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495270.aspx
 [Get-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495145.aspx

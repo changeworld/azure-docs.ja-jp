@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure における Bottle と MongoDB (Python Tools 2.1 for Visual Studio の使用方法)" 
 	description="Python Tools for Visual Studio を使って、MongoDB データベース インスタンスにデータを保存する Bottle アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。 
 	services="web-sites" 
@@ -215,7 +215,7 @@ Python Tools for Visual Studio、Bottle、MongoDB の詳細については、以
 
 <!--Link references-->
 [Python デベロッパー センター]: /ja-jp/develop/python/
-[Azure クラウド サービス]../cloud-services-python-ptvs/
+[Azure Cloud Services]: ../cloud-services-python-ptvs/
 
 <!--External Link references-->
 [Azure 管理ポータル]: https://manage.windowsazure.com
@@ -234,6 +234,8 @@ Python Tools for Visual Studio、Bottle、MongoDB の詳細については、以
 [Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
 [Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
+[Azure の管理ポータル]: https://manage.windowsazure.com
+
 
 
 <!--HONumber=42-->

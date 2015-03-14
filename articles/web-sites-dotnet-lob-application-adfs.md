@@ -18,7 +18,7 @@
 
 # Azure Websites で AD FS を使用して認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する #
 
-この記事では、[Azure Websites](http://azure.microsoft.com/services/websites/) でオンプレミス [Active Directory フェデレーション サービス](http://technet.microsoft.com/ library/hh831502.aspx)を ID プロバイダーとして使用して ASP.NET MVC 基幹業務 (LOB) アプリケーションを作成する方法について説明します。このシナリオは、すべてのデータがオンサイトに格納されることが求められる組織で Azure Websites を使用して LOB アプリケーションを作成する場合に適しています。
+この記事では、[Azure Websites](http://azure.microsoft.com/services/websites/) でオンプレミス [Active Directory フェデレーション サービス](http://technet.microsoft.com/library/hh831502.aspx)を ID プロバイダーとして使用して ASP.NET MVC 基幹業務 (LOB) アプリケーションを作成する方法について説明します。このシナリオは、すべてのデータがオンサイトに格納されることが求められる組織で Azure Websites を使用して LOB アプリケーションを作成する場合に適しています。
 
 Azure Websites の他のエンタープライズ認証および承認オプションの概要については、[Azure Websites での LOB アプリケーションのユーザーの認証と承認](./web-sites-authentication-authorization)に関するページを参照してください。
 
@@ -38,7 +38,7 @@ Azure Websites で次の機能を持つ基本的な ASP.NET アプリケーシ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- オンプレミス AD FS デプロイメント (使用したテスト ラボのチュートリアルについては、[Azure VM での AD FS を使用したスタンドアロン STS に関するテスト ラボのページ (テストのみ)] を参照 (TODO)
+- オンプレミス AD FS デプロイメント (使用したテスト ラボのチュートリアルについては、[Azure VM での AD FS を使用したスタンドアロン STS に関するテスト ラボのページ (テストのみ) を参照](TODO)
 - 証明書利用者信頼を AD FS 管理で作成するためのアクセス許可
 - Visual Studio 2013
 
@@ -346,7 +346,7 @@ Azure Websites では、[ハイブリッド接続](http://azure.microsoft.com/do
 - [Visual Studio 2013 で ASP.NET のオンプレミス組織認証オプション (ADFS) を使用する方法](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)に関するページ
 - [Vittorio Bertocci のブログ](http://blogs.msdn.com/b/vbertocci/)
 - [VS2013 Web プロジェクトを WIF から Katana に移植する方法](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)に関するページ
-- [Active Directory フェデレーション サービスの概要](http://technet.microsoft.com/ library/hh831502.aspx)に関するページ
+- [Active Directory フェデレーション サービスの概要](http://technet.microsoft.com/library/hh831502.aspx)に関するページ
 - [WS-Federation 1.1 仕様](http://download.boulder.ibm.com/ibmdl/pub/software/dw/specs/ws-fed/WS-Federation-V1-1B.pdf?S_TACT=105AGX04&S_CMP=LP)
 
 <!--HONumber=45--> 
