@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="Azure 上で MySQL を実行する仮想マシンの作成" 
 	description="Windows Server 2008 R2 を実行する Azure 仮想マシンを作成し、その仮想マシンで MySQL データベースのインストールと構成を行います。" 
 	services="virtual-machines" 
@@ -147,13 +147,6 @@ MySQL の詳細については、「[MySQL Documentation](http://dev.mysql.com/d
 
 [AzurePortal]: http://manage.windowsazure.com
 [MySQLDownloads]: http://www.mysql.com/downloads/mysql/
-
-
-[MySQLConfig5]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig5.png
-[MySQLConfig7]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig7.png
-[MySQLConfig8]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig8.png
-[MySQLConfig9]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig9.png
-[MySQLConfig10]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig10.png
 
 
 

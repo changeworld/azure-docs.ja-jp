@@ -120,4 +120,5 @@ Event Hubs の詳細については、「[Event Hubs 開発者ガイド]」を�
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-[Event Hubs 開発者ガイド]: http://msdn.microsoft.com/library/azure/dn789972.aspx<!--HONumber=42-->
+[Event Hubs 開発者ガイド]: http://msdn.microsoft.com/library/azure/dn789972.aspx
+<!--HONumber=42-->
