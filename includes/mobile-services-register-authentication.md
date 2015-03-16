@@ -4,11 +4,8 @@
 
 1. [Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
-   	![](./media/mobile-services-register-authentication/mobile-services-selection.png)
-
 2. **[ダッシュボード]** タブをクリックし、**[モバイル サービス URL]** の値をメモしておきます。
 
-   	![](./media/mobile-services-register-authentication/mobile-service-uri.png)
 
     アプリケーションを登録するときに、この値を ID プロバイダーに指定する必要が生じる場合があります。
 
