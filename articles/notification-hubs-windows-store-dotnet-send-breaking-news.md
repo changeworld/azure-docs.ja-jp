@@ -1,5 +1,5 @@
-<properties 
-	pageTitle="Notification Hubs を使用したニュース速報の送信 (Windows Universal) 
+﻿<properties 
+	pageTitle="Notification Hubs を使用したニュース速報の送信 (Windows Universal)" 
 	description="Azure Notification Hubs と登録の際のタグを使用して、ユニバーサル Windows アプリにニュース速報を送信します。" 
 	services="notification-hubs" 
 	documentationCenter="windows" 

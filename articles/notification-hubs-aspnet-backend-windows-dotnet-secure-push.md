@@ -1,6 +1,6 @@
 ﻿<properties 
 	pageTitle="Azure Notification Hubs の安全なプッシュ" 
-	descriptionAzure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
+	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
 	manager="dwrede" 
