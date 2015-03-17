@@ -45,7 +45,7 @@
 
 <h2><a id="CreateAccount"></a>Azure ストレージ アカウントの作成</h2>
 
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 ## <a name="CreateApplication"> </a>Java アプリケーションの作成
 

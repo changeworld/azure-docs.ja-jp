@@ -47,7 +47,7 @@
 
 ## <a id="CreateAccount"></a>Azure のストレージ アカウントの作成
 
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 ## <a id="create-a-ruby-application"></a>Ruby アプリケーションの作成
 

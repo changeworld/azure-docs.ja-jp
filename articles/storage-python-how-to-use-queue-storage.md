@@ -39,7 +39,7 @@
 [AZURE.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <a name="create-account"> </a>Azure のストレージ アカウントの作成
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 
 **注:** Python またはクライアント ライブラリをインストールする必要がある場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」を参照してください。

@@ -42,7 +42,7 @@
 
 <h2><a id="create-account"></a>Azure ストレージ アカウントの作成</h2>
 
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 <h2><a id="create-app"></a>PHP アプリケーションの作成</h2>
 

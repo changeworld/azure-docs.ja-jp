@@ -80,7 +80,7 @@ Azure File ストレージは現在プレビュー段階にあります。この
 
 > [AZURE.NOTE] File ストレージは現在、新規のストレージ アカウントでのみ利用できます。File ストレージ アカウントへのアクセスがサブスクリプションに許可された後で、このガイドで使用する新規ストレージ アカウントを作成してください。
 
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 ##<a name="use-cmdlets"></a>PowerShell を使用したファイル共有の作成
 

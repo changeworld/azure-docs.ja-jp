@@ -38,11 +38,11 @@
 * [方法:BLOB コンテナーを削除する](#DeleteContainer)
 * [次のステップ](#NextSteps)
 
-[AZURE.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
+[AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
 
 <h2><a id="CreateAccount"></a>Azure のストレージ アカウントの作成</h2>
 
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 ## <a name="CreateApplication"> </a>Java アプリケーションの作成
 
