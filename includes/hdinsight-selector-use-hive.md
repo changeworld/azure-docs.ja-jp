@@ -1,10 +1,10 @@
 ﻿> [AZURE.SELECTOR]
-- [概要](/ja-jp/documentation/articles/hdinsight-use-hive/)
-- [クエリ コンソール](/ja-jp/documentation/articles/hdinsight-hadoop-use-hive-query-console/)
-- [Visual Studio](/ja-jp/documentation/articles/hdinsight-hadoop-use-hive-visual-studio/)
-- [PowerShell](/ja-jp/documentation/articles/hdinsight-hadoop-use-hive-powershell/)
-- [SSH](/ja-jp/documentation/articles/hdinsight-hadoop-use-hive-ssh/)
-- [リモート デスクトップ](/ja-jp/documentation/articles/hdinsight-hadoop-use-hive-remote-desktop/)
-- [Curl](/ja-jp/documentation/articles/hdinsight-hadoop-use-hive-curl/)
+- [概要](/documentation/articles/hdinsight-use-hive/)
+- [クエリ コンソール](/documentation/articles/hdinsight-hadoop-use-hive-query-console/)
+- [Visual Studio](/documentation/articles/hdinsight-hadoop-use-hive-visual-studio/)
+- [PowerShell](/documentation/articles/hdinsight-hadoop-use-hive-powershell/)
+- [SSH](/documentation/articles/hdinsight-hadoop-use-hive-ssh/)
+- [リモート デスクトップ](/documentation/articles/hdinsight-hadoop-use-hive-remote-desktop/)
+- [Curl](/documentation/articles/hdinsight-hadoop-use-hive-curl/)
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

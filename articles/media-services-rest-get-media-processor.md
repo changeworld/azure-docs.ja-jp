@@ -17,9 +17,9 @@
 	ms.author="juliako"/>
 
 
-#方法: メディア プロセッサ インスタンスを取得する
+#方法:メディア プロセッサ インスタンスを取得する
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
 
 ##概要
 
@@ -39,17 +39,17 @@
     <tr>
        <td>Azure メディア エンコーダー</td>
        <td>Azure メディア エンコーダーを使用してエンコード タスクを実行できます。</td>
-       <td><a href="http://msdn.microsoft.com/library/jj129582.aspx"> Azure メディア エンコーダー用のタスク プリセット文字列</a></td>
+       <td><a href="http://msdn.microsoft.com/library/jj129582.aspx">Task Preset Strings for the Azure Media Encoder (Azure メディア エンコーダー用のタスク プリセット文字列)</a></td>
     </tr>
     <tr>
         <td>Windows Azure Media Packager</td>
         <td>メディア アセットを .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア アセットを変換できます。</td>
-		<td><a href="http://msdn.microsoft.com/library/hh973635.aspx">Azure Media Packager のタスク プリセット</a></td>
+		<td><a href="http://msdn.microsoft.com/library/hh973635.aspx">Task Preset Strings for the Azure Media Packager (Azure Media Packager 用のタスク プリセット文字列)</a></td>
     </tr>
     <tr>
         <td>Windows Azure Media Encryptor</td>
         <td>PlayReady Protection を使用してメディア アセットを暗号化できます。</td>
-        <td><a href="http://msdn.microsoft.com/library/hh973610.aspx">Azure Media Packager のタスク プリセット</a></td>
+        <td><a href="http://msdn.microsoft.com/library/hh973610.aspx">Task Preset Strings for the Azure Media Packager (Azure Media Packager 用のタスク プリセット文字列)</a></td>
     </tr>
     <tr>
         <td>Azure メディア インデクサー</td>
@@ -69,16 +69,16 @@
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、[Setup for Media Services REST API Development (Media Services REST API 開発の設定)](../media-services-rest-how-to-use) をご覧ください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。[Media Services REST API を使用してメディア サービス アカウントに接続する](../media-services-rest-connect_programmatically/)で説明されているように、新しい URI に続けてコールを行う必要があります。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
 
 
 
 次の REST コールでは、名前 (ここでは **Azure メディア エンコーダー**) でメディア プロセッサ インスタンスを取得する方法を示しています。 
 
 	
-要求: 
+要求:
 
 	GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20Encoder' HTTP/1.1
 	DataServiceVersion: 1.0;NetFx
@@ -90,7 +90,7 @@
 	x-ms-version: 2.8
 	Host: media.windows.net
 	
-応答: 
+応答:
 	
 	HTTP/1.1 200 OK
 	Cache-Control: no-cache
@@ -110,9 +110,9 @@
 
 
 ##次のステップ
-これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][] に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
+これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
 
-[アセットをエンコードする方法]: ../media-services-rest-encode-asset/
-[Azure メディア エンコーダー用のタスク プリセット文字列]: http://msdn.microsoft.com/library/jj129582.aspx
-[方法: メディア サービスにプログラムから接続する]: ../media-services-rest-connect_programmatically/
-<!--HONumber=45--> 
+[方法: アセットをエンコードする]: ../media-services-rest-encode-asset/
+[Task Preset Strings for the Azure Media Encoder (Azure メディア エンコーダー用のタスク プリセット文字列)]: http://msdn.microsoft.com/library/jj129582.aspx
+[方法: Media Services にプログラムから接続する]: ../media-services-rest-connect_programmatically/
+<!--HONumber=47-->

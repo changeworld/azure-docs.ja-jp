@@ -1,5 +1,5 @@
 ﻿
-Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、次の情報を参照してください: [Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584).
+Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584)」をご覧ください。
 
 ## <a id="certificates"></a>証明書の署名要求ファイルを生成する
 
@@ -94,7 +94,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 ## <a id="profile"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **[+]** をクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **[+]** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
 
    	![](./media/enable-apple-push-notifications/mobile-services-ios-push-12.png)
 
@@ -129,4 +129,5 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 9. **[Targets]** の **[Quickstart]** をクリックし、**[Code Signing Identity]** を展開して、**[Debug]** で新しいプロファイルを選択します。これで、Xcode プロジェクトはコード署名のために新しいプロファイルを使用するようになります。次に、証明書を Azure にアップロードする必要があります。
 
    	![](./media/enable-apple-push-notifications/mobile-services-ios-push-step17.png)
-<!--HONumber=42-->
+
+<!--HONumber=47-->

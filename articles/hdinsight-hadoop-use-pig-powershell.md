@@ -22,7 +22,7 @@
 
 このドキュメントでは、PowerShell を使用して HDInsight クラスターで Pig ジョブを Hadoop に送信する方法を説明します。Pig では map 関数や reduce 関数ではなく、データ変換をモデル化する言語 (Pig Latin) を使用して MapReduce ジョブを記述できます。
 
-> [AZURE.NOTE] このドキュメントには、例で使用される Pig Latin ステートメントで何が実行されるかに関する詳細は含まれていません。例で使用される Pig Latin の詳細については、「 <a href="../hdinsight-use-pig/" target="_blank">HDInsight での Pig と Hadoop の使用</a>」を参照してください。
+> [AZURE.NOTE] このドキュメントには、例で使用される Pig Latin ステートメントで何が実行されるかに関する詳細は含まれていません。例で使用される Pig Latin の詳細については、「<a href="../hdinsight-use-pig/" target="_blank">HDInsight の Hadoop での Pig の使用</a>」を参照してください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -30,20 +30,20 @@
 
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベースのいずれか)
 
-* <a href="http://azure.microsoft.com/ documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
+* <a href="http://azure.microsoft.com/documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
 
 
 ##<a id="powershell"></a>PowerShell を使用した Pig ジョブの実行
 
-Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行できる *cmdlets*が提供されます。内部的には、これは、HDInsight クラスターで実行する  <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a>  (旧称: Templeton) への REST 呼び出しを使用して実行されます。
+Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行できる *コマンドレット*が提供されます。これは、HDInsight クラスター上で実行する <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a> への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
 
 リモート HDInsight クラスターで Pig ジョブを実行するときに次のコマンドレットを使用します。
 
 * **Add-AzureAccount** - Azure サブスクリプションに対して PowerShell を認証します。
 
-* **New-AzureHDInsightHiveJobDefinition** - 指定された Pig Latin ステートメントを使用して新しい *job definition*を作成します。
+* **New-AzureHDInsightPigJobDefinition** - 指定された Pig Latin ステートメントを使用して新しい *ジョブ定義*を作成します。
 
-* **Start-AzureHDInsightJob** - ジョブ定義を HDInsight に送信し、ジョブを開始し、ジョブのステータスの確認に使用できる  *job* オブジェクトを返します。
+* **Start-AzureHDInsightJob** - ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる *ジョブ* オブジェクトを返します。
 
 * **Wait-AzureHDInsightJob** - ジョブ オブジェクトを使用して、ジョブのステータスを確認します。ジョブの完了を待機するか、待機時間が上限に達します。
 
@@ -141,4 +141,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
 * [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
-<!--HONumber=45--> 
+<!--HONumber=47-->

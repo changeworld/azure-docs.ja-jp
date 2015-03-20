@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="音声および SMS に Twilio を使用する方法 (Java) -  Azure" 
 	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Java で記述されています。" 
 	services="" 
@@ -20,21 +20,7 @@
 
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、[次のステップ](#NextSteps) セクションを参照してください。
 
-## 目次
-* [Twilio とは](#WhatIs)
-* [Twilio の料金](#Pricing)
-* [概念](#Concepts)
-* [Twilio アカウントを作成する](#CreateAccount)
-* [電話番号を確認する](#VerifyPhoneNumbers)
-* [Java アプリケーションの作成](#create_app)
-* [Twilio ライブラリを使用するようにアプリケーションを構成する](#configure_app)
-* [方法:発信通話する](#howto_make_call)
-* [方法:SMS メッセージを送信する](#howto_send_sms)
-* [方法:独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)
-* [方法:その他の Twilio サービスを使用する](#AdditionalServices)
-* [次のステップ](#NextSteps)
-
-<h2><a id="WhatIs"></a>Twilio とは</h2>
+<h2><a id="WhatIs"></a>Twilio とは何ですか。</h2>
 Twilio は、既存の Web 言語およびスキルを使用して音声および SMS アプリケーションの作成を可能にするテレフォニー Web サービス API です。Twilio は、サードパーティ製のサービスです (Azure の機能および Microsoft 製品ではありません)。
 
 **Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。**Twilio SMS** を使用すると、アプリケーションで SMS メッセージの送受信を行うことができます。**Twilio Client** を使用すると、アプリケーションに (モバイル接続を含む) 既存のインターネット接続を使用した音声通信を組み込むことができます。
@@ -77,18 +63,18 @@ TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで�
 
 Twilio の動詞と属性、および TwiML の詳細については、[TwiML] [twiml] に関するページを参照してください。Twilio API の詳細については、[Twilio API] [twilio_api] に関するページを参照してください。
 
-<h2><a id="CreateAccount"></a>Twilio アカウントを作成する</h2>
+<h2><a id="CreateAccount"></a>Twilio アカウントを作成します。</h2>
 Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ] [try_twilio] でサインアップします。無料アカウントで始め、後でアカウントをアップグレードすることができます。
 
 Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント ID と認証トークンは、[Twilio アカウント ページ] [twilio_account] の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
-<h2><a id="create_app"></a>Java アプリケーションの作成</h2>
+<h2><a id="create_app"></a>Java アプリケーションを作成します。</h2>
 1. Twilio JAR を入手し、Java のビルド パスと WAR デプロイ アセンブリに追加します。[https://github.com/twilio/twilio-java][twilio_java] で、GitHub のソースをダウンロードして独自の JAR を作成するか、ビルド済み JAR (依存関係あり/なし) をダウンロードすることができます。
 2. JDK の **cacerts** キーストアに Equifax Secure Certificate Authority 証明書と MD5 フィンガープリント 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 が格納されていることを確認します (シリアル番号は 35:DE:F4:CF、SHA1 フィンガープリントは D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。これは、[https://api.twilio.com][twilio_api_service] サービスの証明機関 (CA) 証明書であり、Twilio API の使用時に呼び出されます。JDK の **cacerts** キーストアに正しい CA 証明書が格納されているかどうかを確認する方法については、「[証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]」を参照してください。
 
 Java 用 Twilio クライアント ライブラリを使用する手順の詳細については、「[Azure 上の Java アプリケーションで Twilio を使用して通話する方法][howto_phonecall_java]」で確認できます。
 
-<h2><a id="configure_app"></a>Twilio ライブラリを使用するようにアプリケーションを構成する</h2>
+<h2><a id="configure_app"></a>Twilio ライブラリを使用するようにアプリケーション</h2>
 コードのソース ファイルの先頭に、アプリケーションで使用する Twilio のパッケージまたはクラスの **import** ステートメントを追加できます。 
 
 Java ソース ファイルの場合:
@@ -107,7 +93,7 @@ Java Server Page (JSP) ソース ファイルの場合:
 使用する Twilio のパッケージまたはクラスによって **import** ステートメントは異なる場合があります。
 
 <h2><a id="howto_make_call"></a>方法:発信通話する</h2>
-次のコードでは、**CallFactory** クラスを使用して発信通話を行う方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
+次のコードでは、**CallFactory** クラスを使用して発信通話を行う方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。値を置き換えて、**から**と**に**電話番号を確認することを確認してください。、**から**電話番号、コードを実行する前には、Twilio アカウントをします。
 
     // Use your account SID and authentication token instead
     // of the placeholders shown here.
@@ -139,7 +125,7 @@ Java Server Page (JSP) ソース ファイルの場合:
 
 **CallFactory.create** メソッドに渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] を参照してください。
 
-既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)を参照してください(#howto_provide_twiml_responses)。
+既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、[方法: 独自の Web サイトから TwiML 応答を返す] を参照してください(#howto_provide_twiml_responses).
 
 <h2><a id="howto_send_sms"></a>方法:SMS メッセージを送信する</h2>
 次のコードは、**SmsFactory** クラスを使用して SMS メッセージを送信する方法を示しています。試用アカウントで SMS メッセージを送信できるように、**From** の番号として **4155992671** が Twilio から提供されます。コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
@@ -169,7 +155,7 @@ Java Server Page (JSP) ソース ファイルの場合:
 **SmsFactory.create** メソッドに渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] を参照してください。
 
 <h2><a id="howto_provide_twiml_responses"></a>方法:独自の Web サイトから TwiML 応答を返す</h2>
-アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallFactory.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています(TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message][twimlet_message_url] をクリックして、空の **&lt;Response&gt;** 要素を確認します。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックして、**&lt;Say&gt;** 要素を格納している **&lt;Response&gt;** 要素を確認します)。
+アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallFactory.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています(TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、クリックして[http://twimlets.com/message][twimlet_message_url]すると、空**&lt;応答&gt;**要素です。別の例として次のようにクリックします[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world]を表示するには、**&lt;応答&gt;**要素を含む、**&lt;と答えて&gt;**要素です。)。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは任意の言語で作成できます。このトピックでは、JSP ページで URL をホストすることを前提としています。
 
@@ -193,7 +179,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
         <Say>Good bye.</Say>
     </Response>
 
-**ApiVersion** パラメーターは、SMS 要求ではなく Twilio 音声要求に使用できます。Twilio 音声および SMS 要求に使用できる要求パラメーターを確認するには、<https://www.twilio.com/docs/api/twiml/twilio_request> と <https://www.twilio.com/docs/api/twiml/sms/twilio_request> をそれぞれ参照してください。**RoleName** 環境変数は Azure 展開の一部として使用できます(カスタム環境変数を追加して **System.getenv** から取得できるようにする場合は、[その他のロール構成設定に関するページ][misc_role_config_settings]の環境変数に関するセクションを参照してください)。
+**ApiVersion** パラメーターは、SMS 要求ではなく Twilio 音声要求に使用できます。Twilio 音声および SMS 要求の使用可能な要求パラメーターを参照してくださいを参照してください。 <https://www.twilio.com/docs/api/twiml/twilio_request>と<https://www.twilio.com/docs/api/twiml/sms/twilio_request>、それぞれします。**RoleName** 環境変数は Azure 展開の一部として使用できます(カスタム環境変数を追加して **System.getenv** から取得できるようにする場合は、[その他のロール構成設定に関するページ][misc_role_config_settings]の環境変数に関するセクションを参照してください)。
 
 TwiML 応答を提供するように JSP ページを設定したら、**CallFactory.create** メソッドに渡される URL として JSP ページの URL を使用します。たとえば、Azure ホステッド サービスに展開された MyTwiML という名前の Web アプリケーションがあり、JSP ページの名前が mytwiml.jsp である場合、次のコード例に示すように URL を **CallFactory.create** に渡すことができます。
 
@@ -246,4 +232,4 @@ Azure 上の Java で Twilio を使用する方法の詳細については、「
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!--HONumber=45-->
+<!--HONumber=47-->

@@ -24,19 +24,19 @@ Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Stor
 
 ##前提条件
 
-* **HDInsight での Apache Storm** -  <a href="../hdinsight-storm-getting-started/" target="_blank">「HDInsight (Hadoop) での Storm の使用」</a> でクラスターの作成手順をご確認ください。
+* **HDInsight 上の Apache Storm** - クラスターを作成する手順については、「<a href="../hdinsight-storm-getting-started/" target="_blank">HDInsight での Apache Storm の使用</a>」を参照してください。
 
 * **Storm ダッシュボード**用 - HTML5 をサポートする最新の Web ブラウザー
 
-* **Visual Studio** 用 - Azure SDK 2.5.1 以降と HDInsight Tools for Visual Studio。HDInsight tools for Visual Studio のインストールと構成方法については、 <a href="../hdinsight-hadoop-visual-studio-tools-getting-started/" target="_blank">「Get started using HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用する)」</a> をご覧ください。
+* **Visual Studio** 用 - Azure SDK 2.5.1 以降と HDInsight Tools for Visual Studio。HDInsight Tools for Visual Studio のインストールと構成については、「<a href="../hdinsight-hadoop-visual-studio-tools-getting-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」を参照してください。
 
 	下記いずれかのバージョンの Visual Studio
 
-	* Visual Studio 2012 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=39305" target="_blank">(アップデート 4)</a>
+	* Visual Studio 2012 <a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">Update 4</a>
 
-	* Visual Studio 2013 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=44921" target="_blank">(アップデート 4)</a> または <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
+	* Visual Studio 2013 <a href="http://www.microsoft.com/download/details.aspx?id=44921" target="_blank">Update 4</a> または <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
 
-	* <a href="http://visualstudio.com/ja-jp/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
+	* <a href="http://visualstudio.com/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
 
 	> [AZURE.NOTE] 現在、HDInsight Tools for Visual Studio では HDInsight cluster バージョン 3.2 の Storm のみサポートしています。
 
@@ -55,6 +55,8 @@ Storm ダッシュボードの上部で、**[Submit Topology (トポロジの送
 Storm ダッシュボードで、**[Storm UI]** リンクを選択します。クラスターの情報と、実行中のトポロジに関する情報が表示されます。
 
 ![the storm ui][storm-dashboard-ui] 
+
+> [AZURE.NOTE] いくつかのバージョンの Internet Explorer では、Storm UI に初めてアクセスした後、Storm UI が更新されない場合があります。たとえば、送信した新しいトポロジが表示されない場合や、以前に削除したトポロジがアクティブと表示される場合があります。Microsoft はこの問題を確認しており、解決に取り組んでいます。
 
 ####メイン ページ
 
@@ -82,7 +84,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 	
 	* **再調整** - トポロジの並列処理を調整します。クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。
 	
-		詳細については、 <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">「Understanding the parllelism of a Storm topology (Storm トポロジの並列処理)」をご覧ください。</a>
+		詳細については、<a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Storm トポロジの並列処理に関するページ</a>を参照してください。
 	
 	* **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 
@@ -112,11 +114,11 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
 ##HDInsight Tools for Visual Studio
 
-HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。次の例では、サンプル アプリケーションを使用します。HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「[develop C# topologies using the HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用して C# トポロジを開発する)](../hdinsight-storm-develop-csharp-visual-studio-topology/)」をご覧ください。
+HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。次の例では、サンプル アプリケーションを使用します。HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「[develop C# topologies using the HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用して C# トポロジを開発する)]」を参照してください(../hdinsight-storm-develop-csharp-visual-studio-topology/)。
 
 次の手順を使用して、サンプルをお使いの HDInsight クラスターに展開し、トポロジを表示、管理します。
 
-1. 最新バージョンの HDInsight Tools for Visual Studio をまだインストールしていない場合は、 <a href="../hdinsight-hadoop-visual-studio-tools-getting-started/" target="_blank">「Get started using HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用する)」</a>をご覧ください。
+1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「<a href="../hdinsight-hadoop-visual-studio-tools-getting-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」を参照してください。
 
 2. Visual Studio を開いて、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -146,7 +148,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 Storm UI は、REST API を基に構築されているため、API を使用して同様の管理や監視機能を実行できます。REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-Storm REST API の詳細については、 <a href="https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md" target="_base">https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md</a>をご覧ください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+Storm REST API の詳細については、<a href="https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md" target="_base">https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md</a> を参照してください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
 ###ベース URI
 
@@ -164,11 +166,11 @@ REST API から返される情報は、クラスターと同じ Azure 仮想ネ�
 
 ##次のステップ
 
-ここまでで、Storm ダッシュボードを使用してトポロジを展開、監視する方法について説明しました。続けて、「[develop C# topologies using the HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用して C# トポロジを開発する)](../hdinsight-storm-develop-csharp-visual-studio-topology/)」や「[Develop Java topologies for Storm on HDInsight using Maven (Maven を使用して HDInsight で Storm の Java トポロジを開発する)](../hdinsight-storm-develop-java-topology/)」もご覧ください。
+ここまでで、Storm ダッシュボードを使用してトポロジをデプロイし、監視する方法について説明してきました。続けて、[HDInsight Tools for Visual Studio を使用して C# トポロジを開発する](../hdinsight-storm-develop-csharp-visual-studio-topology/)方法や、[Maven を使用して Java ベースのトポロジを開発する]方法について説明します。(../hdinsight-storm-develop-java-topology/)。
 
 
 [hdinsight-dashboard]: ./media/hdinsight-storm-deploy-monitor/dashboard-link.png
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor/storm-ui-summary.png
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

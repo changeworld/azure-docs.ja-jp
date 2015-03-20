@@ -30,7 +30,7 @@ Microsoft Azure メディア サービスは OData ベースの HTTP 要求を�
 <table border="1">
 <tr><th>ヘッダー</th><th>種類</th><th>値</th></tr>
 <tr><td>Authorization</td><td>ベアラ</td><td>ベアラは、唯一許容される承認のメカニズムです。値には、ACS によって提供されるアクセス トークンを含める必要もあります。</td></tr>
-<tr><td>x-ms-version</td><td>小数点</td><td>2.8</td></tr>
+<tr><td>x-ms-version</td><td>小数点</td><td>2.9</td></tr>
 <tr><td>DataServiceVersion</td><td>小数点</td><td>3.0</td></tr>
 <tr><td>MaxDataServiceVersion</td><td>小数点</td><td>3.0</td></tr>
 </table><br/>
@@ -88,7 +88,7 @@ HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次
 
 ## メディア サービスのモデルの検出
 
-メディア サービスのエンティティを見つけやすくするには、$metadata 操作を使用できます。これによって、すべての有効なエンティティの種類、エンティティのプロパティ、関連付け、関数、アクションなどを取得することができます。次の例は、URI を作成する方法を示しています。: https://media.windows.net/API/$metadata.
+メディア サービスのエンティティを見つけやすくするには、$metadata 操作を使用できます。これによって、すべての有効なエンティティの種類、エンティティのプロパティ、関連付け、関数、アクションなどを取得することができます。次の例は、URI を作成する方法を示しています https://media.windows.net/API/$metadata。
 
 ブラウザーにメタデータを表示する場合は　URI の末尾に "?api-version=2.x" を追加してください。または、要求に　x-ms-version　を含めないでください。
 
@@ -103,4 +103,4 @@ HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次
 
 
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

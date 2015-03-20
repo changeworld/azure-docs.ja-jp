@@ -1,4 +1,4 @@
-<properties
+﻿<properties
    pageTitle="Visual Studio | Azure を使用して HDInsight で Apache Storm の C# トポロジを開発する"
    description="HDInsight Tools for Visual Studio を使用して、Visual Studio で簡単なワード カウントトポロジを作成することで、C# で Storm トポロジを作成する方法を説明します。"
    services="hdinsight"
@@ -26,23 +26,23 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 * 下記いずれかのバージョンの Visual Studio
 
-	* Visual Studio 2012 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=39305" target="_blank">(アップデート 4)</a>
+	* Visual Studio 2012 <a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">Update 4</a>
 
-	* Visual Studio 2013 <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=44921" target="_blank">(アップデート 4)</a> または <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
+	* Visual Studio 2013 <a href="http://www.microsoft.com/download/details.aspx?id=44921" target="_blank">Update 4</a> または <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
 
-	* <a href="http://visualstudio.com/ja-jp/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
+	* <a href="http://visualstudio.com/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
 
 * Azure SDK 2.5.1 以降
 
-* HDInsight Tools for Visual Studio -  <a href="../hdinsight-hadoop-visual-studio-tools-getting-started/" target="_blank">「Get started using HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用する)」</a> で HDInsight tools for Visual Studio のインストールと構成方法をご確認ください。
+* HDInsight Tools for Visual Studio - HDInsight Tools for Visual Studio のインストールと構成については、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」を参照してください。
 
-* HDInsight クラスターの Apache Storm -  <a href="../hdinsight-storm-getting-started/" target="_blank">「HDInsight (Hadoop) での Storm の使用」</a> でクラスターの作成手順をご確認ください。
+* HDInsight 上の Apache Storm クラスター - クラスターを作成する手順については、「<a href="../hdinsight-storm-getting-started/" target="_blank">HDInsight での Apache Storm の使用</a>」を参照してください。
 
 	> [AZURE.NOTE] 現在、HDInsight Tools for Visual Studio では HDInsight cluster バージョン 3.2 の Storm のみサポートしています。
 
 ##C# トポロジの作成
 
-1. 最新バージョンの HDInsight Tools for Visual Studio をまだインストールしていない場合は、 <a href="../hdinsight-hadoop-visual-studio-tools-getting-started/" target="_blank">「Get started using HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用する)」</a>をご覧ください。
+1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」を参照してください。
 
 2. Visual Studio を開いて、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -58,7 +58,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 	* **Bolt.cs** - スパウトが出力する数字をカウントするサンプル ボルト
 
-	プロジェクトの一部として、最新の <a href="https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/" target="_blank">SCP.NET パッケージ</a> が Nuget からダウンロードされます。
+	プロジェクト作成の過程で最新の <a href="https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/" target="_blank">SCP.NET パッケージ</a>が Nuget からダウンロードされます。
 
 次のセクションでは、このプロジェクトを基本的な WordCount アプリケーションに変更します。
 
@@ -257,7 +257,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 ワード カウントは Counter インスタンスにローカルに保持されるため、特定の 1 つの単語が同じ Counter ボルト インスタンスに届くようにして、その単語を追跡するインスタンスが複数発生しないようにする必要があります。ただし、Splitter ボルトの場合はどのボルトがどのセンテンスを受信しても問題ないため、インスタンス全体の負荷の分散のみを考慮します。
 
-**Program.cs** を開きます。ここで重要なメソッドは **ITopologyBuilder** です。これは、Storm に送信されるトポロジの定義に使用されます。  **ITopologyBuilder** を次のように置き換えて前述のトポロジを実装します。
+**Program.cs** を開きます。ここで重要なメソッドは **ITopologyBuilder** です。これは、Storm に送信されるトポロジの定義に使用されます。**ITopologyBuilder** を次のように置き換えて前述のトポロジを実装します。
 
 		// Create a new topology named 'WordCount'
         TopologyBuilder topologyBuilder = new TopologyBuilder("WordCount");
@@ -320,7 +320,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 1. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[Submit to Storm on HDInsight (HDInsight の Storm に送信)]** を選択します。
 
-	> [AZURE.NOTE] メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスター の Storm があるサブスクリプションにログインします。
+	> [AZURE.NOTE] メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。２ つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスター の Storm があるサブスクリプションにログインします。
 
 2. **[Storm クラスター]** ドロップダウンから HDInsight クラスターの Storm を選択して、**[送信]** を選択します。送信が成功したかどうかは、**[出力]** ウィンドウを使用して確認できます。
 
@@ -344,7 +344,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 * **Ack** - トポロジ内の各ボルトは  `this.ctx.Ack(tuple)` を呼び出してタプルが正常に処理されたことを確認できます。すべてのボルトでタプルを確認したら、スパウトの  `Ack` メソッドが呼び出されます。これで、データが完全に処理されたため、スパウトはリプレイのキャッシュされたデータを削除できます。
 
-* **Fail** - 各ボルトは  `this.ctx.Fail(tuple)` を呼び出してタプルの処理が失敗したことを示すことができます。エラーがスパウトの  `Fail` メソッドに伝達され、そこでキャッシュされたメタデータを使用してタプルをリプレイされます。
+* **Fail** - 各ボルトは  `this.ctx.Fail(tuple)` を呼び出してタプルの処理が失敗したことを示すことができます。エラーがスパウトの  `Fail` メソッドに伝達され、そこでキャッシュされたメタデータを使用してタプルをリプレイできます。
 
 * **Sequence ID** - タプルの出力時、シーケンス ID を指定できます。これは、リプレイ (Ack と Fail) 処理するタプルを示す値である必要があります。たとえば、**Storm サンプル** プロジェクトではデータの出力時に次の値を使用します。
 
@@ -396,7 +396,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 2. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[追加]**、**[新しいアイテム]** の順に選択します。**[クラス]** を選択して、クラス名として「**LocalTest.cs**」と入力します。最後に **[追加]** を選択します。
 
-3. **LocalTest.cs** を開いて、上部に次の  `using` ステートメントを追加します。
+3. **LocalTest.cs** を開いて、先頭に次の  `using` ステートメントを追加します。
 
 		using Microsoft.SCP;
 
@@ -500,9 +500,9 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 3. 変更を保存して、**F5** キーまたは **[デバッグ]**、[**デバッグの開始**] を使用してプロジェクトを起動します。コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。**[テストの完了]** と表示されたら、いずれかのキーを押してウィンドウを閉じます。
 
-4. **エクスプローラー** を使用して、プロジェクトが含まれているディレクトリに移動します。例: **C:\Users\&lt;your user name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。このディレクトリで、**Bin**、**デバッグ** の順に開きます。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
+4. **エクスプローラー** を使用して、プロジェクトが含まれているディレクトリに移動します。たとえば、**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount** です。このディレクトリで、**Bin**、**デバッグ** の順に開きます。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
 
-	> [AZURE.NOTE] これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は  'and' の単語を示します。
+	> [AZURE.NOTE] これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は  'and' という単語を示します。
 
 基本的なワード カウント アプリケーションをローカルでテストすることはとても簡単ですが、外部データ ソースとやりとりしたり、複雑なデータ分析を実行したりする複合的なトポロジを扱う場合には非常に役立ちます。そのようなプロジェクトを扱う際は、コンポーネントのコードにブレークポイントとステップを設定して問題を分離する必要が生じる場合もあります。
 
@@ -533,26 +533,34 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 ##次のステップ
 
-ここまでで、HDInsight tools for Visual Studio から Storm トポロジを開発、展開する方法について学習してきました。次のページでは、他の方法で HDInsight を使用する方法を学習できます。
+ここまでで、HDInsight Tools for Visual Studio から Storm トポロジを開発、デプロイする方法を学習してきました。次のステップでは、[HDInsight で Storm を使用して Azure Event Hub のイベントを処理する](../hdinsight-storm-develop-csharp-event-hub-topology/)方法を学習できます。
+
+C# トポロジの作成の詳細については、[https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md) を参照してください。
+
+HDInsight を使用するさまざまな方法や、HDInsight での Storm のその他の例については、次の記事を参照してください。
 
 **HDInsight での Apache Storm**
 
-* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジの展開と監視)](../hdinsight-storm-deploy-monitor-topology/)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](../hdinsight-storm-deploy-monitor-topology/)
+
+* [HDInsight で Storm を使用して Azure Event Hub のイベントを処理する](../hdinsight-storm-develop-csharp-event-hub-topology/)
 
 * [Develop Java-based topologies for Apache Storm on HDInsight (HDInsight の Apache Storm での Java ベース トポロジの開発)](../hdinsight-storm-develop-java-topology/)
 
 * [Trending hashtags for Twitter with Apache Storm on HDInsight (HDInsight の Apache Storm を使用した Twitter のトレンディング ハッシュタグ)](../hdinsight-storm-twitter-trending/)
 
+* [HDInsight での Storm の例](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md)
+
 **HDInsight での Apache Hadoop**
 
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
-* [HDInsight の Hadoop での Pig の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
 
-* [HDInsight での Hadoop MapReduce の使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
 
-**HDInsight での Apache HBase **
+**HDInsight での Apache HBase**
 
-* [HDInsight の Hadoop で Hive を使用して HBase クラスターを設定して照会する](../hdinsight-hbase-get-started/)
+* [HDInsight での HBase の使用](../hdinsight-hbase-get-started/)
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

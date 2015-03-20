@@ -22,7 +22,7 @@
 
 この記事では、リモート デスクトップを使用して HDInsight クラスター上の Hadoop に接続し、Hive コマンドを使用して MapReduce ジョブを実行する方法について説明します。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -30,11 +30,11 @@
 
 * Windows 7、8、または 10 クライアント
 
-## <a id="connect"></a>リモート デスクトップへの接続
+##<a id="connect"></a>リモート デスクトップへの接続
 
-HDInsight クラスターのリモート デスクトップを有効にし、「 <a href="http://azure.microsoft.com/ documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って接続します。
+「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a id="hadoop"></a>Hadoop コマンドの使用
+##<a id="hadoop"></a>Hadoop コマンドの使用
 
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hadoop コマンドを使用して MapReduce ジョブを実行します。
 
@@ -48,7 +48,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
 
-	> [AZURE.NOTE] MapReduce ジョブとサンプル データついては、「 <a href="../hdinsight-use-mapreduce/">Use MapReduce in HDInsight Hadoop (HDInsight Hadoop での MapReduce の使用)</a>」を参照してください。
+	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「<a href="../hdinsight-use-mapreduce/">HDInsight での Hadoop MapReduce の使用</a>」を参照してください。
 
 2. 処理中に詳細が生成され、ジョブが完了すると、次のような情報が返されます。
 
@@ -79,11 +79,11 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 		wretched        6
 		wriggling       1
 
-## <a id="summary"></a>まとめ
+##<a id="summary"></a>まとめ
 
 このように、Hadoop を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ出力を表示できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報
 
@@ -94,4 +94,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
 * [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
-<!--HONumber=45--> 
+<!--HONumber=47-->

@@ -24,7 +24,7 @@
 
 > [AZURE.NOTE] クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -32,9 +32,9 @@
 
 * 最新の Web ブラウザー
 
-## <a id="run"></a> クエリ コンソールを使用して Hive クエリを実行
+##<a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
 
-1. Azure  <a href="https://manage.windowsazure.com" target="_blank">管理ポータル</a> を開き、HDInsight クラスターを選択します。ページの下部にある、**[クエリ コンソール]** を選択します。メッセージが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+1. <a href="https://manage.windowsazure.com" target="_blank">Azure の管理ポータル</a>を開き、HDInsight クラスターを選択します。ページの下部にある、**[クエリ コンソール]** を選択します。メッセージが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
 
     > [AZURE.NOTE] クエリ コンソールにはブラウザーに「**https://CLUSTERNAME.azurehdinsight.net**」と入力することでもアクセスできます。
 
@@ -42,7 +42,7 @@
 	
 	![the hive editor](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
 	
-	テキスト「 `Select * from hivesampletable`」を次の HiveQL ステートメントに置き換えます。
+	テキスト `Select * from hivesampletable` を次の HiveQL ステートメントに置き換えます。
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -53,7 +53,7 @@
     これらのステートメントは次のアクションを実行します。
 
     * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-    * **CREATE EXTERNAL TABLE** - Hive に新しく  'external' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+    * **CREATE EXTERNAL TABLE** - Hive に新しく '外部'テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
     > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
@@ -61,20 +61,20 @@
 
     * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
     * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
-    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を返します。ここでは、この値を含む列が 3 行あるため、**3** という値が返されています。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む列が 3 行あるため、**3** という値が返されています。
 
 2. **[送信]** を選択します。ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 
 3. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。詳細ページの **[ジョブ出力]** に `[ERROR]	3` が含まれます。このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。
 
 
-## <a id="summary"></a>まとめ
+##<a id="summary"></a>まとめ
 
 このように、クエリ コンソールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。 
 
 クエリ コンソールを使用した Hive の詳細については、クエリ コンソールの上部にある **[概要]** を選択し、サンプルを使用します。各サンプルでは順を追って Hive を使用してデータを分析します。また、サンプルで使用されている HiveQL ステートメントについいての説明も含まれています。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -88,17 +88,17 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [1]: ../hdinsight-hadoop-visual-studio-tools-get-started/
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
-[azure-purchase-options]: http://azure.microsoft.com/ pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/ pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/ pricing/free-trial/
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [apache-tez]: http://tez.apache.org
 [apache-hive]: http://hive.apache.org/
 [apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/ documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: ../hdinsight-use-oozie/
@@ -120,4 +120,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

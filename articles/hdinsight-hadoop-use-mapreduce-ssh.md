@@ -22,17 +22,17 @@
 
 この記事では、SSH を使用して HDInsight クラスターで Hadoop に接続し、Hadoop コマンドを使用して MapReduce ジョブを送信する方法を説明します。
 
-> [AZURE.NOTE] Linux ベースの Hadoop サーバーに慣れており、HDInsight を初めて使用するユーザーの場合は、「 <a href="../hdinsight-hadoop-linux-information/" target="_blank">What you need to know about Hadoop on Linux-based HDInsight (Linux ベースの HDInsight の Hadoop について知っておくべきこと)</a>」を参照してください。
+> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」を参照してください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
-* SSH クライアントssh クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは、 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty</a> などのクライアントをダウンロードする必要があります。
+* SSH クライアントssh クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは、<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty</a> などのクライアントをダウンロードする必要があります。
 
-## <a id="ssh"></a>SSH を使用した接続
+##<a id="ssh"></a>SSH を使用した接続
 
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。以下の例では、**myhdinsight** という名前のクラスターに接続します。
 
@@ -44,15 +44,15 @@ HDInsight クラスターの作成時に **SSH 認証に証明書キーを指定
 
 HDInsight クラスターの作成時に **SSH 認証のパスワードを指定した場合**は、パスワードの入力を求められます。
 
-### Putty (Windows クライアント)
+###Putty (Windows クライアント)
 
-Windows ではビルトイン SSH クライアントは提供されません。**Putty** を使用することをお勧めします。これは、 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> からダウンロードできます。
+Windows ではビルトイン SSH クライアントは提供されません。**Putty** を使用することをお勧めします。Putty は、<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> からダウンロードできます。
 
-Putty の使用の詳細については、「**Putty を使用して Linux マシンに接続する**」セクション (「 <a href="http://azure.microsoft.com/ documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法」) を参照してください</a>。
+Putty の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の「**Putty を使用して Linux 仮想マシンに接続する**」セクションを参照してください。
 
-> [AZURE.NOTE] HDInsight クラスターの SSH 認証で証明書を使用した場合は、「**Create a PPK for Putty (Putty 用の PPK の作成)**」セクション (「 <a href="http://azure.microsoft.com/ documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法」) を参照してください。</a>
+> [AZURE.NOTE] HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の「**Putty 用の PPK を作成する**」セクションも参照する必要があります。
 
-## <a id="hadoop"></a>Hadoop コマンドの使用
+##<a id="hadoop"></a>Hadoop コマンドの使用
 
 1. HDInsight クラスターに接続されたら、以下に従って **Hadoop** コマンドを使用して MapReduce ジョブを起動します。
 
@@ -60,7 +60,7 @@ Putty の使用の詳細については、「**Putty を使用して Linux マ�
 
 	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
 
-	> [AZURE.NOTE] MapReduce ジョブとサンプル データついては、「 <a href="../hdinsight-use-mapreduce/" target="_blank">HDInsight での MapReduce と Hadoop の使用</a>」を参照してください。
+	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「<a href="../hdinsight-use-mapreduce/" target="_blank">HDInsight での Hadoop MapReduce の使用</a>」を参照してください。
 
 2. 処理中に詳細が生成され、ジョブが完了すると、次のような情報が返されます。
 
@@ -91,11 +91,11 @@ Putty の使用の詳細については、「**Putty を使用して Linux マ�
 		wretched        6
 		wriggling       1
 
-## <a id="summary"></a>まとめ
+##<a id="summary"></a>まとめ
 
 このように、Hadoop を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ出力を表示できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報
 
@@ -106,4 +106,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
 * [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
-<!--HONumber=45--> 
+<!--HONumber=47-->

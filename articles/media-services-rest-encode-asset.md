@@ -19,27 +19,27 @@
 
 #Azure メディア エンコーダーを使用してアセットをエンコードする方法
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
 
 ##概要
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客の端末でうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
-エンコード ジョブはメディア サービスで最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、メディア サービスの組み込みメディア エンコーダーを使用できます。メディア サービスのパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を表示するには、Azure メディア サービスのタスク プリセットをご覧ください。サード パーティのエンコーダーを使用した場合は、[ファイルを検証する](https://msdn.microsoft.com/ja-jp/library/azure/dn750842.aspx)必要があります。
+エンコード ジョブはメディア サービスで最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、メディア サービスの組み込みメディア エンコーダーを使用できます。メディア サービスのパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を表示するには、Azure メディア サービスのタスク プリセットをご覧ください。サード パーティのエンコーダーを使用した場合は、[ファイルを検証](https://msdn.microsoft.com/library/azure/dn750842.aspx)する必要があります。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [動的パッケージ](https://msdn.microsoft.com/ja-jp/library/azure/jj889436.aspx) を使用して目的の形式に変換することをお勧めします。
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](https://msdn.microsoft.com/library/azure/jj889436.aspx)を使用して目的の形式に変換することをお勧めします。
 
 ##1 つのエンコード タスクを持つジョブの作成 
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、[Setup for Media Services REST API Development (Media Services REST API 開発の設定)](../media-services-rest-how-to-use) をご覧ください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。[Media Services REST API を使用してメディア サービス アカウントに接続する](../media-services-rest-connect_programmatically/)で説明されているように、新しい URI に続けてコールを行う必要があります。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
 
 
-次の例では、タスク セット 1 つのジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Azure メディア エンコーダーでエンコードするときは、[こちら](https://msdn.microsoft.com/ja-jp/library/azure/dn619389.aspx) で指定されているタスク構成のプリセットを使うことができます。
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Azure メディア エンコーダーでエンコードするときは、[こちら](https://msdn.microsoft.com/library/azure/dn619389.aspx)で指定されているタスク構成のプリセットを使うことができます。
 	
-要求: 
+要求:
 
 	POST https://media.windows.net/API/Jobs HTTP/1.1
 	Content-Type: application/json;odata=verbose
@@ -53,7 +53,7 @@
 	
 	{"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "H264 Broadband 720p", "MediaProcessorId" : "nb:mpid:UUID:70bdc2c3-ebf4-42a9-8542-5afc1e55d217",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
 
-応答: 
+応答:
 	
 	HTTP/1.1 201 Created
 	Cache-Control: no-cache
@@ -110,7 +110,7 @@
 
 
 ##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、 [メディア サービスでジョブの進行状況をチェックする方法](../media-services-rest-check-job-progress/)  に関するトピックに進みます。
+これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、「[方法: ジョブの進行状況をチェックする](../media-services-rest-check-job-progress/) 」に進みます。
 
 [Azure Marketplace]: https://datamarket.azure.com/
 [エンコーダー プリセット]: http://msdn.microsoft.com/library/dn619392.aspx
@@ -120,4 +120,4 @@
 [方法: ジョブの進行状況をチェックする]:http://go.microsoft.com/fwlink/?LinkId=301737
 [Azure Media Packager のタスク プリセット]:http://msdn.microsoft.com/library/windowsazure/hh973635.aspx
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

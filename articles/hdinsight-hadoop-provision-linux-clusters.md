@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
    pageTitle="HDInsight での Hadoop クラスター (Linux ベース) のプロビジョニング | Azure" 
    description="管理ポータル、コマンド ライン、.NET SDK を使用して、HDInsight 向けに Linux で Hadoop クラスターをプロビジョニングする方法を説明します。" 
    services="hdinsight" 
@@ -13,50 +13,44 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/18/2015"
+   ms.date="03/03/2015"
    ms.author="nitinme"/>
 
 
-# カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング (プレビュー)
+#カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング (プレビュー)
 
 この記事では、Azure 管理ポータル、PowerShell、コマンド ライン ツール、または HDInsight .NET SDK を使用した、Azure HDInsight 上の Hadoop Linux クラスターのさまざまなカスタム プロビジョニング方法について学習します。
 
 ## HDInsight クラスターについて
 
-Hadoop またはビッグデータを説明するときに、クラスターについて必ず触れるのはなぜでしょうか。その理由は、Hadoop がクラスターのさまざまなノードにまたがる大規模データの分散処理を可能にするためです。クラスターは、1 つのマスター (ヘッドノードまたは名前ノードともいいます) と任意の数のスレーブ (データ ノードともいいます) から成るマスター/スレーブ アーキテクチャを構成しています。詳細については、 <a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a> に関するトピックを参照してください。
+Hadoop またはビッグデータを説明するときに、クラスターについて必ず触れるのはなぜでしょうか。その理由は、Hadoop がクラスターのさまざまなノードにまたがる大規模データの分散処理を可能にするためです。クラスターは、1 つのマスター (ヘッドノードまたは名前ノードともいいます) と任意の数のスレーブ (データ ノードともいいます) から成るマスター/スレーブ アーキテクチャを構成しています。詳細については、<a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a> に関するページを参照してください。
 
 ![HDInsight Cluster][img-hdi-cluster]
 
-HDInsight クラスターでは、Hadoop の実装の詳細を抽象化しているため、クラスターの別のノードとの通信方法を心配する必要はありません。HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。詳細については、「[HDInsight での Hadoop 入門](../hdinsight-hadoop-introduction/)」を参照してください。変更されるデータは、HDInsight のコンテキストでは  *Azure Storage - Blob* (WASB) とも呼ばれる Azure BLOB ストレージに格納されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)」を参照してください。
+HDInsight クラスターでは、Hadoop の実装の詳細を抽象化しているため、クラスターの別のノードとの通信方法を心配する必要はありません。HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。詳細については、「[HDInsight での Hadoop 入門](../hdinsight-hadoop-introduction/)」を参照してください。変更されるデータは、HDInsight のコンテキストでは *Azure Storage - BLOB* (または WASB) とも呼ばれる Azure BLOB ストレージに格納されます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)に関するページを参照してください。
 
-この記事では、クラスターをプロビジョニングするさまざまな手順を示します。クラスターをすばやくプロビジョニングする方法を調べる場合は、「[Get Started with Azure HDInsight on Linux (Azure HDInsight (Linux) の概要)](../hdinsight-hadoop-linux-get-started)」を参照してください。
+この記事では、クラスターをプロビジョニングするさまざまな手順を示します。クラスターをすばやくプロビジョニングする方法を調べる場合は、[Azure HDInsight (Linux) の概要](../hdinsight-hadoop-linux-get-started)に関するトピックを参照してください。
 
 **前提条件:**
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。HDInsight PowerShell コマンドレットはサブスクリプションを使ってタスクを実行します。サブスクリプション取得の詳細については、「 <a href="http://azure.microsoft.com/ pricing/purchase-options/" target="_blank">Purchase Options</a>, <a href="http://azure.microsoft.com/ pricing/member-offers/" target="_blank">Member Offers</a>, or <a href="http://azure.microsoft.com/ pricing/free-trial/" target="_blank">Free Trial </a>(購入オプション、メンバー プラン、または無料評価版)」を参照してください。
-- SSH キー。SSH を使用して、Linux クラスターにリモートでアクセスする場合に必要です。SSH キーを生成する手順については、次の記事を参照してください。
-	-  Linux コンピューターの場合 - [Linux、Unix、または OS X から Linux ベースの HDInsight (Hadoop) で SSH を使用します](../hdinsight-hadoop-linux-use-ssh-unix)。
-	-  Windows コンピューターの場合 - [Windows から Linux ベースの HDInsight (Hadoop) で SSH を使用します](../hdinsight-hadoop-linux-use-ssh-windows)。
-
-## この記事の内容
-
-* [構成オプション](#configuration)
-* [HDInsight Linux クラスターのプロビジョニング オプション](#options)
-* [次のステップ](#nextsteps)
+- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。HDInsight PowerShell コマンドレットはサブスクリプションを使ってタスクを実行します。サブスクリプションの入手方法の詳細については、<a href="http://azure.microsoft.com/pricing/purchase-options/" target="_blank">購入オプション</a>に関するページ、「<a href="http://azure.microsoft.com/pricing/member-offers/" target="_blank">メンバー プラン</a>」、または<a href="http://azure.microsoft.com/pricing/free-trial/" target="_blank">無料評価版</a>に関するページを参照してください。
+- SSH キー。パスワードの代わりに SSH とキーを使用して、Linux クラスターにリモートでアクセスする場合に必要です。キーはより安全性が高いことから、キーを使用する方法をお勧めします。SSH キーを生成する手順については、次の記事を参照してください。
+	-  Linux コンピューターの場合 - [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix)。
+	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight-hadoop-linux-use-ssh-windows)。
 
 ## <a id="configuration"></a>構成オプション
 
 ### Linux 上のクラスター
 
-HDInsight には、Azure で Linux クラスターをプロビジョニングするためのオプションが用意されています。Linux または Unix に詳しい場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターをプロビジョニングします。Linux での Azure HDInsight の詳細については、「[HDInsight での Hadoop 入門](../hdinsight-hadoop-introduction)」を参照してください。 
+HDInsight には、Azure で Linux クラスターをプロビジョニングするためのオプションが用意されています。Linux または Unix に詳しい場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターをプロビジョニングします。Linux での Azure HDInsight の詳細については、「[HDInsight での Hadoop 入門]」を参照してください(../hdinsight-hadoop-introduction)。 
 
 ### その他のストレージ
 
 構成中に、Azure BLOB ストレージ アカウントと既定のコンテナーを指定する必要があります。このコンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターに関連付ける追加の BLOB も指定することができます。
 
-従属的な BLOB ストアの使用の詳細については、「[HDInsight の Hadoop での BLOB ストレージの使用](http://azure.microsoft.com/ documentation/articles/hdinsight-use-blob-storage/)」を参照してください。
+従属的な BLOB ストアの使用の詳細については、「[HDInsight の Hadoop での BLOB ストレージの使用](http://azure.microsoft.com/documentation/articles/hdinsight-use-blob-storage/)」を参照してください。
 
 ### メタストア
 
@@ -64,28 +58,28 @@ HDInsight には、Azure で Linux クラスターをプロビジョニングす
 
 HDInsight クラスターをプロビジョニングするとき、Hive のメタストアを格納する SQL Database を指定します。これにより、クラスターを削除するとき、SQL Database に外付けで格納されているメタデータ情報を保持できます。
 
-> [WACOM.NOTE] 現在、メタストアを使用するオプションは、.NET SDK を使用して Linux 向け HDInsight をプロビジョニングする場合にのみ使用できます。手順については、[Provision HDInsight clusters on Linux using .NET SDK (.NET SDK を使用した HDInsight クラスター (Linux) のプロビジョニング](#sdk)」を参照してください。
+> [WACOM.NOTE] 現在、メタストアを使用するオプションは、.NET SDK を使用して Linux 向け HDInsight をプロビジョニングする場合にのみ使用できます。手順については、[Provision HDInsight clusters on Linux using .NET SDK (.NET SDK を使用した HDInsight クラスター (Linux) のプロビジョニング]」を参照してください(#sdk)。
 
 
-## <a id="options"></a> HDInsight Linux クラスターのプロビジョニング オプション
+## <a id="options"></a>HDInsight Linux クラスターのプロビジョニング オプション
 
 HDInsight Hadoop Linux クラスターは、Linux コンピューターおよび Windows コンピューターからプロビジョニングできます。次の表は、さまざまな OS から使用できるプロビジョニング オプションと、その各手順を記載したリンクを示しています。
 
-Linux クラスターをプロビジョニングするコンピューターで実行される OS| Azure 管理ポータルの使用 | クロスプラットフォーム CLI の使用 | .NET SDK の使用 | PowerShell の使用
+Linux クラスターをプロビジョニングするコンピューターで実行される OS | Azure の管理ポータルの使用 | クロスプラットフォーム CLI の使用 | .NET SDK の使用 | PowerShell の使用
 -----------------| ------------------------| -------------------| ---------- | ---------
-Linux| [ここ](#portal)をクリック | [ここ](#cli)をクリック| 該当なし | 近日利用開始予定
-Windows | [ここ](#portal)をクリック | [ここ](#cli)をクリック | [ここ](#sdk)をクリック | 近日利用開始予定
+Linux| [ここ]をクリック(#portal) | [ここ]をクリック(#cli)|該当なし | 近日利用開始予定
+Windows | [ここ]をクリック(#portal) | [ここ]をクリック(#cli) | [ここ]をクリック(#sdk) | 近日利用開始予定
 
-### <a id="portal"></a> Azure 管理ポータルの使用
+### <a id="portal"></a>Azure の管理ポータルの使用
 
-HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
+HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法][azure-create-storageaccount]に関するページを参照してください。
 
 
 > [WACOM.NOTE] 現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、および**米国中南部**のみです。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
-1. [Azure 管理ポータル][azure-management-portal]にサインインします。
+1. [Azure の管理ポータル][azure-management-portal]にサインインします。
 2. ページ下部の **[+ 新規]** をクリックし、**[データ サービス]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
 3. [**クラスターの詳細**] ページで、次の値を入力または選択します。
 
@@ -100,9 +94,9 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 				<li>3 ～ 63 文字のクラスター名を入力できます。</li>
 				</ul></td></tr>
 		<tr><td>クラスターの種類</td>
-			<td>クラスターの種類には [ <strong>Hadoop</strong>] を選択します。</td></tr>
+			<td>[クラスターの種類] で、<strong>[Hadoop]</strong> を選択します。</td></tr>
 		<tr><td>オペレーティング システム</td>
-			<td>Linux で HDInsight クラスターをプロビジョニングするには、<b>[Ubuntu 12.04 LTS Preview]</b> を選択します。Windows クラスターをプロビジョニングするには、「 <a href="http://azure.microsoft.com/ documentation/articles/hdinsight-provision-clusters/" target="_blank">Provision Hadoop clusters on Windows in HDInsight (HDInsight での Hadoop クラスター (Windows ベース) のプロビジョニング</a>」を参照してください。</td></tr>
+			<td>Linux で HDInsight クラスターをプロビジョニングするには、<b>[Ubuntu 12.04 LTS Preview]</b> を選択します。Windows クラスターをプロビジョニングするには、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/" target="_blank">Windows の HDInsight での Hadoop クラスターのプロビジョニング</a>に関するページを参照してください。</td></tr>
 		<tr><td>HDInsight のバージョン</td>
 			<td>バージョンを選択します。Linux での HDInsight の場合、既定では HDInsight Version 3.2 で、これは Hadoop 2.5 を使用します。</td></tr>
 		</table>
@@ -114,7 +108,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 	<table border="1">
 	<tr><th>名前</th><th>値</th></tr>
 	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。 <br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
-	<tr><td>リージョン/仮想ネットワーク</td><td><p>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p><p>使用可能なリージョンは、 <strong>東アジア</strong>、 <strong>東南アジア</strong>、 <strong>北ヨーロッパ</strong>、 <strong>西ヨーロッパ</strong>、 <strong>米国東部</strong>、 <strong>米国西部</strong>、 <strong>米国中北部</strong>、 <strong>米国中南部</strong><br/></p></td></tr>
+	<tr><td>リージョン/仮想ネットワーク</td><td><p>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p><p>使用可能なリージョンは、<strong>東アジア</strong>、<strong>東南アジア</strong>、<strong>北ヨーロッパ</strong>、<strong>西ヨーロッパ</strong>、<strong>米国東部</strong>、<strong>米国西部</strong>、<strong>米国中北部</strong>、<strong>米国中南部</strong>です。<br/></p></td></tr>
 	</table>
 
 
@@ -126,7 +120,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
     <table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
 		<tr><td>HTTP パスワード</td>
-			<td>既定の HTTP ユーザーのパスワード、 <i>admin</i> を指定します。</td></tr>
+			<td>既定の HTTP ユーザーである <i>admin</i> のパスワードを指定します。</td></tr>
 		<tr><td>SSH ユーザー名</td>
 			<td>SSH ユーザー名を指定します。このユーザー名を使用して、HDInsight クラスター ノードでリモート SSH セッションを開始します。</td></tr>
 		<tr><td>SSH 認証の種類</td>
@@ -134,8 +128,8 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 		<tr><td>SSH パスワード</td>
 			<td>認証の種類にパスワードを選択した場合、SSH ユーザーを認証するための SSH パスワードを指定します。リモート Linux マシンで SSH セッションを開始するときに、このパスワードの入力を求められます。</td></tr>
 		<tr><td>SSH パブリック キー</td>
-			<td>認証の種類にキーを選択した場合は、既に生成済みの SSH パブリック キーを指定します。Linux クラスターのノードで SSH セッションを開始した場合は、このパブリック キーに関連付けられたプライベート キーを使用します。<br>
-			Linux コンピューターで SSH キーを生成する手順については、 <a href="http://azure.microsoft.com/ documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">ここ</a>を参照してください。Windows コンピューターで SSH キーを生成する手順については、 <a href="http://azure.microsoft.com/ documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">ここ</a>を参照してください。
+			<td>認証の種類にキーを選択した場合は、既に生成済みの SSH パブリック キーを指定します。Linux クラスターのノードで SSH セッションを開始した場合は、この公開キーに関連付けられた秘密キーを使用します。<br>
+			Linux コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">こちら</a>を参照してください。Windows コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">こちら</a>を参照してください。
 		</td></tr>
 		</table>
 
@@ -160,13 +154,13 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 			</td></tr>
 		<tr><td>アカウント名</td>
 			<td><ul>
-				<li>既存のストレージを使用する場合は、[ <strong>アカウント名</strong>] で既存のストレージ アカウントを選択します。ボックスの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターと同じデータ センターにあるストレージ アカウントのみが表示されます。</li>
-				<li>[ <strong>新しいストレージを作成する</strong> または <strong>[別のサブスクリプションのストレージを使用する</strong> ] を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
+				<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ボックスの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターと同じデータ センターにあるストレージ アカウントのみが表示されます。</li>
+				<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
 			</ul></td></tr>
 		<tr><td>アカウント キー</td>
-			<td>[ <strong>別のサブスクリプションのストレージを使用する</strong> ] を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
+			<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
 		<tr><td>既定のコンテナー</td>
-			<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。[ <strong>既存のストレージを使用する</strong> ] を <strong>ストレージ アカウント</strong> ] で選択したにもかかわらず、そのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
+			<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> で <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらず、そのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
             <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
         </td></tr>
 		<tr><td>追加のストレージ アカウント</td>
@@ -185,11 +179,16 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 
  	追加のストレージ アカウントを指定した後、チェック マークをオンにして、クラスターのプロビジョニングを開始します。 
 
-### <a id="cli"></a> クロスプラットフォーム コマンド ラインの使用
+###<a id="cli"></a>クロスプラットフォーム コマンド ラインの使用
 
-> [WACOM.NOTE] 2014 年 8 月 29 日時点で、クロスプラットフォーム コマンド ライン インターフェイスは、クラスターと Azure Virtual Network 間の関連付けに使用できません。
+HDInsight クラスターをプロビジョニングするもう 1 つの方法は、クロスプラットフォーム コマンド ライン インターフェイスです。コマンド ライン ツールは Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。CLI は、次の場所からインストールできます。
 
-HDInsight クラスターをプロビジョニングするもう 1 つの方法は、クロスプラットフォーム コマンド ライン インターフェイスです。コマンド ライン ツールは Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。コマンド ライン ツールはオープン ソースです。  ソース コードは GitHub <a href= "https://github.com/Azure/azure-sdk-tools-xplat">(https://github.com/Azure/azure-sdk-tools-xplat)</a> で管理されます。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][azure-command-line-tools]に関するページを参照してください。包括的なリファレンス ドキュメントについては、[Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tool]に関するページを参照してください。
+- **Node.JS SDK** - <a href="https://www.npmjs.com/package/azure-mgmt-hdinsight" target="_blank">https://www.npmjs.com/package/azure-mgmt-hdinsight</a>
+- **クロスプラットフォーム CLI** - <a href="https://github.com/Azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz" target="_blank">https://github.com/Azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz</a>  
+
+コマンド ライン インターフェイスの使用方法の一般的なガイドについては、[Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tools]に関するページを参照してください。
+
+以下の手順は、Linux および Windows にクロスプラットフォーム コマンド ラインをインストールする方法と、そのコマンド ラインを使用してクラスターをプロビジョニングする方法を示しています。
 
 - [Linux 向け Azure クロスプラットフォーム コマンド ラインの設定](#clilin)
 - [Windows 向け Azure クロスプラットフォーム コマンド ラインの設定](#cliwin)
@@ -206,7 +205,7 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 
 1.	Linux コンピューターでターミナル ウィンドウを開き、次のコマンドを実行します。
 
-		sudo npm install -g azure-cli
+		sudo npm install -g https://github.com/Azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
 2.	次のコマンドを実行してインストールを確認します。
 
@@ -249,18 +248,18 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 - Azure アカウントの発行設定のダウンロードとインポート
 
 
-コマンド ライン インターフェイスは  *Node.js Package Manager (NPM)* または Windows インストーラーを使用してインストールできます。Microsoft では、この 2 つのオプションのいずれかを使用してインストールすることをお勧めします。
+コマンド ライン インターフェイスは、 *Node.js パッケージ マネージャー (NPM)* または Windows インストーラーを使用してインストールできます。Microsoft では、この 2 つのオプションのいずれかを使用してインストールすることをお勧めします。
 
 **NPM を使用してコマンド ライン インターフェイスをインストールするには**
 
 1.	ブラウザーで **www.nodejs.org** を開きます。
 2.	**[INSTALL]** をクリックし、指示に従います。設定は既定の設定を使います。
-3.	コンピューター ワークステーションから**コマンド プロンプト** (または  *Azure Command Prompt* または  *Developer Command Prompt for VS2012*) を開きます。
+3.	コンピューターから**コマンド プロンプト** (または  *Azure コマンド プロンプト*、または  *VS2012* の開発者プロンプト) を開きます。
 4.	コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
-		npm install -g azure-cli
+		npm install -g https://github.com/Azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
-	> [WACOM.NOTE] NPM コマンドが見つからないというエラー メッセージが表示された場合は、次のパスが PATH 環境変数にあるか確認します。 <i>C:\Program Files (x86)\nodejs;C:\Users\[username]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
+	> [WACOM.NOTE] NPM コマンドが見つからないというエラー メッセージが表示された場合は、次のパスが PATH 環境変数にあるか確認します。<i>C:\Program Files (x86)\nodejs;C:\Users\[username]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
 
 5.	次のコマンドを実行してインストールを確認します。
 
@@ -275,7 +274,7 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 
 **Windows インストーラーを使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	ブラウザーで **http://azure.microsoft.com/ downloads/** を開きます。
+1.	**http://azure.microsoft.com/downloads/** を参照します。
 2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[クロスプラットフォーム コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラー ウィザードの指示に従います。
 
 **発行設定をダウンロードしてインポートするには**
@@ -318,7 +317,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 
 	場所を指定するよう求められたら、HDINsight クラスターをプロビジョニングできる場所を選択します。このストレージは、HDInsight クラスターと同じ場所にある必要があります。現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、および**米国中南部**のみです。  
 
-Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、または削除方法][azure-create-storageaccount]」を参照してください。
+Azure の管理ポータルを使った Azure ストレージ アカウントの作成については、[ストレージ アカウントの作成、管理、削除方法][azure-create-storageaccount]に関するページを参照してください。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -331,9 +330,9 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
 	-- Lists the keys for a storage account
 	azure storage account keys list <StorageAccountName>
 
-管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの作成、管理、または削除方法][azure-create-storageaccount]」の  *How to: View, copy and regenerate storage access keys* セクションを参照してください。
+管理ポータルを使用して情報を取得する方法の詳細については、 **[ストレージ アカウントの作成、管理、または削除][azure-create-storageaccount]に関するページのストレージ アクセス キーを表示、コピー、および再生成する方法を参照してください。
 
-HDInsight クラスターでは、ストレージ アカウント内にコンテナーも必要です。指定したストレージ アカウントにまだコンテナーがない場合、 *azure hdinsight cluster create* により、コンテナー名を指定して、コンテナーを作成することを求めるメッセージが表示されます。ただし、コンテナーを事前に作成する場合は、次のコマンドを使用できます。
+HDInsight クラスターでは、ストレージ アカウント内にコンテナーも必要です。指定するストレージ アカウントにまだコンテナーがない場合は、 *azure hdinsight cluster create* でコンテナー名を指定するよう求められ、コンテナーも作成されます。ただし、コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
 	azure storage container create --account-name <StorageAccountName> --account-key <StorageAccountKey> [ContainerName]
 
@@ -343,7 +342,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 
 - コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
-		azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName "<StorageAccountName>.blob.core.windows.net" --storageAccountKey <storageAccountKey> --storageContainer <SorageContainerName> --nodes <NumberOfNodes> --location <DataCenterLocation> --username <HDInsightClusterUsername> --clusterPassword <HDInsightClusterPassword> --OSType Linux --SshUserName <SSH username> --SshPassword <SSH user password>
+		azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName "<StorageAccountName>.blob.core.windows.net" --storageAccountKey <StorageAccountKey> --storageContainer <StorageContainerName> --dataNodeCount <NumberOfNodes> --location <DataCenterLocation> --userName <HDInsightClusterUsername> --password <HDInsightClusterPassword> --osType linux --sshUserName <SSH username> --sshPassword <SSH user password>		
 
 	![HDI.CLIClusterCreation][image-cli-clustercreation]
 
@@ -359,7 +358,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 		azure hdinsight cluster config create <file>
 
 		#Add commands to create a basic cluster
-		azure hdinsight cluster config set <file> --clusterName <ClusterName> --nodes <NumberOfNodes> --location "<DataCenterLocation>" --storageAccountName "<StorageAccountName>.blob.core.windows.net" --storageAccountKey "<StorageAccountKey>" --storageContainer "<BlobContainerName>" --username "<Username>" --clusterPassword "<UserPassword>" --OSType Linux --SshUserName "<SSH username>" --SshPassword <SSH user password>
+		azure hdinsight cluster config set <file> --clusterName <ClusterName> --dataNodeCount <NumberOfNodes> --location "<DataCenterLocation>" --storageAccountName "<StorageAccountName>.blob.core.windows.net" --storageAccountKey "<StorageAccountKey>" --storageContainer "<BlobContainerName>" --userName "<Username>" --password "<UserPassword>" --osType linux --sshUserName <SSH username> --sshPassword <SSH user password>
 
 		#If requred, include commands to use additional blob storage with the cluster
 		azure hdinsight cluster config storage add <file> --storageAccountName "<StorageAccountName>.blob.core.windows.net"
@@ -392,7 +391,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 
 
 
-### <a id="sdk"></a> HDInsight .NET SDK の使用
+###<a id="sdk"></a>HDInsight .NET SDK の使用
 HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。
 
 SDK を使用して Linux で HDInsight クラスターをプロビジョニングするには、以下の手順を実行する必要があります。
@@ -428,16 +427,16 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C#/Windows</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Template</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Name</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">CreateHDICluster</td></tr>
 	</table>
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
-5. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+5. **[ツール]** メニューの **[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
 6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
@@ -524,23 +523,23 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 
 
 
-## <a id="nextsteps"></a> 次のステップ
+##<a id="nextsteps"></a>次のステップ
 この記事では、HDInsight Hadoop クラスターを Linux でプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-- [Working with HDInsight on Linux (Linux での HDInsight の操作)](../hdinsight-hadoop-linux-information).Linux で HDInsight クラスターを操作するとはどういったことかを把握できます。
+- [Linux での HDInsight の使用](../hdinsight-hadoop-linux-information)に関するページ。Linux で HDInsight クラスターを操作するとはどういったことかを把握できます。
 - [Manage HDInsight clusters using Ambari (Ambari を使用した HDInsight クラスターの管理)](../hdinsight-hadoop-manage-ambari)。Ambari Web または Ambari REST API を使用して、HDInsight クラスターで Linux ベースの Hadoop を監視および管理する方法を説明します。 
-- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]。さまざまな方法によるクラスターでの MapReduce ジョブの実行について説明します。
-- [HDInsight での Hive の使用][hdinsight-use-hive]。クラスターで Hive クエリを実行するその他の方法を説明します。
-- [HDInsight での Pig の使用][hdinsight-use-pig]。さまざまな方法を使用したクラスターでの Pig ジョブの実行について説明します。
-- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage)。HDInsight で Azure BLOB ストレージを使用して HDInsight クラスター用にデータを格納する方法を説明します。
-- [HDInsight へのデータのアップロード][hdinsight-upload-data]。HDInsight クラスター用に Azure BLOB ストレージに格納されたデータの操作方法を説明します。
+- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]に関するページ。さまざまな方法によるクラスターでの MapReduce ジョブの実行について説明します。
+- [HDInsight での Hive の使用][hdinsight-use-hive]に関するページ。クラスターで Hive クエリを実行するその他の方法を説明します。
+- [HDInsight での Pig の使用][hdinsight-use-pig]に関するページ。さまざまな方法を使用したクラスターでの Pig ジョブの実行について説明します。
+- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage)に関するページ。HDInsight で Azure BLOB ストレージを使用して HDInsight クラスター用にデータを格納する方法を説明します。
+- [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページ。HDInsight クラスター用に Azure BLOB ストレージに格納されたデータの操作方法を説明します。
 
 [hdinsight-use-mapreduce]: ../hdinsight-use-mapreduce/
 [hdinsight-use-hive]: ../hdinsight-use-hive/
 [hdinsight-use-pig]: ../hdinsight-use-pig/
 [hdinsight-upload-data]: ../hdinsight-upload-data/
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
-[hdinsight-hbase-custom-provision]: http://azure.microsoft.com/ documentation/articles/hdinsight-hbase-get-started/
+[hdinsight-hbase-custom-provision]: http://azure.microsoft.com/documentation/articles/hdinsight-hbase-get-started/
 
 [hdinsight-customize-cluster]: ../hdinsight-hadoop-customize-cluster/
 [hdinsight-get-started]: ../hdinsight-get-started/
@@ -552,13 +551,12 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 [azure-management-portal]: https://manage.windowsazure.com/
 
 [azure-command-line-tools]: ../xplat-cli/
-[azure-command-line-tool]: ../command-line-tools/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-[azure-purchase-options]: http://azure.microsoft.com/ pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/ pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/ pricing/free-trial/
-[hdi-remote]: http://azure.microsoft.com/ documentation/articles/hdinsight-administer-use-management-portal/#rdp
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[hdi-remote]: http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp
 
 
 [Powershell-install-configure]: ../install-configure-powershell/
@@ -580,6 +578,6 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 
 [img-hdi-cluster]: ./media/hdinsight-provision-clusters/HDI.Cluster.png
 
-  [89e2276a]: /ja-jp/documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
+[89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

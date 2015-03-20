@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="メディア サービスのライブ ストリーミングのワークフロー" 
 	description="このトピックでは、一般的なメディア サービスのライブ ストリーミングのワークフローの手順を説明します。" 
 	services="media-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/15/2015" 
+	ms.date="02/18/2015" 
 	ms.author="juliako"/>
 
 
@@ -28,9 +28,16 @@
 次の図は、ビデオ オンデマンド ワークフローに関連するメディア サービス プラットフォームの主要な部分を示しています。
 ![Live workflow][live-overview]
 
+
+詳細については、「[Media Services Overview (Media Services の概要)]」をご覧ください(../media-services-overview)。
+
 ##メディア サービス アカウントの作成
 
 **Azure 管理ポータル**を使用して [メディア サービス アカウントを作成]します(../media-services-create-account/)。
+
+##ストリーミング エンドポイントの構成
+
+[制作中]
 
 ##開発環境の設定  
 
@@ -46,13 +53,13 @@
 
 ##ライブ トランスコーダの操作
 
-詳細については、[Azure メディア サービスによるサード パーティの Live エンコーダーの使用](https://msdn.microsoft.com/ja-jp/library/azure/dn783464.aspx)をご覧ください。
+詳細については、「[Azure Media Services でのサード パーティ ライブ エンコーダーの使用](https://msdn.microsoft.com/library/azure/dn783464.aspx)」をご覧ください。
 
 ##チャネル、プログラム、アセットの管理
 
-詳細については、[ライブ ストリーミング](https://msdn.microsoft.com/ja-jp/library/azure/dn783466.aspx)をご覧ください。
+詳細については、「[ライブ ストリーミング](https://msdn.microsoft.com/library/azure/dn783466.aspx)」をご覧ください。
 
-##コンテンツ キー承認ポリシーを構成する 
+##コンテンツ保護とコンテンツ キー承認ポリシーの構成 
 
 **.NET** または **REST API** を使用してコンテンツ キー承認ポリシーを構成します。
 
@@ -75,9 +82,9 @@
 
 準備するアカウントの **ストリーミング占有ユニット** の数を指定して、**メディア サービス** の規模を設定できます。 
 
-ストリーミング占有ユニットの規模変更方法については、[ストリーミング占有ユニットの規模変更方法](../media-services-manage-origins#scale_streaming_endpoints)をご覧ください。
+ストリーミング ユニットの規模の設定については、[ストリーミング占有ユニットの規模変更方法]をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。
 
 
 
 [live-overview]: ./media/media-services-overview/media-services-live-streaming-current.png
-<!--HONumber=45--> 
+<!--HONumber=47-->

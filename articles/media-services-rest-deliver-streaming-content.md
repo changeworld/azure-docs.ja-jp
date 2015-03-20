@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="メディア サービスからストリーミング コンテンツを配信する方法" 
 	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コードは REST API を使用しています。" 
 	authors="juliako" 
@@ -17,14 +17,14 @@
 	ms.author="juliako"/>
 
 
-#方法: ストリーミング コンテンツを配信する
+#方法:ストリーミング コンテンツを配信する
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) や [Media Services Live Streaming workflow (メディア サービス ライブ ストリーミング ワークフロー)](../media-services-live-streaming-workflow) シリーズの一部です。  
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。  
 
 ##概要
 
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](../media-services-rest-encode-asset) トピックでは、アダプティブ ビットレート MP4 セットにエンコードする方法について説明しています。ロケーターを作成する前に、[こちら](../media-services-rest-configure-asset-delivery-policy) のトピックで説明されているようにアセット配信ポリシーを構成する必要があります。 
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットのエンコード]に関する(../media-services-rest-encode-asset) トピックでは、アダプティブ ビットレート MP4 セットにエンコードする方法について説明しています。ロケーターを作成する前に、[この]トピックで説明されているようにアセット配信ポリシーを構成する必要があります(../media-services-rest-configure-asset-delivery-policy) 。 
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
 
@@ -47,7 +47,7 @@
 
 ###アクセス ポリシーを作成します。
 
-要求: 
+要求:
 		
 	POST https://media.windows.net/api/AccessPolicies HTTP/1.1
 	Content-Type: application/json
@@ -86,7 +86,7 @@
 
 指定されたアセットとアセット ポリシーのロケーターを作成します。
 
-要求: 
+要求:
 	
 	POST https://media.windows.net/api/Locators HTTP/1.1
 	Content-Type: application/json
@@ -102,7 +102,7 @@
 	
 	{"AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872Z","Type":2}
 
-応答: 
+応答:
 	
 	HTTP/1.1 201 Created
 	Cache-Control: no-cache
@@ -125,23 +125,23 @@
 
 ロケーター作成後に返される **Path** 値を使って、Smooth、HLS、MPEG DASH の URL を作成します。 
 
-スムーズ ストリーミング: **パス** + マニフェスト ファイル名 + "/manifest"
+スムーズ ストリーミング:**パス** + マニフェスト ファイル名 + "/manifest"
 
-例: 
+例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS: **パス** + マニフェスト ファイル名 + "/manifest(format=m3u8-aapl)"
+HLS:**パス** + マニフェスト ファイル名 + "/manifest(format=m3u8-aapl)"
 
-例: 
+例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH: **パス** + マニフェスト ファイル名 + "/manifest(format=mpd-time-csf)"
+DASH:**パス** + マニフェスト ファイル名 + "/manifest(format=mpd-time-csf)"
 
 
-例: 
+例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
@@ -150,9 +150,9 @@ DASH: **パス** + マニフェスト ファイル名 + "/manifest(format=mpd-ti
 
 ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。   
 
-URL: **パス** + アセット ファイル mp4 名
+URL:**パス** + アセット ファイル mp4 名
 
-例: 
+例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
@@ -174,4 +174,4 @@ URL: **パス** + アセット ファイル mp4 名
         Sas = 1,
         OnDemandOrigin = 2,
     }
-<!--HONumber=45--> 
+<!--HONumber=47-->

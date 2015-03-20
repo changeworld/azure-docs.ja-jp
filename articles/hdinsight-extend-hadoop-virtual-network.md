@@ -16,15 +16,15 @@
    ms.author="larryfr"/>
 
 
-# Azure Virtual Network を使用した HDInsight 機能の拡張
+#Azure Virtual Network を使用した HDInsight 機能の拡張
 
 Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL Server などの内部設置型リソースに組み込むことや、クラウドのリソース間にセキュリティで保護されたプライベート ネットワークを作成することができます。
 
 > [AZURE.NOTE] 現在、HDInsight ではアフィニティ ベースの Azure Virtual Network はサポートされていません。HDInsight を使用する時は、場所ベースの仮想ネットワークを使用する必要があります。
 
-## <a id="whatis"></a>Azure Virtual Network とは
+##<a id="whatis"></a>Azure Virtual Network とは
 
-[Azure Virtual Network](/ja-jp/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure Virtual Network](/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -54,7 +54,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	* LOB アプリケーションから **HDInsight サービスを呼び出す**。たとえば、HBase Java API を使用して HDInsight HBase クラスターにデータを格納したり、クラスターからデータを取得したりします。
 
-仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+仮想ネットワークの機能、利点の詳細については、[Azure Virtual Network の概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)に関するページを参照してください。
 
 > [WACOM.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/library/azure/jj156206.aspx)」を参照してください。
 >
@@ -62,19 +62,19 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 >
 > 各クラスターには単一のサブネットを指定することを強くお勧めします。
 
-Virtual Network での HDInsight クラスターのプロビジョニングの詳細については、「[Provisioning Hadoop clusters in HDInsight (HDInsight での Hadoop クラスターのプロビジョニング)](/ja-jp/documentation/articles/hdinsight-provision-clusters/)」を参照してください。
+Virtual Network での HDInsight クラスターのプロビジョニングの詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](/documentation/articles/hdinsight-provision-clusters/)に関するページを参照してください。
 
-## <a id="tasks"></a>タスクと情報
+##<a id="tasks"></a>タスクと情報
 
 このセクションでは、Virtual Network で HDInsight を使用する場合の一般的なタスクに関する情報と、必要になる可能性がある情報を記載しています。
 
-### 完全修飾ドメイン名の確認
+###完全修飾ドメイン名の確認
 
 HDInsight クラスターには、Virtual Network インターフェイスを表す特定の FQDN が割り当てられます。これは、Virtual Network 上の他のリソースからクラスターに接続するときに使用する必要があるアドレスです。FQDN を確認するには、次の URL を使用して Ambari 管理サービスを照会します。
 
 	https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/<servicename>/components/<componentname>
 
-> [AZURE.NOTE] HDInsight での Ambari の使用の詳細については、「[Monitor Hadoop clusters in HDInsight using the Ambari API (Ambari API を使用した HDInsight での Hadoop クラスターの監視)](/ja-jp/documentation/articles/hdinsight-monitor-use-ambari-api/)」を参照してください。
+> [AZURE.NOTE] HDInsight での Ambari の使用の詳細については、「[Ambari API を使用した HDInsight での Hadoop クラスターの監視](/documentation/articles/hdinsight-monitor-use-ambari-api/)」を参照してください。
 
 クラスター名およびクラスターで実行するサービスとコンポーネント (YARN リソース マネージャーなど) を指定する必要があります。
 
@@ -82,7 +82,7 @@ HDInsight クラスターには、Virtual Network インターフェイスを表
 
 たとえば、HDInsight Hadoop クラスターから FQDN を取得するには、次のいずれかのメソッドを使用して、YARN リソース マネージャーのデータを取得します。
 
-* [Azure PowerShell](/ja-jp/documentation/articles/install-configure-powershell/)
+* [Azure PowerShell](/documentation/articles/install-configure-powershell/)
 
 		$ClusterDnsName = <clustername>
 		$Username = <cluster admin username>
@@ -103,13 +103,13 @@ HDInsight クラスターには、Virtual Network インターフェイスを表
 
 		curl -G -u <username>:<password> https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/yarn/components/resourcemanager | jq .host_components[0].HostRoles.host_name
 
-### HBase への接続
+###HBase への接続
 
 Java API を使用して HBase にリモート接続するには、HBase クラスターの Zookeeper クォーラム アドレスを確認し、これをアプリケーションで指定する必要があります。
 
 zookeeper クォーラム アドレスを取得するには、次のいずれかのメソッドを使用して、Ambari 管理サービスに問い合わせます。
 
-* [Azure PowerShell](/ja-jp/documentation/articles/install-configure-powershell/)
+* [Azure PowerShell](/documentation/articles/install-configure-powershell/)
 
 		$ClusterDnsName = <clustername>
 		$Username = <cluster admin username>
@@ -129,7 +129,7 @@ zookeeper クォーラム アドレスを取得するには、次のいずれか
 
 		curl -G -u <username>:<password> "https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/configurations?type=hbase-site&tag=default&fields=items/properties/hbase.zookeeper.quorum" | jq .items[0].properties[]
 
-> [AZURE.NOTE] HDInsight での Ambari の使用の詳細については、「[Monitor Hadoop clusters in HDInsight using the Ambari API (Ambari API を使用した HDInsight での Hadoop クラスターの監視)](/ja-jp/documentation/articles/hdinsight-monitor-use-ambari-api/)」を参照してください。
+> [AZURE.NOTE] HDInsight での Ambari の使用の詳細については、「[Ambari API を使用した HDInsight での Hadoop クラスターの監視](/documentation/articles/hdinsight-monitor-use-ambari-api/)」を参照してください。
 
 クォーラムの情報を取得したら、それをクライアント アプリケーションで使用します。
 
@@ -152,24 +152,24 @@ zookeeper クォーラム アドレスを取得するには、次のいずれか
 </configuration>
 ```
 
-### ネットワーク接続の確認
+###ネットワーク接続の確認
 
 SQL Server などの一部のサービスでは、着信ネットワーク接続数が制限される場合があります。そのようなサービスでは HDInsight が正常に機能しません。
 
 HDInsight からサービスへのアクセスで問題が発生した場合は、サービスのドキュメントを参照して、ネットワーク アクセスが有効になっていることを確認してください。ネットワーク アクセスを確認するもう 1 つの方法では、同じ Virtual Network 上に Azure Virtual Machine を作成し、クライアント ユーティリティを使用して、VM から Virtual Network 経由でサービスに接続できることを確認します。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 次の例は、Azure Virtual Network で HDInsight を使用する方法を示しています。
 
-* [HDInsight での、Storm および HBase を使用したセンサー データの分析](/ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis/) - Virtual Network での Storm および HBase の構成方法と、Storm から HBase にリモートでデータを書き込む方法を示しています。
+* [HDInsight での、Storm および HBase を使用したセンサー データの分析](/documentation/articles/hdinsight-storm-sensor-data-analysis/) - Virtual Network での Storm および HBase の構成方法と、Storm から HBase にリモートでデータを書き込む方法を示しています。
 
-* [Azure Virtual Network での HBase クラスターのプロビジョニング](/ja-jp/documentation/articles/hdinsight-hbase-provision-vnet/) - Azure Virtual Network での HBase クラスターのプロビジョニングに関する情報を提供します。
+* [Azure Virtual Network での HBase クラスターのプロビジョニング](/documentation/articles/hdinsight-hbase-provision-vnet/)  - Azure Virtual Network での HBase クラスターのプロビジョニングに関する情報を提供します。
 
-* [HDInsight での Hadoop クラスターのプロビジョニング](/ja-jp/documentation/articles/hdinsight-provision-clusters/) - Azure Virtual Network の使用に関する情報を含めて、Hadoop クラスターのプロビジョニングに関する情報を提供します。
+* [HDInsight での Hadoop クラスターのプロビジョニング](/documentation/articles/hdinsight-provision-clusters/) - Azure Virtual Network の使用に関する情報を含めて、Hadoop クラスターのプロビジョニングに関する情報を提供します。
 
-* [HDInsight での Hadoop と Sqoop の使用](/ja-jp/documentation/articles/hdinsight-use-sqoop/) - SQL Server と Sqoop を使用した Virtual Network 経由のデータ転送に関する情報を提供します。
+* [HDInsight での Hadoop と Sqoop の使用](/documentation/articles/hdinsight-use-sqoop/)  - SQL Server と Sqoop を使用した Virtual Network 経由のデータ転送に関する情報を提供します。
 
-Azure Virtual Network の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+Azure Virtual Network の詳細については、[Azure Virtual Network の概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)に関するページを参照してください。
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

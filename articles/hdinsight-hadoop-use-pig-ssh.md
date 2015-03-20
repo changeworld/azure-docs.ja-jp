@@ -20,11 +20,11 @@
 
 [AZURE.INCLUDE [pig-selector](../includes/hdinsight-selector-use-pig.md)]
 
-このドキュメントでは、SSH を使用して Linux ベースの HDInsight クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的にまたはバッチ ジョブとして実行する方法を順を追って説明します。
+このドキュメントでは、Secure Shell (SSH) を使用して Linux ベースの Azure HDInsight クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的にまたはバッチ ジョブとして実行する方法を順を追って説明します。
 
 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
-> [AZURE.NOTE] Linux ベースの Hadoop サーバーに慣れており、HDInsight を初めて使用するユーザーの場合は、「 <a href="../hdinsight-hadoop-linux-information/" target="_blank">What you need to know about Linux-based Hadoop on HDInsight (HDInsight での Linux ベースの Hadoop について知っておくべきこと)</a>」を参照してください。
+> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」を参照してください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -32,7 +32,7 @@ Pig Latin プログラミング言語では、入力データに適用される�
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
-* SSH クライアントssh クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは、 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty などのクライアントをダウンロードする必要があります</a>
+* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty</a> などのクライアントをダウンロードする必要があります。
 
 ##<a id="ssh"></a>SSH を使用した接続
 
@@ -46,21 +46,21 @@ HDInsight クラスターの作成時に **SSH 認証に証明書キーを指定
 
 HDInsight クラスターの作成時に **SSH 認証のパスワードを指定した場合**は、パスワードの入力を求められます。
 
-###Putty (Windows クライアント)
+###Putty (Windows ベースのクライアント)
 
-Windows ではビルトイン SSH クライアントは提供されません。以下のサイトからダウンロードできる **Putty** を使用することをお勧めします。 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>。
+Windows ではビルトイン SSH クライアントは提供されません。<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> からダウンロードできる **Putty** を使用することをお勧めします。
 
-Putty の使用の詳細については、「**Putty を使用して Linux マシンに接続する**」セクション (「 <a href="http://azure.microsoft.com/ documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」) を参照してください。
+Putty の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の「**Putty を使用して Linux 仮想マシンに接続する**」セクションを参照してください。
 
-> [AZURE.NOTE] HDInsight クラスターの SSH 認証で証明書を使用した場合は、「**Create a PPK for Putty (Putty 用の PPK の作成)**」セクション (「 <a href="http://azure.microsoft.com/ documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法」) を参照してください。</a>
+> [AZURE.NOTE] HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の「**Putty 用の PPK を作成する**」セクションも参照する必要があります。
 
 ##<a id="pig"></a>Pig コマンドの使用
 
-2. 接続したら、次のコマンドを使用して、Pig コマンド ライン インターフェイス (CLI) を起動します。
+2. 接続したら、次のコマンドを使用して Pig コマンド ライン インターフェイス (CLI) を起動します。
 
         pig
 
-	少し経ってから  `grunt>` プロンプトが表示されます。
+	少し経ってから `grunt>` プロンプトが表示されます。
 
 3. 次のステートメントを入力します。
 
@@ -74,16 +74,16 @@ Putty の使用の詳細については、「**Putty を使用して Linux マ�
 
 		LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
-	変換後のデータを表示するには、**DUMP** を使用します。この場合は、`DUMP LEVELS;` を使用します。
+	変換後のデータを表示するには、**DUMP** を使用します。例では `DUMP LEVELS;` が使用されます。
 
-5. 次のステートメントを使用して、変換を適用します。各手順の後に、 `DUMP` を使用して、変換の結果を表示します。
+5. 次のステートメントを使用して、変換を適用します。各手順の後に `DUMP` を使用して、変換の結果を表示します。
 
 	<table>
 	<tr>
 	<th>ステートメント</th><th>実行内容</th>
 	</tr>
 	<tr>
-	<td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルに null 値を含む列を削除し、結果を FILTEREDLEVELS に格納します。</td>
+	<td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルに null 値を含む行を削除し、結果を FILTEREDLEVELS に格納します。</td>
 	</tr>
 	<tr>
 	<td>GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;</td><td>ログ レベルで列をグループ化し、結果を GROUPEDLEVELS に格納します。</td>
@@ -96,7 +96,7 @@ Putty の使用の詳細については、「**Putty を使用して Linux マ�
 	</tr>
 	</table>
 
-6. 変換の結果は、 `STORE` ステートメントで保存することもできます。たとえば、以下では、 `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
+6. 変換の結果は `STORE` ステートメントで保存することもできます。たとえば、以下では `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
 
 		STORE RESULT into 'wasb:///example/data/pigout'
 
@@ -124,7 +124,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 		RESULT = order FREQUENCIES by COUNT desc;
 		DUMP RESULT;
 
-5. 次の pig コマンドを使用して、**pigbatch.pig** ファイルを実行します。
+5. 次の Pig コマンドを使用して、**pigbatch.pig** ファイルを実行します。
 
 		pig ~/pigbatch.pig
 
@@ -139,7 +139,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 
 ##<a id="summary"></a>まとめ
 
-このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるほか、バッチ ファイルに格納されたステートメントも実行できます。
+このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納されたステートメントも実行できます。
 
 ##<a id="nextsteps"></a>次のステップ
 
@@ -152,4 +152,5 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
 * [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
-<!--HONumber=45--> 
+
+<!--HONumber=47-->

@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle=".NET を使用したメディア サービス アカウントへのファイルのアップロード" 
 	description="アセットを作成しアップロードして、メディア サービスにコンテンツを取り込む方法について説明します。" 
 	services="media-services" 
@@ -21,7 +21,7 @@
 #.NET を使用したメディア サービス アカウントへのファイルのアップロード
 [AZURE.INCLUDE [media-services-selector-upload-files](../includes/media-services-selector-upload-files.md)]
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
 
 メディア サービスで、デジタル ファイルをアセットにアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -37,11 +37,11 @@
 
 	メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、アセットのオンディスクでのストレージ暗号化を提供します。
 
-アセットを **CommonEncrypted** オプションまたは **EnvelopeEncypted** オプションで暗号化することを指定した場合、アセットを **ContentKey** に関連付ける必要があります。詳細については、[.NET を使用した ContentKey の作成](../media-services-dotnet-create-contentkey) をご覧ください。 
+アセットを **CommonEncrypted** オプションまたは **EnvelopeEncypted** オプションで暗号化することを指定した場合、アセットを **ContentKey** に関連付ける必要があります。詳細については、「[How to create a ContentKey (ContentKey の作成方法]」をご覧ください(../media-services-dotnet-create-contentkey)。 
 
 アセットを **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、アセットの **StorateEncrypted** の **ContentKey** が作成されます。
 
->[AZURE.NOTE]メディア サービスは、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセントエンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) の "!*'();:@&=+$,/?%#[]" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>[AZURE.NOTE]メディア サービスは、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセントエンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)の !*'();:@&=+$,/?%# は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
 このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルをメディア サービス アセットにアップロードする方法を説明します。
 
@@ -206,7 +206,7 @@ IngestManifestAsset を作成するには、サーバー コンテキストの C
 	IIngestManifestAsset bulkAsset1 =  manifest.IngestManifestAssets.Create(destAsset1, new[] { filename1 });
 	IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 	
-クライアント アプリケーションには、IngestManifest の **IIngestManifest.BlobStorageUriForUpload** プロパティによって提供された BLOB ストレージ コンテナーの URI にアセット ファイルをアップロードする機能のある任意の高速クライアント アプリケーションを使用できます。有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6) などがあります。また、次のコード例のようにコードを記述して、アセット ファイルをアップロードできます。
+クライアント アプリケーションには、IngestManifest の **IIngestManifest.BlobStorageUriForUpload** プロパティによって提供された BLOB ストレージ コンテナーの URI にアセット ファイルをアップロードする機能のある任意の高速クライアント アプリケーションを使用できます。有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6)などがあります。また、次のコード例のようにコードを記述して、アセット ファイルをアップロードできます。
 	
 	static void UploadBlobFile(string destBlobURI, string filename)
 	{
@@ -303,8 +303,8 @@ IngestManifestAsset を作成するには、サーバー コンテキストの C
 
 
 ##次のステップ
-これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][] に関するトピックに進みます。
+これで、アセットをメディア サービスにアップロードできました。次は、「[方法:メディア プロセッサ インスタンスを取得する][]」に進みます。
 
-[メディア プロセッサの取得]: ../media-services-get-media-processor/
+[方法: メディア プロセッサ インスタンスを取得する]: ../media-services-get-media-processor/
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

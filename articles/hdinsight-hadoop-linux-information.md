@@ -16,15 +16,15 @@
    ms.date="02/18/2015"
    ms.author="larryfr"/>
 
-# Linux での HDInsight の使用 (プレビュー)
+#Linux での HDInsight の使用 (プレビュー)
 
 Linux ベースの HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。ここでは、知っておく必要がある特定の違いについて説明します。
 
-## ドメイン名
+##ドメイン名
 
 クラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**&lt;clustername>.azurehdinsight.net** または (SSH のみ) **&lt;clustername>.aurehdinsight.net** です。
 
-## サービスへのリモート アクセスが可能
+##サービスへのリモート アクセスが可能
 
 * **Ambari (Web)** - https://&lt;clustername>.azurehdinsight.net
 
@@ -36,9 +36,9 @@ Linux ベースの HDInsight クラスターは、Azure クラウドで実行さ
 
 	この問題を解決するには、SSH トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信します。ローカル コンピューターでポートからクラスターへのトラフィックに対して SSH トンネルを作成するには、次の記事を参照してください。
 
-	* <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a> -  `ssh` コマンドを使用した SSH トンネルの作成手順
+	* <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する</a> - `ssh` コマンドを使用して SSH トンネルを作成する手順
 
-	* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - Putty を使用した SSH トンネルの作成手順
+	* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - Putty を使用して SSH トンネルを作成する手順
 
 * **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.net/ambari
 
@@ -56,13 +56,13 @@ Linux ベースの HDInsight クラスターは、Azure クラウドで実行さ
 
 	> [AZURE.NOTE] クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用して worker ノードにアクセスできます。
 
-## ファイルの場所
+##ファイルの場所
 
 Hadoop 関連ファイルは、 `/usr/hdp/current` のクラスター ノードにあります。
 
-サンプルのデータと jar は、"/example" または  'wasb:///example' の HDFS (WASB) にあります。
+サンプルのデータと jar は、'/example' または 'wasb:///example' の HDFS (WASB) にあります。
 
-## HDFS、WASB、およびストレージのベスト プラクティス
+##HDFS、WASB、およびストレージのベスト プラクティス
 
 ほとんどの Hadoop ディストリビューションでは、Hadoop 分散ファイル システム (HDFS) はクラスター内のコンピューターのローカル ストレージによって支えられています。これは効率的である一方、コンピューティング リソースが時間単位で課金されるクラウド ベースのソリューションでは、コストが高くなります。
 
@@ -82,13 +82,13 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	hadoop fs -ls wasb://mycontainer@mystorage.blob.core.windows.net/example/data
 
-### クラスターで使用している BLOB ストレージ
+###クラスターで使用している BLOB ストレージ
 
 クラスター作成時、既存のストレージ アカウントとコンテナーを使用するか、新しく作成するかを選択します。後になって、何を選択したかを忘れることもあります。次の方法を使用してストレージ アカウントとコンテナーを確認できます。
 
-**Azure ポータル**
+**Azure 管理ポータル**
 
-1.  <a href="https://manage.windowsazure.com/" target="_blank">Azure 管理ポータル</a>で、HDInsight クラスターを選択します。
+1. <a href="https://manage.windowsazure.com/" target="_blank">Azure の管理ポータル</a>で、HDInsight クラスターを選択します。
 
 2. ページの上部にある **[ダッシュボード]** をクリックします。
 
@@ -100,11 +100,11 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 *近日対応予定*
 
-### BLOB ストレージにアクセスする方法
+###BLOB ストレージにアクセスする方法
 
 クラスターから Hadoop コマンドを使用する以外にも、BLOB にアクセスするさまざまな方法があります。
 
-* <a href="http://azure.microsoft.com/ documentation/articles/xplat-cli/" target="_blank">Azure クロスプラットフォーム コマンド ライン インターフェイス</a> - インストール後、ストレージの使用方法については  `azure storage`、BLOB 特有のコマンドについては  `azure blob` を参照してください。
+* <a href="http://azure.microsoft.com/documentation/articles/xplat-cli/" target="_blank">Azure クロスプラットフォーム コマンド ライン インターフェイス</a>に関するページ - インストールしたら、ストレージの使用方法のヘルプについては  `azure storage` に関するトピック、BLOB 固有のコマンドのヘルプについては  `azure blob` に関するトピックを参照してください。
 
 * さまざまな SDK:
 
@@ -120,14 +120,14 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	* <a href="https://github.com/Azure/azure-sdk-for-net" target="_blank">.NET</a>
 
-* <a href="https://msdn.microsoft.com/ja-jp/library/azure/dd135733.aspx" target="_blank">Storage REST API</a>
+* <a href="https://msdn.microsoft.com/library/azure/dd135733.aspx" target="_blank">ストレージ REST API</a>
 
 
-## 次のステップ
+##次のステップ
 
 * [HDInsight での Hive の使用](../hdinsight-use-hive/)
 * [HDInsight での Pig の使用](../hdinsight-use-pig/)
 * [HDInsight での MapReduce ジョブの使用](../hdinsight-use-mapreduce)
 
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

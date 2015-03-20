@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="REST API を使用してメディア・サービス アカウントにファイルをアップロードする" 
 	description="アセットを作成し、アップロードすることによって、メディア サービスにメディア コンテンツを取得する方法について説明します。" 
 	services="media-services" 
@@ -21,23 +21,28 @@
 #REST API を使用してメディア・サービス アカウントにファイルをアップロードする
 [AZURE.INCLUDE [media-services-selector-upload-files](../includes/media-services-selector-upload-files.md)]
 
-この記事は、「[要求ワークフローでのメディア サービス ビデオ](../media-services-video-on-demand-workflow)」シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
+
+メディア サービスで、デジタル ファイルをアセットにアップロードします。[Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
 
 
->[AZURE.NOTE] メディア サービス REST API を使用する場合は、次の考慮事項が適用されます。
+>[AZURE.NOTE]メディア サービスは、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセントエンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) の"!*'();:@&=+$,/?%#[]" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+
+アセットの取り込みの基本的なワークフローは、次のセクションに分けられます。
+
+- アセットを作成する
+- アセットを暗号化する (オプション)
+- ファイルを BLOB ストレージにアップロードする
+
+
+##アセットを作成する
+
+>[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービス内のエンティティにアクセスするときは、HTTP 要求に固有のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API 開発用の設定](../media-services-rest-how-to-use)」を参照してください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
 
->Https://media.windows.net に正常に接続されると、別のメディア サービスの URI を指定する 301 リダイレクトを受け取ります。「[Media Services REST API を使用した Media Services への接続](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
  
-
-## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
-
-メディア サービスで、デジタル ファイルをアセットにアップロードします。[Asset](https://msdn.microsoft.com/ja-jp/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。  ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
-
-
-### アセットを作成する
-
 アセットは、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、メディア サービス内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API でアセットを作成するには、メディア サービスに POST 要求を送信し、要求本文に、アセットに関するプロパティ情報を配置する必要があります。
 
 アセットを作成するときに指定できるプロパティの 1 つは **Options** です。**Options** は、アセットの作成に使用できる暗号化オプションを説明する列挙値です。有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。 
@@ -51,7 +56,7 @@
 
 - **EnvelopeEncryptionProtected** = **4**:AES　ファイルで暗号化された HLS をアップロードする場合に指定します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 
-アセットに暗号化を使用する場合は、**ContentKey** を作成し、トピック「[ContentKey を作成する方法](../media-services-rest-create-contentkey)」で説明されているようにアセットにリンクする必要があります。ファイルをアセットにアップロードした後に、**AssetFile** エンティティの暗号化プロパティを　**Asset** 暗号化中に取得した値でアップデートする必要があります。.**MERGE** HTTP　要求を使用して実行してください。 
+>[AZURE.NOTE]アセットに暗号化を使用する場合は、**ContentKey** を作成し、[ContentKey を作成する方法]に関するトピックで説明されているようにアセットにリンクする必要があります。(../media-services-rest-create-contentkey)。ファイルをアセットにアップロードした後に、**AssetFile** エンティティの暗号化プロパティを　**Asset** 暗号化中に取得した値でアップデートする必要があります。.**MERGE** HTTP　要求を使用して実行してください。 
 
 
 次の例では、アセットを作成する方法を示します。
@@ -101,7 +106,7 @@
 	   "StorageAccountName":"storagetestaccount001"
 	}
 	
-### AssetFile を作成する
+##AssetFile を作成する
 
 [AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、blob コンテナーに格納されているビデオまたはオーディオ ファイルを表します。アセット ファイルは、常にアセットに関連付けられており、アセットには 1 つまたは複数のアセット　ファイルが含まれている可能性があります。アセット　ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、メディア サービスのエンコーダー タスクは失敗します。
 
@@ -166,9 +171,9 @@
 	}
 
 
-### 書き込みのアクセス許可を持つ AccessPolicy を作成する 
+## 書き込みのアクセス許可を持つ AccessPolicy を作成する 
 
-すべてのファイルを blob ストレージにアップロードする前に、アセットに書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、「[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)」を参照してください。
+すべてのファイルを blob ストレージにアップロードする前に、アセットに書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)を参照してください。
 
 次の例は、AccessPolicy を作成する方法を示します。
 		
@@ -213,9 +218,9 @@
 	   "Permissions":2
 	}
 
-### アップロード URL を取得する
+##アップロード URL を取得する
 
-実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、アセット内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理することができます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」を参照してください。
+実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、アセット内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理することができます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)を参照してください。
 
 
 SAS URL には次の形式があります。
@@ -225,7 +230,7 @@ SAS URL には次の形式があります。
 いくつかの考慮事項が適用されます。
 
 - 特定のアセットに関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」を参照してください。
-- すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターとメディア サービスの間にクロック スキューがある可能性があるためです。また、StartTime 値は DateTime 形式の YYYY-MM-DDTHH:mm:ssZ である必要があります (たとえば、"2014-05-23T17:53:50Z")。	
+- すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターとメディア サービスの間にクロック スキューがある可能性があるためです。また、StartTime 値は DateTime 形式のYYYY-MM-DDTHH:mm:ssZ である必要があります (たとえば、"2014-05-23T17:53:50Z")。	
 - Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
 次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケータ―の場合は "１"、オンデマンド配信元ロケーターの場合は "２")。返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
@@ -281,16 +286,16 @@ SAS URL には次の形式があります。
 	   "Name":null
 	}
 
-### Blob ストレージ コンテナーにファイルをアップロードする
+## Blob ストレージ コンテナーにファイルをアップロードする
 	
 AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。ページにアップロードするか、blob をブロックすることができます。 
 
->[AZURE.NOTE] 前のセクションで受信した Locator の **Path** 値にアップロードするファイルのファイル名を追加する必要があります。例: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?... 
+>[AZURE.NOTE] 前のセクションで受信した Locator の **Path** 値にアップロードするファイルのファイル名を追加する必要があります。たとえば、https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?... のように指定します。 
 
-Azure ストレージ blob の使用の詳細については、「[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)」を参照してください。
+Azure ストレージ BLOB の使用の詳細については、[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)を参照してください。
 
 
-### AssetFile を更新する 
+## AssetFile を更新する 
 
 ファイルをアップロードしたので、FileAsset サイズ (およびその他) の情報を更新します。次に例を示します。
 	
@@ -359,10 +364,6 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
 	...
 
  
+[方法: メディア プロセッサ インスタンスを取得する]: ../media-services-get-media-processor/
 
-##次のステップ
-これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][] に関するトピックに進みます。
-
-[メディア プロセッサの取得]: ../media-services-get-media-processor/
-
-<!--HONumber=45--> 
+<!--HONumber=47-->

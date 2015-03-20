@@ -70,7 +70,7 @@ Trident は、結合、集計、グループ化、フィルタリングなどの
 
 > [AZURE.NOTE] スパウトと HashtagExtractor 以外については、ビルトインの Trident 関数を使用します。
 > 
-> ビルトイン操作については、 <a href="https://storm.apache.org/apidocs/storm/trident/operation/builtin/package-summary.html" target="_blank">「storm.trident.operation.builtin」</a>をご覧ください。
+> ビルトイン操作については、<a href="https://storm.apache.org/apidocs/storm/trident/operation/builtin/package-summary.html" target="_blank">storm.trident.operation.builtin</a> を参照してください。
 > 
 > MemoryMapState 以外の Trident ステートの実装については、以下をご覧ください。
 > 
@@ -80,17 +80,17 @@ Trident は、結合、集計、グループ化、フィルタリングなどの
 
 ###スパウト
 
-スパウトの **TwitterSpout** では <a href="http://twitter4j.org/en/" target="_blank">Twitter4j</a> を使用して Twitter からツイートを取得します。フィルター (愛、音楽、コーヒー) が作成され、フィルターに一致する受信ツイート (ステータス) が <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/LinkedBlockingQueue.html" target="_blank">LinkedBlockingQueue</a>に保存されます。最後に、アイテムがキューから取り出されてトポロジに出力されます。
+スパウトである **TwitterSpout** は、<a href="http://twitter4j.org/en/" target="_blank">Twitter4j</a> を使用して Twitter からのツイートを取得します。フィルター (love、music、および coffee) が作成され、フィルターに一致する受信ツイート (ステータス) が <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/LinkedBlockingQueue.html" target="_blank">LinkedBlockingQueue</a> に格納されます。最後に、アイテムがキューから取り出されてトポロジに出力されます。
 
 ###HashtagExtractor
 
-ハッシュタグを抽出するには、 <a href="http://twitter4j.org/javadoc/twitter4j/EntitySupport.html#getHashtagEntities--" target="_blank">getHashtagEntities</a> を使用してツイートに含まれるすべてのハッシュタグを取得します。その後、これらはストリームに出力されます。
+ハッシュタグを抽出するには、<a href="http://twitter4j.org/javadoc/twitter4j/EntitySupport.html#getHashtagEntities--" target="_blank">getHashtagEntities</a> を使用してツイートに含まれるすべてのハッシュタグを取得します。その後、これらはストリームに出力されます。
 
 ##Twitter を有効にする
 
 次の手順を使用して、新しい Twitter アプリケーションを登録し、Twitter からの読み取りに必要なコンシューマーとアクセス トークンを取得します。
 
-1. https://apps.twitter.com/ <a href="" target="_blank">にアクセスして、</a> **[Create new app]** ボタンを使用します。フォームの入力時、**[Callback URL (コールバック URL)]** は空白のままにします。
+1. <a href="" target="_blank">https://apps.twitter.com/</a> にアクセスし、**[Create new app]** ボタンを使用します。フォームの入力時、**[Callback URL (コールバック URL)]** は空白のままにします。
 
 2. アプリを作成したら、**[Keys and Access Tokens (キーとアクセス トークン)]** タブを選択します。
 
@@ -115,23 +115,29 @@ Trident は、結合、集計、グループ化、フィルタリングなどの
 
 トポロジの起動後、トポロジから出力されたハッシュタグとカウントを含むデバッグ情報を確認します。出力は次のようになります。
 
-	DEBUG: [Quicktellervalentine, 7]
-	DEBUG: [GRAMMYs, 7]
-	DEBUG: [AskSam, 7]
-	DEBUG: [poppunk, 1]
-	DEBUG: [rock, 1]
-	DEBUG: [punkrock, 1]
-	DEBUG: [band, 1]
-	DEBUG: [punk, 1]
-	DEBUG: [indonesiapunkrock, 1]
+	DEBUG:[Quicktellervalentine, 7]
+	DEBUG:[GRAMMYs, 7]
+	DEBUG:[AskSam, 7]
+	DEBUG:[poppunk, 1]
+	DEBUG:[rock, 1]
+	DEBUG:[punkrock, 1]
+	DEBUG:[band, 1]
+	DEBUG:[punk, 1]
+	DEBUG:[indonesiapunkrock, 1]
 
 ##次のステップ
 
-これで、トポロジをローカルでテストできました。次は[HDInsight で このトポロジを Storm に展開する方法](../hdinsight-storm-deploy-monitor-topology/)をご確認ください。
+これで、トポロジをローカルでテストできました。次は[HDInsight でこのトポロジを Storm にデプロイする]方法をご確認ください(../hdinsight-storm-deploy-monitor-topology/)。
 
 必要に応じて次の Storm 関連のトピックもご覧ください。
 
 * [Develop Java topologies for Storm on HDInsight using Maven (Maven を使用して HDInsight で Storm の Java トポロジを開発する)](../hdinsight-storm-develop-java-topology/)
 
-* [Develop C# topologies for Storm on HDInsight using Visual Studio (Visual Studio を使用して HDInsight で Storm の C# トポロジを開発する)](../hdinsight-storm-develop-csharp-visual-studio-topology/)
-<!--HONumber=45--> 
+* [Visual Studio を使用して HDInsight で Storm の C# トポロジを開発する](../hdinsight-storm-develop-csharp-visual-studio-topology/)
+
+HDInsight での Storm のその他の例:
+
+* [HDInsight での Storm の例](https://github.com/hdinsight/hdinsight-storm-examples)
+
+* [HDInsight での Storm を使用した EventHub センサー データの分析](../hdinsight-storm-sensor-data-analysis/)
+<!--HONumber=47-->

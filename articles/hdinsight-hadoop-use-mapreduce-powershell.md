@@ -16,31 +16,31 @@
    ms.date="02/18/2015"
    ms.author="larryfr"/>
 
-# PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
+#PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
 
 [AZURE.INCLUDE [mapreduce-selector](../includes/hdinsight-selector-use-mapreduce.md)]
 
 このドキュメントでは、PowerShell を使用して HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベースのいずれか)
 
-* <a href="http://azure.microsoft.com/ documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
+* <a href="http://azure.microsoft.com/documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
 
-## <a id="powershell"></a>PowerShell を使用した MapReduce ジョブの実行
+##<a id="powershell"></a>PowerShell を使用した MapReduce ジョブの実行
 
-Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる *cmdlets*が提供されます。内部的には、これは、HDInsight クラスターで実行する  <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a>  (旧称: Templeton) への REST 呼び出しを使用して実行されます。
+Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる *コマンドレット*が提供されます。これは、HDInsight クラスター上で実行する <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a> への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
 
 リモート HDInsight クラスターで MapReduce ジョブを実行するときに次のコマンドレットを使用します。
 
 * **Add-AzureAccount** - Azure サブスクリプションに対して PowerShell を認証します。
 
-* **New-AzureHDInsightHiveJobDefinition** - 指定された MapReduce 情報を使用して新しい *job definition*を作成します。
+* **New-AzureHDInsightMapReduceJobDefinition** - 指定された MapReduce 情報を使用して新しい *job definition*を作成します。
 
-* **Start-AzureHDInsightJob** - ジョブ定義を HDInsight に送信し、ジョブを開始し、ジョブのステータスの確認に使用できる  *job* オブジェクトを返します。
+* **Start-AzureHDInsightJob** - ジョブ定義を HDInsight に送信し、ジョブを開始して、ジョブのステータスの確認に使用できる *job* オブジェクトを返します
 
 * **Wait-AzureHDInsightJob** - ジョブ オブジェクトを使用して、ジョブのステータスを確認します。ジョブの完了を待機するか、待機時間が上限に達します。
 
@@ -98,11 +98,11 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 		SubmissionTime  : 12/5/2014 8:34:09 PM
 		JobId           : job_1415949758166_0071
 
-	> [AZURE.NOTE] **ExitCode** が 0 以外の値の場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
+	> [AZURE.NOTE] **ExitCode** が 0 以外の値の場合は、「[トラブルシューティング](#troubleshooting)。
 
 	これは、ジョブが正常に完了したことを示しています。
 
-## <a id="results"></a>ジョブの出力の表示
+##<a id="results"></a>ジョブの出力の表示
 
 MapReduce ジョブは Azure Blob ストレージの操作の結果を、ジョブの引数として指定された **wasb:///example/data/WordCountOutput** パスに格納しました。Azure Blob ストレージは Azure PowerShell からアクセスできますが、ストレージ アカウント名、キー、およびファイルに直接アクセスするために HDInsight クラスターが使用するコンテナーの情報が必要です。
 
@@ -141,13 +141,13 @@ MapReduce ジョブは Azure Blob ストレージの操作の結果を、ジョ�
 		#Use the -blob switch to filter only blobs contained in example/data/WordCountOutput
 		Get-AzureStorageBlob -Container $storageContainer -Blob example/data/WordCountOutput/* -Context $context | Get-AzureStorageBlobContent -Context $context
 
-> [AZURE.NOTE] この例では、スクリプトの実行元のディレクトリの   **example/data/WordCountOutput** フォルダーに、ダウンロードしたファイルを格納します。
+> [AZURE.NOTE] この例では、スクリプトが実行されるディレクトリにある **example/data/WordCountOutput** フォルダーにダウンロードしたファイルを格納します。
 
-MapReduce ジョブの出力は、 *part-r-#####* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
+MapReduce ジョブの出力は *part-r-#####* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
 
 > [AZURE.NOTE] MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
-## <a id="troubleshooting"></a>トラブルシューティング
+##<a id="troubleshooting"></a>トラブルシューティング
 
 ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。このジョブに関するエラーを表示するには、以下を **mapreducejob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
@@ -157,19 +157,19 @@ MapReduce ジョブの出力は、 *part-r-#####* という名前のファイル
 
 これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
 
-## <a id="summary"></a>まとめ
+##<a id="summary"></a>まとめ
 
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報
 
-* [Use MapReduce on HDInsight Hadoop (HDInsight Hadoop での MapReduce の使用)](../hdinsight-use-mapreduce/)
+* [HDInsight Hadoop での MapReduce の使用](../hdinsight-use-mapreduce/)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
 * [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
-<!--HONumber=45--> 
+<!--HONumber=47-->

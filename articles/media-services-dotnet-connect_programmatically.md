@@ -19,7 +19,7 @@
 
 # Media Services SDK for .NET を使用したメディア サービス アカウントへの接続
 
-この記事は、「[Media Services Video on Demand workflow (メディア サービスのビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) 」シリーズと「[Media Services Live Streaming workflow (メディア サービスのライブ ストリーミング ワークフロー)](../media-services-live-streaming-workflow)」シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
 
 このトピックでは、Media Services SDK for .NET でプログラミングする場合に、Microsoft Azure メディア サービスにプログラムから接続する方法について説明します。
 
@@ -61,9 +61,9 @@ CloudMediaContext には、5 つのコンストラクター オーバーロー�
 このセクションでは、パラメーターとして MediaServicesCredentials を受け取る CloudMediaContext コンストラクターを使用してアクセス制御サービス トークンを再利用する方法を示します。
 
 
-[Azure Active Directory Access Control](https://msdn.microsoft.com/ja-jp/library/hh147631.aspx) (アクセス制御サービスか ACS とも呼ばれます) は、認証とユーザーへの Web アプリへのアクセス許可を簡単に行うことができるクラウドベースのサービスです。Microsoft Azure メディア サービスは、ACS トークンを必要とする OAuth プロトコルを使用して、サービスへのアクセスを制御します。メディア サービスは、承認サーバーから ACS トークンを受け取ります。
+[Azure Active Directory Access Control](https://msdn.microsoft.com/library/hh147631.aspx) (アクセス制御サービスか ACS とも呼ばれます) は、認証とユーザーへの Web アプリへのアクセス許可を簡単に行うことができるクラウドベースのサービスです。Microsoft Azure メディア サービスは、ACS トークンを必要とする OAuth プロトコルを使用して、サービスへのアクセスを制御します。メディア サービスは、承認サーバーから ACS トークンを受け取ります。
 
-Media Services SDK を使用して開発する場合、SDK コードでトークンを管理できるため、トークンの処理をしないことも選択できます。ただし、ACS トークンを完全に SDK で管理すると、不要なトークン要求が生成されます。トークン要求には時間がかかり、クライアントとサーバーのリソースが消費されます。また、ACS サーバーは、要求の発生率が高すぎる場合、要求を調整します。要求の上限は 1 秒あたり 30 回です。詳細については、「[ACS サービスの制限事項](https://msdn.microsoft.com/ja-jp/library/gg185909.aspx)」をご覧ください。
+Media Services SDK を使用して開発する場合、SDK コードでトークンを管理できるため、トークンの処理をしないことも選択できます。ただし、ACS トークンを完全に SDK で管理すると、不要なトークン要求が生成されます。トークン要求には時間がかかり、クライアントとサーバーのリソースが消費されます。また、ACS サーバーは、要求の発生率が高すぎる場合、要求を調整します。要求の上限は 1 秒あたり 30 回です。詳細については、「[ACS サービスの制限事項](https://msdn.microsoft.com/library/gg185909.aspx)」をご覧ください。
 
 Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用できるようになりました。**MediaServicesCredentials** をパラメーターとして受け取る **CloudMediaContext** コンストラクターでは、複数のコンテキスト間で ACS トークンを共有できます。MediaServicesCredentials クラスは、メディア サービスの資格情報をカプセル化します。ACS トークンが使用可能で、有効期限がわかっている場合は、トークンを使用して新しい MediaServicesCredentials インスタンスを作成し、そのインスタンスを CloudMediaContext のコンストラクターに渡すことができます。有効期限が切れると、Media Services SDK によって、トークンが自動的に更新されることにご注意ください。次の例で示すように、ACS トークンを再利用するには、2 つの方法があります。
 
@@ -99,7 +99,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		// If it is not valid, call MediaServicesCredentials's RefreshToken before caching.
 		SaveTokenDataToExternalStorage(accessToken, tokenExpiration);
 		
-	Use the saved token values to create MediaServicesCredentials.
+	保存したトークン値を使用して、MediaServicesCredentials を作成します。
 
 
 		var accessToken = "";
@@ -117,7 +117,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		
 		CloudMediaContext context2 = new CloudMediaContext(credentials);
 
-	Update the token copy in case the token was updated by the Media Services SDK. 
+	トークンが Media Services SDK により更新された場合は、トークンのコピーを更新します。 
 	
 		if(tokenExpiration != context2.Credentials.TokenExpiration)
 		{
@@ -166,7 +166,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 ## 構成への接続値の格納
 
-接続値、特に、アカウント名とパスワードなどの秘密性の高い値は保存しておくことを強くお勧めします。また、秘密性の高い構成データは暗号化することをお勧めします。Windows 暗号化ファイル システム (EFS) を使用すると、構成ファイル全体を暗号化できます。ファイルに対して EFS を有効にするには、ファイルを右クリックし、**[プロパティ]** をクリックし、**[詳細設定]** タブで暗号化を有効にします。または、保護された構成を使用して、構成ファイルの選択した部分を暗号化するためのカスタム ソリューションも作成できます。詳細については、「[保護された構成を使用した構成情報の暗号化](https://msdn.microsoft.com/ja-jp/library/53tyfkaw.aspx)」をご覧ください。
+接続値、特に、アカウント名とパスワードなどの秘密性の高い値は保存しておくことを強くお勧めします。また、秘密性の高い構成データは暗号化することをお勧めします。Windows 暗号化ファイル システム (EFS) を使用すると、構成ファイル全体を暗号化できます。ファイルに対して EFS を有効にするには、ファイルを右クリックし、**[プロパティ]** をクリックし、**[詳細設定]** タブで暗号化を有効にします。または、保護された構成を使用して、構成ファイルの選択した部分を暗号化するためのカスタム ソリューションも作成できます。詳細については、「[保護された構成を使用した構成情報の暗号化](https://msdn.microsoft.com/library/53tyfkaw.aspx)」をご覧ください。
 
 次の App.config ファイルには、必須接続値が含まれています。<appSettings> 要素の値は、必須値であり、メディア サービス アカウントのセットアップ プロセスで取得した値です。
 
@@ -191,4 +191,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 <!-- URLs. -->
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

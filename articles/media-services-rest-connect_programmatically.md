@@ -19,7 +19,7 @@
 
 # Media Services REST API を使用してメディア サービス アカウントに接続する
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) や [Media Services Live Streaming workflow (メディア サービス ライブ ストリーミング ワークフロー)](../media-services-live-streaming-workflow)  シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
 
 このトピックでは、Media Services REST API でプログラミングしている場合に、Microsoft Azure メディア サービスにプログラムで接続する方法について説明します。
 
@@ -40,7 +40,7 @@ Microsoft Azure メディア サービスへアクセスするには、Azure Acc
 		HTTP/1.1 301 Moved Permanently
 		Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-	この場合、続けて、「https://wamsbayclus001rest-hs.cloudapp.net/api/」へ API コールを行う必要があります。
+	この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
 
 ##アクセス トークンの取得
 
@@ -101,9 +101,9 @@ REST API から直接メディア サービスにアクセスするには、ACS 
 
 ###メディア サービス URI への接続
 
-メディア サービスのルート URI は「https://media.windows.net/」です。まず、この URI に接続して、301 リダイレクトが返された場合は続けて新しい URI にコールする必要があります。加えて、要求に auto-redirect/follow ロジックを使うことはできません。HTTP 動詞や応答本文はその新しい URI に転送されません。
+メディア サービスのルート URI は https://media.windows.net/ です。まず、この URI に接続して、301 リダイレクトが返された場合は続けて新しい URI にコールする必要があります。加えて、要求に auto-redirect/follow ロジックを使うことはできません。HTTP 動詞や応答本文はその新しい URI に転送されません。
 
-アセット ファイルをアップロードしたりダウンロードしたりするルート URI は「https://yourstorageaccount.blob.core.windows.net/」です。ストレージ アカウント名には、メディア サービス アカウントで設定したものと同じものが使われます。
+アセット ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、メディア サービス アカウントで設定したものと同じものが使われます。
 
 次の例は、メディア サービス ルート URI (https://media.windows.net/) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/) に続けて要求を行っています。     
 
@@ -169,4 +169,4 @@ REST API から直接メディア サービスにアクセスするには、ACS 
 
 <!-- URLs. -->
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

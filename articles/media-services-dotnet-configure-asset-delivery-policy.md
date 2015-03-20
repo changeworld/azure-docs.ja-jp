@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle=".NET を使用してアセットの配信ポリシーを構成する" 
 	description="このトピックでは、異なるアセットの配信ポリシーの構成方法について説明します。" 
 	services="media-services" 
@@ -19,23 +19,23 @@
 #方法:アセットの配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オン デマンドのワークフロー)](../media-services-video-on-demand-workflow) と [Media Services Live Streaming workflow (メディア サービス ライブ ストリーミングのワークフロー)](../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
 
-メディア サービスのコンテンツ配信ワークフローの手順の 1 つに、ストリーミングするアセットの配信ポリシーの構成があります。アセットの配信ポリシーは、メディア サービスにアセットの配信方法を伝えます。たとえば、どのストリーミング プロトコルにアセットを動的にパッケージ化するか (MPEG DASH、HLS、スムーズ ストリーミング、またはそのすべてなど)、アセットを動的に暗号化するかどうか、そして暗号化の方法 (エンベロープまたは一般的な暗号化) といった情報です。 
+メディア サービスにおけるコンテンツ配信ワークフローの手順の 1 つは、ストリームするアセットの配信ポリシーを構成することです。アセットの配信ポリシーは、アセットを配信する方法、つまりどのストリーミング プロトコルでアセットを動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、アセットを動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を メディア サービスに示します。 
 
-このトピックでは、アセットの配信ポリシーを構成する理由とその方法について説明します。 
+このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。 
 
->[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つ以上のスケール ユニット (別名ストリーミング ユニット) が必要です。詳細については、「[メディア サービス アカウントでストリーミング エンドポイントを管理する方法](../media-services-manage-origins#scale_streaming_endpoints)」をご覧ください。 
+>[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。 
 >
->また、アセットにはアダプティブ ビットレート MP4 ファイル またはアダプティブ ビットレート スムーズ ストリーミング ファイルのセットが含まれている必要があります。      
+>また、アセットには、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。      
 
-同じアセットに異なるポリシーを適用できます。たとえば、PlayReady の暗号化をスムーズ ストリーミングに適用し、AES エンベロープ暗号化を MPEG DASH や HLS に適用できます。配信ポリシーで定義されていないプロトコルは (プロトコルに HLS のみを指定した 1 つのポリシーを追加した場合など)、ストリーミングからブロックされます。アセットの配信ポリシーを 1 つも定義していない場合は例外です。その場合、すべてのプロトコルがプレーン テキストで許可されます。
+1 つのアセットにはさまざまなポリシーを適用できます。たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 
-ストレージ暗号化されたアセットを配信する場合は、アセットの配信ポリシーを構成する必要があります。アセットをストリーミングする前に、ストリーミング サーバーがストレージ暗号化を削除し、指定した配信ポリシーを使用してコンテンツを配信します。たとえば、高度暗号化標準 (AES) エンベロープ暗号化キーで暗号化されたアセットを配信するには、ポリシーの種類を **DynamicEnvelopeEncryption** に設定します。ストレージ暗号化を削除してアセットをプレーン テキストでストリーミングするには、ポリシーの種類を **NoDynamicEncryption** に設定します。これらのポリシーの構成方法を示す例を後ほど紹介します。 
+ストレージ暗号化アセットを配信する場合は、アセットの配信ポリシーを構成する必要があることにご注意ください。アセットをストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。たとえば、AES (高度暗号化標準) エンベロープ暗号化キーを使用して暗号化されたアセットを配信するには、ポリシーの種類を **DynamicEnvelopeEncryption** に設定します。ストレージ暗号化を解除してアセットを平文でストリームするには、ポリシーの種類を **NoDynamicEncryption** に設定します。これらのポリシーの種類を構成する例を次に示します。 
 
-アセットの配信ポリシーをどのように構成するかによって、動的パッケージングや動的暗号化を使用したり、次のストリーミング プロトコルをストリーミングしたりできます。スムーズ ストリーミング、HLS、MPEG DASH ストリーミング  
+アセットの配信ポリシーの構成方法に応じて、動的パッケージングと動的暗号化を実行し、ストリーミング プロトコル、スムーズ ストリーミング、HLS、MPEG DASH、HDS ストリームを使用してストリームを行うことができます。  
 
-次の一覧は、スムーズ、HLS、DASH、HDS のストリーミングに使用する形式を示しています。  
+次の一覧に、スムース、HLS、DASH、HDS でストリームを行うために使用するフォーマットを示します。  
 
 スムーズ ストリーミング:
 
@@ -53,13 +53,13 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-アセットを発行してストリーミング URL を構築する方法については、「[方法:ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content)」をご覧ください。
+アセットを公開し、ストリーミング URL を構築する手順については、「[方法: ストリーミング コンテンツを配信する]」をご覧ください(../media-services-deliver-streaming-content)。
 
 ##アセットの配信ポリシーをクリアする 
 
 次の **ConfigureClearAssetDeliveryPolicy** メソッドでは、動的暗号化を適用せず、MPEG DASH、HLS、スムーズ ストリーミングのいずれかでストリーミングを配信するよう指定します。 
   
-AssetDeliveryPolicy の作成時に指定できる値については、「[AssetDeliveryPolicy の定義に使用する種類](#types)」 セクションをご覧ください。 
+AssetDeliveryPolicy の作成時に指定できる値については、「[AssetDeliveryPolicy の定義に使用する種類]」(#types) セクションをご覧ください。 
 
     static public void ConfigureClearAssetDeliveryPolicy(IAsset asset)
     {
@@ -74,9 +74,9 @@ AssetDeliveryPolicy の作成時に指定できる値については、「[Asset
 ##DynamicCommonEncryption のアセット配信ポリシー 
 
 
-次の **CreateAssetDeliveryPolicy** メソッドでは、動的で一般的な暗号化 (**DynamicCommonEncryption**) をスムーズ ストリーミング プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。メソッドには、**Asset** (配信ポリシーを適用するアセット) と **IContentKey** (**CommonEncryption** タイプのコンテンツ キー。詳細については、[「Creating a content key (コンテンツ キーの作成)](../media-services-dotnet-create-contentkey#common_contentkey)」 を参照) の 2 つのパラメーターがあります。
+次の **CreateAssetDeliveryPolicy** メソッドでは、動的で一般的な暗号化 (**DynamicCommonEncryption**) をスムーズ ストリーミング プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。メソッドには、**Asset** (配信ポリシーを適用するアセット) と **IContentKey** (**CommonEncryption** タイプのコンテンツ キー。詳細については、[Creating a content key (コンテンツ キーの作成)]」をご覧ください(../media-services-dotnet-create-contentkey#common_contentkey))。
 
-AssetDeliveryPolicy の作成時に指定できる値については、「[AssetDeliveryPolicy の定義に使用する種類](#types)」セクションをご覧ください。 
+AssetDeliveryPolicy を作成する際に指定できる値については、「[AssetDeliveryPolicy を定義するときに使用される種類]」(#types) セクションをご覧ください。 
 
 
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
@@ -107,10 +107,10 @@ AssetDeliveryPolicy の作成時に指定できる値については、「[Asset
 
 ##DynamicEnvelopeEncryption のアセット配信ポリシー 
 
-次の **CreateAssetDeliveryPolicy** メソッドでは、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を HLS と DASH プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。メソッドには、**Asset** (配信ポリシーを適用するアセット) と **IContentKey** (**EnvelopeEncryption** タイプのコンテンツ キー。詳細については、[「Creating a content key (コンテンツ キーの作成)](../media-services-dotnet-create-contentkey#envelope_contentkey)」 を参照) の 2 つのパラメーターがあります。
+次の **CreateAssetDeliveryPolicy** メソッドでは、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を HLS と DASH プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。メソッドには、**Asset** (配信ポリシーを適用するアセット) と **IContentKey** (**EnvelopeEncryption** タイプのコンテンツ キー。詳細については、[Creating a content key (コンテンツ キーの作成)]」をご覧ください(../media-services-dotnet-create-contentkey#envelope_contentkey))。
 
 
-AssetDeliveryPolicy の作成時に指定できる値については、「[AssetDeliveryPolicy の定義に使用する種類](#types)」 セクションをご覧ください。   
+AssetDeliveryPolicy を作成する際に指定できる値については、「[AssetDeliveryPolicy を定義するときに使用される種類]」(#types) セクションをご覧ください。   
 
     private static void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
@@ -150,7 +150,7 @@ AssetDeliveryPolicy の作成時に指定できる値については、「[Asset
     }
 
 
-##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
+##<a id="types"></a>AssetDeliveryPolicy を定義するときに使用される種類
 
 ###<a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol 
 
@@ -290,4 +290,4 @@ AssetDeliveryPolicy の作成時に指定できる値については、「[Asset
         /// </summary>
         EnvelopeEncryptionIV,
     }
-<!--HONumber=45--> 
+<!--HONumber=47-->

@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
    pageTitle="サンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。" 
    description="HDInsight のサンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。" 
    services="hdinsight" 
@@ -16,7 +16,7 @@
    ms.date="1/29/2015" 
    ms.author="jgao"/>
 
-# HDInsight の Getting Started ギャラリーを使用して、HDInsight での Hadoop について説明します。
+# HDInsight の Getting Started ギャラリーを使用して、Hadoop について説明します。
 
 HDInsight Getting Started ギャラリーでは、HDInsight でHadoop のサンプル アプリケーションをすばやく簡単に実行できます。一部のサンプルには、サンプル データが含まれています。その他のサンプルでは、独自のデータを使用いただけます。現在 6 つのサンプルが用意されており、今後さらに増える予定です。
 
@@ -51,8 +51,8 @@ HDInsight Getting Started ギャラリーでは、HDInsight でHadoop のサン�
 ## 次のステップ
 HDInsight に関するその他の資料。
 
-- [HDInsight learning map (HDInsight の学習マップ)][hdinsight.learning.map]
-- [HDInsight infographic (HDInsight の解説画像)][hdinsight.infographic]
+- [HDInsight の学習マップ][hdinsight.learning.map]
+- [HDInsight のインフォグラフィック][hdinsight.infographic]
 
 <!--Image references-->
 [hdinsight.sample.gallery]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Getting-Started-Gallery.png
@@ -62,4 +62,4 @@ HDInsight に関するその他の資料。
 [hdinsight.learning.map]: ../hdinsight-learning-map/
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

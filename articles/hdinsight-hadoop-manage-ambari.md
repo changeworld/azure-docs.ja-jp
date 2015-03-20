@@ -1,5 +1,5 @@
 ﻿<properties
-   pageTitle="Ambari を使用した HDInsight クラスターの管理 | Aure"
+   pageTitle="Ambari を使用した HDInsight クラスターの管理 | Azure"
    description="Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -16,29 +16,29 @@
    ms.date="02/18/2015"
    ms.author="larryfr"/>
 
-# Ambari を使用した HDInsight クラスターの管理 (プレビュー)
+#Ambari を使用した HDInsight クラスターの管理 (プレビュー)
 
 Ambari を使用して Linux ベースの HDInsight クラスターを管理および監視する方法を説明します。
 
-> [AZURE.NOTE] この記事の多くの情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](../hdinsight-monitor-use-ambari-api/)」を参照してください。
+> [AZURE.NOTE] この記事の多くの情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視]に関するページ(../hdinsight-monitor-use-ambari-api/)を参照してください。
 
-## <a id="whatis"></a>Ambari とは
+##<a id="whatis"></a>Ambari とは
 
-<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a>  は、Hadoop クラスターのプロビジョニング、管理、および監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者がこれらの機能をアプリケーションに統合するには、 <a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API を使用します</a>。 
+<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、および監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者は、<a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> を使用して、これらの機能をアプリケーションに統合することができます。 
 
 Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。Windows ベースの HDInsight クラスターには、Ambari REST API を介した監視機能が用意されています。
 
-## SSH プロキシ
+##SSH プロキシ
 
 > [AZURE.NOTE] クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。これは内部ドメイン名で、パブリックではないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生します。
 
 この問題を解決するには、SSH トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信することで、内部ドメイン名は適切に解決されます。ローカル コンピューターでポートからクラスターへのトラフィックに対して SSH トンネルを作成するには、次の記事を参照してください。
 
-* <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a> -  `ssh` コマンドを使用した SSH トンネルの作成手順
+* <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する</a> - `ssh` コマンドを使用して SSH トンネルを作成する手順
 
-* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - PuTTY を使用した SSH トンネルの作成手順
+* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - PuTTY を使用して SSH トンネルを作成する手順
 
-## Ambari Web UI
+##Ambari Web UI
 
 Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成した Linux ベースの各 HDInsight クラスターで利用できます。このページにアクセスするには、Azure ポータルのクラスター ダッシュボードの下部にある **[Ambari Web]** ボタンを使用します。
 
@@ -56,27 +56,27 @@ Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成し
 
 ![ambari-nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
 
-* **Ambari logo** - **ダッシュボード**を開きます。
+* **Ambari ロゴ** - **[Dashboard]** を開きます。
 
-* **Cluster name # ops** - 進行中の Ambari 操作の数を表示します。クラスター名または**操作数**を選択すると、バックグラウンドでの操作の一覧が表示されます。
+* **[Cluster name # ops]** - 進行中の Ambari 操作の数を表示します。クラスター名または**操作数**を選択すると、バックグラウンドでの操作の一覧が表示されます。
 
-* **# alerts** - クラスターの警告または重要なアラートの数 (ある場合)。選択すると、アラートの一覧が表示されます。
+* **[# alerts]** - クラスターの警告または重要なアラートの数 (ある場合)。選択すると、アラートの一覧が表示されます。
 
-* **Dashboard** - ダッシュボードを表示します。これを使用してクラスターを監視できます。
+* **[Dashboard]** - ダッシュボードを表示します。これを使用してクラスターを監視できます。
 
-* **Services** - クラスターのサービスの情報および構成設定
+* **[Services]** - クラスターのサービスの情報および構成設定
 
-* **Hosts** - クラスター内のノードの情報および構成設定
+* **[Hosts]** - クラスター内のノードの情報および構成設定
 
-* **Alerts** - 一連の情報、警告、および重要なアラート
+* **[Alerts]** - 情報、警告、および重要なアラートのログ
 
-* **Admin** - インストールされたまたはクラスターに追加できるソフトウェア スタック/サービス、サービス アカウント情報、および Kerberos セキュリティ
+* **[Admin]** - インストールされたまたはクラスターに追加できるソフトウェア スタック/サービス、サービス アカウント情報、および Kerberos セキュリティ
 
-* **Admin button** - Ambari の管理、ユーザー設定、およびログアウト
+* **[admin] ボタン** - Ambari の管理、ユーザー設定、およびログアウトを行います。
 
-### 監視
+###監視
 
-#### アラート
+####アラート
 
 Ambari には多数のアラートがあり、そのステータスは次のいずれかになります。
 
@@ -102,7 +102,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![Create alert dialog](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-#### クラスター
+####クラスター
 
 **[Dashboard]** の **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。**[CPU Usage]** などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
 
@@ -116,7 +116,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![host details](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
-#### サービス
+####サービス
 
 ダッシュボードの **[Services]** サイド バーでは、クラスターで実行中のサービスのステータスを視覚的に簡単に確認できます。さまざまなアイコンで、ステータスまたは実行する必要のある操作が示されます。サービスをリサイクルする必要があることを示す黄色のリサイクル記号などがあります。
 
@@ -126,7 +126,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![service summary information](./media/hdinsight-hadoop-manage-ambari/service-details.png)
 
-##### クイック リンク:
+#####クイック リンク:
 
 一部のサービスでは、ページの上部に **[Quick Links]** が表示されます。これを使用すると、サービスに固有の次のような Web UI にアクセスできます。
 
@@ -144,17 +144,17 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 > 
 > HDInsight で SSL トンネルを使用する方法については、次の記事を参照してください。
 > 
-> * <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a> -  `ssh` コマンドを使用した SSH トンネルの作成手順
+> * <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する</a> - `ssh` コマンドを使用して SSH トンネルを作成する手順
 >
->* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - Putty を使用した SSH トンネルの作成手順
+>* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - PuTTY を使用して SSH トンネルを作成する手順
 
-### 管理
+###管理
 
-#### Ambari ユーザー、グループ、およびアクセス許可
+####Ambari ユーザー、グループ、およびアクセス許可
 
 ユーザー、グループ、およびアクセス許可の管理は、Linux ベースの HDInsight プレビュー版では使用しないことをお勧めします。
 
-#### ホスト
+####ホスト
 
 **[Hosts]** ページには、クラスター内のすべてのホストが一覧表示されます。ホストを管理するには、次の手順に従います。
 
@@ -170,7 +170,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 	* **[Stop all components]** - ホスト上のすべてのコンポーネントを停止します。
 
-	* **[Restart all components]** - ホスト上のすべてのコンポーネントを停止して、起動します。
+	* **[Restart all components]** - ホスト上のすべてのコンポーネントを停止してから起動します。
 
 	* **[Turn on maintenance mode]** - ホストのアラートを抑制します。アラートを生成する操作を実行する場合、これは有効になります。実行中のサービスが依存しているサービスを再起動する場合などです。
 
@@ -178,9 +178,9 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 	* **[Stop]** - ホスト上の DataNode または NodeManagers を停止します。
 
-	* **[Start]** - ホスト上の DataNode または NodeManagers を開始します。
+	* **[Start]** - ホスト上の DataNode または NodeManagers を起動します。
 
-	* **[Restart]** - ホスト上の DataNode または NodeManagers を停止して、起動します。
+	* **[Restart]** - ホスト上の DataNode または NodeManagers を停止して起動します。
 
 	* **[Decommission]** - クラスターからホストを削除します。
 
@@ -190,7 +190,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 		> [AZURE.NOTE] HDInsight クラスターではこの操作は使用しないでください。
 
-#### <a id="service"></a>サービス
+####<a id="service"></a>サービス
 
 **[Dashboard]** または **[Services]** ページでサービスの一覧の下部にある **[Actions]** ボタンを使用して新しいサービスを**追加**、またはすべてのサービスを**停止**および**開始**します。
 
@@ -212,7 +212,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 	![image of install, start, and test page](./media/hdinsight-hadoop-manage-ambari/install-start-test.png)
 
-6. **[Summary]** ページに、インストール プロセスの要約と実行する操作 (ある場合) が表示されます (他のサービスの再起動など)。**[Complete]** を選択してウィザードを終了します。
+6. **[Summary]** ページに、インストール プロセスの要約と実行する操作 (ある場合) が表示されます(他のサービスの再起動など)。**[Complete]** を選択してウィザードを終了します。
 
 **[Actions]** ボタンではすべてのサービスを再起動できますが、特定のサービスを開始、停止、または再起動する必要がある場合があります。**個々のサービスで操作を実行**するには、次の手順に従います。
 
@@ -238,20 +238,20 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 3. 表示されたフィールドを使用して構成を変更し、**[Save]** を選択します。または、以前の構成を選択し、**[Make current]** を選択して以前の設定にロールバックします。
 
-## REST API
+##REST API
 
 Ambari Web は基になる REST API に依存します。この REST API を活用することで、独自の管理および監視ツールを作成できます。API は比較的簡単に使用できる一方で、Azure 固有の注意が必要な要件があります。
 
-* **Authentication** - クラスター管理者のユーザー名 (既定では **admin**) と
+* **[Authentication]** - クラスター管理者のユーザー名 (既定では **admin**) と
 *  パスワードを使用して、サービスを認証する必要があります。
 
-* **Security** - Ambari では基本的な認証が使用されるため、API との通信には常に HTTPS を使用する必要があります。
+* **[Security]** - Ambari では基本的な認証が使用されるため、API との通信には常に HTTPS を使用する必要があります。
 
-* **IP Addresses** - クラスター内のホストに返されるアドレスには、クラスターが Azure の仮想ネットワークのメンバーでない限り、クラスター外部からはアクセスできません。仮想ネットワークの他のメンバーは IP アドレスにアクセスできますが、ネットワーク外部からはアクセスできません。
+* **[IP Addresses]** - クラスター内のホストに返されるアドレスには、クラスターが Azure の仮想ネットワークのメンバーでない限り、クラスター外部からはアクセスできません。仮想ネットワークの他のメンバーは IP アドレスにアクセスできますが、ネットワーク外部からはアクセスできません。
 
-* **Some functionality is not enabled** - HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターへのホストの追加、クラスターからのホストの削除など)。Linux ベースの HDInsight のプレビューでは、その他の機能を完全に実装できない場合があります。
+* **[Some functionality is not enabled]** - HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています。(クラスターへのホストの追加、クラスターからのホストの削除など)。Linux ベースの HDInsight のプレビューでは、その他の機能を完全に実装できない場合があります。
 
-REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」を参照してください。
+REST API の完全なリファレンスについては、[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) に関するページを参照してください。
 
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

@@ -22,9 +22,9 @@
 
 この記事では、リモート デスクトップを使用して HDInsight クラスターに接続し、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを実行する方法について説明します。
 
-> [AZURE.NOTE] このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。例で使用される HiveQL の詳細については、「 <a href="../hdinsight-use-hive/" target="_blank">HDInsight での Hive と Hadoop の使用</a>」を参照してください。
+> [AZURE.NOTE] このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL の詳細については、「<a href="../hdinsight-use-hive/" target="_blank">HDInsight での Hive と Hadoop の使用</a>」を参照してください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -32,11 +32,11 @@
 
 * Windows 7 以降のクライアント OS
 
-## <a id="connect"></a>リモート デスクトップへの接続
+##<a id="connect"></a>リモート デスクトップへの接続
 
-HDInsight クラスターのリモート デスクトップを有効にし、「 <a href="http://azure.microsoft.com/ documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って接続します。
+「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a id="hive"></a>Hive コマンドの使用
+##<a id="hive"></a>Hive コマンドの使用
 
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hive を使用します。
 
@@ -46,7 +46,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
         %hive_home%\bin\hive
 
-    CLI が起動したら、Hive CLI プロンプト - `hive>` が表示されます。
+    CLI が起動すると、Hive CLI プロンプトの `hive>` が表示されます。
 
 3. CLI を使用して次のステートメントを入力し、サンプル データを使用して **log4jLogs** という名前の新しいテーブルを作成します。
 
@@ -60,7 +60,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
     * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
     
-    * **CREATE EXTERNAL TABLE** - Hive に新しく  'external' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+    * **CREATE EXTERNAL TABLE** - Hive に新しく '外部'テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
 		> [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     	>
@@ -70,10 +70,10 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 	
     * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
     
-    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を返します。ここでは、この値を含む列が 3 行あるため、**3** という値が返されています。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む列が 3 行あるため、**3** という値が返されています。
 
 
-4. 次のステートメントを使用して、**errorLogs** という名前の新しい 'internal'テーブルを作成します。
+4. 次のステートメントを使用して、**errorLogs** という名前の新しい '内部'テーブルを作成します。
 
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
@@ -88,17 +88,17 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
     
     * **INSERT OVERWRITE ... SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
 
-    t4 列に **[ERROR]** が含まれた列のみが **errorLogs** テーブルに格納されたことを確認するには、**errorLogs** からすべての列を返す次のステートメントを使用します。
+    **errorLogs** テーブルに格納された、t4 列に **[ERROR]** を含む列のみを確認するには、次のステートメントを使用して、**errorLogs**列からすべての列を返します。
 
         SELECT * from errorLogs;
 
-    各 t4 列に **[ERROR]** が含まれた、3 つのデータ行が返されます。
+    3 つのデータ行が返され、各行の t4 列には **[ERROR]** が含まれます。
 
-## <a id="summary"></a>まとめ
+##<a id="summary"></a>まとめ
 
 このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -113,17 +113,17 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [1]: ../hdinsight-hadoop-visual-studio-tools-get-started/
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
-[azure-purchase-options]: http://azure.microsoft.com/ pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/ pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/ pricing/free-trial/
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [apache-tez]: http://tez.apache.org
 [apache-hive]: http://hive.apache.org/
 [apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/ documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: ../hdinsight-use-oozie/
@@ -145,4 +145,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

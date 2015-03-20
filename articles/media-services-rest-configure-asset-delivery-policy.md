@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="REST によるアセットの配信ポリシーの構成" 
 	description="このトピックでは、さまざまなアセットの配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
@@ -19,13 +19,13 @@
 #方法:アセットの配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow)と[メディア サービスのライブ ストリーミング ワークフロー](../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
 
 メディア サービスにおけるコンテンツ配信ワークフローの手順の 1 つは、ストリームするアセットの配信ポリシーを構成することです。アセットの配信ポリシーは、アセットを配信する方法、つまりどのストリーミング プロトコルでアセットを動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、アセットを動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を メディア サービスに示します。 
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。 
 
->[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、[メディア サービスの拡張方法](../media-services-manage-origins#scale_streaming_endpoints)をご覧ください。 
+>[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。 
 >
 >また、アセットには、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。  
 
@@ -53,19 +53,19 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-アセットを公開し、ストリーミング URL を構築する手順については、[ストリーミング URL の構築](../media-services-deliver-streaming-content)をご覧ください。
+アセットを発行してストリーミング URL を構築する方法については、「[方法: ストリーミング コンテンツを配信する]」をご覧ください(../media-services-deliver-streaming-content)。
 
->[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
+>[AZURE.NOTE] メディア サービス REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、[Setup for Media Services REST API Development (Media Services REST API 開発の設定) ](../media-services-rest-how-to-use)をご覧ください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。[Media Services REST API を使用してメディア サービス アカウントに接続する](../media-services-rest-connect_programmatically/)で説明されているように、新しい URI に続けてコールを行う必要があります。 
+>「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
 
 
 ##アセットの配信ポリシーを解除する 
 
 ###<a id="create_asset_delivery_policy"></a>アセットの配信ポリシーを作成する
-次の HTTP 要求により、動的暗号化を適用せずに MPEG DASH、HLS、スムーズ ストリーミングのいずれかのプロトコルでストリームを配信することを指定する、アセットの配信ポリシーが作成されます。 
+次の HTTP 要求により、動的暗号化を適用せずにMPEG DASH、HLS、スムーズ ストリーミングのいずれかのプロトコルでストリームを配信することを指定する、アセットの配信ポリシーが作成されます。 
 
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。   
 
@@ -142,7 +142,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###EnvelopeEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[コンテンツ キーの作成](../media-services-rest-create-contentkey)をご覧ください。
+DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)]」をご覧ください(../media-services-rest-create-contentkey)。
 
 
 ###<a id="get_delivery_url"></a>配信 URL を取得する
@@ -229,18 +229,18 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###アセットの配信ポリシーにアセットをリンクする
 
-[アセットをアセットの配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy) をご覧ください。
+[アセットをアセットの配信ポリシーにリンクする]をご覧ください。(#link_asset_with_asset_delivery_policy)
 
 ##DynamicCommonEncryption アセットの配信ポリシー 
 
 ###CommonEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[コンテンツ キーの作成](../media-services-rest-create-contentkey)をご覧ください。
+DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)]」をご覧ください(../media-services-rest-create-contentkey)。
 
 
 ###配信 URL を取得する
 
-前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、[配信 URL を取得する](#get_delivery_url)をご覧ください。
+前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、[配信 URL を取得する]をご覧ください(#get_delivery_url)。
 
 ###アセットの配信ポリシーを作成する
 
@@ -268,12 +268,12 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###アセットの配信ポリシーにアセットをリンクする
 
-[アセットをアセットの配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)をご覧ください。
+[アセットをアセットの配信ポリシーにリンクする]をご覧ください。(#link_asset_with_asset_delivery_policy)
 
 
-##<a id="types"></a>AssetDeliveryPolicy を定義する際に使用する種類
+##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
 
-###<a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol 
+###AssetDeliveryProtocol 
 
     /// <summary>
     /// Delivery protocol for an asset delivery policy.
@@ -312,7 +312,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         All = 0xFFFF
     }
 
-###<a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
+###AssetDeliveryPolicyType
 
     /// <summary>
     /// Policy type for dynamic encryption of assets.
@@ -346,7 +346,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         DynamicCommonEncryption
     }
 
-###<a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+###ContentKeyDeliveryType
 
     /// <summary>
     /// Delivery method of the content key to the client.
@@ -369,7 +369,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         BaselineHttp
     }
 
-###<a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
+###AssetDeliveryPolicyConfigurationKey
 
     /// <summary>
     /// Keys used to get specific configuration for an asset delivery policy.
@@ -412,4 +412,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         EnvelopeEncryptionIV,
     }
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

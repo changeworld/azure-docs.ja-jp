@@ -32,7 +32,7 @@
 
 ##<a id="connect"></a>リモート デスクトップへの接続
 
-HDInsight クラスターのリモート デスクトップを有効にし、「 <a href="http://azure.microsoft.com/ documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って接続します。
+「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
 ##<a id="pig"></a>Pig コマンドの使用
 
@@ -56,16 +56,16 @@ HDInsight クラスターのリモート デスクトップを有効にし、「
 
 		LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
-	変換後のデータを表示するには、**DUMP** を使用します。この場合は、`DUMP LEVELS;` を使用します。
+	変換後のデータを表示するには、**DUMP** を使用します。例では、`DUMP LEVELS;` が使用されます。
 
-5. 次のステートメントを使用して、変換を適用します。各手順の後に、 `DUMP` を使用して、変換の結果を表示します。
+5. 次のステートメントを使用して、変換を適用します。各手順の後に `DUMP` を使用して、変換の結果を表示します。
 
 	<table>
 	<tr>
 	<th>ステートメント</th><th>実行内容</th>
 	</tr>
 	<tr>
-	<td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルの null 値を含む列を削除し、結果を FILTEREDLEVELS に格納します。</td>
+	<td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルに null 値を含む行を削除し、結果を FILTEREDLEVELS に格納します。</td>
 	</tr>
 	<tr>
 	<td>GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;</td><td>ログ レベルで列をグループ化し、結果を GROUPEDLEVELS に格納します。</td>
@@ -78,7 +78,7 @@ HDInsight クラスターのリモート デスクトップを有効にし、「
 	</tr>
 	</table>
 
-6. 変換の結果は、 `STORE` ステートメントで保存することもできます。たとえば、以下では、 `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
+6. 変換の結果は `STORE` ステートメントで保存することもできます。たとえば、以下では `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
 
 		STORE RESULT into 'wasb:///example/data/pigout'
 
@@ -108,7 +108,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 
 		pig %PIG_HOME%\pigbatch.pig
 
-	バッチ ジョブが完了したら、次の出力が表示されます (前の手順の `DUMP RESULT;` での出力と同じ内容です)。
+	バッチ ジョブが完了すると、次の出力が表示されます (前の手順の `DUMP RESULT;` での出力と同じ内容です)。
 
 		(TRACE,816)
 		(DEBUG,434)
@@ -119,7 +119,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 
 ##<a id="summary"></a>まとめ
 
-このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるほか、バッチ ファイルに格納されたステートメントを実行できます。
+このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納されたステートメントも実行できます。
 
 ##<a id="nextsteps"></a>次のステップ
 
@@ -132,4 +132,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
 
 * [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
-<!--HONumber=45--> 
+<!--HONumber=47-->
