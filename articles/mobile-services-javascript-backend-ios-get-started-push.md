@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="プッシュ通知の使用 (iOS) | モバイル デベロッパー センター" 
 	description="Azure Mobile Services を使用して iOS アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services, notification-hubs" 
@@ -187,7 +187,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 * [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
   </br>Notification Hubs ソリューションのトラブルシューティングおよびデバッグのガイダンスについて説明します。 
 
-* [Mobile Services Objective-C の使用方法の概念的リファレンス]に関するページ
+* [Mobile Services Objective-C の使用方法の概念的リファレンス に関するページ]
   <br/>Objective-C および iOS で Mobile Services を使用する方法について説明します。
 
 * [モバイル サービスのサーバー スクリプト リファレンス]
@@ -252,7 +252,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/
 [通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/
 
-[Mobile Services Objective-C の使用方法の概念的リファレンス]に関するページ: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
+[Mobile Services Objective-C の使用方法の概念的リファレンス に関するページ]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 
 
 <!--HONumber=42-->

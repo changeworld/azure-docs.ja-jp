@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="ソース管理へのプロジェクト コードの保存 - Azure Mobile Services" 
 	description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。" 
 	services="mobile-services" 
@@ -175,8 +175,8 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [既存のアプリにモバイル サービスを追加する]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
 [Mobile Services のサーバー スクリプトの操作]: /ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[ クライアントからのカスタム API 呼び出し]: /ja-jp/documentation/articles/mobile-services-ios-call-custom-api/
-[Node.js API ドキュメント: モジュール]に関するトピック: http://nodejs.org/api/modules.html
+[クライアントからのカスタム API 呼び出し]: /ja-jp/documentation/articles/mobile-services-ios-call-custom-api/
+[Node.js API ドキュメント モジュール に関するトピック]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
 
