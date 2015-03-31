@@ -19,8 +19,6 @@
 
 
 
-[WACOM.INCLUDE [service-bus-amqp-overview](../includes/service-bus-amqp-overview.md)]
+[AZURE.INCLUDE [service-bus-amqp-overview](../includes/service-bus-amqp-overview.md)]
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
+<!--HONumber=47-->

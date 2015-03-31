@@ -4,7 +4,7 @@
 
 このセクションでは、HTTP ステータス コード 401 の応答を検出し、トークンとトークン キャッシュの更新を開始するように ServiceFilter を定義します。さらに、この ServiceFilter では認証中に他の送信要求をブロックして、これらの要求が更新されたトークンを使用できるようにします。
 
-1. Eclipse で、ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
+1. ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
  
         import java.util.concurrent.atomic.AtomicBoolean;
 		import java.util.concurrent.ExecutionException;
@@ -186,8 +186,6 @@
 	                                    public void run() {
 	                                        // Force a token refresh during authentication.
 	                                        authenticate(true);
-				// ToDoActivity.mMainActivity.authenticate(true);
-	
 	                                    }
 	                                });
 	                            }
@@ -240,4 +238,5 @@
        このコードでは、 `ProgressFilter` 以外に  `RefreshTokenCacheFilter` が使用されています。また、 `onCreate` の間に、トークン キャッシュも読み込みます。そのため、 `false` が  `authenticate` メソッドに渡されます。
 
 
-<!--HONumber=42-->
+
+<!--HONumber=47-->

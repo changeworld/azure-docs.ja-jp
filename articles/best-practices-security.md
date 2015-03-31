@@ -22,8 +22,6 @@
 
 
 
-[WACOM.INCLUDE [SecurityRX](../includes/SecurityRX.md)]
+[AZURE.INCLUDE [SecurityRX](../includes/SecurityRX.md)]
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
+<!--HONumber=47-->

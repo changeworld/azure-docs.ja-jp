@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Puppet と Azure Virtual Machines について" 
 	description="Azure の VM での Puppet のインストールと構成について説明します。" 
 	services="virtual-machines" 
@@ -16,7 +16,7 @@
 	ms.date="01/23/2015" 
 	ms.author="kathydav"/>
 
-#Puppet と Azure Virtual Machines について
+# Puppet と Azure Virtual Machines について
 
 <p>Puppet Enterprise は、インフラストラクチャの構築、デプロイ、管理を行う自動化ソフトウェアです。このソフトウェアを使用すると、検出、プロビジョニング、OS とアプリケーションの構成管理、オーケストレーション、レポートなどを実施して、IT インフラストラクチャのライフサイクルを管理できます。   
 
@@ -28,8 +28,8 @@ Puppet はクライアント サーバー システムです。Puppet マスタ�
 手順については、「[Microsoft Windows and Azure (Microsoft Windows と Azure)](http://puppetlabs.com/solutions/microsoft)」から、『Getting Started Guide (ファースト ステップ ガイド)』をダウンロードしてください。  
 
 
-##その他のリソース
-[New Integrations with Microsoft Azure and Visual Studio (Microsoft Azure および Visual Studio との新しい統合)]
+## その他のリソース
+[Microsoft Azure と Visual Studio との新しい統合]
 
 [Windows Server が実行されている仮想マシンにログオンする方法]
 
@@ -38,12 +38,11 @@ Puppet はクライアント サーバー システムです。Puppet マスタ�
 [拡張機能の管理]
 
 <!--Link references-->
-[New Integrations with Microsoft Azure and Visual Studio (Microsoft Azure および Visual Studio との新しい統合)]: http://puppetlabs.com/blog/new-integrations-windows-azure-and-visual-studio
+[Microsoft Azure と Visual Studio との新しい統合]: http://puppetlabs.com/blog/new-integrations-windows-azure-and-visual-studio
 [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
 [Linux を実行する仮想マシンにログオンする方法]: ../virtual-machines-linux-how-to-log-on
-[Azure VM 拡張機能と機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[拡張機能の管理]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
 
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

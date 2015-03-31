@@ -1,32 +1,48 @@
-﻿<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, Event Hub, getting started Event Hubs" description="このチュートリアルでは、Azure Event Hubs と C# の EventProcessorHost を使用する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
+<properties 
+	pageTitle="Event Hubs の使用" 
+	description="このチュートリアルでは、Azure Event Hubs と C# の EventProcessorHost を使用する方法について説明します。" 
+	services="service-bus" 
+	documentationCenter="" 
+	authors="fsautomata" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="service-bus" ms.workload="core" ms.tgt_pltfrm="csharp" ms.devlang="csharp" ms.topic="hero-article" ms.date="10/27/2014" ms.author="elioda" />
+<tags 
+	ms.service="service-bus" 
+	ms.workload="core" 
+	ms.tgt_pltfrm="csharp" 
+	ms.devlang="csharp" 
+	ms.topic="hero-article" 
+	ms.date="02/10/2015" 
+	ms.author="sethm"/>
 
-# <a name="getting-started"> </a>Event Hubs の使用
+# Event Hubs の使用
 
-[WACOM.INCLUDE [service-bus-selector-get-started](../includes/service-bus-selector-get-started.md)]
+[AZURE.INCLUDE [service-bus-selector-get-started](../includes/service-bus-selector-get-started.md)]
 
-Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブルなインジェスト システムです。これを使用するアプリケーションは、接続するデバイスおよびアプリケーションで生成される大量のデータを処理および分析することができます。Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送および格納することができます。Event Hubs の詳細については、「[Event Hubs 開発者ガイド]」を参照してください。 
+## はじめに
 
-詳細については、「[Event Hubs の概要]」を参照してください。
+Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブルなインジェスト システムです。これを使用するアプリケーションは、接続するデバイスとアプリケーションで生成される大量のデータを処理と分析できます。Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。Event Hubs の詳細については、「[Event Hubs 開発者ガイド]」をご覧ください。 
 
-このチュートリアルでは、C# を使用して、コンソール アプリケーションから Event Hub にメッセージをインジェストし、C# の[イベント プロセッサ ホスト] ライブラリに並行して取得する方法について説明します。
+詳細については、「[Event Hubs の概要]」をご覧ください。
+
+このチュートリアルでは、C# のコンソール アプリケーションを使用してイベント ハブにメッセージをインジェストし、C# の[イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、以下が必要になります。
 
 + Microsoft Visual Studio Express 2013 for Windows
 
-+ アクティブな Azure アカウント <br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 無料評価版</a>を参照してください。
++ アクティブな Azure アカウント <br/>アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 無料評価版</a>をご覧ください。
 
 ## イベント ハブの作成
 
-1. [Azure の管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
 
    	![][1]
 
-3. イベント ハブの名前を入力して、目的のリージョンを選択し、**[新しいイベント ハブの作成]** をクリックします。
+3. イベント ハブの名前を入力して、目的のリージョンを選択し、**[新しいイベント ハブを作成する]** をクリックします。
 
    	![][2]
 
@@ -38,20 +54,20 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 
    	![][4]
 
-6. 上部の **[構成]** タブをクリックし、**SendRule** という名前のルールに *Send* 権限を追加します。もう 1 つの **ReceiveRule** というルールには *Manage、Send、Listen* 権限を追加し、**[保存]** をクリックします。
+6. 上部にある **[構成]** タブをクリックし、 *Send* 権限を持つ **SendRule** という名前のルールを追加し、 *管理、送信、リッスン* 権限を持つ **ReceiveRule** という別のルールを追加して、**[保存]** をクリックします。
 
    	![][5]
 
-7. 上部の **[ダッシュボード]** タブをクリックし、**[接続情報]** をクリックします。2 つの接続文字列をメモします。
+7. ページ上部の **[ダッシュボード]** タブをクリックし、**[接続情報]** をクリックします。2 つの接続文字列をメモします。
 
    	![][6]
 
 これでイベント ハブが作成され、イベントを送受信するために必要な接続文字列も用意できました。
 
-[WACOM.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../includes/service-bus-event-hubs-get-started-send-csharp.md)]
+[AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../includes/service-bus-event-hubs-get-started-send-csharp.md)]
 
 
-[WACOM.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
+[AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
 ## アプリケーションの実行
 
@@ -77,8 +93,8 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [22]: ./media/service-bus-event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn836025.aspx
+[Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
 
-<!--HONumber=35.1-->
+<!--HONumber=47-->

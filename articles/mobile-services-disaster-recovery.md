@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="障害発生時のモバイル サービスの復旧 - Azure Mobile Services" 
 	description="障害発生時にモバイル サービスを復旧する方法について説明します。" 
 	services="mobile-services" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="11/11/2014" 
@@ -18,7 +18,7 @@
 
 # 障害発生時のモバイル サービスの復旧
 
-Azure Mobile Services を使用してアプリケーションをデプロイした場合、組み込み機能を使用することで、サーバーの障害、ネットワークの中断、データの消失、広範囲に及ぶ設備の損失など、可用性の問題が発生したときにビジネス継続性を維持できます。Azure のモバイル サービスを使用して、アプリケーションを展開することで、従来の内部設置型ソリューションを展開する場合に設計、実装、および管理する必要があるさまざまなフォールト トレランス機能やインフラストラクチャ機能を利用することができます。Azure により、わずかな料金で潜在的な障害の大部分が軽減されます。
+Azure Mobile Services を使用してアプリケーションをデプロイした場合、組み込み機能を使用することで、サーバーの障害、ネットワークの中断、データの消失、広範囲に及ぶ設備の損失など、可用性の問題が発生したときにビジネス継続性を維持できます。Azure のモバイル サービスを使用して、アプリケーションを展開することで、従来の内部設置型ソリューションを展開する場合に設計、実装、管理する必要があるさまざまなフォールト トレランス機能やインフラストラクチャ機能を利用できます。Azure により、わずかな料金で潜在的な障害の大部分が軽減されます。
 
 <h2><a name="prepare"></a>考えられる災害に対応する準備</h2>
 
@@ -77,7 +77,7 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 5. すべてのスクリプトをソース管理内の元のスクリプトと比較して、正しく復旧されていることを確認します。ほとんどの場合、スクリプトはデータが失われることなく自動的に復旧されます。ただし、相違がある場合は、そのスクリプトを手動で復旧できます。
 
 6. 復旧したサービスが Azure SQL データベースと通信していることを確認します。復旧コマンドでは、モバイル サービスが復旧されますが、元のデータベースへの接続が保持されます。Azure のプライマリ リージョンの問題がデータベースにも影響を与えている場合は、復旧したサービスが正常に実行されないことがあります。特定のリージョンのデータベースの状態は、Azure サービス ダッシュボードを使用して確認できます。元のデータベースが動作していない場合は、次の手順でデータベースを復旧できます。
-	+ 「[Azure SQL データベースの継続性]」の説明に従って、モバイル サービスを復旧した Azure のリージョンに対して Azure SQL Database を復旧します。
+	+ 「[Azure SQL データベースにおけるビジネス継続性]」の説明に従って、モバイル サービスを復旧した Azure のリージョンに対して Azure SQL Database を復旧します。
 	+ Azure ポータルで、モバイル サービスの **[構成]** タブにある [データベースの変更] をクリックし、新しく復旧したデータベースを選択します。
 
 これで、モバイル サービスが Azure の新しいリージョンに復旧され、元の URL を使用して、ストア アプリからトラフィックを受け取っている状態になります。
@@ -87,14 +87,13 @@ Azure Mobile Services を使用してアプリケーションをデプロイし�
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure SQL データベースの継続性]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx
+[Azure SQL データベースにおけるビジネス継続性]: http://msdn.microsoft.com/library/windowsazure/hh852669.aspx
 [Team Foundation Service]: http://tfs.visualstudio.com/
 
-[ソース管理機能]: http://azure.microsoft.com/develop/mobile/tutorials/store-scripts-in-source-control/
-[Azure コマンド ライン ツール]: http://azure.microsoft.com/develop/mobile/tutorials/command-line-administration/
+[ソース管理機能]: http://www.windowsazure.com/develop/mobile/tutorials/store-scripts-in-source-control/
+[Azure コマンド ライン ツール]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
 [Azure ポータル]: http://manage.windowsazure.com/
-[Azure サービス ダッシュボード]: http://azure.microsoft.com/support/service-dashboard/
-[コマンド ライン ツールを使用したモバイル サービスの自動化]: http://azure.microsoft.com/develop/mobile/tutorials/command-line-administration/
+[Azure サービス ダッシュボード]: http://www.windowsazure.com/support/service-dashboard/
+[コマンド ライン ツールを使用したモバイル サービスの自動化]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

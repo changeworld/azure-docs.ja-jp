@@ -5,9 +5,9 @@
 ## Azure アカウントの作成
 
 1.  Web ブラウザーを開いて、<a href="http://www.windowsazure.com">http://www.windowsazure.com</a> にアクセスします。
-2.  MSDN サブスクリプションがある場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバー向けの Azure 特典</a>ページに移動し、MSDN サブスクライバーの特典を有効にすることでアカウントを作成する手順を実行します。
+2.  MSDN サブスクリプションがある場合は、<a href="/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバー向けの Azure の特典</a>ページに移動し、MSDN サブスクライバーの特典を有効にすることでアカウントを作成する手順を実行します。
 
-それ以外の場合は、<a href="/ja-jp/pricing/free-trial/" target="_blank">無料評価版</a>のページに移動し、試用アカウントを作成する手順に従います。身分証明としてクレジット カード番号と携帯電話番号が必要になりますが、料金が請求されることはありません。
+   それ以外の場合は、<a href="/pricing/free-trial/" target="_blank">無料評価版</a>のページに移動し、試用アカウントを作成する手順に従います。身分証明としてクレジット カード番号と携帯電話番号が必要になりますが、料金が請求されることはありません。
 
 <h2><a id="enable"></a>Azure プレビュー機能を有効にする</h2>
 
@@ -24,3 +24,5 @@
 [1]: ./media/create-an-azure-account/antares-iaas-preview-01.png
 [2]: ./media/create-an-azure-account/antares-iaas-preview-05.png
 [3]: ./media/create-an-azure-account/antares-iaas-preview-06.png
+
+<!--HONumber=47-->

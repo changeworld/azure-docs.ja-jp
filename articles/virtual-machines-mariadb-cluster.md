@@ -20,16 +20,7 @@
 <!--The next line, with one pound sign at the beginning, is the page title--> 
 # MariaDB (MySQL) クラスター - Azure チュートリアル
 
-<p>[MariaDBs](https://mariadb.org/en/about/) のマルチ マスター [Galera](http://galeracluster.com/products/) クラスターを、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として、Azure の仮想マシン上の高可用性環境で稼働させるために作成します。</p>
-
-<!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
-
-+ [アーキテクチャの概要]
-+ [テンプレートの作成]
-+ [クラスターの作成]
-+ [クラスターの負荷分散]
-+ [クラスターの検証]
-
+<p>ここでは、[MariaDB](https://mariadb.org/en/about/) のマルチマスター [Galera](http://galeracluster.com/products/) クラスターを作成します。これを Azure の仮想マシン上の高可用性環境で稼働することで、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として実行するためです。</p>
 
 ## アーキテクチャの概要
 
@@ -43,7 +34,7 @@
 
 ![Architecture](./media/virtual-machines-mariadb-cluster/Setup.png)
 
-> [AZURE.NOTE]  このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference(Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
+> [AZURE.NOTE]  このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」をご覧ください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
 
 
 ## テンプレートの作成
@@ -65,7 +56,7 @@
 3. CentOS 7 仮想マシン イメージの名前を検索します。
 
 		azure vm image list | findstr CentOS        
-これにより、 `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926` 	のような出力が返されます。この名前を次の手順で使用します。
+これにより、`5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20140926` のような出力が返されます。この名前を次の手順で使用します。
 
 4. 生成した .pem SSH キーを格納した場所のパスで **/path/to/key.pem** を置き換える VM テンプレートを作成します。
 
@@ -152,11 +143,11 @@
     
     		ln -s /mnt/data/mysql /var/lib/mysql   
 
-5. [SELinux はクラスターのオペレーションに干渉する](http://galeracluster.com/documentation-webpages/configuration.html#selinux)ので、現在のセッションに対して無効にする必要があります (互換性のあるバージョンが登場するまで)。後の再起動のために、 `/etc/selinux/config` を編集して無効にします。
+5. [SELinux はクラスターのオペレーションに干渉する](http://galeracluster.com/documentation-webpages/configuration.html#selinux)ので、現在のセッションに対して無効にする必要があります (互換性のあるバージョンが登場するまで)。後の再起動のために `/etc/selinux/config` を編集して無効にします。
     	
 	        setenforce 0
     
-       次に、 `/etc/selinux/config` を編集して `SELINUX=permissive` を設定します。
+       次に `/etc/selinux/config` を編集して `SELINUX=permissive` を設定します。
        
 6. MySQL の実行を検証します。
 
@@ -168,7 +159,7 @@
     		
             mysql_secure_installation
             
-    - クラスター操作、および必要に応じて、アプリケーションのためにデータベースにユーザーを作成します。
+    - クラスター操作と、必要に応じて、アプリケーションのためにデータベースにユーザーを作成します。
    
 			mysql -u root -p
 			GRANT ALL PRIVILEGES ON *.* TO 'cluster'@'%' IDENTIFIED BY 'p@ssw0rd' WITH GRANT OPTION; FLUSH PRIVILEGES;
@@ -209,7 +200,7 @@
     - RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
     - ファイアウォールを再読み込みします: `firewall-cmd --reload`
 	
-9.  パフォーマンスにシステムを最適化します。詳細については、[パフォーマンス チューニング戦略] のこの記事を参照してください。
+9.  パフォーマンスにシステムを最適化します。詳細については、[パフォーマンス チューニング戦略] のこの記事をご覧ください。
 
 	- 再度、MySQL の構成ファイルを編集します。
 	
@@ -259,7 +250,7 @@
 		--vm-name mariadb1 
 		mariadbha mariadb-galera-image azureuser 
 
-2. 現時点で作成済みの **mariadbha** クラウド サービスに_接続_し、同じクラウド サービス内の他の VM と競合しない一意のポートになるように **VM 名**および **SSH ポート**を変更して、他の 2 台の仮想マシンを作成します。
+2. 現時点で作成済みの **mariadbha** クラウド サービスに_接続_し、同じクラウド サービス内の他の VM と競合しない一意のポートになるように **VM 名**と **SSH ポート**を変更して、他の 2 台の仮想マシンを作成します。
 
 		azure vm create		
         --virtual-network-name mariadbvnet
@@ -271,7 +262,7 @@
 		--ssh 23
 		--vm-name mariadb2
         --connect mariadbha mariadb-galera-image azureuser
-および MariaDB3
+and for MariaDB3
 
 		azure vm create
         --virtual-network-name mariadbvnet
@@ -292,15 +283,15 @@
 
 		sudo vi /etc/my.cnf.d/server.cnf
 		
-	開始位置の「**#**」を削除して **`wsrep_cluster_name`** と **`wsrep_cluster_address`** をコメント解除し、実際に必要な値になっているかどうか検証します。
-    また、**`wsrep_node_address`** の **`<ServerIP>`** と **`wsrep_node_name`** の **<NodeName>`** を、それぞれ VM の IP アドレスと名前で置き換え、それらの行もコメント解除します。
+	開始位置の **#** を削除して **`wsrep_cluster_name`** と **`wsrep_cluster_address`** をコメント解除し、実際に必要な値になっているかどうか検証します。
+    また、**`wsrep_node_address`** の **`<ServerIP>`** と **`wsrep_node_name`** の **`<NodeName>`** を、それぞれ VM の IP アドレスと名前で置き換え、それらの行もコメント解除します。
 	
 5. MariaDB1 でクラスターを起動し、起動時に実行されるようにします。
 
 		sudo service mysql bootstrap
         chkconfig mysql on
 	
-6. MariaDB2 および MariaDB3 で MySQL を起動し、起動時に実行されるようにします。
+6. MariaDB2 と MariaDB3 で MySQL を起動し、起動時に実行されるようにします。
 
 		sudo service mysql start
         chkconfig mysql on
@@ -311,7 +302,7 @@
 ここでは、Azure ロード バランサーを使用して、3 つのノードに要求を分散します。
 
 Azure CLI を使用して、マシン上で次のコマンドを実行します。
-コマンドのパラメーター構造は、次のとおりです:  `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
+コマンドのパラメーター構造は次のとおりです。 `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
 	azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
@@ -331,7 +322,7 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 
 ## クラスターの検証
 
-設定作業は完了しました。クラスターには、`mariadbha.cloudapp.net:3306` でアクセスできます。`mariadbha.cloudapp.net:3306` は、ロード バランサーにヒットし、円滑かつ効率的に 3 台の VM に要求をルーティングします。
+設定作業は完了しました。ロード バランサーにヒットし、円滑かつ効率的に 3 台の VM に要求をルーティングする `mariadbha.cloudapp.net:3306` でクラスターにアクセスできます。
 
 お好みの MySQL クライアントを使用して接続するか、いずれかの VM から接続して、このクラスターの動作を検証します。
 
@@ -361,7 +352,7 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 
 この記事では、CentOS 7 を実行している Azure の仮想マシン上に、3 ノードの MariaDB + Galera の可用性の高いクラスターを作成しました。VM には、Azure ロード バランサーで、負荷分散が行われます。
 
-必要に応じて、[Linux 上で MySQL をクラスター化する別の方法]および [Azure Linux VM 上で MySQL のパフォーマンスを最適化およびテストする]方法を参照してください。
+必要に応じて、[Linux 上で MySQL をクラスター化する別の方法]と [Azure Linux VM 上で MySQL のパフォーマンスを最適化とテストする]方法をご覧ください。
 
 <!--Anchors-->
 [アーキテクチャの概要]: #architecture-overview
@@ -375,11 +366,11 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 
 <!--Link references-->
 [Azure CLI]: http://azure.microsoft.com/documentation/articles/xplat-cli/
-[Azure CLI command reference(Azure CLI コマンド リファレンス)]: http://azure.microsoft.com/documentation/articles/command-line-tools/
+[Azure CLI command reference (Azure CLI コマンド リファレンス)]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/
 [認証用に SSH キーを作成]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
-[パフォーマンス チューニング戦略]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
-[[Azure Linux VM 上で MySQL のパフォーマンスを最適化およびテストする]:http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
-[issue #1268 in the Azure CLI]:https://github.com/Azure/azure-xplat-cli/issues/1268
+[パフォーマンス チューニング戦略]: http://azure.microsoft.com/sv-se/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
+[Azure Linux VM 上で MySQL のパフォーマンスを最適化とテストする]:http://azure.microsoft.com/sv-se/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
+[Azure CLI ツールの issue #1268]:https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 
-<!--HONumber=42-->
+<!--HONumber=47-->

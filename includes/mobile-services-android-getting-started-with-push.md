@@ -1,6 +1,6 @@
-﻿1.アプリ プロジェクトで、 `AndroidManifest.xml` ファイルを開きます。続く 2 つの手順で、コード内の _`**my_app_package**`_ を、プロジェクトのアプリケーション パッケージの名前 ( `manifest` タグの  `package` 属性の値) に置き換えます。 
+1. **アプリ** プロジェクトで、 `AndroidManifest.xml` ファイルを開きます。続く 2 つの手順で、コード内の `**my_app_package**` を、プロジェクトのアプリケーション パッケージの名前 ( `manifest` タグの  `package` 属性の値) に置き換えます。 
 
-2. 次の新しいアクセス許可を、既存の  `uses-permission` 要素の後に追加します。
+2. 以下の新しいアクセス許可を、既存の  `uses-permission` 要素の後に追加します。
 
         <permission android:name="**my_app_package**.permission.C2D_MESSAGE" 
             android:protectionLevel="signature" />
@@ -9,7 +9,7 @@
         <uses-permission android:name="android.permission.GET_ACCOUNTS" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-3.  `application` 開始タグの後に次のコードを追加します。 
+3. 以下のコードを  `application` 開始タグの後に追加します。 
 
         <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
             						 	android:permission="com.google.android.c2dm.permission.SEND">
@@ -20,16 +20,20 @@
         </receiver>
 
 
-4. [モバイル サービス Android SDK] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-1.0.1.jar** ファイルを Eclipse プロジェクトの  *libs* フォルダーにコピーした後、 *libs* フォルダーを最新の情報に更新します。
+4. app ディレクトリの **build.gradle** ファイルにある  *dependencies* の下に、これらの行を追加します。 
 
-    > [AZURE.NOTE] ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。
+	    compile 'com.google.guava:guava:18.0'
+	    compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0-beta'
+	    compile(group: 'com.microsoft.azure', name: 'azure-notifications-handler', version: '1.0.1', ext: 'jar')
+   		compile 'com.google.android.gms:play-services-base:6.5.87'
 
-5.   *ToDoItemActivity.java* ファイルを開き、次の import ステートメントを追加します。
+
+5.  *ToDoItemActivity.java* ファイルを開き、次の import ステートメントを追加します。
 
 		import com.microsoft.windowsazure.notifications.NotificationsManager;
 
 
-6. 次のプライベート変数をクラスに追加します。`<PROJECT_NUMBER>`_ を、最初の手順で Google によってアプリケーションに割り当てられたプロジェクト番号に置き換えます。
+6. 次のプライベート変数をクラスに追加します。_`<PROJECT_NUMBER>`_ を、前の手順で Google によってアプリケーションに割り当てられたプロジェクト番号に置き換えます。
 
 		public static final String SENDER_ID = "<PROJECT_NUMBER>";
 
@@ -39,15 +43,20 @@
 
 
 
-9. 次に、通知を処理する新しいクラスを追加する必要があります。パッケージ エクスプローラー で ( `src` ノードの下にある) パッケージを右クリックし、**[New]**、**[Class]** の順にクリックします。
+8. 次に、通知を処理する新しいクラスを追加する必要があります。Project Explorer で、 `src` ノードを探して開き、パッケージ名のノードを右クリックして、**[新規]**、**[Java クラス]** の順にクリックします。
 
-10. **[Name]** に「 `MyHandler`」と入力し、**[Superclass]** に「 `com.microsoft.windowsazure.notifications.NotificationsHandler`」と入力します。**[Finish]** をクリックします。
+9. **[名前]** に、 `MyHandler` と入力して **[OK]** をクリックします。 
 
-	![](./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png)
 
-	これで、新しい MyHandler クラスが作成されます。
+	![](./media/mobile-services-android-get-started-push/android-studio-create-class.png)
 
-11. 次の  `MyHandler` クラスの import ステートメントを追加します。
+
+10. MyHandler ファイルで、クラス宣言を以下の内容と置き換えます。 
+
+		public class MyHandler extends NotificationsHandler {
+
+
+11.  `MyHandler`クラスに以下の import ステートメントを追加します。
 
 		import android.app.NotificationManager;
 		import android.app.PendingIntent;
@@ -58,7 +67,7 @@
 		import android.support.v4.app.NotificationCompat;
 
 	
-12. 次に、 `MyHandler` クラスの次のメンバーを追加します。
+12.  `MyHandler` クラスに以下のメンバーを追加します。
 
 		public static final int NOTIFICATION_ID = 1;
 		private NotificationManager mNotificationManager;
@@ -66,7 +75,7 @@
 		Context ctx;
 
 
-13.  `MyHandler` クラスで、次のコードを追加して、**onRegistered** メソッドをオーバーライドします。このコードは、デバイスをモバイル サービスの通知ハブに登録します。
+13.  `MyHandler` クラスで、以下のコードを追加して、**onRegistered** メソッドをオーバーライドします。このコードにより、デバイスがMobile Services の通知ハブに登録されます。
 
 		@Override
 		public void onRegistered(Context context,  final String gcmRegistrationId) {
@@ -89,7 +98,7 @@
 
 
 
-14.  `MyHandler` クラスで、次のコードを追加して、**onReceive** メソッドをオーバーライドします。このコードは、通知を受信したときにその通知を表示します。
+14.  `MyHandler` クラスで、以下のコードを追加して、**onReceive** メソッドをオーバーライドします。このコードにより、通知の受信時にその通知が表示されます。
 
 		@Override
 		public void onReceive(Context context, Bundle bundle) {
@@ -119,7 +128,7 @@
 		}
 
 
-15. TodoActivity.java ファイルに戻り、 *ToDoActivity* クラスの **onCreate** メソッドを更新して、通知のハンドラー クラスを登録します。 *MobileServiceClient* がインスタンス化された後に、このコードを追加してください。
+15. TodoActivity.java ファイルに戻り、 *ToDoActivity* クラスの **onCreate** メソッドを更新して、通知のハンドラー クラスを登録します。 *MobileServiceClient* がインスタンス化された後に、必ずこのコードを追加してください。
 
 
 		NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
@@ -127,5 +136,6 @@
     これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
 <!-- URLs. -->
-[モバイル サービス Android SDK]: http://aka.ms/Iajk6q
-<!--HONumber=42-->
+[Mobile Services Android SDK]: http://aka.ms/Iajk6q
+
+<!--HONumber=47-->

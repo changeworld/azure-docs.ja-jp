@@ -1,10 +1,10 @@
-モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。 
+﻿モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。 
 
 1. [モバイル サービス Android SDK] を持っていない場合は、この段階でダウンロードし、圧縮ファイルを展開してください。
 
-2. `.jar` ファイルを SDK の `mobileservices` フォルダーから GetStartedWithData プロジェクトの `libs` フォルダーにコピーします。
+2.  `.jar` ファイルを SDK の  `mobileservices` フォルダーから GetStartedWithData プロジェクトの  `libs` フォルダーへコピーします。
 
-3. Eclipse のパッケージ エクスプローラーで、`libs` フォルダーを右クリックし、**[更新]** をクリックすると、コピーした jar ファイルが表示されます。
+3. Eclipse のパッケージ エクスプローラーで、 `libs` フォルダーを右クリックし、**[Refresh]** をクリックすると、コピーした jar ファイルが表示されます。
 
   	この操作により、モバイル サービス SDK の参照がワークスペースに追加されます。
 
@@ -37,14 +37,14 @@
 
 		public List<ToDoItem> toDoItemList = new ArrayList<ToDoItem>();
 
-8. ファイルを保存すると、プロジェクトがビルド エラーを示します。`toDoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント解除します。これで、メモリ内のリストが完全に削除されます。 
+8. ファイルを保存すると、プロジェクトがビルド エラーを示します。 `toDoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント解除します。これで、メモリ内のリストが完全に削除されます。 
 
 9. 次に、モバイル サービスを追加します。次のコード行をコメント解除します。
 
 		private MobileServiceClient mClient;
 		private private MobileServiceTable<ToDoItem> mToDoTable;
 
-10. ファイルの末尾にある *ProgressFilter* クラスを見つけ、コメント解除します。このクラスは、*MobileServiceClient* がネットワーク操作を実行しているときに  'loading' インジケーターを表示します。
+10. ファイルの末尾にある  *ProgressFilter* クラスを見つけ、コメント解除します。このクラスは、 *MobileServiceClient* がネットワーク操作を実行しているときに  'loading' インジケーターを表示します。
 
 
 11. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
@@ -71,9 +71,9 @@
 			createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
 		}
 
-  	これで、モバイル サービスへのアクセスに使用される *MobileServiceClient* の新しいインスタンスが作成されます。さらに、モバイル サービス内のデータ ストレージをプロキシ経由で接続する際に使用される *MobileServiceTable* の新しいインスタンスが作成されます。
+  	これで、モバイル サービスへのアクセスに使用される  *MobileServiceClient* の新しいインスタンスが作成されます。さらに、モバイル サービス内のデータ ストレージをプロキシ経由で接続するために使用される  *MobileServiceTable* の新しいインスタンスが作成されます。
 
-14. 前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーの順にそれぞれ置き換えます。
+14. 前のコードの  `MobileServiceUrl` と  `AppKey` を、モバイル サービスの URL とアプリケーション キーでそれぞれ置き換えます。
 
 
 
@@ -156,4 +156,4 @@
 
 <!-- URLs. -->
 [モバイル サービス Android SDK]: http://aka.ms/Iajk6q
-<!--HONumber=45--> 
+<!--HONumber=47-->

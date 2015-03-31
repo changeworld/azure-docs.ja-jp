@@ -18,13 +18,13 @@
 
 
 
-#Azure の仮想マシンにカスタム データを挿入する 
+# Azure の仮想マシンにカスタム データを挿入する 
 
 Azure の仮想マシンをプロビジョニングしているときに、スクリプトなどのデータをその中に挿入する場合がよくあります。これは、オペレーティング システムが Microsoft Windows であっても Linux ディストリビューションであっても同じです。このトピックでは、次の操作について説明します。
 
 - Azure の仮想マシンをプロビジョニングしているときに、スクリプトやデータを挿入する。
 
-- Windows および Linux 用にデータを取得する。 
+- Windows と Linux 用にデータを取得する。 
 
 - いくつかのシステムで利用できる特殊なツールを使用して、自動的にカスタム データを検出し、操作する。
 
@@ -42,7 +42,7 @@ Azure の仮想マシンをプロビジョニングしているときに、ス�
 
 ## <a id="injectingCustomData"></a>Azure 仮想マシンにカスタム データを挿入する
 
-この機能は、現在、[Microsoft Azure クロスプラットフォーム コマンドライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat)でのみサポートされています。 `azure vm create` コマンドのオプションはすべて使用できますが、以下の方法は、きわめて基本的な方法の 1 つです。 
+この機能は、現在、[Microsoft Azure クロスプラットフォーム コマンドライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat)でのみサポートされています。`azure vm create` コマンドのオプションはすべて使用できますが、以下の方法は、きわめて基本的な方法の 1 つです。 
 
 ```
     PASSWORD='AcceptablePassword -- more than 8 chars, a cap, a num, a special'
@@ -55,19 +55,19 @@ Azure の仮想マシンをプロビジョニングしているときに、ス�
 
 ## <a id="usingCustomData"></a>仮想マシンでカスタム データを使用する
  
-+ Azure 仮想マシンが Windows 仮想マシンの場合には、カスタム データのファイルは  `%SYSTEMDRIVE%\AzureData\CustomData.bin` に保存されます。このファイルは、ローカル コンピューターから新しい仮想マシンに転送するために Base64 でエンコードされますが、自動的にデコードされるため、直ちに開いて使用できます。 
++ Azure 仮想マシンが Windows 仮想マシンの場合には、カスタム データのファイルは `%SYSTEMDRIVE%\AzureData\CustomData.bin` に保存されます。このファイルは、ローカル コンピューターから新しい仮想マシンに転送するために Base64 でエンコードされますが、自動的にデコードされるため、すぐに開いて使用できます。 
 
-   > [AZURE.NOTE] このファイルが既に存在している場合には、上書きされます。ディレクトリのセキュリティは、**"システム: フル コントロール"** および **"管理者: フル コントロール"** に設定されます。
+   > [AZURE.NOTE] このファイルが既に存在している場合には、上書きされます。ディレクトリのセキュリティは、**"システム: フル コントロール"** と **"管理者: フル コントロール"** に設定されます。
 
 + Azure の仮想マシンが Linux 仮想マシンの場合、カスタム データ ファイルは次の 2 つの場所に配置されます。ただし、データは Base64 でエンコードされるため、最初にデータをデコードする必要があります。
 
-    +  `/var/lib/waagent/ovf-env.xml` で
-    +  `/var/lib/waagent/CustomData` で 
+    +  `/var/lib/waagent/ovf-env.xml`
+    +  `/var/lib/waagent/CustomData` 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a id="nextsteps"></a>次のステップ:cloud-init を使用する
 
-Azure の仮想マシンが Ubuntu イメージの場合には、cloud-init を使用することにより、カスタム データを自動的に使用するスクリプトを起動できます (カスタム データ ファイルがスクリプトの場合には、スクリプトを実行します)。詳細については、「[cloud-init documentation for Ubuntu (Ubuntu 用 cloud-init のドキュメント)](https://help.ubuntu.com/community/CloudInit)」を参照してください。
+Azure の仮想マシンが Ubuntu イメージの場合には、cloud-init を使用することにより、カスタム データを自動的に使用するスクリプトを起動できます (カスタム データ ファイルがスクリプトの場合には、スクリプトを実行します)。詳細については、「[cloud-init documentation for Ubuntu (Ubuntu 用 cloud-init のドキュメント)](https://help.ubuntu.com/community/CloudInit)」をご覧ください。
 
 <!--Link references-->
 [ロールの追加](http://msdn.microsoft.com/library/azure/jj157186.aspx)
@@ -75,5 +75,4 @@ Azure の仮想マシンが Ubuntu イメージの場合には、cloud-init を�
 [Microsoft Azure Cross-Platform Command-line Interface (Microsoft Azure クロスプラットフォーム コマンドライン インターフェイス)](https://github.com/Azure/azure-sdk-tools-xplat)
 
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

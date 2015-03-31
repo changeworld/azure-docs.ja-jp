@@ -1,32 +1,35 @@
-﻿<properties urlDisplayName="How to sync data" pageTitle="SQL データベース データ同期の概要" metaKeywords="" description="" metaCanonical="" services="sql-database" documentationCenter="" title="Getting Started with Azure SQL Data Sync" authors="spelleru" solutions="" manager="jhubbard" editor="" />
+﻿<properties 
+	pageTitle="SQL データベース データ同期の概要" 
+	description="このチュートリアルでは、Azure SQL データ同期 (プレビュー) の概要について説明します。" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor=""/>
 
-<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelleru" />
+<tags 
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="3/2/2015" 
+	ms.author="spelluru"/>
 
 
-
-
-
-#Azure SQL データ同期の概要 (プレビュー)
+# Azure SQL データ同期の概要 (プレビュー)
 このチュートリアルでは、Azure (プレビュー) ポータルを使用して、Azure SQL データ同期の基礎を学習します。 
 
-このチュートリアルは、SQL Server および Azure SQL データベースを使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQL データベース インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
+このチュートリアルは、SQL Server と Azure SQL データベースを使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server と SQL データベース インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
 
-##目次##
 
-* [手順 1.Azure SQL データベースへの接続](#Connect)
-* [手順 2.クライアント エージェントの追加](#AddAgent)
-* [手順 3.SQL Server データベースのクライアント エージェントへの登録](#RegisterSSDB)
-* [手順 4.同期グループの作成](#CreateSG)
-* [手順 5.同期するデータの定義](#SyncRules)
-* [手順 6.同期グループの構成](#Configure)
-
-<h2><a id="Connect"></a>手順 1.Azure SQL データベースへの接続</h2>
+## 手順 1:Azure SQL データベースへの接続
 
 1. [管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. 左のウィンドウで、**[SQL データベース]** をクリックします。
 
-3. ページの下部にある **[同期]** をクリックします。[同期] をクリックすると、追加できる項目である **[新しい同期グループ]** および **[新しい同期エージェント]** が一覧に表示されます。
+3. ページの下部にある **[同期]** をクリックします。[同期] をクリックすると、追加できる項目である **[新しい同期グループ]** と **[新しい同期エージェント]** が一覧に表示されます。
 
 4. 新しい SQL データ同期エージェント ウィザードを起動するには、**[新しい同期エージェント]** をクリックします。
 
@@ -35,31 +38,31 @@
 	![Image1](./media/sql-database-get-started-data-sync/SQLDatabaseScreen-Figure1.PNG)
 
 
-<h2><a id="AddAgent"></a>手順 2.クライアント エージェントの追加</h2>
-この手順が必要になるのは、同期グループに内部設置型 SQL Server データベースを含める場合だけです。手順 4. に進むことができます。同期グループにあるのが SQL データベースのインスタンスのみである場合は、同期グループを作成します。
+## 手順 2:クライアント エージェントの追加
+この手順が必要になるのは、同期グループに内部設置型 SQL Server データベースを含める場合だけです。手順 4: に進むことができます。同期グループにあるのが SQL データベースのインスタンスのみである場合は、同期グループを作成します。
 
-<h3><a id="InstallRequiredSoftware"></a>手順 2a. 必要なソフトウェアのインストール</h3>
-クライアント エージェントをインストールするコンピューターに次のソフトウェアがインストールされていることを確認してください。
+<h3><a id="InstallRequiredSoftware"></a>手順 2a:必要なソフトウェアのインストール</h3>
+クライアント エージェントをインストールするコンピューターに次のソフトウェアがインストールされていることをご確認ください。
 
-- **.NET Framework 4.0**
+- **.NET Framework 4.0** 
 
-.NET Framework 4.0 は[このページ](http://go.microsoft.com/fwlink/?linkid=205836)からインストールできます。
+ .NET Framework 4 は[このページ](http://go.microsoft.com/fwlink/?linkid=205836)からインストールできます。
 
 - **Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86)**
 
-Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
+ Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
 
 - **Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86)**
 
-Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
+ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
 
 
-<h3><a id="InstallClient"></a>手順 2b. 新しいクライアント エージェントのインストール</h3>
+<h3><a id="InstallClient"></a>手順 2b:新しいクライアント エージェントのインストール</h3>
 
-「[SQL データ同期プレビュー クライアント エージェントをインストールする](http://msdn.microsoft.com/ja-jp/library/jj823137.aspx)」の指示に従って、エージェントをインストールします。 
+「[Install a Client Agent (SQL Data Sync) (クライアント エージェントのインストール (SQL データ同期))](http://msdn.microsoft.com/library/jj823137.aspx)」の指示に従って、エージェントをインストールします。 
 
 
-<h3><a id="RegisterSSDb"></a>手順 2c. 新しい SQL データ同期エージェント ウィザードの完了</h3> 
+<h3><a id="RegisterSSDb"></a>手順 2c:新しい SQL データ同期エージェント ウィザードの完了</h3> 
 
 1. 	新しい SQL データ同期エージェント ウィザードに戻ります。
 2.	わかりやすいエージェント名を付けます。
@@ -69,16 +72,16 @@ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このペ�
 
 
 
-<h2><a id="RegisterSSDB"></a>手順 3.SQL Server データベースのクライアント エージェントへの登録</h2>
+## 手順 3:SQL Server データベースのクライアント エージェントへの登録
 
 クライアント エージェントをインストールした後、同期グループに含める内部設置型 SQL Server データベースをすべてエージェントに登録します。
-データベースをエージェントに登録するには、「[方法: SQL Server データベースをクライアント エージェントに登録する](http://msdn.microsoft.com/ja-jp/library/jj823138.aspx)」を参照してください。
+データベースをエージェントに登録するには、「[方法: SQL Server データベースをクライアント エージェントに登録する](http://msdn.microsoft.com/library/jj823138.aspx)」をご覧ください。
 
 
 
-<h2><a id="CreateSG"></a>手順 4.同期グループの作成</h2>
+## 手順 4:同期グループの作成
 
-<h3><a id="StartNewSGWizard"></a>手順 4a. 新しい同期グループ ウィザードの開始</h3>
+<h3><a id="StartNewSGWizard"></a>手順 4a:新しい同期グループ ウィザードの開始</h3>
 1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
 2.	**[SQL データベース]** をクリックします。
 3.	ページの下部にある **[同期の追加]** をクリックして、ドロワから [新しい同期グループ] を選択します。
@@ -86,16 +89,16 @@ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このペ�
 	![Image2](./media/sql-database-get-started-data-sync/NewSyncGroup-Figure2.png)
 
 
-<h3><a id=""></a>手順 4b. 基本設定の入力</h3>	
+<h3><a id=""></a>手順 4b.基本設定の入力</h3>	
 1.	わかりやすい同期グループ名を入力します。
 2.	ドロップダウン リストで、この同期グループをホストする **[リージョン]** (データ センター) を選択します。
 3. 右矢印をクリックします。
 
 	![Image3](./media/sql-database-get-started-data-sync/NewSyncGroupName-Figure3.PNG)
  
-<h3><a id="DefineHubDB"></a>手順 4c. 同期ハブの定義</h3>
+<h3><a id="DefineHubDB"></a>手順 4c:同期ハブの定義</h3>
 1. ドロップダウン リストで、同期グループのハブとして機能する SQL データベース インスタンスを選択します。
-2. この SQL データベース インスタンスの資格情報を **[ハブ ユーザー名]** および **[ハブ パスワード]** に入力します。
+2. この SQL データベース インスタンスの資格情報を **[ハブ ユーザー名]** と **[ハブ パスワード]** に入力します。
 3. SQL データ同期によってユーザー名とパスワードが確認されるのを待ちます。資格情報が確認されると、[パスワード] ボックスの右側に緑色のチェック マークが表示されます。
 4. ドロップダウン リストで、**[競合の解決]** ポリシーを選択します。
 
@@ -108,14 +111,14 @@ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このペ�
 
 	![Image4](./media/sql-database-get-started-data-sync/NewSyncGroupHub-Figure4.PNG)
 
-<h3><a id="AddRefDB"></a>手順 4d. 参照データベースの追加</h3>
+<h3><a id="AddRefDB"></a>手順4d:参照データベースの追加</h3>
 
 同期グループに追加するデータベースごとに、この手順を繰り返します。
 
 1. ドロップダウン リストで、追加するデータベースを選択します。
 
 	ドロップダウン リストに表示されるデータベースは、エージェントに登録された SQL Server データベースと SQL データベース インスタンスの両方を含みます。
-2.	このデータベースの資格情報を **[ユーザー名]** および **[パスワード]** に入力します。
+2.	このデータベースの資格情報を **[ユーザー名]** と **[パスワード]** に入力します。
 3.	ドロップダウン リストで、このデータベースの **[同期の方向]** を選択します。
 
 	**[双方向]** - 参照データベースの変更内容がハブ データベースに書き込まれ、ハブ データベースの変更内容が参照データベースに書き込まれます。
@@ -126,14 +129,14 @@ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このペ�
 
 4.	同期グループの作成を終了するには、ウィザードの右下にあるチェック マークをクリックします。SQL データ同期によって資格情報が確認されるのを待ちます。資格情報が確認されると、緑色のチェック マークが表示されます。
 
-5.	チェック マークをもう一度クリックします。これで [SQL データベース] の **[同期]** ページに戻ります。この同期グループが他の同期グループおよびエージェントと並んで一覧表示されています。
+5.	チェック マークをもう一度クリックします。これで [SQL データベース] の **[同期]** ページに戻ります。この同期グループが他の同期グループとエージェントと並んで一覧表示されています。
 
 	![Image5](./media/sql-database-get-started-data-sync/NewSyncGroupReference-Figure5.PNG)
 
 
-<h2><a id="SyncRules"></a>手順 5.同期するデータの定義</h2>
+## 手順 5:同期するデータの定義
 
-Azure SQL データ同期では、同期するテーブルと列を選択できます。また、列を絞り込んで、特定の値 (年齢 >= 65 など) を持つ行だけを同期する場合は、Azure の SQL データ同期ポータルを使用し、「同期するテーブル、列、および行の選択」の説明を参照して、同期するデータを定義します。
+Azure SQL データ同期では、同期するテーブルと列を選択できます。また、列を絞り込んで、特定の値 (年齢 >= 65 など) を持つ行だけを同期する場合は、Azure の SQL データ同期ポータルを使用し、「同期するテーブル、列、行の選択」の説明を参照して、同期するデータを定義します。
 
 1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
 2.	**[SQL データベース]** をクリックします。
@@ -145,14 +148,14 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 8.	**[スキーマの更新]** をクリックします。
 9.	データベースの各テーブルで、同期の対象とする列を選択します。 
 	- サポートされていないデータ型の列は選択できません。 
-	- テーブルの列が選択されていない場合、そのテーブルは同期グループに含められません。 
-	- すべてのテーブルの選択および選択解除を行うには、画面の下部にある [選択] をクリックします。
+	- デーブルの列が選択されていない場合、そのテーブルは同期グループに含められません。 
+	- すべてのテーブルの選択と選択解除を行うには、画面の下部にある [選択] をクリックします。
 10.	**[保存]** をクリックし、同期グループのプロビジョニングが完了するのを待ちます。
 11.	データ同期のランディング ページに戻るには、画面の左上 (同期グループ名の上) にある左向き矢印をクリックします。
 
 	![Image6](./media/sql-database-get-started-data-sync/NewSyncGroupSyncRules-Figure6.PNG)
 
-<h2><a id="Configure"></a>手順 6.同期グループの構成</h2>
+## 手順 6:同期グループの構成
 
 同期グループはいつでも、データ同期のランディング ページの下部にある [同期] をクリックして同期できます。
 同期グループを定期的に同期する場合は、同期グループを構成します。
@@ -162,10 +165,10 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 3.	**[同期]** タブをクリックします。
 4.	この同期グループの名前をクリックします。
 5.	**[構成]** タブをクリックします。
-6.	**[自動同期]**
-	- 設定した頻度で同期グループを同期するには、**[オン]** をクリックします。この場合でも、[同期] をクリックして随時同期することができます。
+6.	**AUTOMATIC SYNC**
+	- 設定した頻度で同期グループを同期するには、**[オン]** をクリックします。この場合でも、[同期] をクリックして随時同期できます。
 	- **[オフ]** をクリックすると、[同期] をクリックしたときだけ同期グループが同期されます。
-7.	**[同期の頻度]**
+7.	**SYNC FREQUENCY**
 	- [自動同期] が [オン] の場合は、同期の頻度を設定します。頻度は 5 分から 1 か月の範囲で指定します。
 8.	**[保存]** をクリックします。
 
@@ -173,13 +176,13 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 
 おめでとうございます。SQL データベース インスタンスと SQL Server データベースの両方を含む同期グループを作成しました。
 
-<h2><a id="NextSteps"></a>次のステップ</h2>
-SQL データベースと SQL データ同期の詳細については、以下を参照してください。
+## 次のステップ
+SQL データベースと SQL データ同期の詳細については、以下をご覧ください。
 
-* [SQL データベース プレミアムへのサインアップ](../sign-up-for-sql-database-premium/)
-* [SQL Data Sync (WA Portal) (SQL データ同期 (WA ポータル))](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj856263.aspx)
+* [SQL データベース プレミアムへのサインアップ] (../sign-up-for-sql-database-premium/)
+* [SQL Data Sync (WA Portal) (SQL データ同期 (WA ポータル))](http://msdn.microsoft.com/library/windowsazure/jj856263.aspx)
 * [Azure SQL データベースの概要](../getting-started-w-sql-databases/)
-* [SQL Server データベースのライフサイクルに関するページ ](http://go.microsoft.com/fwlink/?LinkId=275193)
+* [SQL Server データベースのライフサイクルに関するページ](http://go.microsoft.com/fwlink/?LinkId=275193)
 
 
 
@@ -189,3 +192,5 @@ SQL データベースと SQL データ同期の詳細については、以下�
 
 
 
+
+<!--HONumber=47-->

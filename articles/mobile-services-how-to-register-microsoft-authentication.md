@@ -1,5 +1,5 @@
 ﻿<properties 
-	pageTitle="Microsoft 認証用の登録 - モバイル サービス" 
+	pageTitle="Microsoft 認証用の登録 - Mobile Services " 
 	description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。" 
 	authors="ggailey777" 
 	services="mobile-services" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="11/21/2014" 
@@ -20,9 +20,9 @@
 
 このトピックでは、Azure のモバイル サービスの認証プロバイダーとして Live Connect を使用できるようにアプリケーションを登録する方法について説明します。 
 
->[AZURE.NOTE]ユニバーサル Windows アプリ用の Microsoft アカウント認証を構成する場合、または、Windows ストア アプリ用にシングル サインオン エクスペリエンスを提供する場合は、「[Windows ストア アプリ パッケージを Microsoft 認証に登録する](/ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication)」を参照してください。
+>[AZURE.NOTE]ユニバーサル Windows アプリ用の Microsoft アカウント認証を構成する場合、または、Windows ストア アプリ用にシングル サインオン エクスペリエンスを提供する場合は、「[Windows ストア アプリ パッケージを Microsoft 認証に登録する](/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication)」をご覧ください。
 
-1. Live Connect デベロッパー センター アプリケーション管理の <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">[マイ アプリケーション]</a> ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
+1. 次に、[ <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">マイ アプリケーション</a> ] ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
 
 2. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
@@ -32,7 +32,7 @@
 
 3. **[API 設定]** をクリックして、**[リダイレクト URL]** に `https://<mobile_service>.azure-mobile.net/login/microsoftaccount` の値を入力し、**[保存]** をクリックします。
 
-	>[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL は、ユーザーのモバイル サービスの URL の末尾に .NET サービスとしてパス _signin-microsoft_ を付加したものです。例: <code>https://todolist.azure-mobile.net/signin-microsoft</code>。  
+	>[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL はユーザーのモバイル サービスの URL の末尾にパス _signin-microsoft_ .NET サービスとしてのユーザーのモバイル サービスを追加したものです (例: <code>https://todolist.azure-mobile.net/signin-microsoft</code>)。  
 
 	![][3]
 
@@ -60,7 +60,6 @@
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

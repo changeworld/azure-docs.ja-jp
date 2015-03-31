@@ -1,10 +1,24 @@
-﻿<properties title="Using Elastic Scale with Entity Framework" pageTitle="Entity Framework での Elastic Scale の使用" description="Elastic Scale はスケールの変更を容易にします。Entity Framework はデータベースのコーディングに使いやすいデータベースです。 " metaKeywords="Using Elastic Scale with Entity Framework, Azure SQL Database sharding, elastic scale, Entity Framework and Elastic Scale" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
+<properties 
+	pageTitle="Entity Framework での Elastic Scale の使用" 
+	description="Elastic Scale はスケールの変更を容易にします。Entity Framework はデータベースのコーディングに使いやすいデータベースです。" 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="stuartozer" 
+	authors="Joseidz" 
+	editor=""/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
+<tags 
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/03/2015" 
+	ms.author="Joseidz@microsoft.com"/>
 
-#Entity Framework での Elastic Scale の使用 
+# Entity Framework での Elastic Scale の使用 
  
-Azure SQL Database Elastic Scale を Microsoft の Entity Framework (EF) で使用してアプリケーションを構築できます。Elastic Scale は、アプリケーションのデータ層のシャーディングとスケールアウトを通じて容量の拡張と縮小を実現します。このドキュメントでは、Elastic Scale の機能と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。ここでは、Entity Framework の **Code First** アプローチを使用して [Elastic Scale シャード管理](http://go.microsoft.com/?linkid=9862595)と[データ依存ルーティング](./sql-database-elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。このドキュメント全体の実際の例として、EF 向けの[新しいデータベースを対象とした Code First](http://msdn.microsoft.com/ja-jp/data/jj193542.aspx) のチュートリアルを参照してください。このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルの Elastic Scale のサンプルの一部です。
+Azure SQL Database Elastic Scale を Microsoft の Entity Framework (EF) で使用してアプリケーションを構築できます。Elastic Scale は、アプリケーションのデータ層のシャーディングとスケールアウトを通じて容量の拡張と縮小を実現します。このドキュメントでは、Elastic Scale の機能と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。ここでは、[Elastic Scale シャード管理](http://go.microsoft.com/?linkid=9862595)と[データ依存ルーティング](./sql-database-elastic-scale-data-dependent-routing.md)を Entity Framework の**コード ファースト** アプローチを使用して構成する方法を重点的に説明します。このドキュメント全体の実際の例として、EF 向けの [新しいデータベースを対象とした Code First](http://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれる Elastic Scale のサンプルの一部です。
   
 ## サンプル コードのダウンロードと実行
 この記事のコードをダウンロードするには:
@@ -12,11 +26,11 @@ Azure SQL Database Elastic Scale を Microsoft の Entity Framework (EF) で使�
 * Visual Studio 2012 以降が必要です。 
 * Visual Studio を起動します。 
 * Visual Studio で、[ファイル] の [新しいプロジェクト] を選択します。 
-* [新しいプロジェクト] ダイアログ ボックスで、**オンライン サンプル**の **[Visual C#]** に移動し、右上の検索ボックスに「elastic scale」と入力します。
+* [新しいプロジェクト] ダイアログ ボックスで、**Visual C#** 用の**オンライン サンプル**に移動し、右上の検索ボックスに「elastic scale」と入力します。
     
     ![Entity Framework and elastic scale sample app][1] 
 
-"**Elastic Scale with Azure SQL Database - Integrating with Entity Framework**" という名前のサンプルを選択します。ライセンスに同意すると、サンプルが読み込まれます。 
+    "**Elastic Scale with Azure SQL Database - Integrating with Entity Framework**" という名前のサンプルを選択します。ライセンスに同意すると、サンプルが読み込まれます。 
 
 このサンプルを実行するには、Azure SQL Database で次の 3 つの空のデータベースを作成する必要があります。
 
@@ -24,39 +38,39 @@ Azure SQL Database Elastic Scale を Microsoft の Entity Framework (EF) で使�
 * シャード 1 データベース
 * シャード 2 データベース
 
-これらのデータベースを作成した後、Azure SQL DB サーバー名、データベース名、データベースに接続するための資格情報を **Program.cs** 内のプレースホルダーに入力します。Visual Studio でソリューションをビルドします。Visual Studio によるビルド プロセスの一部として、Elastic Scale、Entity Framework、および一時的エラーの処理のための必要な NuGet パッケージがダウンロードされます。ソリューションで NuGet パッケージの復元が有効になっていることを確認します。この設定は、Visual Studio ソリューション エクスプローラーでソリューション ファイルを右クリックして有効にすることができます。 
+これらのデータベースを作成した後、Azure SQL DB サーバー名、データベース名、データベースに接続するための資格情報を **Program.cs** 内のプレースホルダーに入力します。Visual Studio でソリューションをビルドします。Visual Studio によるビルド プロセスの一部として、Elastic Scale、Entity Framework、一時的エラーの処理のための必要な NuGet パッケージがダウンロードされます。ソリューションで NuGet パッケージの復元が有効になっていることを確認します。この設定は、Visual Studio ソリューション エクスプローラーでソリューション ファイルを右クリックして有効にすることができます。 
 
-##Entity Framework のワークフロー 
+## Entity Framework のワークフロー 
 
 Entity Framework 開発者は、アプリケーションをビルドし、アプリケーション オブジェクトの持続性を確認する場合に、次の 4 つのワークフローのいずれかに依存します。 
 
-* **Code First (新しいデータベース)**: EF 開発者がアプリケーション コードでモデルを作成した後、EF によってこのモデルからデータベースが生成されます。 
-* **Code First (既存のデータベース)**: 開発者は、EF を使用して既存のデータベースからモデルのアプリケーション コードを生成します。
-* **Model First**: 開発者が EF デザイナーでモデルを作成した後、EF によってこのモデルからデータベースが作成されます。
-* **Database First**: 開発者は、EF ツールを使用して、既存のデータベースからモデルを推論します。 
+* **コード ファースト (新しいデータベース)**:EF 開発者がアプリケーション コードでモデルを作成した後、EF によってこのモデルからデータベースが生成されます。 
+* **コード ファースト (既存のデータベース)**:開発者は、EF を使用して既存のデータベースからモデルのアプリケーション コードを生成します。
+* **モデル ファースト**:開発者が EF デザイナーでモデルを作成した後、EF によってこのモデルからデータベースが作成されます。
+* **データベース ファースト**:開発者は、EF ツールを使用して、既存のデータベースからモデルを推論します。 
 
 これらの手法はすべて DbContext クラスに依存して、アプリケーションのデータベース接続とデータベース スキーマを透過的に管理します。後で詳しく説明しますが、DbContext 基本クラスのさまざまなコンストラクターにより、接続の作成、データベースのブートストラップ、スキーマの作成をさまざまなレベルで制御できます。このとき、主に、EF によって提供されるデータベース接続の管理機能が、Azure Database Elastic Scale によって提供されるデータ依存ルーティング インターフェイスの接続の管理機能と交差するという事実から、課題が生まれます。 
 
-##Elastic Scale の前提条件 
+## Elastic Scale の前提条件 
 
-用語の定義については、「[Elastic Scale 用語集](./sql-database-elastic-scale-glossary.md)」を参照してください。
+用語の定義については、「[Elastic Scale 用語集](./sql-database-elastic-scale-glossary.md)」をご覧ください。
 
 Azure SQL Database Elastic Scale では、"シャードレット" と呼ばれる、アプリケーション データのパーティションを定義します。シャードレットはシャーディング キーによって識別され、特定のデータベースにマップされます。アプリケーションは、任意の数のデータベースを持つことができ、シャードレットを分散して現在のビジネス要件に対して十分な容量またはパフォーマンスを提供します。シャーディング キー値とデータベースとの間のマッピングは、Elastic Scale API によって提供されるシャード マップによって格納されます。この機能は、"シャードのマップの管理" (SMM) と呼ばれます。シャード マップは、シャーディング キーを格納する要求のデータベース接続用のためのブローカーとしても機能します。この機能は、"データ依存ルーティング" と呼ばれます。 
  
-Elastic Scale のシャード マップ マネージャーは、同時シャードレット管理操作 (たとえば、データのシャード間の移動) の実行中に発生する可能性があるシャードレット データの一貫性のないビューからユーザーを保護します。これを実現するために、Elastic Scale のシャード マップは、Elastic Scale アプリケーションのデータベース接続を仲介します。これにより、接続が作成されているシャードレットがシャード管理操作の影響を与える可能性のあるときにシャード マップ機能によってデータベース接続を自動的に強制終了することができます。この方法は、EF の機能の一部 (たとえば、既存の接続から新しい接続を作成してデータベースの存在を確認する機能) と統合する必要があります。一般に、標準的な DbContext コンストラクターは EF の処理用に安全に複製できる閉じたデータベース接続に対してのみ確実に動作する、というのが従来の考え方でした。これに対し、Elastic Scale の設計上の原則は、開かれている接続のみを仲介することにあります。Elastic Scale によって仲介される接続を EF DbContext に渡す前に閉じればこの問題を解決できると考える読者もいることでしょう。ただし、接続を閉じた後、再び開く操作を EF に依存することで、Elastic Scale によって実行される検証と一貫性チェックが失われてしまいます。ただし、EF の移行機能は、これらの接続を使用して、アプリケーションに対して透過的な形で基になるデータベース スキーマを管理します。同じアプリケーション内でこれらの Elastic Scale の機能と EF の機能をそのまま組み合わせることができれば理想的です。次のセクションでは、これらのプロパティと要件について詳しく説明します。 
+Elastic Scale のシャード マップ マネージャーは、同時シャードレット管理操作 (たとえば、データのシャード間の移動) の実行中に発生する可能性があるシャードレット データの一貫性のないビューからユーザーを保護します。これを実現するために、Elastic Scale のシャード マップは、Elastic Scale アプリケーションのデータベース接続を仲介します。これにより、接続が作成されているシャードレットがシャード管理操作の影響を与える可能性のあるときにシャード マップ機能によってデータベース接続を自動的に強制終了できます。この方法は、EF の機能の一部 (たとえば、既存の接続から新しい接続を作成してデータベースの存在を確認する機能) と統合する必要があります。一般に、標準的な DbContext コンストラクターは EF の処理用に安全に複製できる閉じたデータベース接続に対してのみ確実に動作する、というのが従来の考え方でした。これに対し、Elastic Scale の設計上の原則は、開かれている接続のみを仲介することにあります。Elastic Scale によって仲介される接続を EF DbContext に渡す前に閉じればこの問題を解決できると考える読者もいることでしょう。ただし、接続を閉じた後、再び開く操作を EF に依存することで、Elastic Scale によって実行される検証と一貫性チェックが失われてしまいます。ただし、EF の移行機能は、これらの接続を使用して、アプリケーションに対して透過的な形で基になるデータベース スキーマを管理します。同じアプリケーション内でこれらの Elastic Scale の機能と EF の機能をそのまま組み合わせることができれば理想的です。次のセクションでは、これらのプロパティと要件について詳しく説明します。 
 
 
-##要件 
+## 要件 
 
 Elastic Scale と Entity Framework API の両方を使用する場合は、次のプロパティを維持することを想定します。 
 
-* **スケールアウト**: アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除すること。これには、データベースの作成と削除を制御することに加え、Elastic Scale シャード マップ マネージャー API を使用してデータベースを管理したりシャードレットのマッピングを管理したりすることが含まれます。 
+* **スケールアウト**:アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除すること。これには、データベースの作成と削除を制御することに加え、Elastic Scale シャード マップ マネージャー API を使用してデータベースを管理したりシャードレットのマッピングを管理したりすることが含まれます。 
 
-* **一貫性**: アプリケーションは、シャーディングを使用し、Elastic Scale のデータ依存ルーティング機能を使用します。破損や誤ったクエリ結果を回避するために、Elastic Scale シャード マップ マネージャーを通じて接続が仲介されます。これにより、検証と一貫性も維持されます。
+* **一貫性**:アプリケーションは、シャーディングを使用し、Elastic Scale のデータ依存ルーティング機能を使用します。破損や誤ったクエリ結果を回避するために、Elastic Scale シャード マップ マネージャーを通じて接続が仲介されます。これにより、検証と一貫性も維持されます。
  
-* **Code First**: EF の Code First パラダイムの利便性を保つこと。Code First では、アプリケーションのクラスは基になるデータベース構造に透過的にマップされます。アプリケーション コードは、基になるデータベースの処理に関連するほとんどの側面をマスクする Dbset と対話します。
+* **コード ファースト**:EF の Code First パラダイムの利便性を保つこと。Code First では、アプリケーションのクラスは基になるデータベース構造に透過的にマップされます。アプリケーション コードは、基になるデータベースの処理に関連するほとんどの側面をマスクする Dbset と対話します。
  
-* **スキーマ**: Entity Framework は、初期のデータベース スキーマの作成とそれ以降のスキーマの展開を移行を通じて処理します。これらの機能を維持することで、データの進化に対して簡単にアプリを適合させることができます。 
+* **スキーマ**:Entity Framework は、初期のデータベース スキーマの作成とそれ以降のスキーマの展開を移行を通じて処理します。これらの機能を維持することで、データの進化に対して簡単にアプリを適合させることができます。 
 
 Azure SQL Database Elastic Scale を使用してこれらの Code First アプリケーションの要件を満たす方法を次のガイダンスに示します。 
 
@@ -68,13 +82,13 @@ Azure SQL Database Elastic Scale を使用してこれらの Code First アプ�
 * アプリケーションのスキーマが既にデータベースにデプロイされている (後で説明します)。 
 * データベースへのデータ依存ルーティング接続は Elastic Scale シャード マップによって仲介される。 
 
-スケールアウトのために **DbContexts** をデータ依存ルーティングと統合するには: 
+スケールアウトのために **DbContexts** をデータ依存ルーティングと統合するには:
 
 1. シャード マップ マネージャーの Elastic Scale インターフェイスを介して物理的なデータベース接続を作成します。 
 2. **DbContext** サブクラスを使用して接続をラップします。
 3. EF の側でもすべての処理が発生することを確認するために、**DbContext** 基本クラスに接続を渡します。 
 
-この方法を次のコード例に示します (このコードは付属の Visual Studio プロジェクトにも含まれています)。
+この方法を次のコード例に示します(このコードは付属の Visual Studio プロジェクトにも含まれています)。
 
     public class ElasticScaleContext<T> : DbContext
     {
@@ -107,7 +121,7 @@ Azure SQL Database Elastic Scale を使用してこれらの Code First アプ�
             return conn;
         }    
 
-#### 要点
+## 要点
 * DbContext サブクラスの既定のコンストラクターが新しいコンストラクターで置き換えられます。 
 * 新しいコンストラクターは、データ依存ルーティングに必要な次の引数を Elastic Scale 経由で受け取ります。 
     * データ依存ルーティング インターフェイスにアクセスするためのシャード マップ 
@@ -143,8 +157,9 @@ Azure SQL Database Elastic Scale を使用してこれらの Code First アプ�
 
 新しいコンストラクターは、**tenantid1** の値によって識別されるシャードレットのデータを保持するシャードへのデータベース接続を開きます。**using** ブロック内のコードは変更されておらず、**tenantid1** のシャード上で EF を使用してブログの **DbSet** にアクセスします。これにより、using ブロック内のコードのセマンティクスが変更され、**tenantid1** が保持されている 1 つのシャードにすべてのデータベース操作のスコープが設定されます。たとえば、ブログ **DbSet** に対する LINQ クエリを実行した場合、現在のシャードに格納されているブログのみが返され、他のシャードに格納されているブログは返されません。  
 
-####一時的エラーの処理
-Microsoft Patterns & Practices チームでは、[The Transient Fault Handling Application Block](http://msdn.microsoft.com/ja-jp/library/dn440719(v=pandp.60).aspx) を公開しています。このライブラリは、EF と組み合わせて使用する Elastic Scale で使用します。ただし、ここで調整したコンストラクターを使用してすべての新しい接続試行が行われるようにするには、一時的エラーの後に新しいコンストラクターが使用されることが保証される位置にすべての一時的な例外から制御が返されるようにします。そうでないと、正しいシャードへの接続が保証されず、シャード マップに対する変更が発生したときに接続が保持される保証がなくなります。 
+#### 一時的エラーの処理
+Microsoft Patterns & Practices チームでは、「[The Transient Fault Handling Application Block (一時的な障害処理アプリケーション ブロック)][2]」を公開しています。このライブラリは、EF と組み合わせて使用する Elastic Scale で使用します。ただし、ここで調整したコンストラクターを使用してすべての新しい接続試行が行われるようにするには、一時的エラーの後に新しいコンストラクターが使用されることが保証される位置にすべての一時的な例外から制御が返されるようにします。そうでないと、正しいシャードへの接続が保証されず、シャード マップに対する変更が発生したときに接続が保持される保証がなくなります。 
+[2]: http://msdn.microsoft.com/library/dn440719(v=pandp.60.aspx
 
 次のコード サンプルは、新しい **DbContext** サブクラスのコンストラクターの周囲でどのように SQL 再試行ポリシーを使用できるかを示しています。 
 
@@ -162,26 +177,29 @@ Microsoft Patterns & Practices チームでは、[The Transient Fault Handling A
             } 
         }); 
 
-上記のコードの **SqlDatabaseUtils.SqlRetryPolicy** は **SqlDatabaseTransientErrorDetectionStrategy** として定義され、再試行回数が 10 回、再試行間の待機時間が 5 秒に設定されています。この方法は、EF とユーザーによって開始されたトランザクションのガイダンスに一致します (「[Limitations with Retrying Execution Strategies (EF6 onwards) (再試行実行戦略の制限 (EF6 以降))](http://msdn.microsoft.com/ja-jp/data/dn307226)」を参照してください)。トランザクションを開き直す場合、または (示されているように) Elastic Scale ライブラリを使用する適切なコンストラクターからコンテキストを再作成する場合のどちらの状況でも、一時的な例外から制御が返されるスコープをアプリケーション プログラムが制御する必要があります。  
+上記のコードの **SqlDatabaseUtils.SqlRetryPolicy** は **SqlDatabaseTransientErrorDetectionStrategy** として定義され、再試行回数が 10 回、再試行間の待機時間が 5 秒に設定されています。この方法は、EF とユーザーによって開始されたトランザクション向けのガイダンスに似ています (「[Limitations with Retrying Execution Strategies (EF6 onwards) (再試行実行戦略の制限 (EF6 以降))](http://msdn.microsoft.com/data/dn307226)」をご覧ください)。トランザクションを開き直す場合、または (示されているように) Elastic Scale ライブラリを使用する適切なコンストラクターからコンテキストを再作成する場合のどちらの状況でも、一時的な例外から制御が返されるスコープをアプリケーション プログラムが制御する必要があります。
 
+一時的な例外が返されるスコープを制御する必要があることは、EF に組み込まれている **SqlAzureExecutionStrategy** の使用も除外します。**SqlAzureExecutionStrategy** は接続を再度開きますが、**OpenConnectionForKey** を使用しないため、**OpenConnectionForKey** 呼び出しの一部として実行されるすべての検証をバイパスします。代わりに、コード例では、同様に EF に組み込まれている **DefaultExecutionStrategy** を使用します。**SqlAzureExecutionStrategy** とは対照的に、それは、一時障害処理の再試行ポリシーと組み合わせて正常に動作します。実行ポリシーは **ElasticScaleDbConfiguration** クラスに設定されます。**DefaultSqlExecutionStrategy** の使用は、一時例外が発生した場合に **SqlAzureExecutionStrategy** が使用されることを意味します。これによって前述の不適切な動作が引き起こされるため、DefaultSqlExecutionStrategy は使用しないことを決定したことに注意してください。さまざまな再試行ポリシーと EF の詳細については、「[Connection Resiliency in EF (EF における接続の弾力性)](http://msdn.microsoft.com/data/dn456835.aspx)」をご覧ください。     
+
+#### コンストラクターの書き直し
 上のコード例は、アプリケーションが Elastic Scale のデータ依存ルーティングを Entity Framework で使用するために既定のコンストラクターを書き直す必要があることを示しています。次の表では、この方法を他のコンストラクター向けに一般化しています。 
 
 
-現在のコンストラクター | データ用に書き直されたコンストラクター | 基本コンストラクター | メモ
+現在のコンストラクター  | データの書き換えのコンストラクター | 基本コンストラクター | メモ
 ---------- | ----------- | ------------|----------
-MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) | 接続は、シャード マップとデータ依存ルーティング キーの機能である必要があります。EF による自動的な接続の作成を回避し、代わりにシャード マップを使用して接続を仲介する必要があります。 
-MyContext(string)|ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) | 接続は、シャード マップとデータ依存ルーティング キーの機能です。シャード マップによる検証が回避されるため、固定されたデータベース名または接続文字列は機能しません。 
-MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) | 接続は、モデルが提供された特定のシャード マップとシャーディング キーに対して作成されます。コンパイルされたモデルは、基本コンストラクターに渡されます。
-MyContext(DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext(DbConnection, bool) | 接続をシャード マップとキーから推論する必要があります。接続を入力として渡すことはできません (入力で既にシャード マップとキーが使用されていた場合を除きます)。ブール値が渡されます。 
-MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) | 接続をシャード マップとキーから推論する必要があります。接続を入力として渡すことはできません (入力でシャード マップとキーが使用されていた場合を除きます)。コンパイルされたモデルが渡されます。 
-MyContext(ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext(ObjectContext, bool) | 新しいコンストラクターは、入力として渡された ObjectContext 内のすべての接続が、Elastic Scale によって管理される接続に再ルーティングされることを保証する必要があります。ObjectContexts の詳しい説明は、このドキュメントの範囲を超えているため省略します。
-MyContext(DbConnection, DbCompiledModel,bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool)| DbContext(DbConnection, DbCompiledModel, bool); | 接続をシャード マップとキーから推論する必要があります。接続を入力として渡すことはできません (入力で既にシャード マップとキーが使用されていた場合を除きます)。モデルとブール値が基本クラス コンストラクターに渡されます。 
+MyContext() |ElasticScaleContext(ShardMap、TKey) |DbContext(DbConnection、bool) |接続は、シャード マップとデータに依存するルーティングのキーの関数である必要があります。EF による自動的な接続の作成を回避し、代わりにシャード マップを使用して接続を仲介する必要があります。 
+MyContext(string)|ElasticScaleContext(ShardMap、TKey) |DbContext(DbConnection、bool) |接続は、シャード マップとデータに依存するルーティングのキーの関数である必要があります。シャード マップによる検証が回避されるため、固定されたデータベース名または接続文字列は機能しません。 
+MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap、TKey、DbCompiledModel) |DbContext(DbConnection、DbCompiledModel、bool) |提供されたモデルで特定のシャード マップとシャーディング キーに接続が作成されます。コンパイルされたモデルは、基本コンストラクターに渡されます。
+MyContext(DbConnection、bool) |ElasticScaleContext(ShardMap、TKey, bool) |DbContext(DbConnection、bool) |接続は、シャード マップとキーから推論する必要があります。接続を入力として渡すことはできません (入力で既にシャード マップとキーが使用されていた場合を除きます)。ブール値が渡されます。 
+MyContext(string、DbCompiledModel) |ElasticScaleContext(ShardMap、TKey、DbCompiledModel) |DbContext(DbConnection、DbCompiledModel、bool) |接続は、シャード マップとキーから推論する必要があります。接続を入力として渡すことはできません (入力でシャード マップとキーが使用されていた場合を除きます)。コンパイルされたモデルが渡されます。 
+MyContext(ObjectContext、bool) |ElasticScaleContext(ShardMap、TKey、ObjectContext、bool) |DbContext(ObjectContext、bool) |新しいコンス トラクターでは、入力として渡される ObjectContext が Elastic Scale が管理する接続に再ルーティングされるようにする必要があります。ObjectContexts の詳しい説明は、このドキュメントの範囲を超えているため省略します。
+MyContext(DbConnection、DbCompiledModel、bool) |ElasticScaleContext(ShardMap、TKey、DbCompiledModel、bool)| DbContext(DbConnection、DbCompiledModel、bool); |接続は、シャード マップとキーから推論する必要があります。接続を入力として渡すことはできません (入力で既にシャード マップとキーが使用されていた場合を除きます)。モデルとブール値が基本クラス コンストラクターに渡されます。 
 
-###EF の移行を通じたシャード スキーマのデプロイ 
+## EF の移行を通じたシャード スキーマのデプロイ 
 
 自動スキーマ管理は、Entity Framework によって提供される便利な機能です。Elastic Scale アプリケーションのコンテキストでは、この機能を保持して、データベースがシャード化されたアプリケーションに追加されたときにスキーマを新しく作成されたシャードに自動的にプロビジョニングできるようにします。基本的なユース ケースは、EF を使用するシャード化されたアプリケーションのためにデータ層の容量を増やすことです。EF のスキーマ管理機能に依存することで、EF 上に構築されたシャード化されたアプリケーションでのデータベースの管理に伴う労力を減らすことができます。 
 
-EF の移行を通じたスキーマのデプロイは、**開かれていない接続**に最適です。これは、Elastic Scale によって提供される、開かれた接続に依存するデータ依存ルーティングのシナリオとは対照的です。もう 1 つの違いは、一貫性の要件にあります。シャード マップの同時操作から保護するためにすべてのデータ依存ルーティング接続の一貫性を保証するのは望ましいことですが、まだシャード マップに登録されておらず、シャードレットを保持するために割り当てられていない新しいデータベースへの初期スキーマ デプロイメントでは、これは問題になりません。そこで、このシナリオでは、データ依存ルーティングではなく、通常のデータベース接続に依存することができます。  
+EF の移行を通じたスキーマのデプロイは、**開かれていない接続**に最適です。これは、Elastic Scale によって提供される、開かれた接続に依存するデータ依存ルーティングのシナリオとは対照的です。もう 1 つの違いは、一貫性の要件にあります。シャード マップの同時操作から保護するためにすべてのデータ依存ルーティング接続の一貫性を保証するのは望ましいことですが、まだシャード マップに登録されておらず、シャードレットを保持するために割り当てられていない新しいデータベースへの初期スキーマ デプロイメントでは、これは問題になりません。そこで、このシナリオでは、データ依存ルーティングではなく、通常のデータベース接続に依存できます。  
 
 これは、EF の移行を通じたスキーマのデプロイメントと、アプリケーションのシャード マップにおけるシャードとしての新しいデータベースの登録とが密接に結び付いたアプローチになります。これは、次の前提条件に依存します。 
 
@@ -241,7 +259,7 @@ EF の移行を通じたスキーマのデプロイは、**開かれていない
 基本クラスから派生したコンストラクターのバージョンを使用したことのある読者もいることでしょう。ただし、このコードでは、接続するときに EF の既定の初期化子が使用されるようにする必要があります。そこで、接続文字列を使用して基本クラスのコンストラクターを呼び出す前に、静的メソッドに迂回します。EF の初期化子の設定が競合しないように、シャードの登録を異なるアプリ ドメインまたはプロセスで実行する必要があることに注目してください。 
 
 
-##制限事項 
+## 制限事項 
 
 このドキュメントで説明した方法には、いくつかの制限事項があります。 
 
@@ -253,7 +271,7 @@ EF の移行を通じたスキーマのデプロイは、**開かれていない
 
 
 
-##まとめ 
+## まとめ 
 
 Entity Framework アプリケーションは、Azure SQL Database Elastic Scale のメリットを簡単に活用できます。このドキュメントで説明した手順に従って EF アプリケーションで使用されている **DbContext** サブクラスのコンストラクターをリファクタリングすることにより、EF アプリケーションで Elastic Scale の機能をデータ依存ルーティングに利用できるようになります。これにより、必要な変更が、**DbContext** クラスが既に存在している場所に制限されます。さらに、EF アプリケーションは、新しいシャードと、必要な EF の移行を伴う手順と、新しいシャードとマッピングの Elastic Scale シャード マップへの登録とを組み合わせることによって、自動スキーマ デプロイメントのメリットを引き続き得ることができます。 
 
@@ -262,3 +280,5 @@ Entity Framework アプリケーションは、Azure SQL Database Elastic Scale 
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-using-entity-framework/sample.png
+
+<!--HONumber=47-->

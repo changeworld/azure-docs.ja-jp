@@ -2,19 +2,15 @@
 
 1. Visual Studio 2013 で、ソリューション エクスプローラーを開き、Windows ストアのアプリケーション プロジェクトを右クリックして、**[追加]**、**[プッシュ通知]** の順にクリックします。 
 
-	![Add Push Notification wizard in Visual Studio 2013](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png)
+	![Add Push Notification wizard in Visual Studio 2013](./media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png)
 
 	これにより、プッシュ通知の追加ウィザードが開始されます。
 
 2. **[次へ]** をクリックし、Windows ストア アカウントにサインインします。次に、**[新しいアプリケーション名の予約]** に名前を指定し、**[予約]** をクリックします。
 
-	![Select an app name in the Add Push Notification wizard](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-2.png) 
-
 	これで、新しいアプリケーションの登録が作成されます。
 
 3. **[アプリケーション名]** の一覧で新しい登録をクリックし、**[次へ]** をクリックします。
-
-	![mobile-add-push-notifications-vs2013-3](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-3.png)
 
 4. **[サービスの選択]** ページでモバイル サービス名をクリックし、**[次へ]**、**[完了]** の順にクリックします。 
 
@@ -24,10 +20,11 @@
 
 5. ウィザードを完了すると、Visual Studio で新しく **[プッシュ設定はほぼ完了です]** ページが開きます。このページでは、モバイル サービス プロジェクトで通知の送信を構成するための別の方法として、このチュートリアルとは異なる方法が詳しく説明されています。 
 
-	>[AZURE.NOTE]プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。  
+	プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。  
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
-[Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /ja-jp/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
-<!--HONumber=42-->
+[モバイル サービスの使用]: /develop/mobile/tutorials/get-started/
+[データの使用]: /develop/mobile/tutorials/get-started-with-data-dotnet/
+[Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /documentation/articles/mobile-services-windows-how-to-import-publishsettings/
+
+<!--HONumber=47-->

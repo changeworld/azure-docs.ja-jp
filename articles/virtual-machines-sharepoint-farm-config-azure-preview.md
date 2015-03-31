@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="vm-sharepoint" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="1/26/2015" 
+	ms.date="03/04/2015" 
 	ms.author="josephd"/>
 
 
-#SharePoint サーバー ファームの構成の詳細#
+# SharePoint サーバー ファームの構成の詳細
 
 SharePoint サーバー ファームは、事前構成された SharePoint Server 2013 ファームを自動で作成する Microsoft Azure プレビュー ポータルの機能です。ファームの構成には次の 2 種類があります。
 
@@ -26,9 +26,9 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 
 この後のセクションでは、ファームごとに構成の詳細を示します。
 
-詳細については、「[SharePoint Server Farm](../virtual-machines-sharepoint-farm-azure-preview/)」を参照してください。
+詳細については、「[SharePoint Server Farm](../virtual-machines-sharepoint-farm-azure-preview/)」をご覧ください.
 
-##基本的な SharePoint ファーム##
+## 基本的な SharePoint ファーム
 
 この構成では、次の 3 つの仮想マシンの基本的な SharePoint ファームで構成されます。
 
@@ -41,7 +41,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	ストレージ アカウント:初期構成中に指定されます。
 -	仮想ネットワーク 	
 	-   次のコマンドを入力します。クラウドのみ	
-    -	アドレス空間: 192.168.16.0/26    
+    -	アドレス空間:192.168.16.0/26    
 
 - 仮想マシン
 	-	*HostNamePrefix*-DC (AD DS ドメイン コントローラー)
@@ -71,7 +71,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 	-	SharePoint ファーム パスフレーズ:初期構成中に指定されます。
 
 
-##高可用性 SharePoint farm##
+## 高可用性 SharePoint farm
 
 この構成では、9 つの仮想マシンの高可用性 SharePoint ファームで構成されます。
 
@@ -84,7 +84,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	ストレージ アカウント:初期構成中に指定されます。
 -	仮想ネットワーク	
 	-	次のコマンドを入力します。クラウドのみ
-	-	アドレス空間: 192.168.16.0/26	
+	-	アドレス空間:192.168.16.0/26	
 
 -	仮想マシン
 	-	*HostNamePrefix*-DC1 (AD DS ドメイン コントローラー)
@@ -119,11 +119,10 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 	-	SharePoint ファーム アカウント パスワード:初期構成中に指定されます。		
 	-	SharePoint ファーム パスフレーズ:初期構成中に指定されます。
 
-##その他のリソース##
+## その他のリソース
 
 [SharePoint Server Farm](../virtual-machines-sharepoint-farm-azure-preview/)
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

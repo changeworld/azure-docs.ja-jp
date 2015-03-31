@@ -27,55 +27,55 @@
 	    {
 	        public Task Register(ApiServices services, HttpRequestContext context,
             NotificationRegistration registration)
-        {
-            try
-            {
-                // Perform a check here for user ID tags, which are not allowed.
-                if(!ValidateTags(registration))
-                {
-                    throw new InvalidOperationException(
-                        "You cannot supply a tag that is a user ID.");                    
-                }
-
-                // Get the logged-in user.
-                var currentUser = context.Principal as ServiceUser;
-
-                // Add a new tag that is the user ID.
-                registration.Tags.Add(currentUser.Id);
-
-                services.Log.Info("Registered tag for userId: " + currentUser.Id);
-            }
-            catch(Exception ex)
-            {
-                services.Log.Error(ex.ToString());
-            }
-                return Task.FromResult(true);
-        }
-
-        private bool ValidateTags(NotificationRegistration registration)
-        {
-            // Create a regex to search for disallowed tags.
-            System.Text.RegularExpressions.Regex searchTerm =
-            new System.Text.RegularExpressions.Regex(@"facebook:|google:|twitter:|microsoftaccount:",
-                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-
-            foreach (string tag in registration.Tags)
-            {
-                if (searchTerm.IsMatch(tag))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+	        {
+	            try
+	            {
+	                // Perform a check here for user ID tags, which are not allowed.
+	                if(!ValidateTags(registration))
+	                {
+	                    throw new InvalidOperationException(
+	                        "You cannot supply a tag that is a user ID.");                    
+	                }
 	
-        public Task Unregister(ApiServices services, HttpRequestContext context, 
-            string deviceId)
-        {
-            // This is where you can hook into registration deletion.
-            return Task.FromResult(true);
-        }
-    }
+	                // Get the logged-in user.
+	                var currentUser = context.Principal as ServiceUser;
+	
+	                // Add a new tag that is the user ID.
+	                registration.Tags.Add(currentUser.Id);
+	
+	                services.Log.Info("Registered tag for userId: " + currentUser.Id);
+	            }
+	            catch(Exception ex)
+	            {
+	                services.Log.Error(ex.ToString());
+	            }
+	                return Task.FromResult(true);
+	        }
+	
+	        private bool ValidateTags(NotificationRegistration registration)
+	        {
+	            // Create a regex to search for disallowed tags.
+	            System.Text.RegularExpressions.Regex searchTerm =
+	            new System.Text.RegularExpressions.Regex(@"facebook:|google:|twitter:|microsoftaccount:",
+	                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+	
+	            foreach (string tag in registration.Tags)
+	            {
+	                if (searchTerm.IsMatch(tag))
+	                {
+	                    return false;
+	                }
+	            }
+	            return true;
+	        }
+		
+	        public Task Unregister(ApiServices services, HttpRequestContext context, 
+	            string deviceId)
+	        {
+	            // This is where you can hook into registration deletion.
+	            return Task.FromResult(true);
+	        }
+	    }
 
 	登録中に **Register** メソッドが呼び出されます。これによって、ログインしているユーザーの ID であるタグを登録に追加できます。ユーザーが別のユーザーの IDで登録するのを防ぐために、指定したタグが検証されます。このユーザーに通知が送信されると、このデバイスと、ユーザーが登録した他のすべてのデバイスで受信されます。 
 
@@ -87,7 +87,8 @@
 		// Use a tag to only send the notification to the logged-in user.
         var result = await Services.Push.SendAsync(message, currentUser.Id);
 
-7. モバイル サービス プロジェクトを再発行します。
+7. Mobile Services  プロジェクトを再発行します。
 
 これで、サービスはユーザー ID タグを使用してプッシュ通知 (挿入された項目のテキスト) を、ログイン ユーザーによって作成されるすべての登録に送信するようになります。
- <!--HONumber=42-->
+ 
+<!--HONumber=47-->

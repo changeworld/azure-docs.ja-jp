@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2015" 
+	ms.date="03/04/2015" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
@@ -22,14 +22,14 @@
 
 ![](./media/virtual-networks-set-up-LOB-App-hybrid-cloud-for-testing/CreateLOBAppHybridCloud_3.png)
 
-Azure でホストされる運用 LOB アプリケーションの例については、[Microsoft ソフトウェア アーキテクチャのダイアグラムとブループリント](http://msdn.microsoft.com/dn630664)に関するページで**基幹業務アプリケーション**のアーキテクチャ ブループリントを参照してください。
+Azure でホストされる運用 LOB アプリケーションの例については、[Microsoft ソフトウェア アーキテクチャのダイアグラムとブループリント](http://msdn.microsoft.com/dn630664)に関するページで**基幹業務アプリケーション**のアーキテクチャ ブループリントをご覧ください。
 
 この構成では、インターネット上の自分の場所から Azure 運用環境の LOB アプリケーションをシミュレートします。構成は次のとおりです。
 
-- 簡略化されたオンプレミス ネットワーク (Corpnet サブネット)
-- Azure でホストされているクロスプレミスの仮想ネットワーク (TestVNET)
-- サイト間 VPN 接続
-- TestVNET 仮想ネットワーク内に基幹業務サーバー、SQL Server、およびセカンダリ ドメイン コントローラー
+- 簡略化されたオンプレミス ネットワーク (Corpnet サブネット)。
+- Azure でホストされているクロスプレミス仮想ネットワーク (TestVNET)。
+- サイト間 VPN 接続。
+- TestVNET 仮想ネットワーク内に基幹業務サーバー、SQL Server、セカンダリ ドメイン コントローラー
 
 この構成を基盤や共通の出発点にして以下を実行できます。
 
@@ -42,11 +42,11 @@ Azure でホストされる運用 LOB アプリケーションの例について
 2.	SQL Server コンピューター (SQL1) を構成する。
 3.	LOB サーバー (LOB1) を構成する。
 
-Azure サブスクリプションをまだ取得していない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションをまだ取得していない場合は、[Azure の 1 か月間無料評価版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料評価版にサインアップできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
 
 ## フェーズ 1:ハイブリッド クラウド環境を設定する
 
-「[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)」の指示に従います。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
+「[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)」のトピックにある手順に従います 。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
 
 現在の構成は次のようになります。
 
@@ -54,14 +54,14 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
  
 ## フェーズ 2:SQL Server コンピューター (SQL1) を構成する
 
-DC2 コンピューターが起動されていない場合は、Azure の管理ポータルから起動します。
+DC2 コンピューターが起動されていない場合は、Azure 管理ポータルから起動します。
 
-続いて、ローカル コンピューターの管理者レベルの Azure PowerShell コマンド プロンプトで次のコマンドを使用して、SQL1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数値を入力し、"<" および ">" の文字を削除します。
+続いて、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、SQL1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。
 
 	$storageacct="<Name of the storage account for your TestVNET virtual network>"
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
 	$LocalAdminName="<A local administrator account name>" 
-	$LocalAdminPW="<A password for the local administrator account>"
+	$LocalAdminPW="<The password for the local administrator account>"
 	$User1Password="<The password for the CORP\User1 account>"
 	Set-AzureStorageAccount -StorageAccountName $storageacct
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Standard on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
@@ -71,9 +71,9 @@ DC2 コンピューターが起動されていない場合は、Azure の管理�
 	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 100 -DiskLabel SQLFiles -LUN 0 -HostCaching None
 	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
-次に、 *using the local administrator account*、新しい SQL1 仮想マシンに接続します。
+次に、*using the local administrator account*、新しい SQL1 仮想マシンに接続します。
 
-1.	Azure の管理ポータルの左側のウィンドウで **[仮想マシン]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
+1.	Azure 管理ポータルの左側のウィンドウで **[仮想マシン]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。 
 3.	SQL1.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -137,7 +137,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
 	$LocalAdminName="<A local administrator account name>" 
-	$LocalAdminPW="<A password for the local administrator account>"
+	$LocalAdminPW="<The password for the local administrator account>"
 	$User1Password="<The password for the CORP\User1 account>"
 	$image = Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name LOB1 -InstanceSize Medium -ImageName $image
@@ -187,4 +187,6 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
 
 [テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](../virtual-networks-setup-dirsync-hybrid-cloud-testing/)
-<!--HONumber=45--> 
+
+[テスト用のシミュレートされたハイブリッド クラウド環境の設定](../virtual-networks-setup-simulated-hybrid-cloud-environment-testing/)
+<!--HONumber=47-->

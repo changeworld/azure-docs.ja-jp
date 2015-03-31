@@ -1,5 +1,7 @@
-Service Bus の制限については、以下のトピックを参照してください。
+﻿Service Bus の制限については、以下のトピックをご覧ください。
 
--   [Service Bus のクォータ][Service Bus のクォータ]
+ - [Service Bus のクォータ][servicebusquotas]
 
-  [Service Bus のクォータ]: http://msdn.microsoft.com/ja-jp/library/azure/ee732538.aspx
+  [servicebusquotas]: http://msdn.microsoft.com/library/azure/ee732538.aspx
+
+<!--HONumber=47-->

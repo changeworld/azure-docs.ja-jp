@@ -2,7 +2,7 @@
 
    	![](./media/download-android-sample-code/mobile-eclipse-project.png)
 
-   	`//TODO` コメントに、このアプリケーションをモバイル サービスで動作させるために必要な手順が指定されている点に注目してください。
+   	 `//TODO` コメントに、このアプリケーションをモバイル サービスで実行するために必要な手順が指定されている点に注目してください。
 
 2. **[Run]** メニューの **[Run]** をクリックし、**[Android Application]** をクリックしてプロジェクトを開始します。
 
@@ -15,4 +15,4 @@
    	![](./media/download-android-sample-code/mobile-quickstart-startup-android.png)
 
    	保存したテキストがメモリ内のコレクションに格納され、下のリストに表示されます。
-<!--HONumber=45--> 
+<!--HONumber=47-->

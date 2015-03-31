@@ -1,5 +1,5 @@
 ﻿
-1. Eclipse のパッケージ エクスプローラーで ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
+1. Android Studio の **Project Explorer** で ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
 
 		import java.util.concurrent.ExecutionException;
 		import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,25 +13,25 @@
 
 2. **ToDoActivity** クラスに次のメソッドを追加します。 
 	
-	private void authenticate() {
-	    // Login using the Google provider.
-	    
-		ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
-
-    	Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
-    		@Override
-    		public void onFailure(Throwable exc) {
-    			createAndShowDialog((Exception) exc, "Error");
-    		}   		
-    		@Override
-    		public void onSuccess(MobileServiceUser user) {
-    			createAndShowDialog(String.format(
-                        "You are now logged in - %1$2s",
-                        user.getUserId()), "Success");
-    			createTable();	
-    		}
-    	});   	
-	}
+		private void authenticate() {
+		    // Login using the Google provider.
+		    
+			ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
+	
+	    	Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
+	    		@Override
+	    		public void onFailure(Throwable exc) {
+	    			createAndShowDialog((Exception) exc, "Error");
+	    		}   		
+	    		@Override
+	    		public void onSuccess(MobileServiceUser user) {
+	    			createAndShowDialog(String.format(
+	                        "You are now logged in - %1$2s",
+	                        user.getUserId()), "Success");
+	    			createTable();	
+	    		}
+	    	});   	
+		}
 
 
 	これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Google ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
@@ -44,7 +44,7 @@
 
 	この呼び出しで、認証プロセスが開始されます。
 
-4. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動し、次のようにします。
+4. **onCreate** メソッド内の `authenticate();` の後にある残りのコードを、新しい **createTable** メソッドに移動します。次のようになります。
 
 		private void createTable() {
 	
@@ -62,6 +62,7 @@
 			refreshItemsFromTable();
 		}
 
-9. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。 
+9. **[実行]** メニューの **[Run app (アプリの実行)]** をクリックしてアプリを再開し、選択した ID プロバイダーでサインインします。 
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。<!--HONumber=42-->
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+<!--HONumber=47-->

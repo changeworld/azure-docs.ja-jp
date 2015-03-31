@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="プッシュ通知の使用 (従来のプッシュ) | モバイル デベロッパー センター" 
 	description="Azure Mobile Services を使用して Windows ストア JavaScript アプリにプッシュ通知を送信する方法について説明します (従来のプッシュ)。" 
-	services="mobile-services, notification-hubs" 
+	services="mobile-services" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
 	manager="dwrede" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
 	ms.date="11/22/2014" 
@@ -19,23 +19,23 @@
 # Mobile Services アプリケーションにプッシュ通知を追加する (従来のプッシュ)
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows ストア C#</a>
-    <a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push" title="Windows Store JavaScript" class="current">Windows ストア JavaScript</a>
-    <a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a>
-    <a href="/ja-jp/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a>
-    <a href="/ja-jp/documentation/articles/mobile-services-android-get-started-push" title="Android">Android</a>
-<!--    <a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a>
-    <a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a> -->
-	<a href="/ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push" title="Appcelerator">Appcelerator</a>
+    <a href="/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows ストア C#</a>
+    <a href="/documentation/articles/mobile-services-windows-store-javascript-get-started-push" title="Windows Store JavaScript" class="current">Windows ストア JavaScript</a>
+    <a href="/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a>
+    <a href="/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a>
+    <a href="/documentation/articles/mobile-services-android-get-started-push" title="Android">Android</a>
+<!--    <a href="/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a>
+    <a href="/documentation/articles/partner-xamarin-mobile-services-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a> -->
+	<a href="/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push" title="Appcelerator">Appcelerator</a>
 </div>
 
-<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/" title=".NET backend">.NET バックエンド</a> |  <a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push/"  title="JavaScript backend" class="current">JavaScript バックエンド</a></div>		
+<div class="dev-center-tutorial-subselector"><a href="/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/" title=".NET backend">.NET バックエンド</a> |  <a href="/documentation/articles/mobile-services-windows-store-javascript-get-started-push/"  title="JavaScript backend" class="current">JavaScript バックエンド</a></div>		
 
 このトピックでは、Visual Studio 2013 によって可能になる、Azure Mobile Services を使用した Windows Store アプリへのプッシュ通知の送信方法について説明します。このチュートリアルでは、Visual Studio から直接、Windows プッシュ通知サービス (WNS) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
->[AZURE.NOTE]このトピックは、まだ Notification Hubs 統合を使用するように<em>アップグレードされていない</em>、<em>既存の</em>モバイル サービスを対象とします。<em>新しい</em>モバイル サービスを作成すると、この統合機能は自動的に有効になります。新しいモバイル サービスについては、[プッシュ通知の使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push/).に関するページを参照してください。
+>[AZURE.NOTE]このトピックは、まだ Notification Hubs 統合を使用するように<em>アップグレードされていない</em>、<em>既存</em>のモバイル サービスを対象とします。<em>新しい</em>モバイル サービスを作成すると、この統合機能は自動的に有効になります。新しいモバイル サービスについては、[プッシュ通知の使用](/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push/)に関するページをご覧ください。
 >
->Mobile Services は Azure Notification Hubs に統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。<em>可能な場合には、既存のモバイル サービスをアップグレードして Notification Hubs を使用することをお勧めします</em>。アップグレード後は、[プッシュ通知の使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push/)に関するページでこのバージョンを確認してください。
+>モバイル サービスは Azure 通知ハブに統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。<em>可能な場合には、既存のモバイル サービスをアップグレードして Notification Hubs を使用することをお勧めします</em>。アップグレード後は、「[プッシュ通知の使用](/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push/)」をご覧ください。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
@@ -43,7 +43,7 @@
 2. [生成されたプッシュ通知コードを更新する]
 3. [データを挿入して通知を受け取る]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[モバイル サービスでのデータの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。モバイル サービスが接続されていない場合は、プッシュ通知の追加ウィザードによってこの接続が作成されます。 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。モバイル サービスが接続されていない場合は、プッシュ通知の追加ウィザードによってこの接続が作成されます。 
 
 <h2><a name="register"></a>アプリケーションにプッシュ通知を追加して構成する</h2>
 
@@ -82,7 +82,7 @@
 
    	![][14]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
 このチュートリアルでは、モバイル サービスに用意されている基本的なプッシュ通知機能を示します。より高度な機能 (たとえば、クロスプラットフォーム通知の送信、サブスクリプション ベースのルーティング、大ボリューム) を必要とする場合は、モバイル サービスで Azure 通知ハブを使用することを検討してください。詳細については、通知ハブに関する次のトピックのいずれかを参照してください。
 
@@ -101,7 +101,7 @@
 次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
 * [データの使用]
-  <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+  <br/>モバイル サービスを使用してデータの格納とクエリを実行する方法について説明します。
 
 * [認証の使用]
   <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
@@ -110,7 +110,7 @@
   <br/>サーバー スクリプトの登録および使用について説明します。
 
 * [Mobile Services HTML/JavaScript の使用方法の概念リファレンス]
-  <br/>HTML および JavaScript で Mobile Services を使用する方法について説明します。  
+  <br/>HTML と JavaScript で Mobile Services を使用する方法について説明します。  
 
 <!-- Anchors. -->
 [プッシュ通知用のアプリケーションを登録して Mobile Services を構成する]: #register
@@ -136,23 +136,21 @@
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js/
-[モバイル サービスでのデータの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js/
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
-[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
-[アプリケーション ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-js
-[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-js
-[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
+[モバイル サービスの使用]: /develop/mobile/tutorials/get-started/
+[データの使用]: /develop/mobile/tutorials/get-started-with-data-js/
+[認証の使用]: /develop/mobile/tutorials/get-started-with-users-js
+[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-js
+[アプリケーション ユーザーへのプッシュ通知]: /develop/mobile/tutorials/push-notifications-to-users-js
+[スクリプトを使用したユーザーの承認]: /develop/mobile/tutorials/authorize-users-in-scripts-js
+[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-html-js-client/
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Notification Hubs の使用]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/
-[Notification Hubs とは]: /ja-jp/develop/net/how-to-guides/service-bus-notification-hubs/
-[登録者への通知の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet/
-[ユーザーへの通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users/
-[ユーザーへのクロスプラットフォーム通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+[Notification Hubs の使用]: /manage/services/notification-hubs/getting-started-windows-dotnet/
+[Notification Hubs とは]: /develop/net/how-to-guides/service-bus-notification-hubs/
+[登録者への通知の送信]: /manage/services/notification-hubs/breaking-news-dotnet/
+[ユーザーへの通知の送信]: /manage/services/notification-hubs/notify-users/
+[ユーザーへのクロスプラットフォーム通知の送信]: /manage/services/notification-hubs/notify-users-xplat-mobile-services/
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

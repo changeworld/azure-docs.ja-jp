@@ -1,7 +1,7 @@
 ﻿
-##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
+## <a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. 「Complete All」というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Eclipse で、クイック スタート プロジェクトの  *res\layout\activity_to_do.xml* ファイルを開き、 `buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
+1. 「Complete All」というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Android Studio で、クイック スタート プロジェクトの  *res\layout\activity_to_do.xml* ファイルを開き、 `buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
 
 2. 2 番目の **LinearLayout** で、**EditText** 要素を削除し、既存の **Button** 要素の直後に次のコードｌを追加します。 
 
@@ -42,7 +42,7 @@
 
 
 
-5. パッケージ エクスプローラーで、 *src* フォルダーのプロジェクト名 (`com.example.{your projects name}`) を右クリックし、**[New]**、**[Class]** の順にクリックします。ダイアログのクラス名フィールドに「**MarkAllResult**」と入力し、[OK] をクリックして、作成されたクラス定義を次のコードで置き換えます。
+5. Project Explorer で、 *src* フォルダーのプロジェクト名 (`com.example.{your projects name}`) を右クリックし、**[New]**、**[Class]** の順にクリックします。ダイアログのクラス名フィールドに「**MarkAllResult**」と入力し、[OK] をクリックして、作成されたクラス定義を次のコードで置き換えます。
 
 		import com.google.gson.annotations.SerializedName;
 		
@@ -97,9 +97,9 @@
 
 ## アプリケーションをテストする
 
-1. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
+1. **[実行]** メニューの **[Run app (アプリの実行)]** をクリックして、Android エミュレーター内、または接続済みの Android デバイスでプロジェクトを開始します。
 
-	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
+	これにより、Mobile Services から項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
 
 
 2. アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Add]** をクリックします。
@@ -110,4 +110,5 @@
 
   	![](./media/mobile-services-android-call-custom-api/mobile-custom-api-android-completed.png)
 
-	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。<!--HONumber=42-->
+	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
+<!--HONumber=47-->

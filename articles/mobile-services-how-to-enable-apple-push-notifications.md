@@ -1,7 +1,7 @@
-﻿<properties 
+<properties 
 	pageTitle="Apple のプッシュ通知を有効にする方法" 
 	description="このチュートリアルでは、Azure Mobile Services を使用して新しいサービスを作成する方法について説明します。" 
-	services="mobile-services, notification-hubs" 
+	services="mobile-services" 
 	documentationCenter="ios" 
 	authors="ggailey777" 
 	manager="dwrede" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="11/21/2014" 
@@ -18,7 +18,7 @@
 
 # Apple のプッシュ通知を有効にする方法
 
-このトピックでは、Apple Push Notification Service (APNS) を使用して、iOS アプリケーションでプッシュ通知を有効にする方法について説明します。取得した資格情報を使用して、[Azure の管理ポータル][Management Portal]でプッシュ通知用に iOS アプリケーションを登録します。アプリケーションの更新を含めた完全なエンド ツー エンド チュートリアルについては、「[プッシュ通知の使用]」を参照してください。 
+このトピックでは、Apple Push Notification Service (APNS) を使用して、iOS アプリケーションでプッシュ通知を有効にする方法について説明します。取得した資格情報を使用して、[Azure 管理ポータル][Management Portal]でプッシュ通知用に iOS アプリケーションを登録します。アプリケーションの更新を含めた完全なエンド ツー エンド チュートリアルについては、「[プッシュ通知の使用]」をご覧ください。 
 
 [AZURE.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
 
@@ -31,11 +31,10 @@
 
 
 <!-- URLs. -->
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/
-[モバイル サービス SDK]: https://go.microsoft.com/fwLink/p/?LinkID=268375
+[プッシュ通知の使用]: /documentation/articles/mobile-services-javascript-backend-ios-get-started-push/
+[Mobile Services  SDK]: https://go.microsoft.com/fwLink/p/?LinkID=268375
 
-[管理ポータル]: https://manage.windowsazure.com/
+[Management Portal]: https://manage.windowsazure.com/
 
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

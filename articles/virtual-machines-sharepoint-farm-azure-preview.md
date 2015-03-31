@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="vm-sharepoint" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="1/26/2015" 
+	ms.date="03/04/2015" 
 	ms.author="josephd"/>
 
-#SharePoint Server Farm#
+# SharePoint Server Farm
 
 Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使用して、事前構成された SharePoint Server 2013 ファームを作成します。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
@@ -24,7 +24,7 @@ Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使�
 
 ![sharepointfarm](./media/virtual-machines-sharepoint-farm-azure-preview/SPFarm_Basic.png)
 
-このファーム構成は、SharePoint アプリ開発の簡略化セットアップまたは、SharePoint 2013 の初回の評価で使用することができます。
+このファーム構成は、SharePoint アプリ開発の簡略化セットアップまたは、SharePoint 2013 の初回の評価で使用できます。
 
 この構成では、9 つの仮想マシンの高可用性 SharePoint ファームで構成されます。
 
@@ -32,24 +32,24 @@ Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使�
 
 このファーム構成は、より大量のクライアント読み込みや外部の SharePoint サイトの高可用性をテストしたり、SharePoint ファームの SQL Server AlwaysOn をテストしたりする場合に使用できます。この構成は、高可用環境での SharePoint アプリケーション開発でも使用できます。
  
-この両ファームの構成の詳細については、「[SharePoint サーバー ファームの構成の詳細](../virtual-machines-sharepoint-farm-config-azure-preview/)」を参照してください。
+この両ファームの構成の詳細については、「[SharePoint サーバー ファームの構成の詳細](../virtual-machines-sharepoint-farm-config-azure-preview/)」をご覧ください.
 
-##構成の手順##
+## 構成の手順##
 
 SharePoint Server Farm のテンプレートを使用して SharePoint ファームを作成するには、以下の手順を実行します。
 
-1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/) で、**[新規]**、**[SharePoint Server Farm]** をクリックします。
+1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[新規]**、**[SharePoint Server Farm]** をクリックします。
 2. **[SharePoint ファームの作成]** ウィンドウにリソース グループの名前を入力します。
 3. ファームの各仮想マシンのローカル管理者アカウントのユーザー名とパスワードを入力します。推測されにくい名前とパスワードを選んで登録し、安全な場所に保管します。
 4. 高可用性ファームを希望する場合は、**[高可用性を有効にする]** をクリックします。
-5. ドメイン コントローラーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、フォレスト ルート ドメイン名 (既定は contoso.com)、およびドメイン コントローラーのサイズ (既定は A1) を指定できます。
+5. ドメイン コントローラーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、フォレスト ルート ドメイン名 (既定は contoso.com)、ドメイン コントローラーのサイズ (既定は A1) を指定できます。
 6. SQL サーバーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、SQL サーバーのサイズ (既定は A5)、データベース アクセス アカウント名とパスワード (既定では管理者アカウントを使用)、SQL サーバーのサービス アカウント名 (既定は sqlservice)、パスワード (既定では管理者アカウントと同じパスワードを使用) を指定できます。
 7. SharePoint サーバーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、SharePoint サーバーのサイズ (既定は A2)、SharePoint ユーザー アカウント (既定は sp_setup) とパスワード、SharePoint ファームのアカウント名 (既定は sp_farm) とパスワード、SharePoint ファームのパスフレーズを指定できます。既定では、管理者のパスワードを SharePoint のユーザー アカウント、ファーム アカウント、パスフレーズに使用します。
 8. オプションの構成 (仮想ネットワーク、ストレージ アカウント、診断) を構成するには、矢印をクリックします。
 9. サブスクリプションを指定するには、矢印をクリックします。
 10. 準備ができたら **[作成]** をクリックします。
 
-##SharePoint ファームにアクセスして管理を開始します。##
+## SharePoint ファームにアクセスして管理を開始します。##
 
 この SharePoint ファームには事前構成されたエンドポイントがあり、インターネット接続されたクライアント コンピューターの SharePoint Web サーバーに対して、未認証の Web トラフィック (TCP ポート 80) が許可されます。このエンドポイントは、事前構成されたチーム サイトまでのものです。このチームサイトにアクセスするには:
 
@@ -61,7 +61,7 @@ SharePoint Server Farm のテンプレートを使用して SharePoint ファー
 6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
 7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
 
-SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」 を参照してください。SharePoint サーバーの全体管理サイトにアクセスするには:
+SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」をご覧ください。SharePoint サーバーの全体管理サイトにアクセスするには:
 
 1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。 
 2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
@@ -79,15 +79,16 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 - これらのサーバーはリモート デスクトップ接続を通じて管理できます。
 
 
-##Azure リソース マネージャー##
+## Azure リソース マネージャー##
 
-SharePoint Server Farm は、Azure リソース マネージャーとスクリプトを使用して、SharePoint ファームのインフラストラクチャとサーバー構成を自動作成します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](http://azure.microsoft.com/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
+SharePoint Server Farm は、Azure リソース マネージャーとスクリプトを使用して、SharePoint ファームのインフラストラクチャとサーバー構成を自動作成します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](http://azure.microsoft.com/documentation/articles/powershell-azure-resource-manager/)」をご覧ください。
 
-##その他のリソース
+## その他のリソース
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-[Set up a SharePoint intranet farm in a hybrid cloud for testing (テスト用ハイブリッド クラウドでの SharePoint イントラネット ファームの設定)](http://azure.microsoft.com/documentation/articles/virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
+[SharePoint サーバー ファームの構成の詳細](../virtual-machines-sharepoint-farm-config-azure-preview/)
 
+[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](http://azure.microsoft.com/documentation/articles/virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
 
-<!--HONumber=42-->
+<!--HONumber=47-->

@@ -1,18 +1,27 @@
-﻿モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。 
+﻿Mobile Services の準備が整ったら、ローカル コレクションの代わりに Mobile Services に項目を格納するようにアプリケーションを更新します。 
 
-1. [モバイル サービス Android SDK] を持っていない場合は、この段階でダウンロードし、圧縮ファイルを展開してください。
+1.  *build.gradle (Module app)* ファイルの **[依存関係]** タグに次の行が存在することを確認し、存在しない場合は追加します。これにより、Mobile Services  Android クライアント SDK へのリファレンスが追加されます。
 
-2.  `.jar` ファイルを SDK の  `mobileservices` フォルダーから GetStartedWithData プロジェクトの  `libs` フォルダーへコピーします。
+		compile 'com.android.support:support-v4:21.0.3'
+    	compile 'com.google.code.gson:gson:2.2.2'
+	    compile 'com.google.guava:guava:18.0'
+	    compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.2-beta'
 
-3. Eclipse のパッケージ エクスプローラーで、 `libs` フォルダーを右クリックし、**[Refresh]** をクリックすると、コピーした jar ファイルが表示されます。
 
-  	この操作により、モバイル サービス SDK の参照がワークスペースに追加されます。
+2. ここで、**[Sync Project with Gradle Files]** をクリックして、プロジェクトを再ビルドします。
 
-4. AndroidManifest.xml ファイルを開き、次の行を追加します。その結果、アプリケーションが Azure 上の Mobile Services にアクセスできるようになります。
+3. AndroidManifest.xml ファイルを開き、次の行を追加します。その結果、アプリケーションが Azure 上の Mobile Services にアクセスできるようになります。
 
 		<uses-permission android:name="android.permission.INTERNET" />
 
-5. パッケージ エクスプローラーで、com.example.getstartedwithdata パッケージに含まれている TodoActivity.java ファイルを開き、次のコード行をコメント解除します。 
+
+6. AndroidManifest.xml ファイルを開き、次の行を追加します。その結果、アプリケーションが Azure 上の Mobile Services にアクセスできるようになります。
+
+		<uses-permission android:name="android.permission.INTERNET" />
+
+5. Project Explorer で、**GetStartedWithData => app => src => java** フォルダーに含まれている TodoActivity.java ファイルを開き、次のコード行をコメント解除します。 
+
+
 
 		import java.net.MalformedURLException;
 		import android.os.AsyncTask;
@@ -28,34 +37,34 @@
 		import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 
  
-6. 次の行をコメント アウトします。
+5. 次の行をコメント アウトします。
 
 		import java.util.ArrayList;
 		import java.util.List;
 
-7. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、モバイル サービスで置き換えます。**ToDoActivity** クラスで、既存の **toDoItemList** リストを定義している次のコード行をコメント アウトします。
+6. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、Mobile Services で置き換えます。**ToDoActivity** クラスで、既存の **toDoItemList** リストを定義している次のコード行をコメント アウトします。
 
 		public List<ToDoItem> toDoItemList = new ArrayList<ToDoItem>();
 
-8. ファイルを保存すると、プロジェクトがビルド エラーを示します。 `toDoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント解除します。これで、メモリ内のリストが完全に削除されます。 
+7. ファイルを保存すると、プロジェクトがビルド エラーを示します。 `toDoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント解除します。これで、メモリ内のリストが完全に削除されます。 
 
-9. 次に、モバイル サービスを追加します。次のコード行をコメント解除します。
+8. 次に、Mobile Services を追加します。次のコード行をコメント解除します。
 
 		private MobileServiceClient mClient;
 		private private MobileServiceTable<ToDoItem> mToDoTable;
 
-10. ファイルの末尾にある  *ProgressFilter* クラスを見つけ、コメント解除します。このクラスは、 *MobileServiceClient* がネットワーク操作を実行しているときに  'loading' インジケーターを表示します。
+9. ファイルの末尾にある  *ProgressFilter* クラスを見つけ、コメント解除します。このクラスは、 *MobileServiceClient*がネットワーク操作を実行しているときに  'loading' インジケーターを表示します。
 
 
-11. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+10. 管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成した Mobile Services をクリックします。
 
-12. **[ダッシュボード]** タブをクリックし、**サイトの URL** をメモに記録します。次に、**[キーの管理]** をクリックし、**アプリケーション キー**をメモに記録します。
+11. **[ダッシュボード]** タブをクリックし、**サイトの URL** をメモに記録します。次に、**[キーの管理]** をクリックし、**アプリケーション キー**をメモに記録します。
 
    	![](./media/download-android-sample-code/mobile-dashboard-tab.png)
 
-  	これらの値は、アプリケーション コードからモバイル サービスにアクセスするときに必要になります。
+  	これらの値は、アプリケーション コードからMobile Services にアクセスするときに必要になります。
 
-13. **onCreate** メソッドで、**MobileServiceClient** 変数を定義している次のコード行をコメント解除します。
+12. **onCreate** メソッドで、**MobileServiceClient** 変数を定義している次のコード行をコメント解除します。
 
 		try {
 		// Create the Mobile Service Client instance, using the provided
@@ -71,13 +80,13 @@
 			createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
 		}
 
-  	これで、モバイル サービスへのアクセスに使用される  *MobileServiceClient* の新しいインスタンスが作成されます。さらに、モバイル サービス内のデータ ストレージをプロキシ経由で接続する際に使用される  *MobileServiceTable* の新しいインスタンスが作成されます。
+  	これで、Mobile Services へのアクセスに使用される  *MobileServiceClient* の新しいインスタンスが作成されます。さらに、Mobile Services 内のデータ ストレージをプロキシ経由で接続する際に使用される  *MobileServiceTable* の新しいインスタンスが作成されます。
 
-14. 前のコードの  `MobileServiceUrl` と  `AppKey` を、モバイル サービスの URL とアプリケーション キーでそれぞれ置き換えます。
+13. 前のコードの  `MobileServiceUrl` と  `AppKey` を、Mobile Services の URL とアプリケーション キーの順にそれぞれ置き換えます。
 
 
 
-15. 次に示す **checkItem** メソッドの行をコメント解除します。
+14. 次に示す **checkItem** メソッドの行をコメント解除します。
 
 	    new AsyncTask<Void, Void, Void>() {
 	        @Override
@@ -99,9 +108,9 @@
 	        }
 	    }.execute();
 
-   	これにより、項目の更新がモバイル サービスに送信され、チェックされた項目がアダプターから削除されます。
+   	これにより、項目の更新がMobile Services に送信され、チェックされた項目がアダプターから削除されます。
     
-16. 次に示す **addItem** メソッドの行をコメント解除します。
+15. 次に示す **addItem** メソッドの行をコメント解除します。
 	
 		// Insert the new item
 		new AsyncTask<Void, Void, Void>() {
@@ -124,9 +133,9 @@
 	    }.execute();
 		
 
-  	このコードでは、新しい項目を作成し、それをリモート モバイル サービスのテーブルに挿入します。
+  	このコードでは、新しい項目を作成し、それをリモート Mobile Services のテーブルに挿入します。
 
-18. 次に示す **refreshItemsFromTable** メソッドの行をコメント解除します。
+16. 次に示す **refreshItemsFromTable** メソッドの行をコメント解除します。
 
 		// Get the items that weren't marked as completed and add them in the adapter
 	    new AsyncTask<Void, Void, Void>() {
@@ -151,8 +160,9 @@
 	        }
 	    }.execute();
 
-	このコードでは、モバイル サービスに対するクエリを実行して、完了マークが付けられていないすべての項目を取得します。項目は、バインド用にアダプターに追加されます。
+	このコードでは、Mobile Services に対するクエリを実行して、完了マークが付けられていないすべての項目を取得します。項目は、バインド用にアダプターに追加されます。
 		
 
 <!-- URLs. -->
-[モバイル サービス Android SDK]: http://aka.ms/Iajk6q<!--HONumber=42-->
+[Mobile Services Android SDK]: http://aka.ms/Iajk6q
+<!--HONumber=47-->

@@ -1,5 +1,6 @@
 <properties 
-	pageTitle="Azure 上で Windows を実行する仮想マシンの作成" description="Azure で Windows 仮想マシン (VM) を作成し、ログオンしてデータ ディスクを接続する方法について説明します" 
+	pageTitle="Azure 上で Windows を実行する仮想マシンの作成" 
+	description="Azure で Windows 仮想マシン (VM) を作成し、ログオンしてデータ ディスクを接続する方法について説明します" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="KBDAzure" 
@@ -12,47 +13,41 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/20/2015" 
+	ms.date="03/04/2015" 
 	ms.author="kathydav"/>
 
 
 
-# Windows を実行する仮想マシンの作成 #
+# Windows を実行する仮想マシンの作成
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/virtual-machines-windows-tutorial/" title="Azure Portal" class="current">Azure ポータル</a><a href="/ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/" title="Azure Preview Portal">Azure プレビュー ポータル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/virtual-machines-windows-tutorial/" title="Azure Portal" class="current">Azure ポータル</a><a href="/documentation/articles/virtual-machines-windows-tutorial-azure-preview/" title="Azure Preview Portal">Azure プレビュー ポータル</a></div>
 
-このチュートリアルでは、Azure 仮想マシン (VM) を簡単に作成する方法を示します。ここでは Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。使用可能なイメージには、Windows オペレーティング システム、Linux ベースのオペレーティング システム、プレインストールされているアプリケーションのイメージなどがあります。選択できるイメージは、ご利用のサブスクリプションの種類によって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
-
-> [AZURE.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できますが、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、「[Azure アカウントの作成](http://azure.microsoft.com/develop/php/tutorials/create-a-windows-azure-account/)」を参照してください。 
-
-このチュートリアルは、以下について説明します。
-
-- [仮想マシンの作成方法](#createvirtualmachine)
-- [仮想マシンを作成後、ログオンする方法](#logon)
-- [データ ディスクを仮想マシンに接続する方法](#attachdisk)
-
-さらに詳しい内容は、「[仮想マシン](http://go.microsoft.com/fwlink/p/?LinkID=271224)」を参照してください。
+このチュートリアルでは、Azure 仮想マシン (VM) を簡単に作成する方法を示します。このチュートリアルでは Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。使用可能なイメージには、Windows オペレーティング システム、Linux ベースのオペレーティング システム、プレインストールされているアプリケーションのイメージなどがあります。選択できるイメージは、ご利用のサブスクリプションの種類によって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
 
-##<a id="createvirtualmachine"> </a>仮想マシンの作成方法##
+また、「[独自のイメージをテンプレートとして](../virtual-machines-create-upload-vhd-windows-server/)」使用して Windows VＭ を作成できます。Azure VM についての詳細は、「[Azure 仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)」をご覧ください。
+
+[AZURE.INCLUDE [free-trial-note](../includes/free-trial-note.md)]
+
+## <a id="createvirtualmachine"> </a>仮想マシンの作成方法
 
 このセクションでは、管理ポータルの **[ギャラリーから]** オプションを使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合は、**[ギャラリーから]** オプションを使用する必要があります。
 
-> [AZURE.NOTE] さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com) を使用すれば、仮想マシンの作成、複数の仮想マシンのアプリケーション テンプレートのデプロイの自動化、VM の強化された監視や診断の機能の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な VM の構成オプションには、性質上、重複するものもありますが、まったく同じではありません。  
+> [AZURE.NOTE] さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、複数の仮想マシンのアプリケーション テンプレートのデプロイの自動化、VM の強化された監視や診断の機能の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な VM の構成オプションには、性質上、重複するものもありますが、まったく同じではありません。  
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../includes/virtual-machines-create-WindowsVM.md)]
 
-## <a id="logon"> </a>仮想マシンを作成後、ログオンする方法 ##
+## <a id="logon"> </a>仮想マシンを作成後、ログオンする方法 
 
 このセクションでは、仮想マシンにログオンする方法について説明します。ログオンすると、仮想マシン上で実行する設定とアプリケーションを管理できます。
 
 [AZURE.INCLUDE [virtual-machines-log-on-win-server](../includes/virtual-machines-log-on-win-server.md)]
 
-## <a id="attachdisk"> </a>データ ディスクを仮想マシンに接続する方法 ##
+## <a id="attachdisk"> </a>新しい仮想マシンにデータ ディスクを接続する方法 
 
-このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。既存のディスクの接続方法など、詳細については、「[データ ディスクを仮想マシンに接続する方法](http://azure.microsoft.com/documentation/articles/storage-windows-attach-disk/)」を参照してください。
+このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。既存のディスクの接続方法など、詳細については、[データ ディスクを仮想マシンに接続する方法](http://azure.microsoft.com/documentation/articles/storage-windows-attach-disk/)に関するページをご覧ください。
 
-1. Azure [管理ポータル](http://manage.windowsazure.com) にサインインします。
+1. [Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. **[仮想マシン]** をクリックし、次に **[MyTestVM]** 仮想マシンを選択します。
 
@@ -73,7 +68,7 @@
 
 	![Specify the size of the empty disk](./media/virtual-machines-windows-tutorial/emptydisksize.png)	
 	
-	>[AZURE.NOTE] .Vhd ファイルは、Azure ストレージにページ blob として格納されます。Azure 以外では、仮想ハード ディスクには VHD フォーマットまたは VHDX フォーマットを使用でき、固定、動的拡張、差分にも対応しています。Azure は VHD フォーマットの固定ディスクをサポートしています。詳細については、「[Azure の VHD について](http://msdn.microsoft.com/library/azure/dn790344.aspx)」を参照してください。  
+	>[AZURE.NOTE] .Vhd ファイルは、Azure ストレージにページ blob として格納されます。Azure 以外では、仮想ハード ディスクには VHD フォーマットまたは VHDX フォーマットを使用でき、固定、動的拡張、差分にも対応しています。Azure は VHD フォーマットの固定ディスクをサポートしています。詳細については、「[Azure の VHD について](http://msdn.microsoft.com/library/azure/dn790344.aspx)」をご覧ください。  
 
 6. ダッシュボードに戻り、空のデータ ディスクが仮想マシンに正常に接続されたことを確認します。OS ディスクの後に **[ディスク]** リストに表示されます。
 
@@ -81,7 +76,7 @@
 
 	データ ディスクを接続するときは、ディスクはオフラインになり初期化されません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
 
-7. 仮想マシンに接続してログオンするには、前のセクション「[仮想マシンを作成後、ログオンする方法]」の手順を使用します。
+7. 仮想マシンに接続してログオンするには、前のセクション「[仮想マシンを作成後、ログオンする方法]」の手順を使用します (#logon)。
 
 8. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
@@ -91,7 +86,7 @@
 
 	![Expand File and Storage Services in Server Manager](./media/virtual-machines-windows-tutorial/selectdisks.png)	
 	
-10.	**[ディスク]** セクションには、disk 0、disk 1、disk 2 が一覧表示されます。disk 0 は OS ディスク、disk 1 は一時リソース ディスク (データ ストレージとして使用しないでください) です。disk 2 は、仮想マシンに接続したデータ ディスクです。データ ディスクの容量は、ディスクに指定したものやディスクを接続したタイミングに基づいて、5 GB になります。disk 2 を右クリックし、**[初期化]** を選択します。
+10.	**[ディスク]** セクションには、disk 0、disk 1、disk 2 が一覧表示されます。disk 0 は OS ディスク、disk 1 は一時リソース ディスク (データ ストレージとして使用しないでください) です。disk 2 は、仮想マシンに接続したデータ ディスクです。データ ディスクの容量は、ディスクに指定したものやディスクを接続したタイミングに基づいて、5 GB になります。ディスク 2 を右クリックし、  **[初期化]** を選択します。
 
 	![Start initialization](./media/virtual-machines-windows-tutorial/initializedisk.png)
 
@@ -107,21 +102,21 @@
 
 	![Create the volume](./media/virtual-machines-windows-tutorial/newvolumecreated.png)
 	
-##次のステップ 
+## 次のステップ 
 
-Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
+Azure での Windows 仮想マシンの構成に関する詳細については、次の記事をご覧ください。
 
-[クラウド サービス内の仮想マシンを相互に接続する方法](http://azure.microsoft.com/documentation/articles/cloud-services-connect-virtual-machine/)
+[仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](../cloud-services-connect-virtual-machine/)
 
-[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](http://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/)
+[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines-create-upload-vhd-windows-server/)
 
-[仮想マシンの可用性管理](http://azure.microsoft.com/documentation/articles/manage-availability-virtual-machines/)
+[仮想マシンの可用性管理](../manage-availability-virtual-machines/)
 
 [Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)
 
 [ビデオ:Getting Started with VHDs - What's Really Happening (VHD の概要 - その実際)](http://azure.microsoft.com/documentation/videos/getting-started-with-azure-virtual-machines)
 
-[ビデオ:FFAQ with Mark Russinovich - Does Windows Azure run Windows? (Mark Russinovich への質問と回答 - Windows Azure で Windows を実行できるか)](http://azure.microsoft.com/documentation/videos/mark-russinovich-windows-on-azure)
+[ビデオ:FFAQ with Mark Russinovich - Does Azure run Windows? (Mark Russinovich への質問と回答 - Azure で Windows を実行できるか)](http://azure.microsoft.com/documentation/videos/mark-russinovich-windows-on-azure)
 
 [ビデオ:Adding a new virtual machine to a Web Farm by making reusable images (再利用可能なイメージを作成して、新しい仮想マシンを Web ファームに追加する)](http://azure.microsoft.com/documentation/videos/adding-virtual-machines-web-farm)
 
@@ -136,8 +131,7 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 [Azure での仮想マシンについて]: #virtualmachine
 [仮想マシンの作成方法]: #custommachine
 [仮想マシンを作成後、ログオンする方法]: #logon
-[データ ディスクを仮想マシンに接続する方法]: #attachdisk
+[新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
 [仮想マシン間の通信をセットアップする方法]: #endpoints
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

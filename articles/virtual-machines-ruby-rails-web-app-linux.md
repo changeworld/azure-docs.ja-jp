@@ -3,7 +3,7 @@
 	description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" 
 	services="virtual-machines" 
 	documentationCenter="ruby" 
-	authors="blackmist" 
+	authors="wpickett" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="09/17/2014" 
-	ms.author="larryfr"/>
+	ms.date="02/19/2015" 
+	ms.author="wpickett"/>
 
 
 
 
 
-#Azure VM での Ruby on Rails Web アプリケーション
+# Azure VM での Ruby on Rails Web アプリケーション
 
 このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
 
@@ -38,29 +38,14 @@
 
 ![a browser displaying Listing Posts][blog-rails-cloud]
 
-##この記事の内容
 
-* [開発環境を設定する](#setup)
-
-* [Rails アプリケーションを作成する](#create)
-
-* [アプリケーションをテストする](#test)
-
-* [Azure の仮想マシンを作成する](#createvm)
-
-* [アプリケーションを VM にコピーする](#copy)
-
-* [gem をインストールしてアプリケーションを起動する](#start)
-
-* [次のステップ](#next)
-
-##<a id="setup"></a>開発環境を設定する
+## <a id="setup"></a>開発環境を設定する
 
 1. 開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルでは、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** と **ruby-build** のインストールを検証しました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
+	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** と **ruby-build** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
 
-	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
+	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 と ruby1.9.1-dev パッケージを使用して検証されました。
 
 	* **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルは、[RailsInstaller](http://railsinstaller.org/) 1.9.3-p392 を使用して検証されました。
 
@@ -68,19 +53,19 @@
 
 		gem install rails --no-rdoc --no-ri
 
-	> [AZURE.NOTE] オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように  'sudo' を使用してください。
+	> [AZURE.NOTE] オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように 'sudo' を使用してください。
 	>
 	>````` 
 	sudo gem install rails
 	`````
-
-	> [AZURE.NOTE] このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。
+	>
+	> このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。
 
 3. JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme) で確認できます。
 	
 	このチュートリアルの検証には、[Node.js](http://nodejs.org/) を使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
-##<a id="create"></a>Rails アプリケーションを作成する
+## <a id="create"></a>Rails アプリケーションを作成する
 
 1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して、「blog_app」という名前の新しい Rails アプリケーションを作成します。
 
@@ -94,15 +79,15 @@
 
 		rails generate scaffold Post name:string title:string content:text
 
-	これにより、コントローラー、ビュー、モデル、およびブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、およびテキスト コンテンツが含められます。
+	これにより、コントローラー、ビュー、モデル、ブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、とテキスト コンテンツが含められます。
 
 3. 次のコマンドを実行して、ブログへの投稿を保存するデータベースを作成します。
 
 		rake db:migrate
 
-	この場合、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][sqlite3]が使用されます。運用アプリケーションでは別のデータベースを使用する方が適している場合もありますが、このチュートリアルの目的では SQLite で十分です。
+	この場合、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][sqlite3] が使用されます。運用アプリケーションでは別のデータベースを使用する方が適している場合もありますが、このチュートリアルの目的では SQLite で十分です。
 
-##<a id="test"></a>アプリケーションをテストする
+## <a id="test"></a>アプリケーションをテストする
 
 次の手順を実行して、開発環境で Rails サーバーを開始します。
 
@@ -130,15 +115,19 @@
 
 	サーバー プロセスを停止するには、コマンド ラインで Ctrl + C キーを押します。
 
-##<a id="createvm"></a>Azure の仮想マシンを作成する
+## <a id="createvm"></a>Azure の仮想マシンを作成する
 
 [ここ][vm-instructions]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
 
 > [AZURE.NOTE] このチュートリアルの手順は、Ubuntu 12.10 をホストする Azure 仮想マシンで実行しています。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。
 
+ 
+
 > [AZURE.IMPORTANT] ここで作成する必要があるのは、仮想マシン**のみ**です。SSH を使用して仮想マシンに接続する方法を確認したら戻ってください。
 
-Azure の仮想マシンを作成したら、次の手順を実行して、仮想マシンに Ruby および Rails をインストールします。
+
+
+Azure の仮想マシンを作成したら、次の手順を実行して、仮想マシンに Ruby と Rails をインストールします。
 
 1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して SSH で仮想マシンに接続します。
 
@@ -168,7 +157,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 	Bundler は、いったんサーバーにコピーされると、Rails アプリケーションに必要な gem をインストールするために使用されます。
 
-##<a id="copy"></a>アプリケーションを VM にコピーする
+## <a id="copy"></a>アプリケーションを VM にコピーする
 
 開発環境から、新しいコマンド ラインまたはターミナル セッションを開き、**scp** コマンドを使用して、**blog_app** ディレクトリを仮想マシンにコピーします。このコマンドの形式は次のとおりです。
 
@@ -199,7 +188,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 返されるファイルの一覧は、開発環境の **blog_app** ディレクトリに含まれているファイルに一致します。
 
-##<a id="start"></a>gem をインストールして Rails を開始する
+## <a id="start"></a>gem をインストールして Rails を開始する
 
 1. 仮想マシンで、ディレクトリを **blog_app** に変更し、次のコマンドを使用して **Gemfile** に指定されている gem をインストールします。
 
@@ -239,7 +228,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 	* **パブリック ポート**:80
 
-	* **プライベート ポート**:&lt;前の手順 3 で確認したポート情報&gt;
+	* **プライベート ポート**:&lt;前の手順 3. で確認したポート情報&gt;
 
 	これにより、プライベート ポート 3000 にトラフィックをルーティングするパブリック ポート 80 が作成されます。ルーティング先のプライベート ポートは、Rails がリッスンしています。
 
@@ -255,15 +244,15 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 	![posts page][blog-rails-cloud]
 
-##<a id="next"></a>次のステップ
+## <a id="next"></a>次のステップ
 
 この記事では、基本的なフォーム ベースの Rails アプリケーションを作成し、Azure の仮想マシンに発行する方法について説明しました。ほとんどの操作は手動で実行しましたが、通常、運用環境では自動化が求められます。また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。
 
-Rails アプリケーションのデプロイの自動化や、Unicorn Web サーバーと NginX の使用方法については、「[Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする][unicorn-nginx-capistrano]」を参照してください。
+Rails アプリケーションのデプロイの自動化や、Unicorn Web サーバーと NginX の使用方法については、「[Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする][unicorn-nginx-capistrano]」をご覧ください。
 
-Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][rails-guides]を参照してください。
+Ruby on Rails の詳細について学習するには、「[Ruby on Rails のガイド][rails-guides]」をご覧ください。
 
-Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクを参照してください。
+Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクをご覧ください。
 
 * [BLOB を使用して非構造化データを保存する][blobs]
 
@@ -274,17 +263,17 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 
 
 <!-- WA.com links -->
-[blobs]: /ja-jp/documentation/articles/storage-ruby-how-to-use-blob-storage
+[blobs]: /documentation/articles/storage-ruby-how-to-use-blob-storage
 
-[cdn-howto]: /ja-jp/develop/ruby/app-services/
+[cdn-howto]: /develop/ruby/app-services/
 
 [management-portal]: https://manage.windowsazure.com/
 
-[tables]: /ja-jp/develop/ruby/how-to-guides/table-service/
+[tables]: /develop/ruby/how-to-guides/table-service/
 
-[unicorn-nginx-capistrano]: /ja-jp/documentation/articles/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/
+[unicorn-nginx-capistrano]: /documentation/articles/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/
 
-[vm-instructions]: /ja-jp/documentation/articles/virtual-machines-linux-tutorial
+[vm-instructions]: /documentation/articles/virtual-machines-linux-tutorial
 
 
 <!-- External Links -->
@@ -308,5 +297,4 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 [new-endpoint]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
 
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

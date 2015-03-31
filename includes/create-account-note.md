@@ -1,5 +1,5 @@
-> [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。[MSDN サブスクライバーの特典を有効にする][MSDN サブスクライバーの特典を有効にする]か、[無料評価版にサインアップ][無料評価版にサインアップ]してください。
+﻿> [AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A85619ABF" target="_blank">無料評価版にサインアップ</a>してください。
 
-  [MSDN サブスクライバーの特典を有効にする]: /ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF
-  [無料評価版にサインアップ]: /ja-jp/pricing/free-trial/?WT.mc_id=A85619ABF
+
+<!--HONumber=47-->

@@ -1,8 +1,22 @@
-﻿<properties title="Azure Elastic Scale Glossary" pageTitle="Azure Elastic Scale 用語集" description="Azure SQL Database の Elastic Scale 機能で使用される用語の説明" metaKeywords="sharding,elastic scale, Azure SQL DB sharding" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
+﻿<properties 
+	pageTitle="Azure Elastic Scale 用語集" 
+	description="Azure SQL Database の Elastic Scale 機能で使用される用語の説明。" 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="jhubbard" 
+	authors="sidneyh" 
+	editor=""/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
+<tags 
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/16/2015" 
+	ms.author="sidneyh@microsoft.com"/>
 
-#Elastic Scale 用語集
+# Elastic Scale 用語集
 以下は、Azure SQL Database の Elastic Scale 機能に定義されている用語です。
 
 ![Elastic Scale terms][1]
@@ -13,23 +27,23 @@
 
 **グローバル シャード マップ**:**シャード セット**内のシャーディング キーと対応するシャードとのマッピングのセット。GSM は**シャード マップ マネージャー**に格納されます。**ローカル シャード マップ**と比較してください。
 
-**リスト シャード マップ**:シャーディング キーが個別にマッピングされたシャード マップ。**レンジ シャード マップ**と比較してください。   
+**リスト シャード マップ**:シャーディング キーが個別にマッピングされたシャード マップ。**範囲シャード マップ**と比較してください。   
 
 **ローカル シャード マップ**:シャードに格納されるローカル シャード マップには、シャードに存在するシャードレットのマッピングが含まれています。
 
 
-**マルチシャード クエリ**:複数のシャードに対してクエリを実行することができる機能。結果セットは、UNION ALL セマンティクスを使用して返されます ("ファンアウト クエリ" とも呼ばれます)。**データ依存ルーティング**と比較してください。
+**マルチシャード クエリ**:複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス ("ファンアウト クエリ" とも呼ばれます) を使用して返されます。**データ依存ルーティング**と比較してください。
 
-**レンジ シャード マップ**:シャード マップの一種で、ここでは、連続する値の複数の範囲を基準とする戦略によってシャードが配布されます。 
+**範囲シャード マップ**:シャード マップの一種で、ここでは、連続する値の複数の範囲を基準とする戦略によってシャードが配布されます。 
 
 
 **参照テーブル**:シャード化はされないが、複数のシャードにまたがってレプリケートされるテーブル。 
 
 **シャード**:シャード化されたデータ セットのデータを格納する Azure SQL データベース。 
 
-**シャードの弾力性** (SE):**水平スケーリング**および**垂直スケーリング**の両方を実行することができる機能。
+**シャードの弾力性** (SE):**水平スケーリング**と**垂直スケーリング**の両方を実行することができる機能。
 
-**シャード化されたテーブル**:シャード化されているテーブル。このテーブルのデータは、データのシャーディング キー値に基づいて複数のシャードに配布されます。 
+**シャード化テーブル**:シャード化されているテーブル。このテーブルのデータは、データのシャーディング キー値に基づいて複数のシャードに配布されます。 
 
 **シャーディング キー**:複数のシャードに対するデータの配布方法を決定する列値。値は、int、bigint、varbinary、または uniqueidentifier のいずれかの型にすることができます。 
 
@@ -39,12 +53,12 @@
 
 **シャード マップ**:シャーディング キーと対応するシャードとの間のマッピングのセット。
 
-**シャード マップ マネージャー**:1 つまたはそれ以上のシャード セットのシャード マップ、シャードの場所、およびマッピングが含まれた、管理オブジェクトとデータ ストア。
+**シャード マップ マネージャー**:1 つまたはそれ以上のシャード セットのシャード マップ、シャードの場所、マッピングが含まれた、管理オブジェクトとデータ ストア。
 
 ![Mappings][2]
 
 
-##動詞
+## 動詞
 
 **水平スケーリング**:シャードをシャード マップに追加したり、シャード マップから削除することによって、シャードの集まりをスケール アウト (またはスケール イン) する動作。
 
@@ -66,4 +80,4 @@
 
 
 
-<!--HONumber=35.1-->
+<!--HONumber=47-->

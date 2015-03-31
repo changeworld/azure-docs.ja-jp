@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="How to deploy" pageTitle="SQL データベースのデプロイ方法 - Azure" metaKeywords="" description="SQL Server データベースを Azure にデプロイする方法について説明します。データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。" metaCanonical="" services="sql-database" documentationCenter="" title="How to Deploy a Database to Azure" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
+<properties 
+	pageTitle="SQL データベースのデプロイ方法 - Azure" 
+	description="SQL Server データベースを Azure にデプロイする方法について説明します。データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors="jeffgoll" 
+	manager="jeffreyg" 
+	editor=""/>
 
-<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/30/2014" ms.author="jeffreyg" />
+<tags 
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/25/2015" 
+	ms.author="jeffreyg"/>
 
 
 
@@ -13,20 +27,16 @@
 
 School サンプル データベースはシンブルで便利です。オブジェクトはすべて SQL データベースと互換性があり、移行のためにデータベースを変更または準備する必要がありません。新しい管理者として、まずシンプルなデータベースのデプロイを試して手順を学んだ後で、自分のデータベースを使用してください。 
 
-**注: **内部設置型データベースを Azure に移行するにあたっての準備方法の詳細な作業手順については、SQL Database の移行に関するガイドを参照してください。また、Azure トレーニング キットをダウンロードすることも検討してください。内部設置型データベースを移行する別の手法を示す演習が含まれています。
+**注:** Azure に移行する内部設置型のデータベースを準備する方法については、SQL データベースの移行に関するガイドをご覧ください。また、Azure のトレーニング キットをダウンロードすることもできます。キットに含まれたラボで、内部設置型データベースの移行に関するその他の方法も紹介しています。
 
-##目次##
-* [方法: 内部設置型サーバーに school データベースを作成する](#schooldb)
-* [方法: SQL データベースにデプロイする](#deploydb)
-* [方法: データベース デプロイを確認する](#verify)
 
 <h2><a id="schooldb"></a>方法:内部設置型サーバーに school データベースを作成する</h2>
 
-このデータベースを作成するスクリプトは、[SQL データベース管理の概要][]に関するページにあります。このガイドでは、Management Studio でこれらのスクリプトを実行して、school データベースの内部設置型バージョンを作成します。
+このデータベースを作成するスクリプトは、[SQL データベース管理の概要に関するページ][]にあります。このガイドでは、Management Studio でこれらのスクリプトを実行して、school データベースの内部設置型バージョンを作成します。
 
-1. Management Studio で、オンプレミス サーバーに接続します。**[データベース]** を右クリックし、**[新しいデータベース]** をクリックして、「*school*」と入力します。
+1. Management Studio で、オンプレミス サーバーに接続します。**[データベース]** を右クリックし、**[新しいデータベース]** をクリックして、「 *school*」と入力します。
 
-2. [*school*] を右クリックし、**[新しいクエリ]** をクリックします。 
+2. [ *school*] を右クリックし、**[新しいクエリ]** をクリックします。 
 
 3. チュートリアルからスキーマ作成スクリプトをコピーして実行します。 
 
@@ -531,7 +541,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 
 2. 作成した school データベースを右クリックして、**[タスク]** をポイントし、**[SQL Azure へのデータベースのデプロイ]** をクリックします。
 
-3. [デプロイの設定] で、*school* のようなデータベースの名前を入力します。 
+3. [デプロイの設定] で、 *school* のようなデータベースの名前を入力します。 
 
 4. **[接続]** をクリックします。
 
@@ -543,7 +553,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 
 8. **[オプション]** をクリックします。
 
-9. [接続プロパティ] の [データベースへの接続] で、「**master**」と入力します。
+9. [接続プロパティ] の **[データベースへの接続]** で、「**master**」と入力します。
 
 10. **[接続]** をクリックします。これで接続指定が完了し、ウィザードに戻ります。
 
@@ -555,7 +565,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 
 1. Management Studio のオブジェクト エクスプローラーで、データベースを最新の状態に更新して、作成した新しいデータベースを表示します。
 
-2. データベース フォルダーを展開します。一覧に **school** データベースが表示されます。
+2. **データベース** フォルダーを展開します。一覧に **school** データベースが表示されます。
 
 3. school データベースを右クリックして、**[新しいクエリ]** をクリックします。
 
@@ -581,7 +591,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 		ON OnsiteCourse.CourseID = CourseInstructor.CourseID;
 </pre></div>
 
-[SQL データベース管理の概要]: /ja-jp/manage/services/sql-databases/getting-started-w-sql-databases/  
+[SQL データベース管理の概要に関するページ]: /manage/services/sql-databases/getting-started-w-sql-databases/  
 
 
-<!--HONumber=35.1-->
+<!--HONumber=47-->

@@ -24,7 +24,7 @@
 
 このチュートリアルで作成するモバイル サービスは、モバイル サービスの .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
 
-> [AZURE.IMPORTANT]このチュートリアルには、Visual Studio 2013 が必要です。
+> [AZURE.IMPORTANT] このチュートリアルには、Visual Studio 2013 が必要です。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -38,7 +38,7 @@
 5. [発行されたモバイル サービスに対してアプリケーションをテストする]
 
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F"%20target="_blank) を参照してください。 
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成ができます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F"%20target="_blank)をご覧ください。 
 
 
 <h2><a name="create-service"></a>新しいモバイル サービスを作成する</h2>
@@ -111,15 +111,15 @@
 
 このチュートリアルでは、Android アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。 
 
-<!--次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
+<!--Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
 
-* [スクリプトを使用したデータの検証および変更]
-  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
+* [Validate and modify data with scripts]
+  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
 
-* [ページングを使用したクエリの改善]
-  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
+* [Refine queries with paging]
+  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
 
-データ シリーズを完了したら、次のチュートリアルを行うことをお勧めします。
+Once you have completed the data series, try
 -->
 
 他のチュートリアルを 1 つ試してください。
@@ -127,7 +127,7 @@
 * [認証の使用]
   <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [Mobile Services .NET の使用方法の概念リファレンス]
@@ -176,19 +176,19 @@
 
 
 <!-- URLs. -->
-[スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
-[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
-[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js
-[JavaScript バックエンド バージョン]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
+[スクリプトを使用したデータの検証と変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[ページングを使用したクエリの改善]: /develop/mobile/tutorials/add-paging-to-data-dotnet
+[モバイル サービスの使用]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+[認証の使用]: /develop/mobile/tutorials/get-started-with-users-android
+[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-android
+[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-data-js
+[JavaScript バックエンド バージョン]: /develop/mobile/tutorials/get-started-with-data-android
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
 [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
-[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library  
-<!--HONumber=45--> 
+[Mobile Services .NET の使用方法の概念リファレンス]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library  
+<!--HONumber=47-->

@@ -1,5 +1,5 @@
 ﻿<properties 
-	pageTitle="<アプリケーション パターンのロード テスト - Azure アーキテクチャ パターン" 
+	pageTitle="アプリケーション パターンのロード テスト - Azure のアーキテクチャ パターン" 
 	description="Azure にロード テスト システムを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" 
 	services="" 
 	documentationCenter=".net" 
@@ -18,7 +18,7 @@
 
 # Azure のロード テスト
 
-クラウド ベースのロード テスト サービスでは、Web アプリケーションに対してロード テストを実施できます。Web アプリケーションの容量およびパフォーマンスを明らかにするロード テストを作成するには、Visual Studio を使用します。このとき、Azure VM を使用する必要はありません。ロード テストは、[クラウド ベースのロード テスト サービス](http://tfs.visualstudio.com/ja-jp/learn/load-testing)で作成できます。
+クラウド ベースのロード テスト サービスでは、Web アプリケーションに対してロード テストを実施できます。Web アプリケーションの容量とパフォーマンスを明らかにするロード テストを作成するには、Visual Studio を使用します。このとき、Azure VM を使用する必要はありません。ロード テストは、[クラウド ベースのロード テスト サービス](http://tfs.visualstudio.com/learn/load-testing)で作成できます。
 
 <!--links-->
 
@@ -29,8 +29,6 @@
 <!--images-->
 
 
- 
 
-<!--HONumber=35.2-->
 
-<!--HONumber=46--> 
+<!--HONumber=47-->

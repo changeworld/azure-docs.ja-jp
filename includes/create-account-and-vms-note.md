@@ -1,4 +1,4 @@
 ﻿> [AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。そのためには、 <a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバーの特典を有効にするか、</a> または <a href="http://azure.microsoft.com/pricing/free-trial/" target="_blank">無料評価版にサインアップしてください</a>。
+> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://www.windowsazure.com/pricing/free-trial/" target="_blank">無料評価版にサインアップ</a>してください。
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

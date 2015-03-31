@@ -10,41 +10,37 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="Mobile-Android" 
-	ms.devlang="Java" 
+	ms.tgt_pltfrm="mobile-android" 
+	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="09/26/2014" 
+	ms.date="02/03/2015" 
 	ms.author="ricksal"/>
 
-# Mobile Services アプリへのプッシュ通知の追加
+# モバイル サービス アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
 このトピックでは、Azure Mobile Services を使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。 
 
-このチュートリアルでは、次の手順について説明します。
-
-1. [Google Cloud Messaging を有効にする](#register)
-2. [プッシュ要求を送信するようにモバイル サービスを構成する](#configure)
-5. [サーバーを更新してプッシュ通知を送信する](#update-server)
-7. [アプリケーションにプッシュ通知を追加する](#update-app)
-8. [ローカル テストのためにプッシュ通知を有効にする](#local-testing)
-9. [発行されたモバイル サービスに対してアプリケーションをテストする]
 
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[モバイル サービスでのデータの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。そのため、このチュートリアルには、Visual Studio 2013 も必要です。 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」または「[モバイル サービスでのデータの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。そのため、このチュートリアルには、Visual Studio 2013 も必要です。 
+
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、「 <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F" target="_blank">Azure 無料評価版</a>」をご覧ください。 
+
+<!-- -->
+
+>[AZURE.NOTE] このチュートリアルの Eclipse バージョンを確認する場合は、「[プッシュ通知の使用 (Eclipse)]」をご覧ください。
+ 
+## <a id="register"></a>Google Cloud Messaging を有効にする
+
+[AZURE.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 
-##<a id="register"></a>Google Cloud Messaging を有効にする
+## <a id="configure"></a>プッシュ要求を送信するようにモバイル サービスを構成する
 
-[AZURE.INCLUDE [GCM を有効にする](../includes/mobile-services-enable-Google-cloud-messaging.md)]
-
-
-##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
-
-1. [Azure 管理ポータル] にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1. [Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![](./media/mobile-services-android-get-started-push/mobile-services-selection.png)
 
@@ -55,7 +51,7 @@
 > [AZURE.IMPORTANT] ポータルの [プッシュ] タブで拡張プッシュ通知に対応する GCM の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が通知ハブと共有されます。
 
 
-これで、GCM および通知ハブと連携するようにモバイル サービスが構成されました。
+これで、GCM と通知ハブと連携するようにモバイル サービスが構成されました。
 
 
 <h2><a name="download-the-service"></a>ローカル コンピューターにサービスをダウンロードする</h2>
@@ -66,7 +62,7 @@
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
-##<a id="update-server"></a>サーバーを更新してプッシュ通知を送信する
+## <a id="update-server"></a>サーバーを更新してプッシュ通知を送信する
 
 1. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクト内の **[コントローラー]** フォルダーを右クリックします。TodoItemController.cs を開きます。ファイルの先頭に、次の  `using` ステートメントを追加します。
 
@@ -106,22 +102,22 @@
 [AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 
-##<a name="update-app"></a>アプリケーションにプッシュ通知を追加する
+## <a name="update-app"></a>アプリケーションにプッシュ通知を追加する
 
-###Android SDK バージョンの検証
+### Android SDK バージョンの検証
 
 [AZURE.INCLUDE [mobile-services-verify-android-sdk-version](../includes/mobile-services-verify-android-sdk-version.md)]
 
 
-次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。 
+次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発とテストに関する最小 API レベル要件があります。 
 
 古いデバイスを使用している場合は、[Google Play Services SDK のセットアップに関するページ]を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
 
-###プロジェクトへの Google Play Services の追加
+### プロジェクトへの Google Play Services の追加
 
-[AZURE.INCLUDE [Play サービスの追加](../includes/mobile-services-add-Google-play-services.md)]
+[AZURE.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
-###コードの追加
+### コードの追加
 
 [AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
 
@@ -129,7 +125,7 @@
 
 Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
 
-###テスト用のエミュレーターを使用している場合...
+### テスト用のエミュレーターを使用している場合...
 
 Google API をサポートしている Android Virtual Device (AVD) を使用します。
 
@@ -143,11 +139,11 @@ Google API をサポートしている Android Virtual Device (AVD) を使用し
 
 	これで、AVD が Google API を使用するようになります。複数のバージョンの Android SDK をインストールしている場合、API Level が以前プロジェクトのプロパティに設定した値と一致することを確認します。
 
-###<a id="local-testing"></a>ローカル テストのためにプッシュ通知を有効にする
+### <a id="local-testing"></a> ローカル テストのためにプッシュ通知を有効にする
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../includes/mobile-services-dotnet-backend-configure-local-push.md)]
 
-###テストの実行
+### テストの実行
 
 1. Eclipse で **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
@@ -161,36 +157,36 @@ Google API をサポートしている Android Virtual Device (AVD) を使用し
 これで、このチュートリアルは終了です。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
-<!---このチュートリアルでは、Android アプリケーションで Mobile Services と Notification Hubs を使用してプッシュ通知を送信できるようにする方法の基本について説明しました。次は、タグを使用して、プッシュ通知をモバイル サービスから認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[認証されたユーザーへのプッシュ通知の送信]」を行うことをお勧めします。
+<!---このチュートリアルでは、Android アプリケーションでモバイル サービスと通知ハブを使用してプッシュ通知を送信できるようにする方法の基本について説明しました。次は、タグを使用して、プッシュ通知をモバイル サービスから認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[認証されたユーザーへのプッシュ通知の送信]」を行うことをお勧めします。
 
 
 + [認証されたユーザーへのプッシュ通知の送信]
 	<br/>タグを使用してモバイル サービスから認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
 
-+ [通知ハブを使用したニュース速報の送信]
++ [登録者へのブロードキャスト通知の送信]
 	<br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-+ [通知ハブを使用したローカライズ ニュース速報の送信]
++ [登録者へのテンプレートベース通知の送信]
 	<br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 -->
-Mobile Services と通知ハブについては次のトピックを参照してください。
+モバイル サービスと通知ハブについては次のトピックをご覧ください。
 
 * [データの使用]
-  <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+  <br/>モバイル サービスを使用してデータの格納とクエリを実行する方法について説明します。
 
 * [認証の使用]
-  <br/>Mobile Services を使用して、別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
+  <br/>モバイル サービスを使用して、別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [Notification Hubs とは]
+* [通知ハブとは]
   <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
-* [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
-  </br>Notification Hubs ソリューションのトラブルシューティングおよびデバッグのガイダンスについて説明します。 
+* [通知ハブのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630)
+  </br>通知ハブ ソリューションのトラブルシューティングとデバッグのガイダンスについて説明します。 
 
-* [Mobile Services 向け Android クライアント ライブラリの使用方法]
-  <br/>Android で Mobile Services を使用する方法について説明します。  
+* [モバイル サービス向け Android クライアント ライブラリの使用方法]
+  <br/>Android でモバイル サービスを使用する方法について説明します。  
   
 <!-- Anchors. -->
 
@@ -222,8 +218,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [13]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/new-local-todoitem.png
 [14]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-show-local-table-data.png
 [15]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/local-item-checked.png
-[16]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/azure-ite
-	ms.png
+[16]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/azure-items.png
 [17]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-sql-azure-database.png
 [18]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/sql-azure-query.png
 
@@ -236,28 +231,29 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 
 <!-- URLs. -->
-[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started
-[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users
-[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js
-[JavaScript バックエンド バージョン]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
+[プッシュ通知の使用 (Eclipse)]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-push-EC
+[スクリプトを使用したモバイル サービスのデータの検証と変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[ページングを使用したクエリの改善]: /develop/mobile/tutorials/add-paging-to-data-dotnet
+[Mobile Services の使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started
+[モバイル サービスでのデータの使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-data
+[データの使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-data
+[認証の使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-users
+[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-data-js
+[JavaScript バックエンド バージョン]: /develop/mobile/tutorials/get-started-with-data-android
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
+[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
 [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 
-[Mobile Services 向け Android クライアント ライブラリの使用方法]: /ja-jp/documentation/articles/mobile-services-android-how-to-use-client-library
+[モバイル サービス向け Android クライアント ライブラリの使用方法]: /documentation/articles/mobile-services-android-how-to-use-client-library
 
-[認証されたユーザーへのプッシュ通知の送信]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-push-notifications-app-users/
+[認証されたユーザーへのプッシュ通知の送信]: /documentation/articles/mobile-services-dotnet-backend-android-push-notifications-app-users/
 
-[Notification Hubs とは]: /ja-jp/documentation/articles/notification-hubs-overview/
-[通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[通知ハブとは]: /documentation/articles/notification-hubs-overview/
+[登録者へのブロードキャスト通知の送信]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[登録者へのテンプレートベース通知の送信]: /documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

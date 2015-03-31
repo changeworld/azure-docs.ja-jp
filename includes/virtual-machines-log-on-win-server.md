@@ -1,6 +1,6 @@
-﻿<properties services="virtual-machines" title="How to Log on to a Virtual Machine Running Windows Server" authors="KBDAzure" solutions="" manager="timlt" editor="tysonn" />
+﻿<properties services="virtual-machines" title="Windows Server が実行されている仮想マシンにログオンする方法" authors="KBDAzure" solutions="" manager="timlt" editor="tysonn" />
 
->[AZURE.NOTE] ユーザー名またはパスワードをリセットする必要がある場合、または仮想マシンで RDP を有効にする必要がある場合、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能を使用できます。ログオンの要件やトラブルシューティングのヒントについては、「[RDP または SSH を使用した Azure 仮想マシンへの接続](http://go.microsoft.com/fwlink/p/?LinkId=398294)」を参照してください。
+>[AZURE.NOTE] ユーザー名またはパスワードをリセットする必要がある場合、または仮想マシンで RDP を有効にする必要がある場合、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能を使用できます。ログオンの要件やトラブルシューティングのヒントについては、[RDP または SSH を使用した Azure 仮想マシンへの接続](http://go.microsoft.com/fwlink/p/?LinkId=398294) をご覧ください。
 
 1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
@@ -18,10 +18,10 @@
 
 6. 仮想マシンで管理アカウントの資格情報を入力し、**[OK]** をクリックします。 
 
- >[AZURE.TIP] 通常、これは仮想マシンの作成時に指定したユーザー名とパスワードとなります。ユーザー名のドメイン情報が正しいことを確認してください。
+ >[AZURE.TIP] 通常、これは仮想マシンの作成時に指定したユーザー名とパスワードとなります。ユーザー名のドメイン情報が正しいことをご確認ください。
 
->- VM がユーザーの組織のドメインに属している場合は、ユーザー名にそのドメインの名前が含まれていることを確認してください。
-- VM がドメインに属していない場合は、ドメイン名を削除して行を '\' で開始するか、VM 名をドメイン名として使用します。たとえば、`\MyUserName` または `MyTestVM\MyUserName` です。 
+>- VM がユーザーの組織のドメインに属している場合は、ユーザー名にそのドメインの名前が含まれていることをご確認ください。
+- VM がドメインに属していない場合は、ドメイン名を削除して行を '\' で開始するか、VM 名をドメイン名として使用します。たとえば、 `\MyUserName` や  `MyTestVM\MyUserName` となります。 
 - VM がドメイン コントローラーである場合っは、そのドメインのドメイン管理者アカウントのユーザー名とパスワードを入力します。
 
 **[はい]** をクリックして、目的の仮想マシンであることを確認します。
@@ -31,4 +31,4 @@
 これで、仮想マシンをリモートで使用して作業できます。
 
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

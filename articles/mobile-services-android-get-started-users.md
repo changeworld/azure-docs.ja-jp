@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="Mobile-Android" 
-	ms.devlang="Java" 
+	ms.tgt_pltfrm="mobile-android" 
+	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="11/17/2014" 
+	ms.date="02/03/2015" 
 	ms.author="ricksal"/>
 
 # Mobile Services アプリへの認証の追加
@@ -23,29 +23,22 @@
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
 
-<p>このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。</p>
+## まとめ
+
+<p>このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証と承認されると、ユーザー ID 値が表示されます。</p>
 </div>
 
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-with-Authentication-in-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a><a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-authentication-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-with-Authentication-in-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">10:42</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-with-Authentication-in-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-authentication-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-with-Authentication-in-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">10:42</span></div>
 </div> 
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
-1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
-2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
-3. [アプリケーションに認証を追加する]
-4. [クライアント側で認証トークンを保存する]
-5. [期限切れのトークンを更新する]
 
- 
-
->[AZURE.NOTE] 完成したアプリケーションのソース コードは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithAuth/Android" target="_blank">ここ</a>で確認できます。
-
-##前提条件
+## 前提条件
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]
 
-<h2><a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する</h2>
+<h2><a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する</h2>
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
@@ -53,11 +46,11 @@
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
 
-3. Eclipse で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。 
+3. Android Studio で、チュートリアル「[Mobile Services の使用]」を実行したときに作成したプロジェクトを開きます。 
 
-4. **[実行]** メニューの **[実行]** をクリックして、アプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 
+4. **[実行]** メニューの **[Run app (アプリを実行)]** をクリックし、アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 
 
-	 この問題は、認証されないユーザーとしてアプリケーションが Mobile Services にアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	 この問題は、非認証ユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしているのに、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -80,7 +73,7 @@
 [スクリプトを使用したユーザーの承認]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。 
 
 <!-- Anchors. -->
-[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
 [アプリケーションに認証を追加する]: #add-authentication
 [クライアント側で認証トークンを保存する]: #cache-tokens
@@ -103,8 +96,7 @@
 
 [13]: ./media/mobile-services-android-get-started-users/mobile-identity-tab.png
 [14]: ./media/mobile-services-android-get-started-users/mobile-portal-data-tables.png
-[15]: ./media/mobile-services-android-get-started-users/mobile-portal-change-table-per
-	ms.png
+[15]: ./media/mobile-services-android-get-started-users/mobile-portal-change-table-perms.png
 
 
 <!-- URLs. -->
@@ -112,14 +104,13 @@
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Live Connect を使用した Windows ストア アプリへのシングル サインオン]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
-[既存のアプリにモバイル サービスを追加する]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
-[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
-[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android
+[Live Connect を使用した Windows ストア アプリへのシングル サインオン]: /develop/mobile/tutorials/single-sign-on-windows-8-dotnet
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started-android
+[既存のアプリにモバイル サービスを追加する]: /develop/mobile/tutorials/get-started-with-data-android
+[認証の使用]: /develop/mobile/tutorials/get-started-with-users-android
+[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-android
+[スクリプトを使用したユーザーの承認]: /develop/mobile/tutorials/authorize-users-in-scripts-android
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

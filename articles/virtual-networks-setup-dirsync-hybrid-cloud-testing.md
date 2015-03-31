@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定" 
 	description="IT プロまたは開発テストのための、ハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) サーバーの構成方法について説明します。" 
 	services="virtual-network" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2015" 
+	ms.date="03/05/2015" 
 	ms.author="josephd"/>
 
-#テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
+# テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
 
 このトピックでは、Microsoft Azure にホストされているパスワードの同期を使用して Office 365 ディレクトリ同期 (DirSync) をテストするためのハイブリッド クラウド環境を作成する手順全体を説明します。完成すると次のような構成になります。
 
@@ -32,7 +32,7 @@
 
 この構成を基盤や共通の出発点にして以下を実行できます。
 
-- パスワード同期を使用して、内部設置型 Active Directory ドメインとの同期に依拠する Office 365 のアプリケーションを開発およびテストする。
+- パスワード同期を使用して、内部設置型 Active Directory ドメインとの同期に依拠する Office 365 のアプリケーションを開発とテストする。
 - このクラウド ベースの IT ワークロードのテストを実行する。
 
 このハイブリッド クラウド テスト環境を設定する手順は、大きく次の 3 つのフェーズに分かれています。
@@ -41,17 +41,17 @@
 2.	Office 365 FastTrack 試用版を構成する。
 3.	DirSync サーバー (DS1) を構成する。
 
-Azure サブスクリプションをまだ取得していない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションをまだ取得していない場合は、[Azure の 1 か月間無料評価版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料評価版にサインアップできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
 
-##フェーズ 1:ハイブリッド クラウド環境を設定する
+## フェーズ 1:ハイブリッド クラウド環境を設定する
 
-「[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)」の指示に従います。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
+「[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)」のトピックにある手順に従います 。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
 
 現在の構成は次のようになります。
 
 ![](./media/virtual-networks-set-up-DirSync-hybrid-cloud-for-testing/CreateDirSyncHybridCloud_1.png)
 
-##フェーズ 2:Office 365 FastTrack 試用版を構成する
+## フェーズ 2:Office 365 FastTrack 試用版を構成する
 
 Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と Microsoft アカウントが必要です。会社名には、Microsoft のサンプル コンテンツで使用される仮の会社の会社名 Contoso のバリエーションを使用することをお勧めします。ただしこの会社名の使用は必須ではありません。
 
@@ -74,13 +74,13 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 
 ![](./media/virtual-networks-set-up-DirSync-hybrid-cloud-for-testing/CreateDirSyncHybridCloud_2.png)
 
-##フェーズ 3:DirSync サーバー (DS1) を構成する
+## フェーズ 3:DirSync サーバー (DS1) を構成する
 
 まず、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、DS1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。
 
-	$ServiceName="<The cloud service name for your TestVNET virtual network>"
+	$ServiceName="<The cloud service name for your TestVNET virtual network>"	
 	$LocalAdminName="<A local administrator account name>" 
-	$LocalAdminPW="<A password for the local administrator account>"
+	$LocalAdminPW="<The password for the local administrator account>"
 	$User1Password="<The password for the CORP\User1 account>"
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DS1 -InstanceSize Medium -ImageName $image
@@ -90,7 +90,7 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 
 次に、DS1 仮想マシンに接続します。
 
-1.	Azure の管理ポータルの仮想マシンのページの DS1 の仮想マシンの [状態] 列で、**[実行中]** をクリックします。
+1.	Azure 管理ポータルの仮想マシンのページの DS1 の仮想マシンの [状態] 列で、**[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。 
 3.	DS1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -112,7 +112,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 次に、DS1 にディレクトリ同期をインストールします。
 
-1.	Internet Explorer を実行し、アドレス バーに **http://go.microsoft.com/fwlink/?LinkID=278924** を入力した後で、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、「[ディレクトリ同期ツールをインストールまたはアップグレードする](http://technet.microsoft.com/library/jj151800)」を参照してください。
+1.	Internet Explorer を実行し、アドレス バーに **http://go.microsoft.com/fwlink/?LinkID=278924** を入力した後で、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、「[ディレクトリ同期ツールをインストールまたはアップグレードする](http://technet.microsoft.com/library/jj151800)」をご覧ください。
 2.	**ダウンロード** フォルダーを開き、**dirsync** ファイルを右クリックして、**[管理者として実行]** をクリックします。
 3.	Active Directory 同期のセットアップ ウィザードの [ようこそ] ページで、**[次へ]** をクリックします。 
 4.	[ライセンス条項] ページで、**[同意する]** をクリックしてから、**[次へ]** をクリックします。
@@ -128,7 +128,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 4.	"**Active Directory 同期をアクティブ化しますか?**" というメッセージが表示されたら、**[アクティブ化]** をクリックします。この後に、手順 3. にメッセージ "**Active Directory 同期がアクティブ化されています。**" が表示されます。
 5.	**[Active Directory 同期のセットアップと管理]** ページを CLIENT1 で開いたままにしておきます。
 
-次に、CORP\User1 アカウントで DC1 にログオンし、管理者レベルで Windows PowerShell コマンド プロンプトを開きます。これらのコマンドを実行して、contoso_users と呼ばれる新しい組織単位を作成し、Marci Kaufman と Lynda Meyer 用の新しいユーザー アカウントを 2 つ追加します。
+次に、CORP\User1 アカウントで DC1 にログオンし、管理者レベルで Windows PowerShell コマンド プロンプトを開きます。これらのコマンドを 1 つずつ実行して、contoso_users と呼ばれる新しい組織単位を作成し、Marci Kaufman と Lynda Meyer 用の新しいユーザー アカウントを 2 つ追加します。
 
 	New-ADOrganizationalUnit -Name contoso_users -Path "DC=corp,DC=contoso,DC=com"
 	New-ADUser -SamAccountName marcik -AccountPassword (Read-Host "Set user password" -AsSecureString) -name "Marci Kaufman" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Path "OU=contoso_users,DC=corp,DC=contoso,DC=com"
@@ -142,7 +142,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 2.	**スタート**画面で、「**ディレクトリ同期**」と入力します。
 3.	**[ディレクトリ同期の構成]** を右クリックし、**[管理者として実行]** をクリックします。これによって、構成ウィザードが開始されます。
 4.	[ようこそ] ページで **[次へ]** をクリックします。
-5.	[Windows Azure Active Directory の資格情報] ページで、フェーズ 2 で Office 365 FastTrack 試用版をセットアップするときに作成した初期アカウントの電子メール アドレスとパスワードを入力します。[次へ] をクリックします。 
+5.	[Microsoft Azure Active Directory の資格情報] ページで、フェーズ 2 で Office 365 FastTrack 試用版をセットアップするときに作成した初期アカウントの電子メール アドレスとパスワードを入力します。[次へ] をクリックします。 
 6.	[Active Directory の資格情報] ページで、**[ユーザー名]** に「**CORP\User1**」と入力し、**[パスワード]** に User1 アカウントのパスワードを入力します。**[次へ]** をクリックします。
 7.	[混合環境] ページで、**[混合環境を有効にする]** を選択してから、**[次へ]** をクリックします。
 8.	[パスワード同期] ページで、**[パスワード同期を有効にする]** を選択してから、**[次へ]** をクリックします。
@@ -174,7 +174,7 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
  
 これで、この環境は、Office 365 DirSync 機能に依拠する Office 365 アプリケーションのテストの実行、または DirSync 機能と DS1 からのパフォーマンスのテストの準備が整いました。
 
-##その他のリソース
+## その他のリソース
 
 [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](http://technet.microsoft.com/library/dn635310.aspx)
 
@@ -186,5 +186,6 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 [テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-networks-setup-lobapp-hybrid-cloud-testing/)
 
+[テスト用のシミュレートされたハイブリッド クラウド環境の設定](../virtual-networks-setup-simulated-hybrid-cloud-environment-testing/)
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

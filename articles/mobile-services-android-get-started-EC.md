@@ -1,7 +1,7 @@
 ﻿<properties 
 	pageTitle="Android アプリ用 Azure Mobile Services の使用" 
 	description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" 
-	services="" 
+	services="mobile-services" 
 	documentationCenter="android" 
 	authors="RickSaling" 
 	manager="dwrede" 
@@ -34,11 +34,11 @@
 
 ダウンロードしたクイック スタート プロジェクトには、Android 向けのモバイル サービス SDK が含まれています。このプロジェクトではバージョン 4.2 以降の Android が必要であるものの、モバイル サービス SDK では Android バージョン 2.2 以降があれば問題ありません。
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28"%20target="_blank)を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成ができます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28"%20target="_blank)をご覧ください。
 
 <!-- -->
 
->[AZURE.NOTE] アプリケーション全体のソース コードを参照するには、 <a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStarted/Android" target="_blank">ここ</a>に移動します。
+>[AZURE.NOTE] 完成したアプリケーションのソース コードは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStarted/Android" target="_blank">ここ</a>で確認できます。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -66,7 +66,7 @@
 
 
 5. アプリケーションをダウンロードします。
-	- アプリケーションの最新バージョンでは、Mobile Services Android SDK 2.0 を使用します。このバージョンは、 <a href="https://github.com/RickSaling/mobile-services-samples/tree/futures">ここ</a>からダウンロードできます。**[Download Zip]** をクリックしてファイルをダウンロードしたら解凍します。プロジェクトは、GettingStarted の Android フォルダーに含まれています。
+	- アプリケーションの最新バージョンでは、Mobile Services Android SDK 2.0 を使用します。このバージョンは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures">ここ</a>からダウンロードできます。**[Download Zip]** をクリックしてファイルをダウンロードしたら解凍します。プロジェクトは、GettingStarted の Android フォルダーに含まれています。
 	 
 	- 以前のバージョンでは、以前のバージョンの SDK を使用しています。これを使用するには、**[アプリケーションをダウンロードして実行する]** の下の **ダウンロード]** をクリックします。これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトがダウンロードされます。プロジェクト ファイルは圧縮されています。コンピューター上のファイルをダウンロードした場所を参照し、ファイルを展開してください。
 
@@ -91,13 +91,13 @@
 	- 	**TodoActivity.java** の **OnCreate** メソッド内で、モバイル サービス クライアントをインスタンス化するコードを見つけます。前の図にこのコードが示されています。
 	- 	"MobileServiceUrl" を、モバイル サービスの実際の URL に置き換えます。
 	- 	"AppKey" を、モバイル サービスのキーに置き換えます。
-	- 	詳細については、チュートリアルの <a href="http://azure.microsoft.com/ documentation/articles/mobile-services-android-get-started-data/">既存のアプリにモバイル サービスを追加する</a>を参照してください。 
+	- 	詳細については、チュートリアル「<a href="http://azure.microsoft.com/documentation/articles/mobile-services-android-get-started-data/">既存のアプリケーションへの Mobile Services の追加</a>」を参照してください。 
 
 
 
 4. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
 
-	> [AZURE.IMPORTANT]プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
+	> [AZURE.IMPORTANT] プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
 
 5. アプリケーションで、意味のあるテキスト (たとえば、チュートリアルの完了) を入力し、**[Add]** をクリックします。
 
@@ -119,12 +119,12 @@
 クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
 
 * [データの使用]
-  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
+  <br/>モバイル サービスを使用してデータの格納とクエリを実行する方法について説明します。
 
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
@@ -152,12 +152,12 @@
 [15]: ./media/mobile-services-android-get-started/mobile-services-import-android-project.png
 
 <!-- URLs. -->
-[データの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-data/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-users/
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/
+[データの使用]: /documentation/articles/mobile-services-android-get-started-data/
+[認証の使用]: /documentation/articles/mobile-services-android-get-started-users/
+[プッシュ通知の使用]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push/
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-[モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [管理ポータル]: https://manage.windowsazure.com/
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

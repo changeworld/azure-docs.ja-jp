@@ -1,22 +1,21 @@
-﻿このチュートリアルは、Android アプリの **GetStartedWithData** に基づいています。このアプリケーションの UI は、リストに追加された項目がメモリにローカルで格納されることを除くと、モバイル サービス Android のクイックスタートで作成されたアプリケーションと同じです。ストレージにデータを保存するために必要なコードを追加します。
+このチュートリアルは、Android アプリの **GetStartedWithData** に基づいています。このアプリケーションの UI は、リストに追加された項目がメモリにローカルで格納されることを除くと、Mobile Services Android のクイックスタートで作成されたアプリケーションと同じです。ストレージにデータを保存するために必要なコードを追加します。
 
 
-1. gitHub で、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures" target="blank">ここ</a>をクリックしてから **[ZIP のダウンロード]** をクリックして  `mobile-services-samples` リポジトリをダウンロードします。
+1. gitHub で、<a href="https://github.com/RickSaling/mobile-services-samples/tree/androidStudio" target="blank">ここ</a>をクリックしてから **[ZIP のダウンロード]** をクリックして、アプリのプロジェクトをダウンロードします。
 
-3. ダウンロードしたファイルを解凍し、ファイルの場所を書き留めます。
+2. ダウンロードしたファイルを解凍し、場所を書き留めておくか、それを Android Studio プロジェクトのディレクトリに移動します。
 
-2. Eclipse で、**[File]**、**[Import]** の順にクリックし、**[Android]** を展開します。**[Existing Android Code into Workspace]** をクリックし、**[Next]** をクリックします。 
+3. Android Studio を起動します。別のプロジェクトを使用していて、それが表示された場合は、そのプロジェクトを閉じます (**[ファイル] => [プロジェクトを閉じる]**)。
 
- 	![](./media/download-android-sample-code/mobile-services-import-android-workspace.png)
+4. **[Open an existing Android Studio project (既存の Android Studio プロジェクトを開く)]** を選択し、 *GettingStartedWithData* の  *AndroidStudio* フォルダーでプロジェクトの場所を参照して、**[OK]** をクリックします。 
 
-3. **[参照]** をクリックして、先ほど書き留めた展開済みの gitHub リポジトリの場所を参照します。 `GetStartedWithData` ディレクトリを参照し、 `Android` ディレクトリをクリックします。**[OK]** をクリックし、 `GetStartedWithData` プロジェクトがオンになっていることを確認します。プロジェクトを自分のワークスペースにコピーする場合は (推奨)、**[プロジェクトをワークスペースにコピーする]** チェック ボックスをオンにします。最後に、**[Finish]** をクリックします。 
 
- 	![](./media/download-android-sample-code/mobile-services-import-android-project.png)
+ 	![](./media/mobile-services-android-get-started/android-studio-import-project.png)
 
-	これにより、プロジェクト ファイルが現在のワークスペースにインポートされます。
+	これで、プロジェクトを使用する準備ができました。
  
->[AZURE.NOTE] モバイル サービス Android SDK の前のバージョンで使用されていたサンプル ファイルを入手する場合は、[GitHub の][ここ]から入手できます。
+>[AZURE.NOTE] Mobile Services Android SDK の前のバージョンで使用されていたサンプル ファイルを入手する場合は、[ここ][GitHub の]から入手できます。
 
 <!-- URLs. -->
-[GitHub]:  http://go.microsoft.com/fwlink/p/?LinkID=282122
-<!--HONumber=42-->
+[GitHub の]:  http://go.microsoft.com/fwlink/p/?LinkID=282122
+<!--HONumber=47-->

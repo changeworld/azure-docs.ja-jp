@@ -1,24 +1,7 @@
-<properties 
-	pageTitle="Azure Node.js デベロッパー センター - チュートリアル - アカウントの作成" 
-	description="Azure Node.js デベロッパー センター - チュートリアル - Azure アカウントの作成" 
-	services="" 
-	documentationCenter="nodejs" 
-	title="Create an account and enable preview features" 
-	authors="larryfr" 
-	manager="wpickett" 
-	editor="mollybos" />
+﻿<properties pageTitle="Azure Node.js デベロッパー センター - チュートリアル - アカウントの作成" description="Azure Node.js デベロッパー センター - チュートリアル - Azure アカウントの作成" services="" documentationCenter="nodejs" authors="cephalin" manager="wpickett" editor="mollybos"/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="09/17/2014" 
-	ms.author="larryfr" />
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="02/20/2015" ms.author="cephalin"/>
 
-[WACOM.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
+[AZURE.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
+<!--HONumber=47-->

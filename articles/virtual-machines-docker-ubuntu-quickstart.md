@@ -79,7 +79,7 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [BusyBox]: http://en.wikipedia.org/wiki/BusyBox
 [Docker スクラッチ イメージ]: https://docs.docker.com/articles/baseimages/#creating-a-simple-base-image-using-scratch
 [Canonical]: http://www.canonical.com/
-[MS Open Tech]: http://msopentech.com/
+[MSOpenTech]: http://msopentech.com/
 
 
-<!--HONumber=45--> 
+<!--HONumber=47-->

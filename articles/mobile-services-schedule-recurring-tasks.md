@@ -1,4 +1,5 @@
-﻿<properties 
+
+<properties 
 	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
 	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
@@ -10,17 +11,17 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="09/26/2014" 
+	ms.date="02/26/2015" 
 	ms.author="glenga"/>
 
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
 
-<div class="dev-center-tutorial-subselector">
-	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/" title=".NET backend">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-schedule-recurring-tasks/"  title="JavaScript backend" class="current">JavaScript バックエンド</a>
-</div>
+> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
+- [(任意 | .NET)](/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/)
+- [(任意 | Javascript)](/documentation/articles/mobile-services-schedule-recurring-tasks/)
  
 このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -34,47 +35,31 @@
 + [新しい Updates テーブルを作成する]
 + [新しいスケジュール済みジョブを作成する]
 
-##<a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
+## <a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
 
 [AZURE.INCLUDE [mobile-services-register-twitter-access](../includes/mobile-services-register-twitter-access.md)]
 
-##<a name="create-table"></a>新しい Updates テーブルを作成する
+## <a name="create-table"></a>新しい Updates テーブルを作成する
 
 次に、ツイートを格納するための新しいテーブルを作成する必要があります。
 
 2. 管理ポータルで、Mobile Services の **[データ]** タブをクリックし、**[+作成]** をクリックします。
 
-   	![][2]
-
-   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
-
 3. **[テーブル名]** に「_Updates_」と入力し、チェック ボタンをクリックします。
 
-   	![][3]
-
-  	これにより、**Updates** という新しいストレージ テーブルが作成されます。 
-
-##<a name="add-job"></a>新しいスケジュール済みジョブを作成する  
+## <a name="add-job"></a>新しいスケジュール済みジョブを作成する  
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納するための、スケジュールされたジョブを作成します。
 
 2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。 
 
-   	![][4]
-
-    >[AZURE.NOTE]モバイル サービスを<em>無料</em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
+    >[AZURE.NOTE]モバイル サービスを <em>無料</em> レベルで実行する場合は、一度に 1 つのスケジュールされたジョブのみを実行できます。.有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
 3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_getUpdates_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。 
-   
-   	![][5]
 
    	これにより、**getUpdates** という名前の新しいジョブが作成されます。 
 
-4. 作成した新しいジョブをクリックし、**[スクリプト]** をクリックします。
-
-   	![][6] 
-
-5. プレースホルダー関数である **getUpdates** を次のコードに置き換えます。
+4. 作成した新しいジョブをクリックし、**[スクリプト]** タブをクリックしてプレースホルダー関数 **getUpdates** を次のコードに置き換えます。
 
 		var updatesTable = tables.getTable('Updates');
 		var request = require('request');
@@ -152,21 +137,15 @@
 
    	このスクリプトでは、保存された資格情報を使用して Twitter クエリ API を呼び出し、`#mobileservices` というハッシュタグが含まれる最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
-    >[AZURE.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、無料レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「<a href="/ja-jp/develop/mobile/how-to-guides/work-with-server-scripts/#bulk-inserts">方法:一括挿入を実行する</a>」を参照してください。
+    >[AZURE.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、無料レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「<a href="/develop/mobile/how-to-guides/work-with-server-scripts/#bulk-inserts">方法:一括挿入を実行する</a>」をご覧ください。
 
 6. スクリプトをテストするには、**[一度だけ実行する]** をクリックします。 
-
-  	![][7]
 
    	これにより、ジョブが保存され、実行されます。ただし、スケジューラ内では無効の状態のままです。
 
 7. [戻る] ボタンをクリックし、**[データ]**、**Updates** テーブル、**[参照]** の順にクリックして、Twitter データがテーブルに挿入されたことを確認します。
 
-   	![][8]
-
 8. [戻る] ボタン、**[スケジューラ]** の順にクリックし、**[getUpdates]** を選択して、**[有効化]** をクリックします。
-
-   	![][9]
 
    	これにより、指定されたスケジュール (ここでは 1 時間ごと) でジョブが実行されるようになります。
 
@@ -175,7 +154,7 @@
 ## <a name="nextsteps"> </a>次のステップ
 
 * [モバイル サービスのサーバー スクリプト リファレンス]
-  <br/>サーバー スクリプトの登録および使用について説明します。
+  <br/>サーバー スクリプトの登録と使用について説明します。
 
 <!-- Anchors. -->
 [Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
@@ -199,11 +178,10 @@
 
 <!-- URLs. -->
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[WindowsAzure.com]: http://azure.microsoft.com/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /ja-jp/develop/mobile/how-to-guides/register-for-twitter-authentication
+[WindowsAzure.com]: http://www.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /develop/mobile/how-to-guides/register-for-twitter-authentication
 [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-
-<!--HONumber=42-->
+<!--HONumber=47-->

@@ -1,5 +1,5 @@
 ﻿## Event Hub へのメッセージ送信
-このセクションでは、Java アプリを記述して、イベントを Event Hub に送信します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[ここ](http://azure.microsoft.com/documentation/articles/service-bus-java-how-to-use-jms-api-amqp/)に示すように、Java 経由の AMQP を Service Bus キューおよび Topics と使用するのに似ています。詳細については、[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)および [Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)を参照してください。
+このセクションでは、Java アプリを記述して、イベントを Event Hub に送信します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[ここ](http://azure.microsoft.com/documentation/articles/service-bus-java-how-to-use-jms-api-amqp/)に示すように、Java 経由の AMQP を Service Bus キューと Topics と使用するのに似ています。詳細については、「[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)」と「[Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)」をご覧ください。
 
 1. Eclipse で、**Sender** という名前の新しい Java プロジェクトを作成します。
 
@@ -11,7 +11,7 @@
 
 	![][8]
 
-5. 次の内容で、**servicebus.properties** という名前のファイルを **Sender** プロジェクトのルートに作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は  `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
+5. 次の内容で、**servicebus.properties** という名前のファイルを **Sender** プロジェクトのルートに作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は  `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードできます。
 
 		# servicebus.properties - sample JNDI configuration
 
@@ -92,6 +92,5 @@
 
 
 <!-- Images -->
-[8]:./media/service-bus-event-hubs-getstarted/create-sender-java1.png
-
-<!--HONumber=42-->
+[8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
+<!--HONumber=47-->

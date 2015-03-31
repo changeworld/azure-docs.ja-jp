@@ -1,11 +1,11 @@
 ﻿<properties 
 	pageTitle="Azure Storage の使用" 
-	description="" 
+	description="Visual Studio の ASP.NET プロジェクトで Azure ストレージを作成するときに起きることについて説明します。" 
 	services="storage" 
 	documentationCenter="" 
 	authors="kempb" 
 	manager="douge" 
-	editor=""/>
+	editor="tglee"/>
 
 <tags 
 	ms.service="storage" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-what-happened" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/10/2014" 
+	ms.date="02/02/2015" 
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-storage-aspnet-getting-started-blobs/)
+> - [概要](/documentation/articles/vs-storage-aspnet-getting-started-blobs/)
 > - [変更内容](/documentation/articles/vs-storage-aspnet-what-happened/)
 
-### <span id="whathappened">プロジェクトの変更点</span>
+###<span id="whathappened">プロジェクトの変更点</span>
 
 ##### リファレンスの追加
 
@@ -36,7 +36,8 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 - `System.Data`
 - `System.Spatial`
 
-##### Azure Storage の接続文字列の追加 
+#####Azure Storage の接続文字列の追加 
 選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの web.config ファイル内に要素が作成されました。
 
-詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。<!--HONumber=42-->
+詳細については、「[ASP.NET](http://www.asp.net)」をご覧ください。
+<!--HONumber=47-->

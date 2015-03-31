@@ -23,13 +23,13 @@
 ##前提条件##
 この記事では、次の項目があることを前提としています。
 
-- **Azure サブスクリプション** - アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure アカウントの作成](http://azure.microsoft.com/documentation/articles/php-create-account/)に関するページを参照してください。 
+- **Azure サブスクリプション** - アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure アカウントの作成に関するページ](http://azure.microsoft.com/documentation/articles/php-create-account/)をご覧ください。 
 
-- **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](http://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
+- **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](http://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
 
-- **.vhd ファイルにインストールされた FreeBSD オペレーティング システム**  - サポートされている FreeBSD オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+- **.vhd ファイルにインストールされている FreeBSD オペレーティング システム** - サポートされている FreeBSD オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
 
-> [AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD](https://technet.microsoft.com/ja-jp/library/hh848454.aspx) コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+> [AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは [convert-vhd](https://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
 このタスクの手順は次のとおり 5 つあります。
 
@@ -84,7 +84,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 		# chmod 755 /usr/sbin/waagent
 		# /usr/sbin/waagent -install
 
-    **重要**: インストール後に、稼働していることを念のため確認してください。
+    **Important**: After installation, please double check it is running.
 
 		# service -e | grep waagent
 		/etc/rc.d/waagent
@@ -116,7 +116,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 			
 	- ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ·グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
 		 
-	- ストレージ アカウントの **Geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの Geo レプリケーションの管理の詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)に関するページを参照してください。
+	- ストレージ アカウントの **Geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの Geo レプリケーションの管理の詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)。
 
 	![Enter storage account details](./media/virtual-machines-create-upload-vhd-windows-server/Storage-create-account.png)
 
@@ -161,7 +161,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 1. Azure PowerShell コンソールを開きます。 
 
 2. 次のコマンドを入力します。 
-	`Get-AzurePublishSettingsFile`.
+	`Get-AzurePublishSettingsFile`
 
 3. ブラウザー ウィンドウが開き、.publishsettings ファイルをダウンロードするよう求められます。これには、Microsoft Azure のサブスクリプションについての情報と証明書が含まれています。
 
@@ -171,12 +171,12 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 4. 次のコマンドを入力します。 
 	`Import-AzurePublishSettingsFile <PathToFile>`
-
+	
 	ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。 
 
-   詳細については、「[Microsoft Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照してください 
+   詳細については、「[Microsoft Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」をご覧ください。 
 	
-   PowerShell のインストールと構成の詳細については、「[Microsoft Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」を参照してください 
+   PowerShell のインストールと構成の詳細については、「[Microsoft Azure PowerShell のインストールと構成方法](http://www.windowsazure.com/documentation/articles/install-configure-powershell/)」をご覧ください。 
 
 ## 手順 4:.vhd ファイルをアップロードする ##
 
@@ -194,7 +194,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 		Add-AzureVMImage -ImageName <Your Image's Name> -MediaLocation <location of the VHD> -OS <Type of the OS on the VHD>
 
-    **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして "Linux" または "Windows" しか使用できないためです。
+    **重要**:現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして "Linux" または "Windows" しか使用できないためです。
 
 2. ここまでの手順を完了すると、Azure の管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。  
 
@@ -208,4 +208,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!--HONumber=45--> 
+<!--HONumber=47-->
