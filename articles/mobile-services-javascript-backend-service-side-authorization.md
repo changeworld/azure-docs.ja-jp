@@ -1,6 +1,6 @@
 <properties
 	pageTitle="JavaScript バックエンドを使用したモバイル サービスでのユーザーのサービス側承認 | モバイル デベロッパー センター"
-	description = "Azure のモバイル サービスの JavaScript バックエンドでユーザーを承認する方法を学習します。"
+	description="Azure のモバイル サービスの JavaScript バックエンドでユーザーを承認する方法を学習します。"
 	services="mobile-services"
 	authors="krisragh"
 	manager="dwrede"

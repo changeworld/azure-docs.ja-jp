@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="通知ハブの使用 (Xamarin.Android アプリケーション)" 
-	description="Azure Notification Hubs を使用して Xamarin Android アプリケーションにプッシュ通知を送信する方法について説明します。 
+	description="Azure Notification Hubs を使用して Xamarin Android アプリケーションにプッシュ通知を送信する方法について説明します。" 
 	authors="lindydonna" 
 	manager="dwrede" 
 	editor="" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="notification-hubs" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-xamarin-android" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
 	ms.date="11/11/2014" 

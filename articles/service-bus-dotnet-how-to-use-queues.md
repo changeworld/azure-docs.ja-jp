@@ -5,7 +5,7 @@
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
-    editor="mattshel"/>
+    editor="mattshel"/>
 
 <tags
     ms.service="service-bus"
