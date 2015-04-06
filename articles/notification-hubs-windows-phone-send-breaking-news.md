@@ -21,7 +21,7 @@
     	<a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone" class="current">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/" title="Android">Android</a>
 </div>
 
-このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.0/8.1 Silverlight アプリにブロードキャストする方法について説明します。Windows ストアまたは Windows Phone 8.1 アプリを対象としている場合は、[Windows ユニバーサル] (/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/) バージョンを参照してください。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。 
+このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.0/8.1 Silverlight アプリにブロードキャストする方法について説明します。Windows ストアまたは Windows Phone 8.1 アプリを対象としている場合は、[Windows ユニバーサル](/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/) バージョンを参照してください。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。 
 
 ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の _tags_ を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[Notification Hubs の概要]」を参照してください。 
 
@@ -248,7 +248,7 @@
 
 
 <!-- URLs.-->
-[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
+[Notification Hubs の使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
 [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]:./breakingnews-localized-wp8.md 
 [Notification Hubs によるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users/
 [モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started

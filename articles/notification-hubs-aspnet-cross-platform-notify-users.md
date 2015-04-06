@@ -79,9 +79,9 @@
 
 + **[Notification Hubs を使用したニュース速報の送信]** <br/>テンプレートと使用した別のシナリオを例示します。 
 
-+  **[Notification Hubs の概要][Template (テンプレート)]**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
++  **[Notification Hubs の概要](テンプレート)**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
 
-+  **[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]**<br/>テンプレートの記述言語のリファレンスが含まれます。
++  **[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア)]**<br/>テンプレートの記述言語のリファレンスが含まれます。
 
 
 
@@ -101,7 +101,7 @@
 [Notification Hubs を使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
 [通知ハブによるユーザーへの通知]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
-[Template (テンプレート)]: http://go.microsoft.com/fwlink/p/?LinkId=317339
-[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[テンプレート]: http://go.microsoft.com/fwlink/p/?LinkId=317339
+[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
 <!--HONumber=45--> 
