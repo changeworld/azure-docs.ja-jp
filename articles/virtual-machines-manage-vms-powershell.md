@@ -1,4 +1,4 @@
-﻿<properties
+<properties
    pageTitle="manage-vms-azure-powershell"
    description="Azure PowerShell を使用した仮想マシンの管理"
    services="virtual-machines"
@@ -18,7 +18,7 @@
 
 # Azure PowerShell を使用した仮想マシンの管理
 
-開始する前に、Azure PowerShell がインストールされていることをご確認ください。インストールするには、「[Azure PowerShell のインストールと構成方法]」をご覧ください。(install-configure-powershell)
+開始する前に、Azure PowerShell がインストールされていることをご確認ください。インストールするには、[「Azure PowerShell のインストールと構成方法」をご覧ください。](../install-configure-powershell/)
 
 ## イメージの取得
 

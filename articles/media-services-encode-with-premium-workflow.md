@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="メディア エンコーダー プレミアム ワークフローでの高度なエンコード" 
 	description="メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
@@ -59,7 +59,7 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 6. エンコード ジョブを送信します。
 
-完全な例を次に示します。Media Services の .NET 開発を使用して設定する方法の詳細については、[「Media Services development with .NET (.NET での Media Services 開発)」]を参照してください(../media-services-dotnet-how-to-use)。
+完全な例を次に示します。Media Services の .NET 開発を使用して設定する方法の詳細については、[「Media Services development with .NET (.NET での Media Services 開発)」](../media-services-dotnet-how-to-use)を参照してください。
 
 
  	using System; 
@@ -260,4 +260,5 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 	        }
 	    }
 	}
+
 <!--HONumber=47-->
