@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="DocumentDB のプログラミング:ストアド プロシージャ、トリガー、UDF | Azure" 
 	description="Microsoft Azure DocumentDB を使用して、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) を JavaScript でネイティブに記述する方法について説明します。" 
 	services="documentdb" 
@@ -142,7 +142,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 上の例ではストアド プロシージャの使用法について説明しました。トリガーとユーザー定義関数 (UDF) については、このチュートリアルの後半で説明します。最初に、DocumentDB でのスクリプトのサポートの一般的な特徴について説明します。  
 
 ##ランタイム サポート
-[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262] によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています(../documentdb-interactions-with-resources.md)。
+[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262 によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています](../documentdb-interactions-with-resources.md)。
  
 ##トランザクション
 一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。各トランザクションは、**ACID の保証**を提供します。ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の 4 つの特性のよく知られた頭字語です。  
@@ -601,7 +601,7 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 	    });
 
 
-次の例では、ユーザー定義関数 (UDF) を作成し、これを [DocumentDB SQL クエリ]で使用しています(../documentdb-sql-query.md)。
+次の例では、ユーザー定義関数 (UDF) を作成し、これを [DocumentDB SQL クエリで使用しています](../documentdb-sql-query.md)。
 
 	UserDefinedFunction function = new UserDefinedFunction()
 	{
