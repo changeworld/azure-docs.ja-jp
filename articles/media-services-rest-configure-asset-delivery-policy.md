@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="REST によるアセットの配信ポリシーの構成" 
 	description="このトピックでは、さまざまなアセットの配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
@@ -25,7 +25,7 @@
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。 
 
->[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。 
+>[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services-manage-origins#scale_streaming_endpoints)」をご覧ください。 
 >
 >また、アセットには、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。  
 
@@ -53,13 +53,13 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-アセットを発行してストリーミング URL を構築する方法については、「[方法: ストリーミング コンテンツを配信する]」をご覧ください(../media-services-deliver-streaming-content)。
+アセットを発行してストリーミング URL を構築する方法については、「[方法: ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content)」をご覧ください。
 
 >[AZURE.NOTE] メディア サービス REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](../media-services-rest-how-to-use)」をご覧ください。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
+>「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
 ##アセットの配信ポリシーを解除する 
@@ -142,7 +142,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###EnvelopeEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)]」をご覧ください(../media-services-rest-create-contentkey)。
+DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](../media-services-rest-create-contentkey)」をご覧ください。
 
 
 ###<a id="get_delivery_url"></a>配信 URL を取得する
@@ -229,18 +229,18 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###アセットの配信ポリシーにアセットをリンクする
 
-[アセットをアセットの配信ポリシーにリンクする]をご覧ください。(#link_asset_with_asset_delivery_policy)
+[アセットをアセットの配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)をご覧ください。
 
 ##DynamicCommonEncryption アセットの配信ポリシー 
 
 ###CommonEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)]」をご覧ください(../media-services-rest-create-contentkey)。
+DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](../media-services-rest-create-contentkey)」をご覧ください。
 
 
 ###配信 URL を取得する
 
-前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、[配信 URL を取得する]をご覧ください(#get_delivery_url)。
+前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、[配信 URL を取得する](#get_delivery_url)をご覧ください。
 
 ###アセットの配信ポリシーを作成する
 
@@ -268,7 +268,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###アセットの配信ポリシーにアセットをリンクする
 
-[アセットをアセットの配信ポリシーにリンクする]をご覧ください。(#link_asset_with_asset_delivery_policy)
+[アセットをアセットの配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)をご覧ください。
 
 
 ##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類

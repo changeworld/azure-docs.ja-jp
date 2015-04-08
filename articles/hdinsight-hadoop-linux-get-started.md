@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
    pageTitle="Linux 上の HDInsight で Hive と Hadoop を使用する | Azure" 
    description="Linux 上の HDInsight で Hadoop を使用する方法について説明します。Linux で実行する HDInsight Hadoop クラスターをプロビジョニングする方法と、Hive でデータを問い合わせる方法について説明します。" 
    services="hdinsight" 
@@ -74,13 +74,13 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 
 詳細については、「
-[ストレージ アカウントの作成方法]」(../storage-create-storage-account/) および「[HDInsight での Azure BLOB ストレージの使用]」(../hdinsight-use-blob-storage/)を参照してください。
+[ストレージ アカウントの作成方法](../storage-create-storage-account/)」 および「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)」を参照してください。
 	
 ## <a name="provision"></a>Linux での HDInsight クラスターのプロビジョニング
 
 HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、簡易作成オプションを使用して、Linux 上に HDInsight クラスターをプロビジョニングします。このオプションでは、既定のユーザー名と Azure ストレージ コンテナーを使用して、Ubuntu 12.04 LTS で実行されている HDInsight Version 3.2 (Hadoop Version 2.5、HDP Version 2.2) をクラスターに構成します。異なる HDInsight バージョンとその SLA については、[HDInsight コンポーネントのバージョン](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
 
->[AZURE.NOTE]  Windows Server OS を実行する Hadoop クラスターを作成することもできます。手順については、[Windows での HDInsight の概要]に関するページを参照してください(../hdinsight-get-started/)。
+>[AZURE.NOTE]  Windows Server OS を実行する Hadoop クラスターを作成することもできます。手順については、[Windows での HDInsight の概要](../hdinsight-get-started/)に関するページを参照してください。
 
 
 **HDInsight クラスターをプロビジョニングするには**
@@ -112,7 +112,7 @@ HDInsight クラスターをプロビジョニングすると、Hadoop と関連
 	
 5. **[HDInsight クラスターの作成]** をクリックします。プロビジョニングが完了すると、[状態] 列に **[実行中]** と表示されます。
 
-	>[AZURE.NOTE] この手順では、既定の SSH ユーザー名と Azure ストレージ コンテナーを使用する簡易作成オプションを指定して、Linux クラスターを作成します。認証に SSH キーを使用する、追加のストレージ アカウントを使用するなどのカスタム オプションを指定してクラスターを作成するには、[カスタム オプションを使用した HDInsight Linux クラスターのプロビジョニング]に関するページ(../hdinsight-hadoop-provision-linux-clusters)を参照してください。
+	>[AZURE.NOTE] この手順では、既定の SSH ユーザー名と Azure ストレージ コンテナーを使用する簡易作成オプションを指定して、Linux クラスターを作成します。認証に SSH キーを使用する、追加のストレージ アカウントを使用するなどのカスタム オプションを指定してクラスターを作成するには、[カスタム オプションを使用した HDInsight Linux クラスターのプロビジョニング](../hdinsight-hadoop-provision-linux-clusters)に関するページを参照してください。
 
 
 ## <a name="hivequery"></a>クラスターでの Hive ジョブの送信

@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="REST で ContentKey を作成する" 
 	description="アセットに安全にアクセスできる ContentKey を作成する方法について学習します。" 
 	services="media-services" 
@@ -23,9 +23,9 @@
 
 メディア サービスでは、暗号化されたアセットを新しく作成して送信できます。**ContentKey** で**アセット**に安全にアクセスできます。 
 
-新しいアセットを作成した場合 ([ファイルをアップロード]する前など(../media-services-rest-upload-files/))、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
+新しいアセットを作成した場合 ([ファイルをアップロード](../media-services-rest-upload-files/)する前など)、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
 
-クライアントにアセットを配信するときには、[アセットを動的に暗号化するように構成]できます。(../media-services-rest-configure-asset-delivery-policy) その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
+クライアントにアセットを配信するときには、[アセットを動的に暗号化するように構成](../media-services-rest-configure-asset-delivery-policy)できます。 その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
 
 暗号化されたアセットには、**ContentKey** を関連付ける必要があります。この記事では、コンテンツ キーを作成する方法について説明します。
 
@@ -38,7 +38,7 @@
 3.	X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
 
 	Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。具体例については、[EncryptSymmetricKeyData function (EncryptSymmetricKeyData 関数)](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Encryption/EncryptionUtils.cs)をご覧ください。
-4.	そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。詳細については、[ここhttp://www.microsoft.com/playready/documents/)で PlayReady Header Object ドキュメントの「PlayReady AES Key Checksum Algorithm (PlayReady AES キー checksum アルゴリズム)」セクションをご覧ください。
+4.	そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。詳細については、[ここ](http://www.microsoft.com/playready/documents/)で PlayReady Header Object ドキュメントの「PlayReady AES Key Checksum Algorithm (PlayReady AES キー checksum アルゴリズム)」セクションをご覧ください。
 
 	次の .NET の例では、キー識別子の GUID 部とクリアなコンテンツ キーを使用して checksum を計算しています。
 	
@@ -67,9 +67,9 @@ AES キーの生成、キーの暗号化、checksum 計算の例は、このト�
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](../media-services-rest-how-to-use)」をご覧ください。
 
->https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 ##ProtectionKeyId の取得 
  

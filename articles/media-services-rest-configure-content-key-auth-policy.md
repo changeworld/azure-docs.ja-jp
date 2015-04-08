@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="REST によるコンテンツ キー承認ポリシーの構成" 
 	description="コンテンツ キー承認ポリシーを構成する方法について説明します。" 
 	services="media-services" 
@@ -27,7 +27,7 @@
 
 Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。メディア サービスでは、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。 
 
-メディア サービスでアセットを暗号化する場合は、[こちら]の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。(../media-services-rest-create-contentkey/)また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
+メディア サービスでアセットを暗号化する場合は、[こちら](../media-services-rest-create-contentkey/)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
 
 現時点では、HLS、MPEG DASH、スムーズ ストリーミングを暗号化できます。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
@@ -47,8 +47,8 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 ###以下の考慮事項があります。
 
-- 動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。 
-- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする]」をご覧ください(../media-services-encode-asset/)。  
+- 動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services-manage-origins#scale_streaming_endpoints)」をご覧ください。 
+- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする](../media-services-encode-asset/)」をご覧ください。  
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、アセットをアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
@@ -61,7 +61,7 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 >
 >メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
+>「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
 ###オープン制限
@@ -257,7 +257,7 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 	
 ###ContentKeyAuthorizationPolicies を作成する
 
-「トークン制限ポリシー」を作成します ([ここ]を参照)(#ContentKeyAuthorizationPolicies)。
+「トークン制限ポリシー」を作成します ([ここ](#ContentKeyAuthorizationPolicies)を参照)。
 
 
 ###ContentKeyAuthorizationPolicyOptions を作成する
@@ -301,11 +301,11 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 	
 ####ContentKeyAuthorizationPolicies を Options にリンクする
 
-ContentKeyAuthorizationPolicies を Options にリンクします ([ここ]を参照)(#ContentKeyAuthorizationPolicies)。
+ContentKeyAuthorizationPolicies を Options にリンクします ([ここ](#ContentKeyAuthorizationPolicies)を参照)。
 
 ####承認ポリシーをコンテンツ キーに追加する
 
-AuthorizationPolicy を ContentKey に追加します ([ここ]を参照)(#AddAuthorizationPolicyToKey)。
+AuthorizationPolicy を ContentKey に追加します ([ここ](#AddAuthorizationPolicyToKey)を参照)。
 
 
 ##PlayReady 動的暗号化 
@@ -401,11 +401,11 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 ####ContentKeyAuthorizationPolicies を Options にリンクする
 
-ContentKeyAuthorizationPolicies を Options にリンクします ([ここ]を参照)(#ContentKeyAuthorizationPolicies)。
+ContentKeyAuthorizationPolicies を Options にリンクします ([ここ](#ContentKeyAuthorizationPolicies)を参照)。
 
 ####承認ポリシーをコンテンツ キーに追加する
 
-AuthorizationPolicy を ContentKey に追加します ([ここ]を参照)(#AddAuthorizationPolicyToKey)。
+AuthorizationPolicy を ContentKey に追加します ([ここ](#AddAuthorizationPolicyToKey)を参照)。
 
 
 ###トークン制限
@@ -414,7 +414,7 @@ AuthorizationPolicy を ContentKey に追加します ([ここ]を参照)(#AddAu
 	
 ####ContentKeyAuthorizationPolicies を作成する
 	
-Create ContentKeyAuthorizationPolicies を作成します ([ここ]を参照)(#ContentKeyAuthorizationPolicies2)。
+Create ContentKeyAuthorizationPolicies を作成します ([ここ](#ContentKeyAuthorizationPolicies2)を参照)。
 
 ####ContentKeyAuthorizationPolicyOptions を作成する
 	
@@ -457,11 +457,11 @@ Create ContentKeyAuthorizationPolicies を作成します ([ここ]を参照)(#C
 
 ####ContentKeyAuthorizationPolicies を Options にリンクする
 
-ContentKeyAuthorizationPolicies を Options にリンクします ([ここ]を参照)(#ContentKeyAuthorizationPolicies)。
+ContentKeyAuthorizationPolicies を Options にリンクします ([ここ](#ContentKeyAuthorizationPoliciesを参照)。
 
 ####承認ポリシーをコンテンツ キーに追加する
 
-AuthorizationPolicy を ContentKey に追加します ([ここ]を参照)(#AddAuthorizationPolicyToKey)。
+AuthorizationPolicy を ContentKey に追加します ([ここ](#AddAuthorizationPolicyToKey)を参照)。
 
 
 ##<a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
@@ -486,7 +486,7 @@ AuthorizationPolicy を ContentKey に追加します ([ここ]を参照)(#AddAu
 
 
 ##次のステップ
-これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)]」(../media-services-rest-configure-asset-delivery-policy/) トピックに進みます。
+これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)](../media-services-rest-configure-asset-delivery-policy/)」 トピックに進みます。
 
 
 <!--HONumber=47-->

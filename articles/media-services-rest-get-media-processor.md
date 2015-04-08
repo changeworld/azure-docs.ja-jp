@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="メディア プロセッサを作成する方法 - Azure" 
 	description="メディア プロセッサ コンポーネントを作成し、Azure メディア サービス用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。" 
 	services="media-services" 
@@ -69,9 +69,9 @@
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](../media-services-rest-how-to-use)」をご覧ください。
 
->https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
 
@@ -112,7 +112,7 @@
 ##次のステップ
 これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
 
-[方法: アセットをエンコードする]: ../media-services-rest-encode-asset/
+[アセットをエンコードする方法]: ../media-services-rest-encode-asset/
 [Task Preset Strings for the Azure Media Encoder (Azure メディア エンコーダー用のタスク プリセット文字列)]: http://msdn.microsoft.com/library/jj129582.aspx
 [方法: Media Services にプログラムから接続する]: ../media-services-rest-connect_programmatically/
 <!--HONumber=47-->

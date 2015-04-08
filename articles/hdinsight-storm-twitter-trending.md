@@ -1,4 +1,4 @@
-﻿<properties
+<properties
    pageTitle="HDInsight | Azure での Apache Storm を使用した Twitter のトレンディング トピック"
    description="Trident を使用して、ハッシュタグに基づいてトレンディング トピックを見つける Storm トポロジを作成する方法について説明します。"
    services="hdinsight"
@@ -127,7 +127,7 @@ Trident は、結合、集計、グループ化、フィルタリングなどの
 
 ##次のステップ
 
-これで、トポロジをローカルでテストできました。次は[HDInsight でこのトポロジを Storm にデプロイする]方法をご確認ください(../hdinsight-storm-deploy-monitor-topology/)。
+これで、トポロジをローカルでテストできました。次は[HDInsight でこのトポロジを Storm にデプロイする](../hdinsight-storm-deploy-monitor-topology/)方法をご確認ください。
 
 必要に応じて次の Storm 関連のトピックもご覧ください。
 
