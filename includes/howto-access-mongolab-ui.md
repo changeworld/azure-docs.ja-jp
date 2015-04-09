@@ -1,6 +1,6 @@
 ﻿MongoLab データベースのプロビジョニング後いつでも、そのデータベースを管理するために MongoLab Web UI にアクセスできます。Azure 管理ポータルをとおして、便利なシングル サインオン (SSO) アクセスを利用できます。
 
-MongoLab UI を使用すると、ドキュメントの挿入とクエリ実行、データベース統計の取得、使用可能なデータベース コマンドの実行など、ほとんどのデータベース タスクを実行できます。MongoLab UI の詳細については、[サポート ページ](http://support.mongolab.com) と[ブログ](http://blog.mongolab.com)を参照してください。
+MongoLab UI を使用すると、ドキュメントの挿入とクエリ実行、データベース統計の取得、使用可能なデータベース コマンドの実行など、ほとんどのデータベース タスクを実行できます。MongoLab UI の詳細については、[サポート ページ](http://support.mongolab.com)と[ブログ](http://blog.mongolab.com)を参照してください。
 
 MongoLab UI にアクセスするには、以下の手順を実行します。
 
@@ -20,4 +20,5 @@ MongoLab UI にアクセスするには、以下の手順を実行します。
 [button-manage]: ./media/howto-access-mongolab-ui/button-manage.png
 [button-addons]: ./media/howto-access-mongolab-ui/button-addons.png
 [screen-dblanding]: ./media/howto-access-mongolab-ui/screen-mongolab_dblanding.png
-<!--HONumber=42-->
+
+<!--HONumber=49-->

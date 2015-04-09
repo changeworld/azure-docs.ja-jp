@@ -1,245 +1,249 @@
-﻿<properties 
-	pageTitle="Microsoft Azure Websites でのステージングされた展開" 
-	description="Microsoft Azure Websites でステージングされた発行を使用する方法について説明します。" 
-	services="web-sites" 
-	documentationCenter="" 
-	authors="cephalin" 
-	writer="cephalin" 
-	manager="wpickett" 
+﻿<properties
+	pageTitle="Azure App Service の Web アプリのステージング環境を設定する"
+	description="Azure App Service の Web アプリのステージングされた発行を使用する方法について説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	writer="cephalin"
+	manager="wpickett"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="web-sites" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="9/9/2014" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/24/2015"
 	ms.author="cephalin"/>
 
 <a name="Overview"></a>
-#Microsoft Azure Websites でのステージングされた展開#
-アプリケーションを Azure Websites に展開する際、既定の運用スロットではなく、別の展開スロットに展開できます。この場合、独自のホスト名を持つ複数のライブ サイトを使用することになります。このオプションは、**標準**の Web ホスティング プランで使用できます。さらには、運用スロットを含む 2 つの展開スロット間でサイトとサイト構成をスワップできます。展開スロットにアプリケーションを展開することには、次のメリットがあります。
+# Azure App Service の Web アプリのステージング環境を設定する
 
-- ステージング展開スロットで Web サイトの変更を検証した後に、運用スロットにスワップできます。
+使用している App Service プラン モードが**標準**または**プレミアム**である場合は、Web アプリを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別の展開スロットにデプロイすることができます。展開スロットは、実際には固有のホスト名を持つライブ Web アプリです。Web アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つの展開スロットの間でスワップすることができます。展開スロットにアプリケーションを展開することには、次のメリットがあります。
 
-- スワップ後も、以前のステージング サイト スロットに元の運用サイトが残っているため、運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。 
- 
-- スロットにサイトを展開した後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。これにより、サイトを展開する際のダウンタイムがなくなります。トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。 
+- ステージング展開スロットで Web アプリの変更を検証した後に、運用スロットにスワップできます。
 
-**標準**プランでは、各 Web サイトに対し、運用スロットに加えて 4 つの展開スロットがサポートされています。 
+- スロットに Web アプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。これにより、Web アプリをデプロイする際のダウンタイムがなくなります。トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。このワークフローは、検証前のスワップが必要ない場合、[自動スワップ]を構成することで(#Configure-Auto-Swap-for-your-web-app) 全体を自動化できます。
 
-## 目次 ##
-- [展開スロットを Web サイトに追加するには](#Add)
-- [展開スロットの構成について](#AboutConfiguration)
-- [展開スロットをスワップするには](#Swap)
-- [運用サイトをステージング サイトにロールバックするには](#Rollback)
-- [サイト スロットを削除するには](#Delete)
-- [サイト スロットに対する Azure PowerShell コマンドレット](#PowerShell)
-- [サイト スロットに対する Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) のコマンド](#CLI)
+- スワップ後も、以前のステージング Web アプリ スロットに元の運用 Web アプリが残っているため、運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。
+
+サポートされる展開スロット数は、App Service のプラン モードごとに異なります。使用している Web アプリのモードでサポートされるスロット数を確認するには、「[アプリ サービス 料金](/pricing/details/app-service/). 」を参照してください。
+
+- Web アプリに複数のスロットがある場合は、モードを変更することはできません。
+
+- スケーリングは
+
+- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。
+
+	> [AZURE.NOTE] [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
 
 <a name="Add"></a>
-##展開スロットを Web サイトに追加するには##
+## Web アプリに展開スロットを追加する ##
 
-複数の展開スロットを有効にするには、Web サイトを**標準**ホスティング プランで実行する必要があります。 
+複数の展開スロットを有効にするには、Web アプリが**標準**または**プレミアム** モードで実行されている必要があります。
 
-1. [クイック スタート] ページ、または Web サイトの [ダッシュボード] ページの [概要] セクションで、**[新しい展開スロットの追加]** をクリックします。 
-	
-	![Add a new deployment slot][QGAddNewDeploymentSlot]
-	
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、Web アプリのブレードを開きます。
+2. **[展開スロット]** をクリックします。次に、**[展開スロット]** ブレードで **[スロットの追加]** をクリックします。
+
+	![新しい展開スロットの追加][QGAddNewDeploymentSlot]
+
 	> [AZURE.NOTE]
-	> Web サイトが**標準**モードになっていない場合は、**"ステージングされた発行を有効にするには、標準モードになっている必要があります"** というメッセージが表示されます。この時点で、**[アップグレード]** を選択して Web サイトの **[スケールの設定]** タブに移動してから、操作を続行することもできます。
-	
-2. **[新しい展開スロットの追加]** ダイアログ ボックスで、スロット名を設定し、別の既存の展開スロットから Web サイト構成を複製するかどうかを選択します。チェック マークをクリックして続行します。 
-	
-	![Configuration Source][ConfigurationSource1]
-	
-	最初にスロットを作成する場合は、本番の既定のスロットから構成を複製するか、まったく複製しないかのいずれかしかありません。 
-	
+	> Web アプリがまだ**標準**または**プレミアム** モードでない場合は、ステージングされた発行を有効にするためのモードを示すメッセージが表示されます。その場合は、操作を継続する前に、**[アップグレード]** を選択して Web アプリの **[スケール]** タブに移動できます。
+
+2. **[スロットの追加]** ブレードで、スロット名を設定し、別の既存の展開スロットから Webアプリ構成を複製するかどうかを選択します。チェック マークをクリックして続行します。
+
+	![構成ソース][ConfigurationSource1]
+
+	初めてスロットを追加する場合、選択肢は 2 つのみです。運用環境内の既定のスロットから構成を複製するか、または複製しないかのどちらかです。
+
 	複数のスロットを作成すると、運用サイトのスロット以外のスロットから構成を複製できるようになります。
-	
-	![Configuration sources][MultipleConfigurationSources]
 
-5. Web サイトの一覧で、Web サイト名の左にあるマークを展開して、展開スロットを表示します。Web サイトの名前の後に、展開スロット名が表示されます。 
-	
-	![Site List with Deployment Slot][SiteListWithStagedSite]
-	
-4. 展開サイト スロットの名前をクリックすると、他の Web サイトと同様に一連のタブのあるページが開きます。<strong><i>Web サイト名 </i>(<i>展開スロット名</i>)</strong> が、ポータル ページの上部に表示されるので、展開サイト スロットが表示されていることがわかります。
-	
-	![Deployment Slot Title][StagingTitle]
-	
-5. ダッシュボード ビューでサイトの URL をクリックします。展開スロットが独自のホスト名を持つライブ サイトであることにご注意ください。展開サイトへのパブリック アクセスを制限する方法については、[Azure Web Sites - block web access to non-production deployment slots (Azure Web サイト - 運用環境以外の展開スロットへの Web アクセスの禁止)](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/) をご覧ください。
+	![構成ソース][MultipleConfigurationSources]
 
-	-	 
+5. **[展開スロット]** ブレードで、展開スロットをクリックしてスロットのブレードを開くと、他の Web アプリと同様、一連のメトリックと構成が表示されます。<strong><i>現在表示している展開スロットが、your-web-app-name</i>-<i>deployment-slot-name</i></strong> という形式でブレードの上部に表示されます。
 
-このスロットにコンテンツはありません。スロットには、異なるリポジトリ分岐、またはまったく異なるリポジトリから展開できます。またスロットの構成を変更することもできます。コンテンツの更新には、展開スロットに関連付けられた発行プロファイルまたは展開資格情報を使用してください。たとえば、[Git を使用してこのスロットに発行する](http://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/) ことができます
+	![展開スロットのタイトル][StagingTitle]
+
+5. スロットのブレードで、アプリの URL をクリックします。展開スロットが独自のホスト名を持つライブ アプリであることに注意してください。展開スロットへのパブリック アクセスを制限する方法については、「[App Service Web App - block web access to non-production deployment slots (App Service Web App - 運用環境以外の展開スロットへの Web アクセスの禁止)](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)」を参照してください。
+
+展開スロットを作成した直後は、コンテンツはありません。スロットには、異なるリポジトリ分岐、またはまったく異なるリポジトリから展開できます。またスロットの構成を変更することもできます。コンテンツの更新には、展開スロットに関連付けられた発行プロファイルまたは展開資格情報を使用してください。たとえば、[Git を使用してこのスロットに発行する](web-sites-publish-source-control.mdことができます。
 
 <a name="AboutConfiguration"></a>
-##展開スロットの構成について##
-別の展開スロットから構成を複製する場合、複製された構成を編集できます。次の一覧では、スロットのスワップ時に変更される構成を示します。
+## 展開スロットの構成 ##
+別のデプロイメント スロットから構成を複製する場合、複製された構成を編集することができます。なお、スワップ先のコンテンツに反映される構成要素 (非スロット固有) もあれば、スワップ後にも同じスロットに維持される構成要素 (スロット固有) もあります。次の一覧では、スロットのスワップ時に変更される構成を示します。
 
-**スロットのスワップ時に変更される構成**:
+**スワップされる設定**:
 
-- 全般設定
-- 接続文字列
+- 一般設定 - フレームワーク バージョン、32/64 ビット、Web ソケットなど
+- アプリ設定 (スロット固有として構成可能)
+- 接続設定 (スロット固有として構成可能)
 - ハンドラー マッピング
 - 監視と診断の設定
+- Web ジョブ コンテンツ
 
-**スロットのスワップ時に変更されない構成**:
+**スワップされない設定**:
 
 - 発行エンドポイント
 - カスタム ドメイン名
 - SSL 証明書とバインド
 - スケールの設定
+- Web ジョブ スケジューラ
 
-**注**: 
+アプリ設定や接続文字列をスロット固有として構成する (スワップされないようにする) には、特定のスロットの **[アプリケーション設定]** ブレードにアクセスし、スロット固有にする構成要素の **[スロット設定]** ボックスを選択します。構成要素をスロット固有としてマークすると、その Web アプリに関連付けられたすべての展開スロットにわたってその要素がスワップできなくなります。
 
-- 複数の展開スロットは**標準** Web ホスティング プランのサイトにのみ使用できます。
-
-- 複数のスロットがある場合、ホスティング プランの変更はできません。
-
-- 運用環境にスワップするスロットと運用サイトの構成は一致している必要があります。
-
-- 既定では、展開スロットは運用サイトと同じデータベースを指定します。ただし、展開スロットのデータベース接続文字列を変更することで、代替データベースを指定するように展開スロットを構成できます。その後、運用環境にスワップする前に、展開スロットで元のデータベース接続文字列を復元できます。
-
+![スロット設定][SlotSettings]
 
 <a name="Swap"></a>
-##展開スロットをスワップするには##
+## 展開スロットをスワップするには ##
 
-1. 展開スロットをスワップするには、Web サイトの一覧でスワップする展開スロットを選択し、コマンド バーで **[スワップ]** ボタンをクリックします。 
-	
-	![Swap Button][SwapButtonBar]
-	
-2. [展開のスワップ] ダイアログが表示されます。このダイアログでは、スワップ元およびスワップ先となるサイト スロットを選択できます。
-	
-	![Swap Deployments Dialog][SwapDeploymentsDialog]
-	
-3. チェックマークをクリックして操作を完了します。操作が完了すると、サイト スロットはスワップされています。
+>[AZURE.IMPORTANT] Web アプリを展開スロットからを運用環境にスワップする前に、スロット固有でないすべての設定が、スワップ ターゲットへと反映させたいとおりに構成されていることを確認してください。
 
+1. 展開スロットをスワップするには、Web アプリのコマンド バーか、または展開スロットのコマンド バーで **[スワップ]** ボタンをクリックします。スワップのソースとターゲットが正しく設定されていることを確認してください。通常、スワップ ターゲットは運用スロットになります。  
+
+	![[スワップ] ボタン][SwapButtonBar]
+
+3. **[OK]** クリックして操作を完了します。操作が完了すると、展開スロットはスワップされています。
+
+## Web アプリの自動スワップを構成する ##
+
+自動スワップを使用すると、Web アプリのエンドユーザーにコールド スタートやダウンタイムを強制することなく、Web アプリを連続的に配置できる、効率的な DevOps シナリオを実現できます。展開スロットを運用環境に自動スワップするよう構成した場合、そのスロットにコードの更新をプッシュすると、Web アプリがスロット内で起動されしだい、App Service によって自動的に運用環境へとスワップされます。
+
+>[AZURE.IMPORTANT] 自動スワップを有効にする場合は、スロット構成がターゲット スロット (通常は運用スロット) に反映させたいとおりの構成になっていることを確認してください。
+
+スロットの自動スワップは簡単に構成できます。次の手順に従ってください。
+
+1. **[展開スロット]** ブレードで非運用スロットを選択し、そのスロットのブレードの **[すべての設定]** をクリックします。  
+
+	![][Autoswap1]
+
+2. **[アプリケーション設定]** をクリックします。**[自動スワップ]** の **[オン]** を選択し、**[自動スワップ スロット]** で目的のターゲット スロットを選択して、コマンド バーの **[保存]** をクリックします。スロットの構成が、ターゲット スロットに反映させたいとおりの構成になっていることを確認してください。
+
+	操作が完了すると、**[通知]** タブで緑色の「**成功**」という文字が点滅します。
+
+	![][Autoswap2]
+
+	>[AZURE.NOTE] Web アプリの自動スワップ機能に事前に慣れておきたい場合は、まず **[自動スワップ スロット]** で運用スロット以外のターゲット スロットを選択することで、機能をテストすることができます。  
+
+3. 展開スロットにコードをプッシュします。しばらくすると自動スワップが実行され、更新がターゲット スロットの URL に反映されます。
 
 <a name="Rollback"></a>
-##運用サイトをステージング サイトにロールバックするには##
-スロットのスワップ後に運用サイトでエラーが見つかった場合は、同じ 2 つのスロットをすぐにスワップして、スロットをスワップ前の状態にロールバックできます。 
+## スワップ後に運用環境のアプリをロールバックするには ##
+スロットのスワップ後に運用サイトでエラーが見つかった場合は、同じ 2 つのスロットをすぐにスワップして、スロットをスワップ前の状態にロールバックすることができます。
 
 <a name="Delete"></a>
-##サイト スロットを削除するには##
+## 展開スロットを削除するには##
 
-Azure Websites のポータル ページの下部にあるコマンド バーで、**[削除]** をクリックします。Web サイトとすべての展開スロットを削除するか、展開スロットのみを削除できます。 
+展開スロットのブレードで、コマンド バーの **[削除]** をクリックします。  
 
-![Delete a Site Slot][DeleteStagingSiteButton]
-
-**注**: 
-
-- スケーリングは運用サイト スロットにのみ使用できます。
-
-- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。 
-
-- 必要に応じて運用サイト スロットに直接発行することもできます。
-
-- 規定では、展開スロット (サイト) と運用スロット (サイト) は同じリソースを共有し、同じ VM 上で実行されます。ステージング スロットで負荷テストを実行すると、運用環境にも同等の負荷がかかります。 
-	
-	> [AZURE.NOTE] [Azure プレビュー ポータル](https://portal.azure.com) を使用している場合のみ、非運用スロットを異なる Web ホスティング プランに変更することで、この運用スロットに対する影響を回避できます。ただし、テスト スロットを運用環境にスワップするには、その前にテスト スロットと運用スロットを同じ Web ホスティング プランに戻す必要があります。
+![展開スロットの削除][DeleteStagingSiteButton]
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
 <a name="PowerShell"></a>
-##サイト スロットに対する Azure PowerShell コマンドレット 
+## 展開スロット用の Azure PowerShell コマンドレット
 
-Azure PowerShell は、Azure Websites の展開スロットの管理サポートを含む、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです。 
+Azure PowerShell は、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです (Azure App Service の Web アプリ展開スロットを管理するためのサポートなど)。
 
-- Azure PowerShell のインストールと構成、Windows Azure サブスクリプションを使用した Azure PowerShell の認証については、[Windows Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell) をご覧ください。  
+- Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「[Microsoft Azure PowerShell のインストールおよび構成方法]」(install-configure-powershell.md) を参照してください。  
 
-- PowerShell で Azure Websites に使用できるコマンドレットの一覧を表示するには、 `help AzureWebsite` を呼び出してください。 
-
-----------
-
-###Get-AzureWebsite
-**Get-AzureWebsite** コマンドレットは、次の例に示すように、現在のサブスクリプションの Azure websites に関する情報を表示します。 
-
-`Get-AzureWebsite siteslotstest`
+- PowerShell で Azure App Service に使用できるコマンドレットの一覧を表示するには、 `help AzureWebsite` を呼び出してください。
 
 ----------
 
-###New-AzureWebsite
-**New-AzureWebsite** コマンドレットを使用し、サイトとスロット両方の名前を指定することで、標準モードの任意の Web サイトにサイト スロットを作成できます。また、次の例に示すように、展開スロットの作成ではサイトと同じリージョンを指定します。 
+### Get-AzureWebsite
+**Get-AzureWebsite** コマンドレットは、次の例に示すように、現在のサブスクリプションの Azure の Web アプリに関する情報を表示します。
 
-`New-AzureWebsite siteslotstest -Slot staging -Location "West US"`
-
-----------
-
-###Publish-AzureWebsiteProject
-次の例に示すように、コンテンツの展開には **Publish-AzureWebsiteProject** コマンドレットを使用できます。 
-
-`Publish-AzureWebsiteProject -Name siteslotstest -Slot staging -Package [path].zip`
+`Get-AzureWebsite webappslotstest`
 
 ----------
 
-###Show-AzureWebsite
+### New-AzureWebsite
+**New-AzureWebsite** コマンドレットを使用し、Web アプリとスロット両方の名前を指定することで、展開スロットを作成できます。また、次の例に示すように、展開スロットの作成では Web アプリと同じリージョンを指定します。
+
+`New-AzureWebsite webappslotstest -Slot staging -Location "West US"`
+
+----------
+
+### Publish-AzureWebsiteProject
+次の例に示すように、コンテンツの展開には **Publish-AzureWebsiteProject** コマンドレットを使用できます。
+
+`Publish-AzureWebsiteProject -Name webappslotstest -Slot staging -Package [path].zip`
+
+----------
+
+### Show-AzureWebsite
 コンテンツと構成の更新が新しいスロットに適用されたら、次の例に示すように、**Show-AzureWebsite** コマンドレットを使用してスロットを表示することで、更新を検証できます。
 
-`Show-AzureWebsite -Name siteslotstest -Slot staging`
+`Show-AzureWebsite -Name webappslotstest -Slot staging`
 
 ----------
 
-###Switch-AzureWebsiteSlot
-**Switch-AzureWebsiteSlot** コマンドレットでは、次の例に示すように、スワップ操作を実行して、更新された展開スロットを運用サイトにできます。運用サイトではダウン タイムは発生せず、コールド スタートが行われることもありません。 
+### Switch-AzureWebsiteSlot
+**Switch-AzureWebsiteSlot** コマンドレットでは、次の例に示すように、スワップ操作を実行して、更新された展開スロットを運用サイトにすることができます。運用アプリではダウン タイムは発生せず、コールド スタートが行われることもありません。
 
-`Switch-AzureWebsiteSlot -Name siteslotstest`
+`Switch-AzureWebsiteSlot -Name webappslotstest`
 
 ----------
 
-###Remove-AzureWebsite
+### Remove-AzureWebsite
 展開スロットが不要になった場合は、次の例に示すように、**Remove-AzureWebsite** コマンドレットを使用して削除できます。
 
-`Remove-AzureWebsite -Name siteslotstest -Slot staging` 
+`Remove-AzureWebsite -Name webappslotstest -Slot staging`
 
 ----------
 
 <!-- ======== XPLAT-CLI =========== -->
 
 <a name="CLI"></a>
-##サイト スロットに対する Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) のコマンド
+## 展開スロット用の Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) コマンド
 
-Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) には、Azure Websites での展開スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。 
+Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) には、Web アプリ展開スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。
 
-- Azure サブスクリプションへの xplat-cli の接続方法に関する情報など、xplat-cli のインストールと構成手順については、[Install and Configure the Azure Cross-Platform Command-Line Interface (Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成)](http://azure.microsoft.com/documentation/articles/xplat-cli) をご覧ください。 
+- Azure サブスクリプションへの xplat-cli の接続方法に関する情報など、xplat-cli のインストールと構成手順については、「[Install and Configure the Azure Cross-Platform Command-Line Interface (Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成)]」(xplat-cli.md) を参照してください。
 
--  xplat-cli で Azure Websites に使用できるコマンドの一覧を表示するには、 `azure site -h` を呼び出してください。 
-
-----------
-###azure site list
-現在のサブスクリプションの Azure websites に関する情報については、次の例に示すように、**azure site list** を呼び出します。
- 
-`azure site list siteslotstest`
+-  xplat-cli で Azure App Service に使用できるコマンドの一覧を表示するには、 `azure site -h` を呼び出してください。
 
 ----------
-###azure site create
-標準モードの任意の Web サイトにサイト スロットを作成するには、次の例に示すように、**azure site create** を呼び出し、既存のサイトの名前と作成するスロットの名前を指定します。
+### azure site list
+現在のサブスクリプションの Web アプリに関する情報については、次の例に示すように、**azure site list** を呼び出します。
 
-`azure site create siteslotstest --slot staging`
+`azure site list webappslotstest`
+
+----------
+### azure site create
+展開スロットを作成するには、次の例に示すように、**azure site create** を呼び出し、既存の Web アプリの名前と作成するスロットの名前を指定します。
+
+`azure site create webappslotstest --slot staging`
 
 新しいスロットのソース管理を有効にするには、次の例に示すように、**--git** オプションを使用します。
- 
-`azure site create --git siteslotstest --slot staging`
+
+`azure site create --git webappslotstest --slot staging`
 
 ----------
-###azure site swap
-更新した展開スロットを運用サイトにするには、次の例に示すように、**azure site swap** コマンドを使用してスワップ操作を実行します。運用サイトではダウン タイムは発生せず、コールド スタートが行われることもありません。 
+### azure site swap
+更新した展開スロットを運用アプリにするには、次の例に示すように、**azure site swap** コマンドを使用してスワップ操作を実行します。運用アプリではダウン タイムは発生せず、コールド スタートが行われることもありません。
 
-`azure site swap siteslotstest`
+`azure site swap webappslotstest`
 
 ----------
-###azure site delete
+### azure site delete
 不要になった展開スロットを削除するには、次の例に示すように、**azure site delete** コマンドを使用します。
 
-`azure site delete siteslotstest --slot staging`
+`azure site delete webappslotstest --slot staging`
 
 ----------
+
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Try App Service (App Service を試す)](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスすれば、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 ## 次のステップ ##
-[Azure Web Sites - block web access to non-production deployment slots (Azure Web サイト - 運用環境以外の展開スロットへの Web アクセスの禁止)](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[Azure App Service Web App - block web access to non-production deployment slots (Azure App Service Web App - 運用環境以外の展開スロットへの Web アクセスの禁止)](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-[Microsoft Azure 無料評価版](http://azure.microsoft.com/pricing/free-trial/)
+[Microsoft Azure 無料評価版](/pricing/free-trial/)
 
+## 変更に関する情報
+* Web サイトから App Service への変更ガイドについては、次を参照してください。[Azure App Service and Its Impact on Existing Azure Services (Azure App Service と既存の Azure サービス)](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 以前のポータルから新しいポータルへの変更に関するガイドは、次を参照してください:[Reference for navigating the preview portal (プレビュー ポータルの移動に関するリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 <!-- IMAGES -->
 [QGAddNewDeploymentSlot]:  ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png
@@ -252,6 +256,8 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 [SwapConfirmationDialog]:  ./media/web-sites-staged-publishing/SwapConfirmationDialog.png
 [DeleteStagingSiteButton]: ./media/web-sites-staged-publishing/DeleteStagingSiteButton.png
 [SwapDeploymentsDialog]: ./media/web-sites-staged-publishing/SwapDeploymentsDialog.png
+[Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
+[Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
+[SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | モバイル デベロッパー センター" 
 	description="Windows Phone アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。" 
 	services="mobile-services" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="11/22/2014" 
@@ -19,16 +19,16 @@
 # Live Connect シングル サインオンによる Windows Phone 8 アプリの認証
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-single-sign-on/" title="Windows Store C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-single-sign-on/" title="Windows Store JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-windows-phone-single-sign-on/" title="Windows Phone" class="current">Windows Phone</a>
+	<a href="/documentation/articles/mobile-services-windows-store-dotnet-single-sign-on/" title="Windows Store C#">Windows ストア C#</a><a href="/documentation/articles/mobile-services-windows-store-javascript-single-sign-on/" title="Windows Store JavaScript">Windows ストア JavaScript</a><a href="/documentation/articles/mobile-services-windows-phone-single-sign-on/" title="Windows Phone" class="current">Windows Phone</a>
 </div>	
 
 このトピックでは、Live Connect シングル サインオンを使用して、Windows Phone 8 アプリケーションから Azure のモバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、Live Connect を使用して、クイック スタート プロジェクトに認証を追加します。Live Connect によって正常に認証されると、ログインしたユーザーの名前が認識され、ユーザー ID 値が表示されます。  
 
->[AZURE.NOTE]このチュートリアルでは、Live Connect によって Windows Phone アプリケーションに提供されるシングル サインオンを使用する利点を説明します。これにより、モバイル サービスに既にログオンしているユーザーの認証が容易になります。複数の認証プロバイダーをサポートする、より汎用的な認証方法については、<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users">アプリへの認証の追加</a>に関するページを参照してください。 
+>[AZURE.NOTE]このチュートリアルでは、Live Connect によって Windows Phone アプリケーションに提供されるシングル サインオンを使用する利点を説明します。これにより、モバイル サービスに既にログオンしているユーザーの認証が容易になります。複数の認証プロバイダーをサポートする、より汎用的な認証方法については、<a href="mobile-services-windows-phone-get-started-users.md">アプリへの認証の追加</a>に関するページを参照してください。 
 
 このチュートリアルでは、Live Connect 認証を有効にするための、次の基本的な手順について説明します。
 
-1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
+1. [アプリケーションを認証に登録し、Mobile Services を構成する]
 2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3. [アプリケーションに認証を追加する]
 
@@ -38,11 +38,11 @@
 + Microsoft Visual Studio 2012 Express for Windows Phone
 + また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。.
 
-<h2><a name="register"></a>Live Connect によるアプリケーションの登録</h2>
+<h2><a name="register"></a>アプリケーションを Live Connect に登録する</h2>
 
 ユーザーを認証できるようにするには、Live Connect デベロッパー センターでアプリケーションを登録する必要があります。その後、クライアント シークレットを登録して Live Connect をモバイル サービスと統合する必要があります。
 
-1. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
+1. [Azure 管理ポータル]にログオンし、**[Mobile Services]** をクリックして、目的のモバイル サービスをクリックします。
 
    	![][4]
 
@@ -52,7 +52,7 @@
 
     後でこの値を使用して、リダイレクト ドメインを定義します。
 
-3. Live Connect デベロッパー センター アプリケーション管理の <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">[マイ アプリケーション]</a> ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
+3. Live Connect デベロッパー センターの <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">[マイ アプリケーション]</a> ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
 
 4. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
@@ -140,7 +140,7 @@
 
 7. 前の手順に含まれる文字列 _<< INSERT CLIENT ID HERE >>_  を、アプリケーションを Live Connect に登録した際に生成されたクライアント ID 値で更新します。
 
-    > [AZURE.NOTE] Windows Phone 8 アプリで、**LiveAuthClient** クラスのインスタンスは、クライアント ID 値をクラス コンストラクターに渡すことによって作成されます。[Windows ストア アプリ](/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/)に関するページでは、これと同じクラスがリダイレクト ドメイン URI を渡すことによってインスタンス化されています。
+    > [AZURE.NOTE] Windows Phone 8 アプリで、**LiveAuthClient** クラスのインスタンスは、クライアント ID 値をクラス コンストラクターに渡すことによって作成されます。[Windows ストア アプリ]では、(/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/)リダイレクト ドメインの URI を渡すことで同じクラスがインスタンス化されます。
 
 8. 既存の **OnNavigatedTo** メソッド オーバーライドを削除またはコメントアウトして、ページの **Loaded** イベントを処理する次のメソッドに置き換えます。 
 
@@ -167,12 +167,12 @@
 
    	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
-[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。他の ID プロバイダーを認証に使用する方法については、[認証の使用]に関するページを参照してください。 
+[スクリプトを使用したユーザーの承認]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。他の ID プロバイダーを認証に使用する方法については、「[認証の使用]」を参照してください。 
 
 <!-- Anchors. -->
-[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
 [アプリケーションに認証を追加する]: #add-authentication
 [次のステップ]:#next-steps
@@ -185,18 +185,16 @@
 
 [13]: ./media/mobile-services-windows-phone-single-sign-on/mobile-identity-tab-ma-only.png
 [14]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-data-tables.png
-[15]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-per
-	ms.png
+[15]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-perms.png
 [16]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
 
 <!-- URLs. -->
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows および Windows Phone 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[既存のアプリケーションへの Mobile Services の追加]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users
-[スクリプトを使用したユーザーの承認]: /ja-jp/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts/
+[既存のアプリに Mobile Services を追加する]: mobile-services-windows-phone-get-started-data.md
+[認証の使用]: mobile-services-windows-phone-get-started-users.md
+[スクリプトを使用したユーザーの承認]: mobile-services-windows-phone-authorize-users-in-scripts.md
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

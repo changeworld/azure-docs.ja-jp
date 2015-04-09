@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="09/23/2014" 
@@ -20,15 +20,15 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
+このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証と承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
-1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
+1. [アプリケーションを認証に登録し、Mobile Services を構成する]
 2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3. [アプリケーションに認証を追加する]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。 
+このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。 
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -50,11 +50,11 @@
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-1. 次のプロパティを **TodoActivity** クラスに追加します。
+1. **TodoActivity** クラスに次のプロパティを追加します。
 
 			private MobileServiceUser user;
 
-2. 次のメソッドを **TodoActivity** クラスに追加します。 
+2. **TodoActivity** クラスに次のメソッドを追加します。 
 
 	        private async Task Authenticate()
 	        {
@@ -71,7 +71,7 @@
 
     これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。 
 
-    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の **LoginAsync** メソッドに渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかにします。
+    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の **LoginAsync** メソッドに渡される値を_MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **OnCreate** メソッドで、 `MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
@@ -85,16 +85,16 @@
 
 4. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。 
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
 
 
-<!-- ## <a name="next-steps"> </a>次のステップ
+<!-- ## <a name="next-steps"> </a>Next steps
 
-次のチュートリアル「[モバイル サービス ユーザーのサービス側の承認][スクリプトを使用したユーザーの承認]」では、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。 
+In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
  -->
  
 <!-- Anchors. -->
-[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
 [アプリケーションに認証を追加する]: #add-authentication
 [次のステップ]:#next-steps
@@ -104,13 +104,12 @@
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-users/
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-push/
-[スクリプトを使用したユーザーの承認]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts
-[JavaScript と HTML]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
+[Mobile Services の使用]: mobile-services-dotnet-backend-xamarin-android-get-started.md
+[認証の使用]: mobile-services-dotnet-backend-xamarin-android-get-started-users.md
+[プッシュ通知の使用]: mobile-services-dotnet-backend-xamarin-android-get-started-push.md
+[スクリプトを使用したユーザーの承認]: mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts.md
+[JavaScript と HTML]: mobile-services-dotnet-backend-windows-store-javascript-get-started-users.md
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

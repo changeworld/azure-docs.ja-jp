@@ -13,7 +13,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="NA" 
 	ms.workload="data-services" 
-	ms.date="02/20/2015" 
+	ms.date="03/23/2015" 
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成 #
@@ -27,25 +27,25 @@
 
 ![My ToDo List application](./media/documentdb-java-application/image1.png)
 
-> [AZURE.TIP] このチュートリアルは、Java を使用した経験がある読者を対象としています。Java または[前提条件となるツール]の使用経験がない場合は、(#Prerequisites)[GitHub](https://github.com/Azure/azure-documentdb-java) から完全な [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトをダウンロードし、[この記事の末尾の手順]に従ってプロジェクトをビルドすることをお勧めします(#GetProject)。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。  
+> [AZURE.TIP] このチュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) を [GitHub](https://github.com/Azure/azure-documentdb-java) からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。  
 
 ##<a id="Prerequisites"></a>前提条件 ##
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト]を参照してください(../../pricing/free-trial/)。
+- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)をご覧ください。
 - [Java Development Kit (JDK) 7 以上](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
-- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](http://azure.microsoft.com/documentation/articles/web-sites-java-get-started/)
+- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](web-sites-java-get-started.md)
 
-これらのツールを初めてインストールする方のために、coreservlets.com の「[Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)」の「Quick Start」セクションに、インストール プロセスが詳しく説明されています。 
+これらのツールを初めてインストールする方のために、coreservlets.com の「[Tutorial:Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)」の「Quick Start」セクションに、インストール プロセスが詳しく説明されています。 
 
 ##<a id="CreateDB"></a>手順 1:DocumentDB データベース アカウントの作成 ##
 DocumentDB データベース アカウントを Azure でプロビジョニングするには:
 
-1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](/documentation/articles/documentdb-create-account/)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
+1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
 2. 次の図に示す **[キー]** ブレードからエンドポイントの **[URI]** 値と **[プライマリ キー]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
 
-![][1]
+![Screen shot of the Azure Preview portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][1]
 
 
 ##<a id="CreateJSP"></a>手順 2:JSP アプリケーションの作成 ##
@@ -118,7 +118,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 	このプロジェクトでは、[Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
 
-2. DocumentDB サービスを呼び出すには、新しい **DocumentClient** をインスタンス化する必要があります。一般に、後続の要求ごとに新しいクライアントを構築するのではなく、**DocumentClient** を再利用することをお勧めします。**DocumentClientFactory** の中にラップすることによって、クライアントを再利用できます。ここでも、[手順 1.] でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります(#CreateDB)。[YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
+2. DocumentDB サービスを呼び出すには、新しい **DocumentClient** をインスタンス化する必要があります。一般に、後続の要求ごとに新しいクライアントを構築するのではなく、**DocumentClient** を再利用することを  お勧めします。**DocumentClientFactory** の中にラップすることによって、クライアントを再利用できます。ここでも、[手順 1.](#CreateDB) でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります。[YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
 
 	    private static final String HOST = "[YOUR_ENDPOINT_HERE]";
 	    private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -353,7 +353,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    }
 
 
-##<a id="Wire"></a>手順 5: アプリケーションの残りの部分の連結 ##
+##<a id="Wire"></a> 手順 5:アプリケーションの残りの部分の連結 ##
 
 これで、楽しい作業が終わりました。残っているのは簡単なユーザー インターフェイスの作成と DAO への連結です。
 
@@ -740,14 +740,14 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
  - [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
  - **[完了]** をクリックします。
 
-3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、[Azure の Java Web サイトにアプリケーションを追加する方法に関するページ]を参照してください(../web-sites-java-add-app/)。
+3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](web-sites-java-add-app.md)」を参照してください。
 
 	WAR ファイルを webapps フォルダーにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
 4. 完成したアプリケーションの動作を確認するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
 
 ##<a id="GetProject"></a>GitHub からのプロジェクトの入手##
 
-このチュートリアルで紹介したすべてのサンプルは、GitHub にある [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトに含まれています。このプロジェクトは、[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) リポジトリの一部です。プロジェクトを Eclipse にインポートするには、「[前提条件]」に記載されているソフトウェアおよびリソースがあることを確認したうえで、(#Prerequisites) 次の操作を行います。
+このチュートリアルで紹介したすべてのサンプルは、GitHub にある [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトに含まれています。このプロジェクトは、[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) リポジトリの一部です。todo プロジェクトを Eclipse にインポートするには、「[前提条件](#Prerequisites)」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
 
 1. [Project Lombok](http://projectlombok.org/) をインストールします。Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。 
 2. Eclipse が開いている場合は、いったん終了してから再起動して Lombok を読み込みます。
@@ -759,7 +759,7 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
 10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。DocumentDB プロジェクトには、依存関係として追加される DocumentDB Java SDK が含まれています。
-11. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java に移動し、[HOST] 値と [MASTER_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1. DocumentDB データベース アカウントの作成]」を参照してください(#CreateDB)。
+11. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1.DocumentDB データベース アカウントの作成](#CreateDB)」を参照してください。
 12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
 13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
 14. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Targeted Runtimes]** をクリックします。
@@ -770,8 +770,8 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。 
 20. **[Server]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Restart]** をクリックします。
 21. ブラウザーで http://localhost:8080/azure-documentdb-java-sample/ にアクセスして、タスク リストに項目を追加します。既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
-22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6. Azure Websites へのアプリケーションのデプロイ]」を参照してください(#Deploy)。 
+22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6.Azure Websites へのアプリケーションのデプロイ](#Deploy)」を参照してください。 
 
-[1]: ./media/documentdb-java-application/keys.png
+[1]: ../includes/media/documentdb-keys/keys.png
 
-<!--HONumber=47-->
+<!--HONumber=49-->

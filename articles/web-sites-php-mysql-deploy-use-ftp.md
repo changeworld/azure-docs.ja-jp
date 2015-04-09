@@ -1,7 +1,7 @@
-﻿<properties 
-	pageTitle="MySQL と FTP を使用した PHP Web サイト - Azure チュートリアル" 
-	description="MySQL にデータを保存する PHP Web サイトを作成し、Azure への FTP デプロイを使用する方法を示すチュートリアル。" 
-	services="web-sites" 
+<properties 
+	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする" 
+	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイを使用する方法を説明するチュートリアル。 "
+	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
 	manager="wpickett" 
@@ -13,67 +13,69 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/14/2014" 
+	ms.date="03/24/2015" 
 	ms.author="tomfitz"/>
 
 
-#PHP-MySQL Azure Website を作成して FTP でデプロイする
+#Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする
 
-このチュートリアルでは、PHP-MySQL Azure Website を作成する方法と、FTP を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[MySQL][install-mysql]、Web サーバー、および FTP クライアントがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web サイトが完成します。
+このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、FTP を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[MySQL][install-mysql]、Web サーバー、および FTP クライアントがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
  
 学習内容:
 
-* Azure 管理ポータルを使用して Azure Website と MySQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* Azure ポータルを使用して Web アプリと MySQL データベースを作成する方法。Web Apps では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
 * FTP を使用して Azure にアプリケーションを発行する方法。
  
-このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
+このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。このアプリケーションは Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP Web Site][running-app]
+![Azure PHP Web サイト][running-app]
 
-[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+>[AZURE.NOTE] アカウントにサインアップする前に Azure App Service を実際に使ってみるには、「[App Service を試す](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。 
 
-##Azure Website の作成と FTP 発行の設定
 
-Azure Website と MySQL データベースを作成するには、次の手順に従います。
+##Web アプリの作成と FTP 発行の設定
 
-1. [Azure 管理ポータル][management-portal] にログインします。
+Web アプリと MySQL データベースを作成するには、次のステップに従います。
+
+1. [Azure ポータル][management-portal]にログインします。
 2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
 
-	![Create New Azure Web Site][new-website]
+	![新しい Azure Web サイトの作成][new-website]
 
-3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
+3. **[Web + モバイル]** をクリックし、**[Web app + MySQL]** をクリックします。
 
-	![Custom Create a new Web Site][custom-create]
+	![新しい Web サイトのカスタム作成][custom-create]
+
+4. リソース グループの有効な名前を入力します。
+
+    ![リソース グループ名の設定][resource-group]
+
+5. 新しい Web アプリについての値を入力します。
+
+     ![Web アプリの作成][new-web-app]
+
+6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
+
+	![新しい MySQL データベースの作成][new-mysql-db]
 	
-	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい MySQL データベースを作成します]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
+7. Web アプリが作成されると、新しいリソース グループが表示されます。設定を構成する Web アプリの名前をクリックします。
 
-	![Fill in Web Site details][website-details]
+	![Web アプリを開く][go-to-webapp]
 
-4. データベースの **[名前]** ボックスに値を入力し、**[リージョン]** ボックスの一覧でデータベースのデータ センターを選択して、法律条項に同意することを示すチェック ボックスをオンにします。ダイアログの下部にあるチェックマークをクリックします。
+6. 下にスクロールすると、**[Set deployment credentials]** という項目があります。 
 
-	![Create new MySQL database][new-mysql-db]
+	![デプロイ資格情報の設定][set-deployment-credentials]
 
-	Web サイトが作成されると、"**Web サイト '[SITENAME]' の作成が正常に完了しました**" というテキストが表示されます。これで、FTP 発行を有効にする準備ができました。
+7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。資格情報を保存します。作成したユーザー名とパスワードはメモしておいてください。
 
-5. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの**クイックスタート** ダッシュボードを開きます。
-
-	![Open web site dashboard][go-to-dashboard]
-
-
-6. **クイック スタート** ページの下部で、**[展開資格情報のリセット]** をクリックします。 
-
-	![Reset deployment credentials][reset-deployment-credentials]
-
-7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください
-
-	![Create publishing credentials][portal-git-username-password]
+	![発行資格情報の作成][portal-ftp-username-password]
 
 ##アプリケーションの作成とローカル テスト
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションは、次の 2 つのファイルで構成されます。
 
-* **index.php**。登録用のフォームと登録者情報が含まれたテーブルを表示します。
-* **createtable.php**。アプリケーション用の MySQL テーブルを作成します。このファイルは 1 度しか使用されません。
+* **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
+* **createtable.php**: アプリケーション用の MySQL テーブルを作成します。このファイルは 1 度しか使用されません。
 
 アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
@@ -81,7 +83,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 		mysql> create database registration;
 
-2. Web サーバーのルート ディレクトリで、 `registration` というフォルダーを作成し、その中に 2 つのファイル ( `createtable.php` と  `index.php`) を作成します。
+2. Web サーバーのルート ディレクトリで、  `registration` というフォルダーを作成し、その中に 2 つのファイル ( `createtable.php` と  `index.php`) を作成します。
 
 3.  `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。このコードは、 `registration` データベースに  `registration_tbl` テーブルを作成するために使用します。
 
@@ -109,9 +111,9 @@ Registration アプリケーションは、名前と電子メール アドレス
 		?>
 
 	> [AZURE.NOTE] 
-	> ここでは、 <code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+	> <code>$user</code> と <code>$pwd</code> の値はローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
-4. Web ブラウザーを開き、[http://localhost/registration/createtable.php][localhost-createtable].にアクセスします。これにより、データベースに  `registration_tbl` テーブルが作成されます。[CO1]
+4. Web ブラウザーを開いて、[http://localhost/registration/createtable.php][localhost-createtable] にアクセスします。このコードは、データベースに  `registration_tbl` テーブルを作成するために使用します。
 
 5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
 
@@ -163,7 +165,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 		}
 
 	> [AZURE.NOTE]
-	> ここでも、 <code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+	> ここでも、<code>$user</code>  と <code>$pwd</code>  の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
 7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
 
@@ -208,25 +210,31 @@ Registration アプリケーションは、名前と電子メール アドレス
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-これで、[http://localhost/registration/index.php][localhost-index] に移動してアプリケーションをテストできるようになりました。
+これで、[http://localhost/registration/index.php][localhost-index] にアクセスしてアプリケーションをテストできます。
 
 ##MySQL と FTP の接続情報の取得
 
-Azure Websites で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
+Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
-1. Web サイトのダッシュボードで、ページの右側にある **[接続文字列の表示]** リンクをクリックします。
+1. リソース グループで、データベースをクリックします。
 
-	![Get database connection information][connection-string-info]
+	![データベースの選択][select-database]
+
+2. データベースのサマリで、**[プロパティ]** を選択します。
+
+    ![プロパティの選択][select-properties]
 	
-2.  `Database`、 `Data Source`、 `User Id`、 `Password`の各値を記録します。
+2.  `Database`、 `Host`、 `User Id`、 `Password` の各値を記録します。
 
-3. Web サイトのダッシュボードで、ページの右下にある **[発行プロファイルのダウンロード]** リンクをクリックします。
+    ![プロパティの記録][note-properties]
 
-	![Download publish profile][download-publish-profile]
+3. Web アプリで、ページの右下にある **[発行プロファイルのダウンロード]** リンクをクリックします。
+
+	![発行プロファイルのダウンロード][download-publish-profile]
 
 4. XML エディターで  `.publishsettings` ファイルを開きます。 
 
-3. 次のように `publishMethod="FTP"` が指定されている  `<publishProfile >` 要素を確認します。
+3. 以下のように、`publishMethod="FTP"`  が指定されている `<publishProfile >`  要素を確認します。
 
 		<publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
 			...
@@ -236,7 +244,7 @@ Azure Websites で実行されている MySQL データベースに接続する�
 
 ##アプリケーションの発行
 
-アプリケーションをローカルでテストした後、FTP を使用してそのアプリケーションを Azure Website に発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**MySQL と FTP の接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと  `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
+アプリケーションをローカルでテストした後、FTP を使用してそのアプリケーションを Web アプリに発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**MySQL と FTP の接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと  `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
 
 	// DB connection info
 	$host = "value of Data Source";
@@ -248,15 +256,15 @@ Azure Websites で実行されている MySQL データベースに接続する�
 
 1. 好みの FTP クライアントを開きます。
 
-2. 先ほどメモしておいた  `publishUrl` 属性の *host name portion*を FTP クライアントに入力します。
+2. 先ほどメモしておいた  `publishUrl` 属性の  *host name portion* を FTP クライアントに入力します。
 
 3. 先ほどメモしておいた  `userName` 属性および  `userPWD` 属性をそのまま FTP クライアントに入力します。
 
 4. 接続を確立します。
 
-接続した後、必要に応じて、ファイルをアップロードおよびダウンロードできます。ファイルのアップロード先は、必ずルート ディレクトリ ( `/site/wwwroot`) にしてください。
+接続した後、必要に応じて、ファイルをアップロードおよびダウンロードすることができます。ファイルのアップロード先は、必ずルート ディレクトリ ( `/site/wwwroot`) にしてください。
 
- `index.php` と  `createtable.php` の両方をアップロードした後、**http://[サイト名].azurewebsites.net/createtable.php** に移動してアプリケーション用の MySQL テーブルを作成し、**http://[site name].azurewebsites.net/index.php** に移動してアプリケーションの使用を開始します。
+ `index.php` と  `createtable.php` の両方をアップロードした後、**http://[site name].azurewebsites.net/createtable.php** に移動してアプリケーション用の MySQL テーブルを作成し、**http://[site name].azurewebsites.net/index.php** に移動してアプリケーションの使用を開始します。
  
 
 [install-php]: http://www.php.net/manual/en/install.php
@@ -265,19 +273,21 @@ Azure Websites で実行されている MySQL データベースに接続する�
 [localhost-createtable]: http://localhost/tasklist/createtable.php
 [localhost-index]: http://localhost/tasklist/index.php
 [running-app]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/running_app_2.png
-[new-website]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/new_website.jpg
-[custom-create]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/custom_create.png
+[new-website]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/new_website2.png
+[custom-create]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/create_web_mysql.png
 [website-details]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/website_details.jpg
-[new-mysql-db]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/new_mysql_db.jpg
-[go-to-dashboard]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/go_to_dashboard.png
-[reset-deployment-credentials]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/reset-deployment-credentials.png
-[portal-git-username-password]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/git-deployment-credentials.png
-
+[new-mysql-db]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/create_db.png
+[go-to-webapp]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/select_webapp.png
+[set-deployment-credentials]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/set_credentials.png
+[portal-ftp-username-password]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/save_credentials.png
+[resource-group]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/set_group.png
+[new-web-app]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/create_wa.png
+[select-database]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/select_database.png
+[select-properties]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/select_properties.png
+[note-properties]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/note-properties.png
 
 [connection-string-info]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/connection_string_info.png
-[management-portal]: https://manage.windowsazure.com
-[download-publish-profile]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/download_publish_profile_2.png
+[management-portal]: https://portal.azure.com
+[download-publish-profile]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/download_publish_profile_3.png
 
-
-<!--HONumber=42-->
-[CO1]placeholder 257 contains ".". Please pay attention during post edit.
+<!--HONumber=49-->

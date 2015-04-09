@@ -34,7 +34,7 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 
     --find-links wheelhouse
     azure==0.8.4
-			
+
 \wheelhouse フォルダー内のすべての依存関係を組み込む必要があり、python パッケージのインデックスを一切使用しない場合は、requirements.txt の先頭に `--no-index` を追加すると、pip で強制的にパッケージ インデックスを無視することができます。
 
     --no-index
@@ -65,6 +65,7 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 
 
 [Windows を実行する仮想マシンの作成]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
-[Python 2.7 用の Microsoft Visual C++ コンパイラ]: http:://aka.ms/vcpython27
+[Python 2.7 用の Microsoft Visual C++ コンパイラ]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
-<!--HONumber=42-->
+
+<!--HONumber=49-->

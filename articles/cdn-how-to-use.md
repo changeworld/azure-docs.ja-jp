@@ -20,8 +20,6 @@
 
 
 
-[WACOM.INCLUDE [cdn](../includes/cdn.md)]
+[AZURE.INCLUDE [cdn](../includes/cdn.md)]
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
+<!--HONumber=49-->

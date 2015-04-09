@@ -1,4 +1,4 @@
-﻿### Composer 経由でインストールする
+﻿###Composer 経由でインストールする
 
 1. [Git をインストールします][install-git]。
 
@@ -7,26 +7,29 @@
 
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
-		{
-			"require": {
-				"microsoft/windowsazure": "*"
-			},			
-			"repositories": [
-				{
-					"type": "pear",
-					"url": "http://pear.php.net"
-				}
-			],
-			"minimum-stability": "dev"
-		}
+        {
+            "repositories": [
+                {
+                    "type": "pear",
+                    "url": "http://pear.php.net"
+                }
+            ],
+            "require": {
+                "pear-pear.php.net/mail_mime" : "*",
+                "pear-pear.php.net/http_request2" : "*",
+                "pear-pear.php.net/mail_mimedecode" : "*",
+                "microsoft/windowsazure": "*"
+            }
+        }
+
 
 3. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
 
 4. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
 
-		php composer.phar install
+		php composer.phar のインストール
 
-### 手動でインストールする
+###手動でインストールする
 
 Azure 向け PHP クライアント ライブラリを手動でダウンロードしてインストールするには、次のステップに従います。
 
@@ -38,12 +41,12 @@ Azure 向け PHP クライアント ライブラリを手動でダウンロー�
 
 2. ダウンロードしたアーカイブの  `WindowsAzure` ディレクトリをアプリケーションのディレクトリ構造にコピーします。
 
-(PEAR パッケージとしてのインストールに関する情報を含めて) Azure 向け PHP クライアント ライブラリのインストールの詳細については、「[PHP 用 Azure SDK のダウンロードに関するページ][download-SDK-PHP]」をご覧ください。
+(PEAR パッケージとしてのインストールに関する情報を含めて) Azure 向け PHP クライアント ライブラリのインストールの詳細については、「[Azure SDK for PHP をダウンロードする][download-SDK-PHP]」をご覧ください。
 
 
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[download-SDK-PHP]: ../php-download-sdk/
+[download-SDK-PHP]:../articles/php-download-sdk.md
 [composer-phar]: http://getcomposer.org/composer.phar
 
-<!--HONumber=47-->
+<!--HONumber=49-->

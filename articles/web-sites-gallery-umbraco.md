@@ -1,6 +1,6 @@
 ﻿<properties 
 	pageTitle="Microsoft Azure でギャラリーから Umbraco Web サイトを作成する" 
-	description="必須" 
+	description="Umbraco のコンテンツ管理システムを作成し、Azure の Web サイトに展開します。" 
 	services="web-sites" 
 	documentationCenter="" 
 	authors="tfitzmac" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/21/2014" 
+	ms.date="02/25/2015" 
 	ms.author="tomfitz"/>
 
 #Microsoft Azure でギャラリーから Umbraco Web サイトを作成する
@@ -35,7 +35,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 	
 	![Choose Web Gallery][01Startboard]
 	
-3. **[ギャラリー]** で、**[Web]** タブをクリックし、**[Umbraco CMS]** を選択します。
+3. **[ギャラリー]** で、 **[Web]** タブをクリックし、**[Umbraco CMS]** を選択します。
 	
 	![Select Umbraco in the Web Gallery][02WebGallery]
 	
@@ -43,7 +43,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 	
 	![Click Create][03UmbracoCMS]
 	
-5. 次の手順では、Umbraco CMS に関連付けるすべてのリソースを構成します。ここでは、リソースは Web サイトと SQL Server データベースです。最初に、**[Web サイト]** を選択し、**[URL]**、**[Web ホスティング プラン]**、**[Web App の設定]**、**[場所]** などの Web サイトの設定を構成します。 
+5. 次の手順では、Umbraco CMS に関連付けるすべてのリソースを構成します。ここでは、リソースは Web サイトと SQL Server データベースです。最初に、**[Web サイト]**  を選択し、**[URL]、**[Web ホスティング プラン]**、**[Web App の設定]**、**[場所]** などの Web サイトの設定を構成します。 
 	
 	![Configure resources][04AppSettings]
 	
@@ -51,7 +51,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 	
 	![Create a SQL Server on Azure][05NewServer]
 	
-7. これで、Web サイトとデータベースが構成されました。前の画像で見た最初の **[Umbraco CMS]** ブレードの下部にある **[作成]** をクリックすることで、アプリケーションのデプロイを開始できます。
+7. これで、Web サイトとデータベースが構成されました。前の画像で見た最初の **[Umbraco CMS]** ブレードの下部にある  **[作成]** をクリックすることで、アプリケーションのデプロイを開始できます。
 	
 	![Click Create][06UmbracoCMSGroup]
 	
@@ -73,7 +73,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 	
 	![Configure your database][10ConfigureYourDatabase] 
 	
-4. Umbraco CMS の初心者の方は、スタート Web サイト キットを選択できます。そうでない場合は、**[必要ありません、スタート Web サイトはインストールしません]** をクリックします。
+4. Umbraco CMS の初心者である場合は、スタート Web サイト キットを選択できます。それ以外の場合は、**[必要ありません、スタート Web サイトはインストールしません]** を選択します。
 	
 	![Install a starter website][11InstallAStarterWebsite]
 	
@@ -102,13 +102,13 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 
 [Umbraco Video Tutorials (Umbraco ビデオ チュートリアル)](https://umbraco.com/help-and-support/video-tutorials.aspx)
 
-[DevOps は最高 (Microsoft Azure プレビュー ポータルの概要)](http://azure.microsoft.com/overview/preview-portal/)
+[Microsoft Azure プレビュー ポータルの概要](http://azure.microsoft.com/overview/preview-portal/)
 
-[これまでになかったクラウド ポータル (Microsoft Azure プレビュー ポータルのドキュメント)](http://azure.microsoft.com/documentation/preview-portal/)
+[Microsoft Azure プレビュー ポータルのドキュメント](http://azure.microsoft.com/documentation/preview-portal/)
 
-[Azure Preview Portal (Channel 9) (Azure プレビュー ポータル (チャネル 9))](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal) 
+[Azure プレビュー ポータル (チャネル 9)](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal)
 
-[Web サイト (Microsoft Azure Web サイトのドキュメント)](http://azure.microsoft.com/documentation/services/web-sites/)
+[Microsoft Azure の Web サイトのドキュメント](http://azure.microsoft.com/documentation/services/web-sites/)
 
 
 <!-- IMAGES -->
@@ -129,4 +129,4 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [16EnterAName]: ./media/web-sites-gallery-umbraco/16EnterAName.PNG
 [17MyPage]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
 
-<!--HONumber=46--> 
+<!--HONumber=49-->

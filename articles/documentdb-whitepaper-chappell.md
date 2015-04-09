@@ -1,5 +1,5 @@
 ﻿<properties 
-	pageTitle="David Chappell による DocumentDB に関するホワイトペーパー |  Azure" 
+	pageTitle="David Chappell による DocumentDB に関するホワイトペーパー | Azure" 
 	description="David Chappell によるホワイトペーパーをダウンロードできます。Azure における管理された NoSQL データベースである DocumentDB に関する説明です。" 
 	services="documentdb" 
 	documentationCenter="" 
@@ -36,4 +36,4 @@
 **ダウンロード:** [DocumentDB の概要 - Microsoft Azure の NoSQL データベース](http://go.microsoft.com/fwlink/?LinkId=511318)に関するドキュメント
 
 
-<!--HONumber=47-->
+<!--HONumber=49-->

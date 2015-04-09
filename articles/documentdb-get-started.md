@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB .NET SDK の使用 | Azure" 
 	description="Azure DocumentDB アカウントを作成して構成する方法について説明します。また、NoSQL ドキュメント データベース アカウント内でデータベースやコレクションを作成したり、JSON ドキュメントを保存したりする方法についても説明します。" 
 	services="documentdb" 
-	documentationCenter="" 
+	documentationCenter=".net" 
 	authors="mimig1" 
 	manager="jhubbard" 
 	editor="monicar"/>
@@ -11,20 +11,24 @@
 	ms.service="documentdb" 
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
+	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/04/2015" 
-	ms.author="mimig"/>
+	ms.date="03/23/2015" 
+	ms.author="anhoh"/>
 
 #DocumentDB .NET SDK の使用  
 
-このガイドでは、[Microsoft Azure DocumentDB (プレビュー)](https://portal.azure.com/#gallery/Microsoft.DocumentDB) および [DocumentDB .NET SDK](http://go.microsoft.com/fwlink/p/?linkid=402989) の使用を開始する方法について説明します。DocumentDB は NoSQL ドキュメント データベースで、[多数の API と SDK を利用できます](http://go.microsoft.com/fwlink/p/?linkid=522476)。サンプルは C# コードで記述され、DocumentDB .NET SDK を使用しています。DocumentDB .NET SDK は NuGet パッケージとしてパッケージ化され、配布されています。 
+このガイドでは、[Microsoft Azure DocumentDB (プレビュー)](https://portal.azure.com/#gallery/Microsoft.DocumentDB) および [DocumentDB .NET SDK](https://go.microsoft.com/fwlink/p/?linkid=402989) の使用を開始する方法について説明します。DocumentDB は NoSQL ドキュメント データベースで、[多数の API と SDK を利用できます](https://go.microsoft.com/fwlink/p/?linkid=522476)。サンプルは C# コードで記述され、DocumentDB .NET SDK を使用しています。DocumentDB .NET SDK は NuGet パッケージとしてパッケージ化され、配布されています。 
 
-紹介されているシナリオには、DocumentDB アカウントの作成と構成、データベースの作成、コレクションの作成、およびアカウント内での JSON ドキュメントの格納が含まれています。これらのサンプルはそれぞれ、[GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) で使用可能な完全なソリューションの一部です。[ソリューションをダウンロード]して(#GetSolution) 含まれるサンプル コードを確認したり、この記事でサンプルを確認できます。
+紹介されているシナリオには、DocumentDB アカウントの作成と構成、データベースの作成、コレクションの作成、およびアカウント内での JSON ドキュメントの格納が含まれています。これらのサンプルはそれぞれ、[GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) で使用可能な完全なソリューションの一部です。[ソリューションをダウンロード](#GetSolution)し、含まれるサンプル コードを確認したり、この記事でサンプルを確認できます。
+
+##<a id="CreateAccount"></a>DocumentDB アカウントを作成する
+
+[AZURE.INCLUDE [documentdb-create-dbaccount](../includes/documentdb-create-dbaccount.md)]
 
 ##<a id="Connect"></a>DocumentDB アカウントへの接続
 
-最初に、DocumentDB アカウントへの接続を確立するために [DocumentClient](http://go.microsoft.com/fwlink/p/?linkid=522477) クラスの新しいインスタンスを作成します。   C# アプリケーションで次の参照が必要です。  
+最初に、DocumentDB アカウントへの接続を確立するために [DocumentClient](https://go.microsoft.com/fwlink/p/?linkid=522477) クラスの新しいインスタンスを作成します。C# アプリケーションで次の参照が必要です。  
 
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
@@ -38,18 +42,18 @@
     // Create a new instance of the DocumentClient.
     var client = new DocumentClient(new Uri(EndpointUrl), AuthorizationKey);  
 
-> [AZURE.WARNING] ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、[Azure Web Sites でのアプリケーション文字列と接続文字列の動作に関するページ](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)を参照してください。 
+> [AZURE.WARNING] ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、[Azure Web Sites でのアプリケーション文字列と接続文字列の動作に関するページ](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)を参照してください。 
 
 EndpointUrl と AuthorizationKey の値には、DocumentDB アカウントの [[Azure プレビュー管理ポータル](https://portal.azure.com)] ブレードから取得できる DocumentDB アカウントの URI とプライマリ キーを指定します。 
 
-![][1]
+![Screen shot of the Azure Preview portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][1]
  
-これらのキーにより、DocumentDB アカウントとそのリソースに対する管理アクセス権が付与されます。DocumentDB では、付与されているアクセス許可に応じて、クライアントがアカウント キーなしで、DocumentDB アカウント内のリソースの読み取り、書き込み、および削除を実行するためのリソース キーの使用もサポートされます。リソース キーの詳細については、「[DocumentDB のリソース モデルと概念]」の「アクセス許可」を参照してください(../documentdb-resources/)。
+これらのキーにより、DocumentDB アカウントとそのリソースに対する管理アクセス権が付与されます。DocumentDB では、付与されているアクセス許可に応じて、クライアントがアカウント キーなしで、DocumentDB アカウント内のリソースの読み取り、書き込み、および削除を実行するためのリソース キーの使用もサポートされます。リソース キーの詳細については、「[DocumentDB のリソース モデルと概念](documentdb-resources.md)」の「アクセス許可」のセクションを参照してください。
 
 これで、DocumentDB アカウントへの接続方法および **DocumentClient** クラスのインスタンスの作成方法がわかりました。次に、DocumentDB リソースの使用方法について説明します。  
 
 ##<a id="CreateDB"></a>データベースの作成
-DocumentDB データベースは、**DocumentClient** クラスの [CreateDatabaseAsync](http://go.microsoft.com/fwlink/p/?linkid=522478) メソッドを使用して作成できます。  
+データベースは、**DocumentClient** クラスの [CreateDatabaseAsync](https://go.microsoft.com/fwlink/p/?linkid=522478) メソッドを使用して作成できます。  
 
 	// Create a database.
 	Database database = await client.CreateDatabaseAsync(
@@ -60,7 +64,7 @@ DocumentDB データベースは、**DocumentClient** クラスの [CreateDataba
 
 ##<a id="CreateColl"></a>コレクションの作成  
 
-DocumentDB コレクションは、**DocumentClient** クラスの [CreateDocumentCollectionAsync](http://go.microsoft.com/fwlink/p/?linkid=522479) メソッドを使用して作成できます。前の手順で作成したデータベースには、さまざまなプロパティがありますが、その 1 つが [CollectionsLink](http://go.microsoft.com/fwlink/p/?linkid=522481) プロパティです。この情報を使用して、コレクションを作成できます。  
+コレクションは、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://go.microsoft.com/fwlink/p/?linkid=522479) メソッドを使用して作成できます。前の手順で作成したデータベースには、さまざまなプロパティがありますが、その 1 つが [CollectionsLink](https://go.microsoft.com/fwlink/p/?linkid=522481) プロパティです。この情報を使用して、コレクションを作成できます。  
 
   	// Create a document collection.
   	DocumentCollection documentCollection = await client.CreateDocumentCollectionAsync(database.CollectionsLink,
@@ -70,7 +74,7 @@ DocumentDB コレクションは、**DocumentClient** クラスの [CreateDocume
   		    });
     
 ##<a id="CreateDoc"></a>ドキュメントの作成	
-DocumentDB ドキュメントは、**DocumentClient** クラスの [CreateDocumentAsync](http://go.microsoft.com/fwlink/p/?linkid=522482) メソッドを使用して作成できます。前の手順で作成したコレクションには、さまざまなプロパティがありますが、その 1 つが [DocumentsLink](http://go.microsoft.com/fwlink/p/?linkid=522483) プロパティです。この情報を使用して、1 つ以上のドキュメントを挿入できます。この例の目的に基づき、名前、性別、年齢など家族の属性を示す Family クラスを保持していると仮定しています。  
+ドキュメントは、**DocumentClient** クラスの [CreateDocumentAsync](https://go.microsoft.com/fwlink/p/?linkid=522482) メソッドを使用して作成できます。前の手順で作成したコレクションには、さまざまなプロパティがありますが、その 1 つが [DocumentsLink](https://go.microsoft.com/fwlink/p/?linkid=522483) プロパティです。この情報を使用して、1 つ以上のドキュメントを挿入できます。この例の目的に基づき、名前、性別、年齢など家族の属性を示す Family クラスを保持していると仮定しています。サンプルの Family クラスを表示する場合は、[GitHub リポジトリ](https://github.com/Azure/azure-documentdb-net/blob/master/tutorials/get-started/src/Program.cs)を参照してください。 
 
     // Create the Andersen family document.
 	Family AndersenFamily = new Family
@@ -131,7 +135,8 @@ DocumentDB ドキュメントは、**DocumentClient** クラスの [CreateDocume
  
 
 ##<a id="Query"></a>DocumentDB リソースのクエリ
-DocumentDB では、各コレクションに格納された JSON ドキュメントに対するリッチ クエリをサポートしています。次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。DocumentDB SQL 構文と LINQ の両方が使用されています。  
+
+DocumentDB では、各コレクションに格納された JSON ドキュメントに対する豊富なクエリをサポートしています。次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。DocumentDB SQL 構文と LINQ の両方が使用されています。 
 
     // Query the documents using DocumentDB SQL for the Andersen family.
     var families = client.CreateDocumentQuery(documentCollection.DocumentsLink,
@@ -196,11 +201,12 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 -   [DocumentDB アカウント][documentdb-create-account]。
 -   GitHub で入手可能な [GetStarted](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) ソリューション。 
 
-Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで GetStarted ソリューションを右クリックし、[NuGet パッケージの復元を有効にする] をクリックして参照を復元します。次に、「[DocumentDB アカウントへの接続]」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します(#Connect)。 
+Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで GetStarted ソリューションを右クリックし、[NuGet パッケージの復元を有効にする] をクリックします。次に、「[DocumentDB アカウントへの接続](#Connect)」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します。 
 
 ##<a id="NextSteps"></a>次のステップ
--	[DocumentDB アカウントを監視する](http://go.microsoft.com/fwlink/p/?LinkId=402378)方法について学習します。
--	プログラミング モデルの詳細については、[DocumentDB ドキュメント ページ](http://go.microsoft.com/fwlink/p/?LinkID=402319)の「開発」セクションを参照してください。
+-	[DocumentDB アカウントを監視する](https://go.microsoft.com/fwlink/p/?LinkId=402378)方法について学習します。
+-	[クエリのプレイ グラウンド](http://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
+-	プログラミング モデルの詳細については、[DocumentDB ドキュメント ページ](../documentation/services/documentdb/)の「開発」セクションを参照してください。
 
 
 [DocumentDB アカウントへの接続]: #Connect
@@ -210,9 +216,10 @@ Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、�
 [DocumentDB リソースのクエリ]: #Query
 [次のステップ]: #NextSteps
 [doc-landing-page]: ../documentation/services/documentdb/
-[documentdb-create-account]: ../documentdb-create-account/
-[documentdb-manage]: ../documentdb-manage/
+[documentdb-create-account]: documentdb-create-account.md
+[documentdb-manage]: documentdb-manage.md
 
-[1]: ./media/documentdb-get-started/gs1.png
+[1]: ../includes/media/documentdb-keys/keys.png
 
-<!--HONumber=47-->
+
+<!--HONumber=49-->

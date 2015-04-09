@@ -1,128 +1,117 @@
-﻿<properties 
-	pageTitle="Azure Websites での PHP の構成方法" 
-	description="既定の PHP インストールを構成し、カスタム PHP インストールを Azure Websites で追加する方法について説明します。" 
-	services="" 
-	documentationCenter="php" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service Web アプリでの PHP の構成方法"
+	description="Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。"
+	services="app-service\web"
+	documentationCenter="php"
+	authors="tfitzmac"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="web-sites" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="11/18/2014" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="article"
+	ms.date="03/24/2015"
 	ms.author="tomfitz"/>
 
-#Azure Websites での PHP の構成方法
+#Azure App Service Web アプリでの PHP の構成方法 
 
-このガイドでは、ビルトインの PHP ランタイムを Azure Websites で構成し、カスタムの PHP ランタイムを指定して、Azure Websites で拡張機能を有効にする方法を示します。Azure Websites を使用するには、[無料評価版]にサインアップしてください。このガイドを最大限に活用するには、まず Azure Websites で PHP サイトを作成する必要があります (「[PHP デベロッパー センター - チュートリアル]」をご覧ください)。Azure Websites でのサイトの構成の一般情報については、「[Web サイトの構成方法]」をご覧ください。
+## はじめに
 
-##目次
+このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps で構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。App Service を使用するには、[無料評価版]にサインアップしてください。このガイドを最大限に活用するには、まず App Service で PHP Web アプリを作成する必要があります。
 
-* [Azure Web サイトとは](#WhatIs)
-* [方法:既定の PHP 構成を変更する](#ChangeBuiltInPHP)
-* [方法:ビルトインの PHP ランタイムで拡張機能を有効にする](#EnableExtDefaultPHP)
-* [方法:カスタムの PHP ランタイムを使用する](#UseCustomPHP)
-* [次のステップ](#NextSteps)
+## 方法:ビルトインの PHP 構成を変更する
+既定では、App Service Web アプリを作成すると PHP 5.4 がインストールされ、直ちに使用できる状態になります。使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、[phpinfo()] 関数を呼び出すスクリプトをデプロイします。
 
-<h2><a name="WhatIs"></a>Azure の Web サイトとは</h2>
-Azure Websites を使用すると、スケーラビリティに優れた Web サイトを Azure に構築できます。小規模から開始し、トラフィックの拡大に合わせて規模を調整できる、拡張性の高いクラウド環境に、サイトをすばやく簡単にデプロイできます。Azure Websites では、好みの言語とオープン ソース アプリケーションを使用でき、Git、FTP、および TFS によるデプロイがサポートされます。MySQL、SQL データベース、Caching、CDN、ストレージなど、他のサービスを簡単に統合できます。
+PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっていません。PHP バージョンを更新するには、次の手順に従います。
 
-<h2><a name="ChangeBuiltInPHP"></a>方法:ビルトインの PHP 構成を変更する</h2>
-既定では、Azure Website を作成すると PHP 5.4 がインストールされ、直ちに使用できる状態になります。使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、[phpinfo()] 関数を呼び出すスクリプトを展開します。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で Web アプリに移動し、**[設定]** ボタンをクリックします。
 
-PHP 5.5 も使用できますが、既定では有効になっていません。有効にするには、次の手順に従います。
+	![Web アプリの設定][settings-button]
 
-1. Azure ポータルで、Web サイトのダッシュボードに移動し、**[構成]** をクリックします。
+2. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、新しい PHP バージョンを指定します。
 
-	![Configure tab on Web Sites dashboard][configure]
+    ![アプリケーションの設定][application-settings]
 
-1. PHP 5.5 をクリックします。
+3. **[Web app settings]** ブレードの上部にある **[保存]** ボタンをクリックします。
 
-	![Select PHP version][select-php-version]
+	![構成設定の保存][save-button]
 
-1. ページの下部にある **[保存]** をクリックします。
-
-	![Save configuration settings][save-button]
-
-次の手順に従うと、いずれのビルトイン PHP ランタイムについても、システム レベルのみのディレクティブではない任意の構成オプションを変更できます(システム レベルのみのディレクティブについては、[php.ini ディレクティブの一覧]をご覧ください)。
+次の手順に従うと、いずれのビルトイン PHP ランタイムについても、システム レベルのみのディレクティブではない任意の構成オプションを変更できます(システム レベルのみのディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
 1. [.user.ini] ファイルをルート ディレクトリに追加します。
-1.  `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を  `.user.ini` ファイルに追加します。たとえば、 `display_errors` 設定をオンにして  `upload_max_filesize` を 10 M に設定する場合は、 `.user.ini` ファイルに次のテキストを含めます。
+2.  `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を  `.user.ini` ファイルに追加します。たとえば、 `display_errors` 設定をオンにして  `upload_max_filesize` を 10 M に設定する場合は、 `.user.ini` ファイルに次のテキストを含めます。
 
 		; Example Settings
 		display_errors=On
 		upload_max_filesize=10M
 
-1. アプリケーションをデプロイします。
-1. Web サイトを再起動します(再起動する必要があるのは、 `.user.ini` ファイルが PHP によって読み取られる頻度が、 `user_ini.cache_ttl` 設定によって制御されるためです。この設定はシステム レベルの設定であり、既定では 300 秒 (5 分) です。サイトを再起動すると、PHP により、 `.user.ini` ファイル内の新しい設定が読み取られます)。
+3. Web アプリをデプロイします。
+4. Web アプリを再起動します。(再起動する必要があるのは、 `.user.ini` ファイルが PHP によって読み取られる頻度が、 `user_ini.cache_ttl` 設定によって制御されるためです。この設定はシステム レベルの設定であり、既定では 300 秒 (5 分) です。Web アプリを再起動すると、PHP により、 `.user.ini` ファイル内の新しい設定が強制的に読み取られます)。
 
  `.user.ini` ファイルを使用する代わりに、スクリプト内で [ini_set()] 関数を使用して、システム レベルのディレクティブではない構成オプションを設定することもできます。
 
-<h2><a name="EnableExtDefaultPHP"></a>方法:既定の PHP ランタイムで拡張機能を有効にする</h2>
-前のセクションにも示されているように、既定の PHP バージョン、既定の構成、および有効な拡張機能を確認するには、[phpinfo()] を呼び出すスクリプトを展開します。追加の拡張機能を有効にするには、次の手順に従います。
+## 方法:既定の PHP ランタイムで拡張機能を有効にする
+前のセクションにも示されているように、既定の PHP バージョン、既定の構成、および有効な拡張機能を確認するには、[phpinfo()] を呼び出すスクリプトをデプロイします。追加の拡張機能を有効にするには、次の手順に従います。
 
 1.  `bin` ディレクトリをルート ディレクトリに追加します。
-1.  `bin` ディレクトリに、 `.dll` 拡張ファイル ( `php_mongo.dll` など) を配置します。拡張機能は、PHP の既定バージョン (この文書の作成時点では PHP 5.4) との互換性があり、VC9 および非スレッドセーフ (nts) 互換であることをご確認ください。
-1. アプリケーションをデプロイします。
-1. Azure ポータルで、サイトのダッシュボードに移動し、**[構成]** をクリックします。
+2.  `bin` ディレクトリに、 `.dll` 拡張ファイル ( `php_mongo.dll` など) を配置します。拡張機能は、PHP の既定バージョン (この文書の作成時点では PHP 5.4) との互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+3. Web アプリをデプロイします。
+4. Azure ポータルで Web アプリに移動し、**[設定]** ボタンをクリックします。
 
-	![Configure tab on Web Sites dashboard][configure]
+	![Web App Settings][settings-button]
 
-1. **[アプリ設定]** で、**PHP_EXTENSIONS** というキーと **bin\your-ext-file** という値を作成します。複数の拡張機能を有効にするには、複数の  `.dll` ファイルをコンマで区切って指定します。
+5. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[アプリの設定]** セクションまでスクロールします。
+6. **[アプリの設定]** セクションで、**PHP_EXTENSIONS** キーを作成します。このキーの値は、Web サイト ルート (**bin\your-ext-file**) への相対パスになります。
 
-	![Enable extension in app settings][app-settings]
+	![Enable extension in app settings][php-extensions]
 
-1. ページの下部にある **[保存]** をクリックします。
+7. **[Web app settings]** ブレードの上部にある **[保存]** ボタンをクリックします。
 
 	![Save configuration settings][save-button]
 
-<h2><a name="UseCustomPHP"></a>方法:カスタムの PHP ランタイムを使用する</h2>
-Azure Websites では、既定の PHP ランタイムを使用する代わりに、指定された PHP ランタイムを使用して PHP スクリプトを実行できます。指定するランタイムは、同様に指定する  `php.ini` ファイルによって構成できます。カスタムの PHP ランタイムを Azure Websites で使用するには、次の操作を行います。
+Zend 拡張機能も、**PHP_ZENDEXTENSIONS** キーを使用することによってサポートされます。複数の拡張機能を有効にするには、複数の  `.dll` ファイルをコンマで区切って指定します。
 
-1. 非スレッドセーフおよび VC9 互換バージョンの Windows 用 PHP を入手します。Windows 用 PHP の最近のリリースは、[http://windows.php.net/download/]. 以前のリリースは、アーカイブ ([http://windows.php.net/downloads/releases/archives/]。
-1. 使用するランタイム用に  `php.ini` ファイルを変更します。システム レベルのみのディレクティブである構成設定は、Azure Websites では無視されます(システム レベルのみのディレクティブについては、[php.ini ディレクティブの一覧]をご覧ください)。
-1. また、PHP ランタイムに拡張機能を追加して、これらを  `php.ini` ファイル内で有効にすることもできます。
-1.  `bin` ディレクトリをルート ディレクトリに追加し、その中に、PHP ランタイムが含まれているディレクトリ ( `bin\php` など) を配置します。
-1. アプリケーションをデプロイします。
-1. Azure ポータルで、サイトのダッシュボードに移動し、**[構成]** をクリックします。
+## 方法:カスタムの PHP ランタイムを使用する
+App Service Web Apps では、既定の PHP ランタイムを使用する代わりに、指定された PHP ランタイムを使用して PHP スクリプトを実行することができます。指定するランタイムは、同様に指定する  `php.ini` ファイルによって構成できます。カスタムの PHP ランタイムを Web Apps で使用するには、次の操作を行います。
 
-	![Configure tab on Web Sites dashboard][configure]
+1. 非スレッドセーフおよび VC9 互換バージョンの Windows 用 PHP を入手します。Windows 用 PHP の最近のリリースは、[http://windows.php.net/download/] です。以前のリリースは、アーカイブ ([http://windows.php.net/downloads/releases/archives/]) です。
+2. 使用するランタイム用に  `php.ini` ファイルを変更します。システム レベルのみのディレクティブである構成設定は、Web Apps では無視されます(システム レベルのみのディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
+3. また、PHP ランタイムに拡張機能を追加して、これらを  `php.ini` ファイル内で有効にすることもできます。
+4.  `bin` ディレクトリをルート ディレクトリに追加し、その中に、PHP ランタイムが含まれているディレクトリ ( `bin\php` など) を配置します。
+5. Web アプリをデプロイします。
+4. Azure ポータルで Web アプリに移動し、**[設定]** ボタンをクリックします。
 
-1. **[ハンドラー マッピング]** で、[拡張] に `*.php` を追加し、 `php-cgi.exe` 実行可能ファイルのパスを追加します。アプリケーションのルートにある  `bin` ディレクトリに PHP ランタイムを配置した場合、パスは  `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
+	![Web App Settings][settings-button]
+
+7. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[ハンドラー マッピング]** セクションまでスクロールします。[拡張] フィールドに `*.php` を追加し、 `php-cgi.exe` 実行可能ファイルのパスを追加します。アプリケーションのルートにある  `bin` ディレクトリに PHP ランタイムを配置した場合、パスは  `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
 
 	![Specify handler in hander mappings][handler-mappings]
 
-1. ページの下部にある **[保存]** をクリックします。
+8. **[Web app settings]** ブレードの上部にある **[保存]** ボタンをクリックします。
 
 	![Save configuration settings][save-button]
 
-<h2><a name="NextSteps"></a>次のステップ</h2>
-これで、Azure Websites で PHP を構成する方法を学習できました。その他の操作については、次のリンク先をご覧ください。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、「[App Service を試す](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-- [Azure での Web サイトの作成、監視、および規模変更]
-- [Azure SDK for PHP をダウンロードする]
+## 変更点
+* Websites から App Service への変更に関するガイドについては、以下を参照してください。[Azure App Service and Its Impact on Existing Azure Services (Azure App Service についてと既存の Azure サービスへの影響)](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 旧ポータルから新ポータルへの変更に関するガイドについては、以下を参照してください。[Reference for navigating the preview portal (プレビュー ポータルを操作するためのリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
 
-
-[無料評価版]: https://www.windowsazure.com/ja-jp/pricing/free-trial/
-[PHP デベロッパー センター - チュートリアル]: https://www.windowsazure.com/ja-jp/develop/php/tutorials/
-[How to Configure Web Sites (Web サイトを構成する方法)]: https://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-configure-websites/
+[無料評価版]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [php.ini ディレクティブの一覧]: http://www.php.net/manual/en/ini.list.php
 [.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
 [ini_set()]: http://www.php.net/manual/en/function.ini-set.php
-[configure]: ./media/web-sites-php-configure/configure.png
-[app-settings]: ./media/web-sites-php-configure/app-settings.png
+[application-settings]: ./media/web-sites-php-configure/application-settings.png
+[settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png
+[php-extensions]: ./media/web-sites-php-configure/php-extensions.png
+[handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
 [http://windows.php.net/download/]: http://windows.php.net/download/
 [http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
-[handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[Azure での Web サイトの作成、監視、および規模変更]: http://azure.microsoft.com/manage/services/web-sites/
-[Azure SDK for PHP をダウンロードする]: http://azure.microsoft.com/develop/php/common-tasks/download-php-sdk/
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

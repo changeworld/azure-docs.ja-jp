@@ -1,10 +1,10 @@
-## <a name="create-account"> </a>Azure ストレージ アカウントの作成
+﻿## Azure のストレージ アカウントの作成
 
 Azure ストレージを使用するには、ストレージ アカウントが必要です。ストレージ アカウントを 
 作成するには、以下の手順を実行します(また、
 Azure サービス管理クライアント ライブラリまたはサービス管理 [REST API] を作成することもできます。
 
-1.  [Azure の管理ポータル]にログインします。
+1.  [Azure 管理ポータル]にログインします。
 
 2.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -21,16 +21,17 @@ Azure サービス管理クライアント ライブラリまたはサービス�
     使用します。
 
 5.  ストレージの配置先となるリージョンまたはアフィニティ グループを
-    選択します。Azure アプリケーションからストレージを使用する場合は、
+    。Azure アプリケーションからストレージを使用する場合は、
     アプリケーションのデプロイ先と同じリージョンを
-    選択してください。
+    アプリケーションを作成します。
 
 6. 必要に応じて、アカウントで使用するレプリケーションのタイプを選択できます。既定のレプリケーションのタイプは Geo 冗長レプリケーションで、最高度の持続性が提供されます。レプリケーションのオプションの詳細については、「[Azure Storage 冗長オプション](http://msdn.microsoft.com/library/azure/dn727290.aspx)」と「[Azure Storage Team Blog (Azure ストレージ チーム ブログ)](http://blogs.msdn.com/b/windowsazurestorage/)」を参照してください。
 
 6.  **[ストレージ アカウントの作成]** をクリックします。
 
-[REST API]: http://msdn.microsoft.com/library/windowsazure/hh264518.aspx
+[REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure 管理ポータル]: http://manage.windowsazure.com
 [plus-new]: ./media/storage-create-account-include/plus-new.png
 [quick-create-storage]: ./media/storage-create-account-include/quick-storage-2.png
-<!--HONumber=42-->
+
+<!--HONumber=49-->

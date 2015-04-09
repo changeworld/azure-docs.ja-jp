@@ -34,11 +34,11 @@
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
 
-## 前提条件
+##前提条件
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]
 
-<h2><a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する</h2>
+<h2><a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する</h2>
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
@@ -50,7 +50,7 @@
 
 4. **[実行]** メニューの **[Run app (アプリを実行)]** をクリックし、アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 
 
-	 この問題は、非認証ユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしているのに、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	 この問題は、認証されないユーザーとしてアプリケーションが Mobile Services にアクセスしようとしているのに、_TodoItem_  テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -106,11 +106,11 @@
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Live Connect を使用した Windows ストア アプリへのシングル サインオン]: /develop/mobile/tutorials/single-sign-on-windows-8-dotnet
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started-android
-[既存のアプリにモバイル サービスを追加する]: /develop/mobile/tutorials/get-started-with-data-android
+[既存のアプリに Mobile Services を追加する]: /develop/mobile/tutorials/get-started-with-data-android
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-android
 [プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-android
 [スクリプトを使用したユーザーの承認]: /develop/mobile/tutorials/authorize-users-in-scripts-android
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -112,7 +112,7 @@ DocumentDB サービスは、さまざまな情報を含んだ応答とストア
 	}
 
 ##POST を使用したストアド プロシージャの実行
-上の例のストアド プロシージャを実行するには、ストアド プロシージャのリソースの URI (/dbs/_rid-db/colls/_rid-coll/sprocs/sproc1) に対して POST を発行する必要があります。次のコードに例を示します。  
+上の例のストアド プロシージャを実行するには、ストアド プロシージャ リソースの URI (/dbs/_rid-db/colls/_rid-coll/sprocs/sproc1) に対して POST を発行する必要があります。次のコードに例を示します。  
 
 	POST /dbs/MyDb/colls/MyColl/sprocs/sproc1 HTTP/1.1
 	 [ { "id": "TestDocument", "book": "Autumn of the Patriarch"}, "Price", 200 ]
@@ -167,8 +167,8 @@ DocumentDB サービスから、次のような応答が返されます。
 ##接続オプション
 DocumentDB に採用されている論理アドレス モデルでは、すべてのリソースが、その _self リンクで識別される不変の論理 URI を持ちます。分散ストレージ システムは複数のリージョンにまたがって存在するため、DocumentDB では、各データベース アカウント下に置かれたリソースをパーティション分割して多数のコンピューターに振り分け、各パーティションをレプリケートすることで、高可用性を実現しています。物理的なアドレスは、特定のパーティションのリソースを管理するレプリカによって登録されます。物理的なアドレスは、障害の発生によって、時間の経過と共に変化しますが、論理上のアドレスは一定で変化しません。論理アドレスから物理アドレスへの変換は、ルーティング テーブルで管理されます。ルーティング テーブルも内部的にはリソースとして存在します。DocumentDB では、次の 2 つの接続モードが公開されています。  
 
-1.	**ゲートウェイ モード:** クライアントは、論理アドレスと物理アドレスの間の翻訳やルーティング処理から保護されます。クライアントは、単に論理 URI を操作して、RESTful にリソース モデルをナビゲートします。クライアントが論理 URI を使用して要求を発行すると、エッジ コンピューターがこの論理 URI をリソースを管理するレプリカの物理アドレスに翻訳して要求を転送します。エッジ コンピューターによってルーティング テーブルがキャッシュに格納 (および定期的に更新) されるため、ルーティングが非常に効率的に処理されます。
-2.	**直接接続モード:** クライアントは、プロセス空間内でルーティング テーブルを直接管理し、定期的にルーティング テーブルを更新します。クライアントは、レプリカに直接接続してエッジ コンピューターをバイパスできます。
+1.	**ゲートウェイ モード:** クライアントは、論理アドレスと物理アドレスの間の翻訳やルーティング処理から保護されます。クライアントは、単に論理 URI を操作して、RESTful にリソース モデルをナビゲートします。クライアントが論理 URI を使用して要求を発行すると、エッジ コンピューターがこの論理 URI をリソースを管理するレプリカの物理アドレスに翻訳して要求を転送します。エッジ コンピューターによってルーティング テーブルがキャッシュに格納 (および定期的に更新) されるため、ルーティングが非常に効率的に処理されます。 
+2.	**直接接続モード:** クライアントは、プロセス空間内でルーティング テーブルを直接管理し、定期的にルーティング テーブルを更新します。クライアントは、レプリカに直接接続してエッジ コンピューターをバイパスできます。   
 
 
 <table width="300">
@@ -252,12 +252,12 @@ DocumentDB に採用されている論理アドレス モデルでは、すべ�
 REST API を使用してリソースを操作する方法については、[Azure DocumentDB REST API リファレンス](https://msdn.microsoft.com/library/azure/dn781481.aspx)を参照してください。
 
 ##参照
--   [Azure DocumentDB REST API リファレンス](https://msdn.microsoft.com/library/azure/dn781481.aspx) 
--	REST ([http://en.wikipedia.org/wiki/Representational_state_transfer](http://en.wikipedia.org/wiki/Representational_state_transfer))
--	JSON 仕様 ([http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt))
--	HTTP 仕様 ([http://www.w3.org/Protocols/rfc2616/rfc2616.html](http://www.w3.org/Protocols/rfc2616/rfc2616.html))
--	エンティティ タグ ([http://en.wikipedia.org/wiki/HTTP_ETag](http://en.wikipedia.org/wiki/HTTP_ETag))
--	[DocumentDB のクエリ](../documentdb-sql-query/)
+-   [Azure DocumentDB REST API リファレンス](https://msdn.microsoft.com/library/azure/dn781481.aspx)  
+-	REST [http://en.wikipedia.org/wiki/Representational_state_transfer](http://en.wikipedia.org/wiki/Representational_state_transfer)
+-	JSON 仕様  [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt)
+-	HTTP 仕様 [http://www.w3.org/Protocols/rfc2616/rfc2616.html](http://www.w3.org/Protocols/rfc2616/rfc2616.html)
+-	エンティティ タグ [http://en.wikipedia.org/wiki/HTTP_ETag](http://en.wikipedia.org/wiki/HTTP_ETag)
+-	[DocumentDB のクエリ](documentdb-sql-query.md)
 -	[DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 -	[DocumentDB のプログラミングストアド プロシージャ、トリガー、UDF](../documentdb-programming/)
 -	[DocumentDB リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn781482.aspx)
@@ -265,4 +265,4 @@ REST API を使用してリソースを操作する方法については、[Azur
 
 [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
 
-<!--HONumber=47-->
+<!--HONumber=49-->

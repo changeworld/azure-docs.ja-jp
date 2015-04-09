@@ -20,7 +20,7 @@
 
 DocumentDB アカウントは、[Azure プレビュー ポータル](https://portal.azure.com/)で監視できます。各 DocumentDB アカウントに対して、パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) が利用可能です。
 
-## <a id="metrics"></a> 方法: DocumentDB アカウントのパフォーマンス メトリックを表示する
+## <a id="metrics"></a>  方法:DocumentDB アカウントのパフォーマンス メトリックを表示する
 1.	[Azure プレビュー ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックし、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
 2.	**[監視]** レンズ内では、既定により以下を表示できます。
 	*	当日の要求数合計
@@ -52,7 +52,7 @@ DocumentDB アカウントは、[Azure プレビュー ポータル](https://por
 ## <a id="create"></a>サイド バイ サイドのパフォーマンス メトリック チャートを作成する
 Azure プレビュー ポータルでは、サイド バイ サイドのメトリック チャートを作成できます。  
 
-1.	まず、複製と変更を行うグラフを右クリックし、 **[カスタマイズ]** を選択します。. 
+1.	まず、複製と変更を行うグラフを右クリックし、**[カスタマイズ]** をクリックします。 
 
 	![](./media/documentdb-monitor-accounts/madocdb6.png)
 
@@ -95,7 +95,7 @@ Azure プレビュー ポータルでは、サイド バイ サイドのメト�
 
  
 ## <a id="next"></a>次のステップ
-DocumentDB の容量とパフォーマンスの詳細については、「[DocumentDB の容量とパフォーマンスの管理](../documentdb-manage/)」を参照してください。 
+DocumentDB の容量とパフォーマンスの詳細については、「[DocumentDB の容量とパフォーマンスの管理](documentdb-manage.md)」を参照してください。 
 
 <!--Anchors-->
 [DocumentDB アカウントのパフォーマンス メトリックを表示する方法]: #How-to-view-performance-metrics-for-a-DocumentDB-account
@@ -105,4 +105,4 @@ DocumentDB の容量とパフォーマンスの詳細については、「[Docum
 [DocumentDB アカウントのパフォーマンス メトリック アラートを設定する方法]: #How-to-setup-performance-metric-alerts-for-a-DocumentDB-account
 [次のステップ]: #Next-steps
 
-<!--HONumber=47-->
+<!--HONumber=49-->

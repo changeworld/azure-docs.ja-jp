@@ -1,5 +1,4 @@
-
-<properties 
+﻿<properties 
 	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
 	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
@@ -20,8 +19,8 @@
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
 
 > [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(任意 | .NET)](/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/)
-- [(任意 | Javascript)](/documentation/articles/mobile-services-schedule-recurring-tasks/)
+- [(任意 | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [(任意 | Javascript)](mobile-services-schedule-recurring-tasks.md)
  
 このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -35,11 +34,11 @@
 + [新しい Updates テーブルを作成する]
 + [新しいスケジュール済みジョブを作成する]
 
-## <a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
+##<a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
 
 [AZURE.INCLUDE [mobile-services-register-twitter-access](../includes/mobile-services-register-twitter-access.md)]
 
-## <a name="create-table"></a>新しい Updates テーブルを作成する
+##<a name="create-table"></a>新しい Updates テーブルを作成する
 
 次に、ツイートを格納するための新しいテーブルを作成する必要があります。
 
@@ -47,13 +46,13 @@
 
 3. **[テーブル名]** に「_Updates_」と入力し、チェック ボタンをクリックします。
 
-## <a name="add-job"></a>新しいスケジュール済みジョブを作成する  
+##<a name="add-job"></a>新しいスケジュール済みジョブを作成する  
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納するための、スケジュールされたジョブを作成します。
 
 2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。 
 
-    >[AZURE.NOTE]モバイル サービスを <em>無料</em> レベルで実行する場合は、一度に 1 つのスケジュールされたジョブのみを実行できます。.有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
+    >[AZURE.NOTE]モバイル サービスを<em>無料</em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
 3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_getUpdates_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。 
 
@@ -180,8 +179,8 @@
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [WindowsAzure.com]: http://www.windowsazure.com/
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /develop/mobile/how-to-guides/register-for-twitter-authentication
+[Mobile Services での Twitter ログイン用のアプリケーションの登録]: /develop/mobile/how-to-guides/register-for-twitter-authentication
 [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="テーブル ストレージの使用方法 (Java) | Microsoft Azure" 
+	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure" 
 	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。" 
 	services="storage" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
 	ms.service="storage" 
@@ -13,59 +13,40 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="09/25/2014" 
+	ms.date="03/11/2015" 
 	ms.author="robmcm"/>
+
 
 # Java からテーブル ストレージを使用する方法
 
-このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
+[AZURE.INCLUDE [storage-selector-table-include](../includes/storage-selector-table-include.md)]
 
-注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android][] に関するページを参照してください。 
+## 概要
 
-## <a name="Contents"> </a>目次
+このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、[次のステップ](#NextSteps) セクションをご覧ください。
 
-* [テーブル ストレージとは](#what-is)
-* [概念](#Concepts)
-* [Azure のストレージ アカウントの作成](#CreateAccount)
-* [Java アプリケーションの作成](#CreateApplication)
-* [テーブル ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
-* [Azure のストレージ接続文字列の設定](#ConnectionString)
-* [方法:テーブルを作成する](#CreateTable)
-* [方法:テーブルを一覧表示する](#ListTables)
-* [方法:エンティティをテーブルに追加する](#AddEntity)
-* [方法:エンティティのバッチを挿入する](#InsertBatch)
-* [方法:パーティション内のすべてのエンティティを取得する](#RetrieveEntities)
-* [方法:パーティション内の一定範囲のエンティティを取得する](#RetrieveRange)
-* [方法:単一のエンティティを取得する](#RetriveSingle)
-* [方法:エンティティを変更する](#ModifyEntity)
-* [方法:エンティティ プロパティのサブセットを照会する](#QueryProperties)
-* [方法:エンティティの挿入または置換を行う](#InsertOrReplace)
-* [方法:エンティティを削除する](#DeleteEntity)
-* [方法:テーブルを削除する](#DeleteTable)
-* [次のステップ](#NextSteps)
+注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。 
 
-[AZURE.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
-
-##<a name="CreateAccount"></a>Azure のストレージ アカウントの作成
+[AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-## <a name="CreateApplication"></a>Java アプリケーションの作成
+## Java アプリケーションの作成
 
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
 そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
 
-## <a name="ConfigureStorage"> </a>テーブル ストレージにアクセスするようにアプリケーションを構成する
+## テーブル ストレージにアクセスするようにアプリケーションを構成する
 
-Windows Azure ストレージ API を使用してテーブルにアクセスする Java ファイルの先頭には、次の import ステートメントを追加します。
+Microsoft Azure ストレージ API を使用してテーブルにアクセスする Java ファイルの先頭には、次の import ステートメントを追加します。
 
     // Include the following imports to use table APIs
     import com.microsoft.azure.storage.*;
     import com.microsoft.azure.storage.table.*;
     import com.microsoft.azure.storage.table.TableQuery.*;
 
-## <a name="ConnectionString"> </a>Azure のストレージ接続文字列の設定
+## Azure のストレージ接続文字列の設定
 
 Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。 *AccountName* と  *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
@@ -75,7 +56,7 @@ Azure ストレージ クライアントでは、ストレージ接続文字列�
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-Microsoft Azure 上のロール内で実行されるアプリケーションでは、この文字列はサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、サービス構成ファイル内の *StorageConnectionString* という名前の **Setting** 要素から接続文字列を取得しています。
+Microsoft Azure のロール内で実行されるアプリケーションでは、この文字列はサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、サービス構成ファイル内の  *StorageConnectionString* という名前の **Setting** 要素から接続文字列を取得しています。
 
     // Retrieve storage account from connection-string.
     String storageConnectionString = 
@@ -83,7 +64,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
-## <a name="CreateTable"> </a>方法:テーブルを作成する
+## 方法:テーブルを作成する
 
 **CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの
 参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、
@@ -109,7 +90,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="ListTables"></a>方法:テーブルを一覧表示する
+## 方法:テーブルを一覧表示する
 
 テーブルの一覧を取得するには、**CloudTableClient.listTables()** メソッドを呼び出して、テーブル名の反復可能な一覧を取得します。
 
@@ -135,7 +116,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="AddEntity"> </a>方法:エンティティをテーブルに追加する
+## 方法:エンティティをテーブルに追加する
 
 エンティティは、**TableEntity** を実装するカスタム クラスを使用して Java オブジェクトにマップされます。コードがシンプルになるように、**TableServiceEntity** クラスでは **TableEntity** を実装し、リフレクションを使用することで、プロパティを、それらのプロパティの名前が付いた getter および setter メソッドにマップしています。エンティティをテーブルに追加するには、最初に、エンティティのプロパティを定義するクラスを作成します。次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用するエンティティ クラスを定義します。エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。
 
@@ -198,7 +179,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="InsertBatch"> </a>方法:エンティティのバッチを挿入する
+## 方法:エンティティのバッチを挿入する
 
 1 回の書き込み操作でエンティティのバッチをテーブル サービスに挿入できます。次のコードでは、**TableBatchOperation** オブジェクトを作成し、3 つの挿入操作を追加しています。追加する各挿入操作では、新しいエンティティ オブジェクトを作成してその値を設定してから、**TableBatchOperation** オブジェクトの **insert** メソッドを呼び出して、エンティティを新しい挿入操作に関連付けています。次に、このコードでは **CloudTable** オブジェクトの **execute** を呼び出して、"people" テーブルと **TableBatchOperation** オブジェクトを指定しています。それにより、テーブル操作のバッチがストレージ サービスに 1 つの要求で送信されるようになっています。
 
@@ -251,9 +232,9 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 - 1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。
 - バッチ操作のデータ ペイロードは 4 MB に制限されています。
 
-## <a name="RetrieveEntities"> </a>方法:パーティション内のすべてのエンティティを取得する
+## 方法:パーティション内のすべてのエンティティを取得する
 
-テーブルに対してパーティション内のエンティティを照会する場合は、**TableQuery** を使用できます。**TableQuery.from** を呼び出して、特定のテーブルに対するクエリを作成し、指定した型の結果が返るようにします。次のコードは、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。**TableQuery.generateFilterCondition** はクエリのフィルターを作成するためのヘルパー メソッドです。**TableQuery.from** メソッドによって返された参照の **where** を呼び出して、フィルターをクエリに適用します。クエリが **CloudTable** オブジェクトの **execute** の呼び出しを使用して実行されると、指定した **CustomerEntity** 型の結果が **Iterator** に格納されて返されます。その後、返された **Iterator** を for each ループ内で使用して、結果を処理できます。このコードは、クエリ結果の各エントリのフィールドをコンソールに出力します。
+テーブルに対してパーティション内のエンティティを照会する場合は、**TableQuery** を使用できます。**TableQuery.from** を呼び出して、特定のテーブルに対するクエリを作成し、指定した型の結果が返るようにします。次のコードは 'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。**TableQuery.generateFilterCondition** はクエリのフィルターを作成するためのヘルパー メソッドです。**TableQuery.from** メソッドによって返された参照の **where** を呼び出して、フィルターをクエリに適用します。クエリが **CloudTable** オブジェクトの **execute** の呼び出しを使用して実行されると、指定した **CustomerEntity** 型の結果が **Iterator** に格納されて返されます。その後、返された **Iterator** を for each ループ内で使用して、結果を処理できます。このコードは、クエリ結果の各エントリのフィールドをコンソールに出力します。
 
     try
     {
@@ -297,7 +278,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="RetrieveRange"> </a>方法:パーティション内の一定範囲のエンティティを取得する
+## 方法:パーティション内の一定範囲のエンティティを取得する
 
 パーティション内の一部のエンティティのみ照会する場合は、フィルター内で比較演算子を使用して範囲を指定できます。次のコードは、2 つのフィルターを組み合わせて、行キー (名) がアルファベットの "E" までの文字で始まる、"Smith" というパーティション内のすべてのエントリを取得します。その後で、クエリ結果が出力されます。このガイドのバッチ挿入に関するセクションでテーブルに追加したエンティティを使用すると、この場合は 2 つのエンティティ (Ben Smith と Denise Smith) だけが返されます。Jeff Smith は返されません。
 
@@ -354,7 +335,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="RetriveSingle"> </a>方法:単一のエンティティを取得する
+## 方法:単一のエンティティを取得する
 
 単一の特定のエンティティを取得するクエリを記述することができます。次のコードでは、**TableOperation.retrieve** を呼び出し、パーティション キーと行キーのパラメーターを使用して、顧客 "Jeff Smith" を指定しています。同じ操作は **TableQuery** を作成してフィルターを使用することでも可能です。この取得操作が実行されると、1 つのコレクションではなく、1 つのエンティティのみ返されます。**getResultAsType** メソッドは、結果を設定先の型である **CustomerEntity** オブジェクト型にキャストします。この型がクエリに指定した型と互換性がない場合は、例外がスローされます。パーティション キーおよび行キーが正確に一致するエンティティがない場合は、null 値が返されます。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
 
@@ -393,7 +374,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="ModifyEntity"> </a>方法:エンティティを変更する
+## 方法:エンティティを変更する
 
 エンティティを変更するには、そのエンティティをテーブル サービスから取得し、エンティティ オブジェクトに変更を加えて、その変更を置換またはマージ操作でテーブル サービスに戻して保存します。次のコードは、既存のユーザーの電話番号を変更します。挿入の場合のように **TableOperation.insert** を呼び出すのではなく、このコードは **TableOperation.replace** を呼び出します。このアプリケーションがエンティティを取得した後で別のアプリケーションが変更を加えていない限り、**CloudTable.execute** メソッドはテーブル サービスを呼び出し、このエンティティは置き換えられます。別のアプリケーションが変更を加えた場合は、例外がスローされるので、このエンティティを取得して変更し、もう一度保存する必要があります。このオプティミスティック同時実行制御の再試行パターンは、分散したストレージ システムでは一般的です。
 
@@ -432,7 +413,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="QueryProperties"> </a>方法:エンティティ プロパティのサブセットを照会する
+## 方法:エンティティ プロパティのサブセットを照会する
 
 テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、**select** メソッドを使用して、テーブル内のエンティティの電子メール アドレスだけを返します。結果は **EntityResolver** によって **String** コレクションへのプロジェクション (サーバーから返されるエンティティの型変換) が行われます。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
@@ -473,7 +454,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="InsertOrReplace"> </a>方法:エンティティの挿入または置換を行う
+## 方法:エンティティの挿入または置換を行う
 
 エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。エンティティの挿入または置換操作では、エンティティが存在しない場合にそのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを置き換えるという操作を 1 つの要求で処理することができます。これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。その後、**CloudTable** オブジェクトの **execute** を呼び出し、テーブルとそのテーブルの挿入および置換操作をパラメーターとして渡します。エンティティの一部のみ更新するには、**TableOperation.insertOrMerge** メソッドを代わりに使用できます。挿入または置換はローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。挿入または置換、および挿入またはマージの詳細については、この[ブログの記事][]を参照してください。
 
@@ -506,7 +487,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="DeleteEntity"> </a>方法:エンティティを削除する
+## 方法:エンティティを削除する
 
 エンティティは、取得後に簡単に削除できます。エンティティを取得したら、削除するエンティティを指定して **TableOperation.delete** を呼び出します。その後、**CloudTable** オブジェクトの **execute** を呼び出します。次のコードは、ユーザー エンティティを取得して削除します。
 
@@ -541,7 +522,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="DeleteTable"> </a>方法:テーブルを削除する
+## 方法:テーブルを削除する
 
 最後に、次のコードは、ストレージ アカウントからテーブルを削除します。削除されたテーブルは、削除後の一定期間 (通常は 40 秒未満) は再作成できなくなります。
 
@@ -564,7 +545,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="NextSteps"> </a>次のステップ
+## 次のステップ
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
@@ -579,5 +560,6 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-[ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-<!--HONumber=42-->
+[ブログの投稿]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+
+<!--HONumber=49-->

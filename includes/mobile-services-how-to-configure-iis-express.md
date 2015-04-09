@@ -1,4 +1,4 @@
-
+﻿
 1. モバイル サービスが現在 IIS Express で実行されている場合は、そのモバイル サービスを停止してください。IIS Express トレイ アイコンを右クリックし、モバイル サービスに対応する **[stop]** をクリックします。
 
     ![](./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png)
@@ -15,7 +15,7 @@
 
 4. サービスに対するリモート接続要求を許可するように、IIS Express を構成します。この作業を実行するには、applicationhost.config ファイルでモバイル サービスに対応する site 要素を見つけ、上でメモした IP アドレスを使用して、ポートに対応する新しい  `binding` 要素を追加します。次に、applicationhost.config ファイルを保存します。 
 
-    更新後の site 要素は次のようになります:
+    更新後の site 要素は次のようになります。
 
         <site name="todolist_Service(1)" id="2">
             <application path="/" applicationPool="Clr4IntegratedAppPool">
@@ -38,4 +38,5 @@
 
 <!-- URLs. -->
 [ローカル コンピューターにポート規則を作成するには]:  http://go.microsoft.com/fwlink/?LinkId=392240
-<!--HONumber=42-->
+
+<!--HONumber=49-->

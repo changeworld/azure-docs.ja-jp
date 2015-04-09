@@ -1,12 +1,10 @@
-
-
-既定では、Mobile Services のリソースに対するすべての要求を実行するには、クライアントがアプリケーション キーを提出する必要があるという制限が加えられていますが、この方法ではリソースに対するアクセスが厳格に保護されるわけではありません。リソースを保護するには、認証されたクライアントのみにアクセスを制限する必要があります。
+﻿既定では、Mobile Services のリソースに対するすべての要求を実行するには、クライアントがアプリケーション キーを提出する必要があるという制限が加えられていますが、この方法ではリソースに対するアクセスが厳格に保護されるわけではありません。リソースを保護するには、認証されたクライアントのみにアクセスを制限する必要があります。
 
 1. Visual Studio で、Mobile Services プロジェクトを開き、Controllers フォルダーを展開して、**TodoItemController.cs** を開きます。**TodoItemController** クラスは、TodoItem テーブルに対するデータ アクセスを実装します。次の  `using` ステートメントを追加します。
 
 		using Microsoft.WindowsAzure.Mobile.Service.Security;
 
-2. 次の _AuthorizeLevel_ 属性を **TodoItemController** クラスに適用します。これにより、_TodoItem_ テーブルに対するすべての操作には、認証されたユーザーが必要になります。
+2. 次の AuthorizeLevel 属性を **TodoItemController** クラスに適用します。これにより、TodoItem テーブルに対するすべての操作には、認証されたユーザーが必要になります。
 
 		[AuthorizeLevel(AuthorizationLevel.User)]
 
@@ -20,4 +18,4 @@
 
 4. プロジェクトを再発行します。
 
-<!--HONumber=47-->
+<!--HONumber=49-->

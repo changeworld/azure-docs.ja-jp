@@ -1,5 +1,5 @@
-<properties 
-	pageTitle="DocumentDB のプログラミング:ストアド プロシージャ、トリガー、UDF | Azure" 
+﻿<properties 
+	pageTitle="DocumentDB のプログラミング:ストアド プロシージャ、トリガー、UDF |Azure" 
 	description="Microsoft Azure DocumentDB を使用して、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) を JavaScript でネイティブに記述する方法について説明します。" 
 	services="documentdb" 
 	documentationCenter="" 
@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
+	ms.date="03/23/2015" 
 	ms.author="mimig"/>
 
 # DocumentDB のプログラミング:ストアド プロシージャ、トリガー、UDF
 
 DocumentDB では、統合された JavaScript 言語によるトランザクション実行が可能なため、開発者は、**ストアド プロシージャ**、**トリガー**、および**ユーザー定義関数 (UDF)** を JavaScript でネイティブに記述できます。これにより、データベース ストレージ パーティションに直接配置して実行できるアプリケーション ロジックを記述できます。 
 
-この記事を読むと、次の質問の答えを見つけることができます。
+まずは、次のビデオを視聴することをお勧めします。このビデオでは、Andrew Liu が、DocumentDB のサーバー側のプログラミング モデルについて簡単に紹介しています。 
+
+> [AZURE.VIDEO azure-demo-a-quick-intro-to-azure-documentdbs-server-side-javascript]
+
+その後でこの記事に戻ると、次の質問の答えを見つけることができます。  
 
 - どのようにしてストアド プロシージャ、トリガー、または UDF を JavaScript を使用して記述するか。
 - DocumentDB では ACID がどのように保証されるか。
@@ -31,11 +35,11 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 
 ##はじめに
 
-この "今日の T-SQL としての JavaScript (JavaScript as a modern day T-SQL)" という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。  
+この *"今日の T-SQL としての JavaScript (JavaScript as a modern day T-SQL)"* という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。  
 
 -	**手続き型ロジック:** JavaScript は、高水準プログラミング言語として、ビジネス ロジックを表現するためのよく知られた優れたインターフェイスを提供します。
 
--	**アトミック トランザクション:** DocumentDB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。これにより、アプリケーションは、関連する操作を 1 つのバッチに結合できます。その結果は、すべてが成功するか、または成功しないかのどちらかになります。
+-	**アトミック トランザクション:** DocumentDB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。これにより、アプリケーションは、関連する操作を 1 つのバッチに結合できます。その結果は、すべてが成功するか、または成功しないかのどちらかになります。 
 
 -	**パフォーマンス:** JSON は、Javascript 言語の型システムに本質的にマップされることに加え、DocumentDB のストレージの基本的な単位であるため、バッファー プール内の JSON ドキュメントの遅延実体化のようないくつかの最適化を行い、それらを必要に応じて実行コードで利用できるようになります。ビジネス ロジックをデータベースに配置することには、より大きなパフォーマンス上のメリットがあります。
 	-	バッチ処理 - 開発者は、挿入などの操作をグループ化してそれらを一括送信できます。ネットワーク トラフィックの待機時間コストと、別個のトランザクションの作成に伴う格納オーバーヘッドが大幅に削減されます。 
@@ -142,10 +146,10 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 上の例ではストアド プロシージャの使用法について説明しました。トリガーとユーザー定義関数 (UDF) については、このチュートリアルの後半で説明します。最初に、DocumentDB でのスクリプトのサポートの一般的な特徴について説明します。  
 
 ##ランタイム サポート
-[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262 によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています](../documentdb-interactions-with-resources.md)。
+[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](documentdb-interactions-with-resources.md) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています
  
 ##トランザクション
-一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。各トランザクションは、**ACID の保証**を提供します。ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の 4 つの特性のよく知られた頭字語です。  
+一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。各トランザクションは、**ACID の保証**を提供します。ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の  4 つの特性のよく知られた頭字語です。  
 
 簡単に説明すると、Atomicity (アトミック性) は、トランザクション内で実行されるすべての操作が単一の単位として扱われることを保証します。その結果は、そのすべてがコミットされるか、またはまったくコミットされないかのどちらかになります。Consistency (一貫性) は、トランザクションにまたがってデータが常に適切な内部状態にあることを保証します。Isolation (分離性) は、2 つのトランザクションが互いに干渉しないことを保証します。通常、ほとんどの商用システムは、アプリケーション ニーズに基づいて使用できる複数の分離性レベルを提供します。Durability (持続性) は、データベース内でコミットされたすべての変更が常に保持されることを保証します。   
 
@@ -231,7 +235,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 ##プリコンパイル
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
-##<a id="trigger"></a>トリガー
+##<a id="trigger"></a> トリガー
 ###プリトリガー
 DocumentDB には、ドキュメントの操作によって実行またはトリガーされるトリガーが用意されています。たとえば、ドキュメントを作成するときにプリトリガーを指定できます。このプリトリガーは、ドキュメントが作成される前に実行されます。次の例に、プリトリガーを使用して、作成するドキュメントのプロパティを検証する方法を示します。
 
@@ -403,7 +407,7 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 		.then(function(response) { 
 		    console.log("Created", response.resource);
 	
-		    var query = 'SELECT * FROM TaxPayers t WHERE tax(t.income) > 20000'; 
+		    var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000'; 
 		    return client.queryDocuments(collection.self,
 	               query).toArrayAsync();
 		}, function(error) {
@@ -601,7 +605,7 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 	    });
 
 
-次の例では、ユーザー定義関数 (UDF) を作成し、これを [DocumentDB SQL クエリで使用しています](../documentdb-sql-query.md)。
+次の例では、ユーザー定義関数 (UDF) を作成し、これを [DocumentDB SQL クエリ](documentdb-sql-query.md)で使用しています
 
 	UserDefinedFunction function = new UserDefinedFunction()
 	{
@@ -613,7 +617,7 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 	};
 	
 	foreach (Book book in client.CreateDocumentQuery(collection.SelfLink,
-	    "SELECT * FROM Books b WHERE LOWER(b.Title) = 'war and peace'"))
+	    "SELECT * FROM Books b WHERE udf.LOWER(b.Title) = 'war and peace'"))
 	{
 	    Console.WriteLine("Read {0} from query", book);
 	}
@@ -631,4 +635,4 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 -	サービス指向のデータベース アーキテクチャ - [http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	Microsoft SQL Server での .NET ランタイムのホスト - [http://dl.acm.org/citation.cfm?id=1007669](http://dl.acm.org/citation.cfm?id=1007669) 
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -1,11 +1,11 @@
-<properties
+﻿<properties
 	pageTitle=".NET 多層アプリケーション - Azure チュートリアル"
 	description="Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つチュートリアルです。.NET でのサンプル。"
 	services="service-bus"
 	documentationCenter=".net"
 	authors="sethmanheim"
 	manager="timlt"
-	editor="mattshel"/>
+	editor=""/>
 
 <tags
 	ms.service="service-bus"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/26/2015"
+	ms.date="03/17/2015"
 	ms.author="sethm"/>
 
 
@@ -24,7 +24,7 @@
 
 ## はじめに
 
-Azure 向けアプリケーションは、Visual Studio 2013 と無料の Azure SDK for .NET を使用して簡単に開発できます。VisualStudio 2013 を所有していない場合でも、SDK をインストールすると自動的に Visual Studio Express がインストールされるため、Azure 向けの開発を完全に無料で始めることができます。このガイドは、WindowsAzure を初めて使用するユーザーを対象としています。このガイドを最後まで読むと、ローカル環境で実行される複数の Azure リソースを使用するアプリケーションを作成し、多層アプリケーションの動作のしくみを理解できます。
+Microsoft Azure 向けアプリケーションは、Visual Studio 2013 および無料の Azure SDK for .NET を使用して簡単に開発できます。VisualStudio 2013 を所有していない場合でも、SDK をインストールすると自動的に Visual Studio Express がインストールされるため、Azure 向けの開発を完全に無料で始めることができます。このガイドは、Azure を初めて使用するユーザーを対象としています。このチュートリアルを最後まで読むと、ローカル環境で実行され、多層アプリケーションの動作のしくみを理解できる、複数の Azure リソースを使用するアプリケーションを作成できます。
 
 学習内容:
 
@@ -35,13 +35,13 @@ Azure 向けアプリケーションは、Visual Studio 2013 と無料の Azure 
 
 [AZURE.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-このチュートリアルでは、Azure のクラウド サービスで多層アプリケーションを構築して実行します。フロントエンドは ASP.NET MVC Web ロール、バックエンドは Worker ロールになります。同じ多層アプリケーションを作成するときに、クラウド サービスではなく Azure Web サイトに展開される Web プロジェクトとしてフロントエンドを実装することもできます。Azure Web サイトのフロントエンドの場合の手順については、「[次のステップ](#nextsteps)」をご覧ください 。
+このチュートリアルでは、Azure のクラウド サービスで多層アプリケーションを構築して実行します。フロントエンドは ASP.NET MVC Web ロール、バックエンドは Worker ロールになります。同じ多層アプリケーションを作成するときに、クラウド サービスではなく Azure Web サイトにデプロイされる Web プロジェクトとしてフロントエンドを実装することもできます。Azure Web サイトのフロントエンドの場合の手順については、「[次のステップ]」をご覧ください(#nextsteps) 。
 
-完成したアプリケーションのスクリーンショットは次のようになります。
+完成したアプリケーションのスクリーン ショットは次のとおりです。
 
 ![][0]
 
-**注:** Azure にもストレージ キュー機能が用意されています。Azure のストレージ キューと Service Bus キューの詳細については、「[Azure キューと Azure Service Bus キューの比較][sbqueuecomparison]」をご覧ください。  
+**注: **Azure にもストレージ キュー機能が用意されています。Azure のストレージ キューと Service Bus キューの詳細については、「[Azure キューと Azure Service Bus キューの比較][sbqueuecomparison]」をご覧ください。  
 
 ## シナリオの概要: ロール間通信
 
@@ -49,7 +49,7 @@ Azure 向けアプリケーションは、Visual Studio 2013 と無料の Azure 
 
 Web 層と中間層との間で仲介されたメッセージングを使用すると、2 つのコンポーネントの結合が解除されます。直接メッセージング (TCP や HTTP) とは異なり、Web 層は中間層に直接接続しません。その代わりに、作業をメッセージとして Service Bus にプッシュします。Service Bus は、このメッセージを中間層が受け取り、処理する用意ができるまで確実に保持します。
 
-Service Bus には、仲介されたメッセージングをサポートする、キューとトピックという 2 つのエンティティがあります。キューでは、各メッセージは単一のレシーバーが使用するキューに送信されます。トピックはパブリッシュ/サブスクライブ パターンをサポートし、パブリッシュされた各メッセージをトピックに登録されている各サブスクリプションで使用します。各サブスクリプションは、独自のメッセージ キューを論理的に管理しています。また、サブスクリプションにフィルター ルールを構成し、サブスクリプション キューに渡すメッセージをフィルターに一致するメッセージのみに制限できます。この例では、Service Bus キューにアクセスするために必要なライブラリが含まれています。
+Service Bus には、仲介型メッセージングをサポートする、キューとトピックという 2 つのエンティティがあります。キューでは、各メッセージは単一のレシーバーが使用するキューに送信されます。トピックはパブリッシュ/サブスクライブ パターンをサポートし、パブリッシュされた各メッセージをトピックに登録されているサブスクリプションで使用します。各サブスクリプションは、独自のメッセージ キューを論理的に管理しています。また、サブスクリプションにフィルター ルールを構成し、サブスクリプション キューに渡すメッセージをフィルターに一致するメッセージのみに制限できます。この例では、Service Bus キューを使用します。
 
 ![][1]
 
@@ -57,9 +57,9 @@ Service Bus には、仲介されたメッセージングをサポートする�
 
 -   **一時的な結合の解除** 非同期メッセージング パターンの場合、プロデューサーとコンシューマーを同時にオンラインにする必要がありません。コンシューマー側の受信準備が完了するまで、確実に Service Bus にメッセージを格納します。これにより、分散型アプリケーションのコンポーネントをメンテナンスやコンポーネント クラッシュの場合でも システム全体に影響を与えずに自動的に切断できます。さらに、コンシューマー側アプリケーションを 1 日の特定の時間にのみオンラインにすることもできます。
 
--   **負荷平準化**。多くのアプリケーションでは、システム負荷が時間の 経過とともに変化しますが、各作業単位に必要な処理時間は 通常一定に保たれます。メッセージ プロデューサーとメッセージ コンシューマーの間をキューで仲介することは、コンシューマー側アプリケーション (ワーカー) はピーク時ではなく平均時の負荷に対応できるようにプロビジョニングすればいいということを意味します。キューの深さは、受信する負荷の変化に合わせて増減します。このため、アプリケーション負荷への対応に必要なインフラストラクチャの観点から直接費用を節約できます。
+-   **負荷平準化** 多くのアプリケーションでは、システムの負荷が時間の経過と共に変化するものの、作業単位ごとに必要な処理時間は通常一定です。メッセージのプロデューサーとコンシューマーの仲介にキューを使用した場合、コンシューマー側アプリケーション (ワーカー) はピーク時の負荷ではなく、平均負荷に対応できればよいことになります。キューの深さは、受信する負荷の変化に合わせて増減します。このため、アプリケーションの負荷の処理に必要なインフラストラクチャの量という点でコストを直接節約できます。
 
--   **負荷分散。** 負荷の増大に合わせて、キューからの読み取りのために Worker プロセスをさらに追加できます。各メッセージは、1 つの Worker プロセスのみで処理されます。また、このプルベースの負荷分散では、Worker マシンの使用率を最適化できます。個々の Worker マシンが独自の最大速度でメッセージをプルするため、Worker マシンの処理能力が異なっていても可能です。このパターンはよく、競合コンシューマー パターンと呼ばれるています。
+-   **負荷分散** 負荷の増大に合わせて、キューからの読み取りのためにワーカー プロセスをさらに追加できます。各メッセージは、1 つのワーカー プロセスのみで処理されます。また、このプル ベースの負荷分散では、ワーカー マシンの使用率を最適化できます。個々のワーカー マシンが独自の最大速度でメッセージをプルするため、ワーカー マシンの処理能力が異なっていても可能です。このパターンはよく、競合コンシューマー パターンと呼ばれています。
 
     ![][2]
 
@@ -71,7 +71,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 1.  Azure SDK for .NET をインストールするには、次のボタンをクリックします。
 
-    [Get Tools and SDK][]
+    [ツールと SDK の入手][]
 
 2. 	使用している Visual Studio のバージョンに対応するリンクを選択します。このチュートリアルの手順では、Visual Studio 2013 を使用します。
 
@@ -85,19 +85,19 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
     ![][33]
 
-6.  インストールが完了すると、開発に必要なツールがすべてそろいます。SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。Visual Studio がインストールされていない場合、無料の Visual Studio Express for Web もインストールされます。
+6.  インストールが完了すると、開発に必要なツールがすべて揃います。SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。Visual Studio がインストールされていない場合、無料の Visual Studio Express for Web もインストールされます。
 
 ## Service Bus の名前空間を設定する
 
-次の手順では、サービス名前空間を作成し、共有秘密 (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。SAS キーは、サービス名前空間の作成時に、システムによって生成されます。サービス名前空間と共有秘密キーの組み合わせが、アプリケーションへのアクセスをサービス バスが認証する資格情報になります。
+次の手順では、サービス名前空間を作成し、共有秘密 (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。SAS キーは、サービス名前空間の作成時に、システムによって生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 Visual Studio サーバー エクスプローラーを使用しても名前空間と Service Bus メッセージング エンティティを管理できますが、新しい名前空間を作成できるのはポータルでのみです。
 
 ### 管理ポータルを使用して名前空間を設定する
 
-1.  [Azure 管理ポータル][]にログインします。
+1.  [Azure の管理ポータル][]にログインします。
 
-2.  管理ポータルの左のナビゲーション ウィンドウで、**[サービス バス]** をクリックします。
+2.  管理ポータルの左のナビゲーション ウィンドウで **[Service Bus]** をクリックします。
 
 3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。
 
@@ -126,22 +126,17 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
     ![][35]
 
-10.  キーを書き留めておくか、クリップボードにコピーしておいてください。
+10.  これらの資格情報を書き留めておくか、クリップボードにコピーします。
 
 ## Visual Studio サーバー エクスプローラーを使用して名前空間とメッセージング エンティティを管理する
 
-<<<<<<< HEAD
-管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、「[Azure Tools for Visual Studio の概要](http://msdn.microsoft.com/library/ff687127.aspx).」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、**サーバー エクスプローラー**の **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既にサブスクリプションで作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前
-空間に関連付けられている接続文字列と他のメタデータを確認できます。
-=======
-管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、[こちら](http://msdn.microsoft.com/library/ff687127.aspx)の「**Visual Studio から Azure に接続するには**」で説明されている 手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
->>>>>>> 2076695a45ab90a31cffe94a32399a2407565b39
+Azure の管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、[こちら](http://msdn.microsoft.com/library/ff687127.aspx)の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
 
 **SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
 
 ![][34]
 
-**注:** **サーバー エクスプローラー**を使用して他のサブスクリプションの Service Bus 名前空間を管理することもできます。手順は次のとおりです:
+**注: ** **サーバー エクスプローラー**を使用して他のサブスクリプションの Service Bus 名前空間を管理することもできます。手順は次のとおりです:
 
 1. Visual Studio のメニュー バーで **[表示]** を選択し、**[サーバー エクスプローラー]** をクリックします。サーバー エクスプローラーの階層内で **[Azure]** に **[Service Bus]** ノードが表示されます (次の図を参照)。
 
@@ -155,12 +150,11 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
 ## Web ロールを作成する
 
-このセクションでは、アプリケーションのフロンドエンドを作成します。最初に、アプリケーションで表示するさまざまなページを作成します。
-その後、Service Bus のキューに項目を送信し、キューに関するステータス情報を送信するコードを追加します。
+このセクションでは、アプリケーションのフロンドエンドを作成します。最初に、アプリケーションで表示するさまざまなページを作成します。その後、Service Bus キューに項目を送信し、キューに関するステータス情報を表示するコードを追加します。
 
 ### プロジェクトを作成する
 
-1.  管理者特権で Microsoft Visual Studio 2013 または Microsoft Visual Studio Express を開始します。管理者特権で Visual Studio を開始するには、**[Microsoft Visual Studio 2013 (または Microsoft Visual Studio Express)]** を右クリックし、**[管理者として実行]** をクリックします。Azure コンピューティング エミュレーター (後ほどこのガイドで解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
+1.  管理者特権で Microsoft Visual Studio 2013 または Microsoft Visual Studio Express を開始します。管理者特権で Visual Studio を開始するには、[**Microsoft Visual Studio 2013 (または Microsoft Visual Studio Express)**] を右クリックし、[**管理者として実行**] をクリックします。Azure コンピューティング エミュレーター (後ほどこのガイドで解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
 
     Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。
 
@@ -171,7 +165,7 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
     ![][9]
 
-3.  **.NET Framework 4.5** ロールの **[ASP.NET Web ロール]** を ダブルクリックします。
+3.  **.NET Framework 4.5** ロールの **[ASP.NET Web ロール]** をダブルクリックします。
 
     ![][10]
 
@@ -185,17 +179,18 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
 6.  **ソリューション エクスプローラー**で **[参照設定]** を右クリックし、**[NuGet パッケージの管理]** または **[ライブラリ パッケージ参照の追加]** をクリックします。
 
-7.  ダイアログの左側の **[オンライン]** をクリックします。"**Service Bus**"を検索して、**[Microsoft Azure の Service Bus]**項目を選択します。次に、インストールを完了し、このダイアログを閉じます。
+7.  ダイアログの左側の **[オンライン]** をクリックします。"**Service Bus**" を検索して、**[Microsoft Azure Service Bus]**項目を選択します。次に、インストールを完了し、このダイアログを閉じます。
 
     ![][13]
 
 8.  これで、必要なクライアント アセンブリを参照できるようになり、新しいコード ファイルがいくつか追加されました。
 
-9.  **ソリューション エクスプローラー**で **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。[名前] ボックスに「**OnlineOrder.cs**」と入力します。**[追加]** をクリックします。
+9.  **ソリューション エクスプローラー**で **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。**[名前]** ボックスに「**OnlineOrder.cs**」と入力します。**[追加]** をクリックします。
 
 ### Web ロール用のコードの作成
 
-このセクションでは、アプリケーションで表示するさまざまなページを作成します。
+このセクションでは、アプリケーションで表示するさまざまなページを
+作成します。
 
 1.  Visual Studio で、**OnlineOrder.cs** ファイルの既存の名前空間定義を、次のコードに置き換えます。
 
@@ -214,7 +209,7 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
         using Microsoft.ServiceBus.Messaging;
         using Microsoft.ServiceBus;
 
-3.  また、Visual Studio の **HomeController.cs** ファイルで 既存の名前空間の定義を次のコードに置き換えます。このコードには、キューへの項目の送信を処理するメソッドが含まれています。
+3.  また、Visual Studio の **HomeController.cs** ファイルで既存の名前空間の定義を次のコードに置き換えます。このコードには、キューへの項目の送信を処理するメソッドが含まれています。
 
         namespace FrontendWebRole.Controllers
         {
@@ -277,27 +272,26 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
 7.  **[追加]** をクリックします。
 
-8.  次に、アプリケーションの表示名を変更します。**ソリューション エクスプローラー**で、**Views\Shared\\Layout.cshtml** ファイルをダブルクリックし、Visual Studio エディターで開きます。
+8.  次に、アプリケーションの表示名を変更します。**ソリューション エクスプローラー**で、**Views\Shared\_Layout.cshtml** ファイルをダブルクリックし、Visual Studio エディターで開きます。
 
-9.  **My ASP.NET MVC Application** となっている箇所をすべて **LITWARE'S Awesome Products** に置き換えます。
+9.  **My ASP.NET Application** となっている箇所をすべて **LITWARE'S Products** に置き換えます。
 
-11. **Home**、**About**、**Contact** の各リンクを削除します。以下の強調表示されたコードを削除してください。
+10. **Home**、**About**、**Contact** の各リンクを削除します。以下の強調表示されたコードを削除してください。
 
 	![][28]
 
-
-12. 最後に、キューに関する情報を表示できるように、送信ページを変更します。**ソリューション エクスプローラー**で、**Views\Home\Submit.cshtml** ファイルをダブルクリックし、Visual Studio エディターで開きます。**&lt;h2>Submit&lt;/h2>** という行の下に、次の行を追加します。ここでは、**ViewBag.MessageCount** は空です。この値は後で入力します。
+11. 最後に、キューに関する情報を表示できるように、送信ページを変更します。**ソリューション エクスプローラー**で、**Views\Home\Submit.cshtml** ファイルをダブルクリックし、Visual Studio エディターで開きます。**&lt;h2>Submit&lt;/h2>** という行の下に、次の行を追加します。ここでは、**ViewBag.MessageCount** は空です。この値は後で入力します。
 
         <p>Current Number of Orders in Queue Waiting to be Processed:@ViewBag.MessageCount</p>
 
 
-13. これで、UI の実装が終わりました。**F5** キーを押してアプリケーションを実行し、期待どおりに表示されることを確認します。
+12. これで、UI の実装が終わりました。**F5** キーを押してアプリケーションを実行し、期待どおりに表示されることを確認します。
 
     ![][17]
 
 ### Service Bus キューに項目を送信するためのコードの作成
 
-次に、項目をキューに送信するためのコードを追加します。最初に、Service Bus キューの接続情報を含むクラスを作成します。次に、**Global.aspx.cs** から接続を初期化します。最後に **HomeController.cs** で作成した送信コードを更新し、項目を実際に Service Bus キューに送信します。
+次に、項目をキューに送信するためのコードを追加します。最初に、Service Bus キューの接続情報を含むクラスを作成します。次に、**Global.aspx.cs** から接続を初期化します。最後に、Service Bus キューに実際に項目を送信できるように、**HomeController.cs 内に作成してある送信用のコードを更新します。**
 
 1.  ソリューション エクスプローラーで、**FrontendWebRole** を右クリックします (ロールではなくプロジェクトを右クリック)。**[追加]**、**[クラス]** の順にクリックします。
 
@@ -363,7 +357,8 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
             }
         }
 
-    **注:** チュートリアル後半で **名前空間** と SAS キーの値を構成ファイルに保存する方法を学習します。
+    **注: **このチュートリアルでは後ほど、
+    構成ファイルに**名前空間**の名前と SAS キーの値を格納する方法を説明します。
 
 4.  次に、**Initialize** メソッドが呼び出されるようにします。**ソリューション エクスプローラー**で、**Global.asax\Global.asax.cs** をダブルクリックします。
 
@@ -378,7 +373,7 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
         public ActionResult Submit()
         {
             // Get a NamespaceManager which allows you to perform management and
-            // diagnostic operations on your Service Bus Queues.
+            // diagnostic operations on your Service Bus queues.
             var namespaceManager = QueueConnector.CreateNamespaceManager();
 
             // Get the queue, and obtain the message count.
@@ -407,20 +402,19 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
             }
         }
 
-9.  ここで再び、アプリケーションを実行します。注文を
-    メッセージの数が増加します。
+9.  ここで再び、アプリケーションを実行します。注文を送信するたびに、メッセージ数が増えていきます。
 
     ![][18]
 
 ## クラウド構成マネージャー
 
-**Microsoft.WindowsAzure.Configuration.CloudConfigurationManager** クラスの**GetSettings** メソッドでは、プラットフォームの構成ストアから構成設定を読み取ることができます。たとえば、コードを Web ロールかワーカー ロールで実行している場合、**[Getsettings]**メソッドは ServiceConfiguration.cscfg ファイルを読み取り、コードを標準的なコンソール アプリで実行している場合は、**[Getsettings]**メソッドは、app.config ファイルを読み取ります。
+**Microsoft.WindowsAzure.Configuration.CloudConfigurationManager** クラスでは **GetSettings** メソッドにより、プラットフォームの構成ストアから構成設定を読み取ることができます。たとえば、コードを Web ロールかワーカー ロールで実行している場合、**[Getsettings]**メソッドは ServiceConfiguration.cscfg ファイルを読み取り、コードを標準的なコンソール アプリで実行している場合は、**[Getsettings]**メソッドは、app.config ファイルを読み取ります。
 
 Service Bus 名前空間の接続文字列を構成ファイルに保存している場合は、**GetSettings** メソッドを使用して接続文字列を読み取り、それを使用して **NamespaceMananger** オブジェクトをインスタンス化できます。**NamespaceMananger** インスタンスを使用して Service Bus 名前空間をプログラムで構成できます。同じ接続文字列を使用してクライアントのオブジェクト (**QueueClient**、**TopicClient**。**EventHubClient** オブジェクトなど) をインスタンス化し、メッセージの送受信などのランタイム操作を実行できます。
 
 ### Connection string
 
-クライアント (たとえば、Service Bus **の QueueClient**) をインスタンス化するための構成情報は、接続文字列として表すことができます。その接続文字列を使用してクライアントの型をインスタンス化する **CreateFromConnectionString()** メソッドがクライアント側には用意されています。たとえば、次の構成セクションがあるとします。
+クライアント (たとえば、**Service Bus の QueueClient**) をインスタンス化するための構成情報は、接続文字列として表すことができます。その接続文字列を使用してクライアントの型をインスタンス化する  `CreateFromConnectionString()` メソッドがクライアント側には用意されています。たとえば、次の構成セクションがあるとします。
 
 	<ConfigurationSettings>
     ...
@@ -451,7 +445,7 @@ Service Bus 名前空間の接続文字列を構成ファイルに保存して�
 
 次に、送信された注文を処理する Worker ロールを作成します。この例では、Visual Studio プロジェクト テンプレートの **Worker Role with Service Bus Queue** を使用します。まず、Visual Studio のサーバー エクスプローラーを使用して必要な資格情報を取得します。
 
-1. 「[Visual Studio のサーバー エクスプローラーを使用して名前空間とメッセージング エンティティを管理する](./cloud-services-dotnet-multi-tier-app-using-service-bus-queues/#manage-namespaces-and-messaging-entities-using-the-visual-studio-server-explorer)」セクションにある手順どおりに Visual Studio が Azure アカウントに接続されていることを確認します。
+1. 「Visual Studio のサーバー エクスプローラーを使用して名前空間とメッセージング エンティティを管理する」セクションにある手順どおりに Visual Studio が Azure アカウントに接続されていることを確認します
 
 2.  Visual Studio の**ソリューション エクスプローラー**で、**MultiTierApp** プロジェクト内の **Roles** フォルダーを右クリックします。
 
@@ -463,15 +457,15 @@ Service Bus 名前空間の接続文字列を構成ファイルに保存して�
 
 	![][23]
 
-5.  [**名前**] ボックスに、プロジェクト名として「**OrderProcessingRole**」を入力します。**[追加]** をクリックします。
+5.  [名前]** ボックスに、プロジェクト名として「**OrderProcessingRole**」を入力します。**[追加]** をクリックします。
 
-6.  サーバー エクスプローラーで、サービスの名前空間名を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウの 1 つ目の項目には、接続文字列が表示され、必要な承認の資格情報を含んだサービスの名前空間のエンドポイントが設定されています。たとえば、次の図を見てください。**[ConnectionString]** をダブルクリックし、**Ctrl + C** を押すと、この文字列がクリップボードにコピーされます。
+6.  サーバー エクスプローラーで、サービスの名前空間名を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウの 1 つ目の項目には、接続文字列が表示され、必要な承認の資格情報を含んだ名前空間のエンドポイントが設定されています。たとえば、次の図を見てください。**[ConnectionString]** をダブルクリックし、**Ctrl + C** を押すと、この文字列がクリップボードにコピーされます。
 
 	![][24]
 
 7.  ソリューション エクスプローラーで、手順 5 で作成した **[OrderProcessingRole]** を右クリックします (右クリックするのは、**[ロール]** の **[OrderProcessingRole]** です。クラスではありません)。**[プロパティ]** をクリックします。
 
-8.  **[プロパティ]** ダイアログ ボックスの **[設定]** タブで、**[Microsoft.ServiceBus.ConnectionString]** の **[値]** ボックス内をクリックし、手順 6 でコピーしたエンドポイントの値を貼り付けます。
+8.  **[プロパティ]** ダイアログ ボックスの **[設定]** タブで、**[Microsoft.ServiceBus.ConnectionString]** の **[値]** ボックス内をクリックし、手順 6. でコピーしたエンドポイントの値を貼り付けます。
 
 	![][25]
 
@@ -479,7 +473,7 @@ Service Bus 名前空間の接続文字列を構成ファイルに保存して�
 
 10. **FrontendWebRole\Models** のサブフォルダーに移動し、**[OnlineOrder.cs]** をダブルクリックして、このプロジェクトに追加します。
 
-11. WorkerRole.cs で、次のコードのように **WorkerRole.cs** の **QueueName** 変数の値を `"ProcessingQueue"` から `"OrdersQueue"` に置き換えます。
+11. **WorkerRole.cs** 内の **QueueName** 変数の値を `"ProcessingQueue"` から `"OrdersQueue"` に変更します (次のコードを参照)。
 
 		// The name of your queue
 		const string QueueName = "OrdersQueue";
@@ -488,7 +482,7 @@ Service Bus 名前空間の接続文字列を構成ファイルに保存して�
 
 		using FrontendWebRole.Models;
 
-13.  `Run()` 関数で、 `OnMessage` の呼び出し内の  `try` 句の中に次のコードを追加します。
+13.  `Run()` 関数の  `OnMessage` の呼び出し内で、 `try` 句に次のコードを追加します。
 
 		Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
 		// View the message as an OnlineOrder
@@ -507,14 +501,14 @@ Service Bus 名前空間の接続文字列を構成ファイルに保存して�
 サービス バスの詳細については、次のリソースをご覧ください。  
 
 * [Azure Service Bus][sbmsdn]  
-* [Service Busのドキュメント][sbwacom]  
-* [サービス バス キューの使用方法][sbwacomqhowto]  
+* [Service Bus サービス ページ][sbwacom]  
+* [Service Bus キューの使用方法][sbwacomqhowto]  
 
-多層シナリオの詳細またはクラウド サービスにアプリケーションを展開する方法については、以下をご覧ください。  
+多層シナリオの詳細またはクラウド サービスにアプリケーションをデプロイする方法については、以下をご覧ください。  
 
 * [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション][mutitierstorage]  
 
-Azure クラウド サービスではなく、Azure Websites に多層アプリケーションのフロントエンドを実装することもできます。Azure クラウド サービスと Azure Websites の違いについては、「[Azure 実行モデル][executionmodels]」をご覧ください。
+Azure クラウド サービスではなく、Azure Web サイトに多層アプリケーションのフロントエンドを実装することもできます。Azure クラウド サービスと Azure Websites の違いについては、「[Azure 実行モデル][executionmodels]」をご覧ください。
 
 このチュートリアルで作成したアプリケーションをクラウド サービス Web ロールではなく標準的な Web プロジェクトとして実装するには、次の相違点に注意しつつ、このチュートリアルの手順に従ってください。
 
@@ -524,14 +518,13 @@ Azure クラウド サービスではなく、Azure Websites に多層アプリ�
 
 3. フロントエンドとバックエンドは個別にテストできるほか、個別の Visual Studio インスタンスで両方を同時にテストすることもできます。
 
-Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](http://azure.microsoft.com/develop/net/tutorials/get-started/)」をご覧ください。Azure クラウド サービスにバックエンドを展開する方法については、「[.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション)][mutitierstorage]」をご覧ください。
+Azure の Web サイトにアプリケーションをデプロイする方法については、[Azure の Web サイトへの ASP.NET Web アプリケーションのデプロイ](http://azure.microsoft.com/develop/net/tutorials/get-started/)に関するページをご覧ください。Azure クラウド サービスにバックエンドを展開する方法については、「[.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション)][mutitierstorage]」をご覧ください。
 
 
   [0]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
   [sbqueuecomparison]: http://msdn.microsoft.com/library/hh767287.aspx
   [2]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
-  [Get Tools and SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
   [ツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
   [3]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-3.png
 
@@ -574,4 +567,4 @@ Azure の Web サイトにアプリケーションをデプロイする方法に
   [mutitierstorage]: /develop/net/tutorials/multi-tier-web-site/1-overview/
   [executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -1,6 +1,4 @@
-﻿
-
-1. プロジェクト ファイル QSTodoListViewController.m を開き、**viewDidLoad** メソッドで、データをテーブルに再び読み込む次のコードを削除します。
+﻿1. **QSTodoListViewController.m** を開き、**viewDidLoad** メソッドで次の行を削除します。
 
         [self refresh];
 
@@ -9,18 +7,18 @@
         - (void)viewDidAppear:(BOOL)animated
         {
             MSClient *client = self.todoService.client;
-            
+
             if (client.currentUser != nil) {
                 return;
             }
-            
+
             [client loginWithProvider:@"facebook" controller:self animated:YES completion:^(MSUser *user, NSError *error) {
                 [self refresh];
             }];
         }
 
-    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の **loginWithProvider** に渡される値を_microsoftaccount_、_facebook_、_twitter_、_google_、_windowsazureactivedirectory_ のいずれかに変更します。
-		
-3. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
+    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、**loginWithProvider** に渡される値を変更します。サポートされる値は次のとおりです。_microsoftaccount_、_facebook_、_twitter_、_google_、_windowsazureactivedirectory_
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。<!--HONumber=42-->
+3. **[実行]** をクリックしてアプリを開始し、選択した ID プロバイダーでログインします。ログインが成功すると、Todo リストを表示して更新できます。
+
+<!--HONumber=49-->

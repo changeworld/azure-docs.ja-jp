@@ -1,9 +1,9 @@
-<properties 
-	pageTitle="BLOB ストレージを使用する方法 (Ruby) | Microsoft Azure" 
+﻿<properties 
+	pageTitle="Ruby から BLOB ストレージを使用する方法 | Microsoft Azure" 
 	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。コード サンプルは Ruby で記述されています。" 
 	services="storage" 
 	documentationCenter="ruby" 
-	authors="tfitzmac" 
+	authors="tfitzmac,tamram" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,47 +13,30 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="11/21/2014" 
+	ms.date="03/11/2015" 
 	ms.author="tomfitz"/>
 
 
+# Ruby から BLOB ストレージを使用する方法
 
+[AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
 
+## 概要
 
-#Ruby から BLOB サービスを使用する方法
-
-このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。
+このガイドでは、Azure BLOB サービスを使用して
+一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。
 紹介するシナリオは、BLOB の**アップロード、一覧の取得、ダウンロード**、および**削除**です。
-BLOB の詳細については、「[次のステップ](#next-steps)」 セクションを参照してください。
 
-##目次
+[AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
 
-* [BLOB サービスとは](#what-is)
-* [概念](#concepts)
-* [Azure のストレージ アカウントの作成](#CreateAccount)
-* [Ruby アプリケーションの作成](#CreateRubyApp)
-* [アプリケーションからストレージへのアクセスの構成](#ConfigAccessStorage)
-* [Azure のストレージ接続文字列の設定](#SetupStorageConnection)
-* [方法:コンテナーを作成する](#CreateContainer)
-* [方法:コンテナーに BLOB をアップロードする](#UploadBlob)
-* [方法:コンテナー内の BLOB を一覧表示する](#ListBlobs)
-* [方法:BLOB をダウンロードする](#DownloadBlobs)
-* [方法:BLOB を削除する](#DeleteBlob)
-* [次のステップ](#NextSteps)
+[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-
-[AZURE.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
-
-## <a id="CreateAccount"></a>Azure のストレージ アカウントの作成
-
-[AZURE.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
-
-## <a id="CreateRubyApp"></a>Ruby アプリケーションの作成
+## Ruby アプリケーションの作成
 
 Ruby アプリケーションを作成します。手順については、 
-「[Azure VM での Ruby on Rails Web アプリケーション](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)。」
+[Azure での Ruby アプリケーションの作成]に関するページを参照してください。/develop/ruby/tutorials/web-app-with-linux-vm/).
 
-## <a id="ConfigAccessStorage"></a>アプリケーションからストレージへのアクセスの構成
+## アプリケーションからストレージへのアクセスの構成
 
 Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
@@ -69,9 +52,9 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 	require "azure"
 
-## <a id="SetupStorageConnection"></a>Azure のストレージ接続文字列の設定
+## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS_KEY** 
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS_KEY** 
 を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
@@ -85,9 +68,9 @@ azure モジュールは、Azure Storage アカウントに接続するために
 3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
 
-## <a id="CreateContainer"></a>方法:コンテナーを作成する
+## 方法:コンテナーを作成する
 
-**Azure::BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。コンテナーを作成するには、**create\_container()** メソッドを使用します。
+**Azure::BlobService** オブジェクトを使用して、コンテナーと BLOB を操作できます。コンテナーを作成するには、**create\_container()** メソッドを使用します。
 
 次の例では、コンテナーを作成し、既に存在している場合はエラーを出力します。
 
@@ -100,7 +83,7 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 コンテナー内のファイルを公開する場合は、コンテナーのアクセス許可を設定できます。 
 
-<strong>create\_container()</strong> 呼び出しを変更するだけで **:public\_access\_level** オプションを渡すことができます。
+<strong>create\_container()</strong> の呼び出しを変更して、次のように **:public\_access\_level** オプションを渡すだけです。
 
 	container = azure_blob_service.create_container("test-container", 
 	  :public_access_level => "<public access level>")
@@ -108,17 +91,17 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 **:public\_access\_level** オプションに指定できる値は次のとおりです。
 
-* **BLOB:** コンテナーと BLOB に完全パブリック読み取りアクセスを指定します。クライアントは匿名の要求でコンテナー内に BLOB を列挙できますが、ストレージ アカウント内にコンテナーを列挙することはできません。
+* **BLOB:** コンテナーと BLOB データに完全パブリック読み取りアクセスを指定します。クライアントは匿名の要求でコンテナー内に BLOB を列挙できますが、ストレージ アカウント内にコンテナーを列挙することはできません。
 
 * **コンテナー:** BLOB にパブリック読み取りアクセスを指定します。このコンテナー内の BLOB データは匿名の要求で読み取ることができますが、コンテナー データは使用できません。クライアントは匿名の要求でコンテナー内に BLOB を列挙できません。
 
 別の方法として、**set\_container\_acl()** メソッドを使用してパブリック アクセス レベルを指定することでも、コンテナーのパブリック アクセス レベルを変更できます。
-
+ 
 次の例では、パブリック アクセス レベルを **container** に変更します。
 
 	azure_blob_service.set_container_acl('test-container', "container")
 
-## <a id="UploadBlob"></a>方法:コンテナーに BLOB をアップロードする
+## 方法:コンテナーに BLOB をアップロードする
 
 BLOB にコンテンツをアップロードするには、**create\_block\_blob()** メソッドを使用して BLOB を作成し、ファイルまたは文字列を BLOB のコンテンツとして使用します。 
 
@@ -129,7 +112,7 @@ BLOB にコンテンツをアップロードするには、**create\_block\_blob
 	  "image-blob", content)
 	puts blob.name
 
-## <a id="ListBlobs"></a>方法:コンテナー内の BLOB を一覧表示する
+## 方法:コンテナー内の BLOB を一覧表示する
 
 コンテナーの一覧を取得するには、**list_containers()** メソッドを使用します。 
 コンテナー内の BLOB の一覧を取得するには、**list\_blobs()** メソッドを使用します。 
@@ -144,7 +127,7 @@ BLOB にコンテンツをアップロードするには、**create\_block\_blob
 	  end
 	end
 
-## <a id="DownloadBlobs"></a>方法:BLOB をダウンロードする
+## 方法:BLOB をダウンロードする
 
 BLOB をダウンロードするには、**get\_blob()** メソッドを使用してコンテンツを取得します。 
 
@@ -153,16 +136,17 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 	blob, content = azure_blob_service.get_blob(container.name,"image-blob")
 	File.open("download.png","wb") {|f| f.write(content)}
 
-## <a id="DeleteBlob"></a>方法:BLOB を削除する
+## 方法:BLOB を削除する
 最後に、BLOB を削除するには、**delete\_blob()** メソッドを使用します。次の例は、BLOB の削除方法を示しています。
 
 	azure_blob_service.delete_blob(container.name, "image-blob")
 
-## <a id="NextSteps"></a>次のステップ
+## 次のステップ
 
-これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
+これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
--   MSDN リファレンス:[Azure のデータの格納とアクセス](http://msdn.microsoft.com/library/windowsazure/gg433040.aspx)
--   [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
--   GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
-<!--HONumber=42-->
+- MSDN リファレンス:[Azure ストレージ](http://msdn.microsoft.com/library/azure/gg433040.aspx)
+- [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+
+<!--HONumber=49-->

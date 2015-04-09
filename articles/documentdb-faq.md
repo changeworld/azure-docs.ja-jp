@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="DocumentDB に関してよく寄せられる質問 | Azure" 
 	description="Azure DocumentDB nosql ドキュメント データベース サービスに関してよく寄せられる質問に対する回答を示します。容量と要求単位について説明し、アプリケーションのニーズに合わせてスケールを変更する方法を確認します。" 
 	services="documentdb" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/22/2014" 
+	ms.date="03/20/2015" 
 	ms.author="mimig"/>
 
 
@@ -30,7 +30,7 @@ Microsoft Azure DocumentDB は、拡張性の高い NoSQL ドキュメントの�
 DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント指向のデータベースです。DocumentDB では、高度な DocumentDB SQL クエリ文法で照会できる入れ子になった自立的データ構造がサポートされます。DocumentDB では、ストアド プロシージャ、トリガー、およびユーザー定義関数を使用して、サーバー側 JavaScript のトランザクション処理を高いパフォーマンスで実行できます。また、開発者によって調整可能な一貫性レベルを、関連付けられたパフォーマンス レベルと共にサポートします。
  
 ###DocumentDB データベースは RDBMS のようなテーブルを保持しますか?
-いいえ、DocumentDB は JSON ドキュメントのコレクション内にデータを格納します。DocumentDB のリソースの詳細については、「[DocumentDB のリソース モデルと概念](../documentdb-resources/)」を参照してください。 を参照してください。 
+いいえ、DocumentDB では  JSON ドキュメントのコレクション内にデータが格納されます。DocumentDB のリソースの詳細については、「[DocumentDB のリソース モデルと概念](documentdb-resources.md)」の記事を参照してください。 
 
 ###DocumentDB データベースはスキーマフリー データをサポートしますか?
 はい、DocumentDB ではスキーマ定義またはヒントなしで、アプリケーションが任意の JSON ドキュメントを格納できます。DocumentDB SQL クエリ インターフェイスを使用したクエリに、データをすぐに利用できます。   
@@ -42,13 +42,13 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 DocumentDB は、拡張性、パフォーマンス、およびスキーマフリー データでのクエリを実行できることが重要である新しい Web アプリケーションやモバイル アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、DocumentDB の一般的な使用事例です。  
 
 ###どのような拡張性と容量の制限がありますか?
-各 Azure DocumentDB アカウントでは、Azure ポータルで構成できる容量単位の最大数をサポートします。追加の容量単位が必要な場合は、サポートに連絡して、アカウント クォータの増加を依頼してください。リソースのクォータの詳細については、「[プレビュー リリースにおける DocumentDB の制限](../documentdb-limits/)」を参照してください。 
+各 Azure DocumentDB アカウントでは、Azure ポータルで構成できる容量単位の最大数をサポートします。追加の容量単位が必要な場合は、サポートに連絡して、アカウント クォータの増加を依頼してください。リソースのクォータの詳細については、「[プレビュー リリースにおける DocumentDB の制限](documentdb-limits.md)」を参照してください。
 
 
 ###Microsoft Azure DocumentDB の料金はいくらですか?
 詳細については、[DocumentDB 料金に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=402317)を参照してください。
 
-## <a id="setup"></a>Microsoft Azure DocumentDB のセットアップ
+## <a id="setup"></a> Microsoft Azure DocumentDB のセットアップ
 
 ###どのようにして Microsoft Azure DocumentDB にサインアップしますか?
 Microsoft Azure DocumentDB (プレビュー) は、新しい [Azure プレビュー ポータル][preview-portal]で利用可能です。最初に、Microsoft Azure サブスクリプションにサインアップする必要があります。Microsoft Azure サブスクリプションにサインアップした後で、DocumentDB アカウントを Marketplace 経由で Azure サブスクリプションに追加できます。   
@@ -63,10 +63,10 @@ DocumentDB SDK または REST API を使用して、データベースを作成�
 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。クエリおよびトランザクションの範囲としてコレクションが指定されます。多種多様な JSON ドキュメントのセットを 1 つのコレクション内に格納し、自動的にインデックスを作成することができます。   
 
 ###データベースとコレクションに制限はありますか?
-購入した容量単位ごとに、データベース ストレージとプロビジョニング済みスループットが割り当てられます。サービスで管理される、各リソースに対するクォータも用意されています。詳細については、[Azure のサブスクリプションとサービスの制限、クォータ、制約に関するページ]の DocumentDB プレビューの制限に関するセクション(../azure-subscription-service-limits/) を参照してください。  
+購入した容量単位ごとに、データベース ストレージとプロビジョニング済みスループットが割り当てられます。サービスで管理される、各リソースに対するクォータも用意されています。詳細については、「[プレビュー リリースにおける DocumentDB の制限](documentdb-limits.md)」を参照してください。  
 
 ###どのようにしてユーザーおよびアクセス許可を設定しますか?
-DocumentDB SDK または REST API を使用して、ユーザーおよびアクセス許可を作成できます。アプリケーションの開発方法の詳細については、[DocumentDB ドキュメント ページ](http://go.microsoft.com/fwlink/p/?LinkID=402319)の「開発」セクションを参照してください。  
+DocumentDB SDK または REST API を使用して、ユーザーおよびアクセス許可を作成できます。アプリケーションの開発方法の詳細については、[DocumentDB ドキュメント ページ](http://go.microsoft.com/fwlink/p/?LinkID=402319)の開発のセクションを参照してください。  
 
 
 ## <a id="develop"></a>Microsoft Azure DocumentDB に対する開発
@@ -75,7 +75,7 @@ DocumentDB SDK または REST API を使用して、ユーザーおよびアク�
 プレビューでは、.NET、Python、Node.js、JavaScript、および Java に対する SDK が利用可能です。開発者は、RESTful HTTP API を利用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。これらの SDK の使用方法の詳細については、[DocumentDB ドキュメント ページ](http://go.microsoft.com/fwlink/p/?LinkID=402319)の「開発」セクションを参照してください。
 
 ###DocumentDB は SQL をサポートしますか?
-DocumentDB の SQL クエリ言語は、JavaScript ベースのユーザー定義関数 (UDF) により高度な階層型の関係演算子と機能拡張を提供します。JSON 文法では、JSON ドキュメントをツリー ノードとしてラベルが付けられたツリーとしてモデル化することができます。これは、DocumentDB の自動的なインデックス作成手法と DocumentDB の SQL クエリ方言の両方で利用されます。SQL 文法の使用方法の詳細については、「[DocumentDB SQL を使用したクエリ][query]」を参照してください。
+DocumentDB の SQL クエリ言語は、JavaScript ベースのユーザー定義関数 (UDF) により高度な階層型の関係演算子と機能拡張を提供します。JSON 文法では、JSON ドキュメントをツリー ノードとしてラベルが付けられたツリーとしてモデル化することができます。これは、DocumentDB の自動的なインデックス作成手法と DocumentDB の SQL クエリ方言の両方で利用されます。SQL 文法の使用方法の詳細については、[DocumentDB SQL を使用したクエリ][query]に関する記事を参照してください。
 
 ###DocumentDB でサポートされるデータ型は何ですか?
 DocumentDB でサポートされるプリミティブ データ型は JSON と同じです。JSON には、文字列、数値 (IEEE754 倍精度)、ブール値 (true と false)、および Null で構成されるシンプルな型システムがあります。{ } 演算子で入れ子になったオブジェクトを作成し、[ ] 演算子で配列を作成することにより、さらに複雑なデータ型 (DateTime、Guid、Int64、Geometry など) を JSON と DocumentDB の両方で表現できます。 
@@ -96,6 +96,6 @@ DocumentDB ではストアド プロシージャがサポートされるため�
 
 
 [preview-portal]: https://portal.azure.com
-[query]: ../documentdb-sql-query/
+[query]: documentdb-sql-query.md
 
-<!--HONumber=47-->
+<!--HONumber=49-->

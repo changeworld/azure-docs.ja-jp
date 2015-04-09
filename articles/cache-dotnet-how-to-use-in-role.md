@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="インロール キャッシュの使用方法 (.NET) - Azure の機能ガイド" 
 	description="Azure のインロール キャッシュの使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。" 
 	services="cache" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/18/2014" 
+	ms.date="02/24/2015" 
 	ms.author="sdanie"/>
 
 
@@ -23,24 +23,9 @@
 
 # Azure のキャッシュのインロール キャッシュの使用方法
 
-このガイドでは、**Windows Azure のキャッシュのインロール キャッシュ** 
-**Azure Cache のインロール キャッシュ**サンプルは C\# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュ クラスターの構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。インロール キャッシュの使い方の詳細については、「[次の手順][]」を参照してください。
+このガイドでは、**Azure のキャッシュのインロール キャッシュ**の基本的な使用方法について説明します。サンプルは C\# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュ クラスターの構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。インロール キャッシュの使い方の詳細については、「[次のステップ][]」を参照してください。
 
 >アプリケーションに適した Azure のキャッシュ オファリングを選択する方法については、「[どの Azure Cache を利用すればよいですか。][]」を参照してください。
-
-## 目次
-
--   [インロール キャッシュとは][]
--	[インロール キャッシュの概要]
-	-	[キャッシュ クラスターの構成][]
-	-	[キャッシュ クライアントの構成][]
--	[キャッシュの操作][]
-	-	[方法:DataCache オブジェクトを作成する][]
-	-   [方法:キャッシュでオブジェクトを追加および削除する][]
-	-   [方法:キャッシュ内のオブジェクトの有効期限を指定する][]
-	-   [方法:ASP.NET セッション状態をキャッシュに格納する][]
-	-   [方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
--   [次のステップ][]
 
 <a name="what-is"></a>
 ## インロール キャッシュとは
@@ -48,7 +33,7 @@
 インロール キャッシュは、Azure アプリケーションにキャッシュ レイヤーを提供します。Caching を使用すると、他のバックエンド ソースから情報を一時的にメモリ内に格納することでパフォーマンスが向上します。さらに、クラウドでのデータベース トランザクションに関連するコストを削減できます。インロール キャッシュには、次のような機能があります。
 
 -   セッション状態とページ出力キャッシュに対応した、構築済みの ASP.NET プロバイダーにより、アプリケーション コードを変更しなくても Web アプリケーションの機能を強化できます。
--   任意のシリアル化可能なマネージ オブジェクトをキャッシュできます。たとえば、CLR オブジェクト、行、XML、バイナリ データなどです。
+-   任意のシリアル化可能なマネージ オブジェクトをキャッシュできます。たとえば、CLR オブジェクト、行、XML、バイナリ データです。
 -   Azure と Windows Server AppFabric の両方で、開発モデルの一貫性を確保できます。
 
 インロール キャッシュでは、Azure クラウド サービス (ホステッド サービスとも呼ばれます) のロール インスタンスをホストしている仮想マシンのメモリの一部を使用してキャッシュを行う新しい方法が導入されました。展開のオプションの点で柔軟性が向上し、キャッシュのサイズは非常に大きくすることができ、キャッシュ固有のクォータの制限がなくなりました。
@@ -71,7 +56,7 @@
 -	必要に応じて個々のキャッシュに高可用性を構成する。
 -	リージョン、タグ付け、通知などの拡張キャッシュ機能を使用する。
 
-このガイドでは、インロール キャッシュの基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、[インロール キャッシュの概要に関するページ][]を参照してください。
+このガイドでは、インロール キャッシュの基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、[インロール キャッシュの概要][] を参照してください。
 
 <a name="getting-started-cache-role-instance"></a>
 ## インロール キャッシュの概要
@@ -125,15 +110,15 @@
 
 VM サイズの合計メモリは、次のとおりです。 
 
--	**S**:1.75 GB
--	**M**:3.5 GB
--	**L**:7 GB
--	**XL**:14 GB
+-	**S**: 1.75 GB
+-	**M**: 3.5 GB
+-	**L**: 7 GB
+-	**E**: 14 GB
 
 
-> これらのメモリ サイズは、OS、キャッシュ プロセス、キャッシュ データ、およびアプリケーション間で共有される、VM で利用できるメモリの合計量を表しています。仮想マシン サイズの構成の詳細については、「[仮想マシンのサイズの構成方法][]」を参照してください。キャッシュは **XS** VM サイズではサポートされていないことに注意してください。
+> これらのメモリ サイズは、OS、キャッシュ プロセス、キャッシュ データ、およびアプリケーション間で共有される、VM で利用できるメモリの合計量を表しています。仮想マシン サイズの構成の詳細については、「[仮想マシンのサイズを構成する方法][]」を参照してください。キャッシュは **XS** VM サイズではサポートされていないことに注意してください。
 
-**併置ロール** キャッシュが指定された場合、キャッシュ サイズは仮想マシン メモリの指定された割合によって決定されます。**専用ロール** キャッシュが指定された場合、仮想マシンの利用可能なすべてのメモリがキャッシュに使用されます。2 つのロール インスタンスが構成されている場合は、仮想マシンの合計されたメモリが使用されます。このようにキャッシュ クラスターが形成され、利用可能なキャッシュ メモリは複数のロール インスタンスに分散されているものの、キャッシュのクライアントには 1 つのリソースとして提示されます。追加のロール インスタンスを構成すると、同じようにキャッシュ サイズが増加します。希望するサイズのキャッシュをプロビジョニングするために必要な設定を判断するには、[インロール キャッシュの容量計画に関する考慮事項のページ][]で示されている容量計画スプレッドシートを使用できます。
+**併置ロール** キャッシュが指定された場合、キャッシュ サイズは仮想マシン メモリの指定された割合によって決定されます。**専用ロール** キャッシュが指定された場合、仮想マシンの利用可能なすべてのメモリがキャッシュに使用されます。2 つのロール インスタンスが構成されている場合は、仮想マシンの合計されたメモリが使用されます。このようにキャッシュ クラスターが形成され、利用可能なキャッシュ メモリは複数のロール インスタンスに分散されているものの、キャッシュのクライアントには 1 つのリソースとして提示されます。追加のロール インスタンスを構成すると、同じようにキャッシュ サイズが増加します。希望するサイズのキャッシュをプロビジョニングするために必要な設定を判断するには、[インロール キャッシュの容量計画に関する考慮事項][]で示されている容量計画スプレッドシートを使用できます。
 
 キャッシュ クラスターの構成が済んだら、キャッシュにアクセスできるようにキャッシュ クライアントを構成できます。
 
@@ -152,7 +137,7 @@ VM サイズの合計メモリは、次のとおりです。
 
 NuGet パッケージは、いくつかの処理を行います。必要な構成をロールの config ファイルに追加したり、キャッシュ クライアントの診断レベル設定を Azure アプリケーションの ServiceConfiguration.cscfg ファイルに追加したり、必要なアセンブリ参照を追加したりします。
 
->ASP.NET Web ロールでは、Caching NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法:ASP.NET セッション状態をキャッシュに格納する]」および「[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]」
+>ASP.NET Web ロールでは、Caching NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[How To:ASP.NET セッション状態をキャッシュに格納する] 」および「 [How To:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
 
 NuGet パッケージは、次の構成要素をロールの web.config または app.config に追加します。**dataCacheClients** セクションおよび **cacheDiagnostics** セクションは、**configSections** 要素の下に追加されます。**configSections** 要素が存在しない場合は、**configuration** 要素の子として作成されます。
 
@@ -170,7 +155,7 @@ NuGet パッケージは、次の構成要素をロールの web.config また�
                allowDefinition="Everywhere" />
     </configSections>
 
-これらの新しいセクションには、**dataCacheClients** 要素および **cacheDiagnostics** 要素への参照が含まれています。 これらの要素も **configuration** 要素に追加されます。
+これらの新しいセクションには、**dataCacheClients** 要素および **cacheDiagnostics** 要素への参照が含まれています。これらの要素も **configuration** 要素に追加されます。
 
     <dataCacheClients>
       <dataCacheClient name="default">
@@ -182,7 +167,7 @@ NuGet パッケージは、次の構成要素をロールの web.config また�
       <crashDump dumpLevel="Off" dumpStorageQuotaInMB="100" />
     </cacheDiagnostics>
 
-構成が追加された後で、**[cache cluster role name]** を、キャッシュ クラスターをホストするロールの名前に置き換えます。
+構成が追加された後で、**[[cache cluster role name]]** を、キャッシュ クラスターをホストするロールの名前に置き換えます。
 
 >**[[cache cluster role name]]** を、キャッシュ クラスターをホストするロールの名前に置き換えないと、キャッシュがアクセスされたときに **TargetInvocationException** がスローされます。その内部に、"そのようなロールは存在しません" というメッセージを持つ **DatacacheException** が含まれています。
 
@@ -201,16 +186,16 @@ NuGet パッケージは、キャッシュ クライアント ロールの Servi
 
 NuGet パッケージは、次のアセンブリへの参照も追加します。
 
--   Microsoft.ApplicationServer.Caching.Client.dll
--   Microsoft.ApplicationServer.Caching.Core.dll
--   Microsoft.WindowsFabric.Common.dll
--   Microsoft.WindowsFabric.Data.Common.dll
--   Microsoft.ApplicationServer.Caching.AzureCommon.dll
--   Microsoft.ApplicationServer.Caching.AzureClientHelper.dll
+	-   Microsoft.ApplicationServer.Caching.Client.dll
+	-   Microsoft.ApplicationServer.Caching.Core.dll
+	-   Microsoft.WindowsFabric.Common.dll
+	-   Microsoft.WindowsFabric.Data.Common.dll
+	-   Microsoft.ApplicationServer.Caching.AzureCommon.dll
+	-   Microsoft.ApplicationServer.Caching.AzureClientHelper.dll
 
 ロールが ASP.NET Web ロールである場合は、次のアセンブリ参照も追加されます。
 
--	Microsoft.Web.DistributedCache.dll
+-	Microsoft.Web.DistributedCache.dll.
 
 >これらのアセンブリは、C:\\Program Files\\Microsoft SDKs\\Windows Azure\\.NET SDK\\2012-10\\ref\\Caching\\ フォルダーにあります。
 
@@ -221,11 +206,11 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 
 このセクションの手順では、キャッシュに対する一般的なタスクを行う方法について説明します。
 
--	[方法:DataCache オブジェクトを作成する][]
--   [方法:キャッシュでオブジェクトを追加および削除する][]
--   [方法:キャッシュ内のオブジェクトの有効期限を指定する][]
--   [方法:ASP.NET セッション状態をキャッシュに格納する][]
--   [方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
+-	[How To:DataCache オブジェクトを作成する][]
+-   [How To:キャッシュでオブジェクトを追加および削除する][]
+-   [How To:キャッシュ内のオブジェクトの有効期限を指定する][]
+-   [How To:ASP.NET セッション状態をキャッシュに格納する][]
+-   [How To:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
 
 <a name="create-cache-object"></a>
 ## 方法:DataCache オブジェクトを作成する
@@ -235,9 +220,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 
     using Microsoft.ApplicationServer.Caching;
 
->Cache NuGet パッケージをインストールして、必要な参照が追加された後も、Visual Studio が using ステートメント内の型を認識しない場合は、
-プロジェクトのターゲット プロファイルが .NET Framework 4 以降であることを確認し、
-**クライアント プロファイル**と指定されていないプロファイルを選択するようにしてください。キャッシュ クライアントを構成する手順については、「[キャッシュ クライアントの構成][]」を参照してください。
+>Caching NuGet パッケージをインストールして、必要な参照が追加された後も、Visual Studio が using ステートメント内の型を認識しない場合は、プロジェクトのターゲット プロファイルが .NET Framework 4.0 以降であることを確認し、**クライアント プロファイル**と指定されていないプロファイルを選択するようにしてください。キャッシュ クライアントを構成する手順については、「[キャッシュ クライアントの構成][]」を参照してください。
 
 **DataCache** オブジェクトを作成する方法は、2 つあります。最初の方法では、目的のキャッシュの名前を渡して、単純に **DataCache** を作成します。
 
@@ -263,8 +246,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 
 キャッシュに同じキーのオブジェクトが既にある場合、**DataCacheException** がスローされ、次のメッセージが表示されます。
 
-> ErrorCode:SubStatus:キャッシュに既に存在するキーを使用してオブジェクトを作成しようとしています。キャッシュは、
-> オブジェクトに対して一意のキーの値のみを受け入れます。
+> ErrorCode:SubStatus:キャッシュに既に存在するキーを使用してオブジェクトを 作成しようとしています。キャッシュは、 オブジェクトに対して一意のキーの値のみを受け入れます。
 
 特定のキーのオブジェクトを取得するには、**Get** メソッドを使用できます。オブジェクトが存在する場合はそれが返され、存在しない場合は null が返されます。
 
@@ -360,23 +342,21 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 
     <%@ OutputCache Duration="60" VaryByParam="*" %>
 
-この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。使用できるオプションの詳細については、[OutputCache ディレクティブに関するページ][]を参照してください。
+この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。使用できるオプションの詳細については、[OutputCache ディレクティブ][]を参照してください。
 
-インロール キャッシュの出力キャッシュ プロバイダーの使い方の詳細については、[インロール キャッシュの出力キャッシュ プロバイダーに関するページ][]を参照してください。
+インロール キャッシュの出力キャッシュ プロバイダーの使い方の詳細については、[インロール キャッシュの出力キャッシュ プロバイダー][]を参照してください。
 
 <a name="next-steps"></a>
 ## 次のステップ
 
-ここまでで、インロール キャッシュの基本について説明しました。
-次のリンクでは、さらに複雑なキャッシュ タスクを実行する方法について説明します。
+これで、インロール キャッシュの基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス:[インロール キャッシュ](http://go.microsoft.com/fwlink/?LinkId=252658)
--   インロール キャッシュへの移行方法を確認する:[Windows Azure のキャッシュのインロール キャッシュへの移行][]
--   サンプルをチェックする:[インロール キャッシュのサンプル (Windows Azure のキャッシュ)][]
--	TechEd 2013 の「[最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する][]」セッションで、インロール キャッシュに関する説明を参照してください。
+-   MSDN リファレンス:[インロール キャッシュ][]
+-   インロール キャッシュへの移行方法を確認する:[インロール キャッシュへの移行][]
+-   サンプルをチェックする:[インロール キャッシュのサンプル][]
+-	TechEd 2013 の「[最大のパフォーマンス:Azure Caching によってクラウド サービス アプリケーションを高速化する][]」セッションで、インロール キャッシュに関する説明を参照してください。
 
 <!-- INTRA-TOPIC LINKS -->
-[次の手順]: #next-steps
 [次のステップ]: #next-steps
 [インロール キャッシュとは]: #what-is
 [Azure Cache の作成]: #create-cache
@@ -389,11 +369,11 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 [必要なキャッシュ サイズの構成]: #cache-size
 [キャッシュ クライアントの構成]: #NuGet
 [キャッシュの操作]: #working-with-caches
-[方法:DataCache オブジェクトを作成する]: #create-cache-object
-[方法:キャッシュでオブジェクトを追加および削除する]: #add-object
-[方法:キャッシュ内のオブジェクトの有効期限を指定する]: #specify-expiration
-[方法:ASP.NET セッション状態をキャッシュに格納する]: #store-session
-[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
+[How To:DataCache オブジェクトを作成する]: #create-cache-object
+[How To:キャッシュでオブジェクトを追加および削除する]: #add-object
+[How To:キャッシュ内のオブジェクトの有効期限を指定する]: #specify-expiration
+[How To:ASP.NET セッション状態をキャッシュに格納する]: #store-session
+[How To:ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
 [サポートされている .NET Framework プロファイル]: #prepare-vs-target-net
  
 <!-- IMAGES --> 
@@ -408,29 +388,27 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 [RoleCache10]: ./media/cache-dotnet-how-to-use-in-role/cache17.png
   
 <!-- LINKS -->
-[仮想マシンのサイズの構成方法]: http://go.microsoft.com/fwlink/?LinkId=164387
-[方法:プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[方法:プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[方法:宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
-[インロール キャッシュの容量計画に関する考慮事項のページ]: http://go.microsoft.com/fwlink/?LinkId=252651
-[インロール キャッシュのサンプル (Windows Azure のキャッシュ)]: http://msdn.microsoft.com/library/jj189876.aspx
-[インロール キャッシュ_remove]: http://go.microsoft.com/fwlink/?LinkId=252658
-[インロール キャッシュ_remove]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
-[最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
-[Windows Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/library/hh914163.aspx
+[仮想マシンのサイズを構成する方法]: http://go.microsoft.com/fwlink/?LinkId=164387
+[方法: プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
+[方法: プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
+[方法: 宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[インロール キャッシュの容量計画に関する考慮事項]: http://go.microsoft.com/fwlink/?LinkId=252651
+[インロール キャッシュのサンプル]: http://msdn.microsoft.com/library/jj189876.aspx
+[インロール キャッシュ]: http://go.microsoft.com/fwlink/?LinkId=252658
+[インロール キャッシュ]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
+[最大のパフォーマンス:Azure Caching によってクラウド サービス アプリケーションを高速化する]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
+[インロール キャッシュへの移行]: http://msdn.microsoft.com/library/hh914163.aspx
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
-[インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
-[OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
-[インロール キャッシュの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=254172
-[インロール キャッシュのセッション状態プロバイダーに関するページ]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
+[インロール キャッシュの出力キャッシュ プロバイダー]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
+[OutputCache ディレクティブ]: http://go.microsoft.com/fwlink/?LinkId=251979
+[インロール キャッシュの概要]: http://go.microsoft.com/fwlink/?LinkId=254172
+[インロール キャッシュのセッション状態プロバイダー]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
-[インロール キャッシュのトラブルシューティングと診断に関するページ]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
-[Azure AppFabric Cache:セッション状態のキャッシュ]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
+[インロール キャッシュのトラブルシューティングと診断]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
+[Azure AppFabric キャッシュ:セッション状態のキャッシュ]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure 管理ポータル]: http://windows.azure.com/
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
 [どの Azure Cache を利用すればよいですか。]: http://msdn.microsoft.com/library/azure/dn766201.aspx
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
+<!--HONumber=49-->

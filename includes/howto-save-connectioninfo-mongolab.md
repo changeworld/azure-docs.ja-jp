@@ -18,10 +18,11 @@ Web サイトのダッシュボードが表示されます。
 1. ツール バーの **[保存]** をクリックします。  
 ![SaveWebSite][button-website-save]
 
-**注:** Azure では、この変数に **CUSTOMCONNSTR\_** というプレフィックスが追加されます。そのため上のコードでは **CUSTOMCONNSTR\_MONGOLAB_URI** を参照しています。
+**注:** Azure では、この変数に **CUSTOMCONNSTR\_ **というプレフィックスが追加されます。そのため上のコードでは **CUSTOMCONNSTR\_MONGOLAB_URI** を参照しています。
 
 [entry-website]: ./media/howto-save-connectioninfo-mongolab/entry-website.png
 [focus-mongolab-websitedashboard-config]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websitedashboard-config.png
 [focus-mongolab-websiteconnectionstring]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websiteconnectionstring.png
 [button-website-save]: ./media/howto-save-connectioninfo-mongolab/button-website-save.png
-<!--HONumber=42-->
+
+<!--HONumber=49-->

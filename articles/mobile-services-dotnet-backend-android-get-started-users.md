@@ -28,13 +28,13 @@
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。 
 
-## <a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
+##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-aad-server-extension](../includes/mobile-services-dotnet-backend-aad-server-extension.md)] 
 
-## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)] 
 
@@ -46,7 +46,7 @@
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-## <a name="add-authentication"></a>アプリケーションに認証を追加する
+##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
 [AZURE.INCLUDE [mobile-services-android-authenticate-app](../includes/mobile-services-android-authenticate-app.md)]
 
@@ -58,7 +58,7 @@
 
 [AZURE.INCLUDE [mobile-services-android-authenticate-app-refresh-token](../includes/mobile-services-android-authenticate-app-refresh-token.md)] 
 
-## <a name="next-steps"></a>次のステップ
+##<a name="next-steps"></a>次のステップ
 
 次のチュートリアル「[モバイル サービス ユーザーのサービス側の承認][スクリプトを使用したユーザーの承認]」では、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。 
 
@@ -72,14 +72,14 @@
 [次のステップ]:#next-steps
 
 <!-- URLs. -->
-[Mobile Services の使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started/
-[データの使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-data/
-[認証の使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-users/
-[プッシュ通知の使用]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-push/
-[スクリプトを使用したユーザーの承認]: /documentation/articles/mobile-services-dotnet-backend-android-authorize-users-in-scripts
+[Mobile Services の使用]: mobile-services-dotnet-backend-android-get-started.md
+[データの使用]: mobile-services-dotnet-backend-android-get-started-data.md
+[認証の使用]: mobile-services-dotnet-backend-android-get-started-users.md
+[プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push.md
+[スクリプトを使用したユーザーの承認]: mobile-services-dotnet-backend-android-authorize-users-in-scripts.md
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
-[Windows ストア アプリ パッケージを Microsoft 認証に登録する]: /documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
+[Windows ストア アプリ パッケージを Microsoft 認証に登録する]: mobile-services-how-to-register-store-app-package-microsoft-authentication.md
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -1,11 +1,11 @@
-﻿<properties 
-	pageTitle="Queue サービスを使用する方法 (Java) | Microsoft Azure" 
+<properties 
+	pageTitle="Java から Queue ストレージを使用する方法 | Microsoft Azure" 
 	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Java で記述されています。" 
 	services="storage" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
 	ms.service="storage" 
@@ -13,47 +13,30 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="09/25/2014" 
+	ms.date="03/11/2015" 
 	ms.author="robmcm"/>
 
-# Java からキュー ストレージを使用する方法
+# Java から Queue ストレージを使用する方法
 
-このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
+[AZURE.INCLUDE [storage-selector-queue-include](../includes/storage-selector-queue-include.md)]
+
+## 概要
+
+このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、[次のステップ](#NextSteps) セクションをご覧ください。
 
 注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。 
 
-## <a name="Contents"> </a>目次
-
-* [キュー ストレージとは](#what-is)
-* [概念](#Concepts)
-* [Azure のストレージ アカウントの作成](#CreateAccount)
-* [Java アプリケーションの作成](#CreateApplication)
-* [キュー ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
-* [Azure のストレージ接続文字列の設定](#ConnectionString)
-* [方法:キューを作成する](#create-queue)
-* [方法:メッセージをキューに追加する](#add-message)
-* [方法:次のメッセージをピークする](#peek-message)
-* [方法:キューに配置されたメッセージの内容を変更する](#change-message)
-* [方法:キューの長さを取得する](#get-queue-length)
-* [方法:次のメッセージをデキューする](#dequeue-message)
-* [メッセージのデキュー用の追加オプション](#additional-options)
-* [方法:キューを一覧表示する](#list-queues)
-* [方法:キューを削除する](#delete-queue)
-* [次のステップ](#NextSteps)
-
-[AZURE.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
-
-<h2><a id="CreateAccount"></a>Azure ストレージ アカウントの作成</h2>
+[AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-## <a name="CreateApplication"> </a>Java アプリケーションの作成
+## Java アプリケーションの作成
 
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
 そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
 
-## <a name="ConfigureStorage"> </a>キュー ストレージにアクセスするようにアプリケーションを構成する
+## キュー ストレージにアクセスするようにアプリケーションを構成する
 
 Azure Storage API を使用してキューにアクセスする Java ファイルの先頭には、次の import ステートメントを追加します。
 
@@ -61,7 +44,7 @@ Azure Storage API を使用してキューにアクセスする Java ファイ�
     import com.microsoft.azure.storage.*;
     import com.microsoft.azure.storage.queue.*;
 
-## <a name="ConnectionString"> </a>Azure のストレージ接続文字列の設定
+## Azure のストレージ接続文字列の設定
 
 Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。 *AccountName* と  *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
@@ -71,7 +54,7 @@ Azure ストレージ クライアントでは、ストレージ接続文字列�
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-Microsoft Azure 上のロール内で実行されるアプリケーションでは、この文字列はサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、サービス構成ファイル内の *StorageConnectionString* という名前の **Setting** 要素から接続文字列を取得しています。
+Microsoft Azure のロール内で実行されるアプリケーションでは、この文字列はサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、サービス構成ファイル内の  *StorageConnectionString* という名前の **Setting** 要素から接続文字列を取得しています。
 
     // Retrieve storage account from connection-string.
     String storageConnectionString = 
@@ -79,7 +62,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
-## <a name="create-queue"> </a>方法:キューを作成する
+## 方法:キューを作成する
 
 **CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。(注:**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
 
@@ -106,7 +89,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="add-message"> </a>方法:メッセージをキューに追加する
+## 方法:メッセージをキューに追加する
 
 既存のキューにメッセージを挿入するには、最初に新しい **CloudQueueMessage** を作成します。次に、**addMessage** メソッドを呼び出します。**CloudQueueMessage** は、文字列 (UTF-8 形式) またはバイト配列から作成できます。次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
 
@@ -135,7 +118,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="peek-message"> </a>方法:次のメッセージをピークする
+## 方法:次のメッセージをピークする
 
 **peekMessage** を呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
@@ -166,9 +149,9 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="change-message"> </a>方法:キューに配置されたメッセージの内容を変更する
+## 方法:キューに配置されたメッセージの内容を変更する
 
-キュー内のメッセージの内容をインプレースで変更できます。メッセージが作業タスクを表している場合は、この機能を使用して、作業タスクの状態を更新できます。次のコードでは、キュー メッセージを新しい内容に更新し、表示タイムアウトを設定して、60 秒延長します。これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。この方法を使用すると、キュー メッセージに対する複数の手順から成るワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。通常は、さらに再試行回数を保持し、メッセージの再試行回数が  *n* 回を超えた場合はメッセージを削除するようにします。こうすることで、処理するたびにアプリケーション エラーをトリガーするメッセージから保護されます。
+キュー内のメッセージの内容をインプレースで変更できます。メッセージが作業タスクを表している場合は、この機能を使用して、作業タスクの状態を更新できます。次のコードでは、キュー メッセージを新しい内容に更新し、表示タイムアウトを設定して、60 秒延長します。これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。この方法を使用すると、キュー メッセージに対する複数の手順から成るワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。通常は、さらに再試行回数を保持し、メッセージの再試行回数が *n* 回を超えた場合はメッセージを削除するようにします。こうすることで、処理するたびにアプリケーション エラーをトリガーするメッセージから保護されます。
 
 次のコード サンプルでは、キュー内でメッセージを検索し、内容が "Hello, World" に一致する最初のメッセージを見つけ、メッセージの内容を変更し、終了します。 
 
@@ -246,9 +229,9 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="get-queue-length"> </a>方法:キューの長さを取得する
+## 方法:キューの長さを取得する
 
-キュー内のメッセージの概数を取得できます。**downloadAttributes** メソッドは、キューにあるメッセージの数など、現在の値をキュー サービスに要求します。キュー サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、これらの値は概数にすぎません。**getApproximateMessageCount** メソッドは、キュー サービスを呼び出さずに、**downloadAttributes** の呼び出しによって取得された最後の値を返します。
+キュー内のメッセージの概数を取得できます。**downloadAttributes** メソッドは、キューにあるメッセージの数など、現在の値を Queue サービスに要求します。キュー サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、これらの値は概数にすぎません。**getApproximateMessageCount** メソッドは、キュー サービスを呼び出さずに、**downloadAttributes** の呼び出しによって取得された最後の値を返します。
 
     try
     {
@@ -277,7 +260,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="dequeue-message"> </a>方法:次のメッセージをデキューする
+## 方法:次のメッセージをデキューする
 
 コードでは、2 つの手順でキューからメッセージをデキューします。**retrieveMessage** を呼び出すと、キュー内の次のメッセージを取得します。**retrieveMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。また、キューからのメッセージの削除を完了するには、**deleteMessage** を呼び出す必要があります。このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
@@ -309,7 +292,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
     }
 
 
-## <a name="additional-options"> </a>メッセージのデキュー用の追加オプション
+## メッセージのデキュー用の追加オプション
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。
 
@@ -340,9 +323,9 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="list-queues"> </a>方法:キューを一覧表示する
+## 方法:キューを一覧表示する
 
-現在のキューの一覧を取得するには、**CloudQueueClient.listQueues()** メソッドを呼び出します。このメソッドは、**CloudQueue オブジェクト**のコレクションを返します。 
+現在のキューの一覧を取得するには、**CloudQueueClient.listQueues()** メソッドを呼び出します。このメソッドは、**CloudQueue** オブジェクトのコレクションを返します。 
 
     try
     {
@@ -367,7 +350,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="delete-queue"> </a>方法:キューを削除する
+## 方法:キューを削除する
 
 キューおよびキューに格納されているすべてのメッセージを削除するには、**CloudQueue** オブジェクトの **deleteIfExists** メソッドを呼び出します。
 
@@ -392,9 +375,9 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
         e.printStackTrace();
     }
 
-## <a name="NextSteps"> </a>次のステップ
+## 次のステップ
 
-これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
+これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 - [Azure Storage SDK for Java]
 - [Azure ストレージ クライアント SDK リファレンス]
@@ -407,4 +390,5 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-<!--HONumber=42-->
+
+<!--HONumber=49-->

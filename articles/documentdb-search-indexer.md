@@ -1,5 +1,5 @@
 ﻿<properties 
-    pageTitle="インデクサーを使用した DocumentDB と Azure Search の接続 |  Azure" 
+    pageTitle="インデクサーを使用した DocumentDB と Azure Search の接続 | Azure" 
     description="この記事では、Azure Search インデクサーとデータ ソースとして DocumentDB を使用する方法を説明します。"
     services="documentdb" 
     documentationCenter="" 
@@ -13,14 +13,14 @@
     ms.topic="article" 
     ms.tgt_pltfrm="NA" 
     ms.workload="data-services" 
-    ms.date="03/02/2015" 
+    ms.date="03/19/2015" 
     ms.author="andrl"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
 
 DocumentDB データの優れた検索機能を実装する場合は、DocumentDB の Azure Search インデクサーをご使用ください。この記事では、インデックス作成のインフラストラクチャを保守するコードを記述することなく Azure DocumentDB と Azure Search を統合する方法を説明します。
 
-このセットアップを行うには、[Azure Search アカウント](/documentation/articles/search-get-started/#start-with-the-free-service)をセットアップし (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
+このセットアップを行うには、[Azure Search アカウント](search-get-started.md#start-with-the-free-service)をセットアップし (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
 
 ##<a id="Concepts"></a>Azure Search インデクサーの概念
 
@@ -34,7 +34,7 @@ Azure Search では、データ ソース (DocumentDB を含む) とそのデー
 - スケジュールに従ってデータ ソースの変更とインデックスを同期する。スケジュールは、インデクサーの定義の一部です。
 - 必要に応じてインデックスのオンデマンド更新を呼び出す。 
 
-##<a id="CreateDataSource"></a>手順 1: データ ソースを作成する
+##<a id="CreateDataSource"></a>手順 1:データ ソースを作成する
 
 HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデータ ソースを Azure Search サービスに作成します。
     
@@ -48,39 +48,39 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 - **name**:データ ソースの名前。
 
-- **type**:  `documentdb` を使用します。
+- **type**: `documentdb` を使用します。
 
-- **credentials**: 
+- **credentials**:
 
-    - **connectionString**: 必須。次の形式で Azure DocumentDB データベースへの接続情報を指定します。 `AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+    - **connectionString**:必須。次の形式で Azure DocumentDB データベースへの接続情報を指定します。 `AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
 
-- **container**: 
+- **container**:
 
     - **name**:必須。インデックスを作成する DocumentDB コレクションを指定します。 
 
-    - **query**: 省略可能。任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。
+    - **query**:省略可能。任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。
 
-- **dataChangeDetectionPolicy**: 省略可能。[データ変更の検出ポリシー]に関するセクションを参照してください。(#DataChangeDetectionPolicy) 」を参照してください。
+- **dataChangeDetectionPolicy**:省略可能。以下の[データ変更の検出ポリシー](#DataChangeDetectionPolicy)に関するセクションを参照してください。
 
-- **dataDeletionDetectionPolicy**: 省略可能。[データ削除の検出ポリシー]に関するセクションを参照してください。(#DataDeletionDetectionPolicy) 」を参照してください。
+- **dataDeletionDetectionPolicy**:省略可能。以下の[データ削除の検出ポリシー](#DataDeletionDetectionPolicy)に関するセクションを参照してください。
 
 ###<a id="DataChangeDetectionPolicy"></a>ドキュメントの変更のキャプチャ
 
-データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。現在、唯一サポートされているポリシーは、次のような、DocumentDB によって指定される `_ts` 最終更新タイムスタンプ プロパティを使用した `High Water Mark` ポリシーです。
+データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。現在、唯一サポートされているポリシーは、DocumentDB によって提供される `_ts` 最終更新タイムスタンプ プロパティを使用した  `High Water Mark` ポリシーです。このポリシーは、次のように指定します。
 
     { 
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts" 
     } 
 
-また、クエリのプロジェクションと `WHERE` 句に`_ts` を追加する必要があります。次に例を示します。
+さらに、クエリのプロジェクションと  `WHERE` 句にも `_ts` を追加する必要があります。次に例を示します。
 
     SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts > @HighWaterMark
 
 
 ###<a id="DataDeletionDetectionPolicy"></a>ドキュメントの削除のキャプチャ
 
-ソース テーブルから行が削除されると、検索インデックスからも同様に行を削除する必要があります。データ削除の検出ポリシーの目的は、削除されたデータ項目を効率的に識別することです。現在、唯一サポートされているポリシーは、次のような、 `論理削除`ポリシー (削除されると何らかのフラグでマークされる) のみです。
+ソース テーブルから行が削除されると、検索インデックスからも同様に行を削除する必要があります。データ削除の検出ポリシーの目的は、削除されたデータ項目を効率的に識別することです。現在、唯一サポートされているポリシーは、 `Soft Delete` ポリシー (削除されると何らかのフラグでマークされる) のみです。このポリシーは、次のように指定します。
 
     { 
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
@@ -95,7 +95,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 次の例では、カスタム クエリとポリシーのヒントと一緒にデータ ソースを作成します。
 
     {
-        "name": "myDocDbDataSource",
+        "name": "mydocdbdatasource",
         "type": "documentdb",
         "credentials": {
             "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
@@ -121,7 +121,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ##<a id="CreateIndex"></a>手順 2:インデックスを作成する
 
-ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](/documentation/articles/search-get-started/#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
+ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
 
 	POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
 	Content-Type: application/json
@@ -130,7 +130,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ターゲット インデックスのスキーマがソース JSON ドキュメントのスキーマまたはカスタムのクエリ プロジェクションの出力と互換性があることを確認します。
 
-###図 A: JSON データ型と Azure Search データ型間のマッピング
+###図 A:JSON データ型と Azure Search データ型間のマッピング
 
 <table style="font-size:12">
     <tr>
@@ -150,7 +150,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
         <td>Edm.Double、Edm.String</td>
     </tr>
     <tr>
-        <td>文字列</td>
+        <td>String</td>
         <td>Edm.String</td>
     </tr>
     <tr>
@@ -172,7 +172,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 次の例では、ID と説明のフィールドを持つインデックスを作成します。
 
     {
-       "name": "mySearchIndex",
+       "name": "mysearchindex",
        "fields": [{
          "name": "id",
          "type": "Edm.String",
@@ -196,7 +196,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 HTTP POST 要求を次のヘッダーと共に使用して、Azure Search サービス内に新しいインデクサーを作成できます。
     
-    POST https://[Search service name].search.windows.net/datasources?api-version=[api-version]
+    POST https://[Search service name].search.windows.net/indexers?api-version=[api-version]
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -204,28 +204,28 @@ HTTP POST 要求を次のヘッダーと共に使用して、Azure Search サー
 
 - **name**:必須。インデクサーの名前。
 
-- **dataSourceName**: 必須。既存のデータ ソースの名前。
+- **dataSourceName**:必須。既存のデータ ソースの名前。
 
-- **targetIndexName**: 必須。既存のインデックスの名前。
+- **targetIndexName**:必須。既存のインデックスの名前。
 
-- **schedule**: 省略可能。「[インデックスの作成スケジュール](#IndexingSchedule) 」を参照してください。
+- **schedule**:省略可能。以下の[インデックス作成のスケジュール](#IndexingSchedule)に関するセクションを参照してください。
 
 ###<a id="IndexingSchedule"></a>スケジュールに従ったインデクサーの実行
 
 インデクサーには、必要に応じてスケジュールを指定できます。スケジュールが存在する場合、インデクサーはスケジュールに従って定期的に実行されます。スケジュールには次の属性があります。
 
-- **interval**: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、 `P[nD][T[nH][nM]]` です。たとえば、15 分ごとの場合は `PT15M`、2 分ごとの場合は `PT2H` です。 
+- **interval**:必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。パターン:  `P[nD][T[nH][nM]]`。. Examples: `PT15M` 15 分ごと。 `PT2H` 2 時間ごと。 
 
-- **startTime**: 必須。インデクサーの実行を開始する時刻を指定する UTC 日時。 
+- **startTime**:必須。インデクサーの実行を開始する時刻を指定する UTC 日時。 
 
 ###<a id="CreateIndexerExample"></a>要求本文の例
 
-次の例では、UTC 2015 年 1 月 1 日から 1 時間ごとに実行されるスケジュールで `myDocDbDataSource` データ ソースによって参照されるコレクションのデータを `mySearchIndex` インデックスにコピーするインデクサーを作成します。
+次の例では、UTC 2015 年 1 月 1 日から 1 時間ごとに実行されるスケジュールで  `myDocDbDataSource` データ ソースによって参照されるコレクションのデータを  `mySearchIndex` インデックスにコピーするインデクサーを作成します。
 
     {
-        "name" : "mySearchIndexer",
-        "dataSourceName" : "myDocDbDataSource",
-        "targetIndexName" : "mySearchIndex",
+        "name" : "mysearchindexer",
+        "dataSourceName" : "mydocdbdatasource",
+        "targetIndexName" : "mysearchindex",
         "schedule" : { "interval" : "PT1H", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
@@ -244,7 +244,7 @@ HTTP POST 要求を次のヘッダーと共に使用して、Azure Search サー
 
 インデクサーが正常に呼び出された場合、HTTP 202 Accepted 応答を受け取ります。
 
-##<a name="GetIndexerStatus"></a>手順 5: インデクサーの状態を取得する
+##<a name="GetIndexerStatus"></a>手順 5:インデクサーの状態を取得する
 
 HTTP GET 要求を発行して、インデクサーの現在の状態と実行の履歴を取得することができます。 
 
@@ -291,6 +291,6 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
  - Azure DocumentDB の詳細については、[ここ](/services/documentdb/)をクリックしてください。
 
- - Azure Search の詳細については、[こちら](/services/search/)を参照してください。
+ - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
 
-<!--HONumber=47-->
+<!--HONumber=49-->

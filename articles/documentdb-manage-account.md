@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
+	ms.date="03/23/2015" 
 	ms.author="stbaro"/>
 
 #DocumentDB アカウントの管理方法
@@ -23,14 +23,13 @@
 ## <a id="keys"></a>アクセス キーを表示、コピー、および再生成する
 DocumentDB アカウントを作成すると、2 つのマスター アクセス キーが生成され、DocumentDB アカウントにアクセスする際の認証に使用できます。2 つのアクセス キーが提供されるので、DocumentDB アカウントを中断することなくキーを再生成できます。
 
-[Azure 管理プレビュー ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードの **[キー]** パーツにアクセスし、
-DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
+[Azure プレビュー ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードの **[キー]** パーツにアクセスし、DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
 
-![](./media/documentdb-manage-account/image002.jpg)
+![](../includes/media/documentdb-keys/keys.png)
 
 ### アクセス キーを表示、およびコピーする
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 
 2.      **[概要]** レンズで、**[キー]** をクリックします。
 
@@ -48,8 +47,7 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 
 1.      DocumentDB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
 
-2.      DocumentDB アカウントのプライマリ アクセス キーを再生成します。
-[Azure 管理プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
+2.      DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 
 3.      [概要] レンズで、**[キー]** をクリックします。
 
@@ -61,8 +59,7 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 
 *新しく生成されたキーを使用して DocumentDB アカウントにアクセスできるようになるまで、数分かかることがあります。*
 
-## <a id="consistency"></a>DocumentDB 整合性の設定を管理する
-DocumentDB では、確かな見通しに基づいて整合性、可用性、待機時間のトレードオフを開発者が検討できるようにするため、ユーザーが構成可能な適切に定義された 4 つのデータ整合性レベルがサポートされています。
+## <a id="consistency"></a>DocumentDB の整合性の設定を管理する DocumentDB では、確かな見通しに基づいて整合性、可用性、待機時間のトレードオフを開発者が検討できるようにするため、ユーザーが構成可能な、適切に定義された 4 つのデータ整合性レベルがサポートされています。
 
 - **Strong** 整合性では、最後に書き込まれた値が常に読み取り操作で戻されることを保証します。
 
@@ -72,12 +69,11 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 - **Eventual** 整合性は、読み取り操作が常に有効な書き込みの一部を読み取り、最終的にはすべてを読み取ることを保証します。
 
-*既定では、DocumentDB アカウントは Session レベルの整合性でプロビジョニングされます。DocumentDB の整合性設定の詳細については、[整合性
-レベル](http://go.microsoft.com/fwlink/p/?LinkId=402365)のセクションを参照してください。*
+*既定では、DocumentDB アカウントは Session レベルの整合性でプロビジョニングされます。DocumentDB の整合性設定の詳細については、[整合性レベル](http://go.microsoft.com/fwlink/p/?LinkId=402365)に関するセクションを参照してください。*
 
 ### DocumentDB アカウントの既定の整合性を指定するには
 
-1.      [Azure 管理プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 
 2.      **[構成]** レンズで、**[既定の整合性]** をクリックします。
 
@@ -89,16 +85,17 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 4.      **[保存]** をクリックします。
 
-5.      Azure 管理プレビュー ポータルの通知ハブで、操作の進行状況を監視できます。
+5.      Azure プレビュー ポータルの通知ハブで、操作の進行状況を監視できます。
 
 *DocumentDB アカウントの既定の整合性に加えた変更が有効になるまで、数分かかることがあります。*
 
-## <a id="capacity"></a>DocumentDB 容量の設定を管理する Microsoft Azure DocumentDB を使用すると、ご使用のアプリケーションのライフサイクルにおける需要の変化に応じて規模を柔軟に拡張させることができます。Azure 管理プレビュー ポータルでご使用の DocumentDB データベース アカウントの容量を増やすことにより、DocumentDB を拡張することができます。
+## <a id="capacity"></a>DocumentDB 容量の設定を管理する Microsoft Azure DocumentDB を使用すると、ご使用のアプリケーションのライフサイクルにおける需要の変化に応じて規模を柔軟に拡張させることができます。Azure プレビュー ポータルで、ご使用の DocumentDB データベース アカウントの容量を増やすことにより、DocumentDB を拡張することができます。
 
-データベース アカウントを作成すると、データベース ストレージと予約済みスループットと共にプロビジョニングされます。アカウントのプロビジョニング済みのデータベース ストレージとスループットは、Azure 管理プレビュー ポータルで容量単位の追加や削除を行うことにより、いつでも変更できます。 
+データベース アカウントを作成すると、データベース ストレージと予約済みスループットと共にプロビジョニングされます。アカウントのプロビジョニング済みのデータベース ストレージとスループットは、Azure プレビュー ポータルで容量単位の追加や削除を行うことにより、いつでも変更できます。
 
 ### 容量ユニットを追加または削除するには
-1.      [Azure 管理プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 
 2.      **[使用状況]** レンズで、**[スケール]** をクリックします。
 
@@ -107,18 +104,19 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 ![](./media/documentdb-manage-account/image007.png)
 
-4.      **[保存]** をクリックします (スケール操作が完了するまで、数分かかることがあります。Azure 管理プレビュー ポータルの通知ハブで進行状況を監視できます)。
+4.      **[保存]** をクリックします (スケール操作が完了するまで、数分かかることがあります。Azure プレビュー ポータルの通知ハブで進行状況を監視できます)。
 
- *DocumentDB プレビューでは、1 つの DocumentDB アカウントに対して最大 5 個の容量単位をサポートしています。*
- 
+ *DocumentDB プレビューでは、1 つの DocumentDB アカウントにつき最大 5 個の容量単位を
+サポートしています。*
 
-## <a id="delete"></a> 方法: DocumentDB アカウントを削除する 使用しなくなった DocumentDB アカウントを削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
 
-> [AZURE.WARNING] プレビュー リリースでは、削除された DocumentDB アカウントのコンテンツを復元する方法はありません。DocumentDB アカウントを削除すると、データベース、コレクション、ドキュメント、添付ファイルなど、そのアカウントのすべてのリソースが削除されます。*
+## <a id="delete"></a> 方法:DocumentDB アカウントを削除する 使用しなくなった DocumentDB アカウントを削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
+
+> [AZURE.WARNING] プレビュー リリースでは、削除された DocumentDB アカウントのコンテンツを復元する方法はありません。DocumentDB アカウントを削除すると、データベース、コレクション、ドキュメント、添付ファイルなど、そのアカウントのすべてのリソースが削除されます。
 
 ![](./media/documentdb-manage-account/image009.png)
 
-1.      [Azure 管理プレビュー ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。 
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。
 
 2.      **[DocumentDB アカウント]** ブレードで、**[削除]** コマンドをクリックします。
 
@@ -128,10 +126,12 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 ## <a id="next"></a>次のステップ
 
-[DocumentDB アカウントの使用を開始する](http://go.microsoft.com/fwlink/p/?LinkId=402364)方法について取り上げます。
+[DocumentDB アカウントの使用](http://go.microsoft.com/fwlink/p/?LinkId=402364)方法について取り上げます。
 
-DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink/?LinkID=402319&clcid=0x409) の Azure DocumentDB に関するドキュメントを参照してください。
+DocumentDB の詳細については、Azure DocumentDB に関するドキュメントを 
+
+[azure.com](http://go.microsoft.com/fwlink/?LinkID=402319&clcid=0x409) で参照してください。
 
  
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Web アプリケーションで CDN からコンテンツを使用する" 
 	description="CDN からのコンテンツを使用して、Web アプリケーションのパフォーマンスを高める方法を説明するチュートリアル。" 
 	services="cdn" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/02/2014" 
+	ms.date="02/20/2015" 
 	ms.author="cephalin"/>
 
 # Web アプリケーションで Azure CDN からコンテンツを配信する #
@@ -23,7 +23,7 @@
 - ページに静的または半静的コンテンツへの多数のリンクがある
 - アプリケーションがクライアントによってグローバルにアクセスされる
 - Web サーバーのトラフィックをオフロードする
-- Web サーバーへの同時クライアント接続の数を削減する (詳細については「[Bundling and Minification (バンドルと縮小)](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)」を参照してください) 
+- Web サーバーへの同時クライアント接続の数を削減する (詳細については、[バンドルと縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)に関するページを参照してください) 
 - 認識されるページの読み込み/更新時間を削減する
 
 ## 学習内容 ##
@@ -39,25 +39,20 @@
 
 このチュートリアルの前提条件は次のとおりです。
 
--	アクティブな [Microsoft Azure アカウント](http://azure.microsoft.com/account/)。試用アカウントにサインアップできます。
+-	アクティブな [Microsoft Azure アカウント](/account/)。試用アカウントにサインアップできます。
 -	Visual Studio 2013 と BLOB 管理 GUI 用 [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
--	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」で使用)
+-	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する」で使用](#upload))
 
-<div class="wa-note">
-  <span class="wa-icon-bulb"></span>
-  <h5><a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。</h5>
-  <ul>
-    <li><a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
-    <li><a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
-  <ul>
-</div>
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
+> + 無料で [Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。
+> + [MSDN サブスクライバーの特典を有効にする]こともできます - MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月与えられます。
 
 <a name="static"></a>
 ## Azure CDN エンドポイントから静的コンテンツを配信する ##
 
 このチュートリアル セクションでは、CDN を作成および使用して静的コンテンツを配信する方法について説明します。主な手順は次のとおりです。
 
-1. ストレージ アカウントの作成
+1. ストレージ アカウントを作成する
 2. ストレージ アカウントにリンクされた CDN の作成
 3. ストレージ アカウントでの BLOB コンテナーの作成
 4. BLOB コンテナーへのコンテンツのアップロード
@@ -70,13 +65,13 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-1.PNG)
 
-	>[WACOM.NOTE] 後で CDN をテストするときに北米から十分な距離の場所が必要であるため、リージョンに東アジアを使用していることに注意してください。
+	>[AZURE.NOTE] 後で CDN をテストするときに北米から十分な距離の場所が必要であるため、リージョンに東アジアを使用していることに注意してください。
 
-2. 新しいストレージ アカウントのステータスが **[オンライン]** になった後で、作成したストレージ アカウントに関連付けられた新しい CDN エンドポイントを作成します。**[新規]、[アプリ サービス]、[簡易作成]** の順にクリックします。作成したストレージ アカウントを選択して **[作成]** をクリックします。
+2. 新しいストレージ アカウントのステータスが **[オンライン]** になった後で、作成したストレージ アカウントに関連付けられた新しい CDN エンドポイントを作成します。**[新規]、[App Services]、[簡易作成]** の順にクリックします。作成したストレージ アカウントを選択して **[作成]** をクリックします。
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2.PNG)
 
-	>[WACOM.NOTE] CDN が作成されると、その URL および関連付けられた元のドメインが Azure ポータルに表示されます。ただし、CDN エンドポイントの構成がすべてのノードの場所に完全に反映されるまで少し時間がかかる場合があります。  
+	>[AZURE.NOTE] CDN が作成されると、その URL および関連付けられた元のドメインが Azure ポータルに表示されます。ただし、CDN エンドポイントの構成がすべてのノードの場所に完全に反映されるまで少し時間がかかる場合があります。  
 
 3. ping を使用して CDN エンドポイントをテストし、オンラインであることを確認します。CDN エンドポイントがすべてのノードへの反映を完了していない場合は、次のようなメッセージが表示されます。
 
@@ -100,14 +95,14 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2-enablequeryb.PNG)
 
-	>[WACOM.NOTE] チュートリアルのこの部分でのクエリ文字列の有効化は必須ではありませんが、ここでの変更が残りのノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。これを活用する方法については、「[クエリ文字列を使用して即座に最新コンテンツを配信する](#query)」を参照してください。
+	>[AZURE.NOTE] チュートリアルのこの部分でのクエリ文字列の有効化は必須ではありませんが、ここでの変更が残りのノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。これを活用する方法については、「[クエリ文字列を使用して即座に最新コンテンツを配信する]」を参照してください(#query)。
 
-6. Visual Studio 2013 のサーバー エクスプローラーで、**[Windows Azure への接続]** をクリックします。
+6. Visual Studio 2013 のサーバー エクスプローラーで、**[Microsoft Azure への接続]** をクリックします。
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-5.PNG)
 
 7.  プロンプトに従って Azure アカウントにサインインします。 
-8.  サインインした後で、**[Windows Azure]、[ストレージ]** の順に展開し、自分のアカウントを展開します。**[BLOB]** を右クリックし、**[BLOB コンテナーの作成]** をクリックします。
+8.  サインインした後で、**[Microsoft Azure]、[ストレージ]** の順に展開し、自分のアカウントを展開します。**[BLOB]** を右クリックし、**[BLOB コンテナーの作成]** をクリックします。
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-6.PNG)
 
@@ -119,7 +114,7 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-8.PNG)
 
-10.	**[BLOB のアップロード]** をクリックし、Web ページで使用される画像、スクリプト、またはスタイルシートを BLOB コンテナーにアップロードします。アップロードの進捗状況は **[Windows Azure のアクティビティ ログ]** に表示され、アップロードされた BLOB はコンテナー ビューに表示されます。 
+10.	**[BLOB のアップロード]** をクリックし、Web ページで使用される画像、スクリプト、またはスタイルシートを BLOB コンテナーにアップロードします。アップロードの進捗状況は **[Azure のアクティビティ ログ]** に表示され、アップロードされた BLOB はコンテナー ビューに表示されます。 
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-9.PNG)
 
@@ -127,13 +122,13 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-10.PNG)
 
-12.	ブラウザーで 1 つの BLOB の URL に移動して BLOB のパブリック アクセスをテストします。たとえば、`http://cephalinstorage.blob.core.windows.net/cdn/cephas_lin.png` でアップロードされたリスト内の最初の画像をテストできます。
+12.	ブラウザーで 1 つの BLOB の URL に移動して BLOB のパブリック アクセスをテストします。たとえば、 `http://cephalinstorage.blob.core.windows.net/cdn/cephas_lin.png` でアップロードしたリスト内の最初の画像をテストできます。
 
 	Visual Studio の BLOB 管理インターフェイスで指定された HTTPS アドレスを使用していない点に注意してください。Azure CDN ではコンテンツへのパブリックなアクセスが必須ですが、HTTP を使用してそれをテストできます。
 
-13.	レンダリングされた BLOB をお使いのブラウザーで適切に表示できる場合は、URL を `http://<yourStorageAccountName>.blob.core.windows.net` から Azure CDN の URL に変更します。ここでは、CDN エンドポイントで最初の画像をテストする使用するために、`http://az623979.vo.msecnd.net/cdn/cephas_lin.png` を使用します。
+13.	ブラウザーで BLOB が適切にレンダリングされることを確認できたら、この URL を `http://<yourStorageAccountName>.blob.core.windows.net` から自分の Azure CDN の URL に変更します。この例では、CDN エンドポイントで最初の画像をテストするために `http://az623979.vo.msecnd.net/cdn/cephas_lin.png` を使用します。
 
-	>[WACOM.NOTE] CDN エンドポイントの URL は、Azure の管理ポータルの [CDN] タブで見つけることができます。
+	>[AZURE.NOTE] CDN エンドポイントの URL は、Azure の管理ポータルの [CDN] タブで見つけることができます。
 
 	BLOB への直接的なアクセスと CDN アクセスのパフォーマンスを比較すると、Azure CDN の使用によりパフォーマンスが向上することが確認できます。画像の BLOB URL アクセスに関する Internet Explorer 11 F12 開発者ツールのスクリーンショットを次に示します。
 
@@ -154,17 +149,17 @@
 <a name="upload"></a>
 ## ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する ##
 
-ASP.NET Web アプリケーション内にあるすべての静的コンテンツを簡単に CDN エンドポイントにアップロードする場合や、継続的な配信を使用して Web アプリケーションをデプロイする場合 (例については、「[Azure でのクラウド サービスの継続的な配信](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-continuous-delivery/)」を参照) には、Azure PowerShell を使用して、Web アプリケーションをデプロイするたびに最新コンテンツ ファイルと Azure BLOB が自動的に同期されるように設定できます。たとえば、「[Upload Content Files from ASP.NET Application to Azure Blobs (ASP.NET アプリケーションから Azure BLOB へのコンテンツ ファイルのアップロード)](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)」でスクリプトを実行し、ASP.NET アプリケーション内のすべてのコンテンツ ファイルをアップロードすることができます。スクリプトを使用するには、次の手順に従います。
+ASP.NET Web アプリケーション内にあるすべての静的コンテンツを簡単に CDN エンドポイントにアップロードする場合や、継続的な配信を使用して Web アプリケーションをデプロイする場合 (例については、[Azure でのクラウド サービスの継続的な配信](cloud-services-dotnet-continuous-delivery.md) を参照) には、Azure PowerShell を使用して、Web アプリケーションをデプロイするたびに最新コンテンツ ファイルと Azure BLOB が自動的に同期されるように設定できます。たとえば、[ASP.NET アプリケーションから Azure BLOB へのコンテンツ ファイルのアップロード](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)に関するページのスクリプトを実行し、ASP.NET アプリケーション内のすべてのコンテンツ ファイルをアップロードすることができます。スクリプトを使用するには、次の手順に従います。
 
-4. **[スタート]** メニューの **[Windows Azure PowerShell]** を選択します。
-5. [Azure PowerShell] ウィンドウで `Get-AzurePublishSettingsFile` を実行し、Azure アカウントの発行設定ファイルをダウンロードします。
+4. **[スタート]** メニューの **[Microsoft Azure PowerShell]** を実行します。
+5. Azure PowerShell ウィンドウで、 `Get-AzurePublishSettingsFile` を実行し、Azure アカウントの発行設定ファイルをダウンロードします。
 6. 発行設定ファイルをダウンロードしたら、以下を実行します。 
 
 		Import-AzurePublishSettingsFile "<yourDownloadedFilePath>"
 
-	>[WACOM.NOTE] 発行設定ファイルをインポートすると、これがすべての Azure PowerShell セッションに対して既定の Azure アカウントになります。つまり、この手順は一度だけ実行する必要があります。
+	>[AZURE.NOTE] 発行設定ファイルをインポートすると、これがすべての Azure PowerShell セッションに対して既定の Azure アカウントになります。つまり、この手順は一度だけ実行する必要があります。
 	
-1. [ダウンロード ページ]からスクリプトをダウンロードします ((http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)ASP.NET アプリケーションのプロジェクト フォルダーに保存します)。
+1. スクリプトを[ダウンロード ページ](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)からダウンロードします。それを ASP.NET アプリケーションのプロジェクト フォルダーに保存します。
 2. ダウンロードしたスクリプトを右クリックし、**[プロパティ]** をクリックします。
 3. **[ブロックの解除]** をクリックします。
 4. PowerShell ウィンドウを開き、以下を実行します。
@@ -179,13 +174,13 @@ ASP.NET Web アプリケーション内にあるすべての静的コンテン�
 -	個別の BLOB コンテナーに含まれている複数の Web アプリケーションに対して、同じ Azure ストレージ アカウントおよび CDN エンドポイントが再利用される
 -	Azure CDN が新しいコンテンツで簡単に更新される。コンテンツの更新の詳細については、「[必要なコンテンツの更新が反映されるように CDN キャッシュを構成する](#update)」を参照してください。
 
-`-StorageContainer` パラメーターには、Web アプリケーションの名前または Visual Studio プロジェクト名を使用すると便利です。汎用 "cdn" をコンテナー名として使用する代わりに、Web アプリケーションの名前を使用することにより、関連するコンテンツを識別しやすい同じコンテナーに編成できます。
+-StorageContainer パラメーターには、Web アプリケーションの名前または Visual Studio プロジェクト名を使用すると便利です。汎用 "cdn" をコンテナー名として使用する代わりに、Web アプリケーションの名前を使用することにより、関連するコンテンツを識別しやすい同じコンテナーに編成できます。
 
-コンテンツでアップロードが完了した後で、.cshtml ファイルなどの HTML コード内で *http://<yourCDNName>.vo.msecnd.net/<containerName>* を使用して、*\Content* フォルダーおよび `\Scripts` フォルダーにリンクできます。Razor ビューで使用できる例を次に示します。 
+コンテンツでアップロードが完了した後で、.cshtml ファイルなどの HTML コード内で `http://<yourCDNName>.vo.msecnd.net/<containerName>` を使用して、*\Content* フォルダーおよび *\Scripts* フォルダーにリンクできます。Razor ビューで使用できる例を次に示します。 
 
 	<img alt="Mugshot" src="http://az623979.vo.msecnd.net/MyMvcApp/Content/cephas_lin.png" />
 
-PowerShell スクリプトを継続的な配信構成に統合する例については、「[Azure でのクラウド サービスの継続的な配信](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-continuous-delivery/)」を参照してください。 
+PowerShell スクリプトを継続的な配信構成に統合する例については、「[Azure でのクラウド サービスの継続的な配信]」を参照してください。 
 
 <a name="update"></a>
 ## 必要なコンテンツの更新が反映されるように CDN キャッシュを構成する ##
@@ -198,7 +193,7 @@ BLOB コンテナーの Web アプリケーションから静的ファイルを�
 
 ![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-updates-1.PNG)
 
-また、PowerShell スクリプトですべての BLOB のキャッシュ制御ヘッダーを設定する方法もあります。「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」のスクリプトでは、次のコード スニペットに対して、
+また、PowerShell スクリプトですべての BLOB のキャッシュ制御ヘッダーを設定する方法もあります。「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」のスクリプトで、次のコード スニペットを見つけます。
 
     Set-AzureStorageBlobContent `
         -Container $StorageContainer `
@@ -227,12 +222,12 @@ BLOB コンテナーの Web アプリケーションから静的ファイルを�
 
 Azure CDN で、クエリ文字列を有効にすることにより、固有のクエリ文字列を含む URL からのコンテンツを別個にキャッシュできます。キャッシュされた CDN コンテンツの期限切れまで待機せずに、特定のコンテンツの更新をクライアント ブラウザーに即座にプッシュする場合に、この機能は役立ちます。URL にバージョン番号を含む Web ページを発行するとします。  
 <pre class="prettyprint">
-<link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=3.0.0</mark>&quot; rel=&quot;stylesheet&quot;/>
+&lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=3.0.0</mark>&quot; rel=&quot;stylesheet&quot;/&gt;
 </pre>
 
 CSS 更新を発行して、CSS URL で別のバージョン番号を使用する場合は、次のようになります。  
 <pre class="prettyprint">
-<link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=3.1.1</mark>&quot; rel=&quot;stylesheet&quot;/>
+&lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=3.1.1</mark>&quot; rel=&quot;stylesheet&quot;/&gt;
 </pre>
 
 クエリ文字列が有効になっている CDN エンドポイントに対して、2 つの URL は相互に一意であり、新しい *bootstrap.css* を取得するための新しい要求が Web サーバーに対して行われます。ただし、クエリ文字列が有効になっていない CDN エンドポイントに対しては、これらは同じ URL であり、単純にキャッシュされた *bootstrap.css* が提供されます。 
@@ -247,26 +242,26 @@ CSS 更新を発行して、CSS URL で別のバージョン番号を使用す�
 
 ...
 
-<link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=@cdnVersion</mark>&quot; rel=&quot;stylesheet&quot;/>
+&lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=@cdnVersion</mark>&quot; rel=&quot;stylesheet&quot;/&gt;
 </pre>
 
-すべての発行サイクルの一部としてアセンブリ番号を変更すれば、Web アプリケーションを発行するたびに同様に一意のバージョン番号を取得することができます。これは、次の発行サイクルまでそのまま維持されます。または、Visual Studio プロジェクトで *Properties\AssemblyInfo.cs* を開き、`*` を `AssemblyVersion` で使用することにより、Web アプリケーションのビルドのたびに Visual Studio でアセンブリ バージョン番号が自動的にインクリメントされます。次に例を示します。
+すべての発行サイクルの一部としてアセンブリ番号を変更すれば、Web アプリケーションを発行するたびに同様に一意のバージョン番号を取得することができます。これは、次の発行サイクルまでそのまま維持されます。または、Visual Studio プロジェクトで *Properties\AssemblyInfo.cs* を開き、* を `AssemblyVersion` で使用することにより、Web アプリケーションのビルドのたびに Visual Studio でアセンブリ バージョン番号が自動的にインクリメントされます。次に例を示します。
 
 	[assembly: AssemblyVersion("1.0.0.*")]
 
-## ASP.NET にバンドルされているスクリプトおよびスタイルシートについて ##
+## ASP.NET にバンドルされているスクリプトおよびスタイルシートについて##
 
-[Azure Websites](http://azure.microsoft.com/services/websites/) および [Azure Cloud Services](http://azure.microsoft.com/services/cloud-services/) では、[ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)を Azure CDN へ最適に統合できます。 
+[Azure Websites] (/services/websites/) および [Azure Cloud Services] (/services/cloud-services/) では、[ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)と Azure CDN を最適に統合できます。 
 
 Azure CDN と Azure Websites または Azure Cloud Services の統合には、次の利点があります。
 
-- コンテンツの展開 (イメージ、スクリプト、およびスタイルシート) を、Azure Websites の[継続的な展開](http://azure.microsoft.com/documentation/articles/web-sites-publish-source-control/)プロセスの一部として統合
+- コンテンツのデプロイメント (画像、スクリプト、およびスタイルシート) を、Azure Websites の[継続的なデプロイメント](web-sites-publish-source-control.md) プロセスの一部として統合
 - JQuery や Bootstrap のバージョンなど、CDN によって配信される NuGet パッケージを簡単にアップグレード 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 
 関連するチュートリアルは、次の項目を参照してください。
-- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/documentation/articles/cdn-websites-with-cdn/)
-- [クラウド サービスと Azure CDN との統合](http://azure.microsoft.com/Documentation/Articles/cdn-cloud-service-with-cdn/)
+- [Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)
+- [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 
 Azure Websites または Azure Cloud Services と統合しなくても、Azure CDN をスクリプト バンドルに使用することはできますが、次の点に注意してください。
 
@@ -276,10 +271,10 @@ Azure Websites または Azure Cloud Services と統合しなくても、Azure C
 		@Html.Raw(Styles.Render("~/Content/css").ToString().Insert(0, "http://<yourCDNName>.vo.msecnd.net"))
 
 # 詳細 #
-- [Azure コンテンツ配信ネットワーク (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/documentation/articles/cdn-websites-with-cdn/)
-- [クラウド サービスと Azure CDN との統合](http://azure.microsoft.com/Documentation/Articles/cdn-cloud-service-with-cdn/)
-- [カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
-- [Azure 用 CDN の使用](http://azure.microsoft.com/documentation/articles/cdn-how-to-use/)
+- [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
+- [Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)
+- [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
+- [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
+- [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!--HONumber=46--> 
+<!--HONumber=49-->

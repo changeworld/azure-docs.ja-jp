@@ -5,54 +5,51 @@
 	authors="wesmc7777" 
 	manager="dwrede" 
 	editor="" 
-	services=""/>
+	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/29/2014" 
+	ms.date="02/23/2015" 
 	ms.author="wesmc"/>
 
 # Mobile Services と Azure Active Directory でのロール ベースのアクセス制御
 
 [AZURE.INCLUDE [mobile-services-selector-rbac](../includes/mobile-services-selector-rbac.md)]
 
+#概要
 
 ロール ベースのアクセス制御 (RBAC) は、ユーザーが保持できるロールにアクセス許可を割り当てる機能であり、特定のクラスのユーザーが実行できることとできないことの境界線を明確に定義します。このチュートリアルでは、Azure Mobile Services に基本的な RBAC を追加する方法について説明します。
 
 このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、モバイル サービス バックエンドで Azure Active Directory 用の [Graph API] を使用し、JavaScript で行います。Sales ロールに属するユーザーのみが、データの照会を許可されます。
 
 
->[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。最初に、Azure Active Directory 認証プロバイダーを使用して、「[認証の使用]」チュートリアルを完了しておく必要があります。このチュートリアルでは、「[認証の使用[」チュートリアルで使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[Mobile Services アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
 
-このチュートリアルでは、次の手順について説明します。
-
-1. [Sales グループとメンバーシップを作成する]
-2. [統合アプリケーションのキーを生成する]
-3. [メンバーシップを確認する共有スクリプトを追加する]
-4. [データベース操作にロール ベースのアクセス確認を追加する]
-5. [クライアントのアクセスをテストする]
+##前提条件
 
 このチュートリアルには、次のものが必要です。
 
 * Windows 8.1 で実行されている Visual Studio 2013。
-* Azure Active Directory 認証プロバイダーを使用して、「[認証の使用]」チュートリアルを完了していること。
+* Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了していること。
 * チュートリアル「[ソース管理へのサーバー スクリプトの保存]」を完了し、Git リポジトリを使用してサーバー スクリプトを格納する方法に習熟していること。
  
 
 
-## <a name="create-group"></a>Sales グループとメンバーシップを作成する
+##Sales グループとメンバーシップを作成する
 
 [AZURE.INCLUDE [mobile-services-aad-rbac-create-sales-group](../includes/mobile-services-aad-rbac-create-sales-group.md)]
 
 
-## <a name="generate-key"></a>統合アプリケーションのキーを生成する
+##統合アプリケーションのキーを生成する
 
 
-「[認証の使用]」チュートリアルでは、[登録して Azure Active Directory のログインを使用する]の手順を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
+チュートリアル「[Mobile Services アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
+
+チュートリアル「[Azure Active Directory Graph 情報へのアクセス]」を完了している場合は、この手順を既に完了しているため、このセクションを省略できます。
 
 [AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
@@ -60,14 +57,14 @@
 
 
 
-## <a name="add-shared-script"></a>メンバーシップを確認する共有スクリプトをモバイル サービスに追加する
+##メンバーシップを確認する共有スクリプトをモバイル サービスに追加する
 
 このセクションでは、Git を使用して  *rbac.js* という名前の共有スクリプト ファイルをモバイル サービスにデプロイします。この共有スクリプト ファイルには、[Graph API] を使用してユーザーのグループ メンバーシップを確認する関数が含まれています。 
 
 Git でモバイル サービスにスクリプトをデプロイすることに慣れていない場合は、このセクションを完了する前に、[サーバー スクリプトの格納)]に関するチュートリアルを見直してください。
 
-1. モバイル サービスのローカル リポジトリの .*./service/shared/* ディレクトリに  *rbac.js* という名前の新しいスクリプト ファイルを作成します。
-2.  `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。 *tenant_domain*、統合アプリケーションの  *client id*、およびアプリケーションの  *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
+1. モバイル サービスのローカル リポジトリの *./service/shared/* ディレクトリに  *rbac.js* という名前の新しいスクリプト ファイルを作成します。
+2.  `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。 *tenant_domain*、統合アプリケーションの  *client id*、およびアプリケーションの *キー*を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
 
     >[AZURE.NOTE] アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、[Graph API のエラー コード]に関するページに記載されているとおり、トークンの使用を試みたときに 401 Authentication_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。 
 
@@ -145,7 +142,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
     
 
-7. エクスポートされた次の  `checkGroupMembership` 関数を  *rbac.js* に追加します。  
+7. エクスポートされた次の  `checkGroupMembership` 関数を *rbac.js* に追加します。  
 
     この関数は他のスクリプト関数の使用をラップし、他のスクリプトによって呼び出される共有スクリプトからエクスポートされ、実際にアクセス確認を実行します。モバイル サービスのユーザー オブジェクトおよびグループ ID が与えられると、このスクリプトはユーザーの ID に対する Azure Active Directory オブジェクト ID を取得して、そのグループのメンバーシップを確認します。
 
@@ -170,10 +167,10 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
 8. 変更を  *rbac.js* に保存します。
 
-## <a name="add-access-checking"></a>データベース操作にロール ベースのアクセス確認を追加する
+##データベース操作にロール ベースのアクセス確認を追加する
 
 
-「[認証の使用]」チュートリアルを完了すると、次に示すように、認証が必要になるテーブル操作を既に設定したことになります。
+チュートリアル「[Mobile Services アプリへの認証の追加]」を完了すると、次に示すように、認証が必要になるテーブル操作を既に設定したことになります。
 
 ![][3]
 
@@ -257,7 +254,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
     ![][4]
 
-## <a name="test-client"></a>クライアントのアクセスをテストする
+##クライアントのアクセスをテストする
 
 [AZURE.INCLUDE [mobile-services-aad-rbac-test-app](../includes/mobile-services-aad-rbac-test-app.md)]
 
@@ -265,33 +262,27 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
 
 
-<!-- Anchors. -->
-[Sales グループとメンバーシップを作成する]: #create-group
-[統合アプリケーションのキーを生成する]: #generate-key
-[メンバーシップを確認する共有スクリプトを追加する]: #add-shared-script
-[データベース操作にロール ベースのアクセス確認を追加する]: #add-access-checking
-[クライアントのアクセスをテストする]: #test-client
 
 
 <!-- Images -->
 [0]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/users.png
 [1]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/group-membership.png
 [2]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/sales-group.png
-[3]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/table-per
-	ms.png
+[3]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/table-perms.png
 [4]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/insert-table-op-view.png
 [5]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/sales-group-id.png
 [6]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/client-id-and-key.png
 
 <!-- URLs. -->
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/
-[Azure Active Directory 認証用の登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+[Mobile Services アプリへの認証の追加]: mobile-services-javascript-backend-windows-universal-dotnet-get-started-users.md
+[Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [ディレクトリ統合]: http://msdn.microsoft.com/library/azure/jj573653.aspx
-[ソース管理へのプロジェクト コードの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control/
-[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+[ソース管理へのプロジェクト コードの保存]: mobile-services-store-scripts-source-control.md
+[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
 [Graph API] に関するリファレンス: http://msdn.microsoft.com/library/azure/hh974478.aspx
 [Graph API のエラー リファレンス]に関するページ: http://msdn.microsoft.com/library/azure/hh974480.aspx
 [グループ メンバーシップの確認 (推移的)]: http://msdn.microsoft.com/library/azure/dn151601.aspx
+[Azure Active Directory Graph 情報へのアクセス]: mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info.md
 
-<!--HONumber=42-->
+<!--HONumber=49-->

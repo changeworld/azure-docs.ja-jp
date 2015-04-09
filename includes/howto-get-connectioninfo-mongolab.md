@@ -1,4 +1,4 @@
-﻿MongoLab データベースをプロビジョニングすると、MongoLab により Azure に MongoDB の標準接続文字列形式で URI が送信されます。この値は、選択した MongoDB ドライバーをとおして MongoDB 接続を初期化するために使用されます。接続文字列の詳細については、[接続に関するページ](http://www.mongodb.org/display/DOCS/Connections) を mongodb.orgで参照してください。
+﻿MongoLab データベースをプロビジョニングすると、MongoLab により Azure に MongoDB の標準接続文字列形式で URI が送信されます。この値は、選択した MongoDB ドライバーをとおして MongoDB 接続を初期化するために使用されます。接続文字列の詳細については、mongodb.org の[接続に関するページ](http://www.mongodb.org/display/DOCS/Connections)を参照してください。
 
 **この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。**
 
@@ -19,4 +19,5 @@ MongoLab の URI が表示されます。
 [button-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/button-connectioninfo.png
 [screen-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/dialog-mongolab_connectioninfo.png
 [button-addons]: ./media/howto-get-connectioninfo-mongolab/button-addons.png
-<!--HONumber=42-->
+
+<!--HONumber=49-->

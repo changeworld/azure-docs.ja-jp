@@ -1,5 +1,5 @@
 ﻿<properties 
-	pageTitle="DocumentDB と HDInsight を使用した Hadoop ジョブの実行| Azure" 
+	pageTitle="DocumentDB と HDInsight を使用した Hadoop ジョブの実行 | Azure" 
 	description="DocumentDB と Azure HDInsight を使用してシンプルな Hive、Pig、および MapReduce ジョブを実行する方法を説明します。"
 	services="documentdb" 
 	authors="andrewhoh" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="03/02/2015" 
+	ms.date="03/11/2015" 
 	ms.author="anhoh"/>
 
 #<a name="DocumentDB-HDInsight"></a>DocumentDB と HDInsight を使用した Hadoop ジョブの実行
@@ -32,7 +32,7 @@
 
 その後で、この記事に戻ってください。この記事では、DocumentDB データに対して分析ジョブを実行する方法について詳しく説明します。
 
-> [AZURE.TIP] このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。Apache Hadoop、Hive、および Pig を初めて扱う方は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を確認することをお勧めします。また、このチュートリアルは、これまでに DocumentDB を使用した経験があり、DocumentDB アカウントを所有していることを前提としています。DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始][getting-started]に関するページを参照してください。
+> [AZURE.TIP] このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始][getting-started]に関するページを参照してください。
 
 チュートリアルを完了する時間がなく、Hive、Pig、および MapReduce の完全なサンプル PowerShell スクリプトが必要な場合は、[こちら][documentdb-hdinsight-samples]をクリックすると入手できます。ダウンロードには、これらのサンプルの hql、pig、および java の各ファイルも含まれています。
 
@@ -40,18 +40,18 @@
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
 - DocumentDB アカウント、データベース、およびドキュメントが含まれているコレクション詳細については、[DocumentDB の使用][getting-started]に関するページを参照してください。
-- スループット。HDInsight からの読み取りと書き込みは、容量単位 (CU) に割り当てられた要求単位に達するまでカウントされます。詳細については、「[プロビジョニング済みスループット、要求単位、およびデータベース操作][documentdb-manage-throughput]」を参照してください。
+- スループット。HDInsight からの読み取りと書き込みは、容量単位 (CU) に割り当てられた要求単位に達するまでカウントされます。詳細については、[プロビジョニング済みスループット、要求単位、およびデータベース操作][documentdb-manage-throughput]に関するページを参照してください。
 - 各出力コレクションに含まれる追加のストアド プロシージャ用の容量。ストアド プロシージャは、生成されたドキュメントを転送するために使用されます。詳細については、「[コレクションとプロビジョニング済みスループット][documentdb-manage-document-storage]」を参照してください。
 - Hive、Pig、または MapReduce のジョブから生成されたドキュメント用の容量。詳細については、「[DocumentDB の容量とパフォーマンスの管理][documentdb-manage-collections]」を参照してください。
 - [*オプション*] 追加のコレクション用の容量。詳細については、「[プロビジョニング済みドキュメント ストレージとインデックス オーバーヘッド][documentdb-manage-document-storage]」を参照してください。
 	
-> [AZURE.WARNING] 何らかのジョブの実行中に新しいコレクションが作成されることを避けるために、stdout に結果を書き出して出力を WASB コンテナーに格納するか、既存のコレクションを指定することができます。既存のコレクションを指定した場合、新しいドキュメントはコレクション内に作成され、 *ID* に競合がない限り既存のドキュメントに影響は及びません。**ID の競合がある場合は、既存のドキュメントがコネクタによって自動的に上書きされます。**この機能を無効にするには、upsert オプションを false に設定します。upsert が false に設定された状態で競合が発生すると、Hadoop ジョブは失敗し、ID 競合エラーが報告されます。
+> [AZURE.WARNING] 何かのジョブの実行中に新しいコレクションが作成されることを避けるために、stdout に結果を書き出して出力を WASB コンテナーに格納するか、既存のコレクションを指定することができます。既存のコレクションを指定した場合、新しいドキュメントはコレクション内に作成され、 *ids* に競合がない限り既存のドキュメントに影響は及びません。**ID の競合がある場合は、既存のドキュメントがコネクタによって自動的に上書きされます。**この機能を無効にするには、upsert オプションを false に設定します。upsert が false に設定された状態で競合が発生すると、Hadoop ジョブは失敗し、ID 競合エラーが報告されます。
 
-## <a name="CreateStorage"></a>手順 1: Azure のストレージ アカウントの作成
+## <a name="CreateStorage"></a>手順 1:Azure のストレージ アカウントの作成
 
 > [AZURE.IMPORTANT] **既に** Azure ストレージ アカウントを所有していて、そのアカウント内に BLOB コンテナーを新規作成する場合は、「[手順 2: カスタマイズした HDInsight クラスターの作成](#ProvisionHDInsight)」に進むことができます。
 
-Azure HDInsight では、データの格納に Azure BLOB ストレージを使用します。このストレージを  *WASB* または  *Azure Storage - BLOB* と呼びます。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、[Azure BLOB ストレージと HDInsight の併用][hdinsight-storage]に関するページを参照してください。
+Azure HDInsight では、データの格納に Azure BLOB ストレージを使用します。 *WASB* または  *Azure Storage - Blob* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
 
 HDInsight クラスターをプロビジョニングするときは、Azure Storage アカウントを指定します。HDFS と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。
 
@@ -72,14 +72,14 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
 
-## <a name="ProvisionHDInsight"></a>手順 2: カスタマイズした HDInsight クラスターの作成
-このチュートリアルでは、Azure の管理ポータルからスクリプト アクションを使用して、HDInsight クラスターをカスタマイズする方法を説明します。このチュートリアルでは、カスタマイズされたクラスターの作成に、Azure の管理ポータルを使用します。PowerShell コマンドレットまたは HDInsight .NET SDK を使用する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ][hdinsight-custom-provision] に関するページを参照してください。
+## <a name="ProvisionHDInsight"></a>手順 2:カスタマイズした HDInsight クラスターの作成
+このチュートリアルでは、Azure の管理ポータルからスクリプト アクションを使用して、HDInsight クラスターをカスタマイズする方法を説明します。このチュートリアルでは、カスタマイズされたクラスターの作成に、Azure の管理ポータルを使用します。PowerShell コマンドレットまたは HDInsight .NET SDK を使用する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ][hdinsight-custom-provision]に関するページを参照してください。
 
 1. [Azure の管理ポータル][azure-management-portal]にサインインします。前の手順で既にサインインしている場合もあります。
 
 2. ページ下部の **[+ 新規]** をクリックし、**[データ サービス]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
 
-3. **[クラスターの詳細]** ページで、次の値を入力または選択します。
+3. [**クラスターの詳細**] ページで、次の値を入力または選択します。
 
 	![Provide Hadoop HDInsight initial cluster details][image-customprovision-page1]
 
@@ -156,7 +156,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 			<td>スクリプト アクションの名前を指定します。</td></tr>
 		<tr><td>スクリプト URI</td>
 			<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</br></br>
-			次の値を入力してください。 </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v01.ps1</strong>。</td></tr>
+			次の値を入力してください。 </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v02.ps1</strong></td></tr>
 		<tr><td>ノードの種類</td>
 			<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。</br></br>
 			<strong>[すべてのノード]</strong> を選択してください。</td></tr>
@@ -167,9 +167,9 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 	チェック マークをクリックして、クラスターの作成を完了します。
 
-## <a name="InstallCmdlets"></a>手順 3: Azure PowerShell のインストールおよび構成
+## <a name="InstallCmdlets"></a>手順 3:Azure PowerShell のインストールおよび構成
 
-1. Azure PowerShell をインストールします。インストール方法については、[こちら][powershell-install-configure]を参照してください。
+1. Azure PowerShell をインストールします。手順については、[このページ][powershell-install-configure]を参照してください。
 
 	> [AZURE.NOTE] または、Hive クエリに対して HDInsight のオンライン Hive エディターを使用できます。この場合は、[Azure の管理ポータル][azure-management-portal]にサインインし、左側ウィンドウの **[HDInsight]** をクリックすると、HDInsight クラスターの一覧が表示されます。Hive クエリを実行するクラスターをクリックし、**[クエリ コンソール]** をクリックします
 
@@ -178,16 +178,16 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 	- Windows 8 よりも前、または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、[スタート] メニューを使用します。[スタート] メニューの検索ボックスに「**コマンド プロンプト**」と入力し、結果の一覧で、**[コマンド プロンプト]** をクリックします。コマンド プロンプトで、「**powershell_ise**」と入力し、**Enter** キーを押します。
 
 3. Azure アカウントを追加します。
-	1。コンソール ウィンドウで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
-	2。お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
-	3。Azure サブスクリプションのパスワードを入力します。 
-	4。**[サインイン]** をクリックします。
+	1. コンソール ウィンドウで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
+	2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
+	3. Azure サブスクリプションのパスワードを入力します。 
+	4. **[サインイン]** をクリックします。
 
 4. 次の図は、Azure PowerShell Scripting Environment の重要な要素を示しています。 
 
 	![Diagram for Azure PowerShell][azure-powershell-diagram]
 
-## <a name="RunHive"></a>手順 4: DocumentDB と HDInsight を使用した Hive ジョブの実行
+## <a name="RunHive"></a>手順 4:DocumentDB と HDInsight を使用した Hive ジョブの実行
 
 > [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 
@@ -206,7 +206,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
     <p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが含まれていることを確認してください。 </p>
 
-    > [AZURE.NOTE] **DocumentDB.inputCollections という名前は誤りではありません。**次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
+    > [AZURE.NOTE] **名前が複数形の DocumentDB.inputCollections になっているのは誤りではありません。**入力として複数のコレクションを追加できるようにすることから、この名前が使用されています。 </br>
     '*DocumentDB.inputCollections*' = '*\<DocumentDB 入力コレクション名 1\>*,*\<DocumentDB 入力コレクション名 2\>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。
 
 		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
@@ -222,7 +222,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
  
 3.  次に、出力コレクション用に Hive テーブルを作成します。出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
-	> [AZURE.NOTE] **ここでも、DocumentDB.outputCollections という名前は誤りではありません。**次のように、複数のコレクションを 1 つの出力として追加することができます。 </br>
+	> [AZURE.NOTE] **ここでも、名前が複数形の DocumentDB.outputCollections になっているのは誤りではありません。**出力として複数のコレクションを追加できるようにすることから、この名前が使用されています。 </br>
     '*DocumentDB.outputCollections*' = '*\<DocumentDB 出力コレクション名 1\>*,*\<DocumentDB 出力コレクション名 2\>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </br></br>
     ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
@@ -277,17 +277,17 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 9. 作成できたスクリプトを**実行**しましょう。緑色の実行ボタンを**クリック**します。
 
 10. 結果を確認します。[Azure プレビュー ポータル][azure-preview-portal]にサインインします。 
-	1。左側ウィンドウの <strong>[参照]</strong> をクリックします。 </br>
-	2。参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。 </br>
-	3。<strong>[DocumentDB アカウント] </strong> を見つけてクリックします。 </br>
-	4。次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Hive クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
-	5。最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
+	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。 </br>
+	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。 </br>
+	3. <strong>[DocumentDB アカウント] </strong> を見つけてクリックします。 </br>
+	4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Hive クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
+	5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
 
 	Hive クエリの結果が表示されます。
 
 	![Hive query results][image-hive-query-results]
 
-## <a name="RunPig"></a>手順 5: DocumentDB と HDInsight を使用した Pig ジョブの実行
+## <a name="RunPig"></a>手順 5:DocumentDB と HDInsight を使用した Pig ジョブの実行
 
 > [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 
@@ -364,17 +364,17 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 9. 作成できたスクリプトを**実行**しましょう。緑色の実行ボタンを**クリック**します。
 
 10. 結果を確認します。[Azure プレビュー ポータル][azure-preview-portal]にサインインします。 
-	1。左側ウィンドウの <strong>[参照]</strong> をクリックします。 </br>
-	2。参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。 </br>
-	3。<strong>[DocumentDB アカウント] </strong> を見つけてクリックします。 </br>
-	4。次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Pig クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
-	5。最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
+	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。 </br>
+	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。 </br>
+	3. <strong>[DocumentDB アカウント] </strong> を見つけてクリックします。 </br>
+	4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Pig クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
+	5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
 
 	Pig クエリの結果が表示されます。
 
 	![Pig query results][image-pig-query-results]
 
-## <a name="RunMapReduce"></a>手順 6: DocumentDB と HDInsight を使用した MapReduce ジョブの実行
+## <a name="RunMapReduce"></a>手順 6:DocumentDB と HDInsight を使用した MapReduce ジョブの実行
 
 1. PowerShell スクリプト ウィンドウで次の変数を設定します。
 		
@@ -395,7 +395,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 		Select-AzureSubscription $subscriptionName
 		$TallyPropertiesJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $TallyPropertiesJobDefinition | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600  
 
-	MapReduce ジョブ定義に加えて、MapReduce ジョブを実行する HDInsight クラスター名、および資格情報も指定します。Start-AzureHDInsightJob は非同期呼び出しです。ジョブの完了を確認するには、 *Wait-AzureHDInsightJob* コマンドレットを使用します。
+	MapReduce ジョブ定義に加えて、MapReduce ジョブを実行する HDInsight クラスター名、および資格情報も指定します。Start-AzureHDInsightJob は非同期呼び出しです。ジョブの完了を確認するには、 *Wait-AzureHDInsightJob*コマンドレットを使用します。
 
 4. 次のコマンドを追加して、MapReduce ジョブの実行中に発生したエラーを確認します。	
 	
@@ -407,11 +407,11 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 5. 作成できたスクリプトを**実行**しましょう。緑色の実行ボタンを**クリック**します。
 
 6. 結果を確認します。[Azure プレビュー ポータル][azure-preview-portal]にサインインします。 
-	1。左側ウィンドウの <strong>[参照]</strong> をクリックします。
-	2。参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。
-	3。<strong>[DocumentDB アカウント] </strong> を見つけてクリックします。
-	4。次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。
-	5。最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。
+	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。
+	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。
+	3. <strong>[DocumentDB アカウント] </strong> を見つけてクリックします。
+	4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。
+	5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。
 
 	MapReduce ジョブの結果が表示されます。
 
@@ -425,11 +425,11 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 
 詳細については、次の記事を参照してください。
 
-- [DocumentDB を使用した Java アプリケーションの作成][documentdb-java-application]
+- [DocumentDB を使用した Java アプリケーションの開発][documentdb-java-application]
 - [HDInsight での Hadoop 用 Java MapReduce プログラムの開発][hdinsight-develop-deploy-java-mapreduce]
-- [HDInsight で Hive と Hadoop を使用したモバイル ハンドセットの使用状況の分析][hdinsight-get-started]
+- [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
 - [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
-- [HDInsight での Hive の使用][hdinsight-use-hive] 
+- [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
 - [Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-hadoop-customize-cluster]
 
@@ -437,7 +437,7 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [apache-hadoop-doc]: http://hadoop.apache.org/docs/current/
 [apache-hive]: http://hive.apache.org/
 [apache-pig]: http://pig.apache.org/
-[getting-started]: ../documentdb-get-started/
+[getting-started]: documentdb-get-started.md
 
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-powershell-diagram]: ./media/documentdb-run-hadoop-with-hdinsight/azurepowershell-diagram-med.png
@@ -445,19 +445,19 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 
 [documentdb-hdinsight-samples]: http://portalcontent.blob.core.windows.net/samples/documentdb-hdinsight-samples.zip
 [documentdb-github]: https://github.com/Azure/azure-documentdb-hadoop
-[documentdb-java-application]: ../documentdb-java-application/
-[documentdb-manage-collections]: ../documentdb-manage/#Collections
-[documentdb-manage-document-storage]: ../documentdb-manage/#IndexOverhead
-[documentdb-manage-throughput]: ../documentdb-manage/#ProvThroughput
+[documentdb-java-application]: documentdb-java-application.md
+[documentdb-manage-collections]: documentdb-manage.md#Collections
+[documentdb-manage-document-storage]: documentdb-manage.md#IndexOverhead
+[documentdb-manage-throughput]: documentdb-manage.md#ProvThroughput
 
-[hdinsight-custom-provision]: ../hdinsight-provision-clusters/#powershell
-[hdinsight-develop-deploy-java-mapreduce]: ../hdinsight-develop-deploy-java-mapreduce/
-[hdinsight-hadoop-customize-cluster]: ../hdinsight-hadoop-customize-cluster/
-[hdinsight-get-started]: ../hdinsight-get-started/ 
-[hdinsight-storage]: ../hdinsight-use-blob-storage/
-[hdinsight-use-hive]: ../hdinsight-use-hive/
-[hdinsight-use-mapreduce]: ../hdinsight-use-mapreduce/
-[hdinsight-use-pig]: ../hdinsight-use-pig/
+[hdinsight-custom-provision]: hdinsight-provision-clusters.md#powershell
+[hdinsight-develop-deploy-java-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-hadoop-customize-cluster]: hdinsight-hadoop-customize-cluster.md
+[hdinsight-get-started]: hdinsight-get-started.md 
+[hdinsight-storage]: hdinsight-use-blob-storage.md
+[hdinsight-use-hive]: hdinsight-use-hive.md
+[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
+[hdinsight-use-pig]: hdinsight-use-pig.md
 
 [image-customprovision-page1]: ./media/documentdb-run-hadoop-with-hdinsight/customprovision-page1.png
 [image-customprovision-page4]: ./media/documentdb-run-hadoop-with-hdinsight/customprovision-page4.png
@@ -467,6 +467,6 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [image-mapreduce-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/mapreducequeryresults.PNG
 [image-pig-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/pigqueryresults.PNG
 
-[powershell-install-configure]: ../install-configure-powershell/
+[powershell-install-configure]: install-configure-powershell.md
 
-<!--HONumber=47-->
+<!--HONumber=49-->

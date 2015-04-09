@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2015" 
+	ms.date="03/20/2015" 
 	ms.author="mimig"/>
 
 #Microsoft Azure DocumentDB の概要
 
 この記事では、開発者、IT プロフェッショナル、およびビジネスの意思決定者向けの NoSQL ドキュメント データベース サービス、Microsoft Azure DocumentDB の概要を示します。 
 
-最初に、Ryan CrawCour と Scott Hanselman が Azure DocumentDB を紹介している次のビデオをご覧ください。 
+まずは、次のビデオを視聴することをお勧めします。このビデオでは、Ryan CrawCour と Scott Hanselman が Azure DocumentDB を紹介し、[クエリのプレイグラウンド](http://www.documentdb.com/sql/demo)を試しています。プレイグラウンドでは、DocumentDB を試用して、データセットに対して SQL クエリを実行することができます。
 
 > [AZURE.VIDEO documentdb-101-with-ryan-crawcour]
 
@@ -31,7 +31,7 @@
 -	[DocumentDB を使用したアプリケーションの開発](#develop)
 -	[DocumentDB アプリケーションを初めて構築する場合に役立つ詳細情報](#next-steps)  
 
-##<a name="what-is-docdb"></a>Azure DocumentDB とは
+##<a name="what-is-docdb"></a>Azure DocumentDB とは  
 
 最近のアプリケーションは膨大なデータを生成し、取り込み、そしてすばやく応答を返します。そうしたアプリケーションはきわめて速いペースで進化しており、その基盤となるデータ スキーマにも同じことがいえます。アプリケーション データ モデルと非構造化データ フィードを高速に反復処理する能力を保ちつつ、データを保存、処理するためのシンプルで高速、かつ柔軟性の高いソリューションが求められます。そのような状況の中で、スキーマが不要な NoSQL ドキュメント データベースを選ぶ開発者が増えてきました。しかし、スキーマ フリーのデータベースの多くは複雑なクエリやトランザクション処理に対応しておらず、そのことが高度なデータ管理を困難にしています。こういった機能を、スキーマ フリーのデータを扱う際にも利用できるようにするために、マイクロソフトは Azure DocumentDB を開発しました。
 
@@ -43,13 +43,13 @@ Azure DocumentDB が備えている主要な機能と利点は次のとおりで
 
 -	**馴染みのある SQL 構文を使用したアドホック クエリ:** 多種多様な JSON ドキュメントを DocumentDB に格納し、馴染みのある SQL 構文を使用して照会できます。DocumentDB は、同時実行性の高い、ロックを用いないログ構造のインデックス作成技術を利用して、すべてのドキュメント コンテンツのインデックスを自動的に作成します。そのため、スキーマのヒント、セカンダリ インデックス、ビューを指定せずに、豊富なリアルタイム クエリが可能となっています。
 
--	**データベース内で JavaScript を実行:** 標準の JavaScript を使用し、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) としてアプリケーション ロジックを表現することができるため、アプリケーション スキーマとデータベース スキーマ間のインピーダンス ミスマッチに悩まされることなく JSON データを扱うことができます。DocumentDB は、JavaScript アプリケーション ロジックを完全なトランザクションとしてデータベース エンジン内から直接実行できるようになっています。JavaScript が深いレベルで統合されているため、INSERT、REPLACE、DELETE、SELECT の操作を分離されたトランザクションとして JavaScript プログラム内から実行することができます。
+-	**データベース内で JavaScript を実行:** 標準の JavaScript を使用し、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) としてアプリケーション ロジックを表現することができるため、アプリケーション スキーマとデータベース スキーマ間のインピーダンス ミスマッチに悩まされることなく JSON データを扱うことができます。DocumentDB は、JavaScript アプリケーション ロジックを完全なトランザクションとしてデータベース エンジン内から直接実行できるようになっています。JavaScript が深いレベルで統合されているため、INSERT、REPLACE、DELETE、SELECT の操作を分離されたトランザクションとして JavaScript プログラム内から実行することができます。 
 
--	**一貫性レベルをチューニング可能:** 明確に定義された 4 つの一貫性レベルの中からいずれかのレベルを選択し、一貫性とパフォーマンス間のトレードオフを最適な形で行うことができます。DocumentDB では、クエリと読み取り操作に関して、Strong、Bounded-Staleness、Session、Eventual の 4 種類の一貫性レベルが利用できます。きめ細かな一貫性レベルが明確に定義されていることによって、一貫性、可用性、待機時間の最適なトレードオフを検討することができます。
+-	**一貫性レベルをチューニング可能:** 明確に定義された 4 つの一貫性レベルの中からいずれかのレベルを選択し、一貫性とパフォーマンス間のトレードオフを最適な形で行うことができます。DocumentDB では、クエリと読み取り操作に関して、Strong、Bounded-Staleness、Session、Eventual の 4 種類の一貫性レベルが利用できます。きめ細かな一貫性レベルが明確に定義されていることによって、一貫性、可用性、待機時間の最適なトレードオフを検討することができます。 
 
 -	**完全管理:** データベースやコンピューター リソースを管理する手間がかかりません。Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、複雑なデータ層のアップグレードを手作業で行う必要はありません。すべてのデータベースは自動的にバックアップされ、局地的障害から保護されます。DocumentDB アカウントは簡単に追加し、必要に応じて容量をプロビジョニングすることができます。データベースの運用と管理に煩わされることなく、アプリケーションに専念することが可能です。
 
--	**スループットとストレージのスケールを柔軟に調整:** アプリケーションのニーズに応じて DocumentDB を容易にスケール アップしたりスケール ダウンしたりすることができます。SSD を使用したストレージとスループットの単位が細かく規定されており、スケール調整は、それらを予約することによって行います。アプリケーションの成長に合わせて容量単位を追加購入すれば、確実なパフォーマンスと共に、DocumentDB を臨機応変に拡張することができます。
+-	**スループットとストレージのスケールを柔軟に調整:** アプリケーションのニーズに応じて DocumentDB を容易にスケール アップしたりスケール ダウンしたりすることができます。SSD を使用したストレージとスループットの単位が細かく規定されており、スケール調整は、それらを予約することによって行います。アプリケーションの成長に合わせて容量単位を追加購入すると、確実なパフォーマンスと共に、DocumentDB を臨機応変に拡張することができます。 
 
 -	**デザインとしてのオープン性:** 既存のスキルとツールを使用して迅速に作業を開始できます。DocumentDB に対するプログラミングは単純で親しみやすく、新しいツールを導入したり、JSON または JavaScript のカスタム拡張機能に準拠したりする必要はありません。単純な RESTful HTTP インターフェイスを介して、CRUD、クエリ、および JavaScript 処理を含むすべてのデータベース機能にアクセスできます。DocumentDB は、既存の形式、言語、標準を採用しながら、その上に高価値のデータベース機能を提供します。
 
@@ -93,12 +93,13 @@ DocumentDB における JavaScript は、T-SQL の後継として、リレーシ
 ##<a name="next-steps"></a>次のステップ
 Azure DocumentDB を導入するには、次のリソースを参照してください。
 
-- [DocumentDB の試用](https://portal.azure.com/#gallery/Microsoft.DocumentDB)
--	[DocumentDB のリソース モデルと概念](/documentation/articles/documentdb-resources/)
--	[DocumentDB リソースとの対話](/documentation/articles/documentdb-interactions-with-resources/)
--	[DocumentDB データベース アカウントの作成](/documentation/articles/documentdb-create-account/)
--	[DocumentDB .NET SDK の使用](/documentation/articles/documentdb-get-started/)
+-   [DocumentDB の試用](https://portal.azure.com/#gallery/Microsoft.DocumentDB)
+-   [クエリのプレイ グラウンド](http://www.documentdb.com/sql/demo)
+-	[DocumentDB のリソース モデルと概念](documentdb-resources.md)
+-	[DocumentDB リソースとの対話](documentdb-interactions-with-resources.md)
+-	[DocumentDB データベース アカウントの作成](documentdb-create-account.md)
+-	[DocumentDB .NET SDK の使用](documentdb-get-started.md)
 
 [1]: ./media/documentdb-introduction/intro.png
 
-<!--HONumber=47-->
+<!--HONumber=49-->

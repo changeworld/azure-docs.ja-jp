@@ -66,7 +66,7 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 
 - 動的読み込み:動的に読み込むには、プリコンパイル済みファイル (SWF) ファイルが必要です。動的プラグインはランタイムに読み込まれ、プロジェクト出力(コンパイル済み出力) には含まれません。動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
 
-静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグインに関するページ](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)を参照してください。
+静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグイン](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)に関するページを参照してください。
 
 ###OSMF 用 SS の静的読み込み
 次のコード スニペットは、OSMF 用 SS プラグインを静的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、プロジェクト参照に静的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" が含まれていることを確認してください。
@@ -343,13 +343,13 @@ package
 </code></pre>
 
 ##Strobe Media Playback と OSMF 用 SS 動的プラグイン
-OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
+OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。そのためには、次に示す手順を使用して "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーして、HTTP での読み込みが行われるようにします。
 
 1.	[Strobe Media Playback セットアップ ページ](http://osmf.org/dev/2.0gm/setup.html)に移動します。 
-2.	[src] をスムーズ ストリーミング ソース (「http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest」など) に設定します。 
+2.	[src] をスムーズ ストリーミング ソース (http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest など) に設定します。 
 3.	必要な構成変更を行い、[Preview and Update] をクリックします。
  
-	**注**: コンテンツ Web サーバーには有効な crossdomain.xml が必要です。 
+	**注**: コンテンツ Web サーバーには有効な crossdomain.xml が必要です。
 4.	コードをコピーし、好みのテキスト エディターで作成した HTML ページに、次の例のようにコードを貼り付けます。
 
 
@@ -402,6 +402,6 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 6. 	HTML ページを保存して、Web サーバーに発行します。Flash&reg; Player 対応の好みのインターネット ブラウザー (Internet Explorer、Chrome、Firefox など) を使用して、発行済みの Web ページに移動します。
 7. 	Adobe&reg; Flash&reg; Player でスムーズ ストリーミング コンテンツをお楽しみください。
 
-全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ](http://osmf.org/resources.html)を参照してください。
+全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発](http://osmf.org/resources.html)に関するページを参照してください。
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

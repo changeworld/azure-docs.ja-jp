@@ -1,6 +1,6 @@
-<properties 
-	pageTitle="Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法" 
-	description="Linux を実行する Azure の仮想マシン (VM) を使用して Microsoft Azure で Tomcat7 を設定する方法について説明します。" 
+﻿<properties 
+	pageTitle="Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法 
+	description="Linux を実行する Azure の仮想マシン (VM) を使用して Microsoft Azure で Tomcat7 を設定する方法について説明します。 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="NingKuang" 
@@ -22,20 +22,20 @@ Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Sof
 
 このガイドでは、Linux イメージ上に Tomcat7 をインストールして Microsoft Azure に展開することができます。  
 
-学習内容:   
+学習内容:  
 
 -	Azure 上での仮想マシンの作成方法。
 -	Tomcat7 の仮想マシンを準備する方法。
 -	Tomcat7 をインストールする方法。
 
-読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](http://azure.microsoft.com) で無料評価版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39) をご覧ください。Azure の詳細については、[Azure とは](http://azure.microsoft.com/overview/what-is-azure/) を参照してください。
+読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](http://azure.microsoft.com) で無料評価版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金:MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39) をご覧ください。Azure の詳細については、「[Azure とは](http://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
 
 このトピックは、Tomcat や Linux の基本的な知識を持つ読者を想定しています。  
 
-##フェーズ 1: イメージの作成
+##フェーズ 1:イメージの作成
 このフェーズでは、Azure の Linux イメージを使用して仮想マシンを作成します。  
 
-###手順 1: SSH 認証キーの生成
+###手順 1:SSH 認証キーの生成
 SSH はシステム管理者にとって重要なツールです。ただし、人間が指定したパスワードに基づいたアクセス セキュリティを構成することはベスト プラクティスではありません。悪意のあるユーザーは、ユーザー名と、脆弱なパスワードに基づいたシステムに侵入することができます。
 
 リモート アクセスを開いたままにして、パスワードについて心配する必要のない方法があります。このメソッドは、非対称暗号化方式による認証で構成されています。ユーザーの秘密キーが認証を付与するキーとなります。ユーザーのアカウントをロックすれば、パスワード認証を完全に無効にできます。 
@@ -46,17 +46,17 @@ SSH はシステム管理者にとって重要なツールです。ただし、�
 
 次の手順に従って、SSH 認証のキーを生成します。
 
-1.	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
+1.	次の場所から puttygen をダウンロードしてインストールします:[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
 2.	PUTTYGEN.EXE を実行します。
 3.	キーを生成するには、**[生成]** をクリックします。処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。  
 ![][1]
 4.	生成処理が終わると、生成されたキーが表示されます。次に例を示します。  
 ![][2]
-5.	**[キー]** の公開キーを選択してコピーし、 publicKey.pem という名前のファイルに保存します。保存された公開キーの形式は使用する公開キーの形式と異なるため、**[公開キーの保存]** をクリックしないでください。
+5.	**[キー]** の公開キーを選択してコピーし、publicKey.pem という名前のファイルに保存します。保存された公開キーの形式は使用する公開キーの形式と異なるため、**[公開キーの保存]** をクリックしないでください。
 6.	**[秘密キーの保存]** をクリックし、privateKey.ppk という名前のファイルに保存します。 
 
-###手順 2: Azure プレビュー ポータルでのイメージの作成
-[Azure プレビュー ポータル](https://portal.azure.com/) で、タスク バーの **[新規]** をクリックし、ニーズに合わせた Linux イメージを選択してイメージを作成します。次の例では、Ubuntu 14.04 イメージを使用します。 
+###手順 2:Azure プレビュー ポータルでのイメージの作成
+[Azure プレビュー ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックし、ニーズに合わせた Linux イメージを選択してイメージを作成します。次の例では、Ubuntu 14.04 イメージを使用します。 
 ![][3]
  
 **[ホスト名]** に、ユーザーとインターネット クライアントがこの仮想マシンにアクセスするのに使用する URL の名前を指定します。DNS 名の最後の部分 (tomcatdemo など) を定義すると、Azure は URL を tomcatdemo.cloudapp.net として生成します。  
@@ -66,23 +66,23 @@ SSH はシステム管理者にとって重要なツールです。ただし、�
   
 必要に応じて、他の設定を構成し、[作成] をクリックします。  
 
-##フェーズ 2: Tomcat7 の仮想マシンを準備します。
+##フェーズ 2:Tomcat7 の仮想マシンを準備します。
 このフェーズでは、tomcat トラフィックのエンドポイントを構成し、新しい仮想マシンに接続します。
-###手順 1: Web アクセスを許可する HTTP ポートを開きます。
+###手順 1:Web アクセスを許可する HTTP ポートを開きます。
 Azure のエンドポイントはプロトコル (TCP または UDP) の他に、パブリック ポートとプライベート ポートで構成されます。プライベート ポートとは、サービスが仮想マシンをリッスンするポートです。パブリック ポートとは、Azure クラウド サービスがインターネット ベースのトラフィックを外部でリッスンするポートです。  
 
 TCP ポート 8080 は、tomcat がリッスンする既定のポート番号です。このポートを Azure エンドポイントで開くと、ユーザーやその他のインターネット クライアントが tomcat のページにアクセスできるようになります。  
 
-1.	Azure プレビュー ポータルで、**[参照]** -> **[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。  
+1.	Azure プレビュー ポータルで、**[参照]**、**[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。  
 ![][5]
 2.	仮想マシンにエンドポイントを追加するには、**[エンドポイント]** ボックスをクリックします。
 ![][6] 
 3.	**[追加]** をクリックします。  
 	1.	**[エンドポイント]** では、[エンドポイント] にエンドポイントの名前を入力し、**[パブリックポート]** に「80」を入力します。  
 	  
-		80 に設定している場合は、tomcat に接続するための URL にポート番号を含める必要はありません。たとえば、「http://tomcatdemo.cloudapp.net」のように入力します。    
+		80 に設定している場合は、tomcat に接続するための URL にポート番号を含める必要はありません。たとえば、http://tomcatdemo.cloudapp.net のようになります。    
 
-		81 などの別の値に設定した場合は、tomcat にアクセスするための URL にポート番号を追加する必要があります。たとえば、「http://tomcatdemo.cloudapp.net:81/」のように入力します。
+		81 などの別の値に設定した場合は、tomcat にアクセスするための URL にポート番号を追加する必要があります。たとえば、http://tomcatdemo.cloudapp.net:81/。
 	2.	プライベート ポートに「8080」を入力します。既定では、tomcat は TCP ポート 8080 でリッスンします。tomcat の既定のリッスン ポートを変更している場合は、tomcat のリッスン ポートと同じになるように [プライベート ポート] を更新する必要があります。  
 	![][7]
  
@@ -98,15 +98,15 @@ SSH ツールを選択すると、仮想マシンに接続できます。この�
 **[SSH]** フィールドから、SSH 接続のポート番号を取得します。たとえば次のようになります。  
 ![][8]
  
-[ここ] から Putty をダウンロードします(http://www.putty.org/) 。  
+Download Putty from [here](http://www.putty.org/) .  
 
 ダウンロード後、実行可能ファイル PUTTY.EXE をクリックします。仮想マシンのプロパティから取得したホスト名とポート番号を使用して、基本オプションを構成します。たとえば次のようになります。  
 ![][9]
  
-左側のウィンドウで、**[接続]** -> **[SSH]** -> **[認証]** をクリックし、**[参照]** をクリックして**privateKey.ppk** ファイルの場所を指定します。このファイルには、フェーズ 1 で puttygen で生成した秘密キーが含まれます。イメージを作成します。たとえば次のようになります。  
+左側のウィンドウで、**[接続]** -> **[SSH]** -> **[認証]** をクリックし、**[参照]** をクリックして **privateKey.ppk** ファイルの場所を指定します。このファイルには、フェーズ 1 で puttygen で生成した秘密キーが含まれます。イメージを作成します。たとえば次のようになります。  
 ![][10]
  
-**[開く]** をクリックします。メッセージ ボックスによるアラートが表示される場合があります。DNS 名とポート番号を正しく構成してある場合は、**[はい]** をクリックします。
+**[Open]** をクリックします。メッセージ ボックスによるアラートが表示される場合があります。DNS 名とポート番号を正しく構成してある場合は、**[はい]** をクリックします。
 ![][11]  
 
 
@@ -120,7 +120,7 @@ SSH ツールを選択すると、仮想マシンに接続できます。この�
 
 
 
-##フェーズ 3: ソフトウェアのインストール
+##フェーズ 3:ソフトウェアのインストール
 このフェーズでは、Java ランタイム環境、tomcat、およびその他の tomcat のコンポーネントをインストールします。  
 
 ###Java ランタイム環境
@@ -137,24 +137,24 @@ open-jdk
 
 oracle-jdk  
 
--	JDK を Oracle の Web サイトからダウンロードするには:   
+-	JDK を Oracle の Web サイトからダウンロードするには:  
 
 		wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
 
--	JDK のファイルを格納するディレクトリを作成するには:   
+-	JDK のファイルを格納するディレクトリを作成するには:  
 
 		sudo mkdir /usr/lib/jvm  
 
--	JDK のファイルを /usr/lib/jvm/ ディレクトリに抽出するには:   
+-	JDK のファイルを /usr/lib/jvm/ ディレクトリに抽出するには:  
 
 		sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
 
--	Oracle JDK を既定の JVM として設定するには:   
+-	Oracle JDK を既定の JVM として設定するには:  
 
 		sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
 		sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
 
-####テスト: 
+####テスト:
 次のようなコマンドを使用して Java ランタイム環境が正しくインストールされているかどうかをテストすることができます。  
 
 	java -version  
@@ -172,7 +172,7 @@ oracle-jdk をインストールした場合は、次のようなメッセージ
 
 Tomcat7 を使用していない場合は、このコマンドの適切なバリエーションを使用します。  
 
-####テスト: 
+####テスト:
 
 Tomcat7 が正常にインストールされているかどうかを確認するには、tomcat サーバーの DNS 名を参照してください(http://tomcatexample.cloudapp.net/ is the example URL in this article)。次のようなページが表示された場合は、Tomcat7 が正常にインストールされています。
 ![][16] 
@@ -186,22 +186,22 @@ Tomcat のその他のコンポーネントをインストールすることも�
 	sudo apt-get install tomcat7-admin      #admin web applications
 	sudo apt-get install tomcat7-user         #tools to create user instances  
 
-##フェーズ 4: Tomcat を構成する
+##フェーズ 4:Tomcat を構成する
 このフェーズでは、tomcat を管理します。
 ###Tomcat7 の開始と停止
 Tomcat7 サーバーはインストールすると、自動的に開始されます。次のコマンドでも開始できます。   
 
 	sudo /etc/init.d/tomcat7 start
 
-Tomcat7 を停止するには:   
+Tomcat7 を停止するには:  
 
 	sudo /etc/init.d/tomcat7 stop 
 
-Tomcat7 の状態を表示するには:   
+Tomcat7 の状態を表示するには:  
 
 	sudo /etc/init.d/tomcat7 status
 
-Tomcat サービスを再起動するには:   
+Tomcat サービスを再起動するには:  
 
 	sudo /etc/init.d/tomcat7 restart
 
@@ -219,7 +219,7 @@ Tomcat サービスを再起動するには:
 
 	sudo /etc/init.d/tomcat7 restart  
 
-ブラウザーを開き、URL **http://<your tomcat server DNS name>/manager/html** を入力します。たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html です。  
+ブラウザーを開き、「**http://<your tomcat server DNS name>/manager/html**」という URL を入力します。たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html. です。  
 
 接続後に、次のようなものが表示されます。  
 ![][18]
@@ -233,7 +233,7 @@ Tomcat は実行されているが、ブラウザーに Tomcat の既定のペ�
 -	**考えられる根本原因**   
 	1.	tomcat のリッスン ポートが、仮想マシンの tomcat トラフィック用のエンドポイントのプライベート ポートと異なっている。  
 	
-		パブリック ポートとプライベート ポートのエンドポイント設定を確認し、プライベート ポートが tomcat のリッスン ポートと同じになっていることを確認します。仮想マシンのエンドポイントの構成手順については、「フェーズ 1: イメージの作成」を参照してください。  
+		パブリック ポートとプライベート ポートのエンドポイント設定を確認し、プライベート ポートが tomcat のリッスン ポートと同じになっていることを確認します。仮想マシンのエンドポイントの構成手順については、「フェーズ 1:イメージの作成」を参照してください。  
 
 		tomcat のリッスン ポートを確認するには、/etc/httpd/conf/httpd.conf  (Red Hat リリース) または /etc/tomcat7/server.xml (Debian リリース) を開きます。既定では、tomcat のリッスン ポートは 8080 です。たとえば次のようになります。  
 
@@ -243,7 +243,7 @@ Tomcat は実行されているが、ブラウザーに Tomcat の既定のペ�
 
 			sudo vi /etc/default/tomcat7  
 
-		最後の行のコメントを解除し、"no" を "yes" に変更します。
+		最後の行のコメントを解除し、"no" を "yes" に変更します。  
 
 			AUTHBIND=yes
 
@@ -255,7 +255,7 @@ Tomcat は実行されているが、ブラウザーに Tomcat の既定のペ�
 			w3m http://localhost:8080  
 
 -	**解決策** 
-	1. tomcat のリッスン ポートが、仮想マシンのトラフィック用のエンドポイントのプライベート ポートと異なっている場合は、tomcat のリッスン ポートと同じになるように、プライベート ポートを変更する必要があります。   
+	1.tomcat のリッスン ポートが、仮想マシンのトラフィック用のエンドポイントのプライベート ポートと異なっている場合は、tomcat のリッスン ポートと同じになるように、プライベート ポートを変更する必要があります。   
 	
 	2.	問題の原因がファイアウォールや iptables の場合は、/etc/sysconfig/iptables に次の行を追加します。  
 	
@@ -324,4 +324,4 @@ root アカウントからアクセス許可を取得する必要があります
 [17]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
 
-<!--HONumber=42-->
+<!--HONumber=49-->

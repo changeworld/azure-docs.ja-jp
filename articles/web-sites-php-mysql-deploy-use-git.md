@@ -1,101 +1,103 @@
 ﻿<properties 
-	pageTitle="MySQL と Git を使用した PHP Web サイト - Azure チュートリアル" 
-	description="MySQL にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" 
-	services="web-sites" 
+	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする 
+	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。 
+	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/14/2014" 
+	ms.date="03/24/2015" 
 	ms.author="tomfitz"/>
 
-#PHP-MySQL Azure Web サイトを作成して Git で展開する
+#Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
-このチュートリアルでは、PHP-MySQL Azure Web サイトを作成する方法と、Git を使用してそれを展開する方法を説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web サイトが完成します。
+このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
  
 学習内容:
 
-* Azure の管理ポータルを使用して Azure Web サイトと MySQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
  
-このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure Website でホストします。完成したアプリケーションのスクリーンショットは次のようになります。
+このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web アプリでホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP web site][running-app]
-
-> [AZURE.NOTE]
-> このチュートリアルを完了するには、Azure Websites の機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A74E0F923" target="_blank">Azure の無料評価版サイト</a>をご覧ください。
-> 
-> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
+![Azure PHP Web サイト][running-app]
 
 ##開発環境を設定する
 
 このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。
 
 > [AZURE.NOTE]
-> このチュートリアルを Windows で実行する場合は、<a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a> をインストールすることで、コンピューターを PHP 用に設定し、自動的に IIS (Windows のビルトイン Web サーバー) を構成できます。
+> このチュートリアルを Windows で実行する場合は、<a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a> をインストールすることで、コンピューターを PHP 用に設定し、自動的に IIS (Windows のビルトイン Web サーバー) を構成することができます。
 
-##<a id="create-web-site-and-set-up-git"></a>Azure Web サイトの作成と Git 発行の設定
+##<a id="create-web-site-and-set-up-git"></a>Web アプリの作成と Git 発行の設定
 
-Azure Web サイトと MySQL データベースを作成するには、次の手順に従います。
+Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
-1. [Azure の管理ポータル][management-portal]にログインします。
+1. [Azure ポータル][management-portal]にログインします。
 2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-	![Create New Azure web site][new-website]
+	![新しい Azure Web サイトの作成][new-website]
 
-3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
+3. **[Web + モバイル]** をクリックし、**[Web app + MySQL]** をクリックします。
 
-	![Custom Create a new web site][custom-create]
+	![新しい Web サイトのカスタム作成][custom-create]
 	
-	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい MySQL データベースを作成します]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
+4. リソース グループの有効な名前を入力します。
 
-	![Fill in web site details][website-details]
+    ![リソース グループ名の設定][resource-group]
 
-4. データベースの **[名前]** ボックスに値を入力し、**[リージョン]** ボックスの一覧でデータベースのデータ センターを選択して、法律条項に同意することを示すチェック ボックスをオンにします。ダイアログの下部にあるチェックマークをクリックします。
+5. 新しい Web アプリについての値を入力します。
 
-	![Create new MySQL database][new-mysql-db]
+    ![Web アプリの作成][new-web-app]
 
-	Web サイトが作成されると、"**Web サイト "[サイト名]" の作成が正常に完了しました**" というテキストが表示されます。これで、Git 発行を有効にする準備ができました。
+6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
 
-6. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの**クイックスタート** ダッシュボードを開きます。
+	![新しい MySQL データベースの作成][new-mysql-db]
 
-	![Open web site dashboard][go-to-dashboard]
+7. Web アプリが作成されると、新しいリソース グループが表示されます。設定を構成する Web アプリの名前をクリックします。
+
+	![Web アプリを開く][go-to-webapp]
+
+7. **[継続的配置の設定]** をクリックします。 
+
+	![Git 発行の設定][setup-publishing]
+
+8. ソース コード用の **[ローカル Git リポジトリ]** を選択します。
+
+    ![Git リポジトリの設定][setup-repository]
 
 
-7. **クイック スタート** ページの下部で、**[Git 発行の設定]** をクリックします。 
+9. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください(Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
 
-	![Set up Git publishing][setup-git-publishing]
+	![発行資格情報の作成][credentials]
 
-8. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください(Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
-
-	![Create publishing credentials][credentials]
-
-	リポジトリの設定にかかる時間はわずかです。
-
-9. リポジトリの準備ができると、アプリケーション ファイルをリポジトリにプッシュするための手順が表示されます。これらの手順は後で必要になるため、メモしておいてください。
-
-	![Git instructions][git-instructions]
 
 ##MySQL のリモート接続情報の取得
 
-Azure Websites で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
+Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
-1. Web サイトのダッシュボードで、ページの右側にある **[接続文字列の表示]** リンクをクリックします。
+1. リソース グループで、データベースをクリックします。
 
-	![Get database connection information][connection-string-info]
+	![データベースの選択][select-database]
+
+2. データベースのサマリで、**[プロパティ]** を選択します。
+
+    ![プロパティの選択][select-properties]
 	
-2.  `Database`、 `Data Source`、 `User Id`、 `Password` の各値を記録します。
+2.  `Database`、 `Host`、 `User Id`、 `Password` の各値を記録します。
+
+    ![プロパティの記録][note-properties]
 
 ##アプリケーションの作成とローカル テスト
 
-Azure Web サイトを作成したので、アプリケーションをローカルで作成し、それをテストした後に展開できます。 
+Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後に展開することができます。 
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
@@ -204,20 +206,18 @@ Registration アプリケーションは、名前と電子メール アドレス
 		</body>
 		</html>
 
-これで、**http://localhost/registration/index.php** にアクセスしてアプリケーションをテストできます。
+これで、**http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
 
 
 ##アプリケーションの発行
 
-アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure Web サイトに発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web アプリに発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
 > [AZURE.NOTE]
-> これらは、上の「Azure Web サイトの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
+> これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
 
-1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、ポータルの [展開] タブに移動します。
+1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、ポータルの Web アプリ プロパティに移動します。
 	
-	![Get Git URL][git-instructions]
-
 1. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
@@ -228,11 +228,11 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	先ほど作成したパスワードを入力するように求められます。
 
-	![Initial Push to Azure via Git][git-initial-push]
+	![Git による、Azure への最初のプッシュ][git-initial-push]
 
 2. アプリケーションの使用を開始できるように、**http://[site name].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
 
-	![Azure PHP web site][running-app]
+	![Azure PHP Web サイト][running-app]
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。 
 
@@ -249,39 +249,47 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	先ほど作成したパスワードを入力するように求められます。
 
-	![Pushing site changes to Azure via Git][git-change-push]
+	![Git による、Azure へのサイト変更のプッシュ][git-change-push]
 
 3. アプリケーションとその変更内容を確認できるように、**http://[site name].azurewebsites.net/index.php** に移動します。
 
-	![Azure PHP web site][running-app]
+	![Azure PHP Web サイト][running-app]
 
-4. Azure の管理ポータルの  'Deployments' タブで、新しい展開を確認することもできます。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、「[App Service を試す](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-	![List of web site deployments][deployments-list]
+## 変更点
+* Websites から App Service への変更に関するガイドについては、以下を参照してください。[Azure App Service and Its Impact on Existing Azure Services (Azure App Service についてと既存の Azure サービスへの影響)](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 旧ポータルから新ポータルへの変更に関するガイドについては、以下を参照してください。[Reference for navigating the preview portal (プレビュー ポータルを操作するためのリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 [install-php]: http://www.php.net/manual/en/install.php
-[install-SQLExpress]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
-[install-Drivers]: http://www.microsoft.com/ja-jp/download/details.aspx?id=20098
+[install-SQLExpress]: http://www.microsoft.com/download/details.aspx?id=29062
+[install-Drivers]: http://www.microsoft.com/download/details.aspx?id=20098
 [install-git]: http://git-scm.com/
+[install-mysql]: http://dev.mysql.com/downloads/mysql/
 
 [pdo-mysql]: http://www.php.net/manual/en/ref.pdo-mysql.php
 [running-app]: ./media/web-sites-php-mysql-deploy-use-git/running_app_2.png
-[new-website]: ./media/web-sites-php-mysql-deploy-use-git/new_website.jpg
-[custom-create]: ./media/web-sites-php-mysql-deploy-use-git/custom_create.png
+[new-website]: ./media/web-sites-php-mysql-deploy-use-git/new_website2.png
+[custom-create]: ./media/web-sites-php-mysql-deploy-use-git/create_web_mysql.png
 [website-details]: ./media/web-sites-php-mysql-deploy-use-git/website_details.jpg
-[new-mysql-db]: ./media/web-sites-php-mysql-deploy-use-git/new_mysql_db.jpg
-[go-to-dashboard]: ./media/web-sites-php-mysql-deploy-use-git/go_to_dashboard.png
+[new-mysql-db]: ./media/web-sites-php-mysql-deploy-use-git/create_db.png
+[go-to-webapp]: ./media/web-sites-php-mysql-deploy-use-git/select_webapp.png
 [setup-git-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_git_publishing.png
-[credentials]: ./media/web-sites-php-mysql-deploy-use-git/git-deployment-credentials.png
-
+[credentials]: ./media/web-sites-php-mysql-deploy-use-git/save_credentials.png
+[resource-group]: ./media/web-sites-php-mysql-deploy-use-git/set_group.png
+[new-web-app]: ./media/web-sites-php-mysql-deploy-use-git/create_wa.png
+[setup-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_deploy.png
+[setup-repository]: ./media/web-sites-php-mysql-deploy-use-git/select_local_git.png
+[select-database]: ./media/web-sites-php-mysql-deploy-use-git/select_database.png
+[select-properties]: ./media/web-sites-php-mysql-deploy-use-git/select_properties.png
+[note-properties]: ./media/web-sites-php-mysql-deploy-use-git/note-properties.png
 
 [git-instructions]: ./media/web-sites-php-mysql-deploy-use-git/git-instructions.png
 [git-change-push]: ./media/web-sites-php-mysql-deploy-use-git/php-git-change-push.png
 [git-initial-push]: ./media/web-sites-php-mysql-deploy-use-git/php-git-initial-push.png
 [deployments-list]: ./media/web-sites-php-mysql-deploy-use-git/php-deployments-list.png
 [connection-string-info]: ./media/web-sites-php-mysql-deploy-use-git/connection_string_info.png
-[management-portal]: https://manage.windowsazure.com
+[management-portal]: https://portal.azure.com
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

@@ -44,7 +44,7 @@
 
 クエリ エクスプローラーを使用すると、DocumentDB コレクションに対するクエリを簡単に作成、編集、実行することができ、基本的なキーワードや値を含めて強調表示できるので、クエリの作成エクスペリエンスが向上します。  
 
-- 最初にクエリ エクスプローラーを開くと、既定のクエリ SELECT * FROM 句が表示されます。既定のクエリをそのまま使用するか、独自のクエリを作成して、**[クエリの実行]** ボタンをクリックすると、結果が表示されます。[DocumentDB のクエリ]に関するページ (../documentdb-sql-query/) で説明されているように、クエリ エクスプローラーは DocumentDB SQL クエリ言語をサポートしています。
+- 最初にクエリ エクスプローラーを開くと、既定のクエリ SELECT * FROM 句が表示されます。既定のクエリをそのまま使用するか、独自のクエリを作成して、**[クエリの実行]** ボタンをクリックすると、結果が表示されます。「[DocumentDB のクエリ](documentdb-sql-query.md)」で説明されているように、クエリ エクスプローラーは DocumentDB SQL クエリ言語をサポートしています。
 
 	![Screenshot of Query Explorer query results](./media/documentdb-query-collections-query-explorer/queryresults1.png) 
 
@@ -63,6 +63,6 @@
 ##<a name="NextSteps"></a>次のステップ
 
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
-- クエリ エクスプローラーでサポートされている DocumentDB SQL の文法の詳細については、[ここ](../documentdb-sql-query/)をクリックしてください。
+- クエリ エクスプローラーでサポートされている DocumentDB SQL の文法の詳細については、[ここ](documentdb-sql-query.md)をクリックしてください。
 
-<!--HONumber=47-->
+<!--HONumber=49-->

@@ -1,8 +1,8 @@
-﻿Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。毎月 25,000 通の無料電子メールにより、高度なレポートと分析、[すべての API][] (Web、SMTP、イベント、解析など) を利用できるようになります。SendGrid の提供するその他のサービスについては、[SendGrid の特徴][]に関するページを参照してください。
+﻿Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。These 25,000 free monthly emails will give you access to advanced reporting and analytics and [all APIs][] (Web, SMTP, Event, Parse and more).SendGrid の提供するその他のサービスについては、[SendGrid の特徴][]に関するページを参照してください。
 
 ### SendGrid アカウントにサインアップするには
 
-1. [Azure の管理ポータル][]にログインします。
+1. [Azure 管理ポータル][]にログインします。
 
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 
@@ -46,7 +46,7 @@
 
 	![sendgrid-connection-info-button][sendgrid-connection-info-button]
 
-2.  *Connection info*ダイアログで、このチュートリアルの後半で使用できるように**パスワード**とユーザー名をコピーします。
+2. In the *Connection info* dialog, copy the **Password** and Username to use later in this tutorial.
 
 	![sendgrid-connection-info][sendgrid-connection-info]
 
@@ -54,7 +54,7 @@
 
 	![sendgrid-control-panel][sendgrid-control-panel]
 
-	SendGrid の概要については、[SendGrid の概要に関するページ][]を参照してください。
+	For more information on getting started with SendGrid, see [SendGrid Getting Started][].
 
 <!--images-->
 
@@ -70,11 +70,11 @@
 
 <!--Links-->
 
-[SendGrid の特徴]: http://sendgrid.com/features
-[Azure の管理ポータル]: https://manage.windowsazure.com
+[SendGrid Features]: http://sendgrid.com/features
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [SendGrid の概要に関するページ]: http://sendgrid.com/docs
 [SendGrid のプロビジョニング プロセス]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [すべての API]: https://sendgrid.com/docs/API_Reference/index.html
 
 
-<!--HONumber=47-->
+<!--HONumber=49-->

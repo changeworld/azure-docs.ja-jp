@@ -1,35 +1,34 @@
-<properties 
-	pageTitle="Web API を使用する .NET REST サービス - Azure チュートリアル" 
-	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure の Web サイトにデプロイする方法を示すチュートリアル。" 
-	services="web-sites" 
+﻿<properties 
+	pageTitle="ASP.NET Web API と SQL データベースを使用する Rest サービスを Azure App Service に作成する" 
+	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。" 
+	services="app-service\web" 
 	documentationCenter=".net" 
-	authors="riande" 
+	authors="Rick-Anderson" 
+	writer="Rick-Anderson" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/06/2014" 
+	ms.date="03/24/2015" 
 	ms.author="riande"/>
 
-# ASP.NET Web API と SQL データベースを使用した REST サービス 
+# ASP.NET Web API と SQL データベースを使用する Rest サービスを Azure App Service に作成する
 
-***執筆: [Rick Anderson](https://twitter.com/RickAndMSFT) および Tom Dykstra。***
-
-このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする方法を示します。 
+このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。 
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
 
 このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、クラウドで動作する単純な Web アプリケーションを作成します。
  
-学習内容: 
+学習内容:
 
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
-* Visual Studio の ASP.NET MVC 5 プロジェクトを作成して Azure の Web サイトに発行する方法
+* Visual Studio の ASP.NET MVC 5 プロジェクトを作成して Azure アプリケーションに発行する方法
 * ASP.NET Web API を使用して REST ベースの API 呼び出しを可能にする方法
 * SQL データベースを使用して Azure にデータを保存する方法
 * Azure にアプリケーションの更新を発行する方法
@@ -38,106 +37,51 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 ![screenshot of web site][intro001]
 
-このチュートリアルの内容: 
-
-* [開発環境を設定する][setupdbenv]
-* [Azure 環境を設定する][setupwindowsazureenv]
-* [ASP.NET MVC 5 アプリケーションを作成する][createapplication]
-* [Azure にアプリケーションをデプロイする][deployapp1]
-* [アプリケーションにデータベースを追加する][adddb]
-* [データのコントローラーとビューを追加する][addcontroller]
-* [Web API を使用する REST ベースのインターフェイスを追加する][addwebapi]
-* [XSRF 保護を追加する][]
-* [Azure および SQL データベースにアプリケーションの更新を発行する][deploy2]
-
 <a name="bkmk_setupdevenv"></a>
-<!-- the next line produces the "Set up the development environment" section as see at http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ -->
+<!-- 次の行は、http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ に見られる「開発環境を設定する」セクションを生成します。 -->
 [AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
-
-<h2><a name="bkmk_setupwindowsazure"></a>Azure 環境を設定する</h2>
-
-次のステップでは、Azure の Web サイトと SQL データベースを作成することで Azure 環境をセットアップします。
-
-### Azure で Web サイトと SQL データベースを作成する
-
-次のステップでは、アプリケーションで使用する Azure の Web サイトと SQL データベースを作成します。
-
-Azure の Web サイトは、共有ホスティング環境で実行されます。つまり、他の Azure クライアントと共有する仮想マシン (VM) 上で実行されます。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。
-
-SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
-
-1. [Azure の管理ポータル](https://manage.windowsazure.com) で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
-
-2. **[カスタム作成]** をクリックします。
-
-	![管理ポータルの [データベースとともに作成] リンク](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr6.PNG)
-
-	**新しい Web サイト - カスタム作成** ウィザードが開きます。 
-
-3. ウィザードの **[新しい Web サイト]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。URL 全体は、ここで入力した内容に、テキスト ボックスの下に表示されるサフィックスを追加して構成されます。図には "contactmgr11" と表示されていますが、その URL は既に取得されている可能性が高いため、別の URL の選択が必要になります。
-
-1. **[リージョン]** ボックスの一覧で、現在の所在地に最も近いリージョンを選択します。
-
-1. **[データベース]** ボックスの一覧で、**[無料の 20 MB SQL データベースの作成]** を選択します。
-
-	![新しい Web サイトのステップの作成 -  [データベースとともに作成] ウィザード] (./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrCWS.png)
-
-6. ボックスの下部にある右矢印をクリックします。
-
-	ウィザードの **[データベースの設定]** 手順に進みます。
-
-7. **[名前]** ボックスに「 *ContactDB*」と入力します。
-
-8. **[サーバー]** ボックスで、**[新しい SQL データベース サーバー]** を選択します。または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
-
-9. ボックスの下部にある右矢印をクリックします。
-
-10. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[詳細設定]** チェック ボックスをオンにしません。**詳細設定**では、DB サイズ (既定値は 1 GB ですが 150 GB まで拡張可能) と照合順序を指定できます。
-
-11. 終了したら、ダイアログ ボックスの下部にあるチェック マークをクリックします。
-
-	![新しい Web サイトのデータベース設定ステップ - [データベースとともに作成] ウィザード][setup007]
-
-	 次の画像では、既存の SQL Server を選択した場合のログインを示しています。
-	
-	![新しい Web サイトのデータベース設定ステップ - [データベースによる作成] ウィザード][rxPrevDB]
-
-	管理ポータルが [Web サイト] ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web サイト]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
-
-<!-- [Websites page of Management Portal, website created][setup009] -->
-
-<h2><a name="bkmk_createmvc4app"></a>ASP.NET MVC 5 アプリケーションを作成する</h2>
-
-Azure の Web サイトを作成しましたが、まだその中にコンテンツがありません。次の手順では、Azure に発行する Visual Studio Web アプリケーション プロジェクトを作成します。
 
 ### プロジェクトを作成する
 
 1. Visual Studio 2013 を起動します。
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET MVC 5 Web アプリケーション]** を選択します。既定の **[.NET Framework 4.5]** をそのまま使用します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
-	![[新しいプロジェクト] ダイアログ ボックス]　(./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)]
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択し、**[Web API]** チェック ボックスをオンにして、**[認証の変更]** をクリックします。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]** 、**[ASP.NET MVC 5 Web アプリケーション]** の順に選択します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
-	![[新しい ASP.NET プロジェクト] ダイアログ ボックス] (./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
+	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)]
+
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択し、**[Web API]** チェックボックスをオンにして、**[認証の変更]** をクリックします。
+
+	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
 
 1. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-	![認証なし] (./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
+	![No Authentication](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
 
-	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある [次のステップ] (#nextsteps) セクションをご覧ください。 
+	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps) 」セクションを参照してください。 
 
 1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
 
-	![[新しい ASP.NET プロジェクト] ダイアログ ボックス] (./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
+	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
+
+Azure にまだサインしていない場合は、サインインするように求められます。
+
+1. 構成ウィザードでは  *ContactManager* に基づいて一意の名前が提示されます (次の図を参照してください)。お近くのリージョンを選択します。[azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") を使用すると、最も待機時間が短いデータ センターを検索することができます。 
+2. データベース サーバーをまだ作成していない場合は、**[新しいサーバーの作成]** を選択して、データベース ユーザー名とパスワードを入力します。
+
+	![Configure Azure Website](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/configAz.PNG)
+
+データベース サーバーがある場合は、そのサーバーを使用して新しいデータベースを作成します。データベース サーバーは貴重なリソースであり、通常、データベースごとにデータベース サーバーを作成するのではなく、テスト用および開発用の同じサーバー上に複数のデータベースを作成します。Web サイトとデータベースが同じリージョンにあることを確認してください。
+
+![Configure Azure Website](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/configWithDB.PNG)
 
 ### ページのヘッダーとフッターを設定する
 
 
-1. **[ソリューション エクスプローラー]** で、 *Views\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
+1. **ソリューション エクスプローラー**で、 *Views\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
 
-	![ソリューション エクスプローラーの _Layout.cshtml][newapp004]
+	![_Layout.cshtml in Solution Explorer][newapp004]
 
-1. *_Layout.cshtml* ファイルの内容を次のコードに置き換えます。
+1.  *Views\Shared_Layout.cshtml* ファイルの内容を次のコードに置き換えます。
 
 
 		<!DOCTYPE html>
@@ -180,57 +124,25 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 ### ローカルでアプリケーションを実行する
 
-1. Ctrl キーを押しながら F5 キーを押して、アプリケーションを実行します。
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 アプリケーションのホーム ページが既定のブラウザーに表示されます。
-	![To Do List のホーム ページ] (./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
+	![To Do List home page](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
 
-これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
+これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
 <h2><a name="bkmk_deploytowindowsazure1"></a>Azure にアプリケーションをデプロイする</h2>
 
-1. Visual Studio の **[ソリューションエクスプローラー]** で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![プロジェクトのコンテキスト メニューの [発行]][PublishVSSolution]
+	![Publish in project context menu][PublishVSSolution]
 
-	**[Web の発行]** ウィザードが開きます。
-
-2. **[Web の発行]** ウィザードの **[プロファイル]** タブで、**[インポート]** をクリックします。
-
-	![Import publish settings][ImportPublishSettings]
-
-	**[発行プロファイルのインポート]** ダイアログ ボックスが表示されます。
-
- 3.	Azure の Web サイトで [インポート] を選択します。まだサインインしていない場合は、まずサインインする必要があります。**[サインイン]** をクリックします。サブスクリプションに関連付けられているユーザーを入力し、サインインの手順に従います。
-
-	![sign in](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr7.png)
-
-	ドロップダウン リストから Web サイトを選択し、 **[OK]** をクリックします。
-
-	![Import Publish Profile](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr8.png)
-
-8. **[接続]** タブで、**[接続の検証]** をクリックし、設定が正しいことを確認します。
-
-	![Validate connection][ValidateConnection]
-
-9. 接続が検証されると、**[接続の検証]** ボタンの横に緑色のチェック マークが表示されます。
-
-	![connection successful icon and Next button in Connection tab][firsdeploy007]
-
-1. **[次へ]** をクリックします。
-
-	![Settings tab](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
-
-	このタブでは、既定の設定をそのまま使用できます。リリース ビルド構成を展開しているため、展開先サーバーでファイルを削除したり、アプリケーションをプリコンパイルしたり、App_Data フォルダーでファイルを除外したりする必要はありません。Azure のライブ サイトでデバッグする場合は、デバッグ構成をリリースではなく展開する必要があります。[次のステップ] (#nextsteps) セクションをご覧ください。
-
-12. **[プレビュー]** タブで、**[プレビューの開始]** をクリックします。
-
-	このタブに、サーバーにコピーされるファイルの一覧が表示されます。プレビューの表示は、アプリケーションの発行に必要ではありませんが、知っておくと便利な機能です。この場合、表示されるファイルの一覧で操作を行う必要はありません。次に発行するときは、変更されたファイルだけがプレビュー一覧に示されます。
-
-	![StartPreview button in the Preview tab][firsdeploy009]
+	**Web の発行**ウィザードが開きます。
 
 12. **[発行]** をクリックします。
 
-	Azure サーバーにファイルをコピーする処理が開始されます。**[出力]** ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
+![Settings tab](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/pw.png)
+
+Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行された展開操作が表示され、展開が問題なく完了したことが報告されます。
 
 14. 自動的に既定のブラウザーが開き、デプロイ先のサイトの URL にアクセスします。
 
@@ -246,11 +158,11 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 まず、コードで単純なデータ モデルを作成します。
 
-1. **[ソリューション エクスプローラー]** で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
+1. **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
 	![Add Class in Models folder context menu][adddb001]
 
-2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに 「 *Contact.cs*」という名前を付け、**[追加]** をクリックします。
+2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「 *Contact.cs*」という名前を付け、**[追加]** をクリックします。
 
 	![Add New Item dialog box][adddb002]
 
@@ -278,7 +190,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
     		}
 		}
 
-**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある [次のステップ] (#nextsteps) セクションをご覧ください。
+**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps) 」セクションを参照してください。
 
 ### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
@@ -286,11 +198,11 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 <h2><a name="bkmk_addcontroller"></a>データのコントローラーとビューを追加する</h2>
 
-1. **[ソリューション エクスプローラー]** で、 Controllers フォルダーを展開します。
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを展開します。
 
-3. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。) 
+3. プロジェクトをビルドします **(Ctrl + Shift + B)**.(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。) 
 
-4. Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
+4. Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]**の順にクリックします。
 
 	![Add Controller in Controllers folder context menu][addcode001]
 
@@ -324,9 +236,9 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 		add-migration Initial
 
-	**add-migration Initial** コマンドによって、 **&lt;date_stamp&gt;Initial** という名前のクラスが生成されて、データベースの作成に使用されます。最初のパラメーター  ( *Initial*) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
+	**add-migration Initial** コマンドによって、**&lt;date_stamp&gt;Initial** という名前のクラスが生成されて、データベースの作成に使用されます。最初のパラメーター ( *Initial* ) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
 
-	**Initial** クラスでは、 **Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
+	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
 3.  *Migrations\Configuration.cs* ファイルを開きます。 
 
@@ -392,7 +304,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
                 );
         }
 
-	このコードでは、連絡先情報を使用してデータベースを初期化します。Seed メソッドによるデータベースへのデータの登録の詳細については、「[Debugging Entity Framework (EF) DBs (Entity Framework (EF) DB のデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」をご覧ください。
+	このコードでは、連絡先情報を使用してデータベースを初期化します。Seed メソッドによるデータベースへのデータの登録の詳細については、「[Debugging Entity Framework (EF) DBs (Entity Framework (EF) DB のデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
 
 
 1. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
@@ -401,9 +313,9 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	![Package Manager Console commands][addcode009]
 
-	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます。
+	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
-1. Ctrl キーを押しながら F5 キーを押して、アプリケーションを実行します。 
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。 
 
 アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。
 
@@ -411,7 +323,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 <h2><a name="bkmk_addview"></a>ビューの編集</h2>
 
-1.  *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある [次のステップ] (#nextsteps) セクションをご覧ください。 
+1.  *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある[次のステップ](#nextsteps) 」セクションを参照してください。 
 
 
 2. このファイルの内容を次のコードに置き換えます。
@@ -504,7 +416,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 		    </fieldset>
 		</form>
 
-3. Content フォルダーを右クリックし、**[追加]** をクリックして、**[新しい項目...]** をクリックします。
+3. Content フォルダーを右クリックし、**[追加]** をクリックして、**[新しい項目]** をクリックします。
 
 	![Add style sheet in Content folder context menu][addcode005]
 
@@ -578,7 +490,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 		            "~/Scripts/knockout-{version}.js"));
 	このサンプルでは Knockout を使用して、画面テンプレートを処理する動的な JavaScript コードを簡略化します。
 
-8. contents/css エントリを変更して  *contacts.css* スタイルシートを登録します。次の行を変更します。
+8. contents/css エントリを変更して  *contacts.css* スタイル シートを登録します。次の行を変更します。
 
                  bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
@@ -596,9 +508,9 @@ To:
 
 <h2><a name="bkmk_addwebapi"></a>Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する</h2>
 
-1. **[ソリューションエクスプローラー]** で、Controllers フォルダーを右クリックし、 **[追加]**、**[コントローラー....]** の順にクリックします。 
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。 
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、読み取り/書き込み操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
+1. **[スキャフォールディングの追加]**ダイアログ ボックスで、「**Entity Framework を使用した、読み取り/書き込み操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
 	![Add API controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
 
@@ -608,11 +520,11 @@ To:
 
 ### ローカルでアプリケーションを実行する
 
-1. Ctrl キーを押しながら F5 キーを押して、アプリケーションを実行します。
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
 	![Index page][intro001]
 
-2. 連絡先を入力し、**[追加]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
+2. 連絡先を入力し、**[Add]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
 
 	![Index page with to-do list items][addwebapi004]
 
@@ -634,7 +546,7 @@ To:
 
 	![Web API save dialog][addwebapi007]
 
-	**セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、[Preventing Cross-Site Request Forgery (CSRF) Attacks (クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止)][prevent-csrf-attacks] をご覧ください。
+	**セキュリティ警告**:この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、「[Preventing Cross-Site Request Forgery (CSRF) Attacks (クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止)][prevent-csrf-attacks]」を参照してください。
 
 <h2><a name="xsrf"></a>XSRF 保護を追加する</h2>
 
@@ -642,9 +554,9 @@ To:
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP)」および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))」をご覧ください。
+詳細については、「[Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP)」 および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)」を参照してください。
 
-1. **[ソリューションエクスプローラー]** で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
+1. **ソリューション エクスプローラー** で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
 2. ファイルに「 *ValidateHttpAntiForgeryTokenAttribute.cs*」という名前を付け、次のコードを追加します。
 
@@ -716,17 +628,17 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
             }
         }
 
-1. 次の  *using* ステートメントを contracts コントローラーに追加します。これにより **[ValidateHttpAntiForgeryToken]** 属性にアクセスできるようになります。
+1. 次の  *using* ステートメントを contracts コントローラーに追加します。これにより **[[ValidateHttpAntiForgeryToken]]** 属性にアクセスできるようになります。
 
 	using ContactManager.Filters;
 
-1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
+1. **[[ValidateHttpAntiForgeryToken]]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
 
 	[ValidateHttpAntiForgeryToken]
         public IHttpActionResult PutContact(int id, Contact contact)
         {
 
-1.  *Views\Home\Index.cshtml* ファイルの  *Scripts* セクションを更新して、XSRF トークンを取得するコードを含めます。
+1.  *Views\Home\Index.cshtml* ファイルの [ *Scripts*] セクションを更新して、XSRF トークンを取得するコードを含めます。
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -785,14 +697,14 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 アプリケーションを発行するには、前に説明した手順を繰り返します。
 
-1. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[発行]** をクリックします。
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。
 
 	![Publish][rxP]
 
 5. **[設定]** タブをクリックします。
 	
 
-1. **ContactsManagerContext(ContactsManagerContext)** の下で、**v** アイコンをクリックして、 *Remote connection string* を連絡先データベースの接続文字列に変更します。**[ContactDB]** をクリックします。
+1. **[ContactsManagerContext(ContactsManagerContext)]** の下で、**v** アイコンをクリックして、 *Remote connection string* を連絡先データベースの接続文字列に変更します。**[ContactDB]** をクリックします。
 
 	![Settings](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
 
@@ -805,33 +717,39 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 	![Index page with no contacts][intro001]
 
-	Visual Studio の発行プロセスにより、展開された *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、展開後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
+	Visual Studio の発行プロセスにより、展開された  *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、展開後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
 
-	この構成の結果、前の手順で作成した**Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、展開後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
+	この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、展開後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
 
 9. アプリケーションをローカルで実行したときと同様に連絡先を入力して、データベースの展開が成功したことを確認します。
 
 入力した項目が保存され、Contact Manager のページに表示されることを確認すると、その項目がデータベースに保存されたことがわかります。
 
-![連絡先のインデックス ページ][addwebapi004]
+![Index page with contacts][addwebapi004]
 
 これで、データの保存先に SQL データベースを使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service に有効期限付きのスターター Web アプリケーションを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 <h2><a name="nextsteps"></a>次のステップ</h2>
 
-実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションの展開)](http://azure.microsoft.com/develop/net/tutorials/web-site-with-sql-database/)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションを展開する方法について説明しています。
+実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションの展開)]」(web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションを展開する方法について説明しています。
 
-Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページをご覧ください。
+Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
  
 
 * [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
 * [ASP.NET MVC 5 の入門ページ](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [ASP.NET Web API の入門ページ](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
-* [WAWS のデバッグ](http://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
+* [WAWS のデバッグ](web-sites-dotnet-troubleshoot-visual-studio.md)
 
-このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力の下、[Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が執筆しました。 
+このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorransy (Twitter [@blowdart](https://twitter.com/blowdart)) の協力の下、[Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が執筆しました。 
 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成と展開の自動化に関するご意見をお待ちしております。 
+
+## 変更点
+* Web サイトから App Service への変更に関するガイド:[Azure App Service と既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 以前のポータルから新しいポータルへの変更に関するガイド:[プレビュー ポータルのナビゲートに関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 <!-- bookmarks -->
 [OAuth プロバイダーを追加する]: #addOauth
@@ -891,7 +809,7 @@ Azure アプリケーションにデータを保存するには、Azure スト�
 [addwebapi004]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-added-contact.png
 [addwebapi006]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-save-returned-contacts.png
 [addwebapi007]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-contacts-in-notepad.png
-[XSRF 保護を追加する]: #xsrf
+[Add XSRF Protection]: #xsrf
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
 [Add XSRF Protection]: #xsrf
 [ImportPublishSettings]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishSettings.png
@@ -901,5 +819,4 @@ Azure アプリケーションにデータを保存するには、Azure スト�
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

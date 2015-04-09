@@ -1,31 +1,31 @@
 ﻿<properties 
-	pageTitle="Azure Web サイトの GoDaddy ドメイン名の構成" 
-	description="Azure の Web サイトで GoDaddy のドメイン名を使用する方法について説明します。" 
-	services="web-sites" 
+	pageTitle="Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)" 
+	description="GoDaddy から購入したカスタム ドメイン名を Azure Web アプリケーションで使用する方法" 
+	services="app-service\web" 
 	documentationCenter="" 
-	authors="blackmist" 
+	authors="wpickett" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-services-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/17/2014" 
-	ms.author="larryfr, jroth"/>
+	ms.date="03/24/2015" 
+	ms.author="wpickett"/>
 
-#Azure Website のカスタム ドメイン名の構成 (GoDaddy)
+#Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy" class="current">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name/" title="Websites" class="current">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-godaddy-traffic-manager-custom-domain-name/" title="Website using Traffic Manager">Traffic Manager を使用する Web サイト</a></div>
+[AZURE.INCLUDE [web-selector](../includes/websites-custom-domain-selector.md)]
+
 
 [AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 [AZURE.INCLUDE [intro](../includes/custom-dns-web-site-intro.md)]
 
-この記事では、[Go Daddy](https://godaddy.com) から購入したカスタム ドメイン名を Azure Web サイトで使用する手順を示します。
+この記事では、[Go Daddy](https://godaddy.com) から購入したカスタム ドメイン名を [App Service の Web アプリケーション](http://go.microsoft.com/fwlink/?LinkId=529714)で使用する手順を示します。
 
 [AZURE.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
@@ -33,7 +33,7 @@
 
 -   [DNS レコードについて](#understanding-records)
 -   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
--   [Web サイトでのドメインの有効化](#enabledomain)
+-   [Web でのドメインの有効化](#enabledomain)
 
 <h2><a name="understanding-records"></a>DNS レコードについて</h2>
 
@@ -42,9 +42,9 @@
 
 <h2><a name="bkmk_configurecname"></a>カスタム ドメインの DNS レコードの追加</h2>
 
-カスタム ドメインを Azure Websites に関連付けるには、GoDaddy のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して GoDaddy.com の DNS ツールを見つけます。
+カスタム ドメインを App Service の Web アプリケーションに関連付けるには、GoDaddy のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して GoDaddy.com の DNS ツールを見つけます。
 
-1. GoDaddy.com のアカウントにログオンし、**[My Account]**、**[Manage my domains]** の順に選択します。最後に、Azure Web サイトで使用するドメイン名をドロップ ダウン メニューで選択し、**[Manage DNS]** を選択します。
+1. GoDaddy.com のアカウントにログオンし、**[My Account]**、**[Manage my domains]** の順に選択します。最後に、Azure Web アプリケーションで使用するドメイン名をドロップ ダウン メニューで選択し、**[Manage DNS]** を選択します。
 
 	![custom domain page for GoDaddy](./media/web-sites-custom-domain-name/godaddy-customdomain.png)
 
@@ -56,7 +56,7 @@
 
 	既存のレコードを**編集**するには、レコードの横にあるペンと紙のアイコンを選択します。
 
-	> [AZURE.NOTE] 新しいレコードを追加する前に、GoDaddy では、**電子メール**、**ファイル**、**メール**などの一般的なサブドメイン (Editor では **[Host]** と呼ばれる) の DNS レコードを既に作成していることにご注意ください。使用する名前が既に存在する場合は、新しいレコードを作成せずに既存のレコードを変更してください。
+	> [AZURE.NOTE] 新しいレコードを追加する前に、GoDaddy では一般的なサブドメイン (Editor では **[Host]**) の DNS レコード (**[email]**、**[files]**、**[mail]** など) が既に作成されていることに注意してください。使用する名前が既に存在する場合は、新しいレコードを作成せずに既存のレコードを変更してください。
 
 4. レコードを追加する場合は、まずレコードの種類を選択する必要があります。
 
@@ -66,23 +66,27 @@
 
 	![add zone record](./media/web-sites-custom-domain-name/godaddy-addzonerecord.png)
 
-	* **A (ホスト) レコード**を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名) か、* (複数のサブドメインに一致するワイルドカード) か、使用するサブドメイン (**www** など) のいずれかに設定する必要があります。 **[Points to]** フィールドを、Azure の Web サイトの IP アドレスに設定する必要があります。
+	* **A (ホスト) レコード** を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名)、* (複数のサブドメインに一致するワイルドカード)、または使用するサブドメイン (**www** など) のいずれかに設定する必要があります。**[Points to]** フィールドを、Azure の Web アプリケーションの IP アドレスに設定する必要があります。
 	
 		> [AZURE.NOTE] A (ホスト) レコードを使用する場合は、次の構成を持つ CNAME レコードも追加する必要があります。
 		> 
-		> * **[Host]** 値 **awverify**、**[Points to]** 値 **awverify.&lt;yourwebsitename&gt;.azurewebsites.net**。
+		> * **[Host]** 値 **awverify**、**[Points to]** 値 **awverify.&lt;yourwebappname&gt;.azurewebsites.net**。
 		> 
 		> この CNAME レコードは Azure で使用されて、A レコードで参照されるドメインの所有者が検証されます。
 
-	* **CNAME (エイリアス) レコード**を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure Web サイトの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
+	* **CNAME (エイリアス) レコード** を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure の Web アプリケーションの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
 
 
 5. レコードの追加または変更が完了したら、**[Finish]** をクリックして変更を保存します。
 
-<h2><a name="enabledomain"></a>Web サイトでのドメイン名の有効化</h2>
+<h2><a name="enabledomain"></a>Web アプリケーションでのドメイン名の有効化</h2>
 
 [AZURE.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-web-site.md)]
 
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service に有効期限付きのスターター Web  アプリケーションを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
+## 変更点
+* Web サイトから App Service への変更に関するガイド:[Azure App Service と既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 以前のポータルから新しいポータルへの変更に関するガイド:[プレビュー ポータルのナビゲートに関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
-<!--HONumber=42-->
+<!--HONumber=49-->

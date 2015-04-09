@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Queue サービスを使用する方法 (Node.js) - Microsoft Azure" 
+	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure" 
 	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。" 
 	services="storage" 
 	documentationCenter="nodejs" 
@@ -13,58 +13,38 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="09/17/2014" 
+	ms.date="03/11/2015" 
 	ms.author="mwasson"/>
 
 
+# Node.js から Queue ストレージを使用する方法
 
+[AZURE.INCLUDE [storage-selector-queue-include](../includes/storage-selector-queue-include.md)]
 
-
-# Node.js からキュー サービスを使用する方法
+## 概要
 
 このガイドでは、Windows Azure キュー サービスを使用して
-一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています
-。紹介するシナリオは、キュー メッセージの**挿入**、**ピーク**、
+一般的なシナリオを実行する方法について説明します。サンプルは Node.js 
+API を使用して記述されています。紹介するシナリオは、キュー メッセージの**挿入**、**ピーク**、
 **取得**、および**削除**と、**キューの作成および
-キューの削除**です。キューの詳細については、「[次のステップ][]」のセクションを参照してください。
+キューの削除**です。
 
-## 目次
-
-* [キュー サービスとは][]
-* [概念][]
-* [Azure ストレージ アカウントの作成][]
-* [Node.js アプリケーションの作成][]
-* [アプリケーションからストレージへのアクセスの構成][]
-* [Azure のストレージ接続文字列の設定][]
-* [方法:キューを作成する][]   
-* [方法:メッセージをキューに挿入する][]   
-* [方法:次のメッセージをピークする][]   
-* [方法:次のメッセージをデキューする][]   
-* [方法:キューに配置されたメッセージの内容を変更する][]   
-* [方法:メッセージのデキュー用の追加オプション][]   
-* [方法:キューの長さを取得する][]   
-* [方法:キューを削除する][]   
-* [方法:共有アクセス署名を操作する][]
-* [次のステップ][]
-
-[AZURE.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
-
-<h2><a name="create-account"></a>Azure ストレージ アカウントの作成</h2>
+[AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-## <a name="create-app"></a>Node.js アプリケーションの作成
+## Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service](Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページをご覧ください。
 
-## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
+## アプリケーションからストレージへのアクセスの構成
 
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための
 便利なライブラリのセットが含まれています。
 
 ### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  **PowerShell** (Windows)**、Terminal** (Mac)、または **Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
 2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると
     次のような出力が生成されます。
@@ -91,13 +71,13 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
     var azure = require('azure-storage');
 
-## <a name="setup-connection-string"></a>Azure のストレージ接続文字列の設定
+## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション]」をご覧ください。
 
-## <a name="create-queue"> </a>方法: キューを作成する
+## 方法:キューを作成する
 
 次のコードは、**QueueService** オブジェクトを作成し、
 これによってキューを操作できるようにします。
@@ -116,7 +96,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 キューが作成されると、 `result` は true になります。キューが存在する場合は、 `result` は false です。
 
-###フィルター
+### フィルター
 
 オプションのフィルター操作は、**QueueService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のようなシグネチャを実装するオブジェクトです。
 
@@ -133,7 +113,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	var retryOperations = new azure.ExponentialRetryPolicyFilter();
 	var queueSvc = azure.createQueueService().withFilter(retryOperations);
 
-## <a name="insert-message"> </a>方法: メッセージをキューに挿入する
+## 方法:メッセージをキューに挿入する
 
 キューにメッセージを挿入するには、**createMessage** メソッドを使用して
 新しいメッセージを作成し、キューに追加します。
@@ -144,7 +124,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-## <a name="peek-message"> </a>方法: 次のメッセージをピークする
+## 方法:次のメッセージをピークする
 
 キューの先頭にあるメッセージをキューから削除せずにピークするには、
 **peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。既定では、
@@ -160,7 +140,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 > [AZURE.NOTE] キューにメッセージがないときに **peekMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
 
-## <a name="get-message"> </a>方法: 次のメッセージをデキューする
+## 方法:次のメッセージをデキューする
 
 メッセージは、次の 2 段階のプロセスで処理されます。
 
@@ -182,12 +162,12 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-> [AZURE.NOTE] 既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。**getMessages** で  `options.visibilityTimeout` を使用すれば、別の値を指定できます。
+> [AZURE.NOTE] 既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。 `options.visibilityTimeout` を **getMessages** で使用すると、別の値を指定できます。
 
 > [AZURE.NOTE]
 > キューにメッセージがないときに <b>getMessages</b> を使用した場合、エラーは返されませんが、メッセージも返されません。
 
-## <a name="change-contents"> </a>方法: キューに配置されたメッセージの内容を変更する
+## 方法:キューに配置されたメッセージの内容を変更する
 
 **updateMessage** を使用すると、キュー内のメッセージの内容をインプレースで変更できます。次に、メッセージのテキストを更新する例を示します。
 
@@ -203,7 +183,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-## <a name="advanced-get"> </a>方法: メッセージをデキューするための追加オプション
+## 方法:メッセージをデキューするための追加オプション
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
@@ -228,7 +208,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-## <a name="get-queue-length"> </a>方法: キューの長さを取得する
+## 方法:キューの長さを取得する
 
 **getQueueMetadata** は、キューで待機中のおおよそのメッセージ数など、キューに関するメタデータを返します。
 
@@ -238,7 +218,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-## <a name="list-queue"> </a>方法: キューを一覧表示する
+## 方法:キューを一覧表示する
 
 キューの一覧表示を取得するには、**listQueuesSegmented** を使用します。特定のプレフィックスでフィルター処理した一覧を取得するには、**listQueuesSegmentedWithPrefix** を使用します。
 
@@ -248,12 +228,12 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-すべてのキューを返すことができない場合は、 `result.continuationToken` を **listQueuesSegmented** の最初のパラメーターとして使用するか、**listQueuesSegmentedWithPrefix** の 2 つ目のパラメーターとして使用すれば、さらに多くの結果を取得することができます。
+すべてのキューを返すことができない場合は、 `result.continuationToken` を **listQueuesSegmented** の最初のパラメーターとして使用するか、**listQueuesSegmentedWithPrefix** の 2 つ目のパラメーターとして使用すると、さらに多くの結果を取得することができます。
 
-## <a name="delete-queue"> </a>方法: キューを削除する
+## 方法:キューを削除する
 
 キューおよびキューに含まれているすべてのメッセージを削除するには、
-**deleteQueue** メソッドを呼び出します。
+キュー オブジェクトで **deleteQueue** メソッドを呼び出します。
 
     queueSvc.deleteQueue(queueName, function(error, response){
 		if(!error){
@@ -263,7 +243,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 すべてのメッセージを削除せずにキューからクリアするには、**clearMessages** を使用します。
 
-## <a name="sas"></a>方法:共有アクセス署名を操作する
+## 方法:共有アクセス署名を操作する
 
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにキューへの細密なアクセスを提供する安全な方法です。SAS は、モバイル アプリによるメッセージの送信を許可する場合など、キューへの制限されたアクセスを提供する場合によく使用されます。
 
@@ -300,7 +280,7 @@ SAS の保有者がキューにアクセスするときに必要なホスト情�
 
 生成された SAS が持つ権限は追加アクセスであるため、メッセージの読み取り、更新、または削除を試行した場合は、エラーが返されます。
 
-###アクセス制御リスト
+### アクセス制御リスト
 
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。複数のクライアントにキューへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
@@ -343,37 +323,21 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
 	queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
 
 これで、キュー ストレージの基本を学習できました。
-さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
+さらに複雑なストレージ タスクについて学習するには、次のリンク先を参照してください。
 
 -   MSDN リファレンス:[Azure のデータの格納とアクセス][]
 -   [Azure のストレージ チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-  [次のステップ]: #next-steps
-  [キュー サービスとは]: #what-is
-  [概念]: #concepts
-  [Azure ストレージ アカウントの作成]: #create-account
-  [Node.js アプリケーションの作成]: #create-app
-  [アプリケーションからストレージへのアクセスの構成]: #configure-access
-  [Azure のストレージ接続文字列の設定]: #setup-connection-string
-  [方法:キューを作成する]: #create-queue
-  [方法:メッセージをキューに挿入する]: #insert-message
-  [方法:次のメッセージをピークする]: #peek-message
-  [方法:次のメッセージをデキューする]: #get-message
-  [方法:キューに配置されたメッセージの内容を変更する]: #change-contents
-  [方法:メッセージのデキュー用の追加オプション]: #advanced-get
-  [方法:キューの長さを取得する]: #get-queue-length
-  [方法:キューを削除する]: #delete-queue
-  [方法:共有アクセス署名を操作する]: #sas
-  [using the REST API]: http://msdn.microsoft.com/library/windowsazure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [Node.js Cloud Service with Storage]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
-  [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [REST API の使用]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+  [Azure の管理ポータル]: http://manage.windowsazure.com
+  [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: web-sites-nodejs-develop-deploy-mac.md
+  [ストレージを使用する Node.js クラウド サービス]: storage-nodejs-use-table-storage-cloud-service-app.md
+  [ストレージを使用する Node.js Web アプリケーション]: storage-nodejs-use-table-storage-web-site.md
 
   
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
@@ -382,8 +346,9 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   
   
   
-  [Node.js Cloud Service]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/windowsazure/gg433040.aspx
+  [Node.js クラウド サービス]: cloud-services-nodejs-develop-deploy-app.md
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
- [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
-<!--HONumber=42-->
+ [WebMatrix を使用した Web サイト]: web-sites-nodejs-use-webmatrix.md
+
+<!--HONumber=49-->

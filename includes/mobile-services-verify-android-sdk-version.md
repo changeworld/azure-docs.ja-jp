@@ -11,7 +11,7 @@
 
 1. Android Studio で、**[ツール]** => **[Android]** => **[SDK Manager]** の順にクリックします。SDK プラットフォームの最新バージョンをまだインストールしていない場合は、これをクリックしてインストールします。バージョン番号をメモしておきます。
 
-2. [Project Explorer] タブの **Gradle スクリプト**で、**gradle.build (modeule: app)** ファイルを開きます。**compileSdkVersion** と **buildToolsVersion** が、インストールされた最新の SDK バージョンに設定されていることを確認します。タグは、次のようになります。
+2. [プロジェクト エクスプローラー] タブの **[Gradle スクリプト]** で、**build.gradle (modeule: app)** ファイルを開きます。**compileSdkVersion** と **buildToolsVersion** が、インストールされた最新の SDK バージョンに設定されていることを確認します。タグは、次のようになります。
  
 	 	    compileSdkVersion 'Google Inc.:Google APIs:21'
     		buildToolsVersion "21.1.2"
@@ -19,4 +19,5 @@
 3. Android Studio Project Explorer でプロジェクト ノードを右クリックし、**[Properties]** を右クリックして、左の列から **[Android]** を選択します。**[Project Build Target]** が、**[targetSdkVersion]** と同じ SDK バージョンに設定されていることを確認します。
 
 4. Android Studio では Eclipse と異なり、ターゲットの SDK バージョンと最小の SDK バージョンを指定するためにマニフェスト ファイルを使用しません。
-<!--HONumber=47-->
+
+<!--HONumber=49-->

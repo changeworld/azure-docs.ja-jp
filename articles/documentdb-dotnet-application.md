@@ -1,8 +1,8 @@
-﻿<properties 
+<properties 
 	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Azure" 
 	description="DocumentDB を .NET と共に使用して To Do リスト Web アプリケーションを作成する方法について説明します。データは Azure Websites にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。" 
 	services="documentdb" 
-	documentationCenter="" 
+	documentationCenter=".net" 
 	authors="ryancrawcour" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="02/26/2015" 
+	ms.date="03/23/2015" 
 	ms.author="ryancraw"/>
 
 #<a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築
@@ -25,21 +25,21 @@
 
 このチュートリアルでは、Azure で提供される DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。
 
-> [AZURE.TIP] このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET または[前提条件となるツール]の使用経験がない場合は、(#_Toc395637760)[GitHub](https://github.com/Azure/azure-documentdb-net) から完全な [todo](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/todo) チュートリアルをダウンロードし、[この記事の末尾の手順]に従ってプロジェクトをビルドすることをお勧めします(#GetProject)。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> [AZURE.TIP] このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全な [todo](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/todo) チュートリアルを [GitHub](https://github.com/Azure/azure-documentdb-net) からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
 ## <a name="_Toc395637760"></a>前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)をご覧ください。
 - [Visual Studio 2013](http://www.visualstudio.com/) 以降、またはその無償版の [Visual Studio Express]。
-- Azure SDK for .NET Version 2.3 以降 ([Microsoft Web Platform Installer][] にて提供)。
+- Azure SDK for .NET Version 2.3 以降 ([Microsoft Web プラットフォーム インストーラー][] にて提供)。
 
 この記事に掲載されているすべてのスクリーン ショットは、Visual Studio 2013 Update 3 および Azure SDK for .NET Version 2.4 で撮影しました。ご利用のシステムにインストールされているバージョンと異なる場合、画面やオプション設定が一部異なる可能性もありますが、上記の前提条件を満たしていれば、アプリケーションの動作に支障はありません。
 
-## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントの作成
+## <a name="_Toc395637761"></a>手順 1:DocumentDB データベース アカウントの作成
 
-最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[新しい ASP.NET MVC アプリケーションの作成]」に進んでください(#_Toc395637762)。
+最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[新しい ASP.NET MVC アプリケーションの作成](#_Toc395637762)」に進んでください
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../includes/documentdb-create-dbaccount.md)]
 
@@ -48,7 +48,7 @@
 <br/>
 次のセクションで、新しい ASP.NET MVC アプリケーションをゼロから作成する方法について説明します。 
 
-## <a name="_Toc395637762"></a>手順 2: 新しい ASP.NET MVC アプリケーションの作成
+## <a name="_Toc395637762"></a>手順 2:新しい ASP.NET MVC アプリケーションの作成
 
 新しい ASP.NET プロジェクトを作成します。
 
@@ -79,7 +79,7 @@
 
 読者の皆さんは、ASP.NET の "Hello World" アプリケーションで体験済みだと思いますので、プロジェクトをローカルに実行する手順は省略します。早速このプロジェクトに DocumentDB を追加して、アプリケーションを構築しましょう。
 
-## <a name="_Toc395637767"></a>手順 3: プロジェクトへの DocumentDB の追加
+## <a name="_Toc395637767"></a>手順 3:プロジェクトへの DocumentDB の追加
 
 以上で、このソリューションに必要な ASP.NET MVC の構成要素が
 完成しました。いよいよチュートリアルの本題に入ります。作成した Web アプリケーションに Azure DocumentDB を追加しましょう。
@@ -103,7 +103,7 @@
   	![Sreen shot of the two references added to the project in Solution Explorer.](./media/documentdb-dotnet-application/image22.png)
 
 
-##<a name="_Toc395637763"></a>手順 4: ASP.NET MVC アプリケーションのセットアップ
+##<a name="_Toc395637763"></a>手順 4:ASP.NET MVC アプリケーションのセットアップ
  
 次に、モデル、ビュー、およびコントローラーをこの MVC アプリケーションに追加します。
 
@@ -184,7 +184,7 @@
 
 2. **[ビューの追加]** ダイアログ ボックスで、次の操作を行います。
 	- **[ビュー名]** ボックスに、「***Index***」と入力します。
-	- **[テンプレート]** ボックスで、**[*一覧*]** を選択します。
+	- **[テンプレート]** ボックスで、***[一覧]*** を選択します。
 	- **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
 	- レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
 	- **[追加]** をクリックします。
@@ -200,7 +200,7 @@
 **[ビューの追加]** ダイアログ ボックスで、次の操作を行います。
 
 - **[ビュー名]** ボックスに、「***Create***」と入力します。
-- **[テンプレート]** ボックスで、**[*作成*]** を選択します。
+- **[テンプレート]** ボックスで、***[作成]*** を選択します。
 - **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
 - レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
 - **[追加]** をクリックします。
@@ -224,7 +224,7 @@
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントは閉じてください。これらのビューは後で使用します。
 
-## <a name="_Toc395637769"></a>手順 5: DocumentDB の接続
+## <a name="_Toc395637769"></a>手順 5:DocumentDB の接続
 
 このセクションでは、次の処理を行うコードを追加します。
 
@@ -371,7 +371,7 @@
         	return db;
     	}
 
-	このコードにより、データベース ([**DocumentCollection**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.documentcollection.aspx)) のセットアップと、[**DocumentClient**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) を通じて DocumentDB に接続するいくつかのコードの作成が処理されます。 
+	このコードにより、データベース ([**DocumentCollection**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.documentcollection.aspx)) のセットアップと、[**DocumentClient**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) を通じて DocumentDB に接続するためのいくつかのコードの作成が処理されます。 
 
 7. 構成からいくつかの値を読み取るので、**Web.config** ファイルを開いて、以下の行を `<AppSettings>` セクションの下に追加します。
 	
@@ -397,7 +397,7 @@
 
 	ここで仮にアプリケーションを実行した場合は、**HomeController** とそのコントローラーの **Index** ビューが表示されます。これは、作業の開始時に選択した MVC テンプレート プロジェクトの既定の動作であって、期待していた動作ではありません。この MVC アプリケーションのルーティングに手を加えて、この動作を変更しましょう。
 
-11. ***App\_Start\RouteConfig.cs*** を開きます。"defaults:" で始まる行を見つけ、以下のように変更を加えます。
+11. ***App\_Start\RouteConfig.cs*** を開いて、"defaults:" で始まる行を見つけ、以下と同様にその行を変更します。
 
     	defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 
@@ -437,7 +437,7 @@
 			return View(item);   
 		}
 
-	**セキュリティ上の注意**:**ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止に関するページ][]を参照してください。[Github][] で提供されるソース コードには、完全な実装が組み込まれています。
+	**セキュリティ上の注意**:**ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止に関するページ][]を参照してください。[GitHub][] で提供されるソース コードには、完全な実装が組み込まれています。
 
 	**セキュリティ上の注意**:メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。詳細については、[ASP.NET MVC での基本的な CRUD 操作に関するページ][]を参照してください。
 
@@ -536,7 +536,7 @@
 
 	以上で、アプリケーションを実行するために必要な要素はすべて整いました。未完了 **Item** をリストしたり、新しい **Item** を追加したり、**Item** を編集したりすることができます。
 
-## <a name="_Toc395637773"></a>手順 6: ローカルでアプリケーションを実行する
+## <a name="_Toc395637773"></a>手順 6:ローカルでアプリケーションを実行する
 
 ローカル コンピューターでアプリケーションをテストするには、次の操作を行います。
 
@@ -562,7 +562,7 @@
 
 4. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。これで、アプリケーションをデプロイする準備が整いました。
 
-##<a name="_Toc395637774"></a>手順 7: Azure Websites へのアプリケーションのデプロイ
+##<a name="_Toc395637774"></a>手順 7:Azure Websites へのアプリケーションのデプロイ
 
 以上で、DocumentDB と連携するアプリケーションが完成しました。今度は、この Web アプリケーションを Azure Websites にデプロイします。空の ASP.NET MVC プロジェクトを作成するときに **[クラウドでホストする]** を選択した場合、デプロイはごく簡単です。必要な作業の大半は自動的に行われます。 
 
@@ -578,7 +578,7 @@
 
 ##<a name="_Toc395637775"></a>次のステップ
 
-ご利用ありがとうございます。ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC アプリケーションを作成し、Azure Websites に発行する方法を説明しました。このチュートリアルに含まれていない詳細や削除の機能など、完全なアプリケーションのソース コードは、[Github][] からダウンロードまたは複製できます。これらの機能を自分のアプリケーションに追加する場合は、該当するコードを入手してアプリケーションに追加してください。
+ご利用ありがとうございます。ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC アプリケーションを作成し、Azure Websites に発行する方法を説明しました。このチュートリアルに含まれていない詳細や削除の機能など、完全なアプリケーションのソース コードは、[GitHub][] からダウンロードまたは複製できます。これらの機能を自分のアプリケーションに追加する場合は、該当するコードを入手してアプリケーションに追加してください。
 
 アプリケーションに機能を追加する場合は、[DocumentDB .NET ライブラリ](http://msdn.microsoft.com/library/azure/dn783362.aspx)から入手できる API を参考にしてください。[GitHub][] の DocumentDB .NET ライブラリにも気軽に投稿してください。 
 
@@ -586,7 +586,7 @@
 
 時間を節約するために、コードを自分で追加することなく完全な todo ソリューションをビルドすることもできます。GitHub から完全なソリューションを入手して、次の手順に従うと、ソリューションを数分でビルドしてデプロイできます。
 
-1. [前提条件のソフトウェア] (#_Toc395637760) (Visual Studio、Azure SDK for .NET Version 2.3 以降など) がインストールされていることを確認します。
+1. [前提条件のソフトウェア](#_Toc395637760) (Visual Studio、Azure SDK for .NET Version 2.3 以降など) がインストールされていることを確認します。
 
 2. Git for Windows ([http://www.git-scm.com/](http://www.git-scm.com/)) を使用して azure-documentdb-net リポジトリを複製するか、[GitHub](https://github.com/Azure/azure-documentdb-net/) から zip ファイルをダウンロードします。
 
@@ -597,9 +597,9 @@
 4. [Azure プレビュー ポータル](https://portal.azure.com/)の DocumentDB アカウントの **[キー]** ブレードから、**[URI]** 値と **[プライマリ キー]** または **[セカンダリ キー]** 値を入手します。 
 
 	
-	アカウントを持っていない場合は、「[データベース アカウントの作成]」(/documentation/articles/documentdb-create-account/) の説明に従ってアカウントを設定します。
+	アカウントを持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってアカウントを設定します。
 
-	![Screen shot of the Azure Preview portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS tile highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade](./media/documentdb-dotnet-application/keys.png)
+	![Screen shot of the Azure Preview portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade](../includes/media/documentdb-keys/keys.png)
 
 5. Web.config ファイルの **endpoint** キーと **authKey** キーの既定値を更新します。
 
@@ -611,14 +611,14 @@
 	
 
 
-7. これで、[アプリケーションをローカルに実行]し、(#_Toc395637773) [Azure Websites にデプロイ]できるようになりました(#_Toc395637774)。
+7. これで、[アプリケーションをローカルで実行](#_Toc395637773)し、[Azure Websites にデプロイ](#_Toc395637774)できます。
 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web プラットフォーム インストーラー]: http://www.microsoft.com/web/downloads/platform.aspx
-[Github]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
+[GitHub]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
 [クロスサイト リクエスト フォージェリの防止]: http://go.microsoft.com/fwlink/?LinkID=517254
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 
-<!--HONumber=47-->
+<!--HONumber=49-->

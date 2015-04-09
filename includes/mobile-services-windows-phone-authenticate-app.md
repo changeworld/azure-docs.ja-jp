@@ -1,4 +1,4 @@
-1. mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
+﻿1. mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
 	
         private MobileServiceUser user;
         private async System.Threading.Tasks.Task Authenticate()
@@ -50,5 +50,6 @@
 		
 4. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。 
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
-<!--HONumber=42-->
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+
+<!--HONumber=49-->

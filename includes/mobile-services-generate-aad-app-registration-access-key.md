@@ -1,5 +1,5 @@
 ﻿1. [Azure の管理ポータル](https://manage.windowsazure.com/)でディレクトリ ページの **[アプリケーション]** タブをクリックします。
-  
+
 2. 統合アプリケーションの登録をクリックします。
 
 3. アプリケーション ページで **[構成]** をクリックし、ページの **[キー]** セクションまで下にスクロールします。 
@@ -30,6 +30,8 @@
     </tr>
     </table><br/>
 
- 
+
     ![](./media/mobile-services-generate-aad-app-registration-access-key/aad-app-settings.png)
-  <!--HONumber=42-->
+
+
+<!--HONumber=49-->

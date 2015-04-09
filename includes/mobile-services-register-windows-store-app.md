@@ -1,5 +1,4 @@
-
-1. アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリの提出のページ]に移動し、Microsoft アカウントでログインして、**[アプリの名前]** をクリックします。
+﻿1. アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリの提出のページ]に移動し、Microsoft アカウントでログインして、**[アプリの名前]** をクリックします。
 
    	![](./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png)
 
@@ -39,7 +38,7 @@
 
     >[AZURE.NOTE]クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの秘密情報は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
-10. (省略可能) **[API 設定]** をクリックし、**[高度なリダイレクト セキュリティ]** をオンにして、**[リダイレクト URL]** で  `https://<mobile_service>.azure-mobile.net/login/microsoftaccount` の値を設定し、**[保存]** をクリックします。
+10. (省略可能) **[API 設定]** をクリックし、**[高度なリダイレクト セキュリティ]** をオンにし、**[リダイレクト URL]** に  `https://<mobile_service>.azure-mobile.net/login/microsoftaccount` の値を設定し、**[保存]** をクリックします。
 
 	![](./media/mobile-services-register-windows-store-app/mobile-services-win8-app-push-auth-2.png)
 
@@ -65,8 +64,8 @@
  
 
 <!-- URLs. -->
-[Mobile Services の使用]:/develop/mobile/tutorials/get-started/#create-new-service
-[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
-<!--HONumber=47-->
+<!--HONumber=49-->

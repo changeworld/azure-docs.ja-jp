@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/09/2015" 
+	ms.date="03/23/2015" 
 	ms.author="stbaro"/>
 
 # Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure の Web サイトのデプロイ #
@@ -26,22 +26,22 @@
 -	Azure リソース マネージャーのテンプレートを使用して、DocumentDB アカウント、Azure の Web サイト、Web デプロイ アプリケーションをデプロイおよび統合する方法
 
 ##<a id="Prerequisites"></a>前提条件 ##
-> [AZURE.TIP] このチュートリアルは、Azure リソース マネージャーのテンプレート、JSON、または Azure PowerShell を使用した経験があるユーザーを特に対象にしているわけではありませんが、参照するテンプレートやデプロイメント オプションに変更を加える場合は、それらの領域に関する知識が必要になります。
+> [AZURE.TIP] このチュートリアルは、Azure リソース マネージャーのテンプレート、JSON、Azure PowerShell を使用した経験があるユーザーを対象にしているわけではありませんが、参照するテンプレートやデプロイメント オプションに変更を加える場合は、これらの領域に関する知識が必要になります。
 
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
 - Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)に関するページ、「[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)」、または[無料評価版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Azure Storage アカウント。詳細については、「[Azure ストレージ アカウントについて]」を参照してください(../storage-whatis-account/)。
-- Azure PowerShell を実行できるワークステーション。手順については、「[Azure PowerShell のインストールおよび構成]」を参照してください。(http://azure.microsoft.com/documentation/articles/install-configure-powershell/)。
+- Azure Storage アカウント。詳細については、「[Azure ストレージ アカウントについて](storage-whatis-account.md)」を参照してください
+- Azure PowerShell を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成](install-configure-powershell.md)に関するページを参照してください。
 
 ##<a id="CreateDB"></a>手順 1:サンプル ファイルのダウンロードと抽出 ##
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
 
-1. [DocumentDB アカウントと Web サイトの作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)を、ローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードし、ファイルを抽出します。このサンプルでは、DocumentDB アカウント、Azure の Web サイト、Web アプリケーションをデプロイします。また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
+1. [DocumentDB アカウントと Web サイトの作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)を、ローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードし、ファイルを展開します。このサンプルでは、DocumentDB アカウント、Azure の Web サイト、Web アプリケーションをデプロイします。また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
 
-2. [DocumentDB アカウントと Web サイトの作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードし、ファイルを抽出します。このサンプルでは、DocumentDB アカウントと Azure の Web サイトをデプロイし、Web サイトの構成を変更して DocumentDB の接続情報を容易に表示できるようにしますが、Web アプリケーションは含んでいません。  
+2. [DocumentDB アカウントと Web サイトの作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードし、ファイルを展開します。このサンプルでは、DocumentDB アカウントと Azure の Web サイトをデプロイし、Web サイトの構成を変更して DocumentDB の接続情報を容易に表示できるようにしますが、Web アプリケーションは含んでいません。  
 
-> [AZURE.TIP] コンピューターのセキュリティ設定によっては、抽出したファイルを右クリックし、**[プロパティ]**、**[ブロックの解除]** の順にクリックして、ファイルのブロックを解除することが必要になる場合があります。
+> [AZURE.TIP] コンピューターのセキュリティ設定によっては、展開したファイルを右クリックし、**[プロパティ]**、**[ブロックの解除]** の順にクリックして、ファイルのブロックを解除することが必要になる場合があります。
 
 ![Screenshot of the Properties window with the Unblock button highlighted](./media/documentdb-create-documentdb-website/image1.png)
 
@@ -50,19 +50,19 @@
 
 では、最初のテンプレートをデプロイしましょう。
 
-> [AZURE.TIP] このテンプレートでは、ここで入力する Web サイト名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては評価しません。PowerShell デプロイメント スクリプトの実行前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
+> [AZURE.TIP] このテンプレートでは、ここで入力する Web サイト名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されていません。PowerShell デプロイメント スクリプトの実行前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと Web サイトの作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)をダウンロードして抽出したフォルダー (C:\DocumentDBTemplates\CreateDocDBWebsiteTodo など) に移動します。
+1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと Web サイトの作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)をダウンロードして展開したフォルダー (C:\DocumentDBTemplates\CreateDocDBWebsiteTodo など) に移動します。
 
 
 2. CreateDocDBWebsiteTodo.ps1 という PowerShell スクリプトを実行します。このスクリプトでは、次のような必須のパラメーターを使用します。
-	- WebsiteName: Web サイトの名前を指定するパラメーターであり、Web サイトへのアクセスに使用する URL を作成するために使用します (たとえば、"mydemodocdbwebsite" を指定した場合、Web サイトへのアクセスに使用する URL は mydemodocdbwebsite.azurewebsites.net になります)。
+	- WebsiteName:Web サイトの名前を指定します。これは、Web サイトへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebsite" を指定した場合、Web サイトへのアクセスに使用する URL は mydemodocdbwebsite.azurewebsites.net になります)。
 
-	- ResourceGroupName: デプロイする Azure リソース グループの名前を指定します。指定したリソース グループが存在しない場合は作成されます。
+	- ResourceGroupName:デプロイする Azure リソース グループの名前を指定します。指定したリソース グループが存在しない場合は作成されます。
 
-	- docDBAccountName: 作成する DocumentDB アカウントの名前を指定します。
+	- docDBAccountName:作成する DocumentDB アカウントの名前を指定します。
 
-	- location: DocumentDB と Web サイト リソースを作成する Azure の場所を指定します。有効な値は East Asia、Southeast Asia、East US、West US、North Europe、West Europe です (指定した値は大文字と小文字が区別されます)。
+	- location:DocumentDB と Web サイト リソースを作成する Azure の場所を指定します。有効な値は East Asia、Southeast Asia、East US、West US、North Europe、West Europe です (指定した値は大文字と小文字が区別されます)。
 
 
 3. このスクリプトを実行するコマンドの例を次に示します。
@@ -149,19 +149,19 @@
 
 では、2 番目のテンプレートをデプロイしましょう。
 
-> [AZURE.TIP] このテンプレートでは、ここで入力する Web サイト名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては評価しません。PowerShell デプロイメント スクリプトの実行前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
+> [AZURE.TIP] このテンプレートでは、ここで入力する Web サイト名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されていません。PowerShell デプロイメント スクリプトの実行前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと Web サイトの作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をダウンロードして抽出したフォルダー (C:\DocumentDBTemplates\CreateDocDBWebsite など) に移動します。
+1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと Web サイトの作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をダウンロードして展開したフォルダー (C:\DocumentDBTemplates\CreateDocDBWebsite など) に移動します。
 
 
 2. CreateDocDBWebsite.ps1 という PowerShell スクリプトを実行します。このスクリプトでは、デプロイした最初のテンプレートと同じパラメーターを使用します。次のようになります。
-	- WebsiteName: Web サイトの名前を指定するパラメーターであり、Web サイトへのアクセスに使用する URL を作成するために使用します (たとえば、"myotherdocumentdbwebsite" を指定した場合、Web サイトへのアクセスに使用する URL は myotherdocumentdbwebsite.azurewebsites.net になります)。
+	- WebsiteName:Web サイトの名前を指定するパラメーターであり、Web サイトへのアクセスに使用する URL を作成するために使用します (たとえば、"myotherdocumentdbwebsite" を指定した場合、Web サイトへのアクセスに使用する URL は myotherdocumentdbwebsite.azurewebsites.net になります)。
 
-	- ResourceGroupName: デプロイする Azure リソース グループの名前を指定します。指定したリソース グループが存在しない場合は作成されます。
+	- ResourceGroupName:デプロイする Azure リソース グループの名前を指定します。指定したリソース グループが存在しない場合は作成されます。
 
-	- docDBAccountName: 作成する DocumentDB アカウントの名前を指定します。
+	- docDBAccountName:作成する DocumentDB アカウントの名前を指定します。
 
-	- 	location: DocumentDB と Web サイト リソースを作成する Azure の場所を指定します。有効な値は East Asia、Southeast Asia、East US、West US、North Europe、West Europe です (指定した値は大文字と小文字が区別されます)。
+	- 	location:DocumentDB と Web サイト リソースを作成する Azure の場所を指定します。有効な値は East Asia、Southeast Asia、East US、West US、North Europe、West Europe です (指定した値は大文字と小文字が区別されます)。
 
 3. このスクリプトを実行するコマンドの例を次に示します。
 
@@ -180,14 +180,14 @@
 
 	- 	一連の既定の監視ルールが作成されました。
 
-6. [Azure プレビュー ポータル](https://portal.azure.com)を開き、リソース グループを参照するように選択し、デプロイメント時に作成したリソース グループを選択します (上のサンプルでは、myOtherDemoResourceGroup)。
+6. [Azure プレビュー ポータル](https://portal.azure.com)を開き、リソース グループを参照し、デプロイ時に作成したリソース グループを選択します (上のサンプルでは、myOtherDemoResourceGroup)。
 7. [概要] レンズで、デプロイしたばかりの Azure の Web サイトを選択します。
 
 	![Screenshot of the Summary lens with the myotherdocumentdwebsite website highlighted](./media/documentdb-create-documentdb-website/image6.png)
 8. Web サイト ブレードで、**[すべての設定]** を選択し、**[アプリケーションの設定]** を選択して、DocumentDB エンドポイントおよびそれぞれの DocumentDB マスター キーに関するアプリケーションの設定がどのように表示されているかを確認します。
 
 	![Screenshot of the Website, Settings, and Site settings blades](./media/documentdb-create-documentdb-website/image7.png)
-9. Azure ポータルの操作を引き続き確認したり、DocumentDB の[サンプル](http://go.microsoft.com/fwlink/?LinkID=402386)に従って独自の DocumentDB アプリケーションを作成したり、自由に試してみてください。
+9. 引き続き、Azure ポータルの操作を確認したり、DocumentDB の[サンプル](http://go.microsoft.com/fwlink/?LinkID=402386)に従って独自の DocumentDB アプリケーションを作成したり、自由に試してみてください。
 
 	
 	
@@ -197,7 +197,7 @@
 ご利用ありがとうございます。Azure リソース マネージャーのテンプレートを使用して、DocumentDB、Azure の Web サイト、サンプルの Web アプリケーションをデプロイしました。
 
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
-- Azure の Web サイトの詳細については、[ここ](http://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
+- Azure Websites の詳細については、[ここ](http://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
 - Azure リソース マネージャーのテンプレートの詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
 
-<!--HONumber=47-->
+<!--HONumber=49-->

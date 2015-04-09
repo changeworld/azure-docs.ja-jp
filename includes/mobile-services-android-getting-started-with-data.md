@@ -1,6 +1,6 @@
-﻿Mobile Services の準備が整ったら、ローカル コレクションの代わりに Mobile Services に項目を格納するようにアプリケーションを更新します。 
+﻿モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。 
 
-1.  *build.gradle (Module app)* ファイルの **[依存関係]** タグに次の行が存在することを確認し、存在しない場合は追加します。これにより、Mobile Services  Android クライアント SDK へのリファレンスが追加されます。
+1.  *build.gradle (Module app)* ファイルの **[依存関係]** タグに次の行が存在することを確認し、存在しない場合は追加します。これにより、Mobile Services Android クライアント SDK へのリファレンスが追加されます。
 
 		compile 'com.android.support:support-v4:21.0.3'
     	compile 'com.google.code.gson:gson:2.2.2'
@@ -42,13 +42,13 @@
 		import java.util.ArrayList;
 		import java.util.List;
 
-6. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、Mobile Services で置き換えます。**ToDoActivity** クラスで、既存の **toDoItemList** リストを定義している次のコード行をコメント アウトします。
+6. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、モバイル サービスで置き換えます。**ToDoActivity** クラスで、既存の **toDoItemList** リストを定義している次のコード行をコメント アウトします。
 
 		public List<ToDoItem> toDoItemList = new ArrayList<ToDoItem>();
 
 7. ファイルを保存すると、プロジェクトがビルド エラーを示します。 `toDoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント解除します。これで、メモリ内のリストが完全に削除されます。 
 
-8. 次に、Mobile Services を追加します。次のコード行をコメント解除します。
+8. 次に、モバイル サービスを追加します。次のコード行をコメント解除します。
 
 		private MobileServiceClient mClient;
 		private private MobileServiceTable<ToDoItem> mToDoTable;
@@ -56,13 +56,13 @@
 9. ファイルの末尾にある  *ProgressFilter* クラスを見つけ、コメント解除します。このクラスは、 *MobileServiceClient*がネットワーク操作を実行しているときに  'loading' インジケーターを表示します。
 
 
-10. 管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成した Mobile Services をクリックします。
+10. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 11. **[ダッシュボード]** タブをクリックし、**サイトの URL** をメモに記録します。次に、**[キーの管理]** をクリックし、**アプリケーション キー**をメモに記録します。
 
    	![](./media/download-android-sample-code/mobile-dashboard-tab.png)
 
-  	これらの値は、アプリケーション コードからMobile Services にアクセスするときに必要になります。
+  	これらの値は、アプリケーション コードからモバイル サービスにアクセスするときに必要になります。
 
 12. **onCreate** メソッドで、**MobileServiceClient** 変数を定義している次のコード行をコメント解除します。
 
@@ -82,7 +82,7 @@
 
   	これで、Mobile Services へのアクセスに使用される  *MobileServiceClient* の新しいインスタンスが作成されます。さらに、Mobile Services 内のデータ ストレージをプロキシ経由で接続する際に使用される  *MobileServiceTable* の新しいインスタンスが作成されます。
 
-13. 前のコードの  `MobileServiceUrl` と  `AppKey` を、Mobile Services の URL とアプリケーション キーの順にそれぞれ置き換えます。
+13. 前のコードの  `MobileServiceUrl` と  `AppKey` を、モバイル サービスの URL とアプリケーション キーでそれぞれ置き換えます。
 
 
 
@@ -108,7 +108,7 @@
 	        }
 	    }.execute();
 
-   	これにより、項目の更新がMobile Services に送信され、チェックされた項目がアダプターから削除されます。
+   	これにより、項目の更新がモバイル サービスに送信され、チェックされた項目がアダプターから削除されます。
     
 15. 次に示す **addItem** メソッドの行をコメント解除します。
 	
@@ -133,7 +133,7 @@
 	    }.execute();
 		
 
-  	このコードでは、新しい項目を作成し、それをリモート Mobile Services のテーブルに挿入します。
+  	このコードでは、新しい項目を作成し、それをリモート モバイル サービスのテーブルに挿入します。
 
 16. 次に示す **refreshItemsFromTable** メソッドの行をコメント解除します。
 
@@ -160,9 +160,10 @@
 	        }
 	    }.execute();
 
-	このコードでは、Mobile Services に対するクエリを実行して、完了マークが付けられていないすべての項目を取得します。項目は、バインド用にアダプターに追加されます。
+	このコードでは、モバイル サービスに対するクエリを実行して、完了マークが付けられていないすべての項目を取得します。項目は、バインド用にアダプターに追加されます。
 		
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: http://aka.ms/Iajk6q
-<!--HONumber=47-->
+
+<!--HONumber=49-->

@@ -1,90 +1,79 @@
 ﻿<properties 
-	pageTitle="ハイブリッド接続Connect an Azure Website to an On-Premises Resource using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトの内部設置型リソースへの接続)" 
-	description="静的 TCP ポートを使用する内部設置型リソースと Azure の Web サイトの間の接続を作成します。" 
-	services="web-sites" 
+	pageTitle="Azure App Service のハイブリッド接続を使用して内部設置型リソースにアクセスする" 
+	description="静的 TCP ポートを使用する内部設置型リソースと Azure App Service の Web アプリケーションの間の接続を作成します。" 
+	services="app-service\web" 
 	documentationCenter="" 
 	authors="cephalin" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/24/2014" 
+	ms.date="03/24/2015" 
 	ms.author="cephalin"/>
 
-#ハイブリッド接続を使用して Azure の Web サイトを内部設置型のリソースに接続する
+#Azure App Service のハイブリッド接続を使用して内部設置型リソースにアクセスする
 
-Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobile Services、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用する任意の内部設置型のリソースに接続できます。ここでは、Azure の Web サイトと内部設置型の SQL Server データベース間のハイブリッド接続の作成方法を示します。
+Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTTP Web APIs、Mobile Services、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用する任意の内部設置型のリソースに接続できます。ここでは、App Service の Web アプリケーションと内部設置型の SQL Server データベース間のハイブリッド接続の作成方法を示します。
 
-> [AZURE.NOTE] ハイブリッド接続機能の Web サイト部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」をご覧ください。  
+> [AZURE.NOTE] ハイブリッド接続機能の Web アプリケーション 部分は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)でのみ利用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。  
 
-##前提条件
-- Azure サブスクリプション。無料サブスクリプションについては、「[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。 
+## 前提条件
+- Azure サブスクリプション。無料サブスクリプションについては、「[1 か月間無料評価版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
 
-- ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server は静的ポート 1433 を使用するため、SQL Server で既定のインスタンスを使用することをお勧めします。ハイブリッド接続で使用するための SQL Server Express のインストールと構成の詳細については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
+- ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server は静的ポート 1433 を使用するため、SQL Server で既定のインスタンスを使用することをお勧めします。ハイブリッド接続で使用するための SQL Server Express のインストールと構成の詳細については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」を参照してください。
 
 - 後でこの記事で説明する内部設置型の Hybrid Connection Manager のエージェントをインストールするコンピューターの条件は次のとおりです。
 
 	- ポート 5671 で Azure に接続できること
-	- 内部設置型のリソースの  *hostname*:*portnumber* に到達できること。 
+	- 内部設置型のリソースの  *hostname*:*portnumber* に到達できること 
 
 > [AZURE.NOTE] この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 
-##この記事の内容##
+## Azure ポータルでの Web アプリケーションの作成 ##
 
+> [AZURE.NOTE] このチュートリアルを使用するために、既に Azure ポータルで Web アプリケーションを作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC) 」から開始してください。
 
-[Azure プレビュー ポータルで Web サイトを作成する](#CreateSite)
-
-[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)
-
-[内部設置型の Hybrid Connection Manager をインストールして接続を完了する](#InstallHCM)
-
-[次のステップ](#NextSteps)
-
-
-## Azure プレビュー ポータルで Web サイトを作成する ##
-
-> [AZURE.NOTE] このチュートリアルを使用するために、既に Azure プレビュー ポータルで Web サイトを作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
-
-1. [Azure プレビュー ポータル](https://portal.azure.com)の左下端の **[新規作成]** をクリックして、**[Web サイト]** を選択します。
+1. [Azure ポータル](https://portal.azure.com)の左下端の **[新規]** > **[Web + モバイル]** > **[Web サイト]** をクリックします。
 	
 	![New button][New]
 	
-	![New website][NewWebsite]
+	![New web app][NewWebsite]
 	
-2. **[Web サイト]** ブレードで、Web サイトの名前を入力して、**[作成]** をクリックします。 
+2. **Web アプリケーション** ブレードで、 URL を入力して **[作成]** をクリックします。 
 	
 	![Website name][WebsiteCreationBlade]
 	
-3. しばらくすると、Web サイトが作成され、Web サイトのブレードが表示されます。ブレードは縦方向にスクロールできるダッシュボードで、サイトを管理できます。
+3. しばらくすると、Web アプリケーションが作成され、Web アプリケーションのブレードが表示されます。ブレードは縦方向にスクロールできるダッシュボードで、サイトを管理することができます。
 	
 	![Website running][WebSiteRunningBlade]
 	
 4. サイトがライブかどうかを確認するには、**[参照]** アイコンをクリックして、既定のページを表示します。
 	
-	![Click browse to see your website][Browse]
+	![Click browse to see your web app][Browse]
 	
-	![Default website page][DefaultWebSitePage]
+	![Default web app page][DefaultWebSitePage]
 	
-次に、Web サイトに対するハイブリッド接続と BizTalk サービスを作成します。
+次に、Web アプリケーションに対するハイブリッド接続と BizTalk サービスを作成します。
 
 <a name="CreateHC"></a>
 ## ハイブリッド接続および BizTalk サービスを作成する ##
 
-1. プレビュー ポータルに戻り、Web サイトのブレードを下にスクロールして、**[ハイブリッド接続]** を選択します。
+1. Web アプリケーションのブレードを下にスクロールして、**[ハイブリッド接続]** を選択します。
 	
 	![Hybrid connections][CreateHCHCIcon]
 	
 2. ハイブリッド接続ブレードで、**[追加]** をクリックします。
 	
-	![Add a hybrid connnection][CreateHCAddHC]
+	<!-- ![Add a hybrid connnection][CreateHCAddHC]
+-->
 	
-3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** オプションがあらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
+3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** があらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
 	
 	![Create a hybrid connection][TwinCreateHCBlades]
 	
@@ -92,7 +81,7 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 	- **[名前]** に、接続の名前を入力します。
 	- **[ホスト名]** に、リソースをホストする内部設置型のコンピューターの名前を入力します。
 	- **[ポート]** には、内部設置型のリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
-	- **[BizTalk サービス]** をクリックします。
+	- **[Biz Talk サービス]** をクリックします。
 
 
 4. **[BizTalk サービスの作成]** ブレードが開きます。BizTalk サービスの名前を入力し、**[OK]** をクリックします。
@@ -106,10 +95,19 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 	![Click OK][CreateBTScomplete]
 	
 6. 処理が完了すると、ポータルの通知領域に接続の作成が完了したことが通知されます。
+	<!-- TODO
+
+    この手順ではすべてが失敗します。新しいポータルでは BizTalk サービスを作成できません。以前のポータル (フル ポータル) に切り替えて
+	BizTalk サービスを作成しましたが、接続はできないようです、
+	ハイブリッド接続作成の手順を終了すると、次のエラーが表示されます。
+	ハイブリッド接続 RelecIoudHC の作成に失敗しました。この 
+	リソース タイプは名前空間に見つかりませんでした。 
+	'Microsoft.BizTaIkServices for api version 2014-06-01'.
 	
+	このエラーは、インスタンスではなく、タイプが見つからなかったことを示しています。
 	![Success notification][CreateHCSuccessNotification]
-	
-7. Web サイト ブレードに、ハイブリッド接続が 1 つ作成されたことを示す **[ハイブリッド接続]** アイコンが表示されます。
+	-->
+7. Web アプリケーション ブレードの **[ハイブリッド接続]** アイコンは、ハイブリッド接続が 1 つ作成されたことを示しています。
 	
 	![One hybrid connection created][CreateHCOneConnectionCreated]
 	
@@ -118,7 +116,7 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 <a name="InstallHCM"></a>
 ## 内部設置型の Hybrid Connection Manager をインストールして接続を完了する ##
 
-1. Web サイト ブレードで、[ハイブリッド接続] アイコンをクリックします。 
+1. Web アプリケーション ブレードで、[ハイブリッド接続] アイコンをクリックします。 
 	
 	![Hybrid connections icon][HCIcon]
 	
@@ -150,24 +148,26 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 	
 	![Installing][HCMInstalling]
 	
-8. インストールが完了したら、**[閉じる] **をクリックします。
+8. インストールが完了したら、**[閉じる]** をクリックします。
 	
 	![Click Close][HCMInstallComplete]
 	
 	**[ハイブリッド接続]** ブレードで、**[状態]** 列に **[接続]** と表示されています。 
 	
-	![接続されている状態][HCStatusConnected]
+	![Connected Status][HCStatusConnected]
 
 これで、ハイブリッド接続のインフラストラクチャが完成しました。この接続を使用するハイブリッド アプリケーションを作成できます。 
+
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service に有効期限付きのスターター Web  アプリケーションを無償ですぐに作成できます。No credit cards required; no commitments.
 
 <a name="NextSteps"></a>
 ## 次のステップ ##
 
-- ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
+- ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」を参照してください。
 
-- モバイル サービスでのハイブリッド接続の使用の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](http://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/)」をご覧ください。
+- モバイル サービスでのハイブリッド接続の使用の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
-###その他のリソース
+### その他のリソース
 
 [ハイブリッド接続の概要](http://go.microsoft.com/fwlink/p/?LinkID=397274)
 
@@ -175,11 +175,15 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 
 [ハイブリッド接続の Web サイト](http://azure.microsoft.com/services/biztalk-services/)
 
-[BizTalk サービス:[ダッシュボード]、[監視]、および [スケール] タブ](http://azure.microsoft.com/documentation/articles/biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk Services:[ダッシュボード]、[モニター]、[スケール]、[構成]、[ハイブリッド接続] タブ](../biztalk-dashboard-monitor-scale-tabs/)
 
 [シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする (チャネル 9 ビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
 [ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する (チャネル 9 ビデオ)](http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Connect-to-an-on-premises-SQL-Server-from-Azure-Mobile-Services-using-Hybrid-Connections)
+
+## 変更点
+* Web サイトから App Service への変更に関するガイド:[Azure App Service と既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 以前のポータルから新しいポータルへの変更に関するガイド:[Azure App Service の Web サイトと Web アプリケーションに関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 <!-- IMAGES -->
 [New]:./media/web-sites-hybrid-connection-get-started/B01New.png
@@ -206,5 +210,4 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 [HCMInstallComplete]:./media/web-sites-hybrid-connection-get-started/D09HCMInstallComplete.png
 [HCStatusConnected]:./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
 
-
-<!--HONumber=42-->
+<!--HONumber=49-->

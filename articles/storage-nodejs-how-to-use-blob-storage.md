@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="BLOB ストレージの使用方法 (Node.js) | Microsoft Azure" 
+	pageTitle="Node.js から BLOB ストレージを使用する方法 | Microsoft Azure" 
 	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは Node.js で記述されています。" 
 	services="storage" 
 	documentationCenter="nodejs" 
@@ -13,54 +13,37 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="09/17/2014" 
+	ms.date="03/11/2015" 
 	ms.author="mwasson"/>
 
 
 
+# Node.js から BLOB ストレージを使用する方法
 
+[AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
 
-# Node.js から BLOB サービスを使用する方法
+## 概要
 
 このガイドでは、Azure BLOB サービスを使用して
 一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して
 記述されています。紹介するシナリオは、BLOB の **アップロード**、**一覧表示**、
-**ダウンロード**、**削除**などです。BLOB の詳細については、
-「[次のステップ][]」を参照してください。
-
-## 目次
-
-* [BLOB サービスとは][]
-* [概念][]
-* [Azure ストレージ アカウントの作成][]
-* [Node.js アプリケーションの作成][]
-* [アプリケーションからストレージへのアクセスの構成][]
-* [Azure のストレージ接続文字列の設定][]
-* [方法:コンテナーを作成する][]  
-* [方法:コンテナーに BLOB をアップロードする][]  
-* [方法:コンテナー内の BLOB を一覧表示する][]  
-* [方法:BLOB をダウンロードする][]  
-* [方法:BLOB を削除する][]  
-* [方法:同時アクセス][]     
-* [方法:共有アクセス署名を操作する][]     
-* [次のステップ][]
+**ダウンロード**、**削除**などです。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
 
-##<a name="create-account"></a>Azure ストレージ アカウントの作成
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-## <a name="create-app"> </a>Node.js アプリケーションの作成
+## Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service](Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページをご覧ください。
 
-## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
+## アプリケーションからストレージへのアクセスの構成
 
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  **PowerShell** (Windows)**、Terminal** (Mac)、または **Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
 2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると
     次のような出力が生成されます。
@@ -87,23 +70,21 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
     var azure = require('azure-storage');
 
-## <a name="setup-connection-string"> </a>Azure のストレージ接続文字列の設定
+## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT`、 `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション]」をご覧ください。
 
-## <a name="create-container"> </a>方法:コンテナーを作成する
+## 方法: コンテナーを作成する
 
-**BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。Azure の
-次のコードでは、**BlobService** オブジェクトを作成します。次の内容を
-**server.js** ファイルの先頭付近に追加します。
+**BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次のコードでは、**BlobService** オブジェクトを作成します。**server.js** ファイルの先頭付近に次の内容を追加します。
 
     var blobSvc = azure.createBlobService();
 
-> [AZURE.NOTE] **createBlobServiceAnonymous** を使用してホスト アドレスを指定すると、BLOB に匿名でアクセスできます。たとえば、`var blobSvc = azure.createBlobService('https://myblob.blob.core.windows.net/');` のように指定します。
+> [AZURE.NOTE] **createBlobServiceAnonymous** を使用してホスト アドレスを指定すると、BLOB に匿名でアクセスできます。たとえば、 `var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.windows.net/');`.
 
-BLOB はすべてコンテナー内に格納されます。新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次の例では、'mycontainer' という名前の新しいコンテナーが作成されます。
+BLOB はすべてコンテナー内に格納されます。新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次の例では 'mycontainer' という名前の新しいコンテナーが作成されます。
 
 	blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
       if(!error){
@@ -115,7 +96,7 @@ BLOB はすべてコンテナー内に格納されます。新しいコンテナ
 
 コンテナーが作成されると、 `result` は true になります。コンテナーが既に存在する場合は、 `result` は false になります。 `response` には、コンテナーの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) 情報を含む、操作に関する情報が含まれます。
 
-###コンテナーのセキュリティ
+### コンテナーのセキュリティ
 
 既定では、新しいコンテナーはプライベートであり、匿名でアクセスすることはできません。コンテナーを公開して匿名でアクセスできるようにするには、コンテナーのアクセス レベルを **blob** または **container** に設定します。
 
@@ -133,7 +114,7 @@ BLOB はすべてコンテナー内に格納されます。新しいコンテナ
 
 代わりに、**setContainerAcl** を使用してアクセス レベルを指定することによって、コンテナーのアクセス レベルを変更できます。次の例では、アクセス レベルを container に変更します。
 
-    blobSvc.setContainerAcl('mycontainer', null, 'container', function(error, result, response){
+    blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, 'container' /* publicAccessLevel*/, function(error, result, response){
 	  if(!error){
 		// Container access level set to 'container'
 	  }
@@ -141,7 +122,7 @@ BLOB はすべてコンテナー内に格納されます。新しいコンテナ
 
 結果には、コンテナーの現在の **ETag** 情報を含む、操作に関する情報が含まれます。
 
-###フィルター
+### フィルター
 
 オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のようなシグネチャを実装するオブジェクトです。
 
@@ -158,11 +139,11 @@ BLOB はすべてコンテナー内に格納されます。新しいコンテナ
 	var retryOperations = new azure.ExponentialRetryPolicyFilter();
 	var blobSvc = azure.createBlobService().withFilter(retryOperations);
 
-## <a name="upload-blob"> </a>方法:コンテナーに BLOB をアップロードする
+## 方法:コンテナーに BLOB をアップロードする
 
-BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については、「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
-###ブロック blob
+### ブロック blob
 
 データをブロック blob にアップロードするには、以下のメソッドを使用します。
 
@@ -184,7 +165,7 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 
 これらのメソッドによって返される  `result` には、BLOB の **ETag** など、操作に関する情報が含まれます。
 
-###ページ blob
+### ページ blob
 
 データをページ blob にアップロードするには、以下のメソッドを使用します。
 
@@ -206,9 +187,9 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 	  }
 	});
 
-> [AZURE.NOTE] ページ blob は、512 バイトの "ページ" で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーになる場合があります。
+> [AZURE.NOTE] ページ BLOB は、512 バイトの 'pages'で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーになる場合があります。
 
-## <a name="list-blob"> </a>方法:コンテナー内の BLOB を一覧表示する
+## 方法:コンテナー内の BLOB を一覧表示する
 
 コンテナー内の BLOB を一覧表示するには、**listBlobsSegmented** メソッドを使用します。特定のプレフィックスと共に BLOB を返す必要がある場合は、**listBlobsSegmentedWithPrefix** を使用します。
 
@@ -218,9 +199,9 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 	  }
 	});
 
- `result` には  `entries` コレクションが含まれます。これは、各 BLOB を説明したオブジェクトの配列です。すべての BLOB を返すことができない場合は、 `result`  は、 `continuationToken` も提供します。これは、追加のエントリを取得するための 2 つ目のパラメーターとして使用できます。
+ `result` には  `entries` コレクションが含まれます。これは、各 BLOB を説明したオブジェクトの配列です。すべての BLOB を返すことができない場合は、 `result` は `continuationToken` も提供します。これは、追加のエントリを取得するための 2 つ目のパラメーターとして使用できます。
 
-## <a name="download-blob"> </a>方法:BLOB をダウンロードする
+## 方法:BLOB をダウンロードする
 
 BLOB からデータをダウンロードするには、以下のメソッドを使用します。
 
@@ -234,7 +215,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 次の例は、**getBlobToStream** を使用して **myblob** BLOB の内容をダウンロードし、ストリームを使用して **output.txt** ファイルに格納する方法を示しています。
 
-    var fs=require('fs');
+    var fs = require('fs');
 	blobSvc.getBlobToStream('mycontainer', 'myblob', fs.createWriteStream('output.txt'), function(error, result, response){
 	  if(!error){
 	    // blob retrieved
@@ -243,7 +224,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
  `result`には、**ETag** 情報など、BLOB に関する情報が含まれます。
 
-## <a name="delete-blob"> </a>方法:BLOB を削除する
+## 方法:BLOB を削除する
 
 最後に、BLOB を削除するには、**deleteBlob** を呼び出します。次の例では、**myblob** という名前の BLOB を削除します。
 
@@ -253,7 +234,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 	  }
 	});
 
-##<a name="concurrent-access"></a>方法: 同時アクセス
+## 方法:同時アクセス
 
 複数のクライアントまたは複数のプロセス インスタンスからの BLOB への同時アクセスをサポートするには、**ETags** または**占有**を使用します。
 
@@ -261,11 +242,11 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 * **占有** - 一定期間、BLOB に対する排他的で更新可能な書き込みアクセスまたは削除アクセスを取得する手段を提供します。
 
-###ETag
+### ETag
 
 ETag は、複数のクライアントまたはインスタンスからの BLOB への同時書き込みを許可する必要がある場合に使用する必要があります。ETag を使用すると、最初の読み取りまたは作成以降にコンテナーまたは BLOB が変更されているかどうかを確認できることから、別のクライアントまたはプロセスによってコミットされた変更の上書きを回避できます。
 
-ETag の条件は、オプションの  `options.accessConditions` パラメーターを使用して設定できます。次の例では、BLOB が既に存在し、 `etagToMatch` によって ETag 値が含まれる場合に、**test.txt** ファイルのみをアップロードします。
+ETag の条件は、オプションの `options.accessConditions` パラメーターを使用して設定できます。次の例では、BLOB が既に存在し、 `etagToMatch` によって ETag 値が含まれる場合に、**test.txt** ファイルのみをアップロードします。
 
 	blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { accessConditions: { 'if-match': etagToMatch} }, function(error, result, response){
       if(!error){
@@ -281,23 +262,23 @@ ETag の条件は、オプションの  `options.accessConditions` パラメー�
 
 値が変更されていた場合は、ETag 値を取得して以降、別のクライアントまたはインスタンスがこの BLOB またはコンテナーを変更したことを示しています。
 
-###占有
+### 占有
 
 占有を取得する BLOB またはコンテナーを指定して **acquireLease** メソッドを使用すると、新しい占有を取得できます。たとえば、以下では **myblob** での占有を取得します。
 
 	blobSvc.acquireLease('mycontainer', 'myblob', function(error, result, response){
 	  if(!error) {
-	    console.log(result);
+	    console.log('leaseId: ' + result.id);
 	  }
 	});
 
-**myblob** に対するその後の操作では、 `options.leaseId` パラメーターを指定する必要があります。占有 ID は、**acquireLease** から  `result.id` として返されます。
+**myblob** に対するその後の操作では `options.leaseId` パラメーターを指定する必要があります。占有 ID は、**acquireLease** から  `result.id` として返されます。
 
 > [AZURE.NOTE] 既定では、占有期間は無限です。 `options.leaseDuration` パラメーターを指定することで、有限の期間 (15 ～ 60 秒) を指定できます。
 
 占有を削除するには、**releaseLease** を使用します。占有を中断するものの、元の期間が期限切れになるまでは新しい占有が取得されないようにするには、**breakLease** を使用します。
 
-## <a name="sas"></a>方法: 共有アクセス署名を操作する
+## 方法:共有アクセス署名を操作する
 
 共有アクセス署名 (SAS) は、ストレージ アカウント名やキーを指定せずに BLOB やコンテナーへのきめ細やかで安全なアクセスを提供する方法です。SAS は、モバイル アプリからの BLOB へのアクセスを許可する場合など、データへの制限されたアクセスを提供する場合によく使用されます。
 
@@ -336,7 +317,7 @@ SAS の保有者がコンテナーにアクセスするときに必要なホス�
 
 生成された SAS が持つ権限は読み取りアクセスのみのため、BLOB を変更しようとした場合は、エラーが返されます。
 
-###アクセス制御リスト
+### アクセス制御リスト
 
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。複数のクライアントにコンテナーへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
@@ -379,37 +360,25 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
 	blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 
-## <a name="next-steps"> </a>次のステップ
+## 次のステップ
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
-さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
+-   [Azure Storage SDK for Node の API リファレンス][]を参照してください。
 -   MSDN リファレンス:[Azure のデータの格納とアクセス][]
 -   [Azure のストレージ チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 
-  [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-  [次のステップ]: #next-steps
-  [BLOB サービスとは]: #what-is
-  [概念]: #concepts
-  [Azure ストレージ アカウントの作成]: #create-account
-  [Node.js アプリケーションの作成]: #create-app
-  [アプリケーションからストレージへのアクセスの構成]: #configure-access
-  [Azure のストレージ接続文字列の設定]: #setup-connection-string
-  [方法:コンテナーを作成する]: #create-container
-  [方法:コンテナーに BLOB をアップロードする]: #upload-blob
-  [方法:コンテナー内の BLOB を一覧表示する]: #list-blob
-  [方法:BLOB をダウンロードする]: #download-blobs
-  [方法:BLOB を削除する]: #delete-blobs
-  [方法:同時アクセス]: #concurrent-access
-  [方法:共有アクセス署名を操作する]: #sas
-[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
-  [Node.js Cloud Service with Storage]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
-  [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
- [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [using the REST API]: http://msdn.microsoft.com/library/windowsazure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Node.js Cloud Service]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/windowsazure/gg433040.aspx
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-<!--HONumber=42-->
+[Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
+[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: /develop/nodejs/tutorials/create-a-website-(mac)/
+[ストレージを使用する Node.js クラウド サービス]: storage-nodejs-use-table-storage-cloud-service-app.md
+[ストレージを使用する Node.js Web アプリケーション]: storage-nodejs-use-table-storage-web-site.md
+[WebMatrix を使用した Web サイト]: web-sites-nodejs-use-webmatrix.md
+[REST API の使用]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+[Azure の管理ポータル]: http://manage.windowsazure.com
+[Node.js クラウド サービス]: cloud-services-nodejs-develop-deploy-app.md
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
+
+<!--HONumber=49-->

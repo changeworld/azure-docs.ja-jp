@@ -1,19 +1,17 @@
+﻿新しい Twitter v1.1 API では、リソースにアクセスする前にアプリケーションの認証が求められます。まず、OAuth 2.0 を使用して、アクセスの要求に必要な資格情報を取得する必要があります。次に、モバイル サービス用のアプリケーション設定にその資格情報を安全に保存します。
 
+1. そのような操作をまだ実行していない場合には、トピック「<a href="../articles/mobile-services-how-to-register-twitter-authentication.md/" target="_blank">モバイル サービスでの Twitter ログイン用のアプリケーションの登録</a>」の手順を実行します。 
 
-新しい Twitter v1.1 API では、リソースにアクセスする前にアプリケーションの認証が求められます。まず、OAuth 2.0 を使用して、アクセスの要求に必要な資格情報を取得する必要があります。次に、モバイル サービス用のアプリケーション設定にその資格情報を安全に保存します。
-
-1. そのような操作をまだ実行していない場合には、トピック「<a href="/documentation/articles/mobile-services-how-to-register-twitter-authentication/" target="_blank">モバイル サービスでの Twitter ログイン用のアプリケーションの登録</a>」の手順を実行します。 
-  
   	Twitter v1.1 API にアクセスできるようにするために必要な資格情報は、Twitter が生成します。この資格情報は Twitter デベロッパーの Web サイトから取得できます。 
 
-2. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter デベロッパー</a>の Web サイトに移動し、Twitter アカウント資格情報でサインインして、自分の Twitter アプリケーションを選択します。
+2. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter デベロッパー</a>の Web サイトに移動し、Twitter アカウント資格情報でサインインして、自分の Twitter アプリを選択します。
 
 3. **[Keys and Access Tokens (キーとアクセス トークン)]** タブで、次の値を調べます。
 
-	+ **コンシューマー キー**
-	+ **コンシューマー シークレット**
-	+ **アクセス トークン**
-	+ **アクセス トークン シークレット**
+	+ **Consumer key**
+	+ **Consumer secret**
+	+ **Access token**
+	+ **Access token secret**
 
 4. [Windows Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
@@ -34,7 +32,8 @@
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [WindowsAzure.com]: http://www.windowsazure.com/
 [Windows Azure 管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]:/documentation/articles/mobile-services-how-to-register-twitter-authentication
+[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: ../articles/mobile-services-how-to-register-twitter-authentication.md
 [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
-<!--HONumber=47-->
+
+<!--HONumber=49-->

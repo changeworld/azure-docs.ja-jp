@@ -1,5 +1,5 @@
 ﻿<properties 
-	pageTitle="Microsoft 認証用の登録 - Mobile Services " 
+	pageTitle="Microsoft 認証用の登録 - Mobile Services" 
 	description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。" 
 	authors="ggailey777" 
 	services="mobile-services" 
@@ -20,9 +20,9 @@
 
 このトピックでは、Azure のモバイル サービスの認証プロバイダーとして Live Connect を使用できるようにアプリケーションを登録する方法について説明します。 
 
->[AZURE.NOTE]ユニバーサル Windows アプリ用の Microsoft アカウント認証を構成する場合、または、Windows ストア アプリ用にシングル サインオン エクスペリエンスを提供する場合は、「[Windows ストア アプリ パッケージを Microsoft 認証に登録する](/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication)」をご覧ください。
+>[AZURE.NOTE]ユニバーサル Windows アプリ用の Microsoft アカウント認証を構成する場合、または、Windows ストア アプリ用にシングル サインオン エクスペリエンスを提供する場合は、[Windows ストア アプリ パッケージを Microsoft 認証に登録する方法](mobile-services-how-to-register-store-app-package-microsoft-authentication.md)に関するページを参照してください。
 
-1. 次に、[ <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">マイ アプリケーション</a> ] ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
+1. Live Connect デベロッパー センターの <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">[マイ アプリケーション]</a> ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
 
 2. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
@@ -62,4 +62,4 @@
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
-<!--HONumber=47-->
+<!--HONumber=49-->
