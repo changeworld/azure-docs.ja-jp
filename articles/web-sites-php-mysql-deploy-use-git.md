@@ -1,6 +1,6 @@
 ﻿<properties 
-	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする 
-	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。 
+	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする"
+	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。"
 	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 

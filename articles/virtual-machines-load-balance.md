@@ -1,6 +1,6 @@
 ﻿<properties 
-	pageTitle="Azure インフラストラクチャ サービスの負荷分散 
-	description="Azure でサポートされている 2 種類の負荷分散について説明します。クラウド サービス用のロード バランサーとクライアント トラフィック用の Azure Traffic Manager。 
+	pageTitle="Azure インフラストラクチャ サービスの負荷分散"
+	description="Azure でサポートされている 2 種類の負荷分散について説明します。クラウド サービス用のロード バランサーとクライアント トラフィック用の Azure Traffic Manager。 "
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="cherylmc" 

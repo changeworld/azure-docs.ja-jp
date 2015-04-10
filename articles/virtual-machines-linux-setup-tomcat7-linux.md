@@ -1,6 +1,6 @@
 ﻿<properties 
-	pageTitle="Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法 
-	description="Linux を実行する Azure の仮想マシン (VM) を使用して Microsoft Azure で Tomcat7 を設定する方法について説明します。 
+	pageTitle="Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法"
+	description="Linux を実行する Azure の仮想マシン (VM) を使用して Microsoft Azure で Tomcat7 を設定する方法について説明します。"
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="NingKuang" 

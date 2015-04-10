@@ -1,6 +1,6 @@
 ﻿<properties
-   pageTitle="Traffic Manager プロファイルの管理
-   description="この記事は、Traffic Manager プロファイルの履歴を作成、無効化、有効化、削除、および表示するために役立ちます。
+   pageTitle="Traffic Manager プロファイルの管理"
+   description="この記事は、Traffic Manager プロファイルの履歴を作成、無効化、有効化、削除、および表示するために役立ちます。"
    services="traffic-manager"
    documentationCenter=""
    authors="cherylmc"

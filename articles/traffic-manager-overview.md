@@ -1,6 +1,6 @@
 ﻿<properties 
-   pageTitle="Traffic Manager の概要
-   description="この記事は、Traffic Manager とそのしくみを理解するのに役立ちます。
+   pageTitle="Traffic Manager の概要"
+   description="この記事は、Traffic Manager とそのしくみを理解するのに役立ちます。"
    services="traffic-manager"
    documentationCenter=""
    authors="cherylmc"

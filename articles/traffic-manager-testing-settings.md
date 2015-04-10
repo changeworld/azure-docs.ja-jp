@@ -1,6 +1,6 @@
 ﻿<properties 
-   pageTitle="Traffic Manager の設定のテスト
-   description="この記事は、Traffic Manager の設定のテストを支援します。
+   pageTitle="Traffic Manager の設定のテスト"
+   description="この記事は、Traffic Manager の設定のテストを支援します。"
    services="traffic-manager"
    documentationCenter=""
    authors="cherylmc"

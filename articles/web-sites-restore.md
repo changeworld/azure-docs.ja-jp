@@ -1,6 +1,6 @@
 ﻿<properties 
 	pageTitle="Azure App Service での Web アプリの復元" 
-	description ="Web アプリをバックアップから復元する方法について説明します。" 
+	description="Web アプリをバックアップから復元する方法について説明します。" 
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="cephalin" 
