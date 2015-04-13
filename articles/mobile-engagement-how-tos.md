@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
    pageTitle="Azure Mobile Engagement ハウツー ガイド" 
    description="Azure Mobile Engagement のハウツー ガイド" 
    services="mobile-engagement" 
@@ -20,7 +20,7 @@
 
 ## はじめに
 
-Azure Mobile Engagement ユーザー インターフェイスに関する以下のハウツー ガイドでは、Azure Mobile Engagement の基本[概念][Link 6] を理解し、Azure Mobile Engagement [SDK][Link 5] をアプリケーションと統合した後でのみ操作することを想定します。これらのチュートリアルでは、標準的なユーザーが[ユーザー インターフェイス]を使用する方法に重点を置いています。[Link 1] 開発者ユーザーが HTTP REST ベースの [API] を使用する方法には重点を置きません[Link 4]。これらの[チュートリアル][Link 3] のいずれかで問題が発生した場合は、Azure Mobile Engagement の[「Troubleshooting Guides (トラブルシューティング ガイド)」][Link 2]を参照してください。
+Azure Mobile Engagement ユーザー インターフェイスに関する以下のハウツー ガイドでは、Azure Mobile Engagement の基本[概念][Link 6] を理解し、Azure Mobile Engagement [SDK][Link 5] をアプリケーションと統合した後でのみ操作することを想定します。これらのチュートリアルでは、標準的なユーザーが[ユーザー インターフェイス]を使用する方法に重点を置いています。[Link 1] 開発者ユーザーが HTTP REST ベースの [API][Link 4] を使用する方法には重点を置きません。これらの[チュートリアル][Link 3] のいずれかで問題が発生した場合は、Azure Mobile Engagement の[「Troubleshooting Guides (トラブルシューティング ガイド)」][Link 2]を参照してください。
 
 ## <a name="#First">最初のプッシュ通知キャンペーンの実行</a>
 -    リーチが SDK でアプリに統合されていることを確認します。 
