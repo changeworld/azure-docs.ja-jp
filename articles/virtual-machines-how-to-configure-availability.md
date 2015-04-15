@@ -68,15 +68,6 @@ Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、�
 - [Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-windows-vms/)
 - [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-linux-vms/)
 
-<<<<<<< HEAD
-	>[AZURE.NOTE] パラメーターなしで `Get-AzureVMImage` を実行し、サブスクリプションに適用されるすべてのイメージの一覧を取得します。この結果、大規模な一覧が返される場合があります。一覧を短くするには、イメージのファミリ名などのプロパティを使用します。この方法で指定したイメージを見つけるためのヒントと例については、「[Windows PowerShell を使用してイメージを管理する](http://msdn.microsoft.com/library/azure/dn790330.aspx)」をご覧ください。
-
-3.	新しい仮想マシンの構成を指定します。次に、パイプラインを使用して、VM を作成するコマンドレットに構成オブジェクトを渡します。必ず実際の値を使用して、  &lt;VmName&gt; や &lt;VmSize&gt; などのプレースホルダーを置き換えてください。
-
-	`C:\PS> New-AzureVMConfig -Name "<VmName>" -InstanceSize <VmSize> -AvailabilitySetName "<SetName>" -ImageName $image | Add-AzureProvisioningConfig -Windows -AdminUsername "<UserName>" -Password "<MyPassword>" | Add-AzureDataDisk -CreateNew -DiskSizeInGB 50 -DiskLabel 'datadisk1' -LUN 0 | New-AzureVM -ServiceName "<MySvc1>" `
-
-=======
->>>>>>> 1dc830a16302e6b943a5d55ebacef659451b22d6
 
 ## <a id="addmachine"> </a>方法 2:既存の仮想マシンを可用性セットに追加する##
 
