@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Notification Hubs によるユーザーへの通知" 
 	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して Objective-C で記述されています。" 
 	documentationCenter="ios" 
@@ -19,25 +19,25 @@
 #Azure Notification Hubs によるユーザーへの通知
 
 <div class="dev-center-tutorial-selector sublanding">
-    	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-/" title="iOS" class="current">iOS</a>
-		<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/" title="Android">Android</a>
+    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/" title="Windows Universal">Windows Universal</a><a href="/documentation/articles/notification-hubs-/" title="iOS" class="current">iOS</a>
+		<a href="/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/" title="Android">Android</a>
 </div>
 
 Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
 
-> [AZURE.NOTE] このチュートリアルでは、[通知ハブの使用 (iOS)](http://azure.microsoft.com/ documentation/articles/notification-hubs-ios-get-started/) での説明に従って通知が作成され、構成されていると想定しています。また、「[安全なプッシュ (iOS)](http://azure.microsoft.com/ documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/)」チュートリアルの前提条件でもあります。
-> バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-push-notifications-app-users/)を参照してください。
+> [AZURE.NOTE] このチュートリアルでは、[通知ハブの使用 (iOS)] での説明に従って通知ハブが作成され、構成されていると想定しています(notification-hubs-ios-get-started.md)。また、このチュートリアルは、「[Azure Notification Hubs の安全なプッシュ (iOS)]notification-hubs-aspnet-backend-ios-secure-push.md) 」の前提条件でもあります。
+> バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](mobile-services-javascript-backend-ios-push-notifications-app-users.md) を参照してください。
 
 
 ## 通知ハブを作成し構成する
 
-「[Notification Hubs の使用 (iOS)](http://azure.microsoft.com/ documentation/articles/notification-hubs-ios-get-started/)」のセクション 1 から 5 の手順に従ってください。iOS デバイス プロビジョニングに関するその他のリソースについては、「[Big Nerd Ranch](http://www.bignerdranch.com/we-teach/how-to-prepare/ios-device-provisioning.html)」のガイドを参照してください。
+「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」のセクション 1 から 5 の手順に従ってください。iOS デバイス プロビジョニングに関するその他のリソースについては、「[Big Nerd Ranch](http://www.bignerdranch.com/we-teach/how-to-prepare/ios-device-provisioning.html)」のガイドを参照してください。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## iOS アプリを変更する
 
-1. 「[Notification Hubs の使用 (iOS)](http://azure.microsoft.com/ documentation/articles/notification-hubs-ios-get-started/)」のセクション 1 から 5 の手順に従って、単一枠ビュー アプリケーションを開きます。
+1. 「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」のセクション 1 から 5 の手順に従って作成した、単一枠ビュー アプリケーションを開きます。
 
 > [AZURE.NOTE] このセクションでは、プロジェクトの組織名は空で構成されていると想定しています。そうでない場合は、すべてのクラス名の前にその組織名を付けてください。
 
@@ -206,7 +206,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 		    [dataTask resume];
 		}
 
-	上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」で説明したロジックを実装します。
+	上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通知ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」で説明したロジックを実装します。
 
 	このクラスが適切に機能するためには、プロパティ **authorizationHeader** を設定する必要があります。このプロパティは、ログイン後に **ViewController** クラスによって設定されます。
 
@@ -334,4 +334,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users1.png
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

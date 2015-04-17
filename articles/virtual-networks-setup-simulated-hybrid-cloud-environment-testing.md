@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2015" 
+	ms.date="03/18/2015" 
 	ms.author="josephd"/>
 
-#テスト用のシミュレートされたハイブリッド クラウド環境の設定
+# テスト用のシミュレートされたハイブリッド クラウド環境の設定
 
 このトピックでは、Microsoft Azure と 2 つの Azure 仮想ネットワークを使用してテスト用のシミュレートされたハイブリッド クラウド環境を作成する手順について説明します。インターネットに直接接続できず、利用可能なパブリック IP アドレスがない場合は、 
-「[テスト用のハイブリッド クラウド環境の設定](http://azure.microsoft.com/documentation/articles/virtual-networks-setup-hybrid-cloud-environment-testing/)」の代わりに、この構成を使用してください。完成すると次のような構成になります。
+[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md) インターネットへの直接接続がなく、使用可能な公開 IP アドレスもない場合。完成すると次のような構成になります。
 
 ![](./media/virtual-networks-set-up-simulated-hybrid-cloud-environment-for-testing/CreateSimHybridCloud_4.png)
 
@@ -42,13 +42,12 @@
 3.	VNet 間 VPN 接続を作成する。
 4.	DC2 を構成する。 
 
-Azure サブスクリプションをまだ取得していない場合は、[Azure の 1 か月間無料評価版のページ](http://www.windowsazure.com/pricing/free-trial/)で無料評価版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションをまだ取得していない場合は、[Azure の 1 か月間無料評価版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料評価版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
->[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料評価版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。このテスト環境を使用していない場合に稼働費用を削減する方法の詳細については、このトピックの[この環境の継続的な費用を最小限に抑える](#costs)を 参照してください。
+>[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料評価版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。このテスト環境を使用していない場合に稼働費用を削減する方法の詳細については、このトピックの「[この環境の継続的な費用を最小限に抑える](#costs)」を ご覧ください。
 
 
-
-##フェーズ 1:TestLab 仮想ネットワークを構成する
+## フェーズ 1:TestLab 仮想ネットワークを構成する
 
 [Azure の基本構成に関するテスト ラボ ガイド](http://www.microsoft.com/download/details.aspx?id=41684)に記載されている手順に従い、TestLab という Azure 仮想ネットワークで DC1、APP1、および CLIENT1 の各コンピューターを構成します。 
 
@@ -63,11 +62,11 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 ![](./media/virtual-networks-set-up-simulated-hybrid-cloud-environment-for-testing/CreateSimHybridCloud_1.png)
  
-##フェーズ 2:TestVNET 仮想ネットワークを作成する
+## フェーズ 2:TestVNET 仮想ネットワークを作成する
 
 まず、TestVNET という名前の新しい仮想ネットワークを作成します。
 
-1.	Azure の管理ポータルのタスク バーで **[新規]、[ネットワーク サービス]、[仮想ネットワーク]、[カスタム作成]** の順にクリックします。
+1.	Azure 管理ポータルのタスク バーで **[新規]、[ネットワーク サービス]、[仮想ネットワーク]、[カスタム作成]** の順にクリックします。
 2.	[仮想ネットワークの詳細] ページで、**[名前]** に「**TestVNET**」と入力します。
 3.	**[場所]** で、適切な場所を選択します。
 4.	次へ進む矢印をクリックします。
@@ -78,9 +77,9 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 	- TestSubnet の **[CIDR (アドレス数)]** 列で、**[/24 (256)]** をクリックします。
 7.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
-次に、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell/)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。
+次に、「[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。
 
-次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、**TestVNET**-*UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
+次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、"TestVNET-**UniqueSequence**" という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
 
 名前が一意かどうかは、ローカル コンピューターで次の Azure PowerShell コマンドを使用することで確認できます。
 
@@ -114,11 +113,11 @@ VPN デバイスの IP アドレス 131.107.0.1 と 131.107.0.2 は、2 つの�
 1.	ローカル コンピューターで Azure の管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、**TestLab** の **[状態]** 列が **[作成済み]** に設定されていることを確認します。
 2.	**[TestLab]** をクリックし、**[構成]** をクリックします。[TestLab] ページの **[サイト間接続]** セクションで、**[ローカル ネットワークに接続する]** をクリックします。 
 3.	**[ローカル ネットワーク]** で **[TestVNETLNet]** を選択します。
-4.	メニュー バーで **[保存]** をクリックします。
+4.	メニュー バーで **[保存]** をクリックします。場合によっては、**[ゲートウェイ サブネット]** をクリックすることによって、Azure VPN ゲートウェイで使用されるサブネットを作成することが必要です。
 5.	左側のウィンドウで **[ネットワーク]** をクリックし、TestVNET の **[状態]** 列が **[作成済み]** に設定されていることを確認します。
 6.	**[TestVNET]** をクリックし、**[構成]** をクリックします。[TestVNET] ページの **[サイト間接続]** セクションで、**[ローカル ネットワークに接続する]** をクリックします。 
 7.	**[ローカル ネットワーク]** で **[TestLabLNet]** を選択します。
-8.	メニュー バーで **[保存]** をクリックします。
+8.	メニュー バーで **[保存]** をクリックします。場合によっては、**[ゲートウェイ サブネット]** をクリックすることによって、Azure VPN ゲートウェイで使用されるサブネットを作成することが必要です。
 
 次に、2 つの仮想ネットワーク用の仮想ネットワーク ゲートウェイを作成します。
 
@@ -140,7 +139,7 @@ VPN デバイスの IP アドレス 131.107.0.1 と 131.107.0.2 は、2 つの�
 6.	[ローカル ネットワークの詳細を指定する] ページで、**[VPN デバイスの IP アドレス (省略可能)]** に、(前の手順 7. の) TestVNET 仮想ネットワーク用の仮想ネットワーク ゲートウェイの IP アドレスを入力し、右矢印をクリックします。
 7.	[アドレス空間を指定します] ページで、チェック マークをクリックします。
 
-次に、両方のゲートウェイの事前共有キーを、同じ値 (Azure の管理ポータルで TestLab 仮想ネットワークに対して自動的に決定されたキーの値) を使用するように構成します。ローカル コンピューターで管理者レベルの Azure PowerShell コマンド プロンプトから次のコマンドを実行して、TestLab の事前共有キーの値を設定します。
+次に、両方のゲートウェイの事前共有キーを、同じ値 (Azure の管理ポータルで TestLab 仮想ネットワークに対して自動的に決定されたキーの値) を使用するように構成します。ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、TestLab の事前共有キーの値を設定します。
 
 	$preSharedKey="<The preshared key for the TestLab virtual network>"
 	Set-AzureVNetGatewayKey -VNetName TestVNET -LocalNetworkSiteName TestLabLNet -SharedKey $preSharedKey
@@ -151,16 +150,15 @@ VPN デバイスの IP アドレス 131.107.0.1 と 131.107.0.2 は、2 つの�
 
 ![](./media/virtual-networks-set-up-simulated-hybrid-cloud-environment-for-testing/CreateSimHybridCloud_3.png)
  
-##フェーズ 4:DC2 を構成する
+## フェーズ 4:DC2 を構成する
 
 まず、DC2 用の Azure の仮想マシンを作成します。ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行します。
 
 	$ServiceName="<Your cloud service name from Phase 2>"
-	$LocalAdminName="<A local administrator account name>" 
-	$LocalAdminPW="<A password for the local administrator account>"
-	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for DC2."
+	$image = Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DC2 -InstanceSize Medium -ImageName $image
-	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $LocalAdminName -Password $LocalAdminPW
+	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
 	$vm1 | Set-AzureStaticVNetIP -IPAddress 192.168.0.4
 	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles -LUN 0 -HostCaching None
@@ -168,8 +166,8 @@ VPN デバイスの IP アドレス 131.107.0.1 と 131.107.0.2 は、2 つの�
 
 次に、新しい DC2 仮想マシンにログオンします。
 
-1.	Azure の管理ポータルの左側ウィンドウで、**[仮想マシン]** をクリックし、DC2 の **[状態]** 列で **[実行中]** をクリックします。
-2.	タスク バーで、**[接続]** をクリックします。 
+1.	Azure 管理ポータルの左側ウィンドウで、**[仮想マシン]** をクリックし、DC2 の **[状態]** 列で **[実行中]** をクリックします。
+2.	In タスク バーで、**[接続]** をクリックします。 
 3.	DC2.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
@@ -206,7 +204,7 @@ CORP\User1 のパスワードとディレクトリ サービス復元モード (
 
 これで TestVNET 仮想ネットワーク独自の DNS サーバー (DC2) が設定されたので、この DNS サーバーを使用するように TestVNET 仮想ネットワークを構成する必要があります。
 
-1.	Azure の管理ポータルの左側ウィンドウで、**[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。
+1.	Azure 管理ポータルの左側ウィンドウで、**[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。
 2.	**[構成]** をクリックします。
 3.	**[DNS サーバー]** で、10.0.0.4 のエントリを削除します。
 4.	**[DNS サーバー]** で、名前が **DC2** で、IP アドレスが **192.168.0.4** のエントリを追加します。 
@@ -220,20 +218,20 @@ CORP\User1 のパスワードとディレクトリ サービス復元モード (
 
 このテスト環境では、次の構成を構築することもできます。
 
-- [SharePoint イントラネット ファーム](../virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
-- [Web ベースの LOB アプリケーション](../virtual-networks-setup-lobapp-hybrid-cloud-testing/)
-- [Office 365 ディレクトリ同期 (DirSync) サーバー](../virtual-networks-setup-dirsync-hybrid-cloud-testing/)
+- [SharePoint イントラネット ファーム](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
+- [Web ベースの LOB アプリケーション](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
+- [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
 
-##その他のリソース
+## その他のリソース
 
-[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)
+[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
 [VNet 間の接続の構成](http://msdn.microsoft.com/library/azure/dn690122.aspx)
 
 
-##<a id="costs"></a>この環境の継続的な費用を最小限に抑える
+## <a id="costs"></a>この環境の継続的な費用を最小限に抑える
 
-この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。詳細については、「[Azure オートメーションの使用](../automation-create-runbook-from-samples/)」を参照してください。企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
+この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。詳細については、「[Azure オートメーションの使用](automation-create-runbook-from-samples.md)」 をご覧ください企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
 
 Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、「[Virtual Network 料金](http://azure.microsoft.com/pricing/details/virtual-network/)」を参照してください。2 つの VPN ゲートウェイ (それぞれ TestLab 用と TestVNET 用) の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
  
@@ -248,7 +246,7 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 2.	タスク バーで **[ゲートウェイの作成]** をクリックし、**[動的ルーティング]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが作成され、ゲートウェイの状態が **[接続中]** に変わるまで待ちます。この処理には数分かかります。
 3.	[ダッシュボード] ページで、**[ゲートウェイ IP アドレス]** の値をメモします。これは、TestLab 仮想ネットワーク用の Azure VPN ゲートウェイの新しいパブリック IP アドレスです。この IP アドレスは、TestLabLNet ローカル ネットワークを再構成するために必要です。
 4.	タスク バーで、**[キーの管理]** をクリックし、キーの横にあるコピー アイコンをクリックして、クリップボードにコピーします。このキーの値をドキュメントに貼り付けて保存します。このキーの値は、TestVNET 仮想ネットワーク用の VPN ゲートウェイを再構成するために必要です。
-5.	ローカル コンピューターで Azure の管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。[ダッシュボード] ページに、**[ゲートウェイは作成されませんでした]** という状態が表示されます。
+5.	ローカル コンピューターで Azure 管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。[ダッシュボード] ページに、**[ゲートウェイは作成されませんでした]** という状態が表示されます。
 6.	タスク バーで **[ゲートウェイの作成]** をクリックし、**[動的ルーティング]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが作成され、ゲートウェイの状態が [接続中] に変わるまで待ちます。この処理には数分かかります。
 7.	[ダッシュボード] ページで、**[ゲートウェイ IP アドレス]** の値をメモします。これは、TestVNET 仮想ネットワーク用の Azure VPN ゲートウェイの新しいパブリック IP アドレスです。この IP アドレスは、TestVNETLNet ローカル ネットワークを再構成するために必要です。
 
@@ -269,4 +267,4 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

@@ -10,14 +10,15 @@
 <tags 
 	ms.service="notification-hubs" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-chrome" 
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
-	ms.date="01/10/2015" 
+	ms.date="03/15/2015" 
 	ms.author="piyushjo"/>
-# 通知ハブの使用
+	
+# Notification Hubs の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a><a href="/ja-jp/documentation/articles/notification-hubs-chrome-get-started/" title="Chrome" class="current">Chrome</a></div>
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
 
 このトピックでは、Azure Notification Hubs を使用して Chrome アプリケーションにプッシュ通知を送信する方法について説明します。
 
@@ -31,17 +32,17 @@ Chrome アプリケーション通知を使用する主な利点の 1 つは、G
 
 * [Google Cloud Messaging (GCM) を有効にする](#register)
 * [Notification Hub を構成する](#configure-hub)
-* [Notification Hub に Chrome アプリケーションを接続する](#connect-app)
-* [Chrome アプリケーションに通知を送信する](#send)
+* [Notification Hub に Chrome アプリを接続する](#connect-app)
+* [Chrome アプリに通知を送信する](#send)
 * [次のステップ](#next-steps)
 
 このチュートリアルでは、通知ハブを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。[Google Cloud Messaging for Chrome] は廃止されており、同じ GCM で Android デバイスと Chrome インスタンスの両方がサポートされるため、GCM と Azure Notification Hub の構成は Android 用の構成と同じです。 
 
 Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、「次のステップ」に記載されているチュートリアルも一緒に参照してください。 
 
->[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http://azure.microsoft.com/ documentation/articles/notification-hubs-chrome-get-started/" target="_blank">Azure の無料評価版サイト</a>を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)をご覧ください。
 
-## <a id="register"></a>Google Cloud Messaging (GCM) を有効にする
+##<a id="register"></a>Google Cloud Messaging (GCM) を有効にする
 
 1. [Google Cloud コンソール] Web サイトに移動し、Google アカウント資格情報でサインインして、**[Create Project]** ボタンをクリックします。**[Project Name]** に適切なプロジェクト名を指定して、**[Create]** ボタンをクリックします。 
 
@@ -51,7 +52,7 @@ Notification Hubs を使用してデバイスの特定のユーザーとグル�
 
    	![][2]
 
-3. 左側のウィンドウで、**[APIs & auth]** をクリックして下にスクロールし、トグルをクリックして **[Google Cloud Messaging for Android]** を有効にします。[ *Google Cloud Messaging for Chrome*] を有効にする必要はありません。後から名前を  *Google Cloud Messaging* に変更することもできます。 
+3. 左側のウィンドウで、**[APIs & auth]** をクリックして下にスクロールし、トグルをクリックして **[Google Cloud Messaging for Android]** を有効にします。 *Google Cloud Messaging for Chrome* を有効にする必要はありません。将来、名前を  *Google Cloud Messaging* に変更することも可能です。 
 
    	![][3]
 
@@ -63,7 +64,7 @@ Notification Hubs を使用してデバイスの特定のユーザーとグル�
 
    	![][5]
 
-## <a id="configure-hub"></a>Notification Hub を構成する
+##<a id="configure-hub"></a>Notification Hub を構成する
 
 1. **[Azure の管理ポータル]**にログオンし、画面の左下にある **[+新規]** をクリックします。
 
@@ -71,7 +72,7 @@ Notification Hubs を使用してデバイスの特定のユーザーとグル�
 
    	![][6]
 
-4. 前の手順で作成した Notification Hub に移動します。Notification Hub を含む名前空間 (通常は ***Notification Hub 名*-ns**) をクリックします。   
+4. 前の手順で作成した Notification Hub に移動します。通知ハブを含む名前空間 (通常は *** 通知ハブ名*-ns**) をクリックします。   
 
    	![][7]
 
@@ -97,9 +98,9 @@ Notification Hubs を使用してデバイスの特定のユーザーとグル�
 
 これで、Notification Hub が GCM と連動するように構成されました。また、追加の構成を行うために必要な接続文字列を取得しました。
 
-## <a id="connect-app"></a>Notification Hub に Chrome アプリケーションを接続する
+##<a id="connect-app"></a>Notification Hub に Chrome アプリケーションを接続する
 
-### 新しい Chrome アプリケーションの作成
+###新しい Chrome アプリケーションの作成
 以下のサンプルは、[Chrome アプリケーションの GCM サンプル]に基づいており、Chrome アプリケーションの推奨の作成方法を使用します。以降のセクションでは、Azure Notification Hub に関連する手順を重点的に説明しています。この Chrome アプリケーションのソースを [Chrome アプリケーションの Notification Hub のサンプル]のページからダウンロードすることをお勧めします。
 
 Chrome アプリケーションは JavaScript を使用して作成されます。推奨される任意のワード エディターを使用して作成を行うことができます。 
@@ -110,25 +111,25 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 
 2. フォルダーを作成して **ChromePushApp** という名前を付けます。任意の名前を指定できます。 
 
-3. このフォルダー内の [crypto-js ライブラリ]から  *cryto-js library*をダウンロードします。このライブラリ フォルダーには 2 つのサブフォルダー ( *components* と  *rollups*) が含まれています。 
+3. このフォルダーの[crypto-js ライブラリ] から *cryto-js library* をダウンロードします。このライブラリのフォルダーに、*components* と *rollups* の 2 つのサブフォルダーが含まれることになります。 
 
 4. manifest.json ファイルを作成します。すべての Chrome アプリケーションは、アプリケーションのメタデータ (具体的にはアプリケーションに対するアクセス許可) を記述するマニフェスト ファイルに基づいています。
 
 		{
-		  "name":"NH-GCM Notifications",
-		  "description":"Chrome platform app.",
-		  "manifest_version":2,
-		  "version":"0.1",
-		  "app":{
-		    "background":{
-		      "scripts":["background.js"]
+		  "name": "NH-GCM Notifications",
+		  "description": "Chrome platform app.",
+		  "manifest_version": 2,
+		  "version": "0.1",
+		  "app": {
+		    "background": {
+		      "scripts": ["background.js"]
 		    }
 		  },
-		  "permissions":["gcm", "storage", "notifications", "https://*.servicebus.windows.net/*"],
-		  "icons":{ "128":"gcm_128.png" }
+		  "permissions": ["gcm", "storage", "notifications", "https://*.servicebus.windows.net/*"],
+		  "icons": { "128": "gcm_128.png" }
 		}
 	
-	 *permissions* 要素に注目してください。この要素は、Chrome アプリケーションが GCM からのプッシュ通知を受信できるように指定します。また、この要素では、Chrome アプリケーションが REST を呼び出して登録を行うための Azure Notification Hub の URI も指定する必要があります。
+	 *permissions* 要素に注目してください。これにより、この Chrome アプリが GCM からのプッシュ通知を受信できるよう、指定されます。また、この要素では、Chrome アプリケーションが REST を呼び出して登録を行うための Azure Notification Hub の URI も指定する必要があります。
 	このサンプルでは、元の GCM サンプルから再利用されるソースにあるアイコン ファイル (gcm_128.png) を使用します。任意の画像を使用できます。 
  
 5. 次のコードを含む background.js というファイルを作成します。
@@ -148,9 +149,9 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		  for (var key in message.data) {
 		    if (messageString != "")
 		      messageString += ", "
-		    messageString += key + ":"+ message.data[key];
+		    messageString += key + ":" + message.data[key];
 		  }
-		  console.log("Message received:" + messageString);
+		  console.log("Message received: " + messageString);
 		
 		  // Pop up a notification to show the GCM message.
 		  chrome.notifications.create(getNotificationId(), {
@@ -169,8 +170,8 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		    registerWindowCreated = true;
 		    chrome.app.window.create(
 		      "register.html",
-		      {  width:520,
-		         height:500,
+		      {  width: 520,
+		         height: 500,
 		         frame: 'chrome'
 		      },
 		      function(appWin) {}
@@ -185,9 +186,9 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		chrome.runtime.onInstalled.addListener(firstTimeRegistration);
 		chrome.runtime.onStartup.addListener(firstTimeRegistration);
 
-	これは、Chrome アプリケーション ウィンドウの html (*register.html*) をポップアップし、受信したプッシュ通知を処理するためのハンドラー  *messageReceived* を定義するファイルです。 
+	これは、Chrome アプリ ウィンドウの html (*register.html*) をポップアップ表示し、受信したプッシユ通知を処理するためのハンドラー  *messageReceived* を定義するファイルです。 
 
-6. Chrome アプリケーションの UI を定義する  *register.html* というファイルを作成します。このサンプルでは  *CryptoJS v3.1.2* を使用します。その他のバージョンをダウンロードした場合は、スクリプトの src のパスを修正してください。 
+6. Chrome アプリの UI を定義する *register.html* というファイルを作成します。このサンプルでは  *CryptoJS v3.1.2* を使用します。その他のバージョンをダウンロードした場合は、スクリプトの src のパスを修正してください。 
 
 		<html>
 		
@@ -222,7 +223,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		
 		</html>
 
-7. 次のコードを含む  *register.js* というファイルを作成します。このファイルは、 *register.html* の基盤となるスクリプトを指定します。Chrome アプリケーションではインライン実行が許可されないため、UI 用の基盤となるスクリプトを別途作成する必要があります。 
+7. 次のコードを含む  *register.js* というファイルを作成します。このファイルは、*register.html* の基盤となるスクリプトを指定します。Chrome アプリケーションではインライン実行が許可されないため、UI 用の基盤となるスクリプトを別途作成する必要があります。 
 
 		var registrationId = "";
 		var hubName        = "", connectionString = "";
@@ -231,7 +232,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		window.onload = function() { 
 		   document.getElementById("registerWithGCM").onclick = registerWithGCM;  
 		   document.getElementById("registerWithNH").onclick = registerWithNH; 
-		   updateLog("You have not registered yet.Please provider sender ID and register with GCM and then with  Notification Hubs."); 
+		   updateLog("You have not registered yet. Please provider sender ID and register with GCM and then with  Notification Hubs."); 
 		} 
 		
 		function updateLog(status) {
@@ -258,7 +259,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		  if (chrome.runtime.lastError) {
 		    // When the registration fails, handle the error and retry the
 		    // registration later.
-		    updateLog("Registration failed:" + chrome.runtime.lastError.message);
+		    updateLog("Registration failed: " + chrome.runtime.lastError.message);
 		    return;
 		  }
 		
@@ -346,8 +347,8 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		        updateLog(client.responseText);
 		      } else {
 		        updateLog("Notification Hub Registration did not succeed!");
-		        updateLog("HTTP Status:" + client.status + " :" + client.statusText);
-		        updateLog("HTTP Response:" + "\n" + client.responseText);
+		        updateLog("HTTP Status: " + client.status + " : " + client.statusText);
+		        updateLog("HTTP Response: " + "\n" + client.responseText);
 		      }
 		    }
 		  };
@@ -370,21 +371,21 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		}
 
 	上記のスクリプトの注意事項は以下のとおりです。
-	- *window.onload* は、UI の 2 つのボタンのボタン クリック イベント (GCM への登録を行うイベントと、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行うイベント) を定義します。 
-	- *updateLog* 関数は、単純なログ関数を定義します。 
-	- *registerWithGCM* は、Chrome アプリケーション インスタンスを登録するために、GCM に対して  *chrome.gcm.register* を呼び出す最初のボタン クリック ハンドラーです。 
-	- *registerCallback* は、上記の GCM 登録の呼び出しが戻ったときに呼び出されるコールバック関数です。 
-	- *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した  *hubName* と  *connectionString* を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。 
-	- *splitConnectionString* と  *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。詳細については、http://msdn.microsoft.com/library/dn495627.aspx を参照してください。 
-	- *sendNHRegistrationRequest* は、HTTP REST を呼び出す関数です。 
-	- *registrationPayload* は、登録の xml ペイロードを定義します。詳細については、「[登録の作成]」を参照してください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。 
-	- *client* は、HTTP POST 要求に使用する  *XMLHttpRequest* のインスタンスです。sasToken を使用して  *Authorization* ヘッダーを更新している点に注意してください。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。 
+	- *window.onload* は、UI の 2 つのボタンのボタン クリック イベント (GCM への登録を行うイベントと、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行うイベント) を定義します。
+	- *updateLog* 関数は、単純なログ関数を定義します。
+	- *registerWithGCM* は、Chrome アプリ インスタンスを登録するために、GCM に対して  *chrome.gcm.register* を呼び出す最初のボタン クリック ハンドラーです。 
+	- *registerCallback* は、上記の GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。
+	- *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した ** と ** を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。 
+	- *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、http://msdn.microsoft.com/library/dn495627.aspxを参照してください。 
+	- *sendNHRegistrationRequest*  は、HTTP REST 呼び出しを実行する関数です。
+	- *registrationPayload* は、登録 xml ペイロードを定義します。詳細については、「[登録の作成]」を参照してください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。 
+	- *client* は、HTTP POST 要求の発行のために使用する  *XMLHttpRequest* のインスタンスです。*Authorization* ヘッダーを sasToken によって更新していることに注意してください。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。 
 	
 
 8. 最後に、フォルダーについて次のビューが表示されます。
    	![][21]
 
-### Chrome アプリケーションのセットアップとテスト
+###Chrome アプリケーションのセットアップとテスト
 
 1. Chrome ブラウザーを開きます。**Chrome の [Extensions]** を開いて **[Developer mode]** を有効にします。 
 
@@ -398,20 +399,20 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 
    	![][18]
 
-4. 前の手順で **Google Cloud Console** から取得した**プロジェクト番号**を [Sender ID] に入力し、**[Register with GCM]** をクリックします。" *Registration with GCM succeeded.*" というメッセージが表示されます。
+4. 前の手順で **Google Cloud Console** から取得した**プロジェクト番号**を [Sender ID] に入力し、**[Register with GCM]** をクリックします。 *GCM 登録が成功しました* というメッセージが表示されるはずです。
 
    	![][19]
 
-5. **[Notification Hub Name]** に Notification Hub 名を入力し、前の手順で Azure の管理ポータルから取得した **DefaultListenSharedAccessSignature** を入力して、**[Register with Azure Notification Hub]** をクリックします。" *Notification Hub Registration succesful!*" というメッセージおよび登録の応答の詳細 (Azure Notification Hubs の登録 ID を含む) が表示されます。 
+5. **[Notification Hub Name]** に Notification Hub 名を入力し、前の手順で Azure の管理ポータルから取得した **DefaultListenSharedAccessSignature** を入力して、**[Register with Azure Notification Hub]** をクリックします。*通知ハブの登録に成功しました*というメッセージ、および Azure Notification Hubs Registration ID を含む登録応答の詳細が表示されます。 
 
    	![][20]  
 
-## <a name="send"></a>Chrome アプリケーションに通知を送信する
+##<a name="send"></a>Chrome アプリケーションに通知を送信する
 
 Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知を送信できますが、このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。 
 
-Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「**Mobile Services アプリへのプッシュ通知の追加**」 ([.NET バックエンド](/ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/) | [JavaScript バックエンド](/ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/)) を参照してください。  
-REST API を使用して通知を送信する方法の例については、「**Java/PHP から Notification Hubs を使用する方法**」 ([Java](/ja-jp/documentation/articles/notification-hubs-java-backend-how-to/) | [PHP](/ja-jp/documentation/articles/notification-hubs-php-backend-how-to/) | [Python](/ja-jp/documentation/articles/notification-hubs-python-backend-how-to/)) を参照してください。
+Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「**Mobile Services アプリへのプッシュ通知の追加**」 ([.NET バックエンド](mobile-services-javascript-backend-android-get-started-push.md) | [JavaScript バックエンド](mobile-services-javascript-backend-android-get-started-push.md)) を参照してください。  
+REST API を使用して通知を送信する方法の例については、**「Java/PHP/Python から Notification Hubs を使用する方法」**( [Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md) | [Python](notification-hubs-python-backend-how-to.md)) を参照してください。
 
 1. Visual Studio で、**[ファイル]** メニューの **[新規作成]**、**[プロジェクト...]** をクリックし、**[Visual C#]** で **[Windows]**、**[コンソール アプリケーション]**、**[OK]** の順にクリックします。これで、新しいコンソール アプリケーション プロジェクトが作成されます。
 
@@ -436,7 +437,7 @@ REST API を使用して通知を送信する方法の例については、「**
             await hub.SendGcmNativeNotificationAsync(message);
         }
 
-   	"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される Notification Hub の名前に置き換えてください。また、接続文字列のプレースホルダーは、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えてください。 
+   	"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される通知ハブの名前に置き換えてください。また、接続文字列のプレースホルダーは、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えてください。 
 
 	>[AZURE.NOTE] **リッスン** アクセスではなく、**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列に通知を送信するアクセス許可はありません。
 
@@ -453,7 +454,7 @@ REST API を使用して通知を送信する方法の例については、「**
 
    	![][14]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
 この簡単な例では、Chrome アプリケーションに通知をブロードキャストします。 
 Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。
@@ -485,7 +486,7 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 <!-- URLs. -->
 [Chrome アプリケーションの Notification Hub のサンプル]: http://google.com
 [Google Cloud コンソール]: http://cloud.google.com/console
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Chrome アプリケーションの概要]: https://developer.chrome.com/apps/about_apps
 [Chrome アプリケーションの GCM サンプル]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
@@ -495,7 +496,7 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [crypto-js ライブラリ]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure Notification Hubs によるユーザーへの通知]: http://azure.microsoft.com/ documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
-[通知ハブを使用したニュース速報の送信]: http://azure.microsoft.com/ documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Azure Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
+[通知ハブを使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

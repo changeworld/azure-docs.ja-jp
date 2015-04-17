@@ -19,8 +19,8 @@
 
 # Notification Hubs を使用したニュース速報の送信
 <div class="dev-center-tutorial-selector sublanding">     	
-	<a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/" title="Windows Universal" >Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a>
-	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/" title="Android" class="current">Android</a>
+	<a href="/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/" title="Windows Universal" >Windows Universal</a><a href="/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone">Windows Phone</a><a href="/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a>
+	<a href="/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/" title="Android" class="current">Android</a>
 </div>
 
 このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Android アプリケーションにブロードキャストする方法について説明します。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。 
@@ -29,14 +29,14 @@
 
 このチュートリアルでは、このシナリオを有効にするための、次の基本的な手順について説明します。
 
-1. [アプリケーションにカテゴリ選択を追加する]
+1. [アプリにカテゴリ選択を追加する]
 2. [通知を登録する]
 3. [バックエンドから通知を送信する]
 4. [アプリケーションを実行して通知を生成する]
 
 このトピックは、「[Notification Hubs の使用][get-started]」で作成したアプリケーションが基になります。このチュートリアルを開始する前に、「[Notification Hubs の使用][get-started]」を完了している必要があります。
 
-## <a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
+##<a name="adding-categories"></a>アプリにカテゴリを追加する
 
 最初の手順として、既存のメイン アクティビティに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。 
 
@@ -104,7 +104,7 @@
 
 	![][A1]
 
-3. ここで、**MainActivity** と同じパッケージにクラス **Notifications** を作成します。
+3. ここで、**MainActivity** クラスと同じパッケージにクラス **Notifications** を作成します。
 
 		import java.util.HashSet;
 		import java.util.Set;
@@ -167,7 +167,7 @@
 
 	このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
 
-4. 上記のコードで `<hub name>` と `<connection string with listen access>` のプレースホルダーを通知ハブ名に、接続文字列を既に取得済みの  *DefaultListenSharedAccessSignature* に置き換えます。
+4. 上記のコードで、`<hub name>` と `<connection string with listen access>` のプレースホルダーを通知ハブ名に、接続文字列を既に取得済みの *DefaultListenSharedAccessSignature* に置き換えます。
 
 	> [AZURE.NOTE] クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
 
@@ -176,7 +176,7 @@
 		// private GoogleCloudMessaging gcm;
 		// private NotificationHub hub;
 		private Notifications notifications;
- 
+
 5. 次に、**onCreate** メソッドで、**hub** フィールドの初期化と **registerWithNotificationHubs** メソッドを削除します。次に、**Notifications** クラスのインスタンスを初期化する次の行を追加します。メソッドには次の行が含まれています。
 
 		@Override
@@ -221,7 +221,7 @@
 
 これで、アプリケーションがデバイス上のローカル ストレージに一連のカテゴリを格納したり、ユーザーがカテゴリの選択を変更したときに通知ハブに登録できるようになりました。 
 
-## <a name="register"></a>通知を登録する
+##<a name="register"></a>通知を登録する
 
 この手順では、ローカル ストレージに格納されたカテゴリを使用して、起動時に通知ハブに通知します。 
 
@@ -272,7 +272,7 @@
 
 [AZURE.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
-## <a name="test-app"></a>アプリケーションを実行して通知を生成する
+##<a name="test-app"></a>アプリケーションを実行して通知を生成する
 
 1. Eclipse で、アプリケーションをビルドし、デバイスまたはエミュレーターで起動します。
 	
@@ -290,9 +290,9 @@
 
 	選択されたカテゴリの通知がトースト通知として表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルでは、ニュース速報をカテゴリごとにブロードキャストする方法について説明しました。他の高度な通知ハブ シナリオを取り上げている、次のいずれかのチュートリアルを行うことをお勧めします。
+このチュートリアルでは、ニュース速報をカテゴリごとにブロードキャストする方法について説明しました。他の高度な Notification Hubs のシナリオを取り上げている、次のいずれかのチュートリアルを実行することをお勧めします。
 
 + [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]
 
@@ -304,7 +304,7 @@
 
 
 <!-- Anchors. -->
-[アプリケーションにカテゴリ選択を追加する]: #adding-categories
+[アプリにカテゴリ選択を追加する]: #adding-categories
 [通知を登録する]: #register
 [バックエンドから通知を送信する]: #send
 [アプリケーションを実行して通知を生成する]: #test-app
@@ -314,17 +314,17 @@
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
 
 <!-- URLs.-->
-[get-started]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
-[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/ 
-[Notification Hubs によるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
-[モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started/
+[get-started]: notification-hubs-android-get-started.md
+[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /manage/services/notification-hubs/breaking-news-localized-dotnet/ 
+[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users
+[モバイル サービス]: /develop/mobile/tutorials/get-started/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]: http://msdn.microsoft.com/library/jj927172.aspx
+[方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/jj927172.aspx
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

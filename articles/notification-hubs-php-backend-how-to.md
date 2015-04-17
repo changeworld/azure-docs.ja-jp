@@ -3,7 +3,7 @@
 	description="PHP バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="piyushjo" 
+	authors="yuaxu" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -14,11 +14,11 @@
 	ms.devlang="php" 
 	ms.topic="article" 
 	ms.date="11/14/2014" 
-	ms.author="piyushjo"/>
+	ms.author="yuaxu"/>
 
 # PHP から Notification Hubs を使用する方法
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/ja-jp/documentation/articles/notification-hubs-java-backend-how-to/" title="Java">Java</a><a href="/ja-jp/documentation/articles/notification-hubs-php-backend-how-to/" title="PHP" class="current">PHP</a><a href="/ja-jp/documentation/articles/notification-hubs-python-backend-how-to/" title="Python">Python</a>
+    	<a href="/documentation/articles/notification-hubs-java-backend-how-to/" title="Java">Java</a><a href="/documentation/articles/notification-hubs-php-backend-how-to/" title="PHP" class="current">PHP</a><a href="/documentation/articles/notification-hubs-python-backend-how-to/" title="Python">Python</a><a href="/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs/" title="Node.js">Node.js</a>
 </div>
 
 MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように Notification Hub REST インターフェイスを使用して、Java/PHP/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
@@ -26,7 +26,7 @@ MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/libr
 このトピックでは、次の方法について説明します。
 
 * PHP で Notification Hubs 機能の REST クライアントを記述します。
-* 選択したモバイル プラットフォームの「[Notification Hubs の使用](http://azure.microsoft.com/ documentation/articles/notification-hubs-ios-get-started/)」に従って、PHP のバックエンド部分を実装します。
+* 選択したモバイル プラットフォームの「[通知ハブの使用](notification-hubs-ios-get-started.md) 」に従って、PHP のバックエンド部分を実装します。
 
 ## クライアント インターフェイス
 メイン クライアント インターフェイスは、「[.NET クラス ライブラリ](http://msdn.microsoft.com/library/jj933431.aspx)」で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
@@ -44,7 +44,7 @@ iOS ネイティブ通知を送信する場合:
 
 ## 実装
 まだ実施していない場合は、「[Notification Hubs の使用]」に従って最後のセクションまで進み、バックエンドを実装します。
-また、必要があれば [PHP REST ラッパーのサンプル] ページのコードを使用し、直接「[チュートリアルを完了する](#complete-tutorial) 」セクションに進むこともできます。
+また、必要があれば [PHP REST ラッパーのサンプル] ページのコードを使用し、直接「[チュートリアルを完了する](#complete-tutorial)」の セクションを参照してください。
 
 REST ラッパーすべての実装の詳細については、[MSDN の記事](http://msdn.microsoft.com/library/dn530746.aspx)を参照してください。このセクションでは、Notification Hubs REST エンドポイントにアクセスするために必要な主要手順の PHP 実装について説明します。
 
@@ -90,7 +90,7 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 
 ### セキュリティ トークンを作成する
-セキュリティ トークン作成についての詳細は、[ここ](http://msdn.microsoft.com/library/dn495627.aspx)で確認できます。
+セキュリティ トークンの作成の詳細については、[こちら](http://msdn.microsoft.com/library/dn495627.aspx)で参照できます。
 現在の要求の URI および接続文字列から抽出した資格情報に基づいてトークンを作成するには、次のメソッドを **NotificationHub** クラスに追加する必要があります。
 
 	private function generateSasToken($uri) {
@@ -200,11 +200,10 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 上記のメソッドは、HTTP POST 要求、および通知を送信する正しい本体とヘッダーを通知ハブの /messages エンドポイントに送信します。
 
-## <a name="complete-tutorial"></a>チュートリアルを完了する
+##<a name="complete-tutorial"></a>チュートリアルを完了する
 ここで、PHP バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
 Notification Hubs のクライアントを初期化します (「[Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
-
 	$hub = new NotificationHub("connection string", "hubname");	
 
 次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。
@@ -258,6 +257,6 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 
 
 [PHP REST ラッパーのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
-[Notification Hubs の使用]: http://azure.microsoft.com/ documentation/articles/notification-hubs-ios-get-started/
+[Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

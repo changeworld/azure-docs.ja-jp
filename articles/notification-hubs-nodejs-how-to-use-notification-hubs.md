@@ -1,57 +1,48 @@
 <properties 
-	pageTitle="Notification Hubs - Node.js デベロッパー センター" 
-	description="Notification Hubs を使用してプッシュ通知を送信する方法について説明します。コード サンプルは Node.js アプリケーション向けに作成されています。" 
+	pageTitle="Node.js で Notification Hubs を使用する方法" 
+	description="Notification Hubs を使用して Node.js アプリケーションからプッシュ通知を送信する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="nodejs" 
-	authors="ggailey777" 
-	manager="dwrede" 
+	authors="MikeWasson" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
 	ms.service="notification-hubs" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="09/17/2014" 
-	ms.author="glenga"/>
+	ms.date="02/26/2015" 
+	ms.author="mwasson"/>
 
+# Node.js から Notification Hubs を使用する方法
+<div class="dev-center-tutorial-selector sublanding"> 
+    	<a href="/documentation/articles/notification-hubs-java-backend-how-to/" title="Java">Java</a><a href="/documentation/articles/notification-hubs-php-backend-how-to/" title="PHP">PHP</a><a href="/documentation/articles/notification-hubs-python-backend-how-to/" title="Python">Python</a><a href="/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs/" title="Node.js" class="current">Node.js</a>
+</div>
 
+##概要
 
+このガイドでは、Node.js アプリケーションから Notification Hubs を使用する方法について説明します。紹介するシナリオでは、**Android、iOS、Windows Phone、Windows ストア アプリへの通知の送信**を対象としています。Notification Hubs の詳細については、「[次のステップ](#next)」 のセクションを参照してください。
 
+##Notification Hubs とは?
 
+Azure Notification Hubs は、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャを提供します。詳細については、「[Azure 通知ハブ](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)」をご覧ください。
 
-# Notification Hubs の使用方法
+##Node.js アプリケーションの作成
 
-このガイドでは、Node.js アプリケーションから Notification Hubs を使用する方法について説明します。紹介するシナリオでは、**Android、iOS、Windows Phone、Windows ストア アプリへの通知の送信**を対象としています。Notification Hubs の詳細については、「[次のステップ]」(#next) のセクションを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、「[Node.js Web サイトの構築と Azure へのデプロイ][nodejswebsite]」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ][Node.js クラウド サービス] (Windows PowerShell を使用)」、または「[WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]」を参照してください。
 
-## 目次
+##Notification Hub 使用のためにアプリケーションを構成する
 
--   [Notification Hubs とは](#hub)
--   [Node.js アプリケーションの作成](#create)
--   [Notification Hubs を使用するようにアプリケーションを構成する](#config)
--   [方法:通知を送信する](#send)
--   [次のステップ](#next)
-
-## <a id="hub"></a> Notification Hubs とは
-
-Azure Notification Hubs は、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャを提供します。詳細については、「[Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)」を参照してください。
-
-## <a id="create"></a> Node.js アプリケーションの作成
-
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、「[Node.js Web サイトの構築と Azure へのデプロイ][nodejswebsite]」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ][Node.js Cloud Service]」 (Windows PowerShell を使用)、または「[WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]」を参照してください。
-
-## <a id="config"></a> Notification Hub を使用するようにアプリケーションを構成する
-
-Azure Notification Hub を使用するには、Node.js azure パッケージをダウンロードして
-使用する必要があります。このパッケージには、REST サービスと通信するための便利なライブラリのセットが含まれています。
+Azure Notification Hub を使用するには、Node.js azure パッケージをダウンロードして使用する必要があります。これには、
+REST サービスと通信するための便利なライブラリ セットが含まれています。
 
 ### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  **PowerShell** (Windows)**、Terminal** (Mac)、または **Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
+1.  **PowerShell** (Windows)**、Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに「**npm install azure**」と入力すると、
-    次のような出力が生成されます。
+2.  コマンド ウィンドウに「**npm install azure**」と入力すると、次のような出力が生成されます。
 
         azure@0.7.0 node_modules\azure
 		|-- dateformat@1.0.2-1.2.3
@@ -91,7 +82,7 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
 
 </div>
 
-## <a id="send"></a> 通知を送信する
+##通知の送信方法
 
 **NotificationHubService** オブジェクトは、特定のデバイスやアプリケーションに通知を送信するために、次のオブジェクト インスタンスを公開します。
 
@@ -150,8 +141,8 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
 
 * Tags - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
 * Payload - メッセージの XML ペイロード
-* TargetName - トースト通知の場合は  'toast'。タイル通知の場合は  'token'。
-* NotificationClass - 通知の優先度。有効な値については、「[Push notifications from a server (サーバーからのプッシュ通知)](http://msdn.microsoft.com/library/hh221551.aspx)」の「HTTP Header Elements (HTTP ヘッダー要素)」のセクションを参照してください。
+* TargetName - トースト通知の場合は "toast"。タイル通知の場合は 'token'。
+* NotificationClass - 通知の優先度。有効な値については、「[サーバーからのプッシュ通知](http://msdn.microsoft.com/library/hh221551.aspx)」の「HTTP ヘッダー要素」のセクションを参照してください。
 * Options - 省略可能な要求ヘッダー
 * Callback - コールバック関数
 
@@ -187,11 +178,11 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
 	  }
 	});
 
-## <a id="next"></a> 次のステップ
+## 次のステップ
 
 これで、Notification Hub の基本的な使用方法を理解できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   MSDN リファレンス:[Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)
+-   MSDN リファレンス:[Azure Notification Hubs][]
 -   GitHub の [Azure SDK for Node] リポジトリ
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -210,7 +201,7 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
   [1]: #Next_Steps
   [トピックの概念]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
   [Azure 管理ポータル]: http://manage.windowsazure.com
-  [image]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
+  [イメージ]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
   [2]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-04.png
   [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
   [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
@@ -218,11 +209,12 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
   [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-  [WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Node.js Cloud Service]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+  [Node.js クラウド サービス]: cloud-services-nodejs-develop-deploy-app.md
 [以前の管理ポータル]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-  [nodejswebsite]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
-  [ストレージを使用する Node.js クラウド サービス]: /ja-jp/develop/nodejs/tutorials/web-app-with-storage/
-  [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
+  [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
+  [ストレージを使用する Node.js クラウド サービス]: /develop/nodejs/tutorials/web-app-with-storage/
+  [ストレージを使用する Node.js Web アプリケーション]: /develop/nodejs/tutorials/web-site-with-storage/
 
-<!--HONumber=45--> 
+
+<!--HONumber=49-->

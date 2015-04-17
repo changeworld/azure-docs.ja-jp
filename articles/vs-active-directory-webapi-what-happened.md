@@ -1,6 +1,6 @@
 ﻿<properties 
 	pageTitle="" 
-	description="Azure Active Directory ウィザードの実行後、Visual Studio プロジェクトで何が変更されたかを説明します。" 
+	description="Azure Active Directory ウィザード実行後に Visual Studio プロジェクトの何が変更されるかについて説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="kempb" 
@@ -16,9 +16,11 @@
 	ms.date="02/02/2015" 
 	ms.author="kempb"/>
 
+# プロジェクトの変更点
+
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-active-directory-webapi-getting-started/)
-> - [変更内容](/documentation/articles/vs-active-directory-webapi-what-happened/)
+> - [使用開始](vs-active-directory-webapi-getting-started.md)
+> - [変更内容](vs-active-directory-webapi-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
 
@@ -54,7 +56,7 @@
 
 #####スタートアップ コードがプロジェクトに追加された 
 
-既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが更新されて `ConfigureAuth(app)` 呼び出しが追加されています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。 
+既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが更新されて  `ConfigureAuth(app)` 呼び出しが追加されています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。 
 
 
 #####app.config ファイルまたは web.config ファイルに新しい構成値が含まれる
@@ -74,4 +76,4 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!--HONumber=46--> 
+<!--HONumber=49-->
