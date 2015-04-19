@@ -19,7 +19,7 @@
 
 # 共有アクセス署名、パート 2: BLOB サービスによる SAS の作成および使用
 
-このチュートリアルの [パート 1](../storage-dotnet-shared-access-signature-part-1/) では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。パート 2 では、Azure BLOB サービスで共有アクセス署名を生成し、使用する方法を説明します。例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
+このチュートリアルの [パート 1](storage-dotnet-shared-access-signature-part-1.md) では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。パート 2 では、Azure BLOB サービスで共有アクセス署名を生成し、使用する方法を説明します。例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
 
 - コンテナーでの共有アクセス署名の生成
 - BLOB での共有アクセス署名の生成
@@ -533,7 +533,7 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
 
 # 次のステップ #
 
-[共有アクセス署名、パート 1: SAS モデルについて](../storage-dotnet-shared-access-signature-part-1/)
+[共有アクセス署名、パート 1: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)
 
 [Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/windowsazure/ee393343.aspx)
 

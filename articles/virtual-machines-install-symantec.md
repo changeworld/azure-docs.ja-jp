@@ -30,7 +30,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 
 この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Symantec のセキュリティ拡張機能をインストールします。 
 
-一般的な手順については、「[Windows を実行する仮想マシンの作成](../virtual-machines-windows-tutorial/)」をご覧ください。ウィザードの最後のページで、次の手順を実行します。
+一般的な手順については、「[Windows を実行する仮想マシンの作成](virtual-machines-windows-tutorial.md)」をご覧ください。ウィザードの最後のページで、次の手順を実行します。
 
 1.	[VM エージェント] で **[VM エージェントをインストールする]** チェック ボックスがオンになっている必要があります。
 
@@ -45,7 +45,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 
 開始する前に、次の条件が必要です。
 
-- Azure PowerShell モジュール Version 0.8.2 以降。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)」をご覧ください。  
+- Azure PowerShell モジュール Version 0.8.2 以降。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)」をご覧ください。  
 
 - VM エージェント。 
 
@@ -67,13 +67,13 @@ VM エージェントがインストールされている場合、これらの�
 
 Symantec のセキュリティ拡張機能がインストールされ、最新の状態であることを確認するには:
 
-1.	仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server/)」をご覧ください。
+1.	仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」をご覧ください。
 2.	Windows Server 2008 R2 の場合は、**[スタート]、[Symantec Endpoint Protection]** の順にクリックします。Windows Server 2012 または Windows Server 2012 R2 で、スタート画面から、「**Symantec**」と入力し、**[Symantec Endpoint Protection]** をクリックします。
 3.	**[状態: Symantec Endpoint Protection]** ウィンドウの **[状態]** タブで、更新を適用するか、必要に応じて再起動します。
 
 ## その他のリソース
 
-[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server/)
+[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)
 
 [拡張機能の管理](https://msdn.microsoft.com/library/dn606311.aspx)
 

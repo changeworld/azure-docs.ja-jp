@@ -17,8 +17,8 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-storage-cloud-services-getting-started-blobs/)
-> - [変更内容](/documentation/articles/vs-storage-cloud-services-what-happened/)
+> - [Getting Started (概要)](vs-storage-cloud-services-getting-started-blobs.md)
+> - [変更内容](vs-storage-cloud-services-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
 

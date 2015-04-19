@@ -22,11 +22,11 @@
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-このトピックと対になっている、Windows ベースの仮想マシンの構成については、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-windows-vms/)」をご覧ください。
+このトピックと対になっている、Windows ベースの仮想マシンの構成については、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」をご覧ください。
 
 ## 手順 1:Azure PowerShell をインストールするには
 
-まだ完了していない場合は、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)」の手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、「[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)」の手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
 
 ## 手順 2:サブスクリプションとストレージ アカウントの設定
 
@@ -89,7 +89,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 	$vm1 | Add-AzureProvisioningConfig -Linux -SSHKeyPairs "<SSH key pairs>"
 
-詳細については、「[Azure 上の Linux における SSH の使用方法](../virtual-machines-linux-use-ssh-key/)」をご覧ください。
+詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」をご覧ください。
 
 場合によっては、サブスクリプションにデプロイ済みの SSH 公開キーの一覧を指定します。
 
@@ -157,7 +157,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 クリップボードにコマンド セットをコピーしてから、開いている Azure PowerShell コマンド プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。仮想マシンの作成に使用した、サブスクリプション、ストレージ アカウント、クラウド サービス、可用性セット、仮想ネットワーク、またはサブネットが正しくない場合は、仮想マシンを削除し、コマンド ブロックの構文を修正してから正しいコマンド セットを実行してください。 
 
-仮想マシンを作成したら、「[Linux を実行する仮想マシンにログオンする方法](../virtual-machines-linux-how-to-log-on/)」をご覧ください。 
+仮想マシンを作成したら、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」をご覧ください。 
 
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。 
 
@@ -260,11 +260,11 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure の仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
-[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)
+[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)
 
-[Linux を実行する仮想マシンにログオンする方法](../virtual-machines-linux-how-to-log-on/)
+[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
 
-[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-windows-vms/)
+[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 
 <!--HONumber=47-->

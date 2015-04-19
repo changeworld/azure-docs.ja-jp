@@ -53,7 +53,7 @@ Azure の仮想マシンは、制御と管理が可能なクラウド上のサ�
 
 [AZURE.INCLUDE [virtual-machines-Linux-tutorial-log-on-attach-disk](../includes/virtual-machines-Linux-tutorial-log-on-attach-disk.md)]
 
-> [AZURE.NOTE] 識別用の SSH キーを使用して Linux 仮想マシンに接続することもできます。SSH キーとの接続を構成する方法の詳細については、[Azure 上の Linux における SSH の使用方法] を参照してください(./virtual-machines-linux-use-ssh-key/)。
+> [AZURE.NOTE] 識別用の SSH キーを使用して Linux 仮想マシンに接続することもできます。SSH キーとの接続を構成する方法の詳細については、[Azure 上の Linux における SSH の使用方法] を参照してください(virtual-machines-linux-use-ssh-key)。
 
 ##次のステップ 
 
@@ -65,7 +65,7 @@ Azure 上の Linux の詳細については、次の記事を参照してくだ�
 
 - [Azure の仮想マシンの構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)
 
-- [Azure の Linux 用 Docker 仮想マシン拡張機能](../virtual-machines-docker-vm-extension/)
+- [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
 
 [次のステップ]: #next

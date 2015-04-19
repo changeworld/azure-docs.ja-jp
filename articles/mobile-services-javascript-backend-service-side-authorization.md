@@ -17,8 +17,8 @@
 # モバイル サービスでのユーザーのサービス側承認
 
 > [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(任意 | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-service-side-authorization/)
-- [(任意 | Javascript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-service-side-authorization/)
+- [(任意 | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
+- [(任意 | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
 
 このトピックでは、サーバー側スクリプトを使用してユーザーを承認する方法を示します。このチュートリアルでは、Azure モバイル サービスでスクリプトを登録し、ユーザー ID に基づいてクエリをフィルターし、ユーザーに自分のデータのみへのアクセスを提供します。
 

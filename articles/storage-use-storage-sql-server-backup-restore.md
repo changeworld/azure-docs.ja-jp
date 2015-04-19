@@ -1,30 +1,28 @@
-﻿<properties 
-	pageTitle="Azure Storage を使用した SQL Server のバックアップと復元の方法 | Azure" 
-	description="SQL Server および SQL Database を Azure Storage にバックアップします。SQL データベースを Azure ストレージにバックアップすることのメリットについて、また SQL Server および Azure Storage のどのコンポーネントが必要かについて説明します。" 
-	services="sql-database, virtual-machines" 
+<properties 
+	pageTitle="Azure ストレージを使用した SQL Server のバックアップと復元の方法 | Azure" 
+	description="" 
+	services="storage" 
 	documentationCenter="" 
 	authors="jeffgoll" 
 	manager="jeffreyg" 
 	editor="tysonn"/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
+	ms.service="storage" 
+	ms.workload="storage" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/06/2015" 
+	ms.date="11/30/2014" 
 	ms.author="jeffreyg"/>
 
 
 
-# Azure ストレージを使用した SQL Server のバックアップと復元の方法
+<h1 id="SQLServerBackupandRestoretostorage">  Azure ストレージを使用した SQL Server のバックアップと復元の方法</h1>
 
-## 概要
+SQL Server のバックアップを Azure BLOB ストレージ サービスに書き込むことができる機能は SQL Server 2012 SP1 CU2 でリリースされました。この機能を使用すると、Azure BLOB サービスとの間で、内部設置型の SQL Server データベースまたは Azure の仮想マシン上の SQL Server データベースをバックアップおよび復元できます。クラウドへのバックアップには、高い可用性、無制限の社外ストレージのジオ (主要地域) レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。   このリリースでは、T-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。SQL Server Management Studio のバックアップと復元のウィザードを使用して、Azure BLOB ストレージ サービスとの間でバックアップまたは復元を行うことはできません。
 
-SQL Server のバックアップを Azure BLOB ストレージ サービスに書き込むことができる機能は SQL Server 2012 SP1 CU2 でリリースされました。この機能を使用すると、Azure BLOB サービスとの間で、内部設置型の SQL Server データベースまたは Azure の仮想マシン上の SQL Server データベースをバックアップおよび復元できます。クラウドへのバックアップには、高い可用性、無制限の社外ストレージのジオ (主要地域) レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。   このリリースでは、T-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
-
-## SQL Server のバックアップに Azure BLOB サービスを使用する利点
+<h2> SQL Server のバックアップに Azure BLOB サービスを使用する利点</h2>
 
 バックアップには一般的に、ストレージの管理、ストレージ障害のリスク、社外ストレージへのアクセス、デバイスの構成などの課題があります。Azure の仮想マシンで実行されている SQL Server については、そのほかにも、VHD の構成とバックアップ、接続されたドライブの構成などの課題があります。次に示しているのは、SQL Server のバックアップに Azure BLOB ストレージ サービスのストレージを使用する主な利点です。
 
@@ -51,7 +49,7 @@ Azure BLOB ストレージ サービスの詳細については、「[How to use
 * コンテナー:コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。SQL Server のバックアップを Azure BLOB サービスに書き込むには、少なくとも root コンテナーが作成されている必要があります。 
 
 * BLOB:任意の種類およびサイズのファイルです。Azure BLOB ストレージ サービスに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。SQL Server のバックアップでは、BLOB の種類としてページ BLOB を使用します。BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます。 `https://<storage account>.blob.core.windows.net/<container>/<blob>`
-ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について」を参照してください。](http://msdn.microsoft.com/library/azure/ee691964.aspx)
+ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について」](http://msdn.microsoft.com/library/windowsazure/ee691964.aspx)を参照してください。
 
 ## SQL Server のコンポーネント
 
@@ -63,7 +61,7 @@ BACKUP コマンドで URL を指定する例を次に示します。
 <b>重要</b>:
 バックアップ ファイルをコピーして Azure BLOB ストレージ サービスにアップロードする場合、そのファイルを復元処理に使用する予定があれば、ストレージ オプションの BLOB の種類としてページ BLOB を使用する必要があります。BLOB の種類としてブロック BLOB を使用すると、RESTORE がエラーで失敗します。 
 
-* 資格情報:Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。その資格情報にストレージ アカウントの名前とアクセス キーを保存します。作成した資格情報は、BACKUP/RESTORE ステートメントの発行時に WITH CREDENTIAL オプションで指定する必要があります。 
+* 資格情報:Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。その資格情報にストレージ アカウントの名前とアクセス キーを保存します。作成した資格情報は、BACKUP/RESTORE ステートメントの発行時に WITH CREDENTIAL オプションで指定する必要があります。ストレージ アカウントのアクセス キーの表示、コピー、再生成方法の詳細については、「[Azure ストレージ アカウントのアクセス キーを表示、コピー、再生成する方法](http://msdn.microsoft.com/library/windowsazure/hh531566.aspx)」を参照してください。
 SQL Server 資格情報を作成する手順の詳細については、「[Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元の概要](http://go.microsoft.com/fwlink/?LinkId=271615)」を参照してください。
 
 ## Azure BLOB を使用した SQL Server データベースのバックアップと復元 - 概念とタスク:
@@ -88,5 +86,4 @@ SQL Server 資格情報を作成する手順の詳細については、「[Azure
 
 
 
-
-<!--HONumber=49-->
+<!--HONumber=42-->

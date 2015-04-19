@@ -124,7 +124,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 	- **[ゲートウェイ サブネットの追加]** をクリックします。
 11.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
-次に、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。
+次に、「[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。
 
 次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、"TestVNET-*UniqueSequence*" という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestVNET-Tailspin という名前を付けることができます。
 
@@ -287,17 +287,17 @@ CORP\User1 のパスワードとディレクトリ サービス復元モード (
 
 ## その他のリソース
 
-[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-networks-setup-lobapp-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
 
-[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](../virtual-networks-setup-dirsync-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
 
-[テスト用のシミュレートされたハイブリッド クラウド環境の設定](../virtual-networks-setup-simulated-hybrid-cloud-environment-testing/)
+[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
 
 ## この環境の継続的な費用を最小限に抑える
 
-この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、「[Azure オートメーションの使用](../automation-create-runbook-from-samples/)」をご覧ください。 
+この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、「[Azure オートメーションの使用](automation-create-runbook-from-samples.md)」をご覧ください。 
 
 Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、「[Virtual Network 料金](http://azure.microsoft.com/pricing/details/virtual-network/)」をご覧ください。VPN ゲートウェイの費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。 
 

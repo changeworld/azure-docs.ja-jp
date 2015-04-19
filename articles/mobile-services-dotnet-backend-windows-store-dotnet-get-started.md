@@ -27,7 +27,7 @@
 
 >[AZURE.NOTE]このトピックでは、Azure の管理ポータルを使用して、新しいモバイル サービス プロジェクトとユニバーサル Windows アプリを作成する方法を示します。Visual Studio 2013 更新プログラム 3 を使用して、新しいモバイル サービス プロジェクトを既存の Visual Studio ソリューションに追加することもできます。詳細については、「[クイック スタート:モバイル サービスの追加 (.NET バックエンド)](http://msdn.microsoft.com/library/windows/apps/dn629482.aspx)」を参照してください。
 
->モバイル サービスを Windows Phone 8.0 または Windows Phone Silverlight 8.1 アプリ プロジェクトに追加するには、「[データの使用 (Windows Phone)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data)」を参照してください。
+>モバイル サービスを Windows Phone 8.0 または Windows Phone Silverlight 8.1 アプリ プロジェクトに追加するには、「[データの使用 (Windows Phone)](mobile-services-dotnet-backend-windows-phone-get-started-data.md)」を参照してください。
 
 [AZURE.INCLUDE [mobile-services-windows-universal-get-started](../includes/mobile-services-windows-universal-get-started.md)]
 
@@ -109,7 +109,7 @@
 * [Mobile Services .NET バックエンドのトラブルシューティング]
   <br/> Mobile Services の .NET バックエンドで発生する問題を診断して解決する方法について説明します。 
 
-ユニバーサル Windows アプリの詳細については、「[シングル モバイル サービスから複数のデバイス プラットフォームをサポートする](/ja-jp/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs)」を参照してください。
+ユニバーサル Windows アプリの詳細については、「[シングル モバイル サービスから複数のデバイス プラットフォームをサポートする](mobile-services-how-to-use-multiple-clients-single-service#shared-vs.md)」を参照してください。
 
 <!-- Anchors. -->
 [Mobile Services の使用]:#getting-started

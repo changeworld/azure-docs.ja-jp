@@ -49,7 +49,7 @@
 
 ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server の既定のインスタンスは静的ポート 1433 を使用しますが、名前付きインスタンスは静的ポート 1433 を使用しません。 
 
-上に示した条件を満たすように SQL Server を構成する方法の詳細な手順については、[SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](/ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#InstallSQL).方法に関するページを参照してください。上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、その手順をスキップし、[内部設置型の SQL Server データベースを作成する](/ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#CreateSQLDB). 方法から開始できます。
+上に示した条件を満たすように SQL Server を構成する方法の詳細な手順については、[SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](web-sites-hybrid-connection-connect-on-premises-sql-server#InstallSQL.md).方法に関するページを参照してください。上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、その手順をスキップし、[内部設置型の SQL Server データベースを作成する](web-sites-hybrid-connection-connect-on-premises-sql-server#CreateSQLDB.md). 方法から開始できます。
 
 このチュートリアルでは、データベース名が **OnPremisesDB** で、ポート **1433** で実行され、コンピューターのホスト名が **onPremisesServer** であると想定しています。
 
@@ -115,7 +115,7 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 ### ハイブリッド接続とサービスの関連付け
 1. ポータルの **[モバイル サービス]** タブをクリックし、既存のモバイル サービスを選択するか、新しいモバイル サービスを作成します。 
 
-	>[AZURE.NOTE]必ず、.NET バックエンドを使用して作成されたサービスを選択するか、新しい .NET バックエンド モバイル サービスを作成してください。新しい .NET バックエンド モバイル サービスを作成する方法については、「[Mobile Services の使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/) 」を参照してください。
+	>[AZURE.NOTE]必ず、.NET バックエンドを使用して作成されたサービスを選択するか、新しい .NET バックエンド モバイル サービスを作成してください。新しい .NET バックエンド モバイル サービスを作成する方法については、「[Mobile Services の使用](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md) 」を参照してください。
 
 2. モバイル サービスの **[構成]** タブで、**[ハイブリッド接続]** セクションを見つけて、**[ハイブリッド接続の追加]** を選択します。
 
@@ -140,7 +140,7 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
 
 3. Visual Studio 2013 で、.NET ベースのモバイル サービスを定義したプロジェクトを開きます。 
 
-	.NET バックエンド プロジェクトのダウンロード方法については、「[Mobile Services の使用](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/) .」を参照してください。
+	.NET バックエンド プロジェクトのダウンロード方法については、「[Mobile Services の使用](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md) .」を参照してください。
  
 4. ソリューション エクスプローラーで **Models** フォルダーを展開し、 *Context.cs* で終わるデータ モデル ファイルを開きます。
 

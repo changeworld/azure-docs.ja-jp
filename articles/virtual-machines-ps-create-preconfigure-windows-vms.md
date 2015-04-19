@@ -26,7 +26,7 @@
 
 ## 手順 1:Azure PowerShell をインストールするには
 
-まだ完了していない場合は、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)」の手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、「[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)」の手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
 
 ## 手順 2:サブスクリプションとストレージ アカウントの設定
 
@@ -265,8 +265,8 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 [Azure の仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
-[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)
+[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)
 
-[Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-linux-vms/)
+[Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
 <!--HONumber=47-->

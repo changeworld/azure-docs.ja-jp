@@ -71,7 +71,7 @@ Debian は、dpgk および apt-get パッケージ管理に基づく、Linux �
 CentOS Linux ディストリビューションは、Red Hat Enterprise Linux (RHEL) のソースから派生した、安定した、予測可能で管理しやすい再現可能なプラットフォームです。
 
 1. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=centos)
-2. [イメージ ギャラリー](http://azure.microsoft.com/en-in/marketplace/partners/OpenLogic/)
+2. [イメージ ギャラリー](http://azure.microsoft.com/marketplace/partners/OpenLogic/)
 3. [方法:Azure 用のカスタム CentOS ベースの VM の準備](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-vhd-centos/)
 4. [ブログ:OpenLogic から CentOS 仮想マシン イメージをデプロイする方法](http://azure.microsoft.com/blog/2013/01/11/deploying-openlogic-centos-images-on-windows-azure-virtual-machines/)
 6. [方法:AMQP や Service Bus 用の Apache Qpid Proton-C のインストール](http://msdn.microsoft.com/library/azure/dn235560.aspx)
@@ -90,7 +90,7 @@ CentOS Linux ディストリビューションは、Red Hat Enterprise Linux (RH
 
 CoreOS は、カスタマイズを細かく制御できる純粋なコンピューティングのスケーリングのための軽量で最適化されたディストリビューションです。
 
-10. [イメージ ギャラリー](http://azure.microsoft.com/en-in/marketplace/partners/coreos/)  
+10. [イメージ ギャラリー](http://azure.microsoft.com/marketplace/partners/coreos/)  
 11. [方法:Azure での CoreOS の使用](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-coreos-how-to/)
 12. [ブログ:TechEd Europe -- Windows Docker クライアント と Linux コンテナー](http://azure.microsoft.com/blog/2014/10/28/new-docker-coreos-topics-linux-on-azure/)
 13. [ブログ:ますます大規模化、高速化、オープン化する Azure](http://azure.microsoft.com/blog/2014/10/20/azures-getting-bigger-faster-and-more-open/)

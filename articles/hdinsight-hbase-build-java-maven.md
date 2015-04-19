@@ -349,9 +349,9 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 ##JAR をアップロードしてジョブを開始する
 
-> [AZURE.NOTE] 「[HDInsight での Hadoop ジョブ用データのアップロード](/ja-jp/documentation/articles/hdinsight-upload-data/)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、[Azure PowerShell](/ja-jp/documentation/articles/install-configure-powershell/) を使用しています。
+> [AZURE.NOTE] 「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、[Azure PowerShell](install-configure-powershell.md) を使用しています。
 
-1. [Azure PowerShell](/ja-jp/documentation/articles/install-configure-powershell/) をインストールおよび構成した後で、__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+1. [Azure PowerShell](install-configure-powershell.md) をインストールおよび構成した後で、__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
 		<#
 		.SYNOPSIS

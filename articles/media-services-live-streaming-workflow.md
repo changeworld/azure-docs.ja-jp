@@ -29,11 +29,11 @@
 ![Live workflow][live-overview]
 
 
-詳細については、「[Media Services Overview (Media Services の概要)]」をご覧ください(../media-services-overview)。
+詳細については、「[Media Services Overview (Media Services の概要)]」をご覧ください(media-services-overview.md)。
 
 ##メディア サービス アカウントの作成
 
-**Azure 管理ポータル**を使用して [メディア サービス アカウントを作成]します(../media-services-create-account/)。
+**Azure 管理ポータル**を使用して [メディア サービス アカウントを作成]します(media-services-create-account.md)。
 
 ##ストリーミング エンドポイントの構成
 
@@ -82,7 +82,7 @@
 
 準備するアカウントの **ストリーミング占有ユニット** の数を指定して、**メディア サービス** の規模を設定できます。 
 
-ストリーミング ユニットの規模の設定については、[ストリーミング占有ユニットの規模変更方法]をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。
+ストリーミング ユニットの規模の設定については、[ストリーミング占有ユニットの規模変更方法]をご覧ください(media-services-manage-origins#scale_streaming_endpoints.md)。
 
 
 

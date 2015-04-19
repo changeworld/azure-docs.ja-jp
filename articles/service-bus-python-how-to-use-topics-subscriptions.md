@@ -26,7 +26,7 @@
 
 [AZURE.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
-**注:** Python または [Python Azure パッケージ][]をインストールする場合は、「[Python インストール ガイド](../python-how-to-install/)」をご覧ください。
+**注:** Python または [Python Azure パッケージ][]をインストールする場合は、「[Python インストール ガイド](python-how-to-install.md)」をご覧ください。
 
 
 ##トピックの作成方法

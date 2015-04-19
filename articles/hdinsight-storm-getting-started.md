@@ -42,7 +42,7 @@ Apache Storm は、データ ストリームの処理を目的とした、拡張
 
 * Windows Azure PowerShell
 
-* Apache Storm を使い慣れていない場合は、最初に「[HDInsight Storm の概要](/ja-jp/documentation/articles/hdinsight-storm-overview)」の記事をお読みください。
+* Apache Storm を使い慣れていない場合は、最初に「[HDInsight Storm の概要](hdinsight-storm-overview.md)」の記事をお読みください。
 
 ## <a id="provision"></a>Azure ポータルでの Storm クラスターのプロビジョニング
 
@@ -72,7 +72,7 @@ Apache Storm は、データ ストリームの処理を目的とした、拡張
 
 	![storage account](./media/hdinsight-storm-getting-started/wizard4.png)
 
-8. **[スクリプトのアクション]**ページで　**[スクリプト アクションの追加]** をクリックし、クラスターが作成される際に、クラスターのカスタマイズを実行するカスタム スクリプトに関する詳細を指定します。たとえば、スクリプト操作を使用して、 <a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> をインストールするクラスターをカスタマイズすることができます。詳細については、「[Customize HDInsight cluster using Script Action (スクリプト操作を使用した HDInsight クラスターのカスタマイズ)](/ja-jp/documentation/articles/hdinsight-hadoop-customize-cluster/)」を参照してください。 
+8. **[スクリプトのアクション]**ページで　**[スクリプト アクションの追加]** をクリックし、クラスターが作成される際に、クラスターのカスタマイズを実行するカスタム スクリプトに関する詳細を指定します。たとえば、スクリプト操作を使用して、 <a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> をインストールするクラスターをカスタマイズすることができます。詳細については、「[Customize HDInsight cluster using Script Action (スクリプト操作を使用した HDInsight クラスターのカスタマイズ)](hdinsight-hadoop-customize-cluster.md)」を参照してください。 
 	
 	![Configure Script Action to customize an HDInsight HBase cluster](./media/hdinsight-storm-getting-started/wizard5.png "Use Script Action to customize an HDInsight cluster") 
 
@@ -197,9 +197,9 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
 
 	> [AZURE.NOTE] Java ドキュメントは Web ページで構成されます。抽出後、ブラウザーを使用して **index.html** ファイルを表示します。
 
-* [Storm と HDInsight を使用したセンサー データの分析](/ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis)
+* [Storm と HDInsight を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)
 
-* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application)
+* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application.md)
 
 [apachestorm]: https://storm.incubator.apache.org
 [stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html

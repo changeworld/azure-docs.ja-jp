@@ -31,7 +31,7 @@
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[モバイル サービスでのデータの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。モバイル サービスが接続されていない場合は、プッシュ通知の追加ウィザードによってこの接続が作成されます。 
 
->[AZURE.NOTE]Windows Phone 8.1 ストア アプリにプッシュ通知を送信するには、このチュートリアルの [Windows ストア アプリ バージョン] (/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push) に従ってください。
+>[AZURE.NOTE]Windows Phone 8.1 ストア アプリにプッシュ通知を送信するには、このチュートリアルの [Windows ストア アプリ バージョン] (mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) に従ってください。
 
 ##<a id="update-app"></a>アプリケーションを更新して通知に登録する
 

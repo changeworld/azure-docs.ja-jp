@@ -25,7 +25,7 @@
 
 BLOB ストレージ サービスにデータを安全にアップロードするために必要な資格情報をクライアント アプリケーションで安全に配信できません。代わりに、これらの資格情報をモバイル サービスに保存し、それらを使用して、新しいイメージをアップロードするために使用される SAS (Shared Access Signature) を生成する必要があります。SAS は有効期間が短い資格情報 (この場合は 5 分間) であり、Mobile Services によりクライアント アプリケーションに安全に返されます。&mdash;アプリケーションは、この一時的な資格情報を使用してイメージをアップロードします。この例では、BLOB サービスからのダウンロードはパブリックです。
 
-このチュートリアルでは、Mobile Services により生成された SAS を使用して、写真を撮影して画像を Azure にアップロードする機能を、[GetStartedWithData サンプル アプリケーション プロジェクト](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/) に追加します。このチュートリアルでは、シンプルな TodoList アプリケーションを更新して画像を Blob ストレージ サービスにアップロードする、次のような基本的な手順について説明します。:
+このチュートリアルでは、Mobile Services により生成された SAS を使用して、写真を撮影して画像を Azure にアップロードする機能を、[GetStartedWithData サンプル アプリケーション プロジェクト](mobile-services-dotnet-backend-windows-phone-get-started-data.md) に追加します。このチュートリアルでは、シンプルな TodoList アプリケーションを更新して画像を Blob ストレージ サービスにアップロードする、次のような基本的な手順について説明します。:
 
 1. [ストレージ クライアント ライブラリのインストール]
 2. [イメージをキャプチャするためのクライアント アプリケーションの更新]
@@ -40,7 +40,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 + [Windows Phone SDK 8.0] 以上
 + Microsoft Visual Studio でインストールされる NuGet パッケージ マネージャー。
 + [Azure ストレージ アカウント][ストレージ アカウントの作成方法]
-+ チュートリアル[既存のアプリケーションへの Mobile Services の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/)を完了していること  
++ チュートリアル[既存のアプリケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-phone-get-started-data.md)を完了していること  
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-configure-blob-storage](../includes/mobile-services-dotnet-backend-configure-blob-storage.md)]
 

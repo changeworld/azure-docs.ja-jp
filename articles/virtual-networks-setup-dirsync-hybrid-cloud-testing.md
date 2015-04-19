@@ -45,7 +45,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 ## フェーズ 1:ハイブリッド クラウド環境を設定する
 
-「[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)」のトピックにある手順に従います 。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
+「[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)」のトピックにある手順に従います 。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
 
 現在の構成は次のようになります。
 
@@ -180,12 +180,12 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 [Office Servers とクラウドを使用したソリューション](http://technet.microsoft.com/library/dn262744.aspx)
 
-[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)
+[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
-[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-networks-setup-lobapp-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
 
-[テスト用のシミュレートされたハイブリッド クラウド環境の設定](../virtual-networks-setup-simulated-hybrid-cloud-environment-testing/)
+[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
 
 <!--HONumber=47-->

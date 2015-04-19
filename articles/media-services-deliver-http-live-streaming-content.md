@@ -22,7 +22,7 @@
 
 <h1>方法:Apple HLS ストリーミング コンテンツを配信する</h1>
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[方法: ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content/)」をご覧ください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[方法: ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)」をご覧ください。
 
 このトピックでは、ロケーターを作成して、メディア サービスの配信元サーバー上にある Apple HTTP ライブ ストリーミング (HLS) コンテンツをストリーミングする方法について説明します。その方法を使用すると、Apple HLS コンテンツの URL を構築して Apple iOS デバイスに提供し、再生できます。ロケーター URL を構築する方法は基本的には変わりません。配信元サーバー上の Apple HLS ストリーミング アセット パスに対するロケーターを構築した後、ストリーミング コンテンツのマニフェストにリンクした完全な URL を構築します。
 
@@ -92,8 +92,8 @@ static ILocator GetStreamingHLSOriginLocator( string targetAssetID)
 -   [Media Services SDK for .NET によるアプリケーション構築][]
 -   [Azure Media Services REST API によるアプリケーション構築][]
 -   [メディア サービス フォーラム][]
--	[メディア サービス アカウントを監視する方法](../media-services-monitor-services-account/)
--	[メディア サービスのコンテンツを管理する方法](../media-services-manage-content/)
+-	[メディア サービス アカウントを監視する方法](media-services-monitor-services-account.md)
+-	[メディア サービスのコンテンツを管理する方法](media-services-manage-content.md)
 
 [Azure メディア サービスのドキュメント]: http://go.microsoft.com/fwlink/?linkid=245437
 [Media Services SDK for .NET の概要]: http://go.microsoft.com/fwlink/?linkid=252966

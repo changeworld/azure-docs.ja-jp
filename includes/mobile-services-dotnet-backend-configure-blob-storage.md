@@ -25,7 +25,7 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 
 	これらのプロパティは、SAS の生成とイメージ情報の格納に使用されます。これらのプロパティの大文字小文字の区別は、JavaScript バックエンド バージョンと一致している必要があります。 
 
-	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First 定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations).を参照してください。
+	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First 定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md).を参照してください。
 
 ##<a name="update-scripts"></a>共有アクセス署名を生成する TodoItem コント ローラーを更新します。 
 

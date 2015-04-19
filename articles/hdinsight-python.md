@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure HDInsight での Python と Hive および Pig の使用" 
 	description="Azure HDInsight での Hive および Pig の Python ユーザー定義関数の使用方法について説明します。" 
 	services="hdinsight" 
@@ -171,7 +171,7 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 
 	このスクリプトは、HDInsight クラスターの情報を取得してから、既定のストレージ アカウント用にアカウントとキーを抽出します。その後、ファイルをコンテナーのルートにアップロードします。
 
-	> [AZURE.NOTE] スクリプトをアップロードする他の方法については、ドキュメント「[HDInsight での Hadoop ジョブ用データのアップロード](/ja-jp/documentation/articles/hdinsight-upload-data/)」で確認できます。
+	> [AZURE.NOTE] スクリプトをアップロードする他の方法については、ドキュメント「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で確認できます。
 
 ###Hive ダッシュボードの使用 (Hive の例のみ)
 
@@ -267,10 +267,9 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 <tr>
 <td>ジョブ</td><td>BLOB コンテナーで確認するファイル</td>
 </tr>
-<tr>
-<td>Hive</td><td>/HivePython/stderr<br />/HivePython/stdout</td>
+<td>Hive</td><td>/HivePython/stderr</br>/HivePython/stdout</td>
 </tr>
-<td>Pig</td><td>/PigPython/stderr<br />/PigPython/stdout</td>
+<td>Pig</td><td>/PigPython/stderr</br>/PigPython/stdout</td>
 </tr>
 </table>
 

@@ -74,6 +74,6 @@ Windows コンピューターを使用している場合、PuTTY を使用して
 
   [仮想ネットワークの概要]: http://go.microsoft.com/fwlink/p/?LinkID=294063
   [新しい仮想マシンの作成]: ./media/create-and-configure-centos-vm-in-portal/CreateVM.png
-  [強力なパスワード]: http://msdn.microsoft.com/ja-jp/library/ms161962.aspx
+  [強力なパスワード]: http://msdn.microsoft.com/library/ms161962.aspx
   [PuTTY のダウンロード ページ]: http://www.puttyssh.org/download.html
   [PuTTY Screen]: ./media/create-and-configure-centos-vm-in-portal/putty.png

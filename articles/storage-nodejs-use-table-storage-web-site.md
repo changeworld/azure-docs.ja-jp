@@ -523,7 +523,7 @@ Azure サブスクリプションをまだ取得していない場合でも、[�
 	
 	npm install azure-cli -g
 
-> [AZURE.NOTE] 詳細については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](/ja-jp/documentation/articles/xplat-cli/)」を参照してください;
+> [AZURE.NOTE] 詳細については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](xplat-cli.md)」を参照してください;
 
 > [AZURE.NOTE] コマンド ライン ツールは、主に Mac および Linux ユーザー向けに作成されていますが、Node.js に基づいているため、Node を実行できる任意のシステムで動作します。
 

@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-adal-sso](../includes/mobile-services-selector-adal-sso.md)]
 
-このチュートリアルでは、Azure Active Directory で[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)をサポートする Active Directory 認証ライブラリを使用してクイックスタート プロジェクトに認証を追加します。Azure Active Directory で[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)をサポートするには、「[Mobile Services アプリへの認証の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」チュートリアルから開始します。
+このチュートリアルでは、Azure Active Directory で[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)をサポートする Active Directory 認証ライブラリを使用してクイックスタート プロジェクトに認証を追加します。Azure Active Directory で[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)をサポートするには、「[Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)」チュートリアルから開始します。
 
 ユーザーを認証できるようにするには、Azure Active Directory (AAD) にアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、モバイル サービスを登録し、モバイル サービスに対するアクセス許可を公開する必要があります。次に、Windows ストア アプリを登録してこれらのアクセス許可へのアクセス権を付与する必要があります。
 

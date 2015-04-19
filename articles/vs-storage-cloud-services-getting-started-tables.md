@@ -17,15 +17,15 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-storage-cloud-services-getting-started-tables/)
-> - [変更内容](/documentation/articles/vs-storage-cloud-services-what-happened/)
+> - [Getting Started (概要)](vs-storage-cloud-services-getting-started-tables.md)
+> - [変更内容](vs-storage-cloud-services-what-happened.md)
 
 ##Azure Storage の使用 (クラウド サービス プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [BLOB](/documentation/articles/vs-storage-cloud-services-getting-started-blobs/)
-> - [キュー](/documentation/articles/vs-storage-cloud-services-getting-started-queues/)
-> - [テーブル](/documentation/articles/vs-storage-cloud-services-getting-started-tables/)
+> - [BLOB](vs-storage-cloud-services-getting-started-blobs.md)
+> - [キュー](vs-storage-cloud-services-getting-started-queues.md)
+> - [テーブル](vs-storage-cloud-services-getting-started-tables.md)
 
 Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「[.NET からテーブル ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")」を参照してください。
 

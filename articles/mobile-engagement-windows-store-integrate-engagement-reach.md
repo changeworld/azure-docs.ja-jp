@@ -18,7 +18,7 @@
 
 #Windows でエンゲージメント Reach を統合する方法
 
-このガイドに従う前に、ドキュメント [Windows でエンゲージメントを統合する方法] で説明する統合手順に(../mobile-engagement-windows-store-integrate-engagement/) 従う必要があります。
+このガイドに従う前に、ドキュメント [Windows でエンゲージメントを統合する方法] で説明する統合手順に(mobile-engagement-windows-store-integrate-engagement.md) 従う必要があります。
 
 ##エンゲージメント Reach SDK を Windows プロジェクトに組み込む
 

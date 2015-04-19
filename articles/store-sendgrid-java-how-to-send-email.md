@@ -193,7 +193,7 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
 これで、SendGrid 電子メール サービスの基本を学習できました。
 さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* Azure デプロイでの SendGrid の使用方法を示すサンプル:[Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法](../store-sendgrid-java-how-to-send-email-example/)
+* Azure デプロイでの SendGrid の使用方法を示すサンプル:[Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email-example.md)
 * SendGrid Java SDK:<https://sendgrid.com/docs/Code_Examples/java.html>
 * SendGrid API に関するドキュメント:<https://sendgrid.com/docs/API_Reference/index.html>
 * Azure ユーザー向けの SendGrid 特別プラン:<https://sendgrid.com/windowsazure.html>

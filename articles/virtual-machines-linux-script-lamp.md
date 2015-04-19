@@ -30,11 +30,11 @@ Linux 向け Azure カスタム スクリプト拡張機能では、Python や B
 
 また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure ポータルで取得できます)。
 
-Azure での Linux 仮想マシンの作成については、「[Linux を実行する仮想マシンの作成」をご覧ください](../virtual-machines-linux-tutorial/)。
+Azure での Linux 仮想マシンの作成については、「[Linux を実行する仮想マシンの作成」をご覧ください](virtual-machines-linux-tutorial.md)。
 
 ここで使用するインストール コマンドは Ubuntu を前提としていますが、どのサポートされたディストリビューションに対しても基本的な手順は同じです。
 
- *script-vm* 仮想マシンでは、Azure に接続できる xplat-cli がインストールされていることが必要です。詳細については、[「Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](../xplat-cli/)」をご覧ください。
+ *script-vm* 仮想マシンでは、Azure に接続できる xplat-cli がインストールされていることが必要です。詳細については、[「Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](xplat-cli.md)」をご覧ください。
 
 ## スクリプトのアップロード
 
@@ -104,6 +104,6 @@ xplat-cli、Linux、カスタム スクリプト拡張機能についての詳�
 
 [Azure Linux Extensions (Azure Linux 拡張機能、GitHub) ](https://github.com/Azure/azure-linux-extensions)
 
-[Azure での Linux とオープン ソース コンピューティング](../virtual-machines-linux-opensource/)
+[Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
 <!--HONumber=47-->

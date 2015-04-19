@@ -23,7 +23,7 @@
 
 必要に応じて次の関連するトピックもご覧ください。
 
-- [管理ポータル ウィザードを使用してサイト間 VPN を構成](http://msdn.microsoft.com/library/windowsazure/dn133795.aspx)した後、新しいフォレストをインストールするか、内部設置型のフォレストを Azure の仮想ネットワークに拡張することもできます。これらの手順については、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller)」をご覧ください。
+- [管理ポータル ウィザードを使用してサイト間 VPN を構成](http://msdn.microsoft.com/library/windowsazure/dn133795.aspx)した後、新しいフォレストをインストールするか、内部設置型のフォレストを Azure の仮想ネットワークに拡張することもできます。これらの手順については、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](virtual-networks-install-replica-active-directory-domain-controller.md)」をご覧ください。
 -  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)」をご覧ください。
 
 
@@ -65,7 +65,7 @@
 	**仮想マシンの構成**  | <p>クラウド サービス:1 台目の VM の作成時には<b>[新しいクラウド サービスの作成]</b> を選択します。DC ロールをホストする VM の追加作成時には、1 台目の VM と同じクラウド サービス名を選択します。</p><p>クラウド サービス DNS 名:グローバルに一意の名前を指定します。</p><p>リージョン/アフィニティ グループ/仮想ネットワーク:仮想ネットワーク名 (例: WestUSVNet) を指定します。</p><p>ストレージ アカウント:1 台目の VM の作成時には <b>[自動的に生成されたストレージ アカウントを使用]</b> を選択します。DC ロールをホストする VM の追加作成時には、1 台目の VM と同じストレージ アカウント名を選択します。</p><p>可用性セット:<b>[可用性セットの作成]</b> を選択します。</p><p>可用性セット名:1 台目の VM の作成時に、可用性セットの名前を入力します。その後、VM を追加で作成するときには、1 台目の VM と同じ可用性セット名を選択します。</p>
 	**仮想マシンの構成**  | <p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p>
 2. DC サーバーのロールを実行する各 VM にディスクを接続します。AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。初めて VM にサインインした後、**[サーバー マネージャー]** > **[ファイル サービスとストレージ サービス]** の順に開いて、NTFS を使用してこのディスクにボリュームを作成します。
-3. DC ロールを実行する VM の静的 IP アドレスを予約します。静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、[Azure PowerShell をインストール](../powershell-install-configure) し、Set-AzureStaticVNetIP コマンドレットを実行します。次に例を示します。
+3. DC ロールを実行する VM の静的 IP アドレスを予約します。静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、[Azure PowerShell をインストール](powershell-install-configure.md) し、Set-AzureStaticVNetIP コマンドレットを実行します。次に例を示します。
 
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
@@ -115,7 +115,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
 -  [管理ポータルでのサイト間 VPN の構成](https://msdn.microsoft.com/library/dn133795.aspx)
 
--  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller)
+-  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](virtual-networks-install-replica-active-directory-domain-controller.md)
 
 -  [Azure IT プロフェッショナル IaaS:(01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 
@@ -123,7 +123,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
 -  [仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)
 
--  [Azure PowerShell のインストールと構成方法](../powershell-install-configure/)
+-  [Azure PowerShell のインストールと構成方法](powershell-install-configure.md)
 
 -  [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
 

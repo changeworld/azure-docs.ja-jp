@@ -16,10 +16,8 @@
 	ms.date="02/02/2015" 
 	ms.author="kempb"/>
 
-# プロジェクトの変更点
-
 > [AZURE.SELECTOR]
-> - [使用開始](vs-active-directory-dotnet-getting-started.md)
+> - [Getting Started (概要)](vs-active-directory-dotnet-getting-started.md)
 > - [変更内容](vs-active-directory-dotnet-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
@@ -55,11 +53,11 @@
 
 #####コード ファイルがプロジェクトに追加された 
 
-認証スタートアップ クラス  `App_Start/Startup.Auth.cs` が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。さらに、 `SignIn()` メソッドおよび  `SignOut()` メソッドを含むコントローラー クラス Controllers/AccountController.cs が追加されました。最後に、SignIn/SignOut のアクション リンクを含む部分ビュー  `Views/Shared/_LoginPartial.cshtml` が追加されました。 
+認証スタートアップ クラス `App_Start/Startup.Auth.cs` が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。さらに、`SignIn()` メソッドおよび `SignOut()` メソッドを含むコントローラー クラス Controllers/AccountController.cs が追加されました。最後に、SignIn/SignOut のアクション リンクを含む部分ビュー `Views/Shared/_LoginPartial.cshtml` が追加されました。 
 
 #####スタートアップ コードがプロジェクトに追加された
  
-既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが更新されて  `ConfigureAuth(app)` 呼び出しが追加されています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。 
+既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが更新されて `ConfigureAuth(app)` 呼び出しが追加されています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。 
 
 #####app.config または web.config に新しい構成値が含まれる 
 
@@ -77,4 +75,4 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!--HONumber=49-->
+<!--HONumber=46--> 

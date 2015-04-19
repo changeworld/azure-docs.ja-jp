@@ -23,7 +23,7 @@
 
 ここでは、Windows Phone アプリケーションでエンゲージメントの分析やモニタリング機能を有効にする簡単な方法について説明します。
 
-次の手順では、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計を計算するためのログ レポートを有効にできます。イベント、エラー、ジョブの統計はアプリケーションに依存するため、それらのログ レポートは、Engagement API を使用して手動で行う必要があります (後述の [How to use the advanced Mobile Engagement tagging API in your Windows Phone app (Windows Phone で高度なモバイル エンゲージメント タグ付け API を使用する方法](../mobile-engagement-windows-phone-use-engagement-api/) 」をご覧ください)。
+次の手順では、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計を計算するためのログ レポートを有効にできます。イベント、エラー、ジョブの統計はアプリケーションに依存するため、それらのログ レポートは、Engagement API を使用して手動で行う必要があります (後述の [How to use the advanced Mobile Engagement tagging API in your Windows Phone app (Windows Phone で高度なモバイル エンゲージメント タグ付け API を使用する方法](mobile-engagement-windows-phone-use-engagement-api.md) 」をご覧ください)。
 
 ## サポートされているバージョン
 
@@ -209,7 +209,7 @@ Engagement でユーザー、セッション、アクティビティ、クラッ
 
 必要に応じて、アプリケーション固有のイベント、エラー、ジョブをレポートする場合は、 `EngagementAgent` クラスにある別のメソッドを使用できます。Engagement API では Engagement のすべての高度な機能を使用できます。
 
-詳細については、[How to use the advanced Mobile Engagement tagging API in your Windows Phone app (Windows Phone で高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-phone-use-the-engagement-api/) をご覧ください。
+詳細については、[How to use the advanced Mobile Engagement tagging API in your Windows Phone app (Windows Phone で高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-phone-use-the-engagement-api.md) をご覧ください。
 
 ## 詳細な構成
 

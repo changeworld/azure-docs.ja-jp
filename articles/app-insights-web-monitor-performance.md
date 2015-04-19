@@ -35,7 +35,7 @@ Application Insights が監視できるのは、オンプレミスのマシン�
 
 * [Visual Studio のアプリケーション プロジェクトに Application Insights を追加する][greenbrown] - 推奨。パッシブなパフォーマンス モニターに加え、診断ログを挿入したり、利用状況を追跡したりできます。
 * [ライブ Web サイトのパフォーマンスを監視する][redfield] - この場合、アプリケーション プロジェクトを更新したり、Web サイトを再デプロイしたりする必要はありません。
-* [Microsoft Azure Web サイトの場合は](../insights-how-to-customize-monitoring/)  メトリックは Web サイトの監視レンズで既に確認できます。 
+* [Microsoft Azure Web サイトの場合は](insights-how-to-customize-monitoring.md)  メトリックは Web サイトの監視レンズで既に確認できます。 
 
 
 ## <a name="view"></a>レポートを表示する

@@ -31,10 +31,10 @@ Service Bus メッセージングにはキューとトピックの 2 つの独�
 
 Service Bus メッセージングについての詳細は次のトピックをご覧ください。
 
-- [Azure Service Bus Architectural Overview (Azure Service Bus アーキテクチャの概要)](../fundamentals-service-bus-hybrid-solutions/)
+- [Azure Service Bus Architectural Overview (Azure Service Bus アーキテクチャの概要)](fundamentals-service-bus-hybrid-solutions.md)
 
-- [How to use Service Bus Queues ( Service Bus キューの利用方法)](../service-bus-dotnet-how-to-use-queues)
+- [How to use Service Bus Queues ( Service Bus キューの利用方法)](service-bus-dotnet-how-to-use-queues.md)
 
-- [How to use Service Bus Topics (Service Bus トピックの利用方法)](../service-bus-dotnet-how-to-use-topics-subscriptions)
+- [How to use Service Bus Topics (Service Bus トピックの利用方法)](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 <!--HONumber=47-->

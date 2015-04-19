@@ -377,8 +377,8 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
 [StackExchange.Redis キャッシュ クライアントのドキュメント]: http://github.com/StackExchange/StackExchange.Redis#documentation
 
 [Redis]: http://redis.io/documentation
-[Redis データ型]: http://redis.io/topics/data-types
-[Redis のデータ型の概念]: http://redis.io/topics/data-types-intro
+[redis のデータ型]: http://redis.io/topics/data-types
+[redis のデータ型の概念に関するページ]: http://redis.io/topics/data-types-intro
 
 [Windows Azure Web サイト: アプリケーション文字列と接続文字列の動作]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 

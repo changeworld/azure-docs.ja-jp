@@ -25,7 +25,7 @@
 
 [AZURE.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-**注:** Python または [Python Azure パッケージ][]をインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」をご覧ください。
+**注:** Python または [Python Azure パッケージ][]をインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](python-how-to-install.md)」をご覧ください。
 
 
 ##キューの作成方法

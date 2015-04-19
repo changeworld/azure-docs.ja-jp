@@ -1,13 +1,9 @@
 ﻿
-
->[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
-
-
-1. <a href="http://cloud.google.com/console" target="_blank">Google Cloud Console Web</a> サイトに移動し、Google アカウント資格情報でサインインして、**[Create Project]** をクリックします。
+1. <a href="http://cloud.google.com/console" target="_blank">Google Cloud Console</a> Web サイトに移動し、Google アカウント資格情報でサインインして、**[Create Project]** をクリックします。
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-new-project.png)   
 
-	>[AZURE.NOTE]既にプロジェクトが存在する場合は、ログイン後に <strong>Projects</strong> ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、 <strong>API Project</strong>, <strong>[Create...</strong> (<strong>[Other projects]</strong の下) をクリックした後、プロジェクトの名前を入力して、<strong>[Create project]</strong> をクリックします。
+	>[AZURE.NOTE]既にプロジェクトがある場合は、ログイン後に <strong>[Projects]</strong ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、<strong>[API Project]</strong> を展開し、<strong>[Other projects]</strong の下の <strong>[Create...]</strong をクリックして、プロジェクト名を入力してから <strong>[Create project]</strong> をクリックします。
 
 2. プロジェクトの名前を入力し、サービスの条件に同意して、**[Create]** をクリックします。要求された SMS の確認を実行し、**[Create]** をもう一度クリックします。
 
@@ -31,7 +27,7 @@
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key3.png) 
 
-	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
+	この API キー値を使用して、Mobile Services が GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
 
-<!--HONumber=49-->
+<!--HONumber=47-->

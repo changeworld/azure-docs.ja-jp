@@ -259,7 +259,7 @@ REST API を使用してリソースを操作する方法については、[Azur
 -	エンティティ タグ [http://en.wikipedia.org/wiki/HTTP_ETag](http://en.wikipedia.org/wiki/HTTP_ETag)
 -	[DocumentDB のクエリ](documentdb-sql-query.md)
 -	[DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
--	[DocumentDB のプログラミングストアド プロシージャ、トリガー、UDF](../documentdb-programming/)
+-	[DocumentDB のプログラミングストアド プロシージャ、トリガー、UDF](documentdb-programming.md)
 -	[DocumentDB リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn781482.aspx)
 
 

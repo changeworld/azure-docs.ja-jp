@@ -40,7 +40,7 @@
 <h2 id="sub-1">前提条件</h2>
 
 +	Visual Studio 2012 またはそれ以上、および ASP.NET MVC 4 と SQL Server がインストールされていること。ソフトウェアをまだインストールしていない場合は、無料の Express エディションである [Visual Studio 2013 Express](http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx) と [Microsoft SQL Server 2014 Express](http://msdn.microsoft.com/evalcenter/dn434042.aspx) をダウンロードできます。
-+	Azure Search サービス。Search サービス名および管理キーが必要です。詳細については、「[Azure Search の使用](../search-get-started/)」を参照してください。
++	Azure Search サービス。Search サービス名および管理キーが必要です。詳細については、「[Azure Search の使用](search-get-started.md)」を参照してください。
 +	Bing マップ サービスおよびサービスにアクセスするためのキー。次のセクションで手順について説明します。
 +	[CodePlex の Azure Search GeoSearch Sample](https://azuresearchgeospatial.codeplex.com/)。[SOURCE CODE] タブで、**[Download]** をクリックしてソリューションの zip ファイルを取得してください。 
 

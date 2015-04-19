@@ -21,7 +21,7 @@
 #コンテンツ キー承認ポリシーを構成する 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)]
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。 
 
 
 ##概要
@@ -35,14 +35,14 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 複数のコンテンツ キー持つ、または メディア サービスのキー配信サービス以外の **Key\License 配信サービス** URL を指定する場合は、Media Services .NET SDK または REST APIs を使用します。
 
-[Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成](../media-services-dotnet-configure-content-key-auth-policy/)
+[Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md)
 
-[Media Services REST API を使用したコンテンツ キー承認ポリシーの構成](../media-services-rest-configure-content-key-auth-policy/)
+[Media Services REST API を使用したコンテンツ キー承認ポリシーの構成](media-services-rest-configure-content-key-auth-policy.md)
 
 ###以下の考慮事項があります。
 
-- 動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。 
-- アセットには、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[アセットをエンコードする]」をご覧ください(../media-services-encode-asset/)。  
+- 動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(media-services-manage-origins#scale_streaming_endpoints.md)。 
+- アセットには、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[アセットをエンコードする]」をご覧ください(media-services-encode-asset.md)。  
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 
 
@@ -87,7 +87,7 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 **[XML ポリシーのインポート]** ボタンをクリックして、[ここ](https://msdn.microsoft.com/library/azure/dn783459.aspx)で定義された XML スキーマに準拠した別の XML を指定します。
 
 ##次のステップ
-これで、コンテンツ キー承認ポリシーが構成されました。[方法:Azure 管理ポータルを使用した暗号化の有効化](../media-services-manage-content#encrypt/) に関するトピックに移動します。
+これで、コンテンツ キー承認ポリシーが構成されました。[方法:Azure 管理ポータルを使用した暗号化の有効化](media-services-manage-content#encrypt.md) に関するトピックに移動します。
 
 
 [open_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-open-restriction.png

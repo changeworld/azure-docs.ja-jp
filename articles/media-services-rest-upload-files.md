@@ -21,7 +21,7 @@
 #REST API を使用してメディア・サービス アカウントにファイルをアップロードする
 [AZURE.INCLUDE [media-services-selector-upload-files](../includes/media-services-selector-upload-files.md)]
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。 
 
 メディア サービスで、デジタル ファイルをアセットにアップロードします。[Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
 
@@ -39,9 +39,9 @@
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(media-services-rest-how-to-use.md)。
 
->https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(../media-services-rest-connect_programmatically/)。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)]」で説明されているように、新しい URI に後続の呼び出しを行う必要があります(media-services-rest-connect_programmatically.md)。 
  
 アセットは、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、メディア サービス内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API でアセットを作成するには、メディア サービスに POST 要求を送信し、要求本文に、アセットに関するプロパティ情報を配置する必要があります。
 
@@ -56,7 +56,7 @@
 
 - **EnvelopeEncryptionProtected** = **4**:AES　ファイルで暗号化された HLS をアップロードする場合に指定します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 
->[AZURE.NOTE]アセットに暗号化を使用する場合は、**ContentKey** を作成し、[ContentKey を作成する方法]に関するトピックで説明されているようにアセットにリンクする必要があります。(../media-services-rest-create-contentkey)。ファイルをアセットにアップロードした後に、**AssetFile** エンティティの暗号化プロパティを　**Asset** 暗号化中に取得した値でアップデートする必要があります。.**MERGE** HTTP　要求を使用して実行してください。 
+>[AZURE.NOTE]アセットに暗号化を使用する場合は、**ContentKey** を作成し、[ContentKey を作成する方法]に関するトピックで説明されているようにアセットにリンクする必要があります。(media-services-rest-create-contentkey.md)。ファイルをアセットにアップロードした後に、**AssetFile** エンティティの暗号化プロパティを　**Asset** 暗号化中に取得した値でアップデートする必要があります。.**MERGE** HTTP　要求を使用して実行してください。 
 
 
 次の例では、アセットを作成する方法を示します。

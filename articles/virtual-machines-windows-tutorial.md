@@ -25,7 +25,7 @@
 このチュートリアルでは、Azure 仮想マシン (VM) を簡単に作成する方法を示します。このチュートリアルでは Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。使用可能なイメージには、Windows オペレーティング システム、Linux ベースのオペレーティング システム、プレインストールされているアプリケーションのイメージなどがあります。選択できるイメージは、ご利用のサブスクリプションの種類によって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
 
-また、「[独自のイメージをテンプレートとして](../virtual-machines-create-upload-vhd-windows-server/)」使用して Windows VＭ を作成できます。Azure VM についての詳細は、「[Azure 仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)」をご覧ください。
+また、「[独自のイメージをテンプレートとして](virtual-machines-create-upload-vhd-windows-server.md)」使用して Windows VＭ を作成できます。Azure VM についての詳細は、「[Azure 仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)」をご覧ください。
 
 [AZURE.INCLUDE [free-trial-note](../includes/free-trial-note.md)]
 
@@ -106,11 +106,11 @@
 
 Azure での Windows 仮想マシンの構成に関する詳細については、次の記事をご覧ください。
 
-[仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](../cloud-services-connect-virtual-machine/)
+[仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](cloud-services-connect-virtual-machine.md)
 
-[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines-create-upload-vhd-windows-server/)
+[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server.md)
 
-[仮想マシンの可用性管理](../manage-availability-virtual-machines/)
+[仮想マシンの可用性管理](manage-availability-virtual-machines.md)
 
 [Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)
 

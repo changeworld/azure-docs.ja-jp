@@ -82,7 +82,7 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 		* SQL Server を **Azure 仮想マシン**内で使用している場合、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している限り、任意の仮想ネットワーク構成を使用できます。
 
-	* **仮想ネットワークに HDInsight クラスターをプロビジョニング**する手順については、[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング]を参照してください。(/ja-jp/documentation/articles/hdinsight-provision-clusters/)
+	* **仮想ネットワークに HDInsight クラスターをプロビジョニング**する手順については、[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング]を参照してください。(hdinsight-provision-clusters.md)
 
 	> [AZURE.NOTE] SQL Server で SQL 認証を許可する必要があります。この記事の手順では、SQL ログインを使用する必要があります。
 

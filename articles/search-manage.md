@@ -51,7 +51,7 @@ Azure Search は、カスタム検索アプリケーションで使用できる�
 +	[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/dn798934.aspx)
 +	[Pricing Details (料金の詳細)](http://go.microsoft.com/fwlink/p/?LinkdID=509792)
 
-サインアップの準備ができたら、「[Azure Search の使用](../search-get-started/)」を参照してください。
+サインアップの準備ができたら、「[Azure Search の使用](search-get-started.md)」を参照してください。
 
 
 <h2 id="sub-2">管理タスク</h2>

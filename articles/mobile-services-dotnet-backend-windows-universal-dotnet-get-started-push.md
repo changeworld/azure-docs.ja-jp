@@ -22,9 +22,9 @@
 
 このトピックでは、Azure Mobile Services を .NET バックエンドで使用してユニバーサル Windows アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、ユニバーサル Windows アプリ プロジェクトの Azure 通知ハブを使用したプッシュ通知を有効にします。完了すると、TodoList テーブルにレコードが挿入されるたびに、モバイル サービスは、.NET バックエンドから、登録されたすべての Windows ストア アプリおよび Windows Phone ストア アプリにプッシュ通知を送信します。作成する通知ハブはモバイル サービスでは無料で、モバイル サービスから独立して管理することができ、他のアプリケーションおよびサービスで使用できます。
 
->[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 with Update 3 でツーリングを使用して、Mobile Services からユニバーサル Windows アプリへのプッシュ通知のサポートを追加する方法について説明します。同じ手順を使用して、モバイル サービスから Windows ストアまたは Windows Phone ストア 8.1 アプリへのプッシュ通知を追加することができます。プッシュ通知を Windows Phone 8 アプリまたは Windows Phone Silverlight 8.1 アプリに追加するには、こちらのバージョンの「[Mobile Services アプリへのプッシュ通知の追加](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push)」を参照してください。
+>[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 with Update 3 でツーリングを使用して、Mobile Services からユニバーサル Windows アプリへのプッシュ通知のサポートを追加する方法について説明します。同じ手順を使用して、モバイル サービスから Windows ストアまたは Windows Phone ストア 8.1 アプリへのプッシュ通知を追加することができます。プッシュ通知を Windows Phone 8 アプリまたは Windows Phone Silverlight 8.1 アプリに追加するには、こちらのバージョンの「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-phone-get-started-push.md)」を参照してください。
 
-> Visual Studio Professional 2013 Update 3 にアップグレードできない場合や、モバイル サービス プロジェクトを手動で Windows ストア アプリ ソリューションに追加する場合は、トピックの[こちらのバージョン](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push)を参照してください。
+> Visual Studio Professional 2013 Update 3 にアップグレードできない場合や、モバイル サービス プロジェクトを手動で Windows ストア アプリ ソリューションに追加する場合は、トピックの[こちらのバージョン](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md)を参照してください。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 

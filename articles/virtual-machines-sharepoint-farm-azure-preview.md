@@ -32,7 +32,7 @@ Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使�
 
 このファーム構成は、より大量のクライアント読み込みや外部の SharePoint サイトの高可用性をテストしたり、SharePoint ファームの SQL Server AlwaysOn をテストしたりする場合に使用できます。この構成は、高可用環境での SharePoint アプリケーション開発でも使用できます。
  
-この両ファームの構成の詳細については、「[SharePoint サーバー ファームの構成の詳細](../virtual-machines-sharepoint-farm-config-azure-preview/)」をご覧ください.
+この両ファームの構成の詳細については、「[SharePoint サーバー ファームの構成の詳細](virtual-machines-sharepoint-farm-config-azure-preview.md)」をご覧ください.
 
 ## 構成の手順##
 
@@ -87,7 +87,7 @@ SharePoint Server Farm は、Azure リソース マネージャーとスクリ�
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-[SharePoint サーバー ファームの構成の詳細](../virtual-machines-sharepoint-farm-config-azure-preview/)
+[SharePoint サーバー ファームの構成の詳細](virtual-machines-sharepoint-farm-config-azure-preview.md)
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](http://azure.microsoft.com/documentation/articles/virtual-networks-setup-sharepoint-hybrid-cloud-testing/)
 

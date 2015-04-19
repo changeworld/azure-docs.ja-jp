@@ -88,7 +88,7 @@
 #関連項目
 
 
-[Azure の Content Delivery Network (CDN) を有効にする方法](./cdn-create-new-endpoint.md)  
+[Azure の Content Delivery Network (CDN) を有効にする方法](cdn-create-new-endpoint.md)  
 **Azure CDN の概要**
 
 

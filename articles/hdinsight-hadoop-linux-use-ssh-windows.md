@@ -20,7 +20,7 @@
 
 Linux ベースの HDInsight クラスターには、パスワードまたは SSH キーを使用した SSH アクセスのセキュリティを保護するオプションが用意されています。このドキュメントでは、PuTTY SSH クライアントを使用した Windows クライアントからの HDInsight への接続について説明します。
 
-> [AZURE.NOTE] この記事の手順では、Windows クライアントを使用していることを前提としています。Linux、Unix、または OS X クライアントを使用する場合は、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)」を参照してください。
+> [AZURE.NOTE] この記事の手順では、Windows クライアントを使用していることを前提としています。Linux、Unix、または OS X クライアントを使用する場合は、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
 ##前提条件
 
@@ -224,10 +224,10 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 これで、SSH キーを使用して認証する方法、また、HDInsight 上の Hadoop で MapReduce を使用する方法についてご理解いただけたと思います。
 
-* [HDInsight での Hive の使用](../hdinsight-use-hive/)
+* [HDInsight での Hive の使用](hdinsight-use-hive.md)
 
-* [HDInsight での Pig の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
 
-* [HDInsight での MapReduce ジョブの使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
  
 <!--HONumber=47-->

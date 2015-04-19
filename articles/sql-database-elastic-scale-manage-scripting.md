@@ -73,7 +73,7 @@ PowerShell サンプル スクリプトを実行すると、サブスクリプ�
 ## Runbook を読み込むには 
 
 1. **ShardElasticity.zip** ファイルをダウンロードし、内容を抽出します。
-2. [NuGet を使用して、Elastic Scale バイナリへの参照を追加します。](./sql-database-elastic-scale-add-references-visual-studio.md)
+2. [NuGet を使用して、Elastic Scale バイナリへの参照を追加します。](sql-database-elastic-scale-add-references-visual-studio.md)
 3. Elastic Scale クライアント バイナリ (**Microsoft.Azure.SqlDatabase.ElasticScale.Client.dll**) を見つけます。
 4. この DLL を ShardElasticityModule フォルダーに配置し、フォルダーを zip 圧縮します。 
 3. Azure Automation アカウントで、ShardElasticityModule.zip ファイルを**アセット**としてアップロードします。 

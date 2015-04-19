@@ -41,7 +41,7 @@ VHD の使用を開始するには、2 つの方法があります。
 
 
 
-VHD と同時に、新しい VM のサイズも指定します。VM の各サイズに関する情報の詳細は、[Azure ライブラリ](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx)に示されています。  
+VHD と同時に、新しい VM のサイズも指定します。VM の各サイズに関する情報の詳細は、[Azure ライブラリ](http://msdn.microsoft.com/library/windowsazure/dn197896.aspx)に示されています。  
 
 -	**XS**。共用コアと 768MB のメモリが搭載されています。
 -	**S**。1 つのコアと 1.75 GB のメモリが搭載されています。

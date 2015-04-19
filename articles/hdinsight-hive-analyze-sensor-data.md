@@ -31,7 +31,7 @@ Hive を HDInsight (Hadoop) と共に使用してセンサー データを分析
 
 ##前提条件:
 
-* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](/ja-jp/documentation/articles/hdinsight-provision-clusters/)に関するページをご覧ください。
+* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関するページをご覧ください。
 
 * Microsoft Excel 2013
 

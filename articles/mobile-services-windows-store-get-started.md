@@ -19,7 +19,7 @@
 
 # <a name="getting-started"> </a>モバイル サービスの使用
 
-このトピックは現在サポートされていません。スタンドアロンの Windows ストア プロジェクトはポータルからダウンロードして入手できません。代わりにユニバーサル Windows プロジェクトをダウンロードできます。詳細については、「[Mobile Services の使用](/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/)」をご覧ください。 
+このトピックは現在サポートされていません。スタンドアロンの Windows ストア プロジェクトはポータルからダウンロードして入手できません。代わりにユニバーサル Windows プロジェクトをダウンロードできます。詳細については、「[Mobile Services の使用](mobile-services-javascript-backend-windows-store-dotnet-get-started.md)」をご覧ください。 
 
-Mobile Services を既存の Windows ストア アプリに追加する手順については、「[既存のアプリケーションへの Mobile Services の追加](/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/)」をご覧ください。
+Mobile Services を既存の Windows ストア アプリに追加する手順については、「[既存のアプリケーションへの Mobile Services の追加](mobile-services-windows-store-dotnet-get-started-data.md)」をご覧ください。
 <!--HONumber=47-->

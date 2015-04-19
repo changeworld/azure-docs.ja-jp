@@ -155,8 +155,8 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 
 「任意のタイミング」でプッシュを受け取るには、対象のデバイスに応じて 1 つ以上のネイティブ プッシュ サービスを使用する必要があります。
 
-  - Google Play のデバイスの場合:「[GCM を Mobile Engagement に統合する方法]」に従って、[Google Cloud Messaging] を使用します(../mobile-engagement-android-gcm-integrate/) 。
-  - Amazon のデバイスの場合:「[ADM を Engagement に統合する方法]」に従って、[Amazon Device Messaging] を使用します(../mobile-engagement-android-adm-integrate/) 。
+  - Google Play のデバイスの場合:「[GCM を Mobile Engagement に統合する方法]」に従って、[Google Cloud Messaging] を使用します(mobile-engagement-android-gcm-integrate.md) 。
+  - Amazon のデバイスの場合:「[ADM を Engagement に統合する方法]」に従って、[Amazon Device Messaging] を使用します(mobile-engagement-android-adm-integrate.md) 。
 
 Amazon と Google Play の両方のデバイスを対象とするコードは、1 つの AndroidManifest.xml/APK 内で開発することもできます。ただし、アプリケーションに GCM のコードが見つかると、Amazon に送信する際に却下されることがあります。
 

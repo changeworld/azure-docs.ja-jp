@@ -70,7 +70,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 
 
 
-管理ポータルを使った Azure Storage アカウントの作成については、[Azure Storage アカウントの作成、管理、削除](に関するページを参照してください(../storage-create-storage-account/)。
+管理ポータルを使った Azure Storage アカウントの作成については、[Azure Storage アカウントの作成、管理、削除](に関するページを参照してください(storage-create-storage-account.md)。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -79,7 +79,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 	# List the keys for a storage account
 	Get-AzureStorageKey <StorageAccountName>
 
-管理ポータルを使用して情報を取得する方法の詳細については、「*方法: ストレージ アクセス キーの表示、コピーおよび再生成」*セクション ([ストレージ アカウントの作成、管理、削除方法](../storage-create-storage-account/)に関するページ）を参照してください。
+管理ポータルを使用して情報を取得する方法の詳細については、「*方法: ストレージ アクセス キーの表示、コピーおよび再生成」*セクション ([ストレージ アカウントの作成、管理、削除方法](storage-create-storage-account.md)に関するページ）を参照してください。
 
 **Azure Storage コンテナーを作成するには**
 

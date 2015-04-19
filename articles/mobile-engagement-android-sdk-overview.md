@@ -18,18 +18,18 @@
 
 
 #Android SDK for Azure Mobile Engagement v3.0.0
-Azure Mobile Engagement を Android アプリに統合する方法の詳細について紹介します。まずはマイクロソフトが提供する [15 分のチュートリアル]をご覧ください(../mobile-engagement-android-get-started/)。
+Azure Mobile Engagement を Android アプリに統合する方法の詳細について紹介します。まずはマイクロソフトが提供する [15 分のチュートリアル]をご覧ください(mobile-engagement-android-get-started.md)。
 
-クリックして [SDK コンテンツ]を表示(../mobile-engagement-android-sdk-content)
+クリックして [SDK コンテンツ]を表示(mobile-engagement-android-sdk-content.md)
 
 ##統合手順
-1. はじめに:[Engagement を Android に統合する方法](../mobile-engagement-android-integrate-engagement/)
+1. はじめに:[Engagement を Android に統合する方法](mobile-engagement-android-integrate-engagement.md)
 
-2. 通知:[Engagement Reach を Android に統合する方法](../mobile-engagement-android-integrate-engagement-reach/)
-	1. Google Cloud Messaging (GCM):[GCM を Mobile Engagement に統合する方法](../mobile-engagement-android-gcm-integrate/)
-	2. Amazon Device Messaging (ADM):[ADM を Engagement に統合する方法](../mobile-engagement-android-adm-integrate/)
+2. 通知:[Engagement Reach を Android に統合する方法](mobile-engagement-android-integrate-engagement-reach.md)
+	1. Google Cloud Messaging (GCM):[GCM を Mobile Engagement に統合する方法](mobile-engagement-android-gcm-integrate.md)
+	2. Amazon Device Messaging (ADM):[ADM を Engagement に統合する方法](mobile-engagement-android-adm-integrate.md)
 
-3. タグ計画の実装:[Engagement API を Android で使用する方法](../mobile-engagement-android-use-engagement-api/)
+3. タグ計画の実装:[Engagement API を Android で使用する方法](mobile-engagement-android-use-engagement-api.md)
 
 
 ##リリース ノート
@@ -43,13 +43,13 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 -   セキュリティが強化されました。
 -   Google Play と SmartAd の追跡機能が削除されました。
 
-これ以前のバージョンについては、[リリース ノート全文]をご覧ください。(../mobile-engagement-android-release-notes/)
+これ以前のバージョンについては、[リリース ノート全文]をご覧ください。(mobile-engagement-android-release-notes.md)
 
 ##アップグレード手順
 
 アプリケーションにマイクロソフトの古いバージョンの SDK が既に統合されている場合は、次の点を考慮して SDK をアップグレードする必要があります。
 
-SDK のバージョンを飛ばしてアップグレードするには、複数の手順を実行する必要がある場合があります。詳細は「[アップグレード手順]」のページをご覧ください。(../mobile-engagement-android-upgrade-procedure/)。たとえば、バージョン 1.4.0 から 1.6.0 に移行するには、まず「1.4.0 から 1.5.0」の手順を実行し、その後「1.5.0 から 1.6.0」の手順を実行する必要があります。
+SDK のバージョンを飛ばしてアップグレードするには、複数の手順を実行する必要がある場合があります。詳細は「[アップグレード手順]」のページをご覧ください。(mobile-engagement-android-upgrade-procedure.md)。たとえば、バージョン 1.4.0 から 1.6.0 に移行するには、まず「1.4.0 から 1.5.0」の手順を実行し、その後「1.5.0 から 1.6.0」の手順を実行する必要があります。
 
 どのバージョンからアップグレードする場合でも、`mobile-engagement-VERSION.jar` をすべて新しいバージョンのものに置き換える必要があります。
 

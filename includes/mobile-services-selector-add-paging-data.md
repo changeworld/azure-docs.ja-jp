@@ -1,15 +1,15 @@
 ﻿> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(iOS | JavaScript)](/ja-jp/documentation/articles/mobile-services-ios-add-paging-data/)
-- [(Windows Store C# | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data/)
-- [(Windows Store C# | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-add-paging-data/)
-- [(Windows Store JavaScript | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-add-paging-data/)
-- [(Windows Store JavaScript | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-store-javascript-add-paging-data/)
-- [(Windows Phone | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-add-paging-data/)
-- [(Windows Phone | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-phone-add-paging-data/)
-- [(Android | Javascript)](/ja-jp/documentation/articles/mobile-services-android-add-paging-data/)
-- [(Xamarin iOS | Javascript)](/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-add-paging-data/)
-- [(Xamarin Android | Javascript)](/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-add-paging-data/)
-- [(HTML | Javascript)](/ja-jp/documentation/articles/mobile-services-html-add-paging-data/)
+- [(iOS | JavaScript)](mobile-services-ios-add-paging-data.md)
+- [(Windows Store C# | .NET)](mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data.md)
+- [(Windows Store C# | Javascript)](mobile-services-windows-store-dotnet-add-paging-data.md)
+- [(Windows Store JavaScript | .NET)](mobile-services-dotnet-backend-windows-store-javascript-add-paging-data.md)
+- [(Windows Store JavaScript | Javascript)](mobile-services-windows-store-javascript-add-paging-data.md)
+- [(Windows Phone | .NET)](mobile-services-dotnet-backend-windows-phone-add-paging-data.md)
+- [(Windows Phone | Javascript)](mobile-services-windows-phone-add-paging-data.md)
+- [(Android | Javascript)](mobile-services-android-add-paging-data.md)
+- [(Xamarin iOS | Javascript)](partner-xamarin-mobile-services-ios-add-paging-data.md)
+- [(Xamarin Android | Javascript)](partner-xamarin-mobile-services-android-add-paging-data.md)
+- [(HTML | Javascript)](mobile-services-html-add-paging-data.md)
 
 
 <!--HONumber=42-->

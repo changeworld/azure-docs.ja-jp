@@ -18,7 +18,7 @@
 
 #Engagement API を Android で使用する方法
 
-このドキュメントは、ドキュメント「[Engagement を Android に統合する方法]」の追加ドキュメントです。(../mobile-engagement-android-integrate-engagement/)Engagement API を使用してアプリケーションの統計情報のレポートを作成する方法について詳しく説明します。
+このドキュメントは、ドキュメント「[Engagement を Android に統合する方法]」の追加ドキュメントです。(mobile-engagement-android-integrate-engagement.md)Engagement API を使用してアプリケーションの統計情報のレポートを作成する方法について詳しく説明します。
 
 Engagement を使用してアプリケーションのセッション、アクティビティ、クラッシュ、および技術情報に関するレポートのみを作成する場合、すべての  `Activity` サブクラスを対応する  `EngagementActivity` クラスから継承するように設定する方法が簡単です。
 
@@ -28,7 +28,7 @@ Engagement API は  `EngagementAgent` クラスで提供されます。このク
 
 ##Engagement の概念
 
-次の部分は共通の [Mobile Engagement の概念]を(../mobile-engagement-concepts/)Android プラットフォーム用に改良します。
+次の部分は共通の [Mobile Engagement の概念]を(mobile-engagement-concepts.md)Android プラットフォーム用に改良します。
 
 ### `セッション`と `アクティビティ`
 

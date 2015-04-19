@@ -114,7 +114,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
 ##HDInsight Tools for Visual Studio
 
-HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。次の例では、サンプル アプリケーションを使用します。HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「[develop C# topologies using the HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用して C# トポロジを開発する)]」を参照してください(../hdinsight-storm-develop-csharp-visual-studio-topology/)。
+HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。次の例では、サンプル アプリケーションを使用します。HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「[develop C# topologies using the HDInsight Tools for Visual Studio (HDInsight Tools for Visual Studio を使用して C# トポロジを開発する)]」を参照してください(hdinsight-storm-develop-csharp-visual-studio-topology.md)。
 
 次の手順を使用して、サンプルをお使いの HDInsight クラスターに展開し、トポロジを表示、管理します。
 
@@ -166,7 +166,7 @@ REST API から返される情報は、クラスターと同じ Azure 仮想ネ�
 
 ##次のステップ
 
-ここまでで、Storm ダッシュボードを使用してトポロジをデプロイし、監視する方法について説明してきました。続けて、[HDInsight Tools for Visual Studio を使用して C# トポロジを開発する](../hdinsight-storm-develop-csharp-visual-studio-topology/)方法や、[Maven を使用して Java ベースのトポロジを開発する]方法について説明します。(../hdinsight-storm-develop-java-topology/)。
+ここまでで、Storm ダッシュボードを使用してトポロジをデプロイし、監視する方法について説明してきました。続けて、[HDInsight Tools for Visual Studio を使用して C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)方法や、[Maven を使用して Java ベースのトポロジを開発する]方法について説明します。(hdinsight-storm-develop-java-topology.md)。
 
 
 [hdinsight-dashboard]: ./media/hdinsight-storm-deploy-monitor/dashboard-link.png

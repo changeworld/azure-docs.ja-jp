@@ -24,9 +24,9 @@
 
 このチュートリアルで作成するモバイル サービスは .NET バックエンド モバイル サービスです。.NET バックエンドによって、モバイル サービスにおけるサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できるようになります。さらに、ローカル コンピューターでモバイル サービスを実行し、デバックすることができます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「JavaScript バックエンド バージョン」を参照してください。
 
->[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 Update 3 でツーリングを使用して、新しいモバイル サービスをユニバーサル Windows アプリに接続する方法について説明します。同じ手順を使用して、モバイル サービスを Windows ストアまたは Windows Phone ストア 8.1 アプリに接続することができます。モバイル サービスを Windows Phone 8.0 アプリまたは Windows Phone Silverlight 8.1 アプリに接続するには、「[データの使用 (Windows Phone)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data)」を参照してください。
+>[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 Update 3 でツーリングを使用して、新しいモバイル サービスをユニバーサル Windows アプリに接続する方法について説明します。同じ手順を使用して、モバイル サービスを Windows ストアまたは Windows Phone ストア 8.1 アプリに接続することができます。モバイル サービスを Windows Phone 8.0 アプリまたは Windows Phone Silverlight 8.1 アプリに接続するには、「[データの使用 (Windows Phone)](mobile-services-dotnet-backend-windows-phone-get-started-data.md)」を参照してください。
 
-> Visual Studio Professional 2013 Update 3 にアップグレードできない場合や、モバイル サービス プロジェクトを手動で Windows ストア アプリ ソリューションに追加する場合は、トピックの[こちらのバージョン](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data)を参照してください。
+> Visual Studio Professional 2013 Update 3 にアップグレードできない場合や、モバイル サービス プロジェクトを手動で Windows ストア アプリ ソリューションに追加する場合は、トピックの[こちらのバージョン](mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md)を参照してください。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 

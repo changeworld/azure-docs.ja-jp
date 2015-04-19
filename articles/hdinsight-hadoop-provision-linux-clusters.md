@@ -27,9 +27,9 @@ Hadoop またはビッグデータを説明するときに、クラスターに�
 
 ![HDInsight Cluster][img-hdi-cluster]
 
-HDInsight クラスターでは、Hadoop の実装の詳細を抽象化しているため、クラスターの別のノードとの通信方法を心配する必要はありません。HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。詳細については、「[HDInsight での Hadoop 入門](../hdinsight-hadoop-introduction/)」を参照してください。変更されるデータは、HDInsight のコンテキストでは *Azure Storage - BLOB* (または WASB) とも呼ばれる Azure BLOB ストレージに格納されます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)に関するページを参照してください。
+HDInsight クラスターでは、Hadoop の実装の詳細を抽象化しているため、クラスターの別のノードとの通信方法を心配する必要はありません。HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。詳細については、「[HDInsight での Hadoop 入門](hdinsight-hadoop-introduction.md)」を参照してください。変更されるデータは、HDInsight のコンテキストでは *Azure Storage - BLOB* (または WASB) とも呼ばれる Azure BLOB ストレージに格納されます。詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
 
-この記事では、クラスターをプロビジョニングするさまざまな手順を示します。クラスターをすばやくプロビジョニングする方法を調べる場合は、[Azure HDInsight (Linux) の概要](../hdinsight-hadoop-linux-get-started)に関するトピックを参照してください。
+この記事では、クラスターをプロビジョニングするさまざまな手順を示します。クラスターをすばやくプロビジョニングする方法を調べる場合は、[Azure HDInsight (Linux) の概要](hdinsight-hadoop-linux-get-started.md)に関するトピックを参照してください。
 
 **前提条件:**
 
@@ -37,14 +37,14 @@ HDInsight クラスターでは、Hadoop の実装の詳細を抽象化してい
 
 - Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。HDInsight PowerShell コマンドレットはサブスクリプションを使ってタスクを実行します。サブスクリプションの入手方法の詳細については、<a href="http://azure.microsoft.com/pricing/purchase-options/" target="_blank">購入オプション</a>に関するページ、「<a href="http://azure.microsoft.com/pricing/member-offers/" target="_blank">メンバー プラン</a>」、または<a href="http://azure.microsoft.com/pricing/free-trial/" target="_blank">無料評価版</a>に関するページを参照してください。
 - SSH キー。パスワードの代わりに SSH とキーを使用して、Linux クラスターにリモートでアクセスする場合に必要です。キーはより安全性が高いことから、キーを使用する方法をお勧めします。SSH キーを生成する手順については、次の記事を参照してください。
-	-  Linux コンピューターの場合 - [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix)。
-	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight-hadoop-linux-use-ssh-windows)。
+	-  Linux コンピューターの場合 - [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)。
+	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)。
 
 ## <a id="configuration"></a>構成オプション
 
 ### Linux 上のクラスター
 
-HDInsight には、Azure で Linux クラスターをプロビジョニングするためのオプションが用意されています。Linux または Unix に詳しい場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターをプロビジョニングします。Linux での Azure HDInsight の詳細については、「[HDInsight での Hadoop 入門]」を参照してください(../hdinsight-hadoop-introduction)。 
+HDInsight には、Azure で Linux クラスターをプロビジョニングするためのオプションが用意されています。Linux または Unix に詳しい場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターをプロビジョニングします。Linux での Azure HDInsight の詳細については、「[HDInsight での Hadoop 入門]」を参照してください(hdinsight-hadoop-introduction.md)。 
 
 ### その他のストレージ
 
@@ -72,7 +72,7 @@ Windows | [ここ]をクリック(#portal) | [ここ]をクリック(#cli) | [�
 
 ### <a id="portal"></a>Azure の管理ポータルの使用
 
-HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法][azure-create-storageaccount]に関するページを参照してください。
+HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法][azure-create-storageaccount]に関するページを参照してください。
 
 
 > [WACOM.NOTE] 現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、および**米国中南部**のみです。
@@ -526,12 +526,12 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 ##<a id="nextsteps"></a>次のステップ
 この記事では、HDInsight Hadoop クラスターを Linux でプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-- [Linux での HDInsight の使用](../hdinsight-hadoop-linux-information)に関するページ。Linux で HDInsight クラスターを操作するとはどういったことかを把握できます。
-- [Manage HDInsight clusters using Ambari (Ambari を使用した HDInsight クラスターの管理)](../hdinsight-hadoop-manage-ambari)。Ambari Web または Ambari REST API を使用して、HDInsight クラスターで Linux ベースの Hadoop を監視および管理する方法を説明します。 
+- [Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)に関するページ。Linux で HDInsight クラスターを操作するとはどういったことかを把握できます。
+- [Manage HDInsight clusters using Ambari (Ambari を使用した HDInsight クラスターの管理)](hdinsight-hadoop-manage-ambari.md)。Ambari Web または Ambari REST API を使用して、HDInsight クラスターで Linux ベースの Hadoop を監視および管理する方法を説明します。 
 - [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]に関するページ。さまざまな方法によるクラスターでの MapReduce ジョブの実行について説明します。
 - [HDInsight での Hive の使用][hdinsight-use-hive]に関するページ。クラスターで Hive クエリを実行するその他の方法を説明します。
 - [HDInsight での Pig の使用][hdinsight-use-pig]に関するページ。さまざまな方法を使用したクラスターでの Pig ジョブの実行について説明します。
-- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage)に関するページ。HDInsight で Azure BLOB ストレージを使用して HDInsight クラスター用にデータを格納する方法を説明します。
+- [HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページ。HDInsight で Azure BLOB ストレージを使用して HDInsight クラスター用にデータを格納する方法を説明します。
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページ。HDInsight クラスター用に Azure BLOB ストレージに格納されたデータの操作方法を説明します。
 
 [hdinsight-use-mapreduce]: ../hdinsight-use-mapreduce/

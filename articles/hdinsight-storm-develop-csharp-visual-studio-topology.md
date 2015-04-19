@@ -533,7 +533,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 ##次のステップ
 
-ここまでで、HDInsight Tools for Visual Studio から Storm トポロジを開発、デプロイする方法を学習してきました。次のステップでは、[HDInsight で Storm を使用して Azure Event Hub のイベントを処理する](../hdinsight-storm-develop-csharp-event-hub-topology/)方法を学習できます。
+ここまでで、HDInsight Tools for Visual Studio から Storm トポロジを開発、デプロイする方法を学習してきました。次のステップでは、[HDInsight で Storm を使用して Azure Event Hub のイベントを処理する](hdinsight-storm-develop-csharp-event-hub-topology.md)方法を学習できます。
 
 C# トポロジの作成の詳細については、[https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md) を参照してください。
 
@@ -541,26 +541,26 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 **HDInsight での Apache Storm**
 
-* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](../hdinsight-storm-deploy-monitor-topology/)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](hdinsight-storm-deploy-monitor-topology.md)
 
-* [HDInsight で Storm を使用して Azure Event Hub のイベントを処理する](../hdinsight-storm-develop-csharp-event-hub-topology/)
+* [HDInsight で Storm を使用して Azure Event Hub のイベントを処理する](hdinsight-storm-develop-csharp-event-hub-topology.md)
 
-* [Develop Java-based topologies for Apache Storm on HDInsight (HDInsight の Apache Storm での Java ベース トポロジの開発)](../hdinsight-storm-develop-java-topology/)
+* [Develop Java-based topologies for Apache Storm on HDInsight (HDInsight の Apache Storm での Java ベース トポロジの開発)](hdinsight-storm-develop-java-topology.md)
 
-* [Trending hashtags for Twitter with Apache Storm on HDInsight (HDInsight の Apache Storm を使用した Twitter のトレンディング ハッシュタグ)](../hdinsight-storm-twitter-trending/)
+* [Trending hashtags for Twitter with Apache Storm on HDInsight (HDInsight の Apache Storm を使用した Twitter のトレンディング ハッシュタグ)](hdinsight-storm-twitter-trending.md)
 
 * [HDInsight での Storm の例](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md)
 
 **HDInsight での Apache Hadoop**
 
-* [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 **HDInsight での Apache HBase**
 
-* [HDInsight での HBase の使用](../hdinsight-hbase-get-started/)
+* [HDInsight での HBase の使用](hdinsight-hbase-get-started.md)
 
 <!--HONumber=47-->

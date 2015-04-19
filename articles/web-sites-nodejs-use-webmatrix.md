@@ -100,7 +100,7 @@ Azure Website を作成するには、次のステップに従います。
 
 ##次のステップ
 
-Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](/ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/).」をご覧ください。[CO1]
+Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](nodejs-specify-node-version-azure-apps.md).」をご覧ください。[CO1]
 
 Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/Debug-Website/)」をご覧ください。
 

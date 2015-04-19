@@ -19,7 +19,7 @@
 
 #Azure メディア エンコーダーを使用してアセットをエンコードする方法
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](media-services-video-on-demand-workflow.md) シリーズの一部です。 
 
 ##概要
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客の端末でうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
@@ -206,7 +206,7 @@ Azure メディア エンコーダーでエンコードするときは、[こち
 
 
 ##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](../media-services-check-job-progress/) に関するトピックに進みます。
+これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](media-services-check-job-progress.md) に関するトピックに進みます。
 
 [Azure Marketplace]: https://datamarket.azure.com/
 [エンコーダー プリセット]: http://msdn.microsoft.com/library/dn619392.aspx

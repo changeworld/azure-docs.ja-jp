@@ -525,7 +525,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 ##<a id="nextsteps"></a>次のステップ
 このチュートリアルでは、Hadoop ストリーミング MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce を実行する PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
-- [Azure HDInsight の概要](../hdinsight-get-started/)に関するページ
+- [Azure HDInsight の概要](hdinsight-get-started.md)に関するページ
 - [HDInsight Emulator の概要][hdinsight-get-started-emulator]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]に関するページ
 - [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]

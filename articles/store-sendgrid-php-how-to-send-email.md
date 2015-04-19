@@ -404,7 +404,7 @@ SendGrid では、'フィルター' を使用することでその他の電子�
   [https://sendgrid.com]: https://sendgrid.com
   [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
   [特別プラン]: https://www.sendgrid.com/windowsazure.html
-  [Azure に対する PHP アプリケーションのパッケージ化と配置]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh674499(v=VS.103).aspx
+  [Azure に対する PHP アプリケーションのパッケージ化と配置]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
   [http://swiftmailer.org/download]: http://swiftmailer.org/download
   [curl 関数]: http://php.net/curl
   [クラウドベース電子メール サービス]: https://sendgrid.com/email-solutions

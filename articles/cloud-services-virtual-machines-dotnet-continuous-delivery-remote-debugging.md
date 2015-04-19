@@ -17,7 +17,7 @@
 	ms.author="kempb"/>
 # 継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする
 
-次の手順に従って、[継続的な配信](http://azure.microsoft.com/ documentation/articles/cloud-services-dotnet-continuous-delivery/)を使用して Azure に発行する場合にリモート デバッグを有効にすることができます。
+次の手順に従って、[継続的な配信](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-continuous-delivery/)を使用して Azure に発行する場合にリモート デバッグを有効にすることができます。
 
 このトピックの内容:
 
@@ -39,7 +39,7 @@
 
 <h2> <a name="virtualmachine"></a>仮想マシン用にリモート デバッグを有効にする</h2>
 
-1. Azure 仮想マシンを作成します。「[Windows Server を実行する仮想マシンの作成](http://azure.microsoft.com/ documentation/articles/virtual-machines-windows-tutorial/)」または「[Creating Azure Virtual Machines in Visual Studio (Visual Studio で Azure 仮想マシンを作成する)](http://msdn.microsoft.com/library/azure/dn569263.aspx)」を参照してください。
+1. Azure 仮想マシンを作成します。「[Windows Server を実行する仮想マシンの作成](http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/)」または「[Creating Azure Virtual Machines in Visual Studio (Visual Studio で Azure 仮想マシンを作成する)](http://msdn.microsoft.com/library/azure/dn569263.aspx)」を参照してください。
 2. [Azure ポータル ページ](http://go.microsoft.com/fwlink/p/?LinkID=269851)で、仮想マシン ダッシュボードを表示し、仮想マシンの "RDP 証明書のサムプリント" を確認します。これは、拡張機能構成の ServerThumbprint の値に使用されます。
 3. 「[Azure のサービス証明書を作成する](http://msdn.microsoft.com/library/azure/gg432987.aspx)」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書サムプリントを保持)。
 4. Microsoft ダウンロード センターから [Azure Powershell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (Version 0.7.4 以降) をインストールします。

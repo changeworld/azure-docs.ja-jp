@@ -26,7 +26,7 @@
 
 >[AZURE.NOTE]このトピックでは、Azure の管理ポータルを使用して、新しいモバイル サービス プロジェクトとユニバーサル Windows アプリを作成する方法を示します。Visual Studio 2013 を使用して、新しいモバイル サービス プロジェクトを既存の Visual Studio ソリューションに追加することもできます。詳細については、Windows デベロッパー センターの[モバイル サービスの追加 (JavaScript バックエンド)](http://msdn.microsoft.com/library/windows/apps/xaml/dn263180.aspx) に関するページを参照してください。
 
->モバイル サービスを Windows Phone 8.0 または Windows Phone ストア 8.1 アプリ プロジェクトに追加するには、[Windows Phone 向けデータの使用](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data)に関するページを参照してください。
+>モバイル サービスを Windows Phone 8.0 または Windows Phone ストア 8.1 アプリ プロジェクトに追加するには、[Windows Phone 向けデータの使用](mobile-services-windows-phone-get-started-data.md)に関するページを参照してください。
 
 [AZURE.INCLUDE [mobile-services-windows-universal-get-started](../includes/mobile-services-windows-universal-get-started.md)]
 
@@ -85,7 +85,7 @@
 * [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-ユニバーサル Windows アプリの詳細については、「[シングル モバイル サービスから複数のデバイス プラットフォームをサポートする](/ja-jp/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs)」を参照してください。
+ユニバーサル Windows アプリの詳細については、「[シングル モバイル サービスから複数のデバイス プラットフォームをサポートする](mobile-services-how-to-use-multiple-clients-single-service#shared-vs.md)」を参照してください。
 
 <!-- Anchors. -->
 [Mobile Services の使用]:#getting-started

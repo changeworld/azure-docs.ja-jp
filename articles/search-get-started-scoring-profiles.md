@@ -28,7 +28,7 @@
 
 このサンプル アプリケーションは Visual Studio 2013 を使用して C# で記述されています。Visual Studio をまだ持っていない場合は、無償版の [Visual Studio 2013 Express Edition](http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx) をダウンロードしてください。
 
-このチュートリアルを完了するには、Azure サブスクリプションと Azure Search サービスが必要になります。サービスの設定については、「[Azure Search の使用](../search-get-started/)」を参照してください。
+このチュートリアルを完了するには、Azure サブスクリプションと Azure Search サービスが必要になります。サービスの設定については、「[Azure Search の使用](search-get-started.md)」を参照してください。
 
 [WACOM.INCLUDE [このチュートリアルを完了するには、Azure アカウントが必要です。](../includes/free-trial-note.md)]
 

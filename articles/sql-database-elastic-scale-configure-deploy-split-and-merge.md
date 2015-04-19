@@ -60,7 +60,7 @@
 6.    ストレージ アカウントの名前と、提供されているいずれかのアクセス キーをストレージの接続文字列のプレースホルダーに入力します。この接続文字列が、**Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString** 設定内の **SplitMergeWeb** ロール セクションと **SplitMergeWorker** ロール セクションの両方で使用されます。異なるロールには異なるストレージ アカウントを使用できる可能性があります。 
 
 ### セキュリティの構成 
-サービスのセキュリティを構成するための詳細な手順については、「[Elastic Scale のセキュリティの構成](./sql-database-elastic-scale-configure-security.md)」をご覧ください。
+サービスのセキュリティを構成するための詳細な手順については、「[Elastic Scale のセキュリティの構成](sql-database-elastic-scale-configure-security.md)」をご覧ください。
 
 このチュートリアルを完了するのに適した  シンプルなテスト デプロイという目的のため、最小限の構成の手順セットを行ってサービスを起動と実行します。以下の手順では、サービスを実行する 1 つのコンピューター/アカウントのみがサービスと通信できます。
 
@@ -120,7 +120,7 @@ Web ロール:
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
 
-運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。詳しい手順については、「[Elastic Scale のセキュリティの構成](./sql-database-elastic-scale-configure-security.md)」をご覧ください。
+運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。詳しい手順については、「[Elastic Scale のセキュリティの構成](sql-database-elastic-scale-configure-security.md)」をご覧ください。
 
 ### Split-Merge サービスのデプロイ
 1. [Azure 管理ポータル](https://manage.windowsazure.com)に移動します。

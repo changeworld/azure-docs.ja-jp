@@ -24,13 +24,13 @@
 
 このトピックで作成したカスタム API では、テーブル内のすべての Todo 項目の完了フラグを  `true` に設定する単一の POST 要求を送信できます。このカスタム API を使用せずにこれを行う場合、クライアントは、テーブル内の各 Todo 項目について個別にフラグの更新要求を送信する必要があります。
 
-チュートリアル「[既存のアプリケーションへの Mobile Services の追加](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/) 」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
+チュートリアル「[既存のアプリケーションへの Mobile Services の追加](mobile-services-windows-phone-get-started-data.md) 」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
 
 1. [カスタム API を定義する]
 2. [カスタム API を呼び出すようにアプリケーションを更新する]
 3. [アプリケーションをテストする]
 
-このチュートリアルは、簡単な TodoList アプリケーションである GetStartedWithData サンプルに基づいています。このチュートリアルを開始する前に、「[既存のアプリケーションへの Mobile Services の追加](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/)」を完了している必要があります。
+このチュートリアルは、簡単な TodoList アプリケーションである GetStartedWithData サンプルに基づいています。このチュートリアルを開始する前に、「[既存のアプリケーションへの Mobile Services の追加](mobile-services-windows-phone-get-started-data.md)」を完了している必要があります。
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 

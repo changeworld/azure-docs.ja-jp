@@ -106,11 +106,11 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 HDInsight での MapReduce ジョブに関する全般的な情報
 
-* [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 <!--HONumber=47-->

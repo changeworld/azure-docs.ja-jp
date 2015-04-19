@@ -56,7 +56,7 @@ Azure で Django ベースの Web サイトをホストする方法について�
 
 ## <a id="setup"> </a>開発環境の設定
 
-**注:** Python をインストールする、またはクライアント ライブラリを使用する場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」をご覧ください.
+**注:** Python をインストールする、またはクライアント ライブラリを使用する場合は、「[Python Installation Guide (Python インストール ガイド)](python-how-to-install.md)」をご覧ください.
 
 Ubuntu Linux VM には既に Python 2.7 がプレインストールされていますが、Apache または Django はインストールされていません。VM に接続し、Apache と Django をインストールするには、次の手順に従います。
 

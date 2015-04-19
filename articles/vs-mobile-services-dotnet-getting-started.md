@@ -17,8 +17,8 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [作業の開始](/documentation/articles/vs-mobile-services-dotnet-getting-started/)
-> - [変更内容](/documentation/articles/vs-mobile-services-dotnet-what-happened/)
+> - [作業の開始](vs-mobile-services-dotnet-getting-started.md)
+> - [変更内容](vs-mobile-services-dotnet-what-happened.md)
 
 ## Mobile Services の使用 (.NET プロジェクト)
 

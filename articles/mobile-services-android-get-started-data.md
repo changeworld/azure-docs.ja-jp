@@ -36,7 +36,7 @@
 > [AZURE.NOTE] 完成したアプリケーションのソース コードを表示する場合は、 <a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithData/Android/GetStartedWithData">ここ</a>をクリックしてください。
 
 このチュートリアルの Eclipse バージョンを確認する場合は、 
-「[Get started with data using Eclipse (Eclipse でデータを使用する)](/documentation/articles/mobile-services-android-get-started-data-EC/)」をご覧ください。
+「[Get started with data using Eclipse (Eclipse でデータを使用する)](mobile-services-android-get-started-data-EC.md)」をご覧ください。
 
 > [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、「 <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AED8DE357" target="_blank">Azure 無料評価版</a>」をご覧ください。
 

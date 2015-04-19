@@ -51,9 +51,9 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 この製品をインストールすると、Azure の Web サイトで次のことができるようになります。
 
-* [Azure の Web サイトに Web プロジェクトを発行する](../web-sites-dotnet-get-started/)。
-* [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](../websites-dotnet-deploy-webjobs/)。
-* [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](../web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。
+* [Azure の Web サイトに Web プロジェクトを発行する](web-sites-dotnet-get-started.md)。
+* [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](websites-dotnet-deploy-webjobs.md)。
+* [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。
 * [PowerShell デプロイメント スクリプトを作成して、新規の Web サイトを作成する](http://msdn.microsoft.com/library/dn642480.aspx)。
 * [サーバー エクスプローラーで Azure Web サイトの管理とトラブルシューティングを行う](../web-sites-dotnet-troubleshoot-visual-studio/#sitemanagement)。
 * [Web サイトおよび Web ジョブに対してリモート デバッグを実行する](../web-sites-dotnet-troubleshoot-visual-studio/#remotedebug)。 
@@ -64,9 +64,9 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 この製品を利用すると、Azure のクラウド サービスおよび仮想マシンで次のことができるようになります。
 
-* [クラウド サービス プロジェクトを作成、公開、発行する](../cloud-services-dotnet-get-started/)。
+* [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services-dotnet-get-started.md)。
 * [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)。
-* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](../virtual-machines-dotnet-create-visual-studio-powershell/)。
+* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines-dotnet-create-visual-studio-powershell.md)。
 * [PowerShell スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)。
 * [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)。
 * サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する。 
@@ -113,13 +113,13 @@ SDK をインストールしたときに、Azure 向けアプリケーション�
 
   	**クライアント ライブラリのローカル コピー。**Azure SDK for .NET は、いくつかの Azure クライアント ライブラリ (ストレージ、サービス バス、キャッシュなど) 用の NuGet パッケージをユーザーのコンピューターにコピーします。これらのクライアント ライブラリは、新規のクラウド サービス プロジェクトに自動的に含められるため、インターネットに接続していない場合でも、Visual Studio はローカルの NuGet パッケージでプロジェクトを作成できます。一般に、クライアント ライブラリは SDK よりも頻繁に更新されているため、NuGet.org で入手できるクライアント ライブラリの方が SDK によってインストールされるものよりも新しい場合が多いことに注意してください。 
 
-	**クライアント ライブラリが含まれるプロジェクト テンプレート。**[Azure クラウド サービス](../cloud-services-dotnet-get-started/)および [Azure モバイル サービス](../mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)のプロジェクト テンプレートには、いくつかのクライアント ライブラリが自動的に含まれます。これらのテンプレートに他のライブラリを含める場合や、他のテンプレートを使用する場合は、必要な[クライアント ライブラリの NuGet パッケージ](http://go.microsoft.com/fwlink/?LinkId=510472)をインストールしてください。
+	**クライアント ライブラリが含まれるプロジェクト テンプレート。**[Azure クラウド サービス](cloud-services-dotnet-get-started.md)および [Azure モバイル サービス](mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md)のプロジェクト テンプレートには、いくつかのクライアント ライブラリが自動的に含まれます。これらのテンプレートに他のライブラリを含める場合や、他のテンプレートを使用する場合は、必要な[クライアント ライブラリの NuGet パッケージ](http://go.microsoft.com/fwlink/?LinkId=510472)をインストールしてください。
 
-* [Azure PowerShell](../install-configure-powershell/)。 
+* [Azure PowerShell](install-configure-powershell.md)。 
 
 	Azure PowerShell を使用すると、[Azure 環境の作成とデプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)できます。
 
-* [Azure モバイル サービスのプロジェクト テンプレート](../mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)。
+* [Azure モバイル サービスのプロジェクト テンプレート](mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md)。
 
 	モバイル サービスのテンプレートは、Visual Studio 2013 Update 2 以降でのみ利用できます。Azure SDK for .NET をインストールしても、Visual Studio 2012 以前および Visual Studio 2013 Update 1 以前のバージョンでは利用できません。
 

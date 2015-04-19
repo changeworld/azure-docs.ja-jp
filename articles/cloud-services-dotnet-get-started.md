@@ -34,7 +34,7 @@
 
 ## 代替のアーキテクチャ:Web サイトおよび Web ジョブ
 
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Websites](/ja-jp/services/web-sites/) で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](/ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](http://azure.microsoft.com/ documentation/articles/choose-web-site-cloud-service-vm/)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Websites](/ja-jp/services/web-sites/) で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](http://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/)」を参照してください。
 
 ## 学習内容
 
@@ -47,7 +47,7 @@
 
 ## 前提条件
 
-このチュートリアルは、 *web role*、 *worker role*などの用語を含む [Azure Cloud Services の基本概念](http://azure.microsoft.com/ documentation/articles/fundamentals-application-models/#CloudServices)を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。 
+このチュートリアルは、 *web role*、 *worker role*などの用語を含む [Azure Cloud Services の基本概念](http://azure.microsoft.com/documentation/articles/fundamentals-application-models/#CloudServices)を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。 
 
 Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料評価版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
 
@@ -795,7 +795,7 @@ Contoso Ads アプリケーションは、入門用のチュートリアルと�
 以下に、より現実的なコーディング手法を示すいくつかのクラウド サービス サンプル アプリケーションを、やさしいものから順に示します。
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
-* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure Cloud Services 多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。Azure Storage のテーブル、BLOB、キューについて紹介します。[手順を紹介するチュートリアル シリーズ](http://azure.microsoft.com/ documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/)が用意されています。
+* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure Cloud Services 多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。Azure Storage のテーブル、BLOB、キューについて紹介します。[手順を紹介するチュートリアル シリーズ](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/)が用意されています。
 * [Cloud Service Fundamentals in Windows Azure (Windows Azure のクラウド サービスの基礎)](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649).Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
 
 クラウド向けの開発については、「[Building Real-World Cloud Apps with Azure (Azure を使用した実際のクラウド アプリケーションの作成)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」を参照してください。
@@ -807,7 +807,7 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Azure Cloud Services Part 1:Introduction (Azure Cloud Services パート 1: 概要)](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Azure Cloud Services](/ja-jp/documentation/services/cloud-services/)
 * [Azure Storage](/ja-jp/documentation/services/storage/)
-* [.NET から BLOB ストレージを使用する方法](/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/)
-* [NET からキュー ストレージを使用する方法](/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/)
+* [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
+* [NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
 
 <!--HONumber=45--> 

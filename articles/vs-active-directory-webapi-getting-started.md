@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="" 
-	description="Azure Active Directory (Web API プロジェクト) ウィザードの使用開始に関する情報" 
+	description="Azure Active Directory (Web API プロジェクト) ウィザードの使用に関する情報。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="kempb" 
@@ -16,11 +16,12 @@
 	ms.date="02/02/2015" 
 	ms.author="kempb"/>
 
-# Azure Active Directory の使用 (Web API プロジェクト)
-
 > [AZURE.SELECTOR]
-> - [使用開始](vs-active-directory-webapi-getting-started.md)
+> - [Getting Started (概要)](vs-active-directory-webapi-getting-started.md)
 > - [変更内容](vs-active-directory-webapi-what-happened.md)
+
+
+##Azure Active Directory の使用 (Web API プロジェクト)
 
 #####コントローラーへのアクセスに対して認証を要求する
  
@@ -28,4 +29,4 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!--HONumber=49-->
+<!--HONumber=46--> 

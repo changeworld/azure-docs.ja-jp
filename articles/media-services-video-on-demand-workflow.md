@@ -28,11 +28,11 @@
 次の図は、ビデオ オンデマンド ワークフローに関連するメディア サービス プラットフォームの主要な部分を示しています。
 ![VoD workflow][vod-overview]
 
-詳細については、「[Media Services Overview (Media Services の概要)]」をご覧ください(../media-services-overview)。
+詳細については、「[Media Services Overview (Media Services の概要)]」をご覧ください(media-services-overview.md)。
 
 ##メディア サービス アカウントの作成
 
-**Azure 管理ポータル**を使用して [メディア サービス アカウントを作成]します(../media-services-create-account/)。 
+**Azure 管理ポータル**を使用して [メディア サービス アカウントを作成]します(media-services-create-account.md)。 
 
 ##ストリーミング エンドポイントの構成
 
@@ -82,7 +82,7 @@
 
 ###エンコード 
 
-「[Encoding with Azure Media Services (Azure Media Services によるエンコード)]」をご覧ください(../media-services-encode-asset)。
+「[Encoding with Azure Media Services (Azure Media Services によるエンコード)]」をご覧ください(media-services-encode-asset.md)。
 
 ##コンテンツ キー承認ポリシーを構成する 
 
@@ -108,12 +108,12 @@
 
 ストレージ アカウントを追加して、メディア サービス アカウントの規模を設定することもできます。各ストレージ アカウントの上限は 500 TB です。既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一のメディア サービス アカウントにアタッチすることを選択できます。
 
-[この](../media-services-how-to-scale) トピックは関連するトピックにリンクしています。
+[この](media-services-how-to-scale.md) トピックは関連するトピックにリンクしています。
 
 
 ##コンテンツの再生
 
-詳細については、[既存のプレーヤーを使用したコンテンツの再生]に関するトピックを参照してください(../media-services-playback-content)。
+詳細については、[既存のプレーヤーを使用したコンテンツの再生]に関するトピックを参照してください(media-services-playback-content.md)。
 
 [vod-overview]: ./media/media-services-overview/media-services-video-on-demand.png
 <!--HONumber=47-->

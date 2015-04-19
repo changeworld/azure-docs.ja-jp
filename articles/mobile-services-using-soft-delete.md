@@ -104,7 +104,7 @@ JavaScript バックエンドの既存のテーブルで論理削除を有効に
         }
     }
 
-.NET バックエンド Mobile Services でのジョブのスケジュール方法の詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール](/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/)」(JavaScript バックエンド) をご覧ください。 
+.NET バックエンド Mobile Services でのジョブのスケジュール方法の詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール](mobile-services-dotnet-backend-schedule-recurring-tasks.md)」(JavaScript バックエンド) をご覧ください。 
 
 
 
@@ -145,7 +145,7 @@ HTTP 要求を介して削除済みレコードを取得するには、"__includ
         }});
     }
 
-JavaScript バックエンド Mobile Services でのスケジュールされたジョブの詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール](/documentation/articles/mobile-services-schedule-recurring-tasks/)」(JavaScript バックエンド) をご覧ください。
+JavaScript バックエンド Mobile Services でのスケジュールされたジョブの詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール](mobile-services-schedule-recurring-tasks.md)」(JavaScript バックエンド) をご覧ください。
 
 
 

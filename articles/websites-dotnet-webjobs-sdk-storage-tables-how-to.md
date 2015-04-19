@@ -18,9 +18,9 @@
 
 # Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法
 
-このガイドでは、[Web ジョブ SDK](../websites-dotnet-webjobs-sdk/) バージョン 1.x を使用して Azure のストレージ テーブルを読み書きする方法を示す c# のコード サンプルを提供します。
+このガイドでは、[Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用して Azure のストレージ テーブルを読み書きする方法を示す c# のコード サンプルを提供します。
 
-このガイドでは、読者が [ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法を理解していることを前提に説明します。](../websites-dotnet-webjobs-sdk-get-started/).
+このガイドでは、読者が [ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法を理解していることを前提に説明します。](websites-dotnet-webjobs-sdk-get-started.md).
 		
 コード スニペットには、[手動で呼び出される](../websites-dotnet-webjobs-sdk-storage-queues-how-to/#manual)  `Table` 関数で使用される属性を示すものもあります。すなわち、それらはトリガー属性では呼び出されません。 
 
@@ -149,11 +149,11 @@ Azure ストレージ API を直接操作する場合は、 `CloudStorageAccount
 		    tableBinding.Execute(insertOperation);
 		}
 
- `CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法]」をご覧ください(../storage-dotnet-how-to-use-tables/)。 
+ `CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法]」をご覧ください(storage-dotnet-how-to-use-tables.md)。 
 
 ## <a id="queues"></a>キューの操作方法に関する記事で扱う関連トピック
 
-キュー メッセージによってトリガーされるテーブル処理またはテーブル処理に固有ではない Web ジョブ SDK のシナリオキューの詳細については、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../websites-dotnet-webjobs-sdk-storage-queues-how-to/). 」をご覧ください。
+キュー メッセージによってトリガーされるテーブル処理またはテーブル処理に固有ではない Web ジョブ SDK のシナリオキューの詳細については、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 」をご覧ください。
 
 この記事で取り上げている関連のトピックは、次のとおりです。
 

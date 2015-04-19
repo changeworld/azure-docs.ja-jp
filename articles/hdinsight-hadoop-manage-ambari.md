@@ -20,7 +20,7 @@
 
 Ambari を使用して Linux ベースの HDInsight クラスターを管理および監視する方法を説明します。
 
-> [AZURE.NOTE] この記事の多くの情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視]に関するページ(../hdinsight-monitor-use-ambari-api/)を参照してください。
+> [AZURE.NOTE] この記事の多くの情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視]に関するページ(hdinsight-monitor-use-ambari-api.md)を参照してください。
 
 ##<a id="whatis"></a>Ambari とは
 

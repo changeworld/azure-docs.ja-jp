@@ -95,7 +95,7 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2-enablequeryb.PNG)
 
-	>[AZURE.NOTE] チュートリアルのこの部分でのクエリ文字列の有効化は必須ではありませんが、ここでの変更が残りのノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。これを活用する方法については、「[クエリ文字列を使用して即座に最新コンテンツを配信する]」を参照してください(#query)。
+	>[AZURE.NOTE] チュートリアルのこの部分でのクエリ文字列の有効化は必須ではありませんが、ここでの変更が残りのノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。これを活用する方法については、「[クエリ文字列を使用して即座に最新コンテンツを配信する](#query)」を参照してください。
 
 6. Visual Studio 2013 のサーバー エクスプローラーで、**[Microsoft Azure への接続]** をクリックします。
 
@@ -251,7 +251,7 @@ CSS 更新を発行して、CSS URL で別のバージョン番号を使用す�
 
 ## ASP.NET にバンドルされているスクリプトおよびスタイルシートについて##
 
-[Azure Websites] (/services/websites/) および [Azure Cloud Services] (/services/cloud-services/) では、[ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)と Azure CDN を最適に統合できます。 
+[Azure Websites](/services/websites/) および [Azure Cloud Services](/services/cloud-services/) では、[ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)と Azure CDN を最適に統合できます。 
 
 Azure CDN と Azure Websites または Azure Cloud Services の統合には、次の利点があります。
 

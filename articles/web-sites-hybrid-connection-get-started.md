@@ -175,7 +175,7 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 
 [ハイブリッド接続の Web サイト](http://azure.microsoft.com/services/biztalk-services/)
 
-[BizTalk Services:[ダッシュボード]、[モニター]、[スケール]、[構成]、[ハイブリッド接続] タブ](../biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk Services:[ダッシュボード]、[モニター]、[スケール]、[構成]、[ハイブリッド接続] タブ](biztalk-dashboard-monitor-scale-tabs.md)
 
 [シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする (チャネル 9 ビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 

@@ -511,7 +511,7 @@ Event Hub Bolt は、Event Hub にルーティングされる単一の文字列�
 
 このドキュメントでは、C# トポロジから Java Event Hub Spout および Bolt を使用して、Azure Event Hub のデータを操作する方法について説明しました。C# トポロジの作成の詳細については、次の記事を参照してください。
 
-* [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](../hdinsight-storm-develop-csharp-visual-studio-topology/)
+* [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
 * [HDInsight Storm の例](https://github.com/hdinsight/hdinsight-storm-examples)
 

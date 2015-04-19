@@ -25,7 +25,7 @@
 
 ##前提条件
 
--   新規または既存の Azure サブスクリプションで作成したメディア サービス アカウント。[メディア サービス アカウントの作成方法](../media-services-create-account/)のトピックをご覧ください。
+-   新規または既存の Azure サブスクリプションで作成したメディア サービス アカウント。[メディア サービス アカウントの作成方法](media-services-create-account.md)のトピックをご覧ください。
 -   オペレーティング システム: Windows 7、Windows 2008 R2、または Windows 8。
 -   .NET Framework 4.5。
 -   Visual Studio 2013、Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。 

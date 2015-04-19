@@ -18,11 +18,11 @@
 
 # Web ジョブ SDK で Azure BLOB ストレージを使用する方法
 
-このガイドでは、Azure BLOB が作成または更新されたときに、プロセスを開始する方法を示す C# コード サンプルを提供します。コード サンプルは [Web ジョブ SDK](../websites-dotnet-webjobs-sdk/) バージョン 1.x を使用します。
+このガイドでは、Azure BLOB が作成または更新されたときに、プロセスを開始する方法を示す C# コード サンプルを提供します。コード サンプルは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用します。
 
-BLOB を作成する方法を示すコード サンプルの詳細については、[How to use Azure queue storage with the WebJobs SDK (Web ジョブ SDK で Azure キュー ストレージを使用する方法)](../websites-dotnet-webjobs-sdk-storage-queues-how-to/).  をご覧ください。
+BLOB を作成する方法を示すコード サンプルの詳細については、[How to use Azure queue storage with the WebJobs SDK (Web ジョブ SDK で Azure キュー ストレージを使用する方法)](websites-dotnet-webjobs-sdk-storage-queues-how-to.md).  をご覧ください。
 		
-このガイドは、[ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法](../websites-dotnet-webjobs-sdk-get-started/). を理解していることを前提としています。
+このガイドは、[ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md). を理解していることを前提としています。
 
 ## 目次
 
@@ -223,7 +223,7 @@ BLOB の再処理を強制する場合は、 *azure-webjobs-hosts* コンテナ�
 
 ## <a id="queues"></a>キューの記事で扱う関連トピック
 
-キューのメッセージによってトリガーされる BLOB を処理する方法、または BLOB 処理に固有ではない Web ジョブ SDK シナリオの詳細については、[Web ジョブ SDK を使用して Azure キュー ストレージを使用する方法](../websites-dotnet-webjobs-sdk-storage-queues-how-to/).  をご覧ください。
+キューのメッセージによってトリガーされる BLOB を処理する方法、または BLOB 処理に固有ではない Web ジョブ SDK シナリオの詳細については、[Web ジョブ SDK を使用して Azure キュー ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md).  をご覧ください。
 
 この記事で取り上げている関連のトピックは、次のとおりです。
 

@@ -18,17 +18,17 @@
 
 # 2.0.0
 
-Windows ストア アプリで Azure モバイル エンゲージメントを統合する方法について詳しい情報を確認するには、ここから開始します。まず試してみる場合は、[15 分間チュートリアル](../mobile-engagement-windows-store-dotnet-get-started/)。をご覧ください
+Windows ストア アプリで Azure モバイル エンゲージメントを統合する方法について詳しい情報を確認するには、ここから開始します。まず試してみる場合は、[15 分間チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)。をご覧ください
 
-[SDK コンテンツ](../mobile-engagement-windows-store-sdk-content/) について表示するにはここをクリックします。
+[SDK コンテンツ](mobile-engagement-windows-store-sdk-content.md) について表示するにはここをクリックします。
 
 ## 統合手順
 
-1. ここから開始:[Windows ストア アプリでモバイル エンゲージメントを統合する方法](../mobile-engagement-windows-store-integrate-engagement/)
+1. ここから開始:[Windows ストア アプリでモバイル エンゲージメントを統合する方法](mobile-engagement-windows-store-integrate-engagement.md)
 
-2. 通知:[How to integrate Reach (Notifications) in your Windows Store app (Windows ストア アプリでリーチ (通知) を統合する方法)](../mobile-engagement-windows-store-integrate-engagement-reach/)
+2. 通知:[How to integrate Reach (Notifications) in your Windows Store app (Windows ストア アプリでリーチ (通知) を統合する方法)](mobile-engagement-windows-store-integrate-engagement-reach.md)
 
-3. タグ付けプランの実装:[How to use the advanced Mobile Engagement tagging API in your Windows Store app (Windows ストア アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-store-use-engagement-api/)
+3. タグ付けプランの実装:[How to use the advanced Mobile Engagement tagging API in your Windows Store app (Windows ストア アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-store-use-engagement-api.md)
 
 ## リリース ノート
 
@@ -39,13 +39,13 @@ Windows ストア アプリで Azure モバイル エンゲージメントを統
 -   appId/sdkKey 構成は、接続文字列の構成で置き換えられます。
 -   セキュリティの強化。
 
-以前のバージョンについては、[リリース ノートの完了](../mobile-engagement-windows-store-release-notes/) をご覧ください。
+以前のバージョンについては、[リリース ノートの完了](mobile-engagement-windows-store-release-notes.md) をご覧ください。
 
 ## アップグレードの手順
 
 既にアプリケーションに以前のバージョンのモバイル エンゲージメントを統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
-SDKsee の一部のバージョンが不足している場合、いくつかの手順に従って[アップグレード手順](../mobile-engagement-windows-store-upgrade-procedure/) を完了する必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
+SDKsee の一部のバージョンが不足している場合、いくつかの手順に従って[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure.md) を完了する必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
 ## 1.1.1 から 2.0.0 に移行
 

@@ -20,7 +20,7 @@
  
 最新のアプリケーションでは、動的な要求が一般的となっています。季節的に変動する需要から、予想できないソーシャル メディアの傾向まで、最新アプリケーションは、負荷の急増が予想不可能であっても、予想可能であっても、的確に対応する必要があります。Azure Service Bus はサービスとしてのプラットフォーム (PaaS) の特性を持つため、拡張性が高く、コンポーネントの急増や一時的な停止から回復できるアプリケーションを作成できます。  
  
-[Service Bus キューを使用する .NET 多層アプリケーションをビルドする](/documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/)
+[Service Bus キューを使用する .NET 多層アプリケーションをビルドする](cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md)
  
 ## 確認
 - [Mcrosoft Azure Service Bus の基礎](http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/)

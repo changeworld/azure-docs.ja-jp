@@ -22,7 +22,7 @@
 
 この記事では、検索サービスとそのインデックスを作成して維持するためのロードマップと、いくつかのベスト プラクティスについて説明します。 
 
-既にサービスがプロビジョニングされていることが前提となっています。まだプロビジョニングしていない場合は、「[Azure Search の使用](../search-get-started/)」を参照してください。
+既にサービスがプロビジョニングされていることが前提となっています。まだプロビジョニングしていない場合は、「[Azure Search の使用](search-get-started.md)」を参照してください。
 
 + [手順 1.インデックスの作成](#sub-1)
 + [手順 2.ドキュメントの追加](#sub-2)
@@ -35,7 +35,7 @@
 
 クエリは、検索データと属性が含まれる検索インデックスを対象にします。そのため、サービスをプロビジョニングした後の最初の手順は、JSON 形式でインデックス スキーマを定義し、HTTPS PUT 要求を実行してサービスにインデックスを作成することです。 
 
-インデックスは、アプリケーション コードで構成されます。ユーザー インターフェイスでインデックスを定義するための組み込みツールやエディターはありません。さまざまなインデックスの構築方法を示す例には、Program.cs にスキーマが指定される「[Create your first search solution using Azure Search (Azure Search による最初の検索ソリューションの作成)](../search-create-first-solution/)」、およびスタンドアロンの JSON スキーマ ファイルにインデックスを提供する「[Azure Search のスコアリング プロファイルの使用](../search-get-started-scoring-profiles)」などがあります。インデックスの作成の詳細については、MSDN の「[Create Index (Azure Search API) (インデックスの作成 (Azure Search API))](http://msdn.microsoft.com/library/dn798941.aspx)」を参照してください。
+インデックスは、アプリケーション コードで構成されます。ユーザー インターフェイスでインデックスを定義するための組み込みツールやエディターはありません。さまざまなインデックスの構築方法を示す例には、Program.cs にスキーマが指定される「[Create your first search solution using Azure Search (Azure Search による最初の検索ソリューションの作成)](search-create-first-solution.md)」、およびスタンドアロンの JSON スキーマ ファイルにインデックスを提供する「[Azure Search のスコアリング プロファイルの使用](search-get-started-scoring-profiles.md)」などがあります。インデックスの作成の詳細については、MSDN の「[Create Index (Azure Search API) (インデックスの作成 (Azure Search API))](http://msdn.microsoft.com/library/dn798941.aspx)」を参照してください。
 
 <h2 id="sub-2">手順 2.ドキュメントの追加</h2>
 

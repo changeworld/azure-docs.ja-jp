@@ -18,10 +18,10 @@
 
 # Notification Hubs を使用したニュース速報の送信
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="notification-hubs-windows-store-dotnet-send-breaking-news.md" title="Windows Universal">Windows ユニバーサル</a><a href="/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone" class="current">Windows Phone</a><a href="/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a><a href="/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/" title="Android">Android</a>
+    	<a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/" title="Windows Phone" class="current">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/" title="Android">Android</a>
 </div>
 
-このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.0/8.1 Silverlight アプリにブロードキャストする方法について説明します。Windows ストアまたは Windows Phone 8.1 アプリを対象としている場合は、[Windows ユニバーサル](notification-hubs-windows-store-dotnet-send-breaking-news.md) バージョンを参照してください。 バージョンに基づいて SAS URL を生成します。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。 
+このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.0/8.1 Silverlight アプリにブロードキャストする方法について説明します。Windows ストアまたは Windows Phone 8.1 アプリを対象としている場合は、[Windows ユニバーサル](notification-hubs-windows-store-dotnet-send-breaking-news.md) バージョンを参照してください。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。 
 
 ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の _tags_ を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[Notification Hubs の概要]」を参照してください。 
 
@@ -34,7 +34,7 @@
 
 このトピックは、「[Notification Hubs の使用]」で作成したアプリケーションが基になります。このチュートリアルを開始する前に、「[Notification Hubs の使用]」を完了している必要があります。
 
-##<a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
+## <a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
 
 最初の手順として、既存のメイン ページに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。 
 
@@ -113,7 +113,7 @@
 
     このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
 
-4. 上のコードで、`<hub name>` と `<connection string with listen access>` のプレースホルダーを、通知ハブの名前と既に取得してある  *DefaultListenSharedAccessSignature* の接続文字列に置き換えます。
+4. 上記のコードで `<hub name>` と `<connection string with listen access>` のプレースホルダーを通知ハブ名に、接続文字列を既に取得済みの  *DefaultListenSharedAccessSignature* に置き換えます。
 
 	> [AZURE.NOTE] クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
 
@@ -148,7 +148,7 @@
 
 これで、アプリケーションがデバイス上のローカル ストレージに一連のカテゴリを格納したり、ユーザーがカテゴリの選択を変更したときに通知ハブに登録できるようになりました。 
 
-##<a name="register"></a>通知を登録する
+## <a name="register"></a>通知を登録する
 
 この手順では、ローカル ストレージに格納されたカテゴリを使用して、起動時に通知ハブに通知します。 
 
@@ -166,7 +166,7 @@
 
 1. App.xaml.cs ファイルを開き、**async** 修飾子を **Application_Launching** メソッドに追加します。
 
-2. **Application_Launching** メソッドで、[Notification Hubs の使用] で追加した通知ハブ登録コード見つけて次のコード行で置き換えます。
+2. **Application_Launching** メソッドで、[通知ハブの使用] で追加した通知ハブ登録コード見つけて次のコード行で置き換えます。
 
 		await notifications.SubscribeToCategories(notifications.RetrieveCategories());
 
@@ -194,7 +194,7 @@
 
 [AZURE.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
-##<a name="test-app"></a>アプリケーションを実行して通知を生成する
+## <a name="test-app"></a>アプリケーションを実行して通知を生成する
 
 1. Visual Studio で、F5 キーを押してアプリケーションをコンパイルおよび起動します。
 
@@ -212,7 +212,7 @@
 
 	+ **コンソール アプリケーション:** コンソール アプリケーションを起動します。
 
-	+ **Java/PHP:**アプリケーション/スクリプトを実行します。
+	+ **Java/PHP:** アプリケーションとスクリプトを実行します。
 
 	選択されたカテゴリの通知がトースト通知として表示されます。
 
@@ -220,17 +220,17 @@
 
 これで、このトピックは終了です。
 
-<!--## <a name="next-steps"> </a>Next steps
+<!--## <a name="next-steps"></a>次のステップ
 
-In this tutorial we learned how to broadcast breaking news by category. Consider completing one of the following tutorials that highlight other advanced Notification Hubs scenarios:
-       
-+ [Use Notification Hubs to broadcast localized breaking news]
+このチュートリアルでは、ニュース速報をカテゴリごとにブロードキャストする方法について説明しました。他の高度な Notification Hubs のシナリオを取り上げている、次のいずれかのチュートリアルを行うことをお勧めします。
 
-	Learn how to expand the breaking news app to enable sending localized notifications. 
++ [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]
 
-+ [Notify users with Notification Hubs]
+	ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。 
 
-	Learn how to push notifications to specific authenticated users. This is a good solution for sending notifications only to specific users.
++ [Notification Hubs によるユーザーへの通知]
+
+	認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 -->
 
 <!-- Anchors. -->
@@ -248,12 +248,12 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 
 <!-- URLs.-->
-[Notification Hubs の使用]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: breakingnews-localized-wp8.md 
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users/
-[モバイル サービス]: /develop/mobile/tutorials/get-started
+[Notification Hubs の使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
+[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]:./breakingnews-localized-wp8.md 
+[Notification Hubs によるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users/
+[モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Notification Hubs (Windows Phone)]: ??
+[Notification Hubs How-To for Windows Phone (方法: Notification Hubs (Windows Phone))]:??
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
@@ -261,4 +261,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 
 
-<!--HONumber=49-->
+<!--HONumber=45--> 

@@ -48,7 +48,7 @@
 
 #関連項目
 
-[Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-blob-content.md
+[Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](cdn-manage-expiration-of-blob-content.md
 )
 
 <!--HONumber=49-->

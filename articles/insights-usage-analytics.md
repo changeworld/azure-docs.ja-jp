@@ -18,7 +18,7 @@
 
 何人のユーザーがサイトにアクセスしたでしょうか。ページの平均読み込み時間とはどれくらいで、どのブラウザーが使用されているでしょうか。Web ページに数行のスクリプトを挿入すると、顧客が Web サイトをどのように使用しているかを示すデータを収集できます。 
 
-*これは Azure 以外の Web サイトでも実行できます。[Application Insights による Web アプリケーションの使用状況の監視](../app-insights-web-track-usage/)*
+*これは Azure 以外の Web サイトでも実行できます。[Application Insights による Web アプリケーションの使用状況の監視](app-insights-web-track-usage.md)*
 
 ![End User Analytics](./media/insights-usage-analytics/Insights_ConfiguredExperience.png)
 

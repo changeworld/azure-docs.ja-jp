@@ -26,7 +26,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 
 この後のセクションでは、ファームごとに構成の詳細を示します。
 
-詳細については、「[SharePoint Server Farm](../virtual-machines-sharepoint-farm-azure-preview/)」をご覧ください.
+詳細については、「[SharePoint Server Farm](virtual-machines-sharepoint-farm-azure-preview.md)」をご覧ください.
 
 ## 基本的な SharePoint ファーム
 
@@ -121,7 +121,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 
 ## その他のリソース
 
-[SharePoint Server Farm](../virtual-machines-sharepoint-farm-azure-preview/)
+[SharePoint Server Farm](virtual-machines-sharepoint-farm-azure-preview.md)
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 

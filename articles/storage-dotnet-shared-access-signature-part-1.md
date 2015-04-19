@@ -20,7 +20,7 @@
 
 # 共有アクセス署名、パート 1:SAS モデルについて
 
-共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントの BLOB、テーブル、およびキューへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。[チュートリアルのパート 2](../storage-dotnet-shared-access-signature-part-2/) では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
+共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントの BLOB、テーブル、およびキューへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。[チュートリアルのパート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
 
 ## 共有アクセス署名とは ##
 
@@ -223,7 +223,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
 
 ## 次のステップ ##
 
-[共有アクセス署名、第 2 部 : BLOB サービスによる SAS の作成および使用](../storage-dotnet-shared-access-signature-part-2/)
+[共有アクセス署名、第 2 部 : BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)
 
 [Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/windowsazure/ee393343.aspx)
 

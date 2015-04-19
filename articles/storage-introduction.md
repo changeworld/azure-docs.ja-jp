@@ -68,7 +68,7 @@ Azure は、まず [無料評価版](/ja-jp/pricing/free-trial/) で使用して
 
 ![Azure Storage Resources](./media/storage-introduction/storage-concepts.png)
 
-標準ストレージ アカウントを作成する準備ができたら、詳細を [Create, manage, or delete a storage account (ストレージ アカウントを作成、管理、または削除する方法)](../storage-create-storage-account/) で参照してください。
+標準ストレージ アカウントを作成する準備ができたら、詳細を [Create, manage, or delete a storage account (ストレージ アカウントを作成、管理、または削除する方法)](storage-create-storage-account.md) で参照してください。
 
 ### Premium Storage アカウント (プレビュー)
 
@@ -128,7 +128,7 @@ Azure の仮想マシンまたはクラウド サービスで実行している�
 
 ストレージ アカウントには、認証に使用される 2 つのプライベート アクセス キーが作成時に割り当てられます。2 つのキーを持つことで、通常のセキュリティ キーの管理手法に従って定期的にキーを再生成しても、アプリケーションが使用できます。
 
-ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名](../storage-dotnet-shared-access-signature-part-1/) を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。Azure ファイル ストレージでは、現在、共有アクセス署名をサポートしていません。
+ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名](storage-dotnet-shared-access-signature-part-1.md) を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。Azure ファイル ストレージでは、現在、共有アクセス署名をサポートしていません。
 
 最後に、コンテナーとそれに含まれるすべての BLOB、または特定の BLOB をパブリック アクセスで使用できるように指定できます。コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。パブリック コンテナーと BLOB は、Web サイトでホストされているメディアやドキュメントなどのリソースを公開する場合に便利です。グローバル ユーザーのネットワーク待ち時間を短縮するために、Web サイトで使用される BLOB データを Azure CDN によってキャッシュできます。
 
@@ -183,38 +183,38 @@ Azure ストレージを導入するには、次のリソースを参照して�
 <h3>.NET 開発者向け</h3>
 
 - [.NET クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/wa_storage_30_reference_home.aspx)
-- [.NET から BLOB ストレージを使用する方法](../storage-dotnet-how-to-use-blobs/)
-- [.NET からテーブル ストレージを使用する方法](../storage-dotnet-how-to-use-tables/)
-- [.NET からキュー ストレージを使用する方法](../storage-dotnet-how-to-use-queues/)
+- [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
+- [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
+- [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
 
 <h3>Java/Android 開発者向け</h3>
 
 - [Java クライアント ライブラリ リファレンス]()
-- [Java/Android から BLOB ストレージを使用する方法](../storage-java-how-to-use-blob-storage/)
-- [Java/Android からテーブル ストレージを使用する方法](../storage-java-how-to-use-table-storage/)
-- [Java/Android からキュー ストレージを使用する方法](../storage-java-how-to-use-queue-storage/)
+- [Java/Android から BLOB ストレージを使用する方法](storage-java-how-to-use-blob-storage.md)
+- [Java/Android からテーブル ストレージを使用する方法](storage-java-how-to-use-table-storage.md)
+- [Java/Android からキュー ストレージを使用する方法](storage-java-how-to-use-queue-storage.md)
 
 <h3>Node.js 開発者向け</h3>
 
-- [Node.js から BLOB ストレージを使用する方法](../storage-nodejs-how-to-use-blob-storage/)
-- [Node.js からテーブル ストレージを使用する方法](../storage-nodejs-how-to-use-table-storage/)
-- [Node.js からキュー ストレージを使用する方法](../storage-nodejs-how-to-use-queues/)
+- [Node.js から BLOB ストレージを使用する方法](storage-nodejs-how-to-use-blob-storage.md)
+- [Node.js からテーブル ストレージを使用する方法](storage-nodejs-how-to-use-table-storage.md)
+- [Node.js からキュー ストレージを使用する方法](storage-nodejs-how-to-use-queues.md)
 
 <h3>PHP 開発者向け</h3>
 
-- [PHP から BLOB ストレージを使用する方法](../storage-php-how-to-use-blobs/)
-- [PHP からテーブル ストレージを使用する方法](../storage-php-how-to-use-table-storage/)
-- [PHP からキュー ストレージを使用する方法](../storage-php-how-to-use-queues/)
+- [PHP から BLOB ストレージを使用する方法](storage-php-how-to-use-blobs.md)
+- [PHP からテーブル ストレージを使用する方法](storage-php-how-to-use-table-storage.md)
+- [PHP からキュー ストレージを使用する方法](storage-php-how-to-use-queues.md)
 
 <h3>Ruby 開発者向け</h3>
 
-- [Ruby から BLOB ストレージを使用する方法](../storage-ruby-how-to-use-blob-storage/)
-- [Ruby からテーブル ストレージを使用する方法](../storage-ruby-how-to-use-table-storage/)
-- [Ruby からキュー ストレージを使用する方法](../storage-ruby-how-to-use-queue-storage/)
+- [Ruby から BLOB ストレージを使用する方法](storage-ruby-how-to-use-blob-storage.md)
+- [Ruby からテーブル ストレージを使用する方法](storage-ruby-how-to-use-table-storage.md)
+- [Ruby からキュー ストレージを使用する方法](storage-ruby-how-to-use-queue-storage.md)
 
 <h3>Python 開発者向け</h3>
 
-- [Python から BLOB ストレージを使用する方法](../storage-python-how-to-use-blob-storage/)
-- [Python からテーブル ストレージを使用する方法](../storage-python-how-to-use-table-storage/)
-- [Python からキュー ストレージを使用する方法](../storage-python-how-to-use-queue-storage/)
+- [Python から BLOB ストレージを使用する方法](storage-python-how-to-use-blob-storage.md)
+- [Python からテーブル ストレージを使用する方法](storage-python-how-to-use-table-storage.md)
+- [Python からキュー ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 <!--HONumber=42-->

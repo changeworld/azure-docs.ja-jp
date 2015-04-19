@@ -127,17 +127,17 @@ Trident は、結合、集計、グループ化、フィルタリングなどの
 
 ##次のステップ
 
-これで、トポロジをローカルでテストできました。次は[HDInsight でこのトポロジを Storm にデプロイする](../hdinsight-storm-deploy-monitor-topology/)方法をご確認ください。
+これで、トポロジをローカルでテストできました。次は[HDInsight でこのトポロジを Storm にデプロイする](hdinsight-storm-deploy-monitor-topology.md)方法をご確認ください。
 
 必要に応じて次の Storm 関連のトピックもご覧ください。
 
-* [Develop Java topologies for Storm on HDInsight using Maven (Maven を使用して HDInsight で Storm の Java トポロジを開発する)](../hdinsight-storm-develop-java-topology/)
+* [Develop Java topologies for Storm on HDInsight using Maven (Maven を使用して HDInsight で Storm の Java トポロジを開発する)](hdinsight-storm-develop-java-topology.md)
 
-* [Visual Studio を使用して HDInsight で Storm の C# トポロジを開発する](../hdinsight-storm-develop-csharp-visual-studio-topology/)
+* [Visual Studio を使用して HDInsight で Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
 HDInsight での Storm のその他の例:
 
 * [HDInsight での Storm の例](https://github.com/hdinsight/hdinsight-storm-examples)
 
-* [HDInsight での Storm を使用した EventHub センサー データの分析](../hdinsight-storm-sensor-data-analysis/)
+* [HDInsight での Storm を使用した EventHub センサー データの分析](hdinsight-storm-sensor-data-analysis.md)
 <!--HONumber=47-->

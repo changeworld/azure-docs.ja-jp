@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="Azure Notification Hubs によるユーザーへの通知" 
 	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
 	documentationCenter="android" 
@@ -19,14 +19,14 @@
 #Azure Notification Hubs によるユーザーへの通知
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/" title="Windows Universal">Windows Universal</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/" title="iOS">iOS</a>
-		<a href="/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/" title="Android" class="current">Android</a>
+    	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/" title="iOS">iOS</a>
+		<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/" title="Android" class="current">Android</a>
 </div>
 
 Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。このチュートリアルは、「**Notification Hubs の使用**」チュートリアルで作成した通知ハブが基になっています。
 
-> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Android)](notification-hubs-android-get-started.md)」での説明に従って通知ハブが作成され、構成されていると想定しています。 
-> バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](mobile-services-javascript-backend-android-push-notifications-app-users.md) を参照してください。
+> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Android)](notification-hubs-android-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。 
+> バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](mobile-services-javascript-backend-android-push-notifications-app-users.md)を参照してください。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -34,7 +34,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 次の手順では、Android アプリケーションを作成します。
 
-1. 「[Notification Hubs の使用 (Android)](notification-hubs-android-get-started.md) 」チュートリアルに従って、GCM からプッシュ通知を受信するためのアプリケーションを作成し、構成します。
+1. 「[Notification Hubs の使用 (Android)](notification-hubs-android-get-started.md)」のチュートリアルに従って、アプリケーションを作成、構成して GCM からプッシュ通知を受け取ります。
 
 2. res/layout/activity_main.xml ファイルを開き、コンテンツを次の内容と置き換えます。
 			
@@ -191,7 +191,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 			}
 		}
 
-	プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」で説明しているとおり、Notification Hub によって作成された  *registrationIds* もローカルに格納されます。**[ログインして登録]** をクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
+	プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」で説明しているとおり、Notification Hubs によって作成された  *registrationIds* もローカルに格納されます。**[ログインして登録]** をクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
 
 4. **MainActivity** クラスで、**NotificationHub** のプライベート フィールドを削除し、**RegisterClient** に対するフィールドを追加します。
 
@@ -277,7 +277,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 	    	return basicAuthHeader;
 		}
 
-	**Log in** に対するコールバックは、入力したユーザー名とパスワードに基づいて基本的な認証トークンを生成し (これは認証スキームが使用する任意のトークンを表します)、 `RegisterClient`を使用してバックエンドを呼び出します。**[プッシュを送信する]** に対するコールバックは、バックエンドを呼び出し、このユーザーのすべてのデバイスに対してセキュリティで保護された通知をトリガーします。 
+	**[ログイン]** に対するコールバックは、入力したユーザー名とパスワードに基づいて基本的な認証トークンを生成し (これは認証スキームが使用する任意のトークンを表します)、 `RegisterClient` を使用してバックエンドを呼び出します。**[プッシュを送信する]** に対するコールバックは、バックエンドを呼び出し、このユーザーのすべてのデバイスに対してセキュリティで保護された通知をトリガーします。 
 
 ## アプリケーションの実行
 
@@ -292,4 +292,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users1.PNG
 
-<!--HONumber=49-->
+<!--HONumber=45--> 

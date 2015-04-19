@@ -18,9 +18,9 @@
 
 # Web ジョブ SDK で Azure Service Bus を使用する方法
 
-このガイドでは、Azure BLOB が作成または更新されたときに、プロセスを開始する方法を示す C# コード サンプルを提供します。コード サンプルは [Web ジョブ SDK](../websites-dotnet-webjobs-sdk/) バージョン 1.x を使用します。
+このガイドでは、Azure BLOB が作成または更新されたときに、プロセスを開始する方法を示す C# コード サンプルを提供します。コード サンプルは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用します。
 
-このガイドは、[ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法](../websites-dotnet-webjobs-sdk-get-started/) を理解していることを前提としています。
+このガイドは、[ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md) を理解していることを前提としています。
 
 コード スニペットは、この例のように  `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
 
@@ -138,7 +138,7 @@ POCO 型のパラメーターでは、キュー メッセージは関数が終�
 
 ## <a id="queues"></a>ストレージ キューの操作方法に関する記事で扱う関連トピック
 
-Service Bus に固有でない Web ジョブ SDK のシナリオについては、[Web ジョブ SDK を使用して Azure キュー ストレージを使用する方法](../websites-dotnet-webjobs-sdk-storage-queues-how-to/).  をご覧ください。
+Service Bus に固有でない Web ジョブ SDK のシナリオについては、[Web ジョブ SDK を使用して Azure キュー ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md).  をご覧ください。
 
 この記事で取り上げている関連のトピックは、次のとおりです。
 

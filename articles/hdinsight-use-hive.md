@@ -209,11 +209,11 @@ Hive では、SQL に似たクエリ言語を使用してデータを容易に�
 * [HDInsight Hadoop Tools for Visual Studio の使用開始][1]
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
-* [HDInsight での Pig の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 * [データを HDInsight へアップロード][hdinsight-upload-data]
-* [Azure の HDInsight の概要](../hdinsight-get-started/)
+* [Azure の HDInsight の概要](hdinsight-get-started.md)
 
 
 [1]: ../hdinsight-hadoop-visual-studio-tools-get-started/

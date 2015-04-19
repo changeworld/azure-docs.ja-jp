@@ -105,13 +105,13 @@ Putty の使用の詳細については、「<a href="http://azure.microsoft.com
 
 HDInsight での Hive に関する全般的な情報
 
-* [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 

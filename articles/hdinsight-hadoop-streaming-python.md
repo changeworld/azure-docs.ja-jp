@@ -196,7 +196,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 これで、HDInsight でストリーミング MapRedcue ジョブを使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
-* [HDInsight での Hive の使用](../hdinsight-use-hive/)
-* [HDInsight での Pig の使用](../hdinsight-use-pig/)
-* [HDInsight での MapReduce ジョブの使用](../hdinsight-use-mapreduce)
+* [HDInsight での Hive の使用](hdinsight-use-hive.md)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 <!--HONumber=47-->

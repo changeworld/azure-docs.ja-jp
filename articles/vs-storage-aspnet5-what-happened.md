@@ -17,8 +17,8 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
-> - [変更内容](/documentation/articles/vs-storage-aspnet5-what-happened/)
+> - [Getting Started (概要)](vs-storage-aspnet5-getting-started-blobs.md)
+> - [変更内容](vs-storage-aspnet5-what-happened.md)
 
 ### <span id="whathappened">プロジェクトの変更点</span>
 

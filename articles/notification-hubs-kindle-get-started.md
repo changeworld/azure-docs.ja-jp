@@ -3,36 +3,32 @@
 	description="Azure Notification Hubs を使用してプッシュ通知を送信する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="wesmc7777" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor=""/>
 
 <tags 
 	ms.service="notification-hubs" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-kindle" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="Java" 
 	ms.topic="hero-article" 
-	ms.date="03/16/2015" 
-	ms.author="wesmc"/>
+	ms.date="09/24/2014" 
+	ms.author="piyushjo"/>
 
 # Notification Hubs の使用
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
-
-##概要
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle" class="current">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
 
 このトピックでは、Azure Notification Hubs を使用して Kindle アプリケーションにプッシュ通知を送信する方法について説明します。 
 このチュートリアルでは、Amazon Device Messaging (ADM) を使用してプッシュ通知を受信する空の Kindle アプリケーションを作成します。
-
-##前提条件
 
 このチュートリアルには、次のものが必要です。
 
 + Android SDK (前提条件として Eclipse を使用する必要があります) は、<a href="http://go.microsoft.com/fwlink/?LinkId=389797">ここ</a>からダウンロードできます。
 + <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">ここ</a>に表示される指示に従って、Kindle の開発環境を設定します。
 
-##開発者ポータルへの新しいアプリの追加
+## 開発者ポータルへの新しいアプリの追加
 
 1. 最初に、[開発者ポータル]でアプリケーションを作成します。
 
@@ -135,7 +131,7 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 
 ## ADM メッセージ ハンドラーの作成
 
-1. `com.amazon.device.messaging.ADMMessageHandlerBase` を継承する新しいクラスを作成し、次の図に示すように `MyADMMessageHandler` という名前を付けます。
+1.  `com.amazon.device.messaging.ADMMessageHandlerBase` を継承する新しいクラスを作成し、次の図に示すように  `MyADMMessageHandler` という名前を付けます。
 
 	![][6]
 
@@ -282,4 +278,4 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!--HONumber=49-->
+<!--HONumber=45--> 

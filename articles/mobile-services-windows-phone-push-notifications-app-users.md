@@ -20,7 +20,7 @@
 
 このトピックは廃止されました。代わりに、以下のチュートリアルに記載されている更新されたガイダンスに従ってください。
 
-+ [Mobile Services アプリへのプッシュ通知の追加](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)<br/>TodoList のモバイル サービスを更新し、Azure Notification Hubs を使用して TodoList サンプル アプリケーションのユーザーに通知を送信できるようにします。
-+ [認証されたユーザーへのプッシュ通知の送信](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-push-notifications-app-users/)<br/>前のチュートリアルを拡張し、サインインしているユーザーのみが通知を登録できるようにします。
++ [Mobile Services アプリへのプッシュ通知の追加](mobile-services-javascript-backend-windows-phone-get-started-push.md)<br/>TodoList のモバイル サービスを更新し、Azure Notification Hubs を使用して TodoList サンプル アプリケーションのユーザーに通知を送信できるようにします。
++ [認証されたユーザーへのプッシュ通知の送信](mobile-services-javascript-backend-windows-phone-push-notifications-app-users.md)<br/>前のチュートリアルを拡張し、サインインしているユーザーのみが通知を登録できるようにします。
 
 <!--HONumber=42-->

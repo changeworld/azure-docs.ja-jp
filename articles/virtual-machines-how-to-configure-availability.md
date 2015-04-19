@@ -65,8 +65,8 @@
 
 Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、次をご覧ください。
 
-- [Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-windows-vms/)
-- [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](../virtual-machines-ps-create-preconfigure-linux-vms/)
+- [Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
 
 ## <a id="addmachine"> </a>方法 2:既存の仮想マシンを可用性セットに追加する##

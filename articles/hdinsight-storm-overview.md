@@ -86,7 +86,7 @@ HDInsight Storm クラスターは、.NET、Java、Python を既定でサポー�
 
 SCP は、.NET 開発者がトポロジ (スパウトとボルトを含む) を設計し実装できるプロジェクトです。SCP は、Storm クラスターによって既定でサポートされています。
 
-SCP を使用した開発の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application)」を参照してください。
+SCP を使用した開発の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application.md)」を参照してください。
 
 ### Java
 
@@ -120,7 +120,7 @@ Storm は、さまざまなレベルでメッセージの処理を保証しま�
 
 バッチ処理はいくつかの方法で実行できます。基本的な Storm Java トポロジでは、単純なカウンターを使用して、X 個のタプルをバッチ処理してから発したり、tick タプルと呼ばれる内部の時間調整メカニズムを使用して X 秒ごとにバッチを発したりできます。
 
-tick タプルを使用する例については、「[Storm と HDInsight を使用したセンサー データの分析](/ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis.md)」を参照してください。
+tick タプルを使用する例については、「[Storm と HDInsight を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md.md)」を参照してください。
 
 Trident を使用している場合、これはタプルのバッチ処理を基盤とします。
 
@@ -138,9 +138,9 @@ Trident を使用している場合、これはタプルのバッチ処理を基
 
 * [HDInsight での Storm の使用][gettingstarted]
 
-* [Storm と HDInsight を使用したセンサー データの分析](/ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis)
+* [Storm と HDInsight を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)
 
-* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application)
+* [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application.md)
 
 [apachestorm]: https://storm.incubator.apache.org
 [stormtrident]: https://storm.incubator.apache.org/documentation/Trident-API-Overview.html

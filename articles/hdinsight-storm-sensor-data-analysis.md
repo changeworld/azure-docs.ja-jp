@@ -1353,7 +1353,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 * D3.js の詳細については、「[D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)](http://d3js.org/)」を参照してください。
 
-* .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](/ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/)」を参照してください。
+* .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application.md)」を参照してください。
 
 [azure-portal]: https://manage.windowsazure.com/
 <!--HONumber=42-->

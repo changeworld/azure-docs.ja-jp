@@ -20,9 +20,9 @@ authors="torsteng"/>
 
 Azure SQL Database 上に構築されたアプリケーションは、データ ニーズまたは処理ニーズが Azure SQL Database の単一のスケール単位に適合しなくなったときに課題に直面します。たとえば、急速に広まったアプリケーションや、テナントの特定のセットが単一の Azure SQL DB データベースの制限を超えて拡大したアプリケーションなどがその例です。Elastic Scale の **Split/Merge** サービスを使用すると、この問題が大幅に軽減されます。 
 
-ここでは、Split/Merge サービスを使用して Azure DB データベースの数を変更し、それらの間の**シャードレット**の分散状態を調整してスケールインとスケールアウトを管理する方法について説明します(用語の定義については、「[Elastic Scale 用語集](./sql-database-elastic-scale-glossary.md)」をご覧ください)。 
+ここでは、Split/Merge サービスを使用して Azure DB データベースの数を変更し、それらの間の**シャードレット**の分散状態を調整してスケールインとスケールアウトを管理する方法について説明します(用語の定義については、「[Elastic Scale 用語集](sql-database-elastic-scale-glossary.md)」をご覧ください)。 
 
-現在、提供されている Azure SQL DB の各エディションでは、単一 Azure SQL DB データベースの容量を拡大または縮小して容量を管理することもできます。Split/Merge では、柔軟な容量管理のスケールアップ/ダウン ディメンションはサポートされません (「[シャードの弾力性](./sql-database-elastic-scale-elasticity.md)」をご覧ください)。 
+現在、提供されている Azure SQL DB の各エディションでは、単一 Azure SQL DB データベースの容量を拡大または縮小して容量を管理することもできます。Split/Merge では、柔軟な容量管理のスケールアップ/ダウン ディメンションはサポートされません (「[シャードの弾力性](sql-database-elastic-scale-elasticity.md)」をご覧ください)。 
  
 ## Split/Merge の新機能
 
@@ -65,7 +65,7 @@ Split/Merge の最新バージョンにアップグレードするには、次�
 
 ## 概念と主な機能
 
-**お客様側でホストされるサービス**:Split/Merge は、お客様側でホストされるサービスとして提供されます。このサービスは、Microsoft Azure サブスクリプション内でデプロイし、ホストする必要があります。NuGet からダウンロードするパッケージには構成テンプレートが含まれていて、これに特定のデプロイメントの情報を入力します。詳細については、「[Elastic Scale の分割とマージ サービス チュートリアル](./sql-database-elastic-scale-configure-deploy-split-and-merge.md)」を ご覧ください。このサービスは Azure サブスクリプション内で実行されるため、サービスのセキュリティに関するほとんどの側面を制御と構成できます。既定のテンプレートには、SSL、証明書ベースのクライアント認証、保存された資格情報の暗号化、DoS 対策、IP 制限を構成するためのオプションが含まれています。セキュリティの側面については、「[Elastic Scale のセキュリティの構成](./sql-database-elastic-scale-configure-security.md)」をご覧ください。
+**お客様側でホストされるサービス**:Split/Merge は、お客様側でホストされるサービスとして提供されます。このサービスは、Microsoft Azure サブスクリプション内でデプロイし、ホストする必要があります。NuGet からダウンロードするパッケージには構成テンプレートが含まれていて、これに特定のデプロイメントの情報を入力します。詳細については、「[Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」を ご覧ください。このサービスは Azure サブスクリプション内で実行されるため、サービスのセキュリティに関するほとんどの側面を制御と構成できます。既定のテンプレートには、SSL、証明書ベースのクライアント認証、保存された資格情報の暗号化、DoS 対策、IP 制限を構成するためのオプションが含まれています。セキュリティの側面については、「[Elastic Scale のセキュリティの構成](sql-database-elastic-scale-configure-security.md)」をご覧ください。
 
 既定では、デプロイされたサービスは、1 つのワーカー ロールと 1 つの Web ロールを使用して実行されます。それぞれは、Azure Cloud Services の A1 VM サイズを使用します。これらの設定は、パッケージをデプロイするときに変更することはできませんが、実行中のクラウド サービスへのデプロイが成功した後に (Azure のポータルを通じて) 変更できます。技術的な理由により、複数のインスタンスにワーカー ロールを構成しないでください。 
 
@@ -109,7 +109,7 @@ region テーブルと nation テーブルは参照テーブルとして定義�
 
 ## サービスのバイナリの取得
 
-Split/Merge サービスのバイナリは、[Nuget](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/) から提供されます。バイナリのダウンロードの詳細については、[Split-Merge のチュートリアル](./sql-database-elastic-scale-configure-deploy-split-and-merge.md)の手順を ご覧ください。
+Split/Merge サービスのバイナリは、[Nuget](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/) から提供されます。バイナリのダウンロードの詳細については、[Split-Merge のチュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)の手順を ご覧ください。
 
 ## Split/Merge のユーザー インターフェイス
 
@@ -204,9 +204,9 @@ Split/Merge サービスのデプロイに問題が発生した場合、通常�
 
 ## 参照 
 
-* [Elastic Scale の分割とマージ サービス チュートリアル](./sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+* [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
 
-* [Elastic Scale のセキュリティの構成](./sql-database-elastic-scale-configure-security.md)  
+* [Elastic Scale のセキュリティの構成](sql-database-elastic-scale-configure-security.md)  
 
 
 <!--Anchors-->

@@ -18,7 +18,7 @@
 
 #Windows Phone プロジェクトにエンゲージメント リーチ SDK を統合する方法
 
-このガイドに従う前に [Windows Phone にエンゲージメントを統合する方法]ドキュメントで説明されている(../mobile-engagement-windows-phone-integrate-engagement/) 統合手順を実行する必要があります。
+このガイドに従う前に [Windows Phone にエンゲージメントを統合する方法]ドキュメントで説明されている(mobile-engagement-windows-phone-integrate-engagement.md) 統合手順を実行する必要があります。
 
 ##エンゲージメント リーチ SDK を Windows Phone プロジェクトに埋め込む
 

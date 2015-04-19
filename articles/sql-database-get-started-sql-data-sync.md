@@ -179,9 +179,9 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 ## 次のステップ
 SQL データベースと SQL データ同期の詳細については、以下をご覧ください。
 
-* [SQL データベース プレミアムへのサインアップ] (../sign-up-for-sql-database-premium/)
+* [SQL データベース プレミアムへのサインアップ] (sign-up-for-sql-database-premium.md)
 * [SQL Data Sync (WA Portal) (SQL データ同期 (WA ポータル))](http://msdn.microsoft.com/library/windowsazure/jj856263.aspx)
-* [Azure SQL データベースの概要](../getting-started-w-sql-databases/)
+* [Azure SQL データベースの概要](getting-started-w-sql-databases.md)
 * [SQL Server データベースのライフサイクルに関するページ](http://go.microsoft.com/fwlink/?LinkId=275193)
 
 

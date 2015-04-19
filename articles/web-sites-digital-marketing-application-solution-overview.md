@@ -89,7 +89,7 @@ Azure Websites のダッシュボードでは、Web サイトの現在のパフ�
 ## その他のリソース
 
 - [Azure Websites のドキュメント](/ja-jp/documentation/services/websites/)
-- [Learning map for Azure Websites (Azure Websites のラーニング マップ)](/ja-jp/documentation/articles/websites-learning-map/)
+- [Learning map for Azure Websites (Azure Websites のラーニング マップ)](websites-learning-map.md)
 - [Azure Web ブログ](/blog/topics/web/)
 
 

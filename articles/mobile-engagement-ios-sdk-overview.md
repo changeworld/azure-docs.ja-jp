@@ -18,16 +18,16 @@
 
 # 2.0.0
 
-ここでは、iOS アプリで Azure モバイル エンゲージメントを統合する方法の詳細を確認します。まず試してみたい場合は、[15 分間のチュートリアル](../mobile-engagement-ios-get-started/) をご確認ください。
+ここでは、iOS アプリで Azure モバイル エンゲージメントを統合する方法の詳細を確認します。まず試してみたい場合は、[15 分間のチュートリアル](mobile-engagement-ios-get-started.md) をご確認ください。
 
-クリックして、[SDK の内容](../mobile-engagement-ios-sdk-content) をご覧ください。
+クリックして、[SDK の内容](mobile-engagement-ios-sdk-content.md) をご覧ください。
 
 ## 統合手順
-1. はじめに: [IOS アプリでモバイル エンゲージメントを統合する方法](../mobile-engagement-ios-integrate-engagement/)
+1. はじめに: [IOS アプリでモバイル エンゲージメントを統合する方法](mobile-engagement-ios-integrate-engagement.md)
 
-2. 通知: [IOS アプリでリーチ (通知) を統合する方法](../mobile-engagement-ios-integrate-engagement-reach/)
+2. 通知: [IOS アプリでリーチ (通知) を統合する方法](mobile-engagement-ios-integrate-engagement-reach.md)
 
-3. タグ計画の実装: [iOS アプリで API をタグ付けする高度なモバイル エンゲージメントを使用する方法](../mobile-engagement-ios-use-engagement-api/)
+3. タグ計画の実装: [iOS アプリで API をタグ付けする高度なモバイル エンゲージメントを使用する方法](mobile-engagement-ios-use-engagement-api.md)
 
 
 ## リリース ノート
@@ -41,13 +41,13 @@
 -   セキュリティが強化されました。
 -   SmartAd の追跡が削除されました。
 
-以前のバージョンについては、[全リリース ノート](../mobile-engagement-ios-release-notes/) をご覧ください。
+以前のバージョンについては、[全リリース ノート](mobile-engagement-ios-release-notes.md) をご覧ください。
 
 ## アップグレードの手順
 
 既に古いバージョンのエンゲージメントをアプリケーションに統合している場合は、SDK をアップグレードするときに次の点を考慮する必要があります。
 
-一部のバージョンの SDK が不足している場合は、いくつかの手順を実行する必要があります。[アップグレードの手順] をご覧ください(../mobile-engagement-ios-upgrade-procedure/)。
+一部のバージョンの SDK が不足している場合は、いくつかの手順を実行する必要があります。[アップグレードの手順] をご覧ください(mobile-engagement-ios-upgrade-procedure.md)。
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 

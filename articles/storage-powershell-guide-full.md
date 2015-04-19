@@ -659,7 +659,7 @@ PowerShell を使用し、ストレージ ログのデータを有効にして�
 - **アドホック SAS**:アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
 - **保存されているアクセス ポリシーによる SAS**:保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、キュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名の制限を管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。この種類の SAS は、取り消しできません。
 
-詳細については、「[共有アクセス署名]」の(./storage-dotnet-shared-access-signature-part-1.md/)[パート 1:SAS モデルについて](./storage-dotnet-shared-access-signature-part-1.md/)」と「[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/azure/ee393343.aspx)」をご覧ください。
+詳細については、「[共有アクセス署名]」の(storage-dotnet-shared-access-signature-part-1.md)[パート 1:SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/azure/ee393343.aspx)」をご覧ください。
 
 次のセクションでは、Azure テーブルに対する共有アクセス署名トークンと保存されたアクセス ポリシーを作成する方法を学習します。Azure PowerShell では、コンテナー、BLOB、キューに対して類似するコマンドレットが提供されます。このセクションでスクリプトを実行するには、[Azure PowerShell バージョン 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) 以降のバージョンをダウンロードしてください。
 
@@ -721,7 +721,7 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 
 詳細については、
 
-- 「[Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)]」をご覧ください(../azure-government-developer-guide/)。 
+- 「[Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)]」をご覧ください(azure-government-developer-guide.md)。 
 - [グローバル Azure 対応の AzureCloud と中国の 21Vianet が運営する Azure 対応の AzureChinaCloud の相違点](https://msdn.microsoft.com/library/azure/dn578439.aspx)に関するページ
 
 ## <a name="next"></a>次のステップ

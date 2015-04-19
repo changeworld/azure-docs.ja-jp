@@ -46,7 +46,7 @@ HDInsight はセカンダリ ヘッドノード (ヘッドノード 1) を追加
 
 XL サイズの VM は、Azure PowerShell コマンドレットまたは HDInsight SDK を使用して構成できます。
 
-PowerShell を使用したクラスターの作成とプロビジョニングについては、[PowerShell を使用した HDInsight の管理](../hdinsight-administer-use-powershell/)に関するページで説明しています。XL サイズのヘッドノードの構成には、このコードで使用される `New-AzureHDInsightcluster` コマンドレットに `-HeadNodeVMSize ExtraLarge` パラメーターを追加する必要があります。
+PowerShell を使用したクラスターの作成とプロビジョニングについては、[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)に関するページで説明しています。XL サイズのヘッドノードの構成には、このコードで使用される `New-AzureHDInsightcluster` コマンドレットに `-HeadNodeVMSize ExtraLarge` パラメーターを追加する必要があります。
 
     # Create a new HDInsight cluster in Azure PowerShell
 	# Configured with an ExtraLarge Headnode VM

@@ -454,16 +454,16 @@ Trident アプリケーションは Maven プロジェクトを使用して、�
 
 Trident の詳細については、<a href="http://storm.apache.org/documentation/Trident-API-Overview.html" target="_blank">Trident API の概要</a>のページを参照してください。
 
-Trident アプリケーションの例については、次の記事を参照してください: [HDInsight での Apache Storm を使用した Twitter のトレンディング トピック](../hdinsight-storm-twitter-trending/)
+Trident アプリケーションの例については、次の記事を参照してください: [HDInsight での Apache Storm を使用した Twitter のトレンディング トピック](hdinsight-storm-twitter-trending.md)
 
 ##次のステップ
 
 ここまでで、Java を使用して Storm トポロジを作成する方法を説明しました。続けて次の記事もご覧ください。
 
-* [HDInsight での Apache Storm トポロジの展開と管理](../hdinsight-storm-deploy-monitor-topology/)
+* [HDInsight での Apache Storm トポロジの展開と管理](hdinsight-storm-deploy-monitor-topology.md)
 
-* [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](../hdinsight-storm-develop-csharp-visual-studio-topology/)
+* [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
-* [Analyzing Twitter trending topics with Apache Storm on HDInsight (HDInsight での Apache Storm を使用した Twitter のトレンディング トピックの分析)](../hdinsight-storm-twitter-trending)
+* [Analyzing Twitter trending topics with Apache Storm on HDInsight (HDInsight での Apache Storm を使用した Twitter のトレンディング トピックの分析)](hdinsight-storm-twitter-trending.md)
 
 <!--HONumber=47-->

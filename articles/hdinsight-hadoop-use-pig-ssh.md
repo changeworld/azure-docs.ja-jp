@@ -145,12 +145,12 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 
 HDInsight での Pig に関する全般的な情報
 
-* [HDInsight での Pig と Hadoop の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](../hdinsight-use-hive/)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 <!--HONumber=47-->

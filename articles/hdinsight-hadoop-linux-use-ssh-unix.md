@@ -20,7 +20,7 @@
 
 Linux ベースの HDInsight クラスターには、パスワードまたは SSH キーを使用して SSH アクセスを保護するためのオプションが用意されています。このドキュメントでは、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。
 
-> [AZURE.NOTE] この記事で説明する手順は、Linux、Unix、または OS X の各クライアントを使用していることを前提とします。 `ssh` と `ssh-keygen` を提供するパッケージ (Windows の Git など) をインストール済みの場合は、これらの手順を Windows クライアントで実行できますが、[HDInsight の Linux ベースの Hadoop での Windows からの SSH の使用]に関するページに記載されている手順に従って Windows クライアントを設定することをお勧めします(/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)。
+> [AZURE.NOTE] この記事で説明する手順は、Linux、Unix、または OS X の各クライアントを使用していることを前提とします。 `ssh` と `ssh-keygen` を提供するパッケージ (Windows の Git など) をインストール済みの場合は、これらの手順を Windows クライアントで実行できますが、[HDInsight の Linux ベースの Hadoop での Windows からの SSH の使用]に関するページに記載されている手順に従って Windows クライアントを設定することをお勧めします(hdinsight-hadoop-linux-use-ssh-windows.md)。
 
 ##前提条件
 
@@ -229,10 +229,10 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 これで、SSH キーを使用して認証する方法、また、HDInsight 上の Hadoop で MapReduce を使用する方法についてご理解いただけたと思います。
 
-* [HDInsight での Hive の使用](../hdinsight-use-hive/)
+* [HDInsight での Hive の使用](hdinsight-use-hive.md)
 
-* [HDInsight での Pig の使用](../hdinsight-use-pig/)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
 
-* [HDInsight での MapReduce ジョブの使用](../hdinsight-use-mapreduce/)
+* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
  
 <!--HONumber=47-->

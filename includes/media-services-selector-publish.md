@@ -1,6 +1,6 @@
 ﻿> [AZURE.SELECTOR]
-- [ポータル](/documentation/articles/media-services-manage-content#publish/)
-- [.NET SDK](/documentation/articles/media-services-deliver-streaming-content/)
-- [REST API](/documentation/articles/media-services-rest-deliver-streaming-content)
+- [ポータル](media-services-manage-content#publish.md)
+- [.NET SDK](media-services-deliver-streaming-content.md)
+- [REST API](media-services-rest-deliver-streaming-content.md)
 
 <!--HONumber=47-->

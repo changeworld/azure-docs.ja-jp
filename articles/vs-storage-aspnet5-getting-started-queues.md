@@ -17,15 +17,15 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [はじめに](/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
-> - [変更内容](/documentation/articles/vs-storage-aspnet5-what-happened/)
+> - [はじめに](vs-storage-aspnet5-getting-started-queues.md)
+> - [変更内容](vs-storage-aspnet5-what-happened.md)
 
 ## Azure Storage の使用 (ASP.NET 5 プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [BLOB](/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
-> - [キュー](/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
-> - [テーブル](/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
+> - [BLOB](vs-storage-aspnet5-getting-started-blobs.md)
+> - [キュー](vs-storage-aspnet5-getting-started-queues.md)
+> - [テーブル](vs-storage-aspnet5-getting-started-tables.md)
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[.NET からキュー ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET")」をご覧ください。
 

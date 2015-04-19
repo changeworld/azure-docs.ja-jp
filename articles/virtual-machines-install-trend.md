@@ -29,7 +29,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 [Azure 管理ポータル](http://manage.windowsazure.com)を使用すると、**From Gallery** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 
-この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールします。一般的な手順については、「[Windows を実行する仮想マシンの作成](../virtual-machines-windows-tutorial/)」をご覧ください。ウィザードの最後のページで、次の手順を実行します。
+この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールします。一般的な手順については、「[Windows を実行する仮想マシンの作成](virtual-machines-windows-tutorial.md)」をご覧ください。ウィザードの最後のページで、次の手順を実行します。
 
 1.	[VM エージェント] で **[VM エージェントをインストールする]** チェック ボックスをオンにします。
 
@@ -43,7 +43,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 このインストールには、次の条件が必要です。
 
-- Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell/)」をご覧ください。 
+- Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールと構成方法](install-configure-powershell.md)」をご覧ください。 
 
 - VM エージェントがターゲットの仮想マシンにインストールされていること。 
 

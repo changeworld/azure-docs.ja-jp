@@ -17,15 +17,15 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-storage-cloud-services-getting-started-blobs/)
-> - [変更内容](/documentation/articles/vs-storage-cloud-services-what-happened/)
+> - [Getting Started (概要)](vs-storage-cloud-services-getting-started-blobs.md)
+> - [変更内容](vs-storage-cloud-services-what-happened.md)
 
 ## Azure Storage の使用 (クラウド サービス プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [BLOB](/documentation/articles/vs-storage-cloud-services-getting-started-blobs/)
-> - [キュー](/documentation/articles/vs-storage-cloud-services-getting-started-queues/)
-> - [テーブル](/documentation/articles/vs-storage-cloud-services-getting-started-tables/)
+> - [BLOB](vs-storage-cloud-services-getting-started-blobs.md)
+> - [キュー](vs-storage-cloud-services-getting-started-queues.md)
+> - [テーブル](vs-storage-cloud-services-getting-started-tables.md)
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 

@@ -94,6 +94,6 @@ BLOB が CDN 固有の URL を介して利用できることをテストしま�
 
 #関連項目
 
-[Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-cloud-service-content.md)
+[Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法](cdn-manage-expiration-of-cloud-service-content.md)
 
 <!--HONumber=49-->

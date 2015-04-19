@@ -29,7 +29,7 @@
 
 このトピックでは、Azure のモバイル サービスを使用して Windows ストア アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションの Visual Studio 2013 プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
->[AZURE.NOTE]このトピックでは、Visual Studio 2013 を使用して Azure モバイル サービスを Windows ストア プロジェクトに追加する方法について説明します。ユニバーサル Windows アプリ プロジェクトに、同じ JavaScript バックエンド モバイル サービスを追加できます。詳細については、このチュートリアルの[ユニバーサル Windows アプリ バージョン](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-javascript-get-started-data)を参照してください。
+>[AZURE.NOTE]このトピックでは、Visual Studio 2013 を使用して Azure モバイル サービスを Windows ストア プロジェクトに追加する方法について説明します。ユニバーサル Windows アプリ プロジェクトに、同じ JavaScript バックエンド モバイル サービスを追加できます。詳細については、このチュートリアルの[ユニバーサル Windows アプリ バージョン](mobile-services-javascript-backend-windows-universal-javascript-get-started-data.md)を参照してください。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 

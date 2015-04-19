@@ -18,5 +18,5 @@
 
 # Notification Hubs によるユーザーへのクロスプラットフォーム通知の送信
 
-このトピックは置き換えられていて現在は無効となっています。Azure モバイル サービスでの Azure 通知ハブを使用して、特定のユーザーに通知を送信する方法については、[認証されたユーザーにプッシュ通知を送信](/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users/)を参照してください。 
+このトピックは置き換えられていて現在は無効となっています。Azure モバイル サービスでの Azure 通知ハブを使用して、特定のユーザーに通知を送信する方法については、[認証されたユーザーにプッシュ通知を送信](mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users.md)を参照してください。 
 <!--HONumber=47-->

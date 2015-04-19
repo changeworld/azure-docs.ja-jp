@@ -238,7 +238,7 @@ Elastic Scale API では、シャード マップ マネージャーはシャー
 
 読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用するこれらのアプリケーションはマップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。   
 
-詳細については、「[データ依存ルーティング](./sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。 
+詳細については、「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。 
 
 ## シャード マップの変更 
 
@@ -270,9 +270,9 @@ Elastic Scale API では、シャード マップ マネージャーはシャー
 
 多くの場合、アプリケーションは、既に存在しているシャード マップに対し、新しいキーまたはキー範囲から期待されるデータを処理するために新しいシャードを単に追加する必要があります。たとえば、テナント ID によってシャード化されるアプリケーションの場合、新しいテナントに対して新しいシャードをプロビジョニングすることが必要になる場合があります。また、毎月シャード化されるデータの場合、新しい月が始まる前に新しいシャードをプロビジョニングすることが必要になる場合があります。 
 
-キー値の新しい範囲が既に既存のマッピングの一部ではなく、データの移動が不要な場合は、新しいシャードを追加して、新しいキーまたは範囲をそのシャードに関連付けるようにすると簡単に済みます。新しいシャードを追加する方法の詳細については、「[Adding a new Shard (新しいシャードの追加)](./sql-database-elastic-scale-add-a-shard.md)」をご覧ください。
+キー値の新しい範囲が既に既存のマッピングの一部ではなく、データの移動が不要な場合は、新しいシャードを追加して、新しいキーまたは範囲をそのシャードに関連付けるようにすると簡単に済みます。新しいシャードを追加する方法の詳細については、「[Adding a new Shard (新しいシャードの追加)](sql-database-elastic-scale-add-a-shard.md)」をご覧ください。
 
-ただし、データの移動を必要とするシナリオでは、必要なシャード マップの更新と共にシャード間でのデータの移動を調整するために Split-Merge サービスが必要になります。Split-Merge サービスの使用法の詳細については、「[Overview of Split-Merge (Split-Merge の概要)](./sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。 
+ただし、データの移動を必要とするシナリオでは、必要なシャード マップの更新と共にシャード間でのデータの移動を調整するために Split-Merge サービスが必要になります。Split-Merge サービスの使用法の詳細については、「[Overview of Split-Merge (Split-Merge の概要)](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。 
 
 [AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 

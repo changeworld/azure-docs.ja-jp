@@ -24,9 +24,9 @@
 
 このチュートリアルでは、メモリにデータを格納するユニバーサル Windows アプリの Visual Studio 2013 プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにサインインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
->[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 Update 3 でツーリングを使用して、新しいモバイル サービスをユニバーサル Windows アプリに接続する方法について説明します。同じ手順を使用して、モバイル サービスを Windows ストアまたは Windows Phone ストア 8.1 アプリに接続することができます。モバイル サービスを Windows Phone 8.0 または Windows Phone Silverlight 8.1 アプリに接続するには、[Windows Phone 向けデータの使用]に関するトピック (/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data) を参照してください。
+>[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 Update 3 でツーリングを使用して、新しいモバイル サービスをユニバーサル Windows アプリに接続する方法について説明します。同じ手順を使用して、モバイル サービスを Windows ストアまたは Windows Phone ストア 8.1 アプリに接続することができます。モバイル サービスを Windows Phone 8.0 または Windows Phone Silverlight 8.1 アプリに接続するには、[Windows Phone 向けデータの使用]に関するトピック (mobile-services-windows-phone-get-started-data.md) を参照してください。
 
-> Visual Studio Professional 2013 Update 3 にアップグレードできない場合や、モバイル サービス プロジェクトを手動で Windows ストア アプリ ソリューションに追加する場合は、[このバージョン]のトピック (/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data) を参照してください。
+> Visual Studio Professional 2013 Update 3 にアップグレードできない場合や、モバイル サービス プロジェクトを手動で Windows ストア アプリ ソリューションに追加する場合は、[このバージョン]のトピック (mobile-services-windows-store-dotnet-get-started-data.md) を参照してください。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 

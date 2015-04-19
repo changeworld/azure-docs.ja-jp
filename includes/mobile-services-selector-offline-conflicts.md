@@ -1,6 +1,6 @@
 > [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(iOS | Any)](/ja-jp/documentation/articles/mobile-services-ios-handling-conflicts-offline-data)
-- [(Windows Universal C# | Any)](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data)
-- [(Windows Phone | Any)](/ja-jp/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data)
+- [(iOS | Any)](mobile-services-ios-handling-conflicts-offline-data.md)
+- [(Windows Universal C# | Any)](mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md)
+- [(Windows Phone | Any)](mobile-services-windows-phone-handling-conflicts-offline-data.md)
 
 <!--HONumber=42-->

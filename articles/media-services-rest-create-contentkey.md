@@ -19,13 +19,13 @@
 
 #REST で ContentKey を作成する
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。  
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。  
 
 メディア サービスでは、暗号化されたアセットを新しく作成して送信できます。**ContentKey** で**アセット**に安全にアクセスできます。 
 
-新しいアセットを作成した場合 ([ファイルをアップロード](../media-services-rest-upload-files/)する前など)、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
+新しいアセットを作成した場合 ([ファイルをアップロード](media-services-rest-upload-files.md)する前など)、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
 
-クライアントにアセットを配信するときには、[アセットを動的に暗号化するように構成](../media-services-rest-configure-asset-delivery-policy)できます。 その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
+クライアントにアセットを配信するときには、[アセットを動的に暗号化するように構成](media-services-rest-configure-asset-delivery-policy.md)できます。 その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
 
 暗号化されたアセットには、**ContentKey** を関連付ける必要があります。この記事では、コンテンツ キーを作成する方法について説明します。
 
@@ -67,9 +67,9 @@ AES キーの生成、キーの暗号化、checksum 計算の例は、このト�
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](../media-services-rest-how-to-use)」をご覧ください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](media-services-rest-how-to-use.md)」をご覧ください。
 
->https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 ##ProtectionKeyId の取得 
  

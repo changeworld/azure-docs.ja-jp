@@ -19,13 +19,13 @@
 #方法:アセットの配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。 
 
 メディア サービスにおけるコンテンツ配信ワークフローの手順の 1 つは、ストリームするアセットの配信ポリシーを構成することです。アセットの配信ポリシーは、アセットを配信する方法、つまりどのストリーミング プロトコルでアセットを動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、アセットを動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を メディア サービスに示します。 
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。 
 
->[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services-manage-origins#scale_streaming_endpoints)」をご覧ください。 
+>[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins#scale_streaming_endpoints.md)」をご覧ください。 
 >
 >また、アセットには、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。  
 
@@ -53,13 +53,13 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-アセットを発行してストリーミング URL を構築する方法については、「[方法: ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content)」をご覧ください。
+アセットを発行してストリーミング URL を構築する方法については、「[方法: ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)」をご覧ください。
 
 >[AZURE.NOTE] メディア サービス REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](../media-services-rest-how-to-use)」をご覧ください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](media-services-rest-how-to-use.md)」をご覧ください。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
 ##アセットの配信ポリシーを解除する 
@@ -142,7 +142,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###EnvelopeEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](../media-services-rest-create-contentkey)」をご覧ください。
+DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](media-services-rest-create-contentkey.md)」をご覧ください。
 
 
 ###<a id="get_delivery_url"></a>配信 URL を取得する
@@ -235,7 +235,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 ###CommonEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](../media-services-rest-create-contentkey)」をご覧ください。
+DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](media-services-rest-create-contentkey.md)」をご覧ください。
 
 
 ###配信 URL を取得する

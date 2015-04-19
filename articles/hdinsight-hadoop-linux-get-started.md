@@ -21,7 +21,7 @@
 このチュートリアルでは、Linux 上の HDInsight の基本的な使用方法を紹介するために、Linux 上で HDInsight Hadoop クラスターをプロビジョニングする方法と、Hive クエリを実行して非構造化データから意味のある情報を抽出する方法を説明します。その後、Tableau などの Business Intelligence (BI) ツールで抽出結果を分析します。
 
 
-> [AZURE.NOTE] Hadoop とビッグ データを初めて扱う方は、<a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510086" target="_blank">MapReduce</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510087" target="_blank">HDFS</a>、および <a href="http://go.microsoft.com/fwlink/?LinkId=510085" target="_blank">Hive</a> に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[HDInsight での Hadoop 入門](../hdinsight-hadoop-introduction/)」を参照してください。
+> [AZURE.NOTE] Hadoop とビッグ データを初めて扱う方は、<a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510086" target="_blank">MapReduce</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510087" target="_blank">HDFS</a>、および <a href="http://go.microsoft.com/fwlink/?LinkId=510085" target="_blank">Hive</a> に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[HDInsight での Hadoop 入門](hdinsight-hadoop-introduction.md)」を参照してください。
 
 
 ## このチュートリアルで目的とする操作 ##
@@ -49,11 +49,11 @@
 
 ## <a name="storage"></a>Azure ストレージ アカウントの作成
 
-HDInsight では、データを格納するために Azure BLOB ストレージを使用します。これは *WASB* または *Azure Storage - BLOB* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)に関するページを参照してください。
+HDInsight では、データを格納するために Azure BLOB ストレージを使用します。これは *WASB* または *Azure Storage - BLOB* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
 
 HDInsight クラスターをプロビジョニングするときは、Azure Storage アカウントを指定します。HDFS と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。
 
-このストレージ アカウントに加えて、HDInsight クラスターの構成をカスタマイズするときに他のストレージ アカウントを追加できます。この追加のストレージ アカウント用には、同じ Azure サブスクリプションを使用することも異なる Azure サブスクリプションを使用することもできます。手順については、[カスタム オプションを使用した HDInsight での Linux クラスターのプロビジョニング](../hdinsight-hadoop-provision-linux-clusters)に関するページを参照してください。 
+このストレージ アカウントに加えて、HDInsight クラスターの構成をカスタマイズするときに他のストレージ アカウントを追加できます。この追加のストレージ アカウント用には、同じ Azure サブスクリプションを使用することも異なる Azure サブスクリプションを使用することもできます。手順については、[カスタム オプションを使用した HDInsight での Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 
 
 このチュートリアルでは、わかりやすくするために、既定の BLOB コンテナーと既定のストレージ アカウントが使用されています。実際には、データ ファイルを専用のストレージ アカウントに格納するのが一般的です。
 
@@ -74,13 +74,13 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 
 詳細については、「
-[ストレージ アカウントの作成方法](../storage-create-storage-account/)」 および「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage/)」を参照してください。
+[ストレージ アカウントの作成方法](storage-create-storage-account.md)」 および「[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)」を参照してください。
 	
 ## <a name="provision"></a>Linux での HDInsight クラスターのプロビジョニング
 
 HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、簡易作成オプションを使用して、Linux 上に HDInsight クラスターをプロビジョニングします。このオプションでは、既定のユーザー名と Azure ストレージ コンテナーを使用して、Ubuntu 12.04 LTS で実行されている HDInsight Version 3.2 (Hadoop Version 2.5、HDP Version 2.2) をクラスターに構成します。異なる HDInsight バージョンとその SLA については、[HDInsight コンポーネントのバージョン](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
 
->[AZURE.NOTE]  Windows Server OS を実行する Hadoop クラスターを作成することもできます。手順については、[Windows での HDInsight の概要](../hdinsight-get-started/)に関するページを参照してください。
+>[AZURE.NOTE]  Windows Server OS を実行する Hadoop クラスターを作成することもできます。手順については、[Windows での HDInsight の概要](hdinsight-get-started.md)に関するページを参照してください。
 
 
 **HDInsight クラスターをプロビジョニングするには**
@@ -112,7 +112,7 @@ HDInsight クラスターをプロビジョニングすると、Hadoop と関連
 	
 5. **[HDInsight クラスターの作成]** をクリックします。プロビジョニングが完了すると、[状態] 列に **[実行中]** と表示されます。
 
-	>[AZURE.NOTE] この手順では、既定の SSH ユーザー名と Azure ストレージ コンテナーを使用する簡易作成オプションを指定して、Linux クラスターを作成します。認証に SSH キーを使用する、追加のストレージ アカウントを使用するなどのカスタム オプションを指定してクラスターを作成するには、[カスタム オプションを使用した HDInsight Linux クラスターのプロビジョニング](../hdinsight-hadoop-provision-linux-clusters)に関するページを参照してください。
+	>[AZURE.NOTE] この手順では、既定の SSH ユーザー名と Azure ストレージ コンテナーを使用する簡易作成オプションを指定して、Linux クラスターを作成します。認証に SSH キーを使用する、追加のストレージ アカウントを使用するなどのカスタム オプションを指定してクラスターを作成するには、[カスタム オプションを使用した HDInsight Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 
 ## <a name="hivequery"></a>クラスターでの Hive ジョブの送信
@@ -240,13 +240,13 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 ## <a name="nextsteps"></a>次のステップ
 このチュートリアルでは、HDInsight を使用して Hadoop Linux クラスターをプロビジョニングする方法と、SSH を使用してそのクラスターに Hive クエリを実行する方法を確認しました。詳細については、次の記事を参照してください。
 
-- [カスタム オプションを使用した Linux での HDInsight のプロビジョニング](../hdinsight-hadoop-provision-linux-clusters)
-- [Linux での HDInsight の使用](../hdinsight-hadoop-linux-information)
-- [Ambari を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari)
+- [カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)
+- [Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)
+- [Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 - [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
 - [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage)
+- [HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
 
 

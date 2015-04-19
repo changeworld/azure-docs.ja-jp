@@ -73,7 +73,7 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 * [Hosting interactive code in the Cloud (クラウドでの対話型のコードのホスティング)](http://blogs.msdn.com/b/jmstall/archive/2014/04/26/hosting-interactive-code-in-the-cloud.aspx)
 * [Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用のダッシュ ボードの取得)](http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx)
 * [Adding Trace to Azure Websites and WebJobs (Azure Websites および Web ジョブへのトレースの追加)](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)
-* [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting/)
+* [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 * ビデオ
 	* [Web ジョブ ツールとリモート デバッグ](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 

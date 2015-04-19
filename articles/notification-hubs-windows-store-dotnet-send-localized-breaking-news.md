@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル" 
 	description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します。" 
 	services="notification-hubs" 
@@ -18,7 +18,7 @@
 # Notification Hubs を使用したローカライズ ニュース速報の送信
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/" title="Windows Store C#" class="current">Windows Store C#</a><a href="/documentation/articles/notification-hubs-ios-send-localized-breaking-news/" title="iOS">iOS</a>
+    	<a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/" title="Windows Store C#" class="current">Windows Store C#</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/" title="iOS">iOS</a>
 </div>
 
 このトピックでは、Azure Notification Hubs の**テンプレート**機能を使用して、言語およびデバイスごとにローカライズしたニュース速報通知をブロードキャストする方法について説明します。このチュートリアルでは、「[Notification Hubs を使用したニュース速報の送信]」で作成した Windows ストア アプリケーションを使用します。完了すると、興味のあるニュース速報カテゴリに登録して受信する通知の言語を指定し、選択したカテゴリのその言語のプッシュ通知だけを受信できるようになります。
@@ -39,7 +39,7 @@
 
 
 
-##前提条件 ##
+## 前提条件 ##
 
 「[Notification Hubs を使用したニュース速報の送信]」のチュートリアルを完了し、コードが使用可能な状態になっている必要があります。このチュートリアルでは、そのコードに基づいているためです。 
 
@@ -50,7 +50,7 @@ Visual Studio 2012 も必要です。
 
 「[Notification Hubs を使用したニュース速報の送信]」では、**タグ**を使用してさまざまなニュース カテゴリの通知を購読するアプリケーションを構築しました。
 しかし、多くのアプリケーションは複数の市場をターゲットとしており、ローカライズが必要です。これは、通知自体の内容をローカライズし、適切なデバイス セットに配信する必要があることを意味します。
-このトピックでは、Notification Hubs の**テンプレート**機能を使用して、ローカライズしたニュース速報通知を簡単に配信する方法について説明します。
+このトピックでは、通知ハブの**テンプレート**機能を使用して、ローカライズしたニュース速報通知を簡単に配信する方法について説明します。
 
 注: ローカライズした通知を送信する 1 つの方法として、各タグの複数のバージョンを作成する方法があります。たとえば、ワールド ニュースで英語、フランス語、標準中国語をサポートするには、3 つのタグ("world_en"、"world_fr"、"world_ch") が必要です。その後、ワールド ニュースのローカライズ バージョンをこれらの各タグに送信する必要があります。このトピックでは、テンプレートを使用することでタグの増加を抑制し、複数のメッセージを送信しなくてもよいようにします。
 
@@ -82,7 +82,7 @@ Visual Studio 2012 も必要です。
 ここでは、「[Notification Hubs を使用したニュース速報の送信]」で作成したニュース速報アプリケーションを変更し、テンプレートを使用してローカライズしたニュース速報を送信します。
 
 
-クライアント アプリケーションがローカライズしたメッセージを受信できるようにするには、 *ネイティブ*登録 (つまり、テンプレートを指定する登録) をテンプレート登録に置き換える必要があります。
+クライアント アプリケーションがローカライズしたメッセージを受信できるようにするには、 *native* 登録 (つまり、テンプレートを指定する登録) をテンプレート登録に置き換える必要があります。
 
 
 Windows ストア アプリケーションで、以下の手順を実行します。
@@ -215,26 +215,26 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 
 
 <!-- URLs. -->
-[モバイル サービス]: /develop/mobile/tutorials/get-started
-[Notification Hubs によるユーザーへの通知:ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Notification Hubs によるユーザーへの通知:Mobile Services]: /manage/services/notification-hubs/notify-users
-[Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet 
+[モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started
+[Notification Hubs によるユーザーへの通知:ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
+[Notification Hubs によるユーザーへの通知:Mobile Services]: /ja-jp/manage/services/notification-hubs/notify-users
+[Notification Hubs を使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet 
 
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
-[データの使用]: /develop/mobile/tutorials/get-started-with-data-dotnet
-[認証の使用]: /develop/mobile/tutorials/get-started-with-users-dotnet
-[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-dotnet
-[アプリケーション ユーザーへのプッシュ通知]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
-[スクリプトを使用したユーザーの承認]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
-[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-push-js
+[Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet
+[アプリケーション ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-app-users-dotnet
+[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
+[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Notification Hubs (iOS)]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-To for iOS (方法: Notification Hubs (iOS))]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!--HONumber=49-->
+<!--HONumber=45--> 

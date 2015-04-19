@@ -18,7 +18,7 @@
 
 # Entity Framework での Elastic Scale の使用 
  
-Azure SQL Database Elastic Scale を Microsoft の Entity Framework (EF) で使用してアプリケーションを構築できます。Elastic Scale は、アプリケーションのデータ層のシャーディングとスケールアウトを通じて容量の拡張と縮小を実現します。このドキュメントでは、Elastic Scale の機能と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。ここでは、[Elastic Scale シャード管理](http://go.microsoft.com/?linkid=9862595)と[データ依存ルーティング](./sql-database-elastic-scale-data-dependent-routing.md)を Entity Framework の**コード ファースト** アプローチを使用して構成する方法を重点的に説明します。このドキュメント全体の実際の例として、EF 向けの [新しいデータベースを対象とした Code First](http://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれる Elastic Scale のサンプルの一部です。
+Azure SQL Database Elastic Scale を Microsoft の Entity Framework (EF) で使用してアプリケーションを構築できます。Elastic Scale は、アプリケーションのデータ層のシャーディングとスケールアウトを通じて容量の拡張と縮小を実現します。このドキュメントでは、Elastic Scale の機能と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。ここでは、[Elastic Scale シャード管理](http://go.microsoft.com/?linkid=9862595)と[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を Entity Framework の**コード ファースト** アプローチを使用して構成する方法を重点的に説明します。このドキュメント全体の実際の例として、EF 向けの [新しいデータベースを対象とした Code First](http://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれる Elastic Scale のサンプルの一部です。
   
 ## サンプル コードのダウンロードと実行
 この記事のコードをダウンロードするには:
@@ -53,7 +53,7 @@ Entity Framework 開発者は、アプリケーションをビルドし、アプ
 
 ## Elastic Scale の前提条件 
 
-用語の定義については、「[Elastic Scale 用語集](./sql-database-elastic-scale-glossary.md)」をご覧ください。
+用語の定義については、「[Elastic Scale 用語集](sql-database-elastic-scale-glossary.md)」をご覧ください。
 
 Azure SQL Database Elastic Scale では、"シャードレット" と呼ばれる、アプリケーション データのパーティションを定義します。シャードレットはシャーディング キーによって識別され、特定のデータベースにマップされます。アプリケーションは、任意の数のデータベースを持つことができ、シャードレットを分散して現在のビジネス要件に対して十分な容量またはパフォーマンスを提供します。シャーディング キー値とデータベースとの間のマッピングは、Elastic Scale API によって提供されるシャード マップによって格納されます。この機能は、"シャードのマップの管理" (SMM) と呼ばれます。シャード マップは、シャーディング キーを格納する要求のデータベース接続用のためのブローカーとしても機能します。この機能は、"データ依存ルーティング" と呼ばれます。 
  

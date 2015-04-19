@@ -102,7 +102,7 @@
 * [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-ユニバーサル Windows アプリの詳細については、「[シングル モバイル サービスから複数のデバイス プラットフォームをサポートする](/ja-jp/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs).」を参照してください。
+ユニバーサル Windows アプリの詳細については、「[シングル モバイル サービスから複数のデバイス プラットフォームをサポートする](mobile-services-how-to-use-multiple-clients-single-service#shared-vs.md).」を参照してください。
 
 <!-- Anchors. -->
 [Mobile Services の使用]:#getting-started

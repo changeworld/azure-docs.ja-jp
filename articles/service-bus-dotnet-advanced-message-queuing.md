@@ -1,5 +1,5 @@
-<properties 
-	pageTitle=".NET サービス バス API で AMQP 1.0 を使用する方法 - Azure" 
+﻿<properties 
+	pageTitle=".NET Service Bus API で AMQP 1.0 を使用する方法 - Azure" 
 	description="Azure .NET Service Bus API で Advanced Message Queuing Protodol (AMQP) 1.0 を使用する方法について説明します。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -209,7 +209,7 @@ Service Bus キューとの間でメッセージを送受信する例を次に�
 このアプリケーションを実行すると、次の形式の出力が生成されます。
 
 	> SimpleSenderReceiver.exe
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	
 	Sent message with MessageID = fb7f5d3733704e4ba4bd55f759d9d7cf
 	Received message with MessageID = fb7f5d3733704e4ba4bd55f759d9d7cf
@@ -241,7 +241,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 ### JMS アプリケーションの出力
 
 	> java SimpleSenderReceiver sendonly
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Sent message with JMSMessageID = ID:4364096528752411591
 	Sent message with JMSMessageID = ID:459252991689389983
 	Sent message with JMSMessageID = ID:1565011046230456854
@@ -250,7 +250,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 ### .NET アプリケーションの出力
 
 	> SimpleSenderReceiver.exe	
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Received message with MessageID = 4364096528752411591
 	Received message with MessageID = 459252991689389983
 	Received message with MessageID = 1565011046230456854
@@ -268,7 +268,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 #### .NET アプリケーションの出力
 
 	> SimpleSenderReceiver.exe sendonly
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Sent message with MessageID = d64e681a310a48a1ae0ce7b017bf1cf3	
 	Sent message with MessageID = 98a39664995b4f74b32e2a0ecccc46bb
 	Sent message with MessageID = acbca67f03c346de9b7893026f97ddeb
@@ -278,7 +278,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 #### JMS アプリケーションの出力
 
 	> java SimpleSenderReceiver	
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Received message with JMSMessageID = ID:d64e681a310a48a1ae0ce7b017bf1cf3
 	Received message with JMSMessageID = ID:98a39664995b4f74b32e2a0ecccc46bb
 	Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
@@ -316,4 +316,4 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
 
 [Service Bus キューの使用方法]: http://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/
 
-<!--HONumber=49-->
+<!--HONumber=47-->

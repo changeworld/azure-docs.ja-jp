@@ -38,7 +38,7 @@
 
 Azure の管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワード、および SSH 公開キー (任意) の入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、 'root' など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
 
- - 詳細については、「[Azure 上の Linux における SSH の使用方法](../linux-use-ssh-key/)」を参照してください。
+ - 詳細については、「[Azure 上の Linux における SSH の使用方法](linux-use-ssh-key.md)」を参照してください。
 
 
 ### <a id="keygeneration"></a>SSH 鍵の生成
@@ -92,14 +92,14 @@ Azure での仮想マシン インスタンスをデプロイする際に指定�
 
 **sudo -s** を使用して root シェルを取得することもできます。
 
-- 詳細については、「[Azure 上の Linux 仮想マシンでの root 権限の使用](../virtual-machines-linux-use-root-privileges/)」を参照してください。
+- 詳細については、「[Azure 上の Linux 仮想マシンでの root 権限の使用](virtual-machines-linux-use-root-privileges.md)」を参照してください。
 
 
 ## <a id="firewallconfiguration"></a>ファイアウォールの構成
 
 Azure では、管理ポータルで指定されたポートに接続を制限する受信パケット フィルターが用意されています。既定では、許可されている唯一のポートは SSH です。管理ポータルでエンドポイントを構成することで、Linux 仮想マシンの追加ポートへのアクセスを設定できます。
 
- - 参照:[仮想マシンに対してエンドポイントを設定する方法](../virtual-machines-set-up-endpoints/)
+ - 参照:[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)
 
 既定では、Azure ギャラリー内の Linux のイメージを使用して  *iptables* ファイアウォールを有効にすることはできません。必要があれば、このファイアウォールにフィルターを追加するように構成することはできます。
 
@@ -114,7 +114,7 @@ Azure では、管理ポータルで指定されたポートに接続を制限�
 
 Azure Linux エージェントには、この名前の変更を自動的に検出する機能、この変更を保持するように仮想マシンを正しく構成する機能、この変更をプラットフォーム DNS サーバーに公開する機能があります。
 
- - [Azure Linux エージェント ユーザー ガイド](../virtual-machines-linux-agent-user-guide/)
+ - [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
 ### Ubuntu イメージ
 Ubuntu イメージは、cloud-init を使用できます。cloud-init の追加機能を利用すると、仮想マシンをブートストラップすることができます。
@@ -132,7 +132,7 @@ Azure には、既存の仮想マシンの状態をイメージにキャプチ�
 
 3. 管理ポータルで  *Capture* をクリックするか、Powershell ツールまたは CLI ツールを使用して仮想マシンをイメージとしてキャプチャします。
 
- - 参照:[テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法](../virtual-machines-linux-capture-image/)
+ - 参照:[テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md)
 
 
 ## <a id="attachingdisks"></a>ディスクの接続
@@ -143,9 +143,9 @@ Linux では通常、リソース ディスクは Azure Linux エージェント
 
 	>[AZURE.NOTE] リソース ディスクは**一時**ディスクであるため、仮想マシンが再起動されると削除され再フォーマットされることに注意してください。
 
-Linux では、データ ディスクはカーネルによって  `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。詳細な手順については、チュートリアル「[データ ディスクを仮想マシンに接続する方法](../virtual-machines-linux-how-to-attach-disk/)。
+Linux では、データ ディスクはカーネルによって  `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。詳細な手順については、チュートリアル「[データ ディスクを仮想マシンに接続する方法](virtual-machines-linux-how-to-attach-disk.md)。
 
- - 関連項目:[Linux でのソフトウェア RAID の構成](../virtual-machines-linux-configure-raid/)
+ - 関連項目:[Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
 
 

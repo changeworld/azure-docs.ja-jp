@@ -31,7 +31,7 @@
 
 ## エンゲージメントの概念
 
-次のパートでは、iOS プラットフォームの一般的な [モバイル エンゲージメントの概念](../mobile-engagement-concepts/) について説明します。
+次のパートでは、iOS プラットフォームの一般的な [モバイル エンゲージメントの概念](mobile-engagement-concepts.md) について説明します。
 
 ### `Session`と `Activity`
 

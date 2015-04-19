@@ -339,8 +339,8 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 3 つの Web ホスティング方法の詳細については、次のリソースをご覧ください。
 
-* [Microsoft Azure の概要](../fundamentals-introduction-to-azure/)
-* [Azure が提供するコンピューティング ホスティング オプション](../fundamentals-application-models/)
+* [Microsoft Azure の概要](fundamentals-introduction-to-azure.md)
+* [Azure が提供するコンピューティング ホスティング オプション](fundamentals-application-models.md)
 
 アプリケーションに使用するホスティング方法が決まったら、次のリソースで基本事項をご確認ください。
 

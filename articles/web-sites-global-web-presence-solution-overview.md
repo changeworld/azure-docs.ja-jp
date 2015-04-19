@@ -90,7 +90,7 @@ Web サイトの現在のパフォーマンス メトリックの[概要]と Azu
 ## その他のリソース
 
 - [Azure の Web サイトのドキュメント](/ja-jp/documentation/services/websites/)
-- [Azure Web サイトのラーニング マップ](/ja-jp/documentation/articles/websites-learning-map/)
+- [Azure Web サイトのラーニング マップ](websites-learning-map.md)
 - [Azure の Web ブログ](/blog/topics/web/)
 
 

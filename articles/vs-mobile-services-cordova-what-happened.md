@@ -17,8 +17,8 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [作業の開始](/documentation/articles/vs-mobile-services-cordova-getting-started/)
-> - [変更内容](/documentation/articles/vs-mobile-services-cordova-what-happened/)
+> - [作業の開始](vs-mobile-services-cordova-getting-started.md)
+> - [変更内容](vs-mobile-services-cordova-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
 

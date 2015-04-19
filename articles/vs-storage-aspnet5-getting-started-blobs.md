@@ -17,15 +17,15 @@
 	ms.author="kempb"/>
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
-> - [変更内容](/documentation/articles/vs-storage-aspnet5-what-happened/)
+> - [Getting Started (概要)](vs-storage-aspnet5-getting-started-blobs.md)
+> - [変更内容](vs-storage-aspnet5-what-happened.md)
 
 ## Azure Storage の使用 (ASP.NET 5 プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [BLOB](/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
-> - [キュー](/documentation/articles/vs-storage-aspnet5-getting-started-queues/)
-> - [テーブル](/documentation/articles/vs-storage-aspnet5-getting-started-tables/)
+> - [BLOB](vs-storage-aspnet5-getting-started-blobs.md)
+> - [キュー](vs-storage-aspnet5-getting-started-queues.md)
+> - [テーブル](vs-storage-aspnet5-getting-started-tables.md)
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 

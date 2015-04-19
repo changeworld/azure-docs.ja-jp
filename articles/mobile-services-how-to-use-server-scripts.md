@@ -232,7 +232,7 @@ Mobile Services は、テーブルの**ID** 列で一意のカスタム文字列
 +  印刷可能文字:**"**(0x0022)、**\+** (0x002B)、**/** (0x002F)、**?**(0x003F)、**\\** (0x005C)、**`** (0x0060)
 +  ID "." と ".."
 
-また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、 `mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[Mobile Services テーブルの管理用コマンド](/documentation/articles/virtual-machines-command-line-tools/#Mobile_Tables)」をご覧ください。
+また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、 `mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[Mobile Services テーブルの管理用コマンド](virtual-machines-command-line-tools.md/#Mobile_Tables)」をご覧ください。
 
 
 ### <a name="access-headers"></a>方法:カスタム パラメーターにアクセスする

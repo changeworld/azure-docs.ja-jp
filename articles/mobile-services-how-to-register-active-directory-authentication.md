@@ -24,7 +24,7 @@
 
 ## アプリを登録する
 
->[AZURE.NOTE] このトピックで説明する手順は、アプリで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/)」 と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory と .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、チュートリアル「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/)」に従ってください。
+>[AZURE.NOTE] このトピックで説明する手順は、アプリで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)」 と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory と .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、チュートリアル「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](mobile-services-windows-store-dotnet-adal-sso-authentication.md)」に従ってください。
 
 
 1. [Azure 管理ポータル]にログオンし、**[Mobile Services]** をクリックして、目的のモバイル サービスをクリックします。

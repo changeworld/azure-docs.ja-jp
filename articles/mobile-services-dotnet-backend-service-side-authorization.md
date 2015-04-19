@@ -17,8 +17,8 @@
 # モバイル サービスでのユーザーのサービス側承認
 
 > [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(任意 | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-service-side-authorization/)
-- [(任意 | Javascript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-service-side-authorization/)
+- [(任意 | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
+- [(任意 | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
 
 このトピックでは、サーバー側ロジックを使用してユーザーを承認する方法を説明します。このチュートリアルでは、.NET でデータ アクセス メソッドを変更して、ユーザー ID に基づいてクエリをフィルター処理し、ユーザーが自分のデータのみにアクセスできるようにします。
 
@@ -30,7 +30,7 @@
 
 		public string UserId { get; set; }
 
-	>[AZURE.NOTE] このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations) を使用する必要があります。
+	>[AZURE.NOTE] このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md) を使用する必要があります。
 
 2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs**　を開きます。**PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。このコードでは、TodoItem テーブルに挿入される前に、項目に、認証済みユーザーのユーザー ID を追加します。
 

@@ -20,7 +20,7 @@
 
 このガイドは、Azure キュー ストレージ サービスで Azure の Web ジョブ SDK のバージョン 1.x を使用する方法を示す c# コード サンプルについて説明します。
 
-このガイドでは、読者に[ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法](../websites-dotnet-webjobs-sdk-get-started/)についての知識があることを前提に説明します。
+このガイドでは、読者に[ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)についての知識があることを前提に説明します。
 
 ほとんどのコード スニペットは、この例のように  `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。 
 
@@ -294,7 +294,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 
 ## <a id="blobs"></a> キュー メッセージの処理中に Blob とテーブルを読み書きする方法
 
- `Blob` および  `Table` 属性によって、BLOB とテーブルの読み書きが可能になりますこのセクションのサンプルでは、Blob に適用されます。Blob が作成または更新されるときにプロセスを開始する方法を示すコード サンプルについては、「[Azure Web ジョブ SDK を使用して Azure BLOB ストレージを使用する方法](../websites-dotnet-webjobs-sdk-storage-blobs-how-to/)」、およびテーブルを読み書きするコード サンプルについては、「[Web ジョブ SDK で Azure テーブル ストレージを使用する方法](../websites-dotnet-webjobs-sdk-storage-tables-how-to/)」をご覧ください。
+ `Blob` および  `Table` 属性によって、BLOB とテーブルの読み書きが可能になりますこのセクションのサンプルでは、Blob に適用されます。Blob が作成または更新されるときにプロセスを開始する方法を示すコード サンプルについては、「[Azure Web ジョブ SDK を使用して Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」、およびテーブルを読み書きするコード サンプルについては、「[Web ジョブ SDK で Azure テーブル ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」をご覧ください。
 
 ### Blob の操作をトリガーする文字列のキュー メッセージ
 
@@ -310,7 +310,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 		    blobInput.CopyTo(blobOutput, 4096);
 		}
 
- `Blob` 属性コンストラクターは、コンテナーと blob の名前を指定する  `blobPath` パラメーターを受け取ります。このプレース ホルダーの詳細については、「[Web ジョブ SDK での Azure blob ストレージを使用する方法](../websites-dotnet-webjobs-sdk-storage-blobs-how-to/), 」をご覧ください。
+ `Blob` 属性コンストラクターは、コンテナーと blob の名前を指定する  `blobPath` パラメーターを受け取ります。このプレース ホルダーの詳細については、「[Web ジョブ SDK での Azure blob ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), 」をご覧ください。
 
 属性が  `Stream` オブジェクトを修飾すると、もう 1 つのコンストラクターのパラメーターが読み取り、書き込み、または読み取り/書き込みモードとして  `FileAccess` モードを指定します。 
 

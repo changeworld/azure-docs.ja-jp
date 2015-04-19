@@ -174,7 +174,7 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 * Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] をご覧ください。
 
 ##<a name="seealso"></a>関連項目
-* [Azure から音声および SMS 機能に Twilio を使用する方法](../twilio-dotnet-how-to-use-for-voice-sms/)
+* [Azure から音声および SMS 機能に Twilio を使用する方法](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_pricing]: http://www.twilio.com/pricing
 [try_twilio]: http://www.twilio.com/try-twilio

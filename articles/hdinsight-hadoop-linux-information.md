@@ -125,9 +125,9 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 ##次のステップ
 
-* [HDInsight での Hive の使用](../hdinsight-use-hive/)
-* [HDInsight での Pig の使用](../hdinsight-use-pig/)
-* [HDInsight での MapReduce ジョブの使用](../hdinsight-use-mapreduce)
+* [HDInsight での Hive の使用](hdinsight-use-hive.md)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
 
 <!--HONumber=47-->

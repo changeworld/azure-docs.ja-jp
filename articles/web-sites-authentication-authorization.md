@@ -39,7 +39,7 @@
 	-	Azure AD は、[証明書利用者](http://en.wikipedia.org/wiki/Relying_party)アプリケーションの管理を管理者以外のロールに委任します。一方、機密性の高いディレクトリ データにアクセスするアプリケーションは、引き続きグローバル管理者が構成する必要があります。
 	-	すべての証明書利用者アプリケーションに対して、汎用的な一連の要求タイプを送信します。要求タイプの一覧については、「[サポートされている要求タイプおよびトークン](」を参照してください。http://msdn.microsoft.com/library/azure/dn195587.aspx)要求はカスタマイズできません。
 	-	[Azure AD Graph API](http://msdn.microsoft.com/library/azure/hh974476.aspx) アプリケーションは、Azure AD のディレクトリ データにアクセスできるようになります。
--	[AD FS などの内部設置型のセキュリティ トークン サービス (STS)](../web-sites-dotnet-lob-application-adfs/) -AD FS のような内部設置型の STS で、Web アプリの認証と承認を実装できます。内部設置型の AD FS を使用することには、次の特性があります。
+-	[AD FS などの内部設置型のセキュリティ トークン サービス (STS)](web-sites-dotnet-lob-application-adfs.md) -AD FS のような内部設置型の STS で、Web アプリの認証と承認を実装できます。内部設置型の AD FS を使用することには、次の特性があります。
 	-	AD FS トポロジは、社内にデプロイする必要があり、コストと管理のオーバーヘッドが伴います。
 	-	会社のポリシーによって、AD データを社内に保存することが要求される場合に最適です。
 	-	AD FS 管理者のみが、[証明書利用者の信頼および要求規則を構成できます。](http://technet.microsoft.com/library/dd807108.aspx)

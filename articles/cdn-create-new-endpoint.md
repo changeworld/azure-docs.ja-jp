@@ -36,6 +36,6 @@
 > 注:エンドポイントのために作成された構成は、すぐには使用できません。CDN ネットワークを通じて伝播する登録などのために最大 60 分かかります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 400 (正しくない要求) を受け取る場合があります。
 
 #関連項目
-[カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](./cdn-map-content-to-custom-domain.md)
+[カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](cdn-map-content-to-custom-domain.md)
 
 <!--HONumber=49-->

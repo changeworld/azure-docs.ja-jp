@@ -28,7 +28,7 @@
 + [登録の前にログインするようにアプリケーションを更新する]
 + [アプリケーションをテストする]
  
-このチュートリアルが対象とするのは、Windows Phone 8.0 および Windows Phone 8.1 ("Silverlight") のアプリケーションです。Windows Phone 8.1 ストア アプリについては、[このトピックの Windows ストア バージョン](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users)を参照してください。
+このチュートリアルが対象とするのは、Windows Phone 8.0 および Windows Phone 8.1 ("Silverlight") のアプリケーションです。Windows Phone 8.1 ストア アプリについては、[このトピックの Windows ストア バージョン](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md)を参照してください。
 
 ##前提条件 
 

@@ -24,7 +24,7 @@
 
 > Azure ファイル サービスは、現時点では Storage Analytics をサポートしていません。
 
-> Storage Analytics および他のツールを使用して、Azure Storage 関連の問題の特定、診断、およびトラブルシューティングを行う方法の詳細については、[Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Microsoft Azure Storage の監視、診断、およびトラブルシューティング)](../storage-monitoring-diagnosing-troubleshooting/)。
+> Storage Analytics および他のツールを使用して、Azure Storage 関連の問題の特定、診断、およびトラブルシューティングを行う方法の詳細については、[Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Microsoft Azure Storage の監視、診断、およびトラブルシューティング)](storage-monitoring-diagnosing-troubleshooting.md)。
 
 
 ##目次##

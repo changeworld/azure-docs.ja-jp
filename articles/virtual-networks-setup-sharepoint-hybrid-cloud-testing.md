@@ -45,7 +45,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 ## フェーズ 1:ハイブリッド クラウド環境を設定する
 
-「[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)」のトピックにある手順に従います 。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
+「[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)」のトピックにある手順に従います 。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
 
 現在の構成は次のようになります。
 
@@ -195,13 +195,13 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 [Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
 
-[SharePoint Server Farm](../virtual-machines-sharepoint-farm-azure-preview/)
+[SharePoint Server Farm](virtual-machines-sharepoint-farm-azure-preview.md)
 
-[テスト用のハイブリッド クラウド環境の設定](../virtual-networks-setup-hybrid-cloud-environment-testing/)
+[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-networks-setup-lobapp-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
 
-[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](../virtual-networks-setup-dirsync-hybrid-cloud-testing/)
+[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
 
-[テスト用のシミュレートされたハイブリッド クラウド環境の設定](../virtual-networks-setup-simulated-hybrid-cloud-environment-testing/)
+[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
 <!--HONumber=47-->

@@ -18,7 +18,7 @@
 
 #Windows Phone にエンゲージメント API を使用する方法
 
-このドキュメントは、[Windows Phone アプリにモバイル サービスを統合する方法](../mobile-engagement-windows-phone-integrate-engagement/) の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
+このドキュメントは、[Windows Phone アプリにモバイル サービスを統合する方法](mobile-engagement-windows-phone-integrate-engagement.md) の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
 エンゲージメントでアプリケーションのセッション、アクティビティ、クラッシュ、技術情報についてのみ報告する場合は、すべての  `PhoneApplicationPage` サブクラスを  `EngagementPage` クラスから継承するのが最も簡単な方法です。
 

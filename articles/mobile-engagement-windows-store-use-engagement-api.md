@@ -18,7 +18,7 @@
 
 # Windows でエンゲージメント API を使用する方法
 
-このドキュメントは、ドキュメント[How to Integrate Engagement on Windows (Windows でエンゲージメントを統合する方法)](../mobile-engagement-windows-store-integrate-engagement/)のアドオンです。エンゲージメントを使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
+このドキュメントは、ドキュメント[How to Integrate Engagement on Windows (Windows でエンゲージメントを統合する方法)](mobile-engagement-windows-store-integrate-engagement.md)のアドオンです。エンゲージメントを使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
 
 アプリケーションのセッション、アクティビティ、クラッシュ、技術情報を報告するエンゲージメントのみが必要な場合、最も簡単な方法はすべての  `Page` サブクラスが  `EngagementPage` クラスから継承されるようにすることです。
 
@@ -30,7 +30,7 @@
 
 ## エンゲージメントの概念
 
-次のパートは、Windows プラットフォームの一般的な[モバイル エンゲージメントの概念](../mobile-engagement-concepts/) を改善するものです。
+次のパートは、Windows プラットフォームの一般的な[モバイル エンゲージメントの概念](mobile-engagement-concepts.md) を改善するものです。
 
 ### `Session` と  `Activity`
 

@@ -132,7 +132,7 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 
 [ストレージ アカウントとは](storage-whatis-account.md
 
-[方法:ストレージ アカウントを作成する](../storage-create-storage-account/)
+[方法:ストレージ アカウントを作成する](storage-create-storage-account.md)
 
 [ストレージ アカウントの監視方法](storage-monitor-storage-account.md)
 

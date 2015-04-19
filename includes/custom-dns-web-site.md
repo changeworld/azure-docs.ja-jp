@@ -301,8 +301,8 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 [digweb]: http://www.digwebinterface.com/
 [cloudservicedns]: ../custom-dns/
 [trafficmanager]: /ja-jp/documentation/articles/web-sites-traffic-manager/
-[addendpoint]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744839.aspx
-[createprofile]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn339012.aspx
+[addendpoint]: http://msdn.microsoft.com/library/windowsazure/hh744839.aspx
+[createprofile]: http://msdn.microsoft.com/library/windowsazure/dn339012.aspx
 
 <!-- images -->
 

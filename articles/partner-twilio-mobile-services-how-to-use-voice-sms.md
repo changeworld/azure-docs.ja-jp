@@ -72,14 +72,14 @@ Twilio アカウントを取得する準備ができたら、[Twilio のサイ�
 Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント ID と認証トークンは、[Twilio アカウント ページ ][twilio_account] の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
 <h2><a id="create_app"></a>モバイル サービスの作成</h2>
-Twilio 対応のアプリケーションをホストするモバイル サービスには、他のモバイル サービスとの違いはありません。モバイル サービス カスタム API スクリプトから参照するために、Twilio node.js ライブラリを単に追加します。最初のモバイル サービスの作成方法の詳細については、「[Mobile Services の使用](/ja-jp/documentation/articles/mobile-services-ios-get-started/)」をご覧ください。
+Twilio 対応のアプリケーションをホストするモバイル サービスには、他のモバイル サービスとの違いはありません。モバイル サービス カスタム API スクリプトから参照するために、Twilio node.js ライブラリを単に追加します。最初のモバイル サービスの作成方法の詳細については、「[Mobile Services の使用](mobile-services-ios-get-started.md)」をご覧ください。
 
 <h2><a id="ConfigureMobileService"></a>Twilio Node.js ライブラリを使用するためのモバイル サービスの構成</h2>
 Twilio は、Node.js ライブラリを提供します。このライブラリは、Twilio のさまざまな側面をラップし、Twilio REST API および Twilio Client と対話して TwiML 応答を生成するためのシンプルで簡単な方法を提供します。
 
 モバイル サービスで Twilio node.js ライブラリを使用するには、モバイル サービス npm モジュールのサポートを利用する必要があります。そのためには、スクリプトをソース管理に格納します。 
 
-1. チュートリアル「[ソース管理へのスクリプトの保存](/ja-jp/documentation/articles/mobile-services-store-scripts-source-control/)」を完了します。このチュートリアルでは、モバイル サービスのソース管理を設定し、Git リポジトリにサーバー スクリプトを格納する方法について説明しています。
+1. チュートリアル「[ソース管理へのスクリプトの保存](mobile-services-store-scripts-source-control.md)」を完了します。このチュートリアルでは、モバイル サービスのソース管理を設定し、Git リポジトリにサーバー スクリプトを格納する方法について説明しています。
 
 2. Mobile Service のソース管理を設定した後、ローカル コンピューターでリポジトリを開き、 `\services` サブフォルダーを参照します。次に、テキスト エディターで package.json ファイルを開いて次のフィールドを **dependencies** オブジェクトに追加します。
 

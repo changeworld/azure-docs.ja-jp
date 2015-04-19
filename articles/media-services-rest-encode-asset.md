@@ -19,7 +19,7 @@
 
 #Azure メディア エンコーダーを使用してアセットをエンコードする方法
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。 
 
 ##概要
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客の端末でうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
@@ -32,9 +32,9 @@
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](../media-services-rest-how-to-use)」をご覧ください。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](media-services-rest-how-to-use.md)」をご覧ください。
 
->https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>https://media.windows.net に正常に接続されると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
 次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Azure メディア エンコーダーでエンコードするときは、[こちら](https://msdn.microsoft.com/library/azure/dn619389.aspx)で指定されているタスク構成のプリセットを使うことができます。
@@ -110,7 +110,7 @@
 
 
 ##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、「[方法: ジョブの進行状況をチェックする](../media-services-rest-check-job-progress/) 」に進みます。
+これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、「[方法: ジョブの進行状況をチェックする](media-services-rest-check-job-progress.md) 」に進みます。
 
 [Azure Marketplace]: https://datamarket.azure.com/
 [エンコーダー プリセット]: http://msdn.microsoft.com/library/dn619392.aspx

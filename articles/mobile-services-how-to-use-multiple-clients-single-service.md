@@ -46,7 +46,7 @@
 
 .NET バックエンド モバイル サービスでは、[ApiServices.Push](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.apiservices.push.aspx) プロパティから取得した [PushClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.pushclient.aspx) オブジェクトで [SendAsync] メソッドを呼び出して通知を送信します。送信したプッシュ通知 (ネイティブまたはテンプレート) は次のテーブルで示すように、[SendAsync] メソッドに渡された特定の [IPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.notifications.ipushmessage.aspx) 派生オブジェクトによって異なります。 
 
-|プラットフォーム |[APNS](/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push)|[GCM](/documentation/articles/mobile-services-dotnet-backend-android-get-started-push) |[WNS](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) |[MPNS](/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push)|
+|プラットフォーム |[APNS](mobile-services-dotnet-backend-ios-get-started-push.md)|[GCM](mobile-services-dotnet-backend-android-get-started-push.md) |[WNS](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md) |[MPNS](mobile-services-dotnet-backend-windows-phone-get-started-push.md)|
 |-----|-----|----|----|-----|
 |ネイティブ|[ApplePushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.applepushmessage.aspx)   |[GooglePushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.googlepushmessage.aspx)     |[WindowsPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.windowspushmessage.aspx) | [MpnsPushMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.mpnspushmessage.aspx) |
 
@@ -81,7 +81,7 @@
 
 JavaScript バックエンド モバイル サービスでは、次のテーブルで示すようにグローバル [push オブジェクト]から取得したプラットフォーム固有のオブジェクト上で **send** メソッドを呼び出して通知を送信します。 
 
-|プラットフォーム |[APNS](/documentation/articles/mobile-services-javascript-backend-ios-get-started-push)|[GCM](/documentation/articles/mobile-services-javascript-backend-android-get-started-push) |[WNS](/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push) |[MPNS](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)|
+|プラットフォーム |[APNS](mobile-services-javascript-backend-ios-get-started-push.md)|[GCM](mobile-services-javascript-backend-android-get-started-push.md) |[WNS](mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) |[MPNS](mobile-services-javascript-backend-windows-phone-get-started-push.md)|
 |-----|-----|----|----|-----|
 |ネイティブ|[apns オブジェクト](http://msdn.microsoft.com/library/azure/jj839711.aspx)   |[gcm オブジェクト](http://msdn.microsoft.com/library/azure/dn126137.aspx)     |[wns オブジェクト](http://msdn.microsoft.com/library/azure/jj860484.aspx) | [mpns オブジェクト](http://msdn.microsoft.com/library/azure/jj871025.aspx) |
 
@@ -162,7 +162,7 @@ JavaScript バックエンド モバイル サービスでは、次のテーブ�
 
 Visual Studio 2013 Update 2 ではユニバーサル Windows アプリ プロジェクトのサポートが追加されました。ユニバーサル アプリは Windows ストア8.1 と Windows Phone Store 8.1 アプリ プロジェクトの両方に、共有コード プロジェクトとともに含まれるソリューションです。この種のプロジェクトでは、共有コードは Windows ストア と Windows Phone プロジェクトの両方の一部として処理されます。詳細については、「[すべての Windows デバイスを対象としたユニバーサル Windows アプリの構築]」をご覧ください。ユニバーサル Windows アプリは C#/XAML と JavaScript/HTML の両方で書き込むことができます。 
 
-既定では、[Azure 管理ポータル]の [モバイル サービス クイックスタート] タブで開始用の TodoList サンプル アプリのユニバーサル Windows アプリ バージョンが生成されます。ダウンロードするプロジェクトのバージョンは C#/XAML または C#/XAML のいずれかから選択できます。詳細については、「[Mobile Services の使用](/documentation/articles/mobile-services-windows-store-get-started/)」をご覧ください。 
+既定では、[Azure 管理ポータル]の [モバイル サービス クイックスタート] タブで開始用の TodoList サンプル アプリのユニバーサル Windows アプリ バージョンが生成されます。ダウンロードするプロジェクトのバージョンは C#/XAML または C#/XAML のいずれかから選択できます。詳細については、「[Mobile Services の使用](mobile-services-windows-store-get-started.md)」をご覧ください。 
 
 >[AZURE.NOTE]ポータルからのクイックスタート アプリ プロジェクトの C# バージョンは、MainPage.xaml.cs コード ビハインド ページを共有しますが、ビュー モデルは使用しません。C# のユニバーサル アプリ プロジェクトとして MVVM を使用する TodoList アプリの例は、[MVVM を使用した Azure Mobile Services のユニバーサル Windows アプリ プロジェクト]に関するページをご覧ください。 
 
@@ -170,7 +170,7 @@ Visual Studio 2013 Update 2 ではユニバーサル Windows アプリ プロジ
 
 Visual Studio と C# 開発経験を活用し、Xamarin と Visual Studio または Xamarin Studio を使用して iOS と Android 向けのアプリを開発できます。Xamarin では .NET Framework のクロスプラットフォーム実装を使用するため、C# コードで iOS と Android アプリを開発できます。Xamarin を使用すると、モバイル サービス NET クライアント ライブラリを使用した プロジェクトから既存のコードを活用してモバイル サービスにアクセスできます。詳細については、「[Visual Studio でのクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」をご覧ください。
 
-モバイル サービスを使用する Xamarin アプリの構築を開始するには、「Xamarin クイックスタート チュートリアル ([iOS](/documentation/articles/partner-xamarin-mobile-services-ios-get-started) / [Android](/documentation/articles/partner-xamarin-mobile-services-android-get-started)))」をご覧ください。
+モバイル サービスを使用する Xamarin アプリの構築を開始するには、「Xamarin クイックスタート チュートリアル ([iOS](partner-xamarin-mobile-services-ios-get-started.md) / [Android](partner-xamarin-mobile-services-android-get-started.md)))」をご覧ください。
 
 
 ### Windows ストアと Windows Phone Silverlight アプリ

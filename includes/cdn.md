@@ -1,10 +1,10 @@
-﻿# Azure 用 CDN の使用
+# Azure 用 CDN の使用
 
 Azure コンテンツ配信ネットワーク (CDN) は、
 高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。
 そのために、コンピューティング インスタンスの BLOB および静的コンテンツを米国、
 ヨーロッパ、アジア、オーストラリア、および南米の物理ノードにキャッシュします。現在の CDN ノードの場所の一覧
-については、Azure CDN ノードの場所に関するページを参照してください[]。
+[については、Azure CDN ノードの場所に関するページを参照してください][]。
 
 このタスクの手順は次のとおりです。
 
@@ -18,7 +18,7 @@ CDN を使用して Azure データをキャッシュすることには、次の
 -   コンテンツ ソースから遠く離れた場所にいる、コンテンツの読み込みに数多くの 'internet trips'が必要なアプリケーションを使用するエンド ユーザーに対する、パフォーマンスとユーザー エクスペリエンスの向上
 -   製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型の配信スケール
 
-既存の CDN のお客様は、[Azure 管理ポータル]で Azure CDN を使用できます。CDN はサブスクリプションのアドオン機能であり、別の[お支払いプラン]があります。
+既存の CDN のお客様は、[Azure 管理ポータル][]で Azure CDN を使用できます。CDN はサブスクリプションのアドオン機能であり、別の[お支払いプラン]があります。
 
 <a id="Step1"> </a>
 <h2>手順 1:ストレージ アカウントを作成する</h2>
@@ -138,8 +138,8 @@ CDN エンドポイントがまだ有効で、
 -   [CDN コンテンツをカスタム ドメインにマッピングする方法]
 
   [ストレージ アカウントを作成する]: http://msdn.microsoft.com/library/windowsazure/hh264518.aspx
-  [Azure CDN ノードの場所]: http://msdn.microsoft.com/library/windowsazure/gg680302.aspx
-  [Azure 管理ポータル]:: https://manage.windowsazure.com/
+  [については、Azure CDN ノードの場所に関するページを参照してください]: http://msdn.microsoft.com/library/windowsazure/gg680302.aspx
+  [Azure 管理ポータル]: https://manage.windowsazure.com/
   [お支払いプラン]: /pricing/calculator/?scenario=full
   [カスタム サブドメイン名を登録して Azure の BLOB にアクセスする方法]: http://msdn.microsoft.com/library/windowsazure/ee795179.aspx
   [Azure でアフィニティ グループを作成する方法]: http://msdn.microsoft.com/library/azure/ee460798.aspx

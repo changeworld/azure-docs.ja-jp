@@ -21,7 +21,7 @@
 #動的暗号化:コンテンツ キー承認ポリシーを構成する 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)] 
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。 
 
 ##概要
 
@@ -29,7 +29,7 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 現時点では、HLS、MPEG DASH、スムーズ ストリーミングを暗号化できます。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
-メディア サービスでアセットを暗号化する場合は、[こちら]の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。(../media-services-dotnet-create-contentkey/)また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
+メディア サービスでアセットを暗号化する場合は、[こちら]の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。(media-services-dotnet-create-contentkey.md)また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
 
 プレーヤーがストリームを要求すると、メディア サービスは指定されたキーを使用して、AES か PlayReady でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
@@ -47,8 +47,8 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 ###以下の考慮事項があります。
 
-- 動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(../media-services-manage-origins#scale_streaming_endpoints)。 
-- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする]」をご覧ください(../media-services-encode-asset/)。  
+- 動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(media-services-manage-origins#scale_streaming_endpoints.md)。 
+- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする]」をご覧ください(media-services-encode-asset.md)。  
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、アセットをアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
@@ -393,6 +393,6 @@ PlayReady でコンテンツを保護する場合、承認ポリシーで、[Pla
 
 
 ##次のステップ
-これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)]」(../media-services-dotnet-configure-asset-delivery-policy/) トピックに進みます。
+これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)]」(media-services-dotnet-configure-asset-delivery-policy.md) トピックに進みます。
 
 <!--HONumber=47-->

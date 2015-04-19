@@ -17,17 +17,17 @@
 	ms.author="kapiteir" />
 
 #Azure モバイル エンゲージメント v2.0.0 向け Windows Phone SDK
-ここから Azure モバイル エンゲージメントを Windows Phone アプリに統合する方法の詳細についての説明を開始します。初めての方へ: こちらは [15 分間のチュートリアル](../mobile-engagement-windows-phone-get-started/)です。
+ここから Azure モバイル エンゲージメントを Windows Phone アプリに統合する方法の詳細についての説明を開始します。初めての方へ: こちらは [15 分間のチュートリアル](mobile-engagement-windows-phone-get-started.md)です。
 
-クリックして、[SDK コンテンツ](../mobile-engagement-windows-phone-sdk-content/)を表示する
+クリックして、[SDK コンテンツ](mobile-engagement-windows-phone-sdk-content.md)を表示する
 
 ##統合手順
 
-1. ここから開始します。[Windows Phone アプリにモバイル エンゲージメントを統合する方法](../mobile-engagement-windows-phone-integrate-engagement/)
+1. ここから開始します。[Windows Phone アプリにモバイル エンゲージメントを統合する方法](mobile-engagement-windows-phone-integrate-engagement.md)
 
-2. 通知:[Windows Phone アプリでリーチ (通知) を統合する方法](../mobile-engagement-windows-phone-integrate-engagement-reach/)
+2. 通知:[Windows Phone アプリでリーチ (通知) を統合する方法](mobile-engagement-windows-phone-integrate-engagement-reach.md)
 
-3. タグ付計画の実装:[Windows Phone アプリで高度なモバイル エンゲージメントのタグ付け API を使用する方法](../mobile-engagement-windows-phone-use-engagement-api/)
+3. タグ付計画の実装:[Windows Phone アプリで高度なモバイル エンゲージメントのタグ付け API を使用する方法](mobile-engagement-windows-phone-use-engagement-api.md)
 
 ##リリース ノート
 
@@ -36,7 +36,7 @@
 -   appId/sdkKey 構成は、接続文字列の構成で置き換えられます。
 -   セキュリティの強化。
 
-以前のバージョンについては、[完全なリリース ノート](../mobile-engagement-windows-phone-release-notes/) をご覧ください
+以前のバージョンについては、[完全なリリース ノート](mobile-engagement-windows-phone-release-notes.md) をご覧ください
 
 ##アップグレードの手順
 

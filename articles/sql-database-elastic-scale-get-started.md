@@ -26,7 +26,7 @@ Azure SQL データベースの Elastic Scale (プレビュー) は、業界標�
 
 Elastic Scale の機能の詳細については、「[Elastic Scale の概要](http://go.microsoft.com/?linkid=9862592)」をご覧ください。
 
-Elastic Scale のすべてのトピックの一覧については、「[Elastic Scale ドキュメント マップ](./sql-database-elastic-scale-documentation-map.md)」をご覧ください。
+Elastic Scale のすべてのトピックの一覧については、「[Elastic Scale ドキュメント マップ](sql-database-elastic-scale-documentation-map.md)」をご覧ください。
 
 ## Elastic Scale のサンプル アプリケーション
 
@@ -92,7 +92,7 @@ Elastic Scale ライブラリとサービス テンプレートは無料です�
 ## 次のステップ
 Elastic Scale の機能の詳細については、以下のページをご覧ください。
 
-* [Elastic Scale の学習ページ](./sql-database-elastic-scale-documentation-map.md) 
+* [Elastic Scale の学習ページ](sql-database-elastic-scale-documentation-map.md) 
 -    コード サンプル: 
     -    [Elastic Scale with Azure SQL Database - Getting Started (Azure SQL Database で使用する Elastic Scale - 概要)](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
     -    [Elastic Scale with Azure SQL Database - Integrating with Entity Framework (Azure SQL Database で使用する Elastic Scale - Entity Framework との統合)](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)

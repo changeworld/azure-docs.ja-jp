@@ -21,13 +21,13 @@
 #動的暗号化:コンテンツ キー承認ポリシーを構成する 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)] 
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。 
 
 ##概要
 
 Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。メディア サービスでは、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。 
 
-メディア サービスでアセットを暗号化する場合は、[こちら](../media-services-rest-create-contentkey/)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
+メディア サービスでアセットを暗号化する場合は、[こちら](media-services-rest-create-contentkey.md)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
 
 現時点では、HLS、MPEG DASH、スムーズ ストリーミングを暗号化できます。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
@@ -47,8 +47,8 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 ###以下の考慮事項があります。
 
-- 動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services-manage-origins#scale_streaming_endpoints)」をご覧ください。 
-- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする](../media-services-encode-asset/)」をご覧ください。  
+- 動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins#scale_streaming_endpoints.md)」をご覧ください。 
+- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする](media-services-encode-asset.md)」をご覧ください。  
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、アセットをアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
@@ -59,9 +59,9 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(../media-services-rest-how-to-use)。
+>メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)]」をご覧ください(media-services-rest-how-to-use.md)。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](../media-services-rest-connect_programmatically/)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
 ###オープン制限
@@ -486,7 +486,7 @@ AuthorizationPolicy を ContentKey に追加します ([ここ](#AddAuthorizatio
 
 
 ##次のステップ
-これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)](../media-services-rest-configure-asset-delivery-policy/)」 トピックに進みます。
+これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)](media-services-rest-configure-asset-delivery-policy.md)」 トピックに進みます。
 
 
 <!--HONumber=47-->

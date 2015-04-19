@@ -368,8 +368,8 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure CLI]: http://azure.microsoft.com/documentation/articles/xplat-cli/
 [Azure CLI command reference (Azure CLI コマンド リファレンス)]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/
 [認証用に SSH キーを作成]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
-[パフォーマンス チューニング戦略]: http://azure.microsoft.com/sv-se/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
-[Azure Linux VM 上で MySQL のパフォーマンスを最適化とテストする]:http://azure.microsoft.com/sv-se/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
+[パフォーマンス チューニング戦略]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
+[Azure Linux VM 上で MySQL のパフォーマンスを最適化とテストする]:http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
 [Azure CLI ツールの issue #1268]:https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 

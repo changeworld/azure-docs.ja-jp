@@ -65,7 +65,7 @@ Federations では、特定のフェデレーション メンバーへの接続�
 
     USE FEDERATION CustomerFederation(cid=100) WITH RESET, FILTERING=OFF`
 
-Elastic Scale API では、特定のシャードへの接続は、[データ依存ルーティング](./sql-database-elastic-scale-data-dependent-routing.md) を介して確立され、**RangeShardMap** クラスの **OpenConnectionForKey** メソッドが使用されます。 
+Elastic Scale API では、特定のシャードへの接続は、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md) を介して確立され、**RangeShardMap** クラスの **OpenConnectionForKey** メソッドが使用されます。 
 
     //Connect and issue queries on the shard with key=100 
     using (SqlConnection conn = rangeShardMap.OpenConnectionForKey(100, csb))  
@@ -82,7 +82,7 @@ Elastic Scale API では、特定のシャードへの接続は、[データ依�
         } 
     }
 
-このセクションのステップは実行する必要があるものですが、起こりうる移行シナリオによっては、適応しない場合があります。詳細については、[Elastic Scale の概念をまとめたページ](./sql-database-elastic-scale-introduction.md) と「[Class Library (クラス ライブラリ)](http://go.microsoft.com/?linkid=9862604)」をご覧ください。
+このセクションのステップは実行する必要があるものですが、起こりうる移行シナリオによっては、適応しない場合があります。詳細については、[Elastic Scale の概念をまとめたページ](sql-database-elastic-scale-introduction.md) と「[Class Library (クラス ライブラリ)](http://go.microsoft.com/?linkid=9862604)」をご覧ください。
 
 ## 既存のフェデレーション メンバーに対して SWITCH OUT を実行する 
 
@@ -103,7 +103,7 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 
 
 ## 機能の比較  
-Elastic Scale には数多くの機能がありますが ([マルチシャード クエリ実行](./sql-database-elastic-scale-multishard-querying.md)、[シャードの分割とマージ](./sql-database-elastic-scale-overview-split-and-merge.md)、[シャードの弾力性](./sql-database-elastic-scale-elasticity.md)、[クライアント側によるキャッシュ](./sql-database-elastic-scale-shard-map-management.md)など)、Federations には Elastic Scale ではサポートされない注目すべきいくつかの機能があります。
+Elastic Scale には数多くの機能がありますが ([マルチシャード クエリ実行](sql-database-elastic-scale-multishard-querying.md)、[シャードの分割とマージ](sql-database-elastic-scale-overview-split-and-merge.md)、[シャードの弾力性](sql-database-elastic-scale-elasticity.md)、[クライアント側によるキャッシュ](sql-database-elastic-scale-shard-map-management.md)など)、Federations には Elastic Scale ではサポートされない注目すべきいくつかの機能があります。
   
 
 - **FILTERING=ON** の使用。Elastic Scale では現在、行レベルのフィルタリングをサポートしていません。軽減策の 1 つとして、シャードに対して発行するクエリに、フィルタリング ロジックをビルドする次の方法があります。 

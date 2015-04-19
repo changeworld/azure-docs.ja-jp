@@ -119,7 +119,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 ## <a id="def"> </a>サービス定義ファイル
 
-既に述べたように、サービス定義 (CSDEF) ファイルはアプリケーション全体を構成するさまざまなロールが記述された XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758711.aspx][] を参照してください。CSDEF ファイルにはアプリケーションに必要な各ロールの WebRole または WorkerRole 要素が含まれます。(WebRole 要素を使って) ロールを Web ロールとしてデプロイした場合、コードは Windows Server 2008 とインターネット インフォメーション サービス (IIS) を含むロール インスタンスで実行されます。(WorkerRole 要素を使って) ロールを worker ロールとしてデプロイした場合、ロール インスタンスでは Windows Server 2008 が実行されます (IIS はインストールされません)。
+既に述べたように、サービス定義 (CSDEF) ファイルはアプリケーション全体を構成するさまざまなロールが記述された XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/library/windowsazure/ee758711.aspx][] を参照してください。CSDEF ファイルにはアプリケーションに必要な各ロールの WebRole または WorkerRole 要素が含まれます。(WebRole 要素を使って) ロールを Web ロールとしてデプロイした場合、コードは Windows Server 2008 とインターネット インフォメーション サービス (IIS) を含むロール インスタンスで実行されます。(WorkerRole 要素を使って) ロールを worker ロールとしてデプロイした場合、ロール インスタンスでは Windows Server 2008 が実行されます (IIS はインストールされません)。
 
 他のメカニズムを使用して受信 Web 要求をリッスンする worker ロールを作成してデプロイできます (コードで .NET HttpListener を作成して使用するなど)。どのロール インスタンスでも Windows Server 2008 が実行されるため、Windows Server 2008 で実行されるアプリケーションで問題なく利用できる処理であれば、コードで実行することができます。
 
@@ -282,9 +282,9 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 ## <a id="cfg"> </a>サービス構成ファイル
 
-サービス構成 (CSCFG) ファイルは、アプリケーションを再度デプロイしなくても変更できる設定が記述される XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx][] を参照してください。CSCFG ファイルには、アプリケーションの各ロールに対応する Role 要素が含まれています。CSCFG ファイルで指定できる項目のいくつかを次に示します。
+サービス構成 (CSCFG) ファイルは、アプリケーションを再度デプロイしなくても変更できる設定が記述される XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/library/windowsazure/ee758710.aspx][] を参照してください。CSCFG ファイルには、アプリケーションの各ロールに対応する Role 要素が含まれています。CSCFG ファイルで指定できる項目のいくつかを次に示します。
 
--   **OS バージョン**: この属性により、アプリケーション コードを実行するすべてのロール インスタンスに使用するオペレーティング システム (OS) バージョンを選択できます。この OS は*ゲスト OS* と呼ばれ、新しい各バージョンには、ゲスト OS のリリース時に入手可能な最新のセキュリティ修正プログラムと更新プログラムが含まれます。osVersion 属性値を "\*" に設定した場合、新しいゲスト OS バージョンが利用可能になると、各ロール インスタンスでゲスト OS が自動的に更新されます。ただし、特定のゲスト OS バージョンを選択することで、自動更新を避けることができます。たとえば、osVersion 属性を "WA-GUEST-OS-2.8\_201109-01" という値に設定すると、すべてのロール インスタンスが [http://msdn.microsoft.com/ja-jp/library/hh560567.aspx][] に記載されているものを取得します。ゲスト OS のバージョンの詳細については、「[Azure ゲスト OS リリースと SDK の互換性対応表]」を参照してください。
+-   **OS バージョン**: この属性により、アプリケーション コードを実行するすべてのロール インスタンスに使用するオペレーティング システム (OS) バージョンを選択できます。この OS は*ゲスト OS* と呼ばれ、新しい各バージョンには、ゲスト OS のリリース時に入手可能な最新のセキュリティ修正プログラムと更新プログラムが含まれます。osVersion 属性値を "\*" に設定した場合、新しいゲスト OS バージョンが利用可能になると、各ロール インスタンスでゲスト OS が自動的に更新されます。ただし、特定のゲスト OS バージョンを選択することで、自動更新を避けることができます。たとえば、osVersion 属性を "WA-GUEST-OS-2.8\_201109-01" という値に設定すると、すべてのロール インスタンスが [http://msdn.microsoft.com/library/hh560567.aspx][] に記載されているものを取得します。ゲスト OS のバージョンの詳細については、「[Azure ゲスト OS リリースと SDK の互換性対応表]」を参照してください。
 
 -   **インスタンス**: この要素の値は、特定のロール向けのコードを実行するためにプロビジョニングするロール インスタンスの数を示します。Azure にはアプリケーションを再度デプロイしなくても新しい CSCFG ファイルをアップロードできるため、簡単にこの要素の値を変更し、新しい CSCFG ファイルをアップロードして、アプリケーション コードを実行するロール インスタンスの数を動的に増減できます。そのため、実際に必要なワークロードに合わせてアプリケーションのスケール アップとスケール ダウンを簡単に行うことができるほか、ロール インスタンスの実行にかかるコストを管理できます。
 
@@ -335,17 +335,17 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
   [4]: ./media/application-model/application-model-7.jpg
   
   [Azure の料金]: http://www.windowsazure.com/ja-jp/pricing/calculator/
-  [証明書の管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg981929.aspx
-  [http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
-  [http://msdn.microsoft.com/ja-jp/library/hh560567.aspx]: http://msdn.microsoft.com/ja-jp/library/hh560567.aspx
-  [Azure ゲスト OS リリースと SDK の互換性対応表]: http://msdn.microsoft.com/ja-jp/library/ee924680.aspx
+  [証明書の管理]: http://msdn.microsoft.com/library/windowsazure/gg981929.aspx
+  [http://msdn.microsoft.com/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+  [http://msdn.microsoft.com/library/hh560567.aspx]: http://msdn.microsoft.com/library/hh560567.aspx
+  [Azure ゲスト OS リリースと SDK の互換性対応表]: http://msdn.microsoft.com/library/ee924680.aspx
   [Azure 管理ポータル]: http://manage.windowsazure.com/
   [5]: ./media/application-model/application-model-8.jpg
   [Deploying and Updating Azure Applications (Azure アプリケーションのデプロイと更新)]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/deploying-applications/
-  [Azure 対応のホステッド サービスの作成]: http://msdn.microsoft.com/ja-jp/library/gg432967.aspx
-  [Azure におけるホステッド サービスの管理]: http://msdn.microsoft.com/ja-jp/library/gg433038.aspx
-  [Azure へのアプリケーションの移行]: http://msdn.microsoft.com/ja-jp/library/gg186051.aspx
-  [Azure アプリケーションの構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405486.aspx
+  [Azure 対応のホステッド サービスの作成]: http://msdn.microsoft.com/library/gg432967.aspx
+  [Azure におけるホステッド サービスの管理]: http://msdn.microsoft.com/library/gg433038.aspx
+  [Azure へのアプリケーションの移行]: http://msdn.microsoft.com/library/gg186051.aspx
+  [Azure アプリケーションの構成]: http://msdn.microsoft.com/library/windowsazure/ee405486.aspx
 1.75 GB
 
 </td>
@@ -486,7 +486,7 @@ more useful items available to you:
 The service configuration (CSCFG) file is an XML file that describes
 settings that can be changed without redeploying your application. The
 complete schema for the XML file can be found here:
-[http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx][].
+[http://msdn.microsoft.com/library/windowsazure/ee758710.aspx][].
 The CSCFG file contains a Role element for each role in your
 application. Here are some of the items you can specify in the CSCFG
 file:
@@ -503,7 +503,7 @@ file:
     setting the osVersion attribute to a value of
     "WA-GUEST-OS-2.8\_201109-01" causes all your role instances to get
     what is described on this web page:
-    [http://msdn.microsoft.com/ja-jp/library/hh560567.aspx][]. For more
+    [http://msdn.microsoft.com/library/hh560567.aspx][]. For more
     information about guest OS versions, see [Managing Upgrades to the
     Azure Guests OS].
 
@@ -585,14 +585,14 @@ article.<a id="Ref" name="Ref"></a>
   [4]: ./media/application-model/application-model-7.jpg
   
   [Azure Pricing]: http://www.windowsazure.com/ja-jp/pricing/calculator/
-  [Managing Certificates in Azure]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg981929.aspx
-  [http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
-  [http://msdn.microsoft.com/ja-jp/library/hh560567.aspx]: http://msdn.microsoft.com/ja-jp/library/hh560567.aspx
-  [Managing Upgrades to the Azure Guests OS]: http://msdn.microsoft.com/ja-jp/library/ee924680.aspx
+  [Managing Certificates in Azure]: http://msdn.microsoft.com/library/windowsazure/gg981929.aspx
+  [http://msdn.microsoft.com/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+  [http://msdn.microsoft.com/library/hh560567.aspx]: http://msdn.microsoft.com/library/hh560567.aspx
+  [Managing Upgrades to the Azure Guests OS]: http://msdn.microsoft.com/library/ee924680.aspx
   [Azure Management Portal]: http://manage.windowsazure.com/
   [5]: ./media/application-model/application-model-8.jpg
   [Deploying and Updating Azure Applications]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/deploying-applications/
-  [Creating a Hosted Service for Azure]: http://msdn.microsoft.com/ja-jp/library/gg432967.aspx
-  [Managing Hosted Services in Azure]: http://msdn.microsoft.com/ja-jp/library/gg433038.aspx
-  [Migrating Applications to Azure]: http://msdn.microsoft.com/ja-jp/library/gg186051.aspx
-  [Configuring an Azure Application]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405486.aspx
+  [Creating a Hosted Service for Azure]: http://msdn.microsoft.com/library/gg432967.aspx
+  [Managing Hosted Services in Azure]: http://msdn.microsoft.com/library/gg433038.aspx
+  [Migrating Applications to Azure]: http://msdn.microsoft.com/library/gg186051.aspx
+  [Configuring an Azure Application]: http://msdn.microsoft.com/library/windowsazure/ee405486.aspx

@@ -63,7 +63,7 @@
 ## 次のステップ
 
  
-* [Azure での Linux とオープン ソース コンピューティング](../virtual-machines-linux-opensource/)
-* [Linux を実行する仮想マシンにログオンする方法](../virtual-machines-linux-how-to-log-on/)
+* [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
+* [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
 
 <!--HONumber=47-->

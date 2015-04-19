@@ -20,7 +20,7 @@
 
 この記事では、[Azure Websites](http://azure.microsoft.com/services/websites/) でオンプレミス [Active Directory フェデレーション サービス](http://technet.microsoft.com/library/hh831502.aspx)を ID プロバイダーとして使用して ASP.NET MVC 基幹業務 (LOB) アプリケーションを作成する方法について説明します。このシナリオは、すべてのデータがオンサイトに格納されることが求められる組織で Azure Websites を使用して LOB アプリケーションを作成する場合に適しています。
 
-Azure Websites の他のエンタープライズ認証および承認オプションの概要については、[Azure Websites での LOB アプリケーションのユーザーの認証と承認](./web-sites-authentication-authorization)に関するページを参照してください。
+Azure Websites の他のエンタープライズ認証および承認オプションの概要については、[Azure Websites での LOB アプリケーションのユーザーの認証と承認](web-sites-authentication-authorization)に関するページを参照してください。
 
 <a name="bkmk_build"></a>
 ## 学習内容 ##
@@ -341,8 +341,8 @@ Azure Websites では、[ハイブリッド接続](http://azure.microsoft.com/do
 ## 他の関連リソース
 
 - [SSL と Authorize 属性を使用してアプリケーションを保護する](../web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/#protect-the-application-with-ssl-and-the-authorize-attribute)
-- [Azure Websites の LOB アプリケーションでのユーザーの認証および承認](../web-sites-authentication-authorization/)に関するページ
-- [Azure Websites で Azure Active Directory を使用して認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する](../web-sites-dotnet-lob-application-azure-ad/)
+- [Azure Websites の LOB アプリケーションでのユーザーの認証および承認](web-sites-authentication-authorization.md)に関するページ
+- [Azure Websites で Azure Active Directory を使用して認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する](web-sites-dotnet-lob-application-azure-ad.md)
 - [Visual Studio 2013 で ASP.NET のオンプレミス組織認証オプション (ADFS) を使用する方法](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)に関するページ
 - [Vittorio Bertocci のブログ](http://blogs.msdn.com/b/vbertocci/)
 - [VS2013 Web プロジェクトを WIF から Katana に移植する方法](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)に関するページ

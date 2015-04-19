@@ -16,15 +16,14 @@
 	ms.date="02/02/2015" 
 	ms.author="kempb"/>
 
-# 認証の検出時のエラー
-
+###認証の検出時のエラー 
 ウィザードが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。   
 
 ###確認内容
 
 ####プロジェクトの種類
 
-ウィザードは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。プロジェクトに  `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。プロジェクトに  `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。それ以外は、ウィザードでサポートされていないと見なされます。WebForms プロジェクトは、現時点でサポートされません。
+ウィザードは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。プロジェクトに `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。プロジェクトに `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。それ以外は、ウィザードでサポートされていないと見なされます。WebForms プロジェクトは、現時点でサポートされません。
 
 #####互換性のある認証コード
 
@@ -52,7 +51,7 @@ MVC プロジェクトの場合、ウィザードは、以前にウィザード�
 * 組織アカウント 
  
 
-MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで  `authentication` 要素を探します。
+MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで "authentication" 要素を探します。
 
 <PRE class="prettyprint">
 	&lt;configuration&gt;
@@ -62,7 +61,7 @@ MVC プロジェクトで Windows 認証を検出するために、ウィザー�
 	&lt;/configuration&gt;
 </pre>
 
-Web API プロジェクトで Windows 認証を検出するために、ウィザードはプロジェクトの **.csproj** ファイルで  `IISExpressWindowsAuthentication` 要素を探します。
+Web API プロジェクトで Windows 認証を検出するために、ウィザードは **.csproj** ファイルで "IISExpressWindowsAuthentication" 要素を探します。
 
 <PRE class="prettyprint">
 	&lt;Project&gt;
@@ -80,7 +79,7 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 	&lt;/packages&gt;
 </PRE>
 
-組織アカウント認証の古い形式を検出するために、ウィザードは **web.config** ファイルで次の要素を探します:
+組織アカウント認証の古い形式を検出するために、ウィザードは **web.config** ファイルで次の要素を探します。
 
 <PRE class="prettyprint">
 	&lt;configuration*gt;
@@ -94,4 +93,4 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 
 詳細については、「[Azure AD の認証シナリオ](http://msdn.microsoft.com/library/azure/dn499820.aspx)」を参照してください。
 
-<!--HONumber=49-->
+<!--HONumber=46--> 

@@ -76,7 +76,7 @@
 
 [AZURE.INCLUDE [mobile-services-ios-run-app](../includes/mobile-services-ios-run-app.md)]
 
-これで、Azure で実行されているモバイル サービスに対して新しいクライアント アプリケーションを実行する方法が示されます。iOS アプリをローカル コンピューターで実行しているモバイル サービスでテストする前に、iOS 開発コンピューターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。詳細については、「[ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express).」を参照してください。
+これで、Azure で実行されているモバイル サービスに対して新しいクライアント アプリケーションを実行する方法が示されます。iOS アプリをローカル コンピューターで実行しているモバイル サービスでテストする前に、iOS 開発コンピューターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。詳細については、「[ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成](mobile-services-dotnet-backend-how-to-configure-iis-express.md).」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
