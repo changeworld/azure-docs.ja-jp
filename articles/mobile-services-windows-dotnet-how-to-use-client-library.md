@@ -756,4 +756,5 @@ Mobile Services はデータを検証してエラー応答をサーバー側に�
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
 
+
 <!--HONumber=42-->

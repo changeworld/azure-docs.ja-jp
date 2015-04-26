@@ -317,4 +317,5 @@
 [Graph Client Library]: http://go.microsoft.com/fwlink/?LinkId=510536
 [グループ メンバーシップの確認 (推移的)]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 
+
 <!--HONumber=42-->

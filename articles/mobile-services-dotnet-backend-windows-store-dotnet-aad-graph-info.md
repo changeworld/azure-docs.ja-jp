@@ -203,4 +203,5 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/
 
 
+
 <!--HONumber=42-->

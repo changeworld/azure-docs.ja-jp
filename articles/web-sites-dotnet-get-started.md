@@ -319,4 +319,5 @@
 	Azure では、このチュートリアルで示したように Websites で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行できます。詳細については、[Azure 実行モデル](/ja-jp/develop/net/fundamentals/compute/) と [Azure Websites、Cloud Services、および VMs: いつ、どれを使用するか?](/ja-jp/manage/services/web-sites/choose-web-app-service/) ご覧ください。
 
 
+
 <!--HONumber=42-->

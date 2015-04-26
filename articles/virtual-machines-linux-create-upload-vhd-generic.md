@@ -19,19 +19,19 @@
 
 # <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報 #
 
-**重要**:Azure プラットフォームの SLA は、[動作保証済みディストリビューション](../virtual-machines-linux-endorsed-distributions)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
+**重要**:Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-linux-endorsed-distributions.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
-- [Azure での動作保証済み Linux ディストリビューション](../virtual-machines-linux-endorsed-distributions)
+- [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distributions.md)
 - [マイクロソフト Azure での Linux のイメージのサポート](http://support2.microsoft.com/kb/2941892)
 
 Azure 上で動作するすべてのディストリビューションは、プラットフォーム上で適切に実行できるように、いくつかの前提条件を満たす必要があります。この記事は決して包括的なものではありません。前提条件はディストリビューションによって異なるためです。次に示している条件をすべて満たす場合でも、プラットフォーム上で適切に動作するように Linux システムを微調整する必要があります。
 
-この理由から、できるだけ [Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions)のいずれかで開始することをお勧めします。次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
+この理由から、できるだけ [Azure での動作保証済み Linux ディストリビューション](linux-endorsed-distributions.md)のいずれかで開始することをお勧めします。次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
 
-- **[CentOS ベースのディストリビューション](../virtual-machines-linux-create-upload-vhd-centos)**
-- **[Oracle Linux](../virtual-machines-linux-create-upload-vhd-oracle)**
-- **[SLES と openSUSE](../virtual-machines-linux-create-upload-vhd-suse)**
-- **[Ubuntu](../virtual-machines-linux-create-upload-vhd-ubuntu)**
+- **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-vhd-centos.md)**
+- **[Oracle Linux](virtual-machines-linux-create-upload-vhd-oracle.md)**
+- **[SLES と openSUSE](virtual-machines-linux-create-upload-vhd-suse.md)**
+- **[Ubuntu](virtual-machines-linux-create-upload-vhd-ubuntu.md)**
 
 以降では、Azure 上で Linux ディストリビューションを実行するための一般的なガイダンスについて、重点的に説明します。
 
@@ -40,7 +40,7 @@ Azure 上で動作するすべてのディストリビューションは、プ�
 
 - 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID](../virtual-machines-linux-configure-raid) をデータ ディスク上で使用できます。
+- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
 
 - さらに大きいサイズの VM では NUMA はサポートされていません。2.6.37 以下のバージョンの Linux カーネルにバグがあるためです。この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用したディストリビューションに影響します。Azure Linux エージェント (waagent) を手動でインストールすると、Linux カーネルの GRUB 構成で NUMA が自動的に無効になります。
 
@@ -103,7 +103,7 @@ Windows 環境で実行していない場合は、qemu-img を使用して変換
 
 ## Linux カーネルの要件 ##
 
-Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。最新の Linux カーネル バージョン (つまり 3.x) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](../linux-endorsed-distributions)を実行することをお勧めします。
+Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。最新の Linux カーネル バージョン (つまり 3.x) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](linux-endorsed-distributions.md)を実行することをお勧めします。
 
 Red Hat Enterprise Linux Version **6.0-6.3** の変形を実行する場合は、Hyper-V 用の最新の LIS ドライバーをインストールする必要があります。ドライバーは[この場所](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)にあります。RHEL **6.4 以上** (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、Azure 上でこれらのシステムを実行するために追加のインストール パッケージは必要ありません。
 
@@ -129,7 +129,7 @@ Red Hat Enterprise Linux Version **6.0-6.3** の変形を実行する場合は�
 
 ## Azure Linux エージェント ##
 
-[Azure Linux エージェント](../virtual-machines-linux-agent-user-guide) (waagent) は、Azure で Linux 仮想マシンを適切にプロビジョニングするために必要です。[Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、プル リクエストの提出が行うことができます。
+[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md) (waagent) は、Azure で Linux 仮想マシンを適切にプロビジョニングするために必要です。[Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、プル リクエストの提出が行うことができます。
 
 - Linux エージェントは、Apache 2.0 ライセンス下でリリースされています。数多くのディストリビューションでは、このエージェント用の RPM パッケージや deb パッケージを既に提供しているため、場合によっては、ほとんど労力をかけずにこのエージェントをインストールし、更新することができます。
 
@@ -158,7 +158,7 @@ Red Hat Enterprise Linux Version **6.0-6.3** の変形を実行する場合は�
 
 - Azure Linux エージェントをインストールします。
 
-	Azure Linux エージェントは、Azure で Linux イメージをプロビジョニングするために必要です。多くのディストリビューションでは、このエージェントを RPM または Deb パッケージとして提供しています (パッケージは、通常  'WALinuxAgent' または  'walinuxagent' と呼ばれます)。このエージェントは、[Linux エージェント ガイド](../virtual-machines-linux-agent-user-guide)の手順に従って手動でもインストールできます。
+	Azure Linux エージェントは、Azure で Linux イメージをプロビジョニングするために必要です。多くのディストリビューションでは、このエージェントを RPM または Deb パッケージとして提供しています (パッケージは、通常  'WALinuxAgent' または  'walinuxagent' と呼ばれます)。このエージェントは、[Linux エージェント ガイド](virtual-machines-linux-agent-user-guide.md)の手順に従って手動でもインストールできます。
 
 - SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
@@ -184,6 +184,7 @@ Red Hat Enterprise Linux Version **6.0-6.3** の変形を実行する場合は�
 		# logout
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
+
 
 
 <!--HONumber=42-->

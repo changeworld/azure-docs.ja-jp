@@ -145,4 +145,5 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [zookeeper]: http://zookeeper.apache.org/ 
+
 <!--HONumber=42-->

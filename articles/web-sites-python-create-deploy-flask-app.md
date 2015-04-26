@@ -23,7 +23,7 @@
 
 このチュートリアルでは、Azure Websites で Python を実行するための基本的な方法について説明します。Azure Web サイトでは、制限付きの無料のホスティングや迅速な展開を実行できます。また、Python も使用できます。アプリケーションの拡張に合わせて、有料のホスティングに切り替えることができます。また、他のすべての Azure サービスと統合することもできます。
 
-Flask Web フレームワークを使用して (このチュートリアルの [Django](../web-sites-python-create-deploy-django-app) と [Bottle] バージョンを参照(../web-sites-python-create-deploy-bottle-app)) 、アプリケーションを作成できます。Azure ギャラリーから Web サイトを作成し、Git デプロイを設定し、リポジトリをローカルで複製します。その後、ローカルでアプリケーションを実行し、変更を行い、それらをコミットして Azure に送信します。チュートリアルでは、Windows または Mac/Linux での手順を紹介します。
+Flask Web フレームワークを使用して (このチュートリアルの [Django](web-sites-python-create-deploy-django-app.md) と [Bottle] バージョンを参照(web-sites-python-create-deploy-bottle-app.md)) 、アプリケーションを作成できます。Azure ギャラリーから Web サイトを作成し、Git デプロイを設定し、リポジトリをローカルで複製します。その後、ローカルでアプリケーションを実行し、変更を行い、それらをコミットして Azure に送信します。チュートリアルでは、Windows または Mac/Linux での手順を紹介します。
 
 [AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
@@ -424,6 +424,7 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 <!--External Link references-->
 [Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation 
 [Flask のドキュメント]: http://flask.pocoo.org/ 
+
 
 
 <!--HONumber=42-->

@@ -120,8 +120,8 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 
 - [HDInsight クラスターに Spark 1.0 をインストールして使用する][hdinsight-install-spark]
 - [HDInsight Hadoop クラスターに R をインストールして使用する][hdinsight-r-scripts]
-- [HDInsight クラスターに Solr をインストールして使用する](../hdinsight-hadoop-solr-install) 
-- [HDInsight クラスターに Giraph をインストールして使用する](../hdinsight-hadoop-giraph-install)  
+- [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) 
+- [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)  
 
 > [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、[HDInsight クラスター バージョン](http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/)に関するページを参照してください。
 
@@ -214,4 +214,6 @@ Spark および R クラスターを使用する際、必要なデータ ファ�
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
 [powershell-install-configure]: ../install-configure-powershell/
-\<!--HONumber=42-->
+
+
+<!--HONumber=42-->

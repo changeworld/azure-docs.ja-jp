@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="既存のアプリへの Mobile Services の追加 (Windows Phone) | モバイル デベロッパー センター" 
 	description="Mobile Services を使用して Windows Phone アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
@@ -350,7 +350,7 @@
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
-[Developer Code Samples site]:  https://code.msdn.microsoft.com/Add-Azure-Mobile-to-a-8b906f72
+[デベロッパー サンプル コード集のサイト]:  https://code.msdn.microsoft.com/Add-Azure-Mobile-to-a-8b906f72
 [Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
 [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 [ローカル コンピューターにポート規則を作成するには]:  http://go.microsoft.com/fwlink/?LinkId=392240

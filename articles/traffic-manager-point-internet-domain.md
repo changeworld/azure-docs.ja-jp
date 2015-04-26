@@ -1,6 +1,6 @@
 ﻿<properties
-   pageTitle="会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする"
-   description="この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。"
+   pageTitle="会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする
+   description="この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。
    services="traffic-manager"
    documentationCenter=""
    authors="cherylmc"

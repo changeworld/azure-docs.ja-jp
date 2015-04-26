@@ -242,4 +242,5 @@ BLOB の再処理を強制する場合は、 *azure-webjobs-hosts* コンテナ�
 このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコード サンプルを提供しました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web Jobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226) をご覧ください。
 
 
+
 <!--HONumber=42-->

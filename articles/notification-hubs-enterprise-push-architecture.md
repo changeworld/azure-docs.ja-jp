@@ -43,26 +43,26 @@
 3. モバイル アプリケーション
 	- 通知を受信して表示
 		
-### メリット:
+###メリット:
 
 1. 受信者 (Notification Hubs を経由したモバイル アプリケーションまたはサービス) と送信者 (バックエンド システム) を分離することで、最小限の変更によって追加のバックエンド システムを統合できます。
 2. また、複数のモバイル アプリ 1 つまたは複数のバックエンド システムからイベントを受信するシナリオを実現できます。  
 
 ## サンプル:
 
-### 前提条件
+###前提条件
 概念と一般的な作成および構成手順を理解するために、以下のチュートリアルを完了する必要があります。
 
-1. [Service Bus のトピックとサブスクリプションの使用方法]: Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。 
-2. [Notification Hubs の使用 - Windows Universal チュートリアル]: Windows ストア アプリを設定し、Azure Notification Hubs を使用して通知を登録してから受信する方法について説明しています。 
+1. [Service Bus のトピックとサブスクリプションの使用方法]: Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。
+2. [Notification Hubs の使用 - Windows Universal チュートリアル]: Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。
 
-### コード サンプル
+###コード サンプル
 
-完全なコード サンプルは「[Notification Hubs のサンプル (英語)]」から入手できます。このサンプルは、3 つのコンポーネントに分割されています。
+完全なコード サンプルは「[Notification Hubs のサンプル(英語)]」から入手できます。このサンプルは、3 つのコンポーネントに分割されています。
 
 1. **EnterprisePushBackendSystem**
 	
-	a. このプロジェクトは、 *WindowsAzure.ServiceBus* Nuget パッケージを使用しており、「[Service Bus のトピックとサブスクリプションの使用方法]」の内容に基づいています。 
+	a. このプロジェクトは、*WindowsAzure.ServiceBus* Nuget パッケージを使用しており、「[Service Bus のトピックとサブスクリプションの使用方法]」の内容に基づいています。 
 
 	b. この単純な C# コンソール アプリでは、モバイル アプリへのメッセージの配信を開始する LoB システムをシミュレートします。 
 	
@@ -78,7 +78,7 @@
             SendMessage(connectionString);
         }
 	
-	c. `CreateTopic` は、メッセージを送信する Service Bus のトピックを作成するために使用します。 
+	c. `CreateTopic` は、メッセージを送信する Service Bus のトピックを作成するために使用します。
 
         public static void CreateTopic(string connectionString)
         {
@@ -126,7 +126,7 @@
 
 2. **ReceiveAndSendNotification**
 
-	a. このプロジェクトは、 *WindowsAzure.ServiceBus* および  *Microsoft.Web.WebJobs.Publish* Nuget パッケージを使用しており、「[Service Bus のトピックとサブスクリプションの使用方法]」の内容に基づいています。 
+	a. このプロジェクトは、*WindowsAzure.ServiceBus* および *Microsoft.Web.WebJobs.Publish* Nuget パッケージを使用しており、「[Service Bus のトピックとサブスクリプションの使用方法]」の内容に基づいています。 
 
 	b. この C# コンソール アプリは、継続的に実行して LoB　またはバックエンド システムからのメッセージをリッスンする必要があるため、[Azure WebJobs] として実行します。これは、モバイル バックエンドの一部になります。 
 
@@ -142,7 +142,7 @@
 	        ReceiveMessageAndSendNotification(connectionString);
 	    }
 
-	c. `CreateSubscription` は、メッセージを送信する Service Bus のトピックの サブスクリプションを作成するために使用します。ビジネス シナリオによっては、このコンポーネントは対応するトピックへの 1 つまたは複数のサブスクリプション (一部は人事部門のシステムからメッセージを受信し、一部は財務部門のシステムからメッセージを受信するなど)　を作成します。
+	c. `CreateSubscription` は、バックエンド システムがメッセージを送信するトピックの Service Bus サブスクリプションを作成するために使用します。ビジネス シナリオによっては、このコンポーネントは対応するトピックへの 1 つまたは複数のサブスクリプション (一部は人事部門のシステムからメッセージを受信し、一部は財務部門のシステムからメッセージを受信するなど)　を作成します。
 
 	    static void CreateSubscription(string connectionString)
         {
@@ -225,7 +225,7 @@
 	
 	b. アプリケーションでトースト通知の受信が有効になっていることを確認します。 
 
-	c. ( *HubName* および  *DefaultListenSharedAccessSignature* を置換してから) アプリの起動時に、以下の Notification Hubs の登録コードが呼び出されるをすることを確認します。
+	c. (*HubName* および *DefaultListenSharedAccessSignature* を置換してから) アプリの起動時に、以下の Notification Hubs の登録コードが呼び出されることを確認します。
 
         private async void InitNotificationsAsync()
         {
@@ -264,11 +264,11 @@
 [6]: ./media/notification-hubs-enterprise-push-architecture/WebJobsLog.png
 
 <!-- Links -->
-[Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
+[Notification Hubs のサンプル(英語)]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Services]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [Service Bus のトピックとサブスクリプションの使用方法]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJobs]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
 [Notification Hubs の使用 - Windows Universal チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

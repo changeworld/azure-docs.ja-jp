@@ -4,7 +4,7 @@
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
-	Writer="szark" 
+	writer="szark" 
 	manager="timlt" 
 	editor=""/>
 
@@ -51,14 +51,14 @@
 - fdisk を使用してパーティションの作成を開始する
 
 		# sudo fdisk /dev/sdc
-		Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
-		Building a new DOS disklabel with disk identifier 0xa34cb70c.
-		Changes will remain in memory only, until you decide to write them.
-		After that, of course, the previous content won't be recoverable.
+		デバイスには、有効な DOS パーティション テーブルも、Sun、SGI、OSF ディスク ラベルもありません。
+		新しい DOS ディスク ラベルをディスク識別子 0xa34cb70c で作成します。
+		変更は書き込まれるまでメモリにのみ残ります。
+		書き込み後、以前の内容は回復できなくなります。
 
-		WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
-				 switch off the mode (command 'c') and change display units to
-				 sectors (command 'u').
+		警告:DOS 互換モードは廃止されました。次の手順を実行することを強くお勧めします。
+				 現在のモードをオフにし (コマンド 'c')、表示単位を
+				 セクターに変更します (コマンド 'u')。
 
 - プロンプトが表示されたら N キーを押して、**新しい**パーティションを作成します。
 
@@ -104,7 +104,7 @@
 		# sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
 		  /dev/sdc1 /dev/sdd1 /dev/sde1
 
-この例では、このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを  `mdadm` コマンドに追加してください。
+この例では、このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを `mdadm` コマンドに追加してください。
 
 
 2. 新しい RAID デバイスにファイル システムを作成します。
@@ -133,7 +133,7 @@
 
 		# sudo mkdir /data
 
-2. /etc/fstab を編集するとき、**UUID** は、デバイス名ではなくファイル システムを参照するために使用する必要があります。新しいファイル システムの UUID を調べるには、 `blkid` ユーティリティを使用します。
+2. /etc/fstab を編集するとき、**UUID** は、デバイス名ではなくファイル システムを参照するために使用する必要があります。新しいファイル システムの UUID を調べるには、`blkid` ユーティリティを使用します。
 
 		# sudo /sbin/blkid
 		...........
@@ -155,7 +155,7 @@
 
 	このコマンドによりエラー メッセージが表示された場合は、/etc/fstab ファイル内の構文を確認してください。
 
-	次に、 `mount` コマンドを実行して、ファイル システムがマウントされていることを確認します。
+	次に、`mount` コマンドを実行して、ファイル システムがマウントされていることを確認します。
 
 		# mount
 		.................
@@ -163,7 +163,7 @@
 
 5. 省略可能なパラメーター
 
-	多くのディストリビューションでは、 `nobootwait` または  `nofail` のいずれかのマウント パラメーターが /etc/fstab ファイルに追加されている場合があります。これらのパラメーターにより、特定のファイル システムをマウントしているときのエラーが許容されます。RAID ファイル システムを適切にマウントできない場合でも、Linux システムの起動を続行できるようになります。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
+	多くのディストリビューションでは、`nobootwait` または `nofail` のいずれかのマウント パラメーターが /etc/fstab ファイルに追加されている場合があります。これらのパラメーターにより、特定のファイル システムをマウントしているときのエラーが許容されます。RAID ファイル システムを適切にマウントできない場合でも、Linux システムの起動を続行できるようになります。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
 	例 (Ubuntu):
 
@@ -171,8 +171,7 @@
 
 	これらのパラメーターのほかにも、カーネル パラメーター "`bootdegraded=true`" では、RAID が破損または劣化として認識された場合、たとえばデータ ドライブが誤って仮想マシンから削除された場合でも、システムを起動できるようになります。既定では、この場合はシステムが起動できなくなる可能性があります。
 
-	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の  `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
+	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

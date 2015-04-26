@@ -1,38 +1,41 @@
-﻿<properties pageTitle="Azure Notification Hubs の使用" description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" services="notification-hubs" documentationCenter="android" authors="piyushjo" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="Azure Notification Hubs の使用" 
+	description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" 
+	services="notification-hubs" 
+	documentationCenter="android" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor=""/>
 
 <tags 
 	ms.service="notification-hubs" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-baidu" 
 	ms.workload="mobile" 
-	ms.date="10/03/2014" 
-	ms.author="piyushjo"/>
+	ms.date="03/16/2015" 
+	ms.author="wesmc"/>
 
-# 通知ハブの使用
+# Notification Hubs の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Store C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu" class="current">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
 
-Baidu クラウド プッシュは、モバイル デバイスにプッシュ通知を送信できる中国のクラウド サービスです。このサービスは、Android へのプッシュ通知の配信が複雑な中国で特に役立ちます。中国では一般的に GCM (Google Cloud Messaging) に接続されていない Android デバイスのさまざまなアプリケーション ストア、プッシュ サービスが存在し、利用できるようになっています。 
+##概要
+
+Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。このサービスは、Android へのプッシュ通知の配信が複雑な中国で特に役立ちます。中国では一般的に GCM (Google Cloud Messaging) に接続されていない Android デバイスのさまざまなアプリケーション ストア、プッシュ サービスが存在し、利用できるようになっています。 
+
+##前提条件
 
 このチュートリアルには、次のものが必要です。
 
-+ Android SDK (前提条件として Eclipse を使用する必要があります)。 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">ここからダウンロードできます。</a>
-+ [Mobile Services Android SDK]
++ Android SDK (Eclipse 使用が前提)。これは、<a href="http://go.microsoft.com/fwlink/?LinkId=389797">ここ</a>からダウンロードできます。
++ [モバイル サービス Android SDK]
 + [Baidu Push Android SDK]
 
->[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 無料評価版</a>」を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)をご覧ください。
 
-このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
-* [Baidu アカウントを作成する](#createBaiduAccount)
-* [Baidu 開発者として登録する](#registerBaiduDeveloper)
-* [Baidu クラウド プッシュ プロジェクトを作成する](#createBaiduPushProject)
-* [通知ハブを構成する](#configure-hub)
-* [通知ハブにアプリケーションを接続する](#connecting-app)
-* [アプリケーションに通知を送信する](#send)
-
-## <a id="createBaiduAccount"></a>Baidu アカウントを作成する
+##Baidu アカウントを作成する
 
 Baidu を使用するには、アカウントを作成する必要があります。Baidu アカウントが既にある場合、[Baidu ポータル] に Baidu アカウントでログインし、次の手順に進みます。それ以外は新しい Baidu アカウントを作成する方法について以下の手順を参照してください。  
 
@@ -54,7 +57,7 @@ Baidu を使用するには、アカウントを作成する必要がありま�
 
 Baidu アカウントをアクティブ化したら、自分のアカウントを使用して [Baidu ポータル] へログインします。 
 
-## <a id="registerBaiduDeveloper"></a>Baidu 開発者として登録する
+##Baidu 開発者として登録する
 
 1. [Baidu ポータル]にログインしたら、**[更多 (詳細)>>]** をクリックします。
 
@@ -86,7 +89,7 @@ Baidu アカウントをアクティブ化したら、自分のアカウント�
 
   	![][11] 
 
-## <a id="createBaiduPushProject"></a>Baidu クラウド サービス プロジェクトの作成
+##Baidu クラウド サービス プロジェクトの作成
 
 Baidu クラウド プッシュ プロジェクトを作成すると、アプリケーション ID、API キー、およびシークレット キーを受信します。
 
@@ -130,15 +133,15 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 	![][32]  
 
-11. 構成ページで、Android プロジェクトで使用するパッケージ名を **[应用包名 (アプリケーション パッケージ)]** フィールドに入力し、**[保存设置 (保存)]** をクリックします。  
+11. 構成ページで、Android プロジェクトで使用するパッケージ名を **[应用包名 (アプリケーション パッケージ)]** フィールドに入力し、**[保存设置 (保存)]** をクリックします。
 
 	![][33]
 
 **[保存成功！ (正常に保存されました)]** のメッセージが表示されます。
 
-## <a id="configure-hub"></a>通知ハブを構成する
+##通知ハブを構成する
 
-1. [Azure 管理ポータル] にログオンし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure] 管理ポータルにログオンし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
  
@@ -166,7 +169,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
     ![][22]
 
-## <a id="connecting-app"></a>通知ハブにアプリケーションを接続する
+##通知ハブにアプリケーションを接続する
 
 1. Eclipse ADT で、新しい Android プロジェクトを作成します ([File] -> [New] -> [Android Application])。
 
@@ -184,9 +187,9 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
     ![][26]
 
-5. [Mobile Services Android SDK] をダウンロードし、解凍します。**notificationhubs** フォルダーを開き、**notification-hubs-x.y.jar** ファイルを Eclipse プロジェクトの  *libs* フォルダーにコピーした後、 *libs* フォルダーを最新の情報に更新します。
+5. [モバイル サービス Android SDK] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-n.jar** ファイルを Eclipse プロジェクトの *libs* フォルダーにコピーした後、*libs* フォルダーを最新の情報に更新します。
 
-6. [Baidu Push Android SDK] をダウンロードして解凍します。**libs** フォルダーを開き、Android アプリケーションの **libs** フォルダー内の  *pushservice-x.y.z* ファイルと、 *armeabi* & *mips* フォルダーをコピーします。 
+6. [Baidu Push Android SDK] をダウンロードして解凍します。**libs** フォルダーを開き、Android アプリケーションの **libs** フォルダー内の *pushservice x.y.z*jar ファイルと、*armeabi * & * mips* フォルダーをコピーします。 
 
 7. Android プロジェクトの **AndroidManifest.xml** を開き、Baidu SDK で必要なアクセス許可を追加します。
 
@@ -203,11 +206,11 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 	    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
 	    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-8.  *android:name* プロパティを **AndroidManifest.xml** の  *application* 要素に追加し、 *yourprojectname* (例: **com.example.BaiduTest**) を置き換えます。このプロジェクト名が、Baidu コンソールで構成したプロジェクト名と一致していることを確認します。 
+8.  *android:name* プロパティを **AndroidManifest.xml** の *アプリケーション*要素に追加し、 *yourprojectname* (例: **com.example.BaiduTest**) を置き換えます。このプロジェクト名が、Baidu コンソールで構成したプロジェクト名と一致していることを確認します。 
 
 		<application android:name="yourprojectname.DemoApplication"
 
-9. アプリケーション要素内で、.MainActivity アクティビティ要素の後に次の構成を追加し、 *yourprojectname* (例: **com.example.BaiduTest**) を置き換えます。
+9. application 要素内で、.MainActivity アクティビティ要素の後に次の構成を追加し、 *yourprojectname* (例: **com.example.BaiduTest**) を置き換えます。
 
 		<receiver android:name="yourprojectname.MyPushMessageReceiver">
 		    <intent-filter>
@@ -261,7 +264,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 				public static String NotificationHubConnectionString = "...";
 			}
 	
-	 *API_KEY* 値を、Baidu クラウド プロジェクトで先ほど取得したもの、 *NotificationHubName* は Azure ポータルからの通知ハブの名前、 *NotificationHubConnectionString* は Azure ポータルからの DefaultListenSharedAccessSignature で設定します。 
+	*API_KEY* には前もって Baidu クラウド プロジェクトから取得した値、*NotificationHubName* には Azure ポータルの通知ハブ名、*NotificationHubConnectionString* には Azure ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。 
 
 11. **DemoApplication.java** という新しいクラスを追加し、次のコードを追加します。
 
@@ -388,19 +391,19 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 	        PushManager.startWork(getApplicationContext(),
 	                PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
 
-and add the following import statements at the top:
+上部にある次の import ステートメントを追加します。
 			import com.baidu.android.pushservice.PushConstants;
 			import com.baidu.android.pushservice.PushManager;
 
-## <a id="send"></a>アプリケーションに通知を送信する
+##アプリケーションに通知を送信する
 
-通知は、REST インターフェイスを使用するバックエンドからの通知ハブを使用して <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">送信できます</a>。このチュートリアルでは、.NET コンソール アプリケーションを使用して表示します。 
+通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST</a> インターフェイスを使用するどのバックエンドからも通知ハブを使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して表示します。 
 
 1. Visual C# の新しいコンソール アプリケーションを作成します。
 
 	![][30]
 
-2. WindowsAzure.ServiceBus NuGet パッケージを使用して <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus SDK への参照を追加します</a>。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力し、Enter キーを押します。
+2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure Service Bus SDK への参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力し、Enter キーを押します。
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -408,7 +411,7 @@ and add the following import statements at the top:
 
         using Microsoft.ServiceBus.Notifications;
 
-4.  `Program` クラスで、次のメソッドを追加し、 *DefaultFullSharedAccessSignatureSASConnectionString* と  *NotificationHubName* を手持ちの値と置き換えます。 
+4.  `Program` クラスで、次のメソッドを追加し、 *DefaultFullSharedAccessSignatureSASConnectionString* と *NotificationHubName* を、実際の値に置き換えます。 
 
 		private static async void SendNotificationAsync()
 		{
@@ -422,7 +425,7 @@ and add the following import statements at the top:
          SendNotificationAsync();
 		 Console.ReadLine();
 
-## <a name="test-app"></a>アプリケーションのテスト
+##アプリケーションのテスト
 
 実際の電話でこのアプリケーションをテストする場合は、USB ケーブルでコンピューターに電話を接続するだけです。
 
@@ -432,7 +435,7 @@ and add the following import statements at the top:
 
 2. これによって、アプリケーションが接続した電話に読み込まれるか、またはエミュレーターが開始してアプリケーションが読み込まれ、実行されます。
 
-3. アプリケーションは、Baidu プッシュ通知サービスから、 'userId' と  'channelId' を取得し、通知ハブに登録します。
+3. アプリケーションは、Baidu プッシュ通知サービスから、 'userId' と 'channelId' を取得し、通知ハブに登録します。
 	
 4.	.Net コンソール アプリケーションの使用時にテスト通知を送信するには、Visual Studio で F5 キーを押してアプリケーションを実行すると、通知が送信され、デバイスまたはエミュレーターの上部の通知領域に表示されます。 
 
@@ -473,11 +476,12 @@ and add the following import statements at the top:
 [33]: ./media/notification-hubs-baidu-get-started/BaiduPushConfig3.png
 
 <!-- URLs. -->
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
+[モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
 
 
-<!--HONumber=45--> 
+
+<!--HONumber=49-->

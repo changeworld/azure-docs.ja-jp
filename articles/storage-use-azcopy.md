@@ -899,4 +899,5 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy:Using cross-account Copy Blob (AzCopy - アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy:Uploading/downloading files for Windows Azure Blobs (AzCopy - Windows Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
+
 <!--HONumber=42-->

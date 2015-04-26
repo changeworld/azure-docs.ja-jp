@@ -58,4 +58,6 @@
             App.InitNotificationsAsync();
             RefreshTodoItems();
         }
+
+
 <!--HONumber=42-->

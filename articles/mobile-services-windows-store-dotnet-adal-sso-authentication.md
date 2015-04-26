@@ -227,4 +227,5 @@
 [Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
+
 <!--HONumber=42-->

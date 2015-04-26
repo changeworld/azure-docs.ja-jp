@@ -2,7 +2,7 @@
 	pageTitle="Azure Notification Hubs の安全なプッシュ" 
 	description="セキュリティで保護されたプッシュ通知を Azure から Android アプリに送信する方法について説明します。コード サンプルは Java と C# で記述されています。" 
 	documentationCenter="android" 
-	authors="RickSaling" 
+	authors="wesmc7777" 
 	manager="dwrede" 
 	editor="" 
 	services="notification-hubs"/>
@@ -13,15 +13,17 @@
 	ms.tgt_pltfrm="" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="09/24/2014" 
-	ms.author="ricksal"/>
+	ms.date="02/26/2015" 
+	ms.author="wesmc"/>
 
-# Azure Notification Hubs の安全なプッシュ
+#Azure Notification Hubs の安全なプッシュ
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a>
-		<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android" class="current">Android</a>
+    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows Universal">Windows Universal</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a>
+		<a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android" class="current">Android</a>
 </div>
+
+#概要
 
 Microsoft Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。 
 
@@ -40,13 +42,13 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは **ユーザーへの通知** チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Android)](http://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started/)」での説明に従って通知が作成され、構成されていると想定しています。
+> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Android)](notification-hubs-android-get-started.md)」での説明に従って通知ハブが作成され、構成されていると想定しています。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## Android プロジェクトを変更する
 
-通知の  *id* だけを送信するようにアプリケーション バックエンドを変更したため、Android アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
+通知の * id* だけを送信するようにアプリケーション バックエンドを変更したため、Android アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
 この目標を達成するには、Android アプリケーションでプッシュ通知を受信する場合に、Android アプリケーションがバックエンドで認証する方法を把握していることを確認する必要があります。
 
 アプリケーションの共有設定に認証ヘッダー値を保存するために、ここでは  *login* フローを変更します。類似したメカニズムを使用して、ユーザー資格情報を要求せずに、アプリケーションが使用する必要がある任意の認証トークン (OAuth トークンなど) を保存できます。
@@ -130,4 +132,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4. Android アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

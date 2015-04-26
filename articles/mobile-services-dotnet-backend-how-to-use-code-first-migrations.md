@@ -159,4 +159,5 @@ Code First Migrations は、実行されたときにスナップショットの�
 [DbContext]: http://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.113).aspx
 [AddOrUpdate]: http://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
 
+
 <!--HONumber=42-->

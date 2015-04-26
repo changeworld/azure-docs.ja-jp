@@ -180,4 +180,5 @@
 [Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-html-how-to-use-client-library/
 
 
+
 <!--HONumber=42-->

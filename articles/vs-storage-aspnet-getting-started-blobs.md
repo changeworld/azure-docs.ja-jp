@@ -46,4 +46,5 @@ BLOB を使用した操作を行うには、BLOB を使用するストレージ 
 [AZURE.INCLUDE [vs-storage-getting-started-blobs-include](../includes/vs-storage-getting-started-blobs-include.md)]
 
 詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
+
 <!--HONumber=42-->

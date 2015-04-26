@@ -109,4 +109,5 @@
 [Visual Studio 2012 を使用した Mobile Services でのデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data-vs2012
 
 
+
 <!--HONumber=42-->

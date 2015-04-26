@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="認証の使用 (Windows Phone) | モバイル デベロッパー センター" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows Phone アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
@@ -38,13 +38,13 @@
 
 >[AZURE.NOTE]このチュートリアルでは、さまざまな ID プロバイダーを使用した、モバイル サービスによって管理される認証フローについて説明します。この方法は構成が容易で、複数のプロバイダーをサポートしています。Windows Phone アプリケーションでシングル サインオンできるようにクライアントによって管理される認証で Live Connect を使用するには、[Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]に関するトピックを参照してください。クライアントによって管理される認証を使用することにより、アプリは ID プロバイダーが保持する追加のユーザー データにアクセスできます。サーバー スクリプトで **user.getIdentities()** 関数を呼び出すことにより、同じユーザー データをモバイル サービスで取得できます。詳細については、[この記事](http://go.microsoft.com/fwlink/p/?LinkId=506605) を参照してください。
 
-##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
+## <a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
 
-##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
@@ -57,17 +57,17 @@
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 
 [AZURE.INCLUDE [mobile-services-windows-phone-authenticate-app](../includes/mobile-services-windows-phone-authenticate-app.md)]
 
-##<a name="tokens"></a>クライアント側で認証トークンを保存する
+## <a name="tokens"></a>クライアント側で認証トークンを保存する
 
 [AZURE.INCLUDE [mobile-services-windows-phone-authenticate-app-with-token](../includes/mobile-services-windows-phone-authenticate-app-with-token.md)] 
 
 ## <a name="next-steps"> </a>次のステップ
 
-次の [Mobile Services ユーザーのサービス側の承認]に関するチュートリアルでは、(mobile-services-javascript-backend-service-side-authorization.md)認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。 
+次の [Mobile Services ユーザーのサービス側の承認](mobile-services-javascript-backend-service-side-authorization.md)に関するチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。 
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、Mobile Services を構成する]: #register

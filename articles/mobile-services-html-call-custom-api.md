@@ -96,4 +96,5 @@
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started
 [データの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-data
 
+
 <!--HONumber=42-->

@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="プッシュ通知の使用 (Windows ストア) | モバイル デベロッパー センター" 
 	description="Azure Mobile Services と Notification Hubs を使用して Windows ストア アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services, notification-hubs" 
@@ -197,7 +197,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users
 
-[認証済み Web サービスを設定して Windows Phone のプッシュ通知を送信する]に関するページ: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Setting up an authenticated web service to send push notifications for Windows Phone (認証済み Web サービスを設定して Windows Phone のプッシュ通知を送信する)]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
@@ -208,6 +208,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Notification Hubs とは]: /ja-jp/documentation/articles/notification-hubs-overview/
 [通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/
 [通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-phone-send-localized-breaking-news/
+
 
 
 <!--HONumber=42-->

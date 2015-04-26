@@ -31,4 +31,5 @@ Microsoft Azure Mobile Service のライブラリが **MobileServices.js** フ�
  `services\mobileServices\settings` フォルダー内に新しい JavaScript (.js) ファイルが生成されました。このファイルには、選択したモバイル サービスのアプリケーション URL とアプリケーション キーを格納した **MobileServiceClient** が含まれています。  
 
 
+
 <!--HONumber=42-->

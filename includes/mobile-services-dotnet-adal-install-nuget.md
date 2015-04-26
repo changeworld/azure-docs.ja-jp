@@ -3,4 +3,5 @@
 2. [NuGet パッケージの管理] で **[オンライン]** をクリックします。検索用語として「**Microsoft.IdentityModel.Clients.ActiveDirectory**」と入力します。**[インストール]** をクリックし、Active Directory 認証ライブラリ Nuget パッケージをインストールします。 
 
    ![](./media/mobile-services-dotnet-adal-install-nuget/mobile-services-adal-nuget-package.png)
+
 <!--HONumber=42-->

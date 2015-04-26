@@ -365,7 +365,7 @@ PowerShell コンソールを開き、Visual Studio プロジェクトを保存�
 ## 関連項目##
 - [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]。クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Spark をインストールします。Spark はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。
 - [HDInsight クラスターに R をインストールする][hdinsight-install-r]。クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに R をインストールします。R は統計計算用のオープン ソースの言語および環境で、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を組み合わせた独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。
-- [HDInsight クラスターでの Giraph のインストール](../hdinsight-hadoop-giraph-install):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
+- [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 
 
 
@@ -374,4 +374,5 @@ PowerShell コンソールを開き、Visual Studio プロジェクトを保存�
 [hdinsight-install-r]: ../hdinsight-hadoop-r-scripts/
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-cluster-customize]: ../hdinsight-hadoop-customize-cluster
+
 <!--HONumber=42-->

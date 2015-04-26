@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="エンタープライズ クラスの WordPress を Azure Websites で運用する" 
 	description="エンタープライズ クラスの WordPress サイトを Azure Websites でホストする方法について説明します" 
 	services="web-sites" 
@@ -132,7 +132,7 @@ WordPress Web サイトに移行する場合、「[アーキテクチャと計�
 
 1. [WordPress のエクスポート][export]を実行して、既存のサイトをエクスポートします。
 
-2. 「[新規 WordPress サイトを作成する]」セクションの手順で、新しい Web サイトを作成します(#create) 。[CO1]
+2. 「[新規 WordPress サイトを作成する]」セクションの手順で、新しい Web サイトを作成します(#create) 。
 
 3. Azure Web サイトで WordPress サイトにログインし、**[プラグイン]**、**[新規追加]** の順にクリックします。**WordPress Importer** プラグインを検索し、インストールします。
 
@@ -165,7 +165,7 @@ WordPress Web サイトに移行する場合、「[アーキテクチャと計�
 
 	2. [MySQL Workbench][workbench] などの MySQL クライアントを使用して、新しいデータベースに接続し、WordPress データベースをインポートします。
 
-	3. データベースを更新して、ドメイン エントリを "mywordpress.azurewebsites.net" などのように、[CO2]新しい Azure Web サイトのドメインに変更します。[WordPress データベースの検索と置換用スクリプト][searchandreplace]を使用すると、すべてのインスタンスを安全に変更できます。
+	3. データベースを更新して、ドメイン エントリを "mywordpress.azurewebsites.net" などのように、新しい Azure Web サイトのドメインに変更します。[WordPress データベースの検索と置換用スクリプト][searchandreplace]を使用すると、すべてのインスタンスを安全に変更できます。
 
 4. 新しい Web サイトを作成し、WordPress バックアップを発行します。
 
@@ -192,7 +192,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 目的| 方法
 ------------- | -----------
 **Web サイトのモードとサイズを設定し、規模の設定を有効にする** | [ Web サイトの規模の設定方法][websitescale]
-**永続的なデータベース接続の有効化** <p>既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。</p>  | <ol><li><p><strong>wp-includes/wp-db.php</strong> ファイルを編集します。</p></li><li><p>次の行を見つけます。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>この行を次の行で置き換えます。</p><code>$this->dbh = mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); <br/>if ( false !== $error_reporting ) { /br/>&nbsp;&nbsp;error_reporting( $error_reporting ); <br/>} </code></li><li><p>次の行を見つけます。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>この行を次の行で置き換えます。</p><code>$this->dbh = @mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); </code></li><li><p><strong>wp-includes/wp-db.php</strong> ファイルを保存して、サイトを再デプロイします。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><h5><a name="note"></a>注:</h5><p>これらの変更は、WordPress の更新時に上書きされます。</p><p>WordPress は既定で自動更新を行いますが、この設定は <strong>wp-config.php</strong> ファイルを編集し * を追加することで、無効にできます。[CO3] <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p>または、WebJob を使用して更新に対応する方法もあります。WebJob は <strong>wp-db.php</strong> ファイルを監視して、ファイルが更新されるたびに前述の変更を実行します。詳細については、<a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs についての紹介記事</a>をご覧ください。</p></div>
+**永続的なデータベース接続の有効化** <p>既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。</p>  | <ol><li><p><strong>wp-includes/wp-db.php</strong> ファイルを編集します。</p></li><li><p>次の行を見つけます。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>この行を次の行で置き換えます。</p><code>$this->dbh = mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); <br/>if ( false !== $error_reporting ) { /br/>&nbsp;&nbsp;error_reporting( $error_reporting ); <br/>} </code></li><li><p>次の行を見つけます。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>この行を次の行で置き換えます。</p><code>$this->dbh = @mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword,  $client_flags ); </code></li><li><p><strong>wp-includes/wp-db.php</strong> ファイルを保存して、サイトを再デプロイします。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><h5><a name="note"></a>注:</h5><p>これらの変更は、WordPress の更新時に上書きされます。</p><p>WordPress は既定で自動更新を行いますが、この設定は <strong>wp-config.php</strong> ファイルを編集し * を追加することで、無効にできます。 <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p>または、WebJob を使用して更新に対応する方法もあります。WebJob は <strong>wp-db.php</strong> ファイルを監視して、ファイルが更新されるたびに前述の変更を実行します。詳細については、<a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs についての紹介記事</a>をご覧ください。</p></div>
 **パフォーマンスの向上** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Web サイトのインスタンスで WordPress を実行している場合に、パフォーマンスを向上させる方法です。</p></li><li><p>キャッシュの有効化。<a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="http://azure.microsoft.com/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">WordPress を WinCache で高速化する方法</a> - WinCache は既定で Web サイト用に有効になっています。</p></li><li><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-scale/">Web サイトの規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>または <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a> を使用します。</p></li></ul>
 **ストレージ用 BLOB の使用** | <ol><li><p><a href="http://azure.microsoft.com/documentation/articles/storage-create-storage-account/">Azure のストレージ アカウントの作成</a></p></li><li><p>「<a href="http://azure.microsoft.com/documentation/articles/cdn-how-to-use/">Azure 用 CDN の使用</a>」の方法を理解し、BLOB を用いて地理的に分散したデータ保存を実施します。</p></li><li><p><a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress プラグイン</a>をインストールし、構成します。</p><p>このプラグインに関する詳細な設定と構成の情報については、<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">ユーザー ガイド</a>をご覧ください。</p> </li></ol>
 **電子メールの有効化** | <ol><li><p><a href="http://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします</a>。</p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">WordPress 用の SendGrid プラグインをインストールします</a>。</p></li></ol>
@@ -285,7 +285,6 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [cdn]: http://azure.microsoft.com/documentation/articles/cdn-how-to-use/
 
 
+
 <!--HONumber=42-->
-[CO1]Although this CM segment had "セクションを参照してください。" as translation, I modified it according to the previous segment.
-[CO2]target segment separated, according to TM.
-[CO3]a placeholder is missing after "adding". Please replace * in target with correct one during post edit.
+

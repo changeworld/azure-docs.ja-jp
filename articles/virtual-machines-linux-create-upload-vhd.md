@@ -38,7 +38,7 @@ Azure の仮想マシンでは、仮想マシンの作成時に選択したイ�
 
 	**重要**:新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions)」を参照してください。または、この記事の末尾の「[動作保証外のディストリビューションに関する情報](../virtual-machines-linux-create-upload-vhd-generic)」のセクションを参照してください。
+	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](linux-endorsed-distributions.md)」を参照してください。または、この記事の末尾の「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-vhd-generic.md)」のセクションを参照してください。
 
 - **Linux 用 Azure コマンド ライン ツール** - Linux オペレーティング システムを使用してイメージを作成する場合は、[Mac および Linux 用 Azure コマンド ライン ツール](http://go.microsoft.com/fwlink/?LinkID=253691&clcid=0x409)を使用して VHD ファイルをアップロードします。
 
@@ -54,13 +54,13 @@ Azure の仮想マシンでは、仮想マシンの作成時に選択したイ�
 
 ## <a id="prepimage"> </a>手順 1.アップロードするイメージを準備する ##
 
-Microsoft Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
+Microsoft Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](linux-endorsed-distributions.md)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
-- **[CentOS ベースのディストリビューション](../virtual-machines-linux-create-upload-vhd-centos)**
-- **[Oracle Linux](../virtual-machines-linux-create-upload-vhd-oracle)**
-- **[SLES と openSUSE](../virtual-machines-linux-create-upload-vhd-suse)**
-- **[Ubuntu](../virtual-machines-linux-create-upload-vhd-ubuntu)**
-- **[その他 - 動作保証外のディストリビューション](../virtual-machines-linux-create-upload-vhd-generic)**
+- **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-vhd-centos.md)**
+- **[Oracle Linux](virtual-machines-linux-create-upload-vhd-oracle.md)**
+- **[SLES と openSUSE](virtual-machines-linux-create-upload-vhd-suse.md)**
+- **[Ubuntu](virtual-machines-linux-create-upload-vhd-ubuntu.md)**
+- **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-vhd-generic.md)**
 
 Azure で Linux イメージを準備する際のその他のヒントについては、「**[Linux のインストールに関する注記](../virtual-machines-linux-create-upload-vhd-generic/#linuxinstall)**」を参照してください。
 
@@ -143,6 +143,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 [手順 2.Azure にストレージ アカウントを作成する]: #createstorage
 [手順 3.Azure への接続を準備する]: #connect
 [手順 4.Azure にイメージをアップロードする]: #upload
+
 
 
 

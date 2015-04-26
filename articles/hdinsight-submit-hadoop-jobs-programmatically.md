@@ -722,4 +722,5 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.MRJobOutput.png
 
 [apache-hive]: http://hive.apache.org/
+
 <!--HONumber=42-->

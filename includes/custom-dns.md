@@ -1,4 +1,4 @@
-﻿# Azure クラウド サービスのカスタム ドメイン名の構成
+# Azure クラウド サービスのカスタム ドメイン名の構成
 
 > [AZURE.NOTE]
 > より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)!Azure クラウド サービスまたは Azure Websites を使用したカスタム ドメイン名の関連付けと通信 (SSL) のセキュリティ保護がすばやく行えます。
@@ -6,7 +6,7 @@
 Azure でアプリケーションを作成すると、cloudapp.net ドメイン上にサブドメインが提供されるため、ユーザーは http://&lt;*myapp*>.cloudapp.net のような URL を使用してアプリケーションにアクセスできるようになります。ただし、contoso.com のような独自のドメイン名を使用してアプリケーションを公開することもできます。
 
 > [AZURE.NOTE] 
-> このタスクの手順は、Azure Cloud Services に適用されます。ストレージ アカウントについては、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成]」(../articles/storage-custom-domain-name.md)を参照してください。Web サイトについては、「[Azure の Web サイトのカスタム ドメイン名の構成](../articles/web-sites-custom-domain-name.md)」を参照してください。
+> このタスクの手順は、Azure Cloud Services に適用されます。ストレージ アカウントについては、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](../articles/storage-custom-domain-name.md)」を参照してください。Web サイトについては、「[Azure の Web サイトのカスタム ドメイン名の構成](../articles/web-sites-custom-domain-name.md)」を参照してください。
 
 
 ## CNAME レコードと A レコードについて
@@ -15,7 +15,7 @@ CNAME レコード (またはエイリアス レコード) および A レコー
 
 ### CNAME レコードまたはエイリアス レコード
 
-CNAME レコードは、**contoso.com** や **www.contoso.com** などの*specific*ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Azure ホステッド アプリケーションの **&lt; myapp>.cloudapp.net **のドメイン名です。作成すると、CNAME は **&lt;myapp>.cloudapp.net** のエイリアスを作成します。CNAME エントリでは、**&lt;myapp>.cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても特別な対応をする必要がありません。
+CNAME レコードは、**contoso.com** や **www.contoso.com** などの*specific*ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Azure ホステッド アプリケーションの **&lt;myapp>.cloudapp.net** のドメイン名です。作成すると、CNAME は **&lt;myapp>.cloudapp.net** のエイリアスを作成します。CNAME エントリでは、**&lt;myapp>.cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても特別な対応をする必要がありません。
 
 > [AZURE.NOTE] 
 > いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、<a href="http://en.wikipedia.org/wiki/CNAME_record">CNAME レコードに関するウィキペディア項目</a>、または「<a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)</a>」を参照してください。
@@ -128,7 +128,8 @@ A レコードを作成するには、まず、クラウド サービスの仮�
   [データをカスタム ドメイン上で公開する]: #access-data
   [VIP スワップ]: http://msdn.microsoft.com/library/ee517253.aspx
   [サブドメインをストレージ アカウントに関連付ける CNAME レコードを作成する]: #create-cname
-  [Azure 管理ポータル]:: https://manage.windowsazure.com
+  [Azure 管理ポータル]: https://manage.windowsazure.com
+  [Azure の管理ポータル]: https://manage.windowsazure.com
   [カスタム ドメインの検証のダイアログ ボックス]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
   [CDN コンテンツをカスタム ドメインにマッピングする方法]: http://msdn.microsoft.com/library/windowsazure/gg680307.aspx
   [vip]: ./media/custom-dns/csvip.png

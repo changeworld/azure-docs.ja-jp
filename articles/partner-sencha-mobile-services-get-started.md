@@ -713,4 +713,5 @@ Sencha Touch の使用について、より詳細な情報は全[ガイド](http
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
 
 
+
 <!--HONumber=42-->

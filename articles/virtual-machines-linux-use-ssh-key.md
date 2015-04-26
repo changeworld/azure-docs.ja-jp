@@ -22,7 +22,7 @@ Azure 管理ポータルの現在のバージョンのみが、X509 証明書に
 
 ## Linux で Microsoft Azure 互換のキーを生成する ##
 
-1. 必要に応じて  `openssl` ユーティリティをインストールします。
+1. 必要に応じて `openssl` ユーティリティをインストールします。
 
 	**CentOS と Oracle Linux**
 
@@ -37,7 +37,7 @@ Azure 管理ポータルの現在のバージョンのみが、X509 証明書に
 		# sudo zypper install openssl
 
 
-2.  `openssl` を使用して、 2048 ビットの RSA 公開キーと秘密キーで X509 の証明書を作成します。 `openssl` からの質問に答えてください (空白のままにしてもかまいません)。これらのフィールドの内容はプラットフォームでは使用されません。
+2. `openssl` を使用して、2048 ビットの RSA キーペアで X509 の証明書を作成します。`openssl` からの質問に答えてください (空白のままにしてもかまいません)。これらのフィールドの内容はプラットフォームでは使用されません。
 
 		# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
 
@@ -45,9 +45,9 @@ Azure 管理ポータルの現在のバージョンのみが、X509 証明書に
 
 		# chmod 600 myPrivateKey.key
 
-4.	Linux 仮想マシンの作成中に、 `myCert.pem` をアップロードします。プロビジョニング プロセスは、この証明書の公開キーを仮想マシンに指定されたユーザーの  `authorized_keys` ファイルに自動的にインストールします。
+4.	Linux 仮想マシンの作成中に、`myCert.pem` をアップロードします。プロビジョニング プロセスは、この証明書の公開キーを仮想マシンに指定されたユーザーの `authorized_keys` ファイルに自動的にインストールします。
 
-5.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して  `myCert.pem` を  `myCert.cer` (DER エンコードされた X509 証明書) に変換します。
+5.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して `myCert.pem` を `myCert.cer` (DER エンコードされた X509 証明書) に変換します。
 
 		# openssl  x509 -outform der -in myCert.pem -out myCert.cer
 
@@ -55,44 +55,44 @@ Azure 管理ポータルの現在のバージョンのみが、X509 証明書に
 ## OpenSSH と互換性のある既存のキーからキーを生成する
 前の例では、Microsoft Azure 用に新しいキーを作成する方法について説明しています。場合によっては、OpenSSH と互換性のある公開キーと秘密キーのペアが既にあり、Microsoft Azure 用にそれらの同じキーを使用する必要があります。
 
-OpenSSH の秘密キーは  `openssl` ユーティリティで直接読み取ることができます。次のコマンドは、SSH の既存の秘密キー (ここでは id_rsa) を受け取り、Windows Azure に必要な  `.pem` 公開キーを作成します。
+OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取ることができます。次のコマンドは、SSH の既存の秘密キー (ここでは id_rsa) を受け取り、Microsoft Azure に必要な `.pem` 公開キーを作成します。
 
 	# openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem
 
-**myCert.pem** ファイルは、Microsoft Azure 上の Linux 仮想マシンをプロビジョニングするために使用できる公開キーです。プロビジョニング中、 `.pem` ファイルは  `openssh` と互換性のある公開キーに翻訳され、`~/.ssh/authorized_keys`. に配置されます。
+**myCert.pem** ファイルは、Microsoft Azure 上の Linux 仮想マシンをプロビジョニングするために使用できる公開キーです。プロビジョニング中、`.pem` ファイルは `openssh` と互換性のある公開キーに変換され、`~/.ssh/authorized_keys` に配置されます。
 
 
 ## Linux から Windows Azure の仮想マシンに接続する
 
 1. Linux 仮想マシンの SSH エンドポイントは、既定の 22 以外のポートに構成されることがあります。管理ポータルの VM のダッシュボードで ([SSH の詳細] で) 正しいポート番号を検索できます。
 
-2.	 `ssh` を使用して Linux 仮想マシンに接続します。最初にログインすると、ホストの公開キーの指紋に同意するように求められます。
+2.	`ssh` を使用して Linux 仮想マシンに接続します。最初にログインすると、ホストの公開キーの指紋に同意するように求められます。
 
 		# ssh -i  myPrivateKey.key -p <port> username@servicename.cloudapp.net
 
-3.	(省略可能) OpenSSH クライアントが "-i" オプションを使用しないで自動的に `myPrivateKey.key` を選択できるように、 `myPrivateKey.key` を `~/.ssh/id_rsa` にコピーできます。
+3.	(省略可能) OpenSSH クライアントが `-i` オプションを使用しないで自動的に myPrivateKey.key を選択できるように、`myPrivateKey.key` を `~/.ssh/id_rsa` にコピーできます。
 
 ## Windows 上で OpenSSL を入手する ##
 ### msysgit を使用する ###
 
-1.	次の場所から msysgit をダウンロードしてインストールします: [http://msysgit.github.com/](http://msysgit.github.com/)
-2.	インストールしたディレクトリ (c:\msysgit\msys.exe など) から  `msys` を実行します。
-3.	「 `cd bin` 」と入力し、 `bin` ディレクトリに移動します。
+1.	次の場所から msysgit をダウンロードしてインストールします:[http://msysgit.github.com/](http://msysgit.github.com/)
+2.	インストールしたディレクトリ (c:\msysgit\msys.exe など) から `msys` を実行します。
+3.	「`cd bin`」と入力し、`bin` ディレクトリに移動します。 
 
 ###Windows 用の GitHub を使用する###
 
-1.	次の場所から Windows 用の GitHub をダウンロードしてインストールします: [http://windows.github.com/](http://windows.github.com/)
+1.	次の場所から Windows 用の GitHub をダウンロードしてインストールします:[http://windows.github.com/](http://windows.github.com/)
 2.	[スタート] メニューをクリックし、[すべてのプログラム]、[GitHub] の順にクリックして、Git シェルを実行します。
 
 ###cygwin を使用する###
 
-1.	次の場所から Cygwin をダウンロードしてインストールします: [http://cygwin.com/](http://cygwin.com/)
+1.	次の場所から Cygwin をダウンロードしてインストールします:[http://cygwin.com/](http://cygwin.com/)
 2.	OpenSSL パッケージとその依存パッケージがすべてインストールされていることを確認します。
-3.	 `cygwin` を実行します。
+3.	`cygwin` を実行します。
 
 ## Windows 上で秘密キーを作成する ##
 
-1.	前の手順のどれかを実行して、 `openssl.exe` を実行できるようにします。
+1.	前の手順のどれかを実行して、`openssl.exe` を実行できるようにします。
 2.	次のコマンドを入力します。
 
 		# openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
@@ -102,27 +102,27 @@ OpenSSH の秘密キーは  `openssl` ユーティリティで直接読み取る
 	![linuxwelcomegit](./media/virtual-machines-linux-use-ssh-key/linuxwelcomegit.png)
 
 4.	画面に表示されるメッセージに従って、設定します。
-5.	ファイルが 2 つ作成されます ( `myPrivateKey.key` および  `myCert.pem`)。
-6.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して  `myCert.pem` を  `myCert.cer` (DER エンコードされた X509 証明書) に変換します。
+5.	ファイルが 2 つ作成されます (`myPrivateKey.key` および `myCert.pem`)。
+6.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して `myCert.pem` を `myCert.cer` (DER エンコードされた X509 証明書) に変換します。
 
 		# openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
 
 ## Putty 用の PPK を作成する ##
 
-1. 次の場所から Puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 次の場所から Puttygen をダウンロードしてインストールします:[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
-2. Puttygen  は、以前作成された秘密キー  (`myPrivateKey.key`) を読み取ることができない可能性があります。それを Puttygen で認識できる RSA 秘密キーに変換するには、次のコマンドを使用してください。
+2. Puttygen は、以前に作成された秘密キー (`myPrivateKey.key`) を読み取ることができない可能性があります。それを Puttygen で認識できる RSA 秘密キーに変換するには、次のコマンドを使用してください。
 
 		# openssl rsa -in ./myPrivateKey.key -out myPrivateKey_rsa
 		# chmod 600 ./myPrivateKey_rsa
 
 	このコマンドにより、myPrivateKey_rsa という秘密キーが新たに生成されます。
 
-3.  `puttygen.exe` を実行します。
+3. `puttygen.exe` を実行します。
 
 4. [File] メニューの[Load a Private Key] をクリックします。
 
-5. 先ほど生成した  `myPrivateKey_rsa` という名前の秘密キー ファイルを見つけます。ファイル フィルターを **[All Files (\*.\*)]** に変更する必要があります。
+5. 先ほど生成した `myPrivateKey_rsa` という名前の秘密キー ファイルを見つけます。ファイル フィルターを **All Files (\*.\*)** に変更する必要があります。
 
 6. **[Open]** をクリックします。次のような画面が表示されます。
 
@@ -139,7 +139,7 @@ OpenSSH の秘密キーは  `openssl` ユーティリティで直接読み取る
 
 ## Putty を使用して Linux 仮想マシンに接続する ##
 
-1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1.	次の場所から putty をダウンロードしてインストールします:[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2.	putty.exe を実行します。
 3.	ホスト名として、管理ポータルの IP を入力します。
 
@@ -151,5 +151,4 @@ OpenSSH の秘密キーは  `openssl` ユーティリティで直接読み取る
 
 5.	**[Open]** をクリックして、仮想マシンに接続します。
 
-
-<!--HONumber=42-->
+<!--HONumber=45--> 

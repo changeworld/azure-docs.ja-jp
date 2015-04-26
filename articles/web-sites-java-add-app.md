@@ -18,16 +18,17 @@
 
 # Azure の Java Web サイトへのアプリケーションの追加
 
-「[Microsoft Azure Websites と Java の概要](../web-sites-java-get-started)」の説明にあるように Java Web サイトを初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードできます。
+「[Microsoft Azure Websites と Java の概要](web-sites-java-get-started.md)」の説明にあるように Java Web サイトを初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードできます。
 
 **webapps** フォルダーへのナビゲーション パスは Web サイトの設定方法によって異なります。
 
 - Azure のアプリケーション ギャラリーを使用して Web サイトを設定した場合、**webapps** フォルダーへのパスは、**d:\home\site\wwwroot\bin\application\_server\webapps** という形式になります (**application\_server** は、Web サイトで有効になっているアプリケーション サーバーの名前です)。 
 - Azure の構成 UI を使用して Web サイトを設定した場合、**webapps** フォルダーへのパスは、**d:\home\site\wwwroot\webapps** という形式になります。 
 
-継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure Web サイトへの発行](../web-sites-publish-source-control)」をご覧ください。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
+継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure Web サイトへの発行](web-sites-publish-source-control.md)」をご覧ください。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
 
 Tomcat Web サイトに関する注意:WAR ファイルを **webapps** フォルダーにアップロードすると、Tomcat アプリケーション サーバーで WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Tomcat Java Web サイトの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。 
+
 
 
 <!--HONumber=42-->

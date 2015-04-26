@@ -11,4 +11,5 @@
 
     ![query SQL Database for stored items](./media/mobile-services-dotnet-backend-view-sql-data/sql-azure-query.png)
 
-	テーブルに Id、__createdAt、__updatedAt、__version の各列があることに注意してください。これらの列はオフライン データ同期をサポートし、基本クラス [EntityData](http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.entitydata.aspx) に実装されます。詳細については「[オフライン データ同期の使用]」を参照してください。<!--HONumber=42-->
+	テーブルに Id、__createdAt、__updatedAt、__version の各列があることに注意してください。これらの列はオフライン データ同期をサポートし、基本クラス [EntityData](http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.entitydata.aspx) に実装されます。詳細については「[オフライン データ同期の使用]」を参照してください。
+<!--HONumber=42-->

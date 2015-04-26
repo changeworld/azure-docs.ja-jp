@@ -136,6 +136,8 @@ SendGrid の詳細については、次のリンク先をご覧ください。
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [クラウド ベースの電子メール サービス]: https://sendgrid.com/email-solutions
 [トランザクション電子メール配信]: https://sendgrid.com/transactional-email
+[クラウドベース電子メール サービス]: https://sendgrid.com/email-solutions
+
 
 
 

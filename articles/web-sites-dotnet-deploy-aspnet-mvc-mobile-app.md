@@ -230,7 +230,7 @@ ASP.NET MVC は 名前に "iPhone" サフィックスを含むビューを
 「`MVC5 Application (iPhone)`」に変更します。
 
  *Views\\Home\\AllTags.Mobile.cshtml* ファイルを
-*Views\\Home\\AllTags.iPhone.cshtml* にコピーします。新しいファイルで、`<h2>` 要素を "Tags (M)" から "Tags (iPhone)"に変更します。
+*Views\\Home\\AllTags.iPhone.cshtml* にコピーします。新しいファイルで、\<h2\> 要素を "Tags (M)" から "Tags (iPhone)"に変更します。
 
 アプリケーションを実行します。モバイル ブラウザー エミュレーターを実行し、ユーザー エージェントが "iPhone" に設定されていることを確認して、 *AllTags* ビューにアクセスします。Internet Explorer 11 F12 開発者ツールのエミュレーターを使用している場合は、エミュレーションを次のとおりに構成します。
 
@@ -276,7 +276,7 @@ ASP.NET MVC は 名前に "iPhone" サフィックスを含むビューを
 
 いま見たように、 *Speakers* ビューは読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。このセクションでは、 *AllSpeakers* ビューをモバイル対応に設定し、大きくてタップしやすいリンクが表示され、スピーカーをすばやく見つけることのできる検索ボックスを表示します。
 
-ブートストラップの[リンクされたリスト グループ][]のスタイリングを使用して、 *Speakers* ビューを強化します。 *Views\\Home\\AllSpeakers.cshtml* で、Razor ファイルの内容を次のコードに置き換えます。
+ブートストラップの[リンクされたリストグループ][]のスタイリングを使用して、 *Speakers* ビューを強化します。 *Views\\Home\\AllSpeakers.cshtml* で、Razor ファイルの内容を次のコードに置き換えます。
 
      @model IEnumerable<string>
 
@@ -622,9 +622,9 @@ AngularJS]** リンクをタップします。
 [CompletedProject]: http://go.microsoft.com/fwlink/?LinkID=398781&clcid=0x409
 [BootstrapSite]: http://getbootstrap.com/
 [WebPIAzureSdk23NetVS13]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/WebPIAzureSdk23NetVS13.png
-[リンクされたリスト グループ]: http://getbootstrap.com/components/#list-group-linked
+[linked list group]: http://getbootstrap.com/components/#list-group-linked
 [glyphicon]: http://getbootstrap.com/components/#glyphicons
-[パネル]: http://getbootstrap.com/components/#panels
+[panels]: http://getbootstrap.com/components/#panels
 [custom linked list group]: http://getbootstrap.com/components/#list-group-custom-content
 [グリッド システム]: http://getbootstrap.com/css/#grid
 [レスポンシブ ユーティリティ]: http://getbootstrap.com/css/#responsive-utilities

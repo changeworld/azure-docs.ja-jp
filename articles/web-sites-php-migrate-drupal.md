@@ -110,4 +110,5 @@ Azure Websites に Drupal をデプロイした後は、引き続き Git また�
   [Azure Integration Module (Azure 統合モジュール)]: http://drupal.org/project/azure
 
 
+
 <!--HONumber=42-->

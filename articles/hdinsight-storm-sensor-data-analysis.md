@@ -1356,4 +1356,5 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 * .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発](hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application.md)」を参照してください。
 
 [azure-portal]: https://manage.windowsazure.com/
+
 <!--HONumber=42-->

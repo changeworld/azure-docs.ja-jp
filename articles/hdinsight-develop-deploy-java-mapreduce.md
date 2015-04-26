@@ -614,4 +614,5 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
+
 <!--HONumber=42-->

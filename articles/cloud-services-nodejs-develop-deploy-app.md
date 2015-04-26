@@ -29,7 +29,7 @@ Azure のスケーラブルなクラウド アプリケーションの構成要�
 アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。  クラウド サービス 
 は、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
 
-クラウド サービスの詳細と Azure の Web サイトおよび仮想マシンとの違いについては、「[Azure の Web サイト、クラウド サービス、および仮想マシンの比較](http://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/)」を参照してください。
+クラウド サービスの詳細と Azure の Web サイトおよび仮想マシンとの違いについては、「[Azure の Web サイト、クラウド サービス、および仮想マシンの比較](http://azure.microsoft.com/ documentation/articles/choose-web-site-cloud-service-vm/)」を参照してください。
 
 >[AZURE.TIP] 単純な Web サイトを構築する場合実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、 <a href="/ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/">軽量の Azure の Web サイトを使用することを検討してください。</a> Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
 

@@ -224,4 +224,5 @@ Python Tools for Visual Studio、Bottle、Azure テーブル ストレージの�
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
 
 
+
 <!--HONumber=42-->

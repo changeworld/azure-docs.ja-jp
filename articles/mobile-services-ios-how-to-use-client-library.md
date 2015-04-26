@@ -530,4 +530,5 @@ _(省略可能) このセクションでは、属性を使用してデータ型�
 [Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
 
 
+
 <!--HONumber=42-->

@@ -1,6 +1,6 @@
 ﻿<properties 
-   pageTitle="Traffic Manager の監視"
-   description="この記事は、Traffic Manager の監視について理解し、これを構成するために役立ちます。"
+   pageTitle="Traffic Manager の監視
+   description="この記事は、Traffic Manager の監視について理解し、これを構成するために役立ちます。
    services="traffic-manager"
    documentationCenter=""
    authors="cherylmc"

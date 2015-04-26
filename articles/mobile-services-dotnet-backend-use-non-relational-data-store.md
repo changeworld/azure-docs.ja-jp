@@ -121,4 +121,5 @@
 [テーブル サービスとは]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#what-is
 [MongoLab アドオンのページ]: /ja-jp/gallery/store/mongolab/mongolab
 
+
 <!--HONumber=42-->

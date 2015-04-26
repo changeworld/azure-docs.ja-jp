@@ -4,4 +4,5 @@
 
 カスタム ドメイン名が Traffic Manager にルーティングされているため、Web サイトが Traffic Manager のエンドポイントとしてまだ追加されていない場合は、名前を適切に解決するためにエンドポイントとして追加する必要があります。これにより、Traffic Manager によって対象の Web サイトにルーティングされます。Traffic Manager のプロファイルに Web サイトをエンドポイントとして追加する方法については、「[エンドポイントの追加と削除](http://msdn.microsoft.com/library/windowsazure/hh744839.aspx)」を参照してください。
 
-> [AZURE.NOTE] エンドポイントを追加する際に Web サイトが表示されない場合は、Web サイトが標準モードに構成されていることを確認します。Web サイトを Traffic Manager で操作するには、標準モードを使用する必要があります。<!--HONumber=42-->
+> [AZURE.NOTE] エンドポイントを追加する際に Web サイトが表示されない場合は、Web サイトが標準モードに構成されていることを確認します。Web サイトを Traffic Manager で操作するには、標準モードを使用する必要があります。
+<!--HONumber=42-->

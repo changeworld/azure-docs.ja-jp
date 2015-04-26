@@ -1,4 +1,5 @@
-<properties pageTitle="Notification Hubs によるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)" description="Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。" services="notification-hubs" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
+<properties 
+	pageTitle="通知ハブによるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)" description="Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。" services="notification-hubs" documentationCenter="" authors="ggailey777" manager="dwrede" editor=""/>
 
 <tags 
 	ms.service="notification-hubs" 
@@ -11,7 +12,7 @@
 # Notification Hubs によるユーザーへのクロスプラットフォーム通知の送信
 
 
-前のチュートリアル「[通知ハブによるユーザーへの通知]」では、認証された特定のユーザーにより登録されたすべてのデバイスにプッシュ通知を行う方法について説明しました。そのチュートリアルでは、サポートされる各クライアント プラットフォームに通知を送信するため、複数の要求が必要でした。Notification Hubs では、テンプレートがサポートされています。テンプレートを使用すると、特定のデバイスが通知を受信する方法を指定できます。これにより、クロスプラットフォーム通知の送信が簡単になります。このトピックでは、テンプレートを活用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を示します。テンプレートの詳細については、「[Notification Hubs の概要][テンプレート]」を参照してください。
+前のチュートリアル「[Notification Hubs によるユーザーへの通知]」では、認証された特定のユーザーにより登録されたすべてのデバイスにプッシュ通知を行う方法について説明しました。そのチュートリアルでは、サポートされる各クライアント プラットフォームに通知を送信するため、複数の要求が必要でした。Notification Hubs では、テンプレートがサポートされています。テンプレートを使用すると、特定のデバイスが通知を受信する方法を指定できます。これにより、クロスプラットフォーム通知の送信が簡単になります。このトピックでは、テンプレートを活用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を示します。テンプレートの詳細については、「[Notification Hubs の概要][テンプレート]」を参照してください。
 
 > [AZURE.NOTE] Notification Hubs を使用すると、デバイスでは同じタグを持つ複数のテンプレートを登録できます。この場合、そのタグをターゲットとするメッセージが受信されると複数の通知がデバイスに配信されます (テンプレートごとに 1 つずつ)。これにより、複数のビジュアル通知に同じメッセージを表示することが可能になります (Windows ストア アプリケーションでバッジおよびトースト通知の両方として表示するなど)。
 
@@ -19,7 +20,7 @@
 
 1. Visual Studio のソリューション エクスプローラーで **Controllers** フォルダーを展開し、RegisterController.cs ファイルを開きます。 
 
-2. **Post** メソッドで新しい登録を作成するコード ブロックを見つけて、 `switch` コンテンツを次のコードに置き換えます。
+2. **Post** メソッドで新しい登録を作成するコード ブロックを見つけて、 `switch` の内容を次のコードに置き換えます。
 
 		switch (deviceUpdate.Platform)
         {
@@ -79,9 +80,9 @@
 
 + **[Notification Hubs を使用したニュース速報の送信]** <br/>テンプレートと使用した別のシナリオを例示します。 
 
-+  **[Notification Hubs の概要](テンプレート)**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
++  **[Notification Hubs の概要][テンプレート]**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
 
-+  **[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア)]**<br/>テンプレートの記述言語のリファレンスが含まれます。
++  **[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]**<br/>テンプレートの記述言語のリファレンスが含まれます。
 
 
 
@@ -93,15 +94,15 @@
 
 
 <!-- URLs. -->
-[ASP.NET ユーザーへのプッシュ通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
-[Mobile Services ユーザーへのプッシュ通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users/
+[ASP.NET ユーザーへのプッシュ通知の送信]: /manage/services/notification-hubs/notify-users-aspnet
+[Mobile Services ユーザーへのプッシュ通知の送信]: /manage/services/notification-hubs/notify-users/
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
 [管理ポータル]: https://manage.windowsazure.com/
-[Notification Hubs を使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
-[通知ハブによるユーザーへの通知]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
+[Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [テンプレート]: http://go.microsoft.com/fwlink/p/?LinkId=317339
-[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[Notification Hubs How-To for Windows Store (方法: Notification Hubs (Windows ストア))]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

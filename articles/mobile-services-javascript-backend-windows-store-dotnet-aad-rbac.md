@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | モバイル デベロッパー センター" 
 	description="Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。" 
 	documentationCenter="windows" 
@@ -61,7 +61,7 @@
 
 このセクションでは、Git を使用して  *rbac.js* という名前の共有スクリプト ファイルをモバイル サービスにデプロイします。この共有スクリプト ファイルには、[Graph API] を使用してユーザーのグループ メンバーシップを確認する関数が含まれています。 
 
-Git でモバイル サービスにスクリプトをデプロイすることに慣れていない場合は、このセクションを完了する前に、[サーバー スクリプトの格納)]に関するチュートリアルを見直してください。
+Git でモバイル サービスにスクリプトをデプロイすることに慣れていない場合は、このセクションを完了する前に、[ソース管理へのサーバー スクリプトの保存]に関するチュートリアルを見直してください。
 
 1. モバイル サービスのローカル リポジトリの *./service/shared/* ディレクトリに  *rbac.js* という名前の新しいスクリプト ファイルを作成します。
 2.  `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。 *tenant_domain*、統合アプリケーションの  *client id*、およびアプリケーションの *キー*を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
@@ -279,10 +279,14 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [ディレクトリ統合]: http://msdn.microsoft.com/library/azure/jj573653.aspx
 [ソース管理へのプロジェクト コードの保存]: mobile-services-store-scripts-source-control.md
+[ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
-[Graph API] に関するリファレンス: http://msdn.microsoft.com/library/azure/hh974478.aspx
-[Graph API のエラー リファレンス]に関するページ: http://msdn.microsoft.com/library/azure/hh974480.aspx
+[Graph API に関するリファレンス]: http://msdn.microsoft.com/library/azure/hh974478.aspx
+[Graph API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
+[Graph API のエラー リファレンスに関するページ]: http://msdn.microsoft.com/library/azure/hh974480.aspx
+[Graph API のエラー コード]: http://msdn.microsoft.com/library/azure/hh974480.aspx
 [グループ メンバーシップの確認 (推移的)]: http://msdn.microsoft.com/library/azure/dn151601.aspx
+[IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info.md
 
 <!--HONumber=49-->

@@ -28,4 +28,5 @@ APNS と連携するようにモバイル サービスが構成されました�
 
 <!-- URLs. -->
 [Azure 管理ポータル]: https://manage.windowsazure.com/
+
 <!--HONumber=42-->

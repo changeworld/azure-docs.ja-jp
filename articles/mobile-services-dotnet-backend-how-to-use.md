@@ -34,4 +34,5 @@ Mobile Services .NET バックエンドは、データベース ストレージ�
 
 このプログラミング モデルの根幹となるのは [**TableController<T>**](http://msdn.microsoft.com/library/dn643359.aspx) クラスです。これは単なる通常の Web API [**ApiController**](http://msdn.microsoft.com/library/system.web.http.apicontroller.aspx) で、CRUD のデータ アクセス パターンに合わせてカスタマイズでされます。**TableController** では、SQL ([Entity Framework](http://msdn.microsoft.com/data/ef.aspx) 経由)、[Azure テーブル ストレージ](http://azure.microsoft.com/documentation/services/storage/)、[MongoDB](http://www.mongodb.org)、または独自のカスタム ストアを含む、さまざまなデータ ストアを使用できます。
 
+
 <!--HONumber=42-->

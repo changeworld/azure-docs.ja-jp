@@ -662,4 +662,5 @@ promise はいくつかの異なる方法で使用することができます。
 [OData システム クエリ オプションのリファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
 
+
 <!--HONumber=42-->

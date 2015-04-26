@@ -187,4 +187,5 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Meet Jenkins (Jenkins について)]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
   [ms-open-tech]: http://msopentech.com
+
 <!--HONumber=42-->

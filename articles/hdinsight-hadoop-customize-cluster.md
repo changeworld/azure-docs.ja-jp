@@ -141,8 +141,8 @@ HDInsight には、HDInsight クラスターに次の各コンポーネントを
 
 - **Spark のインストール**。[HDInsight クラスターへの Spark のインストール][hdinsight-install-spark]に関するページを参照してください。
 - **R のインストール**。[HDInsight クラスターへの R のインストール][hdinsight-install-r]に関するページを参照してください。
-- **Solr のインストール**。[HDInsight クラスターに Solr をインストールして使用します。](../hdinsight-hadoop-solr-install)
-- **Giraph のインストール**。[HDInsight クラスターに Giraph をインストールして使用します。](../hdinsight-hadoop-giraph-install)
+- **Solr のインストール**。[HDInsight クラスターに Solr をインストールして使用します。](hdinsight-hadoop-solr-install.md)
+- **Giraph のインストール**。[HDInsight クラスターに Giraph をインストールして使用します。](hdinsight-hadoop-giraph-install.md)
 
 ## <a name="support"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
 Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。Azure サポート FAQ Web サイトのサポート範囲のセクションでも説明しているように、Microsoft Azure では、 <a href="http://azure.microsoft.com/support/faq/" target="_blank">オープン ソース テクノロジについて一般的なレベルのサポートを提供しています</a>。これに加え、HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
@@ -174,4 +174,5 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Stages during cluster provisioning"
+
 <!--HONumber=42-->

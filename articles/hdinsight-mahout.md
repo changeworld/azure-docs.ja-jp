@@ -420,4 +420,5 @@ HDInsight 3.1 に Mahout が含まれていますが、パスとファイル名�
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
 [tools]: https://github.com/Blackmist/hdinsight-tools
+
 <!--HONumber=42-->

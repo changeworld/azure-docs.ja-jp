@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
 	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
@@ -38,7 +38,7 @@
 5. [スケジュールされたジョブをローカルでテストする]
 6. [サービスを発行してジョブを登録する]
 
->[AZURE.NOTE]このチュートリアルでは、サード パーティの LINQ to Twitter ライブラリを使用して、Twitter v1.1API への OAuth 2.0 アクセスを簡単にします。このチュートリアルを完了するには、LINQ to Twitter の NuGet パッケージをダウンロードしてインストールする必要があります。詳細については、[LINQ to Twitter の CodePlex プロジェクトに関するページ](mobile-services-dotnet-backend-use-code-first-migrations.md)を参照してください。
+>[AZURE.NOTE]このチュートリアルでは、サード パーティの LINQ to Twitter ライブラリを使用して、Twitter v1.1API への OAuth 2.0 アクセスを簡単にします。このチュートリアルを完了するには、LINQ to Twitter の NuGet パッケージをダウンロードしてインストールする必要があります。詳細については、[LINQ to Twitter の CodePlex プロジェクトに関するページ]を参照してください。
 
 ##<a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
 
@@ -102,7 +102,7 @@
 
 	DbSet に最初にアクセスしたときにデータベース内に作成される Updates テーブルは、ツイート データを格納する目的でサービスによって使用されます。  
 
-	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法](mobile-services-dotnet-backend-use-code-first-migrations.md)に関するページを参照してください。.  
+	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法]に関するページを参照してください。(mobile-services-dotnet-backend-use-code-first-migrations.md).  
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納することを目的とした、スケジュールされたジョブを作成します。
 
@@ -272,7 +272,7 @@
 
 	>[AZURE.NOTE]引き続き POST 要求を使用して、スケジュールされたジョブを開始することができます。ただし、認証の既定はユーザーを対象にしており、要求のヘッダーにアプリケーション キーを含める必要があることを意味します。
 
-4. (省略可能) [Azure の管理ポータル][]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
+4. (省略可能) [Azure の管理ポータル]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
     ![][6]
 
@@ -303,7 +303,7 @@
 [9]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/mobile-service-try-this-out.png
 
 <!-- URLs. -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services での Twitter ログイン用のアプリケーションの登録]: mobile-services-how-to-register-twitter-authentication.md
 [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7

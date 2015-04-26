@@ -149,4 +149,5 @@ Microsoft Azure Websites では、急速に発展を続ける環境において�
 Microsoft Azure Web サイト サービスの詳細については、[http://aka.ms/enterprisewebsites](http://aka.ms/enterprisewebsites) にアクセスすれば情報が得られます。また、[http://aka.ms/azuretrial](http://aka.ms/azuretrial) で無料評価版にサインアップし、このサービスがビジネスにどのように役立つか評価してください。
 
 
+
 <!--HONumber=42-->

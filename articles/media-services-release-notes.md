@@ -107,7 +107,7 @@ Azure Media Services .NET SDK が 3.1.0.0 にバージョン アップしまし�
 - ライブ スムーズ ストリーミング (FMP4) コンテンツの SSL 接続での取り込みに メディア サービス が対応しました。SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。ライブ ストリーミングの詳細については、[Azure メディア サービス ライブ ストリーミングの操作]をご覧ください。
 - RTMP ライブ ストリームについては現在、SSL 接続で取り込むことはできません。
 - SSL 接続経由でコンテンツのストリーミングもできます。そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。
-- SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。"origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。URL が旧形式である場合、SSL ストリーミングに対応するためには、[新しいストリーミング エンドポイント](http://azure.microsoft.com/documentation/articles/media-services-manage-origins/)を作成してください。SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
+- SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。"origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。URL が旧形式である場合、SSL ストリーミングに対応するためには、[新しいストリーミング エンドポイント](http://azure.microsoft.com/ documentation/articles/media-services-manage-origins/)を作成してください。SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
    
 ##<a id="october_changes_14"></a>2014 年 10 月のリリース
 

@@ -678,4 +678,5 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [img-hdi-cluster]: ./media/hdinsight-provision-clusters/HDI.Cluster.png
 
   [89e2276a]: /ja-jp/documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
+
 <!--HONumber=42-->

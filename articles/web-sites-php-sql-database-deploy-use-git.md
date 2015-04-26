@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="SQL Database と Git を使用した PHP Web サイト - Azure チュートリアル" 
 	description="SQL Database にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" 
 	services="web-sites, sql-database" 
@@ -239,7 +239,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 	$db = "<value of DATABASE>";
 
 > [AZURE.NOTE]
-> [[CO1] <code>$host</code>の SERVER の値は、 <code>tcp:</code>で始める必要があります。また、 <code>$user</code> には、USERNAME の値と '@'、さらに、該当するサーバー ID を連結した値を指定します。サーバー ID は、SERVER の値の先頭 10 文字です。
+> <code>$host</code>の SERVER の値は、 <code>tcp:</code>で始める必要があります。また、 <code>$user</code> には、USERNAME の値と '@'、さらに、該当するサーバー ID を連結した値を指定します。サーバー ID は、SERVER の値の先頭 10 文字です。
 
 
 これで、Git 発行を設定してアプリケーションを発行する準備ができました。
@@ -302,5 +302,6 @@ Registration アプリケーションは、名前と電子メール アドレス
 [where-is-code]: ./media/web-sites-php-sql-database-deploy-use-git/setupgit.png
 
 
+
 <!--HONumber=42-->
-[CO1]please pay attention during post edit.
+

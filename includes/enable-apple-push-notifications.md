@@ -130,4 +130,4 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![](./media/enable-apple-push-notifications/mobile-services-ios-push-step17.png)
 
-<!--HONumber=47-->
+<!--HONumber=49-->

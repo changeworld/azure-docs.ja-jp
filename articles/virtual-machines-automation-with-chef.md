@@ -1,5 +1,5 @@
 ﻿<properties 
-   pageTitle="Chef で Azure 仮想マシンのデプロイを自動化する" 
+   pageTitle="Chef で Azure 仮想マシンのデプロイを自動化する 
    description="Chef で Azure 仮想マシンのデプロイを自動化する方法" 
    services="virtual-machines" 
    documentationCenter="" 

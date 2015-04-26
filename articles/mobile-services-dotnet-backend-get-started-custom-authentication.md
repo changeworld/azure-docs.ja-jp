@@ -321,4 +321,5 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 
+
 <!--HONumber=42-->

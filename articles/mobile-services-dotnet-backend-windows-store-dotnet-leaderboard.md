@@ -776,4 +776,5 @@ App.xaml.cs ファイルを開き、`App` クラスに **MobileServiceClient** �
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
 
 
+
 <!--HONumber=42-->

@@ -102,4 +102,5 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Azure Mobile Services 向け .NET クライアントを使用する方法]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
 
 
+
 <!--HONumber=42-->

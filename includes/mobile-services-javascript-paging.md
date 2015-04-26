@@ -53,4 +53,5 @@
    	クエリの URI では、**skip(3)** メソッドがクエリ オプション **$skip=3** に変換されていることに注目してください。
 
 <!-- URLs -->
-[Fiddler]: http://go.microsoft.com/fwlink/?LinkID=262412<!--HONumber=42-->
+[Fiddler]: http://go.microsoft.com/fwlink/?LinkID=262412
+<!--HONumber=42-->

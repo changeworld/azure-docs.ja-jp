@@ -38,4 +38,5 @@
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
+
 <!--HONumber=42-->

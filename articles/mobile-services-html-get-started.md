@@ -163,4 +163,5 @@
 [クロス オリジン リソース共有]: http://msdn.microsoft.com/library/windowsazure/dn155871.aspx
 
 
+
 <!--HONumber=42-->

@@ -39,7 +39,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、[Mobile Services の使用]に関するチュートリアルを完了している必要があります。 
 
-##<a name="install-storage-client"></a>Windows ストア アプリ用のストレージ クライアントのインストール
+## <a name="install-storage-client"></a>Windows ストア アプリ用のストレージ クライアントのインストール
 
 SAS を使用して Blob ストレージにイメージをアップロードできるようにするには、最初に、Windows ストア アプリ用のストレージ クライアント ライブラリをインストールする NuGet パッケージを追加する必要があります。
 
@@ -53,7 +53,7 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
 次に、イメージをキャプチャおよびアップロードするクイック スタート アプリケーションを更新します。
 
-##<a name="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
+## <a name="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
 
 [AZURE.INCLUDE [mobile-services-configure-blob-storage](../includes/mobile-services-configure-blob-storage.md)]
 
@@ -104,6 +104,7 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 [ストア アプリケーション用の Azure ストレージ クライアント ライブラリ]: http://go.microsoft.com/fwlink/p/?LinkId=276866 
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
 [アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+
 
 
 <!--HONumber=42-->

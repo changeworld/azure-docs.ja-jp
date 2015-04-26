@@ -194,4 +194,5 @@ HDInsight の Hadoop を試す場合は、[HDInsight のドキュメント ペ�
 [component-versioning]: ../hdinsight-component-versioning/
 
 [zookeeper]: http://zookeeper.apache.org/ 
+
 <!--HONumber=42-->

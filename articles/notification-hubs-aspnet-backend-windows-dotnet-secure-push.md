@@ -1,8 +1,8 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Notification Hubs の安全なプッシュ" 
 	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
 	documentationCenter="windows" 
-	authors="ggailey777" 
+	authors="wesmc7777" 
 	manager="dwrede" 
 	editor="" 
 	services="notification-hubs"/>
@@ -13,15 +13,17 @@
 	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/24/2014" 
-	ms.author="glenga"/>
+	ms.date="02/24/2015" 
+	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/ja-jp/documentation/articles/notification-hubs-windows-dotnet-secure-push/" title="Windows Universal" class="current">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a>
-		<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
+    	<a href="/documentation/articles/notification-hubs-windows-dotnet-secure-push/" title="Windows Universal" class="current">Windows Universal</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a>
+		<a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
 </div>
+
+##概要
 
 Microsoft Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。 
 
@@ -40,7 +42,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは **ユーザーへの通知** チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Windows ストア)](http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)」での説明に従って通知が作成され、構成されていると想定しています。
+> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」での説明に従って通知ハブが作成され、構成されていると想定しています。
 また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
@@ -184,4 +186,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

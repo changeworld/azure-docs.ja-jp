@@ -270,4 +270,5 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/
 
 
+
 <!--HONumber=42-->

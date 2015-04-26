@@ -278,4 +278,5 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 既定では提供されない Python モジュールを読み込む必要がある場合は、方法を「[How to deploy a Python module to Windows Azure HDInsight (Python モジュールを Windows Azure HDInsight にデプロイする方法)](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)」で参照してください。
 
 PowerShell を使用せずに HDInsight のジョブをリモートで実行する場合は、「[How to use HDInsight from Linux (Linux から HDInsight を使用する方法)](http://blogs.msdn.com/b/benjguin/archive/2014/02/18/how-to-use-hdinsight-from-linux.aspx)」で、WebHCat REST API を通じて Python を使用する例を参照してください。
+
 <!--HONumber=42-->

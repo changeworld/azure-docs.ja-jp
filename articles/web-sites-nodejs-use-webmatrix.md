@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="WebMatrix を使用した Node.js Web サイト - Azure チュートリアル" 
 	description="WebMatrix を使用して Node.js アプリケーションを作成し、Azure の Web サイトにデプロイする方法を示すチュートリアル。" 
 	services="web-sites" 
@@ -100,7 +100,7 @@ Azure Website を作成するには、次のステップに従います。
 
 ##次のステップ
 
-Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](nodejs-specify-node-version-azure-apps.md).」をご覧ください。[CO1]
+Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](nodejs-specify-node-version-azure-apps.md).」をご覧ください。
 
 Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/Debug-Website/)」をご覧ください。
 
@@ -138,5 +138,6 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 [nodesitefromtemplateazure]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-node-site-azure.png
 
 
+
 <!--HONumber=42-->
-[CO1]placeholder 220 contains ").". Please pay attention to this segment during post-edit.
+

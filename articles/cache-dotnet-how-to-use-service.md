@@ -67,7 +67,7 @@ Managed Cache Service インスタンスを作成するには、Azure PowerShell
 
 [Add-AzureAccount][] コマンドレットを呼び出し、使用しているアカウントに関連付けられた電子メール アドレスとパスワードを入力します。[Add-AzureAccount][] コマンドレットを呼び出すと、サブスクリプションが既定で選択されて表示されます。サブスクリプションを変更するには、[Select-AzureSubscription][] コマンドレットを呼び出します。
 
->アカウントの証明書を使用して Azure PowerShell を構成した場合は、このステップを省略できます。Azure PowerShell と Azure アカウントの接続の詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
+>アカウントの証明書を使用して Azure PowerShell を構成した場合は、このステップを省略できます。Azure PowerShell と Azure アカウントの接続の詳細については、「[Azure PowerShell のインストールと構成方法][]」を参照してください。
 
 サブスクリプションが既定で選択されて表示されます。サブスクリプションを変更するには、[Select-AzureSubscription][] コマンドレットを呼び出します。
 
@@ -182,7 +182,7 @@ Cache NuGet パッケージを使用してクライアント アプリケーシ�
 
 NuGet パッケージは、いくつかの処理を行います。アプリケーションの構成ファイルに必要な構成を追加したり、必要なアセンブリ参照を追加したりします。クラウド サービス プロジェクトの場合、クラウド サービスの ServiceConfiguration.cscfg ファイルにキャッシュ クライアント診断レベル設定も追加します。
 
->ASP.NET Web プロジェクトでは、Cache NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[How To:ASP.NET セッション状態をキャッシュに格納する]」および「[How To:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
+>ASP.NET Web プロジェクトでは、Cache NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法:ASP.NET セッション状態をキャッシュに格納する]」および「[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する][]
 
 NuGet パッケージは、次の構成要素をロールの web.config または app.config に追加します。**dataCacheClients** セクションおよび **cacheDiagnostics** セクションは、**configSections** 要素の下に追加されます。**configSections** 要素が存在しない場合は、**configuration** 要素の子として作成されます。
 
@@ -357,7 +357,7 @@ Azure Cache:
 <a name="store-session"></a>
 ## 方法:ASP.NET セッション状態をキャッシュに格納する
 
-Azure のキャッシュ用のセッション状態プロバイダーは、ASP.NET アプリケーション用のプロセス外ストレージ メカニズムです。このプロバイダーを使用すると、セッション状態をメモリ内や SQL Server データベース内ではなく、Azure のキャッシュ内に格納できます。キャッシュ セッション状態プロバイダーを使用するには、まずキャッシュを構成し、次に「[Managed Cache Service の概要][]」で説明されているように Cache NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。Cache NuGet パッケージをインストールすると、コメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが Azure のキャッシュ用のセッション状態プロバイダーを使用するために必要な構成が含まれています。
+Azure のキャッシュ用のセッション状態プロバイダーは、ASP.NET アプリケーション用のプロセス外ストレージ メカニズムです。このプロバイダーを使用すると、セッション状態をメモリ内や SQL Server データベース内ではなく、Azure のキャッシュ内に格納できます。キャッシュ セッション状態プロバイダーを使用するには、まずキャッシュを構成し、次に「[マネージ キャッシュ サービスの概要][]」で説明されているように Cache NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。Cache NuGet パッケージをインストールすると、コメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが Azure のキャッシュ用のセッション状態プロバイダーを使用するために必要な構成が含まれています。
 
     <!--Uncomment this section to use Azure Caching for session state caching
     <system.web>
@@ -453,11 +453,11 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
   
    
 <!-- LINKS -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [方法: プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[Azure のキャッシュのセッション状態プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320835
+[Azure Cache のセッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache: セッション状態のキャッシュ]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[Azure のキャッシュの出力キャッシュ プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320837
+[Azure Cache 用キャッシュ プロバイダーの出力]: http://go.microsoft.com/fwlink/?LinkId=320837
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
@@ -466,13 +466,13 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
 [方法: 宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [方法: プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Azure マネージ キャッシュ サービスの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Azure Managed Cache Service の概要]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Managed Cache Service]: http://go.microsoft.com/fwlink/?LinkId=320830
 [OutputCache ディレクティブ]: http://go.microsoft.com/fwlink/?LinkId=251979
-[Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
+[トラブルシューティングと診断]: http://go.microsoft.com/fwlink/?LinkId=320839
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
 [キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
 [キャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
 [容量計画]: http://go.microsoft.com/fwlink/?LinkId=320167
 [有効期限と削除]: http://go.microsoft.com/fwlink/?LinkId=317278
@@ -482,7 +482,7 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Managed Cache Service のサンプル]: http://go.microsoft.com/fwlink/?LinkId=320840
 [New-AzureManagedCache]: http://go.microsoft.com/fwlink/?LinkId=400495
 [Azure Managed Cache コマンドレット]: http://go.microsoft.com/fwlink/?LinkID=398555
-[Azure PowerShell のインストールおよび構成方法]: http://go.microsoft.com/fwlink/?LinkId=400494
+[Azure PowerShell のインストールと構成方法]: http://go.microsoft.com/fwlink/?LinkId=400494
 [Add-AzureAccount]: http://msdn.microsoft.com/library/dn495128.aspx
 [Select-AzureSubscription]: http://msdn.microsoft.com/library/dn495203.aspx
 

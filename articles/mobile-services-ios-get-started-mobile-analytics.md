@@ -102,4 +102,5 @@ Capptain がアプリに対して実行できる機能の詳細については�
 [Mobile Services Standard レベル]: /ja-jp/pricing/details/mobile-services/
 
 
+
 <!--HONumber=42-->

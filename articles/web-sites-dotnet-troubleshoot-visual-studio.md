@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Visual Studio を使用した Azure Web App Service のトラブルシューティング" 
 	description="Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、Azure の Web アプリケーションのトラブルシューティングを行う方法について説明します。" 
 	services="app-service\web" 
@@ -207,9 +207,9 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 	![Set breakpoint](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
-1. In **Solution Explorer**, right-click the web project (not the WebJob project), and click **Publish**.
+1. ソリューション エクスプローラー で目的の Web プロジェクト (Web ジョブ プロジェクトではなく) を右クリックし、 [発行] をクリックします。
 
-2. In the **Profile** drop-down list, select the same profile that you used in [Get Started with the Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md)。
+2. [プロファイル]  ボックスの一覧から、「Azure Web ジョブ SDK の使用 」で使用したのと同じプロファイルを選択します。[Get Started with the Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md)。
 
 3. **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、**[発行]** をクリックします。
 

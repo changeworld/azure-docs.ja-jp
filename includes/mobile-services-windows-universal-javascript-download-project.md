@@ -19,4 +19,5 @@
 
 	![](./media/mobile-services-windows-universal-dotnet-download-project/mobile-quickstart-startup-wp8.png)
 
-7. 手順 3 と 4 を繰り返して、サンプルが同じように動作することを確認します。<!--HONumber=42-->
+7. 手順 3 と 4 を繰り返して、サンプルが同じように動作することを確認します。
+<!--HONumber=42-->

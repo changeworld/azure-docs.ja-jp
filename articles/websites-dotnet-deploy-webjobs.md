@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Visual Studio を使用して Web ジョブを展開する" 
 	description="Visual Studio を使用して Azure Web ジョブを Azure App Service の Web アプリケーションにデプロイする方法について説明します。" 
 	services="app-service\web" 
@@ -127,7 +127,7 @@ SDK 2.4 リリースでは、Web ジョブの新しいプロジェクト テン�
 
 ![Add Azure WebJob dialog](./media/websites-dotnet-deploy-webjobs/aaw2.png)
 
-The fields in this dialog correspond to fields on the **New Job** dialog of the Azure Management Portal. For more information, see [Run Background tasks with WebJobs](web-sites-create-web-jobs.md)。
+このダイアログのフィールドは、Azure の管理ポータルの [新しいジョブ] ダイアログのフィールドに対応しています。 詳細については、[Run Background tasks with WebJobs](web-sites-create-web-jobs.md)。
 
 スケジュールされた Web ジョブの場合 (継続的な Web ジョブではなく)、Visual Studio は [Azure Scheduler](/services/scheduler/) ジョブ コレクションが存在しない場合はコレクションを作成し、コレクション内にジョブを作成します。
 

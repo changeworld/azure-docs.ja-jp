@@ -171,4 +171,5 @@ Azure ストレージ API を直接操作する場合は、 `CloudStorageAccount
 このガイドでは、Azure のテーブルを操作するための一般的なシナリオを処理する方法を示すコード サンプルを提供しています。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、「[Azure Web Jobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
 
 
+
 <!--HONumber=42-->

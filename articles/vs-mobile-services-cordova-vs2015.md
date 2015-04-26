@@ -63,4 +63,5 @@ Visual Studio 2015 Preview の Cordova プロジェクトで Azure Mobile Servic
 
 [1]: ./media/vs-mobile-services-cordova-vs2015/AzureMobileServicesPlugIn.png 
 
+
 <!--HONumber=42-->

@@ -622,4 +622,5 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure の Media Services ポスター]: http://azure.microsoft.com/documentation/infographics/media-services/
 
+
 <!--HONumber=42-->

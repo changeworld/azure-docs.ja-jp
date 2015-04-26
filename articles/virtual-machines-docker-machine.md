@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
    pageTitle="Azure で docker マシンを使用する方法" 
    description="Azure で Ubuntu の docker マシンを起動して実行する方法について説明します。" 
    services="virtual-machines" 
@@ -53,7 +53,8 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 		openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 		openssl pkcs12 -export -out mycert.pfx -in mycert.pem -name "My Certificate"
 
-	Be ready here to enter the export password for your certificate and capture it for future usage. Then type:
+	ここで証明書のエクスポート パスワードを入力し、今後の使用に備えて保存します。その後、次を入力します。
+
 
 		openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 

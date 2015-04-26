@@ -256,4 +256,5 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/
 
 
+
 <!--HONumber=42-->

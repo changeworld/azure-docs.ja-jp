@@ -298,4 +298,5 @@ Hive の使用法の詳細については、[HDInsight での Hive の使用][hd
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
 
+
 <!--HONumber=42-->
