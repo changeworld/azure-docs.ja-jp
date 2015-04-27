@@ -1,16 +1,23 @@
-<properties pageTitle="Azure Notification Hubs の使用" description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" services="notification-hubs" documentationCenter="android" authors="RickSaling" manager="dwrede" editor=""/>
-
+<properties 
+	pageTitle="Azure Notification Hubs の使用" 
+	description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" 
+	services="notification-hubs" 
+	documentationCenter="android" 
+	authors="RickSaling" 
+	manager="dwrede" 
+	editor=""/>
 <tags 
 	ms.service="notification-hubs" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="11/21/2014" 
+	ms.date="03/15/2014" 
 	ms.author="ricksal"/>
+
 # Notification Hubs の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/notification-hubs-android-get-started/" title="Android" class="current">Android</a><a href="/ja-jp/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/ja-jp/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
 
 このトピックでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。 
 このチュートリアルでは、Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
@@ -18,8 +25,8 @@
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
 * [Google Cloud Messaging を有効にする](#register)
-* [通知ハブを構成する](#configure-hub)
-* [通知ハブにアプリケーションを接続する](#connecting-app)
+* [Notification Hubs を構成する](#configure-hub)
+* [Notification Hubs にアプリケーションを接続する](#connecting-app)
 * [アプリケーションへの通知の送信方法](#send)
 * [アプリケーションのテスト](#run-app)
 
@@ -28,72 +35,46 @@
 このチュートリアルには、次のものが必要です。
 
 + Android SDK (前提条件として Eclipse を使用する必要があります)。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">ここ</a>からダウンロードできます。
-+ [Mobile Services Android SDK]
++ [モバイル サービス Android SDK]
 
 このチュートリアルを完了することは、Android アプリケーションの他のすべての通知ハブ チュートリアルの前提条件です。 
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F%20target="_blank")を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
 
-## <a id="register"></a>Google Cloud Messaging を有効にする
+##<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [GCM を有効にする](../includes/mobile-services-enable-Google-cloud-messaging.md)]
-
-次に、この API キー値を使用して、通知ハブが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
-
-## <a id="configure-hub"></a>通知ハブを構成する
-
-1. [Azure 管理ポータル]にログオンし、画面の下部にある **[+新規]** をクリックします。
-
-2. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
-
-   	![][7]
-
-3. 通知ハブの名前を入力して、目的のリージョンを選択し、**[新しい通知ハブを作成する]** をクリックします。
-
-   	![][8]
-
-4. 前の手順で作成した名前空間 (通常は***通知ハブ名*-ns**) をクリックし、上部にある **[構成]** タブをクリックします。
-
-   	![][9]
-
-5. 上部にある **[通知ハブ]** タブをクリックし、前の手順で作成した通知ハブをクリックします。
-
-   	![][10]
-
-6. 上部にある **[構成]** タブをクリックし、前のセクションで取得した **API キー**値を入力して、**[保存]** をクリックします。
-
-   	![][11]
-
-7. 上部にある **[ダッシュボード]** タブを選択し、**[接続文字列の表示]** をクリックします。2 つの接続文字列をメモします。
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 
-これで、通知ハブが GCM と連動するように構成されました。接続文字列にアプリケーションを登録し、プッシュ通知を送信できます。
+##<a id="configure-hub"></a>Notification Hub を構成する
 
-## <a id="connecting-app"></a>通知ハブにアプリケーションを接続する
+[AZURE.INCLUDE [notification-hubs-android-configure-push](../includes/notification-hubs-android-configure-push.md)]
 
-### 新しい Android プロジェクトの作成
+##<a id="connecting-app"></a>Notification Hub にアプリを接続する
+
+###新しい Android プロジェクトの作成
 
 1. Eclipse ADT で新しい Android プロジェクトを作成します ([File]、[New]、[Android Application])。
 
    	![][13]
 
-2. **[Minimum Required SDK]** が  *API 8: Android 2.2 (Froyo)* に設定され、次の 2 つの SDK エントリが使用可能な最新バージョンに設定されていることを確認します。[次へ] を選択し、ウィザードに従い、**[Create activity]** が選択されていることを確認して、空のアクティビティを作成します。次のボックスで既定のランチャー アイコンを受け入れ、最後のボックスで **[完了]** をクリックします。
+2.  **[最低限必要な SDK]** が  *API 8:Android 2.2 (Froyo)* に設定されていること、およびその次の 2 つの SDK 項目が利用可能な最新バージョンに設定されていることを確認します。[次へ] を選択し、ウィザードに従い、**[Create activity]** が選択されていることを確認して、空のアクティビティを作成します。次のボックスで既定のランチャー アイコンを受け入れ、最後のボックスで **[完了]** をクリックします。
 
    	![][14]
 
-### プロジェクトへの Google Play Services の追加
+###プロジェクトへの Google Play Services の追加
 
-[AZURE.INCLUDE [Play サービスの追加](../includes/mobile-services-add-Google-play-services.md)]
+[AZURE.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
-### コードの追加
+###コードの追加
 
 1. Notification Hubs Android SDK を<a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">ここ</a>からダウンロードします。.zip ファイルを展開し、Package Explorer で notificationhubs\notification-hubs-0.1.jar ファイルをプロジェクトの \libs ディレクトリにコピーします。
 
-2. [Mobile Services Android SDK] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-1.0.1.jar** ファイルを Eclipse プロジェクトの  *libs* フォルダーにコピーした後、 *libs* フォルダーを最新の情報に更新します。
+2. [モバイル サービス Android SDK] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-1.0.1.jar** ファイルを Eclipse プロジェクトの  *libs* フォルダーにコピーした後、 *libs* フォルダーを最新の情報に更新します。
 
     > [AZURE.NOTE] ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。
 
-	ここで、GCM から  *registrationId* を取得し、これを使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
+	ここで、GCM から  *registrationId* を取得し、registrationId を使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
 
 3. AndroidManifest.xml ファイルで、<uses-sdk/> 要素のすぐ下に次の行を追加します。`<your package>` を、手順 1 でアプリケーションに選択したパッケージに置き換えます (この例では `com.yourCompany.wams_notificationhubs`)。
 
@@ -121,7 +102,7 @@
 		private GoogleCloudMessaging gcm;
 		private NotificationHub hub;
 
-6. **OnCreate** メソッドで次のコードを追加し、プレースホルダーを、前のセクションで取得したリッスン アクセス権を持つ接続文字列と、(完全な URL **ではなく**) Azure でハブのページの最上部に表示される通知ハブの名前に置き換えます。
+6. **OnCreate** メソッドで次のコードを追加し、プレースホルダーを、前のセクションで取得したリッスン アクセス権を持つ接続文字列と、(完全な URL では**なく**) Azure でハブのページの最上部に表示される通知ハブの名前に置き換えます。
 
 		NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
@@ -163,9 +144,9 @@
         </receiver>
 
 
-9. Package Explorer で ( `src` ノードの下にある) パッケージを右クリックし、**[New]**、**[Class]** の順にクリックします。
+9. パッケージ エクスプローラーで ( `src` ノードの下にある) パッケージを右クリックし、**[New]**、**[Class]** の順にクリックします。
 
-10. **[Name]** に「 `MyHandler`」と入力し、**[Superclass]** に「 `com.microsoft.windowsazure.notifications.NotificationsHandler`」と入力します。**[Finish]** をクリックします。
+10. **[Name]** に  `MyHandler` と入力し、**[Superclass]** に  `com.microsoft.windowsazure.notifications.NotificationsHandler` と入力してから、**[Finish]** をクリックします。
 
 	![][6]
 
@@ -217,9 +198,9 @@
 		}
 	
 
-## <a name="send"></a>アプリケーションへの通知の送信方法
+##<a name="send"></a>アプリに通知を送信する方法
 
-Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知が送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「**Get started with push notifications in Mobile Services (Mobile Services でのプッシュ通知の使用)**」 ([.NET バックエンド](mobile-services-javascript-backend-android-get-started-push.md) | [JavaScript バックエンド](mobile-services-javascript-backend-android-get-started-push.md)) を参照してください。REST API を使用して通知を送信する方法の例については、「**Java/PHP から Notification Hubs を使用する方法**」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
+>[AZURE.NOTE]Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知が送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「[Mobile Services でのプッシュ通知の使用](mobile-services-javascript-backend-android-get-started-push.md)」を参照してください。REST API を使用して通知を送信する方法の例については、「[Java から Notification Hubs を使用する方法](notification-hubs-java-backend-how-to.md)」、 または、「[PHP から Notification Hubs を使用する方法](notification-hubs-php-backend-how-to.md)」を参照してください。.
 
 1. Visual Studio で、**[ファイル]** メニューから、**[新規作成]**、**[プロジェクト]** をクリックし、**[Visual C#]** で **[Windows]**、**[コンソール アプリケーション]**、**[OK]** の順にクリックします。  
 
@@ -258,7 +239,7 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/librar
          SendNotificationAsync();
 		 Console.ReadLine();
 
-## <a name="run-app"></a>アプリケーションのテスト
+##<a name="run-app"></a>アプリのテスト
 
 エミュレーターでアプリケーションをテストする前に、こうしたエミュレーターの構成手順を完了する必要があります (物理デバイスでテストする場合はスキップ)。
 
@@ -289,9 +270,9 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/librar
 
    	![][21]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
-この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Use Notification Hubs to push notifications to users (Notification Hubs を使用したユーザーへのプッシュ通知)]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
+この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
 
 
 <!-- Images. -->
@@ -301,11 +282,7 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/librar
 [4]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key3.png
 [5]: ./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png
 [6]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
-[7]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
-[8]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal2.png
-[9]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal.png
-[10]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal2.png
-[11]: ./media/notification-hubs-android-get-started/notification-hub-configure-android.png
+
 [12]: ./media/notification-hubs-android-get-started/notification-hub-connection-strings.png
 
 [13]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app.png
@@ -324,24 +301,13 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/librar
 [29]: ./media/mobile-services-android-get-started-push/mobile-eclipse-import-Play-library.png
 
 <!-- URLs. -->
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
-[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
-[アプリケーション ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-android
-[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android
-[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
+[モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [ライブラリ プロジェクトの参照]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-[Use Notification Hubs to push notifications to users (Notification Hubs を使用したユーザーへのプッシュ通知)]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
-[Notification Hubs を使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
+[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

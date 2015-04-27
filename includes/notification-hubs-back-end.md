@@ -1,6 +1,6 @@
-
+﻿
 このセクションでは、.NET コンソール アプリケーションおよびその他のアプリケーションから通知を送信する方法を示します。
-Mobile Services を使用している場合は、「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md)」のチュートリアルを参照してください。Java または PHP を使用する場合は、「[Java/PHP から Notification Hubs を使用する方法](notification-hubs-java-backend-how-to.md)」を参照してください。[通知ハブ REST インターフェイス]を使用することで、バックエンドから通知を送信できます。
+Mobile Services を使用している場合は、「[Mobile Services アプリへのプッシュ通知の追加]」の(../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md) チュートリアルを参照してください。Java または PHP を使用する場合は、「[Java/PHP から Notification Hubs を使用する方法](notification-hubs-java-backend-how-to.md) を参照してください。[通知ハブ REST インターフェイス]を使用することで、バックエンドから通知を送信できます。
 
 次のコードでは、Windows ストア デバイス、Windows Phone デバイス、iOS デバイス、Android デバイスに通知を送信します。 
 
@@ -92,13 +92,13 @@ Mobile Services を使用している場合は、「[Mobile Services アプリ�
 [16]: ./media/notification-hubs-back-end/notification-hub-scheduler2.png
 
 <!-- URLs. -->
-[get-started]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Use Notification Hubs to send notifications to users (Notification Hubs を使用したユーザーへの通知の送信)]: ../notificationhubs/tutorial-notify-users-mobileservices.md
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[get-started]: ../articles/notification-hubs-windows-store-dotnet-get-started.md
+[Use Notification Hubs to send notifications to users (通知ハブを使用したユーザーへの通知の送信)]: ../articles/tutorial-notify-users-mobileservices.md
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store (方法: 通知ハブ (Windows ストア アプリ))]: http://msdn.microsoft.com/library/jj927172.aspx
-[通知ハブ REST インターフェイス]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/jj927172.aspx
+[通知ハブの REST API]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!--HONumber=45--> 
+<!--HONumber=49-->

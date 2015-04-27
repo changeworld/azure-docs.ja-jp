@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="Azure での動作保証済み Linux ディストリビューション" 
 	description="Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、および SUSE に関する指針も含めて、説明します。" 
 	services="virtual-machines" 
@@ -22,7 +22,7 @@
 
 #Azure での動作保証済み Linux ディストリビューション
 
-Azure ギャラリーにあるディストリビューション イメージは、以下のパートナー様から提供されており、マイクロソフトはさまざまな Linux コミュニティと協力して動作保証済みディストリビューションの数を増やそうと努めています。ギャラリーから利用できないディストリビューションの場合も、[このページ](virtual-machines-linux-create-upload-vhd.md)の指針に従うことにより、いつでも独自の Linux を展開することができます。
+Azure ギャラリーにあるディストリビューション イメージは、以下のパートナー様から提供されており、マイクロソフトはさまざまな Linux コミュニティと協力して動作保証済みディストリビューションの数を増やそうと努めています。ギャラリーから利用できないディストリビューションの場合も、[このページ](virtual-machines-linux-create-upload-vhd.md)の指針に従うことにより、いつでも独自の Linux を展開することができます
 
 ## Canonical ##
  
@@ -51,7 +51,7 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 
 ## サポートされているバージョン ##
 
-次の表は、Azure 上での動作がテストされた各種ディストリビューションのバージョン、Linux Integration Services (LIS) ドライバー、および Azure Linux エージェントのバージョンを示しています。LIS ドライバーは、ディストリビューションのカーネルに既定で組み込まれているか、[ここ](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)で入手できます。Linux エージェントのバージョンは、ディストリビューションのパッケージのリポジトリか、[Github](https://github.com/azure/walinuxagent) で入手できます。
+次の表は、Azure 上での動作がテストされた各種ディストリビューションのバージョン、Linux Integration Services (LIS) ドライバー、および Azure Linux エージェントのバージョンを示しています。LIS ドライバーは、ディストリビューションのカーネルに既定で組み込まれているか、[ここ](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)で利用できます。Linux エージェントのバージョンは、ディストリビューションのパッケージのリポジトリか、[Github](https://github.com/azure/walinuxagent) で入手できます。
 
 この表には、Azure で最適な動作をするために一部のディストリビューション/カーネルのバージョンで必要な [Linux カーネル互換性パッチ](http://go.microsoft.com/fwlink/?LinkID=403027&clcid=0x409)のリンクも記載されています。
 
@@ -69,24 +69,23 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 		<td>カーネル内</td>
 		<td><a href="http://go.microsoft.com/fwlink/?LinkID=275152&amp;clcid=0x409">12.04 または 12.04.01 のみ必要</a></td>
 		<td>パッケージ:walinuxagent のパッケージ リポジトリ内 <br />
-			ソース:<a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
+			ソース: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
 			</tr>
 	<tr>
 		<th> CentOS by OpenLogic </th>
 		<td> CentOS 6.3+</td>
-	    <td>CentOS 6.3:<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS ドライバー</a>、CentOS 6.4 以上のドライバー: カーネル内</td>
+	    <td>CentOS 6.3: <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS ドライバー</a>、CentOS 6.4 以上のドライバー: カーネル内</td>
 		<td><a href="http://go.microsoft.com/fwlink/?LinkID=275153&amp;clcid=0x409">6.3 のみ必要</a></td>
-		<td>パッケージ: walinuxagent の <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">Open Logic パッケージ リポジトリ</a>内<br />
-			ソース:<a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
+		<td>パッケージ: <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">walinuxagent の </a> Open Logic パッケージ リポジトリ内<br />
+			ソース: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
  		
-
 	</tr>
 	<tr>
 		<th> <a href="https://coreos.com/docs/running-coreos/cloud-providers/azure/">CoreOS</a> </th>
 		<td> 494.4.0+ </td>
         <td> カーネル内 </td>
 		<td> 該当なし </td>
-		<td> ソース:<a href="https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent">GitHub</a></td>
+		<td> ソース: <a href="https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent">GitHub</a></td>
 		
 	</tr>
 	<tr>
@@ -95,7 +94,7 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
         <td>カーネル内</td>
 		<td>該当なし</td>
 		<td>パッケージ:リポジトリ内、名前:WALinuxAgent<br />
-			ソース:<a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
+			ソース: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
 		
 	</tr>
 	<tr>
@@ -103,7 +102,7 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 		<td> SLES 11 SP3+</td>
         <td>カーネル内</td>
 		<td>該当なし</td>
-		<td>パッケージ:<a href="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</a リポジトリ内、名前:WALinuxAgent<br />
+		<td>パッケージ:[ <a href="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</a> リポジトリ内、名前:WALinuxAgent<br />
 			ソース コード: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
 		
 	</tr>
@@ -112,13 +111,11 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 		<td> openSUSE 13.1+</td>
 		<td>カーネル内</td>
 		<td>該当なし</td>
-		<td>パッケージ:<a href="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</a リポジトリ内、名前:WALinuxAgent<br />
-			ソース コード:<a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
+		<td>パッケージ:[ <a href="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</a> リポジトリ内、名前:WALinuxAgent<br />
+			ソース コード: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
 		
 	</tr>
 </table>
 
 
-
-
-<!--HONumber=42-->
+<!--HONumber=45--> 
