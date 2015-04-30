@@ -7,5 +7,4 @@
 **[ログの表示]** をクリックすると、カスタム デプロイメント スクリプトの出力が表示されます。
 
 ![](./media/web-sites-python-troubleshoot-deployment/portal-deployment-log.png)
-
-<!--HONumber=49-->
+<!--HONumber=52--> 

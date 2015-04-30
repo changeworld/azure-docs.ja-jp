@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="スムーズ ストリーミング用の Windows ストア アプリケーション - Azure .NET チュートリアル" 
-	description="Azure メディア サービスを使用して、スムーズ ストリーム コンテンツを再生するための XML MediaElement コントロールを備えた Windows ストア アプリケーションを C# で作成する方法について説明します。" 
+	description="Azure Media Services を使用して、スムーズ ストリーム コンテンツを再生するための XML MediaElement コントロールを備えた Windows ストア アプリケーションを C# で作成する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -18,9 +18,9 @@
 
 
 
-#スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
+# スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
-Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドでライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)をご覧ください。
+Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)をご覧ください。
 
 このチュートリアルでは、API について説明します。Microsoft では、プレーヤーの開発には [Windows 8 用プレーヤー フレームワーク](http://playerframework.codeplex.com/)の使用を強くお勧めします。プレーヤー フレームワークを使用すると、多数の追加機能が提供され、アプリケーションの作成が容易になります。 
 
@@ -31,17 +31,17 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 3. スムーズ ストリーミング ストリームの選択
 4. スムーズ ストリーミング トラックの選択
 
-#前提条件
+# 前提条件
 - Windows 8 32 ビットまたは 64 ビット。MSDN から [Windows 8 Enterprise Evaluation](http://msdn.microsoft.com/evalcenter/jj554510.aspx) を入手できます。
-- Visual Studio 2012 または Visual Studio Express 2012 for Windows 8 が、Windows 8 にインストールされている必要があります。試用版は[こちら](http://www.microsoft.com/visualstudio/11/ja-jp/downloads)から入手できます。
+- Visual Studio 2012 または Visual Studio Express 2012 for Windows 8 が、Windows 8 にインストールされている必要があります。試用版は[こちら](http://www.microsoft.com/visualstudio/11/downloads)から入手できます。
 - [Windows 8 用 Microsoft Smooth Streaming Client SDK](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
 各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます:[レッスン 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f "A Simple Windows 8 Smooth Streaming Media Player")、[レッスン 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a "A Simple Windows 8 Smooth Streaming Media Player with a Slider Bar Control")、[レッスン 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44 "A Windows 8 Smooth Streaming Media Player with Stream Selection")、[レッスン 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907 "A Windows 8 Smooth Streaming Media Player with Track Selection") があります。
 
-#レッスン 1:基本的なスムーズ ストリーミング ストア アプリケーションの作成
+# レッスン 1:基本的なスムーズ ストリーミング ストア アプリケーションの作成
 このレッスンでは、スムーズ ストリーミング コンテンツを再生するための MediaElement コントロールを備えた Windows ストア アプリケーションを作成します。実行中のアプリケーションは次のような外観になります。
 
-![Smooth Streaming Windows Store application example][PlayerApplication]
+![スムーズ ストリーミング用の Windows ストア アプリケーションの例][PlayerApplication]
  
 Windows ストア アプリケーションの開発の詳細については、「[Windows 8 用の優れたアプリケーションの開発](http://msdn.microsoft.com/windows/apps/br229512.aspx)」をご覧ください。 
 このレッスンは、次の工程で構成されています。
@@ -118,7 +118,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 **プレーヤー ユーザー インターフェイスを設計するには**
 
 1.	ソリューション エクスプローラーで、**MainPage.xaml** をダブルクリックしてデザイン ビューを開きます。
-2.	XAML ファイル内で **&lt;Grid&gt;** タグと **&lt;/Grid&gt;**  タグを探し、2 つのタグの間に次のコードを貼り付けます。
+2.	XAML ファイル内で **&lt;Grid&gt;** タグと **&lt;/Grid&gt;** タグを探し、2 つのタグの間に次のコードを貼り付けます。
 
 		<Grid.RowDefinitions>
 		    <RowDefinition Height="20"/>    <!-- spacer -->
@@ -234,21 +234,21 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 完成したコード ビハインド ファイルは次のようになります。
 
-![Codeview in Visual Studio of Smooth Streaming Windows Store application][CodeViewPic]
+![Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション][CodeViewPic]
 
 **アプリケーションのコンパイルとテストを行うには**
 
 1.	**[ビルド]** メニューで **[構成マネージャー]** をクリックします。
 2.	**[アクティブ ソリューション プラットフォーム]** を、開発プラットフォームに一致するように変更します。
 3.	**F6** キーを押して、プロジェクトをコンパイルします。 
-4.	**F5** キーを押してアプリケーションを実行します。
+4.	**F5** キーを押して、アプリケーションを実行します。
 5.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。 
 6.	**[ソースの設定]** をクリックします。**[自動的に再生する]** が既定で有効になっているため、メディアは自動的に再生されます。**[再生]** ボタン、**[一時停止]** ボタン、**[停止]** ボタンを使用して、メディアを制御できます。垂直スライダーを使用して、音量を制御できます。ただし、メディアの進行を制御するための水平スライダーは、まだ完全に実装できていません。 
 
 これでレッスン 1 が完了しました。このレッスンでは、MediaElement コントロールを使用して、スムーズ ストリーミング コンテンツを再生しました。次のレッスンでは、スライダーを追加して、スムーズ ストリーミング コンテンツの進行を制御します。
 
 
-#レッスン 2:スライダーの追加によるメディア進行の制御
+# レッスン 2:スライダーの追加によるメディア進行の制御
 レッスン 1 では、スムーズ ストリーミング メディア コンテンツを再生するための MediaElement XAML コントロールを備えた Windows ストア アプリケーションを作成しました。これには、開始、停止、一時停止などの基本的なメディア機能が備わっています。このレッスンでは、アプリケーションにスライダー コントロールを追加します。
 
 このチュートリアルでは、タイマーを使用し、MediaElement コントロールの現在の位置に基づいて、スライダーの位置を更新します。ライブ コンテンツの場合は、スライダーの開始時間と終了時間も更新する必要があります。この処理は、アダプティブ ソース更新イベント内で行う方が適しています。
@@ -320,8 +320,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 		#endregion Adaptive Source Manager Level Events
 
 4.	AdaptiveSourceOpenedEvent をサブスクライブするために、**MainPage** コンストラクターの末尾に次の行を追加します。
-	
-	adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
+
+		adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
 	    new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
 
 5.	**Ctrl + S** キーを押して、ファイルを保存します。
@@ -354,7 +354,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 		}
 		#endregion Adaptive Source Level Events
 
-4.	イベントをサブスクライブするには、 <strong>mediaElement AdaptiveSourceOpened</strong> メソッドの末尾に次のコードを追加します。
+4.	各イベントをサブスクライブするために、 <strong>mediaElement AdaptiveSourceOpened</strong> メソッドの末尾に次のコードを追加します。
 	
 		adaptiveSource.ManifestReadyEvent +=
 	                mediaElement_ManifestReady;
@@ -507,23 +507,23 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 7.	**MediaOpened** メソッドの末尾に、次のコードを追加します。
 	
-	sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
-	sliderProgress.Width = mediaElement.Width;
-	setupTimer();
+		sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
+		sliderProgress.Width = mediaElement.Width;
+		setupTimer();
 
 8.	**Ctrl + S** キーを押して、ファイルを保存します。
 
 **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
-2.	**F5** キーを押してアプリケーションを実行します。
+2.	**F5** キーを押して、アプリケーションを実行します。
 3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。 
 4.	**[ソースの設定]** をクリックします。 
 5.	スライダーをテストします。
 
 これでレッスン 2 が完了しました。このレッスンでは、アプリケーションにスライダー コントロールを追加しました。 
 
-#レッスン 3:スムーズ ストリーミング ストリームの選択
+# レッスン 3:スムーズ ストリーミング ストリームの選択
 スムーズ ストリーミングでは、複数の言語オーディオ トラックを使用したコンテンツのストリーミングが可能あり、ユーザーがストリームを選択できます。このレッスンでは、ユーザーによるストリーム選択を有効にします。このレッスンは、次の工程で構成されています。
 
 1. XAML ファイルの変更
@@ -577,7 +577,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
-		#region class Stream
+	
+	    #region class Stream
 	
 	    public class Stream
 	    {
@@ -790,14 +791,14 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
-2.	**F5** キーを押してアプリケーションを実行します。
+2.	**F5** キーを押して、アプリケーションを実行します。
 3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。 
 4.	**[ソースの設定]** をクリックします。 
 5.	既定の言語は audio_eng です。audio_eng と audio_es の間で切り替えます。新しいストリームを選択するたびに、[送信] ボタンをクリックする必要があります。
 
 これでレッスン 3 が完了しました。このレッスンでは、ストリームを選択する機能を追加しました。
 
-#レッスン 4:スムーズ ストリーミング トラックの選択
+# レッスン 4: スムーズ ストリーミング トラックの選択
 スムーズ ストリーミング プレゼンテーションには、別々の品質レベル (ビット レート) と解像度でエンコードされた複数のビデオ ファイルが含まれていることがあります。このレッスンでは、ユーザーによるトラック選択を有効にします。このレッスンは、次の工程で構成されています。
 
 1. XAML ファイルの変更
@@ -993,7 +994,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
-2.	**F5** キーを押してアプリケーションを実行します。
+2.	**F5** キーを押して、アプリケーションを実行します。
 3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。 
 4.	**[ソースの設定]** をクリックします。 
 5.	既定では、ビデオ ストリームのすべてのトラックが選択されます。ビット レートの変化を試すには、使用可能な最低ビット レートを選択してから、使用可能な最高ビット レートを選択します。変更した後には、そのたびに [送信] をクリックする必要があります。ビデオ品質の変化を確認できます。
@@ -1001,11 +1002,11 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 これでレッスン 4 が完了しました。このレッスンでは、トラックを選択する機能を追加しました。
 
 
-#その他のリソース:
+# その他のリソース:
 - [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
 - [スムーズ ストリーミングの技術概要](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

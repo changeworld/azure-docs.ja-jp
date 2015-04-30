@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Media Indexer によるメディア ファイルのインデックス作成" 
 	description="Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。このトピックでは、Media Indexer の使用方法について説明します。" 
 	services="media-services" 
@@ -10,18 +10,18 @@
 <tags 
 	ms.service="media-services" 
 	ms.workload="media" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/04/2015" 
+	ms.date="03/25/2015" 
 	ms.author="juliako"/>
 
 
 # Azure Media Indexer によるメディア ファイルのインデックス作成
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。 
 
-Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。マニフェスト ファイルのファイルを指定して、インターネットで一般に公開されているファイルのインデックスを作成できます。
+Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
 
 >[AZURE.NOTE] コンテンツのインデックスを作成する場合は、クリアな (バック グラウンド ミュージック、ノイズ、特殊効果、またはマイク ヒスノイズなどがない) 音声機能を持つメディア ファイルを使用してください。適切なコンテンツの例としては、記録された会議、講義またはプレゼンテーションなどがあります。ムービー、テレビ番組、混合音声とサウンド効果を含むもの、バックグラウンド ノイズ (ヒスノイズ) を含む記録状態が良好でないコンテンツは、インデックス作成に適しません。
 
@@ -38,7 +38,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 	詳細については、「[AIB ファイルを Azure Media Indexer および SQL Server で使用する](http://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)」をご覧ください。
 
 
-このトピックでは、ジョブのインデックスを作成して、**アセットのインデックスを作成**、**複数のファイルのインデックスを作成**、**インターネットで公開されているファイル** のインデックスを作成する方法について説明します。
+このトピックでは、ジョブのインデックスを作成して、**アセットのインデックスを作成**、**複数のファイルのインデックスを作成**する方法について説明します。
 
 最近の Azure Media Indexer の更新プログラムについては、[Media Services のブログ](http://azure.microsoft.com/blog/topics/media-services/)をご覧ください。
 
@@ -96,7 +96,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 	    progressJobTask.Wait();
 	
 	    // If job state is Error, the event handling 
-	    // method for job progress should log errors.  Here we check 
+	    // method for job progress should log errors.Here we check 
 	    // for error state and exit if needed.
 	    if (job.State == JobState.Error)
 	    {
@@ -157,7 +157,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 <br/>
 Microsoft SQL server 2008 以降を実行しているマシンに Indexer SQL アドオンのインストールする必要があります。Microsoft SQL サーバーのフル テキスト検索を使用して、AIB を検索すると、WAMI によって生成されたクローズド キャプション ファイルを検索するよりも正確な検索結果が得られます。これは、クローズド キャプション ファイルがオーディオの各セグメントに信頼度が最上位の単語を含んでいるのに対し、AIB には代替候補として似ているサウンドの単語が含まれているためです。話された単語の検索が最も重要な場合は、AIB を Microsoft SQL Server と組み合わせて使用することをお勧めします。
 <br/><br/>
-アドオンをダウンロードするには、<a href="http://aka.ms/indexersql">[Azure Media Indexer SQL アドオン]</a> をクリックします。
+アドオンをダウンロードするには、<a href="http://aka.ms/indexersql">[Azure Media Indexer SQLアドオン]</a> をクリックします。
 <br/><br/>
 Apache Lucene/Solr などの他の検索エンジンを使用してクローズド キャプションとキーワードの XML ファイルに基づいたビデオをインデックスすることも可能ですが、検索精度は低くなります。</td></tr>
 <tr><td>InputFileName.smi<br/>InputFileName.ttml</td>
@@ -174,7 +174,7 @@ SAMI と TTML には、<b>見分け</b> と呼ばれるタグが含まれ、ソ�
 このファイルは、音声分析を実行する、Bing、Google または Microsoft SharePoint などの検索エンジンに公開してメディア ファイルをより検索しやすくする、または関連性の高い広告を配信するなど、さまざまな目的で使用できます。</td></tr>
 </table>
 
-すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 400 を表示して失敗します。詳細については、[エラー コード]をご覧ください(#error_codes)。
+すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 400 を表示して失敗します。詳細については、[エラー コード](#error_codes)をご覧ください。
 
 ##複数のファイルのインデックス作成
 
@@ -228,7 +228,7 @@ SAMI と TTML には、<b>見分け</b> と呼ばれるタグが含まれ、ソ�
 	    progressJobTask.Wait();
 	
 	    // If job state is Error, the event handling 
-	    // method for job progress should log errors.  Here we check 
+	    // method for job progress should log errors.Here we check 
 	    // for error state and exit if needed.
 	    if (job.State == JobState.Error)
 	    {
@@ -260,7 +260,7 @@ SAMI と TTML には、<b>見分け</b> と呼ばれるタグが含まれ、ソ�
 
 1 つ以上の入力メディア ファイルがある場合は WAMI は、ジョブの出力に 'JobResult.txt' という名前のマニフェスト ファイルを生成します。各入力メディアのファイルでは、結果として得られる AIB、SAMI、TTML、キーワード ファイルは、次に示すように順に番号が振られます。
 
-出力ファイルの説明については、[出力ファイル]をご覧ください(#output_files)。 
+出力ファイルの説明については、[出力ファイル](#output_files)をご覧ください。 
 
 
 <table border="1">
@@ -284,7 +284,7 @@ InputFile: アセットのファイル名または入力メディア ファイ�
 <br/><br/>
 MediaLength: 秒単位の入力メディア ファイルの長さ。Can be 0 は、この入力で発生するエラーです。
 <br/><br/>
-エラー: このメディア ファイルが正常にインデックスを作成するかどうかを示します。正常に作成された場合は 0、それ以外の場合は失敗です。具体的なエラーについては、「<a href="#error_codes">エラー コード</a>」をご覧ください。
+エラー: このメディア ファイルが正常にインデックスを作成するかどうかを示します。正常に作成された場合は 0、それ以外の場合は失敗です。具体的なエラーについては、<a href="#error_codes">エラー コード</a> をご覧ください。
 </td></tr>
 <tr><td>Media_1.aib </td>
 <td>File #0 - Audio indexing blob file.</td></tr>
@@ -296,90 +296,15 @@ MediaLength: 秒単位の入力メディア ファイルの長さ。Can be 0 は
 <td>File #1 - Audio indexing blob file.</td></tr>
 </table>
 
-すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 400 を表示して失敗します。詳細については、[エラー コード]をご覧ください(#error_codes)。
+すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 400 を表示して失敗します。詳細については、[エラー コード](#error_codes)をご覧ください。
 
 ###部分的に成功したジョブ
 
-すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 400 を表示して失敗します。詳細については、[エラー コード]をご覧ください(#error_codes)。
+すべての入力メディアのインデックスが正常に作成されない場合は、インデックス作成ジョブはエラー コード 400 を表示して失敗します。詳細については、[エラー コード](#error_codes)をご覧ください。
 
 
 (成功したジョブの場合) と同じ出力が生成されます。エラー列の値に基づいて、出力マニフェスト ファイルで、入力ファイルが失敗したかどうかを参照します。失敗した入力ファイルでは、結果として得られる AIB、SAMI、TTML、キーワード ファイルは生成されません。
 
-##インターネットからのファイルのインデックスの作成
-
-インターネット上で公開されている使用可能なメディア ファイルは、ファイルを Azure ストレージにコピーせずにインデックスを作成できます。マニフェスト ファイルを使用して、メディア ファイルの URL を指定します。詳細については、「[Azure Media Indexer 用のタスク プリセット](https://msdn.microsoft.com/library/azure/dn783454.aspx)」をご覧ください。
-
-HTTP と HTTPS URL のプロトコルがサポートされていることに注意してください。
-
-次のメソッドと構成は、ジョブを作成して、インターネットのメディア ファイルを作成します。
-	
-	static bool RunIndexingJobWithPublicUrl(string inputMediaUrl, string outputFolder)
-	{
-	    // Create the manifest file that contains the input media URL
-	    string manifestFile = "input.lst";
-	    File.WriteAllLines(manifestFile, new string[] { inputMediaUrl });
-	
-	    // Create an asset and upload the manifest file to storage.
-	    IAsset asset = CreateAssetAndUploadSingleFile(manifestFile,
-	        "My Indexing Input Asset - Public URL",
-	        AssetCreationOptions.None);
-	
-	    // Declare a new job.
-	    IJob job = _context.Jobs.Create("My Indexing Job - Public URL");
-	
-	    // Get a reference to the Azure Media Indexer.
-	    IMediaProcessor processor = GetLatestMediaProcessorByName(MediaProcessorName);
-	
-	    // Read configuration.
-	    string configuration = File.ReadAllText("public.config");
-	
-	    // Create a task with the encoding details, using a string preset.
-	    ITask task = job.Tasks.AddNew("My Indexing Task - Public URL",
-	        processor,
-	        configuration,
-	        TaskOptions.None);
-	
-	    // Specify the input asset to be indexed.
-	    task.InputAssets.Add(asset);
-	
-	    // Add an output asset to contain the results of the job.
-	    task.OutputAssets.AddNew("My Indexing Output Asset - Public URL", AssetCreationOptions.None);
-	
-	    // Use the following event handler to check job progress.  
-	    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
-	
-	    // Launch the job.
-	    job.Submit();
-	
-	    // Check job execution and wait for job to finish. 
-	    Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
-	    progressJobTask.Wait();
-	
-	    // If job state is Error, the event handling 
-	    // method for job progress should log errors.  Here we check 
-	    // for error state and exit if needed.
-	    if (job.State == JobState.Error)
-	    {
-	        Console.WriteLine("Exiting method due to job error.");
-	        return false;
-	    }
-	
-	    // Download the job outputs.
-	    DownloadAsset(task.OutputAssets.First(), outputFolder);
-	
-	    return true;
-	}
-
-###出力ファイル
-
-出力ファイルの説明については、[出力ファイル]をご覧ください(#output_files)。 
-
-
-##保護されたファイルの処理
-
-Indexer は、HTTP または HTTPS 経由でインターネット ファイルをダウンロードするときに、ユーザー名とパスワードによる基本認証をサポートしています。
-
-[Azure Media Indexer のタスク プリセット](https://msdn.microsoft.com/library/azure/dn783454.aspx) の説明に従って、タスク構成で**ユーザー名**と**パスワード**を指定できます
 
 ### <a id="error_codes"></a>エラー コード
 
@@ -399,7 +324,7 @@ Indexer は、HTTP または HTTPS 経由でインターネット ファイル�
 破損したメディア ファイルです。
 <br/>または<br/>
 入力メディアのオーディオ ストリームがありません。</td></tr>
-<tr><td>4000</td><td>バッチのインデックス作成一部成功しました</td><td>一部の入力メディア ファイルは、インデックスを付けるできませんでした。詳細については、「<a href="output_files">出力ファイル</a>」をご覧ください。</td></tr>
+<tr><td>4000</td><td>バッチのインデックス作成一部成功しました</td><td>一部の入力メディア ファイルは、インデックスを付けるできませんでした。詳細については、<a href="output_files">出力ファイル</a>をご覧ください。</td></tr>
 <tr><td>その他の</td><td>内部エラー</td><td>サポート チームにお問い合わせください。</td></tr>
 </table>
 
@@ -418,4 +343,4 @@ Indexer は、HTTP または HTTPS 経由でインターネット ファイル�
 
 <!-- URLs. -->
 
-<!--HONumber=47-->
+<!--HONumber=52-->

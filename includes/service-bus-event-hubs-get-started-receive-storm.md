@@ -6,7 +6,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
 このチュートリアルでは、[HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に利用できます。
 
-1. [HDInsight Storm の使用](http://azure.microsoft.com/documentation/articles/hdinsight-storm-getting-started/) の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
+1. 「[HDInsight Storm - 概要](../articles/hdinsight-storm-getting-started.md)」 の手順に従い、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
 
 2.  `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。これには events-storm-spout が含まれています。
 
@@ -25,7 +25,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 7. **GroupID** と **ArtifactID** を挿入し、**[完了]** をクリックします。
 
 8. **pom.xml** で、`<dependency>` ノードに次の依存関係を追加します。
-		
+
 		<dependency>
 			<groupId>org.apache.storm</groupId>
 			<artifactId>storm-core</artifactId>
@@ -57,20 +57,20 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 9. **src** フォルダー内に **Config.properties** という名前のファイルを作成し、次の内容をコピーして次の値を代入します。
 
 		eventhubspout.username = ReceiveRule
-		
+
 		eventhubspout.password = {receive rule key}
-		
+
 		eventhubspout.namespace = ioteventhub-ns
-		
+
 		eventhubspout.entitypath = {event hub name}
-		
+
 		eventhubspout.partitions.count = 16
-		
+
 		# if not provided, will use storm's zookeeper settings
 		# zookeeper.connectionstring=localhost:2181
-		
+
 		eventhubspout.checkpoint.interval = 10
-		
+
 		eventhub.receiver.credits = 10
 
 	**eventhub.receiver.credits** の値によって、Storm パイプラインにリリースする前にバッチ処理されるイベントの数が決まります。わかりやすくするため、この例ではこの値を 10 に設定しています。運用環境では通常、1024 などの大きい値を設定します。
@@ -85,31 +85,31 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 		import backtype.storm.topology.OutputFieldsDeclarer;
 		import backtype.storm.topology.base.BaseRichBolt;
 		import backtype.storm.tuple.Tuple;
-		
+
 		public class LoggerBolt extends BaseRichBolt {
 			private OutputCollector collector;
 			private static final Logger logger = LoggerFactory
 				      .getLogger(LoggerBolt.class);
-		
+
 			@Override
-			public void execute(Tuple tuple) {				
+			public void execute(Tuple tuple) {
 				String value = tuple.getString(0);
-				logger.info("Tuple value: " + value);
-				
+				logger.info("Tuple value:" + value);
+
 				collector.ack(tuple);
 			}
-		
+
 			@Override
 			public void prepare(Map map, TopologyContext context, OutputCollector collector) {
 				this.collector = collector;
 				this.count = 0;
 			}
-		
+
 			@Override
 			public void declareOutputFields(OutputFieldsDeclarer declarer) {
-				// no output fields
+				// アウトプット フィールドなし
 			}
-		
+
 		}
 
 	この Storm ボルトは、受信したイベントの内容を記録します。これを容易に拡張して、ストレージ サービスにタプルを格納できます。[HDInsight センサー分析のチュートリアル]は同じ方法を使用して、データを HBase に格納します。
@@ -126,11 +126,11 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 		import com.microsoft.eventhubs.samples.EventCount;
 		import com.microsoft.eventhubs.spout.EventHubSpout;
 		import com.microsoft.eventhubs.spout.EventHubSpoutConfig;
-		
+
 		public class LogTopology {
 			protected EventHubSpoutConfig spoutConfig;
 			protected int numWorkers;
-		
+
 			protected void readEHConfig(String[] args) throws Exception {
 				Properties properties = new Properties();
 				if (args.length > 1) {
@@ -139,46 +139,46 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 					properties.load(EventCount.class.getClassLoader()
 							.getResourceAsStream("Config.properties"));
 				}
-		
+
 				String username = properties.getProperty("eventhubspout.username");
 				String password = properties.getProperty("eventhubspout.password");
 				String namespaceName = properties
 						.getProperty("eventhubspout.namespace");
 				String entityPath = properties.getProperty("eventhubspout.entitypath");
 				String zkEndpointAddress = properties
-						.getProperty("zookeeper.connectionstring"); // opt
+						.getProperty("zookeeper.connectionstring"); // 省略可能
 				int partitionCount = Integer.parseInt(properties
 						.getProperty("eventhubspout.partitions.count"));
 				int checkpointIntervalInSeconds = Integer.parseInt(properties
 						.getProperty("eventhubspout.checkpoint.interval"));
 				int receiverCredits = Integer.parseInt(properties
-						.getProperty("eventhub.receiver.credits")); // prefetch count
-																	// (opt)
-				System.out.println("Eventhub spout config: ");
-				System.out.println("  partition count: " + partitionCount);
-				System.out.println("  checkpoint interval: "
+						.getProperty("eventhub.receiver.credits")); // プリフェッチ数
+																	// (省略可能)
+				System.out.println("Eventhub spout config:");
+				System.out.println("  partition count:" + partitionCount);
+				System.out.println("  checkpoint interval:"
 						+ checkpointIntervalInSeconds);
-				System.out.println("  receiver credits: " + receiverCredits);
-		
+				System.out.println("  receiver credits:" + receiverCredits);
+
 				spoutConfig = new EventHubSpoutConfig(username, password,
 						namespaceName, entityPath, partitionCount, zkEndpointAddress,
 						checkpointIntervalInSeconds, receiverCredits);
-		
-				// set the number of workers to be the same as partition number.
-				// the idea is to have a spout and a logger bolt co-exist in one
-				// worker to avoid shuffling messages across workers in storm cluster.
+
+				// パーティション数と同じワーカーの数を設定
+				// spout と logger bolt を 1 つのワーカーに指定して 
+				// storm クラスターでワーカーの間でメッセージがシャッフルされることを防止
 				numWorkers = spoutConfig.getPartitionCount();
-		
+
 				if (args.length > 0) {
-					// set topology name so that sample Trident topology can use it as
-					// stream name.
+					// サンプル Trident トポロジで stream 名として使用できるよう
+					// トポロジ名を指定
 					spoutConfig.setTopologyName(args[0]);
 				}
 			}
-		
+
 			protected StormTopology buildTopology() {
 				TopologyBuilder topologyBuilder = new TopologyBuilder();
-		
+
 				EventHubSpout eventHubSpout = new EventHubSpout(spoutConfig);
 				topologyBuilder.setSpout("EventHubsSpout", eventHubSpout,
 						spoutConfig.getPartitionCount()).setNumTasks(
@@ -190,14 +190,14 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 						.setNumTasks(spoutConfig.getPartitionCount());
 				return topologyBuilder.createTopology();
 			}
-		
+
 			protected void runScenario(String[] args) throws Exception {
 				boolean runLocal = true;
 				readEHConfig(args);
 				StormTopology topology = buildTopology();
 				Config config = new Config();
 				config.setDebug(false);
-		
+
 				if (runLocal) {
 					config.setMaxTaskParallelism(2);
 					LocalCluster localCluster = new LocalCluster();
@@ -209,7 +209,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 				    StormSubmitter.submitTopology(args[0], config, topology);
 				}
 			}
-		
+
 			public static void main(String[] args) throws Exception {
 				LogTopology topology = new LogTopology();
 				topology.runScenario(args);
@@ -220,7 +220,8 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 	このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
 <!-- Links -->
-[Event Hub の概要]: http://msdn.microsoft.com/library/azure/dn821413.aspx
+[Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
+[Event Hub の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
 [HDInsight Storm]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/
 [HDInsight センサー分析のチュートリアル]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-sensor-data-analysis/
 
@@ -229,4 +230,4 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 [12]: ./media/service-bus-event-hubs-getstarted/create-storm1.png
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
-<!--HONumber=47-->
+<!--HONumber=52--> 

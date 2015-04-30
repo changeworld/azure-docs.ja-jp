@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="メディア エンコーダー プレミアム ワークフローでの高度なエンコード" 
 	description="メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
@@ -18,7 +18,7 @@
 
 #メディア エンコーダー プレミアム ワークフローでの高度なエンコード (パブリック プレビュー)
 
-**注** このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは、中国では使用できません。
+**注** このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
 
 ##概要
 
@@ -26,17 +26,17 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 次のトピックでは、**メディア エンコーダー プレミアム ワークフロー**に関連する詳細の概要を説明します。 
 
-- [メディア エンコーダー プレミアム ワークフローでサポートされる形式](../media-services-premium-workflow-encoder-formats) - **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイル形式とコーデックについて説明します。
+- [メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md) - **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイル形式とコーデックについて説明します。
 
-- [「compare encoders (エンコーダーの比較)」](../media-services-encode-asset#compare_encoders) セクションでは、**メディア エンコーダー プレミアム ワークフロー**と **Azure メディア エンコーダー**のエンコード機能を比較します。
+- [compare encoders (エンコーダーの比較)](media-services-encode-asset.md#compare_encoders) セクションでは、**メディア エンコーダー プレミアム ワークフロー**と **Azure メディア エンコーダー**のエンコード機能を比較します。
 
 このトピックでは、.NET を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示します。
 
 ##エンコード
 
-**メディア エンコーダー プレミアム ワークフロー**のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。これらのファイルは .workflow 拡張子を持ち、[ワークフロー デザイナー](../media-services-workflow-designer) ツールを使用して作成されます。
+**メディア エンコーダー プレミアム ワークフロー**のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。これらのファイルには .workflow 拡張子があり、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールを使用して作成されています。
 
-既定のワークフロー ファイルは[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手することもできます。フォルダーには、これらのファイルの説明も含まれています。
+既定のワークフロー ファイルは[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手することもできます。フォルダーにはこれらのファイルの説明も含まれています。
 
 ワークフロー ファイルは、アセットとして Media Services アカウントにアップロードする必要があり、このアセットをエンコード タスクに渡す必要があります。
 
@@ -54,12 +54,12 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 	b. 2 - ビデオ アセット。
 	
-	**注**:ワークフロー アセットは、メディア アセットの前にタスクに追加する必要があります。 
+	**注**: ワークフロー アセットは、メディア アセットの前にタスクに追加する必要あります。 
 このタスクの構成文字列は空にする必要があります。 
 
 6. エンコード ジョブを送信します。
 
-完全な例を次に示します。Media Services の .NET 開発を使用して設定する方法の詳細については、[「Media Services development with .NET (.NET での Media Services 開発)」](../media-services-dotnet-how-to-use)を参照してください。
+完全な例を次に示します。Media Services の .NET 開発を使用して設定する方法の詳細については「[.NET を使用したメディア サービス開発](media-services-dotnet-how-to-use.md)」をご覧ください。
 
 
  	using System; 
@@ -175,7 +175,7 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 	            progressJobTask.Wait();
 	
 	            // If job state is Error the event handling 
-	            // method for job progress should log errors.  Here we check 
+	            // method for job progress should log errors.Here we check 
 	            // for error state and exit if needed.
 	            if (job.State == JobState.Error)
 	            {
@@ -261,4 +261,9 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 	    }
 	}
 
-<!--HONumber=47-->
+
+##既知の問題
+
+入力ビデオにクローズド キャプションが含まれていない場合、出力アセットには空白の TTML ファイルが含まれることになります。
+
+<!--HONumber=52-->

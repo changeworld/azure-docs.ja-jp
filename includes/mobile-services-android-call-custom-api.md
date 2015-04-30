@@ -1,4 +1,4 @@
-﻿
+
 ## <a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
 1. 「Complete All」というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Android Studio で、クイック スタート プロジェクトの  *res\layout\activity_to_do.xml* ファイルを開き、 `buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
@@ -75,7 +75,7 @@
 
 8. **ToDoActivity.java** ファイル内に次のメソッドを追加します。
 
-	public void completeItem(View view) {
+	    public void completeItem(View view) {
 	    
 	    ListenableFuture<MarkAllResult> result = mClient.invokeApi( "completeAll2", MarkAllResult.class ); 
 	    	
@@ -99,7 +99,7 @@
 
 1. **[実行]** メニューの **[Run app (アプリの実行)]** をクリックして、Android エミュレーター内、または接続済みの Android デバイスでプロジェクトを開始します。
 
-	これにより、Mobile Services から項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
+	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
 
 
 2. アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Add]** をクリックします。
@@ -111,4 +111,5 @@
   	![](./media/mobile-services-android-call-custom-api/mobile-custom-api-android-completed.png)
 
 	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
-<!--HONumber=47-->
+
+<!--HONumber=52-->

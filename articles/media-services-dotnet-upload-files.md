@@ -1,6 +1,6 @@
-﻿<properties 
-	pageTitle=".NET を使用したメディア サービス アカウントへのファイルのアップロード" 
-	description="アセットを作成しアップロードして、メディア サービスにコンテンツを取り込む方法について説明します。" 
+<properties 
+	pageTitle=".NET を使用した Media Services アカウントへのファイルのアップロード" 
+	description="アセットを作成し、アップロードすることによって、メディア サービスにメディア コンテンツを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -18,14 +18,14 @@
 
 
 
-#.NET を使用したメディア サービス アカウントへのファイルのアップロード
+#.NET を使用した Media Services アカウントへのファイルのアップロード
 [AZURE.INCLUDE [media-services-selector-upload-files](../includes/media-services-selector-upload-files.md)]
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.mdシリーズの一部です。 
 
 メディア サービスで、デジタル ファイルをアセットにアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-アセット内のこれらのファイルを**アセット ファイル**といいます。**AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。AssetFile インスタンスにはメディア ファイルに関するメタデータが含まれ、メディア ファイルには実際のメディア コンテンツが含まれます。
+アセット内のこれらのファイルを**アセット ファイル**といいます。**AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 アセットを作成する際には、次の暗号化オプションを指定できます。 
 
@@ -35,15 +35,17 @@
 - **EnvelopeEncrypted**: AES で暗号化された HLS をアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 - **StorageEncrypted**: ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護されたアセットは、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力アセットとして再びアップロードできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
 
-	メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、アセットのオンディスクでのストレージ暗号化を提供します。
+	Media Services では、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、アセットのオンディスクでのストレージ暗号化を提供します。
 
-アセットを **CommonEncrypted** オプションまたは **EnvelopeEncypted** オプションで暗号化することを指定した場合、アセットを **ContentKey** に関連付ける必要があります。詳細については、「[How to create a ContentKey (ContentKey の作成方法]」をご覧ください(../media-services-dotnet-create-contentkey)。 
+	アセットがストレージ暗号化されている場合は、アセットの配信ポリシーを構成する必要があります。詳細については、「[アセットの配信ポリシーを構成する]」(media-services-dotnet-configure-asset-delivery-policy.md) をご覧ください。
+
+アセットを **CommonEncrypted** オプションまたは **EnvelopeEncypted** オプションで暗号化することを指定した場合、アセットを **ContentKey** に関連付ける必要があります。詳細については、「[How to create a ContentKey (ContentKey の作成方法]」をご覧ください(media-services-dotnet-create-contentkey.md)。 
 
 アセットを **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、アセットの **StorateEncrypted** の **ContentKey** が作成されます。
 
->[AZURE.NOTE]メディア サービスは、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセントエンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)の !*'();:@&=+$,/?%# は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>[AZURE.NOTE]メディア サービスは、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、次の[パーセントエンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
-このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルをメディア サービス アセットにアップロードする方法を説明します。
+このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services アセットにアップロードする方法を説明します。
 
 ## Media Services .NET SDK を使用したファイルのアップロード  
 
@@ -303,8 +305,8 @@ IngestManifestAsset を作成するには、サーバー コンテキストの C
 
 
 ##次のステップ
-これで、アセットをメディア サービスにアップロードできました。次は、「[方法:メディア プロセッサ インスタンスを取得する][]」に進みます。
+これで、アセットをメディア サービスにアップロードできました。次は、「[方法: メディア プロセッサ インスタンスを取得する][]」に進みます。
 
-[方法: メディア プロセッサ インスタンスを取得する]: ../media-services-get-media-processor/
+[方法: メディア プロセッサ インスタンスを取得する]: media-services-get-media-processor.md
 
-<!--HONumber=47-->
+<!--HONumber=52-->

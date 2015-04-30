@@ -1,5 +1,5 @@
 ﻿
-##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
+## <a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
 1. Visual Studio でクイック スタート プロジェクトの default.html ファイルを開いて、 `buttonRefresh` という **button** 要素を探し、その直後に次の要素を新たに追加します。 
 
@@ -48,7 +48,7 @@
 
 	これは、新しいボタンの **Click** イベントを処理するメソッドです。POST 要求を新しいカスタム API に送信する **InvokeApiAsync** メソッドがクライアントで呼び出されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。エラーが発生した場合はそれらも表示されます。
 
-## <a name="test-app"></a>アプリケーションをテストする
+## <a name="test-app"></a>アプリをテストする
 
 1. Visual Studio で **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
@@ -61,4 +61,5 @@
   	![](./media/mobile-services-windows-store-javascript-call-custom-api/mobile-custom-api-windows-store-completed.png)
 
 	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
-<!--HONumber=42-->
+
+<!--HONumber=52-->

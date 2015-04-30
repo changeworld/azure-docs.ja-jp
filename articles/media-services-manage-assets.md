@@ -1,6 +1,6 @@
 ﻿<properties 
-	pageTitle="メディア サービスでアセットを管理する方法 - Azure" 
-	description="メディア サービス アセットを管理する方法について説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+	pageTitle="Media Services でアセットを管理する方法 - Azure" 
+	description="Media Services アセットを管理する方法について説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -17,9 +17,9 @@
 	ms.author="juliako"/>
 
 
-#方法:ストレージ内のアセットを管理する
+#方法: ストレージ内のアセットを管理する
 
-この記事は、[Media Services Video on Demand workflow (メディア サービスのビデオ オンデマンド ワークフロー)](../media-services-video-on-demand-workflow)と[Media Services Live Streaming workflow (メディア サービスのライブ ストリーミング ワークフロー)](../media-services-live-streaming-workflow) シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」と「[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
 
 
 メディア アセットを作成すると、 サーバー上のアセットにアクセスし、管理できます。サーバー上には、それ以外にも、ジョブ、タスク、アクセス ポリシー、ロケーターなど、メディア サービスのさまざまなオブジェクトが存在しますが、それらのオブジェクトも管理対象にすることができます。
@@ -77,7 +77,7 @@
 	    Console.Write(builder.ToString());
 	}
 
-次のコード スニペットは、メディア サービス アカウントからすべてのアセットを削除します。アセットがプログラムに関連付けられている場合は、最初にプログラムを削除する必要があります。
+次のコード スニペットは、Media Services アカウントからすべてのアセットを削除します。アセットがプログラムに関連付けられている場合は、最初にプログラムを削除する必要があります。
 
 	foreach (IAsset asset in _context.Assets)
 	{
@@ -85,4 +85,4 @@
 	}
 
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

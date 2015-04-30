@@ -3,7 +3,7 @@
 	description="このトピックでは、さまざまなアセットの配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="Juliako" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -16,16 +16,16 @@
 	ms.date="02/06/2015" 
 	ms.author="juliako"/>
 
-#方法:アセットの配信ポリシーを構成する
+# 方法:アセットの配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。 
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。 
 
-メディア サービスにおけるコンテンツ配信ワークフローの手順の 1 つは、ストリームするアセットの配信ポリシーを構成することです。アセットの配信ポリシーは、アセットを配信する方法、つまりどのストリーミング プロトコルでアセットを動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、アセットを動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を メディア サービスに示します。 
+Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリームするアセットの配信ポリシーを構成することです。アセットの配信ポリシーは、アセットを配信する方法、つまりどのストリーミング プロトコルでアセットを動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、アセットを動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を  Media Services に示します。 
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。 
 
->[AZURE.NOTE]動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins#scale_streaming_endpoints.md)」をご覧ください。 
+>[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
 >
 >また、アセットには、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。  
 
@@ -53,21 +53,21 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-アセットを発行してストリーミング URL を構築する方法については、「[方法: ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)」をご覧ください。
+アセットを公開し、ストリーミング URL を構築する手順については、「[方法: ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)」をご覧ください。
 
->[AZURE.NOTE] メディア サービス REST API を使用する場合は、次のことに考慮します。
+>[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
->メディア サービスでエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Setup for Media Services REST API Development (メディア サービス REST API 開発の設定)](media-services-rest-how-to-use.md)」をご覧ください。
+>Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API 開発用の設定](media-services-rest-how-to-use.md)」をご覧ください。
 
->「https://media.windows.net」へ正常に接続すると、別のメディア サービス URI が指定された 301 リダイレクトが表示されます。「[Connecting to Media Services using REST API (Media Services REST API を使用した Media Services への接続)](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。「[Media Services REST API を使用した Media Services への接続](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
 
 
-##アセットの配信ポリシーを解除する 
+## アセットの配信ポリシーを解除する 
 
-###<a id="create_asset_delivery_policy"></a>アセットの配信ポリシーを作成する
+### <a id="create_asset_delivery_policy"></a>アセットの配信ポリシーを作成する
 次の HTTP 要求により、動的暗号化を適用せずにMPEG DASH、HLS、スムーズ ストリーミングのいずれかのプロトコルでストリームを配信することを指定する、アセットの配信ポリシーが作成されます。 
 
-AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。   
+AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) 。   
 
 
 要求:
@@ -78,7 +78,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423397827&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=Szo6lbJAvL3dyecAeVmyAnzv3mGzfUNClR5shk9Ivbk%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423397827&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=Szo6lbJAvL3dyecAeVmyAnzv3mGzfUNClR5shk9Ivbk%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: 4651882c-d7ad-4d5e-86ab-f07f47dcb41e
 	Host: media.windows.net
@@ -114,7 +114,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	"Created":"2015-02-08T06:21:27.6908329Z",
 	"LastModified":"2015-02-08T06:21:27.6908329Z"}
 	
-###<a id="link_asset_with_asset_delivery_policy"></a>アセットの配信ポリシーにアセットをリンクする
+### <a id="link_asset_with_asset_delivery_policy"></a>アセットの配信ポリシーにアセットをリンクする
 
 次の HTTP 要求により、指定したアセットがアセットの配信ポリシーにリンクされます。
 
@@ -126,7 +126,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	Accept: application/json
 	Accept-Charset: UTF-8
 	Content-Type: application/json
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423397827&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=Szo6lbJAvL3dyecAeVmyAnzv3mGzfUNClR5shk9Ivbk%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-e769-3344-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423397827&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=Szo6lbJAvL3dyecAeVmyAnzv3mGzfUNClR5shk9Ivbk%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: 56d2763f-6e72-419d-ba3c-685f6db97e81
 	Host: media.windows.net
@@ -138,18 +138,18 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	HTTP/1.1 204 No Content
 
 
-##DynamicEnvelopeEncryption アセットの配信ポリシー 
+## DynamicEnvelopeEncryption アセットの配信ポリシー 
 
-###EnvelopeEncryption タイプのコンテンツ キーを作成してアセットにリンクする
+### EnvelopeEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](media-services-rest-create-contentkey.md)」をご覧ください。
+DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](media-services-rest-create-contentkey.md)」をご覧ください) をご覧ください。
 
 
-###<a id="get_delivery_url"></a>配信 URL を取得する
+### <a id="get_delivery_url"></a>配信 URL を取得する
 
 前の手順で作成したコンテンツ キーの指定された配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために AES キーまたは PlayReady ライセンスを要求します。
 
-HTTP 要求の本文に含める URL の種類を指定します。PlayReady を使用してコンテンツを保護する場合、{"keyDeliveryType":1} のように、keyDeliveryType に 1 を使用し、メディア サービスの PlayReady ライセンス取得 URL を要求します。エンベロープ暗号化を使用してコンテンツを保護する場合、{"keyDeliveryType":2} のように、keyDeliveryType に 2 を指定してキー取得 URL を要求します。
+HTTP 要求の本文に含める URL の種類を指定します。PlayReady を使用してコンテンツを保護する場合、{"keyDeliveryType":1} のように、keyDeliveryType に 2 を指定してキー取得 URL を要求します。エンベロープ暗号化を使用してコンテンツを保護する場合、{"keyDeliveryType":2} のように、keyDeliveryType に 2 を指定してキー取得 URL を要求します。
 
 要求:
 	
@@ -158,7 +158,7 @@ HTTP 要求の本文に含める URL の種類を指定します。PlayReady を
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423452029&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=IEXV06e3drSIN5naFRBdhJZCbfEqQbFZsGSIGmawhEo%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423452029&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=IEXV06e3drSIN5naFRBdhJZCbfEqQbFZsGSIGmawhEo%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: 569d4b7c-a446-4edc-b77c-9fb686083dd8
 	Host: media.windows.net
@@ -184,12 +184,12 @@ HTTP 要求の本文に含める URL の種類を指定します。PlayReady を
 	{"odata.metadata":"media.windows.net/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.windows.net/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
-###アセットの配信ポリシーを作成する
+### アセットの配信ポリシーを作成する
 
 次の HTTP 要求により、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を **HLS** プロトコルに適用するために構成される **AssetDeliveryPolicy** が作成されます (この例では、他のプロトコルはストリーミングからブロックされます)。 
 
 
-AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。   
+AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) 。   
 
 要求:
 
@@ -200,7 +200,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	Accept: application/json
 	Accept-Charset: UTF-8
 	User-Agent: Microsoft ADO.NET Data Services
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423480651&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=T2FG3tIV0e2ETzxQ6RDWxWAsAzuy3ez2ruXPhrBe62Y%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423480651&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=T2FG3tIV0e2ETzxQ6RDWxWAsAzuy3ez2ruXPhrBe62Y%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
 	Host: media.windows.net
@@ -227,26 +227,26 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	{"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/\"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
-###アセットの配信ポリシーにアセットをリンクする
+### アセットの配信ポリシーにアセットをリンクする
 
 [アセットをアセットの配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)をご覧ください。
 
-##DynamicCommonEncryption アセットの配信ポリシー 
+## DynamicCommonEncryption アセットの配信ポリシー 
 
-###CommonEncryption タイプのコンテンツ キーを作成してアセットにリンクする
+### CommonEncryption タイプのコンテンツ キーを作成してアセットにリンクする
 
-DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[「Creating a content key (コンテンツ キーの作成)](media-services-rest-create-contentkey.md)」をご覧ください。
+DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、[コンテンツ キーの作成に関するページ](media-services-rest-create-contentkey.md)をご覧ください。
 
 
-###配信 URL を取得する
+### 配信 URL を取得する
 
-前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、[配信 URL を取得する](#get_delivery_url)をご覧ください。
+前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、[配信 URL を取得する](#get_delivery_url)をご覧ください」をご覧ください。
 
-###アセットの配信ポリシーを作成する
+### アセットの配信ポリシーを作成する
 
 次の HTTP 要求により、動的共通暗号化 (**DynamicCommonEncryption**) を**スムーズ ストリーミング** プロトコルに適用するために構成される **AssetDeliveryPolicy** が作成されます (この例では、他のプロトコルはストリーミングからブロックされます)。 
 
-AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。   
+AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types) 。   
 
 
 要求:
@@ -258,7 +258,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	Accept: application/json
 	Accept-Charset: UTF-8
 	User-Agent: Microsoft ADO.NET Data Services
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423480651&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=T2FG3tIV0e2ETzxQ6RDWxWAsAzuy3ez2ruXPhrBe62Y%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423480651&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=T2FG3tIV0e2ETzxQ6RDWxWAsAzuy3ez2ruXPhrBe62Y%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
 	Host: media.windows.net
@@ -266,14 +266,14 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-###アセットの配信ポリシーにアセットをリンクする
+### アセットの配信ポリシーにアセットをリンクする
 
 [アセットをアセットの配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)をご覧ください。
 
 
-##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
+## <a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
 
-###AssetDeliveryProtocol 
+### AssetDeliveryProtocol 
 
     /// <summary>
     /// Delivery protocol for an asset delivery policy.
@@ -312,7 +312,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         All = 0xFFFF
     }
 
-###AssetDeliveryPolicyType
+### AssetDeliveryPolicyType
 
     /// <summary>
     /// Policy type for dynamic encryption of assets.
@@ -346,7 +346,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         DynamicCommonEncryption
     }
 
-###ContentKeyDeliveryType
+### ContentKeyDeliveryType
 
     /// <summary>
     /// Delivery method of the content key to the client.
@@ -369,7 +369,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         BaselineHttp
     }
 
-###AssetDeliveryPolicyConfigurationKey
+### AssetDeliveryPolicyConfigurationKey
 
     /// <summary>
     /// Keys used to get specific configuration for an asset delivery policy.
@@ -412,4 +412,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         EnvelopeEncryptionIV,
     }
 
-<!--HONumber=47-->
+<!--HONumber=52-->

@@ -1,20 +1,21 @@
 ﻿<properties 
 	pageTitle="Azure Websites での Python の構成" 
 	description="このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure Websites に作成して構成する方法について説明します。" 
-	services="web-sites" 
+	services="app-service\web" 
 	documentationCenter="python" 
+	tags="python"
 	authors="huguesv" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="12/17/2014" 
-	ms.author="huvalo"/>
+	ms.date="02/09/2015" 
+	ms.author="huguesv"/>
 
 
 
@@ -25,22 +26,8 @@
 
 仮想環境や、requirements.txt を使用したパッケージ インストールなどの Git デプロイの追加の機能を説明します。
 
-+ [Bottle、Django、Flask](#bottle-django-flask)
-+ [ポータルでの Web サイトの作成](#website-creation-on-portal)
-+ [Git 発行](#git-publishing)
-+ [アプリケーションの概要](#application-overview)
-+ [WSGI ハンドラー](#wsgi-handler)
-+ [仮想環境](#next-steps)
-+ [パッケージの管理](#next-steps)
-+ [Python バージョン](#next-steps)
-+ [仮想環境のプロキシ](#virtual-environment-proxy)
-+ [Git デプロイのカスタマイズ](#customize-git-deployment)
-+ [トラブルシューティング - デプロイ](#troubleshooting-deployment)
-+ [トラブルシューティング - パッケージのインストール](#troubleshooting-package-installation)
-+ [トラブルシューティング - 仮想環境](#troubleshooting-virtual-environment)
 
-
-<h2><a name="bottle-django-flask"></a>Bottle、Django、Flask</h2>
+## Bottle、Django、Flask
 
 Azure ギャラリーには、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。最初の Azure Web サイトを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
 
@@ -49,16 +36,16 @@ Azure ギャラリーには、Bottle、Django、Flask フレームワーク用�
 - [Flask を使用した Web サイトの作成][]
 
 
-<h2><a name="website-creation-on-portal"></a>ポータルでの Web サイトの作成</h2>
+## ポータルでの Web サイトの作成
 
-このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure 管理ポータルにアクセスできることを前提としています。
+このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure の管理ポータルにアクセスできることを前提としています。
 
 既存の Web サイトがない場合、Azure 管理ポータルから自分で作成できます。左下の [新規] ボタンをクリックします。ウィンドウが表示されます。[コンピューティング]、[Web サイト]、[簡易作成] の順にクリックします。
 
 ![](./media/web-sites-python-configure/configure-python-create-website.png)
 
 
-<h2><a name="git-publishing"></a>Git 発行</h2>
+## Git 発行
 
 Git 発行を構成するには、新たに作成した Web サイトの [クイック スタート] タブまたは [ダッシュボード] タブを使用します。このチュートリアルでは、Python Web サイトの作成と管理、Azure Websites への発行を Git を使用して行います。
 
@@ -67,7 +54,7 @@ Git 発行を構成するには、新たに作成した Web サイトの [クイ
 Git 発行の設定が完了すると、Git リポジトリが作成されて Web サイトに関連付けられます。このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web サイトのコンテンツを Azure Websites にプッシュしてください。
 
 
-<h2><a name="application-overview"></a>アプリケーションの概要</h2>
+## アプリケーションの概要
 
 次のセクションでは、次のファイルが作成されます。これらは、Git リポジトリのルートに配置する必要があります。
 
@@ -78,7 +65,7 @@ Git 発行の設定が完了すると、Git リポジトリが作成されて We
     ptvs_virtualenv_proxy.py
 
 
-<h2><a name="wsgi-handler"></a>WSGI ハンドラー</h2>
+## WSGI ハンドラー
 
 WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定された Python の標準です。Web サーバーと Python 間のインターフェイスを定義します。各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。今日普及している Python Web フレームワークには WSGI が使用されています。Web フレームワークに必要な機能は Azure Websites に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
 
@@ -100,7 +87,7 @@ WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定され�
  `python app.py` を使用してこのアプリケーションをローカルで実行し、その後 Web ブラウザーで `http://localhost:5555` を参照できます。
 
 
-<h2><a name="virtual-environment"></a>仮想環境</h2>
+## 仮想環境
 
 上記の例のアプリは外部パッケージを必要としませんが、アプリケーションによっては外部パッケージが必要になる場合があります。
 
@@ -108,10 +95,10 @@ WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定され�
 
 Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、 `env` という名前の仮想環境が自動的に作成されます。これは、最初のデプロイ、または選択した Python ランタイムを変更した後のデプロイ時に発生します。
 
-デプロイ用に仮想環境をローカルで作成する場合、Git リポジトリには含めないでください。
+仮想開発環境をローカルで作成する場合、Git リポジトリには含めないでください。
 
 
-<h2><a name="package-management"></a>パッケージの管理</h2>
+## パッケージの管理
 
 requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。これはデプロイごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
 
@@ -120,7 +107,7 @@ requirements.txt 内のリストにあるパッケージが、pip を使用し�
     azure==0.8.4
 
 
-<h2><a name="python-version"></a>Python バージョン</h2>
+## Python バージョン
 
 [AZURE.INCLUDE [web-sites-python-customizing-runtime](../includes/web-sites-python-customizing-runtime.md)]
 
@@ -129,7 +116,7 @@ requirements.txt 内のリストにあるパッケージが、pip を使用し�
     python-2.7
 
 
-<h2><a name="web-config"></a>Web.config</h2>
+## web.config
 
 サーバーによる要求の処理方法を指定するには、web.config ファイルを作成する必要があります。
 
@@ -237,7 +224,7 @@ Python 3.4 用の  `web.config` の例:
 
 上記の例では、静的ファイルのディスク上の場所は URL の場所と一致する必要があります。つまり、 `http://pythonapp.azurewebsites.net/static/site.css` への要求は、ディスクの  `\static\site.css` にあるファイルを使用します。
 
-URL の場所とは別のディスク上の場所にあるファイルを使用するように、ルール  `Static Files` を構成することもできます。次のルール定義では、 `http://pythonapp.azurewebsites.net/static/site.css` への要求は、 `\static\site.css` ではなく、ディスクの  `\FlaskWebProject\static\site.css` にあるファイルを使用します。
+URL の場所とは別のディスク上の場所にあるファイルを使用するように、ルール  `Static Files` を構成することもできます。次のルール定義では、 `http://pythonapp.azurewebsites.net/static/site.css` への要求は、 `\FlaskWebProject\static\site.css` ではなく、ディスクの  `\static\site.css` にあるファイルを使用します。
 
     <rule name="Static Files" stopProcessing="true">
       <match url="^/static/.*" ignoreCase="true" />
@@ -249,23 +236,23 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
 `PYTHONPATH` はカスタマイズ可能ですが、requirements.txt で指定することで、仮想環境にすべての依存関係をインストールする場合は、変更する必要はありません。
 
 
-<h2><a name="virtual-environment-proxy"></a>仮想環境のプロキシ</h2>
+## 仮想環境のプロキシ
 
 次のスクリプトは、WSGI ハンドラーの取得、仮想環境のアクティブ化、エラーの記録に使用されます。修正することなく、汎用的に使用できます。
 
- `ptvs_virtualenv_proxy.py` の内容: 
+ `ptvs_virtualenv_proxy.py` の内容:
 
      # ############################################################################
      #
      # Copyright (c) Microsoft Corporation. 
      #
-     # This source code is subject to terms and conditions of the Apache License, Version 2.0. A 
-     # copy of the license can be found in the License.html file at the root of this distribution. If 
-     # you cannot locate the Apache License, Version 2.0, please send an email to 
-     # vspython@microsoft.com. By using this source code in any fashion, you are agreeing to be bound 
-     # by the terms of the Apache License, Version 2.0.
+     # このソース コードは、Apache License, Version 2.0 で定められた条件に従うものとします。当該ライセンスの 
+     # コピーは本ディストリビューションのルートにある License.html ファイルに存在します。もし 
+     # Apache License, Version 2.0 の存在を特定できない場合、 
+     # vspython@microsoft.com までメールでご連絡ください。いかなる使用目的であってもこのソース コードを使用することで、 
+     # Apache License, Version 2.0 に定められた各種の条件を受諾したものと見なされます。
      #
-     # You must not remove this notice, or any other, from this software.
+     # 当該ソフトウェアから、この注意もしくはその他の条件を削除することは許諾されません。
      #
      # ###########################################################################
 
@@ -375,31 +362,29 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
         return handler
 
 
-<h2><a name="customize-git-deployment"></a>Git デプロイのカスタマイズ</h2>
+## Git デプロイのカスタマイズ
 
 [AZURE.INCLUDE [web-sites-python-customizing-runtime](../includes/web-sites-python-customizing-deployment.md)]
 
 
-<h2><a name="troubleshooting-deployment"></a>トラブルシューティング - デプロイ</h2>
+## トラブルシューティング - デプロイ
 
 [AZURE.INCLUDE [web-sites-python-troubleshooting-deployment](../includes/web-sites-python-troubleshooting-deployment.md)]
 
 
-<h2><a name="troubleshooting-package-installation"></a>トラブルシューティング - パッケージのインストール</h2>
+## トラブルシューティング - パッケージのインストール
 
 [AZURE.INCLUDE [web-sites-python-troubleshooting-package-installation](../includes/web-sites-python-troubleshooting-package-installation.md)]
 
 
-<h2><a name="troubleshooting-virtual-environment"></a>トラブルシューティング - 仮想環境</h2>
+## トラブルシューティング - 仮想環境
 
 [AZURE.INCLUDE [web-sites-python-troubleshooting-virtual-environment](../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
 
 
-[Bottle を使用した Web サイトの作成]: ../web-sites-python-create-deploy-bottle-app
-[Django を使用した Web サイトの作成]: ../web-sites-python-create-deploy-django-app
-[Flask を使用した Web サイトの作成]: ../web-sites-python-create-deploy-flask-app
+[Bottle を使用した Web サイトの作成]: web-sites-python-create-deploy-bottle-app.md
+[Django を使用した Web サイトの作成]: web-sites-python-create-deploy-django-app.md
+[Flask を使用した Web サイトの作成]: web-sites-python-create-deploy-flask-app.md
 
-
-
-<!--HONumber=42-->
+<!--HONumber=52-->

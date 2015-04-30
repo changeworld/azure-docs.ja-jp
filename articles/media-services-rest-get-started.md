@@ -1,54 +1,64 @@
-﻿<properties pageTitle="Azure Media Services REST API を使ってみる" description="このチュートリアルでは REST API を使用した Azure Media Services でのビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を説明します。" services="media-services" documentationCenter="" authors="Juliako" manager="dwrede" />
+<properties 
+	pageTitle="Media Services REST API を使用したビデオ オン デマンド配信" 
+	description="このチュートリアルでは REST API を使用した Azure Media Services でのビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="Juliako" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="media-services" ms.devlang="REST" ms.topic="article" ms.tgt_pltfrm="" ms.workload="media" ms.date="01/20/2015" ms.author="juliako" />
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="04/14/2015" 
+	ms.author="juliako"/>
 
-
-# Media Services REST API を使用したビデオ オン デマンド配信 
+# クイック スタート:Media Services REST API を使用したビデオ オン デマンド配信 
 
 [AZURE.INCLUDE [media-services-selector-get-started](../includes/media-services-selector-get-started.md)]
 
 
 >[AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure 無料評価版</a>」を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料評価版サイト</a>をご覧ください
 
-このチュートリアルでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。 
+このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。 
 
-Media Services の基本的なワークフローを示し、Media Services 開発に必要となる一般的なプログラミング オブジェクトおよびタスクについても紹介します。このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、ダウンロードして、ストリーミングやプログレッシブ ダウンロードを実行できます。  
-
-VoD コンテンツ配信アプリケーションを実装するにあたっては、さまざまなテクノロジ (.NET、REST、Java など) またはツール (Azure の管理ポータル、Azure Media Services Explorer など)、あるいはその両方を組み合わせて使用することができます。 
-
-このチュートリアルは、次のタスクを実現するために Azure 管理ポータルと Media Services REST API を使用します。     
-
-
-1.  [ポータルを使用して Media Services アカウントを作成します](#create_ams)。
-1.  [REST API で Media Services アカウントに接続します](#connect)。
-1.  [新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする](#upload)。
-1.  [REST API でストリーミング ユニットを構成します](#configure_streaming_units)。
-2.  [REST API で一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします](#encode)。
-1.  [REST API でエンコードされたアセットの配信ポリシーを構成します](#configure_delivery_method)。
-1.  [REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します](#publish_get_urls)。 
-1.  [コンテンツを再生します](#play)。 
+チュートリアルでは Media Services の基本的なワークフローや、Media Services 開発に必要となる一般的なプログラミング オブジェクトやタスクについて紹介します。このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、ダウンロードして、ストリーミングやプログレッシブ ダウンロードを実行できます。  
 
 ## 前提条件
 REST API を使用して Media Services での開発を始めるには、次の前提条件が必要です。
 
-- Media Services REST API を使用して開発する方法を理解します。詳細については、「[Media Services REST API 開発用の設定](http://msdn.microsoft.com/library/azure/hh973616.aspx)」を参照してください。
-- HTTP 要求と応答を送信できる任意のアプリケーション。このチュートリアルでは、「 [Fiddler](http://www.telerik.com/download/fiddler)」を使用します。 
+- Media Services REST API を使用して開発する方法を理解します。詳細については、「[media-services-rest-overview](http://msdn.microsoft.com/library/azure/hh973616.aspx)」をご覧ください。
+- HTTP 要求と応答を送信できる任意のアプリケーション。このチュートリアルでは、[Fiddler](http://www.telerik.com/download/fiddler) を使用します。 
+
+このクイック スタートでは、次のタスクが表示されます。
+
+1.  ポータルを使用した Media Services アカウントの作成
+1.  REST API で Media Services アカウントに接続する
+1.  新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
+1.  REST API でストリーミング ユニットを構成する
+2.  REST API で一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
+1.  REST API でエンコードされたアセットの配信ポリシーの構成
+1.  アセットを発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する 
+1.  コンテンツの再生 
 
 
 ## <a id="create_ams"></a>ポータルを使用した Media Services アカウントの作成
 
-1. [管理ポータル][]で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
+1. [管理ポータル][]で、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
    
 	![Media Services Quick Create](./media/media-services-create-account/wams-QuickCreate.png)
 
-2. **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。 
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。 
 
-3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能なメディア サービス リージョンだけが表示されます。 
+3. **[リージョン]** で、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。 
 
-4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。メディア サービス アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。 
+4. **[ストレージ アカウント]** で、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。 
 
-5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、メディア サービス アカウントと同じです。
+5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
 6. フォームの下部にある **[簡易作成]** をクリックします。
 
@@ -56,17 +66,17 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 	アカウントの作成に成功すると、ステータスが [アクティブ] に変化します。 
 	
-	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services のアカウント名およびプライマリ キーとセカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。 
+	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。 
 
 	
 	![Media Services Page](./media/media-services-create-account/wams-mediaservices-page.png)
 
-	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
+	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行したり、[コンテンツ] ページから実行したりできます。
 
 
 ## <a id="connect"></a>REST API で Media Services アカウントに接続する
 
-Azure Media Services にアクセスする際には、Azure アクセス制御サービス (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の 2 つが必要です。Media Services を呼び出すときにアクセス トークンで正しいヘッダー値を指定して正しく渡しさえすれば、これらの要求を作成するときに任意の方法を使用できます。
+Azure Media Services にアクセスする際には、Azure アクセス制御サービス (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の 2 つが必要です。Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
 
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
 
@@ -74,23 +84,23 @@ Azure Media Services にアクセスする際には、Azure アクセス制御�
 2. Media Services URI に接続します。 
 	
 	>[AZURE.NOTE]
-	Https://media.windows.net に正常に接続されると、別のメディア サービスの URI を指定する 301 リダイレクトを受け取ります。新しい URI の次の呼び出しを行う必要があります。
+	Https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。その新しい URI に再度コールする必要があります。
 	> 
-	> ODATA API のメタデータ記述を含む HTTP/1.1 200 応答を受け取ることもあります。
+	> ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
 3. 新しい URL に後続の API 呼び出しを投稿します。 
 	
-	たとえば、接続しようとした後に、次を受け取ります。
+	たとえば、接続しようとした後に次のようなメッセージが表示されます。
 		
 		HTTP/1.1 301 Moved Permanently
 		Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-	https://wamsbayclus001rest-hs.cloudapp.net/api/ に対して後続の API 呼び出しを投稿する必要があります。
+	この場合、続けて、このリンクへ API コールを行う必要があります: https://wamsbayclus001rest-hs.cloudapp.net/api/.
 
-###アクセス トークンの取得
+### アクセス トークンの取得
 
-REST API を使用して Media Services に直接にアクセスするには、ACS からアクセス トークンを取得し、サービスに対して行うすべての HTTP 要求に使用します。このトークンは、HTTP 要求のヘッダーで提供されるアクセス要求に基づいて ACS によって提供され OAuth v2 プロトコルを使用する他のトークンに似ています。Media Services への直接接続する前には、その他の前提条件は必要はありません。
+REST API から直接 Media Services にアクセスするには、ACS からアクセス トークンを取得して、Media Services に行う各 HTTP 要求で使用します。このトークンは、OAuth v2 プロトコルを使用して、HTTP 要求のヘッダーで提供されるアクセス要求に基づいて ACS で提供されるその他のトークンに似ています。Media Services に直接接続するための前提条件は、これ以外にはありません。
 
-次の例は、トークンを取得するために使用する HTTP 要求ヘッダーと本文を示します。
+次の例は、トークンを取得するために使用される HTTP 要求のヘッダーと本文を示します。
 
 **ヘッダー**:
 
@@ -103,11 +113,11 @@ REST API を使用して Media Services に直接にアクセスするには、A
 	Accept: application/json
 
 	
-**本文**:
+**本文**: 
 
-この要求の本文の Client_id と client_secret の値を証明する必要があります。client_id と client_secret は、それぞれ AccountName および AccountKey の値に対応します。これらの値は、アカウントをセットアップするときに Media Services によって提供されます。 
+この要求の本文で、client_id と client_secret の値を指定する必要があります。client_id と client_secret はそれぞれ、AccountName と AccountKey の値に対応します。Media Services では、アカウントを設定したときにこれらの値が提供されます。 
 
-Media Services アカウントの AccountKey は、アクセス トークン要求の client_secret 値として使用する場合には URL エンコードされている必要があることに注意してください。
+Media Services アカウントの AccountKey は、アクセス トークン要求で client_secret 値として使用されるときは URL エンコードされている必要があります。
 
 	grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
 
@@ -117,7 +127,7 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 	grant_type=client_credentials&client_id=amstestaccount001&client_secret=wUNbKhNj07oqjqU3Ah9R9f4kqTJ9avPpfe6Pk3YZ7ng%3d&scope=urn%3aWindowsAzureMediaServices
 
 
-応答本文にアクセス トークンを含む HTTP 応答を次の例に示します。
+次の例は、本文にアクセス トークンを含む HTTP 応答を示します。
 
 	HTTP/1.1 200 OK
 	Cache-Control: no-cache, no-store
@@ -132,35 +142,35 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 	
 	{  
 	   "token_type":"http://schemas.xmlsoap.org/ws/2009/11/swt-token-profile-1.0",
-	   "access_token":"http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421330840&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=uf69n82KlqZmkJDNxhJkOxpyIpA2HDyeGUTtSnq1vlE%3d",
+	   "access_token":"http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421330840&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=uf69n82KlqZmkJDNxhJkOxpyIpA2HDyeGUTtSnq1vlE%3d",
 	   "expires_in":"21600",
 	   "scope":"urn:WindowsAzureMediaServices"
 	}
 	
 
 >[AZURE.NOTE]
-外部記憶域には、"access_token" および "expires_in" 値をキャッシュすることをお勧めします。トークン データは、後でストレージから取得し、Media Services REST API 呼び出しで再利用する可能性があります。これは、複数のプロセスまたはコンピューター間でトークンを安全に共有できるシナリオでは特に便利です。
+"access_token " と "expires_in " の値は外部ストレージに保存することをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
 
-アクセス トークンの "expires_in" の値を監視し、必要に応じて新しいトークンで REST API 呼び出しを更新します。
+アクセス トークンの "expires_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
 
-###Media Services URI への接続
+### Media Services URI への接続
 
-Media Services のルート URI は https://media.windows.net/ です。最初にこの URI に接続する必要があり、応答で 301 リダイレクトが返された場合は、新しい URI への次の呼び出しを行う必要があります。また、要求では自動リダイレクトやフォロー ロジックを使用しないでください。HTTP 動詞と要求本文は、新しい URI に転送されません。
+Media Services のルート URI は https://media.windows.net/ です。まず、この URI に接続して、301 リダイレクトが返された場合は続けて新しい URI にコールする必要があります。加えて、要求に auto-redirect/follow ロジックを使うことはできません。HTTP 動詞や応答本文はその新しい URI に転送されません。
 
-アセット ファイルをアップロードおよびダウンロードするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名は Media Services アカウントのセットアップ時に使用したものと同じであることに注意してください。
+アセット ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
 
-次の例では、Media Services のルート URI (https://media.windows.net/) への HTTP 要求を示します。この要求は応答で 301 リダイレクトを取得します。後続の要求は新しい URI を使用しています(https://wamsbayclus001rest-hs.cloudapp.net/api/)。     
+次の例は、Media Services ルート URI (https://media.windows.net/) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/) に続けて要求を行っています。     
 
-**HTTP 要求**:
+**HTTP 要求**: 
 	
 	GET https://media.windows.net/ HTTP/1.1
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
 	x-ms-version: 2.8
 	Accept: application/json
 	Host: media.windows.net
 
 
-**HTTP 応答**:
+**HTTP 応答**: 
 	
 	HTTP/1.1 301 Moved Permanently
 	Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
@@ -177,16 +187,16 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 	</body></html>
 
 
-**HTTP 要求**(新しい URI を使用)
+**HTTP 要求** (新しい URI を使用): 
 			
 	GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
 	x-ms-version: 2.8
 	Accept: application/json
 	Host: wamsbayclus001rest-hs.cloudapp.net
 
 
-**HTTP 応答**:
+**HTTP 応答**: 
 	
 	HTTP/1.1 200 OK
 	Cache-Control: no-cache
@@ -209,7 +219,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 
 ## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
 
-メディア サービスで、デジタル ファイルをアセットにアップロードします。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
+Media Services で、デジタル ファイルをアセットにアップロードします。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
 
 アセット作成時に指定する必要がある値の 1 つに、アセット作成オプションがあります。**オプション**プロパティは、アセットの作成に使用できる暗号化オプションを示す列挙値です。有効な値は以下の一覧の値のいずれかですが、この一覧の値を組み合わせて使用することはできません。
 
@@ -217,13 +227,13 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 - **None** = **0** - 暗号化は使用されません。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
 
 	プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
-- **StorageEncrypted** = **1** - ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護されたアセットは、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力アセットとして再びアップロードすることもできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
+- **StorageEncrypted** = **1** - ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護されたアセットは、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力アセットとして再びアップロードできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
 - **CommonEncryption** = **2** - 既に Common Encryption や PlayReady DRM で暗号化されて保護されているコンテンツ (PlayReady DRM で保護されたスムーズ ストリーミングなど) をアップロードする場合は、このオプションを使用します。
 - **EnvelopeEncrypted** = **4** - AES で暗号化された HLS をアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 
 ### アセットを作成する
 
-アセットは、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、メディア サービス内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API でアセットを作成するには、メディア サービスに POST 要求を送信し、要求本文に、アセットに関するプロパティ情報を配置する必要があります。
+アセットは、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API でアセットを作成するには、Media Services に POST 要求を送信し、要求本文に、アセットに関するプロパティ情報を配置する必要があります。
 
 次の例では、アセットを作成する方法を示します。
 
@@ -235,7 +245,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
 	Host: wamsbayclus001rest-hs.cloudapp.net
@@ -278,7 +288,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 	
 ### AssetFile を作成する
 
-[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、blob コンテナーに格納されているビデオまたはオーディオ ファイルを表します。アセット ファイルは常にアセットに関連付けられており、アセットには 1 つまたは複数の Assetfile を含む場合があります。アセット　ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、メディア サービスのエンコーダー タスクは失敗します。
+[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。アセット ファイルは常にアセットに関連付けられており、アセットには 1 つまたは複数の Assetfile を含む場合があります。アセット　ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
 デジタル メディア ファイルを blob コンテナーにアップロードした後、**MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半に表示) に関する情報とともに AssetFile をアップデートします。 
 
@@ -290,7 +300,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	Content-Length: 164
@@ -341,7 +351,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 
 ### 書き込みのアクセス許可を持つ AccessPolicy を作成する 
 
-すべてのファイルを blob ストレージにアップロードする前に、アセットに書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、「[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)」を参照してください。
+すべてのファイルを blob ストレージにアップロードする前に、アセットに書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)をご覧ください。
 
 次の例は、AccessPolicy を作成する方法を示します。
 		
@@ -353,7 +363,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	Content-Length: 74
@@ -362,7 +372,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 
 **HTTP 要求**
 
-	成功した場合、次の応答が返されます。
+	If successful, the following response is returned:
 	
 	HTTP/1.1 201 Created
 	Cache-Control: no-cache
@@ -390,7 +400,7 @@ Media Services のルート URI は https://media.windows.net/ です。最初�
 
 ### アップロード URL を取得する
 
-実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、アセット内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理することができます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」を参照してください。
+実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、アセット内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
 
 
 SAS URL には次の形式があります。
@@ -399,8 +409,8 @@ SAS URL には次の形式があります。
 
 いくつかの考慮事項が適用されます。
 
-- 特定のアセットに関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」を参照してください。
-- すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターとメディア サービスの間にクロック スキューがある可能性があるためです。また、StartTime 値は DateTime 形式の YYYY-MM-DDTHH:mm:ssZ である必要があります (たとえば、"2014-05-23T17:53:50Z")。	
+- 特定のアセットに関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
+- すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。また、StartTime 値は DateTime 形式のYYYY-MM-DDTHH:mm:ssZ である必要があります (たとえば、"2014-05-23T17:53:50Z")。	
 - Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
 次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケータ―の場合は "１"、オンデマンド配信元ロケーターの場合は "２")。返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
@@ -460,11 +470,11 @@ SAS URL には次の形式があります。
 
 ### Blob ストレージ コンテナーにファイルをアップロードする
 	
-AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。ページにアップロードするか、blob をブロックすることができます。 
+AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。ページにアップロードするか、blob をブロックできます。 
 
->[AZURE.NOTE] 前のセクションで受信した Locator の **Path** 値にアップロードするファイルのファイル名を追加する必要があります。例: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?... 
+>[AZURE.NOTE] 前のセクションで受信した Locator の **Path** 値にアップロードするファイルのファイル名を追加する必要があります。たとえば、https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . のように指定します。 
 
-Azure ストレージ blob の使用の詳細については、「[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)」を参照してください。
+Azure ストレージ BLOB の使用の詳細については、[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)をご覧ください。
 
 
 ### AssetFile を更新する 
@@ -477,7 +487,7 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	
@@ -493,6 +503,7 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
 **HTTP 応答**
 
 成功した場合は、次の内容が返されます。
+	
 	HTTP/1.1 204 No Content
 
 ## Locator と AccessPolicy　を削除します。 
@@ -505,7 +516,7 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 
@@ -524,7 +535,7 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 
@@ -538,35 +549,34 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
  
 ## <a id="configure_streaming_units"></a>REST API でストリーミング ユニットを構成する
 
-クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services は、次のアダプティブ ビットレート ストリーミング テクノロジをサポートします。HTTP Live Streaming (HLS)、スムーズ ストリーミング、MPEG DASH、および HDS (Adobe Primetime/Access のライセンス所有者のみ対象)。 
+クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services では、次のアダプティブ ビットレート ストリーミング テクノロジがサポートされています。HTTP Live Streaming (HLS)、スムーズ ストリーミング、MPEG DASH、および HDS (Adobe Primetime/Access のライセンス所有者のみ対象)。 
 
-Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはスムーズ ストリーミングでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 
+Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはスムーズ ストリーミングでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- 配信しようとするコンテンツの元となるストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得する (このセクションで説明)。
+- コンテンツの配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを 1 つ以上取得する (このセクションで説明)。
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。  
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。 
 
-動的パッケージ化機能を使用できることに加え、オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入することができます。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。
 
->[AZURE.NOTE] 料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+>[AZURE.NOTE] 料金設定の詳細については、[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)に関するページをご覧ください。
 
-オンデマンド ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
+ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 	
 ### 更新するストリーミング エンドポイントを取得する
 
-たとえば、自分のアカウントの最初のストリーミング エンドポイントを取得します。 (同時に最大 2 つの実行状態のストリーミング エンドポイントを持つことができます)。 
+たとえば、自分のアカウントの最初のストリーミング エンドポイントを取得します。 (同時に最大 2 つの実行状態のストリーミング エンドポイントを持つことができます)。
 
-**HTTP 要求**:
+**HTTP 要求**: 
 
 	GET https://wamsbayclus001rest-hs.cloudapp.net/api/StreamingEndpoints()?$top=1 HTTP/1.1
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json;odata=verbose
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421466122&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=TiKGEOTporft4pFGU24sSZRZk5GRAWszFXldl5NXAhY%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421466122&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=TiKGEOTporft4pFGU24sSZRZk5GRAWszFXldl5NXAhY%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 
@@ -579,14 +589,14 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 	
 ### ストリーミング エンドポイントのスケールを設定する
  
-**HTTP 要求**:
+**HTTP 要求**: 
 
 	POST https://wamsbayclus001rest-hs.cloudapp.net/api/StreamingEndpoints('nb:oid:UUID:cd57670d-cc1c-0f86-16d8-3ad478bf9486')/Scale HTTP/1.1
 	Content-Type: application/json;odata=verbose
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json;odata=verbose
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421466122&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=TiKGEOTporft4pFGU24sSZRZk5GRAWszFXldl5NXAhY%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421466122&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=TiKGEOTporft4pFGU24sSZRZk5GRAWszFXldl5NXAhY%3d
 	x-ms-version: 2.8
 	x-ms-client-request-id: 39f96c93-a4b1-43ce-b97e-b2aaa44ee2dd
 	Host: wamsbayclus001rest-hs.cloudapp.net
@@ -609,19 +619,19 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 	Content-Length: 0
 
 	
-### <a id="long_running_op_status"></a> 実行時間の長い操作の状態を確認する
+### <a id="long_running_op_status"></a>実行時間の長い操作の状態を確認する
 
-オンデマンド ストリーミングの新しいユニットの割り当ては完了するまでに約 20 分かかります。操作の状態を確認するには、 **Operations**メソッドを使用し、操作の Id を指定します。**Scale** 要求への応答で操作 Id が返されます。
+新しいユニットの割り当ては完了するまでに約 20 分かかります。操作の状態を確認するには、 **Operations**メソッドを使用し、操作の Id を指定します。**Scale** 要求への応答で操作 Id が返されます。
 
 	operation-id: nb:opid:UUID:1853bcbf-b71f-4ed5-a4c7-a581d4f45ae7
  
-**HTTP 要求**:
+**HTTP 要求**: 
 	
 	GET https://wamsbayclus001rest-hs.cloudapp.net/api/Operations('nb:opid:UUID:1853bcbf-b71f-4ed5-a4c7-a581d4f45ae7') HTTP/1.1
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json;odata=verbose
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421466122&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=TiKGEOTporft4pFGU24sSZRZk5GRAWszFXldl5NXAhY%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421466122&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=TiKGEOTporft4pFGU24sSZRZk5GRAWszFXldl5NXAhY%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	
@@ -658,14 +668,14 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ## <a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
-Media Services に取り込んだアセットには、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用することができます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらのアクティビティはジョブと呼ばれ、各[ジョブ](http://msdn.microsoft.com/library/azure/hh974289.aspx)は、アセット ファイルの実際の作業を実行するアトミック タスクで構成されます。 
+Media Services に取り込んだアセットには、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらのアクティビティはジョブと呼ばれ、各[ジョブ](http://msdn.microsoft.com/library/azure/hh974289.aspx)は、アセット ファイルの実際の作業を実行するアトミック タスクで構成されます。 
 
-冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。Media Services では、一連のアダプティブ ビットレート MP4 ファイルを次の形式のいずれかに動的にパッケージできます。HTTP Live Streaming (HLS)、スムーズ ストリーミング、MPEG DASH、および HDS (Adobe Primetime/Access のライセンス所有者のみ対象)。 
+冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。Media Services では、複数のアダプティブ ビットレート MP4 ファイルを、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンス所有者のみ使用可能) の各アダプティブ ビットレート ストリーミング技術がサポートされています。 
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
-- コンテンツ配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを少なくとも 1 つ取得する。 
+- コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 
 
 次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。タスクは、**Azure Media Encoder** を使用して一連のアダプティブ ビットレート mp4 にトランス コードする mezzanine ファイルを指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、アセットにアクセスするために必要なロケーターを作成できます。 
 
@@ -718,9 +728,9 @@ Media Services では、メディア プロセッサは、メディア コンテ
 
 ### ジョブを作成する
 
-各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。タスクは、Job エンティティのタスク ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。Media Services SDK はバッチ処理を使用します。ただし、このトピックのコード例では、読みやすくするためにタスクをインラインで定義します。バッチ処理の詳細については、[Open Data Protocol (OData) の「バッチ処理」](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)を参照してください。
+各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。タスクは、Job エンティティのタスク ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。Media Services SDK はバッチ処理を使用します。ただし、このトピックのコード例では、読みやすくするためにタスクをインラインで定義します。バッチ処理の詳細については、[Open Data Protocol (OData) の「Batch Processing (バッチ処理)」](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)をご覧ください。
 
-次の例では、特定の解像度と品質でビデオをエンコードするために設定したタスクを含むジョブを作成して投稿する方法を示します。次のドキュメント セクションには、Azure のメディア プロセッサがサポートしているすべての[タスク プリセット](http://msdn.microsoft.com/library/azure/dn619392.aspx)の一覧が含まれています。  
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。次のドキュメント セクションには、Azure のメディア プロセッサがサポートしているすべての[タスク プリセット](http://msdn.microsoft.com/library/azure/dn619392.aspx)の一覧が含まれています。  
 
 **HTTP 要求**
 	
@@ -730,7 +740,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 	Content-Type: application/json
 	Accept: application/json;odata=verbose
 	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	Content-Length: 482
@@ -819,9 +829,9 @@ Media Services では、メディア プロセッサは、メディア コンテ
 ジョブ要求について注意が必要ないくつかの重要事項があります。
 
 - TaskBody プロパティでは、リテラル XML を使用して、タスクが使用するアセットの入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
-- TaskBody の定義では、各内部値 <inputAsset> および  <outputAsset> はJobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
-- タスクは、複数の出力アセットを持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用することができます。
-- タスクの入力アセットとして、JobInputAsset または JobOutputAsset を指定することができます。
+- TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
+- タスクは、複数の出力アセットを持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
+- タスクの入力アセットとして、JobInputAsset または JobOutputAsset を指定できます。
 - タスクは、サイクルを形成することはできません。
 - JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
 
@@ -840,7 +850,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 	- ジョブに少なくとも 2 つのタスクがある必要があります。
 	- タスクの入力がジョブ内の別のタスクの出力である、1 つ以上のタスクがある必要があります。
 
-詳細については、「[Media Services REST API を使用したエンコード ジョブの作成](http://msdn.microsoft.com/library/azure/jj129574.aspx)」を参照してください。
+詳細については、「[Media Services REST API を使用したエンコード ジョブの作成](http://msdn.microsoft.com/library/azure/jj129574.aspx)」をご覧ください。
 
 ### 処理の進行状況を監視する
 
@@ -854,7 +864,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 	DataServiceVersion: 3.0
 	MaxDataServiceVersion: 3.0
 	x-ms-version: 2.8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336908022&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=RYXOraO6Z%2f7l9whWZQN%2bypeijgHwIk8XyikA01Kx1%2bk%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=zf84471d-2233-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336908022&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=RYXOraO6Z%2f7l9whWZQN%2bypeijgHwIk8XyikA01Kx1%2bk%3d
 	Host: wamsbayclus001rest-hs.net
 	Content-Length: 0
 
@@ -916,12 +926,12 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 	Accept: application/json
 	Accept-Charset: UTF-8
 	User-Agent: Microsoft ADO.NET Data Services
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	
 
-**HTTP 応答**
+**HTTP Response**
 
 	HTTP/1.1 200 OK
 	Cache-Control: no-cache
@@ -958,22 +968,7 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 
 Media Services のコンテンツを配信するための作業の一環として、アセットの配信ポリシーを構成します。たとえば、アセットの配信にどのようなプロトコルを使用できるか (MPEG DASH、HLS、HDS、スムーズ ストリーミング、またはそのすべてなど) や、アセットを動的に暗号化するかどうか、またどのように暗号化するか (エンベロープ、Common Encryption など) は、アセット配信ポリシーで構成することになります。 
 
-次の **AssetDeliveryPolicies** HTTP 要求 は、動的な暗号化を適用せずに (AssetDeliveryPolicyType は次の値のいずれかを指定できます。None = 0、Blocked = 1、NoDynamicEncryption = 2、DynamicEnvelopeEncryption = 3、DynamicCommonEncryption = 4)、次のプロトコルのいずれかでストリームを配信することを指定します。   MPEG DASH、HLS、およびスムーズ ストリーミング プロトコル (AssetDeliveryProtocol は、次の値の組み合わせにすることができます。None = 0、        SmoothStreaming = 1、Dash = 2、HLS = 4、Hds = 8、All = 65535)。 
-
-
-この配信構成を使用した場合、スムーズ、HLS、MPEG DASH の各ストリーミングを要求できるようになります。要求には、次の形式を使用します。
-
-スムーズ ストリーミング:
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
-
-HLS:
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
-
-MPEG DASH
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf) 
+次の **AssetDeliveryPolicies** HTTP 要求 は、動的な暗号化を適用せずに (AssetDeliveryPolicyType は次の値のいずれかを指定できます。None = 0、Blocked = 1、NoDynamicEncryption = 2、DynamicEnvelopeEncryption = 3、DynamicCommonEncryption = 4)、次のプロトコルのいずれかでストリームを配信することを指定します。MPEG DASH、HLS、およびスムーズ ストリーミング プロトコル (AssetDeliveryProtocol は、次の値の組み合わせにすることができます。None = 0、SmoothStreaming = 1、Dash = 2、HLS = 4、Hds = 8、All = 65535)。 
 
 
 ### AssetDeliveryPolicies を作成する
@@ -1035,7 +1030,7 @@ MPEG DASH
 	Accept: application/json
 	Accept-Charset: UTF-8
 	Content-Type: application/json
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421679198&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=aUvBcDwRAFk1JLxceWu%2bf9dVrCZM7PrTRbZd0TtoKvU%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421679198&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=aUvBcDwRAFk1JLxceWu%2bf9dVrCZM7PrTRbZd0TtoKvU%3d
 	x-ms-version: 2.8
 	Host: wamsbayclus001rest-hs.cloudapp.net
 	Content-Length: 140
@@ -1049,22 +1044,22 @@ MPEG DASH
     . . . 
 
 
-## <a id="publish_get_urls"></a>アセットを発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する
+## <a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
-アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを "発行" する必要があります。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。Media Services は、2 種類のロケーターをサポートします。メディアのストリーミング (たとえば、MPEG DASH、HLS、またはスムーズ ストリーミング) に使用する OnDemandOrigin ロケーターと、メディア ファイルをダウンロードするために使用する Access Signature (SAS) ロケーターです。
+アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを "発行" する必要があります。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。メディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に使用される OnDemandOrigin ロケーターと、メディア ファイルのダウンロードに使用される Access Signature (SAS) ロケーターの 2 種類のロケーターがサポートされています。
 
-ロケーターを作成したら、対象ファイルのストリーミングまたはダウンロードに使用する URL を作成します。 
+ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成します。 
 
 
-スムーズ ストリーミングの オンデマンド URL の形式は次のとおりです。
+スムーズ ストリーミングのストリーミング URL の形式は次のとおりです。
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-HLS の オンデマンド URL の形式は次のとおりです。
+HLS のストリーミング URL の形式は次のとおりです。
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-MPEG DASH の オンデマンド URL の形式は次のとおりです。
+MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
@@ -1079,9 +1074,9 @@ MPEG DASH の オンデマンド URL の形式は次のとおりです。
 - コンテンツをダウンロードするための SAS URL を作成する 
 - ストリーミング コンテンツの配信元 URL を作成する 
 
-###読み取りアクセス許可を持つ AccessPolicy を作成する
+### 読み取りアクセス許可を持つ AccessPolicy を作成する
 
-メディア コンテンツをダウンロードおよびストリーミングする前に、まず読み取りアクセス許可を持つ AccessPolicy を定義し、クライアントのために有効にする配信メカニズムの種類を指定する適切な Locator エンティティを作成します。使用できるプロパティの詳細については、「[AccessPolicy エンティティ プロパティ](https://msdn.microsoft.com/ja-jp/library/azure/hh974297.aspx#accesspolicy_properties)」を参照してください。 
+メディア コンテンツをダウンロードおよびストリーミングする前に、まず読み取りアクセス許可を持つ AccessPolicy を定義し、クライアントのために有効にする配信メカニズムの種類を指定する適切な Locator エンティティを作成します。使用できるプロパティの詳細については、「[AccessPolicy エンティティ プロパティ](https://msdn.microsoft.com/library/azure/hh974297.aspx#accesspolicy_properties)」をご覧ください。
 
 次の例では、指定された Asset の読み取りアクセス許可のために AccessPolicy を指定する方法を示します。
 
@@ -1101,10 +1096,10 @@ MPEG DASH の オンデマンド URL の形式は次のとおりです。
 成功した場合、作成した AccessPolicy エンティティについて記述した 201 サクセス コードが返されます。これで、配信して Locator エンティティを作成するファイルが含まれているアセット (出力アセットなど) の Asset Id と AccessPolicy Id を使用できます。
 
 >[AZURE.NOTE]
-この基本的なワークフローは (このトピックで既に説明した) アセットの取り込み時にファイルをアップロードするのと同じです。また、ファイルのアップロードのように、ファイルにすぐにアクセスする必要がある場合は、StartTime 値を現在の時刻より 5 分前に設定します。この操作は、クライアントと Media Services との間でクロック スキューがある可能性があるために必要です。StartTime の値は、次のような DateTime 形式でする必要があります。YYYY-MM-DDTHH:mm:ssZ である必要があります (たとえば、"2014-05-23T17:53:50Z")。
+この基本的なワークフローは (このトピックで既に説明した) アセットの取り込み時にファイルをアップロードするのと同じです。また、ファイルのアップロードのように、ファイルにすぐにアクセスする必要がある場合は、StartTime 値を現在の時刻より 5 分前に設定します。この操作は、クライアントと Media Services との間でクロック スキューがある可能性があるために必要です。StartTime の値は、次のような DateTime 形式でする必要があります。YYYY-MM-DDTHH:mm:ssZ例: "2014-05-23T17:53:50Z"
 
 
-###コンテンツをダウンロードするための SAS URL を作成する 
+### コンテンツをダウンロードするための SAS URL を作成する 
 
 次のコードは、以前に作成されてアップロードされたメディア ファイルをダウンロードするために使用する URL を取得する方法を示します。AccessPolicy には読み取りアクセス許可が設定され、ロケーター パスは SAS ダウンロード URL を参照します。
 
@@ -1114,7 +1109,7 @@ MPEG DASH の オンデマンド URL の形式は次のとおりです。
 	DataServiceVersion: 3.0
 	MaxDataServiceVersion: 3.0
 	x-ms-version: 2.8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=zf84471d-b1ae-2233-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
 	Host: wamsbayclus001rest-hs.net
 	Content-Length: 182
 	Expect: 100-continue
@@ -1168,15 +1163,15 @@ MPEG DASH の オンデマンド URL の形式は次のとおりです。
 返された **Path** プロパティには、SAS URL が含まれています。
 
 >[AZURE.NOTE]
-ストレージ暗号化コンテンツをダウンロードする場合は、表示する前に手動で暗号化を解除するか、または処理タスク内の Storage Decryption MediaProcessor を使用して、処理されたファイルを OutputAsset にクリア テキストで出力し、その Asset からダウンロードする必要があります。処理の詳細については、「Media Services REST API によるエンコード ジョブの作成」を参照してください。また、作成した後は SAS URL ロケーターを更新できません。たとえば、更新された StartTime 値を持つ同じロケーターを再利用することはできません。これは、SAS URL の作成方法による制限です。ロケーターの有効期限が切れた後のアセットにダウンロードのためにアクセスする場合、新しい StartTime で新しくロケーターを作成する必要があります。
+ストレージ暗号化コンテンツをダウンロードする場合は、表示する前に手動で暗号化を解除するか、または処理タスク内の Storage Decryption MediaProcessor を使用して、処理されたファイルを OutputAsset にクリア テキストで出力し、その Asset からダウンロードする必要があります。処理の詳細については、「Media Services REST API によるエンコード ジョブの作成」をご覧ください。また、作成した後は SAS URL ロケーターを更新できません。たとえば、更新された StartTime 値を持つ同じロケーターを再利用することはできません。これは、SAS URL の作成方法による制限です。ロケーターの有効期限が切れた後のアセットにダウンロードのためにアクセスする場合、新しい StartTime で新しくロケーターを作成する必要があります。
 
-###ファイルをダウンロードする
+### ファイルをダウンロードする
 
-AccessPolicy と Locator を設定したら、Azure Storage REST API を使用してファイルをダウンロードすることができます。  
+AccessPolicy と Locator を設定したら、Azure Storage REST API を使用してファイルをダウンロードできます。  
 
->[AZURE.NOTE] 前のセクションで受信したロケーター **パス**の値にダウンロードするファイルのファイル名を追加する必要があります。例: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?... 
+>[AZURE.NOTE] 前のセクションで受信したロケーター **パス**の値にダウンロードするファイルのファイル名を追加する必要があります。例: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? をご覧ください。」をご覧ください。」をご覧ください。 
 
-Azure ストレージ blob の使用の詳細については、「[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)」を参照してください。
+Azure ストレージ BLOB の使用の詳細については、[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)をご覧ください。
 
 以前 (エンコード アダプティブ MP4 セットに) を実行して、エンコード ジョブでの結果としてある複数の MP4 ファイルを段階的にダウンロードできます。次に例を示します。    
 	
@@ -1197,10 +1192,10 @@ Azure ストレージ blob の使用の詳細については、「[BLOB サー�
 	https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-###ストリーミング コンテンツのオンデマンド配信元 URL を作成する
+### ストリーミング コンテンツのストリーミング URL を作成する
 
 
-次のコードは、配信元 URL ロケーターを作成する方法を示します。
+次のコードは、ストリーミング URL ロケーターを作成する方法を示します。
 
 	POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
 	Content-Type: application/json
@@ -1270,21 +1265,21 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 	http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a id="play"></a>コンテンツを再生する  
+## <a id="play"></a>コンテンツの再生  
 
-SAS URL を取得したら、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けることによって、MP4 ファイルをプログレッシブにダウンロードすることができます。
+SAS URL を取得したら、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けることによって、MP4 ファイルをプログレッシブにダウンロードできます。
 
 アダプティブ ストリーミング URL をテストするには、次のプレーヤーを使用します。
 
-スムーズ ストリーミングをテストするには、[http://amsplayer.azurewebsites.net/](http://amsplayer.azurewebsites.net/)、または[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) を使用します。
+スムーズ ストリーミングをテストするには、[http://amsplayer.azurewebsites.net/](http://amsplayer.azurewebsites.net/) または [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) を使用してください。
 
-MPEG DASH をテストするには、[http://dashif.org](http://dashif.org/reference/players/javascript/) を使用します。
+MPEG DASH をテストするには、[http://dashif.org](http://dashif.org/reference/players/javascript/) を使用してください。
 
-HLS をテストするには、 iOS または Safari デバイス、あるいは 「[3ivx HLS Player](http://apps.microsoft.com/windows/ja-jp/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614)」 を使用します。 
+HLS をテストするには、iOS デバイス、Safari デバイス、[3ivx-hls-player](http://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614) を使用してください。 
 
 
 
-<h2>その他のリソース</h2>
+## その他のリソース
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - Get your video online now! (Azure Media Services 101 - 今すぐビデオをオンラインにしましょう!)</a>
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - Dynamic Packaging and Mobile Devices (Azure Media Services 102 - 動的パッケージ化機能とモバイル デバイス)</a>
 
@@ -1298,4 +1293,4 @@ HLS をテストするには、 iOS または Safari デバイス、あるいは
 
 
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

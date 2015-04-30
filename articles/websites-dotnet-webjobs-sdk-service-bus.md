@@ -1,30 +1,30 @@
-﻿<properties 
-	pageTitle="Web ジョブ SDK を使用して Azure Service Bus を操作する方法" 
+<properties 
+	pageTitle="Web ジョブ SDK で Azure Service Bus を使用する方法" 
 	description="Web ジョブ SDK を使用して Azure Service Bus キューとトピックを操作する方法について説明します。" 
-	services="web-sites, service-bus" 
+	services="app-service\web, service-bus" 
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/15/2014" 
+	ms.date="04/03/2015" 
 	ms.author="tdykstra"/>
 
-# Web ジョブ SDK を使用して Azure Service Bus を操作する方法
+# Web ジョブ SDK で Azure Service Bus を使用する方法
 
 ## 概要
 
-このガイドでは、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用しています。
+このガイドでは、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md)  バージョン 1.x を使用しています。
 
-このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
+このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md) を理解していることを前提としています。
 
-コード スニペットは、この例のように `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
+コード スニペットは、この例のように  `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
 
 		static void Main(string[] args)
 		{
@@ -32,19 +32,27 @@
 		    host.RunAndBlock();
 		}
 		
-## <a id="prerequisites"></a> 前提条件
+## <a id="prerequisites"></a>前提条件
 
 Service Bus を使用するには、他の Web ジョブ SDK パッケージに加えて、[Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet パッケージをインストールする必要があります。 
 
-また、ストレージ接続文字列に加えて、AzureWebJobsServiceBus 接続文字列を設定する必要もあります。
+また、ストレージ接続文字列に加えて、AzureWebJobsServiceBus 接続文字列を設定する必要もあります。次の例で示すように Web.config ファイルの  `connectionStrings` セクションでこれを行うことができます。
 
-## <a id="trigger"></a> Service Bus キュー メッセージを受信したときに関数をトリガーする方法
+		<connectionStrings>
+		    <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+		    <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+		    <add name="AzureWebJobsServiceBus" connectionString="Endpoint=sb://[yourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[yourKey]"/>
+		</connectionStrings>
 
-キュー メッセージを受信したときに Web ジョブ SDK が呼び出す関数を記述するには、`ServiceBusTrigger` 属性を使用します。この属性コンストラクターは、ポーリングするキューの名前を指定するパラメーターを受け取ります。
+サンプル プロジェクトについては、「[Service Bus の使用例](https://github.com/Azure/azure-webjobs-sdk-samples/tree/master/BasicSamples/ServiceBus)」をご覧ください。詳細については、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](websites-dotnet-webjobs-sdk-get-started.md)」をご覧ください。
+
+## <a id="trigger"></a>Service Bus キュー メッセージを受信したときに関数をトリガーする方法
+
+キュー メッセージを受信したときに Web ジョブ SDK が呼び出す関数を記述するには、 `ServiceBusTrigger` 属性を使用します。この属性コンストラクターは、ポーリングするキューの名前を指定するパラメーターを受け取ります。
 
 ### ServicebusTrigger のしくみ
 
-この SDK では、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
+この SDK では、 `PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの  `Complete` を呼び出し、関数が失敗した場合は、 `Abandon` を呼び出します。関数の実行時間が  `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
 
 有害キュー処理は Service Bus 自体が行うため、Web ジョブ SDK で制御することや、構成することはできません。 
 
@@ -62,7 +70,7 @@ Service Bus を使用するには、他の Web ジョブ SDK パッケージに�
 
 ### POCO キュー メッセージ
 
-この SDK では、POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 型の JSON を含むキュー メッセージを自動的に逆シリアル化します。以下のコード サンプルでは、`BlobName` プロパティを持つ `BlobInformation` オブジェクトを含むキュー メッセージを読み取ります。
+この SDK では、POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) 型の JSON を含むキュー メッセージを自動的に逆シリアル化します。以下のコード サンプルでは、 `BlobName` プロパティを持つ  `BlobInformation` オブジェクトを含むキュー メッセージを読み取ります。
 
 		public static void WriteLogPOCO([ServiceBusTrigger("inputqueue")] BlobInformation blobInfo,
 		    TextWriter logger)
@@ -70,15 +78,15 @@ Service Bus を使用するには、他の Web ジョブ SDK パッケージに�
 		    logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
 		}
 
-POCO のプロパティを使って同じ関数の BLOB やテーブルを操作する方法を示すコード サンプルについては、[この記事のストレージ キュー バージョン](../websites-dotnet-webjobs-sdk-storage-queues-how-to/#pocoblobs)に関するページを参照してください。
+POCO のプロパティを使って同じ関数の BLOB やテーブルを操作する方法を示すコード サンプルについては、[この記事のストレージ キュー バージョン](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#pocoblobs) に関するページをご覧ください。
 
 ### ServiceBusTrigger で使用できる型
 
-`string` と POCO  型に加えて、バイト配列や `BrokeredMessage` オブジェクトを`ServiceBusTrigger` 属性で使用することができます。
+ `string` と POCO の型に加えて、バイト配列か  `BrokeredMessage` オブジェクトで  `ServiceBusTrigger` 属性を使用できます。
 
-## <a id="create"></a> Service Bus キュー メッセージの作成方法
+## <a id="create"></a>Service Bus キュー メッセージの作成方法
 
-新しいキュー メッセージを作成する関数を記述するには、`ServiceBus` 属性を使用し、属性コンストラクターにキュー名を渡します。 
+新しいキュー メッセージを作成する関数を記述するには、 `ServiceBus` 属性を使用し、属性コンストラクターにキュー名を渡します。 
 
 
 ### 非同期以外の関数での単一のキュー メッセージの作成
@@ -97,13 +105,13 @@ POCO のプロパティを使って同じ関数の BLOB やテーブルを操作
 * `string`
 * `byte[]`
 * `BrokeredMessage`
-* ユーザーが定義するシリアル化可能な POCO 型。JSON として自動的にシリアル化されます。
+* ユーザーが定義するシリアル化可能な POCO 型。 JSON として自動的にシリアル化されます。
 
 POCO 型のパラメーターの場合は、関数が終了すると、常にキュー メッセージが作成されます。パラメーターが null の場合は、メッセージを受信し、逆シリアル化すると null を返すキュー メッセージが作成されます。他の型では、パラメーターが null の場合、キュー メッセージは作成されません。
 
 ### (非同期関数での) 複数のキュー メッセージの作成
 
-複数のメッセージを作成するには、以下のコード サンプルに示されているように、`ServiceBus` 属性に `ICollector<T>` または `IAsyncCollector<T>` を指定します。
+複数のメッセージを作成するには、以下のコード サンプルに示されているように、 `ServiceBus` 属性に  `ICollector<T>` または  `IAsyncCollector<T>` を指定します。
 
 		public static void CreateQueueMessages(
 		    [ServiceBusTrigger("inputqueue")] string queueMessage,
@@ -115,11 +123,11 @@ POCO 型のパラメーターの場合は、関数が終了すると、常にキ
 		    outputQueueMessage.Add(queueMessage + "2");
 		}
 
-`Add` メソッドが呼び出されると、すぐに各キュー メッセージが作成されます。
+ `Add` メソッドが呼び出されると、すぐに各キュー メッセージが作成されます。
 
 ## <a id="topics"></a>Service Bus トピックの操作方法
 
-Service Bus トピックにメッセージを受信したときに SDK が呼び出す関数を記述するには、以下のコード サンプルに示されているように、`ServiceBusTrigger` 属性にトピック名とサブスクリプション名を受け取るコンストラクターを指定します。
+Service Bus トピックにメッセージを受信したときに SDK が呼び出す関数を記述するには、以下のコード サンプルに示されているように、 `ServiceBusTrigger` 属性にトピック名とサブスクリプション名を受け取るコンストラクターを指定します。
 
 		public static void WriteLog([ServiceBusTrigger("outputtopic","subscription1")] string message,
 		    TextWriter logger)
@@ -127,11 +135,11 @@ Service Bus トピックにメッセージを受信したときに SDK が呼び
 		    logger.WriteLine("Topic message: " + message);
 		}
 
-トピックにメッセージを作成するには、キュー名の場合と同様に、 `ServiceBus`属性にトピック名を指定します。
+トピックにメッセージを作成するには、キュー名の場合と同様に、 `ServiceBus` 属性にトピック名を指定します。
 
 ## <a id="queues"></a>ストレージ キューのハウツー記事で紹介されている関連トピック
 
-Service Bus 以外の Web ジョブ SDK シナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」を参照してください。 
+Service Bus 以外の Web ジョブ SDK シナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
 
 その記事では、以下のようなトピックが紹介されています。
 
@@ -144,8 +152,8 @@ Service Bus 以外の Web ジョブ SDK シナリオについては、「[Web �
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a>次のステップ
 
-このガイドでは、Azure Service Bus を操作する一般的なシナリオの対応方法について示すコード サンプルを紹介してきました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+このガイドでは、Azure Service Bus を操作する一般的なシナリオの対応方法について示すコード サンプルを紹介してきました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

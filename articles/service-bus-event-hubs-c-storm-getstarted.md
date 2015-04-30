@@ -30,11 +30,11 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルを完了するには、以下が必要になります。
 
-+ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-tutorial/) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
++ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](virtual-machines-linux-tutorial.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
 
 + [Maven](http://maven.apache.org/) を実行するように構成された Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
 
-+ アクティブな Azure アカウント <br/>アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 無料評価版</a>をご覧ください。
++ アクティブな Azure アカウント <br/>アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>をご覧ください。
 
 ## イベント ハブの作成
 
@@ -87,8 +87,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 Event Hubs と Storm を統合するアプリケーションの開発には、次のリソースを使用できます。
 
-- 「[Storm と HDInsight を使用したセンサー データの分析]」は、Hadoop クラスター内のセンサー データをインジェストするための Event Hubs、Storm、HBase を使用した完全なシナリオ チュートリアルです。
-- 「[HDInsight と Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
+- 「[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]」は、Hadoop クラスター内のセンサー データをインジェストするための Event Hubs、Storm、HBase を使用した完全なシナリオ チュートリアルです。
+- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
 
 <!-- Images. -->
 [1]: ./media/service-bus-event-hubs-getstarted/create-event-hub1.png
@@ -108,6 +108,7 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 
 [Apache Storm]: https://storm.incubator.apache.org
 [HDInsight Storm の概要]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/
-[Storm と HDInsight を使用したセンサー データの分析]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-sensor-data-analysis/
-[HDInsight と Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
-<!--HONumber=47-->
+[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-sensor-data-analysis/
+[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
+
+<!--HONumber=52-->

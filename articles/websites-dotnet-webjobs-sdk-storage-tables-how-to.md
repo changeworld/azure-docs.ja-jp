@@ -1,44 +1,36 @@
-﻿<properties 
+<properties 
 	pageTitle="Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法" 
-	description="Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法について説明します。テーブルを作成し、エンティティをテーブルに追加し、既存のテーブルを読み取ります。" 
-	services="web-sites, storage" 
+	description="Web ジョブ SDK で Azure テーブル ストレージを使用する方法について説明します。テーブルを作成し、エンティティをテーブルに追加し、既存のテーブルを読み取ります。" 
+	services="app-service\web, storage" 
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/15/2014" 
+	ms.date="04/03/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法
 
-このガイドでは、[Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用して Azure のストレージ テーブルを読み書きする方法を示す c# のコード サンプルを提供します。
+## 概要
 
-このガイドでは、読者が [ストレージ アカウントを示す接続文字列を使用して Visual Studio に Web ジョブ プロジェクトを作成する方法を理解していることを前提に説明します。](websites-dotnet-webjobs-sdk-get-started.md).
+このガイドでは、[Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用して Azure ストレージ テーブルを読み書きする方法を示す C# コード サンプルについて説明します。
+
+このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
 		
-コード スニペットには、[手動で呼び出される](../websites-dotnet-webjobs-sdk-storage-queues-how-to/#manual)  `Table` 関数で使用される属性を示すものもあります。すなわち、それらはトリガー属性では呼び出されません。 
+一部のコード スニペットは、[手動で呼び出される](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)関数で使用される  `Table` 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。 
 
-## 目次
+## <a id="ingress"></a>エンティティをテーブルに追加する方法
 
--   [テーブルにエンティティを追加する方法](#ingress)
--   [リアルタイム監視](#monitor)
--   [テーブルから複数のエンティティを読み取る方法](#multiple)
--   [テーブルから 1 つのエンティティを読み取る方法](#readone)
--   [NET ストレージ API を直接使用して、テーブルを操作する方法](#readone)
--   [キューの操作方法に関する記事で扱う関連トピック](#queues)
--   [次のステップ](#nextsteps)
+エンティティをテーブルに追加するには、 `ICollector<T>` を持つ  `Table` 属性または  `T` specifies the schema of the entities you want to add. The attribute constructor takes a string parameter that specifies the name of the table.  `IAsyncCollector  パラメーターを使用します。ここで、<T>` は 
 
-## <a id="ingress"></a> テーブルにエンティティを追加する方法
-
-テーブルにエンティティを追加するには、 `ICollector<T>` または  `T` specifies the schema of the entities you want to add. The attribute constructor takes a string parameter that specifies the name of the table.  が指定する  `IAsyncCollector<T>` パラメーターで  `Table` 属性を使用します。
-
- *Ingress* という名前のテーブルに対する The following code sample adds `Person` エンティティ。
+The following code sample adds `Person` *Ingress* という名前のテーブルに対するエンティティです。
 
 		[NoAutomaticTrigger]
 		public static void IngressDemo(
@@ -55,7 +47,7 @@
 		    }
 		}
 
-通常、 `ICollector` で使用する型は  `TableEntity` から派生するか、または `ITableEntity` を実装しますが、必ずしもそうする必要はありません。次のいずれかの  `Person` クラスは、前述の  `Ingress` メソッドでコードを操作します。
+通常、 `ICollector` と連携して使用する種類は、 `TableEntity` から派生するか、 `ITableEntity` を実装しますが、しなくてもかまいません。次のいずれかの  `Person` クラスは、前の  `Ingress`  メソッドに示されているコードと連携します。
 
 		public class Person : TableEntity
 		{
@@ -69,27 +61,27 @@
 		    public string Name { get; set; }
 		}
 
-Azure ストレージ API を直接操作する場合は、 `CloudStorageAccount` パラメーターをメソッド シグネチャに追加します。
+Azure のストレージ API を直接操作する場合は、メソッドシグネチャに  `CloudStorageAccount` パラメーターを追加することもできます。
 
-## <a id="monitor"></a> リアルタイム監視
+## <a id="monitor"></a>リアルタイム監視
 
-データの受信関数は多くの場合、大量のデータを処理するため、Web ジョブ SDK のダッシュ ボードはリアルタイムの監視データを提供します。**[呼び出しログ]** セクションでは、関数がまだ実行されているかどうかを表示します。
+多くの場合、データの受信関数は大量のデータを処理するため、Web ジョブ SDK のダッシュボードはリアルタイムの監視データを提供します。**呼び出しログ**セクションは、関数がまだ実行であるかどうかを示します。
 
-![Ingress function running](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
+![実行中の受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
 
-**[呼び出しの詳細]** ページは、実行中の関数の進行状況 (書き込まれるエンティティの数) を報告し、中止する機会を知らせます。 
+**呼び出しの詳細**ページは、実行中の関数の進行状況 (書き込まれるエンティティの数) を報告し、実行を中止できます。 
 
-![Ingress function running](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressprogress.png)
+![実行中の受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressprogress.png)
 
-関数が終了すると、**[呼び出しの詳細]** ページは書き込まれた行数を報告します。
+関数が終了したら、**呼び出しの詳細**ページは書き込まれた行の数を報告します。
 
-![Ingress function finished](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
+![完了した受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
-## <a id="multiple"></a> テーブルから複数のエンティティを読み取る方法
+## <a id="multiple"></a>テーブルから複数のエンティティを読み取る方法
 
-テーブルを読み取るには、型が TableEntity から  `T` derives from `` する `IQueryable<T>` パラメーターまたは  `ITableEntity` を実装する  `Table` 属性を使用します。
+テーブルを読み取るには、種類が  `T` derives from `TableEntity` の  `IQueryable<T>` パラメーターで  `Table` 属性を使用するか  `ITableEntity` を実装します。
 
-次のコード サンプルは、 `Ingress` テーブルのすべての行を読み取り、ログに記録します。
+次のコード サンプルは、 `Ingress` テーブルからすべての行を読み取り、ログに記録します。
  
 		public static void ReadTable(
 		    [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -103,11 +95,11 @@ Azure ストレージ API を直接操作する場合は、 `CloudStorageAccount
 		    }
 		}
 
-### <a id="readone"></a> テーブルから 1 つのエンティティを読み取る方法
+### <a id="readone"></a>テーブルから 1 つのエンティティを読み取る方法
 
-1 つのテーブル エンティティにバインドする場合に、パーティション キーと行キーを指定する追加の 2 つのパラメーターを持つ  `Table` 属性コンストラクターがあります。
+1 つのテーブル エンティティにバインドする際に、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ  `Table` 属性コンストラクターがあります。
 
-次のコード サンプルは、キュー メッセージで受信されたパーティション キー値と行キー値に基づいて  `Person` エンティティのテーブル行を読み取ります。  
+次のコード サンプルは、キュー メッセージで受信したパーティション キー値と行キー値に基づいた  `Person` エンティティのテーブル行を読み取ります。  
 
 		public static void ReadTableEntity(
 		    [QueueTrigger("inputqueue")] Person personInQueue,
@@ -127,11 +119,11 @@ Azure ストレージ API を直接操作する場合は、 `CloudStorageAccount
 		}
 
 
-この例の  `Person` クラスでは、 `ITableEntity` を実装する必要はありません。
+この例の  `Person` クラスは、 `ITableEntity` を実装する必要はありません。
 
-## <a id="storageapi"></a> NET ストレージ API を直接使用して、テーブルを操作する方法
+## <a id="storageapi"></a>.NET ストレージ API を直接使用して、テーブルを操作する方法
 
-より柔軟にテーブルを操作するために、 `CloudTable` オブジェクトで  `Table` 属性を使用することもできます。
+テーブルを操作する際に、 `CloudTable` オブジェクトを使用して、より柔軟に  `Table` 属性を使用することもできます。
 
 次のコード サンプルは、 `CloudTable` オブジェクトを使用して、1 つのエンティティを  *Ingress* テーブルに追加します。 
  
@@ -149,27 +141,25 @@ Azure ストレージ API を直接操作する場合は、 `CloudStorageAccount
 		    tableBinding.Execute(insertOperation);
 		}
 
- `CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法]」をご覧ください(storage-dotnet-how-to-use-tables.md)。 
+ `CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)」をご覧ください。 
 
-## <a id="queues"></a>キューの操作方法に関する記事で扱う関連トピック
+## <a id="queues"></a>キューのハウツー記事で紹介されている関連トピック
 
-キュー メッセージによってトリガーされるテーブル処理またはテーブル処理に固有ではない Web ジョブ SDK のシナリオキューの詳細については、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 」をご覧ください。
+キュー メッセージによってトリガーされるテーブルの処理の方法、テーブル処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
 
-この記事で取り上げている関連のトピックは、次のとおりです。
+その記事では、以下のようなトピックが紹介されています。
 
 * Async 関数
 * 複数のインスタンス
 * 正常なシャットダウン
 * 関数本体での Web ジョブ SDK 属性の使用
 * コード内での SDK 接続文字列の設定
-* コード内での Web ジョブ SDK コンストラクター パラメーターの値の設定
-* 手動による関数のトリガー
-* ログの記述
+* コードの Web ジョブ SDK コンストラクター パラメーター値の設定
+* 手動での関数のトリガー
+* ログの書き込み
 
-## <a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a>次のステップ
 
-このガイドでは、Azure のテーブルを操作するための一般的なシナリオを処理する方法を示すコード サンプルを提供しています。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、「[Azure Web Jobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
+このガイドでは、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
-
-
-<!--HONumber=42-->
+<!--HONumber=52-->

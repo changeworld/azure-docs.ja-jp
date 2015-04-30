@@ -16,13 +16,13 @@
 	ms.date="02/15/2015" 
 	ms.author="juliako"/>
 
-#方法:ダウンロードによってアセットを配信する
+#方法: ダウンロードによってアセットを配信する
 
-この記事は、「[Media Services Video on Demand workflow (メディア サービス ビデオ オン デマンドのワークフロー)](../media-services-video-on-demand-workflow)」シリーズの一部です。  
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。  
 
-このトピックでは、メディア サービスにアップロードされたメディア アセットを配信するためのオプションについて説明します。メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。メディア アセットをダウンロードするか、ロケーターを使用してアクセスできます。メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。パフォーマンスとスケーラビリティを高めるために、Azure CDN などのコンテンツ配信ネットワーク (CDN: Content Delivery Network) を使用してコンテンツを配信できます。
+このトピックでは、メディア サービスにアップロードされたメディア アセットを配信するためのオプションについて説明します。メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。メディア アセットをダウンロードするか、ロケーターを使用してアクセスできます。メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。パフォーマンスとスケーラビリティを高めるために、コンテンツ配信ネットワーク (CDN) を使用してコンテンツを配信することもできます。
 
-この例では、メディア アセットをメディア サービスからダウンロードする方法を紹介しています。このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、**OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。この  例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードできます。
+この例では、メディア アセットを Media Services からローカル コンピューターにダウンロードする方法を紹介しています。このコードは、ジョブ ID によって Media Service アカウントに関連付けられたジョブのクエリを実行し、**OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
 
 	
 	// Download the output asset of the specified job to a local folder.
@@ -41,7 +41,7 @@
 	
 		// Create a SAS locator to download the asset
 	    IAccessPolicy accessPolicy = _context.AccessPolicies.Create("File Download Policy", TimeSpan.FromDays(30), AccessPermissions.Read);
-	    ILocator locator = _context.Locators.CreateSasLocator(outputAsset, accessPolicy);
+	    ILocator locator = _context.Locators.CreateLocator(LocatorType.Sas, outputAsset, accessPolicy);
 	
 	    BlobTransferClient blobTransfer = new BlobTransferClient
 	    {
@@ -74,4 +74,5 @@
 	    Console.WriteLine(string.Format("{0} % download progress. ", e.Progress));
 	}
   
-<!--HONumber=45--> 
+
+<!--HONumber=52-->

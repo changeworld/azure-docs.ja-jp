@@ -1,144 +1,144 @@
-﻿<properties 
-	pageTitle="Azure Websites でのグローバル Web プレゼンスの作成" 
-	description="このガイドでは、Azure Websites で組織の (.COM) サイトをホストする方法 (技術概要) について説明します。これには、デプロイメント、カスタム ドメイン、SSL、監視が含まれます。" 
+<properties 
+	pageTitle="Azure App Service Web アプリにグローバル Web プレゼンスを作成する" 
+	description="このガイドでは、Azure App Service Web アプリに組織の (.COM) サイトをホストする方法 (技術概要) について説明します。これには、デプロイメント、カスタム ドメイン、SSL、監視が含まれます。" 
 	editor="jimbe" 
 	manager="wpickett" 
 	authors="cephalin" 
-	services="web-sites" 
+	services="app-service\web" 
 	documentationCenter=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2014" 
+	ms.date="04/08/2015" 
 	ms.author="cephalin"/>
 
 
-# Azure Websites でのグローバル Web プレゼンスの作成
+# Azure App Service Web アプリにグローバル Web プレゼンスを作成する
 
-[Azure Web サイト]は .COM サイトのグローバル Web プレゼンスを確立するために必要なすべての機能を備えています。組織の規模に関係なく、ビジネスを展開し、ブランド認識を高め、顧客とのコミュニケーションを向上させるためには、堅牢なセキュリティで保護された、スケーラブルなプラットフォームが必要です。Azure の Web サイトでは、Microsoft がサポートするビジネス継続性によって、企業のブランド イメージとアイデンティティを維持できます。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリは、.COM サイトにグローバル Web プレゼンスを確立するために必要な機能をすべて備えています。組織の規模に関係なく、ビジネス、ブランド認識、顧客とのコミュニケーションを促進するには、堅牢なセキュリティで保護された、スケーラブルなプラットフォームが必要です。App Service Web アプリは、Microsoft がサポートするビジネス継続性により、企業のブランドとアイデンティティを維持します。
 
-> [AZURE.NOTE] アカウントにサインアップする前に Azure Web サイトを実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Web サイトで、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[アプリ サービスを試す](http://go.microsoft.com/fwlink/?LinkId=523751)」をご覧ください。そこでは、アプリ サービスで有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-Azure の Web サイトで実行されている、.COM の Web サイトの例を次に示します。技術的な投資を最小限に抑えたその他のサービスと組み合わせた Azure の Web サイトによって実現できることを簡潔に説明しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。** 
+以下は、App Service Web アプリで実行されている .COM Web サイトの例です。技術的な投資を最小限に抑えて、Web アプリをその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。** 
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/corp-website-visio.svg" width="100%" height="100%"></object>
 
-> [WACOM.NOTE]
-> このガイドでは、Azure の Web サイトでの公開 .COM サイトの実行に必要な最も一般的な領域とタスクの一部を取り上げています。ただし、Azure の Web サイトで実装できるその他の一般的な解決方法があります。これらの解決方法については、「<a href="http://azure.microsoft.com/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>」および「<a href="http://azure.microsoft.com/manage/services/web-sites/business-application-solution-overview">ビジネス アプリケーション</a>」のその他のガイドをご覧ください。
+> [AZURE.NOTE]
+> このガイドでは、Azure App Service Web アプリで公開されている .COM サイトを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、Azure App Service Web アプリで実装できるその他の一般的なソリューションもあります。これらのソリューションを確認するには、[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)の他のガイドと [基幹業務アプリケーション](web-sites-business-application-solution-overview.md)に関するその他のガイドをご覧ください.
 
-### 最初から作成する、または既存のアセットを表示する
+## 最初から作成するか、既存のアセットを使用する
 
-ギャラリー内の人気のある CMS から新しいサイトを作成するか、またはさまざまな言語やフレームワークから既存の Web アセットを Azure の Web サイトに表示します。
+ギャラリーの人気の CMS から新しいサイトをすばやく作成するか、またはさまざまな言語とフレームワークから既存の Web アセットを App Service Web アプリに取り込みます。
 
-Azure ギャラリーは、人気のある Web サイトのコンテンツ管理システム (CMS) で、[Orchard]、[Umbraco]、[Drupal]、[WordPress] などのテンプレートを提供します。お気に入りの CMS フレーバーを使用して Web サイトを作成できます。ニーズに応じて、[Azure SQL データベース]および [MySQL] などのさまざまなデータベースのバックエンドから選択できます。
+Azure Marketplace では、[Orchard]、[Umbraco]、[Drupal]、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL データベース]と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
-.NET、PHP、Java、Node.js、または Python などの既存の Web アセットを Azure の Web サイトで実行できます。使い慣れた [FTP] ツールまたはソース管理システムを使用して、それらを Azure の Ｗeb サイトに移動できます。Azure の Web サイトは、[Visual Studio]、[Visual Studio Online]、および [Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) のよく知られたソース管理オプションからの直接発行をサポートしています。
+既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web アプリで実行できます。使い慣れた [FTP] ツールやソース管理システムを使ってそれらを Web アプリに移動させることができます。Web アプリは、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接公開をサポートしています。
 
-### 確実に公開します
+## 確実に公開する
 
-既存のソース管理システムから継続的に直接発行し、コンテンツの運用テストにより、Ｗeb サイトを確実に公開します。 
+既存のソース管理システムから継続的に直接公開し、コンテンツのライブテストを行うことによって、Web サイトを確実に公開します。 
 
-サイトの計画、プロトタイプ作成などの初期の開発段階では、Azure Web サイトの[ステージング スロットに展開して]実際に運用する前に、Web サイトの実際の動作バージョンを確認できます。ソース管理を Azure の Ｗeb サイトと統合することによって、ステージング スロットに[継続的に発行]し、準備が整ったら、ダウンタイムなしで実稼働環境にスワップできます。実稼働サイトで問題が発生した場合でも、すぐに以前のバージョンにスワップできます。 
+計画段階、プロトタイピング、サイト開発の初期段階で、App Service Web アプリのサイトを[ステージング スロットに展開]して実際に運用する前に実際の動作バージョンを確認できます。ソース管理を Web アプリと統合することにより、ステージング スロットへ[継続的に公開]し、準備ができたらダウンタイムなしで実稼働環境にスワップできます。実稼働サイトで問題が発生した場合は、すぐにサイトの以前のバージョンにスワップできます。 
 
-また、実際の Web サイトに変更を計画する場合は、実稼働機能でのテストを使用して、提案された更新に対して容易に [A/B テストを実行]できるため、実際のユーザーの操作を分析して、サイト設計に対し、情報に基づいた決定を行います。
+また、実際の Web サイトへの変更を計画する場合、実稼働環境でのテスト機能を使用して、提案されている更新で簡単に [A/B テストを実行]できます。また、実際のユーザーの行動を分析し、サイトの設計において情報を得た上で決断できるようになります。
 
-### ブランド化とセキュリティ保護
+## ブランドとセキュリティ保護
 
-無料 Web サイトのドメインを使用するか、登録済みのドメイン名にマップし、CA 署名入りの SSL 証明書によってブランドを保護します。
+無料の App Service Web アプリ ドメインを使用するか、登録したドメイン名にマップし、証明機関の署名入り SSL 証明書でブランドを安全に保護します。
 
-**\*.azurewebsites.net** ドメインは、Web サイトを Azure の Web サイトで無料で実行できます。または、GoDaddy などの任意の DNS レジストリ から取得した [カスタム ドメイン] (contoso.com など) に Web サイトをマッピングすることもできます。
+Web サイトを Web アプリで実行する場合、**\*.azurewebsites.net** ドメインは無料です。または、Web サイトを GoDaddy などの DNS レジストリから取得した[カスタム ドメイン] (contoso.com など) にマップすることもできます。
 
-ユーザー情報を収集し、電子商取引を実行、またはその他の機密データを管理することにより、ブランドの評価と顧客の [HTTPS] を保護できます。**\*.azurewebsites.net** ドメイン名には、SSL 証明書が付属しており、カスタム ドメインを使用すると、その SSL 証明書を Azure の Web サイトに表示できます。各 SSL 証明書には、月単位の料金 (時間割り計算) が関連付けられています。詳細については、「[Web サイトの料金詳細]」をご覧ください。
+ユーザー情報の収集、電子商取引の実行、その他の機密データ管理などを行う場合は、ブランドの評判や顧客を [HTTPS] で保護できます。**\*.azurewebsites.net** ドメイン名にはすでに SSL 証明書が付属しており、カスタム ドメインを使用する場合は、SSL 証明書を Web アプリ用に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、「[アプリ サービス料金]」をご覧ください。
 
-### グローバルにアクセス
+## グローバル化
 
-Azure Traffic Manager によって地域のサイトに Azure CDN による高速なコンテンツを配信を提供し、グローバルにアクセスします。
+Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure CDN でコンテンツを高速配信してグローバル化を目指します。
 
-それぞれの地域のグローバルな顧客には、[Azure Traffic Manager] を使用して、最適なパフォーマンスを提供する地域のサイトにサイトの訪問者をルーティングします。または、複数の地域でホストされている Web サイトの複数のコピー間にサイト負荷を均等に分散できます。
+諸地域のグローバル顧客にサービスを提供するためには、[Azure Traffic Manager] を使用して最適なパフォーマンスを提供する各地域のサイトへサイト訪問者をルーティングします。または、複数の地域でホストされている Web アプリの複数のコピー間で、サイトの負荷を均等に分散できます。
 
-[Web サイトと Azure CDN の統合]によって、グローバルなユーザーに高速な静的コンテンツを配信します。Azure CDN は、待機時間と、Web サイトへの接続を最小限にする、ユーザーに最も近い [CDN ノード]で静的コンテンツをキャッシュします。
+[Azure CDN と Web アプリを統合させて]、静的コンテンツを世界中のユーザーに高速配信します。Web サイトへの待機時間と接続を最小限にしながら、Azure CDN はユーザーに最も近い [CDN ノード]で静的コンテンツをキャッシュします。
 
-### 最適化
+## 最適化
 
-自動スケールによる自動的なスケーリング、Azure Redis Cache によるキャッシュ、Web ジョブによるバックグラウンド タスクの実行、および Azure Traffic Manager による高可用性の維持によって .COM サイトを最適化します。
+自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、.COM サイトを最適化します。
 
-Azure Web サイトの[スケールアップおよびスケールアウト]の機能は、ワークロードのサイズに関わらず、.COM サイトのニーズを満たします。[Azure 管理ポータル]を使用して手動で、[サービス管理 API] または [PowerShell スクリプト]でプログラムを使用して、または自動スケール機能を使用して自動的に Web サイトをスケール アウトします。**標準**ホスティング プラン、自動スケールでは、CPU 使用率に基づいて Web サイトを自動的にスケール アウトできます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling websites with Azure (Azure を使用して Web サイトを迅速にスケーリングする 10 の方法)]」をご覧ください。
+ワークロードのサイズに関係なく、App Service Web アプリの[スケール アップやスケール アウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスは、[Troy Hunt] の「[Azure で Web アプリを迅速にスケーリングする 10 の事項 (ブログの投稿)]」をご覧ください。
 
-[Azure Redis Cache] を使用して Web サイトの応答性を向上させます。バックエンド データベースと[ASP.NET セッション状態]および[出力キャッシュ]などからのデータのキャッシュに使用します。
+[Azure Redis Cache] を使用して Web サイトの応答性を向上します。バックエンド データベースからのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などその他のことに使用します。
 
-[Azure Traffic Manager] を使用して Web サイトの高可用性を維持します。プライマリ サイトに問題がある場合は、**フェールオーバー** メソッドを使用して、Traffic Manager は、トラフィックを自動的にセカンダリ サイトにルーティングします。
+[Azure Traffic Manager] を使用してWeb サイトの高可用性を維持します。Traffic Manager では**フェールオーバー** メソッドを使用し、プライマリ サイトに問題がある場合に、自動的にトラフィックをセカンダリ サイトにルーティングします。
 
-### 監視および分析
+## 監視と分析
 
-Azure または サードパーティ製のツールで Web サイトのパフォーマンスを最新の状態に維持します。Web サイトに重要なイベントが発生した場合は、アラートを受信します。Application Insight または HDInsight の Web のログ分析によってユーザー情報を簡単に取得します。 
+Azure またはサードパーティ製のツールで Web サイトのパフォーマンスを最新の状態に維持します。Web サイトの重大なイベントでアラートを受信します。Application Insight や HDInsight からの Web ログ分析でユーザー情報を簡単に取得します。 
 
-Web サイトの現在のパフォーマンス メトリックの[概要]と Azure Web サイトのダッシュボードのリソース クォータを参照します。アプリケーションの全般的な可用性、パフォーマンス、使用方法については、「[Azure Application Insights]」を使用して、迅速で強力なトラブルシューティング、診断、および使用方法の詳細についてご覧ください。または、[New Relic] のようなサードパーティのツールを使用して、Web サイトに詳細な監視データを提供します。
+[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web サイトの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。アプリケーション全体の可用性、パフォーマンス、使用に関する 360°ビューを取得するには、迅速でパワフルなトラブルシューティングと診断、使用状況を提供する [Azure Application Insights] を使用します。または [New Relic] など、Web サイトの詳細監視データを提供するサードパーティ製のツールを使用します。
 
-**標準**ホスティング プランでは、サイトが応答を停止すると、監視サイトの応答性機能によって電子メールの通知が受信されます。詳細については、「[方法:Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)]」をご覧ください。
+**標準**ホスティング プランでは、サイトが応答を停止するたびに、応答性監視サイトは電子メール通知を受信します。詳細については、「[方法:Azure でアラート通知を受け取り、アラート ルールを管理する]」をご覧ください。
 
-### リッチ メディアを使用して、すべてのデバイスに到達
+## リッチ メディアを使用してすべてのデバイスに到達する
 
-次のようなリッチ メディアで .COM サイトを魅力的なものにします。
+以下のようなリッチ メディアで .COM サイトを魅力的にします。
 
--  [Azure メディア サービス]を使用してビデオをグローバルにアップロードおよびストリーミングする
--  [Azure Marketplace での SendGrid サービス]を使用してユーザーに電子メールを送信
+-  [Azure Media Services] でビデオをグローバルにアップロードしてストリームする
+-  [Azure Marketplace の SendGrid サービス]でユーザーに電子メールを送信する
 
 ## その他のリソース
 
-- [Azure の Web サイトのドキュメント](/ja-jp/documentation/services/websites/)
-- [Azure Web サイトのラーニング マップ](websites-learning-map.md)
-- [Azure の Web ブログ](/blog/topics/web/)
+- [App Service Web アプリのドキュメント](/services/app-service/web/)
+- [Azure App Service Web アプリの学習マップ](websites-learning-map.md)
+- [Azure Web ブログ](/blog/topics/web/)
 
+## 変更内容
+* Web サイトからアプリ サービスへの変更ガイドについては、次のものをご覧ください。[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 古いポータルから新しいポータルへの変更ガイドについては、次のものをご覧ください。[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
+[Azure App Service]: /services/app-service/web/
 
-[Azure Web サイト]:/ja-jp/services/websites/
+[Orchard]:web-sites-dotnet-orchard-cms-gallery.md
+[Umbraco]:web-sites-gallery-umbraco.md
+[Drupal]:web-sites-php-migrate-drupal.md
+[WordPress]:web-sites-php-web-site-gallery.md
+[MySQL]:web-sites-php-mysql-deploy-use-git.md
+[Azure SQL データベース]:web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md
+[FTP]:web-sites-deploy.md#ftp
+[Visual Studio]:web-sites-dotnet-get-started.md
+[Visual Studio Online]:cloud-services-continuous-delivery-use-vso.md
+[Git]:web-sites-publish-source-control.md
 
-[Orchard]:/ja-jp/documentation/articles/web-sites-dotnet-orchard-cms-gallery/
-[Umbraco]:/ja-jp/documentation/articles/web-sites-gallery-umbraco/
-[Drupal]:/ja-jp/documentation/articles/web-sites-php-migrate-drupal/
-[WordPress]:/ja-jp/documentation/articles/web-sites-php-web-site-gallery/
-[MySQL]:/ja-jp/documentation/articles/web-sites-php-mysql-deploy-use-git/
-[Azure SQL Database]:/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
-[FTP]:/ja-jp/documentation/articles/web-sites-deploy/#ftp
-[Visual Studio]:/ja-jp/documentation/articles/web-sites-dotnet-get-started/
-[Visual Studio Online]:/ja-jp/documentation/articles/cloud-services-continuous-delivery-use-vso/
-[Git]:/ja-jp/documentation/articles/web-sites-publish-source-control/
+[ステージング スロットに展開]:web-sites-staged-publishing.md 
+[継続的に公開]:http://rickrainey.com/2014/01/21/continuous-deployment-github-with-azure-web-sites-and-staged-publishing/
+[A/B テストを実行]:http://blogs.msdn.com/b/tomholl/archive/2014/11/10/a-b-testing-with-azure-websites.aspx
 
-[ステージング スロットに展開します]:/ja-jp/documentation/articles/web-sites-staged-publishing/ 
-[継続的に発行]:http://rickrainey.com/2014/01/21/continuous-deployment-github-with-azure-web-sites-and-staged-publishing/
-[A/B テストの実行]:http://blogs.msdn.com/b/tomholl/archive/2014/11/10/a-b-testing-with-azure-websites.aspx
-
-[カスタム ドメイン]:/ja-jp/documentation/articles/web-sites-custom-domain-name/
-[HTTPS]:/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
-[Web サイトの料金詳細]:/ja-jp/pricing/details/web-sites/#service-ssl
+[カスタム ドメイン]:web-sites-custom-domain-name.md
+[HTTPS]:web-sites-configure-ssl-certificate.md
+[アプリ サービス料金]: /pricing/details/app-service/#ssl-connections
 
 [Azure Traffic Manager]:http://www.hanselman.com/blog/CloudPowerHowToScaleAzureWebsitesGloballyWithTrafficManager.aspx
-[Web サイトと Azure CDN の統合]:/ja-jp/documentation/articles/cdn-websites-with-cdn/ 
+[Azure CDN と Web アプリを統合させて]:cdn-websites-with-cdn.md 
 [CDN ノード]:https://msdn.microsoft.com/library/azure/gg680302.aspx
 
-[スケール アップとスケール アウト]:/ja-jp/manage/services/web-sites/how-to-scale-websites/
+[スケール アップやスケール アウト]:web-sites-scale.md
 [Azure 管理ポータル]:http://manage.windowsazure.com/
-[サービス管理 API]:http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
-[PowerShell スクリプト]:http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
+[サービス管理 API]:https://msdn.microsoft.com/library/azure/ee460799.aspx
+[PowerShell スクリプト]:https://msdn.microsoft.com/library/azure/jj152841.aspx
 [Troy Hunt]:https://twitter.com/troyhunt
-[10 things I learned about rapidly scaling websites with Azure (Azure を使用して Web サイトを迅速にスケーリングする 10 の方法)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
+[Azure で Web アプリを迅速にスケーリングする 10 の事項 (ブログの投稿)]:http://www.troyhunt.com/2014/09/10-things-i-learned-about-rapidly.html
 [Azure Redis Cache]:/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/
-[ASP.NET セッション状態]:https://msdn.microsoft.com/ja-jp/library/azure/dn690522.aspx
-[出力キャッシュ]:https://msdn.microsoft.com/ja-jp/library/azure/dn798898.aspx
+[ASP.NET のセッション状態]:https://msdn.microsoft.com/library/azure/dn690522.aspx
+[出力キャッシュ]:https://msdn.microsoft.com/library/azure/dn798898.aspx
 
-[概要]:/ja-jp/manage/services/web-sites/how-to-monitor-websites/
+[概要]:web-sites-monitor.md
 [Azure Application Insights]:http://blogs.msdn.com/b/visualstudioalm/archive/2015/01/07/application-insights-and-azure-websites.aspx
-[New Relic]:/ja-jp/develop/net/how-to-guides/new-relic/
+[New Relic]:store-new-relic-cloud-services-dotnet-application-performance-management.md
 [方法:Azure でアラート通知を受け取り、アラート ルールを管理する]:http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
 
-[Azure メディア サービス]:http://blogs.technet.com/b/cbernier/archive/2013/09/03/windows-azure-media-services-and-web-sites.aspx
-[SendGrid service in Azure Marketplace での SendGrid サービス]:/ja-jp/documentation/articles/sendgrid-dotnet-how-to-send-email/
+[Azure Media Services]:http://blogs.technet.com/b/cbernier/archive/2013/09/03/windows-azure-media-services-and-web-sites.aspx
+[Azure Marketplace の SendGrid サービス]:sendgrid-dotnet-how-to-send-email.md
 
 
-
-
-<!--HONumber=42-->
+<!--HONumber=52-->

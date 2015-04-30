@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Media Services SDK for .NET- Azure の概要" 
 	description="このチュートリアルでは、Azure メディア サービスと .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。" 
 	services="media-services" 
@@ -13,38 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/12/2015" 
+	ms.date="02/24/2015" 
 	ms.author="juliako"/>
 
 
-# Media Services SDK for .NET を使用したビデオ オン デマンド配信 
+# クイック スタート:Media Services SDK for .NET を使用したビデオ オン デマンド配信 
 
 [AZURE.INCLUDE [media-services-selector-get-started](../includes/media-services-selector-get-started.md)]
 
 
 >[AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、「 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure 無料評価版</a>」をご確認ください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料評価版サイト</a>をご覧ください
 
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。 
 
+
 メディア サービスの基本的なワークフローを示し、メディア サービス開発に必要となる一般的なプログラミング オブジェクトとタスクについても紹介します。このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、ダウンロードして、ストリーミングやプログレッシブ ダウンロードを実行できます。  
-
-VoD コンテンツ配信アプリケーションを実装するにあたっては、さまざまなテクノロジ (.NET、REST、Java など) やツール (Azure の管理ポータル、Azure Media Services Explorer など)、あるいはその両方を組み合わせて使用できます。 
-
-このチュートリアルでは、Azure の管理ポータルと Media Services SDK for .NET を使用して次の作業を行います。     
-
-
-1.  [ポータルを使用したメディア サービス アカウントの作成](#create_ams)。
-2.  [ポータルを使用したストリーミング ユニットの構成](#configure_streaming_units)。
-3.  [Visual Studio プロジェクトの作成と構成](#configure_VS)
-4.  [.NET を使用したコンテンツのアップロード、エンコード、配信](#use_dotnet)
-	5.  [メディア サービス アカウントへの接続](#connect)。
-	1.  [新しいアセットの作成とビデオ ファイルのアップロード](#upload)。
-	1.  [一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする](#encode)。
-	1.  [エンコードされたアセットの配信ポリシーの構成](#configure_delivery_method)。
-	2.  [必要に応じて動的コンテンツ保護を構成する](#configure_content_protection)。 
-	1.  [アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する](#publish_get_urls)。 
-1.  [コンテンツの再生](#play)。 
 
 ## 前提条件
 Media Services SDK for .NET で開発を行うには、次の前提条件を満たす必要があります。
@@ -54,19 +38,32 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 - Visual Studio 2013、Visual Studio 2012、Visual Studio 2010 SP1 (Professional、Premium、Ultimate、Express のいずれか)。
 
 
-## <a id="create_ams"></a>ポータルを使用したメディア サービス アカウントの作成
+このクイック スタートでは、次のタスクが表示されます。
 
-1. [管理ポータル][]で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
+1.  ポータルを使用した Media Services アカウントの作成
+2.  ストリーミング エンドポイントの構成 (ポータル使用)
+3.  Visual Studio プロジェクトの作成と構成
+5.  Media Services アカウントへの接続
+1.  新しいアセットの作成とビデオ ファイルのアップロード
+1.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
+1.  エンコードされたアセットの配信ポリシーの構成
+1.  アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する  
+1.  コンテンツの再生 
+
+
+##ポータルを使用した Media Services アカウントの作成
+
+1. [管理ポータル][]で、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
    
-	![Media Services Quick Create](./media/media-services-create-account/wams-QuickCreate.png)
+	![Media Services の簡易作成](./media/media-services-create-account/wams-QuickCreate.png)
 
-2. **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。 
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。 
 
-3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能なメディア サービス リージョンだけが表示されます。 
+3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。 
 
-4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。メディア サービス アカウントと同じリージョンにある既存のストレージ アカウントを選択したり、新しいストレージ アカウントを作成したりできます。新しいストレージ アカウントは同じリージョンに作成されます。 
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。 
 
-5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、メディア サービス アカウントと同じです。
+5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
 6. フォームの下部にある **[簡易作成]** をクリックします。
 
@@ -74,52 +71,49 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 
 	アカウントの作成に成功すると、ステータスが [アクティブ] に変化します。 
 	
-	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、メディア サービスのアカウント名とプライマリ キーとセカンダリ キーがダイアログに表示されます。メディア サービス アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。 
+	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services のアカウント名とプライマリ キーとセカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。 
 
 	
-	![Media Services Page](./media/media-services-create-account/wams-mediaservices-page.png)
+![Media Services](./media/media-services-create-account/wams-mediaservices-page.png)
 
 	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行したり、[コンテンツ] ページから実行したりできます。
 
 	 
-## <a id="configure_streaming_units"></a>ポータルを使用したストリーミング ユニットの構成
+##ストリーミング エンドポイントの構成 (ポータル使用)
 
-クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure メディア サービスの代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。メディア サービスでは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンス所有者のみ使用可能) の各アダプティブ ビットレート ストリーミング技術がサポートされています。 
+クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure メディア サービスの代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services は、次のアダプティブ ビットレート ストリーミング テクノロジをサポートします。HTTP Live Streaming (HLS)、スムーズ ストリーミング、MPEG DASH、および HDS (Adobe Primetime/Access のライセンス所有者のみ対象)。 
 
 メディア サービスには動的パッケージ化機能があり、アダプティブ ビットレート MP4 やスムーズ ストリーミングでエンコードされたコンテンツを、メディア サービスでサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。  
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。
+- 中間 (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。  
+- コンテンツ配信元となる**ストリーミング エンドポイント**のオンデマンド ストリーミング ユニットを少なくとも 1 つ取得する。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。メディア サービスがクライアントからの要求に応じて適切な応答を構築して返します。 
 
-動的パッケージ化機能を使用できることに加え、オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できます。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。
-
-
 オンデマンド ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で **[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
 3. ストリーミング ユニットの数を指定するには、[スケール] タブをクリックし、**[占有容量]** スライダーを動かします。
 
-	![Scale page](./media/media-services-how-to-scale/media-services-origin-scale.png)
+	![[スケール] ページ](./media/media-services-how-to-scale/media-services-origin-scale.png)
 
 4. [保存] ボタンを押して、変更を保存します。
 
-	オンデマンド ストリーミングの新しいユニットの割り当ては完了するまでに約 20 分かかります。 
+	新しいユニットの割り当ては完了するまでに約 20 分かかります。 
 
 	 
-	>[AZURE.NOTE] 現在のところ、オンデマンド ストリーミング占有ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
-	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
+>[AZURE.NOTE] 現在のところ、ストリーミング占有ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
+>
+> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)」に関するページをご覧ください。
 
 
 
-## <a id="configure_VS"></a>Visual Studio プロジェクトの作成と構成
+##Visual Studio プロジェクトの作成と構成
 
 1. Visual Studio 2013、Visual Studio 2012 か Visual Studio 2010 SP1 で、C# の新しいコンソール アプリケーションを作成します。**[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。 
 
@@ -155,19 +149,7 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 
 6. プロジェクト ディレクトリに新しいフォルダーを作成し、エンコード、ストリーミング、プログレッシブ ダウンロードの対象となる .mp4 ファイルか .wmv ファイルをコピーします。この例では、"C:\VideoFiles" というパスを使用します。 
 
-## <a id="use_dotnet"></a>.NET を使用したコンテンツのアップロード、エンコード、配信 
-
-このセクションのコードでは、次のことが行われます。
-
-1. メディア サービス アカウントに接続します。
-1. 新しいアセットを作成し、ビデオ ファイルをアップロードします。
-1. 一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-1. エンコードされたアセットの配信ポリシーを構成します。
-2. 必要に応じて動的コンテンツ保護を構成します。
-1. アセットを発行してURL を取得します。 
-
-
-### <a id="connect"></a>メディア サービス アカウントへの接続
+##Media Services アカウントへの接続
 
 メディア サービスを .NET で使用するとき、メディア サービスに関連したプログラミング タスクの大半、たとえば、各種オブジェクト (アセット、アセット ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、**CloudMediaContext** クラスが必要となります。 
  
@@ -224,7 +206,7 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
             }
         }
 
-### <a id="upload"></a>新しいアセットの作成とビデオ ファイルのアップロード
+##新しいアセットの作成とビデオ ファイルのアップロード
 
 メディア サービスで、デジタル ファイルをアセットにアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。アセット内のこれらのファイルを**アセット ファイル**といいます。
 
@@ -260,16 +242,16 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 	}
 
 
-### <a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
+##一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
-メディア サービスに取り込んだアセットには、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらの作業は "ジョブ" と呼ばれ、それぞれのジョブは、アセット ファイルに対して実際の処理を行うアトミックなタスクから成ります。 
+Media Services に取り込んだアセットには、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用することができます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらの作業は "ジョブ" と呼ばれ、それぞれのジョブは、アセット ファイルに対して実際の処理を行うアトミックなタスクから成ります。 
 
-冒頭で述べたように、Azure メディア サービスの代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。メディア サービスでは、複数のアダプティブ ビットレート MP4 ファイルを、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンス所有者のみ使用可能) の各アダプティブ ビットレート ストリーミング技術がサポートされています。 
+冒頭で述べたように、Azure メディア サービスの代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。Media Services では、一連のアダプティブ ビットレート MP4 ファイルを次の形式のいずれかに動的にパッケージできます。HTTP Live Streaming (HLS)、スムーズ ストリーミング、MPEG DASH、および HDS (Adobe Primetime/Access のライセンス所有者のみ対象)。 
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。 
+- 中間 (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
+- コンテンツ配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを少なくとも 1 つ取得する。 
 
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。このジョブには、**Azure メディア エンコーダー**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。このコードは、ジョブを送信してその完了を待機します。 
 
@@ -312,20 +294,11 @@ MP4 ファイルをプログレッシブにダウンロードするためにオ�
 	    return outputAsset;
 	}
 
+##エンコードされたアセットの配信ポリシーの構成
 
-### <a id="configure_content_protection"></a>必要に応じて動的コンテンツ保護を構成する
+Media Services のコンテンツを配信するための作業の一環として、アセットの配信ポリシーを構成します。たとえば、アセットの配信にどのようなプロトコルを使用できるか (MPEG DASH、HLS、HDS、スムーズ ストリーミング、またはそのすべてなど) や、アセットを動的に暗号化するかどうか、またどのように暗号化するか (エンベロープ、Common Encryption など) は、アセット配信ポリシーで構成することになります。 
 
-コンテンツ保護を構成する方法については、次の記事をご覧ください。
-
-- [AES-128 動的暗号化とキー配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783457.aspx)
-- [PlayReady 動的暗号化とライセンス提供サービスの使用](http://msdn.microsoft.com/library/azure/dn783467.aspx)
-- [ストレージ暗号化コンテンツの配信](http://msdn.microsoft.com/library/azure/dn783451.aspx)
-
-### <a id="configure_delivery_method"></a>エンコードされたアセットの配信ポリシーの構成
-
-メディア サービスのコンテンツを配信するための作業の一環として、アセットの配信ポリシーを構成します。たとえば、アセットの配信にどのようなプロトコルを使用できるか (MPEG DASH、HLS、HDS、スムーズ ストリーミング、またはそのすべてなど) や、アセットを動的に暗号化するかどうか、またどのように暗号化するか (エンベロープ、Common Encryption など) は、アセット配信ポリシーで構成することになります。 
-
-次の **ConfigureClearAssetDeliveryPolicy** メソッドでは、動的暗号化を "なし" と指定し、さらに、MPEG DASH、HLS、スムーズ ストリーミングのどのプロトコルでもストリーム配信できるように設定しています。 
+次の **ConfigureClearAssetDeliveryPolicy** メソッドでは、動的暗号化を "なし" と指定し、さらに、MPEG DASH、HLS、スムーズ ストリーミングのいずれかのプロトコルでストリームを配信することを指定する、アセットの配信ポリシーが作成されます。 
   
 次のメソッドを Program クラスに追加します。
 
@@ -339,37 +312,23 @@ MP4 ファイルをプログレッシブにダウンロードするためにオ�
         asset.DeliveryPolicies.Add(policy);
     }
 
-この配信構成を使用した場合、スムーズ、HLS、MPEG DASH の各ストリーミングを要求できるようになります。要求には、次の形式を使用します。
 
-スムーズ ストリーミング:
+##アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
-
-HLS:
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
-
-MPEG DASH
-
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf) 
-
-
-### <a id="publish_get_urls"></a>アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
-
-アセットをストリーミングかダウンロードするにはまず、ロケーターを作成してアセットを "発行" する必要があります。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。メディア サービスでは、メディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に使用される OnDemandOrigin ロケーターと、メディア ファイルのダウンロードに使用される Access Signature (SAS) ロケーターの 2 種類のロケーターがサポートされています。
+アセットをストリーミングかダウンロードするにはまず、ロケーターを作成してアセットを "発行" する必要があります。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。メディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に使用する OnDemandOrigin ロケーターと、メディア ファイルのダウンロードに使用する Access Signature (SAS) ロケーターです。
 
 ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成します。 
 
 
-スムーズ ストリーミングの オンデマンド URL の形式は次のとおりです。
+スムーズ ストリーミングの ストリーミング URL の形式は次のとおりです。
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-HLS の オンデマンド URL の形式は次のとおりです。
+HLS の ストリーミング URL の形式は次のとおりです。
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-MPEG DASH の オンデマンド URL の形式は次のとおりです。
+MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
@@ -448,7 +407,7 @@ Media Services .NET SDK Extensions には、発行済みのアセットの URL �
         Console.WriteLine("Output asset files available at '{0}'.", Path.GetFullPath(outputFolder));
     }
 
-## <a id="play"></a>コンテンツの再生  
+##コンテンツの再生  
 
 前のセクションで定義したプログラムを実行すると、コンソール ウィンドウに次のような URL が表示されます。
 
@@ -489,15 +448,15 @@ MPEG DASH
 
 MPEG DASH をテストするには、[http://dashif.org](http://dashif.org/reference/players/javascript/) を使用してください。
 
-HLS をテストするには、iOS デバイス、Safari デバイス、[3ivx-hls-player](http://apps.microsoft.com/windows/ja-jp/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614) を使用してください。 
+HLS をテストするには、 iOS デバイスや Safari デバイス、あるいは「[3ivx HLS Player](http://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614)」を使用します。 
 
 
 プログレッシブ ダウンロードをテストするには、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けます。
 
 
-<h2>その他のリソース</h2>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - Get your video online now! (Azure メディア サービス 101 - 今すぐビデオをオンラインに)</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - Dynamic Packaging and Mobile Devices (Azure メディア サービス 102 - 動的パッケージ化機能とモバイル デバイス)</a>
+###その他のリソース
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - Get your video online now! (Azure Media Services 101 - 今すぐビデオをオンラインに)</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - Dynamic Packaging and Mobile Devices (Azure Media Services 102 - 動的パッケージ化機能とモバイル デバイス)</a>
 
 
 <!-- Anchors. -->
@@ -508,10 +467,4 @@ HLS をテストするには、iOS デバイス、Safari デバイス、[3ivx-hl
   [管理ポータル]: http://manage.windowsazure.com/
 
 
-
-
-<h2>その他のリソース</h2>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - Get your video online now! (Azure メディア サービス 101 - 今すぐビデオをオンラインに)</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - Dynamic Packaging and Mobile Devices (Azure メディア サービス 102 - 動的パッケージ化機能とモバイル デバイス)</a>
-
-<!--HONumber=45--> 
+<!--HONumber=52-->

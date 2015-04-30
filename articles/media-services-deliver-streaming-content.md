@@ -1,11 +1,11 @@
-<properties pageTitle="メディア サービスからストリーミング コンテンツを配信する方法-Azure" 
-	description="ストリーミング URL の構築に使用するロケーターの作成方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+<properties 
+	pageTitle="メディア サービスからストリーミング コンテンツを配信する方法 â€ Azure" 
+	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	authors="juliako" 
 	manager="dwrede" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
-
 
 <tags 
 	ms.service="media-services" 
@@ -17,29 +17,29 @@
 	ms.author="juliako"/>
 
 
-#方法:ストリーミング コンテンツを配信する
+#方法: ストリーミング コンテンツを配信する
 
 
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オン デマンドのワークフロー)](../media-services-video-on-demand-workflow) と [Media Services Live Streaming workflow (メディア サービス ライブ ストリーミングのワークフロー)](../media-services-live-streaming-workflow) シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」と「[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
 
 ##概要
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URI を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。「[アセットをエンコードする](../media-services-encode-asset)」トピックでは、アダプティブ ビットレート MP4 セットのエンコード方法を説明しています。ロケーターを作成する前に、[この](../media-services-dotnet-configure-asset-delivery-policy)トピックにある手順でアセットの配信ポリシーを構成する必要があります。 
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。「[アセットをエンコードする](media-services-encode-asset.md)」トピックでは、アダプティブ ビットレート MP4 セットのエンコード方法を説明しています。ロケーターを作成する前に、[こちら](media-services-dotnet-configure-asset-delivery-policy.md) のトピックで説明されているようにアセット配信ポリシーを構成する必要があります。 
 
-また、オンデマンド ストリーミング ロケーターを使用して、プログレッシブ ダウンロード可能な MP4 ファイルを指す URL を構築できます。  
+また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
 
-このトピックでは、アセットを発行して、スムーズ、MPEG、DASH、HLS ストリーミングの URL を構築するためのオンデマンド ストリーミング ロケーターの作成方法を示します。また、プログレッシブ ダウンロード URL を構築する方法についても説明します。 
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。 
   	 
 ##オンデマンド ストリーミング ロケーターを作成する
 
-オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次が必要です。
+オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
 
-   1. アクセス ポリシーを定義する。
-   2. オンデマンド ストリーミング ロケーターを作成する。
-   3. ストリーミングを予定している場合は、アセットのストリーミング マニフェスト ファイル (.ism) を取得します。 
+   1. アクセス ポリシーを定義します。
+   2. オンデマンド ストリーミング ロケーターを作成します。
+   3. ストリーミングする場合は、アセットのストリーミング マニフェスト ファイル (.ism) を取得します。 
    		
-	プログレッシブ ダウンロードを予定している場合は、アセットの MP4 の名前を取得します。  
-   4. マニフェスト ファイルまたは MP4 ファイルへの URL を構築します。 
+	プログレッシブ ダウンロードをする場合は、アセット内の MP4 ファイルの名前を取得します。  
+   4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
    
 
 ###Media Services .NET SDK を使用する 
@@ -92,7 +92,7 @@
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 	
 
-プログレッシブ ダウンロードの URL を構築する 
+プログレッシブ ダウンロード URL を作成します。 
 
 	private static void BuildProgressiveDownloadURLs(IAsset asset)
 	{
@@ -151,4 +151,4 @@
 	Console.WriteLine(hlsUri);
 	Console.WriteLine(mpegDashUri);
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

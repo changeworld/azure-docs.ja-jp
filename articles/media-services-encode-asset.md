@@ -1,6 +1,6 @@
-﻿<properties 
-	pageTitle="Azure メディア エンコーダーを使用してアセットをエンコードする方法" 
-	description="Azure メディア エンコーダーを使用してメディア サービスでメディア コンテンツをエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+<properties 
+	pageTitle="Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする" 
+	description="このトピックでは、Media Services でのオンデマンド コンテンツのエンコードの概要について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -11,209 +11,163 @@
 	ms.service="media-services" 
 	ms.workload="media" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
+	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/10/2015" 
+	ms.date="03/05/2015" 
 	ms.author="juliako"/>
 
+#Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする
 
-#Azure メディア エンコーダーを使用してアセットをエンコードする方法
-
-この記事は、[Media Services Video on Demand workflow (メディア サービス ビデオ オンデマンド ワークフロー)](media-services-video-on-demand-workflow.md) シリーズの一部です。 
+このトピックは、[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)の一部です。.
 
 ##概要
-インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客の端末でうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
-エンコード ジョブはメディア サービスで最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、メディア サービスの組み込みメディア エンコーダーを使用できます。メディア サービスのパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を表示するには、Azure メディア サービスのタスク プリセットをご覧ください。サード パーティのエンコーダーを使用した場合は、[ファイルを検証](https://msdn.microsoft.com/ja-jp/library/azure/dn750842.aspx)する必要があります。
+Media Services は、次のエンコーダーをサポートしてます。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [動的パッケージ](https://msdn.microsoft.com/ja-jp/library/azure/jj889436.aspx) を使用して目的の形式に変換することをお勧めします。
+- [Azure メディア エンコーダー](#azure_media_encoder)
+- [メディア エンコーダー プレミアム ワークフロー](#media_encoder_premium_workflow) (パブリック プレビュー版)
 
+[次のセクション]では、(#compare_encoders) 両方のエンコーダーのエンコード機能を比較します。
 
-##1 つのエンコード タスクを持つジョブの作成 
+既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約済みユニットごとに 1 つ) を同時に実行することができます。エンコード ユニットの拡張の詳細については、**ポータル**と **.NET** のトピックをご覧ください。
 
-Azure メディア エンコーダーでエンコードするときは、[こちら](https://msdn.microsoft.com/ja-jp/library/azure/dn619389.aspx) で指定されているタスク構成のプリセットを使うことができます。
+[AZURE.INCLUDE [media-services-selector-scale-encoding-units](../includes/media-services-selector-scale-encoding-units.md)]
 
-###Media Services SDK for .NET の使用  
+##<a id="azure_media_encoder"></a>Azure メディア エンコーダー
 
-次の **EncodeToAdaptiveBitrateMP4Set** メソッドは、エンコード ジョブを作成し、ジョブにエンコード タスクを 1 つ追加します。このタスクは、"Azure メディア エンコーダー" を使用して、"H264 アダプティブ ビットレート MP4 セット 720p"へのエンコードを行います。 
+[Media Services Encoder でサポートされる形式](media-services-azure-media-encoder-formats.md)  - **Azure メディア エンコーダー** でサポートされるファイル形式とストリーム形式について説明します。
 
-    static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
-    {
-        var encodingPreset = "H264 Adaptive Bitrate MP4 Set 720p";
+**Azure メディア エンコーダー** は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。実際の Azure メディア エンコーダーのプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
-        IJob job = _context.Jobs.Create(String.Format("Encoding {0} into to {1}",
-                                inputAsset.Name,
-                                encodingPreset));
+**Azure の管理ポータル**、**.NET**、**REST API** を使用した **Azure メディア エンコーダー** でのエンコードについては、以下をご覧ください。
+ 
+[AZURE.INCLUDE [media-services-selector-encode](../includes/media-services-selector-encode.md)]
 
-        var mediaProcessors = GetLatestMediaProcessorByName("Azure Media Encoder");
+####その他の関連トピック
 
-        ITask encodeTask = job.Tasks.AddNew("Encoding", mediaProcessors, encodingPreset, TaskOptions.None);
-        
-        encodeTask.InputAssets.Add(inputAsset);
+[Dynamic Packaging](https://msdn.microsoft.com/library/azure/jj889436.aspx) - アダプティブ ビットレート MP4 のエンコード方法と、スムーズ ストリーミング、Apple HLS、MPEG-DASH を動的に提供する方法について説明します。
 
-        // Specify the storage-encrypted output asset.
-        encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), 
-            AssetCreationOptions.StorageEncrypted);
+[Media Services エンコーダーの出力ファイル名の制御](https://msdn.microsoft.com/library/azure/dn303341.aspx)- Azure メディア エンコーダーで使用されるファイルの名前付け規則と、出力ファイル名の変更方法について説明します。
+
+[ドルビー デジタル プラスを使ったメディアのエンコード](media-services-encode-with-dolby-digital-plus.md) - ドルビー デジタル プラスのエンコーディングを使用してオーディオ トラックをエンコードする方法について説明します。
 
 
-        job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-        job.Submit();
-        job.GetExecutionProgressTask(CancellationToken.None).Wait();
+##<a id="media_encoder_premium_wokrflow"></a>メディア エンコーダー プレミアム ワークフロー (パブリック プレビュー)
 
-        return job.OutputMediaAssets[0];
-    }
+**注** このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
 
-    private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-    {
-        Console.WriteLine("Job state changed event:");
-        Console.WriteLine("  Previous state: " + e.PreviousState);
-        Console.WriteLine("  Current state: " + e.CurrentState);
-        switch (e.CurrentState)
-        {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
+[メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md) - **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイル形式とコーデックについて説明します。
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+**メディア エンコーダー プレミアム ワークフロー** は複雑なワークフローを使用して構成されています。ワークフローのファイルは、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールを使用して作成されます。 
 
-                // Display or log error details as needed.
-                break;
-            default:
-                break;
-        }
-    }
+既定のワークフロー ファイルは[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。フォルダーにはこれらのファイルの説明も含まれています。
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-           ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+**.NET** を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードします。詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」 をご覧ください。
+ 
 
-        if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+##<a id="compare_encoders"></a>エンコーダーの比較
 
-        return processor;
-    }
+このセクションでは、**Azure メディア エンコーダー**と **メディア エンコーダー プレミアム ワークフロー**のエンコード機能を比較します。
 
-###Media Services SDK for .NET Extensions の使用
+###入力形式
 
-    static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-    {
-        // 1. Prepare a job with a single task to transcode the specified mezzanine asset
-        //    into a multi-bitrate asset.
-        IJob job = _context.Jobs.CreateWithSingleTask(
-            MediaProcessorNames.AzureMediaEncoder,
-            MediaEncoderTaskPresetStrings.H264AdaptiveBitrateMP4Set720p,
-            asset,
-            "Adaptive Bitrate MP4",
-            AssetCreationOptions.None);
+入力コンテナー/ファイル形式
 
-        Console.WriteLine("Submitting transcoding job...");
+<table border="1">
+<tr><th>Input Container/File Formats</th><th>Media Encoder Premium Workflow</th><th>Azure Media Encoder
+</th></tr>
+<tr><td>Adobe(r) Flash(r) F4V</td><td>Yes</td><td>No</td></tr>
+<tr><td>MXF/SMPTE 377M</td><td>Yes</td><td>Limited</td></tr>
+<tr><td>GXF</td><td>Yes</td><td>No</td></tr>
+<tr><td>MPEG-2 Transport Streams</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>MPEG-2 Program Streams</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>MPEG-4/MP4</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Windows Media/ASF</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>AVI (Uncompressed 8bit/10bit)</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>3GPP/3GPP2</td><td>No</td><td>Yes</td></tr>
+<tr><td>Smooth Streaming File Format (PIFF 1.3)</td><td>No</td><td>Yes</td></tr>
+</table>
 
-        // 2. Submit the job and wait until it is completed.
-        job.Submit();
-        job = job.StartExecutionProgressTask(
-            j =>
-            {
-                Console.WriteLine("Job state: {0}", j.State);
-                Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
-            },
-            CancellationToken.None).Result;
+入力ビデオ コーデック
 
-        Console.WriteLine("Transcoding job finished.");
+<table border="1">
+<tr><th>Input Video Codecs</th><th>Media Encoder Premium Workflow</th><th>Azure Media Encoder
+</th></tr>
+<tr><td>AVC 8-bit/10-bit, up to 4:2:2, including AVCIntra</td><td>Yes</td><td>Only 8bit 4:2:0</td></tr>
+<tr><td>Avid DNxHD (in MXF)</td><td>Yes</td><td>No</td></tr>
+<tr><td>DVCPro/DVCProHD (in MXF)</td><td>Yes</td><td>No</td></tr>
+<tr><td>JPEG2000</td><td>Yes</td><td>No</td></tr>
+<tr><td>MPEG-2 (up to 422 Profile and High Level; including variants such as XDCAM, XDCAM HD, XDCAM IMX, CableLabs(r) and D10)</td><td>Yes</td><td>Up to 422 Profile</td></tr>
+<tr><td>MPEG-1</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Windows Media Video/VC-1</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Canopus HQ/HQX</td><td>No</td><td>Yes</td></tr>
+</table>
 
-        IAsset outputAsset = job.OutputMediaAssets[0];
+入力オーディオ コーデック
 
-        return outputAsset;
-    } 
+<table border="1">
+<tr><th>Input Audio Codecs</th><th>Media Encoder Premium Workflow</th><th>Azure Media Encoder
+</th></tr>
+<tr><td>AES (SMPTE 331M and 302M, AES3-2003)</td><td>Yes</td><td>No</td></tr>
+<tr><td>Dolby(r) E</td><td>Yes</td><td>No</td></tr>
+<tr><td>Dolby(r) Digital (AC3)</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Dolby(r) Digital Plus (E-AC3)</td><td>Yes</td><td>No</td></tr>
+<tr><td>AAC (AAC-LC, AAC-HE, and AAC-HEv2; up to 5.1)</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>MPEG Layer 2</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>MP3 (MPEG-1 Audio Layer 3)</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Windows Media Audio</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>WAV/PCM</td><td>Yes</td><td>Yes</td></tr>
+</table>
 
-##チェーン タスクによるジョブの作成 
+###出力形式
 
-アプリケーション シナリオの多くで、一連のタスク処理が開発者によって作成されます。メディア サービスでは、一連のチェーン タスクを作成できます。各タスクはそれぞれ異なる処理手順を実行し、異なるメディア プロセッサを使うことができます。チェーン タスクでは、あるタスクから別のタスクにアセットを渡しながら一連のタスクを順番に実行できます。ただし、ジョブで実行されるタスクが必ず順番に実行されなければならないということではありません。チェーン タスクを作成するときは、一連の **ITask** オブジェクトは 1 つの **IJob** オブジェクト内で作成されます。
+出力コンテナー/ファイル形式
 
->[AZURE.NOTE] 現時点では、ジョブごとに設定できるタスクは 30 までです。30 以上のタスクをつなげる必要がある場合、別のジョブを作成してタスクを設定します。
+<table border="1">
+<tr><th>Output Container/File Formats</th><th>Media Encoder Premium Workflow</th><th>Azure Media Encoder
+</th></tr>
+<tr><td>Adobe(r) Flash(r) F4V</td><td>Yes</td><td>No</td></tr>
+<tr><td>MXF (OP1a, XDCAM and AS02)</td><td>Yes</td><td>No</td></tr>
+<tr><td>DPP (including AS11)</td><td>Yes</td><td>No</td></tr>
+<tr><td>GXF</td><td>Yes</td><td>No</td></tr>
+<tr><td>MPEG-4/MP4</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Windows Media/ASF</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>AVI (Uncompressed 8bit/10bit)</td><td>Yes</td><td>No</td></tr>
+<tr><td>Smooth Streaming File Format (PIFF 1.3)</td><td>Yes</td><td>Yes</td></tr>
+</table>
 
-次の **CreateChainedTaskEncodingJob** メソッドは、2 つのチェーン タスクが含まれるジョブを作成します。そのため、このメソッドは、2 つの出力アセットを含むジョブを返します。
+出力ビデオ コーデック
 
-	
-    public static IJob CreateChainedTaskEncodingJob(IAsset asset)
-    {
-        // Declare a new job.
-        IJob job = _context.Jobs.Create("My task-chained encoding job");
+<table border="1">
+<tr><th>Output Video Codecs</th><th>Media Encoder Premium Workflow</th><th>Azure Media Encoder
+</th></tr>
+<tr><td>AVC (H.264; 8-bit; up to High Profile, Level 5.2; 4K Ultra HD; AVC Intra)</td><td>Yes</td><td>Only 8bit 4:2:0 up to 1080p</td></tr>
+<tr><td>Avid DNxHD (in MXF)</td><td>Yes</td><td>No</td></tr>
+<tr><td>DVCPro/DVCProHD (in MXF)</td><td>Yes</td><td>No</td></tr>
+<tr><td>MPEG-2 (up to 422 Profile and High Level; including variants such as XDCAM, XDCAM HD, XDCAM IMX, CableLabs(r) and D10)</td><td>Yes</td><td>No</td></tr>
+<tr><td>MPEG-1</td><td>Yes</td><td>No</td></tr>
+<tr><td>Windows Media Video/VC-1</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>JPEG thumbnail creation</td><td>Yes</td><td>Yes</td></tr>
+</table>
 
-        // Set up the first task to encode the input file.
+出力オーディオ コーデック
 
-        // Get a media processor reference
-        IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Encoder");
+<table border="1">
+<tr><th>Output Audio Codecs</th><th>Media Encoder Premium Workflow</th><th>Azure Media Encoder
+</th></tr>
+<tr><td>AES (SMPTE 331M and 302M, AES3-2003)</td><td>Yes</td><td>No</td></tr>
+<tr><td>Dolby(r) Digital (AC3)</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Dolby(r) Digital Plus (E-AC3) up to 7.1</td><td>Yes</td><td>Up to 5.1</td></tr>
+<tr><td>AAC (AAC-LC, AAC-HE, and AAC-HEv2; up to 5.1)</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>MPEG Layer 2</td><td>Yes</td><td>No</td></tr>
+<tr><td>MP3 (MPEG-1 Audio Layer 3)</td><td>Yes</td><td>No</td></tr>
+<tr><td>Windows Media Audio</td><td>Yes</td><td>Yes</td></tr>
+</table>
+##関連記事:
 
-        // Create a task with the encoding details, using a string preset.
-        ITask task = job.Tasks.AddNew("My encoding task",
-            processor,
-           "H264 Adaptive Bitrate MP4 Set 720p",
-            TaskOptions.ProtectedConfiguration);
-
-        // Specify the input asset to be encoded.
-        task.InputAssets.Add(asset);
-
-        // Specify the storage-encrypted output asset.
-        task.OutputAssets.AddNew("My storage-encrypted output asset",
-            AssetCreationOptions.StorageEncrypted);
-
-        // Set up the second task to decrypt the encoded output file from 
-        // the first task.
-
-        // Get another media processor instance
-        IMediaProcessor decryptProcessor = GetLatestMediaProcessorByName("Storage Decryption");
-
-        // Declare the decryption task. 
-        ITask decryptTask = job.Tasks.AddNew("My decryption task",
-            decryptProcessor,
-            string.Empty,
-            TaskOptions.None);
-
-        // Specify the input asset to be decrypted. This is the output 
-        // asset from the first task. 
-        decryptTask.InputAssets.Add(task.OutputAssets[0]);
-
-        // Specify an output asset to contain the results of the job. 
-        // This should have AssetCreationOptions.None. 
-        decryptTask.OutputAssets.AddNew("My decrypted output asset",
-            AssetCreationOptions.None);
-
-        // Use the following event handler to check job progress. 
-        job.StateChanged += new
-            EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-
-        // Launch the job.
-        job.Submit();
-
-        // Check job execution and wait for job to finish. 
-        Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
-        progressJobTask.Wait();
-
-        //return job that contains two output assets.
-        return job;
-    }
+- [Azure Media Services のプレミアム エンコーディングの紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+- [Azure Media Services でプレミアム エンコーディングを使用する方法 (ブログの投稿](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+- [クォータと制限](media-services-quotas-and-limitations.md)
 
 
-##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](media-services-check-job-progress.md) に関するトピックに進みます。
-
-[Azure Marketplace]: https://datamarket.azure.com/
-[エンコーダー プリセット]: http://msdn.microsoft.com/library/dn619392.aspx
-[方法: メディア プロセッサ インスタンスを取得する]:http://go.microsoft.com/fwlink/?LinkId=301732
-[方法: 暗号化されたアセットをアップロードする]:http://go.microsoft.com/fwlink/?LinkId=301733
-[方法: ダウンロードによってアセットを配信する]:http://go.microsoft.com/fwlink/?LinkId=301734
-[方法: ジョブの進行状況をチェックする]:http://go.microsoft.com/fwlink/?LinkId=301737
-[Azure Media Packager のタスク プリセット]:http://msdn.microsoft.com/library/windowsazure/hh973635.aspx
-
-<!--HONumber=45--> 
+<!--HONumber=52-->

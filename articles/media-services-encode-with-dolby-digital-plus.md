@@ -1,5 +1,5 @@
-﻿<properties 
-	pageTitle="ドルビー デジタル プラスによるメディアのエンコード" 
+<properties 
+	pageTitle="ドルビー デジタル プラスを使ったメディアのエンコード" 
 	description="このトピックでは、ドルビー デジタル プラスを使用してメディアをエンコードする方法を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -25,11 +25,11 @@ Azure メディア エンコーダーでは、**ドルビー(r) デジタル プ
 
 ###Azure メディア エンコーダー プロセッサの取得 
 
-Azure メディア エンコーダーでは、ドルビー デジタル プラスがサポートされています。**Azure メディア エンコーダー**の詳細については、[メディア プロセッサの取得]に関する(../media-services-get-media-processor) トピックをご覧ください。
+Azure メディア エンコーダーでは、ドルビー デジタル プラスがサポートされています。**Azure メディア エンコーダー**の詳細については、「[メディア プロセッサの取得](media-services-get-media-processor.md)」に関するトピックをご覧ください。
 
 ###<a id="configure_preset"></a>Azure メディア エンコーダーの設定
 
-Azure メディア エンコーダーで使用するエンコード設定を構成したときに、覚えやすい文字列で表された定義済みプリセットが多数ありました。ドルビー デジタル プラス エンコーダーには豊富なコントロールが用意されています。詳細については、[<DolbyDigitalPlusAudioProfile>](https://msdn.microsoft.com/library/azure/dn296500.aspx) をご覧ください。したがって、このコーデックを使用する既成の文字列プリセットはありません。目的のエンコーダー設定は XML ファイルで指定し、このデータを送信する必要があります with your Task as shown in the following code example:
+Azure メディア エンコーダーで使用するエンコード設定を構成したときに、覚えやすい文字列で表された定義済みプリセットが多数ありました。ドルビー デジタル プラス エンコーダーには豊富なコントロールが用意されています。詳細については、[<DolbyDigitalPlusAudioProfile>](https://msdn.microsoft.com/library/azure/dn296500.aspx) をご覧ください。したがって、このコーデックを使用する既成の文字列プリセットはありません。目的のエンコーダー設定は XML ファイルで指定し、次のコード例にあるタスクを使ってこのデータを送信する必要があります。
 	
 	string configuration = File.ReadAllText(pathToXMLConfigFile));
 
@@ -46,7 +46,7 @@ Azure メディア エンコーダーで使用するエンコード設定を構�
 
 次の XML プリセットには、H264 ブロードバンド 1080p ビデオとドルビー デジタル プラス 5.1 マルチチャネル オーディオを持つ MP4 ファイルを生成する完全な Azure メディア エンコーダー XML プリセットが含まれています。このプリセットは、LFEOn 属性を true に設定して指定される重低音効果 (LFE) チャネルをエンコードする目的でも指定します。指定しない属性については、すべて既定値が使用されます。
 
-この XML プリセットを **Azure メディア エンコーダー**に渡して、[この]トピックの説明に従ってエンコード ジョブを作成する必要があります (../media-services-dotnet-encode-asset) (定義済みプリセット文字列の場合は、[こちら]の説明に従って XML プリセット全体を渡します。(#configure_preset))。
+この XML プリセットを **Azure メディア エンコーダー**に渡して、[この](media-services-dotnet-encode-asset.md) トピックにあるようにエンコードのジョブを作成します ([ここ]にあるように、事前定義されたプリセット文字列の代わりにのみ、XML プリセット全体を渡します(#configure_preset))。
 
 
 	<?xml version="1.0" encoding="utf-16"?>
@@ -129,7 +129,7 @@ Azure メディア エンコーダーで使用するエンコード設定を構�
 
 ドルビー デジタル プラス ステレオにエンコードするには、Codec および EncoderMode 属性を "DolbyDigitalPlus" に設定します。エンコードするチャネルの数は、AudioCodingMode 属性を使用して指定します。ステレオ エンコード用に AudioCodingMode を "Mode20" に設定します。次の XML プリセットの例では、<DolbyDigitalPlusAudioProfile> を使用して、5.1 オーディオにエンコードしています。指定しない属性については、すべて既定値が使用されます。
 
-この XML プリセットを **Azure メディア エンコーダー**に渡して、[この]トピックの説明に従ってエンコード ジョブを作成する必要があります (../media-services-dotnet-encode-asset) (定義済みプリセット文字列の場合は、[こちら]の説明に従って XML プリセット全体を渡します。(#configure_preset))。
+この XML プリセットを **Azure メディア エンコーダー**に渡して、[この](media-services-dotnet-encode-asset.md) トピックにあるようにエンコードのジョブを作成します ([ここ](#configure_preset)にあるように、事前定義されたプリセット文字列の代わりにのみ、XML プリセット全体を渡します)。
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<!--Created for Azure Media Encoder, May 26 2013 -->
@@ -214,7 +214,7 @@ Azure メディア エンコーダーで使用するエンコード設定を構�
 
 次の構成では、以下の出力が生成されます。
 
-- 8 つのビデオのみの MP4 ファイル
+- 8 Video-only MP4 files
 	- 1080p Video @ 6000 kbps
 	- 1080p Video @ 4700 kbps
 	- 720p Video @ 3400 kbps
@@ -224,14 +224,14 @@ Azure メディア エンコーダーで使用するエンコード設定を構�
 	- 640 x 380 Video @ 650 kbps
 	- 320 x 180 Video @ 400 kbps
 
-- 5 つのオーディオのみの MP4 ファイル
+- 5 Audio-only MP4 files
 	- AAC Audio Stereo @ 128 kbp
 	- AAC Audio 5.1 @ 512 kbps
 	- Dolby Digital Plus Stereo @ 128 kbps
 	- Dolby Digital Plus 5.1 Multichannel @ 512 kbps
 	- AAC Stereo @ 56 kbps
-- .ism マニフェスト
-- 生成された MP4 ファイルのプロパティの一覧を含む XML ファイル
+- A .ism manifest
+- An XML file listing the properties of the generated MP4 files.
 		
 		<?xml version="1.0" encoding="utf-16"?>
 		<!--Created for Azure Media Encoder, May 16 2013 -->
@@ -541,7 +541,7 @@ Azure メディア エンコーダーで使用するエンコード設定を構�
 
 ##商用のエンコード サービスの作成
 
-Azure Media Services を利用して商用のエンコード サービスを構築したい場合があります。こうした "ビルドオン" サービスを作成する場合は、すべてのドルビー デジタル プラス エンコード パラメーターを利用できることが重要です。<DolbyDigitalPlusAudioProfile> タグ内のすべてのパラメーターがエンドユーザーに公開され、構成可能か確認してください。これらのパラメーターを利用できるようにするためのガイダンスが必要な場合は、prolicensingsupport@dolby.com までお問い合わせください。
+Azure Media Services を利用して商用のエンコード サービスを構築したい場合があります。こうした "ビルドオン" サービスを作成する場合は、すべてのドルビー デジタル プラス エンコード パラメーターを利用できることが重要です。<DolbyDigitalPlusAudioProfile> タグ内のすべてのパラメーターがエンドユーザーに公開され、構成可能かご確認ください。これらのパラメーターを利用できるようにするためのガイダンスが必要な場合は、prolicensingsupport@dolby.com までお問い合わせください。
 
 ##Dolby Professional Loudness Metering (DPLM) サポートの使用
 
@@ -583,7 +583,7 @@ Azure メディア エンコーダーでは DPLM SDK を使用して、入力オ
 	  </MediaFile>
 	</Preset>
 
-<LoudnessMetering> 要素は、<DolbyDigitalPlusAudioProfile> 要素内にのみ指定できます。<LoudnessMetering> 要素を使用した場合は、DialogNormalization 属性を使用することはできません。<LoudnessMetering> 要素と DialogNormalization 属性の両方を使用すると、エンコーダーはエラーを生成します。LoudnessMetering のすべての属性は省略可能であり、エンコーダーによって Dolby Laboratories, Inc. が推奨する値が既定で使用されます。
+<LoudnessMetering> 要素は、<DolbyDigitalPlusAudioProfile> 要素内にのみ指定できます。<LoudnessMetering> 要素を使用した場合は、DialogNormalization 属性は使用できません。<LoudnessMetering>  要素 DialogNormalization 属性の両方を使用すると、エンコーダーはエラーを生成します。LoudnessMetering のすべての属性は省略可能であり、エンコーダーによって Dolby Laboratories, Inc. が推奨する値が既定で使用されます。
 
 以降のセクションで、各属性について説明します。
 
@@ -600,7 +600,7 @@ Azure メディア エンコーダーでは DPLM SDK を使用して、入力オ
 
 **LEQA_DI** - Leq(A) と Dialogue Intelligence を指定します
 
-**注:**
+**注:** 
 
 **EBU R128** モードには、**ITU_R_BS_1770_2_DI** で対応できます。
 
@@ -614,11 +614,11 @@ DPLM が統合ラウドネスの結果を生成するために使用する音声
 
 ###TruePeakDCBlock 属性
 
-この入力パラメーターでは、トゥルー ピーク測定内の DC ブロックを有効 (true) にするか、無効 (false) にするかを指定します。DC ブロックの詳細については、ITU‐R BS.1770‐2 を参照してください。既定値は false です。
+この入力パラメーターでは、トゥルー ピーク測定内の DC ブロックを有効 (true) にするか、無効 (false) にするかを指定します。DC ブロックの詳細については、ITU‐R BS.1770‐2 をご覧ください。既定値は false です。
 
 ###TruePeakEmphasis 属性
 
-トゥルー ピーク測定内の強調フィルターを有効 (true) にするか、無効 (false) にするかを指定します。強調フィルターの詳細については、ITU‐R BS.1770‐2 を参照してください。既定値は false です。
+トゥルー ピーク測定内の強調フィルターを有効 (true) にするか、無効 (false) にするかを指定します。強調フィルターの詳細については、ITU‐R BS.1770‐2 をご覧ください。既定値は false です。
 
 
 ###DPLM の結果
@@ -648,6 +648,6 @@ DPLM が統合ラウドネスの結果を生成するために使用する音声
 
 **SamplePeak** - この結果には、測定のリセット以降の、任意のチャンネルにおけるサンプル絶対値の最大値 (-70 ～ +10 dBFS の範囲) が含まれます。
 
-**TruePeak** - この結果には、測定のリセット以降の、任意のチャンネルにおけるトゥルー ピーク絶対値の最大値が含まれます。トゥルー ピークの詳細については、ITU‐R BS.1770‐2 を参照してください。-70 から 12.04 dBTP の範囲の値が考えられます。
+**TruePeak** - この結果には、測定のリセット以降の、任意のチャンネルにおけるトゥルー ピーク絶対値の最大値が含まれます。トゥルー ピークの詳細については、ITU‐R BS.1770‐2 をご覧ください。-70 から 12.04 dBTP の範囲の値が考えられます。
 
-<!--HONumber=47-->
+<!--HONumber=52-->

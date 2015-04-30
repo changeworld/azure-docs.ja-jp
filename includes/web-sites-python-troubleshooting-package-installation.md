@@ -1,4 +1,4 @@
-﻿一部のパッケージは、Azure での実行時に pip を使用してインストールできません。単に、パッケージが Python Package Index で使用できないだけの場合もあります。コンパイラが必要な場合もあります (コンパイラは、Azure Web サイトを実行しているコンピューターでは利用できません)。
+一部のパッケージは、Azure での実行時に pip を使用してインストールできません。単に、パッケージが Python Package Index で使用できないだけの場合もあります。コンパイラが必要な場合もあります (コンパイラは、Azure Web サイトを実行しているコンピューターでは利用できません)。
 
 このセクションでは、この問題に対処する方法を紹介します。
 
@@ -10,11 +10,11 @@
 
 ### wheel をビルドする (Windows が必要)
 
-注:このオプションを使用する際は、Azure Web サイトで使用しているプラットフォーム/アーキテクチャ/バージョン (Windows/32 ビット/2.7 または 3.4) に一致する Python 環境を使用して、パッケージをコンパイルしてください。
+注: このオプションを使用する際は、Azure Web サイトで使用しているプラットフォーム/アーキテクチャ/バージョン (Windows/32 ビット/2.7 または 3.4) に一致する Python 環境を使用して、パッケージをコンパイルしてください。
 
 コンパイラが必要なためにパッケージがインストールできない場合は、ローカル コンピューターにコンパイラをインストールして、パッケージの wheel をビルドすることができます。このパッケージはリポジトリに組み込まれます。
 
-Mac/Linux ユーザー:Windows コンピューターを使用できない場合は、Azure 上で VM を作成する方法について「[Windows を実行する仮想マシンの作成][]」を参照してください。その方法に従って、wheel をビルドしてリポジトリに追加し、必要に応じて VM を破棄します。 
+Mac/Linux ユーザー:Windows コンピューターを使用できない場合は、Azure 上で VM を作成する方法について「[Windows を実行する仮想マシンの作成][]」をご覧ください。その方法に従って、wheel をビルドしてリポジトリに追加し、必要に応じて VM を破棄します。 
 
 Python 2.7 の場合、[Python 2.7 用の Microsoft Visual C++ コンパイラ][]をインストールできます。
 
@@ -41,7 +41,7 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 
 ### インストールをカスタマイズする
 
-デプロイメント スクリプトをカスタマイズし、easy\_install などの代替インストーラーを使用して、仮想環境にパッケージをインストールできます。deploy.cmd のコメントアウトされた例を参照してください。pip でインストールされることを避けるため、このようなパッケージを requirements.txt に指定していないことを確認してください。
+デプロイメント スクリプトをカスタマイズし、easy\_install などの代替インストーラーを使用して、仮想環境にパッケージをインストールできます。deploy.cmd のコメントアウトされた例をご覧ください。pip でインストールされることを避けるため、このようなパッケージを requirements.txt に指定していないことをご確認ください。
 
 これをデプロイメント スクリプトに追加します。
 
@@ -66,6 +66,6 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 
 [Windows を実行する仮想マシンの作成]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
 [Python 2.7 用の Microsoft Visual C++ コンパイラ]: http://aka.ms/vcpython27
+[Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
-
-<!--HONumber=49-->
+<!--HONumber=52--> 

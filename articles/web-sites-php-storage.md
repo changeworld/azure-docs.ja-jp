@@ -1,37 +1,39 @@
 ﻿<properties 
-	pageTitle="テーブル ストレージを使用した PHP Web サイト - Azure チュートリアル" 
-	description="このチュートリアルでは、PHP Web サイトを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法を説明します。" 
-	services="web-sites, storage" 
+	pageTitle="Azurre ストレージを使った Azure App Service での PHP Web アプリの作成" 
+	description="このチュートリアルでは、Azure App Service で PHP Web アプリを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。" 
+	services="app-service\web, storage" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/21/2014" 
+	ms.date="04/07/2015" 
 	ms.author="tomfitz"/>
 
-#Azure Storage を使用した PHP Web サイトを作成する
+# Azurre ストレージを使った Azure App Service での PHP Web アプリの作成
 
-このチュートリアルでは、PHP Web サイトを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法を説明します。このチュートリアルは、コンピューターに [PHP][install-php] および Web サーバーがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作し、テーブル ストレージ サービスにアクセスする PHP Web サイトが完成します。
+このチュートリアルでは、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で PHP Web アプリを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php] および Web サーバーがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作し、テーブル ストレージ サービスにアクセスする PHP Web アプリが完成します。
  
 学習内容:
 
 * Azure クライアント ライブラリをインストールしてアプリケーションに含める方法
 * クライアント ライブラリを使用してテーブルを作成し、テーブル エンティティを作成、照会、削除する方法
 * Azure Storage アカウントを作成し、これを使用できるようにアプリケーションをセットアップする方法
-* Azure Website を作成して Git を使用してデプロイする方法
+*  Azure の Web アプリを作成して Git で展開する方法
  
 このチュートリアルでは、タスク一覧用の単純な Web アプリケーション (Tasklist) を PHP で作成します。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP web site][ws-storage-app]
+![Azure PHP Web アプリ][ws-storage-app]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+
+>[AZURE.NOTE] Azure アカウントのサインアップより前に Azure App Service の使用を開始したい場合は、「[アプリ サービスを試す](http://go.microsoft.com/fwlink/?LinkId=523751)」をご覧ください。そこでは、アプリ サービスで有効期間の短いスターター Web アプリをすぐに作成することができます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##Azure クライアント ライブラリのインストール
 
@@ -97,7 +99,7 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 
 		$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 	
-	`$tableRestProxy` contains a method for every REST call available on Azure Tables.
+	`$tableRestProxy` には、Azure テーブルに対して使用可能なすべての REST 呼び出しに使用するメソッドが格納されます。
 
 
 ## テーブルの作成
@@ -123,7 +125,7 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 		}
 		?>
 
-	エラー コードとメッセージについてはこちらをご覧ください: [http://msdn.microsoft.com/library/windowsazure/dd179438.aspx][msdn-errors]
+	エラー コードとメッセージについてはこちらをご覧ください:[https://msdn.microsoft.com/library/azure/dd179438.aspx/][msdn-errors]
 
 
 ##テーブルの照会
@@ -281,7 +283,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 		$entities = $result->getEntities();		
 		$entity = $entities[0];
 
-	`Key eq 'Value'` という形式のクエリ フィルターが渡されています。クエリ構文の詳しい説明については、[こちら][msdn-table-query-syntax]をご覧ください。
+	`Key eq 'Value'` という形式のクエリ フィルターが渡されています。クエリ構文の詳しい説明については、[こちら][msdn-table-query-syntax] をご覧ください。
 
 * 次に、必要に応じてプロパティを変更できます。
 
@@ -321,76 +323,43 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 
 アプリケーションでデータをクラウドに保存するには、まず Azure にストレージ アカウントを作成し、適切な認証情報を  *Configuration* クラスに渡す必要があります。
 
-1. [Azure 管理ポータル][management-portal]にログインします。
+1. [Azure ポータル][management-portal]にログインします。
 
-2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
+2. ポータルの左下にある **[新規作成]** をクリックし、その後 **[データ + ストレージ]** > **[ストレージ]** をクリックします。ストレージ アカウントに一意の名前を付け、新しい [リソースグループ] を作成します(azure-preview-portal-using-resource-groups.md) 。
 
-	![Create New Azure web site][new-website]
-
-3. **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
-
-	![Custom Create a new web site][storage-quick-create]
+	![新しいストレージ アカウントの作成][storage-quick-create]
 	
-	**[URL]** ボックスに値を入力し、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログ ボックスの下部にある **[ストレージ アカウントの作成]** ボタンをクリックします。
+	ストレージ アカウントが作成されると、**[通知]** ボタンが緑色の **[成功]** と点滅し、ストレージ アカウントのブレードが開き、作成した新しいリソース グループに所属することが示されます。
 
-	![Fill in web site details][storage-quick-create-details]
+5. ストレージ アカウントのブレードの **[設定]** 部をクリックします。アカウント名とプライマリ キーをメモします。
 
-	ストレージ アカウントが作成されると、"**ストレージ アカウント '[NAME]' の作成が正常に完了しました**" というテキストが表示されます。
+	![キーの管理を選択][storage-access-keys]
 
-4. **[ストレージ]** タブが選択されていることを確認してから、作成したストレージ アカウントを一覧から選択します。
+7. **init.php** を開き、`[YOUR_STORAGE_ACCOUNT_NAME]` と `[YOUR_STORAGE_ACCOUNT_KEY]`  を、先ほどの手順でメモしたアカウント名とキーに置き換えます。ファイルを保存します。
 
-5. 下部にあるアプリケーション バーの **[アクセス キーの管理]** をクリックします。
+## Azure Web アプリの作成と Git 発行の設定
 
-	![Select Manage Keys][storage-manage-keys]
+次の手順に従って、Azure の Web アプリを作成します。
 
-6. 作成したストレージ アカウントの名前とプライマリ キーの値をメモしておきます。
+1. [Azure ポータル][management-portal]にログインします。
 
-	![Select Manage Keys][storage-access-keys]
+2. 「[方法: Azure ポータルを使用して web アプリを作成する](web-sites-create-deploy.md#createawebsiteportal)」の指示に従い、空の Web アプリを作成します。必ず新しい [App Service プラン] を作成し、(azure-web-sites-web-hosting-plans-in-depth-overview) ストレージ アカウントで先に作成したリソース グループを選択してください。
 
-7. **init.php** を開き、`[YOUR_STORAGE_ACCOUNT_NAME]` と `[YOUR_STORAGE_ACCOUNT_KEY]` を、先ほどの手順でメモしたアカウント名とキーに置き換えます。ファイルを保存します。
+	Web アプリが作成されると、**[通知]** ボタンが緑色の **[成功]** と点滅し、Web アプリのブレードが開き、作成した新しいリソース グループに所属することが示されます。
 
+6. Web アプリのブレードで、**[継続的配置の設定]** をクリックし、**[ローカル Git リポジトリ]** を選択します。**[OK]** をクリックします。
 
-## Azure Website の作成と Git 発行の設定
+	![Git 発行の設定][setup-git-publishing]
 
-Azure Website を作成するには、次のステップに従います。
+7. ローカル Git リポジトリを Azure に展開するには、展開の資格情報も設定する必要があります。Web アプリのブレードで、**[すべての設定]** > **[展開の資格情報]** をクリックして資格情報を構成します。終了したら **[保存]** をクリックします。
 
-1. [Azure 管理ポータル][management-portal]にログインします。
-2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
-
-	![Create New Azure Web Site][new-website]
-
-3. **[コンピューティング]**、**[Web サイト]**、**[簡易作成]** の順にクリックします。
-
-	![Custom Create a new web site][website-quick-create]
-	
-	**[URL]** ボックスに値を入力し、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログ ボックスの下部にある **[新しい Web サイトの作成]** ボタンをクリックします。
-
-	![Fill in web site details][website-quick-create-details]
-
-	Web サイトが作成されると、"**Web サイト '[サイト名]' の作成が正常に完了しました**" というテキストが表示されます。これで、Git 発行を有効にする準備ができました。
-
-5. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの**クイックスタート** ダッシュボードを開きます。
-
-	![Open web site dashboard][go-to-dashboard]
-
-
-6. クイックスタート ページの右下隅で、**[ソース管理からの展開の設定]** を選択します。
-
-	![Set up Git publishing][setup-git-publishing]
-
-6. ソース コードの位置をたずねるメッセージが表示されたら、**[ローカル Git リポジトリ]** を選択し、矢印をクリックします。
-
-	![where is your source code][where-is-code]
-
-7. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください(Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
-
-	![Create publishing credentials][credentials]
+	![発行資格情報の作成][credentials]
 
 	リポジトリの設定にかかる時間はわずかです。
 
-8. Git リポジトリの準備ができると、ローカル リポジトリを設定し、ファイルを Azure にプッシュするために使用する Git コマンドに関する手順が表示されます。
+8. Git リポジトリの準備ができたら、変更をプッシュします。Web アプリのブレードにある同じ展開部をクリックするとリポジトリ URL を確認できます。 
 
-	![Git deployment instructions returned after creating a repository for the website.][git-instructions]
+	![Web アプリのリポジトリの作成後に返される Git 展開の手順][git-instructions]
 
 	表示された指示を書き留めてください。次のセクションで、アプリケーションを発行するときに使用します。
 
@@ -398,14 +367,14 @@ Azure Website を作成するには、次のステップに従います。
 
 Git でアプリケーションを発行するには、次の手順に従います。
 
-1. **vendor/microsoft/windowsazure** フォルダーを開き、次のファイルとフォルダーを削除します。
+1. アプリケ－ションのルートにある **vendor/microsoft/windowsazure** フォルダーを開き、次のファイルとフォルダーを削除します。
 	* .git
 	* .gitattributes
 	* .gitignore
 			
 	Composer パッケージ マネージャーが Azure クライアント ライブラリとその依存関係をダウンロードする際には、これらが格納されている GitHub リポジトリが複製されます。次の手順では、アプリケーションのルート フォルダーからリポジトリを作成することにより、Git 経由でアプリケーションを展開します。クライアント ライブラリがあるサブリポジトリは、リポジトリ固有のファイルが削除されていない限り無視されます。
 
-2. GitBash (Git が  `PATH` にある場合はターミナル) を開き, ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します (**注:** これらは、前の「**Azure Website の作成と Git 発行の設定**」セクションの最後でメモした手順と同じです)。
+2. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
 		git add .
@@ -415,8 +384,8 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 
 	先ほど作成したパスワードを入力するように求められます。
 
-3. アプリケーション用のテーブルを作成するには、**http://[Web サイト ドメイン]/createtable.php** に移動します。
-4. アプリケーションの使用を開始するには、**http://[Web サイト ドメイン]/index.php** に移動します。
+3. アプリケーション用のテーブルを作成するには、**http://[Web アプリ ドメイン]/createtable.php** に移動します。
+4. アプリケーションの使用を開始するには、**http://[Web アプリ ドメイン]/index.php** に移動します。
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。 
 
@@ -433,38 +402,30 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 
 	先ほど作成したパスワードを入力するように求められます。
 
-3. 変更内容を確認できるように、**http://[Web サイト ドメイン]/index.php** に移動します。 
+3. 変更内容を確認できるように、**http://[Web アプリ ドメイン]/index.php** に移動します。 
+
+## 変更内容
+* Web サイトからアプリ サービスへの変更ガイドについては、次のものをご覧ください。[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 古いポータルから新しいポータルへの変更ガイドについては、次のものをご覧ください。[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
+
+
+
 
 [install-php]: http://www.php.net/manual/en/install.php
-
-
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [composer-phar]: http://getcomposer.org/composer.phar
-
 [msdn-errors]: http://msdn.microsoft.com/library/windowsazure/dd179438.aspx
-
-
 
 [msdn-table-query-syntax]: http://msdn.microsoft.com/library/windowsazure/dd894031.aspx
 [ws-storage-app]: ./media/web-sites-php-storage/ws-storage-app.png
-[management-portal]: https://manage.windowsazure.com
-[new-website]: ./media/web-sites-php-storage/new_website.jpg
+[management-portal]: https://portal.azure.com
 
-[website-quick-create]: ./media/web-sites-php-storage/createsite.png
-[website-quick-create-details]: ./media/web-sites-php-storage/sitedetails.png
 [storage-quick-create]: ./media/web-sites-php-storage/createstorage.png
-[storage-quick-create-details]: ./media/web-sites-php-storage/provideurl.png
-[storage-manage-keys]: ./media/web-sites-php-storage/accesskeys.png
 [storage-access-keys]: ./media/web-sites-php-storage/keydetails.png
 
-[go-to-dashboard]: ./media/web-sites-php-storage/selectsite.png
 [setup-git-publishing]: ./media/web-sites-php-storage/setup_git_publishing.png
 [credentials]: ./media/web-sites-php-storage/git-deployment-credentials.png
 
-
 [git-instructions]: ./media/web-sites-php-storage/git-instructions.png
-[where-is-code]: ./media/web-sites-php-storage/where_is_code.png
 
-
-
-<!--HONumber=42-->
+<!--HONumber=52-->

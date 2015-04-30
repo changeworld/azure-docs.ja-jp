@@ -1,105 +1,82 @@
-﻿<properties 
-	pageTitle="iOS アプリ用 Azure Mobile Services の使用" 
-	description="次のチュートリアルに従って、iOS 開発用の Azure Mobile Services を使用します。" 
-	services="" 
-	documentationCenter="ios" 
-	authors="krisragh" 
-	manager="dwrede" 
+﻿<properties
+	pageTitle="iOS アプリ用 Azure Mobile Services の使用"
+	description="次のチュートリアルに従って、iOS 開発用の Azure Mobile Services を使用します。"
+	services="mobile-services"
+	documentationCenter="ios"
+	authors="krisragh"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="10/10/2014" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm=""
+	ms.devlang="objective-c"
+	ms.topic="hero-article"
+	ms.date="2/11/2015"
 	ms.author="krisragh"/>
 
-# <a name="getting-started"></a>Mobile Services の使用
+# <a name="getting-started"> </a>Mobile Services の使用
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure Mobile Services を使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
+このチュートリアルでは、Azure Mobile Services を使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しい Mobile Services と、新しい Mobile Services にアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。Mobile Services はサーバー側ビジネス ロジックの .NET と Visual Studio を使用します。JavaScript でサーバー側ビジネス ロジックを記述できる Mobile Services を作成する方法については、このトピックの[JavaScript バックエンド バージョン]をご覧ください。
 
-完成したアプリケーションのスクリーンショットは次のようになります。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20target="_blank")をご覧ください
 
-![][0]
-
-このチュートリアルを完了するには、XCode 4.5 および iOS 5.0 以降のバージョンが必要です。
-
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20target="_blank")を参照してください。
-
-## <a name="create-new-service"></a>新しいモバイル サービスを作成する
+## <a name="create-new-service"> </a>新しい Mobile Services を作成する
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
-## ローカル コンピューターにモバイル サービスをダウンロードする
+## ローカル コンピューターに、Mobile Services とアプリケーションをダウンロードします。
 
-モバイル サービスを作成したので、個人用のモバイル サービス プロジェクトをダウンロードして、ローカル コンピューターまたは仮想マシンで動かすことができます。
+Mobile Services が作成されたので、ローカルで実行できるプロジェクトをダウンロードします。
 
-1. 作成したモバイル サービスをクリックし、[クイック スタート] タブの **[プラットフォームの選択]** で **[iOS]** をクリックし、**[新しい iOS アプリを作成する]** を展開します。
+1. 作成した Mobile Services をクリックし、[クイック スタート] タブの **[プラットフォームの選択]** で **[iOS]** をクリックし、**[新しい iOS アプリを作成する]** を展開します。
 
-	![][1]
+2. Windows PC で、**[サービスのダウンロードとクラウドへの発行]** の下の **[ダウンロード]** をクリックします。これにより、Mobile Services を実装する Visual Studio プロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-2. Visual Studio Professional 2013 以降をダウンロードしてインストールします (まだインストールしていない場合)。
+3. Mac で、**[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。これにより、Mobile Services に接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-3. **[サービスのダウンロードとクラウドへの発行]** の下の **[ダウンロード]** をクリックします。
-
-	これにより、モバイル サービスを実装する Visual Studio プロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
-
-4. また、発行プロファイルをダウンロードしてローカル コンピューターに保存し、保存場所を書き留めておいてください。
-
-## モバイル サービスをテストする
+## Mobile Services をテストする
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
-## モバイル サービスを発行する
+## Mobile Services を発行する
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
-## 新しい iOS アプリを作成する
-
-ここでは、モバイル サービスに接続される新しい iOS アプリを作成します。
-
-1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
-
-2. [クイック スタート] タブの **[プラットフォームの選択]** で **[iOS]** を選択し、**[新しい iOS アプリを作成する]** を展開します。
-
-3. [Xcode] v4.4 以降をダウンロードしてインストールします (まだインストールしていない場合)。
-
-4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。
-
-  	これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 ## 新しい iOS アプリを実行する
 
 [AZURE.INCLUDE [mobile-services-ios-run-app](../includes/mobile-services-ios-run-app.md)]
 
-これで、Azure で実行されているモバイル サービスに対して新しいクライアント アプリケーションを実行する方法が示されます。iOS アプリをローカル コンピューターで実行しているモバイル サービスでテストする前に、iOS 開発コンピューターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。詳細については、「[ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成](mobile-services-dotnet-backend-how-to-configure-iis-express.md).」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [データの使用]
-  <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+これで、Azure で実行されている Mobile Services に対して新しいクライアント アプリケーションを実行する方法が示されます。iOS アプリをローカル コンピューターで実行している Mobile Services でテストする前に、iOS 開発コンピューターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。詳細については、「[ローカル Mobile Services への接続を可能にするローカル Web サーバーの構成](mobile-services-dotnet-backend-how-to-configure-iis-express.md)」をご覧ください。
+
+Mobile Services で重要になるこれ以外の作業については、以下のトピックをご覧ください。
+
+* [既存のアプリに Mobile Services を追加する]
+  <br/>Mobile Services を使用してデータの格納とクエリを実行する方法について説明します。
 
 * [オフライン データ同期の使用]
   <br/>オフライン データの同期を使用してアプリケーションの反応と信頼性を高める方法について説明します。
 
-* [認証の使用]
+* [既存の Azure Mobile Services アプリへの認証の追加]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用]
+* [Mobile Services アプリへのプッシュ通知の追加]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [Mobile Services .NET バックエンドのトラブルシューティング]
-  <br/> Mobile Services の .NET バックエンドで発生する問題を診断して解決する方法について説明します。
+  <br/> Mobile Services .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
 <!-- Anchors. -->
 [Mobile Services の使用]:#getting-started
-[新しいモバイル サービスを作成する]:#create-new-service
-[モバイル サービス インスタンスの定義]:#define-mobile-service-instance
+[新しい Mobile Services を作成する]:#create-new-service
+[Mobile Services  インスタンスの定義]:#define-mobile-service-instance
 [次のステップ]:#next-steps
 
 <!-- Images. -->
@@ -116,18 +93,16 @@
 
 
 <!-- URLs. -->
-[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
-[オフライン データ同期の使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push
-[Mobile Services .NET バックエンドのトラブルシューティング]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-troubleshoot/
+[既存のアプリに Mobile Services を追加する]: mobile-services-dotnet-backend-ios-get-started-data.md
+[オフライン データ同期の使用]: mobile-services-ios-get-started-offline-data.md
+[既存の Azure Mobile Services アプリへの認証の追加]: mobile-services-dotnet-backend-ios-get-started-users.md
+[Mobile Services アプリへのプッシュ通知の追加]: mobile-services-dotnet-backend-ios-get-started-push.md
+[Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
-[モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [管理ポータル]: https://manage.windowsazure.com/
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/mobile-services-ios-get-started
+[JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
-
-
-<!--HONumber=42-->
+<!--HONumber=52-->

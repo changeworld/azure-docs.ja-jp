@@ -19,7 +19,7 @@
 
 		using Microsoft.ServiceBus.Messaging;
 
-5. **Program** クラスに次の  `static` フィールドを追加し、**send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列を値に代入します。
+5. **Program** クラスに次のフィールドを追加し、**send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列を値に代入します。
 
 		static string eventHubName = "{event hub name}";
         static string connectionString = "{send connection string}";
@@ -34,13 +34,13 @@
                 try
                 {
                     var message = Guid.NewGuid().ToString();
-                    Console.WriteLine("{0} > Sending message: {1}", DateTime.Now.ToString(), message);
+                    Console.WriteLine("{0} > Sending message:{1}", DateTime.Now.ToString(), message);
                     await eventHubClient.SendAsync(new EventData(Encoding.UTF8.GetBytes(message)));
                 }
                 catch (Exception exception)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("{0} > Exception: {1}", DateTime.Now.ToString(), exception.Message);
+                    Console.WriteLine("{0} > Exception:{1}", DateTime.Now.ToString(), exception.Message);
                     Console.ResetColor();
                 }
 
@@ -52,13 +52,12 @@
 
 7. 最後に、**Main** メソッドに次の行を追加します。
 
-		Console.WriteLine("Press Ctrl-C to stop the sender process");
-        Console.WriteLine("Press Enter to start now");
+		Console.WriteLine("Ctrl-C キーを同時に押して送信プロセスを停止");
+        Console.WriteLine("Enter を押してすぐに開始");
         Console.ReadLine();
         SendingRandomMessages().Wait();
 
 
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
-[8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
-<!--HONumber=47-->
+[8]:./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png<!--HONumber=52--> 

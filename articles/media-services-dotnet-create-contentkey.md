@@ -19,13 +19,13 @@
 
 #.NET を使用したコンテンツ キーの作成
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」と「[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
 
 メディア サービスでは、暗号化されたアセットを新しく作成して送信できます。**ContentKey** で**アセット**に安全にアクセスできます。 
 
-新しいアセットを作成した場合 ([ファイルをアップロード]する前など(media-services-dotnet-upload-files.md))、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
+新しいアセットを作成するときは ([ファイルをアップロードする](media-services-dotnet-upload-files.md)前など)、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
 
-クライアントにアセットを配信するときには、[アセットを動的に暗号化するように構成]できます。(media-services-dotnet-configure-asset-delivery-policy.md) その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
+アセットをクライアントに送信するときは、[アセットを動的に暗号化するように構成](media-services-dotnet-configure-asset-delivery-policy.md)できます。その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
 
 暗号化されたアセットには、**ContentKey** を関連付ける必要があります。この記事では、コンテンツ キーを作成する方法について説明します。
 
@@ -99,7 +99,7 @@
         return randomBytes;
     }
 
-以下を呼び出します。
+call
 
 	IContentKey key = CreateEnvelopeTypeContentKey(encryptedsset);
 
@@ -139,7 +139,8 @@
 
         return returnValue;
     }
-以下を呼び出します。
+call
 
 	IContentKey key = CreateCommonTypeContentKey(encryptedsset);
-<!--HONumber=47-->
+
+<!--HONumber=52-->

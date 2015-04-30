@@ -46,4 +46,4 @@ Azure AD には、アプリケーションへのアクセス権を持つクラ�
 * [Azure ID](/manage/windows/fundamentals/identity/)
 * [MSDN の Azure AD ライブラリ](http://go.microsoft.com/fwlink/?LinkId=293425)
 
-<!--HONumber=47-->
+<!--HONumber=52-->

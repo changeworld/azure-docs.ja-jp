@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Appcelerator Titanium での Azure Mobile Services の使用" 
 	description="次のチュートリアルに従って、Appcelerator 開発用の Azure Mobile Services を使用します。" 
 	services="mobile-services" 
@@ -10,19 +10,19 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-appcelerator" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="multiple" 
-	ms.topic="article" 
+	ms.topic="hero-article" 
 	ms.date="11/24/2014" 
 	ms.author="mahender"/>
 
-# <a name="getting-started"> </a>モバイル サービスの使用
+# <a name="getting-started"> </a>Mobile Services の使用
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
 このチュートリアルでは、Appcelerator で構築したアプリケーションで Azure Mobile Services を活用する方法について説明します。
 
-このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。
+このチュートリアルでは、新しい Mobile Services と、新しい Mobile Services にアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成する Mobile Services は、サーバー側ビジネス ロジックのために JavaScript を使用します。
 
 このチュートリアルを完了するには、[Appcelerator Titanium] が必要です。
 
@@ -30,13 +30,13 @@ iOS 向けに構築する場合は、Xcode 5.1 および iOS 7.1 SDK または�
 
 Android 向けに構築する場合は、Android 4.3 またはそれ以降の SDK も必要になります。
 
-## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
+## <a name="create-new-service"> </a>新しい Mobile Services を作成する
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 新しい Appcelerator アプリケーションを作成する
 
-1. Mobile Services のポータルで、使用するモバイル サービスの **[データ]** タブをクリックします。
+1. Mobile Services ポータルで、Mobile Services の **[データ]** タブをクリックします。
 
 2. **[テーブルの追加]** をクリックし、**TodoItem** という名前の新しいテーブルを作成します。
 
@@ -46,7 +46,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 5. Mobile Services ポータルに戻り、**ダッシュボード**で **[キーの管理]** をクリックし、**アプリケーション キー**をコピーします。
 
-5. アプリケーションの index.js で、`<---App Name---->` と `<------------APP KEY------------>` をモバイル サービスの値で置き換えます。
+5. アプリケーションの index.js で、`<---App Name---->` と `<------------APP KEY------------>` を Mobile Services の値で置き換えます。
 
 ## 新しい Appcelerator アプリケーションを実行する ##
 
@@ -78,18 +78,18 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
     ![][5]
 
-8.	次の画面で、正符号 (+) アイコンをクリックし、&quot;このチュートリアルを完了する&quot; など意味のあるテキストを入力して [保存] をクリックします。
+8.	次の画面で、正符号 (+) アイコンをクリックし、&quot;「このチュートリアルを完了する」&quot;など意味のあるテキストを入力して [保存] をクリックします。<br />
 
     ![][6]
 
     ![][7]
 
-これにより、Windows Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
+これにより、Windows Azure でホストされている新しい Mobile Services に POST 要求が送信されます。要求のデータは TodoItems テーブルに挿入されます。テーブルに格納された項目が Mobile Services によって返され、データが一覧に表示されます。
 
 ![][8]
 
 
->[AZURE.NOTE] モバイル サービスにアクセスして TodoService.m ファイルにあるデータを照会および挿入するコードを確認できます。
+>[AZURE.NOTE] Mobile Services にアクセスして TodoService.m ファイルにあるデータを照会および挿入するコードを確認できます。
 
 4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
@@ -101,7 +101,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 
 ## <a name="next-steps"> </a>次のステップ
-クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックをご覧ください。 
+クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックをご覧ください。 
 
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
@@ -127,9 +127,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 <!-- URLs. -->
 [Todolist アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=506859
 [Appcelerator Titanium]: http://go.microsoft.com/fwlink/p/?LinkID=509987
-[認証の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users
-[プッシュ通知の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push
+[認証の使用]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users.md
+[プッシュ通知の使用]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push.md
 
-
-
-<!--HONumber=42-->
+<!--HONumber=52-->

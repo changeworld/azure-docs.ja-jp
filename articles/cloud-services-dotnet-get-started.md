@@ -12,15 +12,19 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
-	ms.topic="article" 
+	ms.topic="hero-article" 
 	ms.date="2/19/2015" 
 	ms.author="tdykstra"/>
 
 # Azure Cloud Services と ASP.NET を使ってみる
 
+> [AZURE.SELECTOR]
+- [Node.js](cloud-services-nodejs-develop-deploy-app.md)
+- [.NET](cloud-services-dotnet-get-started.md)
+
 ## 概要
 
-このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure Cloud Services](/ja-jp/documentation/articles/fundamentals-application-models/#CloudServices) にデプロイする方法について説明します。このアプリケーションでは、[Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279)、[Azure BLOB サービス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、および [Azure Queue サービス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)できます。 
+このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure Cloud Services](fundamentals-application-models.md#CloudServices) にデプロイする方法について説明します」をご覧ください。このアプリケーションでは、[Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279)、[Azure BLOB サービス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、[Azure Queue サービス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)できます。 
 
 このチュートリアルでは、アプリケーションを作成してローカルで実行する方法、アプリケーションを Azure にデプロイしてクラウドで実行する方法、およびアプリケーションを最初から作成する方法について説明します。アプリケーションを最初から作成する手順から始め、必要に応じて後でアプリケーションのテストとデプロイ手順に進んでください。
 
@@ -30,11 +34,11 @@
 
 ![Ad list](./media/cloud-services-dotnet-get-started/list.png)
 
-アプリケーションでは、[キューを中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。 
+アプリケーションでは、[キュー中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。 
 
 ## 代替のアーキテクチャ:Web サイトおよび Web ジョブ
 
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Websites](/ja-jp/services/web-sites/) で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](http://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。別のアーキテクチャとして、フロントエンドを [Azure Web サイト](/services/web-sites/) で実行し、バックエンドの [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能 (現在のプレビュー) を使用することもできます。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](websites-dotnet-webjobs-sdk-get-started.md)」をご覧ください」をご覧ください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](http://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/)」をご覧ください。
 
 ## 学習内容
 
@@ -47,9 +51,9 @@
 
 ## 前提条件
 
-このチュートリアルは、 *web role*、 *worker role*などの用語を含む [Azure Cloud Services の基本概念](http://azure.microsoft.com/documentation/articles/fundamentals-application-models/#CloudServices)を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。 
+このチュートリアルは、[Azure Cloud Services の基本概念](fundamentals-application-models.md#CloudServices) ( *web role*、 *worker role* などの用語を含む) を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。 
 
-Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料評価版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
+Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) を有効にするか、[無料評価版にサインアップ](/pricing/free-trial/?WT.mc_id=A55E3C668)してください。」をご覧ください。
 
 このチュートリアルの手順は、次のどちらの製品でも使用できます。
 
@@ -66,7 +70,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 ユーザーが画像をアップロードすると、Web ロールで実行されているフロントエンドによってその画像が [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。同時に、メッセージが Azure キューに書き込まれます。worker ロールで実行されているバックエンド プロセスは、定期的にキューをポーリングして新しいメッセージの有無を確認します。新しいメッセージが出現すると、worker ロールはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。次の図に、アプリケーションの各パーツのやり取りを示します。
 
-![Contoso Ads architecture](./media/cloud-services-dotnet-get-started/apparchitecture.png)
+![Contoso Ads アーキテクチャ](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [AZURE.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
@@ -80,13 +84,13 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 3. Ctrl + Shift + B キーを押して、ソリューションをビルドします。
 
-	既定では、*.zip* ファイルに含まれていなかった NuGet パッケージのすべての内容が Visual Studio によって自動的に復元されます。パッケージが復元されない場合は、**[ソリューションの NuGet パッケージの管理]** ダイアログの右上にある **[復元]** ボタンをクリックしてパッケージを手動でインストールします。 
+	既定では、*.zip* ファイルに含まれていない NuGet パッケージのすべての内容が Visual Studio によって自動的に復元されます。パッケージが復元されない場合は、**[ソリューションの NuGet パッケージの管理]** ダイアログの右上にある **[復元]** ボタンをクリックしてパッケージを手動でインストールします。 
 
 3. **ソリューション エクスプローラー**で、**ContosoAdsCloudService** がスタートアップ プロジェクトとして選択されていることを確認します。
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure  *compute emulator*と Azure *storage emulator*が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) データベースを使用して、Azure クラウド ストレージをシミュレートします。 
+	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure  *compute emulator*と Azure *storage emulator*が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。 
 
 	クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
@@ -94,7 +98,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 2. **[Create an Ad]** をクリックします。
 
-2. 何らかのテスト データを入力し、アップロードする画像 (*.jpg*) を選択したら、*[Create]* をクリックします。
+2. 何らかのテスト データを入力し、アップロードする画像 (.jpg) を選択したら、**[Create]** をクリックします。
 
 	![Create page](./media/cloud-services-dotnet-get-started/create.png)
 
@@ -112,7 +116,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 次のセクションでは、クラウドで実行されたときにキュー、BLOB、およびアプリケーション データベース用に Azure クラウド リソースを使用するソリューションを構成します。ローカルでの実行を継続しながらクラウド ストレージおよびデータベース リソースを使用したい場合は、接続文字列の設定を構成します。その方法については、後で説明します。 
 
-## Azure にアプリケーションを展開する
+## Azure にアプリケーションをデプロイする
 
 アプリケーションをクラウドで実行するには、次の手順を実行します。
 
@@ -151,7 +155,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 1. Azure 管理ポータルで、**[新規]**、**[データ サービス]**、**[SQL データベース]**、**[簡易作成]** の順にクリックします。
 
-1. **[データベース名]** ボックスに「 *contosoads*」と入力します *contosoads*。
+1. **[データベース名]** ボックスに「 *contosoads*」と入力します。
 
 1. **[サーバー]** ボックスの一覧の **[新しい SQL データベース サーバー]** を選択します。
 
@@ -195,11 +199,11 @@ Azure Storage アカウントは、キューおよび BLOB データをクラウ
 
 	クラウド サービスとストレージ アカウントが異なるデータ センター (異なるリージョン) にあると、遅延時間が長くなり、データ センター外の帯域幅に対して課金されることになります。データ センター内の帯域幅は無料です。
 
-	Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。このチュートリアルでは、アフィニティ グループを使用しません。詳細については、「[管理ポータルでのアフィニティ グループの作成](http://msdn.microsoft.com/library/jj156209.aspx)」を参照してください。
+	Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。このチュートリアルでは、アフィニティ グループを使用しません。詳細については、[Azure でアフィニティ グループを作成する方法に関するページ](http://msdn.microsoft.com/library/jj156209.aspx)をご覧ください。
 
-6. **[レプリケーション]** ドロップダウン リストを **[ローカル冗長]** に設定します。 
+6. **[レプリケーション]** ボックスを **[ローカル冗長]** に設定します。 
 
-	Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次データセンターに複製されて、フェイルオーバーが可能になります。Geo レプリケーションには追加費用が発生する場合があります。また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)」を参照してください。
+	Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次データセンターに複製されて、フェイルオーバーが可能になります。Geo レプリケーションには追加費用が発生する場合があります。また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)」をご覧ください」をご覧ください。
 
 5. **[ストレージ アカウントの作成]** をクリックします。 
 
@@ -309,13 +313,13 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 `<Instances>` 設定は、Azure で worker ロール コードが実行される仮想マシンの数を指定します。「[次のステップ](#next-steps)」 セクションに、クラウド サービスのスケールアウトに関する情報へのリンクが含まれています。
 
-### Azure にプロジェクトをデプロイする
+###  Azure にプロジェクトをデプロイする
 
 3.	**ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** クラウド プロジェクトを右クリックし、**[発行]** をクリックします。
 
 	![Publish menu](./media/cloud-services-dotnet-get-started/pubmenu.png)	
 
-2. **Windows Azure アプリケーションの発行**ウィザードの **[サインイン]** 手順で、**[次へ]** をクリックします。
+2. **Azure アプリケーションの発行**ウィザードの **[サインイン]** 手順で、**[次へ]** をクリックします。
 
 	![Sign in step](./media/cloud-services-dotnet-get-started/pubsignin.png)	
 
@@ -323,7 +327,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 	![Settings step](./media/cloud-services-dotnet-get-started/pubsettings.png)	
 
-	**[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。[詳細設定] タブの詳細については、「[Windows Azure アプリケーションの発行ウィザード](http://msdn.microsoft.com/library/windowsazure/hh535756.aspx)」を参照してください。
+	**[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。[詳細設定] タブの詳細については、「[Windows Azure アプリケーションの発行ウィザード](http://msdn.microsoft.com/library/hh535756.aspx)」をご覧ください。
 
 2. **[概要]** 手順で、**[発行]** をクリックします。
 
@@ -345,8 +349,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 ## アプリケーションを最初から作成する 
 
-まだ 
-[完成したアプリケーション](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)をダウンロードしていない場合は、ここでダウンロードします。以降の操作では、ダウンロードしたプロジェクトから新しいプロジェクトにファイルをコピーします。
+まだ [完成したアプリケーション](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)をダウンロードしていない場合は、ここでダウンロードします。以降の操作では、ダウンロードしたプロジェクトから新しいプロジェクトにファイルをコピーします。
 
 Contoso Ads アプリケーションを作成するには、次の手順を実行します。
 
@@ -362,7 +365,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 1. Visual Studio で、**[ファイル]** メニューの **[新しいプロジェクト]** を選択します。
 
-2. **[新しいプロジェクト]** ダイアログの左側のウィンドウで、**[Visual C#]** を展開し、**[クラウド]** テンプレート、**[Windows Azure クラウド サービス]** テンプレートの順に選択します。
+2. **[新しいプロジェクト]** ダイアログの左側のウィンドウで、**[Visual C#]** を展開し、**[クラウド]** テンプレート、**[Azure クラウド サービス]** テンプレートの順に選択します。
 
 3. プロジェクトおよびソリューションに ContosoAdsCloudService という名前を付けて **[OK]** をクリックします。
 
@@ -448,9 +451,9 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 5. **[ContosoAdsWorker [ロール]]** プロパティ ウィンドウで、もう 1 つ接続文字列を追加します。
 
-	* 名前:ContosoAdsDbConnectionString
-	* 次のコマンドを入力します。文字列
-	* 値:Web ロール プロジェクトに使用したのと同じ接続文字列を貼り付けます。
+	* Name: ContosoAdsDbConnectionString
+	* Type: String
+	* Value: Paste the same connection string you used for the web role project:
 	
 			Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
 	
@@ -460,20 +463,20 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、**[追加]**、**[既存の項目]** の順にクリックします。目的のファイルを選択し、**[追加]** をクリックします。既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、**[はい]** をクリックします。
 
-3. ContosoAdsCommon プロジェクトで、 *Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから *Ad.cs* および *ContosoAdscontext.cs* ファイルを追加します。
+3. ContosoAdsCommon プロジェクトで、 *Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから  *Ad.cs* ファイルと  *ContosoAdscontext.cs* ファイルを追加します。
 
 3. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
 	- *Global.asax.cs*  
-	-  *Views\Shared* フォルダー: <em>_Layout.cshtml</em>。
-	-  *Views\Home* フォルダー: *Index.cshtml*.
-	-  *Controllers* フォルダー: *AdController.cs*.
-	-  *Views\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
+	-  *Views\Shared* フォルダー:<em>_Layout.cshtml</em>
+	-  *Views\Home* フォルダー:  *Index.cshtml*
+	-  *Controllers* フォルダー:  *AdController.cs*
+	-  *Views\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル
 
-3. ContosoAdsWorker プロジェクトで、ダウンロードしたプロジェクトから *WorkerRole.cs* を追加します。
+3. ContosoAdsWorker プロジェクトで、ダウンロードしたプロジェクトから  *WorkerRole.cs* を追加します。
 
 この段階で、チュートリアルの前の説明で示した手順に従ってアプリケーションをビルドして実行できます。アプリは、ローカル データベースおよびストレージ エミュレーター リソースを使用します。
 
-以降のセクションでは、Azure 環境、BLOB、およびキューの操作に関連するコードについて説明します。このチュートリアルでは、スキャフォールディングを使用した MVC コントローラーおよびビューの作成方法、SQL Server データベースで動作する Entity Framework コードの作成方法、ASP.NET 4.5 での非同期プログラミングの基礎については説明していません。これらのトピックについては、次のリソースを参照してください。
+以降のセクションでは、Azure 環境、BLOB、およびキューの操作に関連するコードについて説明します。このチュートリアルでは、スキャフォールディングを使用した MVC コントローラーおよびビューの作成方法、SQL Server データベースで動作する Entity Framework コードの作成方法、ASP.NET 4.5 での非同期プログラミングの基礎については説明していません。これらのトピックについては、次のリソースをご覧ください。
 
 * [MVC 5 を使ってみる](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [EF 6 と MVC 5 を使ってみる](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
@@ -542,9 +545,9 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 
 ### ContosoAdsWeb - Global.asax.cs
 
- *images* BLOB コンテナーと *images* キューが存在しない場合は、 `Application_Start` メソッドから呼び出されるコードによって作成されます。これにより、新しいストレージ アカウントの使用を開始するたびに、または新しいコンピューターでストレージ エミュレーターの使用を開始するたびに、必要な BLOB コンテナーとキューが自動的に作成されます。
+ *images* BLOB コンテナーと  *images* キューが存在しない場合は、 `Application_Start` メソッドから呼び出されるコードによって作成されます。これにより、新しいストレージ アカウントの使用を開始するたびに、または新しいコンピューターでストレージ エミュレーターの使用を開始するたびに、必要な BLOB コンテナーとキューが自動的に作成されます。
 
-次に、*.cscfg* ファイルからの接続文字列を使用してストレージ アカウントへのアクセスが取得されます。
+次に、.cscfg ファイルからのストレージ接続文字列を使用してストレージ アカウントへのアクセスが取得されます。
 
 		var storageAccount = CloudStorageAccount.Parse
 		    (RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString"));
@@ -574,7 +577,7 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 
 ### ContosoAdsWeb - Views\Home\Index.cshtml
 
- *Views\Home\Index.cshtml* ファイルは、ホーム ページにカテゴリ リンクを表示します。リンクは、querystring 変数の `Category` enum の整数値を Ads Index ページに渡します。
+ *Views\Home\Index.cshtml* ファイルは、ホーム ページにカテゴリ リンクを表示します。リンクは、querystring 変数の  `Category` enum の整数値を Ads Index ページに渡します。
 	
 		<li>@Html.ActionLink("Cars", "Index", "Ad", new { category = (int)Category.Cars }, null)</li>
 		<li>@Html.ActionLink("Real estate", "Index", "Ad", new { category = (int)Category.RealEstate }, null)</li>
@@ -583,9 +586,9 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 
 ### ContosoAdsWeb - AdController.cs
 
- *AdController.cs* ファイル内では、コンストラクターによって `InitializeStorage` メソッドが呼び出され、BLOB およびキューを操作するための API を提供する Azure Storage クライアント ライブラリ オブジェクトが作成されます。 
+ *AdController.cs* ファイル内では、コンストラクターによって  `InitializeStorage` メソッドが呼び出され、BLOB およびキューを操作するための API を提供する Azure Storage クライアント ライブラリ オブジェクトが作成されます。 
 
-次に、 *Global.asax.cs* と同様に *images* BLOB コンテナーへの参照が取得されます。この処理中に、Web アプリに適した既定の[再試行ポリシー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)が設定されます。既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上停止する可能性があります。ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
+次に、  *Global.asax.cs* と同様に  *images* BLOB コンテナーへの参照が取得されます。この処理中に、Web アプリに適した既定の[再試行ポリシー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)が設定されます。既定の指数関数的バックオフ再試行ポリシーでは、一時的な障害に対する反復的再試行操作によって Web アプリが 1 分以上停止する可能性があります。ここでは、再試行ごとに 3 秒待機し、再試行の回数を 3 回までとする再試行ポリシーを指定しています。
 
 		var blobClient = storageAccount.CreateCloudBlobClient();
 		blobClient.RetryPolicy = new LinearRetry(TimeSpan.FromSeconds(3), 3);
@@ -597,7 +600,7 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 		queueClient.RetryPolicy = new LinearRetry(TimeSpan.FromSeconds(3), 3);
 		imagesQueue = queueClient.GetQueueReference("images");
 
-コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。ただし、ファイルをアップロードして BLOB ストレージに保存する HttpPost `Create` メソッドは例外です。モデル バインダーは、このメソッドに [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
+コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。ただし、ファイルをアップロードして BLOB ストレージに保存する HttpPost  `Create` メソッドは例外です。モデル バインダーは、このメソッドに [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -613,7 +616,7 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 		    ad.ImageURL = blob.Uri.ToString();
 		}
 
-アップロード操作を実行するコードは `UploadAndSaveBlobAsync` メソッドに含まれています。このコードでは、BLOB の GUID 名が作成され、ファイルがアップロードおよび保存され、保存された BLOB への参照が返されます。
+アップロード操作を実行するコードは  `UploadAndSaveBlobAsync` メソッドに含まれています。このコードでは、BLOB の GUID 名が作成され、ファイルがアップロードおよび保存され、保存された BLOB への参照が返されます。
 
 		private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase imageFile)
 		{
@@ -675,7 +678,7 @@ HttpPost `Edit` メソッドのコードも似ていますが、ユーザーが�
 
 ### ContosoAdsWeb - Views\Ad\Create.cshtml および Edit.cshtml
 
- *Create.cshtml* ファイルと *Edit.cshtml* ファイルは、フォームのエンコードを指定してコントローラーが `HttpPostedFileBase` オブジェクトを取得できるようにします。
+ *Create.cshtml* と  *Edit.cshtml* ファイルは、フォームのエンコードを指定してコントローラーが  `HttpPostedFileBase` オブジェクトを取得できるようにします。
 
 		@using (Html.BeginForm("Create", "Ad", FormMethod.Post, new { enctype = "multipart/form-data" }))
 
@@ -729,7 +732,7 @@ Azure worker ロール環境は、worker ロールの起動時に  `WorkerRole` 
 
 ループの各イテレーションの後でキュー メッセージが見つからなかった場合、プログラムは 1 秒間スリープ状態になります。これにより、worker ロールによって過剰な CPU 時間およびストレージ トランザクション コストが発生しないようにしています。Microsoft Customer Advisory Team では、ある開発者に関する話を紹介しています。この開発者は、この処理を組み込むのを忘れて運用環境にデプロイし、休暇に出かけてしまったのです。開発者が休暇から戻ると、その不注意によって休暇分を超える損失が生じていました。
 
-ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは *poison message*と呼ばれエラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
+ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは  *poison message* と呼ばれエラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
 
 `ProcessQueueMessage` は、キュー メッセージが見つかったときに呼び出されます。
 
@@ -770,15 +773,15 @@ Azure worker ロール環境は、worker ロールの起動時に  `WorkerRole` 
 
 ### ServiceRuntime.RoleEnvironmentException
 
- `RoleEnvironment` オブジェクトは、アプリケーションを Azure で実行したときまたは Azure コンピューティング エミュレーターを使用してローカルで実行したときに Azure によって提供されます。アプリケーションをローカルで実行しているときにこのエラーが発生した場合は、ContosoAdsCloudService プロジェクトがスタートアップ プロジェクトとして設定されていることを確認してください。こうすることで、Azure コンピューティング エミュレーターを使用して実行するようにプロジェクトが設定されます。
+ `RoleEnvironment` オブジェクトは、アプリケーションを Azure で実行したときまたは Azure コンピューティング エミュレーターを使用してローカルで実行したときに Azure によって提供されます。アプリケーションをローカルで実行しているときにこのエラーが発生した場合は、ContosoAdsCloudService プロジェクトがスタートアップ プロジェクトとして設定されていることをご確認ください。こうすることで、Azure コンピューティング エミュレーターを使用して実行するようにプロジェクトが設定されます。
 
-アプリケーションが Azure RoleEnvironment を使用する目的の 1 つに、*.cscfg* ファイルに格納されている接続文字列値を取得することがあります。したがって、この例外の別の原因として、接続文字列が見つからないことが考えられます。ContosoAdsWeb プロジェクトのクラウド構成とローカル構成の両方に対して StorageConnectionString 設定が作成されていること、および ContosoAdsWorker プロジェクトの両方の構成に対して両方の接続文字列が作成されていることを確認してください。ソリューション全体を対象に StorageConnectionString の **"すべて検索"** を実行すると、6 つのファイルに 9 件見つかります。
+アプリケーションが Azure RoleEnvironment を使用する目的の 1 つに、.cscfg ファイルに格納されている接続文字列値を取得することがあります。したがって、この例外の別の原因として、接続文字列が見つからないことが考えられます。ContosoAdsWeb プロジェクトのクラウド構成とローカル構成の両方に対して StorageConnectionString 設定が作成されていること、および ContosoAdsWorker プロジェクトの両方の構成に対して両方の接続文字列が作成されていることをご確認ください。ソリューション全体を対象に StorageConnectionString の **"すべて検索"** を実行すると、6 つのファイルに 9 件見つかります。
 
 ### ポート xxx にオーバーライドできません。新しいポートが http プロトコルで許容されている最小値 8080 を下回っています
 
 Web プロジェクトで使用するポート番号を変更してください。ContosoAdsWeb プロジェクトを右クリックし、**[プロパティ]** をクリックします。**[Web]** タブで、**[プロジェクトの URL]** 設定のポート番号を変更します。
 
-ほかに考えられるこの問題の解決方法については、次のセクションを参照してください。
+ほかに考えられるこの問題の解決方法については、次のセクションをご覧ください。
 
 ### ローカルで実行しているときに発生するその他のエラー
 
@@ -792,22 +795,22 @@ Web プロジェクトで使用するポート番号を変更してください�
 
 Contoso Ads アプリケーションは、入門用のチュートリアルという目的から意図的にシンプルに作られています。たとえば、このアプリケーションには、[依存関係の挿入](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection)や[作業パターンのリポジトリと単位](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo)が実装されていません。さらに、[ログのためのインターフェイス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log)、データ モデルの変更を管理するための [EF Code First Migrations](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application)、一時的なネットワーク エラーを管理するための [Entity Framework の接続の回復性](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)なども省略されています。
 
-以下に、より現実的なコーディング手法を示すいくつかのクラウド サービス サンプル アプリケーションを、やさしいものから順に示します。
+以下に、より現実的なコーディング メソッドを示すいくつかのクラウド サービス サンプル アプリケーションを、やさしいものから順に示します。
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
-* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure Cloud Services 多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。Azure Storage のテーブル、BLOB、キューについて紹介します。[手順を紹介するチュートリアル シリーズ](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/)が用意されています。
-* [Cloud Service Fundamentals in Windows Azure (Windows Azure のクラウド サービスの基礎)](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649).Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
+* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング メソッドが実装されています。
+* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure Cloud Services 多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。Azure Storage のテーブル、BLOB、キューについて紹介します。[手順を紹介するチュートリアル シリーズ]が用意されています。(cloud-services-dotnet-multi-tier-app-storage-1-overview.md)」をご覧ください。
+* [Cloud Service Fundamentals in Windows Azure (Windows Azure のクラウド サービスの基礎)](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
 
-クラウド向けの開発については、「[Building Real-World Cloud Apps with Azure (Azure を使用した実際のクラウド アプリケーションの作成)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」を参照してください。
+クラウド向けの開発については、「[Building Real-World Cloud Apps with Azure (Azure を使用した実際のクラウド アプリケーションの作成)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」をご覧ください。
 
-Azure Storage に関するベスト プラクティスおよびパターンを紹介するビデオについては、「[Microsoft Azure Storage - What's New, Best Practices and Patterns (Microsoft Azure Storage - 新機能、ベスト プラクティス、パターン)](http://channel9.msdn.com/Events/Build/2014/3-628)」を参照してください。
+Azure Storage に関するベスト プラクティスおよびパターンを紹介するビデオについては、「[Microsoft Azure Storage - What's New, Best Practices and Patterns (Microsoft Azure Storage - 新機能、ベスト プラクティス、パターン)](http://channel9.msdn.com/Events/Build/2014/3-628)」をご覧ください。
 
-詳細については、次のリソースを参照してください。
+詳細については、次のリソースをご覧ください。
 
-* [Azure Cloud Services Part 1:Introduction (Azure Cloud Services パート 1: 概要)](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Azure Cloud Services](/ja-jp/documentation/services/cloud-services/)
-* [Azure Storage](/ja-jp/documentation/services/storage/)
+* [Azure Cloud Services Part 1:概要](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure クラウド サービス](/documentation/services/cloud-services/)
+* [Azure Storage](/documentation/services/storage/)
 * [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
-* [NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
+* [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

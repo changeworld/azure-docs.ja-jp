@@ -1,55 +1,58 @@
 <properties 
-	pageTitle="AD FS を使用する Azure Websites の LOB アプリケーション" 
-	description="Azure Websites を使用してオンプレミス STS で認証を行う ASP.NET MVC LOB アプリケーションを作成する方法について説明します。このチュートリアルでは、オンプレミス STS としての AD FS を対象にしています。" 
-	services="web-sites" 
+	pageTitle="AD FS の認証を使用して Azure App Service に .NET MVC Web アプリを作成する" 
+	description="Azure App Service Web アプリを使用してオンプレミス STS で認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する方法について説明します。このチュートリアルでは、オンプレミス STS としての AD FS を対象にしています。" 
+	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="cephalin" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="02/12/2015" 
+	ms.date="04/09/2015" 
 	ms.author="cephalin"/>
 
-# Azure Websites で AD FS を使用して認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する #
+# AD FS の認証を使用して Azure App Service で .NET MVC Web アプリを作成する
 
-この記事では、[Azure Websites](http://azure.microsoft.com/services/websites/) でオンプレミス [Active Directory フェデレーション サービス](http://technet.microsoft.com/library/hh831502.aspx)を ID プロバイダーとして使用して ASP.NET MVC 基幹業務 (LOB) アプリケーションを作成する方法について説明します。このシナリオは、すべてのデータがオンサイトに格納されることが求められる組織で Azure Websites を使用して LOB アプリケーションを作成する場合に適しています。
+この記事では、[Azure App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)でオンプレミス [Active Directory フェデレーション サービス](http://technet.microsoft.com/library/hh831502.aspx)を ID プロバイダーとして使用して ASP.NET MVC 基幹業務アプリケーションを作成する方法について説明します。このシナリオは、すべてのデータがオンサイトに格納されることが求められる組織で Azure App Service Web アプリを使用して基幹業務アプリケーションを作成する場合に適しています。
 
-Azure Websites の他のエンタープライズ認証および承認オプションの概要については、[Azure Websites での LOB アプリケーションのユーザーの認証と承認](web-sites-authentication-authorization)に関するページを参照してください。
+>[AZURE.NOTE] Azure App Service Web アプリにおける別のエンタープライズ認証や承認オプションの概要については、「[Azure App Service での認証には、Active Directory を使用します。](web-sites-authentication-authorization.md)」をご覧ください(web-sites-authentication-authorization.md)。
 
 <a name="bkmk_build"></a>
-## 学習内容 ##
+## ビルド内容 ##
 
-Azure Websites で次の機能を持つ基本的な ASP.NET アプリケーションを作成します。
+Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET アプリケーションを作成します。
 
 - AD FS に対してユーザーの認証を行う。
 - `[Authorize]` を使用して、操作ごとにユーザーを承認する。
-- Visual Studio でのデバッグと Azure Websites への発行の両方に対応する静的構成を使用する (1 回構成するだけで、いつでもデバッグおよび発行できる)。  
+- Visual Studio でのデバッグと App Service Web アプリへの発行の両方に対応する静的構成を使用する (1 回構成するだけで、いつでもデバッグおよび発行できる)。  
 
 <a name="bkmk_need"></a>
 ## 前提条件 ##
 
-[AZURE.INCLUDE [free-trial-note](../includes/free-trial-note.md)]
+[AZURE.INCLUDE [無料評価版に関する注意](../includes/free-trial-note.md)]
+
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[アプリ サービスを試す](http://go.microsoft.com/fwlink/?LinkId=523751)」をご覧ください。そこでは、アプリ サービスで有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 このチュートリアルを完了するには、以下が必要です。
 
-- オンプレミス AD FS デプロイメント (使用したテスト ラボのチュートリアルについては、[Azure VM での AD FS を使用したスタンドアロン STS に関するテスト ラボのページ (テストのみ) を参照](TODO)
+- オンプレミス AD FS デプロイメント (使用したテスト ラボのチュートリアルについては、[Azure VM での AD FS を使用したスタンドアロン STS に関するテスト ラボのページ (テストのみ)](TODO) を参照 )
 - 証明書利用者信頼を AD FS 管理で作成するためのアクセス許可
 - Visual Studio 2013
+- [Azure SDK 2.5.1](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) 以降
 
 <a name="bkmk_sample"></a>
-## サンプル アプリケーションを LOB テンプレートとして使用する ##
+## サンプル アプリケーションを基幹業務テンプレートとして使用する ##
 
-このチュートリアルでは、Azure Active Directory チームによって作成されたサンプル アプリケーション ([WebApp-WSFederation-DotNet](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet)) を使用します。AD FS は WS-Federation をサポートするため、これをテンプレートとして使用すると、簡単に新しい LOB アプリケーションを作成できます。このアプリケーションには、次の機能があります。
+このチュートリアルでは、Azure Active Directory チームによって作成されたサンプル アプリケーション ([WebApp-WSFederation-DotNet](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet)) を使用します。AD FS は WS-Federation をサポートするため、これをテンプレートとして使用すると、簡単に新しい基幹業務アプリケーションを作成できます。このアプリケーションには、次の機能があります。
 
 - [WS-Federation](http://msdn.microsoft.com/library/bb498017.aspx) を使用してオンプレミスの AD FS デプロイメントに対して認証を行う。
-- サインインおよびサインアウト機能。
-- Windows Identity Foundation (WIF) の代わりに [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) を使用する。これは ASP.NET の進化形で、WIF よりも簡単に認証および承認を設定できます。
+- サインインとサインアウト機能
+- Windows Identity Foundation (WIF) の代わりに [Microsoft.Owin](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana) を使用する。これは ASP.NET の進化形で、WIF よりも簡単に認証と承認を設定できます。
 
 <a name="bkmk_setup"></a>
 ## サンプル アプリケーションを設定する ##
@@ -62,7 +65,7 @@ Azure Websites で次の機能を持つ基本的な ASP.NET アプリケーシ�
 
 	このコードでは、WS-Federation を使用してユーザーを認証するために、単に認証チャレンジを発行しています。認証はすべて App_Start\Startup.Auth.cs を使用して構成します。
 
-4.  App_Start\Startup.Auth.cs を開きます。`ConfigureAuth` メソッドには、次の行が含まれています。
+4.  App_Start\Startup.Auth.cs を開きます。 `ConfigureAuth` メソッドには、次の行が含まれています。
 
         app.UseWsFederationAuthentication(
             new WsFederationAuthenticationOptions
@@ -110,40 +113,40 @@ Azure Websites で次の機能を持つ基本的な ASP.NET アプリケーシ�
 これで終了です。これで、サンプル アプリケーションで AD FS を使用する準備が整いました。ただし、後で AD FS のこのアプリケーションを使用して RP 信頼を構成する作業が残っています。
 
 <a name="bkmk_deploy"></a>
-## サンプル アプリケーションを Azure Websites にデプロイする
+## サンプル アプリケーションを Azure App Service Web アプリに展開する
 
-ここでは、デバッグ環境を維持したまま、Azure Web サイトにアプリケーションを発行します。AD FS での RP 信頼を設定する前にアプリケーションを発行するため、この段階では認証はまだ機能しません。ただし、この操作を行うと、後で RP 信頼を構成するために使用する Web サイト URL を確認できます。
+ここでは、デバッグ環境を維持しながら App Service Web アプリで Web アプリにアプリケーションを発行します。AD FS での RP 信頼を設定する前にアプリケーションを発行するため、この段階では認証はまだ機能しません。ただし、この操作を行うと、後で RP 信頼を構成するために使用する Web アプリの URL を確認できます。
 
 1. プロジェクトを右クリックし、**[発行]** を選択します。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/01-publish-website.png)
 
-2. **[Microsoft Azure Websites]** を選択します。
+2. **[Microsoft Azure Web Apps]** を選択します。
 3. Azure にサインインしていない場合は、**[サインイン]** をクリックし、Azure サブスクリプションの Microsoft アカウントを使用してサインインします。
-4. サインインしたら、**[新規]** をクリックして新しい Web サイトを作成します。
-5. すべての必須フィールドに必要事項を入力します。後でオンプレミス データに接続するため、この Web サイト用のデータベースは作成しません。
+4. サインインしたら、**[新規]** をクリックして新しい Web アプリを作成します。
+5. すべての必須フィールドに必要事項を入力します。後でオンプレミス データに接続するため、この Web アプリ用のデータベースは作成しません。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/02-create-website.png)
 
-6. **[作成]** をクリックします。Web サイトが作成されると、[Web の発行] ダイアログが開きます。
+6. **[作成]** をクリックします。Web アプリが作成されると、[Web の発行] ダイアログが開きます。
 7. **[宛先 URL]** で、**http** を **https** に変更します。URL 全体をテキスト エディターにコピーします。この URL は後で使用します。**[発行]** をクリックします。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/03-destination-url.png)
 
-11. Visual Studio で、プロジェクトの **Web.Release.config** を開きます。次の XML を `<configuration>` タグに挿入し、発行した Web サイトの URL でキー値を置き換えます。  
+11. Visual Studio で、プロジェクトの **Web.Release.config** を開きます。次の XML を <configuration> タグに挿入し、発行した Web アプリの URL でキー値を置き換えます。  
 	<pre class="prettyprint">
 &lt;appSettings&gt;
    &lt;add key="ida:RPIdentifier" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" /&gt;
 &lt;/appSettings&gt;</pre>
 
-この作業を完了すると、Visual Studio のデバッグ環境用と Azure に発行した Web サイト用の 2 つの RP 識別子がプロジェクトに構成されたことになります。この 2 つの環境のそれぞれに対して AD FS に RP 信頼を設定します。デバッグ中は、**Debug** 構成を AD FS に対応させるために Web.config のアプリ設定が使用されます。発行時 (既定では、**Release** 構成が発行されたとき) は、Web.Release.config のアプリ設定の変更が組み込まれた、変換された Web.config がアップロードされます。
+この作業を完了すると、Visual Studio のデバッグ環境用と Azure に発行した Web アプリ用の 2 つの RP 識別子がプロジェクトに構成されたことになります。この 2 つの環境のそれぞれに対して AD FS に RP 信頼を設定します。デバッグ中は、**Debug** 構成を AD FS に対応させるために Web.config のアプリ設定が使用されます。発行時 (既定では、**Release** 構成が発行されたとき) は、Web.Release.config のアプリ設定の変更が組み込まれた、変換された Web.config がアップロードされます。
 
-発行した Web サイトをデバッガーにアタッチする場合 (つまり、発行した Web サイトのコードのデバッグ シンボルをアップロードする必要があります)、Azure デバッグの Debug 構成のクローンを作成できます。このとき、Web.Release.config のアプリ設定を使用するカスタム Web.config 変換 (たとえば、Web.AzureDebug.config) が使用されます。これにより、静的構成を異なる環境間で維持することができます。
+Azure で発行した Web アプリをデバッガーにアタッチする場合 (つまり、発行した Web アプリのコードのデバッグ シンボルをアップロードする必要があります)、Azure デバッグの Debug 構成のクローンを作成できます。このとき、Web.Release.config のアプリ設定を使用するカスタム Web.config 変換 (たとえば、Web.AzureDebug.config) が使用されます。これにより、静的構成を異なる環境間で維持できます。
 
 <a name="bkmk_rptrusts"></a>
 ## AD FS 管理で証明書利用者信頼を構成する ##
 
-AD FS を使用してサンプル アプリケーションの認証を行う前に、AD FS 管理で RP 信頼を構成する必要があります。デバッグ環境用と発行した Web サイト用の 2 つの別個の RP 信頼を設定する必要があります。
+AD FS を使用してサンプル アプリケーションの認証を行う前に、AD FS 管理で RP 信頼を構成する必要があります。デバッグ環境用と発行した Web アプリ用の 2 つの別個の RP 信頼を設定する必要があります。
 
 > [AZURE.NOTE] 両方の環境に対して次の手順を繰り返してください。
 
@@ -160,7 +163,7 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 7.	**[プロトコルの選択]** ページで、**[次へ]** をクリックします。
 8.	**[証明書の構成]** ページで、**[次へ]** をクリックします。
 
-	> [AZURE.NOTE] ここでは既に HTTPS を使用しているため、暗号化トークンの設定は任意です。このページで AD FS からのトークンの暗号化を設定する場合は、トークンの暗号化解除ロジックをコードに追加する必要があります。詳細については、[OWIN WS-Federation ミドルウェアを手動で構成して暗号化トークンを受け入れる方法](http://chris.59north.com/post/2014/08/21/Manually-configuring-OWIN-WS-Federation-middleware-and-accepting-encrypted-tokens.aspx)に関するページを参照してください。
+	> [AZURE.NOTE] ここでは既に HTTPS を使用しているため、暗号化トークンの設定は任意です。このページで AD FS からのトークンの暗号化を設定する場合は、トークンの暗号化解除ロジックをコードに追加する必要があります。詳細については、[OWIN WS-Federation ミドルウェアを手動で構成して暗号化トークンを受け入れる方法](http://chris.59north.com/post/2014/08/21/Manually-configuring-OWIN-WS-Federation-middleware-and-accepting-encrypted-tokens.aspx)に関するページをご覧ください。
   
 5.	次の手順に進む前に、Visual Studio プロジェクトの情報を 1 つ確認する必要があります。プロジェクトのプロパティで、アプリケーションの **SSL URL** をメモに記録します。 
 
@@ -170,27 +173,27 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 
 	![](./media/web-sites-dotnet-lob-application-adfs/4-configure-url.png)
 
-	> [AZURE.NOTE] この URL は、認証が成功した後にクライアントを転送する宛先を指定します。デバッグ環境用には、 <code>https://localhost:&lt;port&gt;/</code> を指定します。発行した Web サイトに対しては、Web サイトの URL を指定します。
+	> [AZURE.NOTE] この URL は、認証が成功した後にクライアントを転送する宛先を指定します。デバッグ環境では、<code>https://localhost:&lt;port&gt;/</code> にする必要があります。発行した Web アプリに対しては、Web アプリの URL を指定します。
 
 7.	**[識別子の構成]** ページで、プロジェクトの SSL URL が表示されていることを確認し、**[次へ]** をクリックします。ウィザードの最後まで **[次へ]** をクリックして、既定値を受け入れます。
 
-	> [AZURE.NOTE] Visual Studio プロジェクトの App_Start\Startup.Auth.cs で、この識別子は、フェデレーション認証の間に  <code>WsFederationAuthenticationOptions.Wtrealm</code>  の値と照合されます。既定では、前の手順のアプリケーションの URL が RP 識別子として追加されます。
+	> [AZURE.NOTE] Visual Studio プロジェクトの App_Start\Startup.Auth.cs では、フェデレーション認証時にこの識別子が <code>WsFederationAuthenticationOptions.Wtrealm</code> の値に一致します。既定では、前の手順のアプリケーションの URL が RP 識別子として追加されます。
 
-8.	これで、AD FS でのプロジェクトの RP アプリケーションの構成が完了しました。次に、アプリケーションで必要なクレームを送信するようにこのアプリケーションを構成します。ウィザードの最後に **[クレーム規則の編集]** ダイアログが既定で表示されるため、すぐにこの作業を開始することができます。少なくとも次のクレームを構成します (かっこ内にスキーマを示します)。
+8.	これで、AD FS でのプロジェクトの RP アプリケーションの構成が完了しました。次に、アプリケーションで必要なクレームを送信するようにこのアプリケーションを構成します。ウィザードの最後に **[クレーム規則の編集]** ダイアログが既定で表示されるため、すぐにこの作業を開始できます。少なくとも次のクレームを構成します (かっこ内にスキーマを示します)。
 
-	-	名前 (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name): ASP.NET で `User.Identity.Name` を設定するために使用されます。
+	-	名前 (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name): ASP.NET で  `User.Identity.Name` を設定するために使用されます。
 	-	ユーザー プリンシパル名 (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn): 組織内のユーザーを一意に識別するために使用されます。
 	-	ロールとしてのグループ メンバーシップ (http://schemas.microsoft.com/ws/2008/06/identity/claims/role): コントローラーや操作を承認するために `[Authorize(Roles="role1, role2,...")]` 装飾と共に使用できます。実際には、これがロールの承認に関して最も効率的な方法であるとは限りません (特に、AD ユーザーが常に数百のセキュリティ グループに属していて、SAML トークンの数百のロール要求が発生する場合)。これに代わる方法は、特定のグループ内のユーザーのメンバーシップに応じて、条件付きで 1 つのロール クレームを送信する方法です。ただし、このチュートリアルでは、単純なやり方を使用します。
-	-	名前 ID (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier): 偽造防止検証に使用することができます。偽造防止検証のための操作については、[Azure Websites を使用して AD FS で認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する](../web-sites-dotnet-lob-application-adfs/#bkmk_crud) の **LOB 機能を追加する操作**に関するセクションを参照してください。
+	-	名前 ID (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier): 偽造防止検証に使用できます。偽装防止検証と連携させる方法の詳細については、「[Azure Active Directory の認証を使用して Azure App Service で .NET MVC Web アプリを作成する](web-sites-dotnet-lob-application-azure-ad.md#bkmk_crud)」の「**基幹業務の機能をサンプル アプリケーションに追加する**」セクションをご覧ください。
 
-	> [AZURE.NOTE] アプリケーション用に構成する必要があるクレームの種類は、アプリケーションのニーズによって決まります。Azure Active Directory アプリケーション (RP 信頼など) でサポートされているクレームの一覧については、「[サポートされているトークンとクレームの種類](http://msdn.microsoft.com/library/azure/dn195587.aspx)」を参照してください。
+	> [AZURE.NOTE] アプリケーション用に構成する必要があるクレームの種類は、アプリケーションのニーズによって決まります。Azure Active Directory アプリケーション (RP 信頼など) でサポートされているクレームの一覧については、「[サポートされているトークンとクレームの種類](http://msdn.microsoft.com/library/azure/dn195587.aspx)」をご覧ください。
 
 8.	[クレーム規則の編集] ダイアログで、**[規則の追加]** をクリックします。
 9.	次に示すように名前、UPN、およびロール クレームを構成し、**[完了]** をクリックします。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/5-ldap-claims.png)
 
-	次に、[SAML アサーションの名前識別子に関するページ](http://blogs.msdn.com/b/card/archive/2010/02/17/name-identifiers-in-saml-assertions.aspx)の手順に従って、一時的な名前 ID クレームを作成します。
+	次に、[SAML アサーションの名前識別子](http://blogs.msdn.com/b/card/archive/2010/02/17/name-identifiers-in-saml-assertions.aspx)に関するページの手順に従って、一時的な名前 ID クレームを作成します。
 
 9.	もう一度 **[規則の追加]** をクリックします。
 10.	**[カスタム規則を使ってクレームを送信する]** を選択し、**[次へ]** をクリックします。
@@ -219,22 +222,22 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 
 	![](./media/web-sites-dotnet-lob-application-adfs/7-transient-name-id.png)
 
-	上の一時的な名前 ID クレームに関する手順については、[SAML アサーションで名前識別子を作成する方法に関するページ](http://blogs.msdn.com/b/card/archive/2010/02/17/name-identifiers-in-saml-assertions.aspx)を参照してください。
+	上の一時的な名前 ID クレームに関する手順については、[SAML アサーションで名前識別子を作成する方法](http://blogs.msdn.com/b/card/archive/2010/02/17/name-identifiers-in-saml-assertions.aspx)に関するページをご覧ください。
 
 12.	**[クレーム規則の編集]** ダイアログの **[適用]** をクリックします。その結果、次のスクリーンショットのようになります。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/8-all-claim-rules.png)
 
-	> [AZURE.NOTE] これらの手順を、デバッグ環境と発行した Web サイトの両方に対して繰り返します。
+	> [AZURE.NOTE] これらの手順を、デバッグ環境と発行した Web アプリの両方に対して繰り返します。
 
 <a name="bkmk_test"></a>
 ## アプリケーションのフェデレーション認証をテストする
 
-この段階で、AD FS に対するアプリケーションの認証ロジックをテストすることができます。ここで使用している AD FS ラボ環境には、Active Directory (AD) のテスト グループに属しているテスト ユーザーが設定されています。
+この段階で、AD FS に対するアプリケーションの認証ロジックをテストできます。ここで使用している AD FS ラボ環境には、Active Directory (AD) のテスト グループに属しているテスト ユーザーが設定されています。
 
 ![](./media/web-sites-dotnet-lob-application-adfs/10-test-user-and-group.png)
 
-デバッガーで認証をテストする場合、必要な操作は `F5` キーを押すことだけです。発行した Web サイトでの認証をテストするには、対象の URL に移動します。
+デバッガーで認証をテストする場合、必要な操作は F5 キーを押すことだけです。発行した Web アプリでの認証をテストするには、対象の URL に移動します。
 
 Web アプリケーションが読み込まれたら、**[サインイン]** をクリックします。AD FS によって選択された認証方法によって、ログイン ダイアログまたは AD FS によって提供されるログイン ページのどちらかが表示されます。Internet Explorer 11 を使った例を次に示します。
 
@@ -250,7 +253,7 @@ AD FS デプロイメントの AD ドメインのユーザーとしてログイ�
 - AD FS によって正常に AD ユーザーが認証され、アプリケーションのホームページにリダイレクトされた。
 - AD FS によって正常に名前クレーム (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) がアプリケーションに送信された (これは、ユーザー名が画面の隅に表示されたことで示されます)。 
 
-名前クレームがない場合は、"**こんにちは、 さん。**" という表示になります。Views\Shared\_LoginPartial.cshtml の内容を見ると、ユーザー名を表示するために `User.Identity.Name` が使用されていることがわかります。前に説明したように、ASP.NET では、認証されたユーザーの名前クレームがこのプロパティに設定されます (SAML トークンで取得できる場合)。AD FS によって送信されるすべてのクレームを確認するには、Controllers\HomeController.cs の Index 操作メソッドにブレークポイントを設定します。ユーザーが認証された後、`System.Security.Claims.Current.Claims` コレクションを調べます。
+名前クレームがない場合は、"**こんにちは、 さん。**" という表示になります。Views\Shared\_LoginPartial.cshtml の内容を見ると、ユーザー名を表示するために  `User.Identity.Name` が使用されていることがわかります。前に説明したように、ASP.NET では、認証されたユーザーの名前クレームがこのプロパティに設定されます (SAML トークンで取得できる場合)。AD FS によって送信されるすべてのクレームを確認するには、Controllers\HomeController.cs の Index 操作メソッドにブレークポイントを設定します。ユーザーが認証された後、 `System.Security.Claims.Current.Claims` コレクションを調べます。
 
 ![](./media/web-sites-dotnet-lob-application-adfs/12-test-debugging-all-claims.png) 
 
@@ -260,7 +263,7 @@ AD FS デプロイメントの AD ドメインのユーザーとしてログイ�
 RP 信頼構成にロール クレームとしてグループ メンバーシップが含まれているため、コントローラーと操作の `[Authorize(Roles="...")]` 装飾内で直接これらを使用できます。"作成、読み取り、更新、削除" (CRUD) パターンを持つ基幹業務アプリケーションでは、特定のロールが各操作にアクセスすることを承認できます。ここでは、既存の Home コントローラーでこの機能を試してみましょう。
 
 1. Controllers\HomeController.cs を開きます。
-2. 認証されたユーザーが持つセキュリティ グループ メンバーシップを使用して、次のように `About` と `Contact` の操作メソッドを装飾します。  
+2. 認証されたユーザーが持つセキュリティ グループ メンバーシップを使用して、次のように  `About` と  `Contact` の操作メソッドを装飾します。  
 	<pre class="prettyprint">
     <mark>[Authorize(Roles="Test Group")]</mark>
     public ActionResult About()
@@ -279,9 +282,9 @@ RP 信頼構成にロール クレームとしてグループ メンバーシッ
     }
 	</pre>
 
-	この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
+	この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して  `About` に関する承認をテストします。 `Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
 
-3. `F5` キーを押してデバッガーを起動し、**[About]** をクリックします。認証されたユーザーによるこの操作の実行が承認されている場合、`~/About/Index` ページが正常に表示されます。
+3. F5 キーを押してデバッガーを起動してサインインし、**[About]** をクリックします。認証されたユーザーによるこの操作の実行が承認されている場合、~/About/Index ページが正常に表示されます。
 4. 次に、**[Contact]** をクリックします。この例の **Test User** には、この操作は承認されません。ただし、ブラウザーは AD FS にリダイレクトされ、次のメッセージが表示されます。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/13-authorize-adfs-error.png)
@@ -295,7 +298,7 @@ RP 信頼構成にロール クレームとしてグループ メンバーシッ
 	   at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)
 	</pre>
 
-	このエラーの理由は、ユーザーのロールが承認されない場合に MVC が既定で 401 Unauthorized を返すためです。これが、ID プロバイダー (AD FS) への再認証クレームのトリガーとなります。ユーザーは既に認証されているため、AD FS によって同じページが表示されることになります。これが原因で別の 401 が発行され、結果的にリダイレクト ループになります。そこで、リダイレクト ループを続ける代わりに意味のメッセージを表示する単純なロジックで AuthorizeAttribute の `HandleUnauthorizedRequest` メソッドをオーバーライドします。
+	このエラーの理由は、ユーザーのロールが承認されない場合に MVC が既定で 401 Unauthorized を返すためです。これが、ID プロバイダー (AD FS) への再認証クレームのトリガーとなります。ユーザーは既に認証されているため、AD FS によって同じページが表示されることになります。これが原因で別の 401 が発行され、結果的にリダイレクト ループになります。そこで、リダイレクト ループを続ける代わりに意味のメッセージを表示する単純なロジックで AuthorizeAttribute の  `HandleUnauthorizedRequest` メソッドをオーバーライドします。
 
 5. プロジェクトに AuthorizeAttribute.cs という名前のファイルを作成し、次のコードを貼り付けます。
 
@@ -324,29 +327,33 @@ RP 信頼構成にロール クレームとしてグループ メンバーシッ
 
 	このオーバーライド コードは、認証されたにもかかわらず承認されない場合に HTTP 401 (Unauthorized) ではなく HTTP 403 (Forbidden) を送信します。
 
-6. もう一度 `F5` キーを押してデバッガーを実行します。**[Contact]** をクリックすると、(魅力的ではありませんが) より説明的なエラー メッセージが表示されます。
+6. もう一度 F5 キーを押してデバッガーを実行します。**[Contact]** をクリックすると、(魅力的ではありませんが) より説明的なエラー メッセージが表示されます。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/14-unauthorized-forbidden.png)
 
-7. アプリケーションを Azure Web サイトにもう一度発行して、ライブ アプリケーションの動作をテストします。
+7. アプリケーションを Azure App Service Web アプリにもう一度発行して、ライブ アプリケーションの動作をテストします。
 
 <a name="bkmk_data"></a>
 ## オンプレミス データに接続する
 
-基幹業務アプリケーションに Azure Active Directory ではなく AD FS を実装する 1 つの理由として、組織データをオフプレミスに保持する場合のコンプライアンスの問題があります。Web サイトのデータ層として [SQL Database](http://azure.microsoft.com/services/sql-database/) を使用することが許可されないため、これは、Azure Web サイトがオンプレミス データベースにアクセスする必要があることも意味します。
+基幹業務アプリケーションに Azure Active Directory ではなく AD FS を実装する 1 つの理由として、組織データをオフプレミスに保持する場合のコンプライアンスの問題があります。Web アプリのデータ階層として [SQL データベース](/services/sql-database/) を使用することは許可されていないため、Azure の Web アプリはオンプレミス データベースにアクセスする必要があることも意味しています。
 
-Azure Websites では、[ハイブリッド接続](http://azure.microsoft.com/documentation/articles/integration-hybrid-connection-overview/)と[仮想ネットワーク](http://azure.microsoft.com/documentation/articles/web-sites-integrate-with-vnet/)の 2 つの方法でオンプレミス データベースのアクセスがサポートされます。詳細については、[Azure Websites で VNET 統合とハイブリッド接続を使用する方法](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)に関するページを参照してください。
+Azure App Service Web アプリでは、[ハイブリッド接続](integration-hybrid-connection-overview.md) と[仮想ネットワーク](web-sites-integrate-with-vnet.md)でオンプレミス データベースへのアクセスをサポートしています。詳細については、「[Azure App Service Web アプリで VNET 統合とハイブリッド環境を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)」をご覧ください。
 
 <a name="bkmk_resources"></a>
 ## 他の関連リソース
 
-- [SSL と Authorize 属性を使用してアプリケーションを保護する](../web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/#protect-the-application-with-ssl-and-the-authorize-attribute)
-- [Azure Websites の LOB アプリケーションでのユーザーの認証および承認](web-sites-authentication-authorization.md)に関するページ
-- [Azure Websites で Azure Active Directory を使用して認証を行う ASP.NET MVC 基幹業務アプリケーションを作成する](web-sites-dotnet-lob-application-azure-ad.md)
+- [SSL と Authorize 属性を使用してアプリケーションを保護する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute)
+- [Azure App Service での認証には、Active Directory を使用します](web-sites-authentication-authorization.md)
+- [Azure Active Directory の認証を使用して Azure App Service で .NET MVC Web アプリを作成する](web-sites-dotnet-lob-application-azure-ad.md)
 - [Visual Studio 2013 で ASP.NET のオンプレミス組織認証オプション (ADFS) を使用する方法](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)に関するページ
 - [Vittorio Bertocci のブログ](http://blogs.msdn.com/b/vbertocci/)
 - [VS2013 Web プロジェクトを WIF から Katana に移植する方法](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)に関するページ
 - [Active Directory フェデレーション サービスの概要](http://technet.microsoft.com/library/hh831502.aspx)に関するページ
 - [WS-Federation 1.1 仕様](http://download.boulder.ibm.com/ibmdl/pub/software/dw/specs/ws-fed/WS-Federation-V1-1B.pdf?S_TACT=105AGX04&S_CMP=LP)
 
-<!--HONumber=45--> 
+## 変更内容
+* Web サイトからアプリ サービスへの変更ガイドについては、次のものをご覧ください。[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 古いポータルから新しいポータルへの変更ガイドについては、次のものをご覧ください。[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
+
+<!--HONumber=52-->

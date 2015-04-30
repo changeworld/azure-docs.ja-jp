@@ -1,6 +1,6 @@
-﻿##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
+﻿## <a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. Visual Studio 2012 Express for Windows Phone でクイック スタート プロジェクトの MainPage.xaml ファイルを開き、 `ButtonRefresh` という **Button** 要素を探して、次の XAML コードに置き換えます。 
+1. Visual Studio でクイック スタート プロジェクトの MainPage.xaml ファイルを開き、 `ButtonRefresh` という **Button** 要素を探して、次の XAML コードに置き換えます。 
 
         <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Button Width="225" Name="ButtonRefresh" 
@@ -11,7 +11,7 @@
 
 	新しいボタンがページに追加されます。 
 
-2. MainPage.xaml.cs コード ファイルを開き、次のクラス定義コードを追加します。
+2. MainPage.xaml.cs  コード ファイルを開き、次のクラス定義コードを追加します。
 
 	    public class MarkAllResult
 	    {
@@ -50,7 +50,7 @@
 
 	これは、新しいボタンの **Click** イベントを処理するメソッドです。要求を新しいカスタム API に送信する **InvokeApiAsync** メソッドがクライアントで呼び出されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。
 
-## <a name="test-app"></a>アプリケーションをテストする
+## <a name="test-app"></a>アプリをテストする
 
 1. Visual Studio で **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
@@ -63,4 +63,5 @@
   	![](./media/mobile-services-windows-phone-call-custom-api/mobile-custom-api-windows-phone-completed.png)
 
 	完了としてマークされた項目の数を示すメッセージ ボックスが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
-<!--HONumber=42-->
+
+<!--HONumber=52-->

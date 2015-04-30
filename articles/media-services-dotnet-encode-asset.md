@@ -19,7 +19,7 @@
 
 #Azure メディア エンコーダーを使用してアセットをエンコードする方法
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。 
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。 
 
 ##概要
 
@@ -29,6 +29,7 @@
 
 中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](https://msdn.microsoft.com/library/azure/jj889436.aspx)を使用して目的の形式に変換することをお勧めします。
 
+出力アセットがストレージ暗号化されている場合は、アセットの配信ポリシーを構成する必要があります。詳細については、「[アセットの配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
 
 ##1 つのエンコード タスクを持つジョブの作成 
 
@@ -207,14 +208,13 @@ Azure メディア エンコーダーでエンコードするときは、[こち
 
 
 ##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、「[方法: ジョブの進行状況をチェックする](media-services-check-job-progress.md) 」に進みます。
 
 [Azure Marketplace]: https://datamarket.azure.com/
 [エンコーダー プリセット]: http://msdn.microsoft.com/library/dn619392.aspx
-[方法: メディア プロセッサ インスタンスを取得する]:http://go.microsoft.com/fwlink/?LinkId=301732
-[方法: 暗号化されたアセットをアップロードする]:http://go.microsoft.com/fwlink/?LinkId=301733
-[方法: ダウンロードによってアセットを配信する]:http://go.microsoft.com/fwlink/?LinkId=301734
+[方法:メディア プロセッサ インスタンスを取得する]:http://go.microsoft.com/fwlink/?LinkId=301732
+[方法:暗号化されたアセットをアップロードする]:http://go.microsoft.com/fwlink/?LinkId=301733
+[方法:ダウンロードによってアセットを配信する]:http://go.microsoft.com/fwlink/?LinkId=301734
 [方法: ジョブの進行状況をチェックする]:http://go.microsoft.com/fwlink/?LinkId=301737
 [Azure Media Packager のタスク プリセット]:http://msdn.microsoft.com/library/windowsazure/hh973635.aspx
 
-<!--HONumber=47-->
+<!--HONumber=52-->

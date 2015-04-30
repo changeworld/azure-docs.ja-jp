@@ -1,5 +1,5 @@
 ﻿<properties 
-	pageTitle=".NET を使用した メディア サービス アカウントへの接続" 
+	pageTitle=".NET を使用した Media Services アカウントへの接続" 
 	description="このトピックでは、.NET を使用して、メディア サービスに接続する方法を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -17,22 +17,22 @@
 	ms.author="juliako"/>
 
 
-# Media Services SDK for .NET を使用したメディア サービス アカウントへの接続
+# Media Services SDK for .NET を使用した Media Services アカウントへの接続
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](../media-services-video-on-demand-workflow) および[メディア サービスのライブ ストリーミングのワークフロー] (../media-services-live-streaming-workflow) シリーズの一部です。 
+この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md) シリーズの一部です。 
 
 このトピックでは、Media Services SDK for .NET でプログラミングする場合に、Microsoft Azure メディア サービスにプログラムから接続する方法について説明します。
 
 
 ## メディア サービスへの接続
 
-プログラムでメディア サービスに接続するには、事前に Azure アカウントを設定し、そのアカウントに メディア サービスを構成し、Media Services SDK for .NET で開発するための Visual Studio プロジェクトをセットアップする必要があります。詳細については、「Setup for Development with the Media Services SDK for .NET (メディア サービス SDK による開発のためのセットアップ)」をご覧ください。
+プログラムでメディア サービスに接続するには、事前に Azure アカウントを設定し、そのアカウントに メディア サービスを構成し、Media Services SDK for .NET で開発するための Visual Studio プロジェクトをセットアップする必要があります。詳細については、「Setup for Development with the Media Services SDK for .NET (Media Services SDK による開発のためのセットアップ)」をご覧ください。
 
-メディア サービス アカウントのセットアップ プロセスの最後で、次の必須接続値を取得しました。これらの値を使用して、プログラムから メディア サービスに接続します。
+Media Services アカウントのセットアップ プロセスの最後で、次の必須接続値を取得しました。これらの値を使用して、プログラムから Media Services に接続します。
 
-- メディア サービス アカウント名
+- Media Services アカウント名
 
-- メディア サービス アカウント キー
+- Media Services アカウント キー
 
 これらの値を確認するには、Azure 管理ポータルに移動して、メディア サービスを選んで、ポータル ウィンドウの下にある [**キーの管理**] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
 
@@ -44,7 +44,7 @@
 >[AZURE.NOTE] **CloudMediaContext** クラスはスレッド セーフではありません。スレッドごと、一連の操作ごとに、新しい CloudMediaContext を作成する必要があります。
 
 
-CloudMediaContext には、5 つのコンストラクター オーバーロードがあります。**MediaServicesCredentials** をパラメーターとして受け取るコンストラクターを使用することをお勧めします。詳細については、以下の「**アクセス制御サービス トークンの再利用」**をご覧ください。 
+CloudMediaContext には、5 つのコンストラクター オーバーロードがあります。**MediaServicesCredentials** をパラメーターとして受け取るコンストラクターを使用することをお勧めします。詳細については、以下の**「アクセス制御サービス トークンの再利用」**をご覧ください。 
 
 次の例では、public CloudMediaContext (MediaServicesCredentials credentials) コンストラクターを使用します。
 
@@ -125,7 +125,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		}
 		
 
-- 負荷分散や地理的分散の目的などで、複数のメディア サービス アカウントを使用している場合、System.Collections.Concurrent.ConcurrentDictionary コレクションを使用して、MediaServicesCredentials オブジェクトをキャッシュできます (ConcurrentDictionary コレクションは、複数のスレッドから同時にアクセスできるキー/値のペアのスレッドセーフ コレクションを表します)。この場合、GetOrAdd メソッドを使用して、キャッシュした資格情報を取得できます。 
+- 負荷分散や地理的分散の目的などで、複数の Media Services アカウントを使用している場合、System.Collections.Concurrent.ConcurrentDictionary コレクションを使用して、MediaServicesCredentials オブジェクトをキャッシュできます (ConcurrentDictionary コレクションは、複数のスレッドから同時にアクセスできるキー/値のペアのスレッドセーフ コレクションを表します)。この場合、GetOrAdd メソッドを使用して、キャッシュした資格情報を取得できます。 
 
 		// Declare a static class variable of the ConcurrentDictionary type in which the Media Services credentials will be cached.  
 		private static readonly ConcurrentDictionary<string, MediaServicesCredentials> mediaServicesCredentialsCache = 
@@ -147,7 +147,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		    return cloudMediaContext;
 		}
 		
-## 中国北部地域にある メディア サービス アカウントへの接続
+## 中国北部地域にある Media Services アカウントへの接続
 
 アカウントが中国北部地域に存在する場合は、次のコンストラクターを使用します。
 
@@ -168,7 +168,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 接続値、特に、アカウント名とパスワードなどの秘密性の高い値は保存しておくことを強くお勧めします。また、秘密性の高い構成データは暗号化することをお勧めします。Windows 暗号化ファイル システム (EFS) を使用すると、構成ファイル全体を暗号化できます。ファイルに対して EFS を有効にするには、ファイルを右クリックし、**[プロパティ]** をクリックし、**[詳細設定]** タブで暗号化を有効にします。または、保護された構成を使用して、構成ファイルの選択した部分を暗号化するためのカスタム ソリューションも作成できます。詳細については、「[保護された構成を使用した構成情報の暗号化](https://msdn.microsoft.com/library/53tyfkaw.aspx)」をご覧ください。
 
-次の App.config ファイルには、必須接続値が含まれています。<appSettings> 要素の値は、必須値であり、メディア サービス アカウントのセットアップ プロセスで取得した値です。
+次の App.config ファイルには、必須接続値が含まれています。<appSettings> 要素の値は、必須値であり、Media Services アカウントのセットアップ プロセスで取得した値です。
 
 
 <pre><code>
@@ -191,4 +191,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 <!-- URLs. -->
 
-<!--HONumber=47-->
+<!--HONumber=52-->

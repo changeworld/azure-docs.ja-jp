@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="iOS Media Player フレームワークを Azure Media Services と共に使用する" 
 	description="Media Services iOS Media Player フレームワーク ライブラリを使用して、動的なリッチ アプリケーションを作成する方法を説明します。" 
 	services="media-services" 
@@ -18,9 +18,9 @@
 
 
 
-#Azure Media Services iOS Media Player フレームワークを使用する方法
+# Azure Media Services iOS Media Player フレームワークを使用する方法
 
-Azure メディア サービス iOS Media Player フレームワーク ライブラリを使用すると、iPod、iPhone、iPad の開発者は、ビデオとオーディオのストリームをその場で作成およびミックスするダイナミックなリッチ クライアント アプリケーションを容易に作成できます。たとえば、スポーツ コンテンツを表示するアプリケーションでは、選んだ箇所に広告を容易に挿入することができ、メイン コンテンツが巻き戻された場合も含めて、広告を表示する頻度を制御できます。教育用アプリケーションでも同じ機能を使用して、たとえば、メイン コンテンツに戻る前に、メインの講義に応じた余談 (または補足説明) を加えるようなコンテンツを作成することができます。
+Azure Media Services iOS Media Player フレームワーク ライブラリを使用すると、iPod、iPhone、iPad の開発者は、ビデオとオーディオのストリームをその場で作成およびミックスするダイナミックなリッチ クライアント アプリケーションを容易に作成できます。たとえば、スポーツ コンテンツを表示するアプリケーションでは、選んだ箇所に広告を容易に挿入することができ、メイン コンテンツが巻き戻された場合も含めて、広告を表示する頻度を制御できます。教育用アプリケーションでも同じ機能を使用して、たとえば、メイン コンテンツに戻る前に、メインの講義に応じた余談 (または補足説明) を加えるようなコンテンツを作成できます。
 
 一般に、アプリケーションとユーザーとの対話に基づいてコンテンツ ストリームを作成するアプリケーションを構築する作業は、かなり煩雑です。通常は、ストリーム全体を 1 から作成して、事前にサーバーに保存しておく必要があります。iOS Media Player フレームワークを使用すると、これらをすべて処理できるクライアント アプリケーションを作成できます。メイン コンテンツ ストリームに対する制御や変更は必要ありません。そのための方法は次のとおりです。
 
@@ -42,7 +42,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
     `git clone https://github.com/WindowsAzure/azure-media-player-framework`
 
-2. `azure-media-player-framework/src/iOS/HLSClient/`:**SamplePlayer.xcodeproj** を開きます。
+2. `azure-media-player-framework/src/iOS/HLSClient/` にあるプロジェクトを開きます。**SamplePlayer.xcodeproj** を開きます。
 
  
 3. SamplePlayer の構造は、次のとおりです。
@@ -58,7 +58,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 ### SamplePlayerViewController_iPad.xib
 ![Sample Player Address Bar](http://mingfeiy.com/wp-content/uploads/2013/01/addressbar.png)
 
-* **[メディアの URL]** は、メディア ストリームの読み込みに使用する URL です。アプリケーションには、使用できるメディア URL の一覧があらかじめ用意されており、[URL Selection] (URL 選択) ボタンを使用して選択できます。独自の Http ライブ ストリーミング (HLS) コンテンツの URL を入力することもできます。このメディア コンテンツは、1 つ目のメイン コンテンツとして使用されます。 
+* **[メディアの URL]** は、メディア ストリームの読み込みに使用する URL です。アプリケーションには、使用できるメディア URL の一覧があらかじめ用意されており、URL 選択 ボタンを使用して選択できます。独自の Http ライブ ストリーミング (HLS) コンテンツの URL を入力することもできます。このメディア コンテンツは、1 つ目のメイン コンテンツとして使用されます。 
 **注: この URL を空にしておくことはできません。**
 
 * **[URL の選択]** ボタンを使用すると、メディア URL の一覧から、別の URL を選択できます。
@@ -96,11 +96,10 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 * **MediaTime** オブジェクトは、メイン コンテンツとしてスケジュールされるビデオ クリップを制御します。上の例では、ビデオ クリップの長さが 80 秒間 (0 秒目から 80 秒目まで) になるようにスケジュールされます。
 * **clipBeginMediaTime** は、ビデオ再生の開始位置を時間で表します。たとえば、**clipBeginMediaTime** = 5 の場合、このビデオ クリップはビデオ クリップ内の 5 秒目から開始されます。
-* **clipEndMediaTime** は、ビデオ再生の終了位置を時間で表します。**clipEndMediaTime**=100 の場合、ビデオの再生はビデオ クリップ内の 100 秒目で終了します。
-***MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して設定されています
- (`[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`。
+* **clipEndMediaTime** は、ビデオ再生の終了位置を時間で表します。**clipEndMediaTime**=100 の場合、ビデオの再生はビデオ クリップ内の 100 秒目で終了します。**MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して設定されています
+ (`[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`)。
 
-**注:** メイン コンテンツのスケジュール設定は、必ず (プリロール広告の場合も含めて) 広告のスケジュール設定より前に行ってください。 
+**注:** メイン コンテンツのスケジュール設定は、必ず (プリロール広告の場合も含めて) 広告のスケジュール設定より前に行ってください。
 
 ### バリエーション:2 つのメイン コンテンツ クリップを再生する場合、次のコードを使用して 2 つ目のクリップを 1 つ目の後にスケジュールすることもできます。
 
@@ -114,21 +113,22 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
         [self logFrameworkError];
     }
 
-前のコードに続いてこの処理を行うと、2 つのコンテンツ ストリームがメイン コンテンツのタイムライン上でスケジュールされます。1 つ目のコンテンツは　 `URLWithString:url` に基づいてスケジュールされ、2 つ目のコンテンツは  `URLWithString:secondContent` に基づいてスケジュールされます。2 つ目のコンテンツは、メディア ストリームの先頭から 30 秒の位置から開始され、80 秒の位置で終了します。 
+前のコードに続いてこの処理を行うと、2 つのコンテンツ ストリームがメイン コンテンツのタイムライン上でスケジュールされます。1 つ目のコンテンツは  `URLWithString:url` に基づいてスケジュールされ、2 つ目のコンテンツは  `URLWithString:secondContent` に基づいてスケジュールされます。2 つ目のコンテンツは、メディア ストリームの先頭から 30 秒の位置から開始され、80 秒の位置で終了します。 
 
 ## 広告のスケジュール設定 
 現在のリリースでは、**pauseTimeline=false** の広告のみがサポートされています。これは、広告の終了後に、メイン コンテンツが中断された箇所から再生が再開されることを意味します。 
 
 次に重要なポイントをいくつか示します。
-<ul><li> 広告をスケジュールする際に、**LinearTime.duration** はすべて 0 にする必要があります。</li>
-<li> **clipEndMediaTime** が広告の長さを超える場合、クリップの末尾より後に再生が終了し、例外はスローされません。広告によるビジネス チャンスを逃すことのないよう、広告の自然な長さがレンダリング時間 (**clipEndMediaTime**) に収まるかどうかを確認することをお勧めします。</li> 
-<li> プリロール、ミッドロール、およびポストロールの広告がサポートされています。プリロール広告は、すべてのコンテンツの先頭のみにスケジュールできます。たとえば、ラフ カット編集 (RCE) のシナリオで、プリロール広告を 2 番目のコンテンツとしてスケジュールすることはできません。 </li>
-<li> Sticky 広告および Play-once 広告がサポートされており、これらをプリロール、ミッドロール、およびポストロール広告と組み合わせて使用することができます。</li>
-<li> 広告の形式としては、.Mp4 または HLS を使用できます。</li>
-</ul>
+
+* 広告をスケジュールする際に、**LinearTime.duration** はすべて 0 にする必要があります。</li>
+* **clipEndMediaTime** が広告の長さを超える場合、クリップの末尾より後に再生が終了し、例外はスローされません。広告によるビジネス チャンスを逃すことのないよう、広告の自然な長さがレンダリング時間 (**clipEndMediaTime**) に収まるかどうかを確認することをお勧めします。</li> 
+* プリロール、ミッドロール、およびポストロールの広告がサポートされています。プリロール広告は、すべてのコンテンツの先頭のみにスケジュールできます。たとえば、ラフ カット編集 (RCE) のシナリオで、プリロール広告を 2 番目のコンテンツとしてスケジュールすることはできません。 </li>
+* Sticky 広告および Play-once 広告がサポートされており、これらをプリロール、ミッドロール、およびポストロール広告と組み合わせて使用できます。</li>
+* 広告の形式としては、.Mp4 または HLS を使用できます。</li>
+
 ### プリロール広告、ミッドロール広告、ポストロール広告、Ad Pod をスケジュールする方法
 
-####プリロール広告のスケジュール設定
+#### プリロール広告のスケジュール設定
 
     LinearTime *adLinearTime = [[[LinearTime alloc] init] autorelease];
     NSString *adURLString = @"http://smoothstreamingdemo.blob.core.windows.net/videoasset/WA-BumpShort_120530-1.mp4";
@@ -153,11 +153,11 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 * Ad Pod ではない場合は、**appendTo** の値を -1 に設定する必要があります。 
 * **type** の値には、プリロール、ミッドロール、ポストロール、または Ad Pod を指定できます。プリロールまたはポストロールの場合、関連付けられているタイミングがないため、type の指定が必要です。 
 
-####ミッドロール広告のスケジュール設定
+#### ミッドロール広告のスケジュール設定
 
-前のコード サンプルに `adLinearTime.startTime = 23;` を追加すると、広告の再生はメイン コンテンツのタインムラインの 23 秒目から開始されます。
+`adLinearTime.startTime = 23;` を追加すると、広告の再生はメイン コンテンツのタインムラインの 23 秒目から開始されます。
 
-####ポストロール広告のスケジュール設定
+#### ポストロール広告のスケジュール設定
 
     //Schedule Post Roll Ad
     NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -174,7 +174,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
         [self logFrameworkError];
     }
 
-プリロール広告のスケジュール設定との唯一の相違は、`postAdInfo.type = AdType_Postroll;` と指定する点です。上のコードでは、ポストロールとして 5 秒間の広告をスケジュール設定しています。 
+プリロール広告のスケジュール設定との唯一の相違は、`postAdInfo.type = AdType_Postroll;` です。上のコードでは、ポストロールとして 5 秒間の広告をスケジュール設定しています。 
 
 #### Ad Pod のスケジュール設定
 Ad Pod は、複数の広告が連続して再生される広告ブレークです。2 つの広告を 1 つの Ad Pod 内にスケジュール設定するコードを次に示します。 
@@ -209,7 +209,7 @@ Ad Pod は、複数の広告が連続して再生される広告ブレークで�
     }
 
 いくつかの点について説明します。
-* 最初のクリックでは、**appendTo** は -1 です。`[framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex]` を呼び出す際に、 `adIndex` は、Ad Pod 内で 1 つ目であるこのクリップの終わりを示す一意の値を受け取ります。Ad Pod 内の 2 つ目のクリップについては、**appendTo** を `adpodInfo2.appendTo = adIndex;` (1 つ目の終了位置を 2 つ目のクリップの開始位置とする) として設定することにより、2 つ目の広告の先頭と 1 つ目の末尾を揃えています。 
+* 最初のクリックでは、**appendTo** は -1 です。`[framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex]`, `adIndex` を呼び出す際に、Ad Pod 内で 1 つ目であるこのクリップの終わりを示す一意の値を受け取ります。Ad Pod 内の 2 つ目のクリップについては、**appendTo** を `adpodInfo2.appendTo = adIndex;` (1 つ目の終了位置を 2 つ目のクリップの開始位置とする) として設定することにより、2 つ目の広告の先頭と 1 つ目の末尾を揃えています。 
 * さらに、type を  `AdType_Pod` として設定することにより、Ad Pod であることを示す必要があります。 
 
 ### Play-Once 広告または "Sticky" 広告をスケジュールする方法
@@ -217,6 +217,6 @@ Ad Pod は、複数の広告が連続して再生される広告ブレークで�
     oneTimeInfo.deleteAfterPlay = YES;
 
 上のコード例で示されているように、**deleteAfterPlay** を **YES** に設定すると、この広告は 1 度だけ再生されます。**deleteAfterPlay** を **NO** に設定すると、この広告は連続して再生されます。これを Sticky 広告といいます。
-### 詳細については、[Azure Media Player フレームワークの wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki) を参照してください。
+### 詳細については、[Azure Media Player フレームワークの wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki) をご覧ください。
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

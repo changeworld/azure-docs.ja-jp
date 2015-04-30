@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="動的暗号化:.NET を使用してコンテンツ キー承認ポリシーを構成します。" 
 	description="コンテンツ キー承認ポリシーを構成する方法について説明します。" 
 	services="media-services" 
@@ -21,7 +21,7 @@
 #動的暗号化:コンテンツ キー承認ポリシーを構成する 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)] 
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー] (media-services-live-streaming-workflow.md) シリーズの一部です。 
+この記事は、「[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md)」と「[メディア サービスのライブ ストリーミング ワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。 シリーズの一部です。 
 
 ##概要
 
@@ -29,11 +29,11 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 現時点では、HLS、MPEG DASH、スムーズ ストリーミングを暗号化できます。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
-メディア サービスでアセットを暗号化する場合は、[こちら]の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。(media-services-dotnet-create-contentkey.md)また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
+メディア サービスでアセットを暗号化する場合は、[こちら](media-services-dotnet-create-contentkey.md)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。 
 
 プレーヤーがストリームを要求すると、メディア サービスは指定されたキーを使用して、AES か PlayReady でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-メディア サービスでは、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン制限**、**トークン制限**、または **IP 制限**のうち、1 つ以上の承認制限を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。メディア サービスでは、**Simple Web Token** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token **(JWT) 形式のトークンがサポートされます。  
+メディア サービスでは、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン制限**、**トークン制限**、または **IP 制限**のうち、1 つ以上の承認制限を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、**Simple Web Token** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token **(JWT) 形式のトークンがサポートされます。  
 
 メディア サービスでは、Secure Token Services は提供されません。トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定したクレームを発行するよう構成する必要があります (この記事の説明を参照)。メディア サービスのキー配信サービスは、トークンが有効で、トークン内のクレームがコンテンツ キー向けに構成されたクレームと一致する場合、暗号化キーをクライアントに返します。
 
@@ -45,10 +45,10 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services).
 
-###以下の考慮事項があります。
+###いくつかの考慮事項が適用されます。
 
-- 動的パッケージングと動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング単位とも呼ばれる) が存在している必要があります。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法]」をご覧ください(media-services-manage-origins#scale_streaming_endpoints.md)。 
-- アセットは、マルチビット レート MP4 ファイルかマルチビットレートのスムーズ ストリーミング ファイルを含む必要があります。詳細については、「[アセットをエンコードする]」をご覧ください(media-services-encode-asset.md)。  
+- 動的パッケージ機能と動的な暗号化を使用するには、少なくとも 1 つのストリーミング占有ユニットがあることを確認する必要があります。詳細については、「[メディア サービスの規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
+- アセットには、一連のアダプティブ ビットレート MP4 や アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[アセットをエンコードする](media-services-encode-asset.md)」をご覧ください。  
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、アセットをアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
@@ -155,10 +155,10 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 	  <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
 	</xs:schema>
 
-**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。メディア サービス キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。 
+**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。 
 
 **Media Services SDK for .NET** を使用する場合、**TokenRestrictionTemplate** クラスを使用して制限トークンを生成できます。
-次の例では、トークン制限を含む承認ポリシーを作成しています。この例では、クライアントが、署名キー (VerificationKey)、トークン発行者、必要なクレームを含むトークンを提示する必要があります。
+次の例では、トークン制限を含む承認ポリシーを作成します。この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要なクレームを含むトークンを提示する必要があります。
 	
 	public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
 	{
@@ -237,9 +237,9 @@ Microsoft Azure メディア サービスでは、高度暗号化標準 (AES) (1
 
 ##PlayReady 動的暗号化 
 
-メディア サービスでは、権限と制限を構成して、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用されるようにすることができます。 
+メディア サービスにより、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
 
-PlayReady でコンテンツを保護する場合、承認ポリシーで、[PlayReady ライセンス テンプレート](https://msdn.microsoft.com/library/azure/dn783459.aspx)を定義する XML 文字列を指定する必要があります。Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。 
+PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、[PlayReady ライセンス テンプレート](https://msdn.microsoft.com/library/azure/dn783459.aspx)を定義する XML 文字列を指定する必要があります。Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。 
 
 ###オープン制限
 	
@@ -286,7 +286,7 @@ PlayReady でコンテンツを保護する場合、承認ポリシーで、[Pla
 
 ###トークン制限
 
-トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。トークン制限の構成 XML は、[この](#schema) セクションに示す XML スキーマに準拠する必要があります。
+トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。トークン制限の構成 XML は、[この](#schema) 。
 	
 	public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
 	{
@@ -360,9 +360,9 @@ PlayReady でコンテンツを保護する場合、承認ポリシーで、[Pla
 	    return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
 	}
 
-キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、[こちら]の(#test) セクションをご覧ください。 
+キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、[こちら]の(#test) 。 
 
-##<a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される型
+##<a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
 
 ###<a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
@@ -393,6 +393,6 @@ PlayReady でコンテンツを保護する場合、承認ポリシーで、[Pla
 
 
 ##次のステップ
-これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)]」(media-services-dotnet-configure-asset-delivery-policy.md) トピックに進みます。
+これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)](media-services-dotnet-configure-asset-delivery-policy.md)」 に進みます。
 
-<!--HONumber=47-->
+<!--HONumber=52-->

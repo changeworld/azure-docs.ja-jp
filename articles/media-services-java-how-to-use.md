@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="メディア サービスの使用方法 (Java) - Azure の機能ガイド" 
+	pageTitle="Media Services の使用方法 (Java) - Azure の機能ガイド" 
 	description="Azure メディア サービスを使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="mollybos"/>
+	editor="jimbe"/>
 
 <tags 
 	ms.service="media-services" 
@@ -13,41 +13,32 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/30/2014" 
+	ms.date="02/20/2015" 
 	ms.author="robmcm"/>
 
 #メディア サービスを使用する方法
 
 このガイドでは、Azure メディア サービスを使用した Java によるプログラミングの基礎について説明します。メディア サービスの技術的概要、メディア サービスに使用する Azure アカウントの構成手順、標準的なプログラミング タスクの実行方法を示すコードなどで構成されます。 
 
-## 目次
+##<a id="media_services"></a>Media Services とは
 
--   [メディア サービスとは](#media_services)
--   [メディア サービスに使用する Azure アカウントの設定](#setup-account)
--   [メディア サービス開発のための設定](#setup-dev)
--   [方法: Java でメディア サービスを使用する](#connect)
--   [その他のリソース](#additional-resources)
-
- 
-##<a id="media_services"></a>メディア サービスとは
-
-Azure メディア サービスは、Microsoft Media Platform とサードパーティのメディア コンポーネントのそれぞれの良さを Azure に統合する拡張可能なメディア プラットフォームです。メディア サービスは、クラウドの中でメディアパイプラインとして機能します。業界パートナーは、メディア サービスを利用して、コンポーネント テクノロジを拡張したり、置き換えたりできます。ISV やメディア プロバイダーは、メディア サービスを利用して、エンド ツー エンドのメディア ソリューションを構築できます。ここでは、メディア サービスの全般的なアーキテクチャと一般的な開発シナリオの概要を説明します。
+Azure メディア サービスは、Microsoft Media Platform とサードパーティのメディア コンポーネントのそれぞれの良さを Azure に統合する拡張可能なメディア プラットフォームです。メディア サービスは、クラウドの中でメディアパイプラインとして機能します。業界パートナーは、メディア サービスを利用して、コンポーネント テクノロジを拡張したり、置き換えたりすることができます。ISV やメディア プロバイダーは、メディア サービスを利用して、エンド ツー エンドのメディア ソリューションを構築できます。ここでは、メディア サービスの全般的なアーキテクチャと一般的な開発シナリオの概要を説明します。
 
 以下の図は、メディア サービスの基本アーキテクチャを示したものです。
 
-![Media Services Architecture](./media/media-services-dotnet-how-to-use/wams-01.png)
+![Media Services のアーキテクチャ](./media/media-services-dotnet-how-to-use/wams-01.png)
 
 ###メディア サービスの機能サポート
 最新リリースのメディア サービスには、クラウドにおけるメディア アプリケーションの開発用途として、次の機能セットが用意されています。 
 
 - **取り込み**。たとえば、Azure Storage に配置するアセットを事前にアップロードしたり暗号化したりすることによって、システムにアセットを取り込む操作です。メディア サービスの RTM リリースまでには、パートナー コンポーネントとの統合が可能となり、高速な UDP (ユーザー データグラム プロトコル) アップロード ソリューションが実現します。
 - **エンコード**。エンコード操作には、メディア アセットのエンコードや変換が伴います。エンコード タスクは、メディア サービスに付属のメディア エンコーダーを使用し、クラウドで実行できます。次のエンコード機能があります。
-   - Azure メディア エンコーダーの使用と一連の標準コーデックと形式への対応 (業界をリードする IIS スムーズ ストリーミング、MP4、Apple HTTP ライブ ストリーミングへの変換など)。
+   - Azure メディア エンコーダーの使用と一連の標準コーデックおよび形式への対応 (業界をリードする IIS スムーズ ストリーミング、MP4、Apple HTTP ライブ ストリーミングへの変換など)。
    - 入力と出力をトータルに制御することでライブラリ全体または個々のファイルを変換。
-   - サポートされているファイルの種類、形式、コーデックの大規模なセット ([メディア サービスでサポートされるファイル タイプ][] をご覧ください)。
+   - ファイル タイプ、形式、コーデックを豊富にサポート ([Media Services アカウントの作成方法][]に関するページを参照)。
    - 形式の変換。メディア サービスでは、ISO MP4 (.mp4) を Smooth Streaming File Format (PIFF 1.3) (.ismv、.isma) に変換できます。Smooth Streaming File Format (PIFF) を Apple HTTP ライブ ストリーミング (.msu8、.ts) にも変換できます。
 - **保護**。コンテンツの保護とは、ライブ ストリーミングやオンデマンド コンテンツを暗号化することによって、送信、保存、配信のセキュリティを保護することです。メディア サービスは、特定の DRM テクノロジにとらわれないコンテンツ保護ソリューションを提供します。現在サポートされている DRM テクノロジは、Microsoft PlayReady Protection と MPEG Common Encryption です。その他の DRM テクノロジも今後サポートされる予定です。 
-- **ストリーム**。コンテンツのストリーミングとは、コンテンツをライブでまたはオンデマンドでクライアントに送信したり、特定のメディア ファイルをクラウドから取得 (ダウンロード) したりすることです。メディア サービスは、特定の形式にとらわれないコンテンツ ストリーミングを提供します。メディア サービスでは、スムーズ ストリーミング、Apple HTTP ライブ ストリーミング、MP4 形式が、ストリーミングの配信元としてサポートされます。その他の形式も今後サポートされる予定です。Azure CDN またはサードパーティ CDN を使用してストリーミング コンテンツをシームレスに配信したり、必要に応じて配信規模を何百万というユーザーにまで拡張したりできます。   
+- **ストリーム**。コンテンツのストリーミングとは、コンテンツをライブでまたはオンデマンドでクライアントに送信したり、特定のメディア ファイルをクラウドから取得 (ダウンロード) したりすることです。メディア サービスは、特定の形式にとらわれないコンテンツ ストリーミングを提供します。メディア サービスでは、スムーズ ストリーミング、Apple HTTP ライブ ストリーミング、MP4 形式が、ストリーミングの配信元としてサポートされます。その他の形式も今後サポートされる予定です。Azure CDN またはサードパーティ CDN を使用してストリーミング コンテンツをシームレスに配信することもでき、必要に応じて、配信規模を何百万というユーザーにまで拡張することができます。   
 
 ###メディア サービス開発シナリオ
 メディア サービスでサポートされる代表的なメディア開発シナリオを次の表に示します。 
@@ -74,24 +65,24 @@ Azure メディア サービスは、Microsoft Media Platform とサードパー
   </tbody>
 </table>
 
-###メディア サービス クライアント開発
-SDK とプレーヤー フレームワークを使用してメディア クライアント アプリケーションを構築することによって、メディア サービス ソリューションの裾野を広げることができます。メディア サービス アプリケーションを構築する開発者は、幅広いデバイスとプラットフォームを対象に魅力的なエクスペリエンスをユーザーに提供できます。SDK とプレーヤー フレームワークは、構築するクライアント アプリケーションの動作環境となるデバイスに応じて Microsoft やサードパーティ パートナーから提供されています。  
+###Media Services クライアント開発
+SDK とプレーヤー フレームワークを使用してメディア クライアント アプリケーションを構築することによって、Media Services ソリューションの裾野を広げることができます。Media Services アプリケーションを構築する開発者は、幅広いデバイスとプラットフォームを対象に魅力的なエクスペリエンスをユーザーに提供することができます。SDK およびプレーヤー フレームワークは、構築するクライアント アプリケーションの動作環境となるデバイスに応じて Microsoft やサードパーティ パートナーから提供されています。  
 
-以下に示したのは、クライアント SDK とプレーヤー フレームワークの一覧です。これらの SDK とプレーヤー フレームワーク、サポート可能な機能の詳細については、[メディア サービス クライアント開発に関するページ]をご覧ください。今後予定されている SDK とプレーヤー フレームワークについても記載されています。 
+以下に示したのは、クライアント SDK とプレーヤー フレームワークの一覧です。これらの SDK とプレーヤー フレームワーク、サポート可能な機能の詳細については、「[Media Services クライアント開発に関するページ]」をご覧ください。今後予定されている SDK とプレーヤー フレームワークについても記載されています。 
 
 ####Mac と Windows PC クライアントのサポート  
 Microsoft Silverlight または Adobe Open Source Media Framework を使用することにより、Windows PC と Mac を対象にしてストリーミング エクスペリエンスを提供できます。
 
 -	[Silverlight 用 Smooth Streaming Client](http://www.iis.net/download/smoothclient)
--	[Microsoft Media Platform:Silverlight 用 Player Framework](http://smf.codeplex.com/documentation)
--	[ OSMF 2.0 用 Smooth Streaming Plugin](http://go.microsoft.com/fwlink/?LinkId=275022)。このプラグインを使用する方法については、[Adobe Open Source Media Framework 用スムーズ ストリーミング プラグインの使用方法に関するページ](http://go.microsoft.com/fwlink/?LinkId=275034)をご覧ください。
+-	[Microsoft Media Platform:Silverlight 用プレーヤー フレームワーク](http://smf.codeplex.com/documentation)
+-	[OSMF 2.0 用スムーズ ストリーミング プラグイン](http://go.microsoft.com/fwlink/?LinkId=275022)。このプラグインを使用する方法については、[Adobe Open Source Media Framework 用スムーズ ストリーミング プラグインの使用方法](http://go.microsoft.com/fwlink/?LinkId=275034)に関するページをご覧ください。
 
 ####Windows 8 アプリケーション
 Windows 8 用には、サポートされている開発言語やコンストラクト (HTML、Javascript、XAML、C#、C+ など) を使用して Windows ストア アプリケーションを作成できます。
 
--	[Windows 8 用 Smooth Streaming Client SDK](http://go.microsoft.com/fwlink/?LinkID=246146).この SDK を使用して Windows ストア アプリケーションを作成する方法の詳細については、[スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法に関するページ](http://go.microsoft.com/fwlink/?LinkId=271647)をご覧ください。HTML5 でスムーズ ストリーミング プレーヤーを作成する方法については、[Walkthrough:Building Your First HTML5 Smooth Streaming Player (チュートリアル: 初めての HTML5 スムーズ ストリーミング プレーヤーを作成する)](http://msdn.microsoft.com/library/jj573656.aspx) をご覧ください。
+-	[Windows 8 用 Smooth Streaming Client SDK](http://go.microsoft.com/fwlink/?LinkID=246146)。この SDK を使用して Windows ストア アプリケーションを作成する方法の詳細については、[スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法](http://go.microsoft.com/fwlink/?LinkId=271647)に関するページをご覧ください。HTML5 でスムーズ ストリーミング プレーヤーを作成する方法については、[Walkthrough:Building Your First HTML5 Smooth Streaming Player (チュートリアル: 初めての HTML5 スムーズ ストリーミング プレイヤーを作成する)](http://msdn.microsoft.com/library/jj573656.aspx)」をご覧ください。
 
--	[Microsoft Media Platform:Windows 8 Window ストア アプリケーション用 Player Framework](http://playerframework.codeplex.com/wikipage?title=Player%20Framework%20for%20Windows%208%20Metro%20Style%20Apps&referringTitle=Home)
+-	[Microsoft Media Platform:Windows 8 Windows ストア アプリケーション用プレーヤー フレームワーク](http://playerframework.codeplex.com/wikipage?title=Player%20Framework%20for%20Windows%208%20Metro%20Style%20Apps&referringTitle=Home)
 
 ####Xbox
 Xbox では、スムーズ ストリーミング コンテンツを使用する Xbox LIVE アプリケーションがサポートされています。Xbox LIVE アプリケーション開発キット (ADK) には、次のコンポーネントが含まれています。
@@ -100,44 +91,44 @@ Xbox では、スムーズ ストリーミング コンテンツを使用する 
 -	Microsoft Media Platform:Xbox LIVE ADK 用プレーヤー フレームワーク
 
 ####組み込みデバイスまたは専用デバイス
-カスタム アプリケーション開発フレームワークとカスタム メディア パイプラインを備えたデバイス (スマート テレビ、セットトップ ボックス、ブルーレイ プレーヤー、OTT TV ボックス、モバイル デバイスなど)。Microsoft では、次に示すライセンス取得可能な移植キットを提供しています。これらを使用すると、プラットフォームに対応したスムーズ ストリーミング再生機能の移植が可能になります。
+カスタム アプリケーション開発フレームワークおよびカスタム メディア パイプラインを備えたデバイス (スマート テレビ、セットトップ ボックス、ブルーレイ プレーヤー、OTT TV ボックス、モバイル デバイスなど)。Microsoft では、次に示すライセンス取得可能な移植キットを提供しています。これらを使用すると、プラットフォームに対応したスムーズ ストリーミング再生機能の移植が可能になります。
 
--	[Smooth Streaming Client Porting Kit](http://www.microsoft.com/ja-jp/mediaplatform/sspk.aspx)
+-	[Smooth Streaming Client Porting Kit](http://www.microsoft.com/mediaplatform/sspk.aspx)
 -	[Microsoft PlayReady Device Porting Kit](http://www.microsoft.com/PlayReady/Licensing/device_technology.mspx)
 
 ####Windows Phone
 Microsoft では、Windows Phone 用の優れたビデオ アプリケーションを作成するために使用できる SDK を提供しています。 
 
 -	[Silverlight 用 Smooth Streaming Client](http://www.iis.net/download/smoothclient)
--	[Microsoft Media Platform:Silverlight 用 Player Framework](http://smf.codeplex.com/documentation)
+-	[Microsoft Media Platform:Silverlight 用プレーヤー フレームワーク](http://smf.codeplex.com/documentation)
 
 ####iOS デバイス
-iPhone、iPod、iPad などの iOS デバイス用に Microsoft で用意されている SDK (Smooth Streaming SDK for iOS Devices with PlayReady) を使用すると、これらのプラットフォームを対象にして、高品質のビデオ コンテンツを提供するアプリケーションを作成できます。この SDK を使用するには、ライセンスの取得が必要です。詳細については、[Microsoft に電子メール](mailto:askdrm@microsoft.com)でお問い合わせください。iOS 開発の詳細については、「[iOS Developer Center (iOS デベロッパー センター)](https://developer.apple.com/devcenter/ios/index.action)」をご覧ください。
+iPhone、iPod、iPad などの iOS デバイス用に Microsoft で用意されている SDK(Smooth Streaming SDK for iOS Devices with PlayReady) を使用すると、これらのプラットフォームを対象にして、高品質のビデオ コンテンツを提供するアプリケーションを作成できます。この SDK を使用するには、ライセンスの取得が必要です。詳細については、[Microsoft にメール](mailto:askdrm@microsoft.com)でお問い合わせください。iOS 開発の詳細については、「[iOS デベロッパー センター](https://developer.apple.com/devcenter/ios/index.action)」のページをご覧ください。
 
 ####Android デバイス
-複数の Microsoft パートナーにより、Android デバイスでのスムーズ ストリーミング再生機能を追加するための Android プラットフォーム用 SDK が提供されています。パートナーの詳細については、[Microsoft に電子メール](mailto:sspkinfo@microsoft.com?subject=Partner%20SDKs%20for%20Android%20Devices)でお問い合わせください。
+複数の Microsoft パートナーにより、Android デバイスでのスムーズ ストリーミング再生機能を追加するための Android プラットフォーム用 SDK が提供されています。パートナーの詳細については、[Microsoft にメール](mailto:sspkinfo@microsoft.com?subject=Partner%20SDKs%20for%20Android%20Devices)でお問い合わせください。
 
 
-##<a id="setup-account"></a>メディア サービスに使用する Azure アカウントの設定
+##<a id="setup-account"></a>Media Services 用の Azure アカウントの設定
 
-メディア サービス アカウントを設定するには、Azure 管理ポータルを使用します。[メディア サービス アカウントの作成方法][]のトピックをご覧ください。管理ポータルでアカウントを作成すると、メディア サービス開発用にコンピューターをセットアップできるようになります。 
+Media Services アカウントを設定するには、Azure 管理ポータルを使用します。「[Media Services アカウントの作成方法][]」のトピックをご覧ください。管理ポータルでアカウントを作成すると、メディア サービス開発用にコンピューターをセットアップできるようになります。 
 
-##<a id="setup-dev"></a>メディア サービス開発のための設定
+##<a id="setup-dev"></a>Media Services 開発用の設定
 
 このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
 
 ###前提条件
 
--   新規または既存の Azure サブスクリプションで作成したメディア サービス アカウント。[メディア サービス アカウントの作成方法][]のトピックをご覧ください。
--   Azure Libraries for Java。これは [Azure Java デベロッパー センター][] からインストールできます。
+-   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[Media Services アカウントの作成方法][]」のトピックをご覧ください。
+-   Java 用の Azure ライブラリ。[Azure Java Developer Center][] からインストールできます。
 
-##<a if="connect"></a>方法:Java でメディア サービスを使用する
+##<a if="connect"></a>方法: Java でメディア サービスを使用する
 
 次のコードは、アセットを作成してメディア ファイルをアセットにアップロードし、アセットの変換タスクを伴うジョブを実行して、変換されたアセットの出力ファイルをダウンロードする方法を示しています。
 
-このコードを使用する前に、メディア サービス アカウントを設定する必要があります。アカウントの設定方法については、[メディア サービス アカウントの作成方法](http://azure.microsoft.com/manage/services/media-services/how-to-create-a-media-services-account/)をご覧ください。
+このコードを使用する前に、Media Services アカウントを設定する必要があります。アカウントの設定方法については、[Media Services アカウントの作成方法](http://www.windowsazure.com/manage/services/media-services/how-to-create-a-media-services-account/)に関するページをご覧ください。
 
-変数  `clientId` と  `clientSecret` は実際の値に置き換えてください。コードは、ローカルに保存されたファイルにも依存し、 `c:/media/MPEG4-H264.mp4`. 実際に使用するファイルを用意する必要があります。 コードには、出力ファイルのダウンロード先となる出力フォルダー `c:/output` も必要です。
+ `clientId` 変数と  `clientSecret` 変数は実際の値に置き換えます。コードはローカルに保存されたファイル  `c:/media/MPEG4-H264.mp4`. You'll need to provide your own file to use. The code also requires an output folder, `c:/output` にも依存し、これは出力ファイルがダウンロードされる場所です。
 
 	import java.io.*;
 	import java.net.URI;
@@ -452,14 +443,14 @@ iPhone、iPod、iPad などの iOS デバイス用に Microsoft で用意され�
 
 ##その他のリソース
 
-メディア サービスに関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][]をご覧ください。
+Media Services の Javadoc ドキュメントについては、「[Azure Libraries for Java のドキュメント][]」をご覧ください。
 
 <!-- URLs. -->
 
-  [メディア サービス アカウントの作成方法]: http://go.microsoft.com/fwlink/?linkid=256662
-  [Azure Java デベロッパー センター]: http://azure.microsoft.com/develop/java/
+  [Media Services アカウントの作成方法]: http://go.microsoft.com/fwlink/?linkid=256662
+  [Azure Java Developer Center]: http://www.windowsazure.com/develop/java/
   [Azure Libraries for Java のドキュメント]: http://dl.windowsazure.com/javadoc/
-  [メディア サービス クライアント開発に関するページ]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+  [Media Services クライアント開発]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

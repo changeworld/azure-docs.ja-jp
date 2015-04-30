@@ -18,22 +18,22 @@
 
 #.NET を使用したメディア サービス開発 
 
-このトピックでは、.NET を使用してメディア サービス アプリケーションを開発する方法について説明します。 
+このトピックでは、.NET を使用して Media Services アプリケーションを開発する方法について説明します。 
 
 **Azure Media Services .NET SDK** ライブラリを利用すると、.NET を使用してメディア サービスに対するプログラミングを行うことができます。.NET でより簡単に開発できるようにするための **Azure Media Services .NET SDK Extensions** ライブラリも提供されています。このライブラリには、.NET コードの簡素化に役立つ一連の拡張メソッドとヘルパー関数が含まれています。どちらのライブラリも、**NuGet** と **GitHub** を通じて利用できます。
  
 
 ##前提条件
 
--   新規または既存の Azure サブスクリプションで作成したメディア サービス アカウント。[メディア サービス アカウントの作成方法](media-services-create-account.md)のトピックをご覧ください。
--   オペレーティング システム: Windows 7、Windows 2008 R2、または Windows 8。
+-   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md).」をご覧ください。
+-   オペレーティング システム:Windows 7、Windows 2008 R2、または Windows 8。
 -   .NET Framework 4.5。
 -   Visual Studio 2013、Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。 
   
 
 ##Visual Studio プロジェクトの作成と構成 
 
-このセクションでは、メディア サービス開発用に Visual Studio でプロジェクトを作成し、セットアップする方法を説明します。ここでは C# Windows コンソール アプリケーション プロジェクトを使用していますが、メディア サービス アプリケーション用に作成できる他の種類のプロジェクト (Windows フォーム アプリケーション、ASP.NET Web アプリケーションなど) についても、同じセットアップ手順を利用できます。
+このセクションでは、メディア サービス開発用に Visual Studio でプロジェクトを作成し、セットアップする方法を説明します。ここでは C# Windows コンソール アプリケーション プロジェクトを使用していますが、Media Services アプリケーション用に作成できる他の種類のプロジェクト (Windows フォーム アプリケーション、ASP.NET Web アプリケーションなど) についても、同じセットアップ手順を利用できます。
 
 このセクションでは、**NuGet** を使用して、Media Services .NET SDK と依存するその他のライブラリを追加する方法を説明します。 
 
@@ -44,28 +44,28 @@
 2. ソリューションをビルドします。
 
 2. **NuGet** を使用して、**Azure Media Services .NET SDK Extensions** をインストールして追加します。このパッケージをインストールすると、**Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
-	1. 最新バージョンの NuGet がインストールされていることをご確認ください。詳しい情報とインストール手順については、[NuGet](http://nuget.codeplex.com/) をご覧ください。
+	1.最新バージョンの NuGet がインストールされていることをご確認ください。詳しい情報とインストール手順については、[NuGet](http://nuget.codeplex.com/) をご覧ください。
 	
-	2. ソリューション エクスプローラーでプロジェクトの名前を右クリックし、[NuGet パッケージの管理...] を選択します。
+	2.ソリューション エクスプローラーでプロジェクトの名前を右クリックし、[NuGet パッケージの管理...] を選択します。
 	
-		The Manage NuGet Packages dialog box appears.
+		[NuGet パッケージの管理] ダイアログ ボックスが表示されます。
 
-	3. オンライン ギャラリーで、Azure Media Services Extensions を検索し、[Azure Media Services .NET SDK Extensions] を選択し、[インストール] をクリックします。
+	3.オンライン ギャラリーで、Azure Media Services Extensions を検索し、[Azure Media Services .NET SDK Extensions] を選択し、[インストール] をクリックします。
  
 		プロジェクトが変更され、Media Services .NET SDK Extensions、Media Services .NET SDK、その他の依存アセンブリへの参照が追加されます。
 
-	4. よりクリーンな開発環境を実現するために、NuGet パッケージの復元を有効にすることを検討してください。詳細については、[NuGet Package Restore (NuGet パッケージの復元)](http://docs.nuget.org/consume/package-restore) をご覧ください。
+	4.よりクリーンな開発環境を実現するために、NuGet パッケージの復元を有効にすることを検討してください。詳細については、「[NuGet Package Restore (NuGet パッケージの復元)](http://docs.nuget.org/consume/package-restore)」をご覧ください。
 
-3. **System.Configuration** アセンブリへの参照を追加します。このアセンブリには、構成ファイル (App.config など) にアクセスするための System.Configuration.**ConfigurationManager** クラスが含まれています。 
+3. **System.Configuration** アセンブリへの参照を追加します。このアセンブリには、構成ファイル (App.config など) にアクセスするための System.Configuration.*ConfigurationManager** クラスが含まれています。 
 
 	[参照の管理] ダイアログを使用して参照を追加するには、次の操作を行います。 
 
-	1. ソリューション エクスプローラーで、プロジェクト名を右クリックします。次に、[追加と参照] を選択します。
+	1.ソリューション エクスプローラーで、プロジェクト名を右クリックします。次に、[追加と参照] を選択します。
 
 		[参照の管理] ダイアログが表示されます。
 
-	2. .NET framework のアセンブリで、System.Configuration アセンブリを探して選択します。
-	3. [OK] をクリックします。
+	2..NET framework のアセンブリで、System.Configuration アセンブリを探して選択します。
+	3.[OK] をクリックします。
 
 
 4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに  *appSettings* セクションを追加します。Azure メディア サービスのアカウント名とアカウント キーの値を設定します。次の例をご覧ください。 
@@ -95,6 +95,6 @@
 		using System.IO;
 		using Microsoft.WindowsAzure.MediaServices.Client;
 
-これで、メディア サービス アプリケーションの開発準備が整いました。    
+これで、Media Services アプリケーションの開発準備が整いました。    
 
-<!--HONumber=45--> 
+<!--HONumber=52-->

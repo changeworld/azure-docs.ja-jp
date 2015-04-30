@@ -1,98 +1,101 @@
-<properties 
-	pageTitle="SQL Database と Git を使用した PHP Web サイト - Azure チュートリアル" 
-	description="SQL Database にデータを保存する PHP Web サイトを作成し、Azure への Git デプロイを使用する方法を示すチュートリアル。" 
-	services="web-sites, sql-database" 
+﻿<properties 
+	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする" 
+	description="Azure SQL データベースにデータを保存する PHP Web アプリを作成し、Azure App Service への Git デプロイを使用する方法を示すチュートリアル。" 
+	services="app-service\web, sql-database" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/18/2014" 
+	ms.date="04/07/2015" 
 	ms.author="tomfitz"/>
 
-#SQL Database を使用する PHP Web サイトを作成して Git でデプロイする
+# Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
-このチュートリアルでは、Azure SQL Database を使用する PHP Azure Website を作成する方法と、Git を使用してそれをデプロイする方法を説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP][install-drivers]、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。このチュートリアルを完了すると、Azure で動作する PHP-SQL データベース Web サイトが完成します。
+このチュートリアルでは、Azure SQL Database に接続する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の PHT Web アプリを作成する方法と、Git を使用してそれをデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP][install-drivers]、Web サーバー、[Git][install-git] を使用します。このチュートリアルを完了すると、Azure で動作する PHP-SQL Web アプリが完成します。
 
 > [AZURE.NOTE]
-> <a href="http://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web プラットフォーム インストーラー</a>を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP、およびインターネット インフォメーション サービス (IIS) をインストールおよび構成できます。
+> [Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP、インターネット インフォメーション サービス (IIS) をインストールして構成できます。
 
 学習内容:
 
-* Azure 管理ポータルを使用して Azure Website と SQL Database を作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Azure Web アプリと SQL データベースを作成する方法。App Service Web Apps では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
  
 このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP Web Site][running-app]
+![Azure PHP Web Site](./media/web-sites-php-sql-database-deploy-use-git/running_app_3.png)
 
-> [AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/pricing/free-trial/">無料評価版にサインアップ</a>してください。
-> 
-> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-##Azure Website の作成と Git 発行の設定
+>[AZURE.NOTE] Azure アカウントのサインアップより前に Azure App Service の使用を開始したい場合は、「[アプリ サービスを試す](http://go.microsoft.com/fwlink/?LinkId=523751)」をご覧ください。そこでは、アプリ サービスで有効期間の短いスターター Web アプリをすぐに作成することができます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-Azure Websites と SQL データベースを作成するには、次の手順に従います。
+##Azure Web アプリの作成と Git 発行の設定
 
-1. [Azure 管理ポータル][management-portal] にログインします。
-2. ポータルの左下にある **[新規]** アイコンをクリックします。
-![Create New Azure Web Site][new-website]
+Azure の Web アプリと SQL データベースを作成するには、次の手順に従います。
 
-3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
+1. [Azure ポータル][management-portal] にログインします。
 
-	![Custom Create a new Web Site][custom-create]
+2. Azure Marketplace を開きます。**[Marketplace]** アイコンをクリックするか、ダッシュボードの左下にある **[新規]** アイコンをクリックし、**[Web + モバイル]** を選択し、下部にある **[Azure Marketplace]** をクリックします。
+	
+3. Marketplace で、**[Web アプリ]** を選択します。
 
-	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい SQL データベースを作成します]** を選択して、**[ソース管理から発行]** を選択します。ダイアログの下部にある矢印をクリックします。
+4. **[Web アプリ + SQL]** アイコンをクリックします。
 
-	![Fill in web site details][website-details-sqlazure]
+5. Web アプリ + SQL アプリの説明を読むには、**[作成]** を選択します。
 
-4. データベースの **[名前]** を入力し、**[新しい SQL データベース サーバー]** を選択してログイン資格情報を入力し、リージョンを選択します。ダイアログの下部にある矢印をクリックします。
+6. 各部分 (**[リソース グループ]**、**[Web アプリ]**、**[データベース]**、**[サブスクリプション]**) をクリックし、必要なフィールドに値を入力するか、値を選択します。
+	
+	- 好みの URL 名を入力します	
+	- データベース サーバーの資格情報を構成します。
+	- 最も近いリージョンを選択します
 
-	![Fill in SQL Database settings][database-settings]
+	![configure your app](./media/web-sites-php-sql-database-deploy-use-git/configure-db-settings.png)
 
-5. ソース コードの **[ローカル Git リポジトリ]** を選択します。
+7. Web アプリの定義が完了したら、**[作成]** をクリックします。
 
-	![where is your source code][where-is-code]
+	Web アプリが作成されると、**[通知]** ボタンが緑色の **[成功]** と点滅し、リソース グループ ブレードが開いてグループの Web アプリと SQL データベース双方が表示されます。
 
-	Git リポジトリが未選択である場合は、ユーザー名とパスワードを指定する必要があります。
+4. リソース グループ ブレードの Web アプリのアイコンをクリックして Web アプリのブレードを開きます。
 
-6. Web サイトの作成後、サイトのダッシュボードを開いて、**[デプロイの表示]** を選択します。
+	![web app's resource group](./media/web-sites-php-sql-database-deploy-use-git/resource-group-blade.png)
 
-	![Web site dashboard][go-to-dashboard]
+5. **[継続的配置の設定]** > **[ソースの選択]** をクリックします。**[ローカル Git リポジトリ]** を選択し、**[OK]** をクリックします。
 
-9. アプリケーション ファイルをリポジトリにプッシュするための手順が表示されます。これらの手順は後で必要になるため、メモしておいてください。
+	![where is your source code](./media/web-sites-php-sql-database-deploy-use-git/setup-local-git.png)
 
-	![Git instructions][git-instructions]
+	Git リポジトリが未選択である場合は、ユーザー名とパスワードを指定する必要があります。そのためには、Web アプリのブレードで**[展開の資格情報の設定]**をクリックします。
+
+	![](./media/web-sites-php-sql-database-deploy-use-git/deployment-credentials.png)
+
+6. **[継続的配置の設定]** が **[No deployment found (デプロイが見つかりません)]** になります。それをクリックして、後ほど PHP アプリのデプロイで使用する Git リモート URL を確認します。
 
 ##SQL データベース接続情報を取得する
 
-Azure Websites で実行されている SQL データベース インスタンスに接続するには、接続情報が必要になります。SQL データベースの接続情報を取得するには、次の手順に従います。
+Web アプリにリンクされている SQL データベース インスタンスに接続するには、データベースの作成時に指定した接続情報が必要になります。SQL データベース接続情報を取得するには、次の手順に従います。
 
-1. Azure 管理ポータルで、**[リンク済みリソース]** をクリックし、目的のデータベース名をクリックします。
+1. リソース グループのブレードに戻り、SQL データベース アイコンをクリックします。
 
-	![Linked Resources][linked-resources]
+2. SQL データベース ブレードで **[プロパティ]** をクリックし、**[Show database connection strings (データベース接続文字列を表示)]** をクリックします。 
 
-2. **[接続文字列の表示]** をクリックします。
-
-	![Connection string][connection-string]
+	![View database properties](./media/web-sites-php-sql-database-deploy-use-git/view-database-properties.png)
 	
-3. 表示されたダイアログの **[PHP]** セクションから、 `SERVER`、 `DATABASE`、および  `USERNAME` の値をメモします。
+3. 表示されるダイアログの **[PHP]** セクションで、 `Server`、 `SQL Database`、 `User Name` の値をメモします。この値は後ほど PHP Web アプリを Azure App Service に発行する際に使用します。
 
 ##アプリケーションの作成とローカル テスト
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は SQL データベース インスタンスに保存されます。アプリケーションは、次の 2 つのファイルで構成されます (下にあるコードをコピーし、貼り付けて使用できます)。
 
 * **index.php**:登録用のフォームと登録者情報が含まれたテーブルを表示します。
-* **createtable.php**:アプリケーション用の SQL データベース テーブルを作成します。このファイルは 1 度しか使用されません。
+* **createtable.php**: アプリケーション用の SQL データベース テーブルを作成します。このファイルは 1 度しか使用されません。
 
-アプリケーションをローカルで実行するには、次の手順に従います。これらの手順は、ローカル コンピューターに PHP、SQL Server Express、および Web サーバーがセットアップされており、[SQL Server 用 PDO 拡張機能][pdo-sqlsrv]が有効になっていることを前提としています。
+アプリケーションをローカルで実行するには、次の手順に従います。これらの手順は、ローカル コンピューターに PHP、SQL Server Express、Web サーバーがセットアップされており、[[SQL Server 用 PDO 拡張機能]][pdo-sqlsrv] が有効になっていることを前提としています。
 
 1.  `registration` という SQL Server データベースを作成します。これには、 `sqlcmd` コマンド プロンプトで次のコマンドを実行します。
 
@@ -101,7 +104,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 		2> GO	
 
 
-2. Web サーバーのルート ディレクトリで、 `registration` というフォルダーを作成し、その中に 2 つのファイル ( `createtable.php` と  `index.php`) を作成します。
+2. Web サーバーのルート ディレクトリで、  `registration` というフォルダーを作成し、その中に 2 つのファイル ( `createtable.php` と  `index.php`) を作成します。
 
 3.  `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。このコードは、 `registration` データベースに  `registration_tbl` テーブルを作成するために使用します。
 
@@ -128,9 +131,9 @@ Registration アプリケーションは、名前と電子メール アドレス
 		echo "<h3>Table created.</h3>";
 		?>
 
-	ここで、 <code>$user</code> と <code>$pwd</code> の値は、ローカルの SQL Server ユーザー名とパスワードに置き換える必要があります。
+	<code>$user</code> と <code>$pwd</code> の値はローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
-4. Web ブラウザーを開いて、**http://localhost/registration/createtable.php** にアクセスします。このコードは、データベースに  `registration_tbl` テーブルを作成するために使用します。
+4. Web ブラウザーを開いて、**http://localhost/registration/createtable.php**  にアクセスします。このコードは、データベースに  `registration_tbl` テーブルを作成するために使用します。
 
 5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
 
@@ -181,7 +184,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 			die(var_dump($e));
 		}
 
-    ここでも、 <code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+    <code>$user</code> と <code>$pwd</code> の値はローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
 7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
 
@@ -226,29 +229,29 @@ Registration アプリケーションは、名前と電子メール アドレス
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-これで、**http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
+これで、**http://localhost/registration/index.php** にアクセスしてアプリケーションをテストできます。
 
 ##アプリケーションの発行
 
-アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure Website に発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL データベース接続情報を取得する**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと  `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを App Service Web アプリに発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL データベース接続情報を取得する**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと  `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
 
 	// DB connection info
-	$host = "tcp:<value of SERVER>";
-	$user = "<value of USERNAME>@<server ID>";
+	$host = "tcp:<value of Server>";
+	$user = "<value of User Name>";
 	$pwd = "<your password>";
-	$db = "<value of DATABASE>";
+	$db = "<value of SQL Database>";
 
 > [AZURE.NOTE]
-> <code>$host</code>の SERVER の値は、 <code>tcp:</code>で始める必要があります。また、 <code>$user</code> には、USERNAME の値と '@'、さらに、該当するサーバー ID を連結した値を指定します。サーバー ID は、SERVER の値の先頭 10 文字です。
+> <code>$host</code> では、Server の値を <code>tcp:</code> に付加する必要があります。
 
 
 これで、Git 発行を設定してアプリケーションを発行する準備ができました。
 
 > [AZURE.NOTE]
-> これらは、上の「Azure の Web サイトの作成と Git 発行の設定」セクションの最後でメモした手順と同じです。
+> これらは、上の「**Azure の Web サイトの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです。
 
 
-1. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
+1. GitBash (Git が  `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションの**登録**ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
 		git add .
@@ -258,8 +261,8 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	先ほど作成したパスワードを入力するように求められます。
 
-2. アプリケーション用の MySQL テーブルを作成するには、**http://[サイト名].azurewebsites.net/createtable.php** に移動します。
-3. アプリケーションの使用を開始するには、**http://[サイト名].azurewebsites.net/index.php** に移動します。
+2. アプリケーション用の SQL データベースを作成するには、**http://[Web アプリ名].azurewebsites.net/createtable.php** に移動します。
+3. **http://[Web アプリ名].azurewebsites.net/index.php** に移動します。
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。 
 
@@ -276,32 +279,19 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	先ほど作成したパスワードを入力するように求められます。
 
-3. 変更内容を確認できるように、**http://[サイト名].azurewebsites.net/index.php** に移動します。
+3. 変更内容を確認できるように、**http://[Web アプリ名].azurewebsites.net/index.php**に移動します。
+
+## 変更内容
+* Web サイトからアプリ サービスへの変更ガイドについては、次のものをご覧ください。[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 古いポータルから新しいポータルへの変更ガイドについては、次のものをご覧ください。[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
+
+
+
 
 [install-php]: http://www.php.net/manual/en/install.php
-[install-SQLExpress]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
-[install-Drivers]: http://www.microsoft.com/ja-jp/download/details.aspx?id=20098
+[install-SQLExpress]: http://www.microsoft.com/download/details.aspx?id=29062
+[install-Drivers]: http://www.microsoft.com/download/details.aspx?id=20098
 [install-git]: http://git-scm.com/
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
-[running-app]: ./media/web-sites-php-sql-database-deploy-use-git/running_app_3.png
-[new-website]: ./media/web-sites-php-sql-database-deploy-use-git/new_website.jpg
-[custom-create]: ./media/web-sites-php-sql-database-deploy-use-git/custom_create.png
-[website-details-sqlazure]: ./media/web-sites-php-sql-database-deploy-use-git/createphpgitsite.png
-[database-settings]: ./media/web-sites-php-sql-database-deploy-use-git/setupdb.png
-[create-server]: ./media/web-sites-php-sql-database-deploy-use-git/create_server.jpg
-[go-to-dashboard]: ./media/web-sites-php-sql-database-deploy-use-git/viewdeploy.png
-[setup-git-publishing]: ./media/web-sites-php-sql-database-deploy-use-git/setup_git_publishing.png
-[credentials]: ./media/web-sites-php-sql-database-deploy-use-git/git-deployment-credentials.png
 
-
-[git-instructions]: ./media/web-sites-php-sql-database-deploy-use-git/gitsettings.png
-[linked-resources]: ./media/web-sites-php-sql-database-deploy-use-git/linked_resources.jpg
-[connection-string]: ./media/web-sites-php-sql-database-deploy-use-git/connection_string.jpg
-[management-portal]: https://manage.windowsazure.com/
-[sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
-[where-is-code]: ./media/web-sites-php-sql-database-deploy-use-git/setupgit.png
-
-
-
-<!--HONumber=42-->
-
+<!--HONumber=52-->
