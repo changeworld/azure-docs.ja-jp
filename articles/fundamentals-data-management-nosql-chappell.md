@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Understand NoSQL technologies" pageTitle="Azure での NoSQL テクノロジについて | Azure" metaKeywords="" description="ビッグ データや JSON ドキュメント、グラフのようなリレーショナル データベースに適していないデータを管理するのに、HDInsight 上の NoSQL テクノロジがどのように役立つかについて説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight,documentdb" documentationCenter="" title="Data management: Understanding NoSQL technologies on Azure" authors="cgronlun" />
+<properties urlDisplayName="Understand NoSQL technologies" pageTitle="Azure での NoSQL テクノロジについて | Azure" metaKeywords="" description="ビッグ データや JSON ドキュメント、グラフのようなリレーショナル データベースに適していないデータを管理するのに、HDInsight 上の NoSQL テクノロジがどのように役立つかについて説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight,documentdb" documentationCenter="" title="Data management: Understanding NoSQL technologies on Azure" authors="cgronlun" />
 
 <tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/01/2014" ms.author="cgronlun" />
 
@@ -28,3 +28,5 @@
 
 **ダウンロード:** <a href="http://go.microsoft.com/fwlink/p/?LinkId=330292" target="_blank">「Azure での NoSQL について」の PDF ファイル</a>
 
+
+<!--HONumber=35.2-->
