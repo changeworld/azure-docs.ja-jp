@@ -24,7 +24,7 @@ Azure Storage BLOB コネクタを使用すると、BLOB コンテナーから B
 ## 新しい Azure Storage BLOB コネクタの作成
 Azure Storage コネクタを新しく作成するには、次の手順に従います。
 - Azure ポータルを起動します。
-- [+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
+- \[+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
 
 ![Launch Azure Marketplace][1]
 - [API Apps] をクリックします。

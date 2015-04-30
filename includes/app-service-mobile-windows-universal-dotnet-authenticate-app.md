@@ -1,4 +1,4 @@
-﻿
+
 1. 共有プロジェクト ファイル MainPage.cs を開き、次の using ステートメントを追加します。
 
         using Windows.UI.Popups;
@@ -83,7 +83,7 @@
             base.OnActivated(args);
         }
 
-	**OnActivated** メソッドが既に存在する場合は、`#if...#endif` コード ブロックを追加します。
+	 **OnActivated** メソッドが既に存在する場合は、`#if...#endif` コード ブロックを追加します。
 
 9. F5 キーを押して Windows ストア アプリを実行します。**[サイン イン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサイン インします。 
 

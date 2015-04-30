@@ -208,7 +208,7 @@ Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/librar
 
         using Microsoft.ServiceBus.Notifications;
 
-6.**Program** クラスで、次のメソッドを追加します。
+6. **Program** クラスで、次のメソッドを追加します。
 
         private static async void SendNotificationAsync()
         {

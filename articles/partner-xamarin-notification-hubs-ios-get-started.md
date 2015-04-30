@@ -314,7 +314,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
             }
         }
 
-    > [AZURE.NOTE] **ネットワーク接続がないなどの状況に対処するために、**FailedToRegisterForRemoteNotifications() をオーバーライドすることを選択できます。
+    > [AZURE.NOTE] ネットワーク接続がないなどの状況に対処するために、**FailedToRegisterForRemoteNotifications()** をオーバーライドすることを選択できます。
 
 
 10. デバイスでアプリケーションを実行します。

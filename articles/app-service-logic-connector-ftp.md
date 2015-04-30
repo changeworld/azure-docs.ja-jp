@@ -31,7 +31,7 @@ FTP コネクタを使用すると、FTP サーバーとの間でデータを移
 ## 新しい FTP コネクタの作成
 新しい FTP コネクタを作成するには、次の手順に従います。
 - Azure ポータルを起動します。
-- [+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
+- \[+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
 
 ![Launch Azure Marketplace][1]
 - [API Apps] をクリックします。

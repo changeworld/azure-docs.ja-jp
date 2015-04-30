@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="データを作成して Azure BLOB ストレージ から Hive テーブルに読み込む | Azure" 
 	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む" 
 	metaKeywords="" 
@@ -19,7 +19,7 @@
 	ms.author="hangzh;bradsev" />
 
  
-#データを作成して Azure BLOB ストレージから Hive テーブルに読み込む
+# データを作成して Azure BLOB ストレージから Hive テーブルに読み込む
  
 このドキュメントには Hive テーブルを作成し、Azure BLOB ストレージからデータを読み込む汎用の Hive クエリがあります。Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
 
@@ -140,7 +140,7 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 		INSERT OVERWRITE TABLE <database name>.<ORC table name> SELECT * FROM <database name>.<external textfile table name>;
 
->[AZURE.NOTE] TEXTFILE テーブル `<データベース名>.<外部テキスト ファイルのテーブル名>` にパーティションが含まれている場合、手順 3 で、 `SELECT * FROM <database name>.<external textfile table name>` は、返されたデータ セット内のフィールドとしてパーティション変数を選択します。`<データベース名>.<ORC テーブル名>` にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、これを `<データベース名>.<ORC テーブル名>` に挿入すると失敗します。この場合は、ユーザーは`<データベース名>.<ORC テーブル名>` に挿入するフィールドを次のように具体的に選択する必要があります。
+[AZURE.NOTE] TEXTFILE テーブル `<データベース名>.<外部テキスト ファイルのテーブル名>` にパーティションが含まれている場合、手順 3 で、 `SELECT * FROM <database name>.<external textfile table name>` は、返されたデータ セット内のフィールドとしてパーティション変数を選択します。`<データベース名>.<ORC テーブル名>` にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、これを `<データベース名>.<ORC テーブル名>` に挿入すると失敗します。この場合は、ユーザーは`<データベース名>.<ORC テーブル名>` に挿入するフィールドを次のように具体的に選択する必要があります。
 
 		INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
 		      SELECT field1, field2, ..., fieldN

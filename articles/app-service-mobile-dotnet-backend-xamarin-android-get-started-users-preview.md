@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Xamarin Android でのモバイル アプリの認証の使用" 
 	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
 	services="app-service\mobile" 
@@ -24,11 +24,11 @@
 
 このチュートリアルは、モバイル アプリのクイック スタートに基づいています。先に、[Xamarin.Android アプリの作成]に関するチュートリアルを完了することも必要です。 
 
-##<a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
+## <a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../includes/app-service-mobile-register-authentication.md)] 
 
-##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)] 
 
@@ -40,7 +40,7 @@
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 
 1. **TodoActivity** クラスに次のプロパティを追加します。
 
@@ -84,7 +84,7 @@
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 
-[Xamarin.Android アプリを作成する]: app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md
+[Xamarin.Android アプリの作成]: app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md
 
 [Azure 管理ポータル]: https://portal.azure.com
 

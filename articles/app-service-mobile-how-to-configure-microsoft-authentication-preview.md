@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="App Services アプリケーションに Microsoft アカウント認証を構成する方法"
 	description="App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。" 
 	authors="mattchenderson,ggailey777" 
@@ -63,6 +63,6 @@
 <!-- URLs. -->
 
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure 管理ポータル]: https://portal.azure.com/
+[Azure の管理ポータル]: https://portal.azure.com/
 
 <!--HONumber=49-->

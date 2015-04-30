@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="App Services アプリケーションに Facebook 認証を構成する方法"
 	description="App Services アプリケーションに Facebook 認証を構成する方法について説明します。" 
 	services="app-service\mobile" 
@@ -75,6 +75,6 @@
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure 管理ポータル]: https://portal.azure.com/
+[Azure の管理ポータル]: https://portal.azure.com/
 
 <!--HONumber=49-->

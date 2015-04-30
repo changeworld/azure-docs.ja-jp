@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="App Services アプリケーションに Azure Active Directory 認証を構成する方法" 
 	description="App Services アプリケーションに Azure Active Directory 認証を構成する方法について説明します。" 
 	authors="mattchenderson,wesmc7777" 
@@ -69,7 +69,7 @@ Azure Active Directory シングル サインオンでモバイル アプリの�
 <!-- URLs. -->
 
 [Azure の管理ポータルのプレビュー]: https://portal.azure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [ios-adal]: app-service-mobile-dotnet-backend-xamarin-ios-aad-sso-preview.md
 
 <!--HONumber=49-->

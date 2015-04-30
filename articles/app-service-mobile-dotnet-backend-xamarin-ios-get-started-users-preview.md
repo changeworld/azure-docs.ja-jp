@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Xamarin iOS でのモバイル アプリの認証の使用" 
 	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。" 
 	services="app-service\mobile" 
@@ -24,11 +24,11 @@
 
 このチュートリアルは、モバイル アプリのクイック スタートに基づいています。先に、[Xamarin.iOS アプリの作成]に関するチュートリアルを完了している必要があります。 
 
-##<a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
+## <a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../includes/app-service-mobile-register-authentication.md)] 
 
-##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)] 
 
@@ -40,7 +40,7 @@
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 
 ここでは、データを表示する前にログイン画面を表示するようにアプリケーションを変更します。アプリケーションが起動したときには、App Service には接続されず、データも表示されません。ユーザーが最初に更新操作を実行した後で、ログイン画面が表示されます。ログインに成功すると、Todo 項目の一覧が表示されます。
 
@@ -104,7 +104,7 @@
 <!-- URLs. -->
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Xamarin.iOS アプリを作成する]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
+[Xamarin.iOS アプリの作成]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 
 [Azure 管理ポータル]: https://portal.azure.com
 

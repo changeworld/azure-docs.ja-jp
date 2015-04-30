@@ -278,7 +278,9 @@ Apple の「[ローカルおよびプッシュ通知プログラミング ガイ
 [iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Use Notification Hubs to push notifications to users (Notification Hubs を使用したユーザーへのプッシュ通知)]: notification-hubs-ios-mobile-services-register-user-push-notifications.md
+[通知ハブを使用したユーザーへのプッシュ通知]: notification-hubs-ios-mobile-services-register-user-push-notifications.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-send-breaking-news.md
+[通知ハブを使用したニュース速報の送信]: notification-hubs-ios-send-breaking-news.md
 
 [ローカルおよびプッシュ通知プログラミング ガイド]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 

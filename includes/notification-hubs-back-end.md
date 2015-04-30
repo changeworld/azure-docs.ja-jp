@@ -1,6 +1,6 @@
-﻿
+
 このセクションでは、.NET コンソール アプリケーションおよびその他のアプリケーションから通知を送信する方法を示します。
-Mobile Services を使用している場合は、「[Mobile Services アプリへのプッシュ通知の追加]」の(../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md) チュートリアルを参照してください。Java または PHP を使用する場合は、「[Java/PHP から Notification Hubs を使用する方法](notification-hubs-java-backend-how-to.md) を参照してください。[通知ハブ REST インターフェイス]を使用することで、バックエンドから通知を送信できます。
+Mobile Services を使用している場合は、「[Mobile Services アプリへのプッシュ通知の追加](../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md)」の チュートリアルを参照してください。Java または PHP を使用する場合は、「[Java/PHP から Notification Hubs を使用する方法](notification-hubs-java-backend-how-to.md)」 を参照してください。[通知ハブ REST インターフェイス]を使用することで、バックエンドから通知を送信できます。
 
 次のコードでは、Windows ストア デバイス、Windows Phone デバイス、iOS デバイス、Android デバイスに通知を送信します。 
 
@@ -100,5 +100,6 @@ Mobile Services を使用している場合は、「[Mobile Services アプリ�
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [方法: Notification Hubs (Windows ストア)]: http://msdn.microsoft.com/library/jj927172.aspx
 [通知ハブの REST API]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+[通知ハブ REST インターフェイス]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
 <!--HONumber=49-->
