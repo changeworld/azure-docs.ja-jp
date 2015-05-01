@@ -395,4 +395,5 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 ##次のステップ
 これでコンテンツ キーの承認ポリシーを構成できました。次は、「[How to configure asset delivery policy (アセット配信ポリシーを構成する方法)](media-services-dotnet-configure-asset-delivery-policy.md)」 に進みます。
 
+
 <!--HONumber=52-->

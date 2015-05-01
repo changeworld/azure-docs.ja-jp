@@ -93,4 +93,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [管理ポータル]: https://manage.windowsazure.com/
 
+
 <!--HONumber=52-->

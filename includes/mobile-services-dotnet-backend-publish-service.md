@@ -15,4 +15,5 @@
 	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-2.png)
 
 	発行に成功した後、確認ページが再び表示されますが、今度は Mobile Services が Azure 内で実行されていることが示されます。
+
 <!--HONumber=52--> 

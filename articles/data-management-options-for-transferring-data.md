@@ -269,4 +269,5 @@ Microsoft Azure Event Hubs は、クラウドに対し、短い待機時間と�
 [sync]: http://msdn.microsoft.com/library/azure/hh456371.aspx
 [hybrid]: integration-hybrid-connection-overview.md
 
+
 <!--HONumber=52-->

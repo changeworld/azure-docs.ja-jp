@@ -14,4 +14,5 @@
    	これで、Azure でホストされている新しい Mobile Services に POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目が Mobile Services によって返され、データが一覧に表示されます。
 
  	</div>
+
 <!--HONumber=52--> 

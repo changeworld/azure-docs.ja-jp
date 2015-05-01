@@ -8,4 +8,5 @@
 <br/>Windows Phone ストア アプリ
 
 このチュートリアルを完了することは、Windows ストア アプリおよび Windows Phone ストア アプリの他のすべての Mobile Services チュートリアルの前提条件です。
+
 <!--HONumber=52--> 

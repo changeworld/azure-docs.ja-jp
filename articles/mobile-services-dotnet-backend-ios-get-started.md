@@ -105,4 +105,5 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
+
 <!--HONumber=52-->

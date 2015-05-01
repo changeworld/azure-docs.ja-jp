@@ -245,4 +245,5 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 [物理デバイスを使ってみる](https://msdn.microsoft.com/library/azure/dn772410.aspx)
 
+
 <!--HONumber=52-->

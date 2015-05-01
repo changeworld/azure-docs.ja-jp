@@ -65,4 +65,5 @@ Azure Media Services では、Windows メディア プラットフォームの�
 
 ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準」](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)」をご覧ください。
 
+
 <!--HONumber=52-->

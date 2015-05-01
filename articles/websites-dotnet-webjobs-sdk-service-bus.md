@@ -156,4 +156,5 @@ Service Bus 以外の Web ジョブ SDK シナリオについては、「[Web �
 
 このガイドでは、Azure Service Bus を操作する一般的なシナリオの対応方法について示すコード サンプルを紹介してきました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
+
 <!--HONumber=52-->

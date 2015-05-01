@@ -422,4 +422,5 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation 
 [Flask のドキュメント]: http://flask.pocoo.org/ 
 
+
 <!--HONumber=52-->

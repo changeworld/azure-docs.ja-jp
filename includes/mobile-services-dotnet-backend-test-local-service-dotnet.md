@@ -18,4 +18,5 @@
 4. アプリケーションで、**[Insert a TodoItem]** ボックスに意味のあるテキスト (たとえば、「_Complete the tutorial_」) を入力し、**[Save]** をクリックします。
 
 	この結果、POST 要求がローカルの Mobile Services に送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目は Mobile Services によって返され、データはアプリケーションの 2 番目の列に表示されます。
+
 <!--HONumber=52--> 

@@ -116,4 +116,5 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 ![Azure Storage リソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
+
 <!--HONumber=52-->

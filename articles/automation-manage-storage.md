@@ -49,4 +49,5 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 Azure Automation の[入門チュートリアル](automation-create-runbook-from-samples.md)
 
+
 <!--HONumber=52-->

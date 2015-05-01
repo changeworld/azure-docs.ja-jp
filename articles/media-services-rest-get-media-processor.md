@@ -122,4 +122,5 @@
 [Media Services Encoder 用のタスク プリセット]: http://msdn.microsoft.com/library/jj129582.aspx
 [方法:Media Services にプログラムから接続する]: ../media-services-rest-connect_programmatically/
 
+
 <!--HONumber=52-->

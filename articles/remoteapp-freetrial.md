@@ -31,4 +31,5 @@ Azure サブスクリプションをお持ちであれば、RemoteApp を無料�
 フィードバックが欲しい場合[ディスカッション フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)に質問を投稿してください。[Azure サポート プラン](http://azure.microsoft.com/support/plans/)に加入している場合は、サポート ケースを送信できます。[フィードバック フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)には、どなたでもフィードバックを送信できます。  
 
 
+
 <!--HONumber=52-->

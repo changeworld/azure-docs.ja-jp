@@ -37,4 +37,5 @@ RemoteApp では Windows Server 2012 R2 イメージを使用して、ユーザ�
 - イメージはパラメーター **/oobe /generalize /shutdown** を使用して SYSPREP を実施済みでなければなりません (**/mode:vm** パラメーターは使用しないでください)。
 - スナップショット チェーンからの VHD のアップロードはサポートされていません。
 
+
 <!--HONumber=52-->

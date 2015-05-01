@@ -55,4 +55,5 @@ RemoteApp は、Windows Server 2012 R2 インストールの 32 ビットまた�
 - マルチユーザー、マルチプロセッサ環境向けに、アプリケーションの[スレッド使用状況](https://msdn.microsoft.com/library/aa383520.aspx)を調整する必要があります。
 - パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで[検出](https://msdn.microsoft.com/library/aa380798.aspx)することをお勧めします。 
 
+
 <!--HONumber=52-->

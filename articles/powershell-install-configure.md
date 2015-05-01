@@ -260,4 +260,5 @@ Azure や Windows PowerShell の使用方法を学習するためのリソース
 
   [Microsoft Online Services カスタマー ポータル]: https://mocp.microsoftonline.com/site/default.aspx
 
+
 <!--HONumber=52-->

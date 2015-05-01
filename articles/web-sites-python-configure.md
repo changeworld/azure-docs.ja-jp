@@ -387,4 +387,5 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
 [Django を使用した Web サイトの作成]: web-sites-python-create-deploy-django-app.md
 [Flask を使用した Web サイトの作成]: web-sites-python-create-deploy-flask-app.md
 
+
 <!--HONumber=52-->

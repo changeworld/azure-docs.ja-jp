@@ -41,4 +41,5 @@ Q:Azure Media services では画像の保存はサポートされますか。
 
 A:JPEG や PNG 画像を保存するだけの場合は、Azure Blob ストレージを使用してください。これらをビデオやオーディオ アセットに関連付けることがない限り、 Media Services アカウントに保存するメリットはありません。または、ビデオ エンコーダーで画像をオーバーレイとして使用する必要がある場合、Media Services エンコーダーではビデオの上に画像をオーバーレイさせることができ、JPEG や PNG が入力形式としてサポートされています。詳細については、「[オーバーレイの作成](https://msdn.microsoft.com/library/azure/dn640496.aspx)」をご覧ください。
 
+
 <!--HONumber=52-->

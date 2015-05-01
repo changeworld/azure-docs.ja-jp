@@ -151,4 +151,5 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 [Azure CDN と Web アプリを統合させて]:cdn-websites-with-cdn.md
 [スケールアップやスケールアウト]:/manage/services/web-sites/how-to-scale-websites/
 [ASP.NET のセッション状態]:https://msdn.microsoft.com/library/azure/dn690522.aspx
+
 <!--HONumber=52-->

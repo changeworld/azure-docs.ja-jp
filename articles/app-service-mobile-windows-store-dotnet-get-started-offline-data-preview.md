@@ -276,4 +276,5 @@ Mobile Services に対する通常の CRUD 操作は、まるでアプリケー�
 [Azure Mobile App SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/2.0.0-beta
 
 [SQLite ストア NuGet]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.2
+
 <!--HONumber=52-->

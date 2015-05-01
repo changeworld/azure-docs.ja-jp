@@ -369,4 +369,5 @@ Azure ストレージ BLOB の使用の詳細については、[BLOB サービ�
  
 [方法: メディア プロセッサ インスタンスを取得する]: media-services-get-media-processor.md
 
+
 <!--HONumber=52-->

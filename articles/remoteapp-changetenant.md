@@ -46,4 +46,5 @@ RemoteApp では、Azure Active Directory (Azure AD) を使用してユーザー
 
 これで、新しい Azure AD テナントを使用して、Azure サブスクリプションへのアクセスを制御したり、RemoteApp 内のユーザー アクセスを構成することができます。
 
+
 <!--HONumber=52-->

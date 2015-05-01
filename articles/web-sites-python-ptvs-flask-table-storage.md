@@ -216,4 +216,5 @@ Python Tools for Visual Studio、Flask、Azure テーブル ストレージの�
 [Azure ストレージ]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
 
+
 <!--HONumber=52-->

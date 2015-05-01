@@ -217,4 +217,5 @@ Azure メディア エンコーダーでエンコードするときは、[こち
 [方法: ジョブの進行状況をチェックする]:http://go.microsoft.com/fwlink/?LinkId=301737
 [Azure Media Packager のタスク プリセット]:http://msdn.microsoft.com/library/windowsazure/hh973635.aspx
 
+
 <!--HONumber=52-->

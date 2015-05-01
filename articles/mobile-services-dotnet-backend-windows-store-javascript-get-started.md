@@ -120,4 +120,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 [JavaScript バージョン]: mobile-services-windows-store-get-started.md
 [Visual Studio 2012 を使用した Mobile Services でのデータの使用]: mobile-services-windows-store-dotnet-get-started-data-vs2012.md
 
+
 <!--HONumber=52-->

@@ -92,4 +92,5 @@
 [Task Preset Strings for the Azure Media Encoder (Azure メディア エンコーダー用のタスク プリセット文字列)]: http://msdn.microsoft.com/library/jj129582.aspx
 [方法:Media Services にプログラムから接続する]: ../media-services-set-up-computer/
 
+
 <!--HONumber=52-->

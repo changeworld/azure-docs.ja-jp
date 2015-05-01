@@ -140,4 +140,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 [WindowsAzure.com]: http://www.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 
+
 <!--HONumber=52-->

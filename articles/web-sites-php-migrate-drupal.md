@@ -101,4 +101,5 @@ Web アプリに Drupal をデプロイした後は、引き続き Git または
   [.user.ini ファイルを使用して Azure の Web サイトで PHP を構成する (ブログ記事)]: http://blogs.msdn.com/b/silverlining/archive/2012/07/10/configuring-php-in-windows-azure-websites-with-user-ini-files.aspx
   [Azure Integration Module (Azure 統合モジュール)]: http://drupal.org/project/azure
 
+
 <!--HONumber=52-->

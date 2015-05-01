@@ -75,4 +75,5 @@ API アプリを作成すると、ロジック アプリのトリガーとして
 [5]: ./media/app-service-logic-connector-pop3/img5.PNG
 [6]: ./media/app-service-logic-connector-pop3/img6.PNG
 
+
 <!--HONumber=52-->

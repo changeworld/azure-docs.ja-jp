@@ -133,4 +133,5 @@ Mobile Services が発行され、クライアントが Azure でホストされ
 [Visual Studio 2012 を使用した Mobile Services でのデータの使用]: mobile-services-windows-store-dotnet-get-started-data-vs2012.md
 [Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 [Get started with push notifications]: mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
+
 <!--HONumber=52-->

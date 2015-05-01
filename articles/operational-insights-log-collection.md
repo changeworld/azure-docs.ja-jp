@@ -94,4 +94,5 @@ Microsoft Azure オペレーション インサイトで "ログの管理" を�
 - [Azure オペレーション インサイトにおける IIS ログ形式の要件](http://blogs.technet.com/b/momteam/archive/2014/09/19/iis-log-format-requirements-in-system-center-advisor.aspx)
 - 他のデータ ソースや他の種類のログも実装して欲しいという要望がコミュニティから寄せられています。それらについては、[フィードバック フォーラム](http://feedback.azure.com/forums/267889-azure-operational-insights/category/88086-log-management-and-log-collection-policy)をご覧ください。
 
+
 <!--HONumber=52-->

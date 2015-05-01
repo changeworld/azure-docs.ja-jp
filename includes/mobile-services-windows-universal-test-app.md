@@ -12,4 +12,5 @@
 	![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png)
 	
 	アプリケーションが開始すると、前の手順で保存したデータが、Mobile Services から読み込まれる点に注目してください。
+
 <!--HONumber=52--> 

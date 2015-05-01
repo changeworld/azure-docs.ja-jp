@@ -489,4 +489,5 @@ AuthorizationPolicy を ContentKey に追加します ([ここ](#AddAuthorizatio
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、[アセットの配信ポリシーの構成方法](media-services-rest-configure-asset-delivery-policy.md)トピックにお進みください。
 
 
+
 <!--HONumber=52-->

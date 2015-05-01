@@ -82,4 +82,5 @@
 - [ブログの投稿: Azure の仮想マシンでオペレーション インサイトを有効にする](http://azure.microsoft.com/updates/easily-enable-operational-insights-for-azure-virtual-machines/)
 
 
+
 <!--HONumber=52-->

@@ -125,4 +125,5 @@
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
 [Event Hubs のプログラミング ガイド]: http://msdn.microsoft.com/library/azure/dn789972.aspx
+
 <!--HONumber=52--> 

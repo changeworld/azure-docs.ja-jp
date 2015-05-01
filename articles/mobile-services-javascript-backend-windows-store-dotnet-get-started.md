@@ -106,4 +106,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 [管理ポータル]: https://manage.windowsazure.com/
 [Visual Studio 2012 を使用した Mobile Services でのデータの使用]: mobile-services-windows-store-dotnet-get-started-data-vs2012.md
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
+
 <!--HONumber=52-->

@@ -104,4 +104,5 @@ Azure Storage のキュー、テーブル、BLOB や、Service Bus キューを�
 
 Web ジョブ SDK の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
+
 <!--HONumber=52-->

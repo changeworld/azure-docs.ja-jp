@@ -128,4 +128,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 
 
 [プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push.md
+
 <!--HONumber=52-->

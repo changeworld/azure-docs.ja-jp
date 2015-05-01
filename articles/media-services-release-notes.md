@@ -507,4 +507,5 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 
 [複数のストレージ アカウントでの  Media Services アセットの管理]: http://msdn.microsoft.com/library/azure/dn271889.aspx
+
 <!--HONumber=52-->

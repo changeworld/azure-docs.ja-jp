@@ -174,4 +174,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
 
 
+
 <!--HONumber=52-->

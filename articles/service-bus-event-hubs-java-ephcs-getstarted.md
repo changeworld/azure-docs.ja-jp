@@ -105,4 +105,5 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
 
+
 <!--HONumber=52-->

@@ -186,4 +186,5 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 	// If we got here, we should have the newly created channel id.
 	Console.WriteLine(channelId);
 
+
 <!--HONumber=52-->

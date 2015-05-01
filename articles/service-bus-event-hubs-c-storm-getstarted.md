@@ -111,4 +111,5 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-sensor-data-analysis/
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
 
+
 <!--HONumber=52-->

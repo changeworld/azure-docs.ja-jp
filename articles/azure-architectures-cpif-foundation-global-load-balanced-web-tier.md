@@ -50,4 +50,5 @@ CPIF は、組織、顧客、パートナー向けに、Azure、System Center、
 [バッチ処理層](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-0bc3f8b1)
 
 
+
 <!--HONumber=52-->

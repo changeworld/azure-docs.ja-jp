@@ -163,4 +163,5 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 [クロス オリジン リソース共有]: http://msdn.microsoft.com/library/windowsazure/dn155871.aspx
 
 [最新バージョンの Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
+
 <!--HONumber=52-->

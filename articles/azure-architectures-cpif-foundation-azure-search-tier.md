@@ -46,4 +46,5 @@ Azure Search 層設計パターンは、地理的な境界を越えて予測可�
 
 [バッチ処理層](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-0bc3f8b1)
 
+
 <!--HONumber=52-->

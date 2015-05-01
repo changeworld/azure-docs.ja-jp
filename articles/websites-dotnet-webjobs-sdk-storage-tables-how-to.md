@@ -162,4 +162,5 @@ Azure のストレージ API を直接操作する場合は、メソッドシグ
 
 このガイドでは、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
+
 <!--HONumber=52-->

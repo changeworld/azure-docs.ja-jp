@@ -421,4 +421,5 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation 
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
 
+
 <!--HONumber=52-->

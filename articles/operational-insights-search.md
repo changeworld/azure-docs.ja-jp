@@ -52,4 +52,5 @@ Microsoft Azure オペレーション インサイトの核となる機能は検
 - [IIS 管理パックのイベント アラート ルールでオペレーション インサイトの検索と同等の処理を行う](http://blogs.msdn.com/b/dmuscett/archive/2014/11/05/iis-mp-event-alerting-rules-s-opinsights-searches-equivalents.aspx)
 - [オペレーション インサイトの便利な検索クエリ集](http://blogs.msdn.com/b/dmuscett/archive/2014/10/19/advisor-searches-collection.aspx)
 
+
 <!--HONumber=52-->

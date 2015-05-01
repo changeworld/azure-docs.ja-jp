@@ -101,4 +101,5 @@ static ILocator GetStreamingHLSOriginLocator( string targetAssetID)
 [Media Services SDK for .NET によるアプリケーション構築]: http://go.microsoft.com/fwlink/?linkid=247821
 [Media Services フォーラム]: http://social.msdn.microsoft.com/Forums/MediaServices/threads
 
+
 <!--HONumber=52-->
