@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Traffic Manasger プロファイルの変更履歴の表示
-   description="この記事は、Traffic Manager プロファイルの変更の履歴を表示するために役立ちます。
-   services="traffic-manager"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn" />
+	pageTitle="Traffic Manasger プロファイルの変更履歴の表示"
+	description="この記事は、Traffic Manager プロファイルの変更の履歴を表示するために役立ちます。"
+	services="traffic-manager"
+	documentationCenter="na"
+	authors="cherylmc"
+	manager="adinah"
+	editor="tysonn" />
 <tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="02/23/2015"
-   ms.author="cherylmc" />
+	ms.service="traffic-manager"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="02/23/2015"
+	ms.author="cherylmc" />
 
 # トラフィック マネージャー プロファイルの変更履歴を表示する
 

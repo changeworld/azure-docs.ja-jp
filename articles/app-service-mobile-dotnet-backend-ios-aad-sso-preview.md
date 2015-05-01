@@ -1,10 +1,10 @@
 <properties 
-        pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する" 
-        description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。" 
-        documentationCenter="Mobile" 
-        authors="mattchenderson" 
-        services="app-service\mobile" 
-        manager="dwrede" />
+	pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する" 
+	description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。" 
+	documentationCenter="Mobile" 
+	authors="mattchenderson" 
+	services="app-service\mobile" 
+	manager="dwrede" />
 
 <tags ms.service="app-service"
 	ms.workload="mobile"

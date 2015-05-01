@@ -1,19 +1,19 @@
-﻿<properties
-   pageTitle="Traffic Manager プロファイルの管理
-   description="この記事は、Traffic Manager プロファイルの履歴を作成、無効化、有効化、削除、および表示するために役立ちます。
-   services="traffic-manager"
-   documentationCenter=""
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn" />
+<properties
+	pageTitle="Traffic Manager プロファイルの管理"
+	description="この記事は、Traffic Manager プロファイルの履歴を作成、無効化、有効化、削除、および表示するために役立ちます。"
+	services="traffic-manager"
+	documentationCenter=""
+	authors="cherylmc"
+	manager="adinah"
+	editor="tysonn" />
 <tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="02/27/2015"
-   ms.author="cherylmc" />
+	ms.service="traffic-manager"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="02/27/2015"
+	ms.author="cherylmc" />
 
 # Traffic Manager プロファイルの管理
 

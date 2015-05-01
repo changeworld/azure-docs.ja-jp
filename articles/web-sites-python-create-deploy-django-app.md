@@ -1,6 +1,6 @@
-﻿<properties 
-	pageTitle="Django を使用した Python Web サイト - Azure チュートリアル 
-	description="Azure での Python Web サイトの実行について説明するチュートリアル。 
+<properties 
+	pageTitle="Django を使用した Python Web サイト - Azure チュートリアル" 
+	description="Azure での Python Web サイトの実行について説明するチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter="python" 
 	authors="huguesv" 

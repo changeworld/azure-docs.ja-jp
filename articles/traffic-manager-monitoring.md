@@ -1,19 +1,19 @@
-﻿<properties 
-   pageTitle="Traffic Manager の監視
-   description="この記事は、Traffic Manager の監視について理解し、これを構成するために役立ちます。
-   services="traffic-manager"
-   documentationCenter=""
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn" />
+<properties 
+	pageTitle="Traffic Manager の監視"
+	description="この記事は、Traffic Manager の監視について理解し、これを構成するために役立ちます。"
+	services="traffic-manager"
+	documentationCenter=""
+	authors="cherylmc"
+	manager="adinah"
+	editor="tysonn" />
 <tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="02/27/2015"
-   ms.author="cherylmc" />
+	ms.service="traffic-manager"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="02/27/2015"
+	ms.author="cherylmc" />
 
 # Traffic Manager の監視について
 

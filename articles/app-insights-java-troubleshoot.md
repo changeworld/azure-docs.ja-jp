@@ -1,8 +1,8 @@
-﻿<properties 
+<properties 
 	pageTitle="Java Web プロジェクトでの Application Insights のトラブルシューティング" 
 	description="トラブルシューティング ガイド、質問と回答" 
 	services="application-insights" 
-    documentationCenter=""
+	documentationCenter=""
 	authors="alancameronwills" 
 	manager="keboyd"/>
 

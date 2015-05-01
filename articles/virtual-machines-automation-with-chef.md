@@ -1,18 +1,20 @@
-﻿<properties 
-   pageTitle="Chef で Azure 仮想マシンのデプロイを自動化する 
-   description="Chef で Azure 仮想マシンのデプロイを自動化する方法" 
-   services="virtual-machines" 
-   documentationCenter="" 
-   authors="diegoviso" 
-   manager="timlt" 
-   editor=""/>
+<properties 
+	pageTitle="Chef で Azure 仮想マシンのデプロイを自動化する"
+	description="Chef で Azure 仮想マシンのデプロイを自動化する方法" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="diegoviso" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" 
-ms.tgt_pltfrm="vm-multiple" 
-ms.devlang="na" 
-ms.topic="article" 
-ms.date="01/29/2015" 
-ms.author="diviso"/>
+<tags 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-multiple" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/29/2015" 
+	ms.author="diviso"/>
 
 # Chef で Azure 仮想マシンのデプロイを自動化する
 

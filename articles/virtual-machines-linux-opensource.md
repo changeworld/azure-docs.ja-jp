@@ -1,19 +1,19 @@
-﻿<properties
-  pageTitle="Azure での Linux およびオープン ソース コンピューティング"
-  description="このトピックには、Linux の基本的な使用法、Azure での Linux イメージの実行やアップロードに関するいくつかの基本的な概念、特定のテクノロジと最適化に関するその他のコンテンツなど、Azure での Linux およびオープン ソース コンピューティングの一覧が含まれています。"
-  documentationCenter=""
-  authors="squillace"
-  manager="timlt"
-  editor="tysonn"/>
+<properties
+	pageTitle="Azure での Linux およびオープン ソース コンピューティング"
+	description="このトピックには、Linux の基本的な使用法、Azure での Linux イメージの実行やアップロードに関するいくつかの基本的な概念、特定のテクノロジと最適化に関するその他のコンテンツなど、Azure での Linux およびオープン ソース コンピューティングの一覧が含まれています。"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
+	editor="tysonn"/>
 
 <tags
-  ms.service="virtual-machines"
-  ms.devlang="NA"
-  ms.topic="article"
-  ms.tgt_pltfrm="vm-linux"
-  ms.workload="infrastructure-services"
-  ms.date="02/28/2015"
-  ms.author="rasquill"/>
+	ms.service="virtual-machines"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-linux"
+	ms.workload="infrastructure-services"
+	ms.date="02/28/2015"
+	ms.author="rasquill"/>
 
 
 <!--The next line, with one pound sign at the beginning, is the page title-->

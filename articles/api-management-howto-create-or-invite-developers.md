@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure API Management の開発者アカウントの管理方法" 
-	description="<作成または Azure API Management の開発者を招待する方法をについてください。" 
+	description="作成または Azure API Management の開発者を招待する方法をについてください。" 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 

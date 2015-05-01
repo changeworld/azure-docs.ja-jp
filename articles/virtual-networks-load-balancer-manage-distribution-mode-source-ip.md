@@ -1,27 +1,26 @@
-﻿<properties 
-   authors="danielceckert" 
-   documentationCenter="dev-center-name" 
-   editor=""
-   manager="jefco" 
-   pageTitle="管理:ロード バランサー分散モード (ソース IP アフィニティ)" 
-   description="Azure ロード バランサー分散モードの管理機能" 
-   services="virtual-network" 
-   />
+<properties 
+	authors="danielceckert" 
+	documentationCenter="dev-center-name" 
+	editor=""
+	manager="jefco" 
+	pageTitle="管理:ロード バランサー分散モード (ソース IP アフィニティ)" 
+	description="Azure ロード バランサー分散モードの管理機能" 
+	services="virtual-network" 
+/>
 
 <tags
-   ms.author="danecke"
-   ms.date="02/20/2015"
-   ms.devlang="na"
-   ms.service="virtual-network"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
+	ms.author="danecke"
+	ms.date="02/20/2015"
+	ms.devlang="na"
+	ms.service="virtual-network"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
 <<<<<<< HEAD:articles/virtual-networks-load-balancer-manage-distribution-mode.md
-   />
+/>
    
 # 仮想ネットワークの管理:ロード バランサー分散モード (ソース IP アフィニティ)
-=======
-   /> 
+
    
 # 仮想ネットワークの管理:ロード バランサー分散モード (ソース IP アフィニティ)
 >>>>>>> 5781a6382194f50134d2a16bd9d72a6cca290f3d:articles/virtual-networks-load-balancer-manage-distribution-mode-source-ip.md

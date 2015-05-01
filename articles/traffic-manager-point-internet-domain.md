@@ -1,19 +1,19 @@
-﻿<properties
-   pageTitle="会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする
-   description="この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。
-   services="traffic-manager"
-   documentationCenter=""
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn" />
+<properties
+	pageTitle="会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする"
+	description="この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。"
+	services="traffic-manager"
+	documentationCenter=""
+	authors="cherylmc"
+	manager="adinah"
+	editor="tysonn" />
 <tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="02/27/2015"
-   ms.author="cherylmc" />
+	ms.service="traffic-manager"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="02/27/2015"
+	ms.author="cherylmc" />
 
 # 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする
 

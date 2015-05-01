@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure 上の Linux に対応するユーザー名の選択" 
-	Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" 
+	description="Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 

@@ -1,47 +1,53 @@
 <properties 
 	pageTitle="Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法)" 
 	description="Python Tools for Visual Studio を使って、MySQL データベース インスタンスにデータを保存する Django アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。" 
-	services="app-service\web" 
-	tags="python"
+	services="" 
 	documentationCenter="python" 
 	authors="huguesv" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="web-sites" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="02/09/2015" 
-	ms.author="huguesv"/>
+	ms.date="10/10/2014" 
+	ms.author="huvalo"/>
 
 
 
 
 # Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法) 
 
-このチュートリアルでは、[Python Tools for Visual Studio][] のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=oKCApIrS0Lo)でもご覧いただけます。
+このチュートリアルでは、PTVS のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=oKCApIrS0Lo)でもご覧いただけます
 
 ここでは、Azure でホストされた MySQL サービスを使用する方法、MySQL を使用するためのアプリケーションの構成方法、アプリケーションを Azure Websites に発行する方法について説明します。
 
 MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]をご覧ください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
 
-## 前提条件
++ [前提条件](#prerequisites)
++ [プロジェクトを作成する](#create-the-project)
++ [MySQL データベースを作成する](#create-a-mysql-database)
++ [プロジェクトを構成する](#configure-the-project)
++ [Azure Websites に発行する](#publish-to-an-azure-website)
++ [次のステップ](#next-steps)
+
+##<a name="prerequisites"></a>前提条件
 
  - Visual Studio 2012 または 2013
  - [Python Tools 2.1 for Visual Studio][]
- - [Python Tools 2.1 for Visual Studio サンプル VSIX][]
+ - [Python Tools 2.1 for Visual Studio Samples VSIX][]
  - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2012][]
  - [Python 2.7 (32 ビット)][]
 
 > [AZURE.NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/pricing/free-trial/">無料評価版にサインアップ</a>してください。
 > 
-> アカウントにサインアップする前に Azure Web サイトを実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=python">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Web サイトで、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=python">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
-## プロジェクトを作成する
+##<a name="create-the-project"></a>プロジェクトを作成する
 
 このセクションでは、サンプル テンプレートを使用して Visual Studio プロジェクトを作成します。まず仮想環境を作成し、必要なパッケージをインストールします。sqlite を使用してローカル データベースを作成します。その後、アプリケーションをローカルで実行します。
 
@@ -49,45 +55,45 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 1.  PTVS サンプル VSIX のプロジェクト テンプレートは、**[Python]** の **[サンプル]** にあります。**[Polls Django Web Project]** を選択し、[OK] をクリックしてプロジェクトを作成します。
 
-  	![New Project ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoNewProject.png)
+  	![New Project Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoNewProject.png)
 
 1.  外部のパッケージをインストールするよう求めるメッセージが表示されます。**[Install into a virtual environment]** を選択します。
 
-  	![External Packages ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoExternalPackages.png)
+  	![External Packages Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoExternalPackages.png)
 
 1.  **[Python 2.7]** をベース インタープリターとして選択します。
 
-  	![Add Virtual Environment ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsCommonAddVirtualEnv.png)
+  	![Add Virtual Environment Dialog](./media/web-sites-python-ptvs-django-mysql/PollsCommonAddVirtualEnv.png)
 
 1.  プロジェクト ノードを右クリックし、**[Python]**、**[Django Sync DB]** の順に選択します。
 
-  	![Django Sync DB コマンド](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSyncDB.png)
+  	![Django Sync DB Command](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSyncDB.png)
 
 1.  Django 管理コンソールが表示されます。プロンプトに従ってユーザーを作成します。
 
     これで、プロジェクト フォルダーに sqlite データベースが作成されます。
 
-  	![Django Management Console ウィンドウ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
+  	![Django Management Console Window](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
-1.  <kbd>F5</kbd> キーを押してアプリケーションの動作を確認します
+1.  <kbd>F5</kbd> キーを押して、アプリケーションが動作することを確認します。
 
-1.  一番上のナビゲーション バーの  **[Log in]** をクリックします。
+1.  一番上のナビゲーション バーの **[Log in]** をクリックします。
 
-  	![Web ブラウザー](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalMenu.png)
+  	![Web Browser](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalMenu.png)
 
 1.  データベースを同期したときに作成したユーザーの資格情報を入力します。
 
-  	![Web ブラウザー](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)
+  	![Web Browser](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)
 
 1.  **[Create Sample Polls]** をクリックします。
 
-  	![Web ブラウザー](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
+  	![Web Browser](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
 
 1.  投票内容をクリックして投票します。
 
-  	![Web ブラウザー](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
+  	![Web Browser](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
 
-## MySQL データベースを作成する
+##<a name="create-a-mysql-database"></a>MySQL データベースを作成する
 
 データベースに関しては、ClearDB MySQL ホステッド データベースを Azure 上に作成します。
 
@@ -99,29 +105,29 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
 1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
-  	![New ボタン](./media/web-sites-python-ptvs-django-mysql/PollsCommonAzurePlusNew.png)
+  	![New Button](./media/web-sites-python-ptvs-django-mysql/PollsCommonAzurePlusNew.png)
 
 1.  **[ストア]** をクリックし、**[ClearDB MySQL Database]** をクリックします。
 
-  	![Choose Add-on ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon1.png)
+  	![Choose Add-on Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon1.png)
 
 1.  [名前] に、データベース サービスに使用する名前を入力します。
 
 1.  データベース サービスの配置先となるリージョンまたはアフィニティ グループを選択します。Azure アプリケーションからデータベースを使用する場合は、アプリケーションのデプロイ先と同じリージョンを選択します。
 
-  	![Personalize Add-on ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon2.png)
+  	![Personalize Add-on Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon2.png)
 
 1.  **[購入]** をクリックします。
 
-## プロジェクトを構成する
+##<a name="configure-the-project"></a>プロジェクトを構成する
 
 このセクションでは、先ほど作成した MySQL データベースを使用するための構成をアプリケーションに対して行います。まず、Azure ポータルから接続設定を取得する方法を見ていきます。また、Django で MySQL データベースを使用するために必要な Python パッケージも別途インストールします。その後、アプリケーションをローカルで実行します。
 
-1.  [Azure 管理ポータル][]で、**[アドオン]** をクリックし、先ほど作成した ClearDB MySQL Database サービスをクリックします。
+1.  [Azure の管理ポータル][]で、**[アドオン]** をクリックし、先ほど作成した ClearDB MySQL Database サービスをクリックします。
 
 1.  **[接続文字列]** をクリックします。コピー ボタンを使用すると、**CONNECTIONSTRING** の値をクリップボードに取得できます。
 
-  	![Connection Info ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLConnectionInfo.png)
+  	![Connection Info Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLConnectionInfo.png)
 
 1.  Visual Studio で、 *ProjectName* フォルダーの **settings.py** を開きます。接続文字列を一時的にエディターに貼り付けます。この接続文字列の形式を次に示します。
 
@@ -145,23 +151,23 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
 1. **easy_install** を使用して  `mysql-python` パッケージをインストールします。
 
-  	![Install Package ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
+  	![Install Package Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
 
 1.  プロジェクト ノードを右クリックし、**[Python]**、**[Django Sync DB]** の順に選択します。  
 
     前のセクションで作成した MySQL データベースのテーブルが作成されます。プロンプトに従ってユーザーを作成してください。最初のセクションで作成した sqlite データベースのユーザーと一致させる必要はありません。
 
-  	![Django Management Console ウィンドウ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
+  	![Django Management Console Window](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
-1.  <kbd>F5</kbd> キーでアプリケーションを実行します。**[Create Sample Polls]**  で作成された投票内容と投票によって送信されたデータが MySQL データベースにシリアル化されます。
+1.  <kbd>F5</kbd> を使用してアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが MySQL データベースにシリアル化されます。
 
-## Azure Websites に発行する
+##<a name="publish-to-an-azure-website"></a>Azure Websites に発行する
 
-作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイすることができます。
+作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイできます。
 
-1.  **[ソリューション エクスプローラー]** で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
+1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
 
-  	![Publish Web ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
+  	![Publish Web Dialog](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
 
 1.  **[Microsoft Azure Websites]** をクリックします。
 
@@ -169,7 +175,7 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
 1.  **[サイト名]** と **[リージョン]** を選択し、**[作成]** をクリックします。
 
-  	![Create Site on Microsoft Azure ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsCommonCreateWebSite.png)
+  	![Create Site on Microsoft Azure Dialog](./media/web-sites-python-ptvs-django-mysql/PollsCommonCreateWebSite.png)
 
 1.  それ以外はすべて既定値のままにし、**[発行]** をクリックします。
 
@@ -177,9 +183,9 @@ Azure 上で動作する独自の仮想マシンを作成し、MySQL をイン�
 
     ご利用ありがとうございます。
 
-  	![Web ブラウザー](./media/web-sites-python-ptvs-django-mysql/PollsDjangoAzureBrowser.png)
+  	![Web Browser](./media/web-sites-python-ptvs-django-mysql/PollsDjangoAzureBrowser.png)
 
-## 次のステップ
+##<a name="next-steps"></a>次のステップ
 
 Python Tools for Visual Studio、Django、MySQL の詳細については、以下のリンクをクリックしてください。
 
@@ -192,12 +198,11 @@ Python Tools for Visual Studio、Django、MySQL の詳細については、以�
 
 
 <!--Link references-->
-[Python デベロッパー センター]: /develop/python/
-[Azure Cloud Services]: cloud-services-python-ptvs.md
+[Python デベロッパー センター]: /ja-jp/develop/python/
+[Azure クラウド サービス]: ../cloud-services-python-ptvs/
 
 <!--External Link references-->
 [Azure 管理ポータル]: https://manage.windowsazure.com
-[Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
@@ -210,4 +215,6 @@ Python Tools for Visual Studio、Django、MySQL の詳細については、以�
 [Django のドキュメント]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
 
-<!--HONumber=52-->
+
+
+<!--HONumber=42-->

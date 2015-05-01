@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="データの使用 (Windows ストア JavaScript) | モバイル デベロッパー センター" 
-	description="Mobile Services を使用して Windows ストア JavaScript アプリでデータを活用する方法について説明します。 
+	description="Mobile Services を使用して Windows ストア JavaScript アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
