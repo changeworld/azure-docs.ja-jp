@@ -55,7 +55,7 @@ Mobile Services を作成したら、管理ポータルの簡単なクイック 
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
-   	![](./media/mobile-services-android-get-started/mobile-portal-quickstart-android1.png)
+   	![](./media/mobile-services-android-get-started/mobile-portal-quickstart-android.png)
 
    	これにより、Mobile Services に接続された Android アプリを作成するための簡単な 3 つの手順が表示されます。
 
