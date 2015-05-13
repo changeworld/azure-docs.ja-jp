@@ -214,7 +214,7 @@ pip を使用して追加のパッケージをインストールできます。�
 
 仮想環境を作成したり、パッケージをインストールしたりするため、最初のデプロイには時間がかかります。
 
-Visual Studio にはデプロイの進捗状況は表示されません。出力を確認する場合は、「[トラブルシューティング - デプロイ]」のセクションをご覧ください(#troubleshooting-deployment)。
+Visual Studio にはデプロイの進捗状況は表示されません。出力を確認する場合は、「[トラブルシューティング - デプロイ](#troubleshooting-deployment)」のセクションをご覧ください。
 
 Azure URL を参照して、変更内容を表示します。
 
@@ -421,6 +421,5 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [PTVS のドキュメント]: http://pytools.codeplex.com/documentation
 [Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation 
 [Flask のドキュメント]: http://flask.pocoo.org/ 
-
 
 <!--HONumber=52-->

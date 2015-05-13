@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="ASP.NET Web API と SQL データベースを使用する Rest サービスを Azure App Service に作成する" 
 	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。" 
 	services="app-service\web" 
@@ -554,7 +554,7 @@ To:
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP)」 および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)」を参照してください。
+詳細については、「[Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP)」 および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))」を参照してください。
 
 1. **ソリューション エクスプローラー** で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
@@ -733,7 +733,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 <h2><a name="nextsteps"></a>次のステップ</h2>
 
-実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションの展開)]」(web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションを展開する方法について説明しています。
+実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションの展開)](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」 は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションを展開する方法について説明しています。
 
 Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
  

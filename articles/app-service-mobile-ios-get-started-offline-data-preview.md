@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="モバイル アプリのオフライン同期を有効にする (iOS)" 
 	description="App Service Mobile App を使用して、iOS アプリケーション内のオフライン データをキャッシュおよび同期する方法を説明します。" 
 	documentationCenter="ios" 
@@ -115,7 +115,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
       * MS_TableConfig:すべてのプル操作に対する最後の同期操作の最終更新時刻の追跡用
       * TodoItem:Todo 項目の格納用。システム列 **ms_createdAt**、**ms_updatedAt**、および **ms_version** は省略可能なシステム プロパティです。 
 
->[AZURE.NOTE] モバイル アプリ SDK では、**`ms_`**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
+>[AZURE.NOTE] モバイル アプリ SDK では、"**`ms_`**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
 
 - オフライン同期機能を使用する場合は、次のようにシステム テーブルを定義する必要があります。
 
@@ -246,6 +246,7 @@ Core Data ローカル ストアを使用する場合、[正しいシステム �
 <!-- URLs. -->
 
 [iOS アプリの作成]: app-service-mobile-dotnet-backend-ios-get-started.md
+[iOS アプリケーションの作成]: app-service-mobile-dotnet-backend-ios-get-started.md
 
 [core-data-1]: ./media/mobile-services-ios-get-started-offline-data/core-data-1.png
 [core-data-2]: ./media/mobile-services-ios-get-started-offline-data/core-data-2.png
@@ -277,6 +278,7 @@ Core Data ローカル ストアを使用する場合、[正しいシステム �
 [論理削除]: mobile-services-using-soft-delete.md
 
 [Cloud Cover:Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover:Azure Mobile Services でのオフラインの同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday:Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 <!--HONumber=49-->

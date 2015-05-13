@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="HTML クライアントの使用方法 - Azure Mobile Services" 
 	description="Azure Mobile Services 向け HTML クライアントを使用する方法について説明します。" 
 	services="mobile-services" 
@@ -414,7 +414,8 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 
 <h2><a name="caching"></a>方法:ユーザーを認証する</h2>
 
-Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「[モバイル サービスでの認証の使用]」を参照してください。
+Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「[
+- モバイル サービスでの認証の使用]」を参照してください。
 
 _server flow_ および _client flow_ という 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
@@ -635,10 +636,12 @@ promise はいくつかの異なる方法で使用することができます。
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [データの使用]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-html/
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
+[モバイル サービスでの認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
 [認証 Windows ストアの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
 [then]: http://msdn.microsoft.com/library/windows/apps/br229728.aspx
 [done]: http://msdn.microsoft.com/library/windows/apps/hh701079.aspx
 [then と done の違いについてはこのページを参照してください]: http://msdn.microsoft.com/library/windows/apps/hh700334.aspx
+[then と done の違いについては、こちらのページを参照してください]: http://msdn.microsoft.com/library/windows/apps/hh700334.aspx
 [promise を使ってエラーを処理する方法 ]: http://msdn.microsoft.com/library/windows/apps/hh700337.aspx
 
 [sessionStorage]: http://msdn.microsoft.com/library/cc197062(v=vs.85).aspx
@@ -658,9 +661,10 @@ promise はいくつかの異なる方法で使用することができます。
 [login]: http://msdn.microsoft.com/library/windowsazure/jj554236.aspx
 [シングル サインオンによるアプリの認証]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
 [ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[モバイル サービス テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
 [OData システム クエリ オプションのリファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
-
 
 
 <!--HONumber=42-->

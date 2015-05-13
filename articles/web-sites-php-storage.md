@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azurre ストレージを使った Azure App Service での PHP Web アプリの作成" 
 	description="このチュートリアルでは、Azure App Service で PHP Web アプリを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。" 
 	services="app-service\web, storage" 
@@ -205,7 +205,7 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 			echo "<h3>No items on list.</h3>";
 		?>
 
-* Last, you must insert the form that feeds data into the task insertion script and complete the HTML:
+* 最後に、データをタスク挿入スクリプトに取り込むためのフォームを挿入して、HTML を完成する必要があります。
 
 			<hr/>
 			<form action="additem.php" method="post">
@@ -427,6 +427,5 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 [credentials]: ./media/web-sites-php-storage/git-deployment-credentials.png
 
 [git-instructions]: ./media/web-sites-php-storage/git-instructions.png
-
 
 <!--HONumber=52-->

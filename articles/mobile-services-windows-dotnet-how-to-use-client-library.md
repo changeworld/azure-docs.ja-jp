@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Mobile Services 向け .NET クライアント ライブラリの操作" 
 	description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" 
 	services="" 
@@ -723,10 +723,10 @@ Mobile Services はデータを検証してエラー応答をサーバー側に�
 <!-- URLs. -->
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
 [モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Windows ストアのクイック スタート チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started/
-[Windows Phone のクイック スタート チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-wp8/
-[Windows ストアのデータ チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-dotnet/
-[Windows Phone のデータ チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-wp8/
+[Windows ストアのクイック スタートのチュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started/
+[Windows Phone のクイック スタートのチュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-wp8/
+[Windows ストアのデータのチュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-dotnet/
+[Windows Phone のデータのチュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-data-wp8/
 [Windows ストアの認証]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Windows Phone の認証]: http://azure.microsoft.com/develop/mobile/tutorials/get-started-with-users-wp8/
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
@@ -743,18 +743,17 @@ Mobile Services はデータを検証してエラー応答をサーバー側に�
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
-[ASCII 制御コード C0 および C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
-[オプティミスティック同時実行制御チュートリアル]: http://azure.microsoft.com/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/
+[ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[モバイル サービス テーブルの管理用コマンド]: http://azure.microsoft.com/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[オプティミスティック同時実行制御のチュートリアルに関するページ]: http://azure.microsoft.com/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/
 
 [IncludeTotalCount]: http://msdn.microsoft.com/library/windowsazure/dn250560.aspx
 [Skip]: http://msdn.microsoft.com/library/windowsazure/dn250573.aspx
 [Take]: http://msdn.microsoft.com/library/windowsazure/dn250574.aspx
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure Mobile Services クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
-[ クライアントからのカスタム API 呼び出し]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api/
+[クライアントからのカスタム API 呼び出し]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api/
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
-
 
 
 <!--HONumber=42-->

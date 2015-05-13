@@ -46,7 +46,7 @@ Trace.TraceError("My error statement");
 
 システム診断名前空間の Trace クラス。
 
-In a node.js app you can write this code to achieve the same result:
+node.js アプリケーションでは、次のコードを記述すると同じ結果を得られます。
 
 `````````````````````````
 console.log("My trace statement").
@@ -92,6 +92,5 @@ cd
 [BrowseSitesScreenshot]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
-
 
 <!--HONumber=52-->

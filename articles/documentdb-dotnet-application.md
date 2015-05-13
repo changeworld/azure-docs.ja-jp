@@ -618,7 +618,7 @@
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web プラットフォーム インストーラー]: http://www.microsoft.com/web/downloads/platform.aspx
 [GitHub]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
-[クロスサイト リクエスト フォージェリの防止]: http://go.microsoft.com/fwlink/?LinkID=517254
-[ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
+[クロスサイト リクエスト フォージェリの防止に関するページ]: http://go.microsoft.com/fwlink/?LinkID=517254
+[ASP.NET MVC での基本的な CRUD 操作に関するページ]: http://go.microsoft.com/fwlink/?LinkId=317598
 
 <!--HONumber=49-->

@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="認証の使用 (Windows ストア) | モバイル デベロッパー センター" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows ストア アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
@@ -71,7 +71,7 @@
 
 ## <a name="next-steps"> </a>次のステップ
 
-次の [Mobile Services ユーザーのサービス側の承認]に関するチュートリアル (mobile-services-javascript-backend-service-side-authorization.md) では、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。.NET で Mobile Services を使用する方法の詳細については、[Mobile Services .NET の使用方法の概念リファレンス]に関するページを参照してください。
+次の [Mobile Services ユーザーのサービス側の承認](mobile-services-javascript-backend-service-side-authorization.md)に関するチュートリアル  では、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。.NET で Mobile Services を使用する方法の詳細については、[Mobile Services .NET の使用方法の概念リファレンス]に関するページを参照してください。
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、Mobile Services を構成する]: #register
@@ -85,7 +85,7 @@
 [アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Live Connect を使用した Windows ストア アプリへのシングル サインオン]: mobile-services-windows-store-dotnet-single-sign-on.md
+[Live Connect を使用した Windows Phone アプリへのシングル サインオン]: mobile-services-windows-store-dotnet-single-sign-on.md
 [Mobile Services の使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
 [データの使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started-data.md
 [認証の使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started-users.md
