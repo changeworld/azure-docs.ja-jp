@@ -1,6 +1,20 @@
-﻿<properties urlDisplayName="Blitline Image Processing Service" pageTitle="画像処理のための Blitline の使用方法 - Azure の機能ガイド " metaKeywords="" description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。" metaCanonical="" services="" documentationCenter=".NET" title="How to use Blitline with Azure and Azure Storage" authors="jason@blitline.com" solutions="" manager="jason@blitline.com" editor="jason@blitline.com" />
+<properties 
+	pageTitle="Blitline を使用した画像処理の方法 - Azure の機能ガイド" 
+	description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。" 
+	services="" 
+	documentationCenter=".net" 
+	authors="blitline-dev" 
+	manager="jason@blitline.com" 
+	editor="jason@blitline.com"/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/09/2014" ms.author="support@blitline.com" />
+<tags 
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/09/2014" 
+	ms.author="support@blitline.com"/>
 
 
 
@@ -38,11 +52,11 @@ Blitline がどのようなときに役立つかは、使い始める前に Blit
 
 - Blitline は画像のアップロードを受け入れないため、画像を直接 Blitline に送信することはできません。Azure ストレージまたは Blitline でサポートされる他の場所に画像を送信してから、その画像を取得できる場所を Blitline に指定する必要があります。
 
-- Blitline は並列性がきわめて高いため、同期処理を行いません。つまり、マイクロソフトに postback_url を伝える必要があり、処理が完了すると通知を受け取ります。
+- Blitline は並列性がきわめて高いため、同期処理を行いません。つまり、マイクロソフトに postback\_url を伝える必要があり、処理が完了すると通知を受け取ります。
 
 ## <a id="createaccount"></a>Blitline アカウントの作成
 
-[WACOM.INCLUDE [blitline サインアップ](../includes/blitline-signup.md)]
+[AZURE.INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
 ## <a id="createjob"></a>Blitline ジョブを作成する方法
 
@@ -62,13 +76,13 @@ Blitline では、JSON を使用して画像に対して実行する操作を定
 
 この JSON では、"src" 画像として "...boys.jpeg" を取得し、その画像のサイズを 240x140 に変更します。
 
-アプリケーション ID は、Azure の **[接続文字列]** タブまたは **[管理]** タブに表示される ID です。これは、Blitline でのジョブの実行を可能にする秘密の識別子です。
+アプリケーション ID は、Azure の **\[接続文字列\]** タブまたは **\[管理\]** タブに表示される ID です。これは、Blitline でのジョブの実行を可能にする秘密の識別子です。
 
-"save" パラメーターは、処理された画像を配置する場所に関する情報を識別します。この簡単なケースでは定義されていません。場所が定義されていない場合、Blitline により独自のクラウドの場所にローカルで (かつ一時的に) 保存されます。Blitline を作成すると、Blitline により返された JSON からその場所を取得できるようになります。"image" 識別子は必須であり、保存されたこの特定の画像を識別するときに返されます。
+"save" パラメーターは、処理された画像を配置する場所に関する情報を識別します。この簡単なケースでは定義されていません。場所が定義されていない場合、Blitline により独自のクラウドの場所にローカルで \(かつ一時的に\) 保存されます。Blitline を作成すると、Blitline により返された JSON からその場所を取得できるようになります。"image" 識別子は必須であり、保存されたこの特定の画像を識別するときに返されます。
 
-ここでサポートされる *機能* の詳細については、次を参照してください。 <http://www.blitline.com/docs/functions>
+ここでサポートされる*機能*の詳細については、<http://www.blitline.com/docs/functions> を参照してください。
 
-ジョブ オプションに関するドキュメントは、次の場所にあります。 <http://www.blitline.com/docs/api>
+ジョブ オプションに関するドキュメントは、<http://www.blitline.com/docs/api> にも用意されています。
 
 JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST** するだけです。
 
@@ -86,12 +100,11 @@ JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST
     }
 
 
-これは、Blitline が要求を受け取って処理キューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています。
-**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています。**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
-## <a id="saveazure"></a>画像を Azure ストレージ アカウントに保存する方法
+## <a id="saveazure"></a>画像を Azure Storage アカウントに保存する方法
 
-Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure_destination" を追加することで、Blitline からプッシュする場所とアクセス許可を定義します。
+Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure\_destination" を追加することで、Blitline からプッシュする場所とアクセス許可を定義します。
 
 たとえば次のようになります。
 
@@ -135,12 +148,12 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
 * サード パーティの Nuget ライブラリ <http://nuget.org/packages/Blitline.Net>
 
 
-  [次のステップ]: #nextsteps
-  [Blitline とは]: #whatis
-  [Blitline に当てはまらないこと]: #whatisnot
-  [Blitline アカウントの作成]: #createaccount
-  [Blitline ジョブを作成する方法]: #createjob
-  [画像を Azure ストレージに保存する方法]: #saveazure
+[次のステップ]: #nextsteps
+[Blitline とは]: #whatis
+[Blitline に当てはまらないこと]: #whatisnot
+[Blitline アカウントの作成]: #createaccount
+[Blitline ジョブを作成する方法]: #createjob
+[画像を Azure ストレージに保存する方法]: #saveazure
 
 
-<!--HONumber=35.2-->
+<!--HONumber=52-->

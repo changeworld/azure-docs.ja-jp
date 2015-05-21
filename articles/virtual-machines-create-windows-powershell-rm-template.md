@@ -1,0 +1,335 @@
+<properties 
+	pageTitle="リソース マネージャー テンプレートで Windows 仮想マシンを作成する" 
+	description="PowerShell または Azure CLI で新しい Windows 仮想マシンを簡単に作成するには、リソース マネージャー テンプレートを使用します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
+	editor=""/>
+
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="04/29/2015" 
+	ms.author="josephd"/>
+
+# リソース マネージャー テンプレートで Windows 仮想マシンを作成する
+
+Windows ベースの Azure Virtual Machines \(VM\) は、Azure PowerShell または Azure CLI からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
+
+![](./media/virtual-machines-create-windows-powershell-rm-template/windowsvm.png)
+ 
+実際の作業を開始する前に、Azure PowerShell と Azure CLI が構成され、準備が整っていることを確認してください。
+
+[AZURE.INCLUDE [arm-getting-setup-powershell](../includes/arm-getting-setup-powershell.md)]
+
+[AZURE.INCLUDE [xplat-getting-set-up-arm](../includes/xplat-getting-set-up-arm.md)]
+
+## Azure PowerShell からリソース マネージャー テンプレートを使って Windows VM を作成する
+
+Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure PowerShell を使用して Windows VM を作成するには、以下の手順に従います。
+
+### 手順 1. テンプレートの JSON ファイルを確認する。
+
+テンプレートの JSON ファイルの内容を次に示します。
+
+	{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "newStorageAccountName": {
+            "type": "string",
+            "metadata": {
+                "Description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+               "Description": "Username for the Virtual Machine."
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "Description": "Password for the Virtual Machine."
+            }
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "metadata": {
+                  "Description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "windowsOSVersion": {
+            "type": "string",
+            "defaultValue": "2012-R2-Datacenter",
+            "allowedValues": [
+                "2008-R2-SP1", 
+                "2012-Datacenter", 
+                "2012-R2-Datacenter", 
+                "Windows-Server-Technical-Preview"
+            ],
+            "metadata": {
+                "Description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
+            }
+        }
+    },
+    "variables": {
+        "location": "West US",
+        "imagePublisher": "MicrosoftWindowsServer", 
+        "imageOffer": "WindowsServer", 
+        "OSDiskName": "osdiskforwindowssimple",
+        "nicName": "myVMNic",
+        "addressPrefix": "10.0.0.0/16", 
+        "subnetName": "Subnet",
+        "subnetPrefix": "10.0.0.0/24",
+        "storageAccountType": "Standard_LRS",
+        "publicIPAddressName": "myPublicIP",
+        "publicIPAddressType": "Dynamic",
+        "vmStorageAccountContainerName": "vhds",
+        "vmName": "MyWindowsVM",
+        "vmSize": "Standard_D1",
+        "virtualNetworkName": "MyVNET",        
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
+    },    
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('newStorageAccountName')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[variables('location')]",
+            "properties": {
+                "accountType": "[variables('storageAccountType')]"
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[variables('virtualNetworkName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('addressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[variables('nicName')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
+                "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('vmSize')]"
+                },
+                "osProfile": {
+                    "computername": "[variables('vmName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
+                        "sku" : "[parameters('windowsOSVersion')]",
+                        "version":"latest"
+                    },
+                   "osDisk" : {
+                        "name": "osdisk",
+                        "vhd": {
+                            "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+                        },
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+	} 
+
+
+### 手順 2. テンプレートで仮想マシンを作成する。
+
+Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
+
+	$deployName="<deployment name>"
+	$RGName="<resource group name>"
+	$locName="<Azure location, such as West US>"
+	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
+	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
+
+**New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。パラメーターの値がすべて指定されていれば、リソース グループと仮想マシンが作成されます。
+
+たとえば次のようになります。
+
+	$deployName="TestDeployment"
+	$RGName="TestRG"
+	$locname="West US"
+	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
+	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
+
+次のような結果が表示されます。
+
+	cmdlet New-AzureResourceGroupDeployment at command pipeline position 1
+	Supply values for the following parameters:
+	(Type !? for Help.)
+	newStorageAccountName: newsaacct
+	adminUsername: WinAdmin1
+	adminPassword: *********
+	dnsNameForPublicIP: contoso
+	VERBOSE: 10:56:59 AM - Template is valid.
+	VERBOSE: 10:56:59 AM - Create template deployment 'TestDeployment'.
+	VERBOSE: 10:57:08 AM - Resource Microsoft.Network/virtualNetworks 'MyVNET' provisioning status is succeeded
+	VERBOSE: 10:57:11 AM - Resource Microsoft.Network/publicIPAddresses 'myPublicIP' provisioning status is running
+	VERBOSE: 10:57:11 AM - Resource Microsoft.Storage/storageAccounts 'newsaacct' provisioning status is running
+	VERBOSE: 10:57:38 AM - Resource Microsoft.Storage/storageAccounts 'newsaacct' provisioning status is succeeded
+	VERBOSE: 10:57:40 AM - Resource Microsoft.Network/publicIPAddresses 'myPublicIP' provisioning status is succeeded
+	VERBOSE: 10:57:45 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is running
+	VERBOSE: 10:57:45 AM - Resource Microsoft.Network/networkInterfaces 'myVMNic' provisioning status is succeeded
+	VERBOSE: 11:01:59 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is succeeded
+	
+	
+	DeploymentName    : TestDeployment
+	ResourceGroupName : TestRG
+	ProvisioningState : Succeeded
+	Timestamp         : 4/28/2015 6:02:13 PM
+	Mode              : Incremental
+	TemplateLink      :
+	Parameters        :
+                    	Name             Type                       Value
+	                    ===============  =========================  ==========
+	                    newStorageAccountName  String                     newsaacct
+	                    adminUsername    String                     WinAdmin1
+	                    adminPassword    SecureString
+	                    dnsNameForPublicIP  String                     contoso9875
+	                    windowsOSVersion  String                     2012-R2-Datacenter
+	
+	Outputs           :
+
+これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
+
+## Azure CLI からリソース マネージャー テンプレートを使って Windows VM を作成する
+
+Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure CLI コマンドを使用して Windows VM を作成するには、以下の手順に従います。
+
+以下のコマンドで、リソース グループの名前と Azure の場所 \(米国西部であれば westus など、角かっこは不要\) を入力し、コマンドを実行します。
+
+	azure group create [resource group] [location]
+	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json [resource group] firstdeployment
+
+以下に示したのは、テンプレートに使用する一連の Azure CLI コマンドの例です。
+
+	azure group create testrg westus
+	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json testrg firstdeployment
+
+次のような結果が表示されます。
+
+	azure group create testrg westus
+	info:    Executing command group create
+	+ Getting resource group testrg                                             
+	+ Creating resource group testrg                                            
+	info:    Created resource group testrg
+	data:    Id:                  /subscriptions/2c73c582-4b11-4800-96f9-a9bd790a861c/resourceGroups/testrg
+	data:    Name:                testrg
+	data:    Location:            westus
+	data:    Provisioning State:  Succeeded
+	data:    Tags: 
+	data:    
+	info:    group create command OK
+
+	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json testrg firstdeployment
+	info:    Executing command group deployment create
+	info:    Supply values for the following parameters
+	newStorageAccountName: newstorage
+	adminUsername: ops
+	adminPassword: Pa$$W0rd1
+	dnsNameForPublicIP: contoso
+	windowsOSVersion: 2012-R2-Datacenter
+	+ Initializing template configurations and parameters                          
+	+ Creating a deployment                                                        
+	info:    Created template deployment "firstdeployment"
+	+ Registering providers                                                        
+
+
+## その他のリソース
+
+[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
+
+[Azure リソース マネージャーの概要](resource-group-overview.md)
+
+[Azure リソース マネージャーと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-rm.md)
+
+[PowerShell と Azure サービス マネージャーで Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-sm.md)
+
+[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
+
+[Azure PowerShell のインストールと構成の方法](install-configure-powershell.md)
+
+<!--HONumber=52-->

@@ -1,8 +1,25 @@
-﻿<properties title="How to create a MySQL Database in Azure" pageTitle="Azure での MySQL データベースの作成方法" metaKeywords="MySQL Azure" description="ClearDB を使用して、Azure データ センターで MySQL データベースを作成する方法について説明します。" documentationCenter="PHP" services="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+<properties
+	pageTitle="Azure で MySQL データベースを作成する方法"
+	description="ClearDB を使用して、Azure データ センターで MySQL データベースを作成する方法について説明します。"
+	documentationCenter="php"
+	services=""
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="mollybos"
+	tags="mysql"/>
 
-<tags ms.service="multiple" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
+<tags
+	ms.service="multiple"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="article"
+	ms.date="02/24/2015"
+	ms.author="robmcm"/>
 
-[WACOM.INCLUDE [create-mysql-db](../includes/create-mysql-db.md)]
+[AZURE.INCLUDE [create-mysql-db](../includes/create-mysql-db.md)]
 
 
 Azure での PHP による MySQL の使用方法を示すサンプルは、<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql> から入手できます。
+
+<!--HONumber=52-->
