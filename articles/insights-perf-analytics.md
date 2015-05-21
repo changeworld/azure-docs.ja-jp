@@ -4,21 +4,21 @@
 	services="azure-portal" 
 	documentationCenter="na" 
 	authors="alancameronwills" 
-	manager="keboyd"/\>
+	manager="keboyd"/>
 <tags 
 	ms.service="azure-portal" 
 	ms.workload="na" 
-	ms.tgt\_pltfrm="na" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/28/2015" 
-	ms.author="awills"/\> 
+	ms.author="awills"/> 
 
 # アプリケーション パフォーマンスの監視 
 
 [Azure ポータル](http:\\portal.azure.com) では、監視を設定して、Web アプリまたは仮想マシンのアプリケーションの依存関係に関する統計やの詳細情報を収集できます。
 
-Azure は、拡張機能を活用してアプリケーション パフォーマンス監視 \(APM\) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
+Azure は、拡張機能を活用してアプリケーション パフォーマンス監視 (*APM*) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
 
 ##拡張機能を有効にする
 
