@@ -103,7 +103,7 @@
 
 応答時間が 5 秒を超えるすべての要求を取得します。時間はティック単位で表されます。10,000 ティックが 1 ミリ秒です。
 
-!\["Response time":\(threshold TO *\)\](./media/app-insights-diagnostic-search/11-responsetime.png\)
+!["Response time":(threshold TO *)](./media/app-insights-diagnostic-search/11-responsetime.png)
 
 
 
