@@ -138,4 +138,6 @@ Runbook をインポートし、発行したら、それを実行して、出力
 
 ## フィードバック
 
-<strong>フィードバックの送信</strong> Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。<!--HONumber=52-->
+<strong>フィードバックの送信</strong> Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
+
+<!--HONumber=52-->
