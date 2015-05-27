@@ -1,9 +1,9 @@
-﻿<properties 
+<properties 
    pageTitle="Facebook コネクタ API アプリ" 
    description="Facebook コネクタの使用方法" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
-   authors="adgoda" 
+   authors="anuragdalmia" 
    manager="dwrede" 
    editor=""/>
 
@@ -19,7 +19,7 @@
 
 # ロジック アプリでの Facebook コネクタの使用 #
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。 
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
 
 Facebook コネクタを使用すると、ユーザー タイムラインの新しい投稿の取得、ページの新しい投稿の取得、投稿の発行、写真の発行などの操作を Facebook アカウントから実行できます。
 
@@ -58,9 +58,7 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 	![][5]
 5.	"Azure AppService ロジック アプリ" を許可します。 
 
-	![][6]
-	![][7]
-	![][8]     
+	![][6] ![][7] ![][8]     
 6.	トリガーを選択します。
  
 	![][9]
@@ -71,8 +69,9 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
  
 	![][11]
 
+**ヒント** - Facebook ページの ID や Yammer グループの ID を取得するには、URL に埋め込まれた数値コードを見つけます。
 
-	<!--Image references-->
+<!--Image references-->
 [1]: ./media/app-service-logic-connector-facebook/img1.png
 [2]: ./media/app-service-logic-connector-facebook/img2.png
 [3]: ./media/app-service-logic-connector-facebook/img3.png
@@ -85,4 +84,4 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 [10]: ./media/app-service-logic-connector-facebook/img10.png
 [11]: ./media/app-service-logic-connector-facebook/img11.png
 
-<!--HONumber=49-->
+<!--HONumber=54-->

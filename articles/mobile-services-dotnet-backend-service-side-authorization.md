@@ -16,23 +16,23 @@
 
 # モバイル サービスでのユーザーのサービス側承認
 
-> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(任意 | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
-- [(任意 | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
+> [AZURE.SELECTOR-LIST (Platform | Backend)]
+- [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
+- [(Any | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
 
 このトピックでは、サーバー側ロジックを使用してユーザーを承認する方法を説明します。このチュートリアルでは、.NET でデータ アクセス メソッドを変更して、ユーザー ID に基づいてクエリをフィルター処理し、ユーザーが自分のデータのみにアクセスできるようにします。
 
-このチュートリアルは、モバイル サービス クイック スタートに基づいており、「[既存のモバイル サービス アプリケーションに認証を追加]」チュートリアルに基づいて作成されています。最初に「[既存のモバイル サービス アプリケーションに認証を追加]」を完了してください。
+このチュートリアルは、「Mobile Services クイック スタート」に基づいており、「[既存の Mobile Services アプリケーションに認証を追加]」チュートリアルに基づいて作成されています。最初に「[既存の Mobile Services アプリケーションに認証を追加]」を完了してください。
 
 ## <a name="register-scripts"></a>データ アクセス メソッドを変更する
 
-1. Visual Studio で、モバイル プロジェクトを開き、DataObjects　フォルダーを展開して、**TodoItem.cs**　を開きます。**TodoItem** クラスは、データ オブジェクトを定義します。フィルター処理に使用するためには、**UserId** プロパティを追加する必要があります。次の新しい UserId プロパティを **TodoItem** クラスに追加します。
+1. Visual Studio で、モバイル プロジェクトを開き、DataObjects　フォルダーを展開して、**TodoItem.cs** を開きます。**TodoItem** クラスは、データ オブジェクトを定義します。フィルター処理に使用するためには、**UserId** プロパティを追加する必要があります。次の新しい UserId プロパティを **TodoItem** クラスに追加します。
 
 		public string UserId { get; set; }
 
-	>[AZURE.NOTE] このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md) を使用する必要があります。
+	>[AZURE.NOTE]このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md) を使用する必要があります。
 
-2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs**　を開きます。**PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。このコードでは、TodoItem テーブルに挿入される前に、項目に、認証済みユーザーのユーザー ID を追加します。
+2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs** を開きます。**PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。このコードでは、TodoItem テーブルに挿入される前に、項目に、認証済みユーザーのユーザー ID を追加します。
 
 			// Get the logged in user
 			var currentUser = User as ServiceUser;
@@ -40,7 +40,7 @@
 			// Set the user ID on the item
 			item.UserId = currentUser.Id;
 
-3. **GetAllTodoItems** メソッドを見つけ、既存の **return** ステートメントを次のコード行と置き換えます。このクエリのフィルターは、各ユーザーが挿入した項目だけを受信できるように、TodoItem オブジェクトを返します。
+3. **GetAllTodoItems** メソッドを見つけ、既存の **return** ステートメントを次のコード行と置き換えます。このクエリは、返される TodoItem オブジェクトにフィルター処理を実施して、それぞれのユーザーが自分で挿入した項目のみを受け取るためのものです。
 
 				// Get the logged in user
 				var currentUser = User as ServiceUser;
@@ -59,19 +59,19 @@
 
 
 <!-- Anchors. -->
-[サーバー スクリプトを登録]: #register-scripts
-[次のステップ]:#next-steps
+[Register server scripts]: #register-scripts
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 
 [3]: ./media/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started
-[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
-[既存のモバイル サービス アプリケーションに認証を追加]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push
+[Get started with Mobile Services]: mobile-services-dotnet-backend-ios-get-started.md
+[Get started with data]: mobile-services-dotnet-backend-ios-get-started-data.md
+[既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
+[Get started with push notifications]: mobile-services-dotnet-backend-ios-get-started-push.md
 
-[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
+[Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
-<!--HONumber=45--> 
+<!--HONumber=54-->

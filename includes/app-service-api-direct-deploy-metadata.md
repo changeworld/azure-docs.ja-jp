@@ -1,4 +1,8 @@
-*apiapp.json* ファイル内のほとんどのプロパティと、*Metadata* フォルダー内のファイルは、Azure Marketplace で API アプリ パッケージがどのように表示されるかに影響します。以降のセクションでは、Marketplace から API アプリをインストールするのではなく、直接コードをデプロイしたときに、どのプロパティとファイルが API アプリに影響するかを説明します。
+## API アプリのメタデータ
+
+このセクションでは、カスタマイズ可能な API アプリのメタデータに関する追加情報を提供します。
+
+*apiapp.json* ファイル内のほとんどのプロパティと、*Metadata* フォルダー内のファイルは、Azure Marketplace で API アプリ パッケージがどのように表示されるかに影響します。以降のセクションでは、Azure サブスクリプションの API アプリにコードをデプロイしたときに、どのプロパティとファイルが API アプリに影響するかについて説明します。
 
 ### API アプリ ID 
 
@@ -10,7 +14,7 @@
 
 ### 名前空間
 
-`namespace` プロパティには、Azure Active Directory テナントのドメインを設定します。ドメインを確認するには、ブラウザーで [Azure クラシック ポータル](https://manage.windowsazure.com/)を開き、**\[Active Directory\]** を参照して、**\[ドメイン\]** タブを選択します。次に例を示します。
+`namespace` プロパティには、Azure Active Directory テナントのドメインを設定します。ドメインを確認するには、ブラウザーで [Azure クラシック ポータル](https://manage.windowsazure.com/)を開き、**[Active Directory]** を参照して、**[ドメイン]** タブを選択します。次に例を示します。
 
 		"namespace": "contoso.onmicrosoft.com",
 
@@ -32,7 +36,7 @@
  
 ### API アプリのその他のメタデータ
 
-*apiapp.json* ファイルおよび *Metadata* フォルダーの詳細については、「[API アプリ パッケージの作成](app-service-api-create-package.md)」を参照してください。
+*apiapp.json* ファイルおよび *Metadata* フォルダーの詳細については、[API アプリ パッケージの作成](app-service-api-create-package.md)に関するページを参照してください。
 
 
-<!--HONumber=52-->
+<!--HONumber=54-->

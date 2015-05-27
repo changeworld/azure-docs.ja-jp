@@ -1,7 +1,7 @@
-﻿
-## <a name="update-app"></a>iOS アプリからのカスタム API 呼び出し
 
-iOS クライアントからカスタム API を呼び出すには、 `MSClient invokeAPI` メソッドを使用します。このメソッドには 2 種類あり、1 つは JSON 形式のリクエスト向け、もう 1 つはあらゆるデータ型向けです。
+## <a name="update-app"></a> iOS アプリからのカスタム API 呼び出し
+
+iOS クライアントからカスタム API を呼び出すには、`MSClient invokeAPI` メソッドを使用します。このメソッドには 2 種類あり、1 つは JSON 形式のリクエスト向け、もう 1 つはあらゆるデータ型向けです。
 
 	/// Invokes a user-defined API of the Mobile Service.  The HTTP request and
 	/// response content will be treated as JSON.
@@ -22,7 +22,7 @@ iOS クライアントからカスタム API を呼び出すには、 `MSClient 
 	      completion:(MSAPIDataBlock)completion;
 
 
-たとえば、JSON リクエストを "sendEmail" というカスタム API  向けに送信するには、 `NSDictionary` をリクエストに渡します。
+たとえば、JSON リクエストを "sendEmail" というカスタム API 向けに送信するには、`NSDictionary` をリクエストに渡します。
 
 	NSDictionary *emailHeader = @{ @"to": @"email.com", @"subject" : @"value" };
 
@@ -35,5 +35,4 @@ iOS クライアントからカスタム API を呼び出すには、 `MSClient 
 		
 
 
-
-<!--HONumber=52-->
+<!--HONumber=54-->

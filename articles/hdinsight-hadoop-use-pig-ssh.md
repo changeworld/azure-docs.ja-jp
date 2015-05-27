@@ -1,6 +1,6 @@
-﻿<properties
-   pageTitle="HDInsight での Hadoop Pig の使用 | Azure"
-   description="SSH を通じて HDInsight で Pig と Hadoop を使用する方法を説明します。"
+<properties
+   pageTitle="HDInsight クラスターでの Hadoop Pig と SSH の使用 | Microsoft Azure"
+   description="SSH で Linux ベースの Hadoop クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的に実行するか、バッチ ジョブとして実行する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -9,22 +9,22 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang=""
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
    ms.date="02/18/2015"
    ms.author="larryfr"/>
  
-#Pig コマンド (SSH) を使用した Pig ジョブの実行
+#Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
 
-[AZURE.INCLUDE [pig-selector](../includes/hdinsight-selector-use-pig.md)]
+[AZURE.INCLUDE [pig セレクター](../includes/hdinsight-selector-use-pig.md)]
 
 このドキュメントでは、Secure Shell (SSH) を使用して Linux ベースの Azure HDInsight クラスターに接続し、Pig コマンドを使用して Pig Latin ステートメントを対話的にまたはバッチ ジョブとして実行する方法を順を追って説明します。
 
 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
-> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」を参照してください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -32,7 +32,7 @@ Pig Latin プログラミング言語では、入力データに適用される�
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
-* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty</a> などのクライアントをダウンロードする必要があります。
+* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> などのクライアントをダウンロードする必要があります。
 
 ##<a id="ssh"></a>SSH を使用した接続
 
@@ -40,19 +40,19 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 	ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-HDInsight クラスターの作成時に **SSH 認証に証明書キーを指定した場合**は、クライアント システムのプライベート キーの場所を指定する必要があることがあります。
+**HDInsight クラスターの作成時に SSH 認証に証明書キーを指定した場合は**、クライアント システムの秘密キーの場所を指定する必要があることがあります。
 
 	ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
-HDInsight クラスターの作成時に **SSH 認証のパスワードを指定した場合**は、パスワードの入力を求められます。
+**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
-###Putty (Windows ベースのクライアント)
+###PuTTY (Windows ベースのクライアント)
 
-Windows ではビルトイン SSH クライアントは提供されません。<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> からダウンロードできる **Putty** を使用することをお勧めします。
+Windows ではビルトイン SSH クライアントは提供されません。<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html</a> からダウンロードできる **PuTTY** を使用することをお勧めします。
 
-Putty の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の「**Putty を使用して Linux 仮想マシンに接続する**」セクションを参照してください。
+PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の**Putty を使用して Linux 仮想マシンに接続する**セクションをご覧ください。
 
-> [AZURE.NOTE] HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の「**Putty 用の PPK を作成する**」セクションも参照する必要があります。
+> [AZURE.NOTE]HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の **Putty 用の PPK を作成する**セクションも参照する必要があります。
 
 ##<a id="pig"></a>Pig コマンドの使用
 
@@ -79,28 +79,28 @@ Putty の使用の詳細については、「<a href="http://azure.microsoft.com
 5. 次のステートメントを使用して、変換を適用します。各手順の後に `DUMP` を使用して、変換の結果を表示します。
 
 	<table>
-	<tr>
-	<th>ステートメント</th><th>実行内容</th>
-	</tr>
-	<tr>
-	<td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルに null 値を含む行を削除し、結果を FILTEREDLEVELS に格納します。</td>
-	</tr>
-	<tr>
-	<td>GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;</td><td>ログ レベルで列をグループ化し、結果を GROUPEDLEVELS に格納します。</td>
-	</tr>
-	<tr>
-	<td>FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;</td><td>一意のログ レベル値とそれが出現した回数を含む新しい データ セットを作成します。これは FREQUENCIES に格納されます。</td>
-	</tr>
-	<tr>
-	<td>RESULT = order FREQUENCIES by COUNT desc;</td><td>数が多い順にログ レベルを並べ替えて、RESULT に格納します。</td>
-	</tr>
-	</table>
+<tr>
+<th>ステートメント</th><th>実行内容</th>
+</tr>
+<tr>
+<td>FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;</td><td>ログ レベルに null 値を含む行を削除し、結果を FILTEREDLEVELS に格納します。</td>
+</tr>
+<tr>
+<td>GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;</td><td>ログ レベルで列をグループ化し、結果を GROUPEDLEVELS に格納します。</td>
+</tr>
+<tr>
+<td>FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;</td><td>一意のログ レベル値とそれが出現した回数を含む新しい データ セットを作成します。これは FREQUENCIES に格納されます。</td>
+</tr>
+<tr>
+<td>RESULT = order FREQUENCIES by COUNT desc;</td><td>数が多い順にログ レベルを並べ替えて、RESULT に格納します。</td>
+</tr>
+</table>
 
 6. 変換の結果は `STORE` ステートメントで保存することもできます。たとえば、以下では `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
 
 		STORE RESULT into 'wasb:///example/data/pigout'
 
-	> [AZURE.NOTE] データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラーが発生します。
+	> [AZURE.NOTE]データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラーが発生します。
 
 7. エラーを解決するには、次のステートメントを入力します。
 
@@ -137,7 +137,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 		(ERROR,6)
 		(FATAL,2)
 
-##<a id="summary"></a>まとめ
+##<a id="summary"></a>概要
 
 このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納されたステートメントも実行できます。
 
@@ -153,4 +153,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=47-->
+<!--HONumber=54-->

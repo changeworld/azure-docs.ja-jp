@@ -1,9 +1,9 @@
-﻿<properties 
-	pageTitle="既存の SaaS コネクタへのアプリの接続" 
-	description="この記事では、既存の SaaS コネクタへの接続方法を示します。" 
+<properties 
+	pageTitle="コードからの SaaS コネクタの使用" 
+	description="Azure Marketplace から Azure のサブスクリプションにインストールした SaaS コネクタを構成する方法について説明します。" 
 	services="app-service\api" 
 	documentationCenter=".net" 
-	authors="VinayaReddy" 
+	authors="tdykstra" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
@@ -13,153 +13,266 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/20/2015" 
-	ms.author="vinayr;tdykstra"/>
+	ms.date="04/07/2015" 
+	ms.author="tdykstra"/>
 
-# 既存の SaaS コネクタへのアプリの接続
+# コードからの SaaS コネクタの使用
 
 ## 概要
 
-このチュートリアルでは、Azure Marketplace の SaaS コネクタを使用する方法について説明します。 
+このチュートリアルでは、モバイル アプリなどからプログラムを使用して呼び出すために、[Azure App Service](/documentation/services/app-service/) の[サービスとしてのソフトウェア (SaaS) コネクタ](app-service-logic-what-are-bizTalk-api-apps.md)をインストール、構成、テストする方法について説明します。SaaS コネクタは、Office 365、Salesforce、Facebook、Dropbox などの SaaS プラットフォームとの対話を簡素化する [API アプリ](app-service-api-apps-why-best-platform.md)です。
 
-以下の手順を実行します。
-- Dropbox コネクタをプロビジョニングします。
-- Dropbox API アプリを構成します。
-- ゲートウェイを構成します。
-- トークンを取得し、トークン ストアに格納します。 
-- Dropbox の API を呼び出し、認証済みアクセスが機能することを確認します。
+たとえば、Dropbox アカウント内のファイルを読み書きするために HTTP 要求をコーディングする必要がある場合、Dropbox を直接操作するための認証プロセスは複雑になります。Dropbox コネクタを使用すれば複雑な認証の処理を避けることができるため、業務固有のコードの作成に集中できます。
 
-## Dropbox コネクタのプロビジョニング
-
-1. プレビュー ポータルのホーム ページに移動し、[Marketplace] をクリックします。
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/01-Marketplace.png)
-
-2. Marketplace ギャラリーで Dropbox を検索します。
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/02-Marketplace-search.png)
+> [AZURE.WARNING]**ロジック アプリから SaaS コネクタを使用する場合、ここでの指示に従う必要は*ありません***。ロジック アプリで SaaS コネクタを使用する方法の詳細については、「[新しいロジック アプリの作成](app-service-logic-create-a-logic-app.md)」を参照してください。この記事は、*コード*を使用してコネクタを呼び出す場合を想定しています。
  
-3. Dropbox コネクタをプロビジョニングするために Dropbox のアイコンをクリックします。[作成] をクリックして、Dropbox コネクタをプロビジョニングします。[作成] をクリックする前に、必ず名前とすべてのフィールドに必要な値を入力してください。 
+このチュートリアルでは例として DropBox コネクタを使用し、次の手順を順番に説明します。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/03-Dropbox-Connector-Blade.png) 
+* Azure サブスクリプションの[リソース グループ](resource-group-overview.md)に Dropbox コネクタをインストールします。 
+* Dropbox サービスに接続できるように、Dropbox コネクタを構成します (この手順を実行するには、Dropbox アカウントが必要になります)。
+* 認証されたユーザーのみがリソース グループに含まれている API アプリにアクセスできるように、リソース グループを構成します。
+* ユーザー認証と Dropbox 認証の両方が機能することをテストして確認します。
 
-4. [プレビュー ポータル] (https://portal.azure.com/) でリソース グループのブレードを表示します。Dropbox コネクタとゲートウェイを確認します。API アプリをプロビジョニングすると、API アプリはリソース グループの一部としてプロビジョニングされます。ポータルでリソース グループが作成されたときに、ゲートウェイも作成されました。ゲートウェイは、リソース グループ内の API アプリ宛てのすべての要求を処理する、専用の Web アプリです。
+## Dropbox コネクタのインストール
 
-	Web アプリと他の API アプリを同じリソース グループに追加することができます。リソース グループ内の各 API アプリには、次の 3 種類のアクセス レベルのいずれかを設定することができます。
+1. [Azure プレビュー ポータル]のホーム ページに移動し、**[Marketplace]** をクリックします。
 
-	* パブリック (匿名) - すべてのユーザーがログインせずにリソース グループの外部から API アプリを呼び出すことができます。
-	* パブリック (認証済み) - 認証されたユーザーのみがリソース グループの外部から API アプリを呼び出すことができます。
-	* 内部 - 同一リソース グループに属する他の API アプリまたは Web アプリのみが API アプリを呼び出すことができます。
+	![Azure プレビュー ポータルの Marketplace](./media/app-service-api-connect-your-app-to-saas-connector/marketplace.png)
 
-## Dropbox API アプリの構成
+2. Dropbox を検索して、**[Dropbox コネクタ]** アイコンをクリックします。
 
-最初に、認証された要求のみを受け入れるように Dropbox を構成します。このアクセス レベルは**パブリック (認証済み)** に設定します。さらに、Azure Active Directory、Google、Facebook などのプロバイダーの認証を必要とするようにゲートウェイを構成します。
-
-1.	Azure の[プレビュー ポータル](https://portal.azure.com/)で、**[参照]、[API Apps]** の順にクリックし、保護する API アプリの名前をクリックします。
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/04-Browse-API-Apps.png) 
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/05-Dropbox-Connector.png) 
+	![Dropbox コネクタのクリック](./media/app-service-api-connect-your-app-to-saas-connector/searchdb.png)
  
-2.	[API アプリ] ブレードで、[設定]、[アプリケーションの設定] の順にクリックします。
+3. **[作成]** をクリックします。
+
+	![Click Create](./media/app-service-api-connect-your-app-to-saas-connector/clickcreate.png)
  
-	![](./media/app-service-api-connect-your-app-to-saas-connector/06-Dropbox-connector-properties.png) 
+5. **[Dropbox コネクタ]** ブレードの **[App Service プラン]** の下にある **[新規作成]** をクリックし、**[新しい App Service プランの作成]** ボックスに「DropBoxPlan」と入力します。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/07-dropbox-settings-dialog.png) 
+	App Service プランの詳細については、「[Azure App Service プランの詳細な概要](azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
 
-3.	**[アプリケーションの設定]** ブレードで、**[アクセス レベル]** を **[パブリック (認証)]** に変更します。 
+4. **[リソース グループ]** の下の **[新規作成]** をクリックし、**[新しいリソース グループの作成]** ボックスに「DropboxRG」と入力します。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/08-public-auth-setting-blade.png) 
+	リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-overview.md)に関するページを参照してください。
 
-	これで、認証されていないアクセスから Dropbox コネクタが保護されました。次に、Dropbox の認証を設定します。次に示す UI の *[クライアント ID]* および *[クライアント シークレット]* の詳細に入力します (*[クライアント ID]* および *[クライアント シークレット]* には、[Dropbox 開発者アカウント](https://www.dropbox.com/developers/apps)から接続できます)。
+7. Free の**料金レベル**を選択します (一覧に表示されない場合は、**[すべて表示]** をクリックします。**[F1 Free]** をクリックした後に、**[選択]** をクリックします)。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/09-Dropbox-authentication-settings.png) 
-
-次に、ゲートウェイを構成して、使用する認証プロバイダーを指定する必要があります。
-
-## ゲートウェイの構成
-
-1. Dropbox の [API アプリ] ブレードに戻り、ゲートウェイへのリンクをクリックします。
+	有料の料金レベルを使用できますが、このチュートリアルでは必要ありません。
  
-	![](./media/app-service-api-connect-your-app-to-saas-connector/10-dropbox-connector-gateway.png) 
+11. 近くの**場所**を選択します。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/11-gateway-all-properties.png)
+9. <a id="gateway"></a>コネクタの**名前**は既定の "DropboxConnector" のままにして、**[作成]** をクリックします。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/12-gateway-property-settings-blade.png) 
+	![[作成] のクリック](./media/app-service-api-connect-your-app-to-saas-connector/createdropbox.png)
 
-2. 使用する ID プロバイダーを選択し、該当する記事の手順に従って、API アプリをそのプロバイダーで構成します。これらの記事はモバイル アプリ向けに書かれていますが、API アプリでも手順は同じです。一部の手順では、[管理ポータル](https://manage.windowsazure.com/)と[プレビュー ポータル](https://portal.azure.com/)の両方を使用する必要があります。
-  
-	- [Microsoft アカウント](https://github.com/Azure/azure-content-pr/blob/release-app-services/app-service-mobile-how-to-configure-microsoft-authentication-preview)
-	- [Facebook ログイン](https://github.com/Azure/azure-content-pr/blob/release-app-services/app-service-mobile-how-to-configure-facebook-authentication-preview)
-	- [Twitter ログイン](https://github.com/Azure/azure-content-pr/blob/release-app-services/app-service-mobile-how-to-configure-twitter-authentication-preview)
-	- [Google ログイン](https://github.com/Azure/azure-content-pr/blob/release-app-services/app-service-mobile-how-to-configure-google-authentication-preview)
-	- [Azure Active Directory](https://github.com/Azure/azure-content-pr/blob/release-app-services/app-service-mobile-how-to-configure-active-directory-authentication-preview)
+	Azure App Service によってリソース グループが作成され、そのリソース グループに Dropbox コネクタ API のアプリと*ゲートウェイ* Web アプリが作成されます。このゲートウェイは、リソース グループのすべての API アプリへのアクセスを管理します。
 
-	構成方法については、手順をおって説明した「API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加」の記事を参照してください。 
+	Azure プレビュー ポータルのホーム ページで **[通知]** をクリックして、リソースの作成の進行状況を確認することができます。
 
-## OAuth トークンを取得し、トークン ストアに格納します。
-
-1.	ブラウザーで、次のログイン URL に移動します。 
-
-	ゲートウェイの [Active Directory の設定] ブレードから URL を取得できます。
-	![](./media/app-service-api-connect-your-app-to-saas-connector/14-01-gateway-login-URL-portal.png) 
-	
-	URL は次の形式になります。
-	http://[resourcegroupname]gateway.azurewebsites.net/login/[providername]
-
-	たとえば、リソース グループに "MyResource" という名前を付け、Azure Active Directory 認証用にゲートウェイを構成している場合は、URL は次のようになります。
-
-		http://Myresourcegateway.azurewebsites.net/login/aad
-	
-	ブラウザーに URL を入力して Enter キーを押す前に、開発者ツールを起動していることを確認してください。ログインが完了したことを通知するメッセージを受け取ります。 
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/14-02-gateway-login-URL-Browser.png) 
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/14-03-gateway-login-confirmation.png) 
-
-	[ネットワーク] タブ (Chrome) から zumo 認証トークンと値を取得します。
-	![](./media/app-service-api-connect-your-app-to-saas-connector/14-04-Acquire-Zumo-Auth-Token.png) 
-
-	Chrome で Postman 拡張機能を呼び出します。ゲートウェイの同意に関する URL、Zumo 認証トークン (ヘッダー)、および値を入力し、POST 要求を行います。 
-
-	![](./media/app-service-api-connect-your-app-to-saas-connector/15-login-to-the-connector.png) 
+3. Azure によるコネクタの作成が完了したら、**[参照]、[リソース グループ]、[DropboxRG]** の順にクリックします。
  
-	POST 要求から返されたリダイレクト URL を取得し、このリダイレクト URL が動作することを確認します。 
+	DropboxRG の **[リソース グループ]** ブレードに、このリソース グループのコネクタとゲートウェイが表示されます。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/16-redirect-url-validate.png)
+	![リソース グループの図](./media/app-service-api-connect-your-app-to-saas-connector/rgdiagram.png)
 
+## Dropbox アカウントと Dropbox コネクタの構成
 
-	リダイレクト URL が動作した場合は、トークンが有効であることを意味します。SaaS コネクタに対するすべての呼び出しでは、確立と検証が実行済みのトークンを使用します。このトークンは、ゲートウェイを経由する外部のソースからのすべての要求に含まれている必要があります。ブラウザーで API にアクセスすると、通常、ブラウザーはトークンを cookie に格納し、後続のすべての呼び出しと共にこのトークンを API に送信します。
+Dropbox アカウントへの API のアクセスを有効にするには、Dropbox の開発者向けサイトで Dropbox アプリを作成する必要があます。クライアント ID とクライアント シークレットの値をその Dropbox アプリから Dropbox コネクタにコピーして、認証済みの要求のみを受け入れるようにコネクタを設定します。
 
-Safesforce、Facebook などすべての SaaS コネクタにこれと同じフローが適用できます。 
+### Dropbox アプリの作成
 
-## Dropbox の API を呼び出し、認証済みアクセスが機能することを確認します。
+次の手順は、Dropbox.com サイトを使用して Dropbox アプリを作成するプロセスを示しています。Dropbox.com サイトは通知なしで変更される可能性があるため、実際の UI と異なる場合があります。
 
-1. API アプリの一覧に戻り、Dropbox コネクタを選択します。 
+1. [Dropbox の開発者ポータル](https://www.dropbox.com/developers/apps)に移動し、**[App Console]**、**[Create App]** の順にクリックします。
 
-1. 最上部の URL をメモします。
+	![Dropbox アプリの作成](./media/app-service-api-connect-your-app-to-saas-connector/dbappcreate.png)
 
-2. Dropbox コネクタ (図を参照) をクリックして、サポートされるすべての API を表示します。
+2. **[Dropbox API app]** を選択し、その他の設定を構成します。
+ 
+	アカウント内にファイルがある場合は、次のスクリーン ショットに示すファイル アクセスのオプションによって、単純な HTTP Get 要求で Dropbox アカウントへのアクセスをテストすることができます。
 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/13-dropbox-api-app-operations.png) 
+	Dropbox API アプリの名前は、Dropbox サイトで許可されている内容にします。
 
-	[API の定義] ブレードでは、API アプリでサポートされている操作を確認できます。厳密に型指定されたクライアントを生成するために、Visual Studio で使用できる swagger をダウンロードできます。また、Sienna、PowerApp studio で使用できる swaddle もダウンロードできます。 
+3. **[Create app]** をクリックします。
 
-2. ブラウザー ウィンドウで、ポータルからコピーした URL を入力し、サポートされている任意の API を追加して、Dropbox アカウントのファイルまたは他の詳細情報にアクセスします。 
+	![Dropbox アプリの作成](./media/app-service-api-connect-your-app-to-saas-connector/dbapiapp.png)
 
-	形式:`<URL>`/Operation
+	次のページには、アプリ キーとアプリ シークレット設定 (Azure で名前を付けたクライアント ID とクライアント シークレット) が表示されます。これらは Azure Dropbox コネクタを構成するために使用します。
+
+	このページにはリダイレクト URI を入力するフィールドもあります。その値は次のセクションで取得します。
+
+	![Dropbox アプリの作成](./media/app-service-api-connect-your-app-to-saas-connector/dbappsettings.png)
+
+### Azure Dropbox コネクタへの Dropbox アプリ設定のコピーとその逆方向のコピー 
+
+4. 別のブラウザー ウィンドウまたはタブで、[Azure プレビュー ポータル]に移動します。
+
+3. Dropbox コネクタの **[API アプリ]** ブレードに移動します (まだ **[リソース グループ]** ブレードが表示されている場合は、図の Dropbox コネクタをクリックするだけです)。
+
+4. **[設定]** をクリックし、**[設定]** ブレードの **[認証]** をクリックします。
+
+	![[設定] のクリック](./media/app-service-api-connect-your-app-to-saas-connector/clicksettings.png)
+
+	![[認証] のクリック](./media/app-service-api-connect-your-app-to-saas-connector/clickauth.png)
+
+5. [認証] ブレードで、Dropbox サイトのクライアント ID とクライアント シークレットを入力し、**[保存]** をクリックします。
+
+	![設定の入力と [保存] のクリック](./media/app-service-api-connect-your-app-to-saas-connector/authblade.png)
+
+3. **リダイレクト URI** (クライアント ID とクライアント シークレットの上にある灰色のボックス) の値をコピーして、前の手順で開いたままにしていたページにこの値を追加します。
+
+	リダイレクト URI のパターンは次のとおりです。
+
+		[gatewayurl]/api/consent/redirect/[connectorname]
 
 	次に例を示します。
 
-		https://dropboxconnector7b47555bd6784237ad3e7736da769ffc.azurewebsites.net/folder/photos
-   
-	既に適切な認証が確立されているため、この呼び出しは正常に実行され、写真フォルダーの詳細がブラウザーに表示されます。 
-	![](./media/app-service-api-connect-your-app-to-saas-connector/17-call-dropbox-method-from-browser.png) 
+		https://dropboxrgaeb4ae60b7.azurewebsites.net/api/consent/redirect/DropboxConnector
 
-<!--todo<ブラウザーの画像をコピー>-->
+	![リダイレクト URI の取得](./media/app-service-api-connect-your-app-to-saas-connector/redirecturi.png)
+
+	![Dropbox アプリの作成](./media/app-service-api-connect-your-app-to-saas-connector/dbappsettings2.png)
+
+### 認証されたアクセスを要求するための Dropbox コネクタの設定
+
+既定では、コネクタの **[アクセス レベル] ** は **[内部] **に設定されています。つまり、同じリソース グループ内の他の API アプリと Web アプリからのみ呼び出すことができます。ただし、Dropbox では、認証されたユーザーにのみ Dropbox アカウントへのアクセスが許可されるため、ユーザー認証を要求するアクセス レベル設定に変更する必要があります。
+
+1. **[設定]** ブレードに戻り、**[アプリケーション設定]** をクリックします。
+
+2. **[アプリケーション設定]** ブレードで、**[アクセス レベル]** を **[パブリック (認証済み)]** に変更し、**[保存]** をクリックします。
+	
+	![[パブリック (認証済み)] に設定](./media/app-service-api-connect-your-app-to-saas-connector/pubauth.png)
+
+これで Dropbox コネクタの構成が完了し、発信呼び出しは Dropbox アカウントにアクセスできるようになり、着信呼び出しは認証されたユーザーから行うことが必須となりました。次のセクションではユーザーの認証に使用する認証プロバイダーを指定します。
+
+## ゲートウェイの構成
+
+[前](#gateway)に説明したように、ゲートウェイは、リソース グループのすべての API アプリへのアクセスを管理する特殊な Web アプリです。ユーザーを認証するようにゲートウェイをセットアップするには、Azure Active Directory、Google、Twitter などの認証プロバイダーを選択します。Dropbox コネクタを正常に呼び出すには、選択したプロバイダーによるユーザーの認証が必要になります。
+
+- この手順を実行するには、[API アプリの保護](app-service-api-dotnet-add-authentication.md)に関するチュートリアルの[ゲートウェイの構成](app-service-api-dotnet-add-authentication.md#configure-the-gateway)のセクションに移動し、DropboxRG リソース グループ内のゲートウェイを構成する手順に従います。
+
+## ユーザーと Dropbox の認証を検証するためのテスト
+
+認証プロバイダーを使用するように DropboxRG リソース グループのゲートウェイを構成した後で、Dropbox コネクタをテストできます。
+
+ほとんどの場合はコードから呼び出してコネクタを使用するため、その実現方法を説明するチュートリアルも作成されています。ただし、アプリの他の部分を接続する前に、コネクタが動作していることを検証する必要が生じる場合もあります。このチュートリアルでは、ブラウザーと単純な REST クライアント ツールを使用して、先ほどインストールして構成した Dropbox コネクタを通じて Dropbox サービスを操作できることを確認する方法を示します。
+
+次の手順は、Chrome ブラウザー開発者ツールと Postman REST クライアント ツールを使用してこれらの手順を実行する方法を示しています。これはほんの一例であり、他のブラウザーやツールでも同じ手順を実行することができます。
+
+### エンド ユーザーとしてのログイン
+
+新しいブラウザー ウィンドウで次の手順に従います。使用する認証プロバイダーによって、プライベートまたは匿名でウィンドウを使用することが必要になる場合があります。
+
+2. ゲートウェイと構成した認証プロバイダー用のログイン URL に移動します。URL のパターンは次のとおりです。 
+
+    	http://[gatewayurl]/login/[providername]
+
+	[Azure プレビュー ポータル]の **[ゲートウェイ]** ブレードで、ゲートウェイの URL を取得することができます (**[ゲートウェイ]** ブレードにアクセスするには、**[リソース グループ]** ブレードに表示される図内のゲートウェイをクリックします)。
+
+	![ゲートウェイ URL](./media/app-service-api-connect-your-app-to-saas-connector/gatewayurl.png)
+
+	[providername] の値は、Facebook の場合は "facebook"、Twitter の場合は "twitter"、Azure Active Directory の場合は "aad" です。
+
+	Azure Active Directory のサンプルのログイン URL を次に示します。
+
+		https://dropboxrgaeb4ae60b7cb4f3d966dfa43.azurewebsites.net/login/aad/
+
+3. ブラウザーにログイン ページが表示されたら資格情報を入力します。
+ 
+	Azure Active Directory のログインを構成した場合は、admin@contoso.onmicrosoft.com など、[Azure ポータル]の [Azure Active Directory] タブで作成したアプリケーションの **[ユーザー]** タブに一覧表示されているいずれかのユーザーとしてログインします。
+
+	ログインに成功すると、ログインが完了したことを示すページが表示されます。
+
+	![](./media/app-service-api-connect-your-app-to-saas-connector/logindone.png)
+
+### Dropbox へのユーザーの ID の提供
+
+Dropbox API を使用して Dropbox の承認を取得するには、Dropbox にユーザーの資格情報を提供する必要があります。これは Azure により自動的に行われますが、そのプロセスを開始するには、ブラウザーで専用の URL に移動する必要があります。この URL を取得するには、HTTP Post 要求をゲートウェイに送ります。
+
+ゲートウェイへの HTTP Post 要求には、ログイン時に Azure から提供された認証トークンを含める必要があります。ブラウザーの要求の場合、トークンは Cookie に格納されているため、自動的に追加されますが、REST クライアント ツールを使用する HTTP Post 要求の場合は、Cookie からトークンを取得して HTTP Post 要求の要求ヘッダーに追加する必要があります。
+
+1. ログインが完了したことを示すメッセージが表示されているブラウザー ウィンドウで、ブラウザーの開発者ツールに移動し、`x-zumo-auth` Cookie を検索します。次の手順で Cookie の値をコピーできるように、このウィンドウは開いたままにします。
+ 
+	Chrome で Cookie の値を取得するには、次の手順に従います。
+
+	- F12 キーを押して開発者ツールを開きます。
+	- **[リソース]** タブに移動します。
+	- ゲートウェイ サイトの Cookie を検索して、`x-zumo-auth` Cookie の **値**をトリプルクリックし、すべて選択します (Cookie の値をすべて取得したことを確認してください。ダブルクリックした場合、取得しているのは最初の部分のみである可能性があります)。  
+
+	![トークンのコピー](./media/app-service-api-connect-your-app-to-saas-connector/copytoken.png)
+
+4. 新しいブラウザー タブまたはウィンドウで、ゲートウェイへの HTTP Post 要求を作成して送信し、同意の URL を要求します。HTTP ヘッダーとして `x-zumo-auth` トークンを含めます。
+
+	URL のパターンは次のとおりです。
+
+		[gatewayurl]/api/consent/list?api-version=2015-01-14&redirecturl=[a URL you want the browser to go to after you authenticate]
+
+	次に例を示します。
+
+		https://dropboxrgaeb4ae60b7cb4f3d966dfa43.azurewebsites.net/api/consent/list?api-version=2015-01-14&redirecturl=https://portal.azure.com
+
+	Chrome の Postman で要求を送信するには、次の手順に従います。
+
+	- 前に示した**要求 URL** を入力します。
+	- メソッドを **Post** に設定します。
+	- `x-zumo-auth` という名前のヘッダーを追加します。
+	- ヘッダーの **[Value]** フィールドに、`x-zumo-auth` Cookie からコピーした値を貼り付けます。
+	- **[Send]** をクリックします。
+	 
+	次の図に、Chrome の Postman ツールを示します。
+
+	![同意 URL の送信](./media/app-service-api-connect-your-app-to-saas-connector/sendforconsent.png)
+
+	応答には、Dropbox でのユーザーの認証に使用する URL が含まれています (メソッドのドロップダウンを **Post** に設定したにもかかわらず Get メソッドがサポートされていないことを示すエラー応答が表示された場合は、別の REST クライアント ツールの使用が必要になることがあります。"Advanced REST Client" は、使用できる別の Chrome アドインです)。
+
+	![同意 URL](./media/app-service-api-connect-your-app-to-saas-connector/getconsenturl.png)
+
+2. HTTP Post 要求への応答で受信した URL にアクセスします。
+
+	Dropbox は、ユーザー ID を Dropbox API アプリと関連付けて、指定したリダイレクト URL (たとえば、例に従って https://portal.azure.com) を使用している場合は、Azure プレビュー ポータルになります) にブラウザーをリダイレクトします。
+
+	ご使用の Dropbox アプリが開発者モードであるため、ブラウザーがリダイレクト URL に移動する前に、Dropbox のログイン ページが表示される可能性があります。Dropbox の資格情報を使用してログインした後で、ゲートウェイへのログインに使用したユーザー ID は Dropbox アプリに関連付けられるため、今後この Dropbox ログイン手順はそのユーザー ID では不要になります。
+
+3. 次のセクションで使用するため、このブラウザ ウィンドウは開いたままにします。
+
+### Dropbox コネクタ API の呼び出し 
+
+Azure では次の 3 つの認証トークンが管理されるようになりました。
+
+- Azure Active Directory など、ゲートウェイ用に構成した認証プロバイダーの認証トークン。
+- Dropbox の認証トークン。
+- Azure が作成した認証トークン ("zumo" トークン)。
+
+Dropbox を操作するために HTTP 要求を行うときに使用する必要があるのは、zumo トークンのみです。バックグラウンドで Azure によって zumo トークンは他の 2 つと関連付けられます。Dropbox への呼び出しが行われるときに、コネクタがユーザーの代わりに他の 2 つを提供します。
+
+次の手順では、Dropbox アカウント内のファイルを参照するために、Dropbox コネクタ への Get 要求を行います。Get 要求にはブラウザー ウィンドウを使用できるうえ、ブラウザー ウィンドウの Cookie には既に zumo トークンが格納されているため、URL に移動するだけで Dropbox のデータが返されます。
+
+1. Azure プレビュー ポータルが表示されているブラウザー ウィンドウで、Dropbox コネクタ の **[API アプリ]** ブレードに戻ります。 
+
+2. API アプリの URL をコピーします。
+ 
+4. **[API の定義]** アイコンをクリックして、コネクタで使用可能な API メソッドを参照します。
+
+	![[API アプリ] ブレード](./media/app-service-api-connect-your-app-to-saas-connector/apiappblade.png)
+
+	![API の定義](./media/app-service-api-connect-your-app-to-saas-connector/apidef.png)
+
+2. ゲートウェイで認証に使用したブラウザー ウィンドウで、フォルダーからファイル名を取得する GET メソッドを呼び出します。URL パターンを次に示します。
+
+		[connectorurl]/folder/[foldername]
+   
+3. たとえば、コネクタの URL が https://dropboxrg784237ad3e7.azurewebsites.net のときにブログ フォルダー内のファイルを表示する必要がある場合、URL は次のようになります。
+
+		https://dropboxrg784237ad3e7.azurewebsites.net/folder/blog
+
+	API 呼び出しへの応答は、ブラウザーによってさまざまです。Chrome を使用している場合は、次の例のような応答が表示されます。
+
+	![フォルダー要求への GET 応答](./media/app-service-api-connect-your-app-to-saas-connector/dbresponse.png)
 
 ## 次のステップ
 
-ここまでは、API アプリを保護し、トークン ストアを使用して SaaS コネクタにアクセスするためにゲートウェイを構成する方法について説明しました。詳細については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。 
+SaaS コネクタをインストール、構成、テストする方法を説明しました。詳細については、[コネクタの使用](app-service-logic-use-biztalk-connectors.md)に関するページを参照してください。
 
-<!--HONumber=49-->
+[Azure プレビュー ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://manage.windowsazure.com/
+<!--HONumber=54-->

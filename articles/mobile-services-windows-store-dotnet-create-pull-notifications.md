@@ -10,31 +10,31 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.tgt_pltfrm="windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/22/2014" 
+	ms.date="04/14/2015" 
 	ms.author="glenga"/>
 
 # 定期的な通知をサポートするカスタム API を定義します。
 
 <div class="dev-center-tutorial-selector"> 
-	<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-create-pull-notifications/" title="Windows Store C#" class="current">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-create-pull-notifications/" title="Windows Store JavaScript">Windows ストア JavaScript</a>
+	<a href="/documentation/articles/mobile-services-windows-store-dotnet-create-pull-notifications/" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/documentation/articles/mobile-services-windows-store-javascript-create-pull-notifications/" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
 </div>
 
-このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要]」を参照してください。 
+このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要]」を参照してください。
 
 チュートリアル「[モバイル サービスの使用]」または「[既存のアプリケーションへの Mobile Services の追加]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
 
 1. [カスタム API を定義する]
 2. [アプリケーションを更新して定期的な通知を有効にする]
-3. [アプリケーションをテストする]
+3. [アプリケーションをテストする] 
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。  
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
-1. [Azure 管理ポータル] にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
@@ -44,7 +44,7 @@
 
 	**[新しいカスタム API の作成]** ダイアログ ボックスが表示されます。
 
-3. **[Get アクセス許可]** を **[すべてのユーザー]** に変更し、**[API 名]** に「_tiles_」と入力して、チェック ボタンをクリックします。
+3. **[Get アクセス許可]** を **[すべてのユーザー]** に変更し、_[API 名]_ に「**tiles**」と入力して、チェック ボタンをクリックします。
 
    	![][2]
 
@@ -59,8 +59,7 @@
 		exports.get = function(request, response) {
 		    var wns = require('wns');
 		    var todoItems = request.service.tables.getTable('TodoItem');
-		    todoIte
-	ms.where({
+		    todoItems.where({
 		        complete: false
 		    }).read({
 		        success: sendResponse
@@ -97,11 +96,11 @@
 
 	クライアントは、GET 要求を送信してタイル テンプレートにアクセスすることになるため、**exports.get** 関数が使用されます。
 
-   	> [AZURE.NOTE] このカスタム API スクリプトには、Node.js の [wns モジュール](http://go.microsoft.com/fwlink/p/?LinkId=306750)が使用されており、**require** 関数を使って参照されています。このモジュールは、[push オブジェクト](http://go.microsoft.com/fwlink/p/?LinkId=260591)から返される [wns オブジェクト](http://msdn.microsoft.com/library/windowsazure/jj554217.aspx)とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。
+   	> [AZURE.NOTE]このカスタム API スクリプトには、Node.js の [wns モジュール](http://go.microsoft.com/fwlink/p/?LinkId=306750)が使用されており、**require** 関数を使って参照されています。このモジュールは、[push オブジェクト](http://go.microsoft.com/fwlink/p/?LinkId=260591)から返される [wns オブジェクト](http://msdn.microsoft.com/library/windowsazure/jj554217.aspx)とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。
 
 次に、クイック スタート アプリケーションに変更を加えます。ライブ タイルを更新する定期的な通知を開始するために、新しいカスタム API を要求します。
 
-<h2><a name="update-app"></a>アプリケーションを更新して定期的な通知を有効にする</h2>
+##<a name="update-app"></a>アプリケーションを更新して定期的な通知を有効にする
 
 1. 前のチュートリアルで使用したクイック スタート アプリケーションを実行します。Visual Studio で、F5 キーを押してください。
 
@@ -134,20 +133,17 @@
 
 定期的な通知を作成したら、モバイル サービスに関連した次のトピックも参考にしてください。
 
-* [プッシュ通知の使用]
-	<br/>定期的な通知は、Windows によって管理され、事前定義されたスケジュールでのみ実行されます。プッシュ通知は、モバイル サービスからオンデマンドで送信することができます。トースト、タイル、直接通知のいずれかの形式が利用できます。
+* [プッシュ通知の使用] <br/>定期的な通知は、Windows によって管理され、事前定義されたスケジュールでのみ実行されます。プッシュ通知は、モバイル サービスからオンデマンドで送信することができます。トースト、タイル、直接通知のいずれかの形式が利用できます。
 
-* [モバイル サービスのサーバー スクリプト リファレンス]
-  <br/>カスタム API の作成について説明します。
+* [Mobile Services のサーバー スクリプト リファレンス] <br/>カスタム API の作成について説明します。
 
-* [Mobile Services .NET の使用方法の概念リファレンス]
-  <br/>.NET で Mobile Services を使用する方法について説明します。
+* [Mobile Services .NET の使用方法の概念リファレンス] <br/>.NET で Mobile Services を使用する方法について説明します。
 
 <!-- Anchors. -->
 [カスタム API を定義する]: #define-custom-api
 [アプリケーションを更新して定期的な通知を有効にする]: #update-app
 [アプリケーションをテストする]: #test-app
-[次のステップ]: #next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-services-selection.png
@@ -157,19 +153,17 @@
 [4]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-live-tile.png
 
 <!-- URLs. -->
-[Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
-[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[マイ アプリ ダッシュ ボード]: http://go.microsoft.com/fwlink/?LinkId=262039
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started
-[既存のアプリケーションへの Mobile Services の追加]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push
+[Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
+[Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
+[モバイル サービスの使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
+[既存のアプリケーションへの Mobile Services の追加]: mobile-services-windows-store-dotnet-get-started.md
+[プッシュ通知の使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [定期的な通知の概要]: http://msdn.microsoft.com/library/windows/apps/jj150587.aspx
 
-[Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

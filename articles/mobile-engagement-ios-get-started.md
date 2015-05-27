@@ -1,9 +1,9 @@
-﻿<properties 
-	pageTitle="iOS 用 Azure Mobile Engagement の使用" 
-	description="iOS の分析やプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。" 
+<properties 
+	pageTitle="Objective C で IOS の Azure Mobile Engagement を開始する" 
+	description="iOS アプリ の分析やプッシュ通知で Azure モバイル エンゲージメントを使用する方法を説明します。"
 	services="mobile-engagement" 
 	documentationCenter="Mobile" 
-	authors="kpiteira" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor="" />
 
@@ -13,27 +13,31 @@
 	ms.tgt_pltfrm="mobile-ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="02/11/2015" 
-	ms.author="kapiteir" />
+	ms.date="04/30/2015" 
+	ms.author="piyushjo" />
 
-# Mobile Engagement の使用
+# Objective C で IOS アプリ の Azure Mobile Engagement を開始する
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/mobile-engagement-windows-store-dotnet-get-started/" title="Windows Store">Windows ストア</a><a href="/documentation/articles/mobile-engagement-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/documentation/articles/mobile-engagement-ios-get-started/" title="iOS"  class="current">iOS</a><a href="/documentation/articles/mobile-engagement-android-get-started/" title="Android">Android</a></div>
+> [AZURE.SELECTOR]
+- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md) 
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md) 
+- [iOS - Obj C](mobile-engagement-ios-get-started.md) 
+- [iOS - Swift](mobile-engagement-ios-swift-get-started.md)
+- [Android](mobile-engagement-android-get-started.md) 
 
-このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、iOS アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。 
-このチュートリアルでは、Apple プッシュ通知システム (APNS) を使用して基本データを収集し、プッシュ通知を受信する空の iOS アプリケーションを作成します。完了すると、すべてのデバイスに、またはデバイスのプロパティに基づいた特定のユーザーにプッシュ通知をブロードキャストできるようになります。
+このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、iOS アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知システム (APNS) を使用して基本データを収集し、プッシュ通知を受信する空の iOS アプリケーションを作成します。完了すると、デバイス プロパティに基づいて、すべてのデバイスまたは特定のターゲット ユーザーに、プッシュ通知をブロードキャストできるようになります。
 
-このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。Mobile Engagement を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。 
+このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。モバイル エンゲージメントを使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒にご覧ください。
 
 このチュートリアルには、次のものが必要です。
 
-+ Xcode。MAC アプリ ストアからインストールできます
-+ [Mobile Engagement iOS SDK]
++ XCode。Mac アプリ ストアからインストールすることができます。
++ [モバイル エンゲージメント iOS SDK]
 + プッシュ通知証明書 (.p12)。Apple Dev Center で入手できます
 
-このチュートリアルを完了することは、iOS アプリケーションの他のすべての Mobile Engagement チュートリアルの前提条件です。 
+このチュートリアルを完了することは、iOS アプリケーションの他のすべての Mobile Engagement チュートリアルの前提条件です。
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+> [AZURE.IMPORTANT]このチュートリアルを完了することは、その他すべての IOS アプリのモバイル エンゲージメント チュートリアルの前提条件であり、これを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
 
 <!--
 ##<a id="register"></a>Enable Apple Push Notification Service
@@ -41,69 +45,60 @@
 [WACOM.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
 -->
 
-##<a id="setup-azme"></a>アプリ用 Mobile Engagement のセットアップ
+##<a id="setup-azme"></a>アプリ用のモバイル エンゲージメントの設定
 
-1. [Azure 管理ポータル]にログオンし、画面の下部にある **[+新規]** をクリックします。
+1. Azure 管理ポータルにログオンし、画面の下部にある **[+新規]** をクリックします。
 
-2. **[アプリケーション サービス]**、**[Mobile Engagement]**、**[作成]** の順にクリックします。
+2. **[アプリ サービス]**、**[モバイル エンゲージメント]**、**[作成]** の順にクリックします。
 
    	![][7]
 
-3. 表示されるポップアップで、いくつかのフィールドに情報を入力します。
+3. 表示されたポップアップに、次の情報を入力します。
  
    	![][8]
 
-	1. *アプリケーション名*: アプリケーションの名前を入力します。任意の文字を使用できます。
-	2. *プラットフォーム*: アプリのターゲット プラットフォームを選択します (アプリが複数のプラットフォームをターゲットとする場合は、各プラットフォームに対してこのチュートリアルを繰り返します)
-	3. *アプリケーション リソース名*:この名前を使用して、API および URL 経由でこのアプリケーションにアクセスします。標準の URL 文字のみを使用してください: 自動的に生成された名前を使うのが確実な方法です。また、この名前は一意である必要があるため、名前の競合を避けるため、プラットフォーム名を追加することをお勧めします。
-	4. *場所*:このアプリ (またさらに重要なものとしてそのコレクション (以下を参照)) をホストするデータ センターを選択します。
-	5. *コレクション*:アプリケーションを既に作成している場合は、以前に作成したコレクションを選択します。それ以外の場合は、新しいコレクションを選択します。
+	- **アプリケーション名**: アプリケーションの名前を入力します。自由に任意の文字を使用してください。
+	- **プラットフォーム**: アプリ向けのターゲット プラットフォームを選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。 
+	- **アプリケーション リソース名**: この名前を使用して、API と URL を通じてこのアプリケーションにアクセスします。従来の URL の文字のみを使用する必要があります。自動生成された名前は、ベースとなる名前として役立ちます。また、この名前は一意である必要があるので、重複を避けるために、プラットフォーム名を付加することをお勧めします。
+	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。 
+	- **コレクション**: アプリケーションを既に作成済みの場合は以前に作成したコレクションを選択し、そうでない場合は新しいコレクションを選択します。
+	- **コレクション名**。 これは、グループのアプリケーションを表します。すべてのアプリを 1 つのグループに含めることで、それらをメトリック集計できます。該当する場合は、ここで会社名や部門を使用する必要があります。
 
+4. **[アプリケーション]** タブで、作成したアプリを選択します。
 
-	完了したら、ボタンをクリックしてアプリの作成を完了します。
-
-4. [Application] タブで作成したアプリをクリック/選択します。
- 
-   	![][9]
-
-5. [Connection Info] をクリックし、SDK 統合にプットする接続設定を表示します。
+5. **[接続情報]** をクリックして、モバイル アプリに統合する SDK に組み込む接続設定を表示します。
  
    	![][10]
 
-6. 最後に、"接続文字列" を書き留めます。これは、アプリケーション コードによりこのアプリを特定する際に必要になります。
+6. **[接続文字列]** をコピーします - これは、アプリケーション コード内で、このアプリケーションを識別し、Phone アプリからモバイル エンゲージメント サービスに接続するために必要なものです。
 
    	![][11]
 
-	>[AZURE.TIP] 接続文字列の右側にある "コピー" アイコンを使用して、クリップボードにコピーすることもできます。
+##<a id="connecting-app"></a>アプリをモバイル エンゲージメントのバックエンドに接続する
 
-##<a id="connecting-app"></a>Mobile Engagement バックエンドにアプリを接続する
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントは、[Mobile Engagement iOS SDK ドキュメンテーション]にあります。
 
-このチュートリアルでは、データの収集とプッシュ通知の送信に最低限必要な "基本的な統合" について説明します。統合に関する完全なドキュメントは、[Mobile Engagement iOS SDK ドキュメンテーション]にあります。
-
-統合の例を示すために、Android Studio で基本的なアプリを作成します。
+統合のデモンストレーションを行うために、XCode で基本的なアプリを作成します。
 
 ###新しい iOS プロジェクトを作成する
 
 この手順は、既にアプリを作成している場合や、iOS 開発に慣れている場合は省略できます。
 
-1. Xcode を起動し、ポップアップで [Create a new Xcode project] を選択します。
+1. Xcode を起動し、ポップアップで **「Create a new Xcode project」** を選択します。
 
    	![][12]
 
-2. アプリ名、会社名などの識別子を入力します。これらは後で必要になるため、書き留めておいてください。次に [Next] をクリックします。
-
-   	![][13]
-
-3. [Single View Application] をクリックし、[Next] をクリックします。
+2. **[Single View Application]** を選択し、[次へ] をクリックします。
 
    	![][14]
 
+3. **製品名**、**組織名**、 **組織 ID** を入力します。言語で **[Objective C]** を選択していることを確認します。
+
+   	![][13]
 
 Xcode で、Mobile Engagement の統合先のデモ アプリが作成されます。
 
-###プロジェクトに SDK ライブラリを含める
-
-SDK ライブラリのダウンロードと統合
+###アプリをモバイル エンゲージメントのバックエンドに接続する 
 
 1. [Mobile Engagement iOS SDK] のダウンロード
 2. コンピューター上のフォルダーに .tar.gz ファイルを抽出します
@@ -111,26 +106,23 @@ SDK ライブラリのダウンロードと統合
 
 	![][17]
 
-4. SDK を抽出したフォルダーに移動し、 `EngagementSDK` フォルダーを選択して、[OK] を押します
+4. SDK を抽出したフォルダーに移動し、 `EngagementSDK` フォルダーを選択して、[OK] を押します。
 
 	![][18]
 
-5.  `[Build phases]` タブを開き、 `[Link Binary With Libraries]` メニューで以下に示すフレームワークを追加します
+5. `Build Phases` タブを開き、`Link Binary With Libraries` メニューで次に示すように、フレームワークを追加します。
 
 	![][19]
 
-
-###接続文字列を使って Mobile Engagement バックエンドにアプリを接続する
-
-1. アプリケーション デリゲート実装ファイルの上部にある次のコード行をコピーします
-
-		#import "EngagementAgent.h"
-
-2. アプリの  *[Connection Info]* ページの Azure ポータルに戻り、接続文字列をコピーします
+6. アプリの *[接続情報]* ページで Azure ポータルに戻り、[接続文字列] をコピーします。
 
 	![][11]
 
-3.  `didFinishLaunchingWithOptions` デリゲートに貼り付けます		
+7. アプリケーション デリゲート実装ファイルを開き、次のコード行を追加します
+
+		#import "EngagementAgent.h"
+
+8. `didFinishLaunchingWithOptions` 認証で、接続文字列を貼り付けます。
 
 		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 		{
@@ -139,16 +131,17 @@ SDK ライブラリのダウンロードと統合
   			[...]
 		}
 
-##Mobile Engagement に画面を送信する
+##<a id="monitor"></a>リアルタイム監視の有効化
 
-データ送信を開始し、ユーザーがアクティブであることを確認するためには、Mobile Engagement バックエンドに少なくとも 1 つの画面 (アクティビティ) を送信する必要があります。このためには、 `UIViewController` クラスを、SDK が提供する  `EngagementViewController` でオーバーライドします。
-これを実行するには、 `ViewController.h` ファイルを開き、 `EngagementViewController.h` をインポートし、以下に示すように、 `ViewController` のスーパー クラスを  `EngagementViewController` に置き換えます。
+データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) をモバイル エンゲージメントのバックエンドに送信する必要があります。
+
+- `ViewController.h` ファイルを開き、`EngagementViewController.h` をインポートし、次のように `ViewController` インターフェイスのスーパー クラスを `EngagementViewController` に置き換えます。
 
 ![][22]
 
-##<a id="monitor"></a>リアル タイム監視機能によりアプリの接続状況を確認する方法
+###アプリがリアルタイム監視に接続していることを確認する
 
-このセクションでは、Mobile Engagement のリアル タイム監視機能を使用して、アプリが Mobile Engagement に接続していることを確認する方法を説明します。
+このセクションでは、モバイル エンゲージメントのリアルタイム監視機能を使用して、アプリがモバイル エンゲージメントのバックエンドに接続していることを確認する方法を説明します。
 
 1. Mobile Engagement ポータルに移動します
 
@@ -166,36 +159,33 @@ SDK ライブラリのダウンロードと統合
 
 4. Xcode に戻り、シミュレーターまたは接続されたデバイスのいずれかでアプリを起動します。
 
-5. 正常に動作した場合、モニターに 1 つのセッションが表示されます。 
+5. 正常に動作している場合、モニターに 1 つのセッションが表示されます。
 
-**お疲れ様でした。** このチュートリアルの最初のステップが無事完了し、アプリが Mobile Engagement バックエンドに接続され、データの送信が既に開始されています
+**ご利用ありがとうございます。** チュートリアルの最初のステップが無事完了し、アプリが Mobile Engagement バックエンドに接続され、データの送信が既に開始されています
 
 6. シミュレーターの [ホーム] ボタンをクリックすると、前に示したようにモニターのセッション数が 0 に戻ります
 
 	![][33]
 
+##<a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 
-
-##<a id="integrate-push"></a>プッシュ通知とアプリ内メッセージの有効化
-
-Mobile Engagement では、キャンペーンとの関連で、プッシュ通知とアプリ内メッセージ機能を使用してユーザーとやり取りすることができます。このモジュールは Mobile Engagement ポータルでは "リーチ" と呼ばれます。
-次のセクションで、アプリでこれらを受け取るよう設定します。
+モバイル エンゲージメントにより、ユーザーと通信を行い、キャンペーンのコンテキストに関するプッシュ通知とアプリ内メッセージングを届けることができます。このモジュールは、モバイル エンゲージメント ポータルで REACH として呼び出されます。次のセクションでは、それらを受信するためにアプリをセットアップします。
 
 ### リーチ ライブラリをプロジェクトに追加する
 
 1. プロジェクトを右クリックします
-2. `[Add file to ...]` を選択します
+2. `Add file to ...` を選択します
 3. SDK を抽出したフォルダーに移動します
-4.  `EngagementReach` フォルダーを選択します
+4. `EngagementReach` フォルダーを選択します
 5. [追加] をクリックします。
 
-### アプリケーション デリゲート
+### アプリケーション デリゲートを変更する
 
 1. 実装ファイルの先頭で、Engagement リーチ モジュールをインポートします
 
 		#import "AEReachModule.h"
 	
-2.  `application:didFinishLaunchingWithOptions` 内にリーチ モジュールを作成し、それを既存の Engagement 初期化行に渡します
+2. `application:didFinishLaunchingWithOptions` 内に reach モジュールを作成し、それを既存の Engagement 初期化行に渡します
 
 		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 			AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
@@ -206,7 +196,7 @@ Mobile Engagement では、キャンペーンとの関連で、プッシュ通�
 
 ###アプリで APNS プッシュ通知を受信できるようにする
 
-1. 次の行を `application:didFinishLaunchingWithOptions` メソッドに追加します
+1. 次の行を `application:didFinishLaunchingWithOptions` メソッドに追加します。
 
 		if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
 			[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
@@ -217,16 +207,16 @@ Mobile Engagement では、キャンペーンとの関連で、プッシュ通�
 			[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 		}
 
-2. 次のように、 `application:didRegisterForRemoteNotificationsWithDeviceToken` メソッドを追加します
+2. 次のように、`application:didRegisterForRemoteNotificationsWithDeviceToken` メソッドを追加します。
  
-		- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+		(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 		{
- 		   [[EngagementAgent shared] registerDeviceToken:deviceToken];
+ 			[[EngagementAgent shared] registerDeviceToken:deviceToken];
 		}
 
-3. 次のように、 `didReceiveRemoteNotification` メソッドを追加します
-4. 
-		- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+3. 次のように、`didReceiveRemoteNotification` メソッドを追加します。
+
+		(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 		{
 		    [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo];
 		}
@@ -235,9 +225,7 @@ Mobile Engagement では、キャンペーンとの関連で、プッシュ通�
 
 Mobile Engagement がユーザーに代わりプッシュ通知を送信できるようにするには、Mobile Engagement に証明書へのアクセスを許可する必要があります。このためには、証明書を Mobile Engagement ポータルに構成および入力します。Apple のドキュメントで説明されているように、.p12 証明書を取得していることを確認してください。
 
-1. Mobile Engagement ポータルに移動します
-
-	Azure ポータルで、このプロジェクトで使用しているアプリにいることを確認し、下部の [関与] ボタンをクリックします。
+1. モバイル エンゲージメント ポータルに移動します。このプロジェクト用に使用しているアプリを対象にしていることを確認し、下部にある [関与] ボタンをクリックします。
 
 	![][26]
 
@@ -253,13 +241,13 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 これで準備が完了しました。それでは、この基本的な統合を正しく実行したか検証してみましょう。
 
-##<a id="send"></a>アプリケへの通知の送信方法
+##<a id="send"></a>アプリへ通知を送信する
 
 プッシュ通知をアプリに送る簡単なプッシュ通知キャンペーンを作成してみましょう。
 
 1. Mobile Engagement ポータルで [リーチ] タブに移動します
 
-2. [新しいアナウンスメント] をクリックして、プッシュ キャンペーンを作成します
+2. **[新しいお知らせ]** をクリックして、プッシュ キャンペーンを作成します。
 	
 	![][35]
 
@@ -267,34 +255,32 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 	![][36]
 
-	1. キャンペーンに好きな名前を付けます
-	2. 配信時刻を "アプリ外のみ" として選択: これは、テキストを扱う単純な種類の Apple プッシュ通知です。
-	3. 通知のテキストに、プッシュ通知の最初の行に表示されるタイトルをまず入力します
-	4. 次に、次の行に表示されるメッセージを入力します
+	- 	キャンペーンに希望する任意の名前を付けます。
+	- 	配信時刻は "アプリ外のみ" を選択: これは、テキストを扱う単純な種類の Apple プッシュ通知です。
+	- 	通知のテキストに、プッシュ通知の最初の行に表示されるタイトルをまず入力します
+	- 	次に、次の行に表示されるメッセージを入力します
+
 
 4. スクロール ダウンし、コンテンツ セクションで [通知のみ] を選択します
 
 	![][37]
 
-5. これで、最も基本的なキャンペーンの設定が完了しました。もう一度スクロール ダウンして、キャンペーンを作成して保存してみましょう。
-![][38]
+5. 最も基本的なキャンペーンの設定が完了したので、もう一度下にスクロールし、キャンペーンを作成して保存します。![][38]
 
-6. 最後のステップとして、キャンペーンをアクティブ化します
-![][39]
+6. 最後の手順で、キャンペーンをアクティブ化します。![][39]
 
 7. デバイスにプッシュ通知が表示されます。
 
 <!-- URLs. -->
 [Mobile Engagement iOS SDK]: http://go.microsoft.com/?linkid=9864553
-[Mobile Engagement Android SDK に関するドキュメント]: http://go.microsoft.com/?linkid=9874682
-[Azure 管理ポータル]: https://manage.windowsazure.com
+[モバイル エンゲージメント iOS SDK]: http://go.microsoft.com/?linkid=9864553
+[Mobile Engagement Android SDK documentation]: http://go.microsoft.com/?linkid=9874682
 
 <!-- Images. -->
-[7]: ./media/mobile-engagement-ios-get-started/create-mobile-engagement-app.png
-[8]: ./media/mobile-engagement-ios-get-started/create-azme-popup.png
-[9]: ./media/mobile-engagement-ios-get-started/select-app.png
-[10]: ./media/mobile-engagement-ios-get-started/app-main-page-select-connection-info.png
-[11]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
+[7]: ./media/mobile-engagement-common/create-mobile-engagement-app.png
+[8]: ./media/mobile-engagement-common/create-azme-popup.png
+[10]: ./media/mobile-engagement-common/app-main-page-select-connection-info.png
+[11]: ./media/mobile-engagement-common/app-connection-info-page.png
 [12]: ./media/mobile-engagement-ios-get-started/xcode-new-project.png
 [13]: ./media/mobile-engagement-ios-get-started/xcode-project-props.png
 [14]: ./media/mobile-engagement-ios-get-started/xcode-simple-view.png
@@ -302,21 +288,17 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 [18]: ./media/mobile-engagement-ios-get-started/xcode-select-engagement-sdk.png
 [19]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [22]: ./media/mobile-engagement-ios-get-started/xcode-view-controller.png
-[23]: ./media/mobile-engagement-ios-get-started/copy-resources.png
-[24]: ./media/mobile-engagement-ios-get-started/paste-resources.png
-[25]: ./media/mobile-engagement-ios-get-started/paste-resources.png
-[26]: ./media/mobile-engagement-ios-get-started/engage-button.png
-[27]: ./media/mobile-engagement-ios-get-started/engagement-portal.png
+[26]: ./media/mobile-engagement-common/engage-button.png
+[27]: ./media/mobile-engagement-common/engagement-portal.png
 [28]: ./media/mobile-engagement-ios-get-started/native-push-settings.png
-[29]: ./media/mobile-engagement-ios-get-started/api-key.png
-[30]: ./media/mobile-engagement-ios-get-started/clic-monitor-tab.png
-[31]: ./media/mobile-engagement-ios-get-started/monitor.png
-[32]: ./media/mobile-engagement-ios-get-started/launch.png
+[30]: ./media/mobile-engagement-common/clic-monitor-tab.png
+[31]: ./media/mobile-engagement-common/monitor.png
 [33]: ./media/mobile-engagement-ios-get-started/monitor-0.png
-[35]: ./media/mobile-engagement-ios-get-started/new-announcement.png
+[35]: ./media/mobile-engagement-common/new-announcement.png
 [36]: ./media/mobile-engagement-ios-get-started/campaign-first-params.png
-[37]: ./media/mobile-engagement-ios-get-started/campaign-content.png
-[38]: ./media/mobile-engagement-ios-get-started/campaign-create.png
-[39]: ./media/mobile-engagement-ios-get-started/campaign-activate.png
+[37]: ./media/mobile-engagement-common/campaign-content.png
+[38]: ./media/mobile-engagement-common/campaign-create.png
+[39]: ./media/mobile-engagement-common/campaign-activate.png
 
-<!--HONumber=47-->
+
+<!--HONumber=54-->

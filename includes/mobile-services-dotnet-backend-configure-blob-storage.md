@@ -1,10 +1,11 @@
+
 ##<a name="storage-client-server"></a>モバイル サービス プロジェクトでのストレージ クライアントのインストール
 
-SAS を生成して BLOB ストレージにイメージをアップロードできるようにするには、最初に、モバイル サービス プロジェクト用のストレージ クライアント ライブラリをインストールする NuGet パッケージを追加する必要があります。 
+SAS を生成して BLOB ストレージにイメージをアップロードできるようにするには、最初に、モバイル サービス プロジェクト用のストレージ クライアント ライブラリをインストールする NuGet パッケージを追加する必要があります。
 
 1. Visual Studio の**ソリューション エクスプローラー**で、モバイル サービス プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 左側のウィンドウで、**[オンライン]** カテゴリ、**[安定しているリリースのみ]** の順にクリックし、**WindowsAzure.Storage** を検索します。**Azure Storage** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。 
+2. 左側のウィンドウで、**[オンライン]** カテゴリ、**[安定しているリリースのみ]** の順にクリックし、**WindowsAzure.Storage** を検索します。**Azure Storage** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
 
   	![](./media/mobile-services-configure-blob-storage/mobile-add-storage-nuget-package-dotnet.png)
 
@@ -23,24 +24,20 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 		public string sasQueryString { get; set; }
 		public string imageUri { get; set; } 
 
-	これらのプロパティは、SAS の生成とイメージ情報の格納に使用されます。これらのプロパティの大文字小文字の区別は、JavaScript バックエンド バージョンと一致している必要があります。 
+	これらのプロパティは、SAS の生成とイメージ情報の格納に使用されます。これらのプロパティの大文字小文字の区別は、JavaScript バックエンド バージョンと一致している必要があります。
 
-	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First 定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md).を参照してください。
+	>[AZURE.NOTE]データベースの既定の初期化子を使用する場合は、Code First 定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)を参照してください。
 
-##<a name="update-scripts"></a>共有アクセス署名を生成する TodoItem コント ローラーを更新します。 
+##<a name="update-scripts"></a>共有アクセス署名を生成する TodoItem コント ローラーを更新する 
 
-新規 TodoItem が挿入されたら **PostTodoItem** メソッドが SAS を生成するように、既存の **TodoItemController** を更新します。また、次のことも実行できます。 
+新規 TodoItem が挿入されたら **PostTodoItem** メソッドが SAS を生成するように、既存の **TodoItemController** を更新します。また、次のことも実行できます。
 
 0. まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)]」を参照してください。
 
-1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。 
-
-  	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png)
+1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
 2. **ストレージ アカウント名**と**アクセス キー**をメモします。
-
-   	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png)
-
+ 
 3. モバイル サービスで、**[構成]** タブをクリックし、**[アプリケーション設定]** まで下へスクロールします。次に、ストレージ アカウントから取得した次の項目の名前と値をそれぞれ **[名前]** と **[値]** に入力して、**[保存]** をクリックします。
 
 	+ `STORAGE_ACCOUNT_NAME`
@@ -55,7 +52,7 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 		<add key="STORAGE_ACCOUNT_NAME" value="**your_account_name**" />
 		<add key="STORAGE_ACCOUNT_ACCESS_KEY" value="**your_access_token_secret**" />
 
-	モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、コードを発行する前にテストすることができます。Azure 内で実行する場合、モバイル サービスは代わりにポータル内のアプリケーション設定値を使用し、これらのプロジェクト設定を無視します。 
+	モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、コードを発行する前にテストすることができます。Azure 内で実行する場合、モバイル サービスは代わりにポータル内のアプリケーション設定値を使用し、これらのプロジェクト設定を無視します。
 
 7.  Controllers フォルダーで、TodoItemController.cs ファイルを開き、次の **using** ディレクティブを追加します。
 
@@ -121,10 +118,9 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
-   	この POST メソッドは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の  `sasQueryString` プロパティに割り当てます。 `imageUri` プロパティに新しい BLOB のリソース パスが設定され、クライアント UI でのバインド中にイメージを表示できるようになります。
+   	この POST メソッドは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の `sasQueryString` プロパティに割り当てます。`imageUri` プロパティに新しい BLOB のリソース パスが設定され、クライアント UI でのバインド中にイメージを表示できるようになります。
 
-	>[AZURE.NOTE] このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature メソッド</a>を呼び出すことができます。次に例を示します。 
-	<pre><code>blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);</code></pre>
+	>[AZURE.NOTE]このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature メソッド</a>を呼び出すことができます。次に例を示します。<pre><code>blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);</code></pre>
 
 次に、挿入時に生成される SAS を使用してイメージ アップロード機能を追加する、クイック スタート アプリケーションを更新します。
  
@@ -144,7 +140,7 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 [10]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
 
 <!-- URLs. -->
-[How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
+[How To Create a Storage Account (ストレージ アカウントの作成方法)]: /manage/services/storage/how-to-create-a-storage-account
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!--HONumber=42-->
+<!--HONumber=54-->

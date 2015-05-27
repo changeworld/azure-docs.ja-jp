@@ -1,8 +1,8 @@
 <properties 
 	pageTitle="Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成 - Azure Mobile Services" 
 	description="既存のクラウドまたは内部設置型 SQL データベースと .NET ベースのモバイル サービスを使用する方法について説明します。" 
-	services="mobile-services, biztalk-services" 
-	documentationCenter="windows" 
+	services="mobile-services" 
+	documentationCenter="" 
 	authors="ggailey777" 
 	manager="dwrede" 
 	editor="mollybos"/>
@@ -10,16 +10,16 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/22/2014" 
+	ms.date="04/13/2015" 
 	ms.author="glenga"/>
 
 
 # Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成
 
-Mobile Services .NET バックエンドを使用すると、モバイル サービスの作成で簡単に既存のアセットを利用できます。特に興味深いシナリオの 1 つに、他のアプリケーションで既に使用した可能性がある (内部設置型またはクラウドに配置された) 既存の SQL データベースを使用して、既存のデータをモバイル クライアントが利用できるようにする方法があります。この場合、既存のソリューションが機能し続けるには、データベース モデル (つまり *schema*) が変更されない状態のままであることが必要です。
+Mobile Services .NET バックエンドを使用すると、モバイル サービスの作成で簡単に既存のアセットを利用できます。特に興味深いシナリオの 1 つに、他のアプリケーションで既に使用した可能性がある (内部設置型またはクラウドに配置された) 既存の SQL データベースを使用して、既存のデータをモバイル クライアントが利用できるようにする方法があります。この場合、既存のソリューションが機能し続けるには、データベース モデル (つまり*スキーマ*) が変更されない状態のままであることが必要です。
 
 このチュートリアルで取り上げる内容は次のとおりです。
 
@@ -32,9 +32,9 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 <a name="ExistingModel"></a>
 ## 既存のデータベース モデルを調査する
 
-このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。内部設置型データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
+このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。内部設置型データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
-1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure の管理ポータル](http://manage.windowsazure.com)で、サービスの [モバイル サービス] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
+1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [モバイル サービス] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
 
 2. **Customer.cs** ファイルを **Models** フォルダーに作成して、次の実装を使用します。**System.ComponentModel.DataAnnotations** へのアセンブリ参照をプロジェクトに追加する必要があります。
 
@@ -79,7 +79,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    これら 2 つのクラス間には *relationship*があることに注意します。どの **Order** も 1 つの **Customer** に関連付けられ、1 つの **Customer** は複数の **Order** に関連付けることができます。既存のデータ モデルでリレーションシップがあることは一般的です。
+    これら 2 つのクラス間には*関係*があることに注意します。どの **Order** も 1 つの **Customer** に関連付けられ、1 つの **Customer** は複数の **Order** に関連付けることができます。既存のデータ モデルでリレーションシップがあることは一般的です。
 
 4. **ExistingContext.cs** ファイルを **Models** フォルダーに作成し、次のように実装します。
 
@@ -101,7 +101,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-上の構造は、既存のアプリケーションに以前から使用している可能性がある既存の Entity Framework モデルに似ています。この段階では、モデルは Mobile Services をどのような方法によっても認識していないことに注意してください。 
+上の構造は、既存のアプリケーションに以前から使用している可能性がある既存の Entity Framework モデルに似ています。この段階では、モデルは Mobile Services をどのような方法によっても認識していないことに注意してください。
 
 <a name="DTOs"></a>
 ## モバイル サービス用にデータ転送オブジェクト (DTO) を作成する
@@ -120,7 +120,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    このクラスは、**Order** に対するリレーションシップ プロパティが削除されていることを除き、モデルの **Customer** クラスに似ていることに注意してください。Mobile Services オフライン同期でオブジェクトが正しく機能するには、オプティミスティック同時実行用に一連の *system properties*が必要です。そこで、この DTO は、これらのプロパティを含む [**EntityData**](http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.entitydata.aspx) を継承します。元のモデルの整数を基にした **CustomerId** プロパティが、**EntityData** の文字列を基にした **Id** プロパティに置き換えられて、Mobile Services が使用する **Id** となります。
+    このクラスは、**Order** に対するリレーションシップ プロパティが削除されていることを除き、モデルの **Customer** クラスに似ていることに注意してください。Mobile Services オフライン同期でオブジェクトが正しく機能するには、オプティミスティック同時実行用に一連の*システム プロパティ*が必要です。そこで、この DTO は、これらのプロパティを含む [**EntityData**](http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.entitydata.aspx) を継承します。元のモデルの整数を基にした **CustomerId** プロパティが、**EntityData** の文字列を基にした **Id** プロパティに置き換えられて、Mobile Services が使用する **Id** となります。
 
 2. **MobileOrder.cs** ファイルをサービス プロジェクトの **DataObjects** フォルダーに作成します。
 
@@ -149,7 +149,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    **Customer** リレーションシップ プロパティが、**Customer** の名前と、クライアントでリレーションシップを手動でモデル化するために使用できる **MobileCustomerId** プロパティに置き換えられます。ここでは、**CustomerId** プロパティを無視できます。これは、後で使用されるだけです。 
+    **Customer** リレーションシップ プロパティが、**Customer** の名前と、クライアントでリレーションシップを手動でモデル化するために使用できる **MobileCustomerId** プロパティに置き換えられます。ここでは、**CustomerId** プロパティを無視できます。これは、後で使用されるだけです。
 
 3. **EntityData** 基本クラスにシステム プロパティが追加されて、DTO にモデルの型よりも多くのプロパティがあることが確認できます。これらのプロパティを保存する場所が必要なのは明らかなため、元のデータベースにいくつかの列を追加します。これによりデータベースが変更されますが、変更は単なる追加 (スキーマへの新しい列の追加) であるため既存のアプリケーションを損なうことはありません。これを実行するには、次のステートメントを **Customer.cs** と **Order.cs** の先頭に追加します。
     
@@ -190,7 +190,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
     その後、次のように **ExistingContext** の本体で [**OnModelCreating**](http://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating.aspx) をオーバーライドします。
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {	
+        {
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
@@ -258,12 +258,12 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 ここまでで、**Customer** および **Order** というモデル型と **MobileCustomer** および **MobileOrder** という DTO を作成しましたが、この 2 つの間での自動的な変換をバックエンドに指示する必要があります。ここで Mobile Services は、[**AutoMapper**](http://automapper.org/) というオブジェクト リレーショナル マッパーを使用します。この機能は、プロジェクトで既に参照されています。
 
-1. **WebApiConfig.cs** の先頭付近に次のコードを追加します。
+1. 次のコードを **WebApiConfig.cs** の先頭に追加します。
 
         using AutoMapper;
         using ShoppingService.DataObjects;
 
-2. マッピングを定義するには、次のコードを **WebApiConfig** クラスの **Register** メソッドに追加します。 
+2. マッピングを定義するには、次のコードを **WebApiConfig** クラスの **Register** メソッドに追加します。
 
         Mapper.Initialize(cfg =>
         {
@@ -283,7 +283,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 次の手順では、[**MappedEntityDomainManager**](http://msdn.microsoft.com/library/dn643300.aspx) を実装します。これは、マッピングしたデータ ストアとクライアントからの HTTP トラフィックを処理するコントローラーとの間で抽象化レイヤーとして機能します。次のセクションでは、DTO という観点でのみコントローラーを記述できます。ここで追加する **MappedEntityDomainManager** は、元のデータ ストアとの通信を処理すると同時に、そのデータ ストア専用のロジックを実装する場所も提供します。
 
-1. 次のように **MobileCustomerDomainManager.cs** をプロジェクトの **Models** フォルダーに追加します。次の実装を貼り付けます。
+1. **MobileCustomerDomainManager.cs** をプロジェクトの **Models** フォルダーに追加します。次の実装を貼り付けます。
 
         using AutoMapper;
         using Microsoft.WindowsAzure.Mobile.Service;
@@ -372,7 +372,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    このクラスの重要な部分は、**GetKey** メソッドです。このメソッドでは、元のデータ モデルのオブジェクトの ID プロパティを探す方法を指示します。 
+    このクラスの重要な部分は、**GetKey** メソッドです。このメソッドでは、元のデータ モデルのオブジェクトの ID プロパティを探す方法を指示します。
 
 2. 次のように **MobileOrderDomainManager.cs** をプロジェクトの **Models** フォルダーに追加します。
 
@@ -477,14 +477,14 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    この例では、**InsertAsync** メソッドと **UpdateAsync** メソッドに注目します。これらのメソッドで、それぞれの **Order** に関連付けられた有効な **Customer** を必要とするリレーションシップを適用します。**InsertAsync** では、**Order.CustomerId** プロパティにマッピングされた **MobileOrder.CustomerId** プロパティに入力することが確認できます。この値は、一致する **MobileOrder.MobileCustomerId** で **Customer** を検索することで取得します。その理由は、既定でクライアントが認識するのは、**Customer** の Mobile Services の ID (**MobileOrder.MobileCustomerId**) だけであり、この ID は、外部キー (**MobileOrder.CustomerId**) を **Order** から **Customer** に設定するのに必要な実際のプライマリ キーとは異なるためです。これは、挿入操作を容易にするために、このサービスの内部でのみ使用されます。
+    この例では、**InsertAsync** と **UpdateAsync** メソッドに注目します。これらのメソッドで、それぞれの **Order** に関連付けられた有効な **Customer** を必要とするリレーションシップを適用します。**InsertAsync** では、**Order.CustomerId** プロパティにマッピングされた **MobileOrder.CustomerId** プロパティに入力することが確認できます。この値は、一致する **MobileOrder.MobileCustomerId** で **Customer** を検索することで取得します。その理由は、既定でクライアントが認識するのは、**Customer** の Mobile Services の ID (MobileOrder.MobileCustomerId) だけであり、この ID は、外部キー (MobileOrder.CustomerId) を **Order** から **Customer** に設定するのに必要な実際のプライマリ キーとは異なるためです。これは、挿入操作を容易にするために、このサービスの内部でのみ使用されます。
 
 これで、DTO をクライアントに公開するコントローラーを作成する準備ができました。
 
 <a name="Controller"></a>
 ## DTO を使用して TableController を実装する
 
-1. 次のように、**Controllers** フォルダーに、ファイル **MobileCustomerController.cs** を追加します。
+1. 次のように **Controllers** フォルダーで、ファイル **MobileCustomerController.cs** を追加します。
 
         using Microsoft.WindowsAzure.Mobile.Service;
         using Microsoft.WindowsAzure.Mobile.Service.Security;
@@ -537,7 +537,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    AuthorizeLevel 属性を使用して、コントローラー上の挿入/更新/削除操作へのパブリック アクセスを制限していることに注意します。このシナリオでは、Customer の一覧は読み取り専用ですが、新しい Order を作成し、既存の顧客と関連付けることはできます。 
+    AuthorizeLevel 属性を使用して、コントローラー上の挿入/更新/削除操作へのパブリック アクセスを制限していることに注意します。このシナリオでは、Customer の一覧は読み取り専用ですが、新しい Order を作成し、既存の顧客と関連付けることはできます。
 
 2. 次のように、**Controllers** フォルダーに、ファイル **MobileOrderController.cs** を追加します。
 
@@ -593,7 +593,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 3. これで、サービスを実行する準備が整いました。**F5** キーを押して、ヘルプ ページに組み込まれているテスト クライアントを使用してデータを変更します。
 
-両方のコントローラーの実装が、DTO **MobileCustomer** および **MobileOrder** を専用で使用し、基になるモデルに依存しないことに注意してください。これらの DTO は容易に JSON にシリアル化して、すべてのプラットフォームで Mobile Services クライアント SDK とデータを交換するために使用できます。たとえば、Windows ストア アプリケーションを作成する場合、対応するクライアント側の型は以下のようになります。この型は、他のクライアント プラットフォームでも同様です。 
+両方のコントローラーの実装が、DTO **MobileCustomer** および **MobileOrder** を専用で使用し、基になるモデルに依存しないことに注意してください。これらの DTO は容易に JSON にシリアル化して、すべてのプラットフォームで Mobile Services クライアント SDK とデータを交換するために使用できます。たとえば、Windows ストア アプリケーションを作成する場合、対応するクライアント側の型は以下のようになります。この型は、他のクライアント プラットフォームでも同様です。
 
     using Microsoft.WindowsAzure.MobileServices;
     using System;
@@ -621,7 +621,5 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
     }
 
-次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。 
-
-
-<!--HONumber=42-->
+次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。
+<!--HONumber=54-->

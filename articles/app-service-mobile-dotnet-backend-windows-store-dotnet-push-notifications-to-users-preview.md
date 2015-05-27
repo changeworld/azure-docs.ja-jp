@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Windows ストア クライアントで特定のユーザーに x-plat 通知を送信する"
 	description="特定のユーザーのすべてのデバイスにプッシュ通知を送信する方法について説明します。"
 	services="app-service\mobile" 
@@ -22,7 +22,7 @@
 
 このトピックでは、特定のユーザーのすべての登録済みデバイスにモバイル バックエンドから通知を送信する方法について説明します。[テンプレート]の概念が導入されました。これにより、クライアント アプリケーションで、登録時にペイロードの形式と変数プレースホルダーを自由に指定することができます。送信すると、これらのプレースホルダーにより、すべてのプラットフォームにヒットし、クロスプラットフォーム通知が有効になります。
 
-> [AZURE.NOTE] クロスプラットフォーム クライアントでプッシュ操作を有効にするには、有効にする各プラットフォームに対してこのチュートリアルを完了する必要があります。同じモバイル バックエンドを共有しているクライアントに対して、[モバイル バックエンドの更新](#backend)を 1 回だけ実行する必要があります。
+> [AZURE.NOTE]クロスプラットフォーム クライアントでプッシュ操作を有効にするには、有効にする各プラットフォームに対してこのチュートリアルを完了する必要があります。同じモバイル バックエンドを共有しているクライアントに対して、[モバイル バックエンドの更新](#backend)を 1 回だけ実行する必要があります。
  
 ##前提条件 
 
@@ -30,9 +30,9 @@
 
 + [認証の使用]<br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
-+ [プッシュ通知の使用]<br/>プッシュ通知用に TodoList サンプル アプリを構成します。
++ [プッシュ通知の使用]<br/>プッシュ通知用に TodoList サンプル アプリケーションを構成します。
 
-##<a name="client"></a>クライアントを更新して、クロスプラットフォームのプッシュを処理するためのテンプレートを登録する
+##<a name="client"></a>クロスプラットフォームのプッシュを処理するためのテンプレートを登録するように、クライアントを更新する
 
 1. 代わりに、**MainPage.cs** で **InitNotificationAsync** を実行してユーザー認証を行います。**App.xmal.cs** の **InitNotificationAsync** メソッド定義と呼び出しを削除し、**MainPage.cs** の **MainPage** クラスに以下を追加します。
 
@@ -41,7 +41,7 @@
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
  
             // building templates for wns
-            var toastTemplate = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(message)</text></binding></visual></toast>";
+            var toastTemplate = "<toast><visual><binding template="ToastText01"><text id="1">$(message)</text></binding></visual></toast>";
             JObject templateBody = new JObject();
             templateBody["body"] = toastTemplate;
  
@@ -106,4 +106,4 @@
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
 
-<!--HONumber=49-->
+<!--HONumber=54-->

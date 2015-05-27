@@ -34,20 +34,18 @@
 
 ## Python Web ロールと Python worker ロールについて
 
-Azure にはアプリケーションを実行するためのコンピューティング モデルが 3 種類あります。[Azure Websites][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] です。これら 3 つのモデルはすべて、Python をサポートしています。Cloud Services には、Web ロールと worker ロールが含まれ、 *Platform as a Service (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure Websites][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、および [Azure Cloud Services][execution model-cloud services] の 3 種類があります。これら 3 つのモデルはすべて、Python をサポートしています。クラウド サービスには、Web ロールとワーカー ロールが含まれ、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[What is a Cloud Service? (クラウド サービスとは)]」を参照してください。
 
-> [AZURE.NOTE] **単純な Web サイトを構築する場合**
-実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、軽量の Azure の Web サイトを使用することを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。Azure の Web サイトの開発に関する記事については、 <a href="/ja-jp/develop/python/">Python デベロッパー センター</a> を参照してください。
-<br />
+> [AZURE.NOTE]**単純な Web サイトを構築する場合** 実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、軽量の Azure の Web サイトを使用することを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。Azure Websites の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。<br />
 
 
 ## プロジェクトの作成
 
-Visual Studio で、**[新しいプロジェクト]** ダイアログの **[Python]** から **[Azure クラウド サービス]** を選択します。 
+Visual Studio で、**[新しいプロジェクト]** ダイアログの **[Python]** から **[Azure クラウド サービス]** を選択します。
 
-![New Project Dialog](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
+![[新しいプロジェクト] ダイアログ](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
 Azure クラウド サービス ウィザードでは、新規作成の対象として Web ロールまたは worker ロールを選択できます。
 
@@ -57,7 +55,7 @@ worker ロール テンプレートには、Azure ストレージ アカウン�
 
 ![Cloud Service Solution](./media/cloud-services-python-ptvs/worker.png)
 
-Web ロールまたは worker ロールは、既存のクラウド サービスにいつでも追加することができます。既存のプロジェクトをソリューションに追加するか、または新たに作成するかを選択できます。 
+Web ロールまたは worker ロールは、既存のクラウド サービスにいつでも追加することができます。既存のプロジェクトをソリューションに追加するか、または新たに作成するかを選択できます。
 
 ![Add Role Command](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
@@ -116,29 +114,29 @@ Web ロールまたは worker ロールから、Azure Storage、Service Bus な�
 
 <!--Link references-->
 
-[What is a Cloud Service? (クラウド サービスとは)]: /ja-jp/manage/services/cloud-services/what-is-a-cloud-service/
-[execution model-web sites]: ../fundamentals-application-models/#WebSites
-[execution model-vms]: ../fundamentals-application-models/#VMachine
-[execution model-cloud services]: ../fundamentals-application-models/#CloudServices
-[Python デベロッパー センター]: /ja-jp/develop/python/
+[What is a Cloud Service? (クラウド サービスとは)]: /manage/services/cloud-services/what-is-a-cloud-service/
+[execution model-web sites]: fundamentals-application-models.md#WebSites
+[execution model-vms]: fundamentals-application-models.md#VMachine
+[execution model-cloud services]: fundamentals-application-models.md#CloudServices
+[Python Developer Center]: /develop/python/
 
-[BLOB サービス]: ../storage-python-how-to-use-blob-storage/
-[キュー サービス]: ../storage-python-how-to-use-queue-storage/
-[テーブル サービス]: ../storage-python-how-to-use-table-storage/
-[Service Bus キュー]: ../service-bus-python-how-to-use-queues/
-[Service Bus トピック]: ../service-bus-python-how-to-use-topics-subscriptions/
+[BLOB サービス]: storage-python-how-to-use-blob-storage.md
+[キュー サービス]: storage-python-how-to-use-queue-storage.md
+[テーブル サービス]: storage-python-how-to-use-table-storage.md
+[Service Bus キュー]: service-bus-python-how-to-use-queues.md
+[Service Bus トピック]: service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
 
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio のマニュアル]: http://pytools.codeplex.com/documentation 
+[Python Tools for Visual Studio Documentation]: http://pytools.codeplex.com/documentation
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
 
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
-[Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190 
+[Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!--HONumber=45--> 
+<!--HONumber=54-->

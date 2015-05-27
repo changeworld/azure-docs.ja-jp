@@ -1,4 +1,4 @@
-﻿<properties
+<properties
    pageTitle="Linux ベースの HDInsight の Hadoop について知っておくべきこと | Azure"
    description="Linux ベースの HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。"
    services="hdinsight"
@@ -9,62 +9,62 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang=""
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="04/17/2015"
    ms.author="larryfr"/>
 
-#Linux での HDInsight の使用 (プレビュー)
+# Linux での HDInsight の使用 (プレビュー)
 
-Linux ベースの HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。ここでは、知っておく必要がある特定の違いについて説明します。
+Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。ここでは、知っておく必要がある特定の違いについて説明します。
 
-##ドメイン名
+## ドメイン名
 
-クラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**&lt;clustername>.azurehdinsight.net** または (SSH のみ) **&lt;clustername>.aurehdinsight.net** です。
+クラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**<clustername>.azurehdinsight.net** または (SSH のみ) **<clustername-ssh>.azurehdinsight.net** です。
 
-##サービスへのリモート アクセスが可能
+## サービスへのリモート アクセス
 
-* **Ambari (Web)** - https://&lt;clustername>.azurehdinsight.net
+* **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
 
-	> [AZURE.NOTE] クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。その際も、クラスター管理者のユーザー名とパスワードを使用します。
-	> 
+	> [AZURE.NOTE]クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。その際も、クラスター管理者のユーザー名とパスワードを使用します。
+	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
 	クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。これは内部ドメイン名で、パブリックではないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生します。
 
-	この問題を解決するには、SSH トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信します。ローカル コンピューターでポートからクラスターへのトラフィックに対して SSH トンネルを作成するには、次の記事を参照してください。
+	この問題を解決するには、SSH トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信します。ローカル コンピューターでポートからクラスターへのトラフィックに対して SSH トンネルを作成するには、次の記事の **SSH トンネリング** セクションをご覧ください。
 
-	* <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する</a> - `ssh` コマンドを使用して SSH トンネルを作成する手順
+	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md) - `ssh` コマンドを使用して SSH トンネルを作成する手順
 
-	* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - Putty を使用して SSH トンネルを作成する手順
+	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows) - PuTTY を使用して SSH トンネルを作成する手順
 
 * **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.net/ambari
 
-	> [AZURE.NOTE] クラスター管理者のユーザー名とパスワードを使用して認証します。
-	> 
+	> [AZURE.NOTE]クラスター管理者のユーザー名とパスワードを使用して認証します。
+	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
 * **WebHCat (Templeton)** - https://&lt;clustername>.azurehdinsight.net/templeton
 
-	> [AZURE.NOTE] クラスター管理者のユーザー名とパスワードを使用して認証します。
-	> 
+	> [AZURE.NOTE]クラスター管理者のユーザー名とパスワードを使用して認証します。
+	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **SSH** - &lt;clustername>-ssh.azurehdinsight.net on port 22
+* **SSH** - <clustername>-ssh.azurehdinsight.net on port 22
 
-	> [AZURE.NOTE] クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用して worker ノードにアクセスできます。
+	> [AZURE.NOTE]クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用してワーカー ノードにアクセスできます。
 
-##ファイルの場所
+## ファイルの場所
 
-Hadoop 関連ファイルは、 `/usr/hdp/current` のクラスター ノードにあります。
+Hadoop 関連ファイルは、`/usr/hdp/current` のクラスター ノードにあります。
 
-サンプルのデータと jar は、'/example' または 'wasb:///example' の HDFS (WASB) にあります。
+サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システム (HDFS) または Azure BLOB ストレージの '/example' または 'wasb:///example' にあります。
 
-##HDFS、WASB、およびストレージのベスト プラクティス
+## HDFS、Azure BLOB ストレージ、ストレージのベスト プラクティス
 
-ほとんどの Hadoop ディストリビューションでは、Hadoop 分散ファイル システム (HDFS) はクラスター内のコンピューターのローカル ストレージによって支えられています。これは効率的である一方、コンピューティング リソースが時間単位で課金されるクラウド ベースのソリューションでは、コストが高くなります。
+ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。これは効率的である一方、コンピューティング リソースが時間単位で課金されるクラウド ベースのソリューションでは、コストが高くなります。
 
 HDInsight は Azure BLOB ストレージを既定の保管場所として使用します。これには次の利点があります。
 
@@ -78,56 +78,66 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
 
-HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@&lt;account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーとストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
+HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
 	hadoop fs -ls wasb://mycontainer@mystorage.blob.core.windows.net/example/data
 
-###クラスターで使用している BLOB ストレージ
+### クラスターで使用している BLOB ストレージ
 
-クラスター作成時、既存のストレージ アカウントとコンテナーを使用するか、新しく作成するかを選択します。後になって、何を選択したかを忘れることもあります。次の方法を使用してストレージ アカウントとコンテナーを確認できます。
+クラスター作成時、既存の Azure ストレージ アカウントとコンテナーを使用するか、新しく作成するかを選択します。後になって、何を選択したかを忘れることもあります。次の方法を使用してストレージ アカウントとコンテナーを確認できます。
 
-**Azure 管理ポータル**
+**Ambari API の使用**
 
-1. <a href="https://manage.windowsazure.com/" target="_blank">Azure の管理ポータル</a>で、HDInsight クラスターを選択します。
+1. 次のコマンドを使用して、HDFS の構成情報を取得します。
+
+        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1"
+
+2. `fs.defaultFS` エントリを見つけます。これには、既定のコンテナーとストレージ アカウント名が次のような形式で含まれています。
+
+        wasb://CONTAINTERNAME@STORAGEACCOUNTNAME.blob.core.windows.net
+
+> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールしている場合は、次のコマンドを使用すると `fs.defaultFS` エントリのみが返されます。
+>
+> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'`
+
+**Azure ポータル**
+
+1. [Azure ポータル](https://manage.windowsazure.com/)で HDInsight クラスターを選択します。
 
 2. ページの上部にある **[ダッシュボード]** をクリックします。
 
-3. ストレージ アカウントとコンテナーの一覧が、ページの**リンク済みリソース**のセクションに表示されます。
+3. ストレージ アカウントとコンテナーの一覧が、ページの **[リンク済みリソース]** セクションに表示されます。
 
 	![linked resources](./media/hdinsight-hadoop-linux-information/storageportal.png)
 
-**Azure クロスプラットフォーム コマンド ライン インターフェイス**
-
-*近日対応予定*
-
-###BLOB ストレージにアクセスする方法
+### BLOB ストレージにアクセスする方法
 
 クラスターから Hadoop コマンドを使用する以外にも、BLOB にアクセスするさまざまな方法があります。
 
-* <a href="http://azure.microsoft.com/documentation/articles/xplat-cli/" target="_blank">Azure クロスプラットフォーム コマンド ライン インターフェイス</a>に関するページ - インストールしたら、ストレージの使用方法のヘルプについては  `azure storage` に関するトピック、BLOB 固有のコマンドのヘルプについては  `azure blob` に関するトピックを参照してください。
+* [Mac、Linux、Windows 用の Azure CLI](xplat-cli.md): Azure を使用するためのクロス プラットフォーム コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` をご覧ください。
+
+* [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Azure ストレージで BLOB を使用するための Python スクリプト。
 
 * さまざまな SDK:
 
-	* <a href="https://github.com/Azure/azure-sdk-for-java" target="_blank">Java</a>
+	* [Java](https://github.com/Azure/azure-sdk-for-java)
 
-	* <a href="https://github.com/Azure/azure-sdk-for-node" target="_blank">Node.js</a>
+	* [Node.JS](https://github.com/Azure/azure-sdk-for-node)
 
-	* <a href="https://github.com/Azure/azure-sdk-for-php" target="_blank">PHP</a>
+	* [PHP](https://github.com/Azure/azure-sdk-for-php)
 
-	* <a href="https://github.com/Azure/azure-sdk-for-python" target="_blank">Python</a>
+	* [Python](https://github.com/Azure/azure-sdk-for-python)
 
-	* <a href="https://github.com/Azure/azure-sdk-for-ruby" target="_blank">Ruby</a>
+	* [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
 
-	* <a href="https://github.com/Azure/azure-sdk-for-net" target="_blank">.NET</a>
+	* [.NET](https://github.com/Azure/azure-sdk-for-net)
 
-* <a href="https://msdn.microsoft.com/library/azure/dd135733.aspx" target="_blank">ストレージ REST API</a>
+* [ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-
-##次のステップ
+## 次のステップ
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
 
-
-<!--HONumber=47-->
+<!--HONumber=54-->

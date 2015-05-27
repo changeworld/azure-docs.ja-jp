@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="HDInsight の学習マップ | Azure" 
 	description="HDInsight を理解するために必要となるすべてを学ぶために、提案されているリソースのフローについて説明します。" 
 	services="hdinsight" 
@@ -18,13 +18,12 @@
 
 
 # HDInsight の学習マップ
-HDInsight を使用すると、Hadoop、HBase、およびカスタマイズされたクラスターで、クラウドのビッグ データを操作することができます。HDInsight ドキュメントの学習を効率的に進めるには、このページのガイダンスに従ってください。
+HDInsight では、Hadoop、HBase、カスタマイズされたクラスターを使用して、クラウドでビッグ データを操作できます。HDInsight ドキュメントの学習を効率的に進めるには、このページのガイダンスに従ってください。
 
-<object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/HDI.Content.Flow.svg" width="100%" height="100%">
-</object>
-
+<object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/HDI.Content.Flow.svg" width="100%" height="100%"> </object>
 
 
 
 
-<!--HONumber=42-->
+
+<!--HONumber=54-->

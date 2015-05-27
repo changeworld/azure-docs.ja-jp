@@ -1,5 +1,5 @@
-﻿<properties 
-	pageTitle="Azure App Service での Azure Redis キャッシュのセッション状態の使用" 
+<properties 
+	pageTitle="Azure App Service での Azure Radis キャッシュのセッション状態の使用" 
 	description="Azure Cache Service を使用して ASP.NET のセッション状態のキャッシュをサポートする方法について説明します。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
@@ -20,28 +20,28 @@
 # Azure App Service での Azure Radis キャッシュのセッション状態の使用
 
 
-このトピックでは、Azure Redis Cache Service (プレビュー) を使用してセッション状態をサポートする方法について説明します。
+このトピックでは、Azure Redis Cache Service を使用してセッション状態をサポートする方法について説明します。
 
 ASP.NET Web アプリケーションでセッション状態を使用している場合は、外部セッション状態プロバイダー (Redis Cache Service または SQL Server セッション状態プロバイダー) を構成する必要があります。セッション状態を使用し、外部プロバイダーを使用しない場合は、Web アプリケーションの 1 つのインスタンスに制限されます。Redis Cache Service は、最も高速で最も簡単に実現できるキャッシュ サービスです。
 
 <h2><a id="createcache"></a>キャッシュを作成する</h2>
-[この操作手順](cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) に従ってキャッシュを作成します。
+[ここにある手順](cache-dotnet-how-to-use-azure-redis-cache.md#create-cache)に従ってキャッシュを作成します。
 
 <h2><a id="configureproject"></a>RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加する</h2>
-NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソール (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択) からインストール するには、次のコマンドを使用します。
+NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソール ([**Tools**]、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) からインストール するには、次のコマンドを使用します。
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
   
-**[ツール]** > **[NuGet パッケージ マネージャー]** > **[ソリューションの NuGet パッケージの管理]** の順に選択してインストールするには、 `RedisSessionStateProvider` を検索します。
+**[ツール]**、**[NuGet パッケージ マネージャー]**、**[ソリューションの NuGet パッケージの管理]** の順に選択してインストールするには、`RedisSessionStateProvider` を検索します。
 
-詳細については、[NuGet RedisSessionStateProvider のページ](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/ )と[キャッシュ クライアントの構成に関するセクション](cache-dotnet-how-to-use-azure-redis-cache.md#NuGet) を参照してください。
+詳細については、[NuGet RedisSessionStateProvider のページ](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/)および「[キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#NuGet)」を参照してください。
 
 <h2><a id="configurewebconfig"></a>Web.Config ファイルを修正する</h2>
-キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは  *web.config* ファイルにスタブ エントリを追加します。 
+キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは *web.config* ファイルにスタブ エントリを追加します。
 
-1.  *web.config* を開き、**sessionState** 要素を見つけます。
+1. *web.config* を開き、**sessionState** 要素を見つけます。
 
-1.  `host`、 `accessKey`、 `port` (SSL ポートは 6380 とする必要があります) の値を入力し、 `SSL` を  `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュへの接続]」(cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache) を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートを有効にする手順については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。 次のマークアップは、 *web.config* ファイルに対する変更を示しています。
+1. `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache)」を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。次のマークアップは、*web.config* ファイルに対する変更を示しています。
 
 
   <pre class="prettyprint">  
@@ -80,33 +80,32 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
     string strValue = "yourvalue";
 	Session.Add("yourkey", strValue);
 
-The following code retrieves this value from session state.
+次のコードは、セッション状態からこの値を取得します。
 
     object objValue = Session["yourkey"];
     if (objValue != null)
        strValue = (string)objValue;	
 
-Redis Cache を使用して、Web アプリケーションのオブジェクトをキャッシュすることもできます。詳細については、「[MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)](http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/)」を参照してください。
-ASP.NET セッション状態の詳しい使用方法については、「[ASP.NET セッション状態の概要][]」を参照してください。
+Redis Cache を使用して、Web アプリケーションのオブジェクトをキャッシュすることもできます。詳細については、「[MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)](http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/)」を参照してください。ASP.NET セッション状態の使用方法の詳細については、「[ASP.NET セッション状態の概要][]」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service に有効期限付きのスターター Web アプリケーションを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## 変更点
-* Web サイトから App Service への変更に関するガイド:[Azure App Service と既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 以前のポータルから新しいポータルへの変更に関するガイド:[プレビュー ポータルのナビゲートに関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
+## 変更内容
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
   *著者 [Rick Anderson](https://twitter.com/RickAndMSFT)*
   
-  [最新バージョンのインストール]: http://www.windowsazure.com/downloads/?sdk=net  
-  [ASP.NET セッション状態の概要]: http://msdn.microsoft.com/library/ms178581.aspx
+[installed the latest]: http://www.windowsazure.com/downloads/?sdk=net
+[ASP.NET セッション状態の概要]: http://msdn.microsoft.com/library/ms178581.aspx
 
-  [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
-  [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
-  [CacheIcon]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheIcon.png
-  [NuGetDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_NuGet.png
-  [OutputConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_OC_WebConfig.png
-  [CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
-  [EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
-  [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
+[NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
+[NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
+[CacheIcon]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheIcon.png
+[NuGetDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_NuGet.png
+[OutputConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_OC_WebConfig.png
+[CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
+[EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
+[ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
 
-<!--HONumber=49-->
+<!--HONumber=54-->

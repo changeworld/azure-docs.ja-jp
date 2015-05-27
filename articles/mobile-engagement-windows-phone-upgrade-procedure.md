@@ -1,9 +1,9 @@
-﻿<properties 
-	pageTitle="Azure モバイル エンゲージメント Windows Phone SDK 統合" 
-	description="Azure モバイル エンゲージメント向け Windows Phone SDK のアップグレード手順" 					
+<properties 
+	pageTitle="Windows Phone Silverlight SDK アップグレード手順" 
+	description="Azure モバイル エンゲージメント向け Windows Phone Silverlight SDK のアップグレード手順" 					
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="lalathie" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor="" />
 
@@ -11,134 +11,134 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="" 
+	ms.devlang="C#" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kapiteir" />
+	ms.date="04/07/2015" 
+	ms.author="piyushjo" />
 
-#アップグレードの手順
+#Windows Phone Silverlight SDK アップグレード手順
 
 既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
 
-SDK のいくつかのバージョンがない場合は、次の手順に従う必要があります。たとえば、0.10.1 から 0.11.0 へ移行する場合は、最初に「0.9.0 から 0.10.1」の手順に従い、次に「0.10.1 から 0.11.0」の手順に従う必要があります。
+SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
-##1.1.1 から 2.0.0
+##1.1.1 から 2.0.0 に移行
 
-Capptain SAS によって提供される Capptain サービスから Azure モバイル エンゲージメントを装備するアプリにSDK 統合を移行する方法を次に示します。 
+Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
 
->[Azure.IMPORTANT] Capptain と モバイル エンゲージメントは同じサービスではありませんし、以下に示す手順では、クライアント アプリを移行する方法についてのみ詳しく説明しています。アプリの SDK を移行しても、Capptain サーバーのデータはモバイル エンゲージメント サーバーには移行されません。
+> [Azure.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
 
-以前のバージョンから移行する場合は、 Capptain の Web サイトを参照して、最初に 1.1.1 に移行してから、次の手順を適用してください。
+以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.1.1 に移行し、次の手順を適用してください。
 
-### Nuget パッケージ
+### NuGet パッケージ
 
-アーカイブ パッケージの lib フォルダー内で Capptain.WindowsPhone.nupkg を azuresdk-mobileengagement-windowsphone-VERSION.nupkg と置き換えます。
+**Capptain.WindowsPhone** を **MicrosoftAzure.MobileEngagement** Nuget パッケージに置き換えます。
 
 ### モバイル エンゲージメントの適用
 
-SDK は  `Engagement` という用語を使用します。この変更と合致するようにプロジェクトを更新する必要があります。
+SDK は `Engagement` という用語を使用します。この変更を一致させるためにプロジェクトをアップグレードする必要があります。
 
-現在の Capptain nuget パッケージをアンインストールする必要があります。Capptain リソース フォルダー内のすべての変更が削除されますので注意してください。これらのファイルを保持する場合は、コピーを作成します。
+現在の Capptain NuGet パッケージをアンインストールする必要があります。[Capptain Resources] フォルダー内のすべての変更が削除されることを検討します。これらのファイルを保持する場合は、コピーを作成します。
 
-その後、プロジェクトに新しい Microsoft Azure エンゲージメント nuget パッケージをインストールします。[NuGet の Web サイト] か、またはここのインデックスで直接検索できます。これでエンゲージメントが使用するすべてのリソース ファイルが置き換わり、新しいエンゲージメント DLL がプロジェクト参照に追加されます。
+そのあと、新しい Microsoft Azure エンゲージメント NuGet パッケージをプロジェクトにインストールします。[NuGet](http://www.nuget.org/packages/MicrosoftAzure.MobileEngagement) の Web サイトまたはここのインデックスで直接検索できます。この操作は、エンゲージメントによって使用されるすべてのリソース ファイルを置換し、プロジェクトの参照に新しいエンゲージメントの DLL を追加します。
 
-Capptain DLL 参照を削除してプロジェクト参照をクリーンアップする必要があります。これを実行しないと、Capptain のバージョンの競合が発生し、エラーが発生します。
+Capptain DLL の参照を削除して、プロジェクトの参照をクリーンアップする必要があります。これを実行しない場合は、Capptain のバージョンが競合してエラーが発生します。
 
-Capptain リソースをカスタマイズした場合は、古いファイルの内容をコピーし、新しいエンゲージメント ファイルに貼り付けます。xaml と cs ファイルの両方を更新する必要があることに注意してください。
+Capptain リソースをカスタマイズした場合、古いファイルの内容をコピーし、新しいエンゲージメントのファイルに貼り付けます。xaml と cs ファイルの両方を更新する必要があることにご注意ください。
 
-これらの手順が完了した後は、古い Capptain 参照を新しいエンゲージメント参照に置き換える作業のみが必要となります。
+これらの手順が完了したら、新しいエンゲージメントの参照で古い Capptain の参照を置き換える必要があります。
 
-すべての Capptain 名前空間の更新が必要です。
+1. すべての Capptain 名前空間の更新が必要です。
 
-移行前:
+	移行前:
+	
+		using Capptain.Agent;
+		using Capptain.Reach;
+	
+	移行後:
+	
+		using Microsoft.Azure.Engagement;
 
-			using Capptain.Agent;
-			using Capptain.Reach;
+2. "Capptain" が含まれているすべての Capptain クラスには、"Engagement" が含まれている必要があります。
 
-移行後:
+	移行前:
+	
+		public sealed partial class MainPage : CapptainPage
+		{
+		  protected override string GetCapptainPageName()
+		  {
+		    return "Capptain Demo";
+		  }
+		  ...
+		}
+	
+	移行後:
+	
+		public sealed partial class MainPage : EngagementPage
+		{
+		  protected override string GetEngagementPageName()
+		  {
+		    return "Engagement Demo";
+		  }
+		  ...
+		}
 
-			using Microsoft.Azure.Engagement;
+3. xaml ファイルの Capptain 名前空間と属性も変更します。
 
-「Capptain」が含まれている すべての Capptain クラスには、「エンゲージメント」が含まれている必要があります。
+	移行前:
+	
+		<capptain:CapptainPage
+		...
+		xmlns:capptain="clr-namespace:Capptain.Agent;assembly=Capptain.Agent.WP"
+		...
+		</capptain:CapptainPage>
+	
+	移行後:
+	
+		<engagement:EngagementPage
+		...
+		xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
+		...
+		</engagement:EngagementPage>
 
-移行前:
-
-			public sealed partial class MainPage : CapptainPage
-			{
-			  protected override string GetCapptainPageName()
-			  {
-			    return "Capptain Demo";
-			  }
-			  ...
-			}
-
-移行後:
-
-			public sealed partial class MainPage : EngagementPage
-			{
-			  protected override string GetEngagementPageName()
-			  {
-			    return "Engagement Demo";
-			  }
-			  ...
-			}
-
-xaml ファイルでは、Capptain 名前空間と属性も変更されます。
-
-移行前:
-
-			<capptain:CapptainPage
-			...
-			xmlns:capptain="clr-namespace:Capptain.Agent;assembly=Capptain.Agent.WP"
-			...
-			</capptain:CapptainPage>
-
-移行後:
-
-			<engagement:EngagementPage
-			...
-			xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
-			...
-			</engagement:EngagementPage>
-
-Capptain 画像のようなその他のリソースも名前が変更されて、「Engagement」を使用しますので注意してください。
+4. Capptain 画像のようなその他のリソースも名前が変更されて、「Engagement」を使用しますので注意してください。
 
 ### アプリケーション ID / SDK キー
 
-エンゲージメントは接続文字列を使用します。モバイル エンゲージメントでアプリケーション ID と SDK キーを指定する必要はなく、接続文字列のみを指定します。これは、EngagementConfiguration ファイルで設定できます。
+エンゲージメントは、接続文字列を使用します。モバイル エンゲージメントでアプリケーション ID と SDK キーを指定する必要はありません。指定する必要があるのは接続文字列のみです。接続文字列は、EngagementConfiguration ファイルで設定できます。
 
-エンゲージメント構成は、プロジェクトの  `Resources\EngagementConfiguration.xml` ファイルで設定できます。
+Engagement の構成は、プロジェクトの `Resources\EngagementConfiguration.xml` ファイルで設定できます。
 
 このファイルを編集して、次の内容を指定します。
 
--   タグ `<connectionString>` と `<\connectionString>` 間のアプリケーション接続文字列。
+-   `<connectionString>` タグと `<\connectionString>` タグの間のアプリケーション接続文字列。
 
 代わりに指定を実行時に行う場合は、エンゲージメント エージェントを初期化する前に、次のメソッドを呼び出すことができます。
 
-			/* Engagement configuration. */
-			EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-			engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
-			
-			/* Initialize Engagement angent with above configuration. */
-			EngagementAgent.Instance.Init(engagementConfiguration);
+		/* Engagement configuration. */
+		EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+		engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
+		
+		/* Initialize Engagement angent with above configuration. */
+		EngagementAgent.Instance.Init(engagementConfiguration);
 
-アプリケーションの接続文字列が Azure ポータルに表示されます。
+アプリケーションの接続文字列が Azure 管理ポータルに表示されます。
 
-### 項目の名前の変更
+### 項目名の変更
 
-...capptain... という名前のすべての項目が ...engagement... という名前に変更されます。これは Capptain とエンゲージメントでも同様です。
+*capptain* という名前の項目はすべて *engagement* という名前に変更されています。同様に、*Capptain* は *Engagement* に変更されています。
 
-Capptain の項目で一般的に使用される例 :
+一般的に使用される Capptain 項目の例:
 
-> -   CapptainConfiguration は EngagementConfiguration という名前に変更されました
-> -   CapptainAgent は EngagementAgent という名前に変更されました
-> -   CapptainReach は EngagementReach という名前に変更されました
-> -   CapptainHttpConfig は EngagementHttpConfig という名前に変更されました
-> -   GetCapptainPageName は GetEngagementPageName という名前に変更されました
+-   CapptainConfiguration は EngagementConfiguration という名前になりました
+-   CapptainAgent は EngagementAgent という名前になりました
+-   CapptainReach は EngagementReach という名前になりました
+-   CapptainHttpConfig は EngagementHttpConfig という名前になりました
+-   GetCapptainPageName は GetEngagementPageName という名前になりました
 
-名前の変更はオーバーライドのメソッドにも影響することに注意してください。
+名前の変更はオーバーライドされたメソッドにも影響することにご注意ください。
 
 
-[NuGet の Web サイト]:http://www.nuget.org/packages/Capptain.WindowsPhone
 
-<!--HONumber=47-->
+
+<!--HONumber=54-->

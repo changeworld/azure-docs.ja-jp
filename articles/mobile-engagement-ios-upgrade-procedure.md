@@ -16,22 +16,20 @@
 	ms.date="02/12/2015" 
 	ms.author="kapiteir" />
 
-# アップグレードの手順
+#アップグレードの手順
 
-既に古いバージョンのエンゲージメントをアプリケーションに統合している場合は、SDK をアップグレードするときに次の点を考慮する必要があります。
+既にアプリケーションに以前のバージョンのモバイル エンゲージメントを統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
-## 1.16.0 から 2.0.0 へ
-次に、Capptain SAS が提供する Capptain サービスから、Azure モバイル エンゲージメントを備えたアプリに SDK 統合を移行する方法について説明します。 
+##1.16.0 から 2.0.0 に移行
+Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.16 に移行し、次の手順を適用してください。
 
->[Azure.IMPORTANT] Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリを移行する方法についてのみ説明します。アプリ内の SDK を移行しても、Capptain サーバーからモバイル エンゲージメント サーバーにデータは移行されません。
-
-以前のバージョンから移行する場合は、Capptain の Web サイトを参照して、まず 1.16 に移行してから次の手順を適用してください。
+>[Azure.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
 
 ### エージェント
 
-メソッド `registerApp:` は、新しいメソッド ' init:' で置き換えられました。その結果、アプリケーション デリゲートは更新され、接続文字列を使用する必要があります。
+メソッド `registerApp:` は、新しいメソッド `init:` で置き換えられました。その結果、アプリケーション デリゲートは更新され、接続文字列を使用する必要があります。
 
 			- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 			{
@@ -40,7 +38,7 @@
 			  [...]
 			}
 
-SmartAd の追跡が SDK から削除されました。 `AETrackModule` クラスのすべてのインスタンスを削除する必要があります。
+SmartAd の追跡が SDK から削除されました。`AETrackModule` クラスのすべてのインスタンスを削除する必要があります。
 
 ### クラス名の変更
 
@@ -50,15 +48,15 @@ SmartAd の追跡が SDK から削除されました。 `AETrackModule` クラ�
 
 例:
 
--   `CPModule.h` は、 `AEModule.h` に変更されました。
+-   `CPModule.h` は `AEModule.h` に変更されました。
 
 「Capptain」で始まるクラスは、「Engagement」で始まる名前に変更されました。
 
 次に例を示します。
 
--   クラス  `CapptainAgent` は、 `EngagementAgent` に変更されました。
--   クラス  `CapptainTableViewController` は、 `EngagementTableViewController` に変更されました。
--   クラス  `CapptainUtils` は、 `EngagementUtils` に変更されました。
--   クラス  `CapptainViewController` は、 `EngagementViewController` に変更されました。
+-   クラス `CapptainAgent` は `EngagementAgent` に変更されました。
+-   クラス `CapptainTableViewController` は `EngagementTableViewController` に変更されました。
+-   クラス `CapptainUtils` は `EngagementUtils` に変更されました。
+-   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!--HONumber=47-->
+<!--HONumber=54-->

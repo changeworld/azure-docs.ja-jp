@@ -1,35 +1,35 @@
-﻿<properties 
+<properties 
 	pageTitle="Mobile Services におけるオフライン データとの競合の処理 (iOS) | モバイル デベロッパー センター" 
 	description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" 
 	documentationCenter="ios" 
 	authors="krisragh" 
 	manager="dwrede" 
 	editor="" 
-	services=""/>
+	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="dotnet" 
+	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="01/26/2015" 
-	ms.author="krisragh,donnam"/>
+	ms.date="04/16/2015" 
+	ms.author="krisragh;donnam"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理
 
-[WACOM.INCLUDE [mobile-services-selector-offline-conflicts](../includes/mobile-services-selector-offline-conflicts.md)]
+[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../includes/mobile-services-selector-offline-conflicts.md)]
 
-このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルは、前の [オフライン データの使用] チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、[オフライン データの使用] チュートリアルを完了している必要があります。
+このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルは、前の「[オフライン データの使用]」チュートリアルの手順およびサンプル アプリを基に作成されています。このチュートリアルを開始する前に、「[オフライン データの使用]」チュートリアルを完了している必要があります。
 
->[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
 1. [アプリケーション プロジェクトを編集可能に更新]
 2. [Todo リスト ビュー コントローラーの更新]
-3. [Todo 項目ビューのコントローラーの追加]
+3. [Todo 項目ビュー コントローラーの追加]
 4. [Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加]
 5. [項目の詳細の Todo 項目ビュー コントローラーへの追加]
 6. [編集内容を保存するためのサポートの追加]
@@ -37,15 +37,15 @@
 8. [競合処理をサポートするための QSTodoService の更新]
 9. [競合処理をサポートするための UI アラート ビュー ヘルパーの追加]
 10. [競合ハンドラーの Todo リスト ビュー コントローラーへの追加]
-11. [アプリケーションのテスト]
+11. [アプリケーションをテストする]
 
 ## 「オフライン データの使用」チュートリアルの完了
 
-[オフライン データの使用] チュートリアルの手順に従って、そのプロジェクトを完了します。そのチュートリアルで完了したプロジェクトを、このチュートリアルの起点として使用します。
+「[オフライン データの使用]」チュートリアルの手順に従って、そのプロジェクトを完了します。そのチュートリアルで完了したプロジェクトを、このチュートリアルの起点として使用します。
 
 ## <a name="update-app"></a>アプリケーション プロジェクトを編集可能に更新
 
-[オフライン データの使用] で完了したプロジェクトを更新し、項目を編集可能にします。現時点では、この同じアプリを 2 台の電話で稼働し、両方の電話で同じ項目をローカルに変更して、変更内容をサーバーにプッシュすると、競合が生じて失敗します。
+「[オフライン データの使用]」で完了したプロジェクトを更新し、項目を編集可能にします。現時点では、この同じアプリを 2 台の電話で稼働し、両方の電話で同じ項目をローカルに変更して、変更内容をサーバーにプッシュすると、競合が生じて失敗します。
 
 SDK のオフライン同期機能を使用すると、コードを介してこのような競合を扱い、競合している項目への対処方法を動的に判断できます。クイックスタート プロジェクトを変更することで、この機能を体験できます。
 
@@ -64,9 +64,9 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
         -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
          forRowAtIndexPath:(NSIndexPath *)indexPath
 
-### <a name="add-view-controller"></a>Todo 項目ビューのコントローラーの追加
+### <a name="add-view-controller"></a>Todo 項目ビュー コントローラーの追加
 
-1. **UIViewController** から派生した **QSItemViewController** という名前の新しい Cocoa Touch クラスを作成します。
+1. UIViewController から派生した **QSItemViewController** という名前の新しい **Cocoa Touch** クラスを作成します。
 
 2. **QSItemViewController.h** で、次のような型の定義を追加します。
 
@@ -123,7 +123,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
             [[self view] endEditing:YES];
         }
 
-7. **QSItemViewController** で、次のメソッドも追加します。このメソッドは、ユーザーがナビゲーション バーで **[戻る]** ボタンを押したときに呼び出されます。このメソッドは、他のイベントで呼び出すこともできるため、親ビューを最初に確認します。項目に変更があった場合は、**self.item** が変更されてコールバック **editCompleteBlock** が呼び出されます。
+7. **QSItemViewController** で、次のメソッドも追加します。このメソッドは、ユーザーがナビゲーション バーで [**戻る**] ボタンを押したときに呼び出されます。このメソッドは、他のイベントで呼び出すこともできるため、親ビューを最初に確認します。項目に変更があった場合は、**self.item** が変更されてコールバック **editCompleteBlock** が呼び出されます。
 
         - (void)didMoveToParentViewController:(UIViewController *)parent
         {
@@ -147,9 +147,9 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 1. プロジェクト ナビゲーターを使用して、**MainStoryboard_iPhone.storyboard** ファイルに戻ります。
 
-2. Todo 項目の新しいビュー コントローラーをストーリーボードの既存の **Todo リスト ビュー コントローラー**の右に追加します。この新しいビュー コントローラーのカスタム クラスを **QSItemViewController** に設定します。詳細については、[Adding a Scene to a Storyboard (シーンのストーリーボードへの追加)] を参照してください。
+2. Todo 項目の新しいビュー コントローラーをストーリーボードの既存の **Todo リスト ビュー コントローラー**の右に追加します。この新しいビュー コントローラーのカスタム クラスを **QSItemViewController** に設定します。詳細については、「[Adding a Scene to a Storyboard (シーンのストーリーボードへの追加)]」を参照してください。
 
-3. **Show** セグエを **Todo リスト ビュー コントローラー**から **Todo 項目ビュー コントローラー**に追加します。次に、属性インスペクターでセグエの識別子を **detailSegue** に設定します。 
+3. **Show** セグエを **Todo リスト ビュー コントローラー**から **Todo 項目ビュー コントローラー**に追加します。次に、属性インスペクターでセグエの識別子を **detailSegue** に設定します。
 
     このセグエは、元のビュー コントローラーのセルまたはボタンからは作成しないでください。代わりに、ストーリーボード インターフェイスの **Todo リスト ビュー コントローラー**の上にあるビュー コントローラー アイコンを Ctrl キーを押しながら、**Todo 項目ビュー コントローラー**へドラッグします。
 
@@ -159,19 +159,19 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
         Nested push animation can result in corrupted navigation bar
 
-    セグエの詳細については、[ストーリーボード内のシーン間へのセグエの追加]に関するページを参照してください。 
+    セグエの詳細については、「[ストーリーボード内のシーン間へのセグエの追加]」を参照してください。
 
-4. 項目テキスト用のテキスト フィールドと完了ステータス用のセグメント化コントロールを、ラベルと共に新しい **Todo 項目ビュー コントローラー** に追加します。セグメント化されたコントロールで、**セグメント 0** のタイトルを **[はい]**、**セグメントの 1** のタイトルを **[いいえ]** に設定します。これらの新しいフィールドをコード内のコンセントに接続します。詳細については、[Build a User Interface (ユーザー インターフェイスの作成)] および [Segmented Controls (セグメント化コントロール)] を参照してください。
+4. 項目テキスト用のテキスト フィールドと完了ステータス用のセグメント化コントロールを、ラベルと共に新しい **Todo 項目ビュー コントローラー**に追加します。セグメント化コントロールで、**セグメント 0** のタイトルを **Yes** に設定し、**セグメント 1** のタイトルを **No** に設定します。これらの新しいフィールドをコードのアウトレットに接続します。詳細については、「[Build a User Interface (ユーザー インターフェイスの作成)]」および「[Segmented Controls (セグメント化コントロール)]」を参照してください。
 
       ![][add-todo-item-view-controller-3]
 
-5. これらの新しいフィールドを、既に **QSItemViewController.m** に追加されている対応するアウトレットに接続します。項目テキスト フィールドを **itemText** アウトレットに接続し、完了ステータス セグメント化コントロールを **itemComplete** アウトレットに接続します。詳細については、[Creating an Outlet Connection (アウトレット接続の作成)] を参照してください。
+5. これらの新しいフィールドを、既に **QSItemViewController.m** に追加されている対応するアウトレットに接続します。項目テキスト フィールドを **itemText** アウトレットに接続し、完了ステータス セグメント化コントロールを **itemComplete** アウトレットに接続します。詳細については、「[Creating an Outlet Connection (アウトレット接続の作成)]」を参照してください。
 
 6. テキスト フィールドのデリゲートをビュー コントローラーに設定します。テキスト フィールドからストーリーボード インターフェイスの **Todo 項目ビュー コントローラー**の下にあるビュー コントローラー アイコンまで Ctrl キーを押しながらドラッグし、デリゲート アウトレットを選択します。この操作はストーリーボードに、このテキスト フィールドのデリゲートがこのビュー コントローラーであることを示します。
 
 7. ここまでで加えたすべての変更を反映してアプリが動作することを確認します。シミュレーターでアプリを実行します。項目を todo リストに追加し、それらをクリックします。項目ビュー コントローラー (現在は空) が表示されます。
 
-      ![][add-todo-item-view-controller-4]          ![][add-todo-item-view-controller-5]
+      ![][add-todo-item-view-controller-4] ![][add-todo-item-view-controller-5]
 
 ### <a name="add-item-details"></a>項目の詳細の Todo 項目ビュー コントローラーへの追加
 
@@ -179,7 +179,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
         #import "QSItemViewController.h"
 
-2. **QSTodoListViewController.m で、編集する項目を格納するための新しいプロパティを ****QSTodoListViewController** インターフェイスに追加します。
+2. **QSTodoListViewController.m** で、編集する項目を格納するための新しいプロパティを **QSTodoListViewController** インターフェイスに追加します。
 
         @property (strong, nonatomic)   NSDictionary *editingItem;
 
@@ -213,7 +213,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 ### <a name="saving-edits"></a>編集内容を保存するためのサポートの追加
 
-1. ナビゲーション ビューで [戻る] ボタンをクリックすると、編集内容は失われます。データは詳細ビューに送信しましたが、データはマスター ビューに送信されていません。既にポインターを項目のコピーに渡しているため、そのポインターを使用して、項目に加えられた更新の一覧を取得し、それを使用してサーバーを更新できます。開始するにはまず **completeItem** 操作を削除して新しい **updateItem** 操作を追加し、**QSTodoService** のサーバー ラッパー クラスを **QSTodoService.m** で更新します。これは、**completeItem** が完了として項目をマークするのみのため、代わりに、**updateItem** によって項目を更新します。
+1. ナビゲーション ビューで [戻る] ボタンをクリックすると、編集内容は失われます。データは詳細ビューに送信しましたが、データはマスター ビューに送信されていません。既にポインターを項目のコピーに渡しているため、そのポインターを使用して、項目に加えられた更新の一覧を取得し、それを使用してサーバーを更新できます。開始するには、最初に、**QSTodoService.m** のサーバー ラッパー クラスの **QSTodoService** で、**completeItem** 操作を削除し、新しい **updateItem** 操作を追加して更新します。operation.これは、**completeItem** が完了として項目をマークするのみのため、代わりに、**updateItem** によって項目を更新します。
 
         - (void)updateItem:(NSDictionary *)item completion:(QSCompletionBlock)completion
         {
@@ -238,7 +238,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 ### <a name="conflict-handling-problem"></a>競合処理の問題
 
-1. 2 台の異なるクライアントが、同時にデータの同じ部分の変更を試みると何が起きるかを調べます。次の例の一覧では、「Mobile Services はかっこいい」という項目があります。たとえば、この項目を 1 つのデバイスでは「Mobile Services が大好きです」、別のデバイスでは「Azure が大好きです」に変更してみましょう。
+1. 2 台の異なるクライアントが、同時にデータの同じ部分の変更を試みると何が起きるかを調べます。次の例の一覧では、「Mobile Services はかっこいい」という項目があります。 たとえば、この項目を 1 つのデバイスでは「Mobile Services が大好きです」、別のデバイスでは「Azure が大好きです」に変更してみましょう。
 
       ![][conflict-handling-problem-1]
 
@@ -269,7 +269,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 2. **QSTodoService.m** で、以下に示すように、**init** 行を変更します。これも、パラメーターとして同期コンテキスト デリゲートを受信します。
 
-€
+        -(QSTodoService *)initWithDelegate:(id)syncDelegate
 
 3. **QSTodoService.m** で、**defaultServiceWithDelegate** 内の **init** 呼び出しを **initWithDelegate** に変更します。
 
@@ -413,18 +413,18 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
             }];
         }
 
-### <a name="test-app"></a>アプリケーションのテスト
+### <a name="test-app"></a>アプリケーションをテストする
 
-競合するアプリケーションをテストします。稼働中のアプリケーションの 2 つの異なるインスタンス内の同じ項目を同時に編集するか、またはアプリケーションと REST クライアントを使用します。 
+競合するアプリケーションをテストします。 稼働中のアプリケーションの 2 つの異なるインスタンス内の同じ項目を同時に編集するか、またはアプリケーションと REST クライアントを使用します。
 
 上部からドラッグして、アプリケーション インスタンス内で更新ジェスチャを実行します。これで、競合を調整するためのプロンプトが表示されます。
 
 ![][conflict-ui]
 
 
-### まとめ
+### 概要
 
-[オフライン データの使用] で完了したプロジェクトを競合を検出するように設定するために、最初に Todo 項目を編集および更新する機能を追加しました。
+「[オフライン データの使用]」で完了したプロジェクトを競合を検出するように設定するために、最初に todo 項目を編集および更新する機能を追加しました。
 
 そのために、新しい項目詳細ビュー コントローラーを追加し、メイン ビュー コントローラーと詳細ビュー コントローラーを接続して、最後に、編集内容を保存し、それらをクラウドにプッシュする機能を追加しました。
 
@@ -436,7 +436,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 [アプリケーション プロジェクトを編集可能に更新]: #update-app
 [Todo リスト ビュー コントローラーの更新]: #update-list-view
-[Todo 項目ビューのコントローラーの追加]: #add-view-controller
+[Todo 項目ビュー コントローラーの追加]: #add-view-controller
 [Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加]: #add-segue
 [項目の詳細の Todo 項目ビュー コントローラーへの追加]: #add-item-details
 [編集内容を保存するためのサポートの追加]: #saving-edits
@@ -444,7 +444,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 [競合処理をサポートするための QSTodoService の更新]: #service-add-conflict-handling
 [競合処理をサポートするための UI アラート ビュー ヘルパーの追加]: #add-alert-view
 [競合ハンドラーの Todo リスト ビュー コントローラーへの追加]: #add-conflict-handling
-[アプリケーションのテスト]: #test-app
+[アプリケーションをテストする]: #test-app
 
 
 [add-todo-item-view-controller-3]: ./media/mobile-services-ios-handling-conflicts-offline-data/add-todo-item-view-controller-3.png
@@ -457,20 +457,18 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 [conflict-ui]: ./media/mobile-services-ios-handling-conflicts-offline-data/conflict-ui.png
 
 
-[セグメント化コントロール]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISegmentedControl.html
-[コア データ モデル エディターのヘルプ]: https://developer.apple.com/library/mac/recipes/xcode_help-core_data_modeling_tool/Articles/about_cd_modeling_tool.html
-[コンセント接続の作成]: https://developer.apple.com/library/mac/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html
-[ユーザー インターフェイスの作成]: https://developer.apple.com/library/mac/documentation/ToolsLanguages/Conceptual/Xcode_Overview/Edit_User_Interfaces/edit_user_interface.html
+[Segmented Controls (セグメント化コントロール)]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UISegmentedControl.html
+[Core Data Model Editor Help]: https://developer.apple.com/library/mac/recipes/xcode_help-core_data_modeling_tool/Articles/about_cd_modeling_tool.html
+[Creating an Outlet Connection (アウトレット接続の作成)]: https://developer.apple.com/library/mac/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html
+[Build a User Interface (ユーザー インターフェイスの作成)]: https://developer.apple.com/library/mac/documentation/ToolsLanguages/Conceptual/Xcode_Overview/Edit_User_Interfaces/edit_user_interface.html
 [ストーリーボード内のシーン間へのセグエの追加]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardSegue.html#//apple_ref/doc/uid/TP40014225-CH25-SW1
-[シーンのストーリーボードへの追加]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardScene.html
-[中核となるデータ]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html
-[Preview SDK をここからダウンロード]: http://aka.ms/Gc6fex
-[IOS 向けモバイル サービスのクライアント ライブラリを使用する方法]: /ja-jp/documentation/articles/mobile-services-ios-how-to-use-client-library/
-[オフライン iOS サンプルの使用]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
-[オフライン データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data/
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
-[データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
+[Adding a Scene to a Storyboard (シーンのストーリーボードへの追加)]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardScene.html
+[Core Data]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html
+[Download the preview SDK here]: http://aka.ms/Gc6fex
+[How to use the Mobile Services client library for iOS]: mobile-services-ios-how-to-use-client-library.md
+[Getting Started Offline iOS Sample]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
+[オフライン データの使用]: mobile-services-ios-get-started-offline-data.md
+[Get started with Mobile Services]: mobile-services-ios-get-started.md
+[Get started with data]: mobile-services-ios-get-started-data.md
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

@@ -1,11 +1,11 @@
-﻿## <a name="register-mobile-service-aad"></a>モバイル サービスを Azure Active Directory に登録する
+## <a name="register-mobile-service-aad"></a>モバイル サービスを Azure Active Directory に登録する
 
 
 このセクションでは、Azure Active Directory にモバイル サービスを登録し、シングル サインオン権限の借用を許可するアクセス許可を構成します。
 
 1. 「[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]」のトピックに従って、Azure Active Directory にアプリケーションを登録します。
 
-2. [Azure の管理ポータル]で、Azure Active Directory 拡張機能に戻り、目的のアクティブ ディレクトリをクリックします。
+2. [Azure の管理ポータル]で、Azure Active Directory の展開画面に戻り、目的のアクティブ ディレクトリをクリックします。
 
 3. **[アプリケーション]** タブをクリックし、目的のアプリケーションをクリックします。
 
@@ -36,8 +36,6 @@
 6. Azure の管理ポータルで、再度、アプリケーションの **[マニフェストの管理]** をクリックし、**[マニフェストのアップロード]** をクリックします。更新したアプリケーション マニフェストの場所を参照し、マニフェストをアップロードします。
 
 <!-- URLs. -->
-[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-
-
-<!--HONumber=42-->
+[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: ../articles/mobile-services-how-to-register-active-directory-authentication.md
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+<!--HONumber=54-->

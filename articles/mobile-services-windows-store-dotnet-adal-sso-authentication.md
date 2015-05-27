@@ -5,7 +5,7 @@
 	authors="wesmc7777" 
 	manager="dwrede" 
 	editor="" 
-	services=""/>
+	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
@@ -13,43 +13,40 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/14/2014" 
+	ms.date="04/29/2015" 
 	ms.author="wesmc"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
 
 [AZURE.INCLUDE [mobile-services-selector-adal-sso](../includes/mobile-services-selector-adal-sso.md)]
 
-このチュートリアルでは、Azure Active Directory で[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)をサポートする Active Directory 認証ライブラリを使用してクイックスタート プロジェクトに認証を追加します。Azure Active Directory で[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)をサポートするには、「[Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)」チュートリアルから開始します。
+##概要
+
+このチュートリアルでは、Azure Active Directory で[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)をサポートする Active Directory 認証ライブラリを使用して Azure Active Directory クイックスタート プロジェクトに認証を追加します。Azure Active Directory による[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)をサポートするには、[Mobile Services アプリケーションへの認証の追加](mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)に関するチュートリアルから始めます。
 
 ユーザーを認証できるようにするには、Azure Active Directory (AAD) にアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、モバイル サービスを登録し、モバイル サービスに対するアクセス許可を公開する必要があります。次に、Windows ストア アプリを登録してこれらのアクセス許可へのアクセス権を付与する必要があります。
 
 
->[AZURE.NOTE] このチュートリアルの目的は、[クライアント主導ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)を使用して Windows ストア アプリのシングル サインオン Azure Active Directory 認証を Mobile Services で有効にする方法について、理解を深めることです。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了することをお勧めします。
+>[AZURE.NOTE]このチュートリアルは、[クライアント主導ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)を使用して Windows ストア アプリのシングル サインオン Azure Active Directory 認証を Mobile Services で有効にする方法に関する理解を深めるためのものです。Mobile Services を初めて使用する場合は、チュートリアル「[モバイル サービスの使用]」を完了することをお勧めします。
 
-このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [モバイル サービスを Azure Active Directory に登録する]
-2. [Azure Active Directory にアプリケーションを登録する]
-3. [認証を要求するようにモバイル サービスを構成する]
-4. [クライアント アプリケーションに認証コードを追加する]
-5. [認証を使用してクライアントをテストする]
+##前提条件
 
 このチュートリアルには、次のものが必要です。
 
 * Windows 8.1 で実行されている Visual Studio 2013。
-* 「[Mobile Services の使用]」または「[データの使用」]を完了している。
+* 「[モバイル サービスの使用]」または「[データの使用]」チュートリアルを完了している。
 * Microsoft Azure Mobile Services SDK の NuGet パッケージ
 * Active Directory 認証ライブラリの NuGet パッケージ 
 
 [AZURE.INCLUDE [mobile-services-dotnet-adal-register-service](../includes/mobile-services-dotnet-adal-register-service.md)]
 
-## <a name="register-app-aad"></a>Azure Active Directory にアプリケーションを登録する
+##Azure Active Directory にアプリケーションを登録する
 
 アプリケーションを Azure Active Directory に登録するには、アプリケーションを Windows ストアに関連付け、アプリケーションのパッケージ セキュリティ ID (SID) を取得する必要があります。パッケージ SID は、Azure Active Directory のネイティブ アプリケーション設定に登録されています。
 
 
-### アプリケーションと新しいストア アプリ名との関連付け
+###アプリケーションと新しいストア アプリ名との関連付け
 
 1. Visual Studio で、クライアント アプリケーション プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 
@@ -66,11 +63,11 @@
 5. **[関連付け]** をクリックして、アプリケーションをストア名と関連付けます。
 
 
-### アプリケーションのパッケージ SID の取得
+###アプリケーションのパッケージ SID の取得
 
 ここで、ネイティブ アプリケーション設定で構成されるパッケージ SID を取得する必要があります。
 
-1. [Windows デベロッパー センター ダッシュボード]にログインし、アプリケーションで **[編集]** をクリックします。
+1. [Windows デベロッパー センター ダッシュボード] にログインし、アプリケーションで **[編集]** をクリックします。
 
     ![][3]
 
@@ -78,7 +75,7 @@
 
     ![][4]
 
-3. 次に、**[Live サービス サイト]** をクリックします。 
+3. 次に、**[Live サービス サイト]** をクリックします。
 
     ![][5]
 
@@ -86,13 +83,13 @@
 
     ![][6]
 
-### ネイティブ アプリケーション登録の作成
+###ネイティブ アプリケーション登録の作成
 
-1. [Azure の管理ポータル] の **[Active Directory]** に移動し、目的のディレクトリをクリックします。
+1. **Azure の管理ポータル**の [[Active Directory]] に移動し、目的のディレクトリをクリックします。
 
-    ![][7] 
+    ![][7]
 
-2. 上部にある **[アプリケーション]** タブをクリックし、アプリケーションの **[追加]** をクリックします。 
+2. 上部にある **[アプリケーション]** タブをクリックし、アプリケーションの **[追加]** をクリックします。
 
     ![][8]
 
@@ -118,11 +115,11 @@
 
 
 
-## <a name="require-authentication"></a>認証を要求するようにモバイル サービスを構成する
+##認証を要求するようにモバイル サービスを構成する
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
-## <a name="add-authentication-code"></a>クライアント アプリケーションに認証コードを追加する
+##クライアント アプリケーションに認証コードを追加する
 
 1. Visual Studio で、Windows ストア クライアント アプリケーション プロジェクトを開きます。
 
@@ -165,17 +162,17 @@
             } 
         }
 
-6. 上記の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前と置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+6. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-7. 上記の `AuthenticateAsync` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。[Azure Active Directory に登録する方法]に関するトピックに従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad と同様になります。
+7. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。トピック「[Azure Active Directory 認証用の登録]」に従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad と同様になる必要があります。
 
-8. 上記の `AuthenticateAsync` メソッドのコードで、**INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
+8. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
 9. Visual Studio のソリューション エクスプローラー ウィンドウで、クライアント プロジェクトの Package.appxmanifest ファイルを開きます。**[機能]** タブをクリックし、**[エンタープライズ アプリケーション]** と **[プライベート ネットワーク (クライアント サーバー)]** を有効にします。ファイルを保存します。
 
     ![][14]
 
-10. MainPage.cs ファイルで、 `OnNavigatedTo` イベント ハンドラーを更新して `AuthenticateAsync` メソッドを次のように呼び出します。
+10. MainPage.cs ファイルで、`OnNavigatedTo` イベント ハンドラーを更新して `AuthenticateAsync` メソッドを次のように呼び出します。
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -184,7 +181,7 @@
         }
 
 
-## <a name="test-client"></a>認証を使用してクライアントをテストする
+##認証を使用してクライアントをテストする
 
 1. Visual Studio で、クライアント アプリケーションを実行します。
 2. Azure Active Directory にログインするための画面が表示されます。  
@@ -194,14 +191,6 @@
 
 
 
-<!-- Anchors. -->
-[モバイル サービスを Azure Active Directory に登録する]: #register-mobile-service-aad
-[Azure Active Directory にアプリケーションを登録する]: #register-app-aad
-[認証を要求するようにモバイル サービスを構成する]: #require-authentication
-[JavaScript バックエンド モバイル サービス]: #javascript-authentication
-[.NET バックエンド モバイル サービス]: #dotnet-authentication
-[クライアント アプリケーションに認証コードを追加する]: #add-authentication-code
-[認証を使用してクライアントをテストする]: #test-client
 
 <!-- Images -->
 [0]: ./media/mobile-services-windows-store-dotnet-adal-sso-authenticate/mobile-services-aad-app-manage-manifest.png
@@ -221,11 +210,10 @@
 [15]: ./media/mobile-services-windows-store-dotnet-adal-sso-authenticate/mobile-services-app-run.png
 
 <!-- URLs. -->
-[Azure Active Directory 認証用の登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+[Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[データの使用」]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-[Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+[[Active Directory]]: https://manage.windowsazure.com/
+[データの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
+[モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

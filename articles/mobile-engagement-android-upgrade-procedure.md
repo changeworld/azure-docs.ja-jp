@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Mobile Engagement Android SDK の統合" 
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
 	services="mobile-engagement" 
@@ -17,21 +17,21 @@
 	ms.author="kapiteir" />
 
 
-#アップグレード手順
+#アップグレードの手順
 
-アプリケーションにマイクロソフトの古いバージョンの SDK が既に統合されている場合は、次の点を考慮して SDK をアップグレードする必要があります。
+既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
 
-SDK のバージョンを飛ばしてアップグレードするには、複数の手順を実行する必要がある場合があります。たとえば、バージョン 1.4.0 から 1.6.0 に移行するには、まず「1.4.0 から 1.5.0」の手順を実行し、その後「1.5.0 から 1.6.0」の手順を実行する必要があります。
+SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、1.4.0 から 1.6.0 に移行する場合、まず「1.4.0から 1.5.0」への手順を実行してから「1.5.0 から 1.6.0」への手順を実行する必要があります。
 
 どのバージョンからアップグレードする場合でも、`mobile-engagement-VERSION.jar` をすべて新しいバージョンのものに置き換える必要があります。
 
-###2.4.0 から 3.0.0
+###2.4.0 から 3.0.0 に移行
 
-次の手順は、Capptain SAS が提供する Capptain サービスの SDK 統合を Azure Mobile Engagement で実行されるアプリに移行する方法について説明します。 
+Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
 
->[AZURE.IMPORTANT] Capptain と Mobile Engagement は同じサービスではないため、以下の手順の説明はクライアント アプリを移行する方法にのみ焦点を当てます。アプリの SDK を移行しても、Capptain サーバーのデータは Mobile Engagement サーバーには移行されません。
+>[AZURE.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
 
-これ以前のバージョンから移行する場合は、Capptain の Web サイトにアクセスして 2.4 にアップグレードする手順を実行してから次の手順を実行してください。
+以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 2.4 に移行し、次の手順を適用してください。
 
 #### JAR ファイル
 
@@ -41,7 +41,7 @@ SDK のバージョンを飛ばしてアップグレードするには、複数�
 
 提供されるすべてのリソース ファイル (`capptain_` で始まるファイル) を新しいファイル (`engagement_` で始まるファイル) に置き換える必要があります。
 
-これらのファイルがカスタマイズされている場合、新しいファイルにもそのカスタマイズを再適用する必要があります。**また、リソース ファイル内すべての識別子の名前を変更する必要があります**。
+これらのファイルがカスタマイズされている場合、新しいファイルにもそのカスタマイズを再適用する必要があります。**リソース ファイル内のすべての識別子の名前も変更されています**。
 
 #### アプリケーション ID
 
@@ -55,7 +55,7 @@ Engagement では、接続文字列を使用してアプリケーション ID �
 
 アプリケーションの接続文字列が Azure ポータルに表示されます。
 
-`CapptainAgent.configure` メソッドは `EngagementAgent.init` に置き換えられるため、このメソッドに対する呼び出しをすべて削除してください。
+`EngagementAgent.init` メソッドは `CapptainAgent.configure` に置き換えられるため、このメソッドに対する呼び出しをすべて削除してください。
 
 `appId` は `AndroidManifest.xml` を使用して構成できなくなりました。
 
@@ -65,17 +65,17 @@ Engagement では、接続文字列を使用してアプリケーション ID �
 
 #### Java API
 
-SDK の Java クラスに対する呼び出しの名前をすべて変更する必要があります。たとえば、 `CapptainAgent.getInstance(this)` は  `EngagementAgent.getInstance(this)`、 `extends CapptainActivity` は  `extends EngagementActivity` などのように名前を変更します。
+SDK の Java クラスに対する呼び出しの名前をすべて変更する必要があります。たとえば、`CapptainAgent.getInstance(this)` は `EngagementAgent.getInstance(this)`、`extends CapptainActivity` は `extends EngagementActivity` などのように名前を変更します。
 
-既定のエージェントの設定ファイルに統合されている場合、既定のファイル名は  `engagement.agent`、キーは  `engagement:agent` になります。
+既定のエージェントの設定ファイルに統合されている場合、既定のファイル名は `engagement.agent` に、キーは `engagement:agent` になります。
 
-Web 通知を作成する場合、Javascript バインダーは  `engagementReachContent` になります。
+Web 通知を作成する場合、Javascript バインダーは `engagementReachContent` になります。
 
 #### AndroidManifest.xml
 
 多数の変更が発生し、サービスが共有されなくなったため、多くの受信者をエクスポートできなくなりました。
 
-サービスの宣言が簡単になり、インテント フィルターとその内部のすべてのメタデータが削除され、 `exportable=false` が追加されました。
+サービスの宣言が簡単になり、インテント フィルターとその内部のすべてのメタデータが削除され、`exportable=false` が追加されました。
 
 また、すべての名前に engagement が追加されました。
 
@@ -183,9 +183,9 @@ Reach のアクティビティは次のように宣言します。
 			  </intent-filter>
 			</activity>
 			
-Reach のアクティビティがカスタマイズされている場合は、インテント アクションを  `com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT` または  `com.microsoft.azure.engagement.reach.intent.action.POLL` のいずれかに一致するように変更します。
+Reach のアクティビティがカスタマイズされている場合は、インテント アクションを `com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT` または `com.microsoft.azure.engagement.reach.intent.action.POLL` のいずれかに一致するように変更します。
 
-ブロードキャスト レシーバーの名前が変更され、 `exported=false` が追加されました。レシーバーの新しい詳細の一覧は次のとおりです (使用する受信者の名前のみ変更します)。
+ブロードキャスト レシーバーの名前が変更され、`exported=false` が追加されました。レシーバーの新しい詳細の一覧は次のとおりです (使用する受信者の名前のみ変更します)。
 
 			<receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver"
 			  android:exported="false">
@@ -273,7 +273,7 @@ Reach のアクティビティがカスタマイズされている場合は、�
 		    </intent-filter>
 		  </receiver>
 
-ブロードキャスト レシーバーを実装する宣言 **EngagementMessageReceiver** は  `AndroidManifest.xml` では変更されているのでご注意ください。これは、任意の XMPP エンティティから任意の XMPP メッセージを送受信する API と、デバイス間でメッセージを送受信する API が削除されているためです。このため、**EngagementMessageReceiver** の実装から次のコールバックを削除する必要があります。
+ブロードキャスト レシーバー **EngagementMessageReceiver** を実装する宣言は `AndroidManifest.xml` では変更されているのでご注意ください。これは、任意の XMPP エンティティから任意の XMPP メッセージを送受信する API と、デバイス間でメッセージを送受信する API が削除されているためです。このため、**EngagementMessageReceiver** の実装から次のコールバックを削除する必要があります。
 
 			protected void onDeviceMessageReceived(android.content.Context context, java.lang.String deviceId, java.lang.String payload)
 
@@ -301,4 +301,4 @@ Proguard の構成はブランド変更の影響を受けるため、ルール�
 			  <methods>;
 			}
 
-<!--HONumber=47-->
+<!--HONumber=54-->

@@ -27,7 +27,7 @@
 このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、モバイル サービス バックエンドで Azure Active Directory 用の [Graph API] を使用し、JavaScript で行います。Sales ロールに属するユーザーのみが、データの照会を許可されます。
 
 
->[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[Mobile Services アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE]このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[Mobile Services アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
 
 ##前提条件
 
@@ -35,7 +35,7 @@
 
 * Windows 8.1 で実行されている Visual Studio 2013。
 * Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了していること。
-* チュートリアル「[ソース管理へのサーバー スクリプトの保存]」を完了し、Git リポジトリを使用してサーバー スクリプトを格納する方法に習熟していること。
+* 「[Store Server Scripts (サーバー スクリプトの格納)]」チュートリアルを完了し、Git リポジトリを使用してサーバー スクリプトを格納する方法に習熟していること。
  
 
 
@@ -47,7 +47,7 @@
 ##統合アプリケーションのキーを生成する
 
 
-チュートリアル「[Mobile Services アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
+チュートリアル「[Mobile Services アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したとき、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。
 
 チュートリアル「[Azure Active Directory Graph 情報へのアクセス]」を完了している場合は、この手順を既に完了しているため、このセクションを省略できます。
 
@@ -59,14 +59,14 @@
 
 ##メンバーシップを確認する共有スクリプトをモバイル サービスに追加する
 
-このセクションでは、Git を使用して  *rbac.js* という名前の共有スクリプト ファイルをモバイル サービスにデプロイします。この共有スクリプト ファイルには、[Graph API] を使用してユーザーのグループ メンバーシップを確認する関数が含まれています。 
+このセクションでは、Git を使用して *rbac.js* という名前の共有スクリプト ファイルをモバイル サービスにデプロイします。この共有スクリプト ファイルには、[Graph API] を使用してユーザーのグループ メンバーシップを確認する関数が含まれています。
 
-Git でモバイル サービスにスクリプトをデプロイすることに慣れていない場合は、このセクションを完了する前に、[ソース管理へのサーバー スクリプトの保存]に関するチュートリアルを見直してください。
+Git でモバイル サービスにスクリプトをデプロイすることに慣れていない場合は、このセクションを完了する前に、「[Store Server Scripts (サーバー スクリプトの格納)]」チュートリアルを見直してください。
 
-1. モバイル サービスのローカル リポジトリの *./service/shared/* ディレクトリに  *rbac.js* という名前の新しいスクリプト ファイルを作成します。
-2.  `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。 *tenant_domain*、統合アプリケーションの  *client id*、およびアプリケーションの *キー*を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
+1. モバイル サービスのローカル リポジトリの *./service/shared/* ディレクトリに *rbac.js* という名前の新しいスクリプト ファイルを作成します。
+2. `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。*tenant_domain*、統合アプリケーションの *client id*、およびアプリケーションの *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
 
-    >[AZURE.NOTE] アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、[Graph API のエラー コード]に関するページに記載されているとおり、トークンの使用を試みたときに 401 Authentication_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。 
+    >[AZURE.NOTE]アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、「[Windows Azure AD Graph のエラー コード]」に記載されているとおり、トークンの使用を試みたときに 401 Authentication_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。
 
         var appSettings = require('mobileservice-config').appSettings;
         var tenant_domain = appSettings.AAD_TENANT_DOMAIN;
@@ -93,9 +93,9 @@ Git でモバイル サービスにスクリプトをデプロイすることに
         }
 
 
-3. 次のコードを  *rbac.js* に追加して、 `getGroupId` 関数を定義します。この関数は、アクセス トークンを使用して、フィルターで使用されたグループ名に基づいてグループ ID を取得します。
+3. 次のコードを *rbac.js* に追加して `getGroupId` 関数を定義します。この関数は、アクセス トークンを使用して、フィルターで使用されたグループ名に基づいてグループ ID を取得します。
  
-    >[AZURE.NOTE] このコードは、Active Directory グループを名前で検索します。多くの場合、モバイル サービスのアプリケーション設定としてグループ ID を格納し、そのグループ ID を使用するのがよい方法と言えます。グループ名は変更になる可能性がありますが、ID は変わらないからです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。   
+    >[AZURE.NOTE]このコードは、Active Directory グループを名前で検索します。多くの場合、モバイル サービス アプリケーションの設定としてグループ ID を格納し、そのグループ ID を使用する方が適切な場合があります。これは、グループ名は変更される場合がありますが、ID は同じままであるためです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。
 
         function getGroupId(groupname, accessToken, callback) {
             var req = require("request");
@@ -116,9 +116,9 @@ Git でモバイル サービスにスクリプトをデプロイすることに
         }
 
 
-4. 次のコードを  *rbac.js* に追加して、Graph REST API の [IsMemberOf] エンドポイントを呼び出す  `isMemberOf` 関数を定義します。
+4. 次のコードを *rbac.js* に追加して、Graph REST API の [IsMemberOf] エンドポイントを呼び出す `isMemberOf` 関数を定義します。
 
-    この関数は、Graph REST API の [IsMemberOf] エンドポイントの thin ラッパーです。Graph アクセス トークンを使用して、ユーザーのディレクトリ オブジェクト ID が、グループ ID に基づくグループのメンバーシップを持っているかどうか確認します。
+    この関数は、Graph REST API の[IsMemberOf] エンドポイントの thin ラッパーです。Graph アクセス トークンを使用して、ユーザーのディレクトリ オブジェクト ID が、グループ ID に基づくグループのメンバーシップを持っているかどうか確認します。
 
         function isMemberOf(access_token, userObjectId, groupObjectId, callback) {
             var req = require("request");
@@ -142,7 +142,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
     
 
-7. エクスポートされた次の  `checkGroupMembership` 関数を *rbac.js* に追加します。  
+7. 次のエクスポートされた `checkGroupMembership` 関数を *rbac.js* に追加します。
 
     この関数は他のスクリプト関数の使用をラップし、他のスクリプトによって呼び出される共有スクリプトからエクスポートされ、実際にアクセス確認を実行します。モバイル サービスのユーザー オブジェクトおよびグループ ID が与えられると、このスクリプトはユーザーの ID に対する Azure Active Directory オブジェクト ID を取得して、そのグループのメンバーシップを確認します。
 
@@ -165,7 +165,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
             });
         }
 
-8. 変更を  *rbac.js* に保存します。
+8. 変更を *rbac.js* に保存します。
 
 ##データベース操作にロール ベースのアクセス確認を追加する
 
@@ -176,9 +176,9 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
 認証が必要なデータベース操作それぞれに対して、ユーザー オブジェクトを使用してアクセスを確認するスクリプトを追加できます。
 
-次の手順では、このスクリプトを使用してロール ベースのアクセス制御をモバイル サービスの各テーブル操作にデプロイする方法を示します。共有  *rbac.js* スクリプトを使用するスクリプトが、各テーブル操作に対して実行されます。
+次の手順には、このスクリプトを使用してロール ベースのアクセス制御をモバイル サービスの各テーブル操作にデプロイする方法を示します。共有 *rbac.js* スクリプトを使用するスクリプトが、各テーブル操作に対して実行されます。
 
-1.  *todoitem.insert.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
+1. *todoitem.insert.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
 
         function insert(item, user, request) {
         
@@ -193,7 +193,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
             });
         }
 
-2.  *todoitem.read.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
+2. *todoitem.read.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
 
         function read(query, user, request) {
         
@@ -208,7 +208,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
             });
         }
 
-3.  *todoitem.update.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
+3. *todoitem.update.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
 
         function update(item, user, request) {
         
@@ -223,7 +223,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
             });
         }
 
-4.  *todoitem.delete.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
+4. *todoitem.delete.js* という名前の新しいスクリプト ファイルを、モバイル サービスに対するローカル Git リポジトリの *./service/table/* ディレクトリに追加します。次のスクリプトをファイルに貼り付けます。
 
         function del(id, user, request) {
         
@@ -246,11 +246,11 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
         git commit -m "Added role based access control to table operations"
   
-7. Git リポジトリへのコマンド ライン インターフェイスで次のコマンドを実行して、ローカル Git リポジトリへの更新をモバイル サービスにデプロイします。このコマンドは、 *master* 分岐で更新を行ったと想定しています。
+7. Git リポジトリへのコマンド ライン インターフェイスで次のコマンドを実行して、ローカル Git リポジトリへの更新をモバイル サービスにデプロイします。このコマンドは、*master* 分岐で更新を行ったと想定しています。
 
         git push origin master
 
-8. [Azure の管理ポータル]では、モバイル サービスに対するテーブル操作に移動して、以下に示すような更新が行われたことを確認できます。 
+8. [Azure の管理ポータル]では、モバイル サービスに対するテーブル操作に移動して、以下に示すような更新が行われたことを確認できます。
 
     ![][4]
 
@@ -275,18 +275,13 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
 <!-- URLs. -->
 [Mobile Services アプリへの認証の追加]: mobile-services-javascript-backend-windows-universal-dotnet-get-started-users.md
-[Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
+[How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[ディレクトリ統合]: http://msdn.microsoft.com/library/azure/jj573653.aspx
-[ソース管理へのプロジェクト コードの保存]: mobile-services-store-scripts-source-control.md
-[ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
+[Directory Sync Scenarios]: http://msdn.microsoft.com/library/azure/jj573653.aspx
+[Store Server Scripts (サーバー スクリプトの格納)]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
-[Graph API に関するリファレンス]: http://msdn.microsoft.com/library/azure/hh974478.aspx
 [Graph API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
-[Graph API のエラー リファレンスに関するページ]: http://msdn.microsoft.com/library/azure/hh974480.aspx
-[Graph API のエラー コード]: http://msdn.microsoft.com/library/azure/hh974480.aspx
-[グループ メンバーシップの確認 (推移的)]: http://msdn.microsoft.com/library/azure/dn151601.aspx
+[Windows Azure AD Graph のエラー コード]: http://msdn.microsoft.com/library/azure/hh974480.aspx
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info.md
-
-<!--HONumber=49-->
+<!--HONumber=54-->

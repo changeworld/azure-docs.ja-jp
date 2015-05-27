@@ -1,5 +1,5 @@
-﻿<properties
-   pageTitle="HDInsight での Hive の使用 | Azure"
+<properties
+   pageTitle="Hadoop tools for Visual Studio での Hive クエリ | Microsoft Azure"
    description="Visual Studio を通じて、HDInsight で Hive を使用する方法を説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -9,30 +9,30 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang=""
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="04/03/2015"
    ms.author="larryfr"/>
 
-#Visual Studio の HDInsight ツールを使用して Hive クエリを実行
+# Visual Studio の HDInsight ツールを使用して Hive クエリを実行
 
-[AZURE.INCLUDE [hive-selector](../includes/hdinsight-selector-use-hive.md)]
+[AZURE.INCLUDE [Hive セレクター](../includes/hdinsight-selector-use-hive.md)]
 
-この記事では、Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsight クラスターにリモートで送信する方法を説明します。
+この記事では、Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsight クラスターに送信する方法を説明します。
 
-> [AZURE.NOTE] このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL の詳細については、「<a href="../hdinsight-use-hive/" target="_blank">HDInsight での Hive と Hadoop の使用</a>」を参照してください。
+> [AZURE.NOTE]このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL については「<a href="hdinsight-use-hive.md" target="_blank">HDInsight での Hive と Hadoop の使用</a>」をご覧ください。
 
-##<a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
 
-* Visual Studio 2012 <a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">Update 4</a>、Visual Studio 2013 <a href="http://www.microsoft.com/download/details.aspx?id=43721" target="_blank">Update 3</a>、または <a href="http://www.microsoft.com/download/details.aspx?id=43722" target="_blank">Visual Studio Express 2013</a>
+* Visual Studio 2012 <a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">Update 4</a>、Visual Studio 2013 <a href="http://go.microsoft.com/fwlink/?LinkId=390465" target="_blank">Update 3</a>、<a href="http://www.microsoft.com/download/details.aspx?id=40769" target="_blank">Visual Studio Express 2013</a>
 
-##<a id="run"></a>Visual Studio の HDInsight ツールを使用して Hive クエリを実行
+## <a id="run"></a>Visual Studio の HDInsight ツールを使用して Hive クエリを実行
 
 1. **Visual Studio** を開き、**[新規]**、**[プロジェクト]**、**[HDInsight]**、**[Hive アプリケーション]** の順に選択します。プロジェクトの名前を指定します。
 
@@ -46,18 +46,18 @@
 
     これらのステートメントは次のアクションを実行します。
 
-    * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-    * **CREATE EXTERNAL TABLE** - Hive に新しく '外部'テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+    * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
-        > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+        > [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
         >
         > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
-    * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
-    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
-    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む列が 3 行あるため、**3** という値が返されています。
+    * **ROW FORMAT**: Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
+    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
+    * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
-3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択し、**[送信]** を選択して、Hive ジョブとしてステートメントを実行します。**Hive ジョブの概要**に実行しているジョブに関する情報が表示されます。**[更新]** リンクを使用して、**ジョブのステータス**が**完了**に変更されるまで、ジョブの情報を更新します。
+3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択し、**[送信]** を選択して、Hive ジョブとしてステートメントを実行します。**[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。**[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
 
 4. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。SELECT ステートメントによって返された値「`[ERROR] 3`」が表示されます。
 
@@ -70,22 +70,22 @@
 
     これらのステートメントは次のアクションを実行します。
 
-    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
+    * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
 
-        > [AZURE.NOTE] **EXTERNAL**テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。
+        > [AZURE.NOTE]**EXTERNAL** テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。
 
-    * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
-    * **INSERT OVERWRITE ... SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+    * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+    * **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
 
-7. ツール バーのドロップダウンで **[送信]** を選択し、ジョブを実行します。**[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
+7. ツール バーで **[送信]** を選択し、ジョブを実行します。**[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
 
 8. ジョブが完了し、新しいテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で **[Azure]**、**[HDInsight]**、HDInsight クラスター、**[Hive データベース]**、**[既定]** の順に展開します。**errorLogs** および **log4jLogs** テーブルが表示されます。
 
-##<a id="summary"></a>まとめ
+## <a id="summary"></a>概要
 
 このように、Visual Studio の HDInsight ツールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-##<a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -97,7 +97,7 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-Visual Studio の HDInsight ツールに関する詳細情報
+Visual Studio の HDInsight ツールに関する詳細情報:
 
 * [Visual Studio の HDInsight ツールの概要](hdinsight-hadoop-visual-studio-tools-get-started.md)
 
@@ -115,23 +115,23 @@ Visual Studio の HDInsight ツールに関する詳細情報
 [import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: ../hdinsight-use-oozie/
-[hdinsight-analyze-flight-data]: ../hdinsight-analyze-flight-delay-data/
+[hdinsight-use-oozie]: hdinsight-use-oozie.md
+[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage
+[hdinsight-storage]: hdinsight-use-blob-storage.md
 
-[hdinsight-provision]: ../hdinsight-provision-clusters/
-[hdinsight-submit-jobs]: ../hdinsight-submit-hadoop-jobs-programmatically/
-[hdinsight-upload-data]: ../hdinsight-upload-data/
-[hdinsight-get-started]: ../hdinsight-get-started/
+[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
+[hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell/
+[Powershell-install-configure]: install-configure-powershell.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=47-->
+<!--HONumber=54-->

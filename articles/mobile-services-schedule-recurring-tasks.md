@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
 	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
@@ -18,9 +18,9 @@
 
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
 
-> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(任意 | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [(任意 | Javascript)](mobile-services-schedule-recurring-tasks.md)
+> [AZURE.SELECTOR-LIST (Platform | Backend)]
+- [(Any | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [(Any | Javascript)](mobile-services-schedule-recurring-tasks.md)
  
 このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -42,7 +42,7 @@
 
 次に、ツイートを格納するための新しいテーブルを作成する必要があります。
 
-2. 管理ポータルで、Mobile Services の **[データ]** タブをクリックし、**[+作成]** をクリックします。
+2. 管理ポータルで、モバイル サービスの **[データ]** タブをクリックし、**[作成]** をクリックします。
 
 3. **[テーブル名]** に「_Updates_」と入力し、チェック ボタンをクリックします。
 
@@ -52,13 +52,13 @@
 
 2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。 
 
-    >[AZURE.NOTE]モバイル サービスを<em>無料</em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
+    >[AZURE.NOTE]モバイル サービスを<em> Free </em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
-3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_getUpdates_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。 
+3. [スケジューラ] ダイアログ ボックスで、_[ジョブ名]_ に「**getUpdates**」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
 
-   	これにより、**getUpdates** という名前の新しいジョブが作成されます。 
+   	これにより、**getUpdates** という名前の新しいジョブが作成されます。
 
-4. 作成した新しいジョブをクリックし、**[スクリプト]** タブをクリックしてプレースホルダー関数 **getUpdates** を次のコードに置き換えます。
+4. 作成した新しいジョブをクリックし、[**スクリプト**] タブをクリックしてプレースホルダー関数 **getUpdates** を次のコードに置き換えます。
 
 		var updatesTable = tables.getTable('Updates');
 		var request = require('request');
@@ -136,15 +136,15 @@
 
    	このスクリプトでは、保存された資格情報を使用して Twitter クエリ API を呼び出し、`#mobileservices` というハッシュタグが含まれる最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
-    >[AZURE.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、無料レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「<a href="/develop/mobile/how-to-guides/work-with-server-scripts/#bulk-inserts">方法:一括挿入を実行する</a>」をご覧ください。
+    >[AZURE.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、無料レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「<a href="/develop/mobile/how-to-guides/work-with-server-scripts/#bulk-inserts">方法: 一括挿入を実行する</a>」を参照してください。
 
-6. スクリプトをテストするには、**[一度だけ実行する]** をクリックします。 
+6. スクリプトをテストするには、**[一度だけ実行する]** をクリックします。
 
    	これにより、ジョブが保存され、実行されます。ただし、スケジューラ内では無効の状態のままです。
 
 7. [戻る] ボタンをクリックし、**[データ]**、**Updates** テーブル、**[参照]** の順にクリックして、Twitter データがテーブルに挿入されたことを確認します。
 
-8. [戻る] ボタン、**[スケジューラ]** の順にクリックし、**[getUpdates]** を選択して、**[有効化]** をクリックします。
+8. [戻る] ボタン、**[スケジューラ]** の順にクリックし、**getUpdates** を選択して、**[有効化]** をクリックします。
 
    	これにより、指定されたスケジュール (ここでは 1 時間ごと) でジョブが実行されるようになります。
 
@@ -152,14 +152,13 @@
 
 ## <a name="nextsteps"> </a>次のステップ
 
-* [モバイル サービスのサーバー スクリプト リファレンス]
-  <br/>サーバー スクリプトの登録と使用について説明します。
+* [Mobile Services のサーバー スクリプト リファレンス] <br/>サーバー スクリプトの登録および使用について説明します。
 
 <!-- Anchors. -->
 [Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
 [新しい Updates テーブルを作成する]: #create-table
 [新しいスケジュール済みジョブを作成する]: #add-job
-[次のステップ]: #next-steps
+[Next steps]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-schedule-recurring-tasks/mobile-twitter-my-apps.png
@@ -176,11 +175,11 @@
 [11]: ./media/mobile-services-schedule-recurring-tasks/mobile-identity-tab-twitter-only.png
 
 <!-- URLs. -->
-[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [WindowsAzure.com]: http://www.windowsazure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services での Twitter ログイン用のアプリケーションの登録]: /develop/mobile/how-to-guides/register-for-twitter-authentication
-[Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[Azure Management Portal]: https://manage.windowsazure.com/
+[Register your apps for Twitter login with Mobile Services]: /develop/mobile/how-to-guides/register-for-twitter-authentication
+[Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
+[App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!--HONumber=49-->
+<!--HONumber=54-->

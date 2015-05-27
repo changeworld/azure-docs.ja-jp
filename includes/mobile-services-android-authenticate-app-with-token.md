@@ -1,5 +1,5 @@
-﻿
-前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと Mobile Services の両方にアクセスする必要があります。この方法は非効率であるだけなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。そのため、Mobile Services から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用する方が効果的です。 
+
+前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーとモバイル サービスの両方にアクセスする必要があります。この方法は非効率であるだけなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。よって、Mobile Services から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。
 
 >[AZURE.NOTE]クライアントによって管理される認証とサービスによって管理される認証のどちらを使用する場合でも、Mobile Services が発行したトークンをキャッシュできます。このチュートリアルでは、サービスによって管理される認証を使用します。
 
@@ -10,14 +10,14 @@
         import android.content.SharedPreferences;
         import android.content.SharedPreferences.Editor;
 
-2. 次のメンバーを  `ToDoActivity` クラスに追加します。
+2. 次のメンバーを `ToDoActivity` クラスに追加します。
 
     	public static final String SHAREDPREFFILE = "temp";	
 	    public static final String USERIDPREF = "uid";	
     	public static final String TOKENPREF = "tkn";	
 
 
-3. ToDoActivity.java ファイル内で、次の  `cacheUserToken` メソッドの定義を追加します。
+3. ToDoActivity.java ファイル内で、次の `cacheUserToken` メソッドの定義を追加します。
  
     	private void cacheUserToken(MobileServiceUser user)
 	    {
@@ -28,12 +28,12 @@
 	        editor.commit();
     	}	
   
-    このメソッドでは、プライベートとマークされた設定ファイルに、ユーザー ID とトークンを格納します。これにより、設定がアプリケーション用にサンドボックス化されるため、デバイスの他のアプリケーションはトークンにアクセスできなくなり、キャッシュへのアクセスが保護されます。ただし、他のユーザーは、デバイスにアクセスできるようになると、他の手段によってトークン キャッシュにアクセスできる可能性があります。 
+    このメソッドでは、プライベートとマークされた設定ファイルに、ユーザー ID とトークンを格納します。これにより、設定がアプリケーション用にサンドボックス化されるため、デバイスの他のアプリケーションはトークンにアクセスできなくなり、キャッシュへのアクセスが保護されます。ただし、他のユーザーは、デバイスにアクセスできるようになると、他の手段によってトークン キャッシュにアクセスできる可能性があります。
 
     >[AZURE.NOTE]トークンによるデータへのアクセスの秘密性が高く、他のユーザーがそのデバイスにアクセスする可能性がある場合は、暗号化によりトークンの保護を強化できます。ただし、完全に安全なソリューションは、このチュートリアルの範囲を超えており、またセキュリティの要件によって異なります。
 
 
-4. ToDoActivity.java ファイル内で、次の  `loadUserTokenCache` メソッドの定義を追加します。
+4. ToDoActivity.java ファイル内で、次の `loadUserTokenCache` メソッドの定義を追加します。
 
     	private boolean loadUserTokenCache(MobileServiceClient client)
 	    {
@@ -54,7 +54,7 @@
 
 
 
-5.  *ToDoActivity.java* ファイルで、 `authenticate` メソッドを、トークン キャッシュを使用する次のメソッドで置き換えます。Microsoft アカウント以外のアカウントを使用する場合は、ログイン プロバイダーを変更します。
+5. *ToDoActivity.java* ファイルで、`authenticate` メソッドを、トークン キャッシュを使用する次のメソッドで置き換えます。Microsoft アカウント以外のアカウントを使用する場合は、ログイン プロバイダーを変更します。
 
 		private void authenticate() {
 			// We first try to load a token cache if one exists.
@@ -90,4 +90,4 @@
 
 
 
-<!--HONumber=49-->
+<!--HONumber=54-->

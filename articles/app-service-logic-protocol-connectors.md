@@ -1,9 +1,9 @@
-﻿<properties 
+<properties 
 	pageTitle="Microsoft Azure API Apps プロトコル コネクタ | API Apps マイクロサービス" 
 	description="Microsoft Azure プロトコル コネクタ API アプリを作成して API アプリを Logic Apps、マイクロサービスに追加する方法を説明します。" 
-	services="app-service-logic" 
+	services="app-service\logic" 
 	documentationCenter="" 
-	authors="Deonhe" 
+	authors="MandiOhlinger" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
-	ms.author="deonhe"/> 
+	ms.date="03/31/2015" 
+	ms.author="deonhe"/>
 
 
 # Microsoft Azure App Service のプロトコル コネクタ
 
 
 ## プロトコル コネクタとは
-プロトコル コネクタは、HTTP、SMTP、FTP などの幅広いプロトコルを使用して通信するアプリを作成するために使用できる API アプリ*です。 
+プロトコル コネクタは、HTTP、SMTP、FTP などの幅広いプロトコルを使用して通信するアプリを作成するために使用できる API アプリ*です。
 
 Microsoft Azure ポータルで **[新規]**、**[Web + モバイル]**、**[Azure Marketplace]** の順にクリックして検索キーワード「**プロトコル**」を入力し、Enter キーを押すと、プロトコル コネクタを見つけることができます。
 
@@ -34,14 +34,14 @@ Microsoft Azure ポータルで **[新規]**、**[Web + モバイル]**、**[Azu
 - SMTP
 - ファイル
 
-ここで各プロトコル コネクタについて簡単に説明します。 
+ここで各プロトコル コネクタについて簡単に説明します。
 
 <table>
 <tr>
 <th> 名前</th>
 <th> 説明</th>
 <th> トリガー</th>
-<th> actions</th>
+<th> アクション</th>
 
 <tr>
 <td>SFTP
@@ -93,19 +93,19 @@ Microsoft Azure ポータルで **[新規]**、**[Web + モバイル]**、**[Azu
 プロトコル コネクタの機能の説明が終了しました。次に、これらのコネクタの簡単な使用事例をいくつか見てみましょう。
 
 ### 顧客からのフィードバックの監視 ###
-会社で新しいアプリを最近リリースしたため、チームでソーシャル メディアから顧客の声を集めようとしている状況を想像してください。各チーム メンバーは、さまざまなソーシャル メディア サイトを定期的にチェックして、顧客がアプリについて話すときに使用する可能性のあるキーワードを推測できます。これをもっと手際よく実行するには、Twitter コネクタを作成し、特定のハッシュタグ、メンション、キーワードについて Twitter を監視するように構成することができます。次に SMTP コネクタを使用して、一致するツイートの内容を含む電子メールを作成してチーム メンバーに送信することができます。その後に HTTP コネクタを使用して、社内の Web サイトにそれらのツイートを投稿できます。これらの一連の作業は、コードを 1 行も記述することなく行うことができます。  
+会社で新しいアプリを最近リリースしたため、チームでソーシャル メディアから顧客の声を集めようとしている状況を想像してください。各チーム メンバーは、さまざまなソーシャル メディア サイトを定期的にチェックして、顧客がアプリについて話すときに使用する可能性のあるキーワードを推測できます。これをもっと手際よく実行するには、Twitter コネクタを作成し、特定のハッシュタグ、メンション、キーワードについて Twitter を監視するように構成することができます。次に SMTP コネクタを使用して、一致するツイートの内容を含む電子メールを作成してチーム メンバーに送信することができます。その後に HTTP コネクタを使用して、社内の Web サイトにそれらのツイートを投稿できます。これらの一連の作業は、コードを 1 行も記述することなく行うことができます。
 
-それでは始めましょう。 
+それでは始めましょう。
 
 ## コネクタの作成
 
-コネクタは、Azure ポータルまたは REST API を使用して作成できます。[REST API を使用してコネクタを作成する](http://go.microsoft.com/fwlink/p/?LinkId=529766)
+コネクタは、Azure ポータルを使用して作成できます。
 
 ### Azure ポータルでのコネクタの作成
 
 Azure Marketplace を使用して SMTP コネクタを作成してみましょう。
 
-1. Microsoft Azure [ポータル](https://manage.windowsazure.com)にログインします。
+1. Microsoft Azure [ポータル](https://manage.windowsazure.com)にサインインします。
 2. **[新規]**、**[Web + モバイル]**、**[Azure Marketplace]** の順に選択します。
 3. **[検索ボックス]** に「**プロトコル**」と入力し、**Enter** キーを押します。一覧から選択することもできます。選択すると、新しいブレード (ウィンドウ) が開きます。**[作成]** を選択します。 
 4. 次のプロパティを入力します。
@@ -113,32 +113,32 @@ Azure Marketplace を使用して SMTP コネクタを作成してみましょ�
 <table>
 <tr><th>プロパティ</th> <th>説明</th> </tr>
 <tr><td>名前</td> <td>説明</td> </tr>
-<tr><td>パッケージの設定</td> <td>パッケージの設定のプロパティを使用して、SMTP サーバーのユーザー名、パスワード、ポート番号、サーバー アドレスなどの認証の詳細情報をすべて入力します。 </td> </tr>
+<tr><td>パッケージの設定</td> <td>パッケージの設定のプロパティを使用して、SMTP サーバーのユーザー名、パスワード、ポート番号、サーバー アドレスなどの認証の詳細情報をすべて入力します。</td> </tr>
 <tr><td>App Service プラン</td> <td>支払プランの一覧を表示します。プランは必要なリソースの増減に応じて変更することができます。</th> </td>
 <tr><td>価格レベル</td> <td>Azure サブスクリプション内での価格のカテゴリの一覧を表示する読み取り専用プロパティです。</td> </tr>
 <tr><td>リソース グループ</td> <td>新しいリソース グループを作成するか、既存のグループを使用します。リソース グループの使用に関するページに、このプロパティの説明があります。</td> </tr>
-<tr><td>サブスクリプション</td> <td>現在のサブスクリプションを一覧表示する読み取り専用のプロパティ。</td> </tr>
+<tr><td>[サブスクリプション]</td> <td>現在のサブスクリプションを一覧表示する読み取り専用のプロパティ。</td> </tr>
 <tr><td>場所</td> <td>Azure サービスをホストする地理的場所。</th> </td>
 <tr><td>スタート画面への追加</td> <td>スタート画面 (ホーム ページ) に API アプリを追加するには、このプロパティを選択します。</td></tr>
-</table> 
+</table>
 
-### REST API を使用したコネクタの作成
-[REST API でのコネクタの作成](http://go.microsoft.com/fwlink/p/?LinkId=529766)
+### REST API を使用したコネクタへのアクセス
+[REST API によるコネクタへのアクセス](http://go.microsoft.com/fwlink/p/?LinkId=529766)
 
 ## アプリケーションにコネクタを追加する 
-Microsoft Azure App Service は、上記のコネクタが使用できるさまざまな種類のアプリケーションを公開しています。たとえば、1 つ以上のコネクタを 1 つのアプリと *logically*組み合わせることによって、 *Logic* アプリを作成できます。
+Microsoft Azure App Service は、上記のコネクタが使用できるさまざまな種類のアプリケーションを公開しています。たとえば、1 つ以上のコネクタを 1 つのアプリと*論理的に*組み合わせることによって、*ロジック* アプリを作成できます。
 
- *Logic* アプリ内でコネクタを使用する場合は、構成済みのコネクタを一覧から選択してデザイン ワーク フローに追加し、必要な構成変更を行って、いつでも使用できるようにしてください。 
+*ロジック* アプリ内でコネクタを使用する場合は、構成済みのコネクタを一覧から選択してデザイン ワーク フローに追加し、必要な構成変更を行って、いつでも使用できるようにしてください。
 
 上記手順を実行する場合は、Web アプリ、モバイル アプリ、またはロジック アプリが必要です。具体的な方法については、<> を参照してください。アプリケーションが使用できる状態になったら、コネクタを追加します。その方法は次のとおりです。
 
-以下の手順に従って、コネクタをロジック アプリに追加します。 
+以下の手順に従って、コネクタをロジック アプリに追加します。
 
 1. Azure ポータルのスタート画面 (ホーム ページ) で、**Marketplace** に移動し、ロジック アプリ、モバイル アプリ、または Web アプリを検索します。 
 
-	新規にアプリを作成する場合は、ロジック アプリ、モバイル アプリ、または Web アプリを検索します。アプリを選択し、新しいブレードで **[作成]** を選択します。[ロジック アプリの作成] (app-service-logic-create-a-logic-app.md) に関するページに手順の一覧が記載されています。 
+	新規にアプリを作成する場合は、ロジック アプリ、モバイル アプリ、または Web アプリを検索します。アプリを選択し、新しいブレードで **[作成]** を選択します。[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)に関するページに、この手順が記載されています。
 
-2. アプリを開き、**[トリガーとアクション]** を選択します。 
+2. アプリを開き、**[トリガーとアクション]** を選択します。
 3. **[ギャラリー]** でコネクタを選択します。選択したコネクタがアプリに追加されます。
 4. コネクタを構成します。
 5. どのコネクタにも、接続しているサービスおよび環境に固有のプロパティがあります。プロパティの詳細を入力します。一部のプロパティは省略可能です。
@@ -149,17 +149,11 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 コネクタは、OAuth か、ユーザー名とパスワードを使用します。
 
 ## Logic Apps と Web Apps に関するガイド
-[Logic Apps とは?](app-service-logic-what-are-logic-apps.md) |
-[Azure App Service の Websites と Web Apps](app-service-web-app-azure-portal.md) |
+[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | [Azure App Service の Websites と Web Apps](app-service-web-app-azure-portal.md) |
 
 
 ## その他のコネクタ
 
-[BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) |
-[エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) |
-[企業間コネクタ](app-service-logic-b2b-connectors.md) |
-[ソーシャル コネクタ](app-service-logic-social-connectors.md) |
-[アプリおよびデータ サービス コネクタ](app-service-logic-data-connectors.md) |
-[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)
+[BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) | [エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) | [企業間コネクタ](app-service-logic-b2b-connectors.md) | [ソーシャル コネクタ](app-service-logic-social-connectors.md) | [アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md) | [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!--HONumber=49-->
+<!--HONumber=54-->

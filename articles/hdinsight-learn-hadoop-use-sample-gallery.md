@@ -1,6 +1,6 @@
-﻿<properties 
-   pageTitle="サンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。" 
-   description="HDInsight のサンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。" 
+<properties 
+   pageTitle="サンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。| Microsoft Azure" 
+   description="HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく学習できます。一部のサンプルにはサンプル データが含まれていますが、独自のデータも使用いただけます。" 
    services="hdinsight" 
    documentationCenter="" 
    authors="mumian" 
@@ -13,12 +13,12 @@
    ms.tgt_pltfrm="na" 
    ms.devlang="na" 
    ms.topic="article" 
-   ms.date="1/29/2015" 
+   ms.date="03/31/2015" 
    ms.author="jgao"/>
 
-# HDInsight の Getting Started ギャラリーを使用して、Hadoop について説明します。
+# HDInsight の概要ギャラリーを使用して、Hadoop について説明します。
 
-HDInsight Getting Started ギャラリーでは、HDInsight でHadoop のサンプル アプリケーションをすばやく簡単に実行できます。一部のサンプルには、サンプル データが含まれています。その他のサンプルでは、独自のデータを使用いただけます。現在 6 つのサンプルが用意されており、今後さらに増える予定です。
+HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく簡単に学習できます。一部のサンプルには、サンプル データが含まれています。その他のサンプルでは、独自のデータを使用いただけます。現時点では、次の 6 つのサンプルがあります (今後追加される予定)。
 
 - Azure データを使用したソリューション
 	- Microsoft Azure Web サイトのログ分析
@@ -29,29 +29,29 @@ HDInsight Getting Started ギャラリーでは、HDInsight でHadoop のサン�
 	- Web サイト ログの分析
 	- Mahout 映画のリコメンデーション
 
-![HDInsight Hadoop/Storm/HBase Getting Started Gallery][hdinsight.sample.gallery]
+![HDInsight Hadoop、Storm、HBase 概要ギャラリー ソリューション (サンプル データ付き)。][hdinsight.sample.gallery]
 
 次のビデオ クリップでは、Twitter の傾向分析サンプルを実行する方法を示しています。
 
-<center><iframe width="650" height="388" src="https://www.youtube.com/embed/7ePbHot1SN4" frameborder="0" allowfullscreen></iframe></center>
+<center><a href="https://www.youtube.com/embed/7ePbHot1SN4">https://www.youtube.com/embed/7ePbHot1SN4></a></center>
 
 
-**Getting Started ギャラリーからサンプルを実行するには**
+**概要ギャラリーからサンプルを実行するには**
 
-1.	[Azure 管理ポータル][azure.management.portal] にサインインします。
+1.	[Azure ポータル][azure.portal]にサインインします。
 2.	左側のメニューで **[HDInsight]** をクリックします。Hadoop クラスター、Storm クラスター、HBase クラスターなど、既存の HDInsight クラスターの一覧が表示されます。 
 3.	サンプルを実行するクラスターをクリックします。
-4.	下部にある **[クエリ コンソール]** をクリックします。
+4.	ページの下部にある、**[クエリ コンソール]** を選択します。
 5.	クラスターの Hadoop ユーザー名とパスワードを入力します。
-6.	上部にある **[Getting Started ギャラリー]** をクリックします。
+6.	ページの上部にある **[概要ギャラリー]** をクリックします。
 7.	サンプルを 1 つクリックします。各サンプルで、実行するための詳細な手順が表示されます。次の図は、Twitter の傾向分析のサンプルを示しています。
 
-	![HDInsight Twitter trend analysis sample][hdinsight.twitter.sample]
+	![HDInsight Twitter の傾向分析サンプル][hdinsight.twitter.sample]
 
 ## 次のステップ
 HDInsight に関するその他の資料。
 
-- [HDInsight の学習マップ][hdinsight.learning.map]
+- [HDInsight の学習マップ][hdinsight.learn.map]
 - [HDInsight のインフォグラフィック][hdinsight.infographic]
 
 <!--Image references-->
@@ -59,7 +59,7 @@ HDInsight に関するその他の資料。
 [hdinsight.twitter.sample]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Twitter-Trend-Analysis-sample.png
 
 <!--Link references-->
-[hdinsight.learning.map]: ../hdinsight-learning-map/
+[hdinsight.learn.map]: hdinsight-learn-map.md
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
-
-<!--HONumber=47-->
+[azure.portal]: https://manage.windowsazure.com
+<!--HONumber=54-->

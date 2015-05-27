@@ -1,5 +1,5 @@
-﻿<properties 
-	pageTitle="データの使用 (WP8) - Azure Mobile Services" 
+<properties 
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (WP8) - Azure Mobile Services" 
 	description="Azure Mobile Services Windows Phone 8 アプリからのデータを使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/19/2014" 
+	ms.date="02/20/2015" 
 	ms.author="glenga"/>
 
 
@@ -31,23 +31,23 @@
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Windows Phone 8 アプリ プロジェクトのダウンロード]
+1. [Windows Phone 8 アプリ プロジェクトのダウンロード] 
 2. [モバイル サービスの作成]
-3. [ストレージへのデータ テーブルの追加]
-4. [モバイル サービスを使用するためのアプリケーションの更新]
-5. [モバイル サービスに対するアプリケーションのテスト]
+3. [ストレージのデータ テーブルの追加]
+4. [Mobile Services 使用するためのアプリケーションの更新]
+5. [Mobile Services に対するアプリケーションのテスト]
 
 このチュートリアルでは、Visual Studio 2012 Express for Windows Phone 8 および Windows 8 で実行する [Windows Phone 8 SDK] が必要になります。このチュートリアルを完了して、Windows Phone 8.1 アプリケーションを作成するには、Visual Studio 2013 Update 2 以降が必要です。
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-wp8%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-wp8%2F" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-このチュートリアルは、Windows Phone Silverlight 8 アプリケーション プロジェクトである、[GetStartedWithData アプリケーション][デベロッパー サンプル コード集のサイト]に基づいています。  
+このチュートリアルは、Windows Phone Silverlight 8 アプリケーション プロジェクトである [GetStartedWithData app][Developer Code Samples site] アプリケーションに基づいています。
 
-1. GetStartedWithData サンプル アプリケーション プロジェクトを [デベロッパー サンプル コード集のサイト] からダウンロードします。 
+1. GetStartedWithData サンプル アプリケーション プロジェクトを[デベロッパー サンプル コード集のサイト]からダウンロードします。 
 
-	>[AZURE.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone Store アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone Store アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372) をダウンロードします。 
+	>[AZURE.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone Store アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone Store アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372)をダウンロードします。
 
 2. Visual Studio で、ダウンロードしたプロジェクトを開き、MainPage.xaml.cs ファイルを確認します。
 
@@ -57,7 +57,7 @@
 
 4. アプリケーションで、テキスト ボックスに任意のテキストを入力し、**[Save]** をクリックします。
 
-   	![][0]  
+   	![][0]
 
    	保存されたテキストが下のリストに表示されます。
 
@@ -71,11 +71,11 @@
 
 <h2><a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する</h2>
 
-モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。 
+モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 左側のウィンドウで、**[オンライン]** カテゴリを選択し、 `WindowsAzure.MobileServices` を探します。**Azure Mobile Services** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
+2. 左側のウィンドウで、[**オンライン**] カテゴリを選択し、`WindowsAzure.MobileServices` を探します。**Azure Mobile Services** パッケージで [**インストール**] をクリックし、使用許諾契約に同意します。
 
   	![][7]
 
@@ -126,9 +126,9 @@
         private IMobileServiceTable<TodoItem> todoTable = 
 			App.MobileService.GetTable<TodoItem>();
 
-   	このコードは、モバイル サービス対応のバインディング コレクション (**items**) と SQL データベース テーブルのプロキシ クラス **TodoItem** (**todoTable**) を作成します。 
+   	このコードは、モバイル サービス対応のバインディング コレクション (**items**) と SQL データベース テーブルのプロキシ クラス **TodoItem** (**todoTable**) を作成します。
 
-7. **InsertTodoItem** メソッド内で、**TodoItem**.**Id** プロパティを設定するコード行を削除し、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
+7. **InsertTodoItem** メソッド内で、**TodoItem.**Id**** プロパティを設定するコード行を削除し、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
 
         await todoTable.InsertAsync(todoItem);
 
@@ -138,7 +138,7 @@
 
         items = await todoTable.ToCollectionAsync();
 
-   	これにより、todoTable 内で、モバイル サービスから返されたすべての TodoItem オブジェクトが格納される項目のコレクションへのバインディングが設定されます。 
+   	これにより、todoTable 内で、モバイル サービスから返されたすべての TodoItem オブジェクトが格納される項目のコレクションへのバインディングが設定されます。
 
 9. **UpdateCheckedTodoItem** メソッド内で、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
 
@@ -164,33 +164,25 @@
   
    	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
-これで、Windows Phone 8 向けの**データの使用**に関するチュートリアルは終了です。
+これでチュートリアルは終了します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルでは、Windows Phone 8 アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のチュートリアルを行うことをお勧めします。
+このチュートリアルでは、Windows Phone 8 アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。次に、以下のその他のトピックのいずれかを読むことを検討してください。
 
-* [スクリプトを使用したデータの検証および変更]
-  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
+* [認証の使用] <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [ページングを使用したクエリの改善]
-  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
+* [プッシュ通知の使用] <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-データ シリーズを完了した後は、次に示すいずれかの Windows Phone 8 チュートリアルを行うことができます。
-
-* [認証の使用]
-  <br/>アプリケーションのユーザーを認証する方法について説明します。
-
-* [プッシュ通知の使用]
-  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [Mobile Services C# の使用方法の概念リファレンス](mobile-services-windows-dotnet-how-to-use-client-library.md) <br/>.NET で Mobile Services を使用する方法について説明します。
  
 <!-- Anchors. -->
 [Windows Phone 8 アプリ プロジェクトのダウンロード]: #download-app
 [モバイル サービスの作成]: #create-service
-[ストレージへのデータ テーブルの追加]: #add-table
-[モバイル サービスを使用するためのアプリケーションの更新]: #update-app
-[モバイル サービスに対するアプリケーションのテスト]: #test-app
-[次のステップ]:#next-steps
+[ストレージのデータ テーブルの追加]: #add-table
+[Mobile Services 使用するためのアプリケーションの更新]: #update-app
+[Mobile Services に対するアプリケーションのテスト]: #test-app
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-phone-get-started-data/mobile-quickstart-startup-wp8.png
@@ -207,19 +199,18 @@
 
 
 <!-- URLs. -->
-[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8
-[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8
-[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
+[Validate and modify data with scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-wp8
+[Refine queries with paging]: /develop/mobile/tutorials/add-paging-to-data-wp8
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-wp8
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-wp8
+[認証の使用]: /develop/mobile/tutorials/get-started-with-users-wp8
+[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-wp8
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Azure Management Portal]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
-[モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
-[デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
+[Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
+[デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

@@ -1,8 +1,8 @@
-﻿<properties 
+<properties 
 	pageTitle="モバイル サービスを使用した現在のユーザーのプッシュ通知への登録 - 通知ハブ" 
 	description="Azure Mobile Services により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。" 
-	services="mobile-services, notification-hubs" 
-	documentationCenter="" 
+	services="notification-hubs" 
+	documentationCenter="ios" 
 	authors="ysxu" 
 	manager="dwrede" 
 	editor=""/>
@@ -10,19 +10,19 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
+	ms.tgt_pltfrm="ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="10/10/2014" 
+	ms.date="04/24/2015" 
 	ms.author="yuaxu"/>
 
 # モバイル サービスを使用した現在のユーザーのプッシュ通知への登録
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/ja-jp/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/" title="Windows Store C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/" title="iOS" class="current">iOS</a>
+    <a href="/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/" title="Windows ストア C#">Windows ストア C#</a><a href="/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/" title="iOS" class="current">iOS</a>
 </div>
 
-このトピックでは、Azure のモバイル サービスにより登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」をご覧ください。  
+このトピックでは、Azure のモバイル サービスにより登録が実行されるときに Azure 通知ハブへのプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。
 
 1. Xcode で、前提条件のチュートリアルである「[認証の使用]」を実行したときに作成したプロジェクトの QSTodoService.h ファイルを開き、次の **deviceToken** プロパティを追加します。
 
@@ -57,7 +57,7 @@
 
 	これにより、**deviceToken** プロパティが更新されます。
 
-	> [AZURE.NOTE] この時点では、このメソッドに他のコードは存在しません。「[通知ハブの使用](/ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank") 」のチュートリアルを完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメントにするか、削除する必要があります。
+	> [AZURE.NOTE]この時点では、このメソッドに他のコードは存在しません。チュートリアル「[通知ハブの使用](/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank")」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
 
 5.  (省略可能) QSAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
 
@@ -74,7 +74,7 @@
 6. QSTodoListViewController.m ファイルで、**registerForNotificationsWithBackEnd** メソッドを追加します。
 
 			- (void)registerForNotificationsWithBackEnd {
-			    NSString* json = [NSString  stringWithFormat:@"{\"platform\":\"ios\", \"deviceToken\":\"%@\"}", [self.todoService getDeviceTokenInHex] ];
+			    NSString* json = [NSString  stringWithFormat:@"{"platform":"ios", "deviceToken":"%@"}", [self.todoService getDeviceTokenInHex] ];
 
 			    [self.todoService.client invokeAPI:@"register_notifications" data:[json dataUsingEncoding:NSUTF8StringEncoding] HTTPMethod:@"POST" parameters:nil headers:nil completion:^(id result, NSHTTPURLResponse *response, NSError *error) {
 			        if (error != nil) {
@@ -105,7 +105,7 @@
 			    }];
 			}
 
-	> [AZURE.NOTE] これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。
+	> [AZURE.NOTE]これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。
 	
 これで、クライアント アプリケーションが更新されました。「[通知ハブによるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
 
@@ -115,12 +115,10 @@
 
 
 <!-- URLs. -->
-[通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios/
+[通知ハブによるユーザーへの通知]: /manage/services/notification-hubs/notify-users
+[認証の使用]: /develop/mobile/tutorials/get-started-with-users-ios/
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/
+[Azure Management Portal]: https://manage.windowsazure.com/
+[Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

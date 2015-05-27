@@ -6,7 +6,8 @@
 	services="app-service\mobile" 
 	manager="dwrede" />
 
-<tags ms.service="app-service"
+<tags 
+	ms.service="app-service"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-ios" 
 	ms.devlang="objective-c" 
@@ -16,7 +17,7 @@
 
 # iOS アプリに Azure Active Directory シングル サインオンを追加する
 
-[WACOM.INCLUDE [app-service-mobile-selector-aad-sso](../includes/app-service-mobile-selector-aad-sso.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-aad-sso](../includes/app-service-mobile-selector-aad-sso.md)]
 
 このチュートリアルでは、Active Directory 認証ライブラリを使用して、クイック スタート プロジェクトに認証を追加します。
 
@@ -25,13 +26,13 @@
 このチュートリアルには、次のものが必要です。
 
 * XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン)
-* [モバイル アプリの使用]に関するチュートリアルを完了していること
+* [Mobile Apps の使用]に関するチュートリアルを完了していること。
 * Microsoft Azure Mobile Services SDK
 * [iOS 向け Active Directory 認証ライブラリ]
 
 ## <a name="register-application"></a>Azure Active Directory にアプリケーションを登録する
 
-[WACOM.INCLUDE [app-service-mobile-adal-register-app](../includes/app-service-mobile-adal-register-app.md)]
+[AZURE.INCLUDE [app-service-mobile-adal-register-app](../includes/app-service-mobile-adal-register-app.md)]
 
 ## <a name="require-authentication"></a>認証を要求するようにアプリケーションを構成する
 
@@ -51,7 +52,7 @@
 
 これで、プロジェクトで Active Directory 認証ライブラリを参照できます。
 
-## <a name="add-authentication-code"></a>クライアント アプリケーションに認証コードを追加する
+## <a name="add-authentication-code"></a>クライアント アプリに認証コードを追加する
 
 2. QSTodoListViewController で、ADAL を次に含めます。
 
@@ -92,15 +93,15 @@
             }];
         }
 
-4. 上記の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前と置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+4. 上記の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com にする必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-5. 上記の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル アプリの**アプリ ID の URI** に置き換えます。[Azure Active Directory でモバイル アプリを構成する方法]に関するページに従った場合、アプリ ID の URI は https://contosogateway.azurewebsites.net/login/aad のようになる必要があります。
+5. 上記の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル アプリの**アプリ ID の URI** に置き換えます。[Azure Active Directory でモバイル アプリを構成する方法]に関するトピックに従った場合、アプリ ID の URI は https://contosogateway.azurewebsites.net/login/aad のようになります。
 
 6. 上記の `loginAndGetData` メソッドのコードで、**INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
-7. 上記の `loginAndGetData` メソッドのコードで、**INSERT-REDIRECT-URI-HERE** を App Service ゲートウェイの /login/done エンドポイントに置き換えます。これは、https://contosogateway.azurewebsites.net/login/done のようになります。
+7. 上記の `loginAndGetData` メソッドのコードで、**INSERT-REDIRECT-URI-HERE** を App Service ゲートウェイの /login/done エンドポイントに置き換えます。これは、https://contosogateway.azurewebsites.net/login/done のような文字列です。
 
-8. QSTodoListViewController では、`[self refresh]` を以下で置き換えて `ViewDidLoad` を変更します。
+8. QSTodoListViewController で、`[self refresh]` を次に置き換えて `viewDidLoad` を変更します。
 
         [self loginAndGetData];
 
@@ -112,8 +113,8 @@
 
 <!-- URLs. -->
 [Azure Active Directory でモバイル アプリを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication-preview.md
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
- [モバイル アプリの使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
+[Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
 
-<!--HONumber=49-->
+<!--HONumber=54-->

@@ -1,9 +1,9 @@
-﻿
+
 ##<a name="add-select-images"></a>アプリケーションの更新イメージをキャプチャおよびアップロードするクイック スタート クライアント アプリケーションの更新
 
-このセクションでは、「[モバイル サービスの使用]」チュートリアルで使用したプロジェクトを更新して、写真を撮影して Azure BLOB ストレージにアップロードできるようにします。このチュートリアルではイメージをキャプチャするために、 `Microsoft.Phone.Tasks` 名前空間の [CameraCaptureTask] を使用しています。このクラスは Windows Phone デバイスのカメラ UI を起動し、写真を撮影して、自動的にそのイメージを Windows Phone デバイスのカメラ ロールに保存します。イメージをカメラ ロールに保存しない場合は、代わりに  `Microsoft.Devices` 名前空間の [PhotoCamera] クラスを使用します。
+このセクションでは、「[モバイル サービスの使用]」チュートリアルで使用したプロジェクトを更新して、写真を撮影して Azure BLOB ストレージにアップロードできるようにします。このチュートリアルではイメージをキャプチャするために、`Microsoft.Phone.Tasks` 名前空間の [CameraCaptureTask] を使用しています。このクラスは Windows Phone デバイスのカメラ UI を起動し、写真を撮影して、自動的にそのイメージを Windows Phone デバイスのカメラ ロールに保存します。イメージをカメラ ロールに保存しない場合は、代わりに `Microsoft.Devices` 名前空間の [PhotoCamera] クラスを使用します。
 
-1. Visual Studio のソリューション エクスプローラーで、プロジェクトの下の **[プロパティ]** を展開します。次に WMAppManifest.xml ファイルを開き、**[機能]** タブの **ID\_CAP\_ISV\_CAMERA** をクリックして、カメラを有効にします。ファイルを閉じて変更内容を保存します。
+1. Visual Studio のソリューション エクスプローラーで、プロジェクトの下の **[プロパティ]** を展開します。次に WMAppManifest.xml ファイルを開き、**[機能]** タブの **ID_CAP_ISV_CAMERA** をクリックして、カメラを有効にします。ファイルを閉じて変更内容を保存します。
 
    	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png)
 
@@ -99,7 +99,7 @@
         }
 
 
-8. MainPage.xaml.cs プロジェクト ファイルで、MainPage クラスを更新します。既存の  `InsertTodoItem` メソッドを次のコードに置き換えます。
+8. MainPage.xaml.cs プロジェクト ファイルで、MainPage クラスを更新します。既存の `InsertTodoItem` メソッドを次のコードに置き換えます。
  
         private async void InsertTodoItem(TodoItem todoItem)
         {
@@ -158,7 +158,7 @@
 
    	![](./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-wp8.png)
 
-  	これにより、カメラ キャプチャ UI が表示されます。 
+  	これにより、カメラ キャプチャ UI が表示されます。
 
 3. イメージをクリックするか、電話機のスナップショット ボタンを押すと、写真が撮影されます。
   
@@ -179,8 +179,8 @@
    >[AZURE.NOTE]新しい項目の <code>imageUri</code> プロパティが <strong>Image</strong> コントロールにバインドされると、イメージは Blob ストレージ サービスから自動的にダウンロードされます。
 
 
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started
+[モバイル サービスの使用]: ../articles/mobile-services-windows-phone-get-started.md
 [CameraCaptureTask]: http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
 [PhotoCamera]: http://msdn.microsoft.com/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
 
-<!--HONumber=42-->
+<!--HONumber=54-->

@@ -1,5 +1,5 @@
 
-1. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクト内の **[コントローラー]** フォルダーを右クリックします。TodoItemController.cs を開き、次のコードを使用して  `PostTodoItem` メソッドの定義を更新します。  
+1. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクト内の **Controllers** フォルダーを右クリックします。TodoItemController.cs を開き、次のコードを使用して `PostTodoItem` メソッドの定義を更新します。  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -28,10 +28,10 @@
 
     Todo 項目を挿入した後、このコードは (挿入された項目のテキストを使用して) プッシュ通知を送信します。エラー イベントが発生した場合は、コードはエラー ログ エントリを追加します。そのエントリは、管理ポータル内でモバイル サービスに対応する **[ログ]** タブに表示されます。
 
-	>[AZURE.NOTE] テンプレート通知を使用して、1 つのプッシュ通知を複数のプラットフォームのクライアントに送信できます。詳細については、「[1 つのモバイル サービスから複数のクライアントをサポートするための考慮事項](/ja-jp/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service/#push)」を参照してください。.
+	>[AZURE.NOTE]テンプレート通知を使用して、1 つのプッシュ通知を複数のプラットフォームのクライアントに送信できます。詳細については、「[1 つのモバイル サービスから複数のクライアントをサポートするための考慮事項](../articles/mobile-services-how-to-use-multiple-clients-single-service.md#push)」を参照してください。
 
 2. モバイル サービス プロジェクトを Azure に対して再発行します。
 
 
 
-<!--HONumber=42-->
+<!--HONumber=54-->

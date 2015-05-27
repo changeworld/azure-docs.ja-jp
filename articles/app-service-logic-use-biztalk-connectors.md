@@ -3,7 +3,7 @@
    description="コネクタの使用" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
-   authors="prkumar" 
+   authors="anuragdalmia" 
    manager="dwrede" 
    editor=""/>
 
@@ -16,21 +16,59 @@
    ms.date="03/20/2015"
    ms.author="prkumar"/>
 
+#コネクタ#
+コネクタは、クラウドやオンプレミスで実行されるデータとサービスに接続するための API アプリです。コネクタを使うと、Logic Apps などで簡単にアクセスできるさまざまな組み込みのトリガーとアクションを使用して、データに簡単にアクセスできます。
 
-#コネクタの使用#
+Azure App Services では、すぐに使用できるさまざまなコネクタが提供されています。
 
-コネクタは、データの GET や PUT、アクションの実行のために、クラウドやオンプレミスで実行されるサービスに接続するための API アプリです。Azure App Services 全体にわたって、Web アプリ、モバイル アプリ、およびロジック アプリから使用できます。
+##Standard コネクタ##
+* [Azure Service Bus コネクタ]
+* [Azure Storage BLOB コネクタ]
+* Azure Web ジョブ コネクタ
+* [Box コネクタ]
+* [Chatter コネクタ]
+* [Dropbox コネクタ]
+* [Facebook コネクタ]
+* [File コネクタ]
+* [FTP コネクタ]
+* [HDInsight コネクタ]
+* [HTTP コネクタ]
+* [Office 365 コネクタ]
+* [OneDrive コネクタ]
+* [Oracle コネクタ]
+* [POP3 コネクタ]
+* [QuickBooks コネクタ]
+* [Salesforce コネクタ]
+* [SFTP コネクタ]
+* [SharePoint コネクタ]
+* [Slack コネクタ]
+* [SMTP コネクタ]
+* [SQL コネクタ]
+* [SugarCRM コネクタ]
+* [Twilio コネクタ]
+* [Twitter コネクタ]
+* 待機コネクタ
+* [Yammer コネクタ]
 
-Azure App Services は、目的のサービスに接続するための、設定が不要なコネクタをいくつか提供することで、アプリケーションの実際のビジネス ロジックに集中して取り組めるようにしています。さらに、プラットフォームは、レガシ アプリケーションに接続する独自 API アプリを記述することで簡単に拡張できます。
-
-BizTalk コネクタの主な機能には次のものがあります。
-
-1. よく使用される SaaS サービス (Facebook、Twitter、Office 365、SalesForce) に接続するための OAuth セキュリティの処理。
-2. Service Bus Relay を経由したオンプレミスの資産への接続。
-3. データを送受信するための一般的なプロトコル用の接続。
+##Premium コネクタと API Apps##
+* AS2 コネクタ
+* BizTalk EDIFACT
+* BizTalk Flat File Encoder
+* BizTalk Transform Service
+* BizTalk ルール
+* BizTalk X12
+* BizTalk XPath Extractor
+* BizTalk XML Validator
+* DB2 コネクタ
+* Informix コネクタ
+* Oracle データベース コネクタ
+* MQ コネクタ
+* [SAP コネクタ]
+ 
+その他の詳細については、コネクタ API リファレンス [http://aka.ms/appservicesconnectorreference](http://aka.ms/appservicesconnectorreference) を参照してください。
 
 ##コネクタとロジック アプリ##
-ロジック アプリはトリガーとアクションで構成されます。一部のコネクタは、新しいデータが使用可能かどうかを特定し、そのデータを入力値として使用するロジック アプリをトリガーするためのトリガーとして使用できます。データの検索や書き込み、コネクタでサポートされているその他のアクションを実行するために、コネクタをロジック アプリの中間でアクションとして使用することもできます。
+ロジック アプリはトリガーとアクションで構成されます。一部のコネクタは、イベントや一部のデータの可用性に基づいてワークフローをインスタンス化するトリガーとして使用できます。コネクタは、データの読み取りと書き込みや、そのコネクタでサポートされているその他の操作を実行するためのアクションとしても使用されます。
 
 ###トリガーとしてのコネクタ###
 いくつかのコネクタは、ロジック アプリのトリガーとして提供されています。これらのトリガーには、次の 2 種類があります。
@@ -39,37 +77,37 @@ BizTalk コネクタの主な機能には次のものがあります。
 2. プッシュ トリガー: このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンして、ロジック アプリの新しいインスタンスをトリガーします。このようなコネクタには、HTTP リスナーや Twitter があります。
 
 ###アクションとしてのコネクタ###
-コネクタは、ロジック アプリの一部を構成するアクションとして使用することもできます。これは、実行時に使用するロジック アプリ内のデータの検索に役立ちます。たとえば、ロジック アプリで顧客の注文を処理するときに、顧客に関する情報を求めて SQL データベースを検索することが必要になる場合があります。または、変換先のデータを書き込み、更新、または削除する必要があります。このために、コネクタによって提供されるアクションを使用できます。
-
-##コネクタを使用する方法##
-次の記事では、設定不要な一部のコネクタの使用方法の例を説明しています。
-
-* [HTTP コネクタの使用]
-* [HTTP コネクタの使用]
-* [ボックス コネクタの使用]
-* [Azure ストレージ BLOB コネクタの使用]
-* [Facebook コネクタの使用]
-* [Twitter コネクタの使用]
-* [Salesforce コネクタの使用]
-* [Office 365 コネクタの使用]
-* [Sharepoint コネクタの使用]
-* [SAP コネクタの使用]
-
-その他の詳細については、コネクタ API リファレンス [http://aka.ms/appservicesconnectorreference](http://aka.ms/appservicesconnectorreference) を参照してください。
+コネクタは、ロジック アプリの一部を構成するアクションとして使用することもできます。アクションは、実行時に使用するロジック アプリ内のデータの検索に役立ちます。たとえば、注文を処理するときに、顧客に関する情報を求めて SQL DB のデータを検索することが必要になる場合があります。または、変換先のデータを書き込み、更新、または削除する必要があります。このために、コネクタによって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義されているとおりに、API アプリ内の操作と対応付けられています。
 
 
 <!-- Links -->
 
-[ボックス コネクタの使用]: app-service-logic-connector-box.md
-[Facebook コネクタの使用]: app-service-logic-connector-facebook.md
-[Salesforce コネクタの使用]: app-service-logic-connector-salesforce.md
-[Twitter コネクタの使用]: app-service-logic-connector-twitter.md
-[SAP コネクタの使用]: app-service-logic-connector-sap.md
-[HTTP コネクタの使用]: app-service-logic-connector-ftp.md
-[HTTP コネクタの使用]: app-service-logic-connector-http.md
-[Azure ストレージ BLOB コネクタの使用]: app-service-logic-connector-azurestorageblob.md
-[Office 365 コネクタの使用]: app-service-logic-connector-office365.md
-[Sharepoint コネクタの使用]: app-service-logic-connector-sharepoint.md
+[Box コネクタ]: app-service-logic-connector-box.md
+[Facebook コネクタ]: app-service-logic-connector-facebook.md
+[Salesforce コネクタ]: app-service-logic-connector-salesforce.md
+[Twitter コネクタ]: app-service-logic-connector-twitter.md
+[SAP コネクタ]: app-service-logic-connector-sap.md
+[FTP コネクタ]: app-service-logic-connector-ftp.md
+[HTTP コネクタ]: app-service-logic-connector-http.md
+[Azure Storage BLOB コネクタ]: app-service-logic-connector-azurestorageblob.md
+[Office 365 コネクタ]: app-service-logic-connector-office365.md
+[SharePoint コネクタ]: app-service-logic-connector-sharepoint.md
+[SugarCRM コネクタ]: app-service-logic-connector-sugarcrm.md
+[QuickBooks コネクタ]: app-service-logic-connector-quickbooks.md
+[Yammer コネクタ]: app-service-logic-connector-yammer.md
+[Twilio コネクタ]: app-service-logic-connector-twilio.md
+[SMTP コネクタ]: app-service-logic-connector-smtp.md
+[SFTP コネクタ]: app-service-logic-connector-sftp.md
+[POP3 コネクタ]: app-service-logic-connector-pop3.md
+[Dropbox コネクタ]: app-service-logic-connector-dropbox.md
+[Chatter コネクタ]: app-service-logic-connector-chatter.md
+[HDInsight コネクタ]: app-service-logic-connector-hdinsight.md
+[Azure Service Bus コネクタ]: app-service-logic-connector-azureservicebus.md
+[Oracle コネクタ]: app-service-logic-connector-oracle.md
+[SQL コネクタ]: app-service-logic-connector-sql.md
+[OneDrive コネクタ]: app-service-logic-connector-onedrive.md
+[File コネクタ]: app-service-logic-connector-file.md
+[Slack コネクタ]: app-service-logic-connector-slack.md
 
 
-<!--HONumber=49-->
+<!--HONumber=54-->

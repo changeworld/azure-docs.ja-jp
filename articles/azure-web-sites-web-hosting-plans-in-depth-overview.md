@@ -1,9 +1,9 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure App Service プランの詳細な概要" 
 	description="Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。" 
 	services="app-service" 
 	documentationCenter="" 
-	authors="btardif" 
+	authors="cephalin" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2014" 
+	ms.date="03/24/2015" 
 	ms.author="byvinyal"/>
 
 #Azure App Service プランの詳細な概要#
@@ -24,7 +24,7 @@
 
 ##アプリと App Service プラン
 
-App Service のアプリは、常時 1 つの App Service プランにのみ関連付けることができます。 
+App Service のアプリは、常時 1 つの App Service プランにのみ関連付けることができます。
 
 アプリとプランは両方ともリソース グループに含まれます。リソース グループは、そのグループに含まれるすべてのリソースに対してライフサイクルの境界という機能を果たします。リソース グループを使用することによって、1 つのアプリケーションのすべての構成要素をまとめて管理できます。
 
@@ -46,55 +46,53 @@ App Service プランは 1 つのリソース グループに複数割り当て�
  
 最後に、別のリージョンに新しいアプリを作成する必要が生じたものの、そのリージョンに既存のプランがない場合は、アプリをホストするための新しいプランを当該リージョンに作成する必要があります。
 
-##App Service プランの FAQ
+## App Service プランを作成する
 
-**質問**:App Service プランの作成方法を教えてください。
+空の App Service プランを作成することはできません。ただし、アプリの作成時には新しいプランを明示的に作成できます。
 
-**回答**:空の App Service プランを作成することはできませんが、新しいプランは、アプリの作成時に明示的に作成できます。
-
-これを [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]** または **[API Apps]** を選択します。その後、新しいアプリのための App Service プランを選択または作成できます。
+これを [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]**、または **[API Apps]** を選択します。その後、新しいアプリのための App Service プランを選択または作成できます。
  
-![App Service プラン FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview01.png)
+![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview01.png)
 
-**質問**:**App Service プラン**にアプリを割り当てる方法を教えてください。
+##App Service プランにアプリを割り当てる
 
-**回答**:アプリは、その作成プロセス中に、既存のプランに割り当てることができます。
+アプリは、その作成プロセス中に、既存のプランに割り当てることができます。
 
-これを [Azure ポータル](http://portal.azure.com)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]** または **[API Apps]** を選択します。その後、新しいアプリのための App Service プランを選択または作成できます。**[既存のプランを選択]** をクリックすると、既存のプランの一覧が表示されるので、そこから選択ができます。
+これを [Azure ポータル](http://portal.azure.com)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]**、または **[API Apps]** を選択します。その後、新しいアプリのための App Service プランを選択または作成できます。**[既存のプランを選択]** をクリックすると、既存のプランの一覧が表示されるので、そこから選択ができます。
 
-![App Service プラン FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview02.png)
+![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview02.png)
  
-**質問**:アプリを別の App Service プランに移動する方法を教えてください。
+## アプリを別の App Service プランに移動する
 
-**回答**:別の App Service プランへのアプリの移動は、[Azure ポータル](http://portal.azure.com)で行うことができます。アプリは、同じ地理的リージョンのプラン間で移動できます。
+別の App Service プランへのアプリの移動は、[Azure ポータル](http://portal.azure.com)で行うことができます。アプリは、同じ地理的リージョンのプラン間で移動できます。
 
 アプリを別のプランに移動するには、移動するアプリを表示し、**[App Service プランの変更]** をクリックします。
  
 すると、[App Service プラン] ブレードが表示されます。この時点で、既存のプランを選択するか、新しいプランを作成できます。地理的に異なる場所に属しているプランは灰色表示され、選択できません。
 
-![App Service プラン FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview03.png)
+![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview03.png)
 
-各プランに価格レベルが割り当てられている点に注目してください。**Free** レベルから **Standard** レベルにサイトを移動すると、**Standard** レベルのすべての機能とリソースをアプリで利用できるようになります。
+各プランに価格レベルが割り当てられている点に注目してください。 **Free** レベルから **Standard** レベルにサイトを移動すると、**Standard** レベルのすべての機能とリソースをアプリで活用できるようになります。
 
-**質問**:App Service プランのスケールの方法を教えてください。
+## App Service プランのスケーリング
 
-**回答**:プランは 3 つの方法でスケールできます。
+プランは 3 つの方法でスケールできます。
 
-- プランの**価格レベル**を変更する方法。たとえば、**Basic** レベルのプランは、**Standard** または **Premium** レベルへの変更が可能で、そのプランに関連付けられているすべてのアプリでは、新しいサービス層で提供される機能が利用できるようになります。
-- **インスタンス サイズ**を変更する方法。たとえば、**Small** インスタンスを使用する **Basic** レベルのプランを、**Large** インスタンスを使用するように変更できます。そのプランに関連付けられているすべてのアプリでは、より大きなサイズのインスタンスによって提供される追加のメモリおよび CPU リソースを利用できるようになります。
-- プランの**インスタンス数**を変更する方法。たとえば、3 インスタンスにスケール アウトされた **Standard** プランは、10 インスタンスまでのスケール アウトが可能で、**Premium** (プレビュー) プランは、いくつかの制限の下でなら 20 インスタンスまでスケール アウトできます。そのプランに関連付けられているすべてのアプリでは、より数の多いインスタンスによって提供される追加のメモリおよび CPU リソースを利用できるようになります。
+- プランの**価格レベル**を変更します。たとえば、**Basic** レベルのプランは、**Standard** または **Premium** レベルへの変更が可能で、そのプランに関連付けられているすべてのアプリでは、新しいサービス層で提供される機能が利用できるようになります。
+- プランの**インスタンス サイズ**を変更します。たとえば、**Small** インスタンスを使用する**Basic** レベルのプランを、**Large** インスタンスを使用するように変更できます。そのプランに関連付けられているすべてのアプリでは、より大きなサイズのインスタンスによって提供される追加のメモリおよび CPU リソースを利用できるようになります。
+- プランの**インスタンス数**を変更します。たとえば、3 インスタンスにスケール アウトされた **Standard** プランは、10 インスタンスまでのスケール アウトが可能で、**Premium** (プレビュー) プランは、いくつかの制限の下であれば 20 インスタンスまでスケール アウトできます。そのプランに関連付けられているすべてのアプリでは、より数の多いインスタンスによって提供される追加のメモリおよび CPU リソースを利用できるようになります。
 
-以下の画像には、**[App Service プラン]** ブレードと **[価格レベル]** ブレードが表示されています。**[App Service プラン]** の **[価格レベル]** の部分をクリックすると、**[価格レベル]** ブレードが展開表示され、プランの価格レベルとインスタンス サイズを変更できます。
+以下の画像には、**[App Service プラン]** ブレードと **[価格レベル]** ブレードが表示されています。**[App Service プラン]** の **[価格レベル]** 部分をクリックすると、**[価格レベル]** ブレードが展開表示され、プランの価格レベルとインスタンス サイズを変更できます。
  
-![App Service プラン FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview04.png)
+![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview04.png)
 
-##まとめ
+##概要
 
 App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランによって、特定のアプリのリソース セットへの割り当てが柔軟に行えるようになり、最適な条件で Azure リソースが利用できるようになります。テスト環境でのコストを削減する必要がある場合、この方法によって複数のアプリでプランを共有することができます。また、複数のリージョンおよびプランにわたってスケーリングを行い、運用環境でのスループットを最大化させることもできます。
 
-## 変更箇所
+## 変更内容
 
-* Websites から App Service への変更に関するガイドについては、[「Azure App Service と、それが既存の Azure サービスに与える影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更に関するガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)のページを参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
-<!--HONumber=49-->
+<!--HONumber=54-->

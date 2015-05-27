@@ -18,7 +18,7 @@
 
 # SaaS API へのモバイル アプリの接続
 
-このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]のアプリケーションを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
+このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]」のアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
 
 このチュートリアルには、次のものが必要です。
 
@@ -29,7 +29,7 @@
 ## <a name="configure-permissions"></a>SharePoint への委任アクセスのためにアプリケーションを構成する
 既定では、AAD から受け取るトークンは、アクセス許可が制限されています。サードパーティのリソースまたは SharePoint Online などの SaaS アプリケーションにアクセスするには、明示的にアクセスを許可する必要があります。
 
-1. [Azure の管理ポータル]の **[Active Directory]** セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
+1. **Azure 管理ポータル**の [Active Directory] セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
 
 2. **[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションまでページを下へスクロールします。**[Office 365 SharePoint Online]** を選択し、**[ユーザーのファイルを編集または削除]** 委任アクセス許可を付与します。その後、**[保存]** をクリックします。
 
@@ -47,11 +47,11 @@ SharePoint への呼び出しを作成するには、モバイル アプリが�
 
 3. 管理ポータルの [モバイル アプリ コード] セクションで、[構成] タブに移動し、[アプリケーション設定] まで下へスクロールします。ここで、キーと値のペアを入力すると、必要な資格情報の参照に役立ちます。
 
-* SP_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、 `https://login.windows.net/contoso.onmicrosoft.com` のようになります。
+* SP_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、`https://login.windows.net/contoso.onmicrosoft.com` のようになります。
 
 * SP_ClientSecret を、前に取得したクライアント シークレットの値になるよう設定します。
 
-* SP_SharePointURL を、SharePoint サイトの URL になるよう設定します。形式は、 `https://contoso-my.sharepoint.com` のようになります。
+* SP_SharePointURL を、SharePoint サイトの URL になるよう設定します。形式は、`https://contoso-my.sharepoint.com` のようになります。
 
 ApiServices.Settings を使用すると、コード内でこれらの値をもう一度取得できます。
 
@@ -63,7 +63,9 @@ SharePoint にアクセスするには、SharePoint を対象ユーザーとす�
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-adal-install-nuget](../includes/app-service-mobile-dotnet-adal-install-nuget.md)]
 
-2. モバイル アプリ コードのプロジェクトで、SharePointUploadContext という名前の新しいクラスを作成します。このクラスで、次のコードを追加します。
+2. NuGet パッケージ マネージャーで **[オンライン]** をクリックします。検索用語として「**Microsoft.Azure.Mobile.Server.AppService**」と入力します。**[インストール]** をクリックして、[Mobile Apps .NET Backend App Service Extension] パッケージをインストールします。このパッケージは、現在ログインしているユーザーに関する情報を操作するための拡張メソッドを提供します。
+
+2. モバイル アプリ コードのプロジェクトで、SharePointUploadContext という名前の新しいクラスを作成します。`using Microsoft.Azure.Mobile.Server.AppService;` ステートメントをファイルに追加します。そのうえで、次のコードをクラスに追加します。
 
         private String accessToken;
         private String mySiteApiPath;
@@ -178,9 +180,10 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 
 <!-- URLs. -->
 
-[Azure の管理ポータルのプレビュー]: https://portal.azure.com/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Preview Azure Management Portal]: https://portal.azure.com/
+[Active Directory]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: app-service-mobile-dotnet-backend-ios-aad-sso-preview.md
+[Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
 
-<!--HONumber=49-->
+<!--HONumber=54-->

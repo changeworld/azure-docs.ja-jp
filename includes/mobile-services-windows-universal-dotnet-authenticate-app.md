@@ -1,4 +1,4 @@
-﻿
+
 1. 共有プロジェクト ファイル MainPage.cs を開き、次の using ステートメントを追加します。
 
         using Windows.UI.Popups;
@@ -52,7 +52,7 @@
 
             // Hide the login button and load items from the mobile service.
             this.ButtonLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            RefreshTodoItems();
+            await RefreshTodoItems();
         }
 		
 5. Windows ストア アプリ プロジェクトで、MainPage.xaml プロジェクト ファイルを開き、**[保存]** ボタンを定義する要素の直前に次の **Button** 要素を追加します。
@@ -83,12 +83,11 @@
             base.OnActivated(args);
         }
 
-	If the **OnActivated** method already exists, just add the `#if...#endif` code block.
+	**OnActivated** メソッドが既に存在する場合は、`#if...#endif` コード ブロックを追加します。
 
-8. F5 キーを押して Windows ストア アプリを実行します。**[サイン イン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサイン インします。 
+8. F5 キーを押して Windows ストア アプリを実行します。**[サイン イン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサイン インします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-9. Windows Phone ストア アプリ プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、Windows Phone ストア アプリも正常に実行していることを確認する前の手順を繰り返します。  
-
-<!--HONumber=49-->
+9. Windows Phone ストア アプリ プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、Windows Phone ストア アプリも正常に実行していることを確認する前の手順を繰り返します。
+<!--HONumber=54-->

@@ -1,80 +1,80 @@
-﻿<properties 
-	pageTitle="Azure モバイル エンゲージメント Windows Phone SDK 統合" 
-	description="Windows Phone にエンゲージメント API を使用する方法" 					
+<properties 
+	pageTitle="Windows Phone Silverlight で Engagement API を使用する方法" 
+	description="Windows Phone Silverlight で Engagement API を使用する方法"	
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="lalathie" 
+	authors="piyushjo" 
 	manager="dwrede" 
-	editor="" /> 
+	editor="" />
 
 <tags 
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="" 
+	ms.devlang="C#" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kapiteir" />
+	ms.date="04/07/2015" 
+	ms.author="piyushjo" />
 
-#Windows Phone にエンゲージメント API を使用する方法
+#Windows Phone Silverlight で Engagement API を使用する方法
 
-このドキュメントは、[Windows Phone アプリにモバイル サービスを統合する方法](mobile-engagement-windows-phone-integrate-engagement.md) の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
+このドキュメントは、「[Windows Phone Silverlight アプリにモバイル サービスを統合する方法](../mobile-engagement-windows-phone-integrate-engagement/)」の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
-エンゲージメントでアプリケーションのセッション、アクティビティ、クラッシュ、技術情報についてのみ報告する場合は、すべての  `PhoneApplicationPage` サブクラスを  `EngagementPage` クラスから継承するのが最も簡単な方法です。
+エンゲージメントでアプリケーションのセッション、アクティビティ、クラッシュ、技術情報についてのみ報告する場合は、すべての `PhoneApplicationPage` サブクラスを `EngagementPage` クラスから継承するのが最も簡単な方法です。
 
-さらに詳細に報告する場合、たとえば、アプリケーションに特有のイベント、エラーやジョブを報告する必要がある場合、または  `EngagementPage` クラスに実装されている方法とは別の方法でアプリケーションのアクティビティを報告する必要がある場合は、エンゲージメント API を使用する必要があります。
+他の操作を実行する場合、たとえば、アプリケーションの特定のイベント、エラー、ジョブを報告する場合や、`EngagementPage` クラスに実装されているのとは別の方法でアプリケーションのアクティビティを報告する必要がある場合は、エンゲージメント API を使用する必要があります。
 
-エンゲージメント API は  `EngagementAgent` クラスが提供します。これらのメソッドには  `EngagementAgent.Instance` からアクセスできます。
+エンゲージメント API は `EngagementAgent` クラスによって提供されます。これらのメソッドには `EngagementAgent.Instance` からアクセスできます。
 
-エージェントのモジュールが初期化されていない場合でも、API に対する各呼び出しは保留され、エージェントが使用可能になったときにもう一度実行されます。
+エージェントのモジュールが初期化されていない場合でも、API に対する各呼び出しが遅延されると、エージェントが使用可能な場合にもう一度実行されます。
 
 ##エンゲージメントの概念
 
 次のパートでは、Windows Phone プラットフォーム向けのモバイル エンゲージメントの概念について説明します。
 
-### 'セッション' と  `Activity`
+### `Session` と `Activity`
 
- *アクティビティ* は通常、 アプリケーションの 1 つのページに関連付けられます。つまり、 *アクティビティ* はページが表示されたときに開始され、ページが終了したときに停止します: これは  `EngagementPage` クラスを使用してエンゲージメント SDK が統合されている場合です。
+*アクティビティ*は通常、アプリケーションの 1 つのページに関連付けられています。つまり、*アクティビティ*はページが表示されるときに開始され、閉じるときに停止されます。これは、エンゲージメント SDK が `EngagementPage` クラスを使用して統合されるときの場合です。
 
-ただし、 *アクティビティ* は、エンゲージメント API を使用して手動で制御することもできます。れにより、特定のページをいくつかのサブ パーツに分割し、このページの使用状況についてより詳細に知ることができます (このページ内でダイアログがどのくらいの頻度で、またどのくらいの期間使用されているかについてなど)。
+ただし、*アクティビティ*はエンゲージメント API を使用して手動で制御することも可能です。これにより、このページの使用状況に関する詳しい情報を表示するために、いくつかのサブ部分で特定のページ (たとえばこのページ内でのダイアログの使用頻度と使用時間を知るために) を分割できます。
 
-##アクティビティの報告
+##アクティビティを報告する
 
-### ユーザーが、新しいアクティビティを開始します
+### ユーザーが新しいアクティビティを開始する
 
 #### リファレンス
 
 			void StartActivity(string name, Dictionary<object, object> extras = null)
 
-ユーザーがアクティビティを変更するたびに、 `StartActivity()` を呼び出す必要があります。この関数の最初の呼び出しによって最初のユーザー セッションが開始されます。
+ユーザー アクティビティが変更されるたびに `StartActivity()` を呼び出す必要があります。この関数の最初の呼び出しで、新しいユーザー セッションが開始します。
 
-> [AZURE.IMPORTANT] アプリケーションが終了すると Windows Phone SDK は EndActivity メソッドを自動的に呼び出します。したがって、EndActivity メソッドを呼び出すと現在のセッションが強制的に終了されるので、このメソッドを呼び出さないようにし、ユーザーのアクティビティが変わる際には常に StartActivity メソッドを呼び出すことを強くお勧めします。
+> [AZURE.IMPORTANT]アプリケーションが終了すると SDK は EndActivity メソッドを自動的に呼び出します。したがって、EndActivity メソッドを呼び出すと現在のセッションが強制的に終了されるので、このメソッドを呼び出さないようにし、ユーザーのアクティビティが変わる際には常に StartActivity メソッドを呼び出すことを強くお勧めします。
 
 #### 例
 
 			EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
 
-### ユーザーが、現在のアクティビティを終了
+### ユーザーが現在のアクティビティを終了する
 
 #### リファレンス
 
 			void EndActivity()
 
-これによってアクティビティとセッションが終了します。理解したうえでない限り、このメソッドを呼び出さないでください。
+ユーザーが最後のアクティビティを終了する際には、`EndActivity()` を少なくとも 1 回呼び出す必要があります。これにより、ユーザーが現在休止状態にあり、セッション タイムアウトの期限が終了したタイミングでユーザー セッションを閉じる必要があることを Engagement SDK に通知します (セッション タイムアウトの期限が終了する前に `StartActivity()` を呼び出すと、そのセッションが再開されます)。
 
 #### 例
 
 			EngagementAgent.Instance.EndActivity();
 
-##ジョブの報告
+##ジョブを報告する
 
-### ジョブの開始
+### ジョブを開始する
 
 #### リファレンス
 
 			void StartJob(string name, Dictionary<object, object> extras = null)
 
-ジョブを使用して、一定の期間にわたって特定のタスクを追跡できます。
+ジョブを使用して、一定期間、特定のタスクを追跡できます。
 
 #### 例
 
@@ -87,13 +87,13 @@
 			
 			EngagementAgent.Instance.StartJob("uploadData", extras);
 
-### ジョブの終了
+### ジョブを終了する
 
 #### リファレンス
 
 			void EndJob(string name)
 
-ジョブによって追跡されるタスクが終了したらすぐに、ジョブ名を指定して、このジョブの EndJob メソッドを呼び出す必要があります。
+ジョブによって追跡されるタスクが終了するとすぐに、ジョブ名を指定して、このジョブの EndJob メソッドを呼び出す必要があります。
 
 #### 例
 
@@ -102,9 +102,9 @@
 			
 			EngagementAgent.Instance.EndJob("uploadData");
 
-##イベントの報告
+##イベントを報告する
 
-次の 3 つの種類のイベントがあります:
+イベントには 3 種類あります。
 
 -   スタンドアロン イベント
 -   セッション イベント
@@ -116,7 +116,7 @@
 
 			void SendEvent(string name, Dictionary<object, object> extras = null)
 
-スタンドアロン イベントは、セッションのコンテキストの外部で発生します。
+スタンドアロン イベントは、セッションのコンテキストの外で発生します。
 
 #### 例
 
@@ -128,11 +128,11 @@
 
 			void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
-セッション イベントは、通常、セッション中にユーザーが実行したアクションを報告するために使用されます。
+通常、セッション イベントは、セッション中にユーザーによって実行されるアクションの報告に使用されます。
 
 #### 例
 
-**データなし :**
+**データなし:**
 
 			EngagementAgent.Instance.SendSessionEvent("sessionEvent");
 			
@@ -140,7 +140,7 @@
 			
 			EngagementAgent.Instance.SendSessionEvent("sessionEvent", null);
 
-**With data :**
+**データあり:**
 
 			Dictionary<object, object> extras = new Dictionary<object,object>();
 			extras.Add("name", "data");
@@ -152,7 +152,7 @@
 
 			void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
-ジョブ イベントは、通常、ジョブ中にユーザーが実行したアクションを報告するために使用されます。
+通常、ジョブ イベントは、ジョブ中にユーザーによって実行されるアクションの報告に使用されます。
 
 #### 例
 
@@ -160,7 +160,7 @@
 
 ##エラーの報告
 
-次の 3 つの種類のエラーがあります:
+エラーには 3 種類あります。
 
 -   スタンドアロン エラー
 -   セッション エラー
@@ -172,7 +172,7 @@
 
 			void SendError(string name, Dictionary<object, object> extras = null)
 
-セッション エラーと異なり、スタンドアロン エラーはセッションのコンテキストの外部で発生する場合があります。
+セッション エラーとは反対に、スタンドアロン エラーはセッションのコンテキストの外で発生します。
 
 #### 例
 
@@ -184,7 +184,7 @@
 
 			void SendSessionError(string name, Dictionary<object, object> extras = null)
 
-セッションのエラーは、通常、セッション中にユーザーに影響を与えるエラーを報告するのに使用されます。
+通常、セッション エラーは、セッション中にユーザーに影響するエラーの報告に使用されます。
 
 #### 例
 
@@ -196,17 +196,17 @@
 
 			void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
-エラーは、現在のユーザー セッションに関連しているのではなく、実行中のジョブに関連している場合があります。
+エラーは、現在のユーザー セッションに関連付ける代わりに、実行中のジョブに関連付けることができます。
 
 #### 例
 
 			EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
-##クラッシュの報告
+##クラッシュを報告する
 
 エージェントは、クラッシュに対処する 2 つのメソッドを提供します。
 
-### 例外の送信
+### 例外を送信する
 
 #### リファレンス
 
@@ -214,17 +214,17 @@
 
 #### 例
 
-呼び出すことによって、いつでも例外を送信できます:
+呼び出すことで、いつでも例外を送信できます。
 
 			EngagementAgent.Instance.SendCrash(aCatchedException);
 
-オプションのパラメーターを使用することにより、クラッシュを送信して、同時にエンゲージメントを終了ができます。これを実行するには次のように呼び出します:
+オプションのパラメーターを使用して、クラッシュを送信するよりも、同時にエンゲージメント セッションを終了することも可能です。それには次のように呼び出します。
 
 			EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
 
-これを実行すると、セッションとジョブはクラッシュを送信した直後に終了します。
+その場合、セッションとジョブは、クラッシュを送信した後にだけ閉じられます。
 
-### 未処理の例外の送信
+### 未処理の例外を送信する
 
 #### リファレンス
 
@@ -232,11 +232,11 @@
 
 また、エンゲージメントは未処理の例外を送信するメソッドも提供します。これは特に、silverlight UnhandledException イベント ハンドラー内で使用する場合に便利です。
 
-このメソッドでは、**常に**呼び出された後にセッションとメソッドを終了します。
+このメソッドは、呼び出された後に、**常に**エンゲージメントのセッションとジョブを終了します。
 
 #### 例
 
-これを使用して、独自の UnhandledException ハンドラーを実装できます (特にエンゲージメントの自動クラッシュ報告を無効にしている場合)。たとえば、 `App.xaml.cs` ファイルの  `Application_UnhandledException` メソッド:
+これを使用して、独自の UnhandledException ハンドラーを実装できます (特にエンゲージメントの自動クラッシュ報告を無効にしている場合)。たとえば、`App.xaml.cs` ファイルの `Application_UnhandledException` メソッド:
 
 			// In your App.xaml.cs file
 			
@@ -256,7 +256,7 @@
 
 ユーザーがアプリケーションから移動すると、Deactivated イベントが発生した後で、オペレーティング システムはアプリケーションを休止状態にしようとします。アプリケーションは廃棄済み状態になります。このプロセスでは、アプリケーションは終了しますが、アプリケーションの状態とアプリケーション内の個々のページに関する一部のデータは保持されます。
 
-アプリケーションが廃棄済みになったら、App.xaml.cs ファイルから  `EngagementAgent.Instance.OnActivated(e)` を `Application_Activated` メソッドに挿入してエンゲージメント エージェントをリセットする必要があります。
+アプリケーションが廃棄済みになったら、App.xaml.cs ファイルから `EngagementAgent.Instance.OnActivated(e)` を `Application_Activated` メソッドに挿入してエンゲージメント エージェントをリセットする必要があります。
 
 ### 例
 
@@ -269,21 +269,21 @@
 			  EngagementAgent.Instance.OnActivated(e);
 			}
 
-##デバイス ID
+##デバイス Id
 
 			String GetDeviceId()
 
-このメソッドを呼び出して、エンゲージメント デバイス ID を取得できます。
+このメソッドを呼び出すことで、エンゲージメント デバイス id を取得できます。
 
 ##Extras パラメーター
 
-任意のデータをイベント、エラー、アクティビティ、ジョブにアタッチできます。これらのデータはディクショナリを使用して構造化ができます。キーと値は任意の型を指定できます。
+任意のデータをイベント、エラー、アクティビティ、ジョブにアタッチできます。これらのデータは、ディクショナリを使用して構造化できます。任意の型のキーと値を指定できます。
 
-Extras データはシリアル化されるため、Extras に独自の型を挿入する場合は、この型のデータ コントラクトを追加する必要があります。
+Extras データはシリアル化されるため、Extras に独自の型を挿入する場合、この型のデータ コントラクトを追加する必要があります。
 
 ### 例
 
-新しいクラス "Person" を作成します。
+新しい "Person" クラスを作成します。
 
 			using System.Runtime.Serialization;
 			
@@ -316,7 +316,7 @@ Extras データはシリアル化されるため、Extras に独自の型を挿
 			  }
 			}
 
-Extra に  `Person` インスタンスを追加します。
+次に、`Person` インスタンスを Extra に追加します。
 
 			Person person = new Person("Engagement Haddock", 51);
 			var extras = new Dictionary<object, object>();
@@ -324,31 +324,31 @@ Extra に  `Person` インスタンスを追加します。
 			
 			EngagementAgent.Instance.SendEvent("Event", extras);
 
-> [AZURE.WARNING] 他の型のオブジェクトを配置する場合は、ToString() メソッドが実装されて人間が判読できる文字列を返すことを確認します。
+> [AZURE.WARNING]その他の型のオブジェクトを配置する場合、ToString() メソッドは、人間が判読できる文字列を返すように実装されていることを確認します。
 
 ### 制限
 
 #### 構成する
 
-オブジェクト内の各キーは、次の正規表現と一致する必要があります:
+オブジェクト内の各キーは、次の正規表現と一致する必要があります。
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-キーは少なくとも 1 つの文字で始まり、その後に文字、数字、アンダー スコア (\) が続く必要があります。
+キーは、文字、数字、アンダー スコア (_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
 
 #### サイズ
 
-Extras は、呼び出しごとに最大で、**1024** 文字に制限されています。
+Extras はセルあたり **1024** 文字に制限されています。
 
-##アプリケーション情報の報告
+##アプリケーションの情報を報告する
 
 ### リファレンス
 
 			void SendAppInfo(Dictionary<object, object> appInfos)
 
-SendAppInfo() 関数を使用して、追跡情報を手動で報告できます (またはその他のアプリケーションに固有の情報)。 
+SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリケーション固有情報) を手動で報告できます。
 
-これらの情報は段階的に送信できます: 指定されたデバイスの指定されたキーの最新の値のみが保持されます。イベントの extras のように、Dictionary\<object, object\> を使用して情報をアタッチができます。
+これらの情報は段階的に送信される可能性があることにご注意ください。特定のキーの最新の値のみが特定のデバイスに保持されます。イベント Extras のように、Dictionary<object, object> を使用して情報をアタッチします。
 
 ### 例
 
@@ -364,18 +364,18 @@ SendAppInfo() 関数を使用して、追跡情報を手動で報告できます
 
 #### 構成する
 
-オブジェクト内の各キーは、次の正規表現と一致する必要があります:
+オブジェクト内の各キーは、次の正規表現と一致する必要があります。
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-キーは少なくとも 1 つの文字で始まり、その後に文字、数字、アンダー スコア (\) が続く必要があります。
+キーは、文字、数字、アンダー スコア (_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
 
 #### サイズ
 
-アプリケーション情報は、呼び出しごとに、最大で **1024** 文字に制限されています。
+アプリケーションの情報は、呼び出しあたり **1024** 文字に制限されています。
 
-前の例では、サーバーに送信された JSON は 44 文字です。
+前の例では、サーバーに送信される JSON は 44 文字です。
 
 			{"subscription":"2013-12-07","premium":"true"}
 
-<!--HONumber=47-->
+<!--HONumber=54-->

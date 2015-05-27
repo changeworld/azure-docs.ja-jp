@@ -1,41 +1,27 @@
-﻿<properties 
+<properties 
    pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - 概要" 
    description="Azure モバイル エンゲージメントのユーザー インターフェイスの概要" 
    services="mobile-engagement" 
-   documentationCenter="mobile" 
-   authors="v-micada" 
+   documentationCenter="" 
+   authors="piyushjo" 
    manager="dwrede" 
    editor=""/>
 
 <tags
    ms.service="mobile-engagement"
-   ms.devlang="Java"
+   ms.devlang="na"
    ms.topic="article"
-   ms.tgt_pltfrm="mobile"
+   ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
    ms.date="02/17/2015"
-   ms.author="v-micada"/>
+   ms.author="piyushjo"/>
 
-# Azure モバイル エンゲージメント - ユーザー インターフェイス
-
-<div class="dev-center-tutorial-selector sublanding">
-<a href="../mobile-engagement-user-interface" title="Introduction">はじめに</a>
-<a href="../mobile-engagement-user-interface-navigation" title="Navigation">ナビゲーション</a>
-<a href="../mobile-engagement-user-interface-home/" title="Home">ホーム</a>
-<a href="../mobile-engagement-user-interface-my-account" title="My Account">マイ アカウント</a>
-<a href="../mobile-engagement-user-interface-analytics" title="Analytics">分析</a>
-<a href="../mobile-engagement-user-interface-monitor" title="Monitor">監視</a>
-<a href="../mobile-engagement-user-interface-reach" title="Reach">リーチ</a>
-<a href="../mobile-engagement-user-interface-segments" title="Segments">セグメント</a>
-<a href="../mobile-engagement-user-interface-dashboard" title="Dashboard">ダッシュボード</a>
-<a href="../mobile-engagement-user-interface-settings" title="Settings">設定</a>
-</div>
-
-# はじめに
+# Azure Mobile Engagement ユーザー インターフェイス (UI) の使用方法
  
-Azure モバイル エンゲージメント [SDK] を[Link 5] アプリケーションに統合し、基本的な Azure モバイル エンゲージメントの [概念] を理解したら[Link 6]、2 つの方法でアプリ用の Azure モバイル エンゲージメントを操作できます。標準ユーザーは [ユーザー インターフェイス] を使用し、[Link 1] 開発者ユーザーは HTTP REST ベースの [API] を使用できます[Link 4]。一般的な操作のチュートリアルについては、[How To Guides (ハウツー ガイド)] ご覧ください[Link 3]。問題が発生した場合は、[トラブルシューティング ガイド] をご覧ください[Link 2]。
+## 概要:
+Azure Mobile Engagement [SDK][Link 5] をアプリケーションに統合し、Azure Mobile Engagement の基本[概念][Link 6]を理解したら、2 通りの方法で Azure Mobile Engagement を操作できます。標準ユーザーは[ユーザー インターフェイス][Link 1]を利用し、開発者ユーザーは HTTP REST ベースの [API][Link 4] を利用できます。問題が発生した場合は、[トラブルシューティング ガイド][Link 2]をご覧ください
 
-## ユーザー インターフェイス:
+## ユーザー インターフェイスに関する記事:
 
 - [ナビゲーション][Link 12]
 - [ホーム][Link 13]
@@ -43,9 +29,13 @@ Azure モバイル エンゲージメント [SDK] を[Link 5] アプリケーシ
 - [分析][Link 15]
 - [監視][Link 16]
 - [リーチ][Link 17]
+	- [リーチ - キャンペーン][Link 27]
+	- [リーチ - 基準][Link 28]
+	- [リーチ - コンテンツ][Link 29]
+	- [リーチ - 方法][Link 3]
 - [セグメント][Link 18]
 - [ダッシュボード][Link 19]
-- [[設定]][Link 20]
+- [設定][Link 20]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -67,20 +57,20 @@ Azure モバイル エンゲージメント [SDK] を[Link 5] アプリケーシ
 [17]: ./media/mobile-engagement-user-interface-monitor/monitor4.png
 [18]: ./media/mobile-engagement-user-interface-reach/reach1.png
 [19]: ./media/mobile-engagement-user-interface-reach/reach2.png
-[20]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign1.png
-[21]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign2.png
-[22]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign3.png
-[23]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign4.png
-[24]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign5.png
-[25]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign6.png
-[26]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign7.png
-[27]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign8.png
-[28]: ./media/mobile-engagement-user-interface-reach/Reach-Campaign9.png
-[29]: ./media/mobile-engagement-user-interface-reach/Reach-Criterion1.png
-[30]: ./media/mobile-engagement-user-interface-reach/Reach-Content1.png
-[31]: ./media/mobile-engagement-user-interface-reach/Reach-Content2.png
-[32]: ./media/mobile-engagement-user-interface-reach/Reach-Content3.png
-[33]: ./media/mobile-engagement-user-interface-reach/Reach-Content4.png
+[20]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign1.png
+[21]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign2.png
+[22]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign3.png
+[23]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign4.png
+[24]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign5.png
+[25]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign6.png
+[26]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign7.png
+[27]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign8.png
+[28]: ./media/mobile-engagement-user-interface-reach-campaign/Reach-Campaign9.png
+[29]: ./media/mobile-engagement-user-interface-reach-criterion/Reach-Criterion1.png
+[30]: ./media/mobile-engagement-user-interface-reach-content/Reach-Content1.png
+[31]: ./media/mobile-engagement-user-interface-reach-content/Reach-Content2.png
+[32]: ./media/mobile-engagement-user-interface-reach-content/Reach-Content3.png
+[33]: ./media/mobile-engagement-user-interface-reach-content/Reach-Content4.png
 [34]: ./media/mobile-engagement-user-interface-dashboard/dashboard1.png
 [35]: ./media/mobile-engagement-user-interface-segments/segments1.png
 [36]: ./media/mobile-engagement-user-interface-segments/segments2.png
@@ -108,9 +98,9 @@ Azure モバイル エンゲージメント [SDK] を[Link 5] アプリケーシ
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[Link 1]: ../mobile-engagement-user-interface/
-[Link 2]: ../mobile-engagement-troubleshooting-guide/
-[Link 3]: ../mobile-engagement-how-tos/
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
 [Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
 [Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
 [Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
@@ -119,27 +109,27 @@ Azure モバイル エンゲージメント [SDK] を[Link 5] アプリケーシ
 [Link 9]: http://azure.microsoft.com/services/mobile-engagement/
 [Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
 [Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[Link 12]: ../mobile-engagement-user-interface-navigation/
-[Link 13]: ../mobile-engagement-user-interface-home/
-[Link 14]: ../mobile-engagement-user-interface-my-account/
-[Link 15]: ../mobile-engagement-user-interface-analytics/
-[Link 16]: ../mobile-engagement-user-interface-monitor/
-[Link 17]: ../mobile-engagement-user-interface-reach/
-[Link 18]: ../mobile-engagement-user-interface-segments/
-[Link 19]: ../mobile-engagement-user-interface-dashboard/
-[Link 20]: ../mobile-engagement-user-interface-settings/
-[Link 21]: ../mobile-engagement-troubleshooting-guide-analytics/
-[Link 22]: ../mobile-engagement-troubleshooting-guide-apis/
-[Link 23]: ../mobile-engagement-troubleshooting-guide-push-reach/
-[Link 24]: ../mobile-engagement-troubleshooting-guide-service/
-[Link 25]: ../mobile-engagement-troubleshooting-guide-sdk/
-[Link 26]: ../mobile-engagement-troubleshooting-guide-sr-info/
-[Link 27]: ../mobile-engagement-how-tos-first-push/
-[Link 28]: ../mobile-engagement-how-tos-test-campaign/
-[Link 29]: ../mobile-engagement-how-tos-personalize-push/
-[Link 30]: ../mobile-engagement-how-tos-differentiate-push/
-[Link 31]: ../mobile-engagement-how-tos-schedule-campaign/
-[Link 32]: ../mobile-engagement-how-tos-text-view/
-[Link 33]: ../mobile-engagement-how-tos-web-view/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: mobile-engagement-how-tos-first-push.md
+[Link 28]: mobile-engagement-how-tos-test-campaign.md
+[Link 29]: mobile-engagement-how-tos-personalize-push.md
+[Link 30]: mobile-engagement-how-tos-differentiate-push.md
+[Link 31]: mobile-engagement-how-tos-schedule-campaign.md
+[Link 32]: mobile-engagement-how-tos-text-view.md
+[Link 33]: mobile-engagement-how-tos-web-view.md
 
-<!--HONumber=47-->
+<!--HONumber=54-->

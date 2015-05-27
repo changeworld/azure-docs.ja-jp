@@ -1,20 +1,20 @@
-﻿<properties 
+<properties 
 	pageTitle="Windows ストア クライアントからのカスタム API の呼び出し - Mobile Services" 
-	description="カスタム API を定義し、Windows Azure モバイル サービスを使用した Windows ストア アプリから呼び出す方法について説明します。" 
+	description="カスタム API を定義し、Azure Mobile Services を使用する Windows ストア アプリからそれを呼び出す方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
-	Writer="glenga" 
+	writer="glenga" 
 	manager="dwrede" 
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/26/2014" 
+	ms.date="02/26/2015" 
 	ms.author="glenga"/>
 
 # クライアントからのカスタム API 呼び出し
@@ -29,11 +29,9 @@
 
 1. [カスタム API を定義する]
 2. [カスタム API を呼び出すようにアプリケーションを更新する]
-3. [アプリケーションをテストする]
+3. [アプリケーションをテストする] 
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。 
-
-## <a name="define-custom-api"></a>カスタム API を定義する
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-create-custom-api](../includes/mobile-services-dotnet-backend-create-custom-api.md)]
 
@@ -44,35 +42,30 @@
 
 ## 次のステップ
 
-以上、カスタム API を作成し、Windows ストア アプリから呼び出す方法について説明しました。Mobile Services に関連した次のトピックも参考にしてください。:
+以上、カスタム API を作成し、Windows ストア アプリから呼び出す方法について説明しました。モバイル サービスに関連した次のトピックも参考にしてください。
 
-* [定期的な通知をサポートするカスタム API の定義]
-	<br/>Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。
+* [定期的な通知をサポートするカスタム API の定義] <br/>Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。
 
-* [モバイル サービスのサーバー スクリプト リファレンス]
-  <br/>カスタム API の作成について説明します。
+* [Mobile Services のサーバー スクリプト リファレンス] <br/>カスタム API の作成について説明します。
 
-* [ソース管理へのサーバー スクリプトの保存]
-  <br/> ソース管理機能を使用して、カスタム API スクリプト コードを簡単かつ安全に開発、発行する方法について説明します。
+* [ソース管理へのサーバー スクリプトの保存] <br/> ソース管理機能を使用して、カスタム API スクリプト コードを簡単かつ安全に開発、発行する方法について説明します。
 
 <!-- Anchors. -->
 [カスタム API を定義する]: #define-custom-api
 [カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
 [アプリケーションをテストする]: #test-app
-[次のステップ]: #next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
-[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
+[Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスの使用]: mobile-services-windows-store-get-started.md
+[データの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
+[Get started with authentication]: mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
+[Get started with push notifications]: mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
-[定期的な通知をサポートするカスタム API の定義]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-create-pull-notifications
-[ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control
+[定期的な通知をサポートするカスタム API の定義]: mobile-services-windows-store-dotnet-create-pull-notifications.md
+[ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

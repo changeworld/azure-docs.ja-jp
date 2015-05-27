@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="認証の使用 (Appcelerator) | モバイル デベロッパー センター" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて iOS アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、アプリケーションから Windows Azure Mobile Services のユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証と承認されると、ユーザー ID 値が表示されます。
+このトピックでは、アプリケーションから Windows Azure Mobile Services のユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
@@ -28,7 +28,7 @@
 2.  [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3.  [アプリケーションに認証を追加する]
 
-このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
 このチュートリアルを完了するには、Appcelerator Titanium Studio 3.2.1 またはそれ以降、iOS 7.0 またはそれ以降、および Android 4.3 またはそれ以降が必要です。
 
@@ -40,7 +40,7 @@
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
-3.	Appcelerator Titanium Studio で、[Mobile Services の使用]に関するチュートリアルを実行したときに作成したプロジェクトを開きます。
+3.	Appcelerator Titanium Studio で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
 
 4.	[実行] をクリックしてプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
     
@@ -94,11 +94,11 @@
             }
         });
 
->[AZURE.NOTE] Google 以外の ID プロバイダーを使用している場合は、**authorizeClient** メソッドに渡す値を  *microsoftaccount*、 *facebook*、 *twitter*、 *windowsazureactivedirectory* のいずれかに変更します。
+>[AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、**authorizeClient** に渡される値を *microsoftaccount*、*facebook*、*twitter*、*windowsazureactivedirectory* のいずれかに変更します。
 
 4.	[実行] をクリックして iPhone シミュレーターまたは Android エミュレーターでアプリケーションを開始し、[ログインするプロバイダー] オプションをクリックして ID プロバイダーでログオンします。
 
-    ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+    ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
 
 <!-- Anchors. -->
@@ -110,7 +110,5 @@
 <!-- Images. -->
 
 <!-- URLs. -->
-[Mobile Services の使用]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started.md
-<!--HONumber=49--> 
-
-<!--HONumber=49-->
+[モバイル サービスの使用]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started.md
+<!--HONumber=54-->

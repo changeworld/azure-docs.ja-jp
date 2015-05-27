@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="Thraka" 
 	manager="timlt" 
-	editor="mollybos"/>
+	editor=""/>
 
 <tags 
 	ms.service="cloud-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/14/2014" 
+	ms.date="03/13/2015" 
 	ms.author="adegeo"/>
 
 
@@ -25,18 +25,11 @@
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
-> [AZURE.NOTE] このタスクの手順は、Azure Cloud Services に適用されます。Websites については、「[Azure Web サイトの SSL 証明書の構成](../articles/web-sites-configure-ssl-certificate/)」を参照してください。
-
-このタスクの手順は次のとおりです。
-
--   [手順 1:SSL 証明書を取得する][]
--   [手順 2.サービス定義ファイルとサービス構成ファイルを変更する][]
--   [手順 3.デプロイ パッケージと証明書をアップロードする][]
--   [手順 4.HTTPS を使用してロール インスタンスに接続する][]
+> [AZURE.NOTE]このタスクの手順は、Azure クラウド サービス に適用されます。Web サイトについては、「[Azure Web サイトの SSL 証明書の構成](web-sites-configure-ssl-certificate.md)」を参照してください。
 
 このタスクでは、運用環境の展開を使用します。ステージング環境の展開を使用する場合に関する情報については、このトピックの最後で紹介します。
 
-<h2><a name="step1"> </a>手順 1:SSL 証明書を取得する</h2>
+## 手順 1. SSL 証明書を取得する
 
 アプリケーションの SSL を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された SSL 証明書を取得する必要があります。まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。
 
@@ -51,14 +44,11 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 次に、この証明書に関する情報を、サービス定義ファイルおよびサービス構成ファイルに含める必要があります。
 
-<h2><a name="step2"> </a>手順 2:サービス定義ファイルとサービス構成ファイルを変更する</h2>
+## ステップ 2: サービス定義ファイルとサービス構成ファイルを変更する
 
 アプリケーションは、証明書を使用するように構成する必要があります。また、HTTPS エンドポイントを追加する必要があります。その結果として、サービス定義ファイルおよびサービス構成ファイルを更新する必要があります。
 
-1.  お使いの開発環境で、サービス定義ファイル
-    (CSDEF) を開き、**Certificates** セクションを **WebRole**
-    セクション内に追加し、証明書に関する次の情報を追加します
-    。
+1.  お使いの開発環境で、サービス定義ファイル (CSDEF) を開き、**WebRole** セクション内に **Certificates** セクションを追加し、証明書に関する次の情報を含めます。
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -72,8 +62,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
     **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。CA (証明機関) ストアにこの証明書を保存することを選択しましたが、その他のオプションを選択することもできます。詳細については、「[サービスと証明書の関連付け][]」を参照してください。
 
-2.  サービス定義ファイルで、**InputEndpoint** 要素を
-    **Endpoints** セクション内に追加し、HTTPS を有効にします。
+2.  サービス定義ファイルで、**Endpoints** セクション内に **InputEndpoint** 要素を追加し、HTTPS を有効にします。
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -84,9 +73,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-3.  サービス定義ファイルで、**Binding** 要素を
-    **Sites** セクション内に追加します。これにより、HTTPS バインドが追加され、
-    エンドポイントがサイトにマップされます。
+3.  サービス定義ファイルで、**Sites** セクション内に **Binding** 要素を追加します。これにより、HTTPS バインドが追加され、 エンドポイントがサイトにマップされます。
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -100,13 +87,9 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-    サービス定義ファイルに対して必要な変更はすべて完了しましたが、
-    サービス構成ファイルに証明書の情報を追加する必要もあります
-    。
+    サービス定義ファイルに対して必要な変更はすべて完了しましたが、サービス構成ファイルに証明書の情報を追加する必要もあります。
 
-4.  4.サービス構成ファイル (CSCFG) である ServiceConfiguration.Cloud.cscfg で、**Certificates**
-    セクションを **Role** セクション内に追加し、
-    次に示す拇印値のサンプルを証明書の拇印値に置き換えます。
+4.  サービス構成ファイル (CSCFG) である ServiceConfiguration.Cloud.cscfg で、**Role** セクション内に **Certificates** セクションを追加し、次に示すサムプリント値のサンプルを証明書のサムプリント値に置き換えます。
 
         <Role name="Deployment">
         ...
@@ -120,76 +103,61 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 (上記の例では、サムプリント アルゴリズムに **sha1** を使用しています。証明書のサムプリント アルゴリズムに適切な値を指定してください。)
 
-サービス定義ファイルとサービス構成ファイルが更新されたので、
-Azure にアップロードするためにデプロイをパッケージ化します。
-**cspack** を使用している場合は、
-**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、
-先ほど挿入した証明書情報が上書きされるためです。
+サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイをパッケージ化します。**cspack** を使用している場合は、**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、先ほど挿入した証明書情報が上書きされるためです。
 
-<h2><a name="step3"> </a>手順 3:デプロイ パッケージと証明書をアップロードする</h2>
+## ステップ 3: 展開パッケージと証明書をアップロードする
 
-展開パッケージがこの証明書を使用するように更新され、HTTPS エンドポイント
-が追加されました。これで、管理ポータルを使用して
-Azure にパッケージと証明書をアップロードできるようになりました。
+デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、管理ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
 1. [Azure の管理ポータル][]にログインします。 
 2. **[新規]**、**[クラウド サービス]**、**[カスタム作成]** の順にクリックします。
 3. **[クラウド サービスを作成する]** ダイアログで、URL、リージョン/アフィニティ グループ、およびサブスクリプションの値を入力します。**[今すぐクラウド サービス パッケージを展開します]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
 3. **[クラウド サービスの発行]** ダイアログで、クラウド サービスに必要な情報を入力し、環境で **[運用]** をクリックして、**[今すぐ証明書を追加]** チェック ボックスがオンになっていることを確認します(いずれかのロールに単一のインスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でも展開する]** チェック ボックスがオンになっていることを確認してください)。 
 
-    ![Publish your cloud service][0]
+    ![クラウド サービスの発行][0]
 
 4.  **[次へ]** をクリックします。
-5.  **[証明書の追加]** ダイアログで、SSL
-    証明書 .pfx ファイルの場所と証明書のパスワードを入力し、
-    **[証明書のアタッチ]** をクリックします。
+5.  **[証明書の追加]** ダイアログで、SSL 証明書 .pfx ファイルの場所と証明書のパスワードを入力し、**[証明書のアタッチ]** をクリックします。  
 
-    ![Add certificate][1]
+    ![証明書の追加][1]
 
 6.  証明書が **[アタッチされた証明書]** セクションに表示されていることを確認します。
 
-    ![Attached certificates][4]
+    ![アタッチされた証明書][4]
 
 7.  **[完了]** をクリックしてクラウド サービスを作成します。展開の状態が **[準備完了]** になったら、次の手順に進むことができます。
 
-<h2><a name="step4"> </a>手順 4:HTTPS を使用してロール インスタンスに接続する</h2>
+## ステップ 4: HTTPS を使用してロール インスタンスに接続する
 
-Azure でデプロイを実行できるようになったため、HTTPS を使用して
-接続できます。
+Azure でデプロイを実行できるようになったため、HTTPS を使用して接続できます。
 
 1.  管理ポータルで展開を選択し、**[サイトの URL]** の下にあるリンクをクリックします。
 
-    ![Determine site URL][2]
+    ![サイトの URL の確認][2]
 
 2.  Web ブラウザーで、**http** ではなく **https** を使用するようにリンクを修正し、ページにアクセスします。
 
-    **注:** 自己署名証明書を使用している場合は、
-    自己署名証明書に関連付けられている HTTPS エンドポイントを参照すると、
-    ブラウザーで証明書エラーが表示されます。信頼された
-    証明機関によって署名された証明書を使用すると、この問題は解消されます。それまでの間、このエラーは無視してかまいません(また、信頼された証明書機関のユーザーの証明書ストアに自己署名証明書を追加する方法もあります)。
+    **注:** 自己署名証明書を使用している場合は、自己署名証明書に関連付けられている HTTPS エンドポイントを参照すると、ブラウザーで証明書エラーが表示されます。信頼された証明機関によって署名された証明書を使用すると、この問題は解消されます。それまでの間、このエラーは無視してかまいません(また、信頼された証明書機関のユーザーの証明書ストアに自己署名証明書を追加する方法もあります)。
 
-    ![SSL example web site][3]
+    ![SSL のサンプル Web サイト][3]
 
 運用環境の展開ではなくステージング環境の展開に SSL を使用する場合は、最初に、ステージング環境の展開に使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスを展開してください。展開すると、管理ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに管理ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング デプロイを更新します。
 
-<h2><a name="additional_resources"> </a>その他のリソース</h2>
+## その他のリソース
 
-* [サービスと証明書の関連付け][]
+* [証明書をサービスに関連付ける方法][]
 
-* [HTTPS エンドポイントでの SSL 証明書の構成][]
+* [HTTPS エンドポイントでの SSL 証明書の構成方法][]
 
-  [手順 1:SSL 証明書を取得する]: #step1
-  [手順 2.サービス定義ファイルとサービス構成ファイルを変更する]: #step2
-  [手順 3.デプロイ パッケージと証明書をアップロードする]: #step3
-  [手順 4.HTTPS を使用してロール インスタンスに接続する]: #step4
-  [Windows Azure のサービス証明書を作成する]: http://msdn.microsoft.com/library/windowsazure/gg432987.aspx
-  [サービスと証明書の関連付け]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
-  [Azure の管理ポータル]: http://manage.windowsazure.com
-  [0]: ./media/cloud-services-dotnet-configure-ssl-certificate/CreateCloudService.png
-  [1]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificate.png
-  [2]: ./media/cloud-services-dotnet-configure-ssl-certificate/CopyURL.png
-  [3]: ./media/cloud-services-dotnet-configure-ssl-certificate/SSLCloudService.png
-  [4]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificateComplete.png  
-  [HTTPS エンドポイントでの SSL 証明書の構成]: http://msdn.microsoft.com/library/windowsazure/ff795779.aspx
+[Windows Azure のサービス証明書を作成する]: http://msdn.microsoft.com/library/azure/gg432987.aspx
+[サービスと証明書の関連付け]: http://msdn.microsoft.com/library/azure/gg465718.aspx
+[証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/library/azure/gg465718.aspx
+[Azure の管理ポータル]: http://manage.windowsazure.com
+[0]: ./media/cloud-services-dotnet-configure-ssl-certificate/CreateCloudService.png
+[1]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificate.png
+[2]: ./media/cloud-services-dotnet-configure-ssl-certificate/CopyURL.png
+[3]: ./media/cloud-services-dotnet-configure-ssl-certificate/SSLCloudService.png
+[4]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificateComplete.png
+[HTTPS エンドポイントでの SSL 証明書の構成方法]: http://msdn.microsoft.com/library/azure/ff795779.aspx
 
-<!--HONumber=45--> 
+<!--HONumber=54-->

@@ -1,7 +1,7 @@
-﻿<properties 
+<properties 
 	pageTitle="Pusher を使用したリアルタイム アプリケーションの構築 (iOS) - モバイル サービス" 
 	description="Pusher を使用して iOS 上の Azure Media Services アプリケーションに通知を送信する方法について説明します。" 
-	services="" 
+	services="mobile-services" 
 	documentationCenter="ios" 
 	authors="lindydonna" 
 	manager="dwrede" 
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
 	ms.date="10/10/2014" 
@@ -22,11 +22,11 @@
 	<a href="" title="iOS" class="current">iOS</a>
 </div>
 
-このトピックでは、Azure Mobile Services ベースのアプリケーションにリアルタイム機能を追加する方法について説明します。完了すると、アプリケーションのすべての実行中のインスタンスにわたって、TodoList データがリアルタイムで同期されます。
+このトピックでは、Azure モバイル サービス ベースのアプリケーションにリアルタイム機能を追加する方法を示します。完了すると、アプリケーションのすべての実行中のインスタンスにわたって、TodoList データがリアルタイムで同期されます。
 
 [ユーザーへのプッシュ通知][]に関するチュートリアルでは、プッシュ通知を使用して Todo リスト内の新しい項目をユーザーに知らせる方法を示しています。プッシュ通知は変更を随時知らせるための優れた方法です。しかし、アプリケーションには頻繁にリアルタイム通知が必要になることもあります。リアルタイム通知は、Pusher API を使用してモバイル サービスに追加できます。このチュートリアルでは、モバイル サービスと共に Pusher を使用して、アプリケーションの実行中のインスタンスで変更が行われたときに Todo リストを同期された状態に保ちます。
 
-Pusher はモバイル サービスのようにクラウド ベースのサービスです。Pusher によってリアルタイム アプリケーションの構築が非常に簡単になります。Pusher を使用すると、ライブ投票、チャット ルーム、マルチプレーヤー ゲーム、コラボレーション アプリケーションをすばやく構築して、ライブ データとライブ コンテンツをブロードキャストすることができます。用途はまだまだあります。詳細については、[http://pusher.com](http://pusher.com) を参照してください。
+Pusher はモバイル サービスのようにクラウド ベースのサービスです。Pusher によってリアルタイム アプリケーションの構築が非常に簡単になります。Pusher を使用すると、ライブ投票、チャット ルーム、マルチプレーヤー ゲーム、コラボレーション アプリケーションをすばやく構築して、ライブ データとライブ コンテンツをブロードキャストすることができます。用途はまだまだあります。 詳細については、[http://pusher.com](http://pusher.com) を参照してください。
 
 このチュートリアルでは、Todo リスト アプリケーションにリアルタイム コラボレーションを追加するための基本的な手順について説明します。
 
@@ -35,7 +35,7 @@ Pusher はモバイル サービスのようにクラウド ベースのサー�
 3. [サーバー スクリプトをインストールする][]
 4. [アプリケーションをテストする][]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、[Mobile Services の使用][]に関するチュートリアルを完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][]」を完了している必要があります。
 
 ## <a name="sign-up"></a>新しい Pusher アカウントを作成する
 
@@ -54,8 +54,8 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 2. プロジェクト内に _libPusher_ という名前のグループを作成します。
 
 3. Finder で、ダウンロードした zip ファイルを解凍し、**libPusher-combined.a** および **/headers** フォルダーを選択して、これらの項目をプロジェクト内の **libPusher** グループにドラッグします。
-	
-4. **[Copy items into destination group's folder]** をオンにして、**[Finish]** をクリックします。
+
+4. **[Copy items into destination group's folder]** をオンにして、**[完了]** をクリックします。
 
 	![][add-files-to-group]
 
@@ -76,7 +76,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 	- Security.framework
 	- SystemConfiguration.framework
 
-9. 最後に **[Build Settings]** 内で、ターゲットのビルド設定 **[Other Linker Flags]** を見つけ、**-all_load** フラグを追加します。
+9. 最後に **[ビルド設定]** 内で、ターゲットのビルド設定 **[Other Linker Flags]** を見つけ、**-all_load** フラグを追加します。
 
 	![][add-linker-flag]
 
@@ -147,7 +147,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 	QSTodoService を使用すると、**id** で項目を検索し、リモート サービスに明示的な要求を送信せずにローカルに項目を追加して完了させることができます。
 
-4. 既存の **addItem** メソッドと **completeItem** メソッドを次のコードに置き換えます。
+4. 既存の **addItem** および **completeItem** メソッドを次のコードで置き換えます。
 
 		-(void) addItem:(NSDictionary *)item
 		{
@@ -172,7 +172,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 	データ テーブルが更新されたときではなく、Pusher からイベントを受け取ったときに、UI が更新されるとともに、項目が追加され完了に設定されることに注意してください。
 
-5. **QSTodoListViewController.h** ファイルで、次の import ステートメントを追加します。
+5. **QSTodoListViewController.h** ファイルに、次の import ステートメントを追加します。
 
 		#import "PTPusherDelegate.h"
 		#import "PTPusher.h"
@@ -192,7 +192,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 		// Sets up the Pusher client
 		- (void) setupPusher;
 
-9. **QSTodoListViewController.m** で、**@synthesise** 行の下に次の行を追加して新しいプロパティを実装します。
+9. **QSTodoListViewController.m** で、**@synthesise** 行の下に次の行を追加して、新しいプロパティを実装します。
 
 		@synthesize pusher = _pusher;
 
@@ -240,7 +240,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 		    }];
 		}
 
-11. プレースホルダー `**your_app_key**` を、前に [接続文字列] ダイアログからコピーした app_key の値で置き換えます。
+11. プレースホルダー `**your_app_key**` を、前に [出力値] ダイアログからコピーした app_key の値で置き換えます。
 
 12. **onAdd** メソッドを次のコードに置き換えます。
 
@@ -289,7 +289,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 
 
-3. **TodoItem** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
+3. **[TodoItem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
 
 
 	![][2]
@@ -334,8 +334,8 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 5. 上記スクリプト内のプレースホルダーを、前に [出力値] ダイアログからコピーした値に置き換えます。
 
-	- **`**your_app_id**`**: app&#95;id value
-	- **`**your_app_key**`**: app&#95;key value
+	- **`**your_app_id**`**: app&#95;id の値
+	- **`**your_app_key**`**: app&#95;key の値
 	- **`**your_app_key_secret**`**: app&#95;key&#95;secret
 
 
@@ -433,16 +433,14 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 [add-linker-flag]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-linker-flag.png
 
 <!-- URLs. -->
-[ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
+[ユーザーへのプッシュ通知]: /develop/mobile/tutorials/push-notifications-to-users-ios
+[モバイル サービスの使用]: /develop/mobile/tutorials/get-started
 [libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
 [libPusherDownload]: http://go.microsoft.com/fwlink/p/?LinkId=276998
 
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

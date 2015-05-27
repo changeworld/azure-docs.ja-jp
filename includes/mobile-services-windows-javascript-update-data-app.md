@@ -1,25 +1,12 @@
 
 
-1. todoItems リストを定義するコード行のすぐ下にある default.js ファイルで、次の関数の定義を追加します。
- 
-        // Add a filter that adds a header to prevent caching. This makes sure that the 
-		// latest data is returned when the 'Refresh; button is clicked.        
-        var noCachingFilter = function (request, next, callback) {
-            if (request.type === 'GET' && !request.headers['If-Modified-Since']) {
-                request.headers['If-Modified-Since'] = 'Mon, 27 Mar 1972 00:00:00 GMT';
-            }
-            next(request, callback);
-        };
+1. 次に、コメントを解除するか次のコード行を追加して、`<yourClient>` をプロジェクトをモバイル サービスに接続したときの service.js ファイルに追加された変数で置き換えます。
 
-	クライアントで caching しないようにする  `If-Modified-Since` ヘッダーを追加するフィルター関数が定義されます。
- 
-2. 次に、コメントを解除するか次のコード行を追加して、`<yourClient>` をプロジェクトをモバイル サービスに接続したときの service.js ファイルに追加された変数で置き換えます。
+		var todoTable = <yourClient>.getTable('TodoItem');
 
-		var todoTable = <yourClient>.withFilter(noCachingFilter).getTable('TodoItem');
+   	このコードでは、caching フィルターを使用して、新しいデータベース テーブルのプロキシ オブジェクト (**todoTable**) を作成します。
 
-   	This code creates a proxy object (**todoTable**) for the new database table, using the caching filter. 
-
-3. **InsertTodoItem** 関数を次のコードに置き換えます。
+2. **InsertTodoItem** 関数を次のコードで置き換えます。
 
 		var insertTodoItem = function (todoItem) {
 		    // Inserts a new row into the database. When the operation completes
@@ -43,7 +30,7 @@
             });
         };
 
-   	これにより、todoTable 内で、モバイル サービスから返されたすべての **TodoItem** オブジェクトが格納される項目のコレクションへのバインディングが設定されます。 
+   	これにより、todoTable 内で、モバイル サービスから返されたすべての **TodoItem** オブジェクトが格納される項目のコレクションへのバインディングが設定されます。
 
 4. **UpdateCheckedTodoItem** 関数を次のコードで置き換えます。
         
@@ -57,4 +44,5 @@
    	これにより、項目の更新がモバイル サービスに送信されます。
 
 バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
-<!--HONumber=42-->
+
+<!--HONumber=54-->

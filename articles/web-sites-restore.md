@@ -4,6 +4,7 @@
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="cephalin" 
+	writer="cephalin" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
@@ -18,12 +19,11 @@
 
 # Azure App Service での Web アプリの復元
 
-この記事では、[App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のバックアップ機能を使用して以前にバックアップした Web アプリを復元する方法について説明します。詳細については、「[App Service Web Apps Backups (App Service Web アプリのバックアップ)](web-sites-backup.md). 」を参照してください。
+この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) のバックアップ機能を使用して以前にバックアップした Web アプリを復元する方法について説明します。詳細については、「[App Service Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
 
 Web アプリの復元機能では、Web アプリをオンデマンドで以前の状態に戻したり、元の Web アプリのバックアップに基づいて新しい Web アプリを作成することができます。最新バージョンと並列で実行する新しい Web アプリを作成すると、A/B テストを実施する場合に役立ちます。
 
-Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の**バックアップ** ブレードで利用可能) は、標準およびプレミアム モードでのみ使用できます。アプリを標準やプレミアム モードに拡張する方法については、「[Scale a web app in Azure App Service (Azure App Service での Web アプリの拡張)](web-sites-scale.md).」を参照してください。 
-プレミアム モードでは、日次バックアップの実行回数を標準モードよりも多く設定できます。
+Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の**バックアップ** ブレードで利用可能) は、Standard および Premium モードでのみ使用できます。アプリを Standard や Premium モードに拡張する方法については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」を参照してください。プレミアム モードでは、日次バックアップの実行回数を標準モードよりも多く設定できます。
 
 <a name="PreviousBackup"></a>
 ## 以前に作成したバックアップから Web アプリを復元するには
@@ -32,11 +32,11 @@ Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlin
 	
 	![バックアップ ソースの選択][ChooseBackupSource]
 	
-2. **[バックアップ]** ブレードの上部にある **[今すぐ復元]** を選択します。 
+2. **[バックアップ]** ブレードの上部にある **[今すぐ復元]** を選択します。
 
-	![復元を今すぐ選択][ChooseRestoreNow]
+	![今すぐ復元の選択][ChooseRestoreNow]
 
-3. 既存の Web アプリを復元するには、**[復元]** ブレードで表示されているすべての詳細を確認し、**[OK]** をクリックします。 
+3. 既存の Web アプリを復元するには、**[復元]** ブレードで表示されているすべての詳細を確認し、**[OK]** をクリックします。
 	
 **[復元]** ブレードから **[Web アプリ]** を選択し、**[Web アプリを新規作成]** を選択することで、 Web アプリを新規の Web アプリに復元することもできます。
 	
@@ -45,7 +45,7 @@ Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlin
 	
 1. Azure ポータルのメインの **[参照]** ブレードで、**[ストレージ アカウント]** を選択します。
 	
-	既存のストレージ アカウントの一覧が表示されます。 
+	既存のストレージ アカウントの一覧が表示されます。
 	
 2. ダウンロードまたは削除するバックアップが含まれているストレージ アカウントを選択します。
 	
@@ -59,7 +59,7 @@ Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlin
 
 4. 一覧でコンテナーを選択してブレードを表示すると、ファイル名の一覧と各ファイルのサイズが表示されます。
 	
-5. ファイルを選択すると、ファイルを**ダウンロード**するか**削除**するかを選択できます。主に使用するファイル タイプは、.zip ファイルと .xml ファイルの 2 種類です。 
+5. ファイルを選択すると、ファイルを**ダウンロード**するか**削除**するかを選択できます。主に使用するファイル タイプは、.zip ファイルと .xml ファイルの 2 種類です。
 
 <a name="OperationLogs"></a>
 ## 監査ログを表示するには
@@ -73,11 +73,11 @@ Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlin
 	
 詳細ブレードに、操作に関連する利用可能な情報が表示されます。
 	
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Try App Service (App Service を試す)](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスすれば、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 	
-## 変更に関する情報
-* Websites から App Service への変更に関するガイドは、次を参照してください:[Azure App Service and Its Impact on Existing Azure Services (Azure App Service と既存の Azure サービス)](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 以前のポータルから新しいポータルへの変更に関するガイドは、次を参照してください:[Reference for navigating the preview portal (プレビュー ポータルの移動に関するリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
+## 変更内容
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 <!-- IMAGES -->
 [ChooseBackupSource]: ./media/web-sites-restore/01ChooseBackupSource.png
@@ -96,4 +96,4 @@ Web アプリの復元機能 ([Azure ポータル](http://go.microsoft.com/fwlin
 [DetailsButton]: ./media/web-sites-restore/12DetailsButton.png
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
 
-<!--HONumber=49-->
+<!--HONumber=54-->

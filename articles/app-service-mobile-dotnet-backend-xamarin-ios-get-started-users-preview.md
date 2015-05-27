@@ -22,25 +22,25 @@
 
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
-このチュートリアルは、モバイル アプリのクイック スタートに基づいています。先に、[Xamarin.iOS アプリの作成]に関するチュートリアルを完了している必要があります。 
+このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.iOS アプリの作成]に関するチュートリアルを完了している必要があります。
 
-## <a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
+##<a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../includes/app-service-mobile-register-authentication.md)] 
 
-## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)] 
 
 <ol start="7">
 <li><p>Visual Studio または Xamarin Studio で、デバイスまたはシミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
    
-   	<p>この問題は、認証されないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、 <em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
+   	<p>この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の <em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
 </ol>
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-## <a name="add-authentication"></a>アプリケーションに認証を追加する
+##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
 ここでは、データを表示する前にログイン画面を表示するようにアプリケーションを変更します。アプリケーションが起動したときには、App Service には接続されず、データも表示されません。ユーザーが最初に更新操作を実行した後で、ログイン画面が表示されます。ログインに成功すると、Todo 項目の一覧が表示されます。
 
@@ -64,7 +64,7 @@
             }
         }
 
-> [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の **LoginAsync** メソッドに渡される値を、_MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+> [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **QSTodoListViewController.cs** を開きます。**ViewDidLoad** のメソッド定義を変更して、終わり近くにある **RefreshAsync()** の呼び出しを削除します。
 
@@ -96,16 +96,16 @@
 		}
 		// rest of RefreshAsync method
 	
-5. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone シミュレーターでアプリケーションを開始します。アプリケーションにデータが表示されないことを確認します。 
+5. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone シミュレーターでアプリケーションを開始します。アプリケーションにデータが表示されないことを確認します。
 
 	項目の一覧をプルダウンして更新操作を実行すると、ログイン画面が表示されます。有効な資格情報を正しく入力すると、Todo 項目の一覧が表示され、データを更新できるようになります。
 
  
 <!-- URLs. -->
-[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Xamarin.iOS アプリの作成]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 
-[Azure 管理ポータル]: https://portal.azure.com
+[Azure Management Portal]: https://portal.azure.com
 
-<!--HONumber=49-->
+<!--HONumber=54-->

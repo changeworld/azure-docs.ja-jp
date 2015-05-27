@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure App Service での Node.js アプリの作成" 
 	description="Azure で Node.js Web アプリを構築してデプロイする方法について説明します。" 
 	services="app-service\web" 
@@ -18,18 +18,17 @@
 
 # Azure App Service での Node.js Web アプリの構築とデプロイ
 
-このチュートリアルでは、[Node] [nodejs.org] アプリケーションを作成し、[Git] を使用して [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を説明します。このチュートリアルの手順は、Node を実行できる任意のオペレーティング システムで使用できます。
+このチュートリアルでは、[Node][nodejs.org] アプリケーションを作成し、[Git] を使用して [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を説明します。このチュートリアルの手順は、Node を実行できる任意のオペレーティング システムで使用できます。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![A browser displaying the 'Hello World' message.][helloworld-completed]
+!["Hello World" メッセージを表示しているブラウザー][helloworld-completed]
 
 ##Web アプリの作成と Git 発行の有効化
 
 Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
 
-> [AZURE.NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料評価版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料評価版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
  
@@ -47,11 +46,11 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 6. **[作成]** をクリックします。
 
-7. 状態が **[実行中]** に変わると、Web アプリのブレードが自動的に表示されます。 
+7. 状態が **[実行中]** に変わると、Web アプリのブレードが自動的に表示されます。**[参照]** をクリックして、ブレードに到達することもできます。
 
 	![][go-to-dashboard]
 
-8. **[展開]** をクリックします。(ブレードをこのパーツまでスクロールする必要がある場合があります。)
+8. **[展開]** をクリックします。ブレードをこのパーツまでスクロールする必要がある場合があります。
 
 	![][deployment-part]
 
@@ -60,18 +59,18 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 	![][setup-git-publishing]
 
 
-10. **デプロイ資格情報**のパーツをクリックします。ユーザー名とパスワードを作成します。**[保存]** をクリックします。(既に Web アプリの発行を有効にしている場合、このステップは必要ありません。)
+10. **デプロイ資格情報**のパーツをクリックします (下に赤のアウトラインで示されています)。ユーザー名とパスワードを作成します。**[保存]** をクリックします。既に Web アプリの発行を有効にしている場合、このステップは必要ありません。
 
 	![][deployment-credentials]
 
 
-11. 発行するには、Git リモート リポジトリにプッシュします。リポジトリの URL を見つけ、**[すべての設定]** をクリックし、**[プロパティ]** をクリックします。URL は "GIT URL" の下に表示されます。     
+11. 発行するには、Git リモート リポジトリにプッシュします。リポジトリの URL を見つけ、**[すべての設定]** をクリックし、**[プロパティ]** をクリックします。URL は "GIT URL" の下に表示されます。
 
 	![][git-url]
 
 ##アプリケーションの作成とローカル テスト
 
-ここでは、[nodejs.org] から入手した  'hello world' の例を含む **server.js** ファイルを作成します。この例は、Azure Web アプリで実行するときにリッスンするポートとして process.env.PORT を追加することで、元の例から変更されています。
+ここでは、**nodejs.org** から入手した 'hello world' の例を含む [server.js] ファイルを作成します。この例は、Azure Web アプリで実行するときにリッスンするポートとして process.env.PORT を追加することで、元の例から変更されています。
 
 1. テキスト エディターを使用して、**helloworld** ディレクトリに **server.js** という名前の新しいファイルを作成します。**helloworld** ディレクトリがない場合は作成します。
 
@@ -88,9 +87,9 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
         node server.js
 
-4. Web ブラウザーを開き、http://localhost:1337/ に移動します。次のスクリーンショットのように、Web ページが開き "Hello World" と表示されます。
+4. Web ブラウザーを開いて、http://localhost:1337 にアクセスします。次のスクリーンショットのように、Web ページが開き "Hello World" と表示されます。
 
-    ![A browser displaying the 'Hello World' message.][helloworld-localhost]
+    !["Hello World" メッセージを表示しているブラウザー][helloworld-localhost]
 
 ##アプリケーションの発行
 
@@ -98,8 +97,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 		git init
 
-	> [AZURE.NOTE] **Git コマンドが使用できない場合: **
-	[Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")を参照してください。
+	> [AZURE.NOTE]**Git コマンドが使用できない場合** [Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")を参照してください。
 
 2. 次のコマンドを使用して、リポジトリにファイルを追加します。
 
@@ -117,17 +115,17 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 	先ほど作成したパスワードを入力するように求められます。出力は次のようになります。
 
-		Counting objects:3, done.
+		Counting objects: 3, done.
 		Delta compression using up to 8 threads.
-		Compressing objects:100% (2/2), done.
-		Writing objects:100% (3/3), 374 bytes, done.
+		Compressing objects: 100% (2/2), done.
+		Writing objects: 100% (3/3), 374 bytes, done.
 		Total 3 (delta 0), reused 0 (delta 0)
-		remote:New deployment received.
-		remote:Updating branch 'master'.
-		remote:Preparing deployment for commit id '5ebbe250c9'.
-		remote:Preparing files for deployment.
-		remote:Deploying Web.config to enable Node.js activation.
-		remote:Deployment successful.
+		remote: New deployment received.
+		remote: Updating branch 'master'.
+		remote: Preparing deployment for commit id '5ebbe250c9'.
+		remote: Preparing files for deployment.
+		remote: Deploying Web.config to enable Node.js activation.
+		remote: Deployment successful.
 		To https://user@testsite.scm.azurewebsites.net/testsite.git
 		 * [new branch]      master -> master
     
@@ -136,32 +134,32 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 ##アプリケーションへの変更の発行
 
-1. テキスト エディターで **server.js** ファイルを開き、 'Hello World\n' を  'Hello Azure\n' に変更します。ファイルを保存します。
+1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。ファイルを保存します。
 2. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを実行します。
 
 		git add .
 		git commit -m "changing to hello azure"
 		git push azure master
 
-	先ほど作成したパスワードを入力するように求められます。 
+	先ほど作成したパスワードを入力するように求められます。
 	
 3. **[参照]** をクリックしてアプリに移動し、更新が適用されたことを確認します。
 
-	![A web page displaying 'Hello Azure'][helloworld-completed]
+	!["Hello Azure" と表示している Web ページ][helloworld-completed]
 
 4. **[展開]** で過去の展開を選択し、それに戻すことができます。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、「[App Service を試す](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。App Service で、有効期限付きのスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##次のステップ
 
-この記事の手順では、Azure ポータルを使用して Web アプリを作成しましたが、[Mac および Linux 用 Azure コマンド ライン ツール] (xplat-cli.md) を使用して同じ操作を行うこともできます。
+この記事の手順では、Azure ポータルを使用して Web アプリを作成しましたが、[Mac および Linux 用 Azure コマンド ライン ツール](xplat-cli.md)を使用して同じ操作を行うこともできます。
 
-Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Web Apps でモジュールを使用する方法については、「[Using Node.js Modules with Azure Applications (Azure アプリケーションでの Node.js モジュールの使用](nodejs-use-node-modules-azure-apps.md)」を参照してください。
+Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Web Apps でモジュールを使用する方法については、「[Azure アプリケーションでの Node.js モジュールの使用](nodejs-use-node-modules-azure-apps.md)」を参照してください。
 
-Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)](nodejs-specify-node-version-azure-apps.md)」を参照してください。
+Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Azure アプリケーションでの Node.js のバージョンの指定](nodejs-specify-node-version-azure-apps.md)」を参照してください。
 
-Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[How to debug a Node.js application in Azure Web Sites (Azure の Web サイトでの Node.js アプリケーションのデバッグ方法)](web-sites-nodejs-debug.md)」を参照してください。
+Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
 
 
 ##その他のリソース
@@ -169,12 +167,13 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 * [Azure PowerShell](install-configure-powershell.md)
 * [Mac および Linux 用 Azure コマンド ライン ツール](xplat-cli.md)
 
-## 変更点
-* Websites から App Service への変更に関するガイドについては、以下を参照してください。[Azure App Service and Its Impact on Existing Azure Services (Azure App Service についてと既存の Azure サービスへの影響)](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 旧ポータルから新ポータルへの変更に関するガイドについては、以下を参照してください。[Reference for navigating the preview portal (プレビュー ポータルを操作するためのリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
+## 変更内容
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 
 [nodejs.org]: http://nodejs.org
+[server.js]: http://nodejs.org
 [Git]: http://git-scm.com
 
 
@@ -197,4 +196,4 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!--HONumber=49-->
+<!--HONumber=54-->

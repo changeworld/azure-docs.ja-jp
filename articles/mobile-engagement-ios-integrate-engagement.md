@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Mobile Engagement iOS SDK の統合" 
-	description="iOS SDK for Azure Mobile Engagement の最新の更新プログラムと手順"
+	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="kpiteira" 
@@ -16,36 +16,38 @@
 	ms.date="02/12/2015" 
 	ms.author="kapiteir" />
 
-
-<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/mobile-engagement-windows-store-integrate-engagement/" title="Windows Store">Windows ストア</a><a href="/documentation/articles/mobile-engagement-windows-phone-integrate-engagement/" title="Windows Phone">Windows Phone</a><a href="/documentation/articles/mobile-engagement-ios-integrate-engagement/" title="iOS" class="current">iOS</a><a href="/documentation/articles/mobile-engagement-android-integrate-engagement/" title="Android" >Android</a></div>
-
-
 #Engagement を iOS に統合する方法
 
-> [AZURE.IMPORTANT] Engagement SDK には iOS4 以降が必要です。アプリケーションの展開ターゲットは iOS 4 以降である必要があります。
+> [AZURE.SELECTOR] 
+- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
+- [iOS](mobile-engagement-ios-integrate-engagement.md) 
+- [Android](mobile-engagement-android-integrate-engagement.md) 
 
 この手順では、iOS アプリケーションで Engagement の分析機能、監視機能を有効化する最も簡単な方法を説明します。
 
-次の手順では、ユーザー、セッション、アクティビティ、クラッシュ、技術に関するすべての統計の計算に必要なログのレポートを有効化できます。イベント、エラー、ジョブなど、その他の統計はアプリケーションに依存するため、その計算に必要なログのレポートは Engagement API (ios-sdk-engagement-advanced を参照してください) を使用して手動で実行する必要があります。
+> [AZURE.IMPORTANT]Engagement SDK には iOS4 以降が必要です。アプリケーションの展開ターゲットは iOS 4 以降である必要があります。
+
+次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報を計算するのに必要なログのレポートを有効にするためのものです。イベント、エラー、ジョブなどの他の統計情報を計算するのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([iOS アプリで高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-ios-use-engagement-api.md))。
 
 ##Engagement SDK を iOS プロジェクトに埋め込む
 
-Engagement SDK の iOS プロジェクトへの追加: Xcode 4 でプロジェクトを右クリックし、**[Add files to ...]** を選択して、 `EngagementSDK` フォルダーを選択します。
+Engagement SDK の iOS プロジェクトへの追加: Xcode 4 でプロジェクトを右クリックし、[**Add files to ...**] を選択して、`EngagementSDK` フォルダーを選択します。
 
-Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、**[Build phases]** タブを開き、**[Link Binary With Libraries]** メニューでこれらのフレームワークを追加します。
+Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、[**Build phases**] タブを開き、[**Link Binary With Libraries**] メニューでこれらのフレームワークを追加します。
 
-> - `AdSupport.framework` - リンクを `オプション`として設定します。
+> -   `AdSupport.framework` - リンクを `Optional` として設定します。
 > -   `SystemConfiguration.framework`
 > -   `CoreTelephony.framework`
 > -   `CFNetwork.framework`
 > -   `CoreLocation.framework`
 > -   `libxml2.dylib`
 
-> [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます\<ios-sdk-engagement-idfa\>。
+> [AZURE.NOTE]AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます <ios-sdk-engagement-idfa>。
 
-##Engagement SDK の初期化
+##エンゲージメント SDK を初期化する
 
-アプリケーション デリゲートを変更する必要がある: 
+アプリケーション デリゲートを変更する必要がある:
 
 -   実装ファイルの先頭で、Engagement エージェントをインポートします。
 
@@ -61,13 +63,13 @@ Engagement では追加のフレームワークを動作させる必要がある
 			  [...]
 			}
 
-##基本レポート
+##基本的なレポート
 
-### 推奨される方法:  `UIViewController` クラスをオーバーロードします
+### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての  `UIViewController` サブクラスを  `EngagementViewController` クラスから継承するように設定します ( `UITableViewController` -\> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
 
-**Engagement なし:**
+**エンゲージメントを使用しない場合:**
 
 			#import <UIKit/UIKit.h>
 			
@@ -79,7 +81,7 @@ Engagement でのユーザー、セッション、アクティビティ、クラ
 			@property (nonatomic, retain) IBOutlet UITextField* myTextField1;
 			@property (nonatomic, retain) IBOutlet UITextField* myTextField2;
 
-**Engagement あり:**
+**エンゲージメントを使用する場合:**
 
 			#import <UIKit/UIKit.h>
 			#import "EngagementViewController.h"
@@ -92,11 +94,11 @@ Engagement でのユーザー、セッション、アクティビティ、クラ
 			@property (nonatomic, retain) IBOutlet UITextField* myTextField1;
 			@property (nonatomic, retain) IBOutlet UITextField* myTextField2;
 
-### 別の方法:  `startActivity()` を手動で呼び出します
+### 代替の方法: 手動で `startActivity()` を呼び出す
 
- `UIViewController` クラスをオーバーロードできないか、オーバーロードしたくない場合は、 `EngagementAgent` のメソッドを直接呼び出して、活動を開始できます。
+`UIViewController` クラスをオーバーロードできないか、オーバーロードしたくない場合は、`EngagementAgent` のメソッドを直接呼び出して、活動を開始できます。
 
-> [AZURE.IMPORTANT] iOS SDK は、アプリケーションが閉じられると、 `endActivity()` メソッドを自動的に呼び出します。このため、ユーザーのアクティビティが変更された場合は常に  `startActivity` メソッドを呼び出し、 `endActivity` メソッドは *決して*呼び出さないことを *強く*お勧めします。これは、このメソッドを呼び出すと、現在のセッションが強制的に終了されるためです。
+> [AZURE.IMPORTANT]iOS SDK は、アプリケーションが閉じられると、`endActivity()` メソッドを自動的に呼び出します。そのため、ユーザーのアクティビティが変化するごとに `startActivity` メソッドを呼び出し、`endActivity` メソッドは*決して*呼び出さないようにすることを*強く*お勧めします。このメソッドを呼び出すと現在のセッションを強制的に終了します。
 
 ##場所レポート
 
@@ -123,8 +125,7 @@ iOS 8 以降では、アプリケーションの Info.plist ファイルにキ�
 
 リアル タイム場所レポートでは、デバイスに関連付けられた緯度と経度をレポートできます。既定では、このタイプの場所レポートでは (セル ID または WIFI に基づいた) ネットワークの場所のみが使用されます。レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。
 
-リアル タイム場所レポートは、統計の計算に使用することは *できません*。このレポートの目的は、リーチ キャンペーンでリアル タイムの 
-geo-fencing \<Reach-Audience-geofencing\> 条件を使用できるようにすることのみです。
+リアル タイム場所レポートは、統計の計算に使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
 
 リアル タイム場所レポートを有効にするには、Engagement エージェントの初期化後に、次の行を追加します。
 
@@ -142,27 +143,26 @@ geo-fencing \<Reach-Audience-geofencing\> 条件を使用できるようにす�
 
 			[[EngagementAgent shared] setBackgroundRealtimeLocationReport:YES withLaunchOptions:launchOptions];
 
-> [AZURE.NOTE] アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
+> [AZURE.NOTE]アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
 
 この機能を実装すると、アプリケーションが背景になったときに、[startMonitoringSignificantLocationChanges] が呼び出されます。これにより、新しい場所イベントが発生すると、アプリケーションが背景に自動的に再起動されることに注意してください。
 
-##詳細レポート
+##詳細な報告
 
-オプションとして、アプリケーション固有のイベント、エラー、ジョブをレポートする必要がある場合は、 `EngagementAgent` クラスのメソッドを通じて Engagement API を使用します。このクラスのオブジェクトを取得するには、`[EngagementAgent shared]` 静的メソッドを呼び出します。
+オプションとして、アプリケーション固有のイベント、エラー、ジョブをレポートする必要がある場合は、`EngagementAgent` クラスのメソッドを通じて Engagement API を使用します。このクラスのオブジェクトを取得するには、`[EngagementAgent shared]` 静的メソッドを呼び出します。
 
-Engagement API では、すべての Engagement の高度な機能を使用でき、
-iOS で Engagement API を使用する方法において詳細な情報が提供されます (また、 `EngagementAgent` クラスの技術文書においても)。
+Engagement API では、Engagement の高度な機能をすべて利用できます。詳細は「Engagement API を iOS で使用する方法」にあります(`EngagementAgent` クラスの技術文書にもあります)。
 
 ##IDFA コレクションの無効化
 
-既定では、Engagement は [IDFA] を使用して、ユーザーを一意に特定します。ただし、アプリの他の場所で広告を使用していない場合、App Store のレビュー プロセスで拒否される場合があります。IDFA コレクションは、プリプロセッサのマクロ  `ENGAGEMENT_DISABLE_IDFA` を pch ファイル (またはアプリケーションの  `[Build Settings]` に追加することによって無効にできます。これにより、アプリケーション ビルドの  `ASIdentifierManager`、 `advertisingIdentifier`、 `isAdvertisingTrackingEnabled` への参照がないことを確認できます。
+既定では、Engagement は [IDFA] を使用して、ユーザーを一意に特定します。ただし、アプリの他の場所で広告を使用していない場合、App Store のレビュー プロセスで拒否される場合があります。IDFA コレクションは、プリプロセッサのマクロ `ENGAGEMENT_DISABLE_IDFA` を pch ファイル (またはアプリケーションの `Build Settings` に追加することによって無効にできます。これにより、アプリケーション ビルドの `ASIdentifierManager`、`advertisingIdentifier`、`isAdvertisingTrackingEnabled` への参照がないことを確認できます。
 
 **prefix.pch** ファイルでの統合:
 
 			#define ENGAGEMENT_DISABLE_IDFA
 			...
 
-IDFA コレクションがアプリケーション内で適切に無効化されていることを確認するには、Engagement テスト ログをチェックします。詳細については、統合テスト\<ios-sdk-engagement-test-idfa\>に関するドキュメントを参照してください。
+IDFA コレクションがアプリケーション内で適切に無効化されていることを確認するには、Engagement テスト ログをチェックします。詳細については、統合テスト <ios-sdk-engagement-test-idfa> に関するドキュメントを参照してください。
 
 ##ログ レポートの無効化
 
@@ -172,15 +172,15 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 
 			[[EngagementAgent shared] setEnabled:NO];
 
-この呼び出しは永続的です:  `NSUserDefaults` を使用して情報を格納します。
+この呼び出しは永続的です: `NSUserDefaults` を使用して情報を格納します。
 
-ログ レポートを有効にするには、 `YES` で同じ機能を呼び出します。
+ログ レポートは、同じ関数を `YES` でもう一度呼び出すことによって有効にすることができます。
 
 ### 設定バンドルでの統合
 
-この機能を呼び出す代わりに、この設定を既存の  `Settings.bundle` ファイルで直接統合することもできます。文字列  `engagement_agent_enabled` は優先識別子として使用し、トグル スイッチ (`PSToggleSwitchSpecifier`) に関連付ける必要があります。
+この機能を呼び出す代わりに、この設定を既存の `Settings.bundle` ファイルで直接統合することもできます。文字列 `engagement_agent_enabled` は優先識別子として使用し、トグル スイッチ (`PSToggleSwitchSpecifier`) に関連付ける必要があります。
 
-次の  `Settings.bundle` の例は、その実装方法を示しています。
+次の `Settings.bundle` の例は、その実装方法を示しています。
 
 			<dict>
 			    <key>PreferenceSpecifiers</key>
@@ -202,9 +202,9 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 
 <!-- URLs. -->
 [デバイス API]: http://go.microsoft.com/?linkid=9876094
-[NSLocationWhenInUseUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26
-[NSLocationAlwaysUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
-[startMonitoringSignificantLocationChanges]:http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
-[IDFA]:https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
+[NSLocationWhenInUseUsageDescription]: https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26
+[NSLocationAlwaysUsageDescription]: https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
+[startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
+[IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!--HONumber=47-->
+<!--HONumber=54-->

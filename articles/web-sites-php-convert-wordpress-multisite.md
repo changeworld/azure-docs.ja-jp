@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure App Service での WordPress から Multisite への変換" 
-	description="Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し WordPress Multisite に変換する方法を説明します。" 
+	description="Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し、WordPress Multisite に変換する方法を説明します。" 
 	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
@@ -22,25 +22,25 @@
 
 ## 概要
 
-*筆者: [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*
+*執筆者: [Ben Lobaugh][ben-lobaugh] ([Microsoft Open Technologies Inc.][ms-open-tech]*)
 
 このチュートリアルでは、Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し WordPress Multisite インストールに変換する方法を説明します。また、インストール内の各サブサイトにカスタム ドメインを割り当てる方法も説明します。
 
 ここでは、WordPress のインストールが既にあるものとします。ない場合は、「[Azure でギャラリーから WordPress Web サイトを作成する][website-from-gallery]」の説明に従ってください。
 
-既存の WordPress シングル サイト インストールから Multisite への変換は、通常はごく簡単で、ここでの初期手順の多くは [WordPress Codex](http://codex.wordpress.org) の「[Create A Network (ネットワークの作成)][wordpress-codex-create-a-network]」から引用したものです。
+既存の WordPress シングル サイト インストールから Multisite への変換は、通常はごく簡単で、ここでの初期手順の多くは [WordPress Codex][wordpress-codex-create-a-network] の「[Create A Network (ネットワークの作成)](http://codex.wordpress.org)」から引用したものです。
 
 それでは始めましょう。
 
 ## Multisite の許可
 
-まず、`wp-config.php` ファイルの **WP\_ALLOW\_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。Web アプリ ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
+まず、`wp-config.php` ファイルの **WP_ALLOW_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。Web アプリ ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
 
-* [MySQL を使用する PHP Web サイトと FTP][website-w-mysql-and-ftp-ftp-setup]
+* [MySQL および FTP による PHP Web サイト][website-w-mysql-and-ftp-ftp-setup]
 
-* [MySQL を使用する PHP Web サイトと Git][website-w-mysql-and-git-git-setup]
+* [MySQL および Git による PHP Web サイト][website-w-mysql-and-git-git-setup]
 
-任意のエディターで `wp-config.php` ファイルを開き、以下の行を '/* That's all, stop editing!Happy blogging.*/' 行の上に追加します。
+任意のエディターで `wp-config.php` ファイルを開き、以下の行を `/* That's all, stop editing! Happy blogging. */` 行の上に追加します。
 
 	/* Multisite */
 
@@ -54,7 +54,7 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 
 ![[Network Setup] 画面][wordpress-network-setup]
 
-このチュートリアルでは、*Sub-directories* サイト スキーマを使用します。このスキーマは常に機能するはずであるためです。このチュートリアルの後の方では、各サブサイトのカスタム ドメインをセットアップします。ただし、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を通じてドメインをマップし、ワイルドカード DNS を適切にセットアップすると、サブドメイン インストールをセットアップすることができます。
+このチュートリアルでは、*Sub-directories* サイト スキーマを使用します。このスキーマは常に機能する必要があるためです。このチュートリアルの後の方では、各サブサイトのカスタム ドメインをセットアップします。ただし、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を通じてドメインをマップし、ワイルドカード DNS を適切にセットアップすると、サブドメイン インストールをセットアップすることができます。
 
 サブドメインのセットアップとサブディレクトリのセットアップの詳細については、WordPress Codex の「[Types of multisite network (マルチサイト ネットワークの種類)][wordpress-codex-types-of-networks]」を参照してください。
 
@@ -63,7 +63,7 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 これで、ネットワークがデータベースで構成されましたが、ネットワーク機能を有効にするにはもう 1 つ手順が残っています。`wp-config.php` 設定の最終処理を行い、`web.config` が各サイトを適切にルーティングしていることを確認します。
 
 
-*Network Setup* ページで **[インストール]** ボタンをクリックすると、`wp-config.php` ファイルと `web.config` ファイルが自動的に更新されます。ただし、これらのファイルを必ずチェックし、正常に更新されていることを確認してください。正常に更新されていない場合は、この画面に必要な更新が表示されます。ファイルを編集して保存します。
+*[ネットワーク セットアップ]* ページで **[インストール]** ボタンをクリックすると、`wp-config.php` ファイルと `web.config` ファイルが自動的に更新されます。ただし、これらのファイルを必ずチェックし、正常に更新されていることを確認してください。正常に更新されていない場合は、この画面に必要な更新が表示されます。ファイルを編集して保存します。
 
 
 これらの更新を行った後で、いったんログアウトしてから、この wp-admin ダッシュボードに再ログインする必要があります。
@@ -76,11 +76,11 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 
 ## Web アプリへのドメイン マッピングの有効化
 
-**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web アプリへのカスタム ドメインの追加はサポートされません。**共有**モードまたは**標準**モードに切り替える必要があります。これを行うには、次の手順を実行します。
+**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web アプリへのカスタム ドメインの追加はサポートされません。**Shared** モードまたは **Standard** モードに切り替える必要があります。これを行うには、次の手順を実行します。
 
-*  Azure ポータルにログインして、自分の Web アプリに移動します。 
-*  メイン コンテンツ領域の **[規模の設定]** タブをクリックします。
-* **[全般]**で、*SHARED* または *STANDARD* を選択します。
+* Azure ポータルにログインして、自分の Web アプリに移動します。 
+* メイン コンテンツ領域の **[スケール]** タブをクリックします。
+* **[全般]** で、*[Shared]* または *[Standard]* を選択します。
 * **[保存]** をクリックします。
 
 設定してある使用方法やその他の構成によっては、変更の確認と、Web アプリへの今後の課金の承認を求めるメッセージが表示される場合があります。
@@ -92,8 +92,8 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 Azure Web Apps でドメインをサイトにマップするには、まず、ドメインをマップする権限が与えられていることを確認する必要があります。そのためには、新しい CNAME レコードを DNS エントリに追加します。
 
 * 自分のドメインの DNS マネージャーにログインします
-* 新しい CNAME *awverify* を作成します。
-* *awverify* が *awverify.YOUR_DOMAIN.azurewebsites.net* を指すようにします。
+* 新しい CNAME *awverify* を作成します
+* *awverify* が *awverify.YOUR_DOMAIN.azurewebsites.net* を指すようにします
 
 場合によっては、DNS の変更が完全に有効になるまで少し時間がかかります。以下の手順がすぐにはうまく動作しない場合は、しばらくしてからやり直してください。
 
@@ -103,17 +103,17 @@ Azure ポータルを通じて Web アプリに戻り、**[設定]** をクリ�
 
 *SSL 設定*が表示されると、Web アプリに割り当てるすべてのドメインを入力するためのフィールドが表示されます。ドメインがこの一覧に表示されない場合、ドメイン DNS がどのようにセットアップされているかにかかわらず、そのドメインは WordPress 内でのマッピングに使用できません。
 
-![カスタム ドメインを管理するダイアログ][wordpress-manage-domains]
+![[カスタム ドメインの管理] ダイアログ][wordpress-manage-domains]
 
-ドメインをテキスト ボックスに入力すると、以前に作成した CNAME レコードが確認されます。DNS が完全に反映されていない場合は、赤いインジケーターが表示されます。成功した場合は、緑のチェック マークが表示されます。 
+ドメインをテキスト ボックスに入力すると、以前に作成した CNAME レコードが確認されます。DNS が完全に反映されていない場合は、赤いインジケーターが表示されます。成功した場合は、緑のチェック マークが表示されます。
 
 ダイアログの下部に表示される IP アドレスをメモしておきます。ドメインのための A レコードをセットアップするときに必要になります。
 
 ## ドメイン A レコードのセットアップ
 
-ここまでの手順が成功すると、DNS A レコードを通じてドメインを自分の Azure Web アプリに割り当てられるようになります。 
+ここまでの手順が成功すると、DNS A レコードを通じてドメインを自分の Azure Web アプリに割り当てられるようになります。
 
-ここで重要なのは、Azure Web アプリでは CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要がある*ということです。Azure では、YOUR_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
+ここで重要なのは、Azure Web アプリでは CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要*があるということです。Azure では、YOUR_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
 
 DNS マネージャーに戻り、前の手順でメモした IP アドレスを指すように A レコードをセットアップします。
 
@@ -128,17 +128,17 @@ DNS マネージャーに戻り、前の手順でメモした IP アドレスを
 
 ドメインのマップ対象のサイトの**ダッシュボード**にアクセスします。**[ツール]**、**[Domain Mapping]** の順にクリックし、テキスト ボックスに新しいドメインを入力して、**[Add]** をクリックします。
 
-既定では、新しいドメインは自動生成されたサイト ドメインに書き換えられます。すべてのトラフィックが新しいドメインに送信されるようにするには、保存する前に  *[Primary domain for this blog]* チェック ボックスをオンにします。サイトに追加するドメインの数に制限はありませんが、プライマリにできるのは 1 つだけです。
+既定では、新しいドメインは自動生成されたサイト ドメインに書き換えられます。すべてのトラフィックが新しいドメインに送信されるようにするには、保存する前に *[Primary domain for this blog]* チェック ボックスをオンにします。サイトに追加するドメインの数に制限はありませんが、プライマリにできるのは 1 つだけです。
 
 ## 繰り返し
 
-Azure Web Apps では、Web アプリに追加できるドメインの数に制限はありません。他のドメインを追加するには、各ドメインに対して「**ドメインの確認**」および「**ドメイン A レコードのセットアップ**」セクションの手順を繰り返します。	
+Azure Web Apps では、Web アプリに追加できるドメインの数に制限はありません。他のドメインを追加するには、各ドメインに対して「**ドメインの確認**」および「**ドメイン A レコードのセットアップ**」セクションの手順を繰り返します。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、「[App Service を試す](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## 変更点
-* Websites から App Service への変更に関するガイドについては、以下を参照してください。[Azure App Service and Its Impact on Existing Azure Services (Azure App Service についてと既存の Azure サービスへの影響)](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 旧ポータルから新ポータルへの変更に関するガイドについては、以下を参照してください。[Reference for navigating the preview portal (プレビュー ポータルを操作するためのリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
+## 変更内容
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [ben-lobaugh]: http://ben.lobaugh.net
 [ms-open-tech]: http://msopentech.com
@@ -153,4 +153,4 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 [wordpress-manage-domains]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-manage-domains.png
 
 
-<!--HONumber=49-->
+<!--HONumber=54-->

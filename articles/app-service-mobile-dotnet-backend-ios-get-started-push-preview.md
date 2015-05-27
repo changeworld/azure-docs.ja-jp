@@ -5,7 +5,7 @@
 	documentationCenter="ios" 
 	manager="dwrede"
 	editor="" 
-	authors="yuaxu"/>
+	authors="ysxu"/>
 
 <tags 
 	ms.service="app-service-mobile" 
@@ -27,67 +27,60 @@
 
 1. [iOS 証明書の署名要求を生成する]
 2. [アプリケーションを登録し、プッシュ通知を有効にする]
-3. [アプリケーションのプロビジョニング ファイルを作成する]
+3. [アプリケーションのプロビジョニング プロファイルを作成する]
 4. [プッシュ要求を送信するようにモバイル バックエンドを構成する]
-5. [サーバーを更新してプッシュ通知を送信する](#update-server)
+5. [プッシュ通知を送信するようにサーバーを更新する](#update-server)
 6. [モバイル バックエンドを Azure に発行する]
 7. [アプリケーションにプッシュ通知を追加する]
 8. [アプリケーションをテストする]
 
 このチュートリアルには、次のものが必要です。
 
-+ [App Service モバイル アプリ iOS SDK]
++ [Azure モバイル アプリ iOS SDK]
 + [Azure Notification Hubs Nuget]
-+ [XCode 4.5][Xcode のインストール]
++ [XCode 6.0][Install Xcode]
 + iOS 6.0 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 
-   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+   >[AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルは、App Service モバイル アプリのクイック スタートに基づいています。このチュートリアルを開始する前に、[App Service モバイル アプリの使用]に関するチュートリアルを完了している必要があります。
+このチュートリアルは、App Service モバイル アプリのクイック スタートに基づいています。このチュートリアルを開始する前に、[App Service Mobile Apps の使用]に関するチュートリアルを完了している必要があります。
 
-[AZURE.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Apple プッシュ通知を有効にする](../includes/enable-apple-push-notifications.md)]
 
 ## プッシュ要求を送信するようにモバイル アプリを構成する
 
 [AZURE.INCLUDE [app-service-mobile-apns-configure-push-preview](../includes/app-service-mobile-apns-configure-push-preview.md)]
 
-##<a id="update-server"></a>サーバーを更新してプッシュ通知を送信する
+##<a id="update-server"></a>プッシュ通知を送信するようにサーバーを更新する
 
-1. Visual Studio でソリューションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. Visual Studio でソリューションを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 2. **Microsoft.Azure.NotificationHubs** を検索し、ソリューション内のすべてのプロジェクトに対して **[インストール]** をクリックします。
 
-3. Visual Studio のソリューション エクスプローラーで、モバイル バックエンド プロジェクト内の **[コントローラー]** フォルダーを展開します。TodoItemController.cs を開きます。ファイルの先頭に、次の  `using` ステートメントを追加します。
+3. Visual Studio のソリューション エクスプローラーで、モバイル バックエンド プロジェクト内の **Controllers** フォルダーを展開します。TodoItemController.cs を開きます。ファイルの先頭に、次の `using` ステートメントを追加します。
 
 		using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
 
-4. **InsertAsync** の呼び出の後の `PostTodoItem` メソッドに次のスニペットを追加します。  
+4. **InsertAsync** の呼び出しの後の `PostTodoItem` メソッドに次のスニペットを追加します。
 
         // get Notification Hubs credentials associated with this Mobile App
         string notificationHubName = this.Services.Settings.NotificationHubName;
         string notificationHubConnection = this.Services.Settings.Connections[ServiceSettingsKeys.NotificationHubConnectionString].ConnectionString;
 
         // connect to notification hub
-        NotificationHubClient Hub = NotificationHubClient.CreateClientFromConnectionString(notificationHubConnection, notificationHubName)
+        NotificationHubClient Hub = NotificationHubClient.CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
         // iOS payload
-        var appleNotificationPayload = "{\"aps\":{\"alert\":\"" + item.Text + "\"}}";
+        var appleNotificationPayload = "{"aps":{"alert":"" + item.Text + ""}}";
 
-        try
-        {
-            await Hub.Push.SendAppleNativeNotificationAsync(appleNotificationPayload);
-        }
-        catch (System.Exception ex)
-        {
-            throw;
-        }
+        await Hub.Push.SendAppleNativeNotificationAsync(appleNotificationPayload);
 
     このコードは、このモバイル アプリに関連付けられている通知ハブに、todo 項目の挿入後にプッシュ通知を送信するよう指示します。
 
 
-<h2><a name="publish-the-service"></a>モバイル バックエンドを Azure に発行する</h2>
+## <a name="publish-the-service"></a>モバイル バックエンドを Azure に発行する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service-preview](../includes/app-service-mobile-dotnet-backend-publish-service-preview.md)]
 
@@ -97,10 +90,10 @@
 2. Apple Push Notification Service にクライアントを登録するために、**QSAppDelegate.m** で、以下を **application:didFinishLaunchingWithOptions** に追加します。
 
         // register iOS8 or previous devices for notifications
-        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)] && [[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)] && 	
+        	[[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
             [[UIApplication sharedApplication] registerForRemoteNotifications];
-        }
-        else {
+        } else {
             // Register for remote notifications
             [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
             UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
@@ -109,8 +102,8 @@
 3. 同じファイル内で、次のハンドラー メソッドを **QSAppDelegate** 実装内に追加します。
 
         // registration with APNs is successful
-        - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:
-        (NSData *)deviceToken {
+        - (void)application:(UIApplication *)application 
+            didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
             // make sure you have imported "QSTodoService.h"
             QSTodoService *todoService = [QSTodoService defaultService];
@@ -131,19 +124,21 @@
             NSLog(@"Failed to register for remote notifications: %@", error);
         }
 
-5. QSAppDelegate.m で、実装内に次のハンドラー メソッドを追加します。  
+5. QSAppDelegate.m で、実装内に次のハンドラー メソッドを追加します。
 
         // This uses the userInfo in the payload to display a UIAlertView.
-        - (void)application:(UIApplication *)application didReceiveRemoteNotification:
-        (NSDictionary *)userInfo {
+        - (void)application:(UIApplication *)application 
+              didReceiveRemoteNotification:(NSDictionary *)userInfo {
             NSLog(@"%@", userInfo);
             
-            NSDictionary *apsPayload = [userInfo objectForKey:@"aps"];
-            NSString *alertString = [apsPayload objectForKey:@"alert"];
+            NSDictionary *apsPayload = userInfo[@"aps"];
+            NSString *alertString = apsPayload[@"alert"];
     
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:
-                          alertString delegate:nil cancelButtonTitle:
-                          @"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" 
+                                                            message:alertString 
+                                                           delegate:nil 
+                                                  cancelButtonTitle:@"OK" 
+                                                  otherButtonTitles:nil];
             [alert show];
         }
 
@@ -151,13 +146,13 @@
 
 ## アプリケーションでプッシュ通知をテストする
 
-1. **[Run]** ボタンを押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを起動します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+1. **[Run]** を押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
 
   	![][23]
 
-    > [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+    > [AZURE.NOTE]アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「新しい Mobile Services タスク」) を入力し、プラス (**+**) アイコンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「_新しい Mobile Services タスク_」) を入力し、プラス (**+**) アイコンをクリックします。
 
   	![][24]
 
@@ -174,10 +169,10 @@
 <!-- Anchors.  -->
 [iOS 証明書の署名要求を生成する]: #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング ファイルを作成する]: #profile
+[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
 [アプリケーションにプッシュ通知を追加する]: #add-push
 [プッシュ要求を送信するようにモバイル バックエンドを構成する]: #configure
-[サーバーを更新してプッシュ通知を送信する]: #update-server
+[Update the server to send push notifications]: #update-server
 [モバイル バックエンドを Azure に発行する]: #publish-mobile-service
 [アプリケーションをテストする]: #test-the-service
 
@@ -219,13 +214,13 @@
 [117]: ./media/mobile-services-ios-get-started-push/mobile-services-ios-push-17.png
 
 <!-- URLs. -->
-[Xcode のインストール]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-[App Service モバイル iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[Azure モバイル アプリ iOS SDK]: https://go.microsoft.com/fwLink/?LinkID=529823
 [Azure Notification Hubs Nuget]: https://www.nuget.org/packages/WindowsAzure.ServiceBus/
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
+[Get started with Mobile Services]: mobile-services-dotnet-backend-ios-get-started.md
+[Azure Management Portal]: https://manage.windowsazure.com/
+[apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!--HONumber=49-->
+<!--HONumber=54-->

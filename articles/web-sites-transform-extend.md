@@ -1,4 +1,4 @@
-﻿<properties
+<properties
 	pageTitle="Azure App Service の Web アプリの高度な構成と拡張機能"
 	description="XML ドキュメント変換 (XDT) の宣言を使用して、Azure App Service の Web アプリ内の ApplicationHost.config ファイルを変換し、プライベート拡張機能を追加してカスタムの管理操作を有効にします。"
 	authors="cephalin"
@@ -42,12 +42,11 @@ PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追�
 	</configuration>
 
 
-変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\Transform で利用できます。
+変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\\Transform で利用できます。
 
 その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
 
-**注**<br />
- `system.webServer` の下にあるモジュールの一覧に所属している要素の削除や並べ替えは実行できませんが、この一覧への追加は可能です。
+**メモ**<br /> `system.webServer` の下にあるモジュールの一覧に所属している要素の削除や並べ替えは実行できませんが、この一覧への追加は可能です。
 
 
 ##<a id="extend"></a> Web アプリの拡張
@@ -58,15 +57,15 @@ App Service では、管理操作の機能拡張ポイントとして Web アプ
 
 1. Web アプリ拡張機能の**コンテンツ**: App Serviceでサポートされる任意の Web アプリを作成します
 2. Web アプリ拡張機能の**宣言**: ApplicationHost.xdt ファイルを作成します
-3. Web アプリ拡張機能の**デプロイ**:  `root` の下の SiteExtensions フォルダーにコンテンツを配置します
+3. Web アプリ拡張機能の**デプロイ**: `root` の下の SiteExtensions フォルダーにコンテンツを配置します
 
 Web アプリに対する内部リンクは、ApplicationHost.xdt ファイル内で指定したアプリケーション パスを基準とする相対パスを指す必要があります。ApplicationHost.xdt ファイルに対してどのような変更を加えた場合でも、Web アプリのリサイクル、つまり停止と再起動が必要です。
 
-**注**:これらの主要な要素の詳細については、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
+**メモ**: これらの主要な要素の詳細については、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
 
 プライベート Web アプリ拡張機能を作成して有効にする手順を示す、詳細な例が掲載されています。その方針に従う PHP Manager のサンプルに対応するソース コードは、[https://github.com/projectkudu/PHPManager](https://github.com/projectkudu/PHPManager) からダウンロードできます。
 
-###<a id="SiteSample"></a> Web アプリ拡張機能のサンプル:PHP Manager
+###<a id="SiteSample"></a> Web アプリ拡張機能の例: PHP Manager
 
 PHP Manager は、PHP の .ini ファイルを直接変更する代わりに、Web インターフェイスを使用して PHP 設定を簡単に表示および構成するために Web アプリ管理者が使用できる Web アプリ拡張機能です。PHP 用の一般的な構成ファイルに該当するのは、Program Files の下にある php.ini ファイルと、 Web アプリのルート フォルダーにある user.ini ファイルです。App Service プラットフォーム上で php.ini ファイルを直接編集することはできないため、PHP Manager 拡張機能は user.ini ファイルを使用して設定の変更を適用します。
 
@@ -82,7 +81,7 @@ PHP Manager 拡張機能は、Visual Studio ASP.NET MVC 4 Web アプリケーシ
 
 ![TransformSiteSolEx][TransformSiteSolEx]
 
-ファイル I/O で必要とされる唯一の特殊なロジックは、Web アプリの wwwroot ディレクトリが配置されている場所を示すことです。次のコード例に示すように、環境変数 "HOME" は Web アプリのルート パスを示しており、"site\wwwroot" を追加すると wwwroot パスを作成することができます。
+ファイル I/O で必要とされる唯一の特殊なロジックは、Web アプリの wwwroot ディレクトリが配置されている場所を示すことです。次のコード例に示すように、環境変数 "HOME" は Web アプリのルート パスを示しており、"site\\wwwroot" を追加すると wwwroot パスを作成することができます。
 
 	/// <summary>
 	/// Gives the location of the .user.ini file, even if one doesn't exist yet
@@ -94,14 +93,14 @@ PHP Manager 拡張機能は、Visual Studio ASP.NET MVC 4 Web アプリケーシ
     		{
         		rootPath = System.IO.Path.GetTempPath(); // For testing purposes
     		};
-    		var userSettingsFile = Path.Combine(rootPath, @"site\wwwroot\.user.ini");
+    		var userSettingsFile = Path.Combine(rootPath, @"site\wwwroot.user.ini");
     		return userSettingsFile;
 	}
 
 
 ディレクトリ パスを作成した後、ファイルを読み書きする通常のファイル I/O 操作を使用できます。
 
-Web アプリ拡張機能に関して注意する 1 つの点は、内部リンクの処理に関係しています。Web アプリ上の内部リンクに対応する絶対パスを指定した HTML ファイル内で任意のリンクを使用している場合は、それらのリンクの先頭に、ルートとして拡張機能名を追加する必要があります。拡張機能にとってルートは、"/" のみではなく、`[拡張機能名]`になったため、このような指定が必要です。したがって、すべての内部リンクも同様に更新する必要があります。たとえば、コード内に次のリンクが含まれているとします。
+Web アプリ拡張機能に関して注意する 1 つの点は、内部リンクの処理に関係しています。Web アプリ上の内部リンクに対応する絶対パスを指定した HTML ファイル内で任意のリンクを使用している場合は、それらのリンクの先頭に、ルートとして拡張機能名を追加する必要があります。拡張機能にとってルートは、"/" のみではなく、"/`[your-extension-name]`/" になったため、このような指定が必要です。したがって、すべての内部リンクも同様に更新する必要があります。たとえば、コード内に次のリンクが含まれているとします。
 
 `"<a href="/Home/Settings">PHP Settings</a>"`
 
@@ -113,7 +112,7 @@ Web アプリケーション内で相対パスのみを使用するか、ASP.NET
 
 ####<a id="XDT"></a> applicationHost.xdt ファイル
 
-Web アプリ拡張機能に対応するコードは、%HOME%\SiteExtensions\[拡張機能名] の下に配置されます。これを、拡張機能ルートと呼びます。  
+Web アプリ拡張機能に対応するコードは、%HOME%\\SiteExtensions[拡張機能名] の下に配置されます。これを、拡張機能ルートと呼びます。
 
 開発した Web アプリ拡張機能を applicationHost.config ファイルに登録するには、ApplicationHost.xdt という名前のファイルを拡張機能のルートに配置する必要があります。ApplicationHost.xdt ファイルの内容を次のようにする必要があります。
 
@@ -134,7 +133,7 @@ Web アプリ拡張機能に対応するコードは、%HOME%\SiteExtensions\[�
 
 拡張機能名として選択する名前は、拡張機能のルート フォルダーと同じ名前にする必要があります。
 
-この操作により、SCM サイトの下にある  `system.applicationHost` サイト一覧に対して、新しいアプリケーション パスを追加する効果が得られます。SCM サイトは、特定のアクセス資格情報を持つサイト管理エンドポイントです。URL は、 `https://[your-site-name].scm.azurewebsites.net` となります。  
+この操作により、SCM サイトの下にある `system.applicationHost` サイト一覧に対して、新しいアプリケーション パスを追加する効果が得られます。SCM サイトは、特定のアクセス資格情報を持つサイト管理エンドポイントです。それには、URL `https://[your-site-name].scm.azurewebsites.net` があります。
 
 	<system.applicationHost>
   		...
@@ -143,15 +142,15 @@ Web アプリ拡張機能に対応するコードは、%HOME%\SiteExtensions\[�
         			<binding protocol="http" bindingInformation="*:80: [your-website].scm.azurewebsites.net" />
         			<binding protocol="https" bindingInformation="*:443: [your-website].scm.azurewebsites.net" />
       			</bindings>
-      			<traceFailedRequestsLogging enabled="false" directory="C:\DWASFiles\Sites\[your-website]\VirtualDirectory0\LogFiles" />
-      			<detailedErrorLogging enabled="false" directory="C:\DWASFiles\Sites\[your-website]\VirtualDirectory0\LogFiles\DetailedErrors" />
+      			<traceFailedRequestsLogging enabled="false" directory="C:\DWASFiles\Sites[your-website]\VirtualDirectory0\LogFiles" />
+      			<detailedErrorLogging enabled="false" directory="C:\DWASFiles\Sites[your-website]\VirtualDirectory0\LogFiles\DetailedErrors" />
       			<logFile logSiteId="false" />
       			<application path="/" applicationPool="[your-website]">
         			<virtualDirectory path="/" physicalPath="D:\Program Files (x86)\SiteExtensions\Kudu\1.24.20926.5" />
       			</application>
 				<!-- Note the custom changes that go here -->
       			<application path="/[your-extension-name]" applicationPool="[your-website]">
-        			<virtualDirectory path="/" physicalPath="C:\DWASFiles\Sites\[your-website]\VirtualDirectory0\SiteExtensions\[your-extension-name]" />
+        			<virtualDirectory path="/" physicalPath="C:\DWASFiles\Sites[your-website]\VirtualDirectory0\SiteExtensions[your-extension-name]" />
       			</application>
     		</site>
   	</sites>
@@ -160,7 +159,7 @@ Web アプリ拡張機能に対応するコードは、%HOME%\SiteExtensions\[�
 
 ###<a id="deploy"></a> Web アプリ拡張のデプロイ
 
-Web アプリ拡張機能をインストールするために、FTP を使用して、拡張機能のインストール先となる Web アプリの `\SiteExtensions\[your-extension-name]` フォルダーに Web アプリケーションのすべてのファイルをコピーすることができます。この場所に ApplicationHost.xdt ファイルもコピーしてください。拡張機能を有効にするには、Web アプリを再起動します。
+Web アプリ拡張機能をインストールするために、FTP を使用して、拡張機能のインストール先となる Web アプリの `\SiteExtensions[your-extension-name]` フォルダーに Web アプリケーションのすべてのファイルをコピーすることができます。この場所に ApplicationHost.xdt ファイルもコピーしてください。拡張機能を有効にするには、Web アプリを再起動します。
 
 次の場所で、Web アプリ拡張機能が表示されます。
 
@@ -168,16 +167,16 @@ Web アプリ拡張機能をインストールするために、FTP を使用し
 
 HTTPS が使用され、".scm" が含まれていることを除き、開発する Web アプリの URL に似た URL を使用することに注意してください。
 
-開発や調査の際に、`WEBSITE_PRIVATE_EXTENSIONS` キーと値 `0`. を使用したアプリ設定を追加して、Web アプリのすべてのプライベート (プレインストールされていない) 拡張を無効にすることはできません。
+開発や調査の際に、`WEBSITE_PRIVATE_EXTENSIONS` キーと値 `0` を使用したアプリ設定を追加して、Web アプリのすべてのプライベート (プレインストールされていない) 拡張を無効にすることはできません。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Try App Service (App Service を試す)](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスすれば、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## 変更に関する情報
-* Websites から App Service への変更に関するガイドは、次を参照してください:[Azure App Service and Its Impact on Existing Azure Services (Azure App Service と既存の Azure サービス)](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 以前のポータルから新しいポータルへの変更に関するガイドは、次を参照してください:[Reference for navigating the preview portal (プレビュー ポータルの移動に関するリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
+## 変更内容
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 <!-- IMAGES -->
 [TransformSitePHPUI]: ./media/web-sites-transform-extend/TransformSitePHPUI.png
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
 
-<!--HONumber=49-->
+<!--HONumber=54-->

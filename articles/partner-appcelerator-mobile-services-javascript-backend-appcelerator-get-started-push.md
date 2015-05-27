@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-appcelerator" 
+	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="11/24/2014" 
@@ -18,26 +18,20 @@
 
 # モバイル サービスでのプッシュ通知の使用 (従来のプッシュ)
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows ストア C#</a>
-	<a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows ストア JavaScript</a>
-	<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a>
-	<a href="/ja-jp/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a>
-	<a href="/ja-jp/documentation/articles/mobile-services-android-get-started-push" title="Android">Android</a>
-<!--    <a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a>
-    <a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a> -->
-	<a href="/ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push" title="Appcelerator" class="current">Appcelerator</a>
+	<a href="/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows Store C#</a> <a href="/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows Store JavaScript</a> <a href="/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a> <a href="/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a> <a href="/documentation/articles/mobile-services-android-get-started-push" title="Android">Android</a> <!--    <a href="/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a>
+    <a href="/documentation/articles/partner-xamarin-mobile-services-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a> --> <a href="partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started.md-push" title="Appcelerator" class="current">Appcelerator</a>
 </div>
 
-このトピックでは、Windows Azure Mobile Services を使用して、Appcelerator Titanium Studio で作成した iOS アプリケーションと Android アプリケーションの両方にプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple Push Notification Service (APNS) と Google Cloud Messaging を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
+このトピックでは、Microsoft Azure Mobile Services を使用して、Appcelerator Titanium Studio で作成した iOS アプリケーションと Android アプリケーションの両方にプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple Push Notification Service (APNS) と Google Cloud Messaging を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
->[AZURE.NOTE] モバイル サービスは Azure 通知ハブに統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。このトピックは、まだ Notification Hubs 統合を使用するようにアップグレードされていない、既存のモバイル サービスを対象とします。新しいモバイル サービスを作成すると、この統合機能は自動的に有効になります。可能であれば、Notification Hubs を使用するようにサービスをアップグレードすることをお勧めします。**Appcelerator で Notification Hubs のプッシュを利用するチュートリアルを近日提供予定です。**
+>[AZURE.NOTE]モバイル サービスは Azure 通知ハブに統合され、テンプレート、複数のプラットフォーム、改善されたスケールなど、追加のプッシュ通知機能をサポートします。このトピックは、まだ Notification Hubs 統合を使用するようにアップグレードされていない、既存のモバイル サービスを対象とします。新しいモバイル サービスを作成すると、この統合機能は自動的に有効になります。可能であれば、Notification Hubs を使用するようにサービスをアップグレードすることをお勧めします。**Appcelerator で Notification Hubs のプッシュを利用するチュートリアルを近日提供予定です。**
 
-1.	[証明書の署名要求を作成する]
+1.	[証明書の署名要求を生成する]
 2.	[アプリケーションを登録し、プッシュ通知を有効にする]
-3.	[アプリケーションのプロビジョニング ファイルを作成する]
-4.	[Google クラウド メッセージングを有効にする]
+3.	[アプリケーションのプロビジョニング プロファイルを作成する]
+4.	[Google Cloud Messaging を有効にする]
 5.  [Titanium 用の GCM モジュールを作成する]
-6.	[モバイル サービスを構成する]
+6.	[Mobile Services を構成する]
 7.	[アプリケーションにプッシュ通知を追加する]
 8.	[プッシュ通知を送信するようにスクリプトを更新する]
 9.	[データを挿入して通知を受け取る]
@@ -50,13 +44,13 @@
 * iOS Developer Program メンバーシップ
 * アクティブな Google アカウント
 
-> [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+> [AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
 
-[AZURE.INCLUDE [Apple Push Notifications を有効にする](../includes/enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Apple プッシュ通知を有効にする](../includes/enable-apple-push-notifications.md)]
 
-## <a name="register-gcm"></a>Google クラウド メッセージングを有効にする
+## <a name="register-gcm"></a>Google Cloud Messaging を有効にする
 
 >[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
@@ -67,9 +61,9 @@
 
 ### モジュール作成のための Appcelerator Titanium Studio を準備する
 
-Android モジュールを作成する場合は、Appcelerator Titanium Studio 内に Java サポートをインストールする必要があります。インストールしていない場合は、Appcelerator の「[Java 開発ツールのインストール] (Installing the Java Development Tools)」で簡単な手順をご覧ください。
+Android モジュールを作成する場合は、Appcelerator Titanium Studio 内に Java サポートをインストールする必要があります。インストールしていない場合は、Appcelerator の「[Installing the Java Development Tools (Java Development Tools のインストール)]」で手順を参照してください。
 
-Android NDK をインストールする必要があります。[http://developer.android.com/sdk/ndk/index.html](http://developer.android.com/sdk/ndk/index.html) から該当する .zip ファイルをダウンロードし、ディスクの適切な場所に展開します。この場所を忘れないでください。 
+Android NDK をインストールする必要があります。[http://developer.android.com/sdk/ndk/index.html](http://developer.android.com/sdk/ndk/index.html) から該当する .zip ファイルをダウンロードし、ディスクの適切な場所に展開します。この場所を忘れないでください。
 
 ### 新しいモジュールを作成する
 
@@ -79,15 +73,15 @@ Android NDK をインストールする必要があります。[http://developer
 
     ![][0]
 
-3. 次のウィンドウで、プロジェクト設定のデータを入力します。 
+3. 次のウィンドウで、プロジェクト設定のデータを入力します。
 
-    * **プロジェクト名:** 例では &quot;notificationhub&quot; を使用しています (同じものを使用できます)。
+    * **プロジェクト名:** 例では "notificationhub" を使用しています (同じにもできます)。
 
-    * **モジュール ID:** 例では &quot;com.winwire.notificationhub&quot; を使用しています。これも「アプリケーション ID」と一致する必要があります。
+    * **モジュール ID:** 例では "com.winwire.notificationhub" を使用しています。これは、"application Id" と一致している必要があります。
 
-    * **配置ターゲット:** 例では Android を選択しています。
+    * **デプロイメント ターゲット:** 例では Android を選択しています。
 
-    > [AZURE.NOTE] ワークスペース名にはスペースを使用できません。スペースが含まれると、コンパイルした場合に問題が生じます。
+    > [AZURE.NOTE]ワークスペース名にはスペースを使用できません。スペースが含まれると、コンパイルした場合に問題が生じます。
 
     ![][1]
 
@@ -137,13 +131,13 @@ Android NDK をインストールする必要があります。[http://developer
 
 
 
-> [AZURE.NOTE] 上のコードでは、テキスト  *com.winwire.notificationhub* のすべてのインスタンスをアプリケーションのパッケージ名 (モジュール ID) で置き換える必要があります。
+> [AZURE.NOTE]上のコードでは、テキスト *com.winwire.notificationhub* のすべてのインスタンスを、アプリケーションのパッケージ名 (モジュール ID) で置き換える必要があります。
 
-7. 通知ハブ モジュールで、&quot;[src]&quot; フォルダーを右クリックし、&quot;[新規]&quot; に移動して &quot;[フォルダー]&quot; を選択します。フォルダー名に「com.google.android.gcm」と入力します。
+7. Notification Hub モジュールで、[src] フォルダーを右クリックし、[新規] に移動して [フォルダー] を選択します。フォルダー名に「com.google.android.gcm」と入力します。
 
-> [AZURE.NOTE] &quot;[新規]&quot; オプションに &quot;[フォルダー]&quot; が表示されない場合、&quot;[その他]&quot; をクリックして [全般] を展開し、次に &quot;[フォルダー]&quot; をクリックします。
+> [AZURE.NOTE][新規] オプションに [フォルダー] が表示されない場合、[その他] を選択して [全般] を展開し、次に [フォルダー] を選択します。
 
-8. ここで &quot;.java&quot; ファイル (gcm.zip) をダウンロードして、新しく作成したフォルダー (com.google.android.gcm) にコピーします。
+8. ここで ".java" ファイル (gcm.zip) をダウンロードして、新しく作成したフォルダー (com.google.android.gcm) にコピーします。
 
 9. モジュール ID として指定したフォルダーを探して展開します。フォルダーには、".java" ファイルの一覧が表示されます。これらのファイルから、プロジェクト名 + module.java のファイル (たとえば、プロジェクト名が notificationhub の場合、&quot;NotificationhubModule.java&quot; となります) を開き、先頭に以下のコード行を追加します。
 
@@ -216,23 +210,23 @@ Android NDK をインストールする必要があります。[http://developer
 
 12. ここで、module.zip をダウンロードし、モジュール ID の名前が付いたフォルダーにコピーします。
 
-> [AZURE.NOTE] 上のファイルでは、テキスト  *com.winwire.notificationhub* のすべてのインスタンスをアプリケーションのパッケージ名 (モジュール ID) で置き換える必要があります。&quot;NotificationhubModule&quot; もプロジェクト名 + モジュール (たとえば、&quot;NotificationhubModule&quot;) で置き換えます。
+> [AZURE.NOTE]上のファイルでは、テキスト *com.winwire.notificationhub* のすべてのインスタンスを、アプリケーションのパッケージ名 (モジュール ID) で置き換える必要があります。&quot;NotificationhubModule&quot; もプロジェクト名 + モジュール (つまり &quot;NotificationhubModule&quot) で置き換えます。
 
 ### モジュールを作成/パッケージ化する
 
-**[デプロイ]、[パッケージ - Android モジュール]** の順にクリックします。Studio を使用して BlackBerry モジュールを構築することはできません。BlackBerry NDK CLI ツールまたは BlackBerry NDK CLI を使用してください。 
+**[デプロイ]、[パッケージ - Android モジュール]** の順にクリックします。Studio を使用して BlackBerry モジュールを構築することはできません。BlackBerry NDK CLI ツールまたは BlackBerry NDK CLI を使用してください。
 
 ![][3]
 
 
-次に、すべてのプロジェクト、または特定のプロジェクトに対してモジュールをデプロイできます。ここでは「[Titanium モジュールの使用]」で説明されるインストールの規則に従います。まとめると次のようになります。
+次に、すべてのプロジェクト、または特定のプロジェクトに対してモジュールをデプロイできます。これは、「[Using Titanium Modules (Titanium モジュールの使用)]」で説明されるインストールの規則に従ってください。まとめると次のようになります。
 
 - すべてのプロジェクトの場合: モジュールの .zip ファイルを Titanium SDK のインストール場所のルートにドロップします。 
 
-- 特定のプロジェクトの場合:モジュールの .zip ファイルをプロジェクトのルートにドロップします。 
+- 特定のプロジェクトの場合: モジュールの .zip ファイルをプロジェクトのルートにドロップします。
 
 
-## <a name="configure"></a>プッシュ要求を送信するようにモバイル サービスを構成する
+## <a name="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 
 
 [AZURE.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
@@ -245,7 +239,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 ## <a name="add-push"></a>アプリケーションにプッシュ通知を追加する
 
-1.	tiapp.xml で、[tiapp.xml] タブ (このタブは &quot;[概要]&quot; タブの隣にあります) をクリックして `<android>` タグを見つけます。タグの下に次のコードを追加します。
+1.	tiapp.xml で、[tiapp.xml] タブ (このタブは下部の [概要] タブの隣にあります) を選択して、`<android>` タグを見つけます。タグの下に次のコードを追加します。
 
         <modules>
             <module platform="android">ModuleId</module>
@@ -254,35 +248,35 @@ Android NDK をインストールする必要があります。[http://developer
         <property name="ApplicationId.icon type="int">2130837504</property>
         <property name="ApplicationId.component" type="string">ApplicationId/ApplicationId.AppNameActivity</property>
 
->[AZURE.NOTE] 上のコードで、**ModuleId**、**ApplicationId** を置き換える必要があります。GCM モジュールの作成時に指定したモジュール ID とプロジェクト作成時に入力したアプリケーション ID です。また、**ModuleId** と **ApplicationId** は必ず同じにしてください。**ApplicationId.AppNameActivity** の変更も必要です。com.winwire.notificationhub/ com.winwire.notificationhub.NotificationhubActivity のようにします。
+>[AZURE.NOTE]上のコードで、**ModuleId**、**ApplicationId** を置き換える必要があります。GCM モジュールの作成時に指定したモジュール ID とプロジェクト作成時に入力したアプリケーション ID です。また、**ModuleId** と **ApplicationId** は必ず同じにしてください。**ApplicationId.AppNameActivity** の変更も必要です。com.winwire.notificationhub/ com.winwire.notificationhub.NotificationhubActivity のようにします。
 
 
 2.	前に作成した GCM モジュールをコピーして、次の場所に格納します。	
 
     <table><tr>
-    <td>OSX
-    </td>
-    <td>/Library/Application Support/Titanium or  ~/Library/Application Support/Titanium
-    </td>
-    </tr>
-    <td>Windows 7
-    </td>
-    <td>C:\Users\username\AppData\Roaming (Titanium Studio 1.0.1 およびそれ以前の場合は C:\ProgramData\Titanium)
-    </td>
-    </tr><td>Windows XP
-    </td>
-    <td>C:\Documents と Settings\username\Application Data (Titanium Studio 1.0.1 およびそれ以前の場合は C:\Documents and Settings\All Users\Application Data\Titanium)
-    </td>
-    </tr><td>Linux
-    </td>
-    <td>~/.titanium
-    </td>
-    </tr>
-    </tr>
-    
-    </table>
+<td>OSX
+</td>
+<td>/Library/Application Support/Titanium or ~/Library/Application Support/Titanium
+</td>
+</tr>
+<td>Windows 7
+</td>
+<td>C:\Users\username\AppData\Roaming (Titanium Studio 1.0.1 およびそれ以前の場合は C:\ProgramData\Titanium)
+</td>
+</tr><td>Windows XP
+</td>
+<td>C:\Documents と Settings\username\Application Data (Titanium Studio 1.0.1 およびそれ以前の場合は C:\Documents and Settings\All Users\Application Data\Titanium)
+</td>
+</tr><td>Linux
+</td>
+<td>~/.titanium
+</td>
+</tr>
+</tr>
 
->[AZURE.NOTE]  Mac OS では、ライブラリは非表示フォルダーです。表示するには、次のコマンドを実行してから、Finder を再起動します。`**defaults write com.apple.finder AppleShowAllFiles TRUE**`
+</table>
+
+>[AZURE.NOTE]Mac OS では、ライブラリは非表示フォルダーです。表示するには、次のコマンドを実行してから、Finder を再起動します。`**defaults write com.apple.finder AppleShowAllFiles TRUE**`
 
 3.	Appcelerator Titanium Studio で、index.js ファイルを開き、次のコードを下部に追加します。このコードは、プッシュ通知用にデバイスを登録します。
 
@@ -372,15 +366,11 @@ Android NDK をインストールする必要があります。[http://developer
 
 5.	Android 用に、次のコードで置き換えます。
 
-       var request = {
-    	'text' : alertTextField.getValue(),
-    	'complete' : false,
-    	'handle' : Alloy.Globals.tempRegId
-    }; 
+       var request = { 'text' : alertTextField.getValue(), 'complete' : false, 'handle' : Alloy.Globals.tempRegId };
     
     
 
-6.	次に、関数 **updateOrAddData** 内で次の行を見つけます。
+6.	次に、関数 **updateOrAddData** 内で次のコードを見つけます。
 
            var request = {
     	    'text' : alertTextField.getValue(),
@@ -391,11 +381,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 7.	iOS 用に、次のコードで置き換えます。
 
-       var request = {
-    	'text' : alertTextField.getValue(),
-    	'complete' : false,
-    	'deviceToken' : Alloy.Globals.tempRegId
-    };
+       var request = { 'text' : alertTextField.getValue(), 'complete' : false, 'deviceToken' : Alloy.Globals.tempRegId };
     
  
 アプリケーションは、iOS と Android の両方のプラットフォームでプッシュ通知をサポートするように更新されました。
@@ -431,7 +417,7 @@ Android NDK をインストールする必要があります。[http://developer
             }, 2500);
         }
   
-   	> [AZURE.NOTE] このスクリプトでは、プッシュ通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。  
+   	> [AZURE.NOTE] This script delays sending the notification to give you time to close the app to receive a push notification.  
 
 **Android の場合:**
 
@@ -453,7 +439,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 
 
-これで、新しい挿入スクリプトが生成されます。このスクリプトは [Mobile Services のプッシュ オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
+これで、新しい挿入スクリプトが登録されます。このスクリプトは [Mobile Services の push オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
 
 <!-- Images. -->
@@ -466,23 +452,21 @@ Android NDK をインストールする必要があります。[http://developer
 [6]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image066.png
 
 <!-- Anchors. -->
-[証明書の署名要求を作成する]: #certificates
+[証明書の署名要求を生成する]: #certificates
 [アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング ファイルを作成する]: #profile
-[Google クラウド メッセージングを有効にする]: #register-gcm
+[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
+[Google Cloud Messaging を有効にする]: #register-gcm
 [Titanium 用の GCM モジュールを作成する]: #gcm-module
-[モバイル サービスを構成する]: #configure
+[Mobile Services を構成する]: #configure
 [アプリケーションにプッシュ通知を追加する]: #add-push
 [プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
 [データを挿入して通知を受け取る]: #test
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
-[Titanium モジュールの使用]: http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services のプッシュ オブジェクト]: http://go.microsoft.com/fwlink/p/?linkid=272333&clcid=0x409
-[Java 開発ツールのインストール]: http://docs.appcelerator.com/titanium/latest/#!/guide/Installing_the_Java_Development_Tools
+[モバイル サービスの使用]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started.md
+[Using Titanium Modules (Titanium モジュールの使用)]: http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules
+[Microsoft Azure Management Portal]: https://manage.windowsazure.com/
+[Mobile Services の push オブジェクト]: http://go.microsoft.com/fwlink/p/?linkid=272333&clcid=0x409
+[Installing the Java Development Tools (Java Development Tools のインストール)]: http://docs.appcelerator.com/titanium/latest/#!/guide/Installing_the_Java_Development_Tools
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

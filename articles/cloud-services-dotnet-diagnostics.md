@@ -13,29 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/11/2014" 
+	ms.date="04/27/2015" 
 	ms.author="robb"/>
 
 
 
 # Azure のクラウド サービスおよび仮想マシンの診断機能
 
-Azure 診断 1.2 および 1.3 を使用すると、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断データを収集できます。このガイドでは、Azure 診断 1.2 および 1.3 の使用方法について説明します。ログやトレース方法を作成する方法と、診断機能やその他の手法で問題のトラブルシューティングを行う方法の詳細なガイダンスについては、「[Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス][]」を参照してください。
+Azure 診断 1.2 および 1.3 を使用すると、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断データを収集できます。このガイドでは、Azure 診断 1.2 および 1.3 の使用方法について説明します。ログやトレース方法を作成する方法と、診断機能やその他の手法で問題のトラブルシューティングを行う方法の詳細なガイダンスについては、「[Azure アプリケーション開発のトラブルシューティングのベスト プラクティス][]」を参照してください。
 
-## 目次
+## 概要
 
--   [概要][]
--   [Worker ロールの診断を有効にする方法][]
--   [仮想マシンの診断を有効にする方法][]
--   [サンプル構成ファイルとスキーマ][]
--   [トラブルシューティング][]
--   [よく寄せられる質問][]
--   [Azure 診断のバージョンの比較][]
--   [その他のリソース][]
-
-<h2><a name="overview"></a>概要</h2>
-
-Azure 診断 1.2 および 1.3 は、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断利用統計情報を収集できる Azure 拡張機能です。利用統計情報は Azure ストレージ アカウントに格納され、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、および監査に使用できます。 
+Azure 診断 1.2 および 1.3 は、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断利用統計情報を収集できる Azure 拡張機能です。利用統計情報は Azure ストレージ アカウントに格納され、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、および監査に使用できます。
 
 Azure 診断 1.2 は、Azure SDK for .NET 2.4 以前で使用します。Azure 診断 1.3 は、Azure SDK for .NET 2.5 以降で使用します。
 
@@ -85,7 +74,7 @@ Azure 診断では、次の種類の利用統計情報を収集できます。
 	</tr>
 	<tr>
 		<td>.NET EventSource</td>
-		<td>.NET EventSource クラスを使用して <a href="http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">コードで生成されたイベント</a>。</td>            
+		<td>.NET <a href="http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">EventSource クラス</a>を使用してコードで生成されたイベント。</td>            
 	</tr>
 	<tr>
 		<td>マニフェスト ベースの ETW</td>
@@ -95,23 +84,23 @@ Azure 診断では、次の種類の利用統計情報を収集できます。
 </tbody>
 </table>
 
-<h2><a name="worker-role"></a>Worker ロールの診断を有効にする方法</h2>
+## Worker ロールの診断を有効にする方法
 
 このチュートリアルでは、.NET EventSource クラスを使用して利用統計情報を生成する Azure Worker ロールの実装方法について説明します。Azure 診断を使用して利用統計情報を収集し、これを Azure ストレージ アカウントに格納します。Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
 
-<h3>前提条件</h3>
-この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成していることを確認してください。][]
+### 前提条件
+この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成している][]ことを確認してください。
 
-<h3>手順 1:Worker ロールを作成する</h3>
+### 手順 1. worker ロールを作成する
 1.	**Visual Studio 2013** を起動します。
-2.	.NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、新しい **Windows Azure Cloud Service** プロジェクトを作成します。  プロジェクト名として「WadExample」と入力します。
-3.	**[Worker ロール]** を選択します。
-4.	**ソリューション エクスプローラー**で、**WorkerRole1** プロパティ ファイルをダブルクリックします。
+2.	.NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、新しい **Azure クラウド サービス** プロジェクトを作成します。プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
+3.	**[ワーカー ロール]** を選択して [OK] をクリックします。プロジェクトが作成されます。 
+4.	**[ソリューション エクスプローラー]** で、**[WorkerRole1]** プロパティ ファイルをダブルクリックします。
 5.	**[構成]** タブで **[診断を有効にする]** をオフにして、診断 1.0 (Azure SDK 2.4 以前) を無効にします。
 6.	ソリューションを構築してエラーが発生しないことを確認します。
 
-<h3>手順 2:コードをインストルメント化する</h3>
-WorkerRole.cs の内容を次のコードに置き換えます。[EventSource クラス][]から継承された SampleEventSourceWriter クラスは、4 つのログの作成メソッド (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。**WriteEvent** メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
+### 手順 2. コードをインストルメント化する
+WorkerRole.cs の内容を次のコードに置き換えます。[EventSource クラス][]から継承された SampleEventSourceWriter クラスは、4 つのログの作成方法 (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。**WriteEvent** メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
 	using Microsoft.WindowsAzure.ServiceRuntime;
 	using System;
@@ -192,25 +181,25 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
 	}
 
 
-<h3>手順 3:Worker ロールを展開する</h3>
-1.	**[ビルド]** メニューから **[WadExample]** プロジェクト、**[発行]** の順に選択して、Worker ロールを Visual Studio から Azure にデプロイします。
+### 手順 3. worker ロールをデプロイする
+1.	ソリューション エクスプローラーで **[WadExample]** プロジェクトを選択し、**[ビルド]** メニューから **[発行]** を選択して、worker ロールを Visual Studio から Azure にデプロイします。
 2.	サブスクリプションを選択します。
 3.	**[Microsoft Azure 発行設定]** ダイアログで、**[新規作成]** を選択します。
 4.	**[クラウド サービスとストレージ アカウントの作成]** ダイアログで **[名前]** を入力し (「WadExample」など)、リージョンまたはアフィニティ グループを選択します。
-5.	**[環境]** を **[ステージング]** に設定します。
+5.	**[環境]** を **[Staging]** に設定します。
 6.	必要に応じて、他の **[設定]** を変更し、**[発行]** をクリックします。
-7.	デプロイが完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure ポータルで確認します。
+7.	展開が完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure ポータルで確認します。
 
-<h3>手順 4:診断構成ファイルを作成して拡張機能をインストールする</h3>
+### 手順 4. 診断構成ファイルを作成して拡張機能をインストールする
 1.	次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。
 2.	
 		(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
-2.	**WorkerRole1** プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]**、**[Visual C# アイテム]**、**[データ]**、**[XML ファイル]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。ファイルに「WadExample.xml」という名前を付けます。
+2.	**[WorkerRole1]** プロジェクトを右クリックし、**[追加]** -> **[新しい項目]** -> **[Visual C# items]** -> **[データ]** -> **[XML ファイル]** の順に選択して、XML ファイルを **[WorkerRole1]** プロジェクトに追加します。ファイルに「WadExample.xml」という名前を付けます。
 
 	![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 
-3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押して **[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[...]** をクリックします。**[追加]** ボタンをクリックします。XSD ファイルを保存した場所に移動し、WadConfig.xsd ファイルを選択します。**[OK]** をクリックします。
+3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
 4.	WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
 		<?xml version="1.0" encoding="utf-8"?>
@@ -218,7 +207,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -234,45 +223,43 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
   			</WadCfg>
 		</PublicConfig>
 
-<h3>手順 5:Worker ロールに診断をインストールする</h3>
+### 手順 5. worker ロールに診断をインストールする
 Web ロールまたは Worker ロールの診断を管理する PowerShell コマンドレットは、Set-AzureServiceDiagnosticsExtension、Get-AzureServiceDiagnosticsExtension、Remove-AzureServiceDiagnosticsExtension です。
 
-1.	Windows Azure PowerShell を開きます。
-2.	スクリプトを実行して Worker ロールに診断をインストールします ( *StorageAccountKey* を wadexample ストレージ アカウントのストレージ アカウント キーに置き換えます)。
+1.	Azure PowerShell を開きます。
+2.	スクリプトを実行して Worker ロールに診断をインストールします (*StorageAccountKey* を wadexample ストレージ アカウントのストレージ アカウント キーに置き換えます)。
 
 		$storage_name = "wadexample"
 		$key = "<StorageAccountKey>"
-		$config_path="c:\users\<user>\documents\visual studio 2013\Projects\WadExample\WorkerRole1\WadExample.xml"
+		$config_path="c:\users<user>\documents\visual studio 2013\Projects\WadExample\WorkerRole1\WadExample.xml"
 		$service_name="wadexample"
 		$storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key 
 		Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Staging -Role WorkerRole1
 
 
-<h3>手順 6:利用統計情報を確認する</h3>
-Visual Studio の**サーバー エクスプローラー**で、wadexample ストレージ アカウントに移動します。クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして、収集した利用統計情報を表示します。
-	![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
+### 手順 6. テレメトリ データを確認する
+Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして収集したテレメトリを表示します。![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
-<h2><a name="virtual-machine"></a>仮想マシンの診断を有効にする方法</h2>
+## 仮想マシンの診断を有効にする方法
 
 このチュートリアルでは、開発コンピューターから Azure の仮想マシンに診断をリモートでインストールする方法について説明します。また、その Azure の仮想マシン上で実行するアプリケーションの実装方法と .NET [EventSource クラス][]を使用した利用統計情報の生成方法を学習します。Azure 診断を使用して利用統計を収集し、これを Azure ストレージ アカウントに格納します。
 
-<h3>前提条件</h3>
-このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成][]していることを確認してください。
+### 前提条件
+このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成している][]ことを確認してください。
 
-<h3>手順 1:仮想マシンを作成する</h3>
+### 手順 1. 仮想マシンを作成する
 1.	開発コンピューター上で Visual Studio 2013 を起動します。
 2.	Visual Studio の**サーバー エクスプローラー**で、**[Azure]** を展開し、**[仮想マシン]** を右クリックして、**[仮想マシンの作成]** を選択します。
 3.	**[サブスクリプションの選択]** ダイアログで Azure サブスクリプションを選択し、**[次へ]** をクリックします。
 4.	**[仮想マシン イメージの選択]** ダイアログで **[Windows Server 2012 R2 Datacenter, November 2014]** を選択し、**[次へ]** をクリックします。
-5.	**[仮想マシン基本設定]** で、仮想マシンに "wadexample" という名前を付けます。管理者ユーザー名とパスワードを設定し、**[次へ]** をクリックします。
-6.	**[クラウド サービスの設定]** ダイアログで、"wadexampleVM" という名前の新しいクラウド サービスを作成します。"wadexample" という名前の新しいストレージ アカウントを作成し、**[次へ]** をクリックします。
+5.	**[仮想マシン基本設定]** で、仮想マシンに「wadexample」という名前を付けます。管理者ユーザー名とパスワードを設定し、**[次へ]** をクリックします。
+6.	**[クラウド サービスの設定]** ダイアログで「wadexampleVM」という名前の新しいクラウド サービスを作成します。「wadexample」という名前の新しいストレージ アカウントを作成し、**[次へ]** をクリックします。
 7.	**[作成]** をクリックします。
 
-<h3>手順 2:アプリケーションを作成する</h3>
+### 手順 2. アプリケーションを作成する
 1.	開発コンピューター上で Visual Studio 2013 を起動します。
-2.	.NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。
-	![CloudServices_diag_new_project](./media/cloud-services-dotnet-diagnostics/NewProject.png)
-3.	Program.cs の内容を次のコードに置き換えます。**SampleEventSourceWriter** クラスは、4 つのログの作成メソッド (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
+2.	.NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。![CloudServices_diag_new_project](./media/cloud-services-dotnet-diagnostics/NewProject.png)
+3.	Program.cs の内容を次のコードに置き換えます。**SampleEventSourceWriter** クラスは、4 つのログの作成方法 (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
 		using System;
 		using System.Diagnostics;
@@ -340,23 +327,23 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 		}
 
 
-4.	ファイルを保存し、**[ビルド]** メニューの **[ソリューションのビルド]** を選択してコードをビルドします。
+4.	ファイルを保存し、**[ビルド]** メニューから **[ソリューションのビルド]** を選択してコードをビルドします。
 
 
-<h3>手順 3:アプリケーションを展開する</h3>
-1.	**ソリューション エクスプローラー**で **WadExampleVM** プロジェクトを右クリックし、**[エクスプローラーでフォルダーを開く]** を選択します。
-2.	 *bin\Debug* フォルダーに移動し、すべてのファイル (WadExampleVM.*) をコピーします。
-3.	**サーバー エクスプローラー**で仮想マシンを右クリックし、**[リモート デスクトップを使用して接続]** を選択します。
+### 手順 3. アプリケーションをデプロイする
+1.	**[ソリューション エクスプローラー]** で **[WadExampleVM]** プロジェクトを右クリックし、**[エクスプローラーでフォルダーを開く]** を選択します。
+2.	*bin\\Debug* フォルダーに移動し、すべてのファイル (WadExampleVM.*) をコピーします。
+3.	**[サーバー エクスプローラー]** で仮想マシンを右クリックし、**[リモート デスクトップを使用して接続]** を選択します。
 4.	VM に接続されたら、WadExampleVM という名前のフォルダーを作成し、コピーしたアプリケーション ファイルをそのフォルダーに貼り付けます。
 5.	アプリケーション ファイルの WadExampleVM.exe を起動します。空白のコンソール ウィンドウが表示されます。
 
-<h3>手順 4:診断構成を作成して拡張機能をインストールする</h3>
+### 手順 4. 診断構成を作成して拡張機能をインストールする
 1.	次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義を開発コンピューターにダウンロードします。
 
 		(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
-2.	既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。Visual Studio で、**[追加]**、**[新しいアイテム]**、**[Visual C# アイテム]**、**[データ]**、**[XML ファイル]** の順に選択します。ファイルに「WadExample.xml」という名前を付けます。
-3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押して **[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[...]** をクリックします。**[追加]** ボタンをクリックします。XSD ファイルを保存した場所に移動し、WadConfig.xsd ファイルを選択します。**[OK]** をクリックします。
+2.	既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。Visual Studio で、**[追加]** -> **[新しい項目]** -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選択します。ファイルに「WadExample.xml」という名前を付けます。
+3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
 4.	WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
 		<?xml version="1.0" encoding="utf-8"?>
@@ -364,7 +351,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -381,15 +368,15 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 		</PublicConfig>
 
 
-<h3>手順 5:Azure の仮想マシンに診断をリモートでインストールする </h3>
-VM の診断を管理する PowerShell コマンドレットは、Set-AzureVMDiagnosticsExtension、Get-AzureVMDiagnosticsExtension、Remove-AzureVMDiagnosticsExtension. です。
+### 手順 5. Azure の仮想マシンに診断をリモートでインストールする
+VM の診断を管理する PowerShell コマンドレットは、Set-AzureVMDiagnosticsExtension、Get-AzureVMDiagnosticsExtension、Remove-AzureVMDiagnosticsExtension です。
 
-1.	開発コンピューター上で Windows Azure PowerShell を開きます。
-2.	スクリプトを実行して VM に診断をリモートでインストールします ( *StorageAccountKey* を wadexamplevm ストレージ アカウントのストレージ アカウント キーに置き換えます)。
+1.	開発コンピューター上で Azure PowerShell を開きます。
+2.	スクリプトを実行して VM に診断をリモートでインストールします (*StorageAccountKey* を wadexamplevm ストレージ アカウントのストレージ アカウント キーに置き換えます)。
 
 		$storage_name = "wadexamplevm"
 		$key = "<StorageAccountKey>"
-		$config_path="c:\users\<user>\documents\visual studio 2013\Projects\WadExampleVM\WadExampleVM\WadExample.xml"
+		$config_path="c:\users<user>\documents\visual studio 2013\Projects\WadExampleVM\WadExampleVM\WadExample.xml"
 		$service_name="wadexamplevm"
 		$vm_name="WadExample"
 		$storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key 
@@ -398,20 +385,19 @@ VM の診断を管理する PowerShell コマンドレットは、Set-AzureVMDia
 		$VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 
 
-<h3>手順 6:利用統計情報を確認する</h3>
-Visual Studio の**サーバー エクスプローラー**で、wadexample ストレージ アカウントに移動します。VM を 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして、収集した利用統計情報を表示します。
-	![CloudServices_diag_wadexamplevm_tables](./media/cloud-services-dotnet-diagnostics/WadExampleVMTables.png)
+### 手順 6. テレメトリ データを確認する
+Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。VM を 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして収集したテレメトリを表示します。![CloudServices_diag_wadexamplevm_tables](./media/cloud-services-dotnet-diagnostics/WadExampleVMTables.png)
 
-<h2><a name="configuration-file-schema"></a>構成ファイル スキーマ</h2>
+## 構成ファイル スキーマ
 
-診断構成ファイルは、診断モニターを開始するときに診断構成設定の初期化に使用される値を定義します。サンプル構成ファイルとそのスキーマの詳細なドキュメントについては、「[Azure Diagnostics 1.2 Configuration Schema (Azure 診断 1.2 構成スキーマ)][]」を参照してください。
+診断構成ファイルは、診断モニターを開始するときに診断構成設定の初期化に使用される値を定義します。サンプル構成ファイルとそのスキーマの詳細なドキュメントについては、[Azure 診断 1.2 構成スキーマ][]に関するページを参照してください。
 
-<h2><a name="troubleshooting"></a>トラブルシューティング</h2>
+## トラブルシューティング
 
-<h3>Azure 診断が起動しない</h3>
-診断は、ゲスト エージェント プラグインと監視エージェントの 2 つのコンポーネントで構成されます。ゲスト エージェント プラグインのログ ファイルは次のファイルにあります。 
+### Azure 診断が起動しない
+診断は、ゲスト エージェント プラグインと監視エージェントの 2 つのコンポーネントで構成されます。ゲスト エージェント プラグインのログ ファイルは次のファイルにあります。
 
-*%SystemDrive%\ WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<DiagnosticsVersion>*\CommandExecution.log
+*%SystemDrive%\\ WindowsAzure\\Logs\\Plugins\\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>*\\CommandExecution.log
 
 プラグインによって次のエラー コードが返されます。
 
@@ -437,12 +423,12 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
     <tr>
 		<td>-3</td>
         <td><p>診断構成ファイルを読み込めませんでした。</p>
-<p>解決策:これは、構成ファイルがスキーマ検証を渡さないことが原因です。スキーマに準拠する構成ファイルを使用してください。</p></td>		            
+<p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。スキーマに準拠する構成ファイルを使用してください。</p></td>		            
 	</tr>
     <tr>
 		<td>-4</td>
         <td><p>監視エージェント診断の別のインスタンスが既にローカル リソース ディレクトリを使用しています。</p>
-<p>解決策:LocalResourceDirectory に <strong>別の値を指定します</strong>。</p></td>		            
+<p>解決方法: <strong>LocalResourceDirectory</strong> に別の値を指定します。</p></td>		            
 	</tr>
     <tr>
 		<td>-6</td>
@@ -457,7 +443,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 		<td>-11</td>
         <td><p>ゲスト エージェントが、監視エージェントの起動と監視を処理するプロセスを作成できませんでした。</p>
 
-<p>解決策:新しいプロセスを起動するのに十分なシステム リソースを使用できることを確認します。</p></td>		            
+<p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。</p></td>		            
 	</tr>
     <tr>
 		<td>-101</td>
@@ -469,13 +455,13 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 		<td>-102</td>
         <td><p>プラグイン プロセスの初期化でエラーが発生しました。</p> 
 
-<p>解決策:新しいプロセスを起動するのに十分なシステム リソースを使用できることを確認します。</p></td>		            
+<p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。</p></td>		            
 	</tr>
     <tr>
 		<td>-103</td>
         <td><p>プラグイン プロセスの初期化でエラーが発生しました。具体的にはロガー オブジェクトを作成できません。</p>
 
-<p>解決策:新しいプロセスを起動するのに十分なシステム リソースを使用できることを確認します。</p></td>		            
+<p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。</p></td>		            
 	</tr>
     <tr>
 		<td>-104</td>
@@ -493,7 +479,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 		<td>-106</td>
         <td><p>診断構成ファイルを読み取れませんでした。</p>
 
-<p>解決策:これは、構成ファイルがスキーマ検証を渡さないことが原因です。そのため、スキーマに準拠する構成ファイルを使用してください。VM 上の <i>%SystemDrive%\WindowsAzure\Config フォルダーには、</i> 診断拡張機能に渡される XML があります。適切な XML ファイルを開いて <strong>Microsoft.Azure.Diagnostics</strong>を検索し、 <strong>xmlCfg</strong> フィールドを見つけます。データは base64 でエンコードされているため、 <a href="http://www.bing.com/search?q=base64+decoder">診断で読み込まれた XML を表示するには</a> これをデコードする必要があります。</p></td>		            
+<p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。そのため、スキーマに準拠する構成ファイルを使用してください。VM 上の <i>%SystemDrive%\WindowsAzure\Config</i> フォルダーには、診断拡張機能に渡される XML があります。適切な XML ファイルを開いて <strong>Microsoft.Azure.Diagnostics</strong> を検索し、<strong>xmlCfg</strong> フィールドを見つけます。データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを<a href="http://www.bing.com/search?q=base64+decoder">デコードする</a>必要があります。</p></td>		            
 	</tr>
     <tr>
 		<td>-107</td>
@@ -517,7 +503,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 		<td>-111</td>
         <td><p>監視エージェントを開始できません。</p>
 
-<p>解決策:十分なシステムリソースを使用できることを確認します。</p></td>		            
+<p>解決方法: 十分なシステム リソースを使用できることを確認します。</p></td>		            
 	</tr>
     <tr>
 		<td>-112</td>
@@ -526,11 +512,10 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 </tbody>
 </table>
 
-<h3>診断データがストレージに記録されない</h3>
-イベント データが見つからない最も一般的な原因は、不正に定義されたストレージ アカウント情報です。 
+### 診断データがストレージに記録されない
+イベント データが見つからない最も一般的な原因は、不正に定義されたストレージ アカウント情報です。
 
-解決策:診断構成ファイルを修正し、診断を再インストールします。
-イベント データは、ストレージ アカウントにアップロードされる前にフォルダーに格納されます。**LocalResourceDirectory** の詳細については、上記を参照してください。
+解決方法: 診断構成ファイルを修正し、診断を再インストールします。イベント データは、ストレージ アカウントにアップロードされる前にフォルダーに格納されます。**LocalResourceDirectory** の詳細については、上記を参照してください。
 
 このフォルダーにファイルがない場合、監視エージェントは起動できません。これは通常、無効な構成ファイルが原因であり、CommandExecution.log で報告される必要があります。監視エージェントが正常にイベント·データを収集している場合は、構成ファイルで定義されたイベントごとに .tsf ファイルが表示されます。
 
@@ -541,19 +526,16 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 このツールでは maeventtable.csv というファイルが生成されます。このログを開いてエラーを確認できます。
 
 
-<h2><a name="faq"></a>よく寄せられる質問</h2>
+## よく寄せられる質問
 よく寄せられる質問とその回答は次のとおりです。
 
 **Q.** Visual Studio ソリューションをどのようにして Azure 診断 1.0 から Azure 診断 1.1 にアップグレードしますか。
 
-**A.** Visual Studio ソリューションを診断 1.0 から診断 1.1 (以降) にアップグレードするには、次の手動のプロセスを行います。
-- Visual Studio ソリューションの診断を無効にし、診断 1.0 がロールと共に展開されないようにします。
-- コードがトレース リスナーを使用している場合は、.NET EventSource を使用するようにコードを変更する必要があります。診断 1.1 以降はトレース リスナーをサポートしません。
-- 展開プロセスを変更して診断 1.1 拡張機能をインストールします。
+**A.** Visual Studio ソリューションを診断 1.0 から診断 1.1 (以降) にアップグレードするには、次の手動のプロセスを行います。Visual Studio ソリューションの診断を無効にし、診断 1.0 がロールと共にデプロイされないようにします。コードでトレース リスナーを使用している場合は、.NET EventSource を使用するようにコードを変更する必要があります。診断 1.1 以降ではトレース リスナーはサポートされていません。デプロイメント プロセスを変更して診断 1.1 拡張機能をインストールしてください。
 
-**Q.** 診断 1.1 拡張機能をロールまたは VM 上にインストールしている場合は、どのように診断 1.2 または 1.3 にアップグレードしますか。
+**Q.** 診断 1.1 拡張機能を既にロールまたは VM 上にインストールしている場合は、どのようにして診断 1.2 または 1.3 にアップグレードしますか。
 
-**A.** 診断 1.1 のインストール時に "-Version "1.*" を指定した場合は、次回ロールまたは VM が再起動するときに、自動的に正規表現 "1.*" に一致する最新バージョンに更新されます。診断 1.1 のインストール時に「バージョン 1.1」を指定した場合は、Set- コマンドレットを再実行し、インストールするバージョンを指定できる最新バージョンに更新されます。
+**A.** 診断 1.1 のインストール時に "–Version "1.*"" を指定した場合は、次にロールまたは VM が再起動するときに、自動で正規表現 "1.*" に一致する最新バージョンに更新されます。診断 1.1 のインストール時に "–Version 1.1" を指定した場合は、Set- コマンドレットを再実行してインストールするバージョンを指定すると、より新しいバージョンに更新できます。
 
 **Q.** テーブルにはどのようにして名前が付けられますか。
 
@@ -570,13 +552,13 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 
 たとえば次のようになります。
 
-		<EtwEventSourceProviderConfiguration provider="prov1">
-		  <Event id="1" />
-		  <Event id="2" eventDestination="dest1" />
+		<EtwEventSourceProviderConfiguration provider=”prov1”>
+		  <Event id=”1” />
+		  <Event id=”2” eventDestination=”dest1” />
 		  <DefaultEvents />
 		</EtwEventSourceProviderConfiguration>
-		<EtwEventSourceProviderConfiguration provider="prov2">
-		  <DefaultEvents eventDestination="dest2" />
+		<EtwEventSourceProviderConfiguration provider=”prov2”>
+		  <DefaultEvents eventDestination=”dest2” />
 		</EtwEventSourceProviderConfiguration>
 
 次の 4 つのテーブルが生成されます。
@@ -588,19 +570,19 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 			<td><strong>テーブル名</strong></td>			
 	</tr>
 	<tr>
-			<td>provider="prov1" &lt;Event id="1" /&gt;</td>
-			<td>WADEvent+MD5("prov1")+"1"</td>			
+			<td>provider=”prov1” &lt;Event id=”1” /></td>
+			<td>WADEvent+MD5(“prov1”)+”1”</td>			
 	</tr>
 	<tr>
-			<td>provider="prov1" &lt;Event id="2" eventDestination="dest1" /&gt;</td>
+			<td>provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /></td>
 			<td>WADdest1</td>			
 	</tr>
 	<tr>
-			<td>provider="prov1" &lt;DefaultEvents /&gt;</td>
-			<td>WADDefault+MD5("prov1")</td>			
+			<td>provider=”prov1” &lt;DefaultEvents /></td>
+			<td>WADDefault+MD5(“prov1”)</td>			
 	</tr>
 	<tr>
-			<td>provider="prov2" &lt;DefaultEvents eventDestination="dest2" /&gt;</td>
+			<td>provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /></td>
 			<td>WADdest2</td>			
 	</tr>
 	
@@ -608,7 +590,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 </table>
 </tbody>
 
-<h2><a name="comparing"></a>Azure 診断のバージョンの比較</h2>
+## Azure 診断のバージョンの比較
 
 次の表は、Azure 診断のバージョン 1.0 および 1.1/1.2/1.3 でサポートされる機能を比較します。
 
@@ -641,7 +623,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 	<tr>
-			<td style="width: 100px;"><strong>構成と展開</strong></td>
+			<td style="width: 100px;"><strong>構成とデプロイ</strong></td>
 			<td><strong>診断 1.0</strong></td>
 			<td><strong>診断 1.1/1.2/1.3</strong></td>
 	</tr>
@@ -764,7 +746,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 </tbody>
 </table>
 
-<h2><a name="additional"></a>その他のリソース</h2>
+## その他のリソース
 
 - [Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス][]
 - [Azure 診断を使用したログ データの収集][]
@@ -773,25 +755,25 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 
   
 
-[概要]: #overview
-[Worker ロールの診断を有効にする方法]: #worker-role
-[仮想マシンの診断を有効にする方法]: #virtual-machine
-[サンプル構成ファイルとスキーマ]: #configuration-file-schema
-[トラブルシューティング]: #troubleshooting
-[よく寄せられる質問]: #faq
+[Overview]: #overview
+[How to Enable Diagnostics in a Worker Role]: #worker-role
+[How to Enable Diagnostics in a Virtual Machine]: #virtual-machine
+[Sample Configuration File and Schema]: #configuration-file-schema
+[Troubleshooting]: #troubleshooting
+[Frequently Asked Questions]: #faq
 [Azure 診断のバージョンの比較]: #comparing
-[その他のリソース]: #additional
+[Additional Resources]: #additional
 [EventSource クラス]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
-  
 [Azure Cloud Services および Virtual Machines 用の診断の構成]: http://msdn.microsoft.com/library/windowsazure/dn186185.aspx
-[Azure アプリケーションのデバッグ]: http://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
+[Azure アプリケーションのデバッグ]: http://msdn.microsoft.com/library/windowsazure/ee405479.aspx
 [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス]: http://msdn.microsoft.com/library/windowsazure/hh771389.aspx
-[無料評価版]: http://azure.microsoft.com/ pricing/free-trial/
-[Azure PowerShell Version 0.8.7 以降をインストールして構成]: http://azure.microsoft.com/ documentation/articles/install-configure-powershell/
-[Azure Diagnostics 1.2 Configuration Schema (Azure 診断 1.2 構成スキーマ)]: http://msdn.microsoft.com/library/azure/dn782207.aspx
+[Azure アプリケーション開発のトラブルシューティングのベスト プラクティス]: http://msdn.microsoft.com/library/windowsazure/hh771389.aspx
+[無料評価版]: http://azure.microsoft.com/pricing/free-trial/
+[Azure PowerShell Version 0.8.7 以降をインストールして構成している]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[Azure 診断 1.2 構成スキーマ]: http://msdn.microsoft.com/library/azure/dn782207.aspx
 [Set-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495270.aspx
 [Get-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495145.aspx
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495168.aspx
 
-<!--HONumber=45--> 
+<!--HONumber=54-->

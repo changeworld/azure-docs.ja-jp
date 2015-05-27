@@ -1,9 +1,9 @@
-﻿<properties 
+<properties 
 	pageTitle="コネクタと BizTalk API Apps とは" 
 	description="API Apps、コネクタ、および BizTalk API Apps について説明します。" 
 	services="app-service\logic" 
 	documentationCenter="" 
-	authors="joshtwist" 
+	authors="MandiOhlinger" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,47 +13,39 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
-	ms.author="jtwist"/>
+	ms.date="03/31/2015" 
+	ms.author="mandia"/>
 
 # コネクタと BizTalk API Apps とは
 
-Azure App Services は、API Apps を介した拡張性と共通の接続性の原則の上に構築されます。 *Connector* は、接続に焦点を絞った API App の一種です。他の API アプリと同様に、コネクタは Web アプリ、モバイル アプリ、およびロジック アプリから使用されます。コネクタは、既存のサービスとの接続を容易にし、認証の管理、監視、分析などに役立ちます。
+Azure App Services は、API Apps を介した拡張性と共通の接続性の原則の上に構築されます。*コネクタ*は、接続に焦点を絞った API アプリの一種です。他の API アプリと同様に、コネクタは Web アプリ、モバイル アプリ、およびロジック アプリから使用されます。コネクタは、既存のサービスとの接続を容易にし、認証の管理、監視、分析などに役立ちます。
 
-すべての開発者が独自の API アプリを作成して個人でデプロイし、今後 Marketplace を介して共有して収益化できるようになります。 
+開発者は独自の API アプリを作成し、個人的にデプロイできます。将来的には、開発者は独自に作成した API アプリを Marketplace で共有して収益化できます。
 
 ![API Apps Marketplace](./media/app-service-learn-about-flows-preview/Marketplace.png)
 
-開発者が Azure App Services を使用してソリューションを構築するのを促進する目的で、Microsoft Azure チームによって、一般的なシナリオを満たすためにコネクタがいくつか Marketplace に追加されました。さらに、App Services の守備範囲を複雑で高度な統合シナリオまで拡張するには、Premium、および BizTalk の機能も使用できます。
+開発者が Azure App Service を利用してソリューションを構築しやすいように、Azure チームによって、一般的なシナリオに対応するコネクタがいくつか Marketplace に追加されています。さらに、App Service の対応範囲を複雑で高度な統合シナリオにまで広げるために、Premium と BizTalk の機能も提供されています。
 
-[Microsoft Azure App Service のコネクタと API Apps の一覧](app-service-logic-connectors-list.md)
+Azure App Service では、さまざまなサービス レベルを提供しています。どのレベルにもすべてのコネクタと API アプリが含まれ、その全機能を使用できます。
 
-
-## プロトコル コネクタ
-App Services は Web から生まれ、HTTP を使用し、Swagger などのオープンな形式でのメタデータを共有する通信に向いています。もちろん、企業はさまざまなプロトコルで通信する必要があります。プロトコル コネクタは、HTTP 呼び出しと同じくらい簡単に FTP、SFTP、POP3 や IMAP、SMTP、および SOAP サービスを使用するサービスと通信して、ギャップを埋めることができます。  
-
-[Microsoft Azure App Service のプロトコル コネクタ](app-service-logic-protocol-connectors.md)
+[App Service の料金](http://azure.microsoft.com/pricing/details/app-service/)に関するページでは、これらのサービス レベルについて説明し、各レベルに含まれる機能を表にして示しています。次のセクションでは、BizTalk API アプリとコネクタのさまざまなカテゴリについて説明します。
 
 
-## SaaS コネクタ
-App Service の SaaS コネクタによって、Office 365、SalesForce、Sugar CRM、OneDrive、DropBox、Marketo、Facebook さえも含む今日の SaaS のビッグ ネームの一部に接続するためのターンキー型が提供されます。
-
-[Microsoft Azure App Service のソーシャル コネクタ](app-service-logic-social-connectors.md)
-
-[Microsoft Azure App Service のアプリ + データ サービス コネクタ](app-service-logic-data-connectors.md)
-
+## Standard コネクタ
+App Service にはさまざまなコネクタが用意されており、Office 365、SalesForce、Sugar CRM、OneDrive、DropBox、Marketo、Facebook など、今日の有名な SaaS サービスに Web アプリ、モバイル アプリ、ロジック アプリを接続するためのターンキー型の手段を提供します。FTP、SFTP、POP3/IMAP、SMTP、SOAP を使用して外部のサービスと通信するコネクタのセットも含まれており、HTTP 呼び出しの実行と同じくらい簡単です。
 
 ## Premium コネクタ 
-Premium コネクタによって、企業と SAP、Siebel、Oracle、DB2 などの接続まで、App Services の守備範囲が広がります。
+Premium コネクタによって、企業と SAP、Oracle、DB2、Informix、WebSphere MQ の接続まで、App Services の対応範囲が広がります。
 
-[Microsoft Azure App Service のエンタープライズ コネクタ](app-service-logic-enterprise-connectors.md)
+## EAI と EDI サービス
+ビジネス クリティカルなアプリの構築に必要なのは、接続だけではありません。BizTalk API Apps は、マイクロソフトの業界屈指の統合プラットフォームである BizTalk Server を基礎にして、Web アプリ、モバイル アプリ、ロジック アプリにスナップできる高度な統合機能を簡単に提供しています。これらの統合機能の一部には、検証、抽出、変換、エンコーダー、取引先管理、EDI 形式 (X12、EDIFACT、AS2 など) のサポートが含まれます。
 
 
-## BizTalk API Apps
-ビジネス クリティカルなアプリケーションの構築に必要なのは、接続だけではありません。BizTalk API Apps は、マイクロソフトの業界屈指の統合プラットフォームである BizTalk Server を基礎にして、Web アプリ、モバイル アプリ、ロジック アプリにスナップできる高度な統合機能を簡単に提供しています。バッチ処理とデバッチ処理、VETR (検証、抽出、変換、ルーティング)、および X12、EDIFACT、AS2 などの EDI 形式のサポートが含まれます。
+## ルール
+ビジネス ルールには、ビジネス プロセスを制御するポリシーと意思決定がカプセル化されます。通常、ルールは動的で、ビジネス プランや規則などのさまざまな理由により、時間の経過と共に変化します。App Services の BizTalk ルールでは、アプリケーション コードからこれらのポリシーを分離して、より簡単かつ迅速にプロセスを変更できるようにします。
 
-[Microsoft Azure App Service の企業間コネクタと API Apps](app-service-logic-b2b-connectors.md)<br/>
 
-[Microsoft Azure App Service の BizTalk 統合 API Apps](app-service-logic-integration-connectors.md)
+## コネクタと API のアプリの一覧
+Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
 
-<!--HONumber=49-->
+<!--HONumber=54-->

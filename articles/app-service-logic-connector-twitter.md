@@ -1,9 +1,9 @@
-﻿<properties 
+<properties 
    pageTitle="Twitter Connector API アプリ" 
    description="TwitterConnector の使い方" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
-   authors="adgoda" 
+   authors="anuragdalmia" 
    manager="dwrede" 
    editor=""/>
 
@@ -19,7 +19,7 @@
 
 # ロジック アプリで Twitter Connector を使用する #
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。 
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
 
 Twitter Connector を使えば、自分の Twitter アカウントからツイートを投稿したり、自分のタイムライン、友人、フォロワーのツイートを取得したりできます。
 
@@ -30,7 +30,7 @@ Twitter Connector を使えば、自分の Twitter アカウントからツイ�
 Twitter Connector を使用するにはまず、Twitter Connector API アプリのインスタンスを作成する必要があります。そのためには、次の手順に従います。
 
 1. Azure ポータルの左下にある [+ 新規] を使用して Azure Marketplace を開きます。
-1. [Web + モバイル]、[API アプリ] の順に移動して、"Twitter Connector" を検索します。
+1. [API Apps] に移動して、"Twitter Connector" を検索します。
 1. Twitter Connector を以下のように構成します。
 
 	![][1]
@@ -73,4 +73,4 @@ API アプリを作成した後は、ロジック アプリのトリガーおよ
 [7]: ./media/app-service-logic-connector-twitter/img7.png
 [8]: ./media/app-service-logic-connector-twitter/img8.png
 
-<!--HONumber=49-->
+<!--HONumber=54-->

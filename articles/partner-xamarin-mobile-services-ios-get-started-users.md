@@ -1,4 +1,4 @@
-﻿<properties
+<properties
 	pageTitle="認証の使用 (Xamarin.iOS) - Mobile Services"
 	description="Xamarin.iOS 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。"
 	documentationCenter="xamarin"
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証と承認されると、ユーザー ID 値が表示されます。  
+このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
@@ -28,11 +28,11 @@
 2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3. [アプリケーションに認証を追加する]
 
-このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-このチュートリアルを完了するには、[Xamarin.iOS]、XCode 6.0、および iOS 7.0 以降のバージョンが必要です。
+このチュートリアルを実施するには、[Xamarin.iOS]、XCode 6.0、および iOS 7.0 以降のバージョンが必要です。
 
-<h2><a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する</h2>
+<h2><a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する</h2>
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)]
 
@@ -42,11 +42,11 @@
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-3. Xcode で、チュートリアル「[Mobile Services の使用]」を実行したときに作成したプロジェクトを開きます。
+3. Xcode で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
 
-4. **[実行]** をクリックしてプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
+4. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
 
-   	この問題は、認証されないユーザーとしてアプリケーションが Mobile Services にアクセスしようとしているのに、**TodoItem** テーブルでは認証が要求されるために発生します。
+   	この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -72,7 +72,7 @@
             }
         }
 
-	> [AZURE.NOTE] Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の **LoginAsync** に渡される値を**Facebook**、**Twitter**、**Google**、**WindowsAzureActiveDirectory** のいずれかに変更します。
+	> [AZURE.NOTE]Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _Facebook_、_Twitter_、_Google_、または _WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **TodoItem** テーブルに対する要求を、**TodoService** コンストラクターから **CreateTable** という名前の新しいメソッドに移動します。
 
@@ -82,7 +82,7 @@
             todoTable = client.GetTable<TodoItem>();
         }
 
-4. Create a new asynchronous public method named **LoginAndGetData** defined as:
+4. **LoginAndGetData** という名前の新しい非同期パブリック メソッドを作成し、次のように定義します。
 
         public async Task LoginAndGetData(UIViewController view)
         {
@@ -111,22 +111,22 @@
         }
 6. **RefreshAsync** の元の呼び出しを **TodoListViewController.ViewDidLoad** から削除します。
 
-7. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
+7. **[Run]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
 ## 完成したサンプルの入手
 [完成したサンプル プロジェクト]をダウンロードします。**applicationURL** 変数と **applicationKey** 変数を独自の Azure 設定で更新してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[スクリプトを使用したユーザーの承認]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
 [アプリケーションに認証を追加する]: #add-authentication
-[次のステップ]:#next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [4]: ./media/partner-xamarin-mobile-services-ios-get-started-users/mobile-services-selection.png
@@ -136,19 +136,18 @@
 [15]: ./media/partner-xamarin-mobile-services-ios-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. TODO:: update completed example project link with project download -->
-[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-ios
-[データの使用]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[認証の使用]: /develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[プッシュ通知の使用]: /develop/mobile/tutorials/-get-started-with-push-xamarin-ios
-[スクリプトを使用したユーザーの承認]: /develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+[モバイル サービスの使用]: /develop/mobile/tutorials/get-started-xamarin-ios
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
+[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-xamarin-ios
+[Get started with push notifications]: /develop/mobile/tutorials/-get-started-with-push-xamarin-ios
+[スクリプトを使用したユーザーの認証]: /develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure Management Portal]: https://manage.windowsazure.com/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
-"<!--HONumber=49-->" 
 
-<!--HONumber=49-->
+<!--HONumber=54-->

@@ -22,17 +22,17 @@
 
 このトピックでは、特定のユーザーのすべての登録済みデバイスにモバイル バックエンドから通知を送信する方法について説明します。[テンプレート]の概念が導入されました。これにより、クライアント アプリケーションで、登録時にペイロードの形式と変数プレースホルダーを自由に指定することができます。送信すると、これらのプレースホルダーにより、すべてのプラットフォームにヒットし、クロスプラットフォーム通知が有効になります。
 
-> [AZURE.NOTE] クロスプラットフォーム クライアントでプッシュ操作を有効にするには、有効にする各プラットフォームに対してこのチュートリアルを完了する必要があります。同じモバイル バックエンドを共有しているクライアントに対して、[モバイル バックエンドの更新](#backend)を  1 回だけ実行する必要があります。
+> [AZURE.NOTE]クロスプラットフォーム クライアントでプッシュ操作を有効にするには、有効にする各プラットフォームに対してこのチュートリアルを完了する必要があります。同じモバイル バックエンドを共有しているクライアントに対して、[モバイル バックエンドの更新](#backend)を 1 回だけ実行する必要があります。
  
-## 前提条件 
+##前提条件 
 
 このチュートリアルを開始する前に、作業する各クライアント プラットフォームで次のアプリ サービス チュートリアルが既に完了している必要があります。
 
 + [認証の使用]<br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
-+ [プッシュ通知の使用]<br/>プッシュ通知用に TodoList サンプル アプリを構成します。
++ [プッシュ通知の使用]<br/>プッシュ通知用に TodoList サンプル アプリケーションを構成します。
 
-## <a name="client"></a>クライアントを更新して、クロスプラットフォームのプッシュを処理するためのテンプレートを登録する
+##<a name="client"></a>クロスプラットフォームのプッシュを処理するためのテンプレートを登録するように、クライアントを更新する
 
 1. APNs 登録スニペットを **AppDelegate.cs** の **FinishedLaunching** から **QSTodoListViewController.cs** の **RefreshAsync** タスクの定義に移動します。認証が完了した後に登録が行われます。
 
@@ -56,11 +56,11 @@
         }
         ...
 
-2. **AppDelegate.cs** で、**RegisteredForRemoteNotifications** の **RegisterAsync** 呼び出しを次で置き換えてテンプレートを使用します。
+2. **AppDelegate.cs** で、**RegisteredForRemoteNotifications** の **RegisterAsync** 呼び出しを次のコードに置き換えてテンプレートを使用します。
 
         // delete await push.RegisterAsync (deviceToken);
         
-        var notificationTemplate = "{\"aps\":{\"alert\":\"$(message)\"}}";
+        var notificationTemplate = "{"aps": {"alert":"$(message)"}}";
 
         JObject templateBody = new JObject();
         templateBody["body"] = notificationTemplate;
@@ -71,9 +71,9 @@
         // register with templates
         await push.RegisterAsync (deviceToken, templates);
 
-## <a name="backend"></a>特定のユーザーに通知を送信するようにサービス バックエンドを更新する
+##<a name="backend"></a>特定のユーザーに通知を送信するようにサービス バックエンドを更新する
 
-1. Visual Studio で、 `PostTodoItem` メソッド定義を次のコードで更新します。  
+1. Visual Studio で、`PostTodoItem` メソッド定義を次のコードで更新します。  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -88,7 +88,7 @@
 
             // get the current user id and create given user tag
             ServiceUser authenticatedUser = this.User as ServiceUser;
-            string userTag = "_UserId:"+ authenticatedUser.Id;
+            string userTag = "_UserId:" + authenticatedUser.Id;
 
             var notification = new Dictionary<string, string>{{"message", item.Text}};
 
@@ -103,7 +103,7 @@
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
-## <a name="test"></a>アプリケーションをテストする
+##<a name="test"></a>アプリケーションをテストする
 
 モバイル バックエンド プロジェクトを再発行し、設定してあるクライアント アプリケーションのいずれかを実行します。項目を挿入すると、バックエンドにより、ユーザーがログインしているすべてのクライアント アプリケーションに通知が送信されます。
 
@@ -111,5 +111,4 @@
 [認証の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-users-preview.md
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
-
-<!--HONumber=49-->
+<!--HONumber=54-->

@@ -1,85 +1,84 @@
 <properties 
-	pageTitle="Azure でギャラリーから Orchard CMS Web サイトを作成する" 
-	description="Azure で新しい Web サイトを作成する方法について説明するチュートリアルです。また、管理ポータルを使用してサイトを公開し、管理する方法についても説明しています。" 
-	services="web-sites" 
+	pageTitle="Azure Marketplace から Orchard CMS Web アプリを作成する" 
+	description="Azure で新しい Web アプリを作成する方法について説明するチュートリアルです。また、Azure ポータルを使用して Web アプリを公開し、管理する方法についても説明しています。" 
+	tags="azure-portal"
+	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/21/2014" 
+	ms.date="04/29/2015" 
 	ms.author="tomfitz"/>
 
-# Azure でギャラリーから Orchard CMS Web サイトを作成する
+# Azure Marketplace から Orchard CMS Web アプリを作成する
 
-ギャラリーには、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーから作成した Web アプリケーションは、[Azure の管理ポータル](http://manage.windowsazure.com) への接続に使用するブラウザー以外に、他のソフトウェアをインストールする必要はありません。ギャラリー内の Web アプリケーションの詳細については、[Windows Web App Gallery](http://www.microsoft.com/web/gallery/categories.aspx) をご覧ください。
+## 概要
+
+Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。Marketplace から作成した Web アプリケーションは、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)への接続に使用するブラウザー以外に、他のソフトウェアをインストールする必要はありません。Marketplace 内の Web アプリケーションの詳細については、「[Azure Marketplace](/marketplace/)」を参照してください。
 
 このチュートリアルでは、次のことについて説明します。
 
-- ギャラリーから新しいサイトを作成する方法
+- Marketplace から新しい Web アプリを作成する方法
 
-- 管理ポータルからサイトを公開して管理する方法
+- Azure ポータルから Web アプリを公開して管理する方法
  
-既定のテンプレートを使用する Orchard CMS サイトを構築します。[Orchard](http://www.orchardproject.net/) はオープン ソースであり、.NET ベースの無料 CMS アプリケーションで、カスタマイズしたコンテンツ主導の Web サイトを作成できます。Orchard CMS には、[追加のモジュールとテーマをダウンロード](http://gallery.orchardproject.net/) してサイトをカスタマイズできる機能拡張フレームワークが付属しています。次の図に、これから作成する Orchard CMS サイトを示します。
+既定のテンプレートを使用する Orchard CMS Web アプリを構築します。[Orchard](http://www.orchardproject.net/) はオープン ソースで .NET ベースの無料 CMS アプリケーションで、カスタマイズしたコンテンツ主導の Web アプリおよび Web サイトを作成できます。Orchard CMS には、[追加のモジュールとテーマをダウンロード](http://gallery.orchardproject.net/)して Web アプリをカスタマイズできる機能拡張フレームワークが付属しています。次の図は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にこれから作成する Orchard CMS Web アプリを示しています。
 
-![Orchard blog][13]
+![Orchard ブログ][13]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-<h2>ギャラリーから Orchard Web サイトを作成する</h2>
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com) にログインします。
+## Marketplace から Orchard Web アプリを作成する
 
-2. ポータルの左下にある **[新規]** アイコンをクリックします。
+1. [Azure プレビュー ポータル](http://portal.azure.com)にログインします。
+
+2. **[新規]**、**[Web + モバイル]**、**[Azure Marketplace]** の順にクリックします。
 	
 	![Create New][1]
 
-3. **[Web サイト]** アイコンをクリックし、**[ギャラリーから]** をクリックします。
+3. **[Web Apps]**、**[Orchard CMS]** の順にクリックします。次のブレードで **[作成]** をクリックします。
 	
-	![Create From Gallery][2]
+	![Create From Marketplace][2]
 
-4. 一覧から **[Orchard CMS]** アイコンを見つけてクリックし、矢印をクリックして続行します。
+4. Web アプリの URL、App Service プラン、リソース グループ、および場所を構成します。完了したら、**[作成]** をクリックします。
 	
-	![Orchard from list][3]
+	![Configure the app][3]
 
-5. **[アプリケーションの構成]** ページで、すべてのフィールドの値を入力または選択します。
-	
-- 好みの URL 名を入力します。	
-- ユーザーに最も近いリージョンを選択します(これにより最大限のパフォーマンスが保証されます)。
+	Web アプリが作成されたら、**[通知]** ボタンに緑の "成功" が表示され、Web アプリのブレードが表示されます。
 
-	![configure your app][4]
+## Orchard サイトを起動して管理する
 
-6. ボックスの右下にあるチェック マークをクリックして、新しい Orchard CMS Web サイトのデプロイを開始します。
+1. Web アプリのブレードで **[参照]** をクリックして、Web アプリのウェルカム ページを開きます。
 
-Azure によって構築操作とデプロイ操作が開始されます。Web サイトの構築とデプロイが実行されている間、操作の状態が Web サイト管理ポータルの下部に表示されます。すべての操作が実行された後、Web サイトが作成されたことを示すメッセージが表示されます。
+	![[参照] ボタン][12]
 
-<h2>Orchard サイトの起動と管理</h2>
+2. Orchard に必要となる構成情報を入力します。次に、**[セットアップの終了]** をクリックして構成を完了し、Web アプリのホーム ページを開きます。
 
-1. **[Web サイト]** ページで新しいサイトの名前をクリックし、ポータルの下部にある **[参照]** をクリックして Web サイトの開始ページを開きます。
+	![Orchard へのログイン][7]
 
-	![launch dashboard][5]
+	新しい Orchard Web アプリは次のスクリーンショットのようになります。
 
-	![browse button][12]
+	![your Orchard web app][13]
 
-2. Orchard に必要となる構成情報を入力し、**[セットアップの終了]** をクリックして構成を完了し、Web サイトのホーム ページを開きます。
+3. Orchard の詳細と新しい Web アプリの構成方法については、[Orchard のドキュメント](http://docs.orchardproject.net/)の記述に従ってください。
 
-	![login to Orchard][7]
+## 次のステップ
 
-	新しい Orchard サイトは次のスクリーンショットのようになります。  
+* [Microsoft WebMatrix を使用して Web アプリを開発してデプロイする](web-sites-dotnet-using-webmatrix.md) -- WebMatrix で App Service の Web アプリを編集する方法について説明します。 
+* [認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) -- Visual Studio から Azure App Service で新しい Web アプリを作成する方法について説明します。
 
-	![your Orchard site][13]
-
-3. Orchard の詳細と新しいサイトの構成方法については、[Orchard Documentation (Orchard に関するドキュメント)](http://docs.orchardproject.net/) の記述に従ってください。
-
-<h2>次のステップ</h2>
-* [Microsoft WebMatrix を使用して Web サイトを開発してデプロイする](/ja-jp/develop/net/tutorials/website-with-webmatrix/) -- WebMatrix で Azure Web サイトを編集する方法について説明します。
-* [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure Web サイトにデプロイする](/ja-jp/develop/net/tutorials/web-site-with-sql-database/) -- Visual Studio から新しい Web サイトを作成する方法について説明します。
+## 変更内容
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [1]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-01.png
 [2]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-02.png
@@ -92,6 +91,4 @@ Azure によって構築操作とデプロイ操作が開始されます。Web �
 
 
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

@@ -1,6 +1,6 @@
-﻿##<a name="add-select-images"></a>アプリケーションの更新イメージをキャプチャおよびアップロードするクイック スタート クライアント アプリケーションの更新
+##<a name="add-select-images"></a>アプリケーションの更新イメージをキャプチャおよびアップロードするクイック スタート クライアント アプリケーションの更新
 
-1. Visual Studio 2012 で、Package.appxmanifest ファイルを開き、**[機能]** タブの **[Web カメラ]** 機能と **[マイク]** 機能を有効にします。
+1. Visual Studio で、Package.appxmanifest ファイルを開き、[**機能**] タブの [**Web カメラ**] 機能と [**マイク**] 機能を有効にします。
 
    	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-app-manifest-camera.png)
  
@@ -67,7 +67,7 @@
 
   	このコードにより、イメージをキャプチャしてイメージをストレージ ファイルに保存する、カメラ UI が表示されます。
 
-6. 既存の  `InsertTodoItem` メソッドを次のコードに置き換えます。
+6. 既存の `InsertTodoItem` メソッドを次のコードに置き換えます。
  
         private async void InsertTodoItem(TodoItem todoItem)
         {
@@ -126,7 +126,7 @@
 
    	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar.png)
 
-  	これにより、カメラ キャプチャ UI が表示されます。 
+  	これにより、カメラ キャプチャ UI が表示されます。
 
 3. 写真を撮るイメージをクリックし、**[OK]** をクリックします。
   
@@ -143,4 +143,4 @@
    	>[AZURE.NOTE]新しい項目の <code>imageUri</code> プロパティが <strong>Image</strong> コントロールにバインドされると、イメージは Blob ストレージ サービスから自動的にダウンロードされます。
 
 
-<!--HONumber=42-->
+<!--HONumber=54-->

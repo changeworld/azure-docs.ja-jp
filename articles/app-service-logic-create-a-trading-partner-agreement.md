@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
    pageTitle="Microsoft Azure App Service での取引先契約の作成" 
    description="取引先契約の作成" 
    services="app-service\logic" 
@@ -19,7 +19,7 @@
 
 # 取引先契約の作成   
 
-取引先は、B2B (企業間) コミュニケーションに含まれるエンティティです。2 つのパートナーがある関係を確立した場合、この関係は *Agreement*と呼ばれます。契約は、2 つのパートナーが達成したいと考えているコミュニケーションに基づいて定義され、プロトコルまたはトランスポートに固有のものです。Azure App Service がサポートする B2B プロトコルとトランスポート  には、以下のようなものがあります。
+取引先は、B2B (企業間) コミュニケーションに含まれるエンティティです。2 つのパートナーがある関係を確立した場合、この関係は*契約*と呼ばれます。契約は、2 つのパートナーが達成したいと考えているコミュニケーションに基づいて定義され、プロトコルまたはトランスポートに固有のものです。Azure App Service がサポートする B2B プロトコルとトランスポートには、以下のようなものがあります。
 
 - AS2 (Applicability Statement 2)
 - EDIFACT (United Nations/Electronic Data Interchange For Administration, Commerce and Transport (UN/EDIFACT))
@@ -59,7 +59,7 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 既に説明したとおり、AS2、X12、および EDIFACT の API アプリが期待どおりの機能を果たすためには TPM API アプリが必要です。
 
 
-## 作業の開始
+## Getting Started (概要)
 取引先契約を作成するには、次の手順に従います。
 
 1. **BizTalk 取引先管理**コネクタを作成します。これには、正常に機能する空の SQL データベースが必要です。開始する前に、利用できる空のデータベースがあり、使用準備ができていることを確認します。
@@ -77,5 +77,4 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 [2]: ./media/app-service-logic-create-a-trading-partner-agreement/ProtocolSelection.jpg
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.jpg
 
-
-<!--HONumber=49-->
+<!--HONumber=54-->

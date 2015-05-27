@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
 	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
@@ -19,9 +19,9 @@
 
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
 
-> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(任意 | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [(任意 | Javascript)](mobile-services-schedule-recurring-tasks.md)
+> [AZURE.SELECTOR-LIST (Platform | Backend)]
+- [(Any | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [(Any | Javascript)](mobile-services-schedule-recurring-tasks.md)
  
 このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -49,17 +49,17 @@
 
 <li><p>同じセクションで、次の新しいアプリケーション設定を追加し、プレースホルダーを、ポータルのアプリケーション設定で設定した Twitter のアクセス トークンとアクセス トークン シークレットの値に置換します。</p>
 
-<pre><code>&lt;add key="TWITTER_ACCESS_TOKEN" value="**アクセス トークン**" /&gt;
-&lt;add key="TWITTER_ACCESS_TOKEN_SECRET" value="**アクセス トークン シークレット**" /&gt;</code></pre>
+<pre><code>&lt;add key="TWITTER_ACCESS_TOKEN" value="**your_access_token**" />
+&lt;add key="TWITTER_ACCESS_TOKEN_SECRET" value="**your_access_token_secret**" /></code></pre>
 
-<p>モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、スケジュールされたジョブを発行する前にテストすることができます。Azure 内で実行する場合は、モバイル サービスは代わりにポータル内で設定した値を使用し、これら プロジェクト内の設定を無視します。  </p></li>
+<p>モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、スケジュールされたジョブを発行する前にテストすることができます。Azure 内で実行する場合は、モバイル サービスは代わりにポータル内で設定した値を使用し、これら プロジェクト内の設定を無視します。 </p></li>
 </ol>
 
 ##<a name="install-linq2twitter"></a>LINQ to Twitter ライブラリをダウンロードしてインストールする
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 左側のウィンドウで、**[オンライン]** カテゴリを選択し、 `linq2twitter` を探します。**linqtotwitter** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。 
+2. 左側のウィンドウで、**[オンライン]** カテゴリを選択し、`linq2twitter` を探します。**linqtotwitter** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
 
   	![][1]
 
@@ -69,11 +69,11 @@
 
 ##<a name="create-table"></a>新しい Updates テーブルを作成する
 
-1. Visual Studio のソリューション エクスプローラーで、DataObjects フォルダーを右クリックし、**[追加]** をクリックします。**[クラス]** をクリックし、   **[名前]** として「 `Updates`」と入力してから **[追加]** をクリックします。
+1. Visual Studio のソリューション エクスプローラーで、DataObjects フォルダーを右クリックし、**[追加]** を展開します。**[クラス]** をクリックし、**[名前]** として「`Updates`」と入力してから **[追加]** をクリックします。
 
 	これにより、Updates クラスに対応する新しいプロジェクト ファイルが作成されます。
 
-2. **[参照]** を右クリックし、**[参照の追加]** をクリックして **[アセンブリ]** から **[Framework]** を選択します。[**System.ComponentModel.DataAnnotations**] をオンにして **[OK]** をクリックします。
+2. **[参照]** を右クリックし、**[参照の追加]** をクリックして **[アセンブリ]** から **[Framework]** を選択します。**[System.ComponentModel.DataAnnotations]** をオンにして **[OK]** をクリックします。
 
 	![][7]
 
@@ -96,13 +96,13 @@
 	        public DateTime Date { get; set; }
     	}
 
-4. [モデル] フォルダーを展開し、データ モデルのコンテキスト ファイル (<em>service_name</em> という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。:
+4. [モデル] フォルダーを展開し、データ モデルのコンテキスト ファイル (<em>service_name</em>Context.cs という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。
 
 		public DbSet<Updates> Updates { get; set; }
 
-	DbSet に最初にアクセスしたときにデータベース内に作成される Updates テーブルは、ツイート データを格納する目的でサービスによって使用されます。  
+	DbSet に最初にアクセスしたときにデータベース内に作成される Updates テーブルは、ツイート データを格納する目的でサービスによって使用されます。
 
-	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法]に関するページを参照してください。(mobile-services-dotnet-backend-use-code-first-migrations.md).  
+	>[AZURE.NOTE]データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-use-code-first-migrations.md)を参照してください。
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納することを目的とした、スケジュールされたジョブを作成します。
 
@@ -222,13 +222,13 @@
 		    }
 		}
 
-	上記のコードで文字列 _todolistService_ と _todolistContext_ をダウンロードしたプロジェクトの名前空間と DbContext (それぞれ <em>mobile&#95;service&#95;name</em>Service と <em>mobile&#95;service&#95;name</em>Context) と置き換える必要があります。  
+	上記のコードで、_todolistService_ と _todolistContext_ の各文字列を、ダウンロードしたプロジェクトの名前空間と DbContext に置き換える必要があります。これらはそれぞれ、<em>mobile&#95;service&#95;name</em>Service と <em>mobile&#95;service&#95;name</em>Context です。
    	
 	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
 ##<a name="run-job-locally"></a>スケジュールされたジョブをローカルでテストする
 
-スケジュールされたジョブを Azure に発行してポータルに登録する前に、ローカルでテストすることができます。 
+スケジュールされたジョブを Azure に発行してポータルに登録する前に、ローカルでテストすることができます。
 
 1. Visual Studio で、モバイル サービス プロジェクトがスタートアップ プロジェクトとして設定された状態で、F5 キーを押します。
 
@@ -238,13 +238,13 @@
 
 	![][8]
  
-4. **[実際にこれを使ってみる]** をクリックして、「 `Sample` 」を **{jobName}** パラメーター値として入力し、**[送信]** をクリックします。
+4. **[実際にこれを使ってみる]** をクリックして、「`Sample`」を **{jobName}** パラメーター値として入力し、**[送信]** をクリックします。
 
 	![][9]
 
 	これで新しい POST 要求がサンプル ジョブ エンドポイントに送信されます。ローカル サービスで **ExecuteAsync** メソッドが起動します。このメソッドにブレークポイントを設定してコードをデバッグできます。
 
-3. サーバー エクスプローラーで、**[データ接続]**、**MSTableConnectionString**、**[テーブル]** の順に展開し、**[Udates]** を右クリックしてから **[テーブルのデータの表示]** をクリックします。
+3. サーバー エクスプローラーで、**[データ接続]**、**MSTableConnectionString**、**[テーブル]** の順に展開し、**[更新]** を右クリックしてから **[テーブルのデータの表示]** をクリックします。
 
 	この新しいツイートは、データ テーブル内の行として入力されます。
 
@@ -256,17 +256,17 @@
 
 4. [Azure の管理ポータル]で、[モバイル サービス] をクリックして、アプリケーションをクリックします。
 
-2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。 
+2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
 
-    >[AZURE.NOTE]モバイル サービスを <em>無料</em> レベルで実行する場合は、一度に 1 つのスケジュールされたジョブのみを実行できます。.有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
+    >[AZURE.NOTE]モバイル サービスを<em> Free </em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
-3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_Sample_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。 
+3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_Sample_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
    
    	![][4]
 
-   	これにより、**Sample** という名前の新しいジョブが作成されます。 
+   	これにより、**Sample** という名前の新しいジョブが作成されます。
 
-4. 作成した新しいジョブをクリックし、**[一度だけ実行する]** をクリックしてスクリプトをテストします。 
+4. 作成した新しいジョブをクリックし、**[一度だけ実行する]** をクリックしてスクリプトをテストします。
 
    	これにより、ジョブが実行されます。ただし、スケジューラ内では無効の状態のままです。このページから、いつでもジョブを有効にし、スケジュールを変更することができます。
 
@@ -276,7 +276,7 @@
 
     ![][6]
 
-5. 管理ポータルでクエリを実行して、アプリケーションによって加えられた変更を表示します。クエリは次のようになりますが、スキーマ名として  `todolist` の代わりにモバイル サービスの名前を使用します。
+5. 管理ポータルでクエリを実行して、アプリケーションによって加えられた変更を表示します。クエリは次のようになりますが、スキーマ名として `todolist` の代わりにモバイル サービスの名前を使用します。
 
         SELECT * FROM [todolist].[Updates]
 
@@ -289,7 +289,7 @@
 [新しいスケジュール済みジョブを作成する]: #add-job
 [スケジュールされたジョブをローカルでテストする]: #run-job-locally
 [サービスを発行してジョブを登録する]: #register-job
-[次のステップ]: #next-steps
+[Next steps]: #next-steps
 
 <!-- Images. -->
 [1]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/add-linq2twitter-nuget-package.png
@@ -303,10 +303,9 @@
 [9]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/mobile-service-try-this-out.png
 
 <!-- URLs. -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services での Twitter ログイン用のアプリケーションの登録]: mobile-services-how-to-register-twitter-authentication.md
-[Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[アプリケーション設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
-[LINQ to Twitter の CodePlex プロジェクト]: http://linqtotwitter.codeplex.com/
-
-<!--HONumber=49-->
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Register your apps for Twitter login with Mobile Services]: mobile-services-how-to-register-twitter-authentication.md
+[Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
+[App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
+<!--HONumber=54-->

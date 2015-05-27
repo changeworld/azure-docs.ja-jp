@@ -1,35 +1,33 @@
-﻿<properties
+<properties
    pageTitle="HDInsight でのクラスターのスケール設定 | Azure"
    description="HDInsight で実行しているクラスター内のデータ ノードの数を変更する場合、クラスターを削除して再作成することなく、変更できます。"
    services="hdinsight"
    documentationCenter=""
-   authors="bradsev"
+   authors="mumian"
    manager="paulettm"
    editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang=""
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
-   ms.author="bradsev"/>
+   ms.date="04/02/2015"
+   ms.author="jgao"/>
 
-#HDInsight のクラスターのスケール設定
+# HDInsight のクラスターのスケール設定
 
-クラスターのスケール設定機能を使用すると、HDInsight で実行しているクラスターによって使用されるデータ ノードの数を、クラスターを削除して再作成することなく、変更できます。この処理は、PowerShell または HDInsight SDK を使用して行うか、Azure ポータルからも実行できます。
-
-> [WACOM.NOTE] 現在のリリースでサポートされているクラスターの種類は、Hadoop と Storm のみです。HBase クラスターのサポートが間もなく加えられる予定です。 
+クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用されるデータ ノードの数を、クラスターを削除して再作成することなく、変更できます。この処理は、Azure PowerShell、HDInsight SDK、Azure ポータルから実行できます。
 
 ## 機能の詳細
 このセクションでは、HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響について説明します。
 
-* Hadoop
+* Hadoop は、
 * Storm
 * HBase 
 
-## Hadoop 
+## Hadoop は、 
 
 ### データ ノードの追加
 保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内のデータ ノードの数をシームレスに増加できます。処理の進行中に新しいジョブを送信することもできます。スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
@@ -43,30 +41,34 @@
 バランス再調整は、次の 2 つの方法で実行できます。
 
 * Storm Web UI
-* CLI ツール 
+* コマンド ライン インターフェイス (CLI) ツール 
 
-詳細については、[Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
+詳細については、[Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)をご覧ください。
 
 Storm Web UI は、HDInsight クラスターで使用できます。
 
-![image1](./media/hdinsight-hadoop-cluster-scaling/StormUI.png)
+![Image1](./media/hdinsight-hadoop-cluster-scaling/StormUI.png)
 
 CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
 
 	## Reconfigure the topology "mytopology" to use 5 worker processes,
-	## the spout "blue-spout" to use 3 executors and
-	## the bolt "yellow-bolt" to use 10 executors.
+	## the spout "blue-spout" to use 3 executors, and
+	## the bolt "yellow-bolt" to use 10 executors
 
 	$ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-##HBase
-現時点では、HBase タイプのクラスターでクラスターのスケール設定処理はサポートされていません。
+## HBase
+実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
 
-## 前提条件:
+	>pushd %HBASE_HOME%\bin
+	>hbase shell
+	>balancer
 
-* HDInsight Version 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンが不明な場合は、Azure ポータルで HDInsight クラスター名をクリックするか、Azure PowerShell の `Get-AzureHDInsightCluster -name <clustername>` コマンドを実行すると、クラスターのバージョンを確認できます。
+## 前提条件
 
-* PowerShell から処理を実行するには、Azure PowerShell Version 0.8.14 以降が必要です。[Azure のダウンロード](http://azure.microsoft.com/downloads/)の Web サイトにあるコマンド ライン ツールのセクションから、PowerShell の最新バージョンをダウンロードできます。インストールした Azure PowerShell のバージョンは、PowerShell ウィンドウで次のコマンドを使って確認できます。 `(get-module Azure).Version`
+* HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンが不明な場合は、Azure ポータルで HDInsight クラスター名をクリックするか、Azure PowerShell の `Get-AzureHDInsightCluster –name <clustername>` コマンドを実行すると、クラスターのバージョンを確認できます。
+
+* Azure PowerShell から処理を実行するには、Azure PowerShell バージョン 0.8.14 以降が必要です。[Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にある**コマンド ライン ツール**のセクションから、Azure PowerShell の最新バージョンをダウンロードできます。インストールした Azure PowerShell のバージョンは、Azure PowerShell ウィンドウで `(get-module Azure).Version` コマンドを使って確認できます。
 
 ## クラスターのスケール設定の使用方法
 
@@ -75,19 +77,19 @@ CLI コマンドを使用して Storm トポロジのバランスを再調整す
 
 ![](http://i.imgur.com/u5Mewwx.png)
 
-### PowerShell
-PowerShell を使用して Hadoop クラスターのサイズを変更するには、クライアント コンピューターから次のコマンドを実行します。
+### Azure PowerShell
+Azure PowerShell を使用して Hadoop クラスターのサイズを変更するには、クライアント コンピューターから次のコマンドを実行します。
 
 	Set-AzureHDInsightClusterSize -ClusterSizeInNodes <NewSize> -name <clustername>	
 
-> [WACOM.NOTE] このコマンドを使用するには、クライアント コンピューターに Azure PowerShell Version 0.8.14 以降がインストールされている必要があります。
+> [AZURE.NOTE]このコマンドを使用するには、クライアント コンピューターに Azure PowerShell Version 0.8.14 以降がインストールされている必要があります。
 
 ### SDK
-HDInsight SDK を使用して Hadoop クラスターのサイズを変更するには、次の 2 つのメソッドのいずれかを使用します。 
+HDInsight SDK を使用して Hadoop クラスターのサイズを変更するには、次のメソッドのいずれかを使用します。
 
 	ChangeClusterSize(string dnsName, string location, int newSize) 
 
-または 
+または
 
 	ChangeClusterSizeAsync(string dnsName, string location, int newSize) 
 
@@ -115,10 +117,10 @@ HDInsight SDK を使用して Hadoop クラスターのサイズを変更する�
 	            string certfriendlyname = "<CertificateFriendlyName>";     
 	            string subscriptionid = "<SubscriptionID>";
 	            string clustername = "<ClusterDNSName>";
-	     		string location = "<ClusterLocation>"";
+	     		string location = "<ClusterLocation>”";
 				int newSize = <NewClusterSize>;
 	
-	            // Get the certificate object from certificate store using the friendly name to identify it
+	            // Get the certificate object from certificate store by using the friendly name to identify it
 	            X509Store store = new X509Store();
 	            store.Open(OpenFlags.ReadOnly);
 	            X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certfriendlyname);
@@ -129,7 +131,7 @@ HDInsight SDK を使用して Hadoop クラスターのサイズを変更する�
 	
 	            Console.WriteLine("Rescaling HDInsight cluster ...");
 	
-	            // Change cluster size
+	            // Change the cluster size
 	     		ClusterDetails cluster = client.ChangeClusterSize(clustername, location, newSize);
 	            
 	            Console.WriteLine("Cluster Rescaled: {0} \n New Cluster Size = {1}", cluster.ConnectionUrl, cluster.ClusterSizeInNodes);
@@ -140,5 +142,6 @@ HDInsight SDK を使用して Hadoop クラスターのサイズを変更する�
 	}
 
 
-HDInsight .NET SDK の使用の詳細については、「[Provision Hadoop clusters in HDInsight using custom options (カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング)](http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/)」のトピックを参照してください。
-<!--HONumber=47-->
+HDInsight .NET SDK の使用の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」のトピックをご覧ください。
+
+<!--HONumber=54-->

@@ -1,9 +1,9 @@
-﻿<properties 
-   pageTitle="Azure SDK for .NET リリース ノート" 
-   description="Azure SDK for .NET リリース ノート" 
+<properties 
+   pageTitle="Azure SDK for .NET 2.5.1 リリース ノート" 
+   description="Azure SDK for .NET 2.5.1 リリース ノート" 
    services="app-service" 
    documentationCenter=".net,nodejs,java" 
-   authors="adgoda" 
+   authors="Juliako" 
    manager="dwrede" 
    editor=""/>
 
@@ -17,9 +17,9 @@
    ms.author="juliako"/>
 
 
-# Azure SDK for .NET リリース ノート
+# Azure SDK for .NET 2.5.1 リリース ノート
 
-このドキュメントには、Azure SDK for .NET 2.5.1 リリースのリリース ノートが含まれます。 
+このドキュメントには、Azure SDK for .NET 2.5.1 リリースのリリース ノートが含まれます。
 
 ##Azure SDK for .NET 2.5.1 リリース ノート
 
@@ -27,7 +27,7 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 
 - **Web ツールの拡張機能**に関連する新機能とシナリオ。 
 
-	- Azure Websites から Azure App Service への名称変更。詳細については、[Azure App Service と既存の Azure サービス](app-service-changes-existing-services.md)に関するページを参照してください。
+	- Azure Websites から Azure App Service への名称変更。詳細については、「[Azure App Service と既存の Azure サービス](app-service-changes-existing-services.md)」を参照してください。
 	- Azure API Apps (プレビュー) のサポートが追加されたため、顧客は ASP.NET プロジェクトを API Apps として発行できるようになり、C# プロジェクトで [追加] > [Azure API アプリ クライアント] ジェスチャを使用して、デプロイされた API アプリの構造に基づいてコードを生成することができます。 
 	- サーバー エクスプローラーの Websites ノードは廃止予定で、代わりに Azure App Service ノードが使用されます。このノードには、Azure API アプリ、モバイル アプリ、Web アプリのリソース グループ ベースのグループ化のサポートが含まれています。
 	- Azure Mobile Apps (プレビュー) のサポートが追加されたため、顧客は新しいモバイル アプリ プロジェクトの作成、モバイル アプリ コントローラーの追加、プロジェクトの発行、アプリケーションのリモート デバッグを実行できます。
@@ -35,16 +35,16 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 	- Web アプリと API アプリの発行ダイアログは、リソース グループ化という Azure ポータルの概念をサポートするように拡張され、Azure リソース グループと App Service プランの選択/作成は、新しい Web アプリと API アプリのプロビジョニング ダイアログで表されます。 
 	- Azure API アプリのサーバー エクスプローラーのノードは、Azure ポータルの API アプリに関する深いリンクや、ログのストリーミングやリモート デバッグなどの他の機能へのリンクを提供します。
 
-	Azure SDK .NET 2.5.1 の既知の問題と現在の制限事項については、[この](app-service-release-notes.md#known_issues_2_5_1)下のセクションを参照してください。 
+	Azure SDK .NET 2.5.1 の既知の問題と現在の制限事項については、[この下のセクション](app-service-release-notes.md#known_issues_2_5_1)を参照してください。
 
 
-- Visual Studio の **HDInsight ツール**に関連する新しい機能とシナリオは、このリリースで有効になっています。 
+- Visual Studio の **HDInsight ツール**に関連する新しい機能とシナリオは、このリリースで有効になっています。
 	- Hive スクリプトのローカルな検証。ツール バーの [スクリプトの検証] をクリックして、スクリプトにエラーがあるかどうかを確認します。 
 	- Hive ジョブのデバッグの向上。Visual Studio の YARN ログにアクセスして、Hive ジョブをデバッグできるようになりました。アプリケーションにパフォーマンスの問題がある場合、YARN ログを調査することで有用な情報が得られます。
 	- (パブリック プレビュー) Hive 用にキーワードのオート コンプリートと IntelliSense のサポート。Hive スクリプトの作成を容易にするため、HDInsight Tools for Visual Studio では Hive 用にキーワードのオート コンプリートと IntelliSense のサポートが追加されました。
 	- Storm のサポート。HDInsight Tools for Visual Studio を使用して、C# で Storm トポロジ/スパウト/ボルトを開発できるようになりました。その後、開発したトポロジを Storm クラスターに送信し、トポロジ/ボルト/スパウトの状態を確認することができます。システム ログと顧客のログを使用して、Storm トポロジ/ボルト/スパウトのトラブルシューティングを行うことができます。また、Storm の既存の JAVA 資産を HDInsight で使用することもできます。
 	
-	詳細については、[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
+	詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
 
 
@@ -67,4 +67,4 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 - コンテキスト メニューの [Azure API アプリ クライアントの追加] を使用した API アプリの使用は、C# でのみサポートされます。
 
 
-<!--HONumber=49-->
+<!--HONumber=54-->

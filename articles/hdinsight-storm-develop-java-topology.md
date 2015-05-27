@@ -1,4 +1,4 @@
-﻿<properties
+<properties
    pageTitle="HDInsight | Azure での Apache Storm の Java ベース トポロジの開発"
    description="簡単なワード カウント トポロジを作成して、Java で Storm トポロジを作成する方法について説明します。"
    services="hdinsight"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="04/28/2015"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm の Java ベース トポロジの開発
@@ -26,29 +26,29 @@ Maven を使用して HDInsight での Apache Storm の Java ベース トポロ
 
 * <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank">Java Developer Kit (JDK) バージョン 7</a>
 
-* <a href="https://maven.apache.org/download.cgi" target="_blank">Maven</a> - Maven は Java プロジェクトのプロジェクト ビルド システムです
+* <a href="https://maven.apache.org/download.cgi" target="_blank">Maven</a>: Maven は Java プロジェクトのプロジェクト ビルド システムです
 
-* <a href="http://www.gnu.org/software/emacs/" target="_blank">Emacs<a>、<a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>、<a href="https://atom.io/" target="_blank">Atom.io</a>、<a href="http://brackets.io/" target="_blank">Brackets.io</a>、メモ帳などのテキスト エディター。または、<a href="https://eclipse.org/" target="_blank">Eclipse</a> (バージョン Luna またはそれ以降) などの統合開発環境 (IDE)。
+* メモ帳、<a href="http://www.gnu.org/software/emacs/" target="_blank">Emacs<a>、<a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>、<a href="https://atom.io/" target="_blank">Atom.io</a>、<a href="http://brackets.io/" target="_blank">Brackets.io</a> などのテキスト エディター。また、<a href="https://eclipse.org/" target="_blank">Eclipse</a> (バージョン Luna またはそれ以降) などの統合開発環境 (IDE) を使用することもできます。
 
-	> [AZURE.NOTE] お使いのエディターまたは IDE には、Eclipse との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
+	> [AZURE.NOTE]お使いのエディターまたは IDE には、Eclipse との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
 
 ##環境変数を構成する
 
-Java や JDK のインストールで次の環境変数が設定される場合がありますが、これらが存在するかどうか、システムに対して適切な値が含まれているかを確認する必要があります。
+Java と JDK をインストールするときに、次のような環境変数が設定される場合があります。ただし、これらが存在するかどうかや、システムに対して適切な値が含まれているかを確認する必要があります。
 
-* **JAVA_HOME** - Java ランタイム環境 (JRE) がインストールされているディレクトリを指している必要があります。たとえば、Unix や Linux ディストリビューションの場合は、 `/usr/lib/jvm/java-7-oracle` のような値になります。Windows の場合は、"c:\Program Files (x86)\Java\jre1.7" のような値になります。
+* **JAVA_HOME** - Java ランタイム環境 (JRE) がインストールされているディレクトリを指している必要があります。たとえば、Unix や Linux ディストリビューションの場合は、`/usr/lib/jvm/java-7-oracle` のような値になります。Windows の場合は、`c:\Program Files (x86)\Java\jre1.7` のような値になります。
 
 * **PATH** - 次のパスを含む必要があります。
 
 	* **JAVA_HOME** または同等のパス
 
-	* **JAVA_HOME\bin** または同等のパス
+	* **JAVA_HOME\\bin** または同等のパス
 
 	* Maven がインストールされているディレクトリ
 
 ##新しい Maven プロジェクトを作成する
 
-コマンド ラインで、次の手順を使用して **WordCount** という名前の新しい Maven プロジェクトを作成します。
+コマンド ラインで、次のコードを使用して **WordCount** という名前の新しい Maven プロジェクトを作成します。
 
 	mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
 
@@ -56,23 +56,23 @@ Java や JDK のインストールで次の環境変数が設定される場合�
 
 **WordCount** ディレクトリには次のアイテムが含まれます。
 
-* **pom.xml** - Maven プロジェクトの設定が含まれます。
+* **pom.xml**: Maven プロジェクトの設定が含まれます。
 
-* **src\main\java\com\microsoft\example** - アプリケーション コードが含まれます。
+* **src\\main\\java\\com\\microsoft\\example**: アプリケーション コードが含まれます。
 
-* **src\test\java\com\microsoft\example** - アプリケーションのテストが含まれます。今回の例では、テストは作成しません。
+* **src\\test\\java\\com\\microsoft\\example**: アプリケーションのテストが含まれます。今回の例では、テストは作成しません。
 
 ###サンプル コードを削除する
 
-ここではアプリケーションを最初から作成するため、生成されたテスト ファイルとアプリケーション ファイルを削除します。
+ここではアプリケーションを作成するため、生成されたテスト ファイルとアプリケーション ファイルを削除します。
 
-*  **src\test\java\com\microsoft\example\AppTest.java**
+*  **src\\test\\java\\com\\microsoft\\example\\AppTest.java**
 
-*  **src\main\java\com\microsoft\example\App.java**
+*  **src\\main\\java\\com\\microsoft\\example\\App.java**
 
 ##依存関係を追加する
 
-これは Storm トポロジであるため、Storm コンポーネントの依存関係を追加する必要があります。**pom.xml** を開いて、**&lt;dependencies>** セクションに次の内容を追加します。
+これは Storm トポロジであるため、Storm コンポーネントの依存関係を追加する必要があります。**pom.xml** を開いて、**&lt;dependencies>** セクションに次のコードを追加します。
 
 	<dependency>
 	  <groupId>org.apache.storm</groupId>
@@ -84,11 +84,11 @@ Java や JDK のインストールで次の環境変数が設定される場合�
 
 コンパイル時に、Maven がこの情報を使用して Maven レポジトリで **storm-core** を検索します。まず、ローカル コンピューター上のレポジトリを検索します。ファイルが見つからない場合は、パブリックの Maven レポジトリをダウンロードして、それをローカル レポジトリに保存します。
 
-> [AZURE.NOTE] 追加したセクションの `<scope>provided</scope>` 行に注目してください。この行によって、Maven に作成されるすべての Jar ファイルから storm-core を除外するよう指示しています。storm-core はシステムから提供されるためです。これで、作成するパッケージのサイズが抑えられ、HDInsight クラスターのStorm に含まれる storm-core を使用するようにできます。
+> [AZURE.NOTE]追加したセクションの `<scope>provided</scope>` 行に注目してください。この行によって、Maven に作成されるすべての JAR ファイルから **storm-core** を除外するよう指示しています。storm-core はシステムから提供されるためです。これで、作成するパッケージのサイズが抑えられ、HDInsight クラスターの Storm に含まれる**storm-core** ビットを確実に使用できます。
 
 ##ビルド構成
 
-Maven プラグインでは、プロジェクトのコンパイル方法や、jar ファイルへのパッケージ方法といったプロジェクトのビルド ステージをカスタマイズできます。**pom.xml** を開いて、`</project>` 行のすぐ上に次の行を追加します。
+Maven プラグインでは、プロジェクトのコンパイル方法や、JAR ファイルへのパッケージ方法といったプロジェクトのビルド ステージをカスタマイズできます。**pom.xml** ファイルを開いて、`</project>` 行のすぐ上に次のコードを追加します。
 
 	<build>
 	  <plugins>
@@ -97,9 +97,9 @@ Maven プラグインでは、プロジェクトのコンパイル方法や、ja
 
 このセクションは、プラグインや他のビルド構成オプションを追加する際に使用します。
 
-###プラグインを追加する
+###プラグインの追加
 
-Storm トポロジの場合、<a href="http://mojo.codehaus.org/exec-maven-plugin/" target="_blank">Exec プラグイン</a>が便利です。Exec プラグインを使用すると、開発環境でトポロジをローカルに実行することが簡単にできます。**pom.xml** の `<plugins>` セクションに次の内容を追加して Exec プラグインを追加します。
+Storm トポロジの場合、<a href="http://mojo.codehaus.org/exec-maven-plugin/" target="_blank">Exec Maven プラグイン</a>が便利です。Exec Maven プラグインを使用すると、開発環境でトポロジをローカルに実行することが簡単にできます。**pom.xml** ファイルの `<plugins>` セクションに次の内容を追加して Exec Maven プラグインを追加します。
 
 	<plugin>
       <groupId>org.codehaus.mojo</groupId>
@@ -120,9 +120,9 @@ Storm トポロジの場合、<a href="http://mojo.codehaus.org/exec-maven-plugi
       </configuration>
     </plugin>
 
-別の役立つプラグインとして<a href="http://maven.apache.org/plugins/maven-compiler-plugin/" target="_blank">コンパイラ プラグイン</a>があり、コンパイル オプションを変更するために使用します。これは主に、Maven がアプリケーションのソースとターゲットに使用する Java バージョンを変更する際に必要になります。使用するバージョンは、1.7 です。
+別の役立つプラグインとして <a href="http://maven.apache.org/plugins/maven-compiler-plugin/" target="_blank">Apache Maven Compiler プラグイン</a>があり、コンパイル オプションを変更するために使用します。これは主に、Maven がアプリケーションのソースとターゲットに使用する Java バージョンを変更する際に必要になります。使用するバージョンは、1.7 です。
 
-**pom.xml** の `<plugins>` セクションに次の内容を追加して、コンパイラ プラグインを追加し、ソースとターゲットのバージョンを 1.7 に設定します。
+**pom.xml** ファイルの `<plugins>` セクションに次の内容を追加して、Apache Maven Compiler プラグインを追加し、ソースとターゲットのバージョンを 1.7 に設定します。
 
 	<plugin>
       <groupId>org.apache.maven.plugins</groupId>
@@ -135,25 +135,25 @@ Storm トポロジの場合、<a href="http://mojo.codehaus.org/exec-maven-plugi
 
 ##トポロジを作成する
 
-Java ベースの Storm トポロジは、作成または依存関係として参照する必要のある 3 つのコンポーネントで構成されます。
+Java ベースの Storm トポロジは、作成か依存関係として参照する必要のある 3 つのコンポーネントで構成されます。
 
-* **スパウト** - 外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
+* **スパウト**: 外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
 
-* **ボルト** - スパウトや他のボルトから出力されたストリームの処理を実行し、1 つ以上のストリームを出力します。
+* **ボルト**: スパウトや他のボルトから出力されたストリームの処理を実行し、1 つ以上のストリームを出力します。
 
-* **トポロジ** - スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
+* **トポロジ**: スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
 
 ###スパウトを作成する
 
-外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。これは、Storm-Starter のサンプル (<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">https://github.com/apache/storm/blob/master/examples/storm-starter/</a>) で提供されているスパウトを変更したバージョンです。
+外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。これは、(<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">Storm-Starter のサンプル</a>) で提供されているスパウトを変更したバージョンです。
 
-> [AZURE.NOTE] 外部データソースから読み取るスパウトの例を見るには、次の例をご覧ください。
+> [AZURE.NOTE]外部データソースから読み取るスパウトの例を見るには、次の例をご覧ください。
 >
-> * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout</a> - Twitter から読み取りを行うスパウトの例
+> * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout</a>: Twitter から読み取りを行うスパウトの例
 >
-> * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm Kafka</a> - Kafka から読み取りを行うスパウトの例
+> * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm Kafka</a>: Kafka から読み取りを行うスパウトの例
 
-スパウトでは、**src\main\java\com\microsoft\example** ディレクトリに **RandomSentenceSpout.java** という名前のファイルを作成し、次の内容をコンテンツとして使用します。
+スパウトでは、**src\\main\\java\\com\\microsoft\\example** ディレクトリに **RandomSentenceSpout.java** という名前のファイルを作成し、次の内容をコンテンツとして使用します。
 
     /**
      * Licensed to the Apache Software Foundation (ASF) under one
@@ -239,19 +239,19 @@ Java ベースの Storm トポロジは、作成または依存関係として�
 
 コードのコメントに目を通して、スパウトの仕組みを理解してください。
 
-> [AZURE.NOTE] このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
+> [AZURE.NOTE]このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
 
 ###ボルトを作成する
 
 ボルトは、データの処理を扱います。このトポロジでは、次の 2 つがあります。
 
-* **SplitSentence** - RandomSentenceSpout から出力されたセンテンスを個別の単語に分割します。
+* **SplitSentence**: **RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
 
-* **WordCount** - 各単語が発生した回数をカウントします。
+* **WordCount**: 各単語が発生した回数をカウントします。
 
-> [AZURE.NOTE] ボルトは、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
+> [AZURE.NOTE]ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
 
-**src\main\java\com\microsoft\example** ディレクトリに、**SplitSentence.java** と **WordCount.Java** という 2 つの新しいファイルを作成します。ファイルの内容として、次を使用します。
+**src\\main\\java\\com\\microsoft\\example** ディレクトリに、**SplitSentence.java** と **WordCount.Java** という 2 つの新しいファイルを作成します。ファイルの内容として、次を使用します。
 
 **SplitSentence**
 
@@ -300,7 +300,7 @@ Java ベースの Storm トポロジは、作成または依存関係として�
       }
     }
 
-**WordCount**
+**ワードカウント**
 
     package com.microsoft.example;
 
@@ -350,9 +350,9 @@ Java ベースの Storm トポロジは、作成または依存関係として�
 
 次の図は、このトポロジのコンポーネントの基本的なグラフを示しています。
 
-![diagram showing the spouts and bolts arrangement](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
+![スパウトとボルトの配置を示すダイアグラム](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
 
-トポロジを実装するには、**src\main\java\com\microsoft\example** ディレクトリに **WordCountTopology.java** という名前の新しいファイルを作成します。ファイルの内容として、次を使用します。
+トポロジを実装するには、**src\\main\\java\\com\\microsoft\\example** ディレクトリに **WordCountTopology.java** という名前の新しいファイルを作成します。ファイルの内容として、次を使用します。
 
 	package com.microsoft.example;
 
@@ -414,25 +414,25 @@ Java ベースの Storm トポロジは、作成または依存関係として�
 
 コードのコメントに目を通して、トポロジがどのように定義されて、クラスターに送信されているかを理解してください。
 
-##ローカルでトポロジをテストする
+##ローカルでのトポロジのテスト
 
 ファイルを保存したら、次のコマンドを使用してトポロジをローカルでテストします。
 
 	mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 
-実行中、スタートアップ情報が表示され、スパウトからセンテンスが出力されてボルトがそれを処理すると次のような行が表示されます。
+実行中、スタートアップ情報が表示されます。スパウトからセンテンスが出力されてボルトがそれを処理すると次のような行が表示されます。
 
-    15398 [Thread-16-split] INFO  backtype.storm.daemon.executor - Processing received message source: spout:10, stream: default, id:{}, [an apple a day keeps thedoctor away]]
+    15398 [Thread-16-split] INFO  backtype.storm.daemon.executor - Processing received message source: spout:10, stream: default, id: {}, [an apple a day keeps thedoctor away]]
     15398 [Thread-16-split] INFO  backtype.storm.daemon.task - Emitting: split default [an]
-    15399 [Thread-10-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id:{}, [an]
+    15399 [Thread-10-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id: {}, [an]
     15399 [Thread-16-split] INFO  backtype.storm.daemon.task - Emitting: split default [apple]
-    15400 [Thread-8-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id:{}, [apple]
+    15400 [Thread-8-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id: {}, [apple]
     15400 [Thread-16-split] INFO  backtype.storm.daemon.task - Emitting: split default [a]
     15399 [Thread-10-count] INFO  backtype.storm.daemon.task - Emitting: count default [an, 53]
-    15400 [Thread-12-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id:{}, [a]
+    15400 [Thread-12-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id: {}, [a]
     15400 [Thread-16-split] INFO  backtype.storm.daemon.task - Emitting: split default [day]
     15400 [Thread-8-count] INFO  backtype.storm.daemon.task - Emitting: count default [apple, 53]
-    15401 [Thread-10-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id:{}, [day]
+    15401 [Thread-10-count] INFO  backtype.storm.daemon.executor - Processing received message source: split:6, stream: default, id: {}, [day]
     15401 [Thread-16-split] INFO  backtype.storm.daemon.task - Emitting: split default [keeps]
     15401 [Thread-12-count] INFO  backtype.storm.daemon.task - Emitting: count default [a, 53]
 
@@ -444,17 +444,17 @@ Java ベースの Storm トポロジは、作成または依存関係として�
 
 3. Count ボルトが各単語が出力された回数を出力する
 
-Count ボルトで出力されたデータを見ると、 'apple' が 53 回出力されたことがわかります。カウントは、同じセンテンスがランダムに何回も出力される間トポロジの実行が終わるまで続行し、カウントがリセットされることはありません。
+Count ボルトで出力されたデータを見ると、apple が 53 回出力されたことがわかります。カウントは、同じセンテンスがランダムに何回も出力される間トポロジの実行が終わるまで続行し、カウントがリセットされることはありません。
 
 ##Trident
 
-Trident は、ステートフルな処理をサポートする Storm で提供される大枠の抽象概念です。Trident の主なメリットは、トポロジが受けるすべてのメッセージが一度しか処理されないよう保証できることです。これは、メッセージが少なくとも一度は処理されるということのみを保証する未加工型の Java のトポロジでは実現するのが難しい動作です。他にも、ボルトを作成する代わりに使える組み込みのコンポーネントがあるなどの違いがあります。実際には、ボルトはフィルター、プロジェクション、関数といった、あまり汎用でないコンポーネントで完全に置き換えられます。
+Trident は Storm から提供される大枠の抽象概念です。ステートフルな処理をサポートします。Trident の主なメリットは、トポロジが受けるすべてのメッセージが一度しか処理されないよう保証できることです。これは、メッセージが少なくとも一度は処理されることを保証する未加工型の Java のトポロジでは実現するのが難しい動作です。他にも、ボルトを作成する代わりに使える組み込みのコンポーネントがあるなどの違いがあります。実際には、ボルトはフィルター、プロジェクション、関数といった、あまり汎用でないコンポーネントで完全に置き換えられます。
 
-Trident アプリケーションは Maven プロジェクトを使用して、上記と同じ手順でコードのみを変更して作成できます。
+Trident アプリケーションは Maven プロジェクトを使用して作成できます。この記事で前述した同じ基本の手順の、コードのみを変更して作成できます。
 
-Trident の詳細については、<a href="http://storm.apache.org/documentation/Trident-API-Overview.html" target="_blank">Trident API の概要</a>のページを参照してください。
+Trident の詳細については、「<a href="http://storm.apache.org/documentation/Trident-API-Overview.html" target="_blank">Trident API の概要</a>」のページをご覧ください。
 
-Trident アプリケーションの例については、次の記事を参照してください: [HDInsight での Apache Storm を使用した Twitter のトレンディング トピック](hdinsight-storm-twitter-trending.md)
+Trident アプリケーションの例については、「[HDInsight での Apache Storm を使用した Twitter のトレンディング トピック](hdinsight-storm-twitter-trending.md)」をご覧ください。
 
 ##次のステップ
 
@@ -464,6 +464,6 @@ Trident アプリケーションの例については、次の記事を参照し
 
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
-* [Analyzing Twitter trending topics with Apache Storm on HDInsight (HDInsight での Apache Storm を使用した Twitter のトレンディング トピックの分析)](hdinsight-storm-twitter-trending.md)
+Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」をご確認ください。
 
-<!--HONumber=47-->
+<!--HONumber=54-->

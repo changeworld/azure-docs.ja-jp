@@ -18,30 +18,30 @@
 
 # Google ログインを使用するようにアプリケーションを構成する方法
 
-このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。 
+このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。
 
-このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>. にアクセスしてください。
+このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動して、Google アカウント資格情報でサインインします。**[Create Project]** をクリックして**プロジェクト名**を入力し、**[Create]** をクリックします。
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動して、Google アカウント資格情報でサインインします。**[プロジェクトの作成]** をクリックして**プロジェクト名**を入力し、**[作成]** をクリックします。
 
-2. 左側のナビゲーション バーで、**[API & Auth]** をクリックします。次に、**[Consent screen]** をクリックします。**電子メール アドレス**を選択し、**製品名**を入力します。その後、**[保存]** をクリックします。 
+2. 左側のナビゲーション バーで、**[API と認証]** をクリックします。次に、**[同意画面]** をクリックします。**[メール アドレス]** を選択し、**サービス名**を入力します。その後、**[保存]** をクリックします。
 
-3. また、**[API & Auth]** で **[APIs]** 選択して、**Google + API** を有効にします。
+3. また、**[API と認証]** で **[API]** を選択して、**[Google+ API]** を有効にします。
 
-4. もう一度 **[API & Auth]** で、**[Credentials]**、**[Create new Client ID]** の順に選択します。
+4. もう一度 **[API と認証]** で、**[認証情報]**、**[新しいクライアント ID を作成]** の順に選択します。
 
-5. **[Web application]** を選択します。App Services ゲートウェイの URL を **[Authorized JavaScript Origins]** に入力します。次に **[Authorized Redirect URI]** の生成された URL をパス _/signin-google_ が末尾に追加されたゲートウェイの URL で置き換えます。例:  `https://contoso.azurewebsites.net/signin-google`.HTTPS スキームを使用していることを確認します。**[Create client ID]** をクリックします。
+5. **[ウェブ アプリケーション]** を選択します。App Services ゲートウェイの URL を **[承認済みの JavaScript 生成元]** に入力します。次に **[承認済みのリダイレクト URI]** の生成された URL を、パス _/signin-google_ が末尾に追加されたゲートウェイの URL で置き換えます。たとえば、「`https://contoso.azurewebsites.net/signin-google`」のように入力します。HTTPS スキームを使用していることを確認します。**[クライアント ID を作成]** をクリックします。
 
      ![][0]
 
-6. 次の画面で、**[ウェブ アプリケーションのクライアント ID]** の **[Client ID]** と **[Client secret]** の値を書き留めます。 
+6. 次の画面で、**[ウェブ アプリケーションのクライアント ID]** の **[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
-    > [AZURE.IMPORTANT] クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > [AZURE.IMPORTANT]クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 
-## <a name="secrets"> </a>Google の情報をモバイル アプリに追加します。
+## <a name="secrets"> </a>Google の情報をモバイル アプリに追加する
 
 7. [Azure の管理ポータル]にログオンし、App Services ゲートウェイに移動します。
 
@@ -66,8 +66,8 @@
 
 <!-- URLs. -->
 
-[Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
+[Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
 [Azure の管理ポータル]: https://portal.azure.com/
 
-<!--HONumber=49-->
+<!--HONumber=54-->

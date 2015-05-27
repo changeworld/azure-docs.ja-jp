@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure モバイル エンゲージメントの Windows ストア SDK の概要" 
-	description="Azure モバイル エンゲージメントの Windows ストア SDK の最新更新プログラムと手順について" 					
+	pageTitle="Windows ユニバーサル SDK の概要" 
+	description="Azure モバイル エンゲージメント向け Windows ユニバーサル SDK の概要" 									
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="kpiteira" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor="" />
 
@@ -11,181 +11,45 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="" 
+	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
-	ms.author="kapiteir" />
+	ms.date="04/02/2015" 
+	ms.author="piyushjo" />
 
-# 2.0.0
+#Azure モバイル エンゲージメント向け Windows ユニバーサル SDK の概要
 
-Windows ストア アプリで Azure モバイル エンゲージメントを統合する方法について詳しい情報を確認するには、ここから開始します。まず試してみる場合は、[15 分間チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)。をご覧ください
+ここから Azure モバイル エンゲージメントを Windows ユニバーサル アプリに統合する方法についての説明を開始します。まず試してみる場合は、「[15 分間チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)」を完了してください。
 
-[SDK コンテンツ](mobile-engagement-windows-store-sdk-content.md) について表示するにはここをクリックします。
+[SDK コンテンツ](mobile-engagement-windows-store-sdk-content.md)について表示するにはここをクリックします。
 
-## 統合手順
+##統合手順
 
-1. ここから開始:[Windows ストア アプリでモバイル エンゲージメントを統合する方法](mobile-engagement-windows-store-integrate-engagement.md)
+1. ここから開始: [Windows ユニバーサル アプリにモバイル エンゲージメントを統合する方法](mobile-engagement-windows-store-integrate-engagement.md)
 
-2. 通知:[How to integrate Reach (Notifications) in your Windows Store app (Windows ストア アプリでリーチ (通知) を統合する方法)](mobile-engagement-windows-store-integrate-engagement-reach.md)
+2. 通知: [リーチ (通知) を Windows ユニバーサル アプリに統合する方法](mobile-engagement-windows-store-integrate-engagement-reach.md)
 
-3. タグ付けプランの実装:[How to use the advanced Mobile Engagement tagging API in your Windows Store app (Windows ストア アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-store-use-engagement-api.md)
+3. タグ付けプランの実装: [Windows ユニバーサル アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法](mobile-engagement-windows-store-use-engagement-api.md)
 
-## リリース ノート
+##リリース ノート
 
+###3.0.1 (04/29/2015)
 
-## 2.0.0 (02/17/2015)
+-   一部の Windows Phone WinRT アプリで SDK 初期化に影響を与えるバグを修正しました。
 
--   Azure モバイル エンゲージメントの最初のリリース
--   appId/sdkKey 構成は、接続文字列の構成で置き換えられます。
--   セキュリティの強化。
+以前のバージョンについては、「[完全リリース ノート](mobile-engagement-windows-store-release-notes.md)」をご覧ください。
 
-以前のバージョンについては、[リリース ノートの完了](mobile-engagement-windows-store-release-notes.md) をご覧ください。
-
-## アップグレードの手順
+##アップグレードの手順
 
 既にアプリケーションに以前のバージョンのモバイル エンゲージメントを統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
-SDKsee の一部のバージョンが不足している場合、いくつかの手順に従って[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure.md) を完了する必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
+SDK のいくつかのバージョンがない場合は、次の手順に従う必要があります。完全な「[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure.md)」をご覧ください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
-## 1.1.1 から 2.0.0 に移行
+###2.0.0 から 3.0.0 に移行
 
-Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。 
+#### リソース
+この手順では、カスタマイズされたリソースが問題になります。SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
 
->[Azure.IMPORTANT] Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
+### 古いバージョンからのアップグレード
 
-以前のバージョンから移行する場合は、Capptain Web サイトをご覧のうえ、まず 1.1.1 に移行し、次の手順を適用してください。
-
-### NuGet パッケージ
-
-アーカイブ パッケージの lib フォルダーの「Capptain.WindowsPhone.nupkg」を「azuresdk-mobileengagement-windows-VERSION.nupkg」で置き換えます。
-
-### モバイル エンゲージメントの適用
-
-SDK では、 `Engagement` という項目を使用します。この変更を一致させるためにプロジェクトをアップグレードする必要があります。
-
-現在の Capptain NuGet パッケージをアンインストールする必要があります。[Capptain Resources] フォルダー内のすべての変更が削除されることを検討します。これらのファイルを保持する場合は、コピーを作成します。
-
-そのあと、新しい Microsoft Azure エンゲージメント NuGet パッケージをプロジェクトにインストールします。[NuGet の Web サイト]または、ここのインデックスで直接検索できます。この操作は、エンゲージメントによって使用されるすべてのリソース ファイルを置換し、プロジェクトの参照に新しいエンゲージメントの DLL を追加します。
-
-Capptain DLL の参照を削除して、プロジェクトの参照をクリーンアップする必要があります。これを実行しない場合は、Capptain のバージョンが競合してエラーが発生します。
-
-Capptain リソースをカスタマイズした場合、古いファイルの内容をコピーし、新しいエンゲージメントのファイルに貼り付けます。xaml と cs ファイルの両方を更新する必要があることにご注意ください。
-
-これらの手順が完了したら、新しいエンゲージメントの参照で古い Capptain の参照を置き換える必要があります。
-
-すべての Capptain 名前空間の更新が必要です。
-
-移行前:
-
-			using Capptain.Agent;
-			using Capptain.Reach;
-
-移行後:
-
-			using Microsoft.Azure.Engagement;
-
-"Capptain" が含まれているすべての Capptain クラスには、"Engagement" が含まれている必要があります。
-
-移行前:
-
-			public sealed partial class MainPage : CapptainPage
-			{
-			  protected override string GetCapptainPageName()
-			  {
-			    return "Capptain Demo";
-			  }
-			  ...
-			}
-
-移行後:
-
-			public sealed partial class MainPage : EngagementPage
-			{
-			  protected override string GetEngagementPageName()
-			  {
-			    return "Engagement Demo";
-			  }
-			  ...
-			}
-
-xaml ファイルの Capptain 名前空間と属性も変更します。
-
-移行前:
-
-			<capptain:CapptainPage
-			...
-			xmlns:capptain="using:Capptain.Agent"
-			...
-			</capptain:CapptainPage>
-
-移行後:
-
-			<engagement:EngagementPage
-			...
-			xmlns:engagement="using:Microsoft.Azure.Engagement"
-			...
-			</engagement:EngagementPage>
-
-> [AZURE.IMPORTANT] オーバーレイも変更します。その新しい名前空間は  `Microsoft.Azure.Engagement.Overlay` です。xaml と cs ファイルの両方で使用する必要があります。さらに、 `CapptainGrid` は  `EngagementGrid` と名前が付けられ、 `capptain_notification_content` と  `capptain_announcement_content` は  `engagement_notification_content` と  `engagement_announcement_content` と名前が付けられます。
-
-オーバーレイについて:
-
-			<capptain:CapptainPageOverlay
-			  xmlns:capptain="using:Capptain.Overlay"
-			  ...
-			</capptain:CapptainPageOverlay>
-
-次のようになります:
-
-			<EngagementPageOverlay
-			  engagement="using:Microsoft.Azure.Engagement.Overlay"
-			  ...
-			</engagement:EngagementPageOverlay>
-
-Capptain 画像や HTML ファイルなどその他のリソースについては、"Engagement" を使用して名前が変更されていることにもご注意ください。
-
-### プロジェクトの宣言
-
-Package.appxmanifest で  `File Type Associations` が次から更新されています。
-
-> -   capptain\_reach\_content to engagement\_reach\_content
-> -   capptain\_log\_file to engagement\_log\_file
-
-### アプリケーション ID / SDK キー
-
-エンゲージメントは、接続文字列を使用します。モバイル エンゲージメントでアプリケーション ID と SDK キーを指定する必要はありません。指定する必要があるのは接続文字列のみです。接続文字列は、EngagementConfiguration ファイルで設定できます。
-
-エンゲージメントの構成は、プロジェクトの  `Resources\EngagementConfiguration.xml` ファイルで設定できます。
-
-このファイルを編集して次を指定します。
-
--   `<connectionString>` と `<\connectionString>` タグ間のアプリケーション接続文字列。
-
-代わりに実行時に指定する場合、エンゲージメント エージェントの初期化前に次のメソッドを呼び出すことができます。
-
-			/* Engagement configuration. */
-			EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-			engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
-			
-			/* Initialize Engagement agent with above configuration. */
-			EngagementAgent.Instance.Init(args, engagementConfiguration);
-
-アプリケーションの接続文字列が Azure ポータルに表示されます。
-
-### 項目名の変更
-
-...capptain... という名前の項目は ...engagement... と名前が変更されています。Capptain と Engagement についても同様です。
-
-一般的に使用される Capptain 項目の例:
-
-> -   CapptainConfiguration は EngagementConfiguration という名前になりました
-> -   CapptainAgent は EngagementAgent という名前になりました
-> -   CapptainReach は EngagementReach という名前になりました
-> -   CapptainHttpConfig は EngagementHttpConfig という名前になりました
-> -   GetCapptainPageName は GetEngagementPageName という名前になりました
-
-名前の変更は、オーバーライドされたメソッドにも影響することにご注意ください。
-
-[NuGet の Web サイト]:http://www.nuget.org/packages/Capptain.WindowsCS
-
-<!--HONumber=47-->
+[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure/)をご覧ください
+<!--HONumber=54-->

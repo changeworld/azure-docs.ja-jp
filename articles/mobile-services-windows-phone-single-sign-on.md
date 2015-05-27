@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | モバイル デベロッパー センター" 
 	description="Windows Phone アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。" 
 	services="mobile-services" 
@@ -10,97 +10,47 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/22/2014" 
+	ms.date="04/09/2015" 
 	ms.author="glenga"/>
 
-# Live Connect シングル サインオンによる Windows Phone 8 アプリの認証
+# Microsoft アカウントを使用して、クライアントによって管理される認証で Windows Phone アプリを認証します。
 
-<div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/documentation/articles/mobile-services-windows-store-dotnet-single-sign-on/" title="Windows Store C#">Windows ストア C#</a><a href="/documentation/articles/mobile-services-windows-store-javascript-single-sign-on/" title="Windows Store JavaScript">Windows ストア JavaScript</a><a href="/documentation/articles/mobile-services-windows-phone-single-sign-on/" title="Windows Phone" class="current">Windows Phone</a>
-</div>	
+[AZURE.INCLUDE [mobile-services-selector-single-signon](../includes/mobile-services-selector-single-signon.md)] 
+##概要
+このトピックでは、Windows Phone 8 または Windows Phone 8.1 の Silverlight アプリケーションから、Live SDK を使用して、Microsoft アカウントの認証トークンを取得する方法を示します。このトークンを使用して、Azure Mobile Services でユーザーを認証します。このチュートリアルでは、Live SDK を使用して、既存のプロジェクトに Microsoft アカウント認証を追加します。正常に認証されると、ログインしたユーザーの名前が認識され、ユーザー ID 値が表示されます。
 
-このトピックでは、Live Connect シングル サインオンを使用して、Windows Phone 8 アプリケーションから Azure のモバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、Live Connect を使用して、クイック スタート プロジェクトに認証を追加します。Live Connect によって正常に認証されると、ログインしたユーザーの名前が認識され、ユーザー ID 値が表示されます。  
-
->[AZURE.NOTE]このチュートリアルでは、Live Connect によって Windows Phone アプリケーションに提供されるシングル サインオンを使用する利点を説明します。これにより、モバイル サービスに既にログオンしているユーザーの認証が容易になります。複数の認証プロバイダーをサポートする、より汎用的な認証方法については、<a href="mobile-services-windows-phone-get-started-users.md">アプリへの認証の追加</a>に関するページを参照してください。 
-
-このチュートリアルでは、Live Connect 認証を有効にするための、次の基本的な手順について説明します。
-
-1. [アプリケーションを認証に登録し、Mobile Services を構成する]
-2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
-3. [アプリケーションに認証を追加する]
+>[AZURE.NOTE]このチュートリアルでは、クライアントによって管理される認証および Live SDK を使用した場合の利点について説明します。これにより、モバイル サービスに既にログオンしているユーザーの認証が容易になります。OneDrive のようなリソースにもアプリがアクセスできるようにするために、追加のスコープを要求することもできます。サービスによって管理される認証では、より汎用的なエクスペリエンスを提供し、複数の認証プロバイダーをサポートします。サービスによって管理される認証の詳細については、トピック「[アプリへの認証の追加](mobile-services-windows-phone-get-started-users.md)」を参照してください。
 
 このチュートリアルには、次のものが必要です。
 
-+ [Windows および Windows Phone 向け Live SDK]
-+ Microsoft Visual Studio 2012 Express for Windows Phone
-+ また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。.
++ [Live SDK]
++ Microsoft Visual Studio 2013 Update 3 以降のバージョン
++ また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。
 
-<h2><a name="register"></a>アプリケーションを Live Connect に登録する</h2>
+##Microsoft アカウントを使用するためのアプリケーションの登録 
 
-ユーザーを認証できるようにするには、Live Connect デベロッパー センターでアプリケーションを登録する必要があります。その後、クライアント シークレットを登録して Live Connect をモバイル サービスと統合する必要があります。
+ユーザーを認証できるようにするには、Microsoft アカウント デベロッパー センターでアプリケーションを登録する必要があります。この登録をモバイル サービスと接続する必要があります。Microsoft アカウントの登録を作成し、モバイル サービスに接続するには、次のトピックの手順を完了してください。
 
-1. [Azure 管理ポータル]にログオンし、**[Mobile Services]** をクリックして、目的のモバイル サービスをクリックします。
++ [Microsoft アカウント ログインを使用するためのアプリケーションの登録](mobile-services-how-to-register-microsoft-authentication.md) 
 
-   	![][4]
+##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
-2. **[ダッシュボード]** タブをクリックし、**[サイトの URL]** の値をメモしておきます。
+次に、サインインしたユーザーのみがリソース (この場合は *TodoItems* テーブル) にアクセスできるようにリソースへのアクセスを制限する必要があります。
 
-   	![][5]
+[AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../includes/mobile-services-restrict-permissions-windows.md)] 
 
-    後でこの値を使用して、リダイレクト ドメインを定義します。
+##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-3. Live Connect デベロッパー センターの <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">[マイ アプリケーション]</a> ページに移動し、必要な場合は Microsoft アカウントでログオンします。 
+最後に、Live SDK を追加し、これを使用してアプリケーションでユーザーを認証します。
 
-4. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
+1. **ソリューション エクスプローラー**でソリューションを右クリックし、[**NuGet パッケージの管理**] を選択します。
 
-   	![][1] 
+2. 左側のウィンドウで、[**オンライン**] カテゴリを選択し、**LiveSDK** を探します。**LiveSDK** パッケージで [**インストール**] をクリックし、すべてのプロジェクトを選択して、使用許諾契約に同意します。
 
-   	これでアプリケーションが Live Connect に登録されます。
-
-5. **[設定の編集]**、**[API 設定]** の順にクリックし、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めておきます。 
-
-   	![][2]
-
- > [AZURE.NOTE] **セキュリティ上の注意** クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
-
-6. **[リダイレクト ドメイン]** ボックスに手順 2. で入手したモバイル サービスの URL を入力し、**[モバイル クライアント アプリ]** の **[はい]** をクリックして、**[保存]** をクリックします。
-
-7. 管理ポータルに戻って **[ID]** タブをクリックし、Live Connect から入手した **[クライアント シークレット]** を入力して、**[保存]** をクリックします。
-
-   	![][13]
-
-これで、Live Connect と連携するようにモバイル サービスとアプリケーションが構成されました。
-
-<h2><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する</h2>
-
-1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。 
-
-   	![][14]
-
-2. **[アクセス許可]** タブで、すべてのアクセス許可を **[認証されたユーザーのみ]** に設定し、**[保存]** をクリックします。これにより、**TodoItem** テーブルに対するすべての操作には、認証されたユーザーが必要になります。また、次のチュートリアルのスクリプトは、匿名ユーザーの可能性を考慮する必要がなくなるため、簡素化されます。
-
-   	![][15]
-
-3. Visual Studio 2012 Express for Windows Phone で、チュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を実行したときに作成したプロジェクトを開きます。 
-
-4. F5 キーを押してこのクイック スタート ベースのアプリケーションを実行します。その結果、状態コード 401 (許可されていません) の例外が発生することを確認します。 
-   
-   	この問題は、認証されていないユーザーとしてアプリケーションからモバイル サービスにアクセスしているのに、_TodoItem_ テーブルでは認証が要求されるために発生します。
-
-次に、モバイル サービスからリソースを要求する前に Live Connect を使用してユーザーを認証するようにアプリケーションを更新します。
-
-<h2><a name="add-authentication"></a>アプリケーションに認証を追加する</h2>
-
-1. [Windows および Windows Phone 向け Live SDK] をダウンロードしてインストールします。
-
-2. Visual Studio で、**[プロジェクト]** メニューの **[参照の追加]** をクリックし、**[アセンブリ]** を展開して、**[拡張]** をクリックします。**[Microsoft.Live]** チェック ボックスをオンにし、**[OK]** をクリックします。 
-
-   	![][16]
-
-  	これにより、Live SDK への参照がプロジェクトに追加されます。
+  	Live SDK がソリューションに追加されます。
 
 5. mainpage.xaml.cs プロジェクト ファイルを開き、次の using ステートメントを追加します。
 
@@ -109,9 +59,11 @@
 6. MainPage クラスに、次のコード スニペットを追加します。
 	
         private LiveConnectSession session;
-        private async System.Threading.Tasks.Task Authenticate()
+        private static string clientId = "<microsoft-account-client-id>";
+        private async System.Threading.Tasks.Task AuthenticateAsync()
         {
-            LiveAuthClient liveIdClient = new LiveAuthClient("<< INSERT CLIENT ID HERE >>");
+            // Create the authentication client using the client ID of the registration.
+            LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
 
             while (session == null)
             {
@@ -126,75 +78,67 @@
 
                     string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
                     var message = string.Format("You are now logged in - {0}", loginResult.UserId);
-                    MessageBox.Show(message, title, MessageBoxButton.OK);                    
+                    MessageBox.Show(message, title, MessageBoxButton.OK);
                 }
                 else
                 {
                     session = null;
-                    MessageBox.Show("You must log in.", "Login Required", MessageBoxButton.OK);                    
+                    MessageBox.Show("You must log in.", "Login Required", MessageBoxButton.OK);
                 }
             }
-         }
+        }
 
-    これにより、現在の Live Connect セッションを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。
+    これにより、現在の Live Connect セッションを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。LiveLoginResult には、ユーザーを認証する Mobile Services に与えられる認証トークンが含まれています。
 
-7. 前の手順に含まれる文字列 _<< INSERT CLIENT ID HERE >>_  を、アプリケーションを Live Connect に登録した際に生成されたクライアント ID 値で更新します。
+7. 上記のコード スニペットで、プレース ホルダー `<microsoft-account-client-id>` は、アプリケーション用の Microsoft アカウント登録から取得したクライアント ID に置き換えます。
 
-    > [AZURE.NOTE] Windows Phone 8 アプリで、**LiveAuthClient** クラスのインスタンスは、クライアント ID 値をクラス コンストラクターに渡すことによって作成されます。[Windows ストア アプリ]では、(/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/)リダイレクト ドメインの URI を渡すことで同じクラスがインスタンス化されます。
+5. 既存の **OnNavigatedTo** メソッドのオーバーライドで、**RefreshTodoItems** メソッドの呼び出しをコメントアウトするか、削除します。
 
-8. 既存の **OnNavigatedTo** メソッド オーバーライドを削除またはコメントアウトして、ページの **Loaded** イベントを処理する次のメソッドに置き換えます。 
+	これを行うと、ユーザーが認証されるまでデータが読み込まれなくなります。次に、サインイン プロセスを開始するためのボタンを追加します。
 
-        async void MainPage_Loaded(object sender, RoutedEventArgs e)
+6. MainPage クラスに、次のコード スニペットを追加します。
+
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            await Authenticate();
+            // Login the user and then load data from the mobile service.
+            await AuthenticateAsync();
+
+            // Hide the login button and load items from the mobile service.
+            this.ButtonLogin.Visibility = System.Windows.Visibility.Collapsed;
             RefreshTodoItems();
         }
-
-   	このメソッドでは、新しい **Authenticate** メソッドが呼び出されます。 
-
-9. MainPage コンストラクターを次のコードに置き換えます。
-
-        // Constructor
-        public MainPage()
-        {
-            InitializeComponent();
-            this.Loaded += MainPage_Loaded;
-        }
-
-   	このコンストラクターでは、Loaded イベントのハンドラーも登録されます。
 		
-9. F5 キーを押してアプリケーションを実行し、Microsoft アカウントを使用して Live Connect にサインインします。 
+7. アプリケーション プロジェクトで、MainPage.xaml プロジェクト ファイルを開き、次の **Button** 要素を、**TitlePanel** の **TextBlock** 要素の後に追加します。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+		<Button Name="ButtonLogin" Click="ButtonLogin_Click" 
+                        Visibility="Visible">Sign in</Button>
+		
+9. F5 キーを押してアプリケーションを実行し、Microsoft アカウントを使用してサインインします。
+
+   ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+
+これで、登録された ID プロバイダーのいずれかによって認証されたユーザーは、*TodoItem* テーブルにアクセスできます。ユーザー固有データのセキュリティを強化するには、承認を実装する必要もあります。これを行うには、特定のユーザーのユーザー ID を取得します。この ID を使用することで、特定のリソースに対してユーザーが有する必要のあるアクセス権のレベルを特定できます。
 
 ## <a name="next-steps"> </a>次のステップ
 
-[スクリプトを使用したユーザーの承認]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。他の ID プロバイダーを認証に使用する方法については、「[認証の使用]」を参照してください。 
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。他の ID プロバイダーを認証に使用する方法については、「[モバイル サービスでの認証の使用]」を参照してください。
 
 <!-- Anchors. -->
-[アプリケーションを認証に登録し、Mobile Services を構成する]: #register
-[テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
-[アプリケーションに認証を追加する]: #add-authentication
-[次のステップ]:#next-steps
+[Register your app for authentication and configure Mobile Services]: #register
+[Restrict table permissions to authenticated users]: #permissions
+[Add authentication to the app]: #add-authentication
+[Next Steps]: #next-steps
 
 <!-- Images. -->
-[1]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-live-connect-add-app.png
-[2]: ./media/mobile-services-windows-phone-single-sign-on/mobile-live-connect-app-api-settings-mobile.png
-[4]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-selection.png
-[5]: ./media/mobile-services-windows-phone-single-sign-on/mobile-service-uri.png
 
-[13]: ./media/mobile-services-windows-phone-single-sign-on/mobile-identity-tab-ma-only.png
-[14]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-data-tables.png
-[15]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-perms.png
-[16]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
 
 <!-- URLs. -->
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows および Windows Phone 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[既存のアプリに Mobile Services を追加する]: mobile-services-windows-phone-get-started-data.md
-[認証の使用]: mobile-services-windows-phone-get-started-users.md
-[スクリプトを使用したユーザーの承認]: mobile-services-windows-phone-authorize-users-in-scripts.md
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[既存のアプリケーションへの Mobile Services の追加]: mobile-services-windows-phone-get-started-data.md
+[モバイル サービスでの認証の使用]: mobile-services-windows-phone-get-started-users.md
+[スクリプトを使用したユーザーの認証]: mobile-services-windows-phone-authorize-users-in-scripts.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure Management Portal]: https://manage.windowsazure.com/
 
-<!--HONumber=49-->
+<!--HONumber=54-->

@@ -16,15 +16,15 @@
 	ms.date="02/12/2015" 
 	ms.author="kapiteir" />
 
-# iOS でエンゲージメント リーチを統合する方法
+#iOS でエンゲージメント リーチを統合する方法
 
-> [AZURE.IMPORTANT] このガイドを実行する前に、「iOS でエンゲージメントを統合する方法」のドキュメントに記載されている統合手順に従う必要があります。
+> [AZURE.IMPORTANT]このガイドを実行する前に、「iOS でエンゲージメントを統合する方法」のドキュメントに記載されている統合手順に従う必要があります。
 
-## 統合手順
+##統合手順
 
 ### iOS プロジェクトにエンゲージメント リーチ SDK を埋め込む
 
--   Xcode プロジェクトにリーチ SDK を追加します。Xcode で、**[プロジェクト] \> [プロジェクトに追加]** の順に進み、 `EngagementReach` フォルダーを選択します。
+-   Xcode プロジェクトにリーチ SDK を追加します。Xcode で、**[プロジェクト] > [プロジェクトに追加]** の順に進み、`EngagementReach` フォルダーを選択します。
 
 ### アプリケーション デリゲートを変更する
 
@@ -44,11 +44,11 @@
 			}
 
 -   通知アイコンの **'icon.png'** 文字列とイメージ名を変更します。
--   リーチ キャンペーンで、オプションの  *Update badge value* を使用する場合、またはネイティブ プッシュの \</SaaS/Reach API/Campaign format/Native Push\> キャンペーンを使用する場合は、Reach モジュールにバッジ アイコン自体を管理させる必要があります (アプリケーションが起動またはフォアグラウンドで実行されるたびに、アプリケーション バッジは自動的にクリアされ、Engagement が格納した値もリセットされます)。これは、Reach モジュールの初期化後に、次の行を追加することによって行われます。
+-   リーチ キャンペーンで、オプションの *Update badge value* を使用する場合、またはネイティブ プッシュの </SaaS/Reach API/Campaign format/Native Push> キャンペーンを使用する場合は、Reach モジュールにバッジ アイコン自体を管理させる必要があります (アプリケーションが起動またはフォアグラウンドで実行されるたびに、アプリケーション バッジは自動的にクリアされ、Engagement が格納した値もリセットされます)。これは、Reach モジュールの初期化後に、次の行を追加することによって行われます。
 
 			[reach setAutoBadgeEnabled:YES];
 
--   Reach データ プッシュを処理する場合は、アプリケーション デリゲートに  `AEReachDataPushDelegate` プロトコルを準拠させる必要があります。Reach モジュールの初期化後に、次の行を追加します。
+-   Reach データ プッシュを処理する場合は、アプリケーション デリゲートに `AEReachDataPushDelegate` プロトコルを準拠させる必要があります。Reach モジュールの初期化後に、次の行を追加します。
 
 			[reach setDataPushDelegate:self];
 
@@ -73,7 +73,7 @@
 
 **アプリケーションは、リーチ コンテンツを受信して表示する準備ができました。**
 
-## お知らせとポーリングを常に受信する方法
+##お知らせとポーリングを常に受信する方法
 
 エンゲージメントは、Apple Push Notification Service を使用して、いつでもエンドユーザーにリーチ通知を送信できます。
 
@@ -116,7 +116,7 @@
 
 これらすべての手順が完了すると、アプリケーションはいつでもエンゲージメント プッシュ メッセージを受信する準備ができます。
 
-しかし、エンゲージメント プッシュ メッセージの到着に応答してアプリケーションが起動するときに、エンド ユーザーに何かを表示したい場合があります。これについては、 `AEPushDelegate` プロトコルでさらに次の 3 つのデリゲート メソッドを提供しています。
+しかし、エンゲージメント プッシュ メッセージの到着に応答してアプリケーションが起動するときに、エンド ユーザーに何かを表示したい場合があります。これについては、`AEPushDelegate` プロトコルでさらに次の 3 つのデリゲート メソッドを提供しています。
 
 			-(void)willRetrieveLaunchMessage;
 			-(void)didFailToRetrieveLaunchMessage;
@@ -203,7 +203,7 @@
 			  [alert release];
 			}
 
-## キャンペーンをカスタマイズする方法
+##キャンペーンをカスタマイズする方法
 
 ### 通知
 
@@ -215,9 +215,9 @@
 
 #### レイアウト
 
-アプリ内通知の外観を変更するには、既存のサブビューのタグの値と種類を保持している限り、必要に応じて  `AENotificationView.xib` ファイルを変更するだけです。
+アプリ内通知の外観を変更するには、既存のサブビューのタグの値と種類を保持している限り、必要に応じてファイル `AENotificationView.xib` を変更するだけです。
 
-既定では、アプリ内通知は画面の下部に表示されます。画面の上部に表示する場合は、指定された  `AENotificationView.xib` を編集し、メイン ビューの  `AutoSizing` プロパティを変更すると、そのスーパービューの上部に表示させることができます。
+既定では、アプリ内通知は画面の下部に表示されます。画面の上部に表示する場合は、指定された `AENotificationView.xib` を編集し、メイン ビューの `AutoSizing` プロパティを変更すると、そのスーパービューの上部に表示させることができます。
 
 #### カテゴリ
 
@@ -229,9 +229,9 @@
 			[reach registerNotifier:myNotifier forCategory:@"my_category"];
 			...
 
-`myNotifier` は、プロトコル  `AENotifier` に準拠しているオブジェクトのインスタンスである必要があります。
+`myNotifier` は、プロトコル `AENotifier` に準拠しているオブジェクトのインスタンスである必要があります。
 
-プロトコル メソッドを自分で実装したり、すでに多くの作業を行っている既存のクラス  `AEDefaultNotifier` を再実装することも可能です。
+プロトコル メソッドを自分で実装したり、既に多くの作業を行っている既存のクラス `AEDefaultNotifier` を再実装することも可能です。
 
 たとえば、特定のカテゴリの通知ビューを再定義する場合は、次の例に従って操作します。
 
@@ -249,17 +249,17 @@
 			
 			@end
 
-この簡単なカテゴリ例では、 `MyNotificationView.xib` という名前のファイルがメイン アプリケーション バンドルにあると想定しています。このメソッドが対応する  `.xib` を検出できない場合、通知は表示されず、エンゲージメントはコンソールにメッセージを出力します。
+この簡単なカテゴリ例では、`MyNotificationView.xib` という名前のファイルがメイン アプリケーション バンドルにあると想定しています。このメソッドが対応する `.xib` を検出できない場合、通知は表示されず、エンゲージメントはコンソールにメッセージを出力します。
 
 指定された nib ファイルは、次の規則を遵守する必要があります。
 
 -   1 つのビューのみを含む。
--   サブビューは、指定された  `AENotificationView.xib` という名前の nib ファイル内のものと同じ種類である。
--   サブビューは、指定された  `AENotificationView.xib` という名前の nib ファイル内のものと同じタグを持つ。
+-   サブビューは、指定された `AENotificationView.xib` という名前の nib ファイル内のものと同じ種類である。
+-   サブビューは、指定された `AENotificationView.xib` という名前の nib ファイル内のものと同じタグを持つ。
 
-> [AZURE.TIP] 指定された  `AENotificationView.xib` という名前の nib ファイルをコピーし、そこから作業を開始します。この nib ファイル内のビューは、クラス  `AENotificationView` に関連付けられていることに注意してください。このクラスは、コンテキストに応じてサブビューを移動し、サイズ変更するようにメソッド  `layoutSubViews` を再定義しました。これを  `UIView` や自分のカスタム ビュー クラスに置き換えることができます。
+> [AZURE.TIP]指定された `AENotificationView.xib` という名前の nib ファイルをコピーし、そこから作業を開始します。この nib ファイル内のビューは、クラス `AENotificationView` に関連付けられていることに注意してください。このクラスは、コンテキストに応じてサブビューを移動し、サイズ変更するようにメソッド `layoutSubViews` を再定義しました。これを `UIView` や自分のカスタム ビュー クラスに置き換えることができます。
 
-通知をさらに細かくカスタマイズする必要がある場合 (コードから直接ビューを読み込む場合など) は、 `Protocol ReferencesDefaultNotifier` と  `AENotifier` の指定されたソース コードやクラスのドキュメントをご確認ください。
+通知をさらに細かくカスタマイズする必要がある場合 (コードから直接ビューを読み込む場合など) は、`Protocol ReferencesDefaultNotifier` と `AENotifier` の指定されたソース コードやクラスのドキュメントをご確認ください。
 
 複数のカテゴリに対して同じ通知を使用できます。
 
@@ -270,18 +270,18 @@
 
 ##### 通知の処理
 
-既定のカテゴリを使用する場合、いくつかのライフ サイクル メソッドは、 `AEReachContent` オブジェクトを呼び出して統計情報を報告し、キャンペーンの状態を更新します。
+既定のカテゴリを使用する場合、いくつかのライフ サイクル メソッドは、`AEReachContent` オブジェクトを呼び出して統計情報を報告し、キャンペーンの状態を更新します。
 
--   通知がアプリケーションに表示されたときに、 `handleNotification:`  が `YES` を返すと、 `displayNotification` メソッドが  `AEReachModule` によって呼び出されます (統計情報を報告します)。
--   通知を閉じると、 `exitNotification` メソッドが呼び出されて統計情報が報告され、次のキャンペーンを処理できるようになります。
--   通知をクリックすると、 `actionNotification` が呼び出されて統計情報が報告され、関連付けられたアクションが実行されます。
+-   通知がアプリケーションに表示されたときに、`handleNotification:` が `YES` を返すと、`displayNotification` メソッドが `AEReachModule` によって呼び出されます (統計情報を報告します)。
+-   通知を閉じると、`exitNotification` メソッドが呼び出されて統計情報が報告され、次のキャンペーンを処理できるようになります。
+-   通知をクリックすると、`actionNotification` が呼び出されて統計情報が報告され、関連付けられたアクションが実行されます。
 
- `AENotifier` の実装が既定の動作をバイパスする場合は、これらのライフ サイクル メソッドを自分で呼び出す必要があります。次の例では、既定の動作がバイパスされるいくつかのケースを示しています。
+`AENotifier` の実装が既定の動作をバイパスする場合は、これらのライフ サイクル メソッドを自分で呼び出す必要があります。次の例では、既定の動作がバイパスされるいくつかのケースを示しています。
 
--    `AEDefaultNotifier` を拡張しない場合 (最初からカテゴリの処理を実装した場合など)。
--    `prepareNotificationView:forContent:` をオーバーライドした場合 (少なくとも `onNotificationActioned` または  `onNotificationExited` がいずれかの U.I コントロールにマップされていることをご確認ください)。
+-   `AEDefaultNotifier` を拡張しない場合 (最初からカテゴリの処理を実装した場合など)。
+-   `prepareNotificationView:forContent:` をオーバーライドした場合 (少なくとも `onNotificationActioned` または `onNotificationExited` がいずれかの U.I コントロールにマップされていることをご確認ください)。
 
-> [AZURE.WARNING]  `handleNotification:`  が例外をスローし、コンテンツが削除され、`drop` が呼び出された場合、これは統計情報で報告され、次のキャンペーンを処理できるようになります。
+> [AZURE.WARNING]`handleNotification:` が例外をスローし、コンテンツが削除され、`drop` が呼び出された場合、これは統計情報で報告され、次のキャンペーンを処理できるようになります。
 
 #### 既存のビューの一部に通知を含める
 
@@ -293,8 +293,8 @@
 
 1.  インターフェイス ビルダーを使用して、通知ビューを追加します。
 
-	-    *[インターフェイス ビルダー]* を開きます。
-	-   通知を表示する場所に、320 x 60 (または、iPad の場合は 768 x 60) の  `UIView` を配置します。
+	-   [*インターフェイス ビルダー*] を開きます。
+	-   通知を表示する場所に 320 x 60 (または、iPad の場合は 768 x 60) の `UIView` を配置します。
 	-   このビューのタグ値を **36822491** に設定します。
 
 2.  プログラムを使用して通知ビューを追加します。ビューが初期化されたら、次のコードを追加します。
@@ -303,15 +303,15 @@
 			notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
 			[self.view addSubview:notificationView];
 
-`NOTIFICATION_AREA_VIEW_TAG` マクロは、 `AEDefaultNotifier.h` にあります。
+`NOTIFICATION_AREA_VIEW_TAG` マクロは `AEDefaultNotifier.h` にあります。
 
-> [AZURE.NOTE] 既定の通知は、通知のレイアウトがこのビューに含まれていて、オーバーレイが追加されていないことを自動的に検出します。
+> [AZURE.NOTE]既定の通知は、通知のレイアウトがこのビューに含まれていて、オーバーレイが追加されていないことを自動的に検出します。
 
 ### お知らせとポーリング
 
 #### レイアウト
 
-既存のサブビューのタグの値と種類を保持している限り、 `AEDefaultAnnouncementView.xib` ファイルと  `AEDefaultPollView.xib` ファイルを変更できます。
+既存のサブビューのタグの値と種類を保持している限り、`AEDefaultAnnouncementView.xib` ファイルと `AEDefaultPollView.xib` ファイルを変更できます。
 
 #### カテゴリ
 
@@ -324,9 +324,9 @@
 			AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
 			[reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:@"my_category"];
 
-> [AZURE.NOTE] ユーザーがカテゴリ「my\_category」のお知らせの通知をクリックするたびに、登録されているビュー コントローラー (この場合は  `MyCustomAnnouncementViewController`) が、メソッド  `initWithAnnouncement:`  を呼び出すことで初期化され、現在のアプリケーション ウィンドウにビューが追加されます。
+> [AZURE.NOTE]ユーザーがカテゴリ「my_category」のお知らせの通知をクリックするたびに、登録されているビュー コントローラー (この場合は `MyCustomAnnouncementViewController`) が、メソッド `initWithAnnouncement:` を呼び出すことで初期化され、現在のアプリケーション ウィンドウにビューが追加されます。
 
-`AEAnnouncementViewController` クラスの実装では、 `announcement` プロパティを読み取り、サブビューを初期化する必要があります。次の例について検討してみましょう。ここでは、2 つのラベルが  `AEReachAnnouncement` クラスの  `title` プロパティと  `body` プロパティを使用して初期化されています。
+`AEAnnouncementViewController` クラスの実装では、`announcement` プロパティを読み取り、サブビューを初期化する必要があります。次の例について検討してみましょう。ここでは、2 つのラベルが `AEReachAnnouncement` クラスの `title` プロパティと `body` プロパティを使用して初期化されています。
 
 			-(void)loadView
 			{
@@ -344,9 +344,9 @@
 			    [self.view addSubview:bodyLabel];
 			}
 
-自分でビューを読み込まずに、既定のお知らせビューのレイアウトを再利用する場合は、カスタム ビュー コントローラーを使用して指定されたクラス  `AEDefaultAnnouncementViewController` を拡張できます。この場合は、カスタム ビュー コントローラーで読み込めるように、nib ファイル  `AEDefaultAnnouncementView.xib` を複製して名前を変更します ( `CustomAnnouncementViewController` という名前のコントローラーの場合は、nib ファイル  `CustomAnnouncementView.xib` を呼び出す必要があります)。
+自分でビューを読み込まずに、既定のお知らせビューのレイアウトを再利用する場合は、カスタム ビュー コントローラーを使用して指定されたクラス `AEDefaultAnnouncementViewController` を拡張できます。この場合は、カスタム ビュー コントローラーで読み込めるように、nib ファイル `AEDefaultAnnouncementView.xib` を複製して名前を変更します (`CustomAnnouncementViewController` という名前のコントローラーの場合は、nib ファイル `CustomAnnouncementView.xib` を呼び出す必要があります)。
 
-お知らせの既定のカテゴリを置き換えるには、 `kAEReachDefaultCategory` で定義されているカテゴリのカスタム ビュー コントローラーを登録します。
+お知らせの既定のカテゴリを置き換えるには、`kAEReachDefaultCategory` で定義されているカテゴリのカスタム ビュー コントローラーを登録します。
 
 			[reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:kAEReachDefaultCategory];
 
@@ -355,9 +355,9 @@
 			AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
 			[reach registerPollController:[MyCustomPollViewController class] forCategory:@"my_category"];
 
-今回は指定された  `MyCustomPollViewController` が  `AEPollViewController` を拡張する必要があります。または、既定のコント ローラー  `AEDefaultPollViewController` から拡張することもできます。
+今回は指定された `MyCustomPollViewController` が `AEPollViewController` を拡張する必要があります。あるいは、既定のコント ローラー `AEDefaultPollViewController` から拡張できます。
 
-> [AZURE.IMPORTANT] ビュー コントローラーが閉じる前に、 `action` (カスタム ポーリング ビュー コントローラーの場合は`submitAnswers:`) メソッドまたは  `exit` メソッドのいずれかを必ず呼び出してください。これを行わないと、統計情報は送信されず (キャンペーンは分析されません)、さらに重要な次のキャンペーンが、アプリケーション プロセスが再起動するまで通知されないことになります。
+> [AZURE.IMPORTANT]ビュー コントローラーが閉じる前に、`action` (カスタム ポーリング ビュー コントローラーの場合は `submitAnswers:`) メソッドまたは `exit` メソッドのいずれかを必ず呼び出してください。これを行わないと、統計情報は送信されず (キャンペーンは分析されません)、さらに重要な次のキャンペーンが、アプリケーション プロセスが再起動するまで通知されないことになります。
 
 ##### 実装例
 
@@ -457,4 +457,4 @@
 			
 			@end
 
-<!--HONumber=47-->
+<!--HONumber=54-->

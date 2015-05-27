@@ -1,19 +1,19 @@
-﻿<properties 
+<properties 
 	pageTitle="ユーザーの代理としての SharePoint へのアクセス | モバイル デベロッパー センター" 
 	description="ユーザーの代理として SharePoint への呼び出しを行う方法について説明します。" 
-	documentationCenter="windows" 
+	documentationCenter="" 
 	authors="mattchenderson" 
 	manager="dwrede" 
 	editor="" 
-	services=""/>
+	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/21/2014" 
+	ms.date="04/13/2015" 
 	ms.author="mahender"/>
 
 # ユーザーの代理としての SharePoint へのアクセス
@@ -23,7 +23,7 @@
 <p>このトピックでは、現在ログインしているユーザーの代理として、SharePoint API にアクセスする方法について説明します。</p>
 <p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。ビデオでは、Windows ストア アプリを更新して SharePoint Online とやり取りする手順について、Mat Velloso が説明します。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="label">チュートリアルを見る</a><a style="background-image: url('http://media.ch9.ms/ch9/f217/3f8cbf94-f36b-4162-b3da-1c00339ff217/AzureMobileServicesAADO365AuthenticationIdentityA_960.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">12:51</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('http://media.ch9.ms/ch9/f217/3f8cbf94-f36b-4162-b3da-1c00339ff217/AzureMobileServicesAADO365AuthenticationIdentityA_960.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">12:51:00</span></div>
 </div>
 
 このチュートリアルでは、「Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証」チュートリアルのアプリケーションを更新し、新しい TodoItem が追加されたときに SharePoint Online で Word 文書を作成するようにします。
@@ -45,7 +45,7 @@
 ## <a name="configure-permissions"></a>SharePoint への委任アクセスのためにアプリケーションを構成する
 既定では、AAD から受け取るトークンは、アクセス許可が制限されています。サードパーティのリソースまたは SharePoint Online などの SaaS アプリケーションにアクセスするには、明示的にアクセスを許可する必要があります。
 
-1. [Azure の管理ポータル]の **[Active Directory]** セクションに移動し、テナントを選択します。モバイル サービス用に作成した Web アプリケーションに移動します。
+1. **Azure 管理ポータル**の [[Active Directory]] セクションに移動し、テナントを選択します。モバイル サービス用に作成した Web アプリケーションに移動します。
 
     ![][0]
 
@@ -214,9 +214,8 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [アプリケーションをテストする]: #test-application
 
 <!-- URLs. -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
+[[Active Directory]]: https://manage.windowsazure.com/
+[SharePoint Online]: http://office.microsoft.com/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
 
-
-<!--HONumber=42-->
+<!--HONumber=54-->

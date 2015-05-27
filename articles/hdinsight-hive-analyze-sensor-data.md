@@ -1,9 +1,9 @@
-﻿<properties 
-	pageTitle="Hive と Microsoft Azure HDInsight (Hadoop) を使用したセンサー データの分析" 
-	description="Hive と Excel を使用して HDInsight (Hadoop) でセンサー データを分析し視覚化する方法について説明します。" 
+<properties 
+	pageTitle="Hive と Hadoop を使用したセンサー データの分析 | Microsoft Azure" 
+	description="Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
-	authors="blackmist" 
+	authors="Blackmist" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,42 +13,44 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2014" 
+	ms.date="02/20/2015" 
 	ms.author="larryfr"/>
 
-#Hive を HDInsight と共に使用したセンサー データの分析
+#HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
 
-Hive を HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
+Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 
-このサンプルでは、Hive を使用して、暖房、換気、空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別します。学習内容:
+> [AZURE.NOTE]このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。
+
+このサンプルでは、Hive を使用して、暖房、換気、および空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別します。学習内容:
 
 - 値をコンマで区切った (CSV) 形式で格納されたデータを照会するための HIVE テーブルの作成
 - データを分析するための HIVE クエリの作成
-- 分析したデータを取得するための、Microsoft Excel を使用した HDInsight への接続 (ODBC 接続を使用)
+- 分析したデータを取得するための、Microsoft Excel を使用した HDInsight への接続 (Open Database Connectivity (ODBC) を使用)
 - Power View を使用したデータの視覚化
 
 ![A diagram of the solution architecture](./media/hdinsight-use-hive-sensor-data-analysis/hvac-architecture.png)
 
-##前提条件:
+##前提条件
 
-* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関するページをご覧ください。
+* HDInsight (Hadoop) クラスター - クラスター作成の詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。
 
 * Microsoft Excel 2013
 
-	> [AZURE.NOTE] Microsoft Excel は、[Power View](https://support.office.com/en-US/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US) を使用したデータ視覚化のために使用します。Power View は現在、Windows でのみ利用できます。
+	> [AZURE.NOTE]Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US) を使用したデータ視覚化のために使用します。
 
-* [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/ja-jp/download/details.aspx?id=40886)
+* [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886)
 
 ##サンプルを実行するには
 
-1. Azure の管理ポータルから、サンプルの実行に使用するクラスターを選択し、下部にある **[クエリ コンソール]** をクリックします。または、次に示す URL を使用してクエリ コンソールを直接開くこともできます。
+1. Azure ポータルから、サンプルの実行に使用するクラスターを選択し、下部にある **[クエリ コンソール]** をクリックします。または、次に示す URL を使用してクエリ コンソールを直接開くこともできます。
 
 	 	https://<clustername>.azurehdinsight.net
 
 	入力を要求されたら、このクラスターをプロビジョニングするときに使用した管理者ユーザー名とパスワードを使用して認証を実行します。
 
-2. 表示された Web ページで、**[概要ギャラリー]** タブをクリックし、**[サンプル]** カテゴリにある **[Web サイト ログ分析]** サンプルを選択します。
+2. 表示された Web ページで **[概要ギャラリー]** タブをクリックし、**[Solutions with Sample Data]** カテゴリにある **[センサー データ分析]** サンプルを選択します。
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!--HONumber=45--> 
+<!--HONumber=54-->

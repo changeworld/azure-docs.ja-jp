@@ -1,6 +1,6 @@
-﻿## <a name="register-app-aad"></a>Azure Active Directory へのクライアント アプリケーションの登録
+## <a name="register-app-aad"></a>Azure Active Directory へのクライアント アプリケーションの登録
 
-1. [Azure の管理ポータル]の **[Active Directory]** に移動し、目的のディレクトリをクリックします。
+1. **Azure の管理ポータル**の [[Active Directory]] に移動し、目的のディレクトリをクリックします。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-select-aad.png)
 
@@ -14,7 +14,7 @@
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-native-selection.png)
 
-5. **[リダイレクト URI]** ボックスで、モバイル サービスの /login/done エンドポイントを入力します。この値は、https://todolist.azure-mobile.net/login/done. と同様です。
+5. **[リダイレクト URI]** ボックスで、モバイル サービスの /login/done エンドポイントを入力します。この値は、https://todolist.azure-mobile.net/login/done と同様です。
 
    ![](./media/mobile-services-dotnet-adal-register-client/mobile-services-native-redirect-uri.png)
 
@@ -29,7 +29,5 @@
 これで、モバイル サービスが、アプリケーションからシングル サインオン ログインを受信するように AAD で構成されます。
 
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-
-
-<!--HONumber=42-->
+[[Active Directory]]: https://manage.windowsazure.com/
+<!--HONumber=54-->

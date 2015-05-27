@@ -1,6 +1,6 @@
-﻿<properties 
+<properties 
 	pageTitle="データの使用 (Android) | モバイル デベロッパー センター" 
-	description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。." 
+	description="モバイル サービスを使用して Android アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="android" 
 	authors="RickSaling" 
@@ -13,56 +13,42 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="02/03/2015" 
+	ms.date="05/05/2015" 
 	ms.author="ricksal"/>
 
-# 既存のアプリにモバイル サービスを追加する
+# 既存のアプリケーションへの Mobile Services の追加
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure Mobile Services を Android アプリのバックエンド データソースとして使用する方法について説明します。このチュートリアルでは、新しいモバイル サービスの作成、メモリにデータを格納するアプリケーション用の Eclipse Android のダウンロード、モバイル サービスとアプリケーションとの統合、アプリケーションの実行時にデータに加えられた変更の表示について説明します。
 
-このチュートリアルで作成するモバイル サービスは、モバイル サービスの .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
+このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン](mobile-services-android-get-started-data.md)」を参照してください。
 
-> [AZURE.IMPORTANT] このチュートリアルには、Visual Studio 2013 が必要です。
+> [AZURE.NOTE]このチュートリアルの Eclipse バージョンについては、「[データの使用 (Eclipse)]」をご覧ください。
 
-<!-- -->
+このチュートリアルを完了するには、以下が必要です。
 
-> [AZURE.NOTE] このチュートリアルの Eclipse バージョンについては、「[データの使用 (Eclipse)]」を参照してください。
++ <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> (Update 3 以降のバージョン)。 
 
-このチュートリアルでは、次の基本的な手順について説明します。
++ Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-android-get-started-data%2F)を参照してください。
 
-
-1. [新しいモバイル サービスを作成する]
-2. [サービスをローカルにダウンロードする]
-3. [モバイル サービスをテストする]
-4. [モバイル サービスを Azure に発行する]
-5. [GetStartedWithData プロジェクトをダウンロードする]
-4. [モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する]
-5. [発行されたモバイル サービスに対してアプリケーションをテストする]
-
-
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、[Azure の無料評価版サイト](http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F"%20target="_blank)を参照してください。 
-
-
-<h2><a name="create-service"></a>新しいモバイル サービスを作成する</h2>
+##<a name="create-service"></a>新しいモバイル サービスを作成する
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
-
-<h2><a name="download-the-service"></a>ローカル コンピューターにサービスをダウンロードする</h2>
+##<a name="download-the-service"></a>ローカル コンピューターにサービスをダウンロードする
 
 [AZURE.INCLUDE [mobile-services-download-service-locally](../includes/mobile-services-download-service-locally.md)]
 
-<h2><a name="test-the-service"></a>モバイル サービスをテストする</h2>
+##<a name="test-the-service"></a>モバイル サービスをテストする
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
-<h2><a name="publish-the-service"></a>モバイル サービスを Azure に発行する</h2>
+##<a name="publish-the-service"></a>モバイル サービスを Azure に発行する
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
-<h2><a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする</h2>
+##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
 ###サンプル コードの取得
 
@@ -77,16 +63,15 @@
 
 [AZURE.INCLUDE [mobile-services-android-run-sample-code](../includes/mobile-services-android-run-sample-code.md)]
 
-<h2><a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する</h2>
+##<a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する
 
 [AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../includes/mobile-services-android-getting-started-with-data.md)]
 
-<h2><a name="test-app"></a>発行されたモバイル サービスに対してアプリケーションをテストする</h2>
-
+##<a name="test-app"></a>発行されたモバイル サービスに対してアプリケーションをテストする
 
 バック エンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、Android エミュレーターまたは Android フォンを使用して、モバイル サービスに対してアプリケーションをテストします。
 
-1. **[実行]** メニューの **[Run app (アプリを実行)]** をクリックして、プロジェクトを開始します。
+1. **[Run]** メニューの **[Run App]** をクリックして、プロジェクトを開始します。
 
 	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
 
@@ -96,12 +81,11 @@
 
     アプリケーションを再起動して、変更内容が Azure のデータベースに保持されたことを確認できます。また、Azure の管理ポータルを使用して、データベースを確認することもできます。次の 2 つのステップでは、Azure の管理ポータルを使用してデータベースの変更を表示します。
 
-
 4. Azure の管理ポータルで、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
     ![](./media/mobile-services-dotnet-backend-android-get-started-data/manage-sql-azure-database.png)
 
-5. 管理ポータルで、クエリを実行して Windows ストア アプリによって加えられた変更を表示します。クエリは次のようになりますが、 `todolist` の代わりにデータベースの名前を使用します。
+5. 管理ポータルで、クエリを実行して Windows ストア アプリによって加えられた変更を表示します。クエリは次のようになりますが、`todolist` の代わりにデータベースの名前を使用します。
 
         SELECT * FROM [todolist].[todoitems]
 
@@ -110,91 +94,41 @@
 これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
 
-
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルでは、Android アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。 
+このチュートリアルでは、Android アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。
 
-<!--Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+次に、他のチュートリアルを 1 つ試してください。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* [認証の使用] <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* [プッシュ通知の使用] <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-Once you have completed the data series, try
--->
-
-他のチュートリアルを 1 つ試してください。
-
-* [認証の使用]
-  <br/>アプリケーションのユーザーを認証する方法について説明します。
-
-* [プッシュ通知の使用]
-  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
-
-* [Mobile Services .NET の使用方法の概念リファレンス]
-  <br/>.NET でモバイル サービスを使用する方法について説明します。
+* [Mobile Services Android の使用方法の概念リファレンス](mobile-services-android-how-to-use-client-library.md) <br/>Android で Mobile Services を使用する方法について説明します。
   
 <!-- Anchors. -->
 
-[新しいモバイル サービスを作成する]: #create-service
-[サービスをローカルにダウンロードする]: #download-the-service-locally
-[モバイル サービスをテストする]: #test-the-service
-[GetStartedWithData プロジェクトをダウンロードする]: #download-app
-[モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する]: #update-app
-[ローカルでホストされているサービスに対して Android アプリをテストする]: #test-locally-hosted
-[モバイル サービスを Azure に発行する]: #publish-mobile-service
-[Azure でホストされるサービスに対して Android アプリをテストする]: #test-azure-hosted
-[発行されたモバイル サービスに対してアプリケーションをテストする]: #test-app
-[次のステップ]:#next-steps
+[Create a new mobile service]: #create-service
+[Download the service locally]: #download-the-service-locally
+[Test the mobile service]: #test-the-service
+[Download the GetStartedWithData project]: #download-app
+[Update the app to use the mobile service for data access]: #update-app
+[Test the Android App against the service hosted locally]: #test-locally-hosted
+[Publish the mobile service to Azure]: #publish-mobile-service
+[Test the Android App against the service hosted in Azure]: #test-azure-hosted
+[Test the app against the published mobile service]: #test-app
+[Next Steps]: #next-steps
 
 <!-- Images. -->
-[0]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/app-view.png
-[1]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/mobile-data-sample-download-dotnet-vs13.png
-[2]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/mobile-service-overview-page.png
-[3]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/download-service-project.png
-[4]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/add-service-project-to-solution.png
-[5]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/download-publishing-profile.png
-[6]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/add-existing-project-dialog.png
-[7]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-manage-nuget-packages.png
-[8]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-nuget-packages.png
-[9]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/copy-mobileserviceclient-snippet.png
-[10]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-pasted-mobileserviceclient.png
-[11]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-build-solution.png
-[12]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-run-solution.png
-[13]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/new-local-todoitem.png
-[14]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-show-local-table-data.png
-[15]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/local-item-checked.png
-[16]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/azure-items.png
-[17]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-sql-azure-database.png
-[18]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/sql-azure-query.png
-
-[20]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-build-service-project.png
-[21]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-start-debug-service-project.png
-[22]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/service-welcome-page.png
-[23]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/iis-express-tray.png
-
-[26]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/copy-service-and-packages-folder.png
-
 
 <!-- URLs. -->
 [データの使用 (Eclipse)]: mobile-services-dotnet-backend-android-get-started-data-EC.md
-[スクリプトを使用したデータの検証と変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[ページングを使用したクエリの改善]: /develop/mobile/tutorials/add-paging-to-data-dotnet
-[Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
-[認証の使用]: /develop/mobile/tutorials/get-started-with-users-android
-[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-android
-[JavaScript と HTML]: /develop/mobile/tutorials/get-started-with-data-js
-[JavaScript バックエンド バージョン]: /develop/mobile/tutorials/get-started-with-data-android
+[Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
+[認証の使用]: mobile-services-dotnet-backend-android-get-started-users.md
+[プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[管理ポータル]: https://manage.windowsazure.com/
+[Azure Management Portal]: https://manage.windowsazure.com/
+[Management Portal]: https://manage.windowsazure.com/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
-[デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
-[MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
-[Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md  
-
-<!--HONumber=49-->
+[Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=328660
+<!--HONumber=54-->

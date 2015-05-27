@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="認証の使用 (HTML 5) | モバイル デベロッパー センター" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて HTML アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、PhoneGap または Cordova アプリを含む HTML アプリから Azure Mobile Services のユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証と承認されると、ユーザー ID 値が表示されます。  
+このトピックでは、PhoneGap または Cordova アプリを含む HTML アプリから Azure Mobile Services のユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
@@ -28,7 +28,7 @@
 2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3. [アプリケーションに認証を追加する]
 
-このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -49,11 +49,11 @@
 
 	これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
-2. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を開いて、アプリケーションを起動します。 
+2. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を開いて、アプリケーションを開始します。
 
-	データの読み込みに失敗します。この問題は、非認証ユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしているのに、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	データの読み込みに失敗します。この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
-3. (省略可能) Web ブラウザーのスクリプト デバッガーを開き、ページを再読み込みします。アクセス拒否エラーが発生することを確認します。 
+3. (省略可能) Web ブラウザーのスクリプト デバッガーを開き、ページを再読み込みします。アクセス拒否エラーが発生することを確認します。
 
 次に、モバイル サービスのリソースを要求する前に認証を許可するようにアプリケーションを更新します。
 
@@ -74,7 +74,7 @@
 
 	これで、ページからモバイル サービスにログインできるようになります。
 
-2. app.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。 
+2. app.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。
 	
 		function refreshAuthDisplay() {
 			var isLoggedIn = client.currentUser !== null;
@@ -107,27 +107,25 @@
 			$("#logged-in button").click(logOut);
 		});
 
-    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡される値を<em>microsoftaccount</em>、<em>facebook</em>、<em>twitter</em>、<em>google</em>、または <em>aad</em> に変更する必要があります。
+    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡す値を <em>microsoftaccount</em>、<em>facebook</em>、<em>twitter</em>、<em>google</em>、<em>aad</em> のいずれかに変更します。
 
-	>[AZURE.IMPORTANT]PhoneGap アプリでは、次のプラグインもプロジェクトに追加する必要があります。
-	><ul><li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li>
-	><li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
+	>[AZURE.IMPORTANT]PhoneGap アプリでは、次のプラグインもプロジェクトに追加する必要があります。<ul><li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li> <li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
 
-9. アプリケーションが実行されているブラウザーに戻り、ページを更新します。 
+9. アプリケーションが実行されているブラウザーに戻り、ページを更新します。
 
-	   ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+	   ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-	>[AZURE.NOTE]Internet Explorer を使用している場合は、ログイン後に、 <code>"ウィンドウの呼び出し元に到達できません。別の Internet Explorer ゾーンにある可能性があります" というエラーが表示される場合があります</code>。これは、ポップアップが localhost (イントラネット) とは異なるセキュリティ ゾーン (インターネット) で実行されているためです。このことがアプリケーションに影響するのは、localhost を使用する開発時だけです。回避策として、<strong>[インターネット オプション]</strong> の <strong>[セキュリティ]</strong> タブを開き、<strong>[ローカル イントラネット]</strong>、<strong>[サイト]</strong> の順にクリックして、<strong>[イントラネットのネットワークを自動的に検出する]</strong> をオフにします。テストが終了したら、この設定を必ず元に戻します。
+	>[AZURE.NOTE]Internet Explorer を使用している場合は、ログイン後に、"<code>ウィンドウの呼び出し元に到達できません。別の Internet Explorer ゾーンにある可能性があります</code>" というエラーが表示される場合があります。これは、ポップアップが localhost (イントラネット) とは異なるセキュリティ ゾーン (インターネット) で実行されているためです。このことがアプリケーションに影響するのは、localhost を使用する開発時だけです。回避策として、<strong>[インターネット オプション]</strong> の <strong>[セキュリティ]</strong> タブを開き、<strong>[ローカル イントラネット]</strong>、<strong>[サイト]</strong> の順にクリックして、<strong>[イントラネットのネットワークを自動的に検出する]</strong> をオフにします。テストが終了したら、この設定を必ず元に戻します。
 
 ## <a name="next-steps"> </a>次のステップ
 
-[スクリプトを使用したユーザーの承認]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス] で、HTML/JavaScript でモバイル サービスを使用する方法について説明します。
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス] で、HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
 [アプリケーションに認証を追加する]: #add-authentication
-[次のステップ]:#next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 
@@ -138,11 +136,11 @@
 [15]: ./media/mobile-services-html-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. -->
-[Mobile Services の使用]: mobile-services-html-get-started.md
-[データの使用]: mobile-services-html-get-started-data.md
-[スクリプトを使用したユーザーの承認]: mobile-services-javascript-backend-service-side-authorization.md
+[モバイル サービスの使用]: mobile-services-html-get-started.md
+[Get started with data]: mobile-services-html-get-started-data.md
+[スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /documentation/articles/mobile-services-html-how-to-use-client-library
+[Azure Management Portal]: https://manage.windowsazure.com/
+[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /documentation/articles/mobile-services-html-how-to-use-client-library
 
-<!--HONumber=49-->
+<!--HONumber=54-->

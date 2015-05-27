@@ -1,28 +1,6 @@
-﻿
-1. **[Run]** を押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。ログインおよび認証が成功することを確認します。
 
-  	![][23]
+1. [**実行**] をクリックし、物理 iOS デバイスでアプリを起動します。アプリケーションで、新しい項目 (_新しい Mobile Services タスク_など) を Todo リストに追加します。
 
-    > [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+2. 通知が受信されていることを確認します。さらに、必要に応じて、別の物理 iOS デバイスに対して上記の手順を、1 回は同じログイン アカウントを使用し、もう 1 回は別のログインにアカウントを使用して、繰り返します。同じユーザー アカウントで認証されるデバイスでのみ通知が受信されることを確認します。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「_A new Mobile Services task_」) を入力し、プラス (**+**) アイコンをクリックします。
-
-  	![][24]
-
-3. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
-
-  	![][25]
-
-4. 手順 2 を繰り返してすぐにアプリケーションを閉じ、次のプッシュが表示されることを確認します。
-
-  	![][26]
-
-これで、このチュートリアルは終了です。
-
-[23]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push1-ios.png
-[24]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push2-ios.png
-[25]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png
-[26]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push4-ios.png
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->

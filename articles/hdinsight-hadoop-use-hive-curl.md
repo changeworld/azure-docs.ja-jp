@@ -1,5 +1,5 @@
-﻿<properties
-   pageTitle="HDInsight での Hadoop Pig の使用 | Azure"
+<properties
+   pageTitle="HDInsight での Hadoop Pig と Curl の使用 | Microsoft Azure"
    description="Curl を使用して Pig ジョブを HDInsight にリモートで送信する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -9,24 +9,24 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang=""
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
    ms.date="02/18/2015"
    ms.author="larryfr"/>
 
-#Curl を使用した HDInsight の Hadoop での Hive クエリの実行
+# Curl を使用した HDInsight の Hadoop での Hive クエリの実行
 
-[AZURE.INCLUDE [hive-selector](../includes/hdinsight-selector-use-hive.md)]
+[AZURE.INCLUDE [Hive セレクター](../includes/hdinsight-selector-use-hive.md)]
 
-このドキュメントでは、Curl を使用して HDInsight クラスターの Hadoop で Hive クエリを実行する方法について説明します。 
+このドキュメントでは、Curl を使用して Azure HDInsight クラスターの Hadoop で Hive クエリを実行する方法について説明します。
 
 Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive クエリを実行、監視し、その結果を取得する方法を指定するために使用します。これは、HDInsight クラスターで提供される WebHCat REST API (旧称: Templeton) を使用することで機能します。
 
-> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」を参照してください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
 
-##<a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -36,13 +36,13 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
 * <a href="http://stedolan.github.io/jq/" target="_blank">jq</a>
 
-##<a id="curl"></a>Curl を使用した Hive クエリの実行
+## <a id="curl"></a>Curl を使用した Hive クエリの実行
 
-> [AZURE.NOTE] Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名およびパスワードを指定して要求を認証する必要があります。また、サーバーへの要求の送信に使用する URI にクラスター名を含める必要があります。
+> [AZURE.NOTE]Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
 > 
 > このセクションのコマンドでは、**USERNAME** をクラスターを認証するユーザーの名前に、**PASSWORD** をユーザー アカウントのパスワードに置き換えてください。**CLUSTERNAME** はクラスターの名前に置き換えます。
 > 
-> REST API のセキュリティは、<a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">基本認証</a>の使用によって保護されています。資格情報を安全にサーバーに送信するには、必ず HTTPS を使用して要求を行う必要があります。
+> REST API のセキュリティは、<a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">基本認証</a>を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
@@ -54,10 +54,10 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-u** - 要求の認証に使用するユーザー名およびパスワード
-    * **-G** - GET 要求であることを示します。
+    * **-u**: 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 要求であることを示します。
 
-    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
+    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス  **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
 
@@ -71,47 +71,47 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-d** - `-G` が使用されていないため、要求は既定で POST メソッドになります。`-d` は要求で送信されるデータ値を指定します。
+    * **-d**: `-G` が使用されていないため、要求は既定で POST メソッドになります。`-d` は要求で送信されるデータ値を指定します。
 
-        * **user.name** - コマンドを実行するユーザー
+        * **user.name**: コマンドを実行するユーザー
         
-        * **execute** - 実行する HiveQL ステートメント
+        * **execute**: 実行する HiveQL ステートメント
         
-        * **statusdir** - ジョブのステータスが書き込まれるディレクトリ
+        * **statusdir**: ジョブのステータスが書き込まれるディレクトリ
 
     これらのステートメントは次のアクションを実行します。
 
-    * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+    * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
     
-    * **CREATE EXTERNAL TABLE** - Hive に新しく '外部' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは Hive にテーブル定義のみを格納します。データは元の場所に残されます。
 
-		> [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+		> [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
 		>
 		> 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
     * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
     
-    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
+    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
     
-    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む列が 3 行あるため、**3** という値が返されています。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
-    > [AZURE.NOTE] Curl を使用したとき、HiveQL ステートメントのスペースが `+` に置き換わることに注意してください。スペースを含む引用符で囲まれた値 (区切り記号など) は `+` に置き換わりません。
+    > [AZURE.NOTE]Curl を使用したとき、HiveQL ステートメントのスペースが `+` に置き換わることに注意してください。スペースを含む引用符で囲まれた値 (区切り記号など) は `+` に置き換わりません。
 
     このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
 
         {"id":"job_1415651640909_0026"}
 
-3. ジョブのステータスを確認するには、次のコマンドを使用します。**JOBID** を前の手順で返された値に置き換えます。たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、JOBID は `job_1415651640909_0026` になります。
+3. ジョブのステータスを確認するには、次のコマンドを使用します。**JOBID** を前の手順で返された値に置き換えます。たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、**JOBID** は `job_1415651640909_0026` になります。
 
         curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
 
-	ジョブが完了している場合、ステータスは "SUCCEEDED" になります。
+	ジョブが完了している場合、ステータスは **SUCCEEDED** になります。
 
-    > [AZURE.NOTE] この curl 要求では、ジョブに関する情報が記載された JSON ドキュメントが返されます。状態値のみを取得するには jq を使用します。 
+    > [AZURE.NOTE]この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
 
-4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure Blob ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
+4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
-    これらのファイルは、<a href="../xplat-cli/" target="_blank">Azure クロスプラットフォーム コマンド ライン インターフェイス (xplat-cli)</a> を使用して、一覧表示およびダウンロードできます。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
+    これらのファイルは [Mac、Linux、Windows 用の Azure CLI](xplat-cli.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
 		azure storage blob list <container-name> example/curl
 
@@ -119,7 +119,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
 		azure storage blob download <container-name> <blob-name> <destination-file>
 
-	> [AZURE.NOTE] `-a` および `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を設定する必要があります。「<a href="../hdinsight-upload-data/" target="_blank" for more information.」を参照してください。
+	> [AZURE.NOTE]`-a` および `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を設定する必要があります。詳細情報については、「<a href="hdinsight-upload-data.md" target="_blank"」 をご覧ください。
 
 6. 次のステートメントを使用して、**errorLogs** という名前の新しい "内部" テーブルを作成します。
 
@@ -127,24 +127,24 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
     これらのステートメントは次のアクションを実行します。
 
-    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは "内部" テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
+    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
 
-		> [AZURE.NOTE] **EXTERNAL** テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
+		> [AZURE.NOTE]外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
 
     * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
-    * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにデータを挿入します。
-    * **SELECT * ** - 新しい **errorLogs** テーブルからすべての行を選択します。
+    * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+    * **SELECT**: 新しい **errorLogs** テーブルからすべての行を選択します。
 
-7. 返されたジョブ ID を使用して、ジョブのステータスを確認します。確認できたら、前述のように xplat-cli を使用して、結果をダウンロードし、表示します。出力には、それぞれに **[ERROR]** が含まれた 3 つの行が返されます。
+7. 返されたジョブ ID を使用して、ジョブのステータスを確認します。確認できたら、前述のように Mac、Linux、Windows 用 Azure CLI を使用して、結果をダウンロードし、表示します。出力には、それぞれに **[ERROR]** が含まれた 3 つの行が返されます。
 
 
-##<a id="summary"></a>まとめ
+## <a id="summary"></a>概要
 
 このドキュメントを参照して、未加工の HTTP 要求を使用して、HDInsight クラスターで Hive ジョブを実行、監視し、その結果を表示できます。
 
-この記事で使用されている REST インターフェイスの詳細については、<a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat リファレンス</a>に関するページを参照してください。
+この記事で使用されている REST インターフェイスの詳細については、「<a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat リファレンス</a>」に関するページをご覧ください。
 
-##<a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -170,23 +170,23 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: ../hdinsight-use-oozie/
-[hdinsight-analyze-flight-data]: ../hdinsight-analyze-flight-delay-data/
+[hdinsight-use-oozie]: hdinsight-use-oozie.md
+[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage
+[hdinsight-storage]: hdinsight-use-blob-storage.md
 
-[hdinsight-provision]: ../hdinsight-provision-clusters/
-[hdinsight-submit-jobs]: ../hdinsight-submit-hadoop-jobs-programmatically/
-[hdinsight-upload-data]: ../hdinsight-upload-data/
-[hdinsight-get-started]: ../hdinsight-get-started/
+[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
+[hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell/
+[Powershell-install-configure]: install-configure-powershell.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=47-->
+<!--HONumber=54-->

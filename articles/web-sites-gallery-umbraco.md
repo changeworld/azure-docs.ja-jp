@@ -1,77 +1,78 @@
-﻿<properties 
-	pageTitle="Microsoft Azure でギャラリーから Umbraco Web サイトを作成する" 
-	description="Umbraco のコンテンツ管理システムを作成し、Azure の Web サイトに展開します。" 
-	services="web-sites" 
+<properties 
+	pageTitle="Microsoft Azure で Marketplace から Umbraco Web アプリを作成する" 
+	description="Umbraco のコンテンツ管理システムを作成し、Azure App Service Web Apps にデプロイする" 
+	tags="azure-portal"
+	services="app-service\web" 
 	documentationCenter="" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/25/2015" 
+	ms.date="04/21/2015" 
 	ms.author="tomfitz"/>
 
-#Microsoft Azure でギャラリーから Umbraco Web サイトを作成する
+# Microsoft Azure で Marketplace から Umbraco Web アプリを作成する#
 
-Umbraco CMS は、小規模なものから複雑なものまでさまざまなアプリケーションを作成するために使用できるフル機能装備のオープン ソース コンテンツ管理システムです。Azure Websites アプリケーション ギャラリーには、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーを使用して、スタート キットを適用するか、または自分のデザインを統合することで、数分で Umbraco CMS サイトを作成できます。 
+Umbraco CMS は、小規模なものから複雑なものまでさまざまなアプリケーションを作成するために使用できるフル機能装備のオープン ソース コンテンツ管理システムです。Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーを使用して、スタート キットを適用するか、または自分のデザインを統合することで、数分で Umbraco CMS アプリを作成できます。
 
-この記事では、リソース管理を大幅に簡素化する新しい Azure プレビュー ポータルを紹介します。新しい Azure ポータルは、Microsoft とそのパートナーが提供するクロスプラットフォーム ツール、テクノロジ、およびサービスを単一のワークスペースに配置することで、ソフトウェア配信プロセスを迅速化できるように設計されています。Azure Web サイト、Visual Studio プロジェクト、データベースなどのスタンドアロン リソースを使用する代わりに、アプリケーション全体を単一のリソース グループとして作成、管理、および分析できます。 
+この記事では、リソース管理を大幅に簡素化する Azure プレビュー ポータルを紹介します。Azure プレビュー ポータルは、Microsoft とそのパートナーが提供するクロスプラットフォーム ツール、テクノロジ、およびサービスを単一のワークスペースに配置することで、ソフトウェア配信プロセスを迅速化できるように設計されています。[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps、Visual Studio プロジェクト、データベースなどのスタンドアロン リソースを使用する代わりに、アプリケーション全体を単一のリソース グループとして作成、管理、および分析できます。
 
 このチュートリアルでは、次のことについて説明します。
 
-- 新しい Azure プレビュー ポータルを使用し、ギャラリーを通じて新しいサイトを作成する方法
+- Azure プレビュー ポータルを使用して、Marketplace を通じて新しい Web アプリを作成する方法
 - Umbraco CMS を使用してブログ Web サイトをビルドする方法 
 
-##Azure ポータルでギャラリーから Web サイトを作成する
+## Azure プレビュー ポータルで Marketplace から Web アプリを作成する
 
-1. [Microsoft Azure の管理ポータル](https://portal.azure.com/)にログインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
 
-2. **[Azure ギャラリー]** アイコンを選択します。
+2. **[Marketplace]** アイコンを選択します。
 	
 	![Choose Web Gallery][01Startboard]
 	
-3. **[ギャラリー]** で、 **[Web]** タブをクリックし、**[Umbraco CMS]** を選択します。
+3. **[Marketplace]** で、**[Web Apps]** タブを選択し、**[Umbraco CMS]** を選択します。
 	
 	![Select Umbraco in the Web Gallery][02WebGallery]
 	
-4. 新しい Umbraco CMS Web サイトを作成するには、**[作成]** をクリックします。
+4. 新しい Umbraco CMS Web アプリを作成するには、**[作成]** をクリックします。
 	
 	![Click Create][03UmbracoCMS]
 	
-5. 次の手順では、Umbraco CMS に関連付けるすべてのリソースを構成します。ここでは、リソースは Web サイトと SQL Server データベースです。最初に、**[Web サイト]**  を選択し、**[URL]、**[Web ホスティング プラン]**、**[Web App の設定]**、**[場所]** などの Web サイトの設定を構成します。 
+5. 次の手順では、Umbraco CMS に関連付けるすべてのリソースを構成します。ここでは、リソースは Web アプリと SQL Server データベースです。最初に、**[Web アプリ]** を選択して、**URL**、**App Service プラン**、**Web App の設定**、**場所**など、Web アプリの設定を構成します。
 	
 	![Configure resources][04AppSettings]
 	
-6. 次に、データベースを構成します。**[データベース]** を選択し、さらに **[新しいデータベースを作成]** を選択します。この例では、Azure のデータベース用に SQL Server を作成します。
+6. 次に、データベースを構成します。**[データベース]**、**[サーバー]** の順に選択します。この例では、Azure のデータベース用に SQL Server を作成します。
 	
 	![Create a SQL Server on Azure][05NewServer]
 	
-7. これで、Web サイトとデータベースが構成されました。前の画像で見た最初の **[Umbraco CMS]** ブレードの下部にある  **[作成]** をクリックすることで、アプリケーションのデプロイを開始できます。
+7. これで、Web アプリとデータベースが構成されました。前の画像で見た最初の **[Umbraco CMS]** ブレードの下部にある **[作成]** をクリックすることで、アプリケーションのデプロイを開始できます。
 	
 	![Click Create][06UmbracoCMSGroup]
 	
-デプロイメントが完了した後、ポータル内のスタート ボードに、Umbraco CMS のリソース グループ、この場合は **UmbracoCMSgroup** が作成されたことが示されます。**[サマリー]** セクションで、Web サイト名 (この場合、**umbracocmsgroup**) をクリックし、Web サイトのプロパティを確認します。また、**[サマリー]** セクションでは、データベース リソースを選択して、関連付けられたデータベースのプロパティも確認できます。
+デプロイメントが完了したら、Umbraco CMS Web アプリのリソース グループのブレードがポータルに表示されます。**[概要]** セクションで、Web アプリ名をクリックして、Web アプリのプロパティを表示します。また、**[サマリー]** セクションでは、データベース リソースを選択して、関連付けられたデータベースのプロパティも確認できます。
 	
 ![][07UmbracoCMSGroupBlade]
 
-## Umbraco CMS Web サイトの起動と構成
+## Umbraco CMS Web アプリを起動して構成する ##
 
-1. Web サイトの詳細ブレードで、**[参照]** をクリックし、サイトを参照します (この場合、umbracocmsgroup.azurewebsites.net)。
+1. Web アプリの詳細ブレードで **[参照]** をクリックして、Web アプリを参照します。
 	
 	![Browse to your site][08UmbracoCMSGroupRunning]
 	
-2. Web サイトを参照すると、Umbraco CMS がインストーラー ウィザードを開始します。必要な情報を入力して、**[カスタマイズ]** をクリックします。
+2. Web アプリを参照すると、Umbraco CMS によってインストーラー ウィザードが開始されます。必要な情報を入力して、**[カスタマイズ]** をクリックします。
 	
 	![Install Umbraco wizard][09InstallUmbraco7]
 	
-3. Umbraco が使用するデータベースの接続と認証に関する詳細を入力します。データベースの種類として、**[Microsoft SQL Azure]** を選択します。Web サイトの **[サイトの設定]** セクションでデータベースの接続文字列を取得できます。
+3. Umbraco が使用するデータベースの接続と認証に関する詳細を入力します。データベースの種類として、**[Microsoft SQL Azure]** を選択します。Web アプリの **[サイトの設定]** セクションでデータベースの接続文字列を取得できます。
 	
-	![Configure your database][10ConfigureYourDatabase] 
+	![Configure your database][10ConfigureYourDatabase]
 	
 4. Umbraco CMS の初心者である場合は、スタート Web サイト キットを選択できます。それ以外の場合は、**[必要ありません、スタート Web サイトはインストールしません]** を選択します。
 	
@@ -89,26 +90,30 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 	
 	![Enter a title and some content][16EnterAName]
 	
-8. しばらくすると、ページが発行されます。発行が完了すると、画面右下に小さいアラートが表示されます。これで、Web サイト上の新しいコンテンツを参照できます。 
+8. しばらくすると、ページが発行されます。発行が完了すると、画面右下に小さいアラートが表示されます。これで、Web アプリ上の新しいコンテンツを参照できます。
 	
 	![Published web site page][17MyPage]
 	
 
-これで終了です。わずか数分で Umbraco CMS を使用してブログ Web サイトを正常に作成できました。 
+これで終了です。 わずか数分で Umbraco CMS を使用してブログ Web アプリを正常に作成できました。
 
-##その他のリソース
+## その他のリソース
 
 [Umbraco Documentation (Umbraco のドキュメント)](http://our.umbraco.org/documentation)
 
 [Umbraco Video Tutorials (Umbraco ビデオ チュートリアル)](https://umbraco.com/help-and-support/video-tutorials.aspx)
 
-[Microsoft Azure プレビュー ポータルの概要](http://azure.microsoft.com/overview/preview-portal/)
+[Azure ポータルのドキュメント](preview-portal.md)
 
-[Microsoft Azure プレビュー ポータルのドキュメント](http://azure.microsoft.com/documentation/preview-portal/)
+[Azure Portal (Channel 9) (Azure ポータル (チャネル 9))](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal)
 
-[Azure プレビュー ポータル (チャネル 9)](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal)
+[Azure App Service Web Apps のドキュメント](/documentation/services/websites/)
 
-[Microsoft Azure の Web サイトのドキュメント](http://azure.microsoft.com/documentation/services/web-sites/)
+## 変更内容
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 <!-- IMAGES -->
@@ -129,4 +134,4 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [16EnterAName]: ./media/web-sites-gallery-umbraco/16EnterAName.PNG
 [17MyPage]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
 
-<!--HONumber=49-->
+<!--HONumber=54-->

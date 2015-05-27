@@ -5,90 +5,86 @@
 	authors="wesmc7777" 
 	manager="dwrede" 
 	editor="" 
-	services=""/>
+	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.tgt_pltfrm="" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/14/2014" 
+	ms.date="02/20/2015" 
 	ms.author="wesmc"/>
 
 # Mobile Services と Azure Active Directory でのロール ベースのアクセス制御
 
 [AZURE.INCLUDE [mobile-services-selector-rbac](../includes/mobile-services-selector-rbac.md)]
 
-ロール ベースのアクセス制御 (RBAC) は、ユーザーが保持できるロールにアクセス許可を割り当てる機能であり、特定のクラスのユーザーが実行できることとできないことの境界線を明確に定義します。このチュートリアルでは、Azure Mobile Services に基本的な RBAC を追加する方法について説明します。
+##概要
 
-このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、.NET モバイル サービス バックエンドで Azure Active Directory 用の [Graph Client Library] を使って行います。Sales グループに属するユーザーのみが、データの照会を許可されます。
+ロール ベースのアクセス制御 (RBAC) は、ユーザーが保持できるロールに権限を割り当てる方法です。特定のクラスのユーザーができることとできないことの境界を適切に定義します。このチュートリアルでは、Azure Mobile Services に基本的な RBAC を追加する方法について説明します。
+
+このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、.NET Mobile Service バックエンドで Azure Active Directory 用の [Graph REST API] を使って行います。Sales グループに属するユーザーのみが、データの照会を許可されます。
 
 
->[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE]このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、「[アプリへの認証の追加]」チュートリアルを完了しておく必要があります。このチュートリアルでは、「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
 
-このチュートリアルでは、次の手順について説明します。:
+##前提条件
 
-1. [Sales グループとメンバーシップを作成する]
-2. [統合アプリケーションのキーを生成する]
-3. [カスタム承認属性を作成する]
-4. [データベース操作にロール ベースのアクセス確認を追加する]
-5. [クライアントのアクセスをテストする]
-
-このチュートリアルには、次のものが必要です。:
+このチュートリアルには、次のものが必要です。
 
 * Windows 8.1 で実行されている Visual Studio 2013。
-* Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了していること。
-* チュートリアル「[ソース管理へのプロジェクト コードの保存]」を完了し、Git リポジトリを使用してサーバー スクリプトを格納する方法に習熟していること。
+* Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了していること。
+
  
 
 
-## <a name="create-group"></a>Sales グループとメンバーシップを作成する
-
-[AZURE.INCLUDE [mobile-services-aad-rbac-create-sales-group](../includes/mobile-services-aad-rbac-create-sales-group.md)]
+##統合アプリケーションのキーを生成する
 
 
-## <a name="generate-key"></a>統合アプリケーションのキーを生成する
+チュートリアル「[アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したとき、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。
 
-
-チュートリアル「[アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したときに、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。 
+チュートリアル「[Azure Active Directory Graph 情報へのアクセス]」を完了している場合は、この手順を既に完了しているため、このセクションを省略できます。
 
 [AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
 
 
-## <a name="create-custom-authorization-attribute"></a>モバイル サービスにカスタム承認属性を作成する 
+##Sales グループとメンバーシップを作成する
+
+[AZURE.INCLUDE [mobile-services-aad-rbac-create-sales-group](../includes/mobile-services-aad-rbac-create-sales-group.md)]
+
+
+
+##モバイル サービスにカスタム承認属性を作成する 
 
 このセクションでは、モバイル サービスの操作でアクセス確認を実行するときに使用できる、新しいカスタム承認属性を作成します。この属性は、渡されたロール名に基づいて Active Directory グループを検索します。その後、そのグループのメンバーシップに基づいてアクセス確認を行います。
 
 1. Visual Studio で、モバイル サービスの .NET バックエンド プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. [NuGet パッケージ マネージャー] ダイアログ ボックスで、検索条件に「**ADAL**」と入力してモバイル サービスの **Active Directory 認証ライブラリ**を検索し、インストールします。
+2. [NuGet パッケージ マネージャー] ダイアログ ボックスで、検索条件に「**ADAL**」と入力してモバイル サービスの **Active Directory 認証ライブラリ**を検索し、インストールします。このチュートリアルは、ADAL パッケージの 3.0.110281957-alpha (プレリリース) バージョンで最後にテストされています。
 
-3. NuGet パッケージ マネージャーで、モバイル サービスの **Microsoft Azure Active Directory Graph Client Library** もインストールします。
+3. Visual Studio で、モバイル サービス プロジェクトを右クリックし、**[追加]**、**[新しいフォルダー]** の順にクリックします。新しいフォルダーに "**Utilities**" という名前を付けます。
 
-
-4. Visual Studio で、モバイル サービス プロジェクトを右クリックし、**[追加]**、**[新しいフォルダー]** の順にクリックします。新しいフォルダーに "**Utilities**" という名前を付けます。
-
-5. Visual Studio で、新しい **Utilities** フォルダーを右クリックし、"**AuthorizeAadRole.cs**" という名前の新しいクラス ファイルを追加します。
+4. Visual Studio で、新しい **Utilities** フォルダーを右クリックし、"**AuthorizeAadRole.cs**" という名前の新しいクラス ファイルを追加します。
 
     ![][0]
 
-6. AuthorizeAadRole.cs ファイルの先頭に次の `using` ステートメントを追加します。 
+5. AuthorizeAadRole.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
-        using System.Net;
-        using System.Net.Http;
-        using System.Web.Http;
-        using System.Web.Http.Controllers;
-        using System.Web.Http.Filters;
-        using Microsoft.Azure.ActiveDirectory.GraphClient;
-        using Microsoft.WindowsAzure.Mobile.Service.Security;
-        using Microsoft.WindowsAzure.Mobile.Service;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using System.Globalization;
-        using System.Linq.Expressions;
+		using System.Net;
+		using System.Net.Http;
+		using System.Web.Http;
+		using System.Web.Http.Controllers;
+		using System.Web.Http.Filters;
+		using Newtonsoft.Json;
+		using Microsoft.WindowsAzure.Mobile.Service.Security;
+		using Microsoft.WindowsAzure.Mobile.Service;
+		using Microsoft.IdentityModel.Clients.ActiveDirectory;
+		using System.Globalization;
+		using System.IO;
 
-7. AuthorizeAadRole.cs で、Utilities 名前空間に次の列挙型を追加します。この例では、**Sales** ロールだけを使用します。それ以外は、単に使用する可能性のあるグループの例です。
+6. AuthorizeAadRole.cs で、Utilities 名前空間に次の列挙型を追加します。この例では、**Sales** ロールだけを使用します。それ以外は、単に使用する可能性のあるグループの例です。
 
         public enum AadRoles
         {
@@ -97,66 +93,155 @@
             Development
         }
 
-8. AuthorizeAadRole.cs で、Utilities 名前空間に次の `AuthorizeAadRole` クラス定義を追加します。
+7. AuthorizeAadRole.cs で、Utilities 名前空間に次の `AuthorizeAadRole` クラス定義を追加します。
 
         [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
         public class AuthorizeAadRole : AuthorizationFilterAttribute
         {
             private bool isInitialized;
             private bool isHosted;
+	        private ApiServices services = null;
+	
+	        // Constants used with ADAL and the Graph REST API for AAD
+	        private const string AadInstance = "https://login.windows.net/{0}";
+	        private const string GraphResourceId = "https://graph.windows.net/";
+	        private const string APIVersion = "?api-version=2013-04-05";
+	
+	        // App settings pulled from the Mobile Service
+	        private string tenantdomain;
+	        private string clientid;
+	        private string clientkey;
+	        private Dictionary<int, string> groupIds = new Dictionary<int, string>();
+	
+	        private string token = null;
 
             public AuthorizeAadRole(AadRoles role)
             {
                 this.Role = role;
             }
 
+	        // private class used to serialize the Graph REST API web response
+	        private class MembershipResponse
+	        {
+	            public bool value;
+	        }
+
             public AadRoles Role { get; private set; }
 
+            // Generate a local dictionary for the role group ids configured as 
+            // Mobile Service app settings
+            private void InitGroupIds()
+            {
+            }
+
+            // Use ADAL and the authentication app settings from the Mobile Service to 
+            // get an AAD access token
+            private string GetAADToken()
+            {
+            }
+
+            // Given an AAD user id, check membership against the group associated with the role.
+            private bool CheckMembership(string memberId)
+            {
+            }
+
+            // Called when the user is attempting authorization
             public override void OnAuthorization(HttpActionContext actionContext)
             {
             }
         }
 
-9. AuthorizeAadRole.cs で、 `AuthorizeAadRole` クラスに次の `GetAADToken` メソッドを追加します。
 
-    >[AZURE.NOTE] アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、[Graph Client Library] の説明に記載されているとおり、トークンの使用を試みたときに AccessTokenExpiredException 例外がスローされた場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。  
 
-        private string GetAADToken(ApiServices services)
+8. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `InitGroupIds` メソッドを次のように更新します。このメソッドは、各ロールへのグループ ID のディクショナリ マッピングを作成します。
+
+        private void InitGroupIds()
         {
-            const string AadInstance = "https://login.windows.net/{0}";
-            const string GraphResourceId = "https://graph.windows.net";
+            string groupId;
 
-            string tenantdomain;
-            string clientid;
-            string clientkey;
-            string token = null;
-            
             if (services == null)
-                return null;
+                return;
 
-            // Try to get the AAD app settings from the mobile service.  
+            if (!groupIds.ContainsKey((int)AadRoles.Sales))
+            {
+                if (services.Settings.TryGetValue("AAD_SALES_GROUP_ID", out groupId))
+                {
+                    groupIds.Add((int)AadRoles.Sales, groupId);
+                }
+                else
+                    services.Log.Error("AAD_SALES_GROUP_ID app setting not found.");
+            }
+        }
+
+
+9. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `GetAADToken` メソッドを更新します。このメソッドは、Mobile Service に格納されているアプリの設定を使用して、ADAL から AAD へのアクセス トークンを取得します。
+
+    >[AZURE.NOTE]ADAL for .NET には、Active Directory に対する余分なネットワーク トラフィックを軽減するために、既定でメモリ内トークン キャッシュが含まれます。ただし、独自のキャッシュ実装を作成したり、完全にキャッシュを無効にしたりできます。詳細については、[Azure AD Authentication Library for .NET]」を参照してください。
+
+        private string GetAADToken()
+        {
+            // Try to get the required AAD authentication app settings from the mobile service.  
             if (!(services.Settings.TryGetValue("AAD_CLIENT_ID", out clientid) &
                   services.Settings.TryGetValue("AAD_CLIENT_KEY", out clientkey) &
                   services.Settings.TryGetValue("AAD_TENANT_DOMAIN", out tenantdomain)))
             {
-                services.Log.Error("GetAADToken: Could not retrieve all AAD app settings from the mobile service configuration.");
+                services.Log.Error("GetAADToken() : Could not retrieve mobile service app settings.");
                 return null;
             }
 
             ClientCredential clientCred = new ClientCredential(clientid, clientkey);
             string authority = String.Format(CultureInfo.InvariantCulture, AadInstance, tenantdomain);
             AuthenticationContext authContext = new AuthenticationContext(authority);
-            AuthenticationResult result = await authContext.AcquireTokenAsync(GraphResourceId, clientid, clientCred);
+            AuthenticationResult result = authContext.AcquireTokenAsync(GraphResourceId, clientCred).Result;
 
             if (result != null)
                 token = result.AccessToken;
+            else
+                services.Log.Error("GetAADToken() : Failed to return a token.");
 
             return token;
         }
 
-10. AuthorizeAadRole.cs で、 `AuthorizeAadRole` クラスの `OnAuthorization` メソッドを次のコードで更新します。このコードは、[Graph Client Library] を使用して、ロールに対応する Active Directory グループを検索します。その後、そのグループ内のユーザーのメンバーシップを確認して、ユーザーを承認します。
+10. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `CheckMembership` メソッドを更新します。このメソッドは、ユーザーのオブジェクト ID を受け取ります。その後、AAD Graph REST API を使用してそのオブジェクト ID を調べて、`AuthorizeAadRole` クラスで選択されているロールに関連付けられているグループのメンバー ID かどうかを確認します。
 
-    >[AZURE.NOTE] このコードは、Active Directory グループを名前で検索します。多くの場合には、モバイル サービス アプリケーションの設定としてグループ ID を格納する方が適切です。これは、グループ名は変更される場合がありますが、ID は同じままであるためです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。  
+        private bool CheckMembership(string memberId)
+        {
+            bool membership = false;
+            string url = GraphResourceId + tenantdomain + "/isMemberOf" + APIVersion;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            // Use the Graph REST API to check group membership in the AAD
+            try
+            {
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                request.Headers.Add("Authorization", token);
+                using (var sw = new StreamWriter(request.GetRequestStream()))
+                {
+                    // Request body must have the group id and a member id to check for membership
+                    string body = String.Format(""groupId":"{0}","memberId":"{1}"",
+                        groupIds[(int)Role], memberId);
+                    sw.Write("{" + body + "}");
+                }
+
+                WebResponse response = request.GetResponse();
+                StreamReader sr = new StreamReader(response.GetResponseStream());
+                string json = sr.ReadToEnd();
+                MembershipResponse membershipResponse = JsonConvert.DeserializeObject<MembershipResponse>(json);
+                membership = membershipResponse.value;
+            }
+            catch (Exception e)
+            {
+                services.Log.Error("OnAuthorization() exception : " + e.Message);
+            }
+
+            return membership;
+        }
+
+
+11. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `OnAuthorization` メソッドを次のコードで更新します。このコードは、Mobiile Service を呼び出しているユーザーが AAD で認証済みであることを予期します。その後、ユーザーの AAD オブジェクト ID を取得し、ロールに対応する Active Directory グループとのメンバーシップを確認します。
+
+    >[AZURE.NOTE]Active Directory グループは名前で検索できます。ただし、多くの場合には、モバイル サービス アプリケーションの設定としてグループ ID を格納する方が適切です。これは、グループ名の方が変更されることが多く、ID は同じままであるためです。
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
@@ -165,10 +250,10 @@
                 throw new ArgumentNullException("actionContext");
             }
 
-            ApiServices services = new ApiServices(actionContext.ControllerContext.Configuration);
+            services = new ApiServices(actionContext.ControllerContext.Configuration);
 
             // Check whether we are running in a mode where local host access is allowed 
-			// through without authentication.
+            // through without authentication.
             if (!this.isInitialized)
             {
                 HttpConfiguration config = actionContext.ControllerContext.Configuration;
@@ -187,69 +272,63 @@
             if (controller == null)
             {
                 services.Log.Error("AuthorizeAadRole: No ApiController.");
-                return;
-            }
-
-            string accessToken = GetAADToken(services);
-            if (accessToken == null)
-            {
-                services.Log.Error("AuthorizeAadRole: Failed to get an AAD access token.");
-                return;
-            }
-
-            GraphConnection graphConnection = new GraphConnection(accessToken);
-            if (graphConnection == null)
-            {
-                services.Log.Error("AuthorizeAadRole: Failed to get a graph connection.");
-                return;
             }
 
             bool isAuthorized = false;
-
-            // Find the group using a filter on the name
-            FilterGenerator groupFilter = new FilterGenerator();
-            groupFilter.QueryFilter = ExpressionHelper
-                .CreateConditionalExpression(typeof(Group), GraphProperty.DisplayName, Role.ToString(), 
-                    ExpressionType.Equal);
-
-            // Get the group id from the filtered results
-            PagedResults<Group> groupPages = graphConnection.List<Group>(null, groupFilter);
-            string groupId = groupPages.Results.FirstOrDefault().ObjectId;
-
-            // Check group membership to see if the user is part of the group that corresponds to the role
-            if (!string.IsNullOrEmpty(groupId))
+            try
             {
-                ServiceUser serviceUser = controller.User as ServiceUser;
-                if (serviceUser != null && serviceUser.Level == AuthorizationLevel.User)
+                // Initialize a mapping for the group id to our enumerated type
+                InitGroupIds();
+
+                // Retrieve a AAD token from ADAL
+                GetAADToken();
+                if (token == null)
                 {
-                    var idents = serviceUser.GetIdentitiesAsync().Result;
-                    var clientAadCredentials = idents.OfType<AzureActiveDirectoryCredentials>().FirstOrDefault();
-                    if (clientAadCredentials != null)
+                    services.Log.Error("AuthorizeAadRole: Failed to get an AAD access token.");
+                }
+                else
+                {
+                    // Check group membership to see if the user is part of the group that corresponds to the role
+                    if (!string.IsNullOrEmpty(groupIds[(int)Role]))
                     {
-                        bool isMember = graphConnection.IsMemberOf(groupId, clientAadCredentials.ObjectId);
-                        if (isMember)
+                        ServiceUser serviceUser = controller.User as ServiceUser;
+                        if (serviceUser != null && serviceUser.Level == AuthorizationLevel.User)
                         {
-                            isAuthorized = true;
+                            var idents = serviceUser.GetIdentitiesAsync().Result;
+                            AzureActiveDirectoryCredentials clientAadCredentials =
+                                idents.OfType<AzureActiveDirectoryCredentials>().FirstOrDefault();
+                            if (clientAadCredentials != null)
+                            {
+                                isAuthorized = CheckMembership(clientAadCredentials.ObjectId);
+                            }
                         }
                     }
                 }
             }
-
-            if (!isAuthorized)
+            catch (Exception e)
             {
-                actionContext.Response = actionContext.Request
-                    .CreateErrorResponse(HttpStatusCode.Forbidden, 
-						"User is not logged in or not a member of the required group");
+                services.Log.Error(e.Message);
+            }
+            finally
+            {
+                if (isAuthorized == false)
+                {
+                    services.Log.Error("Denying access");
+
+                    actionContext.Response = actionContext.Request
+                        .CreateErrorResponse(HttpStatusCode.Forbidden,
+                            "User is not logged in or not a member of the required group");
+                }
             }
         }
 
-8. AuthorizeAadRole.cs に変更を保存します。
+12. AuthorizeAadRole.cs に変更を保存します。
 
-## <a name="add-access-checking"></a>データベース操作にロール ベースのアクセス確認を追加する
+##データベース操作にロール ベースのアクセス確認を追加する
 
 1. Visual Studio で、モバイル サービス プロジェクト内の **Controllers** フォルダーを展開します。TodoItemController.cs を開きます。
 
-2. TodoItemController.cs で、カスタム承認属性を含む Utilities 名前空間に対して `using` ステートメントを追加します。 
+2. TodoItemController.cs で、カスタム承認属性を含む Utilities 名前空間に対して `using` ステートメントを追加します。
 
         using todolistService.Utilities;
 
@@ -287,7 +366,7 @@
 5. モバイル サービスを Azure アカウントに発行します。
 
 
-## <a name="test-client"></a>クライアントのアクセスをテストする
+##クライアントのアクセスをテストする
 
 [AZURE.INCLUDE [mobile-services-aad-rbac-test-app](../includes/mobile-services-aad-rbac-test-app.md)]
 
@@ -295,27 +374,21 @@
 
 
 
-<!-- Anchors. -->
-[Sales グループとメンバーシップを作成する]: #create-group
-[統合アプリケーションのキーを生成する]: #generate-key
-[カスタム承認属性を作成する]: #create-custom-authorization-attribute
-[データベース操作にロール ベースのアクセス確認を追加する]: #add-access-checking
-[クライアントのアクセスをテストする]: #test-client
-
 
 
 <!-- Images -->
 [0]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/add-authorize-aad-role-class.png
 
 <!-- URLs. -->
-[アプリへの認証の追加]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/
-[Azure Active Directory 認証用の登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[ディレクトリ統合]: http://msdn.microsoft.com/library/azure/jj573653.aspx
-[ソース管理へのプロジェクト コードの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control/
-[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
-[Graph Client Library]: http://go.microsoft.com/fwlink/?LinkId=510536
-[グループ メンバーシップの確認 (推移的)]: http://msdn.microsoft.com/library/azure/dn151601.aspx
-
-
-<!--HONumber=42-->
+[Mobile Services アプリへの認証の追加]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
+[アプリへの認証の追加]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
+[How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
+[Azure Management Portal]: https://manage.windowsazure.com/
+[Directory Sync Scenarios]: http://msdn.microsoft.com/library/azure/jj573653.aspx
+[Store Server Scripts]: mobile-services-store-scripts-source-control.md
+[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
+[Graph REST API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
+[IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
+[Azure Active Directory Graph 情報へのアクセス]: mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info.md
+[Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
+<!--HONumber=54-->

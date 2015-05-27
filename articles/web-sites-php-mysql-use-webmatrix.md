@@ -1,120 +1,126 @@
-﻿<properties 
-	pageTitle="MySQL と WebMatrix を使用した PHP Web サイト - Azure チュートリアル" 
-	description="無料の WebMatrix IDE を使用して、MySQL にデータを保存する PHP Web サイトを作成およびデプロイする方法を示すチュートリアル。" 
-	services="web-sites" 
+<properties 
+	pageTitle="Azure App Service での WebMatrix を使用した PHP-MySQL Web アプリの作成とデプロイ" 
+	description="無料の WebMatrix IDE を使用して、MySQL にデータを保存する Azure App Service に PHP Web サイトを作成およびデプロイする方法を示すチュートリアル。"
+	tags="azure-portal" 
+	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
 <tags 
-	ms.service="web-sites" 
+	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/14/2014" 
+	ms.date="04/22/2015" 
 	ms.author="tomfitz"/>
 
 
 
 
 
-#WebMatrix を使用して PHP-MySQL Azure の Web サイトを作成および展開する
+# Azure App Service での WebMatrix を使用した PHP-MySQL Web アプリの作成とデプロイ
 
-このチュートリアルでは、WebMatrix を使用して PHP-MySQL アプリケーションを作成し、Azure の Web サイトに展開する方法を示します。WebMatrix は、Microsoft から提供されている無料の Web 開発ツールで、Web サイトの開発に必要なものがすべて用意されています。WebMatrix では PHP がサポートされており、PHP 開発用 Intellisense が含まれています。
+このチュートリアルでは、WebMatrix を使用して PHP-MySQL アプリケーションを作成し、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps にデプロイする方法を示します。WebMatrix は、Microsoft から提供されている無料の Web 開発ツールで、Web サイトの開発に必要なものがすべて用意されています。WebMatrix では PHP がサポートされており、PHP 開発用 Intellisense が含まれています。
 
-このチュートリアルは、アプリケーションをローカルでテストできるように、コンピューターに [MySQL][install-mysql] がインストールされていることを前提としています。ただし、MySQL をインストールせずにチュートリアルを完了することもできます。その場合は、アプリケーションを直接 Azure の Web サイトに展開します。
+このチュートリアルは、アプリケーションをローカルでテストできるように、コンピューターに [MySQL][install-mysql] がインストールされていることを前提としています。ただし、MySQL をインストールせずにチュートリアルを完了することもできます。その場合は、アプリケーションを直接 Azure App Service Web Apps にデプロイします。
 
-このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web サイトが完成します。
+このチュートリアルを完了すると、Web Apps で動作する PHP/MySQL Web サイトが完成します。
  
 学習内容:
 
-* 管理ポータルを使用して Azure の Web サイトと MySQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して App Service Web Apps の Web サイトと MySQL データベースを作成する方法。Web Apps では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
 * WebMatrix を使用して PHP アプリケーションを作成する方法。
-* WebMatrix を使用して Azure にアプリケーションを発行および再発行する方法。
+* WebMatrix を使用して Web Apps にアプリケーションを発行および再発行する方法。
  
-このチュートリアルでは、タスク一覧用の単純な Web アプリケーション (Tasklist) を PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。実行中のアプリケーションのスクリーンショットは次のようになります。
+このチュートリアルでは、タスク一覧用の単純な Web アプリケーション (Tasklist) を PHP で作成します。アプリケーションは、App Service Web Apps でホストされます。実行中のアプリケーションのスクリーンショットは次のようになります。
 
 ![Azure PHP Web Site][running-app]
 
-> [AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://azure.microsoft.com/pricing/free-trial/">無料評価版にサインアップ</a>してください。
-> 
-> アカウントにサインアップする前に Azure Websites を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/?language=php">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure Websites で、有効期限付きの ASP.NET スターター サイトを無償で簡単に作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##前提条件
 
 1. Tasklist アプリケーションのファイルを[ダウンロード][tasklist-mysql-download]します。Tasklist アプリケーションは、タスク一覧のアイテムの追加、完了済みとしてのマーク付け、および削除を行うための、単純な PHP アプリケーションです。タスク一覧のアイテムは MySQL データベースに保存されます。アプリケーションは、次のファイルで構成されます。
 
-	* **additem.php**:: 一覧にアイテムを追加します。
-	* **createtable.php**:アプリケーション用の MySQL テーブルを作成します。このファイルは 1 度しか呼び出されません。
-	* **deleteitem.php**:アイテムを削除します。
-	* **getitems.php**:データベース内のアイテムをすべて取得します。
-	* **index.php**:タスクを表示し、一覧にアイテムを追加するためのフォームを提供します。
-	* **markitemcomplete.php**:アイテムのステータスを "完了済み" に変更します。
-	* **taskmodel.php**:データベース内のアイテムの追加、取得、更新、および削除を行う関数が含まれています。
+	* **additem.php**: 一覧にアイテムを追加します。
+	* **createtable.php**: アプリケーション用の MySQL テーブルを作成します。このファイルは 1 度しか呼び出されません。
+	* **deleteitem.php**: アイテムを削除します。
+	* **getitems.php**: データベース内のアイテムをすべて取得します。
+	* **index.php**: タスクを表示し、一覧にアイテムを追加するためのフォームを提供します。
+	* **markitemcomplete.php**: アイテムのステータスを "完了済み" に変更します。
+	* **taskmodel.php**: データベース内のアイテムの追加、取得、更新、および削除を行う関数が含まれています。
 
-1.  `tasklist` というローカルの MySQL データベースを作成します。そのためには、WebMatrix の Database ワークスペースから作成するか (このチュートリアルでこの後にインストールします)、MySQL コマンド プロンプトで次のコマンドを実行します。
+1. "`tasklist`" というローカルの MySQL データベースを作成します。そのためには、WebMatrix の Database ワークスペースから作成するか (このチュートリアルでこの後にインストールします)、MySQL コマンド プロンプトで次のコマンドを実行します。
 
 		mysql> create database tasklist;
 
 	この手順は、アプリケーションをローカルでテストする場合にのみ必要です。
 
-<h2><a id="CreateWebsite"></a>Azure の Web サイトおよび MySQL データベースを作成する</h2>
+## Web アプリと MySQL データベースの作成
 
-1. [管理ポータル][preview-portal]にログインします。
-1. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
+Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
-	![Create New Azure Web Site][NewWebSite1]
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 
-1. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-	![Custom Create a new Web Site][NewWebSite2]
+	![新しい Azure の Web サイトの作成](./media/web-sites-php-mysql-use-webmatrix/new_website2.png)
 
-	> [AZURE.NOTE]
-	> Web サイトを作成した後は、その Web サイトに MySQL データベースを作成できません。Web サイトと MySQL データベースは、次に示す手順に従って作成する必要があります。
+3. **[Web + モバイル]** をクリックし、**[Web アプリ + MySQL]** をクリックします。
 
-1. **[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい MySQL データベースを作成します]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
+	![新しい Web サイトのカスタム作成](./media/web-sites-php-mysql-use-webmatrix/create_web_mysql.png)
 
-	![Fill in web site details][NewWebSite3]
+4. リソース グループの有効な名前を入力します。
 
-5. データベースの **[名前]** ボックスに値を入力し、**[リージョン]** ボックスの一覧でデータベースのデータ センターを選択して、法律条項に同意することを示すチェック ボックスをオンにします。ダイアログの下部にあるチェックマークをクリックします。
+    ![リソース グループ名の設定](./media/web-sites-php-mysql-use-webmatrix/set_group.png)
 
-	![Create new MySQL database][NewWebSite4]
+5. 新しい Web アプリについての値を入力します。
 
-	Web サイトが作成されると、"**Web サイト '[SITENAME]' の作成に成功しました**" というテキストが表示されます。
+    ![Web アプリの作成](./media/web-sites-php-mysql-use-webmatrix/create_wa.png)
 
-	次に、MySQL の接続情報を取得する必要があります。
+6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
 
+	![Create new MySQL database](./media/web-sites-php-mysql-use-webmatrix/create_db.png)
 
-6. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトのクイック スタート ページを開きます。
+	Web アプリが作成されると、新しいリソース グループが表示されます。
 
-	![Open web site dashboard][NewWebSite5]
+## MySQL のリモート接続情報の取得
 
-7. **[構成]** タブをクリックします。
+Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
-	![Configure tab][NewWebSite6]
+1. リソース グループで、データベースをクリックします。
 
-8. 下方向へ **[接続文字列]** セクションまでスクロールします。 `Database`、 `Data Source`、 `User Id`、および  `Password` の値は (それぞれ) データベース名、サーバー名、ユーザー名、およびユーザー パスワードです。データベース接続情報は後で必要になるため、メモしておいてください。
+	![データベースの選択](./media/web-sites-php-mysql-use-webmatrix/select_database.png)
 
-	![Connection string][ConnectionString]
+2. データベースのサマリで、**[プロパティ]** を選択します。
 
-##WebMatrix をインストールしアプリケーションを作成する
+    ![プロパティの選択](./media/web-sites-php-mysql-use-webmatrix/select_properties.png)
 
-WebMatrix は、[管理ポータル][preview-portal]からインストールできます。 
+2. `Database`、`Host`、`User Id`、`Password` の各値をメモします。
 
-1. ログインした後、Web サイトのクイック スタート ページに移動して、ページの下部にある WebMatrix アイコンをクリックします。
+    ![プロパティへの注記](./media/web-sites-php-mysql-use-webmatrix/note-properties.png)
 
-	![Install WebMatrix][InstallWebMatrix]
+## WebMatrix でのアプリケーションの作成
 
-	表示される手順に従って WebMatrix をインストールします。
+次に示す数ステップで、Tasklist アプリケーションを作成します。これには、ダウンロードしておいたファイルを追加し、いくつかの変更を行います。ただし、独自の既存ファイルを追加することも、新しいファイルを作成することもできます。
 
-2. WebMatrix がインストールされると、サイトを WebMatrix プロジェクトとして開く試行が行われます。ライブ サイトを直接編集するか、ローカル コピーをダウンロードするかを選択できます。このチュートリアルでは、 'Edit local copy' を選択します。 
+1. [Microsoft WebMatrix](http://www.microsoft.com/web/webmatrix/) を起動します。まだインストールされていない場合は、まずインストールします。
+2. 初めて WebMatrix 3 を使用する場合は、Azure へのサインインを求めるメッセージが表示されます。そうでない場合は、**[サインイン]** ボタンをクリックし、**[アカウントの追加]** を選択します。Microsoft アカウントを使用して**サインイン**することを選択します。
 
-3. サイトをダウンロードするかどうかを確認するメッセージが表示されたら、**[はい、テンプレート ギャラリーからインストールします]** を選択します。
+	![アカウントの追加](./media/web-sites-php-mysql-use-webmatrix/webmatrix-add-account.png)
 
-	![Download web site][download-site]
+3. Azure アカウントにサインアップしている場合は、Microsoft アカウントを使用してログインできます。
+
+	![Azure へのサインイン](./media/web-sites-php-mysql-use-webmatrix/webmatrix-sign-in.png)
+
+1. スタート画面で **[新規作成]** ボタンをクリックし、**[テンプレート ギャラリー]** を選択して、テンプレート ギャラリーから新しいサイトを作成します。
+
+	![テンプレート ギャラリーからの新しいサイト](./media/web-sites-php-mysql-use-webmatrix/webmatrix-site-from-template.png)
 
 4. 使用できるテンプレートから、**[PHP]** を選択します。
 
@@ -132,9 +138,9 @@ WebMatrix は、[管理ポータル][preview-portal]からインストールで�
 
 	![WebMatrix - Add existing files][edit_addexisting]
 
-	表示されたダイアログで、ダウンロードしておいたファイルの場所に移動し、すべて選択して、[開く] をクリックします。確認のメッセージが表示されたら、 `index.php` ファイルの置き換えを選択します。 
+	表示されたダイアログで、ダウンロードしておいたファイルの場所に移動し、すべて選択して、[開く] をクリックします。確認のメッセージが表示されたら、`index.php` ファイルの置き換えを選択します。
 
-7. 次に、ローカル MySQL データベースの接続情報を  `taskmodel.php` ファイルに追加する必要があります。 `taskmodel.php` ファイルをダブルクリックして開き、 `connect` 関数内のデータベース接続情報を更新します (**注**:アプリケーションをローカルでテストせず、直接 Azure の Web サイトに発行する場合は、「[アプリケーションの発行](#Publish) 」に進んでください)。
+7. 次に、ローカル MySQL データベースの接続情報を `taskmodel.php` ファイルに追加する必要があります。`taskmodel.php` ファイルをダブルクリックして開き、`connect` 関数内のデータベース接続情報を更新します (**注**: アプリケーションをローカルでテストせず、Azure App Service Web Apps に直接発行する場合は、「[アプリケーションの発行](#Publish)」を参照してください)。
 
 		// DB connection info
 		$host = "localhost";
@@ -142,20 +148,20 @@ WebMatrix は、[管理ポータル][preview-portal]からインストールで�
 		$pwd = "your password";
 		$db = "tasklist";
 
-	 `taskmodel.php` ファイルを保存します。
+	`taskmodel.php` ファイルを保存します。
 
-8. アプリケーションを実行するには、 `items` テーブルを作成する必要があります。 `createtable.php` ファイルを右クリックし、**[ブラウザーで起動]** を選択します。これにより、 `createtable.php` がブラウザーで起動し、 `tasklist` データベースに  `items` テーブルを作成するコードが実行されます。
+8. アプリケーションを実行するには、`items` テーブルを作成する必要があります。`createtable.php` ファイルを右クリックし、**[ブラウザーで起動]** を選択します。これにより、`createtable.php` がブラウザーで起動し、`tasklist` データベースに `items` テーブルを作成するコードが実行されます。
 
 	![WebMatrix - Launch createtable.php in browser][edit_run]
 
-9. これで、アプリケーションのテストをローカルで行うことができます。 `index.php` ファイルを右クリックし、**[ブラウザーで起動]** を選択します。アイテムの追加、完了済みとしてのマーク付け、および削除を行うことにより、アプリケーションをテストします。  
+9. これで、アプリケーションのテストをローカルで行うことができます。`index.php` ファイルを右クリックし、**[ブラウザーで起動]** を選択します。アイテムの追加、完了済みとしてのマーク付け、および削除を行うことにより、アプリケーションをテストします。
 
 
-<h2><a id="Publish"></a>アプリケーションの発行</h2>
+## アプリケーションの発行
 
-アプリケーションを Azure の Web サイトに発行する前に、 `taskmodel.php` 内のデータベース接続情報を、先ほど (「[Azure の Web サイトと MySQL データベースの作成]」セクションで) 取得した接続情報に更新する必要があります(#CreateWebsite) 。
+アプリケーションを App Service Web Apps に発行する前に、`taskmodel.php` ファイル内のデータベース接続情報を、先ほど (「[Web アプリと MySQL Database の作成](#CreateWebsite)」セクションで) 取得した接続情報に更新する必要があります。
 
-1.  `taskmodel.php` ファイルをダブルクリックして開き、 `connect` 関数内のデータベース接続情報を更新します
+1. `taskmodel.php` ファイルをダブルクリックして開き、`connect` 関数内のデータベース接続情報を更新します。
 
 		// DB connection info
 		$host = "value of Data Source";
@@ -163,41 +169,47 @@ WebMatrix は、[管理ポータル][preview-portal]からインストールで�
 		$pwd = "value of Password";
 		$db = "value of Database";
 	
-	Save the `taskmodel.php` file.
+	`taskmodel.php` ファイルを保存します。
 
-2. WebMatrix で **[発行]** をクリックし、**[発行のプレビュー]** ダイアログの **[続行]** をクリックします。
+2. WebMatrix で **[発行]** をクリックします。
 
 	![WebMatrix - Publish][edit_publish]
 
-3.  `items` テーブルを作成するには、http://[your web site name].azurewebsites.net/createtable.php に移動します。
+3. **[Windows Azure から既存のサイトを選択]** を選択します。
 
-4. 最後に、http://[Web サイト名].azurewebsites.net/index.php  に移動してアプリケーションを使用します。
+	![](./media/web-sites-php-sql-database-use-webmatrix/webmatrix-publish-existing-site.png)
+
+3. 先ほど作成した App Service の Web アプリを選択します。
+
+	![](./media/web-sites-php-sql-database-use-webmatrix/webmatrix-publish-existing-site-choose.png)
+
+3. WebMatrix がサイトを Azure App Service Web Apps に発行するまで **[Continue]** をクリックします。
+
+3. http://[your Web サイト名].azurewebsites.net/createtable.php に移動すると、`items` テーブルを作成できます。
+
+4. 最後に、http://[your web site name].azurewebsites.net/index.php に移動してアプリケーションを使用します。
 	
 ##アプリケーションの変更と再発行
 
-アプリケーションを変更するには、前にダウンロードしたサイトのローカル コピーを編集して、再発行する方法と、リモート モードでサイトを直接編集する方法があります。ここでは、 `index.php` ファイルの見出しに簡単な変更を加え、それをライブ サイトへ直接保存します。
+アプリケーションを変更するには、前にダウンロードしたサイトのローカル コピーを編集して、再発行する方法と、リモート モードでサイトを直接編集する方法があります。ここでは、`index.php` ファイルの見出しに簡単な変更を加え、それをライブ サイトへ直接保存します。
 
-1. WebMatrix で目的のサイトの [リモート] タブをクリックし、**[リモート ビューを開く]** を選択します。リモート サイトが開き、直接編集できるようになります。
-	 ![WebMatrix - Open Remote View][OpenRemoteView]
+1. WebMatrix で目的のサイトの [リモート] タブをクリックし、**[リモート ビューを開く]** を選択します。リモート サイトが開き、直接編集できるようになります。![WebMatrix - Open Remote View][OpenRemoteView]
  
-2.  `index.php` ファイルをダブルクリックして開きます。
-	![WebMatrix - Open index file][Remote_editIndex]
+2. `index.php` ファイルをダブルクリックして開きます。![WebMatrix - インデックス ファイルを開く][Remote_editIndex]
 
 3. **title** タグと **h1** タグの **My ToDo List** を **My Task List** に変更し、このファイルを保存します。
 
 
-4. ファイルを保存したら [実行] をクリックし、ライブ サイトで変更内容を確認します。
-	![WebMatrix - Launch site in Remote][Remote_run]
+4. ファイルを保存したら [実行] をクリックし、ライブ サイトで変更内容を確認します。![WebMatrix - リモートでサイトを実行][Remote_run]
 
 
-# 次のステップ
-
-これで WebMatrix から Web サイトを作成して Azure に展開する方法はわかりました。WebMatrix の詳細については、次のリソースをご覧ください。
-
-* [Azure 用 WebMatrix の概要](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
+## 次のステップ
 
 * [WebMatrix の Web サイト](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)
 
+## 変更内容
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 
 
@@ -250,6 +262,4 @@ WebMatrix は、[管理ポータル][preview-portal]からインストールで�
 
 
 
-
-
-<!--HONumber=42-->
+<!--HONumber=54-->
