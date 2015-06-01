@@ -15,7 +15,7 @@ ms.tgt_pltfrm="na"
 ms.date="04/23/2015" 
 ms.author="heidist" />
 
-#インデクサー操作 \(Azure Search サービス REST API: 2015-02-28-Preview\)
+#インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)
 
 > [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のインデクサーについて説明します。現在のところ、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) に記載されている `2015-02-28` バージョンとここに記載する `2015-02-28-Preview` バージョンの唯一の違いは、このプレビューでは *fieldMappings* を提供するという点です。この機能の説明は「[インデクサーの作成](#CreateIndexer)」にあります。
 
@@ -31,7 +31,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
  **インデクサー** はインデックスを定期的に更新する場合に便利です。インデクサー定義の一部としてインラインスケジュールを設定するか、[インデクサー実行](#RunIndexer)を利用してオンデマンドで実行できます。
 
-**データ ソース**はインデックスを作成するデータとデータにアクセスするための資格情報、Azure Search を有効にしてデータの変更 \(データベース テーブルの行の変更や削除など\) を効率的に特定するためのポリシーを指定します。データ ソースは複数のインデクサーで使用できるように独立したリソースとして定義します。
+**データ ソース**はインデックスを作成するデータとデータにアクセスするための資格情報、Azure Search を有効にしてデータの変更 (データベース テーブルの行の変更や削除など) を効率的に特定するためのポリシーを指定します。データ ソースは複数のインデクサーで使用できるように独立したリソースとして定義します。
 
 現在、次のデータ ソースがサポートされています。
 
@@ -44,7 +44,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 ## 一般的な使用フロー
 
-特定の `data source` または `indexer` リソースに簡単な HTTP 要求 \(POST、GET、PUT、DELETE\) を実行することでインデクサーとデータ ソースを作成し、管理できます。
+特定の `data source` または `indexer` リソースに簡単な HTTP 要求 (POST、GET、PUT、DELETE) を実行することでインデクサーとデータ ソースを作成し、管理できます。
 
 自動インデックス作成の設定は通常、4 つの段階から構成されます。
 
@@ -58,7 +58,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 ターゲット インデックスとデータ ソースの組み合わせごとにインデクサーを 1 つ作成するように設計する必要があります。複数のインデクサーが同じインデックスに書き込みできます。複数のインデクサーに同じデータ ソースを再利用できます。ただし、インデクサーが 1 回に利用できるデータ ソースは 1 つだけです。そして、書き込めるインデックスは 1 つだけです。
 
-インデクサーを作成したら、[インデクサー状態の取得](#GetIndexerStatus)操作でその実行状態を取得できます。また、[インデクサーの実行](#RunIndexer)操作を使用すれば、\(スケジュールに基づき定期的に実行する代わりに、あるいは定期的な実行に加えて\) いつでもインデクサーを実行できます。
+インデクサーを作成したら、[インデクサー状態の取得](#GetIndexerStatus)操作でその実行状態を取得できます。また、[インデクサーの実行](#RunIndexer)操作を使用すれば、(スケジュールに基づき定期的に実行する代わりに、あるいは定期的な実行に加えて) いつでもインデクサーを実行できます。
 
 <!-- MSDN has 2 art files plus a API topic link list -->
 
@@ -75,7 +75,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいデータ
 
     PUT https://[service name].search.windows.net/datasources/[datasource name]?api-version=[api-version]
 
-**注**: 許可されるデータ ソースの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのデータ ソースが許可されます。Standard サービスの場合、50 のデータ ソースが許可されます。詳細については、「[Limits and constraints \(Azure Search API\) \(制限と制約 \(Azure Search API\)\)](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+**注**: 許可されるデータ ソースの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのデータ ソースが許可されます。Standard サービスの場合、50 のデータ ソースが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
 
 **要求**
 
@@ -90,7 +90,7 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `Content-Type`: 必須。これを `application/json` に設定します
-- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には \(クエリ キーではなく\) 管理者キーに設定された `api-key` ヘッダーを含めます。 
+- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には (クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含めます。 
  
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` の両方を [Azure 管理ポータル](https://portal.azure.com/)のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
@@ -124,7 +124,7 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 		- DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。すべての値が必須です。値は [Azure 管理ポータル](https://portal.azure.com/)にあります。   
 		
 - `container`:
-	- 必須の `name` プロパティにより、インデックスが作成されるテーブルまたはビュー \(Azure SQL データ ソースの場合\) あるいはコレクション \(DocumentDB データ ソースの場合\) が指定されます。 
+	- 必須の `name` プロパティにより、インデックスが作成されるテーブルまたはビュー (Azure SQL データ ソースの場合) あるいはコレクション (DocumentDB データ ソースの場合) が指定されます。 
 	- DocumentDB データ ソースは任意の `query` プロパティもサポートします。このプロパティにより、Azure Search がインデックスを作成できるフラット スキーマに任意の JSON ドキュメント レイアウトをフラット化するクエリを指定できます。   
 - 任意の `dataChangeDetectionPolicy` と `dataDeletionDetectionPolicy` の説明は下にあります。
 
@@ -221,7 +221,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **要求** 要求本文の構文は[データ ソースの作成要求](#CreateDataSourceRequestSyntax)の場合と同じです。
 
@@ -239,7 +239,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -278,7 +278,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -315,7 +315,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -334,11 +334,11 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=[api-version]
 
-**注**: 許可されるインデクサーの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのインデクサーが許可されます。Standard サービスの場合、50 のインデクサーが許可されます。詳細については、「[Limits and constraints \(Azure Search API\) \(制限と制約 \(Azure Search API\)\)](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+**注**: 許可されるインデクサーの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのインデクサーが許可されます。Standard サービスの場合、50 のインデクサーが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 
 <a name="CreateIndexerRequestSyntax"></a> **要求本文の構文**
@@ -362,7 +362,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 インデクサーには、必要に応じてスケジュールを指定できます。スケジュールが存在する場合、インデクサーはスケジュールに従って定期的に実行されます。スケジュールには次の属性があります。
 
-- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 \([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット\) として書式設定する必要があります。これに使用されるパターンは `P(nD)(T(nH)(nM))` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
+- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。これに使用されるパターンは `P(nD)(T(nH)(nM))` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
 
 - `startTime`: 必須。インデクサーの実行を開始する UTC 日時。
 
@@ -395,7 +395,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 フィールド マッピングでは、*マッピング関数*を利用し、ソースのフィールド値を変換することもできます。
 
-このような関数としては現在、`jsonArrayToStringCollection` のみがサポートされています。JSON 配列として書式設定されている文字列を含むフィールドを解析してターゲット インデックスの Collection\(Edm.String\) フィールドにします。特に Azure SQL インデクサーで使用することを意図しています。SQL にはネイティブのコレクション データ型がないためです。次のように使用できます。
+このような関数としては現在、`jsonArrayToStringCollection` のみがサポートされています。JSON 配列として書式設定されている文字列を含むフィールドを解析してターゲット インデックスの Collection(Edm.String) フィールドにします。特に Azure SQL インデクサーで使用することを意図しています。SQL にはネイティブのコレクション データ型がないためです。次のように使用できます。
 
 	"fieldMappings" : [ { "sourceFieldName" : "tags", "mappingFunction" : { "name" : "jsonArrayToStringCollection" } } ] 
 
@@ -432,7 +432,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **要求**
 
@@ -454,7 +454,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -496,7 +496,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -526,7 +526,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
  
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -542,7 +542,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
@@ -559,13 +559,13 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 
 状態コード: 応答の成功に対して「200 OK」が返されます。
 
-応答本文にはインデクサーの全体的な正常性状態、インデクサーの最後の呼び出し、\(存在する場合は\) インデクサー呼び出しの最近の履歴に関する情報が含まれます。
+応答本文にはインデクサーの全体的な正常性状態、インデクサーの最後の呼び出し、(存在する場合は) インデクサー呼び出しの最近の履歴に関する情報が含まれます。
 
 サンプルの応答本文は次のようになります。
 
@@ -619,13 +619,13 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 - `errors`: 項目レベルのエラーがあれば、その一覧。
 
-- `itemsProcessed`: この実行の間にインデクサーがインデックス作成を試行したデータ ソース項目 \(テーブル行など\) の数。
+- `itemsProcessed`: この実行の間にインデクサーがインデックス作成を試行したデータ ソース項目 (テーブル行など) の数。
 
 - `itemsFailed`: この実行の間に失敗した項目の数。
  
-- `initialTrackingState`: 最初のインデクサー実行に対して、あるいは使用されるデータ ソースでデータ変更追跡ポリシーが有効になっていない場合、常に `null`。データ変更追跡ポリシーが有効になっている場合、後続の実行で、この値はこの実行で処理された最初の \(最低\) 変更追跡値を示します。
+- `initialTrackingState`: 最初のインデクサー実行に対して、あるいは使用されるデータ ソースでデータ変更追跡ポリシーが有効になっていない場合、常に `null`。データ変更追跡ポリシーが有効になっている場合、後続の実行で、この値はこの実行で処理された最初の (最低) 変更追跡値を示します。
 
-- `finalTrackingState`: 使用されるデータ ソースでデータ変更追跡ポリシーが有効になっていない場合、常に `null`。有効になっている場合、この実行で処理された最後の \(最高\) 変更追跡値を示します。
+- `finalTrackingState`: 使用されるデータ ソースでデータ変更追跡ポリシーが有効になっていない場合、常に `null`。有効になっている場合、この実行で処理された最後の (最高) 変更追跡値を示します。
 
 <a name="IndexerExecutionStatus"></a> **インデクサー実行の状態**
 
@@ -640,19 +640,19 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 - `persistentFailure` は、インデクサーでエラーが発生し、ユーザーの介在を必要していることを示します。スケジュールされているインデクサーの実行は停止します。問題を解決した後に、インデクサーのリセット API を使用し、スケジュールされている実行を再開します。
 
-- `reset` は、インデクサーをリセットする API \(下記参照\) の呼び出しによりインデクサーがリセットされたことを示します。
+- `reset` は、インデクサーをリセットする API (下記参照) の呼び出しによりインデクサーがリセットされたことを示します。
 
 <a name="ResetIndexer"></a>
 ## インデクサーのリセット
 
-**インデクサーのリセット**操作は、インデクサーに関連付けられている変更追跡の状態をリセットします。リセットすることで、インデックス再作成を最初から始めたり \(データ ソース スキーマが変更された場合など\)、インデクサーに関連付けられているデータ ソースのデータ変更追跡ポリシーを変えたりできます。
+**インデクサーのリセット**操作は、インデクサーに関連付けられている変更追跡の状態をリセットします。リセットすることで、インデックス再作成を最初から始めたり (データ ソース スキーマが変更された場合など)、インデクサーに関連付けられているデータ ソースのデータ変更追跡ポリシーを変えたりできます。
 
 	POST https://[service name].search.windows.net/indexers/[indexer name]/reset?api-version=[api-version]
     api-key: [admin key]
 
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
-`api-key` は \(クエリ キーではなく\) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
+`api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
 **応答**
 

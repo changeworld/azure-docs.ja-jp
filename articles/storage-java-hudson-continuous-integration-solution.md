@@ -129,7 +129,7 @@ Hudson で BLOB サービスを使用するには、Azure ストレージ プラ
 8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、共有アクセス署名を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。共有アクセス署名に関する詳細については、[共有アクセス署名の作成に関するページ](http://go.microsoft.com/fwlink/?LinkId=279889)を参照してください)。
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、**[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]** では、「**text/*.txt**」と入力します。
-11. **[Common virtual path for uploaded artifacts]** では、「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
+11. **[Common virtual path for uploaded artifacts]** では、「**${BUILD_ID}/${BUILD_NUMBER}**」と入力します。
 12. **[Save]** をクリックして設定を保存します。
 13. Hudson ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。コンソール出力でステータスを確認します。ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure ストレージに関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
@@ -139,7 +139,7 @@ Hudson で BLOB サービスを使用するには、Azure ストレージ プラ
     4. **[コンテナー]** をクリックします。
     5. **myjob** という名前のコンテナーをクリックします。これは、Hudson ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。Azure ストレージでは、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。**myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。そのどちらかの URL をコピーして、ブラウザーで開きます。このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
-アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/\*.jar;build/\*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/\*.jar::binaries;build/\*.txt::notices**。
+アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/*.jar;build/*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/*.jar::binaries;build/*.txt::notices**。
 
 ## <a name="howtocreatebuildstep"></a>BLOB ストレージからのダウンロードを実行するビルド手順の作成方法 ##
 
@@ -148,7 +148,7 @@ Hudson で BLOB サービスを使用するには、Azure ストレージ プラ
 1. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックし、**[Download from Azure Blob storage]** を選択します。
 2. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
 3. **[Container name]** では、ダウンロードする BLOB が格納されているコンテナーの名前を指定します。環境変数を使用できます。
-4. **[Blob name]** には BLOB 名を指定します。環境変数を使用できます。また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。たとえば「**project\***」と入力すると、名前が「**project**」で始まる BLOB がすべて指定されます。
+4. **[Blob name]** には BLOB 名を指定します。環境変数を使用できます。また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。たとえば「**project***」と入力すると、名前が「**project**」で始まる BLOB がすべて指定されます。
 5. [省略可能] **[Download path]** では、Hudson を実行しているコンピューター上のパスを指定します。Azure BLOB ストレージのファイルはこのパスにダウンロードされます。環境変数も使用できます(**[Download path]** に値を入力しない場合、Azure BLOB ストレージのファイルは、ジョブのワークスペースにダウンロードされます)。
 
 Azure BLOB ストレージからダウンロードする項目が他にもある場合は、追加のビルド手順を作成できます。
@@ -168,7 +168,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
     
     (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合には、Azure 管理ポータル内のエンドポイントを使用して URL エンドポイントを指定します。)
 
-    この形式では、 `storageaccount` がストレージ アカウントの名前、 `container_name` がコンテナーの名前、 `blob_name` が BLOB の名前を表します。コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ (**/**) で区切ります。このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
+    この形式では、 `storageaccount` がストレージ アカウントの名前、 `container_name` がコンテナーの名前、 `blob_name` が BLOB の名前を表します。コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ (**/**) で区切ります。このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD_ID}/${BUILD_NUMBER}** でした。このため、BLOB の URL は次のようになります。
 
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 

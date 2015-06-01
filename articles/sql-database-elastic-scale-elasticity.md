@@ -79,7 +79,7 @@ Azure SQL DB には、シャード弾力性のデータ ソースとして利用
     FROM sys.resource_stats  
     WHERE database_name = ' Shard_20140623' AND start_time > DATEADD(day, -7, GETDATE()); 
 
-**データベース容量**は、**sys.resource_usage** ビューに対する同様のクエリを通じて計測できます。**storage\_in\_megabytes** 列の最大値はデータベースの現在のサイズになります。このようなテレメトリは、特定のシャードの容量到達時にアプリケーションを水平スケーリングする場合に有効です。 
+**データベース容量**は、**sys.resource_usage** ビューに対する同様のクエリを通じて計測できます。**storage_in_megabytes** 列の最大値はデータベースの現在のサイズになります。このようなテレメトリは、特定のシャードの容量到達時にアプリケーションを水平スケーリングする場合に有効です。 
 
     SELECT TOP 10 * 
     FROM [sys].[resource_usage] 

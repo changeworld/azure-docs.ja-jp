@@ -78,7 +78,7 @@ Azure 設定ファイルをダウンロードして Chef が Azure のサブス�
 
 chef-starter.zip を **C:\chef** に解凍します。
 
-**chef-starter\chef-repo\.chef** にあるすべてのファイルを **c:\chef** にコピーします。
+**chef-starter\chef-repo.chef** にあるすべてのファイルを **c:\chef** にコピーします。
 
 これでディレクトリは次のようになるはずです。
 
@@ -112,7 +112,7 @@ PEM ファイルには組織と管理者の通信用秘密キーが含まれ、*
 
 手順は簡単です。c:\opscode の既定の場所にインストールします。このインストールは約 10 分かかります。
 
-パスの変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin のエントリーが含まれていることを確認します。
+パスの変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername.chefdk\gem\ruby\2.0.0\bin のエントリーが含まれていることを確認します。
 
 ない場合は必ずこのパスを追加してください。
 

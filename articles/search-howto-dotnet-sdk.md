@@ -31,7 +31,7 @@ SDK は、クライアント ライブラリ `Microsoft.Azure.Search` で構成�
 
 Azure Search .NET SDK の現在のバージョンは `0.10.0-preview` です。これは、SDK のプレリリース版です。最初の安定バージョンに組み込むためのフィードバックを提供する場合は、[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)を使用してください。
 
-.NET SDK はバージョン `2015-02-28` の Azure Search REST API をサポートします。ドキュメントは [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。マイクロソフトの自然言語プロセッサや `moreLikeThis` 検索パラメーターなど、このバージョンの一部では*ない*新機能は[プレビュー](../search-api-2015-02-28-preview/)段階であり、SDK ではまだ使用できません。これらの機能の最新の状態については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」または「[What’s new in the latest update to Azure Search \(Azure Search の最新の更新での新機能\)](../search-latest-updates/)」で確認できます。
+.NET SDK はバージョン `2015-02-28` の Azure Search REST API をサポートします。ドキュメントは [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。マイクロソフトの自然言語プロセッサや `moreLikeThis` 検索パラメーターなど、このバージョンの一部では*ない*新機能は[プレビュー](../search-api-2015-02-28-preview/)段階であり、SDK ではまだ使用できません。これらの機能の最新の状態については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」または「[What’s new in the latest update to Azure Search (Azure Search の最新の更新での新機能)](../search-latest-updates/)」で確認できます。
 
 この SDK でサポートされない他の機能は次のとおりです。
 
@@ -43,7 +43,7 @@ Azure Search .NET SDK の現在のバージョンは `0.10.0-preview` です。�
 
 2. 自分が所有する Azure Search サービス。SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。「[ポータルでの Azure Search サービスの作成](../search-create-service-portal/)」は、これらの手順の参考になります。
 
-3. Visual Studio の \[NuGet パッケージの管理\] を使用して、Azure Search .NET SDK の [NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.Search)をダウンロードします。NuGet.org でパッケージの名前 `Microsoft.Azure.Search` を検索してください。\[Include Prerelease\] を選択して、プレリリースの SDK が検索結果に表示されるようにします。
+3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.Search)をダウンロードします。NuGet.org でパッケージの名前 `Microsoft.Azure.Search` を検索してください。[Include Prerelease] を選択して、プレリリースの SDK が検索結果に表示されるようにします。
 
 Azure Search .NET SDK は、.NET Framework 4.0 以降を対象とするアプリケーション、および Windows 8.1 と Windows Phone 8.1 を対象とする Windows ストア アプリケーションをサポートします。Silverlight はサポートされません。
 
@@ -105,7 +105,7 @@ Azure Search .NET SDK は、.NET Framework 4.0 以降を対象とするアプリ
 
         SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(apiKey));
 
-> [AZURE.NOTE]正しくないキーを提供すると \(たとえば、管理者キーが必要なときにクエリ キーを渡すなど\)、`Indexes.Create` などの操作メソッドを初めて呼び出したときに、`SearchServiceClient` は `CloudException` をスローして "アクセス不可" メッセージを表示します。このような場合は、API キーを再確認してください。
+> [AZURE.NOTE]正しくないキーを提供すると (たとえば、管理者キーが必要なときにクエリ キーを渡すなど)、`Indexes.Create` などの操作メソッドを初めて呼び出したときに、`SearchServiceClient` は `CloudException` をスローして "アクセス不可" メッセージを表示します。このような場合は、API キーを再確認してください。
 
 次の数行では、メソッドを呼び出して "hotels" という名前のインデックスを作成します。インデックスが既にある場合は最初に削除します。これらのメソッドについては後で説明します。
 
@@ -200,7 +200,7 @@ Azure Search .NET SDK は、.NET Framework 4.0 以降を対象とするアプリ
         serviceClient.Indexes.Create(definition);
     }
 
-このメソッドは、新しいインデックスのスキーマを定義する `Field` オブジェクトのリストで新しい `Index` オブジェクトを作成します。各フィールドには、名前、データ型、および検索動作を定義するいくつかの属性があります。フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションを Index に追加することもできます \(簡潔さを優先し、サンプルではこれらは省略されています\)。Index オブジェクトとその構成要素の詳細については、[MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.index_members.aspx) の SDK リファレンスおよび [Azure Search REST API リファレンス](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
+このメソッドは、新しいインデックスのスキーマを定義する `Field` オブジェクトのリストで新しい `Index` オブジェクトを作成します。各フィールドには、名前、データ型、および検索動作を定義するいくつかの属性があります。フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションを Index に追加することもできます (簡潔さを優先し、サンプルではこれらは省略されています)。Index オブジェクトとその構成要素の詳細については、[MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.index_members.aspx) の SDK リファレンスおよび [Azure Search REST API リファレンス](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
 
 ### インデックスの設定 ###
 
@@ -333,7 +333,7 @@ Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのイ�
         }
     }
 
-最初に気付くのは、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっているのに対し \("camel case"\)、`Hotel` の各パブリック プロパティの名前は大文字で始まっています \("Pascal case"\)。これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
+最初に気付くのは、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっているのに対し ("camel case")、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("Pascal case")。これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
 
 `Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。`bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) で `Documents.Get` メソッドを参照してください。Azure Search のすべてのプリミティブ フィールド型は null 値を許容するので、`bool` や `int` などの値型は `Hotel` クラスで null 値を許容するようになっていることに注意してください。
 
@@ -374,7 +374,7 @@ Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのイ�
 
     SearchDocuments(indexClient, searchText: "*", filter: "category eq 'Luxury'");
 
-最初の呼び出しでは、クエリ語句 "fancy" または "wifi" を含むすべてのドキュメントを検索します。2 番目の呼び出しでは、検索テキストが "\*" に設定されています。これは、「すべてを検索する」ことを意味します。検索クエリ式の構文の詳細については、[こちら](https://msdn.microsoft.com/library/azure/dn798920.aspx)を参照してください。
+最初の呼び出しでは、クエリ語句 "fancy" または "wifi" を含むすべてのドキュメントを検索します。2 番目の呼び出しでは、検索テキストが "*" に設定されています。これは、「すべてを検索する」ことを意味します。検索クエリ式の構文の詳細については、[こちら](https://msdn.microsoft.com/library/azure/dn798920.aspx)を参照してください。
 
 3 番目の呼び出しでは、OData の `$filter` 式 `category eq 'Luxury'` を使用しています。これは、`category` フィールドが文字列 "Luxury" と厳密に一致するドキュメントだけを返すように検索を制限します。Azure Search がサポートする OData 構文の詳細については、[こちら](https://msdn.microsoft.com/library/azure/dn798921.aspx)を参照してください。
 

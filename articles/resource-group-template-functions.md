@@ -22,7 +22,7 @@
 
 ## base64
 
-**base64 \(inputString\)**
+**base64 (inputString)**
 
 入力文字列の base64 表現を返します。
 
@@ -39,7 +39,7 @@
 
 ## concat
 
-**concat \(arg1, arg2, arg3, ...\)**
+**concat (arg1, arg2, arg3, ...)**
 
 複数の文字列値を結合し、結果の文字列値を返します。この関数は、任意の数の引数を取ることができます。
 
@@ -54,7 +54,7 @@
 
 ## listKeys
 
-**listKeys \(resourceName or resourceIdentifier, [apiVersion]\)**
+**listKeys (resourceName or resourceIdentifier, [apiVersion])**
 
 ストレージ アカウントのキーを返します。resourceId は、[resourceId function](./#resourceid) を使用して、または形式 **providerNamespace/resourceType/resourceName** を使用して指定できます。関数を使用して、PrimaryKey と secondaryKey を取得できます。
   
@@ -74,7 +74,7 @@
 
 ## 指定
 
-**parameters \(parameterName\)**
+**parameters (parameterName)**
 
 パラメーター値を返します。指定したパラメーター名は、テンプレートのパラメーター セクションで定義されている必要があります。
 
@@ -100,7 +100,7 @@
 
 ## provider
 
-**provider \(providerNamespace, [resourceType]\)**
+**provider (providerNamespace, [resourceType])**
 
 リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。種類が指定されない場合は、サポートされているすべての種類が返されます。
 
@@ -128,7 +128,7 @@
 
 ## reference
 
-**reference \(resourceName or resourceIdentifier, [apiVersion]\)**
+**reference (resourceName or resourceIdentifier, [apiVersion])**
 
 式が別のリソースのランタイム状態から値を取得できるようにします。
 
@@ -150,7 +150,7 @@
 
 ## resourceGroup
 
-**resourceGroup\(\)**
+**resourceGroup()**
 
 現在のリソース グループを表す、構造化オブジェクトを返します。オブジェクトは次の形式になります。
 
@@ -174,7 +174,7 @@
 
 ## resourceId
 
-**resourceId \([resourceGroupName], resourceType, resourceName1, [resourceName2]...\)**
+**resourceId ([resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
 リソースの一意の識別子を返します。リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。識別子は、次の形式で返されます。
 
@@ -238,7 +238,7 @@
 
 ## サブスクリプション
 
-**subscription\(\)**
+**subscription()**
 
 サブスクリプションの詳細を次の形式で返します。
 
@@ -258,7 +258,7 @@
 
 ## variables
 
-**variables \(variableName\)**
+**variables (variableName)**
 
 変数の値を返します。指定した変数名は、テンプレートの変数セクションで定義されている必要があります。
 

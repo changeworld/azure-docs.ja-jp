@@ -146,11 +146,11 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 仮想マシンにリモート接続した後で、 `net use` コマンドを実行してファイル共有をマウントできます。次の構文を使用します。`<storage-account>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有の名前に置き換えてください。
 
-	net use z: \\<storage-account>.file.core.windows.net\<share-name>
+	net use z: <storage-account>.file.core.windows.net<share-name>
 
 > [AZURE.NOTE] 前の手順でストレージ アカウントの資格情報を適用したため、 `net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、 `net use` コマンドのパラメーターで資格情報を指定してください。`<storage-account>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有の名前に置き換え、さらに `<account-key>` を実際のストレージ アカウント キーに置き換えてください。
 	   
-	net use z: \\<storage-account>.file.core.windows.net\<share-name> /u:<storage-account> <account-key>
+	net use z: <storage-account>.file.core.windows.net<share-name> /u:<storage-account> <account-key>
 
 これで、通常のドライブと同じように仮想マシンから File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間](http://msdn.microsoft.com/library/gg145019(v=vs.110).aspx)の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。 
 

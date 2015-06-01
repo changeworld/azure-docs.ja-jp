@@ -34,7 +34,7 @@
 
 - System Center 2012 sp 2: Operations Manager 更新プログラム ロールアップ 2、ただし、更新プログラム ロールアップ 3 をお勧めします。この更新プログラムは、オペレーション インサイトが関連付けられているサービスのシナリオとして、管理サーバー、エージェント、オペレーション コンソールに適用されている必要があります。
 
-- 容量管理データを表示するには、Operations Manager と Virtual Machine Manager \(VMM\) との接続を有効にする必要があります。システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](https://technet.microsoft.com/ja-jp/library/hh882396.aspx)」をご覧ください。
+- 容量管理データを表示するには、Operations Manager と Virtual Machine Manager (VMM) との接続を有効にする必要があります。システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](https://technet.microsoft.com/ja-jp/library/hh882396.aspx)」をご覧ください。
 
 インストールと構成の手順の詳細については、「[オペレーション インサイトのアラートの表示](http://go.microsoft.com/fwlink/?LinkID=293793)」をご覧ください。
 
@@ -45,7 +45,7 @@ SharePoint Server 2010、Lync Server 2013、Lync Server 2010、System Center 201
 
 - [Lync Server に使用する実行アカウントの設定](operational-insights-run-as.md)
 
-- [Virtual Machine Manager \(VMM\) の実行アカウントの設定](operational-insights-run-as.md)
+- [Virtual Machine Manager (VMM) の実行アカウントの設定](operational-insights-run-as.md)
 
 ### Operations Manager のオペレーティング システム
 

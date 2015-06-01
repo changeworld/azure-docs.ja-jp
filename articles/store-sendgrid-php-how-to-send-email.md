@@ -48,7 +48,7 @@ SMTP、または SendGrid の Web API を使用して電子メールを
 
 ### SMTP API
 
-SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。*Swift Mailer* ライブラリは、[http://swiftmailer.org/download][] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[[Composer]] を使用します)。ライブラリを使用した電子メールの送信には、 <span class="auto-style2">Swift\_SmtpTransport</span>、 <span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message </span> クラスのインスタンスの作成、適切なプロパティの設定、 <span class="auto-style2">Swift\_Mailer::send </span> メソッドの呼び出しが必要です。
+SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。*Swift Mailer* ライブラリは、[http://swiftmailer.org/download][] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[[Composer]] を使用します)。ライブラリを使用した電子メールの送信には、 <span class="auto-style2">Swift_SmtpTransport</span>、 <span class="auto-style2">Swift_Mailer</span>、および <span class="auto-style2">Swift_Message </span> クラスのインスタンスの作成、適切なプロパティの設定、 <span class="auto-style2">Swift_Mailer::send </span> メソッドの呼び出しが必要です。
 
     <?php
      include_once "vendor/autoload.php";
@@ -227,7 +227,7 @@ SMTP API を使用して添付ファイルを送信するには、この例の�
 
      $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 
-コードのこの行は  <span class="auto-style2">Swift\_Message </span> オブジェクトに添付メソッドを呼び出し、静的メソッド  <span class="auto-style2">fromPath </span> を  <span class="auto-style2">Swift\_Attachment </span> クラスに呼び出して、ファイルを取得してメッセージに添付します。
+コードのこの行は  <span class="auto-style2">Swift_Message </span> オブジェクトに添付メソッドを呼び出し、静的メソッド  <span class="auto-style2">fromPath </span> を  <span class="auto-style2">Swift_Attachment </span> クラスに呼び出して、ファイルを取得してメッセージに添付します。
 
 ### Web API
 

@@ -42,7 +42,7 @@ Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョ
 
 サービス バスを使用する JMS アプリケーションをビルドして実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
 
-*    geronimo-jms\_1.1\_spec-1.0.jar
+*    geronimo-jms_1.1_spec-1.0.jar
 *    qpid-amqp-1-0-client-[version].jar
 *    qpid-amqp-1-0-client-jms-[version].jar
 *    qpid-amqp-1-0-common-[version].jar
@@ -136,7 +136,7 @@ Qpid Properties File JNDI Provider で送信先の定義に使用するエント
 
 	topic.[jndi_name] = [physical_name]
 
-ここで、[jndi\_name] と [physical\_name] には次の意味があります。
+ここで、[jndi_name] と [physical_name] には次の意味があります。
 
 <table>
   <tr>

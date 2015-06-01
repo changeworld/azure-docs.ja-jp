@@ -47,7 +47,7 @@ Web アプリケーションがどのように使用されているのかを確�
 
 ![](./media/appinsights/appinsights-06webcode.png)
 
-追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。たとえば、ASP.NET MVC プロジェクトで、View\Shared\_Layout.cshtml にスクリプトを配置します。
+追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。たとえば、ASP.NET MVC プロジェクトで、View\Shared_Layout.cshtml にスクリプトを配置します。
 
 ## <a name="usage"></a>利用状況分析
 

@@ -24,7 +24,7 @@ Visual Studio Application Insights は、実行中のアプリケーションを
 
 この記事では、Visual Studio で開発されたアプリの種類に注目します。他の IDE 用の Application Insights 拡張機能もあります。
 
-[Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) \(またはそれ以降\) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
+[Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
 
 ## <a name="ide"></a>プロジェクトへの Application Insights の追加
 
@@ -41,9 +41,9 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### 既存のプロジェクトの場合
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、\[Application Insights の追加\] を選択します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
 
-![\[Application Insights の追加\] を選択する](./media/appinsights/appinsights-03-addExisting.png)
+![[Application Insights の追加] を選択する](./media/appinsights/appinsights-03-addExisting.png)
 
 Visual Studio によって、Application Insights にリソースが作成され、プロジェクトに SDK が追加されて、キーが `.config` ファイルに配置されます。
 
@@ -51,9 +51,9 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### セットアップ オプション
 
-初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます\(Visual Studio Online アカウントとは異なります\)。
+初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます(Visual Studio Online アカウントとは異なります)。
 
-このアプリがより大きなアプリケーションの一部である場合は、**\[設定の構成\]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
+このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
 
 *Application Insights オプションはありせんか。 一部の種類のプロジェクトでは、[SDK を手動で追加][windows]すると Application Insights を使用できます。*
 
@@ -88,9 +88,9 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 #### データが表示されない場合
 
-* [\[診断検索\]][diagnostic] タイルを開き、個々のイベントを表示します。
+* [[診断検索]][diagnostic] タイルを開き、個々のイベントを表示します。
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* 数秒待機してから \[最新の情報に更新\] をクリックします。
+* 数秒待機してから [最新の情報に更新] をクリックします。
 * [トラブルシューティング][qna]に関するページを参照します。
 
 
@@ -104,7 +104,7 @@ Visual Studio で、送信されたイベント数が表示されます。
  * [IIS サーバーでの依存関係の追跡の追加][redfield]
  * [Azure Web アプリでの依存関係の追跡の追加][azure]
 * お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]します。
-* クライアント側とサーバー側 \(またはそのいずれか\) で[カスタム イベントとメトリックを追跡][api]して、アプリケーションの使用状況の詳細を確認します。
+* クライアント側とサーバー側 (またはそのいずれか) で[カスタム イベントとメトリックを追跡][api]して、アプリケーションの使用状況の詳細を確認します。
 
 
 <!--Link references-->

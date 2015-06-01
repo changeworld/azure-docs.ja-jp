@@ -18,19 +18,19 @@ ms.author="larryfr"/>
 
 # HDInsight 上の Apache Storm を使用して Azure Event Hub からのセンサー データを処理する
 
-HDInsight 上の Apache Storm を使用して Azure Event Hub からの車両センサー データを処理する方法について説明します。この例では Azure Event Hub からセンサー データを読み取り、Azure DocumentDB に格納されたデータを参照してデータを強化し、最後に Hadoop ファイル システム \(HDFS\) を使用して Azure Storage にデータを格納します。
+HDInsight 上の Apache Storm を使用して Azure Event Hub からの車両センサー データを処理する方法について説明します。この例では Azure Event Hub からセンサー データを読み取り、Azure DocumentDB に格納されたデータを参照してデータを強化し、最後に Hadoop ファイル システム (HDFS) を使用して Azure Storage にデータを格納します。
 
 ![アーキテクチャ ダイアグラム](./media/hdinsight-storm-iot-eventhub-documentdb/iot.png)
 
 ## 概要
 
-車両にセンサーを追加すると、履歴データの傾向に基づいて機器の問題を予測できるだけでなく、使用状況のパターン分析に基づいてその後のバージョンを改良できます。この分析には従来の MapReduce バッチ処理を使用できますが、MapReduce 処理を行うためには、その前にすべての車両のデータを Hadoop に迅速かつ効率的に読み込めなければなりません。また、重大なエラー パス \(エンジン温度、ブレーキなど\) に関してリアルタイムで分析を行いたい場合もあります。
+車両にセンサーを追加すると、履歴データの傾向に基づいて機器の問題を予測できるだけでなく、使用状況のパターン分析に基づいてその後のバージョンを改良できます。この分析には従来の MapReduce バッチ処理を使用できますが、MapReduce 処理を行うためには、その前にすべての車両のデータを Hadoop に迅速かつ効率的に読み込めなければなりません。また、重大なエラー パス (エンジン温度、ブレーキなど) に関してリアルタイムで分析を行いたい場合もあります。
 
-Azure Event Hub はセンサーによって生成された大量のデータを処理するためにビルドされていて、HDInsight 上で Apache Storm を使用してそれらのデータを読み込んで処理してから、\(Azure Storage によって戻された\) データを HDFS に格納してさらに MapReduce 処理を行えます。
+Azure Event Hub はセンサーによって生成された大量のデータを処理するためにビルドされていて、HDInsight 上で Apache Storm を使用してそれらのデータを読み込んで処理してから、(Azure Storage によって戻された) データを HDFS に格納してさらに MapReduce 処理を行えます。
 
 ## 解決策
 
-エンジン温度、大気温度、車両速度のテレメトリ データがセンサーによって記録され、車両識別番号 \(VIN\) とタイムスタンプとともに Event Hub に送信されます。そこから、HDInsight クラスター上の Apache Storm で実行されている Storm トポロジによってデータが読み取られ、処理され、HDFS に格納されます。
+エンジン温度、大気温度、車両速度のテレメトリ データがセンサーによって記録され、車両識別番号 (VIN) とタイムスタンプとともに Event Hub に送信されます。そこから、HDInsight クラスター上の Apache Storm で実行されている Storm トポロジによってデータが読み取られ、処理され、HDFS に格納されます。
 
 処理の際、VIN を使用して Azure DocumentDB からモデル情報が取得されます。この情報がデータに追加されてから、格納されます。
 
@@ -42,7 +42,7 @@ Storm トポロジでは、次のコンポーネントが使用されます。
 
 * **DataReferencBolt** - VIN を使用して DocumentDB から車両モデルを検索します。
 
-* **WasbStoreBolt** - HDFS \(Azure Storage\) にデータを格納します。
+* **WasbStoreBolt** - HDFS (Azure Storage) にデータを格納します。
 
 このソリューションのダイアグラムを次に示します。
 

@@ -46,7 +46,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 	-------
 	0.9.0
 
-0\.9.0 以降でない場合は、コントロール パネルの \[プログラムと機能\] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
+0.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
 
 ### 手順 2. Azure アカウントとサブスクリプションを設定する
 
@@ -73,7 +73,7 @@ Azure サブスクリプションが複数ある場合は、次のコマンド�
 	CurrentStorageAccountName : 
 	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 \(< and > を含む\) を正しい名前に置き換えます。
+Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を正しい名前に置き換えます。
 
 	$subscr="<SubscriptionName from the display of Get-AzureSubscription>"
 	Select-AzureSubscription -SubscriptionName $subscr –Current	

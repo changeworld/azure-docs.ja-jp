@@ -124,7 +124,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
 
     // Local file name and path.
     String attachmentName = "myfile.zip";
-    String attachmentPath = "c:\\myfiles\\"; 
+    String attachmentPath = "c:\\myfiles"; 
     MimeBodyPart attachmentPart = new MimeBodyPart();
     // Specify the local file to attach.
     DataSource source = new FileDataSource(attachmentPath + attachmentName);
@@ -142,11 +142,11 @@ SendGrid では、*フィルター* を使用することでその他の電子�
     送信される電子メールの下部に HTML テキストが表示される方法を示します。
 
         message.addHeader("X-SMTPAPI", 
-			"{\"filters\": 
-			{\"footer\": 
-			{\"settings\": 
-        	{\"enable\":1,\"text/html\": 
-			\"<html><b>Thank you</b> for your business.</html>\"}}}}");
+			"{"filters": 
+			{"footer": 
+			{"settings": 
+        	{"enable":1,"text/html": 
+			"<html><b>Thank you</b> for your business.</html>"}}}}");
 
 -   別のフィルターの例として、クリック追跡があります。電子メールのテキストに次のようなハイパーリンクが含まれており、そのクリック率を追跡するとします。
 
@@ -160,10 +160,10 @@ SendGrid では、*フィルター* を使用することでその他の電子�
 -   To enable the click tracking, use the following code:
 
         message.addHeader("X-SMTPAPI", 
-			"{\"filters\": 
-			{\"clicktrack\": 
-			{\"settings\": 
-        	{\"enable\":1}}}}");
+			"{"filters": 
+			{"clicktrack": 
+			{"settings": 
+        	{"enable":1}}}}");
 
 ## <a name="bkmk_HowToUpdateEmail"> </a>方法:電子メールのプロパティを更新する
 

@@ -29,10 +29,10 @@
 ### 原因
 - Azure モバイル エンゲージメント サービスの停止に起因すると思われる問題は、いくつかの異なる問題が原因で発生します。
     - すべての Azure モバイル エンゲージメントに元からシステム的に表れる単独の問題
-    - サーバーの停止に起因する既知の問題 \(サーバー ステータスに表示されないことがあります\)。
+    - サーバーの停止に起因する既知の問題 (サーバー ステータスに表示されないことがあります)。
 	- スケジュールの遅延、ターゲティングのエラー、バッジ更新に関する問題、統計情報収集の停止、プッシュ機能の停止、API 機能の停止、新しいアプリやユーザーを作成できない、DNS エラー、デバイス上の UI、API、アプリのタイムアウト エラー。
-    - クラウドの依存関係の停止 [Azure サービスの状態](http://status.azure.com/)、[Amazon Web Services \(AWS\) の状態](http://status.aws.amazon.com/) 
-    - プッシュ通知サービス \(PNS\) の依存関係の停止 [Google - サービス](http://www.google.com/appsstatus#hl=en&v=status)、[Apple - サービス](http://www.apple.com/support/systemstatus/)、[Android - Google GCM](http://developer.android.com/google/gcm/index.html)、[Android - Amazon ADM](https://developer.amazon.com/appsandservices/apis/engage/device-messaging)、[Apple - APNS](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)、[Windows Phone - WNS](http://msdn.microsoft.com/library/windows/apps/hh465407.aspx)、[Windows Phone - MPNS][LinkMPNS]、[Windows - WNS](https://developer.windows.com/)
+    - クラウドの依存関係の停止 [Azure サービスの状態](http://status.azure.com/)、[Amazon Web Services (AWS) の状態](http://status.aws.amazon.com/) 
+    - プッシュ通知サービス (PNS) の依存関係の停止 [Google - サービス](http://www.google.com/appsstatus#hl=en&v=status)、[Apple - サービス](http://www.apple.com/support/systemstatus/)、[Android - Google GCM](http://developer.android.com/google/gcm/index.html)、[Android - Amazon ADM](https://developer.amazon.com/appsandservices/apis/engage/device-messaging)、[Apple - APNS](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)、[Windows Phone - WNS](http://msdn.microsoft.com/library/windows/apps/hh465407.aspx)、[Windows Phone - MPNS][LinkMPNS]、[Windows - WNS](https://developer.windows.com/)
     - アプリ ストアの停止[GooglePlay](https://play.google.com/)、[iTunes](http://www.apple.com/itunes/charts/)、[Windows Phone ストア](http://www.windowsphone.com/)、[Windows ストア](http://windows.microsoft.com/)
 
 *問題がシステム的かどうかをテストするには、次のような異なる方法で同じ機能をテストできます。*
@@ -91,8 +91,8 @@
     - 問題が 1 台のコンピューターまたはローカル ネットワークに分離されてないことを確認します。
     - Azure モバイル エンゲージメント サービスで障害が報告されていないことを確認します。
     - アプリ情報タグのファイルがすべてのルールに従っていることを確認します。
-        - UTF8 文字セットのみを使用します \(ANSI 文字セットはサポートされていません\)。
-        - 区切り文字としてコンマ「,」を使用します \(サービス要求を開いて、.csv の区切り文字をコンマ「,」からセミコロン「;」などの別の文字に変更するように要求できます\)。
+        - UTF8 文字セットのみを使用します (ANSI 文字セットはサポートされていません)。
+        - 区切り文字としてコンマ「,」を使用します (サービス要求を開いて、.csv の区切り文字をコンマ「,」からセミコロン「;」などの別の文字に変更するように要求できます)。
         - ブール値の「TRUE」と「FALSE」には、すべて小文字を使用します。
         - 最大ファイル サイズの 35 MB よりも小さいファイルを使用します。
 

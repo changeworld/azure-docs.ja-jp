@@ -208,7 +208,7 @@
 		
 	- **[mariadb]** セクションを編集し、以下を追加します。
 	
-	> [AZURE.NOTE] **innodb\_buffer\_pool_size** を、お使いの仮想マシンのメモリの 70% にすることをお勧めします。ここでは、3.5 GB の RAM を持つ中の Medium Azure VM に、2.45 GB を設定しています。
+	> [AZURE.NOTE] **innodb_buffer_pool_size** を、お使いの仮想マシンのメモリの 70% にすることをお勧めします。ここでは、3.5 GB の RAM を持つ中の Medium Azure VM に、2.45 GB を設定しています。
 	
 	        innodb_buffer_pool_size = 2508M # The buffer pool contains buffered data and the index. This is usually set to 70% of physical memory.
             innodb_log_file_size = 512M #  Redo logs ensure that write operations are fast, reliable, and recoverable after a crash

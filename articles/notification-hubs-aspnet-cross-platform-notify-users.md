@@ -25,8 +25,8 @@
 		switch (deviceUpdate.Platform)
         {
             case "mpns":
-                var toastTemplate = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                    "<wp:Notification xmlns:wp=\"WPNotification\">" +
+                var toastTemplate = "<?xml version="1.0" encoding="utf-8"?>" +
+                    "<wp:Notification xmlns:wp="WPNotification">" +
                        "<wp:Toast>" +
                             "<wp:Text1>$(message)</wp:Text1>" +
                        "</wp:Toast> " +
@@ -38,11 +38,11 @@
                 registration = new WindowsTemplateRegistrationDescription(deviceUpdate.Handle, toastTemplate);
                 break;
             case "apns":
-                var alertTemplate = "{\"aps\":{\"alert\":\"$(message)\"}}";
+                var alertTemplate = "{"aps":{"alert":"$(message)"}}";
                 registration = new AppleTemplateRegistrationDescription(deviceUpdate.Handle, alertTemplate);
                 break;
             case "gcm":
-                var messageTemplate = "{\"data\":{\"msg\":\"$(message)\"}}";
+                var messageTemplate = "{"data":{"msg":"$(message)"}}";
                 registration = new GcmTemplateRegistrationDescription(deviceUpdate.Handle, messageTemplate);
                 break;
             default:

@@ -56,7 +56,7 @@ REST サービスと通信するための便利なライブラリ セットが�
 		|-- xml2js@0.2.6 (sax@0.4.2)
 		|-- request@2.16.6 (forever-agent@0.2.0, aws-sign@0.2.0, tunnel-agent@0.2.0, oauth-sign@0.2.0, json-stringify-safe@3.0.0, cookie-jar@0.2.0, node-uuid@1.4.0, qs@0.5.5, hawk@0.10.2, form-data@0.0.7)
 
-3.  手動で **ls** または **dir** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。そのフォルダーで **azure** パッケージを検索します。このパッケージには、Notification Hubs にアクセスするために必要なライブラリが含まれています。
+3.  手動で **ls** または **dir** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。そのフォルダーで **azure** パッケージを検索します。このパッケージには、Notification Hubs にアクセスするために必要なライブラリが含まれています。
 
 ### モジュールのインポート
 

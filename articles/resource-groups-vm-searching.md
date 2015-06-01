@@ -21,7 +21,7 @@
 
 ## Azure CLI
 
-`azure vm quick-create` と共に使用するため、またはリソース グループのテンプレート ファイルを作成するための、イメージを検索する簡単で素早い方法は、`azure vm image list` コマンドを呼び出して、場所、発行元名 \(大文字と小文字は区別されません\)、およびプラン \(プランを知っている場合\) を渡すことです。たとえば、次のリストは、"Canonical" が "UbuntuServer" プランの発行元であることを知っている場合の短い例にすぎません。多数のリストは非常に長くなります。
+`azure vm quick-create` と共に使用するため、またはリソース グループのテンプレート ファイルを作成するための、イメージを検索する簡単で素早い方法は、`azure vm image list` コマンドを呼び出して、場所、発行元名 (大文字と小文字は区別されません)、およびプラン (プランを知っている場合) を渡すことです。たとえば、次のリストは、"Canonical" が "UbuntuServer" プランの発行元であることを知っている場合の短い例にすぎません。多数のリストは非常に長くなります。
 
     azure vm image list westus canonical ubuntuserver
     info:    Executing command vm image list
@@ -40,7 +40,7 @@
     
 **Urn** 列は、`azure vm quick-create` に渡すフォームです。
     
-ただし、多くの場合、何が使用可能かをまだ知りません。この場合は、まず  `azure vm image list-publishers` を使用して発行元を検出し、場所のプロンプトにはリソース グループに使用するデータ センターの場所を指定して応答することにより、イメージをナビゲートできます。たとえば、以下は米国西部の場所にあるすべてのイメージ発行元をリストしたものです \(場所の引数は、標準の場所名を小文字化し、スペースを削除して渡します\) 
+ただし、多くの場合、何が使用可能かをまだ知りません。この場合は、まず  `azure vm image list-publishers` を使用して発行元を検出し、場所のプロンプトにはリソース グループに使用するデータ センターの場所を指定して応答することにより、イメージをナビゲートできます。たとえば、以下は米国西部の場所にあるすべてのイメージ発行元をリストしたものです (場所の引数は、標準の場所名を小文字化し、スペースを削除して渡します) 
 
     azure vm image list-publishers
     info:    Executing command vm image list-publishers
@@ -54,7 +54,7 @@
     data:    AlertLogic.Extension                            westus  
 
     
-これらのリストは非常に長くなることがあるので、上記のリスト例は抜粋にすぎません。たとえば、「Canonical 」が、実際に米国西部の場所にあるイメージ発行元であることに気付いたとします。これで、次の例のように、\`azure vm image list-offers を呼び出して、プロンプトが出されたときに場所と発行元を渡すことで、プランを検索できます。
+これらのリストは非常に長くなることがあるので、上記のリスト例は抜粋にすぎません。たとえば、「Canonical 」が、実際に米国西部の場所にあるイメージ発行元であることに気付いたとします。これで、次の例のように、`azure vm image list-offers を呼び出して、プロンプトが出されたときに場所と発行元を渡すことで、プランを検索できます。
 
     azure vm image list-offers           
     info:    Executing command vm image list-offers
@@ -149,8 +149,8 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 たとえば次のようになります。
 
-	PS C:\> $locName="West US"
-	PS C:\> Get-AzureVMImagePublisher -Location $locName | Select PublisherName
+	PS C:> $locName="West US"
+	PS C:> Get-AzureVMImagePublisher -Location $locName | Select PublisherName
 	
 	PublisherName
 	-------------
@@ -168,8 +168,8 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 発行元 "MicrosoftWindowsServer":
 
-	PS C:\> $pubName="MicrosoftWindowsServer"
-	PS C:\> Get-AzureVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+	PS C:> $pubName="MicrosoftWindowsServer"
+	PS C:> Get-AzureVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 	
 	Offer
 	-----
@@ -177,8 +177,8 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 プラン "WindowsServer":
 
-	PS C:\> $offerName="WindowsServer"
-	PS C:\> Get-AzureVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+	PS C:> $offerName="WindowsServer"
+	PS C:> Get-AzureVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 	
 	Skus
 	----

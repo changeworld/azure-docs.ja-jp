@@ -41,27 +41,27 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 
 ### REDIS_HOST アプリ設定の追加
 
-作成する必要がある最初のアプリ設定は **REDIS\_HOST** アプリ設定です。この設定では、shim がキャッシュ情報を転送する場所を設定します。REDIS_HOST アプリ設定に必要な値は、Redis Cache インスタンスの**プロパティ** ブレードから取得できます。
+作成する必要がある最初のアプリ設定は **REDIS_HOST** アプリ設定です。この設定では、shim がキャッシュ情報を転送する場所を設定します。REDIS_HOST アプリ設定に必要な値は、Redis Cache インスタンスの**プロパティ** ブレードから取得できます。
 
 ![Azure Redis Cache Host Name](./media/web-sites-connect-to-redis-using-memcache-protocol/2-azure-redis-cache-hostname.png)
 
-アプリ設定のキーを **REDIS\_HOST** に設定し、アプリ設定の値を Redis Cache インスタンスの**ホスト名**に設定します。
+アプリ設定のキーを **REDIS_HOST** に設定し、アプリ設定の値を Redis Cache インスタンスの**ホスト名**に設定します。
 
 ![Web App AppSetting REDIS_HOST](./media/web-sites-connect-to-redis-using-memcache-protocol/3-azure-website-appsettings-redis-host.png)
 
 ### REDIS_KEY アプリ設定の追加
 
-次に設定する必要があるアプリ設定は **REDIS\_KEY** アプリ設定です。この設定では、Redis Cache インスタンスに安全にアクセスするために必要な認証トークンを提供します。REDIS_KEY アプリ設定に必要な値は、Redis Cache インスタンスの**アクセス キー** ブレードから取得できます。
+次に設定する必要があるアプリ設定は **REDIS_KEY** アプリ設定です。この設定では、Redis Cache インスタンスに安全にアクセスするために必要な認証トークンを提供します。REDIS_KEY アプリ設定に必要な値は、Redis Cache インスタンスの**アクセス キー** ブレードから取得できます。
 
 ![Azure Redis Cache Primary Key](./media/web-sites-connect-to-redis-using-memcache-protocol/4-azure-redis-cache-primarykey.png)
 
-アプリ設定のキーを **REDIS\_KEY** に設定し、アプリ設定の値を Redis Cache インスタンスの**プライマリ キー**に設定します。
+アプリ設定のキーを **REDIS_KEY** に設定し、アプリ設定の値を Redis Cache インスタンスの**プライマリ キー**に設定します。
 
 ![Azure Website AppSetting REDIS_KEY](./media/web-sites-connect-to-redis-using-memcache-protocol/5-azure-website-appsettings-redis-primarykey.png)
 
 ### MEMCACHESHIM_REDIS_ENABLE アプリ設定の追加
 
-最後のアプリ設定は Web アプリで Memcache Shim を有効にするために使用します。REDIS_HOST と REDIS_KEY を使用して Azure Redis Cache に接続し、キャッシュの呼び出しを転送します。アプリ設定のキーを **MEMCACHESHIM\_REDIS\_ENABLE** に設定し、値を **true** に設定します。
+最後のアプリ設定は Web アプリで Memcache Shim を有効にするために使用します。REDIS_HOST と REDIS_KEY を使用して Azure Redis Cache に接続し、キャッシュの呼び出しを転送します。アプリ設定のキーを **MEMCACHESHIM_REDIS_ENABLE** に設定し、値を **true** に設定します。
 
 ![Web App AppSetting MEMCACHESHIM_REDIS_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
 
@@ -83,7 +83,7 @@ Web アプリで有効な PHP バージョンの 非スレッド セーフ (NTS)
 
 ### php_memcache 拡張機能を有効にする
 
-ファイルをダウンロードしたら、**php\_memcache.dll** を解凍して **d:\\home\\site\\wwwroot\\bin\\ext\\** ディレクトリにアップロードします。php_memcache.dll を Web アプリにアップロードしたら、拡張機能を PHP ランタイムで有効にする必要があります。Azure ポータルで Memcache 拡張機能を有効にするには、Web アプリの **[アプリケーション設定]** ブレードを開き、**PHP\_EXTENSIONS** のキーと値 **bin\\ext\\php_memcache.dll** で新しいアプリ設定を追加します。
+ファイルをダウンロードしたら、**php_memcache.dll** を解凍して **d:\\home\\site\\wwwroot\\bin\\ext** ディレクトリにアップロードします。php_memcache.dll を Web アプリにアップロードしたら、拡張機能を PHP ランタイムで有効にする必要があります。Azure ポータルで Memcache 拡張機能を有効にするには、Web アプリの **[アプリケーション設定]** ブレードを開き、**PHP_EXTENSIONS** のキーと値 **bin\\ext\\php_memcache.dll** で新しいアプリ設定を追加します。
 
 
 > Web アプリで複数の PHP 拡張機能をロードする必要がある場合、PHP_EXTENSIONS の値は、DLL ファイルへの相対パスをコンマ区切りのリストにする必要があります。

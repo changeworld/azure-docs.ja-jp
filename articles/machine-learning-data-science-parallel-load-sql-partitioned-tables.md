@@ -59,7 +59,7 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
 
 **パーティション テーブルを作成するには、以下の操作を行う必要があります。**
 
-- 個別のパーティション テーブルに含める値/境界の範囲を定義する[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。たとえば、2013 年の月別 (some\_datetime\_field) にパーティションを制限するには以下のようにします。
+- 個別のパーティション テーブルに含める値/境界の範囲を定義する[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。たとえば、2013 年の月別 (some_datetime_field) にパーティションを制限するには以下のようにします。
 
 	    CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
 	    AS RANGE RIGHT FOR VALUES (
@@ -135,13 +135,13 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
     # BCP example using Windows authentication
     $ScriptBlock1 = {
        param($dbname, $tbname, $basename, $fmtfile, $indir, $logdir, $num)
-       bcp ($dbname + ".." + $tbname) in ($indir + "\" + $basename + "_" + $num + ".csv") -o ($logdir + "\" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -T -b 2500 -t "," -r \n
+       bcp ($dbname + ".." + $tbname) in ($indir + "" + $basename + "_" + $num + ".csv") -o ($logdir + "" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -T -b 2500 -t "," -r \n
     }
     
     # BCP example using SQL authentication
     $ScriptBlock2 = {
        param($dbname, $tbname, $basename, $fmtfile, $indir, $logdir, $num, $sqlusr, $server, $pass)
-       bcp ($dbname + ".." + $tbname) in ($indir + "\" + $basename + "_" + $num + ".csv") -o ($logdir + "\" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -U $sqlusr -S $server -P $pass -b 2500 -t "," -r \n
+       bcp ($dbname + ".." + $tbname) in ($indir + "" + $basename + "_" + $num + ".csv") -o ($logdir + "" + $tbname + "_" + $num + ".txt") -h "TABLOCK" -F 2 -C "RAW" -f ($fmtfile) -U $sqlusr -S $server -P $pass -b 2500 -t "," -r \n
     }
     
     # Background processing of all partitions

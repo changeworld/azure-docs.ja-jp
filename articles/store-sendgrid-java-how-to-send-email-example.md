@@ -175,10 +175,10 @@
 	     message.setContent(multipart);
 	     
 	     // Uncomment the following if you want to add a footer.
-	     // message.addHeader("X-SMTPAPI", "{\"filters\": {\"footer\": {\"settings\": {\"enable\":1,\"text/html\": \"<html>This is my <b>email footer</b>.</html>\"}}}}");
+	     // message.addHeader("X-SMTPAPI", "{"filters": {"footer": {"settings": {"enable":1,"text/html": "<html>This is my <b>email footer</b>.</html>"}}}}");
 	
 	     // Uncomment the following if you want to enable click tracking.
-	     // message.addHeader("X-SMTPAPI", "{\"filters\": {\"clicktrack\": {\"settings\": {\"enable\":1}}}}");
+	     // message.addHeader("X-SMTPAPI", "{"filters": {"clicktrack": {"settings": {"enable":1}}}}");
 	     
 	     Transport transport;
 	     transport = mailSession.getTransport();

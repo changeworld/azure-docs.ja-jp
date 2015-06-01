@@ -54,7 +54,7 @@ Azure Service Bus を使用するには、Node.js azure パッケージをダウ
 		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 
 3.  手動で **ls** コマンドを実行して、
-    **node\_modules** フォルダーが作成されたことを確認できます。そのフォルダーで
+    **node_modules** フォルダーが作成されたことを確認できます。そのフォルダーで
     **azure** パッケージを検索します。このパッケージには、
     Service Bus キューにアクセスするために必要なライブラリが含まれています。
 
@@ -66,7 +66,7 @@ Azure Service Bus を使用するには、Node.js azure パッケージをダウ
 
 ### Azure Service Bus 接続の設定
 
-azure モジュールは、Azure Service Bus に接続するために必要な情報として、環境変数 AZURE\_SERVICEBUS\_NAMESPACE と AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure Service Bus に接続するために必要な情報として、環境変数 AZURE_SERVICEBUS_NAMESPACE と AZURE_SERVICEBUS_ACCESS_KEY を読み取ります。これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js クラウド サービスに関するトピック]をご覧ください。
 

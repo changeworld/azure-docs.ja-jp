@@ -32,7 +32,7 @@ Azure ポータルにアクセスするには SSH キーが必要になります
 
 - puttygen を[こちら](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードおよびインストールします。 
 - puttygen.exe を実行します。
-- \[生成\] をクリックしてキーを生成します。
+- [生成] をクリックしてキーを生成します。
 
 
  ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p01.png)
@@ -41,8 +41,8 @@ Azure ポータルにアクセスするには SSH キーが必要になります
  
  ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p02.png)
 
-- 公開キーをコピーし、"publicKey.key" という名前のファイルに保存します。保存された公開キーの形式は必要な公開キーの形式と異なるため、\[公開キーの保存\] を単に押さないようにしてください。
-- \[秘密キーの保存\] をクリックし、"privateKey.ppk" として保存します。 
+- 公開キーをコピーし、"publicKey.key" という名前のファイルに保存します。保存された公開キーの形式は必要な公開キーの形式と異なるため、[公開キーの保存] を単に押さないようにしてください。
+- [秘密キーの保存] をクリックし、"privateKey.ppk" として保存します。 
 
 ### Azure ポータルへのログイン
 
@@ -50,19 +50,19 @@ https://portal.azure.com/ に移動してログインします。
 
 ### Linux VM の作成
 
-左下にある \[新規\] をクリックし、次の手順でイメージを作成します。必要に応じて Linux イメージを選択してください。ここでは、例として Ubuntu 14.04 を選択します。
+左下にある [新規] をクリックし、次の手順でイメージを作成します。必要に応じて Linux イメージを選択してください。ここでは、例として Ubuntu 14.04 を選択します。
 
   ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p03.png)
 
 ### ホスト名のセットアップ
 
-\[ホスト名\]: 仮想マシンへのアクセスに使用できる URL です。ここでは、"mysqlnode1" のように DNS 名を指定するだけでかまいません。こうすると、URL が "mysqlnode1.cloudapp.net" として生成されます。\[SSH 認証キー\]: puttygen で生成される公開キーです。このキーは "publicKey.key" ファイルのコンテンツからコピーする必要があります。
+[ホスト名]: 仮想マシンへのアクセスに使用できる URL です。ここでは、"mysqlnode1" のように DNS 名を指定するだけでかまいません。こうすると、URL が "mysqlnode1.cloudapp.net" として生成されます。[SSH 認証キー]: puttygen で生成される公開キーです。このキーは "publicKey.key" ファイルのコンテンツからコピーする必要があります。
 
   ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p04.png)
   
 
 ## MySQL の既定のポートを開く
-Microsoft Azure のエンドポイントは、パブリックおよびプライベート ポートとプロトコルで構成されます。プライベート ポートは、ローカル コンピューターでサービスがリッスンするポートです。パブリック ポートとは、サービスが外部でリッスンするポートです。ポート 3306 は、MySQL によってリッスンされる既定のポート番号です。\[参照\]、\[Virtual Machines\] の順にクリックし、作成したイメージをクリックします。
+Microsoft Azure のエンドポイントは、パブリックおよびプライベート ポートとプロトコルで構成されます。プライベート ポートは、ローカル コンピューターでサービスがリッスンするポートです。パブリック ポートとは、サービスが外部でリッスンするポートです。ポート 3306 は、MySQL によってリッスンされる既定のポート番号です。[参照]、[Virtual Machines] の順にクリックし、作成したイメージをクリックします。
  
    ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p05.png)
 
@@ -81,11 +81,11 @@ Microsoft Azure のエンドポイントは、パブリックおよびプライ�
 
    ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p06.png)
  
-- \[開く\] を選択する前に、\[接続\]、\[SSH\]、\[認証\] タブの順にクリックして、Puttygen で生成されたファイルを見つけて秘密キーを格納します。入力するフィールドについては、下図を参照してください。
+- [開く] を選択する前に、[接続]、[SSH]、[認証] タブの順にクリックして、Puttygen で生成されたファイルを見つけて秘密キーを格納します。入力するフィールドについては、下図を参照してください。
 
    ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p07.png)
  
-- \[開く\] をクリックします。ここで、接続先のコンピューターは目的のコンピューターではない可能性があるとメッセージ ボックスで警告される場合があります。DNS 名とポート番号を正しく構成してある場合は、\[はい\] をクリックします。
+- [開く] をクリックします。ここで、接続先のコンピューターは目的のコンピューターではない可能性があるとメッセージ ボックスで警告される場合があります。DNS 名とポート番号を正しく構成してある場合は、[はい] をクリックします。
   
  ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p08.png)
 
@@ -126,19 +126,19 @@ MySQL のインストール方法として、バイナリ パッケージ、rpm 
     
     ログオンした後で、MySQL サービスが実行されていることを確認します。サービスの開始または再起動には、次のコマンドを使用できます。
 
-    \(a\) MySQL サービスの状態を取得するには
+    (a) MySQL サービスの状態を取得するには
 
              #sudo service mysql status
 
-    \(b\) MySQL サービスを開始するには
+    (b) MySQL サービスを開始するには
 
              #sudo service mysql start
 
-    \(c\) MySQL サービスを停止するには
+    (c) MySQL サービスを停止するには
 
              #sudo service mysql stop
 
-    \(d\) MySQL サービスを再起動するには
+    (d) MySQL サービスを再起動するには
 
              #sudo service mysql restart
 
@@ -156,7 +156,7 @@ MySQL のインストール方法として、バイナリ パッケージ、rpm 
 
     これは、ファイル内の、リリース シリーズのサブリポジトリに対する一般的なエントリです。
 
-        \# *Enable to use MySQL 5.6*
+        # *Enable to use MySQL 5.6*
 
         [mysql56-community]
         name=MySQL 5.6 Community Server

@@ -135,7 +135,7 @@ Azure BLOB サービス クライアントをインスタンス化するには�
 		echo $code.": ".$error_message."<br />";
 	}
 
-**setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** の呼び出しにより、匿名の要求でコンテナーと BLOB データにアクセス可能になります。**setPublicAccess(PublicAccessType::BLOBS_ONLY)** の呼び出しにより、匿名の要求で BLOB データにのみアクセス可能になります。コンテナー ACL の詳細については、「[Set Container ACL (REST API)][container-acl]」を参照してください。
+**setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS)** の呼び出しにより、匿名の要求でコンテナーと BLOB データにアクセス可能になります。**setPublicAccess(PublicAccessType::BLOBS_ONLY)** の呼び出しにより、匿名の要求で BLOB データにのみアクセス可能になります。コンテナー ACL の詳細については、「[Set Container ACL (REST API)][container-acl]」を参照してください。
 
 BLOB サービスのエラー コードの詳細については、「[BLOB サービスのエラー コード][error-codes]」を参照してください。
 
@@ -168,7 +168,7 @@ BLOB としてファイルをアップロードするには、**BlobRestProxy->c
 		echo $code.": ".$error_message."<br />";
 	}
 
-この例では、ストリームとして BLOB をアップロードしていることに注意してください。ただし BLOB は、[file\_get\_contents][file_get_contents] 関数などを使用して、文字列としてアップロードすることもできます。そのためには、この例で `$content = fopen("c:\myfile.txt", "r");` を `$content = file_get_contents("c:\myfile.txt");` に変更します。
+この例では、ストリームとして BLOB をアップロードしていることに注意してください。ただし BLOB は、[file_get_contents][file_get_contents] 関数などを使用して、文字列としてアップロードすることもできます。そのためには、この例で `$content = fopen("c:\myfile.txt", "r");` を `$content = file_get_contents("c:\myfile.txt");` に変更します。
 
 ## 方法:コンテナー内の BLOB を一覧表示する
 
@@ -230,7 +230,7 @@ BLOB をダウンロードするには、**BlobRestProxy->getBlob** メソッド
 		echo $code.": ".$error_message."<br />";
 	}
 
-この例では、ストリーム リソースとして BLOB を取得していることに注意してください (既定の動作)。ただし、[stream\_get\_contents][stream-get-contents] 関数を使用して、返されたストリームを文字列に変換できます。
+この例では、ストリーム リソースとして BLOB を取得していることに注意してください (既定の動作)。ただし、[stream_get_contents][stream-get-contents] 関数を使用して、返されたストリームを文字列に変換できます。
 
 ## 方法:BLOB を削除する
 

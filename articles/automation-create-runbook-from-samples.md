@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure オートメーションの使用" 
 	description="Azure でオートメーション ジョブをインポートして実行する方法について説明します。" 
 	services="automation" 
@@ -36,11 +36,11 @@ Automation アカウントは、Azure Automation リソースのコンテナー�
 
 1.	[Azure 管理ポータル](http://manage.windowsazure.com)にログインします。
 
-2.	管理ポータルで、**\[オートメーション アカウントの作成\]** をクリックします。
+2.	管理ポータルで、**[オートメーション アカウントの作成]** をクリックします。
 
 	![アカウントの作成](./media/automation/automation_01_CreateAccount.png)
 
-3.	**\[新しいオートメーション アカウントの追加\]** ページで、名前を入力し、アカウントのリージョンを選択します。リージョンでは、アカウントの Automation リソースが格納される場所を指定します。これは、アカウントの機能には影響しませんが、アカウントのリージョンがご使用のその他の Azure リソースが格納された場所に近い場合、Runbook をより素早く実行できます。準備ができたら、チェック マークをクリックします。
+3.	**[新しいオートメーション アカウントの追加]** ページで、名前を入力し、アカウントのリージョンを選択します。リージョンでは、アカウントの Automation リソースが格納される場所を指定します。これは、アカウントの機能には影響しませんが、アカウントのリージョンがご使用のその他の Azure リソースが格納された場所に近い場合、Runbook をより素早く実行できます。準備ができたら、チェック マークをクリックします。
 
 	![新しいアカウントの追加](./media/automation/automation_02_addnewautoacct.png)
 
@@ -48,19 +48,19 @@ Automation アカウントは、Azure Automation リソースのコンテナー�
 
 [Runbook ギャラリー](http://aka.ms/runbookgallery)には、Azure Automation アカウントに直接インポートできるサンプルの Runbook が含まれており、これによって、他の Azure Automation および PowerShell ユーザーの作業を活用できます。この手順では、ギャラリーを使用して「Hello World」サンプル Runbook をインポートします。
 
-4.	**\[オートメーション\]** ページで、作成した新しいアカウントをクリックします。
+4.	**[オートメーション]** ページで、作成した新しいアカウントをクリックします。
  
 	![新しいアカウント](./media/automation/automation_03_NewAutoAcct.png)
 
-5.	**\[Runbook\]** をクリックします。
+5.	**[Runbook]** をクリックします。
 
-	![\[Runbook\] タブ](./media/automation/automation_04_RunbooksTab.png)
+	![[Runbook] タブ](./media/automation/automation_04_RunbooksTab.png)
   
-6.	**\[新規\]** \> **\[Runbook\]** \> **\[ギャラリーから\]** の順にクリックします。
+6.	**[新規]** > **[Runbook]** > **[ギャラリーから]** の順にクリックします。
 
 	![Runbook Gallery](./media/automation/automation_05_ImportGallery.png)
 
-7.  **\[チュートリアル\]** カテゴリを選択し、**\[Hello World for Azure Automation\]** を選択します。右矢印ボタンをクリックします。
+7.  **[チュートリアル]** カテゴリを選択し、**[Hello World for Azure Automation]** を選択します。右矢印ボタンをクリックします。
 
 	![Import Runbook](./media/automation/automation_06_ImportRunbook.png)
 
@@ -76,21 +76,21 @@ Automation アカウントは、Azure Automation リソースのコンテナー�
 
 Runbook は、まずドラフト モードでインポートされます。つまりこれは、承認前に実行可能な新しいバージョンとして Runbook で作業を継続できることを意味します。このサンプルの Runbook は追加の構成を必要としないため、そのまますぐに発行できます。詳細については、「[Runbook の発行](http://aka.ms/runbookauthor/azure/publishrunbook)」を参照してください。
 
-9.	Runbook のインポートが完了したら、**\[Write-HelloWorld\]** をクリックします。
+9.	Runbook のインポートが完了したら、**[Write-HelloWorld]** をクリックします。
 
 	![インポートした Runbook](./media/automation/automation_07_ImportedRunbook.png)
 
-9.	**\[作成者\]** をクリックし、**\[ドラフト\]** をクリックします。
+9.	**[作成者]** をクリックし、**[ドラフト]** をクリックします。
 
 	ドラフト モードでは、Runbook の内容を変更できます。この Runbook に対して、どのような変更も加える必要はありません。
 
 	![作成者のドラフト](./media/automation/automation_08_AuthorDraft.png)
  
-10.	**\[発行\]** をクリックして Runbook を昇格し、運用環境で使用する準備をします。
+10.	**[発行]** をクリックして Runbook を昇格し、運用環境で使用する準備をします。
 
 	![Publish](./media/automation/automation_085_Publish.png)
    
-11.	確認を求められたら、**\[はい\]** をクリックします。
+11.	確認を求められたら、**[はい]** をクリックします。
  
 	![保存して発行するためのメッセージ](./media/automation/automation_09_SavePubPrompt.png)
 
@@ -98,19 +98,19 @@ Runbook は、まずドラフト モードでインポートされます。つ�
 
 Runbook をインポートし、発行したら、それを実行して、出力を調べます。詳細については、「[Runbook の開始](http://aka.ms/runbookauthor/azure/startrunbook)」および「[Runbook の出力とメッセージ](http://aka.ms/runbookauthor/azure/runbookoutput)」を参照してください。
 
-12.	**\[Write-HelloWorld\]** の Runbook が開いた状態で **\[開始\]** をクリックします。
+12.	**[Write-HelloWorld]** の Runbook が開いた状態で **[開始]** をクリックします。
 
 	![公開済み](./media/automation/automation_10_PublishStart.png)
  
-13.	**\[Runbook パラメーターの値を指定します\]**ページで、Write-HelloWorld.ps1 スクリプトの入力パラメーターとして使用される **\[名前\]** を入力し、チェック マークをクリックします。
+13.	**[Runbook パラメーターの値を指定します]**ページで、Write-HelloWorld.ps1 スクリプトの入力パラメーターとして使用される **[名前]** を入力し、チェック マークをクリックします。
 
 	![Runbook のパラメーター](./media/automation/automation_11_RunbookParams.png)
   
-14.	**\[ジョブ\]** をクリックして、開始した Runbook ジョブの状態を確認し、**\[ジョブ開始\]** 列にあるタイムスタンプをクリックしてジョブの概要を表示します。
+14.	**[ジョブ]** をクリックして、開始した Runbook ジョブの状態を確認し、**[ジョブ開始]** 列にあるタイムスタンプをクリックしてジョブの概要を表示します。
 
 	![Runbook のステータス](./media/automation/automation_12_RunbookStatus.png)
 
-15.	**\[概要\]** ページで、ジョブの概要、入力パラメーター、出力を表示できます。
+15.	**[概要]** ページで、ジョブの概要、入力パラメーター、出力を表示できます。
  
 	![Runbook の概要](./media/automation/automation_13_RunbookSummary_callouts.png)
 
@@ -140,4 +140,6 @@ Runbook をインポートし、発行したら、それを実行して、出力
 
 <strong>フィードバックの送信</strong> Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!--- HONumber=52-->
+
+
+<!---HONumber=52-->

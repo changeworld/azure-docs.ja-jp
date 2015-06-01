@@ -199,7 +199,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ![Azure Technical Diagram](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
 
-**create-new** は BLOB ストレージ (この図では e:\) にドライブを作成します。**attach** は作成済みでまだ接続していないディスクを、仮想マシンに接続します。
+**create-new** は BLOB ストレージ (この図では e:) にドライブを作成します。**attach** は作成済みでまだ接続していないディスクを、仮想マシンに接続します。
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
@@ -348,7 +348,7 @@ info:   vm shutdown command OK
 
 このコマンドは、Azure の仮想マシン イメージをファイルにエクスポートします。
 
-	~$ azure vm export "myvm" "C:\"
+	~$ azure vm export "myvm" "C:"
 	info:    Executing command vm export
 	+ Getting virtual machines
 	+ Exporting the VM

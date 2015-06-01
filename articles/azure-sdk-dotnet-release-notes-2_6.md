@@ -21,7 +21,7 @@
 
 このドキュメントには、Azure SDK for .NET 2.6 リリースのリリース ノートが含まれます。
 
-Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NET Framework を手動でインストールした場合に、.NET 4.5.2 または .NET 4.6 をターゲットとするクラウド サービス アプリケーション \(PaaS\) を開発できます。「[Install .NET on a Cloud Service Role \(クラウド サービス ロールに .NET をインストール\)](http://go.microsoft.com/fwlink/?LinkID=309796)」を参照してください。
+Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NET Framework を手動でインストールした場合に、.NET 4.5.2 または .NET 4.6 をターゲットとするクラウド サービス アプリケーション (PaaS) を開発できます。「[Install .NET on a Cloud Service Role (クラウド サービス ロールに .NET をインストール)](http://go.microsoft.com/fwlink/?LinkID=309796)」を参照してください。
 
 
 ## Service Bus の更新
@@ -36,7 +36,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 - **IntelliSense の強化**: リモート メタデータの推奨事項
 
-	HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの取得がサポートされるようになりました。たとえば、「**SELECT \* FROM**」と入力すると、すべてのテーブル名が表示されます。また、テーブルを指定した後、列名も表示されます。
+	HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの取得がサポートされるようになりました。たとえば、「**SELECT * FROM**」と入力すると、すべてのテーブル名が表示されます。また、テーブルを指定した後、列名も表示されます。
 
 - **HDInsight Emulator のサポート**
 
@@ -44,7 +44,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 	詳しくは、[このマニュアル](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409)を参照してください。
 
-- **HDInsight Tools for Visual Studio での汎用 Hadoop クラスターのサポート** \(プレビュー\)
+- **HDInsight Tools for Visual Studio での汎用 Hadoop クラスターのサポート** (プレビュー)
 
 	HDInsight Tools for Visual Studio に汎用 Hadoop クラスターのサポートが追加されたため、HDInsight Tools for Visual Studio を使用して、次のことを実行できます。
 
@@ -69,7 +69,7 @@ Azure SDK 2.6 リリースで次の項目が更新されました。
 - Azure 発行に、デプロイ ターゲットとして Azure API Apps が追加されました。
 - API Apps プロビジョニング機能により、ユーザーは API App の作成やプロビジョニング機能を使用できるようになります。
 - Server Explorer で、リソース グループにより Web、モバイル、API Apps をグループ化して、新しい App Service ノードが反映されるようになりました。
-- ほとんどの C\# プロジェクトに追加された Azure API App Client ジェスチャが追加されました。これにより、Azure のサブスクリプションで実行する Swagger 対応 API Apps の自動生成が可能になります。
+- ほとんどの C# プロジェクトに追加された Azure API App Client ジェスチャが追加されました。これにより、Azure のサブスクリプションで実行する Swagger 対応 API Apps の自動生成が可能になります。
 - Server Explorer の API Apps ツールと App Service ノードがVisual Studio 2013 でのみ利用できるようになりました。 
 
 ## Azure Resource Manager ツールの更新
@@ -78,9 +78,9 @@ Azure Resource Manager ツールで Virtual Machines、Networking、Storage の�
 
 ## クラウド サービスの診断機能の強化
 
-Azure SDK 2.6 において、Azure コンピューティング エミュレーターでの診断ログの収集と、それらの開発スとレージへの転送機能が復活しました。アプリケーションのエミュレーターでの実行時に生成される診断ログ \(アプリケーションのトレース ログ、Event Tracing for Windows \(ETW\) ログ、パフォーマンス カウンター、インフラストラクチャ ログ、Windows イベント ログなど\) を開発ストレージに転送して、診断ログがローカル コンピューターで機能していることを確認できます。
+Azure SDK 2.6 において、Azure コンピューティング エミュレーターでの診断ログの収集と、それらの開発スとレージへの転送機能が復活しました。アプリケーションのエミュレーターでの実行時に生成される診断ログ (アプリケーションのトレース ログ、Event Tracing for Windows (ETW) ログ、パフォーマンス カウンター、インフラストラクチャ ログ、Windows イベント ログなど) を開発ストレージに転送して、診断ログがローカル コンピューターで機能していることを確認できます。
 
-診断ストレージ アカウントがサービス構成 \(.cscfg\) ファイルで指定されるため、さまざまな環境にあった診断ストレージ アカウントを簡単に使用できるようになります。接続文字列の Azure SDK 2.4 と Azure SDK 2.6 での動作に注目すべきいくつかの違いが見られます。診断ストレージの接続文字列の使用方法と、それがプロジェクトにどのような影響を及ぼすかについては、「[Azure Cloud 用の診断の構成](http://go.microsoft.com/fwlink/?LinkID=532784)」を参照してください。
+診断ストレージ アカウントがサービス構成 (.cscfg) ファイルで指定されるため、さまざまな環境にあった診断ストレージ アカウントを簡単に使用できるようになります。接続文字列の Azure SDK 2.4 と Azure SDK 2.6 での動作に注目すべきいくつかの違いが見られます。診断ストレージの接続文字列の使用方法と、それがプロジェクトにどのような影響を及ぼすかについては、「[Azure Cloud 用の診断の構成](http://go.microsoft.com/fwlink/?LinkID=532784)」を参照してください。
 
 ## 重大な変更
 

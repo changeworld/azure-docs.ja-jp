@@ -59,7 +59,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 		└── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
 
 3.  手動で **ls** コマンドを実行して、
-    **node\_modules** フォルダーが作成されたことを確認できます。そのフォルダーで
+    **node_modules** フォルダーが作成されたことを確認できます。そのフォルダーで
     **azure-storage** パッケージを検索します。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています
     。
 

@@ -137,7 +137,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 - アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- Default value: ..\..\\LogFiles\\Application
+- Default value: ....\\LogFiles\\Application
 
 **DIAGNOSTICS_TEXTTRACEMAXBUFFERSIZEBYTES**
 

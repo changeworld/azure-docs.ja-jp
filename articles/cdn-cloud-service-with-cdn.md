@@ -254,7 +254,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 	                Memes.Add(identifier, new Tuple&lt;string, string&gt;(top, bottom));
 	            }
 	
-	            return Content(&quot;&lt;a href=\&quot;&quot; + Url.Action(&quot;Show&quot;, new {id = identifier}) + &quot;\&quot;&gt;here&#39;s your meme&lt;/a&gt;&quot;);
+	            return Content(&quot;&lt;a href=\&quot;&quot; + Url.Action(&quot;Show&quot;, new {id = identifier}) + &quot;\&quot;&gt;here's your meme&lt;/a&gt;&quot;);
 	        }
 
 
@@ -406,7 +406,7 @@ URL の書き換え規則が適用された後、CDN エンドポイントにキ
 		...
     }
 
-最初の `bundles.Add()` ステートメントにより、仮想ディレクトリ `~/bundles/jquery` にスクリプトのバンドルが追加されます。次に、*Views\Shared\_Layout.cshtml*  を開いて、スクリプト バンドル タグがどのようにレンダリングされているか確認します。次の Razor コードが見つかります。
+最初の `bundles.Add()` ステートメントにより、仮想ディレクトリ `~/bundles/jquery` にスクリプトのバンドルが追加されます。次に、*Views\Shared_Layout.cshtml*  を開いて、スクリプト バンドル タグがどのようにレンダリングされているか確認します。次の Razor コードが見つかります。
 
     @Scripts.Render("~/bundles/jquery")
 
@@ -437,7 +437,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/jqueryval&quot;<mark>, string.Format(cdnUrl, &quot;bundles/jqueryval&quot;)</mark>).Include(
 	                &quot;~/Scripts/jquery.validate*&quot;));
 	
-	    // Use the development version of Modernizr to develop with and learn from. Then, when you&#39;re
+	    // Use the development version of Modernizr to develop with and learn from. Then, when you're
 	    // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/modernizr&quot;<mark>, string.Format(cdnUrl, &quot;bundles/modernizer&quot;)</mark>).Include(
 	                &quot;~/Scripts/modernizr-*&quot;));
@@ -535,7 +535,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 					<mark>{ CdnFallbackExpression = &quot;$.validator&quot; }</mark>
 	            	.Include(&quot;~/Scripts/jquery.validate*&quot;));
 	
-	    // Use the development version of Modernizr to develop with and learn from. Then, when you&#39;re
+	    // Use the development version of Modernizr to develop with and learn from. Then, when you're
 	    // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/modernizr&quot;, string.Format(cdnUrl, &quot;bundles/modernizer&quot;)) 
 					<mark>{ CdnFallbackExpression = &quot;window.Modernizr&quot; }</mark>
@@ -588,37 +588,37 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	                    len = document.styleSheets.length;
 	                for (var i = 0; i &lt; len; i++) {
 	                    var sheet = document.styleSheets[i];
-	                    if (sheet.href.indexOf(&#39;http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25474&#39;) !== -1) {
-	                        var meta = document.createElement(&#39;meta&#39;);
-	                        meta.className = &#39;sr-only&#39;;
+	                    if (sheet.href.indexOf('http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
+	                        var meta = document.createElement('meta');
+	                        meta.className = 'sr-only';
 	                        document.head.appendChild(meta);
-	                        var value = window.getComputedStyle(meta).getPropertyValue(&#39;width&#39;);
+	                        var value = window.getComputedStyle(meta).getPropertyValue('width');
 	                        document.head.removeChild(meta);
-	                        if (value !== &#39;1px&#39;) {
-	                            document.write(&#39;&lt;link href=&quot;/Content/css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;&#39;);
+	                        if (value !== '1px') {
+	                            document.write('&lt;link href=&quot;/Content/css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;');
 	                        }
 	                    }
 	                }
 	                return true;
-	            }())||document.write(&#39;&lt;script src=&quot;/Content/css&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	            }())||document.write('&lt;script src=&quot;/Content/css&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	    &lt;script src=&quot;http://az632148.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474&quot;&gt;&lt;/script&gt;
-	<mark>&lt;script&gt;(window.Modernizr)||document.write(&#39;&lt;script src=&quot;/bundles/modernizr&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;(window.Modernizr)||document.write('&lt;script src=&quot;/bundles/modernizr&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	...	
 	
 	    &lt;script src=&quot;http://az632148.vo.msecnd.net/bundles/jquery?v=1.0.0.25474&quot;&gt;&lt;/script&gt;
-	<mark>&lt;script&gt;(window.jquery)||document.write(&#39;&lt;script src=&quot;/bundles/jquery&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;(window.jquery)||document.write('&lt;script src=&quot;/bundles/jquery&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	    &lt;script src=&quot;http://az632148.vo.msecnd.net/bundles/bootstrap?v=1.0.0.25474&quot;&gt;&lt;/script&gt;
-	<mark>&lt;script&gt;($.fn.modal)||document.write(&#39;&lt;script src=&quot;/bundles/bootstrap&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;($.fn.modal)||document.write('&lt;script src=&quot;/bundles/bootstrap&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	...
 	</pre>
 
 	CSS バンドルに対して挿入されたスクリプトには、次の行に `CdnFallbackExpression` プロパティのエラーの残りがまだ含まれている点に注意してください。
 
-        }())||document.write('<script src="/Content/css"><\/script>');</script>
+        }())||document.write('<script src="/Content/css"></script>');</script>
 
 	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
 

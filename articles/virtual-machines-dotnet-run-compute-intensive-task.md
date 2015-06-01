@@ -109,10 +109,10 @@ Service Bus リソースのアドレス範囲を指定するコンテナーが�
 
 1. 開発用コンピューターで (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for .NET](http://www.windowsazure.com/develop/net/) をダウンロードします。
 2. **TSPSolver** というプロジェクト名で .NET コンソール アプリケーションを作成します。ターゲット フレームワークを **[.NET Framework 4]** 以降に設定します (**[.NET Framework 4 Client Profile]** ではありません)。ターゲット フレームワークはプロジェクトを作成した後に変更することもできます。その場合は、Visual Studio で **[プロジェクト]** メニューの **[プロパティ]** をクリックし、**[アプリケーション]** タブをクリックして、**[ターゲット フレームワーク]** の値を設定します。
-3. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.5\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
+3. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\Program Files\Microsoft SDKs\Azure.NET SDK\v2.5\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
 4. System Runtime Serialization ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]** をクリックします。**[.NET]** タブをクリックし、**[System.Runtime.Serialization]** を参照として選択します。
 5. このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
-6. **your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
+6. **your_service_bus_namespace**、**your_service_bus_owner**、**your_service_bus_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
 7. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\release** または **bin\debug**) に **TSPSolver.exe** が作成されます。この実行可能ファイルと Microsoft.ServiceBus.dll を後で仮想マシンにコピーします。
 
 <p/>
@@ -341,10 +341,10 @@ Service Bus リソースのアドレス範囲を指定するコンテナーが�
 <h2>多くのコンピューティング処理を要するタスクの進捗状況を監視する .NET アプリケーションの作成方法</h2>
 
 1. 開発用コンピューターで、**TSPClient** というプロジェクト名で .NET コンソール アプリケーションを作成します。ターゲット フレームワークを **[.NET Framework 4]** 以降に設定します (**[.NET Framework 4 Client Profile]** ではありません)。ターゲット フレームワークはプロジェクトを作成した後に変更することもできます。その場合は、Visual Studio で **[プロジェクト]** メニューの **[プロパティ]** をクリックし、**[アプリケーション]** タブをクリックして、**[ターゲット フレームワーク]** の値を設定します。
-2. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.5\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
+2. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\Program Files\Microsoft SDKs\Azure.NET SDK\v2.5\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
 3. System Runtime Serialization ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPClient]** を右クリックし、**[参照の追加]** をクリックします。**[.NET]** タブをクリックし、**[System.Runtime.Serialization]** を参照として選択します。
 4. このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
-5. **your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
+5. **your_service_bus_namespace**、**your_service_bus_owner**、**your_service_bus_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
 5. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\release** または **bin\debug**) に **TSPClient.exe** が作成されます。このコードを開発用コンピューターから実行することも、別のコンピューターに実行可能ファイルと Microsoft.ServiceBus.dll をコピーして、そこでクライアント アプリケーションを実行することもできます (アプリケーションを仮想マシン上に置く必要はありません)。
 
 <p/>

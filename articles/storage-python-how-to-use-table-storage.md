@@ -50,12 +50,12 @@
 **PartitionKey** が同じエンティティは同じノードに格納されます。 
 **RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
 
-エンティティをテーブルに追加するには、ディクショナリ オブジェクトを **insert\_entity** メソッドに渡します。
+エンティティをテーブルに追加するには、ディクショナリ オブジェクトを **insert_entity** メソッドに渡します。
 
 	task = {'PartitionKey': 'tasksSeattle', 'RowKey': '1', 'description' : 'Take out the trash', 'priority' : 200}
 	table_service.insert_entity('tasktable', task)
 
-**Entity** クラスのインスタンスを **insert\_entity** メソッドに渡すこともできます。
+**Entity** クラスのインスタンスを **insert_entity** メソッドに渡すこともできます。
 
 	task = Entity()
 	task.PartitionKey = 'tasksSeattle'
@@ -71,7 +71,7 @@
 	task = {'description' : 'Take out the garbage', 'priority' : 250}
 	table_service.update_entity('tasktable', 'tasksSeattle', '1', task)
 
-更新されるエンティティが存在しない場合、更新操作は失敗します。既に存在しているかどうかに関係なくエンティティを格納するには、**insert\_or\_replace_entity** を使用します。 
+更新されるエンティティが存在しない場合、更新操作は失敗します。既に存在しているかどうかに関係なくエンティティを格納するには、**insert_or_replace_entity** を使用します。 
 次の例では、最初の呼び出しで既存のエンティティを置き換えます。2 番目の呼び出しでは、指定された **PartitionKey** と **RowKey** を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
 
 	task = {'description' : 'Take out the garbage again', 'priority' : 250}
@@ -82,7 +82,7 @@
 
 ## エンティティのグループを変更する方法
 
-状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。これを実現するには、**TableService** の **begin\_batch** メソッドを使用した後、一連の操作を通常どおり呼び出します。バッチを送信するときは、**commit\_batch** を呼び出します。バッチでエンティティを変更するには、すべてのエンティティが同じパーティションに含まれている必要があります。次の例では、2 つのエンティティをバッチでまとめて追加します。
+状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。これを実現するには、**TableService** の **begin_batch** メソッドを使用した後、一連の操作を通常どおり呼び出します。バッチを送信するときは、**commit_batch** を呼び出します。バッチでエンティティを変更するには、すべてのエンティティが同じパーティションに含まれている必要があります。次の例では、2 つのエンティティをバッチでまとめて追加します。
 
 	task10 = {'PartitionKey': 'tasksSeattle', 'RowKey': '10', 'description' : 'Go grocery shopping', 'priority' : 400}
 	task11 = {'PartitionKey': 'tasksSeattle', 'RowKey': '11', 'description' : 'Clean the bathroom', 'priority' : 100}
@@ -93,7 +93,7 @@
 
 ## エンティティを照会する方法
 
-テーブル内のエンティティを照会するには、**get\_entity** メソッドを使用して、**PartitionKey** と **RowKey** を渡します。
+テーブル内のエンティティを照会するには、**get_entity** メソッドを使用して、**PartitionKey** と **RowKey** を渡します。
 
 	task = table_service.get_entity('tasktable', 'tasksSeattle', '1')
 	print(task.description)

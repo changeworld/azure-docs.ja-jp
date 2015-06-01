@@ -38,15 +38,15 @@ Mobile Services を使用している場合は、「[Mobile Services アプリ�
                 try
                 {
                     // Define a Windows Store toast.
-                    var wnsToast = "<toast><visual><binding template=\"ToastText01\">" 
-                        + "<text id=\"1\">Breaking " + category + " News!" 
+                    var wnsToast = "<toast><visual><binding template="ToastText01">" 
+                        + "<text id="1">Breaking " + category + " News!" 
                         + "</text></binding></visual></toast>";         
                     await hub.SendWindowsNativeNotificationAsync(wnsToast, category);
 
                     // Define a Windows Phone toast.
                     var mpnsToast =
-                        "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                        "<wp:Notification xmlns:wp=\"WPNotification\">" +
+                        "<?xml version="1.0" encoding="utf-8"?>" +
+                        "<wp:Notification xmlns:wp="WPNotification">" +
                             "<wp:Toast>" +
                                 "<wp:Text1>Breaking " + category + " News!</wp:Text1>" +
                             "</wp:Toast> " +
@@ -54,11 +54,11 @@ Mobile Services を使用している場合は、「[Mobile Services アプリ�
                     await hub.SendMpnsNativeNotificationAsync(mpnsToast, category);
 
                     // Define an iOS alert.
-                    var alert = "{\"aps\":{\"alert\":\"Breaking " + category + " News!\"}}";
+                    var alert = "{"aps":{"alert":"Breaking " + category + " News!"}}";
                     await hub.SendAppleNativeNotificationAsync(alert, category);
 
 					// Define an Android notification.
-                    var notification = "{\"data\":{\"msg\":\"Breaking " + category + " News!\"}}";
+                    var notification = "{"data":{"msg":"Breaking " + category + " News!"}}";
                     await hub.SendGcmNativeNotificationAsync(notification, category);
                 }
                 catch (ArgumentException)

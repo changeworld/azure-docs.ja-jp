@@ -25,7 +25,7 @@
 
 Hive クエリは、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)内で共有されており、そこからダウンロードすることが可能です。
 
-「[データ サイエンス用に Azure 仮想マシンを設定する](machine-learning-data-science-setup-virtual-machine.md)」の指示に従って Azure 仮想マシンを作成している場合、このスクリプト ファイルは仮想マシンの  *C:\Users\<user name>\Documents\Data Science Scripts* ディレクトリにダウンロードされているはずです。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
+「[データ サイエンス用に Azure 仮想マシンを設定する](machine-learning-data-science-setup-virtual-machine.md)」の指示に従って Azure 仮想マシンを作成している場合、このスクリプト ファイルは仮想マシンの  *C:\Users<user name>\Documents\Data Science Scripts* ディレクトリにダウンロードされているはずです。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
 
 ここでは、Hive テーブルのデータが**圧縮されていない**表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。ユーザーが _NYCタクシーの乗車データで実行する場合、まず [24 のファイルすべてをダウンロード](http://www.andresmh.com/nyctaxitrips/)し (12 のトリップ ファイル、および 12 の運賃ファイル)、すべてのファイルを .csv ファイルに**解凍**し、「[データ サイエンス用の Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」トピックで概説されている手順で使用された Azure ストレージ アカウントの既定コンテナー (または適切なコンテナー) にアップロードする必要があります。 
 

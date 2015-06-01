@@ -28,7 +28,7 @@ JDK を圧縮して Azure プロジェクトの **approot** フォルダーに�
 	`keytool -list -keystore cacerts`
 
 	ストアのパスワードを入力するように求められます。既定のパスワードは **changeit** です (パスワードを変更する場合は、<http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html> にある keytool のドキュメントを参照してください)。この例では、MD5 フィンガープリントが 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 の証明書が一覧に表示されないため、その証明書をインポートするとします (この証明書は Twilio API サービスに必要)。
-2. [GeoTrust Root Certificates](http://www.geotrust.com/resources/root-certificates/) に掲載されている証明書の一覧から証明書を入手します。シリアル番号が 35:DE:F4:CF の証明書のリンクを右クリックし、その証明書を **jdk\jre\lib\security** フォルダーに保存します。この例では、**Equifax\_Secure\_Certificate\_Authority.cer** という名前のファイルに保存しました。
+2. [GeoTrust Root Certificates](http://www.geotrust.com/resources/root-certificates/) に掲載されている証明書の一覧から証明書を入手します。シリアル番号が 35:DE:F4:CF の証明書のリンクを右クリックし、その証明書を **jdk\jre\lib\security** フォルダーに保存します。この例では、**Equifax_Secure_Certificate_Authority.cer** という名前のファイルに保存しました。
 3. 次のコマンドを使用して証明書をインポートします。
 
 	`keytool -keystore cacerts -importcert -alias equifaxsecureca -file Equifax_Secure_Certificate_Authority.cer`

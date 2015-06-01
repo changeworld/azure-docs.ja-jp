@@ -37,7 +37,7 @@ App Service 環境で使用されるポートの一覧を次に示します。
 - 80: App Service 環境において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート
 - 443: App Service 環境において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート
 - 21: FTP 用のコントロール チャネル。FTP が使用されていない場合は、このポートを安全にブロックできます。
-- 10001 ～ 10020: FTP 用のデータ チャネル。コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます \(\*\*注:\*\* FTP データ チャネルはプレビュー期間中に変更される場合があります\)。
+- 10001 ～ 10020: FTP 用のデータ チャネル。コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます (**注:** FTP データ チャネルはプレビュー期間中に変更される場合があります)。
 - 4016: Visual Studio 2012 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 - 4018: Visual Studio 2013 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 - 4020: Visual Studio 2015 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
@@ -59,7 +59,7 @@ App Service 環境で使用されるポートの一覧を次に示します。
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
     
 
-ポート 80 と 443 へのアクセスをロックダウンして、App Service 環境をアップストリーム デバイスまたはサービスの背後に "隠す" 場合は、アップストリーム IP アドレスを知っている必要があります。たとえば、Web アプリケーション ファイアウォール \(WAF\) を使用している場合、WAF は、ダウンストリーム App Service 環境へのトラフィックをプロキシするときに使用する専用の IP アドレス \(複数の場合もあり\) を保持します。この IP アドレスは、ネットワーク セキュリティ ルールの *SourceAddressPrefix* パラメーターで使用する必要があります。
+ポート 80 と 443 へのアクセスをロックダウンして、App Service 環境をアップストリーム デバイスまたはサービスの背後に "隠す" 場合は、アップストリーム IP アドレスを知っている必要があります。たとえば、Web アプリケーション ファイアウォール (WAF) を使用している場合、WAF は、ダウンストリーム App Service 環境へのトラフィックをプロキシするときに使用する専用の IP アドレス (複数の場合もあり) を保持します。この IP アドレスは、ネットワーク セキュリティ ルールの *SourceAddressPrefix* パラメーターで使用する必要があります。
 
 次の例では、特定のアップストリーム IP アドレスからの受信トラフィックが明示的に許可されています。アドレス *1.2.3.4* は、アップストリーム WAF の IP アドレスのプレースホルダーとして使用されています。アップストリーム デバイスまたはサービスで使用されているアドレスと一致するように値を変更します。
 
@@ -71,7 +71,7 @@ FTP サポートが必要な場合は、次のルールをテンプレートと�
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPCtrl" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '21' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 
-\(\*\*注:\*\* データ チャネル ポート範囲は、プレビュー期間中に変更される場合があります\)。
+(**注:** データ チャネル ポート範囲は、プレビュー期間中に変更される場合があります)。
 
 Visual Studio でのリモート デバッグが使用されている場合、次のルールでは、アクセス権を付与する方法を示しています。Visual Studio では、バージョンごとにリモート デバッグに使用するポートが異なるため、サポートされているバージョンごとに個別のルールがあります。FTP アクセスと同様に、リモート デバッグ トラフィックは、従来の WAF またはプロキシ デバイス経由で適切にフローされない場合があります。代わりに、*SourceAddressPrefix* を、Visual Studio が実行されている開発者コンピューターの IP アドレス範囲に設定できます。
 
@@ -89,7 +89,7 @@ Visual Studio でのリモート デバッグが使用されている場合、�
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
-ネットワーク セキュリティ グループの割り当てが完了すると \(割り当ては時間のかかる操作のため、完了するまでに数分かかる場合があります\)、*許可*ルールに一致する受信トラフィックのみが App Service 環境内のアプリに正常に到達します。
+ネットワーク セキュリティ グループの割り当てが完了すると (割り当ては時間のかかる操作のため、完了するまでに数分かかる場合があります)、*許可*ルールに一致する受信トラフィックのみが App Service 環境内のアプリに正常に到達します。
 
 完全を期すため、次の例では、サブネットからネットワーク セキュリティ グループを削除し、関連付けを解除する方法を示します。
 

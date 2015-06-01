@@ -58,7 +58,7 @@
 
 ## 手順 2:新しい Python Flask Web アプリケーションの作成
 
-1. Visual Studio を開き、**File** -\> **New Project** -\> **Python** -\> **Flask Web Project** をクリックして、"**tutorial**" という名前で新しいプロジェクトを作成します。 
+1. Visual Studio を開き、**File** -> **New Project** -> **Python** -> **Flask Web Project** をクリックして、"**tutorial**" という名前で新しいプロジェクトを作成します。 
 
 	Flask は、Python で Web アプリケーションをより迅速に作成するのに役立つ Web フレームワークです。[Flask のチュートリアルにアクセスするには、ここをクリックしてください][]。
 
@@ -272,12 +272,12 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
     	{% endblock %}
 
 
-### 構成ファイルの追加と、\_\_init\_\_.py の変更
+### 構成ファイルの追加と、__init__.py の変更
 
 1. プロジェクト名の [tutorial] を右クリックし、**config.py** ファイルを追加します。
 この config は、Flask のフォームで必要になります。これを使用して秘密キーを指定することもできます。このチュートリアルでは必要ありません。 
 
-2. 次のコードを config.py に追加します。**DOCUMENTDB\_HOST** および **DOCUMENTDB\_KEY** の値を変更します。
+2. 次のコードを config.py に追加します。**DOCUMENTDB_HOST** および **DOCUMENTDB_KEY** の値を変更します。
 
     	CSRF_ENABLED = True
     	SECRET_KEY = 'you-will-never-guess'
@@ -289,7 +289,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
     	DOCUMENTDB_COLLECTION = 'voting collection'
     	DOCUMENTDB_DOCUMENT = 'voting document'
 
-3. 同様に、**\_\_init\_\_.py** の内容を次の内容に置き換えます。
+3. 同様に、**__init__.py** の内容を次の内容に置き換えます。
 
     	from flask import Flask
     	app = Flask(__name__)

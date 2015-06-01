@@ -154,15 +154,15 @@ Amazon Kindle Fire の場合の例は次のようになります。
 更新する場合は、次のようになります。 
 
 	installation.addTag("foo");
-	installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
-	installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
+	installation.addTemplate("template1", new InstallationTemplate("{"data":{"key1":"$(value1)"}}","tag-for-template1"));
+	installation.addTemplate("template2", new InstallationTemplate("{"data":{"key2":"$(value2)"}}","tag-for-template2"));
 	hub.createOrUpdateInstallation(installation);
 
 高度なシナリオでは、Installation オブジェクトの特定のプロパティだけを変更する部分更新機能を使用できます。基本的に、部分更新は Installation オブジェクトに対して実行できる JSON Patch 操作の一部です。
 
 	PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
 	PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
-	PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{\"data\":{\"key3\":\"$(value3)\"}}","tag-for-template1")).toJson());
+	PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{"data":{"key3":"$(value3)"}}","tag-for-template1")).toJson());
 	hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
 
 Installation を削除する:
@@ -234,26 +234,26 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
 
 * **Windows ストアおよび Windows Phone 8.1 (非 Silverlight)**
 
-		String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
+		String toast = "<toast><visual><binding template="ToastText01"><text id="1">Hello from Java!</text></binding></visual></toast>";
 		Notification n = Notification.createWindowsNotification(toast);
 		hub.sendNotification(n);
 
 * **iOS**
 
-		String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
+		String alert = "{"aps":{"alert":"Hello from Java!"}}";
 		Notification n = Notification.createAppleNotification(alert);
 		hub.sendNotification(n);
 
 * **Android**
 
-		String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+		String message = "{"data":{"msg":"Hello from Java!"}}";
 		Notification n = Notification.createGcmNotification(message);
 		hub.sendNotification(n);
 
 * **Windows Phone 8.0 および 8.1 Silverlight**
 
-		String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-			        "<wp:Notification xmlns:wp=\"WPNotification\">" +
+		String toast = "<?xml version="1.0" encoding="utf-8"?>" +
+			        "<wp:Notification xmlns:wp="WPNotification">" +
 			           "<wp:Toast>" +
 			                "<wp:Text1>Hello from Java!</wp:Text1>" +
 			           "</wp:Toast> " +
@@ -263,7 +263,7 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
 
 * **Kindle Fire**
 
-		String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+		String message = "{"data":{"msg":"Hello from Java!"}}";
 		Notification n = Notification.createAdmNotification(message);
 		hub.sendNotification(n);
 

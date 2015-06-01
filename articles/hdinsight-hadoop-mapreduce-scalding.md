@@ -138,15 +138,15 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
     * **repositories**: このプロジェクトで使用される依存関係ファイルを含むリポジトリです
 
-    * **scalding-core\_2.11** および **hadoop-core**: このプロジェクトは Scalding と Hadoop の両方のコア パッケージに依存します。
+    * **scalding-core_2.11** および **hadoop-core**: このプロジェクトは Scalding と Hadoop の両方のコア パッケージに依存します。
 
     * **maven-scala-plugin**: Scala アプリケーションをコンパイルするためのプラグインです
 
-    * **maven-shade-plugin**: シェードされた \(ファット\) Jar を作成するためのプラグインです。このプラグインはフィルターおよび変換を適用します。具体的には次のとおりです。
+    * **maven-shade-plugin**: シェードされた (ファット) Jar を作成するためのプラグインです。このプラグインはフィルターおよび変換を適用します。具体的には次のとおりです。
 
-        * **filters**: The filters applied modify the meta information included with in the jar file. To prevent signing exceptions at runtime, this excludes various signature files that may be included with dependencies.
+        * **filters**: 適用されるフィルターにより、jar ファイルに含まれるメタ情報が変更されます。実行時に署名の例外が発生しないようにするために、これを使って依存関係が存在する可能性のある各種署名ファイルを除外します。
 
-        * **executions**: The package phase execution configuration specifies the **com.twitter.scalding.Tool** class as the main class for the package. Without this, you would need to specify com.twitter.scalding.Tool, as well as the class that contains the application logic, when running the job with the hadoop command.
+        * **executions**: パッケージ フェーズの実行構成で、**com.twitter.scalding.Tool** クラスをパッケージのメイン クラスとして指定します。これを指定しない場合は、hadoop コマンドでジョブを実行する際に、アプリケーション ロジックを含むクラスのほか、com.twitter.scalding.Tool を指定する必要があります。
 
 3. この例ではテストを作成しないので、**src/test** ディレクトリを削除します。
 

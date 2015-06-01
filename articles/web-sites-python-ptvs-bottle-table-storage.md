@@ -164,7 +164,7 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
   	![トップメニュー](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteTopMenu.png)
 
-1.  下へスクロールして **[アプリケーション設定]** セクションに移動し、前のセクションの説明に従って **REPOSITORY\_NAME**、**STORAGE\_NAME**、**STORAGE\_KEY** の値を設定します。
+1.  下へスクロールして **[アプリケーション設定]** セクションに移動し、前のセクションの説明に従って **REPOSITORY_NAME**、**STORAGE_NAME**、**STORAGE_KEY** の値を設定します。
 
   	![アプリ設定](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png)
 

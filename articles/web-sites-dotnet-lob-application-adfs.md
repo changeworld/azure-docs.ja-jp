@@ -151,7 +151,7 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 > [AZURE.NOTE] 両方の環境に対して次の手順を繰り返してください。
 
 4.	AD FS サーバーで、AD FS の管理権限を持つ資格情報でログインします。
-5.	AD FS 管理を開きます。**[AD FS]\[信頼関係]\[証明書利用者信頼]** を右クリックし、**[証明書利用者信頼の追加]** を選択します。
+5.	AD FS 管理を開きます。**[AD FS][信頼関係][証明書利用者信頼]** を右クリックし、**[証明書利用者信頼の追加]** を選択します。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/1-add-rptrust.png)
 
@@ -253,7 +253,7 @@ AD FS デプロイメントの AD ドメインのユーザーとしてログイ�
 - AD FS によって正常に AD ユーザーが認証され、アプリケーションのホームページにリダイレクトされた。
 - AD FS によって正常に名前クレーム (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) がアプリケーションに送信された (これは、ユーザー名が画面の隅に表示されたことで示されます)。 
 
-名前クレームがない場合は、"**こんにちは、 さん。**" という表示になります。Views\Shared\_LoginPartial.cshtml の内容を見ると、ユーザー名を表示するために  `User.Identity.Name` が使用されていることがわかります。前に説明したように、ASP.NET では、認証されたユーザーの名前クレームがこのプロパティに設定されます (SAML トークンで取得できる場合)。AD FS によって送信されるすべてのクレームを確認するには、Controllers\HomeController.cs の Index 操作メソッドにブレークポイントを設定します。ユーザーが認証された後、 `System.Security.Claims.Current.Claims` コレクションを調べます。
+名前クレームがない場合は、"**こんにちは、 さん。**" という表示になります。Views\Shared_LoginPartial.cshtml の内容を見ると、ユーザー名を表示するために  `User.Identity.Name` が使用されていることがわかります。前に説明したように、ASP.NET では、認証されたユーザーの名前クレームがこのプロパティに設定されます (SAML トークンで取得できる場合)。AD FS によって送信されるすべてのクレームを確認するには、Controllers\HomeController.cs の Index 操作メソッドにブレークポイントを設定します。ユーザーが認証された後、 `System.Security.Claims.Current.Claims` コレクションを調べます。
 
 ![](./media/web-sites-dotnet-lob-application-adfs/12-test-debugging-all-claims.png) 
 

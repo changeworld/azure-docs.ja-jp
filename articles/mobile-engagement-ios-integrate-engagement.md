@@ -67,7 +67,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 ### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -> `EngagementTableViewController` と同じルール)。
 
 **エンゲージメントを使用しない場合:**
 

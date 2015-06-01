@@ -53,7 +53,7 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** および **AZURE_STORAGE_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
@@ -70,7 +70,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## テーブルの作成方法
 
-**Azure::TableService** オブジェクトを使用すると、テーブルとエンティティを操作できます。テーブルを作成するには、**create\_table()** メソッドを使用します。次の例では、テーブルを作成し、既に存在している場合はエラーを出力します。
+**Azure::TableService** オブジェクトを使用すると、テーブルとエンティティを操作できます。テーブルを作成するには、**create_table()** メソッドを使用します。次の例では、テーブルを作成し、既に存在している場合はエラーを出力します。
 
 	azure_table_service = Azure::TableService.new
 	begin
@@ -91,22 +91,22 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **update\_entity():** 既存のエンティティを、置換することで更新します。
-* **merge\_entity():** 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。
-* **insert \_or\_merge\_entity ():** 置換することで、既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
-* **insert \_or\_replace\_entity ():** 既存のエンティティに新しいプロパティ値をマージすることで、既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **update_entity():** 既存のエンティティを、置換することで更新します。
+* **merge_entity():** 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。
+* **insert _or_merge_entity ():** 置換することで、既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert _or_replace_entity ():** 既存のエンティティに新しいプロパティ値をマージすることで、既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-次の例に、**update\_entity()** を使用してエンティティを更新する方法を示します。
+次の例に、**update_entity()** を使用してエンティティを更新する方法を示します。
 
 	entity = { "content" => "test entity with updated content", 
 	  :PartitionKey => "test-partition-key", :RowKey => "1" }
 	azure_table_service.update_entity("testtable", entity)
 
-**update\_entity()** と **merge\_entity()** では、更新されるエンティティが存在しないと更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insert\_or\_replace\_entity()** または **insert\_or\_merge\_entity()** を使用する必要があります。
+**update_entity()** と **merge_entity()** では、更新されるエンティティが存在しないと更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insert_or_replace_entity()** または **insert_or_merge_entity()** を使用する必要があります。
 
 ## 方法:エンティティのグループを操作する
 
-状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。このためには、まず **Batch** オブジェクトを作成し、次に **TableService** の **execute\_batch()** メソッドを使用します。次の例では、RowKey が 2 および 3 である 2 つのエンティティをバッチで送信する方法を示します。これは、同じ PartitionKey を持つエンティティでのみ機能することに注意してください。
+状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。このためには、まず **Batch** オブジェクトを作成し、次に **TableService** の **execute_batch()** メソッドを使用します。次の例では、RowKey が 2 および 3 である 2 つのエンティティをバッチで送信する方法を示します。これは、同じ PartitionKey を持つエンティティでのみ機能することに注意してください。
 
 	azure_table_service = Azure::TableService.new
 	batch = Azure::Storage::Table::Batch.new("testtable", 
@@ -118,14 +118,14 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## 方法:エンティティを照会する
 
-テーブル内のエンティティを照会するには、**get\_entity()** メソッドを使用して、テーブル名、**PartitionKey**、および **RowKey** を渡します。
+テーブル内のエンティティを照会するには、**get_entity()** メソッドを使用して、テーブル名、**PartitionKey**、および **RowKey** を渡します。
 
 	result = azure_table_service.get_entity("testtable", "test-partition-key", 
 	  "1")
 
 ## 方法:エンティティのセットを照会する
 
-テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query\_entities()** メソッドを使用します。次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
+テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query_entities()** メソッドを使用します。次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
 
 	query = { :filter => "PartitionKey eq 'test-partition-key'" }
 	result, token = azure_table_service.query_entities("testtable", query)
@@ -142,13 +142,13 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## 方法:エンティティを削除する
 
-エンティティを削除するには、**delete\_entity()** メソッドを使用します。目的のエンティティを含んでいるテーブルの名前と、エンティティの PartitionKey および RowKey を渡す必要があります。
+エンティティを削除するには、**delete_entity()** メソッドを使用します。目的のエンティティを含んでいるテーブルの名前と、エンティティの PartitionKey および RowKey を渡す必要があります。
 
 		azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
 ## 方法:テーブルを削除する
 
-テーブルを削除するには、**delete\_table()** を使用して、削除するテーブルの名前を渡します。
+テーブルを削除するには、**delete_table()** を使用して、削除するテーブルの名前を渡します。
 
 		azure_table_service.delete_table("testtable")
 

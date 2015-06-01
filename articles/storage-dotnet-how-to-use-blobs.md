@@ -24,7 +24,7 @@
 ## 概要
 
 このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法の
-デモンストレーションを行います。例は C\# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、
+デモンストレーションを行います。例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、
 BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
 
 > [AZURE.NOTE] このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンは、ストレージ クライアント ライブラリ 4.x です。これは [NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/) から、または [Azure SDK for .NET](/downloads/) の一部として提供されています。ストレージ クライアント ライブラリの取得の詳細については、[プログラムで BLOB ストレージにアクセスする](#programmatically-access-blob-storage) を参照してください。
@@ -40,10 +40,10 @@ BLOB の**アップロード**、**一覧表示**、**ダウンロード**、お
 ### アセンブリの取得
 NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得することをお勧めします。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして、Azure Storage パッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://azure.microsoft.com/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは  `%Program Files%\Microsoft SDKs\Azure\.NET SDK\<sdk-version>\ref\` ディレクトリにインストールされます。
+`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://azure.microsoft.com/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは  `%Program Files%\Microsoft SDKs\Azure.NET SDK<sdk-version>\ref` ディレクトリにインストールされます。
 
 ### 名前空間宣言
-プログラムを使用して Azure ストレージにアクセスするすべての C\# ファイルの冒頭部分に、次の名前空間宣言を追加します。
+プログラムを使用して Azure ストレージにアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言を追加します。
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;

@@ -33,9 +33,9 @@
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
-- [Java Development Kit \(JDK\) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
+- [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
-- [Java ランタイム環境 \(Tomcat、Jetty など\) が有効な Azure Web サイト](web-sites-java-get-started.md)。
+- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](web-sites-java-get-started.md)。
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
@@ -43,26 +43,26 @@
 DocumentDB データベース アカウントを Azure でプロビジョニングするには:
 
 1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
-2. 次の図に示す **\[キー\]** ブレードからエンドポイントの **\[URI\]** 値と **\[プライマリ キー\]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
+2. 次の図に示す **[キー]** ブレードからエンドポイントの **[URI]** 値と **[プライマリ キー]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
 
-![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、\[DocumentDB アカウント\] ブレードで \[キー\] ボタンが強調表示され、\[キー\] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている][1]
+![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている][1]
 
 
 ## <a id="CreateJSP"></a>手順 2: JSP アプリケーションを作成する ##
 
 JSP アプリケーションを作成するには:
 
-1. 最初に、Java プロジェクトを作成します。Eclipse を起動し、**\[File\]**、**\[New\]**、**\[Dynamic Web Project\]** の順にクリックします。使用可能なプロジェクトとして **\[Dynamic Web Project\]** が表示されない場合は、**\[File\]**、**\[New\]**、**\[Project\]**、の順にクリックし、**\[Web\]** を展開します。さらに、**\[Dynamic Web Project\]** をクリックし、**\[Next\]** をクリックします。 
+1. 最初に、Java プロジェクトを作成します。Eclipse を起動し、**[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします。使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]**、の順にクリックし、**[Web]** を展開します。さらに、**[Dynamic Web Project]** をクリックし、**[Next]** をクリックします。 
 
 	![](./media/documentdb-java-application/image10.png)
 
-2. **\[Project name\]** ボックスに、プロジェクト名を入力します。必要に応じて、**\[Target Runtime\]** ボックスの一覧で値 \(たとえば、Apache Tomcat v7.0\) を選択し、**\[Finish\]** をクリックします。ターゲット ランタイムを選択すると、Eclipse でプロジェクトをローカルに実行できます。
-3. Eclipse の Project Explorer ビューで、プロジェクトを展開します。**WebContent** を右クリックし、**\[New\]**、**\[JSP File\]** の順にクリックします。
-4. **\[New JSP File\]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。次の図に示すように、親フォルダーは **WebContent** のままにしておきます。**\[Next\]** をクリックします。
+2. **[Project name]** ボックスに、プロジェクト名を入力します。必要に応じて、**[Target Runtime]** ボックスの一覧で値 (たとえば、Apache Tomcat v7.0) を選択し、**[Finish]** をクリックします。ターゲット ランタイムを選択すると、Eclipse でプロジェクトをローカルに実行できます。
+3. Eclipse の Project Explorer ビューで、プロジェクトを展開します。**WebContent** を右クリックし、**[New]**、**[JSP File]** の順にクリックします。
+4. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。次の図に示すように、親フォルダーは **WebContent** のままにしておきます。**[Next]** をクリックします。
 
 	![](./media/documentdb-java-application/image11.png)
 
-5. **\[Select JSP Template\]** ダイアログ ボックスで、このチュートリアルのために **\[New JSP File \(html\)\]** を選択し、**\[Finish\]** をクリックします。
+5. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
 
 6. index.jsp ファイルが Eclipse で開いたら、**Hello World!** を表示するためのテキストを既存の <body> 要素に追加します。更新した <body> の内容は次のようになります。
     
@@ -71,7 +71,7 @@ JSP アプリケーションを作成するには:
 	    </body>
 
 8. index.jsp ファイルを保存します。
-9. 手順 2. でターゲットのランタイムを設定している場合、**\[Project\]** をクリックし、次に **\[Run\]** をクリックして、JSP アプリケーションをローカルで実行できます。
+9. 手順 2. でターゲットのランタイムを設定している場合、**[Project]** をクリックし、次に **[Run]** をクリックして、JSP アプリケーションをローカルで実行できます。
 
 	![](./media/documentdb-java-application/image12.png)
 
@@ -81,14 +81,14 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 そのためには、次の手順に従ってプロジェクトを maven プロジェクトに変換する必要があります。
 
-1. Project Explorer でプロジェクトを右クリックして、**\[Configure\]**、**\[Convert to Maven Project\]** の順にクリックします。
-2. **\[Create new POM\]** ウィンドウで、既定値を受け入れ、**\[Finish\]** をクリックします。
+1. Project Explorer でプロジェクトを右クリックして、**[Configure]**、**[Convert to Maven Project]** の順にクリックします。
+2. **[Create new POM]** ウィンドウで、既定値を受け入れ、**[Finish]** をクリックします。
 3. **Project Explorer** で、pom.xml ファイルを開きます。 
-4. **\[Dependencies\]** タブの **\[Dependencies\]** ウィンドウで、**\[Add\]** をクリックします。
-4. **\[Select Dependency\]** ウィンドウで、次の操作を行います。
- - **\[GroupId\]** ボックスに、「com.microsoft.azure」と入力します。
- - **\[Artifact Id\]** ボックスに、「azure-documentdb」と入力します。
- - **\[Version\]** ボックスに、「1.0.0」と入力します。
+4. **[Dependencies]** タブの **[Dependencies]** ウィンドウで、**[Add]** をクリックします。
+4. **[Select Dependency]** ウィンドウで、次の操作を行います。
+ - **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
+ - **[Artifact Id]** ボックスに、「azure-documentdb」と入力します。
+ - **[Version]** ボックスに、「1.0.0」と入力します。
 
 	![](./media/documentdb-java-application/image13.png)
 
@@ -100,7 +100,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		    <version>1.0.0</version>
 	    </dependency>
 
-5. **\[Ok\]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
+5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
 6. pom.xml ファイルを保存します。
 
 ## <a id="UseService"></a>手順 4: Java アプリケーションで DocumentDB サービスを使用する ##
@@ -118,7 +118,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 	このプロジェクトでは、[Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
 
-2. DocumentDB サービスを呼び出すには、新しい **DocumentClient** をインスタンス化する必要があります。一般に、後続の要求ごとに新しいクライアントを構築するのではなく、**DocumentClient** を再利用することをお勧めします。**DocumentClientFactory** の中にラップすることによって、クライアントを再利用できます。ここでも、[手順 1.](#CreateDB) でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります。[YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
+2. DocumentDB サービスを呼び出すには、新しい **DocumentClient** をインスタンス化する必要があります。一般に、後続の要求ごとに新しいクライアントを構築するのではなく、**DocumentClient** を再利用することをお勧めします。**DocumentClientFactory** の中にラップすることによって、クライアントを再利用できます。ここでも、[手順 1.](#CreateDB) でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります。[YOUR_ENDPOINT_HERE] を URI 値で置き換え、[YOUR_KEY_HERE] をプライマリ キー値で置き換えます。
 
 	    private static final String HOST = "[YOUR_ENDPOINT_HERE]";
 	    private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -134,9 +134,9 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	        return documentClient;
 	    }
 
-3. ここで、持続的な ToDo アイテムを DocumentDB に抽出するためのデータ アクセス オブジェクト \(DAO\) を作成します。
+3. ここで、持続的な ToDo アイテムを DocumentDB に抽出するためのデータ アクセス オブジェクト (DAO) を作成します。
 
-	ToDo 項目をコレクションに保存するために、クライアントはどのデータベースとコレクションが永続化するかを知っている必要があります \(自己リンクによって参照されます\)。一般に、データベースへの追加のラウンドト リップを回避するために、可能な場合は、データベースとコレクションをキャッシュすることをお勧めします。
+	ToDo 項目をコレクションに保存するために、クライアントはどのデータベースとコレクションが永続化するかを知っている必要があります (自己リンクによって参照されます)。一般に、データベースへの追加のラウンドト リップを回避するために、可能な場合は、データベースとコレクションをキャッシュすることをお勧めします。
 
 	次のコードは、データベースとコレクションが存在する場合に取得する方法、または存在しない場合に新規作成する方法を示します。
 
@@ -230,7 +230,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		    }
 		}
 
-4. 次の手順では、いくつかのコードを記述して、コレクションに TodoItems を持続的にアクセスさせます。この例では、[Gson](https://code.google.com/p/google-gson/) を使用して、TodoItem Plain Old Java Objects \(POJO\) を JSON ドキュメントにシリアル化およびシリアル化解除します。[Jackson](http://jackson.codehaus.org/) または独自のカスタム シリアライザーも POJO をシリアル化するための優れた代替手段です。
+4. 次の手順では、いくつかのコードを記述して、コレクションに TodoItems を持続的にアクセスさせます。この例では、[Gson](https://code.google.com/p/google-gson/) を使用して、TodoItem Plain Old Java Objects (POJO) を JSON ドキュメントにシリアル化およびシリアル化解除します。[Jackson](http://jackson.codehaus.org/) または独自のカスタム シリアライザーも POJO をシリアル化するための優れた代替手段です。
 
 	    // We'll use Gson for POJO <=> JSON serialization for this example.
 	    private static Gson gson = new Gson();
@@ -259,7 +259,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 
 
-5. DocumentDB データベースおよびコレクションのように、ドキュメントも自己リンクにより参照されます。次のヘルパー関数は、自己リンクではなく別の属性 \("id" など\) によりドキュメントを取得します。
+5. DocumentDB データベースおよびコレクションのように、ドキュメントも自己リンクにより参照されます。次のヘルパー関数は、自己リンクではなく別の属性 ("id" など) によりドキュメントを取得します。
 
 	    private Document getDocumentById(String id) {
 	        // Retrieve the document using the DocumentClient.
@@ -730,24 +730,24 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		  todoApp.install();
 		});
 
-5. これで完成です。 後はアプリケーションをテストするだけです。アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、**\[Add Task\]** をクリックして、いくつかの Todo 項目を追加します。
+5. これで完成です。 後はアプリケーションをテストするだけです。アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、**[Add Task]** をクリックして、いくつかの Todo 項目を追加します。
 
-6. 項目が表示されたら、チェック ボックスを切り替え、**\[Update Tasks\]** をクリックすることで、その項目が完了しているかどうかを確認できます。
+6. 項目が表示されたら、チェック ボックスを切り替え、**[Update Tasks]** をクリックすることで、その項目が完了しているかどうかを確認できます。
 
 ## <a id="Deploy"></a>手順 6: Azure Websites にアプリケーションをデプロイする ##
 
-Azure Web サイトでの Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 \(例: GIT\) または FTP のいずれかを使用してアップロードするだけです。
+Azure Web サイトでの Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: GIT) または FTP のいずれかを使用してアップロードするだけです。
 
-1. アプリケーションを WAR としてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**\[Export\]**、**\[WAR File\]** の順にクリックします。 
-2. **\[WAR Export\]** ウィンドウで、次の操作を行います。
- - \[Web project\] ボックスに、「azure-documentdb-java-sample」と入力します。
- - \[Destination\] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
- - **\[完了\]** をクリックします。
+1. アプリケーションを WAR としてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]**、**[WAR File]** の順にクリックします。 
+2. **[WAR Export]** ウィンドウで、次の操作を行います。
+ - [Web project] ボックスに、「azure-documentdb-java-sample」と入力します。
+ - [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
+ - **[完了]** をクリックします。
 
 3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](web-sites-java-add-app.md)」を参照してください。
 
 	WAR ファイルを webapps フォルダーにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
-4. 完成したアプリケーションの動作を確認するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
+4. 完成したアプリケーションの動作を確認するには、http://YOUR_SITE_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
 
 ## <a id="GetProject"></a>GitHub からのプロジェクトの入手##
 
@@ -755,24 +755,24 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 
 1. [Project Lombok](http://projectlombok.org/) をインストールします。Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。 
 2. Eclipse が開いている場合は、いったん終了してから再起動して Lombok を読み込みます。
-3. Eclipse で、**\[File\]** メニューの **\[Import\]** をクリックします。
-4. **\[Import\]** ウィンドウで、**\[Git\]**、**\[Projects from Git\]**、**\[Next\]** の順にクリックします。 
-5. **\[Select Repository Source\]** 画面で、**\[Clone URI\]** をクリックします。
-6. **\[Source Git Repository\]** 画面の **\[URI\]** ボックスに「https://github.com/Azure/azure-documentdb-java.git」と入力し、**\[Next\]** をクリックします。
-7. **\[Branch Selection\]** 画面で、**\[master\]** が選択されていることを確認し、**\[Next\]** をクリックします。
-8. **\[Local Destination\]** 画面で、**\[Browse\]** をクリックしてリポジトリをコピーするフォルダーを選択し、**\[Next\]** をクリックします。
-9. **\[Select a wizard to use for importing projects\]** 画面で、**\[Import existing projects\]** が選択されていることを確認し、**\[Next\]** をクリックします。
-10. **\[Import Projects\]** 画面で、**DocumentDB** プロジェクトを選択解除し、**\[Finish\]** をクリックします。DocumentDB プロジェクトには、依存関係として追加される DocumentDB Java SDK が含まれています。
-11. **Project Explorer** で、azure-documentdb-java-sample\\src\\com.microsoft.azure.documentdb.sample.dao\\DocumentClientFactory.java を表示し、\[HOST\] 値と \[MASTER\_KEY\] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
-12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**\[Build Path\]**、**\[Configure Build Path\]** の順にクリックします。
-13. **\[Java Build Path\]** 画面の右ウィンドウで **\[Libraries\]** タブを選択し、**\[Add External JARs\]** をクリックします。lombok.jar ファイルの場所を参照し、**\[Open\]**、**\[OK\]** の順にクリックします。
-14. 手順 12. の手順を使用してもう一度 **\[Properties\]** ウィンドウを開き、左ウィンドウの **\[Targeted Runtimes\]** をクリックします。
-15. **\[Targeted Runtimes\]** 画面で、**\[New\]** をクリックします。**\[Apache Tomcat v7.0\]** を選択し、**\[OK\]** をクリックします。
-16. 手順 12. の手順を使用してもう一度 **\[Properties\]** ウィンドウを開き、左ウィンドウの **\[Project Facets\]** をクリックします。
-17. **\[Project Facets\]** 画面で、**\[Dynamic Web Module\]** と **\[Java\]** を選択し、**\[OK\]** をクリックします。
-18. 画面の下部の **\[Servers\]** タブで、**\[Tomcat v7.0 Server at localhost\]** を右クリックし、**\[Add and Remove\]** をクリックします。
-19. **\[Add and Remove\]** ウィンドウで、**\[azure-documentdb-java-sample\]** を **\[Configured\]** ボックスに移動し、**\[Finish\]** をクリックします。 
-20. **\[Server\]** タブで、**\[Tomcat v7.0 Server at localhost\]** を右クリックし、**\[Restart\]** をクリックします。
+3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
+4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。 
+5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
+6. **[Source Git Repository]** 画面の **[URI]** ボックスに「https://github.com/Azure/azure-documentdb-java.git」と入力し、**[Next]** をクリックします。
+7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
+8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
+9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
+10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。DocumentDB プロジェクトには、依存関係として追加される DocumentDB Java SDK が含まれています。
+11. **Project Explorer** で、azure-documentdb-java-sample\\src\\com.microsoft.azure.documentdb.sample.dao\\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
+12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
+13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
+14. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Targeted Runtimes]** をクリックします。
+15. **[Targeted Runtimes]** 画面で、**[New]** をクリックします。**[Apache Tomcat v7.0]** を選択し、**[OK]** をクリックします。
+16. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Project Facets]** をクリックします。
+17. **[Project Facets]** 画面で、**[Dynamic Web Module]** と **[Java]** を選択し、**[OK]** をクリックします。
+18. 画面の下部の **[Servers]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Add and Remove]** をクリックします。
+19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。 
+20. **[Server]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Restart]** をクリックします。
 21. ブラウザーで、http://localhost:8080/azure-documentdb-java-sample/ に移動してタスク一覧への追加を開始します。既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
 22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Websites にアプリケーションをデプロイする](#Deploy)」を参照してください。 
 

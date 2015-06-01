@@ -284,7 +284,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 #### テーブルを作成するには
 
-1.	Azure PowerShell で、サンプルを展開した場所から **Tables** フォルダー (**C:\ADFWalkthrough\Tables\**) に移動します。 
+1.	Azure PowerShell で、サンプルを展開した場所から **Tables** フォルダー (**C:\ADFWalkthrough\Tables**) に移動します。 
 2.	**New-AzureDataFactoryTable** コマンドレットを使用して、以下のように **RawGameEventsTable**.json のテーブルを作成します。	
 
 

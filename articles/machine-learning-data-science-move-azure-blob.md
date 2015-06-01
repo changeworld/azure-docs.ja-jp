@@ -106,10 +106,10 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 
 データを BLOB にアップロードするには、次のメソッドを使用します。
  
-1. put\_block\_blob\_from\_path (指定されたパスからファイルの内容をアップロードします)
-2. put\_block_blob\_from\_file (既に開かれているファイル/ストリームから内容をアップロードします)
-3. put\_block\_blob\_from\_bytes (バイトの配列をアップロードします)
-4. put\_block\_blob\_from\_text (指定されたエンコーディングを使用して、指定されたテキスト値をアップロードします)
+1. put_block_blob_from_path (指定されたパスからファイルの内容をアップロードします)
+2. put_block_blob_from_file (既に開かれているファイル/ストリームから内容をアップロードします)
+3. put_block_blob_from_bytes (バイトの配列をアップロードします)
+4. put_block_blob_from_text (指定されたエンコーディングを使用して、指定されたテキスト値をアップロードします)
  
 次のサンプル コードではコンテナーにローカル ファイルをアップロードします。
 	
@@ -143,10 +143,10 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 ###BLOB からのデータのダウンロード
 
 BLOB からデータをダウンロードするには、次のメソッドを使用します。
-1. get\_blob\_to\_path
-2. get\_blob\_to\_file
-3. get\_blob\_to\_bytes
-4. get\_blob\_to\_text 
+1. get_blob_to_path
+2. get_blob_to_file
+3. get_blob_to_bytes
+4. get_blob_to_text 
 
 これらのメソッドは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行します。 
 
@@ -154,7 +154,7 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 
 	blob_service.get_blob_to_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
-次のサンプル コードでは、コンテナーからすべての BLOB をダウンロードします。list\_blobs を使用して、コンテナーで使用可能な BLOB の一覧を取得し、それらをローカル ディレクトリにダウンロードします。 
+次のサンプル コードでは、コンテナーからすべての BLOB をダウンロードします。list_blobs を使用して、コンテナーで使用可能な BLOB の一覧を取得し、それらをローカル ディレクトリにダウンロードします。 
 
 	from azure.storage import BlobService
 	from os.path import join

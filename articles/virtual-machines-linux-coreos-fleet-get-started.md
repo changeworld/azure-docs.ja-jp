@@ -31,7 +31,7 @@
 
 これは、1 つの Docker コンテナーで実行されている単純な「Hello World」アプリケーションです。ここでは [BusyBox Docker Hub イメージ] が使用されています。
 
-Linux クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** ユニット ファイルを作成し、`helloworld.service` という名前を付けます \(詳細については、[ユニット ファイル]を参照してください\)。
+Linux クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** ユニット ファイルを作成し、`helloworld.service` という名前を付けます (詳細については、[ユニット ファイル]を参照してください)。
 
 ```
 [Unit]
@@ -60,7 +60,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 start helloworld.service
 Unit helloworld.service launched on 62f0f66e.../100.79.86.62
 ```
 
->[AZURE.NOTE]リモート **fleetctl** コマンドを **--tunnel** パラメーターなしで実行するには、要求がトンネリングされるように FLEETCTL\_TUNNEL 環境変数を設定します。たとえば、「`export FLEETCTL_TUNNEL=coreos-cluster.cloudapp.net:22`」のように入力します
+>[AZURE.NOTE]リモート **fleetctl** コマンドを **--tunnel** パラメーターなしで実行するには、要求がトンネリングされるように FLEETCTL_TUNNEL 環境変数を設定します。たとえば、「`export FLEETCTL_TUNNEL=coreos-cluster.cloudapp.net:22`」のように入力します
 
 
 コンテナーに接続すると、サービスの出力を参照できます。
@@ -92,7 +92,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload helloworld.service
 
 CoreOS、Docker、および** fleet **を使用する利点の 1 つは、可用性の高い方法だとサービス実行が簡単になるということです。この例では、3 つの同じコンテナーで構成される、Apache Web サーバーを実行するサービスをデプロイします。これらのコンテナーは、クラスター内にある 3 つの VM 上で実行されます。この例は、 「[fleet を使用してコンテナーを起動する]」で説明した例に似ており、 [CoreOS Apache Docker Hub イメージ]が使用されています。
 
->[AZURE.NOTE]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります \(パブリック ポート 80、プライベート ポート 80\) 。これは、CoreOS  クラスターの作成後に、Azure 管理ポータルまたは **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
+>[AZURE.NOTE]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS  クラスターの作成後に、Azure 管理ポータルまたは **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
 
 クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** テンプレート ユニット ファイルを作成し、apache@.service という名前を付けます。このテンプレートを使用して、apache@1.service 、apache@2.service、および apache@3.service という名前の 3 つの独立したインスタンスを起動します。
 
@@ -133,10 +133,10 @@ unit apache@2.service launched on df85f2d1.../100.78.126.15
 次のような既定テキストが、Apache サーバーから返されます。
 
 ```
-\<htm\l>\<body\>\<h1\>It works!\</h1\>
-\<p\>This is the default web page for this server.\</p\>
-\<p\>The web server software is running but no content has been added, yet.\</p\>
-\</body\>\</html\>
+<htm\l><body><h1>It works!</h1>
+<p>This is the default web page for this server.</p>
+<p>The web server software is running but no content has been added, yet.</p>
+</body></html>
 ```
 
 Apache サービスが続行することを確認するために、クラスター内の 1 つまたは複数の仮想マシンをシャット ダウンすることもできます。

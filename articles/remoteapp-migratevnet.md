@@ -20,14 +20,14 @@
 
 # RemoteApp VNET から Azure VNET にハイブリッド コレクションを移行する方法
 
-うれしいことに、 RemoteApp 固有の Vnet を作成せずに、ハイブリッド RemoteApp コレクションを直接既存の Azure 仮想ネットワーク \(Vnet\) にデプロイすることが可能になりました。これにより、VNET の最新機能 \(ExpressRoute など\) を活用し、VNET にデプロイされている他の Azure サービスおよび仮想マシンにハイブリッド コレクションが直接ネットワーク アクセスできます。\(パフォーマンスが向上し、VNET-to-VNET 構成よりもセットアップが容易になります。\)
+うれしいことに、 RemoteApp 固有の Vnet を作成せずに、ハイブリッド RemoteApp コレクションを直接既存の Azure 仮想ネットワーク (Vnet) にデプロイすることが可能になりました。これにより、VNET の最新機能 (ExpressRoute など) を活用し、VNET にデプロイされている他の Azure サービスおよび仮想マシンにハイブリッド コレクションが直接ネットワーク アクセスできます。(パフォーマンスが向上し、VNET-to-VNET 構成よりもセットアップが容易になります。)
 
 
 *RemoteAppVNET* という名前の RemoteApp VNET を持つ *OriginalCollection* という名前のハイブリッド RemoteApp コレクションを既に作成してあるとしましょう。このコレクションを *AzureVNET* という名前の新しい Azure VNET に移行するには、次の手順を実行します。
 
-1.	[\[管理ポータル\]](http://manage.windowsazure.com/) の **\[Networks\]** タブで、*RemoteAppVNET* に使用しているのと同じ場所、DNS 構成、およびアドレス空間を使用して \(*AzureVNET* サブネット用に少なくとも 1 つ\)、*AzureVNET* という名前の VNET を作成します。
+1.	[[管理ポータル]](http://manage.windowsazure.com/) の **[Networks]** タブで、*RemoteAppVNET* に使用しているのと同じ場所、DNS 構成、およびアドレス空間を使用して (*AzureVNET* サブネット用に少なくとも 1 つ)、*AzureVNET* という名前の VNET を作成します。
 2.	*AzureVNET* を構成し、*OriginalCollection* の参加先ドメインになっている Active Directory デプロイメントをホストするか、これにネットワーク接続するようにします。
-3.	**\[Remoteapp\]** タブで、*New Collection* という名前の RemoteApp コレクションを新規に作成します。\(**\[VPN で作成\]** オプションを使用し、**\[簡易作成\]** オプションは使用しないでください。\)
+3.	**[Remoteapp]** タブで、*New Collection* という名前の RemoteApp コレクションを新規に作成します。(**[VPN で作成]** オプションを使用し、**[簡易作成]** オプションは使用しないでください。)
 3.	*NewCollection* が *AzureVNET* のサブネットにデプロイされるように構成します。
 4.	*NewCollection* が *OriginalCollection* に使用したのと同じイメージとドメイン参加情報を使用するように構成します。
 5.	数時間後にはアクティブな状態の *NewCollection* がコレクション リストに表示されます。

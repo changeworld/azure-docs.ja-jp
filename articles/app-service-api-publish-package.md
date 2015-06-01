@@ -30,7 +30,7 @@
 一般的な発行フローを次に示します。
 
 1. チュートリアル「[API アプリ パッケージの作成](app-service-api-create-package)」の手順に従って、API アプリの Nuget パッケージを作成します。
-2. API アプリ パッケージを Nuget 対応ギャラリー \(https://apiapps.nuget.org\) に発行します。
+2. API アプリ パッケージを Nuget 対応ギャラリー (https://apiapps.nuget.org) に発行します。
 3. API アプリ パッケージが自動的に [Azure Marketplace](http://azure.microsoft.com/marketplace/api-apps/) に同期されます。
 4. [Azure Marketplace](http://azure.microsoft.com/marketplace/api-apps/) と [Azure プレビュー ポータル](https://portal.azure.com)に移動し、エンド ツー エンドのエクスペリエンスを確認します。
 
@@ -40,14 +40,14 @@
 
     ![Nuget 対応ギャラリーのホーム ページ](./media/app-service-api-publish-package/nuget-homepage.png)
 
-2. **\[Sign in\]** をクリックし、Azure アカウントを使用してログインします。
-3. **\[API Apps\]** タブ、**\[Upload API App\]** の順にクリックし、API アプリ パッケージをアップロードします。
+2. **[Sign in]** をクリックし、Azure アカウントを使用してログインします。
+3. **[API Apps]** タブ、**[Upload API App]** の順にクリックし、API アプリ パッケージをアップロードします。
 
-    ![Nuget 対応ギャラリーの \[Upload Package\] ページ](./media/app-service-api-publish-package/nuget-upload-package-page.png)
+    ![Nuget 対応ギャラリーの [Upload Package] ページ](./media/app-service-api-publish-package/nuget-upload-package-page.png)
 
-4.  **\[Namespace\]** ボックスの一覧に、使用している Azure アカウントの Azure Active Directory テナントの確認済みドメインがすべて表示されます。API アプリ パッケージの apiapp.json ファイルの名前空間プロパティに一致する名前空間を選択します。発行者が API アプリ パッケージの有効な名前空間を要求できるようにするために、この値が検証されます。
-5. **\[Unlist this API app\]** チェック ボックスがオフになっていることを確認します。
-6. **\[発行\]** をクリックします。
+4.  **[Namespace]** ボックスの一覧に、使用している Azure アカウントの Azure Active Directory テナントの確認済みドメインがすべて表示されます。API アプリ パッケージの apiapp.json ファイルの名前空間プロパティに一致する名前空間を選択します。発行者が API アプリ パッケージの有効な名前空間を要求できるようにするために、この値が検証されます。
+5. **[Unlist this API app]** チェック ボックスがオフになっていることを確認します。
+6. **[発行]** をクリックします。
 7. 検証エラーが発生した場合は、エラーを修正してからもう一度アップロードします。
 
 ## Azure Marketplace で API アプリ パッケージを表示する
@@ -58,7 +58,7 @@
 
 ## Azure プレビュー ポータルで API アプリ パッケージをデプロイする
 
-Azure アカウントを使用して [Azure プレビュー ポータル](https://portal.azure.com)にログインすることもできます \(API アプリ パッケージの発行に使用したアカウントとは異なるアカウントを使用できます\)。ここでは、Azure プレビュー ポータルでの API アプリ パッケージの作成エクスペリエンスを確認できます。変更が必要な場合は、API アプリ パッケージに変更を加えた後、API アプリ パッケージを再び発行します。
+Azure アカウントを使用して [Azure プレビュー ポータル](https://portal.azure.com)にログインすることもできます (API アプリ パッケージの発行に使用したアカウントとは異なるアカウントを使用できます)。ここでは、Azure プレビュー ポータルでの API アプリ パッケージの作成エクスペリエンスを確認できます。変更が必要な場合は、API アプリ パッケージに変更を加えた後、API アプリ パッケージを再び発行します。
 
 Azure ポータルで API アプリ パッケージをデプロイする方法の詳細については、[このページ](app-service-api-connnect-your-app-to-saas-connector.md)の DropboxConnector をデプロイする例を参照してください。
 

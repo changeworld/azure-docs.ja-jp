@@ -116,7 +116,7 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 1. **[名前]** に**「MvcACS」**と入力して、**[OK]** をクリックします。
 1. 次のダイアログで、**[インターネット アプリケーション]** を選択して **[OK]** をクリックします。
-1.  *Views\Shared\_LoginPartial.cshtml* ファイルを編集して、内容を次のコードに置き換えます。
+1.  *Views\Shared_LoginPartial.cshtml* ファイルを編集して、内容を次のコードに置き換えます。
 
         @if (Request.IsAuthenticated)
         {

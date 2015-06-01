@@ -18,13 +18,13 @@
 
 # さまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法
  
-新しいキャンペーンの \[Contents \(コンテンツ\)\] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル \(Windows Phone のみ\) のコンテンツを修正できます。プッシュ キャンペーンの \[Contents \(コンテンツ\)\] 設定は、キャンペーンの種類に固有です。
+新しいキャンペーンの [Contents (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを修正できます。プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。
  
 ### コンテンツの種類：
 - アナウンス
 - アンケート
 - データ プッシュ
-- タイル \(Windows Phone のみ\)
+- タイル (Windows Phone のみ)
  
 ## アナウンスのコンテンツ
  ![リーチ - コンテンツ 1][30]
@@ -38,64 +38,64 @@
 - [リーチ - 方法 - アナウンス][Link 3] 
 
 ### Web ビューのアナウンスについて:
-ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。この方法では、Azure モバイル エンゲージメント デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。全画面表示の Web ビューを作成する場合は \(既定の \[Action \(アクション\)\] と \[Exit \(終了\) ボタンなし\)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます:
+ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。この方法では、Azure モバイル エンゲージメント デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。全画面表示の Web ビューを作成する場合は (既定の [Action (アクション)] と [Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます:
 
--    アナウンスの操作を実行する: ReachContent.actionContent\(\)
--    アナウンスを終了する: ReachContent.actionContent\(\)
+-    アナウンスの操作を実行する: ReachContent.actionContent()
+-    アナウンスを終了する: ReachContent.actionContent()
  
 ### アクションを選択する:
 
 ### アクションの URL について:
-対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。アプリケーションがサポートする専用の URL \(ユーザーを特定の画面にジャンプさせるなど\) をアクション URL として使用することも可能です。発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。これを使用して、Azure モバイル エンゲージメントのデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
+対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。アプリケーションがサポートする専用の URL (ユーザーを特定の画面にジャンプさせるなど) をアクション URL として使用することも可能です。発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。これを使用して、Azure モバイル エンゲージメントのデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
 
 - **Android + iOS のアクション**
     - Web ページを開く
-    - http://\[web-site-domain\\] 
+    - http://[web-site-domain] 
     - 例:http://www.azure.com
     - メールを送信する
-    - mailto:\[メール宛先\]?subject=\[件名\]&body=\[メッセージ\] 
+    - mailto:[メール宛先]?subject=[件名]&body=[メッセージ] 
     - 例:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
     - SMS を送信する
-    - sms: \[電話番号\] 
+    - sms: [電話番号] 
     - 例: sms:2125551212
     - 電話をかける
-    - tel: \[電話番号\] 
+    - tel: [電話番号] 
     - 例: tel:2125551212
 - **Android のみのアクション**
     - Play Store でアプリケーションをダウンロードする
-    - market://details?id=\[appパッケージ\] 
+    - market://details?id=[appパッケージ] 
     - 例:market://details?id=com.microsoft.office.word
     - 地理的にローカライズされた検索を開始する
-    - geo:0、0? q = \[検索クエリ\] 
+    - geo:0、0? q = [検索クエリ] 
     - 例: geo:0,0?q=starbucks,paris
 - **iOS のみのアクション**
     - App Store でアプリケーションをダウンロードする
-    - http://itunes.apple.com/[country]/app/[app name\]/id[app id]?mt=8 
+    - http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
     - 例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
     - Windows のアクション
     - Web ページを開く
-    - http://\[web-site-domain\\] 
+    - http://[web-site-domain] 
     - 例:http://www.azure.com
     - メールを送信する
-    - mailto:\[メール宛先\]?subject=\[件名\]&body=\[メッセージ\] 
+    - mailto:[メール宛先]?subject=[件名]&body=[メッセージ] 
     - 例:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
-    - SMS を送信する \(Skype Store アプリが必要\)
-    - sms: \[電話番号\] 
+    - SMS を送信する (Skype Store アプリが必要)
+    - sms: [電話番号] 
     - 例: sms:2125551212
-    - 電話をかける \(Skype Store アプリが必要\)
-    - tel: \[電話番号\] 
+    - 電話をかける (Skype Store アプリが必要)
+    - tel: [電話番号] 
     - 例: tel:2125551212
     - Play Store でアプリケーションをダウンロードする
     - ms-windows-store:PDP?PFN=app package ID 
     - 例: ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
     - Bingmaps 検索を開始する
-    - bingmaps:? q = search query\] 
+    - bingmaps:? q = search query] 
     - 例: bingmaps:?q=starbucks,paris
     - カスタムのスキームを使用する
-    - \[custom scheme\]://\[custom scheme params\] 
+    - [custom scheme]://[custom scheme params] 
     - 例:myCustomProtocol://myCustomParams
-    - パッケージ データを使用する \(拡張機能読み取りのための Store App が必要\)
-    - \[folder\]\[data\].\[extension\] 
+    - パッケージ データを使用する (拡張機能読み取りのための Store App が必要)
+    - [folder][data].[extension] 
     - 例: myfolderdata.txt
  
 ### 追跡用 URL を構築する:
@@ -122,18 +122,18 @@
 - Base64 データ
 
 ### データのコンテンツを定義します
-- テキスト データのプッシュを選択した場合は、\[Contents \(コンテンツ\)\] ボックスにテキストをコピーして貼り付けます。
-- バイナリ データや base64 データのプッシュを選択した場合は、\[upload your file \(ファイルをアップロード\)\] ボタンを使用してファイルをアップロードします。
+- テキスト データのプッシュを選択した場合は、[Contents (コンテンツ)] ボックスにテキストをコピーして貼り付けます。
+- バイナリ データや base64 データのプッシュを選択した場合は、[upload your file (ファイルをアップロード)] ボタンを使用してファイルをアップロードします。
 - このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。
 
 ### 関連項目
 - [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
 
-## タイルのコンテンツ \(Windows Phone のみ\)
+## タイルのコンテンツ (Windows Phone のみ)
 ![リーチ - コンテンツ 4][33]
 
 ### タイルのコンテンツを定義します
-タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。タイルのプッシュは、Windows Phone のネイティブ プッシュの Microsoft Push Notification Service \(MPNS\) バージョンです。タイル プッシュの種類は唯一、応答のない種類であるため、タイル プッシュ キャンペーンの結果に基づいて今後のキャンペーンの対象ユーザーは設定できません。
+タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。タイルのプッシュは、Windows Phone のネイティブ プッシュの Microsoft Push Notification Service (MPNS) バージョンです。タイル プッシュの種類は唯一、応答のない種類であるため、タイル プッシュ キャンペーンの結果に基づいて今後のキャンペーンの対象ユーザーは設定できません。
 
 ### 関連項目
 - [API ドキュメント - Reach API - ネイティブ プッシュ][Link 4]

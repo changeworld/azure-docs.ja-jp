@@ -18,7 +18,7 @@
 
 # Azure リソース マネージャー テンプレートを使用した可用性セットの作成
 
-仮想マシンの可用性セットは、Azure PowerShell \(または xplat-cli\) とリソース マネージャー テンプレートを使用して簡単に作成できます。このテンプレートによって可用性セットが作成されます。
+仮想マシンの可用性セットは、Azure PowerShell (または xplat-cli) とリソース マネージャー テンプレートを使用して簡単に作成できます。このテンプレートによって可用性セットが作成されます。
  
 実際の作業を開始する前に、Azure PowerShell と xplat-cli が構成され、準備が整っていることを確認してください。
 
@@ -33,17 +33,17 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 
 ### 手順 1. JSON ファイルをダウンローする
 
-JSON テンプレート ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します \(例: C:\\Azure\\Templates\[thing\]\)。
+JSON テンプレート ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates[thing])。
 
 以下のコマンドをコピーして実行します。フォルダー名は適宜置き換えてください。
 
-	$folderName="<folder name, such as C:\Azure\Templates\[thing]>"
+	$folderName="<folder name, such as C:\Azure\Templates[thing]>"
 	$webclient = New-Object System.Net.WebClient
 	$url = "[Writers: add the URL to the RAW version of the target template in GitHub]"
 	$filePath = $folderName + "\azuredeploy.json"
 	$webclient.DownloadFile($url,$filePath) 
 
-### 手順 2. \(省略可能\) パラメーターを表示する
+### 手順 2. (省略可能) パラメーターを表示する
 
 テンプレートを使って[実行する作業]を行うには、一連の構成パラメーターを指定する必要があります。仮想マシンを作成するためのコマンドを実行する前に、ローカル JSON ファイルのテンプレートで指定する必要のあるパラメーターを確認するには、適切なツールまたはテキスト エディターで目的の JSON ファイルを開きます。 
 ファイルの先頭にある "parameters" セクションを探してください。テンプレートで仮想マシンを構成するために必要な一連のパラメーターが指定されています。azuredeploy.json テンプレートの **"parameters"** セクションを次に示します。
@@ -52,7 +52,7 @@ JSON テンプレート ファイルの場所としてローカル フォルダ�
 
 ### 手順 3. [テンプレートを完成させるために必要な情報]を入手する
 
-[ライターへのメモ: パラメーターの値を収集するための任意セクションです \(必要な場合\)。]
+[ライターへのメモ: パラメーターの値を収集するための任意セクションです (必要な場合)。]
 
 ### 手順 4. テンプレートを使用して[作業を実行]する
 
@@ -61,7 +61,7 @@ Azure のデプロイメント名、リソース グループ名、Azure の場�
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
 	$locName="<Azure location, such as West US>"
-	$folderName="<folder name, such as C:\Azure\Templates\[thing]>" 
+	$folderName="<folder name, such as C:\Azure\Templates[thing]>" 
 	$templateFile= $folderName + "\azuredeploy.json"
 	New-AzureResourceGroup –Name $RGName –Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateFile $templateFile
@@ -73,7 +73,7 @@ Azure のデプロイメント名、リソース グループ名、Azure の場�
 	$deployName="TestDeployment"
 	$RGName="TestRG"
 	$locname="West US"
-	$folderName="C:\Azure\Templates\[thing]"
+	$folderName="C:\Azure\Templates[thing]"
 	$templateFile= $folderName + "\azuredeploy.json"
 	New-AzureResourceGroup –Name $RGName –Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateFile $templateFile
@@ -92,7 +92,7 @@ Azure のデプロイメント名、リソース グループ名、Azure の場�
 	vmSourceImageName: a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201503.01-en.us-127GB.vhd
 	...
 
-このリソース グループとそのすべてのリソース \(ストレージ アカウント、仮想マシン、仮想ネットワーク\) を削除するには、次のコマンドを使用します。
+このリソース グループとそのすべてのリソース (ストレージ アカウント、仮想マシン、仮想ネットワーク) を削除するには、次のコマンドを使用します。
 
 	Remove-AzureResourceGroup –Name "<resource group name>"
 
@@ -103,13 +103,13 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 
 ### 手順 1. テンプレートの JSON ファイルをダウンロードする
 
-JSON テンプレート ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します \(例: C:\\Azure\\Templates\[thing\]\)。
+JSON テンプレート ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates[thing])。
 
 フォルダー名を指定して以下のコマンドを実行します。
 
 [テンプレート ファイルをダウンロードする xplat コマンド]
 
-### 手順 2. \(省略可\) テンプレートのパラメーターを確認する
+### 手順 2. (省略可) テンプレートのパラメーターを確認する
 
 テンプレートを使って[実行する作業]を行うには、一連の構成パラメーターを指定する必要があります。仮想マシンを作成するためのコマンドを実行する前に、ローカル JSON ファイルのテンプレートで指定する必要のあるパラメーターを確認するには、適切なツールまたはテキスト エディターで目的の JSON ファイルを開きます。 
 ファイルの先頭にある "parameters" セクションを探してください。テンプレートで仮想マシンを構成するために必要な一連のパラメーターが指定されています。azuredeploy.json テンプレートの **"parameters"** セクションを次に示します。
@@ -118,11 +118,11 @@ JSON テンプレート ファイルの場所としてローカル フォルダ�
 
 ### 手順 3. [テンプレートを完成させるために必要な情報]を入手する
 
-[ライターへのメモ: パラメーターの値を収集するための任意セクションです \(必要な場合\)。]
+[ライターへのメモ: パラメーターの値を収集するための任意セクションです (必要な場合)。]
 
 ### 手順 4. テンプレートを使用して[作業を実行]する
 
-\[必要な情報} を入力して以下のコマンドを実行します。
+[必要な情報} を入力して以下のコマンドを実行します。
 
 [テンプレート ファイルを実行する xplat コマンド]
 
@@ -138,7 +138,7 @@ JSON テンプレート ファイルの場所としてローカル フォルダ�
 [ライターへのメモ: プロンプトで要求される最初のいくつかのパラメーターについて、xplat の表示を貼り付けてください。]
 
 
-このリソース グループとそのすべてのリソース \([リソース グループの内容]\) を削除するには、次のコマンドを使用します。
+このリソース グループとそのすべてのリソース ([リソース グループの内容]) を削除するには、次のコマンドを使用します。
 
 [xplat コマンド]
 

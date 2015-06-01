@@ -22,7 +22,7 @@
 
 ## 準備
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと、職場または学校 ID \(組織 ID とも呼ばれます\) を用意する必要があります。
+Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと、職場または学校 ID (組織 ID とも呼ばれます) を用意する必要があります。
 
 ### 手順 1. Azure CLI のバージョンを 0.9.0 に更新する
 
@@ -60,7 +60,7 @@ Azure リソース管理テンプレートを使用するには、職場また�
 
 ### 手順 3. Azure CLI リソース グループ モードに切り替える
 
-既定では、Azure CLI はサービス管理モード \(**asm** モード\) で起動します。型
+既定では、Azure CLI はサービス管理モード (**asm** モード) で起動します。型
 
 	azure config mode arm
 
@@ -70,14 +70,14 @@ Azure リソース管理テンプレートを使用するには、職場また�
 
 ## Azure リソース テンプレートおよびリソース グループについて
 
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ \(1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワーク、*CDN* など\) から構築されます。既定の Azure サービス管理 API と従来の Azure ポータルでは、サービス単位でこれらの項目を表示していたので、各サービスを個別にデプロイして管理するか、そのために他のツールを見つける必要があり、論理的な単一のデプロイメント単位として扱うことはできませんでした。
+大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワーク、*CDN* など) から構築されます。既定の Azure サービス管理 API と従来の Azure ポータルでは、サービス単位でこれらの項目を表示していたので、各サービスを個別にデプロイして管理するか、そのために他のツールを見つける必要があり、論理的な単一のデプロイメント単位として扱うことはできませんでした。
 
 *Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイメント単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフサイクル全体を管理できます。
 
 - グループ内のすべてのリソースを一度に停止、開始、または削除する。 
-- ロールベースのアクセス制御 \(RBAC\) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。 
+- ロールベースのアクセス制御 (RBAC) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。 
 - 操作を監査する。 
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。 
 
@@ -107,21 +107,21 @@ Azure リソース グループとその機能の詳細については、[こち
 
 | 発行元 | ImageOffer | ImageSku | ComputeImageVersion |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| OpenLogic | CentOS | 7 | 7\.0.201503 |
-| OpenLogic | CentOS | 7\.1 | 7\.1.201504 |
-| CoreOS | CoreOS | ベータ版 | 647\.0.0 |
-| CoreOS | CoreOS | 安定版 | 633\.1.0 |
-| MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8\.0.40459 |
-| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1\.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | 標準 | 1\.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | エンタープライズ | 1\.0.0 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW | 12\.0.2430 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP | 12\.0.2430 |
-| Canonical | UbuntuServer | 14\.04.1-LTS | 14\.04.201501230 |
-| Canonical | UbuntuServer | 14\.04.2-LTS | 14\.04.201503090 |
-| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | 5\.0.201504 |
-| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials | 1\.0.141204 |
-| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 | 4\.3.4665 |
+| OpenLogic | CentOS | 7 | 7.0.201503 |
+| OpenLogic | CentOS | 7.1 | 7.1.201504 |
+| CoreOS | CoreOS | ベータ版 | 647.0.0 |
+| CoreOS | CoreOS | 安定版 | 633.1.0 |
+| MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8.0.40459 |
+| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1.0.0 |
+| msopentech | Oracle-Database-12c-Weblogic-Server-12c | 標準 | 1.0.0 |
+| msopentech | Oracle-Database-12c-Weblogic-Server-12c | エンタープライズ | 1.0.0 |
+| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW | 12.0.2430 |
+| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP | 12.0.2430 |
+| Canonical | UbuntuServer | 14.04.1-LTS | 14.04.201501230 |
+| Canonical | UbuntuServer | 14.04.2-LTS | 14.04.201503090 |
+| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | 5.0.201504 |
+| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials | 1.0.141204 |
+| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 | 4.3.4665 |
 
 VM を作成するため、`azure vm quick-create command` と入力して、メッセージが表示されるのを待ちます。次のような内容が表示されます。
 
@@ -216,9 +216,9 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
  
 ### 手順 1. テンプレート パラメーターの JSON ファイルを確認する
 
-テンプレートの JSON ファイルの内容を次に示します。\(テンプレートは GitHub の[こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/101-simple-linux-vm/azuredeploy.json)にもあります\)。
+テンプレートの JSON ファイルの内容を次に示します。(テンプレートは GitHub の[こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/101-simple-linux-vm/azuredeploy.json)にもあります)。
 
-テンプレートは柔軟性が高いことから、デザイナーは多くのパラメーターを提供することにしたようです。そうでなければ、より固定的なテンプレートを作成することで、ごく少数のパラメーターを提供していたでしょう。テンプレートをパラメーターとして渡すために必要な情報を収集するには、テンプレート ファイル \(このトピックでは、以下にインラインのテンプレートが含まれています\) を開き、**parameters** の値を確認する必要があります。
+テンプレートは柔軟性が高いことから、デザイナーは多くのパラメーターを提供することにしたようです。そうでなければ、より固定的なテンプレートを作成することで、ごく少数のパラメーターを提供していたでしょう。テンプレートをパラメーターとして渡すために必要な情報を収集するには、テンプレート ファイル (このトピックでは、以下にインラインのテンプレートが含まれています) を開き、**parameters** の値を確認する必要があります。
 
 この場合、下記のテンプレートから次の情報を求められます。
 
@@ -432,10 +432,10 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 
 デプロイメントを作成するには、`azure group deployment create` を呼び出し、次の情報を渡します。
 
-- テンプレート ファイル \(上記の JSON テンプレートをローカル ファイルに保存した場合\) 
-- テンプレートの URI \(GitHub や他の Web アドレスにあるファイルをポイントする場合\)
+- テンプレート ファイル (上記の JSON テンプレートをローカル ファイルに保存した場合) 
+- テンプレートの URI (GitHub や他の Web アドレスにあるファイルをポイントする場合)
 - デプロイ先のリソース グループ
-- デプロイ名 \(省略可能\)。 
+- デプロイ名 (省略可能)。 
 
 JSON ファイルの **"parameters"** セクションのパラメーター値を指定するよう求められます。すべてのパラメーター値を指定すると、デプロイメントが開始されます。
 
@@ -479,7 +479,7 @@ JSON ファイルの **"parameters"** セクションのパラメーター値を
 
 ## 一般的なタスク: カスタム VM イメージの作成
 
-テンプレートの使用方法は前述したので、同様の手順に従うことで、Azure CLI を使用し、テンプレートによって Azure にある特定の .vhd ファイルからカスタム VM を作成できます。このテンプレートは、指定した仮想ハード ディスク \(VHD\) から単一の仮想マシンを作成するという点が異なります。
+テンプレートの使用方法は前述したので、同様の手順に従うことで、Azure CLI を使用し、テンプレートによって Azure にある特定の .vhd ファイルからカスタム VM を作成できます。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成するという点が異なります。
 
 ### 手順 1. テンプレートの JSON ファイルを確認する
 
@@ -693,7 +693,7 @@ Linux ベースの仮想マシンについては、[Azure 上での Linux VHD �
     data:    
     info:    group create command OK
     
-次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイメントを作成します \(または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます\)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 \(特に、作成する DNS 名\) との名前付けの競合が発生する場合があります。
+次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイメントを作成します (または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 (特に、作成する DNS 名) との名前付けの競合が発生する場合があります。
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/azurermtemplates/azurermtemplates/master/101-vm-from-user-image/azuredeploy.json \
@@ -1166,17 +1166,17 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
     
 ## リソース グループ デプロイメントのログの表示
 
-これは、テンプレートの作成時や使用時によく行われます。グループのデプロイメント ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます。\(デプロイメントのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください\)。
+これは、テンプレートの作成時や使用時によく行われます。グループのデプロイメント ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます。(デプロイメントのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください)。
 
 特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。次の例では、**jq** を使用して **lbgroup** のデプロイメント ログを解析し、エラーを探しています。
 
     azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties' 
 
-発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。\(テンプレートの修正後、デプロイメントは速やかに正常終了しました\)。
+発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。(テンプレートの修正後、デプロイメントは速やかに正常終了しました)。
 
     {
       "statusCode": "Conflict",
-      "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"The resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"AcquireDiskLeaseFailed\",\"message\":\"Failed to acquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd.\"}]}}"
+      "statusMessage": "{"status":"Failed","error":{"code":"ResourceDeploymentFailure","message":"The resource operation completed with terminal provisioning state 'Failed'.","details":[{"code":"AcquireDiskLeaseFailed","message":"Failed to acquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd."}]}}"
     }
     
 
@@ -1251,7 +1251,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 これは頻繁に使用することになる基本的なタスクです。VM に関する情報の取得、VM でのタスクの実行、変数に格納する出力の取得に使用します。
 
-VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 \(< and > を含む\) を置き換えます。
+VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 (< and > を含む) を置き換えます。
 
      azure vm show -g <group name> -n <virtual machine name>
 
@@ -1271,7 +1271,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT]このパラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP \(VIP\) を保持するために使用します。<br><br> StayProvisioned パラメーターを使用する場合は、その VM に対して引き続き課金されます。
+>[AZURE.IMPORTANT]このパラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP (VIP) を保持するために使用します。<br><br> StayProvisioned パラメーターを使用する場合は、その VM に対して引き続き課金されます。
 
 ## VM の起動
 
@@ -1289,7 +1289,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
     azure vm disk attach <resource-group> <vm-name> [vhd-url]
     
-その後、Linux \(または Windows\) で通常行うように、ディスクをマウントする必要があります。
+その後、Linux (または Windows) で通常行うように、ディスクをマウントする必要があります。
 
 
 ## 次のステップ

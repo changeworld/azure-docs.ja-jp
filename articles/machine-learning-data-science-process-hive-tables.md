@@ -262,7 +262,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 
 このセクションで指定されたクエリは、NYC タクシー乗車データに直接適用できます。このクエリの目的は、特徴を生成する Hive の組み込みの数学関数を適用する方法を示すことです。 
 
-このクエリで使用されているフィールドは、pickup\_longitude、 pickup\_latitude、 dropoff\_longitude、および dropoff\_latitude という名前の 乗車 (pickup) と降車 (dropoff) の位置を示す GPS 座標です。pickup 座標と dropoff 座標間の直線距離を計算するクエリは次のとおりです。
+このクエリで使用されているフィールドは、pickup_longitude、 pickup_latitude、 dropoff_longitude、および dropoff_latitude という名前の 乗車 (pickup) と降車 (dropoff) の位置を示す GPS 座標です。pickup 座標と dropoff 座標間の直線距離を計算するクエリは次のとおりです。
 
 		set R=3959;
 		set pi=radians(180);

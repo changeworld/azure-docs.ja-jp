@@ -257,7 +257,7 @@ Azure ストレージ エクスプローラーなどのツールを使用して 
 
 このセクションで説明されるクエリは、NYC Taxi Trip Data に直接適用できます。このクエリの目的は、機能を生成するために、ハイブの埋め込み数学関数を適用する方法を示すことにあります。 
 
-このクエリで使用するフィールドは、ピックアップおよびドロップオフする場所の GPS 座標で、それぞれ pickup\_longitude、pickup\_latitude、dropoff\_longitude、dropoff\_latitude という名前が付けられています。ピックアップとドロップオフの座標間の直線距離を計算するクエリは、次のとおりです。
+このクエリで使用するフィールドは、ピックアップおよびドロップオフする場所の GPS 座標で、それぞれ pickup_longitude、pickup_latitude、dropoff_longitude、dropoff_latitude という名前が付けられています。ピックアップとドロップオフの座標間の直線距離を計算するクエリは、次のとおりです。
 
 		set R=3959;
 		set pi=radians(180);

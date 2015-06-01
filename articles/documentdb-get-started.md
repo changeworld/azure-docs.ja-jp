@@ -20,7 +20,7 @@
 
 このチュートリアルでは、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) および [DocumentDB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) の使用を開始する方法について説明します。DocumentDB リソースを作成およびクエリして出力をコンソール ウィンドウに書き込むコンソール アプリケーションを作成します。
 
-DocumentDB は NoSQL ドキュメント データベースで、[多数の API と SDK を利用](https://msdn.microsoft.com/library/dn781482.aspx)できます。この記事のコードは C\# で記述されており、DocumentDB .NET SDK を使用しています。DocumentDB .NET SDK は NuGet パッケージとしてパッケージ化され、配布されています。
+DocumentDB は NoSQL ドキュメント データベースで、[多数の API と SDK を利用](https://msdn.microsoft.com/library/dn781482.aspx)できます。この記事のコードは C# で記述されており、DocumentDB .NET SDK を使用しています。DocumentDB .NET SDK は NuGet パッケージとしてパッケージ化され、配布されています。
 
 この記事では以下のシナリオが扱われています。
 
@@ -50,19 +50,19 @@ DocumentDB は NoSQL ドキュメント データベースで、[多数の API �
 ## <a id="SetupVS"></a>手順 2: Visual Studio ソリューションをセットアップする
 
 1. コンピューターで **Visual Studio** を開きます。
-2. **\[ファイル\]** メニューの **\[新規作成\]** を選択し、**\[プロジェクト\]** を選択します。
-3. **\[新しいプロジェクト\]** ダイアログで、**\[テンプレート\]**、**\[Visual C\#\]**、**\[コンソール アプリケーション\]** の順に選択し、プロジェクトの名前を指定して、**\[追加\]** をクリックします。
+2. **[ファイル]** メニューの **[新規作成]** を選択し、**[プロジェクト]** を選択します。
+3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]**、**[Visual C#]**、**[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[追加]** をクリックします。
 4. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックします。
-5. メニューの **\[NuGet パッケージの管理...\]** をクリックします。
-6. **\[NuGet パッケージの管理\]** ウィンドウの左端のパネルで、**\[オンライン\]**、**\[nuget.org\]** の順にクリックします。
-7. **\[オンライン検索\]** 入力ボックスで、**DocumentDB クライアント ライブラリ**を検索します。
-8. 結果で **Microsoft Azure DocumentDB クライアント ライブラリ**を探し、**\[インストール\]** をクリックします。
+5. メニューの **[NuGet パッケージの管理...]** をクリックします。
+6. **[NuGet パッケージの管理]** ウィンドウの左端のパネルで、**[オンライン]**、**[nuget.org]** の順にクリックします。
+7. **[オンライン検索]** 入力ボックスで、**DocumentDB クライアント ライブラリ**を検索します。
+8. 結果で **Microsoft Azure DocumentDB クライアント ライブラリ**を探し、**[インストール]** をクリックします。
 
 以上です。 これで DocumentDB を使用する準備が整いました。
 
 ## <a id="Connect"></a>手順 3: DocumentDB アカウントに接続する
 
-最初に、DocumentDB アカウントへの接続を確立するために [DocumentClient](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.aspx) クラスの新しいインスタンスを作成します。C\# アプリケーションの先頭に次の参照が必要です。
+最初に、DocumentDB アカウントへの接続を確立するために [DocumentClient](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.aspx) クラスの新しいインスタンスを作成します。C# アプリケーションの先頭に次の参照が必要です。
 
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
@@ -97,11 +97,11 @@ DocumentDB は NoSQL ドキュメント データベースで、[多数の API �
 		}
 	}
 
-> [AZURE.WARNING]ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、「[Azure Web Sites: How Application Strings and Connection Strings Work \(Azure Web Sites: アプリケーション文字列と接続文字列の動作\)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。ソース コードの外部に資格情報を格納する例については、[GitHub](https://github.com/Azure/azure-documentdb-net/blob/master/tutorials/get-started/src/Program.cs) のサンプル アプリケーションをご覧ください。
+> [AZURE.WARNING]ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、「[Azure Web Sites: How Application Strings and Connection Strings Work (Azure Web Sites: アプリケーション文字列と接続文字列の動作)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。ソース コードの外部に資格情報を格納する例については、[GitHub](https://github.com/Azure/azure-documentdb-net/blob/master/tutorials/get-started/src/Program.cs) のサンプル アプリケーションをご覧ください。
 
-EndpointUrl と AuthorizationKey の値には、DocumentDB アカウントの [\[キー\]](https://portal.azure.com) ブレードから取得できる DocumentDB アカウントの URI とプライマリ キーを指定します。
+EndpointUrl と AuthorizationKey の値には、DocumentDB アカウントの [[キー]](https://portal.azure.com) ブレードから取得できる DocumentDB アカウントの URI とプライマリ キーを指定します。
 
-![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、\[DocumentDB アカウント\] ブレードで \[キー\] ボタンが強調表示され、\[キー\] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている][keys]
+![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている][keys]
  
 これらのキーにより、DocumentDB アカウントとそのリソースに対する管理アクセス権が付与されます。DocumentDB では、付与されているアクセス許可に応じて、クライアントがアカウント キーなしで、DocumentDB アカウント内のリソースの読み取り、書き込み、および削除を実行するためのリソース キーの使用もサポートされます。リソース キーの詳細については、「[アクセス許可](documentdb-resources.md#permissions)」および「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#keys)」を参照してください。
 
@@ -131,7 +131,7 @@ EndpointUrl と AuthorizationKey の値には、DocumentDB アカウントの [\
   		    });
     
 ## <a id="CreateDoc"></a>手順 6: ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。ドキュメントは、ユーザー定義の \(ユーザーが自由に定義できる\) JSON コンテンツです。前の手順で作成したコレクションには、さまざまなプロパティがありますが、その 1 つが [DocumentsLink](https://msdn.microsoft.com/library/microsoft.azure.documents.documentcollection.documentslink.aspx) プロパティです。この情報を使用して、1 つ以上のドキュメントを挿入できます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。前の手順で作成したコレクションには、さまざまなプロパティがありますが、その 1 つが [DocumentsLink](https://msdn.microsoft.com/library/microsoft.azure.documents.documentcollection.documentslink.aspx) プロパティです。この情報を使用して、1 つ以上のドキュメントを挿入できます。
 
 最初に、**Parent**、**Child**、**Pet**、**Address**、**Family** の各クラスを作成する必要があります。次の内部サブクラスを追加することで、これらのクラスを作成します。
 
@@ -244,7 +244,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
     var families = client.CreateDocumentQuery(documentCollection.DocumentsLink,
         "SELECT * " +
         "FROM Families f " +
-        "WHERE f.id = \"AndersenFamily\"");
+        "WHERE f.id = "AndersenFamily"");
 
     foreach (var family in families)
     {
@@ -305,7 +305,7 @@ DocumentDB クエリのスコープは既に 1 つのコレクションに設定
 
 ## <a id="DeleteDatabase"></a>手順 8: データベースを削除する
 
-作成したデータベースを削除すると、データベースとすべての子リソース \(コレクション、ドキュメントなど\) が削除されます。**GetStartedDemo** 非同期メソッドの末尾に次のコード スニペットを追加することで、データベースとドキュメント クライアントを削除できます。
+作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。**GetStartedDemo** 非同期メソッドの末尾に次のコード スニペットを追加することで、データベースとドキュメント クライアントを削除できます。
 
     // Clean up/delete the database
     await client.DeleteDatabaseAsync(database.SelfLink);
@@ -356,7 +356,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
+	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
 	  "_attachments": "attachments/"
 	} from SQL
 	Read {
@@ -394,7 +394,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
+	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
 	  "_attachments": "attachments/"
 	} from LINQ
 	Read {
@@ -432,7 +432,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 	  "_rid": "ybVlALUoqAEBAAAAAAAAAA==",
 	  "_ts": 1428372205,
 	  "_self": "dbs/ybVlAA==/colls/ybVlALUoqAE=/docs/ybVlALUoqAEBAAAAAAAAAA==/",
-	  "_etag": "\"0000400c-0000-0000-0000-55233aed0000\"",
+	  "_etag": ""0000400c-0000-0000-0000-55233aed0000"",
 	  "_attachments": "attachments/"
 	} from LINQ query
 	{
@@ -460,7 +460,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 -   [DocumentDB アカウント][documentdb-create-account]。
 -   GitHub で入手可能な [GetStarted](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) ソリューション。 
 
-Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで **GetStarted** ソリューションを右クリックし、**\[NuGet パッケージの復元を有効にする\]** をクリックします。次に、「[DocumentDB アカウントへの接続](#Connect)」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します。
+Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで **GetStarted** ソリューションを右クリックし、**[NuGet パッケージの復元を有効にする]** をクリックします。次に、「[DocumentDB アカウントへの接続](#Connect)」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します。
 
 ## 次のステップ
 -   さらに複雑な ASP.NET MVC のサンプルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。

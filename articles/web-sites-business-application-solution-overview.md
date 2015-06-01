@@ -47,7 +47,7 @@
 
 暗号化によって資産を保護し、社内でも社外でも企業ユーザーを認証し、資産の使用を承認します。 
 
-[HTTPS] を使用して盗聴から内部資産を保護します。既に **\*.azurewebsites.net** というドメイン名が SSL 証明書に記載されているため、カスタム ドメインを使用する場合はその SSL 証明書を Azure Websites に移行できます。SSL 証明書ごとに月額料金 (時間単位) がかかります。詳細については、「[Websites 料金の詳細]」をご覧ください。
+[HTTPS] を使用して盗聴から内部資産を保護します。既に ***.azurewebsites.net** というドメイン名が SSL 証明書に記載されているため、カスタム ドメインを使用する場合はその SSL 証明書を Azure Websites に移行できます。SSL 証明書ごとに月額料金 (時間単位) がかかります。詳細については、「[Websites 料金の詳細]」をご覧ください。
 
 会社のディレクトリに対して[ユーザーを認証]します。Azure Websites は、Active Directory フェデレーション サービス (AD FS) などの自社の ID プロバイダーや、コーポレート Active Directory の展開で同期された Azure Active Directory テナントを使用してユーザーを認証できます。ユーザーは、社内でも社外でもシングル サインオンで Azure Websites の Web プロパティにアクセスできます。Windows Intune、Office 365 などの既存のサービスは、既に Azure Active Directory を使用しています。お使いの Web サイトに対する同じ Azure Active Directory テナントを[簡単に認証]できます。 
 

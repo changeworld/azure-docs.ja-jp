@@ -105,7 +105,7 @@ MongoLab で次の手順に従い、無料評価版を作成できます。
 
 1.  [Azure の管理ポータル][]で、**[アドオン]** をクリックし、先ほど作成した MongoLab サービスをクリックします。
 
-1.  **[接続文字列]** をクリックします。コピー ボタンを使用すると、**MONGOLAB\_URI** の値をクリップボードに取得できます。
+1.  **[接続文字列]** をクリックします。コピー ボタンを使用すると、**MONGOLAB_URI** の値をクリップボードに取得できます。
 
   	![Connection Info Dialog](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonMongoLabConnectionInfo.png)
 
@@ -135,17 +135,17 @@ MongoLab で次の手順に従い、無料評価版を作成できます。
 
 MongoDB データベースの照会と編集には、[RoboMongo][] などのアプリケーションを使用できます。このセクションでは、投票アプリケーションに使用されているデータベースの内容を RoboMongo を使用して表示します。
 
-1.  新しい接続を作成します。前のセクションで取得した **MONGOLAB\_URI** が必要となります。
+1.  新しい接続を作成します。前のセクションで取得した **MONGOLAB_URI** が必要となります。
 
     URI の形式は次のとおりです。 `mongodb://<name>:<password>@<address>:<port>/<name>`
 
     この名前は、Azure でのサービスの作成時に入力した名前と一致している必要があります。この名前が、データベース名とユーザー名の両方に使用されます。
 
-1.  接続ページの **[Name]** に、この接続の名前を設定します。**[Address]** フィールドと **[Port]** フィールドにも、**MONGOLAB\_URI** に基づく  *address* と  *port* を設定します。
+1.  接続ページの **[Name]** に、この接続の名前を設定します。**[Address]** フィールドと **[Port]** フィールドにも、**MONGOLAB_URI** に基づく  *address* と  *port* を設定します。
 
   	![Connection Settings Dialog](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonRobomongoCreateConnection1.png)
 
-1.  認証ページの **[Database]** と **[User name]** に、**MONGOLAB\_URI** に基づく  *name* を設定します。**[Password]** にも、**MONGOLAB\_URI** に基づく  *password* を設定します。
+1.  認証ページの **[Database]** と **[User name]** に、**MONGOLAB_URI** に基づく  *name* を設定します。**[Password]** にも、**MONGOLAB_URI** に基づく  *password* を設定します。
 
   	![Connection Settings Dialog](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonRobomongoCreateConnection2.png)
 
@@ -185,7 +185,7 @@ MongoDB データベースの照会と編集には、[RoboMongo][] などのア�
 
   	![Top Menu](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonWebSiteTopMenu.png)
 
-1.  下へスクロールして **[アプリケーション設定]** セクションに移動し、前のセクションの説明に従って **REPOSITORY\_NAME**、**MONGODB\_HOST**、**MONGODB\_DATABASE** の値を設定します。
+1.  下へスクロールして **[アプリケーション設定]** セクションに移動し、前のセクションの説明に従って **REPOSITORY_NAME**、**MONGODB_HOST**、**MONGODB_DATABASE** の値を設定します。
 
   	![App Settings](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonWebSiteConfigureSettingsMongoDB.png)
 

@@ -138,7 +138,7 @@ ACS の詳細については、「[次のステップ]」(#next_steps) セクシ
 					                 for (i=0; i < nChild; i++)
 				                     {
 					                    Node temp = list.item(i);
-					                    displaySAMLInfo(temp, parent + nodeName + "\\", out);
+					                    displaySAMLInfo(temp, parent + nodeName + "", out);
 				                     }
 				               }
 			              }

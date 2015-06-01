@@ -23,7 +23,7 @@
  
 このドキュメントでは、ハイブ テーブルを作成し、Azure BLOB ストレージからデータを読み込む汎用ハイブ クエリについて説明します。これらのハイブ クエリは GitHub リポジトリで共有されます。[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)。 
 
-「IPython Notebook サーバーでの Azure 仮想マシンの設定」の手順に従って Azure 仮想マシンを作成する場合、このスクリプト ファイルは仮想マシンの `C:\Users\<user name>\Documents\Data Science Scripts` ディレクトリにダウンロードされています。独自のデータ スキーマを組み込む必要があります。また、これらのクエリおよびハイブ クエリの対応するフィールドで Azure BLOB ストレージ構成を、送信できる状態にする必要があります。 
+「IPython Notebook サーバーでの Azure 仮想マシンの設定」の手順に従って Azure 仮想マシンを作成する場合、このスクリプト ファイルは仮想マシンの `C:\Users<user name>\Documents\Data Science Scripts` ディレクトリにダウンロードされています。独自のデータ スキーマを組み込む必要があります。また、これらのクエリおよびハイブ クエリの対応するフィールドで Azure BLOB ストレージ構成を、送信できる状態にする必要があります。 
 
 ハイブ テーブルのデータが**圧縮されていない**表形式であり、そのデータが Hadoop クラスターで使用されるストレージ アカウントの既定またはその他のコンテナーにアップロードされていることを仮定しています。ユーザーが _NYC Taxi Trip Data_ で実践しようとする場合、最初に [24 ファイルすべてをダウンロード](http://www.andresmh.com/nyctaxitrips/) (12 個の Trip ファイルと 12 個の Fair ファイル) し、すべてのファイルを .csv のファイルに**解凍**して、[Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.html)ときに使用される Azure ストレージ アカウントの既定またはその他のコンテナーにそれらのファイルをアップロードする必要があります。 
 

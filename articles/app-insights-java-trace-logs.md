@@ -17,7 +17,7 @@
 
 # Application Insights を使用した Java トレース ログの探索
 
-トレース用に Logback または Log4J \(v1.2 または v2.0\) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
+トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
 
 [Application Insights SDK for Java][java] をインストールしていない場合はインストールします。
 
@@ -89,7 +89,7 @@
 ----|----|----
 Logback|[Logback アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/logbackAppender.zip)|applicationinsights-logging-logback
 Log4J v2.0|[Log4J v2 アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/log4j2Appender.zip)|applicationinsights-logging-log4j2 
-Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/log4j1_2Appender.zip)|applicationinsights-logging-log4j1\_2 
+Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/log4j1_2Appender.zip)|applicationinsights-logging-log4j1_2 
 
 
 
@@ -134,7 +134,7 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
 ## Application Insights ポータルでのトレースの探索
 
-これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [\[診断検索\]][diagnostic] ブレードで表示および検索できます。
+これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[診断検索]][diagnostic] ブレードで表示および検索できます。
 
 ![Application Insights ポータルで診断検索を開きます](./media/app-insights-java-get-started/10-diagnostics.png)
 

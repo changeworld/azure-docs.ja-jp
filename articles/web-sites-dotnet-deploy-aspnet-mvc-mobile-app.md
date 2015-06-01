@@ -114,7 +114,7 @@ ASP.NET タグ ビューは、画面に合わせてズームされています�
 
 MVC 5 の新機能の 1 つに、ブートストラップの標準サポートがあります。ブートストラップによって、さまざまなビューの表示品質が瞬時に向上することは先ほど確認したとおりです。たとえば、ブラウザーの幅が小さくなったときに、上部のナビゲーション バーを自動的に折りたたむことができます。デスクトップ ブラウザーで、ブラウザー ウィンドウのサイズを変更して、ナビゲーション バーの外観と操作性がどのように変わるかを確認してください。これが、ブートストラップに組み込まれたレスポンシブ Web デザインです。
 
-ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App\\_Start\\\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
+ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App_Start\\\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
 
      bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               //"~/Scripts/bootstrap.js",
@@ -144,7 +144,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 このセクションでは、モバイル専用のレイアウト ファイルを作成します。
 
-最初に、*Views\\Shared\\_Layout.cshtml* を *Views\\Shared\\_Layout.Mobile.cshtml* にコピーします。*\\_Layout.Mobile.cshtml* を開き、タイトルを **MVC5 Application** から **MVC5 Application (Mobile)** に変更します。
+最初に、*Views\\Shared\_Layout.cshtml* を *Views\\Shared\_Layout.Mobile.cshtml* にコピーします。*_Layout.Mobile.cshtml* を開き、タイトルを **MVC5 Application** から **MVC5 Application (Mobile)** に変更します。
 
 ナビゲーション バーの各 `Html.ActionLink` を呼び出しで、各 *ActionLink* リンクの "Browse by" を削除します。次のコードは、モバイル レイアウト ファイルの完成した `<ul class="nav navbar-nav">` タグです。
 
@@ -191,7 +191,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
     using System.Web.WebPages;
 
-変更を保存します。*Views\\Shared\\_Layout.Mobile.cshtml* ファイルを *Views\\Shared\\_Layout.iPhone.cshtml* にコピーします。新しいファイルを開き、タイトルを `MVC5 Application (Mobile)` から `MVC5 Application (iPhone)` に変更します。
+変更を保存します。*Views\\Shared\_Layout.Mobile.cshtml* ファイルを *Views\\Shared\_Layout.iPhone.cshtml* にコピーします。新しいファイルを開き、タイトルを `MVC5 Application (Mobile)` から `MVC5 Application (iPhone)` に変更します。
 
 *Views\\Home\\AllTags.Mobile.cshtml* ファイルを *Views\\Home\\AllTags.iPhone.cshtml* にコピーします。新しいファイルで、`<h2>` 要素を "Tags (M)" から "Tags (iPhone)" に変更します。
 
@@ -209,7 +209,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakers_LayoutMobile]
 
-*Views\\_ViewStart.cshtml* ファイルで次のように `RequireConsistentDisplayMode` を `true` に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
+*Views_ViewStart.cshtml* ファイルで次のように `RequireConsistentDisplayMode` を `true` に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
 
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";

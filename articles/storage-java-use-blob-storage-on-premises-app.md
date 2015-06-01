@@ -53,8 +53,8 @@
 
     public class StorageSample {
 
-**StorageSample** クラス内に、Azure ストレージ アカウントで指定されている既定のエンドポイント プロトコル、ストレージ アカウント名、およびストレージ アクセス キーを格納する文字列変数を宣言します。プレースホルダーの **your\_account\_name** および
-**your\_account\_key** の値は、それぞれ自分のアカウント名およびアカウント キーに置き換えてください。
+**StorageSample** クラス内に、Azure ストレージ アカウントで指定されている既定のエンドポイント プロトコル、ストレージ アカウント名、およびストレージ アクセス キーを格納する文字列変数を宣言します。プレースホルダーの **your_account_name** および
+**your_account_key** の値は、それぞれ自分のアカウント名およびアカウント キーに置き換えてください。
 
     public static final String storageConnectionString = 
            "DefaultEndpointsProtocol=http;" + 
@@ -211,8 +211,8 @@ Azure ストレージにアップロードするローカル ファイルを表�
 
 **StorageSample** を、右ブラケット **}** を挿入して閉じます。
 
-この例の完全なコードを次に示します。プレースホルダーの **your\_account\_name** および
-**your\_account\_key** の値は、それぞれ自分のアカウント名およびアカウント キーを使用するように変更してください。
+この例の完全なコードを次に示します。プレースホルダーの **your_account_name** および
+**your_account_key** の値は、それぞれ自分のアカウント名およびアカウント キーを使用するように変更してください。
 
     import com.microsoft.windowsazure.services.core.storage.*;
     import com.microsoft.windowsazure.services.blob.client.*;

@@ -5,11 +5,11 @@
 
 Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Ｗeb アプリに対する HTTPS を構成する方法について説明します。 
 
-##<a name="bkmk_azurewebsites"></a>\*.azurewebsites.net ドメインの HTTPS
+##<a name="bkmk_azurewebsites"></a>*.azurewebsites.net ドメインの HTTPS
 
-カスタム ドメイン名を使用する計画がなく、Azure によって Ｗｅｂ アプリに割り当てられた \*.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用することを計画している場合は、Microsoft の証明書によって HTTPS は既にサイトで有効に設定されています。**https://mywebsite.azurewebsites.net** を使用してアプリにアクセスできます。ただし、\*.azurewebsites.net はワイルドカード ドメインです。[すべてのワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)は一様に、独自の証明書を持つカスタム ドメインを使用する場合ほど安全ではありません。 
+カスタム ドメイン名を使用する計画がなく、Azure によって Ｗｅｂ アプリに割り当てられた *.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用することを計画している場合は、Microsoft の証明書によって HTTPS は既にサイトで有効に設定されています。**https://mywebsite.azurewebsites.net** を使用してアプリにアクセスできます。ただし、*.azurewebsites.net はワイルドカード ドメインです。[すべてのワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)は一様に、独自の証明書を持つカスタム ドメインを使用する場合ほど安全ではありません。 
 
-このドキュメントの残りの部分では、カスタム ドメイン (**contoso.com**、**www.contoso.com**、**\*.contoso.com**など) に対して HTTPS を有効にする方法について詳しく説明します。
+このドキュメントの残りの部分では、カスタム ドメイン (**contoso.com**、**www.contoso.com**、***.contoso.com**など) に対して HTTPS を有効にする方法について詳しく説明します。
 
 ##<a name="bkmk_domainname"></a>カスタム ドメインに対して SSL を有効にする
 
@@ -39,7 +39,7 @@ Azure App Service で使用する SSL 証明書を取得するには、証明書
 - [OpenSSL を使用した SubjectAltName 証明書の取得](#bkmk_subjectaltname)
 - [自己署名証明書の生成 (テスト目的専用)](#bkmk_selfsigned) 
 
-> [AZURE.NOTE] 手順の途中で、`www.contoso.com` などの**共通名**の入力が必要になります。ワイルドカード証明書の場合、この値は \*.ドメイン名 (\*.contoso.com など) にする必要があります。ワイルドカード名 (\*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードの subjectAltName 証明書を使用できます。
+> [AZURE.NOTE] 手順の途中で、`www.contoso.com` などの**共通名**の入力が必要になります。ワイルドカード証明書の場合、この値は *.ドメイン名 (*.contoso.com など) にする必要があります。ワイルドカード名 (*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードの subjectAltName 証明書を使用できます。
 >
 > Azure App Service は楕円曲線暗号 (ECC) 証明書をサポートしています。ただし、この証明書は比較的新しいため、正しい手順で CSR を作成するには証明機関の協力が必要です。
 

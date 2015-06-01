@@ -327,7 +327,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	}
 
 ## スタイルを設定する ##
-ページ上部のタイトルを変更するには、**ソリューション エクスプローラー**で *Views\\Shared\\_Layout.cshtml* ファイルを開き、ナビゲーション ヘッダーの "Application name" を、次のように "My Task List Application" で置き換えます。
+ページ上部のタイトルを変更するには、**ソリューション エクスプローラー**で *Views\\Shared\_Layout.cshtml* ファイルを開き、ナビゲーション ヘッダーの "Application name" を、次のように "My Task List Application" で置き換えます。
 
  	@Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
@@ -368,7 +368,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	<div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-新しいタスクを作成する機能を追加するために、*Views\\Home\* フォルダーを右クリックして、**[追加]**、**[ビュー]** の順にクリックします。ビューの名前を「*Create*」にします。コードを次のコードに置き換えます。
+新しいタスクを作成する機能を追加するために、*Views\\Home* フォルダーを右クリックして、**[追加]**、**[ビュー]** の順にクリックします。ビューの名前を「*Create*」にします。コードを次のコードに置き換えます。
 
 	@model MyTaskListApp.Models.MyTask
 	

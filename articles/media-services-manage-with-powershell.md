@@ -36,11 +36,11 @@ PowerShell コマンドレットをインストールして構成した後、作
 
 利用可能なサブスクリプションの一覧を取得するには、次のコマンドレットを実行します。
 
-	PS C:\> Get-AzureSubscription
+	PS C:> Get-AzureSubscription
 
 次に、以下を実行していずれか 1 つを選択します。
 
-	PS C:\> Select-AzureSubscription "TestSubscription"
+	PS C:> Select-AzureSubscription "TestSubscription"
 
  
 ## ストレージ アカウント名の取得
@@ -73,14 +73,14 @@ Azure Media Services は、メディア コンテンツの格納に Azure スト
 新しい Azure Media Services アカウントを作成するには、[New-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495286.aspx) コマンドレットを使用します。これにより、Media Services アカウント名、アカウントが作成されるデータ センターの場所、ストレージ アカウント名が提供されます。 
 
 
-	PS C:\> New-AzureMediaServicesAccount -Name "amstestaccount001" -StorageAccountName "storagetest001" -Location "East US"
+	PS C:> New-AzureMediaServicesAccount -Name "amstestaccount001" -StorageAccountName "storagetest001" -Location "East US"
 
 ## Media Services アカウントの取得
 
 1 つ以上の Media Services アカウントを作成すると、[Get-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495286.aspx) を使用して情報の一覧を表示できます。
 
 	
-	PS C:\> Get-AzureMediaServicesAccount
+	PS C:> Get-AzureMediaServicesAccount
 	
 	AccountId		Name				State
 	---------       ----       			 -----
@@ -88,7 +88,7 @@ Azure Media Services は、メディア コンテンツの格納に Azure スト
 
 Name パラメーターを提供することによってアカウント キーなどのより詳細な情報が表示されます。
 
-	PS C:\> Get-AzureMediaServicesAccount -Name amstestaccount001
+	PS C:> Get-AzureMediaServicesAccount -Name amstestaccount001
 
 ## Media Services アクセス キーの再生成
 
@@ -97,13 +97,13 @@ Media Services のプライマリまたはセカンダリ アクセス キーを
 
 PowerShell で確認の質問を表示させないようにするには、-Force スイッチを指定します。
 
-	PS C:\> New-AzureMediaServicesKey -Name "amstestaccount001" -KeyType "Primary" -Force
+	PS C:> New-AzureMediaServicesKey -Name "amstestaccount001" -KeyType "Primary" -Force
 
 ## Media Services アカウントの削除
 
 Azure Media Services を削除する準備ができたら、[Remove-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495220.aspx) を使用します。
 
-	PS C:\> Remove-AzureMediaServicesAccount -Name "amstestaccount001" -Force
+	PS C:> Remove-AzureMediaServicesAccount -Name "amstestaccount001" -Force
 
 
 

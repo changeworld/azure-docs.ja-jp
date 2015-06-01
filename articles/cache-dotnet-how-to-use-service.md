@@ -18,7 +18,7 @@
 
 # Azure マネージ キャッシュ サービスの使用方法
 
-このガイドでは、**Azure Managed Cache Service** の基本的な使用方法について説明します。サンプルは C\# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュの作成と構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。Azure Cache の使用方法の詳細については、「[次のステップ][]」を参照してください。
+このガイドでは、**Azure Managed Cache Service** の基本的な使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュの作成と構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。Azure Cache の使用方法の詳細については、「[次のステップ][]」を参照してください。
 
 >アプリケーションに適した Azure のキャッシュ オファリングを選択する方法については、「[どの Azure Cache を利用すればよいですか。][]」を参照してください。
 
@@ -95,12 +95,12 @@ PowerShell コマンドレットを呼び出した後、キャッシュが作成
 
 Azure PowerShell ウィンドウで作成の進捗状況をモニタリングできます。キャッシュが使用可能になると、次の例に示すように [New-AzureManagedCache][] コマンドレットでキャッシュ情報が表示されます。
 
-	PS C:\> Add-AzureAccount
+	PS C:> Add-AzureAccount
 	VERBOSE: Account "user@domain.com" has been added.
 	VERBOSE: Subscription "MySubscription" is selected as the default subscription.
 	VERBOSE: To view all the subscriptions, please use Get-AzureSubscription.
 	VERBOSE: To switch to a different subscription, please use Select-AzureSubscription.
-	PS C:\> New-AzureManagedCache -Name contosocache -Location "South Central US" -Sku Basic -Memory 128MB
+	PS C:> New-AzureManagedCache -Name contosocache -Location "South Central US" -Sku Basic -Memory 128MB
 	VERBOSE: Intializing parameters...
 	VERBOSE: Creating prerequisites...
 	VERBOSE: Verify cache service name...
@@ -116,7 +116,7 @@ Azure PowerShell ウィンドウで作成の進捗状況をモニタリングで
 
 
 
-	PS C:\>
+	PS C:>
 
 
 
@@ -259,7 +259,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 
 -	Microsoft.Web.DistributedCache.dll.
 
->これらのアセンブリは、C:\\Program Files\\Microsoft SDKs\\Windows Azure\\.NET SDK\\[[SDK バージョン]]\\ref\\Caching\\ フォルダーにあります。
+>これらのアセンブリは、C:\\Program Files\\Microsoft SDKs\\Windows Azure\.NET SDK[[SDK バージョン]]\\ref\\Caching\\ フォルダーにあります。
 
 クライアント プロジェクトをキャッシュ用に構成できたら、以降のセクションで説明されている、キャッシュを操作するための技法を使用できます。
 

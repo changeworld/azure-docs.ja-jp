@@ -19,7 +19,7 @@
 
 1. Windows ホストで、Microsoft iSCSI イニシエーターを起動します。
 
-2. **\[iSCSI イニシエーターのプロパティ\]** ウィンドウの **\[構成\]** タブで、**\[イニシエーター名\]** フィールドから文字列を選択してコピーします。
+2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[構成]** タブで、**[イニシエーター名]** フィールドから文字列を選択してコピーします。
  
     ![iSCSI イニシエーターのプロパティ](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 

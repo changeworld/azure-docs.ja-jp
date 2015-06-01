@@ -23,7 +23,7 @@
 ## 概要
 
 このガイドでは、Azure Queue ストレージ サービスを使用して
-一般的なシナリオを実行する方法について説明します。例は C\# のコードで記述され、Azure .NET 用ストレージ クライアントを利用しています。キュー メッセージの**挿入**、
+一般的なシナリオを実行する方法について説明します。例は C# のコードで記述され、Azure .NET 用ストレージ クライアントを利用しています。キュー メッセージの**挿入**、
 **ピーク**、**取得**、および**削除**と、
 **キューの作成と削除**の各シナリオについて説明します。
 
@@ -40,10 +40,10 @@
 ### アセンブリの取得
 NuGet を使用して  `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして、Azure Storage パッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://azure.microsoft.com/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは  `%Program Files%\Microsoft SDKs\Azure\.NET SDK\<sdk-version>\ref\` ディレクトリにインストールされます。
+`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://azure.microsoft.com/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは  `%Program Files%\Microsoft SDKs\Azure.NET SDK<sdk-version>\ref` ディレクトリにインストールされます。
 
 ### 名前空間宣言
-プログラムを使用して Azure Storage にアクセスするすべての C\# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
+プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;

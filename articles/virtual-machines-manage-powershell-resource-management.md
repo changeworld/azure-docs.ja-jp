@@ -32,7 +32,7 @@
 ## 仮想マシンの取得
 これは頻繁に使用することになる基本的なタスクです。VM に関する情報の取得、VM でのタスクの実行、変数に格納する出力の取得に使用します。
 
-VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 \(< and > を含む\) を置き換えます。
+VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 (< and > を含む) を置き換えます。
 
      Get-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -54,7 +54,7 @@ Run these commands:
 	$svcName="<cloud service name>"
 	$vmName="<virtual machine name>"
 	$localPath="<drive and folder location to store the downloaded RDP file, example: c:\temp >"
-	$localFile=$localPath + "\" + $vmname + ".rdp"
+	$localFile=$localPath + "" + $vmname + ".rdp"
 	Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch 
 -->
 
@@ -70,7 +70,7 @@ Run these commands:
 
     Stop-AzureVM -ResourceGroupName "<resource group name>" -Name "<virtual machine name>"
 
->[AZURE.IMPORTANT]**StayProvisioned** パラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP \(VIP\) を保持するために使用します。このパラメーターを使用する場合、その VM に対して引き続き課金されます。
+>[AZURE.IMPORTANT]**StayProvisioned** パラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP (VIP) を保持するために使用します。このパラメーターを使用する場合、その VM に対して引き続き課金されます。
 
 ## VM の再起動
 

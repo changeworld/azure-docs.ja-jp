@@ -207,7 +207,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
     <p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが含まれていることを確認してください。 </p>
 
     > [AZURE.NOTE] **名前が複数形の DocumentDB.inputCollections になっているのは誤りではありません。**入力として複数のコレクションを追加できるようにすることから、この名前が使用されています。 </br>
-    '*DocumentDB.inputCollections*' = '*\<DocumentDB 入力コレクション名 1\>*,*\<DocumentDB 入力コレクション名 2\>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。
+    '*DocumentDB.inputCollections*' = '*<DocumentDB 入力コレクション名 1>*,*<DocumentDB 入力コレクション名 2>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。
 
 		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
 		$queryStringPart1 = "drop table DocumentDB_timestamps; "  + 
@@ -223,7 +223,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 3.  次に、出力コレクション用に Hive テーブルを作成します。出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
 	> [AZURE.NOTE] **ここでも、名前が複数形の DocumentDB.outputCollections になっているのは誤りではありません。**出力として複数のコレクションを追加できるようにすることから、この名前が使用されています。 </br>
-    '*DocumentDB.outputCollections*' = '*\<DocumentDB 出力コレクション名 1\>*,*\<DocumentDB 出力コレクション名 2\>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </br></br>
+    '*DocumentDB.outputCollections*' = '*<DocumentDB 出力コレクション名 1>*,*<DocumentDB 出力コレクション名 2>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </br></br>
     ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Create a Hive table for the output data to DocumentDB.
@@ -303,7 +303,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
     <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
 
     > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
-    '*\<DocumentDB 入力コレクション名 1\>*,*\<DocumentDB 入力コレクション名 2\>*'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </b>
+    '*<DocumentDB 入力コレクション名 1>*,*<DocumentDB 入力コレクション名 2>*'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。 </b>
 
 	ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
@@ -324,7 +324,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 4. 最後に、その結果を新しい出力コレクションに格納します。
 
     > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの出力として追加することができます。 </br>
-    '\<DocumentDB 出力コレクション名 1\>,\<DocumentDB 出力コレクション名 2\>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
+    '<DocumentDB 出力コレクション名 1>,<DocumentDB 出力コレクション名 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
     ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Store output data to DocumentDB.

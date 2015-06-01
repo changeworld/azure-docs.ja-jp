@@ -24,7 +24,7 @@
 AzureResourceManager モジュールには、コマンドラインから Azure リソースを操作する場合に、作業に役立つツールを収集するコマンドレットが含まれています。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース管理 API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報をナビゲートするとともに、テンプレートおよびテンプレートのパラメーター ファイルを設計し、操作するために使用する最初の 1 つになります。
 
 ### Mac、Linux、Windows の各ツール
-Mac、Linux、Windows 版の Azure コマンドライン インターフェイスを使用する場合は、標準のダウンロード ツール \(**[curl](http://curl.haxx.se/)** と **[wget](https://www.gnu.org/software/wget/)** または **[Resty](https://github.com/beders/Resty)** など\)、JSON ユーティリティ \(**[jq](http://stedolan.github.io/jq/download/)**、**[jsawk](https://github.com/micha/jsawk)** など\)、および JSON を適切に処理する言語ライブラリを熟知していることが好ましいです。\(これらのツールの多くには、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) などの Windows 用のポートもあります。実際、Linux とその他のオープン ソース ソフトウェア ツールを Windows でも実行させるいくつかの方法があります。\)
+Mac、Linux、Windows 版の Azure コマンドライン インターフェイスを使用する場合は、標準のダウンロード ツール (**[curl](http://curl.haxx.se/)** と **[wget](https://www.gnu.org/software/wget/)** または **[Resty](https://github.com/beders/Resty)** など)、JSON ユーティリティ (**[jq](http://stedolan.github.io/jq/download/)**、**[jsawk](https://github.com/micha/jsawk)** など)、および JSON を適切に処理する言語ライブラリを熟知していることが好ましいです。(これらのツールの多くには、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) などの Windows 用のポートもあります。実際、Linux とその他のオープン ソース ソフトウェア ツールを Windows でも実行させるいくつかの方法があります。)
 
 このトピックには、**jq** とともに使用して、正確な情報をより効率的に取得する Azure CLI コマンドが含まれています。Azure リソースの使用状況を理解するには、使い慣れているツールセットを選択する必要があります。
 
@@ -33,7 +33,7 @@ Mac、Linux、Windows 版の Azure コマンドライン インターフェイ�
 Windows PowerShell には、同じ手順を実行するいくつかの基本的なコマンドがあります。
 
 - **[Invoke-WebRequest](https://technet.microsoft.com/library/hh849901%28v=wps.640%29)** コマンドレットを使用すると、リソース グループ テンプレートやパラメーターの JSON ファイルなどのファイルをダウンロードできます。
-- **[ConvertFrom-Json](https://technet.microsoft.com/library/hh849898%28v=wps.640%29.aspx)** コマンドレットを使用すると、JSON 文字列を、JSON 文字列の各フィールドにプロパティを持つカスタム オブジェクト \([PSCustomObject](https://msdn.microsoft.com/library/windows/desktop/system.management.automation.pscustomobject%28v=vs.85%29.aspx)\) に変換できます。
+- **[ConvertFrom-Json](https://technet.microsoft.com/library/hh849898%28v=wps.640%29.aspx)** コマンドレットを使用すると、JSON 文字列を、JSON 文字列の各フィールドにプロパティを持つカスタム オブジェクト ([PSCustomObject](https://msdn.microsoft.com/library/windows/desktop/system.management.automation.pscustomobject%28v=vs.85%29.aspx)) に変換できます。
 
 ## Mac、Linux、および Windows 用の Azure CLI でエラーを回避する
 
@@ -41,7 +41,7 @@ Azure CLI には、エラーを防止し、実行中の不具合を検出する�
 
 - **azure location list**。このコマンドでは、Virtual Machines のプロバイダーなどの各種リソースをサポートする場所を取得します。リソースの場所を入力する前に、このコマンドを使用して、その場所がリソースの種類をサポートしていることを確認します。
 
-    場所の一覧は長くなることがあり、多数のプロバイダーがあるため、ツールを使用して、まだ使用可能でない場所を使用する前に、プロバイダーと場所を確認します。次のスクリプトでは、**jq** を使用して、Azure Virtual Machines のリソース プロバイダーが使用可能な場所を探索します。\(\)
+    場所の一覧は長くなることがあり、多数のプロバイダーがあるため、ツールを使用して、まだ使用可能でない場所を使用する前に、プロバイダーと場所を確認します。次のスクリプトでは、**jq** を使用して、Azure Virtual Machines のリソース プロバイダーが使用可能な場所を探索します。()
 
         azure location list --json | jq '.[] | select(.name == "Microsoft.Compute/virtualMachines")'
         {
@@ -209,7 +209,7 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 
 認証と承認および Azure Active Directory に関連する、デプロイの成功を妨げる 1 つ以上の問題があることがあります。Azure リソース グループの管理方法に関係なく、アカウントにログインするために使用する ID は、Azure Active Directory のオブジェクトやサービス プリンシパル、仕事または学校のアカウントとも呼ばれるもの、または組織の ID のいずれかである必要があります。
 
-しかし、Azure Active Directory では、ユーザーまたはユーザーの管理者が、どの ID がどのリソースにアクセスできるかを高い精度で制御できるようにします。デプロイメントが失敗している場合は、認証または承認の問題の兆候があるかどうかについて要求自体を調べるだけでなく、リソース グループのデプロイメントのログを調べます。自分が一部のリソースに対するアクセス許可を持つ一方、他のリソースに対するアクセス許可のないことが分かる場合があります。Azure CLI を使用すると、`azure ad` コマンドを使用して、Azure Active Directory テナントおよびユーザーを確認することができます。\(Azure CLI コマンドの完全な一覧については、「[Mac、Linux、および Windows と Azure リソース管理で Azure CLI を使用する](azure-cli-arm-commands.md)」を参照してください。\)
+しかし、Azure Active Directory では、ユーザーまたはユーザーの管理者が、どの ID がどのリソースにアクセスできるかを高い精度で制御できるようにします。デプロイメントが失敗している場合は、認証または承認の問題の兆候があるかどうかについて要求自体を調べるだけでなく、リソース グループのデプロイメントのログを調べます。自分が一部のリソースに対するアクセス許可を持つ一方、他のリソースに対するアクセス許可のないことが分かる場合があります。Azure CLI を使用すると、`azure ad` コマンドを使用して、Azure Active Directory テナントおよびユーザーを確認することができます。(Azure CLI コマンドの完全な一覧については、「[Mac、Linux、および Windows と Azure リソース管理で Azure CLI を使用する](azure-cli-arm-commands.md)」を参照してください。)
 
 また、デプロイが既定のクォータに達すると、問題が発生する場合があります。既定のクォータは、リソース グループごと、サブスクリプションごと、アカウントごと、および他のスコープである可能性があります。正しくデプロイするために使用可能なリソースを持っているかどうかの満足度を確認します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](azure-subscription-service-limits.md)」をご覧ください。
 
@@ -222,7 +222,7 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 
 リソースは、リソース プロバイダーによって管理され、特定のプロバイダーを使用するためにアカウントまたはサブスクリプションを有効にすることができます。プロバイダーを使用できるようになったら、使用登録もする必要があります。ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、すべてがそうではありません。
 
-Azure CLI を使用してプロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します \(切り捨てられた出力の例を次に示します\)。
+Azure CLI を使用してプロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します (切り捨てられた出力の例を次に示します)。
 
         azure provider list
         info:    Executing command provider list
@@ -278,7 +278,7 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 ただし、これは必ずしも、リソース グループが**アクティブで、ユーザーが使用できる状態**であるとは限りません。たとえば、ほとんどのデプロイメントでは、アップグレードのダウンロード、他の非テンプレート リソースの待機、または複雑なスクリプトや、Azure が認識していない他の実行可能なアクティビティのインストールをデプロイメントに要求します。これは、アクティビティが、プロバイダーが追跡しているアクティビティではないためです。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイが使用できるまでのある時にデプロイが成功の状態になることを予期する必要があります。
 
-ただし、\(たとえば [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して\) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。例は[こちら](https://msdn.microsoft.com/library/azure/dn790564.aspx)で確認できます。
+ただし、(たとえば [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。例は[こちら](https://msdn.microsoft.com/library/azure/dn790564.aspx)で確認できます。
 
 ## テンプレートのマージ
 

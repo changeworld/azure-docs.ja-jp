@@ -22,16 +22,16 @@
 
 ## 手順 1: Azure IaaS 診断パッケージを実行します。
 
-リモート デスクトップ接続の作成時によく発生する多くの問題を解決できるように、Microsoft は [Azure IaaS \(Windows\) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を作成しました。
+リモート デスクトップ接続の作成時によく発生する多くの問題を解決できるように、Microsoft は [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を作成しました。
 
-1.	このページで \[**Microsoft Azure IaaS \(Windows\) 診断パッケージ**\] をクリックして、新しい診断セッションを作成します。
-2.	\[**Azure VM で発生している問題**\] ページで、\[**Azure VM との RDP 接続 \(再起動が必要\)**\] の問題を選択します。 
+1.	このページで [**Microsoft Azure IaaS (Windows) 診断パッケージ**] をクリックして、新しい診断セッションを作成します。
+2.	[**Azure VM で発生している問題**] ページで、[**Azure VM との RDP 接続 (再起動が必要)**] の問題を選択します。 
 
-詳細については、「[Microsoft Azure IaaS \(Windows\) 診断パッケージについてのナレッジベース](http://support.microsoft.com/kb/2976864)」の記事を参照してください。
+詳細については、「[Microsoft Azure IaaS (Windows) 診断パッケージについてのナレッジベース](http://support.microsoft.com/kb/2976864)」の記事を参照してください。
 
 Azure IaaS 診断パッケージを実行しても問題が解決されない場合、または診断パッケージを実行できない場合は、これ以降の手順で説明する、より詳細なトラブルシューティングが必要になる場合があります。
 
-> [AZURE.NOTE]Azure IaaS \(Windows\) 診断パッケージは、Windows 8、Windows 8.1、Windows Server 2012、または Windows Server 2012 R2 を実行するコンピューター上で実行する必要があります。
+> [AZURE.NOTE]Azure IaaS (Windows) 診断パッケージは、Windows 8、Windows 8.1、Windows Server 2012、または Windows Server 2012 R2 を実行するコンピューター上で実行する必要があります。
 
 ## 手順 2: リモート デスクトップ クライアントからのエラー メッセージを確認します。
 
@@ -60,7 +60,7 @@ Azure 管理ポータルによって生成された RDP ファイルの例を次
 	full address:s:tailspin-azdatatier.cloudapp.net:55919
 	prompt for credentials:i:1
 
-アドレス部分は、仮想マシンを含むクラウド サービスの完全修飾ドメイン名 \(この例では tailspin azdatatier.cloudapp.net\) と、リモート デスクトップのトラフィック向けエンドポイントの外部 TCP ポート \(55919\) で構成されます。
+アドレス部分は、仮想マシンを含むクラウド サービスの完全修飾ドメイン名 (この例では tailspin azdatatier.cloudapp.net) と、リモート デスクトップのトラフィック向けエンドポイントの外部 TCP ポート (55919) で構成されます。
 
 考えられるこの問題の解決策
 
@@ -73,8 +73,8 @@ Azure 管理ポータルによって生成された RDP ファイルの例を次
 
 Windows ベースのコンピューターでは、ローカル アカウントまたはドメイン ベース アカウントのいずれかの資格情報が認証されます。
 
-- ローカル アカウントの場合、 <computer name>\< アカウント名 \> の構文 \(例: SQL1\\Admin4798\) を使用します。 
-- ドメイン アカウントの場合、 <domain name>\< アカウント名 \> の構文 \(例: CONTOSO\\johndoe\) を使用します。
+- ローカル アカウントの場合、 <computer name>< アカウント名 > の構文 (例: SQL1\\Admin4798) を使用します。 
+- ドメイン アカウントの場合、 <domain name>< アカウント名 > の構文 (例: CONTOSO\\johndoe) を使用します。
 
 新しい AD フォレスト内でドメイン コント ローラーに昇格するコンピューターの場合、昇格実行時のログインに使用するローカル管理者アカウントは、新しいフォレストとドメインで、同じパスワードを含む同等のアカウントに変換されます。前のローカル管理者アカウントは削除されます。たとえば、ローカル管理者アカウント DC1\\DCAdmin でログインして、新しいフォレストで仮想マシンを corp.contoso.com ドメインのドメイン コント ローラーとして昇格すると、DC1\\DCAdmin のローカル アカウントは削除され、新しいドメイン アカウント CORP\\DCAdmin が同じパスワードで作成されます。
 
@@ -88,7 +88,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 各 Windows コンピューターにはリモート デスクトップ ユーザーのローカル グループがあり、このグループには、リモート デスクトップ接続にログオンする権利を持つアカウントおよびグループが含まれます。ローカルの Administrators グループのメンバーも、アカウントはリモート デスクトップ ユーザーのローカル グループのメンバーとしてリストされていませんが、アクセスできます。ドメインに参加しているマシンの場合、ローカルの Administrators グループにはドメインのドメイン管理者も含まれます。
 
-接続を開始するために使用しているアカウントに、リモート デスクトップへのログオン権限があることを確認してください。一時的な回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用してリモート デスクトップ接続を作成し、コンピュータの管理スナップインを使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します \(\[システム ツール\] \> \[ローカル ユーザーとグループ\] \> \[グループ\] \> \[リモート デスクトップ ユーザー\]\)。
+接続を開始するために使用しているアカウントに、リモート デスクトップへのログオン権限があることを確認してください。一時的な回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用してリモート デスクトップ接続を作成し、コンピュータの管理スナップインを使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します ([システム ツール] > [ローカル ユーザーとグループ] > [グループ] > [リモート デスクトップ ユーザー])。
 
 ### リモート デスクトップ接続のメッセージ ウィンドウ: 以下のいずれかの理由によって、リモート デスクトップがリモート コンピューターに接続できません。
 
@@ -100,7 +100,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
  
 段階的なトラブルシューティング プロセスを開始する前に、正常にリモート デスクトップ接続を作成できた当初から何が変更されたのかを振り返り、その変更を、問題解決のための出発点にすることをお勧めします。次に例を示します。
 
-- リモート デスクトップ接続を作成できていたときに、ご利用の仮想マシンを含むクラウド サービスのパブリック IP アドレス \(仮想 IP アドレス [VIP] とも呼ばれる\) を変更したのであれば、DNS クライアント キャッシュに、クラウド サービスの DNS 名のエントリおよび*古い IP アドレス*が含まれている可能性があります。DNS クライアント キャッシュをフラッシュして、もう一度やり直してくださいまたは、新しい VIP を使用して接続を試してみてください。
+- リモート デスクトップ接続を作成できていたときに、ご利用の仮想マシンを含むクラウド サービスのパブリック IP アドレス (仮想 IP アドレス [VIP] とも呼ばれる) を変更したのであれば、DNS クライアント キャッシュに、クラウド サービスの DNS 名のエントリおよび*古い IP アドレス*が含まれている可能性があります。DNS クライアント キャッシュをフラッシュして、もう一度やり直してくださいまたは、新しい VIP を使用して接続を試してみてください。
 - Azure 管理ポータルまたはAzure プレビュー ポータルの使用から、リモート デスクトップ接続の管理用アプリケーションの使用に切り替えたのであれば、ランダムに決定されるリモート デスクトップのトラフィック向け TCP ポートがアプリケーションの構成に含まれていることを確認します。 
 
 次のセクションでは、この問題のさまざまな根本的原因を特定して判断する手順を説明しながら、解決策と回避策を紹介します。
@@ -121,7 +121,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 - リモート デスクトップ クライアント コンピューター
 - 組織のイントラネットのエッジ デバイス
-- クラウド サービス エンドポイントとアクセス制御リスト \(ACL\)
+- クラウド サービス エンドポイントとアクセス制御リスト (ACL)
 - ネットワーク セキュリティ グループ
 - Windows ベースのAzure 仮想マシン
 
@@ -167,7 +167,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 同じクラウド サービス内の仮想マシンへのリモート デスクトップ接続を作成できる場合は、以下を確認してください。
 
 - ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、仮想マシン上のリモート デスクトップ サービスのサービスがリッスンする TCP ポートと一致する必要があります。この TCP ポートの既定設定は 3389 です。 
-- ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへのリモート デスクトップの受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[ネットワーク アクセス制御リスト \(ACL\) について](https://msdn.microsoft.com/library/azure/dn376541.aspx)」を参照してください。
+- ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへのリモート デスクトップの受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[ネットワーク アクセス制御リスト (ACL) について](https://msdn.microsoft.com/library/azure/dn376541.aspx)」を参照してください。
 
 問題の原因としてをエンドポイントを排除する場合、現在使用されているエンドポイントを削除してから新しいエンドポイントを作成します。このとき、外部ポート番号の範囲 49152 ～ 65535 からランダムなポート番号を選択します。詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-set-up-endpoints.md)」をご覧ください
 
@@ -183,9 +183,9 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 ![](./media/virtual-machines-troubleshoot-remote-desktop-connections/tshootrdp_5.png)
  
-まず、**Azure VM との RDP 接続 \(再起動が必要\)** に関する問題を解決するために[Azure IaaS \(Windows\) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、 「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」の指示に従って、仮想マシンのリモート デスクトップ サービスのサービスをリセットします。リセットすると、以下のようになります。
+まず、**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために[Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、 「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」の指示に従って、仮想マシンのリモート デスクトップ サービスのサービスをリセットします。リセットすると、以下のようになります。
 
-- 「リモート デスクトップ」 の Windows ファイアウォールの既定ルール \(TCP ポート 3389\) が有効になる。
+- 「リモート デスクトップ」 の Windows ファイアウォールの既定ルール (TCP ポート 3389) が有効になる。
 - HKLM\\System\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections レジストリ値が 0 に設定されるため、リモート デスクトップ接続が有効になる。
 
 もう一度、コンピューターから接続を試みてください。接続できなければ、以下の問題が考えらえます。
@@ -201,7 +201,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 次に、Azure PowerShell のコマンド プロンプトを開き、現在のフォルダーを、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルのある場所に変更します。PowerShell スクリプトを実行するには、適切な実行ポリシーを設定する必要があります。**Get-executionpolicy** コマンドを実行して、現在のポリシー レベルを決定します。適切なレベルの設定方法の詳細については、「[Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)」 を参照してください。
 
-次に、Azure のサブスクリプション名、クラウド サービス名、および仮想マシン名を入力してから \(< and > 文字を削除する\)、これらのコマンドを実行します。
+次に、Azure のサブスクリプション名、クラウド サービス名、および仮想マシン名を入力してから (< and > 文字を削除する)、これらのコマンドを実行します。
 
 	$subscr="<Name of your Azure subscription>"
 	$serviceName="<Name of the cloud service that contains the target virtual machine>"
@@ -210,7 +210,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 正しいサブスクリプション名は、**Get-AzureSubscription** コマンドで表示される SubscriptionName プロパティから取得できます。仮想マシンのクラウド サービス名は、**Get-azurevm** コマンドに表示される ServiceName 列から取得できます 。
 
-この新しい証明書があることを確かめるには、\[現在のユーザー\] 用の証明書スナップインを開き、 **\[信頼されたルート証明機関\] \> \[証明書\]** フォルダーを開きます。クラウド サービスの DNS 名が付けられた証明書が、\[発行先\] 列に表示されます \(例: cloudservice4testing.cloudapp.net\)、、
+この新しい証明書があることを確かめるには、[現在のユーザー] 用の証明書スナップインを開き、 **[信頼されたルート証明機関] > [証明書]** フォルダーを開きます。クラウド サービスの DNS 名が付けられた証明書が、[発行先] 列に表示されます (例: cloudservice4testing.cloudapp.net)、、
 
 次に以下のコマンドを使用して、リモート PowerShell セッションを開始します。
 
@@ -228,11 +228,11 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 ### リモート デスクトップ サービスのサービスでリッスンする TCP ポートの手動修正
 
-[Azure VM との RDP 接続 \(再起動が必要\)](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864) に関する問題を解決するために **Azure IaaS \(Windows\) 診断パッケージ**を実行できなかった場合、リモートの PowerShell セッションのプロンプトで、このコマンドを実行します。　　　　
+[Azure VM との RDP 接続 (再起動が必要)](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864) に関する問題を解決するために **Azure IaaS (Windows) 診断パッケージ**を実行できなかった場合、リモートの PowerShell セッションのプロンプトで、このコマンドを実行します。　　　　
 
 	Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
 
-PortNumber プロパティは、現在のポート番号を表示します。必要に応じて、次のコマンドを使用してリモート デスクトップのポート番号を既定値 \(3389\) に戻してください。
+PortNumber プロパティは、現在のポート番号を表示します。必要に応じて、次のコマンドを使用してリモート デスクトップのポート番号を既定値 (3389) に戻してください。
 
 	Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber" -Value 3389
 
@@ -252,17 +252,17 @@ Azure 仮想マシンのリモート デスクトップのエンドポイント�
 
 ## 手順 6: Azure サポート インシデントを送信します。
 
-**Azure VM との RDP 接続 \(再起動が必要\)** に関する問題を解決するために [Azure IaaS \(Windows\) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)またはこの記事の手順 2 ～ 5 を実行し、その問題を Azure サポート フォーラムに送信したにもかかわらず、 リモート デスクトップ接続を作成できない場合、ユーザーができることは、仮想マシンを再作成できるかどうかを確認することです。 
+**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)またはこの記事の手順 2 ～ 5 を実行し、その問題を Azure サポート フォーラムに送信したにもかかわらず、 リモート デスクトップ接続を作成できない場合、ユーザーができることは、仮想マシンを再作成できるかどうかを確認することです。 
 
 仮想マシンを再作成できなければ、Azureサポート インシデントを送信することをお勧めします。
 
-インシデントを送信するには、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)で \[**サポートの要求**\] をクリックします。
+インシデントを送信するには、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)で [**サポートの要求**] をクリックします。
 
 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## その他のリソース
 
-[Azure IaaS \(Windows\) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
+[Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 
 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)
 

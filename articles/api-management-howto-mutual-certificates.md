@@ -41,11 +41,11 @@ API Management には、相互証明書を使用して API のバックエンド
 
 > まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
 
-左側の **[API Management]** メニューで **[セキュリティ]** をクリックして、**\[クライアント証明書]** をクリックします。
+左側の **[API Management]** メニューで **[セキュリティ]** をクリックして、**[クライアント証明書]** をクリックします。
 
 ![クライアント証明書][api-management-security-client-certificates]
 
-新しい証明書をアップロードするには、**\[証明書のアップロード]** をクリックします。
+新しい証明書をアップロードするには、**[証明書のアップロード]** をクリックします。
 
 ![証明書のアップロード][api-management-upload-certificate]
 
@@ -83,7 +83,7 @@ API Management には、相互証明書を使用して API のバックエンド
 
 ![API セキュリティ][api-management-api-security]
 
-**[証明書を使用 (With credential)]** ドロップダウン リストで、**\[相互証明書]** を選択します。
+**[証明書を使用 (With credential)]** ドロップダウン リストで、**[相互証明書]** を選択します。
 
 ![相互証明書][api-management-mutual-certificates]
 

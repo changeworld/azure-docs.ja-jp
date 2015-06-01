@@ -22,27 +22,27 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 
 ## 前提条件
 
-現在、プラグインは、Eclipse の動的 Web プロジェクトに対応しています \([他の種類の Java プロジェクトに Application Insights を追加します][java]\)。
+現在、プラグインは、Eclipse の動的 Web プロジェクトに対応しています ([他の種類の Java プロジェクトに Application Insights を追加します][java])。
 
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降。
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション\([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます\)。
+* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/) Indigo 以降。
 * Windows 7 以降または Windows Server 2008 以降。
 
-## Eclipse に SDK をインストールする \(1 回限り\)
+## Eclipse に SDK をインストールする (1 回限り)
 
 この操作は、コンピューターごとに 1 回行う必要があります。この手順では、SDK を各動的 Web プロジェクトに追加できるツールキットをインストールします。
 
-1. Eclipse で、\[Help\]、\[Install New Software\] の順にクリックします。
+1. Eclipse で、[Help]、[Install New Software] の順にクリックします。
 
-    ![\[Help\]、\[Install New Software\]](./media/app-insights-java-eclipse/0-plugin.png)
+    ![[Help]、[Install New Software]](./media/app-insights-java-eclipse/0-plugin.png)
 
 2. SDK は、http://dl.msopentech.com/eclipse の Azure Toolkit のページから入手できます。
-3. **\[Contact all update sites\]** チェック ボックスをオフにします。
+3. **[Contact all update sites]** チェック ボックスをオフにします。
 
-    ![Application Insights SDK の場合、\[Contact all update sites\] チェック ボックスをオフにします](./media/app-insights-java-eclipse/1-plugin.png)
+    ![Application Insights SDK の場合、[Contact all update sites] チェック ボックスをオフにします](./media/app-insights-java-eclipse/1-plugin.png)
 
 Java プロジェクトごとに、残りの手順に従います。
 
@@ -50,25 +50,25 @@ Java プロジェクトごとに、残りの手順に従います。
 
 利用状況およびパフォーマンス分析は、Azure Web ポータルの Azure リソースに表示されます。この手順では、アプリケーションの Azure リソースを設定します。
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします \([Azure サブスクリプションが必要です](http://azure.microsoft.com/)\)。
+1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします ([Azure サブスクリプションが必要です](http://azure.microsoft.com/))。
 2. 新しい Application Insights リソースを作成します。
 
-    ![\[+\] をクリックし、\[Application Insights\] を選択します](./media/app-insights-java-get-started/01-create.png)
-3. アプリケーションの種類を \[Java Web アプリケーション\] に設定します。
+    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-get-started/01-create.png)
+3. アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
-    ![名前を入力し、\[Java Web アプリケーション\] を選択した後、\[作成\] をクリックします](./media/app-insights-java-get-started/02-create.png)
+    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-get-started/02-create.png)
 4. 新しいリソースのインストルメンテーション キーを見つけます。このキーは、後で Eclipse のプロジェクトに貼り付けます。
 
-    ![新しいリソース概要で、\[プロパティ\] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
 
 ## Java プロジェクトに SDK を追加する
 
 1. Web プロジェクトのコンテキスト メニューから Application Insights を追加します。
 
-    ![新しいリソース概要で、\[プロパティ\] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/4-addai.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/4-addai.png)
 2. Azure ポータルで入手したインストルメンテーション キーを貼り付けます。
 
-    ![新しいリソース概要で、\[プロパティ\] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/5-config.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/5-config.png)
 
 
 このキーは、テレメトリのすべての項目と共に送信され、リソース内にこれを表示するように Application Insights に指示します。
@@ -79,7 +79,7 @@ Java プロジェクトごとに、残りの手順に従います。
 
 Microsoft Azure の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます \(表示されない場合は、数秒待ってから \[最新の情報に更新\] をクリックします\)。
+HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サーバーの応答、要求の数、エラー](./media/app-insights-java-track-http-requests/5-results.png)
  
@@ -93,14 +93,14 @@ HTTP 要求データが概要ブレードに表示されます \(表示されな
 
  
 
-要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント \(要求や例外など\) が表示されます。
+要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
  
 ![この要求のすべてのトレース](./media/app-insights-java-track-http-requests/7-instance.png)
 
 
 ## クライアント側のテレメトリ
 
-Web ページに追加するスクリプトは、概要ブレードの \[クイック スタート\] タイルから入手できます。
+Web ページに追加するスクリプトは、概要ブレードの [クイック スタート] タイルから入手できます。
 
 概要ブレードに、ページ ビュー、ユーザー、セッションのメトリックが表示されます。
 
@@ -120,7 +120,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 ## 診断ログ
 
-トレース用に Logback または Log4J \(v1.2 または v2.0\) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
+トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
 
 [診断ログの詳細についてはこちら][javalogs]
 

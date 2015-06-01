@@ -24,9 +24,9 @@
                 // Define the XML paylod for a WNS native toast notification 
                 // that contains the value supplied in the POST request.
                 string wnsToast = 
-                    string.Format("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                    "<toast><visual><binding template=\"ToastText01\">" + 
-                    "<text id=\"1\">{0}</text></binding></visual></toast>", 
+                    string.Format("<?xml version="1.0" encoding="utf-8"?>" +
+                    "<toast><visual><binding template="ToastText01">" + 
+                    "<text id="1">{0}</text></binding></visual></toast>", 
                     data.GetValue("toast").Value<string>());
 
                 // Define the WNS native toast with the payload string.

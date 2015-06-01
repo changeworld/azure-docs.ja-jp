@@ -74,7 +74,7 @@ DocumentDB において、ドキュメントは、SQL を使用して照会し�
 	           }                                                  
 	        ],                                                               
 	        "ExcludedPaths":[                                                
-	           "/\"nonIndexedContent\"/*"                                 
+	           "/"nonIndexedContent"/*"                                 
 	        ]                                                               
 	     }                                                                 
 	 }                                                                                                                                                
@@ -86,7 +86,7 @@ DocumentDB において、ドキュメントは、SQL を使用して照会し�
 
 **注:** コレクションのインデックス作成ポリシーは作成時に指定する必要があります。コレクションの作成後にインデックス作成ポリシーを変更することは許可されていませんが、DocumentDB の今後のリリースではサポートされる予定です。
 
-**注:** 既定では、DocumentDB はドキュメント内のすべてのパスについて、ハッシュ インデックスと合わせてインデックスを作成します。内部のタイムスタンプ (\_ts) のパスは、範囲インデックスと共に格納されます。
+**注:** 既定では、DocumentDB はドキュメント内のすべてのパスについて、ハッシュ インデックスと合わせてインデックスを作成します。内部のタイムスタンプ (_ts) のパスは、範囲インデックスと共に格納されます。
 
 ### 自動インデックス作成
 
@@ -285,7 +285,7 @@ DocumentDB は、書き込みを最適化し、同期インデックス メン�
 	pathRange.IndexingPolicy.IncludedPaths.Add(
 								new IndexingPath { 
 										IndexType = IndexType.Range, 
-										Path = "/\"CreatedTimestamp\"/?",   
+										Path = "/"CreatedTimestamp"/?",   
 										NumericPrecision = 7   
 							 			}
 									);   
@@ -307,7 +307,7 @@ DocumentDB では、クエリが範囲演算子を使用し、照会されたパ
   	excluded.IndexingPolicy.IncludedPaths.Add(
 	newIndexingPath {  Path = "/" });  
 
-	excluded.IndexingPolicy.ExcludedPaths.Add("/\" nonIndexedContent\"/*");    
+	excluded.IndexingPolicy.ExcludedPaths.Add("/" nonIndexedContent"/*");    
 	excluded = await client.CreateDocumentCollectionAsync(database.SelfLink,excluded);                                                               
 
 
@@ -316,7 +316,7 @@ DocumentDB では、クエリが範囲演算子を使用し、照会されたパ
 
 別のインデックス作成ポリシーの構成を評価する場合は、DocumentDB API からポリシーの記憶域とスループットの影響を測定する必要があります。
 
-コレクションの記憶域のクォータと使用状況を確認するには、HEAD 要求または GET 要求をコレクションのリソースに対して実行し、x-ms-request-quota と x-ms-request-usage のヘッダーを調べます。.NET SDK では、[ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) プロパティと [ DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
+コレクションの記憶域のクォータと使用状況を確認するには、HEAD 要求または GET 要求をコレクションのリソースに対して実行し、x-ms-request-quota と x-ms-request-usage のヘッダーを調べます。.NET SDK では、[ResourceResponse<T>](http://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) プロパティと [ DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
 
 
  	// Measure the document size usage (which includes the index size) against   
@@ -325,7 +325,7 @@ DocumentDB では、クエリが範囲演算子を使用し、照会されたパ
 	 Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentSizeQuota, collectionInfo.DocumentSizeUsage);                                       
 
 
-書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (または、.NET SDK の [ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
+書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (または、.NET SDK の [ResourceResponse<T>](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
 
 
  	// Measure the performance (request units) of writes.     

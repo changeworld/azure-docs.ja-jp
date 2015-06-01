@@ -21,7 +21,7 @@
 
 ## 概要
 
-Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ \(iOS、XBOX、Silverlight、Windows 8 など\) に配信できます。これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming \(HLS\) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート \(マルチビット レート\) MP4 \(ISO Base Media 14496-12\) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
+Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX、Silverlight、Windows 8 など) に配信できます。これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming (HLS) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
 
 動的パッケージを使用すれば、一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルを含むアセットを作成するだけで済みます。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
@@ -38,7 +38,7 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 ## 一般的なシナリオ
 
-1. 入力ファイル \(中間ファイル\) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです \(サポートされている形式の一覧については、「Media Services Encoder でサポートされる形式の一覧」を参照\)。
+1. 入力ファイル (中間ファイル) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「Media Services Encoder でサポートされる形式の一覧」を参照)。
  
 1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。
  
@@ -75,7 +75,7 @@ Media Services Encoder でエンコードされていないアダプティブ �
 
 ## コンテンツをクライアントにストリーミングする
 
-アダプティブ ビットレート セットを作成したら、オンデマンド ロケーターを作成して、スムーズ ストリーミング、MPEG DASH、HLS、および HDS \(Adobe Primetime/Access のライセンス所有者にのみ使用\) のためのストリーミング URL を構成できます。
+アダプティブ ビットレート セットを作成したら、オンデマンド ロケーターを作成して、スムーズ ストリーミング、MPEG DASH、HLS、および HDS (Adobe Primetime/Access のライセンス所有者にのみ使用) のためのストリーミング URL を構成できます。
 
 ロケーターを作成し、動的パッケージを使用してコンテンツをストリームする方法については、次のトピックを参照してください。
 
@@ -85,7 +85,7 @@ Media Services Encoder でエンコードされていないアダプティブ �
 
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
 
-**Azure の管理ポータル**または **.NET** を使用してアセットを公開します \(ロケータを作成して\)。
+**Azure の管理ポータル**または **.NET** を使用してアセットを公開します (ロケータを作成して)。
 
 [AZURE.INCLUDE [media-services-selector-publish](../includes/media-services-selector-publish.md)]
 

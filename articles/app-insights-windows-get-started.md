@@ -35,11 +35,11 @@ Visual Studio Application Insights を使用すると、発行されたアプリ
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1\.Application Insights リソースの作成 
+## 1.Application Insights リソースの作成 
 
 [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
 
-![\[新規\]、\[開発者向けサービス\]、\[Application Insights\] の順に選択する](./media/app-insights-windows-get-started/01-new.png)
+![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-windows-get-started/01-new.png)
 
 Azure の[リソース][roles]は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
@@ -47,20 +47,20 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 
 このキーでリソースが識別されます。リソースへデータを送信ように SDK を構成するには、このキーがすぐに必要になります。
 
-![\[要点\] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
+![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
 
 
-## 2\.アプリへの Application Insights SDK の追加
+## 2.アプリへの Application Insights SDK の追加
 
 Visual Studio で、適切な SDK をプロジェクトに追加します。
 
 Windows ユニバーサル アプリの場合は、Windows Phone プロジェクトと Windows プロジェクトの両方に対してこの手順を繰り返します。
 
-1. ソリューション エクスプローラーでプロジェクトを右クリックし、**\[NuGet パッケージの管理\]** をクリックします。
+1. ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
     ![](./media/app-insights-windows-get-started/03-nuget.png)
 
-2. **\[オンライン\]**、**\[プレリリースを含める\]** の順に選択し、"Application Insights" を検索します。
+2. **[オンライン]**、**[プレリリースを含める]** の順に選択し、"Application Insights" を検索します。
 
     ![](./media/app-insights-windows-get-started/04-ai-nuget.png)
 
@@ -68,9 +68,9 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
    * Windows アプリケーション用の Application Insights - *Windows ストア アプリの場合*
    * Windows Phone アプリケーション用の Application Insights
    * Web アプリ用の Application Insights - *デスクトップ アプリケーションの場合* 
-4. \(NuGet のインストールによって追加された\) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
+4. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
 
-    `<InstrumentationKey>`\*コピーしたキー\*`</InstrumentationKey>`
+    `<InstrumentationKey>`*コピーしたキー*`</InstrumentationKey>`
 
 **Windows ユニバーサル アプリ**: Phone プロジェクトとストア プロジェクトの両方に対して手順を繰り返します。
 
@@ -99,7 +99,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 ![クリックしてより多くのデータを表示する](./media/appinsights/appinsights-26-devices-01.png)
 
-大量のデータが予想される場合は、数秒後に \[最新の情報に更新\] をクリックします。
+大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
 いずれかのグラフをクリックして、詳細を表示します。
 
@@ -114,9 +114,9 @@ Visual Studio を使用してセットアップの手順を実行するには、
 
 ###<a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合
 
-\[新しいプロジェクト\] ダイアログ ボックスで \[Application Insights\] を選択します。
+[新しいプロジェクト] ダイアログ ボックスで [Application Insights] を選択します。
 
-サインインを求めるメッセージが表示されたら、Azure アカウント \(Visual Studio Online アカウントとは異なります\) の資格情報を使用します。
+サインインを求めるメッセージが表示されたら、Azure アカウント (Visual Studio Online アカウントとは異なります) の資格情報を使用します。
 
 ![](./media/appinsights/appinsights-d21-new.png)
 

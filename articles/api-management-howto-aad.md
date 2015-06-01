@@ -26,51 +26,51 @@
 
 ## Azure Active Directory を使用して開発者アカウントを認証する方法
 
-最初に、ご利用の API Management サービスの Azure ポータルで **\[管理\]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
 >まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
-左側の **\[API Management\]** メニューで **\[セキュリティ\]** をクリックして、**\[外部 ID\]** をクリックします。
+左側の **[API Management]** メニューで **[セキュリティ]** をクリックして、**[外部 ID]** をクリックします。
 
 ![外部 ID][api-management-security-external-identities]
 
-**\[Azure Active Directory\]** をクリックします。**リダイレクト URL** を書き留めて、Azure ポータルの Azure Active Directory に切り替えます。
+**[Azure Active Directory]** をクリックします。**リダイレクト URL** を書き留めて、Azure ポータルの Azure Active Directory に切り替えます。
 
 ![外部 ID][api-management-security-aad-new]
 
-**\[追加\]** ボタンをクリックして新しい Azure Active Directory アプリケーションを作成し、**\[組織で開発中のアプリケーションを追加\]** を選択します。
+**[追加]** ボタンをクリックして新しい Azure Active Directory アプリケーションを作成し、**[組織で開発中のアプリケーションを追加]** を選択します。
 
 ![新しい Azure Active Directory アプリケーションの追加][api-management-new-aad-application-menu]
 
-アプリケーションの名前を入力し、**\[Web アプリケーションや Web API\]** を選択して、次へ進むボタンをクリックします。
+アプリケーションの名前を入力し、**[Web アプリケーションや Web API]** を選択して、次へ進むボタンをクリックします。
 
 ![新しい Azure Active Directory アプリケーション][api-management-new-aad-application-1]
 
-**\[サインオン URL\]** に、パブリッシャー ポータルの **\[外部 ID\]** タブの **\[Azure Active Directory\]** セクションから書き留めた**リダイレクト URL** を入力し、URL 末尾の **- aad** というサフィックスを削除します。この例では、**サインオン URL** は `https://aad03.portal.current.int-azure-api.net/signin` です。
+**[サインオン URL]** に、パブリッシャー ポータルの **[外部 ID]** タブの **[Azure Active Directory]** セクションから書き留めた**リダイレクト URL** を入力し、URL 末尾の **- aad** というサフィックスを削除します。この例では、**サインオン URL** は `https://aad03.portal.current.int-azure-api.net/signin` です。
 
-**\[アプリ ID URL\]** に、Azure Active Directory の既定のドメインとカスタム ドメインのいずれかを入力し、一意の文字列を追加します。この例では、**https://contoso5api.onmicrosoft.com** という既定のドメインが使用され、**/api** というサフィックスが指定されています。
+**[アプリ ID URL]** に、Azure Active Directory の既定のドメインとカスタム ドメインのいずれかを入力し、一意の文字列を追加します。この例では、**https://contoso5api.onmicrosoft.com** という既定のドメインが使用され、**/api** というサフィックスが指定されています。
 
 ![新しい Azure Active Directory アプリケーションのプロパティ][api-management-new-aad-application-2]
 
-チェック マークのボタンをクリックし、新しいアプリケーションを作成して保存します。**\[構成\]** タブに切り替え、新しいアプリケーションを構成します。
+チェック マークのボタンをクリックし、新しいアプリケーションを作成して保存します。**[構成]** タブに切り替え、新しいアプリケーションを構成します。
 
 ![作成された新しい Azure Active Directory アプリケーション][api-management-new-aad-app-created]
 
-このアプリケーションで複数の Azure Active Directory を使用する場合は、**\[プリケーションはマルチテナントです\]** で **\[はい\]** をクリックします。既定値は **\[いいえ\]** です。
+このアプリケーションで複数の Azure Active Directory を使用する場合は、**[プリケーションはマルチテナントです]** で **[はい]** をクリックします。既定値は **[いいえ]** です。
 
 ![アプリケーションはマルチテナントです][api-management-aad-app-multi-tenant]
 
-パブリッシャー ポータルの **\[外部 ID\]** タブの **\[Azure Active Directory\]** セクションから**リダイレクト URL** をコピーし、**\[応答 URL\]** ボックスに貼り付けます。
+パブリッシャー ポータルの **[外部 ID]** タブの **[Azure Active Directory]** セクションから**リダイレクト URL** をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
 ![応答 URL][api-management-aad-reply-url]
 
-\[構成\] タブの一番下までスクロールし、**\[アプリケーションのアクセス許可\]** ボックスの一覧を選択して、**\[ディレクトリ データの読み取り\]** チェック ボックスをオンにします。
+[構成] タブの一番下までスクロールし、**[アプリケーションのアクセス許可]** ボックスの一覧を選択して、**[ディレクトリ データの読み取り]** チェック ボックスをオンにします。
 
 ![アプリケーションのアクセス許可][api-management-aad-app-permissions]
 
-**\[アクセス許可の委任\]** ボックスの一覧を選択し、**\[サインオンを有効にしてユーザーのプロファイルを読み取る\]** チェック ボックスをオンにします。
+**[アクセス許可の委任]** ボックスの一覧を選択し、**[サインオンを有効にしてユーザーのプロファイルを読み取る]** チェック ボックスをオンにします。
 
 ![委任されたアクセス許可][api-management-aad-delegated-permissions]
 
@@ -80,35 +80,35 @@
 
 ![クライアント ID][api-management-aad-app-client-id]
 
-パブリッシャー ポータルに戻り、Azure Active Directory のアプリケーション構成からコピーした ID を **\[クライアント ID\]** に貼り付けます。
+パブリッシャー ポータルに戻り、Azure Active Directory のアプリケーション構成からコピーした ID を **[クライアント ID]** に貼り付けます。
 
 ![クライアント ID][api-management-client-id]
 
-Azure Active Directory の構成に戻り、**\[キー\]** セクションの **\[時間の選択\]** ボックスの一覧をクリックし、期間を指定します。この例では **\[1 年間\]** が使用されます。
+Azure Active Directory の構成に戻り、**[キー]** セクションの **[時間の選択]** ボックスの一覧をクリックし、期間を指定します。この例では **[1 年間]** が使用されます。
 
 ![キー][api-management-aad-key-before-save]
 
-**\[保存\]** をクリックして構成を保存し、キーを表示します。キーをクリップボードにコピーします。
+**[保存]** をクリックして構成を保存し、キーを表示します。キーをクリップボードにコピーします。
 
 >このキーを書き留めておきます。Azure Active Directory の構成ウィンドウを閉じると、キーは再表示できません。
 
 ![キー][api-management-aad-key-after-save]
 
-パブリッシャー ポータルに戻り、キーを **\[クライアント シークレット\]** ボックスに貼り付けます。
+パブリッシャー ポータルに戻り、キーを **[クライアント シークレット]** ボックスに貼り付けます。
 
 ![クライアント シークレット][api-management-client-secret]
 
-**\[許可されたテナント\]** で、API Management サービス インスタンスの API にアクセスできるディレクトリを指定します。アクセス許可を付与する Azure Active Directory インスタンスのドメインを指定します。複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
+**[許可されたテナント]** で、API Management サービス インスタンスの API にアクセスできるディレクトリを指定します。アクセス許可を付与する Azure Active Directory インスタンスのドメインを指定します。複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
 
 ![許可されたテナント][api-management-client-allowed-tenants]
 
-**\[許可されたテナント\]** セクションには、複数のドメインを指定できます。アプリケーションが登録されている元のドメインとは別のドメインからユーザーがログインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。アクセス許可を付与するには、全体管理者がアプリケーションにログインして、**\[同意する\]** をクリックする必要があります。次の例では、`miaoaad.onmicrosoft.com` が **\[許可されたテナント\]** に追加されており、そのドメインの全体管理者が初めてログインしようとしています。
+**[許可されたテナント]** セクションには、複数のドメインを指定できます。アプリケーションが登録されている元のドメインとは別のドメインからユーザーがログインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。アクセス許可を付与するには、全体管理者がアプリケーションにログインして、**[同意する]** をクリックする必要があります。次の例では、`miaoaad.onmicrosoft.com` が **[許可されたテナント]** に追加されており、そのドメインの全体管理者が初めてログインしようとしています。
 
 ![アクセス許可][api-management-permissions-form]
 
 >全体管理者がアクセス許可を付与する前に全体管理者以外のユーザーがログインしようとすると、ログインに失敗し、エラー画面が表示されます。
 
-必要な構成を指定したら、**\[保存\]** をクリックします。
+必要な構成を指定したら、**[保存]** をクリックします。
 
 ![保存][api-management-client-allowed-tenants-save]
 
@@ -118,37 +118,37 @@ Azure Active Directory の構成に戻り、**\[キー\]** セクションの **
 
 Azure Active Directory 内のユーザーのアクセスを有効にした後は、Azure Active Directory のグループを API Management に追加することで、グループ内の開発者と目的の成果物の関連付けを管理しやすくすることができます。
 
-> 外部の Azure Active Directory グループを構成するには、先に前のセクションの手順を実行して、\[外部 ID\] タブで Azure Active Directory を構成する必要があります。
+> 外部の Azure Active Directory グループを構成するには、先に前のセクションの手順を実行して、[外部 ID] タブで Azure Active Directory を構成する必要があります。
 
-外部の Azure Active Directory グループの追加は、グループにアクセス許可を付与する成果物の **\[可視性\]** タブで実行します。**\[成果物\]** をクリックし、目的の成果物の名前をクリックします。
+外部の Azure Active Directory グループの追加は、グループにアクセス許可を付与する成果物の **[可視性]** タブで実行します。**[成果物]** をクリックし、目的の成果物の名前をクリックします。
 
 ![Configure product][api-management-configure-product]
 
-**\[可視性\]** タブに切り替え、**\[Azure Active Directory からグループを追加\]** をクリックします。
+**[可視性]** タブに切り替え、**[Azure Active Directory からグループを追加]** をクリックします。
 
 ![グループの追加][api-management-add-groups]
 
-ドロップダウン リストから **\[Azure Active Directory テナント\]** を選択し、**\[追加するグループ\]** ボックスに目的のグループの名前を入力します。
+ドロップダウン リストから **[Azure Active Directory テナント]** を選択し、**[追加するグループ]** ボックスに目的のグループの名前を入力します。
 
 ![グループの選択][api-management-select-group]
 
-次の例に示すように、グループの名前が Azure Active Directory の **\[グループ\]** 一覧に表示されます。
+次の例に示すように、グループの名前が Azure Active Directory の **[グループ]** 一覧に表示されます。
 
 ![Azure Active Directory グループの一覧][api-management-aad-groups-list]
 
-**\[追加\]** をクリックすると、グループ名が検証され、グループが追加されます。この例では、**Contoso 5 Developers** という外部グループが追加されました。
+**[追加]** をクリックすると、グループ名が検証され、グループが追加されます。この例では、**Contoso 5 Developers** という外部グループが追加されました。
 
 ![Group added][api-management-aad-group-added]
 
-**\[保存\]** をクリックして、グループの新しい選択肢を保存します。
+**[保存]** をクリックして、グループの新しい選択肢を保存します。
 
-1 つの成果物から Azure Active Directory グループを構成したら、API Management サービス インスタンス内の他の製品でも **\[可視性\]** タブにこのグループのチェック ボックスが表示されます。
+1 つの成果物から Azure Active Directory グループを構成したら、API Management サービス インスタンス内の他の製品でも **[可視性]** タブにこのグループのチェック ボックスが表示されます。
 
-追加した後で外部グループのプロパティの確認や構成を行うには、**\[グループ\]** タブでグループの名前をクリックします。
+追加した後で外部グループのプロパティの確認や構成を行うには、**[グループ]** タブでグループの名前をクリックします。
 
 ![グループの管理][api-management-groups]
 
-ここでは、グループの **\[名前\]** と **\[説明\]** を編集できます。
+ここでは、グループの **[名前]** と **[説明]** を編集できます。
 
 ![グループの編集][api-management-edit-group]
 
@@ -156,15 +156,15 @@ Azure Active Directory 内のユーザーのアクセスを有効にした後は
 
 ## Azure Active Directory アカウントを使用して開発者ポータルにログインする方法
 
-前のセクションで構成した Azure Active Directory アカウントを使用して開発者ポータルにログインするには、Active Directory のアプリケーション構成の**サインオン URL** を使用して新しいブラウザー ウィンドウを開き、**\[Azure Active Directory\]** をクリックします。
+前のセクションで構成した Azure Active Directory アカウントを使用して開発者ポータルにログインするには、Active Directory のアプリケーション構成の**サインオン URL** を使用して新しいブラウザー ウィンドウを開き、**[Azure Active Directory]** をクリックします。
 
 ![開発者ポータル][api-management-dev-portal-signin]
 
-Azure Active Directory 内のいずれかのユーザーの資格情報を入力し、**\[サインイン\]** をクリックします。
+Azure Active Directory 内のいずれかのユーザーの資格情報を入力し、**[サインイン]** をクリックします。
 
 ![サインイン][api-management-aad-signin]
 
-追加情報が必要な場合は、登録フォームが表示されることがあります。登録フォームに入力し、**\[サインアップ\]** をクリックします。
+追加情報が必要な場合は、登録フォームが表示されることがあります。登録フォームに入力し、**[サインアップ]** をクリックします。
 
 ![登録][api-management-complete-registration]
 

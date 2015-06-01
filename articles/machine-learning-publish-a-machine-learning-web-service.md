@@ -59,22 +59,22 @@ Web サービスを発行すると、次を実行できます。
 
 ![スコア付け実験に変換する](./media/machine-learning-publish-web-service/figure-1.png)
 
-この変換を実行する方法の詳細については、「[Convert a Machine Learning training experiment to a scoring experiment \(Machine Learning トレーニング実験をスコア付け実験に変換する\)](machine-learning-convert-training-experiment-to-scoring-experiment.md)」をご覧ください。
+この変換を実行する方法の詳細については、「[Convert a Machine Learning training experiment to a scoring experiment (Machine Learning トレーニング実験をスコア付け実験に変換する)](machine-learning-convert-training-experiment-to-scoring-experiment.md)」をご覧ください。
 
 
 ##スコア付け実験を Web サービスとして公開する
 
 スコア付け実験の準備を十分に実行したので、Azure Web サービスとして発行できます。Web サービスを使用してユーザーはデータをモデルに送信でき、モデルは予測を返します。
 
-スコアリング実験を発行するには、実験キャンバスの下部で **\[実行\]** をクリックし、**\[WEB サービスの発行\]** をクリックします。Web サービスがセットアップされ、Web サービスのダッシュ ボードに配置されます。
+スコアリング実験を発行するには、実験キャンバスの下部で **[実行]** をクリックし、**[WEB サービスの発行]** をクリックします。Web サービスがセットアップされ、Web サービスのダッシュ ボードに配置されます。
 
 ![Web サービスを発行する](./media/machine-learning-publish-web-service/figure-2.png)
 
-Web サービスをテストするには、**\[ダッシュ ボード\]** タブで **\[テスト\]** をクリックします。ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。これらはスコア付け実験で想定される列になります。データのセットを入力し、**\[OK\]** をクリックします。Web サービスによって生成された結果がダッシュボードの下部に表示されます。
+Web サービスをテストするには、**[ダッシュ ボード]** タブで **[テスト]** をクリックします。ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。これらはスコア付け実験で想定される列になります。データのセットを入力し、**[OK]** をクリックします。Web サービスによって生成された結果がダッシュボードの下部に表示されます。
 
 ![Web サービスをテストする](./media/machine-learning-publish-web-service/figure-3.png)
 
-**\[構成\]** タブで、サービスの表示名を変更したり、説明を付けたりできます。Web サービスを管理する Azure 管理ポータルで名前と説明が表示されます。また、Web サービスで発生するすべてのエラーを診断するログ記録を有効にできます。詳細については、「[Enable logging for Machine Learning web services \(Machine Learning Web サービスのログ記録を有効にする\)](machine-learning-web-services-logging.md)」をご覧ください。
+**[構成]** タブで、サービスの表示名を変更したり、説明を付けたりできます。Web サービスを管理する Azure 管理ポータルで名前と説明が表示されます。また、Web サービスで発生するすべてのエラーを診断するログ記録を有効にできます。詳細については、「[Enable logging for Machine Learning web services (Machine Learning Web サービスのログ記録を有効にする)](machine-learning-web-services-logging.md)」をご覧ください。
 
 ![Web サービスを構成する](./media/machine-learning-publish-web-service/figure-4.png)
 
@@ -86,14 +86,15 @@ Machine Learning Studio から Web サービスを発行すると、サービス
 
 ダッシュ ボードでは、Web サービスへのアクセスが必要なすべての情報が提供されます。たとえば、サービスへの承認済みアクセスを許可する API キーや、コードの記述に役立つ API のヘルプ ページが提供されます。
 
-Machine Learning Web サービスにアクセスする詳細については、「[How to consume a published Azure Machine Learning web service \(発行済み Azure Machine Web サービスを使用する方法\)](machine-learning-consume-web-services.md)」をご覧ください。
+Machine Learning Web サービスにアクセスする詳細については、「[How to consume a published Azure Machine Learning web service (発行済み Azure Machine Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
 
 
 ##Azure 管理ポータルで Web サービスを管理する
 
-Azure 管理ポータルでは、**\[Machine Learning\]** サービスをクリックして Machine Learning ワークスペースを開き、その後 **\[WEB SERVICES\]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスを発行するときに作成される既定のエンドポイントに加えて 2 つ目のエンドポイントを追加することもできます。
+Azure 管理ポータルでは、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、その後 **[WEB SERVICES]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスを発行するときに作成される既定のエンドポイントに加えて 2 つ目のエンドポイントを追加することもできます。
 
-詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。<!-- When this article gets published, fix the link and uncomment
+詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
+<!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**. 
 -->
 
@@ -102,7 +103,7 @@ For more information on how to manage Azure Machine Learning web service endpoin
 
 別のトレーニング データでのモデルの更新など、Web サービスを変更したり、元の Web サービスを上書きしてもう一度発行したりできます。
 
-Web サービスを更新するには、元の Web サービス発行に使用した元のスコア付け実験を開き、**\[名前を付けて保存\]** をクリックして編集可能なコピーを作成します。必要な変更を加えて **\[WEB サービスの発行\]** をクリックします。この実験は以前に公開しているため、Machine Learning Studio で既存のサービスを上書きするかどうかの確認が求められます。**\[はい\]** をクリックすると既存の Web サービスが停止し、新しいスコア付け実験が代わりに発行されます。
+Web サービスを更新するには、元の Web サービス発行に使用した元のスコア付け実験を開き、**[名前を付けて保存]** をクリックして編集可能なコピーを作成します。必要な変更を加えて **[WEB サービスの発行]** をクリックします。この実験は以前に公開しているため、Machine Learning Studio で既存のサービスを上書きするかどうかの確認が求められます。**[はい]** をクリックすると既存の Web サービスが停止し、新しいスコア付け実験が代わりに発行されます。
 
 > [AZURE.NOTE]たとえば元の Web サービスの構成に変更を加えた場合や新しい表示名または説明を入力した場合、それらの値をもう一度入力する必要が生じます。
 

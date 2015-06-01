@@ -24,7 +24,7 @@
 
 ## 言語
 
-+ [C\#、VB](app-insights-start-monitoring-app-health-usage.md)
++ [C#、VB](app-insights-start-monitoring-app-health-usage.md)
 + [JavaScript Web ページ](app-insights-web-track-usage.md)
 + [Windows ストアの JavaScript アプリ](#cordova)
 + [Java](app-insights-java.md)
@@ -60,9 +60,9 @@ GitHub の [Application Insights SDK プロジェクト](https://github.com/Micr
 
 ### <a name="cordova"></a>Cordova および Windows ストアの JavaScript アプリ
 
-Visual Studio でプロジェクトを右クリックし、**\[NuGet パッケージの管理\]** を選択します。
+Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 
-**\[オンライン\]** を選択し、Application Insights を検索します。
+**[オンライン]** を選択し、Application Insights を検索します。
 
 **Application Insights API for JavaScript Applications** をインストールします。
 

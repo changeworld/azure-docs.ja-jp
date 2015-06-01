@@ -208,7 +208,7 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 
 ### 入力テーブルの作成
 
-1.	SQL Server データベース内の **emp** テーブルからのデータを表す Data Factory テーブル用に JSON ファイルを作成します。**メモ帳** を起動して次の JSON スクリプトをコピーし、**EmpOnPremSQLTable.json** として C:\ADFGetStarted\**OnPrem** フォルダーに保存します。このフォルダーが存在しない場合は **C:\ADFGetStarted** フォルダー内に **OnPrem** サブフォルダ―を作成します。 
+1.	SQL Server データベース内の **emp** テーブルからのデータを表す Data Factory テーブル用に JSON ファイルを作成します。**メモ帳** を起動して次の JSON スクリプトをコピーし、**EmpOnPremSQLTable.json** として C:\ADFGetStarted**OnPrem** フォルダーに保存します。このフォルダーが存在しない場合は **C:\ADFGetStarted** フォルダー内に **OnPrem** サブフォルダ―を作成します。 
 
 
         {
@@ -437,7 +437,7 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 	**コマンドと出力の例**:
 
 
-		PS C:\> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -Location "West US" -ResourceGroupName ADF -Description "gateway for walkthrough"
+		PS C:> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -Location "West US" -ResourceGroupName ADF -Description "gateway for walkthrough"
 
 		Name            : MyGateway
 		Location        : West US
@@ -459,12 +459,12 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 	**コマンドの出力例:**
 
 
-		PS C:\> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
+		PS C:> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
 
 	
-4. Azure PowerShell で **C:\Program Files\Microsoft Data Management Gateway\1.0\PowerShellScript\** フォルダーに移動し、以下のコマンドに示すとおりローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行し、コンピューターにインストールしたクライアント エージェントを前もって作成した論理ゲートウェイに登録します。
+4. Azure PowerShell で **C:\Program Files\Microsoft Data Management Gateway\1.0\PowerShellScript** フォルダーに移動し、以下のコマンドに示すとおりローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行し、コンピューターにインストールしたクライアント エージェントを前もって作成した論理ゲートウェイに登録します。
 
-		PS C:\> .\RegisterGateway.ps1 $Key.GatewayKey
+		PS C:> .\RegisterGateway.ps1 $Key.GatewayKey
 		
 		Agent registration is successful!
 

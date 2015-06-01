@@ -31,13 +31,13 @@ Exchange プロバイダーを通じて ExpressRoute 接続を構成するには
 - Azure PowerShell の最新バージョン 
 - Virtual Network に関する次の要件: 
 	- Azure の仮想ネットワークで使用される IP アドレス プレフィックスのセット
-	- オンプレミスの IP プレフィックスのセット \(パブリック IP アドレスを含むことが可能\)
+	- オンプレミスの IP プレフィックスのセット (パブリック IP アドレスを含むことが可能)
 	- Virtual Network ゲートウェイは、/28 サブネットで作成されている必要があります。
-	- 仮想ネットワークの外部の、追加の IP プレフィックスのセット \(/28\)。これは、BGP ピアリングの構成に使用されます。
-	- ネットワークの AS 番号。AS 番号の詳細については、[自立システム \(AS\) 番号](http://www.iana.org/assignments/as-numbers/as-numbers.xhtml)に関するページを参照してください。
-	- MD5 ハッシュ \(認証済み BGP セッションが必要な場合\)
+	- 仮想ネットワークの外部の、追加の IP プレフィックスのセット (/28)。これは、BGP ピアリングの構成に使用されます。
+	- ネットワークの AS 番号。AS 番号の詳細については、[自立システム (AS) 番号](http://www.iana.org/assignments/as-numbers/as-numbers.xhtml)に関するページを参照してください。
+	- MD5 ハッシュ (認証済み BGP セッションが必要な場合)
 	- トラフィックの送信に使用される VLAN ID。回線ごとに 2 つの VLAN ID が必要になります。1 つは仮想ネットワーク用で、もう 1 つはパブリック IP アドレスでホストされるサービス用です。
-	- ネットワークの[自立システム \(AS\) 番号](http://www.iana.org/assignments/as-numbers/as-numbers.xhtml)。
+	- ネットワークの[自立システム (AS) 番号](http://www.iana.org/assignments/as-numbers/as-numbers.xhtml)。
 	- Exchange プロバイダーのイーサネット交換への、2 つの 1 Gbps/10 Gbps クロス接続。
 	- ルーティングのために BGP をサポートできるルーターのペア
 
@@ -59,7 +59,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	回線を作成する前に、サービス プロバイダー、サポートされているロケーション、各ロケーションで選択できる帯域幅のリストが必要になります。次の PowerShell コマンドレットを実行すると、この情報が返されます。この情報は、後のステップで使用します。
 
-    	PS C:\> Get-AzureDedicatedCircuitServiceProvider
+    	PS C:> Get-AzureDedicatedCircuitServiceProvider
 		**The information returned will look similar to the example below:**
 		
 		
@@ -116,7 +116,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	この情報は、Get-AzureCircuit コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは ServiceKey フィールドに表示されます。
 
-		PS C:\> Get-AzureDedicatedCircuit
+		PS C:> Get-AzureDedicatedCircuit
 				 
 		Bandwidth                        : 200
 		CircuitName                      : EquinixSVTest
@@ -135,7 +135,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	これにより、プロバイダーがいつ回線を有効にしたのかを知ることができます。回線が有効になると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
 
-		PS C:\> Get-AzureDedicatedCircuit
+		PS C:> Get-AzureDedicatedCircuit
 				 
 		Bandwidth                        : 200
 		CircuitName                      : EquinixSVTest
@@ -169,7 +169,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	以下に示す応答で返された情報が、次のステップで必要になります。ピア ASN は、ルーターの VRF に対する BGP の構成に使用します。
                     
-		PS C:\> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
+		PS C:> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
 				
 		AzureAsn            : 12076
 		PeerAsn             : 65001
@@ -204,7 +204,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	以下に示す応答で返された情報が、次のステップで必要になります。ピア ASN は、ルーターの VRF に対する BGP の構成に使用します。
 
-		PS C:\> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
+		PS C:> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
 		 
 		AzureAsn            : 12076
 		PeerAsn             : 65001
@@ -223,6 +223,6 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 	- ServiceProviderProvisioningState: Provisioned
 	- Status: Enabled
 	 
-			PS C:\> $Vnet = "MyTestVNet"
+			PS C:> $Vnet = "MyTestVNet"
 			New-AzureDedicatedCircuitLink -ServiceKey $ServiceKey -VNetName $Vnet
 <!--HONumber=54-->

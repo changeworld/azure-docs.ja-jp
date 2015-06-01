@@ -43,7 +43,7 @@ API Management には、ユーザーが OAuth 2.0 認証を使用して開発者
 
 > まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
 
-左側の **[API Management]** メニューで **[セキュリティ]** をクリックし、**\[OAuth 2.0]** をクリックしてから、**[認証サーバーの追加 (Add authorization server)]** をクリックします。
+左側の **[API Management]** メニューで **[セキュリティ]** をクリックし、**[OAuth 2.0]** をクリックしてから、**[認証サーバーの追加 (Add authorization server)]** をクリックします。
 
 ![OAuth 2.0][api-management-oauth2]
 
@@ -79,7 +79,7 @@ Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンド�
 
 既定の設定は、**[クライアント認証方式(Client authentication methods)]** が **[基本 (Basic)]**、**[アクセス トークン送信方式 (Access token sending method)]** が **[認証ヘッダー (Authorization header)]** です。これらの値は、**[既定のスコープ (Default scope)]** と共に、フォームのこのセクションで構成されます。
 
-**[クライアントの資格情報]** セクションには **[クライアント ID]** と **[クライアント シークレット]** が含まれます。これらは OAuth 2.0 サーバーの作成と構成のプロセスで取得されます。**[クライアント ID]** と **[クライアント シークレット]** が指定された後に、**[認証コード]** の **redirect\_uri** が生成されます。この URI は、OAuth 2.0 サーバー構成で応答 URL を構成するために使用されます。
+**[クライアントの資格情報]** セクションには **[クライアント ID]** と **[クライアント シークレット]** が含まれます。これらは OAuth 2.0 サーバーの作成と構成のプロセスで取得されます。**[クライアント ID]** と **[クライアント シークレット]** が指定された後に、**[認証コード]** の **redirect_uri** が生成されます。この URI は、OAuth 2.0 サーバー構成で応答 URL を構成するために使用されます。
 
 ![新しいサーバー][api-management-oauth2-server-4]
 
@@ -91,7 +91,7 @@ Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンド�
 
 ## <a name="step2"> </a>OAuth 2.0 ユーザー認証を使用するように API を構成する
 
-左側の **[API Management]** メニューで **[API]** をクリックし、必要な API の名前をクリックし、**[セキュリティ]** をクリックしてから、**\[OAuth 2.0]** のボックスにチェックマークを入れます。
+左側の **[API Management]** メニューで **[API]** をクリックし、必要な API の名前をクリックし、**[セキュリティ]** をクリックしてから、**[OAuth 2.0]** のボックスにチェックマークを入れます。
 
 ![ユーザー認証][api-management-user-authorization]
 
@@ -101,11 +101,11 @@ Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンド�
 
 ## <a name="step3"> </a>開発者ポータルで OAuth 2.0 ユーザー認証をテストする
 
-OAuth 2.0 認証サーバーを構成して、そのサーバーを使用するように API を構成した後、開発者ポータルに移動して API を呼び出すことにより、そのサーバーをテストできます。右上のメニューで、**\[開発者ポータル]** をクリックします。
+OAuth 2.0 認証サーバーを構成して、そのサーバーを使用するように API を構成した後、開発者ポータルに移動して API を呼び出すことにより、そのサーバーをテストできます。右上のメニューで、**[開発者ポータル]** をクリックします。
 
 ![開発者ポータル][api-management-developer-portal-menu]
 
-上部のメニューで **[API]** をクリックし、**\[Echo API]** を選択します。
+上部のメニューで **[API]** をクリックし、**[Echo API]** を選択します。
 
 ![Echo API][api-management-apis-echo-api]
 

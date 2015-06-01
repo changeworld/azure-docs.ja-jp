@@ -16,15 +16,15 @@
 	ms.date="04/02/2015" 
 	ms.author="spelluru"/>
 
-# Azure Data Factory を使用してデータをコピーする \(コピー アクティビティ\)
+# Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)
 ## 概要
-パイプラインで**コピー アクティビティ**を使用して、ソースからシンク \(ターゲット\) にデータを一括でコピーできます。コピー アクティビティは、次のシナリオで使用できます。
+パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。コピー アクティビティは、次のシナリオで使用できます。
 
-- **Azure に入力する**。このシナリオでは、次のサブシナリオのために、内部設置型のデータ ソース \(例: SQL Server\) から Azure データ ストア \(例: Azure BLOB、Azure テーブル、Azure SQL データベース\) にデータがコピーされます。
+- **Azure に入力する**。このシナリオでは、次のサブシナリオのために、内部設置型のデータ ソース (例: SQL Server) から Azure データ ストア (例: Azure BLOB、Azure テーブル、Azure SQL データベース) にデータがコピーされます。
 	- さらなる処理のために、Azure 上の 1 か所にデータを収集する。
 	- 内部設置型または Azure 以外のクラウド プラットフォームから Azure にデータを移行する。
 	- コスト効果の高い階層型の保存を実現するために Azure にデータをアーカイブまたはバックアップする。
-- **Azure から出力する**。このシナリオでは、次のサブシナリオのために、Azure \(例: Azure BLOB、Azure テーブル、Azure SQL データベース\) から内部設置型のデータ マートやデータ ウェアハウス \(例: SQL Server\) にデータがコピーされます。
+- **Azure から出力する**。このシナリオでは、次のサブシナリオのために、Azure (例: Azure BLOB、Azure テーブル、Azure SQL データベース) から内部設置型のデータ マートやデータ ウェアハウス (例: SQL Server) にデータがコピーされます。
 	- クラウドのデータ ウェアハウスをサポートしていないためにデータを内部設置型に転送する。
 	- 既存の内部設置型ソリューションやレポート インフラストラクチャを活用するためにデータを内部設置型に転送する。
 	- 階層型の保存を実現するために内部設置型にデータをアーカイブまたはバックアップする。
@@ -32,7 +32,7 @@
 
 詳細については、以下を参照してください。
 
-- ビデオ: [Introducing Azure Data Factory Copy Activity \(Azure Data Factory コピーアクティビティの概要\)][copy-activity-video]
+- ビデオ: [Introducing Azure Data Factory Copy Activity (Azure Data Factory コピーアクティビティの概要)][copy-activity-video]
 - コピー アクティビティを使用して Azure BLOB ストレージから Azure SQL データベースにデータをコピーする方法のチュートリアルは、「[Azure Data Factory を使ってみる][adfgetstarted]」を参照してください。 
 - コピー アクティビティを使用してオンプレミスの Azure SQL データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
@@ -124,12 +124,12 @@
 
 </table>
 
-### サービスとしてのインフラストラクチャ \(IaaS\) 上の SQL
+### サービスとしてのインフラストラクチャ (IaaS) 上の SQL
 IaaS 上の SQL では、IaaS プロバイダーとしての Azure がサポートされます。次のネットワークおよび VPN のトポロジがサポートされます。Data Management Gateway は、1 の場合に必要がなくても、2 および 3 の場合に必要です。Data Management Gateway の詳細については、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 1.	パブリック DNS 名と静的パブリック ポートを持つ VM: プライベート ポート マッピング
 2.	SQL エンドポイントが公開されていないパブリック DNS 名を持つ VM
-3.	Virtual Network<ol type='a'> <li>一覧の最後に次のトポロジが含まれている Azure クラウド VPN</li> <li>Azure Virtual Network を使用したオンプレミスからクラウドへのサイト間 VPN を持つ VM</li> </ol> ![Data Factory \(コピー アクティビティ\)][image-data-factory-copy-actvity]
+3.	Virtual Network<ol type='a'> <li>一覧の最後に次のトポロジが含まれている Azure クラウド VPN</li> <li>Azure Virtual Network を使用したオンプレミスからクラウドへのサイト間 VPN を持つ VM</li> </ol> ![Data Factory (コピー アクティビティ)][image-data-factory-copy-actvity]
 
 ## コピー アクティビティ - コンポーネント
 コピー アクティビティは、次のコンポーネントで構成されます。
@@ -228,7 +228,7 @@ IaaS 上の SQL では、IaaS プロバイダーとしての Azure がサポー�
 
 </table>
 
-JSON プロパティとスクリプトの詳細については、「[JSON Scripting Reference \(JSON スクリプト リファレンス\)][json-script-reference]」を参照してください。
+JSON プロパティとスクリプトの詳細については、「[JSON Scripting Reference (JSON スクリプト リファレンス)][json-script-reference]」を参照してください。
 
 ### ソースおよびシンクの種類
 ソースおよびシンクの種類とそれらの種類でサポートされているプロパティの一覧については、MSDN ライブラリの「[サポートされているソースとシンク][msdn-supported-sources-sinks]」を参照してください。
@@ -265,7 +265,7 @@ JSON プロパティとスクリプトの詳細については、「[JSON Script
  		}
 	}
 
-次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にテーブル \(\*\*MyOnPremTable\*\*\) を作成します。
+次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にテーブル (**MyOnPremTable**) を作成します。
          
 	New-AzureDataFactoryTable -ResourceGroupName ADF –Name MyOnPremTable –DataFactoryName CopyFactory –File <Filepath>\MyOnPremTable.json.
 
@@ -301,18 +301,18 @@ Data Factory コマンドレットの詳細については、[コマンドレッ
    		}
 	}
 
-次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にテーブル \(**MyDemoBlob**) を作成します。
+次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にテーブル (**MyDemoBlob**) を作成します。
          
 	New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName CopyFactory –File <Filepath>
 
 
-### パイプライン \(コピー アクティビティ\) の JSON
+### パイプライン (コピー アクティビティ) の JSON
 この例では、次のプロパティを使用して **CopyActivityPipeline** というパイプラインが定義されます。
 
 - **type** プロパティは、**CopyActivity** に設定されます。
-- **MyOnPremTable** が入力として指定されます \(**inputs** タグ\)。
-- **MyAzureBlob** が出力として指定されます \(**outputs** タグ\)。
-- **Transformation** セクションには、**source** と **sink** という 2 つのサブ セクションがあります。ソースの種類は **SqlSource** に設定され、シンクの種類は **BlobSink** に設定されます。**sqlReaderQuery** は、変換 \(射影\) がソース上で実行されるように定義します。すべてのプロパティの詳細については、「[JSON Scripting Reference \(JSON スクリプト リファレンス\)][json-script-reference]」を参照してください。
+- **MyOnPremTable** が入力として指定されます (**inputs** タグ)。
+- **MyAzureBlob** が出力として指定されます (**outputs** タグ)。
+- **Transformation** セクションには、**source** と **sink** という 2 つのサブ セクションがあります。ソースの種類は **SqlSource** に設定され、シンクの種類は **BlobSink** に設定されます。**sqlReaderQuery** は、変換 (射影) がソース上で実行されるように定義します。すべてのプロパティの詳細については、「[JSON Scripting Reference (JSON スクリプト リファレンス)][json-script-reference]」を参照してください。
 
          
 		{
@@ -346,11 +346,11 @@ Data Factory コマンドレットの詳細については、[コマンドレッ
 		}
 
 
- 次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryPipeline** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にパイプライン \(\*\*CopyActivityPipeline\*\*\) を作成します。
+ 次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryPipeline** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にパイプライン (**CopyActivityPipeline**) を作成します。
          
 		New-AzureDataFactoryPipeline -ResourceGroupName ADF –DataFactoryName CopyFactory –File <Filepath>
 
-> [AZURE.NOTE]コピー アクティビティの使用のその他のサンプルについては、「[Examples for using Copy Activity in Azure Data Factory \(Azure Data Factory でのコピー アクティビティの使用のその他のサンプル\)][copy-activity-examples]」を参照してください。
+> [AZURE.NOTE]コピー アクティビティの使用のその他のサンプルについては、「[Examples for using Copy Activity in Azure Data Factory (Azure Data Factory でのコピー アクティビティの使用のその他のサンプル)][copy-activity-examples]」を参照してください。
 
 ## セキュリティ
 このセクションでは、コピー アクティビティでデータ ストアへの安全なアクセスを確立するのに役立つ全般的なセキュリティ ガイドラインとベスト プラクティスを紹介します。
@@ -359,7 +359,7 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 
 **Azure SQL Database** の場合は、暗号化された接続を明示的に要求し、サーバー証明書を信頼しないようにして "man in the middle" 攻撃を回避します。これを行うには、接続文字列で **Encrypt=True** と **TrustServerCertificate=False** を使用します。詳細については、「[SQL Database のセキュリティのガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394108.aspx)」を参照してください。
 
-**SQL Server** などの従来のデータベースの場合 \(特に、インスタンスが Azure Virtual Machine 内にある場合\)、暗号化された接続オプションを有効にします。このためには、接続文字列で **Encrypt=True** および **TrustServerCertificate=False** を指定して、署名された証明書を構成します。詳細については、「[データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192(v=sql.110).aspx)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
+**SQL Server** などの従来のデータベースの場合 (特に、インスタンスが Azure Virtual Machine 内にある場合)、暗号化された接続オプションを有効にします。このためには、接続文字列で **Encrypt=True** および **TrustServerCertificate=False** を指定して、署名された証明書を構成します。詳細については、「[データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192(v=sql.110).aspx)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
 
 ## 高度なシナリオ
 - **構造体定義を使用した列のフィルター処理**。テーブルの種類によっては、ソースの列のサブセットを指定できます。指定するには、テーブル定義の **Structure** 定義の列を、基になるデータ ソースの列よりも少なく設定します。
@@ -367,7 +367,7 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 - **コピー アクティビティによるデータ型の処理**。どのような場合にテーブル定義の Structure セクションで指定するデータ型が受け入れられる、または無視されるかを説明します。
 - **SQL シンクのストアド プロシージャの呼び出し**。データの SQL Server または Azure SQL Database へのコピー時に、ユーザーが指定したストアド プロシージャが構成され、呼び出されることがあります。
 
-これらのシナリオの詳細については、記事「[Advanced Scenarios for using the Copy Activity with Azure Data Factory \(Azure Data Factory でコピー アクティビティを使用する高度なシナリオ\)][copy-activity-advanced]」を参照してください。
+これらのシナリオの詳細については、記事「[Advanced Scenarios for using the Copy Activity with Azure Data Factory (Azure Data Factory でコピー アクティビティを使用する高度なシナリオ)][copy-activity-advanced]」を参照してください。
 
 ## チュートリアル
 コピー アクティビティを使用して Azure BLOB ストレージから Azure SQL データベースにデータをコピーする方法のチュートリアルは、「[Azure Data Factory を使ってみる][adfgetstarted]」を参照してください。
@@ -376,9 +376,9 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 
 ## 関連項目
 - [コピー アクティビティ - 例][copy-activity-examples]
-- [ビデオ: Introducing Azure Data Factory Copy Activity \(Azure Data Factory コピーアクティビティの概要\)][copy-activity-video]
+- [ビデオ: Introducing Azure Data Factory Copy Activity (Azure Data Factory コピーアクティビティの概要)][copy-activity-video]
 - [MSDN ライブラリのコピー アクティビティに関するトピック][msdn-copy-activity]
-- [Advanced Scenarios for using the Copy Activity with Azure Data Factory \(Azure Data Factory でコピー アクティビティを使用する高度なシナリオ\)][copy-activity-advanced]
+- [Advanced Scenarios for using the Copy Activity with Azure Data Factory (Azure Data Factory でコピー アクティビティを使用する高度なシナリオ)][copy-activity-advanced]
 
 [msdn-copy-activity]: https://msdn.microsoft.com/library/dn835035.aspx
 [msdn-linkedservices]: https://msdn.microsoft.com/library/dn834986.aspx

@@ -22,7 +22,7 @@
 
 # Service Bus キューの使用方法
 
-<span>このガイドでは、Service Bus キューの使用方法について説明します。サンプルは C\# で記述され、.NET API を利用しています。紹介するシナリオは、**キューの作成、メッセージの送受信**、と
+<span>このガイドでは、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは、**キューの作成、メッセージの送受信**、と
 **キューの削除**です。キューの詳細については、「[次のステップ]」のセクションをご覧ください。 </span>
 
 [AZURE.INCLUDE [create-account-note](../includes/create-account-note.md)]

@@ -32,29 +32,29 @@
 
 ## CORS の有効化
 
-通常、CORS \(クロス オリジン リソース共有\) は、API 自体ではなく別のホストから提供される HTML アプリケーションで必要となります。API アプリには、CORS を有効にするためのオプションが 2 つ以上あります。このセクションでは、これらのオプションの概要を説明します。
+通常、CORS (クロス オリジン リソース共有) は、API 自体ではなく別のホストから提供される HTML アプリケーションで必要となります。API アプリには、CORS を有効にするためのオプションが 2 つ以上あります。このセクションでは、これらのオプションの概要を説明します。
 
 ### API アプリ ゲートウェイの CORS の有効化
 
-API アプリ ゲートウェイは、Azure プレビュー ポータルを使用して、CORS を有効にするように構成できます。**MS\_CrossDomainOrigins** *appSetting* を追加することで、どの URL に API アプリの呼び出しを許可するかを指定できます。このセクションでは、この *appSetting* を使用して、API ゲートウェイ レベルで CORS を有効にする方法を説明します。
+API アプリ ゲートウェイは、Azure プレビュー ポータルを使用して、CORS を有効にするように構成できます。**MS_CrossDomainOrigins** *appSetting* を追加することで、どの URL に API アプリの呼び出しを許可するかを指定できます。このセクションでは、この *appSetting* を使用して、API ゲートウェイ レベルで CORS を有効にする方法を説明します。
 
-1. Azure プレビュー ポータルで、CORS を有効にする API アプリのブレードに移動します。移動後、API アプリの *\[ゲートウェイ\]* アイコンをクリックします。 
+1. Azure プレビュー ポータルで、CORS を有効にする API アプリのブレードに移動します。移動後、API アプリの *[ゲートウェイ]* アイコンをクリックします。 
 
-	![API アプリの \[ゲートウェイ\] をクリック](./media/app-service-api-javascript-client/19-api-app-blade.png)
+	![API アプリの [ゲートウェイ] をクリック](./media/app-service-api-javascript-client/19-api-app-blade.png)
 
-1. ポータルのブレードで **\[ゲートウェイ ホスト\]** リンクをクリックします。
+1. ポータルのブレードで **[ゲートウェイ ホスト]** リンクをクリックします。
 
-	![API アプリの \[ゲートウェイ ホスト\] リンクをクリック](./media/app-service-api-javascript-client/20-gateway-host-blade.png)
+	![API アプリの [ゲートウェイ ホスト] リンクをクリック](./media/app-service-api-javascript-client/20-gateway-host-blade.png)
 
-1. ポータルのブレードで **\[すべての設定\]** リンクをクリックします。
+1. ポータルのブレードで **[すべての設定]** リンクをクリックします。
 
-	![ゲートウェイの \[すべての設定\] リンク](./media/app-service-api-javascript-client/21-gateway-blade-all-settings.png)
+	![ゲートウェイの [すべての設定] リンク](./media/app-service-api-javascript-client/21-gateway-blade-all-settings.png)
 
-1. ポータルのブレードで **\[アプリケーション設定\]** をクリックします。
+1. ポータルのブレードで **[アプリケーション設定]** をクリックします。
 
-	![ゲートウェイの \[アプリケーション設定\]](./media/app-service-api-javascript-client/22-gateway-app-settings-blade.png)
+	![ゲートウェイの [アプリケーション設定]](./media/app-service-api-javascript-client/22-gateway-app-settings-blade.png)
 
-1. **MS\_CrossDomainOrigins** アプリケーション設定を追加します。設定の値は、API アプリへのアクセスを提供する HTTP ホストのコンマ区切り一覧にします。複数のホストへのアクセスを提供する場合は、*appSetting* の値を次のコードのように設定することができます。
+1. **MS_CrossDomainOrigins** アプリケーション設定を追加します。設定の値は、API アプリへのアクセスを提供する HTTP ホストのコンマ区切り一覧にします。複数のホストへのアクセスを提供する場合は、*appSetting* の値を次のコードのように設定することができます。
 
 		http://foo.azurewebsites.net, https://foo.azurewebsites.net, http://contactlistwebapp.azurewebsites.net
 
@@ -66,7 +66,7 @@ API アプリ ゲートウェイは、Azure プレビュー ポータルを使�
 
 	![](./media/app-service-api-javascript-client/23-app-settings-set.png)
 
-**MS\_CrossDomainOrigins** アプリケーション設定については、[Azure Mobile Service .NET の更新](http://azure.microsoft.com/blog/2014/07/28/azure-mobile-services-net-updates/)に関するブログ記事で詳しく説明されているため、設定値の詳細については、この記事を参照してください。
+**MS_CrossDomainOrigins** アプリケーション設定については、[Azure Mobile Service .NET の更新](http://azure.microsoft.com/blog/2014/07/28/azure-mobile-services-net-updates/)に関するブログ記事で詳しく説明されているため、設定値の詳細については、この記事を参照してください。
 
 ### Web API コードでの CORS の有効化
 
@@ -80,7 +80,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/01-cors-installed.png)
 
-1. *App\_Start/WebApiConfig.cs* ファイルを開きます。ファイルで **WebApiConfig** クラスの **Register** メソッドに次のコード行を追加します。
+1. *App_Start/WebApiConfig.cs* ファイルを開きます。ファイルで **WebApiConfig** クラスの **Register** メソッドに次のコード行を追加します。
 
 		config.EnableCors();
 
@@ -143,23 +143,23 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 このセクションでは、新しい空の Web アプリケーションを作成し、それに AngularJS をインストールして使用し、単純な HTML フロントエンドを API アプリにバインドします。使用中の Web アプリを Azure App Service にデプロイします。HTML Web アプリは、API アプリから取得したデータにバインドされ、そのデータを表示し、Contacts API 用の単純な UI をユーザーに提供します。
 
-1. ソリューションを右クリックして、**\[追加\]、\[新しいプロジェクト\]** の順に選択します。
+1. ソリューションを右クリックして、**[追加]、[新しいプロジェクト]** の順に選択します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/02-add-project.png)
 
-1. **\[ASP.NET Web アプリケーション\]** テンプレートを選択します。
+1. **[ASP.NET Web アプリケーション]** テンプレートを選択します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/03-new-web-project.png)
 
-1. 1 つの ASP.NET ダイアログ ボックスから **\[空\]** テンプレートを選択します。
+1. 1 つの ASP.NET ダイアログ ボックスから **[空]** テンプレートを選択します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/04-empty-web.png)
 
-1. **パッケージ マネージャー**を使用するか、**\[NuGet パッケージの管理\]** コンテキスト メニュー項目を使用して、[AngularJS](https://www.nuget.org/packages/angularjs) NuGet パッケージをインストールします。
+1. **パッケージ マネージャー**を使用するか、**[NuGet パッケージの管理]** コンテキスト メニュー項目を使用して、[AngularJS](https://www.nuget.org/packages/angularjs) NuGet パッケージをインストールします。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/05-install-angular.png)
 
-1. **パッケージ マネージャー**を使用するか、**\[NuGet パッケージの管理\]** コンテキスト メニュー項目を使用して、[Bootstrap](https://www.nuget.org/packages/bootstrap) NuGet パッケージをインストールします。
+1. **パッケージ マネージャー**を使用するか、**[NuGet パッケージの管理]** コンテキスト メニュー項目を使用して、[Bootstrap](https://www.nuget.org/packages/bootstrap) NuGet パッケージをインストールします。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/05-install-bootstrap.png)
 
@@ -171,7 +171,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/07-index-html.png)
 
-1. ブートストラップ CSS ファイルと AngularJS JavaScript ファイルを HTML ページに追加するほか、単純なブートストラップ テンプレート \([例を参照](http://getbootstrap.com/examples/starter-template/)\) を使用して空のスクリプト タグを作成し、ページを準備します。
+1. ブートストラップ CSS ファイルと AngularJS JavaScript ファイルを HTML ページに追加するほか、単純なブートストラップ テンプレート ([例を参照](http://getbootstrap.com/examples/starter-template/)) を使用して空のスクリプト タグを作成し、ページを準備します。
 	
 	> 注: 次の HTML および JavaScript コード内のコメントは、このセクションの後続のステップの前置きです。
 
@@ -252,7 +252,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             </tfoot>
         </table>
 
-1. *index.html* ファイルを右クリックして、**\[スタート ページに設定\]** メニュー項目を選択します。その後、既定のブラウザーで開かれるように Web プロジェクトをデバッグします。
+1. *index.html* ファイルを右クリックして、**[スタート ページに設定]** メニュー項目を選択します。その後、既定のブラウザーで開かれるように Web プロジェクトをデバッグします。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/08-run-the-web-app.png)
 
@@ -310,7 +310,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 	> **注**: ポート番号は異なる場合があるため、API プロジェクトが別のポートで実行されている場合は、自身の環境を反映するように上記の JavaScript を変更するだけです。
 
-1. API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**\[プロパティ\]** を選択します。その後、両方の Web プロジェクトを **\[デバッグなしで開始\]** に設定します。最初に API プロジェクトが実行されます。
+1. API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/10-run-both-web-projects.png)
 
@@ -332,15 +332,15 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 		$scope.baseUrl = 'https://microsoft-apiappf7e042ba8e5233ab4312021d2aae5d86.azurewebsites.net';
 
-1. HTML/JavaScript Web プロジェクトを右クリックして、**\[発行\]** コンテキスト メニュー項目を選択します。
+1. HTML/JavaScript Web プロジェクトを右クリックして、**[発行]** コンテキスト メニュー項目を選択します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/13-publish-web-app.png)
 
-1. \[Web の発行\] ダイアログ ボックスで、**\[Microsoft Azure Web アプリ\]** オプションを選択します。
+1. [Web の発行] ダイアログ ボックスで、**[Microsoft Azure Web アプリ]** オプションを選択します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/14-publish-web-dialog.png)
 
-1. **\[新規作成\]** をクリックして、新しい Web アプリを作成します。
+1. **[新規作成]** をクリックして、新しい Web アプリを作成します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/15-new-web-app.png)
 

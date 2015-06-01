@@ -183,10 +183,10 @@ Management Studio でクエリ ウィンドウを開くには、データベー�
 
             CREATE USER login1User FROM LOGIN login1;
 
--   ストアド プロシージャ **sp\_addrolemember** を使用して、
+-   ストアド プロシージャ **sp_addrolemember** を使用して、
     データベースに対する適切なレベルのアクセス許可をユーザー アカウントに付与します。詳細
     については、「[sp_addrolemember (Transact-SQL)][]」をご覧ください。以下のステートメントは、**login1User** を
-    **db\_datareader** ロールに追加することで、
+    **db_datareader** ロールに追加することで、
     データベースに対する読み取り専用アクセス許可を **login1User** に付与します。
 
         exec sp_addrolemember 'db_datareader', 'login1User';    
@@ -213,7 +213,7 @@ Management Studio でクエリ ウィンドウを開くには、データベー�
 
         DROP LOGIN login1;
 
--   master データベースには、**sys.sql\_logins** ビューがあります。
+-   master データベースには、**sys.sql_logins** ビューがあります。
     このビューは、ログインを表示するときに使用します。既存のログインをすべて表示するには、
     次のステートメントを実行します。
 
@@ -234,8 +234,8 @@ SQL データベースでは、個々のデータベースを監視するのに
 
         GRANT VIEW DATABASE STATE TO login1User;
 
--   **sys.dm\_db\_partition\_stats** ビューを使用すると、データベース サイズを
-    計算できます。**sys.dm\_db\_partition\_stats** ビューは
+-   **sys.dm_db_partition_stats** ビューを使用すると、データベース サイズを
+    計算できます。**sys.dm_db_partition_stats** ビューは
     データベース内のすべてのパーティションのページと行数情報を返します。
     これらを使ってデータベース サイズを計算できます。次のクエリはデータベース サイズを
     MB 単位で返します。
@@ -243,7 +243,7 @@ SQL データベースでは、個々のデータベースを監視するのに
         SELECT SUM(reserved_page_count)*8.0/1024
         FROM sys.dm_db_partition_stats;   
 
--   **sys.dm\_exec\_connections** ビューと **sys.dm\_exec\_sessions** ビューを使用して、
+-   **sys.dm_exec_connections** ビューと **sys.dm_exec_sessions** ビューを使用して、
     データベースに関連付けられている内部タスクと
     現在のユーザー接続に関する情報を取得します。次のクエリは
     現在の接続に関する情報を返します。
@@ -259,7 +259,7 @@ SQL データベースでは、個々のデータベースを監視するのに
             INNER JOIN sys.dm_exec_connections e
               ON s.session_id = e.session_id;
 
--   **sys.dm\_exec\_query\_stats** ビューを使用して、
+-   **sys.dm_exec_query_stats** ビューを使用して、
     キャッシュされたクエリ プランに対する集計パフォーマンス統計を取得します。次のクエリは
     平均 CPU 時間の上位 5 クエリに関する情報を
     返します。

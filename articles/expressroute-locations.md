@@ -17,10 +17,10 @@
 # ExpressRoute パートナーとピアリングの場所
 この表に、以下の詳細を示します。
 
-1. ExpressRoute 接続プロバイダー \(EXP と NSP\)
+1. ExpressRoute 接続プロバイダー (EXP と NSP)
 2. ExpressRoute の地理的範囲
 3. ExpressRoute でサポートされる Microsoft クラウド サービス
-4. ExpressRoute システム インテグレーター \(SI\)
+4. ExpressRoute システム インテグレーター (SI)
 
 ## ExpressRoute 接続プロバイダー
 ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。次のマップは、Azure のリージョンと ExpressRoute の場所を一覧しています。ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
@@ -41,11 +41,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 地理的リージョン間の接続はサポートされていません。接続プロバイダーを利用して、組織のネットワークを使って地理的リージョン間の接続を拡張できます。
 
 
-### Exchange プロバイダー \(EXP\) の場所
+### Exchange プロバイダー (EXP) の場所
 - Exchange プロバイダーと、そのプロバイダーがサポートされる場所の一覧については、こちらの[表](https://msdn.microsoft.com/library/azure/4da69a0f-8f52-49ea-a990-dacd4202150a#BKMK_EXP)をご覧ください。
 -  接続を設定する手順については、「[EXP 接続の構成](expressroute-configuring-exps.md)」に関するページをご覧ください。
 
-### ネットワーク サービス プロバイダー \(NSP\) の場所
+### ネットワーク サービス プロバイダー (NSP) の場所
 - ネットワーク サービス プロバイダーと、そのプロバイダーがサポートされる場所の一覧については、こちらの[表](https://msdn.microsoft.com/library/azure/4da69a0f-8f52-49ea-a990-dacd4202150a#BKMK_NSP)をご覧ください。
 - 接続を設定する手順については、「[NSP 接続の構成](expressroute-configuring-nsps.md)」に関するページをご覧ください。
 
@@ -58,7 +58,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 	- [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
 - その接続プロバイダーに、選択した Exchange の場所までネットワークを拡張してもらいます。
 	- 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
-	- 接続プロバイダー \(特に、イーサネット プロバイダー\) は、高可用性を確保するために、イーサネット交換に 1 組の回線を調達する必要があります。 
+	- 接続プロバイダー (特に、イーサネット プロバイダー) は、高可用性を確保するために、イーサネット交換に 1 組の回線を調達する必要があります。 
 - Azure に接続するには、Exchange プロバイダーを通じて ExpressRoute 回線を注文します。
 	- 「[EXP 接続の構成](expressroute-configuring-exps.md)」の手順に従って接続を設定します。
 
@@ -70,7 +70,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ## ExpressRoute と Microsoft クラウド サービス
 次の表は、接続プロバイダーの詳細と、接続プロバイダーがサポートする Microsoft クラウド サービスの一覧を示しています。サービス プロバイダーにお問い合わせください。
 
-**Exchange プロバイダー \(EXP\)**
+**Exchange プロバイダー (EXP)**
 
 |**サービス プロバイダー**|**Microsoft Azure サービス**|**Office 365 サービス**|
 |---|---|---|
@@ -82,7 +82,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**TeleCity Group**|サポートされています||
 |**Zayo Group**|サポートされています||
 
-**ネットワーク サービス プロバイダー \(NSP\)**
+**ネットワーク サービス プロバイダー (NSP)**
 
 |**サービス プロバイダー**|**Microsoft Azure サービス**|**Office 365 サービス**|
 |---|---|---|

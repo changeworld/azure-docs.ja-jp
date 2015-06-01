@@ -198,13 +198,13 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
 
     <?php    
 		header("content-type: text/xml");    
-		echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+		echo "<?xml version="1.0" encoding="UTF-8"?>\n";
 	?>
 	<Response>    
 		<Say>Hello world.</Say>
 	</Response>
 
-この例からわかるように、TwiML 応答は XML ドキュメントにすぎません。PHP 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。次の例では、前の例と同じ応答が生成されますが、PHP 用 Twilio ライブラリの **Services\_Twilio\_Twiml** クラスを使用しています。
+この例からわかるように、TwiML 応答は XML ドキュメントにすぎません。PHP 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。次の例では、前の例と同じ応答が生成されますが、PHP 用 Twilio ライブラリの **Services_Twilio_Twiml** クラスを使用しています。
 
 	require_once('Services/Twilio.php');
 	

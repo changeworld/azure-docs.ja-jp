@@ -45,15 +45,15 @@ NYC タクシー乗車データは、約 20GB の圧縮された CSV ファイ�
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data と trip\_fare を結合するための一意のキーは、[medallion]、[hack\_licence] および [pickup\_datetime} の各フィールドで構成されています。
+trip_data と trip_fare を結合するための一意のキーは、[medallion]、[hack_licence] および [pickup_datetime} の各フィールドで構成されています。
 
 ## <a name="mltasks"></a>予測タスクの例
 
- *tip\_amount* に基づく 3 つの予測問題について説明します。つまり、
+ *tip_amount* に基づく 3 つの予測問題について説明します。つまり、
 
-1. 二項分類:乗車においてチップが支払われたかどうかを予測します。つまり、 *tip\_amount* が $0 より大きい場合は肯定的な例で、 *tip\_amount* が $0 の場合は否定的な例です。
+1. 二項分類:乗車においてチップが支払われたかどうかを予測します。つまり、 *tip_amount* が $0 より大きい場合は肯定的な例で、 *tip_amount* が $0 の場合は否定的な例です。
 
-2. 多クラス分類:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
+2. 多クラス分類:乗車で支払われたチップの範囲を予測します。 *tip_amount* を次の 5 つの箱つまりクラスに分割します。
 	
 		Class 0 : tip_amount = $0
 		Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -82,12 +82,12 @@ Azure のデータ サイエンス環境をセット アップするには、
 3. [データ サイエンス仮想マシンをプロビジョニングする](machine-learning-data-science-setup-sql-server-virtual-machine.md)。この仮想マシンは、SQL Server および IPython Notebook サーバーの役割をします。
 
 	> [AZURE.NOTE] サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。仮想マシンのインストール後スクリプトが完了すると、サンプルは仮想マシンのドキュメント ライブラリに入ります。  
-	> - サンプルのスクリプト: `C:\Users\<user_name>\Documents\Data Science Scripts`  
-	> - サンプルの IPython Notebooks: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+	> - サンプルのスクリプト: `C:\Users<user_name>\Documents\Data Science Scripts`  
+	> - サンプルの IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
 	> ここで、`<user_name>` は VM の Windows ログイン名です。ここでの、サンプル フォルダーは **Sample Scripts** および **Sample IPython Notebooks** です。
 
 
-データセットのサイズ、データ ソースの場所、および選択された Azure の対象環境に基づくと、このシナリオは、[シナリオ \#5:ローカル ファイルの大規模データセット、Azure VM のターゲット SQL Server](machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb)と類似しています。
+データセットのサイズ、データ ソースの場所、および選択された Azure の対象環境に基づくと、このシナリオは、[シナリオ #5:ローカル ファイルの大規模データセット、Azure VM のターゲット SQL Server](machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb)と類似しています。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
 
@@ -103,9 +103,9 @@ AzCopy を使用してデータをコピーするには
 
 		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-	AzCopy が完了すると、合計 24 個の圧縮された CSV ファイル (trip\_data に 12 個、trip\_fare に 12 個) がデータ フォルダーに存在するはずです。
+	AzCopy が完了すると、合計 24 個の圧縮された CSV ファイル (trip_data に 12 個、trip_fare に 12 個) がデータ フォルダーに存在するはずです。
 
-4. ダウンロードしたファイルを解凍します。圧縮されていないファイルが存在するフォルダーに注意してください。このフォルダーは <path\_to\_data\_files\> です。
+4. ダウンロードしたファイルを解凍します。圧縮されていないファイルが存在するフォルダーに注意してください。このフォルダーは <path_to_data_files> です。
 
 ## <a name="dbload"></a>SQL Server データベースにデータを一括インポートする
 
@@ -117,7 +117,7 @@ _Partitioned テーブルと Views_ を使用すると、大量のデータを S
 
 	![SSMS Connect][12]
 
-3. まだ SQL Server の認証モードの変更と SQL ログイン ユーザーの新規作成を行っていない場合は、**Sample Scripts** フォルダーにある **change\_auth.sql** という名前のファイルを開きます。既定のユーザー名とパスワードを変更します。ツールバーにある **[!Execute]** をクリックすると、スクリプトが実行されます。
+3. まだ SQL Server の認証モードの変更と SQL ログイン ユーザーの新規作成を行っていない場合は、**Sample Scripts** フォルダーにある **change_auth.sql** という名前のファイルを開きます。既定のユーザー名とパスワードを変更します。ツールバーにある **[!Execute]** をクリックすると、スクリプトが実行されます。
 
 	![Execute Script][13]
 
@@ -133,22 +133,22 @@ _Partitioned テーブルと Views_ を使用すると、大量のデータを S
 	
 		![SQL Database Defaults][15]  
 
-5. 新しいデータベースとファイルグループのセットを作成してパーティション分割されたテーブルを保持するには、サンプルのスクリプト **create\_db\_default.sql** を開きます。スクリプトは、既定のデータの場所に **TaxiNYC** という名前の新しいデータベースと 12 のファイルグループを作成します。各ファイルグループは、1 か月分の trip\_data と trip\_fare data を保持します。必要な場合は、データベース名を変更します。スクリプトを実行するには、**!Execute** をクリックします。
+5. 新しいデータベースとファイルグループのセットを作成してパーティション分割されたテーブルを保持するには、サンプルのスクリプト **create_db_default.sql** を開きます。スクリプトは、既定のデータの場所に **TaxiNYC** という名前の新しいデータベースと 12 のファイルグループを作成します。各ファイルグループは、1 か月分の trip_data と trip_fare data を保持します。必要な場合は、データベース名を変更します。スクリプトを実行するには、**!Execute** をクリックします。
 
-6. 次に、2 つのパーティション テーブルを作成します。1 つは trip\_data 用に、もう 1 つは trip\_fare 用です。サンプルのスクリプト **create\_partitioned\_table.sql** を開きます。このスクリプトは、
+6. 次に、2 つのパーティション テーブルを作成します。1 つは trip_data 用に、もう 1 つは trip_fare 用です。サンプルのスクリプト **create_partitioned_table.sql** を開きます。このスクリプトは、
 
 	- 月単位でデータを分割するパーティション関数を作成します。
 	- 各月のデータを別のファイルグループにマップするパーティション スキームを作成します。
-	- 次のパーティション スキームにマップされた 2 つのパーティション分割されたテーブルを作成します。**nyctaxi\_trip** は trip\_data を保持します。**nyctaxi\_fare** は trip\_fare のデータを保持します。
+	- 次のパーティション スキームにマップされた 2 つのパーティション分割されたテーブルを作成します。**nyctaxi_trip** は trip_data を保持します。**nyctaxi_fare** は trip_fare のデータを保持します。
 
 	**[!Execute]** をクリックしてスクリプトを実行し、パーティション分割されたテーブルを作成します。
 
 7. **Sample Scripts** フォルダーには、SQL Server テーブルへのデータの並行一括インポートのデモを行うために用意された 2 つのサンプル PowerShell スクリプトがあります。
 
-	- **bcp\_parallel\_generic.ps1** は、テーブルにデータを並行一括インポートする汎用スクリプトです。このスクリプトを変更し、スクリプト内のコメント行に示されているとおりに入力変数とターゲット変数を設定します。
-	- **bcp\_parallel\_nyctaxi.ps1** は汎用スクリプトの構成済みのバージョンであり、NYC タクシー乗車データの両方のテーブルを読み込むために使用できます。
+	- **bcp_parallel_generic.ps1** は、テーブルにデータを並行一括インポートする汎用スクリプトです。このスクリプトを変更し、スクリプト内のコメント行に示されているとおりに入力変数とターゲット変数を設定します。
+	- **bcp_parallel_nyctaxi.ps1** は汎用スクリプトの構成済みのバージョンであり、NYC タクシー乗車データの両方のテーブルを読み込むために使用できます。
 
-8. スクリプト名 **"bcp\_parallel\_nyctaxi.ps1"** を右クリックしてから、**[編集]** をクリックして PowerShell で開きます。事前設定された変数を確認し、選択したデータベース名、入力データ フォルダー、対象のログ フォルダー、およびサンプルのフォーマット ファイル **nyctaxi_trip.xml** および **nyctaxi\_fare.xml** (**Sample Scripts** フォルダーにあります) へのパスに合わせて変更します。 
+8. スクリプト名 **"bcp_parallel_nyctaxi.ps1"** を右クリックしてから、**[編集]** をクリックして PowerShell で開きます。事前設定された変数を確認し、選択したデータベース名、入力データ フォルダー、対象のログ フォルダー、およびサンプルのフォーマット ファイル **nyctaxi_trip.xml** および **nyctaxi_fare.xml** (**Sample Scripts** フォルダーにあります) へのパスに合わせて変更します。 
 
 	![Bulk Import Data][16]
 
@@ -156,22 +156,22 @@ _Partitioned テーブルと Views_ を使用すると、大量のデータを S
 
 9. PowerShell スクリプトは、開始時刻と終了時刻を報告します。一括インポートがすべて完了すると、終了時刻が報告されます。対象のログ フォルダーをチェックして、一括インポートが成功したこと、つまり、対象のログ フォルダーにエラー報告がされていないことを確認します。
 
-10. これで、データベースは、探索、特徴エンジニア リング、および必要に応じてその他の操作を行える状態になりました。テーブルは **[pickup\_datetime]** フィールドに従ってパーティション分割されるので、**WHERE** 句に条件 **pickup\_datetime** が含まれるクエリは、パーティション スキームからメリットを得られます。
+10. これで、データベースは、探索、特徴エンジニア リング、および必要に応じてその他の操作を行える状態になりました。テーブルは **[pickup_datetime]** フィールドに従ってパーティション分割されるので、**WHERE** 句に条件 **pickup_datetime** が含まれるクエリは、パーティション スキームからメリットを得られます。
 
-11. **SQL Server Management Studio** で、提供されたサンプルのスクリプト **sample\_queries.sql** を探索します。サンプル クエリのいずれかを実行するには、クエリ行を強調表示してから、ツールバーの **[!Execute]** をクリックします。
+11. **SQL Server Management Studio** で、提供されたサンプルのスクリプト **sample_queries.sql** を探索します。サンプル クエリのいずれかを実行するには、クエリ行を強調表示してから、ツールバーの **[!Execute]** をクリックします。
 
-12. NYC タクシー乗車データは、2 つの個別のテーブルに読み込まれます。結合操作を向上させるため、テーブルのインデックスを作成することを強くお勧めします。サンプルのスクリプト **create\_partitioned\_index.sql** は、パーティション分割されたインデックスを複合結合キー (**medallion、hack\_license、および pickup\_datetime**) に作成します。
+12. NYC タクシー乗車データは、2 つの個別のテーブルに読み込まれます。結合操作を向上させるため、テーブルのインデックスを作成することを強くお勧めします。サンプルのスクリプト **create_partitioned_index.sql** は、パーティション分割されたインデックスを複合結合キー (**medallion、hack_license、および pickup_datetime**) に作成します。
 
 ## <a name="dbexplore"></a>SQL Server でのデータの探索および特徴エンジニアリング
 
-このセクションでは、以前作成した SQL Server データベースを使用して、**Serrver Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。**sample\_queries.sql** という名前のサンプルのスクリプトが、**Sample Scripts** フォルダーに用意されています。データベース名が次の既定の名前と異なる場合は、スクリプトのデータベース名を変更します。**TaxiNYC**。
+このセクションでは、以前作成した SQL Server データベースを使用して、**Serrver Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。**sample_queries.sql** という名前のサンプルのスクリプトが、**Sample Scripts** フォルダーに用意されています。データベース名が次の既定の名前と異なる場合は、スクリプトのデータベース名を変更します。**TaxiNYC**。
 
 この演習では、以下のことを実行します。
 
 - Windows 認証を使用するか、SQL 認証で SQL ログイン名およびパスワードを使用して、**SQL Server Management Studio** に接続します。
 - さまざまな期間で、いくつかのフィールドのデータの分布を探索する。
 - [経度] フィールドと [緯度] フィールドのデータの品質を調査する。
-- **tip\_amount** に基づいて、二項分類および多クラス分類のラベルを生成する。
+- **tip_amount** に基づいて、二項分類および多クラス分類のラベルを生成する。
 - 特徴を生成するとともに、乗車距離を計算または比較する。
 - 2 つのテーブルを結合して、モデルのビルドに使用するランダム サンプルを抽出する。
 
@@ -192,7 +192,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 #### 探索:medallion (タクシー番号) ごとの乗車回数の分布
 
-この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。**pickup\_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
+この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。**pickup_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
 
 	SELECT medallion, COUNT(*)
 	FROM nyctaxi_fare
@@ -268,7 +268,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 #### モデル作成用にデータを準備する
 
-次のクエリは、テーブル **nyctaxi\_trip** および **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) のリーダー モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データを取り込めます。このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリは、テーブル **nyctaxi_trip** および **nyctaxi_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) のリーダー モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データを取り込めます。このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
 	SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, 	f.total_amount, f.tip_amount,
 	    CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -367,7 +367,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 #### 説明的な統計情報
 
 サンプリングされたデータを探索する準備ができました。はじめに
-**trip\_distance** (またはその他のフィールド) の説明的な統計を確認します。
+**trip_distance** (またはその他のフィールド) の説明的な統計を確認します。
 
     df1['trip_distance'].describe()
 
@@ -410,14 +410,14 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 #### 視覚化:散布図の例
 
-**trip\_time\_in\_secs** と **trip\_distance** 間の散布図を表示し、
+**trip_time_in_secs** と **trip_distance** 間の散布図を表示し、
 相関関係があるか判断できます。
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Plot #6][6]
 
-同様に、**rate\_code** と **trip\_distance** のリレーションシップを確認できます。
+同様に、**rate_code** と **trip_distance** のリレーションシップを確認できます。
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
@@ -425,13 +425,13 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 ### SQL でのデータのサブサンプリング
 
-[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリを直接リーダー モジュールで使用する**か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によってリーダー モジュールで使用することができます。
+[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリを直接リーダー モジュールで使用する**か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your_new_table_name>** によってリーダー モジュールで使用することができます。
 
 このセクションでは、サンプリング データとエンジニアリング データを保持するためにテーブルを新規作成します。モデルを構築するための直接的な SQL クエリの例は、「[SQL Server でのデータの探索と特徴エンジニアリング](#dbexplore)」セクションに記載されています。
 
 #### サンプルのテーブルを作成し、結合されたテーブルの 1% を入力します。存在する場合は最初にテーブルを削除します。
 
-このセクションでは、テーブル **nyctaxi\_trip** および **nyctaxi\_fare** を結合し、1% のランダム サンプルを抽出して、**[nyctaxi\_one\_percent]** という名前の新しいテーブルにサンプリングされたデータを保持します。
+このセクションでは、テーブル **nyctaxi_trip** および **nyctaxi_fare** を結合し、1% のランダム サンプルを抽出して、**[nyctaxi_one_percent]** という名前の新しいテーブルにサンプリングされたデータを保持します。
 
     cursor = conn.cursor()
     
@@ -456,7 +456,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
     
 ### IPython Notebook での SQL クエリを使用したデータの探索
 
-このセクションでは、上記で作成した新しいテーブルに保持されている 1% のサンプリングされたデータを使用して、データの分布を探索します。元のテーブルを使用して、オプションで探索のサンプルを制限する **TABLESAMPLE** を使用し、または **pickup\_datetime** パーティションを使用して結果を指定した期間に限定することでも、同様の探索が行えることに注意してください。これは、「[SQL サーバーでのデータの探索と特徴エンジニアリング](#dbexplore)」セクションで説明しています。
+このセクションでは、上記で作成した新しいテーブルに保持されている 1% のサンプリングされたデータを使用して、データの分布を探索します。元のテーブルを使用して、オプションで探索のサンプルを制限する **TABLESAMPLE** を使用し、または **pickup_datetime** パーティションを使用して結果を指定した期間に限定することでも、同様の探索が行えることに注意してください。これは、「[SQL サーバーでのデータの探索と特徴エンジニアリング](#dbexplore)」セクションで説明しています。
 
 #### 探索:1 日ごとの乗車の分布
 
@@ -487,7 +487,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 次の例では、モデリング用に 2 セットのラベルを生成します。
 
 1. 二項ラベル **[tipped]** (チップが支払われるかどうか予測する)
-2. 多クラス ラベル **tip\_class** (チップの範囲を予測する)
+2. 多クラス ラベル **tip_class** (チップの範囲を予測する)
 
 		nyctaxi_one_percent_add_col = '''
 			ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
@@ -657,7 +657,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 
 ![Azure ML Train][10]
 
-> [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外**することです。たとえば、二項分類を使用する場合は、ラベル **"tipped"** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、および **[total\_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外**することです。たとえば、二項分類を使用する場合は、ラベル **"tipped"** を使用し、フィールド **[tip_class]**、**[tip_amount]**、および **[total_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 >
 > 不要な列またはターゲット リークを除外するために、**プロジェクトの列**モジュールまたは**メタデータ エディター**を使用できます。詳細については、「[プロジェクト列](https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223)」および「[メタデータ エディター](https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66)」リファレンス ページを参照してください。
 

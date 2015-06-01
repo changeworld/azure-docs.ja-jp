@@ -22,7 +22,7 @@ CNAME レコードは、**contoso.com** や **www.contoso.com** などの*specif
 
 ### A レコード
 
-A レコードは、ドメイン (**contoso.com**、**www.contoso.com** など)、*or a wildcard domain* (**\*.contoso.com** など) を IP アドレスにマップします。Azure のクラウド サービスの場合は、サービスの仮想 IP です。CNAME レコードと比較したときの A レコードの主な利点は、ワイルドカードを使用する 1 つのエントリ (***.contoso.com** など) を使用して、複数のサブドメイン (**mail.contoso.com**、**login.contoso.com**、**www.contso.com** など) の要求を処理できることです。
+A レコードは、ドメイン (**contoso.com**、**www.contoso.com** など)、*or a wildcard domain* (***.contoso.com** など) を IP アドレスにマップします。Azure のクラウド サービスの場合は、サービスの仮想 IP です。CNAME レコードと比較したときの A レコードの主な利点は、ワイルドカードを使用する 1 つのエントリ (***.contoso.com** など) を使用して、複数のサブドメイン (**mail.contoso.com**、**login.contoso.com**、**www.contso.com** など) の要求を処理できることです。
 
 > [AZURE.NOTE]
 > A レコードは静的 IP にマップされるため、変更をクラウド サービスの IP アドレスに自動的に解決することはできません。クラウド サービスによって使用される IP アドレスは、空のスロット (運用またはステージング) に初めて展開したときに割り当てられます。スロットの展開を削除すると、IP アドレスは Azure によって解放され、そのスロットへの今後の展開は新しい IP アドレスに与えられます。

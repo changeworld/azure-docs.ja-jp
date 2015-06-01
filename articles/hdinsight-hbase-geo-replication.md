@@ -36,7 +36,7 @@
 
 - [2 つの仮想ネットワーク間に VPN 接続を構成します][hdinsight-hbase-replication-vnet]
 - [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-replication-dns]
-- HBase の geo レプリケーションを構成します \(このチュートリアル\)
+- HBase の geo レプリケーションを構成します (このチュートリアル)
 
 次の図は、「[2 つの Azure Virtual Network 間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]」および「[2 つの Azure Virtual Network 間の DNS の構成][hdinsight-hbase-replication-dns]」で作成した 2 つの仮想ネットワークとネットワーク接続を示したものです。
 
@@ -52,11 +52,11 @@
 - **VPN 接続と DNS が構成された 2 つの Azure Virtual Network**。方法については、「[2 つの Azure Virtual Network 間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」および「[2 つの Azure Virtual Network 間の DNS の構成][hdinsight-hbase-replication-dns]」を参照してください。
 
 
-	Before running PowerShell scripts, make sure you are connected to your Azure subscription using the following cmdlet:
+	PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
 		Add-AzureAccount
 
-	If you have multiple Azure subscriptions, use the following cmdlet to set the current subscription:
+	Azure サブスクリプションが複数ある場合は、次のコマンドレットを使用して、現在のサブスクリプションを設定します。
 
 		Select-AzureSubscription <AzureSubscriptionName>
 
@@ -166,14 +166,14 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
  
 1.	RDP で **Contoso-DNS-EU** に接続します。 
 2.	左下の Windows キーをクリックします。
-2.	**\[管理ツール\]** をクリックします。
-3.	**\[DNS\]** をクリックします。
-4.	左側のウィンドウで、**\[DSN\]**、**\[Contoso-DNS-EU\]** の順に展開します。
-5.	**\[条件付フォワーダー\]** をクリックし、**\[新規条件付フォワーダー\]** をクリックします。 
+2.	**[管理ツール]** をクリックします。
+3.	**[DNS]** をクリックします。
+4.	左側のウィンドウで、**[DSN]**、**[Contoso-DNS-EU]** の順に展開します。
+5.	**[条件付フォワーダー]** をクリックし、**[新規条件付フォワーダー]** をクリックします。 
 5.	次の情報を入力します。
 	- **DNS ドメイン**: Contoso-HBase-US の DNS サフィックスを入力します。例: Contoso-HBase-US.f5.internal.cloudapp.net
 	- **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-US の IP アドレスです。IP を確認してください。実際の DNS サーバーでは IP アドレスが異なる場合があります。
-6.	**Enter** キーを押し、**\[OK\]** をクリックします。以上で、Contoso-DNS-EU から Contoso-DNS-US の IP アドレスを解決できるようになります。
+6.	**Enter** キーを押し、**[OK]** をクリックします。以上で、Contoso-DNS-EU から Contoso-DNS-US の IP アドレスを解決できるようになります。
 7.	同じ手順を繰り返し、次の値を使用して、Contoso-DNS-US 仮想マシン上の DNS サービスへの DNS 条件付フォワーダーを追加します。
 	- **DNS ドメイン**: Contoso-HBase-EU の DNS サフィックスを入力します。 
 	- **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-EU の IP アドレスです。
@@ -199,12 +199,12 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 
 このチュートリアルでは、ヨーロッパの HBase クラスターをソース クラスターとして使用し、米国の HBase クラスターをターゲット クラスターとして使用します。
 
-ターゲット クラスターが受け取ったデータを格納する場所がわかるように、ソース クラスターとターゲット クラスターの両方に名前と列ファミリが同じ HBase テーブルを作成します。HBase シェルの使用の詳細については、「[Get started with Apache HBase in HDInsight \(HDInsight での Apache HBase の使用\)][hdinsight-hbase-get-started]」を参照してください。
+ターゲット クラスターが受け取ったデータを格納する場所がわかるように、ソース クラスターとターゲット クラスターの両方に名前と列ファミリが同じ HBase テーブルを作成します。HBase シェルの使用の詳細については、「[Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]」を参照してください。
 
 **Contoso-HBase-EU で HBase テーブルを作成するには**
 
 1. **Contoso-HBase-EU** の RDP ウィンドウに切り替えます。
-2. デスクトップで **\[Hadoop コマンド ライン\]** をクリックします。
+2. デスクトップで **[Hadoop コマンド ライン]** をクリックします。
 2. 次のようにフォルダーを HBase ホーム ディレクトリに変更します。
 
 		cd %HBASE_HOME%\bin
@@ -224,7 +224,7 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 **レプリケーション ピアとして Contoso-HBase-US を追加するには**
 
 1. **Contoso-HBase-EU** の RDP ウィンドウに切り替えます。
-2. HBase シェル ウィンドウで、次の例のように、ピアとしてターゲット クラスター \(Contoso-HBase-US\) を追加します。
+2. HBase シェル ウィンドウで、次の例のように、ピアとしてターゲット クラスター (Contoso-HBase-US) を追加します。
 
 		add_peer '1', 'zookeeper0.contoso-hbase-us.d4.internal.cloudapp.net,zookeeper1.contoso-hbase-us.d4.internal.cloudapp.net,zookeeper2.contoso-hbase-us.d4.internal.cloudapp.net:2181:/hbase'
 
@@ -261,7 +261,7 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 同じデータ ファイルを HBase クラスターにアップロードし、そこからデータをインポートできます。
 
 1. **Contoso-HBase-EU** の RDP ウィンドウに切り替えます。
-2. デスクトップで **\[Hadoop コマンド ライン\]** をクリックします。
+2. デスクトップで **[Hadoop コマンド ライン]** をクリックします。
 3. 次のようにフォルダーを HBase ホーム ディレクトリに変更します。
 
 		cd %HBASE_HOME%\bin
@@ -286,11 +286,11 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 
 - [HDInsight サービスのページ](http://azure.microsoft.com/services/hdinsight/)
 - [HDInsight のドキュメント](http://azure.microsoft.com/documentation/services/hdinsight/)
-- [Get started with Apache HBase in HDInsight \(HDInsight での Apache HBase の使用\)][hdinsight-hbase-get-started]
+- [Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]
 - [HDInsight HBase の概要][hdinsight-hbase-overview]
 - [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]
 - [HBase で Twitter のセンチメントをリアルタイム分析する][hdinsight-hbase-twitter-sentiment]
-- [HDInsight \(Hadoop\) での Storm と HBase を使用したセンサー データの分析][hdinsight-sensor-data]
+- [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][hdinsight-sensor-data]
 
 [hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-VNets.md
 [hdinsight-hbase-geo-replication-dns]: hdinsight-hbase-geo-replication-configure-VNet.md

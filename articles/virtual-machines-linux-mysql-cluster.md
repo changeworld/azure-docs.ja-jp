@@ -152,7 +152,7 @@ Azure ポータルにログインし、下にスクロールして、[設定] �
     CREATE DATABASE azureha;
     CREATE TABLE things ( id SERIAL, name VARCHAR(255) );
     INSERT INTO things VALUES (1, "Yet another entity");
-    GRANT ALL ON things.\* TO root;
+    GRANT ALL ON things.* TO root;
 
 **警告**: この最後のステートメントは、このテーブルのルート ユーザーに対する認証を無効にします。この部分は、製品レベルの GRANT ステートメントに置き換えて、単なる説明用として含める必要があります。
 

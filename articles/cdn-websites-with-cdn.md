@@ -96,7 +96,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	![](media/cdn-websites-with-cdn/11-access-success.png)
 
-1. 次に、ASP.NET プロジェクトで **\~/Content/bootstrap.css** ファイルにアクセスしてみます。ブラウザーのウィンドウで **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
+1. 次に、ASP.NET プロジェクトで **~/Content/bootstrap.css** ファイルにアクセスしてみます。ブラウザーのウィンドウで **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
 
 		http://az673227.vo.msecnd.net/Content/bootstrap.css
 
@@ -177,7 +177,7 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
 	                Memes.Add(identifier, new Tuple&lt;string, string&gt;(top, bottom));
 	            }
 	
-	            return Content(&quot;&lt;a href=\&quot;&quot; + Url.Action(&quot;Show&quot;, new {id = identifier}) + &quot;\&quot;&gt;here&#39;s your meme&lt;/a&gt;&quot;);
+	            return Content(&quot;&lt;a href=\&quot;&quot; + Url.Action(&quot;Show&quot;, new {id = identifier}) + &quot;\&quot;&gt;here's your meme&lt;/a&gt;&quot;);
 	        }
 
 
@@ -318,7 +318,7 @@ URL の書き換え規則が適用された後、CDN エンドポイントにキ
 		...
     }
 
-最初の `bundles.Add()` ステートメントは、スクリプト バンドルを仮想ディレクトリ `~/bundles/jquery` で追加します。次に、*Views\\Shared_Layout.cshtml* を開いて、スクリプト バンドル タグがどのようにレンダリングされているかを確認します。次の Razor コードが見つかります。
+最初の `bundles.Add()` ステートメントは、スクリプト バンドルを仮想ディレクトリ `~/bundles/jquery` で追加します。次に、*Views\\Shared\_Layout.cshtml* を開いて、スクリプト バンドル タグがどのようにレンダリングされているかを確認します。次の Razor コードが見つかります。
 
     @Scripts.Render("~/bundles/jquery")
 
@@ -342,7 +342,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/jqueryval&quot;<mark>, string.Format(cdnUrl, &quot;bundles/jqueryval&quot;)</mark>).Include(
 	                &quot;~/Scripts/jquery.validate*&quot;));
 	
-	    // Use the development version of Modernizr to develop with and learn from. Then, when you&#39;re
+	    // Use the development version of Modernizr to develop with and learn from. Then, when you're
 	    // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/modernizr&quot;<mark>, string.Format(cdnUrl, &quot;bundles/modernizer&quot;)</mark>).Include(
 	                &quot;~/Scripts/modernizr-*&quot;));
@@ -427,7 +427,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 					<mark>{ CdnFallbackExpression = &quot;$.validator&quot; }</mark>
 	            	.Include(&quot;~/Scripts/jquery.validate*&quot;));
 	
-	    // Use the development version of Modernizr to develop with and learn from. Then, when you&#39;re
+	    // Use the development version of Modernizr to develop with and learn from. Then, when you're
 	    // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/modernizr&quot;, string.Format(cdnUrl, &quot;bundles/modernizer&quot;)) 
 					<mark>{ CdnFallbackExpression = &quot;window.Modernizr&quot; }</mark>
@@ -459,7 +459,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 4. *App_Start\\StyleFundleExtensions.cs* で、名前空間の名前を ASP.NET アプリケーションの名前空間 (例: **cdnwebapp**) に変更します。
 
-3. `App_Start\BundleConfig.cs` に戻り、最後の `bundles.Add` ステートメントを、次の強調表示されたコードで置き換えます。<pre class="prettyprint"> bundles.Add(new StyleBundle("\~/Content/css", string.Format(cdnUrl, "Content/css")) <mark>.IncludeFallback("\~/Content/css", "sr-only", "width", "1px")</mark> .Include( "\~/Content/bootstrap.css", "\~/Content/site.css")); </pre>
+3. `App_Start\BundleConfig.cs` に戻り、最後の `bundles.Add` ステートメントを、次の強調表示されたコードで置き換えます。<pre class="prettyprint"> bundles.Add(new StyleBundle("~/Content/css", string.Format(cdnUrl, "Content/css")) <mark>.IncludeFallback("~/Content/css", "sr-only", "width", "1px")</mark> .Include( "~/Content/bootstrap.css", "~/Content/site.css")); </pre>
 
 	この新しいメソッドでは、同じアイデアを使用するスクリプトを HTML に挿入します。つまり、DOM を調べて CSS バンドルに定義されているクラス名、規則名、および規則値が一致するかどうかを確認し、一致しない場合はオリジン Web サーバーにフォールバックします。
 
@@ -467,18 +467,18 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。<pre class="prettyprint">...
 	
 		&lt;link href=&quot;http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474&quot; rel=&quot;stylesheet&quot;/&gt;
-	<mark>&lt;script&gt;(function() { var loadFallback, len = document.styleSheets.length; for (var i = 0; i &lt; len; i++) { var sheet = document.styleSheets[i]; if (sheet.href.indexOf(&#39;http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474&#39;) !== -1) { var meta = document.createElement(&#39;meta&#39;); meta.className = &#39;sr-only&#39;; document.head.appendChild(meta); var value = window.getComputedStyle(meta).getPropertyValue(&#39;width&#39;); document.head.removeChild(meta); if (value !== &#39;1px&#39;) { document.write(&#39;&lt;link href=&quot;/Content/css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;&#39;); } } } return true; }())||document.write(&#39;&lt;script src=&quot;/Content/css&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;(function() { var loadFallback, len = document.styleSheets.length; for (var i = 0; i &lt; len; i++) { var sheet = document.styleSheets[i]; if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) { var meta = document.createElement('meta'); meta.className = 'sr-only'; document.head.appendChild(meta); var value = window.getComputedStyle(meta).getPropertyValue('width'); document.head.removeChild(meta); if (value !== '1px') { document.write('&lt;link href=&quot;/Content/css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;'); } } } return true; }())||document.write('&lt;script src=&quot;/Content/css&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	    &lt;script src=&quot;http://az673227.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474&quot;&gt;&lt;/script&gt;
-	<mark>&lt;script&gt;(window.Modernizr)||document.write(&#39;&lt;script src=&quot;/bundles/modernizr&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;(window.Modernizr)||document.write('&lt;script src=&quot;/bundles/modernizr&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	...
 	
 	    &lt;script src=&quot;http://az673227.vo.msecnd.net/bundles/jquery?v=1.0.0.25474&quot;&gt;&lt;/script&gt;
-	<mark>&lt;script&gt;(window.jquery)||document.write(&#39;&lt;script src=&quot;/bundles/jquery&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;(window.jquery)||document.write('&lt;script src=&quot;/bundles/jquery&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	    &lt;script src=&quot;http://az673227.vo.msecnd.net/bundles/bootstrap?v=1.0.0.25474&quot;&gt;&lt;/script&gt;
-	<mark>&lt;script&gt;($.fn.modal)||document.write(&#39;&lt;script src=&quot;/bundles/bootstrap&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;</mark>
+	<mark>&lt;script&gt;($.fn.modal)||document.write('&lt;script src=&quot;/bundles/bootstrap&quot;&gt;&lt;/script&gt;');&lt;/script&gt;</mark>
 	
 	... </pre>
 

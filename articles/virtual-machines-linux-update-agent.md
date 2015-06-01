@@ -43,12 +43,12 @@ CentOS と Oracle Linux の場合は、次のように入力します。
 
 SSH を使用して VM にログインします。
 
-コマンド ラインで「`#sudo yum install wget`」と入力して、wget をインストールします \(Redhat、CentOS、Oracle Linux Version 6.4、6.5 のように既定ではインストールされないディストリビューションもあります\)。
+コマンド ラインで「`#sudo yum install wget`」と入力して、wget をインストールします (Redhat、CentOS、Oracle Linux Version 6.4、6.5 のように既定ではインストールされないディストリビューションもあります)。
 
 
 ## 最新版のダウンロード
 
-[Github の Azure Linux エージェントのリリース](https://github.com/Azure/WALinuxAgent/releases)が記載されている Web ページを開き、2.0.12 などの最新バージョンを見つけます \(「`#waagent --version`」と入力すると最新のバージョンを検索できます\)。
+[Github の Azure Linux エージェントのリリース](https://github.com/Azure/WALinuxAgent/releases)が記載されている Web ページを開き、2.0.12 などの最新バージョンを見つけます (「`#waagent --version`」と入力すると最新のバージョンを検索できます)。
 
     #wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-[version]/waagent  
 

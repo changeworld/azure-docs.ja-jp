@@ -42,7 +42,7 @@
 	* データベースが存在する場所の **ServerName**。
 	* 復元するデータベースの **DatabaseName**。	
 
-	`PS C:\>$Database = Get-AzureSqlDatabase -ServerName "myserver" -DatabaseName "mydb"`
+	`PS C:>$Database = Get-AzureSqlDatabase -ServerName "myserver" -DatabaseName "mydb"`
 
 2. [Start-AzureSqlDatabaseRestore](http://msdn.microsoft.com/library/azure/dn720218.aspx) コマンドレットを使用して復元を開始します。次のパラメーターを指定します。	
 	* 復元する **SourceDatabase**。
@@ -51,14 +51,14 @@
 
 	**$RestoreRequest** と呼ばれる変数に返された結果を格納します。この変数には、復元の状態を監視するための復元要求 ID が含まれています。 
 
-	`PS C:\>$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceDatabase $Database -TargetDatabaseName "myrestoredDB" -PointInTime "2015-01-01 06:00:00"`
+	`PS C:>$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceDatabase $Database -TargetDatabaseName "myrestoredDB" -PointInTime "2015-01-01 06:00:00"`
 
 復元が完了するまで時間がかかる場合があります。復元の状態を監視するには、[Get AzureSqlDatabaseOperation](http://msdn.microsoft.com/library/azure/dn546738.aspx) コマンドレットを使用して、次のパラメーターを指定します。
 
 * 復元先のデータベースの **ServerName**。
 * 手順 2 で **$RestoreRequest** 変数に格納した復元要求 ID **OperationGuid**。
 
-	`PS C:\>Get-AzureSqlDatabaseOperation -ServerName "myserver" -OperationGuid $RestoreRequest.RequestID`
+	`PS C:>Get-AzureSqlDatabaseOperation -ServerName "myserver" -OperationGuid $RestoreRequest.RequestID`
 
 **[State (状態)]** と **[PercentComplete]** フィールドでは復元の状態を表示します。 
 

@@ -30,13 +30,13 @@ Powershell とともに Azure RemoteApp を使用開始する
 ------------------
 [このガイド](powershell-install-configure.md)に従うと、Azure サブスクリプションに対してコマンドレットを使用できるようになります。
 
-Create a cloud collection \(クラウド コレクションを作成する\)
+Create a cloud collection (クラウド コレクションを作成する)
 --------------------
 次のコマンドを実行するだけです。
 
     New-AzureRemoteAppCollection -Collectionname RAppO365Col1 -ImageName "Office 365 ProPlus (Subscription required)" -Plan Basic -Location "West US" - Description "Office 365 Collection."
 
-上記のコマンドを実行すると、Microsoft Office 365 アプリケーション  \(Excel、OneNote、Outlook、PowerPoint、Visio および Word\) が自動的に発行されます。
+上記のコマンドを実行すると、Microsoft Office 365 アプリケーション  (Excel、OneNote、Outlook、PowerPoint、Visio および Word) が自動的に発行されます。
 
 コレクションの作成には、完了まで 30 分以上かかる場合があります。そのため、このコマンドは追跡に使用できる次のような ID を返します。
 

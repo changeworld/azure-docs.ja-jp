@@ -31,23 +31,23 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション\([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます\)。
+* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 
-## 1\.Application Insights のインストルメンテーション キーを取得する
+## 1.Application Insights のインストルメンテーション キーを取得する
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします。
 2. 新しい Application Insights リソースを作成します。
 
-    ![\[+\] をクリックし、\[Application Insights\] を選択します](./media/app-insights-java-get-started/01-create.png)
-3. アプリケーションの種類を \[Java Web アプリケーション\] に設定します。
+    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-get-started/01-create.png)
+3. アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
-    ![名前を入力し、\[Java Web アプリケーション\] を選択した後、\[作成\] をクリックします](./media/app-insights-java-get-started/02-create.png)
+    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-get-started/02-create.png)
 4. 新しいリソースのインストルメンテーション キーを見つけます。このキーは、後でコード プロジェクトに貼り付けます。
 
-    ![新しいリソース概要で、\[プロパティ\] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
 
-## 2\.Application Insights SDK for Java をプロジェクトに追加する
+## 2.Application Insights SDK for Java をプロジェクトに追加する
 
 *プロジェクトに適した方法を選択してください。*
 
@@ -121,7 +121,7 @@ SDK を手動で追加する:
 `applicationinsights-core` は、自動テレメトリのない最小限の API を提供します。`applicationinsights-web` は、HTTP 要求数と応答時間を追跡するメトリックを提供します。
 
 
-## 3\.Application Insights の xml ファイルを追加する
+## 3.Application Insights の xml ファイルを追加する
 
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加します。次の XML をファイルにコピーします。
 
@@ -162,9 +162,9 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 * HTTP 要求コンポーネントはオプションです。このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 
-## 4\.HTTP フィルターを追加する
+## 4.HTTP フィルターを追加する
 
-最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします \(単に最小限の API が必要な場合はこの手順を行う必要はありません\)。
+最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
 
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコード スニペットをマージします。
 
@@ -196,22 +196,22 @@ Application Insights パッケージを含めるように次の要素を編集�
 
 #### Struts 2 を使用している場合
 
-次の項目を Struts 構成ファイルに追加します \(通常は、struts.xml または struts-default.xml\)。
+次の項目を Struts 構成ファイルに追加します (通常は、struts.xml または struts-default.xml)。
 
      <interceptors>
        <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
      </interceptors>
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 
-\(既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます\)。
+(既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます)。
 
-## 5\.Application Insights でのテレメトリを表示する
+## 5.Application Insights でのテレメトリを表示する
 
 アプリケーションを実行します。
 
 Microsoft Azure の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます \(表示されない場合は、数秒待ってから \[最新の情報に更新\] をクリックします\)。
+HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-track-http-requests/5-results.png)
  
@@ -222,7 +222,7 @@ HTTP 要求データが概要ブレードに表示されます \(表示されな
 
  
 
-要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント \(要求や例外など\) が表示されます。
+要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
  
 ![](./media/app-insights-java-track-http-requests/7-instance.png)
 
@@ -239,9 +239,9 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 
-## 5\.パフォーマンス カウンター
+## 5.パフォーマンス カウンター
 
-\[サーバー\] タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
+[サーバー] タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
 
 
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
@@ -258,7 +258,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 収集する追加のパフォーマンス カウンターを指定できます。
 
-#### JMX カウンター \(Java 仮想マシンによって公開されます\)
+#### JMX カウンター (Java 仮想マシンによって公開されます)
 
     <PerformanceCounters>
       <Jmx>
@@ -270,16 +270,16 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 *	`displayName` - Application Insights ポータルに表示される名前。
 *	`objectName` - JMX オブジェクトの名前。
 *	`attribute` - 取得する JMX オブジェクト名の属性
-*	`type` \(オプション\) - JMX オブジェクトの属性の型。
+*	`type` (オプション) - JMX オブジェクトの属性の型。
  *	既定値: int、long などの単純型。
  *	`composite`: パフォーマンス カウンター データは、"Attribute.Data" 形式です。
  *	`tabular`: パフォーマンス カウンター データは、テーブル行形式です。
 
 
 
-#### Windows \(64 ビット\) パフォーマンス カウンター 
+#### Windows (64 ビット) パフォーマンス カウンター 
 
-それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、\(フィールドがクラスのメンバーであるのと同様に\) カテゴリのメンバーです。カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
+それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
 
     <PerformanceCounters>
       <Windows>
@@ -289,20 +289,20 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
     </PerformanceCounters>
 
 *	displayName - Application Insights ポータルに表示される名前。
-*	categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンター カテゴリ \(パフォーマンス オブジェクト\)。
+*	categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンター カテゴリ (パフォーマンス オブジェクト)。
 *	counterName - パフォーマンス カウンターの名前。
-*	instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 \(""\) \(カテゴリにインスタンスが 1 つ含まれている場合\)。categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、`"__SELF__"` を指定します。
+*	instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、`"__SELF__"` を指定します。
 
 パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
 
-## 6\.ログ トレースをキャプチャする
+## 6.ログ トレースをキャプチャする
 
 Application Insights を使用すると、Log4J、Logback、またはその他のログ フレームワークのログをさまざまな側面から分析できます。ログは、HTTP 要求やその他のテレメトリに関連付けることができます。[詳細についてはこちら][javalogs]。
 
-## 7\.独自のテレメトリを送信する
+## 7.独自のテレメトリを送信する
 
 SDK をインストールすると、API を使用して独自のテレメトリを送信できるようになります。
 

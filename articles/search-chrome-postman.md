@@ -35,14 +35,14 @@ Postman をダウンロードするには、[Google Chrome ストア](https://ch
 ## Azure Search のクエリ用の Postman の構成 ##
 Postman を構成するには、次の手順に従います。
 
-1. "Enter request URL here \(要求 URL をここに入力\)" と表示されている場所に、Azure Search サービスの URL を入力します。  
+1. "Enter request URL here (要求 URL をここに入力)" と表示されている場所に、Azure Search サービスの URL を入力します。  
 2. URL に `?api-version=2015-02-28` を付加します。別の API バージョンを指定することもできます。詳細については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 3. `GET` が選択されていることを確認します。
-4. \[**ヘッダー**\] ボタンをクリックします。
+4. [**ヘッダー**] ボタンをクリックします。
 5. 次の値を入力します。
 	- `api-key`: [管理者キー]
 	- `Content-Type`: `application/json; charset=utf-8`
-6. \[**送信**\] をクリックして、Azure Search に REST 呼び出しを発行し、JSON 応答を表示します。
+6. [**送信**] をクリックして、Azure Search に REST 呼び出しを発行し、JSON 応答を表示します。
 
 ![][3]
 
@@ -64,12 +64,12 @@ Postman を構成するには、次の手順に従います。
 	    {"name": "location", "type": "Edm.GeographyPoint"} ]
 	    }
 
-4. \[**送信**\] をクリックします。
+4. [**送信**] をクリックします。
 
 ![][4]
  
 ## Postman での Azure Search インデックスへのドキュメントのポスト ##
-インデックスが作成されたので、ドキュメントを読み込むことができます。そのために、米国地質調査所 \(USG\) のデータセットにある 5 つのトレイルのデータを使用して、ドキュメントのグループをバッチでポストします。
+インデックスが作成されたので、ドキュメントを読み込むことができます。そのために、米国地質調査所 (USG) のデータセットにある 5 つのトレイルのデータを使用して、ドキュメントのグループをバッチでポストします。
 
 1. 検索サービス名を使用して、URL を `https://[SEARCH SERVICE].windows.net/indexes/trails/docs/index?api-version=2015-02-28` に変更します。作成したインデックスへのパスが URL に含まれることに注意してください。
 2. HTTP の種類を `POST` に変更します。
@@ -85,7 +85,7 @@ Postman を構成するには、次の手順に従います。
 	      ]
 	    }
     
-4. \[**送信**\] をクリックします。
+4. [**送信**] をクリックします。
 
 ![][5]
 
@@ -94,7 +94,7 @@ Postman を構成するには、次の手順に従います。
 
 1. 検索サービス名を使用して、URL に `https://[SEARCH SERVICE].search.windows.net/indexes/trails/docs?api-version=2015-02-28&search=trail` を入力します。URL には、`search` のクエリ パラメーターおよび検索語句 *trail* が含まれています。
 2. HTTP 要求の種類を `GET` に変更します。
-3. \[**送信**\] をクリックします。
+3. [**送信**] をクリックします。
  
 応答には、Azure Search から返された JSON 検索結果が表示されます。
 
@@ -104,7 +104,7 @@ Postman を構成するには、次の手順に従います。
 これで、Postman での Azure Search の使用に関するすべての基本事項について説明しました。次の手順で役立ついくつかの事項を次に示します。
 
 1. Postman では、共通して発行された要求を保存するのに便利な `Collections` がサポートされています。コレクションを他のユーザーと共有して、Postman の独自のコピーで発行することができます。
-2. Azure Search のドキュメントで、Postman での該当する各呼び出しおよび変更に関連付けられている HTTP 要求の種類 \(`GET`、`PUT` など\) を必ず書き留めておいてください。
+2. Azure Search のドキュメントで、Postman での該当する各呼び出しおよび変更に関連付けられている HTTP 要求の種類 (`GET`、`PUT` など) を必ず書き留めておいてください。
 
 REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) にあります。
 

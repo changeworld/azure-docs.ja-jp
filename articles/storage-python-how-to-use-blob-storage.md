@@ -59,9 +59,9 @@
 
 ## 方法:コンテナーに BLOB をアップロードする
 
-データを blob にアップロードするには、**put\_block\_blob\_from\_path**、**put\_block\_blob\_from\_file**、**put\_block\_blob\_from\_bytes** または **put\_block\_blob\_from\_text** メソッドを使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+データを blob にアップロードするには、**put_block_blob_from_path**、**put_block_blob_from_file**、**put_block_blob_from_bytes** または **put_block_blob_from_text** メソッドを使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-**put\_block\_blob\_from\_path** は、指定したパスのファイルの内容をアップロードし、**put\_block\_blob\_from\_file** は、既に開いているファイルやストリームの内容をアップロードします。**put\_block\_blob\_from\_bytes** は、バイトの配列をアップロードし、**put\_block\_blob\_from\_text** は、指定されたエンコード (既定では UTF-8) を使用して指定されたテキスト値をアップロードします。
+**put_block_blob_from_path** は、指定したパスのファイルの内容をアップロードし、**put_block_blob_from_file** は、既に開いているファイルやストリームの内容をアップロードします。**put_block_blob_from_bytes** は、バイトの配列をアップロードし、**put_block_blob_from_text** は、指定されたエンコード (既定では UTF-8) を使用して指定されたテキスト値をアップロードします。
 
 次の例では、**sunset.png** ファイルの内容を **myblob** BLOB にアップロードします。
 
@@ -74,7 +74,7 @@
 
 ## 方法:コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB の一覧を取得するには、**list\_blobs** メソッドを
+コンテナー内の BLOB の一覧を取得するには、**list_blobs** メソッドを
 **for** ループで使用して、コンテナー内の各 BLOB 名を表示します。次のコードでは、コンテナー内の各 BLOB の**名前**と **URL** をコンソールに出力しています。
 
 	blobs = blob_service.list_blobs('mycontainer')
@@ -84,9 +84,9 @@
 
 ## 方法:BLOB をダウンロードする
 
-BLOB からデータをダウンロードするには、**get\_blob\_to\_path**、**get\_blob\_to\_file**、**get\_blob\_to\_bytes**、または **get\_blob\_to\_text** を使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+BLOB からデータをダウンロードするには、**get_blob_to_path**、**get_blob_to_file**、**get_blob_to_bytes**、または **get_blob_to_text** を使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-次の例は、**get\_blob\_to\_path** を使用して **myblob** BLOB の内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
+次の例は、**get_blob_to_path** を使用して **myblob** BLOB の内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
 
 	blob_service.get_blob_to_path('mycontainer', 'myblob', 'out-sunset.png')
 

@@ -23,61 +23,61 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../includes/machine-learning-free-trial.md)]
 
-## 1\.概要
+## 1.概要
 このドキュメントは、API リファレンスです。最初に、ドキュメント『Azure Machine Learning Recommendations – クイック スタート』をお読みください。
 
 Azure Machine Learning の Recommendations API は、8 つのグループに分けられます。
 
-1.	<ins>基本モデル</ins> – モデルの基本的な操作をできるようにする API \(例: モデルの作成、更新、削除\)。
+1.	<ins>基本モデル</ins> – モデルの基本的な操作をできるようにする API (例: モデルの作成、更新、削除)。
 2.	<ins>高度なモデル</ins> – モデルの高度なデータ分析を取得できるようにする API。
 3.	<ins>ビジネス ルールのモデル</ins> – モデルの推奨結果に関するビジネス ルールを管理できるようにする API。
 4.	<ins>カタログ</ins> – モデルのカタログに関する基本操作を実行できるようにする API。カタログには、使用状況データ項目に関するメタ データ情報が含まれています。
-5.	<ins>使用状況データ</ins> – モデルの使用状況データに関する基本操作を実行できるようにする API。基本フォームの使用状況データは、&\#60;userId&\#62;,&\#60;itemId&\#62; のペアを含む行で構成されます。
+5.	<ins>使用状況データ</ins> – モデルの使用状況データに関する基本操作を実行できるようにする API。基本フォームの使用状況データは、&#60;userId&#62;,&#60;itemId&#62; のペアを含む行で構成されます。
 6.	<ins>ビルド</ins> – モデルのビルドを起動し、このビルドに関連する基本操作を実行できるようにする API。モデルのビルドは、有効な使用状況データが存在する場合に起動できます。
 7.	<ins>推奨</ins> – モデルのビルドが終了すると、推奨を使用できるようにする API。
-8.	<ins>通知</ins> – API の操作に関連する問題の通知を受信するための API。\(たとえば、データ取得により使用状況データを報告していて、イベント処理のほとんどが失敗する場合、エラー通知が発生します\)。
+8.	<ins>通知</ins> – API の操作に関連する問題の通知を受信するための API。(たとえば、データ取得により使用状況データを報告していて、イベント処理のほとんどが失敗する場合、エラー通知が発生します)。
 
-## 2\.高度なトピック
+## 2.高度なトピック
 
-### 2\.1.推奨事項の品質
+### 2.1.推奨事項の品質
 
-通常、システムで推奨事項を提供するには、推奨モデルを作成すれば十分です。ただし、推奨事項の品質は、処理される使用状況とカタログの対象範囲に基づいて異なります。たとえば、多数のコールド項目 \(使用頻度の高くない項目\) がある場合、システムがそのような項目の推奨事項を提供したり、そのような項目を推奨項目として使用したりすることは困難になります。コールド項目の問題を防ぐために、システムでは項目のメタデータを使用して推奨事項を強化できます。このメタデータのことを "特徴" と言います。一般的な特徴には、本の著者や映画の俳優があります。特徴はキーと値の文字列の形式のカタログを使用して提供されます。カタログ ファイルの完全なフォーマットについては、「[カタログ セクションのインポート](#81-import-catalog-data)」を参照してください。次のセクションでは、推奨モデルを強化するための特徴の使用方法について説明します。
+通常、システムで推奨事項を提供するには、推奨モデルを作成すれば十分です。ただし、推奨事項の品質は、処理される使用状況とカタログの対象範囲に基づいて異なります。たとえば、多数のコールド項目 (使用頻度の高くない項目) がある場合、システムがそのような項目の推奨事項を提供したり、そのような項目を推奨項目として使用したりすることは困難になります。コールド項目の問題を防ぐために、システムでは項目のメタデータを使用して推奨事項を強化できます。このメタデータのことを "特徴" と言います。一般的な特徴には、本の著者や映画の俳優があります。特徴はキーと値の文字列の形式のカタログを使用して提供されます。カタログ ファイルの完全なフォーマットについては、「[カタログ セクションのインポート](#81-import-catalog-data)」を参照してください。次のセクションでは、推奨モデルを強化するための特徴の使用方法について説明します。
 
-### 2\.2.順位付けのビルド
+### 2.2.順位付けのビルド
 
-特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト \(またはサブリスト\) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
+特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
 
-### 2\.3.推奨の理由
+### 2.3.推奨の理由
 
-推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 \(理由\) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
+推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
 
-## 3\.制限事項
+## 3.制限事項
 
 - サブスクリプションごとのモデルの最大数は 10 です。
 - カタログが保持できる項目の最大数は 100,000 です。
-- 保持される使用状況ポイントの最大数は \~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
-- POST で送信できるデータ \(例: カタログ データのインポート、使用データのインポート\) の最大サイズは 200 MB です。
-- 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は \~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+- 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
+- POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
+- 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
-## 4\.API の概要
+## 4.API の概要
 
-### 4\.1.認証
+### 4.1.認証
 認証に関する Microsoft Azure Marketplace のガイドラインに従ってください。Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。
 
-### 4\.2.サービス URI
+### 4.2.サービス URI
 Azure Machine Learning Recommendations API のサービス ルート URI は、[ここ](https://api.datamarket.azure.com/amla/recommendations/v2/)です。
 
 サービス URI はすべて、OData 仕様の要素を使用して表されます。
 
-### 4\.3.API バージョン
+### 4.3.API バージョン
 各 API 呼び出しでは、最後に apiVersion というクエリ パラメーターを 1.0 に設定する必要があります。
 
-### 4\.4.ID には大文字小文字の区別がある
+### 4.4.ID には大文字小文字の区別がある
 API のいずれかにより返される ID は大文字と小文字の区別があり、後続の API 呼び出しにパラメーターとして渡されるときにはそのとおりに使用する必要があります。たとえば、モデル ID およびカタログ ID では、大文字と小文字が区別されます。
 
-## 5\.基本モデル
+## 5.基本モデル
 
-### 5\.1.モデルの作成
+### 5.1.モデルの作成
 "モデルの作成" 要求を作成します。
 
 | HTTP メソッド | URI |
@@ -86,8 +86,8 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	modelName |	英字 \(A～Z、a～z\)、数字 \(0～9\)、ハイフン \(-\)、アンダー スコア \(\_\) のみが許可されます。<br>最大長: 20 |
-|	apiVersion | 1\.0 |
+|	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 20 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -129,7 +129,7 @@ OData XML
 	  </entry>
 	</feed>
 
-### 5\.2.モデルの取得
+### 5.2.モデルの取得
 "モデルの取得" 要求を作成します。
 
 | HTTP メソッド | URI |
@@ -138,8 +138,8 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	id |	モデルの一意識別子 \(大文字小文字を区別する\) |
-|	apiVersion | 1\.0 |
+|	id |	モデルの一意識別子 (大文字小文字を区別する) |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -157,7 +157,7 @@ HTTP 状態コード: 200
 	- ReadyForBuild – モデルは作成済みで、カタログと使用状況が含まれています。
 - `feed/entry/content/properties/HasActiveBuild` – モデルが正常にビルドされたかどうかを示します。
 - `feed/entry/content/properties/BuildId` – モデルのアクティブなビルド ID。
-- `feed/entry/content/properties/Mpr` – モデルの平均パーセンタイル順位付け \(MPR - 詳細については、ModelInsight を参照してください\)。
+- `feed/entry/content/properties/Mpr` – モデルの平均パーセンタイル順位付け (MPR - 詳細については、ModelInsight を参照してください)。
 - `feed/entry/content/properties/UserName` – モデル内部ユーザー名。
 
 OData XML
@@ -193,7 +193,7 @@ OData XML
 	  </entry>
 	</feed>
 
-### 5\.3.すべてのモデルの取得
+### 5.3.すべてのモデルの取得
 現在のユーザーのすべてのモデルを取得します。
 
 | HTTP メソッド | URI |
@@ -202,7 +202,7 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -218,7 +218,7 @@ HTTP 状態コード: 200
   - ReadyForBuild – モデルは作成済みで、カタログと使用状況が含まれています。
 - `feed/entry/content/properties/HasActiveBuild` – モデルが正常にビルドされたかどうかを示します。
 - `feed/entry/content/properties/BuildId` – モデルのアクティブなビルド ID。
-- `feed/entry/content/properties/Mpr` – モデルの MPR \(詳細については ModelInsight を参照してください\)。
+- `feed/entry/content/properties/Mpr` – モデルの MPR (詳細については ModelInsight を参照してください)。
 - `feed/entry/content/properties/UserName` – モデル内部ユーザー名。
 - `feed/entry/content/properties/UsageFileNames` – コンマで区切られたモデルの使用状況ファイルの一覧。
 - `feed/entry/content/properties/CatalogId` – モデル カタログの ID。
@@ -259,7 +259,7 @@ OData XML
 		</entry>
 	</feed>
 
-### 5\.4.モデルの更新
+### 5.4.モデルの更新
 
 モデルの説明またはアクティブなビルド ID を更新することができます。<br> 
 <ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> 
@@ -272,16 +272,16 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	id | モデルの一意識別子 \(大文字小文字を区別する\) |
-|	apiVersion | 1\.0 |
+|	id | モデルの一意識別子 (大文字小文字を区別する) |
+|	apiVersion | 1.0 |
 |||
-| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description または ActiveBuildId を設定したくない場合は、タグ全体を削除します。\|
+| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description または ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
 **応答**:
 
 HTTP 状態コード: 200
 
-### 5\.5.モデルの削除
+### 5.5.モデルの削除
 既存のモデルを ID で削除します。
 
 | HTTP メソッド | URI |
@@ -290,8 +290,8 @@ HTTP 状態コード: 200
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	id |	モデルの一意識別子 \(大文字小文字を区別する\) |
-|	apiVersion | 1\.0 |
+|	id |	モデルの一意識別子 (大文字小文字を区別する) |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -321,9 +321,9 @@ OData XML
 	  </entry>
 	</feed>
 
-## 6\.高度なモデル
+## 6.高度なモデル
 
-### 6\.1.モデル データの分析
+### 6.1.モデル データの分析
 このモデルがビルドされた際の使用状況データに関する統計データを返します。
 
 推奨事項のビルドでのみ使用できます。
@@ -335,7 +335,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -559,8 +559,8 @@ OData XML
     </entry>
     </feed>
 
-### 6\.2.モデルの分析
-アクティブなビルドまたは特定のビルド \(指定した場合\) のモデルの分析を返します。
+### 6.2.モデルの分析
+アクティブなビルドまたは特定のビルド (指定した場合) のモデルの分析を返します。
 
 推奨事項のビルドでのみ使用できます。
 
@@ -572,7 +572,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	buildId |	省略可能 – 成功したビルドを識別する数値。 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -642,7 +642,7 @@ OData XML
 	</entry>
 	</feed>
 
-### 6\.3.モデルのサンプルの取得
+### 6.3.モデルのサンプルの取得
 推奨モデルのサンプルを取得します。
 
 | HTTP メソッド | URI |
@@ -652,7 +652,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -793,15 +793,15 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 </pre>
 
-## 7\.ビジネス ルールのモデル
+## 7.ビジネス ルールのモデル
 ルールには 4 つのタイプがあります。
 <strong>BlockList</strong> - BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。
 <strong>Upsale</strong> - Upsale では項目を強制的に推奨事項の結果の一部として返すことができます。
-<strong>WhiteList</strong> - WhiteList では、これ以外は推奨事項の結果として返せないという項目の一覧を指定できます \(BlockList の反対\)。
+<strong>WhiteList</strong> - WhiteList では、これ以外は推奨事項の結果として返せないという項目の一覧を指定できます (BlockList の反対)。
 <strong>PerSeedBlockList</strong> -PerSeedBlockList では、推奨事項の結果として返すことができない項目の一覧を項目ごとに指定できます。
 
 
-### 7\.1.モデルのルールの取得
+### 7.1.モデルのルールの取得
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -810,7 +810,7 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -859,7 +859,7 @@ OData XML
 	</entry>
 	</feed>
 
-### 7\.2.ルールの追加
+### 7.2.ルールの追加
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -867,9 +867,9 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
-| Request Body | <ins>BlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br><ins>WhiteList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>PerSeedBlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`\|
+| Request Body | <ins>BlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br><ins>WhiteList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>PerSeedBlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 **応答**:
 
@@ -905,7 +905,7 @@ OData XML
 	</entry>
 	</feed>
 
-### 7\.3.ルールの削除
+### 7.3.ルールの削除
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -915,7 +915,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	filterId |	フィルターの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -923,7 +923,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-### 7\.4.すべてのルールの削除
+### 7.4.すべてのルールの削除
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -932,7 +932,7 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -940,9 +940,9 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-## 8\.カタログ
+## 8.カタログ
 
-### 8\.1.カタログ データのインポート
+### 8.1.カタログ データのインポート
 
 複数の呼び出しで同じモデルに複数のカタログ ファイルがアップロードされた場合は、新しいカタログ項目のみを挿入します。既存の項目は、元の値でそのまま残ります。このメソッドを使用して、カタログ データを更新することはできません。
 
@@ -958,10 +958,10 @@ HTTP 状態コード: 200
 
 | 名前 | 必須 | 型 | 説明 |
 |:---|:---|:---|:---|
-| 項目 ID |あり | [A-z]、[a-z]、[0-9]、\[\_\] &\#40;アンダースコア&\#41;、[\-] &\#40;ダッシュ&\#41;<br> 最大長: 50 | 項目の一意識別子 |
+| 項目 ID |あり | [A-z]、[a-z]、[0-9]、[_] &#40;アンダースコア&#41;、[\-] &#40;ダッシュ&#41;<br> 最大長: 50 | 項目の一意識別子 |
 | Item Name | あり | 任意の英数字<br> 最大長: 255 | 項目名。 | 
-| Item Category | あり | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ \(例: 料理本、ドラマ...\)。空にすることができます。 |
-| 説明 | いいえ。ただし特徴が存在する場合を除きます \(しかし、空にすることはできます\) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
+| Item Category | あり | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
+| 説明 | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
 | Features list | いいえ | 任意の英数字<br> 最大長: 4000 | モデルの推奨事項を強化するために使用できる特徴名=特徴の値のコンマ区切りの一覧。「[高度なトピック](#2-advanced-topics)」セクションを参照してください。 |
 
 
@@ -972,10 +972,10 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 \(A～Z、a～z\)、数字 \(0～9\)、ハイフン \(-\)、アンダー スコア \(\_\) のみが許可されます。<br>最大長: 50 |
-|	apiVersion | 1\.0 |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1.0 |
 |||
-| Request Body | 例 \(特徴あり\):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction \(Byzantium Book\),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> \|
+| Request Body | 例 (特徴あり):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
 
 
 **応答**:
@@ -1009,7 +1009,7 @@ OData XML
 	</entry>
 	</feed>
 
-### 8\.2.カタログの取得
+### 8.2.カタログの取得
 すべてのカタログ項目を取得します。
 
 | HTTP メソッド | URI |
@@ -1019,7 +1019,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1113,7 +1113,7 @@ OData XML
 	</entry>
 	</feed>
 
-### 8\.3.トークンによるカタログ項目の取得
+### 8.3.トークンによるカタログ項目の取得
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -1123,7 +1123,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	token |	カタログ項目の名前のトークン。3 文字以上にする必要があります。 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1167,9 +1167,9 @@ OData XML
 		</entry>
 	</feed>
 
-## 9\.使用状況データ
-### 9\.1.使用状況データのインポート
-#### 9\.1.1.ファイルのアップロード
+## 9.使用状況データ
+### 9.1.使用状況データのインポート
+#### 9.1.1.ファイルのアップロード
 このセクションでは、ファイルを使用して使用状況データをアップロードする方法を示します。この API は使用状況データと共に何度も呼び出すことができます。すべての呼び出しですべての使用状況データが保存されます。
 
 | HTTP メソッド | URI |
@@ -1179,10 +1179,10 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 \(A～Z、a～z\)、数字 \(0～9\)、ハイフン \(-\)、アンダー スコア \(\_\) のみが許可されます。<br>最大長: 50 |
-|	apiVersion | 1\.0 |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1.0 |
 |||
-| Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>User Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、\[\_\] &\#40;アンダースコア&\#41;、[\-] &\#40;ダッシュ&\#41;<br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>Item Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[&\#95;] &\#40;アンダースコア&\#41;、[\-] &\#40;ダッシュ&\#41;<br> 最大長: 50</td><td>項目の一意識別子。</td></tr><tr><td>Time</td><td>いいえ</td><td>以下の形式の日付: YYYY/MM/DDTHH:MM:SS \(例: 2013/06/20T10:00:00\)</td><td>データの日付。</td></tr><tr><td>Event</td><td>いいえ。指定する場合は日付も必要。</td><td>以下の 1 つ。<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイル サイズ: 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>User Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] &#40;アンダースコア&#41;、[\-] &#40;ダッシュ&#41;<br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>Item Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[&#95;] &#40;アンダースコア&#41;、[\-] &#40;ダッシュ&#41;<br> 最大長: 50</td><td>項目の一意識別子。</td></tr><tr><td>Time</td><td>いいえ</td><td>以下の形式の日付: YYYY/MM/DDTHH:MM:SS (例: 2013/06/20T10:00:00)</td><td>データの日付。</td></tr><tr><td>Event</td><td>いいえ。指定する場合は日付も必要。</td><td>以下の 1 つ。<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイル サイズ: 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -1217,7 +1217,7 @@ OData XML
 	</feed>
 
 
-#### 9\.1.2.データ取得の使用
+#### 9.1.2.データ取得の使用
 このセクションでは、Web サイトから Azure Machine Learning Recommendations にリアルタイムでイベントを送信する方法を示します。
 
 | HTTP メソッド | URI |
@@ -1226,8 +1226,8 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	apiVersion | 1\.0 |
-|Request body| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。\(以下のイベントの本文のサンプルを参照してください\)。|
+|	apiVersion | 1.0 |
+|Request body| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルを参照してください)。|
 
 
 - 'Click' のイベントの例:
@@ -1321,7 +1321,7 @@ OData XML
 
 **応答**: HTTP 状態コード: 200
 
-### 9\.2.モデルの使用状況ファイルの一覧
+### 9.2.モデルの使用状況ファイルの一覧
 すべてのモデルに関する使用状況ファイルのメタデータを取得します。
 
 | HTTP メソッド | URI |
@@ -1331,7 +1331,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	forModelId |	モデルの一意識別子 |
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1342,7 +1342,7 @@ HTTP 状態コード: 200
 応答には、使用状況ファイルごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
 - `feed\entry\content\properties\Id` – 使用状況ファイルの ID。
-- `feed\entry\content\properties\Length` -使用状況ファイルの長さ \(MB\)。
+- `feed\entry\content\properties\Length` -使用状況ファイルの長さ (MB)。
 - `feed\entry\content\properties\DateModified` – 使用状況ファイルが作成された日付。
 - `feed\entry\content\properties\UseInModel` – 使用状況ファイルがモデルで使用されるかどうか。
 
@@ -1385,7 +1385,7 @@ OData XML
 	</entry>
 </feed>
 
-### 9\.3.使用状況の統計の取得
+### 9.3.使用状況の統計の取得
 使用状況の統計を取得します。
 
 | HTTP メソッド | URI |
@@ -1398,7 +1398,7 @@ OData XML
 | startDate |	開始日。形式: yyyy/MM/ddTHH:mm:ss |
 | endDate |	終了日。形式: yyyy/MM/ddTHH:mm:ss |
 | eventTypes |	イベント種類のコンマ区切りの文字列。すべてのイベントを取得する場合は null 値。 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1408,7 +1408,7 @@ HTTP 状態コード: 200
 
 キーと値の要素のコレクション。各々には 1 時間でグループ化された特定のイベントの種類のイベントの合計が含まれます。
 
-- `feed\entry[i]\content\properties\Key` – 時間 \(時間別にグループ化\) と、イベントの種類が含まれています。
+- `feed\entry[i]\content\properties\Key` – 時間 (時間別にグループ化) と、イベントの種類が含まれています。
 - `feed\entry[i]\content\properties\Value` – 合計イベント数。
 
 OData XML
@@ -1470,7 +1470,7 @@ OData XML
 	</entry>
 	</feed>
 
-### 9\.4.使用状況ファイルのサンプルの取得
+### 9.4.使用状況ファイルのサンプルの取得
 使用状況ファイルの内容の最初の 2 KB を取得します。
 
 | HTTP メソッド | URI |
@@ -1481,7 +1481,7 @@ OData XML
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 | フィールド |	モデルの使用状況ファイルの一意識別子。 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1509,7 +1509,7 @@ HTTP 状態コード: 200
 </pre>
 
 
-### 9\.5.モデルの使用状況ファイルの取得
+### 9.5.モデルの使用状況ファイルの取得
 使用状況ファイルのすべての内容を取得します。
 
 | HTTP メソッド | URI |
@@ -1521,7 +1521,7 @@ HTTP 状態コード: 200
 | mid |	モデルの一意識別子 |
 | fid |	モデルの使用状況ファイルの一意識別子。 |
 | ダウンロード | 1 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1566,7 +1566,7 @@ HTTP 状態コード: 200
 144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
 </pre>
 
-### 9\.6.使用状況ファイルの削除
+### 9.6.使用状況ファイルの削除
 指定されたモデルの使用状況ファイルを削除します。
 
 | HTTP メソッド | URI |
@@ -1577,7 +1577,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 | フィールド | 削除するファイルの一意識別子 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1586,7 +1586,7 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 
-### 9\.7.すべての使用状況ファイルの削除
+### 9.7.すべての使用状況ファイルの削除
 すべてのモデルの使用状況ファイルを削除します。
 
 | HTTP メソッド | URI |
@@ -1596,7 +1596,7 @@ HTTP 状態コード: 200
 | パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1605,11 +1605,11 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-## 10\.特徴
-このセクションでは特徴の情報 \(インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など\) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します \(最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します\)。順位付けの日付をスコアの鮮度と言います。
+## 10.特徴
+このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
 
-### 10\.1.特徴の情報の取得 \(最後の順位付けのビルド\)
-前回成功した順位付けのビルドの特徴の情報 \(順位付けを含む\) を取得します。
+### 10.1.特徴の情報の取得 (最後の順位付けのビルド)
+前回成功した順位付けのビルドの特徴の情報 (順位付けを含む) を取得します。
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -1619,7 +1619,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/>有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1631,8 +1631,8 @@ HTTP 状態コード: 200
 応答には、特徴の情報エントリの一覧が含まれています。各エントリは、次のとおりです。
 
 - `feed/entry/content/m:properties/d:Name` - 特徴名。
-- `feed/entry/content/m:properties/d:RankUpdateDate` - 順位付けがこの特徴に割り当てられた日付。スコアの鮮度特徴とも呼ばれます。古代の日付 \('0001-01-01T00:00:00'\) は、順位付けのビルドが実行されていないことを意味します。
-- `feed/entry/content/m:properties/d:Rank` - 特徴の順位 \(float\)。2.0 以上の順位は良好な特徴であると見なせます。
+- `feed/entry/content/m:properties/d:RankUpdateDate` - 順位付けがこの特徴に割り当てられた日付。スコアの鮮度特徴とも呼ばれます。古代の日付 ('0001-01-01T00:00:00') は、順位付けのビルドが実行されていないことを意味します。
+- `feed/entry/content/m:properties/d:Rank` - 特徴の順位 (float)。2.0 以上の順位は良好な特徴であると見なせます。
 - `feed/entry/content/m:properties/d:SampleValues` -要求されたサンプリング サイズまでの値のコンマ区切りの一覧。
 
 OData XML
@@ -1689,9 +1689,9 @@ OData XML
 </feed>
 
 
-### 10\.2.特徴の情報の取得 \(特定の順位付けのビルド\)
+### 10.2.特徴の情報の取得 (特定の順位付けのビルド)
 
-特定の順位付けのビルドの特徴の情報 \(順位付けを含む\) を取得します。
+特定の順位付けのビルドの特徴の情報 (順位付けを含む) を取得します。
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -1702,7 +1702,7 @@ OData XML
 | modelId |	モデルの一意識別子 |
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/> 有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 |rankBuildId| 順位付けのビルドの一意識別子。最後の順位付けのビルドの場合は -1。|
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -1714,8 +1714,8 @@ HTTP 状態コード: 200
 応答には、特徴の情報エントリの一覧が含まれています。各エントリは、次のとおりです。
 
 - `feed/entry/content/m:properties/d:Name` - 特徴名。
-- `feed/entry/content/m:properties/d:RankUpdateDate` - 順位付けがこの特徴に割り当てられた日付。スコアの鮮度特徴とも呼ばれます。古代の日付 \('0001-01-01T00:00:00'\) は、順位付けのビルドが実行されていないことを意味します。
-- `feed/entry/content/m:properties/d:Rank` - 特徴の順位 \(float\)。2.0 以上の順位は良好な特徴であると見なせます。
+- `feed/entry/content/m:properties/d:RankUpdateDate` - 順位付けがこの特徴に割り当てられた日付。スコアの鮮度特徴とも呼ばれます。古代の日付 ('0001-01-01T00:00:00') は、順位付けのビルドが実行されていないことを意味します。
+- `feed/entry/content/m:properties/d:Rank` - 特徴の順位 (float)。2.0 以上の順位は良好な特徴であると見なせます。
 - `feed/entry/content/m:properties/d:SampleValues` -要求されたサンプリング サイズまでの値のコンマ区切りの一覧。
 
 OData
@@ -1772,39 +1772,39 @@ OData
 	</feed>
 
 
-## 11\.構築
+## 11.構築
 
   このセクションでは、ビルドに関連する様々な API について説明します。ビルドには、推奨事項のビルド、順位付けのビルド、および FBT ビルドの 3 つの種類があります。
 
 推奨事項のビルドは、予測のために使用される推奨モデルの生成に使用されます。
 
 順位付けのビルドは、特徴の有用性について知るための技術的なビルドです。通常、特徴に関連する推奨モデルについて最適な結果を得るには、次の手順を実行する必要があります。 
-- 順位付けのビルドをトリガーして \(特徴のスコアが安定している場合を除く\)、特徴のスコアが取得されるまで待ちます。 
+- 順位付けのビルドをトリガーして (特徴のスコアが安定している場合を除く)、特徴のスコアが取得されるまで待ちます。 
 - [特徴の情報の取得](#101-get-features-info-for-last-rank-build) API を呼び出して、特徴の順位付けを取得します。 
 - 次のパラメーターを指定して推奨事項のビルドを構成します。 
 	- `useFeatureInModel` - True に設定します。 
-	- `ModelingFeatureList` - スコアが 2.0 以上 \(前の手順で取得した順位に応じて変更します\) の特徴のコンマ区切りのリストに設定します。 
+	- `ModelingFeatureList` - スコアが 2.0 以上 (前の手順で取得した順位に応じて変更します) の特徴のコンマ区切りのリストに設定します。 
 	-  `AllowColdItemPlacement` - True に設定します。 
-	- オプションで`EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます \(通常はモデル化またはサブリストで使用される特徴のリストと同じです\)。
+	- オプションで`EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます (通常はモデル化またはサブリストで使用される特徴のリストと同じです)。
 	- 構成したパラメーターを使用して推奨事項のビルドをトリガーします。
 
-注: パラメーターを構成しない場合 \(パラメーターなしで推奨事項のビルドを呼び出す場合など\) や、特徴の使用状況を明示的に無効にしない場合 \(`UseFeatureInModel` を False に設定する場合など\)、順位付けのビルドが存在しているなら、システムは特徴に関連するパラメーターを前述の値に設定します。
+注: パラメーターを構成しない場合 (パラメーターなしで推奨事項のビルドを呼び出す場合など) や、特徴の使用状況を明示的に無効にしない場合 (`UseFeatureInModel` を False に設定する場合など)、順位付けのビルドが存在しているなら、システムは特徴に関連するパラメーターを前述の値に設定します。
 
 順位付けのビルドと推奨事項のビルドを同じモデルに対して同時に実行することに関して制限はありません。ただし、同じモデルに同じ型の 2 つのビルドを並列で実行することはできません。
 
-FBT \(よく一緒に購入されている品目\) のビルドは「控えめな」レコメンダーとも呼ばれる別の推奨事項のアルゴリズムであり、性質が同様ではないカタログに適しています \(同様であるもの: 書籍、映画、ある種の食品、ファッション。同様でないもの: コンピューターとデバイス、クロス ドメイン、多様であるもの\)。
+FBT (よく一緒に購入されている品目) のビルドは「控えめな」レコメンダーとも呼ばれる別の推奨事項のアルゴリズムであり、性質が同様ではないカタログに適しています (同様であるもの: 書籍、映画、ある種の食品、ファッション。同様でないもの: コンピューターとデバイス、クロス ドメイン、多様であるもの)。
 
 注: アップロードした使用状況ファイルにオプション フィールド「イベントの種類」が含まれている場合、FBT モデル化では「購買」イベントのみが使用されます。イベントの種類を指定しない場合、モデル化にすべてのイベントが使用されます。
 
 
-#### 11\.1 ビルド パラメーター
+#### 11.1 ビルド パラメーター
 
-各種のビルドは一連のパラメーター \(以下を参照\) を使用して構成できます。パラメーターを構成しない場合、システムは、ビルドをトリガーする時点で存在する情報に応じて、自動的にパラメーターに値を付与します。
+各種のビルドは一連のパラメーター (以下を参照) を使用して構成できます。パラメーターを構成しない場合、システムは、ビルドをトリガーする時点で存在する情報に応じて、自動的にパラメーターに値を付与します。
 
-##### 11\.1.1.使用状況コンデンサー
+##### 11.1.1.使用状況コンデンサー
 いくつかの使用状況ポイントを持つユーザーまたは項目には、情報よりも多くのノイズが含まれている可能性があります。システムは 1 つのモデルで使用されるユーザー/項目ごとの使用状況のポイントの最小数を予測しようとします。この数値は、項目の場合は ItemCutoffLowerBound パラメーターと ItemCutoffUpperBound パラメーターで定義されている範囲内になり、ユーザーの場合は UserCutOffLowerBound パラメーターと UserCutoffUpperBound パラメーターで定義されている範囲内になります。対応する境界の少なくとも 1 つをゼロに設定することによって、項目またはユーザーに対するコンデンサーの影響を最小化できます。
 
-##### 11\.1.2.順位付けのビルドのパラメーター
+##### 11.1.2.順位付けのビルドのパラメーター
 
 次の表は、順位付けのビルドのビルド パラメーターを示しています。
 
@@ -1812,42 +1812,42 @@ FBT \(よく一緒に購入されている品目\) のビルドは「控えめ�
 |:-----|:----|:----|:---|
 |NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| 整数 | 10-50 |
 | NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | 整数 | 10-40 |
-|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
+|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
 
-##### 11\.1.3.推奨事項のビルドのパラメーター
+##### 11.1.3.推奨事項のビルドのパラメーター
 次の表は、推奨事項のビルドのビルド パラメーターを示しています。
 
 |キー|説明|型|有効な値:|
 |:-----|:----|:----|:---|
 |NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| 整数 | 10-50 |
 | NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | 整数 | 10-40 |
-|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-| 説明 | ビルドの説明。 | String | 任意のテキスト \(最大 512 文字\) |
+|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+| 説明 | ビルドの説明。 | String | 任意のテキスト (最大 512 文字) |
 | EnableModelingInsights | 推奨モデルのメトリックを計算することができます。 | Boolean | True または False |
 | UseFeaturesInModel | 推奨モデルを強化するために特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | String | 特徴名 \(最大 512 文字） |
+| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
 | AllowColdItemPlacement | 推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | Boolean | True または False |
 | EnableFeatureCorrelation | 理由で特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ReasoningFeatureList | 理由の文 \(推奨事項の説明など\) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 \(最大 512 文字） |
+| ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
 
-##### 11\.1.4.FBT ビルド パラメーター
+##### 11.1.4.FBT ビルド パラメーター
 次の表は、推奨事項のビルドのビルド パラメーターを示しています。
 
-|キー|説明|型|有効な値 \(既定値\)|
+|キー|説明|型|有効な値 (既定値)|
 |:-----|:----|:----|:---|
-|FbtSupportThreshold | モデルがどの程度控えめか。モデル化で考慮すべき項目の同時発生の数。| 整数 | 3-50 \(6\) |
-|FbtMaxItemSetSize | 頻度のセット内のアイテム数の限度を定めます。| 整数 | 2-3 \(2\) |
-|FbtMinimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。大きいほど良好です。| Double | 0 以上 \(0\) |
+|FbtSupportThreshold | モデルがどの程度控えめか。モデル化で考慮すべき項目の同時発生の数。| 整数 | 3-50 (6) |
+|FbtMaxItemSetSize | 頻度のセット内のアイテム数の限度を定めます。| 整数 | 2-3 (2) |
+|FbtMinimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。大きいほど良好です。| Double | 0 以上 (0) |
 
-### 11\.2.推奨事項のビルドのトリガー
+### 11.2.推奨事項のビルドのトリガー
 
-  既定では、この API は推奨モデルのビルドをトリガーします。順位付けのビルドをトリガーする \(特徴をスコア付けするために\) には、ビルドの種類のパラメーターが指定されたビルド API の変種を使用する必要があります。
+  既定では、この API は推奨モデルのビルドをトリガーします。順位付けのビルドをトリガーする (特徴をスコア付けするために) には、ビルドの種類のパラメーターが指定されたビルド API の変種を使用する必要があります。
 
 
 | HTTP メソッド | URI |
@@ -1858,9 +1858,9 @@ FBT \(よく一緒に購入されている品目\) のビルドは「控えめ�
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例を参照してください。<br>最大長: 50 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
-| Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。\(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。\)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+| Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **応答**:
 
@@ -1922,7 +1922,7 @@ OData XML
   	</entry>
 	</feed>
 
-### 11\.3.トリガーのビルド \(推奨事項、ランク付け、または FBT\)
+### 11.3.トリガーのビルド (推奨事項、ランク付け、または FBT)
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -1933,9 +1933,9 @@ OData XML
 | modelId |	モデルの一意識別子 |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例を参照してください。<br>最大長: 50 |
 | buildType | 呼び出すビルドの種類: <br/> - 推奨事項のビルドは、'Recommendation' <br> - 順位付けのビルドは 'Ranking' <br/> -FBT のビルドは ' Fbt'
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
-| Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。\(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。\)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+| Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **応答**:
 
@@ -1999,7 +1999,7 @@ OData XML
 
 
 
-### 11\.4.モデルのビルド状態の取得
+### 11.4.モデルのビルド状態の取得
 指定したモデルのビルドとそれらの状態を取得します。
 
 | HTTP メソッド | URI |
@@ -2011,7 +2011,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	onlyLastBuild |	モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します |
-|	apiVersion |	1\.0 |
+|	apiVersion |	1.0 |
 
 
 **応答**:
@@ -2023,12 +2023,12 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/UserName` – ユーザーの名前。
 - `feed/entry/content/properties/ModelName` – モデルの名前。
 - `feed/entry/content/properties/ModelId` – モデルの一意識別子。
-- `feed/entry/content/properties/IsDeployed` – ビルドがデプロイされている \(アクティブなビルド\) かどうか。
+- `feed/entry/content/properties/IsDeployed` – ビルドがデプロイされている (アクティブなビルド) かどうか。
 - `feed/entry/content/properties/BuildId` – ビルドの一意識別子。
 - `feed/entry/content/properties/BuildType` - ビルドの種類。
 - `feed/entry/content/properties/Status` – ビルド状態。次のいずれか: Error、Building、Queued、Cancelling、Cancelled、Success。
-- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ \(特定の状態にのみ適用されます\)。
-- `feed/entry/content/properties/Progress` – ビルドの進捗状況 \(%\)。
+- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
+- `feed/entry/content/properties/Progress` – ビルドの進捗状況 (%)。
 - `feed/entry/content/properties/StartTime` – ビルドの開始時刻。
 - `feed/entry/content/properties/EndTime` – ビルドの終了時刻。
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
@@ -2084,7 +2084,7 @@ OData XML
 	</feed>
 
 
-### 11\.5.ビルド状態の取得
+### 11.5.ビルド状態の取得
 ユーザーのすべてのモデルに関するビルド状態を取得します。
 
 | HTTP メソッド | URI |
@@ -2095,7 +2095,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	onlyLastBuild |	モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します。 |
-|	apiVersion |	1\.0 |
+|	apiVersion |	1.0 |
 
 
 **応答**:
@@ -2111,8 +2111,8 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/BuildId` – ビルドの一意識別子。
 - `feed/entry/content/properties/BuildType` - ビルドの種類。
 - `feed/entry/content/properties/Status` – ビルド状態。次のいずれか: Error、Building、Queued、Cancelled、Cancelling、Success。
-- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ \(特定の状態にのみ適用されます\)。
-- `feed/entry/content/properties/Progress` – ビルドの進捗状況 \(%\)。
+- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
+- `feed/entry/content/properties/Progress` – ビルドの進捗状況 (%)。
 - `feed/entry/content/properties/StartTime` – ビルドの開始時刻。
 - `feed/entry/content/properties/EndTime` – ビルドの終了時刻。
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
@@ -2169,7 +2169,7 @@ OData XML
 	</feed>
 
 
-### 11\.6.ビルドの削除
+### 11.6.ビルドの削除
 ビルドを削除します。
 
 注意: <br>アクティブなビルドを削除することはできません。削除する前に、そのモデルを別のアクティブなビルドに変更する必要があります。<br>進行中のビルドを削除することはできません。まず、「<strong>ビルドのキャンセル</strong>」を呼び出してビルドを取り消す必要があります。
@@ -2181,13 +2181,13 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | buildId | ビルドの一意識別子。 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 
 **応答:**
 
 HTTP 状態コード: 200
 
-### 11\.7.ビルドのキャンセル
+### 11.7.ビルドのキャンセル
 ビルド中の状態にあるビルドをキャンセルします。
 
 | HTTP メソッド | URI |
@@ -2197,13 +2197,13 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | buildId | ビルドの一意識別子。 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 
 **応答:**
 
 HTTP 状態コード: 200
 
-### 11\.8.ビルド パラメーターの取得
+### 11.8.ビルド パラメーターの取得
 ビルド パラメーターを取得します。
 
 | HTTP メソッド | URI |
@@ -2213,7 +2213,7 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | buildId | ビルドの一意識別子。 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 
 **応答:**
 
@@ -2229,17 +2229,17 @@ HTTP 状態コード: 200
 |:-----|:----|:----|:---|
 |NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| 整数 | 10-50 |
 | NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | 整数 | 10-40 |
-|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 \(0 でコンデンサーが無効\) |
-| 説明 | ビルドの説明。 | String | 任意のテキスト \(最大 512 文字\) |
+|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+| 説明 | ビルドの説明。 | String | 任意のテキスト (最大 512 文字) |
 | EnableModelingInsights | 推奨モデルのメトリックを計算することができます。 | Boolean | True または False |
 | UseFeaturesInModel | 推奨モデルを強化するために特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | String | 特徴名 \(最大 512 文字） |
+| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
 | AllowColdItemPlacement | 推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | Boolean | True または False |
 | EnableFeatureCorrelation | 理由で特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ReasoningFeatureList | 理由の文 \(推奨事項の説明など\) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 \(最大 512 文字） |
+| ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
 
 
 OData XML
@@ -2409,8 +2409,8 @@ OData XML
 		</entry>
 	</feed>
 
-## 12\.推奨
-### 12\.1.推奨の取得
+## 12.推奨
+### 12.1.推奨の取得
 
 「推奨事項」または「Fbt」の種類のアクティブなビルドの推奨事項を取得します。
 
@@ -2423,7 +2423,7 @@ OData XML
 | modelId | モデルの一意識別子 |
 | itemIds | 推奨項目のコンマ区切りの一覧。<br>アクティブなビルドが FBT の種類の場合は、1 つの項目のみを送信できます。<br>最大長: 1024 |
 | numberOfResults | 必要な結果の数 |
-| includeMetatadata | 将来的に利用 \(常に false\) |
+| includeMetatadata | 将来的に利用 (常に false) |
 | apiVersion | 1.0 |
 
 **応答:**
@@ -2435,7 +2435,7 @@ HTTP 状態コード: 200
 - `Feed\entry\content\properties\Id` – 推奨項目の ID。 
 - `Feed\entry\content\properties\Name` – 項目の名前。
 - `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 \(例: 推奨事項の説明\)。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
 次の応答例には、10 個の推奨項目が含まれています。
 
@@ -2590,7 +2590,7 @@ OData XML
  	 </entry>
 	</feed>
 
-### 12\.2.推奨時効の取得 \(特定のビルド\)
+### 12.2.推奨時効の取得 (特定のビルド)
 
 「推奨事項」または「Fbt」の種類の特定のビルドの推奨事項を取得します。
 
@@ -2603,7 +2603,7 @@ OData XML
 | modelId | モデルの一意識別子 |
 | itemIds | 推奨項目のコンマ区切りの一覧。<br>アクティブなビルドが FBT の種類の場合は、1 つの項目のみを送信できます。<br>最大長: 1024 |
 | numberOfResults | 必要な結果の数 |
-| includeMetatadata | 将来的に利用 \(常に false\)
+| includeMetatadata | 将来的に利用 (常に false)
 | buildId | この推奨事項の要求で使用するビルド ID |
 | apiVersion | 1.0 |
 
@@ -2616,17 +2616,17 @@ HTTP 状態コード: 200
 - `Feed\entry\content\properties\Id` – 推奨項目の ID。 
 - `Feed\entry\content\properties\Name` – 項目の名前。
 - `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。 
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 \(例: 推奨事項の説明\)。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
 
-12\.1 の応答の例を参照してください。
+12.1 の応答の例を参照してください。
 
-## 13\.通知
+## 13.通知
 Azure Machine Learning Recommendations は、システムで永続的なエラーが発生した際に、通知を作成します。通知には 3 つの種類があります。1.	ビルドの失敗 - この通知は、すべてのビルドの失敗により生成されます。
 2.	データ取得プロセスの失敗 - この通知は、1 つのモデルの使用状況イベント処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
 3.	推奨の使用の失敗 - この通知は、1 つのモデルの推奨要求処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
 
 
-### 13\.1.通知の取得
+### 13.1.通知の取得
 すべてのモデル、または 1 つのモデルのすべての通知を取得します。
 
 | HTTP メソッド | URI |
@@ -2637,7 +2637,7 @@ Azure Machine Learning Recommendations は、システムで永続的なエラ�
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | modelId | 省略可能なパラメーター。省略すると、すべてのモデルのすべての通知が取得されます。<br>有効な値: モデルの一意識別子。|
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -2678,7 +2678,7 @@ OData XML
 		</entry>
 	</feed>
 
-### 13\.2.モデル通知の削除
+### 13.2.モデル通知の削除
 モデルのすべての読み取り通知を削除します。
 
 | HTTP メソッド | URI |
@@ -2689,7 +2689,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -2697,7 +2697,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-### 13\.3.ユーザー通知の削除
+### 13.3.ユーザー通知の削除
 すべてのモデルのすべての通知を削除します。
 
 | HTTP メソッド | URI |
@@ -2707,7 +2707,7 @@ HTTP 状態コード: 200
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-| apiVersion | 1\.0 |
+| apiVersion | 1.0 |
 |||
 | Request Body | NONE |
 
@@ -2715,7 +2715,7 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-## 14\.法的情報
+## 14.法的情報
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 
 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> 
 © 2015 Microsoft.All rights reserved.

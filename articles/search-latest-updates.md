@@ -18,7 +18,7 @@
 
 #Azure Search 関連の最新の更新履歴情報#
 
-Azure Search の一般提供が開始されています。これは [API バージョン 2015-02-28](https://msdn.microsoft.com/library/azure/dn798935.aspx) でサポートされる構成に対して、99.9% の可用性を保証するサービス レベル アグリーメント \(SLA\) を提供します。
+Azure Search の一般提供が開始されています。これは [API バージョン 2015-02-28](https://msdn.microsoft.com/library/azure/dn798935.aspx) でサポートされる構成に対して、99.9% の可用性を保証するサービス レベル アグリーメント (SLA) を提供します。
 
 ##機能のバージョン管理とロール アウト
 
@@ -46,9 +46,9 @@ Azure Search の一般提供が開始されています。これは [API バー�
 
 以下については除外されています。
 
-- [インデクサー](http://go.microsoft.com/fwlink/p/?LinkId=528173) \(この機能は、0.10.0-Preview バージョンでは除外されなくなりました\)
+- [インデクサー](http://go.microsoft.com/fwlink/p/?LinkId=528173) (この機能は、0.10.0-Preview バージョンでは除外されなくなりました)
 - [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx)
-- [2015-02-28-Preview](search-api-2015-02-28-Preview.md) 機能 \(現時点では、プレビュー専用機能は Microsoft 自然言語プロセッサおよび `moreLikeThis` で構成される\)。
+- [2015-02-28-Preview](search-api-2015-02-28-Preview.md) 機能 (現時点では、プレビュー専用機能は Microsoft 自然言語プロセッサおよび `moreLikeThis` で構成される)。
 
 SDK のインストールおよび使用のガイダンスについては、「[How to use Azure Search from a .NET Application](http://go.microsoft.com/fwlink/p/?LinkId=528088)」を参照してください。
 
@@ -71,9 +71,9 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - [インデクサー](http://go.microsoft.com/fwlink/p/?LinkID=528210)は、Azure VM 上の Azure SQL Database、Azure DocumentDB、および SQL Server にあるデータ ソースからのインデックス作成を大幅に簡略化する新機能です。
 
-- [サジェスター](https://msdn.microsoft.com/library/azure/dn798936.aspx)は、挿入辞一致をサポートするようになり、以前の実装の、より制限が大きい \(プレフィックスでの一致のみを実行する\) 先行入力クエリ サポートを置き換えています。この実装では、語中のどの位置にある一致でも検出できます。さらに、あいまい一致もサポートしています。
+- [サジェスター](https://msdn.microsoft.com/library/azure/dn798936.aspx)は、挿入辞一致をサポートするようになり、以前の実装の、より制限が大きい (プレフィックスでの一致のみを実行する) 先行入力クエリ サポートを置き換えています。この実装では、語中のどの位置にある一致でも検出できます。さらに、あいまい一致もサポートしています。
 
-- [タグ ブースト](http://go.microsoft.com/fwlink/p/?LinkId=528212)により、スコアリング プロファイルのための新しいシナリオが可能になります。具体的には、持続データ \(ショッピングの嗜好など\) を活用し、パーソナライズされた情報に基づいて、個々のユーザーに対する検索結果の精度を向上させることができます。
+- [タグ ブースト](http://go.microsoft.com/fwlink/p/?LinkId=528212)により、スコアリング プロファイルのための新しいシナリオが可能になります。具体的には、持続データ (ショッピングの嗜好など) を活用し、パーソナライズされた情報に基づいて、個々のユーザーに対する検索結果の精度を向上させることができます。
 
 サービスの発表については、これらすべての機能について説明する Azure ブログの「[Azure Search is now Generally Available](http://go.microsoft.com/fwlink/p/?LinkId=528211)」を参照してください。
 
@@ -91,7 +91,7 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - インデックスとドキュメントの操作のための REST API。この API バージョンの大半は、2015-02-28 バージョンでも変更されていません。バージョン `2014-07-31-Preview` のドキュメントは、「[Azure Search Service REST API Version 2014-07-31-Preview](search-api-2014-07-31-preview.md)」にあります。
 
-- 検索結果のチューニングのためのスコアリング プロファイル。スコアリング プロファイルは、検索スコアの計算に使用する条件を追加します。この機能のドキュメントは、「[Scoring Profiles \(Azure Search Service REST API Version 2014-07-31-Preview\)](search-api-scoring-profiles-2014-07-31-preview.md)」にあります。
+- 検索結果のチューニングのためのスコアリング プロファイル。スコアリング プロファイルは、検索スコアの計算に使用する条件を追加します。この機能のドキュメントは、「[Scoring Profiles (Azure Search Service REST API Version 2014-07-31-Preview)](search-api-scoring-profiles-2014-07-31-preview.md)」にあります。
 
 - 地理空間サポートは当初より利用可能です。これは最初から Azure Search の一部であった `Edm.GeographyPoint` データ型により提供されます。
 

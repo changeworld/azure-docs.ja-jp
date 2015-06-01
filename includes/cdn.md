@@ -106,7 +106,7 @@ Azure ストレージ サービスの使用](http://msdn.microsoft.com/library/a
 
 CDN にキャッシュされたコンテンツにアクセスするには、ポータルで提供される CDN URL を使用します。キャッシュされた BLOB のアドレスは、次のようになります。
 
-http://<*CDNNamespace*\>.vo.msecnd.net/<*myPublicContainer*\>/<*BlobName*\>
+http://<*CDNNamespace*>.vo.msecnd.net/<*myPublicContainer*>/<*BlobName*>
 
 <a id="Step4"> </a>
 <h2>手順 4:CDN からコンテンツを削除する</h2>

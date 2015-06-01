@@ -39,7 +39,7 @@
 <br/>
     ![新規 ボタンを選択]( ./media/biztalk-provision-services/WABS_New.png)
 
-3.  **[アプリケーション サービス]** \> **[BizTalk サービス]** \> **[カスタム作成]** の順に選択します。
+3.  **[アプリケーション サービス]** > **[BizTalk サービス]** > **[カスタム作成]** の順に選択します。
 <br/>
 ![BizTalk サービス と カスタム作成 を選択]( ./media/biztalk-provision-services/WABS_NewBizTalkService.png)
 

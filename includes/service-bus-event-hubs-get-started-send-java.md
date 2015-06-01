@@ -5,7 +5,7 @@
 
 2. **Qpid JMS AMQP 1.0** ライブラリの最新リリースを[こちら](http://qpid.apache.org/components/qpid-jms/index.html)からダウンロードします。
 
-3. アーカイブからファイルを抽出し、アーカイブの  `qpid-amqp-1-0-client-jms\<version>\lib` ディレクトリから Eclipse **Sender** プロジェクトに次の jar ファイルをコピーします。
+3. アーカイブからファイルを抽出し、アーカイブの  `qpid-amqp-1-0-client-jms<version>\lib` ディレクトリから Eclipse **Sender** プロジェクトに次の jar ファイルをコピーします。
 
 4. Eclipse Package Explorer で、**Sender** プロジェクトを右クリックし、**[Properties]** を選択します。ダイアログの左側のウィンドウで、**[Java Build Path]**、**[Libraries]** タブ、**[Add JARs]** の順にクリックします。前にコピーした jar ファイルを選択してから **[OK]** をクリックします。
 

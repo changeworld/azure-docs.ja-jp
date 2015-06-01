@@ -26,37 +26,37 @@ API Management サービスが最初に作成されたとき、サービスに�
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
 
-最初に、ご利用の API Management サービスの Azure ポータルで **\[管理\]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
 >まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
-API Management サービス インスタンスの Azure ポータルで **\[スケール\]** タブに移動します。
+API Management サービス インスタンスの Azure ポータルで **[スケール]** タブに移動します。
 
-![\[スケール\] タブ][api-management-scale-service]
+![[スケール] タブ][api-management-scale-service]
 
 新しいリージョンをデプロイするには、プライマリ リージョンの下のドロップダウン リストをクリックし、リストからリージョンを選択します。
 
 ![リージョンの追加][api-management-add-region]
 
-リージョンを選択したら、\[ユニット\] ボックスの一覧から新しいリージョンのユニット数を選択します。
+リージョンを選択したら、[ユニット] ボックスの一覧から新しいリージョンのユニット数を選択します。
 
 ![ユニットの指定][api-management-select-units]
 
-必要なリージョンとユニット数を構成したら、**\[保存\]** をクリックします。
+必要なリージョンとユニット数を構成したら、**[保存]** をクリックします。
 
 ## <a name="remove-region"> </a>リージョンから API Management サービス インスタンスを削除する
 
-リージョンから API Management サービス インスタンスを削除するには、API Management サービス インスタンスの Azure ポータルで **\[スケール\]** タブに移動します。
+リージョンから API Management サービス インスタンスを削除するには、API Management サービス インスタンスの Azure ポータルで **[スケール]** タブに移動します。
 
-![\[スケール\] タブ][api-management-scale-service]
+![[スケール] タブ][api-management-scale-service]
 
-目的のリージョンの右側にある **\[X\]** をクリックすると、削除されます。
+目的のリージョンの右側にある **[X]** をクリックすると、削除されます。
 
 ![リージョンの削除][api-management-remove-region]
 
-目的のリージョンが削除されたら、**\[保存\]** をクリックします。
+目的のリージョンが削除されたら、**[保存]** をクリックします。
 
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png

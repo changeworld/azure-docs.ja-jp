@@ -115,7 +115,7 @@
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
 
             // Silent notification with content available
-            var aboutUser = "{\"aps\": {\"content-available\": 1, \"sound\":\"\"}, \"richId\": \"" + richNotificationInTheBackend.Id.ToString() + "\",  \"richMessage\": \"" + richNotificationInTheBackend.Message + "\", \"richType\": \"" + richNotificationInTheBackend.RichType + "\"}";
+            var aboutUser = "{"aps": {"content-available": 1, "sound":""}, "richId": "" + richNotificationInTheBackend.Id.ToString() + "",  "richMessage": "" + richNotificationInTheBackend.Message + "", "richType": "" + richNotificationInTheBackend.RichType + ""}";
 
             // Send notification to apns
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(aboutUser, usernameTag);

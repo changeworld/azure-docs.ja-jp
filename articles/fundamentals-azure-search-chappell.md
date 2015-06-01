@@ -31,7 +31,7 @@
 
 この資料は、テクノロジの概要と、テクノロジがサポートしている機能とシナリオについて説明しています。技術的な詳細は含まれていません。
 
-**作成者:** David Chappell \(Chappell & Associates 社長\)
+**作成者:** David Chappell (Chappell & Associates 社長)
 
 **更新:** 2015 年 3 月
 
@@ -39,5 +39,5 @@
 
 **ダウンロード:**
 
-* <a href="http://go.microsoft.com/fwlink/p/?LinkId=522547" target="_blank">「Introducing Azure Search \(Azure Search の概要\)」 \(PDF\)</a>
-* <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">「Introducing Azure Search \(Azure Search の概要\)」 \(Microsoft Word\)</a> <!--HONumber=52-->
+* <a href="http://go.microsoft.com/fwlink/p/?LinkId=522547" target="_blank">「Introducing Azure Search (Azure Search の概要)」 (PDF)</a>
+* <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">「Introducing Azure Search (Azure Search の概要)」 (Microsoft Word)</a> <!--HONumber=52-->

@@ -18,7 +18,8 @@
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
 
-バージョン: 1.0<br> 最新バージョンは[こちら](machine-learning-recommendation-api-quick-start-guide.md)でご確認ください
+バージョン: 1.0<br>
+最新バージョンは[こちら](machine-learning-recommendation-api-quick-start-guide.md)でご確認ください
 
 このドキュメントでは、サービスまたはアプリケーションで Azure ML の Recommendations を使用する方法について説明します。
 
@@ -30,9 +31,9 @@ Azure ML の Recommendations を使用するには、次の手順を実行する
 
 * モデルの作成 – モデルは、使用状況データ、カタログ データ、推奨モデルのコンテナーです。
 * カタログ データのインポート - これは省略可能な手順です。カタログには、項目のメタデータが含まれています。カタログ データをアップロードしない場合、Recommendations サービスは、使用状況データから暗黙的にカタログについて学習します。
-* 使用状況データのインポート – 使用状況データは、2 つの方法のいずれか \(または両方\) でアップロードできます。
+* 使用状況データのインポート – 使用状況データは、2 つの方法のいずれか (または両方) でアップロードできます。
 	* 使用状況データを含むファイルをアップロードする。
-	* データ取得イベントを送信する。通常は、使用状況ファイルをアップロードして初期の推奨モデル \(ブートストラップ\) を作成し、システムがデータ取得形式を使用して十分なデータを収集するまではそのモデルを使用します。
+	* データ取得イベントを送信する。通常は、使用状況ファイルをアップロードして初期の推奨モデル (ブートストラップ) を作成し、システムがデータ取得形式を使用して十分なデータを収集するまではそのモデルを使用します。
 * 推奨モデルの構築 – これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。ビルドをトリガーするときにビルド ID が取得されるので、Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。 
 * 推奨の使用 – 特定の項目または項目一覧に対する推奨を取得します。
 
@@ -43,7 +44,7 @@ Azure ML の Recommendations を使用するには、次の手順を実行する
 * サブスクリプションごとのモデルの最大数: 10
 * カタログが保持できる項目の最大数: 100,000
 * 保持される使用状況ポイントの最大数は 5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
-* POST で送信できるデータ \(例: カタログ データのインポート、使用データのインポート\) の最大サイズは 200 MB です。
+* POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
 * アクティブでない推奨モデル ビルドに対する 1 秒あたりのトランザクション数は約 2 TPS です。アクティブな推奨モデル ビルドのみが最大 20 TPS を保持できます。
 
 ##統合
@@ -68,9 +69,10 @@ Azure ML の Recommendations を使用するには、次の手順を実行する
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	modelName |	英字 \(A～Z、a～z\)、数字 \(0～9\)、ハイフン \(-\)、アンダー スコア \(\_\) のみが許可されます。<br>最大長: 20 |
-|	apiVersion | 1\.0 |
-\|\|\| \| Request Body \| NONE \|
+|	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 20 |
+|	apiVersion | 1.0 |
+|||
+| 要求本文 | なし |
 
 
 **応答**:
@@ -121,9 +123,10 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子。 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 \(A～Z、a～z\)、数字 \(0～9\)、ハイフン \(-\)、アンダー スコア \(\_\) のみが許可されます。<br>最大長: 50 |
-|	apiVersion | 1\.0 |
-\|\|\| \| Request Body \| カタログ データ。形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>タイプ</th><th>説明</th></tr><tr><td>項目 ID</td><td>Yes</td><td>英数字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>項目名</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>、項目名</td></tr><tr><td>項目カテゴリ</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>この項目 \(例: 料理ブック、ドラマ...\) が属しているカテゴリ</td></tr><tr><td>説明</td><td>No</td><td>英数字、最大の長さ 4000</td><td>この項目の説明</td></tr></table><br>最大ファイル サイズ 200 MB<br><br>例:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction \(Byzantium Book\),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</pre> \|
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1.0 |
+|||
+| 要求本文 | カタログ データ。形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>タイプ</th><th>説明</th></tr><tr><td>項目 ID</td><td>Yes</td><td>英数字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>項目名</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>、項目名</td></tr><tr><td>項目カテゴリ</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>この項目 (例: 料理ブック、ドラマ...) が属しているカテゴリ</td></tr><tr><td>説明</td><td>No</td><td>英数字、最大の長さ 4000</td><td>この項目の説明</td></tr></table><br>最大ファイル サイズ 200 MB<br><br>例:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</pre> |
 
 
 **応答**:
@@ -169,9 +172,10 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子。 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 \(A～Z、a～z\)、数字 \(0～9\)、ハイフン \(-\)、アンダー スコア \(\_\) のみが許可されます。<br>最大長: 50 |
-|	apiVersion | 1\.0 |
-\|\|\| \| Request Body \| 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>次の形式の日付: YYYY/MM/DDTHH:MM:SS \(例. 2013/06/20T10:00:00\)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> \|
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1.0 |
+|||
+| 要求本文 | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>次の形式の日付: YYYY/MM/DDTHH:MM:SS (例. 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -216,9 +220,9 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	apiVersion | 1\.0 |
+|	apiVersion | 1.0 |
 
-Request body
+要求本文
 
 	Event data entry for each event you want to send. You should send for the same user or browser session the same id in the SessionId field.
 
@@ -309,7 +313,8 @@ Request body
   	</EventData>
 	</Event>
 
-**応答**: HTTP 状態コード: 200
+**応答**:
+HTTP 状態コード: 200
 
 ###推奨モデルの構築
 
@@ -321,8 +326,9 @@ Request body
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子。 |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
-| apiVersion | 1\.0 |
-\|\|\| \| Request Body \| NONE \|
+| apiVersion | 1.0 |
+|||
+| 要求本文 | なし |
 
 **応答**:
 
@@ -393,7 +399,7 @@ HTTP ステータス コード: 200
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子。 |
 |	onlyLastBuild |	モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します。 |
-|	apiVersion |	1\.0 |
+|	apiVersion |	1.0 |
 
 
 **応答**:
@@ -457,8 +463,8 @@ HTTP ステータス コード: 200
 | modelId | モデルの一意識別子。 |
 | itemIds | <br> の推奨項目のコンマ区切りの一覧。最大の長さ: 200 |
 | numberOfResults | 必要な結果の数。 |
-| includeMetatadata | 将来的に利用 \(常に false\) |
-| apiVersion | 1\.0 |
+| includeMetatadata | 将来的に利用 (常に false) |
+| apiVersion | 1.0 |
 
 **応答:**
 
@@ -621,7 +627,8 @@ HTTP ステータス コード: 200
 	</feed>
 
 ###モデルの更新
-モデルの説明またはアクティブなビルド ID を更新することができます。*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
+モデルの説明またはアクティブなビルド ID を更新することができます。
+*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
 
 このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
@@ -633,8 +640,9 @@ HTTP ステータス コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | id | モデルの一意識別子。 |
-| apiVersion | 1\.0 |
-\|\|\| \| Request Body \| `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>xml タグの Description と ActiveBuildId はオプションなので、Description または ActiveBuildId を設定しない場合は、タグ全体を削除してください。 \|
+| apiVersion | 1.0 |
+|||
+| 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>xml タグの Description と ActiveBuildId はオプションなので、Description または ActiveBuildId を設定しない場合は、タグ全体を削除してください。 |
 
 **応答**:
 
@@ -651,6 +659,9 @@ HTTP ステータス コード: 200
 	</feed>
 
 ##法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。
+使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。
+このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。
+© 2014 Microsoft.All rights reserved.
 
 <!--HONumber=54-->

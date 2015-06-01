@@ -77,10 +77,10 @@ JavaScript バックエンド モバイル サービスを使用すると、サ�
 
 テーブル操作の正規のメイン関数署名は次のとおりです。
 
-+ [挿入][insert function]\: `function insert (item, user, request) { ... }`
-+ [更新][update function]\: `function update (item, user, request) { ... }`
-+ [削除][delete function]\: `function del (id, user, request) { ... }`
-+ [読み取り][read function]\: `function read (query, user, request) { ... }`
++ [挿入][insert function]: `function insert (item, user, request) { ... }`
++ [更新][update function]: `function update (item, user, request) { ... }`
++ [削除][delete function]: `function del (id, user, request) { ... }`
++ [読み取り][read function]: `function read (query, user, request) { ... }`
 
 >[AZURE.NOTE]delete は JavaScript の予約語であるため、削除操作に登録する関数には _del_ という名前を付ける必要があります。
 
@@ -228,7 +228,7 @@ Mobile Services は、テーブルの **ID** 列で一意のカスタム文字�
 `id` の値は一意である必要があり、次のセット内の文字を含まないようにする必要があります。
 
 + 制御文字: [0x0000-0x001F] および [0x007F-0x009F]。詳細については、[ASCII 制御コード C0 および C1 に関するページ](http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set)を参照してください。
-+  印刷可能文字: **"** (0x0022)、**+** (0x002B)、**/** (0x002F)、**?** (0x003F)、**\** (0x005C)、**\`** (0x0060)
++  印刷可能文字: **"** (0x0022)、**+** (0x002B)、**/** (0x002F)、**?** (0x003F)、**\** (0x005C)、**`** (0x0060)
 +  ID "." および ".."
 
 また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[モバイル サービス テーブルの管理用コマンド](virtual-machines-command-line-tools.md#Mobile_Tables)」を参照してください。
@@ -537,7 +537,7 @@ Azure Mobile Services では、ID プロバイダーを使用して、ユーザ�
  
 スクリプトでは、メインの関数の後にヘルパー関数を宣言する必要があります。スクリプトでは、すべての変数を定義する必要があります。宣言されていない変数があると、エラーが発生します。
 
-ヘルパー関数は、1 回だけ定義して、複数のサーバー スクリプト間で共有することもできます。スクリプト間で関数を共有するには、関数をエクスポートし、スクリプト ファイルを `.\service\shared\` ディレクトリに保存する必要があります。次に示すのは、ファイル `.\services\shared\helpers.js` 内の共有関数をエクスポートするためのテンプレートです。
+ヘルパー関数は、1 回だけ定義して、複数のサーバー スクリプト間で共有することもできます。スクリプト間で関数を共有するには、関数をエクスポートし、スクリプト ファイルを `.\service\shared` ディレクトリに保存する必要があります。次に示すのは、ファイル `.\services\shared\helpers.js` 内の共有関数をエクスポートするためのテンプレートです。
 
 		exports.handleUnapprovedItem = function (tables, user, callback) {
 		    
@@ -599,7 +599,7 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
 
 このディレクトリ構造は、ソース管理を使用する場合の git リポジトリと同じです。
 
-コマンド ライン ツールでスクリプト ファイルをアップロードする場合は、まず、`.\services\` ディレクトリに移動する必要があります。次のコマンドは `table` サブディレクトリから `todoitem.insert.js` という名前のスクリプトをアップロードします。
+コマンド ライン ツールでスクリプト ファイルをアップロードする場合は、まず、`.\services` ディレクトリに移動する必要があります。次のコマンドは `table` サブディレクトリから `todoitem.insert.js` という名前のスクリプトをアップロードします。
 
 		~$azure mobile script upload todolist table/todoitem.insert.js
 		info:    Executing command mobile script upload
@@ -810,7 +810,7 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
 サーバー スクリプトからテーブル データを操作する最も簡単な方法は、[table オブジェクト] プロキシを使用する方法です。ただし、[table オブジェクト]ではサポートされていない、より高度なシナリオがあります。たとえば、結合クエリやその他の複雑なクエリや、ストアド プロシージャの呼び出しです。このような場合は、[mssql オブジェクト]を使用して、リレーショナル テーブルに対して Transact-SQL ステートメントを直接実行する必要があります。このオブジェクトには、以下の関数が用意されています。
 
 - **query**: TSQL 文字列で指定されたクエリを実行します。結果は **options** オブジェクトに対する **success** コールバックに返されます。*params* パラメーターがある場合、クエリにパラメーターを含めることができます。
-- **queryRaw**: *query* と同様ですが、クエリから返される結果セットが \`未加工\` 形式である点が異なります (以下の例を参照)。
+- **queryRaw**: *query* と同様ですが、クエリから返される結果セットが `未加工` 形式である点が異なります (以下の例を参照)。
 - **open**: Mobile Services データベースへの接続を取得する場合に使用します。この connection オブジェクトを使用して、トランザクションなどのデータベース操作を呼び出すことができます。
 
 以下の方法は、下のものほど、クエリ処理に対して低レベルの制御を行うことができます。

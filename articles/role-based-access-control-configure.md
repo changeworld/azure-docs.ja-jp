@@ -107,7 +107,7 @@ Brock  | 実働リソース グループ内のすべてのリソースの作成�
 
 Windows PowerShell 用の Microsoft Azure モジュールを使って役割の割り当てを管理することもできます。ポータルではなく New-AzureRoleAssignment コマンドレットを使って Brock のアカウントを追加する例を以下に示します。
 
-	PS C:\> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
+	PS C:> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
 
 追加および削除のアクセスの Windows PowerShell の使用に関する詳細については、次を参照してください。 [Windows PowerShell でのロール基準アクセス制御の管理](http://azure.microsoft.com/documentation/articles/role-based-access-control-powershell/)です。 
 
@@ -119,7 +119,7 @@ Windows PowerShell 用の Microsoft Azure モジュールを使って役割の�
 
 Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削除する方法の例を以下に示します。
 
-	PS C:\> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
+	PS C:> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
 
 <h3><a id="addremoveext"></a>追加または外部ユーザーのアクセスの削除</h3>
 

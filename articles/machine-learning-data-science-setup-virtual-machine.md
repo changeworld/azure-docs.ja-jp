@@ -111,7 +111,7 @@ IPython Notebook を使用すると、ユーザーはローカル マシン上�
 
 Azure Virtual Machines は、**従量課金制**で課金されます。仮想マシンを使用しないときに課金されないようにするには、非使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE] \(Windows 電源オプションを使用して\) 仮想マシン内部から仮想マシンをシャット ダウンすると、その仮想マシンは停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、**ShutdownRoleOperation** 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> [AZURE.NOTE] (Windows 電源オプションを使用して) 仮想マシン内部から仮想マシンをシャット ダウンすると、その仮想マシンは停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、**ShutdownRoleOperation** 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 

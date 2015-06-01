@@ -33,7 +33,7 @@ Azure Virtual Network のサイト間接続では、VPN ゲートウェイを使
 
 このチュートリアルは、HBase geo レプリケーションの作成に関する[シリーズ][hdinsight-hbase-replication]の第 1 部です。
 
-- 2 つの仮想ネットワーク間に VPN 接続を構成します \(このチュートリアル\)
+- 2 つの仮想ネットワーク間に VPN 接続を構成します (このチュートリアル)
 - [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-geo-replication-DNS]
 - [HBase geo レプリケーションを構成します][hdinsight-hbase-geo-replication]
 
@@ -68,24 +68,24 @@ Azure Virtual Network のサイト間接続では、VPN ゲートウェイを使
 **North-Europe に Contoso-VNet-EU という名前の仮想ネットワークを作成するには**
 
 1.	[Azure ポータル][azure-portal]にサインインします。
-2.	**\[新規\]**、**\[ネットワーク サービス\]**、**\[仮想ネットワーク\]**、**\[カスタム作成\]** の順にクリックします。
+2.	**[新規]**、**[ネットワーク サービス]**、**[仮想ネットワーク]**、**[カスタム作成]** の順にクリックします。
 3.	次のように入力します。
 
 	- **名前**: Contoso-VNet-EU
 	- **場所**: North Europe
 
-		This tutorial uses North Europe and East US datacenters. You can choose your own datacenters.
+		このチュートリアルでは、北ヨーロッパと米国東部のデータセンターを使います。独自のデータセンターを選択できます。
 4.	次のように入力します。
 
-	- **DNS サーバー**: \(空白のままに\) 
+	- **DNS サーバー**: (空白のままに) 
 	
-		You will need your own DNS server for name resolution within virtual networks. For more information on when to use Azure-provided name resolution and when to use your own DNS server, see [Name Resolution (DNS)](https://msdn.microsoft.com/library/azure/jj156088.aspx). For instructions to configure name resolution between VNets, see [Configure DNS between two Azure virtual networks][hdinsight-hbase-dns].
+		仮想ネットワーク内での名前解決のために、独自の DNS サーバーが必要です。Azure の名前解決を使う場面と独自の DNS サーバーを使う場面の詳細については、「[名前解決 (DNS)](https://msdn.microsoft.com/library/azure/jj156088.aspx)」を参照してください。VNet 間での名前解決を構成する手順については、[2 つの Azure 仮想ネットワーク間での DNS の構成][hdinsight-hbase-dns]に関するページを参照してください。
   
-	- **ポイント対サイト VPN の構成**: \(オフ\)
+	- **ポイント対サイト VPN の構成**: (オフ)
 
 		Point-to-site doesn't apply to this scenario.
 
-	- **サイト間 VPN の構成**: \(オフ\)
+	- **サイト間 VPN の構成**: (オフ)
  	
         You will configure the site-to-site VPN connection to the Azure virtual network in the East U.S. datacenter.
 5.	次のように入力します。
@@ -104,9 +104,9 @@ Azure Virtual Network のサイト間接続では、VPN ゲートウェイを使
 	- **名前**: Contoso-VNet-US
 	- **場所**: East US
 	 
-	- **DNS サーバー**: \(空白のままに\)
-	- **ポイント対サイト VPN の構成**: \(オフ\)
-	- **サイト間 VPN の構成**: \(オフ\)
+	- **DNS サーバー**: (空白のままに)
+	- **ポイント対サイト VPN の構成**: (オフ)
+	- **サイト間 VPN の構成**: (オフ)
 	 
 	- **アドレス空間開始 IP**: 10.2.0.0
 	- **アドレス空間 CIDR**: /16
@@ -140,11 +140,11 @@ VNet 間の構成を作成する場合は、VNet が互いをローカル ネッ
 
 **Contoso-VNet-EU ネットワーク アドレス空間と一致する Contoso-LNet-EU という名前のローカル ネットワークを作成するには**
 
-1. Azure ポータルで、**\[新規\]**、**\[ネットワーク サービス\]**、**\[仮想ネットワーク\]**、**\[ローカル ネットワークの追加\]** の順にクリックします。
+1. Azure ポータルで、**[新規]**、**[ネットワーク サービス]**、**[仮想ネットワーク]**、**[ローカル ネットワークの追加]** の順にクリックします。
 3. 次のように入力します。
 
 	- **名前**: Contoso-LNet-EU
-	- **VPN デバイスの IP アドレス**: 192.168.0.1 \(このアドレスは後で更新されます\)
+	- **VPN デバイスの IP アドレス**: 192.168.0.1 (このアドレスは後で更新されます)
 
 		Typically, you’d use the actual external IP address for a VPN device. For VNet to VNet configurations, you will use the VPN gateway IP address. Given that you have not created the VPN gateways for the two VNets yet, you enter an arbitary IP address and come back to fix it.
 4.	次のように入力します。
@@ -159,7 +159,7 @@ VNet 間の構成を作成する場合は、VNet が互いをローカル ネッ
 - 前の手順を繰り返して次のパラメーターを指定します。
 
 	- **名前**: Contoso-LNet-US
-	- **VPN デバイスの IP アドレス**: 192.168.0.1 \(このアドレスは後で更新されます\)
+	- **VPN デバイスの IP アドレス**: 192.168.0.1 (このアドレスは後で更新されます)
 	 
 	- **アドレス空間開始 IP**: 10.2.0.0
 	- **アドレス空間 CIDR**: /16
@@ -171,25 +171,25 @@ VNet 間の構成を作成する場合は、VNet が互いをローカル ネッ
 
 **Contoso-LNet-US に対する Contoso-VNet-EU サイト間接続を構成するには**
 
-1.	Azure ポータルの左側のウィンドウで **\[ネットワーク\]** をクリックします。
+1.	Azure ポータルの左側のウィンドウで **[ネットワーク]** をクリックします。
 2.	**Contoso-VNet-EU** をクリックします。
-3.	**\[構成\]** タブをクリックします。
-4.	**\[ローカル ネットワークに接続する\]** をオンにします。
-5.	**\[ローカル ネットワーク\]** で、**Contoso-LNet-US** を選択します。
-6.	仮想ネットワーク アドレス空間セクションで **\[ゲートウェイ サブネットの追加\]** をクリックします。
-7.	**\[保存\]** をクリックします。
-8.	**\[OK\]** をクリックして確定します。
+3.	**[構成]** タブをクリックします。
+4.	**[ローカル ネットワークに接続する]** をオンにします。
+5.	**[ローカル ネットワーク]** で、**Contoso-LNet-US** を選択します。
+6.	仮想ネットワーク アドレス空間セクションで **[ゲートウェイ サブネットの追加]** をクリックします。
+7.	**[保存]** をクリックします。
+8.	**[OK]** をクリックして確定します。
 
 
 **Contoso-VNet-EU の VPN ゲートウェイを作成するには**
 
-1.	Azure ポータルで **\[ダッシュボード\]** タブをクリックします。
-4.	ページ下部の **\[ゲートウェイの作成\]** をクリックし、**\[動的ルーティング\]** をクリックします。
-5.	**\[はい\]** をクリックして確定します。ページ上のゲートウェイの図が黄色に変わり、"ゲートウェイを作成しています" と表示されることを確認します。ゲートウェイが作成されるまでに、通常、15 分ぐらいかかります。
+1.	Azure ポータルで **[ダッシュボード]** タブをクリックします。
+4.	ページ下部の **[ゲートウェイの作成]** をクリックし、**[動的ルーティング]** をクリックします。
+5.	**[はい]** をクリックして確定します。ページ上のゲートウェイの図が黄色に変わり、"ゲートウェイを作成しています" と表示されることを確認します。ゲートウェイが作成されるまでに、通常、15 分ぐらいかかります。
 
-	ゲートウェイの状態が "接続中" に変化すると、各ゲートウェイの IP アドレスがダッシュボードに表示されます。各 VNet に対応する IP アドレスを書き留めます。混同しないように注意してください。先ほど \[ローカル ネットワーク\] の \[VPN デバイスの IP アドレス\] に指定した仮のアドレスを編集する際は、これらの IP アドレスを使用することになります。
+	ゲートウェイの状態が "接続中" に変化すると、各ゲートウェイの IP アドレスがダッシュボードに表示されます。各 VNet に対応する IP アドレスを書き留めます。混同しないように注意してください。先ほど [ローカル ネットワーク] の [VPN デバイスの IP アドレス] に指定した仮のアドレスを編集する際は、これらの IP アドレスを使用することになります。
 
-6.	**\[ゲートウェイ IP アドレス\]** をコピーします。次のセクションでは、これを使用して Contoso-VNet-EU の VPN ゲートウェイ IP アドレスを構成します。
+6.	**[ゲートウェイ IP アドレス]** をコピーします。次のセクションでは、これを使用して Contoso-VNet-EU の VPN ゲートウェイ IP アドレスを構成します。
 
 **Contoso-VNet-EU の VPN ゲートウェイを作成するには**
 
@@ -201,10 +201,10 @@ VNet 間の構成を作成する場合は、VNet が互いをローカル ネッ
 
 **Contoso-LNet-EU の VPN デバイス IP アドレスを構成するには**
 
-1.	Azure ポータルの左側のウィンドウで **\[ネットワーク\]** をクリックします。
-2.	上部の **\[ローカル ネットワーク\]** をクリックします。
-3.	**Contoso-LNet-EU** をクリックし、下部の **\[編集\]** をクリックします。
-4.	**\[VPN デバイスの IP アドレス\]** を更新します。これは、VContoso-VNET-EU の \[ダッシュボード\] タブから取得したアドレスです。
+1.	Azure ポータルの左側のウィンドウで **[ネットワーク]** をクリックします。
+2.	上部の **[ローカル ネットワーク]** をクリックします。
+3.	**Contoso-LNet-EU** をクリックし、下部の **[編集]** をクリックします。
+4.	**[VPN デバイスの IP アドレス]** を更新します。これは、VContoso-VNET-EU の [ダッシュボード] タブから取得したアドレスです。
 5.	右側のボタンをクリックします。
 6.	チェック マークのボタンをクリックします。
 

@@ -18,7 +18,7 @@
 
 # Azure Data Factory でコピー アクティビティを使用する高度なシナリオ 
 ## 概要
-パイプラインで**コピー アクティビティ**を使用して、ソースからシンク \(ターゲット\) にデータを一括でコピーできます。このトピックでは、コピー アクティビティがサポートする高度なシナリオについて説明します。コピー アクティビティと、コピー アクティビティがサポートする主要なシナリオの詳細については、「[Azure Data Factory を使用してデータをコピーする][adf-copyactivity]」を参照してください。
+パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。このトピックでは、コピー アクティビティがサポートする高度なシナリオについて説明します。コピー アクティビティと、コピー アクティビティがサポートする主要なシナリオの詳細については、「[Azure Data Factory を使用してデータをコピーする][adf-copyactivity]」を参照してください。
 
 
 ## 構造体定義を使用した列のフィルター処理
@@ -136,9 +136,9 @@
 		}
 	}	
 
-**出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます \(例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.\)。
+**出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
 
-**folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。次の例では、**folderPath** に SliceStart \(処理されるスライスの開始時刻\) の Year、Month、Day を使用し、fileName に SliceStart の Hour を使用します。たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。
+**folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。次の例では、**folderPath** に SliceStart (処理されるスライスの開始時刻) の Year、Month、Day を使用し、fileName に SliceStart の Hour を使用します。たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。
 
   	"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
     "fileName": "{Hour}.csv",
@@ -151,7 +151,7 @@
     ],
 
 #### 例 - 列マッピング
-この例では、パイプライン内のアクティビティが次のように定義されます。ソースの列は、**Translator** プロパティを使用して、シンク \(\*\*columnMappings\*\*\) の列にマップされます。
+この例では、パイプライン内のアクティビティが次のように定義されます。ソースの列は、**Translator** プロパティを使用して、シンク (**columnMappings**) の列にマップされます。
 
 	{
 		"name": "CopyActivity",
@@ -180,7 +180,7 @@
 ![列マッピング][image-data-factory-column-mapping-1]
 
 ### 例 2 – SQL クエリを使用した SQL Server から Azure BLOB への列マッピング
-この例では、\(前の例のテーブルとの比較として\) SQL クエリを使用して、内部設置型 SQL Server からデータを抽出し、クエリ結果の列をソース アーティファクトにマップした後、ターゲット アーティファクトにマップします。この例では、クエリは 5 つの列を返します。
+この例では、(前の例のテーブルとの比較として) SQL クエリを使用して、内部設置型 SQL Server からデータを抽出し、クエリ結果の列をソース アーティファクトにマップした後、ターゲット アーティファクトにマップします。この例では、クエリは 5 つの列を返します。
 
 	{
 		"name": "CopyActivity",
@@ -263,7 +263,7 @@
 ## SQL シンクのストアド プロシージャの呼び出し
 データの SQL Server または Azure SQL Database へのコピー時に、ユーザーが指定したストアド プロシージャを構成し、追加のパラメーターと共に呼び出すことができます。
 ### 例
-1. 次のように出力テーブルの JSON を定義します \(Azure SQL Database テーブルを例として取り上げます\)。
+1. 次のように出力テーブルの JSON を定義します (Azure SQL Database テーブルを例として取り上げます)。
 
     	{
     		"name": "MyAzureSQLTable",
@@ -320,7 +320,7 @@
 ストアド プロシージャ機能は[テーブル値パラメーター][table-valued-parameters]を利用しています。
 
 ## テキスト ファイルのエンコードを指定する
-UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキスト ファイルは、通常、歴史的経緯から他のエンコードを採用しています。**encodingName** プロパティを使用すると、TextFormat 型のテーブルのコード ページ名でエンコードを指定できます。有効なエンコード名の一覧については、Encoding.EncodingName プロパティを参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。有効なエンコード名については、「[Encoding クラス](https://msdn.microsoft.com/library/system.text.encoding(v=vs.110).aspx\)」を参照してください。
+UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキスト ファイルは、通常、歴史的経緯から他のエンコードを採用しています。**encodingName** プロパティを使用すると、TextFormat 型のテーブルのコード ページ名でエンコードを指定できます。有効なエンコード名の一覧については、Encoding.EncodingName プロパティを参照してください。例: windows-1250 または shift_jis。既定値は UTF-8 です。有効なエンコード名については、「[Encoding クラス](https://msdn.microsoft.com/library/system.text.encoding(v=vs.110).aspx)」を参照してください。
 
 ## 関連項目
 
