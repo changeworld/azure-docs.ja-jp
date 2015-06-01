@@ -46,49 +46,50 @@
 5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。個人用データを自分自身のサブスクリプション名、サービス名、サムプリントなどで置き換えます。(注: このスクリプトは Visual Studio 2013 用に構成されています。Visual Studio 2012 を使用する場合は、ReferenceName と ExtensionName に対して "RemoteDebugVS2013" を使用します。)
 
 	<pre>
-Add-AzureAccount
-
-Select-AzureSubscription "My Microsoft Subscription"
-
-$vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
-
-$endpoints = @(
-,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
-,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
-)
-
-foreach($endpoint in $endpoints)
-{
-Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
-{
-
-$referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2013"
-$publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
-$extensionName = "RemoteDebugVS2013"
-$version = "1.*"
-$publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
-
-$vm | Set-AzureVMExtension `
--ReferenceName $referenceName `
--Publisher $publisher `
--ExtensionName $extensionName `
--Version $version `
--PublicConfiguration $publicConfiguration
-
-foreach($extension in $vm.VM.ResourceExtensionReferences)
-{   
-if(($extension.ReferenceName -eq $referenceName) `
--and ($extension.Publisher -eq $publisher) `
--and ($extension.Name -eq $extensionName) `
--and ($extension.Version -eq $version))
-{
-$extension.ResourceExtensionParameterValues[0].Key = 'config.txt'
-break
-{
-{
-
-$vm | Update-AzureVM 
-</pre>
+    Add-AzureAccount
+    
+    Select-AzureSubscription "My Microsoft Subscription"
+    
+    $vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
+    
+    $endpoints = @(
+    ,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
+    ,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
+    )
+    
+    foreach($endpoint in $endpoints)
+    {
+    Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
+    }
+    
+    $referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2013"
+    $publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
+    $extensionName = "RemoteDebugVS2013"
+    $version = "1.*"
+    $publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
+    
+    $vm | Set-AzureVMExtension `
+    -ReferenceName $referenceName `
+    -Publisher $publisher `
+    -ExtensionName $extensionName `
+    -Version $version `
+    -PublicConfiguration $publicConfiguration
+    
+    foreach($extension in $vm.VM.ResourceExtensionReferences)
+    {   
+    if(($extension.ReferenceName -eq $referenceName) `
+    -and ($extension.Publisher -eq $publisher) `
+    -and ($extension.Name -eq $extensionName) `
+    -and ($extension.Version -eq $version))
+    {
+    $extension.ResourceExtensionParameterValues[0].Key = 'config.txt'
+    break
+    }
+    }
+    
+    $vm | Update-AzureVM 
+	</pre>
     
 6. Visual Studio と Azure SDK for .NET 2.4 がインストールされているマシンに証明書 (.pfx) をインポートします。
-<!--HONumber=54-->
+
+<!---HONumber=54-->
