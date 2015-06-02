@@ -205,7 +205,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllTagsIPhone_LayoutIPhone]
 
-モバイル ブラウザーで **[Speakers]** リンクをタップします。モバイル ビュー (*AllSpeakers.Mobile.cshtml*) がないため、既定のスピーカー ビュー (*AllSpeakers.cshtml*) がモバイル レイアウト ビュー (*_Layout.Mobile.cshtml*) を使用して描画されます。下図に示すように、**MVC5 Application (Mobile)** が *_Layout.Mobile.cshtml* に定義されています。
+モバイル ブラウザーで **[Speakers]** リンクをタップします。モバイル ビュー (*AllSpeakers.Mobile.cshtml*) がないため、既定のスピーカー ビュー (*AllSpeakers.cshtml*) がモバイル レイアウト ビュー (*\_Layout.Mobile.cshtml*) を使用して描画されます。下図に示すように、**MVC5 Application (Mobile)** が *_Layout.Mobile.cshtml* に定義されています。
 
 ![][AllSpeakers_LayoutMobile]
 
@@ -216,7 +216,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
         DisplayModeProvider.Instance.RequireConsistentDisplayMode = true;
     }
 
-`RequireConsistentDisplayMode` が `true` に設定されていると、モバイル レイアウト (*_Layout.Mobile.cshtml*) はモバイル ビューだけに使用されます (つまり、ビュー ファイルの名前が ***ViewName**.Mobile.cshtml* という形式の場合です)。モバイル レイアウトが非モバイル ビューでうまく動作しない場合は、`RequireConsistentDisplayMode` を `true` に設定します。次のスクリーンショットは、`RequireConsistentDisplayMode` が `true` に設定されている場合の *[Speakers]* ページの表示を示しています (文字列 "(Mobile)" は上部のナビゲーション バーに表示されません)。
+`RequireConsistentDisplayMode` が `true` に設定されていると、モバイル レイアウト (*\_Layout.Mobile.cshtml*) はモバイル ビューだけに使用されます (つまり、ビュー ファイルの名前が ***ViewName**.Mobile.cshtml* という形式の場合です)。モバイル レイアウトが非モバイル ビューでうまく動作しない場合は、`RequireConsistentDisplayMode` を `true` に設定します。次のスクリーンショットは、`RequireConsistentDisplayMode` が `true` に設定されている場合の *[Speakers]* ページの表示を示しています (文字列 "(Mobile)" は上部のナビゲーション バーに表示されません)。
 
 ![][AllSpeakers_LayoutMobileOverridden]
 
@@ -262,7 +262,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakersFixedDesktop]
 
-モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、<form> タグを <h2> タグの直後に追加します。
+モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、\<form\> タグを \<h2\> タグの直後に追加します。
 
     @model IEnumerable<string>
 
