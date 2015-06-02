@@ -18,7 +18,8 @@
 
 # Azure Stream Analytics プレビューの制限事項と既知の問題
 
-このドキュメントでは、[Azure Stream Analytics][stream.analytics.documentation] のプレビュー リリースに関する制限事項と既知の問題について説明します。これらの制限事項は、ほとんどの場合、お客様から早期のフィードバックを得ることを目的としているか、現行の容量の制約に基づいたものです。<!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
+このドキュメントでは、[Azure Stream Analytics][stream.analytics.documentation] のプレビュー リリースに関する制限事項と既知の問題について説明します。これらの制限事項は、ほとんどの場合、お客様から早期のフィードバックを得ることを目的としているか、現行の容量の制約に基づいたものです。
+<!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
 
 
 ## 制限事項

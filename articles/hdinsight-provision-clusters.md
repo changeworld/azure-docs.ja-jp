@@ -126,7 +126,9 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 <tr><td>リージョン/仮想ネットワーク</td><td><p>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p><p>利用可能なリージョンは、<strong>東アジア</strong>、<strong>東南アジア</strong>、<strong>北ヨーロッパ</strong>、<strong>西ヨーロッパ</strong>、<strong>米国東部</strong>、<strong>米国西部</strong>、<strong>米国中北部</strong>、<strong>米国中南部</strong>です。<br/>Azure 仮想ネットワークを作成した場合は、HDInsight クラスターで使用するよう構成するネットワークを選択できます。</p><p>Azure 仮想ネットワークの作成の詳細については、「<a href="http://msdn.microsoft.com/library/azure/jj156206.aspx">仮想ネットワークの構成タスク</a>」をご覧ください。</p></td></tr>
 <tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの仮想マシン (VM) サイズを選択します。</p></td></tr>
 <tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
-</table>>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて標準層の VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
+</table>
+
+	>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて標準層の VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
 
 5. **[クラスター ユーザーの構成]** ページで、次の情報を指定します。

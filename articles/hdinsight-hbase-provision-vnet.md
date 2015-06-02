@@ -129,7 +129,9 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 	<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの VM サイズを選択します。</p></td></tr>
 	<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
 	<tr><td>Zookeeper サイズ</td><td><p>Zookeeper ノードの VM サイズを選択します。</p></td></tr>
-</table>>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて標準層の VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
+</table>
+	
+	>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて標準層の VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
 	右側のボタンをクリックします。
 

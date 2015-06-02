@@ -79,7 +79,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 <tr><td>SQL データベース ログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>Azyre SQL データベース ログイン名。</td></tr>
 <tr><td>SQL データベース ログイン パスワード</td><td>$sqlDatabaseLoginPassword</td><td></td><td>Azure SQL データベース ログイン パスワード。</td></tr>
 <tr><td>SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先となる Azure SQL データベース。</td></tr>
-</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。SQL データベースの作成とファイアウォール ルールの構成の手順については、「[Azure SQL データベースの作成と構成方法][sqldatabase-create-configue]」を参照してください。
+</table>
+
+	> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。SQL データベースの作成とファイアウォール ルールの構成の手順については、「[Azure SQL データベースの作成と構成方法][sqldatabase-create-configue]」を参照してください。
 
 
 > [AZURE.NOTE]テーブルに値を入力すると、このチュートリアルを読み進める際に役立ちます。
