@@ -42,4 +42,6 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 - ExpressRoute 接続を構成する方法については、次をご覧ください。 
 	- [Configure an ExpressRoute Connection through a Network Service Provider (ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成)](expressroute-configuring-nsps.md)
 	- [Configure an ExpressRoute Connection through an Exchange Provider (Exchange プロバイダーによる ExpressRoute 接続の構成)](expressroute-configuring-exps.md)
-<!--HONumber=54-->
+
+
+<!---HONumber=54-->
