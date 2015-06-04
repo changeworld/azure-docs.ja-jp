@@ -47,14 +47,19 @@
 ## クイック スタート
 Azure ストアにある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][provision]」に進んでください。
  
-1. **[新規]** > **[Markeplace]** をクリックして、Azure Marketplace を開きます。<!-- ![Store][button-store] -->
-2. **MongoLab** アドオンをクリックします。![MongoLab][entry-mongolab]
-3. アドオン一覧で **MongoLab** アドオンをクリックし、**[接続文字列]** をクリックします。![ConnectionInfoButton][button-connectioninfo]  
-4. **MONGOLAB_URI** をクリップボードにコピーします。![ConnectionInfoScreen][screen-connectioninfo]
+1. **[新規]** > **[Markeplace]** をクリックして、Azure Marketplace を開きます。  
+<!-- ![Store][button-store] -->
+2. **MongoLab** アドオンをクリックします。  
+![MongoLab][entry-mongolab]
+3. アドオン一覧で **MongoLab** アドオンをクリックし、**[接続文字列]** をクリックします。  
+![ConnectionInfoButton][button-connectioninfo]  
+4. **MONGOLAB_URI** をクリップボードにコピーします。  
+![ConnectionInfoScreen][screen-connectioninfo]
   
 	>[AZURE.NOTE]この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。
 
-5. Azure App Service の Web アプリケーションの **[構成]** メニューで **[接続文字列]** ボックスに値を追加します。![WebAppConnectionStrings][focus-website-connectinfo]
+5. Azure App Service の Web アプリケーションの **[構成]** メニューで **[接続文字列]** ボックスに値を追加します。  
+![WebAppConnectionStrings][focus-website-connectinfo]
 6. **[名前]**に、「**MONGOLAB_URI**」と入力します。
 7. **[値]** に、先にコピーした接続文字列を貼り付けます。
 8. [種類] ボックスの一覧の **[カスタム]** をクリックします (既定値の **SQLAzure** の代わりに)。
@@ -569,4 +574,4 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 
 
 
-<!--HONumber=54-->
+<!---HONumber=54-->
