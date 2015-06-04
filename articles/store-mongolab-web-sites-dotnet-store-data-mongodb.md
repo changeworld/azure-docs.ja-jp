@@ -37,11 +37,14 @@
 ## クイック スタート
 作業対象の Web アプリケーションが Azure App Service に既にある場合、または Azure Marketplace にある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][provision]」に進んでください。
  
-1. **[新規]** > **[Markeplace]** をクリックして、Azure Marketplace を開きます。<!-- ![Store][button-store] -->
+1. **[新規]** > **[Markeplace]** をクリックして、Azure Marketplace を開きます。
+	<!-- ![Store][button-store] -->
 
-1. MongoLab アドオンを購入します。![MongoLab][entry-mongolab]
+1. MongoLab アドオンを購入します。
+	![MongoLab][entry-mongolab]
 
-1. アドオン一覧で MongoLab アドオンをクリックし、**[接続文字列]** をクリックします。![ConnectionInfoButton][button-connectioninfo]
+1. アドオン一覧で MongoLab アドオンをクリックし、**[接続文字列]** をクリックします。
+	![ConnectionInfoButton][button-connectioninfo]
 
 1. MONGOLAB_URI をクリップボードにコピーします。![ConnectionInfoScreen][screen-connectioninfo] **この URI は、データベースのユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。**
 
