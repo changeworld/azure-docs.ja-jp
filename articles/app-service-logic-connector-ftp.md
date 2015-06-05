@@ -29,11 +29,15 @@ FTP コネクタを使用すると、FTP サーバーとの間でデータを移
 - 必要に応じて FTP サーバー上のファイルを削除する
 
 ##新しい FTP コネクタの作成
-新しい FTP コネクタを作成するには、次の手順に従います。- Azure ポータルを起動します。- [+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
+新しい FTP コネクタを作成するには、次の手順に従います。- Azure ポータルを起動します。- [+ 新規] \(ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
 
-![Azure Marketplace の起動][1] - [API Apps] をクリックします。- "FTP" を検索し、[FTP コネクタ] を選択します。
+![Azure Marketplace の起動][1]
+- [API Apps] をクリックします。
+- "FTP" を検索し、[FTP コネクタ] を選択します。
 
-![FTP コネクタの選択][2] - [作成] をクリックします。表示された [FTP コネクタ] ブレードで、次のデータを入力します。
+![FTP コネクタの選択][2]
+- [作成] をクリックします。
+- 表示された [FTP コネクタ] ブレードで、次のデータを入力します。
 
 ![FTP コネクタの作成][3]
 
@@ -167,4 +171,4 @@ FTP コネクタは、次の 4 つのアクションをサポートしていま�
 [12]: ./media/app-service-logic-connector-FTP/AdvancedInputsUploadFile.PNG
 [13]: ./media/app-service-logic-connector-FTP/ConfiguredUploadFile.PNG
 
-<!--HONumber=54-->
+<!---HONumber=54-->

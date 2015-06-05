@@ -55,7 +55,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 ![ConnectionInfoButton][button-connectioninfo]  
 4. **MONGOLAB_URI** をクリップボードにコピーします。  
 ![ConnectionInfoScreen][screen-connectioninfo]
-  
+
 	>[AZURE.NOTE]この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。
 
 5. Azure App Service の Web アプリケーションの **[構成]** メニューで **[接続文字列]** ボックスに値を追加します。  

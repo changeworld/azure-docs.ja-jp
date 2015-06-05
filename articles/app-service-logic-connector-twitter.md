@@ -61,7 +61,8 @@ API アプリを作成した後は、ロジック アプリのトリガーおよ
 	![][6]
 7.	フローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、それぞれのアクションの入力を構成してください。
 
-	![][7] ![][8]
+	![][7] 
+	![][8]
 
 	<!--Image references-->
 [1]: ./media/app-service-logic-connector-twitter/img1.png
@@ -73,4 +74,4 @@ API アプリを作成した後は、ロジック アプリのトリガーおよ
 [7]: ./media/app-service-logic-connector-twitter/img7.png
 [8]: ./media/app-service-logic-connector-twitter/img8.png
 
-<!--HONumber=54-->
+<!---HONumber=54-->

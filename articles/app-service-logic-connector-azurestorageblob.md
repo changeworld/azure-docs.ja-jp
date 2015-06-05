@@ -22,11 +22,21 @@
 Azure Storage BLOB コネクタを使用すると、BLOB コンテナーから BLOB のアップロード、ダウンロード、削除を行うことができます。
 
 ##新しい Azure Storage BLOB コネクタの作成
-Azure Storage コネクタを新しく作成するには、次の手順に従います。<ul> <li>Azure ポータルを起動します。<li>[+ 新規] (ページの下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。</ul>
+Azure Storage コネクタを新しく作成するには、次の手順に従います。
+<ul>
+<li>Azure ポータルを起動します。<li>[+ 新規] \(ページの下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
+</ul>
 
-![Azure Marketplace の起動][1]<br> <ul> <li>API Apps をクリックします。<li><i>BLOB</i> を検索し、[Azure Storage BLOB コネクタ] を選択します。</ul>
+![Azure Marketplace の起動][1]<br>
+<ul>
+<li>API Apps をクリックします。<li><i>BLOB</i> を検索し、[Azure Storage BLOB コネクタ] を選択します。
+</ul>
 
-![Azure Storage BLOB コネクタの選択][2] <br> <ul> <li>[作成] をクリックします。<li>[Azure Storage BLOB コネクタ] ブレードが開いたら、次のデータを指定します。</ul>
+![Azure Storage BLOB コネクタの選択][2]
+<br>
+<ul>
+<li>[作成] をクリックします。<li>[Azure Storage BLOB コネクタ] ブレードが開いたら、次のデータを指定します。
+</ul>
 
 ![Azure Storage BLOB コネクタの作成][3]
 
@@ -107,4 +117,4 @@ Azure Storage BLOB コネクタは 4 つのアクションをサポートしま�
 [10]: ./media/app-service-logic-connector-azurestorageblob/ListOfAzureStorageBlobActions.PNG
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
 
-<!--HONumber=54-->
+<!---HONumber=54-->
