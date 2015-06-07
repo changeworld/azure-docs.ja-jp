@@ -41,7 +41,8 @@
 
 **Maven を使ってプロジェクトを作成するには**
 
-1. **C:\\Tutorials\\WordCountJava という名前のディレクトリを作成します。2. 開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
+1. **C:\Tutorials\WordCountJava\** という名前のディレクトリを作成します。
+2. 開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
 3. Maven でインストールされた __mvn__ コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
 		mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -201,7 +202,7 @@
 	> [AZURE.NOTE]__wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
 
-##</a><a name="test">エミュレーターでプログラムをテストする
+##<a name="test"></a>エミュレーターでプログラムをテストする
 
 HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 

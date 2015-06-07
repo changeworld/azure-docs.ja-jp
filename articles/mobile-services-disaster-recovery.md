@@ -69,7 +69,7 @@ Azure のモバイル サービスを使用して、アプリケーションを�
 		info:    mobile recover command OK
 
 
-	> [AZURE.NOTE] It may take a few minutes after the command completes until you can see the changes in the portal.
+	> [AZURE.NOTE] コマンドが完了してからポータルに変更が反映されるまでに数分かかる場合があります。
 
 5. すべてのスクリプトをソース管理内の元のスクリプトと比較して、正しく復旧されていることを確認します。ほとんどの場合、スクリプトはデータが失われることなく自動的に復旧されます。ただし、相違がある場合は、そのスクリプトを手動で復旧できます。
 

@@ -233,9 +233,28 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 
 2. 新しいクラスに *Contacts.cs* という名前を付けます。
 ![Add New Item dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms13.png)
-3. 既定のコードを以下のコードに置き換えます。<pre class="prettyprint"> using System.ComponentModel.DataAnnotations; using System.Globalization;
+3. 既定のコードを以下のコードに置き換えます。
+	<pre class="prettyprint">
+	using System.ComponentModel.DataAnnotations;
+	using System.Globalization;
 	
-	namespace ContactManager.Models { public class Contacts { [ScaffoldColumn(false)][Key] public int ContactId { get; set; } public string Name { get; set; } public string Address { get; set; } public string City { get; set; } public string State { get; set; } public string Zip { get; set; } [DataType(DataType.EmailAddress)] public string Email { get; set; } } } </pre>
+	namespace ContactManager.Models
+	{
+	    public class Contacts
+	    {
+	        [ScaffoldColumn(false)]
+	        [Key]
+	        public int ContactId { get; set; }
+	        public string Name { get; set; }
+	        public string Address { get; set; }
+	        public string City { get; set; }
+	        public string State { get; set; }
+	        public string Zip { get; set; }
+	        [DataType(DataType.EmailAddress)]
+	        public string Email { get; set; }
+	    }
+	}
+	</pre>
 
 **Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とするプライマリ キー (`ContactID`) を定義します。**Contacts** クラスは、表示される連絡先データを表しています。Contacts オブジェクトの各インスタンスはリレーショナル データベース テーブルの各行に相当し、Contacts クラスの各プロパティは、リレーショナル データベース テーブルの各列に関連付けられます。データベースに格納されている連絡先データについては、このチュートリアルで後ほど説明します。
 

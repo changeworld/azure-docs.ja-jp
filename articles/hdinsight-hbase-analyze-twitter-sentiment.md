@@ -98,11 +98,13 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 3. **名前**、**説明**、**Web サイト**を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
 
 	<table border="1">
-<tr><th>フィールド</th><th>値</th></tr>
-<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
-<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
-<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
-</table>> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
+	<tr><th>フィールド</th><th>値</th></tr>
+	<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
+	<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
+	<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
+	</table>
+
+	> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
@@ -1175,7 +1177,8 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 **layout.cshtml を変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。2. 次のコンテンツに置き換えます。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。
+2. 次のコンテンツに置き換えます。
 
 		<!DOCTYPE html>
 		<html>

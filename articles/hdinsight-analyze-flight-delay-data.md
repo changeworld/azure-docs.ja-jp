@@ -384,7 +384,7 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブの実行方法とし�
 
 
 
-\---
+---
 ##<a id="appendix-a"></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
 データ ファイルと HiveQL スクリプト ファイルをアップロード ([付録 B](#appendix-b) 参照) する前に、いくつか計画を立てる必要があります。データ ファイルと HiveQL ファイルを保存してから HDInsight クラスターをプロビジョニングし、Hive ジョブを実行するという考え方です。2 つのオプションがあります。
 
@@ -496,7 +496,7 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブの実行方法とし�
 
 > コンテナーのアクセス権限をパブリックに設定するか、またはストレージ アカウントを HDInsight クラスターにバインドする必要があります。そうしないと、Hive クエリからデータ ファイルにアクセスできません。
 
-\---
+---
 ##<a id="appendix-b"></a>付録 B: HiveQL スクリプトを作成してアップロードする
 
 Azure PowerShell を使用して、複数の HiveQL ステートメントを一度に実行することも、HiveQL ステートメントをスクリプト ファイルにまとめることもできます。このセクションでは、HiveQL スクリプトを作成し、Azure PowerShell を使用して Azure BLOB ストレージにアップロードする方法を説明します。Hive を利用するには、HiveQL スクリプトが Azure BLOB ストレージに格納されている必要があります。
@@ -677,7 +677,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 	- **$srcDataFolder** と **$dstDataFolder** はそれぞれ "tutorials/flightdelays/data" と "tutorials/flightdelays/output" です。
 
 
-\---
+---
 ##<a id="appendix-c"></a>付録 C - Sqoop ジョブを出力するための Azure SQL Database の準備
 **SQL データベースを準備するには (Sqoop スクリプトとマージ)**
 

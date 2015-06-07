@@ -203,13 +203,13 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 
 -  xplat-cli で Azure App Service に使用できるコマンドの一覧を表示するには、`azure site -h` を呼び出してください。
 
-\----------
+----------
 ### azure site list
 現在のサブスクリプションの Web アプリに関する情報については、次の例に示すように、**azure site list** を呼び出します。
 
 `azure site list webappslotstest`
 
-\----------
+----------
 ### azure site create
 展開スロットを作成するには、次の例に示すように、**azure site create** を呼び出し、既存の Web アプリの名前と作成するスロットの名前を指定します。
 
@@ -219,13 +219,13 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 
 `azure site create --git webappslotstest --slot staging`
 
-\----------
+----------
 ### azure site swap
 更新した展開スロットを運用アプリにするには、次の例に示すように、**azure site swap** コマンドを使用してスワップ操作を実行します。運用アプリではダウン タイムは発生せず、コールド スタートが行われることもありません。
 
 `azure site swap webappslotstest`
 
-\----------
+----------
 ### azure site delete
 不要になった展開スロットを削除するには、次の例に示すように、**azure site delete** コマンドを使用します。
 

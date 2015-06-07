@@ -39,7 +39,7 @@
 
 **MapReduce ジョブを送信するには**
 
-1.	**Azure PowerShell **コンソールを開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+1.	**Azure PowerShell**コンソールを開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 
 3. 次のコマンドを実行して、2 つの変数を設定します。
 
@@ -70,7 +70,7 @@
 
 **MapReduce ジョブの結果を取得するには**
 
-1. **Azure PowerShell **コンソールを開きます。
+1. **Azure PowerShell**コンソールを開きます。
 2. 次のコマンドを実行して、3 つの変数を設定します。
 
 		$subscriptionName = "<SubscriptionName>"       # Azure subscription name

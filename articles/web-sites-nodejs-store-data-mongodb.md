@@ -529,7 +529,9 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 
 ##その他のリソース
 
-[Mac および Linux 用 Azure コマンド ライン ツール ][Build and deploy a Node.js web app in Azure App Service] [Azure App Service の GIT を使用する連続的な展開]
+[Mac および Linux 用 Azure コマンド ライン ツール ]    
+[Build and deploy a Node.js web app in Azure App Service]    
+[Azure App Service の GIT を使用する連続的な展開]    
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。

@@ -36,7 +36,7 @@
 
 	これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Google ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    > [AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を_ MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
+    > [AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
 
 3. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 

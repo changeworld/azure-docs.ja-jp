@@ -219,7 +219,14 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 	**CustomLoginProvider** を認証パイプラインに統合しないため、このメソッドはここでは何も行いません。
 
-4. 抽象メソッド `ParseCredentials` の次の実装を **CustomLoginProvider** に追加します。public override ProviderCredentials ParseCredentials(JObject serialized) { if (serialized == null) { throw new ArgumentNullException("serialized"); }
+4. 抽象メソッド `ParseCredentials` の次の実装を **CustomLoginProvider** に追加します。
+
+        public override ProviderCredentials ParseCredentials(JObject serialized)
+        {
+            if (serialized == null)
+            {
+                throw new ArgumentNullException("serialized");
+            }
 
             return serialized.ToObject<CustomLoginProviderCredentials>();
         }

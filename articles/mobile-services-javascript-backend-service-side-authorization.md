@@ -40,7 +40,7 @@
         }
 
 
-    > [AZURE.NOTE] [Dynamic schema must be enabled]これが機能するように、(https://msdn.microsoft.com/library/azure/jj193175.aspx)。新しいモバイル サービスの既定ではこの設定は有効です。
+    > [AZURE.NOTE] これを機能させるには[動的スキーマを有効にする必要があります](https://msdn.microsoft.com/library/azure/jj193175.aspx)。新しいモバイル サービスの既定ではこの設定は有効です。
 
 5. 同様に、既存の**読み取り**操作を次の関数で置き換えます。このスクリプトは、ユーザーが自身に挿入した項目だけを受信できるように、返された TodoItem オブジェクトをフィルターします。
 
