@@ -83,7 +83,7 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 ### <a name="sparkshell"></a>Spark シェルを使用して、対話型のクエリを実行する
 次の手順を実行して、対話型の Spark シェルから Spark クエリを実行します。このセクションでは、既定で HDInsight クラスターに用意されているサンプル データ ファイル (/example/data/gutenberg/davinci.txt) に対して Spark クエリを実行します。
 
-1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>￼」をご覧ください。
+1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
 
 2. Remote Desktop Protocol (RDP) セッションで、デスクトップから Hadoop コマンド ライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
