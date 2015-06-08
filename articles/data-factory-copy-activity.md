@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="06/04/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)
@@ -40,6 +40,7 @@
 ## サポートされているソースとシンク
 コピー アクティビティでは、次のデータ移行のシナリオがサポートされています。
 
+- Azure BLOB から Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、または IaaS 上の SQL Server へのデータのコピー。
 - Azure SQL Database から Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server へのデータのコピー。
 - Azure テーブルから Azure BLOB、Azure テーブル、または Azure SQL Database へのデータのコピー。
 - オンプレミスの SQL Server または IaaS 上の SQL Server から Azure BLOB または Azure SQL Database へのデータのコピー。
@@ -125,11 +126,15 @@
 </table>
 
 ### サービスとしてのインフラストラクチャ (IaaS) 上の SQL
-IaaS 上の SQL では、IaaS プロバイダーとしての Azure がサポートされます。次のネットワークおよび VPN のトポロジがサポートされます。Data Management Gateway は、1 の場合に必要がなくても、2 および 3 の場合に必要です。Data Management Gateway の詳細については、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
+IaaS 上の SQL Server は、ソースおよびシンクの両方としてもサポートされます。IaaS での SQL Server へのリンクのサービスを作成する場合は、data Management Gateway が必要です。SQL Server とリソースの競合、ゲートウェイの両方によってパフォーマンスの低下を回避する 1 つのホスティング SQL Server 以外の仮想マシンでの Data Management Gateway をインストールすることをお勧めします。Data Management Gateway の詳細については、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 1.	パブリック DNS 名と静的パブリック ポートを持つ VM: プライベート ポート マッピング
 2.	SQL エンドポイントが公開されていないパブリック DNS 名を持つ VM
-3.	Virtual Network<ol type='a'> <li>一覧の最後に次のトポロジが含まれている Azure クラウド VPN</li> <li>Azure Virtual Network を使用したオンプレミスからクラウドへのサイト間 VPN を持つ VM</li> </ol> ![Data Factory (コピー アクティビティ)][image-data-factory-copy-actvity]
+3.	仮想ネットワーク
+	<ol type='a'>
+<li>一覧の最後に次のトポロジが含まれている Azure クラウド VPN</li>	
+<li>Azure Virtual Network を使用した内部設置型からクラウドへのサイト間 VPN を持つ VM</li>	
+</ol>![Data Factory (コピー アクティビティ)][image-data-factory-copy-actvity]
 
 ## コピー アクティビティ - コンポーネント
 コピー アクティビティは、次のコンポーネントで構成されます。
@@ -401,4 +406,4 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 [image-data-factory-column-mapping-1]: ./media/data-factory-copy-activity/ColumnMappingSample1.png
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
 
-<!--HONumber=52-->
+<!---HONumber=GIT-SubDir-->

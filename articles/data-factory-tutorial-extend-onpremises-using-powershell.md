@@ -17,7 +17,7 @@
 	ms.author="spelluru"/>
 
 
-# チュートリアル: 内部設置型 SQL Server データベースへのキャンペーンの有効性のデータのコピー 
+# チュートリアル: 内部設置型 SQL Server データベースへのキャンペーンの有効性のデータのコピー
 このチュートリアルでは、パイプラインが内部設置型のデータを扱えるようにするため、その環境を設定する方法を学びます。
  
 パーティション -> 強化 -> 分析のワークフローを含む最初のチュートリアルにおいて、ログ処理のシナリオの最後の手順で、マーケティング キャンペーンの有効性のアウトプットが Azure SQL データベースにコピーされました。分析のため、所属する組織内にある内部設置型の SQL Server にこのデータを移動することも可能です。
@@ -51,7 +51,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 すでに使用できるデータ ゲートウェイがある場合は、この手順をスキップします。
 
-1.	論理データ ゲートウェイを作成します。**Azure プレビュー ポータル**で、Data Factory の **[Data Factory]** ブレードの **[関連付けられているサービス]** をクリックします。
+1.	論理データ ゲートウェイを作成します。 **Azure プレビュー ポータル**, 、] をクリックして **関連付けられているサービス** 上、 **データ ファクトリ** ブレードします。
 2.	コマンド バーの **[+ データ ゲートウェイ]** をクリックします。  
 3.	**[新しいデータ ゲートウェイ]** ブレードで、**[作成]** をクリックします。
 4.	**[作成]** ブレードで、データ ゲートウェイの **[名前]** に「**MyGateway**」と入力します。
@@ -97,45 +97,46 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 ### リンクされたサービスの作成
 
-1.	**Azure プレビュー ポータル**で、**LogProcessingFactory** の **[Data Factory]** ブレードにある **[作成者とデプロイ]** タイルをクリックします。
-2.	**Data Factory エディター**で、ツール バーの **[新しいデータ ストア]** クリックして、**[内部設置型 SQL Server データベース]** を選択します。
-3.	JSON スクリプトで、次の手順に従います。 
-	1.	**<servername>** を、SQL Server データベースをホストしているサーバーの名前に置き換えます。
-	2.	**<databasename>** を **MarketingCampaigns** に置き換えます。
-	3.	**SQL 認証**を使用している場合は、次の手順に従います。
-		1.	**connectionString** で **<username>** と **<password>** を指定します。
-		2.	最後の 2 行を削除します (JSON の **username** プロパティと **password** プロパティが必要なのは、Windows 認証を使用している場合のみです)。 
-		3.	**gatewayName** 行の最後の **, (コンマ)** を削除します。
-		**Windows 認証を使用している場合、次の手順に従います。**1.**connectionString** の**統合セキュリティ**の値を **True** に設定します。"**User ID=<username>;Password=<password>;**" を接続文字列から削除します。2.**username** プロパティに、データベースへのアクセス権を持つユーザーの名前を指定します。3.ユーザー アカウントの **password** を指定します。   
-	4. gatewayName プロパティに、ゲートウェイの名前 (**MyGateway**) を指定します。 		  	 
-3.	ツール バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。 
+1.	 **Azure プレビュー ポータル**, 、] をクリックして **関連付けられているサービス** タイルで、 **データ ファクトリ** のブレードに **LogProcessingFactory**です。
+2.	 **関連付けられているサービス** ブレードをクリックして **追加 (+) データ ストア**です。
+3.	 **データ ストアの新しい** ブレードで入力 **OnPremSqlLinkedService** の **名前**です。 
+4.	をクリックして **型 (必要な設定)** 選択 **SQL Server**です。表示されます、 **DATA GATEWAY**, 、**サーバー**, 、**データベース**, 、および **資格情報** の設定、 **データ ストアの新しい** ブレードのようになりました。 
+5.	をクリックして **DATA GATEWAY (必要な設定を構成する)** 選択 **MyGateway** 前に作成しました。 
+6.	入力 **名前** をホストするデータベース サーバーの **MarketingCampaigns** データベース。 
+7.	入力 **MarketingCampaigns** データベース用です。 
+8.	クリックして **資格情報**です。 
+9.	 **資格情報** ブレードで] をクリックして **資格情報を安全に設定するには、ここをクリックしてください**です。
+10.	最初に、1 回のクリックのアプリケーションをインストールし、起動、 **資格情報の設定 **] ダイアログ ボックス 。11.	 **資格情報の設定** ] ダイアログ ボックスに、入力 **ユーザー名** と **パスワード**, 、] をクリック **OK**です。ダイアログ ボックスが閉じるまで待ちます。 
+12.	クリックして **[ok]** で、 **データ ストアの新しい** ブレードします。 
+13.	 **関連付けられているサービス** ブレードでいることを確認 **OnPremSqlLinkedService** 一覧に表示され、 **状態** がリンクされているサービスの **良い**です。
 
 ## <a name="OnPremStep3"></a>手順 3: テーブルとパイプラインを作成する
 
 ### 内部設置型の論理テーブルを作成する
 
-1.	**Data Factory エディター**で、ツール バーの **[新しいデータ セット]** をクリックして、**[内部設置型 SQL]** を選択します。 
-2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\OnPremises** フォルダーにある **MarketingCampaignEffectivenessOnPremSQLTable.json** の JSON スクリプトに置き換えます。
-3. 関連付けられているサービスの名前 (**linkedServiceName** プロパティ) を **OnPremSqlServerLinkedService** から **SqlServerLinkedService** に変更します。
-4. ツール バーの **[デプロイ]** をクリックして、テーブルをデプロイします。 
+1.	 **Azure PowerShell**, に切り替え、 **C:\ADFWalkthrough\OnPremises** フォルダーです。 
+2.	コマンドレットを使用して **新規 AzureDataFactoryTable** の次のようにテーブルを作成する **MarketingCampaignEffectivenessOnPremSQLTable.json**です。
+
+			
+		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessOnPremSQLTable.json
 	 
 #### パイプラインを作成して Azure BLOB から SQL Server へデータをコピーする
 
-1.	1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
-2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\OnPremises** フォルダーにある **EgressDataToOnPremPipeline.json** の JSON スクリプトに置き換えます。
-3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
+1.	コマンドレットを使用して **新規 AzureDataFactoryPipeline** の次のように、パイプラインを作成する **EgressDataToOnPremPipeline.json**です。
 
-        "start": "2014-05-01T00:00:00Z",
-        "end": "2014-05-05T00:00:00Z",
-        "isPaused": false
+			
+		New-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\EgressDataToOnPremPipeline.json
+	 
+2. コマンドレットを使用して **セット AzureDataFactoryPipelineActivePeriod** アクティブな期間の指定に **EgressDataToOnPremPipeline**です。
 
-	[AZURE.NOTE]このチュートリアルのサンプル データが 2014 年 5 月 1 日から 2014 年 5 月 5 日であるため、開始時刻と終了時刻が 2014 年 5 月 1 日および 2014 年 5 月 5 日に設定されていることに注意してください。
- 
-3. ツール バーの **[デプロイ]** クリックして、パイプラインを作成してデプロイします。エディターのタイトル バーに "**パイプラインが正常に作成されました**" というメッセージが表示されていることを確認します。
+			
+		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name EgressDataToOnPremPipeline
+
+	キーを押して **'Y'** を続行します。
 	
 ## <a name="OnPremStep4"></a>手順 4: パイプラインを監視して結果を確認する
 
-[メインのチュートリアル][datafactorytutorial]の**パイプラインとデータ スライスの監視**に関するセクションで説明したものと同じ手順に従い、新しい内部設置型の ADF テーブル用の新しいパイプラインとデータ スライスを監視します。
+導入されたのと同じ手順を使用して今すぐ [手順 6: テーブルとパイプラインを監視する](#MainStep6) 新しいパイプラインと内部設置型の新しい ADF テーブルのデータ スライスを監視します。
  
 **MarketingCampaignEffectivenessOnPremSQLTable** テーブルのスライスの状態が [準備完了] に変われば、パイプラインがスライスの実行を完了したことを意味します。結果を表示するには、SQL Server 内の **MarketingCampaigns** データベースの **MarketingCampaignEffectiveness** テーブルにクエリを実行します。
  
@@ -147,7 +148,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 [troubleshoot]: data-factory-troubleshoot.md
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
-[datafactorytutorial]: data-factory-tutorial.md
+[datafactorytutorial]: data-factory-tutorial-using-powershell.md
 [adfgetstarted]: data-factory-get-started.md
 [adfintroduction]: data-factory-introduction.md
 [useonpremisesdatasources]: data-factory-use-onpremises-datasources.md
@@ -165,6 +166,6 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 [adfwalkthrough-download]: http://go.microsoft.com/fwlink/?LinkId=517495
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 
-[image-data-factory-datamanagementgateway-configuration-manager]: ./media/data-factory-tutorial-extend-onpremises/DataManagementGatewayConfigurationManager.png
+[image-data-factory-datamanagementgateway-configuration-manager]: ./media/data-factory-tutorial-extend-onpremises-using-powershell/DataManagementGatewayConfigurationManager.png
 
 <!---HONumber=GIT-SubDir-->

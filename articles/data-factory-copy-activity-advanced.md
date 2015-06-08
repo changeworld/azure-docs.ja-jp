@@ -193,7 +193,7 @@
 			"source":
 			{
 				"type": "SqlSource",
-				"SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \\'{0:yyyyMMdd-HH}\\'', SliceStart)"
+				"SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = '{0:yyyyMMdd-HH}'', SliceStart)"
 			},
 			"sink":
 			{
@@ -288,7 +288,7 @@
 		"sink":
 	    {
 			"type": "SqlSink",
-	        "SqlWriterTableType": "MarketingType",
+	        "SqlWriterTableType": "MarketingType",
 		    "SqlWriterStoredProcedureName": "spOverwriteMarketing",	
 			"storedProcedureParameters":
 					{
@@ -313,8 +313,8 @@
 4. データベースで、**SqlWriterTableType** と同じ名前のテーブル型を定義します。テーブル型のスキーマは、入力データから返されるスキーマと同じにする必要があります。
 
 		CREATE TYPE [dbo].[MarketingType] AS TABLE(
-    	    [ProfileID] [varchar](256) NOT NULL,
-    	    [State] [varchar](256) NOT NULL,
+    	    [ProfileID] [varchar](256) NOT NULL,
+    	    [State] [varchar](256) NOT NULL,
     	)
 
 ストアド プロシージャ機能は[テーブル値パラメーター][table-valued-parameters]を利用しています。
@@ -341,10 +341,10 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 
 [json-script-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[azure-table-data-type]: https://msdn.microsoft.com/ja-jp/library/azure/dd179338.aspx
+[azure-table-data-type]: https://msdn.microsoft.com/en-us/library/azure/dd179338.aspx
 
 [image-data-factory-copy-actvity]: ./media/data-factory-copy-activity/VPNTopology.png
 [image-data-factory-column-mapping-1]: ./media/data-factory-copy-activity/ColumnMappingSample1.png
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
 
-<!--HONumber=54-->
+<!---HONumber=GIT-SubDir-->

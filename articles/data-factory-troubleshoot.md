@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Data Factory のトラブルシューティング" 
 	description="Azure データ ファクトリの使用に関する問題のトラブルシューティングを行う方法について説明します。" 
 	services="data-factory" 
@@ -13,75 +13,220 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2/10/2015" 
+	ms.date="04/14/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory のトラブルシューティング
-Azure ポータル (または) Azure PowerShell コマンドレットを使用して Azure Data Factory の問題についてトラブルシューティングを行うことができます。このトピックには、Azure ポータルを使用し、Data Factory で発生するエラーをすばやく解決する方法について学べるチュートリアルが含まれています。 
+Azure ポータル (または) Azure PowerShell コマンドレットを使用して Azure Data Factory の問題についてトラブルシューティングを行うことができます。このトピックには、Azure ポータルを使用し、Data Factory で発生するエラーをすばやく解決する方法について学べるチュートリアルが含まれています。
 
-## この記事の内容
+## 問題: データの工場出荷時のコマンドレットを実行できません
+この問題を解決するに Azure のモードを切り替える **AzureResourceManager**:
 
-- [データのコピーで発生するエラーのトラブルシューティング](#copywalkthrough)
-- [Hive/Pig 処理で発生するエラーのトラブルシューティング](#pighivewalkthrough)
+起動 **Azure PowerShell** に切り替えるには、次のコマンドを実行して、 **AzureResourceManager** モード。Azure のデータのファクトリのコマンドレットは、 **AzureResourceManager** モード。
 
-## <a name="copywalkthrough"></a>データのコピーで発生するエラーのトラブルシューティング
+         switch-azuremode AzureResourceManager
+
+## 承認されていないエラーをデータの工場出荷時のコマンドレットを実行している場合は、問題点:
+おそらく使用しない、右の Azure アカウントまたはサブスクリプション、Azure PowerShell を使用します。次のコマンドレットを使用すると、右の Azure アカウントと、Azure PowerShell を使用するサブスクリプションを選択できます。
+
+1. 追加の AzureAccount - を使用して、適切なユーザー ID とパスワード
+2. Get-azuresubscription - アカウントのすべてのサブスクリプションを表示します。 
+3. Select-azuresubscription <subscription name> -右のサブスクリプションを選択します。1 つの Azure プレビュー ポータルでのデータのファクトリの作成に使用すると、同じを使用します。
+
+## データ ゲートウェイ Express セットアップ Azure ポータルからの起動に失敗する問題点。
+Express をセットアップするため、データのゲートウェイには、Internet Explorer や Microsoft ClickOnce 互換性のある web ブラウザーが必要です。できますが、Express のセットアップを開始する場合
+
+1. その他のブラウザーとが失敗した場合は、Internet Explorer に切り替えます。または
+2. ポータルでは、同じのブレードに表示される手動セットアップ」のリンクを使用して、インストールのインストールを行うし、画面に収録されているキーをコピーし、準備ができたら、Data Management Gateway 構成を貼り付けます。を起動しない場合は"Microsoft Data Management Gateway"の [スタート] メニューを確認し、を起動するときに、キーに貼り付けます。 
+
+
+## Azure ポータルからの資格情報マネージャーの起動に失敗する問題点。
+セットアップする場合またはセキュリティを保証する更新プログラム、Azure ポータルで、資格情報マネージャー アプリケーションを使用して SQL Server のリンクされているサービスが起動します。これは、Internet Explorer や Microsoft ClickOnce 互換性のある web ブラウザーが必要です。その他のブラウザーが失敗した場合は、Internet Explorer に切り替えることができます。
+
+## 内部設置型 SQL Server への接続に失敗する問題点。 
+ゲートウェイがインストールされているコンピューターから SQL Server に接続できることを確認します。ゲートウェイがインストールされているコンピューターですることができます。
+
+1. SQL Server がインストールされているコンピューターを ping します。または
+2. SQL Server Management Studio (SSMS) を使用して、Azure ポータルで指定した資格情報を使用して SQL Server のインスタンスに接続してみてください。
+
+
+## 問題: 入力スライスが PendingExecution または PendingValidation 状態でこれまで
+
+スライスにある **PendingExecution** または **PendingValidation** さまざまな理由と、一般的な理由の 1 つの状態です、 **waitOnExternal** でプロパティが指定されていない、 **可用性** 、パイプラインで最初のテーブルとデータセットのセクションです。Azure のデータのファクトリのスコープ外で生成される任意のデータセットを指定してください **waitOnExternal** のプロパティの [ **可用性** セクションです。これは、データが外部としない、データ、ファクトリ内の任意のパイプラインによってサポートを示します。データ スライスとマークされて **準備ができて** 、それぞれのストアにデータが使用可能です。
+
+使用方法を次の例を参照してください、 **waitOnExternal** プロパティです。指定できます **waitOnExternal {}** せず、既定値が使用できるように、このセクションでのプロパティの値を設定します。
+
+テーブルのトピックを参照してください。 [JSON スクリプト参照][json-scripting-reference] の詳細についてはこのプロパティ。
+	
+	{
+	    "name": "CustomerTable",
+	    "properties":
+	    {
+	        "location":
+	        {
+	            "type": "AzureBlobLocation",
+	            "folderPath": "MyContainer/MySubFolder/",
+	            "linkedServiceName": "MyLinkedService",
+	            "format":
+	            {
+	                "type": "TextFormat",
+	                "columnDelimiter": ",",
+	                "rowDelimiter": ";"
+	            }
+	        },
+	        "availability":
+	        {
+	            "frequency": "Hour",
+	            "interval": 1,
+	            "waitOnExternal":
+	            {
+	                "dataDelay": "00:10:00",
+	                "retryInterval": "00:01:00",
+	                "retryTimeout": "00:10:00",
+	                "maximumRetry": 3
+	            }
+	        }
+	    }
+	}
+
+ エラーを解決するのには次のように追加します。、 **waitOnExternal** 入力テーブルの JSON 定義にセクションと、テーブルを再作成します。
+
+## 問題: ハイブリッド コピー操作が失敗します。
+詳細を参照してください。
+
+1. ゲートウェイがインストールされているコンピューターで Data Management Gateway の構成マネージャーを起動します。いることを確認、 **ゲートウェイ名** 上に、ゲートウェイの論理名に設定されている、 **Azure ポータル**, 、**ゲートウェイのキーの状態** は **登録されている** と **サービスの状態** は **開始**です。 
+2. 起動 **イベント ビューアー**です。展開 **アプリケーションとサービス ログ** ] をクリック **Data Management Gateway**です。Data Management Gateway に関連するエラーがあるか確認します。 
+
+## 問題: でオンデマンド HDInsight のプロビジョニングがエラーで失敗します。
+
+型 HDInsightOnDemandLinkedService のリンクされているサービスを使用する場合を Azure Blob ストレージを指す linkedServiceName を指定する必要があります。このストレージ アカウントは、ログと、オンデマンドでの HDInsight クラスターのサポート ファイルをコピーするために使用します。場合があります、アクティビティをオンデマンドでの HDInsight でのプロビジョニングを行うことがあります、次のエラーで失敗します。
+
+		Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+
+このエラーは、通常、linkedServiceName で指定されたストレージ アカウントの場所が、同じデータ センターの場所としてここで、HDInsight のプロビジョニングが行われているされていないことを示します。たとえば場合は、Azure のデータのファクトリの場所が米国西部、およびオンデマンドでの HDInsight のプロビジョニングで行われます米国西部ですが Azure blob ストレージ アカウントの場所が米国東部に設定されて、オンデマンドでのプロビジョニングは失敗します。
+
+さらがありますが、2 つ目の JSON プロパティ additionalLinkedServiceNames にオンデマンドでの HDInsight に、追加のストレージ アカウントを指定できます。これらの追加のリンクされたストレージ アカウントは、HDInsight クラスターと同じ場所にする必要がありますか、同じエラーで失敗します。
+
+
+
+## 問題: カスタム アクティビティが失敗します。
+を Azure のデータのファクトリ (パイプライン アクティビティ型 [customactivity]) でカスタム アクティビティを使用する場合、カスタム アプリケーションを実行、指定されたリンクされているサービスから HDInsight へマップとしてのみ MapReduce ジョブをストリーミングします。
+
+Azure のデータのファクトリは、HDInsight クラスターから、その出力をキャプチャして保存できるようにする、カスタム アクティビティを実行すると、 *adfjobs* 、Azure Blob ストレージ アカウントのストレージ コンテナー。エラーの場合に、テキストを読み取ることができます **stderr** 、障害が発生した後、出力テキスト ファイルです。ファイルは、アクセス可能であり、Azure ポータルから自体または Azure Blob ストレージには、ストレージ コンテナーに直接保持ファイルにアクセスする記憶域エクスプ ローラー ツールを使用して、web ブラウザーで読み取り可能です。
+
+列挙し、特定のカスタム アクティビティのログを読み取りは次の図に示しているチュートリアルでは、いずれかの後でこのページにします。概要。
+
+1.  Azure ポータルで **参照** をデータのファクトリを検索します。
+2.  使用して、 **ダイアグラム** 、データのファクトリ ダイアグラムを表示するボタンをクリックして、 **データセット** 、特定の次の表を **パイプライン** 、カスタム アクティビティを持ちます。 
+3.   **テーブル** ブレード、興味のスライスをクリックして、 **問題スライス** 調査する時間帯のです。
+4.  詳細 **データ スライス** ブレードが表示され、複数を一覧できます **活動が実行される** 、スライスします。クリックして、 **アクティビティ** をクリックします。 
+5.   **アクティビティの実行の詳細** ブレードが表示されます。これには、一覧、 **エラー メッセージ** 、ブレード、およびいくつかの途中で **ログ ファイル** そのアクティビティの実行に関連しているブレードの下部に一覧表示します。
+	- ログ/システム-0.log
+	- 状態
+	- 状態と終了
+	- 状態と stderr
+	- ステータス/stdout
+
+6. 最初のクリックして **ログ ファイル** テキスト全体を読むの表示で新しいブレードで、リスト、および、ログ内の項目が開きます。1 つずつ] をクリックして、各ログのテキストを確認します。テキスト ビューアー ブレードが開きます。クリックして、 **ダウンロード** (省略可能) をオフラインでのテキスト ファイルをダウンロードするボタンをクリックします。
+
+1 つ **一般的なエラー** カスタム アクティビティからはパッケージの実行で失敗しました終了コード '1' です。参照してください 'wasb://adfjobs@storageaccount.blob.core.windows.net/PackageJobs/<guid>/<jobid>/状態/stderr' の詳細。
+
+この種類のエラーの詳細を確認するには開きます、 **stderr** ファイルです。1 つの一般的なエラーが表示されるは次のように、タイムアウト状態: mapreduce の情報です。ジョブを: タスク Id: attempt_1424212573646_0168_m_000000_0、状態: 失敗した AttemptID:attempt_1424212573646_0168_m_000000_0 がタイムアウトになりました 600 秒後に
+
+このエラーが、ジョブが 3 回再試行など、30 個以上の分にわたっている場合、複数回表示されます。
+
+このタイムアウト エラーが 600 秒 (10 分) を示すタイムアウトの問題が発生しました。これは通常、カスタム .Net アプリケーションに 10 分用のステータス更新プログラムを発行していないを意味します。場合は、アプリケーションはぶら下がりまたはタイムアウトは、安全性のメカニズムを永久に待機していると、Azure のデータのファクトリのパイプラインを遅らせることを防ぐために 10 分が長すぎる場合、何かで待機を停止します。
+
+このタイムアウトは、カスタム アクティビティにリンクされている HDInsight クラスターの構成で発生します。設定が **mapred.task.timeout**, 、Apache 既定の設定は、ここに記載されているように 600000 (ミリ秒単位) を既定値します。 http://hadoop.apache.org/docs/r2.4.0/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
+
+オーバーライドこの既定値を HDInsight のプロビジョニングのクラスターのプロビジョニング時に、既定の設定を変更します。Azure のデータのファクトリを使用する場合と **HDInsight オンデマンド** サービスでは、リンクされている、HDInsightOnDemandLinkedService JSON プロパティ近く JSON プロパティを追加することができます。次の例では、この JSON プロパティを使用して、20 分に値を大きくことができます。
+		
+		"mapReduceConfiguration" :
+		{
+			"mapreduce.task.timeout":"1200000"
+		}
+		
+
+詳細なコンテキストをこれらのマップを編集する JSON の例については、MSDN のドキュメントの構成プロパティの参照例 3 を減らす https://msdn.microsoft.com/library/azure/dn893526.aspx
+
+## 問題: PowerShell 要求が失敗したエラーのエラーで 400 正しくない要求「登録済みのリソース プロバイダーを... に見つかった」
+
+2015 年 3 月 10 日の時点では、Azure のデータのファクトリ PowerShell 初期プライベート プレビュー バージョン 2014年-05-01-プレビュー、2014年-07-01-プレビュー、および 2014年-08-01-preview は中止されます。これで、Azure PowerShell をダウンロード、この URL からのダウンロードなどの一部である、ADF のコマンドレットの最新バージョンを使用することをお勧め http://go.microsoft.com/?linkid=9811175&clcid=0x409
+
+Azure PowerShell SDK の提供が中止されたバージョンを使用する場合、次のエラーが表示される場合があります。
+
+		HTTP/1.1 400 Bad Request
+		Cache-Control: no-cache
+		Pragma: no-cache
+		Content-Type: application/json; charset=utf-8
+		Expires: -1
+		x-ms-request-id: e07181e4-e421-46be-8a08-1f71d5e90494
+		x-ms-correlation-request-id: e07181e4-e421-46be-8a08-1f71d5e90494
+		x-ms-routing-request-id: WESTUS:20150306T234829Z:e07181e4-e421-46be-8a08-1f71d5e90494
+		Strict-Transport-Security: max-age=31536000; includeSubDomains
+		Date: Fri, 06 Mar 2015 23:48:29 GMT
+		Content-Length: 157
+		{"error":{"code":"NoRegisteredProviderFound","message":"No registered resource provider found for location 'west US' and API version '2014-05-01-preview'."}}
+
+
+## <a name="copywalkthrough"></a> チュートリアル: データのコピーでエラーのトラブルシューティング
 このチュートリアルでは、「Data Factory を使ってみる」の記事にあるチュートリアルでエラーを発生させ、Azure ポータルを使用してエラーのトラブルシューティングを行う方法を学びます。
 
 ### 前提条件
-1. 「[Azure Data Factory を使ってみる][adfgetstarted]」の記事にあるチュートリアルを最後まで実施します。
-2. **ADFTutorialDataFactory** が Azure SQL Database 内の **emp** テーブルでデータを生成していることを確認します。  
-3. Azure SQL Database から **emp** テーブルを削除 (**drop table emp**) します。これにより、エラーが発生します。
-4. **Azure PowerShell** で以下のコマンドを実行し、もう存在しない **emp** テーブルにデータの書き込みを試みるよう、パイプラインのアクティブ期間を更新します。
+1. チュートリアルを完了、 [Azure のデータのファクトリを使い始める][adfgetstarted] 記事です。
+2. いることを確認、 **ADFTutorialDataFactory** 内のデータの生成、 **emp** Azure SQL データベースのテーブルです。  
+3. これで、削除、 **emp** テーブル (* * テーブルのドロップ emp * *)、Azure SQL データベースからです。これにより、エラーが発生します。
+4. 次のコマンドを実行、 **Azure PowerShell** にデータを書き込むしようとするように、パイプラインの有効期間を更新する、 **emp** テーブルは既に存在しません。
 
          
-		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -StartDateTime 2014-09-29 -EndDateTime 2014-09-30 -Name ADFTutorialPipeline
+		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -StartDateTime 2014-09-29 –EndDateTime 2014-09-30 –Name ADFTutorialPipeline
 	
-	> [WACOM.NOTE] <b>StartDateTime</b> の値を現在の日付に置き換え、<b>EndDateTime</b> の値を翌日の日付に置き換えます。 
+	> [AZURE.NOTE]置き換える <b>StartDateTime</b> 、現在の日付値と <b>EndDateTime</b> で、次の日の値です。
 
 
 ### Azure プレビュー ポータルを使用して、エラーのトラブルシューティングを行う
 
-1.	[Azure プレビュー ポータル][azure-preview-portal]にログインします。 
-2.	**スタート画面**で **[ADFTutorialDataFactory]** をクリックします。**スタート画面**にデータ ファクトリのリンクが表示されていない場合は、**[参照]** ハブをクリックし、**[すべて]** をクリックします。**[参照]** ブレードの **[データ ファクトリ]** をクリックし、**[ADFTutorialDataFactory]** をクリックします。
-3.	**[データセット]** タイルに **[エラーあり]** が表示されていることに注目してください。**[エラーあり]** をクリックします。**[エラーありデータセット]** ブレードが表示されるはずです。
+1.	ログイン [Azure プレビュー ポータル][azure-preview-portal]です。 
+2.	クリックして **ADFTutorialDataFactory** から、 **スタート ボード**です。リンクをデータのファクトリが表示されない場合、 **スタート ボード**, 、] をクリックして **参照** ハブと] をクリック **すべて**です。をクリックして **データ ファクトリ...** で、 **参照** ] をクリックしてブレード、 **ADFTutorialDataFactory**です。
+3.	「することに注意してください **エラーで** 上、 **データセット** 並べて表示します。クリックして **エラー**です。表示されます **エラーによるデータセットの** ブレードします。
 
-	![Data Factory with Errors link][image-data-factory-troubleshoot-with-error-link]
+	![データの工場出荷時のエラー リンクを含む][image-data-factory-troubleshoot-with-error-link]
 
-4. **[エラーありデータセット]** ブレードで **[EmpSQLTable]** をクリックして **[テーブル]** ブレードを表示させます。	
+4.  **データセット** エラーのブレードをクリックして **EmpSQLTable** を表示するには、 **テーブル** ブレードします。
 
-	![Datasets with errors blade][image-data-factory-troubleshoot-datasets-with-errors-blade]
+	![エラーのブレードを持つデータセット][image-data-factory-troubleshoot-datasets-with-errors-blade]
 
-5. **[テーブル]** ブレードに問題のあるスライスが表示されるはずです。たとえば、ブレード下部にある **[問題のあるスライス]** リスト内の、エラーのあるスライスです。また、**[最近のスライス]** リストで最近エラーが発生したスライスを確認することもできます。**[問題のあるスライス]** リスト内のスライスをクリックします。 
+5.  **テーブル** ブレードで、問題のスライスではエラーでスライスなどが表示されます、 **問題スライス** 下部にあるリストです。エラー、最近のスライスを表示することもできます、 **最近使用したスライス** ] ボックスの一覧です。スライスをクリックして、 **問題スライス** ] ボックスの一覧です。
 
-	![Table blade with problem slices][image-data-factory-troubleshoot-table-blade-with-problem-slices]
+	![問題のスライスを使用してテーブル ブレード][image-data-factory-troubleshoot-table-blade-with-problem-slices]
 
-	**[問題のあるスライス]** (特定の問題ではない) をクリックすると、**[データ スライス]** ブレードが表示されるので、**[特定の問題のあるスライス]** をクリックして選択したデータ スライスの**[データ スライス]** スライドを表示させます。
+	をクリックすると **問題スライス** 表示されます (特定問題の場合) ではなく、 **データ スライス** ブレードをクリック、 **スライスの特定の問題** を参照してください、 **データ スライス** 、選択したデータのスライスのスライドします。
 
-6. **EmpSQLTable** の **[データ スライス]** ブレードには、ブレード下部のリスト内のスライスに対して、すべての**[アクティビティの実行]** が表示されています。リスト内の [失敗] になっている **[アクティビティの実行]** をクリックします。
+6.  **データ スライス** のブレードに **EmpSQLTable**, 、すべてを参照してください **アクティビティの実行** の下部にある一覧でスライスします。クリックして、 **アクティビティの実行** 失敗した一覧からです。
 
-	![Data Slice blade with active runs][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
+	![データ スライスのブレードをアクティブ状態の実行][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
 
 
-7. 選択したアクティビティの実行に対する**[アクティビティの実行の詳細]** ブレードには、エラーの詳細が表示されているはずです。このシナリオ内には、**"Invalid object name 'emp'"** と表示されます。
+7.  **アクティビティの実行の詳細** ブレード、アクティビティの実行は、選択した、エラーの詳細が表示されます。このシナリオで表示します。 **無効なオブジェクト名 'emp'**です。
 
-	![Activity run details with an error][image-data-factory-troubleshoot-activity-run-with-error]
+	![アクティビティの実行の詳細をエラーで][image-data-factory-troubleshoot-activity-run-with-error]
 
-この問題を解決するには、「[Data Factory を使ってみる][adfgetstarted]」の記事にある SQL スクリプトを使用して **emp** テーブルを作成します。
+この問題を解決するのには次のように作成します。、 **emp** からスクリプトを、SQL を使用してテーブル [データ ファクトリの][adfgetstarted] 記事です。
 
 
 ### Azure PowerShell コマンドレットを使用して、エラーのトラブルシューティングを行う
-1.	**Azure PowerShell** を起動します。 
-2.	Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
+1.	起動 **Azure PowerShell**です。 
+2.	切り替える **AzureResourceManager** モード、データの工場出荷時のコマンドレットとは、このモードでのみ使用できます。
 
          
 		switch-azuremode AzureResourceManager
 
-3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。	
+3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。
 
          
 		Get-AzureDataFactorySlice -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -TableName EmpSQLTable -StartDateTime 2014-10-15
 
-	> [WACOM.NOTE] **StartDateTime** を **Set-AzureDataFactoryPipelineActivePeriod** 用に指定した StartDateTime の値に置き換えます。 
+	> [AZURE.NOTE]置き換える **StartDateTime** に対して指定した値、StartDateTime 持つ、 **セット AzureDataFactoryPipelineActivePeriod**です。
 
 		ResourceGroupName 		: ADFTutorialResourceGroup
 		DataFactoryName   		: ADFTutorialDataFactory
@@ -93,12 +238,12 @@ Azure ポータル (または) Azure PowerShell コマンドレットを使用�
 		LatencyStatus     		:
 		LongRetryCount    		: 0
 
-	出力結果のうち、問題のあるスライス (**[状態]** が **[失敗]** になっているスライス) の **[開始]** の日時をメモしてください。 
-4. **Get-AzureDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+	注意してください、 **開始** 、問題のスライスの時間 (でスライス **状態** に設定 **失敗**) 出力します。 
+4. これで、実行、 **Get AzureDataFactoryRun** コマンドレットは、スライスを実行するアクティビティに関する情報を取得します。
          
 		Get-AzureDataFactoryRun -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -TableName EmpSQLTable -StartDateTime "10/15/2014 4:00:00 PM"
 
-	**StartDateTime** の値は、前の手順でメモした エラーまたは問題のあるスライスの [開始] の日時です。日時は二重引用符で囲む必要があります。
+	値 **StartDateTime** は、前の手順からメモしたエラーおよび問題のスライスの開始時刻。日時は二重引用符で囲む必要があります。
 5. エラーの詳細を含む (以下のような) 出力結果が表示されます。
 
 		Id                  	: 2b19475a-c546-473f-8da1-95a9df2357bc
@@ -123,47 +268,47 @@ Azure ポータル (または) Azure PowerShell コマンドレットを使用�
 
  
 
-## <a name="pighavewalkthrough"></a>Hive/Pig 処理で発生するエラーのトラブルシューティング
-このチュートリアルでは、Azure プレビュー ポータルと Azure PowerShell の両方を使用して、Hive/Pig 処理で発生するエラーのトラブルシューティングを行う手順を説明します。 
+## <a name="pighivewalkthrough"></a> チュートリアル: Hive と Pig 処理でエラーのトラブルシューティング
+このチュートリアルでは、Azure プレビュー ポータルと Azure PowerShell の両方を使用して、Hive/Pig 処理で発生するエラーのトラブルシューティングを行う手順を説明します。
 
 
-### Azure Portal を使用して Pig/Hive 処理で発生するエラーのトラブルシューティングを行う
+### チュートリアル: Azure ポータルを使用する Pig と Hive の処理でエラーのトラブルシューティングを行う
 このシナリオでは、HDInsight クラスターでの Hive 処理で発生するエラーが原因で、データ セットがエラー状態になっています。
 
-1. **[データ ファクトリ]** のホーム ページから**[データセット]** タイル上の**[エラーあり]**をクリックします。
+1. をクリックして **エラーで** で **データセット** タイルで、 **データ ファクトリ** ホーム ページです。
 
-	![With errors link on Datasets tile][image-data-factory-troubleshoot-walkthrough2-with-errors-link]
+	![[データセット] タイルのエラー リンクを含む][image-data-factory-troubleshoot-walkthrough2-with-errors-link]
 
-2. **[エラーありデータセット]** ブレードで、興味のある **[テーブル]** をクリックします。
+2.  **エラーによるデータセットの** ブレードで] をクリックして、 **テーブル** 興味のあることです。
 
-	![Datasets with errors blade][image-data-factory-troubleshoot-walkthrough2-datasets-with-errors]
+	![エラーのブレードを持つデータセット][image-data-factory-troubleshoot-walkthrough2-datasets-with-errors]
 
-3. **[テーブル]** ブレードで、**[状態]** が **[失敗]** になっている **[問題のあるスライス]** をクリックします。
+3.  **テーブル** ブレードをクリックして、 **問題スライス** で **状態** に設定 **失敗**です。
 
-	![Table with problem slices][image-data-factory-troubleshoot-walkthrough2-table-with-problem-slices]
+	![問題のスライスを持つテーブル][image-data-factory-troubleshoot-walkthrough2-table-with-problem-slices]
 
-4. **[データ スライス]** ブレードで、失敗している **[アクティビティの実行]** をクリックします。
+4.  **データ スライス** ブレードで] をクリックして、 **アクティビティ実行** 失敗しました。
 
-	![Data slice with failed runs][image-data-factory-troubleshoot-walkthrough2-slice-activity-runs]
+	![失敗した実行でのデータ スライス][image-data-factory-troubleshoot-walkthrough2-slice-activity-runs]
 
-5. **[アクティビティの実行の詳細]** ブレードでは、HDInsight 処理に関連するファイルがダウンロードできます。**[状態/stderr]** の **[ダウンロード]** をクリックし、エラーの詳細を含むエラー ログ ファイルをダウンロードします。
+5.  **アクティビティの実行の詳細** ブレードで、HDInsight の処理に関連付けられているファイルをダウンロードすることができます。をクリックして **ダウンロード** の **状態/stderr** 、エラーに関する詳細を含む、エラー ログ ファイルをダウンロードします。
 
-	![Activity run details with download link][image-data-factory-troubleshoot-activity-run-details]
+	![アクティビティの実行の詳細とダウンロード リンク][image-data-factory-troubleshoot-activity-run-details]
 
     
-### Azure PowerShell を使用して Pig/Hive 処理で発生するエラーのトラブルシューティングを行う。
-1.	**Azure PowerShell** を起動します。 
-2.	Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
+### チュートリアル: Azure PowerShell を使用する Pig と Hive の処理でエラーのトラブルシューティングを行う
+1.	起動 **Azure PowerShell**です。 
+2.	切り替える **AzureResourceManager** モード、データの工場出荷時のコマンドレットとは、このモードでのみ使用できます。
 
          
 		switch-azuremode AzureResourceManager
 
-3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。	
+3. Get-AzureDataFactorySlice コマンドを実行してスライスとその状態を確認します。[状態] が [失敗] になっているスライスが表示されるはずです。
 
          
 		Get-AzureDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
 
-	> [WACOM.NOTE] **StartDateTime** を **Set-AzureDataFactoryPipelineActivePeriod** 用に指定した StartDateTime の値に置き換えます。 
+	> [AZURE.NOTE]置き換える **StartDateTime** に対して指定した値、StartDateTime 持つ、 **セット AzureDataFactoryPipelineActivePeriod**です。
 
 		ResourceGroupName : ADF
 		DataFactoryName   : LogProcessingFactory
@@ -176,12 +321,12 @@ Azure ポータル (または) Azure PowerShell コマンドレットを使用�
 		LongRetryCount    : 0
 
 
-	出力結果のうち、問題のあるスライス (**[状態]** が **[失敗]** になっているスライス) の **[開始]** の日時をメモしてください。 
-4. **Get-AzureDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+	注意してください、 **開始** 、問題のスライスの時間 (でスライス **状態** に設定 **失敗**) 出力します。 
+4. これで、実行、 **Get AzureDataFactoryRun** コマンドレットは、スライスを実行するアクティビティに関する情報を取得します。
          
 		Get-AzureDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
 
-	**StartDateTime** の値は、前の手順でメモした エラーまたは問題のあるスライスの [開始] の日時です。日時は二重引用符で囲む必要があります。
+	値 **StartDateTime** は、前の手順からメモしたエラーおよび問題のスライスの開始時刻。日時は二重引用符で囲む必要があります。
 5. エラーの詳細を含む (以下のような) 出力結果が表示されます。
 
 		Id                  : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
@@ -203,45 +348,20 @@ Azure ポータル (または) Azure PowerShell コマンドレットを使用�
 		PipelineName        : EnrichGameLogsPipeline
 		Type                :
 
-6. 上記出力結果の Id 値を使用して **Save-AzureDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
-
-## トラブルシューティングのヒント
-
-### オンプレミス SQL Server に接続できない 
-ゲートウェイがインストールされているコンピューターから SQL Server に接続できることを確認します。
-
-
-1. SQL Server がインストールされているコンピューターに Ping を送信
-2. ゲートウェイがインストールされているコンピューターで SQL Server Management Studio (SSMS) を使用し、Azure ポータルで指定した資格情報で SQL Server のインスタンスに接続できるか試してください。
-
-### コピー操作が失敗する
-1. ゲートウェイがインストールされているコンピューターの Data Management Gateway Configuraiton Manager を起動します。**ゲートウェイ名**が **Azure ポータル**の論理ゲートウェイ名に設定されており、**[ゲートウェイ キーの状態]** が **[登録済み]** かつ **[サービスの状態]** が **[開始]** になっていることを確認します。 
-2. **イベント ビューアー**を起動します。**アプリケーションとサービス ログ**を展開し、**[Data Management Gateway]** をクリックします。Data Management Gateway に関連するエラーがあるか確認します。 
+6. 実行することができます **保存 AzureDataFactoryLog** コマンドレットの上記の出力を確認して、ログをダウンロードする、Id 値を持つファイルを使用して、 **- DownloadLogs** コマンドレットのオプションです。
 
 
 
-## 関連項目
-
-記事 | 説明
------- | ---------------
-[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources] | この記事には、内部設置型の SQL Server データベースから Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。
-[Data Factory で Pig と Hive を使用する][use-pig-and-hive-with-data-factory] | この記事には、HDInsight アクティビティを使用して hive/pig スクリプトを実行し、入力データを処理して出力データを生成する方法を説明したチュートリアルが記載されています。 
-[チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
-[Azure Data Factory パイプラインでカスタム アクティビティを使用する][use-custom-activities] | この記事には、カスタム アクティビティを作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。 
-[Azure PowerShell を使用した Azure Data Factory の監視と管理][monitor-manage-using-powershell] | この記事では、Azure PowerShell コマンドレットを使用して Azure Data Factory を監視する方法について説明しています。 
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題のトラブルシューティングを行う方法について説明しています。エラーを発生させて (Azure SQL データベースのテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
-[Azure Data Factory Developer Reference (Azure Data Factory 開発者向けリファレンス)][developer-reference] | この開発者向けリファレンスには、コマンドレット、JSON スクリプト、関数などを対象とした包括的なリファレンスが記載されています。 
-[Azure Data Factory Cmdlet Reference (Azure Data Factory コマンドレット リファレンス)][cmdlet-reference] | このリファレンスには、すべての **Data Factory コマンドレット**に関する詳細が記載されています。
-
-[adfgetstarted]: ../data-factory-get-started
-[use-onpremises-datasources]: ../data-factory-use-onpremises-datasources
-[use-pig-and-hive-with-data-factory]: ../data-factory-pig-hive-activities
-[adf-tutorial]: ../data-factory-tutorial
-[use-custom-activities]: ../data-factory-use-custom-activities
-[monitor-manage-using-powershell]: ../data-factory-monitor-manage-using-powershell
-[troubleshoot]: ../data-factory-troubleshoot
+[adfgetstarted]: data-factory-get-started.md
+[use-onpremises-datasources]: data-factory-use-onpremises-datasources.md
+[use-pig-and-hive-with-data-factory]: data-factory-pig-hive-activities.md
+[adf-tutorial]: data-factory-tutorial.md
+[use-custom-activities]: data-factory-use-custom-activities.md
+[monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
+[troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+[json-scripting-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
 
 [azure-preview-portal]: https://portal.azure.com/
 
@@ -251,9 +371,9 @@ Azure ポータル (または) Azure PowerShell コマンドレットを使用�
 
 [image-data-factory-troubleshoot-table-blade-with-problem-slices]: ./media/data-factory-troubleshoot/TableBladeWithProblemSlices.png
 
-[image-data-factory-troubleshoot-activity-run-with-error]: ./media/data-factory-troubleshoot/DataSliceBladeWithActivityRuns.png
+[image-data-factory-troubleshoot-activity-run-with-error]: ./media/data-factory-troubleshoot/ActivityRunDetailsWithError.png
 
-[image-data-factory-troubleshoot-dataslice-blade-with-active-runs]: ./media/data-factory-troubleshoot/ActivityRunDetailsWithError.png
+[image-data-factory-troubleshoot-dataslice-blade-with-active-runs]: ./media/data-factory-troubleshoot/DataSliceBladeWithActivityRuns.png
 
 [image-data-factory-troubleshoot-walkthrough2-with-errors-link]: ./media/data-factory-troubleshoot/Walkthrough2WithErrorsLink.png
 
@@ -265,4 +385,4 @@ Azure ポータル (または) Azure PowerShell コマンドレットを使用�
 
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
 
-<!--HONumber=46--> 
+<!---HONumber=GIT-SubDir-->

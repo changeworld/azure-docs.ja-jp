@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure プレビュー ポータルを使用した Azure Data Factory の監視と管理" 
 	description="Azure の管理ポータルを使用して、作成した Azure データ ファクトリを監視および管理する方法について説明します。" 
 	services="data-factory" 
@@ -13,117 +13,94 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2/10/2015" 
+	ms.date="05/18/2015" 
 	ms.author="spelluru"/>
 
 # Azure プレビュー ポータルを使用した Azure Data Factory の監視
+この記事では、Azure プレビュー ポータルを使用して、監視し、Azure のデータのファクトリを管理するためのさまざまなシナリオについて説明します。
 
-- [Azure サブスクリプション内のすべての Data Factory の表示](#AllDataFactories)
-- [Data Factory に関する詳細の表示](#DataFactoryDetails)
-- [Data Factory のダイアグラム ビューの表示](#DataFactoryDiagram)
-- [Data Factory 内のリンクされたサービスの表示](#DataFactoryLinkedServices)
-- [リンクされたサービスに関する詳細の表示](#DataFactoryLinkedService) 
-- [Data Factory 内のデータセットの表示](#DataFactoryDatasets)
-- [データセットに関する詳細の表示](#DataFactoryDataset)
-- [スライスに関する詳細の表示](#DataFactorySlice) 
-- [スライスに対するすべてのアクティビティの実行の表示](#DataFactoryActivtyRuns) 
-- [アクティビティの実行に関する詳細の表示](#DataFactoryActivtyRunDetails)
-- [操作レンズ - 過去 1 週間のイベント](#EventsInThePastweek)  
-   
+## <a name="AllDataFactories"></a> Azure サブスクリプション内のすべてのデータのファクトリを表示します。
 
+- サインイン、 [Azure プレビュー ポータル][azure-preview-portal]です。
+- クリックして **参照** ハブをクリックして左 **データ ファクトリ**です。  
 
-## <a name="AllDataFactories"></a> Azure サブスクリプション内のすべての Data Factory の表示
+	![ハブの参照データのファクトリを -> します。][image-data-factory-browse-datafactories]
 
-- [Azure プレビュー ポータル][azure-preview-portal]にサインインします。
-- 左側にある **[参照]** ハブをクリックし、**[Data Factory]** をクリックします。  
+	表示されない場合は、 **データ ファクトリ**, 、] をクリックして **すべて** 順にクリック **データ factorries** で、 **参照** ブレードします。
 
-	![BROWSE hub -> Data Factories][image-data-factory-browse-datafactories]
+	![ハブの参照はすべて -> します。][image-data-factory-browse-everything]
 
-	**[Data Factory]** が表示されない場合は、**[参照]** ブレードの **[すべて]** をクリックしてから **[Data Factory]** をクリックします。
+- 内のすべてのデータ ファクトリが表示されます、 **データ ファクトリ** ブレードします。
 
-	![BROWSE hub -> Everything] [image-data-factory-browse-everything]
-
-- **[Data Factory]** ブレードにすべての Data Factory が表示されます。
-
-	![Data factories blade][image-data-factory-datafactories-blade]
+	![データのファクトリ ブレード][image-data-factory-datafactories-blade]
 
     
-## <a name="DataFactoryDetails"></a> Data Factory に関する詳細の表示
+## <a name="DataFactoryDetails"></a> データのファクトリに関する詳細を表示
 
-Data Factory の詳細を表示するには、次のいずれかを実行します。 
-
-
-- 上記の **[Data Factory]** ブレードで、いずれかの Data Factory をクリックします。
-- **スタート画面**で Data Factory のリンクをクリックします。**スタート画面**は、Azure プレビュー ポータルにログインしたときに表示されるブレードです。Data Factory を作成する際に **[スタート画面に追加する]** (既定のオプション) を選択した場合は、次の画像にあるように、スタート画面に Data Factory が表示されます。この例では、**ADFTutorialDataFactory**、**ADFTutorialDataFactoryDF**、および **LogProcessingFactory** の Data Factory リンクが**スタート画面**に表示されます。
+Data Factory の詳細を表示するには、次のいずれかを実行します。
 
 
-![Data factory from the Startboard][image-data-factory-datafactory-from-startboard]
+- 内のデータのファクトリをクリックして、 **データ ファクトリ** ブレードの前に示したします。
+- データのファクトリのリンクをクリックして、 **スタート ボード**です。**スタート ボード** は、ブレードをするには、Azure プレビュー ポータルでのログインを参照してください。選択した場合 **スタート ボードに追加** 中 (既定のオプション) データのファクトリを作成するのには、データのファクトリが表示されます、次の図のようにスタート ボードにリンクします。この例で **ADFTutorialDataFactory**, 、**ADFTutorialDataFactoryDF** と **LogProcessingFactory** データ工場出荷時のリンク上にある、 **スタート ボード**です。
 
-どちらの場合も、次の図に示すように、選択した Data Factory の **[DATA FACTORY]** ブレードが表示されます。 
 
- ![Data Factory Home Page][image-data-factory-datafactory-home-page]
+![スタート ボードからのデータのファクトリ][image-data-factory-datafactory-from-startboard]
+
+どちらの方法が表示されます、 **データ ファクトリ** ブレードで、次の図のように、選択したデータのファクトリ。
+
+ ![データの工場出荷時のホーム ページ][image-data-factory-datafactory-home-page]
  
-## <a name="DataFactoryDiagram"></a> Data Factory のダイアグラム ビューの表示
-目的の Data Factory の **[DATA FACTORY]** ブレードで、**[ダイアグラム]** タイルをクリックすると、その Data Factory のダイアグラム ビューが表示されます。 
+## <a name="DataFactoryDiagram"></a> データの出荷時のダイアグラム ビューを表示します。
+ **データ ファクトリ** データのファクトリに対するブレードをクリックして **ダイアグラム** タイルに、データのファクトリのダイアグラム ビューを参照してください。
 
-![Data Factory Diagram View][image-data-factory-diagram-view]
+![データの工場出荷時のダイアグラム ビュー][image-data-factory-diagram-view]
  
+### ダイアグラム ビューを表示、パイプラインを開く
+パイプラインのすべてのアクティビティを表示するには、ダイアグラム ビューで、パイプラインを右クリックして **開くパイプライン**です。アクティビティの入力呼び出し力のデータセットと、パイプライン内のアクティビティが表示されます。 ![開いているパイプライン](./media/data-factory-monitor-manage-using-management-portal/DiagramView-OpenPipeline.png)
 
-## <a name="DataFactoryLinkedServices"></a> Data Factory 内のリンクされたサービスの表示
-目的の Data Factory の **[DATA FACTORY]** ブレードで、**[リンクされたサービス]** タイルを表示すると、すべてのリンクされたサービスが一覧表示されます。 
+クリックして **データ ファクトリ** 、ダイアグラム ビューに戻るには、左上隅にある階層リンク内です。ダイアグラム ビューには、すべてのパイプラインが表示されます。この例では 1 つのパイプラインのみ作成しました。
 
-![Linked Services Blade][image-data-factory-linked-services]
+## <a name="DataFactoryLinkedServices"></a> データのファクトリに関連付けられているサービスを表示します。
+ **データ ファクトリ** データのファクトリに対するブレードをクリックして **関連付けられているサービス** タイルをリストに関連付けられているすべてのサービスを参照してください。
 
-## <a name="DataFactoryLinkedService"></a> リンクされたサービスに関する詳細の表示
-**[リンクされたサービス]** ブレードで、一覧からリンクされたサービスをクリックすると、そのサービスに関する詳細が表示されます。 
+![関連付けられているサービスのブレード][image-data-factory-linked-services]
 
-![Linked Service Blade][image-data-factory-linked-service]
+## <a name="DataFactoryLinkedService"></a> リンクされているサービスに関する詳細を表示
+ **関連付けられているサービス** ブレードで、これに関する詳細情報を表示する、一覧からサービスをリンクをクリックします。
 
-## <a name="DataFactoryDatasets"></a> Data Factory 内のデータセットの表示 
-目的の Data Factory の **[DATA FACTORY]** ブレードで、**[データセット]** タイルをクリックすると、その Data Factory のテーブルがすべて表示されます。
+![リンクされているサービスのブレード][image-data-factory-linked-service]
 
-![Data Sets Blade][image-data-factory-datasets] 
+## <a name="DataFactoryDatasets"></a> データのファクトリでのデータセットのビュー 
+ **データ ファクトリ** データのファクトリに対するブレードをクリックして **データセット** タイルに、データのファクトリ内のすべてのテーブルを参照してください。
 
-## <a name="DataFactoryDataset"></a>  データセットに関する詳細の表示
-[データセット] ブレードのデータセットの一覧からデータセットをクリックすると、そのデータセットに関する詳細が表示されます。テーブルとはスキーマを持つ四角形のデータセットです。テーブルは、現時点でサポートされている唯一の種類のデータセットです。 
+![データ セットのブレード][image-data-factory-datasets]
 
-![Table Blade][image-data-factory-table]
+## <a name="DataFactoryDataset"></a> データセットに関する詳細を表示
+[データセット] ブレードのデータセットの一覧からデータセットをクリックすると、そのデータセットに関する詳細が表示されます。テーブルとはスキーマを持つ四角形のデータセットです。テーブルは、現時点でサポートされている唯一の種類のデータセットです。
 
-上図の **[テーブル]** ブレードに、**[最近のスライス]** と **[問題のあるスライス]** が表示されます。**[...] (省略記号)** をクリックすると、すべてのスライスが表示されます。 
+![テーブルのブレード][image-data-factory-table]
 
-![All Slices of a Table][image-data-factory-all-slices]
+ **テーブル** 上、両方のブレード **スライスを最近更新された** と **最近スライスが失敗しました** リストはによって並べ替えられます、 **最終更新時刻**です。次の状況では、スライスの更新時間が変更されます。
 
-**[データ スライス]** ブレードで、[フィルター] ボタンをクリックして [フィルター] ブレードを表示すると、**[フィルター]** スライスに特定のスライスを表示して確認できます。
-
-![Filter Blade][image-data-factory-filter-blade]
-
-
-**[フィルター]** ブレードを起動すると、**[To]** フィールドは最近の時間 (概数) に自動的に設定され、返されるレコード数を制限します。**[From]** フィールドも自動的に設定されます。**[From]** の日付は、**[カレンダー]** ボタンをクリックして変更できます。**[To]** の日付は、**[From]** の日付を変更すると自動的に変更されます。 
-
-**[前へ]**/**[次へ]** ボタンをクリックすると、前の期間/次の期間のスライスを表示できます。**[前へ]** および **[次へ]** ボタンの時間範囲は、次の表に示すように、スライスの頻度と間隔に基づいて設定されます。
-
-頻度 | 間隔の値の範囲 | 結果の時間範囲
-----------| -------------------- | --------------------
-分 | 1 ～ 4 | 6 時間
-分 | 5 ～ 29 | 1 日
-分 | 30 ～ 180 | 7 日
-分 | 180 + | 28 日 (1 か月の概算日数)
-時間 | 1 ～ 3 | 7 日
-時間 | 4 ～ 11 | 28 日 (1 か月の概算日数)
-時間 | 12 ～ 72 | 182 日 (6 か月の概算日数)
-時間 | 73 + | 1 年
-日 | 1 ～ 6 | 1 年
-日 | 7 ～ 20 | 5 年
-日 | 21+ | 10 年
-週 | 1 ～ 3 | 5 年
-週 | 4+ | 10 年
-月 | 任意 | 10 年
+-  スライスのステータスは、手動で更新するなどを使用して、 **セット AzureDataFactorySliceStatus** (または) をクリックして **実行** 上、 **スライス** スライスのブレードします。
+-  スライスは、実行のための状態を変更 (など、実行の開始、実行を終了し、失敗した、実行が成功したが終了したなど)。
  
-たとえば、**頻度**を**時間**、**間隔**を **2** に定義した場合、**[次へ]**/**[前へ]** ボタンをクリックすると、時間範囲はいずれかの方向に **7 日**移動します。このロジックは、すべてのスライス/最近のスライス/問題のあるスライスの表示に関係なく、[フィルター] ブレードに適用されます。
-
-**[フィルター]** ブレードを使用すると、スライスの**ステータス**に基づいてスライスをフィルターします。次の表は、スライスのすべてのステータスとその説明の一覧です。
+	
+代わりに、スライスの開始時刻から終了時刻によって並べ替えられたデータのスライスを表示する] をクリックして **(スライスの時刻) でのデータ スライス** 並べて表示します。
  
-スライスのステータス | 説明
+![データのスライスでスライスの時間][DataSlicesBySliceTime]
+
+リストまたはのタイトルをクリックして **しています.(省略記号)** より大規模な一覧のスライスを参照してください。
+
+![テーブルのすべてのスライス][image-data-factory-all-slices]
+
+ **データ スライス** ブレードで] をクリックして、 **フィルター** 表示するときに、 **フィルター** できるブレード **フィルター** スライスすることを確認する特定のスライスを参照してください。クリックすると、次のいずれかのようなブレードが表示されます **フィルター** 上、 **データ スライス** スライスでブレード **更新時間によって並べ替えられます**です。
+
+![ブレードをフィルター処理します。][image-data-factory-filter-blade]
+
+ **フィルター** ブレードにはフィルター処理することができますに基づいて **最後に更新された時間** と **状態をスライス**です。次の表は、スライスのすべてのステータスとその説明の一覧です。
+ 
+スライスの状態 | 説明
 ------------ | ------------
 PendingExecution | データ処理がまだ開始されていません。
 InProgress | データ処理は進行中です。
@@ -133,59 +110,85 @@ Skip | スライスの処理をスキップします。
 Retry | スライス生成の実行を再試行しています。
 Timed Out | スライスのデータ処理がタイムアウトになりました。
 PendingValidation | データ スライスが処理前の検証ポリシーに対する検証を待機しています。
-RetryValidation | スライスの検証を再試行します。
+RetryValidation | スライスの検証を再試行しています。
 FailedValidation | スライスの検証に失敗しました。
 LongRetry | テーブル JSON で LongRetry が指定されている場合にスライスがこのステータスになります。スライスに対する通常の再試行は失敗します。
 ValidationInProgress | (テーブル JSON で定義されているポリシーに基づいて) スライスの検証が実行されています。
 
+クリックすると **フィルター** 上で、 **データ スライス** ブレード スライスを使用 **スライス時間によって並べ替えられます**, 、別の種類が表示されます **フィルター** ブレードします。
+
+![2 のブレードをフィルター処理します。][image-data-factory-filter-blade-2]
 
 
-## <a name="DataFactorySlice"></a> スライスに関する詳細の表示
-**[テーブル]** ブレードまたは **[データ スライス]** ブレードのいずれかでスライス一覧のスライスをクリックすると、そのスライスに関する詳細が表示されます。 
+起動したときに、 **フィルター** ブレードで、 **に** フィールドが自動的に返されるレコードの数を制限するには、(切り上げ) の最新の時刻に設定します。 **から** フィールドはも自動的に設定します。変更することができます、 **から** 日付をクリックして、 **カレンダー** ボタンをクリックします。 **に** 日が変更されるは、変更すると自動的に、 **から** 日付。
 
-![Data Slice][image-data-factory-dataslice]
+クリックして **前**/* * 期間/次の期間を表示するボタン * * [次へは、以前のスライスします。時間範囲 **前** と **[次へ]** ボタンが基のスライスの頻度と間隔の次の表に示すように設定します。
+
+頻度 | 間隔の値の範囲 | 結果として得られる時間のチャンク
+----------| -------------------- | --------------------
+1 分 | 1-4 | 6 時間
+1 分 | 5 ～ 29 | 1 日
+1 分 | 30 ～ 180 | 7 日間
+1 分 | 180 + | 28 日 (おおよそですカレンダー月)。
+1 時間 | 1-3 | 7 日間
+1 時間 | 4-11 | 28 日 (おおよそですカレンダー月)。
+1 時間 | 12 72 | 182 日 (おおよそです。6 か月)
+1 時間 | 73 + | 1 年間
+1 日 | 1 ～ 6 | 1 年間
+1 日 | 7 ～ 20 | 5 年間
+1 日 | 21 + | 10 年間
+週 | 1-3 | 5 年間
+週 | 4 + | 10 年間
+月 | 任意 | 10 年間
+ 
+定義する場合など **頻度** として **時間** と **間隔** の **2**, 、[、 **[次へ]**/* * ボタン * * 前、時間の範囲を移動する **7 日間** いずれかの方向です。このロジックは、すべてのスライス/最近のスライス/問題のあるスライスの表示に関係なく、[フィルター] ブレードに適用されます。
 
 
-### <a name="DataFactoryActivtyRuns"></a> スライスに対するすべてのアクティビティの実行の表示
-1 つのスライスに複数の実行がある場合があります。たとえば、スライスが失敗すると、サービスは数回再試行することがあります。また、すべての再試行が失敗したスライスを再実行することもできます。**[データ スライス]** ブレードの下部の一覧に、アクティビティのすべての実行が表示されます。 
 
-## <a name="DataFactoryActivtyRunDetails"></a>  アクティビティの実行に関する詳細の表示
-**[データ スライス]** ブレードの実行の一覧からアクティビティの実行をクリックすると、そのアクティビティの実行に関する詳細が表示されます。 
 
-![Activity Run Details][image-data-factory-activity-run-details]
+## <a name="DataFactorySlice"></a> スライスに関する詳細を表示
+いずれかの一覧のスライスをクリックしてスライスで、 **テーブル** ブレードまたは **データ スライス** ブレードをそのスライスの詳細を参照してください。
 
-## <a name="EventsInThePastweek"></a> 操作レンズ - 過去 1 週間のイベント
-目的の Data Factory の **[DATA FACTORY]** ブレード (またはホーム ページ) で、**[操作]** レンズの **[過去 1 週間のイベント]** をクリックすると、過去 1 週間のイベントが表示されます。これによって、過去 1 週間にその Data Factory で実行された操作の概要を確認できます。また、データの移動/処理で発生したエラーのトラブルシューティングにも役立ちます。 
+![データ スライス][image-data-factory-dataslice]
 
-![ Data Factory Events][image-data-factory-events]
+スライスではない場合、 **準備ができて** 状態、準備ができていないし、現在のスライスでの実行をブロックしているアップ ストリームのスライスにわかり、 **準備ができていない上流のスライス** ] ボックスの一覧です。
+
+### <a name="DataFactoryActivtyRuns"></a> ビューのスライスのすべての活動が実行されます。
+1 つのスライスに複数の実行がある場合があります。たとえば、スライスが失敗すると、サービスは数回再試行することがあります。また、すべての再試行が失敗したスライスを再実行することもできます。活動が実行されるすべてが表示、* * 下部にある一覧でブレード データ スライス * *。
+
+## <a name="DataFactoryActivtyRunDetails"></a> 実行アクティビティに関する詳細を表示
+実行の実行の一覧からアクティビティをクリックして、 **データ スライス** ブレードを活動の実行に関する詳細を参照してください。
+
+![アクティビティの実行の詳細][image-data-factory-activity-run-details]
+
+## <a name="EventsInThePastweek"></a> 操作のレンズで、過去 1 週間のイベント
+ **データ ファクトリ** データのファクトリに対するブレード (またはホーム ページ) をクリックして **過去 1 週間のイベント** で **Operations** のレンズを過去 1 週間のイベントを参照してください。これによって、過去 1 週間にその Data Factory で実行された操作の概要を確認できます。また、データの移動/処理で発生したエラーのトラブルシューティングにも役立ちます。
+
+![工場出荷時のデータ イベント][image-data-factory-events]
 
 
 ## 関連項目
 
 記事 | 説明
 ------ | ---------------
-[Azure PowerShell を使用した Azure Data Factory の監視と管理][monitor-manage-using-powershell] | この記事では、Azure PowerShell コマンドレットを使用して Azure Data Factory を監視する方法について説明しています。
-[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources] | この記事には、内部設置型の SQL Server データベースから Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。
-[Data Factory で Pig と Hive を使用する][use-pig-and-hive-with-data-factory] | この記事には、HDInsight アクティビティを使用して hive/pig スクリプトを実行し、入力データを処理して出力データを生成する方法を説明したチュートリアルが記載されています。
-[チュートリアル:Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
-[Azure Data Factory パイプラインでカスタム アクティビティを使用する][use-custom-activities] | この記事には、カスタム アクティビティを作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題のトラブルシューティングを行う方法について説明しています。
-[Azure Data Factory Developer Reference (Azure Data Factory 開発者向けリファレンス)][developer-reference] | この開発者向けリファレンスには、コマンドレット、JSON スクリプト、関数などを対象とした包括的なリファレンスが記載されています。 
-[Azure Data Factory Cmdlet Reference (Azure Data Factory コマンドレット リファレンス)][cmdlet-reference] | このリファレンスには、すべての **Data Factory コマンドレット**に関する詳細が記載されています。
+[モニターと管理 Azure のデータを使用してファクトリ PowerShell][monitor-manage-using-powershell] | この記事は、Azure PowerShell コマンドレットを使用して、Azure のデータのファクトリを監視する方法について説明します。 
 
 
-[use-onpremises-datasources]: ../data-factory-use-onpremises-datasources
-[use-pig-and-hive-with-data-factory]: ../data-factory-pig-hive-activities
-[adf-tutorial]: ../data-factory-tutorial
-[use-custom-activities]: ../data-factory-use-custom-activities
-[monitor-manage-using-powershell]: ../data-factory-monitor-manage-using-powershell
-[troubleshoot]: ../data-factory-troubleshoot
+[use-onpremises-datasources]: data-factory-use-onpremises-datasources.md
+[use-pig-and-hive-with-data-factory]: data-factory-pig-hive-activities.md
+[adf-tutorial]: data-factory-tutorial.md
+[use-custom-activities]: data-factory-use-custom-activities.md
+[monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
+[troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
 [azure-preview-portal]: http://portal.azure.com/
 
 [image-data-factory-filter-blade]: ./media/data-factory-monitor-manage-using-management-portal/FilterBlade.png
+
+[image-data-factory-filter-blade-2]: ./media/data-factory-monitor-manage-using-management-portal/FilterBlade2.png
+
 
 [image-data-factory-browse-everything]: ./media/data-factory-monitor-manage-using-management-portal/BrowseEverything.png
 
@@ -216,7 +219,6 @@ ValidationInProgress | (テーブル JSON で定義されているポリシー�
 [image-data-factory-activity-run-details]: ./media/data-factory-monitor-manage-using-management-portal/ActivityRunDetails.png
 
 [image-data-factory-events]: ./media/data-factory-monitor-manage-using-management-portal/Events.png
+[DataSlicesBySliceTime]: ./media/data-factory-monitor-manage-using-management-portal/DataSlicesBySliceTime.png
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
+<!---HONumber=GIT-SubDir-->

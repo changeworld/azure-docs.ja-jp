@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="05/15/2015" 
 	ms.author="spelluru"/>
 
 # Azure イベントに対するアラートの作成
@@ -147,24 +147,6 @@ StorageAccountName は、デプロイしたアラートの JSON ファイルを�
 </tr>
 
 <tr>
-<td>CreateTablePublication</td>
-<td>Succeeded</td>
-<td></td>
-</tr>
-
-<tr>
-<td>UpdateTablePublication</td>
-<td>Succeeded</td>
-<td></td>
-</tr>
-
-<tr>
-<td>RemoveTablePublication</td>
-<td>Succeeded</td>
-<td></td>
-</tr>
-
-<tr>
 <td>OnDemandClusterCreateStarted</td>
 <td>開始済み</td>
 <td></td>
@@ -189,4 +171,4 @@ StorageAccountName は、デプロイしたアラートの JSON ファイルを�
 
 	Get-AzureResourceGroupLog –Name $ResourceGroup -All | Where-Object EventSource -eq "Microsoft.DataFactory"
 
-<!--HONumber=54-->
+<!---HONumber=GIT-SubDir-->
