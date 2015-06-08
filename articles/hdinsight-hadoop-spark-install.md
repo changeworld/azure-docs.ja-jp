@@ -117,7 +117,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 >[AZURE.NOTE]下記のサンプルは HDInsight 3.2 クラスターのプロビジョニング中にスクリプト アクションを実行するとインストールされる **Spark 1.2.0** に対して作成されました。
 
-1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>￼」をご覧ください。
+1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
 
 2. RDP セッションで、デスクトップから Hadoop コマンドライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
