@@ -63,7 +63,7 @@ Managed Cache Service のキャッシュ インスタンスは、PowerShell コ�
 
 Managed Cache Service インスタンスを作成するには、Azure PowerShell コマンド ウィンドウを開きます。
 
->Azure PowerShell のインストール手順と使用方法については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
+>Azure PowerShell のインストール手順と使用方法については、「[Azure PowerShell のインストールおよび構成方法](http://go.microsoft.com/fwlink/?LinkId=400494)」を参照してください。
 
 [Add-AzureAccount][] コマンドレットを呼び出し、使用しているアカウントに関連付けられた電子メール アドレスとパスワードを入力します。[Add-AzureAccount][] コマンドレットを呼び出すと、サブスクリプションが既定で選択されて表示されます。サブスクリプションを変更するには、[Select-AzureSubscription][] コマンドレットを呼び出します。
 
@@ -432,8 +432,8 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [How To:DataCache オブジェクトを作成する]: #create-cache-object
 [How To:キャッシュでオブジェクトを追加および削除する]: #add-object
 [How To:キャッシュ内のオブジェクトの有効期限を指定する]: #specify-expiration
-[How To:ASP.NET セッション状態をキャッシュに格納する]: #store-session
-[How To:ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
+[方法:ASP.NET セッション状態をキャッシュに格納する]: #store-session
+[方法:ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
 [サポートされている .NET Framework プロファイル]: #prepare-vs-target-net
   
 <!-- IMAGES -->
@@ -455,9 +455,9 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 <!-- LINKS -->
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [方法: プログラムを使ってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[Azure Cache のセッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320835
+[Azure のキャッシュのセッション状態プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache: セッション状態のキャッシュ]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[Azure Cache 用キャッシュ プロバイダーの出力]: http://go.microsoft.com/fwlink/?LinkId=320837
+[Azure のキャッシュの出力キャッシュ プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320837
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 [チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
@@ -466,10 +466,10 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
 [方法: 宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [方法: プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Azure Managed Cache Service の概要]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Azure マネージ キャッシュ サービスの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Managed Cache Service]: http://go.microsoft.com/fwlink/?LinkId=320830
 [OutputCache ディレクティブ]: http://go.microsoft.com/fwlink/?LinkId=251979
-[トラブルシューティングと診断]: http://go.microsoft.com/fwlink/?LinkId=320839
+[Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
 [NuGet パッケージ マネージャーのインストール]: http://go.microsoft.com/fwlink/?LinkId=240311
 [キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
 [管理ポータル]: https://manage.windowsazure.com/
