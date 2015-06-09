@@ -243,16 +243,16 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 3. スクリプトに、最初の 5 ～ 8 個の変数を設定します。
 
 	<table border="1">
-<tr><th>変数</th><th>説明</th></tr>
-<tr><td>$clusterName</td><td>アプリケーションを実行する HDInsight クラスターの名前です。</td></tr><tr><td>$oauth_consumer_key</td><td>Twitter アプリケーションを作成したときに書き留めた Twitter アプリケーションの<strong>コンシューマー キー</strong>です。</td></tr>
-<tr><td>$oauth_consumer_secret</td><td>前に書き留めた Twitter アプリケーションの<strong>コンシューマー シークレット</strong>です。</td></tr>
-<tr><td>$oauth_token</td><td>前に書き留めた Twitter アプリケーションの<strong>アクセス トークン</strong>です。</td></tr>
-<tr><td>$oauth_token_secret</td><td>前に書き留めた Twitter アプリケーションの<strong>アクセス トークン シークレット</strong>です。</td></tr>	
-<tr><td>$destBlobName</td><td>出力 BLOB 名です。既定値は、<strong>tutorials/twitter/data/tweets.txt</strong> です。既定値を変更する場合は、適宜 Windows PowerShell スクリプトを更新する必要があります。</td></tr>
-<tr><td>$trackString</td><td>Web サービスはこれらのキーワードに関連するツイートを返します。既定値は、<strong>Azure、クラウド、HDInsight</strong> です。既定値を変更する場合は、適宜 Windows PowerShell スクリプトを更新します。</td></tr>
-<tr><td>$lineMax</td><td>この値によってスクリプトが読み取るツイートの数が決まります。100 個のツイートを読み取るに約 3 分かかります。大きな数値を設定してもかまいませんが、ダウンロードに時間がかかります。</td></tr>
+	<tr><th>変数</th><th>説明</th></tr>
+	<tr><td>$clusterName</td><td>アプリケーションを実行する HDInsight クラスターの名前です。</td></tr><tr><td>$oauth_consumer_key</td><td>Twitter アプリケーションを作成したときに書き留めた Twitter アプリケーションの<strong>コンシューマー キー</strong>です。</td></tr>
+	<tr><td>$oauth_consumer_secret</td><td>前に書き留めた Twitter アプリケーションの<strong>コンシューマー シークレット</strong>です。</td></tr>
+	<tr><td>$oauth_token</td><td>前に書き留めた Twitter アプリケーションの<strong>アクセス トークン</strong>です。</td></tr>
+	<tr><td>$oauth_token_secret</td><td>前に書き留めた Twitter アプリケーションの<strong>アクセス トークン シークレット</strong>です。</td></tr>	
+	<tr><td>$destBlobName</td><td>出力 BLOB 名です。既定値は、<strong>tutorials/twitter/data/tweets.txt</strong> です。既定値を変更する場合は、適宜 Windows PowerShell スクリプトを更新する必要があります。</td></tr>
+	<tr><td>$trackString</td><td>Web サービスはこれらのキーワードに関連するツイートを返します。既定値は、<strong>Azure、クラウド、HDInsight</strong> です。既定値を変更する場合は、適宜 Windows PowerShell スクリプトを更新します。</td></tr>
+	<tr><td>$lineMax</td><td>この値によってスクリプトが読み取るツイートの数が決まります。100 個のツイートを読み取るに約 3 分かかります。大きな数値を設定してもかまいませんが、ダウンロードに時間がかかります。</td></tr>
 
-</table>
+	</table>
 
 5. **F5** キーを押して、スクリプトを実行します。問題が発生した場合は、回避策としてすべての行を選択し、**F8** キーを押します。
 6. 出力の最後に "Complete!" と表示されます。エラー メッセージが赤色で表示されます。
