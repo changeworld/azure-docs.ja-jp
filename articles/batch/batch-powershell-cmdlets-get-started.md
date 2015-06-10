@@ -25,11 +25,11 @@
 ## 前提条件
 
 * **Batch プレビュー** - [Batch プレビュー](https://account.windowsazure.com/PreviewFeatures)にサインアップし (まだの場合)、サービスを使用します。
-* **Azure PowerShell** - 前提条件、ダウンロード手順、インストール手順については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。Batch コマンドレットは、0.8.10 以降のバージョンで導入されました。
+* **Azure PowerShell** - 前提条件、ダウンロード手順、インストール手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。Batch コマンドレットは、0.8.10 以降のバージョンで導入されました。
 
 ## Batch コマンドレットを使用する
 
-標準的な手順を使用して Azure PowerShell を起動し、[Azure サブスクリプションに接続します](powershell-install-configure.md#Connect)。さらに次の操作を実行します。
+標準的な手順を使用して Azure PowerShell を起動し、[Azure サブスクリプションに接続します](../powershell-install-configure.md#Connect)。さらに次の操作を実行します。
 
 * **Azure サブスクリプションを選択する** - サブスクリプションが複数がある場合は、Batch プレビュー機能を追加したサブスクリプションを選択します。
 
@@ -37,7 +37,7 @@
     Select-AzureSubscription -SubscriptionName <SubscriptionName>
     ```
 
-* **AzureResourceManage モードに切り替える** - Batch コマンドレットは Azure Resource Manager モジュールに付属しています。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。このモジュールを使用するには、[Switch-azuremode](https://msdn.microsoft.com/library/dn722470.aspx) コマンドレットを実行します。
+* **AzureResourceManage モードに切り替える** - Batch コマンドレットは Azure Resource Manager モジュールに付属しています。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。このモジュールを使用するには、[Switch-azuremode](https://msdn.microsoft.com/library/dn722470.aspx) コマンドレットを実行します。
 
     ```
     Switch-AzureMode -Name AzureResourceManager
