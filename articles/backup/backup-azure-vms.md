@@ -186,4 +186,4 @@ Azure Backup の概要については、次のトピックを参照してくだ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンの管理](backup-azure-manage-vms)
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 
