@@ -7,7 +7,7 @@
 <tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/services/batch/">Batch</a> アカウントあたりのコア数</p></td>
    <td valign="middle"><p>20</p></td>
-   <td valign="middle"><p>該当なし<sup>1</sup></p></td>
+   <td valign="middle"><p>N/A<sup>1</sup></p></td>
 </tr>
 <tr>
    <td valign="middle"><p>Batch アカウントあたりのアクティブな作業項目数</p></td>
@@ -22,4 +22,4 @@
 </table>
 <sup>1</sup> Batch アカウントあたりのコア数は増やすことができますが、最大数が指定されていません。このオプション値を増やす場合は、カスタマー サポートにお問い合わせください。
 
-<!--HONumber=47-->
+<!---HONumber=58-->

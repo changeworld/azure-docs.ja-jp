@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/18/2014" 
+	ms.date="03/16/2015" 
 	ms.author="szark"/>
 
 
 
 #Azure 上の Linux に対応するユーザー名の選択#
 
-Linux 仮想マシンを作成するときに、ユーザー名の名前を選択するか、既定の *azureuser* を使用することができます。ほとんどの場合、この新規ユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。VM ユーザーが既に基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に渡された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
+Linux 仮想マシン インスタンスを作成するときに、ユーザー名を選択するか、既定のユーザー名 *azureuser* をそのまま使用することができます。ほとんどの場合、この新規ユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。VM ユーザーが既に基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に渡された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
 
 **ただし**、Linux では、使用しない方がよいユーザー名が定められています。UID 0 ～ 99 で定義されている既存のシステム ユーザーを使用して Linux VM をプロビジョニングしようとすると、プロビジョニング プロセスは**失敗**します。代表的な例は、UID が 0 である `root` ユーザーです。
 
- - 関連項目:[Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
+ - [Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)を参照してください。
 
 Linux 仮想マシンのプロビジョニング時に使用しない方がよいユーザー名を次に示します。使用するとプロビジョニング プロセスが失敗するおそれがあるため、**これらのユーザー名を使用しない**ことをお勧めします。
 
@@ -74,7 +74,7 @@ Linux 仮想マシンのプロビジョニング時に使用しない方がよ�
 - sync
 - sys
 - tape
-- テスト
+- test
 - tcpdump
 - tty
 - users
@@ -118,7 +118,7 @@ Linux 仮想マシンのプロビジョニング時に使用しない方がよ�
 - shadow
 - sshd
 - sys
-- テスト
+- test
 - trusted
 - tty
 - users
@@ -177,7 +177,7 @@ Linux 仮想マシンのプロビジョニング時に使用しない方がよ�
 - sync
 - sys
 - tape
-- テスト
+- test
 - tcpdump
 - tty
 - users
@@ -244,5 +244,4 @@ Linux 仮想マシンのプロビジョニング時に使用しない方がよ�
 - whoopsie
 - www-data
 
-
-<!--HONumber=45--> 
+<!---HONumber=58-->

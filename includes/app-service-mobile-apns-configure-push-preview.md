@@ -1,20 +1,6 @@
-アプリケーションを APNS に登録し、プロジェクトを構成した後で、モバイル アプリを APNS と統合するように構成する必要があります。
 
-1. Keychain Access の **[鍵]** または **[自分の証明書]** でクイック スタート アプリケーションの新しい証明書を右クリックし、**[書き出す]** をクリックします。ファイルの名前を QuickstartPusher にし、**[.p12]** 形式を選択して、**[保存]** をクリックします。
+* [サーバーへのクライアント SSL 署名 ID のインストール](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringPushNotifications/ConfiguringPushNotifications.html#//apple_ref/doc/uid/TP40012582-CH32-SW15)手順に従って、前の手順でダウンロードした証明書を .p12 ファイルにエクスポートします。
 
-   	![](./media/mobile-services-apns-configure-push/mobile-services-ios-push-step18.png)
+* Azure プレビュー ポータルで、**[参照]**、**[Mobile Apps]**、自分のアプリ、**[プッシュ通知サービス]**、**[Apple Push Notification Services]**、**[証明書のアップロード]** の順にクリックします。.p12 ファイルをアップロードし、正しい **[モード]** が選択されていることを確認します (生成したクライアント SSL 証明書が開発用か配布用かに応じて、[サンドボックス] または [運用])。 これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
 
-    エクスポートした証明書のファイル名と場所を書き留めます。
-
->[AZURE.NOTE]このチュートリアルでは QuickstartPusher.p12 ファイルを作成します。ファイル名と場所は同じである必要はありません。
-
-2. [Azure プレビュー ポータル]にログオンし、**[参照]**、**[モバイル アプリ]** の順にクリックし、アプリケーションをクリックします。[プッシュ通知サービス] をクリックします。
-
-3. Apple Push Notification サービスで、証明書を **.p12** ファイルとそれに関連付けたパスワードを使用してアップロードし、目的のモードを選択します。
-
-これで、App Service モバイル アプリが APNS と連携するように構成されました。
-
-<!-- URLs. -->
-[Azure プレビュー ポータル]: https://portal.azure.com/
-
-<!--HONumber=54-->
+<!---HONumber=58-->

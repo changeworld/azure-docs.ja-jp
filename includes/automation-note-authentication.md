@@ -1,2 +1,3 @@
-> [AZURE.NOTE]
-> This tutorial uses a simple runbook that does not require access to Azure resources.  See the [Next Steps](#nextsteps) section of this guide for information on configuring authentication in Azure Automation which is required for most runbooks. 
+> [AZURE.NOTE]このチュートリアルでは、Azure リソースへのアクセスを必要としない簡単な Runbook を使用します。ほとんどの Runbook に必要な Azure Automation での認証の構成については、このガイドの「[次のステップ](#nextsteps)」セクションを参照してください。
+
+<!---HONumber=58-->

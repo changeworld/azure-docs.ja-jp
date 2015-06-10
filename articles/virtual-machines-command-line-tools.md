@@ -1,6 +1,6 @@
-﻿<properties
-	pageTitle="Mac および Linux 用 Azure コマンド ライン ツール"
-	description="Azure の Mac および Linux 用コマンド ライン ツールの使用方法について説明します。"
+<properties
+	pageTitle="Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用"
+	description="Azure CLI の asm モードを使用し、Mac、Linux、および Windows 用のコマンド ライン ツールで Azure を管理する方法について説明します。"
 	services="web-sites, virtual-machines, mobile-services, cloud-services"
 	documentationCenter=""
 	authors="squillace"
@@ -13,41 +13,22 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="2/20/2014" 
+	ms.date="04/23/2015"
 	ms.author="rasquill"/>
 
-#Mac および Linux 用 Azure コマンド ライン ツール
+# Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用
 
-このツールでは、Mac および Linux デスクトップから、仮想マシン、Web サイトおよび Azure のモバイル サービスを、作成、展開、管理するための機能が提供されています。これらの機能は、.NET、Node.JS、および PHP 向けの Azure SDK と共にインストールされる Windows PowerShell コマンドレットに備わっている機能と似ています。
+このトピックでは、**asm** モードで Azure CLI を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。これらの機能は、.NET、Node.JS、および PHP 向けの Azure SDK と共にインストールされる Windows PowerShell コマンドレットに備わっている機能と似ています。
 
-このツールを Mac にインストールするには、[Azure SDK インストーラー](http://go.microsoft.com/fwlink/?LinkId=252249)をダウンロードして実行します。
+> [AZURE.NOTE]**asm** モードで Azure サービスを使用する場合であっても、考え方としては Websites、Virtual Machines、Virtual Networks、Storage など、個々の Azure の概念やサービスとほぼ変わりません。**arm** モードを使用すると、コマンド ライン上で豊富な機能と、論理的にグループ化された階層型リソース モデルが利用できます。このモードへの切り替え方法については、[リソース マネージャーでの Azure コマンドライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。
 
-Linux にインストールするには、最新バージョンの Node.JS をインストールしてから、NPM を使用してインストールします。
+インストール手順については、[Azure コマンド ライン インターフェイスのインストールと構成](xplat-cli-install.md)に関するページを参照してください。
 
-    npm install azure-cli -g
-
-オプション パラメーターは、ブラケットで囲んで表記しています (例 [parameter])。その他のパラメーターはすべて指定する必要があります。
+オプション パラメーターは、角かっこで囲んで表記しています (例: [parameter])。その他のパラメーターはすべて指定する必要があります。
 
 ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションやステータス コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。
 
-**目次:** 
-
-* [アカウント情報と発行設定の管理](#Manage_your_account_information_and_publish_settings)
-* [Azure の仮想マシンの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machines)
-* [Azure の仮想マシン エンドポイントの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machine_endpoints)
-* [Azure の仮想マシン イメージの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machine_images)
-* [Azure の仮想マシン データ ディスクの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machine_data_disks)
-* [Azure クラウド サービスの管理用コマンド](#Commands_to_manage_your_Azure_cloud_services)
-* [Azure 証明書の管理用コマンド](#Commands_to_manage_your_Azure_certificates)
-* [Web サイトの管理用コマンド](#Commands_to_manage_your_web_sites)
-* [Azure Mobile Services の管理用コマンド](#Commands_to_manage_mobile_services)
-* [ツールのローカル設定の管理](#Manage_tool_local_settings)
-* [サービス バスの管理用コマンド](#Commands_to_manage_service_bus)
-* [ストレージ オブジェクトの管理用コマンド](#Commands_to_manage_your_Storage_objects)
-* [SQL データベースの管理用コマンド](#Commands_to_manage_sql)
-* [仮想ネットワークの管理用コマンド](#Commands_to_manage_vnet)
-
-##<a name="Manage_your_account_information_and_publish_settings"></a>アカウント情報と発行設定の管理
+##<a name="Manage_your_account_information_and_publish_settings"></a>アカウント情報および発行設定の管理
 Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。この情報は、以下に説明するとおり、Azure ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、ツールの以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
 
 **account download [options]**
@@ -75,12 +56,11 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-> [AZURE.NOTE] publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。
-<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
+> [AZURE.NOTE]publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
 
 **account clear [options]**
 
-このコマンドは、インポート済みの保存されている発行設定を削除します。このマシンでのツールの使用を完了し、今後は自分のアカウントによってツールが使われないようにする場合に、このコマンドを使用します。
+このコマンドは、インポート済みの保存されている publishsettings を削除します。このマシンでのツールの使用を完了し、今後は自分のアカウントによってツールが使われないようにする場合に、このコマンドを使用します。
 
 	~$ azure account clear
 	Clearing account info.
@@ -171,7 +151,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	data:    AzureChinaCloud
 	info:    account env list command OK
 
-**account env show [options] [environment]**
+**account env show [options][environment]**
 
 アカウント環境の詳細を表示します。
 
@@ -182,30 +162,30 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	data:    Environment portal  http://go.microsoft.com/fwlink/?LinkId=2544
 	info:    account env show command OK
 
-**account env add [options] [environment]**
+**account env add [options][environment]**
 
 このコマンドは、アカウントに環境を追加します。
 
-**account env set [options] [environment]**
+**account env set [options][environment]**
 
 このコマンドは、アカウント環境を設定します。
 
-**account env delete [options] [environment]**
+**account env delete [options][environment]**
 
 このコマンドは、指定された環境をアカウントから削除します。
 
 ##<a name="Commands_to_manage_your_Azure_virtual_machines"></a>Azure の仮想マシンの管理用コマンド
-次の図は、Azure の仮想マシンが Azure クラウド サービスの運用デプロイ環境でホストされるしくみを示しています。
+次の図は、Azure の仮想マシンが Azure クラウド サービスの運用デプロイメント環境でホストされるしくみを示しています。
 
-![Azure Technical Diagram](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
+![Azure の技術解説図](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
 
-**create-new** は BLOB ストレージ (この図では e:) にドライブを作成します。**attach** は作成済みでまだ接続していないディスクを、仮想マシンに接続します。
+**create-new** BLOB ストレージ (この図では e:\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
 このコマンドは、新しい Azure の仮想マシンを作成します。既定では、各仮想マシン (vm) はそれぞれのクラウド サービス上に作成されます。ただし、ここで説明しているように -c オプションを使用すると、仮想マシンが既存のクラウド サービスに追加されるように指定できます。
 
-vm create コマンドは、Azure ポータルと同様、特定の運用展開環境上にのみ仮想マシンを作成します。クラウド サービスのステージング展開環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
+vm create コマンドは、Azure ポータルと同様、特定の運用デプロイメント環境上にのみ仮想マシンを作成します。クラウド サービスのステージング デプロイメント環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
 
 --location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
 
@@ -217,20 +197,7 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 
 このコマンドでは、次のオプション パラメーターがサポートされています。
 
-**-c, --connect** ホスティング サービスで作成済みの展開内に仮想マシンを作成します。-vmname をこのオプションと使用しない場合、新しい仮想マシンの名前が自動的に生成されます。<br />
-**-n, --vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前が &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンに 1 を足した数です。たとえば、既存の仮想マシンが 1 つだけ含まれるホスティング サービス MyService に、新しい仮想マシンを追加すると、MyService2 という名前になります。<br />
-**-u, --blob-url** 仮想マシン システム ディスクの作成元となる BLOB ストレージの URL を指定します。 <br />
-**-z, --vm-size** 仮想マシンのサイズを指定します。有効な値は、「extrasmall」、「small」、「medium」、「large」、および「extralarge」です。既定値は「small」です。 <br />
-**-r** RDP 接続を Windows 仮想マシンに追加します。 <br />
-**-e, --ssh** SSH 接続を Windows 仮想マシンに追加します。 <br />
-**-t, --ssh-cert** SSH 証明書を指定します。 <br />
-**-s** サブスクリプションです。 <br />
-**-o, --community** 指定されるイメージはコミュニティのイメージです。 <br />
-**-w** 仮想ネットワーク名です。 <br/>
-**-l, --location** 場所を指定します (たとえば、「North Central US」)。 <br />
-**-a, --affinity-group** アフィニティ グループを指定します。<br />
-**-w, --virtual-network-name** 新しい仮想マシンを追加する仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定したり管理したりできます。<br />
-**-b, --subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
+**-c, --connect** ホスティング サービスで作成済みのデプロイメント内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic_A0"、"Basic_A1"、"Basic_A2"、"Basic_A3"、"Basic_A4"、"Standard_D1"、"Standard_D2"、"Standard_D3"、"Standard_D4"、"Standard_D11"、"Standard_D12"、"Standard_D13"、"Standard_D14"、"Standard_DS1"、"Standard_DS2"、"Standard_DS3"、"Standard_DS4"、"Standard_DS11"、"Standard_DS12"、"Standard_DS13"、"Standard_DS14"、"Standard_G1"、"Standard_G2"、"Standard_G3"、"Standard_G4"、"Standard_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br /> **-b、--subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
 この例では、MSFT__Win2K8R2SP1-120514-1520-141205-01-ja-jp-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
@@ -239,7 +206,7 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 	Enter VM 'my-vm-name' password: ************
 	info:   vm create command OK
 
-**vm create-from &lt;dns-name> &lt;role-file **
+**vm create-from &lt;dns-name> &lt;role-file>**
 
 このコマンドは、JSON ロール ファイルから新しい Azure 仮想マシンを作成します。
 
@@ -336,7 +303,7 @@ info:   vm shutdown command OK
 
 このコマンドは、Azure の仮想マシン イメージを取得します。
 
-仮想マシンの状態が **[停止]** の場合にのみ仮想マシン イメージを取得できます。続行する前に、仮想マシンをシャットダウンします。
+仮想マシンの状態が **[停止]** の場合にのみ仮想マシン イメージをキャプチャできます。続行する前に、仮想マシンをシャットダウンします。
 
 	~$ azure.cmd vm capture my-vm mycaptureimagename --delete
 	info:   Executing command vm capture
@@ -355,11 +322,11 @@ info:   vm shutdown command OK
 	info:   vm export command OK
 
 ##<a name="Commands_to_manage_your_Azure_virtual_machine_endpoints"></a>Azure の仮想マシン エンドポイントの管理用コマンド
-次の図は、仮想マシンのインスタンスが複数ある一般的なデプロイのアーキテクチャを示しています。この例では、ポート 3389 が各仮想マシン上で開いています (RDP アクセス用)。また、ロード バランサーがトラフィックを仮想マシンにルーティングするために使用する内部 IP アドレス (たとえば、168.55.11.1) が、仮想サーバーごとに設定されています。この内部 IP アドレスは、仮想マシン間の通信にも使用されます。
+次の図は、仮想マシンのインスタンスが複数ある一般的なデプロイメントのアーキテクチャを示しています。この例では、ポート 3389 が各仮想マシン上で開いています (RDP アクセス用)。また、ロード バランサーがトラフィックを仮想マシンにルーティングするために使用する内部 IP アドレス (たとえば、168.55.11.1) が、仮想サーバーごとに設定されています。この内部 IP アドレスは、仮想マシン間の通信にも使用されます。
 
-![azurenetworkdiagram](./media/virtual-machines-command-line-tools/networkdiagram.jpg)
+![Azure のネットワーク図](./media/virtual-machines-command-line-tools/networkdiagram.jpg)
 
-仮想マシンへの外部要求は、ロード バランサーを経由します。そのため、複数の仮想マシンの展開においては、特定の仮想マシンに対する要求は指定できません。複数の仮想マシンがある展開については、仮想マシン (vm-port) とロード バランサー (lb-port) 間のポート マッピングを構成する必要があります。
+仮想マシンへの外部要求は、ロード バランサーを経由します。そのため、複数の仮想マシンのデプロイメントにおいては、特定の仮想マシンに対する要求は指定できません。複数の仮想マシンがあるデプロイメントについては、仮想マシン (vm-port) とロード バランサー (lb-port) 間のポート マッピングを構成する必要があります。
 
 **vm endpoint create &lt;vm-name> &lt;lb-port> [vm-port]**
 
@@ -373,16 +340,16 @@ info:   vm shutdown command OK
 	+ Updating network configuration
 	info:   vm endpoint create command OK
 
-**vm endpoint create-multiple [options] &lt;vm-name> &lt;lb-port>[:&lt;vm-port>[:&lt;protocol>[:&lt;lb-set-name>[:&lt;prob-protocol>:&lt;lb-prob-port>[:&lt;prob-path>]]]]] ]{1-*}**
+**vm endpoint create-multiple [options] &lt;vm-name> &lt;lb-port>[:&lt;vm-port>[:&lt;protocol>[:&lt;enable-direct-server-return>[:&lt;lb-set-name>[:&lt;probe-protocol>[:&lt;probe-port>[:&lt;probe-path>[:&lt;internal-lb-name>]]]]]]]] {1-*}**
 
-複数の VM エンドポイントを作成します。-u または --enable-direct-server-return を使用して、このエンドポイントで Direct Server Return を有効にするかどうかを指定することもできます。既定では無効です。
+複数の VM エンドポイントを作成します。
 
-**vm endpoint delete &lt;vm-name> &lt;lb-port>**
+**vm endpoint delete [options] &lt;vm-name> &lt;endpoint-name>**
 
 このコマンドは、仮想マシンのエンドポイントを削除します。
 
-	~$ azure vm endpoint delete my-vm 8888
-	azure vm endpoint delete my-vm 8888
+	~$ azure vm endpoint delete my-vm http
+	azure vm endpoint delete my-vm http
 	info:   Executing command vm endpoint delete
 	+ Fetching VM
 	+ Reading network configuration
@@ -439,8 +406,7 @@ info:   vm shutdown command OK
 
 **vm image list [options]**
 
-このコマンドは、仮想マシン イメージの一覧を表示します。イメージは 3 種類あります。Microsoft が作成したイメージ (プレフィックスは MSFT)、サード パーティが作成したイメージ (通常は、プレフィックスはベンダーの名前)、およびユーザーが作成したイメージです。イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。カスタム .vhd の詳細については、「vm image create」を参照してください。
--json オプションは、結果が raw JSON 形式で返されるように指定します。
+このコマンドは、仮想マシン イメージの一覧を表示します。イメージは 3 種類あります。Microsoft が作成したイメージ (プレフィックスは MSFT)、サード パーティが作成したイメージ (通常は、プレフィックスはベンダーの名前)、およびユーザーが作成したイメージです。イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。カスタム .vhd の詳細については、「vm image create」を参照してください。-json オプションは、結果が raw JSON 形式で返されるように指定します。
 
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
@@ -506,9 +472,9 @@ info:   vm shutdown command OK
 
 データ ディスクの接続用コマンド (azure vm disk attach および azure vm disk attach-new) は、SCSI プロトコルで求められているように、接続されるデータ ディスクに論理ユニット番号 (LUN) を割り当てます。仮想マシンに接続されている最初のデータ ディスクには LUN 0、次のデータ ディスクには LUN 1 のように、順に割り当てられます。
 
-azure vm disk detach コマンドでデータ ディスクを切断する場合、&lt;lun&gt; パラメーターを使用して、切断するディスクを指定します。
+azure vm disk detach コマンドでデータ ディスクを切断する場合、&lt;lun&gt パラメーターを使用して、切断するディスクを指定します。
 
-> [AZURE>NOTE] ディスクの切断は、必ず逆の順序で行ってください。割り当てられている LUN の番号が 1 番大きいものから切断していきます。Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。
+> [AZURE>NOTE] データ ディスクの切断は、必ず逆の順序で行ってください。つまり、割り当てられている LUN の番号が 1 番大きいものから切断していきます。Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。
 
 **vm disk show [options] &lt;name>**
 
@@ -527,7 +493,7 @@ azure vm disk detach コマンドでデータ ディスクを切断する場合�
 	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-ja-jp-30GB.vhd"
 	info:   vm disk show command OK
 
-**vm disk list [options] [vm-name]**
+**vm disk list [options][vm-name]**
 
 このコマンドは、Azure ディスク、または指定された仮想マシンに接続されているディスクの一覧を表示します。実行時に仮想マシン名のパラメーターが指定された場合は、その仮想マシンに接続されているすべてのディスクを返します。Lun 1 がこの仮想マシンで作成されており、一覧上の他のディスクはすべて、個別に接続されています。
 
@@ -599,7 +565,7 @@ azure vm disk detach コマンドでデータ ディスクを切断する場合�
 
 **vm disk detach &lt;vm-name> &lt;lun>**
 
-このコマンドは、Azure の仮想マシンに接続されているデータ ディスクを切断します。&lt;lun> で、切断するディスクを識別します。切断する前に、関連付けられているディスクの一覧を表示するには、vm disk-list &lt;vm-name> を使用します。
+このコマンドは、Azure の仮想マシンに接続されているデータ ディスクを切断します。&lt;lun> で、切断するディスクを指定します。切断する前に、関連付けられているディスクの一覧を表示するには、vm disk-list &lt;vm-name> を使用します。
 
 	~$ azure vm disk detach my-vm 2
 	info:   Executing command vm disk detach
@@ -669,7 +635,7 @@ Azure クラウド サービスは、Web ロールや Worker ロールでホス�
 
 ##<a name="Commands_to_manage_your_Azure_certificates"></a>Azure 証明書の管理用コマンド
 
-Azure 証明書は、Azure アカウントに接続される SSL 証明書です。Azure 証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/library/azure/gg981929.aspx)」をご覧ください。
+Azure 証明書は、Azure アカウントに接続される SSL 証明書です。Azure 証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/library/azure/gg981929.aspx)」を参照してください。
 
 **service cert list [options]**
 
@@ -705,13 +671,13 @@ Azure 証明書は、Azure アカウントに接続される SSL 証明書です
 	info:   service cert delete command OK
 
 
-##<a name="Commands_to_manage_your_web_sites"></a>Web サイトの管理用コマンド
+##<a name="Commands_to_manage_your_web_sites"></a>Web アプリの管理用コマンド
 
-Azure の Web サイトは、URI でアクセスできる Web 構成です。Web サイトは仮想マシンでホストされますが、仮想マシン自体の作成と展開については詳細を考慮する必要はありません。これらの詳細は、Azure によって処理されます。
+Azure の Web アプリは、URI でアクセスできる Web 構成です。Web アプリは仮想マシンでホストされますが、仮想マシン自体の作成とデプロイについて詳細を考慮する必要はありません。これらの詳細は、Azure によって処理されます。
 
 **site list [options]**
 
-このコマンドは、Web サイトの一覧を表示します。
+このコマンドは、Web アプリの一覧を表示します。
 
 	~$ azure site list
 	info:   Executing command site list
@@ -722,9 +688,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	data:   mydrupalsite36  Running  mydrupalsite36.antdf0.antares.windows.net
 	info:   site list command OK
 
-**site set [options] [name]**
+**site set [options][name]**
 
-このコマンドは、Web サイト [name] の構成オプションを設定します。
+このコマンドは、Web アプリの名前 [name] の構成オプションを設定します。
 
 	~$ azure site set
 	info:    Executing command site set
@@ -735,7 +701,7 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 **site deploymentscript [options]**
 
-このコマンドは、カスタム配置スクリプトを生成します。
+このコマンドは、カスタム デプロイメント スクリプトを生成します。
 
 	~$ azure site deploymentscript --node
 	info:    Executing command site deploymentscript
@@ -743,9 +709,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	info:    Generated deployment script files
 	info:    site deploymentscript command OK
 
-**site create [options] [name]**
+**site create [options][name]**
 
-このコマンドは、新しい Web サイトとローカル ディレクトリを作成します。
+このコマンドは、新しい Web アプリとローカル ディレクトリを作成します。
 
 	~$ azure site create mysite
 	info:   Executing command site create
@@ -756,20 +722,20 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	info:   Repository initialized
 	info:   site create command OK
 
-> [AZURE.NOTE] サイトの名前は一意にする必要があります。既存のサイトと同じ DNS 名のサイトは作成できません。
+> [AZURE.NOTE]サイトの名前は一意にする必要があります。既存のサイトと同じ DNS 名のサイトは作成できません。
 
-**site browse [options] [name]**
+**site browse [options][name]**
 
-このコマンドは、Web サイトをブラウザーで開きます。
+このコマンドは、Web アプリをブラウザーで開きます。
 
 	~$ azure site browse mysite
 	info:   Executing command site browse
 	info:   Launching browser to http://mysite.antdf0.antares-test.windows-int.net
 	info:   site browse command OK
 
-**site show [options] [name]**
+**site show [options][name]**
 
-このコマンドは、Web サイトの詳細を表示します。
+このコマンドは、Web アプリの詳細を表示します。
 
 	~$ azure site show mysite
 	info:   Executing command site show
@@ -797,9 +763,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	data:   Repository https://mysite.scm.antdf0.antares-test.windows-int.net/
 	info:   site show command OK
 
-**site delete [options] [name]**
+**site delete [options][name]**
 
-このコマンドは、Web サイトを削除します。
+このコマンドは、Web アプリを削除します。
 
 	~$ azure site delete mysite
 	info:   Executing command site delete
@@ -807,18 +773,18 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	info:   Site mysite has been deleted
 	info:   site delete command OK
 
- **site swap [options] [name]**
+ **site swap [options][name]**
 
-このコマンドは、2 つの Web サイト スロットをスワップします。
+このコマンドは、2 つの Web アプリ スロットをスワップします。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**-q または **--quiet**:確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
+**-q または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 
-**site start [options] [name]**
+**site start [options][name]**
 
-このコマンドは、Web サイトを起動します。
+このコマンドは、Web アプリを起動します。
 
 	~$ azure site start mysite
 	info:   Executing command site start
@@ -826,9 +792,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	info:   Site mysite has been started
 	info:   site start command OK
 
-**site stop [options] [name]**
+**site stop [options][name]**
 
-このコマンドは、Web サイトを停止します。
+このコマンドは、Web アプリを停止します。
 
 	~$ azure site stop mysite
 	info:   Executing command site stop
@@ -836,18 +802,18 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-**site restart [options] [name]
+**site restart [options][name]
 
-このコマンドは、指定された Web サイトを停止し、その後、起動します。
+このコマンドは、指定された Web アプリを停止し、その後、起動します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**--slot** &lt;slot>:再起動するスロットの名前。
+**--slot** &lt;slot>: 再起動するスロットの名前。
 
 
 **site location list [options]**
 
-このコマンドは、Web サイトの場所の一覧を表示します。
+このコマンドは、Web アプリの場所の一覧を表示します。
 
 	~$ azure site location list
 	info:    Executing command site location list
@@ -862,11 +828,11 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	data:    East US
 	info:    site location list command OK
 
-###Web サイトのアプリケーション設定の管理用コマンド
+###Web アプリのアプリケーション設定の管理用コマンド
 
-**site appsetting list [options] [name]**
+**site appsetting list [options][name]**
 
-このコマンドは Web サイトに追加されたアプリケーション設定の一覧を表示します。
+このコマンドは Web アプリに追加されたアプリケーション設定の一覧を表示します。
 
 	~$ azure site appsetting list
 	info:    Executing command site appsetting list
@@ -880,7 +846,7 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 **site appsetting add [options] &lt;keyvaluepair> [name]**
 
-このコマンドは、アプリケーション設定をキーと値のペアとして Web サイトに追加します。
+このコマンドは、アプリケーション設定をキーと値のペアとして Web アプリに追加します。
 
 	~$ azure site appsetting add test=value
 	info:    Executing command site appsetting add
@@ -892,7 +858,7 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 **site appsetting delete [options] &lt;key> [name]**
 
-このコマンドは、指定されたアプリケーション設定を Web サイトから削除します。
+このコマンドは、指定されたアプリケーション設定を Web アプリから削除します。
 
 	~$ azure site appsetting delete test
 	info:    Executing command site appsetting delete
@@ -915,11 +881,11 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	data:    Value:  value
 	info:    site appsetting show command OK
 
-###Web サイト証明書の管理用コマンド
+###Web アプリ証明書の管理用コマンド
 
-**site cert list [options] [name]**
+**site cert list [options][name]**
 
-このコマンドは、Web サイト証明書の一覧を表示します。
+このコマンドは、Web アプリ証明書の一覧を表示します。
 
 	~$ azure site cert list
 	info:    Executing command site cert list
@@ -955,9 +921,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	data:    Certificate thumbprint CE1CD65852B38DC32001C2E0E8F7A526A29B541F
 	info:    site cert show command OK
 
-###Web サイトの接続文字列の管理用コマンド
+###Web アプリの接続文字列の管理用コマンド
 
-**site connectionstring list [options] [name]**
+**site connectionstring list [options][name]**
 
 **site connectionstring add [options] &lt;connectionname> &lt;value> &lt;type> [name]**
 
@@ -965,53 +931,52 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 **site connectionstring show [options] &lt;connectionname> [name]**
 
-###Web サイトの既定のドキュメントの管理用コマンド
+###Web アプリの既定のドキュメントの管理用コマンド
 
-**site defaultdocument list [options] [name]**
+**site defaultdocument list [options][name]**
 
 **site defaultdocument add [options] &lt;document> [name]**
 
 **site defaultdocument delete [options] &lt;document> [name]**
 
-###Web サイトの展開の管理用コマンド
+###Web アプリのデプロイメントの管理用コマンド
 
-**site deployment list [options] [name]**
+**site deployment list [options][name]**
 
 **site deployment show [options] &lt;commitId> [name]**
 
 **site deployment redeploy [options] &lt;commitId> [name]**
 
-**site deployment github [options] [name]**
+**site deployment github [options][name]**
 
-**site deployment user set [options] [username] [pass]**
+**site deployment user set [options][username] [pass]**
 
-###Web サイト ドメインの管理用コマンド
+###Web アプリ ドメインの管理用コマンド
 
-**site domain list [options] [name]**
+**site domain list [options][name]**
 
 **site domain add [options] &lt;dn> [name]**
 
 **site domain delete [options] &lt;dn> [name]**
 
-###Web サイトのハンドラー マッピングの管理用コマンド
+###Web アプリのハンドラー マッピングの管理用コマンド
 
-**site handler list [options] [name]**
+**site handler list [options][name]**
 
 **site handler add [options] &lt;extension> &lt;processor> [name]**
 
 **site handler delete [options] &lt;extension> [name]**
 
-###Web サイトの Web ジョブの管理用コマンド
+###Web ジョブの管理用コマンド
 
-**site job list [options] [name]**
+**site job list [options][name]**
 
-このコマンドは、Web サイトのすべての Web ジョブの一覧を表示します。
+このコマンドは、Web アプリ内のすべての Web ジョブの一覧を表示します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-type** &lt;job-type>:省略可能。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。既定では、
-すべての Web ジョブの種類が返されます。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-type** &lt;job-type>: 省略可能。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。既定では、すべての種類の Web ジョブを返します。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
 **site job show [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1019,9 +984,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>:必須。Web ジョブの名前。
-+ **--job-type** &lt;job-type>:必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--job-type** &lt;job-type>: 必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
 **site job delete [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1029,10 +994,10 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>    必須。Web ジョブの名前。
-+ **--job-type** &lt;job-type>    必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
-+ **-q** または **--quiet**:確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--job-type** &lt;job-type>: 必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
++ **-q** または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
 **site job upload [options] &lt;jobName> &lt;jobType> <jobFile> [name]**
 
@@ -1040,10 +1005,10 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>:必須。Web ジョブの名前。
-+ **--job-type** &lt;job-type>:必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
-+ **--job-file** &lt;job-file>:必須。ジョブ ファイル。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--job-type** &lt;job-type>: 必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
++ **--job-file** &lt;job-file>: 必須。ジョブ ファイル。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
 **site job start [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1051,9 +1016,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>:必須。Web ジョブの名前。
-+ **--job-type** &lt;job-type>:必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--job-type** &lt;job-type>: 必須。Web ジョブの種類。有効な値は、「triggered」または「continuous」です。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
 **site job stop [options] &lt;jobName> &lt;jobType> [name]**
 
@@ -1061,35 +1026,35 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>:必須。Web ジョブの名前。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
-###Web サイトの Web ジョブ履歴の管理用コマンド
+###Web ジョブ履歴の管理用コマンド
 
-**site job history list [options] [jobName] [name]**
+**site job history list [options][jobName] [name]**
 
 このコマンドは、指定された Web ジョブの実行履歴を表示します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>:必須。Web ジョブの名前。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
-**site job history show [options] [jobName] [runId] [name]**
+**site job history show [options][jobName] [runId][name]**
 
 このコマンドは、指定された Web ジョブのジョブの実行の詳細を表示します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--job-name** &lt;job-name>:必須。Web ジョブの名前。
-+ **--run-id** &lt;run-id>:省略可能。実行履歴の ID。このパラメーターを指定しない場合は、最後に実行されたときの詳細が表示されます。
-+ **--slot** &lt;slot>:再起動するスロットの名前。
++ **--job-name** &lt;job-name>: 必須。Web ジョブの名前。
++ **--run-id** &lt;run-id>: 省略可能。実行履歴の ID。このパラメーターを指定しない場合は、最後に実行されたときの詳細が表示されます。
++ **--slot** &lt;slot>: 再起動するスロットの名前。
 
-###Web サイト診断の管理用コマンド
+###Web アプリ診断の管理用コマンド
 
-**site log download [options] [name]**
+**site log download [options][name]**
 
-このコマンドは、Web サイト診断の .zip ファイルをダウンロードします。
+このコマンドは、Web アプリの診断が含まれている .zip ファイルをダウンロードします。
 
 	~$ azure site log download
 	info:    Executing command site log download
@@ -1099,7 +1064,7 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	+ Downloading diagnostic log to diagnostics.zip
 	info:    site log download command OK
 
-**site log tail [options] [name]**
+**site log tail [options][name]**
 
 このコマンドは、ターミナルをログ ストリーミング サービスに接続します。
 
@@ -1110,9 +1075,9 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	+ Getting site information
 	2013-11-19T17:24:17  Welcome, you are now connected to log-streaming service.
 
-**site log set [options] [name]**
+**site log set [options][name]**
 
-このコマンドは、Web サイトの診断オプションを設定します。
+このコマンドは、Web アプリの診断オプションを構成します。
 
 	~$ azure site log set -a
 	info:    Executing command site log set
@@ -1129,15 +1094,15 @@ Azure の Web サイトは、URI でアクセスできる Web 構成です。Web
 	+ Updating diagnostic settings
 	info:    site log set command OK
 
-###Web サイト リポジトリの管理用コマンド
+###Web アプリ リポジトリの管理用コマンド
 
 **site repository branch [options] &lt;branch> [name]**
 
-**site repository delete [options] [name]**
+**site repository delete [options][name]**
 
-**site repository sync [options] [name]**
+**site repository sync [options][name]**
 
-###Web サイトの規模設定の管理用コマンド
+###Web アプリのスケーリングの管理用コマンド
 
 **site scale mode [options] &lt;mode> [name]**
 
@@ -1153,14 +1118,14 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 + [モバイル サービス テーブルの管理用コマンド](#Mobile_Tables)
 + [モバイル サービス スクリプトの管理用コマンド](#Mobile_Scripts)
 + [スケジュールされたジョブの管理用コマンド](#Mobile_Jobs)
-+ [モバイル サービスの規模設定用コマンド](#Mobile_Scale)
++ [モバイル サービスのスケール用コマンド](#Mobile_Scale)
 
 以下のオプションはほとんどのモバイル サービス用のコマンドで使用できます。
 
-+ **-h** または **--help**:出力の使用法を表示します。
-+ **-s `<id>`** または **--subscription `<id>`**:`<id>` で指定されたサブスクリプションを使用します。
-+ **-v** または **--verbose**:詳細な出力を書き込みます。
-+ **--json**:JSON の出力を書き込みます。
++ **-h** または **--help**: 出力の使用法を表示します。
++ **-s `<id>`** または **--subscription `<id>`**: `<id>` で指定された特定のサブスクリプションを使用します。
++ **-v** または **--verbose**: 詳細な出力を書き込みます。
++ **--json**: JSON の出力を書き込みます。
 
 ###<a name="Mobile_Services"></a>モバイル サービス インスタンスの管理用コマンド
 
@@ -1174,9 +1139,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    West US
 	info:    North Europe
 
-**mobile create [options] [servicename] [sqlAdminUsername] [sqlAdminPassword]**
+**mobile create [options][servicename] [sqlAdminUsername][sqlAdminPassword]**
 
-このコマンドは、モバイル サービスを SQL データベースおよびサーバーと共に作成します。
+このコマンドは、モバイル サービスを SQL Database およびサーバーと共に作成します。
 
 	~$ azure mobile create todolist your_login_name Secure$Password
 	info:    Executing command mobile create
@@ -1189,14 +1154,14 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-r `<sqlServer>`** または **--sqlServer `<sqlServer>`**:`<sqlServer>` として指定された既存の SQL データベース サーバーを使用します。
-+ **-d `<sqlDb>`** または **--sqlDb `<sqlDb>`**:`<sqlDb>` として指定された既存の SQL データベース サーバーを使用します。
-+ **-l `<location>`** または **--location `<location>`**:`<location>` で指定された特定の場所にサービスを作成します。利用可能な場所の一覧を取得するには、azure mobile locations を実行します。
-+ **--sqlLocation `<location>`**:`<location>` の場所に SQL Server を作成します。この場所がモバイル サービスの既定の場所になります。
++ **-r `<sqlServer>`** または **--sqlServer `<sqlServer>`**: `<sqlServer>` で指定された既存の SQL Database サーバーを使用します。
++ **-d `<sqlDb>`** または **--sqlDb `<sqlDb>`**: `<sqlDb>` で指定された既存の SQL データベースを使用します。
++ **-l `<location>`** または **--location `<location>`**: `<location>` で指定された特定の場所にサービスを作成します。利用可能な場所の一覧を取得するには、azure mobile locations を実行します。
++ **--sqlLocation `<location>`**: `<location>` の場所に SQL Server を作成します。この場所がモバイル サービスの既定の場所になります。
 
-**mobile delete [options] [servicename]**
+**mobile delete [options][servicename]**
 
-このコマンドは、モバイル サービスを SQL データベースおよびサーバーと共に削除します。
+このコマンドは、モバイル サービスを SQL Database およびサーバーと共に削除します。
 
 	~$ azure mobile delete todolist -a -q
 	info:    Executing command mobile delete
@@ -1213,9 +1178,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-d** または **--deleteData**:データベースからこのモバイル サービスのデータをすべて削除します。
-+ **-a** または **--deleteAll**:SQL データベースとサーバーを削除します。
-+ **-q** または **--quiet**:確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
++ **-d** または **--deleteData**: データベースからこのモバイル サービスのデータをすべて削除します。
++ **-a** または **--deleteAll**: SQL Database とサーバーを削除します。
++ **-q** または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 **mobile list [options]**
 
@@ -1229,7 +1194,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    mymobileapp   Ready  https://mymobileapp.azure-mobile.net/
 	info:    mobile list command OK
 
-**mobile show [options] [servicename]**
+**mobile show [options][servicename]**
 
 このコマンドは、モバイル サービスの詳細を表示します。
 
@@ -1255,7 +1220,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    tables TodoItem
 	info:    mobile show command OK
 
-**mobile restart [options] [servicename]**
+**mobile restart [options][servicename]**
 
 モバイル サービス インスタンスを再起動します。
 
@@ -1265,9 +1230,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    Service was restarted.
 	info:    mobile restart command OK
 
-**mobile log [options] [servicename]**
+**mobile log [options][servicename]**
 
-このコマンドは、 `error` 以外のすべてのログをフィルターで除いたモバイル サービス ログを返します。
+このコマンドは、`error` 以外のすべての種類のログをフィルターで除いたモバイル サービス ログを返します。
 
 	~$ azure mobile log todolist -t error
 	info:    Executing command mobile log
@@ -1281,22 +1246,22 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-r `<query>`** または **--query `<query>`**:指定されたログ クエリを実行します。
-+ **-t `<type>`** または **--type `<type>`**:返されたログをエントリ `<type>` によってフィルター処理します。`information`、`warning`、`error` を指定できます。
-+ **-k `<skip>`** または **--skip `<skip>`**:`<skip>` で指定された数の行をスキップします。
-+ **-p `<top>`** または **--top `<top>`**:`<top>` で指定された数の行を返します。
++ **-r `<query>`** または **--query `<query>`**: 指定されたログ クエリを実行します。
++ **-t `<type>`** または **--type `<type>`**: 返されたログをエントリ `<type>` によってフィルター処理します。`information`、`warning`、または `error` を指定できます。
++ **-k `<skip>`** または **--skip `<skip>`**: `<skip>` で指定された数の行をスキップします。
++ **-p `<top>`** または **--top `<top>`**: `<top>` で指定された数の行を返します。
 
-> [AZURE.NOTE] **--query** パラメーターが **--type**、**--skip**、**--top** よりも優先されます。
+> [AZURE.NOTE]**--query** パラメーターは、**--type**、**--skip**、および **--top** よりも優先されます。
 
-**mobile recover [options] [unhealthyservicename] [healthyservicename]**
+**mobile recover [options][unhealthyservicename] [healthyservicename]**
 
 このコマンドは、異常な状態のモバイル サービスを、別のリージョンの正常なモバイル サービスに移動して、復旧します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**-q** または **--quiet**:復旧確認のダイアログを非表示にします。
+**-q** または **--quiet**: 復旧確認のダイアログを非表示にします。
 
-**mobile key regenerate [options] [servicename] [type]**
+**mobile key regenerate [options][servicename] [type]**
 
 このコマンドは、モバイル サービス アプリケーション キーを再生成します。
 
@@ -1305,18 +1270,18 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    New application key is SmLorAWVfslMcOKWSsuJvuzdJkfUpt40
 	info:    mobile key regenerate command OK
 
-キーの種類は  `master` と  `application` です。
+キーの種類は `master` と `application` です。
 
-> [AZURE.NOTE] キーを再生成すると、古いキーを使用するクライアントはモバイル サービスにアクセスできなくなります。アプリケーション キーを再生成する場合、アプリケーションを新しいキーで更新する必要があります。
+> [AZURE.NOTE]キーを再生成すると、古いキーを使用するクライアントはモバイル サービスにアクセスできなくなります。アプリケーション キーを再生成する場合、アプリケーションを新しいキーで更新する必要があります。
 
-**mobile key set [options] [servicename] [type] [value]**
+**mobile key set [options][servicename] [type][value]**
 
 このコマンドは、モバイル サービス キーに指定された値を設定します。
 
 
 ###<a name="Mobile_Configuration"></a>モバイル サービス構成の管理用コマンド
 
-**mobile config list [options] [servicename]**
+**mobile config list [options][servicename]**
 
 このコマンドは、モバイル サービスの構成オプションの一覧を表示します。
 
@@ -1338,7 +1303,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    apnsCertifcate Not configured
 	info:    mobile config list command OK
 
-**mobile config get [options] [servicename] [key]**
+**mobile config get [options][servicename] [key]**
 
 このコマンドは、モバイル サービスの特定の構成オプション (この例では動的スキーマ) を取得します。
 
@@ -1347,7 +1312,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    dynamicSchemaEnabled true
 	info:    mobile config get command OK
 
-**mobile config set [options] [servicename] [key] [value]**
+**mobile config set [options][servicename] [key][value]**
 
 このコマンドは、モバイル サービスの特定の構成オプション (この例では動的スキーマ) を設定します。
 
@@ -1358,7 +1323,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###<a name="Mobile_Tables"></a>モバイル サービス テーブルの管理用コマンド
 
-**mobile table list [options] [servicename]**
+**mobile table list [options][servicename]**
 
 このコマンドは、モバイル サービスの全テーブルの一覧を表示します。
 
@@ -1370,7 +1335,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    TodoItem  1        0
 	info:    mobile table list command OK
 
-**mobile table show [options] [servicename] [tablename]**
+**mobile table show [options][servicename] [tablename]**
 
 このコマンドは、特定のテーブルの詳細を表示します。
 
@@ -1394,7 +1359,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    complete  boolean
 	info:    mobile table show command OK
 
-**mobile table create [options] [servicename] [tablename]**
+**mobile table create [options][servicename] [tablename]**
 
 このコマンドは、テーブルを作成します。
 
@@ -1405,9 +1370,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p `&lt;permissions>`** または **--permissions `&lt;permissions>`**:`<operation>`=`<permission>` ペアのコンマ区切りリスト。`<operation>` は  `insert`、 `read`、 `update`、 `delete` のいずれか、`&lt;permissions>` は  `public`、 `application` (既定)、 `user`、 `admin` のいずれかです。
++ **-p `&lt;permissions>`** または **--permissions `&lt;permissions>`**: `<operation>`=`<permission>` のペアのコンマ区切りのリストです。`<operation>` には `insert`、`read`、`update`、または `delete` を、`&lt;permissions>` には `public`、`application` (既定)、`user`、または `admin` をそれぞれ指定できます。
 
-**mobile data read [options] [servicename] [tablename] [query]**
+**mobile data read [options][servicename] [tablename][query]**
 
 このコマンドは、データをテーブルから読み取ります。
 
@@ -1423,11 +1388,11 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-k `<skip>`** または **--skip `<skip>`**:`<skip>` で指定された数の行をスキップします。
-+ **-t `<top>`** または **--top `<top>`**:`<top>` で指定された数の行を返します。
-+ **-l** または **--list**:表形式でデータを返します。
++ **-k `<skip>`** または **--skip `<skip>`**: `<skip>` で指定された数の行をスキップします。
++ **-t `<top>`** または **--top `<top>`**: `<top>` で指定された数の行を返します。
++ **-l** または **--list**: 一覧形式でデータを返します。
 
-**mobile table update [options] [servicename] [tablename]**
+**mobile table update [options][servicename] [tablename]**
 
 このコマンドは、テーブルの削除権限を管理者のみが持つように変更します。
 
@@ -1439,13 +1404,13 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p `&lt;permissions>`** または **--permissions `&lt;permissions>`**:`<operation>`=`<permission>` ペアのコンマ区切りリスト。`<operation>` は  `insert`、 `read`、 `update`、 `delete` のいずれか、`&lt;permissions>` は  `public`、 `application` (デフォルト)、 `user`、 `admin` のいずれかです。
-+ **--deleteColumn `<columns>`**:削除する列のコンマ区切りリスト。`<columns>` として指定します。
-+ **-q** または **--quiet**:確認メッセージを表示せずに列を削除します。
-+ **--addIndex `<columns>`**:インデックスに含める列のコンマ区切りリスト。
-+ **--deleteIndex `<columns>`**:インデックスから除外する列のコンマ区切りリスト。
++ **-p `&lt;permissions>`** または **--permissions `&lt;permissions>`**: `<operation>`=`<permission>` のペアのコンマ区切りのリストです。`<operation>` には `insert`、`read`、`update`、または `delete` を、`&lt;permissions>` には `public`、`application` (既定)、`user`、または `admin` をそれぞれ指定できます。
++ **--deleteColumn `<columns>`**: 削除する列のコンマ区切りのリスト。`<columns>` として指定します。
++ **-q** または **--quiet**: 確認メッセージを表示せずに列を削除します。
++ **--addIndex `<columns>`**: インデックスに含める列のコンマ区切りのリスト。
++ **--deleteIndex `<columns>`**: インデックスから除外する列のコンマ区切りのリスト。
 
-**mobile table delete [options] [servicename] [tablename]**
+**mobile table delete [options][servicename] [tablename]**
 
 このコマンドは、テーブルを削除します。
 
@@ -1457,7 +1422,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 確認なしでテーブルを削除するには、-q パラメーターを指定します。このパラメーターは、自動スクリプトがブロックされるのを防ぐために指定します。
 
-**mobile data truncate [options] [servicename] [tablename]**
+**mobile data truncate [options][servicename] [tablename]**
 
 このコマンドは、テーブルからすべてのデータの行を削除します。
 
@@ -1471,9 +1436,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###<a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、「[Mobile Services でのサーバー スクリプトの使用](http://www.windowsazure.com/develop/mobile/how-to-guides/work-with-server-scripts/)」をご覧ください。
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](mobile-services-how-to-use-server-scripts.md)を参照してください。
 
-**mobile script list [options] [servicename]**
+**mobile script list [options][servicename]**
 
 このコマンドは、テーブル スクリプトとスケジューラ スクリプト両方を含め、登録済みのスクリプトの一覧を表示します。
 
@@ -1493,9 +1458,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    scheduler/undefined  undefined  undefined  undefined  undefined
 	info:    mobile script list command OK
 
-**mobile script download [options] [servicename] [scriptname]**
+**mobile script download [options][servicename] [scriptname]**
 
-このコマンドは、挿入スクリプトを、TodoItem テーブルから  `table` サブフォルダーの  `todoitem.insert.js` というファイルにダウンロードします。
+このコマンドは、挿入スクリプトを、TodoItem テーブルから `table` サブフォルダーの `todoitem.insert.js` というファイルにダウンロードします。
 
 	~$azure mobile script download todolist table/todoitem.insert.js
 	info:    Executing command mobile script download
@@ -1504,23 +1469,23 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p `<path>`** または **--path `<path>`**:スクリプトを保存する場所。現在の作業ディレクトリが既定です。
-+ **-f `<file>`** または **--file `<file>`**:スクリプトを保存するファイルの名前。
-+ **-o** または **--override**:既存のファイルを上書きします。
-+ **-c** または **--console**:ファイルではなくコンソールにスクリプトを書き込みます
++ **-p `<path>`** または **--path `<path>`**: スクリプトを保存するファイル内の場所。既定では、現在の作業ディレクトリです。
++ **-f `<file>`** または **--file `<file>`**: スクリプトを保存するファイルの名前。
++ **-o** または **--override**: 既存のファイルを上書きします。
++ **-c** または **--console**: ファイルではなくコンソールにスクリプトを書き込みます。
 
-**mobile script upload [options] [servicename] [scriptname]**
+**mobile script upload [options][servicename] [scriptname]**
 
-このコマンドは、 `todoitem.insert.js` という新しいスクリプトを、 `table` サブフォルダーからアップロードします。
+このコマンドは、`todoitem.insert.js` という新しいスクリプトを、`table` サブフォルダーからアップロードします。
 
 	~$azure mobile script upload todolist table/todoitem.insert.js
 	info:    Executing command mobile script upload
 	info:    mobile script upload command OK
 
-ファイル名はテーブル名と操作名で構成し、ファイルは、コマンドを実行する場所の table サブフォルダーに配置する必要があります。また、**-f `<file>`** パラメーターまたは **--file `<file>`** パラメーターを使用して、別のファイル名を指定したり、登録するスクリプトが含まれるファイルへのパスを指定したりできます。
+ファイル名はテーブル名と操作名で構成し、ファイルは、コマンドを実行する場所の table サブフォルダーに配置する必要があります。**-f `<file>`** または **--file `<file>`** パラメーターを使用して、別のファイル名や、登録するスクリプトが保存されているファイルへのパスを指定することもできます。
 
 
-**mobile script delete [options] [servicename] [scriptname]**
+**mobile script delete [options][servicename] [scriptname]**
 
 このコマンドは、既存の挿入スクリプトを TodoItem テーブルから削除します。
 
@@ -1532,7 +1497,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このセクションのコマンドは、モバイル サービスに属するスケジュールされたジョブの管理に使用します。詳細については、「[ジョブのスケジュール](http://msdn.microsoft.com/library/windowsazure/jj860528.aspx)」を参照してください。
 
-**mobile job list [options] [servicename]**
+**mobile job list [options][servicename]**
 
 このコマンドはスケジュールされたジョブを一覧します。
 
@@ -1545,9 +1510,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    You can manipulate scheduled job scripts using the 'azure mobile script' command.
 	info:    mobile job list command OK
 
-**mobile job create [options] [servicename] [jobname]**
+**mobile job create [options][servicename] [jobname]**
 
-このコマンドは 1 時間ごとに実行するようにスケジュールされた  `getUpdates` という名前の新しいジョブを作成します。
+このコマンドは 1 時間ごとに実行するようにスケジュールされた `getUpdates` という名前の新しいジョブを作成します。
 
 	~$azure mobile job create -i 1 -u hour todolist getUpdates
 	info:    Executing command mobile job create
@@ -1557,20 +1522,20 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-i `<number>`** または **--interval `<number>`**:このジョブの実行間隔を示す整数値で、既定値は `15` です。
-+ **-u `<unit>`** または **--intervalUnit `<unit>`**:_interval_ の単位で、次の値のいずれか 1 つです。
++ **-i `<number>`** または **--interval `<number>`**: ジョブの実行間隔を示す整数値で、既定値は `15` です。
++ **-u `<unit>`** または **--intervalUnit `<unit>`**: _interval_ の単位で、次の値のいずれかを指定できます。
 	+ **minute** (既定)
 	+ **hour**
 	+ **day**
 	+ **month**
 	+ **none** (オンデマンド ジョブ)
-+ **-t `<time>`** **--startTime `<time>`** ISO 形式によるスクリプトの最初の実行開始時刻で、既定値は  `now` です。
++ **-t `<time>`** **--startTime `<time>`** ISO 形式によるスクリプトの最初の実行開始時刻で、既定値は `now` です。
 
-> [AZURE.NOTE] スクリプトをアップロードする必要があるため、新しいジョブは無効な状態で作成されます。**mobile script upload** コマンドを使用してスクリプトをアップロードし、**mobile job update** コマンドでジョブを有効にします。
+> [AZURE.NOTE]スクリプトをアップロードする必要があるため、新しいジョブは無効な状態で作成されます。**mobile script upload** コマンドを使用してスクリプトをアップロードし、**mobile job update** コマンドでジョブを有効にします。
 
-**mobile job update [options] [servicename] [jobname]**
+**mobile job update [options][servicename] [jobname]**
 
-次のコマンドは、無効な状態の  `getUpdates` ジョブを有効にします。
+次のコマンドは、無効な状態の `getUpdates` ジョブを有効にします。
 
 	~$azure mobile job update -a enabled todolist getUpdates
 	info:    Executing command mobile job update
@@ -1578,17 +1543,17 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-i `<number>`** または **--interval `<number>`**:このジョブの実行間隔を示す整数値で、既定値は `15` です。
-+ **-u `<unit>`** または **--intervalUnit `<unit>`**:_interval_ の単位で、次の値のいずれか 1 つです。
++ **-i `<number>`** または **--interval `<number>`**: ジョブの実行間隔を示す整数値で、既定値は `15` です。
++ **-u `<unit>`** または **--intervalUnit `<unit>`**: _interval_ の単位で、次の値のいずれかを指定できます。
 	+ **minute** (既定)
 	+ **hour**
 	+ **day**
 	+ **month**
 	+ **none** (オンデマンド ジョブ)
-+ **-t `<time>`** **--startTime `<time>`** ISO 形式によるスクリプトの最初の実行開始時刻で、既定値は  `now` です。
-+ **-a `<status>`** または **--status `<status>`**: `enabled` または  `disabled` で指定されるジョブの状態です。
++ **-t `<time>`** **--startTime `<time>`** ISO 形式によるスクリプトの最初の実行開始時刻で、既定値は `now` です。
++ **-a `<status>`** または **--status `<status>`**: `enabled` または `disabled` で指定されるジョブの状態です。
 
-**mobile job delete [options] [servicename] [jobname]**
+**mobile job delete [options][servicename] [jobname]**
 
 このコマンドは、スケジュールされたジョブである getUpdates を TodoList サーバーから削除します。
 
@@ -1596,13 +1561,13 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    Executing command mobile job delete
 	info:    mobile job delete command OK
 
-> [AZURE.NOTE] ジョブを削除すると、アップロードされたスクリプトも削除されます。
+> [AZURE.NOTE]ジョブを削除すると、アップロードされたスクリプトも削除されます。
 
-###<a name="Mobile_Scale"></a>モバイル サービスの規模設定用コマンド
+###<a name="Mobile_Scale"></a>モバイル サービスのスケール用コマンド
 
-このセクションのコマンドは、モバイル サービスの規模を設定するために使用されます。詳細については、「[モバイル サービスの拡張](http://msdn.microsoft.com/library/windowsazure/jj193178.aspx)」をご覧ください。
+このセクションのコマンドは、モバイル サービスの規模を設定するために使用されます。詳細については、「[モバイル サービスの拡張](http://msdn.microsoft.com/library/windowsazure/jj193178.aspx)」を参照してください。
 
-**mobile scale show [options] [servicename]**
+**mobile scale show [options][servicename]**
 
 このコマンドは、現在のコンピューティング モード、インスタンスの数など、規模の情報を表示します。
 
@@ -1613,7 +1578,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    numberOfInstances 1
 	info:    mobile scale show command OK
 
-**mobile scale change [options] [servicename]**
+**mobile scale change [options][servicename]**
 
 このコマンドは、モバイル サービスの規模を無料モードからプレミアム モードに変更します。
 
@@ -1624,15 +1589,15 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-c `<mode>`** または **--computeMode `<mode>`**:コンピューティング モードは  `Free` または  `Reserved` である必要があります。
-+ **-i `<count>`** または **--numberOfInstances `<count>`**:占有モードで実行時のインスタンスの数です。
++ **-c `<mode>`** または **--computeMode `<mode>`**: コンピューティング モードは `Free` または `Reserved` にする必要があります。
++ **-i `<count>`** または **--numberOfInstances `<count>`**: 占有モードでの実行時に使用されるインスタンスの数です。
 
-> [AZURE.NOTE] コンピューティング モードを  `Reserved` に設定すると、同じリージョンのモバイル サービスすべてがプレミアム モードで実行されます。
+> [AZURE.NOTE]コンピューティング モードを `Reserved` に設定すると、同じリージョンのモバイル サービスすべてがプレミアム モードで実行されます。
 
 
 ###モバイル サービスのプレビュー機能の有効化のためのコマンド
 
-**mobile preview list [options] [servicename]**
+**mobile preview list [options][servicename]**
 
 このコマンドは、指定されたサービスで利用可能なプレビュー機能とそれらのプレビュー機能が有効になっているかどうかを表示します。
 
@@ -1646,13 +1611,13 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    You can enable preview features using the 'azure mobile preview enable' command.
 	info:    mobile preview list command OK
 
-**mobile preview enable [options] [servicename] [featurename]**
+**mobile preview enable [options][servicename] [featurename]**
 
 このコマンドは、モバイル サービスの指定されたプレビュー機能を有効にします。モバイル サービスのプレビュー機能は、一度有効にすると、無効にできないことに注意してください。
 
 ###モバイル サービス API の管理用コマンド
 
-**mobile api list [options] [servicename]**
+**mobile api list [options][servicename]**
 
 このコマンドは、モバイル サービス用に作成されたモバイル サービス カスタム API の一覧を表示します。
 
@@ -1666,7 +1631,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:    You can manipulate API scripts using the 'azure mobile script' command.
 	info:    mobile api list command OK
 
-**mobile api create [options] [servicename] [apiname]**
+**mobile api create [options][servicename] [apiname]**
 
 モバイル サービス カスタム API を作成します。
 
@@ -1678,9 +1643,9 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**-p** または **--permissions** &lt;permissions>:&lt;method>=&lt;permission> ペアのコンマ区切りリスト。
+**-p** または **--permissions** &lt;permissions>: &lt;method>=&lt;permission> のペアのコンマ区切りのリスト。
 
-**mobile api update [options] [servicename] [apiname]**
+**mobile api update [options][servicename] [apiname]**
 
 このコマンドは、指定されたモバイル サービス カスタム API を更新します。
 
@@ -1688,10 +1653,10 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p** または **--permissions** &lt;permissions>:&lt;method>=&lt;permission> ペアのコンマ区切りリスト。
-+ **-f** または **--force**:アクセス許可のメタデータ ファイルに加えられた変更を上書きします。
++ **-p** または **--permissions** &lt;permissions>: &lt;method>=&lt;permission> のペアのコンマ区切りのリスト。
++ **-f** または **--force**: アクセス許可のメタデータ ファイルに加えられたカスタムの変更を上書きします。
 
-**mobile api delete [options] [servicename] [apiname]**
+**mobile api delete [options][servicename] [apiname]**
 
 	~$ azure mobile api delete mysite myCustomRetrieveAPI
 	info:    Executing command mobile api delete
@@ -1702,7 +1667,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###モバイル アプリケーションのアプリケーション設定の管理用コマンド
 
-**mobile appsetting list [options] [servicename]**
+**mobile appsetting list [options][servicename]**
 
 このコマンドは、指定されたサービスのモバイル アプリケーションのアプリケーション設定を表示します。
 
@@ -1714,7 +1679,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	data:    enablebetacontent  true
 	info:    mobile appsetting list command OK
 
-**mobile appsetting add [options] [servicename] [name] [value]**
+**mobile appsetting add [options][servicename] [name][value]**
 
 このコマンドは、モバイル サービスのカスタム アプリケーション設定を追加します。
 
@@ -1724,7 +1689,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	+ Adding app setting
 	info:    mobile appsetting add command OK
 
-**mobile appsetting delete [options] [servicename] [name]**
+**mobile appsetting delete [options][servicename] [name]**
 
 このコマンドは、モバイル サービスの指定されたアプリケーション設定を削除します。
 
@@ -1734,7 +1699,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	+ Removing app setting 'enablebetacontent'
 	info:    mobile appsetting delete command OK
 
-**mobile appsetting show [options] [servicename] [name]**
+**mobile appsetting show [options][servicename] [name]**
 
 このコマンドは、モバイル サービスの指定されたアプリケーション設定を削除します。
 
@@ -1767,17 +1732,17 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:   Setting 'defaultStorageAccount' to value 'myname'
 	info:   Changes saved.
 
-##<a name ="Commands_to_manage_service_bus"></a>サービス バスの管理用コマンド
+##<a name ="Commands_to_manage_service_bus"></a>Service Bus の管理用コマンド
 
-これらのコマンドを使用して、サービス バス アカウントを管理します。
+これらのコマンドを使用して、Service Bus アカウントを管理します。
 
 **sb namespace check [options] &lt;name>**
 
-サービス バス名前空間が有効で利用可能であることを確認します。
+Service Bus 名前空間が有効で利用可能であることを確認します。
 
 **sb namespace create &lt;name> &lt;location>**
 
-新しいサービス バス名前空間を作成します。
+新しい Service Bus 名前空間を作成します。
 
 	~$ azure sb namespace create mysbnamespacea-test "West US"
 	info:    Executing command sb namespace create
@@ -1899,12 +1864,12 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-e** または **--label** &lt;label>:ストレージ アカウントのラベル。
-+ **-d** または **--description** &lt;description>:ストレージ アカウントの説明。
-+ **-l** または **--location** &lt;name>:ストレージ アカウントを作成するリージョン。
-+ **-a** または **--affinity-group** &lt;name>:ストレージ アカウントと関連付けるアフィニティ グループ。
-+ **--geoReplication**:Geo レプリケーションが有効かどうかを示します。
-+ **--disable-geoReplication**:Geo レプリケーションが無効かどうかを示します。
++ **-e** または **--label** &lt;label>: ストレージ アカウントのラベル。
++ **-d** または **--description** &lt;description>: ストレージ アカウントの説明。
++ **-l** または **--location** &lt;name>: ストレージ アカウントを作成するリージョン。
++ **-a** または **--affinity-group** &lt;name>: ストレージ アカウントと関連付けるアフィニティ グループ。
++ **--geoReplication**: geo レプリケーションが有効かどうかを示します。
++ **--disable-geoReplication**: geo レプリケーションが無効かどうかを示します。
 
 **storage account set [options] <name>**
 
@@ -1917,11 +1882,11 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-e** または **--label** &lt;label>:ストレージ アカウントのラベル。
-+ **-d** または **--description** &lt;description>:ストレージ アカウントの説明。
-+ **-l** または **--location** &lt;name>:ストレージ アカウントを作成するリージョン。
-+ **--geoReplication**:Geo レプリケーションが有効かどうかを示します。
-+ **--disable-geoReplication**:Geo レプリケーションが無効かどうかを示します。
++ **-e** または **--label** &lt;label>: ストレージ アカウントのラベル。
++ **-d** または **--description** &lt;description>: ストレージ アカウントの説明。
++ **-l** または **--location** &lt;name>: ストレージ アカウントを作成するリージョン。
++ **--geoReplication**: geo レプリケーションが有効かどうかを示します。
++ **--disable-geoReplication**: geo レプリケーションが無効かどうかを示します。
 
 **storage account delete [options] <name>**
 
@@ -1929,7 +1894,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**-q** または **--quiet**:確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
+**-q** または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 ###ストレージ アカウント キーの管理用コマンド
 
@@ -1941,132 +1906,131 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###ストレージ コンテナーの管理用コマンド
 
-**storage container list [options] [prefix]**
+**storage container list [options][prefix]**
 
 このコマンドは、指定されたストレージ アカウントのストレージ コンテナーの一覧を表示します。ストレージ アカウントは、接続文字列、またはストレージ アカウント名とアカウント キーで指定します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p** または **-prefix** &lt;prefix>:ストレージ コンテナー名プレフィックス。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグ モードでストレージ コマンドを実行します。
++ **-p** または **-prefix** &lt;prefix>: ストレージ コンテナー名のプレフィックス。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグ モードでストレージ コマンドを実行します。
 
-**storage container show [options] [container]**
-**storage container create [options] [container]**
+**storage container show [options][container]** **storage container create [options][container]**
 
 このコマンドは、指定されたストレージ アカウントのストレージ コンテナーを作成します。ストレージ アカウントは、接続文字列、またはストレージ アカウント名とアカウント キーで指定します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-p** または **-prefix** &lt;prefix>:ストレージ コンテナー名プレフィックス。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグ モードでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-p** または **-prefix** &lt;prefix>: ストレージ コンテナー名のプレフィックス。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列
++ **--debug**: デバッグ モードでストレージ コマンドを実行します。
 
-**storage container delete [options] [container]**
+**storage container delete [options][container]**
 
 このコマンドは、指定されたストレージ コンテナーを削除します。ストレージ アカウントは、接続文字列、またはストレージ アカウント名とアカウント キーで指定します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-p** または **-prefix** &lt;prefix>:ストレージ コンテナー名プレフィックス。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグ モードでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-p** または **-prefix** &lt;prefix>: ストレージ コンテナー名のプレフィックス。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグ モードでストレージ コマンドを実行します。
 
-**storage container set [options] [container]**
+**storage container set [options][container]**
 
 このコマンドは、ストレージ コンテナーのアクセス制御リストを指定します。ストレージ アカウントは、接続文字列、またはストレージ アカウント名とアカウント キーで指定します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-p** または **-prefix** &lt;prefix>:ストレージ コンテナー名プレフィックス。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグ モードでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-p** または **-prefix** &lt;prefix>: ストレージ コンテナー名のプレフィックス。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグ モードでストレージ コマンドを実行します。
 
 ###ストレージ BLOB の管理用コマンド
 
-**storage blob list [options] [container] [prefix]**
+**storage blob list [options][container] [prefix]**
 
 このコマンドは、指定されたストレージ コンテナーのストレージ BLOB の一覧を返します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-p** または **-prefix** &lt;prefix>:ストレージ コンテナー名プレフィックス。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグ モードでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-p** または **-prefix** &lt;prefix>: ストレージ コンテナー名のプレフィックス。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグ モードでストレージ コマンドを実行します。
 
-**storage blob show [options] [container] [blob]**
+**storage blob show [options][container] [blob]**
 
 このコマンドは、指定されたストレージ BLOB の詳細を表示します。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-p** または **-prefix** &lt;prefix>:ストレージ コンテナー名プレフィックス。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-p** または **-prefix** &lt;prefix>: ストレージ コンテナー名のプレフィックス。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグでストレージ コマンドを実行します。
 
-**storage blob delete [options] [container] [blob]**
+**storage blob delete [options][container] [blob]**
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-b** または **--blob** &lt;blobName>:削除するストレージ BLOB の名前。
-+ **-q** または **--quiet**:指定されたストレージ BLOB を、確認なしで削除します。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-b** または **--blob** &lt;blobName>: 削除するストレージ BLOB の名前。
++ **-q** または **--quiet**: 指定されたストレージ BLOB を、確認なしで削除します。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグでストレージ コマンドを実行します。
 
-**storage blob upload [options] [file] [container] [blob]**
+**storage blob upload [options][file] [container][blob]**
 
 このコマンドは、指定されたファイルを指定されたストレージ BLOB にアップロードします。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-b** または **--blob** &lt;blobName>:アップロードするストレージ BLOB の名前。
-+ **-t** または **--blobtype** &lt;blobtype>:ストレージ BLOB の種類:Page または Block。
-+ **-p** または **--properties** &lt;properties>:アップロードされたファイルのストレージ BLOB のプロパティ。プロパティは、キーと値のペアで、セミコロン (;) で区切られています。使用可能なプロパティは、contentType、contentEncoding、contentLanguage、cacheControl です。
-+ **-m** または **--metadata** &lt;metadata>:アップロードされたファイルのストレージ BLOB のメタデータ。メタデータは、キーと値のペアで、セミコロン (;) で区切られています。
-+ **--concurrenttaskcount** &lt;concurrenttaskcount>:同時アップロード要求の最大数。
-+ **-q** または **--quiet**:指定されたストレージ BLOB を、確認なしで上書きします。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-b** または **--blob** &lt;blobName>: アップロードするストレージ BLOB の名前。
++ **-t** または **--blobtype** &lt;blobtype>: ストレージ BLOB の種類: Page または Block。
++ **-p** または **--properties** &lt;properties>: アップロードされたファイルのストレージ BLOB のプロパティ。プロパティは、キーと値のペアで、セミコロン (;) で区切られています。使用可能なプロパティは、contentType、contentEncoding、contentLanguage、cacheControl です。
++ **-m** または **--metadata** &lt;metadata>: アップロードされたファイルのストレージ BLOB のメタデータ。メタデータは、キーと値のペアで、セミコロン (;) で区切られています。
++ **--concurrenttaskcount** &lt;concurrenttaskcount>: 同時アップロード要求の最大数。
++ **-q** または **--quiet**: 指定されたストレージ BLOB を、確認なしで上書きします。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグでストレージ コマンドを実行します。
 
-**storage blob download [options] [container] [blob] [destination]**
+**storage blob download [options][container] [blob][destination]**
 
 このコマンドは、指定されたストレージ BLOB をダウンロードします。
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **--container** &lt;container>:作成するストレージ コンテナーの名前。
-+ **-b** または **--blob** &lt;blobName>:ストレージ BLOB 名。
-+ **-d** または **--destination** [destination]:ダウンロード対象ファイルまたはディレクトリ パス。
-+ **-m** または **--checkmd5**:ダウンロードされたファイルの MD5 チェックサム。
-+ **--concurrenttaskcount** &lt;concurrenttaskcount>  同時アップロード要求の最大数
-+ **-q** または **--quiet**:対象ファイルを、確認なしで上書きします。
-+ **-a** または **--account-name** &lt;accountName>:ストレージ アカウント名。
-+ **-k** または **--account-key** &lt;accountKey>:ストレージ アカウント キー。
-+ **-c** または **--connection-string** &lt;connectionString>:ストレージ接続文字列。
-+ **--debug**:デバッグでストレージ コマンドを実行します。
++ **--container** &lt;container>: 作成するストレージ コンテナーの名前。
++ **-b** または **--blob** &lt;blobName>: ストレージ BLOB の名前。
++ **-d** または **--destination** [destination]: ダウンロード先のファイルまたはディレクトリのパス。
++ **-m** または **--checkmd5**: ダウンロードされたファイルの MD5 チェックサム。
++ **--concurrenttaskcount** &lt;concurrenttaskcount>: 同時アップロード要求の最大数。
++ **-q** または **--quiet**: 対象ファイルを、確認なしで上書きします。
++ **-a** または **--account-name** &lt;accountName>: ストレージ アカウント名。
++ **-k** または **--account-key** &lt;accountKey>: ストレージ アカウント キー。
++ **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
++ **--debug**: デバッグでストレージ コマンドを実行します。
 
 ##<a name ="Commands_to_manage_sql"></a>SQL データベースの管理用コマンド
 
@@ -2376,4 +2340,4 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!--HONumber=47-->
+<!---HONumber=58-->

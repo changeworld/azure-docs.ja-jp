@@ -1,19 +1,8 @@
-<properties services="virtual-machines" title="Setting up PowerShell for Resource Manager templates" authors="JoeDavies-MSFT" solutions="" manager="timlt" editor="tysonn" />
-
-<tags
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm=""
-   ms.workload="infrastructure"
-   ms.date="04/27/2015"
-   ms.author="josephd" />
-
 ## リソース マネージャー テンプレート向けの PowerShell の設定
-
+ 
 リソース マネージャーで Azure PowerShell を使用する前に、適切なバージョンの Windows PowerShell と Azure PowerShell を用意する必要があります。
 
-### 手順 1. PowerShell のバージョンを確認する
+### PowerShell のバージョンを確認する
 
 Windows PowerShell Version 3.0 または 4.0 があることを確認します。Windows PowerShell のバージョンを確認するには、Windows PowerShell コマンド プロンプトで次のコマンドを入力します。
 
@@ -48,7 +37,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 
 0.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
 
-### 手順 2. Azure アカウントとサブスクリプションを設定する
+### Azure アカウントとサブスクリプションを設定する
 
 Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料評価版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
@@ -73,14 +62,14 @@ Azure サブスクリプションが複数ある場合は、次のコマンド�
 	CurrentStorageAccountName : 
 	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を正しい名前に置き換えます。
+Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
 	$subscr="<SubscriptionName from the display of Get-AzureSubscription>"
-	Select-AzureSubscription -SubscriptionName $subscr –Current	
+	Select-AzureSubscription -SubscriptionName $subscr -Current	
 
-Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するページを参照してください。
+Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-### 手順 3. Azure リソース マネージャー モジュールに切り替える
+### Azure リソース マネージャー モジュールに切り替える
 
 Azure リソース マネージャー モジュールを使用するには、既定の Azure コマンド セットから Azure リソース マネージャーのコマンド セットに切り替える必要があります。次のコマンドを実行します。
 
@@ -88,5 +77,4 @@ Azure リソース マネージャー モジュールを使用するには、既
 
 > [AZURE.NOTE]**Switch-AzureMode AzureServiceManagement** コマンドを使用して、既定のコマンド セットに戻すことができます。
 
-
-<!--HONumber=52-->
+<!---HONumber=58-->

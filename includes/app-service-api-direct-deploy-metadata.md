@@ -26,6 +26,8 @@
 		    "apiDefinition": "/swagger/docs/v1"
 		}
 
+> **注:** Swashbuckle を使用して Swagger API の定義を生成している場合は、Web API コントローラーでの HTTP メソッドのオーバーロードによって、操作 ID の重複が発生します。詳細については、「[Swashbuckle で生成された操作 ID のカスタマイズ](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。
+  
 ### 静的 Swagger API の定義
 
 静的 [Swagger](http://swagger.io/) 2.0 API の定義ファイルを指定するには、*Metadata* フォルダーにファイルを保存し、そのファイルに *apiDefinition.swagger.json* という名前を付けます。
@@ -34,9 +36,5 @@
 
 *apiapp.json* ファイルから `endpoints.apiDefinition` を除外するか、その値を null に設定します。`endpoints.apiDefinition` URL と *apiDefinition.swagger.json* ファイルの両方を含めた場合は、URL が優先され、ファイルは無視されます。
  
-### API アプリのその他のメタデータ
 
-*apiapp.json* ファイルおよび *Metadata* フォルダーの詳細については、[API アプリ パッケージの作成](app-service-api-create-package.md)に関するページを参照してください。
-
-
-<!--HONumber=54-->
+<!---HONumber=58-->

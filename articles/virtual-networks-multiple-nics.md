@@ -1,0 +1,163 @@
+<properties 
+   pageTitle="複数 NIC を持つ VM の作成"
+   description="複数 NIC を持つ VM を作成する方法"
+   services="virtual-network, virtual-machines"
+   documentationCenter="na"
+   authors="telmosampaio"
+   manager="adinah"
+   editor="tysonn" />
+<tags 
+   ms.service="virtual-network"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="04/30/2015"
+   ms.author="telmos" />
+
+# 複数 NIC を持つ VM の作成
+
+複数 NIC 機能を使用すると、Azure の仮想マシン (VM) 上で複数の仮想ネットワーク インターフェイス カード (NIC) を作成して管理できます。複数 NIC は、アプリケーションの配布や WAN の最適化ソリューションなど、多くのネットワーク仮想アプライアンスに必要です。また、複数 NIC には、フロントエンド NIC とバックエンド NIC 間でのトラフィックの分離、管理レベルのトラフィックとデータ レベルのトラフィックの分離など、多くのネットワーク トラフィック管理機能も用意されています。
+
+![Multi-NIC for VM](./media/virtual-networks-multiple-nics/IC757773.png)
+
+上の図は、3 つの NIC を持つ VM を示しており、各 NIC は異なるサブネットに接続されています。
+
+## 要件と制約
+
+現時点では、複数 NIC には次の要件と制約があります。
+
+- 複数 NIC の VM は、Azure の仮想ネットワーク (Vnet) 上に作成する必要があります。Vnet 以外の VM はサポートされません。 
+- 1 つのクラウド サービス内で許可されているのは、次の設定のみです。 
+	- そのクラウド サービス内のすべての VM で複数 NIC を有効にする。 
+	- そのクラウド サービス内のすべての VM それぞれに NIC を 1 つ用意する。 
+
+>[AZURE.IMPORTANT]単一 NIC の VM を既に含むデプロイメント (クラウド サービス) に複数 NIC の VM を追加しようとした場合 (またはその逆の場合)、次のようなエラーが発生します。セカンダリ ネットワーク インターフェイスを持つ仮想マシンとセカンダリ ネットワーク インターフェイスを持たない仮想マシンは同じデプロイメント内でサポートされません。さらに、セカンダリ ネットワーク インターフェイスを持たない仮想マシンをセカンダリ ネットワーク インターフェイスを持つように更新することも、その逆を行うこともできません。
+ 
+- インターネットに接続された VIP は、"既定" の NIC でのみサポートされています。既定の NIC の IP アドレスに対して VIP は 1 つしかありません。 
+- 現時点では、複数 NIC の VM のインスタンスレベル パブリック IP アドレスはサポートされていません。 
+- VM 内の NIC の順序はランダムになり、Azure インフラストラクチャの更新によって変更される場合もあります。ただし、IP アドレスと、対応するイーサネットの MAC アドレスは変更されません。たとえば、**Eth1** の IP アドレスが 10.1.0.100 で、MAC アドレスが 00-0D-3A-B0-39-0D だとします。Azure インフラストラクチャが更新されて再起動された後、これを Eth2 に変更できますが、IP アドレスと MAC アドレスの組み合わせは同じままになります。お客様が再起動を開始した場合、NIC の順序は変更されません。 
+- 各 VM の NIC のアドレスはそれぞれサブネットに存在する必要があるため、1 つの VM 上の複数 NIC それぞれには、同じサブネット内のアドレスに割り当てることができます。 
+- VM のサイズによって、VM に作成できる NIC の数が決まります。次の表では、VM のサイズに対応する NIC の数を示します。 
+
+|VM のサイズ (標準的な SKU)|NICの数 (VM ごとに許可される最大数)|
+|---|---|
+|Basic のすべてのサイズ|1|
+|A0\極小|1|
+|A1\小|1|
+|A2\中|1|
+|A3\大|2|
+|A4\極大|4|
+|A5|1|
+|A6|2|
+|A7|4|
+|A8|2|
+|A9|4|
+|A10|2|
+|A11|4|
+|D1|1|
+|D2|2|
+|D3|4|
+|D4|8|
+|D11|2|
+|D12|4|
+|D13|8|
+|D14|16|
+|DS1|1|
+|DS2|2|
+|DS3|4|
+|DS4|8|
+|DS11|2|
+|DS12|4|
+|DS13|8|
+|DS14|16|
+|G1|1|
+|G2|2|
+|G3|4|
+|G4|8|
+|G5|16|
+|その他のサイズすべて|1|
+
+## ネットワーク セキュリティ グループ
+複数 NIC が有効になっている VM 上の NIC など、VM 上の任意の NIC をネットワーク セキュリティ グループ (NSG) に関連付けることができます。NIC にサブネット内のアドレスが割り当てられ、そのサブネットが NSG に関連付けられている場合、サブネットの NSG のルールがその NIC にも適用されます。サブネットを NSG に関連付けるだけでなく、NIC を NSG に関連付けることもできます。
+
+サブネットが NSG に関連付けられていて、そのサブネット内の NIC が個別に NSG に関連付けられている場合、関連付けられた NSG のルールは、NIC で受け渡されるトラフィックの方向に従って "**フロー順序**" で適用されます。
+
+- **トラフィック**は、送信先が対象の NIC であり、サブネット経由で最初に送信され、サブネットの NSG ルールをトリガーし、NIC へ渡される前に NIC の NSG ルールをトリガーします。- **送信トラフィック**は、送信元が対象の NIC であり、NIC から最初に送信され、NIC の NSG ルールをトリガーし、サブネット経由で渡される前にサブネットの NSG ルールをトリガーします。 
+
+上の図は、トラフィックのフロー (VM からサブネット、またはサブネットから VM) に基づいて NSG ルールがどのように適用されるかを表しています。
+
+## 複数 NIC の VM を構成する方法
+
+3 つの NIC (既定の NIC と追加の 2 つの NIC) を含む複数 NIC の VM を作成するには、次の手順が役立ちます。この構成手順によって、次のサービス構成ファイルの一部に従って構成される VM が作成されます。
+
+	<VirtualNetworkSite name="MultiNIC-VNet" Location="North Europe">
+	<AddressSpace>
+	  <AddressPrefix>10.1.0.0/16</AddressPrefix>
+	    </AddressSpace>
+	    <Subnets>
+	      <Subnet name="Frontend">
+	        <AddressPrefix>10.1.0.0/24</AddressPrefix>
+	      </Subnet>
+	      <Subnet name="Midtier">
+	        <AddressPrefix>10.1.1.0/24</AddressPrefix>
+	      </Subnet>
+	      <Subnet name="Backend">
+	        <AddressPrefix>10.1.2.0/23</AddressPrefix>
+	      </Subnet>
+	      <Subnet name="GatewaySubnet">
+	        <AddressPrefix>10.1.200.0/28</AddressPrefix>
+	      </Subnet>
+	    </Subnets>
+	… Skip over the remainder section …
+	</VirtualNetworkSite>
+
+
+この例の PowerShell コマンドを実行するには、次の前提条件を満たしておく必要があります。
+
+- Azure サブスクリプション。
+- 構成済みの仮想ネットワーク。Vnet の詳細については、「[仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+- Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell)」を参照してください。
+
+1. Azure VM イメージ ギャラリーから VM イメージを選択します。イメージは頻繁に変更され、リージョンごとに利用できることに注意してください。次の例で指定されたイメージは変更されたり、リージョンによって提供されていない可能性があるため、必ず必要なイメージを指定してください。 
+
+	    $image = Get-AzureVMImage `
+	    	-ImageName "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201410.01-en.us-127GB.vhd"
+
+1. VM 構成を作成します。
+
+		$vm = New-AzureVMConfig -Name "MultiNicVM" -InstanceSize "ExtraLarge" `
+			-Image $image.ImageName –AvailabilitySetName "MyAVSet"
+
+1. 既定の管理者ログインを作成します。
+
+		Add-AzureProvisioningConfig –VM $vm -Windows -AdminUserName "<YourAdminUID>" `
+			-Password "<YourAdminPassword>"
+
+1. VM 構成に NIC を追加します。
+
+		Add-AzureNetworkInterfaceConfig -Name "Ethernet1" `
+			-SubnetName "Midtier" -StaticVNetIPAddress "10.1.1.111" -VM $vm 
+		Add-AzureNetworkInterfaceConfig -Name "Ethernet2" `
+			-SubnetName "Backend" -StaticVNetIPAddress "10.1.2.222" -VM $vm
+
+1. 既定の NIC のサブネットと IP アドレスを指定します。
+
+		Set-AzureSubnet -SubnetNames "Frontend" -VM $vm Set-AzureStaticVNetIP  `
+			-IPAddress "10.1.0.100" -VM $vm
+
+1. 仮想ネットワーク内に VM を作成します。
+
+		New-AzureVM -ServiceName "MultiNIC-CS" –VNetName "MultiNIC-VNet" –VMs $vm
+
+>[AZURE.NOTE]ここでは既存の VNet を指定する必要があります (前提条件で説明)。次の例では "MultiNIC-VNet" という名前の仮想ネットワークを指定します。
+
+## 関連項目
+
+[仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)
+
+[仮想ネットワークの構成タスク](https://msdn.microsoft.com/library/azure/jj156206.aspx)
+
+[ブログ投稿: 複数の NIC を持つ VM と Azure での VNet アプライアンス](../multiple-vm-nics-and-network-virtual-appliances-in-azure)
+
+<!---HONumber=58-->

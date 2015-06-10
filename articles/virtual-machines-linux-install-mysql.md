@@ -17,16 +17,16 @@
 	ms.author="mingzhan"/>
 
 
-# MySQL を Azure でインストールする方法
+#MySQL を Azure でインストールする方法
 
 
 このトピックでは、読者が既に Azure アカウントを所有していることを前提にしています。所有していない場合は、[Azure](http://azure.microsoft.com) にアクセスしてサインアップすることをお勧めします。
 
 
 
-## Microsoft Azure に VM イメージを作成する
+##Microsoft Azure に VM イメージを作成する
 ここでは、Microsoft Azure の管理ポータルから新しい VM を作成します。
-### "SSH 認証キー" の生成
+###"SSH 認証キー" の生成
 Azure ポータルにアクセスするには SSH キーが必要になります。
 
 
@@ -44,30 +44,30 @@ Azure ポータルにアクセスするには SSH キーが必要になります
 - 公開キーをコピーし、"publicKey.key" という名前のファイルに保存します。保存された公開キーの形式は必要な公開キーの形式と異なるため、[公開キーの保存] を単に押さないようにしてください。
 - [秘密キーの保存] をクリックし、"privateKey.ppk" として保存します。 
 
-### Azure ポータルへのログイン
+###Azure ポータルへのログイン
 
 https://portal.azure.com/ に移動してログインします。
 
-### Linux VM の作成
+###Linux VM の作成
 
 左下にある [新規] をクリックし、次の手順でイメージを作成します。必要に応じて Linux イメージを選択してください。ここでは、例として Ubuntu 14.04 を選択します。
 
   ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p03.png)
 
-### ホスト名のセットアップ
+###ホスト名のセットアップ
 
 [ホスト名]: 仮想マシンへのアクセスに使用できる URL です。ここでは、"mysqlnode1" のように DNS 名を指定するだけでかまいません。こうすると、URL が "mysqlnode1.cloudapp.net" として生成されます。[SSH 認証キー]: puttygen で生成される公開キーです。このキーは "publicKey.key" ファイルのコンテンツからコピーする必要があります。
 
   ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p04.png)
   
 
-## MySQL の既定のポートを開く
+##MySQL の既定のポートを開く
 Microsoft Azure のエンドポイントは、パブリックおよびプライベート ポートとプロトコルで構成されます。プライベート ポートは、ローカル コンピューターでサービスがリッスンするポートです。パブリック ポートとは、サービスが外部でリッスンするポートです。ポート 3306 は、MySQL によってリッスンされる既定のポート番号です。[参照]、[Virtual Machines] の順にクリックし、作成したイメージをクリックします。
  
    ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p05.png)
 
 
-## 作成したイメージへの接続
+##作成したイメージへの接続
 任意の SSH ツールを選んで仮想マシンに接続できます。ここでは、例として Putty を使用します。
  
 
@@ -75,9 +75,9 @@ Microsoft Azure のエンドポイントは、パブリックおよびプライ�
 - Putty のダウンロード後、実行可能ファイル "PUTTY.EXE" をクリックします。次のように設定します。
 
 
-     The “Host Name (or IP address)” is the URL as “DNS NAME” when you create an image.
+     [ホスト名 (IP アドレス)] には、イメージを作成したときに “DNS 名” として使用した URL を設定します。
      
-     The “Port” we can chose 22.  This is default port of SSH services.
+     [ポート] には「22」を設定します。これは、SSH サービスの既定のポートです。
 
    ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p06.png)
  
@@ -94,11 +94,11 @@ Microsoft Azure のエンドポイントは、パブリックおよびプライ�
  ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p09.png)
 
 
-## 仮想マシンに MySQL をインストールする
+##仮想マシンに MySQL をインストールする
 MySQL のインストール方法として、バイナリ パッケージ、rpm パッケージ、ソース パッケージの 3 とおりの方法がサポートされています。パフォーマンスに関する考慮事項により、この記事では MySQL 5.6 の rpm パッケージを例として使用します。MySQL 5.6 は、MySQL 5.5 よりもパフォーマンスが大幅に向上しています。詳細については、[こちら](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)で確認できます。
 
 
-### Ubuntu または Debian で MySQL 5.6 をインストールする方法
+###Ubuntu または Debian で MySQL 5.6 をインストールする方法
 この記事では、例として Ubuntu 14.04 LTS を使用します。
 
 - 手順 1. MySQL Server 5.6 をインストールする
@@ -143,7 +143,7 @@ MySQL のインストール方法として、バイナリ パッケージ、rpm 
              #sudo service mysql restart
 
 
-### Red Hat の OS のファミリまたは Oracle Linux に MySQL をインストールする方法
+###Red Hat の OS のファミリまたは Oracle Linux に MySQL をインストールする方法
 - 手順 1. MySQL Yum リポジトリの追加。ルート アクセス許可を取得するには、次のコマンドを実行します。 
 
             #sudo su -
@@ -200,7 +200,7 @@ MySQL のインストール方法として、バイナリ パッケージ、rpm 
            #[root@azureuser ~]#chkconfig mysqld on
 
 
-### MySQL を Suse LinuX にインストールする方法
+###MySQL を Suse LinuX にインストールする方法
 
 - 手順 1. MySQL Server のインストール
 
@@ -237,4 +237,5 @@ MySQL のインストール方法として、バイナリ パッケージ、rpm 
     システムの起動時に MySQL が開始するように設定するには、次のコマンドを実行します。
 
            #mysql-test:~ # insserv mysql
-<!--HONumber=52-->
+
+<!---HONumber=58-->

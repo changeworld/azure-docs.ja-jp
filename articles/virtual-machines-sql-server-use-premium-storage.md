@@ -3,7 +3,7 @@
 	description="この記事では、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage の使用を開始する方法についてのガイダンスを提供します。これには、新しいデプロイメントと、IaaS 上の SQL Server の既存デプロイメントの移行の例が含まれます。" 
 	services="virtual-machines" 
 	documentationCenter="" 
-	authors="rothja" 
+	authors="danielsollondon" 
 	manager="jeffreyg"
 	editor=""/>
 
@@ -32,6 +32,8 @@
 
 Azure Virtual Machines での SQL Server についての背景情報については、「[Azure の仮想マシンにおける SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
+**技術校閲者:** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz
+
 ## Premium Storage の前提条件
 
 Premium Storage を使用するにはいくつかの前提条件があります。
@@ -42,7 +44,7 @@ Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を�
 
 ### クラウド サービス
 
-Premium Storage で DS* VM を使用できるのは、新しいクラウド サービスに作成されるときだけです。Azure で SQL Server AlwaysOn を使用する場合、AlwaysOn Listener はクラウド サービスと関連付けられた Azure の内部または外部ロード バランサーの IP アドレスを参照します。この記事では、このシナリオで可用性を維持しながらを移行する方法について説明します。
+Premium Storage で DS* VM を使用できるのは、新しいクラウド サービスに作成されるときだけです。Azure で SQL Server AlwaysOn を使用する場合、AlwaysOn Listener はクラウド サービスと関連付けられた Azure の内部または外部ロード バランサーの IP アドレスを参照します。この記事では、このシナリオで可用性を維持しながら移行する方法について説明します。
 
 > [AZURE.NOTE]DS* シリーズは、新しいクラウド サービスにデプロイされる最初の VM である必要があります。
 
@@ -163,7 +165,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     Set-AzureSubscription -SubscriptionName $mysubscription 
     Select-AzureSubscription -SubscriptionName $mysubscription -Current  
 
-#### 手順 1: Premium Storage アカウントを作成する
+#### 手順 1. Premium Storage アカウントを作成する
 
 
     #Create Premium Storage account, note Type
@@ -171,20 +173,20 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     New-AzureStorageAccount -StorageAccountName $newxiostorageaccountname -Location $location -Type "Premium_LRS"  
 
  
-#### 手順 2: 新しいクラウド サービスを作成する
+#### 手順 2. 新しいクラウド サービスを作成する
 
     $destcloudsvc = "danNewSvcAms" 
     New-AzureService $destcloudsvc -Location $location 
 
 
-#### 手順 3: クラウド サービス VIP を予約する (省略可能)
+#### 手順 3. クラウド サービス VIP を予約する (省略可能)
     #check exisitng reserved VIP
     Get-AzureReservedIP
     
     $reservedVIPName = “sqlcloudVIP” 
     New-AzureReservedIP –ReservedIPName $reservedVIPName –Label $reservedVIPName –Location $location 
 
-#### 手順 4: VM コンテナーを作成する
+#### 手順 4. VM コンテナーを作成する
     #Generate storage keys for later 
     $xiostorage = Get-AzureStorageKey -StorageAccountName $newxiostorageaccountname 
     
@@ -195,7 +197,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     $containerName = 'vhds'
     New-AzureStorageContainer -Name $containerName -Context $xioContext
 
-#### 手順 5: Standard または Premium Storage に OS VHD を配置する
+#### 手順 5. Standard または Premium Storage に OS VHD を配置する
     #NOTE: Set up subscription and default storage account which will be used to place the OS VHD in
     
     #If you want to place the OS VHD Premium Storage Account
@@ -206,7 +208,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     
     Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $standardstorageaccountname
 
-#### 手順 6: VM を作成する
+#### 手順 6. VM を作成する
     #Get list of available SQL Server Images from the Azure Image Gallery.
     $galleryImage = Get-AzureVMImage | where-object {$_.ImageName -like "*SQL*2014*Enterprise*"} 
     $image = $galleryImage.ImageName 
@@ -253,7 +255,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 このシナリオでは、既存のカスタマイズされたイメージが Standard Storage アカウントに存在する場合を示します。前述のように、OS VHD を Premium Storage に配置する場合は、Standard Storage アカウントに存在するイメージをコピーし、使用する前に Premium Storage に転送する必要があります。オンプレミスにイメージがある場合は、この方法を使用してそれを Premium Storage アカウントに直接コピーすることもできます。
 
-#### 手順 1: ストレージ アカウントを作成する
+#### 手順 1. ストレージ アカウントを作成する
     $mysubscription = "DansSubscription"
     $location = "West Europe"
     
@@ -264,12 +266,12 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     #Standard Storage account
     $origstorageaccountname = "danstdams" 
  
-#### 手順 2: クラウド サービスを作成する
+#### 手順 2. クラウド サービスを作成する
     $destcloudsvc = "danNewSvcAms" 
     New-AzureService $destcloudsvc -Location $location 
 
  
-#### 手順 3: 既存のイメージを使用する
+#### 手順 3. 既存のイメージを使用する
 既存のイメージを使用できます。または、[既存のマシンのイメージを取得](virtual-machines-capture-image-windows-server.md)できます。イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
 
     #Get storage account keys:
@@ -282,7 +284,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     $origContext = New-AzureStorageContext  –StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
     $destContext = New-AzureStorageContext  –StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
  
-#### 手順 4: ストレージ アカウント間で BLOB をコピーする
+#### 手順 4. ストレージ アカウント間で BLOB をコピーする
     #Get Image VHD from Portal
     $myImageVHD = "dansoldonorsql2k14-os-2015-04-15.vhd"
     $containerName = 'vhds'
@@ -292,10 +294,10 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     -DestContainer vhds -Destblob "prem-$myImageVHD" `
     -Context $origContext -DestContext $destContext  
 
-#### 手順 5: コピー状態を定期的に確認する
+#### 手順 5. コピー状態を定期的に確認する
     $blob | Get-AzureStorageBlobCopyState 
 
-#### 手順 6: サブスクリプション内の Azure ディスク リポジトリにイメージ ディスクを追加する
+#### 手順 6. サブスクリプション内の Azure ディスク リポジトリにイメージ ディスクを追加する
     $imageMediaLocation = $destContext.BlobEndPoint+"/"+$myImageVHD 
     $newimageName = "prem"+"dansoldonorsql2k14"
     
@@ -303,7 +305,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
  
 > [AZURE.NOTE]ステータス レポートが成功であっても、ディスク リース エラーが発生することがあります。この場合は、10 分ほど待ちます。
 
-#### 手順 7: VM を構築する
+#### 手順 7. VM を構築する
 ここでは、イメージから VM を構築し、2 つの Premium Storage VHD をアタッチします。
 
     $newimageName = "prem"+"dansoldonorsql2k14"
@@ -565,7 +567,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
     #Set up subscription
     Get-AzureSubscription 
 
-#### 手順 1: 新しいストレージ アカウントおよびクラウド サービスを作成する
+#### 手順 1. 新しいストレージ アカウントおよびクラウド サービスを作成する
     $mysubscription = "DansSubscription"
     $location = "West Europe"
     
@@ -599,7 +601,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
     $destcloudsvc = "danNewSvcAms" 
     New-AzureService $destcloudsvc -Location $location 
 
-#### 手順 2: リソースに対して許可するエラーを増やす <Optional>
+#### 手順 2. リソースに対して許可するエラーを増やす <Optional>
 AlwaysOn 可用性グループに属する特定のリソースでは、クラスター サービスがリソース グループの再起動を試みる前に一定期間中に発生できるエラー数に制限があります。手動によるフェールオーバーおよびマシンのシャットダウンによるフェールオーバーのトリガーを行わない場合はこの制限に近づくことがあるので、この手順を実行する間は制限を大きくすることをお勧めします。
 
 許可するエラーを 2 倍にするのが賢明です。フェールオーバー クラスター マネージャーでこれを行うには、AlwaysOn リソース グループのプロパティに移動します。
@@ -608,11 +610,11 @@ AlwaysOn 可用性グループに属する特定のリソースでは、クラ�
 
 最大エラー数 6 に変更します。
 
-#### 手順 3: クラスター グループに IP アドレス リソースを追加する <Optional>
+#### 手順 3. クラスター グループに IP アドレス リソースを追加する <Optional>
 
 クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。これが発生した場合、その他のクラスター リソースを更新をできません。
 
-#### 手順 4: DNS を構成する
+#### 手順 4. DNS を構成する
 
 円滑な移行の実装は、DNS が利用および更新される方法に依存します。AlwaysOn は、インストールされるときに Windows クラスター リソース グループを作成します。フェールオーバー クラスター マネージャーを開くと、少なくとも 3 つのリソースがあることがわかり、次の 2 つがドキュメントで参照されています。
 
@@ -664,7 +666,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
 上記の設定に関する詳細については、「[MultiSubnetFailover のキーワードおよび関連機能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)」を参照してください。また、「[高可用性障害復旧のための SqlClient サポート]https://msdn.microsoft.com/library/hh205662(v=vs.110).aspx)」も参照してください。
 
-#### 手順 5: クラスター クォーラムを設定する
+#### 手順 5. クラスター クォーラムを設定する
 
 一度に少なくとも 1 つの SQL Server を停止する場合、クラスターのクォーラム設定を変更する必要があります。2 つのノードでファイル共有監視 (FSW) を使用している場合、ノード マジョリティを許可して動的な投票を利用するようにクォーラムを設定する必要があり、これにより 1 つのノードは稼働したままになります。
 
@@ -673,7 +675,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
 クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/ja-jp/library/jj612870.aspx)」を参照してください。
 
-#### 手順 6: 既存のエンドポイントと ACL を抽出する
+#### 手順 6. 既存のエンドポイントと ACL を抽出する
     #GET Endpoint info
     Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureEndpoint
     #GET ACL Rules for Each EP, this example is for the AlwaysOn Endpoint
@@ -681,13 +683,13 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
 これらをテキスト ファイルに保存します。
 
-#### 手順 7: フェールオーバー パートナーとレプリケーション モードを変更する
+#### 手順 7. フェールオーバー パートナーとレプリケーション モードを変更する
 
 3 つ以上の SQL Server がある場合、別の DC またはオンプレミスの別のセカンダリのフェールオーバーを「同期」に変更し、それを自動フェールオーバー パートナー (AFP) にする必要があります。これは、変更を行っている間に HA を維持するためです。これは、SSMS を変更して TSQL によって行うことができます。
  
 ![Appendix6][16]
 
-#### 手順 8: クラウド サービスからセカンダリ VM を削除する
+#### 手順 8. クラウド サービスからセカンダリ VM を削除する
 
 最初に、クラウド セカンダリ ノードの移行を計画する必要があります。これが、現在のプライマリである場合は、手動フェールオーバーを開始する必要があります。
 
@@ -869,7 +871,7 @@ Premium Storage アカウントへの VHD のコピー状態を確認できま�
     
     ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 
-#### 手順 14: AlwaysOn を更新する 
+####手順 14: AlwaysOn を更新する 
     #Code to be executed on a Cluster Node
     $ClusterNetworkNameAmsterdam = "Cluster Network 2" # the azure cluster subnet network name
     $newCloudServiceIPAmsterdam = "192.168.0.25" # IP address of your cloud service 
@@ -1009,9 +1011,7 @@ TLOG ボリュームの場合、これらを NONE に設定する必要があり
     Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContext
      
     
-すべての VHD の VHD コピー状態を確認できます: 
-      
-       ForEach ($disk in $diskobjects) { $lun = $disk.Lun $vhdname = $disk.vhdname $cacheoption = $disk.HostCaching $disklabel = $disk.DiskLabel $diskName = $disk.DiskName
+すべての VHD の VHD コピー状態を確認できます: ForEach ($disk in $diskobjects) { $lun = $disk.Lun $vhdname = $disk.vhdname $cacheoption = $disk.HostCaching $disklabel = $disk.DiskLabel $diskName = $disk.DiskName
       
        $copystate = Get-AzureStorageBlobCopyState -Blob $vhdname -Container $containerName -Context $xioContextnode2
     Write-Host "Copying Disk Lun $lun, Label : $disklabel, VHD : $vhdname, STATUS = " $copystate.Status 
@@ -1021,9 +1021,7 @@ TLOG ボリュームの場合、これらを NONE に設定する必要があり
 
 これらすべてが成功として記録されるまで待ちます。
 
-個別の BLOB に関する情報の場合: 
-      
-       #Check induvidual blob status Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
+個別の BLOB に関する情報の場合: #Check induvidual blob status Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 
 #### 手順 21: OS ディスクを登録する
     #change storage account to the new XIO storage account
@@ -1143,4 +1141,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [24]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
 
-<!--HONumber=54-->
+<!---HONumber=58-->

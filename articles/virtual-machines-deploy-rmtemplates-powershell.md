@@ -13,12 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="05/13/2015" 
 	ms.author="josephd"/>
 
 # Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理
 
-この記事では、Azure リソース マネージャー テンプレートと Powershell を使用し、Azure Virtual Machines のデプロイと管理に関する一般的なタスクを自動化する方法について説明します。
+この記事では、Azure リソース マネージャー テンプレートと PowerShell を使用し、Azure Virtual Machines のデプロイと管理に関する一般的なタスクを自動化する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
+
+一般的なタスク:
+
+- [Windows VM のデプロイ](#windowsvm)
+- [カスタム VM イメージの作成](#customvm)
+- [仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ](#multivm)
+- [仮想マシンへのログオン](#logon)
+- [仮想マシンの起動](#start)
+- [仮想マシンの停止](#stop)
 
 開始する前に、Azure PowerShell を使用する準備が整っていることを確認してください。
 
@@ -26,20 +35,20 @@
 
 ## Azure リソース テンプレートおよびリソース グループについて
 
-Microsoft Azure にデプロイされ、実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、CDN など) から構築されます。*Azure リソース マネージャー テンプレート*によって、リソースや関連する構成およびデプロイメント パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
+Microsoft Azure にデプロイされ、実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL Database、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートによって、リソースや関連する構成およびデプロイメント パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
 
 JSON ベースのリソース テンプレートを定義した後は、PowerShell コマンドを使用してそれを実行し、内部で定義されているリソースを Azure にデプロイすることができます。これらのコマンドは、PowerShell 内でスタンドアロンとして実行するか、その他のオートメーション ロジックを含むスクリプト内に統合することができます。
 
 Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の Azure リソース グループにデプロイされます。 *Azure リソース グループ*では、デプロイした複数のリソースを論理グループとしてまとめて管理できます。これによって、グループやアプリケーションのライフ サイクル全体を管理できるようになるほか、以下を可能にする管理 API が提供されます。
 
 - グループ内のすべてのリソースを一度に停止、開始、または削除する。 
-- ロールベースのアクセス制御 (RBAC) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。 
+- ロールベースの Access Control (RBAC) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。 
 - 操作を監査する。 
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。 
 
-Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。
+Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 
-## 一般的なタスク: Windows VM のデプロイ
+## <a id="windowsvm"></a>Windows VM のデプロイ
 
 このセクションの手順に従い、リソース マネージャー テンプレートと Azure PowerShell を使用して、新しい Azure VM をデプロイします。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成します。
 
@@ -230,13 +239,13 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 
 ### 手順 2. テンプレートで仮想マシンを作成する。
 
-Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
+Azure のデプロイメント名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
 	$locName="<Azure location, such as West US>"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
-	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 **New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。必要なパラメーター値をすべて指定している場合、コマンドによってリソース グループと仮想マシンが作成されます。
@@ -247,7 +256,7 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 	$RGName="TestRG"
 	$locname="West US"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
-	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 次のような結果が表示されます。
@@ -290,7 +299,7 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
 
-## 一般的なタスク: カスタム VM イメージの作成
+## <a id="customvm"></a>カスタム VM イメージの作成
 
 Azure PowerShell を使用し、リソース マネージャー テンプレートで Azure に カスタム VM イメージを作成するには、このセクションの手順に従います。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成します。
 
@@ -383,13 +392,13 @@ Linux ベースの仮想マシンについては、[Azure 上での Linux VHD �
 
 ### 手順 3. テンプレートで仮想マシンを作成する。
 
-VHD に基づく新しい仮想 マシンを作成するには、"< >" 内の要素を特定の情報に置き換え、次のコマンドを実行します。
+VHD に基づく新しい仮想マシンを作成するには、"< >" 内の要素を特定の情報に置き換え、次のコマンドを実行します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
 	$locName="<Azure location, such as West US>"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
-	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、Azure リソース マネージャーによってリソース グループと仮想マシンが作成されます。
@@ -400,7 +409,7 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 	$RGName="TestRG"
 	$locname="West US"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
-	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 
@@ -415,7 +424,7 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 	vmSize: Standard_A3
 	...
 
-## 一般的なタスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+## <a id="multivm"></a>仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
 
 Azure PowerShell を使用し、リソース マネージャー テンプレートで仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、以下のセクションの手順に従います。このテンプレートは、新しいクラウド サービスで、1 つのサブネットを持つ新しい仮想ネットワークに 2 つの仮想マシンを作成し、それらを TCP ポート 80 への受信トラフィック用に、外部の負荷分散されたセットへ追加します。
 
@@ -740,13 +749,13 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 ### 手順 2. テンプレートでデプロイメントを作成する。
 
-Azure のデプロイ名、リソース グループ名、Azure の場所を入力し、次のコマンドを実行します。
+Azure のデプロイメント名、リソース グループ名、Azure の場所を入力し、次のコマンドを実行します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
 	$locName="<Azure location, such as West US>"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
-	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイルのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、コマンドによってリソース グループとデプロイメントが作成されます。
@@ -755,7 +764,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	$RGName="TestRG"
 	$locname="West US"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
-	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 次のような結果が表示されます。
@@ -783,7 +792,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	Are you sure you want to remove resource group 'BuildRG'
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
-## Windows 仮想マシンへのログオン
+## <a id="logon"></a>Windows 仮想マシンへのログオン
 
 手順の詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
 
@@ -791,7 +800,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 **Get-AzureVM** コマンドを使用して、VM に関する情報を表示することができます。このコマンドは、VM の状態を更新するために他のさまざまなコマンドレットを使用して操作できる VM オブジェクトを返します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
-	Get-AzureVM –ResourceGroupName "<resource group name>" –Name "<VM name>"
+	Get-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
 次のように、仮想マシンに関する情報が表示されます。
 
@@ -855,11 +864,11 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	Type                     : Microsoft.Compute/virtualMachines
 
 
-## 仮想マシンの起動
+## <a id="start"></a>仮想マシンの起動
 
  **Start-AzureVM** コマンドを使用して、VM を起動できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
-	Start-AzureVM –ResourceGroupName "<resource group name>" –Name "<VM name>"
+	Start-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
 次のような情報が表示されます。
 
@@ -872,11 +881,11 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	RequestId           : aac41de1-b85d-4429-9a3d-040b922d2e6d
 	StatusCode          : OK
 
-## 仮想マシンの停止
+## <a id="stop"></a>仮想マシンの停止
 
 **Stop-AzureVM** コマンドを使用して、VM を停止できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
-	Stop-AzureVM –ResourceGroupName "<resource group name>" –Name "<VM name>"
+	Stop-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
 次のような情報が表示されます。
 
@@ -898,7 +907,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 **Restart-AzureVM** コマンドを使用して、VM を再起動できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
-	Restart-AzureVM –ResourceGroupName "<resource group name>" –Name "<VM name>"
+	Restart-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
 次のような情報が表示されます。
 
@@ -913,9 +922,9 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 ## 仮想マシンの削除
 
-**Remove-AzureVM** コマンドを使用して、VM を削除できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**–Force** パラメーターを使用して確認プロンプトをスキップします。
+**Remove-AzureVM** コマンドを使用して、VM を削除できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
-	Remove-AzureVM –ResourceGroupName "<resource group name>" –Name "<VM name>"
+	Remove-AzureVM -ResourceGroupName "<resource group name>" –Name "<VM name>"
 
 次のような情報が表示されます。
 
@@ -935,7 +944,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 ## その他のリソース
 
-[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
+[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure リソース マネージャーの概要](resource-group-overview.md)
 
@@ -943,7 +952,6 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure PowerShell のインストールと構成の方法](install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-
-<!--HONumber=52-->
+<!---HONumber=58-->

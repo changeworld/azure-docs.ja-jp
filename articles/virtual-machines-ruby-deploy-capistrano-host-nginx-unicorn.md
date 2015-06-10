@@ -1,8 +1,8 @@
 <properties 
 	pageTitle="Capistrano を使用して Azure 仮想マシンに Ruby on Rails Web アプリケーションをデプロイする - チュートリアル" 
-	description="Capistrano、Unicorn、と Nginx を使用して Azure 仮想マシンに Ruby on Rails Web アプリケーションをデプロイする方法について説明します。" 
-	authors="wpickett" 
-	manager="wpickett" 
+	description="Capistrano、Unicorn、および Nginx を使用して Azure 仮想マシンに Ruby on Rails Web アプリケーションをデプロイする方法について説明します。" 
+	authors="wadepickett" 
+	manager="wadepickett" 
 	editor="" 
 	services="virtual-machines" 
 	documentationCenter=""/>
@@ -17,19 +17,19 @@
 	ms.author="wpickett"/>
 
 
-# Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする
+#Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする
 
-このチュートリアルでは、[Capistrano 3](https://github.com/capistrano/capistrano/) を使用して Azure の仮想マシンに Ruby on Rails Web サイトをデプロイする方法について説明します。デプロイすると、[Nginx](http://nginx.org/) と [Unicorn](https://github.com/blog/517-unicorn) を使用して Web サイトをホストします。[PostgreSQL](https://www.postgresql.org) は、デプロイされるアプリケーションのアプリケーション データを保存します。
+このチュートリアルでは、[Capistrano](https://github.com/capistrano/capistrano/) を使用して Azure の仮想マシンに Ruby on Rails Web サイトをデプロイする方法について説明します。デプロイすると、[Nginx](http://nginx.org/) と [Unicorn](https://github.com/blog/517-unicorn) を使用して Web サイトをホストします。[PostgreSQL](https://www.postgresql.org) は、デプロイされるアプリケーションのアプリケーション データを保存します。
 
-このチュートリアルは、Azure を初めて使用するユーザーを対象としていますが、Ruby、Rails、Git、Linux について詳しく理解していることを前提としています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
+このチュートリアルは、Azure を初めて使用するユーザーを対象としていますが、Ruby、Rails、Git、および Linux について詳しく理解していることを前提としています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
 
 学習内容:
 
 * 開発環境と運用環境を設定する
 
-* Ruby と Ruby on Rails をインストールする
+* Ruby および Ruby on Rails をインストールする
 
-* Unicorn、Nginx、PostgreSQL をインストールする
+* Unicorn、Nginx、および PostgreSQL をインストールする
 
 * 新しい Rails アプリケーションを作成する
 
@@ -39,11 +39,11 @@
 
 ![a browser displaying Listing Posts][blog-rails-cloud]
 
-> [AZURE.NOTE] このチュートリアルで使用するアプリケーションには、ネイティブのバイナリ コンポーネントが含まれています。開発環境が Linux ベースでない場合、VM へのデプロイ時にエラーが発生する場合があります。デプロイ中に使用される Gemfile.lock ファイルにはプラットフォーム固有の gem が含まれますが、ここには VM で必要な gem のネイティブ Linux バージョンのエントリが含まれていないことがあります。
+> [AZURE.NOTE]このチュートリアルで使用するアプリケーションには、ネイティブのバイナリ コンポーネントが含まれています。開発環境が Linux ベースでない場合、VM へのデプロイ時にエラーが発生する場合があります。デプロイメント中に使用される Gemfile.lock ファイルにはプラットフォーム固有の gem が含まれますが、ここには VM で必要な gem のネイティブ Linux バージョンのエントリが含まれていないことがあります。
 > 
-> Windows 開発環境を使用する場合向けに、固有の手順を記載しています。ただし、この記事で説明されていないエラーがデプロイ中やデプロイ後に発生した場合は、この記事の手順を Linux ベースの開発環境から再試行することをお勧めします。
+> Windows 開発環境を使用する場合向けに、固有の手順を記載しています。ただし、この記事で説明されていないエラーがデプロイメント中やデプロイメント後に発生した場合は、この記事の手順を Linux ベースの開発環境から再試行することをお勧めします。
 
-## この記事の内容
+##この記事の内容
 
 * [開発環境を設定する](#setup)
 
@@ -57,51 +57,51 @@
 
 * [Nginx をテストする](#nginx)
 
-* [デプロイの準備をする](#capify)
+* [デプロイメントの準備をする](#capify)
 
 * [デプロイする](#deploy)
 
 * [次のステップ](#next)
 
-## <a id="setup"></a>開発環境を設定する
+##<a id="setup"></a>開発環境を設定する
 
 1. 開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv**、**ruby-build**、**Ruby 2.0.0-p451** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
+	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
 
-	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で **rbenv**、**ruby-build**、**Ruby 2.0.0-p451** を使用して検証されました。
+	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** を使用して検証されました。
 
-	* **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルでは、[RubyInstaller](http://RubyInstaller.org/) を使用して **Ruby 2.0.0-p451** のインストールを検証しました。コマンドは [Git for Windows](http://git-scm.com/download/win) で使用可能な **GitBash** コマンド ラインを使用して発行されました。
+	* **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証では、[RubyInstaller](http://RubyInstaller.org/) を使用して **Ruby 2.0.0-p451** をインストールしました。コマンドは **Git for Windows** で使用可能な [GitBash](http://git-scm.com/download/win) コマンド ラインを使用して実行されました。
 
 2. 新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。
 
 		gem install rails --no-rdoc --no-ri
 
-	> [AZURE.NOTE] オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要になる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように 'sudo' を使用してください。
+	> [AZURE.NOTE]オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要になる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように "sudo" を使用してください。
 	> 
 	> `sudo gem install rails`
 
-	> [AZURE.NOTE] このチュートリアルでは、Rails gem Version 4.0.4 を使用しました。
+	> [AZURE.NOTE]このチュートリアルでは、Rails gem Version 4.0.4 を使用しました。
 
 3. JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme) で確認できます。
 	
-	> [AZURE.NOTE] このチュートリアルでは、[Node.js](http://nodejs.org/) を使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
+	> [AZURE.NOTE] [Node.js]このチュートリアルでは、(http://nodejs.org/) を使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
-## <a id="create"></a>Rails アプリケーションを作成する
+##<a id="create"></a>Rails アプリケーションを作成する
 
-1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して、「blog_app」という名前の新しい Rails アプリケーションを作成します。
+1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して、"blog_app" という名前の新しい Rails アプリケーションを作成します。
 
 		rails new blog_app
 
-	このコマンドは、**blog_app** という新しいディレクトリを作成し、Rails アプリケーションに必要なファイルとサブディレクトリを格納します。
+	これは、**blog_app** という新しいディレクトリを作成し、Rails アプリケーションに必要なファイルとサブディレクトリをそこに格納します。
 
-	> [AZURE.NOTE] このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、実行中は応答しなくなります。
+	> [AZURE.NOTE]このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、実行中は応答しなくなります。
 
-2. ディレクトリを **blog_app** ディレクトリに変更し、次のコマンドを使用して、基本的なブログ スキャフォールディングを作成します。
+2. ディレクトリを **blog_app** に変更し、次のコマンドを使用して、基本的なブログ スキャフォールディングを作成します。
 
 		rails generate scaffold Post name:string title:string content:text
 
-	これにより、コントローラー、ビュー、モデル、ブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、とテキスト コンテンツが含められます。
+	これにより、コントローラー、ビュー、モデル、およびブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、およびテキスト コンテンツが含められます。
 
 3. 次のコマンドを実行して、ブログへの投稿を保存するデータベースを作成します。
 
@@ -115,7 +115,7 @@
 
 	これでユーザーが Web サイトを訪問したときに投稿のリストが表示されます。
 
-## <a id="test"></a>アプリケーションをテストする
+##<a id="test"></a>アプリケーションをテストする
 
 1. 別のディレクトリにいる場合は、**blog_app** ディレクトリに変更します。次のコマンドを使用して rails サーバーを開始します。
 
@@ -131,19 +131,19 @@
 		[2013-03-12 19:11:31] INFO  ruby 2.0.0 (2014-02-24) [x86_64-linux]
 		[2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2. ブラウザーを開き、http://localhost:3000/ に移動します。次のようなページが表示されます。
+2. ブラウザーを開いて、http://localhost:3000/ にアクセスします。次のようなページが表示されます。
 
 	![a page listing posts][blog-rails]
 
 	サーバー プロセスを停止するには、コマンド ラインで Ctrl + C キーを押します。
 
-## <a id="repository"></a>ソース リポジトリを作成する
+##<a id="repository"></a>ソース リポジトリを作成する
 
 Capistrano を使用してアプリケーションをデプロイすると、リポジトリから対象のファイルがプルされます。このチュートリアルでは、バージョン管理に [Git](http://git-scm.com/) を使用し、リポジトリに [GitHub](https://github.com/) を使用します。
 
 1.	[GitHub](https://github.com/) で新しいリポジトリを作成します。GitHub アカウントを持っていない場合は、無料のアカウントにサインアップできます。次の手順では、リポジトリ名が **blog_app** であることを前提としています。
 
-	> [AZURE.NOTE] アプリケーションの自動デプロイメントをサポートするには、GitHub への認証に SSH キーを使用する必要があります。詳細については、[SSH キーの生成方法](https://help.github.com/articles/generating-ssh-keys)に関する GitHub ドキュメントをご覧ください。
+	> [AZURE.NOTE]アプリケーションの自動デプロイメントをサポートするには、GitHub への認証に SSH キーを使用する必要があります。詳細については、[Generating SSH Keys (SSH キーの生成方法)](https://help.github.com/articles/generating-ssh-keys) の GitHub ドキュメントを参照してください。
 
 2.	コマンド プロンプトから、ディレクトリを **blog_app** に変更し、次のコマンドを実行して、アプリケーションを GitHub リポジトリにアップロードします。**YourGitHubName** を GitHub アカウントの名前に置き換えます。
 
@@ -155,9 +155,9 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 
 次のセクションでは、このアプリケーションがデプロイされる仮想マシンを作成します。
 
-## <a id="createvm"></a>Azure の仮想マシンを作成する
+##<a id="createvm"></a>Azure の仮想マシンを作成する
 
-[ここ][vm-instructions] に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
+[ここ][vm-instructions]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
 
 1. [Azure 管理ポータル][management-portal]にサインインします。コマンド バーで、**[新規]** を選択します。
 
@@ -165,17 +165,17 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 
 3. **[イメージの選択]** から **[Ubuntu]** を選択し、次にバージョン **[12.04 LTS]** を選択します。矢印を選択して続行します。
 
-	> [AZURE.NOTE] このチュートリアルの手順は、Ubuntu 12.04 LTS をホストする Azure 仮想マシンで実行しています。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。
+	> [AZURE.NOTE]このチュートリアルの手順は、Ubuntu 12.04 LTS をホストする Azure 仮想マシンで実行しています。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。
 
 4. **[仮想マシン名]** に、使用する名前を入力します。この名前は、この仮想マシンのドメイン名を作成するときに使用します。
 
 5. **[新しいユーザー名]** に、このマシンの管理者アカウントの名前を入力します。
 
-	> [AZURE.NOTE] このチュートリアルでは、アプリケーションのデプロイでも管理者アカウントが使用されます。デプロイメント用の個別のアカウントを作成する詳細については、「[Capistrano][capistrano]」のドキュメントをご覧ください。
+	> [AZURE.NOTE]このチュートリアルでは、アプリケーションのデプロイでも管理者アカウントが使用されます。デプロイメント用の個別のアカウントを作成する詳細については、[Capistrano][capistrano] のドキュメントを参照してください。
 
 6. **[認証]** で、**[互換性のある認証用の SSH キーのアップロード]** をチェックしてから、証明書が含まれた **.pem** ファイルを検索して選択します。最後に、矢印を選択して続行します。
 
-	> [AZURE.NOTE] SSH キーの生成または使用に慣れていない場合は、「[Azure 上の Linux における SSH の使用方法][ssh-on-azure]」で SSH キーの作成手順をご覧ください。
+	> [AZURE.NOTE]SSH キーの生成または使用に慣れていない場合は、「[Azure 上の Linux における SSH の使用方法][ssh-on-azure]」で SSH キーの作成手順を参照してください。
 	> 
 	> パスワードの認証も有効にできますが、自動デプロイメントで使用されるため、SSH キーも指定する必要があります。
 
@@ -183,7 +183,7 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 
 8. 最後のページで、仮想マシンを作成するチェックマークを選択します。
 
-### Git、Ruby、Nginx のインストール
+###Git、Ruby、および Nginx のインストール
 
 仮想マシンが作成されたら、SSH を使用してマシンを接続し、次のコマンドを使用して Ruby アプリケーションのためのホスティング環境を準備します。
 
@@ -204,11 +204,11 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 	gem install bundler
 	~/.rbenv/bin/rbenv rehash
 
-> [AZURE.NOTE] 前のコマンドをスクリプト (.sh ファイル) に保存しておくと、実行時に入力ミスを防げます。
+> [AZURE.NOTE]前のコマンドをスクリプト (.sh ファイル) に保存しておくと、実行時に入力ミスを防げます。
 > 
-> **~/.rbenv/bin/rbenv install 2.0.0-p451** コマンドは完了に数分かかる場合があります。
+> **~/.rbenv/bin/rbenv install 2.0.0-p451** コマンドは完了までに数分かかる場合があります。
 
-**rbenv-install.sh** スクリプトは次のアクションを実行します。
+上記のコマンドでは、次の処理が実行されます。
 	
 * 現在インストール済みのパッケージの更新とアップグレード
 * ビルド ツールのインストール
@@ -216,17 +216,17 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 * Node.js のインストール
 * Nginx のインストール
 * Ruby と Rails で必要なビルド ツールと他のユーティリティのインストール
-* [[rbenv]] のローカル (ユーザー) デプロイメントのセットアップ
+* [rbenv] のローカル (ユーザー) デプロイメントのセットアップ
 * Ruby 2.0.0-p451 のインストール
-* [[Bundler]] gem のインストール
+* [Bundler] gem のインストール
 
 インストールが完了したら、次のコマンドを使用して Ruby が正常にインストールされたことを確認します。
 
 	ruby -v
 
-バージョンとして `ruby 2.0.0p451` が返されます。
+このコマンドで、`ruby 2.0.0p451` がバージョンとして返されます。
 
-### PostgreSQL のインストール
+###PostgreSQL のインストール
 
 Rails で開発用に使用される既定のデータベースは SQLite です。通常、運用環境では別のデータベースを使用します。次の手順では、仮想マシンに PostgreSQL をインストールし、その後、ユーザーとデータベースを作成します。後の手順では、デプロイメント時に PostgreSQL を使用するように Rails アプリケーションを構成します。
 
@@ -234,22 +234,22 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
 		sudo apt-get -y install postgresql postgresql-contrib libpq-dev
 
-6. 次のコマンドを使用してログイン用のユーザーとデータベースを作成します。**my_username** と **my_database** をログイン名に置き換えます。たとえば、vm のログイン名が **deploy** の場合は、**my_username** と **my_database** を **deploy** に置き換えてください。
+6. 次のコマンドを使用してログイン用のユーザーとデータベースを作成します。**my_username** と **my_database** をログイン名に置き換えます。たとえば、vm のログイン名が **deploy** の場合は、これを **my_username** と **my_database** を **deploy** に置き換えてください。
 
 		sudo -u postgres createuser -D -A -P my_username
 		sudo -u postgres createdb -O my_username my_database
 
-	> [AZURE.NOTE] ユーザー名をデータベース名にも使用します。このアプリケーションが使用する capistrano-postgresql gem では、このようにする必要があります。
+	> [AZURE.NOTE]ユーザー名をデータベース名にも使用します。このアプリケーションが使用する capistrano-postgresql gem では、このようにする必要があります。
 
-	入力を求められたら、ユーザーのパスワードを入力します。新しいロールの作成をユーザーに許可するよう求められたら、**y** を選択します。これは、Rails アプリケーションが使用するデータベースとログインの作成のデプロイ時にこのユーザーが使用されるためです。
+	入力を求められたら、ユーザーのパスワードを入力します。新しいロールの作成をユーザーに許可するよう求められたら、**y** を選択します。これは、Rails アプリケーションが使用するデータベースとログインの作成のデプロイメント時にこのユーザーが使用されるためです。
 
 7. ユーザー アカウントを使用してデータベースに接続できるか検証するには、次のコマンドを使用します。**my_username** と **my_database** を先ほど使用した値に置き換えます。
 
 		psql -U my_username -W my_database
 
-	この後、`database=>` プロンプトが表示されます。psql ユーティリティを終了するには、プロンプトから「`\q`」と入力します。
+	この後、`database=>` プロンプトが表示されます。psql ユーティリティを終了するには、プロンプトで「`\q`」と入力します。
 
-### <a id="nginx"></a>Nginx をテストする
+###<a id="nginx"></a>Nginx をテストする
 
 仮想マシンの作成中に追加された HTTP エンドポイントにより、ポート 80 を介した HTTP 要求を許可するようになります。これを確認するには、次の手順を使用して Nginx によって作成された既定のサイトにアクセスできることを確認します。
 
@@ -263,13 +263,13 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
 	![nginx welcome page][nginx-welcome]
 
-	> [AZURE.NOTE] このチュートリアルの後の手順で実行するデプロイメント スクリプトでは、blog_app が Nginx によって提供される既定の Web サイトに設定されます。
+	> [AZURE.NOTE]このチュートリアルの後の手順で実行するデプロイメント スクリプトでは、blog_app が Nginx によって提供される既定の Web サイトに設定されます。
 
-この時点で、Azure 仮想マシンには、デプロイの準備が完了した Ruby、Nginx、PostgreSQL があります。次のセクションで、デプロイを実行するスクリプトと情報を追加するために Rails アプリケーションを変更します。
+この時点で、Azure 仮想マシンには、デプロイメントの準備が完了した Ruby、Nginx、および PostgreSQL があります。次のセクションで、デプロイメントを実行するスクリプトと情報を追加するために Rails アプリケーションを変更します。
 
-## <a id="capify"></a>デプロイの準備をする
+##<a id="capify"></a>デプロイメントの準備をする
 
-開発環境で、Unicorn Web サーバーと PostgreSQL を使用するようにアプリケーションを変更し、デプロイ用に Capistrano を有効にします。また、デプロイとアプリケーションの起動に使用するスクリプトを作成します。
+開発環境で、Unicorn Web サーバーと PostgreSQL を使用するようにアプリケーションを変更し、デプロイメント用に Capistrano を有効にします。また、デプロイとアプリケーションの起動に使用するスクリプトを作成します。
 
 1. 開発用のマシンで、次のように **Gemfile** を変更し、次の行を追加して Unicorn、PostgreSQL、Capistrano 用の gem と、Rails アプリケーション用の関連 gem を追加します。
 
@@ -288,15 +288,13 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 		  gem 'capistrano-postgresql', '~> 3.0'
 		end
 
-	> [AZURE.NOTE] Unicorn は Windows では利用できません。開発環境として Windows を使用している場合は、次のように unicorn gem を指定して VM にデプロイするときにのみ Unicorn のインストールを試みるように、__Gemfile__ を変更してください。
+	> [AZURE.NOTE]Unicorn は Windows では利用できません。開発環境として Windows を使用している場合は、次のように unicorn gem を指定して VM にデプロイするときにのみ Unicorn のインストールを試みるように、__Gemfile__ を変更してください。
 	> 
-	> `platforms :ruby do`
-	> `  gem 'unicorn'`
-	> `end`
+	> `platforms :ruby do` `  gem 'unicorn'` `end`
 
 	大部分の capistraon-* gem は、特定の対象で動作するヘルパーであり、運用サーバー (rbenv) またはフレームワーク (rails) 上で使用します。
 
-	capistrano-unicorn-nginx gem は、Unicorn と Nginx で使用するスクリプトをデプロイ中に自動作成するため、これらのスクリプトを手動で作成する必要はありません。capistrano-postgresql は、アプリケーションで使用する PostgreSQL のデータベース、ユーザー、パスワードを自動生成します。これらを使用する必要はありませんが、いずれもデプロイメントのプロセスを大きく簡略化します。
+	capistrano-unicorn-nginx gem は、Unicorn と Nginx で使用するスクリプトをデプロイメント中に自動作成するため、これらのスクリプトを手動で作成する必要はありません。capistrano-postgresql は、アプリケーションで使用する PostgreSQL のデータベース、ユーザー、パスワードを自動生成します。これらを使用する必要はありませんが、いずれもデプロイメントのプロセスを大きく簡略化します。
  
 5.	次のコマンドを使用して新しい gem をインストールします。
 		
@@ -306,7 +304,7 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
 		cap install
 
-	`cap install` コマンドの完了後、次のファイルとディレクトリがアプリケーションに追加されます。
+	`cap install` コマンドが終了すると、次のファイルとディレクトリがアプリケーションに追加されます。
 
 		├── Capfile
 		├── config
@@ -351,9 +349,10 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 		set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 		set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 		
-		# dirs we want symlinked to the shared folder
+		# dirs and files we want symlinked to the shared folder
 		# during deployment
 		set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+		set :linked_files, %w{config/database.yml config/unicorn.rb}
 		
 		namespace :deploy do
 
@@ -409,11 +408,11 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 		git commit -m "adding config files"
 		git push
 
-これでアプリケーションはデプロイする準備ができました。
+これでアプリケーションはデプロイメントの準備ができました。
 
-> [AZURE.NOTE] より複雑なアプリケーション、または、別のデータベースかアプリケーション サーバーには、追加の構成スクリプトやデプロイメント スクリプトが必要になることがあります。
+> [AZURE.NOTE]より複雑なアプリケーション、または、別のデータベースかアプリケーション サーバーには、追加の構成スクリプトやデプロイメント スクリプトが必要になることがあります。
 
-## <a id="deploy"></a>展開
+##<a id="deploy"></a>デプロイする
 
 2.	ローカルの開発マシンから、次のコマンドを使用して、アプリケーションで使用する構成ファイルを VM にデプロイします。
 
@@ -421,9 +420,9 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
 	Capistrano は SSH を使用して VM に接続してから、アプリケーションがデプロイされるディレクトリ (~/apps) を作成します。これが初回のデプロイメントの場合、capistrano-postgresql gem によってロールとデータベースもサーバー上の PostgreSQL に作成されます。また、Rails がデータベースに接続するために使用する database.yml 構成ファイルも作成されます。
 
-	> [AZURE.NOTE] デプロイ中に、「**認証ソケットからの応答読み取り中の長さエラー**」というエラーが表示された場合は、`ssh-agent` コマンドを使用して、開発環境で SSH エージェントを開始する必要がある場合があります。たとえば、`eval $(ssh-agent)` を ~/.bash_profile ファイルに追加します。
+	> [AZURE.NOTE]デプロイ中に "**Error reading response length from authentication socket**" というエラーが表示された場合は、`ssh-agent` コマンドを使用して、開発環境で SSH エージェントを開始することが必要になる場合があります。たとえば、`eval $(ssh-agent)` を ~/.bash_profile ファイルに追加します。
 	> 
-	> また、次の `ssh-add` コマンドを使用して SSH キーを追加する必要が発生する場合もあります。
+	> また、次の `ssh-add` コマンドを使用して、エージェントのキャッシュに SSH キーを追加することが必要な場合もあります。
 
 4.	次のコマンドを使用して運用デプロイを実行します。これによってアプリケーションが仮想マシンにデプロイされ、Unicorn サービスが開始されます。さらに、Unicorn にトラフィックがルーティングされるように Nginx が構成されます。
 
@@ -431,31 +430,31 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
 	このコマンドはアプリケーションを VM にデプロイして必要な gem をインストールし、その後、Unicorn と Nginx を起動または再起動します。
 
-	> [AZURE.NOTE] このプロセスは処理中に、数分間一時停止する場合があります。
+	> [AZURE.NOTE]このプロセスは処理中に、数分間一時停止する場合があります。
 
-	> [AZURE.NOTE] デプロイメントの一部から 'exit status 1 (failed)' ('終了ステータス 1 (失敗)') が返される場合があります。デプロイメントが正常に終了していれば、このステータスは通常は無視できます。
+	> [AZURE.NOTE]デプロイメントの一部から 'exit status 1 (failed)' ('終了ステータス 1 (失敗)') が返される場合があります。 デプロイメントが正常に終了していれば、このステータスは通常無視できます。
 
-	> [AZURE.NOTE] 一部のシステムでは、GitHub への認証時に SSH エージェントがリモート VM に資格情報を転送できなくなる場合があります。この場合、エラーを解決する代替方法として、**config/deploy.rb** ファイルを変更し、`set :repo_url` 行を、GitHub へのアクセス時に HTTPS を使用するように変更する方法があります。HTTPS を使用する場合は、GitHub ユーザー名とパスワード (または認証トークン) を URL の一部として指定する必要があります。次に例を示します。
+	> [AZURE.NOTE]一部のシステムでは、GitHub への認証時に SSH エージェントがリモート VM に資格情報を転送できなくなる場合があります。この場合、エラーを回避するには、**config/deploy.rb** ファイルを変更します。GitHub へのアクセス時に HTTPS を使用するように `set :repo_url` 行を変更します。HTTPS を使用する場合は、GitHub ユーザー名とパスワード (または認証トークン) を URL の一部として指定する必要があります。次に例を示します。
 	> 
 	> `set :repo_url, 'https://you:yourpassword@github.com/You/yourrepository.git'
 	> 
-	> これによってエラーを回避でき、このチュートリアルも終了できますが、運用デプロイメントにお勧めできる解決法ではありません。この方法は、資格情報をアプリケーションの一部としてプレーンテキストで保存するためです。SSH エージェントでの転送について、オペレーティング システムのドキュメントをご確認ください。
+	> これによってエラーを回避でき、このチュートリアルも終了できますが、運用デプロイメントにお勧めできる解決法ではありません。この方法は、資格情報をアプリケーションの一部としてプレーンテキストで保存するためです。SSH エージェントでの転送について、オペレーティング システムのドキュメントを確認してください。
 
 この時点で、Ruby on Rails アプリケーションは既に Azure の仮想マシンで動作していることになります。これを確認するには、Web ブラウザーに仮想マシンの DNS 名を入力します。たとえば、「http://railsvm.cloudapp.net」のように入力します。投稿のインデックスが表示され、ポストを作成、編集、削除できます。
 
-## <a id="next"></a>次のステップ
+##<a id="next"></a>次のステップ
 
-この記事では、基本的な Rails アプリケーションを作成し、Capistrano を使用して Azure の仮想マシンに発行する方法について説明しました。この記事で紹介した基本的なアプリケーションを使用した方法は、デプロイメントのために Capistrano でできることの一例にすぎません。Capistrano の使用方法の詳細については、以下をご覧ください。
+この記事では、基本的な Rails アプリケーションを作成し、Capistrano を使用して Azure の仮想マシンに発行する方法について説明しました。この記事で紹介した基本的なアプリケーションを使用した方法は、デプロイメントのために Capistrano でできることの一例にすぎません。Capistrano の使用方法の詳細については、以下を参照してください。
 
 * [Capistranorb.com](http://capistranorb.com) - Capistrano のサイトです。
 * [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL](http://wootstudio.ca/articles/tutorial-windows-azure-ruby-on-rails-capistrano-3-postgresql) - Azure にデプロイする代替的な手法で、カスタム デプロイメント スクリプトについて説明します。
-* [Capistrano 3 チュートリアル](http://www.talkingquickly.co.uk/2014/01/deploying-rails-apps-to-a-vps-with-capistrano-v3/) - Capistrano 3 を使用したチュートリアルです。
+* [Capistrano 3 tutorial (Capistrano 3 チュートリアル)](http://www.talkingquickly.co.uk/2014/01/deploying-rails-apps-to-a-vps-with-capistrano-v3/) - Capistrano 3 を使用したチュートリアルです。
 
-より基礎的な例として、Rails アプリケーションを作成し、SSH のみを使用して Azure VM に展開する手順については、「[Linux VM を使用した Azure での Ruby on Rails Web アプリケーション][ruby-vm]」をご覧ください。
+より基礎的な例として、Rails アプリケーションを作成し、SSH のみを使用して Azure VM に展開する手順については、「[Linux VM を使用した Azure での Ruby on Rails Web アプリケーション][ruby-vm]」を参照してください。
 
-Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][rails-guides]をご覧ください。
+Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][rails-guides]を参照してください。
 
-Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクをご覧ください。
+Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクを参照してください。
 
 * [BLOB を使用して非構造化データを保存する][blobs]
 
@@ -473,7 +472,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 [ruby-vm]: /develop/ruby/tutorials/web-app-with-linux-vm/
  
 [blog-rails]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/blograilslocal.png
-[blog-rails-cloud]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/blograilscloud.png 
+[blog-rails-cloud]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/blograilscloud.png
 [default-rails]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/basicrailslocal.png
 [default-rails-cloud]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/basicrailscloud.png
 [vmlist]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/vmlist.png
@@ -486,4 +485,4 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 [ssh-on-azure]: http://azure.microsoft.com/documentation/articles/linux-use-ssh-key/
 [capistrano]: http://capistranorb.com
 
-<!--HONumber=47-->
+<!---HONumber=58-->

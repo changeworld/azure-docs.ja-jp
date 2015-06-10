@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/04/2014" 
+	ms.date="05/20/2015" 
 	ms.author="mbaldwin"/>
 
 
@@ -37,36 +37,36 @@ ACS では、次の機能を使用できます。
 -   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol (OData) ベースの管理サービス。
 -   ACS 設定への管理アクセスが可能な管理ポータル。
 
-ACS の詳細については、「[Access Control Service 2.0][]」をご覧ください。
+ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
 
 ## 概念
 
-ACS はクレームベース ID のプリンシパルに基づいており、これは内部またはクラウドで実行されているアプリケーションの認証メカニズムを作成するための一貫した方法になっています。クレームベース ID は、アプリケーションとサービスが組織内、他の組織内、インターネット上のユーザーに関する必要な ID 情報を取得するための一般的な方法を提供します。
+ACS はクレームベース ID のプリンシパルに基づいており、これは内部またはクラウドで実行されているアプリケーションの認証メカニズムを作成するための一貫した方法になっています。クレームベース ID は、アプリケーションとサービスが組織内、他の組織内、およびインターネット上のユーザーに関する必要な ID 情報を取得するための一般的な方法を提供します。
 
 このガイドのタスクを完了するには、このガイドで使用される次の用語と概念を理解している必要があります。
 
 
-**クライアント** - Web アプリケーションにアクセスしようとするブラウザー。
+**クライアント**: Web アプリケーションにアクセスしようとするブラウザー。
 
-**証明書利用者 (RP) アプリケーション** - 使用しているWeb アプリ。RP アプリケーションは、外部の機関に認証を委託する Web サイトまたは Web サービスです。ID の 分野では、"RP がその機関を信頼する" という表現を使います。このガイドでは、アプリケーションが ACS を信頼するように構成する方法について説明します。
+**証明書利用者 (RP) アプリケーション**: 使用している Web アプリケーション。RP アプリケーションは、外部の機関に認証を委託する Web サイトまたは Web サービスです。ID の分野では、"RP がその機関を信頼する" という表現を使います。このガイドでは、アプリケーションが ACS を信頼するように構成する方法について説明します。
 
-**トークン** - ユーザーは、RP アプリケーションが信頼する機関から発行された有効なトークンを提示して、RP アプリケーションにアクセスできます。クライアントの認証時に発行されたセキュリティ データのコレクションです。これには、クレームのセット、つまり、ユーザーの名前や年齢、ユーザー ロールの ID など、認証されたユーザーの属性が含まれます。トークンはデジタル署名されるため、発行者を特定でき、その内容は変更できません。
+**トークン**: ユーザーは RP アプリケーションが信頼している機関によって発行された有効なトークンを提示することによって、RP アプリケーションにアクセスできます。クライアントの認証時に発行されたセキュリティ データのコレクションです。これには、クレームのセット、つまり、ユーザーの名前や年齢、ユーザー ロールの ID など、認証されたユーザーの属性が含まれます。トークンはデジタル署名されるため、発行者を特定でき、その内容は変更できません。
 
-**ID プロバイダー (IP)** - Microsoft アカウント (Windows Lice ID)、Facebook、Google、Twitter、Active Directory など、ユーザー ID を認証してセキュリティ トークンを発行する機関。ACS が IP を信頼するように構成されている場合、ACS はその IP によって発行されたトークンを受け入れて検証します。ACS は同時に複数の IP を信頼できるので、アプリケーションが ACS を信頼すると、ACS が信頼しているいずれかの IP によって認証するオプションをアプリケーションでユーザーに提示できます。
+**ID プロバイダー (IP)**: ユーザー ID を認証し、セキュリティ トークンを発行する機関。Microsoft アカウント (Windows Live ID)、Facebook、Google、Twitter、Active Directory などです。ACS が IP を信頼するように構成されている場合、ACS はその IP によって発行されたトークンを受け入れて検証します。ACS は同時に複数の IP を信頼できるので、アプリケーションが ACS を信頼すると、ACS が信頼しているいずれかの IP によって認証するオプションをアプリケーションでユーザーに提示できます。
 
-**フェデレーション プロバイダー (FP)** - ID プロバイダー (IP) はユーザーの直接的な情報を把握しており、ユーザーの資格情報を使用してユーザーを承認し、ユーザーのクレームを発行します。フェデレーション プロバイダー (FP) は、それとは別の種類の機関です。ユーザーを直接認証する代わりに、FP は認証を仲介します。証明書利用者アプリケーションと 1 つ以上の IP の間の仲介役として機能します。ACS はフェデレーション プロバイダー (FP) です。
+**フェデレーション プロバイダー (FP)**: ID プロバイダー (IP) はユーザーについての直接の情報を持ち、資格情報を使ってユーザーを認証し、ユーザーに関するクレームを発行します。フェデレーション プロバイダー (FP) は、それとは別の種類の機関です。ユーザーを直接認証する代わりに、FP は認証を仲介します。証明書利用者アプリケーションと 1 つ以上の IP の間の仲介役として機能します。ACS はフェデレーション プロバイダー (FP) です。
 
-**ACS ルール エンジン** - クレーム変換規則は、信頼されている IP からのトークンのクレームを変換し、RP で使用できるようにします。ACS には、RP に指定するクレーム変換規則を適用する規則エンジンが含まれています。
+**ACS 規則エンジン**: クレーム変換規則は、信頼されている IP からのトークンのクレームを変換するため、RP で使用できます。ACS には、RP に指定するクレーム変換規則を適用する規則エンジンが含まれています。
 
-**Access Control 名前空間** - アプリケーション内で ACS リソースのアドレスを指定するための一意のスコープが提供されます。この名前空間には、信頼する IP、サービスを提供する RP アプリケーション、受信トークンに適用する規則などの設定が含まれ、アプリケーションと開発者が ACS とのやり取りに使用するエンドポイントが表示されます。
+**Access Control 名前空間**: アプリケーション内で ACS リソースのアドレスを指定するための一意のスコープが提供されます。この名前空間には、信頼する IP、サービスを提供する RP アプリケーション、受信トークンに適用する規則などの設定が含まれ、アプリケーションと開発者が ACS とのやり取りに使用するエンドポイントが表示されます。
 
-次の図は、Web アプリケーションで ACS 認証がどのように機能するかを示しています。
+次の図は、Web アプリケーションで ACS 認証がどのように機能するかを 示しています。
 
 ![][0]
 
 1.  クライアント (ここではブラウザー) が RP のページを要求します。
-2.  要求がまだ認証されていないため、RP は信頼している機関 (つまり ACS) にユーザーをリダイレクトします。ACS は、この RP 用に指定されている IP の選択肢をユーザーに提示します。ユーザーが適切な IP を選択します。
-3.  クライアントは IP の認証ページに移動し、ユーザーにログオンを求めます。
+2.  要求がまだ認証されていないので、RP は信頼している機関 (つまり ACS) にユーザーをリダイレクトします。ACS は、この RP 用に指定されている IP の選択肢をユーザーに提示します。ユーザーが適切な IP を選択します。
+3.  クライアントは IP の認証ページに移動し、ユーザーにログオンを求めま す。
 4.  クライアントが認証されたら (たとえば、ID 資格情報が入力されたら)、IP はセキュリティ トークンを発行します。
 5.  セキュリティ トークンの発行後、IP は、IP が ACS に発行したセキュリティ トークンを送信するようクライアントに指示します。
 6.  ACS は IP によって発行されたセキュリティ トークンを検証し、このトークンの ID クレームを ACS 規則エンジンに入力して出力 ID クレームを計算し、これらの出力クレームを含む新しいセキュリティトークンを発行します。
@@ -79,20 +79,20 @@ ACS はクレームベース ID のプリンシパルに基づいており、こ
 
 -	Azure サブスクリプション
 -	Microsoft Visual Studio 2012 
--	Identity and Access Tool for Visual Studio 2012 (ダウンロードするには、「 [Identity and Access Tool][]」をご覧ください)
+-	Identity and Access Tool for Visual Studio 2012 (ダウンロードするには、[Identity and Access Tool のダウンロード ページ][]を参照)
 
 
 ## Access Control 名前空間の作成
 
 Azure で Active Directory のアクセス制御を使用するには、Access Control 名前空間を作成します。名前空間では、アプリケーション内で ACS リソースのアドレスを指定するための一意のスコープが提供されます。
 
-1.  [Azure 管理ポータル][]にログインします(https://manage.WindowsAzure.com)。
+1.  [Azure の管理ポータル][] (https://manage.WindowsAzure.com)) にログインします。
     
-2.  **[Active Directory]** をクリックします。  
+2.  **[Active Directory]** をクリックします。
 
 	![][1]
 
-3.  新しい Access Control 名前空間を作成するには、**[新規]** をクリックします。**[アプリケーション サービス]** と **[アクセス制御]** が選択されます。**[簡易作成]** をクリックします。 
+3.  新しい Access Control 名前空間を作成するには、**[新規]** をクリックします。**[アプリケーション サービス]** と **[アクセス制御]** が選択されます。**[簡易作成]** をクリックします。
 
 	![][2]
 
@@ -114,9 +114,9 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 	![][3]
 
-1. **[名前]** に**「MvcACS」**と入力して、**[OK]** をクリックします。
+1. **[名前]** に、「**MvcACS**」と入力して **[OK]** をクリックします。
 1. 次のダイアログで、**[インターネット アプリケーション]** を選択して **[OK]** をクリックします。
-1.  *Views\Shared_LoginPartial.cshtml* ファイルを編集して、内容を次のコードに置き換えます。
+1. *Views\Shared_LoginPartial.cshtml* ファイルを編集し、その内容を次のコードに置き換えます。
 
         @if (Request.IsAuthenticated)
         {
@@ -152,11 +152,11 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 1.	ソリューション エクスプローラーで、MvcACS プロジェクトを右クリックし、**[Identity and Access]** をクリックします。
 
-	**[Identity and Access]** オプションがコンテキスト メニューに表示されない場合、Identity and Access Tool をインストールします。詳細については、[Identity and Access Tool] のダウンロード ページ]をご覧ください。 
+	**[Identity and Access]** オプションがコンテキスト メニューに表示されない場合、Identity and Access Tool をインストールします。詳細については、[Identity and Access Tool のダウンロード ページ]を参照してください。
 
 	![][4]
 
-2.	**[プロバイダー]** タブで、**[Azure Access Control Service を使用する]** を選択します。
+2.	**[プロバイダー]** タブで、**[Azure のアクセス制御サービスを使用する]** を選択します。
 
     ![][44]
 
@@ -164,11 +164,11 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
     ![][444]
 
-	Visual Studio により、Access Control 名前空間に関する情報が要求されます。前の手順で作成した名前空間名を入力します (上の画像では Test ですが、実際には別の名前空間です)。Azure 管理ポータルに戻り、対称キーを取得します。
+	Visual Studio により、Access Control 名前空間に関する情報が要求されます。前の手順で作成した名前空間名を入力します (上の画像では Test ですが、実際には別の名前空間です)。Azure の管理ポータルに戻り、対称キーを取得します。
 
 	![][17]
 
-4.  Azure 管理ポータルで、Access Control 名前空間をクリックし **[管理]** をクリックします。
+4.  Azure の管理ポータルで、Access Control 名前空間をクリックし、**[管理]** をクリックします。
 
 	![][8]
 
@@ -176,7 +176,7 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 	![][18]
 
-6.	**[対称キー]** をクリックし、**[キーの表示]** をクリックして、キーの値をコピーします。次に、**[キャンセル]** をクリックし、変更を加えずに管理クライアントの編集ページを終了します。 
+6.	**[対称キー]** をクリックし、**[キーの表示]** をクリックして、キーの値をコピーします。次に、**[キャンセル]** をクリックし、変更を加えずに管理クライアントの編集ページを終了します。
 
 	![][19]
 
@@ -186,7 +186,7 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 	Visual Studio は、名前空間に関する情報を使用して ACS 管理ポータルに接続し、ID プロバイダー、領域、戻り先 URL など、名前空間の設定を取得します。
 
-8.	**[Windows Live ID]** (Microsoft アカウント) を選択して [OK] をクリックします。 
+8.	**[Windows Live ID]** (Microsoft アカウント) を選択して [OK] をクリックします。
 
 	![][5]
 
@@ -200,34 +200,32 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 ![][6]
 
-ご利用ありがとうございます。ACS と ASP.NET Web アプリケーションを正常に統合できました。ACS が Microsoft アカウントの資格情報を使用してユーザーの認証を処理するようになっています。
+ご利用ありがとうございます。 ACS と ASP.NET Web アプリケーションを正常に統合できました。ACS が Microsoft アカウントの資格情報を使用してユーザーの認証を処理するようになっています。
 
 ## ACS により送信されたクレームを参照する
 
 このセクションでは、ACS によって送信されたクレームが参照されるようにアプリケーションを変更します。Identity and Access Tool により、IP からアプリケーションへのすべてのクレームを通過する規則グループが作成されています。ID プロバイダーが異なると送信されるクレームが異なる点に注意してください。
 
-1.  *Controllers\HomeController.cs* ファイルを開きます。**System.Threading** の :**using** ステートメントを追加します。
+1. *Controllers\HomeController.cs* ファイルを開きます。**System.Threading** の **using** ステートメントを追加します。
 
  	using System.Threading;
 
-1. HomeController クラスに、 *Claims* メソッドを追加します。
+1. HomeController クラスに、*Claims* メソッドを追加します。
 
-    public ActionResult Claims()
-    {
-        ViewBag.Message = "Your claims page.";
+    public ActionResult Claims() { ViewBag.Message = "Your claims page.";
 
         ViewBag.ClaimsIdentity = Thread.CurrentPrincipal.Identity;
 
         return View();
-    }
+    {
 
-1.  *Claims* メソッドを右クリックして、**[ビューの追加]** をクリックします。
+1. *Claims* メソッドを右クリックし、**[ビューの追加]** を選択します。
 
 ![][66]
 
 1. **[追加]** をクリックします。
 
-1.  *Views\Home\Claims.cshtml* ファイルの内容を次のコードに置き換えます。
+1. *Views\Home\Claims.cshtml* ファイルの内容を、次のコードに置き換えます。
 
         @{
             ViewBag.Title = "Claims";
@@ -277,23 +275,23 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
         }
         </table>
 
-1. アプリケーションを実行し、 *Claims* メソッドに移動します。
+1. アプリケーションを実行し、*Claims* メソッドに移動します。
 
 ![][666]
 
-アプリケーションでのクレームの使い方の詳細については、「[Windows Identity Foundation library](http://msdn.microsoft.com/library/hh377151.aspx)」をご覧ください。
+アプリケーションでのクレームの使い方の詳細については、「[Windows Identity Foundation](http://msdn.microsoft.com/library/hh377151.aspx)」を参照してください。
 
 ## ACS 管理ポータルでアプリケーションを参照する
 
 Visual Studio の Identity and Access Tool は、アプリケーションと ACS と自動的に統合します。
 
-[Azure の Access Control を使用する] オプションを選択してアプリケーションを実行すると、Identity and Access Tool によりアプリケーションが証明書利用者として追加されて、選択された ID プロバイダーを使用するように構成され、アプリケーションの既定のクレーム変換規則が生成され選択されます。
+[Azure の Access Control を使用する] オプションを選択してアプリケーションを実行すると、Identity and Access Tool によりアプリケーションが証明書利用者として追加されて、選択された ID プロバイダーを使用するように構成され、アプリケーションの既定のクレーム変換規則が生成および選択されます。
 
 これらの構成設定は、ACS 管理ポータルで確認して変更できます。ポータルで変更を確認するには、次のステップを使用します。
 
-1.	[Azure 管理ポータル](http://manage.WindowsAzure.com) にログインします。
+1.	[Windows Azure の管理ポータル](http://manage.WindowsAzure.com)にログインします。
 
-2.	**[Active Directory]** をクリックします。 
+2.	**[Active Directory]** をクリックします。
 
 	![][8]
 
@@ -329,20 +327,20 @@ ACS 管理ポータルを使用して、MvcACS アプリケーションの認証
 
 	![][13]
 
-2.	**[Google]** をクリックして **[次へ]** をクリックします。MvcACS アプリケーションのチェック ボックスが既定でオンになっています。 
+2.	**[Google]** をクリックし、**[次へ]** をクリックします。MvcACS アプリケーションのチェック ボックスが既定でオンになっています。
 
 	![][14]
 
-3. [保存] をクリックします。 
+3. [保存] をクリックします。
 
 	![][15]
 
 
-これで完了です。Visual Studio に戻ったら、MvcACS アプリケーションのプロジェクトを開いて **[Identity and Access]** をクリックすると、ツールにより Windows Live ID と Google ID プロバイダーの両方が一覧表示されます。  
+これで完了です。 Visual Studio に戻ったら、MvcACS アプリケーションのプロジェクトを開いて **[Identity and Access]** をクリックすると、ツールにより Windows Live ID と Google ID プロバイダーの両方が一覧表示されます。
 
 ![][16]
 
-また、アプリケーションを実行すると、効果を確認できます。アプリケーションで複数の ID プロバイダーがサポートされる場合、ユーザーのブラウザーにはまず ACS によりホストされているページが表示され、ユーザーは ID プロバイダーの選択を求められます。 
+また、アプリケーションを実行すると、効果を確認できます。アプリケーションで複数の ID プロバイダーがサポートされる場合、ユーザーのブラウザーにはまず ACS によりホストされているページが表示され、ユーザーは ID プロバイダーの選択を求められます。
 
 ![][7]
 
@@ -350,34 +348,32 @@ ACS 管理ポータルを使用して、MvcACS アプリケーションの認証
 
 ## 参照トピック
 
-ACS と統合された Web アプリケーションを作成できました。ただし、まだ始まりにすぎません。このシナリオを展開できます。
+ACS と統合された Web アプリケーションを作成できました。ただし、まだ始まりにすぎません。 このシナリオを展開することができます。
  
-たとえば、この RP に他の ID プロバイダーを追加したり、Active Directory ドメイン サービスなどのエンタープライズ ディレクトリに登録されたユーザーが Web アプリケーションにログオンできるようにしたりできます。
+たとえば、この RP に他の ID プロバイダーを追加したり、Active Directory ドメイン サービスなどのエンタープライズ ディレクトリに登録されたユーザーが Web アプリケーションにログオンできるようにしたりすることができます。
 
 アプリケーション ビジネス ロジックで処理するためにアプリケーションに送信されるクレームを決定する規則を、名前空間に追加することもできます。
 
-さらに ACS の機能を調べたり、他のシナリオを試してみたりする場合は、[アクセス制御サービス 2.0 に関するページ]をご覧ください。
+さらに ACS の機能を調べたり、他のシナリオを試してみたりする場合は、[アクセス制御サービス 2.0 に関するページ]を参照してください。
 
 
 
-  [ACS とは]: #what-is
-  [概念]: #concepts
-  [前提条件]: #pre
-  [ASP.NET MVC アプリケーションを作成する]: #create-web-app
-  [Access Control 名前空間を作成する]: #create-namespace
-  [Web アプリケーションを ACS と統合する]: #Identity-Access
-  [ACS との統合をテストする]: #Test-ACS
-  [ACS 管理ポータルでアプリケーションを表示する]: acs-portal
-  [ID プロバイダーを追加する]: #add-IP
-  [参照トピック]: #whats-next
+  [What is ACS?]: #what-is
+  [Concepts]: #concepts
+  [Prerequisites]: #pre
+  [Create an ASP.NET MVC Application]: #create-web-app
+  [Create an Access Control Namespace]: #create-namespace
+  [Integrate your Web Application with ACS]: #Identity-Access
+  [Test the Integration with ACS]: #Test-ACS
+  [View the Application in the ACS Management Portal]: acs-portal
+  [Add an Identity Provider]: #add-IP
+  [What's Next]: #whats-next
   [vcsb]: #bkmk_viewClaims
   [vpp]: #bkmk_VP
 
-  [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
   [アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
-  [ID と アクセス ツール]: http://go.microsoft.com/fwlink/?LinkID=245849
-  [Identity and Access Tool]: http://go.microsoft.com/fwlink/?LinkID=245849
-  [Azure 管理ポータル]: http://manage.WindowsAzure.com
+  [Identity and Access Tool のダウンロード ページ]: http://go.microsoft.com/fwlink/?LinkID=245849
+  [Azure の管理ポータル]: http://manage.WindowsAzure.com
 
   [0]: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png
   [1]: ./media/active-directory-dotnet-how-to-use-access-control/acsCreateNamespace.png
@@ -405,4 +401,4 @@ ACS と統合された Web アプリケーションを作成できました。�
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
 
-<!--HONumber=47-->
+<!---HONumber=58-->

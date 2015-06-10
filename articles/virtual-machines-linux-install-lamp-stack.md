@@ -1,19 +1,19 @@
-﻿<properties 
-	pageTitle="Linux 仮想マシンへの LAMP スタックのインストール" 
-	description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。Ubuntu または CentOS 上でインストールできます。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="szarkos" 
-	manager="timlt" 
+<properties
+	pageTitle="Linux 仮想マシンへの LAMP スタックのインストール"
+	description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。Ubuntu または CentOS 上でインストールできます。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="szarkos"
+	manager="timlt"
 	editor=""/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/18/2014" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/08/2015"
 	ms.author="szark"/>
 
 
@@ -37,12 +37,12 @@ LAMP スタックは次のさまざまな要素で構成されています。
 - `php5`
 - `php5-mysql`
 
- `apt-get update` を実行してパッケージのローカル リストを更新したら、これらのパッケージを 1 つの  `apt-get install` コマンドでインストールできます。
+`apt-get update` を実行してパッケージのローカル リストを更新したら、これらのパッケージを 1 つの `apt-get install` コマンドでインストールできます。
 
 	# sudo apt-get update
 	# sudo apt-get install apache2 mysql-server php5 php5-mysql
 
-上記のコマンドを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。 'y' and then 'Enter' キーを押して続行し、後続の指示に従って MySQL の管理パスワードを設定します。
+上記のコマンドを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。続行するには、y キーと Enter キーの順に押し、後続の指示に従って MySQL の管理パスワードを設定します。
 
 これにより、MySQL で PHP を使用する上で必要最小限の PHP 拡張機能がインストールされます。パッケージとして利用可能な他の PHP 拡張機能を表示するには、下記のコマンドを実行します。
 
@@ -63,7 +63,7 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 	# sudo yum install httpd mysql mysql-server php php-mysql
 
-上記のコマンドを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。 'y' and then 'Enter' キーを押して、続行します。
+上記のコマンドを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。続行するには、y キーと Enter キーの順に押します。
 
 これにより、MySQL で PHP を使用する上で必要最小限の PHP 拡張機能がインストールされます。パッケージとして利用可能な他の PHP 拡張機能を表示するには、下記のコマンドを実行します。
 
@@ -83,7 +83,7 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 	# sudo zypper install apache2 mysql apache2-mod_php53 php53-mysql
 
-上記のコマンドを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。 'y' and then 'Enter' キーを押して、続行します。
+上記のコマンドを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。続行するには、y キーと Enter キーの順に押します。
 
 これにより、MySQL で PHP を使用する上で必要最小限の PHP 拡張機能がインストールされます。パッケージとして利用可能な他の PHP 拡張機能を表示するには、下記のコマンドを実行します。
 
@@ -101,7 +101,7 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 		- CentOS と Oracle: `sudo service httpd restart`
 
-	- Apache は既定でポート 80 をリッスンします。Apache サーバーにリモートでアクセスするには、エンドポイントを開く必要がある場合があります。詳細な手順については、[エンドポイントの構成](http://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/)に関するドキュメントを参照してください。
+	- Apache は既定でポート 80 をリッスンします。Apache サーバーにリモートでアクセスするには、エンドポイントを開く必要がある場合があります。詳細な手順については、[エンドポイントの構成](virtual-machines-set-up-endpoints.md)に関するドキュメントを参照してください。
 
 	- これで、Apache が実行されていること、およびコンテンツを返していることを確認できます。ブラウザーで `http://[MYSERVICE].cloudapp.net` にアクセスします。**[MYSERVICE]** は仮想マシンが配置されているクラウド サービスの名前です。一部のディストリビューションでは、"It works!" とだけ表示された既定の Web ページが表示される場合があります。または、追加のドキュメントへのリンクや Apache サーバーの構成に関するコンテンツを掲載した、より詳細な Web ページが表示される場合もあります。
 
@@ -118,8 +118,10 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 ##参考資料
 
-Ubuntu 上での LAMP スタックの設定については多くのリソースがあります。
+アプリケーションをリモートの Linux 仮想マシンにデプロイする手順を自動化できるとしたらいかがでしょう。 Linux CustomScript 拡張機能を使用して、これを実現できます。「[Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする](virtual-machines-linux-script-lamp.md)」を参照してください。
+
+Ubuntu 上での LAMP スタックの設定については、他にも多くのリソースがあります。
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 
-<!--HONumber=45--> 
+<!---HONumber=58-->

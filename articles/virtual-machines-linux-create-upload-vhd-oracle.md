@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure 上での Oracle Linux VHD の作成とアップロード" 
 	description="Oracle Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
 	services="virtual-machines" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/13/2015" 
-	ms.author="szarkos"/>
+	ms.date="05/15/2015" 
+	ms.author="szark"/>
 
 # Azure 用の Oracle Linux 仮想マシンの準備
 
@@ -23,10 +23,10 @@
 
 ##前提条件##
 
-この記事では、既に Oracle Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションを含め、複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+この記事では、既に Oracle Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 
-**Oracle Linux のインストールに関する一般的な注記**
+**Oracle Linux のインストールに関する注記**
 
 - Oracle の Red Hat 互換カーネルとその UEK3 (Unbreakable Enterprise Kernel) は、両方とも Hyper-V と Azure でサポートされています。最良の結果を得るために、Oracle Linux VHD を準備する際に、最新のカーネルに更新してください。
 
@@ -43,7 +43,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## <a id="oracle6"> </a> Oracle Linux 6.4+ ##
+## <a id="oracle6"> </a> Oracle Linux 6.4 以上 ##
 
 Azure 上で実行する仮想マシンのオペレーティング システムで固有の構成手順を完了する必要があります。
 
@@ -55,14 +55,14 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 
 		# sudo rpm -e --nodeps NetworkManager
 
-	**注:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されることが想定されます。
+	**注意:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
 
-4.	`/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
+4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
 		NETWORKING=yes
 		HOSTNAME=localhost.localdomain
 
-5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
+5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前でファイルを作成し、次のテキストを追加します。
 
 		DEVICE=eth0
 		ONBOOT=yes
@@ -92,7 +92,7 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、Oracle の Red Hat 互換カーネルのバグが原因で NUMA が無効になります。
 
-	そのほかにも、次のパラメーターを*remove*することをお勧めします。 
+	上記のほかに、次のパラメーターを*削除*することをお勧めします。
 
 		rhgb quiet crashkernel=auto
 
@@ -111,7 +111,7 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 
 12.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -125,13 +125,13 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 		# export HISTSIZE=0
 		# logout
 
-14. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+14. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ----------
 
 
-## <a id="oracle7"> </a> Oracle Linux 7.0+ ##
+## <a id="oracle7"> </a> Oracle Linux 7.0 以上 ##
 
 **Oracle Linux 7 での変更**
 
@@ -149,12 +149,12 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-3.	`/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
+3.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
 		NETWORKING=yes
 		HOSTNAME=localhost.localdomain
 
-4.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
+4.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前でファイルを作成し、次のテキストを追加します。
 
 		DEVICE=eth0
 		ONBOOT=yes
@@ -187,7 +187,7 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 		GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。そのほかにも、次のパラメーターを*remove*することをお勧めします。 
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを*削除*することをお勧めします。
 
 		rhgb quiet crashkernel=auto
 
@@ -208,7 +208,7 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 13.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -222,8 +222,6 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 		# export HISTSIZE=0
 		# logout
 
-15. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+15. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-
-
-<!--HONumber=45--> 
+<!---HONumber=58-->

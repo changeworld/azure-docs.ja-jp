@@ -7,7 +7,7 @@
    <th align="left" valign="middle">標準</th>
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/services/web-sites/">Web サイト</a><sup>1</sup> <a href="http://azure.microsoft.com/documentation/articles/web-sites-web-hosting-plan-overview/">Web ホスティング プラン</a>あたり</p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/services/web-sites/">Web ホスティング プラン</a>ごとの<sup>Websites</sup><a href="http://azure.microsoft.com/documentation/articles/web-sites-web-hosting-plan-overview/">1</a></p></td>
    <td valign="middle"><p>10</p></td>
    <td valign="middle"><p>100</p></td>
    <td valign="middle"><p>500<sup>2</sup></p></td>
@@ -50,8 +50,8 @@
 </tr>
 <tr>
    <td valign="middle"><p>メモリ (1 時間)<sup>7</sup></p></td>
-   <td valign="middle"><p>1024 MB<sup>7</sup></p></td>
-   <td valign="middle"><p>1024 MB</p></td>
+   <td valign="middle"><p>1,024 MB<sup>7</sup></p></td>
+   <td valign="middle"><p>1,024 MB</p></td>
    <td valign="middle"><p>該当なし</p></td>
    <td valign="middle"><p>該当なし</p></td>
 </tr>
@@ -82,66 +82,66 @@
    <td valign="middle"><p>5</p></td>
 </tr><tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/">FTP/S と SSL を利用する azurewebsites.net サブドメイン</a></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr><tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/">カスタム ドメイン</a>のサポート</p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr><tr>
-   <td valign="middle"><p>カスタム ドメインの <a href="http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/">SSL サポート</a><sup>9</sup></p></td>
+   <td valign="middle"><p>カスタム ドメインの <a href="http://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/">SSL のサポート</a><sup>9</sup></p></td>
    <td valign="middle"><p></p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
    <td valign="middle"><p>5 件の SNI SSL 接続と 1 件の IP SSL 接続が含まれる</p></td>
 </tr><tr>
-   <td valign="middle"><p>統合ロード バランサー</p></td>
+   <td valign="middle"><p>統合 Load Balancer</p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr><tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-configure/">常時接続</a></p></td>
    <td valign="middle"><p></p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr>
 <tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-backup/">バックアップ</a></p></td>
    <td valign="middle"><p></p></td>
    <td valign="middle"><p></p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr><tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-scale/">自動スケール</a></p></td>
    <td valign="middle"><p></p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr><tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/">Web ジョブ</a><sup>10</sup></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr>
 <tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/services/scheduler/">Azure Scheduler</a> のサポート</p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr><tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-monitor/">エンドポイントの監視</a></p></td>
    <td valign="middle"><p></p></td>
    <td valign="middle"><p></p></td>
-   <td valign="middle"><p>X</p></td>
-   <td valign="middle"><p>X</p></td>
+   <td valign="middle"><p>○</p></td>
+   <td valign="middle"><p>○</p></td>
 </tr>
 <tr>
    <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/web-sites-staged-publishing/">ステージング スロット (プレビュー)</a></p></td>
@@ -166,13 +166,13 @@
 </tr>
 </table>
 
-<sup>1</sup>Web サイトとストレージのクォータは、特に記述のない限り、Web ホスティング プラン単位の数字です。
+<sup>1</sup>WebSites とストレージのクォータは、特に記述のない限り、Web ホスティング プラン単位の数字です。
 
 <sup>2</sup>Basic と Standard のサイトは専用マシンで実行されます。これらのマシンで実際にホストできるサイトの数は、サイトのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。
 
-<sup>3</sup>Free レベルを除き、Web ホスティング プランの制限はリソース グループ単位です。リソース グループの作成と管理の詳細については、「[リソース グループを使用した Azure リソースの管理][useresourcegroups]」をご覧ください。
+<sup>3</sup>Free レベルを除き、Web ホスティング プランの制限はリソース グループ単位です。リソース グループの作成と管理の詳細については、「[リソース グループを使用した Azure リソースの管理][useresourcegroups]」を参照してください。
 
-<sup>4</sup>専用インスタンスのサイズは、S、M、L です。詳細については、「[Azure WebSites の料金に関するページ][websitespricing]」をご覧ください。サポート要求を行って、インスタンスを追加することもできます。
+<sup>4</sup>専用インスタンスのサイズは、S、M、L です。詳細については、[Azure WebSites の料金に関するページ][websitespricing]を参照してください。サポート要求を行って、インスタンスを追加することもできます。
 
 <sup>5</sup>すべての Web サイトがサイト コンテンツ用に同じストレージ リソースを共有します。したがって、ストレージの制限は、Web サイト単位のサイズではなく、すべてのサイトの合計サイズです。サポート要求を行って、ストレージの制限を引き上げることもできます。
 
@@ -190,4 +190,4 @@
   [websitespricing]: http://azure.microsoft.com/pricing/details/web-sites/
   [sslpricing]: http://azure.microsoft.com/pricing/details/web-sites/#ssl-connections
 
-<!--HONumber=47-->
+<!---HONumber=58-->

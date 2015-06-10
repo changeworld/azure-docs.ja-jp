@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Storage の使用" 
 	description="Visual Studio の ASP.NET 5 プロジェクトで Azure キュー ストレージの使用を開始する方法" 
 	services="storage" 
@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
+	ms.date="04/20/2015" 
 	ms.author="kempb"/>
 
-> [AZURE.SELECTOR]
-> - [はじめに](vs-storage-aspnet5-getting-started-queues.md)
-> - [変更内容](vs-storage-aspnet5-what-happened.md)
-
-## Azure Storage の使用 (ASP.NET 5 プロジェクト)
+# Azure Storage の使用 (ASP.NET 5 プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [BLOB](vs-storage-aspnet5-getting-started-blobs.md)
-> - [キュー](vs-storage-aspnet5-getting-started-queues.md)
-> - [テーブル](vs-storage-aspnet5-getting-started-tables.md)
+> - [Getting Started](vs-storage-aspnet5-getting-started-queues.md)
+> - [What Happened](vs-storage-aspnet5-what-happened.md)
 
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[.NET からキュー ストレージを使用する方法](http://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET")」をご覧ください。
+> [AZURE.SELECTOR]
+> - [Blobs](vs-storage-aspnet5-getting-started-blobs.md)
+> - [Queues](vs-storage-aspnet5-getting-started-queues.md)
+> - [Tables](vs-storage-aspnet5-getting-started-tables.md)
+
+Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)](storage-dotnet-how-to-use-queues.md/ "How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)")」を参照してください。
 
 ASP.NET 5 プロジェクトでプログラムを使用してキューにアクセスするには、次の項目を追加する必要があります (存在していない場合)。
 
@@ -40,32 +40,32 @@ ASP.NET 5 プロジェクトでプログラムを使用してキューにアク�
 
 2. 次のコードを使用して構成設定を取得します。
 
-		 Configuration = new Configuration()
+		 IConfigurationSourceRoot config = new Configuration()
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
 
 #####ストレージ接続文字列を取得する
-キューを使用した操作を行うには、キューを使用するストレージ アカウントの接続文字列を取得する必要があります。ストレージ アカウント情報を表すには、**CloudStorageAccount** 型を使用します。ASP.NET 5 プロジェクトを使用する場合、次のコードに示すように、構成オブジェクトの get メソッドを呼び出して Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得することができます。
+キューの操作を開始するには、キューを格納するストレージ アカウントの接続文字列を取得する必要があります。**CloudStorageAccount** 型を使用してストレージ アカウント情報を表すことができます。ASP.NET 5 プロジェクトを使用する場合、次のコードに示すように、構成オブジェクトの get メソッドを呼び出して Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得することができます。
 
-**注:** ASP.NET 5 で Azure ストレージへの呼び出しを実行する API は、非同期です。詳細については、「[Async や Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」をご覧ください。次のコードは、非同期のプログラミング方法が使用されていると仮定しています。
+**注:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       config.Get("MicrosoftAzureStorage:<storageAccountName>_AzureStorageConnectionString"));
 
 #####キューを作成する
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このトピックのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx "CloudStorageAccount") に関するドキュメントをご覧ください。
+**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このトピックのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount メソッド](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx "CloudStorageAccount")に関するドキュメントを参照してください。
 
-**注:** ASP.NET 5 で Azure ストレージへの呼び出しを実行する API は、非同期です。詳細については、「[Async や Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」をご覧ください。次のコードは、非同期のプログラミング方法が使用されていると仮定しています。
+**注:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 	// Create the queue client.
 	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。コードは "myqueue" という名前のキューを参照しようとします。この名前のキューが見つからない場合は作成します。
+**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。コードは "myqueue" という名前のキューを参照しようとします。 この名前のキューが見つからない場合は作成します。
 
-	// Get a reference to a queue named "myqueue".
+	// Get a reference to a queue named “myqueue”.
 	CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-	// If the queue isn't already there, then create it.
+	// If the queue isn’t already there, then create it.
 	await queue.CreateIfNotExistsAsync();
 
 **注:** このコードはすべて、以下のセクションのコードの前に使用してください。
@@ -87,13 +87,13 @@ PeekMessageAsync() メソッドを呼び出すと、キューの先頭にある�
 	CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
 
 #####次のメッセージを削除する
-コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。 
+コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
 
 
 1. GetMessageAsync() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessageAsync() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。 
 2.	また、キューからのメッセージの削除を完了するには、DeleteMessageAsync() を呼び出します。 
 
-このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。また、キューからのメッセージの削除を完了するには、DeleteMessageAsync() を呼び出します。
+このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に DeleteMessageAsync() を呼び出します。
 
 	// Get the next message in the queue.
 	CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
@@ -101,7 +101,6 @@ PeekMessageAsync() メソッドを呼び出すと、キューの先頭にある�
 	// Process the message in less than 30 seconds, and then delete the message.
 	await queue.DeleteMessageAsync(retrievedMessage);
 
-[Azure Storage の詳細を確認する](http://azure.microsoft.com/documentation/services/storage/)
-「[サーバー エクスプローラーを使用したストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)」と「[ASP.NET 5](http://www.asp.net/vnext)」もご覧ください。
+[Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
 
-<!--HONumber=47-->
+<!---HONumber=58-->

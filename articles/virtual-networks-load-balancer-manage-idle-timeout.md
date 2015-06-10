@@ -1,28 +1,28 @@
-﻿<properties 
+<properties 
    authors="danielceckert" 
    documentationCenter="dev-center-name" 
    editor=""
    manager="jefco" 
-   pageTitle="管理:ロード バランサーのアイドル タイムアウト" 
+   pageTitle="管理: ロード バランサーのアイドル タイムアウト" 
    description="Azure ロード バランサーのアイドル タイムアウトの管理機能" 
    services="virtual-network" 
    />
 
 <tags
    ms.author="danecke"
-   ms.date="02/20/2015"
+   ms.date="05/27/2015"
    ms.devlang="na"
    ms.service="virtual-network"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   /> 
+   />
    
-# 仮想ネットワークの管理:ロード バランサーの TCP アイドル タイムアウト
+# 仮想ネットワークの管理: ロード バランサーの TCP アイドル タイムアウト
 
 **TCP アイドル タイムアウト**を使うと、Azure ロード バランサーに関連するクライアントとサーバーのセッションで、アイドル状態を保証する時間のしきい値を指定できます。TCP アイドル タイムアウトの値は 4 分です (Azure ロード バランサーの既定)。つまり、Azure ロード バランサーに関連するクライアントとサーバーのセッションで 4 分間アイドル状態が続くと、接続が終了します。
 
-クライアントとサーバーの接続が終了すると、クライアント アプリケーションで「基礎になる接続が閉じられました: 維持される必要があった接続が、サーバーによって切断されました」というエラーメッセージが表示されます。
+クライアントとサーバーの接続が終了すると、クライアント アプリケーションで "基礎になる接続が閉じられました: 維持される必要があった接続が、サーバーによって切断されました" というエラー メッセージが表示されます。
 
 アイドル状態が長時間続く場合にも接続を維持するには、[TCP Keep-Alive](http://tools.ietf.org/html/rfc1122#page-101) を使うのが一般的です [(MSDN の例)](http://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。TCP Keep-Alive が使用された場合、単純なパケットがクライアントによって定期的に (通常はサーバーのアイドル状態のタイムアウトしきい値よりも短い頻度) 送信されます。他のアクティビティが発生していなくても、サーバーによってこのパケット送信が接続アクティビティであると認識され、アイドル タイムアウト値に達することがなくなり、長時間接続が維持されます。
 
@@ -32,23 +32,23 @@ TCP Keep-Alive は便利ですが、モバイル アプリケーションでは�
 
 ## 実装
 
-TCP アイドル タイムアウトは次のように構成できます。 
+TCP アイドル タイムアウトは次のように構成できます。
 
-* [インスタンス レベル パブリック IP](http://msdn.microsoft.com/library/azure/dn690118.aspx)
+* [インスタンスレベル パブリック IP](http://msdn.microsoft.com/library/azure/dn690118.aspx)
 * [負荷分散エンドポイント セット](http://msdn.microsoft.com/library/azure/dn655055.aspx)
-* [仮想マシン エンドポイント](http://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/)
+* [仮想マシン エンドポイント](virtual-machines-set-up-endpoints.md)
 * [Web ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
-* [Worker ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
+* [worker ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
 
 ## 次のステップ
 * TBD
 
 ## PowerShell の例
-「[最新の Azure PowerShell リリース](https://github.com/Azure/azure-sdk-tools/releases)」をダウンロードしてお試しください。
+[最新の Azure PowerShell リリース](https://github.com/Azure/azure-sdk-tools/releases)をダウンロードしてお試しください。
 
 ### インスタンス レベル パブリック IP の TCP タイムアウトを 15 分で構成します。
 
-    Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
+    Set-AzurePublicIP –PublicIPName webip –VM MyVM -IdleTimeoutInMinutes 15
 
 IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定のタイムアウト時間は 4 分です。4 分から 30 分の間で設定できます。
 
@@ -58,7 +58,7 @@ IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定�
 
 ### アイドル タイムアウトの構成を取得します。
 
-    PS C:> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
+    PS C:> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
     
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -87,7 +87,7 @@ IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定�
 
 Azure SDK for .NET を使用してクラウド サービスをアップデートできます。
 
-クラウド サービスのエンドポイントの設定は、.csdef で行われます。そのため、クラウド サービスのデプロイで TCP タイムアウトをアップデートするには、デプロイのアップグレードが必要です。TCP タイムアウトがパブリック IP 向けにのみ指定されている場合は例外として扱われます。パブリック IP は .cscfg で設定され、デプロイのアップデートやアップグレードを通じて更新されます。
+クラウド サービスのエンドポイントの設定は、.csdef で行われます。そのため、クラウド サービスのデプロイメントで TCP タイムアウトをアップデートするには、デプロイメントのアップグレードが必要です。TCP タイムアウトがパブリック IP 向けにのみ指定されている場合は例外として扱われます。パブリック IP は .cscfg で設定され、デプロイメントのアップデートやアップグレードを通じて更新されます。
 
 エンドポイント設定の .csdef の変更は次のように行います。
 
@@ -112,7 +112,7 @@ Azure SDK for .NET を使用してクラウド サービスをアップデート
 
 ロード バランサーの分散は、サービス管理 API を使って構成できます。x-ms-version ヘッダーが 2014-06-01 以降のバージョンで設定されていることをご確認ください。
 
-### デプロイされているすべての仮想マシンで、指定した負荷分散入力エンドポイントの構成をアップデートします。
+### デプロイメントされているすべての仮想マシンで、指定した負荷分散入力エンドポイントの構成をアップデートします。
 
 #### 要求
 
@@ -151,4 +151,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-<!--HONumber=47-->
+<!---HONumber=58-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Stream Analytics ジョブの監視 | Azure" 
-	description="プログラムで Stream Analytics ジョブを監視します。" 
+	pageTitle="Stream Analytics 上のジョブをプログラムで監視する |Microsoft Azure" 
+	description="REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブをプログラムで監視する方法の詳細について説明します。" 
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -13,11 +13,11 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/07/2015" 
+	ms.date="05/21/2015" 
 	ms.author="jeffstok"/>
 
 
-# プログラムでの Stream Analytics ジョブの監視
+# プログラムでの Stream Analytics ジョブの監視 
 この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。監視データは、Stream Analytics ジョブ用の Azure ポータルの [監視] タブに表示されます。
 
 ![[ジョブ] タブの監視](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
@@ -45,6 +45,9 @@
     ```
     <appSettings>
     	<!--CSM Prod related values-->
+    	<add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
+    	<add key="JobName" value="YOUR JOB NAME" />
+    	<add key="StorageAccountName" value="YOUR STORAGE ACCOUNT"/>
     	<add key="ActiveDirectoryEndpoint" value="https://login.windows-ppe.net/" />
     	<add key="ResourceManagerEndpoint" value="https://api-current.resources.windows-int.net/" />
     	<add key="WindowsManagementUri" value="https://management.core.windows.net/" />
@@ -135,7 +138,13 @@
 
 次のコードは、**既存の** Stream Analytics ジョブに対して監視を有効にします。コードの最初の部分では、Stream Analytics サービスに対して GET 要求を実行して、特定の Stream Analytics ジョブに関する情報を取得します。コードの後半部分では、GET 要求で取得した "Id" プロパティをパラメーターとして Put メソッドが Insights サービスに送信され、Stream Analytics ジョブの監視を有効にします。
 
-> [AZURE.WARNING]- Azure ポータルからまたは以下のコードによりプログラムで別の Stream Analytics ジョブの監視を既に有効にしている場合は、**以前に監視を有効にしたときと同じストレージ アカウント名を指定することをお勧めします。** - ストレージ アカウントは、特定のジョブ自体ではなく、Stream Analytics ジョブを作成したリージョンに関連付けられます。 - 同じリージョン内のすべての Stream Analytics ジョブ (および他のすべての Azure リソース) は、このストレージ アカウントを共有して監視データを格納します。別のストレージ アカウントを指定すると、他の Stream Analytics ジョブまたは他の Azure リソース (あるいはその両方) の監視に意図しない副作用が起きることがあります。- 以下の ```“<YOUR STORAGE ACCOUNT NAME>”``` に置き換えるために使用するストレージ アカウント名は、監視を有効にする Stream Analytics ジョブと同じサブスクリプション内にあるストレージ アカウントにする必要があります。
+> [AZURE.WARNING]Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、**前に監視を有効にしたときと同じストレージ アカウント名を指定することをお勧めします。**
+> 
+> ストレージ アカウントは、特定のジョブ自体ではなく、Stream Analytics ジョブを作成したリージョンに関連付けられます。
+> 
+> 同じリージョン内のすべての Stream Analytics ジョブ (その他のすべての Azure リソースを含む) で、このストレージ アカウントを共有して監視データを格納します。別のストレージ アカウントを指定すると、他の Stream Analytics ジョブやその他の Azure リソースの監視に意図しない副作用が発生することがあります。
+> 
+> 次の ```“<YOUR STORAGE ACCOUNT NAME>”``` の置き換えに使用するストレージ アカウント名は、監視を有効にする Stream Analytics ジョブと同じサブスクリプション内にあるストレージ アカウントにする必要があります。
 
     // Get an existing Stream Analytics job
     JobGetParameters jobGetParameters = new JobGetParameters()
@@ -168,4 +177,4 @@
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--HONumber=54-->
+<!---HONumber=58-->

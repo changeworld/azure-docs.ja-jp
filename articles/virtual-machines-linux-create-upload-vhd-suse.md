@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure 上での SUSE Linux VHD の作成とアップロード" 
 	description="SUSE Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
 	services="virtual-machines" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/13/2015" 
+	ms.date="05/15/2015" 
 	ms.author="szarkos"/>
 
 
@@ -24,12 +24,12 @@
 
 ##前提条件##
 
-この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションを含め、複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 
-**SLES/openSUSE のインストールに関する一般的な注記**
+**SLES/openSUSE のインストールに関する注記**
 
- - [SUSE Studio](http://www.susestudio.com) では、Azure および Hyper-V 用の SLES/openSUSE イメージを簡単に作成、管理できます。これは、独自の SLES イメージと openSUSE イメージをカスタマイズするアプローチとして推奨されます。SUSE Studio ギャラリーにある次の公式イメージをダウンロードまたは SUSE Studio アカウントに複製できます。
+ - [SUSE Studio](http://www.susestudio.com) では、Azure および Hyper-V 用の SLES/openSUSE イメージを簡単に作成、管理できます。これは、独自の SUSE イメージと openSUSE イメージをカスタマイズするアプローチとして推奨されます。SUSE Studio ギャラリーにある次の公式イメージをダウンロードまたは SUSE Studio アカウントに複製できます。
 
   - [SUSE Studio ギャラリーの Azure 向け SLES 11 SP3](http://susestudio.com/a/02kbT4/sles-11-sp3-for-windows-azure)
   - [SUSE Studio ギャラリーの Azure 向け openSUSE 13.1](https://susestudio.com/a/02kbT4/opensuse-13-1-for-windows-azure)
@@ -43,7 +43,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## <a id="sles11"> </a>SUSE Linux Enterprise Server 11 SP3 を準備します。 ##
+## <a id="sles11"> </a>SUSE Linux Enterprise Server 11 SP3 を準備する ##
 
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
@@ -78,7 +78,7 @@
 
 10.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -92,7 +92,7 @@
 		# export HISTSIZE=0
 		# logout
 
-12. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+12. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ----------
@@ -103,7 +103,7 @@
 
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. シェルでコマンド '`zypper lr`' を実行します。このコマンドによって次のような出力が返されます (バージョン番号は異なる場合があります)。
+3. シェルでコマンド "`zypper lr`" を実行します。このコマンドによって次のような出力が返されます (バージョン番号は異なる場合があります)。
 
 		# | Alias                 | Name                  | Enabled | Refresh
 		--+-----------------------+-----------------------+---------+--------
@@ -119,7 +119,7 @@
 		# sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
 		# sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
 
-	'`zypper lr`' コマンドをもう一度実行してリポジトリが追加されたことを確認できます。更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
+	"`zypper lr`" コマンドをもう一度実行してリポジトリが追加されたことを確認できます。更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
 
 		# sudo zypper mr -e [NUMBER OF REPOSITORY]
 
@@ -128,7 +128,7 @@
 
 		# sudo zypper up kernel-default
 
-	Or to update the system with all the latest patches:
+	または、次のように、すべての最新のパッチでシステムを更新します。
 
 		# sudo zypper update
 
@@ -157,7 +157,7 @@
 
 10.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。リソース ディスクは*temporary*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -175,8 +175,6 @@
 
 		# sudo systemctl enable waagent.service
 
-13. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+13. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-
-
-<!--HONumber=45--> 
+<!---HONumber=58-->
