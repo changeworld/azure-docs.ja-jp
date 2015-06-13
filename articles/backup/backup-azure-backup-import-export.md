@@ -26,7 +26,7 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 
 ## 前提条件
 
-1. Azure Import/Export のワークフローを理解することが重要です (詳しくは[こちら](storage-import-export-service.md)をご覧ください)。
+1. Azure Import/Export のワークフローを理解することが重要です (詳しくは[こちら](../storage-import-export-service.md)をご覧ください)。
 
 2. ワークフローを開始する前に、Azure Backup 資格情報コンテナーが作成され、資格情報コンテナーの資格情報がダウンロードされ、Azure Backup エージェントが Windows Server、Windows クライアント、System Center Data Protection Manager (SCDPM) サーバーのいずれかにインストールされ、Azure Backup 資格情報コンテナーにコンピューターが登録されていることを確認します。
 
@@ -42,7 +42,7 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 
 
 ## ワークフロー
-このセクションで提供される情報は、**オフライン バックアップ** ワークフローを完了するためのものなので、このデータを Azure データ センターに配信したり、Azure ストレージにアップロードしたりできます。インポート サービスやプロセスの他の側面について質問がある場合は、[上記](storage-import-export-service.md)で参照したインポート サービスの概要をご覧ください。
+このセクションで提供される情報は、**オフライン バックアップ** ワークフローを完了するためのものなので、このデータを Azure データ センターに配信したり、Azure ストレージにアップロードしたりできます。インポート サービスやプロセスの他の側面について質問がある場合は、[上記](../storage-import-export-service.md)で参照したインポート サービスの概要をご覧ください。
 
 ### オフライン バックアップを開始する
 
@@ -119,7 +119,7 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 ストレージ アカウントで初期バックアップ データが使用可能になると、Azure Backup エージェントは、データの内容をこのアカウントからマルチテナントのバックアップ ストレージ アカウントにコピーします。次回のスケジュール バックアップで、Azure Backup エージェントは初期バックアップ コピーの上に増分バックアップを実行します。
 
 ## 次のステップ
-+ Azure Import/Export ワークフローに関するご質問は、こちらの[記事](storage-import-export-service.md)をご覧ください。
++ Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage-import-export-service.md)をご覧ください。
 
 + ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
@@ -134,4 +134,4 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 [8]: ./media/backup-azure-backup-import-export/dpmoffline.png
 [9]: ./media/backup-azure-backup-import-export/dpmbackupnow.png
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 

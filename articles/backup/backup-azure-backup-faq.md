@@ -153,4 +153,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 [1]: ./media/backup-azure-backup-faq/Schedule.png
 [2]: ./media/backup-azure-backup-faq/RetentionScreen1.png
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 

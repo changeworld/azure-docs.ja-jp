@@ -101,4 +101,4 @@
 ## 次のステップ
 - [仮想マシンの管理](backup-azure-manage-vms)
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 

@@ -41,4 +41,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
  
 * [Azure オートメーションの使用](http://go.microsoft.com/fwlink/?LinkId=390560) (Azure Automation のファースト ステップ ガイド)
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 

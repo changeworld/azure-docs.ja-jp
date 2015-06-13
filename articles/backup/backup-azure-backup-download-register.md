@@ -58,4 +58,4 @@ Azure バックアップ コンテナーを作成した後に各バックアッ�
 [5]: ./media/backup-azure-backup-download-register/encryption.png
 [6]: ./media/backup-azure-backup-download-register/change.png
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 

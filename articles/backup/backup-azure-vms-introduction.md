@@ -119,7 +119,7 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - リージョン間のバックアップと復元はサポートされません。
 - リージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。「[リージョン別のサービス](http://azure.microsoft.com/regions/#services)」の一覧をご確認ください。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
-  - **Linux**: Azure で動作保証済みのディストリビューションの一覧は、[こちら](virtual-machines-linux-endorsed-distributions.md)でご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
+  - **Linux**: Azure で動作保証済みのディストリビューションの一覧は、[こちら](../virtual-machines-linux-endorsed-distributions.md)でご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 
 確認したい機能が含まれている場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
@@ -133,4 +133,4 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 
 + バックアップ ジョブの監視
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=GIT-SubDir--> 
