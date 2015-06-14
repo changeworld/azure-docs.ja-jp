@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="保存データをクラウドに転送する場合のオプション | Azure" 
 	description="高度な分析を行うためにオンプレミスまたは他のクラウドのソースから Microsoft Azure にデータを転送する場合の最適なオプションを選択する方法について説明します。" 
 	services="data-factory, hdinsight, machine-learning, storage, sql-database" 
@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="big-data" 
-	ms.date="1/7/2014" 
+	ms.date="01/07/2014" 
 	ms.author="cgronlun"/>
 
 # 保存データを Azure のクラウドに転送する場合のオプション
