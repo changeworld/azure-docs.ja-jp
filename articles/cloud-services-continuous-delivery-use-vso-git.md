@@ -59,7 +59,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 1. チーム エクスプローラーの [ソリューション] セクションで、[新規] リンクを選択して新しいプロジェクトをローカル リポジトリに作成します。<br/>
 ![][4]
 
-2. このチュートリアルの手順に従って、Web サイトまたはクラウド サービス (Azure アプリケーション) をデプロイできます。新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトの対象が .NET Framework 4 または 4.5 であることを確認してください。クラウド サービス プロジェクトを作成する場合は、ASP.NET MVC Web ロールと worker ロールを追加します。Web サイトを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure Websites と ASP.NET の使用](web-sites-dotnet-get-started.md)に関するページを参照してください。
+2. このチュートリアルの手順に従って、Web サイトまたはクラウド サービス (Azure アプリケーション) をデプロイできます。新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトの対象が .NET Framework 4 または 4.5 であることを確認してください。クラウド サービス プロジェクトを作成する場合は、ASP.NET MVC Web ロールと worker ロールを追加します。Web サイトを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure Websites と ASP.NET の使用](app-service-web/web-sites-dotnet-get-started.md)に関するページを参照してください。
 
 3. ソリューションのショートカット メニューを開き、**[コミット]** を選択します。<br/>
 ![][7]
@@ -201,7 +201,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 
 11. **[ビルド]** ビューに移動して、working 分岐に対してトリガーされたビルドを見つけます。
 
-詳細については、[Visual Studio Online に関するページ](http://go.microsoft.com/fwlink/?LinkId=253861)を参照してください。Visual Studio Online で Git を使用する場合のその他のヒントについては、[Git でのコードの共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。Visual Studio Online によって管理されていない Git リポジトリの使用の詳細については、[Git を使用した Azure Websites への発行](web-sites-publish-source-control.md)に関するページを参照してください。
+詳細については、[Visual Studio Online に関するページ](http://go.microsoft.com/fwlink/?LinkId=253861)を参照してください。Visual Studio Online で Git を使用する場合のその他のヒントについては、[Git でのコードの共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。Visual Studio Online によって管理されていない Git リポジトリの使用の詳細については、[Git を使用した Azure Websites への発行](app-service-web/web-sites-publish-source-control.md)に関するページを参照してください。
 
 [手順 1. Git リポジトリを作成する。]: #step1
 [手順 2. プロジェクトを作成して Git リポジトリにプッシュする。]: #step2

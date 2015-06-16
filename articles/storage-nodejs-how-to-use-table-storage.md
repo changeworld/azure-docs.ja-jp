@@ -430,9 +430,9 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Node.js クラウド サービス]: cloud-services-nodejs-develop-deploy-app.md
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-  [WebMatrix を使用した Web サイト]: web-sites-nodejs-use-webmatrix.md
+  [WebMatrix を使用した Web サイト]: app-service-web/web-sites-nodejs-use-webmatrix.md
   [ストレージを使用する Node.js クラウド サービス]: storage-nodejs-use-table-storage-cloud-service-app.md
-  [ストレージを使用する Node.js Web アプリケーション]: storage-nodejs-use-table-storage-web-site.md
-  [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: web-sites-nodejs-develop-deploy-mac.md
+  [ストレージを使用する Node.js Web アプリケーション]: app-service-web/storage-nodejs-use-table-storage-web-site.md
+  [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: app-service-web/web-sites-nodejs-develop-deploy-mac.md
 
 <!--HONumber=49-->

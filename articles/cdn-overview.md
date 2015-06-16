@@ -51,7 +51,7 @@ CDN が Azure ストレージ アカウントで有効になると、パブリ�
 
 ##Azure Websites からのコンテンツのキャッシュ
 
-Web サイトから CDN を有効にして、画像、スクリプト、スタイルシートなどの Web コンテンツをキャッシュすることができます。「[Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)」を参照してください。
+Web サイトから CDN を有効にして、画像、スクリプト、スタイルシートなどの Web コンテンツをキャッシュすることができます。「[Azure CDN と Azure Websites の統合](app-service-web/cdn-websites-with-cdn.md)」を参照してください。
 
 Web サイトに対して CDN アクセスを有効にすると、管理ポータルで、http://<識別子>.vo.msecnd.net/ の形式で CDN ドメイン名が提供されます。このドメイン名を使用して、Web サイトからオブジェクトを取得できます。たとえば、パブリック コンテナー名が cdn で、画像ファイルの名前が music.png の場合、ユーザーは次の 2 つのどちらかの URL でオブジェクトにアクセスできます。
 

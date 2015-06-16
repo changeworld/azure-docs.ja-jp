@@ -35,7 +35,7 @@
 - アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
 - [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
-- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](web-sites-java-get-started.md)。
+- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](app-service-web/web-sites-java-get-started.md)。
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
@@ -744,7 +744,7 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
  - [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
  - **[完了]** をクリックします。
 
-3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](web-sites-java-add-app.md)」を参照してください。
+3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](app-service-web/web-sites-java-add-app.md)」を参照してください。
 
 	WAR ファイルを webapps フォルダーにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
 4. 完成したアプリケーションの動作を確認するには、http://YOUR_SITE_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。

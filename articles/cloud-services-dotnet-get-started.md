@@ -38,7 +38,7 @@
 
 ## 代替のアーキテクチャ:Web サイトおよび Web ジョブ
 
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。別のアーキテクチャとして、フロントエンドを [Azure Web サイト](/services/web-sites/) で実行し、バックエンドの [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能 (現在のプレビュー) を使用することもできます。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](websites-dotnet-webjobs-sdk-get-started.md)」をご覧ください」をご覧ください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](http://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/)」をご覧ください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。別のアーキテクチャとして、フロントエンドを [Azure Web サイト](/services/web-sites/) で実行し、バックエンドの [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能 (現在のプレビュー) を使用することもできます。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](app-service-web/websites-dotnet-webjobs-sdk-get-started.md)」をご覧ください」をご覧ください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](http://azure.microsoft.com/documentation/articles/choose-web-site-cloud-service-vm/)」をご覧ください。
 
 ## 学習内容
 

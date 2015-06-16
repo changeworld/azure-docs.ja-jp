@@ -1,4 +1,4 @@
-﻿#Ｗeb アプリに対する HTTPS をAzure App Service で有効にする
+#Ｗeb アプリに対する HTTPS をAzure App Service で有効にする
 
 > [AZURE.NOTE]
 > より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)!カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
@@ -512,8 +512,8 @@ IIS URL 書き換えモジュールの詳細については、「[URL Rewrite (U
 ## その他のリソース ##
 - [Microsoft Azure トラスト センター](/support/trust-center/security/)
 - [Azure Web サイトでロックを解除された構成オプション](http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
-- [診断ログの有効化](../articles/web-sites-enable-diagnostic-log.md)
-- [Web サイトの構成](../articles/web-sites-configure.md)
+- [診断ログの有効化](../article/app-service-web/web-sites-enable-diagnostic-log.md)
+- [Web サイトの構成](../article/app-service-web/web-sites-configure.md)
 - [Azure 管理ポータル](https://manage.windowsazure.com)
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、「[Try App Service (App Service を使ってみる)](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。App Service で、有効期限付きのスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -522,7 +522,7 @@ IIS URL 書き換えモジュールの詳細については、「[URL Rewrite (U
 * Web サイトから App Service への変更ガイドについては、次を参照してください。[Azure App Service and Its Impact on Existing Azure Services (Azure アプリケーションのサービスと既存の Azure サービスへの影響)](http://go.microsoft.com/fwlink/?LinkId=529714)
 * 以前のポータルから新しいポータルへの変更ガイドについては、次を参照してください。[Reference for navigating the preview portal (プレビュー ポータルを移動するためのリファレンス)](http://go.microsoft.com/fwlink/?LinkId=529715)
 
-[customdomain]: ../articles/web-sites-custom-domain-name.md
+[customdomain]: ../article/app-service-web/web-sites-custom-domain-name.md
 [iiscsr]: http://technet.microsoft.com/library/cc732906(WS.10).aspx
 [cas]: http://go.microsoft.com/fwlink/?LinkID=269988
 [installcertiis]: http://technet.microsoft.com/library/cc771816(WS.10).aspx

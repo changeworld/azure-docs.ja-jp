@@ -23,7 +23,7 @@
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールで Azure クラウド サービスとしてホストされる Node.js アプリケーションの HTTPS エンドポイントを指定する方法、および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
-> [AZURE.NOTE]この記事で説明する手順は、Web ロールで Azure Cloud Services としてホストされる node アプリケーションにのみ適用されます。Websites については、「[Azure Websites の SSL 証明書の構成](web-sites-configure-ssl-certificate.md)」を参照してください。
+> [AZURE.NOTE]この記事で説明する手順は、Web ロールで Azure Cloud Services としてホストされる node アプリケーションにのみ適用されます。Websites については、「[Azure Websites の SSL 証明書の構成](app-service-web/web-sites-configure-ssl-certificate.md)」を参照してください。
 
 このタスクの手順は次のとおりです。
 

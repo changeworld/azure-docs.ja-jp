@@ -64,7 +64,7 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
 
 - [Azure Search](http://azure.microsoft.com/services/search/)
 - [MVC 4 を使用する Azure Websites ](http://azure.microsoft.com/services/websites/)
-- [スケジュールされたタスク用の Azure Web ジョブ](websites-webjobs-resources.md)
+- [スケジュールされたタスク用の Azure Web ジョブ](app-service-web/websites-webjobs-resources.md)
 - [Azure SQL データベース](http://azure.microsoft.com/services/sql-database/)
 - [Azure BLOB ストレージ](http://azure.microsoft.com/services/storage/)
 - [SendGrid 電子メール配信](http://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/)
@@ -417,7 +417,7 @@ Azure SQL データベース内のサブスクライバー データは、最も
 
 <!--Link references-->
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md
-[Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
+[Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
 <!--HONumber=54-->

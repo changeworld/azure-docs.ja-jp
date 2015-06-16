@@ -57,7 +57,7 @@
 
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
-* Application Insights で [Web ページの可用性と応答性を監視](app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
+* Application Insights で [Web ページの可用性と応答性を監視](application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 * コードがクラウドで実行する方法を正確に理解する場合は、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。

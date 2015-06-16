@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="エンド ユーザー分析の使用方法" 
 	description="Microsoft Azure Websites のエンド ユーザー分析です。" 
 	services="application-insights" 

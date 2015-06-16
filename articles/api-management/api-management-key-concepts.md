@@ -1,0 +1,109 @@
+<properties 
+	pageTitle="API Management の重要概念" 
+	description="API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="dwrede" 
+	editor=""/>
+
+<tags 
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/18/2014" 
+	ms.author="sdanie"/>
+
+#API Management の重要概念
+
+API Management が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。どの企業も、その業務をデジタル プラットフォームで拡大し、新しい販路と顧客を開拓すると共に、既存の顧客との絆を深めようと模索しています。API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。
+
+API Management を使用するには、管理者が API を作成します。API はそれぞれ、少なくとも 1 つの操作で構成され、1 つまたは複数の成果物に追加することができます。API を使用する開発者は、その API を含んだ成果物をサブスクライブしたうえで、使用ポリシーが適用されていればその範囲の中で、API の操作を呼び出すことができます。
+
+このトピックでは、API Management の重要な概念を簡単に説明します。
+
+## このトピックの内容
+
+-   [API と操作][]
+-   [成果物][]
+-   [グループ][]
+-   [開発者][]
+-   [ポリシー][]
+-	[開発者ポータル][]
+
+
+## <a name="apis"> </a>API と操作
+
+API Management サービス インスタンスの基礎となるのは API です。それぞれの API は、開発者が利用できる一連の操作を表します。各 API は、それを実装するバックエンド サービスへの参照を含んでおり、その操作は、バックエンド サービスに実装されている操作と対応します。操作は、API Management で細かく設定することができます。URL のマッピング、クエリとパスのパラメーター、要求と応答の内容、操作から返される応答のキャッシュを制御することが可能です。また、レート制限、クォータ、IP 制限のポリシーを API レベルや個々の操作レベルで導入することもできます。
+
+詳細については、「[API の作成方法][]」と「[API に操作を追加する方法][]」を参照してください。
+
+
+## <a name="products"> </a> 成果物
+
+開発者から見える API の全体像が成果物です。API Management の成果物には、少なくとも 1 つの API が含まれており、タイトルや説明、使用条件などが設定されます。開発者に使用してもらう準備が整ったら、成果物を発行することができます。開発者は、発行された成果物を表示してサブスクライブすることができます。サブスクリプションの承認は成果物レベルで行われ、管理者による承認を必須とするか、自動的に承認するかを選ぶことができます。
+
+開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。 
+
+詳細については、「[成果物を作成して発行する方法][]」を参照してください。
+
+## <a name="groups"> </a> グループ
+
+開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。API Management には、次に示す組み込みのグループが用意されています。
+
+-	**管理者** - API Management サービス インスタンスを管理します。開発者が使用する API とその操作、成果物は、管理者が作成します。
+-	**開発者** - API の利用者です。管理者によって作成された API を使用してアプリケーションを構築します。開発者は、[開発者ポータル][]へのアクセスが認められており、API の操作を呼び出すアプリケーションを構築します。
+-	**ゲスト** - API Management インスタンスの開発者ポータルに訪れる非認証ユーザー (利用予定者など) がこのグループに該当します。特定の読み取り専用アクセスを許可することができます (API の閲覧はできるが、呼び出すことはできないなど)。
+
+組み込みのグループに加え、管理者はカスタム グループを作成できます。カスタム グループは、組み込みの開発者グループと同じ特権を持ちます。カスタム グループを使用して、さまざまな開発者グループを管理することができます。たとえば、A という成果物に含まれている API を使用する開発者と、B という成果物に含まれている API を使用する開発者向けに、それぞれ異なるカスタム グループを作成することもできます。
+
+詳細については、「[How to create and use groups (グループを作成して使用する方法)][]」を参照してください。
+
+## <a name="developers"> </a> 開発者
+
+開発者は、API Management サービス インスタンス内のユーザー アカウントです。開発者は、管理者が作成したり参加を呼びかけたりすることができるほか、[開発者ポータル][]からサインアップすることもできます。それぞれの開発者はグループ (複数可) に所属し、そのグループに閲覧が認められている成果物のサブスクリプションを得ることができます。
+
+成果物のサブスクリプションを持つ開発者には、その成果物へのプライマリ キーとセカンダリ キーが付与されます。成果物の API を呼び出す際は、このキーを使用することになります。
+
+詳細については、「[How to create or invite developers (開発者を作成または招待する方法)][]」と「[How to associate groups with developers (グループを開発者に関連付ける方法)][]」を参照してください。
+
+## <a name="policies"> </a> ポリシー
+
+ポリシーは、発行者がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
+
+API Management の全ポリシー一覧については、「[Policy reference (ポリシー リファレンス)][]」を参照してください。ポリシーの使用と構成の詳細については、「[API Management policies (API Management のポリシー)][]」を参照してください。レート制限ポリシーとクォータ ポリシーを持った成果物の作成に関するチュートリアルについては、「[Azure API Management で成果物を作成して詳細設定を行う方法][]」を参照してください。
+
+
+## <a name="developer-portal"> </a> 開発者ポータル
+
+開発者ポータルは、開発者が API の使用法を習得したり、操作を確認して呼び出したり、成果物をサブスクライブしたりすることができる場です。利用予定者は、開発者ポータルにアクセスして、API と操作を閲覧したうえで、サインアップすることができます。開発者ポータルの URL は、API Management サービス インスタンスの Azure ポータルのダッシュボードに設置されます。
+
+カスタム コンテンツを追加したり、スタイルをカスタマイズしたり、貴社のブランドを追加したりすることによって、開発者ポータルのルック アンド フィールをカスタマイズすることができます。
+
+[API と操作]: #apis
+[成果物]: #products
+[グループ]: #groups
+[開発者]: #developers
+[ポリシー]: #policies
+[開発者ポータル]: #developer-portal
+
+[API の作成方法]: ../api-management-howto-create-apis
+[API に操作を追加する方法]: ../api-management-howto-add-operations
+[Azure API Management で成果物を作成して発行する方法]: ../api-management-howto-add-products
+[How to create and use groups (グループを作成して使用する方法)]: ../api-management-howto-create-groups
+[How to associate groups with developers (グループを開発者に関連付ける方法)]: ../api-management-howto-create-groups/#associate-group-developer
+[Azure API Management で成果物を作成して詳細設定を行う方法]: ../api-management-howto-product-with-rules
+[How to create or invite developers (開発者を作成または招待する方法)]: ../api-management-howto-create-or-invite-developers
+[Policy reference (ポリシー リファレンス)]: ../api-management-policy-reference
+[API Management policies (API Management のポリシー)]: ../api-management-howto-policies
+[API Management インスタンスの作成]: ../api-management-get-started/#create-service-instance
+
+
+
+
+<!--HONumber=35.2-->
+
+<!--HONumber=46--> 
+ 

@@ -625,7 +625,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 # 詳細 #
 - [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
 - [Web アプリケーションで Azure CDN からコンテンツを配信する](cdn-serve-content-from-cdn-in-your-web-application.md)
-- [Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)
+- [Azure CDN と Azure Websites の統合](app-service-web/cdn-websites-with-cdn.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)
 
