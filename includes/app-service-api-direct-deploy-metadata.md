@@ -26,7 +26,7 @@
 		    "apiDefinition": "/swagger/docs/v1"
 		}
 
-> **注:** Swashbuckle を使用して Swagger API の定義を生成している場合は、Web API コントローラーでの HTTP メソッドのオーバーロードによって、操作 ID の重複が発生します。詳細については、「[Swashbuckle で生成された操作 ID のカスタマイズ](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。
+> **注:** Swashbuckle を使用して Swagger API の定義を生成している場合は、Web API コントローラーでの HTTP メソッドのオーバーロードによって、操作 ID の重複が発生します。詳細については、「[Swashbuckle で生成された操作 ID のカスタマイズ](../article/app-service-api/app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。
   
 ### 静的 Swagger API の定義
 

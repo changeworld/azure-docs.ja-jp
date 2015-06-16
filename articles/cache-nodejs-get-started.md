@@ -89,7 +89,7 @@ DNS ホスト名を入力します。`<名前>.redis.cache.windows.net` とい�
 [3]: ./media/cache-java-get-started/cache03.png
 [4]: ./media/cache-java-get-started/cache04.png
 
-[Azure Web サイトでの Socket.IO を使用した Node.js チャット アプリケーションの構築に関するページ]: web-sites-nodejs-chat-app-socketio.md
+[Azure Web サイトでの Socket.IO を使用した Node.js チャット アプリケーションの構築に関するページ]: app-service-web/web-sites-nodejs-chat-app-socketio.md
 
 
 <!--HONumber=49-->

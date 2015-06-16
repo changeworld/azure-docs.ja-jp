@@ -25,7 +25,7 @@
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
-> [AZURE.NOTE]このタスクの手順は、Azure クラウド サービス に適用されます。Web サイトについては、「[Azure Web サイトの SSL 証明書の構成](web-sites-configure-ssl-certificate.md)」を参照してください。
+> [AZURE.NOTE]このタスクの手順は、Azure クラウド サービス に適用されます。Web サイトについては、「[Azure Web サイトの SSL 証明書の構成](app-service-web/web-sites-configure-ssl-certificate.md)」を参照してください。
 
 このタスクでは、運用環境の展開を使用します。ステージング環境の展開を使用する場合に関する情報については、このトピックの最後で紹介します。
 

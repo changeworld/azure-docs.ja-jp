@@ -74,8 +74,8 @@ New Relic は追加のインストルメンテーションなしで自動的に�
 
 * 操作イベントが発生したり、メトリックがしきい値を超えるたびに、[アラート通知を受け取り](insights-receive-alert-notifications.md) ます。
 
-* [JavaScript のアプリや Web ページの Application Insights](app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
+* [JavaScript のアプリや Web ページの Application Insights](application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
 
-* Application Insights で [Web ページの可用性と応答性を監視](app-insights-monitor-web-app-availability.md) すると、ページがダウンしているかどうかを検出できます。
+* Application Insights で [Web ページの可用性と応答性を監視](application-insights/app-insights-monitor-web-app-availability.md) すると、ページがダウンしているかどうかを検出できます。
 
 <!--HONumber=54-->

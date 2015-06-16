@@ -254,7 +254,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### Web サイトのダッシュボードを発行する
 
-1. Azure Web サイトにダッシュボードを配置するには、「[Node.js Web サイトの構築と Azure へのデプロイ](web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
+1. Azure Web サイトにダッシュボードを配置するには、「[Node.js Web サイトの構築と Azure へのデプロイ](app-service-web/web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
 
 2. Web サイトが作成されたら、Azure ポータルに移動して、**[構成]** を選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 

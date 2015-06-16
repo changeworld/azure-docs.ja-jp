@@ -255,12 +255,12 @@ CSS 更新を発行して、CSS URL で別のバージョン番号を使用す�
 
 Azure CDN と Azure Websites または Azure Cloud Services の統合には、次の利点があります。
 
-- コンテンツのデプロイメント (画像、スクリプト、およびスタイルシート) を、Azure Websites の[継続的なデプロイメント](web-sites-publish-source-control.md) プロセスの一部として統合
+- コンテンツのデプロイメント (画像、スクリプト、およびスタイルシート) を、Azure Websites の[継続的なデプロイメント](app-service-web/web-sites-publish-source-control.md) プロセスの一部として統合
 - JQuery や Bootstrap のバージョンなど、CDN によって配信される NuGet パッケージを簡単にアップグレード 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 
 関連するチュートリアルは、次の項目を参照してください。
-- [Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)
+- [Azure CDN と Azure Websites の統合](app-service-web/cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 
 Azure Websites または Azure Cloud Services と統合しなくても、Azure CDN をスクリプト バンドルに使用することはできますが、次の点に注意してください。
@@ -272,7 +272,7 @@ Azure Websites または Azure Cloud Services と統合しなくても、Azure C
 
 # 詳細 #
 - [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)
+- [Azure CDN と Azure Websites の統合](app-service-web/cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 - [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)

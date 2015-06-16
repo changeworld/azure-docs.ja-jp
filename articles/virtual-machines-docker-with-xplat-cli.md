@@ -132,7 +132,7 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 
 <!--Link references-->
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md
-[Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
+[Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 [Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 

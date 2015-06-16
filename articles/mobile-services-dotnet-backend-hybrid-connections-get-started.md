@@ -49,7 +49,7 @@
 
 ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server の既定のインスタンスは静的ポート 1433 を使用しますが、名前付きインスタンスは静的ポート 1433 を使用しません。
 
-上に示した条件を満たすように SQL Server を構成する方法の詳細な手順については、「[SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](web-sites-hybrid-connection-connect-on-premises-sql-server.md#InstallSQL)」を参照してください。上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[内部設置型の SQL Server を作成する](web-sites-hybrid-connection-connect-on-premises-sql-server.md#CreateSQLDB)」から開始できます。
+上に示した条件を満たすように SQL Server を構成する方法の詳細な手順については、「[SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する](app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md#InstallSQL)」を参照してください。上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[内部設置型の SQL Server を作成する](app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md#CreateSQLDB)」から開始できます。
 
 このチュートリアルでは、データベース名が **OnPremisesDB** で、ポート **1433** で実行され、コンピューターのホスト名が **onPremisesServer** であると想定しています。
 

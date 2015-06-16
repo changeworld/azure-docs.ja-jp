@@ -1,4 +1,4 @@
-﻿# モバイル クライアントと Web クライアントを使用するアプリを Azure App Service で作成する
+# モバイル クライアントと Web クライアントを使用するアプリを Azure App Service で作成する
 
 このトピックでは、モバイル クライアントと Web クライアントの両方を使用するアプリを作成する方法を示します。モバイル アプリと Web アプリを作成し、その両方で同じ基になるデータベースを使用します。
 
@@ -77,6 +77,6 @@
 <!-- Links -->
 
 [MultiChannelToDo]: https://github.com/Azure/mobile-services-samples/tree/web-mobile/MultiChannelToDo
-[モバイル アプリを作成する]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
+[モバイル アプリを作成する]: ../article/app-service-mobile/app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 
 <!--HONumber=49-->

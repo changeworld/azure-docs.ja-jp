@@ -372,8 +372,8 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: /develop/nodejs/tutorials/create-a-website-(mac)/
 [ストレージを使用する Node.js クラウド サービス]: storage-nodejs-use-table-storage-cloud-service-app.md
-[ストレージを使用する Node.js Web アプリケーション]: storage-nodejs-use-table-storage-web-site.md
-[WebMatrix を使用した Web サイト]: web-sites-nodejs-use-webmatrix.md
+[ストレージを使用する Node.js Web アプリケーション]: app-service-web/storage-nodejs-use-table-storage-web-site.md
+[WebMatrix を使用した Web サイト]: app-service-web/web-sites-nodejs-use-webmatrix.md
 [REST API の使用]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure の管理ポータル]: http://manage.windowsazure.com
 [Node.js クラウド サービス]: cloud-services-nodejs-develop-deploy-app.md

@@ -541,7 +541,7 @@
 
 ## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーションのデプロイ
 
-1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。手順については、[こちら](web-sites-publish-source-control-git.md#step4)で確認できます。
+1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。手順については、[こちら](app-service-web/web-sites-publish-source-control-git.md#step4)で確認できます。
 
 2. Git リモートとして Azure Web サイトを追加します。
 
