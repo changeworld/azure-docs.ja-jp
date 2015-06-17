@@ -80,7 +80,7 @@
 BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。 
 
 > [AZURE.NOTE] **BCP 用のデータの場所**  
-> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。さまざまなファイル コピー ツール ([AZCopy](storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使用して、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
+> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。さまざまなファイル コピー ツール ([AZCopy](storage/storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使用して、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
 
 1. データベースとテーブルがターゲットの SQL Server データベースで作成されていることを確認します。以下に、 `Create Database` および  `Create Table` コマンドを使用してこれを行う方法の例を示します。
 

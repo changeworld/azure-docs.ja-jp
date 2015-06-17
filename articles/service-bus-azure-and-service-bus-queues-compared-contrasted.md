@@ -308,7 +308,7 @@ Service Bus キューには高度な機能が数多く用意されているた�
 次の記事では、Azure キューや Service Bus キューの使用に関する詳細情報を提供します。
 
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
-- [キュー ストレージ サービスを使用する方法](storage-dotnet-how-to-use-queues.md)
+- [キュー ストレージ サービスを使用する方法](storage/storage-dotnet-how-to-use-queues.md)
 - [Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](https://msdn.microsoft.com/library/hh528527.aspx)
 - [Introducing Queues and Topics in Azure Service Bus (Azure Service Bus のキューとトピックの概要)](http://www.code-magazine.com/article.aspx?quickid=1112041)
 - [The Developer's Guide to Service Bus (Service Bus の開発者向けガイド)](http://www.cloudcasts.net/devguide/)

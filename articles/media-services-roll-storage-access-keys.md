@@ -33,7 +33,7 @@ Media Services は、1 つのストレージ キー (プライマリまたはセ
 
 ## 手順 1:セカンダリ ストレージ アクセス キーを再生成する
 
-セカンダリ ストレージ キーの再生成から開始します。既定では、セカンダリ キーは Media Services で使用されません。ストレージ キーをローリングする方法については、「[方法:ストレージ アクセス キーを表示、コピー、再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).」をご覧ください。
+セカンダリ ストレージ キーの再生成から開始します。既定では、セカンダリ キーは Media Services で使用されません。ストレージ キーをローリングする方法については、「[方法:ストレージ アクセス キーを表示、コピー、再生成する](storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).」をご覧ください。
   
 ## <a id="step2"></a>手順 2:Media Services を更新して新しいセカンダリ ストレージ キーを使用する
 
@@ -91,7 +91,7 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
 
 ## 手順 5:プライマリ ストレージ アクセス キーを再生成する
 
-プライマリ ストレージ アクセス キーを再生成します。ストレージ キーをローリングする方法については、「[方法:ストレージ アクセス キーを表示、コピー、再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+プライマリ ストレージ アクセス キーを再生成します。ストレージ キーをローリングする方法については、「[方法:ストレージ アクセス キーを表示、コピー、再生成する](storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
 
 ## 手順 6:Media Services を更新して新しいプライマリ ストレージ キーを使用する
 	

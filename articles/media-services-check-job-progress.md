@@ -105,7 +105,7 @@
 
 ## <a id="check_progress_with_queues"></a>Azure キュー ストレージを使用して Media Services ジョブ通知を監視する
 
-Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure キュー ストレージ](storage-dotnet-how-to-use-queues.md#what-is) に通知メッセージを配信する機能があります。このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
+Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure キュー ストレージ](storage/storage-dotnet-how-to-use-queues.md#what-is) に通知メッセージを配信する機能があります。このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
 
 キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。Azure キュー メッセージング アーキテクチャは、信頼性と拡張性に優れています。キュー ストレージのポーリングには、他のメソッドを使用することをお勧めします。 
 

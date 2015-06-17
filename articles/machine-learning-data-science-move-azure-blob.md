@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure Blob ストレージ  との間のデータの移動" 
 	description="Azure Blob ストレージ  との間のデータの移動" 
 	services="machine-learning" 
@@ -26,9 +26,9 @@
 
 
 
-> [AZURE.NOTE] Azure Blob ストレージの完全な概要については、「[Azure Blob の基礎](storage-dotnet-how-to-use-blobs.md)」および  「[Azure Blob サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。 
+> [AZURE.NOTE] Azure Blob ストレージの完全な概要については、「[Azure Blob の基礎](storage/storage-dotnet-how-to-use-blobs.md)」および  「[Azure Blob サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。 
 
-データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。これを行うには、「[ストレージ アカウントの管理](storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。このドキュメントは Azure Storage のアカウントと、対応するストレージ キーがあることを前提としています。
+データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。これを行うには、「[ストレージ アカウントの管理](storage/storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。このドキュメントは Azure Storage のアカウントと、対応するストレージ キーがあることを前提としています。
 
 <a id="explorer"></a>
 ## Azure ストレージ エクスプローラーの使用 
@@ -52,7 +52,7 @@ Azure ストレージ エクスプローラーは、Azure Storage アカウン�
 
 AzCopy は、データをアップロードおよびダウンロードするためのコマンド ライン ユーティリティです。 
 
-**警告** クラウド データ サイエンス プロセスで既に設定されている VM とは異なるマシンを使用している場合、次のインストール手順を使用して、AzCopy をインストールしてください。[AzCopy のダウンロードとインストール](storage-use-azcopy.md#install).
+**警告** クラウド データ サイエンス プロセスで既に設定されている VM とは異なるマシンを使用している場合、次のインストール手順を使用して、AzCopy をインストールしてください。[AzCopy のダウンロードとインストール](storage/storage-use-azcopy.md#install).
 
 ####BLOB との間でのファイルのアップロード/ダウンロードの例:
 
@@ -77,7 +77,7 @@ AzCopy は、データをアップロードおよびダウンロードするた�
 > 2.ファイルをダウンロードする場合、/S を指定すると、指定したディレクトリとそのサブディレクトリ内のすべてのファイル、または指定されたディレクトリとそのサブディレクトリ内の指定したパターンと一致するすべてのファイルがダウンロードされるまで、コンテナーを再帰的に検索します。  
 > 3./Source パラメーターを使用して、ダウンロードする特定の BLOB ファイルを指定することはできません。特定のファイルをダウンロードするには、/Pattern パラメーターを使用して、ダウンロードする BLOB ファイル名を指定します。/S パラメーターは、AzCopy でファイル名パターンを再帰的に検索する場合に使用できます。パターンのパラメーターを指定しなかった場合、AzCopy はそのディレクトリ内のすべてのファイルをダウンロードします。 
 
-AzCopy の使用方法の詳細については、「[AzCopy コマンド ライン ユーティリティの概要](storage-use-azcopy.md#install)」を参照してください。
+AzCopy の使用方法の詳細については、「[AzCopy コマンド ライン ユーティリティの概要](storage/storage-use-azcopy.md#install)」を参照してください。
 
 
 <a id="PythonSDK"></a>
@@ -91,7 +91,7 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 - コンテナー内の BLOB を一覧表示する
 - BLOB を削除する
 
-このセクションでは、BLOB を一覧表示、アップロード、およびダウンロードする方法について説明します。Python API の使用方法の詳細については、「[Python から BLOB ストレージ サービスを使用する方法](storage-python-how-to-use-blob-storage.md)」を参照してください。 
+このセクションでは、BLOB を一覧表示、アップロード、およびダウンロードする方法について説明します。Python API の使用方法の詳細については、「[Python から BLOB ストレージ サービスを使用する方法](storage/storage-python-how-to-use-blob-storage.md)」を参照してください。 
 
 > [AZURE.NOTE] クラウド データ サイエンス プロセスで既に設定されている VM とは異なるマシンを使用している場合、次のサンプル コードを使用する前に [Python Azure SDK](python-how-to-install.md) をインストールする必要があります。
 

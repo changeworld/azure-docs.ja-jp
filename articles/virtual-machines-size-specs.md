@@ -31,7 +31,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 *   D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの[新しい D シリーズ仮想マシンのサイズ](http://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)に関する記事を参照してください。  
 
-*   DS シリーズ VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュが提供されます。Premium Storage はプレビュー段階で、特定のリージョンで使用できます。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
+*   DS シリーズ VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュが提供されます。Premium Storage はプレビュー段階で、特定のリージョンで使用できます。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage/storage-premium-storage-preview-portal.md)に関するページを参照してください。
 
 *   G シリーズ VM は、最大のサイズと最高のパフォーマンスを提供し、Intel Xeon E5 V3 ファミリのプロセッサを持つホスト上で実行されます。
 
@@ -103,7 +103,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |Standard_DS13 (同)|8|56|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 112 GB</p>|16|288|<p>25,600</p><p>256 MB/秒</p>|
 |Standard_DS14 (同)|16|112|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 224 GB</p>|32|576|<p>50,000</p><p>512 MB/秒</p>|
 
-*DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
+*DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage/storage-premium-storage-preview-portal.md)に関するページを参照してください。
 
 ### 標準プラン – G シリーズ
 

@@ -75,7 +75,7 @@ trip_data と trip_fare を結合するための一意のキーは、[medallion]
 
 Azure のデータ サイエンス環境をセット アップするには、
 
-1. [ストレージ アカウントを作成する](storage-create-storage-account.md)
+1. [ストレージ アカウントを作成する](storage/storage-create-storage-account.md)
 
 2. [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
 

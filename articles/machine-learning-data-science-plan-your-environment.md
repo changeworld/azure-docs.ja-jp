@@ -62,7 +62,7 @@ Azure Machine Learning でデータ サイエンス環境をセットアップ�
 
 シナリオによっては、次のリソースが必要になることもあります。
 
-1.  Azure ツール: [Azure PowerShell SDK](install-configure-powershell.md)、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[AzCopy](storage-use-azcopy.md)、その他
+1.  Azure ツール: [Azure PowerShell SDK](install-configure-powershell.md)、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[AzCopy](storage/storage-use-azcopy.md)、その他
 2.  SQL Server を実行する Azure Virtual Machine
 3.  Azure HDInsight (Hadoop)
 4.  Azure とオンプレミスのファイル共有に使用する Azure 仮想ネットワーク
