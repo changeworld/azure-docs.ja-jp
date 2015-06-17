@@ -2,6 +2,7 @@
 	pageTitle="Web プロジェクト に Application Insights SDK を追加する" 
 	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
 	services="application-insights" 
+documentationCenter=".net"
 	authors="alancameronwills" 
 	manager="kamrani"/>
 
@@ -11,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2015-02-03" 
+	ms.date="02/03/2015" 
 	ms.author="awills"/>
 
 # Application Insights - アプリケーションの状態と利用状況の監視を開始する

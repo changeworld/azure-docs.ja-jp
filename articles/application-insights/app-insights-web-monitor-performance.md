@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2014-12-11" 
+	ms.date="12/11/2014" 
 	ms.author="awills"/>
  
 # Web アプリケーションのパフォーマンスを監視する

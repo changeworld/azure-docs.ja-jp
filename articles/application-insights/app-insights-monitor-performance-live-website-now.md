@@ -2,6 +2,7 @@
 	pageTitle="実行中の Web サイトのパフォーマンスの問題の診断" 
 	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。スタンドアロンでの使用または Application Insights SDK との併用" 
 	services="application-insights" 
+documentationCenter=".net"
 	authors="alancameronwills" 
 	manager="kamrani"/>
 
@@ -11,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2015-01-23" 
+	ms.date="01/23/2015" 
 	ms.author="awills"/>
  
 

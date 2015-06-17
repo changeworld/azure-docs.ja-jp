@@ -2,6 +2,7 @@
 	pageTitle="Web サイトの可用性と応答性の監視" 
 	description="Application Insights で Web テストを設定します。Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。" 
 	services="application-insights" 
+documentationCenter=""
 	authors="alancameronwills" 
 	manager="kamrani"/>
 
@@ -11,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2015-01-27" 
+	ms.date="01/27/2015" 
 	ms.author="awills"/>
  
 # Web サイトの可用性と応答性の監視

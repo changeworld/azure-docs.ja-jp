@@ -2,6 +2,7 @@
 	pageTitle="Application Insights を使ってみる" 
 	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
 	services="application-insights" 
+documentationCenter=""
 	authors="alancameronwills" 
 	manager="kamrani"/>
 
@@ -11,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2015-02-10" 
+	ms.date="02/10/2015" 
 	ms.author="awills"/>
 
 # Application Insights - アプリケーションの状態と利用状況の監視を開始する

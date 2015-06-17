@@ -2,6 +2,7 @@
 	pageTitle="Web アプリケーションの利用状況の追跡" 
 	description="ユーザーのアクティビティをログに記録します。" 
 	services="application-insights" 
+documentationCenter=""
 	authors="alancameronwills" 
 	manager="kamrani"/>
 
@@ -11,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2015-01-09" 
+	ms.date="01/09/2015" 
 	ms.author="awills"/>
  
 # Web アプリケーションの使用状況の追跡

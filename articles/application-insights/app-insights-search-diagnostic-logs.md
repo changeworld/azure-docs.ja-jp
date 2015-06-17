@@ -2,6 +2,7 @@
 	pageTitle="診断ログを検索する" 
 	description="Trace、NLog、または Log4Net で生成されたログを検索します。" 
 	services="application-insights" 
+documentationCenter=""
 	authors="alancameronwills" 
 	manager="kamrani"/>
 
@@ -11,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2015-01-09" 
+	ms.date="01/09/2015" 
 	ms.author="awills"/>
  
 # Application Insights 内での診断検索
