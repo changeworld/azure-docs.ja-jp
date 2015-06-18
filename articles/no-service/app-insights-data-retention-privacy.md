@@ -1,4 +1,4 @@
-<<<<<<< HEAD:articles/app-insights-data-retention-privacy.md
+
 ﻿<properties 
 	pageTitle="Data retention and storage in Application Insights" 
 	description="Retention and privacy policy statement" 
