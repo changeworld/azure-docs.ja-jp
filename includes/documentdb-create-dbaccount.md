@@ -1,4 +1,4 @@
-﻿1.	[Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
+1.	[Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
 2.	ジャンプ バーで **[新規]** をクリックし、**[データ + ストレージ]** を選択し、**[DocumentDB]** をクリックします。 
 
 	![Azure プレビュー ポータルのスクリーン ショット。[作成] ブレードで **[新規]** ボタンと **[データ + ストレージ]** が、[データ + ストレージ] ブレードで **[DocumentDB]** が強調表示されている][1]   
@@ -51,6 +51,6 @@
 
 [方法:DocumentDB アカウントを作成する]: #Howto
 [次のステップ]: #NextSteps
-[documentdb-manage]:../articles/documentdb-manage.md
+[documentdb-manage]:../articles/documentdb/documentdb-manage.md
 
 <!--HONumber=49-->

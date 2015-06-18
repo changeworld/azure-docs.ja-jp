@@ -29,7 +29,7 @@
 
    [ストレージ アカウントの作成](storage-whatis-account.md)
 
-  [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
+  [Azure ML ワークスペースを作成する](machine-learning/machine-learning-create-workspace.md)
 
 **次のセクションでは、いくつかのサンプル シナリオを示します。各シナリオでは、考えられるデータ サイエンスのフローとサポートする Azure リソースが一覧されています。**
 
@@ -175,7 +175,7 @@
 
     f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
- >[AZURE.NOTE]大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+ >[AZURE.NOTE]大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -215,7 +215,7 @@
 
 	f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
-> [AZURE.NOTE]大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+> [AZURE.NOTE]大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -300,7 +300,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 
 ### 実行中の Azure データ サイエンスの例
 
-公開されているデータセットを使用した Azure のデータ サイエンス プロセスのエンドツーエンドのチュートリアルの例については、「[実行中の Azure データ サイエンス プロセス](machine-learning-data-science-process-sql-walkthrough.md)」をご覧ください。
+公開されているデータセットを使用した Azure のデータ サイエンス プロセスのエンドツーエンドのチュートリアルの例については、「[実行中の Azure データ サイエンス プロセス](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)」をご覧ください。
 
 [1]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-small-in-aml.png
 [2]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-local-with-processing.png

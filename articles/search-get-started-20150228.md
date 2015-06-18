@@ -78,7 +78,7 @@ USGS データ セットには、ワシントン州に関連するレコード�
 
 簡単にするため、データは [United States Geological Services (USGS) Web サイト](http://geonames.usgs.gov/domestic/download_data.htm)のデータから生成されたテキスト ファイルでソリューションに組み込まれています。
 
-それ以外の方法としては、[DocumentDB 用のインデクサー](documentdb-search-indexer.md)や [Azure SQL Database 用のインデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)などがあります。インデクサーはデータを Azure Search インデックスに取得するもので、作成して管理する必要があるコードが非常に簡素化されます。
+それ以外の方法としては、[DocumentDB 用のインデクサー](documentdb/documentdb-search-indexer.md)や [Azure SQL Database 用のインデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)などがあります。インデクサーはデータを Azure Search インデックスに取得するもので、作成して管理する必要があるコードが非常に簡素化されます。
 
 オンプレミスの SQL Server データベースからデータを読み込むこともできます。方法については、[このチュートリアル](http://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/)を参照してください。
 
