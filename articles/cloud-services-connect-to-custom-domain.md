@@ -30,7 +30,7 @@
 
 ## 仮想ネットワークの作成
 
-Azure に仮想ネットワークを作成するには、Azure ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure ポータルを使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](create-virtual-network.md)に関するページを参照してください。
+Azure に仮想ネットワークを作成するには、Azure ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure ポータルを使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](virtual-machines/create-virtual-network.md)に関するページを参照してください。
 
     #Create Virtual Network
 

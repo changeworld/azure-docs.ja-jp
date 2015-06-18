@@ -78,6 +78,6 @@ Azure 仮想マシンとクラウド サービスは、Azure が提供するコ�
 
  [A8、A9、A10、A11 コンピューティング集中型インスタンスに関するページ](http://go.microsoft.com/fwlink/p/?linkid=328042)
 
- [仮想マシンのサイズ](virtual-machines-size-specs.md)
+ [仮想マシンのサイズ](virtual-machines/virtual-machines-size-specs.md)
 
 <!---HONumber=58-->

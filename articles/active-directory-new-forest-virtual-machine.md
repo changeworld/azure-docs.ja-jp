@@ -25,7 +25,7 @@
 必要に応じて次の関連するトピックも参照してください。
 
 - これらの手順については、ビデオ「[How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)」をご覧ください。
-- 必要であれば、[サイト間 VPN を構成](https://msdn.microsoft.com/library/azure/dn133795.aspx)した後、新しいフォレストをインストールするか、内部設置型のフォレストを Azure Virtual Network に拡張することもできます。これらの手順については、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](virtual-networks-install-replica-active-directory-domain-controller.md)」を参照してください。
+- 必要であれば、[サイト間 VPN を構成](https://msdn.microsoft.com/library/azure/dn133795.aspx)した後、新しいフォレストをインストールするか、内部設置型のフォレストを Azure Virtual Network に拡張することもできます。これらの手順については、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)」を参照してください。
 -  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 ## シナリオ図
@@ -63,7 +63,7 @@
  
 次の手順を繰り返して、必要に応じて、DC ロールをホストする VM を作成します。フォールト トレランスと冗長性を確保するには 2 つ以上の仮想 DC をデプロイする必要があります。Azure の仮想ネットワークに、類似した構成の DC (いずれも GCで、DNS サーバーを実行し、FSMO ロールを保持していないなど) が 2 つ以上あると、それらの DC を実行する仮想マシンを可用性セットに置くとフォールト トレランスが向上します。
 
-UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
+UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines/virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
 
 1. クラシック ポータルで、**[新規]** > **[コンピューティング]** > **[仮想マシン]** > **[ギャラリーから]** の順にクリックします。次の値を使用して、ウィザードを完了します。別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
 
@@ -73,7 +73,7 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
 	**仮想マシンの構成** | <p>仮想マシン名: 単一ラベル名を入力します (AzureDC1 など)。</p><p>新しいユーザー名: ユーザーの名前を入力します。このユーザーは、VM 上のローカルの Administrators グループのメンバーになります。最初に VM にサインインするときは、この名前でサインインする必要があります。Administrator という名前の組み込みのアカウントは機能しません。</p><p>。新しいパスワード/確認入力: パスワードを入力します。</p>
 	**仮想マシンの構成** | <p>クラウド サービス: 1 台目の VM の作成時には <b>[新しいクラウド サービスの作成]</b> を選択します。DC ロールをホストする VM の追加作成時には、1 台目の VM と同じクラウド サービス名を選択します。</p><p>クラウド サービス DNS 名: グローバルに一意の名前を指定します。</p><p>リージョン/アフィニティ グループ/仮想ネットワーク: 仮想ネットワーク名 (例: WestUSVNet) を指定します。</p><p>ストレージ アカウント: 1 台目の VM の作成時には <b>[自動的に生成されたストレージ アカウントを使用]</b> を選択します。DC ロールをホストする VM の追加作成時には、1 台目の VM と同じストレージ アカウント名を選択します。</p><p>可用性セット: <b>[可用性セットの作成]</b> を選択します。</p><p>可用性セット名: 1 台目の VM の作成時に、可用性セットの名前を入力します。その後、VM を追加で作成するときには、1 台目の VM と同じ可用性セット名を選択します。</p>
 	**仮想マシンの構成** | <p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p>
-2. DC サーバーのロールを実行する各 VM にディスクを接続します。AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。手順については、「[データ ディスクを Windows 仮想マシンに追加する方法](storage-windows-attach-disk.md)」を参照してください。
+2. DC サーバーのロールを実行する各 VM にディスクを接続します。AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。手順については、「[データ ディスクを Windows 仮想マシンに追加する方法](virtual-machines/storage-windows-attach-disk.md)」を参照してください。
 3. 初めて VM にサインインした後、**[サーバー マネージャー]**、**[ファイル サービスとストレージ サービス]** の順に開いて、NTFS を使用してこのディスクにボリュームを作成します。
 4. DC ロールを実行する VM の静的 IP アドレスを予約します。静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、[Azure PowerShell をインストール](powershell-install-configure.md)し、Set-AzureStaticVNetIP コマンドレットを実行します。次に例を示します。
 
@@ -111,7 +111,7 @@ DC のインストールが完了したら、仮想マシンに再び接続し�
 	**仮想マシンの構成** | <p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p>
 2. 各 VM がプロビジョニングされたら、サインインし、ドメインに参加させます。**サーバー マネージャー**で、**[ローカル サーバー]**、**[ワークグループ]**、**[変更…]** の順にクリックし、**[ドメイン]** を選択して、内部設置型ドメインの名前を入力します。ドメイン ユーザーの資格情報を入力し、VM を再起動して、ドメインへの参加を完了します。
 
-UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
+UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines/virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
 
 Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」と「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)」をご覧ください。
 
@@ -122,7 +122,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 -  [Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 -  [Configure a Cloud-Only Virtual Network (クラウド専用仮想ネットワークの構成)](https://msdn.microsoft.com/library/dn631643.aspx)
 -  [サイト間 VPN の構成](https://msdn.microsoft.com/library/dn133795.aspx)
--  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](virtual-networks-install-replica-active-directory-domain-controller.md)
+-  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)
 -  [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 -  [Microsoft Azure IT Pro IaaS: (05) 仮想ネットワークとクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 -  [仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)

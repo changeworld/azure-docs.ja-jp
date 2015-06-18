@@ -53,7 +53,7 @@
 
 ## <a id="attachdisk"> </a>新しい仮想マシンにデータ ディスクを接続する方法 ##
 
-このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。空のディスクの接続方法と、既存のディスクの接続方法の詳細については、「[データ ディスクを Virtual Machine に接続する方法](../articles/storage-windows-attach-disk.md)」を参照してください。
+このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。空のディスクの接続方法と、既存のディスクの接続方法の詳細については、「[データ ディスクを Virtual Machine に接続する方法](../articles/virtual-machines/storage-windows-attach-disk.md)」を参照してください。
 
 1. [Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
 
@@ -113,11 +113,11 @@
 
 Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
 
-[クラウド サービス内の仮想マシンを相互に接続する方法](../articles/cloud-services-connect-virtual-machine.md)
+[クラウド サービス内の仮想マシンを相互に接続する方法](../articles/virtual-machines/cloud-services-connect-virtual-machine.md)
 
-[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines-create-upload-vhd-windows-server.md)
+[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/virtual-machines-create-upload-vhd-windows-server.md)
 
-[データ ディスクを仮想マシンに接続する方法](../articles/storage-windows-attach-disk.md)
+[データ ディスクを仮想マシンに接続する方法](../articles/virtual-machines/storage-windows-attach-disk.md)
 
 [仮想マシンの可用性管理](../articles/manage-availability-virtual-machines.md)
 

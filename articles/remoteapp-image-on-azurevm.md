@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
     pageTitle="Azure VM に基づく RemoteApp イメージの作成"
     description="Azure 仮想マシンを使用して RemoteApp 起動用のイメージを作成する方法について説明します。" 
     services="remoteapp" 
@@ -37,7 +37,7 @@
 
 3. Windows Server リモート デスクトップ セッション ホストのイメージを使用している場合は、VM が RemoteApp の前提条件を満たしていることを確認するための検証スクリプトが含まれています。スクリプトを実行するには、デスクトップ上にある **[ValidateRemoteAppImage]** をダブルクリックします。次の手順に進む前に、スクリプトによって報告されたエラーはすべて修正します。
 
-4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
+4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](virtual-machines/virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
 
  
 

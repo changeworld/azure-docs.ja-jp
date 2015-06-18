@@ -20,7 +20,7 @@
 
 このトピックでは、**asm** モードで Azure CLI を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。これらの機能は、.NET、Node.JS、および PHP 向けの Azure SDK と共にインストールされる Windows PowerShell コマンドレットに備わっている機能と似ています。
 
-> [AZURE.NOTE]**asm** モードで Azure サービスを使用する場合であっても、考え方としては Websites、Virtual Machines、Virtual Networks、Storage など、個々の Azure の概念やサービスとほぼ変わりません。**arm** モードを使用すると、コマンド ライン上で豊富な機能と、論理的にグループ化された階層型リソース モデルが利用できます。このモードへの切り替え方法については、[リソース マネージャーでの Azure コマンドライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。
+> [AZURE.NOTE]**asm** モードで Azure サービスを使用する場合であっても、考え方としては Websites、Virtual Machines、Virtual Networks、Storage など、個々の Azure の概念やサービスとほぼ変わりません。**arm** モードを使用すると、コマンド ライン上で豊富な機能と、論理的にグループ化された階層型リソース モデルが利用できます。このモードへの切り替え方法については、[リソース マネージャーでの Azure コマンドライン インターフェイスの使用](virtual-machines/xplat-cli-azure-resource-manager.md)に関するページを参照してください。
 
 インストール手順については、[Azure コマンド ライン インターフェイスのインストールと構成](xplat-cli-install.md)に関するページを参照してください。
 

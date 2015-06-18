@@ -126,17 +126,17 @@ Getting Started (概要)
 
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)  
 - [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](./xplat-cli-azure-resource-manager.md)  
+- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](virtual-machines/xplat-cli-azure-resource-manager.md)  
 - [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)  
   
 アプリケーションの作成と展開
   
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)  
-- [Azure でのリソース グループのデプロイのトラブルシューティング](./resource-group-deploy-debug.md)  
+- [Azure でのリソース グループのデプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)  
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)  
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)  
-- [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./arm-template-deployment.md)
+- [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](virtual-machines/arm-template-deployment.md)
   
 リソースの整理
   
