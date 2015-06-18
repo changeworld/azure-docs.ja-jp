@@ -590,11 +590,11 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 [hdinsight-develop-streaming-jobs]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 
-[sqldatabase-create-configue]: sql-database-create-configure.md
-[sqldatabase-get-started]: sql-database-get-started.md
+[sqldatabase-create-configue]: sql-database/sql-database-create-configure.md
+[sqldatabase-get-started]: sql-database/sql-database-get-started.md
 
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: storage-create-storage-account.md
+[azure-create-storageaccount]: storage/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/

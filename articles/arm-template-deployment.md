@@ -25,7 +25,7 @@
 このチュートリアルを完了するには、以下のものも必要です。
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-- [Azure ストレージ アカウント](storage-create-storage-account.md)
+- [Azure ストレージ アカウント](storage/storage-create-storage-account.md)
 - [Windows Management Framework 3.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=40855)
 - [Azure PowerShell](install-configure-powershell.md)
 

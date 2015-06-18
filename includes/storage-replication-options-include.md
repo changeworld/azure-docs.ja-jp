@@ -16,7 +16,7 @@
 
 - *読み取りアクセス Geo 冗長ストレージ (RA GRS)* は、前に述べた Geo 冗長ストレージのすべてのメリットを備え、さらにプライマリ リージョンが使用できない場合、セカンダリ リージョンのデータに読み取りアクセスできます。読み取りアクセス Geo 冗長ストレージは、持続性に加えて最大の可用性を備えた推奨されるオプションです。
 
-レプリケーション オプションの詳細については、[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)および「[Azure Storage 冗長オプション](storage-redundancy.md)」を参照してください。
+レプリケーション オプションの詳細については、[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)および「[Azure Storage 冗長オプション](../articles/storage/storage-redundancy.md)」を参照してください。
 	
 さまざまなレプリケーション オプションの料金の差異については、[Storage 料金の詳細](http://azure.microsoft.com/pricing/details/storage/)ページを参照してください。
 

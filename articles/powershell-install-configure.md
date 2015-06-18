@@ -1,4 +1,4 @@
-﻿<properties
+<properties
 	pageTitle="Azure PowerShell のインストールと構成の方法"
 	description="Azure PowerShell のインストールと構成の方法について説明します。"
 	editor="tysonn"

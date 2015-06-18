@@ -810,8 +810,8 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Azure Cloud Services Part 1:概要](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Azure クラウド サービス](/documentation/services/cloud-services/)
 * [Azure Storage](/documentation/services/storage/)
-* [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
-* [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
+* [.NET から BLOB ストレージを使用する方法](storage/storage-dotnet-how-to-use-blobs.md)
+* [.NET からキュー ストレージを使用する方法](storage/storage-dotnet-how-to-use-queues.md)
 
 
 <!--HONumber=52-->

@@ -20,7 +20,7 @@
 
 ## 概要
 
-[Azure Premium Storage](storage-premium-storage-preview-portal.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。IaaS [仮想マシン](http://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
+[Azure Premium Storage](storage/storage-premium-storage-preview-portal.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。IaaS [仮想マシン](http://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
 
 これは、IAAS VM 上の SQL Server で Azure Premium Storage を利用するエンド ツー エンド プロセスを理解するのに重要です。次のトピックがあります。
 
@@ -142,7 +142,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。具体的な帯域幅については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
-ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-jping-premium-storage)を参照してください。
+ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-jping-premium-storage)を参照してください。
 
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
@@ -1110,7 +1110,7 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 	![Appendix15][25]
 
 ## その他のリソース
-- [Azure Premium Storage](storage-premium-storage-preview-portal.md)
+- [Azure Premium Storage](storage/storage-premium-storage-preview-portal.md)
 - [仮想マシン](http://azure.microsoft.com/services/virtual-machines/)
 - [Azure の仮想マシンにおける SQL Server](virtual-machines-sql-server-infrastructure-services.md)
 

@@ -118,7 +118,7 @@
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [データの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [Azure 管理ポータル]: https://manage.windowsazure.com/
-[What is the Table Service]: storage-dotnet-how-to-use-tables.md#what-is
+[What is the Table Service]: storage/storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab アドオンのページ]: /gallery/store/mongolab/mongolab
 
 <!--HONumber=54-->

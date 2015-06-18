@@ -32,7 +32,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション** - Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料評価版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](storage-create-storage-account.md)に関するページを参照してください。
+- **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](storage/storage-create-storage-account.md)に関するページを参照してください。
 
 ##HDInsight クラスターのプロビジョニング
 

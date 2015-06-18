@@ -167,7 +167,7 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
  
 Azure では 2 種類のストレージを使用できます。Standard Storage では、BLOB ストレージ、テーブル ストレージ、キュー ストレージ、およびファイル ストレージにアクセスできます。Premium Storage は、AlwaysOn クラスター内の SQL Server などの高パフォーマンス アプリケーション用に設計されており、現在は Azure Virtual Machine ディスクのみをサポートします。
 
-ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。Azure ストレージの現在の制限については、「[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md#storage-limits)」をご覧ください。また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」もご覧ください。
+ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。Azure ストレージの現在の制限については、「[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md#storage-limits)」をご覧ください。また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage/storage-scalability-targets.md)」もご覧ください。
 
 Azure で作成される仮想マシンには、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。オペレーティング システム ディスクとデータ ディスクは Azure BLOB ですが、一時ディスクはコンピューターが存在するノードのローカルなストレージによってサポートされます。このため、コンピューターのノードが変更されたことが認識されないとそのディスクのデータが失われる可能性があるため、一時ディスクはシステム リサイクルの間に保持する必要があるデータには適していません。一時ドライブには何も格納しないでください。
 
@@ -550,6 +550,6 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
+[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/storage-scalability-targets.md)
 
 <!--HONumber=54-->
