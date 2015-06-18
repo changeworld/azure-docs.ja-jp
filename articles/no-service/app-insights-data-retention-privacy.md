@@ -16,12 +16,7 @@
 	ms.date="11/14/2014" 
 	ms.author="awills"/>
 	
-=======
-<properties title="Data retention and storage in Application Insights" pageTitle="Application Insights でのデータ保持と保存" description="保持およびプライバシー ポリシー ステートメント" metaKeywords="analytics monitoring application insights" authors="awills"  manager="kamrani" />
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-11-14" ms.author="awills" />
-
->>>>>>> origin/master:articles/no-service/app-insights-data-retention-privacy.md
 # Application Insights でのデータ保持と保存 
 
 *Application Insights はプレビュー段階です。*
