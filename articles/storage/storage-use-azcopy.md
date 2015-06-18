@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/5/2015" 
+	ms.date="01/05/2015" 
 	ms.author="tamram"/>
 
 # AzCopy コマンド ライン ユーティリティの概要

@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="2/23/2015" 
-	ms.author="jhubbard; v-stste@microsoft.com" 
+ms.devlang="NA"
+	ms.date="02/23/2015" 
+	ms.author="jhubbard; sstein" 
 	ms.workload="data-services" 
 	ms.topic="article" 
 	ms.tgt_pltfrm=""/>
