@@ -398,9 +398,9 @@ VM イメージをキャプチャするには、まず、**capture_vm_image** �
 		role_size='Small',
 		vm_image_name = image_name)
 
-Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md)に関するページを参照してください。
+Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](virtual-machines/virtual-machines-linux-capture-image.md)に関するページを参照してください。
 
-Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
+Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](virtual-machines/virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
 
 ## <a name="What's Next"> </a>次のステップ
 
