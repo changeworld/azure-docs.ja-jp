@@ -14,7 +14,7 @@ ms.devlang="NA"
 	ms.author="jhubbard; sstein" 
 	ms.workload="data-services" 
 	ms.topic="article" 
-	ms.tgt_pltfrm=""/>
+	ms.tgt_pltfrm="NA"/>
 
 
 # SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする
@@ -172,11 +172,11 @@ DTU の使用率とワークロードに合わせるのに必要な最大エデ�
 
 **サンプル結果:**
 
-![Sample Result](media/sql-database-upgrade-new-service-tiers/CTnjv26.png)
+![Sample Result](media/sql-database-upgrade-new-service-tiers/sample_result.png)
 
 時間の経過と共に平均 DTU 使用割合の傾向をグラフで確認できます。次は、全体的には S2 レベル内にあるが、一部のピーク アクティビティが P1 データベース レベルに達しているデータベースのグラフの例です。時間の経過に伴い、DTU 消費は「Basic」から「P1」に変化しています。新しい階層にこのデータベースを完全に合わせるには、「P1」パフォーマンス レベルの Premium サービス階層のデータベースが必要です。一方で、P1 レベルへの増加がほとんどない場合は、S2 レベル データベースで十分です。
 
-![DTU Usage](media/sql-database-upgrade-new-service-tiers/e4N4ay5.png)
+![DTU Usage](media/sql-database-upgrade-new-service-tiers/DTU_usage.png)
 
 **パフォーマンスへのメモリの影響:** メモリも DTU の評価に影響するリソースの 1 つですが、SQL データベースでは利用可能なすべてのメモリをデータベース操作に使用できます。このことから、メモリの消費は上記クエリの DTU 平均消費には含まれません。一方で、より低いパフォーマンス レベルにダウンサイズすると、データベースで利用できるメモリも少なくなります。そうすると、IO 消費が大きくなり、消費される DTU が影響を受けることになります。そのため、低いパフォーマンス レベルにダウンサイズする場合は、IO の割合に十分な余裕があることを確認します。これを監視するには、上述の [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV を使用します。
 

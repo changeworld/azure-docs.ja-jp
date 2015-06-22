@@ -13,9 +13,8 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="vm-linux" 
 	ms.workload="infrastructure-services" 
-	ms.date="12/3/2014" 
-	ms.author="v-ahsab" 
-	ms.prod="azure"/>
+	ms.date="12/03/2014" 
+	ms.author="v-ahsab"/>
 
 <!--The next line, with one pound sign at the beginning, is the page title--> 
 # MariaDB (MySQL) クラスター - Azure チュートリアル

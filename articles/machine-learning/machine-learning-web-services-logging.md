@@ -11,10 +11,11 @@
 	ms.service="machine-learning"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.tgt_pltfrm=""
+	ms.tgt_pltfrm="na"
 	ms.workload="big-data" 
 	ms.date="02/12/2015"
-	ms.author="raymondl,garye"/>
+	ms.author="garye"/>
+
 
 #Machine Learning Web サービスのログ記録の有効化  
 

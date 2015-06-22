@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="java" 
 	ms.devlang="java" 
 	ms.topic="hero-article" 
-	ms.date="1/13/2015" 
+	ms.date="01/13/2015" 
 	ms.author="sethm"/>
 
 # Event Hubs の使用
