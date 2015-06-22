@@ -22,7 +22,7 @@
 
 
 ## 概念
-1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](./active-directory-whatis.md)」を参照してください。
+1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
 2. サービス プリンシパル - ディレクトリ内のアプリケーションのインスタンス。
 3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、「[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)」を参照してください。
 
@@ -74,7 +74,7 @@ Azure PowerShell がインストールされていない場合、「[Azure Power
 
    これでディレクトリにサービス プリンシパルが作成されましたが、そのサービスには権限やスコープが割り当てられていません。いくつかのスコープで操作を実行する権限を、サービス プリンシパルに明示的に付与する必要があります。
 
-4. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、「[リソースへのアクセスの管理と監査](./resource-group-rbac.md)」を参照してください。
+4. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。
 
         PS C:> New-AzureRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
 
@@ -107,7 +107,7 @@ Azure CLI for Mac, Linux and Windows がインストールされていない場�
 
 これらの手順を実行するには、AD アプリケーションとサービス プリンシパルを既に所有している必要があります。従来の Azure ポータルによって AD アプリケーションとサービス プリンシパルをセットアップする方法については、「[従来の Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)」を参照してください。
 
-1. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、「[リソースへのアクセスの管理と監査](./resource-group-rbac.md)」を参照してください。
+1. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。
 
         azure role assignment create --objectId {service-principal-object-id} -o Reader -c /subscriptions/{subscriptionId}/
 
@@ -127,12 +127,12 @@ Getting Started (概要)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)  
 - [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
 - [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](virtual-machines/xplat-cli-azure-resource-manager.md)  
-- [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)  
+- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)  
   
 アプリケーションの作成と展開
   
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)  
+- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)  
 - [Azure でのリソース グループのデプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)  
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)  
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)  
@@ -144,7 +144,7 @@ Getting Started (概要)
   
 アクセスの管理と監査
   
-- [リソースへのアクセスの管理と監査](./resource-group-rbac.md)  
+- [リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)  
 - [Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)  
   
 

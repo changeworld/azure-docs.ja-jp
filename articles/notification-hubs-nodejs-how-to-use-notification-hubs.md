@@ -210,7 +210,7 @@ REST サービスと通信するための便利なライブラリ セットが�
   [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
   [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
   [WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ]: /develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Node.js クラウド サービス]: cloud-services-nodejs-develop-deploy-app.md
+  [Node.js クラウド サービス]: cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [以前の管理ポータル]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
   [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
   [ストレージを使用する Node.js クラウド サービス]: /develop/nodejs/tutorials/web-app-with-storage/

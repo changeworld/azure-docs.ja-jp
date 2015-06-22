@@ -1,4 +1,4 @@
-﻿# Git を使用した Azure App Service での継続的デプロイ
+# Git を使用した Azure App Service での継続的デプロイ
 
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、BitBucket、CodePlex、Dropbox、Git、GitHub、Mercurial、TFS など、ソース コード管理やリポジトリ ツールからの継続的なデプロイをサポートしています。これらのツールを使用すると、アプリケーションのコンテンツとコードをメンテナンスすることができ、必要なときに変更を Azure Web アプリにすばやく簡単にプッシュできます。
 
@@ -302,6 +302,6 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Create a Repo (BitBucket) (Repo の作成 (BitBucket))]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Quick Start - Mercurial (Mercurial のクイック スタート)]: http://mercurial.selenic.com/wiki/QuickStart
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
-[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services-continuous-delivery-use-vso.md
+[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
 <!--HONumber=49-->

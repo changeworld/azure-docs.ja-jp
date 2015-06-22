@@ -99,12 +99,12 @@ Getting Started (概要)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)  
 - [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
 - [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](virtual-machines/xplat-cli-azure-resource-manager.md)  
-- [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)  
+- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)  
   
 アプリケーションの作成と展開
   
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)  
+- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)  
 - [Azure でのリソース グループのデプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)  
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)  
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)  
@@ -116,7 +116,7 @@ Getting Started (概要)
   
 アクセスの管理と監査
   
-- [リソースへのアクセスの管理と監査](./resource-group-rbac.md)  
+- [リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)  
 - [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)  
 
 <!-- Images. -->
