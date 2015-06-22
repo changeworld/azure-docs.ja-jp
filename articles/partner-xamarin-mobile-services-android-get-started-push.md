@@ -76,7 +76,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 * [認証の使用](partner-xamarin-mobile-services-android-get-started-users.md) <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [通知ハブとは](notification-hubs-overview.md) <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [通知ハブとは](notification-hubs/notification-hubs-overview.md) <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [通知ハブのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>通知ハブ ソリューションのトラブルシューティングとデバッグについて説明します。
 

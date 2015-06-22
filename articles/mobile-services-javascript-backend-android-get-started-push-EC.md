@@ -208,7 +208,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 [Send push notifications to authenticated users]: mobile-services-javascript-backend-android-push-notifications-app-users.md
 
-[通知ハブとは]: notification-hubs-overview.md
+[通知ハブとは]: notification-hubs/notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: notification-hubs-android-send-localized-breaking-news.md
 

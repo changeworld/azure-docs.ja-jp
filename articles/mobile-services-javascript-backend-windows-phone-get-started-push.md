@@ -146,14 +146,14 @@
 
 + [認証されたユーザーにプッシュ通知を送信する](mobile-services-javascript-backend-windows-phone-push-notifications-app-users.md) <br/>タグを使用して Mobile Services から認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
 
-+ [登録者へのブロードキャスト通知の送信](notification-hubs-windows-phone-send-breaking-news.md) <br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
++ [登録者へのブロードキャスト通知の送信](notification-hubs/notification-hubs-windows-phone-send-breaking-news.md) <br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-+ [登録者へのプラットフォーム固有の通知の送信](notification-hubs-aspnet-cross-platform-notify-users.md) <br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
++ [登録者へのプラットフォーム固有の通知の送信](notification-hubs/notification-hubs-aspnet-cross-platform-notify-users.md) <br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 
 
 Mobile Services と通知ハブについては次のトピックを参照してください。
 
-* [Azure Notification Hubs - 診断ガイドライン](notification-hubs-diagnosing.md) <br/>プッシュ通知の問題をトラブルシューティングする方法について説明します。
+* [Azure Notification Hubs - 診断ガイドライン](notification-hubs/notification-hubs-diagnosing.md) <br/>プッシュ通知の問題をトラブルシューティングする方法について説明します。
 
 * [認証の使用] <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
@@ -181,7 +181,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
-[通知ハブとは]: notification-hubs-overview.md
+[通知ハブとは]: notification-hubs/notification-hubs-overview.md
 
 
 <!--HONumber=54-->

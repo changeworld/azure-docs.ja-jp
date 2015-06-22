@@ -110,7 +110,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 [プッシュ通知を認証ユーザーに送信する]: mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md
 
-[通知ハブとは]: notification-hubs-overview.md
+[通知ハブとは]: notification-hubs/notification-hubs-overview.md
 
 [Azure Mobile Services 用の .NET クライアントを使用する方法]: mobile-services-windows-dotnet-how-to-use-client-library.md
 

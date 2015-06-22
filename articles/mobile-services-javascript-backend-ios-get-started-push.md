@@ -240,9 +240,9 @@ Mobile Services および Notification Hubs の詳細については、次のト
 
 [認証されたユーザーにプッシュ通知を送信する]: mobile-services-javascript-backend-ios-push-notifications-app-users.md
 
-[通知ハブとは]: notification-hubs-overview.md
-[登録者への通知の送信]: notification-hubs-ios-send-breaking-news.md
-[登録者へのテンプレートベース通知の送信]: notification-hubs-ios-send-localized-breaking-news.md
+[通知ハブとは]: notification-hubs/notification-hubs-overview.md
+[登録者への通知の送信]: notification-hubs/notification-hubs-ios-send-breaking-news.md
+[登録者へのテンプレートベース通知の送信]: notification-hubs/notification-hubs-ios-send-localized-breaking-news.md
 
 [Mobile Services Objective-C の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
