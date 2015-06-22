@@ -124,7 +124,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 [プッシュ通知を認証ユーザーに送信する]: mobile-services-javascript-backend-windows-store-javascript-push-notifications-app-users.md
 
-[通知ハブとは]: notification-hubs-overview.md
+[通知ハブとは]: notification-hubs/notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: notification-hubs-windows-store-javascript-send-breaking-news.md
 [Send template-based notifications to subscribers]: notification-hubs-windows-store-javascript-send-localized-breaking-news.md
 

@@ -757,7 +757,7 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 [Azure Mobile Services の詳細]: /develop/mobile/resources/
 [Web API の詳細]: http://asp.net/web-api
 [データベースの書き込み競合の処理]: mobile-services-windows-store-dotnet-handle-database-conflicts.md
-[プッシュ通知の追加]: notification-hubs-windows-store-dotnet-get-started.md
+[プッシュ通知の追加]: notification-hubs/notification-hubs-windows-store-dotnet-get-started.md
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-dotnet
 
 

@@ -117,9 +117,9 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [プッシュ通知を認証ユーザーに送信する]: mobile-services-dotnet-backend-android-push-notifications-app-users.md
 [認証されたユーザーにプッシュ通知を送信する]: mobile-services-dotnet-backend-android-push-notifications-app-users.md
 
-[通知ハブとは]: notification-hubs-overview.md
-[登録者へのブロードキャスト通知の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
-[登録者への通知の送信]: notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
+[通知ハブとは]: notification-hubs/notification-hubs-overview.md
+[登録者へのブロードキャスト通知の送信]: notification-hubs/notification-hubs-windows-store-dotnet-send-breaking-news.md
+[登録者への通知の送信]: notification-hubs/notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 
 <!--HONumber=54-->

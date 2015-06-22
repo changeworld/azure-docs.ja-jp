@@ -1,5 +1,5 @@
 ## Event Hub へのメッセージ送信
-このセクションでは、Java アプリを記述して、イベントを Event Hub に送信します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[こちら](../articles/service-bus-java-how-to-use-jms-api-amqp.md)に示すように、Java 経由の AMQP を Service Bus キューと Topics と使用するのに似ています。をご覧ください。詳細については、「[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)」と「[Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)」をご覧ください。
+このセクションでは、Java アプリを記述して、イベントを Event Hub に送信します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の JMS AMQP プロバイダーを使用します。これは、[こちら](../articles/service-bus/service-bus-java-how-to-use-jms-api-amqp.md)に示すように、Java 経由の AMQP を Service Bus キューと Topics と使用するのに似ています。をご覧ください。詳細については、「[Qpid JMS のドキュメント](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)」と「[Java メッセージング サービス](http://www.oracle.com/technetwork/java/jms/index.html)」をご覧ください。
 
 1. Eclipse で、**Sender** という名前の新しい Java プロジェクトを作成します。
 
