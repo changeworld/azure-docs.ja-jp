@@ -40,7 +40,7 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Service Bus を管理する方法について説明しました。Azure Automation の詳細については、以下のリンクを参照してください。
 
-* [Azure オートメーションの使用](automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
+* [Azure オートメーションの使用](automation/automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
 * [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md) (記事)
 
 <!---HONumber=58-->

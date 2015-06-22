@@ -254,7 +254,7 @@ The following template deploys a web app and provisions it with code from a .zip
 
 ## 次のステップ
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)
+- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)
 
