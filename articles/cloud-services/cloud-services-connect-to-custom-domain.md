@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="3/5/2015"
+    ms.date="03/05/2015"
     ms.author="vmaker"/>
 
 # Azure でホストされているカスタム AD ドメイン コントローラーへの Azure クラウド サービス ロールの接続
