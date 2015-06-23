@@ -1436,7 +1436,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ###<a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](mobile-services-how-to-use-server-scripts.md)を参照してください。
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
 
 **mobile script list [options][servicename]**
 
