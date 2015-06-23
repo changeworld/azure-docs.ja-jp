@@ -17,7 +17,7 @@
 	- 	**TodoActivity.java** の **OnCreate** メソッド内で、Mobile Services クライアントをインスタンス化するコードを見つけます。前の図にこのコードが示されています。
 	- 	"MobileServiceUrl" を、モバイル サービスの実際の URL に置き換えます。
 	- 	"AppKey" を、モバイル サービスのキーに置き換えます。
-	- 	詳細については、チュートリアル「[既存のアプリに Mobile Services を追加する](../articles/mobile-services-android-get-started-data.md)」を参照してください。 
+	- 	詳細については、チュートリアル「[既存のアプリに Mobile Services を追加する](../articles/mobile-services/mobile-services-android-get-started-data.md)」を参照してください。 
 
 6. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
 
@@ -52,9 +52,9 @@
 [15]: ./media/mobile-services-android-get-started/mobile-services-import-android-project.png
 
 <!-- URLs. -->
-[Add Mobile Services to an existing app]: ../articles/mobile-services-android-get-started-data.md
-[Get started with authentication]: ../articles/mobile-services-android-get-started-users.md
-[Get started with push notifications]: ../articles/mobile-services-javascript-backend-android-get-started-push.md
+[Add Mobile Services to an existing app]: ../articles/mobile-services/mobile-services-android-get-started-data.md
+[Get started with authentication]: ../articles/mobile-services/mobile-services-android-get-started-users.md
+[Get started with push notifications]: ../articles/mobile-services/mobile-services-javascript-backend-android-get-started-push.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 [Android Studio]: https://developer.android.com/sdk/index.html
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533

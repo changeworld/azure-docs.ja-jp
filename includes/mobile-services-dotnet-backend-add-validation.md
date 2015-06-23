@@ -1,4 +1,4 @@
-﻿
+
 ユーザーにより送信されたデータの長さを検証することをお勧めします。このセクションでは、モバイル サービスに送信された文字列データの長さを検証し、長すぎる文字列 (この場合は 10 文字を超える) を拒否するコードを追加します。
 
 1. **[管理者として実行]** オプションを使用して Visual Studio を起動し、「[Getting Started (概要)]」または「[Get started with data (データの使用)](mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md)」チュートリアルで使用したモバイル サービス プロジェクトが入ったソリューションを開きます。
