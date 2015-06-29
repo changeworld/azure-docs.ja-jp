@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure Automation の Hybrid Runbook Worker"
    description="この記事では、ローカル データ センター内のコンピューターで Runbook を実行できるようにする Azure Automation の機能である Hybrid Runbook Worker のインストールと使用について説明します。"
    services="automation"
@@ -6,10 +6,10 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/11/2015"
@@ -44,7 +44,7 @@ Hybrid Runbook Worker 用に Azure Automation 環境を準備するには、次�
 #### 1.Azure Operational Insights ワークスペースを作成する
 Azure アカウントに Operational Insights ワークスペースがまだない場合は、「[ワークスペースの設定と設定の管理](../operational-insights-setup-workspace)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
 
-#### 2.Automation ソリューションを配置する
+#### 2.Automation ソリューションをデプロイする
 Operational Insights の Automation ソリューションは、Runbook 環境の構成とサポートに必要なコンポーネントをプッシュダウンします。**Azure Automation** パックをインストールする場合は、「[Operational Insights ソリューション](../operational-insights-add-solution)」の手順に従ってください。
 
 ### オンプレミス マシンを構成する
@@ -59,7 +59,7 @@ Microsoft 管理エージェントはコンピューターを Operational Insigh
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行してモジュールをインポートします。
 
-	Import-Module HybridRegistration 
+	Import-Module HybridRegistration
 
 モジュール ファイルが見つからなかったことを示すエラー メッセージが表示された場合は、モジュール ファイルへの完全なパスを使用する次のコマンドの使用が必要になる可能性があります。
 
@@ -70,12 +70,12 @@ Microsoft 管理エージェントはコンピューターを Operational Insigh
 	Add-HybridRunbookWorker –Name <String> -EndPoint <Url> -Token <String>
 
 
-- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
+- **Name** は、Hybrid Runbook Worker グループの名前です。Automation アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
 - **EndPoint** は、エージェント サービスの URL です。Azure プレビュー ポータルの [**キーの管理**] ブレードでこれを取得できます。  
-- **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。オートメーション アカウントの [要素] パネルにあるキー アイコンをクリックして、[キーの管理] ブレードを開くことができます。<br><br>![Hybrid Runbook Worker の概要](./media/automation-hybrid-runbook-worker/elements-panel-keys.png)
+- **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。Automation アカウントの [要素] パネルにあるキー アイコンをクリックして、[キーの管理] ブレードを開くことができます。<br><br>![Hybrid Runbook Worker の概要](./media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 
-#### 3.PowerShell モジュールをインストールする 
+#### 3.PowerShell モジュールをインストールする
 Runbook は、Azure Automation 環境にインストールされているモジュールで定義されているアクティビティとコマンドレットをすべて使用できます。これらのモジュールはオンプレミス マシンに自動的に配置されないため、手動でインストールする必要があります。ただし、Azure モジュールは既定でインストールされ、すべての Azure サービスのコマンドレットと Azure Automation のアクティビティにアクセスできます。
 
 Hybrid Runbook Worker 機能の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュールをインストールする必要があります。Windows PowerShell モジュールのインストールについては、「[モジュールのインストール](http://msdn.microsoft.com/library/dd878350.aspx)」を参照してください。
@@ -123,16 +123,17 @@ Azure Automation で Hybrid Runbook Worker 用に Runbook を編集すること�
 
 Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Automation のどちらがより要件に合っているかを判断するために、次の条件を使用できます。
 
-- SMA には Windows Azure パックのローカル インストールが必要です。ローカル Runbook ワーカーにインストールされているエージェントのみを必要とする Azure Automation よりローカル リソースとメンテナンス コストがかかります。エージェントは Operational Insights によって管理され、メンテナンス コストがより削減されます。 
+- SMA には Windows Azure パックのローカル インストールが必要です。ローカル Runbook ワーカーにインストールされているエージェントのみを必要とする Azure Automation よりローカル リソースとメンテナンス コストがかかります。エージェントは Operational Insights によって管理され、メンテナンス コストがより削減されます。
 - Azure Automation はその Runbook をクラウド内に格納し、オンプレミスの Hybrid Runbooks Worker に配信します。セキュリティ ポリシーでこの動作が許可されていない場合は、SMA を使用する必要があります。
 - Windows Azure パックは無料でダウンロードできますが、Azure Automation ではサブスクリプション料がかかる可能性があります。Azure は SMA のために複数のデータベースを維持する必要があります。
 - Hybrid Runbook Worker 機能を持つ Azure Automation を使用することで、Azure Automation と SMA の両方を別々に管理するのではなく、1 つの場所でクラウド リソースとローカル リソースの Runbook を管理できるようになります。
-- Azure Automation には、SMA で使用できないグラフィカル作成などの拡張機能があります。 
+- Azure Automation には、SMA で使用できないグラフィカル作成などの拡張機能があります。
 
 
 ## 関連記事:
 
 - [Azure Automation での Runbook の開始](../automation-starting-a-runbook)
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

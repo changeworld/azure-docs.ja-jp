@@ -20,7 +20,7 @@
 
 ### 動的 Swagger API の定義
 
-動的 [Swagger](http://swagger.io/) API の定義に URL エンドポイントを指定するには、GET 要求で Swagger 2.0 API の定義を返す API アプリによって公開された API の相対 URL を `endpoints.apiDefinition` プロパティに格納します。次に例を示します。
+API アプリが動的 [Swagger](http://swagger.io/) API 定義を返すことができる場合には、API 定義 JSON を返す GET 要求の相対 URL を `endpoints.apiDefinition` プロパティに格納します。次に例を示します。
 
 		"endpoints": {
 		    "apiDefinition": "/swagger/docs/v1"
@@ -35,6 +35,5 @@
 ![](./media/app-service-api-direct-deploy-metadata/apidefinmetadata.png)
 
 *apiapp.json* ファイルから `endpoints.apiDefinition` を除外するか、その値を null に設定します。`endpoints.apiDefinition` URL と *apiDefinition.swagger.json* ファイルの両方を含めた場合は、URL が優先され、ファイルは無視されます。
- 
 
-<!---HONumber=58-->
+<!---HONumber=58_postMigration-->

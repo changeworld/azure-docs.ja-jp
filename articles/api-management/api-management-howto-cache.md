@@ -1,57 +1,53 @@
-<properties 
-	pageTitle="Azure API Management で操作の結果をキャッシュする方法" 
-	description="API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。" 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+<properties
+	pageTitle="キャッシュを追加して Azure API Management のパフォーマンスを向上させる"
+	description="API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。"
+	services="api-management"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/18/2014" 
+<tags
+	ms.service="api-management"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="06/16/2015"
 	ms.author="sdanie"/>
 
-# Azure API Management で操作の結果をキャッシュする方法
+# キャッシュを追加して Azure API Management のパフォーマンスを向上させる
 
-API Management (プレビュー) では、応答のキャッシュ用に操作を構成できます。応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
+API Management では、応答のキャッシュ用に操作を構成できます。応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
 
-このチュートリアルでは、1 つのサンプル Echo API 操作のキャッシュ設定とポリシーを確認した後、開発者ポータルで操作を呼び出してキャッシュの動作を確認します。
+このガイドでは、API の応答のキャッシュを追加して、サンプルの Echo API 操作のポリシーを構成する方法を示します。その後は、開発者ポータルで操作を呼び出してキャッシュの動作を確認することができます。
 
-## このトピックの内容
 
--   [キャッシュ用の操作の構成][キャッシュ用の操作の構成]
--   [キャッシュ ポリシーの確認][キャッシュ ポリシーの確認]
--   [操作の呼び出しとキャッシュのテスト][操作の呼び出しとキャッシュのテスト]
--   [次のステップ][次のステップ]
+## 前提条件
+
+このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の使用][]に関するチュートリアルの [API Management サービス インスタンスの作成][]に関するセクションを参照してください。
 
 ## <a name="configure-caching"> </a>キャッシュ用の操作の構成
 
 このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
-> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][Azure API Management の使用]」を参照してください。
+>[AZURE.NOTE]それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][]」を参照してください。
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理コンソール]** をクリックします。API Management の管理ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
-![API Management console][API Management console]
-
-> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
+![パブリッシャー ポータル][api-management-management-console]
 
 左側の **[API Management]** メニューの **[API]** をクリックし、**[Echo API]** をクリックします。
 
-![Echo API](./media/api-management-howto-cache/api-management-echo-api.png)
+![Echo API][api-management-echo-api]
 
 **[操作]** タブを選択します。**[操作]** ボックスの一覧の **[GET Resource (cached)]** 操作をクリックします。
 
-![Echo API operations][Echo API operations]
+![Echo API operations][api-management-echo-api-operations]
 
 **[キャッシュ]** タブを選択して、この操作のキャッシュ設定を表示します。
 
-![Caching tab][Caching tab]
+![Caching tab][api-management-caching-tab]
 
 操作に対してキャッシュを有効にするには、**[有効]** チェック ボックスをオンにします。この例では、キャッシュは有効になっています。
 
@@ -63,54 +59,56 @@ API Management (プレビュー) では、応答のキャッシュ用に操作�
 
 ## <a name="caching-policies"> </a>キャッシュ ポリシーの確認
 
+このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
+
 **[キャッシュ]** タブで操作に対してキャッシュ設定を構成すると、操作に対してキャッシュ ポリシーが追加されます。これらのポリシーは、ポリシー エディターで表示および編集できます。
 
 左側の **[API Management]** メニューの **[ポリシー]** をクリックし、**[操作]** ボックスの一覧の **[Echo API / GET Resource (cached)]** を選択します。
 
-![Policy scope operation][Policy scope operation]
+![Policy scope operation][api-management-operation-dropdown]
 
 ポリシー エディターにこの操作のポリシーが表示されます。
 
-![API Management policy editor][API Management policy editor]
+![API Management policy editor][api-management-policy-editor]
 
 この操作のポリシー定義には、前のステップで **[キャッシュ]** タブを使用して確認したキャッシュ構成を定義するポリシーが含まれています。
 
-    <policies>
-        <inbound>
-            <base />
-            <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-                <vary-by-header>Accept</vary-by-header>
-                <vary-by-header>Accept-Charset</vary-by-header>
-            </cache-lookup>
-            <rewrite-uri template="/resource" />
-        </inbound>
-        <outbound>
-            <base />
-            <cache-store caching-mode="cache-on" duration="3600" />
-        </outbound>
-    </policies>
+	<policies>
+		<inbound>
+			<base />
+			<cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+				<vary-by-header>Accept</vary-by-header>
+				<vary-by-header>Accept-Charset</vary-by-header>
+			</cache-lookup>
+			<rewrite-uri template="/resource" />
+		</inbound>
+		<outbound>
+			<base />
+			<cache-store caching-mode="cache-on" duration="3600" />
+		</outbound>
+	</policies>
 
-> ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
+>ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
 
 ## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
 
-キャッシュの動作を確認するには、開発者ポータルから操作を呼び出します。右上にあるメニューの **[開発者ポータル]** をクリックします。
+キャッシュの動作を確認するには、開発者ポータルから操作を呼び出します。右上のメニューで、**[開発者ポータル]** をクリックします。
 
-![開発者ポータル](./media/api-management-howto-cache/api-management-developer-portal-menu.png)
+![開発者ポータル][api-management-developer-portal-menu]
 
 上部のメニューで **[API]** をクリックし、**[Echo API]** を選択します。
 
-![Echo API](./media/api-management-howto-cache/api-management-apis-echo-api.png)
+![Echo API][api-management-apis-echo-api]
 
-> アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+>アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
 
 **[GET Resource (cached)]** 操作を選択し、**[コンソールを開く]** をクリックします。
 
-![Open console][Open console]
+![Open console][api-management-open-console]
 
 コンソールを使用すると、開発者ポータルから直接操作を呼び出すことができます。
 
-![コンソール][コンソール]
+![コンソール][api-management-console]
 
 **[param1]** と **[param2]** については既定値のままにしておきます。
 
@@ -130,25 +128,37 @@ API Management (プレビュー) では、応答のキャッシュ用に操作�
 
 ## <a name="next-steps"> </a>次のステップ
 
--   「[Azure API Management の詳細な構成について][Azure API Management の詳細な構成について]」チュートリアルにあるその他のトピックもチェックしてください。
--   キャッシュ ポリシーの詳細については、「[Azure API Management ポリシー リファレンス][Azure API Management ポリシー リファレンス]」の「[キャッシュ ポリシー][キャッシュ ポリシー]」を参照してください。
+-	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+-	キャッシュ ポリシーの詳細については、「[Azure API Management ポリシー リファレンス][]」の「[キャッシュ ポリシー][]」を参照してください。
 
-  [キャッシュ用の操作の構成]: #configure-caching
-  [キャッシュ ポリシーの確認]: #caching-policies
-  [操作の呼び出しとキャッシュのテスト]: #test-operation
-  [次のステップ]: #next-steps
-  [Azure API Management の使用]: ../api-management-get-started
-  [API Management console]: ./media/api-management-howto-cache/api-management-management-console.png
-  [API Management インスタンスの作成]: ../api-management-get-started/#create-service-instance
-  [Echo API operations]: ./media/api-management-howto-cache/api-management-echo-api-operations.png
-  [Caching tab]: ./media/api-management-howto-cache/api-management-caching-tab.png
-  [Policy scope operation]: ./media/api-management-howto-cache/api-management-operation-dropdown.png
-  [API Management policy editor]: ./media/api-management-howto-cache/api-management-policy-editor.png
-  [Open console]: ./media/api-management-howto-cache/api-management-open-console.png
-  [コンソール]: ./media/api-management-howto-cache/api-management-console.png
-  [Azure API Management の詳細な構成について]: ../api-management-get-started-advanced
-  [Azure API Management ポリシー リファレンス]: ../api-management-policy-reference
-  [キャッシュ ポリシー]: ../api-management-policy-reference/#caching-policies
+[api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
+[api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png
+[api-management-echo-api-operations]: ./media/api-management-howto-cache/api-management-echo-api-operations.png
+[api-management-caching-tab]: ./media/api-management-howto-cache/api-management-caching-tab.png
+[api-management-operation-dropdown]: ./media/api-management-howto-cache/api-management-operation-dropdown.png
+[api-management-policy-editor]: ./media/api-management-howto-cache/api-management-policy-editor.png
+[api-management-developer-portal-menu]: ./media/api-management-howto-cache/api-management-developer-portal-menu.png
+[api-management-apis-echo-api]: ./media/api-management-howto-cache/api-management-apis-echo-api.png
+[api-management-open-console]: ./media/api-management-howto-cache/api-management-open-console.png
+[api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
-<!--HONumber=46--> 
- 
+
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Azure API Management の使用]: api-management-get-started.md
+[Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
+
+[キャッシュ ポリシー]: https://msdn.microsoft.com/library/azure/dn894081.aspx
+[Azure API Management ポリシー リファレンス]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+
+[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+
+[Configure an operation for caching]: #configure-caching
+[Review the caching policies]: #caching-policies
+[Call an operation and test the caching]: #test-operation
+[Next steps]: #next-steps
+
+<!---HONumber=58_postMigration-->

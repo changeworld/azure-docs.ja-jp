@@ -1,9 +1,9 @@
 <properties 
-    pageTitle="StorSimple 8000 シリーズ Update 1.0 リリース ノート"
+    pageTitle="StorSimple 8000 シリーズ Update 1 リリース ノート"
     description="StorSimple 8000 シリーズ Update 1 における新機能、問題、回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
-    authors="alkohli"
+    authors="SharS"
     manager="adinah"
     editor="tysonn" />
  <tags 
@@ -12,14 +12,14 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="05/27/2015"
-    ms.author="alkohli" />
+    ms.date="06/05/2015"
+    ms.author="v-sharos" />
 
-# StorSimple 8000 シリーズ Update 1.0 リリース ノート  
+# StorSimple 8000 シリーズ Update 1 リリース ノート  
 
 ## 概要
 
-次のリリース ノートでは、StorSimple 8000 シリーズの Update 1.0 の新機能について説明し、未解決の重要な問題を示します。またこのリリース ノートには、このリリースにおける StorSimple のソフトウェアとファームウェアの更新の一覧も含まれています。これは、StorSimple 8000 シリーズのリリース バージョンが 2014 年 7 月に一般提供された後の、初の主要リリースです。
+次のリリース ノートでは、StorSimple 8000 シリーズの Update 1 の新機能について説明し、未解決の重要な問題を示します。またこのリリース ノートには、このリリースにおける StorSimple のソフトウェアとファームウェアの更新の一覧も含まれています。これは、StorSimple 8000 シリーズのリリース バージョンが 2014 年 7 月に一般提供された後の、初の主要リリースです。
 
 この更新プログラムでは、デバイス ソフトウェアが StorSimple 8000 シリーズ Update 1 に変更されています。StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。詳細については、[StorSimple デバイスに Update 1 をインストールする](storsimple-install-update-1.md)方法に関するページを参照してください。
 
@@ -27,9 +27,10 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 >[AZURE.IMPORTANT]
 > 
-- StorSimple 用 Windows PowerShell ではなく StorSimple Manager サービスを使用して、Update 1.0 をインストールします。
+- StorSimple 用 Windows PowerShell ではなく StorSimple Manager サービスを使用して、Update 1 をインストールします。
 - このリリースには、デバイスがメンテナンス モードの場合にのみ適用できる、ディスクのファームウェア更新プログラムも含まれています。これらは中断を伴う更新プログラムで、デバイスのダウンタイムの原因となります。これらの更新プログラムは、計画的メンテナンス中に適用できます。
 - この更新プログラムをインストールするには、(Windows の更新プログラムを含めて) 約 5 ～ 10 時間がかかります。 
+- 新しいリリースについては、更新プログラムの公開を段階的に行うため、更新プログラムが即座に表示されない場合があります。これらの更新プログラムは間もなく利用可能になるため、数日後にもう一度更新プログラムの有無を確認してください。
 
 ## Update 1 の新機能
 
@@ -46,11 +47,11 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 - **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
 
-- **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。GA を実行している StorSimple 8000 シリーズ デバイスには、2012 年 2 月 12 日よりも古い Azure Storage サービス API のバージョンが使用されます。[Storage サービスのバージョンの削除に関するお知らせ](http://azure.microsoft.com/blog/2014/08/04/microsoft-azure-storage-service-version-removal/)に記載のとおり、これらの API は 2015 年 12 月 10 日で廃止されます。つまり、2015 年 12 月 9 日までに、StorSimple 8000 シリーズ Update 1.0 を適用する必要があります。期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
+- **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。GA を実行している StorSimple 8000 シリーズ デバイスには、2012 年 2 月 12 日よりも古い Azure Storage サービス API のバージョンが使用されます。[Storage サービスのバージョンの削除に関するお知らせ](http://azure.microsoft.com/blog/2014/08/04/microsoft-azure-storage-service-version-removal/)に記載のとおり、これらの API は 2015 年 12 月 10 日で廃止されます。つまり、2015 年 12 月 9 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
 
-- **ゾーン冗長ストレージ (ZRS) のサポート** – Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と地理冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。ZRS の詳細については、[Azure Storage の冗長オプションに関する記事](../storage/storage-redundancy.md)を参照してください。
+- **ゾーン冗長ストレージ (ZRS) のサポート** – Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。ZRS の詳細については、[Azure Storage の冗長オプションに関する記事](../storage/storage-redundancy.md)を参照してください。
 
-- **初回デプロイメントと更新プログラムのエクスペリエンスの強化** – 今回のリリースでは、インストールと更新プログラムのプロセスが強化されています。セットアップ ウィザードからのインストールが強化され、ネットワーク構成とファイアウォール設定が正しくない場合、ユーザーにフィードバックが提供されます。デバイスのネットワークのトラブルシューティングに役立つ、診断用のコマンドレットが追加されています。トラブルシューティングに使用する新しい診断用コマンドレットの詳細については、[デプロイメントのトラブルシューティングに関する記事](storsimple-troubleshoot-deployment/#cmdlets-available-for-troubleshooting.md)を参照してください。
+- **初回デプロイと更新プログラムのエクスペリエンスの強化** – 今回のリリースでは、インストールと更新プログラムのプロセスが強化されています。セットアップ ウィザードからのインストールが強化され、ネットワーク構成とファイアウォール設定が正しくない場合、ユーザーにフィードバックが提供されます。デバイスのネットワークのトラブルシューティングに役立つ、診断用のコマンドレットが追加されています。トラブルシューティングに使用する新しい診断用コマンドレットの詳細については、[デプロイのトラブルシューティングに関する記事](storsimple-troubleshoot-deployment.md)を参照してください。
 
 ## Update 1 で修正された問題
 
@@ -82,7 +83,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 | 6 | Web プロキシ | Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 | Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。詳細については、「[デバイスの Web プロキシの構成](https://msdn.microsoft.com/library/azure/dn764937.aspx)」を参照してください。 | あり | いいえ |
 | 7 | Web プロキシ | 登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。 | | あり | いいえ |
 | 8 | クラウドの長い待機時間と高い I/O ワークロード | StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。 | デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。 | あり | いいえ |
-| 9 | Azure PowerShell | 新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 | 次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** | あり | あり |
+| 9 | Azure PowerShell | 新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential | Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 | 次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) | Select-Object -First 1 -Wait** | あり | あり |
 | 10| 移行 | 複数のボリューム コンテナーを渡して移行する場合、最新のバックアップの ETA は、最初のボリューム コンテナーに対してのみ正確です。さらに、最初のボリューム コンテナー内の最初の 4 つのバックアップが移行された後に、移行が並列で開始されます。 | 一度に 1 つのボリューム コンテナーを移行することをお勧めします。 | あり | いいえ |
 | 11| 移行 | 復元後、ボリュームはバックアップ ポリシーや仮想ディスク グループに追加されません。 | バックアップを作成するために、バックアップ ポリシーにこれらのボリュームを追加する必要があります。 | あり | あり |
 | 12| 移行 | 移行の完了後は、5000/7000 シリーズのデバイスから移行後のデータ コンテナーにアクセスできなくなります。 | 移行が完了しコミットした後、移行後のデータ コンテナーを削除することをお勧めします。 | あり | いいえ |
@@ -97,11 +98,11 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 このリリースでは、物理デバイスの SAS コントローラー上のドライバーとファームウェアが更新されます。また、デバイス上のディスクのファームウェアも更新されます。
  
-- SAS コントローラーの更新プログラムの詳細については、[Microsoft Azure StorSimple アプライアンスの LSI SAS コントローラーの Update 1](http://bemis.partners.extranet.microsoft.com/203/_layouts/ArticlePages/DisplayArticlePage.aspx?List=27d133d4%2D10ab%2D4795%2Dbb81%2D092dfe8c7866&ID=732454&RootFolder=%2F203%2FLists%2FPssxmlArticles%2F005) に関するページを参照してください。 
+- SAS コントローラーの更新プログラムの詳細については、[Microsoft Azure StorSimple アプライアンスの LSI SAS コントローラーの Update 1](https://support.microsoft.com/kb/3043005) に関するページを参照してください。 
 
-- ファームウェアの更新プログラムの詳細については、[Microsoft Azure StorSimple アプライアンスのファームウェア Update 1](http://bemis.partners.extranet.microsoft.com/203/_layouts/ArticlePages/DisplayArticlePage.aspx?List=27d133d4%2D10ab%2D4795%2Dbb81%2D092dfe8c7866&ID=767385&RootFolder=%2F203%2FLists%2FPssxmlArticles%2F414) に関するページを参照してください。
+- ファームウェアの更新プログラムの詳細については、[Microsoft Azure StorSimple アプライアンスのファームウェア Update 1](https://support.microsoft.com/kb/3063414) に関するページを参照してください。
 
-- ディスクのファームウェア更新プログラムの詳細については、[Microsoft Azure StorSimple アプライアンスのディスクのファームウェア Update 1](http://bemis.partners.extranet.microsoft.com/203/_layouts/ArticlePages/DisplayArticlePage.aspx?List=27d133d4%2D10ab%2D4795%2Dbb81%2D092dfe8c7866&ID=767387&RootFolder=%2F203%2FLists%2FPssxmlArticles%2F416) に関するページを参照してください。
+- ディスクのファームウェア更新プログラムの詳細については、[Microsoft Azure StorSimple アプライアンスのディスクのファームウェア Update 1](https://support.microsoft.com/ja-jp/kb/3063416) に関するページを参照してください。
  
 ## Update 1 での仮想デバイスの更新
 
@@ -110,5 +111,6 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 ## 次のステップ
 
 - [デバイスへの Update 1 のインストール](storsimple-install-update-1.md)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

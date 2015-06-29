@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う" 
-	description="この高度なチュートリアルは、ほぼの実際のシナリオについて説明し、Azure のデータのファクトリのサービスとデータの工場出荷時のエディターを使用してシナリオを実装します。" 
+	description="この高度なチュートリアルは、ほぼ実際のシナリオについて説明し、Azure のデータのファクトリのサービスとデータの工場出荷時のエディターを使用してシナリオを実装します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,100 +13,100 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2015" 
+	ms.date="06/04/2015" 
 	ms.author="spelluru"/>
 
-# チュートリアル: マーケティング キャンペーンの効果を測定します。  
-Contoso は、ゲーム機、携帯機器、パーソナル コンピューター (PC) など、複数のプラットフォーム向けにゲームを製作するゲーム会社です。これらのゲームは、多くのログを生成し、Contoso の目標は、顧客の基本設定、人口統計、動作アップセルとクロスセルの機会を識別する、ビジネスの発展の新しい強力な機能を開発、およびユーザーより優れたエクスペリエンスを提供するなどの使用状況に関する情報を入手のこれらのログを収集および分析します。
+# チュートリアル: マーケティング キャンペーンの有効性の測定  
+Contoso は、ゲーム機、携帯機器、パーソナル コンピューター (PC) など、複数のプラットフォーム向けにゲームを製作するゲーム会社です。これらのゲームはそれぞれが大量のログを産み出します。Contoso 社の目標は、これらのゲームが産み出すログを収集解析することで、顧客の好み、人口統計データ、使用形態などの有益な情報を手に入れ、アップセルやクロスセルの機会を見極め、新しい魅力的な機能を開発してビジネスの成長を促進し、顧客により良い体験を提供することです。
 
-このチュートリアルでは、Contoso がサンプルのログの収集、処理とそれらに参照データを拡充およびによって、データの変換を開始しましたが、マーケティング キャンペーンの効果を評価するデータのファクトリのパイプラインを作成します。次の 3 つのパイプラインを持ちます。
+このチュートリアルでは、Data Factory パイプラインを作成して、サンプル ログの収集、参照データによるログの処理と強化、データの変換により、Contoso 社が最近立ち上げたマーケティング キャンペーンの有効性を評価します。次の 3 つのパイプラインがあります。
 
-1.	 **PartitionGameLogsPipeline** blob ストレージからのゲームの実際のイベントの読み取りを年、月、および日に基づいてパーティションを作成します。
-2.	 **EnrichGameLogsPipeline** と地理コードの参照データのパーティション分割されたゲーム イベントを結合し、IP アドレスを対応する地理的場所にマップすることによって、データを拡充します。
-3.	 **AnalyzeMarketingCampaignPipeline** パイプラインは、強化されたデータを利用し、それをマーケティング キャンペーンの有効性を含む最終的な出力を作成するには、広告データによって処理されます。
+1.	**PartitionGameLogsPipeline** は、未処理のゲーム イベントを BLOB ストレージから読み取り、年、月、日に基づくパーティションを作成します。
+2.	**EnrichGameLogsPipeline** は、パーティション分割されたゲーム イベントを geo コードの参照データと結合し、IP アドレスを対応する地理的場所にマップすることによってデータを強化します。
+3.	**AnalyzeMarketingCampaignPipeline** パイプラインは、強化されたデータを利用し、そのデータを広告データと共に処理して、マーケティング キャンペーンの有効性を含む最終的な出力を作成します。
 
 ## チュートリアルの準備をする
-1.	読み取り [Azure のデータのファクトリの概要][adfintroduction] を Azure のデータのファクトリの概要と、最上位レベルの概念の理解を取得します。
-2.	このチュートリアルを実施するには Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料評価版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-3.	ダウンロードしてインストールする必要があります [Azure PowerShell][download-azure-powershell] コンピューターにします。サンプル データのアップロードと pig と hive スクリプトを blob ストレージにデータのファクトリのコマンドレットが実行されます。 
-2.	**(推奨)** レビューおよびチュートリアルでの演習、 [Azure のデータのファクトリを使い始める][adfgetstarted] ポータルとコマンドレットについての知識を取得する簡単なチュートリアルについては、資料です。
-3.	**(推奨)** レビューおよびチュートリアルでは、演習、 [の Pig の使用と Azure のデータのファクトリでの Hive][usepigandhive] 、Azure の blob ストアへの内部設置型のデータ ソースからデータを移動するためのパイプラインを作成する手順については記事です。
-4.	ダウンロード [ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\ADFWalkthrough** フォルダー **フォルダー構造を保持する**:
-	- **パイプライン:** 、パイプラインの定義を含む JSON ファイルが含まれます。
-	- **テーブル:** テーブルの定義を含む JSON ファイルが含まれます。
-	- **LinkedServices:** 、記憶域とコンピューティング (HDInsight) の定義を含む JSON ファイルが含まれているクラスター 
-	- **スクリプト:** のデータの処理に使用され、パイプラインから呼び出される Hive と Pig のスクリプトが含まれています
+1.	「[Azure Data Factory の概要][adfintroduction]」を読んで Azure Data Factory の概要を理解し、全体的な概念を把握します。
+2.	このチュートリアルを実施するには Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。Data Factory コマンドレットを実行し、サンプル データと pig/hive スクリプトを BLOB ストレージにアップロードします。 
+2.	**(推奨)** ポータルとコマンドレットに慣れるための簡単なチュートリアルについての記事「[Azure Data Factory を使ってみる][adfgetstarted]」にあるチュートリアルを確認し、実際に行ってみます。
+3.	**(推奨)** パイプラインを作成してオンプレミスのデータ ソースから Azure BLOB ストアにデータを移動するチュートリアルについての記事「[Azure Data Factory で Pig と Hive を使用する][usepigandhive]」にあるチュートリアルを確認し、実際に行ってみます。
+4.	[ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\ADFWalkthrough** フォルダーにダウンロードしますが、**以下のフォルダー構造は維持してください**。
+	- **Pipelines:** パイプラインの定義を含む JSON ファイルが含まれています。
+	- **Tables:** テーブルの定義を含む JSON ファイルが含まれています。
+	- **LinkedServices:** ストレージおよびコンピューティング (HDInsight) クラスターの定義を含む JSON ファイルが含まれています。 
+	- **Scripts:** データの処理に使用され、パイプラインから呼び出される Hive および Pig スクリプトが含まれています。
 	- **SampleData:** このチュートリアル用のサンプル データが含まれています。
-	- **設置:** 、内部設置型データへのアクセスを示すために使用される JSON ファイルとスクリプトが含まれています
-	- **uploadSampleDataAndScripts.ps1:** このスクリプトを Azure にサンプル データ (&) スクリプトをアップロードします。
+	- **OnPremises:** オンプレミスのデータへのアクセス方法を示すために使用する JSON ファイルとスクリプトが含まれています。
+	- **uploadSampleDataAndScripts.ps1:** このスクリプトは、サンプル データとスクリプトを Azure にアップロードします。
 5. 以下の Azure リソースが作成済みであることを確認してください。			
 	- Azure ストレージ アカウント
-	- Azure SQL データベース
-	- Azure の HDInsight クラスター version 3.1 以降 (または、オンデマンドで使用する HDInsight クラスターをデータのファクトリのサービスが自動的に作成されます)	
+	- Azure SQL Database
+	- Azure HDInsight クラスター Version 3.1 以上 (または、Data Factory サービスで自動的に作成されるオンデマンド HDInsight クラスターを使用します)	
 7. Azure リソースを作成したなら、上記の各リソースへの接続に必要な情報を持っていることを確認します。
  	- **Azure ストレージ アカウント** - アカウント名とアカウント キー。  
-	- **Azure SQL データベース** -サーバー、データベース、ユーザー名、およびパスワード。
-	- **Azure の HDInsight クラスター**.-HDInsight クラスターの名前、ユーザー名、パスワード、およびアカウント名、およびこのクラスターに関連付けられている Azure のストレージのアカウント キー。HDInsight クラスターではなく、オンデマンドでの HDInsight クラスターを使用する場合は、この手順を省略します。  
-8. 起動 **Azure PowerShell** と、次のコマンドを実行します。Azure PowerShell を開いたままにします。終了して再起動した場合は、これらのコマンドを再度実行する必要があります。
-	- 実行 **Add-azureaccount** 、ユーザー名と、Azure プレビュー ポータルにサインインに使用するパスワードを入力します。  
-	- 実行 **Get-azuresubscription** をこのアカウントのすべてのサブスクリプションを表示します。
-	- 実行 **Select-azuresubscription** を使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。	
+	- **Azure SQL Database** - サーバー、データベース、ユーザー名、パスワード。
+	- **Azure HDInsight クラスター** - HDInsight クラスター名、ユーザー名、パスワード、このクラスターに関連付けられている Azure ストレージのアカウント名とアカウント キー。独自の HDInsight クラスターではなく、オンデマンド HDInsight クラスターを使用する場合は、この手順を省略できます。  
+8. **Azure PowerShell** を起動して次のコマンドを実行します。Azure PowerShell は開いたままにしておきます。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
+	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。	
 
 ## 概要
 全体のワークフローは以下のとおりです。
 
-![チュートリアルのエンド ツー エンド フロー][image-data-factory-tutorial-end-to-end-flow]
+![Tutorial End to End Flow][image-data-factory-tutorial-end-to-end-flow]
 
-1.  **PartitionGameLogsPipeline** 、blob ストレージ (RawGameEventsTable) から、生のゲームのイベントを読み取り、および年、月、および日 (PartitionedGameEventsTable) に基づくパーティションを作成します。
-2.  **EnrichGameLogsPipeline** 地理コード (RefGetoCodeDictionaryTable) とパーティション分割されたゲーム イベント (PartitionedGameEvents テーブルでは、PartitionGameLogsPipeline の出力) を結合および IP アドレスを対応する地理的な場所 (EnrichedGameEventsTable) にマップすることによって、データを拡充します。
-3.  **AnalyzeMarketingCampaignPipeline** パイプラインは、強化されたデータ (EnrichedGameEventTable、EnrichGameLogsPipeline によって生成される) を利用し、それを Azure SQL データベース (MarketingCampainEffectivensessSQLTable) と、分析用に Azure blob ストレージ (MarketingCampaignEffectivenessBlobTable) にコピーされる広告データ マーケティング キャンペーンの有効性の最終的な出力を作成するには、(RefMarketingCampaignnTable) によって処理されます。
+1. **PartitionGameLogsPipeline** が未処理のゲーム イベントを BLOB ストレージ (RawGameEventsTable) から読み取り、年、月、日に基づくパーティションを作成します (PartitionedGameEventsTable)。
+2. **EnrichGameLogsPipeline** がパーティション分割されたゲーム イベント (PartitionGameLogsPipeline の出力結果である PartitionedGameEvents テーブル) と geo コード (RefGetoCodeDictionaryTable) を結合し、IP アドレスを対応する地理的位置 (EnrichedGameEventsTable) にマッピングすることでデータを強化します。
+3. **AnalyzeMarketingCampaignPipeline** パイプラインが強化されたデータ (EnrichGameLogsPipeline によって生成された EnrichedGameEventTable) を活用し、これを広告データ (RefMarketingCampaignnTable) と共に処理してマーケティング キャンペーンの有効性という最終的な出力を作成します。これは解析のために Azure SQL Database (MarketingCampainEffectivensessSQLTable) と Azure BLOB ストレージ (MarketingCampaignEffectivenessBlobTable) にコピーされます。
     
-## チュートリアル: の作成、展開、およびワークフローの監視
-1. [手順 1: サンプル データとスクリプトをアップロード](#MainStep1)です。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
-2. [手順 2: Azure のデータのファクトリを作成する](#MainStep2)です。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
-3. [手順 3: 関連付けられているサービスを作成する](#MainStep3)です。この手順では、以下のリンクされたサービスを作成します: 
+## チュートリアル: ワークフローの作成、デプロイ、監視
+1. [手順 1. サンプル データとスクリプトをアップロードする](#MainStep1)。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
+2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
+3. [手順 3. リンクされたサービスを作成する](#MainStep3)。この手順では、以下のリンクされたサービスを作成します: 
 	
-	- 	**StorageLinkedService**です。未処理のゲーム イベント、パーティションに分割されたゲーム イベント、強化されたゲーム イベント、マーケティング キャンペーンの有効な情報を含む Azure ストレージの場所をリンクし、LogProcessingFactory へのマーケティング データの参照を行います。   
-	- 	**AzureSqlLinkedService**です。マーケティング キャンペーンの有効性の情報を含む Azure SQL データベースをリンクします。 
-	- 	**HDInsightStorageLinkedService**です。HDInsightLinkedService が参照する HDInsight クラスターに関連付けられている Azure BLOB ストレージをリンクします。 
-	- 	**HDInsightLinkedService**です。Azure HDInsight クラスターを LogProcessingFactory にリンクします。このクラスターはデータの pig/hive 処理に使用されます。 
+	- 	**StorageLinkedService**。未処理のゲーム イベント、パーティションに分割されたゲーム イベント、強化されたゲーム イベント、マーケティング キャンペーンの有効な情報、geo コード データの参照、LogProcessingFactory へのマーケティング データの参照を含む Azure ストレージの場所をリンクします。   
+	- 	**AzureSqlLinkedService**。マーケティング キャンペーンの有効性の情報を含む Azure SQL Database をリンクします。 
+	- 	**HDInsightStorageLinkedService**。HDInsightLinkedService が参照する HDInsight クラスターに関連付けられている Azure BLOB ストレージをリンクします。 
+	- 	**HDInsightLinkedService**。Azure HDInsight クラスターを LogProcessingFactory にリンクします。このクラスターはデータの pig/hive 処理に使用されます。 
  		
-4. [手順 4: テーブルを作成する](#MainStep4)です。この手順では、以下のテーブルを作成します。
+4. [手順 4. テーブルを作成する](#MainStep4)。この手順では、以下のテーブルを作成します。
 	
-	- **RawGameEventsTable**です。このテーブルは、未処理のゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/rawgameevents/)。 
-	- **PartitionedGameEventsTable**です。このテーブルは、パーティションに分割されたゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/partitionedgameevents/)。 
-	- **RefGeoCodeDictionaryTable**です。このテーブルは、地理的参照コードの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/refdata/refgeocodedictionary/)。
-	- **RefMarketingCampaignTable**です。このテーブルは、マーケティング キャンペーンの参照データの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/refdata/refmarketingcampaign/)。
-	- **EnrichedGameEventsTable**です。このテーブルは、強化されたゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/enrichedgameevents/)。
-	- **MarketingCampaignEffectivenessSQLTable**です。次の表は、マーケティング キャンペーンの有効性のデータを含む AzureSqlLinkedService で定義されている、Azure SQL データベースで、SQL テーブル (MarketingCampaignEffectiveness) を指定します。 
-	- **MarketingCampaignEffectivenessBlobTable**です。このテーブルは、マーケティング キャンペーンの有効性データの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/marketingcampaigneffectiveness/)。 
+	- **RawGameEventsTable**。このテーブルは、未処理のゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/rawgameevents/)。 
+	- **PartitionedGameEventsTable**。このテーブルは、パーティションに分割されたゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/partitionedgameevents/)。 
+	- **RefGeoCodeDictionaryTable**。このテーブルは、地理的参照コードの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/refdata/refgeocodedictionary/)。
+	- **RefMarketingCampaignTable**。このテーブルは、マーケティング キャンペーンの参照データの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/refdata/refmarketingcampaign/)。
+	- **EnrichedGameEventsTable**。このテーブルは、強化されたゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/enrichedgameevents/)。
+	- **MarketingCampaignEffectivenessSQLTable**。このテーブルは、AzureSqlLinkedService によって定義された、マーケティング キャンペーンの有効性データを格納する Azure SQL Database 内の SQL テーブル (MarketingCampaignEffectiveness) を指定します。 
+	- **MarketingCampaignEffectivenessBlobTable**。このテーブルは、マーケティング キャンペーンの有効性データの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/marketingcampaigneffectiveness/)。 
 
 	
-5. [手順 5: を作成およびスケジュール パイプライン](#MainStep5)です。この手順では、以下のパイプラインを作成します。
-	- **PartitionGameLogsPipeline**です。このパイプラインは、BLOB ストレージ (RawGameEventsTable) から未処理のゲーム イベントを読み取り、年、月、日に基づくパーティション (PartitionedGameEventsTable) を作成します。 
+5. [手順 5. パイプラインを作成してスケジュールを設定する](#MainStep5)。この手順では、以下のパイプラインを作成します。
+	- **PartitionGameLogsPipeline**。このパイプラインは、BLOB ストレージ (RawGameEventsTable) から未処理のゲーム イベントを読み取り、年、月、日に基づくパーティション (PartitionedGameEventsTable) を作成します。 
 
 
-		![PartitionGamesLogs パイプライン][image-data-factory-tutorial-partition-game-logs-pipeline]
+		![PartitionGamesLogsPipeline][image-data-factory-tutorial-partition-game-logs-pipeline]
 
 
-	- **EnrichGameLogsPipeline**です。このパイプラインは、パーティションに分割されたゲーム イベント (PartitionGameLogsPipeline の出力結果である PartitionedGameEvents table) と地理的コード (RefGetoCodeDictionaryTable) を結合し、IPアドレスを対応する地理的な位置 (EnrichedGameEventsTable) にマッピングすることでデータを強化します。
+	- **EnrichGameLogsPipeline**。このパイプラインは、パーティションに分割されたゲーム イベント (PartitionGameLogsPipeline の出力結果である PartitionedGameEvents テーブル) と geo コード (RefGetoCodeDictionaryTable) を結合し、IPアドレスを対応する地理的な位置 (EnrichedGameEventsTable) にマッピングすることでデータを強化します。
 
 		![EnrichedGameLogsPipeline][image-data-factory-tutorial-enrich-game-logs-pipeline]
 
-	- **AnalyzeMarketingCampaignPipeline**です。このパイプラインは、強化されたゲーム イベントのデータ (EnrichGameLogsPipeline によって生成される EnrichedGameEventTable) を活用し、それを広告データ (RefMarketingCampaignnTable) と共に処理してマーケティング キャンペーンの有効性という最終的なアウトプットを作成しますが、これは解析のために Azure SQL database (MarketingCampainEffectivensessSQLTable) と Azure BLOB ストレージ (MarketingCampaignEffectivenessBlobTable) へコピーされます。
+	- **AnalyzeMarketingCampaignPipeline**。このパイプラインは、強化されたゲーム イベントのデータ (EnrichGameLogsPipeline によって生成される EnrichedGameEventTable) を活用し、それを広告データ (RefMarketingCampaignnTable) と共に処理してマーケティング キャンペーンの有効性という最終的なアウトプットを作成しますが、これは解析のために Azure SQL database (MarketingCampainEffectivensessSQLTable) と Azure BLOB ストレージ (MarketingCampaignEffectivenessBlobTable) へコピーされます。
 
 
 		![MarketingCampaignPipeline][image-data-factory-tutorial-analyze-marketing-campaign-pipeline]
 
 
-6. [手順 6: パイプラインとデータのスライスを監視する](#MainStep6)です。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
+6. [手順 6. パイプラインとデータ スライスを監視する](#MainStep6)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
 
-## <a name="MainStep1"></a> 手順 1: サンプル データとスクリプトをアップロードします。
-この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって呼び出される Hive/Pig スクリプトをアップロードします。また実行するスクリプトと呼ばれる、Azure SQL データベースを作成する **MarketingCampaigns**, 、テーブルにすると、ユーザー定義型、およびストアド プロシージャです。
+## <a name="MainStep1"></a> 手順 1. サンプル データとスクリプトをアップロードする
+この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって呼び出される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、"**MarketingCampaigns**" という名前の Azure SQL Database、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
 
-テーブル、ユーザー定義型、およびストアド プロシージャは、マーケティング キャンペーン有効性の結果を Azure BLOB ストレージから Azure SQL データベースに移動する際に使用されます。
+テーブル、ユーザー定義型、およびストアド プロシージャは、マーケティング キャンペーン有効性の結果を Azure BLOB ストレージから Azure SQL Database に移動する際に使用されます。
 
-1. 開いている **uploadSampleDataAndScripts.ps1** から **C:\ADFWalkthrough** フォルダー (または、抽出したファイルが含まれているフォルダー) でお気に入りのエディターを置き換え、強調表示されている、クラスターの情報を含むファイルを保存、します。
+1. お好みのエディターで **C:\ADFWalkthrough** フォルダー (または展開したファイルを含むフォルダー) から **uploadSampleDataAndScripts.ps1** を開き、強調表示されている部分を自分のクラスター情報に置き換え、ファイルを保存します。
 
 
 		$storageAccount = <storage account name>
@@ -116,10 +116,13 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 		$azuresqlPassword = <sql azure password>
 
  
-	> [AZURE.NOTE][ダウンロード][sqlcmd-install]   
-2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、 **Azure 管理ポータル** または **sp_set_firewall_rule** をコンピューターの IP アドレス用のファイアウォール ルールを作成するのには、master データベースにします。この変更が有効になるまで最大で 5 分かかる場合があります。参照してください [Azure SQL のファイアウォールの規則を設定する][azure-sql-firewall]です。
-4. Azure PowerShell でのサンプルは、展開した場所に移動します (例: **C:\ADFWalkthrough**)
-5. 実行 **uploadSampleDataAndScripts.ps1** 
+	このスクリプトを使用するには、コンピューターに sqlcmd ユーティリティがインストールされている必要があります。SQL Server がインストール済みであれば、これもインストールされています。そうでない場合は、このユーティリティを[ダウンロード][sqlcmd-install]し、インストールしてください。
+	
+	または、C:\ADFWalkthrough\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL Database である MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
+   
+2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Azure 管理ポータル**またはマスター データベース上の **sp_set_firewall_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
+4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\ADFWalkthrough**)。
+5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
 
 		$storageAccount = <storage account name>
@@ -151,45 +154,45 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 		6/6/2014 11:54:36 AM 3. Created ‘MarketingCampaigns’ Azure SQL database and tables.
 		6/6/2014 11:54:36 AM You are ready to deploy Linked Services, Tables and Pipelines. 
 
-## <a name="MainStep2"></a> 手順 2: Azure のデータのファクトリを作成します。
-このステップで、Azure のデータのファクトリという名前を作成する **LogProcessingFactory**です。
+## <a name="MainStep2"></a> 手順 2. Azure Data Factory を作成する
+この手順では、"**LogProcessingFactory**" という名前の Azure Data Factory を作成します。
 
-1.	ログインした後、 [Azure プレビュー ポータル][azure-preview-portal], 、] をクリックして **新規** 、左下隅にあるから次のようにクリックします。 **データ分析** で、 **作成** ] をクリックしてブレード、 **データ ファクトリ** で、 **データ分析** ブレードします。 
+1.	[Azure プレビュー ポータル][azure-preview-portal]にログインした後、左下隅にある **[新規]** をクリックして、**[作成]** ブレードで **[データ分析]** をクリックし、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
 
-	![新しい DataFactory -> します。][image-data-factory-new-datafactory-menu]
+	![New->DataFactory][image-data-factory-new-datafactory-menu]
 
-5.  **データの新しいファクトリ** ブレードで入力 **LogProcessingFactory** の **名前**です。
+5. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**LogProcessingFactory**」と入力します。
 
-	![データの工場出荷時のブレード][image-data-factory-tutorial-new-datafactory-blade]
+	![Data Factory Blade][image-data-factory-tutorial-new-datafactory-blade]
 
-6. という名前の Azure リソース グループを作成していない場合は、 **ADF** 既にを次の操作します。
-	1. クリックして **リソース グループ名**, 、] をクリック **新しいリソース グループの作成**です。
+6. "**ADF**" という名前の Azure リソース グループをまだ作成していない場合は、次の手順を実行します。
+	1. **[リソース グループ名]** をクリックし、**[新しいリソース グループを作成]** をクリックします。
 	
-		![リソース グループのブレード][image-data-factory-tutorial-resourcegroup-blade]
-	2.  **リソース グループの作成** ブレードで入力 **ADF** ] をクリックして、リソース グループの名前の **[ok]**です。
+		![Resource Group Blade][image-data-factory-tutorial-resourcegroup-blade]
+	2. **[リソース グループを作成]** ブレードで、リソース グループの名前として「**ADF**」と入力し、**[OK]** をクリックします。
 	
-		![リソース グループを作成します。][image-data-factory-tutorial-create-resourcegroup]
-7. 選択 **ADF** の **リソース グループ名**です。  
-8.	 **データの新しいファクトリ** ブレード、ことに注意して **スタート ボードに追加** が既定で選択します。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
+		![Create Resource Group][image-data-factory-tutorial-create-resourcegroup]
+7. **[リソース グループ名]** の **[ADF]** を選択します。  
+8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![データの工場出荷時のブレードを作成します。][image-data-factory-tutorial-create-datafactory]
+	![Create Data Factory Blade][image-data-factory-tutorial-create-datafactory]
 
-9.	 **データの新しいファクトリ** ブレードで] をクリックして **作成** 、データのファクトリを作成します。
-10.	必要がありますを参照して、データのファクトリの作成後、 **データ ファクトリ** 」というタイトルのブレード **LogProcessingFactory**です。
+9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
+10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
 
-	![データの工場出荷時のホーム ページ][image-data-factory-tutorial-datafactory-homepage]
+	![Data Factory Homepage][image-data-factory-tutorial-datafactory-homepage]
 
 	
 	表示されない場合は、次のいずれかを行います。
 
-	- クリックして **LogProcessingFactory** 上、 **スタート ボード** ([ホーム] ページ)
-	- をクリックして **参照** 、左側では、次のようにクリックします。 **すべて**, 、] をクリック **データ ファクトリ**, 、データのファクトリをクリックします。
+	- **スタート画面** (ホーム ページ) で **[LogProcessingFactory]** をクリックします。
+	- 左側の **[参照]** をクリックし、**[すべて]**、**[Data Factory]** の順にクリックし、最後に目的のデータ ファクトリをクリックします。
  
-	> [AZURE.NOTE]Azure Data Factor の名前はグローバルに一意にする必要があります。エラーが発生する場合: **データ工場出荷時の名前"LogProcessingFactory"は使用できません**, 、(たとえば、yournameLogProcessingFactory) の名前を変更します。このチュートリアルの手順を実行中に LogProcessingFactory の代わりに、この名前を使用します。
+	Azure Data Factory の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
  
-## <a name="MainStep3"></a> 手順 3: 関連付けられているサービスを作成します。
+## <a name="MainStep3"></a> 手順 3. リンク サービスを作成する
 
-> [AZURE.NOTE]この記事は、関連付けられているサービス、テーブル、およびパイプラインを作成するのに、データのファクトリ エディター具体的には、Azure ポータルを使用します。参照してください [チュートリアル Azure PowerShell を使用して][adftutorial-using-powershell] Azure PowerShell を使用してこのチュートリアルを実行する場合。
+> [AZURE.NOTE]この記事では、Azure ポータル、具体的には Data Factory エディターを使用して、リンクされたサービス、テーブル、パイプラインを作成する方法について説明します。Azure PowerShell を使用してこのチュートリアルを実行する場合は、[Azure PowerShell の使用に関するチュートリアル][adftutorial-using-powershell]を参照してください。
 
 この手順では、以下のリンクされたサービスを作成します:
 
@@ -198,46 +201,46 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 - HDInsightStorageLinkedService
 - HDInsightLinkedService。 
 
-### StorageLinkedService と HDInsightStorageLinkedService を作成します。
+### StorageLinkedService と HDInsightStorageLinkedService の作成
 
-1.	 **データ ファクトリ** ブレードで] をクリックして **作成者と展開** タイルを起動する、 **エディター** データ ファクトリのです。
+1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
-	![タイルの作成とデプロイ][image-author-deploy-tile]
+	![Author and Deploy Tile][image-author-deploy-tile]
 
-	> [AZURE.NOTE]参照してください [データ工場出荷時のエディター][data-factory-editor] データ工場出荷時のエディターの詳細の概要についてのトピックです。
+	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 
-2.   **エディター**, 、] をクリックして **データ ストアの新しい** ] ボタンをクリックし、ツールバー **Azure ストレージ** 、ドロップ ダウン メニューからです。右側のウィンドウで、リンクされている Azure のストレージ サービスを作成するためには、JSON テンプレートが表示されます。
+2.  **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 	
-	![新しいデータ ストアのボタンのエディター][image-editor-newdatastore-button]
+	![Editor New data store button][image-editor-newdatastore-button]
 
-3. 置き換える **accountname** と **accountkey** アカウント名とアカウント キーの値を Azure ストレージ アカウントをします。
+3. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
-	![Blob ストレージのエディター JSON][image-editor-blob-storage-json]
+	![Editor Blob Storage JSON][image-editor-blob-storage-json]
 	
-	> [AZURE.NOTE]参照してください [JSON スクリプト参照](http://go.microsoft.com/fwlink/?LinkId=516971) JSON のプロパティに関する詳細です。
+	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
-4. クリックして **展開** 、StorageLinkedService を展開するには、ツールバーのです。メッセージが表示されることを確認 **リンク サービス作成が正常に** 、タイトル バーにします。
+4. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-	![エディターの Blob ストレージを展開します。][image-editor-blob-storage-deploy]
+	![Editor Blob Storage Deploy][image-editor-blob-storage-deploy]
 
-5. リンクされたという名前のサービスを別の Azure ストレージを作成する手順を繰り返します。 **HDInsightStorageLinkedService** 、HDInsight クラスターに関連付けられている記憶域です。値を変更、リンクされているサービスの JSON スクリプトでは、 **名前** プロパティを **HDInsightStorageLinkedService**です。
+5. 手順を繰り返して、HDInsight クラスターに関連付けられているストレージに対して **HDInsightStorageLinkedService** という名前で Azure Storage のリンクされたサービスを作成します。リンクされたサービスの JSON スクリプトで、**name** プロパティの値を **HDInsightStorageLinkedService** に変更します。
 
-### AzureSqlLinkedService を作成します。
-1.  **データ工場出荷時のエディター** , 、] をクリックして **データ ストアの新しい** ] ボタンをクリックし、ツールバー **Azure SQL データベース** 、ドロップ ダウン メニューからです。右側のウィンドウで、リンクされている Azure の SQL サービスを作成するためには、JSON テンプレートが表示されます。
-2. 置き換える **servername**, 、**username@servername**, 、および **パスワード** 、Azure の SQL サーバー、ユーザーのアカウントとパスワードの名前を持つ 。3. 置き換える **databasename** で **MarketingCampaigns**です。これは、手順 1. で実行するスクリプトが作成した Azure SQL データベースです。このデータベースが実際に作成されたこと、スクリプトで (このようなエラーが発生しました) を確認する必要があります。 
-3. をクリックして **展開** 、ツールバーを作成し、AzureSqlLinkedService を展開します。
+### AzureSqlLinkedService の作成
+1. **Data Factory エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure SQL Database]** を選択します。Azure SQL のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
+2. **servername**、**username@servername**、**password** を、Azure SQL のサーバー名、ユーザー アカウント、パスワードに置き換えます。3. **databasename** を **MarketingCampaigns** に置き換えます。これは、手順 1. で実行したスクリプトによって作成された Azure SQL Database です。このデータベースがスクリプトによって実際に作成されていることを確認する必要があります (エラーが発生した場合)。 
+3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。
 
-### HDInsightLinkedService を作成します。
+### HDInsightLinkedService の作成
 Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。また、独自のクラスターを使って同じ処理を行うことも可能です。オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。試しに、オンデマンド クラスターを使用してみましょう。
 
 #### オンデマンド HDInsight クラスターを使用するには
-1. クリックして **新しいコンピューティング** クリックし、コマンド バーから **オンデマンドでの HDInsight クラスター** ] メニューからです。
-2. JSON スクリプトでは、次のように 
-	1.  **ClusterSize** プロパティでは、HDInsight クラスターのサイズを指定します。
-	2.  **JobsContainer** プロパティでは、クラスターのログが格納される既定のコンテナーの名前を指定します。このチュートリアルでは、次のように指定します。 **adfjobscontainer**です。
-	3.  **TimeToLive** プロパティ、どのくらいの期間、顧客が削除される前にアイドル状態できるを指定します。 
-	4.  **バージョン** プロパティを使用する場合、HDInsight のバージョンを指定します。このプロパティを除外する場合は、最新のバージョンが使用します。  
-	5.  **LinkedServiceName**, 、指定 **HDInsightStorageLinkedService** ことを Get で作成したチュートリアルを開始します。 
+1. コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[オンデマンド HDInsight クラスター]** を選択します。
+2. JSON スクリプトで、以下の手順を実行します。 
+	1. **clusterSize** プロパティには、HDInsight クラスターのサイズを指定します。
+	2. **jobsContainer** プロパティには、クラスター ログを格納する既定のコンテナーの名前を指定します。このチュートリアルでは、「**adfjobscontainer**」と指定します。
+	3. **timeToLive** プロパティには、顧客が削除されるまでの間にアイドル状態でいられる時間を指定します。 
+	4. **version** プロパティには、使用する HDInsight のバージョンを指定します。このプロパティを除外した場合は、最新バージョンが使用されます。  
+	5. **linkedServiceName** には、入門チュートリアルで作成した **HDInsightStorageLinkedService** を指定します。 
 
 			{
 		    	"name": "HDInsightLinkedService",
@@ -251,28 +254,28 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		    	}
 			}
 
-		注意して、 **型** にリンクされているサービスの設定は **HDInsightOnDemandLinkedService**です。
+		リンクされたサービスの **type** は **HDInsightOnDemandLinkedService** に設定されます。
 
-2. クリックして **展開** リンクされているサービスをデプロイするには、コマンド バー。
+2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
    
    
 #### 独自の HDInsight クラスターを使用するには 
 
-1. クリックして **新しいコンピューティング** クリックし、コマンド バーから **HDInsight クラスター** ] メニューからです。
-2. JSON スクリプトでは、次のように 
-	1.  **ClusterUri** プロパティで、HDInsight の URL を入力します。例: https://<clustername>.azurehdinsight.net/     
-	2.  **UserName** プロパティ、HDInsight クラスターへのアクセス権を持つユーザーの名前を入力します。
-	3.  **パスワード** プロパティでは、ユーザーのパスワードを入力します。 
-	4.  **LinkedServiceName** プロパティ、入力 **StorageLinkedService**です。これは、入門チュートリアルで作成したリンクのサービスです。 
+1. コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[HDInsight クラスター]** を選択します。
+2. JSON スクリプトで、以下の手順を実行します。 
+	1. **clusterUri** プロパティには、HDInsight の URL を入力します。たとえば、https://<clustername>.azurehdinsight.net/ などです。     
+	2. **UserName** プロパティには、HDInsight クラスターにアクセスできるユーザー名を入力します。
+	3. **Password** プロパティには、ユーザーのパスワードを入力します。 
+	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。 
 
-	Nore を **型** にリンクされているサービスの設定は **HDInsightBYOCLinkedService** (BYOC は独自のクラスターを状態を表します)。
+	リンクされたサービスの **type** は **HDInsightBYOCLinkedService** (BYOC - Bring Your Own Cluster: クラスターを自分で用意する) に設定されます。
 
-2. クリックして **展開** リンクされているサービスをデプロイするには、コマンド バー。
+2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
 
 
-## <a name="MainStep4"></a> 手順 4: テーブルを作成します。
+## <a name="MainStep4"></a> 手順 4. テーブルを作成する
  
-このステップでは、次の表のデータのファクトリを作成します。
+この手順では、以下の Data Factory テーブルを作成します。
 
 - RawGameEventsTable
 - PartitionedGameEventsTable
@@ -282,26 +285,26 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 - MarketingCampaignEffectivenessSQLTable
 - MarketingCampaignEffectivenessBlobTable
 
-	![チュートリアルのエンド ツー エンド フロー][image-data-factory-tutorial-end-to-end-flow]
+	![Tutorial End-to-End Flow][image-data-factory-tutorial-end-to-end-flow]
  
 上の図は、中央の列がパイプラインを、上と下の列がテーブルを表しています。
 
 ### テーブルを作成するには
 	
-1.  **エディター** をクリックして、データのファクトリ **新しいデータセット** ] ボタンをクリックして、ツールバーを **Azure Blob ストレージ** 、ドロップ ダウン メニューからです。 
-2. 右側のウィンドウからの JSON スクリプトを JSON に置き換えます、 **RawGameEventsTable.json** ファイルを **C:\ADFWalkthrough\Tables** フォルダーです。
-3. クリックして **展開** 、ツールバーを作成し、テーブルを展開します。いることを確認、 **正常に作成されたテーブル** 、エディターのタイトル バーにメッセージをします。
+1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューから **[Azure BLOB ストレージ]** をクリックします。 
+2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\Tables** フォルダーにある **RawGameEventsTable.json** の JSON スクリプトに置き換えます。
+3. ツール バーの **[デプロイ]** をクリックし、テーブルを作成してデプロイします。エディターのタイトル バーに "**テーブルが正常に作成されました**" というメッセージが表示されていることを確認します。
 4. 次のファイルの内容で手順 1. ～ 3. を繰り返します。 
 	1. PartitionedGameEventsTable.json
 	2. RefGeoCodeDictionaryTable.json
 	3. RefMarketingCampaignTable.json
 	4. EnrichedGameEventsTable.json
 	5. MarketingCampaignEffectivenessBlobTable.json 
-5. 次のファイルの内容で手順 1. ～ 3. を繰り返します。選択が **Azure Sql** をクリックした後 **新しいデータセット**です。
+5. 次のファイルの内容で手順 1. ～ 3. を繰り返します。ただし、**[新しいデータセット]** をクリックした後は、**[Azure Sql]** を選択します。
 	1. MarketingCampaignEffectivenessSQLTable.json
 	
 
-## <a name="MainStep5"></a> 手順 5: を作成して、パイプラインのスケジュールを設定します。
+## <a name="MainStep5"></a> 手順 5. パイプラインを作成してスケジュールを設定する
 この手順では、以下のパイプラインを作成します。
 
 - PartitionGameLogsPipeline
@@ -311,107 +314,107 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 ### パイプラインを作成するには
 
 1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
-2. 右側のウィンドウからの JSON スクリプトを JSON に置き換えます、 **PartitionGameLogsPipeline.json** ファイルを **C:\ADFWalkthrough\Pipelines** フォルダーです。
+2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\Pipelines** フォルダーにある **PartitionGameLogsPipeline.json** の JSON スクリプトに置き換えます。
 3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
 
         "start": "2014-05-01T00:00:00Z",
         "end": "2014-05-05T00:00:00Z",
         "isPaused": false
 
-	[AZURE.NOTE]このチュートリアルのサンプル データが 2014 年 5 月 1 日から 2014 年 5 月 5 日であるため、開始時刻と終了時刻が 2014 年 5 月 1 日および 2014 年 5 月 5 日に設定されていることに注意してください。
+	このチュートリアルのサンプル データが 2014 年 5 月 1 日から 2014 年 5 月 5 日であるため、開始時刻と終了時刻が 2014 年 5 月 1 日および 2014 年 5 月 5 日に設定されていることに注意してください。
  
 3. ツール バーの **[デプロイ]** クリックして、パイプラインを作成してデプロイします。エディターのタイトル バーに "**パイプラインが正常に作成されました**" というメッセージが表示されていることを確認します。
 4. 次のファイルの内容で手順 1. ～ 3. を繰り返します。 
 	1. EnrichGameLogsPipeline.json
 	2. AnalyzeMarketingCampaignPipeline.json
-4. キーを押して、データの工場出荷時のブレードを閉じる **X** (右上)、ホーム ページを参照してください (* * データ ファクトリ **ブレード)、データのファクトリの 。
+4. **[X]** (右上隅) をクリックして Data Factory のブレードを閉じ、Data Factory のホーム ページ (**[Data Factory] **ブレード) を表示します。
 ### ダイアグラム ビュー
 
-1.  **データ ファクトリ** ブレードで、 **LogProcessingFactory**, 、] をクリックして **ダイアグラム**です。 
+1. **[LogProcessingFactory]** の **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。 
 
-	![ダイアグラムのリンク][image-data-factory-tutorial-diagram-link]
+	![Diagram Link][image-data-factory-tutorial-diagram-link]
 
-2. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。わかりますの出力、 **PartitionGameLogsPipeline** EnrichGameLogsPipeline およびの出力への入力として渡され、 **EnrichGameLogsPipeline** に渡される、 **AnalyzeMarketingCampaignPipeline**です。タイトルをダブルクリックして、ブレードが示すアイテムについての詳細を表示します。
+2. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![ダイアグラム ビュー][image-data-factory-tutorial-diagram-view]
+	![Diagram View][image-data-factory-tutorial-diagram-view]
 
-3. 右クリック **AnalyzeMarketingCampaignPipeline**, 、] をクリック **開くパイプライン**です。アクティビティの入力呼び出し力のデータセットと、パイプライン内のすべてのアクティビティが表示されます。
+3. **[AnalyzeMarketingCampaignPipeline]** を右クリックし、**[パイプラインを開く]** をクリックします。アクティビティの入力呼び出し力のデータセットと、パイプライン内のすべてのアクティビティが表示されます。
  
-	![開いているパイプライン](./media/data-factory-tutorial/AnalyzeMarketingCampaignPipeline-OpenPipeline.png)
+	![Open pipeline](./media/data-factory-tutorial/AnalyzeMarketingCampaignPipeline-OpenPipeline.png)
 
-	クリックして **データ ファクトリ** すべてのパイプラインでのダイアグラム ビューに戻るには左上隅にある階層リンク内です。
-
-
-**ご利用ありがとうございます。** Azure データ ファクトリ、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
+	左上にある階層リンクで **[Data Factory]** をクリックすると、すべてのパイプラインでダイアグラム ビューに戻ります。
 
 
-## <a name="MainStep6"></a> 手順 6: パイプラインとデータのスライスを監視します。 
+**お疲れさまでした。** Azure データ ファクトリ、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
 
-1.	ない場合、 **データ ファクトリ** ブレードで、 **LogProcessingFactory** 開くを行う、次のいずれか。
-	1.	クリックして **LogProcessingFactory** 上、 **スタート ボード**です。データのファクトリを作成するときに、 **スタート ボードに追加** オプションが自動的にチェックします。
 
-		![スタート ボードの監視][image-data-factory-monitoring-startboard]
+## <a name="MainStep6"></a> 手順 6. パイプラインとデータ スライスを監視する 
 
-	2. をクリックして **参照** ハブ、およびクリック **すべて**です。
+1.	**[LogProcessingFactory]** の **[Data Factory]** ブレードを開いていない場合、以下のいずれかを実行できます。
+	1.	**スタート画面**で **[LogProcessingFactory]** をクリックします。データ ファクトリの作成中に、**[スタート画面に追加]** オプションが自動でオンになっています。
+
+		![Monitoring Startboard][image-data-factory-monitoring-startboard]
+
+	2. **[参照]** ハブをクリックし、**[すべて]** をクリックします。
 	 	
-		![すべてのハブの監視][image-data-factory-monitoring-hub-everything]
+		![Monitoring Hub Everything][image-data-factory-monitoring-hub-everything]
 
-		 **参照** ブレード、[ **データ ファクトリ** を選択して **LogProcessingFactory** で、 **データ ファクトリ** ブレードします。
+		**[参照]** ブレードで **[Data Factory]** を選択し、**[Data Factory]** ブレードで **[LogProcessingFactory]** を選択します。
 
-		![[参照の Datafactories の監視][image-data-factory-monitoring-browse-datafactories]
+		![Monitoring Browse Datafactories][image-data-factory-monitoring-browse-datafactories]
 2. いくつかの方法でデータ ファクトリが監視できます。パイプラインまたはデータ セットで監視が始められます。パイプラインで監視を始め、さらに詳しく学びましょう。 
-3.	クリックして **パイプライン** 上、 **データ ファクトリ** ブレードします。 
-4.	クリックして **PartitionGameLogsPipeline** パイプライン ブレードでします。 
-5.	 **パイプライン** のブレードに **PartitionGameLogsPipeline**, 、パイプラインを使用すると表示 **RawGameEventsTable** データセット。クリックして **RawGameEventsTable**です。
+3.	**[Data Factory]** ブレードの **[パイプライン]** をクリックします。 
+4.	[パイプライン] ブレードで **[PartitionGameLogsPipeline]** をクリックします。 
+5.	**[PartitionGameLogsPipeline]** の **[パイプライン]** ブレードを見ると、パイプラインが **[RawGameEventsTable]** データセットを使用していることがわかります。**[RawGameEventsTable]** をクリックします。
 
-	![パイプラインを使用し、生成][image-data-factory-monitoring-pipeline-consumed-produced]
+	![Pipeline Consumed and Produced][image-data-factory-monitoring-pipeline-consumed-produced]
 
-6. テーブルのブレードで **RawGameEventsTable**, 、するすべてのスライスを参照してください。は、次のスクリーン ショットのすべてのスライスは **準備ができて** 状態であり、問題のスライスがないです。これは、そのデータがすぐに処理できることを意味します。
+6. **[RawGameEventsTable]** の [テーブル] ブレードに、すべてのスライスが表示されています。以下のスクリーン ショットでは、すべてのスライスが **[準備完了]** の状態で、問題のあるスライスはありません。これは、そのデータがすぐに処理できることを意味します。
 
-	![RawGameEventsTable テーブル ブレード][image-data-factory-monitoring-raw-game-events-table]
+	![RawGameEventsTable TABLE blade][image-data-factory-monitoring-raw-game-events-table]
 
-	どちらも **スライスを最近更新された** と **最近スライスが失敗しました** リストはによって並べ替えられます、 **最終更新時刻**です。次の状況では、スライスの更新時間が変更されます。
+	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
-	-  スライスのステータスは、手動で更新するなどを使用して、 **セット AzureDataFactorySliceStatus** (または) をクリックして **実行** 上、 **スライス** スライスのブレードします。
-	-  スライスは、実行のための状態を変更 (など、実行の開始、実行を終了し、失敗した、実行が成功したが終了したなど)。
+	-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
+	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	リストまたはのタイトルをクリックして **しています.(省略記号)** より大規模な一覧のスライスを参照してください。クリックして **フィルター** をスライス、フィルター処理するには、ツールバーのです。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
-	代わりに、スライスの開始時刻から終了時刻によって並べ替えられたデータのスライスを表示する] をクリックして **(スライスの時刻) でのデータ スライス** 並べて表示します。
+	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
-	![データのスライスでスライスの時間][DataSlicesBySliceTime]
+	![Data Slices by Slice Time][DataSlicesBySliceTime]
  
-7. ここで、[、 **パイプライン** のブレードに **PartiionGameLogsPipeline**, 、] をクリックして **Produced**です。
+7. **[PartiionGameLogsPipeline]** の **[パイプライン]** ブレードで、**[生成済み]** をクリックします。
 8. このパイプラインが生成するデータ セットの一覧が表示されるはずです。 
-9. クリックして **PartitionedGameEvents** テーブルに、 **データセットを生成する** ブレードします。 
-10.	確認して、 **状態** のすべてのスライスに設定されている **準備ができて**です。 
-11.	スライスのいずれかをクリックして **準備ができて** を参照してください、 **データ スライス** そのスライスのブレードします。
+9. **[生成済みデータセット]** ブレードの **[PartitionedGameEvents]** テーブルをクリックします。 
+10.	すべてのスライスの **[状態]** が **[準備完了]** になっていることを確認します。 
+11.	**[準備完了]** になっているスライスの 1 つをクリックし、そのスライスの **[データ スライス]** ブレードを表示します。
 
-	![データ スライスを RawGameEventsTable ブレード][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
+	![RawGameEventsTable DATA SLICE blade][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
 
-	エラーがあった場合は、表示される、 **失敗 **ここでの状態。状態の両方のいずれかのスライスを表示することもあります **準備ができて**, 、またはその両方の状態 **PendingValidation**, 、スライスが処理する速度によって異なります。
+	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[検証を保留中]** 状態で表示される場合もあります。
 
-	スライスではない場合、 **準備ができて** 状態、準備ができていないし、現在のスライスでの実行をブロックしているアップ ストリームのスライスにわかり、 **準備ができていない上流のスライス** ] ボックスの一覧です。
+	スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。
  
-	参照してください、 [Azure データ工場出荷時の開発者向けリファレンス][developer-reference] のすべてのスライスの可能な状態の理解にします。
+	[Data Factory の開発者用リファレンス][developer-reference]を参照し、考えられるすべてのスライスの状態を把握してください。
 
-12.	 **データ スライス** ブレードからの実行] をクリックして、 **アクティビティの実行** ] ボックスの一覧です。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。次を参照してください **アクティビティの実行の詳細** ブレードします。
+12.	**[データ スライス]** ブレードで、**[アクティビティの実行]** の一覧から [実行] をクリックします。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。以下の **[アクティビティの実行の詳細]** ブレードが表示されます。
 
-	![アクティビティの実行の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
+	![Activity Run Details blade][image-data-factory-monitoring-activity-run-details]
 
-13.	クリックして **ダウンロード** ファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
+13.	**[ダウンロード]** をクリックしてファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
 	 
 	
-見ることができます、すべてのパイプラインが実行を完了した場合、 **MarketingCampaignEffectivenessTable** で、 **MarketingCampaigns** 結果を表示する Azure SQL データベースです。
+すべてのパイプラインが実行を完了すると、Azure SQL Database である **MarketingCampaigns** 内の **MarketingCampaignEffectivenessTable** を調べて実行結果を確認できます。
 
-**ご利用ありがとうございます。** これでワークフローの監視とトラブルシューティングができます。Azure Data Factory を使用してデータを処理し分析結果を得る方法を学びました。
+**お疲れさまでした。** これでワークフローの監視とトラブルシューティングができます。Azure Data Factory を使用してデータを処理し分析結果を得る方法を学びました。
 
-## 内部設置型データを使用するために、チュートリアルを拡張します。
-ログ処理シナリオではこの記事で、チュートリアルの最後の手順では、マーケティング キャンペーンの有効性の出力は、Azure SQL データベースにコピーされました。分析のため、所属する組織内にある内部設置型の SQL Server にこのデータを移動することも可能です。
+## チュートリアルをさらに進めてオンプレミスのデータを使用する
+この記事のチュートリアルにあるログ処理のシナリオの最後の手順で、マーケティング キャンペーンの有効性の出力が Azure SQL Database にコピーされました。分析のため、所属する組織内にあるオンプレミスの SQL Server にこのデータを移動することも可能です。
  
-Azure Blob からマーケティング キャンペーンの有効性のデータをコピーするのには内部設置型 SQL Server、オンプレミスで追加のリンクされているサービスを作成する必要がある、テーブルとパイプラインは、この記事でこのチュートリアルで導入されました。
+マーケティング キャンペーンの有効性データを Azure BLOB からオンプレミスの SQL Server にコピーするには、この記事のチュートリアルで導入したオンプレミスのリンクされたサービス、テーブル、パイプラインを追加で作成する必要があります。
 
-実際、 [チュートリアル: を使用して内部設置型データ ソース][tutorial-onpremises] マーケティング キャンペーンの有効性のデータを内部設置型 SQL Server データベースにコピーするためのパイプラインを作成する方法について説明します。
+[オンプレミスのデータ ソースの使用に関するチュートリアル][tutorial-onpremises]を実践して、マーケティング キャンペーンの有効性データをオンプレミスの SQL Server データベースにコピーするためのパイプラインを作成する方法を習得します。
 
 
 [monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
@@ -522,4 +525,4 @@ Azure Blob からマーケティング キャンペーンの有効性のデー�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=58_postMigration-->

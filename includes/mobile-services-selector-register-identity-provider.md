@@ -4,3 +4,5 @@
 - [Google](../articles/mobile-services/mobile-services-how-to-register-google-authentication.md)
 - [Microsoft account](../articles/mobile-services/mobile-services-how-to-register-microsoft-authentication.md)
 - [Twitter](../articles/mobile-services/mobile-services-how-to-register-twitter-authentication.md)
+
+<!---HONumber=58_postMigration-->

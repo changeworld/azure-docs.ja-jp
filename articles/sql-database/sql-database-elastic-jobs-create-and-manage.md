@@ -1,40 +1,43 @@
-<properties 
-	pageTitle="弾力性データベースのジョブの作成と管理" 
-	description="弾力性データベースのジョブの作成と管理について説明します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="sidneyh" 
+<properties
+	pageTitle="エラスティック データベース ジョブの作成と管理"
+	description="エラスティック データベース ジョブの作成と管理について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	manager="jhubbard"
+	authors="sidneyh"
 	editor=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/29/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="sql-database"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/12/2015"
 	ms.author="sidneyh"/>
 
-# 弾力性データベースのジョブの作成と管理
+# エラスティック データベース ジョブの作成と管理
 
-**弾力性データベース プール**は、大量のデータベースをデプロイするために予測可能なモデルを提供します。設定されたコストで、各データベースに最小のデータ スループット ユニット (DTUs) を設定します。これらのデータベースの一般的なオブジェクトの管理は、**弾力性データベース ジョブ**を使用して簡単に実現できます。このサービスでは、単一の操作でプール内のすべてのデータベースに対して T-SQL スクリプトを実行することができます。たとえば、各データベースにポリシーを設定し、適切な資格情報を持つユーザーのみに機密データを表示することができます。
+**エラスティック データベース プール**は、大量のデータベースをデプロイするために予測可能なモデルを提供します。設定されたコストで、各データベースに最小のデータ スループット ユニット (DTUs) を設定します。これらのデータベースの一般的なオブジェクトの管理は、**エラスティック データベース ジョブ**を使用して簡単に実現できます。このサービスでは、単一の操作でプール内のすべてのデータベースに対して T-SQL スクリプトを実行することができます。たとえば、各データベースにポリシーを設定し、適切な資格情報を持つユーザーのみに機密データを表示することができます。
 
 ## 前提条件
 
-* Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
-* 弾力性データベース プール。「[弾力性データベース プール](sql-database-elastic-pool.md)」をご覧ください。
-* 弾力性データベース ジョブ サービス コンポーネントのインストール。「[弾力性データベース ジョブ サービスのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
+* Azure サブスクリプション。無料試用版については、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
+* エラスティック データベース プール。「[エラスティック データベース プール](sql-database-elastic-pool.md)」をご覧ください。
+* エラスティック データベース ジョブ サービス コンポーネントのインストール。「[エラスティック データベース ジョブ サービスのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
 
 ## ジョブの作成
 
-1. [弾力性データベース ジョブ プール] ブレードで、**[ジョブの作成]** をクリックします。
-2. (インストール時に作成した) データベース管理者の名前とパスワード を入力します。
-2. **[ジョブの作成]** ブレードで、ジョブの名前を入力します。
-3. T-SQL スクリプトを貼り付けるか、入力します。
-4. **[保存]** をクリックし、次に **[実行]** をクリックします。
+1. [エラスティック データベース ジョブ プール] ブレードで、**[ジョブの作成]** をクリックします。
+2. ジョブ管理 DB (ジョブのメタデータ ストレージ) のデータベース管理者 (ジョブのインストール時に作成) のユーザー名とパスワードを入力します。
 
 	![ジョブに名前を付け、コードに入力するか、貼り付け、[実行] をクリックします。][1]
+2. **[ジョブの作成]** ブレードで、ジョブの名前を入力します。
+3. ターゲット データベースに接続するために、スクリプトを正常に実行できるアクセス許可を持つユーザー名とパスワードを入力します。
+4. T-SQL スクリプトを貼り付けるか、入力します。
+5. **[保存]** をクリックし、次に **[実行]** をクリックします。
+
+	![Create jobs and run][5]
 
 ## べき等ジョブを実行します
 
@@ -44,43 +47,43 @@
             WHERE name = N'IX_ProductVendor_VendorID')
     DROP INDEX IX_ProductVendor_VendorID ON Purchasing.ProductVendor;
 	GO
-	CREATE INDEX IX_ProductVendor_VendorID 
+	CREATE INDEX IX_ProductVendor_VendorID
     ON Purchasing.ProductVendor (VendorID);
 
 代わりに、新しいインスタンスを作成する前に、"IF NOT EXISTS" 句を使用します。
 
-	IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable') 
-	BEGIN 
-	 CREATE TABLE TestTable( 
-	  TestTableId INT PRIMARY KEY IDENTITY, 
-	  InsertionTime DATETIME2 
-	 ); 
-	END 
-	GO 
-	
-	INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime()); 
-	GO 
+	IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable')
+	BEGIN
+	 CREATE TABLE TestTable(
+	  TestTableId INT PRIMARY KEY IDENTITY,
+	  InsertionTime DATETIME2
+	 );
+	END
+	GO
+
+	INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
+	GO
 
 このスクリプトは、以前に作成されたテーブルを更新します。
 
-	IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation') 
-	BEGIN 
-	
-	ALTER TABLE TestTable 
-	
-	ADD AdditionalInformation NVARCHAR(400); 
-	END 
-	GO 
-	
-	INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test'); 
-	GO 
+	IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
+	BEGIN
+
+	ALTER TABLE TestTable
+
+	ADD AdditionalInformation NVARCHAR(400);
+	END
+	GO
+
+	INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test');
+	GO
 
 
 ## ジョブの状態を確認する
 
 ジョブが開始されると、進行状況を確認できます。
 
-1. 弾力性データベース ページ プールで、**[ジョブの管理]** をクリックします。
+1. エラスティック データベース ページ プールで、**[ジョブの管理]** をクリックします。
 
 	![[ジョブの管理] をクリックします。][2]
 
@@ -103,6 +106,8 @@
 [2]: ./media/sql-database-elastic-jobs-create-and-manage/click-manage-jobs.png
 [3]: ./media/sql-database-elastic-jobs-create-and-manage/running-jobs.png
 [4]: ./media/sql-database-elastic-jobs-create-and-manage/failed.png
-[5]: ./media/sql-database-elastic-jobs-create-and-manage/provide-creds.png
+[5]: ./media/sql-database-elastic-jobs-create-and-manage/screen-2.png
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

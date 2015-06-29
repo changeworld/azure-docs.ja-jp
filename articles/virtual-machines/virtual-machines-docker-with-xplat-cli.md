@@ -137,5 +137,6 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

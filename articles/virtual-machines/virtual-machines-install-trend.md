@@ -27,7 +27,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 ## 新しい仮想マシンに Deep Security Agent をインストールする
 
-[Azure の管理ポータル](http://manage.windowsazure.com)を使用すると、**From Gallery** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
+[Azure 管理ポータル](http://manage.windowsazure.com)を使用すると、**From Gallery** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 
 この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールします。一般的な手順については、「[Windows Server を実行する仮想マシンの作成](virtual-machines-windows-tutorial.md)」を参照してください。ウィザードの最後のページで、次の手順を実行します。
 
@@ -82,4 +82,6 @@ VM エージェントがインストールされている場合は、次のコ�
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-log-on-windows-server.md
 [Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

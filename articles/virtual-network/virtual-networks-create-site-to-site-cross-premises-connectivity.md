@@ -42,7 +42,7 @@
 
 AD DS を Azure の仮想マシンにデプロイする方法に関するガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/windowsazure/jj156090.aspx)」を参照してください。
 
-仮想ネットワーク構成のその他の手順と設定については、「[Azure の仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/p/?LinkId=296652)」を参照してください。
+仮想ネットワーク構成のその他の手順と設定については、[Azure Virtual Network の構成タスク](http://go.microsoft.com/fwlink/p/?LinkId=296652)に関するページを参照してください。
 
 ##  目標
 
@@ -54,7 +54,7 @@ AD DS を Azure の仮想マシンにデプロイする方法に関するガイ�
 
 ##  前提条件
 
--  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/) で無料試用版アカウントにサインアップすることもできます。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をご覧ください。
+-  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をご覧ください。
 
 このチュートリアルを使用して、組織向けにカスタマイズされた実用のクロスプレミス仮想ネットワークを構成する場合は、下記が必要です。
 
@@ -83,7 +83,7 @@ AD DS を Azure の仮想マシンにデプロイする方法に関するガイ�
 
 会社のネットワークに接続するサンプル仮想ネットワークを作成するには:
 
-1.	[Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
+1.	[Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。
 
 2.	画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで、**[ネットワーク]**、**[仮想ネットワーク]** の順にクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
@@ -178,7 +178,7 @@ Azure の仮想ネットワークを作成した後、サイト間 VPN を作成
 
 7.	VPN デバイス構成スクリプト テンプレートをダウンロードするには、ダッシュボードで **[VPN デバイス スクリプトのダウンロード]** をクリックします。
 
-8.	**[VPN デバイス構成スクリプトのダウンロード]** ダイアログ ボックスで、会社の VPN デバイスのベンダー、プラットフォーム、オペレーティング システムを選択します。チェックマークをクリックして、ファイルを保存します。
+8.	**[VPN デバイス構成スクリプトのダウンロード]** ダイアログ ボックスで、会社の VPN デバイスのベンダー、プラットフォーム、オペレーティング システムを選択します。チェックマークをクリックして、ファイルを保存します。 
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_11_DownloadVPNDeviceScript.png)
 
@@ -215,30 +215,30 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 3.	次のいずれかのコマンドを実行して接続をテストします。
 
 	<table border="1">
-<tr>
-<th>-</th>
-<th>Cisco ASA</th>
-<th>Cisco ISR/ASR</th>
-<th>Juniper SSG/ISG</th>
-<th>Juniper SRX/J</th>
-</tr>
+	<tr>
+	<th>-</th>
+	<th>Cisco ASA</th>
+	<th>Cisco ISR/ASR</th>
+	<th>Juniper SSG/ISG</th>
+	<th>Juniper SRX/J</th>
+	</tr>
 
-<tr>
-<td><b>メイン モード SA の確認</b></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show security ike security-association</FONT></td>
-</tr>
+	<tr>
+	<td><b>メイン モード SA の確認</b></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show security ike security-association</FONT></td>
+	</tr>
 
-<tr>
-<td><b>クイック モード SA の確認</b></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show security ipsec security-association</FONT></td>
-</tr>
-</table>
+	<tr>
+	<td><b>クイック モード SA の確認</b></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show security ipsec security-association</FONT></td>
+	</tr>
+	</table>
 
 
 ##  次のステップ
@@ -260,9 +260,15 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
 -  [仮想ネットワークへの仮想マシンの追加](../virtual-machines/virtual-machines-create-custom.md)
 
--  [仮想ネットワークの VPN デバイスについて] (http://msdn.microsoft.com/library/windowsazure/jj15] 75.aspx)
+-  [仮想ネットワークの VPN デバイスについて](http://msdn.microsoft.com/library/windowsazure/jj15] 75.aspx)
 
 -  [VM とロール インスタンスの名前解決](http://go.microsoft.com/fwlink/p/?LinkId=248097)
 -  [テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
-<!---HONumber=58--> 
+
+
+
+
+ 
+
+<!---HONumber=58_postMigration-->

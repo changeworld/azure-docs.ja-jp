@@ -1,12 +1,4 @@
-<properties 
-   pageTitle="Create a manual backup"
-   description="Explains how to start a manual, on-demand backup job."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   edito**r="tysonn" />
-<tags 
+<properties pageTitle="手動でバックアップを作成する" description="オンデマンドのバックアップ ジョブを手動で開始する方法について説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="adinah" edito**r="tysonn" /> <tags 
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
@@ -15,24 +7,26 @@
    ms.date="04/01/2015"
    ms.author="v-sharos" />
 
-#### To create a manual backup
+#### 手動でバックアップを作成するには
 
-1. On the **Devices** page, go to the **Backup Policies** tab. This tab lists all the backup policies in a tabular format, including the policy for the volume that you want to back up.
+1. **[デバイス]** ページで、**[バックアップ ポリシー]** タブに移動します。このタブには、バックアップするボリュームのポリシーを含むすべてのバックアップ ポリシーが表形式で表示されています。
 
-2. Select the policy by clicking anywhere in the corresponding row except for the first column. At the bottom of the page, click **Take backup**. The button will expand to show the backup options: local snapshot and cloud snapshot. 
+2. 対応する行の任意の場所 (最初の列を除く) をクリックして、ポリシーを選択します。ページの下部にある **[バックアップの取得]** をクリックします。ボタンが展開され、バックアップ オプションの [ローカル スナップショット] と [クラウド スナップショット] が表示されます。
 
-3. When you choose either of these options, you will be prompted for confirmation. Click **Yes**. 
+3. これらのオプションのいずれかを選択すると、確認を求めるメッセージが表示されます。**[はい]** をクリックします。
 
-    ![Create manual backup1](./media/storsimple-create-manual-backup-gov/HCS_CreateManualBackup1-gov-include.png)
+    ![手動バックアップの作成 1](./media/storsimple-create-manual-backup-gov/HCS_CreateManualBackup1-gov-include.png)
  
-    This will start a job to create a snapshot. You will see a notification at the bottom of the page after the job is successfully created.
+    これでスナップショットを作成するジョブが開始されます。ジョブが正常に作成されると、ページの下部に通知が表示されます。
 
-4. To monitor the job, click **View Job** in the notification area (at the bottom of the page). 
+4. ジョブを監視するには、(ページの下部にある) 通知領域の **[ジョブの表示]** をクリックします。
 
-    ![Create manual backup2](./media/storsimple-create-manual-backup-gov/HCS_CreateManualBackup2-gov-include.png)
+    ![手動バックアップの作成 2](./media/storsimple-create-manual-backup-gov/HCS_CreateManualBackup2-gov-include.png)
 
-5. After the backup job is finished, go to the **Backup catalog** tab.
+5. バックアップ ジョブが完了したら、**[バックアップ カタログ]** タブに移動します。
 
-6. Set the filter selections to the appropriate device, backup policy, and time range. Click the check icon ![check icon](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) after setting the filters.
+6. フィルター選択項目を適切なデバイス、バックアップ ポリシー、および時間範囲に設定します。フィルターを設定したら、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) をクリックします。
 
-  The backup should appear in the list of backup sets that is displayed in the catalog.
+  カタログに表示されているバックアップ セットの一覧に、そのバックアップが表示されます。
+
+<!---HONumber=58_postMigration-->

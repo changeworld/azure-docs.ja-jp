@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,20 +12,25 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.date="06/11/2015" 
 	ms.author="awills"/>
  
-# リリース ノート - Application Insights
-
-[サービスの更新](http://azure.microsoft.com/updates/?service=application-insights)もご覧ください。主要な改善をまとめています。
+# SDK リリース ノート - Application Insights
 
 
+リリース ノートと SDK の更新手順の詳細を以下に示します。
 
 * [.NET](app-insights-release-notes-dotnet.md)
-* [Android](app-insights-release-notes-android.md)
-* [iOS](app-insights-release-notes-ios.md)
+* [Android](https://github.com/Microsoft/ApplicationInsights-Android)
+* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 * [Java](app-insights-release-notes-java.md)
 * [JavaScript](app-insights-release-notes-javascript.md)
-* [Windows](app-insights-release-notes-windows.md)
+* [Windows Phone とストア C# | VB](app-insights-release-notes-windows.md)
+* [Windows Phone とストア C++](app-insights-release-notes-windows-cpp.md)
+* [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)
 
-<!---HONumber=58--> 
+Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](http://azure.microsoft.com/updates/?service=application-insights)」ページも参照してください。
+
+ 
+
+<!---HONumber=58_postMigration-->

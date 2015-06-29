@@ -56,7 +56,7 @@ Azure クラシック ポータルでは、サブスクリプションがリソ�
 
 ![PowerShell で Get-AzureResourceGroup を使用したタグの設定](./media/resource-group-using-tags/Set-AzureResourceGroup-in-PowerShell.png)
 
-タグは全体として更新されるため、既にタグが付けられているリソースにタグをもう 1 つ追加する場合は、保持しておきたいすべてのタグを含む配列を保存して使用する必要があります。特定のタグを削除するには、削除するタグが含まれない配列を保存します。
+タグは全体として更新されるため、既にタグが付けられているリソースにタグをもう 1 つ追加する場合は、保持しておきたいすべてのタグを含む配列を使用する必要があります。特定のタグを削除するには、削除するタグが含まれない配列を保存します。
 
 リソースの場合も手順は同じですが、`Get-AzureResource` コマンドレットと `Set-AzureResource` コマンドレットを使う点が異なります。特定のタグが付けられたリソースまたはリソース グループを取得するには、`Get-AzureResource` コマンドレットまたは `Get-AzureResourceGroup` コマンドレットに `-Tag` パラメーターを使用します。
 
@@ -85,7 +85,7 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 ![参照ハブによるタグの検索](./media/resource-group-using-tags/browse-tags.png)
 
-最も重要なタグをスタートボードにピン留めしておくとすぐに利用できるため便利です。どうぞお楽しみください。
+最も重要なタグをスタート画面にピン留めしておくとすぐに利用できるため便利です。どうぞお楽しみください。
 
 ![スタート画面にタグをピン留めする](./media/resource-group-using-tags/pin-tags.png)
 
@@ -112,4 +112,4 @@ Getting Started (概要)
 - [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)  
   
 
-<!---HONumber=58-->
+<!---HONumber=58_postMigration-->

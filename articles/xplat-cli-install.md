@@ -4,7 +4,7 @@
 	editor="tysonn"
 	manager="timlt"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="dlepow"
 	services=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2015"
-	ms.author="dkshir"/>
+	ms.date="06/02/2015"
+	ms.author="danlep"/>
 
 # Azure CLI のインストール
 
@@ -94,7 +94,7 @@ node.js と npm を Windows および OS X にインストールするには、[
 
 	npm install -g azure-cli
 
-Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、cmd.exe など) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。インストールの最後に、次のような情報が表示されます。
+Azure CLI をインストールすると、コマンド ライン ユーザー インターフェイスから **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。インストールの最後に、次のような情報が表示されます。
 
 	azure-cli@0.8.0 ..\node_modules\azure-cli
 	|-- easy-table@0.0.1
@@ -116,20 +116,27 @@ Azure CLI をインストールすると、コマンド ライン インター�
 
 >[AZURE.NOTE]Linux システムでは、[ソース](http://go.microsoft.com/fwlink/?linkid=253472&clcid=0x409)から構築することで Azure CLI をインストールすることもできます。ソースからの構築の詳細については、アーカイブにある INSTALL ファイルを参照してください。
 
-これで準備が整いました。 [Azure CLI から Azure サブスクリプションに接続](xplat-cli-connect.md)することで、**azure** コマンドの使用を開始できます。
-
 ## Docker コンテナーの使用
 
 Docker ホストで、次のコマンドを実行します。```
-	docker run -it kmouss/azure-cli
+	docker run -it microsoft/azure-cli
 ```
+
+## Azure CLI コマンドの実行
+
+Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、cmd.exe など) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、Windows で help コマンドを実行するには、管理者特権でコマンド プロンプト (cmd.exe) を起動します。```
+	c:> azure help
+```
+
+これで準備が整いました。 [Azure CLI から Azure サブスクリプションに接続](xplat-cli-connect.md)することで、**azure** コマンドの使用を開始できます。
+
 
 <a id="additional-resources"></a>
 ## その他のリソース
 
-* [Azure CLI でのサービス管理 (ASM モード) コマンドの使用][xplatasm]に関するページ
+* [Azure CLI でのサービス管理 (ASM モード) コマンドの使用][cliasm]に関するページ
 
-* [Azure CLI でのリソース管理 (ARM モード) コマンドの使用][xplatarm]に関するページ
+* [Azure CLI でのリソース管理 (ARM モード) コマンドの使用][cliarm]に関するページ
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題の報告、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
@@ -143,7 +150,7 @@ Docker ホストで、次のコマンドを実行します。```
 [mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
 [windows-installer]: http://go.microsoft.com/?linkid=9828653&clcid=0x409
 [linux-installer]: http://go.microsoft.com/fwlink/?linkid=253472
-[xplatasm]: virtual-machines-command-line-tools.md
-[xplatarm]: xplat-cli-azure-resource-manager.md
+[cliasm]: virtual-machines-command-line-tools.md
+[cliarm]: xplat-cli-azure-resource-manager.md
 
-<!---HONumber=58-->
+<!---HONumber=58_postMigration-->

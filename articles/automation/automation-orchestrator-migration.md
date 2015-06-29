@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Orchestrator からの Runbook と統合パックを移行する"
    description="System Center Orchestrator の Runbook と統合パックを Azure Automation に移行する方法を説明します。"
    services="automation"
@@ -6,10 +6,10 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/22/2015"
@@ -24,9 +24,9 @@ Azure Automation の Runbook は Windows PowerShell ワークフローに基づ�
 
 Orchestrator Runbook を Azure Automation に変換するための基本的なプロセスを次に示します。これらの各手順の詳細については、以降のセクションで詳しく説明します。
 
-1.  この記事で説明されているツールとモジュールが含まれる [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) をダウンロードします。 
+1.  この記事で説明されているツールとモジュールが含まれる [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) をダウンロードします。
 2.  [標準活動モジュール](#standard-activities-module)を Azure Automation にインストールします。このモジュールには、変換後の Runbook が使用する可能性がある、変換されたバージョンの Orchestrator 標準活動が含まれます。
-2.  ご使用の Runbook で使用する統合パック用に、[System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)を Azure Automation にインストールします。 
+2.  ご使用の Runbook で使用する統合パック用に、[System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)を Azure Automation にインストールします。
 3.  [統合パック コンバーター](#integration-pack-converter)を使用してカスタムとサード パーティ製の統合パックを変換し、Azure Automation にインストールします。
 4.  手動で、Orchestrator 内のグローバル アセットを Azure Automation に再作成します。この移行を実行する自動化された方式はありません。
 5.  [Runbook コンバーター](#runbook-converter-coming-soon) (近日対応予定) を使用して Orchestrator Runbook を変換し、Azure Automation にインストールします。
@@ -79,5 +79,6 @@ Microsoft は、System Center のコンポーネントと他の製品を自動�
 - [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
 - [ハイブリッド Runbook Worker](automation-hybrid-runbook-worker.md)
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

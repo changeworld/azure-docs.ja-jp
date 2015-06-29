@@ -3,7 +3,7 @@
 	description="Visual Studio の ASP.NET 5 プロジェクトで Azure BLOB ストレージの使用を開始する方法" 
 	services="storage" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="patshea123" 
 	manager="douge" 
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/20/2015" 
-	ms.author="kempb"/>
+	ms.author="patshea123"/>
 
 # Azure Storage の使用 (ASP.NET 5 プロジェクト)
 
@@ -149,5 +149,6 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 	await blockBlob.DeleteAsync();
 
 [Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

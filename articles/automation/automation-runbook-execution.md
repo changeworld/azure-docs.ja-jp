@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure Automation での Runbook の実行"
    description="Azure Automation で Runbook が処理される方法の詳細について説明します。"
    services="automation"
@@ -6,10 +6,10 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/28/2015"
@@ -41,7 +41,8 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 
 ## 関連記事:
 
-- [Azure Automation での Runbook を開始する](automation-starting-a-runbook)
+- [Azure Automation での Runbook の開始](automation-starting-a-runbook)
 - [Azure Automation で Runbook ジョブの状態を表示する方法](automation-viewing-the-status-of-a-runbook-job)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

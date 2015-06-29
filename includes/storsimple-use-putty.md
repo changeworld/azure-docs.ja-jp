@@ -15,7 +15,7 @@
    ms.date="04/01/2015"
    ms.author="v-sharos" />
 
-### シリアル コンソールを使用して接続するには
+#### シリアル コンソールを使用して接続するには
 
 1. シリアル ケーブルをデバイスに接続します (直接、または USB シリアル アダプターを使用)。
 
@@ -38,10 +38,11 @@
 
     これらの設定を次の図に示します。
 
-     ![PuTTY 設定](./media/storsimple-use-putty/HCS_ConnectingViaPutty-include.png)
+     ![PuTTY 設定](./media/storsimple-use-putty/HCS_PuttyConfig-include.png)
 
     > [AZURE.NOTE]既定のフロー制御の設定が動作しない場合は、フロー制御を [XON/XOFF] に設定してみてください。
 
 7. **[開く]** をクリックして、シリアル セッションを開始します。
  
-<!--HONumber=52-->
+
+<!---HONumber=58_postMigration-->

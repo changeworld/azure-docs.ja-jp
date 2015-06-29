@@ -95,4 +95,4 @@ SharePoint Server Farm は、Azure リソース マネージャーとスクリ�
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

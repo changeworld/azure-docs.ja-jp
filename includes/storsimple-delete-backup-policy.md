@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Delete a StorSimple backup policy"
-   description="Explains how you can use the StorSimple Manager service to delete a backup policy."
+   pageTitle="StorSimple のバックアップ ポリシーの削除"
+   description="StorSimple Manager サービスを使用して、バックアップ ポリシーを削除する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,16 +15,15 @@
    ms.date="05/14/2015"
    ms.author="v-sharos" />
 
-#### To delete a StorSimple backup policy
+#### StorSimple のバックアップ ポリシーを削除するには
 
-1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
+1. デバイスの **[クイック スタート]** ページで、**[バックアップ ポリシー]** タブをクリックします。この操作により、**[バックアップ ポリシー]** ページが表示されます。
 
-2. Select the policy you want to delete, and then click **Delete** at the bottom of the page.
+2. 削除するポリシーを選択し、ページの下部にある **[削除]** をクリックします。
 
-3. You will be prompted for confirmation. Keep in mind that deleting a backup policy will delete all the associated backups. Click **OK** to delete.
+3. 確認を求められます。バックアップ ポリシーを削除すると、関連するバックアップがすべて削除されることに注意してください。**[OK]** をクリックして削除します。
 
-The **Backup Policies** page will be updated to display the new list of policies.
+**[バックアップ ポリシー]** ページが更新され、ポリシーの新しい一覧が表示されます。
  
 
-
-
+<!---HONumber=58_postMigration-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Optional: Configure a new storage account for the service"
-   description="Explains how to configure a storage account for the StorSimple Manager service running Update 1."
+   pageTitle="省略可能: サービスの新しいストレージ アカウントを構成する"
+   description="Update 1 が実行されている StorSimple Manager サービスのストレージ アカウントを構成する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,20 +15,20 @@
    ms.date="05/18/2015"
    ms.author="alkohli" />
 
-#### To add a storage account in StorSimple 8000 Series Update 1.0
+#### StorSimple 8000 シリーズ Update 1.0 でストレージ アカウントを追加するには
 
-1. On the StorSimple Manager service landing page, select your service and double-click it. This will take you to the **Quick Start** page. Select the **Configure** page.
+1. StorSimple Manager サービスのランディング ページでサービスを選択し、ダブルクリックします。この操作により、**[クイック スタート]** ページが表示されます。**[構成]** ページを選択します。
 
-2. Click **Add/edit storage account**.
+2. **[ストレージ アカウントの追加/編集]** をクリックします。
 
-3. In the **Add/Edit Storage Account** dialog box, click **Add new**.
+3. **[ストレージ アカウントの追加/編集]** ダイアログ ボックスで、**[新規追加]** をクリックします。
 
-4. In the **Provider** field, select the appropriate cloud service provider. The supported providers are Azure, Amazon S3, Amazon S3 with RRS, HP and OpenStack. Specify the credentials and the location associated with the storage account of your cloud service providers. The fields presented for credentials will be different depending upon the cloud service provider you have specified. 
-  - If you have selected Azure as your cloud service provider, supply the **Name** and the primary **Access Key** for your Microsoft Azure storage account. For an Azure account, the location will be automatically populated.
+4. **[プロバイダー]** ボックスで、適切なクラウド サービス プロバイダーを選択します。サポートされているプロバイダーは、Azure、Amazon S3、Amazon S3 RRS、HP、OpenStack です。クラウド サービス プロバイダーのストレージ アカウントに関連付けられている資格情報と場所を指定します。資格情報用に表示されるフィールドは、指定したクラウド サービス プロバイダーに応じて異なります。
+  - クラウド サービス プロバイダーとして Azure を選択した場合は、Microsoft Azure ストレージ アカウントの**名前**とプライマリ **アクセス キー**を指定します。Azure アカウントの場合、場所は自動的に設定されます。
 
         ![Add Azure storage account](./media/storsimple-configure-new-storage-account-u1/AddAzureStorageaccount-include.png)
 
- - If you have selected Amazon S3 or Amazon S3 with RRS, provide a friendly **Storage Account name**, **Access Key**, and **Secret Key**. For Amazon S3 and Amazon S3 with RRS, the following locations are supported:
+ - Amazon S3 または Amazon S3 RRS を選択した場合は、わかりやすい**ストレージ アカウント名**、**アクセス キー**、**シークレット キー**を指定します。Amazon S3 と Amazon S3 RRS の場合、次の場所がサポートされています。
 
 		- US Standard
 		- US West (Oregon)
@@ -41,23 +41,25 @@
 
         ![Add Amazon storage account](./media/storsimple-configure-new-storage-account-u1/AddAmazonStorageaccount-include.png)
 	  		
- - If you have selected HP as your cloud service provider, supply a friendly **Storage Account Name**, **Tenant ID**, **Username**, and **Password**. For HP, the following locations are supported:
+ - クラウド サービス プロバイダーとして HP を選択した場合は、わかりやすい**ストレージ アカウント名**、**テナント ID**、**ユーザー名**、**パスワード**を指定します。HP の場合、次の場所がサポートされています。
 
 		- US East
 		- US West
 	  
         ![Add HP storage account](./media/storsimple-configure-new-storage-account-u1/AddHPStorageaccount-include.png)
 	  		
- - If you have selected **Openstack** as your cloud service provider, provide a **Hostname**, **Access Key**, and **Secret Key**.
+ - クラウド サービス プロバイダーとして **Openstack** を選択した場合は、**ホスト名**、**アクセス キー**、**シークレット キー**を指定します。
 
         > [AZURE.NOTE] For all the cloud service providers, excluding Azure, a friendly name is allowed. You can use different friendly names and create more than one storage account with the same set of credentials.
 
         ![Add Openstack storage account](./media/storsimple-configure-new-storage-account-u1/AddOpenstackStorageaccount-include.png)
 
-5. Select **Enable SSL Mode** to create a secure channel for network communication between your device and the cloud. Clear the **Enable SSL Mode** check box only if you are operating within a private cloud.
+5. **[SSL モードを有効にする]** を選択して、デバイスとクラウド間のネットワーク通信用のセキュリティで保護されたチャネルを作成します。プライベート クラウド内で運用している場合にのみ、**[SSL モードを有効にする]** チェック ボックスをオフにします。
 
-      > [AZURE.NOTE] If you are using HP as your provider, SSL will always be enabled.
+      >[AZURE.NOTE]クラウド サービス プロバイダーとして HP を使用している場合、SSL が常に有効になります。
   		
-6. Click the check icon ![check icon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). You will be notified after the storage account is successfully created.
+6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png) をクリックします。ストレージ アカウントが正常に作成されると通知が表示されます。
 
-7. The newly created storage account will be displayed on the **Configure** page under **Storage accounts**. Click **Save** to save the new storage account. Click **OK** when prompted for confirmation.
+7. 新しく作成されたストレージ アカウントは、**[構成]** ページの **[ストレージ アカウント]** に表示されます。**[保存]** をクリックして、新しいストレージ アカウントを保存します。確認を求められたら、**[OK]** をクリックします。
+
+<!---HONumber=58_postMigration-->

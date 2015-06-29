@@ -39,7 +39,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 
 ### Azure アカウントとサブスクリプションを設定する
 
-Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料評価版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
 
@@ -77,4 +77,4 @@ Azure リソース マネージャー モジュールを使用するには、既
 
 > [AZURE.NOTE]**Switch-AzureMode AzureServiceManagement** コマンドを使用して、既定のコマンド セットに戻すことができます。
 
-<!---HONumber=58-->
+<!---HONumber=58_postMigration-->

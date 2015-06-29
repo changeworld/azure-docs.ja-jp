@@ -21,10 +21,11 @@
 > [AZURE.SELECTOR]
 - [Visual Studio 2013](app-service-dotnet-create-api-app.md)
 - [Visual Studio 2015 RC](app-service-dotnet-create-api-app-vs2015.md)
+- [Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
 
 ## 概要
 
-このチュートリアルでは、Visual Studio 2015 を使用して ASP.NET Web API 2 プロジェクトを作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API アプリ](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。Azure へのプロジェクトのデプロイも行います。このチュートリアルの最後には、API アプリが Azure クラウドで実行するようになります。
+このチュートリアルでは、[Visual Studio 2015 RC](https://www.visualstudio.com/ja-jp/downloads/visual-studio-2015-downloads-vs.aspx) を使用して ASP.NET Web API 2 プロジェクトを作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API アプリ](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。Azure へのプロジェクトのデプロイも行います。このチュートリアルの最後には、API アプリが Azure クラウドで実行するようになります。
 
 このチュートリアルは、Visual Studio の**ソリューション エクスプローラー**でファイルおよびフォルダーを使用する方法を理解していることを前提としています。
 
@@ -46,9 +47,11 @@ Visual Studio 2015 RC にはまだ API アプリ プロジェクト テンプレ
 
 4. プロジェクトに「*ContactsList*」という名前を付けます。
 
-	![](./media/app-service-dotnet-create-api-app-vs2015/newproj.png)
+5. **[Application Insights をプロジェクトに追加]** チェック ボックスがオフになっていることを確認します。
 
 5. **[OK]** をクリックします。
+
+	![](./media/app-service-dotnet-create-api-app-vs2015/newproj.png)
 
 6. **[新しい ASP.NET プロジェクト]** ダイアログの **[ASP.NET 4.6 テンプレート]** で、**空**のテンプレートを選択します。
 
@@ -56,18 +59,21 @@ Visual Studio 2015 RC にはまだ API アプリ プロジェクト テンプレ
 
 8. **[クラウドにホスト]** チェック ボックスをオフにします。
 
-	![](./media/app-service-dotnet-create-api-app-vs2015/newaspnet.png)
-
 7. **[OK]** をクリックします。
+
+	![](./media/app-service-dotnet-create-api-app-vs2015/newaspnet.png)
 
 ## NuGet パッケージの追加
 
-API アプリ プロジェクトでは、[Swagger](http://swagger.io/ "公式の Swagger 情報") メタデータの自動生成が既定で有効になります。この機能は、Swashbuckle NuGet パッケージによって提供されます。このパッケージをインストールすると、API テスト ページも既定で有効になります。
+[Microsoft.Azure.AppService.ApiApps.Service](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/) NuGet パッケージでは、API アプリ用の App Service ランタイムが提供されています。また [Swashbuckle](http://www.nuget.org/packages/Swashbuckle/) NuGet パッケージでは、[Swagger](http://swagger.io/ "公式の Swagger 情報") API メタデータを動的に生成できます。
+
+> **注:** Swashbuckle パッケージをインストールすると、API テスト ページが既定で有効になります。API アプリを発行し、アクセス レベルを **[パブリック (匿名)]** に設定すると、テスト ページの URL を検索したユーザーは、その URL を API の呼び出しに使用できます。このチュートリアルの後半では、テスト ページを使用します。
 
 1. **[ツール]、[Nuget パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。
 
-2. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
+2. **[Package Manager Console]** (PMC) で、次のコマンドを入力します。
 
+		install-package Microsoft.Azure.AppService.ApiApps.Service
 		install-package Swashbuckle
 
 	PMC が依存関係をチェックしていることを示すメッセージが表示された後、数分待たなければならないことがあります。
@@ -114,19 +120,9 @@ Web API プロジェクトを API アプリとしてデプロイできるよう�
 
 次の手順では、ハード コーディングされた連絡先リストを返す単純な HTTP Get メソッドのコードを追加します。
 
-1. プロジェクト フォルダーに、*Models* フォルダーを作成します。
+1. プロジェクト フォルダー内に *[モデル]* フォルダーがない場合は作成します。
 
-2. *Contact.cs* という名前のクラス ファイルを追加し、ファイルの内容を次のコードに置き換えます。
-
-		namespace ContactsList.Models
-		{
-			public class Contact
-			{
-				public int Id { get; set; }
-				public string Name { get; set; }
-				public string EmailAddress { get; set; }
-			}
-		}
+2. *[モデル]* フォルダーで、*Contact.cs* という名前のクラス ファイルを追加し、ファイルの内容を次のコードに置き換えます。namespace ContactsList.Models { public class Contact { public int Id { get; set; } public string Name { get; set; } public string EmailAddress { get; set; } } }
 
 5. **[コントローラー]** フォルダーを右クリックしてから、**[追加]、[コントローラー]** の順にクリックします。
 
@@ -171,7 +167,7 @@ Web API プロジェクトを API アプリとしてデプロイできるよう�
 
 API のテスト ページを表示するには、次の手順に従います。
 
-1. アプリをローカルで実行 (Ctrl + F5 キー) して `/swagger` に移動します。 
+1. アプリケーションをローカルで実行し (CTRL キーを押しながら f5 キーを押します)、ブラウザーのアドレス バーで URL の末尾に `/swagger` を追加します。 
 
 	![](./media/app-service-dotnet-create-api-app-vs2015/14-swagger-ui.png)
 
@@ -193,11 +189,11 @@ API のテスト ページを表示するには、次の手順に従います。
 
 		App Service プランの詳細については、「[Azure App Service プランの詳細な概要](azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
 
-	* **[価格レベル]** をクリックしてオプションの一覧を表示し、**[すべて表示]** をクリックして、**[無料]** 価格レベルを選択します。
+	* **[価格レベル]、[すべて表示]、[無料]、[選択]** の順にクリックし、無料の価格レベルを選択します。
 
-		有料の料金レベルを使用できますが、このチュートリアルでは必要ありません。
+		有料の価格レベルを使用できますが、このチュートリアルでは必要ありません。
 
-	* **[リソース グループ]** で **[新規作成]** をクリックし、ContactsList などの名前を入力します。
+	* **[リソース グループ]** で **[新規作成]** をクリックしてから、ContactsList などの名前を入力します。
 
 		リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-overview.md)に関するページを参照してください。
 
@@ -209,13 +205,15 @@ API のテスト ページを表示するには、次の手順に従います。
 
 		![](./media/app-service-dotnet-create-api-app-vs2015/createapiapp2.png)
 
-2. Azure による API アプリの作成が終了したら (ページの左側の **[通知]** で確認)、API アプリのアクセス レベルを **[パブリック (匿名)]** に設定します。
+2. Azure による API アプリの作成が終了したら、API アプリのアクセス レベルを **[パブリック (匿名)]** に設定します。
 
-	* **[参照]、[リソース グループ]、[作成したリソース グループ]、[作成した API アプリ]**の順にクリックします。
+	* **[参照]、[リソース グループ]、[作成したリソース グループ]、[作成した API アプリ]** の順にクリックします。
 
 	* **[設定]、[アプリケーションの設定]** の順にクリックします。
 
 	* **[アクセス レベル]** を **[パブリック (匿名)]** に変更します。
+	 
+	* **[保存]** をクリックします。
 
 		![](./media/app-service-dotnet-create-api-app-vs2015/setpublicanon.png)
 	
@@ -235,11 +233,11 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 
 2. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-3. **Web の発行**ウィザードの **[プロファイル]** ステップで、**[Microsoft Azure Web アプリケーション]** をクリックします。
+3. **Web の発行**ウィザードの **[プロファイル]** ステップで、**[Microsoft Azure Web Apps]** をクリックします。
 
 	![](./media/app-service-dotnet-create-api-app-vs2015/pubwebselwebapp.png)
 
-4. **[既存の Web アプリ]** ドロップダウン リストで、前に書き留めた API アプリ名のエントリを選択します。
+4. **[既存の Web Apps]** ドロップダウン リストで、前に書き留めた API アプリ名のエントリを選択します。
 
 	![](./media/app-service-dotnet-create-api-app-vs2015/pubwebselapiapp.png)
 
@@ -257,10 +255,46 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 
 	![](./media/app-service-dotnet-create-api-app-vs2015/runninginazure.png)
 
+## Azure プレビュー ポータルでの API 定義の表示
+
+このセクションでは、ポータルに移動し、先ほど作成した API アプリの API の定義を表示します。
+
+1. [Azure プレビュー ポータル](https://portal.azure.com)で、自分の API アプリの **[API アプリ]** ブレードに移動し、**[参照]、[リソース グループ]、[作成したリソース グループ]、[作成した API アプリ]** の順にクリックします。
+
+4. **[API の定義]** をクリックします。
+
+	アプリの **[API の定義]** ブレードに、アプリを作成したときに定義した API 操作の一覧が表示されます。(このチュートリアルに従った場合には、get 操作のみが表示されます。)
+
+	![API の定義](./media/app-service-dotnet-create-api-app-vs2015/29-api-definition-v3.png)
+
+## Web API コードに操作を追加します。
+
+5. Visual Studio のプロジェクトに戻り、**ContactsController.cs** ファイルに次のコードを追加します。このコードは、新しい `Contact` インスタンスを API にポストできる **Post** メソッドを追加します。  
+
+		[HttpPost]
+		public HttpResponseMessage Post([FromBody] Contact contact)
+		{
+			// todo: save the contact somewhere
+			return Request.CreateResponse(HttpStatusCode.Created);
+		}
+
+	![コントローラーへの Post メソッドの追加](./media/app-service-dotnet-create-api-app-vs2015/30-post-method-added-v3.png)
+
+6. 先ほどと同じように、プロジェクトを発行します。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** をクリックします。次に、**Web の発行**ウィザードの **[発行]** をクリックします。
+
+12. 発行プロセスが完了したら、ポータルに戻り、先ほどと同じようにゲートウェイを再起動します。
+
+14. ポータルで **[API の定義]** ブレードに戻ります。
+
+	先ほど作成して Azure サブスクリプションにデプロイした新しい API エンドポイントが表示されます。
+
+	![API の定義](./media/app-service-dotnet-create-api-app-vs2015/38-portal-with-post-method-v4.png)
+
 [AZURE.INCLUDE [app-service-api-direct-deploy-metadata](../../includes/app-service-api-direct-deploy-metadata.md)]
 
 ## 次のステップ
 
 Visual Studio 2015 RC を使用し、API アプリを作成してデプロイしました。API アプリの詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示される、ナビゲーション ウィンドウのエントリを参照してください。API アプリ ドキュメントのほとんどでは Visual Studio 2013 が示されていますが、UI は似ていて、記述するコードおよびポータルの UI は同じなので、ほとんどは VS 2015 でも使用できます。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

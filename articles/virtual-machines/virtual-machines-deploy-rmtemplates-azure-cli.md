@@ -20,21 +20,17 @@
 
 この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure Virtual Machines のデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
 
-一般的なタスク:
-
 - [Azure での仮想マシンの簡易作成](#quick-create-a-vm-in-azure)
 - [テンプレートから Azure への仮想マシンのデプロイ](#deploy-a-vm-in-azure-from-a-template)
 - [カスタム イメージからの仮想マシンの作成](#create-a-custom-vm-image) 
 - [仮想ネットワークとロード バランサーを使用した VM のデプロイ](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
 - [リソース グループの削除](#remove-a-resource-group)
-- [リソース グループ デプロイメントのログの表示](#show-the-log-for-a-resource-group-deployment)
+- [リソース グループ デプロイのログの表示](#show-the-log-for-a-resource-group-deployment)
 - [仮想マシンに関する情報の表示](#display-information-about-a-virtual-machine)
 - [Linux ベースの仮想マシンへの接続](#log-on-to-a-linux-based-virtual-machine)
 - [仮想マシンの停止](#stop-a-virtual-machine)
 - [仮想マシンの起動](#start-a-virtual-machine)
 - [データ ディスクの接続](#attach-a-data-disk)
-
-
 
 ## 準備
 
@@ -90,9 +86,9 @@ Azure リソース管理テンプレートを使用するには、職場また�
 
 ## Azure リソース テンプレートおよびリソース グループについて
 
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL Database、仮想ネットワーク、コンテンツ配信ネットワーク、*CDN* など) から構築されます。既定の Azure サービス管理 API と従来の Azure ポータルでは、サービス単位でこれらの項目を表示していたので、各サービスを個別にデプロイして管理するか、そのために他のツールを見つける必要があり、論理的な単一のデプロイメント単位として扱うことはできませんでした。
+大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL Database、仮想ネットワーク、コンテンツ配信ネットワーク、*CDN* など) から構築されます。既定の Azure サービス管理 API と Azure クラシック ポータルでは、サービス単位でこれらの項目を表示していたので、各サービスを個別にデプロイして管理するか、そのために他のツールを見つける必要があり、論理的な単一のデプロイ単位として扱うことはできませんでした。
 
-*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイメント単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
+*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフサイクル全体を管理できます。
 
@@ -101,9 +97,9 @@ Azure リソース管理テンプレートを使用するには、職場また�
 - 操作を監査する。 
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。 
 
-Azure リソース グループとその機能の詳細については、[こちら](../resource-groups-overview.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
+Azure リソース グループとその機能の詳細については、[こちら](../resource-group-overview.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
 
-## Azure での VM の簡易作成
+## <a id="quick-create-a-vm-in-azure"></a>タスク: Azure での VM の簡易作成
 
 どのようなイメージが必要か理解していて、今すぐそのイメージの VM が必要で、しかもインフラストラクチャにはそれほどこだわらないという場合があります。たとえばクリーンな VM で何かをテストする必要があるような場合です。そのようなときは、`azure vm quick-create` コマンドを使用し、VM とそのインフラストラクチャの作成に必要な引数を渡します。
 
@@ -135,8 +131,8 @@ Azure リソース グループとその機能の詳細については、[こち
 | CoreOS | CoreOS | 安定版 | 633.1.0 |
 | MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8.0.40459 |
 | MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | 標準 | 1.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | エンタープライズ | 1.0.0 |
+| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard | 1.0.0 |
+| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise | 1.0.0 |
 | MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW | 12.0.2430 |
 | MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP | 12.0.2430 |
 | Canonical | UbuntuServer | 12.04.5-LTS | 12.04.201504230 |
@@ -232,7 +228,7 @@ VM を作成するため、`azure vm quick-create command` と入力して、メ
     
 これで新しい VM が作成されました。
 
-## テンプレートから Azure への VM のデプロイ
+## <a id="deploy-a-vm-in-azure-from-a-template"></a>タスク: テンプレートから Azure への VM のデプロイ
 
 Azure CLI でテンプレートを使用して新しい Azure VM をデプロイするには、以下のセクションの手順に従います。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成しますが、`azure vm quick-create` とは異なり、何が必要かを正確に記述し、エラーなしでそれを繰り返すことができます。このテンプレートによって作成されるものを次に示します。
 
@@ -436,7 +432,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
   
 ### 手順 2. テンプレートで仮想マシンを作成する
 
-パラメーター値を用意したら、テンプレートのデプロイメント用のリソース グループを作成し、テンプレートをデプロイする必要があります。
+パラメーター値を用意したら、テンプレートのデプロイ用のリソース グループを作成し、テンプレートをデプロイする必要があります。
 
 リソース グループを作成するには、グループ名とデプロイ先のデータ センターの場所で `azure group create <group name> <location>` を入力します。この作成はすばやく実行されます。
 
@@ -454,14 +450,14 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
     info:    group create command OK
     
 
-デプロイメントを作成するには、`azure group deployment create` を呼び出し、次の情報を渡します。
+デプロイを作成するには、`azure group deployment create` を呼び出し、次の情報を渡します。
 
 - テンプレート ファイル (上記の JSON テンプレートをローカル ファイルに保存した場合) 
 - テンプレートの URI (GitHub や他の Web アドレスにあるファイルをポイントする場合)
 - デプロイ先のリソース グループ
-- デプロイメント名 (省略可能)。 
+- デプロイ名 (省略可能)。 
 
-JSON ファイルの **"parameters"** セクションのパラメーター値を指定するよう求められます。すべてのパラメーター値を指定すると、デプロイメントが開始されます。
+JSON ファイルの **"parameters"** セクションのパラメーター値を指定するよう求められます。すべてのパラメーター値を指定すると、デプロイが開始されます。
 
 たとえば次のようになります。
 
@@ -501,7 +497,7 @@ JSON ファイルの **"parameters"** セクションのパラメーター値を
     
 
 
-## カスタム VM イメージの作成
+## <a id="create-a-custom-vm-image"></a>タスク: カスタム VM イメージの作成
 
 テンプレートの使用方法は前述したので、同様の手順に従うことで、Azure CLI を使用し、テンプレートによって Azure にある特定の .vhd ファイルからカスタム VM を作成できます。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成するという点が異なります。
 
@@ -717,7 +713,7 @@ Linux ベースの仮想マシンについては、[Azure 上での Linux VHD �
     data:    
     info:    group create command OK
     
-次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイメントを作成します (または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 (特に、作成する DNS 名) との名前付けの競合が発生する場合があります。
+次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイを作成します (または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 (特に、作成する DNS 名) との名前付けの競合が発生する場合があります。
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/azurermtemplates/azurermtemplates/master/101-vm-from-user-image/azuredeploy.json \
@@ -766,7 +762,7 @@ Linux ベースの仮想マシンについては、[Azure 上での Linux VHD �
     info:    group deployment create command OK
     
 
-## 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
 
 このテンプレートでは、ロード バランサーの下に 2 つの仮想マシンを作成し、ポート 80 の負荷分散ルールを構成することができます。このテンプレートは、ストレージ アカウント、仮想ネットワーク、パブリック IP アドレス、可用性セット、ネットワーク インターフェイスなども同様にデプロイします。
 
@@ -1110,9 +1106,9 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
         ]
     }
 
-### 手順 2. テンプレートでデプロイメントを作成する。
+### 手順 2. テンプレートでデプロイを作成する。
 
-`azure group create <location>` を使用してテンプレートのリソース グループを作成した後、`azure group deployment create` を使用してそのリソース グループへのデプロイメントを作成し、リソース グループとデプロイ名を渡して、既定値がないテンプレートのパラメーターに関するプロンプトに答えます。
+`azure group create <location>` を使用してテンプレートのリソース グループを作成した後、`azure group deployment create` を使用してそのリソース グループへのデプロイを作成し、リソース グループとデプロイ名を渡して、既定値がないテンプレートのパラメーターに関するプロンプトに答えます。
 
 
     azure group create lbgroup westus
@@ -1178,7 +1174,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
     
 このテンプレートでは Windows Server イメージをデプロイしますが、Linux イメージにも簡単に置き換えることができます。複数のリージョンにまたがる Docker クラスターを作成する必要はありますか? [こちらから作成できます](http://azure.microsoft.com/documentation/templates/201-discover-private-ip-dynamically/)。
 
-## リソース グループの削除
+## <a id="remove-a-resource-group"></a>タスク: リソース グループの削除
 
 リソース グループへの再デプロイは可能ですが、実行する場合は忘れずに `azure group delete <group name>` を使用してリソース グループを削除してください。
 
@@ -1188,15 +1184,15 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
     + Deleting resource group myResourceGroup                                               
     info:    group delete command OK
     
-## リソース グループ デプロイメントのログの表示
+## <a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイのログの表示
 
-これは、テンプレートの作成時や使用時によく行われます。グループのデプロイメント ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます。(デプロイメントのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください)。
+これは、テンプレートの作成時や使用時によく行われます。グループのデプロイ ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます。(デプロイのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください)。
 
-特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。次の例では、**jq** を使用して **lbgroup** のデプロイメント ログを解析し、エラーを探しています。
+特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。次の例では、**jq** を使用して **lbgroup** のデプロイ ログを解析し、エラーを探しています。
 
     azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties' 
 
-発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。(テンプレートの修正後、デプロイメントは速やかに正常終了しました)。
+発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。(テンプレートの修正後、デプロイは速やかに正常終了しました)。
 
     {
       "statusCode": "Conflict",
@@ -1204,7 +1200,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
     }
     
 
-## 仮想マシンに関する情報の表示
+## <a id="display-information-about-a-virtual-machine"></a>タスク: 仮想マシンに関する情報の表示
 
 `azure vm show <groupname> <vmname> command` を使用して、リソース グループ内の特定の VM に関する情報を表示できます。複数の VM がある場合、まずは `azure vm list <groupname>` を使用してグループ内の VM を一覧表示する必要があります。
 
@@ -1271,11 +1267,11 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 > [AZURE.NOTE]プログラムによってコンソール コマンドの出力を格納および操作する場合は、**[jq](https://github.com/stedolan/jq)**、**[jsawk](https://github.com/micha/jsawk)** などの JSON 解析ツール、またはそのタスクに適した言語ライブラリを使用することをお勧めします。
 
-## Linux ベースの仮想マシンへのログオン
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
 
 通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照してください。
 
-## VM の停止
+## <a id="stop-a-virtual-machine"></a>タスク: VM の停止
 
 次のコマンドを実行します。
 
@@ -1283,11 +1279,11 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 >[AZURE.IMPORTANT]このパラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP (VIP) を保持するために使用します。<br><br> StayProvisioned パラメーターを使用する場合は、その VM に対して引き続き課金されます。
 
-## VM の起動
+## <a id="start-a-virtual-machine"></a>タスク: VM の起動
 
 次のコマンドを実行します: Azure Resource Manager Overview azure vm start <group name> <virtual machine name>
 
-## データ ディスクの接続
+## <a id="attach-a-data-disk"></a>タスク: データ ディスクの接続
 
 新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
 
@@ -1308,4 +1304,13 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
 
-<!---HONumber=58--> 
+
+
+
+
+
+
+
+ 
+
+<!---HONumber=58_postMigration-->

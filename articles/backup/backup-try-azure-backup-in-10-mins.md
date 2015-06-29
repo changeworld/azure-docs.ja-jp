@@ -1,30 +1,30 @@
 <properties
-	pageTitle="10 分で Azure Backup"
-	description="10 分で Azure Backup を使用する"	
-	services="backup"
-	documentationCenter=""
-	authors="prvijay"
-	manager="shreeshd"
-	editor=""/>
+   pageTitle="10 分で Azure Backup"
+   description="10 分で Azure Backup を使用する"
+   services="backup"
+   documentationCenter=""
+   authors="prvijay"
+   manager="shreeshd"
+   editor=""/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="03/26/2015"
-	ms.author="prvijay"/>
+   ms.service="backup"
+   ms.workload="storage-backup-recovery"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="get-started-article"
+	 ms.date="03/26/2015"
+	 ms.author="prvijay"/>
 
 # 10 分で Azure Backup を試してみる
 Azure Backup のセットアップはとても簡単です。次の操作方法のビデオは初めて使用する場合に役立ちます。
 
 ## 手順 1: Azure サブスクリプションを入手する
-+ Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる無料評価版を使用して開始できます。詳細については、次のリンクをご覧ください。[http://azure.microsoft.com/en-in/pricing/free-trial/](http://azure.microsoft.com/en-in/pricing/free-trial)
++ Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる無料試用版を使用して開始できます。詳細については、次のリンクをご覧ください。[http://azure.microsoft.com/ja-jp/pricing/free-trial/](http://azure.microsoft.com/ja-jp/pricing/free-trial)
 + Azure サブスクリプションがある場合は、この手順を省略できます。
 
 ## 手順 2: Azure Backup サービスを構成する
-ビデオ ([http://azure.microsoft.com/en-in/documentation/videos/getting-started-with-azure-backup-1-of-3-set-up-a-backup-vault-on-azure/](http://azure.microsoft.com/en-in/documentation/videos/getting-started-with-azure-backup-1-of-3-set-up-a-backup-vault-on-azure/)) で説明する手順に従って進みます。
+ビデオ ([http://azure.microsoft.com/ja-jp/documentation/videos/getting-started-with-azure-backup-1-of-3-set-up-a-backup-vault-on-azure/](http://azure.microsoft.com/ja-jp/documentation/videos/getting-started-with-azure-backup-1-of-3-set-up-a-backup-vault-on-azure/)) で説明する手順に従って進みます。
 
 +	バックアップ コンテナーの作成
 
@@ -35,7 +35,7 @@ Azure Backup のセットアップはとても簡単です。次の操作方法�
 > [AZURE.VIDEO getting-started-with-azure-backup-1-of-3-set-up-a-backup-vault-on-azure]
 
 ## 手順 3: オンプレミスのコンピューターを準備する
-ビデオ ([http://azure.microsoft.com/en-in/documentation/videos/getting-started-with-azure-backup-2-of-3-prepare-your-production-server-for-azure-backup/](http://azure.microsoft.com/en-in/documentation/videos/getting-started-with-azure-backup-2-of-3-prepare-your-production-server-for-azure-backup/)) で説明する手順に従って進みます。
+ビデオ ([http://azure.microsoft.com/ja-jp/documentation/videos/getting-started-with-azure-backup-2-of-3-prepare-your-production-server-for-azure-backup/](http://azure.microsoft.com/ja-jp/documentation/videos/getting-started-with-azure-backup-2-of-3-prepare-your-production-server-for-azure-backup/)) で説明する手順に従って進みます。
 
 + Windows Server/クライアントまたは DPM サーバーへの Azure Backup エージェントのインストール
 
@@ -45,7 +45,7 @@ Azure Backup のセットアップはとても簡単です。次の操作方法�
 > [AZURE.VIDEO getting-started-with-azure-backup-2-of-3-prepare-your-production-server-for-azure-backup]
 
 ## 手順 4: データをバックアップおよび復元する
-ビデオ ([http://azure.microsoft.com/en-in/documentation/videos/getting-started-with-azure-backup-3-of-3-start-backing-up-your-production-server/](http://azure.microsoft.com/en-in/documentation/videos/getting-started-with-azure-backup-3-of-3-start-backing-up-your-production-server/)) で説明する手順に従って進みます。
+ビデオ ([http://azure.microsoft.com/ja-jp/documentation/videos/getting-started-with-azure-backup-3-of-3-start-backing-up-your-production-server/](http://azure.microsoft.com/ja-jp/documentation/videos/getting-started-with-azure-backup-3-of-3-start-backing-up-your-production-server/)) で説明する手順に従って進みます。
 
 + サーバーのデータのバックアップ
 
@@ -54,7 +54,8 @@ Azure Backup のセットアップはとても簡単です。次の操作方法�
 > [AZURE.VIDEO getting-started-with-azure-backup-3-of-3-start-backing-up-your-production-server]
 
 ## 次のステップ
-+ Azure のバックアップの詳細については、「[Azure のバックアップの概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)」を参照してください。
-+ [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
++ Azure Backup の詳細については、[Azure Backup の概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)に関するページを参照してください。
++ [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=58_postMigration-->

@@ -10,7 +10,7 @@
 <tags
    ms.service="vpn-gateway"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/12/2015"
@@ -118,7 +118,7 @@
 
 ### VPN 構成パッケージをクライアントにインストールして接続を開始
 
-1. 仮想ネットワークに接続するコンピューターのローカルに構成ファイルをコピーして、.exe ファイルをダブルクリックします。パッケージがインストールされると、VPN 接続を開始できます。構成パッケージは Microsoft によって署名されていないことに注意してください。組織の署名サービスを使用して、パッケージに署名できます。または、[SignTool](https://msdn.microsoft.com/library/windows/desktop/aa387764(v=vs.85).aspx) を使用して、ユーザー自身がパッケージに署名できます。署名なしでパッケージを使用することもできます。ただし、パッケージが署名されていない場合は、パッケージのインストール時に警告が表示されます。 
+1. 仮想ネットワークに接続するコンピューターのローカルに構成ファイルをコピーして、.exe ファイルをダブルクリックします。パッケージがインストールされると、VPN 接続を開始できます。構成パッケージは Microsoft によって署名されていないことに注意してください。組織の署名サービスを使用して、パッケージに署名できます。または、[SignTool](https://msdn.microsoft.com/library/windows/desktop/aa387764(v=vs.85).aspx) を使用して、ユーザー自身がパッケージに署名できます。署名なしでパッケージを使用することもできます。ただし、パッケージが署名されていない場合は、パッケージのインストール時に警告が表示されます。
 2. クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。仮想ネットワークと同じ名前が付いています。**[接続]** をクリックします。
 3. ゲートウェイ エンドポイントの自己署名証明書の作成に使用されるポップアップ メッセージが表示されます。**[続行]** をクリックして、昇格された特権を使用します。
 4. **接続**の状態ページで、**[接続]** をクリックして接続を開始します。
@@ -142,7 +142,7 @@
 		Autoconfiguration Enabled.......: Yes
 		IPv4 Address....................: 192.168.130.2(Preferred)
 		Subnet Mask.....................: 255.255.255.255
-		Default Gateway.................: 
+		Default Gateway.................:
 		NetBIOS over Tcpip..............: Enabled
 
 
@@ -157,5 +157,6 @@
 仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
 
 RRAS を使用して VNet 接続を構成する場合は、[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用したサイト間 VPN の構成](https://msdn.microsoft.com/library/dn636917.aspx)に関するページを参照してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

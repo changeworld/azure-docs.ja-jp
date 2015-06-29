@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="証明書"
+   pageTitle="Azure Automation の証明書資産"
    description="証明書を Azure Automation に安全に保存し、Runbook で Azure およびサードパーティのリソースに認証してアクセスできます。この記事では、証明書の詳細およびテキスト作成とグラフィカル作成の両方で証明書を使用する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/21/2015"
+   ms.date="06/14/2015"
    ms.author="bwren" />
 
-# 証明書
+# Azure Automation の証明書資産
 
 証明書を Azure Automation に安全に保存し、**Get-AutomationCertificate** アクティビティを使用して Runbook でアクセスできます。これにより、認証に証明書を使用する Runbook を作成したり、Runbook が作成または構成できる Azure またはサードパーティのリソースに証明書を追加したりできます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各オートメーション アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各 Automation アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、Automation アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
-Windows PowerShell でオートメーション証明書資産を作成および管理するには、次の表のコマンドレットを使用します。これらは、Automation Runbook で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md)に付属しています。
+Windows PowerShell で Automation 証明書資産を作成および管理するには、次の表のコマンドレットを使用します。これらは、Automation Runbook で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md)に付属しています。
 
 |コマンドレット|説明|
 |:---|:---|
@@ -48,7 +48,7 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 
 ### Azure ポータルで新しい証明書を作成するには
 
-1. オートメーション アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
+1. Automation アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
 1. ウィンドウの下部にある **[設定の追加]** をクリックします。
 1. **[資格情報の追加]** をクリックします。
 2. **[資格情報の種類]** ドロップダウンで、**[証明書]** を選択します。
@@ -59,7 +59,7 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 
 ### Azure プレビュー ポータルで新しい証明書を作成するには
 
-1. オートメーション アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
+1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
 1. **[証明書]** 部分をクリックして **[証明書]** ブレードを開きます。
 1. ブレード上部の **[証明書の追加]** をクリックします。
 2. **[名前]** ボックスに証明書の名前を入力します。
@@ -69,7 +69,7 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 
 ### Windows PowerShell で新しい証明書を作成するには
 
-次のサンプル コマンドでは、新しいオートメーション証明書を作成してエクスポート可能に指定する方法について説明します。これは既存の pfx ファイルをインポートします。
+次のサンプル コマンドでは、新しい Automation 証明書を作成してエクスポート可能に指定する方法について説明します。これは既存の pfx ファイルをインポートします。
 
 	$certName = 'MyCertificate'
 	$certPath = '.\MyCert.pfx'
@@ -83,7 +83,7 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 ### テキストの Runbook のサンプル
 
-次のサンプル コードでは、Runbook でクラウド サービスに証明書を追加する方法を示します。このサンプルでは、パスワードは暗号化されたオートメーション変数から取得されます。
+次のサンプル コードでは、Runbook でクラウド サービスに証明書を追加する方法を示します。このサンプルでは、パスワードは暗号化された Automation 変数から取得されます。
 
 	$serviceName = 'MyCloudService'
 	$cert = Get-AutomationCertificate -Name 'MyCertificate'
@@ -105,6 +105,6 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 ## 関連項目
 
-- [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
+- [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow) 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

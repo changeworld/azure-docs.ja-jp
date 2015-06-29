@@ -21,7 +21,7 @@
 
 [MySQL][MySQL] は広く普及しているオープン ソースの SQL Database です。このチュートリアルは、以下について説明します。
 
-- [Azure の管理ポータル][AzurePortal]を使用して Azure で入手できるイメージから OpenSUSE Linux 仮想マシンを作成する方法。
+- [Azure 管理ポータル][AzurePortal]を使用して Azure で入手できるイメージから OpenSUSE Linux 仮想マシンを作成する方法。
 - SSH または PuTTY を使用して仮想マシンに接続する方法。
 - 仮想マシンに MySQL をインストールする方法。
 
@@ -41,5 +41,6 @@
 [MySQLDocs]: http://dev.mysql.com/doc/
 [MySQL]: http://www.mysql.com
 [AzurePortal]: http://manage.windowsazure.com
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

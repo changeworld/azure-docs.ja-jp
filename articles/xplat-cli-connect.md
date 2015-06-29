@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure コマンド ライン インターフェイス (Azure CLI) からのログイン"
+	pageTitle="Azure コマンド ライン インターフェイス (Azure CLI) からのログイン | Microsoft Azure"
 	description="Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続"
 	editor="tysonn"
 	manager="timlt"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="dlepow"
 	services=""/>
 
 <tags
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2015"
-	ms.author="dkshir"/>
+	ms.date="06/09/2015"
+	ms.author="danlep"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続
 
-Azure CLI は、Azure プラットフォームで使用できるオープン ソース、クロスプラットフォームのコマンド群です。このドキュメントでは、xplat-cli から Azure サブスクリプションに接続する方法について説明します。インストールの方法については、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
+Azure CLI は、Azure プラットフォームで使用できるオープン ソース、クロスプラットフォームのコマンド群です。このドキュメントでは、Azure CLI から Azure サブスクリプションに接続する方法について説明します。インストールの方法については、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 
 <a id="configure"></a>
 ## 方法: Azure サブスクリプションに接続する
@@ -33,7 +33,7 @@ Azure CLI で提供されるほとんどのコマンドで、Azure アカウン�
 
 認証とサブスクリプション管理の詳細については、「[What's the difference between account-based authentication and certificate-based authentication (アカウント ベースの認証と証明書ベースの認証の違い)][authandsub]」を参照してください。
 
-アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][free-trial]を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][free-trial]を参照してください。
 
 > [AZURE.NOTE]最も柔軟性の高い高度な Azure サービスでは、Azure リソース マネージャー、つまり [ARM モード](xplat-cli-azure-resource-manager.md)が使用されます。ARM モードを使用するには、以下に示すログイン方法で、職場または学校のアカウントを使用して Azure に接続する必要があります。
 
@@ -91,7 +91,7 @@ Azure CLI で提供されるほとんどのコマンドで、Azure アカウン�
 
 	azure account import <path to your .publishsettings file>
 
-発行設定をインポートしたら、`.publishsettings` ファイルを削除します。このファイルはコマンド ライン ツールでは不要であり、第三者によってサブスクリプションヘのアクセスに使用されるセキュリティ上のリスクがあるためです。
+発行設定をインポートしたら、`.publishsettings` ファイルを削除します。このファイルは Azure CLI では不要であり、第三者によってサブスクリプションヘのアクセスに使用されるセキュリティ上のリスクがあるためです。
 
 > [AZURE.NOTE]職場または学校のアカウントを使ってログインするか、発行設定をインポートすると、Azure サブスクリプションにアクセスするための情報が、`user` ディレクトリの `.azure` ディレクトリに格納されます。`user` ディレクトリはオペレーティング システムによって保護されますが、追加の作業を行って `user` ディレクトリを暗号化することをお勧めします。そのためには、次の操作を行います。
 >
@@ -101,7 +101,7 @@ Azure CLI で提供されるほとんどのコマンドで、Azure アカウン�
 
 ### 複数のサブスクリプション
 
-複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべてのサブスクリプションへのアクセスが許可されます。1 つのサブスクリプションが既定として選択され、操作の実行時に xplat-cli によって使用されます。`azure account list` コマンドを使用すると、すべてのサブスクリプションを表示でき、既定のサブスクリプションも確認できます。このコマンドでは、次のような情報が返されます。
+複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべてのサブスクリプションへのアクセスが許可されます。1 つのサブスクリプションが既定として選択され、操作の実行時に Azure CLI によって使用されます。`azure account list` コマンドを使用すると、すべてのサブスクリプションを表示でき、既定のサブスクリプションも確認できます。このコマンドでは、次のような情報が返されます。
 
 	info:    Executing command account list
 	data:    Name              Id                                    Current
@@ -113,7 +113,7 @@ Azure CLI で提供されるほとんどのコマンドで、Azure アカウン�
 
 	azure account set Azure-sub-2
 
-この結果、既定のサブスクリプショは Azure-sub-2 に変更されます。
+この結果、既定のサブスクリプションは Azure-sub-2 に変更されます。
 
 > [AZURE.NOTE]既定のサブスクリプションの変更は、直ちにグローバルで適用されます。新しい Azure CLI コマンドを実行するときには、同じコマンドライン インスタンスからでも別のインスタンスからでも、この新しい既定のサブスクリプションが使用されます。
 
@@ -124,9 +124,9 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 <a id="additional-resources"></a>
 ## その他のリソース
 
-* [Azure CLI でのサービス管理 (ASM モード) コマンドの使用][xplatasm]に関するページ
+* [Azure CLI でのサービス管理 (ASM モード) コマンドの使用][cliasm]に関するページ
 
-* [Azure CLI でのリソース管理 (ARM モード) コマンドの使用][xplatarm]に関するページ
+* [Azure CLI でのリソース管理 (ARM モード) コマンドの使用][cliarm]に関するページ
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題の報告、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
@@ -142,7 +142,7 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [portal]: https://manage.windowsazure.com
 [signuporg]: http://azure.microsoft.com/documentation/articles/sign-up-organization/
-[xplatasm]: virtual-machines-command-line-tools.md
-[xplatarm]: xplat-cli-azure-resource-manager.md
+[cliasm]: virtual-machines-command-line-tools.md
+[cliarm]: xplat-cli-azure-resource-manager.md
 
-<!---HONumber=58-->
+<!---HONumber=58_postMigration-->

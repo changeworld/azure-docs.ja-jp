@@ -16,7 +16,7 @@
    ms.author="v-sharos" />
 
 
-### StorSimple サービス登録キーを取得するには
+#### StorSimple サービス登録キーを取得するには
 
 1. **[StorSimple Manager]** サービス ページで、作成したサービスをクリックします。この操作により、**[クイック スタート]** ページが表示されます (**[クイック スタート]** ページには、クイック スタート アイコン ![StorSimple のクイック スタート アイコン](./media/storsimple-get-service-registration-key/HCS_QuickStartIcon-include.png) をクリックすることによっていつでもアクセスできます)。
 
@@ -32,7 +32,8 @@
 
 5. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-get-service-registration-key/HCS_CheckIcon-include.png) をクリックしてこのダイアログ ボックスを閉じ、**[クイック スタート]** ページに戻ります。
 
-> [AZURE.NOTE] StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
+> [AZURE.NOTE]StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
 
  
-<!--HONumber=52-->
+
+<!---HONumber=58_postMigration-->

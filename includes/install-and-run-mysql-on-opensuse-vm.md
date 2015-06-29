@@ -1,4 +1,4 @@
-﻿
+
 1. 権限をエスカレートするには、次のように実行します。
 
 		sudo -s
@@ -25,7 +25,7 @@
 
 		# rcmysql stop
 
-5. 警告!インストール後、既定では MySQL ルート パスワードは空になっています。そこで、MySQL の保護に役立つスクリプト、**mysql_secure_installation** を実行することをお勧めします。**mysql_secure_installation** を実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい" と答えて、ルート パスワードを変更することをお勧めします。次のコマンドを実行して、スクリプトを実行します。
+5. 警告! インストール後、既定では MySQL ルート パスワードは空になっています。そこで、MySQL の保護に役立つスクリプト、**mysql_secure_installation** を実行することをお勧めします。**mysql_secure_installation** を実行すると、MySQL ルートパスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい" と答えて、ルート パスワードを変更することをお勧めします。次のコマンドを実行して、スクリプトを実行します。
 
 		$ mysql_secure_installation
 
@@ -58,15 +58,13 @@
 
 		quit
 
-11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成します。[Azure の管理ポータル][AzurePreviewPortal]にログインします。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
+11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成します。[Azure 管理ポータル][AzurePreviewPortal]にログインします。Azure ポータルで、**[Virtual Machines]**、新しい VM の名前、**[エンドポイント]** の順にクリックします。
 
 	![Endpoints][Image7]
 
-12. ページの下部にある **[追加]** をクリックします。
-	![Endpoints][Image8]
+12. ページの下部にある **[追加]** をクリックします。 ![Endpoints][Image8]
 
-13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** に「3306」を指定します。これにより、MySQL にリモートで接続することができます。
-	![Endpoints][Image9]
+13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** に「3306」を指定します。これにより、MySQL にリモートで接続することができます。![Endpoints][Image9]
 
 14. Azure の OpenSUSE 仮想マシンで実行されている MySQL にリモート接続するには、ローカル コンピューターで次のコマンドを実行します。
 
@@ -76,11 +74,11 @@
 
 		mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
-15. これで MySQL を適切に構成し、データベースと新しいユーザーを作成できました。MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参照してください。	
+15. これで MySQL を適切に構成し、データベースと新しいユーザーを作成できました。MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参照してください。
 
 [MySQLDocs]: http://dev.mysql.com/doc/
 [AzurePreviewPortal]: http://manage.windowsazure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!--HONumber=45--> 
+<!---HONumber=58_postMigration-->

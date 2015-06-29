@@ -1,27 +1,27 @@
-
-<properties 
-	pageTitle="C# を使用して SQL Database に接続して照会します" 
+<properties
+	pageTitle="C# を使用して SQL Database に接続して照会します"
 	description="ADO.NET を使用して、Azure SQL Database のクラウド サービスの AdventureWorks Database に接続して対話する C# クライアントのサンプル コード。"
-	services="sql-database" 
-	documentationCenter="" 
-	authors="ckarst" 
-	manager="jeffreyg" 
+	services="sql-database"
+	documentationCenter=""
+	authors="ckarst"
+	manager="jeffreyg"
 	editor=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/14/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="get-started-article" 
+	ms.date="04/14/2015"
 	ms.author="cakarst"/>
 
 
-# C を使用して SQL Database に接続し、照会する# 
+# C&#x23; を使用して SQL Database に接続し、照会する
 
-このトピックでは、ADO.NET を使用して、既存の AdventureWorks SQL Database に接続する方法を説明する C# サンプル コードについて説明します。このサンプルは、データベースを照会し、結果を表示するコンソール アプリケーションをコンパイルします。
+
+このトピックでは、ADO.NET を使用して、既存の AdventureWorks SQL Database に接続する方法を説明する C# サンプル コードについて説明します。このサンプルは、データベースを照会し、結果セットを表示するコンソール アプリケーションにコンパイルします。
 
 
 ## 前提条件
@@ -34,7 +34,7 @@
 ## 手順 1: コンソール アプリケーション
 
 
-1. Visual Studio を使用して、C#  コンソール アプリケーションを作成します。
+1. Visual Studio を使用して、C# コンソール アプリケーションを作成します。
 
 
 ![接続と照会](./media/sql-database-connect-query/ConnectandQuery_VisualStudio.png)
@@ -70,7 +70,7 @@
 	using System.Text;
 	using System.Threading.Tasks;
 	using System.Data.SqlClient;
-	
+
 	namespace ConnectandQuery_Example
 	{
 		class Program
@@ -114,20 +114,20 @@
 ## 手順 3: データベースの接続文字列を検索します。
 
 
-1. [Azure ポータル](http://portal.azure.com/) を開きます。
+1. [Azure プレビュー ポータル](http://portal.azure.com/)を開きます。
 2. **[参照]** > **[SQL Database]** > **[“Adventure Works” Database]**> **[プロパティ]** > **[データベース接続文字列を表示する]** をクリックします。
 
 
 ![ポータル](./media/sql-database-connect-query/ConnectandQuery_portal.png)
 
 
-データベース接続文字列のブレードに、ADO.NET、ODBC、PHP、JDBC適切な接続文字列が表示されます。
+データベース接続文字列のブレードに、ADO.NET、ODBC、PHP、JDBC 向けの適切な接続文字列が表示されます。
 
 
 ## 手順 4: 実際の接続情報に置き換えます
 
 
-貼り付けたソース コードで、*[Your_Connection_String]* プレース ホルダーと接続文字列に置き換え、その文字列の *your_password_here* を実際のパスワードと置き換えます。
+- 貼り付けたソース コードで、*[Your_Connection_String]* プレースホルダーを接続文字列に置き換え、その文字列の *your_password_here* を実際のパスワードに置き換えます。
 
 
 ## 手順 5: アプリケーションを実行します
@@ -135,5 +135,6 @@
 
 1. アプリケーションを構築して、実行するには、**[デバッグ]** > **[デバッグの開始]** をクリックします
 2. プログラムは、コンソール ウィンドウにクエリ結果を出力します。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure での Linux 用 Docker VM 拡張機能の使用"
-	description="Docker と Azure 仮想マシン拡張機能について説明し、azure-cli コマンド インターフェイスを使用してコマンド ラインから Azure 上に Docker ホストである仮想マシンをプログラムで作成する方法を示します。"
+	description="Docker と Azure 仮想マシン拡張機能について説明し、Azure CLI を使用してコマンド ラインから Azure 上に Docker ホストである仮想マシンをプログラムで作成する方法を示します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
@@ -142,5 +142,6 @@ WARNING: No swap limit support
 
 [HTTPS を使用した Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

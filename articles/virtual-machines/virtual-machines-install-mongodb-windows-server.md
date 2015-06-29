@@ -18,7 +18,7 @@
 
 #Windows Server を実行する仮想マシンに MongoDB をインストールする
 
-[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure の管理ポータル][AzureManagementPortal]では、Windows Server 2008 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
+[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure 管理ポータル][AzureManagementPortal]では、Windows Server 2008 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
 
 この記事では、次の方法について説明します。
 
@@ -42,7 +42,7 @@
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
-ディスクを初期化する方法については、「[データ ディスクを Virtual Machine に接続する方法](storage-windows-attach-disk.md)」を参照してください。
+ディスクを初期化する方法については、「[データ ディスクを Windows 仮想マシンに追加する方法](storage-windows-attach-disk.md)」を参照してください。
 
 ## 仮想マシンへの MongoDB のインストールと実行 
 
@@ -54,5 +54,6 @@
 [MongoDocs]: http://www.mongodb.org/display/DOCS/Home
 [MongoDB]: http://www.mongodb.org/
 [AzureManagementPortal]: http://manage.windowsazure.com
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

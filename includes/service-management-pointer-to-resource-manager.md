@@ -1,3 +1,5 @@
-### Azure Service Management and Azure Resource Manager
+### Azure サービス管理と Azure リソース マネージャー
  
-This article is for an Azure Service Management-based Azure resource. Microsoft recommends the use of Azure Resource Manager. For an explanation of the advantages of Resource Manager, see [Azure Compute, Network & Storage Providers under Azure Resource Manager](virtual-machines-azurerm-versus-azuresm.md). To do the equivalent task with Azure Resource Manager, see the following article:
+この記事は、Azure サービス管理ベースの Azure リソースについて記載しています。Microsoft では、Azure リソース マネージャーの使用をお勧めします。リソース マネージャーを使用する利点の詳細については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。Azure リソース マネージャーを使用する場合と同等のタスクを行うには、次の記事を参照してください。
+
+<!---HONumber=58_postMigration-->

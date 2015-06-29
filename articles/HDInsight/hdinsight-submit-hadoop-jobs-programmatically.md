@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HDInsight での Hadoop ジョブの送信 | Azure" 
+	pageTitle="HDInsight での Hadoop ジョブの送信 | Microsoft Azure" 
 	description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。" 
 	editor="cgronlun" 
 	manager="paulettm" 
@@ -13,25 +13,32 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="06/15/2015" 
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
 
 Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する方法と、HDInsight .NET SDK を使用して、MapReduce、Hadoop ストリーミング、Hive ジョブを送信する方法について説明します。
 
+> [AZURE.NOTE]この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントを使用して、HDInsight で MapReduce、Hive、または Pig を操作する方法の詳細については、次の記事を参照し、**SSH** または **Curl** のリンクを選択してください。
+>
+> - [HDInsight での Hive の使用](hdinsight-use-hive.md)
+> - [HDInsight での Pig の使用](hdinsight-use-pig.md)
+> - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+
 ##前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* Azure HDInsight クラスター。手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
-* Azure PowerShell。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+* **Azure HDInsight クラスター**。手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+
 
 
 ##Azure PowerShell を使用して MapReduce ジョブを送信する
-Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」をご覧ください。
+Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」をご覧ください。
 
-Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには JAR ファイル (*\\example\\jars\\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。
+Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには JAR ファイル (*\example\jars\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。
 
 サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、ワークステーションから Azure PowerShell を使用して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」をご覧ください。
 
@@ -88,7 +95,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 	ストレージ アカウント名は、HDInsight クラスターのプロビジョニング時に指定した Azure ストレージ アカウントです。ストレージ アカウントは、既定の HDInsight クラスター ファイル システムとして使用する BLOB コンテナーをホストするために使用されます。コンテナー名は、クラスターのプロビジョニング時に別の名前を指定しない限り、通常、HDInsight クラスターと同じ名前です。
 
-3. 次のコマンドを実行して、Azure Blob Storage のコンテキスト オブジェクトを作成します。
+3. 次のコマンドを実行して、Azure BLOB ストレージのコンテキスト オブジェクトを作成します。
 
 		# Create the storage account context object
 		Select-AzureSubscription $subscriptionName
@@ -104,7 +111,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 	*example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。*part-r-00000* は MapReduce ジョブの出力の既定のファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは以下にダウンロードされます。
 
-*C:\\example\\data\\WordCountOutput* 
+*C:\example\data\WordCountOutput* 
 
 5. 次のコマンドを実行して、MapReduce ジョブの出力ファイルの内容を表示します。
 
@@ -293,7 +300,7 @@ Hive の詳細については、「[HDInsight での Hive の使用][hdinsight-u
 「[Hadoop .NET SDK と HDInsight の使用][hdinsight-use-sqoop]」を参照してください。
 
 ##HDInsight .NET SDK を使用して MapReduce ジョブを送信する
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには JAR ファイル (*\\example\\jars\\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」をご覧ください。
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには JAR ファイル (*\example\jars\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」をご覧ください。
 
 
 SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
@@ -712,13 +719,14 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-develop-streaming-jobs]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/library/windowsazure/dn479228.aspx
+[hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: ../install-configure-powershell.md
 
 [image-hdi-gettingstarted-runmrjob]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.RunMRJob.png
 [image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.MRJobOutput.png
 
 [apache-hive]: http://hive.apache.org/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=58_postMigration-->

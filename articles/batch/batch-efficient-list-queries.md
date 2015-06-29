@@ -80,4 +80,4 @@ API 呼び出し数は、expand 文字列を使用して削減できます。各
 
 > [AZURE.NOTE]アプリケーションに対して最大の効率と最高のパフォーマンスを保証するために、リスト API 呼び出しには常に filter 句と select 句を使用することをお勧めします。
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=58_postMigration-->

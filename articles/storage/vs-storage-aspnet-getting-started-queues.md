@@ -3,7 +3,7 @@
 	description="Visual Studio の ASP.NET プロジェクトで Azure キュー ストレージの使用を開始する方法" 
 	services="storage" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="patshea123" 
 	manager="douge" 
 	editor="tglee"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/20/2015" 
-	ms.author="kempb"/>
+	ms.author="patshea123"/>
 
 # Azure Storage の使用 (ASP.NET プロジェクト)
 
@@ -201,7 +201,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 ## キューの長さを取得する
 
-キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するよう Queue サービスに要求します。**ApproximateMethodCount** プロパティは、Queue サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -244,7 +244,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 <ul>
-<li>利用可能な API の詳細については、キュー サービスのリファレンス ドキュメントを参照してください。
+<li>利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
   <ul>
     <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
@@ -273,4 +273,6 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

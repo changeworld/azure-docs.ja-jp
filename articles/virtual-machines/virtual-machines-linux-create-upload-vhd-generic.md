@@ -189,4 +189,7 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=58_postMigration-->

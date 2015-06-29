@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2015" 
+	ms.date="06/03/2015" 
 	ms.author="juliako"/>
 
 
@@ -32,7 +32,7 @@
 - メディア コンテンツは AMS に格納されます。
 - コンテンツ キーのキー ID は castLabs と AMS の両方に格納されます。
 - castLabs と AMS はどちらもトークン認証が組み込まれています。次のセクションでは、認証トークンについて説明します。 
-- クライアントがビデオのストリームを要求すると、コンテンツは **Common Encryption** (CENC) で動的に暗号化され、AMS によって任意の (またはすべての) 指定されたプロトコル (Smooth Streaming、HLS、DASH) に動的にパッケージ化されます。 
+- クライアントからビデオのストリーミング要求があると、そのコンテンツが **Common Encryption** (CENC) によって動的に暗号化されたうえで、AMS によって Smooth Streaming や DASH として動的にパッケージ化されます。また、HLS ストリーミング プロトコル用に PlayReady M2TS エレメンタリ ストリームの暗号化も行います。
 - PlayReady ライセンスは AMS ライセンス サーバーから取得し、Widevine ライセンスは castLabs ライセンス サーバーから取得します。 
 - Media Player ではクライアントのプラットフォームの機能に基づいて、フェッチするライセンスを自動的に決定します。 
 
@@ -46,7 +46,7 @@ CastLabs と AMS の両方でライセンスの承認に使用する JWT (JSON W
 
 <table border="1">
 <tr><td>Issuer</td><td>選択したからセキュリティ トークン サービス (STS) から取得した発行者の文字列</td></tr>
-<tr><td>対象となる読者</td><td>使用される STS から取得した対象文字列</td></tr>
+<tr><td>対象ユーザー</td><td>使用される STS から取得した対象文字列</td></tr>
 <tr><td>Claims</td><td>一連の要求</td></tr>
 <tr><td>NotBefore</td><td>トークンの有効性開始</td></tr>
 <tr><td>Expires</td><td>トークンの有効性終了</td></tr>
@@ -90,12 +90,12 @@ CastLabs と AMS の両方でライセンスの承認に使用する JWT (JSON W
 Web アプリケーション (STS) を使用するには、次の手順に従います。
 
 1.	web.config を変更して、castlabs の商業 ID、STS 構成、共有キーを設定します。
-2.	Azure Web サイトにデプロイします。
+2.	Azure Websites にデプロイします。
 3.	Web サイトに移動します。
 
 ##ビデオを再生する
 
-共通暗号化 (PlayReady と Widevine) で暗号化されたビデオを再生するために、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。コンソール アプリケーションを実行すると、コンテンツ キー ID とマニフェスト URL がエコーされます。
+共通暗号化 (PlayReady) で暗号化されたビデオを再生するために、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。コンソール アプリケーションを実行すると、コンテンツ キー ID とマニフェスト URL がエコーされます。
 
 1.	新しいタブを開き、次の STS を起動します。http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]
 2.	[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) に移動します。
@@ -106,10 +106,12 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 7.	プレーヤーを更新します。
 8.	ビデオが再生されるはずです。
 
-castLabs プレイヤーを使用して Chrome の HTML5 で保護されたビデオを再生する場合は、プレイヤーへのアクセス権について castLabs にお問い合わせください。アクセス権がある場合、次の 2 点にご注意ください。
+castLabs プレイヤーを使用して Chrome の HTML5 で保護されたビデオを再生する場合は、プレイヤーへのアクセス権について yanmf@microsoft.com にお問い合わせください。アクセス権がある場合、次の 2 点にご注意ください。
 
 1.	castLabs プレーヤーは MPEG DASH のマニフェスト ファイルにアクセスする必要があるため、(format=mpd-time-csf) をマニフェスト ファイルに追加して、既定の Smooth Streaming のファイルではなく MPEG DASH マニフェスト ファイルを取得してください。
 
 2.	castLab ライセンス サーバーの場合は、トークンの前に “Bearer=” プレフィックスを置く必要はありません。トークンを送信する前にプレフィックスを削除してください。
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

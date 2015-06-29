@@ -1,27 +1,27 @@
-<properties 
-    pageTitle="Azure Storage での Azure CLI の使用 | Microsoft Azure" 
-    description="Azure Storage で Azure クロス プラットフォーム コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。" 
-    services="storage" 
-    documentationCenter="na" 
-    authors="tamram" 
+<properties
+    pageTitle="Azure Storage での Azure CLI の使用 | Microsoft Azure"
+    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。"
+    services="storage"
+    documentationCenter="na"
+    authors="tamram"
     manager="jdial"/>
 
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
     ms.topic="article" 
-    ms.date="05/27/2015" 
+    ms.date="05/27/2015"
     ms.author="chungli;jiyang;yaxia;tamram"/>
 
-# Azure Storage での Azure CLI の使用 
+# Azure Storage での Azure CLI の使用
 
 ## 概要
 
-Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、Azure の管理ポータルにあるのと同じ機能の多くを提供します。
+Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、Azure 管理ポータルにあるのと同じ機能の多くを提供します。
 
-このガイドでは、[Azure クロスプラットフォーム コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
+このガイドでは、[Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
 
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。また、Azure CLI と Azure Storage を使用する方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新してください。
 
@@ -55,33 +55,33 @@ Azure サブスクリプションの詳細については、「[アカウント�
 		export blob_name=<blob_name>
 		export image_to_upload=<image_to_upload>
 		export destination_folder=<destination_folder>
-			   
-		echo "Creating the container..."       
+
+		echo "Creating the container..."
 		azure storage container create $container_name
 
-		echo "Uploading the image..."       
+		echo "Uploading the image..."
 		azure storage blob upload $image_to_upload $container_name $blob_name
 
-		echo "Listing the blobs..."       
+		echo "Listing the blobs..."
 		azure storage blob list $container_name
 
-		echo "Downloading the image..."       
+		echo "Downloading the image..."
 		azure storage blob download $container_name $blob_name $destination_folder
 
 		echo "Done"
-     
+
 5. ローカル コンピューターで、任意のテキスト エディター (vim など) を開きます。上記のスクリプトをテキスト エディターに入力します。
 
 6. ここで、構成設定に基づいてスクリプト変数を更新する必要があります。
-    
+
     - **<storage_account_name>** スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。**重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。また、小文字にする必要もあります。
 
     - **<storage_account_key>** ストレージ アカウントのアクセス キー。
-      
+
     - **<container_name>** スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
-    
+
     - **<image_to_upload>** ローカル コンピューター上の画像へのパス ("~/images/HelloWorld.png" など) を入力します。
-    
+
     - **<destination_folder>** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパス (“~/downloadImages” など) を入力します。
 
 7. vim で必要な変数を更新したら、"Esc キー、: キー、wq! キー" というキーの組み合わせを使用してスクリプトを保存します。
@@ -104,7 +104,7 @@ Azure Storage を使用するには、ストレージ アカウントが必要�
 
 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。
 
-### 環境変数で既定の Azure ストレージ アカウントを設定する 
+### 環境変数で既定の Azure ストレージ アカウントを設定する
 
 サブスクリプションで複数のストレージ アカウントを持つことができます。その中から 1 つを選択し、同じセッションのすべてのストレージ コマンドに対する環境変数にそれを設定できます。そうすることにより、ストレージ アカウントとキーを明示的に指定しなくても、Azure CLI のストレージ コマンドを実行できます。
 
@@ -112,7 +112,7 @@ Azure Storage を使用するには、ストレージ アカウントが必要�
         export AZURE_STORAGE_ACCESS_KEY=<key>
 
 既定のストレージ アカウントを設定するもう 1 つの方法として、接続文字列を使用します。まず、次のコマンドで接続文字列を取得します。
-        
+
         azure storage account connectionstring show <account_name>
 
 出力された接続文字列をコピーし、環境変数に設定します。
@@ -142,7 +142,7 @@ BLOB をコンテナーにアップロードするには、`azure storage blob u
 ### コンテナーから BLOB をダウンロードする
 
 次の例は、BLOB をコンテナーからダウンロードする方法を示しています。
-    
+
         azure storage blob download mycontainer myBlockBlob '~/downloadImages/downloaded.png'
 
 ### BLOB をコピーする
@@ -152,9 +152,9 @@ BLOB は、ストレージ アカウント内、またはストレージ アカ�
 次の例は、BLOB をあるストレージ アカウントから別のストレージ アカウントにコピーする方法を示しています。この例では、匿名でパブリックに BLOB にアクセスできるコンテナーを作成します。
 
     azure storage container create mycontainer2 -a <accountName2> -k <accountKey2> -p Blob
-    
+
     azure storage blob upload '~/Images/HelloWorld.png' mycontainer2 myBlockBlob2 -a <accountName2> -k <accountKey2>
-    
+
     azure storage blob copy start 'https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2' mycontainer
 
 この例で実行するのは非同期コピーです。各コピー操作の状態は、`azure storage blob copy show` 操作を実行して監視できます。
@@ -178,7 +178,7 @@ Azure File ストレージは、標準の SMB 2.1 プロトコルを使用して
 Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。次の例では、**myshare** という名前のファイル共有を作成します。
 
         azure storage share create myshare
-        
+
 ### ディレクトリを作成する
 
 ディレクトリは、Azure ファイル共有の任意の階層構造を示します。次の例では、ファイル共有に **myDir** という名前のディレクトリを作成します。
@@ -186,7 +186,7 @@ Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレ
         azure storage directory create myshare myDir
 
 ディレクトリ パスには複数のレベルを含めることができます (*例*: **a/b**)。ただし、すべての親ディレクトリが存在することを確認する必要があります。たとえば、パス **a/b** の場合、最初に **a** ディレクトリを作成した後、**b** ディレクトリを作成する必要があります。
-        
+
 ### ディレクトリにローカル ファイルをアップロードする
 
 次の例では、**~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
@@ -202,7 +202,7 @@ Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレ
         azure storage file list myshare myDir
 
 一覧表示操作では、ディレクトリ名を省略できます。省略した場合は、共有のルート ディレクトリの内容が一覧表示されます。
-        
+
 ## 次のステップ
 
 Azure Storage の詳細についての関連記事とリソースがあります。
@@ -212,5 +212,6 @@ Azure Storage の詳細についての関連記事とリソースがあります
 
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

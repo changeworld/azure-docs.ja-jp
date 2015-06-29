@@ -20,7 +20,7 @@
 
 Linux 向け Azure カスタム スクリプト拡張機能では、Python や Bash など仮想マシンでサポートされているスクリプト言語で記述された任意のコードを実行する仮想マシンをカスタマイズする方法が提供されます。これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
-カスタム スクリプト拡張機能は、Azure ポータル、PowerShell、Azure クロス プラットフォーム コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
+カスタム スクリプト拡張機能は、Azure ポータル、PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
 
 ここでは、Azure CLI を使って簡単な LAMP アプリケーションを Ubuntu にデプロイしていきます。
 
@@ -57,7 +57,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 	# write some PHP
 	echo <center><h1>My Demo App</h1><br/></center> > /var/www/html/phpinfo.php
-	echo <\?php phpinfo()\; \?> >> /var/www/html/phpinfo.php
+	echo <\?php phpinfo()\; \?> > /var/www/html/phpinfo.php
 
 	# restart Apache
 	apachectl restart
@@ -105,5 +105,6 @@ Azure CLI、Linux、カスタム スクリプト拡張機能の詳細につい�
 [Azure Linux 拡張機能 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

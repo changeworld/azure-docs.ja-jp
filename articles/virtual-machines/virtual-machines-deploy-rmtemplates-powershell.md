@@ -13,21 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2015" 
+	ms.date="06/19/2015" 
 	ms.author="josephd"/>
 
 # Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理
 
 この記事では、Azure リソース マネージャー テンプレートと PowerShell を使用し、Azure Virtual Machines のデプロイと管理に関する一般的なタスクを自動化する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
 
-一般的なタスク:
-
 - [Windows VM のデプロイ](#windowsvm)
 - [カスタム VM イメージの作成](#customvm)
 - [仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ](#multivm)
+- [リソース マネージャー テンプレートを使用してデプロイした仮想マシンの更新](#updatevm)
+- [リソース グループの削除](#removerg)
 - [仮想マシンへのログオン](#logon)
+- [仮想マシンに関する情報の表示](#displayvm)
 - [仮想マシンの起動](#start)
 - [仮想マシンの停止](#stop)
+- [仮想マシンの再起動](#restart)
+- [仮想マシンの削除](#delete)
 
 開始する前に、Azure PowerShell を使用する準備が整っていることを確認してください。
 
@@ -35,7 +38,7 @@
 
 ## Azure リソース テンプレートおよびリソース グループについて
 
-Microsoft Azure にデプロイされ、実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL Database、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートによって、リソースや関連する構成およびデプロイメント パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
+Microsoft Azure にデプロイされ、実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL Database、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートによって、リソースや関連する構成およびデプロイ パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
 
 JSON ベースのリソース テンプレートを定義した後は、PowerShell コマンドを使用してそれを実行し、内部で定義されているリソースを Azure にデプロイすることができます。これらのコマンドは、PowerShell 内でスタンドアロンとして実行するか、その他のオートメーション ロジックを含むスクリプト内に統合することができます。
 
@@ -48,7 +51,7 @@ Azure リソース マネージャー テンプレートを使用して作成す
 
 Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
 
-## <a id="windowsvm"></a>Windows VM のデプロイ
+## <a id="windowsvm"></a>タスク: Windows VM のデプロイ
 
 このセクションの手順に従い、リソース マネージャー テンプレートと Azure PowerShell を使用して、新しい Azure VM をデプロイします。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成します。
 
@@ -239,7 +242,7 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 
 ### 手順 2. テンプレートで仮想マシンを作成する。
 
-Azure のデプロイメント名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
+Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -299,7 +302,7 @@ Azure のデプロイメント名、リソース グループ名、Azure デー�
 
 これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
 
-## <a id="customvm"></a>カスタム VM イメージの作成
+## <a id="customvm"></a>タスク: カスタム VM イメージの作成
 
 Azure PowerShell を使用し、リソース マネージャー テンプレートで Azure に カスタム VM イメージを作成するには、このセクションの手順に従います。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成します。
 
@@ -424,7 +427,7 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 	vmSize: Standard_A3
 	...
 
-## <a id="multivm"></a>仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+## <a id="multivm"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
 
 Azure PowerShell を使用し、リソース マネージャー テンプレートで仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、以下のセクションの手順に従います。このテンプレートは、新しいクラウド サービスで、1 つのサブネットを持つ新しい仮想ネットワークに 2 つの仮想マシンを作成し、それらを TCP ポート 80 への受信トラフィック用に、外部の負荷分散されたセットへ追加します。
 
@@ -747,9 +750,9 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 	}
 
 
-### 手順 2. テンプレートでデプロイメントを作成する。
+### 手順 2. テンプレートでデプロイを作成する。
 
-Azure のデプロイメント名、リソース グループ名、Azure の場所を入力し、次のコマンドを実行します。
+Azure のデプロイ名、リソース グループ名、Azure の場所を入力し、次のコマンドを実行します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -758,7 +761,7 @@ Azure のデプロイメント名、リソース グループ名、Azure の場�
 	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
-New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイルのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、コマンドによってリソース グループとデプロイメントが作成されます。
+New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイルのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、コマンドによってリソース グループとデプロイが作成されます。
 
 	$deployName="TestDeployment"
 	$RGName="TestRG"
@@ -780,7 +783,172 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	vmNamePrefix: WEBFARM
 	...
 
-## リソース グループの削除
+## <a id="updatevm"></a>タスク: リソース マネージャー テンプレートを使用してデプロイした仮想マシンの更新
+
+ここでは、JSON テンプレート ファイルを変更して、リソース マネージャー テンプレートを使用してデプロイした仮想マシンの構成を更新する例を示します。この例では、Windows 仮想マシンを作成した後、この仮想マシンを更新して Symantec Endpoint Protection 拡張機能をインストールします。
+
+### 手順 1. テンプレートを使用して仮想マシンを作成する
+
+必要に応じて、テンプレート ファイルを保存するフォルダーをコンピューター上に作成します。フォルダー名を指定して、次の Azure PowerShell コマンドを実行します。
+
+	$myFolder="<your folder path, such as C:\azure\templates\CreateVM>"
+	$webClient=New-Object System.Net.WebClient
+	$url="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
+	$filePath=$myFolder + "\azuredeploy.json"
+	$webclient.DownloadFile($url,$filePath)
+	$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.parameters.json"
+	$filePath = $myFolder + "\azuredeploy.parameters.json"
+	$webclient.DownloadFile($url,$filePath)
+
+フォルダー内で、azuredeploy.parameters.json ファイルをテキスト エディターで開き、4 つのパラメーターの値を指定した後、ファイルを保存します。
+
+新しいデプロイ名、新しいリソース グループ名、Azure の場所を指定して、次のコマンドを実行します。
+
+	$deployName="<name for the new deployment>"
+	$RGName="<name for the new Resource Group>"
+	$locName="<an Azure location, such as West US>"
+	cd $myFolder
+	Switch-AzureMode AzureResourceManager
+	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateFile azuredeploy.json -TemplateParameterFile azuredeploy.parameters.json
+
+次のような結果が表示されます。
+
+	PS C:\azure\templates\windowsvm> $deployName="winvmexttest"
+	PS C:\azure\templates\windowsvm> $RGName="winvmexttest"
+	PS C:\azure\templates\windowsvm> $locname="West US"
+	PS C:\azure\templates\windowsvm> New-AzureResourceGroup -Name $RGName -Location $locName
+	VERBOSE: 11:22:02 AM - Created resource group 'winvmexttest' in location 'westus'
+	
+	
+	ResourceGroupName : winvmexttest
+	Location          : westus
+	ProvisioningState : Succeeded
+	Tags              :
+	Permissions       :
+	                    Actions  NotActions
+	                    =======  ==========
+	                    *
+	
+	ResourceId        : /subscriptions/a58ce54a-c262-460f-b8ef-fe36e6d5f5ec/resourceGroups/winvmexttest
+
+	PS C:\azure\templates\windowsvm> New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -Template
+	File azuredeploy.json -TemplateParameterFile azuredeploy.parameters.json
+	VERBOSE: 11:22:05 AM - Template is valid.
+	VERBOSE: 11:22:05 AM - Create template deployment 'winvmexttest'.
+	VERBOSE: 11:22:14 AM - Resource Microsoft.Storage/storageAccounts 'contososa' provisioning status is running
+	VERBOSE: 11:22:21 AM - Resource Microsoft.Network/publicIPAddresses 'myPublicIP' provisioning status is running
+	VERBOSE: 11:22:21 AM - Resource Microsoft.Network/virtualNetworks 'MyVNET' provisioning status is running
+	VERBOSE: 11:22:37 AM - Resource Microsoft.Network/virtualNetworks 'MyVNET' provisioning status is succeeded
+	VERBOSE: 11:22:39 AM - Resource Microsoft.Network/publicIPAddresses 'myPublicIP' provisioning status is succeeded
+	VERBOSE: 11:22:41 AM - Resource Microsoft.Storage/storageAccounts 'contososa' provisioning status is succeeded
+	VERBOSE: 11:22:43 AM - Resource Microsoft.Network/networkInterfaces 'myVMNic' provisioning status is succeeded
+	VERBOSE: 11:22:52 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is running
+	VERBOSE: 11:26:36 AM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is succeeded
+	
+	DeploymentName    : winvmexttest
+	ResourceGroupName : winvmexttest
+	ProvisioningState : Succeeded
+	Timestamp         : 6/3/2015 6:26:38 PM
+	Mode              : Incremental
+	TemplateLink      :
+	Parameters        :
+	                    Name             Type                       Value
+	                    ===============  =========================  ==========
+	                    newStorageAccountName  String                     contososa
+	                    adminUsername    String                     admin0987
+	                    adminPassword    SecureString
+	                    dnsNameForPublicIP  String                     contosovm
+	                    windowsOSVersion  String                     2012-R2-Datacenter
+	
+	Outputs           :
+
+次に、Azure プレビュー ポータルから仮想マシンに接続します (**[参照]、[仮想マシン (v2)]、***VM 名***、[接続]** の順にクリックします)。
+
+スタート画面で、「**Symantec**」と入力します。この段階で Symantec Endpoint Protection コンポーネントはインストールされていません (タイトルに "Symantec" を含む項目は見つかりません)。
+
+リモート デスクトップ接続を閉じます。
+
+### 手順 2. azuredeploy.json ファイルを変更して Symantec Endpoint Protection 拡張機能を追加する
+
+フォルダー内で任意のテキスト エディターを使用して azuredeploy.json ファイルを開きます。**variables** セクションで、publicIPAddressType 変数を定義する行の直後に次の行を追加します。
+
+	"vmExtensionName" : "SymantecExtension",
+
+**resources** セクションで、最後の右角かっこ (]) を含む行の直前に次の新しいセクションを追加します。
+
+	       {
+	         "type": "Microsoft.Compute/virtualMachines/extensions",
+	        "name": "[concat(variables('vmName'),'/', variables('vmExtensionName'))]",
+	        "apiVersion": "2014-12-01-preview",
+	        "location": "[variables('location')]",
+	        "dependsOn": [
+	            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+	        ],
+	        "properties": {
+	            "publisher": "Symantec",
+	            "type": "SymantecEndpointProtection",
+	            "typeHandlerVersion": "12.1",
+	            "settings": null,
+	            "protectedSettings": null
+	        }
+	    }
+
+これらの新しい変更が加えられた azuredeploy.json ファイルを保存します。変更が適切に加えられていることを確認するために、次のコマンドを使用します。
+
+	Test-AzureResourceGroupTemplate -ResourceGroupName $RGName -TemplateFile azuredeploy.json
+
+変更が適切に加えられている場合は、次のようなメッセージが表示されます。
+
+	Template is valid.
+
+このメッセージが表示されない場合は、エラー メッセージを分析して、エラーの原因を見つけます。
+
+### 手順 3. 変更したテンプレートを実行して Symantec Endpoint Protection 拡張機能を追加する
+
+Azure PowerShell プロンプトで次のコマンドを実行します。
+
+	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateFile azuredeploy.json -TemplateParameterFile azuredeploy.parameters.json
+
+次のような結果が表示されます。
+
+	PS C:\azure\templates\winvmext> New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateF	ile azuredeploy.json -TemplateParameterFile azuredeploy.parameters.json
+	VERBOSE: 12:49:42 PM - Template is valid.
+	VERBOSE: 12:49:42 PM - Create template deployment 'winvmexttest'.
+	VERBOSE: 12:49:45 PM - Resource Microsoft.Network/publicIPAddresses 'myPublicIP' provisioning status is succeeded
+	VERBOSE: 12:49:45 PM - Resource Microsoft.Network/virtualNetworks 'MyVNET' provisioning status is succeeded
+	VERBOSE: 12:49:47 PM - Resource Microsoft.Storage/storageAccounts 'contososa' provisioning status is succeeded
+	VERBOSE: 12:49:49 PM - Resource Microsoft.Network/networkInterfaces 'myVMNic' provisioning status is succeeded
+	VERBOSE: 12:49:51 PM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is running
+	VERBOSE: 12:50:08 PM - Resource Microsoft.Compute/virtualMachines 'MyWindowsVM' provisioning status is succeeded
+	VERBOSE: 12:50:15 PM - Resource Microsoft.Compute/virtualMachines/extensions 'MyWindowsVM/SymantecExtension'	provisioning status is running
+	VERBOSE: 12:53:07 PM - Resource Microsoft.Compute/virtualMachines/extensions 'MyWindowsVM/SymantecExtension' provisioning status is succeeded
+	
+	
+	DeploymentName    : winvmexttest
+	ResourceGroupName : winvmexttest
+	ProvisioningState : Succeeded
+	Timestamp         : 6/3/2015 7:53:07 PM
+	Mode              : Incremental
+	TemplateLink      :
+	Parameters        :
+	                    Name             Type                       Value
+	                    ===============  =========================  ==========
+	                    newStorageAccountName  String                     contososa
+	                    adminUsername    String                     admin0987
+	                    adminPassword    SecureString
+	                    dnsNameForPublicIP  String                     contosovm
+	                    windowsOSVersion  String                     2012-R2-Datacenter
+	
+	Outputs           :
+
+Azure プレビュー ポータルから仮想マシンに接続します (**[参照]、[仮想マシン (v2)]、***VM 名***、[接続]** の順にクリックします)。
+
+スタート画面で、「**Symantec**」と入力します。次のような結果が表示されます。これは、Symantec Endpoint Protection 拡張機能がインストールされていることを示しています。
+
+![](./media/virtual-machines-deploy-rmtemplates-powershell/SymantecExt.png)
+
+## <a id="removerg"></a>タスク: リソース グループの削除
 
 作成したリソース グループは、いずれも **Remove-AzureResourceGroup** コマンドで削除できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
@@ -792,11 +960,15 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	Are you sure you want to remove resource group 'BuildRG'
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
-## <a id="logon"></a>Windows 仮想マシンへのログオン
+## <a id="logon"></a>タスク: Windows 仮想マシンへのログオン
 
-手順の詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
+[Azure プレビュー ポータル](https://portal.azure.com/)で、**[すべてを参照]、[仮想マシン (v2)]、***VM 名***、[接続]** の順にクリックします。
 
-## 仮想マシンに関する情報の表示
+RDP ファイルを開くか保存するように求めるメッセージが表示されたら、**[開く]** をクリックし、**[接続]** をクリックします。有効なアカウントの資格情報を入力し、**[OK]** をクリックします。
+
+証明書エラーにもかかわらず接続するよう求めるメッセージが表示された場合は、**[はい]** をクリックします。
+
+## <a id="displayvm"></a>タスク: 仮想マシンに関する情報の表示
 
 **Get-AzureVM** コマンドを使用して、VM に関する情報を表示することができます。このコマンドは、VM の状態を更新するために他のさまざまなコマンドレットを使用して操作できる VM オブジェクトを返します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
@@ -864,9 +1036,9 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	Type                     : Microsoft.Compute/virtualMachines
 
 
-## <a id="start"></a>仮想マシンの起動
+## <a id="start"></a>タスク: 仮想マシンの起動
 
- **Start-AzureVM** コマンドを使用して、VM を起動できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+**Start-AzureVM** コマンドを使用して、VM を起動できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	Start-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -881,7 +1053,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	RequestId           : aac41de1-b85d-4429-9a3d-040b922d2e6d
 	StatusCode          : OK
 
-## <a id="stop"></a>仮想マシンの停止
+## <a id="stop"></a>タスク: 仮想マシンの停止
 
 **Stop-AzureVM** コマンドを使用して、VM を停止できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
@@ -903,7 +1075,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	RequestId           : 5cc9ddba-0643-4b5e-82b6-287b321394ee
 	StatusCode          : OK
 
-## 仮想マシンの再起動
+## <a id=restart"></a>タスク: 仮想マシンの再起動
 
 **Restart-AzureVM** コマンドを使用して、VM を再起動できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
@@ -920,7 +1092,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	RequestId           : 7dac33e3-0164-4a08-be33-96205284cb0b
 	StatusCode          : OK
 
-## 仮想マシンの削除
+## <a id=delete"></a>タスク: 仮想マシンの削除
 
 **Remove-AzureVM** コマンドを使用して、VM を削除できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
@@ -954,4 +1126,4 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

@@ -1,25 +1,25 @@
 <properties
-	pageTitle="Azure Batch PowerShell コマンドレットの使用"
-	description="Azure Batch サービスの管理に使用される Azure PowerShell コマンドレットを紹介します。"
-	services="batch"
-	documentationCenter=""
-	authors="dlepow"
-	manager="timlt"
-	editor="yidingz"/>
+   pageTitle="Azure Batch PowerShell コマンドレットの使用 | Microsoft Azure"
+   description="Azure Batch サービスの管理に使用される Azure PowerShell コマンドレットを紹介します。"
+   services="batch"
+   documentationCenter=""
+   authors="dlepow"
+   manager="timlt"
+   editor=""/>
 
 <tags
-	ms.service="batch"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="powershell"
-	ms.workload="big-compute"
-	ms.date="04/15/2015"
-	ms.author="danlep"/>
+   ms.service="batch"
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="powershell"
+   ms.workload="big-compute"
+   ms.date="05/29/2015"
+   ms.author="danlep"/>
 
 # Azure Batch PowerShell コマンドレットの使用
 この記事では、Batch アカウントの管理と Batch 作業項目、ジョブ、タスクに関する情報の取得に使用できる Azure PowerShell コマンドレットについて簡単に紹介します。
 
-詳細なコマンドレットの構文については、```get-help <Cmdlet_name>``` を入力してください。
+コマンドレット構文の詳細については、「`get-help <Cmdlet_name>`」と入力するか、または[Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)のページを参照してください。
 
 
 ## 前提条件
@@ -55,7 +55,7 @@ Azure PowerShell コマンドレットを使用すると、Batch アカウント
 New-AzureResourceGroup –Name MyBatchResourceGroup –location "Central US"
 ```
 
-次に、リソース グループに新しいBatch アカウントを作成し、< * account_name * > にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
+次に、リソース グループに新しいBatch アカウントを作成し、<*account_name*> にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
 
 ```
 New-AzureBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -123,9 +123,9 @@ Get-AzureBatchPool -BatchContext $context
 **Filter** パラメーターを使用して OData フィルターを指定すると、関心のあるオブジェクトのみを検索できます。次の例では、"myWork" で始まる名前のすべての作業項目を検索できます。
 
 ```
-$filter = "startswith(name,'myWork') and state eq 'active'" 
+$filter = "startswith(name,'myWork') and state eq 'active'"
 Get-AzureBatchWorkItem -Filter $filter -BatchContext $context
-``` 
+```
 
 このメソッドは、ローカルのパイプラインで “Where-Object” を使用するほど柔軟ではありません。ただし、クエリは Batch サービスに直接送信されるため、すべてのフィルター処理がサーバー側で行われ、インターネットの帯域幅を節約できます。
 
@@ -133,8 +133,8 @@ Get-AzureBatchWorkItem -Filter $filter -BatchContext $context
 
 OData フィルターに代わる方法は、**Name** パラメーターを使用することです。"MyWorkItem" という名前の特定の作業項目を照会するには、次のように実行します。
 
-``` 
-Get-AzureBatchWorkItem -Name "myWorkItem" -BatchContext $context 
+```
+Get-AzureBatchWorkItem -Name "myWorkItem" -BatchContext $context
 
 ```
 **Name** パラメーターは、完全名の検索のみをサポートし、ワイルドカードや OData 形式のフィルターはサポートしません。
@@ -144,7 +144,7 @@ Get-AzureBatchWorkItem -Name "myWorkItem" -BatchContext $context
 Batch コマンドレットは、コマンドレット間でデータを送信するために PowerShell パイプラインを活用できます。これは、パラメーターを指定するのと同じ効果がありますが、複数のエンティティを簡単に一覧表示できます。たとえば、自分のアカウントのすべてのタスクを表示できます。
 
 ```
-Get-AzureBatchWorkItem -BatchContext $context | Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $context 
+Get-AzureBatchWorkItem -BatchContext $context | Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $context
 ```
 
 ### MaxCount パラメーターを使用する
@@ -152,7 +152,7 @@ Get-AzureBatchWorkItem -BatchContext $context | Get-AzureBatchJob -BatchContext 
 既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、**MaxCount** パラメーターを使用して明示的に最大値を設定できます。次に例を示します。
 
 ```
-Get-AzureBatchWorkItem -MaxCount 2500 -BatchContext $context 
+Get-AzureBatchWorkItem -MaxCount 2500 -BatchContext $context
 
 ```
 
@@ -161,6 +161,7 @@ Get-AzureBatchWorkItem -MaxCount 2500 -BatchContext $context
 ## 関連トピック
 * [Batch の技術概要](batch-technical-overview.md)
 * [Azure PowerShell のダウンロード](http://go.microsoft.com/p/?linkid=9811175)
-* [Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/jj554330.aspx)
+* [Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)
+* [効率的なリスト クエリ](batch-efficient-list-queries.md)
 
-<!---HONumber=GIT-SubDir-->
+<!---HONumber=58_postMigration-->

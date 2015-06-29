@@ -161,7 +161,7 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 
 > [AZURE.NOTE]$ で始まるコマンド ラインは、後で PowerShell コマンドで使用する PowerShell 変数を設定します。
 
-Azure の管理ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
+Azure 管理ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
 
 	$vm.GetInstance().ProvisionGuestAgent = $true
 
@@ -261,5 +261,6 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure PowerShell のインストールと構成の方法]: ../install-configure-powershell.md
 [Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

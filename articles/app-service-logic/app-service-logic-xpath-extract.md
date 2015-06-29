@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="BizTalk XPath Extractor" 
-   description="BizTalk XPath Extractor" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="prkumar" 
-   manager="dwrede" 
+<properties
+   pageTitle="BizTalk XPath Extractor"
+   description="BizTalk XPath Extractor"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="prkumar"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
+   ms.workload="integration"
    ms.date="03/20/2015"
    ms.author="rajram"/>
 
@@ -23,9 +23,11 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 ##BizTalk XPath Extractor の使用
 1. BizTalk XPath Extractor を使用するには、まず、BizTalk XPath Extractor API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk XPath Extractor API アプリを選択することによって、行うことができます。
 
-		NOTE: There are no configuration settings associated with BizTalk Xpath Extractor.
-2. デザイナーには、BizTalk XPath Extractor API アプリに関連付けられたアクションが表示されます。
-	
+	>[AZURE.NOTE]
+2. [新しいロジック アプリを作成します]。作成したロジック アプリで [トリガーとアクション] を選択して Logic Apps デザイナーを開き、フローを構成します。
+3. デザイナーの右側のウィンドウに、フローの作成に使用できる API Apps が一覧表示されます。"BizTalk XPath Extractor" を検索します。これを選択すると、フローに Xpath Extractor が追加され、そのインスタンスがプロビジョニングされます。
+2. プロビジョニングが終わると、デザイナーに BizTalk XPath Extractor API アプリに関連付けられたアクションが表示されます。
+
 ![BizTalk XPath Extractor のアクション選択][1]
 
 3. [XPath を使用して抽出] を選択します。
@@ -58,4 +60,7 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 [1]: ./media/app-service-logic-xpath-extract/ChooseAction.PNG
 [2]: ./media/app-service-logic-xpath-extract/ConfigureInput.PNG
 
-<!---HONumber=58--> 
+<!-- Links -->
+[新しいロジック アプリを作成します]: app-service-logic-create-a-logic-app.md
+
+<!---HONumber=58_postMigration-->

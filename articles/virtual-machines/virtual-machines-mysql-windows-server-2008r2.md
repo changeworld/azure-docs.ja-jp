@@ -20,7 +20,7 @@
 # Azure で Windows Server 2012 R2 を実行する仮想マシンへの MySQL のインストール
 
 
-[MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure の管理ポータル](http://manage.windowsazure.com)では、Windows Server 2012 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。次に、MySQL Server としてこれをインストールと構成できます。
+[MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure 管理ポータル](http://manage.windowsazure.com)では、Windows Server 2012 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。次に、MySQL Server としてこれをインストールと構成できます。
 
 
 このチュートリアルでは、次の操作方法について説明します。
@@ -94,7 +94,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 
 MySQL Server サービスのエンドポイントを構成するには、次のようにします。
 
-1.	Azure の管理ポータルで、**[仮想マシン]**、MySQL 仮想マシンの名前、**[エンドポイント]** の順にクリックします。
+1.	Azure 管理ポータルで、**[仮想マシン]**、MySQL 仮想マシンの名前、**[エンドポイント]** の順にクリックします。
 2.	コマンド バーで、**[追加]** をクリックします。
 3.	**[仮想マシンにエンドポイントを追加します]** ページで、右矢印をクリックします。
 4.	既定の MySQL TCP ポート 3306 を使用している場合は、**[名前]** の **[MySQL]** をクリックし、チェック マークをクリックします。
@@ -106,7 +106,7 @@ MySQL Server サービスのエンドポイントを構成するには、次の�
 
 Azure 仮想マシンで実行する MySQL Server サービスへのリモート接続をテストするには、最初に、MySQL Server を実行する仮想マシンが属しているクラウド サービスに対応する DNS 名を特定する必要があります。
 
-1.	Azure の管理ポータルで、**[仮想マシン]**、MySQL Server 仮想マシンの名前、**[ダッシュボード]** の順にクリックします。
+1.	Azure 管理ポータルで、**[仮想マシン]**、MySQL Server 仮想マシンの名前、**[ダッシュボード]** の順にクリックします。
 2.	仮想マシンのダッシュボードでは、**[概要]** セクションにある **[DNS 名]** の値をメモします。たとえば次のようになります。 
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_DNSName.png)
@@ -124,4 +124,7 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=58_postMigration-->

@@ -27,7 +27,7 @@
 
 
 
-Azure ではこのテンプレートをイメージとして扱い、イメージ リストに格納します。アップロードしたすべてのイメージがこの場所に格納されます。イメージの詳細については、「[Azure のバーチャル マシン イメージについて][]」を参照してください。
+Azure ではこのテンプレートをイメージとして扱い、イメージ リストに格納します。アップロードしたすべてのイメージがこの場所に格納されます。イメージの詳細については、「[Azure の仮想マシン イメージについて][]」を参照してください。
 
 
 
@@ -155,10 +155,11 @@ Azure ではこのテンプレートをイメージとして扱い、イメー�
 
 [Linux を実行する仮想マシンにログオンする方法]: virtual-machines-linux-how-to-log-on.md
 
-[Azure のバーチャル マシン イメージについて]: http://msdn.microsoft.com/library/azure/dn790290.aspx
+[Azure の仮想マシン イメージについて]: http://msdn.microsoft.com/library/azure/dn790290.aspx
 
 [カスタム仮想マシンの作成方法]: virtual-machines-create-custom.md
 
 [データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

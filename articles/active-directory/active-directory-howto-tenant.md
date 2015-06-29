@@ -18,7 +18,7 @@
 
 # Azure Active Directory テナントを取得する方法
 
-Azure Active directory (Azure AD) では、[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)は組織を代表するものです。テナントは、Azure AD サービスの専用インスタンスであり、組織が Azure、InTune、Office 365 などの Microsoft クラウド サービスにサインアップすると受け取って所有します。各 Azure AD テナントは、他の Azure AD テナントと区別され分離されています。
+Azure Active directory (Azure AD) では、[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)は組織を代表するものです。テナントは、Azure AD サービスの専用インスタンスであり、組織が Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスにサインアップしたときに提供されて所有します。各 Azure AD テナントは、他の Azure AD テナントと区別され分離されています。
 
 テナントは、企業内のユーザーおよびパスワード、ユーザー プロファイル データ、アクセス許可などのユーザーに関する情報を保持しています。また、グループ、アプリケーション、および組織とそのセキュリティに関するその他の情報も含まれます。
 
@@ -50,7 +50,7 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
     - 名/姓/表示名: (適切な値を選択)
     - ロール: グローバル管理者
     - 連絡用電子メール アドレス: (適切な値を入力)
-    - オプション: 多要素認証の有効化
+    - オプション: Multi-Factor Authentication の有効化
     - 最後に、緑の [作成] ボタンをクリックしてユーザーの作成を終了します (一時的なパスワードが表示されます)。
 7.	[ユーザーの追加] フォームの入力を完了し、新しい管理ユーザーの一時パスワードを受け取ったら、パスワードを変更するためにこの新しいユーザーでログインする必要があるので、このパスワードを忘れずに記録しておきます。連絡用電子メールを使用して、ユーザーにパスワードを直接送信することもできます。
 8.	一時パスワードを変更するには、この新しいユーザー アカウントで https://login.microsoftonline.com にログインし、要求されたらパスワードを変更します。
@@ -64,5 +64,6 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
 上記のいずれにも当てはまらなくても、心配しないでください。[https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) にアクセスして、新しい組織で Azure にサインアップするだけです。プロセスが完了すると、サインアップ時に選択したドメイン名で専用の Azure AD テナントが作成されます。[Azure 管理ポータル](https://manage.windowsazure.com)の左側にあるナビゲーションで [Active Directory] に移動すると、テナントを見つけることができます。
 
 Azure へのサインアップ プロセスの中で、クレジット カードの詳細を提供する必要があります。Azure AD でのアプリケーションの発行または新しいテナントの作成には料金は発生しないので安心してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

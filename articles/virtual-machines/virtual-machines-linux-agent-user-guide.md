@@ -43,7 +43,7 @@ Azure Linux エージェント (usr/sbin/waagent) は仮想マシンと Azure �
   - root デバイス (リモート デバイス) の SCSI タイムアウトの構成
 * **診断**
   - シリアル ポートへのコンソールのリダイレクト
-* **SCVMM のデプロイメント**
+* **SCVMM のデプロイ**
     - System Center Virtual Machine Manager 2012 R2 環境で実行されているときに Linux 用の VMM エージェントを検出およびブートストラップ
 * **VM 拡張機能**
     - Microsoft やパートナーによって作成されたコンポーネントを Linux VM (IaaS) に挿入し、ソフトウェアおよび構成を自動化
@@ -54,9 +54,9 @@ Azure Linux エージェント (usr/sbin/waagent) は仮想マシンと Azure �
 
 プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
 
-* 起動時に接続される IaaS デプロイメント用 DVD。この DVD に、OVF に準拠した構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
+* 起動時に接続される IaaS デプロイ用 DVD。この DVD に、OVF に準拠した構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
 
-* デプロイメントとトポロジの構成を取得するために使用する REST API を公開する TCP エンドポイント。
+* デプロイとトポロジの構成を取得するために使用する REST API を公開する TCP エンドポイント。
 
 ###Linux エージェントの入手
 最新の Linux エージェントは次のいずれかから直接入手できます。
@@ -231,7 +231,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 型: 文字列既定: rsa
 
-仮想マシンの SSH デーモンによってサポートされている暗号化アルゴリズムの種類を設定できます。一般的にサポートされている値は "rsa"、"dsa"、"ecdsa" です。Windows の "putty.exe" は "ecdsa" をサポートしていないことに注意してください。そのため、Windows の putty.exe を使用して Linux のデプロイメントに接続する場合は、"rsa" または "dsa" を使用してください。
+仮想マシンの SSH デーモンによってサポートされている暗号化アルゴリズムの種類を設定できます。一般的にサポートされている値は "rsa"、"dsa"、"ecdsa" です。Windows の "putty.exe" は "ecdsa" をサポートしていないことに注意してください。そのため、Windows の putty.exe を使用して Linux のデプロイに接続する場合は、"rsa" または "dsa" を使用してください。
 
 **Provisioning.MonitorHostName:**
 
@@ -315,4 +315,6 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
  - [Ubuntu Wiki: スワップ パーティションの構成](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)に関するページ
  - [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-how-to-inject-custom-data.md)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

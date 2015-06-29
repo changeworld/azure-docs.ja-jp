@@ -13,22 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="06/19/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory で Pig と Hive を使用する
-Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、Azure のデータのファクトリのパイプラインでの Pig と Hive の変換での HDInsight のアクティビティの使用について説明します。参照してください [データ ファクトリからの MapReduce プログラムの起動][data-factory-map-reduce] MapReduce を実行する方法の詳細について、HDInsight でプログラムが、Azure のデータの工場出荷時のパイプラインからクラスターします。
+Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、Azure Data Factory パイプラインで HDInsight アクティビティの Pig 変換と Hive 変換を使用する方法について説明します。Azure Data Factory パイプラインから HDInsight クラスターで MapReduce プログラムを実行する方法の詳細については、「[Data Factory から MapReduce プログラムを起動する][data-factory-map-reduce]」 を参照してください。
 
-## チュートリアル: Azure のデータのファクトリでの Hive を使用します。
-このチュートリアルでは、出荷時のデータ パイプラインでの Hive の変換で、HDInsight のアクティビティを使用するための手順を説明します。
+## チュートリアル: Azure Data Factory で Hive を使用する
+このチュートリアルでは、Data Factory パイプラインで HDInsight のアクティビティの Hive 変換を使用する手順を説明します。
 
 ### 前提条件
-1. 」からチュートリアルを完了 [Azure のデータのファクトリを使い始める][adfgetstarted] 記事です。
-2. アップロード **emp.txt** としては、上記のチュートリアルで作成したファイル **hiveinput\emp.txt** adftutorial コンテナー、blob ストレージにします。 **Hiveinput** フォルダーが自動的に作成、 **adftutorial** を次の構文の emp.txt ファイルをアップロードするときにコンテナーです。
-
-	> [AZURE.NOTE]Emp.txt ファイルは、このチュートリアルでは、ダミーのファイルのみです。実際の入力データの送信元、 **hivesampletable** 、HDInsight クラスター上に既に存在します。パイプラインでは、emp.txt ファイルをまったく使用しません。
-	
-2. 作成 **hivequery.hql** という名前のサブフォルダー内のファイル **Hive** [ **C:\ADFGetStarted** を次の内容です。
+1. 「[Azure Data Factory を使ってみる][adfgetstarted]」の記事にあるチュートリアルを完了してください。
+2. 以下の内容を記述した **hivequery.hql** ファイルを **C:\ADFGetStarted** の下の **Hive** という名前のサブフォルダー内に作成します。
     		
     	DROP TABLE IF EXISTS adftutorialhivetable; 
 		CREATE EXTERNAL TABLE  adftutorialhivetable
@@ -43,58 +39,17 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 		FROM hivesampletable 
 		group by country, state;
 
-	> [AZURE.NOTE]使用する、 **Tez** HQL ファイルでの Hive クエリを実行するには追加のエンジン"* * hive.execution.engine=tez**; の設定」で、ファイルの上部にあります。
+	> [AZURE.NOTE]**Tez** エンジンを使用して HQL ファイルで Hive クエリを実行するには、ファイルの先頭に "**set hive.execution.engine=tez**;" を追加します。
 		
-3.  アップロード、 **hivequery.hql** を **adftutorial** コンテナー、blob ストレージに
+3.  **hivequery.hql** を BLOB ストレージ内の **adftutorial** コンテナーにアップロードします。
 
 
 ### チュートリアル
 
-#### 入力テーブルの作成
-1.  **データ ファクトリ** ブレードで、 **ADFTutorialDataFactory**, 、] をクリックして **作成者と展開** データ工場出荷時のエディターを起動します。
-	
-	![データの工場出荷時のブレード][data-factory-blade]
-
-2.  **データ工場出荷時のエディター**, 、] をクリックして **新しいデータセット**, 、順にクリック **Azure Blob ストレージ** コマンド バーからです。
-3. 右側のウィンドウでは、JSON スクリプトを次の JSON スクリプトに置き換えます。    
-    		
-		{
-    		"name": "HiveInputBlobTable",
-    		"properties":
-    		{
-        		"location": 
-        		{
-            		"type": "AzureBlobLocation",
-            		"folderPath": "adftutorial/hiveinput",
-            		"linkedServiceName": "StorageLinkedService"
-        		},
-        		"availability": 
-        		{
-            		"frequency": "Day",
-            		"interval": 1,
-            		"waitonexternal": {}
-        		}
-    		}
-		}
-
- 
-	**次に注意してください。**
-	
-	- 場所 **型** に設定されている **AzureBlobLocation**です。
-	- **linkedServiceName** に設定されている **StorageLinkedService** Azure のストレージ アカウントを定義します。
-	- **folderPath** 、入力データ用の blob container\folder を指定します。 
-	- **頻度日 =** と **間隔 = 1** 場合は、スライスを毎日使用
-	- **waitOnExternal** このデータは、別のパイプラインでは生成されませんが、それではなくに生成される外部データのファクトリのことを意味します。 
-	
-
-	参照してください [データ工場出荷時の開発者向けリファレンス][developer-reference] JSON のプロパティの説明についてはします。
-
-2. クリックして **展開** 、テーブルを展開するには、コマンド バーにします。
-  
 #### 出力テーブルの作成
         
-1.  **データ工場出荷時のエディター**, 、] をクリックして **新しいデータセット**, 、順にクリック **Azure Blob ストレージ** コマンド バーからです。
-2. 右側のウィンドウでは、JSON スクリプトを次の JSON スクリプトに置き換えます。
+1. **Data Factory エディター**で、**[新しいデータセット]** をクリックし、コマンド バーの **[Azure BLOB ストレージ]** をクリックします。
+2. 右側のウィンドウの JSON スクリプトを、次の JSON スクリプトに置き換えます。
 
 		{
     		"name": "HiveOutputBlobTable",
@@ -114,20 +69,20 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
     		}
 		}
 
-2. クリックして **展開** 、テーブルを展開するには、コマンド バーにします。
+2. コマンド バーの **[デプロイ]** をクリックして、テーブルをデプロイします。
 
 
 ### HDInsight クラスター用のリンクされたサービスを作成する
-Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。また、独自のクラスターを使って同じ処理を行うことも可能です。オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。試しに、オンデマンド クラスターを使用してみましょう。
+Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。また、独自のクラスターを使って同じ処理を行うことも可能です。オンデマンド HDInsight クラスターは、データを処理する Azure Data Factory サービスによって自動的に作成および管理されます。オンデマンド HDInsight のリンクされたサービスの詳細については、「[Azure HDInsight オンデマンドのリンクされたサービス](https://msdn.microsoft.com/library/dn893526.aspx)」を参照してください。試しに、オンデマンド クラスターを使用してみましょう。オンデマンド HDInsight クラスターの作成には 15 分以上かかります。また、HDInsight クラスターでジョブが稼働している時間に対してのみ課金されます。
 
 #### オンデマンド HDInsight クラスターを使用するには
-1. クリックして **新しいコンピューティング** クリックし、コマンド バーから **オンデマンドでの HDInsight クラスター** ] メニューからです。
-2. JSON スクリプトでは、次のように 
-	1.  **ClusterSize** プロパティでは、HDInsight クラスターのサイズを指定します。
-	2.  **JobsContainer** プロパティでは、クラスターのログが格納される既定のコンテナーの名前を指定します。このチュートリアルでは、次のように指定します。 **adfjobscontainer**です。
-	3.  **TimeToLive** プロパティ、どのくらいの期間、クラスターが削除される前にアイドル状態できるを指定します。 
-	4.  **バージョン** プロパティを使用する場合、HDInsight のバージョンを指定します。このプロパティを除外する場合は、最新のバージョンが使用します。  
-	5.  **LinkedServiceName**, 、指定 **StorageLinkedService** ことを Get で作成したチュートリアルを開始します。 
+1. コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[オンデマンド HDInsight クラスター]** を選択します。
+2. JSON スクリプトで、以下の手順を実行します。 
+	1. **clusterSize** プロパティには、HDInsight クラスターのサイズを指定します。
+	2. **jobsContainer** プロパティには、クラスター ログを格納する既定のコンテナーの名前を指定します。このチュートリアルでは、「**adfjobscontainer**」と指定します。
+	3. **timeToLive** プロパティには、クラスターが削除されるまでの間にアイドル状態でいられる時間を指定します。 
+	4. **version** プロパティには、使用する HDInsight のバージョンを指定します。このプロパティを除外した場合は、最新バージョンが使用されます。  
+	5. **linkedServiceName** には、入門チュートリアルで作成した **StorageLinkedService** を指定します。 
 
 			{
 		    	"name": "HDInsightOnDemandLinkedService",
@@ -141,24 +96,24 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		    	}
 			}
 
-2. クリックして **展開** リンクされているサービスをデプロイするには、コマンド バー。
+2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
    
    
 #### 独自の HDInsight クラスターを使用するには 
 
-1. クリックして **新しいコンピューティング** クリックし、コマンド バーから **HDInsight クラスター** ] メニューからです。
-2. JSON スクリプトでは、次のように 
-	1.  **ClusterUri** プロパティで、HDInsight の URL を入力します。例: https://<clustername>.azurehdinsight.net/     
-	2.  **UserName** プロパティ、HDInsight クラスターへのアクセス権を持つユーザーの名前を入力します。
-	3.  **パスワード** プロパティでは、ユーザーのパスワードを入力します。 
-	4.  **LinkedServiceName** プロパティ、入力 **StorageLinkedService**です。これは、入門チュートリアルで作成したリンクのサービスです。 
+1. コマンド バーの **[新しいコンピューティング]** をクリックし、メニューから **[HDInsight クラスター]** を選択します。
+2. JSON スクリプトで、以下の手順を実行します。 
+	1. **clusterUri** プロパティには、HDInsight の URL を入力します。たとえば、https://<clustername>.azurehdinsight.net/ などです。     
+	2. **UserName** プロパティには、HDInsight クラスターにアクセスできるユーザー名を入力します。
+	3. **Password** プロパティには、ユーザーのパスワードを入力します。 
+	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。 
 
-2. クリックして **展開** リンクされているサービスをデプロイするには、コマンド バー。
+2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
 
 ### パイプラインの作成およびスケジュール設定
    
-1. クリックして **新しいパイプライン** コマンド バーでします。クリックして、コマンドが表示されない場合は、 **しています.(省略記号)** 表示されます。 
-2. 次の JSON スクリプトを右側のウィンドウで、JSON を置き換えます。独自のクラスターを使用して、作成する手順の後にかどうか、 **HDInsightLinkedService** サービスでは、リンクされている置換 **HDInsightOnDemandLinkedService** で **HDInsightLinkedService** で、次の JSON です。 
+1. コマンド バーの **[新しいパイプライン]** をクリックします。コマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。 
+2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。 
 
 
     	{
@@ -172,9 +127,9 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 						"name": "RunHiveQuery",
 						"description": "Runs a hive query",
 						"type": "HDInsightActivity",
-						"inputs": [{"name": "HiveInputBlobTable"}],
+						"inputs": [],
 						"outputs": [ {"name": "HiveOutputBlobTable"} ],
-						"linkedServiceName": "HDInsightLinkedService",
+						"linkedServiceName": "HDInsightOnDemandLinkedService",
 						"transformation":
 						{
                     		"type": "Hive",
@@ -204,19 +159,19 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
       		}
 		}
 
-	> [AZURE.NOTE]置換 **StartDateTime** 値と現在の日付の前に 3 日間は、および **EndDateTime** 、現在の日付を持つ値です。StartDateTime と EndDateTime の両方がである必要があります [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)です。例: 2014年-10-14T16:32:41Z です。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
+	> [AZURE.NOTE]**StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
+	> 
+	> JSON で**ストレージ アカウント**を実際のストレージ アカウント名に置き換えてください。
 	
-	> [AZURE.NOTE]置き換える **、ストレージ アカウント** 、ストレージ アカウントの名前で、JSON でします。
-	
-	参照してください [JSON スクリプト参照](http://go.microsoft.com/fwlink/?LinkId=516971) JSON のプロパティに関する詳細です。
-2. クリックして **展開** 、パイプラインを展開するには、コマンド バーにします。
-4. 参照してください [データセットおよびパイプラインを監視する][adfgetstartedmonitoring] 」の「 [データ ファクトリの][adfgetstarted] 記事です。 
+	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
+2. コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。
+4. 記事「[Data Factory を使ってみる][adfgetstarted]」の「[データセットとパイプラインを監視する][adfgetstartedmonitoring]」セクションを参照してください。 
 
-	> [AZURE.NOTE] **アクティビティの実行の詳細** 、出力テーブルのスライスのブレード (出力テーブルを選択] を選択]-> [スライスには、ポータルで、アクティビティの実行を選択]-> [)、HDInsight クラスターが作成されたログへのリンクが表示されます。ポータル自体に表示し、コンピューターにダウンロードしたりすることが可能です。
+	> [AZURE.NOTE]出力テーブルのスライスの **[アクティビティの実行の詳細]** ブレード (出力テーブル、スライス、ポータルで実行するアクティビティの順に選択) に、HDInsight クラスターにより作成されたログへのリンクが表示されます。これらのログは、ポータルで直接確認することもできますが、コンピューターにダウンロードすることもできます。
   
 
 ## Pig JSON の使用例
-JSON、パイプラインで、Pig や Hive のアクティビティを定義するときに、 **型** プロパティを設定する必要があります。 **HDInsightActivity**です。
+パイプライン JSON 内で Pig または Hive アクティビティを定義する際は、**type** プロパティを **HDInsightActivity** に設定する必要があります。
 
     {
 		"name": "Pig Activity",
@@ -236,13 +191,13 @@ JSON、パイプラインで、Pig や Hive のアクティビティを定義す
 		}
 	}
 
-**次に注意してください。**
+**以下の点に注意してください。**
 	
-- アクティビティ **型** に設定されている **HDInsightActivity**です。
-- **linkedServiceName** に設定されている **MyHDInsightLinkedService**です。リンクされている HDInsight サービスを作成するのには、詳細については、以下のリンクの HDInsight サービスのセクションを参照してください。
--  **型** の **変換** に設定されている **Pig**です。
-- Pig スクリプトのインラインを指定することができます、 **スクリプト** プロパティまたは store のスクリプト ファイルで、Azure blob ストレージとを使用して、ファイルを参照してください **scriptPath** プロパティで、この記事の後半で説明しています。 
-- 使用して、Pig のスクリプトのパラメーターを指定する、 **extendedProperties**です。詳細については、この記事の後半で説明します。 
+- アクティビティの **type** が **HDInsightActivity** に設定されています。
+- **linkedServiceName** が **MyHDInsightLinkedService** に設定されています。HDInsight のリンクされたサービスを作成する方法の詳細については、以下の HDInsight のリンクされたサービスのセクションを参照してください。
+- **transformation** の **type** が **Pig** に設定されています。
+- **script** プロパティに対して Pig スクリプトをインラインで指定するか、または Azure BLOB ストレージ内にスクリプト ファイルを格納し、**scriptPath** プロパティを使用してそのファイルを参照することができますが、詳細については、この記事の後半で説明します。 
+- **extendedProperties** を使用して Pig スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
 
 
 ## Hive JSON の使用例
@@ -266,24 +221,24 @@ JSON、パイプラインで、Pig や Hive のアクティビティを定義す
 		}
 	}
 
-**次に注意してください。**
+**以下の点に注意してください。**
 	
-- アクティビティ **型** に設定されている **HDInsightActivity**です。
-- **linkedServiceName** に設定されている **MyHDInsightLinkedService**です。 
--  **型** の **変換** に設定されている **Hive**です。
-- Hive スクリプトのインラインを指定することができます、 **スクリプト** プロパティまたは store のスクリプト ファイルで、Azure blob ストレージとを使用して、ファイルを参照してください **scriptPath** プロパティで、この記事の後半で説明しています。 
-- 使用して、Hive スクリプトのパラメーターを指定する、 **extendedProperties**です。詳細については、この記事の後半で説明します。 
+- アクティビティの **type** が **HDInsightActivity** に設定されています。
+- **linkedServiceName** が **MyHDInsightLinkedService** に設定されています。 
+- **transformation** の **type** が **Hive** に設定されています。
+- **script** プロパティに対して Hive スクリプトをインラインで指定するか、または Azure BLOB ストレージ内にスクリプト ファイルを格納し、**scriptPath** プロパティを使用してそのファイルを参照することができますが、詳細については、この記事の後半で説明します。 
+- **extendedProperties** を使用して Hive スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
 
-> [AZURE.NOTE]参照してください [開発者向けリファレンス](http://go.microsoft.com/fwlink/?LinkId=516908) の詳細については、コマンドレット、JSON スキーマ、およびスキーマのプロパティです。
+> [AZURE.NOTE]コマンドレット、JSON スキーマ、スキーマ内のプロパティの詳細については、[開発者用リファレンス](http://go.microsoft.com/fwlink/?LinkId=516908)を参照してください。
 
 
-## アクティビティの HDInsight で Pig や Hive スクリプトを使用してください。
+## HDInsight アクティビティでの Pig スクリプトと Hive スクリプトの使用
 HDInsight クラスターに関連付けられている Azure BLOB ストレージに Pig/Hive スクリプトを格納すれば、以下に示す JSON 内のプロパティを使用して Pig/Hive アクティビティからそれらのスクリプトを参照できます。
 
 * **scriptPath** – Pig または Hive スクリプト ファイルへのパス
-* **scriptLinkedService** – Azure のストレージ アカウントをスクリプト ファイルが含まれています。
+* **scriptLinkedService** – スクリプト ファイルを含む Azure Storage アカウント
 
-サンプル パイプラインの次の JSON の例を参照する Hive アクティビティを使用して **transformdata.hql** ファイルに格納されている **スクリプト** フォルダーで、 **adfwalkthrough** によって表される、Azure blob ストレージ内のコンテナー、 **StorageLinkedService**です。
+次に示す JSON の例は Hive アクティビティを使用したサンプル パイプラインであり、**StorageLinkedService** で表される Azure BLOB ストレージ内の **adfwalkthrough** コンテナーにある **scripts** フォルダーに格納された **transformdata.hql** ファイルを参照しています。
 
     {
     	"name": "AnalyzeMarketingCampaignPipeline",
@@ -322,17 +277,17 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 	}
 
 
-> [AZURE.NOTE]使用する、 **Tez** Hive クエリの実行、実行エンジン"* * hive.execution.engine=tez**; の設定"、Hive クエリを実行する前にします。
+> [AZURE.NOTE]**Tez** エンジンを使用して Hive クエリを実行するには、Hive クエリを実行する前に "**set hive.execution.engine=tez**;" を実行します。
 > 
-> 参照してください [開発者向けリファレンス](http://go.microsoft.com/fwlink/?LinkId=516908) の詳細については、コマンドレット、JSON スキーマ、およびスキーマのプロパティです。
+> コマンドレット、JSON スキーマ、スキーマ内のプロパティの詳細については、[開発者用リファレンス](http://go.microsoft.com/fwlink/?LinkId=516908)を参照してください。
 
 ## パラメーター化された Pig および Hive クエリ
-データ工場出荷時の Pig や Hive のアクティビティを使用して、Pig や Hive スクリプトで使用されるパラメーターの値を指定できます。 **extendedProperties**です。ExtendedProperties セクションは、パラメーター名とパラメーター値で構成されています。
+Data Factory の Pig アクティビティと Hive アクティビティでは、**extendedProperties** を使用することで、Pig スクリプトと Hive スクリプト内で使われるパラメーターの値を指定できます。ExtendedProperties セクションは、パラメーター名とパラメーター値で構成されています。
 
-使用して、Hive スクリプトのパラメーターを指定するための次の例を参照してください。 **extendedProperties**です。パラメーター化された Hive スクリプトを使用するには、次の手順に従います。
+**extendedProperties** を使用して Hive スクリプトのパラメーターを指定する方法については、以下の例を参照してください。パラメーター化された Hive スクリプトを使用するには、次の手順に従います。
 
-1.	パラメーターを定義する **extendedProperties**です。
-2.	使用して、パラメーターを参照してください、インラインで Hive スクリプト (または) Hive スクリプト ファイルは、ブログの記憶域に格納されている、 **${hiveconf:parameterName}**です。
+1.	**extendedProperties** 内でパラメーターを定義します。
+2.	インライン Hive スクリプト (または) BLOB ストレージに格納された Hive スクリプト ファイルの中で **${hiveconf:parameterName}** を使用してパラメーターを参照します。
 
    
     		
@@ -369,8 +324,8 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 
 記事 | 説明
 ------ | ---------------
-[チュートリアル: 移動し、データのファクトリを使用してログ ファイルの処理][adf-tutorial] | この記事では、実際のほぼを実装する方法について説明する、エンド ツー エンド チュートリアル insights にログ ファイルからデータを変換する Azure のデータのファクトリを使用して世界中のシナリオです。
-[Azure のデータの工場出荷時の開発者向けリファレンス][developer-reference] | コマンドレット、JSON スクリプト、関数などの包括的な参照の内容を開発者向けリファレンスには. 
+[チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
+[Azure Data Factory の開発者向けリファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
 
 [data-factory-copy-activity]: ..//data-factory-copy-activity
 [data-factory-map-reduce]: ..//data-factory-map-reduce
@@ -396,5 +351,6 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: http://portal.azure.com
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=58_postMigration-->

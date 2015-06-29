@@ -1,3 +1,5 @@
 > [AZURE.SELECTOR]
-- [SSH](../articles/hdinsight-hadoop-mahout-linux-mac.md)
-- [PowerShell](../articles/hdinsight-mahout.md)
+- [SSH](../articles/hdinsight/hdinsight-hadoop-mahout-linux-mac.md)
+- [PowerShell](../articles/hdinsight/hdinsight-mahout.md)
+
+<!---HONumber=58_postMigration-->

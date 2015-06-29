@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2015" 
+	ms.date="06/03/2015" 
 	ms.author="szark"/>
 
 
@@ -29,7 +29,7 @@ Azure ギャラリーにある Linux イメージは多くのパートナーか�
 
 Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。LIS ドライバーは、ディストリビューションのカーネルに既定で組み込まれているか、以前の RHEL/CentOS ベースのディストリビューションの場合は[こちらで](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)個別にダウンロードする形で入手できます。LIS ドライバーの詳細については、[こちらの記事](virtual-machines-linux-create-upload-vhd-generic.md#linux-kernel-requirements)を参照してください。
 
-Azure Linux エージェントは、Linux ギャラリーのイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。ソース コードは [GitHub](https://github.com/azure/walinuxagent) にあります。
+Azure Linux エージェントは、Azure ギャラリーのイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。ソース コードは [GitHub](https://github.com/azure/walinuxagent) にあります。
 
 <table border="1" width="600">
   <tr bgcolor="#E9E7E7">
@@ -40,14 +40,14 @@ Azure Linux エージェントは、Linux ギャラリーのイメージにあ�
 			</tr>
 	<tr>
 		<th>  Canonical Ubuntu </th>
-		<td> Ubuntu 12.04.1+、14.04、14.10 </td>
+		<td> Ubuntu 12.04、14.04、14.10、15.04 </td>
 		<td>カーネル内</td>
 		<td>パッケージ: リポジトリ内の "walinuxagent" <br />
 			ソース: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
 			</tr>
 	<tr>
 		<th> CentOS by OpenLogic </th>
-		<td> CentOS 6.3+</td>
+		<td> CentOS 6.3+、7.0+</td>
 	    <td> CentOS 6.3: <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS のダウンロード</a><br/>
 	        CentOS 6.4 以上: カーネル内</td>
 		<td>パッケージ: <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">OpenLogic リポジトリ</a>内の "WALinuxAgent"<br />
@@ -63,7 +63,7 @@ Azure Linux エージェントは、Linux ギャラリーのイメージにあ�
 	</tr>
 	<tr>
 		<th> Oracle Linux </th>
-		<td> 6.4+</td>
+		<td> 6.4+、7.0+ </td>
         <td>カーネル内</td>
 		<td>パッケージ: リポジトリ内の "WALinuxAgent"<br />
 			ソース: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
@@ -71,9 +71,9 @@ Azure Linux エージェントは、Linux ギャラリーのイメージにあ�
 	</tr>
 	<tr>
 		<th> SUSE Linux Enterprise </th>
-		<td> SLES 11 SP3+</td>
+		<td> SLES 11 SP3+、SLES 12+、および <br /> SLES for SAP 11.3+ </td>
         <td>カーネル内</td>
-		<td>パッケージ: <a href="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</a> リポジトリ内の "WALinuxAgent"<br />
+		<td>パッケージ: <a href="https://build.opensuse.org/project/show/Cloud:Tools">Cloud:Tools</a> リポジトリ内の "WALinuxAgent"<br />
 			ソース: <a href="http://go.microsoft.com/fwlink/p/?LinkID=250998">GitHub</a></td>
 		
 	</tr>
@@ -122,4 +122,6 @@ Oracle の戦略は、パブリック クラウドとプライベート クラ�
 
 SUSE Linux Enterprise Server on Azure は、クラウド コンピューティングで優れた信頼性とセキュリティを実現する実績あるプラットフォームです。SUSE の多機能な Linux プラットフォームは Azure クラウド サービスとシームレスに統合され、管理の容易なクラウド環境を実現します。SUSE Linux Enterprise Server には、1,800 社を超える独立系ソフトウェア ベンダーによる 9,200 本を超える公認アプリケーションが存在し、SUSE は、データ センターで実行されているワークロードを Azure に安心して自信を持ってデプロイできることを保証しています。
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

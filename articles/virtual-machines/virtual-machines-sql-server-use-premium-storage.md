@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="仮想マシン上での Azure Premium Storage と SQL Server の使用" 
-	description="この記事では、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage の使用を開始する方法についてのガイダンスを提供します。これには、新しいデプロイメントと、IaaS 上の SQL Server の既存デプロイメントの移行の例が含まれます。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="danielsollondon" 
+	pageTitle="仮想マシン上での Azure Premium Storage と SQL Server の使用"
+	description="この記事では、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage の使用を開始する方法についてのガイダンスを提供します。これには、新しいデプロイと、IaaS 上の SQL Server の既存デプロイの移行の例が含まれます。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="danielsollondon"
 	manager="jeffreyg"
 	editor=""/>
 
@@ -12,11 +12,12 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services" 
-	ms.date="04/29/2015"
+	ms.workload="infrastructure-services"
+	ms.date="06/02/2015"
 	ms.author="jroth"/>
 
 # 仮想マシン上での Azure Premium Storage と SQL Server の使用
+
 
 ## 概要
 
@@ -26,13 +27,13 @@
 
 - Premium Storage 使用する前提条件の識別。
 - Premium Storage に IaaS 上の SQL Server を新しくデプロイする例。
-- 既存のデプロイメントを移行する例 (スタンドアロン サーバーと、SQL 可用性グループを使用するデプロイメントの両方)。
+- 既存のデプロイを移行する例 (スタンドアロン サーバーと、SQL 可用性グループを使用するデプロイの両方)。
 - 考えられる移行方法。
 - 既存の AlwaysOn 実装の移行の Azure、Windows、および SQL Server の詳細な手順を示す例。
 
 Azure Virtual Machines での SQL Server についての背景情報については、「[Azure の仮想マシンにおける SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-**技術校閲者:** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz
+**執筆者:** Daniel Sol **技術校閲者:** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz
 
 ## Premium Storage の前提条件
 
@@ -42,7 +43,7 @@ Premium Storage を使用するにはいくつかの前提条件があります�
 
 Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を使用する必要があります。クラウド サービスで DS シリーズ マシンを使用していない場合、既存の VM を削除し、アタッチされたディスクを保持し、新しいクラウド サービスを作成してから、DS* ロール サイズとして VM を再作成する必要があります。仮想マシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
-### クラウド サービス
+### Cloud Services
 
 Premium Storage で DS* VM を使用できるのは、新しいクラウド サービスに作成されるときだけです。Azure で SQL Server AlwaysOn を使用する場合、AlwaysOn Listener はクラウド サービスと関連付けられた Azure の内部または外部ロード バランサーの IP アドレスを参照します。この記事では、このシナリオで可用性を維持しながら移行する方法について説明します。
 
@@ -97,7 +98,7 @@ VHD をアタッチした後は、キャッシュの設定を変更できませ�
 
 以前の Standard Storage と同じように、[Windows 記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用できます。これにより、既に記憶域スペースを使用している VM を移行できます。[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の例では (手順 9 以降)、複数の VHD がアタッチされている VM を抽出してインポートする Powershell コードが示されています。
 
-記憶域プールを Standard Azure ストレージ アカウントと共に使用して、スループットを上げ、遅延を短縮しています。新しいデプロイメント用に Premium Storage で記憶域プールをテストする価値はありますが、記憶域のセットアップが複雑になります。
+記憶域プールを Standard Azure ストレージ アカウントと共に使用して、スループットを上げ、遅延を短縮しています。新しいデプロイ用に Premium Storage で記憶域プールをテストする価値はありますが、記憶域のセットアップが複雑になります。
 
 #### 記憶域プールにマップしている Azure 仮想ディスクを確認する方法
 
@@ -146,7 +147,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
-## 新しいデプロイメント
+## 新しいデプロイ
 
 次の 2 つのセクションでは、SQL Server VM を Premium Storage にデプロイする方法を示します。前述のように、必ずしも Premium Storage に OS ディスクを配置する必要はありません。IO 集中型ワークロードを OS VHD に配置する場合、これを行うことができます。
 
@@ -339,22 +340,22 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     
     $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet 
 
-## AlwaysOn 可用性グループを使用しない既存のデプロイメント
+## AlwaysOn 可用性グループを使用しない既存のデプロイ
 
-> [AZURE.NOTE]既存のデプロイメントの場合、最初にこのトピックの「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
+> [AZURE.NOTE]既存のデプロイの場合、最初にこのトピックの「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
 
-AlwaysOn 可用性グループを使用しない SQL Server のデプロイメントと使用するデプロイメントでは考慮事項が異なります。AlwaysOn を使用せず、既存のスタンドアロン SQL Server がある場合、新しいクラウド サービスとストレージ アカウントを使用して Premium Storage にアップグレードできます。以下のオプションを検討します。
+AlwaysOn 可用性グループを使用しない SQL Server のデプロイと使用するデプロイでは考慮事項が異なります。AlwaysOn を使用せず、既存のスタンドアロン SQL Server がある場合、新しいクラウド サービスとストレージ アカウントを使用して Premium Storage にアップグレードできます。以下のオプションを検討します。
 
-- **新しい SQL Server VM を作成します**。新しいデプロイメントに記載されているように、Premium Storage アカウントを使用する新しい SQL Server VM を作成できます。その後、SQL Server の構成とユーザー データベースをバックアップして復元します。新しい SQL Server が内部的または外部的にアクセスされる場合、新しい SQL Server を参照するようにアプリケーションを更新する必要があります。サイド バイ サイド (SxS) SQL Server 移行を行う場合のように、すべての ‘out of db’ オブジェクトをコピーする必要があります。これには、ログイン、証明書、およびリンク サーバーなどのオブジェクトが含まれます。
+- **新しい SQL Server VM を作成します**。新しいデプロイに記載されているように、Premium Storage アカウントを使用する新しい SQL Server VM を作成できます。その後、SQL Server の構成とユーザー データベースをバックアップして復元します。新しい SQL Server が内部的または外部的にアクセスされる場合、新しい SQL Server を参照するようにアプリケーションを更新する必要があります。サイド バイ サイド (SxS) SQL Server 移行を行う場合のように、すべての ‘out of db’ オブジェクトをコピーする必要があります。これには、ログイン、証明書、およびリンク サーバーなどのオブジェクトが含まれます。
 - **既存の SQL Server VM を移行します**。SQL Server VM をオフラインにしてから、新しいクラウド サービスに転送する必要があります。これには、アタッチされているすべての VHD の Premium Storage アカウントへのコピーが含まれます。VM がオンラインになると、アプリケーションは前と同じサーバー ホスト名を参照します。既存のディスクのサイズがパフォーマンス特性に影響することに注意してください。たとえば、400 GB のディスクは P20 に切り上げられます。そのディスク パフォーマンスが必要ないことがわかっている場合は、VM を DS シリーズ VM として再作成し、必要なサイズ/パフォーマンス仕様の Premium Storage VHD をアタッチできます。その後、SQL DB ファイルをデタッチして再アタッチすることができます。
 
 > [AZURE.NOTE]VHD ディスクをコピーするときは、サイズに注意する必要があります。サイズに依存するということは、当てはまる Premium Storage ディスク タイプがディスク パフォーマンス仕様を決定します。Azure は最も近いディスク サイズに切り上げるので、400 GB ディスクがある場合、P20 に切り上げます。OS VHD の既存の IO 要件によっては、Premium Storage アカウントにこれを移行する必要はありません。
 
 SQL Server が外部からアクセスされる場合、クラウド サービス VIP は変更されます。エンドポイント、ACL、DNS の設定も更新する必要があります。
 
-## AlwaysOn 可用性グループを使用する既存のデプロイメント
+## AlwaysOn 可用性グループを使用する既存のデプロイ
 
-> [AZURE.NOTE]既存のデプロイメントの場合、最初にこのトピックの「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
+> [AZURE.NOTE]既存のデプロイの場合、最初にこのトピックの「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
 
 このセクションでは最初に、AlwaysOn が Azure ネットワークとやり取りする方法を見ていきます。その後、移行を 2 つのシナリオに分割します。ある程度のダウンタイムを許容できる移行と、ダウンタイムを最小限にする必要がある移行です。
 
@@ -366,9 +367,9 @@ Microsoft Azure ではただ 1 つの IP アドレスを VM の NIC に割り当
 
 > [AZURE.NOTE]ILB と ELB はどちらも特定の Azure クラウド サービスに割り当てられ、そのため、Azure のクラウド移行は多くの場合ロード バランサーの IP が変更されることを意味します。
 
-### ある程度のダウンタイムが許容される AlwaysOn のデプロイメントの移行
+### ある程度のダウンタイムが許容される AlwaysOn のデプロイの移行
 
-ある程度のダウンタイムが許容される AlwaysOn のデプロイメントを移行するには 2 つの方法があります。
+ある程度のダウンタイムが許容される AlwaysOn のデプロイを移行するには 2 つの方法があります。
 
 1. **既存の AlwaysOn クラスターにセカンダリ レプリカを追加する**
 1. **新しい AlwaysOn クラスターに移行する**
@@ -444,9 +445,9 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 - 移行前に最終的に必要な同期を最小限に抑えるには、2 つの環境ができるだけ似たものになるように、環境間の同期メカニズムを実装する必要があります。
 - 新しい環境を実行しながらの移行には追加コストがかかります。
 
-### 最小限のダウンタイムでの AlwaysOn のデプロイメントの移行
+### 最小限のダウンタイムでの AlwaysOn のデプロイの移行
 
-ダウンタイムを最小限にして AlwaysOn のデプロイメントを移行するには 2 つの方法があります。
+ダウンタイムを最小限にして AlwaysOn のデプロイを移行するには 2 つの方法があります。
 
 1. **既存のセカンダリを利用する: シングルサイト**
 1. **既存のセカンダリ レプリカを利用する: マルチサイト**
@@ -625,7 +626,7 @@ SQL Sevrer に接続すると、SQL Sevrer クライアント ドライバーは
 
 リスナー名に関連付けられている同時 DNS レコードの数は、関連付けられている IP アドレスの数だけでなく、AlwaysON VNN リソースに対するフェールオーバー クラスターでの "RegisterAllIpProviders" の設定にも依存します。
 
-AlwaysOn を Azure にデプロイするときは、リスナーおよび IP アドレスを作成する異なる手順があります。"RegisterAllIpProviders" を 1 に手動で構成する必要があります。これは、既に 1 に設定されているオンプレミスの AlwaysOn のデプロイメントとは異なります。
+AlwaysOn を Azure にデプロイするときは、リスナーおよび IP アドレスを作成する異なる手順があります。"RegisterAllIpProviders" を 1 に手動で構成する必要があります。これは、既に 1 に設定されているオンプレミスの AlwaysOn のデプロイとは異なります。
 
 "RegisterAllIpProviders" が 0 の場合、リスナーに関連付けられている DNS では DNS レコードが 1 つだけ表示されます。
 
@@ -664,7 +665,7 @@ AlwaysOn を Azure にデプロイするときは、リスナーおよび IP ア
 
 SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポートしている場合、"MULTISUBNETFAILOVER = TRUE" キーワードを使用できます。このキーワードを使用すると、フェールオーバーの間に SQL AlwaysOn 可用性グループに速く接続できるので、適用することをお勧めします。このキーワードは、AlwaysOn リスナーに関連付けられているすべての IP アドレスを並列に列挙し、フェールオーバー中により積極的な TCP 接続の再試行速度を実行します。
 
-上記の設定に関する詳細については、「[MultiSubnetFailover のキーワードおよび関連機能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)」を参照してください。また、「[高可用性障害復旧のための SqlClient サポート]https://msdn.microsoft.com/library/hh205662(v=vs.110).aspx)」も参照してください。
+上記の設定に関する詳細については、「[MultiSubnetFailover のキーワードおよび関連機能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)」を参照してください。また、「[高可用性障害復旧のための SqlClient サポート](https://msdn.microsoft.com/library/hh205662(v=vs.110).aspx)」も参照してください。
 
 #### 手順 5. クラスター クォーラムを設定する
 
@@ -1140,5 +1141,6 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [23]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_13.png
 [24]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

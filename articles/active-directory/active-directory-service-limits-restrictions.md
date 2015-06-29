@@ -31,13 +31,13 @@
 
 ## オブジェクト
 
-- Azure Active Directory Premium、Azure Active Directory Basic、エンタープライズ モビリティ スイート、Office 365、Windows Intune、またはディレクトリ サービスを使用するために Azure Active Directory に依存している他の Microsoft オンライン サービスのサブスクライバーは、制限を受けません。
+- Azure Active Directory Premium、Azure Active Directory Basic、Enterprise Mobility Suite、Office 365、Microsoft Intune、またはディレクトリ サービスに Azure Active Directory を利用しているその他の Microsoft オンライン サービスのサブスクライバーには制限がありません。
 - Free エディションの Azure Active Directory では、1 つのディレクトリで最大 500,000 個のオブジェクトを使用できます。
 - 管理者以外のユーザーは、最大 250 個のオブジェクトを作成できます。
 
 ##スキーマの拡張機能
 
-現在、”文字列” 型または  ”バイナリ” 型の単一値の属性を使用して ”User”、”Group”、”TenantDetail”、”Device”、”Application”、および ”ServicePrincipal” エンティティを拡張できます。この場合、次のような制限があります。
+現在、"文字列" 型または "バイナリ" 型の単一値の属性を使用して "User"、"Group"、"TenantDetail"、"Device"、"Application"、および "ServicePrincipal" エンティティを拡張できます。この場合、次のような制限があります。
 
 - 文字列型の拡張の最大文字数は 256 文字です。
 - バイナリ型の拡張の最大バイト数は 256 バイトです。
@@ -56,7 +56,7 @@
 
 > [AZURE.NOTE]
 > 
-オンプレミスの Active Directory から Azure Active Directory に同期できるオブジェクトの数には制限があります。DirSync を使用している場合、制限は 15,000 ユーザーです。  Azure AD Connect を使用している場合、制限は 50,000  ユーザーです。
+オンプレミスの Active Directory から Azure Active Directory に同期できるオブジェクトの数には制限があります。DirSync を使用している場合、制限は 15,000 ユーザーです。 Azure AD Connect を使用している場合、制限は 50,000 ユーザーです。
 
 ## アクセス パネル
 
@@ -72,4 +72,7 @@
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD の用語](active-directory-terminology.md)
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=58_postMigration-->

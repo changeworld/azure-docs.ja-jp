@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/20/2015" 
+	ms.date="06/03/2015" 
 	ms.author="robmcm"/>
 
 # Java アプリケーション サーバーを仮想マシンで実行する方法
@@ -36,7 +36,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 
 ## 仮想マシンを作成するには
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。**[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
 4. **[次へ]** をクリックします。
@@ -158,5 +158,6 @@ Tomcat が実行されていることを外部コンピューターから確認�
 [NewRuleAction]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleAction.png
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

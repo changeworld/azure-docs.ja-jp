@@ -13,30 +13,30 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/15/2015" 
+	ms.date="05/27/2015" 
 	ms.author="kathydav"/>
 
 #Windows 一時ディスクのドライブ文字を変更する方法
 
 D ドライブを使用してデータを格納する必要がある場合、次の手順に従って一時ディスク用の別のドライブを使用します。維持する必要があるデータは、一時ドライブに格納しないでください。
 
-始める前に、この手順の間に Windows ページファイル (pagefile.sys) を保存できるように、仮想マシンにデータ ディスクを接続しておく必要があります。接続していない場合は、[データ ディスクを Windows 仮想マシンに接続する方法]に関するページを参照してください。接続されているディスクを調べる手順については、「[Azure の仮想マシンのディスクについて]」の「ディスクの管理」を参照してください。
+始める前に、この手順の間に Windows ページファイル (pagefile.sys) を保存できるように、仮想マシンにデータ ディスクを接続しておく必要があります。接続していない場合は、[データ ディスクを Windows 仮想マシンに接続する方法][Attach]に関するページを参照してください。接続されているディスクを調べる手順については、[Azure の仮想マシンのディスク][Disks]に関するページのディスクの管理に関するセクションを参照してください。
 
-D ドライブの既存のデータ ディスクを使用する場合は、そのストレージ アカウントに VHD をアップロード済みであることもご確認ください。手順については、「[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]」のステップ 3 と 4 を参照してください。
+D ドライブの既存のデータ ディスクを使用する場合は、そのストレージ アカウントに VHD をアップロード済みであることもご確認ください。手順については、「[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード][VHD]」のステップ 3 と 4 を参照してください。
 
 > [AZURE.WARNING]仮想マシンのサイズを変更して別のホストに移動する場合は、一時ドライブは再度 D ドライブに変更されます。
 
 ##ドライブ文字の変更
 
-1. 仮想マシンにログインします。 
+1. 仮想マシンにログインします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法][Logon]」を参照してください。
 
 2. pagefile.sys を D ドライブから別のドライブに移動します。
 
 3. 仮想マシンを再起動します。
 
-4. 	再びログインして、ドライブ文字を D から E に変更します。
+4. 再びログインして、ドライブ文字を D から E に変更します。
 
-5.	[Azure の管理ポータル](http://manage.windowsazure.com)から、既存のデータ ディスクか、空のデータ ディスクを接続します。
+5. [Azure 管理ポータル](http://manage.windowsazure.com)から、既存のデータ ディスクか、空のデータ ディスクを接続します。
 
 6.	仮想マシンに再ログインして、直前の手順で接続したディスクを初期化し、ドライブ文字 D を割り当てます。
 
@@ -44,19 +44,27 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 8.	pagefile.sys を別のドライブから E ドライブに移動します。
 
-##その他のリソース
-[Windows Server が実行されている仮想マシンにログオンする方法]
+## その他のリソース
+[Windows Server が実行されている仮想マシンにログオンする方法][Logon]
 
-[データ ディスクを仮想マシンから切断する方法]
+[データ ディスクを仮想マシンから切断する方法][Detach]
 
-[Azure ストレージ アカウントについて]
+[Azure ストレージ アカウントについて][Storage]
 
 <!--Link references-->
-[データ ディスクを Windows 仮想マシンに接続する方法]: storage-windows-attach-disk.md
-[Azure の仮想マシンのディスクについて]: ../dn790303.aspx
-[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: virtual-machines-create-upload-vhd-windows-server.md
-[Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-log-on-windows-server.md
-[データ ディスクを仮想マシンから切断する方法]: storage-windows-detach-disk.md
-[Azure ストレージ アカウントについて]: ../storage-whatis-account.md
+[Attach]: storage-windows-attach-disk.md
 
-<!---HONumber=58--> 
+[Disks]: ../dn790303.aspx
+
+[VHD]: virtual-machines-create-upload-vhd-windows-server.md
+
+[Logon]: virtual-machines-log-on-windows-server.md
+
+[Detach]: storage-windows-detach-disk.md
+
+[Storage]: ../storage-whatis-account.md
+
+
+ 
+
+<!---HONumber=58_postMigration-->

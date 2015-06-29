@@ -41,22 +41,22 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 1. **DHCP を有効にする**
 
-		# echo 'ifconfig_hn0="SYNCDHCP"' >> /etc/rc.conf
+		# echo 'ifconfig_hn0="SYNCDHCP"' > /etc/rc.conf
 		# service netif restart
 
 2. **SSH を有効にする**
 
     SSH は、ディスクからインストールすると、既定で有効になります。有効になっていない場合または FreeBSD VHD を直接使用する場合は、次のように入力します。
 
-		# echo 'sshd_enable="YES"' >> /etc/rc.conf 
+		# echo 'sshd_enable="YES"' > /etc/rc.conf 
 		# ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key 
 		# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key 
 		# service sshd restart
 
 3. **シリアル コンソールをセットアップする**
 
-		# echo 'console="comconsole vidconsole"' >> /boot/loader.conf
-		# echo 'comconsole_speed="115200"' >> /boot/loader.conf
+		# echo 'console="comconsole vidconsole"' > /boot/loader.conf
+		# echo 'comconsole_speed="115200"' > /boot/loader.conf
 
 4. **sudo をインストールする**
 
@@ -100,9 +100,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## 手順 2. Azure にストレージ アカウントを作成する ##
 
-仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。Azure の管理ポータルを使用して、ストレージ アカウントを作成できます。
+仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。Azure 管理ポータルを使用して、ストレージ アカウントを作成できます。
 
-1. Azure の管理ポータルにサインインします。
+1. Azure 管理ポータルにサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -114,7 +114,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 	
 	- **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
 			
-	- ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ·グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
+	- ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
 		 
 	- ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)に関するページを参照してください。
 
@@ -193,7 +193,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして “Linux” または “Windows” しか使用できないためです。
 
-2. ここまでの手順を完了すると、Azure の管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
+2. ここまでの手順を完了すると、Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
 
     ![add image](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
 
@@ -204,5 +204,6 @@ FreeBSD オペレーティング システムがインストールされた仮�
 4. プロビジョニングが完了したら、Azure での FreeBSD VM の稼働を確認できます。
 
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

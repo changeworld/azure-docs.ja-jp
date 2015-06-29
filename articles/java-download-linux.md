@@ -1,11 +1,11 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure SDK for Java のダウンロード (Linux)" 
-	description="Azure SDK for Java をダウンロードします。 Maven を使用してビルドする設定になっている場合のコードを示します。" 
+	description="Azure SDK for Java をダウンロードします。Maven を使用してビルドする設定になっている場合のコードを示します。" 
 	services="" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="mollybos"/>
+	editor="jimbe"/>
 
 <tags 
 	ms.service="multiple" 
@@ -13,10 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="09/25/2014" 
+	ms.date="06/03/2015" 
 	ms.author="robmcm"/>
 
+#Azure SDK for Java のダウンロード
 
-[WACOM.INCLUDE [download_libraries](../includes/download_libraries.md)]
+[AZURE.INCLUDE [download_libraries](../includes/download_libraries.md)]
 
-<!--HONumber=46--> 
+<!---HONumber=58_postMigration-->

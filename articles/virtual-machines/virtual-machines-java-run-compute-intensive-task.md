@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/20/2015" 
+	ms.date="06/03/2015" 
 	ms.author="robmcm"/>
 
 # 仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
@@ -44,7 +44,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 
 ## 仮想マシンを作成するには
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。**[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
 4. **[次へ]** をクリックします。
@@ -81,7 +81,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 サービス名前空間を作成するには:
 
-1.  [Azure の管理ポータル](https://manage.windowsazure.com)へのログオン
+1.  [Azure 管理ポータル](https://manage.windowsazure.com)にログオンします。
 2.  管理ポータルの左下のナビゲーション ウィンドウで、**[Service Bus、Access Control、Caching]** をクリックします。
 3.  管理ポータルの左上のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックしてから **[新規]** をクリックします。![[Service Bus] ノードのスクリーンショット][svc_bus_node]
 4.  **[サービス名前空間の新規作成]** ダイアログ ボックスで **[名前空間]** に名前空間の名前を入力し、固有の名前であることを確認するために **[有効か確認]** をクリックします。![[名前空間の新規作成] のスクリーンショット][create_namespace]
@@ -101,7 +101,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 ## 多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの作成方法
 
-1. 開発用コンピューター上で (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for Java](http://www.windowsazure.com/develop/java/) をダウンロードします。
+1. 開発用コンピューター上で (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for Java](http://azure.microsoft.com/develop/java/) をダウンロードします。
 2. このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPSolver.java** を使用します。**your_service_bus_namespace**、**your_service_bus_owner**、**your_service_bus_key** の各プレースホルダーを変更して、それぞれ自分の Service Bus の **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
 3. コーディング後、実行可能な Java アーカイブ (JAR) にアプリケーションをエクスポートして、生成される JAR に、必要なライブラリをパッケージ化します。このチュートリアルでは、生成される JAR 名として **TSPSolver.jar** を使用します。
 
@@ -265,7 +265,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 	                restCities.add(i);
 	            distances = new double[numCities][numCities];
 	            cityNames = new String[numCities];
-	            buildDistances("c:\TSP\cities.txt", numCities);
+	            buildDistances("C:\TSP\cities.txt", numCities);
 	            minDistance = -1;
 	            bestOrder = new int[numCities];
 	            permutation(startCities, 0, restCities);
@@ -413,9 +413,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 ### 多くのコンピューティング処理を要するアプリケーションの実行方法
 
 1. 仮想マシンにログオンします。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
-3. **TSPSolver.jar** を **c:\TSP** にコピーします。
-4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**C:\TSP** です。
+3. **TSPSolver.jar** を **C:\TSP** にコピーします。
+4. **C:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
 		City_1, 1002.81, -1841.35
 		City_2, -953.55, -229.6
@@ -468,7 +468,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 		City_49, -120.3, -463.13
 		City_50, 588.51, 679.33
 	
-5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+5. コマンド プロンプトで、ディレクトリを C:\TSP に変更します。
 6. JRE の bin フォルダーが PATH 環境変数に指定されていることを確認します。
 7. 巡回セールスマン問題を解くプログラムを実行する前に、Service Bus キューを作成する必要があります。次のコマンドを実行して、Service Bus キューを作成します。
 
@@ -484,10 +484,10 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
  
 ### 監視用のクライアント アプリケーションの実行方法
 1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
-3. **TSPClient.jar** を **c:\TSP** にコピーします。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**C:\TSP** です。
+3. **TSPClient.jar** を **C:\TSP** にコピーします。
 4. JRE の bin フォルダーが PATH 環境変数に指定されていることを確認します。
-5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+5. コマンド プロンプトで、ディレクトリを C:\TSP に変更します。
 6. 次のコマンドを実行します。
 
         java -jar TSPClient.jar
@@ -516,4 +516,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 [default_key]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=58_postMigration-->

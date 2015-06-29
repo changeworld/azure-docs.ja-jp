@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure Automation の構成"
    description="Azure Automation を初めて使用するときに必要な構成手順について説明します。"
    services="automation"
@@ -6,10 +6,10 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/13/2015"
@@ -19,13 +19,18 @@
 
 この記事では、Azure Automation を使い始めるときに最初に行う必要があることについて説明します。
 
-## オートメーション アカウント
+## Automation アカウント
 
-Azure Automation を初めて開始するときに、少なくとも 1 つのオートメーション アカウントを作成する必要があります。オートメーション アカウントを使用すると、アカウントに含まれるオートメーション リソース (Runbook、資産) をアカウント間で分離できます。オートメーション アカウントを使用して、オートメーション リソースを異なる論理環境に分けることができます。たとえば、開発用と運用用に異なるアカウントを使用できます。
+Azure Automation を初めて開始するときに、少なくとも 1 つのAutomation アカウントを作成する必要があります。Automation アカウントを使用すると、アカウントに含まれる Automation のリソース (Runbook、資産) をアカウント間で分離できます。Automation アカウントを使用して、Automation のリソースを異なる論理環境に分けることができます。たとえば、開発用と運用用に異なるアカウントを使用できます。
 
-各オートメーション アカウントのオートメーション リソースは 1 つの Azure リージョンに関連付けられますが、オートメーション アカウントは任意のリージョンの Azure サービスを管理できます。異なるリージョンにオートメーション アカウントを作成する主な理由は、データとリソースを特定のリージョンに分離する必要があるポリシーがある場合です。
+各 Automation アカウントの Automation リソースは 1 つの Azure リージョンに関連付けられますが、Automation アカウントは任意のリージョンの Azure サービスを管理できます。異なるリージョンに Automation アカウントを作成する主な理由は、データとリソースを特定のリージョンに分離する必要があるポリシーがある場合です。
 
-支払い期限超過などの問題が Azure アカウントにある場合、オートメーション アカウントが中断される可能性があります。このような場合、アカウントにはアクセスできず、実行中のジョブは停止され、すべてのスケジュールは無効になります。アカウントを表示することはできますが、その中のリソースは表示できません。問題を解決してオートメーション アカウントが有効になった後は、スケジュールを有効にして、中断された Runbook を再開する必要があります。
+>[AZURE.NOTE]Azure プレビュー ポータルで作成した Automation アカウントと、そこに含まれるリソースは、Azure ポータルからアクセスすることはできません。これらのアカウントまたはリソースを Windows PowerShell で管理する場合は、Azure リソース マネージャー モジュールを使用する必要があります。
+>
+>Azure ポータルで作成した Automation アカウントは、どちらのポータルでも、またどちらのコマンドレットでも管理できます。いったんアカウントが作成されると、アカウント内のリソースを作成および管理する方法に違いはありません。引き続き Azure ポータルを使用する場合は、Azure プレビュー ポータルではなく Azure ポータルを使用して Automation アカウントを作成してください。
+
+
+支払い期限超過などの問題が Azure アカウントにある場合、Automation アカウントが中断される可能性があります。このような場合、アカウントにはアクセスできず、実行中のジョブは停止され、すべてのスケジュールは無効になります。アカウントを表示することはできますが、その中のリソースは表示できません。問題を解決して Automation アカウントが有効になった後は、スケジュールを有効にして、中断された Runbook を再開する必要があります。
 
 
 ## Azure リソースへの認証の構成
@@ -58,7 +63,8 @@ Azure Automation を初めて開始するときに、少なくとも 1 つのオ
 
 Runbook のすべての[チェックポイント](automation-runbook-execution/#checkpoints)の後で、これらの行を繰り返す必要があります。Runbook が中断された後、別のワーカーで再開した場合は、もう一度認証を実行する必要があります。
 
-# 関連記事:
-- [Azure オートメーション: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/) 
+## 関連記事:
+- [Azure Automation: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

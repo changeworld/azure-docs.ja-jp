@@ -1,9 +1,9 @@
 <properties
-	pageTitle="Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用"
-	description="Azure CLI の ARM モードを使用し、Mac、Linux、および Windows 用のコマンド ライン ツールで Azure のリソースを管理する方法について説明します。"
+	pageTitle="Azure リソース管理での、Mac、Linux、Windows 用 Azure CLI の使用 | Microsoft Azure"
+	description="Azure CLI の ARM モードを使用し、Mac、Linux、および Windows 用の Azure CLI で Azure のリソースを管理する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="squillace"
+	authors="dlepow"
 	manager="timlt"
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/23/2015"
-	ms.author="rasquill"/>
+	ms.date="06/09/2015"
+	ms.author="danlep"/>
 
 # Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用
 
@@ -40,9 +40,9 @@ Azure CLI で **ARM** モードを使用するためのセットアップ要件�
 - [Azure CLI のインストール](../xplat-cli-install.md)
 - Azure Active Directory ID またはサービス プリンシパルを使用するための [Azure CLI の構成](../xplat-cli-connect.md)
 
-アカウントを入手し Azure CLI をインストールしてから、
+アカウントを入手し Azure CLI をインストールしたら、
 
-- 「`azure config mode arm`」と入力して **ARM** モードに切り替える必要があります。
+- 「`azure config mode arm`」と入力して **ARM** モードに切り替えます。
 - プロンプトで「`azure login`」と入力し、職場または学校の ID を使用して Azure アカウントにログインします。
 
 ここで「`azure`」と入力して、以下のセクションで説明されているトップ レベル コマンドの一覧を表示します。
@@ -940,7 +940,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
  	-l, --lb-name <lb-name>                the name of the load balancer
  	-s, --subscription <subscription>      the subscription identifier
 
-<BR> "network lb address-pool delete" [オプション] <resource-group> <lb-name> <name>
+<BR> network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 ロード バランサーからバックエンド IP プールの範囲のリソースを削除します。
 
@@ -1091,7 +1091,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
 ロード バランサーの受信 NAT 規則を作成します。
 
-次の例では、受信リッスン ポートとロード バランサーがネットワーク トラフィックを送信する送信ポートを備えたフロント エンド IP (定義済みのもの。詳細については、"azure network frontend-ip" コマンドを参照してください) から NAT 規則を作成しています。
+次の例では、フロントエンド IP (定義済みのもの。詳細については、"azure network frontend-ip" コマンドを参照してください) から NAT 規則を作成しています。この規則では、受信リッスン ポートと、ロード バランサーがネットワーク トラフィックを送信する送信ポートが指定されています。
 
 
 	azure network lb inbound-nat-rule create -g myresourcegroup -l mylb -n myinboundnat -p tcp -f 80 -b 8080 -i myfrontendip
@@ -1245,7 +1245,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	info:    network public-ip create command OK
 
 
-パラメーターのオプション: -h、--help 利用状況情報の出力 -v、--verbose 詳細出力を使用 --json JSON 出力の使用 -g、--resource-group <resource-group> リソース グループ名 -n、--name <name> パブリック IP の名前 -l、--location <location> 場所 -d、--domain-name-label <domain-name-label> ドメイン名のラベル。これにより、DNS が <domain-name-label>.<location>.cloudapp.azure.com に設定されます。-a, --allocation-method <allocation-method> 割り当て方法 [静的][Dynamic] -i, --idletimeout <idletimeout> アイドル タイムアウト (分) -f, --reverse-fqdn <reverse-fqdn> FQDN の反転 -t, --tags <tags> タグの一覧。複数指定できます。"名前 = 値" の形式です。名前は必須で、値は省略可能です。たとえば、-t tag1=value1;tag2 -s, --subscription <subscription> サブスクリプション識別子 <br>
+パラメーターのオプション: -h、--help 利用状況情報の出力 -v、--verbose 詳細出力を使用 --json JSON 出力の使用 -g、--resource-group <resource-group> リソース グループ名 -n、--name <name> パブリック IP の名前 -l、--location <location> 場所 -d、--domain-name-label <domain-name-label> ドメイン名のラベル。これにより、DNS が <domain-name-label>.<location>.cloudapp.azure.com に設定されます。-a, --allocation-method <allocation-method> 割り当て方法 [静的][動的] -i, --idletimeout <idletimeout> アイドル タイムアウト (分) -f, --reverse-fqdn <reverse-fqdn> FQDN の反転 -t, --tags <tags> タグの一覧。複数指定できます。"名前 = 値" の形式です。名前は必須で、値は省略可能です。たとえば、-t tag1=value1;tag2 -s, --subscription <subscription> サブスクリプション識別子 <br>
 
 	network public-ip set [options] <resource-group> <name>
 既存のパブリック IP リソースのプロパティを更新します。次の例では、パブリック IP アドレスを動的から静的に変更しています。
@@ -1359,7 +1359,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 **ネットワーク インターフェイスを管理するコマンド**
 
 	network nic create [options] <resource-group> <name> <location>
-ネットワーク インターフェイス (NIC) と呼ばれるリソースを作成します。このリソースは、ロード バランサーに使用するか、Virtual Machine と関連付けることができます。
+ネットワーク インターフェイス (NIC) と呼ばれるリソースを作成します。このリソースは、ロード バランサーに使用するか、仮想マシンと関連付けることができます。
 
 	azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
 
@@ -1706,7 +1706,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm get-instance-view [options] <resource-group> <name>
 
-**Virtual Machine 上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
+**仮想マシン上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
 
 	vm reset-access [options] <resource-group> <name>
 
@@ -1714,7 +1714,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm set [options] <resource-group> <name>
 
-**Virtual Machine のデータ ディスクを管理するコマンド**
+**仮想マシンのデータ ディスクを管理するコマンド**
 
 	vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]
 	vm disk detach [options] <resource-group> <vm-name> <lun>
@@ -1735,5 +1735,6 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-offers [options] <location> <publisher>
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

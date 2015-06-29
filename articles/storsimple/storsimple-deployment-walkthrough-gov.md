@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="オンプレミスの StorSimple デバイスのデプロイ"
+   pageTitle="Government Portal でのオンプレミスの StorSimple デバイスのデプロイ"
    description="Azure Government Portal で StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスです。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,26 +12,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/27/2015"
+   ms.date="06/12/2015"
    ms.author="v-sharos" />
 
-# オンプレミスの StorSimple デバイスのデプロイ
-
-[AZURE.INCLUDE [storsimple-version-selector](../../includes/storsimple-version-selector.md)]
+# Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
 
 ## 概要
 
-Microsoft Azure StorSimple デバイスのデプロイメントへようこそ。
+Microsoft Azure StorSimple デバイスのデプロイへようこそ。
 
-これらのデプロイメントのチュートリアルは、Azure Government Portal の StorSimple 8000 シリーズに適用されます。
+デプロイに関するこれらのチュートリアルは、Azure Government Portal で Update 1 ソフトウェアを実行している StorSimple 8000 シリーズに適用されます。
 
 このチュートリアルのシリーズでは、StorSimple デバイスを構成する方法について説明します。また、インストール前のチェック リスト、構成の前提条件、詳細な構成手順についても紹介します。
 
-> [AZURE.NOTE]Microsoft Azure の Web サイトと MSDN ライブラリで公開されている StorSimple のデプロイメントに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイメントについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
+> [AZURE.NOTE]Microsoft Azure の Web サイトと MSDN ライブラリで公開されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
 
 これらのチュートリアルの情報は、ユーザーが安全上の注意と構成チェック リストを確認していること、および StorSimple デバイスのパッケージを展開してラックに配置し、配線していることを想定しています。これらの作業がまだ済んでいない場合は、必要に応じて「[安全上の注意](https://msdn.microsoft.com/library/azure/dn772366.aspx)」、「[構成チェックリスト](https://msdn.microsoft.com/library/azure/dn757787.aspx)」、および[デバイスのハードウェアの設置](https://msdn.microsoft.com/library/azure/dn772375.aspx)に関するページを参照してください。
 
-セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、インストール前のチェック リストを確認することをお勧めします。デプロイメントと構成のプロセスは、完了するまでに時間がかかることがあります。
+セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、インストール前のチェック リストを確認することをお勧めします。デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
 ## インストール前のチェック リスト
 
@@ -39,7 +37,7 @@ Microsoft Azure StorSimple デバイスのデプロイメントへようこそ�
 
 | | 必要条件 | 詳細 | 値 |
 |---| --------------------- | ---------------------- | ------------- |
-| 1 | ネットワーク設定 <ol><li>デバイスの IP アドレス</li><li>ネットワーク インターフェイス、4 x 1 GbE、2 x 10 GbE</li><li>固定コントローラーの IP</li><li>サブネット マスク</li><li>ゲートウェイ</li></ol> | 必要な IP アドレスの合計: 8 個 <ol><li>デバイスごとに 1 個</li><li>有効なネットワーク インターフェイスごとに 1 個、合計 6 個</li><li>コントローラーごとに 1 個、計 2 個、インターネットへの接続とサービス更新プログラムに必要</li><li>IP アドレスごとに 1 個</li><li>デバイスごとに 1 個</li></ol> | |
+| 1 | ネットワーク設定 <ol><li>ネットワーク インターフェイス、4 x 1 GbE、2 x 10 GbE</li><li>固定コントローラーの IP</li><li>サブネット マスク</li><li>ゲートウェイ</li></ol> | 必要な IP アドレスの合計: 8 個 <ol><li>有効なネットワーク インターフェイスごとに 1 個、合計 6 個</li><li>コントローラーごとに 1 個、計 2 個、インターネットへの接続とサービス更新プログラムに必要</li><li>IP アドレスごとに 1 個</li><li>デバイスごとに 1 個</li></ol> | |
 | 2 | シリアル アクセス | デバイスの初期構成 | はい/いいえ |
 | 3 | DNS サーバーの IP アドレス | Microsoft Azure への接続に必要: 高可用性のために合計 2 つが必要 | |
 | 4 | NTP サーバーの IP アドレス | Azure での時刻の同期に必要: 必須 1、省略可能 1 | |
@@ -48,7 +46,7 @@ Microsoft Azure StorSimple デバイスのデプロイメントへようこそ�
 | 7 | クラウド ストレージ暗号化キー (推奨) | ボリューム コンテナーごと | |
 | 8 | ホストの IQN | ホストごと | |
 
-## デプロイメントの前提条件
+## デプロイの前提条件
 
 ここでは、StorSimple Manager サービスと StorSimple デバイスの構成の前提条件について説明します。
 
@@ -76,7 +74,7 @@ Microsoft Azure StorSimple デバイスのデプロイメントへようこそ�
 
 - 「[StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/dn772371.aspx)」で説明するとおり、データセンターのファイアウォールでポートを開くと、iSCSI とクラウドのトラフィックが許可されます。
 
-## デプロイメントの手順
+## デプロイの手順
 
 StorSimple デバイスを構成し、StorSimple Manager サービスに接続するには、次の必要な手順を実行します。
 
@@ -97,7 +95,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 - 手動バックアップの作成
 - MPIO を構成する
 
-デプロイメントの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
+デプロイの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
 
 ## 手順 1. 新しいサービスを作成する
 
@@ -173,7 +171,7 @@ Windows Server ホスト上で次の手順を実行します。
 
 これは省略可能な手順で、サービスでストレージ アカウントの自動作成を有効にしていない場合のみ実行する必要があります。StorSimple ボリューム コンテナーを作成するには、Microsoft Azure ストレージ アカウントが必要です。
 
-別の場所で Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
+別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 Government Portal の **[StorSimple Manager サービス]** ページで次の手順を実行します。
 
@@ -211,5 +209,6 @@ MPIO のインストール手順については、[StorSimple デバイスの MP
 [仮想デバイス](storsimple-virtual-device.md)を構成します。
 
 [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

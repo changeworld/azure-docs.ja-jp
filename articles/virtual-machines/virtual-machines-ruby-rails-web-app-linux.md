@@ -3,7 +3,7 @@
 	description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" 
 	services="virtual-machines" 
 	documentationCenter="ruby" 
-	authors="wpickett" 
+	authors="MikeWasson" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="02/19/2015" 
-	ms.author="wpickett"/>
+	ms.date="06/09/2015" 
+	ms.author="mwasson"/>
 
 
 
@@ -22,213 +22,90 @@
 
 #Azure VM での Ruby on Rails Web アプリケーション
 
-このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
+このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails Web サイトをホストする方法について説明します。
 
-学習内容:
+このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
-* 開発環境を設定する
+## Azure VM の作成
 
-* Ruby on Rails をホストするように Azure の仮想マシンを設定する
+最初に、Linux イメージを使用して Azure VM を作成します。
 
-* 新しい Rails アプリケーションを作成する
+VM を作成するには、Azure 管理ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
 
-* scp を使用してファイルを仮想マシンにコピーする
+### Azure 管理ポータル
 
-完成したアプリケーションのスクリーンショットは次のようになります。
+1. [Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
+2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[簡易作成]** の順にクリックします。Linux イメージを選択します。
+3. パスワードを入力します。
 
-![a browser displaying Listing Posts][blog-rails-cloud]
+VM がプロビジョニングされたら、VM 名をクリックし、**[ダッシュボード]** をクリックします。**[SSH の詳細]** で、SSH エンドポイントを見つけます。
 
+### Azure CLI
 
-##<a id="setup"></a>開発環境を設定する
+「[Linux を実行する仮想マシンの作成][vm-instructions]」の手順に従います。
 
-1. 開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
+VM がプロビジョニングされたら、次のコマンドを実行して SSH エンドポイントを取得できます。
 
-	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** および **ruby-build** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
+	azure vm endpoint list <vm-name>  
 
-	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
+## Ruby on Rails のインストール
 
-	* **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルは、[RailsInstaller](http://railsinstaller.org/) 1.9.3-p392 を使用して検証されました。
-
-2. 新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。
-
-		gem install rails --no-rdoc --no-ri
-
-	> [AZURE.NOTE]オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように "sudo" を使用してください。
-	>
-	>````` 
-	sudo gem install rails
-	`````
-	>
-	> このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。
-
-3. JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme) で確認できます。
+1. SSH を使用して VM に接続します。 
 	
-	[Node.js](http://nodejs.org/) をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
-
-##<a id="create"></a>Rails アプリケーションを作成する
-
-1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して、"blog_app" という名前の新しい Rails アプリケーションを作成します。
-
-		rails new blog_app
-
-	このコマンドは、**blog_app** という新しいディレクトリを作成し、Rails アプリケーションに必要なファイルとサブディレクトリをそこに格納します。
-
-	> [AZURE.NOTE]このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、その間にハングしたように見える場合があります。
-
-2. ディレクトリを **blog_app** に変更し、次のコマンドを使用して、基本的なブログ スキャフォールディングを作成します。
-
-		rails generate scaffold Post name:string title:string content:text
-
-	これにより、コントローラー、ビュー、モデル、およびブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、およびテキスト コンテンツが含められます。
-
-3. 次のコマンドを実行して、ブログへの投稿を保存するデータベースを作成します。
-
-		rake db:migrate
-
-	この場合、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][sqlite3]が使用されます。運用アプリケーションでは別のデータベースを使用する方が適している場合もありますが、このチュートリアルの目的では SQLite で十分です。
-
-##<a id="test"></a>アプリケーションをテストする
-
-次の手順を実行して、開発環境で Rails サーバーを開始します。
-
-1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して rails サーバーを開始します。
-
-		rails s
-
-	次のような出力が表示されます。Web サーバーがリッスンしているポートに注目してください。下の例では、ポート 3000 をリッスンしています。
-
-		=> Booting WEBrick
-		=> Rails 3.2.12 application starting in development on http://0.0.0.0:3000
-		=> Call with -d to detach
-		=> Ctrl-C to shutdown server
-		[2013-03-12 19:11:31] INFO  WEBrick 1.3.1
-		[2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
-		[2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
-
-2. ブラウザーを開いて、http://localhost:3000/ にアクセスします。次のようなページが表示されます。
-
-	![既定の rails ページ][default-rails]
-
-	これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、http://localhost:3000/posts に移動します。次のようなページが表示されます。
-
-	![a page listing posts][blog-rails]
-
-	サーバー プロセスを停止するには、コマンド ラインで Ctrl + C キーを押します。
-
-##<a id="createvm"></a>Azure の仮想マシンを作成する
-
-[ここ][vm-instructions]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
-
-> [AZURE.NOTE]このチュートリアルの手順は、Ubuntu 12.10 をホストする Azure 仮想マシンで実行しています。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。
-
- 
-
-> [AZURE.IMPORTANT]ここで作成する必要があるのは、仮想マシン**のみ**です。SSH を使用して仮想マシンに接続する方法を確認したら戻ってください。
-
-
-
-Azure の仮想マシンを作成したら、次の手順を実行して、仮想マシンに Ruby および Rails をインストールします。
-
-1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して SSH で仮想マシンに接続します。
-
-		ssh username@vmdns -p port
-
-	各パラメーターは、VM の作成時に指定したユーザー名、VM の DNS アドレス、SSH エンドポイントに置き換えてください。次に例を示します。
-
-		ssh railsdev@railsvm.cloudapp.net -p 61830
-		
-既定のポート 22 の場合は次のとおりです。
-
-		ssh railsdev@railsvm.cloudapp.net
-
-	> [AZURE.NOTE] If you are using Windows as your development environment, you can use a utility such as **PuTTY** for SSH functionality. PuTTY can be obtained from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
-
 2. SSH セッションから、次のコマンドを使用して VM に Ruby をインストールします。
 
 		sudo apt-get update -y
 		sudo apt-get upgrade -y
-		sudo apt-get install ruby1.9.1 ruby1.9.1-dev build-essential libsqlite3-dev nodejs -y
+		sudo apt-get install ruby ruby-dev build-essential libsqlite3-dev zlib1g-dev nodejs -y
 
-	インストールが完了したら、次のコマンドを使用して Ruby が正常にインストールされたことを確認します。
+	インストールには数分かかる場合があります。インストールが完了したら、次のコマンドを使用して、Ruby がインストールされたことを確認します。
 
 		ruby -v
 
-	このコマンドは、仮想マシンにインストールされている Ruby のバージョンを返します。これは 1.9.1 ではない可能性もあります。たとえば、**ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]** のようになります。
+	インストールされている Ruby のバージョンが返されます。
 
-2. 次のコマンドを使用して Bundler をインストールします。
+3. 次のコマンドを使用して Rails をインストールします。
 
-		sudo gem install bundler --no-rdoc --no-ri
+		sudo gem install rails --no-rdoc --no-ri
 
-	Bundler は、いったんサーバーにコピーされると、Rails アプリケーションに必要な gem をインストールするために使用されます。
+	ここでは、--no-rdoc フラグと --no-ri フラグを使用してドキュメントのインストールをスキップしています。これにより、インストールに要する時間が短縮されます。
 
-##<a id="copy"></a>アプリケーションを VM にコピーする
+## アプリの作成と実行
 
-開発環境から、新しいコマンド ラインまたはターミナル セッションを開き、**scp** コマンドを使用して、**blog_app** ディレクトリを仮想マシンにコピーします。このコマンドの形式は次のとおりです。
+SSH を使用してログインしている状態で、次のコマンドを実行します。
 
-	scp -r -P 54822 -C directory-to-copy user@vmdns:
+	rails new myapp
+	cd myapp
+	rails server -b 0.0.0.0 -p 3000
 
-次に例を示します。
+[new](http://guides.rubyonrails.org/command_line.html#rails-new) コマンドは、新しい Rails アプリケーションを作成します。[server](http://guides.rubyonrails.org/command_line.html#rails-server) コマンドは、Rails に付属している WEBrick Web サーバーを起動します (実際の運用では、Unicorn、Passenger などの他のサーバーを使用できます)。
 
-	scp -r -P 54822 -C ~/blog_app railsdev@railsvm.cloudapp.net:
+次のような出力が表示されます。
 
-既定のポート 22 の場合は次のとおりです。
+	=> Booting WEBrick
+	=> Rails 4.2.1 application starting in development on http://0.0.0.0:3000
+	=> Run `rails server -h` for more startup options
+	=> Ctrl-C to shutdown server
+	[2015-06-09 23:34:23] INFO  WEBrick 1.3.1
+	[2015-06-09 23:34:23] INFO  ruby 1.9.3 (2013-11-22) [x86_64-linux]
+	[2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
-	scp -r -C ~/blog_app railsdev@railsvm.cloudapp.net:
 
-> [AZURE.NOTE]開発環境として Windows を使用している場合、scp 機能には **pscp** などのユーティリティを使用できます。pscp は、[PuTTY のダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)から入手できます。
+## エンドポイントの追加
 
-このコマンドで使用されるパラメーターの意味は次のとおりです。
-
-* **-r**: 指定したディレクトリとそのサブディレクトリの内容を再帰的にコピーします
-
-* **-P**: 指定したポートを SSH 通信に使用します
-
-* **-C**: 圧縮を有効にします
-
-* **directory-to-copy**: コピーするローカル ディレクトリ
-
-* **user@vmdns**: ファイルのコピー先となるコンピューターのアドレスと、ログインに使用するユーザー アカウント
-
-コピー操作が完了すると、**blog_app** ディレクトリがユーザーのホーム ディレクトリに配置されます。仮想マシンへの SSH セッションで次のコマンドを使用して、コピーされたファイルを表示します。
-
-	cd ~/blog_app
-	ls
-
-返されるファイルの一覧は、開発環境の **blog_app** ディレクトリに含まれているファイルに一致します。
-
-##<a id="start"></a>gem をインストールして Rails を開始する
-
-1. 仮想マシンで、ディレクトリを **blog_app** に変更し、次のコマンドを使用して **Gemfile** に指定されている gem をインストールします。
-
-		sudo bundle install
-
-2. 次のコマンドを使用してデータベースを作成します。
-
-		rake db:migrate
-
-3. 次のコマンドを使用してサーバーを開始します。
-	
-		rails s
-
-	次のような出力が表示されます。Web サーバーがリッスンしているポートに注目してください。下の例では、ポート 3000 をリッスンしています。
-
-		=> Booting WEBrick
-		=> Rails 3.2.12 application starting in development on http://0.0.0.0:3000
-		=> Call with -d to detach
-		=> Ctrl-C to shutdown server
-		[2013-03-12 19:11:31] INFO  WEBrick 1.3.1
-		[2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
-		[2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
-
-2. ブラウザーで [Azure の管理ポータル][management-portal]に移動し、適切な仮想マシンを選択します。
+1. [Azure 管理ポータル][management-portal]に移動し、目的の VM を選択します。
 
 	![仮想マシンの一覧][vmlist]
 
-3. ページの上部で **[エンドポイント]** を選択し、ページ下部で **[+ エンドポイントの追加]** をクリックします。
+2. ページの上部で **[エンドポイント]** を選択し、ページ下部で **[+ エンドポイントの追加]** をクリックします。
 
 	![エンドポイント ページ][endpoints]
 
-4. **[エンドポイントの追加]** ダイアログで、左下にある矢印をクリックして次のページへ進み、フォームに次の情報を入力します。
+3. **[エンドポイントの追加]** ダイアログで、[スタンドアロン エンドポイントの追加] を選択し、**[次へ]** 矢印をクリックします。
+
+	![新しいエンドポイントのダイアログ][new-endpoint1]
+
+3. 次のダイアログ ページで、次の情報を入力します。
 
 	* **名前**: HTTP
 
@@ -236,31 +113,26 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 	* **パブリック ポート**: 80
 
-	* **プライベート ポート**: &lt;前の手順 3. で確認したポート情報&gt;
+	* **プライベート ポート**: 3000
 
 	これにより、プライベート ポート 3000 にトラフィックをルーティングするパブリック ポート 80 が作成されます。ルーティング先のプライベート ポートは、Rails がリッスンしています。
 
 	![新しいエンドポイントのダイアログ][new-endpoint]
 
-5. チェックマークをクリックして、エンドポイントを保存します。
+4. チェック マークをクリックして、エンドポイントを保存します。
 
-6. **"更新が進行中です"** というメッセージが表示されます。このメッセージが消えると、エンドポイントがアクティブになります。この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。Web サイトは次のようになります。
+5. **"更新が進行中です"** というメッセージが表示されます。このメッセージが消えると、エンドポイントがアクティブになります。この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。Web サイトは次のようになります。
 
 	![既定の rails ページ][default-rails-cloud]
 
-	URL に **/posts** を追加すると、スキャフォールディング コマンドで生成されたページが表示されます。
-
-	![投稿のページ][blog-rails-cloud]
 
 ##<a id="next"></a>次のステップ
 
-この記事では、基本的なフォーム ベースの Rails アプリケーションを作成し、Azure の仮想マシンに発行する方法について説明しました。ほとんどの操作は手動で実行しましたが、通常、運用環境では自動化が求められます。また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。
+このチュートリアルでは、ほとんどの手順を手作業で行いました。通常、運用環境では、開発用コンピューターで作成したアプリを Azure VM にデプロイします。また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。詳細については、http://rubyonrails.org/deploy/ を参照してください。
 
-Rails アプリケーションのデプロイメントの自動化や、Unicorn Web サーバーと NginX の使用方法については、「[Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする][unicorn-nginx-capistrano]」を参照してください。
+Ruby on Rails の詳細については、[Ruby on Rails のガイド][rails-guides]を参照してください。
 
-Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][rails-guides]を参照してください。
-
-Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクを参照してください。
+Ruby アプリケーションから Azure のサービスを使用する方法については、次のトピックを参照してください。
 
 * [BLOB を使用して非構造化データを保存する][blobs]
 
@@ -279,8 +151,6 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 
 [tables]: /develop/ruby/how-to-guides/table-service/
 
-[unicorn-nginx-capistrano]: ../virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn.md
-
 [vm-instructions]: virtual-machines-linux-tutorial.md
 
 
@@ -290,11 +160,6 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 [sqlite3]: http://www.sqlite.org/
 
 <!-- Images -->
-[blog-rails]: ./media/virtual-machines-ruby-rails-web-app-linux/blograilslocal.png
-
-[blog-rails-cloud]: ./media/virtual-machines-ruby-rails-web-app-linux/blograilscloud.png
-
-[default-rails]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailslocal.png
 
 [default-rails-cloud]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailscloud.png
 
@@ -304,4 +169,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 
 [new-endpoint]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
 
-<!---HONumber=58--> 
+[new-endpoint1]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint1.png
+ 
+
+<!---HONumber=58_postMigration-->

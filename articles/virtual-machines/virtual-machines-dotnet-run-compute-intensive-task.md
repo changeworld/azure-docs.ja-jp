@@ -44,7 +44,7 @@ Azure では、仮想マシンを使用して多くのコンピューティン�
 
 ## 仮想マシンを作成するには
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]** をクリックします。
 3. **[仮想マシン]** をクリックします。
 4. **[簡易作成]** をクリックします。
@@ -57,7 +57,7 @@ Azure では、仮想マシンを使用して多くのコンピューティン�
 
 ## 仮想マシンにリモート ログインするには
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)へのログオン
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログオンします。
 2. **[仮想マシン]** をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
 4. **[接続]** をクリックします。
@@ -69,7 +69,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 サービス名前空間を作成するには:
 
-1.  [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1.  [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2.  管理ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。
 
@@ -443,9 +443,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 ### 多くのコンピューティング処理を要するアプリケーションの実行方法
 
 1. 仮想マシンにログオンします。
-2. **c:\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
-3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **c:\TSP** にコピーします。
-4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
+2. **C:\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
+3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **C:\TSP** にコピーします。
+4. **C:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
 		City_1, 1002.81, -1841.35
 		City_2, -953.55, -229.6
@@ -498,7 +498,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 		City_49, -120.3, -463.13
 		City_50, 588.51, 679.33
 
-5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+5. コマンド プロンプトで、ディレクトリを C:\TSP に変更します。
 6. 巡回セールスマン問題を解くプログラムを実行する前に、Service Bus キューを作成する必要があります。次のコマンドを実行して、Service Bus キューを作成します。
 
         TSPSolver createqueue
@@ -515,9 +515,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 ### 監視用のクライアント アプリケーションの実行方法
 1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
-3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を c:\TSP フォルダーにコピーします。
-4. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**C:\TSP** です。
+3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を C:\TSP フォルダーにコピーします。
+4. コマンド プロンプトで、ディレクトリを C:\TSP に変更します。
 5. 次のコマンドを実行します。
 
         TSPClient
@@ -535,7 +535,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 問題を解くアプリケーションとクライアント アプリケーションのどちらでも、**Ctrl + C** キーを押すと、通常の処理が完了する前にアプリケーションが終了します。
 
 ## TSPSolver を使用しないでキューを作成し削除する方法 
-TSPSolver を使用してキューを作成したり削除したりする代わりに、[Azure の管理ポータル](https://manage.windowsazure.com)を使用してキューの作成と削除を行うこともできます。管理ポータルの Service Bus セクションには、キューを作成し削除する機能のほかに、接続文字列や発行者、アクセス キーを取得する機能も用意されています。また、Service Bus キューのダッシュボードを表示して、発着信メッセージのメトリックを表示することもできます。
+TSPSolver を使用してキューを作成したり削除したりする代わりに、[Azure 管理ポータル](https://manage.windowsazure.com)を使用してキューの作成と削除を行うこともできます。管理ポータルの Service Bus セクションには、キューを作成し削除する機能のほかに、接続文字列や発行者、アクセス キーを取得する機能も用意されています。また、Service Bus キューのダッシュボードを表示して、発着信メッセージのメトリックを表示することもできます。
 
 [solver_output]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPSolver.png
 [client_output]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPClient.png
@@ -545,5 +545,6 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
 [click_create]: ./media/virtual-machines-dotnet-run-compute-intensive-task/ClickCreate.png
 [namespace_list]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

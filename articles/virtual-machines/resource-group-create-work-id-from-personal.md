@@ -32,7 +32,7 @@ MSDN Azure クレジットを活用するために、個人の Azure アカウ�
 
 ![Azure Active Directory](./media/resource-group-create-work-id-from-personal/azureactivedirectorywidget.png)
 
-最初に、Azure で自分の識別情報の一部を確認しましょう。次に示すように、メイン ウィンドウで既定のディレクトリが 1 つあることがわかります。
+最初に、Azure で自分 ID の一部を確認しましょう。次に示すように、メイン ウィンドウで既定のディレクトリが 1 つあることがわかります。
 
 ![](./media/resource-group-create-work-id-from-personal/defaultaadlisting.png)
 
@@ -140,4 +140,7 @@ Azure Active Directory から取得した新しいユーザーが表示されま
     data:    
     info:    group create command OK
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=58_postMigration-->

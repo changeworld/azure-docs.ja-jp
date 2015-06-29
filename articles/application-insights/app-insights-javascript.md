@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="JavaScript アプリと Web ページのための Application Insights" 
-	description="ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。JavaScript アプリや Web ページの例外とパフォーマンスの問題を検出します。" 
+	pageTitle="JavaScript Web アプリのための Application Insights" 
+	description="ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。JavaScript Web ページの例外とパフォーマンスの問題を検出します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2015" 
+	ms.date="06/03/2015" 
 	ms.author="awills"/>
  
-# JavaScript アプリと Web ページのための Application Insights
+# JavaScript Web アプリのための Application Insights
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
@@ -23,7 +23,7 @@ Web ページのパフォーマンスと使用状況について調べます。V
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/16-page-views.png)
 
-[ASP.NET][greenbrown] または [Java][java] Web アプリにサーバー利用統計情報を既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
+[ASP.NET][greenbrown] または [Java][java] Web アプリにサーバー テレメトリを既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
 
 ## Application Insights リソースの作成
 
@@ -51,22 +51,12 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 *(よく知られている Web ページ フレームワークを使用している場合、Application Insights アダプターを探してください。たとえば、[AngularJS モジュール](http://ngmodules.org/modules/angular-appinsights)があります。)*
 
-#### アプリが Web ページではない場合...
-
-JavaScript アプリが [Cordova](http://cordova.apache.org/) アプリの場合、インストルメンテーション キーの後に追加の行を挿入します。
-
-    ...{
-        instrumentationKey:"00000000-662d-4479-0000-40c89770e67c",
-        endpointUrl:"https://dc.services.visualstudio.com/v2/track"
-    } ...
-
-[JavaScript を使用する Windows ランタイム アプリ](https://msdn.microsoft.com/library/windows/apps/br211385.aspx)の場合、NuGet パッケージの *Javascript アプリ用 Application Insights* をプロジェクトに追加します。(ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。[プレリリースを含める] を選択し、「Application Insights」を検索します。)
  
 ## <a name="run"></a>アプリを実行する
 
-Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。F5 キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
+Web アプリを実行し、しばらくの間、テレメトリを生成し、少し待ちます。F5 キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
-Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで F12 です)。データは dc.services.visualstudio.com に送信されます。
+Web アプリが Application Insights に送信しているテレメトリを確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで F12 です)。データは dc.services.visualstudio.com に送信されます。
 
 ## データを調査する
 
@@ -139,7 +129,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ## 個別のページ ビュー イベントを調査する
 
-通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
+通常、Application Insights がページ ビューのテレメトリを分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
 
 [診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
 
@@ -153,11 +143,11 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ## 使用状況の追跡 (カスタム)
 
-アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自の利用統計情報を送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
+アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自のテレメトリを送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
 
 [カスタム イベントとメトリックの API の詳細情報][track]。
 
-## サーバーの利用統計情報
+## サーバーのテレメトリ
 
 これをまだ実行していない場合、サーバーから情報を入手し、そのデータをクライアント側のデータと共に表示できます。サーバーのパフォーマンスを評価し、問題を診断できます。
 
@@ -185,4 +175,6 @@ Web アプリが Application Insights に送信している利用統計情報を
 [qna]: app-insights-troubleshoot-faq.md
 [track]: app-insights-custom-events-metrics-api.md
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

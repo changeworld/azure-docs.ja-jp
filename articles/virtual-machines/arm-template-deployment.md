@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.date="06/15/2015" 
 	ms.author="davidmu"/>
 
 # .NET ライブラリとテンプレートを使用した Azure リソースのデプロイ
@@ -22,12 +22,12 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-このチュートリアルを完了するには、以下のものも必要です。
+このチュートリアルを完了するには、以下に示すものも必要です。
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [Azure ストレージ アカウント](../storage-create-storage-account.md)
 - [Windows Management Framework 3.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=40855)
-- [Azure PowerShell](../install-configure-powershell.md)
+- [Azure PowerShell](../powershell-install-configure.md)
 
 これらの手順を実行するには約 30 分かかります。
 
@@ -53,7 +53,7 @@ Azure AD を使用して Azure リソース マネージャーへの要求を認
 
 	>[AZURE.NOTE]アプリケーション ID は、管理ポータルのアプリケーションのクライアント ID フィールドでも確認できます。
 
-5. {application-id} を記録した ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
+5. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
         New-AzureADServicePrincipal -ApplicationId {application-id} 
 
@@ -354,7 +354,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
           return token;
         }
 
-	{application-id} を前に記録したアプリケーション ID に、{password} を AD アプリケーションに選択したパスワードに、{tenant-id} をサブスクリプションのテナント ID に置き換えます。テナント ID は Get-AzureSubscription を実行して確認できます。
+	{application-id} を前に記録したアプリケーション ID に、{password} を AD アプリケーション用に選択したパスワードに、{tenant-id} をサブスクリプションのテナント ID に、それぞれ置き換えます。テナント ID は Get-AzureSubscription を実行して確認できます。
 
 3.	資格情報を作成するには、Program.cs ファイルの Main メソッドに次のコードを追加します。
 
@@ -442,12 +442,12 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 1.	コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
 
-2.	各ステータス コードが返されたら **Enter** キーを押して各リソースを作成します。仮想マシンが作成されたら、次の手順を実行した後、Enter キーを押してすべてのリソースを削除します。
+2.	各状態コードが返されたら **Enter** キーを押して各リソースを作成します。仮想マシンが作成されたら、次の手順を実行した後、Enter キーを押してすべてのリソースを削除します。
 
-	このコンソール アプリケーションが開始から終了まで完全に実行するのに約 5 分かかります。Enter キーを押してリソースの削除を開始する前に、Azure プレビュー ポータルでリソースの作成を確認します。
+	このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。Enter キーを押してリソースの削除を開始する前に、Azure プレビュー ポータルでリソースの作成状況を確認することもできます。
 
 3. Azure プレビュー ポータルで監査ログを参照して、リソースの状態を確認します。
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

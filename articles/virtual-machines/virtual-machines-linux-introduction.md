@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2015"
+	ms.date="06/11/2015"
 	ms.author="szark"/>
 
 
@@ -35,7 +35,7 @@
 
 ## <a id="authentication"></a>認証: ユーザー名、パスワード、SSH キー
 
-Azure の管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
+Azure 管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
 
 
  - 詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」を参照してください。
@@ -74,10 +74,13 @@ Azure Linux エージェントには、この名前の変更を自動的に検�
 
  - [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
-### Ubuntu イメージ
-Ubuntu イメージは、cloud-init を使用できます。cloud-init の追加機能を利用すると、仮想マシンをブートストラップすることができます。
+### Cloud-Init
+**Ubuntu** イメージと **CoreOS** イメージでは、仮想マシンをブートストラップするための追加機能を提供する Azure の cloud-init を使用します。
 
- - 詳細については、「[Azure の仮想マシンにカスタム データを挿入する](virtual-machines-how-to-inject-custom-data.md)」および[Microsoft Azure のカスタム データと Cloud-Init](http://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/) に関するページを参照してください。
+ - [カスタム データを挿入する方法](virtual-machines-how-to-inject-custom-data.md)
+ - [Microsoft Azure のカスタム データと Cloud-Init](http://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
+ - [Cloud-Init を使用した Azure スワップ パーティションの作成](https://wiki.ubuntu.com/AzureSwapPartitions)
+ - [Azure で CoreOS を使用する方法 ](virtual-machines-linux-coreos-how-to.md)
 
 
 ## <a id="virtualmachine"></a>仮想マシン イメージのキャプチャ
@@ -99,10 +102,12 @@ Azure には、既存の仮想マシンの状態をイメージにキャプチ�
 
 Linux では通常、リソース ディスクは Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。
 
+
 	>[AZURE.NOTE] Note that the resource disk is a **temporary** disk, and might be deleted and reformatted when the VM is rebooted.
 
 Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-how-to-attach-disk.md)」で詳しく説明しています。
 
- - 関連項目: [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
+ - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

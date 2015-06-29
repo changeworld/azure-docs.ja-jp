@@ -1,3 +1,5 @@
-> [AZURE.NOTE] The ODataLib dependencies in the Storage Client Library for .NET are resolved through the ODataLib (version 5.0.2 and greater) packages available through NuGet, and not through WCF Data Services. The ODataLib libraries can be downloaded directly or referenced by your code project through NuGet. The specific ODataLib packages used by the Storage Client Library are [OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2), and [Spatial](http://nuget.org/packages/System.Spatial/5.0.2).
+> [AZURE.NOTE].NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2 以上) パッケージによって解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。ストレージ クライアント ライブラリで使用される ODataLib パッケージは、[OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2)、[Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2)、[Spatial](http://nuget.org/packages/System.Spatial/5.0.2) です。
 > 
-> While these libraries are used by the Azure Table storage classes, they are required dependencies for programming with the Storage Client Library.
+> これらのライブラリが Azure テーブル ストレージ クラスで使用されるときは、ストレージ クライアント ライブラリを使用したプログラミングの必須の依存関係です。
+
+<!---HONumber=58_postMigration-->

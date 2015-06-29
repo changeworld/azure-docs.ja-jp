@@ -13,35 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/18/2014" 
+	ms.date="06/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
-API Management には、ユーザーが OAuth 2.0 認証を使用して開発者ポータルにアクセスするための機能が備わっています。このガイドは、OAuth 2.0 認証を使用するように API Management サービス インスタンスを構成する方法を説明しています。
-
-> OAuth 2.0 について詳しくは、[http://oauth.net/2/][http://oauth.net/2/] で仕様を参照してください。
-
-## このトピックの内容
-
--   [前提条件][前提条件]
--   [API Management で OAuth 2.0 認証サーバーを構成する][API Management で OAuth 2.0 認証サーバーを構成する]
--   [OAuth 2.0 ユーザー認証を使用するように API を構成する][OAuth 2.0 ユーザー認証を使用するように API を構成する]
--   [開発者ポータルで OAuth 2.0 ユーザー認証をテストする][開発者ポータルで OAuth 2.0 ユーザー認証をテストする]
+多くの API では、[OAuth 2.0](http://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
 
 ## <a name="prerequisites"> </a>前提条件
 
 このガイドでは、開発者アカウントに OAuth 2.0 認証を使用するように API Management サービス インスタンスを構成する方法を説明していますが、OAuth 2.0 プロバイダーを構成する方法は説明していません。手順は似ていて、API Management サービス インスタンスでの OAuth 2.0 の構成に使用される情報は同じですが、各 OAuth 2.0 プロバイダーの構成は異なっています。このトピックは、Azure Active Directory を OAuth 2.0 プロバイダーとして使用する例を示しています。
 
-> Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][WebApp-GraphAPI-DotNet] のサンプルを参照してください。
+>[AZURE.NOTE]Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][] のサンプルを参照してください。
 
 ## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理コンソール]** をクリックします。API Management の管理ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
-![API Management console][api-management-management-console]
+![パブリッシャー ポータル][api-management-management-console]
 
-> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
+>[AZURE.NOTE]まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
 左側の **[API Management]** メニューで **[セキュリティ]** をクリックし、**[OAuth 2.0]** をクリックしてから、**[認証サーバーの追加 (Add authorization server)]** をクリックします。
 
@@ -53,9 +44,9 @@ API Management には、ユーザーが OAuth 2.0 認証を使用して開発者
 
 **[名前]** フィールドと **[説明]** フィールドに、名前とオプションの説明を入力します。
 
-> これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
+>[AZURE.NOTE]これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
 
-**[クライアント登録ページ URL (Client registration page URL)]** を入力します。このページでは、ユーザーがアカウントを作成して管理できます。このページは使用される OAuth 2.0 プロバイダーによって異なります。
+**[クライアント登録ページ URL (Client registration page URL)]** を入力します。このページでは、ユーザーがアカウントを作成して管理できます。このページは使用される OAuth 2.0 プロバイダーによって異なります。**[クライアント登録ページ URL]** では、ユーザーによるアカウント管理をサポートする OAuth 2.0 プロバイダーについて、ユーザーが自身のアカウントを作成および構成するために使用できるページを指定します。この機能を OAuth 2.0 プロバイダーがサポートしている場合でも、組織によってはこの機能を構成または使用していない場合があります。OAuth 2.0 プロバイダーでユーザーによるアカウント管理が構成されていない場合は、会社の URL、`https://placeholder.contoso.com` のような URL などのプレースホルダー URL を入力してください。
 
 フォームの次のセクションには、**[認証コード付与タイプ (Authorization code grant types)]**、**[認証エンドポイント URL (Authorization endpoint URL)]**、および **[認証要求方式 (Authorization request method)]** 設定が含まれます。
 
@@ -63,7 +54,7 @@ API Management には、ユーザーが OAuth 2.0 認証を使用して開発者
 
 必要なタイプにチェックマークを入れて、**[認証コード付与タイプ (Authorization code grant types)]** を指定します。**[認証コード]** が既定で指定されています。
 
-**[認証エンドポイント URL (Authorization endpoint URL)]** を入力します。Azure Active Directory では、この URL は以下の URL のようになります。ここで、`<client_id>` は、使用するアプリケーションを OAuth 2.0 サーバーが識別するためのクライアント ID に置き換わります。
+**[認証エンドポイント URL (Authorization endpoint URL)]** を入力します。Azure Active Directory では、この URL は以下の URL のようになります。ここで、`<client_id>` は、使用するアプリケーションを OAuth 2.0 サーバーが識別するためのクライアント ID に置き換えてください。
 
     https://login.windows.net/<client_id>/oauth2/authorize
 
@@ -73,7 +64,7 @@ API Management には、ユーザーが OAuth 2.0 認証を使用して開発者
 
 ![新しいサーバー][api-management-oauth2-server-3]
 
-Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンドポイント URL (Token endpoint URL)]** の形式が以下のようになります。ここで、`<APPID>` の形式は `yourapp.onmicrosoft.com` です。
+Azure Active Directory OAuth 2.0 サーバーでは、**[トークン エンドポイント URL]** の形式が以下のようになります。ここで、`<APPID>` の形式は `yourapp.onmicrosoft.com` です。
 
     https://login.windows.net/<APPID>/oauth2/token
 
@@ -109,7 +100,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 ![Echo API][api-management-apis-echo-api]
 
-> アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+>[AZURE.NOTE]アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
 
 **[GET Resource]** 操作を選択し、**[コンソールを開く]** をクリックして、ドロップダウンで **[認証コード]** を選択します。
 
@@ -117,38 +108,56 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 **[認証コード]** が選択されると、OAuth 2.0 プロバイダーのサインイン フォームがあるポップアップ ウィンドウが表示されます。この例では、サインイン フォームは Azure Active Directory によって提供されています。
 
-> ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
+>[AZURE.NOTE]ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
 
 ![サインイン][api-management-oauth2-signin]
 
-サインインした後、**[要求ヘッダー (Request headers)]** には、要求を認証するための `Authorization : Bearer` ヘッダーが取り込まれます。
+サインインした後、**[要求ヘッダー]** には、要求を認証するための `Authorization : Bearer` ヘッダーが取り込まれます。
 
 ![要求ヘッダー トークン][api-management-request-header-token]
 
 これで、残りのパラメーター用に必要な値を構成して、要求を送信できます。
 
-  [http://oauth.net/2/]: http://oauth.net/2/
-  [前提条件]: #prerequisites
-  [API Management で OAuth 2.0 認証サーバーを構成する]: #step1
-  [OAuth 2.0 ユーザー認証を使用するように API を構成する]: #step2
-  [開発者ポータルで OAuth 2.0 ユーザー認証をテストする]: #step3
-  [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-  [Azure API Management の使用]: ../api-management-get-started
-  [API Management インスタンスの作成]: ../api-management-get-started/#create-service-instance
-  [api-management-management-console]: ./media/api-management-howto-oauth2/api-management-management-console.png
-  [api-management-oauth2]: ./media/api-management-howto-oauth2/api-management-oauth2.png
-  [api-management-user-authorization]: ./media/api-management-howto-oauth2/api-management-user-authorization.png
-  [api-management-user-authorization-save]: ./media/api-management-howto-oauth2/api-management-user-authorization-save.png
-  [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
-  [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png
-  [api-management-developer-portal-menu]: ./media/api-management-howto-oauth2/api-management-developer-portal-menu.png
-  [api-management-open-console]: ./media/api-management-howto-oauth2/api-management-open-console.png
-  [api-management-oauth2-server-1]: ./media/api-management-howto-oauth2/api-management-oauth2-server-1.png
-  [api-management-oauth2-server-2]: ./media/api-management-howto-oauth2/api-management-oauth2-server-2.png
-  [api-management-oauth2-server-3]: ./media/api-management-howto-oauth2/api-management-oauth2-server-3.png
-  [api-management-oauth2-server-4]: ./media/api-management-howto-oauth2/api-management-oauth2-server-4.png
-  [api-management-oauth2-server-5]: ./media/api-management-howto-oauth2/api-management-oauth2-server-5.png
-  [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
+## 次のステップ
 
-<!--HONumber=46--> 
- 
+OAuth 2.0 と API Management の詳細については、次のビデオを参照してください。
+
+> [AZURE.VIDEO protecting-web-api-backend-with-azure-active-directory-and-api-management]
+
+[api-management-management-console]: ./media/api-management-howto-oauth2/api-management-management-console.png
+[api-management-oauth2]: ./media/api-management-howto-oauth2/api-management-oauth2.png
+[api-management-user-authorization]: ./media/api-management-howto-oauth2/api-management-user-authorization.png
+[api-management-user-authorization-save]: ./media/api-management-howto-oauth2/api-management-user-authorization-save.png
+[api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
+[api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png
+[api-management-developer-portal-menu]: ./media/api-management-howto-oauth2/api-management-developer-portal-menu.png
+[api-management-open-console]: ./media/api-management-howto-oauth2/api-management-open-console.png
+[api-management-oauth2-server-1]: ./media/api-management-howto-oauth2/api-management-oauth2-server-1.png
+[api-management-oauth2-server-2]: ./media/api-management-howto-oauth2/api-management-oauth2-server-2.png
+[api-management-oauth2-server-3]: ./media/api-management-howto-oauth2/api-management-oauth2-server-3.png
+[api-management-oauth2-server-4]: ./media/api-management-howto-oauth2/api-management-oauth2-server-4.png
+[api-management-oauth2-server-5]: ./media/api-management-howto-oauth2/api-management-oauth2-server-5.png
+[api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
+
+
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[API Management インスタンスの作成]: api-management-get-started.md
+[Get started with advanced API configuration]: api-management-get-started-advanced.md
+[API Management policy reference]: api-management-policy-reference.md
+[Caching policies]: api-management-policy-reference.md#caching-policies
+[Azure API Management の使用]: api-management-get-started.md#create-service-instance
+
+[http://oauth.net/2/]: http://oauth.net/2/
+[WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
+
+[Prerequisites]: #prerequisites
+[Configure an OAuth 2.0 authorization server in API Management]: #step1
+[Configure an API to use OAuth 2.0 user authorization]: #step2
+[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Next steps]: #next-steps
+
+<!---HONumber=58_postMigration-->

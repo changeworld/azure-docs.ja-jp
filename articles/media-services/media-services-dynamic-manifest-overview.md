@@ -176,7 +176,7 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 
 次のトピックでは、フィルターに関連した Media Services のエンティティについて説明します。このトピックでは、プログラムを使用してフィルターを作成する方法も示します。
 
-[REST API を使用してフィルターを作成する](media-services-rest-create-filters)
+[REST API を使用してフィルターを作成する](media-services-rest-dynamic-manifest.md)
 
 ##既知の問題と制限
 
@@ -207,5 +207,6 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 [language_filter]: ./media/media-services-dynamic-manifest-overview/media-services-language-filter.png
 [dvr_filter]: ./media/media-services-dynamic-manifest-overview/media-services-dvr-filter.png
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

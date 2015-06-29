@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="JoeDavies-MSFT" 
 	manager="timlt" 
-	editor=""/>
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags 
 	ms.service="virtual-machines" 
@@ -13,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2015" 
+	ms.date="06/12/2015" 
 	ms.author="josephd"/>
 
 # Azure リソース マネージャーを使用して自動化する方法
 
-Azure リソース マネージャーを使用すると、Azure インフラストラクチャ サービス上で実行される複雑なアプリケーションのデプロイメントと管理が容易になります。多くのアプリケーションで、仮想ネットワーク、ストレージ アカウント、仮想マシンなどのコンピューティング、ネットワーク、およびストレージのリソースをネットワーク インターフェイスと組み合わせる必要があります。Azure リソース マネージャーでは、そうしたリソースをすべてひとまとめにして単一のアプリケーションとしてデプロイして管理する JSON テンプレートを作成および使用することができます。
+Azure リソース マネージャーを使用すると、Azure インフラストラクチャ サービス上で実行される複雑なアプリケーションのデプロイと管理が容易になります。多くのアプリケーションで、仮想ネットワーク、ストレージ アカウント、仮想マシンなどのコンピューティング、ネットワーク、およびストレージのリソースをネットワーク インターフェイスと組み合わせる必要があります。Azure リソース マネージャーでは、そうしたリソースをすべてひとまとめにして単一のアプリケーションとしてデプロイして管理する JSON テンプレートを作成および使用することができます。
 
 ## ここから開始
 
@@ -69,4 +70,6 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

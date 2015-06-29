@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Web プロジェクト に Application Insights SDK を追加する" 
-	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
+	pageTitle="Application Insights SDK を追加して ASP.NET アプリを監視する" 
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
 	services="application-insights" 
-documentationCenter=".net"
+    documentationCenter=".net"
 	authors="alancameronwills" 
-	manager="kamrani"/>
+	manager="ronmart"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,109 +12,188 @@ documentationCenter=".net"
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2015" 
+	ms.date="05/21/2015" 
 	ms.author="awills"/>
 
-# Application Insights - アプリケーションの状態と利用状況の監視を開始する
+
+# Application Insights SDK を追加して ASP.NET アプリを監視する
 
 *Application Insights はプレビュー段階です。*
 
-Application Insights を使用すると、ライブ アプリケーションの以下の事柄について監視できます。
-
-* **可用性** - 世界中から数分ごとにご使用の URL についてテストします。
-* **パフォーマンス**   - パフォーマンスに関する問題と例外を検出して診断します。
-* **利用状況** - ご使用のアプリケーションを使っているユーザーの実行内容を把握し、それらのユーザーにとってより良いアプリケーションとなるようにします。
-
-別の方法については、「[Application Insights を開始する」][start]を参照してください。
-
-## <a name="add"></a>アプリケーションの正常性と利用状況の監視
-
-[Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
-
-### 新しいプロジェクトの場合
-
-Visual Studio 2013 に新しいプロジェクトを作成するとき、Application Insights が選択されていることを確認してください。 
+[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 
-![Create an ASP.NET project](./media/app-insights-start-monitoring-app-health-usage/appinsights-01-vsnewp1.png)
+Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure の Web アプリに加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します ([デバイス アプリと Java サーバーも対象になります][start])。
 
-初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます (Visual Studio Online アカウントとは異なります)。
+![Example performance monitoring charts](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
 
-Azure リソースの名前をプロジェクトの名前とは別にする場合、または同じグループの別のプロジェクトとしてリソースを表示する場合には、**[設定の構成]** を使用します。 
+多くのアプリケーションの種類では、ほとんどの場合に通知されることなく、[Visual Studio によってアプリに Application Insights が追加されます](#ide)。ただし、この記事を読んで状況を把握できるように、ここでは手動による手順について説明します。
 
-*Application Insights オプションはありませんか。Visual Studio 2013 Update 3 を使用しているか、[拡張機能と更新プログラム] で Application Insights Tools が有効になっているか、および作成しているのが Web、Windows ストア、Windows Phone のどのプロジェクトであるかを確認します。*
+#### 開始する前に
 
-### 既存のプロジェクトの場合
+必要なもの:
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
+* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
+* Visual Studio 2013 以降
 
-![Choose Add Application Insights](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
+## <a name="add"></a> 1.Application Insights リソースの作成
 
-*Web 利用状況分析を設定するものの最初にデータの一部を参照する場合には、複数の手順が関係します。*
+[Azure ポータル][portal]にサインインし、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET を選択します。
+
+![[新規]、[Application Insights] の順にクリックする](./media/app-insights-start-monitoring-app-health-usage/01-new-asp.png)
+
+Azure の[リソース][roles]は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+
+アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
+
+####  インストルメンテーション キーをコピーします。
+
+これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
+
+![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-start-monitoring-app-health-usage/02-props-asp.png)
 
 
-### <a name="run"></a>2. プロジェクトを実行する
 
-F5 を使用してアプリケーションを実行して、試します。別のページが開きます。
+## <a name="sdk"></a> 2.アプリケーションに SDK をインストールする
 
-Visual Studio で、受け取ったイベント数を確認できます。
+
+1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。
+
+    ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-start-monitoring-app-health-usage/03-nuget.png)
+
+2. Web Apps 向け Application Insights SDK をインストールします。
+
+    ![Search for "Application Insights"](./media/app-insights-start-monitoring-app-health-usage/04-ai-nuget.png)
+
+
+3. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
+
+    `<InstrumentationKey>` *コピーしたインストルメンテーション キー* `</InstrumentationKey>`
+
+    (または、アプリ内に[コードを記述してキーを設定][apikey]できます)。
+
+#### 新しいバージョンの SDK にアップグレードするには
+
+[SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
+
+ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
+
+
+## <a name="run"></a> 3.プロジェクトの実行
+
+F5 キーを使用してアプリケーションを実行して、試します。さまざまなページが開き、いくつかのテレメトリが生成されます。
+
+Visual Studio で、送信されたイベント数が表示されます。
 
 ![](./media/app-insights-start-monitoring-app-health-usage/appinsights-09eventcount.png)
 
-### <a name="monitor"></a>3. モニター データを表示する
+## <a name="monitor"></a> 4.テレメトリの表示
 
-プロジェクトから Application Insights を開きます。
-
-![Right-click your project and open the Azure portal](./media/app-insights-start-monitoring-app-health-usage/appinsights-04-openPortal.png)
+[Azure ポータル][portal]に戻り、Application Insights のリソースを参照します。
 
 
-**[アプリケーションの使用状況]** タイル内でデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
+概要グラフでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
 
-![Click through to more data](./media/app-insights-start-monitoring-app-health-usage/appinsights-41firstHealth.png)
+![クリックしてより多くのデータを表示する](./media/app-insights-start-monitoring-app-health-usage/12-first-perf.png)
 
-いずれかのタイルをクリックして、詳細を表示します。レポート内の表示内容を変更できます。[アプリケーションの使用状況レポートの構成方法の詳細について参照してください。][perf]
+任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
 
-
-### <a name="deploy"></a>4. アプリケーションをデプロイする
-
-アプリケーションをデプロイし、データ累積を確認します。
+ここで、アプリケーションをデプロイし、データ累積を確認します。
 
 
+デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
 
-ライブ アプリケーションになった後、[Web テストを設定][availability]し、引き続きライブ状態であることを確認します。 
+#### データが表示されない場合
 
-![Example application monitor in Application Insights](./media/app-insights-start-monitoring-app-health-usage/appinsights-00-appblade.png)
+* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
+* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
+* 数秒待機してから [最新の情報に更新] をクリックします。
+* [トラブルシューティング][qna]に関するページを参照します。
 
-### ポータルでアプリケーションの名前を変更しますか
+#### ビルド サーバーで問題が発生した場合
 
-プロジェクトの利用統計情報の送信先となるリソースを変更できます。 
+[このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
-(「リソース」とは、結果が表示される指定の Application Insights ブレードのことです。複数のリソースを 1 つのグループにまとめることができます。たとえば、複数のプロジェクトが 1 つのビジネス アプリケーションの構成要素となっている場合などです)。 
 
-ソリューション エクスプローラーで ApplicationInsights.config を右クリックし、**[Application Insights の更新]** を選択します。これによりウィザードが開き、別の既存のリソースを選択するか、または新しいリソースを作成できます。
+## インストールを完了する
 
-その後、ポータルに戻り、古いリソースを削除します。
+アプリケーションを 360 度から表示するには、いくつかの作業が必要になります。
+
+
+* [Web ページに JavaScript SDK を追加][client]して、ユーザー、セッション、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタムのテレメトリを記述することができます。
+* 依存関係の追跡を追加して、アプリで使用されるデータベースなどのコンポーネントが原因で発生した問題を診断します。
+ * [Azure Web アプリまたは VM で][azure]
+ * [オンプレミスの IIS サーバーで][redfield]
+* お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]します。
+* クライアント側とサーバー側 (またはそのいずれか) で[カスタム イベントとメトリックを追跡][api]して、アプリケーションの使用状況の詳細を確認します。
+* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
+
+## <a name="ide"></a> 自動化された方法
+
+Visual Studio で自動設定を行うのは簡単です。
+
+[Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
+
+#### 新しいプロジェクトの場合
+
+Visual Studio に新しいプロジェクトを作成するとき、Application Insights が選択されていることを確認してください。
+
+
+![ASP.NET プロジェクトを作成する](./media/app-insights-start-monitoring-app-health-usage/appinsights-01-vsnewp1.png)
+
+Visual Studio によって、Application Insights にリソースが作成され、プロジェクトに SDK が追加されて、キーが `.config` ファイルに配置されます。
+
+プロジェクトに Web ページが含まれている場合は、[JavaScript SDK][client] がマスター Web ページに追加されます。
+
+#### 既存のプロジェクトの場合
+
+ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
+
+![[Application Insights の追加] を選択する](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
+
+Visual Studio によって、Application Insights にリソースが作成され、プロジェクトに SDK が追加されて、キーが `.config` ファイルに配置されます。
+
+この場合、[JavaScript SDK][client] は Web ページに追加されません。この操作は、次の手順として行うことをお勧めします。
+
+#### セットアップ オプション
+
+初めての場合には、Microsoft Azure プレビュー版にログインまたはサインアップするように求められます(Visual Studio Online アカウントとは異なります)。
+
+このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
+
+*Application Insights オプションはありせんか。 Visual Studio 2013 Update 3 以降を使用していること、[拡張機能と更新プログラム] で Application Insights Tools が有効になっていること、および作成しているのが Web プロジェクトであることを確認します。*
+
+#### プロジェクトから Application Insights を開きます。
+
+![プロジェクトを右クリックして Azure ポータルを開く](./media/app-insights-start-monitoring-app-health-usage/appinsights-04-openPortal.png)
+
+
+
 
 ## <a name="video"></a>ビデオ
 
 > [AZURE.VIDEO getting-started-with-application-insights]
 
-## <a name="next"></a>次のステップ
 
-[Web アプリケーションの利用状況を追跡する][usage]
+<!--Link references-->
 
-[Web アプリケーションのパフォーマンスを監視する][perf]
+[api]: app-insights-api-custom-events-metrics.md
+[apikey]: app-insights-api-custom-events-metrics.md#ikey
+[availability]: app-insights-monitor-web-app-availability.md
+[azure]: ../insights-perf-analytics.md
+[client]: app-insights-javascript.md
+[detect]: app-insights-detect-triage-diagnose.md
+[diagnostic]: app-insights-diagnostic-search.md
+[knowUsers]: app-insights-overview-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[netlogs]: app-insights-asp-net-trace-logs.md
+[perf]: app-insights-web-monitor-performance.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-monitor-performance-live-website-now.md
+[roles]: app-insights-resources-roles-access-control.md
+[start]: app-insights-get-started.md
 
-[診断ログを取得して検索する][diagnostic]
-
-[トラブルシューティング][qna]
-
-
-
-
-[AZURE.INCLUDE [app-insights-learn-more](../../includes/app-insights-learn-more.md)]
-
-
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=58_postMigration-->

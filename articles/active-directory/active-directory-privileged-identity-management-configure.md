@@ -18,7 +18,7 @@
 
 # Azure AD Privileged Identity Management
 
-Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Intune など) のリソースへの特権 ID のアクセスを、管理、制御、監視できます。
+Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権 ID のアクセスを管理、制御、監視できます。
 
 ユーザーが特権操作を実行できるよう、組織は多くのユーザーに Azure AD、Azure や Office 365 のリソース、他の SaaS アプリへの永続的な特権アクセスを付与することが必要になる場合がよくあります。多くの顧客にとって、これは、このようなユーザーが管理者特権で行っていることを十分に監視できないため、クラウドでホストされるリソースに対するセキュリティ リスクの増大になります。さらに、特権アクセス権を持つユーザー アカウントが侵害されると、全体的なクラウド セキュリティに影響を与える可能性があります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
@@ -105,4 +105,6 @@ Azure AD Privileged Identity Management を使用すると、特権ロールの�
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

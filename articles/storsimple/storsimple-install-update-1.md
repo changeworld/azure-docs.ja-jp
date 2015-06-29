@@ -3,7 +3,7 @@
    description="デバイスに StorSimple 8000 シリーズの Update 1 をインストールする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
-   authors="SharS"
+   authors="alkohli"
    manager="adinah"
    editor="tysonn" />
 <tags 
@@ -12,23 +12,47 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/27/2015"
-   ms.author="v-sharos" />
+   ms.date="06/18/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 1 のインストール
 
 ## 概要
 
-このチュートリアルでは、Update 1 より前のソフトウェア バージョンを実行している StorSimple デバイスに Update 1 をインストールする方法について説明します。お使いのデバイスでは、一般提供 (GA) リリース、Update 0.1、Update 0.2、または Update 0.3 のソフトウェアが実行されている可能性があります。このチュートリアルでは、StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスでゲートウェイが構成されている場合の対処方法についても説明します。
+このチュートリアルでは、Update 1 より前のソフトウェア バージョンを実行している StorSimple デバイスに Update 1 をインストールする方法について説明します。お使いのデバイスでは、一般提供 (GA) リリース、Update 0.1、Update 0.2、または Update 0.3 のソフトウェアが実行されている可能性があります。
 
-このインストール中に、デバイスで Update 1.0 よりも前のバージョンが実行されている場合は、そのデバイスでチェックが実行されます。これらのチェックでは、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を確認します。
+このインストール中に、デバイスで Update 1 よりも前のバージョンが実行されている場合は、そのデバイスでチェックが実行されます。これらのチェックでは、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を確認します。
 
 手動の事前チェックを実行して、次の点について確認するよう求められます。
 
 - コントローラーの固定 IP アドレスがルーティング可能でインターネットに接続できること。これらの IP は、StorSimple デバイスのサービス更新のために使用されます。このテストを実行するには、各コントローラーで次のコマンドレットを実行します。
 
-    `Test-Connection -Source <fixed IP of your device controller> <Destination IP> `
+    `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network> `
  
+	**固定 IP でインターネットに接続できるときの Test-Connection のサンプル出力**
+
+	    
+		Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
+	    
+	    Source	  Destination 	IPV4Address      IPV6Address
+	    ----------------- -----------  -----------
+	    HCSNODE0  bing.com		204.79.197.200
+	    HCSNODE0  bing.com		204.79.197.200
+	    HCSNODE0  bing.com		204.79.197.200
+	    HCSNODE0  bing.com		204.79.197.200
+	
+		Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
+
+	    Source	  Destination 	  IPV4Address    IPV6Address
+	    ----------------- -----------  -----------
+	    HCSNODE0  204.79.197.200  204.79.197.200
+	    HCSNODE0  204.79.197.200  204.79.197.200
+	    HCSNODE0  204.79.197.200  204.79.197.200
+	    HCSNODE0  204.79.197.200  204.79.197.200
+	    
+	    
+
+
 - デバイスを更新する前に、デバイス データのクラウド スナップショットを取得することをお勧めします。
 
 手動のチェック (上記) を確認した後に、一連の更新前のチェックが自動的に実行されます。チェックの内容は次のとおりです
@@ -47,45 +71,10 @@ Update 1 は、すべての更新前のチェックが正常に完了してい�
 
 ## 管理ポータルを使用して Update 1 をインストールする
 
-Azure の管理ポータルを使用して GA バージョンを実行しているデバイスを更新することをお勧めします。デバイスを更新するには、次の手順を実行します。
+Azure 管理ポータルを使用して GA バージョンを実行しているデバイスを更新することをお勧めします。デバイスを更新するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-install-update-via-portal](../../includes/storsimple-install-update-via-portal.md)]
 
-## ゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されているデバイスに、Update 1 をインストールします。 
-
-この手順は、Update 1.0 よりも前のソフトウェア バージョンを実行していて、ゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されている StorSimple デバイスに適用されます。
- 
-デバイスのゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されていない場合、管理ポータルから直接デバイスを更新できます。「[管理ポータルを使用して Update 1 をインストールする](#use-the-management-portal-to-install-update-1)」を参照してください。
- 
-> [AZURE.NOTE]この手順は、Update 1.0 を適用するために 1 回だけ実行する必要があります。以降の更新プログラムは、Azure の管理ポータルを使用して適用できます。
- 
-デバイスが Update 1.0 よりも前のソフトウェアを実行していて、ゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されている場合、次の 2 つの方法で Update 1.0 を適用できます。
-
-- **方法 1**: デバイスの Windows PowerShell インターフェイスから、[Start-HcsHotfix](https://technet.microsoft.com/library/dn688134.aspx) コマンドレットを使用して更新プログラムをダウンロードして適用します。これが推奨される方法です。
-
-- **方法 2**: 管理ポータルから直接更新プログラムをインストールします。
- 
-個々の詳細な手順は、次のセクションに記載されています。
-
-### 方法 1: StorSimple 用 Windows PowerShell を使用して Update 1 を適用する
-
-この手順を使用して更新プログラムを適用する前に、次のことを確認します。
-
-- 両方のデバイス コントローラーがオンラインである。
-
-- DATA 2 と DATA 3 が無効である。この手順は、デバイスが GA リリースを実行している場合にのみ必要です。更新プログラム 0.2 と 0.3 を実行しているデバイスで、それらを無効にする必要はありません。更新が完了したら、これらのネットワーク インターフェイスを再度有効にすることができます。
- 
-Update 1.0 を適用するには、次の手順を実行します。更新の完了に数時間かかる場合があります。
-
-[AZURE.INCLUDE [storsimple-install-update-option1](../../includes/storsimple-install-update-option1.md)]
-
-### 方法 2: Azure の管理ポータルを使用して Update 1 を適用する
-
-更新の完了に数時間かかる場合があります。ホストが別のサブネットにある場合、iSCSI インターフェイスでゲートウェイの構成を削除すると、ダウンタイムが発生する場合があります。ダウンタイムを抑えるために、DATA 0 を iSCSI トラフィック用に構成することをお勧めします。
- 
-ゲートウェイの設定をクリアしてから更新プログラムを適用するには、次の手順を実行します。
- 
-[AZURE.INCLUDE [storsimple-install-update-option2](../../includes/storsimple-install-update-option2.md)]
 
 ## 更新プログラムのエラーに関するトラブルシューティング
 
@@ -101,7 +90,7 @@ Update 1.0 を適用するには、次の手順を実行します。更新の完
 
 この問題で考えられる原因の 1 つは、Microsoft Update サーバーに接続できないことです。この場合、手動チェックを実行する必要があります。Update サーバーに接続できない場合は、更新ジョブは失敗します。StorSimple デバイスの Windows PowerShell インターフェイスから次のコマンドレットを実行して、接続を確認できます。
 
- `Test-Connection -Source <Fixed IP of your device controller> <Destination IP>`
+ `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter>`
 
 両方のコントローラーでコマンドレットを実行します。
  
@@ -111,4 +100,4 @@ Update 1.0 を適用するには、次の手順を実行します。更新の完
 
 [Microsoft Azure StorSimple](storsimple-overview.md) の詳細を確認する
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

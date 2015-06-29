@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Add StorSimple backup policies"
-   description="Explains how you can use the StorSimple Manager service to create a backup policy."
+   pageTitle="StorSimple のバックアップ ポリシーの追加"
+   description="StorSimple Manager サービスを使用して、バックアップ ポリシーを作成する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,20 +15,19 @@
    ms.date="05/22/2015"
    ms.author="alkohli" />
 
-#### To add a StorSimple backup policy
+#### StorSimple のバックアップ ポリシーを追加するには
 
-1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
+1. デバイスの **[クイック スタート]** ページで、**[バックアップ ポリシー]** タブをクリックします。この操作により、**[バックアップ ポリシー]** ページが表示されます。
 
-2. At the bottom of the page, click **Add**.
+2. ページの下部にある **[追加]** をクリックします。
 
-3. In the **Add Backup Policy** dialog box, do the following:
+3. **[バックアップ ポリシーの追加]** ダイアログ ボックスで、次の操作を行います。
 
-    1. Specify a backup policy name that contains between 3 and 150 characters.
-    2. Assign one or more volumes to this backup policy. If you are using other cloud service providers, based on your first selection, the dropdown list will show volumes belonging to only that cloud service provider. This will allow you to group volumes belonging to a single cloud service provider for taking a snapshot.
-    3. Click the check icon ![check icon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) to save the policy.
+    1. バックアップ ポリシーに 3 ～ 150 文字の名前を指定します。
+    2. このバックアップ ポリシーに 1 つ以上のボリュームを割り当てます。他のクラウド サービス プロバイダーを使用している場合は、最初の選択に基づいて、そのクラウド サービス プロバイダーにのみ属するボリュームがドロップダウン リストに表示されます。これにより、スナップショットを取得するために、特定のクラウド サービス プロバイダーに属するボリュームをグループ化できます。
+    3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) をクリックして、ポリシーを保存します。
 
-The newly added policy will be displayed in the tabular view on the **Backup Policies** page.
+**[バックアップ ポリシー]** ページの表形式のビューに、新たに追加したポリシーが表示されます。
  
 
-
-
+<!---HONumber=58_postMigration-->

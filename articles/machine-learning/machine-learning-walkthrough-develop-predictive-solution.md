@@ -1,48 +1,45 @@
-<properties 
-	pageTitle="Machine Learning を使用した予測ソリューションの開発 | Azure" 
-	description="Azure Machine Learning Studio で予測的な分析手法を作成する方法の段階的説明" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="paulettm" 
+<properties
+	pageTitle="信用リスク評価のための予測分析ソリューションを Machine Learning で開発する | Microsoft Azure"
+	description="信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する方法を詳しく紹介したチュートリアルです。"
+	keywords="credit risk, predictive analytics solution,risk assessment"	
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/06/2014" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="04/22/2015"
 	ms.author="garye"/>
 
-# Azure Machine Learning を使用した予測ソリューションの開発
+
+# チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する
 
 信用貸付の申請書に記入する情報に基づいて個人の信用リスクを予測する必要があるとします。
 
-もちろんこれは複雑な問題ですが、ここでは質問に含まれるパラメーターを少し簡略化し、そのような予測分析ソリューションを作成するために Microsoft Azure Machine Learning を ML Studio および ML API サービスと共に使用する方法の例として取り上げます。
+もちろん信用リスクの評価は複雑な問題ですが、ここでは質問に含まれるパラメーターを少し簡略化し、そのような予測分析ソリューションを作成するために Microsoft Azure Machine Learning を Machine Learning Studio および Machine Learning Web サービスと共に使用する方法の例として取り上げます。
 
-このチュートリアルでは、ML Studio での予測分析モデルの開発プロセスに従って作業した後、モデルを ML API サービスに公開します。公開されている信用リスク データを使用して、データに基づいた予測モデルを開発してトレーニングし、次に、他のユーザーが使用できる Web サービスとしてモデルを公開します。
+ここでは、Machine Learning Studio での予測分析モデルの開発プロセスに従って作業した後、モデルを Machine Learning Web サービスに公開します。公開されているクレジット リスク データを使用して、データに基づいた予測モデルを開発してトレーニングし、次に、他のユーザーが信用リスクの評価目的に使用できる Web サービスとしてモデルを発行します。
 
-次の手順に従います。
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-1.  [ML ワークスペースを作成する][ML ワークスペースを作成する]
-2.  [既存のデータをアップロードする][既存のデータをアップロードする]
-3.  [新しい実験を作成する][新しい実験を作成する]
-4.  [モデルをトレーニングして評価する][モデルをトレーニングして評価する]
-5.  [Web サービスを発行する][Web サービスを発行する]
-6.  [Web サービスにアクセスする][Web サービスにアクセスする]
+Machine Learning Studio を開くには、[https://studio.azureml.net/Home](https://studio.azureml.net/Home) のリンクをクリックします。Machine Learning Studio の概要の詳細については、「[Microsoft Azure Machine Learning Studio ホーム](https://studio.azureml.net/)」をご覧ください。
 
-このチュートリアルは、ML Studio に含まれる「
-[Credit risk prediction sample experiment (信用リスク予測のサンプル実験)][Credit risk prediction sample experiment (信用リスク予測のサンプル実験)]」の簡略版に基づきます。
+信用リスク評価ソリューションを作成するのには、次の手順に従います。
 
-  [ML ワークスペースを作成する]: ../machine-learning-walkthrough-1-create-ml-workspace/
-  [既存のデータをアップロードする]: ../machine-learning-walkthrough-2-upload-data/
-  [新しい実験を作成する]: ../machine-learning-walkthrough-3-create-new-experiment/
-  [モデルをトレーニングして評価する]: ../machine-learning-walkthrough-4-train-and-evaluate-models/
-  [Web サービスを発行する]: ../machine-learning-walkthrough-5-publish-web-service/
-  [Web サービスにアクセスする]: ../machine-learning-walkthrough-6-access-web-service/
-  [Credit risk prediction sample experiment (信用リスク予測のサンプル実験)]: ../machine-learning-sample-credit-risk-prediction/
+1.	[Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)
+2.	[既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)
+3.	[新しい実験を作成する](machine-learning-walkthrough-3-create-new-experiment.md)
+4.	[モデルをトレーニングして評価する](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5.	[Web サービスを発行する](machine-learning-walkthrough-5-publish-web-service.md)
+6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
-<!--HONumber=46--> 
+このチュートリアルは、Machine Learning Studio に含まれる「[Credit risk prediction sample experiment (クレジット リスク予測のサンプル実験)](../machine-learning-sample-credit-risk-prediction.md)」の簡略版に基づきます。
  
+
+<!---HONumber=58_postMigration-->

@@ -1,27 +1,12 @@
-<properties 
-   pageTitle="ボリュームをマウント、初期化、フォーマットするには"
-   description="StorSimple デバイスのボリュームを構成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   edito**r="tysonn" />
-<tags 
-   ms.se**rvice="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/01/2015"
-   ms.author="v-sharos" />
+<properties pageTitle="ボリュームをマウント、初期化、フォーマットするには" description="StorSimple デバイスのボリュームを構成する方法について説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="adinah" edito**r="tysonn" /> <tags ms.se**rvice="storsimple" ms.devlang="NA" ms.topic="article" ms.tgt_pltfrm="NA" ms.workload="TBD" ms.date="04/29/2015" ms.author="v-sharos" />
 
-### ボリュームをマウント、初期化、フォーマットするには
+#### ボリュームをマウント、初期化、フォーマットするには
 
 1. Microsoft iSCSI イニシエーターを開始します。
 
 2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[探索]** タブで、**[ポータルの探索]** をクリックします。
 
-3.  **[ターゲット ポータルの探索]** ダイアログ ボックスで、iSCSI 対応のネットワーク インターフェイスの IP アドレスを入力し、**[OK]** をクリックします。
+3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、iSCSI 対応のネットワーク インターフェイスの IP アドレスを入力し、**[OK]** をクリックします。
 
 4. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブで、**[検出されたターゲット]** を見つけます。デバイスの状態が **[非アクティブ]** になっています。
 
@@ -29,7 +14,7 @@
 
 6. Windows ホスト上で、Windows ロゴ キーを押しながら X キーを押し、**[ファイル名を指定して実行]** をクリックします。
 
-7.  **[ファイル名を指定して実行]** ダイアログ ボックスに、「**Diskmgmt.msc**」と入力します。**[OK]** をクリックします。**[ディスクの管理]** ダイアログ ボックスが表示されます。右側のウィンドウに、ホスト上のボリュームが表示されます。
+7. **[ファイル名を指定して実行]** ダイアログ ボックスに、「**Diskmgmt.msc**」と入力します。**[OK]** をクリックします。**[ディスクの管理]** ダイアログ ボックスが表示されます。右側のウィンドウに、ホスト上のボリュームが表示されます。
 
 8. 次の図に示すように、マウントされているボリュームが **[ディスクの管理]** ウィンドウに表示されます。検出されたボリュームを右クリックし (ディスク名をクリック)、**[オンライン]** をクリックします。
 
@@ -46,4 +31,4 @@
 <!--Link references-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!--HONumber=52-->
+<!---HONumber=58_postMigration-->

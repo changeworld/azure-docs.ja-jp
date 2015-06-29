@@ -1,3 +1,4 @@
+
 <properties
 	pageTitle="Azure Backup - 仮想マシンの復元"
 	description="Azure 仮想マシンを復元する方法について説明します。"
@@ -17,7 +18,7 @@
 	ms.author="aashishr"/>
 
 # 仮想マシンの復元
-復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
+復元操作を使用して、Azure のバックアップ コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
 
 ## 復元する項目を選択する
 
@@ -41,7 +42,7 @@
 
     ![日付を選択する](./media/backup-azure-restore-vms/select-date.png)
 
-    カレンダー コントロールの日付をクリックすると、その日付の使用可能な回復ポイントが下の回復ポイント テーブルに表示されます。**[時間]** 列は、スナップショットが作成された日時を示します。 **型** 列が表示されます、 [一貫性](https://azure.microsoft.com/documentation/articles/backup-azure-vms/#consistency-of-recovery-points) 回復ポイントのです。テーブル ヘッダーのかっこ内は、その日に使用可能な回復ポイントの数を示します。
+    カレンダー コントロールの日付をクリックすると、その日付の使用可能な回復ポイントが下の回復ポイント テーブルに表示されます。**[時間]** 列は、スナップショットが作成された日時を示します。**[種類]** 列は、回復ポイントの [整合性](https://azure.microsoft.com/documentation/articles/backup-azure-vms/#consistency-of-recovery-points)を示します。テーブル ヘッダーのかっこ内は、その日に使用可能な回復ポイントの数を示します。
 
     ![回復ポイント](./media/backup-azure-restore-vms/recovery-points.png)
 
@@ -51,26 +52,26 @@
 
 1. **[Select restore instance]** 画面で、仮想マシンを復元する場所の詳細を指定します。
 
-  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure バックアップからデータを復元します。
-  - 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
+  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の VM を同じ名前に置き換える場合は、まず既存の VM とデータ ディスクを削除し、次に Azure Backup からデータを復元します。
+  - VM のクラウド サービスを選択する: これは VM を作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
 
-        Whatever cloud service name is picked should be globally unique. Typically, the cloud service name gets associated with a public-facing URL in the form of [cloudservice].cloudapp.net. Azure will not allow you to create a new cloud service if the name has already been used. If you choose to create select create a new cloud service, it will be given the same name as the virtual machine – in which case the VM name picked should be unique enough to be applied to the associated cloud service.
+        クラウド サービス名はどのようなものであれグローバルに一意である必要があります。クラウド サービス名は通常、[cloudservice].cloudapp.net の形式で公開される URL に紐付けられます。Azure では、名前がすでに使用されている場合は新しいクラウド サービスを作成できません。新しいクラウド サービスの選択でクラウド サービスを作成する場合、仮想マシンと同じ名前になります。ここで選択された VM 名は関連するクラウド サービスに使うことができる、一意のものである必要があります。
 
-        We only display cloud services and virtual networks that are not associated with any affinity groups in the restore instance details. [Learn More](https://msdn.microsoft.com/en-us/library/azure/jj156085.aspx).
+        復元インスタンス詳細のアフィニティ グループに関連しないクラウド サービスや仮想ネットワークのみが表示されます。[詳細について](https://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx)。
 
-2. 仮想マシンのストレージ アカウントを選択する: これは仮想マシンを作成するために必須です。Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
+2. VM のストレージ アカウントを選択する: これは VM を作成するために必須です。Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
 
     サポートされている構成のストレージ アカウントがない場合は、復元操作を開始する前に、サポートされている構成のストレージ アカウントを作成してください。
 
     ![仮想ネットワークを作成する](./media/backup-azure-restore-vms/restore-sa.png)
 
-3. 仮想マシンを選択する: 仮想マシンの作成時に、仮想マシンの仮想ネットワーク (VNET) を選択する必要があります。復元 UI は、使用できるこのサブスクリプション内の VNET をすべて表示します。復元された仮想マシンの VNET を選択する必要はありません。VNET が適用されない場合でも、インターネット経由で復元された仮想マシンに接続できます。
+3. 仮想ネットワークを選択する: VM の作成時に、仮想マシンの仮想ネットワーク (VNET) を選択する必要があります。復元 UI は、使用できるこのサブスクリプション内の VNET をすべて表示します。復元された VM の VNET を選択する必要はありません。VNET が適用されない場合でも、インターネット経由で復元された仮想マシンに接続できます。
 
     選択したクラウド サービスが仮想ネットワークに関連付けられている場合は、仮想ネットワークを変更できません。
 
     ![仮想ネットワークを作成する](./media/backup-azure-restore-vms/restore-cs-vnet.png)
 
-4. サブネットを選択する: VNET にサブネットがある場合、既定では最初のサブネットが選択されます。ドロップダウン リストのオプションから、任意のサブネットを選択します。サブネットの詳細については、ネットワークの拡張機能を参照してください。、 [ポータルのホーム ページ](https://manage.windowsazure.com/), 、仮想ネットワークに移動しを選択して、仮想ネットワーク サブネットの詳細を表示するには、構成するにドリル ダウンします。
+4. サブネットを選択する: VNET にサブネットがある場合、既定では最初のサブネットが選択されます。ドロップダウン リストのオプションから、任意のサブネットを選択します。サブネットの詳細については、[ポータルのホーム ページ](https://manage.windowsazure.com/)の [Networks] 拡張機能から [Virtual Networks] に移動し、仮想ネットワークを選択して、[構成] をドリルダウンしてサブネットの詳細を表示します。
 
     ![サブネットを選択する](./media/backup-azure-restore-vms/select-subnet.png)
 
@@ -89,16 +90,18 @@
 
 ![復元ジョブの完了](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-仮想マシンを復元した後、元の VM 上の既存の拡張機能を再インストールする必要がありますと [エンドポイントを作成し直す](virtual-machines-set-up-endpoints) 、Azure ポータルでのバーチャル マシンのです。
+仮想マシンを復元したら、元の VM にある拡張機能を再インストールし、Azure ポータルで仮想マシンの[エンドポイントを再作成する](virtual-machines-set-up-endpoints)必要がある場合があります。
 
 ## エラーのトラブルシューティング
 多くのエラーは、エラーの詳細に示す推奨される操作を実行できます。次にトラブルシューティングに役立つポイントをいくつか示します。
 
 | バックアップ操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>先となるを復元しようとは、クラウド サービスは ReservedIP で構成され、クラウド サービス内の既存の Vm が停止状態にします<br>。クラウド サービスが IP を次の powershell コマンドレットを使用して予約を確認することができます<br>$deployment"サービス名"の Get-azuredeployment ServiceName =-スロット"Production"$dep.。ReservedIPName</ol> |
+| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元先のクラウド サービスに ReservedIP が構成されており、クラウド サービス内の既存 VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName</ol> |
 
 ## 次のステップ
 - [仮想マシンの管理](backup-azure-manage-vms)
 
-<!---HONumber=GIT-SubDir--> 
+ 
+
+<!---HONumber=58_postMigration-->

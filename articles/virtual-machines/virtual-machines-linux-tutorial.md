@@ -12,7 +12,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="hero-article"
+	ms.topic="get-started-article"
 	ms.date="05/22/2015"
 	ms.author="rasquill"/>
 
@@ -288,12 +288,13 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
-- [Mac および Linux 用 Azure コマンド ライン ツールの使用方法](../virtual-machines-command-line-tools.md)
+- [Azure コマンド ライン インターフェイスの使用方法](../virtual-machines-command-line-tools.md)
 
 - [Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする](virtual-machines-linux-script-lamp.md)
 
 - [Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

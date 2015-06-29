@@ -12,3 +12,4 @@
 - [(Python | Windows. Starter)](sql-database-develop-python-simple-windows.md)
 - [(Python | Mac. Starter)](sql-database-develop-python-simple-mac-osx.md)
 
+<!---HONumber=58_postMigration-->

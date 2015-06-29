@@ -15,7 +15,7 @@
    ms.date="04/27/2015"
    ms.author="v-sharos" />
 
-### Windows ホストの IQN を取得するには
+#### Windows ホストの IQN を取得するには
 
 1. Windows ホストで、Microsoft iSCSI イニシエーターを起動します。
 
@@ -25,4 +25,4 @@
 
 3. この文字列を保存します。
 
-<!--HONumber=52-->
+<!---HONumber=58_postMigration-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Apache Storm と HBase を使用したセンサー データの分析 | Microsoft Azure"
-   description="HDInsight で Apache Storm と HBase を使用し、Azure Event Hubs からのセンサー データを処理し、D3.js を使用して表示する方法を説明します。また、仮想ネットワークで Storm に接続します。"
+   description="仮想ネットワークで Apache Storm に接続する方法について説明します。Storm と HBase を使用して、イベント ハブが発するセンサー データを処理して D3.js で視覚化します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -22,7 +22,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 ## 前提条件
 
-* Azure サブスクリプション
+* Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 * [HDInsight クラスターでの Apache Storm](../hdinsight-storm-getting-started.md)
 
@@ -38,7 +38,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 ## アーキテクチャ
 
-![アーキテクチャ ダイアグラム](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
+![architecture diagram](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
 
 この例は、次のコンポーネントで構成されています。
 
@@ -52,7 +52,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 * **ダッシュボードの Web サイト**: データをリアルタイムでグラフにするサンプルのダッシュボード。
 
-	* Web サイトは Node.js で実装されるため、すべてのクライアント オペレーティング システムでテスト用に実行できます。また Azure の Web サイトに展開することもできます。
+	* Web サイトは Node.js で実装されるため、すべてのクライアント オペレーティング システムでテスト用に実行できます。また Azure Websites にデプロイすることもできます。
 
 	* [Socket.io](http://socket.io/) は Storm トポロジと Web サイト間のリアルタイムの通信に使用します。
 
@@ -66,7 +66,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 このトポロジのダイアグラムを次に示します。
 
-![トポロジの図](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
+![topology diagram](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
 
 > [AZURE.NOTE]これは、トポロジの非常に簡略化されたビューです。実行時に、各コンポーネントのインスタンスは、読み取られている Event Hub のパーティションごとに作成されます。これらのインスタンスはクラスター内のノード間に配布され、次のようにデータはルーティングされます。
 >
@@ -184,17 +184,17 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 		npm install
 
-2. 次のコマンドを使用して、Web サイトを開始します。
+2. 次のコマンドを使用して、Web アプリケーションを開始します。
 
 		node server.js
 
-	次のようなページが表示されます。
+	次のようなメッセージが表示されます。
 
 		Server listening at port 3000
 
 2. Web ブラウザーを開き、アドレスとして **http://localhost:3000/** を入力します。次のようなページが表示されます。
 
-	![Web ダッシュボード](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
+	![web dashboard](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
 
 	このコマンド プロンプトまたはターミナルは開いたままにします。テストした後で、Ctrl + C を使用して、Web サーバーを停止します。
 
@@ -242,7 +242,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 	これでトポロジが開始され、Event Hub からファイルを読み取り、Azure Websites で実行されているダッシュボードにファイルを送信します。Web ダッシュボードに、次のような行が表示されます。
 
-	![データのダッシュボード](./media/hdinsight-storm-sensor-data-analysis/datadashboard.png)
+	![dashboard with data](./media/hdinsight-storm-sensor-data-analysis/datadashboard.png)
 
 3. ダッシュボードの実行中に、前の手順の `node app.js` コマンドを使用してダッシュボードに新しいデータを送信します。温度の値がランダムに生成されるため、グラフを更新して新しい値を表示する必要があります。
 
@@ -254,11 +254,11 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### Web サイトのダッシュボードを発行する
 
-1. Azure Web サイトにダッシュボードを配置するには、「[Node.js Web サイトの構築と Azure へのデプロイ](../web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
+1. Azure Web サイトにダッシュボードをデプロイするには、「[Node.js Web サイトの構築と Azure へのデプロイ](../web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
 
 2. Web サイトが作成されたら、Azure ポータルに移動して、**[構成]** を選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 
-2. **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts\\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
+2. **hdinsight-eventhub-example\TemperatureMonitor\src\main\java\com\microsoft\examples\bolts\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
 
 		socket = IO.socket("http://mywebsite.azurewebsites.net");
 
@@ -272,7 +272,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 	これにより、プロジェクトの **target** ディレクトリに **TemperatureMonitor-1.0-SNAPSHOT.jar** という名前のファイルが作成されます。
 
-2. 「[Storm トポロジの展開と管理](hdinsight-storm-deploy-monitor-topology.md)」の手順に従い、**Storm ダッシュボード**を使用して HDInsight クラスター上の Storm にトポロジをアップロードして開始します。
+2. 「[Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」の手順に従い、**Storm ダッシュボード**を使用して HDInsight クラスター上の Storm にトポロジをアップロードして開始します。
 
 3. トポロジが開始されたら、Azure に発行した Web サイトにブラウザーを開いて、`node app.js` コマンドを使用して Event Hub にデータを送信します。情報を表示する Web ダッシュボードの更新が表示されます。
 
@@ -288,7 +288,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
 
-2. ページ下部で、**[+ 新規]** > **[ネットワーク サービス]** > **[Virtual Network]** > **[簡易作成]** をクリックします。
+2. ページ下部で、**[+ 新規]** > **[Network Services]** > **[Virtual Network]** > **[簡易作成]** をクリックします。
 
 3. 次の値を入力または選択します。
 
@@ -314,7 +314,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 9. ページの下部に示される既定のサブネット名は、**Subnet-1** です。**[サブネットの追加]** をクリックして「**Subnet-2**」を追加します。これらのサブネットには、Storm クラスターと HBase クラスターが収容されます。
 
-	> [AZURE.NOTE]この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、worker ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
+	> [AZURE.NOTE]この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、worker ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイは失敗します。
 	>
 	> 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 
@@ -362,22 +362,22 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 ### HBase ボルトを有効にします。
 
-1. **hdinsight-eventhub-example\\TemperatureMonitor\\conf\\hbase-site.xml** を開き、次の行の `suffix` エントリを前に HBase クラスターに取得した DNS サフィックスに置き換えます。これらの変更を行った後は、ファイルを保存します。
+1. **hdinsight-eventhub-example\TemperatureMonitor\conf\hbase-site.xml** を開き、次の行の `suffix` エントリを前に HBase クラスターに取得した DNS サフィックスに置き換えます。これらの変更を行った後は、ファイルを保存します。
 
 		<value>zookeeper0.suffix,zookeeper1.suffix,zookeeper2.suffix</value>
 
 	これは、HBase クラスターとの通信に HBase ボルトによって使用されます。
 
-1. テキスト エディターで、**hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
+1. テキスト エディターで、**hdinsight-eventhub-example\TemperatureMonitor\src\main\java\com\microsoft\examples\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
 
 		topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
 
 	これで、HBase ボルトが有効になります。
 
-	> [AZURE.NOTE]HBase ボルトは、ローカルでテストしている場合ではなく、Storm クラスターに展開している場合にのみ有効にする必要があります。
+	> [AZURE.NOTE]HBase ボルトは、ローカルでテストしている場合ではなく、Storm クラスターにデプロイしている場合にのみ有効にする必要があります。
 
-### HBase  データと Storm データ
+### HBase データと Storm データ
 
 トポロジを実行する前に、データを受け入れる HBase を準備する必要があります。
 
@@ -385,7 +385,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 2. デスクトップで HDInsight コマンド ラインを開始し、次のコマンドを入力します。
 
-    cd %HBASE_HOME% bin\\hbase shell
+    cd %HBASE_HOME% bin\hbase shell
 
 3. HBase シェルから、次のコマンドを入力して、センサー データを格納するテーブルを作成します。
 
@@ -419,5 +419,6 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 * .NET でトポロジを作成する方法の詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 [azure-portal]: https://manage.windowsazure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=58_postMigration-->

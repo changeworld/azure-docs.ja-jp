@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Install Update 1 from the Azure Management Portal"
-   description="Explains how to use the Management Portal to install StorSimple 8000 Series Update 1."
+   pageTitle="Microsoft Azure 管理ポータルを使用した Update 1 のインストール"
+   description="管理ポータルを使用して、StorSimple 8000 シリーズの Update 1 をインストールする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,49 +15,50 @@
    ms.date="05/22/2015"
    ms.author="v-sharos" />
 
-#### To install Update 1 from the Management Portal
+#### 管理ポータルを使用して Update 1 をインストールするには
 
-1. On the StorSimple service page, select your device. Navigate to **Devices** > **Maintenance**.
+1. StorSimple サービス ページでデバイスを選択します。**[デバイス]**、**[メンテナンス]** の順にクリックします。
 
-2. At the bottom of the page, click **Scan Updates**. A job will be created to scan for available updates. You will be notified when the job has completed successfully.
+2. ページの下部にある **[更新プログラムのスキャン]** をクリックします。利用可能な更新プログラムをスキャンするジョブが作成されます。このジョブが正常に完了すると、通知されます。
 
-3. In the **Software Updates** section on the same page, you will see that new software updates are available. We recommend that you review the release notes before you apply Update 1.0 on your device.
+3. 同じページの **[ソフトウェア更新プログラム]** セクションで、新しいソフトウェア更新プログラムを利用できることがわかります。Update 1.0 をデバイスに適用する前に、リリース ノートを確認することをお勧めします。
 
     ![Install software updates](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates1-include.png)
 
-4. At the bottom of the page, click **Install Updates**.
+4. ページの下部にある **[更新プログラムのインストール]** をクリックします。
 
-5. You will be prompted for confirmation. Click **OK**.
+5. 確認を求められます。**[OK]** をクリックします。
 
-6. An **Install Updates** dialog box will be presented. Make sure that your device satisfies the checks listed in this dialog box. Select **I understand the above requirement and am ready to update my device**. Click the check icon.
+6. **[更新プログラムのインストール]** ダイアログ ボックスが表示されます。デバイスが、このダイアログ ボックスに示されているチェック項目を満たしていることを確認します。**[上記の要件を理解し、デバイスを更新する準備ができました]** を選択します。チェック マーク アイコンをクリックします。
 
     ![Confirmation message](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates2-include.png)
 
-7. You will be notified that pre-update checks are in progress.
+7. 更新前のチェックを実行中であることが通知されます。
   
     ![Pre-check notification](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates3-include.png)
 
-    The following is an example in which the pre-upgrade check failed. You will need to verify that both the device controllers are healthy and online. You will also need to check the health of the hardware components. In this example, Controller 0 and Controller 1 components need attention. You may need to contact Microsoft Support if you cannot address these issues by yourself.
+    アップグレード前のチェックが失敗した例を次に示します。この場合、両方のデバイス コントローラーが正常であり、オンラインであることを確認する必要があります。また、ハードウェア コンポーネントの正常性も確認する必要があります。この例では、コント ローラー 0 とコント ローラー 1 の各コンポーネントに対処する必要があります。これらの問題に自分で対処できない場合、Microsoft サポートに連絡することが必要になる場合があります。
 
     ![Pre-check failed](./media/storsimple-install-update-via-portal/HCS_PreUpgradeChecksFailed-include.png)
 
-8. After the pre-upgrade checks are successfully completed, an update job will be created. You will be notified when the update job is successfully created.
+8. アップグレード前のチェックが正常に完了したら、更新ジョブが作成されます。更新ジョブが正常に作成されると、通知されます。
  
     ![Update job creation](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates4-include.png)
 
-    The update will then be applied on your device.
+    その後、更新プログラムがデバイスに適用されます。
  
-9. To monitor the progress of the update job, click **View Job**. On the Jobs page, you can see the update progress. 
+9. 更新ジョブの進行状況を監視するには、**[ジョブの表示]** をクリックします。[ジョブ] ページでは、更新の進行状況を確認できます。
 
     ![Update job progress](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates5-include.png)
 
-10. The update will take a few hours to complete. You can view the details of the job at any time.
+10. 更新が完了するまでに数時間かかります。ジョブの詳細はいつでも表示できます。
 
     ![Update job details](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates6-include.png)
 
-11. After the job is complete, navigate to the **Maintenance** page and scroll down to **Software Updates**.
+11. ジョブが完了したら、**[メンテナンス]** ページに移動し、**[ソフトウェア更新プログラム]** まで下にスクロールします。
 
-12. Verify that your device is running **StorSimple 8000 Series Update 1.0 (6.3.9600.17491)**. The **Last updated date** should also be modified.
+12. デバイスで **[StorSimple 8000 Series Update 1.0 (6.3.9600.17491)]** が実行されていることを確認します。**[最終更新日]** も変更されています。
 
     ![Maintenance page](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates7-include.png)
 
+<!---HONumber=58_postMigration-->

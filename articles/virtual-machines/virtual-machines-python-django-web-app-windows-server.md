@@ -60,7 +60,7 @@
 1. Web Platform Installer を使用して、Python と WFastCGI をインストールします。これにより、wfastcgi.py が Python スクリプト フォルダーにインストールされます。
 	1. Web Platform Installer を起動します。
 	1. 検索バーに「WFastCGI」と入力します。 
-	1. 使用する Python のバージョン (2.7 または 3.4) に対応した WFactCGI エントリを選択します。これにより、Python が WFastCGI の依存コンポーネントとしてインストールされます。 
+	1. 使用する Python のバージョン (2.7 または 3.4) に対応した WFactCGI エントリを選択します。これにより、Python が WFastCGI の依存関係としてインストールされます。 
 1. pip を使用して Django をインストールします。
 
     Python 2.7:
@@ -198,4 +198,6 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->

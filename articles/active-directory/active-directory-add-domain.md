@@ -72,7 +72,7 @@ onmicrosoft.com ドメインを他のサービスで使用できます。たと�
 
 ### クラウド サービスの DNS レコードの編集
 
-> [AZURE.NOTE]Microsoft Intune を使用している場合は、 Windows Intune クラウド サービスの DNS レコードを編集する必要はありません。
+> [AZURE.NOTE]Microsoft Intune を使用している場合は、 Microsoft Intune クラウド サービスの DNS レコードを編集する必要はありません。
 
 カスタム ドメイン名を追加して確認したら、次に、ドメイン レジストラーまたは DNS ホスティング プロバイダーで、トラフィックがクラウド サービスに送信されるように DNS レコードを編集します。必要な DNS 情報は Azure AD が提供します。
 
@@ -204,11 +204,11 @@ TXT レコードまたは MX レコードを作成し、Web サイトからサ�
 
 ユーザー アカウントを追加した後に、カスタム ドメイン名をクラウド サービスに追加した場合、新しいドメイン名を使用するための更新作業が必要になる場合があります。たとえば、ユーザーのアカウントを編集して、カスタム ドメインを使用するように電子メール アドレスを設定するする必要があります。
 
-## 次の手順
+## 参照トピック
 
 - [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
 - [StackOverflow](http://stackoverflow.com/questions/tagged/azure)
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
-- [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx)
+- [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx) 
 
-<!---HONumber=58--> 
+<!---HONumber=58_postMigration-->

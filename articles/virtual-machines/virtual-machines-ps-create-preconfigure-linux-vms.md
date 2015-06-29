@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="06/11/2015" 
 	ms.author="josephd"/>
 
 # Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する
@@ -22,7 +22,7 @@
 - [Azure Portal](virtual-machines-linux-tutorial.md)
 - [PowerShell](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
-以下の手順では、Azure PowerShell コマンド セットのカスタマイズ方法を示します。このコマンド セットは構成ブロック手法を使用することにより、Linux ベースの Azure 仮想マシンを作成と事前構成します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイメントを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
+以下の手順では、Azure PowerShell コマンド セットのカスタマイズ方法を示します。このコマンド セットは構成ブロック手法を使用することにより、Linux ベースの Azure 仮想マシンを作成と事前構成します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
@@ -55,14 +55,14 @@ Linux ベースのコンピューターで使用する ImageFamily 値の例は�
 - CoreOS Alpha
 - SUSE Linux Enterprise Server 12
 
-選択したテキスト エディターの最新インスタンス (または PowerShell Integrated Scripting Environment [ISE] のインスタンス) を開き、ImageFamily 値に置き換える以下のコマンドを新しいテキスト ファイルにコピーします。
+任意のテキスト エディターの最新インスタンスまたは PowerShell Integrated Scripting Environment (ISE) のインスタンスを開きます。新しいテキスト ファイルまたは PowerShell ISE に次のコードをコピーし、ImageFamily 値を置き換えます。
  
 	$family="<ImageFamily value>"
 	$image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
 ## 手順 4. コマンド セットを構築する
 
-下の該当するブロック セットを新しいテキスト ファイルにコピーしてから変数の値を入力し、文字 < and > を削除する手順によって残りのコマンド セットを構築します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
+残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは PowerShell ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
 
 この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
 
@@ -85,8 +85,6 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."	
 	$vm1 | Add-AzureProvisioningConfig -Linux -LinuxUser $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
-
-最終的なコマンド セットをファイルに保存する場合は、ファイルを安全な場所に保管して、アカウント名とパスワードが正しく保護されるようにします。
 
 場合によっては、サブスクリプションにデプロイ済みの SSH キー ペアのセットを指定します。
 
@@ -138,7 +136,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure の管理ポータルの [クラウド サービス] ボックスの一覧または、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure 管理ポータルの [クラウド サービス] ボックスの一覧または、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
 
 オプション 2. 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -148,16 +146,18 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 ## 手順 5. コマンド セットを実行する
 
-手順 4. でテキスト エディターを使用して作成した、複数のコマンド ブロックで構成される Azure PowerShell コマンド セットを確認します。必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
+手順 4. でテキスト エディターまたは PowerShell ISE を使用して作成した、複数のコマンド ブロックで構成される Azure PowerShell コマンド セットを確認します。必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
 
-クリップボードにコマンド セットをコピーしてから、開いている Azure PowerShell コマンド プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。仮想マシンの作成に使用した、サブスクリプション、ストレージ アカウント、クラウド サービス、可用性セット、仮想ネットワーク、またはサブネットが正しくない場合は、仮想マシンを削除し、コマンド ブロックの構文を修正してから正しいコマンド セットを実行してください。
+テキスト エディターを使用している場合は、コマンド セットをクリップボードにコピーしてから、開いている Azure PowerShell コマンド プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。または、PowerShell ISE でコマンド セットを実行します。
+
+仮想マシンの作成に使用した、サブスクリプション、ストレージ アカウント、クラウド サービス、可用性セット、仮想ネットワーク、またはサブネットが正しくない場合は、仮想マシンを削除し、コマンド ブロックの構文を修正してから正しいコマンド セットを実行してください。
 
 仮想マシンを作成したら、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」を参照してください。
 
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
-- このコマンド セットをテキスト ファイルまたは PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure の管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure の Automation Runbook として保存する。 
+- このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
+- Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure の Automation Runbook として保存する。 
 
 ## <a id="examples"></a>例
 
@@ -259,4 +259,6 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=58_postMigration-->
