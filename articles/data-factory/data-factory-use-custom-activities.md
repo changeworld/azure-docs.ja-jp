@@ -36,18 +36,18 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 4. クラスを更新して **IDotNetActivity** インターフェイスを実装します。
 	<ol type='a'>
-	<li>
-		<b>IDotNetActivity</b> からクラスを派生させます。
-		<br/>
-		例: <br/>
-		public class <b>MyDotNetActivity : IDotNetActivity</b>
-	</li>
+		<li>
+			<b>IDotNetActivity</b> からクラスを派生させます。
+			<br/>
+			例: <br/>
+			public class <b>MyDotNetActivity : IDotNetActivity</b>
+		</li>
 
-	<li>
-		<b>IDotNetActivity</b> インターフェイスの <b>Execute</b> メソッドを実装します。
-	</li>
+		<li>
+			<b>IDotNetActivity</b> インターフェイスの <b>Execute</b> メソッドを実装します。
+		</li>
 
-</ol>
+	</ol>
 5. プロジェクトをコンパイルします。
 
 
@@ -58,13 +58,17 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 2.	この zip ファイルを BLOB として **Azure BLOB ストレージ**に**アップロード**します。 
 3.	**パイプライン JSON** ファイルを更新して、パイプライン JSON 内で、zip ファイル、カスタム アクティビティ DLL、アクティビティ クラス、および zip ファイルが格納された BLOB を参照します。JSON ファイル内では:
 	<ol type ="a">
-	<li><b>アクティビティの型</b>は、<b>DotNetActivity</b> に設定する必要があります。</li>
-	<li><b>AssemblyName</b> は、Visual Studio プロジェクトからの出力 DLL の名前です。</li>
-	<li><b>EntryPoint</b> は、<b>IDotNetActivity</b> インターフェイスを実装する<b>クラス</b>の<b>名前空間</b>と<b>名前</b>を指定します。</li>
-	<li><b>PackageLinkedService</b> は、zip ファイルが格納された BLOB を参照するリンク サービスです。</li>
-	<li><b>PackageFile</b> は、Azure BLOB ストレージにアップロードされた zip ファイルの場所と名前を指定します。</li>
-	<li><b>LinkedServiceName</b> は、(オンデマンドまたは独自の) HDInsight クラスターをデータ ファクトリにリンクするリンク サービスの名前です。カスタム アクティビティは指定された HDInsight クラスター上でマップ専用のジョブとして動作します。</li>
-</ol>**JSON の部分例**
+		<li><b>アクティビティの型</b>は、<b>DotNetActivity</b> に設定する必要があります。</li>
+		<li><b>AssemblyName</b> は、Visual Studio プロジェクトからの出力 DLL の名前です。</li>
+		<li><b>EntryPoint</b> は、<b>IDotNetActivity</b> インターフェイスを実装する<b>クラス</b>の<b>名前空間</b>と<b>名前</b>を指定します。</li>
+		<li><b>PackageLinkedService</b> は、zip ファイルが格納された BLOB を参照するリンク サービスです。</li>
+		<li><b>PackageFile</b> は、Azure BLOB ストレージにアップロードされた zip ファイルの場所と名前を指定します。</li>
+		<li><b>LinkedServiceName</b> は、(オンデマンドまたは独自の) HDInsight クラスターをデータ ファクトリにリンクするリンク サービスの名前です。カスタム アクティビティは指定された HDInsight クラスター上でマップ専用のジョブとして動作します。</li>
+	</ol>
+
+	
+
+	**JSON の部分例**
 
 		"Name": "MyDotNetActivity",
     	"Type": "DotNetActivity",
@@ -97,14 +101,14 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 1.	.NET クラス ライブラリ プロジェクトを作成します。
 	<ol type="a">
-	<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
-	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
-	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li> 
-	<li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。</li>
-	<li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li> 
-	<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
-	<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
-</ol>
+		<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
+		<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
+		<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li> 
+		<li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。</li>
+		<li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li> 
+		<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
+		<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
+	</ol>
 2.  <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> をポイントして、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
 3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを実行して <b>Microsoft.Azure.Management.DataFactories</b> をインポートします。 
 
@@ -140,7 +144,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 8. **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。
 
-	**inputTables** パラメーターと **outputTables** パラメーターは、名前が示すとおり、アクティビティの入力テーブルと出力テーブルを表しています。ログに記録されたメッセージは、Azure ポータルからダウンロードできるログ ファイル内の **logger** オブジェクト、またはコマンドレットを使用して確認できます。**extendedProperties** ディクショナリには、JSON ファイル内で指定した、アクティビティの拡張プロパティとその値のリストが含まれています。
+	**inputTables** パラメーターと **outputTables** パラメーターは、名前が示すとおり、アクティビティの入力テーブルと出力テーブルを表しています。ログに記録されたメッセージは、Azure ポータルからダウンロードできるログ ファイル内の **logger** オブジェクト、またはコマンドレットを使用して確認できます。**extendedProperties** ディクショナリには、JSON ファイル内で指定した、アクティビティの拡張プロパティとその値のリストが含まれています。 
 
 	次のサンプル コードでは、入力 BLOB 内の行数をカウントし、BLOB へのパス、BLOB 内の行数、アクティビティが実行されたコンピューター、現在の日時を出力 BLOB に生成します。
 
@@ -301,7 +305,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 ### カスタム アクティビティの実行に使用する HDInsight クラスター用のリンク サービスの作成
 Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。また、独自のクラスターを使って同じ処理を行うことも可能です。オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。
 
-> [AZURE.NOTE]実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの 1 つのワーカー ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。.NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
+> [AZURE.NOTE] 実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの 1 つのワーカー ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。.NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
 
 「[Azure Data Factory を使ってみる][adfgetstarted]」のチュートリアルに加えて「[Data Factory で Pig と Hive を使用する][hivewalkthrough]」のチュートリアルも終えている場合は、このリンク サービスの作成を省略し、既に ADFTutorialDataFactory 内にあるリンク サービスを使用できます。
 
@@ -421,7 +425,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 	**StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
 
-	以下の点に注意してください。
+	以下の点に注意してください。 
 
 	- activities セクションには、**DotNetActivity** 型のアクティビティが 1 つあります。
 	- 入門チュートリアルで使用したものと同じ入力テーブル、**EmpTableFromBlob** を使用します。
@@ -523,4 +527,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=58_postMigration-->
+<!----HONumber=58_postMigration-->

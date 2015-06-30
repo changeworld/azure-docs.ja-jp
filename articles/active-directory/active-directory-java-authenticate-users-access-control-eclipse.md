@@ -113,7 +113,8 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 1.  ACS 管理ポータルで **[証明書利用者アプリケーション]** をクリックします。
 2.  **[証明書利用者アプリケーション]** ページで、**[追加]** をクリックします。
 3.  **[証明書利用者アプリケーションの追加]** ページで、次の操作を行います。
-    1.  **[名前]** に RP の名前を入力します。このチュートリアルでは、「**Azure Web App**」と入力します。
+    1.  **[名前]** に RP の名前を入力します。このチュートリアルでは、「**Azure Web
+        App**」と入力します。
     2.  **[モード]** で **[設定を手動で入力する]** を選択します。
     3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、「**http://localhost:8080/**」と入力します。
         ![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator]
@@ -312,4 +313,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=58_postMigration-->
+<!----HONumber=58_postMigration-->

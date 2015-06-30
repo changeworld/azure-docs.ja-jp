@@ -161,7 +161,7 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 
 	![New->DataFactory][image-data-factory-new-datafactory-menu]
 	
-	**[Data Factory]** が **[新規]** ブレードに表示されていない場合は、下にスクロールします。
+	**[Data Factory]** が **[新規]** ブレードに表示されていない場合は、下にスクロールします。 
 	
 5. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**LogProcessingFactory**」と入力します。
 
@@ -560,4 +560,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=58_postMigration-->
+<!----HONumber=58_postMigration-->
