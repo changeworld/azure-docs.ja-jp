@@ -68,7 +68,7 @@ Azure の管理ポータルの [仮想マシン] ページで、データ ディ
 
 [http://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-RAID/](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-RAID/)
 
->[AZURE.NOTE]XFS ファイル システムを使用している場合は RAID を作成した後に次の手順に従ってください。
+>[AZURE.NOTE] XFS ファイル システムを使用している場合は RAID を作成した後に次の手順に従ってください。
 
 Debian、Ubuntu、または Linux Mint に XFS をインストールするには、次のコマンドを使用します。
 
@@ -131,7 +131,7 @@ Debian 配布ファミリ:
 	root@mysqlnode1:~# sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash elevator=noop"/g' /etc/default/grub
 	root@mysqlnode1:~# update-grub
 
->[AZURE.NOTE]これを /dev/sda だけに設定するのは役に立ちません。データベースが存在するすべてのデータ ディスクに設定する必要があります。
+>[AZURE.NOTE] これを /dev/sda だけに設定するのは役に立ちません。データベースが存在するすべてのデータ ディスクに設定する必要があります。
 
 次の出力では、grub.cfg が正常に再構築され、既定のスケジューラが NOOP に更新されたことが参照できます。
 
@@ -213,7 +213,8 @@ MySQL サーバーの設定を最適化するために、サーバーとクラ�
 -	**innodb_buffer_pool_size**: バッファー プールには、バッファー内のデータとインデックスが含まれています。通常、これは物理メモリの 70% に設定します。
 -	**innodb_log_file_size**: これは、再実行ログのサイズです。再実行ログを使用して、書き込み操作が高速かつ信頼性が高く、クラッシュ後に回復可能なことを確認します。これは、書き込み操作を記録するのに十分な領域である 512 MB に設定されています。
 -	**max_connections**: アプリケーションは適切に接続を終了しない場合があります。大きな値では、サーバーがアイドル状態の接続をリサイクルするのに時間がかかります。最大接続数は 10000 ですが、推奨される最大値は 5000 です。
--	**innodb_file_per_table**: この設定は、個別のファイルにテーブルを保存する InnoDB の機能を有効または無効にします。このオプションを有効にすると、いくつかの高度な管理操作を効率的に適用できます。パフォーマンスの観点では、テーブルの領域の転送を高速化し、ごみ管理のパフォーマンスを最適化できます。そのため、推奨設定では ON です。</br> MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
+-	**innodb_file_per_table**: この設定は、個別のファイルにテーブルを保存する InnoDB の機能を有効または無効にします。このオプションを有効にすると、いくつかの高度な管理操作を効率的に適用できます。パフォーマンスの観点では、テーブルの領域の転送を高速化し、ごみ管理のパフォーマンスを最適化できます。そのため、推奨設定では ON です。</br>
+	MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
 -	**innodb_flush_log_at_trx_commit**: 既定値は 1 に、範囲は 0 ～ 2 に設定されています。既定値は、スタンドアロン MySQL DB の最も適切なオプションです。2 の設定は、ほとんどのデータの整合性を実現し、MySQL のクラスターのマスターに適しています。0 の設定は、信頼性に影響を与えるデータ損失が発生する可能性がありますが、優れたパフォーマンスを実現する場合もあり、MySQL のクラスター内のスレーブに適してします。
 -	**innodb_log_buffer_size**: ログ バッファーによって、トランザクションがコミットする前にログをディスクにフラッシュすることなくトランザクションを実行できます。ただし、ラージ バイナリ オブジェクトまたはテキスト フィールドがある場合、キャッシュが非常に簡単に使用され、頻繁にディスク I/O がトリガーされます。Innodb_log_waits 状態変数が 0 でない場合は、バッファー サイズを大きくすることが推奨されます。
 -	**query_cache_size**: 最善のオプションは、最初から無効にすることです。query_cache_size は、0 (これは MySQL 5.6 では既定の設定です) に設定し、その他のメソッドを使用してクエリを高速化します。  
@@ -237,7 +238,7 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 ###手順 3. "show" コマンドを使用して設定が有効になっているかどうかを確認する
  
-![][7]
+![][7]   
    
 ![][8]
  
@@ -256,7 +257,7 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 ![][9]
  
-**テスト コマンド:**
+**テスト コマンド:**  
 
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=5G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 
@@ -265,13 +266,15 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 <a name="AppendixB"></a>付録 B: **さまざまな RAID レベルでの MySQL のパフォーマンス (スループット) の比較** (XFS ファイル システム)
 
  
-![][10] ![][11]
+![][10]  
+![][11]
 
 **テスト コマンド:**
 
 	mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write –engine=innodb
 
-**さまざまな RAID レベルでの MySQL のパフォーマンス (OLTP) の比較** ![][12]
+**さまざまな RAID レベルでの MySQL のパフォーマンス (OLTP) の比較**
+![][12]
 
 **テスト コマンド:**
 

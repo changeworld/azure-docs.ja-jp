@@ -171,6 +171,7 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Mobile Services の使用]: mobile-services-ios-get-started.md
 [既存のアプリにモバイル サービスを追加する]: mobile-services-ios-get-started-data.md
 [モバイル サービスのサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Azure Management Portal]: https://manage.windowsazure.com/
 [クライアントからのカスタム API 呼び出し]: mobile-services-ios-call-custom-api.md
 [Node.js API Documentation: Modules]: http://nodejs.org/api/modules.html

@@ -98,7 +98,7 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 [認証の使用]: mobile-services-windows-phone-get-started-users.md
 [Get started with push notifications]: mobile-services-javascript-backend-windows-phone-get-started-push.md
 [プッシュ通知の使用]: mobile-services-javascript-backend-windows-phone-get-started-push.md
-
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 
