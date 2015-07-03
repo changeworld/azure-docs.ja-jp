@@ -40,11 +40,11 @@
 1. **[新規]** > **[Markeplace]** をクリックして、Azure Marketplace を開きます。
 	<!-- ![Store][button-store] -->
 
-1. MongoLab アドオンを購入します。
+1. MongoLab アドオンを購入します。  
 	![MongoLab][entry-mongolab]
 
-1. アドオン一覧で MongoLab アドオンをクリックし、**[接続文字列]** をクリックします。
-	![ConnectionInfoButton][button-connectioninfo]
+1. アドオン一覧で MongoLab アドオンをクリックし、**[接続文字列]** をクリックします。  
+	![ConnectionInfoButton][button-connectioninfo]  
 
 1. MONGOLAB_URI をクリップボードにコピーします。  
 	![ConnectionInfoScreen][screen-connectioninfo]  
@@ -89,7 +89,7 @@
 ### プロジェクトを作成する
 サンプル アプリケーションでは概要を示すために Visual Studio テンプレートを使用します。.NET Framework 4.5 を使用していることを確認します。
 
-1. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。[新しいプロジェクト] ダイアログ ボックスが表示されます。  
+1. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。[新しいプロジェクト] ダイアログ ボックスが表示されます。    
 	![NewProject][dialog-mongolab-csharp-newproject]
 
 1. **[インストール済み]、[テンプレート]、[Visual C#]、[Web]** の順にクリックします。
@@ -498,4 +498,4 @@ Azure App Service で Web アプリを作成する作業は、特に Azure で�
 [manage]: #manage
 
 
-<!---HONumber=54--> 
+<!----HONumber=54--> 
