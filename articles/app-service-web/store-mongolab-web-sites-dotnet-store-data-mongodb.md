@@ -46,11 +46,14 @@
 1. アドオン一覧で MongoLab アドオンをクリックし、**[接続文字列]** をクリックします。
 	![ConnectionInfoButton][button-connectioninfo]
 
-1. MONGOLAB_URI をクリップボードにコピーします。![ConnectionInfoScreen][screen-connectioninfo] **この URI は、データベースのユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。**
+1. MONGOLAB_URI をクリップボードにコピーします。  
+	![ConnectionInfoScreen][screen-connectioninfo]  
+	**この URI は、データベースのユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。**
 
-1. Azure Web アプリケーションの [構成] メニューの [接続文字列] リスト ボックスに値を追加します。![WebSiteConnectionStrings][focus-website-connectinfo]
+1. Azure Web アプリケーションの [構成] メニューの [接続文字列] リスト ボックスに値を追加します。  
+	![WebSiteConnectionStrings][focus-website-connectinfo]
 
-1. **[名前]** に「MONGOLAB_URI」と入力します。
+1. **[名前]** に「MONGOLAB\_URI」と入力します。
 
 1. **[値]** に、先にコピーした接続文字列を貼り付けます。
 
@@ -67,7 +70,7 @@
         MongoUrl url = new MongoUrl(connectionString);
         MongoClient client = new MongoClient(url);
 
-> **注:** Azure では、宣言された元の接続文字列名に **CUSTOMCONNSTR_** というプレフィックスが追加されます。そのためコードでは **MONGOLAB_URI** ではなく **CUSTOMCONNSTR_MONGOLAB_URI** を参照しています。
+> **注:** Azure では、宣言された元の接続文字列名に **CUSTOMCONNSTR\_** というプレフィックスが追加されます。そのためコードでは **MONGOLAB_URI** ではなく **CUSTOMCONNSTR\_MONGOLAB\_URI** を参照しています。
 
 では完全なチュートリアルに進みましょう...
 
@@ -86,7 +89,8 @@
 ### プロジェクトを作成する
 サンプル アプリケーションでは概要を示すために Visual Studio テンプレートを使用します。.NET Framework 4.5 を使用していることを確認します。
 
-1. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。[新しいプロジェクト] ダイアログ ボックスが表示されます。![NewProject][dialog-mongolab-csharp-newproject]
+1. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。[新しいプロジェクト] ダイアログ ボックスが表示されます。  
+	![NewProject][dialog-mongolab-csharp-newproject]
 
 1. **[インストール済み]、[テンプレート]、[Visual C#]、[Web]** の順にクリックします。
 
@@ -96,7 +100,8 @@
 
 1. _[プロジェクト名]_ ボックスに「**mongoNotes**」と入力します。別の名前にした場合は、このチュートリアルで用意されているコードを修正する必要があります。
 
-1. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。パッケージ マネージャー コンソールで「**Install-Package mongocsharpdriver**」と入力し、**Enter** キーを押します。![PMConsole][focus-mongolab-csharp-pmconsole] MongoDB C# ドライバーがこのプロジェクトに統合され、_packages.config_ ファイルに対して次の行が自動的に追加されます。
+1. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。パッケージ マネージャー コンソールで「**Install-Package mongocsharpdriver**」と入力し、**Enter** キーを押します。  
+	![PMConsole][focus-mongolab-csharp-pmconsole] MongoDB C# ドライバーがこのプロジェクトに統合され、_packages.config_ ファイルに対して次の行が自動的に追加されます。
 
         < package id="mongocsharpdriver" version="1.9.2" targetFramework="net45" / >
 
@@ -423,17 +428,21 @@ C# MongoDB ドライバーの活用方法の詳細については、mongodb.org 
 ### 新しい Web アプリを作成して発行設定ファイルを取得する
 Azure App Service で Web アプリを作成する作業は、特に Azure では Visual Studio 用の発行プロファイルが自動生成されるため、とても簡単です。
 
-1. Azure ポータルで、**[新規]** をクリックします。![新規][button-new]
+1. Azure ポータルで、**[新規]** をクリックします。  
+	![新規][button-new]
 
-1. **[コンピューティング]、[Web アプリ]、[簡易作成]** の順に選択します。<!-- ![CreateWebApp][screen-mongolab-newwebsite] -->
+1. **[コンピューティング]、[Web アプリ]、[簡易作成]** の順に選択します。  
+	<!-- ![CreateWebApp][screen-mongolab-newwebsite] -->
 
 1. URL のプレフィックスを入力します。好みの名前を選択します。ただし、重複した名前は使用できません ("mongoNotes" はおそらく使用できません)。
 
 1. **[Web アプリの作成]** をクリックします。
 
-1. Web アプリの作成が完了したら、Web アプリ一覧で、作成した Web アプリの名前をクリックします。Web アプリのダッシュボードが表示されます。![WebAppDashboard][screen-mongolab-websitedashboard]
+1. Web アプリの作成が完了したら、Web アプリ一覧で、作成した Web アプリの名前をクリックします。Web アプリのダッシュボードが表示されます。  
+	![WebAppDashboard][screen-mongolab-websitedashboard]
 
-1. **[概要]** の **[発行プロファイルのダウンロード]** をクリックして、任意のディレクトリに .PublishSettings ファイルを保存します。![DownloadPublishProfile][button-website-downloadpublishprofile]
+1. **[概要]** の **[発行プロファイルのダウンロード]** をクリックして、任意のディレクトリに .PublishSettings ファイルを保存します。  
+![DownloadPublishProfile][button-website-downloadpublishprofile]
 
 または、Visual Studio で直接 Web アプリを構成することもできます。Azure アカウントを Visual Studio にリンクする際に、メッセージに従ってそこから Web アプリを構成します。完了したら、ソリューション エクスプローラーでプロジェクト名を右クリックするたけで、Azure にデプロイできます。次の手順に記載されているように、MongoLab 接続文字列は引き続き構成する必要があります。
 
@@ -446,7 +455,8 @@ Azure App Service で Web アプリを作成する作業は、特に Azure で�
 [AZURE.INCLUDE [howto-save-connectioninfo-mongolab](../../includes/howto-save-connectioninfo-mongolab.md)]
 
 ### Web アプリを発行する
-1. Visual Studio のソリューション エクスプローラーで、[**mongoNotes**] プロジェクトを右クリックし、**[発行]** をクリックします。[発行] ダイアログ ボックスが表示されます。<!-- ![Publish][dialog-mongolab-vspublish] -->
+1. Visual Studio のソリューション エクスプローラーで、[**mongoNotes**] プロジェクトを右クリックし、**[発行]** をクリックします。[発行] ダイアログ ボックスが表示されます。  
+	<!-- ![Publish][dialog-mongolab-vspublish] -->
 
 1. **[インポート]** をクリックし、先ほどダウンロードしたディレクトリにある .PublishSettings ファイルを選択します。このファイルは [発行] ダイアログ ボックスの値を自動的に設定します。
 
@@ -454,7 +464,8 @@ Azure App Service で Web アプリを作成する作業は、特に Azure で�
 
 1. 検証に成功したら、**[発行]** をクリックします。発行が完了すると、新しいブラウザー タブが開き、Web アプリが表示されます。
 
-1. メモ テキストを入力し、**[作成]** をクリックして、結果を確認します。![HelloMongoAzure][screen-mongolab-sampleapp]
+1. メモ テキストを入力し、**[作成]** をクリックして、結果を確認します。  
+	![HelloMongoAzure][screen-mongolab-sampleapp]
 
 <a name="manage"></a>
 ## データベースの管理
@@ -487,4 +498,4 @@ Azure App Service で Web アプリを作成する作業は、特に Azure で�
 [manage]: #manage
 
 
-<!--HONumber=54--> 
+<!---HONumber=54--> 
