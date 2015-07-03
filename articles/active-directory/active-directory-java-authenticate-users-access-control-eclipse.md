@@ -117,7 +117,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
         App**」と入力します。
     2.  **[モード]** で **[設定を手動で入力する]** を選択します。
     3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、「**http://localhost:8080/**」と入力します。
-        ![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator]
+        ![Relying party realm for use in compute emulator][relying_party_realm_emulator]
     4.  **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。このタスクでは、「**http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。
         ![Relying party return URL for use in compute emulator][relying_party_return_url_emulator]
     5.  その他のフィールドは、既定値のままにします。
@@ -314,4 +314,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!-----HONumber=58_postMigration-->
+<!------HONumber=58_postMigration-->
