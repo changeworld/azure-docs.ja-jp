@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure HDInsight での C# と Hive および Pig の使用"
-	description="Azure HDInsight の Hive と Pig のストリーミングで C# ユーザー定義関数 (UDF) を使用する方法について説明します。"
+	pageTitle="HDInsight の Hadoop において Hive および Pig で C# を使用する | Microsoft Azure"
+	description="Azure HDInsight において Hive および Pig のストリーミングで C# ユーザー定義関数 (UDF) を使用する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -17,7 +17,7 @@
 	ms.author="larryfr"/>
 
 
-#HDInsight における C#、Hive、Pig の使用
+#HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用 
 
 Hive と Pig は Azure HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。Hive と Pig の両方を使用すると、ユーザー定義関数 (UDF) またはストリーミングから外部コードを呼び出すことができます。
 
@@ -122,7 +122,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 6. そのクラスターの **[既定のコンテナー]** をダブルクリックします。既定のコンテナーの内容を表示する新しいウィンドウが開きます。
 
-7. アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin \\debug** フォルダーを参照します。最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+7. アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin \debug** フォルダーを参照します。最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
 	![アップロード アイコン](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
 
@@ -236,8 +236,9 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

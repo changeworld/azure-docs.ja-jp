@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Hive ODBC ドライバーを使用した Excel から Hadoop への接続 | Microsoft Azure" 
-   description="Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、HDInsight クラスターのデータを照会する方法を説明します。" 
-   services="hdinsight" 
-   documentationCenter="" 
-   authors="bradsev" 
-   manager="paulettm" 
+<properties
+   pageTitle="Hive ODBC ドライバーを使用した Excel から Hadoop への接続 | Microsoft Azure"
+   description="Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、HDInsight クラスターのデータを照会する方法を説明します。"
+   services="hdinsight"
+   documentationCenter=""
+   authors="bradsev"
+   manager="paulettm"
    editor="cgronlun"/>
 
 <tags
@@ -12,8 +12,8 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
-   ms.date="03/31/2015"
+   ms.workload="big-data"
+   ms.date="06/08/2015"
    ms.author="bradsev"/>
 
 #Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続
@@ -23,13 +23,14 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 また、Microsoft Power Query for Excel アドインを使用して Excel から HDInsight クラスターや、その他の (HDInsight 以外の) Hadoop クラスターなどのデータ ソースを接続することもできます。Power Query のインストール方法と使用方法については、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」を参照してください。
 
+> [AZURE.NOTE]この記事の手順は、Linux と Windows ベースの HDInsight クラスターのどちらにも使用できますが、クライアント ワークステーションには Windows が必要です。
+
 **前提条件**:
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- HDInsight クラスター。その構成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
-- Windows 8、Windows 7、Windows Server 2012、Windows Server 2008 R2 のいずれかを実行しているコンピューターが必要です。
-- Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、Office 2010 Professional Plus のいずれかが必要です。
+- **HDInsight クラスター**。その構成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
+- Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされた**ワークステーション**。
 
 
 ##<a id="InstallHiveODBCDriver"></a>Microsoft Hive ODBC ドライバーのインストール
@@ -43,12 +44,12 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 次の手順に従って、Hive ODBC データ ソースを作成します。
 
 1. Windows 8 で、Windows キーを押してスタート画面を開き、**データ ソース**を入力します。
-2. 使用している Office バージョンに応じて、**[ODBC データ ソースのセットアップ (32 ビット)]** または **[ODBC データ ソースのセットアップ (64 ビット)]** をクリックします。Windows 7 を使用している場合は、**[管理ツール]** の **[ODBC データ ソース (32 ビット)]** または **[ODBC データ ソース (64 ビット)]** をクリックします。**[ODBC データ ソース アドミニストレーター]** ダイアログが開きます。 
- 
+2. 使用している Office バージョンに応じて、**[ODBC データ ソースのセットアップ (32 ビット)]** または **[ODBC データ ソースのセットアップ (64 ビット)]** をクリックします。Windows 7 を使用している場合は、**[管理ツール]** の **[ODBC データ ソース (32 ビット)]** または **[ODBC データ ソース (64 ビット)]** をクリックします。**[ODBC データ ソース アドミニストレーター]** ダイアログが開きます。
+
 	![ODBC データ ソース アドミニストレーター][img-hdi-simbahiveodbc-datasource-admin]
 
 3. ユーザー DNS から、**[追加]** をクリックすると、**データ ソースの新規作成**ウィザードが開きます。
-4. **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。**[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。 
+4. **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。**[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。
 
 5. 次の値を入力または選択します。
 
@@ -74,9 +75,9 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 </table>![詳細オプション][img-HiveOdbc-DataSource-AdvancedOptions]
 
 6. **[テスト]** をクリックして、データ ソースをテストします。データ ソースが正しく構成された場合、*テストは無事に完了しました。*と表示されます。
-7. **[OK]** をクリックして [テスト] ダイアログを閉じます。これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** ダイアログに表示されます。 
+7. **[OK]** をクリックして [テスト] ダイアログを閉じます。これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** ダイアログに表示されます。
 8. **[OK]** をクリックしてウィザードを終了します。
-	
+
 ##<a id="ImportData"></a>HDInsight クラスターから Excel へのデータのインポート
 
 ここでは、上記の手順で作成した ODBC データ ソースを使用して、Hive テーブルから Excel ブックへデータをインポートする方法を説明します。
@@ -124,5 +125,6 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 [img-HiveOdbc-DataSource-AdvancedOptions]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

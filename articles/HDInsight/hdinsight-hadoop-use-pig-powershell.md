@@ -28,9 +28,9 @@
 
 この記事の手順を完了するには、次のものが必要です。
 
-* Azure HDInsight (HDInsight での Hadoop) クラスター (Windows ベースまたは Linux ベースのいずれか)
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* <a href="http://azure.microsoft.com/documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 
 ##<a id="powershell"></a>PowerShell を使用した Pig ジョブの実行
@@ -141,5 +141,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

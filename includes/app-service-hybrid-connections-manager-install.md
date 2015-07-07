@@ -1,26 +1,28 @@
 
-1. In the **Hybrid connections** blade, click the hybrid connection you just created, then click **Listener Setup**.
+1. **[ハイブリッド接続]** ブレードで、作成したハイブリッド接続をクリックし、**[リスナーのセットアップ]** をクリックします。
 	
 	![Click Listener Setup](./media/app-service-hybrid-connections-manager-install/D04ClickListenerSetup.png)
 	
-4. The **Hybrid connection properties** blade opens. Under **On-premises Hybrid Connection Manager**, choose **download and configure manually**, save the downloaded the HybridConnectionManager.msi package, and copy the the gateway connection string.
+4. **[ハイブリッド接続のプロパティ]** ブレードが開きます。**[オンプレミス ハイブリッド接続マネージャー]** で、**[手動でダウンロードおよび構成]** をクリックし、ダウンロードした HybridConnectionManager.msi パッケージを保存して、ゲートウェイ接続文字列をコピーします。
 	
 	![Click here to install](./media/app-service-hybrid-connections-manager-install/D05ClickToInstallHCM.png)
 	
-5. From an administrator command prompt, type the following command to start the installer:
+5. 管理者のコマンド プロンプトから、次のコマンドを入力してインストーラーを起動します。
 
 		start HybridConnectionManager.msi
  
-7. After the installer runs, click **Not now**, then browse to the %ProgramFiles%\Microsoft\HybridConnectionManager folder, run HCMConfigWizard.exe and click **Yes** in the **User Account Control** dialog.
+7. インストーラーの実行後、**[後で]** をクリックし、%ProgramFiles%\Microsoft\HybridConnectionManager フォルダーに移動して、HCMConfigWizard.exe を実行し、**[ユーザー アカウント制御]** ダイアログ ボックスで **[はい]** をクリックします。
 		
-7. Paste the hybrid connection string that you copied earlier and click **OK**. 
+7. 先ほどコピーしたハイブリッド接続文字列を貼り付け、**[OK]** をクリックします。
 	
 	![Installing](./media/app-service-hybrid-connections-manager-install/D08aHCMInstallManual.png)
 	
-8. When the install completes, click **Close**.
+8. インストールが完了したら、**[閉じる]** をクリックします。
 	
 	![Click Close](./media/app-service-hybrid-connections-manager-install/D09HCMInstallComplete.png)
 	
-	On the **Hybrid connections** blade, the **Status** column now shows **Connected**. 
+	**[ハイブリッド接続]** ブレードで、**[状態]** 列に **[接続]** と表示されています。
 	
 	![Connected Status](./media/app-service-hybrid-connections-manager-install/D10HCStatusConnected.png)
+
+<!---HONumber=62-->

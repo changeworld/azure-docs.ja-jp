@@ -1,7 +1,6 @@
-### App Service plan
+### App Service プラン
 
-Creates the service plan for hosting the web app. You provide the name of the plan through the **hostingPlanName** parameter. The location of the plan is the 
-same location used for the web app. The pricing tier and worker size are specified in the **sku** and **workerSize** parameters
+Web アプリをホストするためのサービス プランを作成します。**hostingPlanName** パラメーターに、プランの名前を指定します。プランの場所は、Web アプリで使用される場所と同じになります。価格レベルとワーカー サイズを **sku** パラメーター と **workerSize** パラメーターに指定します。
 
     {
        "apiVersion":"2015-04-01",
@@ -15,3 +14,5 @@ same location used for the web app. The pricing tier and worker size are specifi
          "numberOfWorkers":1
        }
     }
+
+<!---HONumber=62-->

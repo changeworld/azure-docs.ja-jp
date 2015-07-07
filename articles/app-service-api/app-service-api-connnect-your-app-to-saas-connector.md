@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="コードからの SaaS コネクタの使用" 
+	pageTitle="SaaS コネクタ API アプリのデプロイおよび構成" 
 	description="Azure Marketplace から Azure のサブスクリプションにインストールした SaaS コネクタを構成する方法について説明します。" 
 	services="app-service\api" 
 	documentationCenter=".net" 
@@ -16,7 +16,7 @@
 	ms.date="04/07/2015" 
 	ms.author="tdykstra"/>
 
-# コードからの SaaS コネクタの使用
+# Azure App Service での SaaS コネクタ API アプリのデプロイおよび構成
 
 ## 概要
 
@@ -24,7 +24,7 @@
 
 たとえば、Dropbox アカウント内のファイルを読み書きするために HTTP 要求をコーディングする必要がある場合、Dropbox を直接操作するための認証プロセスは複雑になります。Dropbox コネクタを使用すれば複雑な認証の処理を避けることができるため、業務固有のコードの作成に集中できます。
 
-> [AZURE.WARNING]**ロジック アプリから SaaS コネクタを使用する場合、ここでの指示に従う必要は*ありません***。ロジック アプリで SaaS コネクタを使用する方法の詳細については、「[新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。この記事は、*コード*を使用してコネクタを呼び出す場合を想定しています。
+> [AZURE.NOTE]ロジック アプリから SaaS コネクタを使用する場合、ここでの指示に従う必要はありません。ロジック アプリで SaaS コネクタを使用する方法の詳細については、[新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
  
 このチュートリアルでは例として DropBox コネクタを使用し、次の手順を順番に説明します。
 
@@ -55,15 +55,15 @@
 
 	リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../resource-group-overview.md)に関するページを参照してください。
 
-7. Free の**料金レベル**を選択します (一覧に表示されない場合は、**[すべて表示]** をクリックします。**[F1 Free]** をクリックした後に、**[選択]** をクリックします)。
+7. Free の**価格レベル**を選択します (一覧に表示されない場合は、**[すべて表示]** をクリックします。**[F1 Free]** をクリックした後に、**[選択]** をクリックします)。
 
-	有料の料金レベルを使用できますが、このチュートリアルでは必要ありません。
+	有料の価格レベルを使用できますが、このチュートリアルでは必要ありません。
  
 11. 近くの**場所**を選択します。
 
 9. <a id="gateway"></a>コネクタの**名前**は既定の "DropboxConnector" のままにして、**[作成]** をクリックします。
 
-	![[作成] のクリック](./media/app-service-api-connnect-your-app-to-saas-connector/createdropbox.png)
+	![Click create](./media/app-service-api-connnect-your-app-to-saas-connector/createdropbox.png)
 
 	Azure App Service によってリソース グループが作成され、そのリソース グループに Dropbox コネクタ API のアプリと*ゲートウェイ* Web アプリが作成されます。このゲートウェイは、リソース グループのすべての API アプリへのアクセスを管理します。
 
@@ -253,7 +253,7 @@ Dropbox を操作するために HTTP 要求を行うときに使用する必要
  
 4. **[API の定義]** アイコンをクリックして、コネクタで使用可能な API メソッドを参照します。
 
-	![[API アプリ] ブレード](./media/app-service-api-connnect-your-app-to-saas-connector/apiappblade.png)
+	![API App blade](./media/app-service-api-connnect-your-app-to-saas-connector/apiappblade.png)
 
 	![API の定義](./media/app-service-api-connnect-your-app-to-saas-connector/apidef.png)
 
@@ -275,4 +275,6 @@ SaaS コネクタをインストール、構成、テストする方法を説明
 
 [Azure プレビュー ポータル]: https://portal.azure.com/
 [Azure ポータル]: https://manage.windowsazure.com/
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=62-->

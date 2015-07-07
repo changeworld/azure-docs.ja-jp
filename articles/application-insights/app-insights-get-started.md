@@ -1,69 +1,76 @@
 <properties 
 	pageTitle="Application Insights を使ってみる" 
-	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
 	services="application-insights" 
-documentationCenter=""
+    documentationCenter=""
 	authors="alancameronwills" 
-	manager="kamrani"/>
+	manager="ronmart"/>
 
 <tags 
 	ms.service="application-insights" 
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/10/2015" 
+	ms.topic="hero-article" 
+	ms.date="04/26/2015" 
 	ms.author="awills"/>
 
-# Application Insights - アプリケーションの状態と利用状況の監視を開始する
+# Visual Studio Application Insights を使ってみる
 
 *Application Insights はプレビュー段階です。*
 
-Application Insights を使用すると、ライブ アプリケーションの以下の事柄について監視できます。
+問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実行中のアプリケーションの問題をすぐに診断します。ユーザーがアプリケーションを何に利用しているかを理解します。
 
-* **可用性** - 世界中から数分ごとにご使用の URL についてテストします。
-* **パフォーマンス** - パフォーマンスに関する問題と例外を検出して診断します。
-* **利用状況** - ご使用のアプリケーションを使っているユーザーの実行内容を把握し、それらのユーザーにとってより良いアプリケーションとなるようにします。
+構成は非常に簡単であり、数分以内で結果を確認できます。
 
-構成は非常に簡単で、数分で結果を確認できます。現在、(サーバーまたは Azure 上の) ASP.NET Web アプリケーションをサポートしています。
+現時点でサポートしているものは次のとおりです。iOS、Android、および Windows アプリ; J2EE および ASP.NET Web アプリケーション、WCF サービス。Web アプリは、Azure 上か、お使いのオンプレミス サーバーで実行できます。JavaScript SDK は任意の Web ページで実行できます。
 
+## 作業開始
 
-## 開始方法
+任意の順序でこのマップの左側に示すエントリ ポイントを組み合わせて開始します。適切なパスを選択します。
 
-任意の順序でこの表の左側に示すエントリ ポイントを組み合わせて開始します。適切なルートを選択します。ASP.NET Web アプリケーションを開発する場合は、Web プロジェクトに Application Insights を追加することによって開始できます。その他の機能は後で簡単に追加できます。
+Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](http://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、および IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
 
-[Microsoft Azure](http://azure.com) のアカウントが必要です (VSO バージョンを使用する場合を除く)。
+[Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。(Application Insights はプレビュー段階で、無料です。)
 
-<table >
-<tr valign="top"><th>必要な項目</th><th colspan="2">必要な操作</th><th>取得する項目</th></tr>
-<tr valign="top"><td>my ASP.NET アプリケーションのパフォーマンスと利用状況分析を取得する</td><td colspan="2"><a href="../app-insights-start-monitoring-app-health-usage/">Application Insights を Web プロジェクトに追加する</a></td><td>パフォーマンス メトリック: 読み込み数、応答時間など</td></tr>
-<tr valign="top"><td></td><td></td><td><a href="../app-insights-web-track-usage-custom-events-metrics/">サーバー コードからのイベントとメトリックを送信する</a></td><td>カスタム ビジネス分析</td></tr>
-<tr valign="top"><td></td><td></td><td><a href="../app-insights-search-diagnostic-logs/">トレースおよび例外の利用統計情報をサーバーから送信する、またはサード パーティのログ データをキャプチャする</td><td>サーバー アプリケーションの診断。ログ データを検索、フィルターする</a></td></tr>
-<tr valign="top"><td>自分の Web ページの利用状況を取得する (任意のプラットフォーム) </td><td colspan="2"><a href="../app-insights-web-track-usage/">AI スクリプトをユーザーの Web ページに挿入する</a></td><td>利用状況分析: ページ ビュー、再訪ユーザー、セッション数</td></tr>
-<tr valign="top"><td></td><td>&nbsp;&nbsp;</td><td><a href="../app-insights-web-track-usage-custom-events-metrics/">Web ページのスクリプトにイベントとメトリックの呼び出しを記述する</a></td><td>カスタムのユーザー エクスペリエンスの分析</td></tr>
-<tr valign="top"><td></td><td></td><td><a href="../app-insights-search-diagnostic-logs/">Web ページのスクリプトにトレースと診断の呼び出しを記述する</a></td><td>ログ データを検索、フィルターする</td></tr>
-<tr valign="top"><td>既に自分の Web サーバーで実行中の ASP.NET アプリケーションの問題を診断する</td><td colspan="2"><a href="../app-insights-monitor-performance-live-website-now/">ユーザーの Web サーバーに状態モニターをインストールする</a></td><td>依存関係の呼び出し期間と数、CPU、メモリ、およびネットワーク カウンター (読み込み数、応答時間)</td></tr>
-<tr valign="top"><td>Web ページの可用性を監視する</td><td colspan="2"><a href="../app-insights-monitor-web-app-availability/">Application Insights に Web テストを設定する</a></td><td>可用性モニターおよびアラート</td></tr>
-<tr valign="top"><td>Windows Phone アプリ、Windows ストア アプリ、または Java Web サイトのパフォーマンスおよび利用状況分析を取得する</td><td colspan="2"><a href="http://msdn.microsoft.com/library/dn481095.aspx">現在は、Application Insights の以前の VSO バージョンを使用する</a></td><td>利用状況とパフォーマンス分析<a href="http://msdn.microsoft.com/library/dn793604.aspx">Azure バージョンの機能は、徐々に構築されていきます。</a></td></tr>
-</table>
+使用目的 | 必要な操作 | 取得内容
+---|---|---
+ <a href="app-insights-start-monitoring-app-health-usage.md">![ASP.NET](./media/app-insights-get-started/appinsights-gs-i-01-perf.png)</a> | <a href="app-insights-start-monitoring-app-health-usage.md">Web プロジェクトに Application Insights SDK を追加する</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-start-monitoring-app-health-usage.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-01-perf.png)</a>
+<a href="app-insights-monitor-performance-live-website-now.md">![既にライブの ASP.NET サイト](./media/app-insights-get-started/appinsights-gs-i-04-red2.png)</a><br/><a href="app-insights-monitor-performance-live-website-now.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-i-03-red.png)</a>|<a href="app-insights-monitor-performance-live-website-now.md">IIS サーバーに状態モニターをインストールする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-performance-live-website-now.md">![ASP.NET の依存関係の監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
+<a href="insights-perf-analytics.md">![Azure Web アプリまたは VM](./media/app-insights-get-started/appinsights-gs-i-10-azure.png)</a>|<a href="insights-perf-analytics.md">Azure Web アプリまたは VM で Insights を有効にする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="insights-perf-analytics.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
+<a href="app-insights-java-get-started.md">![Java](./media/app-insights-get-started/appinsights-gs-i-11-java.png)</a>|<a href="app-insights-java-get-started.md">Java プロジェクトに SDK を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-java-get-started.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-10-java.png)</a>
+<a href="app-insights-web-track-usage.md">![JavaScript](./media/app-insights-get-started/appinsights-gs-i-02-usage.png)</a>|<a href="app-insights-web-track-usage.md">Web ページに Application Insights のスクリプトを挿入する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-web-track-usage.md">![ページ ビューとブラウザーのパフォーマンス](./media/app-insights-get-started/appinsights-gs-r-02-usage.png)</a>
+<a href="app-insights-monitor-web-app-availability.md">![可用性](./media/app-insights-get-started/appinsights-gs-i-05-avail.png)</a>|<a href="app-insights-monitor-web-app-availability.md">Web テストを作成する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-web-app-availability.md">![可用性](./media/app-insights-get-started/appinsights-gs-r-05-avail.png)</a>
+<a href="app-insights-windows-get-started.md">![Windows と Windows Phone](./media/app-insights-get-started/appinsights-gs-i-06-device.png)</a>|<a href="app-insights-windows-get-started.md">デバイス アプリ プロジェクトに Application Insights を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-windows-get-started.md">![クラッシュと使用状況データ](./media/app-insights-get-started/appinsights-gs-r-06-device.png)</a>
+
+## サポートとフィードバック
+
+* 質問および問題点:
+ * [トラブルシューティング][qna]
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
+ * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* バグ:
+ * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
+* ご提案:
+ * [ユーザーの声](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+
 
 
 ## <a name="video"></a>ビデオ
 
-####  はじめに
 
-> [AZURE.VIDEO application-insights-introduction]
+> [AZURE.VIDEO 218]
 
-#### 開始方法
+> [AZURE.VIDEO usage-monitoring-application-insights]
 
-> [AZURE.VIDEO getting-started-with-application-insights]
-
+> [AZURE.VIDEO performance-monitoring-application-insights]
 
 
 
-[AZURE.INCLUDE [app-insights-learn-more](../../includes/app-insights-learn-more.md)]
+<!--Link references-->
 
+[qna]: app-insights-troubleshoot-faq.md
 
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=62-->

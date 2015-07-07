@@ -1,40 +1,32 @@
-<properties 
-	pageTitle="Azure API Management での開発者ポータルのカスタマイズ" 
-	description="Azure API Management での開発者ポータルのカスタマイズ。" 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure API Management での開発者ポータルのカスタマイズ"
+	description="Azure API Management での開発者ポータルのカスタマイズ。"
+	services="api-management"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/18/2014" 
+<tags
+	ms.service="api-management"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="06/16/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management での開発者ポータルのカスタマイズ
 
 このガイドでは、API Management における開発者ポータルのルック アンド フィールをお客様のブランドに合わせてカスタマイズする方法について説明します。
 
-## このトピックの内容
-
--	[ページ ヘッダーのテキスト/ロゴを変更する][]
--	[ヘッダーのスタイルを変更する][]
--	[ページの内容を編集する][]
--	[次のステップ][]
-
-
 ## <a name="change-page-headers"> </a>ページ ヘッダーのテキスト/ロゴを変更する
 
 ポータルの代表的なカスタマイズとして、すべてのページの一番上に表示されるテキストを貴社の会社名またはロゴに置き換えることが挙げられます。
 
-開発者ポータル内のコンテンツは、Azure の管理ポータルからパブリッシャー ポータルにアクセスして変更します。API Management コンソールには、API Management サービスの Azure ポータルの **[管理コンソール]** をクリックしてアクセスします。
+開発者ポータル内のコンテンツは、Azure の管理ポータルからパブリッシャー ポータルにアクセスして変更します。API パブリッシャー ポータルにアクセスするには、API Management サービスの Azure ポータルで **[管理]** をクリックします。
 
-![Management console][api-management-management-console]
+![パブリッシャー ポータル][api-management-management-console]
 
 開発者ポータルは、コンテンツ管理システム (CMS) がベースとなっています。すべてのページに表示されるヘッダーは、"ウィジェット" と呼ばれる特殊なタイプのコンテンツです。そのウィジェットの内容を編集するには、左側の **[開発者ポータル]** メニューで **[ウィジェット]** をクリックし、一覧から **[ヘッダー]** ウィジェットを選択します。
 
@@ -44,7 +36,7 @@
 
 以後、この新しいヘッダーが開発者ポータル内のすべてのページに表示されます。
 
-> 管理コンソールで開発者ポータルを開くには、上部のバーにある **[開発者ポータル]** をクリックします。
+> パブリッシャー ポータルで開発者ポータルを開くには、上部のバーにある **[開発者ポータル]** をクリックします。
 
 ## <a name="change-headers-styling"> </a>ヘッダーのスタイルを変更する
 
@@ -58,11 +50,11 @@
 
 このセクションでは、ヘッダーのスタイルのみを変更することにします。スタイル エディターのツール バーで **[要素を選択]** オプションをクリックし、続けて、**[カスタマイズする要素の選択]** をクリックします。要素にマウスを重ねると、その要素が強調表示されるようになり、クリックした場合にどの要素のスタイルが編集対象となるかを把握できます。ヘッダー内の会社名を表すテキスト (前セクションの手順でいうと "Fabrikam Developer Portal") 上にマウス カーソルを移動してクリックします。名前とカテゴリを持つ一連のスタイル ルールがスタイル エディター内に表示されます。
 
-それぞれのルールは、選択された要素のスタイル上の特性を表します。たとえば、上で選択したヘッダー テキストの場合、テキストのサイズは @font-size-h1 で定義され、フォント (代替候補を含む) の名前は @headings-font-family で定義されています。
+それぞれのルールは、選択された要素のスタイルに関するプロパティを表します。たとえば、上で選択したヘッダー テキストの場合、テキストのサイズは @font-size-h1 で定義され、フォント (代替候補を含む) の名前は @headings-font-family で定義されています。
 
 > [Bootstrap][] をご存じの方のためにいうと、実際には、開発者ポータルに使用されている Bootstrap テーマの [LESS 変数][]にこれらのルールが含まれています。
 
-見出しテキストの色を変更してみましょう。**@headings-color** フィールドの入力内容を選択し、「#000000」と入力します。これは、黒色を表す 16 進コードです。すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
+見出しテキストの色を変更してみましょう。**[@headings-color]** ボックスの入力内容を選択し、「#000000」と入力します。これは、黒色を表す 16 進コードです。すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
 
 ![Color picker][api-management-customization-toolbar-color-picker]
 
@@ -76,7 +68,7 @@
 
 開発者ポータルは、自動的に生成されるページ ([API]、[成果物]、[アプリケーション]、[問題] など) と手動で作成するコンテンツとで構成されます。コンテンツ管理システムがベースとなっているため、そのようなコンテンツを必要に応じて作成することができます。
 
-既存のコンテンツ ページをすべて一覧表示するには、管理コンソールの **[開発者ポータル]** メニューにある **[コンテンツ]** をクリックします。
+既存のコンテンツ ページをすべて一覧表示するには、パブリッシャー ポータルの **[開発者ポータル]** メニューにある **[コンテンツ]** をクリックします。
 
 ![Manage content][api-management-customization-manage-content]
 
@@ -86,14 +78,14 @@
 
 ## <a name="next-steps"> </a>次のステップ
 
--	「[API の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+-	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
 
-[ページ ヘッダーのテキスト/ロゴを変更する]: #change-page-headers
-[ヘッダーのスタイルを変更する]: #change-headers-styling
-[ページの内容を編集する]: #edit-page-contents
-[次のステップ]: #next-steps
+[Change the text/logo in the page headers]: #change-page-headers
+[Change the styling of the headers]: #change-headers-styling
+[Edit the contents of a page]: #edit-page-contents
+[Next steps]: #next-steps
 
-[管理ポータル]: https://manage.windowsazure.com/
+[Management Portal]: https://manage.windowsazure.com/
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
@@ -103,11 +95,8 @@
 [api-management-customization-manage-content]: ./media/api-management-customize-portal/api-management-customization-manage-content.png
 
 
-[API の詳細な構成について]: ../api-management-get-started-advanced
+[Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 [bootstrap]: http://getbootstrap.com/
-[LESS variables]: http://getbootstrap.com/css/
+[LESS 変数]: http://getbootstrap.com/css/
 
-<!--HONumber=35.2-->
-
-<!--HONumber=46--> 
- 
+<!---HONumber=62-->

@@ -77,4 +77,4 @@ Azure リソース マネージャー モジュールを使用するには、既
 
 > [AZURE.NOTE]**Switch-AzureMode AzureServiceManagement** コマンドを使用して、既定のコマンド セットに戻すことができます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

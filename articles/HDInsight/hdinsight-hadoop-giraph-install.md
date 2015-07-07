@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="HDInsight で Script Action を使用して Hadoop クラスターに Giraph をインストールする | Azure" 
-	description="HDInsight クラスターをカスタマイズして Giraph をインストールする方法について説明します。スクリプトを使用して Giraph をインストールするために、Script Action の構成オプションを使用します。" 
+	pageTitle="HDInsight の Hadoop クラスターに Giraph をインストールして使用する | Microsoft Azure" 
+	description="Giraph を使用して HDInsight クラスターをカスタマイズする方法について説明します。スクリプトを使用して Giraph をインストールするために、Script Action の構成オプションを使用します。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
@@ -16,7 +16,7 @@
 	ms.date="03/03/2015" 
 	ms.author="nitinme"/>
 
-# HDInsight Hadoop クラスターに Giraph をインストールして使用する
+# HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
 **Script Action** クラスター カスタマイズを使用して、Azure HDInsight の Hadoop の任意の種類のクラスターに Giraph をインストールできます。Script Action では、クラスターの作成時のみ、スクリプトを実行してクラスターをカスタマイズできます。詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]」をご覧ください。
 
@@ -41,7 +41,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 1. 「[カスタム オプションを使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)」に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Use Script Action to customize a cluster")
+	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Script Action を使ってクラスターをカスタマイズする")
 	
 	<table border='1'>
 	<tr><th>プロパティ</th><th>値</th></tr>
@@ -53,9 +53,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 		<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
 	<tr><td>パラメーター</td>
 		<td>スクリプトで必要な場合は、パラメーターを指定します。Giraph をインストールするスクリプトではパラメーターが必要ないため、空白のままにすることができます。</td></tr>
-	</table>
-
-	複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトの追加後、チェックマークをクリックしてクラスターのプロビジョニングを開始します。
+</table>複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトの追加後、チェックマークをクリックしてクラスターのプロビジョニングを開始します。
 
 Azure PowerShell または HDInsight .NET SDK を使用して、HDInsight に Giraph をインストールするためにスクリプトを使用することもできます。これらの手順については、このトピックの後半で説明します。
 
@@ -81,7 +79,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 	
 
-4. SimpleShortestPathsComputation サンプルを実行します。tiny_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。これには、[Azure PowerShell][powershell-install-configure] がインストール済みおよび構成済みであることが必要です。
+4. SimpleShortestPathsComputation サンプルを実行します。tiny_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。これには、[Azure PowerShell][powershell-install] がインストール済みおよび構成済みであることが必要です。
 
 		$clusterName = "clustername"
 		# Giraph examples jar
@@ -152,7 +150,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 ## <a name="usingPS"></a>Azure PowerShell を使用した HDInsight Hadoop クラスターでの Giraph のインストール
 
-このセクションでは、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptActionScript Action</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。次に進む前に、Azure PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」をご覧ください。
+このセクションでは、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptActionScript Action</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。次に進む前に、Azure PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install]」をご覧ください。
 
 次の手順に従います。
 
@@ -239,7 +237,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 
-3. **[新しいプロジェクト]** で、次の値を入力または選択します。
+3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
 	
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 <tr>
@@ -331,7 +329,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 **アプリケーションを実行するには**
 
-Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
+Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateGiraphCluster <cluster-name>
 
@@ -348,9 +346,11 @@ Azure PowerShell コンソールを開き、Visual Studio プロジェクトを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
 
+[powershell-install]: ../powershell-install-configure.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ" 
-	description="Python Tools for Visual Studio を使って、Azure テーブル ストレージにデータを保存する Flask アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。" 
+	description="Python Tools for Visual Studio を使用して、Azure テーブル ストレージにデータを保存する Flask Web アプリを作成し、Azure App Service Web Apps にデプロイする方法について説明します。" 
 	services="app-service\web"
 	tags="python"
 	documentationCenter="python" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="02/09/2015" 
+	ms.date="04/16/2015" 
 	ms.author="huguesv"/>
 
 
@@ -22,43 +22,45 @@
 
 # Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ 
 
-このチュートリアルでは、[Python Tools for Visual Studio][] のサンプル テンプレートを使用して単純な投票アプリケーションを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=qUtZWtPwbTk)でもご覧いただけます。
+このチュートリアルでは、[Python Tools for Visual Studio] のサンプル テンプレートを使用して、単純な投票 Web アプリを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=qUtZWtPwbTk)でもご覧いただけます。
 
-リポジトリの種類 (メモリ内、Azure テーブル ストレージ、MongoDB) を簡単に切り替えることができるよう、この投票アプリケーションのリポジトリは抽象化されています。
+この投票 Web アプリでは、リポジトリの抽象化を定義します。そのため、異なる種類のリポジトリ (メモリ内、Azure テーブル ストレージ、MongoDB) を簡単に切り替えることができます。
 
-ここでは、Azure ストレージ アカウントを作成する方法、Azure テーブル ストレージを使用するためのアプリケーションの構成方法、アプリケーションを Azure Websites に発行する方法について説明します。
+ここでは、Azure ストレージ アカウントを作成する方法、Web アプリが Azure テーブル ストレージを使用するよう構成する方法、および [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) にアプリケーションを発行する方法を学習します。
 
-MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスに、Bottle、Flask、Django の各 Web フレームワークを組み合わせて行う PTVS での Azure Websites 開発について取り上げたその他の記事については、[Python デベロッパー センター][]をご覧ください。この記事では Azure Websites を重点的に説明していますが、[Azure Cloud Services][] の開発も同様の手順で行います。
+Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスを使用した、PTVS での Azure App Service Web Apps の開発を取り上げたその他の記事については、[Python デベロッパー センター]をご覧ください。この記事では App Service について重点的に説明していますが、[Azure Cloud Services] の開発も同様の手順で行います。
 
 ## 前提条件
 
  - Visual Studio 2012 または 2013
- - [Python Tools 2.1 for Visual Studio][]
- - [Python Tools 2.1 for Visual Studio サンプル VSIX][]
- - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2012][]
- - [Python 2.7 32-bit][] または [Python 3.4 32-bit][]
+ - [Python Tools 2.1 for Visual Studio]
+ - [Python Tools 2.1 for Visual Studio サンプル VSIX]
+ - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2012]
+ - [Python 2.7 (32 ビット)] または [Python 3.4 (32 ビット)]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 ## プロジェクトを作成する
 
-このセクションでは、サンプル テンプレートを使用して Visual Studio プロジェクトを作成します。まず仮想環境を作成し、必要なパッケージをインストールします。次に、既定のメモリ内リポジトリを使用してアプリケーションをローカルで実行します。
+このセクションでは、サンプル テンプレートを使用して Visual Studio プロジェクトを作成します。仮想環境を作成し、必要なパッケージをインストールします。次に、既定のメモリ内リポジトリを使用してアプリケーションをローカルで実行します。
 
 1.  Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックします。
 
-1.  PTVS サンプル VSIX のプロジェクト テンプレートは、**[Python]** の **[サンプル]** にあります。**[Polls Flask Web Project]**  を選択し、[OK] をクリックしてプロジェクトを作成します。
+1.  PTVS サンプル VSIX のプロジェクト テンプレートは、**[Python]** の **[サンプル]** にあります。**[投票 Flask Web プロジェクト]** を選択し、[OK] をクリックしてプロジェクトを作成します。
 
-  	![New Project ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsFlaskNewProject.png)
+  	![[新しいプロジェクト] ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsFlaskNewProject.png)
 
-1.  外部のパッケージをインストールするよう求めるメッセージが表示されます。**[Install into a virtual environment]** を選択します。
+1.  外部のパッケージをインストールするよう求めるメッセージが表示されます。**[仮想環境にインストールする]** を選択します。
 
   	![External Packages ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsFlaskExternalPackages.png)
 
-1.  **[Python 2.7]** または **[Python 3.4]** をベース インタープリターとして選択します。
+1.  ベース インタープリターとして **[Python 2.7]** または **[Python 3.4]** を選択します。
 
   	![Add Virtual Environment ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAddVirtualEnv.png)
 
-1.  <kbd>F5</kbd> キーを押してアプリケーションの動作を確認します既定では、構成作業の一切不要なメモリ内リポジトリが使用されます。Web サーバーが停止すると、すべてのデータが失われます。
+1.  `F5` キーを押して、アプリケーションが動作することを確認します。既定では、アプリケーションは、構成を必要としないメモリ内リポジトリを使用します。Web サーバーが停止すると、すべてのデータが失われます。
 
 1.  **[Create Sample Polls]** をクリックし、投票内容をクリックして投票します。
 
@@ -68,111 +70,98 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します
 
-1.  [Azure 管理ポータル][]にログインします。
+1.  [Azure ポータル] にログインします。
 
-1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
+2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します
 
-  	![New ボタン](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzurePlusNew.png)
+  	<!-- ![New Button](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzurePlusNew.png) -->ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
-1.  **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+5. ストレージ アカウントのブレードの **[設定]** 部をクリックします。アカウント名とプライマリ キーをメモします。
 
-  	![Quick Create](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzureStorageCreate.png)
-
-1.  [URL] で、ストレージ アカウントの URI で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
-
-1.  ストレージの配置先となるリージョンまたはアフィニティ グループを選択します。Azure アプリケーションからストレージを使用する場合は、アプリケーションを展開するリージョンと同じリージョンを選択します。
-
-1.  必要に応じて、Geo レプリケーションを有効にできます。Geo レプリケーションを有効にすると、常時 2 つの拠点にデータが維持されます。どちらの場所も、正常な状態に保たれた複数のレプリカ データが、Azure Storage によって絶えず管理されます。
-
-1.  **[ストレージ アカウントの作成]** をクリックします。
+	この情報は、次のセクションでプロジェクトを構成するために必要です。
 
 ## プロジェクトを構成する
 
-このセクションでは、先ほど作成したストレージ アカウントを使用するための構成をアプリケーションに対して行います。まず、Azure ポータルから接続設定を取得する方法を見ていきます。その後、アプリケーションをローカルで実行します。
+このセクションでは、先ほど作成したストレージ アカウントを使用するための構成をアプリケーションに対して行います。Azure ポータルから接続の設定を取得する方法を見ていきます。その後、アプリケーションをローカルで実行します。
 
-1.  [Azure 管理ポータル][]で、前のセクションで作成したストレージ アカウントをクリックします。
-
-1.  **[アクセス キーの管理]** をクリックします。
-
-  	![Manage Access Keys ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzureTableStorageManageKeys.png)
-
-1.  Visual Studio のソリューション エクスプローラーでプロジェクト ノードを右クリックし、**[プロパティ]** をクリックします。**[デバッグ]** タブをクリックします。
+1.  Visual Studio のソリューション エクスプローラーで、使用するプロジェクト ノードを右クリックし、**[プロパティ]** を選択します。**[デバッグ]** タブをクリックします。
 
   	![Project Debug 設定](./media/web-sites-python-ptvs-flask-table-storage/PollsFlaskAzureTableStorageProjectDebugSettings.png)
 
-1.  **[Debug Server Command]** の **[Environment]** で、アプリケーションに必要な環境変数の値を設定します。
+1.  **[サーバー コマンドのデバッグ]** の **[環境]** で、アプリケーションに必要な環境変数の値を設定します。
 
         REPOSITORY_NAME=azuretablestorage
         STORAGE_NAME=<storage account name>
         STORAGE_KEY=<primary access key>
 
-    これで、**デバッグを開始**したときに環境変数が設定されます。**デバッグを開始**したときに変数を設定する必要がある場合は、同じ値を **[Run Server Command]** にも設定してください。
+    これにより、**デバッグを開始**したときに環境変数が設定されます。**デバッグなしで開始**したときに変数を設定する場合は、**[サーバー コマンドの実行]** でも同じ値を設定します。
 
-    Windows コントロール パネルを使用して環境変数を定義してもかまいません。ソース コードやプロジェクト ファイルに資格情報を保存するのを避ける必要がある場合は、こちらの方法をお勧めします。新しい環境変数の値をアプリケーションから利用するためには、Visual Studio を再起動する必要があります。
+    Windows コントロール パネルを使用して環境変数を定義してもかまいません。ソース コードまたはプロジェクト ファイルに資格情報を格納するのを避ける場合には、これがより優れた方法です。新しい環境変数の値をアプリケーションから利用するためには、Visual Studio を再起動する必要があります。
 
-1.  Azure テーブル ストレージ リポジトリを実装するコードは、**models/azuretablestorage.py** にあります。Table サービスを Python から使用する方法の詳細については、[こちらのドキュメント] をご覧ください。
+1.  Azure テーブル ストレージ リポジトリを実装するコードは、**models/azuretablestorage.py** にあります。Python から Table サービスを使用する方法の詳細については、[ドキュメント]をご覧ください。
 
-1.  <kbd>F5</kbd> キーでアプリケーションを実行します。**[Create Sample Polls]** で作成された投票内容と投票によって送信されたデータが Azure テーブル ストレージにシリアル化されます。
+1.  `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、Azure テーブル ストレージでシリアル化されます。
 
-1.  アプリケーションの **[About]** ページに移動して、**Azure テーブル ストレージ** リポジトリが使用されていることを確認します。
+1.  アプリケーションが、**Azure テーブル ストレージ** リポジトリを使用していることを確認するには、**[情報]** ページを確認します。
 
   	![Web ブラウザー](./media/web-sites-python-ptvs-flask-table-storage/PollsFlaskAzureTableStorageAbout.png)
 
-## Azure テーブル ストレージを照会する
+## Azure テーブル ストレージを調査する
 
-ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりすることができます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
+ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりできます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
 
-> [AZURE.NOTE] この作業を行うには、Microsoft Azure Tools がインストールされている必要があります。Microsoft Azure Tools は、[Azure SDK for .NET][] に付属します
+> [AZURE.NOTE]これには、Microsoft Azure Tools をインストールする必要があります。このツールは、[Azure SDK for .NET] の一部として使用できます。
 
-1.  **[サーバー エクスプローラー]** を開きます。**[Azure]**、**[ストレージ]**、使用ストレージ アカウント、**[テーブル]** の順に展開します。
+1.  **[サーバー エクスプローラー]**を開きます。**[Azure]**、**[ストレージ]**、使用するストレージ アカウント、**[テーブル]** の順に展開します。
 
-  	![サーバー エクスプローラー](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonServerExplorer.png)
+  	<!-- ![Server Explorer](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonServerExplorer.png) -->
 
-1.  **polls** テーブルまたは **choices** テーブルをダブルクリックすると、その内容が、エンティティの追加/削除/編集ボタンと共にドキュメント ウィンドウに表示されます。
+1.  **投票**テーブルか**選択肢**テーブルをダブルクリックすると、ドキュメント ウィンドウでテーブルの内容を表示し、エンティティを追加、削除、編集できます。
 
-  	![テーブル照会結果](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonServerExplorerTable.png)
+  	<!-- ![Table Query Results](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonServerExplorerTable.png) -->
 
-## Azure Websites に発行する
+## Web アプリを Azure App Service に発行する
 
-作成した Web アプリケーションは、PTVS を使用して簡単に Azure Websites にデプロイすることができます。
+Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単にデプロイできます。
 
-1.  **[ソリューション エクスプローラー]** で、プロジェクト ノードを右クリックして **[発行]** をクリックします。
+1.  **[Microsoft Azure Web Apps]** をクリックします。
 
-  	![Publish Web ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonPublishWebSiteDialog.png)
+1.  **[新規]** をクリックして、新しい Web アプリを作成します。
 
-1.  **[Microsoft Azure Websites]** をクリックします。
+1.  次のフィールドに入力し、**[作成]** をクリックします。
+	-	**[Web アプリケーション名]**
+	-	**[App Service プラン]**
+	-	**[リソース グループ]**
+	-	**[リージョン]**
+	-	**[データベース サーバー]** は、**[データベースなし]** のままにしておきます。
 
-1.  **[新規]** をクリックして新しいサイトを作成します。
+  	<!-- ![Create Site on Microsoft Azure Dialog](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonCreateWebSite.png) -->
 
-1.  **[サイト名]** と **[リージョン]** を選択し、**[作成]** をクリックします。
+1.  他のすべての既定値をそのまま使用し、**[発行]** をクリックします。
 
-  	![Create Site on Microsoft Azure ダイアログ](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonCreateWebSite.png)
+1.  Web ブラウザーが自動的に開いて、発行した Web アプリが表示されます。[情報] ページを参照すると、**Azure テーブル ストレージ**リポジトリではなく、**メモリ内**リポジトリを使用していることが確認できます。
 
-1.  それ以外はすべて既定値のままにし、**[発行]** をクリックします。
+    これは、Azure App Service の Web Apps インスタンスで環境変数が設定されていないので、**settings.py** で指定された既定値が使用されているためです。
 
-1.  Web ブラウザーが自動的に開いて、発行したサイトが表示されます。[About] ページに移動すると、**Azure テーブル ストレージ**リポジトリではなく**メモリ内**リポジトリが使用されていることを確認できます。
+## Web Apps インスタンスを構成する
 
-    Azure Web サイト上で環境変数が設定されておらず、**settings.py** で指定された既定値が使用されているためです。
+このセクションでは、Web Apps インスタンスの環境変数を構成します。
 
-## Azure Websites を構成する
+1.  [Azure ポータル] で、**[参照]**、 **[Web Apps]**、Web アプリ名の順にクリックして、Web アプリのブレードを開きます。
 
-このセクションでは、サイトに使用する環境変数を構成します。
+1.  Web アプリのブレードで、**[すべての設定]**、**[アプリケーションの設定]** の順にクリックします。
 
-1.  [Azure 管理ポータル][]で、前のセクションで作成したサイトをクリックします。
+  	<!-- ![Top Menu](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteTopMenu.png) -->
 
-1.  最上部のメニューの **[構成]** をクリックします。
+1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、前のセクションで説明したように **REPOSITORY_NAME**、**STORAGE_NAME**、**STORAGE_KEY** の値を設定します。
 
-  	![トップメニュー](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteTopMenu.png)
+  	<!-- ![App Settings](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png) -->
 
-1.  下へスクロールして **[アプリケーション設定]** セクションに移動し、前のセクションの説明に従って **REPOSITORY_NAME**、**STORAGE_NAME**、**STORAGE_KEY** の値を設定します。
+1. **[保存]**、**[再起動]** の順にクリックし、最後に **[参照]** をクリックします。
 
-  	![アプリ設定](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png)
+  	<!-- ![Bottom Menu](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteConfigureBottomMenu.png) -->
 
-1. 最下部のメニューの **[保存]**、**[再起動]** を順にクリックし、最後に **[参照]** をクリックします。
-
-  	![ボトムメニュー](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteConfigureBottomMenu.png)
-
-1.  これでアプリケーションは、**Azure テーブル ストレージ** リポジトリを使用して正しく動作します。
+1.  想定どおりに Web アプリが**Azure テーブル ストレージ** リポジトリを使用して動作していることが確認できます。
 
     ご利用ありがとうございます。
 
@@ -180,16 +169,20 @@ MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サー
 
 ## 次のステップ
 
-Python Tools for Visual Studio、Flask、Azure テーブル ストレージの詳細については、以下のリンクをご覧ください。
+Python Tools for Visual Studio、Flask および Azure テーブル ストレージの詳細については、以下のリンクを参照してください。
 
-- [Python Tools for Visual Studio のドキュメント][]
-  - [Web プロジェクト][]
-  - [クラウド サービス プロジェクト][]
-  - [Microsoft Azure でのリモート デバッグ][]
-- [Flask のドキュメント][]
-- [Azure ストレージ][]
-- [Azure SDK for Python][]
-- [Python からテーブル ストレージ サービスを使用する方法][]
+- [Python Tools for Visual Studio のドキュメント]
+  - [Web プロジェクト]
+  - [クラウド サービス プロジェクト]
+  - [Microsoft Azure でのリモート デバッグ]
+- [Flask のドキュメント]
+- [Azure ストレージ]
+- [Azure SDK for Python]
+- [Python からテーブル ストレージ サービスを使用する方法]
+
+## 変更内容
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」をご覧ください。
 
 
 <!--Link references-->
@@ -199,15 +192,15 @@ Python Tools for Visual Studio、Flask、Azure テーブル ストレージの�
 [Python からテーブル ストレージ サービスを使用する方法]: ../storage-python-how-to-use-table-storage.md
 
 <!--External Link references-->
-[Azure 管理ポータル]: https://manage.windowsazure.com
+[Azure Management Portal]: https://portal.azure.com
 [Azure SDK for .NET]: http://azure.microsoft.com/downloads/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
-[Python 2.7 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517190 
-[Python 3.4 32-bit]: http://go.microsoft.com/fwlink/?LinkId=517191
+[Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
+[Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 [Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
 [Flask のドキュメント]: http://flask.pocoo.org/
 [Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
@@ -215,6 +208,6 @@ Python Tools for Visual Studio、Flask、Azure テーブル ストレージの�
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
 [Azure ストレージ]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

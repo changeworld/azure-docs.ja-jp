@@ -1,15 +1,12 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the 
-environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deploy. 
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に指定する値のパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む Parameters という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
-When defining parameters, use the **allowedValues** field to specify which values a user can provide during deployment. Use the **defaultValue** field to assign a value to the parameter, if no value is provided 
-during deployment.
+パラメーターを定義するときは、**allowedValues** フィールドを使用して、デプロイ中にユーザーが指定できる値を指定します。**defaultValue** フィールドは、デプロイ中に値が指定されなかった場合にパラメーターに割り当てる値を指定するために使用します。
 
-We will describe each parameter in the template.
+テンプレートに含まれるそれぞれのパラメーターについて説明します。
 
 ### siteName
 
-The name of the web app that you wish to create.
+作成する Web アプリの名前。
 
     "siteName":{
       "type":"string"
@@ -17,7 +14,7 @@ The name of the web app that you wish to create.
 
 ### hostingPlanName
 
-The name of the App Service plan to use for hosting the web app.
+Web アプリをホストするためにする App Service プランの名前。
     
     "hostingPlanName":{
       "type":"string"
@@ -25,7 +22,7 @@ The name of the App Service plan to use for hosting the web app.
 
 ### siteLocation
 
-The location to use for creating the web app and hosting plan. It must be one of the Azure locations that support web apps.
+Web アプリとホスティング プランを作成するために使用する場所。Web アプリをサポートする Azure の場所にする必要があります。
 
     "siteLocation":{
       "type":"string"
@@ -33,7 +30,7 @@ The location to use for creating the web app and hosting plan. It must be one of
 
 ### sku
 
-The pricing tier for the hosting plan.
+ホスティング プランの価格レベル。
 
     "sku":{
       "type":"string",
@@ -46,11 +43,11 @@ The pricing tier for the hosting plan.
       "defaultValue":"Free"
     }
 
-The template defines the values that are permitted for this parameter (Free, Shared, Basic, or Standard), and assigns a default value (Free) if no value is specified.
+テンプレートは、このパラメーターで許可される値 (Free、Shared、Basic、または Standard) を定義します。値が指定されない場合は既定値 (Free) を割り当てます。
 
 ### workerSize
 
-The instance size of the hosting plan (small, medium, or large).
+ホスティング プランのインスタンス サイズ (小、中、または大)。
 
     "workerSize":{
       "type":"string",
@@ -62,4 +59,6 @@ The instance size of the hosting plan (small, medium, or large).
       "defaultValue":"0"
     }
     
-The template defines the values that are permitted for this parameter (0, 1, or 2), and assigns a default value (0) if no value is specified. The values correspond to small, medium and large.
+テンプレートは、このパラメーターで許可される値 (0、1、または 2) を定義します。値が指定されない場合は既定値 (0) を割り当てます。値は、小、中、および大に対応します。
+
+<!---HONumber=62-->

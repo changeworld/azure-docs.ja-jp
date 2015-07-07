@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Power Query を使用した Excel から Hadoop への接続 | Microsoft Azure" 
-	description="ビジネス インテリジェンス コンポーネントを活用し、HDInsight 上の Hadoop に格納されているデータに Power Query for Excel でアクセスする方法を説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="paulettm" 
+<properties
+	pageTitle="Power Query を使用した Excel から Hadoop への接続 | Microsoft Azure"
+	description="ビジネス インテリジェンス コンポーネントを活用し、HDInsight 上の Hadoop に格納されているデータに Power Query for Excel でアクセスする方法を説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="bradsev"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/20/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/08/2015"
 	ms.author="bradsev"/>
 
 
@@ -21,13 +21,15 @@
 
 マイクロソフトのビッグ データ ソリューションの重要な特徴の 1 つに、Microsoft ビジネス インテリジェンス (BI) コンポーネントと Azure HDInsight の Hadoop クラスターとの統合があります。この統合の主な例は、Microsoft Power Query for Excel アドインを使用して Hadoop クラスターと関連付けられたデータを格納する Azure ストレージ アカウントに Excel を接続する機能です。この記事では、Power Query をセットアップして、HDInsight で管理される Hadoop クラスターに関連付けられたデータの照会に使用する方法を説明します。
 
+> [AZURE.NOTE]この記事の手順は、Linux と Windows ベースの HDInsight クラスターのどちらにも使用できますが、クライアント ワークステーションには Windows が必要です。
+
 ## 前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- HDInsight クラスター。その構成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
-- Windows 7、Windows Server 2008 R2、またはそれ以降のオペレーティング システムを実行しているコンピューターが必要です。
-- Office 2013 Professional Plus、Office 365 ProPlus、Excel 2013 Standalone、Office 2010 Professional Plus のいずれかが必要です。
+- **HDInsight クラスター**。その構成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
+- Windows 7、Windows Server 2008 R2、またはそれ以降のオペレーティング システムが実行されている**ワークステーション**。
+- **Office 2013 Professional Plus、Office 365 ProPlus、Excel 2013 Standalone、または Office 2010 Professional Plus**。
 
 
 ## <a id="InstallPowerQuery"></a>Microsoft Power Query for Excel のインストール
@@ -82,5 +84,6 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 [image-hdi-powerquery-imported-table]: ./media/hdinsight-connect-excel-power-query/HDI.PowerQuery.ImportedTable.PNG
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/23/2015" 
+	ms.date="06/02/2015" 
 	ms.author="cephalin"/>
 
 # ハイブリッド接続を使用して Azure App Service の Web アプリから内部設置型の SQL Server に接続する
@@ -23,8 +23,8 @@
 このチュートリアルでは、[Azure プレビュー](http://go.microsoft.com/fwlink/?LinkId=529715)での App Service Web アプリの作成方法、新しいハイブリッド接続機能を使用したローカルの内部設置型 SQL Server データベースへの Web アプリの接続方法、ハイブリッド接続を使用する単純な ASP.NET アプリケーションの作成方法、App Service Web アプリへのアプリケーションのデプロイ方法について説明します。完成した Azure の Web アプリでは、ユーザー資格情報を内部設置型のメンバーシップ データベースに保存します。このチュートリアルは、Azure または ASP.NET を使用した経験がない読者を対象に作成されています。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
-> [AZURE.NOTE]ハイブリッド接続機能の Web Apps 部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+>
+>ハイブリッド接続機能の Web Apps 部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
 
 ## 前提条件 ##
 
@@ -178,33 +178,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 <a name="InstallHCM"></a>
 ## D.内部設置型の Hybrid Connection Manager をインストールして接続を完了する ##
 
-1. **[ハイブリッド接続]** ブレードで、作成したハイブリッド接続をクリックし、**[リスナーのセットアップ]** をクリックします。
-	
-	![Click Listener Setup][ClickListenerSetup]
-	
-4. **[ハイブリッド接続のプロパティ]** ブレードが開きます。**内部設置型の Hybrid Connection Manager** で、**[インストールするにはここをクリックします]** をクリックします。
-	
-	![Click here to install][ClickToInstallHCM]
-	
-5. [アプリケーションの実行 - セキュリティの警告] ダイアログで、**[実行]** を選択します。
-	
-	![Choose Run to continue][ApplicationRunWarning]
-	
-6.	**[ユーザー アカウント制御]** ダイアログで、**[はい]** を選択します。
-	
-	![Choose Yes][UAC]
-	
-7. Hybrid Connection Manager がダウンロードされ、インストールされます。
-	
-	![Installing][HCMInstalling]
-	
-8. インストールが完了したら、**[閉じる]** をクリックします。
-	
-	![Click Close][HCMInstallComplete]
-	
-	**[ハイブリッド接続]** ブレードで、**[状態]** 列に **[接続]** と表示されています。
-	
-	![Connected Status][HCStatusConnected]
+[AZURE.INCLUDE [app-service-hybrid-connections-manager-install](../../includes/app-service-hybrid-connections-manager-install.md)]
 
 これで、ハイブリッド接続のインフラストラクチャが完成しました。この接続を使用する Web アプリケーションを作成できます。
 
@@ -244,7 +218,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	接続文字列を作成する際には、次の事項に留意してください。
 	
-	- 既定のインスタンスではなく、名前付きインスタンス (YourServer\\SQLEXPRESS など) に接続している場合は、静的ポートを使用するように SQL Server を構成する必要があります。静的ポートの構成の詳細については、「[特定のポートでリッスンするように SQL Server を構成する方法](http://support.microsoft.com/kb/823938)」を参照してください。既定では、名前付きインスタンスは動的ポートと UDP を使用します。これはハイブリッド接続ではサポートされません。 
+	- 既定のインスタンスではなく、名前付きインスタンス (YourServer\SQLEXPRESS など) に接続している場合は、静的ポートを使用するように SQL Server を構成する必要があります。静的ポートの構成の詳細については、「[特定のポートでリッスンするように SQL Server を構成する方法](http://support.microsoft.com/kb/823938)」を参照してください。既定では、名前付きインスタンスは動的ポートと UDP を使用します。これはハイブリッド接続ではサポートされません。 
 	
 	- ポート (例に示すように既定では 1433) を接続文字列に指定することをお勧めします。これにより、ローカル SQL Server で TCP が有効になり、正しいポートが使用されます。
 	
@@ -402,5 +376,6 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 [HCTestRegisterRelecloud]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F09HCTestRegisterRelecloud.png
 [HCTestSSMSTree]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

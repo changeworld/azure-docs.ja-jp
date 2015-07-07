@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2015" 
-	ms.author="bradyg;tarcher"/>
+	ms.date="05/16/2015" 
+	ms.author="tdykstra"/>
 
 # Azure App Service で .NET クライアントから API アプリ使用する 
 
@@ -27,9 +27,11 @@
 
 このチュートリアルのセクションはそれぞれ独立した内容であるため、2 つ目のシナリオの手順を実行する際に、最初のシナリオの手順を完了しておく必要はありません。
 
+**内部** API アプリを呼び出す方法については、[.NET クライアントから内部 API アプリを使用する](app-service-api-dotnet-consume-internal.md)方法に関するページを参照してください。
+
 ## 前提条件
 
-このチュートリアルでは、Visual Studio でプロジェクトを作成してコードを追加する方法と、[Azure プレビュー ポータルで API アプリを管理する](../app-service-api-apps-manage-in-portal.md)方法について詳しく理解していることを前提としています。
+このチュートリアルでは、Visual Studio でプロジェクトを作成してコードを追加する方法と、[Azure プレビュー ポータルで API アプリを管理する](app-service-api-apps-manage-in-portal.md)方法について詳しく理解していることを前提としています。
 
 この記事のプロジェクトとコードのサンプルは、次の記事で作成、デプロイ、保護した API アプリ プロジェクトに基づいています。
 
@@ -201,6 +203,6 @@ Azure API アプリでは、クライアント認証フローもサポートさ�
 この記事では、アクセス レベルが**パブリック (匿名)** または**パブリック (認証済み)** に設定された API アプリについて、.NET クライアントから API アプリを使用する方法について説明しました。
 
 .NET クライアントから API アプリを呼び出すコードのその他の例については、[Azure Cards](https://github.com/Azure-Samples/API-Apps-DotNet-AzureCards-Sample) サンプル アプリケーションをダウンロードしてください。
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

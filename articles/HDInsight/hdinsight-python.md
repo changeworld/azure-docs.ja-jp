@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure HDInsight での Python と Hive および Pig の使用"
-	description="Azure HDInsight での Hive および Pig の Python ユーザー定義関数の使用方法について説明します。"
+	pageTitle="HDInsight における Python と Hive および Pig の使用 | Microsoft Azure"
+	description="HDInsight (Azure の Hadoop テクノロジ スタック) での Hive および Pig の Python ユーザー定義関数 (UDF) の使用方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -326,8 +326,9 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

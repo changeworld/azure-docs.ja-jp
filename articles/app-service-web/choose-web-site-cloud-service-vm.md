@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure App Service、Cloud Services、および Virtual Machines の比較" 
+<properties
+	pageTitle="Azure App Service、Cloud Services、および Virtual Machines の比較"
 	description="Web アプリケーションをホストするにあたり、どのようなときにどのサービス (Azure App Service、Cloud Services、Virtual Machines) を使用するかについて説明します。"
-	services="•app-service\web, virtual-machines, cloud-services" 
-	documentationCenter="" 
-	authors="tdykstra" 
-	manager="wpickett" 
+	services="app-service\web, virtual-machines, cloud-services"
+	documentationCenter=""
+	authors="tdykstra"
+	manager="wpickett"
 	editor="jimbe"/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/29/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="04/29/2015"
 	ms.author="tdykstra"/>
 
 # Azure App Service、Cloud Services、および Virtual Machines の比較
@@ -52,20 +52,20 @@ Azure App Service は、ほとんどの Web アプリに適しています。デ
 
 そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。それらのアプリケーションは、ワールドクラスの管理ポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。新しい [Web ジョブ][]機能を使用してバックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と [VNET 機能](../fundamentals-introduction-to-azure.md#networking/)を使ってオンプレミスのリソースに対して簡単に接続することができます。Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
-* 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上でアプリケーションを実行し、高い信頼性を確保する。 
+* 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上でアプリケーションを実行し、高い信頼性を確保する。
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
-* バックアップと復元によって災害復旧に対応する。 
+* バックアップと復元によって災害復旧に対応する。
 * ISO、SOC2、PCI に準拠する。
 * Active Directory と連係する。
 
-### <a id="corp"></a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。 
+### <a id="corp"></a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。
 
 Azure App Service は、企業 Web サイトをホスティングするためのソリューションとしてきわめて優れた特長を持っています。グローバルなデータセンターのネットワークを活かして Web アプリのスケールを短期間で拡張し、すぐに需要に応えることができます。また、ローカル リーチ、フォールト トレランス、インテリジェントなトラフィック管理が実現されています。そのすべてが、ワールドクラスの管理ツールを備えたプラットフォームに集約され、サイトの稼働状態とトラフィックの状況を速やかにかつ簡単に把握することができます。Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
-* 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上で Web サイトを実行し、高い信頼性を確保する。 
+* 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上で Web サイトを実行し、高い信頼性を確保する。
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
-* バックアップと復元によって災害復旧に対応する。 
-* 統合されたツールを使用してログとトラフィックを管理する。 
+* バックアップと復元によって災害復旧に対応する。
+* 統合されたツールを使用してログとトラフィックを管理する。
 * ISO、SOC2、PCI に準拠する。
 * Active Directory と連係する。
 
@@ -74,8 +74,8 @@ Azure App Service は、企業 Web サイトをホスティングするための
 Azure App Service は、過去の IIS6 アプリケーションの移行に伴うインフラストラクチャ コストを効果的に抑制します。互換性をチェックして必要な変更点を洗い出すことのできる[使いやすい移行ツールと詳細な移行ガイド](https://www.movemetowebsites.net/)がマイクロソフトから提供されています。Visual Studio や TFS、さらに、広く普及している CMS ツールとの高い親和性により、IIS6 アプリケーションを手間なく直接クラウドにデプロイすることができます。デプロイ後は、Azure の管理ポータルの堅牢な管理ツールを使ってスケールを調整 (スケール ダウンまたはスケール アップ) することにより、必要に応じてコストを抑制したり需要の増大に対応したりることができます。移行ツールを使用すると、次のことができます。
 
 * 既存の Windows Server 2003 Web アプリケーションをすばやく簡単にクラウドへと移行する。
-* 必要であれば、接続先の SQL Database をオンプレミスに維持し、ハイブリッド型のアプリケーションを作成する。 
-* SQL Database をレガシ アプリケーションと共に自動的に移動する。 
+* 必要であれば、接続先の SQL Database をオンプレミスに維持し、ハイブリッド型のアプリケーションを作成する。
+* SQL Database をレガシ アプリケーションと共に自動的に移動する。
 
 ### <a id="smallbusiness"></a>スモール ビジネスのオーナーです。サイトをホストするための安価な方法が必要ですが、将来の成長も考慮する必要があります。
 
@@ -108,16 +108,16 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 
 アプリケーションを使用するために、ソフトウェアおよびオペレーティング システムの複雑なインストールまたは構成が必要な場合、仮想マシンが最良のソリューションであると思われます。Virtual Machines を使用すると、次のことができます。
 
-- 仮想マシン ギャラリーを使用して、Windows や Linux などのオペレーティング システムから始め、後でアプリケーションの要件に合わせてカスタマイズできます。 
-- 既存の内部設置型サーバーのカスタム イメージを作成してアップロードすることで、Azure の仮想マシンで実行できます。 
+- 仮想マシン ギャラリーを使用して、Windows や Linux などのオペレーティング システムから始め、後でアプリケーションの要件に合わせてカスタマイズできます。
+- 既存の内部設置型サーバーのカスタム イメージを作成してアップロードすることで、Azure の仮想マシンで実行できます。
 
 ### <a id="oss"></a>自分のサイトではオープン ソース ソフトウェアを使用しており、そのソフトウェアを Azure でホストする必要があります。
 
 そのオープン ソース フレームワークが App Service でサポートされている場合、ご利用のアプリケーションに必要な言語とフレームワークが自動的に構成されます。App Service を使用すると、次のことができます。
 
-- [.NET][dotnet]、[PHP][]、[Node.js][nodejs]、[Python][] など、多くの一般的なオープン ソース言語を使用できます。 
-- WordPress、Drupal、Umbraco、DNN、および多くのサード パーティ製 Web アプリケーションをセットアップできます。 
-- 既存のアプリケーションを移行することも、アプリケーション ギャラリーから新規アプリケーションを作成することもできます。 
+- [.NET][dotnet]、[PHP][]、[Node.js][nodejs]、[Python][] など、多くの一般的なオープン ソース言語を使用できます。
+- WordPress、Drupal、Umbraco、DNN、および多くのサード パーティ製 Web アプリケーションをセットアップできます。
+- 既存のアプリケーションを移行することも、アプリケーション ギャラリーから新規アプリケーションを作成することもできます。
 
 ご利用のオープン ソース フレームワークが App Service でサポートされていない場合は、他の 2 つの Azure Web ホスティング方法をご利用ください。Cloud Services を使用する場合、スタートアップ タスクを使用して、必要なオープン ソース ソフトウェア (Windows 上で動作) をインストールおよび構成します。Virtual Machines を使用する場合、Windows または Linux ベースのマシン イメージにソフトウェアをインストールして構成します。
 
@@ -131,10 +131,10 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 - Web アプリを迅速に作成して、Azure のグローバルに分散したデータ センターの 1 つで HTTP Web サービスをホストすることができます。
 - 既にあるサービスを移行したり、新しいサービスを作成したりすることができます。
-- 1 つのインスタンスで可用性の SLA を実現するか、または複数の専用コンピューターにスケール アウトします。 
+- 1 つのインスタンスで可用性の SLA を実現するか、または複数の専用コンピューターにスケール アウトします。
 - 発行済みのサイトを使用して、モバイル クライアントを含む HTTP クライアントに REST API を提供します。
 
-また、Azure App Service には REST API 向けの新しいプレビュー機能、API Apps が用意されています。API Apps の詳細については、「[API Apps とは](app-service-api/app-service-api-apps-why-best-platform.md)」を参照してください。
+また、Azure App Service には REST API 向けの新しいプレビュー機能、API Apps が用意されています。API Apps の詳細については、「[API Apps とは](../app-service-api/app-service-api-apps-why-best-platform.md)」を参照してください。
 
 ##<a name="features"></a>機能の比較
 
@@ -230,7 +230,7 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
    <td valign="middle">○</td>
    <td valign="middle">○</td>
    <td valign="middle">○</td>
-   <td valign="middle">REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、<a href="http://go.microsoft.com/fwlink/?linkid=390226">Web ジョブ</a>機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保することができます。プレビュー [API apps](app-service-api/app-service-api-apps-why-best-platform.md) 機能には、REST サービスをホストする機能が多数搭載されています。</td>
+   <td valign="middle">REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、<a href="http://go.microsoft.com/fwlink/?linkid=390226">Web ジョブ</a>機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保することができます。プレビュー [API apps](../app-service-api/app-service-api-apps-why-best-platform.md) 機能には、REST サービスをホストする機能が多数搭載されています。</td>
 </tr>
 <tr>
    <td valign="middle"><p>統合されたサービスとしての MySQL のサポート</p></td>
@@ -349,21 +349,22 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 * [Azure Cloud Services](/documentation/services/cloud-services/)
 * [Azure Virtual Machines](/documentation/services/virtual-machines/)
 
-[ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
-[Azure App Service]: /services/app-service/
-[Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
-[Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
-[ClearDB]: http://www.cleardb.com/
-[Web ジョブ]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
-[Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
-[azurestore]: http://www.windowsazure.com/gallery/store/
-[scripting]: http://www.windowsazure.com/documentation/scripts/?services=web-sites
-[dotnet]: http://www.windowsazure.com/develop/net/
-[nodejs]: http://www.windowsazure.com/develop/nodejs/
-[PHP]: http://www.windowsazure.com/develop/php/
-[Python]: http://www.windowsazure.com/develop/python/
-[servicebus]: http://www.windowsazure.com/documentation/services/service-bus/
-[sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
-[ストレージ]: http://www.windowsazure.com/documentation/services/storage/
+  [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
+  [Azure App Service]: /services/app-service/
+  [Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
+  [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
+  [ClearDB]: http://www.cleardb.com/
+  [Web ジョブ]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
+  [Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
+  [azurestore]: http://www.windowsazure.com/gallery/store/
+  [scripting]: http://www.windowsazure.com/documentation/scripts/?services=web-sites
+  [dotnet]: http://www.windowsazure.com/develop/net/
+  [nodejs]: http://www.windowsazure.com/develop/nodejs/
+  [PHP]: http://www.windowsazure.com/develop/php/
+  [Python]: http://www.windowsazure.com/develop/python/
+  [servicebus]: http://www.windowsazure.com/documentation/services/service-bus/
+  [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
+  [ストレージ]: http://www.windowsazure.com/documentation/services/storage/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

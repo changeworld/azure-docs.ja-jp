@@ -1,11 +1,13 @@
 
-- **Visual Studio 2013** <br/>This a requirement for using To download a free trial version of Visual Studio 2013, see [Visual Studio Downloads](http://www.visualstudio.com/downloads/download-visual-studio-vs). 
+- **Visual Studio 2013**<br/>Visual Studio 2013 の無料試用版をダウンロードするには、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」を参照してください。 
 
-- **SQL Server 2014 Express with Tools** <br/>Download Microsoft SQL Server Express for free at the [Microsoft SQL Server Express Edition page](http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx). Choose the **Download SQL Server Express** and fill out your profile, choosing **SQL Server 2014 Express with Tools**, then click continue. This starts the download of the installer for both SQL Server Express and the SQL Server Express Management Tools. Save the installer package to your on-premises computer.
+- **SQL Server 2014 Express with Tools** <br/>[Microsoft SQL Server Express Edition](http://www.microsoft.com/ja-jp/server-cloud/Products/sql-server-editions/sql-server-express.aspx) に関するページで Microsoft SQL Server Express の無料版をダウンロードします。**[SQL Server Express のダウンロード]** を選択してプロファイルに入力し、**[SQL Server 2014 Express with Tools]** を選択して、[続行] をクリックします。これで、SQL Server Express と SQL Server Express 管理ツールの両方のインストーラーのダウンロードが開始されます。オンプレミスのコンピューターに、インストーラー パッケージを保存します。
 
-- **An on-premises computer** <br/>You can run the Hybrid Connections Manger on the same on-premises computer as your SQL Server instance, or you can run each on a separate computer. The computer on which the Hybrid Connection Manager runs must meet the following criteria:
+- **オンプレミスのコンピューター** <br/>ハイブリッド接続マネージャーを、SQL Server インスタンスと同じオンプレミスのコンピューター上で、またはそれぞれ別のコンピューターで実行できます。ハイブリッド接続マネージャーを実行するコンピューターは、次の条件を満たす必要があります。
 
-	- Be able to connect to Azure over port 5671.
-	- Be able to access the *hostname*:*portnumber* of the computer running your SQL Server instance.  
+	- ポート 5671 経由で Azure に接続できる
+	- SQL Server インスタンスを実行しているコンピューターの *hostname*: *portnumber* にアクセスできる  
 
-	For more information see [Hybrid Connections Overview](../articles/integration-hybrid-connection-overview.md).
+	詳細については、[ハイブリッド接続の概要](../articles/integration-hybrid-connection-overview.md)に関するページを参照してください。
+
+<!---HONumber=62-->

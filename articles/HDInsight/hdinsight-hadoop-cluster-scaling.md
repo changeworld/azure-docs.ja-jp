@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDInsight でのクラスターのスケール設定 | Azure"
-   description="HDInsight で実行しているクラスター内のデータ ノードの数を変更する場合、クラスターを削除して再作成することなく、変更できます。"
+   pageTitle="HDInsight の Hadoop、HBase、または Apache Storm クラスターのスケール設定 | Microsoft Azure"
+   description="HDInsight で実行されている Hadoop、Apache Storm、または HBase クラスター内のデータ ノード数は、クラスターを削除して再作成することなく変更できます。"
    services="hdinsight"
    documentationCenter=""
    authors="mumian"
@@ -16,7 +16,7 @@
    ms.date="04/02/2015"
    ms.author="jgao"/>
 
-# HDInsight のクラスターのスケール設定
+#Hadoop、HBase、または Apache Storm クラスターのスケール設定を使用して HDInsight のデータ ノード数を変更する 
 
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用されるデータ ノードの数を、クラスターを削除して再作成することなく、変更できます。この処理は、Azure PowerShell、HDInsight SDK、Azure ポータルから実行できます。
 
@@ -24,7 +24,7 @@
 このセクションでは、HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響について説明します。
 
 * Hadoop は、
-* Storm
+* Apache Storm
 * HBase 
 
 ## Hadoop は、 
@@ -57,7 +57,7 @@ CLI コマンドを使用して Storm トポロジのバランスを再調整す
 
 	$ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-## HBase
+##HBase
 実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
 
 	>pushd %HBASE_HOME%\bin
@@ -143,5 +143,6 @@ HDInsight SDK を使用して Hadoop クラスターのサイズを変更する�
 
 
 HDInsight .NET SDK の使用の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」のトピックをご覧ください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

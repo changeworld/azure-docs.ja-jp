@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure App Service の Web アプリケーションの診断ログの有効化" 
-	description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。" 
-	services="app-service\web" 
-	documentationCenter=".net" 
-	authors="cephalin" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service の Web アプリケーションの診断ログの有効化"
+	description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。"
+	services="app-service\web"
+	documentationCenter=".net"
+	authors="cephalin"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/29/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/29/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリケーションの診断ログの有効化
@@ -22,7 +22,7 @@
 
 Azure では、組み込みの診断機能により、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) でホストされる Web アプリのデバッグを容易に行うことができます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-> [AZURE.NOTE]この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、および Azure クロスプラットフォーム コマンド ライン インターフェイスで診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](../troubleshoot-web-sites-in-visual-studio.md)」を参照してください。
+> [AZURE.NOTE]この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](../troubleshoot-web-sites-in-visual-studio.md)」を参照してください。
 
 ## <a name="whatisdiag"></a>Web サーバーの診断とアプリケーション診断
 
@@ -75,9 +75,9 @@ Azure の Web アプリケーションでは、Web アプリケーションに�
 
 > [AZURE.NOTE]診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
 
-## <a name="download"></a> ログをダウンロードする方法
+##<a name="download"></a> ログをダウンロードする方法
 
-Web アプリケーション ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。さらに、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードすることもできます。
+Web アプリケーション ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。さらに、Azure PowerShell または Azure コマンド ライン インターフェイスを使用して Zip アーカイブとしてダウンロードすることもできます。
 
 ログが保存されるディレクトリ構造は次のとおりです。
 
@@ -107,21 +107,21 @@ FTP を使用して診断情報にアクセスするには、Azure 管理ポー�
 
 > [AZURE.NOTE]Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
 
-### Azure コマンド ライン ツールを使用してダウンロードする
+### Azure コマンド ライン インターフェイスを使用してダウンロードする
 
-Azure コマンド ライン ツールを使用してログ ファイルをダウンロードするには、新しいコマンド プロンプト、PowerShell、Bash、またはターミナル セッションを開き、次のコマンドを入力します。
+Azure コマンド ライン インターフェイスを使用してログ ファイルをダウンロードするには、新しいコマンド プロンプト、PowerShell、Bash、ターミナル セッションを開き、次のコマンドを入力します。
 
 	azure site log download webappname
 
 これにより、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
-> [AZURE.NOTE]Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](../xplat-cli.md)」を参照してください。
+> [AZURE.NOTE]Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure CLI の使用方法](../xplat-cli.md)」に関するページをご覧ください。
 
 ## Application Insights でログを表示する方法
 
 Visual Studio の Application Insights には、ログをフィルターおよび検索したり、要求やその他のイベントにログを関連付けたりするためのツールが用意されています。
 
-1. Application Insights SDK を Visual Studio のプロジェクトに追加します。 
+1. Application Insights SDK を Visual Studio のプロジェクトに追加します。
  * ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。Application Insights リソースの作成などの手順が示されます。[詳細情報](../application-insights/app-insights-start-monitoring-app-health-usage.md)
 2. トレース リスナーのパッケージをプロジェクトに追加します。
  * プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。`Microsoft.ApplicationInsights.TraceListener` を選択します。[詳細情報](../application-insights/app-insights-asp-net-trace-logs.md)
@@ -130,13 +130,13 @@ Visual Studio の Application Insights には、ログをフィルターおよ�
 
 [Application Insights でのパフォーマンス追跡についての詳細情報](../insights-perf-analytics.md)
 
-## <a name="streamlogs"></a> ログをストリーミングする方法
+##<a name="streamlogs"></a> ログをストリーミングする方法
 
-アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。これは、Azure PowerShell または Azure コマンド ライン ツールを使用して開発環境にログ情報をストリーミングすることで実現できます。
+アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。これは、Azure PowerShell または Azure コマンド ライン インターフェイスを使用して開発環境にログ情報をストリーミングすることで実現できます。
 
 > [AZURE.NOTE]一部の種類のログ バッファーはログ ファイルに書き込まれるため、ストリーミング中に無効な順序エラーが発生する可能性があります。たとえば、ユーザーがページにアクセスしたときに発生するアプリケーション ログ エントリは、ページ要求の該当する HTTP ログ エントリより前のストリームに表示されることがあります。
 
-> [AZURE.NOTE]ログのストリーミングでは、**D:\\home\\LogFiles** フォルダーに格納されているテキスト ファイルに書き込まれた情報もストリーミングされます。
+> [AZURE.NOTE]ログのストリーミングでは、**D:\home\LogFiles** フォルダーに格納されているテキスト ファイルに書き込まれた情報もストリーミングされます。
 
 ### Azure PowerShell を使用してストリーミングする
 
@@ -174,9 +174,9 @@ Visual Studio の Application Insights には、ログをフィルターおよ�
 
 	azure site log tail webappname --path http
 
-> [AZURE.NOTE]Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure コマンド ライン ツールの使用方法](../xplat-cli.md)」を参照してください。
+> [AZURE.NOTE]Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure コマンド ライン インターフェイスの使用方法](../xplat-cli.md)」に関するページをご覧ください。
 
-## <a name="understandlogs"></a> 診断ログを読む方法
+##<a name="understandlogs"></a> 診断ログを読む方法
 
 ### アプリケーション診断ログ
 
@@ -325,7 +325,7 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="nextsteps"></a> 次のステップ
+##<a name="nextsteps"></a> 次のステップ
 
 - [Web Apps を監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
 - [チュートリアル - Web Apps のトラブルシューティング](/ja-jp/develop/net/best-practices/troubleshooting-web-sites/)
@@ -333,7 +333,8 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

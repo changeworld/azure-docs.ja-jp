@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="06/09/2015" 
 	ms.author="guayan;tarcher"/>
 
 # Azure App Service API アプリ トリガー
@@ -22,11 +22,7 @@
 
 この記事では、API アプリ トリガーを実装して、ロジック アプリからそれらを使用する方法について説明します。
 
-API アプリの分野での経験が浅い方は、最初に次のいくつかの記事をお読みください。
-
-1. [API アプリの作成](app-service-dotnet-create-api-app.md) - 最初から新しい API アプリを作成するか、既存の Web API プロジェクトを API アプリに変換します。 
-2. [API アプリのデプロイ](app-service-dotnet-deploy-api-app.md) - API アプリを Azure サブスクリプションにデプロイします。
-3. [API アプリのデバッグ](../app-service-dotnet-remotely-debug-api-app.md) - Visual Studio を使用して、Azure で実行されている API アプリをリモートでデバッグします。
+[Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)を初めて使用する場合は、[API アプリの作成](app-service-dotnet-create-api-app.md)に関する一連のページを読むことをお勧めします。
 
 さらに、このトピック内のすべてのコード スニペットは、[FileWatcher API アプリのサンプル コード](http://go.microsoft.com/fwlink/?LinkId=534802)からコピーしたものです。
 
@@ -36,7 +32,7 @@ API アプリの分野での経験が浅い方は、最初に次のいくつか�
 
 API アプリでイベントを発生させることは一般的なシナリオなので、API アプリのクライアントはイベントに応答して適切な処理を行うことができます。このシナリオをサポートする REST API ベースのメカニズムは API アプリ トリガーと呼ばれます。
 
-たとえば、クライアント コードで [Twitter Connector API アプリ](../app-service-logic/app-service-logic-connector-twitter.md)が使用されていて、コードが特定の単語を含む新しいツイートに基づいて処理を実行する必要があるとします。この場合、このニーズを満たすために、プッシュ トリガーまたはポーリング トリガーを設定する場合があります。
+たとえば、クライアント コードで [Twitter Connector API アプリ](../app-service-logic/app-service-logic-connector-twitter.md)が使用されていて、コードが特定の単語を含む新しいツイートに基づいて処理を実行する必要があるとします。この場合、このニーズを満たすために、ポーリング トリガーまたはプッシュ トリガーを設定する場合があります。
 
 ## ポーリング トリガーとプッシュ トリガー
 
@@ -343,6 +339,6 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
             }
         }
     }
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

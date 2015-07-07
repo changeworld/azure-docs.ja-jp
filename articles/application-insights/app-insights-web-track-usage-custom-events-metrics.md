@@ -1,9 +1,10 @@
 <properties 
-	pageTitle="Application Insights API を使用した Web アプリケーションでの使用状況とイベントのトレース" 
-	description="使用状況を追跡し、問題を診断するためのコード行をいくつか挿入します。" 
-	services="application-insights" 
+	pageTitle="カスタムのイベントとメトリックのための Application Insights API" 
+	description="デバイスまたはデスクトップ アプリケーション、Web ページまたはサービスに数行のコードを追加し、使用状況を追跡し、問題を診断します。" 
+	services="application-insights"
+    documentationCenter="" 
 	authors="alancameronwills" 
-	manager="kamrani"/>
+	manager="ronmart"/>
  
 <tags 
 	ms.service="application-insights" 
@@ -11,210 +12,324 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/06/2015" 
+	ms.date="06/01/2015" 
 	ms.author="awills"/>
 
-# Web アプリケーションにおけるカスタムの利用状況イベントおよびメトリックの追跡
+# カスタムのイベントとメトリックのための Application Insights API 
 
 *Application Insights はプレビュー段階です。*
 
-Web アプリケーションにコードを数行挿入し、アプリケーションでユーザーが行っている操作を確認します。イベント、メトリック、およびページ ビューを追跡できます。すべてのユーザーを対象に集計したデータのグラフとテーブルが表示されます。 
+アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。
 
-> [AZURE.NOTE] 現在、ユーザー エクスペリエンスがすべて実現されているわけではありません。カスタム イベントおよびメトリックを Application Insights に送信し、未加工の利用統計情報を[診断検索][diagnostic]で検索できます。ただし、要約された統計的なグラフは、まだ参照できません。近日、提供する予定です。
+Application Insights でデータを集めるとき、この API を使用すれば、ページ ビューや例外レポートなど、標準のテレメトリを送信できるだけでなく、独自のカスタム テレメトリも送信できます。
 
-<!-- Sample pic -->
+## API summary
 
-* [クライアントとサーバーの追跡](#clientServer)
-* [開始する前に](#prep)
-* [メトリックを追跡する](#metrics)
-* [イベントを追跡する](#events)
-* [ページ ビューを追跡する](#pageViews)
-* [プロパティを使用してデータをフィルター処理、検索、および分割する](#properties)
-* [メトリックとイベントを結合する](#measurements)
-* [既定のプロパティ値を設定する](#defaults)
-* [複数のコンテキストを定義する](#contexts)
-* [利用統計情報のオンとオフを切り替える](#disable)
-* [次のステップ](#next)
+この API は、いくつかの小さな違いは別として、すべてのプラットフォームで一様になっています。
 
+メソッド | 使用対象
+---|---
+[`TrackPageView`](#page-views) | ページ、画面、ブレード、フォーム
+[`TrackEvent`](#track-event) | ユーザー アクションとその他のイベント。ユーザーの行動を追跡するために、またはパフォーマンスを監視するために使用されます。
+[`TrackMetric`](#track-metric) | キューの長さなど、特定のイベントに関連しないパフォーマンスの測定
+[`TrackException`](#track-exception)|例外を記録し、診断に利用します。他のイベントとの関連で例外の発生箇所を追跡し、スタック トレースを調べます。
+[`TrackRequest`](#track-request)| サーバー要求の頻度と期間を記録し、パフォーマンス分析に利用します。
+[`TrackTrace`](#track-trace)|メッセージを記録し、診断に利用します。サード パーティのログをキャプチャすることもできます。
 
-
-## <a name="clientServer"></a> クライアントとサーバーの追跡
-
-アプリケーションのクライアント (Web ページ) 側またはサーバー側のどちらか、または両方から利用統計情報を送信できます。
-
-クライアント API とサーバー API は、よく似ています。ユーザーの Web ブラウザーと使用中の Web サーバーの両方から、同じ種類の利用統計情報を送信できます。違いは、送信できるデータの範囲にあります。
-
-* Web クライアントでの追跡が特に役立つのは、JavaScript を多く備えた、機能が豊富でアクティブな Web ページがある場合です。たとえば、ユーザーが特定のボタンをクリックする頻度や検証エラーが発生する回数を監視できます。
-* Web サーバーでの追跡は、顧客の購入価格や破棄された注文数などのビジネス メトリックとイベントを監視するのに向いています。
-
-一般的な ASP.NET Web アプリケーションでは、trackPageView() への既定の JavaScript 呼び出しが Web マスター ページに用意されており、サーバー コードにイベントとメトリックを追跡する呼び出しをいくつか追加します。クライアント側のコードの機能が豊富な場合は、クライアント側にもイベントとメトリックを追跡する呼び出しをいくつか追加します。
+これらのテレメトリの呼び出しのほとんどに[プロパティとメトリックをアタッチ](#properties)できます。
 
 
 ## <a name="prep"></a>開始する前に
 
 次のことをまだ実行していない場合は、実行します。
 
-* ASP.NET Web アプリケーションからの利用統計情報の取得:
-    [アプリケーションの正常性と利用状況の監視][greenbrown]
-    Web サーバー コードに次を含めます。
-    (C#) `using Microsoft.ApplicationInsights;`
-	(VB) `Imports Microsoft.ApplicationInsights`
-* [Web 利用状況分析の設定][usage]JavaScript の初期化コードを、監視コードを記述するすべての Web ページに、またはマスター ページに含める必要があります。 
-    このコードが動作している場合は [利用状況分析] の下の [概要] ブレードにデータが表示されます。
+* Application Insights SDK をプロジェクトに追加します。
+ * [ASP.NET プロジェクト][greenbrown]
+ * [Windows プロジェクト][windows]
+ * [Java プロジェクト][java] 
+ * [各 Web ページの JavaScript][client]   
 
-開発用コンピューター上でアプリケーションをデバッグ モードで実行すると、結果は Application Insights に数秒以内に表示されます。アプリケーションをデプロイするときに、データは、サーバーとクライアントからパイプラインに移動するのに長い時間がかかります。
+* デバイスまたは Web サーバー コードに次を追加します。
 
-<!--
-## <a name="metrics"></a> メトリックを追跡する
+    *C#:* `using Microsoft.ApplicationInsights;`
 
-ページ ビューなどの基本的な利用状況データを取得するために、これ以上操作する必要はありません。ただし、数行のコードを記述することで、ユーザーがアプリケーションで行っている操作について詳細を知ることができます。
+    *VB:* `Imports Microsoft.ApplicationInsights`
 
-たとえば、アプリケーションがゲームである場合、ユーザーが獲得する平均スコアを確認し、新しいバージョンのリリース後にユーザーにとってのゲームの難易度を知ることができます。
+    *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
 
-メトリック (スコアのような数値) を追跡するには、アプリケーションの適切な場所に次のようなスクリプトを 1 行挿入します。
+## TelemetryClient を作成する
 
-クライアント側の JavaScript
+TelemetryClient のインスタンスの作成 (Web ページの JavaScript を除く):
 
-    appInsights.trackMetric("Alerts", notifications.Count);
+*C#:*
 
-サーバー側の C#
+    private TelemetryClient telemetry = new TelemetryClient();
 
-    var telemetry = new TelemetryClient();
-    telemetry.TrackMetric ("Users online", currentUsers.Count);
+*VB:*
 
-サーバー側の VB
+    Private Dim telemetry As New TelemetryClient
 
-    Dim telemetry = New TelemetryClient
-    telemetry.TrackMetric ("Users online", currentUsers.Count)
+*Java*
 
-アプリケーションをテストして、trackMetric() 呼び出しを実行するためにこのコードを使用します。
+    private TelemetryClient telemetry = new TelemetryClient();
 
+Web アプリケーションの要求ごとに、あるいは他のアプリケーションのセッションごとに、`TelemetryClient` のインスタンスを 1 つ使用することをお勧めします。`TelemetryClient.Context.User.Id` などのプロパティを設定し、ユーザーとセッションを追跡できます。この情報はインスタンスから送信されたすべてのイベントに関連付けられます。
 
-次に Application Insights でアプリケーションに移動しアクセスし、[[メトリック]][metrics] タイルをクリックしてください。メトリックを選択して、最初の結果を表示します。
+TelemetryClient はスレッド セーフです。
 
 
-グラフは、すべてのユーザーが記録した値の最近の平均を示します。 
 
+## イベントを追跡する
 
-(注: メトリックを最適化して、問題を診断することはできません。必要な場合は、[診断ログ][diagnostic]を参照してください。) -->
+イベントは [メトリック エクスプローラー][metrics]に総数として表示できます。[診断検索][diagnostic]の個別出現回数を表示することもできます。
 
+イベントをコードに挿入し、特定の機能を使用する頻度、特定の目標を達成する頻度、特定の選択を行う頻度を数えます。
 
-## <a name="events"></a>イベントを追跡する
+たとえば、ゲーム アプリで、ユーザーが勝利したときにイベントを送信します。
 
-イベントは、ユーザー全体で平均した発生頻度を示します。たとえば、ユーザーがゲームを完了する頻度を知りたいとします。ゲームを終了するコードに、次のように行を挿入します。
+*JavaScript*
 
-クライアント側の JavaScript
+    appInsights.trackEvent("WinGame");
 
-    appInsights.trackEvent("EndOfGame");
-
-サーバー側の C#
+*C#*
     
-    var telemetry = new TelemetryClient();
-    telemetry.TrackEvent("EndOfGame");
+    telemetry.TrackEvent("WinGame");
 
-サーバー側の VB
-
-
-    Dim telemetry = New TelemetryClient
-    telemetry.TrackEvent("EndOfGame")
-
-クライアントとサーバーの両方から利用統計情報を送信する場合は、必ずイベントごとに異なる名前を付けてください。
+*VB*
 
 
-## <a name="pageViews"></a>ページ ビュー (クライアントのみ)
+    telemetry.TrackEvent("WinGame")
 
-既定では、Web ページの先頭にある初期化スクリプトにより、ページ ビューが記録され、ページの相対 URL の名前がイベントに付けられます。これらの呼び出しは、基本的なページ利用状況の統計を提供します。 
+*Java*
 
-![Usage analytics on main app blade](./media/app-insights-web-track-usage-custom-events-metrics/appinsights-05-usageTiles.png)
-
-### カスタム ページ データ
-
-必要な場合は、名前を変更する呼び出しを変更できます。または追加の呼び出しを挿入できます。たとえば、単一ページの Web アプリケーションに複数のタブが表示される場合、ユーザーが別のタブに切り替えるときに、ページ ビューを記録できます。次に例を示します。
-
-クライアント側の JavaScript:
-
-    appInsights.trackPageView("tab1");
-
-別々の HTML ページ内で複数のタブを使用している場合、URL を指定することもできます。
-
-    appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
+    telemetry.trackEvent("WinGame");
 
 
-## <a name="properties"></a>プロパティを使用してデータをフィルター処理、検索、および分割する
+[概要] ブレードでカスタム イベントのタイルをクリックします。
 
-プロパティと測定値を、イベント、ページ ビュー、およびその他の利用統計情報データに結び付けることができます。 
+![portal.azure.com でアプリケーション リソースを参照する](./media/app-insights-web-track-usage-custom-events-metrics/01-custom.png)
 
-**プロパティ**は、利用状況レポートで利用統計情報をフィルター処理するのに使用できる文字列値です。たとえば、アプリケーションで複数のゲームを提供する場合、各イベントにゲームの名前を結び付けると、人気のあるゲームを確認できます。
+クリックし、概要グラフと詳細一覧を表示します。
 
-**測定値**は、利用状況レポートで統計の取得元になる数値です。
+グラフを選択し、イベント名で分割し、最も重要なイベントの相対的寄与率を表示します。
+
+![グラフを選択し、グループ化を設定する](./media/app-insights-web-track-usage-custom-events-metrics/02-segment.png)
+
+グラフの下にある一覧から、イベント名を選択します。クリックし、イベントの個別インスタンスを表示します。
+
+![イベントをドリルスルーする](./media/app-insights-web-track-usage-custom-events-metrics/03-instances.png)
+
+任意のインスタンスをクリックすると、詳細が表示されます。
+
+## <a name="properties"></a>プロパティを使用してデータをフィルター処理、検索、分割する
+
+プロパティと測定値をイベント (およびメトリック、ページ ビュー、その他のテレメトリ データ) に結び付けることができます。
+
+**プロパティ**は、利用状況レポートでテレメトリをフィルター処理するのに使用できる文字列値です。たとえば、アプリケーションで複数のゲームを提供する場合、各イベントにゲームの名前を結び付けると、人気のあるゲームを確認できます。
+
+文字列の長さには約 1 k の制限があります。(大きなデータの塊を送信する場合、[TrackTrace](#track-trace) のメッセージ パラメーターを使用します。)
+
+**メトリック**はグラフィカルに表示できる数値です。たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。グラフはイベントともに送信されるプロパティ別に分割できます。そのため、ゲームごとに個別グラフまたは積み重ねグラフを表示できます。
+
+メトリック値を正しく表示するには、0 以上にする必要があります。
 
 
-クライアント側の JavaScript
+使用できる[プロパティ、プロパティ値、およびメトリックの数には制限](#limits)があります。
 
-    appInsights.trackEvent("EndOfGame",
+
+*JavaScript*
+
+    appInsights.trackEvent // or trackPageView, trackMetric, ...
+      ("WinGame",
          // String properties:
          {Game: currentGame.name, Difficulty: currentGame.difficulty},
-         // Numeric measurements:
+         // Numeric metrics:
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
 
-サーバー側の C#
+*C#*
 
-    // Set up some properties:
+    // Set up some properties and metrics:
     var properties = new Dictionary <string, string> 
        {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
-    var measurements = new Dictionary <string, double>
+    var metrics = new Dictionary <string, double>
        {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
 
     // Send the event:
-    telemetry.TrackEvent("endOfGame", properties, measurements);
+    telemetry.TrackEvent("WinGame", properties, metrics);
 
 
-サーバー側の VB
+*VB*
 
     ' Set up some properties:
     Dim properties = New Dictionary (Of String, String)
     properties.Add("game", currentGame.Name)
     properties.Add("difficulty", currentGame.Difficulty)
 
-    Dim measurements = New Dictionary (Of String, Double)
-    measurements.Add("Score", currentGame.Score)
-    measurements.Add("Opponents", currentGame.OpponentCount)
+    Dim metrics = New Dictionary (Of String, Double)
+    metrics.Add("Score", currentGame.Score)
+    metrics.Add("Opponents", currentGame.OpponentCount)
 
     ' Send the event:
-    telemetry.TrackEvent("endOfGame", properties, measurements)
+    telemetry.TrackEvent("WinGame", properties, metrics)
 
 
-次のようにページ ビューを同じ方法でプロパティに結び付けます。
-
-クライアント側の JavaScript
-
-    appInsights.trackPageView("Win", 
-     {Game: currentGame.Name}, 
-     {Score: currentGame.Score});
-
- 
-
-<!--
-To see the filters, expand the parent event group, and select a particular event in the table - in this example, we expanded 'open' and selected 'buy':
-
-////// pic //////
--->
-
-> [WACOM.NOTE] プロパティで個人を特定できる情報を記録しないように注意します。
+*Java*
+    
+    Map<String, String> properties = new HashMap<String, String>();
+    properties.put("game", currentGame.getName());
+    properties.put("difficulty", currentGame.getDifficulty());
+    
+    Map<String, Double> metrics = new HashMap<String, Double>();
+    metrics.put("Score", currentGame.getScore());
+    metrics.put("Opponents", currentGame.getOpponentCount());
+    
+    telemetry.trackEvent("WinGame", properties, metrics2/7/2015 12:05:25 AM );
 
 
-## タイミングを指定したページ ビューとイベント
+> [AZURE.NOTE]プロパティで個人を特定できる情報を記録しないように注意します。
 
-イベントとページ ビューに、タイミングを合わせたデータを結び付けることができます。trackEvent または trackPageView を呼び出すのではなく、次の呼び出しを使用します。
+**メトリックを使用した場合**、メトリック エクスプ ローラーを開き、カスタム グループからメトリックを選択します。
 
-クライアント側の JavaScript
+![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-web-track-usage-custom-events-metrics/03-track-custom.png)
 
-    // At the start of the game:
-    appInsights.startTrackEvent(game.id);
+*メトリックが表示されない場合、選択ブレードを閉じ、しばらく待ってから [更新] をクリックします。*
 
-    // At the end of the game:
-    appInsights.stopTrackEvent(game.id, {GameName: game.name}, {Score: game.score});
+**プロパティとメトリックを使用した場合**、プロパティ別にメトリックを分割します。
+
+
+![グループ化を設定し、グループ化基準のプロパティを選択する](./media/app-insights-web-track-usage-custom-events-metrics/04-segment-metric-event.png)
+
+
+
+**診断検索では**、イベントのそれぞれの発生箇所のプロパティとメトリックを表示できます。
+
+
+![インスタンスを選択し、「...」を選択する](./media/app-insights-web-track-usage-custom-events-metrics/appinsights-23-customevents-4.png)
+
+
+[検索] ボックスを使用して、特定のプロパティ値を持つイベントを表示します。
+
+
+![検索用語を入力する](./media/app-insights-web-track-usage-custom-events-metrics/appinsights-23-customevents-5.png)
+
+[検索式の詳細情報][diagnostic]
+
+#### プロパティとメトリックを設定する別の方法
+
+個別のオブジェクトでイベントのパラメーターを集めたほうが便利であれば、そのようにできます。
+
+    var event = new EventTelemetry();
+
+    event.Name = "WinGame";
+    event.Metrics["processingTime"] = stopwatch.Elapsed.TotalMilliseconds;
+    event.Properties["game"] = currentGame.Name;
+    event.Properties["difficulty"] = currentGame.Difficulty;
+    event.Metrics["Score"] = currentGame.Score;
+    event.Metrics["Opponents"] = currentGame.Opponents.Length;
+
+    telemetry.TrackEvent(event);
+
+
+#### <a name="timed"></a> タイミング イベント
+
+何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
+
+
+*C#*
+
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+    // ... perform the timed action ...
+
+    stopwatch.Stop();
+
+    var metrics = new Dictionary <string, double>
+       {{"processingTime", stopwatch.Elapsed.TotalMilliseconds}};
+
+    // Set up some properties:
+    var properties = new Dictionary <string, string> 
+       {{"signalSource", currentSignalSource.Name}};
+
+    // Send the event:
+    telemetry.TrackEvent("SignalProcessed", properties, metrics);
+
+
+
+## メトリックを追跡する
+
+TrackMetric を使用し、特定のイベントに関連付けられていないメトリックを送信します。たとえば、一定の間隔でキューの長さを監視できます。
+
+メトリックはメトリック エクスプローラーに統計グラフとして表示されますが、診断検索で個別のメトリックを検索することはできません。
+
+メトリック値を正しく表示するには、0 以上にする必要があります。
+
+
+*JavaScript*
+
+    appInsights.trackMetric("Queue", queue.Length);
+
+*C#*
+
+    telemetry.TrackMetric("Queue", queue.Length);
+
+*VB*
+
+    telemetry.TrackMetric("Queue", queue.Length)
+
+*Java*
+
+    telemetry.trackMetric("Queue", queue.Length);
+
+実際には、バックグラウンド スレッドでこれを行うことがあります。
+
+*C#*
+
+    private void Run() {
+     var appInsights = new TelemetryClient();
+     while (true) {
+      Thread.Sleep(60000);
+      appInsights.TrackMetric("Queue", queue.Length);
+     }
+    }
+
+
+結果を表示するには、メトリック エクスプローラーを開き、新しいグラフを追加します。メトリックを表示するように設定します。
+
+![新しいグラフを追加するか、グラフを選択して、[カスタム] の下でメトリックを選択する](./media/app-insights-web-track-usage-custom-events-metrics/03-track-custom.png)
+
+使用できる[メトリック数には制限](#limits)があります。
+
+## ページ ビュー
+
+デバイスまたは Web ページ アプリケーションで、各画面または各ページが読み込まれたときに、既定でページ ビュー テレメトリが送信されます。ただし、これを変更し、ページ ビューを追跡する回数を増やしたり、変えたりできます。たとえば、タブまたはブレードを表示するアプリケーションで、ユーザーが新しいブレードを開いたときに「ページ」を追跡します。
+
+![[概要] ブレードの使用状況レンズ](./media/app-insights-web-track-usage-custom-events-metrics/appinsights-47usage-2.png)
+
+ユーザーとセッションのデータはページ ビューとともにプロパティとして送信されます。そのため、ページ ビューのテレメトリがあれば、ユーザーとセッションのグラフがアクティブになります。
+
+#### カスタム ページ ビュー
+
+*JavaScript*
+
+    appInsights.trackPageView("tab1");
+
+*C#*
+
+    telemetry.TrackPageView("GameReviewPage");
+
+*VB*
+
+    telemetry.TrackPageView("GameReviewPage")
+
+
+別々の HTML ページ内で複数のタブを使用している場合、URL を指定することもできます。
+
+    appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
+
+#### 時間指定ページ ビュー
+
+trackPageView の代わりにこの組み合わせのメソッド呼び出しを使用することで、ユーザーがページに残った時間を分析できます。
 
     // At the start of a page view:
     appInsights.startTrackPage(myPage.name);
@@ -224,34 +339,271 @@ To see the filters, expand the parent event group, and select a particular event
 
 開始の呼び出しと停止の呼び出しで、最初のパラメーターに同じ文字列を使用します。
 
-## <a name="defaults"></a>既定のプロパティ値を設定する (Web クライアント側でない)
+[メトリック エクスプ ローラー][metrics]の Page Duration メトリックをご覧ください。
 
-TelemetryContext に、既定値を設定できます。既定値は、コンテキストから送られてくるすべてのメトリックとイベントに結び付けられます。 
+
+## 要求を追跡する
+
+HTTP 要求を記録するために、サーバー SDK によって使用されます。
+
+Web サービス モジュールが実行されていない状況で要求をシミュレーションする場合に、これを自分で呼び出すこともできます。
+
+*C#*
+
+    // At start of processing this request:
+
+    // Operation Id is attached to all telemetry and helps you identify
+    // telemetry associated with one request:
+    telemetry.Context.Operation.Id = Guid.NewGuid().ToString();
     
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
-サーバー側の C#
+    // ... process the request ...
 
-    var context = new TelemetryContext();
-    context.Properties["Game"] = currentGame.Name;
-    var telemetry = new TelemetryClient(context);
+    stopwatch.Stop();
+    telemetryClient.TrackRequest(requestName, DateTime.Now,
+       stopwatch.Elapsed, 
+       "200", true);  // Response code, success
+
+## 例外を追跡する
+
+例外を Application Insights に送信して[数え][metrics]、問題の発生頻度を示し、[個々の問題を調べます][diagnostic]。
+
+*C#*
+
+    try
+    {
+        ...
+    }
+    catch (Exception ex)
+    {
+       telemetry.TrackException(ex);
+    }
+
+Windows モバイル アプリでは、SDK が未処理の例外をキャッチするので、記録する必要がありません。ASP.NET では、[自動的に例外をキャッチするコードを記述][exceptions]できます。
+
+
+## トレースを追跡する 
+
+Application Insights に「階層リンクの軌跡」を送信して問題を診断するときに役立ちます。診断データの塊を送信し、[診断検索][diagnostic]で検査できます。
+
+ 
+
+[ログ アダプター][trace]はこの API を使用し、ポータルにサード パーティのログを送信します。
+
+
+*C#*
+
+    telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
+
+`message`のサイズ制限はプロパティの制限よりも高くなっています。メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
+
+
+## <a name="default-properties"></a>すべてのテレメトリに既定のプロパティを設定する
+
+すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。これには、Web サーバー要求追跡など、プラットフォーム固有のテレメトリ モジュールにより送信される標準の利用統計情報が含まれます。
+
+一般的な使用方法では、アプリケーションのさまざまなバージョンやコンポーネントからのテレメトリを識別します。ポータルでは、このプロパティによって結果にフィルターを適用し、グループ化することができます。
+
+*C#*
+
+    // Telemetry initializer class
+    public class MyTelemetryInitializer : IContextInitializer
+    {
+        public void Initialize (TelemetryContext context)
+        {
+            context.Properties["AppVersion"] = "v2.1";
+        }
+    }
+
+    // In the app initializer such as Global.asax.cs:
+
+    protected void Application_Start()
+    {
+        // ...
+        TelemetryConfiguration.Active.ContextInitializers
+        .Add(new MyTelemetryInitializer());
+    }
+
+*Java*
+
+    import com.microsoft.applicationinsights.extensibility.ContextInitializer;
+    import com.microsoft.applicationinsights.telemetry.TelemetryContext;
+
+    public class MyTelemetryInitializer implements ContextInitializer {
+      @Override
+      public void initialize(TelemetryContext context) {
+        context.getProperties().put("AppVersion", "2.1");
+      }
+    }
+
+    // load the context initializer
+    TelemetryConfiguration.getActive().getContextInitializers().add(new MyTelemetryInitializer());
+
+
+JavaScript Web クライアントには、現時点では既定のプロパティを設定する方法はありません。
+
+## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
+
+開発、テスト、および実稼働環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
+
+インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
+
+*C#*
+
+    protected void Application_Start()
+    {
+      Microsoft.ApplicationInsights.Extensibility.
+        TelemetryConfiguration.Active.InstrumentationKey = 
+          // - for example -
+          WebConfigurationManager.Settings["ikey"];
+      ...
+
+*JavaScript*
+
+    appInsights.config.instrumentationKey = myKey; 
+
+
+
+Web ページで、スクリプトに一語一語コーディングするのではなく、Web サーバーの状態から設定します。たとえば、ASP.NET アプリケーションで生成された Web ページで
+
+*Razor の JavaScript*
+
+    <script type="text/javascript">
+    // Standard Application Insights web page script:
+    var appInsights = window.appInsights || function(config){ ...
+    // Modify this part:
+    }({instrumentationKey:  
+      // Generate from server property:
+      @Microsoft.ApplicationInsights.Extensibility.
+         TelemetryConfiguration.Active.InstrumentationKey"
+    }) // ...
+
+
+## <a name="defaults"></a>選択したカスタム テレメトリに既定値を設定する
+
+記述するカスタム イベントにいくつかに既定のプロパティ値を設定する場合、TelemetryClient でそれを設定できます。既定値はそのクライアントから送信されたすべてのテレメトリ アイテムに追加されます。
+
+*C#*
+
+    using Microsoft.ApplicationInsights.DataContracts;
+
+    var gameTelemetry = new TelemetryClient();
+    gameTelemetry.Context.Properties["Game"] = currentGame.Name;
     // Now all telemetry will automatically be sent with the context property:
-    telemetry.TrackEvent("EndOfGame");
+    gameTelemetry.TrackEvent("WinGame");
     
-サーバー側の VB
+*VB*
 
-    Dim context = New TelemetryContext
-    context.Properties("Game") = currentGame.Name
-    Dim telemetry = New TelemetryClient(context)
+    Dim gameTelemetry = New TelemetryClient()
+    gameTelemetry.Context.Properties("Game") = currentGame.Name
     ' Now all telemetry will automatically be sent with the context property:
-    telemetry.TrackEvent("EndOfGame")
+    gameTelemetry.TrackEvent("WinGame")
 
+*Java*
+
+    import com.microsoft.applicationinsights.TelemetryClient;
+    import com.microsoft.applicationinsights.TelemetryContext;
+    ...
+
+
+    TelemetryClient gameTelemetry = new TelemetryClient();
+    TelemetryContext context = gameTelemetry.getContext();
+    context.getProperties().put("Game", currentGame.Name);
     
+    gameTelemetry.TrackEvent("WinGame");
     
-個々の利用統計情報は、既定値を無視することができます。
-
-既定のプロパティ値のグループを切り替える場合は、複数のコンテキストを設定します。
+個別のテレメトリの呼び出しはプロパティ ディクショナリの既定値を上書きできます。
 
 
+
+## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
+
+*C#*
+    
+    var telemetry = new TelemetryClient();
+    telemetry.Context.InstrumentationKey = "---my key---";
+    // ...
+
+## データのフラッシュ
+
+通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
+
+*C#*
+
+    telemetry.Flush();
+
+この機能は同期的であることに注意してください。
+
+
+
+## 標準のテレメトリを無効にする
+
+`ApplicationInsights.config` を編集し、[標準のテレメトリから選択した部分を無効にできます][config]。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+
+[詳細情報][config]。
+
+
+## <a name="debug"></a>開発者モード
+
+デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。アプリケーションを遅くする可能性があるため、本稼働ではオフにします。
+
+
+*C#*
+    
+    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
+
+*VB*
+
+    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
+
+## TelemetryContext
+
+TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。
+
+いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config][config] から関連する行を削除することを検討します。
+
+* **Component** は、アプリケーションとそのバージョンを識別します。
+* アプリケーションが実行されているデバイスに関する**Device** Data (Web アプリケーションでは、テレメトリの送信元となるサーバーまたはクライアントのデバイス)
+* **InstrumentationKey** は、テレメトリが表示される Azure で Application Insights リソースを識別します。通常、ApplicationInsights.config から取得されます。
+* **Location**は、デバイスの地理的な場所を識別します。
+* Web アプリケーションで **Operation** は、現在の HTTP 要求を示します。他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
+ * **Id**: [診断検索] でイベントを調べるときに「関連項目」を見つけることができるように、さまざまなイベントを関連付けるために生成される値
+ * **Name**: HTTP 要求の URL
+ * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
+* **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
+* **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
+* **User** によって、ユーザーを数えることができます。Web アプリケーションで、Cookie がある場合、ユーザー Id は Cookie から取得されます。Cookie がない場合は、新しい Id が生成されます。ユーザーがアプリケーションにログインする必要がある場合は、認証済みの ID から Id を設定できます。これにより、ユーザーが別のコンピューターからサインインしている場合でも、正確でより信頼できる数が提供されます。 
+
+## 制限
+
+アプリケーションごとのメトリックとイベントの数には制限があります。
+
+1. インストルメンテーション キー (つまり、アプリケーション) ごとに 1 秒あたり最大 500 のテレメトリ データ ポイント。これには、SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリック、およびその他のテレメトリの両方が含まれます。
+1.	アプリケーションに対して最大 200 の一意のメトリックの名前と 200 の一意のプロパティの名前。メトリックには、TrackMetric を通じて送信されるデータと、イベントなどの他のデータ型の測定値が含まれます。メトリックとプロパティの名前は、データ型にスコープが制限されず、インストルメンテーション キーごとにグローバルです。
+2.	各プロパティに対する一意の値は 100 未満であり、プロパティは、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索とフィルタリングに使用できますが、フィルター処理には使用できなくなります。
+3.	要求名やページの URL などの標準プロパティは、1 週間あたりの 1000 の一意な値に制限されます。1000 の一意の値を超えると、追加の値は「その他の値」としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
+
+* *質問: データは、どのくらいの期間保持されますか。*
+
+    [データの保持とプライバシーに関するページ][data]を参照してください。
+
+## リファレンス ドキュメント
+
+* [ASP.NET リファレンス](https://msdn.microsoft.com/library/dn817570.aspx)
+* [Java リファレンス](http://dl.windowsazure.com/applicationinsights/javadoc/)
+
+## 疑問がある場合
+
+* *Track * の呼び出しでは、どのような例外がスローされることがありますか。*
+    
+    ありません。Catch 句で例外をキャッチする必要はありません。
+
+
+
+* *REST API はありますか。*
+
+    はい。ただし、まだ公開されていません。
 
 ## <a name="next"></a>次のステップ
 
@@ -261,11 +613,21 @@ TelemetryContext に、既定値を設定できます。既定値は、コンテ
 [トラブルシューティング][qna]
 
 
-[AZURE.INCLUDE [app-insights-learn-more](../../includes/app-insights-learn-more.md)]
+<!--Link references-->
 
+[client]: app-insights-javascript.md
+[config]: app-insights-configuration-with-applicationinsights-config.md
+[create]: app-insights-create-new-resource.md
+[data]: app-insights-data-retention-privacy.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
+[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[java]: app-insights-java-get-started.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[trace]: app-insights-search-diagnostic-logs.md
+[windows]: app-insights-windows-get-started.md
 
-
-
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=62-->

@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="ロジック アプリの作成" 
-	description="初めてのロジック アプリの作成" 
-	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
-	editor="" 
-	services="app-service\logic" 
+<properties
+	pageTitle="ロジック アプリの作成"
+	description="初めてのロジック アプリの作成"
+	authors="stepsic-microsoft-com"
+	manager="dwrede"
+	editor=""
+	services="app-service\logic"
 	documentationCenter=""/>
 
 <tags
@@ -12,12 +12,12 @@
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/20/2015"
+	ms.topic="hero-article"
+	ms.date="05/23/2015"
 	ms.author="stepsic"/>
 
 #新しいロジック アプリを作成する
-このトピックでは、初めての方に向けて App Service Logic Apps の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
+このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
 
 このシナリオでは、以下のものが必要になります。
 
@@ -29,18 +29,20 @@
 
 ##コネクタを取得する
 
-まずは、使用するコネクタとして **Dropbox Connector** と **Twitter Connector** の 2 つを作成する必要があります。コネクタを作成する手順は、以下のとおりです。
+まずは、使用するコネクタとして [**Dropbox Connector**](app-service-logic-connector-dropbox.md) と [**Twitter Connector**](app-service-logic-connector-twitter.md) の 2 つを作成する必要があります。コネクタを作成する手順は、以下のとおりです。
 
-1. ホーム画面の **[Marketplace]** をクリックし、**Twitter** を検索します。 
+0. Azure ポータルにサインインします。
 
-2. [Twitter Connector] を選択し、[作成] をクリックします。ブレードが表示されるので、設定をしていきます。名前は **Twitter Connector** のままでかまいません。
+1. ホーム画面の [**[Marketplace]**](https://portal.azure.com/#blade/HubsExtension/GalleryFeaturedMenuItemBlade/selectedMenuItemId/apiapps) をクリックし、**Twitter** を検索します (または、[ここをクリック](https://portal.azure.com/#create/microsoft_com.TwitterConnector.0.2.2)します)。
+
+2. [Twitter Connector] を選択し、[作成] をクリックします。すべての設定が表示されます。名前は **Twitter Connector** のままでかまいません。
 
 3. **[App Service プランの新規作成]** に、プランの名前を入力します。
-	
-	>[AZURE.NOTE]このセクションに示した手順では、新しい App Service のプランを作成することを前提に話を進めています。既存の App Service プランを使用する場合には、**[既存の選択]** をクリックして既存のプランを選択したうえで、このセクションでこれ以降に記載している内容は飛ばして、次のセクションの手順を実行してください。
- 
+
+	>[AZURE.NOTE]このセクションに示した手順では、新しい App Service のプランを作成することを前提に話を進めています。既存の App Service プランを使用する場合は、**[既存の選択]** をクリックして既存のプランを選択した後、このセクションの最後の手順に進んでください。すべてのアプリをホストするプランが必要です。
+
 4.  新しいプランの**価格レベル**を選択します。
- 
+
 	>[AZURE.NOTE]既定では、Logic Apps 向けにお勧めとされるプランのみが表示されます。利用可能なプランをすべて表示する場合には、**[すべて表示]** をクリックしてください。ロジック アプリを Free レベルで実行する場合には、実行間隔は 1 時間ごと、使用できるアクションは 1 か月につき 1,000 回までとなります。
 
 5. フローの**リソース グループ**を作成します。
@@ -51,22 +53,22 @@
 
 7. ロジック アプリの**場所**を選択します。
 
-	![[API アプリの作成] ブレード](./media/app-service-logic-create-a-logic-app/gallery.png)
+	![[API アプリの作成] ビュー](./media/app-service-logic-create-a-logic-app/gallery.png)
 
 8. **[作成]** をクリックします。1 ～ 2 分でプロビジョニングが始まります。
 
-9. Dropbox についても、同じ手順を繰り返します。
+9. [Dropbox](https://portal.azure.com/#create/microsoft_com.DropboxConnector.0.2.2) についても、同じ手順を繰り返します。
 
 ##ロジック アプリを作成する
 
 次は、新しいロジック アプリを作成します。
 
-1. 画面左下の **[+ 新規]** ボタンをクリックして **[Web + モバイル]** を展開したら、**[ロジック アプリ]** をクリックします。 
+1. 画面左下の **[+ 新規]** ボタンをクリックして **[Web + モバイル]** を展開したら、**[ロジック アプリ]** をクリックします。
 
- 	[ロジック アプリの作成] ブレードが表示されるので、最初の基本設定を入力していきます。
+ 	[ロジック アプリの作成] ビューが表示されるので、開始するための基本設定を入力していきます。
 
-	![[ロジック アプリの作成] ブレード](./media/app-service-logic-create-a-logic-app/createlogicapp.png)
-	
+	![[ロジック アプリの作成] ビュー](./media/app-service-logic-create-a-logic-app/createlogicapp.png)
+
 2. **[名前]** には、ロジック アプリの名前として意味のある文字列を入力します。
 
 3. **App Service** プランには、コネクタの作成時に使用したものを選択します。これにより、場所、サブスクリプション、リソース グループが自動的に選択されます。
@@ -77,12 +79,12 @@
 
 トリガーとは、ロジック アプリの実行の引き金となるものです。ここでは、繰り返しトリガーを追加します。このトリガーは、事前に設定したスケジュールでワークフローを開始するためのものです。
 
-1. まだ **[ロジック アプリの作成]** ブレードを開いているので、**[トリガーとアクション]** をクリックします。 
+1. **[ロジック アプリの作成]** ビューで、**[トリガーとアクション]** をクリックします。
 
 	フローを表示するデザイナーが全画面表示されます。右側に、トリガーを設定できるサービスが一覧表示されています。
 
-2. **[ビルトイン]** セクションで、**[定期的なアイテム]** をクリックします。
-	
+2. 上部のセクションで、**[繰り返し]** をクリックします。
+
 	繰り返しの設定を指定するためのボックスが表示されます。
 
 	![定期的なアイテム](./media/app-service-logic-create-a-logic-app/recurrence.png)
@@ -96,7 +98,7 @@
 
 アクションとは、ワークフローの動作を指します。アクションの数には上限はありません。また、アクションを調整して、あるアクションの情報がその次のアクションに送られるようにすることもできます。
 
-1. 右側のウィンドウで **Twitter Connector** を探し、クリックします。 
+1. 右側のウィンドウで **Twitter Connector** を探し、クリックします。
 
 
 2. 読み込みが終わったら **[承認]** ボタンをクリックし、Twitter アカウントにサインインして、**[アプリを認証]** をクリックします。
@@ -115,14 +117,14 @@
 
 最後に、ツイートを Dropbox のファイルにアップロードするアクションを追加します。
 
-1. 右側のウィンドウで、**[Dropbox Connector]** をクリックします。 
-  
+1. 右側のウィンドウで、**[Dropbox Connector]** をクリックします。
+
 2. プロビジョニングが完了したら **[承認]** ボタンをクリックし、Dropbox アカウントにサインインして **[許可]** をクリックします。
 
 	![Dropbox コネクタの承認](./media/app-service-logic-create-a-logic-app/authorize.png)
-	
+
 	これで、コネクタが Dropbox アカウントにアクセスできるようになります。Dropbox Connector に用意されている処理のリストが表示されます。
- 
+
 4. **[ファイルのアップロード]** をクリックします。
 
 	Dropbox Connector の設定が表示されるので、ここで Twitter の検索結果のデータを Dropbox に送るように設定していきます。
@@ -130,9 +132,9 @@
 	![Dropbox](./media/app-service-logic-create-a-logic-app/dropbox.png)
 
 3. **[ファイルパス]** フィールドには、「`/tweet.txt`」と入力します。
-  
+
 4. **[コンテンツ]** フィールドは、`...` ボタン、**[ツイートのテキスト]** オプションの順にクリックします。
- 
+
 	これによって、値 `@first(body('twitterconnector')).TweetText` がテキスト ボックスに入力されます。この値の各部の意味は、以下のとおりです。
 
 	部分 | 説明
@@ -141,7 +143,7 @@
 	`actions('twitterconnector').outputs.body` | Twitter Connector のクエリの結果として返されたツイートを取得します。
 	`first()` | ツイートの検索アクションによって返されるのはリストであるものの、アップロードするのは 1 つのファイルのみとなります。
 	`.TweetText` | ツイート メッセージのプロパティを選択します。
-	
+
 5. 緑色のチェック マークをクリックして、コネクタの設定を保存します。
 
 5. これで、設計が完了しました。デザイナーの左上の **[コード ビュー]** をクリックしてみましょう。デザイナーで作成したワークフローを定義する JSON コードが確認できます。このコードについては、[次のトピック][Use logic app features]で詳しく説明します。
@@ -154,19 +156,20 @@
 
 ここまでの手順で、ロジック アプリが実行できるようになりました。スケジュール設定されているワークフローが実行されるたびに、特定のハッシュタグが含まれるツイートがないかどうかが確認されます。条件に合致するツイートが見つかった場合には、Dropbox に保存されます。ここでは、最後にアプリを無効にしたり、動作内容を確認したりする方法を見ていきます。
 
-1. 画面左側の **[参照]** をクリックし、**[Logic Apps]** を選択します。 
- 
+1. 画面左側の **[参照]** をクリックし、**[Logic Apps]** を選択します。
+
 2. 新たに作成したロジック アプリをクリックすると、現在の状態や全般的な情報を確認できます。
 
 3. 新しいロジック アプリを編集するには、**[トリガーとアクション]** をクリックします。
- 
+
 5. アプリを無効にするには、コマンド バーで **[無効化]** をクリックします。
 
-クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。ロジック アプリの機能の使用について詳しくは、「[ロジック アプリの機能を使用する]」をご覧ください。
+クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。ロジック アプリの機能の使用について詳しくは、「[ロジック アプリの機能を使用する]」をご覧ください。ロジック アプリの定義自体の詳細については、「[ロジック アプリの定義を作成する](app-service-logic-author-definitions.md)」を参照してください。
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
 [Use logic app features]: app-service-logic-use-logic-app-features.md
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

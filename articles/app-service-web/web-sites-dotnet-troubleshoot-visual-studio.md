@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="06/08/2015" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用した Azure Web App Service のトラブルシューティング
@@ -51,8 +51,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 	または、アカウントへのアクセスを可能にする管理証明書をインストールします。証明書をインストールする方針を選択した場合は、**サーバー エクスプローラー**で、**Azure** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理]** をクリックします。**[Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブをクリックし、**[インポート]** をクリックします。操作手順に従い、Azure アカウント用のサブスクリプション ファイル (*.publishsettings* ファイル) をダウンロードしてインポートします。
 
-	> [AZURE.NOTE]
-	> サブスクリプション ファイルをダウンロードする場合は、ソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) に保存し、インポートが完了したらそのファイルを削除します。悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
+	> [AZURE.NOTE]サブスクリプション ファイルをダウンロードする場合は、ソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) に保存し、インポートが完了したらそのファイルを削除します。悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
 
 	Visual Studio から Azure リソースへの接続の詳細については、「[アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
 
@@ -90,17 +89,15 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 多くの場合、エラーの原因を最も簡単に見つける方法は、詳細なエラー メッセージを有効にすることです。その結果、既に示した最初のスクリーンショットのように、対応方法が表示されます。ここでは、デプロイした Web.config ファイルの変更が必要です。プロジェクト内の *Web.config* ファイルを編集し、プロジェクトを再デプロイすること、または [Web.config の変換](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)を作成し、デバッグ ビルドをデプロイすることもできますが、より簡単な方法があります。*リモート ビュー*機能を使用して、リモート Web アプリから**ソリューション エクスプローラー**でファイルを直接表示し、編集することができます。
 
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Web Apps]**、デプロイしようとする Web アプリに対応するノードの順に展開します。
+1. **サーバー エクスプ ローラー**で、**[Azure]**、**[App Service]**、Web アプリがあるリソース グループ、Web アプリのノードの順に展開します。
 
 	Web アプリケーションのコンテンツ ファイルとログ ファイルへのアクセス許可を付与するノードが表示されます。
-
-	![[ファイル] と [ログ ファイル]](./media/web-sites-dotnet-troubleshoot-visual-studio/fileandlogfiles.png)
 
 2. **[ファイル]** ノードを展開し、*[Web.config]* ファイルをダブルクリックします。
 
 	![[Web.config] を開く](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
-	Visual Studio は、リモート Web アプリから Web.config ファイルを開き、タイトル バーではファイル名の横に [リモート] と表示されています。
+	Visual Studio は、リモート Web アプリケーションから Web.config ファイルを開き、タイトル バーではファイル名 の横に [リモート] と表示されています。
 
 3. 次の行を `system.web` 要素に追加します。
 
@@ -112,7 +109,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 	![詳細なエラー メッセージ](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
-	(ここで示されているエラーは、赤く表示されている行を *Views\\Home\\Index.cshtml* に追加することによって作成したものです。)
+	(ここで示されているエラーは、赤く表示されている行を *Views\Home\Index.cshtml* に追加することによって作成したものです。)
 
 Web.config ファイルを編集することは、Azure Web アプリケーションにあるファイルの読み取りと編集を可能にして、トラブルシューティングが容易にする状況における 1 つの例にすぎません。
 
@@ -126,7 +123,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 1. 「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][GetStarted]」で作成した Web プロジェクトを開きます。
 
-1. *Controllers\\HomeController.cs* を開きます。
+1. *Controllers\HomeController.cs* を開きます。
 
 2. `About()` メソッドを削除し、その位置に次のコードを挿入します。
 
@@ -299,7 +296,7 @@ Web ジョブでアプリケーション ログを作成する方法について
 
 ### アプリケーションへのトレース ステートメントの追加
 
-1. *Controllers\\HomeController.cs* ファイルを開き、その内容を次のコードで置き換えて、`System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加します。
+1. *Controllers\HomeController.cs* ファイルを開き、その内容を次のコードで置き換えて、`System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加します。
 
 		using System;
 		using System.Collections.Generic;
@@ -520,9 +517,9 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 	![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
-	* アプリケーション トレース ログは、*LogFiles\\Application* フォルダーの *.txt* ファイルに記録されます。
-	* Web サーバーのログは、*LogFiles\\http\\RawLogs* フォルダーの *.log* ファイルに記録されます。これらのファイルの閲覧と操作は、[Log Parser](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
-	* 詳細なエラー メッセージのログは、*LogFiles\\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
+	* アプリケーション トレース ログは、*LogFiles\Application* フォルダーの *.txt* ファイルに記録されます。
+	* Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。これらのファイルの閲覧と操作は、[Log Parser](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
+	* 詳細なエラー メッセージのログは、*LogFiles\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
 
 	(*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。*Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)
 
@@ -568,8 +565,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 1. Visual Studio の **[Azure Web アプリ]** ウィンドウで、**[ログ]** タブをクリックし、**[管理ポータルでのログの構成]** をクリックします。
 
-    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->
-	![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
+    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
 	自分の Web アプリの管理ポータルの **[構成]** タブが開きます。この画面にアクセスするために、**[Web Apps]** タブをクリックして該当する Web アプリをクリックし、**[構成]** タブをクリックすることもできます。
 
@@ -734,11 +730,11 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
         } 
 
 * [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/> このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。[Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
-* [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](/documentation/videos/log-streaming-with-azure-web-sites/) Scott Hanselman と David Ebbo によるビデオ。
+* [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](/documentation/videos/log-streaming-with-azure-web-sites/)<br> Scott Hanselman と David Ebbo によるビデオ。
 
 エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、[ELMAH](http://nuget.org/packages/elmah/) のようなオープン ソースのログ記録フレームワークを使う方法があります。詳細については、[Scott Hanselman が ELMAH についてまとめたブログ記事](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を参照してください。
 
-Azure からストリーミング ログを取得する必要がある場合、必ずしも ASP.NET や System.Diagnostics トレースを使う必要はありません。Azure Web アプリのストリーミング ログ サービスは、*LogFiles* フォルダーに見つかったすべての *.txt* ファイル、*.html* ファイル、*.log* ファイルをストリーミングします。したがって、Web アプリケーションのファイル システムに書き込む独自のログ記録システムを作成することもできます。必要なファイルが自動的にストリーミングされ、ダウンロードされます。必要な作業は、*d:\\home\\logfiles* フォルダーにファイルを作成するアプリケーション コードを記述するだけです。
+Azure からストリーミング ログを取得する必要がある場合、必ずしも ASP.NET や System.Diagnostics トレースを使う必要はありません。Azure Web アプリのストリーミング ログ サービスは、*LogFiles* フォルダーに見つかったすべての *.txt* ファイル、*.html* ファイル、*.log* ファイルをストリーミングします。したがって、Web アプリケーションのファイル システムに書き込む独自のログ記録システムを作成することもできます。必要なファイルが自動的にストリーミングされ、ダウンロードされます。必要な作業は、*d:\home\logfiles* フォルダーにファイルを作成するアプリケーション コードを記述するだけです。
 
 ### Web サーバーのログの分析
 
@@ -760,10 +756,11 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [GetStarted]: web-sites-dotnet-get-started.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

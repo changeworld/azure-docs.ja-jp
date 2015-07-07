@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux ベースの HDInsight の Hadoop について知っておくべきこと | Azure"
-   description="Linux ベースの HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。"
+   pageTitle="Linux ベースの HDInsight で Hadoop を使用するためのヒント | Microsoft Azure"
+   description="ここには、Azure クラウドで稼動する使い慣れた Linux 環境で、Linux ベースの HDInsight (Hadoop) クラスターを使用するための実装上のヒントを記載します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/17/2015"
+   ms.date="05/27/2015"
    ms.author="larryfr"/>
 
-# Linux での HDInsight の使用 (プレビュー)
+# Linux での HDInsight の使用方法 (プレビュー)
 
 Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。ここでは、知っておく必要がある特定の違いについて説明します。
 
@@ -92,13 +92,24 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
         curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1"
 
-2. `fs.defaultFS` エントリを見つけます。これには、既定のコンテナーとストレージ アカウント名が次のような形式で含まれています。
+2. 返された JSON データで、`fs.defaultFS` エントリを見つけます。これには、既定のコンテナーとストレージ アカウント名が次のような形式で含まれています。
 
         wasb://CONTAINTERNAME@STORAGEACCOUNTNAME.blob.core.windows.net
 
-> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールしている場合は、次のコマンドを使用すると `fs.defaultFS` エントリのみが返されます。
->
-> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'`
+	> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールしている場合は、次のコマンドを使用すると `fs.defaultFS` エントリのみが返されます。
+	>
+	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'`
+	
+3. ストレージ アカウントの認証に使用するキー、または、クラスターに関連付けられているセカンダリ ストレージ アカウントを見つけるために、次のコマンドを使用します。
+
+		curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1"
+		
+4. 返された JSON データで、`fs.azure.account.key` で始まるエントリを見つけます。エントリ名の残りの部分は、ストレージ アカウント名です。たとえば、「`fs.azure.account.key.mystorage.blob.core.windows.net`」のように入力します。このエントリに格納されている値が、ストレージ アカウントの認証に使用するキーです。
+
+	> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールした場合は、次のコマンドを使用してキーおよび値の一覧を取得できます。
+	>
+	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties as $in | $in | keys[] | select(. | contains("fs.azure.account.key.")) as $item | $item | ltrimstr("fs.azure.account.key.") | { storage_account: ., storage_account_key: $in[$item] }'`
+
 
 **Azure ポータル**
 
@@ -108,13 +119,13 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 3. ストレージ アカウントとコンテナーの一覧が、ページの **[リンク済みリソース]** セクションに表示されます。
 
-	![linked resources](./media/hdinsight-hadoop-linux-information/storageportal.png)
+	![リンク済みリソース](./media/hdinsight-hadoop-linux-information/storageportal.png)
 
 ### BLOB ストレージにアクセスする方法
 
 クラスターから Hadoop コマンドを使用する以外にも、BLOB にアクセスするさまざまな方法があります。
 
-* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md): Azure を使用するためのクロス プラットフォーム コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` をご覧ください。
+* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md): Azure を使用するためのコマンドライン インターフェイス コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` をご覧ください。
 
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Azure ストレージで BLOB を使用するための Python スクリプト。
 
@@ -138,6 +149,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

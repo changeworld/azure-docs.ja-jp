@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Web ジョブのリソース" 
+	pageTitle="Azure の Web ジョブのドキュメント リソース" 
 	description="Azure の Web ジョブと Azure Web ジョブ SDK を使用する方法を学習するための推奨リソース。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/03/2015" 
+	ms.date="06/07/2015" 
 	ms.author="tdykstra"/>
 
-# Azure Web ジョブのリソース
+# Azure の Web ジョブのドキュメント リソース
 
 ## 概要
 
@@ -31,6 +31,7 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 ##<a name="getstarted"></a>Web ジョブと Web ジョブ SDK の概要
 
 * [Azure Web ジョブの紹介](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx)
+* [Azure の Web ジョブはとても役に立ちます。今すぐすぐ使用を開始してください。](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Troy Hunt によるブログの投稿です。)
 * [Azure Web ジョブの機能](/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)
 * [Microsoft Patterns and Practices によるバック グラウンド ジョブのガイダンス](https://github.com/mspnp/azure-guidance/blob/master/Background-Jobs.md)
@@ -54,7 +55,8 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 * [Visual Studio を使用して Azure WebJobs をデプロイする方法](websites-dotnet-deploy-webjobs.md)
 * [Azure の管理ポータルを使用して Web ジョブをデプロイする方法](web-sites-create-web-jobs.md)
 * [Azure Web ジョブのコマンドラインまたは継続的な配信の有効化](http://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)
-* [Git で Web ジョブを使用して Azure に .NET コンソール アプリケーションをデプロイ](http://blog.amitapple.com/post/73574681678/git-deploy-console-app/) 
+* [Git で Web ジョブを使用して Azure に .NET コンソール アプリケーションをデプロイ](http://blog.amitapple.com/post/73574681678/git-deploy-console-app/)
+* [F# WebJob を Azure にデプロイする](http://blogs.msdn.com/b/dave_crooks_dev_blog/archive/2015/02/18/deploying-f-web-job-to-azure.aspx)
 * ビデオ
 	* [Visual Studio 向けの Web ジョブ ツールの概要](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster) 
 	* [Web ジョブ ツールとリモート デバッグ](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
@@ -102,12 +104,7 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 ##<a name="additionalsdk"></a>その他の Web ジョブ SDK のリソース
 
 * [Web ジョブ SDK のソース コード](https://github.com/Azure/azure-webjobs-sdk)
-* [Azure ジョブのトリガー、バインド、およびルート パラメーター](http://blogs.msdn.com/b/jmstall/archive/2014/01/28/trigger-bindings-and-route-parameters-in-azurejobs.aspx) 
-* Azure Storage のバインド
-	* [BLOB](http://blogs.msdn.com/b/jmstall/archive/2014/02/18/azure-storage-bindings-part-1-blobs.aspx)
-	* [キュー](http://blogs.msdn.com/b/jmstall/archive/2014/02/18/azure-storage-bindings-part-2-queues.aspx)
-	* [テーブル](http://blogs.msdn.com/b/jmstall/archive/2014/03/06/azure-storage-bindings-part-3-tables.aspx)
-* [[￼￼[BlobTrigger]]￼￼ が動作する方法](http://blogs.msdn.com/b/jmstall/archive/2014/04/17/how-does-blobinput-work.aspx) 
+* [￼￼[BlobTrigger]￼￼ が動作する方法](http://blogs.msdn.com/b/jmstall/archive/2014/04/17/how-does-blobinput-work.aspx) 
 * [Azure Web ジョブ SDK での高度なバインド](http://victorhurdugaci.com/advanced-bindings-with-the-windows-azure-web-jobs-sdk/)
 * [Web ジョブ SDK を使用した、FREB のファイルの Azure Storage へのアップロード](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
 * [Azure がホストする Web ジョブのログに関するメリットが得られる、Azure 外部での Azure Web ジョブのホスティング](http://bypassion.dk/?p=510)
@@ -135,9 +132,11 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 * [Azure App Service Web Apps フォーラム](http://social.msdn.microsoft.com/Forums/azure/home?forum=windowsazurewebsitespreview)
 * [Azure Web Apps のユーザーからの意見のサイト](http://feedback.azure.com/forums/169385-websites)
 * [Twitter](http://twitter.com/)。ハッシュタグ #AzureWebJobs を使用してください。
+* [Web ジョブのバグまたは問題を報告する](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

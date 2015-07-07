@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2015" 
+	ms.date="05/11/2015" 
 	ms.author="awills"/>
  
 # Java Web プロジェクトで Application Insights を使う
@@ -26,12 +26,12 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
-さらに、アプリケーションの可用性を監視するための [Web テスト][availability]を設定したり、使用パターンを把握するための[コードを Web ページ][track]に挿入したりできます。
+さらに、アプリケーションの可用性を監視するための [Web テスト][availability]を設定したり、使用パターンを把握するための[コードを Web ページ][api]に挿入したりできます。
 
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 
 ## 1.Application Insights のインストルメンテーション キーを取得する
@@ -79,7 +79,10 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
     </dependencies>
 
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 次のバージョンを試してください: * `<version>0.9.3</version>`
+* *ビルド エラーかチェックサムの検証エラーが発生していますか。*
+ * 次のようにして特定のバージョンを試してください:* `<version>0.9.n</version>`。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
+* *新しい SDK に更新するには*
+ * プロジェクトの依存関係を更新します。
 
 #### Gradle を使用している場合:
 
@@ -96,7 +99,9 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 次のバージョンを試してください: * `version:'0.9.3'`
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'0.9.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。* 
+* *新しい SDK に更新するには*
+ * プロジェクトの依存関係を更新します。
 
 #### それ以外の場合:
 
@@ -106,6 +111,7 @@ SDK を手動で追加する:
 2. Zip ファイルから次のバイナリを抽出し、プロジェクトに追加します。
  * applicationinsights-core
  * applicationinsights-web
+ * annotation-detector
  * commons-codec
  * commons-io
  * commons-lang
@@ -115,15 +121,22 @@ SDK を手動で追加する:
  * httpcore
  * jsr305
 
+疑問がある場合...
 
-*`-core` コンポーネントと `-web` コンポーネントの関係について*
+* *`-core` コンポーネントと `-web` コンポーネントの関係について*
 
-`applicationinsights-core` は、自動テレメトリのない最小限の API を提供します。`applicationinsights-web` は、HTTP 要求数と応答時間を追跡するメトリックを提供します。
+ * `applicationinsights-core` は、自動テレメトリのない最小限の API を提供します。
+ * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。 
+
+* *SDK を更新するには*
+ * 最新の [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードして、古いものと置き換えます。
+ * 変更は [SDK リリース ノート](app-insights-release-notes-java.md)に記載されます。
+
 
 
 ## 3.Application Insights の xml ファイルを追加する
 
-ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加します。次の XML をファイルにコピーします。
+ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されるようにします。次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
 
@@ -205,11 +218,20 @@ Application Insights パッケージを含めるように次の要素を編集�
 
 (既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます)。
 
-## 5.Application Insights でのテレメトリを表示する
 
-アプリケーションを実行します。
+## 5.パフォーマンス カウンター コレクションを有効にする
 
-Microsoft Azure の Application Insights リソースに戻ります。
+サーバー コンピューターが Windows マシンである場合は、次のものをインストールします。
+
+* [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
+
+## 6.アプリケーションを実行する
+
+開発用コンピューターでデバッグ モードで実行するか、サーバーに発行します。
+
+## 7.Application Insights でのテレメトリを表示する
+
+[Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
 HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
@@ -239,7 +261,15 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 
-## 5.パフォーマンス カウンター
+## 未処理の例外と要求エラー
+
+
+![](./media/app-insights-java-get-started/21-exceptions.png)
+
+その他の例外に関するデータを収集するには、[TrackException への呼び出しをコードに挿入][apiexceptions]します。
+
+
+## パフォーマンス カウンター
 
 [サーバー] タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
 
@@ -298,22 +328,27 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
 
-## 6.ログ トレースをキャプチャする
+## ユーザーとセッションのデータを取得する
+
+Web サーバーからテレメトリを送信しようとしているところです。ここで、アプリケーションの状態を完全に把握するために、監視を追加することもできます。
+
+* [Web ページにテレメトリを追加][usage]して、ページ ビューやユーザー メトリックを監視します。
+* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
+
+## ログ トレースをキャプチャする
 
 Application Insights を使用すると、Log4J、Logback、またはその他のログ フレームワークのログをさまざまな側面から分析できます。ログは、HTTP 要求やその他のテレメトリに関連付けることができます。[詳細についてはこちら][javalogs]。
 
-## 7.独自のテレメトリを送信する
+## 独自のテレメトリを送信する
 
 SDK をインストールすると、API を使用して独自のテレメトリを送信できるようになります。
 
-* アプリケーションのユーザーの行動を把握するには、[カスタム イベントおよびメトリックを追跡][track]します。
+* アプリケーションのユーザーの行動を把握するには、[カスタム イベントおよびメトリックを追跡][api]します。
 * 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
 
 
-さらに、Application Insights のさまざまな機能をアプリケーションに関連付けることができます。
 
-* ビューや基本的なユーザー メトリックを監視するには、[Web クライアント テレメトリを追加][usage]します。
-* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
+
 
 
 ## 疑問がある場合 問題が発生した場合
@@ -324,13 +359,15 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
 <!--Link references-->
 
+[api]: app-insights-api-custom-events-metrics.md
+[apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[track]: app-insights-custom-events-metrics-api.md
 [usage]: app-insights-web-track-usage.md
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

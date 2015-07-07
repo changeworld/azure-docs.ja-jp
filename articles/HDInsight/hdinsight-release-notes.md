@@ -1,6 +1,6 @@
 <properties
-	pageTitle="HDInsight リリース ノート | Azure"
-	description="HDInsight リリース ノート"
+	pageTitle="Azure HDInsight の Hadoop コンポーネントのリリース ノート | Microsoft Azure"
+	description="Azure HDInsight の Hadoop コンポーネントの最新のリリース ノートとバージョン。Hadoop、Apache Storm、HBase に関する開発のヒントと詳細情報を示します。"
 	services="hdinsight"
 	documentationCenter=""
 	editor="cgronlun"
@@ -13,11 +13,219 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2015"
+	ms.date="06/18/2015"
 	ms.author="nitinme"/>
 
 
-#Microsoft HDInsight リリース ノート
+# Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2015 年 06 月 18 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.596.1601657 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.596.1601657 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.596.1601657 (HDP 2.1.15.0-2334)
+* HDInsight 3.2.4.596.1601657 (HDP 2.2.6.1-0002)
+* SDK 1.5.8
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 (例: サービス、コンポーネント、SDK)</p></th>
+<th>クラスターの種類 (例: Hadoop、HBase、Storm)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>追加で開かれた HTTPS ポート</td>
+<td>クラウド サービスは、クラスターの 5 つのポート (8001 ～ 8005) を開くようになりました (例: <clustername>.azurehdinsight.net:8001/)。これらの URL に対する要求は、ポート 443 と同じ基本認証パスワード メカニズムを使用して認証されます。これらのポートは、アクティブなヘッドノード上の同じポートにバインドされます。スクリプト アクションを使用して、カスタマー サービスがヘッドノード上のこれらのポートをリッスンし、クラスターの外部にルーティングするように設定できます。</td>
+<td>クラウド サービス</td>
+<td>すべて</td>
+<td>該当なし</td>
+</tr>
+
+<tr>
+<td>HDInsight 3.2 の断続的な MapReduce のシャッフルの問題</td>
+<td>大規模なクラスター上での MapReduce のシャッフルにおいてまれに断続的な競合状態が発生し、タスクが失敗することがある問題を修正しました。詳細については、<a href="https://issues.apache.org/jira/browse/MAPREDUCE-6361" target="_blank">MAPREDUCE-6361</a> に関するページを参照してください。</td>
+<td>Hadoop Core</td>
+<td>すべて</td>
+<td><a href="https://issues.apache.org/jira/browse/MAPREDUCE-6361" target="_blank">MAPREDUCE-6361</a></td>
+</tr>
+
+<tr>
+<td>HDInsight 3.2 向けの最新の Azure Java SDK 2.2 への移行</td>
+<td>WASB ドライバーによって使用される Azure SDK for Java の最新バージョンに移行しました。最新の SDK にはいくつかの修正が加えられています。リリース ノートは、https://github.com/Azure/azure-storage-java/blob/master/ChangeLog.txt で入手できます。</td>
+<td>Hadoop Core</td>
+<td>すべて</td>
+<td><a href="https://issues.apache.org/jira/browse/HADOOP-11959" target="_blank">HADOOP-11959</a></td>
+</tr>
+
+<tr>
+<td>HDInsight 3.1 クラスター向けの HDP 2.1.15 への移行</td>
+<td>Hortonworks 社発行のこのリリースに関するリリース ノートは、<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.15-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.15.html" target="_blank">ここ</a>から入手できます。</td>
+<td>HDP</td>
+<td>すべて</td>
+<td>該当なし</td>
+</tr>
+
+</table>
+
+## HDInsight の 2015 年 06 月 4 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.583.1575584 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.583.1575584 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.3.583.1575584 (HDP 2.1.12.1-0003 - 変更なし)
+* HDInsight 3.2.4.583.1575584 (HDP 2.2.6.1-1)
+* SDK 1.5.8
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 (例: サービス、コンポーネント、SDK)</p></th>
+<th>クラスターの種類 (例: Hadoop、HBase、Storm)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>Storm クラスターの 502 bad gateway エラーの修正</td>
+<td>このリリースでは、再起動後に Web サイトがダウンする原因となるジョブの送信 API に影響を及ぼすバグを修正しました。</td>
+<td>サービス</td>
+<td>Storm</td>
+<td>該当なし</td>
+</tr>
+
+</table>
+
+## HDInsight の 2015 年 06 月 1 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.577.1563827 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.577.1563827 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.3.577.1563827 (HDP 2.1.12.1-0003 - 変更なし)
+* HDInsight 3.2.4.577.1563827 (HDP 2.2.6.0-2800 - 変更なし)
+* SDK 1.5.8
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 (例: サービス、コンポーネント、SDK)</p></th>
+<th>クラスターの種類 (例: Hadoop、HBase、Storm)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>さまざまなバグの修正</td>
+<td>このリリースでは、クラスターのプロビジョニングに関連するバグを修正しました。</td>
+<td>サービス</td>
+<td>すべてのクラスターの種類</td>
+<td>該当なし</td>
+</tr>
+
+</table>
+
+## HDInsight の 2015 年 5 月 27 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 3.2.4.570.1554102 (HDP 2.2.6.0-2800)
+* その他のクラスター バージョンおよび SDK は、このリリースの一部としてデプロイされません。
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 (例: サービス、コンポーネント、SDK)</p></th>
+<th>クラスターの種類 (例: Hadoop、HBase、Storm)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>HDP 2.2 の更新</td>
+<td>HDInsight 3.2 のこのリリースには HDP 2.2.6 が含まれ、HDInsight のいくつかの重要なバグが修正されています。完全なリリース ノートは、<a href="http://dev.hortonworks.com.s3.amazonaws.com/HDPDocuments/HDP2/HDP-2.2.6/HDP_RelNotes_v226/index.html">HDP 2.2.6 のリリース ノート</a>に関するページから入手できます。</td>
+<td>HDP</td>
+<td>すべてのクラスターの種類</td>
+<td>該当なし</td>
+</tr>
+
+<tr>
+<td>既定の Yarn コンテナーのメモリ構成の変更</td>
+<td>この更新では、Node Manager によって起動される YARN コンテナー (yarn.nodemanager.resource.memory-mb および yarn.scheduler.maximum-allocation-mb) が既定で使用できるメモリが 5,632 MB に増えました。従来この値は 4,608 MB に減らされていましたが、さまざまなジョブの実行に基づいて、この新しい値の方がほとんどのジョブにおいてより高い信頼性とパフォーマンスが得られることが確認されたため、より適切な既定値として採用されました。従来どおり、このメモリ構成に対する重要な依存関係がある場合は、クラスターの作成時に明示的に設定してください。</td>
+<td>HDP</td>
+<td>すべてのクラスターの種類</td>
+<td>該当なし</td>
+</tr>
+
+<tr>
+<td>HBase クラスターと Storm クラスターの既定の構成パリティ</td>
+<td>この更新では、Hbase クラスターと Storm クラスターが Hadoop クラスターと同じ YARN 構成の値を使用するように再び設定されました。これは、すべてのクラスターの種類のパリティに適用されます。</td>
+<td>HDP</td>
+<td>HBase、Storm</td>
+<td>該当なし</td>
+</tr>
+
+</table>
+
+## HDInsight の 2015 年 5 月 20 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.564.1542093 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.564.1542093 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.3.564.1542093 (HDP 2.1.12.1-0003)
+* HDInsight 3.2.4.564.1542093 (HDP 2.2.4.6-2)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 (例: サービス、コンポーネント、SDK)</p></th>
+<th>クラスターの種類 (例: Hadoop、HBase、Storm)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>SCP.NET EventHub のサポート</td>
+<td>HDInsight Storm の更新されたクラスター パッケージにより、SCP.NET の新しい機能が提供されます。トポロジ ビルダーで、EventHubSpout または Java スパウトをより簡単に使用できる新しい API にアクセスできます。コントラクトが更新されているため、新しいクラスターを使用するには、SCP.NET クライアント SDK を更新する必要があります。新しい API の詳細、使用法、および (バグの修正を含む) リリース ノートについては、SCP.NET nuget パッケージに含まれる Readme を参照してください。</td>
+<td>VS のツール</td>
+<td>Storm HDInsight 3.2 クラスター</td>
+<td>該当なし</td>
+</tr>
+
+<tr>
+<td>JDBC ドライバーの更新</td>
+<td>sqljdbc_4.1.5605.100 で、SQL Server でサポートされているバージョンにドライバーを更新しました。</td>
+<td>メタストア</td>
+<td>すべて</td>
+<td>該当なし</td>
+</tr>
+</table>
 
 ## HDInsight の 2015 年 4 月 27 日リリース ##
 
@@ -268,7 +476,7 @@
 
 <tr>
 <td>信頼性に関する機能強化</td>
-<td>クラスター作成に関する負荷の増加に対して拡大できるサービスに修正しました。</td>
+<td>クラスター作成に関する負荷の増加に応じてスケールが可能なサービスに修正しました。</td>
 <td>サービス</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -311,7 +519,7 @@
 
 <tr>
 <td>Linux での HDInsight (プレビュー)</td>
-<td>Ubuntu Linux で実行されているクラスターを展開できます。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-get-started/" target ="_blank">Linux での HDInsight の概要</a>」をご覧ください。</td>
+<td>Ubuntu Linux で実行されているクラスターをデプロイできます。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-get-started/" target ="_blank">Linux での HDInsight の概要</a>」をご覧ください。</td>
 <td>サービス</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -422,7 +630,7 @@
 </table>
 <br>
 
-## HDinsight の 2015 年 1 月 29 日リリース ##
+## HDInsight の 2015 年 1 月 29 日リリース ##
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -457,7 +665,7 @@
 </table>
 <br>
 
-## HDinsight の 2015 年 1 月 5 日リリース ##
+## HDInsight の 2015 年 1 月 5 日リリース ##
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -494,7 +702,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 
 <tr>
 <td>Hive 構成 hive.auto.convert.join.noconditionaltask.size の既定値への変更</td>
-<td><p>このサイズ構成は、自動変換されたマップの結合に適用されます。この値は、メモリに収まるハッシュ マップに変換できるテーブルのサイズの合計を表します。以前のリリースで、この値は既定値の 10MB から 128MB に増えました。ただし、128MB という新しい値がメモリ不足でジョブが失敗する原因になっていました。このリリースでは、既定値を 10MB に戻します。ユーザーは、クエリとテーブル サイズに応じて、クラスターの作成中にこの値を上書きできます。この設定と、それを上書きする方法の詳細については、「<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">Optimize Auto Join Conversion (Auto Join Conversion の最適化)</a>」をご覧ください。</p></td>
+<td><p>このサイズ構成は、自動変換されたマップの結合に適用されます。この値は、メモリに収まるハッシュ マップに変換できるテーブルのサイズの合計を表します。以前のリリースで、この値は既定値の 10MB から 128MB に増えました。ただし、128MB という新しい値がメモリ不足でジョブが失敗する原因になっていました。このリリースでは、既定値を 10 MB に戻します。ユーザーは、クエリとテーブル サイズに応じて、クラスターの作成中にこの値を上書きできます。この設定と、それを上書きする方法の詳細については、「<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">Optimize Auto Join Conversion (Auto Join Conversion の最適化)</a>」をご覧ください。</p></td>
 <td>Hive</td>
 <td>Hadoop、HBase</td>
 <td>該当なし</td>
@@ -503,7 +711,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDinsight の 2014 年 12 月 23 日リリース ##
+## HDInsight の 2014 年 12 月 23 日リリース ##
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -536,7 +744,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDinsight の 2014 年 12 月 18 日リリース ##
+## HDInsight の 2014 年 12 月 18 日リリース ##
 
 このリリースでは、コンポーネントに対して以下の更新を実施しています。
 
@@ -551,7 +759,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 
 <tr>
 <td><a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">クラスターのカスタマイズの一般公開</a></td>
-<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight に展開できます。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、一般的な <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールをインスト―ルするプロセスを説明しています。&#160;またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。</p></td>
+<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、一般的な <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールをインスト―ルするプロセスを説明しています。またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。</p></td>
 <td>機能の一般公開</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -561,7 +769,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDinsight の 2014 年 12 月 5 日リリース ##
+## HDInsight の 2014 年 12 月 5 日リリース ##
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -599,7 +807,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 
 <tr>
 <td>バグの修正: HBase クエリの待機時間が急激に増加することがある</td>
-<td>このエラーが発生すると、HBase クエリによる待ち時間が突然 3 秒に増加します。&#160;</td>
+<td>このエラーが発生すると、HBase クエリによる待ち時間が突然 3 秒に増加します。</td>
 <td>HDInsight クラスター ゲートウェイ</td>
 <td>HBase</td>
 <td>該当なし</td>
@@ -617,7 +825,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 <br>
 
 
-## HDinsight の 2014 年 11 月 25 日リリース ##
+## HDInsight の 2014 年 11 月 25 日リリース ##
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -757,8 +965,8 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 </tr>
 
 <tr>
-<td>クラスター デプロイメント ID</td>
-<td>SDK の最新バージョン (1.3.3.1.5426.29232) より、HDInsight が各クラスターに対して発行した一意の ID にアクセスできるようになります。これにより、作成とドロップのシナリオで DNS 名を再利用する場合に、ユーザーがクラスターのインスタンスを一意に特定できるようになります。</td>
+<td>クラスター デプロイ ID</td>
+<td>SDK の最新バージョン (1.3.3.1.5426.29232) より、ユーザーは、HDInsight が各クラスターに対して発行した一意の ID にアクセスできます。これにより、作成とドロップのシナリオで DNS 名を再利用する場合に、ユーザーがクラスターのインスタンスを一意に特定できるようになります。</td>
 <td>SDK</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -777,7 +985,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 * Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
-* HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
+* HDInsight クラスターの既定のデプロイのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
 
 <table border="1"> <tr><th>コンポーネント</th><th>メモリ割り当て</th></tr> <tr><td> yarn.scheduler.minimum-allocation</td><td>768 MB (以前は 512 MB)</td></tr> <tr><td> yarn.scheduler.maximum-allocation</td><td>6144 MB (変更なし)</td></tr> <tr><td>yarn.nodemanager.resource.memory</td><td>6144 MB (変更なし)</td></tr> <tr><td>mapreduce.map.memory</td><td>768 MB (以前は 512 MB)</td></tr> <tr><td>mapreduce.map.java.opts</td><td>opts=-Xmx512m (以前は -Xmx410m)</td></tr> <tr><td>mapreduce.reduce.memory</td><td>1536 MB (以前は 1024 MB)</td></tr> <tr><td>mapreduce.reduce.java.opts</td><td>opts=-Xmx1024m (以前は -Xmx819m)</td></tr> <tr><td>yarn.app.mapreduce.am.resource</td><td>768 MB (以前は 1024 MB)</td></tr> <tr><td>yarn.app.mapreduce.am.command</td><td>opts=-Xmx512m (以前は -Xmx819m)</td></tr> <tr><td>mapreduce.task.io.sort</td><td>256 MB (以前は 200 MB)</td></tr> <tr><td>tez.am.resource.memory</td><td>1536 MB (変更なし)</td></tr>
 
@@ -787,7 +995,7 @@ HDInsight で使用される Hortonworks Data Platform で YARN および MapRed
 
 Azure PowerShell と HDInsight SDK のエラー メッセージ "*Cluster is not configured for HTTP services access*" について
 
-* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureHDInsightCluster** または **Invoke-Hive**) を使用してジョブを送信する場合、エラー メッセージ "Cluster <clustername> is not configured for HTTP services access*"  または操作によっては、"Cannot connect to cluster" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
+* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureHDInsightCluster** または **Invoke-Hive**) を使用してジョブを送信する場合、エラー メッセージ "Cluster <clustername> is not configured for HTTP services access*" または操作によっては、"Cannot connect to cluster" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
 
 * これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK にアクセスし、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure/)」から Azure PowerShell ツールにアクセスできます。
 
@@ -847,7 +1055,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 
 ![](http://i.imgur.com/cmOl5fM.png)
 
-HBase を使用すると、大規模なデータセットを処理する対話的な Web サイトから、何百万ものエンド ポイントからのセンサーのデータや利用統計情報のデータを格納するサービスまで、さまざまなリアルタイムのワークロードを HDInsight で構築できます。次の手順としては Hadoop ジョブでこれらのワークロードのデータを分析しますが、これは Azure PowerShell や Hive クラスター ダッシュボードを使用した HDInsight で実現可能です。
+HBase を使用すると、大規模なデータセットを処理する対話的な Web サイトから、何百万ものエンド ポイントからのセンサーのデータやテレメトリ データを格納するサービスまで、さまざまなリアルタイムのワークロードを HDInsight で構築できます。次の手順としては Hadoop ジョブでこれらのワークロードのデータを分析しますが、これは Azure PowerShell や Hive クラスター ダッシュボードを使用した HDInsight で実現可能です。
 
 ### Apache Mahout が HDInsight 3.1 にプレインストール ###
 
@@ -860,7 +1068,7 @@ HBase を使用すると、大規模なデータセットを処理する対話�
 この手順の詳しい説明については、Apache Mahout Web サイトのドキュメント「[Breiman Example (Breiman の例)](https://mahout.apache.org/users/classification/breiman-example.html)」をご覧ください。
 
 
-### HDinsight 3.1 で Hive クエリに Tez を使用可能 ###
+### HDInsight 3.1 で Hive クエリに Tez を使用可能 ###
 
 HDInsight 3.1 で Hive 0.13 が利用可能になり、Tez を使用してクエリを実行できます。これを活用してパフォーマンスを大幅に向上できます。既定では、Hive クエリでの Tez の使用は有効ではありません。これを使用するにはオプトインが必要です。以下のコード スニペットを実行すると Tez を有効にできます。
 
@@ -1036,5 +1244,6 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

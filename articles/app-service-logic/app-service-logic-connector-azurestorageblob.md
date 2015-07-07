@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/18/2015"
+   ms.date="05/11/2015"
    ms.author="rajram"/>
    
 #Azure Storage BLOB コネクタ
@@ -22,23 +22,13 @@
 Azure Storage BLOB コネクタを使用すると、BLOB コンテナーから BLOB のアップロード、ダウンロード、削除を行うことができます。
 
 ##新しい Azure Storage BLOB コネクタの作成
-Azure Storage コネクタを新しく作成するには、次の手順に従います。
-<ul>
-<li>Azure ポータルを起動します。<li>[+ 新規] \(ページの下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
-</ul>
+Azure Storage コネクタを新しく作成するには、次の手順に従います。<ul> <li>Azure ポータルを起動します。<li>[+ 新規] (ページの下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。</ul>
 
-![Azure Marketplace の起動][1]<br>
-<ul>
-<li>API Apps をクリックします。<li><i>BLOB</i> を検索し、[Azure Storage BLOB コネクタ] を選択します。
-</ul>
+![Launch Azure Marketplace][1]<br> <ul> <li>[API アプリ] をクリックします。<li><i>BLOB</i> を検索し、"Azure Storage BLOB コネクタ" を選択します。</ul>
 
-![Azure Storage BLOB コネクタの選択][2]
-<br>
-<ul>
-<li>[作成] をクリックします。<li>[Azure Storage BLOB コネクタ] ブレードが開いたら、次のデータを指定します。
-</ul>
+![Select Azure Storage Blob Connector][2] <br> <ul> <li>[作成] をクリックします。<li>[Azure Storage BLOB コネクタ] ブレードが開いたら、次のデータを指定します。</ul>
 
-![Azure Storage BLOB コネクタの作成][3]
+![Create Azure Storage Blob Connector][3]
 
 - **[場所]** - コネクタをデプロイする地域を選択します。
 - **[サブスクリプション]** - コネクタを作成するサブスクリプションを選択します。
@@ -46,7 +36,7 @@ Azure Storage コネクタを新しく作成するには、次の手順に従い
 - **[Web ホスティング プラン]** - Web ホスティング プランを選択するか、作成します。
 - **[価格レベル]** - コネクタの価格レベルを選択します。
 - **[名前]** - BLOB ストレージ コネクタの名前を指定します。
-- **パッケージの設定** 
+- **[パッケージの設定]** 
 	- **[コンテナー/SAS URI]** - BLOB コンテナーの URI を指定します。URI には SAS トークンを含めることもできます。たとえば、http://storageaccountname.blob.core.windows.net/containername や http://storageaccountname.blob.core.windows.net/containername?sr=c&si=mypolicy&sig=signatureblah です。
 	- **[アクセス キー]** - 有効なプライマリ/セカンダリ ストレージ アカウントのアクセス キーを指定します。認証に SAS トークンを使用する場合は、このフィールドは空白のままにしてください。
 - [作成] をクリックします。Azure Storage BLOB コネクタが新しく作成されます。
@@ -56,20 +46,20 @@ Azure Storage BLOB コネクタを作成すると、フローから使用でき�
 
 新しいフローを作成するには、[+ 新規]、[Web + モバイル]、[ロジック アプリ] の順に選択します。リソース グループを含むフローのメタデータを指定します。
 
-![ロジック アプリの作成][4]
+![Create Logic App][4]
 
 *[トリガーとアクション]* をクリックします。フローのデザイナーが開きます。
 
-![ロジック アプリの空のフロー デザイナー][5]
+![Logic App empty flow designer][5]
 
 Azure Storage BLOB コネクタはアクションとして使用できます。
 
 ###アクション
 右側のペインから [Azure Storage BLOB コネクタ] をクリックします。コネクタの下には、サポートされているアクションが一覧表示されます。
 
-![Azure Storage BLOB アクションの一覧][10]
+![List of Azure Storage Blob Actions][10]
 
-Azure Storage BLOB コネクタは 4 つのアクションをサポートします。サポートされるアクションは次のとおりです。
+Azure Storage BLOB コネクタは 6 つのアクションをサポートします。サポートされるアクションは次のとおりです。
 
 - **[BLOB の取得]**: コンテナーから特定の BLOB を取得します。
 - **[BLOB のアップロード]**: 新しい BLOB のアップロードまたは既存の BLOB の更新を行います。
@@ -80,7 +70,7 @@ Azure Storage BLOB コネクタは 4 つのアクションをサポートしま�
 
 [BLOB のアップロード] の例を示します。[BLOB のアップロード] をクリックします。
 
-![BLOB のアップロード アクションの入力][11]
+![Inputs of Upload Blob action][11]
 
 
 - **[BLOB パス]**: アップロードする BLOB のパスを指定します。パスは構成済みのコンテナーのパスを基準として解釈されます。
@@ -116,5 +106,6 @@ Azure Storage BLOB コネクタは 4 つのアクションをサポートしま�
 [9]: ./media/app-service-logic-connector-azurestorageblob/ConfiguredBlobAvailableTrigger.PNG
 [10]: ./media/app-service-logic-connector-azurestorageblob/ListOfAzureStorageBlobActions.PNG
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
+ 
 
-<!---HONumber=54--> 
+<!---HONumber=62-->

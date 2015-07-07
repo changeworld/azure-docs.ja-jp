@@ -20,7 +20,7 @@
 # Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応
 この記事では、サービス管理 (asm) モードとリソース マネージャー (arm) モードで Azure VM を作成および管理するための Azure コマンド ライン インターフェイス (Azure CLI) のコマンドを紹介します。この記事は、スクリプトをコマンド モード間で移行するための簡易ガイドとして使用してください。
 
-* まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、[Mac、Linux、および Windows 用の Azure CLI のインストール](../xplat-cli-install.md)に関するページと、[Mac、Linux、および Windows 用の Azure CLI から Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページを参照してください。arm モードのコマンドを使用する場合、必ず所定のログイン方法で接続してください。
+* まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、[Azure CLI のインストール](../xplat-cli-install.md)に関するページと、[Azure CLI から Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページをご覧ください。arm モードのコマンドを使用する場合、必ず所定のログイン方法で接続してください。
 
 * Azure CLI で arm モードの使用を開始する方法とコマンド モードの切り替え方法については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。
 
@@ -61,7 +61,7 @@ VM イメージの表示 | `azure vm image show [options]` | 利用不可
 ## 次のステップ
 
 * Azure CLI を使用して arm モードでリソースを操作する方法の詳細については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページと、[Azure コマンド ライン インターフェイスによる役割ベースのアクセス制御の管理](../role-based-access-control-xplat-cli.md)に関するページを参照してください。
-* CLI コマンドのその他の例については、[Mac、Linux、および Windows 用 Azure コマンド ライン インターフェイスの使用](../virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Mac、Linux、および Windows 用 Azure CLI の使用](azure-cli-arm-commands.md)に関するページを参照してください。
-
-<!--HONumber=52-->
+* CLI コマンドのその他の例については、[Azure コマンド ライン インターフェイスの使用](../virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](azure-cli-arm-commands.md)に関するページをご覧ください。
  
+
+<!---HONumber=62-->

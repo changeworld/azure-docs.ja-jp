@@ -21,5 +21,8 @@ Web API プロジェクトを API アプリとしてデプロイできるよう�
 		    }
 		}
 
+`apiDefinition` のエンドポイント `/swagger/docs/v1` に注目してください。既定では、API アプリ プロジェクトでは、[Swashbuckle](https://www.nuget.org/packages/Swashbuckle) NuGet パッケージを使用して、[Swagger](http://swagger.io/) メタデータの自動生成を提供します。
+
 このチュートリアルでは、既定値をそのまま使用できます。このチュートリアルの「[API アプリのメタデータ](#api-app-metadata)」セクションで、このメタデータをカスタマイズする方法について説明します。
-<!--HONumber=54-->
+
+<!---HONumber=62-->

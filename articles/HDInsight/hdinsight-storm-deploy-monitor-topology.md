@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDInsight | Azure での Storm トポロジの展開と管理"
-   description="HDInsight での Apache Storm に含まれる Storm ダッシュボードを使用して Storm トポロジを展開、監視、管理する方法について説明します。"
+   pageTitle="HDInsight での Apache Storm トポロジのデプロイと管理 | Microsoft Azure"
+   description="HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。Hadoop Tools for Visual Studio を使用します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -16,9 +16,9 @@
    ms.date="04/28/2015"
    ms.author="larryfr"/>
 
-#HDInsight での Apache Storm トポロジの展開と管理
+#HDInsight での Apache Storm トポロジのデプロイと管理
 
-Storm ダッシュボードでは、Web ブラウザーを使用して Apache Storm トポロジを HDInsight クラスターに簡単に展開して実行できます。また、ダッシュボードを使用して実行中のトポロジを監視、管理できます。Visual Studio を使用する場合、HDInsight Tools for Visual Studio でも Visual Studio と同様の機能が提供されます。
+Storm ダッシュボードでは、Web ブラウザーを使用して Apache Storm トポロジを HDInsight クラスターに簡単にデプロイして実行できます。また、ダッシュボードを使用して実行中のトポロジを監視、管理できます。Visual Studio を使用する場合、HDInsight Tools for Visual Studio でも Visual Studio と同様の機能が提供されます。
 
 Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Storm REST API に依存し、これを使用して独自の監視と管理ソリューションを作成できます。
 
@@ -116,7 +116,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
 HDInsight Tools は、C# またはハイブリッド トポロジを Storm クラスターに送信する際に使用できます。次の例では、サンプル アプリケーションを使用します。HDInsight Tools を使用して独自のトポロジを作成する方法の詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
-次の手順を使用して、サンプルをお使いの HDInsight クラスターに展開し、トポロジを表示、管理します。
+次の手順を使用して、サンプルをお使いの HDInsight クラスターにデプロイし、トポロジを表示、管理します。
 
 1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」をご覧ください。
 
@@ -162,7 +162,7 @@ REST API への要求では、HDInsight クラスターの管理者名とパス�
 
 ###戻り値
 
-REST API から返される情報は、クラスターと同じ Azure 仮想ネットワーク上にあるクラスターや仮想マシン上でのみ使用できます。たとえば、Zookeeper サービスに返された完全修飾ドメイン名 (FQDN) は、インターネットからはアクセスできません。
+REST API から返される情報は、クラスターと同じ Azure Virtual Network 上にあるクラスターや仮想マシン上でのみ使用できます。たとえば、Zookeeper サービスに返された完全修飾ドメイン名 (FQDN) は、インターネットからはアクセスできません。
 
 ##次のステップ
 
@@ -177,5 +177,6 @@ REST API から返される情報は、クラスターと同じ Azure 仮想ネ�
 [hdinsight-dashboard]: ./media/hdinsight-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

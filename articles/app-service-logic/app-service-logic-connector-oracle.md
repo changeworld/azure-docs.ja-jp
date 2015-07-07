@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Oracle コネクタ" 
+   pageTitle="Microsoft Azure App Service での Oracle コネクタの使用" 
    description="Oracle コネクタの使用方法" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
@@ -13,150 +13,109 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/20/2015"
+   ms.date="06/17/2015"
    ms.author="sutalasi"/>
 
 
-# Oracle データベース コネクタ #
+# Oracle Database コネクタ
 
-コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。Oracle コネクタをフローで使用すると、さまざまなシナリオを実現できます。例をいくつか示します。  
+オンプレミスの Oracle Database サーバーに接続して、情報やデータの作成と変更を行います。コネクタをロジック アプリで使用して、"ワークフロー" の一部としてデータをフェッチ、処理、またはプッシュできます。Oracle コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
-1.	Web またはモバイル ユーザーのフロント エンドを介して、Oracle データベースに存在するデータの一部を公開する
-2.	ストレージ用の Oracle データベース テーブルにデータを挿入する (例: 従業員レコード、販売注文など)
-3.	ビジネス プロセスで使用するデータを Oracle から抽出する
-
-これらのシナリオに対しては、次の操作を実行する必要があります。 
-
-1. Oracle コネクタ API アプリのインスタンスを作成する
-2. API アプリがオンプレミスの Oracle サーバーと通信できるようにハイブリッド接続を確立する
-3. 作成した API アプリをロジックで使用して、目的のビジネス プロセスを実現する
-
-	### 基本的なトリガーとアクション
-		
-    - データのポーリング (トリガー) 
-    - テーブルに挿入
-    - テーブルの更新
-    - テーブルから選択
-    - テーブルから削除
-    - ストアド プロシージャの呼び出し
-
-## Oracle データベース コネクタ API アプリのインスタンスを作成する ##
-
-Oracle コネクタを使用するには、まず Oracle コネクタ API アプリのインスタンスを作成する必要があります。そのためには、次の操作を実行します。
-
-1. Azure ポータルの左下にある '[+ 新規]' を使用して Azure Marketplace を開きます。
-2. [Web + モバイル]、[API アプリ] の順に移動して、"Oracle コネクタ" を検索します。
-3. 最初のブレードで、名前、アプリ サービス プランなどの一般的な詳細を入力します。
-4. 下の表に記載されているパッケージ設定を入力します。.
+- Web またはモバイル アプリケーションを使用して、Oracle Database に存在するデータの一部を公開する。
+- ストレージ用の Oracle Database テーブルにデータを挿入する。たとえば、従業員レコードの入力や販売注文の更新などを実行できます。
+- データを Oracle から抽出してビジネス プロセスで使用する。たとえば、顧客レコードを取得し、SalesForce にそれらの顧客レコードを配置できます。 
 
 
+## トリガーとアクション
+トリガーは発生するイベントです。たとえば、注文が更新されたときや新しい顧客が追加されたときに発生します。アクションはトリガーの結果です。たとえば、注文が更新されたときに、営業担当者にアラートを送信します。または、新しい顧客が追加されたときに、ウェルカム メールを新しい顧客に送信します。
 
-<table class="tableizer-table">
-<tr class="tableizer-firstrow"><th>名前</th><th>必須</th><th>説明</th></tr>
- <tr><td>データ ソース</td><td>あり</td><td>Oracle クライアントがインストールされているコンピューターの tnsnames.ora ファイルで指定されているデータ ソース (ネット サービス) の名前です。データ ソース名と tnsnames.ora の詳細については、「[Configuring the Oracle Client (Oracle クライアントの構成)]」をご覧ください。</td></tr>
- <tr><td>ユーザー名</td><td>あり</td><td>Oracle サーバーに接続する有効なユーザー名を指定します。</td></tr>
- <tr><td>パスワード</td><td>あり</td><td>Oracle サーバーに接続する有効なパスワードを指定します。</td></tr>
- <tr><td>Service Bus の接続文字列</td><td>あり</td><td>省略可能。Oracle サーバーが内部設置型の場合は、このパラメーターを指定します。有効な Service Bus 名前空間の接続文字列である必要があります。Oracle サーバーにアクセスできるサーバーにリスナー エージェントをインストールする必要があります。API アプリの概要ページに移動し、 [ハイブリッド接続]' をクリックしてエージェントをインストールできます。</td></tr>
- <tr><td>テーブル</td><td>いいえ</td><td>省略可能。コネクタで変更できるデータベース内のテーブルを指定します。例: OrdersTable、EmployeeTable</td></tr>
- <tr><td>ストアド プロシージャ</td><td>いいえ</td><td>省略可能。コネクタで呼び出すことができるデータベースにストアド プロシージャを指定します。例:IsEmployeeEligible、CalculateOrderDiscount</td></tr>
- <tr><td>関数</td><td>いいえ</td><td>省略可能。コネクタで呼び出すことができるデータベースに関数を指定します。例:IsEmployeeEligible、CalculateOrderDiscount</td></tr>
- <tr><td>パッケージ エンティティ</td><td>いいえ</td><td>省略可能。コネクタで呼び出すことができるデータベースにパッケージを指定します。例:PackageOrderProcessing.CompleteOrder、PackageOrderProcessing.GenerateBill</td></tr>
- <tr><td>データを使用できるステートメント</td><td>いいえ</td><td>省略可能。任意のデータをポーリングに使用できるかどうかを決定するステートメントを指定します。例:SELECT * from table_name</td></tr>
- <tr><td>ポーリングの種類</td><td>いいえ</td><td>省略可能。ポーリングの種類を指定します。許可値は、"Select"、"Procedure"、"Function"、"Package" です。</td></tr>
- <tr><td>ポーリング ステートメント</td><td>いいえ</td><td>省略可能。Oracle サーバー データベースをポーリングするステートメントを指定します。例: SELECT * from table_name</td></tr>
- <tr><td>ポスト ポーリング ステートメント</td><td>いいえ</td><td>省略可能。ポーリング後に実行するステートメントを指定します。例: DELETE * from table_name.</td></tr>
-</table>
+Oracle Database コネクタは、ロジック アプリでトリガーまたはアクションとして使用でき、JSON 形式と XML 形式のデータをサポートします。パッケージの設定に含まれるすべてのテーブルに対して (詳細はこのトピックで後述します)、JSON アクションと XML アクションのセットがあります。XML のトリガーまたはアクションを使用している場合は、[変換 API アプリ](app-service-logic-transform-xml-documents.md)を使用して、データを別の XML データ形式に変換できます。
+
+Oracle Database コネクタでは、次のトリガーとアクションを使用できます。
+
+トリガー | アクション
+--- | ---
+データのポーリング | <ul><li>テーブルに挿入</li><li>テーブルを更新</li><li>テーブルから選択</li><li>テーブルから削除</li><li>ストアド プロシージャを呼び出す</li>
 
 
+## Oracle Database コネクタを作成する
 
- ![][1]  
+コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Azure Marketplace を使用してコネクタを作成するには:
 
-## ハイブリッド構成 ##
+1. Azure のスタート画面で、**[Marketplace]** を選択します。
+2. **[API アプリ]** を選択し、"Oracle Database コネクタ" を検索します。
+3. 名前、App Service プラン、その他のプロパティを入力します。
+4. 次のパッケージの設定を入力します。
 
-[参照]、[API アプリ]、[<作成した API アプリの名前>] の順に選択して、作成した API アプリを参照します。次の動作が表示されます。この段階でハイブリッド接続がまだ確立されていないため、セットアップは完了していません。
+	名前 | 必須 | 説明
+--- | --- | ---
+データ ソース | あり | Oracle クライアントがインストールされているコンピューターの tnsnames.ora ファイルで指定されているデータ ソース (ネット サービス) の名前です。データ ソース名と tnsnames.ora の詳細については、[Oracle クライアントの構成](http://msdn.microsoft.com/library/dd787872.aspx)に関するページを参照してください。
+ユーザー名 | あり | Oracle サーバーに接続するユーザー名を入力します。
+パスワード | あり | ユーザー名のパスワードを入力します。
+Service Bus の接続文字列 | あり | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
+テーブル | いいえ | コネクタで変更できるデータベース内のテーブルを入力します。たとえば、「OrdersTable,EmployeeTable」と入力します。
+ストアド プロシージャ | いいえ | コネクタで呼び出すことができるデータベースのストアド プロシージャを入力します。たとえば、「IsEmployeeEligible,CalculateOrderDiscount」と入力します。
+関数 | いいえ | コネクタで呼び出すことができるデータベースの関数を入力します。たとえば、「IsEmployeeEligible,CalculateOrderDiscount」と入力します。
+パッケージ エンティティ | いいえ | コネクタで呼び出すことができるデータベースのパッケージを入力します。たとえば、「PackageOrderProcessing.CompleteOrder,PackageOrderProcessing.GenerateBill」と入力します。
+データを使用できるステートメント | いいえ | 任意のデータをポーリングに使用できるかどうかを判断するステートメントを入力します。たとえば、「*SELECT * from table_name*」と入力します。
+ポーリングの種類 | いいえ | ポーリングの種類を入力します。入力可能な値は、"Select"、"Procedure"、"Function"、"Package" です。
+ポーリング ステートメント | いいえ | Oracle Server Database をポーリングするステートメントを入力します。たとえば、「*SELECT * from table_name*」と入力します。
+ポスト ポーリング ステートメント | いいえ | ポーリング後に実行するステートメントを入力します。たとえば、「*DELETE * from table_name*」と入力します。
 
-![][2] 
-
-ハイブリッド接続を確立するには、次の操作を行います。
-
-1. プライマリ接続文字列をコピーします。
-2.  [Download and configure (ダウンロードして構成)]' リンクをクリックします。
-3. 開始されるインストール プロセスに従い、要求に応じてプライマリ接続文字列を入力します。
-4. セットアップ プロセスが完了すると、次のようなダイアログ ボックスが表示されます。
-
-![][3] 
-
-もう一度作成した API アプリを参照すると、ハイブリッド接続の状態が "接続中" と表示されます。 
-
-![][4] 
-
-注: セカンダリ接続文字列に切り替える場合は、ハイブリッドのセットアップをやり直して、プライマリ接続文字列の代わりにセカンダリ接続文字列を指定します。  
-
-## ロジック アプリでの使い方 ##
-
-Oracle コネクタは、ロジック アプリでトリガーまたはアクションとして使用できます。トリガーとすべてのアクションは、JSON と XML の両方のデータ形式をサポートします。パッケージ設定の一部として提供されているすべてのテーブルには、JSON と XML の一連のアクションがあります。XML のトリガーとアクションを使用している場合は、変換 API アプリを使用してデータを別の XML データ形式に変換できます。 
-
-Oracle テーブルからデータをポーリングし、そのデータを別のテーブルに追加し、データを更新する、簡単なロジック アプリを見てみましょう。
+5. 完了すると、パッケージの設定は次のようになります。<br/> ![][1]
 
 
+## コネクタをトリガーとして使用する
+Oracle テーブルからデータをポーリングし、そのデータを別のテーブルに追加してデータを更新する、簡単なロジック アプリを見てみましょう。
 
--  ロジック アプリを作成または編集するときに、トリガーとして作成した Oracle コネクタの API アプリを選択します。ここでは、使用できるトリガーとして Poll Data (JSON) と Poll Data (XML) が表示されます。
+### トリガーを追加する
+1. ロジック アプリを作成または編集するときに、トリガーとして作成した Oracle コネクタを選択します。使用できるトリガー ([**Poll Data (JSON)**] と [**Poll Data (XML)**]) が表示されます。<br/> ![][5] 
 
- ![][5] 
+2. **[Poll Data (JSON)]** トリガーを選択し、頻度を入力して、[✓] をクリックします。<br/> ![][6]
 
+3. これで、トリガーは、ロジック アプリで構成されたものとして表示されます。トリガーの出力が表示されます。これは、後続のアクションの入力として使用できます。<br/> ![][7]
 
-- トリガーを選択し (ここでは、Poll Data (JSON))、頻度を指定して、[✓] をクリックします。
+## コネクタをアクションとして使用する
+Oracle テーブルからデータをポーリングし、そのデータを別のテーブルに追加してデータを更新する、簡単なロジック アプリを使用します。
 
-![][6] 
+Oracle コネクタをアクションとして使用するには、Oracle コネクタの作成時に入力したテーブル名やストアド プロシージャ名を入力します。
 
+1. ギャラリーからアクションと同じ Oracle コネクタを選択します。いずれかの挿入アクションを選択します (例: Insert Into TempEmployeeDetails (JSON))。<br/> ![][8] 
 
+2. 挿入されるレコードの入力値を指定し、[✓] をクリックします。<br/> ![][9]
 
-- トリガーは、ロジック アプリで構成されたように表示されます。トリガーの出力が表示されます。これは、後続のアクションの入力として使用できます。 
+3. ギャラリーから、作成済みの同じ Oracle コネクタを選択します。アクションとして、同じテーブルに対する更新アクションを選択します (例: Update TempEmployeeDetails)。<br/> ![][11]
 
-![][7] 
-
-
-- ギャラリーからアクションと同じ Oracle コネクタを選択します。いずれかの挿入アクションを選択します (ここでは、Insert Into TempEmployeeDetails (JSON))。
-
-![][8] 
-
-
-
-- 挿入するレコードの入力を指定し、[✓] をクリックします。 
-
-![][9] 
-
-
-
-- ギャラリーからアクションと同じ Oracle コネクタを選択します。同じテーブルの更新アクションを選択します (例: Update EmployeeDetails)。
-
-![][11] 
-
-
-
-- 更新アクションの入力を指定し、[✓] をクリックします。 
-
-![][12] 
+4. 更新アクション用の入力値を指定し、[✓] をクリックします。<br/> ![][12]
 
 ポーリングされるテーブルに新しいレコードを追加すると、ロジック アプリをテストできます。
 
+## ハイブリッド構成
+
+> [AZURE.NOTE]この手順は、ファイアウォールの背後にあるオンプレミスの Oracle を使用している場合のみ必要です。
+
+App Service では、Hybrid Configuration Manager を使用して、オンプレミスのシステムに安全に接続します。コネクタでオンプレミスの Oracle を使用する場合は、ハイブリッド接続マネージャーが必要です。
+
+[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)に関するページを参照してください。
+
+## コネクタでできること
+ここまででコネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス フローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)に関するページを参照してください。
+
+
 <!--Image references-->
-[1]: ./media/app-service-logic-connector-oracle/Create.jpg
-[2]: ./media/app-service-logic-connector-oracle/BrowseSetupIncomplete.jpg
-[3]: ./media/app-service-logic-connector-oracle/HybridSetup.jpg
-[4]: ./media/app-service-logic-connector-oracle/BrowseSetupComplete.jpg
-[5]: ./media/app-service-logic-connector-oracle/LogicApp1.jpg
-[6]: ./media/app-service-logic-connector-oracle/LogicApp2.jpg
-[7]: ./media/app-service-logic-connector-oracle/LogicApp3.jpg
-[8]: ./media/app-service-logic-connector-oracle/LogicApp4.jpg
-[9]: ./media/app-service-logic-connector-oracle/LogicApp5.jpg
-[10]: ./media/app-service-logic-connector-oracle/LogicApp6.jpg
-[11]: ./media/app-service-logic-connector-oracle/LogicApp7.jpg
-[12]: ./media/app-service-logic-connector-oracle/LogicApp8.jpg
-
-<!--Links-->
-[Configuring the Oracle Client (Oracle クライアントの構成)]: https://msdn.microsoft.com/ja-jp/library/dd787872.aspx
+[1]: ./media/app-service-logic-connector-oracle/Create.png
+[5]: ./media/app-service-logic-connector-oracle/LogicApp1.png
+[6]: ./media/app-service-logic-connector-oracle/LogicApp2.png
+[7]: ./media/app-service-logic-connector-oracle/LogicApp3.png
+[8]: ./media/app-service-logic-connector-oracle/LogicApp4.png
+[9]: ./media/app-service-logic-connector-oracle/LogicApp5.png
+[11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
+[12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
 
 
 
-<!--HONumber=52--> 
+ 
+
+<!---HONumber=62-->

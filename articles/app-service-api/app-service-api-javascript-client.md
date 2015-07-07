@@ -20,7 +20,7 @@
 
 ## 概要
 
-この記事では、[Azure App Service](/documentation/services/app-service/) で [API アプリ](app-service-api-apps-why-best-platform.md)の HTML および JavaScript クライアントを作成する方法を示しています。この記事は HTML および JavaScript の実践的な知識があることを前提としており、API アプリへの REST 呼び出しを実行するために [AngularJS](https://angularjs.org/) JavaScript フレームワークの使用に重点を置いています。
+この記事では、[Azure App Service](/documentation/services/app-service/) で [API アプリ](app-service-api-apps-why-best-platform.md)の HTML および JavaScript クライアントを作成する方法を示しています。この記事は HTML および JavaScript の実践的な知識があることを前提としており、API アプリへの REST 呼び出しを実行するために [AngularJS](https://angularjs.org/) JavaScript フレームワークを使用しています。
 
 事前に次のいくつかの記事に目を通してから、この記事を読み進めてください。
 
@@ -143,7 +143,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 このセクションでは、新しい空の Web アプリケーションを作成し、それに AngularJS をインストールして使用し、単純な HTML フロントエンドを API アプリにバインドします。使用中の Web アプリを Azure App Service にデプロイします。HTML Web アプリは、API アプリから取得したデータにバインドされ、そのデータを表示し、Contacts API 用の単純な UI をユーザーに提供します。
 
-1. ソリューションを右クリックして、**[追加]、[新しいプロジェクト]** の順に選択します。
+1. 前の [API アプリの作成](app-service-dotnet-create-api-app.md)手順で作成したソリューションを右クリックし、**[追加]、[新しいプロジェクト]** の順に選択します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/02-add-project.png)
 
@@ -231,16 +231,16 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             </thead>
             <tbody>
                 <tr ng-repeat="con in contacts">
-                    <td>{{con.Id}}</td>
-                    <td>{{con.Name}}</td>
-                    <td>{{con.EmailAddress}}</td>
+                    <td>[[con.Id]]</td>
+                    <td>[[con.Name</td>
+                    <td>[[con.EmailAddress]]</td>
                     <td></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <th>Create a new Contact</th>
-                    <th colspan="2">API Status: {{status}}</th>
+                    <th colspan="2">API Status: [[status]]</th>
                     <th><button class="btn btn-sm btn-info" ng-click="refresh()">Refresh</button></th>
                 </tr>
                 <tr>
@@ -252,11 +252,13 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             </tfoot>
         </table>
 
-1. *index.html* ファイルを右クリックして、**[スタート ページに設定]** メニュー項目を選択します。その後、既定のブラウザーで開かれるように Web プロジェクトをデバッグします。
+1. `tbody` 要素と `tfoot` 要素にある [ を { に、] を } にすべて置き換えます (現在、このサイトでは、コード ブロック内で二重の中かっこを使用した式を表示できません)。
 
-	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/08-run-the-web-app.png)
+2. *index.html* ファイルを右クリックし、**[スタート ページに設定]** をクリックします。
 
-1. HTML 出力でテンプレートのハンドルバーをメモします。次の手順では、AngularJS を使用してそれらの HTML 要素をデータバインドします。
+3. *index.html* ファイルを右クリックし、**[ブラウザーで表示]** をクリックします。
+
+	HTML 出力のテンプレートのハンドルバーを確認します。次の手順では、AngularJS を使用してそれらの HTML 要素をデータバインドします。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/09-template-ui.png)
 
@@ -308,13 +310,15 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             $scope.refresh();
         });
 
-	> **注**: ポート番号は異なる場合があるため、API プロジェクトが別のポートで実行されている場合は、自身の環境を反映するように上記の JavaScript を変更するだけです。
+1. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
 
-1. API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。
+	> **Note** Don't use the port number of the HTML client project. You can right-click the API project and click **Debug > Start New Instance** to get a browser window that shows the port number.
+
+1. HTML クライアントを実行したときに API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。 
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/10-run-both-web-projects.png)
 
-1. ソリューションをデバッグして、HTML/JavaScript クライアントが API アプリ プロジェクトに接続し、そのデータを表示できることを確認します。
+1. ソリューションを実行します。HTML/JavaScript クライアントが API アプリ プロジェクトに接続し、そのデータを表示します。
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/11-web-client-running.png)
 
@@ -331,6 +335,8 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 1. JavaScript コードの **$scope.baseUrl** プロパティで、API アプリの URL を貼り付けて以前の値を上書きします。
 
 		$scope.baseUrl = 'https://microsoft-apiappf7e042ba8e5233ab4312021d2aae5d86.azurewebsites.net';
+
+	URL に HTTPS が指定されていることに注意してください。HTTPS の使用は任意ではありません。API Apps では、HTTP はサポートされません。
 
 1. HTML/JavaScript Web プロジェクトを右クリックして、**[発行]** コンテキスト メニュー項目を選択します。
 
@@ -360,5 +366,8 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/18-web-app-visible-in-resource-group.png)
 
 ## 概要 
-この例では、API アプリのバックエンドにアクセスするために、AngularJS を JavaScript プラットフォームとしてどのように使用できるかについて説明しました。REST アクセス機能を変更して、その他の JavaScript フレームワークを使用することもできます。<!--HONumber=52-->
+この例では、API アプリのバックエンドにアクセスするために、AngularJS を JavaScript プラットフォームとしてどのように使用できるかについて説明しました。REST アクセス機能を変更して、その他の JavaScript フレームワークを使用することもできます。
+
  
+
+<!---HONumber=62-->

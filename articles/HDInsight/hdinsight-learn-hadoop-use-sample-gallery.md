@@ -1,19 +1,19 @@
-<properties 
-   pageTitle="サンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。| Microsoft Azure" 
-   description="HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく学習できます。一部のサンプルにはサンプル データが含まれていますが、独自のデータも使用いただけます。" 
-   services="hdinsight" 
-   documentationCenter="" 
-   authors="mumian" 
-   manager="paulettm" 
+<properties
+   pageTitle="サンプル ギャラリーを使用して、HDInsight での Hadoop について説明します。| Microsoft Azure"
+   description="HDInsight 概要ギャラリーのサンプル アプリケーションを実行して Hadoop をすばやく学習できます。サンプル データを使用するか、独自のデータを用意します。"
+   services="hdinsight"
+   documentationCenter=""
+   authors="mumian"
+   manager="paulettm"
    editor="cgronlun"/>
 
-<tags 
-   ms.service="hdinsight" 
-   ms.workload="big-data" 
-   ms.tgt_pltfrm="na" 
-   ms.devlang="na" 
-   ms.topic="article" 
-   ms.date="03/31/2015" 
+<tags
+   ms.service="hdinsight"
+   ms.workload="big-data"
+   ms.tgt_pltfrm="na"
+   ms.devlang="na"
+   ms.topic="get-started-article" 
+   ms.date="03/31/2015"
    ms.author="jgao"/>
 
 # HDInsight の概要ギャラリーを使用して、Hadoop について説明します。
@@ -39,7 +39,7 @@ HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケ�
 **概要ギャラリーからサンプルを実行するには**
 
 1.	[Azure ポータル][azure.portal]にサインインします。
-2.	左側のメニューで **[HDInsight]** をクリックします。Hadoop クラスター、Storm クラスター、HBase クラスターなど、既存の HDInsight クラスターの一覧が表示されます。 
+2.	左側のメニューで **[HDInsight]** をクリックします。Hadoop クラスター、Storm クラスター、HBase クラスターなど、既存の HDInsight クラスターの一覧が表示されます。
 3.	サンプルを実行するクラスターをクリックします。
 4.	ページの下部にある、**[クエリ コンソール]** を選択します。
 5.	クラスターの Hadoop ユーザー名とパスワードを入力します。
@@ -62,4 +62,6 @@ HDInsight に関するその他の資料。
 [hdinsight.learn.map]: hdinsight-learn-map.md
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://manage.windowsazure.com
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=62-->

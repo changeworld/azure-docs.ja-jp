@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="05/28/2015" 
 	ms.author="jgao"/>
 
-#HDInsight の Hadoop を使用したフライトの遅延データの分析
+#HDInsight での Hive を使用したフライト遅延データの分析
 
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
 
@@ -42,14 +42,15 @@ Azure HDInsight の大きな利点の 1 つに、データ ストレージとコ
 フライト遅延データのアップロード手順、Hive クエリ文字列の作成とアップロード手順、および Sqoop ジョブのための Azure SQL データベースの準備手順については、付録を参照してください。
 
 
-##<a id="prerequisite"></a>前提条件
+###前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* Azure PowerShell がインストールされ構成されたワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
-* Azure サブスクリプション。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-###HDInsight ストレージについて
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+
+**HDInsight ストレージについて**
 
 HDInsight の Hadoop クラスターでは、データ ストレージとして Azure BLOB ストレージが使用されます。詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
 
@@ -91,7 +92,7 @@ BLOB 名の前に "/" がないことに注意してください。
 
 
 
-###Hive の内部テーブルと外部テーブルについて
+**Hive の内部テーブルと外部テーブルについて**
 
 Hive の内部テーブルと外部テーブルについて知っておく必要のある事項がいくつかあります。
 
@@ -103,7 +104,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
 
-> [AZURE.NOTE]HiveQL のステートメントの 1 つが、Hive の外部テーブルを作成します。Hive の外部テーブルは、元の場所にデータ ファイルを保持します。Hive の内部テーブルは、hive\\warehouse にデータ ファイルを移動します。Hive の内部テーブルは、データ ファイルを既定のコンテナーに配置する必要があります。既定の BLOB コンテナー外にデータを保存する場合は、Hive 外部テーブルを使用する必要があります。
+> [AZURE.NOTE]HiveQL のステートメントの 1 つが、Hive の外部テーブルを作成します。Hive の外部テーブルは、元の場所にデータ ファイルを保持します。Hive の内部テーブルは、hive\warehouse にデータ ファイルを移動します。Hive の内部テーブルは、データ ファイルを既定のコンテナーに配置する必要があります。既定の BLOB コンテナー外にデータを保存する場合は、Hive 外部テーブルを使用する必要があります。
 
 
 
@@ -406,7 +407,7 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブの実行方法とし�
 </table>
 
 3. **[Download]** をクリックします。
-4. ファイルを **C:\\Tutorials\\FlightDelays\\Data** フォルダーに解凍します。ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
+4. ファイルを **C:\Tutorials\FlightDelays\Data** フォルダーに解凍します。ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
 5.	ファイルの名前を、データを含む月の名前に変更します。たとえば、1 月のデータを含むファイルの場合、*January.csv* という名前にします。
 6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。チュートリアルを実行するには、月別のファイルが少なくとも 1 つ必要です。  
 
@@ -504,7 +505,7 @@ Azure PowerShell を使用して、複数の HiveQL ステートメントを一�
 HiveQL スクリプトは、次の作業を実行します。
 
 1. **delays_raw テーブルを削除します** (テーブルが既に存在する場合)。
-2. **delays_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\\n" であることを指定しています。この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN_CITY_NAME フィールドや DEST_CITY_NAME フィールドの値など)。これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。  
+2. **delays_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\n" であることを指定しています。この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN_CITY_NAME フィールドや DEST_CITY_NAME フィールドの値など)。これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。  
 3. **delays テーブルを削除します** (テーブルが既に存在する場合)。
 4. **delays テーブルを作成します**。次へ進む前にデータをクリーンアップしておくと面倒がありません。次のクエリは、delays_raw テーブルを基にして、新しい *delays* テーブルを作成します。(前述のように) TEMP 列はコピーしません。**substring** 関数を使用してデータから引用符を削除します。 
 5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。** さらに、結果を BLOB ストレージに出力します。このクエリは、データからアポストロフィを削除し、**weather_delay** の値が null の行を除外します。このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
@@ -672,7 +673,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
 	スクリプトには次の変数が使用されています。
 
-	- **$hqlLocalFileName** - HiveQL スクリプト ファイルは、BLOB ストレージにアップロードされる前に、いったんローカルに保存されます。その際に、このファイル名が使用されます。既定値は <u>C:\\tutorials\\flightdelays\\flightdelays.hql</u> です。
+	- **$hqlLocalFileName** - HiveQL スクリプト ファイルは、BLOB ストレージにアップロードされる前に、いったんローカルに保存されます。その際に、このファイル名が使用されます。既定値は <u>C:\tutorials\flightdelays\flightdelays.hql</u> です。
 	- **$hqlBlobName** - Azure BLOB ストレージで使用される HiveQL スクリプト ファイルの BLOB 名。既定値は tutorials/flightdelays/flightdelays.hql です。ファイルは直接 Azure BLOB ストレージに書き込まれるため、BLOB 名の先頭に "/" はありません。BLOB ストレージからファイルにアクセスする場合は、ファイル名の先頭に "/" を追加する必要があります。
 	- **$srcDataFolder** と **$dstDataFolder** はそれぞれ "tutorials/flightdelays/data" と "tutorials/flightdelays/output" です。
 
@@ -877,5 +878,6 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

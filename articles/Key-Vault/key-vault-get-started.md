@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Azure Key Vault の概要 | 概要" 
-	description="このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナーを Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。" 
-	services="key-vault" 
-	documentationCenter="" 
-	authors="cabailey" 
+<properties
+	pageTitle="Azure Key Vault の概要 | 概要"
+	description="このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナーを Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。"
+	services="key-vault"
+	documentationCenter=""
+	authors="cabailey"
 	manager="mbaldwin"/>
 
-<tags 
-	ms.service="key-vault" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/04/2015" 
+<tags
+	ms.service="key-vault"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article" 
+	ms.date="05/04/2015"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -28,11 +28,11 @@
 
 Azure Key Vault の概要については、「[What is Azure Key Vault? (Azure Key Vault とは)](key-vault-whatis.md)」をご覧ください。
 
-## 前提条件 
+## 前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-- Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料評価版](../../../pricing/free-trial)にサインアップできます。
+- Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](../../../pricing/free-trial)にサインアップできます。
 - Azure PowerShell バージョン 0.9.1 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
 - このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
@@ -83,7 +83,7 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 	New-AzureResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
 
-\-Location パラメーターでは、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn654582.aspx) コマンドを使用して、この例の場所に別の場所を指定する方法を識別します。詳細情報が必要な場合は、`Get-Help Get-AzureLocation` と入力します。
+-Location パラメーターでは、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn654582.aspx) コマンドを使用して、この例の場所に別の場所を指定する方法を識別します。詳細情報が必要な場合は、`Get-Help Get-AzureLocation` と入力します。
 
 
 ## <a id="vault"></a>Key Vault を作成する ##
@@ -92,7 +92,7 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 たとえば、Key Vault 名に **ContosoKeyVault**、リソース グループ名に **ContosoResourceGroup**、場所に**東アジア**を使用する場合は、次のように入力します。
 
-    New-AzureKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' 
+    New-AzureKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
 このコマンドレットの出力は、作成されたばかりの Key Vault のプロパティを示します。最も重要な 2 つのプロパティは、次のとおりです。
 
@@ -108,7 +108,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
 
-ただし、既存のソフトウェアで保護されたキーが、C:\\ ドライブの PFX ファイルに保存されていて、softkey.pfx という名前で Azure Key Vault にアップロードする場合は、次のように入力して、変数 **securepfxpwd** を .PFX ファイルのパスワード **123** に設定します。
+ただし、既存のソフトウェアで保護されたキーが、C:\ ドライブの PFX ファイルに保存されていて、softkey.pfx という名前で Azure Key Vault にアップロードする場合は、次のように入力して、変数 **securepfxpwd** を .PFX ファイルのパスワード **123** に設定します。
 
     $securepfxpwd = ConvertTo-SecureString –String '123' –AsPlainText –Force
 
@@ -117,7 +117,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd
 
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。例: **https://ContosoKeyVault.vault.azure.net/Keys/ContosoFirstKey/a10f5336-9d93-44a3-9e26-e86e3488b768** 
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。例: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 
 
 このキーの URI を表示するには、次のように入力します。
 
@@ -131,7 +131,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
 	$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword' -SecretValue $secretvalue
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。例: **https://ContosoVault.vault.azure.net/Secrets/778c3e43-3fdb-4cdf-b58e-7f501eb41d68** 
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。たとえば、**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** です。
 
 このシークレットの URI を表示するには、次のように入力します。
 
@@ -168,7 +168,7 @@ Azure Active Directory にアプリケーションを登録するには:
 5.	**[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**[Web アプリケーションや Web API]** (既定値) を選択します。[次へ] アイコンをクリックします。
 6.	**[アプリのプロパティ]** ページで、**[サインオン URL]** と **[アプリケーション ID/URI]** を Web アプリケーションに指定します。アプリケーションにこれらの値を設定していない場合は、この手順のための値を作成します (両方のボックスに http://test1.contoso.com を指定するなど)。これらのサイトが存在するかどうかは関係ありません。各アプリケーションのアプリケーション ID URI がディレクトリ内のすべてのアプリケーションで異なっていることが重要です。ディレクトリは、この文字列を使用してアプリを識別します。
 7.	[完了] アイコンをクリックし、ウィザードで変更内容を保存します。
-8.	[クイック スタート] ページで、**[構成]** をクリックします。 
+8.	[クイック スタート] ページで、**[構成]** をクリックします。
 9.	**[キー]** セクションまでスクロールし、期間を選択し、**[保存]** をクリックします。ページが更新され、キーの値が表示されます。このキーと **[クライアント ID]** の値を使用してアプリケーションを構成する必要があります(この構成の手順はアプリケーション固有です)。
 10.	このページからクライアント ID 値をコピーします。この値は、資格情報コンテナーに権限を設定するために次の手順で使用します
 
@@ -239,10 +239,11 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 ## <a id="next"></a>次のステップ ##
 
+Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)に関するページを参照してください。
+
 Azure Key Vault の Windows PowerShell コマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」をご覧ください。
 
 プログラミング リファレンスについては、「[Key Vault の REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)」と「[Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)」をご覧ください。
+ 
 
-
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

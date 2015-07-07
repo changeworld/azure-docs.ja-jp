@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HDInsight 用 C# Hadoop ストリーミング プログラムの開発 | Azure" 
+	pageTitle="HDInsight 用 C# Hadoop ストリーミング プログラムの開発 | Microsoft Azure" 
 	description="C# で Hadoop ストリーミング MapReduce プログラムを開発する方法、それらのプログラムを Azure HDInsight にデプロイする方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -32,16 +32,16 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 - Azure HDInsight で同じ MapReduce ジョブを実行する 
 - MapReduce ジョブの結果を取得する
 
-## <a name="prerequisites"></a>前提条件
+##<a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
 - HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][hdinsight-get-started-emulator]」を参照してください。
-- エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+- エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install]を参照してください。
 - Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 
 
-## <a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
+##<a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
 
 ワード カウント ソリューションには、mapper と reducer という 2 つのコンソール アプリケーション プロジェクトが含まれます。mapper アプリケーションは、コンソールに各単語をストリーミングします。reducer アプリケーションは、ドキュメントからストリーミングされた単語の数をカウントします。mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
@@ -52,12 +52,12 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 3. 次の値を入力または選択します。
 
 	<table border="1">
-	<tr><td>フィールド</td><td>値</td></tr>
-	<tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
-	<tr><td>名前</td><td>WordCountMapper</td></tr>
-	<tr><td>場所</td><td>C:\Tutorials</td></tr>
-	<tr><td>ソリューション名</td><td>WordCount</td></tr>
-	</table>
+<tr><td>フィールド</td><td>値</td></tr>
+<tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
+<tr><td>名前</td><td>WordCountMapper</td></tr>
+<tr><td>場所</td><td>C:\Tutorials</td></tr>
+<tr><td>ソリューション名</td><td>WordCount</td></tr>
+</table>
 	
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -101,11 +101,11 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 2. 次の値を入力または選択します。
 
 	<table border="1">
-	<tr><td>フィールド</td><td>値</td></tr>
-	<tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
-	<tr><td>名前</td><td>WordCountReducer</td></tr>
-	<tr><td>場所</td><td>C:\Tutorials\WordCount</td></tr>
-	</table>
+<tr><td>フィールド</td><td>値</td></tr>
+<tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
+<tr><td>名前</td><td>WordCountReducer</td></tr>
+<tr><td>場所</td><td>C:\Tutorials\WordCount</td></tr>
+</table>
 3. **[ソリューションのディレクトリを作成]** チェック ボックスをオフにし、**[OK]** をクリックしてプロジェクトを作成します。
 4. ソリューション エクスプローラーで **[Program.cs]** を右クリックし、**[名前の変更]** をクリックします。
 5. ファイルの名前を **WordCountReducer.cs** に変更し、**Enter** キーを押します。
@@ -149,16 +149,16 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 mapper と reducer の実行可能ファイルは次の場所にあります。
 
-- C:\\Tutorials\\WordCount\\WordCountMapper\\bin\\Debug\\WordCountMapper.exe
-- C:\\Tutorials\\WordCount\\WordCountReducer\\bin\\Debug\\WordCountReducer.exe
+- C:\Tutorials\WordCount\WordCountMapper\bin\Debug\WordCountMapper.exe
+- C:\Tutorials\WordCount\WordCountReducer\bin\Debug\WordCountReducer.exe
 
 
-## <a name="test"></a>エミュレーターでプログラムをテストする
+##<a name="test"></a>エミュレーターでプログラムをテストする
 
 次の操作を行って、HDInsight Emulator でプログラムをテストします。
 
 1. データをエミュレーターのファイル システムにアップロードする
-2. mapper アプリケーションと  reducer アプリケーションをエミュレーターのファイル システムにアップロードする
+2. mapper アプリケーションと reducer アプリケーションをエミュレーターのファイル システムにアップロードする
 3. ワード カウント MapReduce ジョブを送信する
 4. ジョブの状態を確認する
 5. ジョブの結果を取得する
@@ -167,14 +167,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 このチュートリアルでは、次のフォルダー構造を使用します。
 
-<table border="1"> 
-<tr><td>フォルダー</td><td>メモ</td></tr> 
-<tr><td>\\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> 
-<tr><td>\\WordCount\\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> 
-<tr><td>\\WordCount\\Input</td><td>MapReduce のソース ファイル フォルダー。</td></tr> 
-<tr><td>\\WordCount\\Output</td><td>MapReduce の出力ファイル フォルダー。</td></tr> 
-<tr><td>\\WordCount\\MRStatusOutput</td><td>ジョブの出力フォルダー。</td></tr>
-</table></br>
+<table border="1"> <tr><td>フォルダー</td><td>説明</td></tr> <tr><td>\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> <tr><td>\WordCount\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> <tr><td>\WordCount\Input</td><td>MapReduce ソース ファイル フォルダー。</td></tr> <tr><td>\WordCount\Output</td><td>MapReduce 出力ファイル フォルダー。</td></tr> <tr><td>\WordCount\MRStatusOutput</td><td>ジョブ出力フォルダー。</td></tr> </table></br>
 
 このチュートリアルでは、%hadoop_home% ディレクトリにある .txt ファイルを使用します。
 
@@ -222,7 +215,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 **Azure PowerShell を使用して MapReduce ジョブを実行する**
 
-1. Azure PowerShell を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。 
+1. Azure PowerShell を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install]を参照してください。 
 3. 次のコマンドを実行して、変数を設定します。
 
 		$clusterName = "http://localhost:50111"
@@ -284,8 +277,8 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 	"|more" をコマンドの最後に付けることで、ページ ビューを得られます。
 
-## <a id="upload"></a>Azure BLOB ストレージにデータをアップロードする
-Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop_home%\\share\\doc\\hadoop\\common ディレクトリ内の .txt ファイルです。
+##<a id="upload"></a>Azure BLOB ストレージにデータをアップロードする
+Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop_home%\share\doc\hadoop\common ディレクトリ内の .txt ファイルです。
 
 
 **ストレージ アカウントとコンテナーを作成するには**
@@ -323,7 +316,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 		$localFolder = "C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common"
 		$destFolder = "WordCount/Input"
 
-	ローカル ソース ファイル フォルダーは **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
+	ローカル ソース ファイル フォルダーは **C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
 
 3. 次のコマンドを実行して、ソース ファイル フォルダー内の .txt ファイルの一覧を取得します。
 
@@ -373,7 +366,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 	両方のアプリケーション ファイルがそこに一覧表示されます。
 
 
-## <a name="run"></a>Azure HDInsight で MapReduce ジョブを実行する
+##<a name="run"></a>Azure HDInsight で MapReduce ジョブを実行する
 
 このセクションでは、MapReduce ジョブの実行に関連するすべてのタスクを実行する Azure PowerShell スクリプトについて説明します。これらのタスクには次のタスクが含まれます。
 
@@ -489,7 +482,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サンプルについては、「[プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]」をご覧ください。
 
 
-## <a name="retrieve"></a>MapReduce ジョブの出力を取得する
+##<a name="retrieve"></a>MapReduce ジョブの出力を取得する
 このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]」と「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」をご覧ください。
 
 
@@ -516,7 +509,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
 	
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 このチュートリアルでは、Hadoop ストリーミング MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce ジョブを実行する Azure PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
 - [Azure HDInsight の概要](../hdinsight-get-started.md)
@@ -547,7 +540,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
-[Powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install]: ../powershell-install-configure.md
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-hadoop-develop-deploy-streaming-jobs/HDI.WordCountDiagram.gif "MapReduce ワード カウント アプリケーションのフロー"
 
@@ -556,5 +549,6 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

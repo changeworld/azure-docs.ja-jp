@@ -71,7 +71,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 	
 > [AZURE.NOTE]Web アプリが複数のインスタンスで実行される場合、連続的に実行する Web ジョブはすべてのインスタンス上で実行されます。オンデマンドで実行する Web ジョブおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
 	
-> 連続的に実行する Web ジョブについては、Web アプリで **[常時接続]** を有効にすることをお勧めします。[常時接続] は [基本] と [標準] のモードで使用できる機能であり、この機能を有効にすると、アイドル状態がしばらく続いても Web アプリがアンロードされなくなります。Web アプリが常に読み込まれていれば、連続的に実行する Web ジョブをより高い信頼性で実行できます。
+> 連続的に実行する Web ジョブをすべてのインスタンス上で確実に実行するには、Web アプリで [常時接続]* 構成設定を有効にします。そうしないと、SCM ホスト サイトが長時間アイドル状態になったときに Web ジョブが実行を停止する可能性があります。
 
 ## <a name="CreateScheduled"></a>スケジュールされた Web ジョブの作成
 
@@ -179,7 +179,7 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 詳細については、[Azure WebJobs の推奨リソース][WebJobsRecommendedResources]に関するページをご覧ください。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、[Azure App Service と既存の Azure Services への影響](http://go.microsoft.com/fwlink/?LinkId=529714)に関するページをご覧ください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [PSonWebJobs]: http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
@@ -208,5 +208,6 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 [LinkToScheduler]: ./media/web-sites-create-web-jobs/31LinkToScheduler.png
 [SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

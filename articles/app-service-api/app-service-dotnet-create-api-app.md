@@ -1,42 +1,47 @@
-<properties 
-	pageTitle="Azure App Service での ASP.NET API アプリの作成" 
-	description="Visual Studio 2013 を使用して、Azure App Service で ASP.NET API アプリを作成する方法について説明します。" 
-	services="app-service\api" 
-	documentationCenter=".net" 
-	authors="bradygaster" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service での ASP.NET API アプリの作成"
+	description="Visual Studio 2013 を使用して、Azure App Service で ASP.NET API アプリを作成する方法について説明します。"
+	services="app-service\api"
+	documentationCenter=".net"
+	authors="bradygaster"
+	manager="wpickett"
 	editor="jimbe"/>
 
-<tags 
-	ms.service="app-service-api" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="dotnet" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/19/2015" 
+<tags
+	ms.service="app-service-api"
+	ms.workload="web"
+	ms.tgt_pltfrm="dotnet"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="05/19/2015"
 	ms.author="bradyg;tarcher"/>
 
 # Azure App Service での ASP.NET API アプリの作成
 
+> [AZURE.SELECTOR]
+- [Visual Studio 2013](app-service-dotnet-create-api-app.md)
+- [Visual Studio 2015 RC](app-service-dotnet-create-api-app-vs2015.md)
+- [Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
+
 ## 概要
 
-このチュートリアルでは、ASP.NET Web API プロジェクトを 1 から作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API アプリ](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。既存の Web API プロジェクトを API アプリに変換する場合は、「[API アプリとしての Web API プロジェクトの構成](./app-service-dotnet-create-api-app-visual-studio)」を参照してください。このシリーズの以降のチュートリアルでは、このチュートリアルで作成する API アプリ プロジェクトを[デプロイ](app-service-dotnet-deploy-api-app.md)し、[デバッグ](../app-service-dotnet-remotely-debug-api-app.md)する方法について説明します。
+このチュートリアルでは、Visual Studio 2013 テンプレートを使用して ASP.NET Web API プロジェクトを作成する方法について説明します。このテンプレートでは、プロジェクトを [Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API アプリ](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成します。API アプリとしてデプロイできるように既存の Web API プロジェクトを構成する方法については、「[API アプリとしての Web API プロジェクトの構成](app-service-dotnet-create-api-app-visual-studio.md)」を参照してください。
 
-API アプリの詳細については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
+このシリーズの続きのチュートリアルで、このチュートリアルで作成する API アプリ プロジェクトの[デプロイ](app-service-dotnet-deploy-api-app.md)と[デバッグ](../app-service-dotnet-remotely-debug-api-app.md)の方法について説明します。
 
 [AZURE.INCLUDE [install-sdk-2013-only](../../includes/install-sdk-2013-only.md)]
 
 このチュートリアルでは、Azure SDK for .NET 2.5.1 以降のバージョンが必要です。
 
-## API アプリ プロジェクトの作成 
-
-このセクションでは、Azure API アプリ プロジェクト テンプレートを使用して、API アプリを 1 から作成する方法を説明します。既存の Web API プロジェクトを API アプリとして構成する方法については、[次のセクション](#configure-a-web-api-project-as-an-api-app)に進んでください。
+## API アプリ プロジェクトの作成
 
 1. Visual Studio 2013 を開きます。
 
 2. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。
 
 3. **[ASP.NET Web アプリケーション]** テンプレートを選択します。
+
+4. **[Application Insights をプロジェクトに追加]** チェック ボックスがオフになっていることを確認します。
 
 4. プロジェクトに「*ContactsList*」という名前を付けます。
 
@@ -61,5 +66,6 @@ Visual Studio によって、API アプリとしてデプロイされるよう�
 ## 次のステップ
 
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

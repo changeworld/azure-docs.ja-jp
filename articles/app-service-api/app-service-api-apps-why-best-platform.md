@@ -22,38 +22,45 @@ API Apps は、Web Apps、Moblue Apps、Logic Apps と同様に、[Azure App Ser
 
 ![](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
 
-このスイートで、API Apps は、クラウドとオンプレミスの API を構築、使用、配布するための豊富なプラットフォームとエコシステムを提供します。
+このスイートの API Apps 部分は、クラウドとオンプレミスで API をビルド、ホスト、使用、および配布するためのリッチなプラットフォームとエコシステムを提供するものです。
 
->[AZURE.NOTE]API Apps は現在、パブリック プレビューの段階です。API Apps は、セキュリティで保護されたミッションクリティカルなアプリケーションを世界規模で構築およびホストするための一般公開 (GA) サービスである [App Service Web Apps](../app-service-web/app-service-web-overview.md) をベースに構築されています。現在、API を構築するために GA サービスをお探しなら、Web Apps をお勧めします。API Apps が一般公開されたら、既存の Web アプリを使用しつつ API Apps の機能を活用する手順をご案内します。
+>[AZURE.NOTE] [Azure API Management](/services/api-management/) は、エンドポイントの統合や調整などの機能を提供する別のサービスです。API Apps で API Management を使用できます。
+>
+>API Apps は現在、パブリック プレビューの段階です。API Apps は、セキュリティで保護されたミッションクリティカルなアプリケーションを世界規模で構築およびホストするための一般公開 (GA) サービスである [App Service Web Apps](../app-service-web/app-service-web-overview.md) をベースに構築されています。現在、API を構築するために GA サービスをお探しなら、Web Apps をお勧めします。API Apps が一般公開されたら、既存の Web アプリで API Apps の機能を活用するための手順をご案内します。
 
 ## API Apps を使う理由
 
 API アプリは、REST ベースの Web API の開発、デプロイ、発行、使用、管理、収益化を支援する追加機能を備えた [App Service の Web アプリ](../app-service-web/app-service-web-overview.md)です。
 
-つまり、API アプリ は、次のような Azure App Service プラットフォームの Web ホスティング機能すべてを Web アプリと共有します。
+### Web サービス用の Web アプリ機能
+
+Web アプリを使用して Web サービスをホストできます。これにより、次のような Azure App Service プラットフォームの Web ホスト機能をすべて利用できます。
 
 - OS の修正プログラムの自動適用
 - エンタープライズ グレードのセキュリティ
 - 高可用性
 - 自動スケーリングと負荷分散
 - バックグラウンド処理用の [Web ジョブ](../app-service-web/websites-webjobs-resources.md)
-- 迅速かつ簡単なデプロイメントと多くの継続的な配信オプション - API アプリで使用できるデプロイメント オプションの範囲については、「[Azure App Service での Web アプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。 
+- すばやく簡単なデプロイ、および[多数の継続的な配布オプション](../app-service-web/web-sites-deploy.md)
+- [ハイブリッド接続](../integration-hybrid-connection-overview.md)と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用して、オンプレミスのデータにアクセスします。
 
-API Apps プラットフォームが提供する次の追加機能によって、API の開発、ホスト、使用が簡単になります。
+### API Apps 機能はプレビュー版が提供されています。
 
-- **API をそのまま使用** - API には、ASP.NET、Java、PHP、Node.js、または Python を使用できます。そのままの API から API Apps プラットフォームを利用できます。
+Web Apps ではなく API Apps を使用して Web サービスをホストする場合、App Service では次のような追加の機能を利用できます。
 
-- **簡単なアクセス制御** - コードを変更せずに、Azure Active Directory や、Facebook、Twitter などのサード パーティのサービスによる認証のために API を構成できます。認証コード用の簡略化された構文を使用できます。詳細については、[API アプリの保護](app-service-api-dotnet-add-authentication.md)に関するページを参照してください。
+- **簡単な利用** - [Swagger](http://swagger.io/) のサポートが統合されたため、さまざまなクライアントで API を簡単に利用できます。API Apps SDK を使用して、C#、Java、Javascript などのさまざまな言語で API のクライアント コードを生成できます。
+
+- **簡単なアクセス制御** - 組み込みの認証サービスでは、Azure Active Directory や、Facebook、Twitter などのサード パーティのサービスがサポートされます。コードを変更せずに、API アプリを不正なアクセスから保護できます。[Azure Mobile Services](../mobile-services-windows-dotnet-how-to-use-client-library.md#authentication) の提供する認証サービスに精通している場合は、そのフレームワークに API アプリを構築し、API Apps でホストする Web サービスに拡張します。App Service SDK を使用して、簡略化された構文を認証コードに使用することもできます。詳細については、[API アプリの保護](app-service-api-dotnet-add-authentication.md)に関するページを参照してください。
 
 - **SaaS プラットフォームへの簡単な接続** - Azure Marketplace で提供されているマイクロソフトとサード パーティの[コネクタ API アプリ](../app-service-logic/app-service-logic-what-are-biztalk-api-apps.md)を利用すれば、SalesForce、Office 365、Twitter、Facebook、Dropbox などの操作のために記述するコードを簡略化できます。
 
-- **オンプレミスのデータへのアクセス** - API Apps では、[ハイブリッド接続](../integration-hybrid-connection-overview.md)と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用して、自社のデータ センター内のデータを使用する API を公開することができます。
-
-- **簡単な利用** - 統合されている [Swagger](http://swagger.io/) のサポートを利用すれば、さまざまなクライアントで API を簡単に利用できます。API Apps SDK を使用して、C#、Java、Javascript などのさまざまな言語で API のクライアント コードを生成することもできます。
-
-- **ロジック アプリとの統合** - 作成した API アプリは、App Service のロジック アプリで使用できます。
+- **ロジック アプリとの統合** - 作成した API アプリは、[App Service ロジック アプリ](../app-service-logic/app-service-logic-what-are-logic-apps.md)で使用できます。
 
 - **Visual Studio の統合** - Visual Studio の専用ツールを使えば、API アプリを[作成](app-service-dotnet-create-api-app.md)、[デプロイ](app-service-dotnet-deploy-api-app.md)、[デバッグ](app-service-dotnet-remotely-debug-api-app)、管理する作業が効率的になります。
+
+既存の API をそのまま使用することができます。これらのすべての機能を利用するために既存の API のコードを変更する必要はありません。お持ちのコードを API アプリにデプロイするだけです。API には、ASP.NET、Java、PHP、Node.js、または Python を使用できます。
+
+### 将来利用可能になる API Apps 機能
 
 近い将来、API Apps プラットフォームには、コードの共有を簡単にすることで、次のようなリッチな API のエコシステムが生まれます。
 
@@ -77,9 +84,10 @@ API Apps プラットフォームが提供する次の追加機能によって�
 
 API アプリの使用を開始するには、[API アプリの作成に関するチュートリアル](app-service-dotnet-create-api-app.md)に従ってください。
 
-API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/en-US/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
+API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/ja-jp/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

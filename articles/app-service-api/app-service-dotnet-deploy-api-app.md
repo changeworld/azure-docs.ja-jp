@@ -24,7 +24,7 @@
 
 ### その他のデプロイ オプション
 
-API アプリをデプロイする方法は他にも多数あります。API アプリは、Web サービスをホストするための追加機能を備えた [Web アプリ](../app-service-web/app-service-web-overview.md)で、[Web アプリで利用できるデプロイ方法](../app-service-web/web-sites-deploy.md)はすべて API アプリでも使用できます。API アプリをホストする Web アプリは、Azure プレビュー ポータルでは API アプリ ホストと呼ばれ、[API アプリ ホスト] ポータル ブレードを使用してデプロイメントを構成できます。[API アプリ ホスト] ブレードの詳細については、[API アプリの管理](app-service-api-manage-in-portal.md)に関するページを参照してください。
+API アプリをデプロイする方法は他にも多数あります。API アプリは、Web サービスをホストするための追加機能を備えた [Web アプリ](../app-service-web/app-service-web-overview.md)で、[Web アプリで利用できるデプロイ方法](../app-service-web/web-sites-deploy.md)はすべて API アプリでも使用できます。API アプリをホストする Web アプリは、Azure プレビュー ポータルでは API アプリ ホストと呼ばれ、[API アプリ ホスト] ポータル ブレードを使用してデプロイを構成できます。[API アプリ ホスト] ブレードの詳細については、[API アプリの管理](app-service-api-manage-in-portal.md)に関するページを参照してください。
 
 API アプリが Web アプリをベースにしているという事実は、ASP.NET 以外のプラットフォーム用に記述されたコードを API アプリにデプロイできることを意味しています。Git を使用して Node.js コードを API アプリにデプロイする例については、[Azure App Service での Node.js API アプリの作成](app-service-api-nodejs-api-app.md)に関するページを参照してください。
  
@@ -53,7 +53,7 @@ API アプリが Web アプリをベースにしているという事実は、AS
 	- **[アクセス レベル]** で、**[すべてのユーザーが利用できる]** を選択します。これは API を完全にパブリックにするオプションですが、このチュートリアルでは問題ありません。Azure プレビュー ポータルを使用して後でアクセスを制限することができます。
 	- **[リージョン]** で、近くのリージョンを選択します。  
 
-	![Microsoft Azure Web Apps の構成ダイアログ](./media/app-service-dotnet-deploy-api-app/24-new-api-app-dialog-v3.png)
+	![Microsoft Azure Web アプリの構成ダイアログ](./media/app-service-dotnet-deploy-api-app/24-new-api-app-dialog-v3.png)
 
 5. **[OK]** をクリックします。サブスクリプションに API アプリが作成されます。このプロセスには数分かかることがあるため、Visual Studio に確認ダイアログ ボックスが表示されます。
 
@@ -67,9 +67,11 @@ API アプリが Web アプリをベースにしているという事実は、AS
 
 	![API アプリのデプロイ](./media/app-service-dotnet-deploy-api-app/26-5-deployment-success-v3.png)
 
-**[Azure App Service アクティビティ]** ウィンドウにデプロイの進捗状況が表示されます。
+	**[Azure App Service アクティビティ]** ウィンドウにデプロイの進捗状況が表示されます。
 
-![[Azure App Service アクティビティ] ウィンドウの状態通知](./media/app-service-dotnet-deploy-api-app/26-5-deployment-success-v4.png)
+	![[Azure App Service アクティビティ] ウィンドウの状態通知](./media/app-service-dotnet-deploy-api-app/26-5-deployment-success-v4.png)
+
+	このデプロイ プロセスの間に、Visual Studio によって*ゲートウェイ*が自動的に再起動されます。ゲートウェイは、リソース グループ内のすべての API アプリの管理機能を処理する Web アプリであり、API アプリにおける API の変更を認識するには、これを再起動する必要があります。API アプリを別の方法でデプロイする場合やデプロイによって API が変更される場合は、手動によるゲートウェイの再起動が必要になることがあります。ポータルでゲートウェイを再起動する方法については、「[API アプリの管理](app-service-api-manage-in-portal.md)」を参照してください。
 
 ## Azure プレビュー ポータルでのアプリの表示
 
@@ -125,5 +127,6 @@ API アプリが Web アプリをベースにしているという事実は、AS
 ## 次のステップ
 
 ここまでは、Visual Studio の直接デプロイする機能を使用して、反復処理、迅速なデプロイ、および API が正常に機能しているかどうかのテストを簡単に実行する方法について説明しました。[次のチュートリアル](../app-service-dotnet-remotely-debug-api-app.md)では、Azure で実行中の API アプリをデバッグする方法について説明します。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

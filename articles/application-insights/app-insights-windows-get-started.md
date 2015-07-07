@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter="windows"
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="ronmart"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="05/12/2015" 
 	ms.author="awills"/>
 
 # Windows Phone アプリとストア アプリ用の Application Insights
@@ -64,10 +64,8 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 
     ![](./media/app-insights-windows-get-started/04-ai-nuget.png)
 
-3. 次の中から、適切なパッケージの最新バージョンを 1 つ選択します。
-   * Windows アプリケーション用の Application Insights - *Windows ストア アプリの場合*
-   * Windows Phone アプリケーション用の Application Insights
-   * Web アプリ用の Application Insights - *デスクトップ アプリケーションの場合* 
+3. **Windows Phone アプリケーション用の Application Insights** を選択します。
+
 4. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
 
     `<InstrumentationKey>`*コピーしたキー*`</InstrumentationKey>`
@@ -108,9 +106,16 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 [アプリケーションを発行](http://dev.windows.com/publish)して、ユーザーがそのアプリケーションをダウンロードして使用すると累積されるデータを確認します。
 
-## <a name="ide"></a>自動化された方法
+## 次の手順
 
-Visual Studio を使用してセットアップの手順を実行するには、Windows Phone、Windows ストアなどのさまざまな種類のアプリで実現できます。
+* [アプリのクラッシュの検出と診断][windowsCrash]
+* [メトリックの詳細][metrics]
+* [診断検索の詳細][diagnostic]
+
+
+## <a name="ide"></a>自動セットアップ
+
+セットアップ手順を Visual Studio で自動実行したい場合は、Windows Phone、Windows ストアなどのさまざまな種類のアプリで自動実行することができます。
 
 ###<a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合
 
@@ -131,11 +136,13 @@ Visual Studio を使用してセットアップの手順を実行するには、
 
 ## <a name="usage"></a>次のステップ
 
-[アプリの使用状況の追跡][windowsUsage]
 
 [アプリのクラッシュの検出と診断][windowsCrash]
 
 [診断ログのキャプチャと検索][diagnostic]
+
+
+[アプリの使用状況の追跡][windowsUsage]
 
 [API を使用したカスタム テレメトリの送信][api]
 
@@ -148,11 +155,13 @@ Visual Studio を使用してセットアップの手順を実行するには、
 [api]: app-insights-api-custom-events-metrics.md
 [azure]: ../insights-perf-analytics.md
 [diagnostic]: app-insights-diagnostic-search.md
+[metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -105,7 +105,7 @@ Microsoft Azure ポータルで **[新規]**、**[Web + モバイル]**、**[Azu
 
 Azure Marketplace を使用して SMTP コネクタを作成してみましょう。
 
-1. Microsoft Azure [ポータル](https://manage.windowsazure.com)にサインインします。
+1. Microsoft Azure [プレビュー ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[Web + モバイル]**、**[Azure Marketplace]** の順に選択します。
 3. **[検索ボックス]** に「**プロトコル**」と入力し、**Enter** キーを押します。一覧から選択することもできます。選択すると、新しいブレード (ウィンドウ) が開きます。**[作成]** を選択します。 
 4. 次のプロパティを入力します。
@@ -130,7 +130,7 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 
 *ロジック* アプリ内でコネクタを使用する場合は、構成済みのコネクタを一覧から選択してデザイン ワーク フローに追加し、必要な構成変更を行って、いつでも使用できるようにしてください。
 
-上記手順を実行する場合は、Web アプリ、モバイル アプリ、またはロジック アプリが必要です。具体的な方法については、<> を参照してください。アプリケーションが使用できる状態になったら、コネクタを追加します。その方法は次のとおりです。
+上記手順を実行する場合は、Web アプリ、モバイル アプリ、またはロジック アプリが必要です。アプリケーションが使用できる状態になったら、コネクタを追加します。その方法は次のとおりです。
 
 以下の手順に従って、コネクタをロジック アプリに追加します。
 
@@ -149,11 +149,12 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 コネクタは、OAuth か、ユーザー名とパスワードを使用します。
 
 ## Logic Apps と Web Apps に関するガイド
-[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-app-azure-portal.md) |
+[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-overview.md) |
 
 
 ## その他のコネクタ
 
 [BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) | [エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) | [企業間コネクタ](app-service-logic-b2b-connectors.md) | [ソーシャル コネクタ](app-service-logic-social-connectors.md) | [アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md) | [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

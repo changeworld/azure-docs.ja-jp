@@ -1,9 +1,8 @@
 <properties 
-	pageTitle="Flask を使用した Python Web サイト - Azure チュートリアル" 
-	description="Azure での Python Web サイトの実行について説明するチュートリアル。" 
+	pageTitle="Azure での Flask を使用した Web アプリの作成" 
+	description="Azure での Python Web アプリの実行について説明するチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter="python" 
-	tags="python"
 	authors="huguesv" 
 	manager="wpickett" 
 	editor=""/>
@@ -14,20 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="02/09/2015" 
+	ms.date="04/15/2015" 
 	ms.author="huguesv"/>
 
 
 
 
-# Flask を使用した Web サイトの作成
+# Azure での Flask を使用した Web アプリの作成
 
-このチュートリアルでは、Azure Websites で Python を実行するための基本的な方法について説明します。Azure Web サイトでは、制限付きの無料のホスティングや迅速な展開を実行できます。また、Python も使用できます。アプリケーションの拡張に合わせて、有料のホスティングに切り替えることができます。また、他のすべての Azure サービスと統合することもできます。
+このチュートリアルでは、[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で Python を実行するための基本的な方法について説明します。Web Apps では、制限付きの無料のホスティングや迅速なデプロイを実行できます。また、Python も使用できます。 アプリケーションの拡張に合わせて、有料のホスティングに切り替えることができます。また、他のすべての Azure サービスと統合することもできます。
 
-Flask Web フレームワークを使用してアプリケーションを作成 (このチュートリアルの [Django](web-sites-python-create-deploy-django-app.md)  と [Bottle](web-sites-python-create-deploy-bottle-app.md)バージョンを参照)。Azure ギャラリーから Web サイトを作成し、Git デプロイを設定して、リポジトリをローカルで複製します。その後、ローカルでアプリケーションを実行し、変更を行い、それらをコミットして Azure に送信します。チュートリアルでは、Windows または Mac/Linux での手順を紹介します。
+Flask Web フレームワークを使用してアプリケーションを作成します ([Django](web-sites-python-create-deploy-django-app.md) と [Flask](web-sites-python-create-deploy-bottle-app.md) のこのチュートリアルの代替バージョンをご覧ください)。Azure ギャラリーから Web サイトを作成し、Git デプロイを設定して、リポジトリをローカルで複製します。その後、ローカルでアプリケーションを実行し、変更を行い、それらをコミットして Azure に送信します。チュートリアルでは、Windows または Mac/Linux での手順を紹介します。
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -35,52 +35,33 @@ Flask Web フレームワークを使用してアプリケーションを作成 
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools 2.1 for Visual Studio][] (オプション)
+- [Python Tools 2.1 for Visual Studio](optional)
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
 ### Windows
 
-Python 2.7 または 3.4 (32 ビット) がインストールされていない場合は、Web Platform Installer を使用して [Azure SDK for Python 2.7][] か [Azure SDK for Python 3.4][] をインストールすることをお勧めします。いずれかをインストールすると、Python の 32 ビット バージョン、setuptools、pip、virtualenv などがインストールされます (32 ビット Python は Azure ホスト コンピューターにインストールするものです)。[python.org][] から Python を取得することもできます。
+Python 2.7 または 3.4 (32 ビット) がインストールされていない場合は、Web Platform Installer を使用して [Azure SDK for Python 2.7] か [Azure SDK for Python 3.4] をインストールすることをお勧めします。いずれかをインストールすると、Python の 32 ビット バージョン、setuptools、pip、virtualenv などがインストールされます (32 ビット Python は Azure ホスト コンピューターにインストールするものです)。[python.org] から Python を取得することもできます。
 
-Git には、[Git for Windows に関するページ][] か [GitHub for Windows][] をお勧めします。Visual Studio を使用する場合は、Git の統合のサポートを使用できます。
+Git には、[Git for Windows] または [GitHub for Windows] をお勧めします。Visual Studio を使用する場合は、Git の統合のサポートを使用できます。
 
-さらに、[Python Tools 2.1 for Visual Studio][] のインストールもお勧めします。これはオプションですが、無料版の Visual Studio Community 2013 または Visual Studio Express 2013 for Web を含む [Visual Studio][] を使用すれば、Python IDE を有効に活用できます。
+さらに、[Python Tools 2.1 for Visual Studio] のインストールもお勧めします。これはオプションですが、無料版の Visual Studio Community 2013 または Visual Studio Express 2013 for Web を含む [Visual Studio] を使用すれば、Python IDE を有効に活用できます。
 
 ### Mac/Linux
 
 Python と Git は既にインストールされていると思いますが、Python 2.7 または 3.4 であることをご確認ください。
 
 
-## ポータルでの Web サイトの作成
+## Azure ポータルでの Web アプリの作成
 
-アプリケーションを作成する最初の手順では、Azure の管理ポータルで Web サイトを作成します。そのためには、ポータルにログインし、画面左下にある **[新規]** ボタンをクリックします。ウィンドウが表示されます。**[コンピューティング]**、**[Web サイト]**、**[ギャラリー]** の順にクリックします。
+アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
-![](./media/web-sites-python-create-deploy-flask-app/portal-create-site.png)
-
-ウィンドウが開き、ギャラリーに使用可能なアプリが一覧表示されます。左側の **[アプリ フレームワーク]** カテゴリをクリックし、**[Django]** を選択します。
-
-![](./media/web-sites-python-create-deploy-flask-app/portal-gallery-flask.png)
-
-次のページでサイト名とリージョンを入力し、[完了] ボタンを押します。
-
-サイトがすぐに設定されます。下のツールバーにある **[参照]** ボタンをクリックすると、Azure で実行中の新しい Flask アプリケーションが表示されます。
-
-![](./media/web-sites-python-create-deploy-flask-app/portal-website-flask.png)
- 
-次に、Git を使って発行する際に必要となるサポートを追加するため、**[ソース管理からの展開の設定]** をクリックします。
-
-![](./media/web-sites-python-create-deploy-flask-app/portal-site-created.png)
-
-**[展開の設定]** ダイアログで、下へスクロールして **[ローカル Git リポジトリ]** オプションを選択します。右矢印をクリックして次へ進みます。
-
-![](./media/web-sites-python-create-deploy-flask-app/portal-setup-deployment.png)
-
-Git 発行を設定した後で、リポジトリが作成中であることを示すページがすぐに表示されます。準備が整ったら、接続方法に関する手順を確認します。  
-
-![](./media/web-sites-python-create-deploy-flask-app/portal-repo-created.png)
-
-これらの手順については次のセクションで見ていきます。
+1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。 
+2. **[Web + モバイル]**、**[Azure Marketplace]**、**[Web Apps]** の順にクリックします。
+3. 検索ボックスに、「python」と入力します。
+4. 検索結果で **[Flask]** を選択し、**[作成]** をクリックします。
+5. 新しい App Service プランやそのリソース グループ名の作成など、新しい Flask アプリを構成します。**[作成]** をクリックします。
+6. 「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。
 
 
 ## アプリケーションの概要
@@ -141,22 +122,20 @@ IIS 構成ファイル。デプロイごとに web.x.y.config から作成され
 
     \env\
 
-Python 仮想環境。互換性のある仮想環境がまだサイト上にない場合に、デプロイ時に作成されます。requirements.txt に示されているパッケージは pip インストールされますが、パッケージを既にインストールしている場合は pip でインストールがスキップされます。
+Python 仮想環境。互換性のある仮想環境がまだアプリ上にない場合に、デプロイメント時に作成されます。requirements.txt に示されているパッケージは pip インストールされますが、パッケージを既にインストールしている場合は pip でインストールがスキップされます。
 
-次の 3 つのセクションでは、以下の 3 つの異なる環境における Web サイト開発を使用した処理方法を説明します。
+次の 3 つのセクションでは、以下の 3 つの異なる環境における Web アプリ開発を使用した処理方法を説明します。
 
 - Windows、Python Tools for Visual Studio を使用
 - Windows、コマンド ラインを使用
 - Mac/Linux、コマンド ラインを使用
 
 
-## Web サイトの開発 - Windows - Python Tools for Visual Studio
+## Web アプリの開発 - Windows - Python Tools for Visual Studio
 
 ### リポジトリの複製
 
-最初に、Azure ポータルで提供される URL を使用して、リポジトリを複製します。
-
-![](./media/web-sites-python-create-deploy-flask-app/ptvs-git-clone.png)
+最初に、Azure ポータルで提供される URL を使用して、リポジトリを複製します。詳細については、「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」を参照してください。
 
 リポジトリのルートにあるソリューション ファイル (.sln) を開きます。
 
@@ -166,9 +145,9 @@ Python 仮想環境。互換性のある仮想環境がまだサイト上にな�
 
 次にローカル開発用の仮想環境を作成します。**[Python 環境]** を右クリックし、**[仮想環境の追加]** を選択します。
 
-- 環境名が、 `env` となっていることを確認します。
+- 環境名が、`env` となっていることを確認します。
 
-- ベース インタープリターを選択します。サイトに選択したものと同じバージョンの Python を使用していることを確認します (runtime.txt またはサイト構成ページ)。
+- ベース インタープリターを選択します。Web アプリで選択したものと同じバージョンの Python を使用していることを確認します (runtime.txt または Azure ポータルにある Web アプリの **[アプリケーションの設定]** ブレード)。
 
 - パッケージのダウンロードとインストールのオプションが選択されていることを確認します。
 
@@ -182,7 +161,7 @@ F5 キーを押してデバッグを開始します。ローカルに実行さ�
 
 ![](./media/web-sites-python-create-deploy-flask-app/windows-browser-flask.png)
 
-ソースにブレークポイントを設定したり、ウォッチ ウィンドウを使用したりできます。各種機能の詳細については、「[PTVS のドキュメント][]」をご覧ください。
+ソースにブレークポイントを設定したり、ウォッチ ウィンドウを使用したりできます。各種機能の詳細については、[PTVS のドキュメント]を参照してください。
 
 ### 変更を加える
 
@@ -198,7 +177,7 @@ F5 キーを押してデバッグを開始します。ローカルに実行さ�
 
 pip を使用して追加のパッケージをインストールできます。パッケージをインストールするには、仮想環境を右クリックし、**[Install Python Package]** を選択します。
 
-たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、 `azure` を入力します。
+たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、`azure` を入力します。
 
 ![](./media/web-sites-python-create-deploy-flask-app/ptvs-install-package-dialog.png)
 
@@ -206,7 +185,7 @@ pip を使用して追加のパッケージをインストールできます。�
 
 その後、requirements.txt への変更内容を Git リポジトリにコミットします。
 
-### Azure へのデプロイ
+### Azure への展開
 
 デプロイを開始するには、**[同期]** または **[プッシュ]** をクリックします。同期ではプッシュとプルの両方が実行されます。
 
@@ -214,16 +193,16 @@ pip を使用して追加のパッケージをインストールできます。�
 
 仮想環境を作成したり、パッケージをインストールしたりするため、最初のデプロイには時間がかかります。
 
-Visual Studio にはデプロイの進捗状況は表示されません。出力を確認する場合は、「[トラブルシューティング - デプロイ](#troubleshooting-deployment)」のセクションをご覧ください。
+Visual Studio にはデプロイの進捗状況は表示されません。出力を確認する場合は、「[トラブルシューティング - デプロイ](#troubleshooting-deployment)」セクションを参照してください。
 
 Azure URL を参照して、変更内容を表示します。
 
 
-## Web サイトの開発 - Windows - コマンド ライン
+## Web アプリの開発 - Windows - コマンド ライン
 
 ### リポジトリの複製
 
-最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。
+最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。詳細については、「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」を参照してください。
 
     git clone <repo-url>
     cd <repo-folder>
@@ -233,7 +212,7 @@ Azure URL を参照して、変更内容を表示します。
 
 開発環境用の新しい仮想環境を作成します (リポジトリには追加しません)。Python の仮想環境を再配置することはできません。そのため、アプリケーションで作業する開発者ごとにローカルに仮想環境を作成することになります。
 
-サイトに選択したものと同じバージョンの Python を使用していることを確認します (runtime.txt またはサイト構成ページ)。
+Web アプリで選択したものと同じバージョンの Python を使用していることを確認します (runtime.txt または Azure ポータルにある Web アプリの **[アプリケーションの設定]** ブレード)。
 
 Python 2.7 の場合:
 
@@ -287,7 +266,7 @@ requirements.txt が更新されていることを確認します。
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Azure へのデプロイ
+### Azure への展開
 
 デプロイを開始するには、変更を Azure にプッシュします。
 
@@ -298,11 +277,11 @@ requirements.txt が更新されていることを確認します。
 Azure URL を参照して、変更内容を表示します。
 
 
-## Web サイトの開発 - Mac と Linux - コマンド ライン
+## Web アプリの開発 - Mac と Linux - コマンド ライン
 
 ### リポジトリの複製
 
-最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。
+最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。詳細については、「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」を参照してください。
 
     git clone <repo-url>
     cd <repo-folder>
@@ -312,7 +291,7 @@ Azure URL を参照して、変更内容を表示します。
 
 開発環境用の新しい仮想環境を作成します (リポジトリには追加しません)。Python の仮想環境を再配置することはできません。そのため、アプリケーションで作業する開発者ごとにローカルに仮想環境を作成することになります。
 
-サイトに選択したものと同じバージョンの Python を使用していることを確認します (runtime.txt またはサイト構成ページ)。
+Web アプリで選択したものと同じバージョンの Python を使用していることを確認します (runtime.txt または Azure ポータルにある Web アプリの **[アプリケーションの設定]** ブレード)。
 
 Python 2.7 の場合:
 
@@ -366,7 +345,7 @@ requirements.txt が更新されていることを確認します。
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Azure へのデプロイ
+### Azure への展開
 
 デプロイを開始するには、変更を Azure にプッシュします。
 
@@ -375,11 +354,6 @@ requirements.txt が更新されていることを確認します。
 仮想環境の作成、パッケージのインストール、web.config の作成といった、デプロイ スクリプトの出力が表示されます。
 
 Azure URL を参照して、変更内容を表示します。
-
-
-## Troubleshooting - Deployment
-
-[AZURE.INCLUDE [web-sites-python-troubleshooting-deployment](../../includes/web-sites-python-troubleshooting-deployment.md)]
 
 
 ## トラブルシューティング - パッケージのインストール
@@ -394,32 +368,37 @@ Azure URL を参照して、変更内容を表示します。
 
 ## 次のステップ
 
-Flask と Python Tools for Visual Studio の詳細については、次のリンクをご覧ください。 
+Flask と Python Tools for Visual Studio の詳細については、次のリンクをご覧ください。
  
-- [Flask のドキュメント][]
-- [Python Tools for Visual Studio のドキュメント][]
+- [Flask のドキュメント]
+- [Python Tools for Visual Studio のドキュメント]
 
 Azure テーブル ストレージと MongoDB の使用方法については、次のリンクをご覧ください。
 
-- [Azure における Flask と MongoDB (Python Tools 2.1 for Visual Studio の使用方法)][]
-- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ][]
+- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と MongoDB]
+- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]
+
+## 変更内容
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 
 <!--Link references-->
-[Azure における Flask と MongoDB (Python Tools 2.1 for Visual Studio の使用方法)]: web-sites-python-ptvs-flask-table-storage.md
-[Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]: web-sites-python-ptvs-flask-mongodb.md
+[Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と MongoDB]: web-sites-python-ptvs-flask-mongodb.md
+[Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]: web-sites-python-ptvs-flask-table-storage.md
 
 <!--External Link references-->
 [Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281
 [Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?linkid=516990
 [python.org]: http://www.python.org/
-[Git for Windows に関するページ]: http://msysgit.github.io/
+[Git for Windows]: http://msysgit.github.io/
 [GitHub for Windows]: https://windows.github.com/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
 [Visual Studio]: http://www.visualstudio.com/
 [PTVS のドキュメント]: http://pytools.codeplex.com/documentation
-[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation 
-[Flask のドキュメント]: http://flask.pocoo.org/ 
+[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
+[Flask のドキュメント]: http://flask.pocoo.org/
+ 
 
-<!--HONumber=52--> 
+<!---HONumber=62-->

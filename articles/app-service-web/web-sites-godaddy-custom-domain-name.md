@@ -1,48 +1,44 @@
-<properties 
-	pageTitle="Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)" 
-	description="GoDaddy から購入したカスタム ドメイン名を Azure Web アプリケーションで使用する方法" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="wadepickett" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)"
+	description="GoDaddy から購入したカスタム ドメイン名を Azure Web アプリケーションで使用する方法"
+	services="app-service\web"
+	documentationCenter=""
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="app-services-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/24/2015" 
-	ms.author="wpickett"/>
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/12/2015"
+	ms.author="mwasson"/>
 
-# Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)
+# Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
 
 [AZURE.INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 
 [AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
+> [AZURE.NOTE]Azure App Service Web Apps からドメインを購入した場合は、「<a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web Apps" class="current">Web アプリ用のドメインの購入</a>」の記事の最後の手順をご覧ください。
+
 [AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
 
-この記事では、[Go Daddy](https://godaddy.com) から購入したカスタム ドメイン名を [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で使用する手順を示します。
+この記事では、[Go Daddy](https://godaddy.com) から直接購入したカスタム ドメイン名を [App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714) で使用する手順を示します。
 
 [AZURE.INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
-この記事の内容:
-
--   [DNS レコードについて](#understanding-records)
--   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
--   [Web でのドメインの有効化](#enabledomain)
-
 <a name="understanding-records"></a>
-## DNS レコードについて
+##DNS レコードについて
 
 [AZURE.INCLUDE [understandingdns](../../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
 
 <a name="bkmk_configurecname"></a>
-## カスタム ドメインの DNS レコードの追加 
+## カスタム ドメインの DNS レコードの追加
 
 カスタム ドメインを App Service の Web アプリケーションに関連付けるには、GoDaddy のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して GoDaddy.com の DNS ツールを見つけます。
 
@@ -69,11 +65,11 @@
 	![ゾーン レコードの追加](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
 
 	* **A (ホスト) レコード**を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名)、* (複数のサブドメインに一致するワイルドカード)、または使用するサブドメイン (**www** など) のいずれかに設定する必要があります。 **[Points to]** フィールドを、Azure Web アプリの IP アドレスに設定する必要があります。
-	
+
 		> [AZURE.NOTE]A (ホスト) レコードを使用する場合は、次の構成を持つ CNAME レコードも追加する必要があります。
-		> 
+		>
 		> * **[Host]** 値 **awverify**、**[Points to]** 値 **awverify.&lt;yourwebappname&gt;.azurewebsites.net**。
-		> 
+		>
 		> この CNAME レコードは Azure で使用されて、A レコードで参照されるドメインの所有者が検証されます。
 
 	* **CNAME (エイリアス) レコード**を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure Web アプリの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
@@ -82,14 +78,15 @@
 5. レコードの追加または変更が完了したら、**[Finish]** をクリックして変更を保存します。
 
 <a name="enabledomain"></a>
-## Web アプリケーションでのドメイン名の有効化 
+## Web アプリケーションでのドメイン名の有効化
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、[Azure App Service と既存の Azure Services への影響](http://go.microsoft.com/fwlink/?LinkId=529714)に関するページをご覧ください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

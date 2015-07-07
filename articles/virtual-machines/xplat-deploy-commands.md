@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Mac、Linux、および Windows 用 Azure CLI を使用したテンプレートのデプロイ"
+   pageTitle="Mac、Linux、および Windows 用 Azure CLI を使用したテンプレートのデプロイ | Microsoft Azure"
    description="任意のテンプレートをデプロイまたは更新する基本的な手順について説明します。"
    services="virtual-machines"
    documentationCenter=""
-   authors="squillace"
+   authors="dlepow"
    manager="timlt"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="infrastructure"
-   ms.date="04/21/2015"
-   ms.author="rasquill"/>
+   ms.date="06/09/2015"
+   ms.author="danlep"/>
 
 # Mac、Linux、および Windows 用 Azure CLI を使用したテンプレートのデプロイ
 
@@ -30,11 +30,11 @@
 デプロイするテンプレートの azuredeploy-parameters.json ファイルが存在する場合は、そのファイルをダウンロードします。
 
     curl -O https://github.com/azure/azurermtemplates/raw/master/linux-virtual-machine-with-customdata/azuredeploy-parameters.json
-    
+
 ## リソース グループのデプロイメント情報を入力する
-    
+
 このファイルを任意のエディターで開きます。ここでいくつかのキー、特に **adminUsername**、**adminPassword** (複雑さのルールにご注意ください) の値、ストレージ アカウント名、必要な DNS 名を指定する必要があることがわかります。
-    
+
     {
       "newStorageAccountName": {
         "value": "uniquestorageaccountname"
@@ -70,7 +70,7 @@
         "value": "myNic"
       }
     }
-    
+
 新しい値を追加するか (この場合、新しいストレージと DNS リソースを作成できる場合は、それらが Azure により作成されます)、作成済みのリソースを使用します。次の azuredeploy parameters.json ファイルを例として示します。
 
 
@@ -105,6 +105,6 @@ Vestibul ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia C
 [6]: ./media/markdown-template-for-new-articles/pretty49.png
 [7]: ./media/markdown-template-for-new-articles/channel-9.png
 [8]: ./media/markdown-template-for-new-articles/copytemplate.png
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2015" 
+	ms.date="05/19/2015" 
 	ms.author="bradyg;tarcher"/>
 
 # API アプリとしての Web API プロジェクトの構成
@@ -33,8 +33,13 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 このセクションでは、API アプリとして既存の Web API プロジェクトを構成する方法を示します。まず Web API プロジェクトのテンプレートを使用して Web API プロジェクトを作成してから、このプロジェクトを API アプリとして構成します。
 
 1. Visual Studio 2013 を開きます。
-2. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。 
-3. **[ASP.NET Web アプリケーション]** テンプレートを選択します。  
+
+2. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。
+
+3. **[ASP.NET Web アプリケーション]** テンプレートを選択します。
+
+4. **[Application Insights をプロジェクトに追加]** チェック ボックスがオフになっていることを確認します。
+
 4. プロジェクトに「*ContactsList*」という名前を付けます。
 
 	![](./media/app-service-dotnet-create-api-app-visual-studio/01-filenew-v3.png)
@@ -76,5 +81,6 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 ## 次のステップ
 
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

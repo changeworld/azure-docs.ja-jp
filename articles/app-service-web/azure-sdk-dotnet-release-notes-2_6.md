@@ -24,7 +24,7 @@
 Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NET Framework を手動でインストールした場合に、.NET 4.5.2 または .NET 4.6 をターゲットとするクラウド サービス アプリケーション (PaaS) を開発できます。「[Install .NET on a Cloud Service Role (クラウド サービス ロールに .NET をインストール)](http://go.microsoft.com/fwlink/?LinkID=309796)」を参照してください。
 
 
-## Service Bus の更新
+##Service Bus の更新
 
 - Event Hubs: 
 
@@ -32,7 +32,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 	- Event Hubs の機能と安定性が強化されました。
 	- WebSocket を使用したメッセージングと Event Hubs の Amqp プロトコルのサポートが追加されました。
 
-## HDInsight Tools for Visual Studio の更新
+##HDInsight Tools for Visual Studio の更新
 
 - **IntelliSense の強化**: リモート メタデータの推奨事項
 
@@ -54,7 +54,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 	詳しくは、[このマニュアル](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409)を参照してください。
 
-## インロール キャッシュの更新
+##インロール キャッシュの更新
 
 - **インロール キャッシュ**で **Microsoft Azure Storage SDK** バージョン 4.3 を使用できるようになりました。今まで**インロール キャッシュ**では Azure Storage SDK バージョン 1.7 を使用していました。
 
@@ -62,7 +62,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 	詳細については、「[Azure キャッシュ用のインロール キャッシュ](https://msdn.microsoft.com/library/azure/dn386103.aspx)」を参照してください。
 
-## Azure App Service ツール
+##Azure App Service ツール
 
 Azure SDK 2.6 リリースで次の項目が更新されました。
 
@@ -72,26 +72,35 @@ Azure SDK 2.6 リリースで次の項目が更新されました。
 - ほとんどの C# プロジェクトに追加された Azure API App Client ジェスチャが追加されました。これにより、Azure のサブスクリプションで実行する Swagger 対応 API Apps の自動生成が可能になります。
 - Server Explorer の API Apps ツールと App Service ノードがVisual Studio 2013 でのみ利用できるようになりました。 
 
-## Azure Resource Manager ツールの更新
+##Azure Resource Manager ツールの更新
 
 Azure Resource Manager ツールで Virtual Machines、Networking、Storage のテンプレートを使用できるようになりました。JSON 編集操作にテンプレート用の新しいアウトライン表示と、JSON スニペットを使用してテンプレートを編集する機能が追加されました。Visual Studio からデプロイしたテンプレートでプロジェクトで指定した PowerShell スクリプトが使用されるため、スクリプトに対する変更が Visual Studio でも使用されます。
 
-## クラウド サービスの診断機能の強化
+##クラウド サービスの診断機能の強化
 
 Azure SDK 2.6 において、Azure コンピューティング エミュレーターでの診断ログの収集と、それらの開発スとレージへの転送機能が復活しました。アプリケーションのエミュレーターでの実行時に生成される診断ログ (アプリケーションのトレース ログ、Event Tracing for Windows (ETW) ログ、パフォーマンス カウンター、インフラストラクチャ ログ、Windows イベント ログなど) を開発ストレージに転送して、診断ログがローカル コンピューターで機能していることを確認できます。
 
 診断ストレージ アカウントがサービス構成 (.cscfg) ファイルで指定されるため、さまざまな環境にあった診断ストレージ アカウントを簡単に使用できるようになります。接続文字列の Azure SDK 2.4 と Azure SDK 2.6 での動作に注目すべきいくつかの違いが見られます。診断ストレージの接続文字列の使用方法と、それがプロジェクトにどのような影響を及ぼすかについては、「[Azure Cloud 用の診断の構成](http://go.microsoft.com/fwlink/?LinkID=532784)」を参照してください。
 
-## 重大な変更
+##重大な変更
 
-### Azure Resource Manager ツール 
+###Azure Resource Manager ツール 
 
 - Azure SDK 2.5 で使用できる **Cloud Deployment Projects** プロジェクト タイプの名前が **Azure Resource Group** に変わりました。
 - Azure SDK 2.5 で作成されたプロジェクトの **Cloud Deployment Projects** タイプは 2.6 で使用できますが、Visual Studio からテンプレートをデプロイすることはできません。ただし、PowerShell スクリプトでのデプロイは引き続き機能します。2.6 で **Cloud Deployment Projects** を使用する方法については、こちらの[投稿](http://go.microsoft.com/fwlink/?LinkID=534086)をお読みください。
  
-## 既知の問題
+##既知の問題
 
-エミュレーターで診断ログを収集するには、64 ビットのオペレーティング システムが必要です。32 ビットのオペレーティング システムで実行した場合、診断ログは収集されません。これは、他のエミュレーター機能には影響しません。
+- エミュレーターで診断ログを収集するには、64 ビットのオペレーティング システムが必要です。32 ビットのオペレーティング システムで実行した場合、診断ログは収集されません。これは、他のエミュレーター機能には影響しません。 
 
-<!--HONumber=52-->
+- 2015 年 4 月 29 日にリリースされた Azure SDK 2.6 には 2 つの問題がありました。
+
+	- Azure SDK 2.6 がコンピューターにインストールされていると、Visual Studio 2015 でユニバーサル アプリを読み込むことができませんでした。
+	- クラウド サービス プロジェクトのデバッグは、Visual Studio 2013 と Visual Studio 2015 では失敗します。Visual Studio が応答しなくなり、「エミュレーター用の診断を構成しています」というメッセージを含むダイアログ ボックスを表示したままクラッシュします。
+	
+	Azure SDK 2.6 の更新プログラムは、2015 年 5 月 18 日にリリースされました。更新されたバージョンは 2.6.30508.1601 です。前述の 2 つの問題に対する修正が含まれています。SDK のビルドは、[コントロール パネル]、[プログラムと機能] の順にクリックし、[Microsoft Azure Tools for Microsoft Visual Studio 2013 – v 2.6] で確認できます。[バージョン] 列にビルド番号が表示されます。
+
+	上記の問題が解消されない場合は、Azure 2.6 SDK for [VS 2012](http://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409)、[VS 2013](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)、または [VS 2015](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) の最新バージョンをインストールしてください。
  
+
+<!---HONumber=62-->

@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="コネクタの使用" 
-   description="コネクタの使用" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="anuragdalmia" 
-   manager="dwrede" 
+<properties
+   pageTitle="コネクタの使用"
+   description="コネクタの使用"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
+   ms.workload="integration"
    ms.date="03/20/2015"
    ms.author="prkumar"/>
 
@@ -35,7 +35,6 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 * [HTTP コネクタ]
 * [Office 365 コネクタ]
 * [OneDrive コネクタ]
-* [Oracle コネクタ]
 * [POP3 コネクタ]
 * [QuickBooks コネクタ]
 * [Salesforce コネクタ]
@@ -53,18 +52,18 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 ##Premium コネクタと API Apps##
 * AS2 コネクタ
 * BizTalk EDIFACT
-* BizTalk Flat File Encoder
+* [BizTalk Flat File Encoder]
 * BizTalk Transform Service
-* BizTalk ルール
+* [BizTalk ルール]
 * BizTalk X12
-* BizTalk XPath Extractor
-* BizTalk XML Validator
+* [BizTalk XPath Extractor]
+* [BizTalk XML Validator]
 * DB2 コネクタ
 * Informix コネクタ
-* Oracle データベース コネクタ
+* [Oracle コネクタ]
 * MQ コネクタ
 * [SAP コネクタ]
- 
+
 その他の詳細については、コネクタ API リファレンス [http://aka.ms/appservicesconnectorreference](http://aka.ms/appservicesconnectorreference) を参照してください。
 
 ##コネクタとロジック アプリ##
@@ -108,6 +107,10 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 [OneDrive コネクタ]: app-service-logic-connector-onedrive.md
 [File コネクタ]: app-service-logic-connector-file.md
 [Slack コネクタ]: app-service-logic-connector-slack.md
+[BizTalk Flat File Encoder]: app-service-logic-flatfile-encoder.md
+[BizTalk XPath Extractor]: app-service-logic-xpath-extract.md
+[BizTalk XML Validator]: app-service-logic-xml-validator.md
+[BizTalk ルール]: app-service-logic-use-biztalk-rules.md
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

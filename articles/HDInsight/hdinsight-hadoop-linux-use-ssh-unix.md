@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux、Unix、または OS X から Linux ベースの HDInsight 上の Hadoop で SSH キーを使用する | Azure"
-   description="SSH キーを作成して、Linux ベースの HDInsight クラスターに対する認証に使用する方法について説明します。"
+   pageTitle="Linux、Unix、または OS X と Linux ベースの Hadoop の間で SSH キーを使用する | Microsoft Azure"
+   description="Secure Shell (SSH) を使用して Linux ベースの HDInsight にアクセスできます。このドキュメントでは、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -16,7 +16,7 @@
    ms.date="03/20/2015"
    ms.author="larryfr"/>
 
-# Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)
+#Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)
 
 > [AZURE.SELECTOR]
 - [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -26,7 +26,7 @@ Linux ベースの Azure HDInsight クラスターには、パスワードまた
 
 > [AZURE.NOTE]この記事で説明する手順は、Linux、Unix、または OS X の各クライアントを使用していることを前提とします。`ssh` と `ssh-keygen` を提供するパッケージ (Windows の Git など) をインストール済みの場合は、これらの手順を Windows ベースのクライアントで実行できますが、「[Windows から Linux ベースの HDInsight (Hadoop) で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」に記載されている手順に従って Windows ベースのクライアントを設定することをお勧めします。
 
-## 前提条件
+##前提条件
 
 * Linux、Unix、OS X の各クライアント用の **ssh-keygen** と **ssh**。通常、このユーティリティはオペレーティング システムに付属しています。また、パッケージ管理システムから入手することもできます。
 
@@ -36,11 +36,11 @@ Linux ベースの Azure HDInsight クラスターには、パスワードまた
 
 * [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md)
 
-## SSH とは
+##SSH とは
 
 SSH は、リモート サーバーにログインしたり、リモート サーバーでコマンドをリモート実行したりするためのユーティリティです。Linux ベースの HDInsight では、SSH によりクラスター ヘッド ノードへの暗号化された接続が確立され、コマンドの入力に使用するコマンド ラインが提供されます。コマンドは、直接サーバーで実行されます。
 
-## SSH キーの作成 (オプション)
+##SSH キーの作成 (オプション)
 
 Linux ベースの HDInsight クラスターを作成するとき、SSH キーを使用したサーバーへの認証にパスワードまたは SSH キーを使用することを選択できます。証明書ベースであるため、SSH キーの方がより安全です。クラスターで SSH キーを使用する場合は、次の手順を実行します。
 
@@ -68,7 +68,7 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 	コマンドが完了すると、秘密キー (**id_rsa** など) と公開キー (**id_rsa.pub** など) の 2 つの新しいファイルが作成されます。
 
-## Linux ベースの HDInsight クラスターの作成
+##Linux ベースの HDInsight クラスターの作成
 
 Linux ベースの HDInsight クラスターを作成するときには、以前に作成した公開キーを指定する必要があります。Linux、Unix、または OS X の各クライアントからは、2 つの方法で HDInsight クラスターを作成できます。
 
@@ -78,26 +78,25 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 これらの方法では、それぞれパスワードまたは公開キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、「<a href="/documentation/articles/hdinsight-hadoop-provision-linux-clusters/" target="_blank">HDInsight での Linux クラスターのプロビジョニング</a>」に関するページをご覧ください。
 
-### Azure ポータル
+###Azure ポータル
 
 このポータルを使用して Linux ベースの HDInsight クラスターを作成する場合は、**SSH ユーザー名**を入力して、**パスワード**と **SSH 公開キー**のどちらを入力するかを選択する必要があります。**SSH 公開キー**を選択した場合は、(拡張子が **.pub** のファイルに含まれている) 公開キーを次のフォームに貼り付ける必要があります。
 
-![Image of form asking for public key](./media/hdinsight-hadoop-linux-use-ssh-unix/ssh-key.png)
+![公開キーの入力を求めるフォームの画像](./media/hdinsight-hadoop-linux-use-ssh-unix/ssh-key.png)
 
-> [AZURE.NOTE]このキー ファイルは単なるテキスト ファイルです。内容は次のようになります。
-> ```
+> [AZURE.NOTE]このキー ファイルは単なるテキスト ファイルです。内容は次のようになります。```
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KGz90pgMk3VRJk4PEUSELfXKxP3NtsVwLVPN1l09utI/tKHQ6WL3qy89WVVVLiwzL7tfJ2B08Gmcw8mC/YoieT/YG+4I4oAgPEmim+6/F9S0lU2I2CuFBX9JzauX8n1Y9kWzTARST+ERx2hysyA5ObLv97Xe4C2CQvGE01LGAXkw2ffP9vI+emUM+VeYrf0q3w/b1o/COKbFVZ2IpEcJ8G2SLlNsHWXofWhOKQRi64TMxT7LLoohD61q2aWNKdaE4oQdiuo8TGnt4zWLEPjzjIYIEIZGk00HiQD+KCB5pxoVtp user@system
 > ```
 
 これで、入力したパスワードまたは公開キーを使用して、指定されたユーザーのログインが作成されます。
 
-### Mac、Linux、Windows の Azure コマンド ライン インターフェイス
+###Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
 [Mac、Linux、Windows の Azure CLI](../xplat.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
 このコマンドの使用方法の詳細については、「<a href="../hdinsight-hadoop-provision-linux-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。
 
-## Linux ベースの HDInsight クラスターへの接続
+##Linux ベースの HDInsight クラスターへの接続
 
 ターミナル セッションから、SSH コマンドを使用して、アドレスとユーザー名を入力し、クラスター ヘッド ノードに接続します。
 
@@ -117,7 +116,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 >
 > `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
 
-### ワーカー ノードへの接続
+###ワーカー ノードへの接続
 
 ワーカー ノードは、Azure データセンターの外部からは直接アクセスできませんが、SSH を使用してクラスター ヘッド ノードからアクセスできます。
 
@@ -174,7 +173,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 4. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@headnode` プロンプトが表示されます。
 
-## 複数のアカウントの追加
+##複数のアカウントの追加
 
 1. 新しいユーザー アカウントの公開キーと秘密キーを、[SSH キーの作成](#create-an-ssh-key-optional)セクションの説明に従って作成します。
 
@@ -194,7 +193,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 3. ナノ エディターが開いたら、新しいユーザー アカウントのパブリック キーの内容をコピーして貼り付けます。最後に、**Ctrl + X** キーを使用してファイルを保存し、エディターを終了します。
 
-	![image of nano editor with example key](./media/hdinsight-hadoop-linux-use-ssh-unix/nano.png)
+	![サンプル キーとナノ エディターの画像](./media/hdinsight-hadoop-linux-use-ssh-unix/nano.png)
 
 4. 次のコマンドを使用して、新しいユーザー アカウントに対する .ssh フォルダーの所有権をとコンテンツを変更します。
 
@@ -202,7 +201,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 5. これで、新しいユーザー アカウントおよびプライベート キーを使用してサーバーへの認証を行えるようになります。
 
-## <a id="tunnel"></a>SSH トンネリング
+##<a id="tunnel"></a>SSH トンネリング
 
 SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングすることもできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
 
@@ -238,13 +237,13 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 2. Firefox などのクライアント プログラムで **SOCKS v5** プロキシとして **localhost:9876** を使用するように構成します。Firefox の設定は次のようになります。
 
-	![image of Firefox settings](./media/hdinsight-hadoop-linux-use-ssh-unix/socks.png)
+	![Firefox の設定の画像](./media/hdinsight-hadoop-linux-use-ssh-unix/socks.png)
 
 	> [AZURE.NOTE]**[リモート DNS]** を選択するとドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
 
 	Firefox でプロキシ設定を有効または無効にした状態で <a href="http://www.whatismyip.com/" target="_blank">http://www.whatismyip.com/</a> などのサイトにアクセスすると、トラフィックがトンネル経由でルーティングされていることを検証できます。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
 
-### ブラウザー拡張
+###ブラウザー拡張
 
 ブラウザーをトンネル ワークを使用するように構成する場合、通常、一部のトラフィックをトンネルを経由で送信しないように設定する必要があることがあります。<a href="http://getfoxyproxy.org/" target="_blank">FoxyProxy</a> などのブラウザー拡張機能では、URL 要求に対するパターン マッチングがサポートされるため (FoxyProxy Standard または Plus のみ)、特定の URL の要求のみがトンネル経由で送信されます。
 
@@ -252,11 +251,11 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 1. ブラウザーで FoxyProxy 拡張を開きます。Firefox などで、アドレス フィールドの横にある FoxyProxy アイコンを選択します。
 
-	![foxyproxy icon](./media/hdinsight-hadoop-linux-use-ssh-unix/foxyproxy.png)
+	![foxyproxy のアイコン](./media/hdinsight-hadoop-linux-use-ssh-unix/foxyproxy.png)
 
 2. **[新しいプロキシの追加]**、**[全般]** タブの順に選択し、**HDInsightProxy** のプロキシ名を入力します。
 
-	![foxyproxy general](./media/hdinsight-hadoop-linux-use-ssh-unix/foxygeneral.png)
+	![foxyproxy の全般](./media/hdinsight-hadoop-linux-use-ssh-unix/foxygeneral.png)
 
 3. **[プロキシの詳細]** タブを選択し、次のフィールドを入力します。
 
@@ -268,7 +267,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[SOCKS v5]** - プロキシに必要なバージョンを設定します。
 
-	![foxyproxy proxy](./media/hdinsight-hadoop-linux-use-ssh-unix/foxyproxyproxy.png)
+	![foxyproxy のプロキシ](./media/hdinsight-hadoop-linux-use-ssh-unix/foxyproxyproxy.png)
 
 4. **[URL パターン]** タブを選択し、**[新しいパターンの追加]** を選択します。以下を使用してパターンを定義し、**[OK]** をクリックします。
 
@@ -276,17 +275,17 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[URL パターン]** - ***headnode*** - **headnode** という単語を含む URL と一致するパターンを定義します。
 
-	![foxyproxy pattern](./media/hdinsight-hadoop-linux-use-ssh-unix/foxypattern.png)
+	![foxyproxy のパターン](./media/hdinsight-hadoop-linux-use-ssh-unix/foxypattern.png)
 
 4. **[OK]** をクリックしてプロキシを追加し、**[プロキシの設定]** を閉じます。
 
 5. FoxyProxy ダイアログの上部で、**[モードの選択]** を **[定義済みのパターンと優先順位に基づいてプロキシを使用]** に変更し、**[閉じる]** を選択します。
 
-	![foxyproxy select mode](./media/hdinsight-hadoop-linux-use-ssh-unix/selectmode.png)
+	![foxyproxy の選択モード](./media/hdinsight-hadoop-linux-use-ssh-unix/selectmode.png)
 
 これらを完了すると、**headnode** という文字列を含む URL の要求のみが SSH トンネル経由で送信されます。
 
-## 次のステップ
+##次のステップ
 
 これで、SSH キーを使用して認証する方法、また、HDInsight 上の Hadoop で MapReduce を使用する方法についてご理解いただけたと思います。
 
@@ -294,6 +293,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-* [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

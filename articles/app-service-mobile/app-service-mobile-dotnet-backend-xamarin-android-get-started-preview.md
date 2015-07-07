@@ -3,7 +3,7 @@
 	description="次のチュートリアルに従って、Xamarin Android 開発用の Azure モバイル アプリを使用します"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
-	authors="chrande"
+	authors="chrisanderson"
 	manager="dwrede"
 	editor="mollybos"/>
 
@@ -12,15 +12,15 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="11/11/2014"
+	ms.topic="get-started-article"
+	ms.date="05/01/2015"
 	ms.author="chrande"/>
 
 # <a name="getting-started"> </a>Xamarin Android アプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-preview](../../includes/app-service-mobile-selector-get-started-preview.md)]
 
-このチュートリアルでは、Azure モバイル アプリを使用して Xamarin Android アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しい .NET サービスと、.NET バックエンドにアプリケーション データを格納する簡単な _To do list_ アプリケーションの両方を作成します。
+このチュートリアルでは、Azure Mobile Apps を使用して Xamarin Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しい .NET サービスと、.NET バックエンドにアプリケーション データを格納する簡単な _To do list_ アプリケーションの両方を作成します。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -54,13 +54,13 @@
     これにより、モバイル アプリ バックエンドに接続された Xamarin Android アプリケーションを作成するための簡単な 3 つの手順が表示されます。
 
 
-3. まだインストールしていない場合は、<a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> をダウンロードし、ローカル コンピューターまたは仮想マシンにインストールします。  
+3. まだインストールしていない場合は、<a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> をダウンロードし、ローカル コンピューターまたは仮想マシンにインストールします。
 
 4. [Xamarin Studio] をまだインストールしていない場合は、ダウンロードしてインストールします。また、Xamarin for Visual Studio を使用することもできます。
 
 5. **[サービスのダウンロードとクラウドへの発行]** で **[ダウンロード]** をクリックします。
 
-  これにより、モバイル アプリ バックエンド コードと、モバイル アプリ バックエンドに接続されているサンプル_To do list_ クライアント アプリケーションの両方のプロジェクトが含まれるソリューションがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+  	これにより、モバイル アプリ バックエンド コードと、モバイル アプリ バックエンドに接続されているサンプル_To do list_ クライアント アプリケーションの両方のプロジェクトが含まれるソリューションがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 6. 発行プロファイルをダウンロードしてローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
@@ -108,6 +108,6 @@
 [Xamarin Studio]: http://xamarin.com/download
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

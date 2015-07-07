@@ -1,11 +1,12 @@
 <properties
- pageTitle="Maven での Scalding MapReduce ジョブの開発"
+ pageTitle="Maven での Scalding MapReduce ジョブの開発 | Microsoft Azure"
  description="Maven を使用して Scalding MapReduce ジョブを作成した後、HDInsight クラスター上の Hadoop にジョブをデプロイして実行する方法を説明します。"
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
  manager="paulettm"
- editor="cgronlun"/> <tags
+ editor="cgronlun"/>
+<tags
  ms.service="hdinsight"
  ms.devlang="na"
  ms.topic="article"
@@ -22,13 +23,12 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 ## 前提条件
 
-* Azure サブスクリプション
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* **HDInsight クラスターの Windows ベースまたは Linux ベースの Hadoop**詳細については、[HDInsight での Linux ベースの Hadoop のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)または [HDInsight での Windows ベースの Hadoop のプロビジョニング](hdinsight-provision-clusters.md)を参照してください。
 
-* HDInsight クラスター上の Windows または Linux ベースの Hadoop - 詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」または「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
+* **[Maven](http://maven.apache.org/)**
 
-* [Maven](http://maven.apache.org/)
-
-* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
+* **[Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降**
 
 ## プロジェクトの作成とビルド
 
@@ -75,7 +75,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
             </dependency>
           </dependencies>
           <build>
-            <sourceDirectory>src/main/scala</sourceDirectory
+            <sourceDirectory>src/main/scala</sourceDirectory>
             <plugins>
               <plugin>
                 <groupId>org.scala-tools</groupId>
@@ -107,7 +107,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
                       <excludes>
                         <exclude>META-INF/*.SF</exclude>
                         <exclude>META-INF/*.DSA</exclude>
-                        <exclude>META-INF/*.RSA</exclude>y
+                        <exclude>META-INF/*.RSA</exclude>
                       </excludes>
                     </filter>
                   </filters>
@@ -144,9 +144,9 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
     * **maven-shade-plugin**: シェードされた (ファット) Jar を作成するためのプラグインです。このプラグインはフィルターおよび変換を適用します。具体的には次のとおりです。
 
-        * **filters**: 適用されるフィルターにより、jar ファイルに含まれるメタ情報が変更されます。実行時に署名の例外が発生しないようにするために、これを使って依存関係が存在する可能性のある各種署名ファイルを除外します。
+        * **フィルター**: 適用されたフィルターによって、jar ファイルに組み込まれるメタ情報が変更されます。実行時に署名の例外が発生しないように、フィルターを使用して、依存関係で組み込まれる可能性のある、さまざまな署名ファイルを除外します。
 
-        * **executions**: パッケージ フェーズの実行構成で、**com.twitter.scalding.Tool** クラスをパッケージのメイン クラスとして指定します。これを指定しない場合は、hadoop コマンドでジョブを実行する際に、アプリケーション ロジックを含むクラスのほか、com.twitter.scalding.Tool を指定する必要があります。
+        * **実行**: パッケージ フェーズ実行構成で、**com.twitter.scalding.Tool** クラスをパッケージのメイン クラスとして指定します。これを指定しない場合は、hadoop コマンドでジョブを実行するときに、com.twitter.scalding.Tool を、アプリケーション ロジックを含むクラスと共に指定する必要があります。
 
 3. この例ではテストを作成しないので、**src/test** ディレクトリを削除します。
 
@@ -168,7 +168,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
           //Tokenizer to split sentance into words
           def tokenize(text : String) : Array[String] = {
-            text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
+            text.toLowerCase.replaceAll("[^a-zA-Z0-9\s]", "").split("\s+")
           }
         }
 
@@ -287,7 +287,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-* [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
-
-<!--HONumber=52-->
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
  
+
+<!---HONumber=62-->

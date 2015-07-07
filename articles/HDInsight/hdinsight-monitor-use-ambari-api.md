@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="Ambari API を使用した HDInsight の Hadoop クラスターの監視 | Azure" 
-	description="Apache Ambari API は、Hadoop クラスターのプロビジョニング、管理、および監視を目的として使用します。Ambari の直観的な演算子ツールと API によって、Hadoop の複雑さが隠されています。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="mumian" 
-	editor="cgronlun" 
+<properties
+	pageTitle="Ambari API を使用した HDInsight の Hadoop クラスターの監視 | Microsoft Azure"
+	description="Apache Ambari API は、Hadoop クラスターのプロビジョニング、管理、および監視を目的として使用します。直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="mumian"
+	editor="cgronlun"
 	manager="paulettm"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/31/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/08/2015"
 	ms.author="jgao"/>
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
- 
+
 Ambari API を使用して HDInsight クラスター バージョン 3.1 および 2.1 を監視する方法について説明します。
 
-
+> [AZURE.NOTE]この記事の情報は、Ambari REST API の読み取り専用バージョンを提供する Windows ベースの HDInsight クラスターを主に対象としたものです。Linux ベースのクラスターについては、[Ambari を使用した Hadoop クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
 
 ## <a id="whatisambari"></a>Ambari とは
 
@@ -34,7 +34,8 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install]を参照してください。Azure PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Running Windows PowerShell Scripts (Windows PowerShell スクリプトの実行)][powershell-script]」をご覧ください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+
 
 - [cURL][curl] は省略可能です。インストールするには、「[cURL のリリースとダウンロード][curl-download]」をご覧ください。
 
@@ -57,20 +58,20 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 **Azure PowerShell の使用**
 
-*HDInsight 3.1 クラスター*で MapReduce job tracker 情報を取得するための Azure PowerShell スクリプトを以下に示します。 ここで重要な相違点は、(Map Reduce ではなく) YARN サービスから詳細をプルする点です。
+*HDInsight 3.1 クラスター*で MapReduce job tracker 情報を取得するための Azure PowerShell スクリプトを以下に示します。 ここで重要な相違点は、(MapReduce ではなく) YARN サービスから詳細をプルする点です。
 
 	$clusterName = "<HDInsightClusterName>"
 	$clusterUsername = "<HDInsightClusterUsername>"
 	$clusterPassword = "<HDInsightClusterPassword>"
-	
+
 	$ambariUri = "https://$clusterName.azurehdinsight.net:443/ambari"
 	$uriJobTracker = "$ambariUri/api/v1/clusters/$clusterName.azurehdinsight.net/services/yarn/components/resourcemanager"
-	
+
 	$passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
 	$creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
-	
-	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus 
-	
+
+	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus
+
 	$response.metrics.'yarn.queueMetrics'
 
 *HDInsight 2.1 クラスター*で MapReduce job tracker 情報を取得するための Azure PowerShell スクリプトを以下に示します。
@@ -78,15 +79,15 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 	$clusterName = "<HDInsightClusterName>"
 	$clusterUsername = "<HDInsightClusterUsername>"
 	$clusterPassword = "<HDInsightClusterPassword>"
-	
+
 	$ambariUri = "https://$clusterName.azurehdinsight.net:443/ambari"
 	$uriJobTracker = "$ambariUri/api/v1/clusters/$clusterName.azurehdinsight.net/services/mapreduce/components/jobtracker"
-	
+
 	$passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
 	$creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
-	
-	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus 
-	
+
+	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus
+
 	$response.metrics.'mapred.JobTracker'
 
 出力は次のようになります。
@@ -100,7 +101,7 @@ cURL を使用してクラスター情報を取得する例を以下に示しま
 	curl -u <username>:<password> -k https://<ClusterName>.azurehdinsight.net:443/ambari/api/v1/clusters/<ClusterName>.azurehdinsight.net
 
 出力は次のようになります。
-	
+
 	{"href":"https://hdi0211v2.azurehdinsight.net/ambari/api/v1/clusters/hdi0211v2.azurehdinsight.net/",
 	 "Clusters":{"cluster_name":"hdi0211v2.azurehdinsight.net","version":"2.1.3.0.432823"},
 	 "services"[
@@ -133,7 +134,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 <tr><td>サービス コンポーネントの取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/services/&lt;ServiceName>/components</tt></td><td>HDFS: namenode、datanode<br/>MapReduce: jobtracker、tasktracker</td></tr>
 <tr><td>コンポーネント情報の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/services/&lt;ServiceName>/components/&lt;ComponentName></tt></td><td>ServiceComponentInfo、host-components、metrics</td></tr>
 <tr><td>ホストの取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/hosts</tt></td><td>headnode0、workernode0</td></tr>
-<tr><td>ホスト情報の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/hosts/&lt;HostName> 
+<tr><td>ホスト情報の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/hosts/&lt;HostName>
 </td><td></td></tr>
 <tr><td>ホスト コンポーネントの取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/hosts/&lt;HostName>/host_components </tt></td><td>namenode、resourcemanager</td></tr>
 <tr><td>ホスト コンポーネント情報の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.net/hosts/&lt;HostName>/host_components/&lt;ComponentName> </tt></td><td>HostRoles、component、host、metrics</td></tr>
@@ -142,7 +143,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 </table>
 
 
-##<a id="nextsteps"></a>次のステップ 
+##<a id="nextsteps"></a>次のステップ
 
 ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。詳細については、次を参照してください。
 
@@ -162,8 +163,8 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 
 [microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
-[Powershell-install]: ../install-configure-powershell.md
-[Powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-install]: ../install-configure-powershell.md
+[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
@@ -173,6 +174,6 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

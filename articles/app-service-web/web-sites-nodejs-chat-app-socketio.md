@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築" 
-	description="Azure でホストされる node.js アプリケーションで socket.io を使用する方法を示すチュートリアル。" 
-	services="app-service\web" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築"
+	description="Azure でホストされる node.js アプリケーションで socket.io を使用する方法を示すチュートリアル。"
+	services="app-service\web"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="03/24/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="03/24/2015"
 	ms.author="mwasson"/>
 
 
@@ -33,7 +33,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 1.  Socket.IO プロジェクトの [ZIP または GZ アーカイブ リリース][release]をダウンロードします (このドキュメントではバージョン 1.3.5 を使用しました)。
 
 
-3.  アーカイブを展開し、**examples\\chat** ディレクトリを新しい場所にコピーします。たとえば、**\\node\\chat** です。
+3.  アーカイブを展開し、**examples\chat** ディレクトリを新しい場所にコピーします。たとえば、**\node\chat** です。
 
 ## App.js の変更とモジュールのインストール
 
@@ -57,7 +57,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 		  "socket.io": "1.3.5"
 		}
 
-4. コマンド ラインで **\\node\\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを npm を使用してインストールします。
+4. コマンド ラインで **\node\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを npm を使用してインストールします。
 
         npm install
 
@@ -67,16 +67,16 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 
 Azure Web アプリを作成し、Git 発行を有効にして、Web アプリの WebSocket サポートを有効にするには、次の手順に従います。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料評価版サイト</a>」を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
-1. Azure クロスプラットフォーム コマンド ライン インターフェイス (xplat-cli) をインストールし、Azure サブスクリプションに接続します。[「Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成」](xplat-cli)を参照してください。
+1. Azure コマンド ライン インターフェイス (Azure CLI) をインストールし、Azure サブスクリプションに接続します。「[Azure CLI のインストールと構成](xplat-cli)」をご覧ください。
 
-2. Azure で初めてリポジトリを設定する場合は、ログイン資格情報を作成する必要があります。Xplat-cli で、次のコマンドを入力します。
+2. Azure で初めてリポジトリを設定する場合は、ログイン資格情報を作成する必要があります。Azure CLI で、次のコマンドを入力します。
 
-		azure site deployment user set [username] [password] 
+		azure site deployment user set [username] [password]
 
 
-3. **\\node\\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Web アプリとローカル Git リポジトリを作成します。このコマンドにより、「azure」という名前の Git リモートも作成されます。
+3. **\node\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Web アプリとローカル Git リポジトリを作成します。このコマンドにより、「azure」という名前の Git リモートも作成されます。
 
 		azure site create mysitename --git
 
@@ -101,10 +101,10 @@ Azure Web アプリを作成し、Git 発行を有効にして、Web アプリ�
 
 	Web アプリの名前の入力を求められた場合は、入力します。
 
-	>[AZURE.NOTE]"azure site set -w" コマンドは、Version 0.7.4 以降の Azure クロスプラットフォーム コマンド ライン インターフェイスでのみ機能します。また、[Azure ポータル](https://portal.azure.com)を使用して、WebSocket のサポートを有効にすることもできます。
+	>[AZURE.NOTE]"azure site set -w" コマンドは、Version 0.7.4 以降の Azure コマンド ライン インターフェイスでのみ機能します。また、[Azure ポータル](https://portal.azure.com)を使用して、WebSocket のサポートを有効にすることもできます。
 	>
 	>Azure ポータルを使用して Websocket を有効にするには、[Web Apps] ブレードから Web アプリをクリックし、**[すべての設定]** > **[アプリケーションの設定]** をクリックします。**[Web Sockets]** で、**[オン]** をクリックします。その後、**[保存]** をクリックします。
-	
+
 5. Azure の Web アプリを表示するには、次のコマンドを使用して Web ブラウザーを起動し、ホストされている Web アプリに移動します。
 
 		azure site browse
@@ -125,7 +125,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###Redis および socket.io-redis モジュールの追加
 
-1. コマンド ラインから、__\\node\\chat__ ディレクトリに移動し、次のコマンドを実行します。
+1. コマンド ラインから、__\node\chat__ ディレクトリに移動し、次のコマンドを実行します。
 
 		npm install socket.io-redis@0.1.4 redis@0.12.1 --save
 
@@ -135,7 +135,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 		var pub = require('redis').createClient(6379,'redishostname', {auth_pass: 'rediskey', return_buffers: true});
 		var sub = require('redis').createClient(6379,'redishostname', {auth_pass: 'rediskey', return_buffers: true});
-		
+
 		var redis = require('socket.io-redis');
 		io.adapter(redis({pubClient: pub, subClient: sub}));
 
@@ -144,14 +144,14 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 	これにより、前の手順で作成した Redis Cache に対する発行とサブスクライブ クライアントが作成されます。その後、クライアントは、Redis Cache を使用してアプリケーション インスタンス間のメッセージおよびイベントの受け渡しを行うように Socket.IO を構成するために、アダプターで使用されます。
 
 	> [AZURE.NOTE]__socket.io-redis__ アダプターは Redis と直接通信できますが、現在のバージョンは Azure Redis Cache で必要な認証をサポートしていません。したがって、__redis__ モジュールを使用して最初の接続が作成された後、クライアントが __socket.io-redis__ アダプターに渡されます。
-	> 
+	>
 	> Azure Redis Cache はポート 6380 を使用するセキュリティで保護された接続をサポートしますが、この例で使用されているモジュールは、2014/7/14 の時点では、セキュリティで保護された接続をサポートしていません。前記のコードは、セキュリティで保護されていない既定のポート 6380 を使用しています。
 
 3. 変更した __app.js__ を保存します。
 
 ###変更のコミットと再デプロイ
 
-__\\node\\chat__ ディレクトリのコマンド ラインから、次のコマンドを使用して変更をコミットし、アプリケーションを再デプロイします。
+__\node\chat__ ディレクトリのコマンド ラインから、次のコマンドを使用して変更をコミットし、アプリケーションを再デプロイします。
 
 	git add .
 	git commit -m "implementing scale out"
@@ -215,10 +215,10 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 		<!--
 		     This configuration file is required if iisnode is used to run node processes behind
 		     IIS or IIS Express.  For more information, visit:
-		
+
 		     https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config
 		-->
-		
+
 		<configuration>
 		  <system.webServer>
 		    <!-- Visit http://blogs.msdn.com/b/windowsazure/archive/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites.aspx for more information on WebSocket support -->
@@ -233,12 +233,12 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 		        <rule name="NodeInspector" patternSyntax="ECMAScript" stopProcessing="true">
 		          <match url="^app.js/debug[/]?" />
 		        </rule>
-		
+
 		        <!-- First we consider whether the incoming URL matches a physical file in the /public folder -->
 		        <rule name="StaticContent">
 		          <action type="Rewrite" url="public{REQUEST_URI}"/>
 		        </rule>
-		
+
 		        <!-- All other URLs are mapped to the node.js web app entry point -->
 		        <rule name="DynamicContent">
 		          <conditions>
@@ -253,7 +253,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 		        * watchedFiles: semi-colon separated list of files that will be watched for changes to restart the server
 		        * node_env: will be propagated to node as NODE_ENV environment variable
 		        * debuggingEnabled - controls whether the built-in debugger is enabled
-		
+
 		      See https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config for a full list of options
 		    -->
 		    <!--<iisnode watchedFiles="web.config;*.js"/>-->
@@ -269,7 +269,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 このチュートリアルでは、Azure Web アプリでホストされるチャット アプリケーションを作成する方法を説明しました。このアプリケーションは、Azure クラウド サービスとしてホストすることもできます。そのための作業手順については、「[Azure クラウド サービスで Socket.IO を使用する Node.js チャット アプリケーションの構築][cloudservice]」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [socketio]: http://socket.io/
@@ -281,5 +281,6 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [chat-example-view]: ./media/web-sites-nodejs-chat-app-socketio/socketio-2.png
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
 [pricing]: /pricing/details/web-sites/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

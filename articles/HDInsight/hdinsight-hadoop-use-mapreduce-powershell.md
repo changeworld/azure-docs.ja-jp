@@ -16,21 +16,21 @@
    ms.date="02/18/2015"
    ms.author="larryfr"/>
 
-# PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
+#PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
 
 [AZURE.INCLUDE [mapreduce セレクター](../../includes/hdinsight-selector-use-mapreduce.md)]
 
 このドキュメントでは、Azure PowerShell を使用して HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
-* Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベース)
+- **Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベース)**
 
-* <a href="http://azure.microsoft.com/documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
-## <a id="powershell"></a>Azure PowerShell を使用した MapReduce ジョブの実行
+##<a id="powershell"></a>Azure PowerShell を使用した MapReduce ジョブの実行
 
 Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる*コマンドレット*が提供されます。これは、HDInsight クラスター上で実行する <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a> への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
 
@@ -102,16 +102,16 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 	
 	> [AZURE.NOTE]**ExitCode** が 0 以外の値の場合は、[トラブルシューティング](#troubleshooting)をご覧ください
 
-## <a id="results"></a>ジョブの出力の表示
+##<a id="results"></a>ジョブの出力の表示
 
-MapReduce ジョブは Azure Blob ストレージの操作の結果を、ジョブの引数として指定された **wasb:///example/data/WordCountOutput** パスに格納しました。Azure Blob ストレージは Azure PowerShell からアクセスできますが、ストレージ アカウント名、キー、ファイルに直接アクセスするために HDInsight クラスターが使用するコンテナーの情報が必要です。
+MapReduce ジョブは Azure BLOB ストレージの操作の結果を、ジョブの引数として指定された **wasb:///example/data/WordCountOutput** パスに格納しました。Azure BLOB ストレージは Azure PowerShell からアクセスできますが、ストレージ アカウント名、キー、ファイルに直接アクセスするために HDInsight クラスターが使用するコンテナーの情報が必要です。
 
 これらの情報は次の Azure PowerShell コマンドレットを使用して取得できます。
 
 * **Get-AzureHDInsightCluster**: HDInsight クラスターやそれに関連付けられたストレージ アカウントに関する情報を返します。クラスターには常に既定のストレージ アカウントが関連付けられます。
 * **New-AzureStorageContext**: **Get-AzureHDInsightCluster** を使用して取得されるストレージ アカウント名とキーを指定することで、ストレージ アカウントへのアクセスに使用できるコンテキスト オブジェクトを返します。
 * **Get-AzureStorageBlob**: コンテキスト オブジェクトとコンテナー名を指定することで、コンテナー内の BLOB の一覧を返します。
-* **Get-AzureStorageBlobContent**: **Get-AzureHDinsightCluster** から返されるコンテキスト オブジェクト、ファイル パス、ファイル名を指定することで、Azure Blob ストレージからファイルをダウンロードします。
+* **Get-AzureStorageBlobContent**: **Get-AzureHDinsightCluster** から返されるコンテキスト オブジェクト、ファイル パス、ファイル名、コンテナー名を指定することで、Azure BLOB ストレージからファイルをダウンロードします。
 
 次の例では、**wasb:///example/data/WordCountOutput** からストレージ情報を取得し、出力をダウンロードします。**CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -147,7 +147,7 @@ MapReduce ジョブの出力は *part-r-#####* という名前のファイルに
 
 > [AZURE.NOTE]MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
-## <a id="troubleshooting"></a>トラブルシューティング
+##<a id="troubleshooting"></a>トラブルシューティング
 
 ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。このジョブに関するエラーを表示するには、次のコマンドを **mapreducejob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
@@ -157,11 +157,11 @@ MapReduce ジョブの出力は *part-r-#####* という名前のファイルに
 
 これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
@@ -172,5 +172,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure App Service での Web アプリのセキュリティ保護" 
-	description="Azure の Web アプリをセキュリティで保護する方法について説明します。" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service での Web アプリのセキュリティ保護"
+	description="Azure の Web アプリをセキュリティで保護する方法について説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="03/24/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="03/24/2015"
 	ms.author="cephalin"/>
 
 
@@ -27,11 +27,11 @@ Web アプリの開発における課題の 1 つが、セキュリティで保�
 
 Web アプリ用に作成された ***.azurewebsites.net** ドメイン名を使用している場合は、SSL 証明書がすべての ***.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。サイトで[カスタム ドメイン名](web-sites-custom-domain-name.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効](web-sites-configure-ssl-certificate.md)にすることができます。
 
-##<a name="develop"></a>保護された開発 
+##<a name="develop"></a>保護された開発
 
 ### プロファイルの発行と発行の設定
 
-**Visual Studio**、**Web Matrix**、**Azure PowerShell**、Azure **クロスプラットフォーム コマンドライン インターフェイス**などのユーティリティを使用して、アプリケーションの開発、管理タスクの実行、またはタスクの自動化を行っている場合は、*発行設定*ファイルまたは*発行プロファイル*を使用できます。どちらも Azure に対する認証に使用されるため、許可されていないアクセスを防ぐためにセキュリティで保護される必要があります。
+**Visual Studio**、**Web Matrix**、**Azure PowerShell**、Azure **コマンドライン インターフェイス (Azure CLI)**などのユーティリティを使用して、アプリケーションの開発、管理タスクの実行、タスクの自動化を行っている場合は、*発行設定*ファイルまたは*発行プロファイル*を使用できます。どちらも Azure に対する認証に使用されるため、許可されていないアクセスを防ぐためにセキュリティで保護される必要があります。
 
 * **発行設定**ファイルには以下のものが含まれます。
 
@@ -45,7 +45,7 @@ Web アプリ用に作成された ***.azurewebsites.net** ドメイン名を使
 
 発行設定または発行プロファイルを使用するユーティリティを使用している場合は、発行設定または発行プロファイルを含むファイルをユーティリティにインポートし、その後、そのファイルを**削除**します。ファイルを保持する必要がある場合、たとえば、プロジェクトに携わる他のユーザーと共有するには、アクセス許可が限定された**暗号化**されたディレクトリなど、セキュリティで保護された場所にファイルを保存します。
 
-さらに、インポートされた資格情報が保護されていることを確認する必要があります。たとえば、**Azure PowerShell** と **Azure クロスプラットフォーム コマンドライン インターフェイス**はどちらも、インポートされた情報を**ホーム ディレクトリ** (Linux または OS X システムでは *\~*、Windows システムでは */users/yourusername*) に保存します。 希望する場合は、さらにセキュリティを強化するために、オペレーティング システムに対応した暗号化ツールを使用してこれらの場所を**暗号化**できます。
+さらに、インポートされた資格情報が保護されていることを確認する必要があります。たとえば、**Azure PowerShell** と **Azure コマンドライン インターフェイス (Azure CLI)**はどちらも、インポートされた情報を**ホーム ディレクトリ** (Linux または OS X システムでは *~*、Windows システムでは */users/yourusername*) に保存します。 希望する場合は、さらにセキュリティを強化するために、オペレーティング システムに対応した暗号化ツールを使用してこれらの場所を**暗号化**できます。
 
 ### 構成設定と接続文字列
 接続文字列、認証資格情報、およびその他の機密情報は構成ファイルに保存するのが一般的な方法です。残念ながら、これらのファイルは Web サイト上で公開される場合やパブリック リポジトリにチェックインされる場合があり、結果としてこの情報が危険にさらされる可能性があります。
@@ -73,8 +73,9 @@ Web アプリの **web.config** または **applicationhost.config** ファイ�
 攻撃の検出に役立つことのある Web アプリのログ情報の詳細については、「[診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -1,55 +1,55 @@
 
-This section shows you how to install a SQL Server Express, enable TCP/IP, set a static port, and create a database that can be used with Hybrid Connections.  
+このセクションでは、SQL Server Express のインストール、TCP/IP の有効化、静的なポートの設定、およびハイブリッド接続で使用可能なデータベースを作成する方法を説明します。
 
-###Install SQL Server Express
+###SQL Server Express をインストールする
 
-To use an on-premises SQL Server or SQL Server Express database with a hybrid connection, TCP/IP needs to be enabled on a static port. Default instances on SQL Server use static port 1433, whereas named instances do not. Because of this, we will install the default instance. If you already have the default instance of SQL Server Express installed, you can skip this section.
+ハイブリッド接続でオンプレミスの SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server の既定のインスタンスは静的ポート 1433 を使用しますが、名前付きインスタンスは静的ポート 1433 を使用しません。このため、既定のインスタンスをインストールします。SQL Server Express の既定のインスタンスが既にインストールされている場合は、このセクションを省略できます。
 
-1. To install SQL Server Express, run the **SQLEXPRWT_x64_ENU.exe** or **SQLEXPR_x86_ENU.exe** file that you downloaded. The SQL Server Installation Center wizard appears.
+1. SQL Server Express をインストールするには、ダウンロードした **SQLEXPRWT_x64_ENU.exe** または **SQLEXPR_x86_ENU.exe** ファイルを実行します。SQL Server インストール センター ウィザードが表示されます。
 	
-2. Choose **New SQL Server stand-alone installation or add features to an existing installation**, follow the instructions, accepting the default choices and settings, until you get to the **Instance Configuration** page.
+2. **[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックし、画面の指示に従い、**[インスタンスの構成]** ページまで、既定の選択と設定を受け入れて進みます。
 	
-3. On the **Instance Configuration** page, choose **Default instance**, then accept the default settings on the **Server Configuration** page.
+3. **[インスタンスの構成]** ページで、**[既定のインスタンス]** を選択してから、**[サーバーの構成]** ページで既定の設定を受け入れます。
 
-	>[AZURE.NOTE]If you already have a default instance of SQL Server installed, you can skip to the next section and use this instance with Hybrid Connections. 
+	>[AZURE.NOTE]SQL Server の既定のインスタンスが既にインストールされている場合は、次のセクションにスキップして、ハイブリッド接続でこのインスタンスを使用できます。
 	
-5. On the **Database Engine Configuration** page, under **Authentication Mode**, choose **Mixed Mode (SQL Server authentication and Windows authentication)**, and provide a secure password for the built-in **sa** administrator account.
+5. **[データベース エンジンの構成]** ページの **[認証モード]** で、**[混合モード (SQL Server 認証と Windows 認証)]** を選択して、組み込みの **sa** 管理者アカウント用の保護されたパスワードを入力します。
 	
-	In this tutorial, you will be using SQL Server authentication. Be sure to remember the password that you provide, because you will need it later.
+	このチュートリアルでは、SQL Server 認証を使用します。後で必要になるため、入力したパスワードを忘れないでください。
 	
-6. Finish the wizard to complete the installation.
+6. ウィザードを終了して、インストールを完了します。
 
-###Enable TCP/IP and setting a static port
+###TCP/IP を有効にして、静的ポートを設定する
 
-This section uses SQL Server Configuration Manager, which was installed when you installed SQL Server Express, to enable TCP/IP and set a static IP address. 
+このセクションでは、SQL Server Express をインストールした際にインストールされた SQL Server 構成マネージャーを使用して、TCP/IP を有効にし、静的ポートを設定します。
 
-1. Follow the steps in [Enable TCP/IP Network Protocol for SQL Server](http://technet.microsoft.com/library/hh231672%28v=sql.110%29.aspx) to enable TCP/IP access to the instance.
+1. 「[SQL Server の TCP/IP ネットワーク プロトコルの有効化](http://technet.microsoft.com/library/hh231672%28v=sql.110%29.aspx)」の手順に従って、インスタンスに TCP/IP がアクセスできるようにします。
 
-2. (Optional) If you are not able to use the default instance, you must follow the steps in [Configure a Server to Listen on a Specific TCP Port ](https://msdn.microsoft.com/library/ms177440.aspx) to set a static port for the instance. If you complete this step, you will connect using the new port that you define, instead of port 1433.
+2. (省略可能) 既定のインスタンスを使用できない場合は、[特定の TCP ポートで受信待ちするようにサーバーを構成する方法](https://msdn.microsoft.com/library/ms177440.aspx)に関するページの手順に従って、インスタンスの静的ポートを設定する必要があります。この手順を完了すると、ポート 1433 ではなく、定義する新しいポートを使用して接続します。
 
-3. (Optional) If needed, add exceptions in the firewall to allow remote access to the SQL Server process (sqlservr.exe).
+3. (省略可能) 必要な場合は、SQL Server のプロセス (sqlservr.exe) へのリモート アクセスを許可するために、ファイアウォールに例外を追加します。
 
-###Create a new database in the on-premises SQL Server instance
+###オンプレミスの SQL Server インスタンスに新しいデータベースを作成する
 
-1. In SQL Server Management Studio, connect to the SQL Server you just installed. (If the **Connect to Server** dialog does not appear automatically, navigate to **Object Explorer** in the left pane, click **Connect**, and then click **Database Engine**.) 	
+1. SQL Server Management Studio で、インストールした SQL Server に接続します(**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの **[オブジェクト エクスプローラー]** に移動し、**[接続]**、次に **[データベース エンジン]** をクリックします)。 	
 
-	![Connect to Server](./media/hybrid-connections-create-on-premises-database/A04SSMSConnectToServer.png)
+	![サーバーへの接続](./media/hybrid-connections-create-on-premises-database/A04SSMSConnectToServer.png)
 	
-	For **Server type**, choose **Database Engine**. For **Server name**, you can use **localhost** or the name of the computer where you installed SQL Server. Choose **SQL Server authentication**, and supply the password for the sa login that you created earlier. 
+	**[サーバーの種類]** には、**[データベース エンジン]** を選択します。**[サーバー名]** には、**[localhost]**、または SQL Server をインストールしたコンピューターの名前を使用します。**[SQL Server 認証]** を選択し、前に作成した sa のログインのパスワードを入力します。
 	
-2. To create a new database by using SQL Server Management Studio, right-click **Databases** in Object Explorer, and then click **New Database**.
+2. SQL Server Management Studio を使用して新しいデータベースを作成するには、オブジェクト エクスプローラーで **[データベース]** を右クリックしてから、**[新しいデータベース]** をクリックします。
 	
-3. In the **New Database** dialog, type `OnPremisesDB`, and then click **OK**. 
+3. **[新しいデータベース]** ダイアログ ボックスで、「`OnPremisesDB`」と入力し、**[OK]** をクリックします。
 	
-4. In Object Explorer, if you expand **Databases**, you will see that the new database is created.
+4. オブジェクト エクスプローラーで、**[データベース]** を展開すると、新しいデータベースが作成されたことが示されます。
 
-###Create a new SQL Server login and set permissions
+###新しい SQL Server ログインを作成し、アクセス許可を設定する
 
-Finally, you will create a new SQL Server login with restricted permissions. Your Azure service will connect to the on-premise SQL Server using this login instead of the built-in sa login, which has full permissions on the server.
+最後に、アクセス許可を制限した新しい SQL Server ログインを作成します。Azure サービスは、サーバーに対する完全なアクセス許可を持つ組み込みの sa ログインではなく、このログインを使用してオンプレミスの SQL Server に接続します。
 
-1. In SQL Server Management Studio Object Explorer, right-click the **OnPremisesDB** database and click **New Query**.
+1. SQL Server Management Studio オブジェクト エクスプローラーで、**[OnPremisesDB]** データベースを右クリックし、**[新しいクエリ]** をクリックします。
 
-2.  Paste the following TSQL query into the query window.
+2.  次の TSQL クエリを、クエリ ウィンドウに貼り付けます。
 
 		USE [master]
 		GO
@@ -74,7 +74,8 @@ Finally, you will create a new SQL Server login with restricted permissions. You
 		GRANT CREATE SCHEMA TO [HybridConnectionLogin]
 		GO  
    
-3. In the above script, replace the string `<**secure_password**>` with a secure password for the new *HybridConnectionsLogin*.
+3. 上記のスクリプトでは、文字列 `<**secure_password**>` を、新しい *HybridConnectionsLogin* 用の保護されたパスワードに置き換えます。
 
-4. **Execute** the query to create the new login and grant the required permissions in the on-premises database.
+4. クエリを**実行**して、新しいログインを作成し、オンプレミスのデータベースで必要なアクセス許可を付与します。
 
+<!---HONumber=62-->

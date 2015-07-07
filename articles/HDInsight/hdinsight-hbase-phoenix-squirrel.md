@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="HDinsight での Apache Phoenix および SQuirrel の使用 | Azure" 
-   description="Apache Phoenix を HDInsight で使用する方法、およびワークステーションに SQuirrel をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。" 
+   pageTitle="HDInsight での Apache Phoenix および SQuirreL の使用 | Microsoft Azure" 
+   description="Apache Phoenix を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。" 
    services="hdinsight" 
    documentationCenter="" 
    authors="mumian" 
@@ -13,44 +13,54 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/15/2015"
+   ms.date="05/05/2015"
    ms.author="jgao"/>
 
-# HDinsight での Apache Phoenix および SQuirrel の使用  
+# HDInsight での Phoenix、SQuirreL、HBase クラスターの使用  
 
-[Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirrel をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。
+[Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 >[AZURE.NOTE]HDInsight での Phoenix のバージョンの情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
 
-## SQLLine の使用
+##SQLLine の使用
 [SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
 
-### 前提条件
+###前提条件
 SQLLine を使用するには、以下のものが必要です。
 
 - **HDInsight 環境の HBase クラスター**。HBase クラスターのプロビジョニングについては、「[Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]」を参照してください。
-- **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。方法については、「[Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
+- **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。方法については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
 
 **ホスト名を確認するには**
 
 1. デスクトップから **Hadoop コマンド ライン**を開きます。
-2. 次のコマンドを実行します。
+2. 次のコマンドを実行して、DNS サフィックスを取得します。
 
 		ipconfig
 
-	**接続固有の DNS サフィックス**を記録します。例: *myhbasecluster.f5.internal.cloudapp.net* HBase クラスターに接続するときは、FQDN を使用して Zookeeper のいずれかに接続する必要があります。各 HDInsight クラスターには 3 つの Zookeeper があります。*zookeeper0*、*zookeeper1*、および *zookeeper2* です。FQDN は *zookeeper2.myhbasecluster.f5.internal.cloudapp.net* のようになります。
+	**接続固有の DNS サフィックス**を記録します。例: *myhbasecluster.f5.internal.cloudapp.net*HBase クラスターに接続するときは、FQDN を使用して Zookeeper のいずれかに接続する必要があります。各 HDInsight クラスターには 3 つの Zookeeper があります。*zookeeper0*、*zookeeper1*、および *zookeeper2* です。FQDN は *zookeeper2.myhbasecluster.f5.internal.cloudapp.net* のようになります。
 
 **SQLLine を使用するには**
 
 1. デスクトップから **Hadoop コマンド ライン**を開きます。
-2. 次のコマンドを実行します。
+2. 次のコマンドを実行して、SQLLine を開きます。
 
 		cd %phoenix_home%\bin
 		sqlline.py [The FQDN of one of the Zookeepers]
 
 	![hdinsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
 
-詳細については、[SQLLine のマニュアル](http://sqlline.sourceforge.net/#manual)を参照してください。
+	サンプルで使用されているコマンド:
+
+		CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
+		
+		!tables;
+		
+		UPSERT INTO Company VALUES(1, 'Microsoft');
+		
+		SELECT * FROM Company;
+
+詳細については、[SQLLine のマニュアル](http://sqlline.sourceforge.net/#manual)および [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 
 
@@ -69,40 +79,40 @@ SQLLine を使用するには、以下のものが必要です。
 
 
 
-## SQuirrel の使用
+##SQuirreL の使用
 
-[SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/) はグラフィカルな Java プログラムであり、JDBC 準拠データベースの構造の表示、テーブル内のデータの参照、SQL コマンドの発行などに使用できます。
+[SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/) はグラフィカルな Java プログラムであり、JDBC 準拠データベースの構造の表示、テーブル内のデータの参照、SQL コマンドの発行などに使用できます。これを使用して、HDInsight の Apache Phoenix に接続できます。
 
-このセクションでは、ワークステーションに SQuirrel をインストールし、VPN 経由で HDInsight の HBase クラスターに接続するように構成する方法について説明します。
+このセクションでは、ワークステーションに SQuirreL をインストールし、VPN 経由で HDInsight の HBase クラスターに接続するように構成する方法について説明します。
 
-### 前提条件
+###前提条件
 
 手順を実行する前に、以下のものが必要です。
 
-- DNS 仮想マシンで Azure Virtual Network にデプロイされた HBase クラスター。方法については、「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照してください。 
+- DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。方法については、「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照してください。 
 
-	>[AZURE.IMPORTANT]仮想ネットワークに DNS サーバーをインストールする必要があります。
+	>[AZURE.IMPORTANT]仮想ネットワークに DNS サーバーをインストールする必要があります。方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)」を参照してください。
 
 - HBase クラスターの接続固有の DNS サフィックスを取得します。そのためには、RDP でクラスターに接続して、IPConfig を実行します。DNS サフィックスの例を次に示します。
 
 		myhbase.b7.internal.cloudapp.net
 - [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) をダウンロードしてワークステーションにインストールします。パッケージから makecert を実行して証明書を作成する必要があります。  
-- [Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)をダウンロードしてワークステーションにインストールします。SQuirrel SQL クライアント バージョン 3.0 以降には、JRE バージョン 1.6 以降が必要です。  
+- [Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)をダウンロードしてワークステーションにインストールします。SQuirreL SQL クライアント バージョン 3.0 以降には、JRE バージョン 1.6 以降が必要です。  
 
 
-### Azure Virtual Network へのポイント対サイト VPN 接続を構成します。
+###Azure 仮想ネットワークへのポイント対サイト VPN 接続を構成します。
 
 ポイント対サイト VPN 接続の構成には 3 つの手順があります。
 
 1. [仮想ネットワークと動的ルーティング ゲートウェイを構成します](#Configure-a-virtual-network-and-a-dynamic-routing-gateway)
-2. [証明書を作成します](#Create-your-certificates)
+2. [証明書の作成](#Create-your-certificates)
 3. [VPN クライアントを構成します](#Configure-your-VPN-client)
 
 詳細については、「[Azure 仮想ネットワークへのポイント対サイト VPN 接続の構成](https://msdn.microsoft.com/library/azure/dn133792.aspx)」を参照してください。
 
 #### 仮想ネットワークと動的ルーティング ゲートウェイの構成
 
-Azure Virtual Network に HBase クラスターをプロビジョニングしてあることを確認します (このセクションの前提条件を参照)。次の手順では、ポイント対サイト接続を構成します。
+Azure 仮想ネットワークに HBase クラスターをプロビジョニングしてあることを確認します (このセクションの前提条件を参照)。次の手順では、ポイント対サイト接続を構成します。
 
 **ポイント対サイト接続を構成するには**
 
@@ -110,8 +120,8 @@ Azure Virtual Network に HBase クラスターをプロビジョニングして
 2. 左側の **[ネットワーク]** をクリックします。
 3. 作成してある仮想ネットワークをクリックします (「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照)。
 4. 上部にある **[構成]** をクリックします。
-5.  **[ポイント対サイト接続]** セクションで、**[ポイント対サイト接続の構成]** を選択します。 
-6. **[開始 IP]** と **[CIDR]** を構成し、接続時に VPN クライアントが IP アドレスを受け取る IP アドレスの範囲を指定します。この範囲は、オンプレミスのネットワークに存在する範囲および接続先の Azure Virtual Network と重複することはできません。たとえば、仮想ネットワークに対して 10.0.0.0/20 を選択した場合、クライアント アドレス空間には 10.1.0.0/24 を選択できます。詳細については、「[[ポイント対サイト接続] ページ][vnet-point-to-site-connectivity]」を参照してください。
+5. **[ポイント対サイト接続]** セクションで、**[ポイント対サイト接続の構成]** を選択します。 
+6. **[開始 IP]** と **[CIDR]** を構成し、接続時に VPN クライアントが IP アドレスを受け取る IP アドレスの範囲を指定します。この範囲は、オンプレミスのネットワークに存在する範囲および接続先の Azure 仮想ネットワークと重複することはできません。たとえば、仮想ネットワークに対して 10.0.0.0/20 を選択した場合、クライアント アドレス空間には 10.1.0.0/24 を選択できます。詳細については、「[[ポイント対サイト接続] ページ][vnet-point-to-site-connectivity]」を参照してください。
 7. 仮想ネットワーク アドレス空間セクションで **[ゲートウェイ サブネットの追加]** をクリックします。
 7. ページの下部にある **[保存]** をクリックします。
 8. **[はい]** をクリックして変更を確定します。システムが変更を完了するまで待ってから、次の手順に進みます。
@@ -124,7 +134,7 @@ Azure Virtual Network に HBase クラスターをプロビジョニングして
 3. **[はい]** をクリックして確定します。ゲートウェイが作成されるまで待ちます。
 4. 上部にある **[ダッシュボード]** をクリックします。仮想ネットワークの図が表示されます。
 
-	![Azure Virtual Network のポイント対サイト仮想ダイアグラム][img-vnet-diagram]
+	![Azure 仮想ネットワークのポイント対サイト仮想ダイアグラム][img-vnet-diagram]
 
 	図ではクライアント接続が 0 であることが示されています。仮想ネットワークに接続すると、この値が 1 に更新されます。
 
@@ -153,13 +163,13 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 
   		makecert.exe -n "CN=HBaseVnetVPNClientCertificate" -pe -sky exchange -m 96 -ss My -in "HBaseVnetVPNRootCertificate" -is my -a sha1
 
-	HBaseVnetVPNRootCertificate はルート証明書名です。  ルート証明書名と一致している必要があります。  
+	HBaseVnetVPNRootCertificate は、ルート証明書の名前を示します。この名前は、ルート証明書の名前と一致する必要があります。
 
-	ルート証明書とクライアント証明書は、どちらもコンピューターの個人用証明書ストアに保管されます。確認するには、certmgr.msc を使用してください。
+	ルート証明書とクライアント証明書は、どちらもコンピューター上の個人証明書ストアに格納されます。確認するには、certmgr.msc を使用します。
 
-	![Azure virtual network point-to-site vpn certificate][img-certificate]
+	![Azure 仮想ネットワークのポイント対サイト VPN 証明書][img-certificate]
 
-	クライアント証明書は、仮想ネットワークに接続するコンピューターごとにインストールする必要があります。仮想ネットワークに接続するコンピューターごとに、一意のクライアント証明書を作成することをお勧めします。クライアント証明書をエクスポートするには、certmgr.msc を使用してください。 
+	クライアント証明書は、仮想ネットワークに接続する各コンピューターにインストールする必要があります。仮想ネットワークに接続する各コンピューターに、一意のクライアント証明書を作成することをお勧めします。クライアント証明書をエクスポートするには、certmgr.msc を使用します。
 
 **Azure ポータルにルート証明書をアップロードするには**
 
@@ -198,17 +208,17 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 		headnode1.myhbase.b7.internal.cloudapp.net
 		workernode0.myhbase.b7.internal.cloudapp.net
 
-### ワークステーションへの SQuirrel のインストールと構成
+###ワークステーションへの SQuirreL のインストールと構成
 
-**SQuirrel をインストールするには**
+**SQuirreL をインストールするには**
 
-1. [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirrel SQL クライアントの jar ファイルをダウンロードします。
+1. [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
 2. jar ファイルを開くか実行します。[Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
 3. **[次へ]** を 2 回クリックします。
 4. 書き込みアクセス許可のあるパスを指定し、**[次へ]** をクリックします。
-	>[AZURE.NOTE]既定のインストール フォルダーは、C:\\Program Files\\squirrel-sql-3.6 です。このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
+	>[AZURE.NOTE]既定のインストール フォルダーは、C:\Program Files\squirrel-sql-3.6 です。このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
 	>
-	>     java.exe -jar [the path of the SQuirrel jar file] 
+	>     java.exe -jar [the path of the SQuirreL jar file] 
 5. **[OK]** をクリックして、ターゲット ディレクトリの作成を確認します。
 6. 既定の設定では、Base および Standard パッケージがインストールされます。**[次へ]** をクリックします。
 7. **[次へ]** を 2 回クリックし、**[完了]** をクリックします。
@@ -219,11 +229,11 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 Phoenix ドライバーの jar ファイルは、HBase クラスターにあります。パスは、バージョンに基づく次のようなものです。
 
 	C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
-これを、ワークステーションの [SQuirrel インストール フォルダー]/lib パスにコピーする必要があります。最も簡単な方法は、RDP でクラスターに接続し、ファイルのコピー/貼り付け (Ctrl + C および Ctrl + V) を使用してワークステーションにコピーします。
+これを、ワークステーションの [SQuirreL インストール フォルダー]/lib パスにコピーする必要があります。最も簡単な方法は、RDP でクラスターに接続し、ファイルのコピー/貼り付け (Ctrl + C および Ctrl + V) を使用してワークステーションにコピーします。
 
-**Phoenix ドライバーを SQuirrel に追加するには**
+**Phoenix ドライバーを SQuirreL に追加するには**
 
-1. ワークステーションから SQuirrel SQL クライアントを開きます。
+1. ワークステーションから SQuirreL SQL クライアントを開きます。
 2. 左側の **[Driver]** タブをクリックします。
 2. **[Drivers]** メニューから **[New Driver]** をクリックします。
 3. 次の情報を入力します。
@@ -232,28 +242,28 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 	- **Example URL**: jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.cloudapp.net
 	- **Class Name**: org.apache.phoenix.jdbc.PhoenixDriver
 
-	>[AZURE.WARNING][Example URL] はすべて小文字で指定します。
+	>[AZURE.WARNING][Example URL] はすべて小文字で指定します。いずれかがダウンした場合に備えて、完全な zookeeper クォーラムを使用できます。ホスト名は、zookeeper0、zookeeper1、zookeeper2 です。
 
-	![HDInsight HBase Phoenix SQuirrel ドライバー][img-squirrel-driver]
+	![HDInsight HBase Phoenix SQuirreL ドライバー][img-squirrel-driver]
 4. **[OK]** をクリックします。
 
 **HBase クラスターの別名を作成するには**
 
-1. SQuirrel で左側の **[Aliases]** タブをクリックします。
+1. SQuirreL で左側の **[Aliases]** タブをクリックします。
 2. **[Aliases]** メニューの **[New Alias]** をクリックします。
 3. 次の情報を入力します。
 
 	- **Name**: HBase クラスターの名前または他の任意の名前。
 	- **Driver**: Phoenix。これは、前の手順で作成したドライバー名と一致する必要があります。
 	- **URL**: URL はドライバーの構成からコピーされます。すべて小文字を使用してください。
-	- **User name**: HBase クラスターの HTTP ユーザー名
-	- **Password**: HBase クラスターの HTTP ユーザー パスワード
+	- **User name**: 任意のテキストを指定できます。ここでは VPN 接続を使用するため、ユーザー名はまったく使用されません。
+	- **Password**: 任意のテキストを指定できます。
 
-	![HDInsight HBase Phoenix SQuirrel ドライバー][img-squirrel-alias]
+	![HDInsight HBase Phoenix SQuirreL ドライバー][img-squirrel-alias]
 4. **[Test]** をクリックします。 
-5. **[接続]** をクリックします。接続が確立されると、SQuirrel の表示は次のようになります。
+5. **[接続]** をクリックします。接続が確立されると、SQuirreL の表示は次のようになります。
 
-	![HBase Phoenix SQuirrel][img-squirrel]
+	![HBase Phoenix SQuirreL][img-squirrel]
 
 **テストを実行するには**
 
@@ -263,11 +273,11 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 		CREATE TABLE IF NOT EXISTS us_population (state CHAR(2) NOT NULL, city VARCHAR NOT NULL, population BIGINT  CONSTRAINT my_pk PRIMARY KEY (state, city))
 3. 実行ボタンをクリックします。
 
-	![HBase Phoenix SQuirrel][img-squirrel-sql]
+	![HBase Phoenix SQuirreL][img-squirrel-sql]
 4. **[Objects]** タブに戻ります。
 5. 別名を展開し、**[TABLE]** を展開します。新しいテーブルが下に一覧表示されます。
  
-## 次のステップ
+##次のステップ
 この記事では、HDInsight で Apache Phoenix を使用する方法を説明しました。詳細については、次を参照してください。
 
 - 「[HDInsight HBase の概要][hdinsight-hbase-overview]」: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
@@ -294,6 +304,6 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
 
 
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

@@ -20,7 +20,7 @@
 
 ## 概要
 
-チュートリアル「[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)」では、**すべてのユーザーが利用できる**アクセス レベルで API アプリをデプロイしました。このチュートリアルでは、認証されたユーザーのみがアクセスできるように API アプリを保護する方法を示します。
+このチュートリアルでは、認証されたユーザーのみがアクセスできるように API アプリを保護する方法を示します。さらに、ASP.NET API アプリで使用できる、ログオンしているユーザーに関する情報を取得するためのコードも紹介します。
 
 以下の手順を実行します。
 
@@ -29,6 +29,7 @@
 - API アプリをもう一度呼び出して、認証されていない要求が拒否されることを確認します。
 - 構成したプロバイダーにログインします。
 - API アプリをもう一度呼び出して、認証されたアクセスが機能することを確認します。
+- ログオン ユーザーの要求を取得するコードを作成してテストします。
 
 ## 前提条件
 
@@ -48,7 +49,7 @@ API アプリにパブリックにアクセスできることを確認する最�
 
 3. **[API アプリ]** ブレードで、API アプリを呼び出すブラウザーのウィンドウを開くための **URL** をクリックします。
 
-	![[API アプリ] ブレード](./media/app-service-api-dotnet-add-authentication/chooseapiappurl.png)
+	![API App blade](./media/app-service-api-dotnet-add-authentication/chooseapiappurl.png)
 
 2. ブラウザーのアドレス バーに表示されている URL に `/api/contacts/get/` を追加します。
 
@@ -158,7 +159,13 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 
 	![ゲートウェイ URL](./media/app-service-api-dotnet-add-authentication/gatewayurl.png)
 
-	[providername] の値は、"microsoftaccount"、"facebook"、"twitter"、"google"、または "aad" です。
+	[providername] には、次の値のいずれかを指定する必要があります。
+	
+	* "microsoftaccount"
+	* "facebook"
+	* "twitter"
+	* "google"
+	* "aad"
 
 	Azure Active Directory のサンプルのログイン URL を次に示します。
 
@@ -230,6 +237,74 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 
 	![応答 403 Forbidden](./media/app-service-api-dotnet-add-authentication/403forbidden.png)
 
+## ログオンしているユーザーに関する情報の取得
+
+このセクションでは、ログオン ユーザーの名前と電子メール アドレスを取得して返すように ContactsList API アプリのコードを変更します。
+
+1. Visual Studio で、[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するトピックでデプロイした、このチュートリアルで必要な API アプリ プロジェクトを開きます。
+
+3. apiapp.json ファイルを開き、API アプリで Azure Active Directory 認証を使用することを示す行を追加します。
+
+		"authentication": [{"type": "aad"}]
+
+	最終的な apiapp.json ファイルは、次の例のようになります。
+
+		{
+		    "$schema": "http://json-schema.org/schemas/2014-11-01/apiapp.json#",
+		    "id": "ContactsList",
+		    "namespace": "microsoft.com",
+		    "gateway": "2015-01-14",
+		    "version": "1.0.0",
+		    "title": "ContactsList",
+		    "summary": "",
+		    "author": "",
+		    "endpoints": {
+		        "apiDefinition": "/swagger/docs/v1",
+		        "status": null
+		    },
+		    "authentication": [{"type": "aad"}]
+		}
+
+	このチュートリアルでは、例として Azure Active Directory を使用しています。その他のプロバイダーについては、適切な識別子を使用します。有効なプロバイダー値を次に示します。
+
+	* "aad"
+	* "microsoftaccount"
+	* "google"
+	* "twitter"
+	* "facebook" 
+
+2. *ContactsController.cs* ファイルで、`Get` メソッドのコードを次のコードで置き換えます。
+
+		var runtime = Runtime.FromAppSettings(Request);
+		var user = runtime.CurrentUser;
+		TokenResult token = await user.GetRawTokenAsync("aad");
+		var name = (string)token.Claims["name"];
+		var email = (string)token.Claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"];
+		return new Contact[]
+		{
+		    new Contact { Id = 1, EmailAddress = email, Name = name }
+		};
+
+	このコードは、3 つのサンプルの連絡先ではなく、ログオン ユーザーの連絡先情報を返します。
+
+	サンプル コードでは、Azure Active Directory を使用しています。その他のプロバイダーについては、前の手順に示すように、適切なトークン名と要求識別子を使用します。
+
+	使用できる Azure Active Directory の要求については、[サポートされているトークンと要求の種類](https://msdn.microsoft.com/library/dn195587.aspx)に関するページを参照してください。
+
+3. `Microsoft.Azure.AppService.ApiApps.Service` の using ステートメントを追加します。
+
+		using Microsoft.Azure.AppService.ApiApps.Service;
+
+3. プロジェクトを再デプロイします。
+
+	Visual Studio は、[デプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルに従ってプロジェクトをデプロイしたときの設定を使用します。プロジェクトを右クリックし、**[発行]** をクリックします。次に、**[Web の発行]** ダイアログの **[発行]** をクリックします。
+
+6. 保護されている API アプリに Get 要求を送信したときの手順に従います。
+
+	応答メッセージに、ログインするときに使用したユーザーの名前と ID が表示されます。
+
+	![Response message with logged on user](./media/app-service-api-dotnet-add-authentication/chromegetuserinfo.png)
+
 ## 次のステップ
 
 ここまでは、Azure Active Directory またはソーシャル プロバイダーの認証を必要とすることによって Azure API アプリを保護する方法について説明しました。詳細については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
@@ -238,4 +313,6 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
 
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=62-->

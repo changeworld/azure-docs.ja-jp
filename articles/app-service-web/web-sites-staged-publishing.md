@@ -192,16 +192,16 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するための�
 
 ----------
 
-<!-- ======== XPLAT-CLI =========== -->
+<!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
-## 展開スロット用の Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) コマンド
+## デプロイメント スロット用の Azure コマンド ライン インターフェイス (Azure CLI) コマンド
 
-Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) には、Web アプリ展開スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。
+Azure CLI には、Web アプリ デプロイメント スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。
 
-- Azure サブスクリプションへの xplat-cli の接続方法に関する情報など、xplat-cli のインストールと構成手順については、「[Install and Configure the Azure Cross-Platform Command-Line Interface (Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成)](../xplat-cli.md)」を参照してください。
+- Azure サブスクリプションへのAzure CLI の接続方法に関する情報など、Azure CLI のインストールと構成手順については、「[Azure CLI のインストールと構成](../xplat-cli.md)」をご覧ください。
 
--  xplat-cli で Azure App Service に使用できるコマンドの一覧を表示するには、`azure site -h` を呼び出してください。
+-  Azure CLI で Azure App Service に使用できるコマンドの一覧を表示するには、`azure site -h` を呼び出してください。
 
 ----------
 ### azure site list
@@ -241,8 +241,8 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 [Microsoft Azure 無料評価版](/pricing/free-trial/)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 <!-- IMAGES -->
 [QGAddNewDeploymentSlot]: ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png
@@ -258,6 +258,6 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 [Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
 [Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
-
-<!--HONumber=54-->
  
+
+<!---HONumber=62-->

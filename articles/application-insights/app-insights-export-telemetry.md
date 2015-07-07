@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,13 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.date="06/13/2015" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
 
 テレメトリに対してカスタマイズした分析を行う必要がありますか。 それとも、特定のプロパティを持つイベントに対して電子メール アラートを送信する必要がありますか。 そのようなケースには、連続エクスポートが最適です。Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。
 
+連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
 
 ## <a name="setup"></a>連続エクスポートの設定
 
@@ -45,6 +46,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 ストリームを停止するには、[無効] をクリックします。もう一度 [有効] をクリックすると、新しいデータでストリームが再開されます。エクスポートが無効な場合、ポータルに到着したデータは取得されません。
 
 ストリームを完全に停止するには、エクスポートを削除します。エクスポートを削除しても、ストレージのデータは削除されません。
+
 #### エクスポートを追加または変更できない
 
 * エクスポートを追加または変更するには、所有者、共同作成者、または Application Insights 共同作成者のアクセス権が必要になります。[ロールの詳細についてはこちら][roles]。
@@ -58,7 +60,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 計算メトリックは含まれません。たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
-## <a name="get"></a>入手方法
+## <a name="get"></a> データの確認
 
 [サーバー エクスプローラー](http://msdn.microsoft.com/library/azure/ff683677.aspx)などのツールを使用して Blob ストアを開くと、Blob ファイルのセットを含むコンテナーが表示されます。各ファイルの URI は、"アプリケーション ID/テレメトリの種類/日付/時刻" です。
 
@@ -66,18 +68,11 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 日付と時刻は UTC 形式で表され、テレメトリが生成された時間ではなく、ストアに格納された日時を示します。そのため、データをダウンロードするコードを記述する場合は、直線的にデータ内を移動できます。
 
-プログラムでこのデータをダウンロードするには、[Blob ストア REST API](../storage-dotnet-how-to-use-blobs.md#configure-access) または [Azure PowerShell コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)を使用します。
-
-または、パイプラインを設定して大規模にデータを管理できる [DataFactory](http://azure.microsoft.com/services/data-factory/) を検討してください。
-
-ここでは、(イベントを受け取った場合に) 1 時間ごとに新しい Blob を作成します。したがって、必ず前の 1 時間分の処理が必要になりますが、現在の 1 時間が経過するのを待つ必要があります。
-
-[サンプル コード][exportcode]
 
 
-## <a name="format"></a>データの内容
+## <a name="format"></a> データ形式
 
-* それぞれの Blob は、"\\n" で区切られた複数の行を含むテキスト ファイルです。
+* それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。内容を確認する場合は、Notepad++ のようなビューアーに JSON プラグインを組み合わせることができます。
 
 ![適切なツールでテレメトリを表示します](./media/app-insights-export-telemetry/06-json.png)
@@ -90,7 +85,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 
 
-## 処理方法
+## データの処理
 
 小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。次に例を示します。
 
@@ -111,8 +106,17 @@ Application Insights ポータルのアプリケーションの概要ブレー�
       }
     }
 
+大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」を参照してください。
 
-SQL データベースにデータを移動することもできます。[サンプル コード][exportcode]を参照してください。
+#### SQL へのエクスポート
+
+もう 1 つの方法は、SQL データベースにデータを移動して、より強力な分析を実行することです。
+
+Blob ストレージからデータベースにデータを移動する 2 つの方法をサンプルで示します。
+
+* [worker ロールを使用して SQL にエクスポートする][exportcode]
+* [Stream Analytics を使用して SQL にエクスポートする][exportasa]
+
 
 大規模な処理の場合は、[HDInsight](http://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
 
@@ -129,10 +133,6 @@ SQL データベースにデータを移動することもできます。[サン
 
 連続エクスポートが再開されます。
 
-
-## サンプル コード
-
-[エクスポートされたデータを SQL データベースに移動する][exportcode]
 
 ## Q & A
 
@@ -170,7 +170,9 @@ SQL データベースにデータを移動することもできます。[サン
 <!--Link references-->
 
 [exportcode]: app-insights-code-sample-export-telemetry-sql-database.md
+[exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

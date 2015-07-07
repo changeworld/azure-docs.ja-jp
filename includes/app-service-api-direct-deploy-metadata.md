@@ -36,4 +36,4 @@ API アプリが動的 [Swagger](http://swagger.io/) API 定義を返すこと�
 
 *apiapp.json* ファイルから `endpoints.apiDefinition` を除外するか、その値を null に設定します。`endpoints.apiDefinition` URL と *apiDefinition.swagger.json* ファイルの両方を含めた場合は、URL が優先され、ファイルは無視されます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

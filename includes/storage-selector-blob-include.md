@@ -6,4 +6,6 @@
 - [PHP](../articles/storage/storage-php-how-to-use-blobs.md)
 - [Ruby](../articles/storage/storage-ruby-how-to-use-blob-storage.md)
 - [Python](../articles/storage/storage-python-how-to-use-blob-storage.md)
-<!--HONumber=52-->
+- [Xamarin](../articles/storage/storage-xamarin-blob-storage.md)
+
+<!---HONumber=62-->

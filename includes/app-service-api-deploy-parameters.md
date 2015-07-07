@@ -1,12 +1,10 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the 
-environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deploy. 
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に指定する値のパラメーターを定義します。テンプレートには、Parameters という名前のセクションがあり、ここにすべてのパラメーター値が格納されます。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレートにおいて、それぞれのパラメーターの値は、デプロイ対象のリソースを定義するために使用されます。
 
-We will describe each parameter in the template.
+テンプレートに含まれるそれぞれのパラメーターについて説明します。
 
 ### gatewayName
 
-The name of the gateway you wish to create. The API app gets registered to this gateway.
+作成するゲートウェイの名前。API アプリは、このゲートウェイに登録されます。
 
     "gatewayName": {
       "type": "string"
@@ -14,7 +12,7 @@ The name of the gateway you wish to create. The API app gets registered to this 
 
 ### apiAppName
 
-The name of the API app to create.
+作成する API アプリの名前。
     
     "apiAppName": {
       "type": "string"
@@ -22,7 +20,7 @@ The name of the API app to create.
 
 ### apiAppSecret
 
-The secret for the API app. This value must be a base64-encoded string.
+API アプリのシークレット。この値は、base64 でエンコードされた文字列である必要があります。
 
     "apiAppSecret": {
       "type": "securestring"
@@ -30,9 +28,10 @@ The secret for the API app. This value must be a base64-encoded string.
 
 ### location
 
-The location for the new API app.
+新しい API アプリの場所。
 
     "location": {
       "type": "string"
     }
 
+<!---HONumber=62-->

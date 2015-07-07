@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/20/2015"
+	ms.date="05/23/2015"
 	ms.author="stepsic"/>
 	
 # ロジック アプリの機能を使用する
@@ -89,15 +89,17 @@
 		    "defaultValue" : "MicrosoftAzure"
 	    }
     
-2. `twitterconnector` アクションまでスクロールし、クエリの値を探して `@concat('#', parameters('topic'))` に置き換えます。**concat** 関数は 2 つ以上の文字列を結合します。
+2. `twitterconnector` アクションまでスクロールし、クエリの値を探して `#@{parameters('topic')}` に置き換えます。**concat** 関数を使用して 2 つ以上の文字列を結合することもできます。たとえば `@concat('#',parameters('topic'))` は上記と同じです。
  
 3. 最後に、`dropboxconnector` アクションに移動して、次のように topic パラメーターを追加します。
 
-    	@concat('/tweets/', parameters('topic'), '/',repeatItem().TweetID,'.txt')
+    	/tweets/@{parameters('topic')}/@{repeatItem().TweetID}.txt
 
 パラメーターは、よく変更する可能性がある値を抜き出すための優れた手段です。さまざまな環境でパラメーターを上書きする必要がある場合に特に便利です。環境に基づいてパラメーターを上書きする方法の詳細については、[REST API のドキュメント](http://go.microsoft.com/fwlink/?LinkID=525617&clcid=0x409)を参照してください。
 
 次に、**[保存]** をクリックすると、新しいツイートが 6 回以上リツイートされるたびに Dropbox の **tweets** というフォルダーに配信されます。
+
+ロジック アプリ定義の詳細については、[「Author Logic App definitions (ロジック アプリ定義のオーサリング](app-service-logic-author-definitions.md)」を参照してください。
 
 ## ロジック アプリ ワークフローの開始
 ロジック アプリで定義されているワークフローを開始するためのオプションは数種類あります。ワークフローはいつでも、[Azure ポータル]からオンデマンドで開始できます。
@@ -130,4 +132,5 @@
 [Create a new logic app]: app-service-logic-create-a-logic-app.md
 [新しいロジック アプリを作成する]: app-service-logic-create-a-logic-app.md
 [Azure ポータル]: https://portal.azure.com
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="SQL コネクタ" 
+   pageTitle="Microsoft Azure App Service での SQL コネクタの使用" 
    description="SQL コネクタの使用方法" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
@@ -13,147 +13,125 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/20/2015"
+   ms.date="06/17/2015"
    ms.author="sutalasi"/>
 
 
-# Microsoft SQL コネクタ #
+# Microsoft SQL コネクタ
 
-コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。(ファイアウォールの背後にあるオンプレミスにインストールされた) Azure SQL または SQL Server で SQL データベースを操作する必要があるシナリオがあります。SQL コネクタをフローで使用すると、さまざまなシナリオを実現できます。例をいくつか示します。  
+オンプレミスの SQL Server または Azure SQL Database に接続して、情報またはデータの作成と変更を行います。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータをフェッチ、処理、またはプッシュできます。SQL コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
-1.	Web またはモバイル ユーザーのフロント エンドを介して、SQL データベースに存在するデータの一部を公開する
-2.	ストレージ用の SQL データベース テーブルにデータを挿入する (例: 従業員レコード、販売注文など)
-3.	ビジネス プロセスで使用するデータを SQL から抽出する
+- Web またはモバイル アプリケーションを使用して、SQL データベースに存在するデータの一部を公開する。 
+- ストレージ用の SQL データベース テーブルにデータを挿入する。たとえば、従業員レコードの入力や販売注文の更新などを実行できます。
+- データを SQL から抽出してビジネス プロセスで使用する。たとえば、顧客レコードを取得し、SalesForce にそれらの顧客レコードを配置できます。 
 
-これらのシナリオに対しては、次の操作を実行する必要があります。 
+## トリガーとアクション
+トリガーは発生するイベントです。たとえば、注文が更新されたときや新しい顧客が追加されたときに発生します。アクションはトリガーの結果です。たとえば、注文が更新されたときに、営業担当者にアラートを送信します。または、新しい顧客が追加されたときに、ウェルカム メールを新しい顧客に送信します。
 
-1. SQL コネクタ API アプリのインスタンスを作成する
-2. API アプリが内部設置型の SQL と通信できるようにハイブリッド接続を確立する。この手順はオプションであり、内部設置型の SQL Server でのみ必要です。SQL Azure では必要ありません。
-3. 作成した API アプリをロジックで使用して、目的のビジネス プロセスを実現する
+SQL コネクタは、ロジック アプリでトリガーまたはアクションとして使用でき、JSON 形式と XML 形式のデータをサポートします。パッケージ設定に含まれるすべてのテーブルに対して (詳細はこのトピックで後述します)、JSON アクションと XML アクションのセットがあります。
 
-	### 基本的なトリガーとアクション
-		
-    - データのポーリング (トリガー) 
-    - テーブルに挿入
-    - テーブルの更新
-    - テーブルから選択
-    - テーブルから削除
-    - ストアド プロシージャの呼び出し
+SQL コネクタでは、次のトリガーとアクションを使用できます。
 
-## SQL コネクタ API アプリのインスタンスを作成する ##
+トリガー | アクション
+--- | ---
+データのポーリング | <ul><li>テーブルに挿入</li><li>テーブルを更新</li><li>テーブルから選択</li><li>テーブルから削除</li><li>ストアド プロシージャを呼び出す</li>
 
-SQL コネクタを使用するには、まず SQL コネクタ API アプリのインスタンスを作成する必要があります。そのためには、次の操作を実行します。
+## SQL コネクタを作成する
 
-1. Azure ポータルの左下にある [+ 新規] を使用して Azure Marketplace を開きます。
-2. [Web + モバイル]、[API アプリ] の順に移動して、"SQL コネクタ" を検索します。
-3. 最初のブレードで、名前、アプリ サービス プランなどの一般的な詳細を入力します。
-4. 下の表に記載されているパッケージ設定を入力します。.	
+コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
 
-<table class="tableizer-table">
-<tr class="tableizer-firstrow"><th>名前</th><th>必須</th><th>既定値</th><th>説明</th></tr>
- <tr><td>サーバー名</td><td>あり</td><td>&nbsp;</td><td>SQL Server の名前を指定します。例:"SQLserver"、"SQLserver/sqlexpress"、"SQLserver.mydomain.com"</td></tr>
- <tr><td>Port</td><td>いいえ</td><td> 1433</td><td>省略可能。接続が確立されているポート番号。値を指定しない場合、コネクタは既定のポート経由で接続します。</td></tr>
- <tr><td>ユーザー名</td><td>あり</td><td>&nbsp;</td><td>SQL Server に接続する有効なユーザー名を指定します。</td></tr>
- <tr><td>パスワード</td><td>あり</td><td>&nbsp;</td><td>SQL Server に接続する有効なパスワードを指定します。</td></tr>
- <tr><td>データベース名</td><td>あり</td><td>&nbsp;</td><td>SQL Server で有効なデータベース名を指定します。例:"orders"、"dbo/orders"、"myaccount/employees"</td></tr>
- <tr><td>オンプレミス</td><td>あり</td><td>FALSE</td><td>SQL Server がファイアウォールの背後にある内部設置型のサーバーかどうかを指定します。TRUE に設定した場合は、SQL Server にアクセスできるリスナー エージェントをサーバーにインストールする必要があります。API アプリの概要ページに移動し、 '[ハイブリッド接続]' をクリックしてエージェントをインストールできます。</td></tr>
- <tr><td>Service Bus の接続文字列</td><td>いいえ</td><td>&nbsp;</td><td>省略可能。SQL Server が内部設置型の場合は、このパラメーターを指定します。有効な Service Bus 名前空間の接続文字列である必要があります。Azure Service Bus の  '標準' エディションを使用していることを確認します ( '基本' エディションではありません)。</td></tr>
- <tr><td>パートナー サーバー名</td><td>いいえ</td><td>&nbsp;</td><td>省略可能。プライマリ サーバーがダウンしたときに接続するパートナー サーバーを指定します。</td></tr>
- <tr><td>テーブル</td><td>いいえ</td><td>&nbsp;</td><td>省略可能。コネクタで変更できるデータベース内のテーブルを指定します。例: OrdersTable、EmployeeTable</td></tr>
- <tr><td>ストアド プロシージャ</td><td>いいえ</td><td>&nbsp;</td><td>省略可能。コネクタで呼び出すことができるデータベースにストアド プロシージャを指定します。例:IsEmployeeEligible、CalculateOrderDiscount</td></tr>
- <tr><td>データを使用できるクエリ</td><td>いいえ</td><td>&nbsp;</td><td>省略可能。任意のデータを SQL Server データベース テーブルのポーリングに使用できるかどうかを決定する SQL ステートメントを指定します。例: SELECT COUNT(*) from table_name.</td></tr>
- <tr><td>データ クエリのポーリング</td><td>いいえ</td><td>&nbsp;</td><td>省略可能。SQL Server データベース テーブルをポーリングする SQL ステートメントを指定します。任意の数の SQL ステートメントをセミコロンで区切って指定できます。例:SELECT * from table_name; DELETE from table_name. 注:無限ループで終了しないようにポーリング ステートメントを指定する必要があります。たとえば、select の後に delete が続き、フラグに基づく select の後にフラグの更新が続く必要があります。</td></tr>
-</table>
+1. Azure スタート ボードで、**[Marketplace]** を選択します。
+2. **[API Apps]** を選択し、 “SQL コネクタ” を検索します。
+3. 名前、App Service 計画、およびその他のプロパティを入力します。
+4. 次のパッケージ設定を入力します。
 
+	名前 | 必須 | 説明
+--- | --- | ---
+サーバー名 | あり | SQL Server の名前を入力します。たとえば、「SQLserver/sqlexpress」または「SQLserver.mydomain.com」を入力します。
+Port | いいえ | 既定値は 1433 です。
+ユーザー名 | あり | SQL Server にログインできるユーザー名を入力します。オンプレミスの SQL サーバーに接続する場合は、ドメイン\ユーザー名を入力します。 
+パスワード | あり | ユーザー名とパスワードを入力します。
+データベース名 | あり | 接続先のデータベースを入力します。たとえば、「Customers」または「dbo/orders」を入力します。
+オンプレミス | あり | 既定値は False です。Azure SQL データベースに接続する場合は False を入力します。オンプレミスの SQL サーバーに接続する場合は True を入力します。 
+Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus リレーの接続文字列を入力します。<br/><br/>[Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
+パートナー サーバー名 | いいえ | プライマリ サーバーを使用できない場合は、代替またはバックアップ サーバーとして、パートナー サーバーを入力できます。 
+テーブル | いいえ | コネクタによって更新可能なデータベース テーブルの一覧を示します。たとえば、「OrdersTable」または「EmployeeTable」を入力します。テーブルが入力されない場合はすべてのテーブルを使用できます。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。 
+ストアド プロシージャ | いいえ | コネクタによって呼び出すことができる、既存のストアド プロシージャを入力します。たとえば、「sp_IsEmployeeEligible」または「sp_CalculateOrderDiscount」と入力します。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。 
+データを使用できるクエリ | トリガをサポート | 任意のデータを SQL Server データベース テーブルのポーリングに使用できるかどうかを決定する SQL ステートメント。これは、使用可能なデータの行数を表す数値を返す必要があります。例: SELECT COUNT(*) from table_name 
+データ クエリのポーリング | トリガをサポート | SQL Server データベース テーブルをポーリングする SQL ステートメント。任意の数の SQL ステートメントをセミコロンで区切って指定できます。このステートメントはトランザクション的に実行され、データがロジック アプリで安全に保存される場合にのみコミットされます。例: SELECT * FROM table_name; DELETE FROM table_name <br/><br/>**注**<br/>無限ループを回避するポーリング ステートメントを用意して、選択したデータを削除、移動、または更新することで同じデータが再度ポーリングされないようにする必要があります。 
 
- ![][1]  
+5. 完了すると、パッケージ設定は次のようになります。<br/> 。![][1]
 
-## ハイブリッド構成 (省略可能) ##
+## コネクタをトリガーとして使用する
+SQL テーブルからデータをポーリングし、そのデータを別のテーブルに追加してデータを更新する単純なロジック アプリを見てみましょう。
 
-注:この手順は、ファイアウォールの背後にある内部設置型の SQL Server を使用している場合のみ必要です。
+SQL コネクタをトリガーとして使用するには、**データ使用可能クエリ** と **データ クエリのポーリング** の値を入力します。**データ使用可能クエリ**は入力したスケジュールに従って実行され、データが使用可能なかどうかを判断します。このクエリではスカラー値のみが返るため、繰り返される実行に合うように調整して最適化できます。
 
-[参照]、[API アプリ]、[<作成した API アプリの名前>] の順に選択して、作成した API アプリを参照します。次の動作が表示されます。この段階でハイブリッド接続がまだ確立されていないため、セットアップは完了していません。
+**データ クエリのポーリング**は、データ使用可能クエリでデータが使用可能であることが示されている場合のみ実行されます。このステートメントはトランザクション内で実行され、抽出されたデータがワークフローで永続的に保存される場合にのみコミットされます。同じデータが無限に再抽出されることを避けることが重要です。この実行のトランザクション的な性質を使用してデータを削除するか更新することで、次回データがクエリされるときに収集されないようにすることができます。
 
-![][2] 
+> [AZURE.NOTE]このステートメントによって返されるスキーマは、コネクタで使用可能なプロパティを識別します。すべての列に名前を付ける必要があります。
 
-ハイブリッド接続を確立するには、次の操作を行います。
+#### データ使用可能クエリの例
 
-1. プライマリ接続文字列をコピーします。
-2.  '[Download and configure (ダウンロードして構成)]' リンクをクリックします。
-3. 開始されるインストール プロセスに従い、要求に応じてプライマリ接続文字列を入力します。
-4. セットアップ プロセスが完了すると、次のようなダイアログ ボックスが表示されます。
+	SELECT COUNT(*) FROM [Order] WHERE OrderStatus = 'ProcessedForCollection'
 
-![][3] 
+#### データ ポーリング クエリの例
 
-もう一度作成した API アプリを参照すると、ハイブリッド接続の状態が "接続中" と表示されます。 
+	SELECT *, GetData() as 'PollTime' FROM [Order] 
+		WHERE OrderStatus = 'ProcessedForCollection' 
+		ORDER BY Id DESC; 
+	UPDATE [Order] SET OrderStatus = 'ProcessedForFrontDesk' 
+		WHERE Id = 
+		(SELECT Id FROM [Order] WHERE OrderStatus = 'ProcessedForCollection' ORDER BY Id DESC)
 
-![][4] 
+### トリガーを追加する
+1. ロジック アプリを作成または編集するときに、トリガーとして作成した SQL コネクタを選択します。使用できるトリガー (**[データのポーリング (JSON)]** と **[データのポーリング (XML)]** が表示されます。<br/> ![][5] 
 
-注: セカンダリ接続文字列に切り替える場合は、ハイブリッドのセットアップをやり直して、プライマリ接続文字列の代わりにセカンダリ接続文字列を指定します。  
+2. **[データのポーリング (JSON)]** トリガーを選択し、頻度を入力し、[✓] をクリックします。<br/> ![][6]
 
-## ロジック アプリでの使い方 ##
+3. これで、トリガーは、ロジック アプリで構成されたものとして表示されます。トリガーの出力が表示され、後続のアクションの入力として使用できます。<br/> ![][7]
 
-SQL コネクタは、ロジック アプリでトリガーまたはアクションとして使用できます。トリガーとすべてのアクションは、JSON と XML の両方のデータ形式をサポートします。パッケージ設定の一部として提供されているすべてのテーブルには、JSON と XML の一連のアクションがあります。XML のトリガーとアクションを使用している場合は、変換 API アプリを使用してデータを別の XML データ形式に変換できます。 
+## コネクタをアクションとして使用する
+SQL テーブルからデータをポーリングする単純なロジック アプリのシナリオを使用して、データを別のテーブルに追加し、データを更新します。
 
-SQL テーブルからデータをポーリングし、そのデータを別のテーブルに追加し、データを更新する、簡単なロジック アプリを見てみましょう。
+SQL コネクタをアクションとして使用するには、SQL コネクタを作成したときに入力したテーブルまたはストアド プロシージャの名前を入力します。
 
+1. トリガーの後ろに (または [このロジックを手動で実行] を選択した後で)、作成した SQL コネクタをギャラリーから追加します。いずれかの挿入アクションを選択します (例: [Insert Into TempEmployeeDetails (JSON)])。<br/> ![][8] 
 
+2. 挿入されるレコードの入力値を指定し、[✓] をクリックします。 <br/> ![][9]
 
--  ロジック アプリを作成または編集するときに、トリガーとして作成した SQL コネクタの API アプリを選択します。ここでは、使用できるトリガーとして Poll Data (JSON) と Poll Data (XML) が表示されます。
+3. ギャラリーから、作成済みの同じ SQL コネクタを選択します。アクションとして、同じテーブルに対する更新アクションを選択します (例: [Update EmployeeDetails])。<br/> ![][11]
 
- ![][5] 
+4. 更新アクション用の入力値を指定し、[✓] をクリックします。<br/> ![][12]
 
+ポーリングされるテーブルに新しいレコードを追加することで、ロジック アプリをテストできます。
 
-- トリガーを選択し (Poll Data (JSON))、頻度を指定して、[✓] をクリックします。
+## ハイブリッド構成 (省略可能)
 
-![][6] 
+> [AZURE.NOTE]この手順は、ファイアウォールの背後にあるオンプレミスの SQL Server を使用する場合のみ、実行する必要があります。
 
+App Service では、 Hybrid Configuration Manager を使用して、オンプレミス システムに安全に接続します。コネクタでオンプレミスの SQL Server を使用する場合は、Hybrid Connection Manager が必要です。
 
-
-- トリガーは、ロジック アプリで構成されたように表示されます。トリガーの出力が表示されます。これは、後続のアクションの入力として使用できます。 
-
-![][7] 
-
-
-- ギャラリーからアクションと同じ SQL コネクタを選択します。いずれかの挿入アクションを選択します (ここでは、Insert Into TempEmployeeDetails (JSON))。
-
-![][8] 
+「[Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)」を参照してください。
 
 
+## コネクタでできること
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
-- 挿入するレコードの入力を指定し、[✓] をクリックします。 
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理とモニター](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
 
-![][9] 
-
-
-
-- ギャラリーからアクションと同じ SQL コネクタを選択します。同じテーブルの更新アクションを選択します (例: Update EmployeeDetails)。
-
-![][11] 
-
-
-
-- 更新アクションの入力を指定し、[✓] をクリックします。 
-
-![][12] 
-
-ポーリングされるテーブルに新しいレコードを追加すると、ロジック アプリをテストできます。
 
 <!--Image references-->
-[1]: ./media/app-service-logic-connector-sql/Create.jpg
-[2]: ./media/app-service-logic-connector-sql/BrowseSetupIncomplete.jpg
-[3]: ./media/app-service-logic-connector-sql/HybridSetup.jpg
-[4]: ./media/app-service-logic-connector-sql/BrowseSetupComplete.jpg
-[5]: ./media/app-service-logic-connector-sql/LogicApp1.jpg
-[6]: ./media/app-service-logic-connector-sql/LogicApp2.jpg
-[7]: ./media/app-service-logic-connector-sql/LogicApp3.jpg
-[8]: ./media/app-service-logic-connector-sql/LogicApp4.jpg
-[9]: ./media/app-service-logic-connector-sql/LogicApp5.jpg
-[10]: ./media/app-service-logic-connector-sql/LogicApp6.jpg
-[11]: ./media/app-service-logic-connector-sql/LogicApp7.jpg
-[12]: ./media/app-service-logic-connector-sql/LogicApp8.jpg
+[1]: ./media/app-service-logic-connector-sql/Create.png
+[5]: ./media/app-service-logic-connector-sql/LogicApp1.png
+[6]: ./media/app-service-logic-connector-sql/LogicApp2.png
+[7]: ./media/app-service-logic-connector-sql/LogicApp3.png
+[8]: ./media/app-service-logic-connector-sql/LogicApp4.png
+[9]: ./media/app-service-logic-connector-sql/LogicApp5.png
+[11]: ./media/app-service-logic-connector-sql/LogicApp7.png
+[12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
 
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

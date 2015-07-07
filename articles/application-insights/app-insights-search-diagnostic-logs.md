@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="診断ログを検索する" 
-	description="Trace、NLog、または Log4Net で生成されたログを検索します。" 
+	pageTitle="Application Insights での ASP.NET のログ、例外、およびカスタム診断" 
+	description="要求、例外、(トレース、NLog、Log4Net を使用して生成された) ログを検索することにより、ASP.NET Web アプリの問題を診断します。" 
 	services="application-insights" 
-documentationCenter=""
+    documentationCenter=""
 	authors="alancameronwills" 
-	manager="kamrani"/>
+	manager="keboyd"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,39 +12,120 @@ documentationCenter=""
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/09/2015" 
+	ms.date="04/02/2015" 
 	ms.author="awills"/>
  
-# Application Insights 内での診断検索
+# Application Insights での ASP.NET のログ、例外、およびカスタム診断
 
-従来の一般的なデバッグ方法の 1 つに、トレース ログを出力するコードの行を挿入する方法があります。[Application Insights][start] では、Web サーバーのログをキャプチャできます。ログの検索とフィルターに役立ちます。既に log4Net、NLog、または System.Diagnostics.Trace を使用している場合は、アダプターでこれらのログをキャプチャできます。または、Application Insights SDK に組み込まれている TrackTrace メソッドと TrackException メソッドを使用することができます。
+[Application Insights][start] の強力な[診断検索][diagnostic]ツールを使用すれば、Application Insights SDK によってアプリケーションから送信されたテレメトリを調査してドリルダウンすることができます。ユーザー ページ ビューなどの多数のイベントは、SDK によって自動的に送信されます。
 
-検索結果には、[利用状況][usage]と[パフォーマンス][perf]のレポートの作成に使用される通常のページ ビューや要求イベントが、記述したすべての[カスタム TrackEvent 呼び出し][track]と共に含まれます。
+カスタム イベント、例外レポート、およびトレースを送信するコードを記述することもできます。さらに、log4J、log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを既に使用している場合は、それらのログもキャプチャして検索に含めることができます。こうすると、ユーザーの操作、例外、およびその他のイベントをログ トレースと簡単に関連付けられるようになります。
+
+## <a name="send"></a>カスタム テレメトリを作成する前に
+
+[プロジェクトに Application Insights をまだ設定していない場合][start]、今すぐ設定します。
+
+アプリケーションを実行すると、アプリケーションがテレメトリを送信し、そのテレメトリが診断検索に表示されます。テレメトリには、サーバーが受信した要求、クライアント側で記録されたページ ビュー、キャッチされなかった例外などがあります。
+
+診断検索を開くと、SDK から自動送信されたテレメトリが表示されます。
+
+![](./media/app-insights-search-diagnostic-logs/appinsights-45diagnostic.png)
+
+![](./media/app-insights-search-diagnostic-logs/appinsights-31search.png)
+
+詳細は、アプリケーションの種類によって異なります。個々のイベントをクリックすると詳細情報を表示できます。
+
+##<a name="events"></a>カスタム イベント
+
+カスタム イベントは、[診断検索][diagnostic]と[メトリック エクスプローラー][metrics]の両方に表示されます。カスタム イベントは、デバイス、Web ページ、およびサーバー アプリケーションから送信できます。これらは、診断の目的にも、[使用状況のパターンを理解する][track]ためにも利用できます。
+
+カスタム イベントには名前があり、プロパティを持つこともできるため、数値の測定値と共にフィルター処理することができます。
+
+クライアント側の JavaScript
+
+    appInsights.trackEvent("WinGame",
+         // String properties:
+         {Game: currentGame.name, Difficulty: currentGame.difficulty},
+         // Numeric measurements:
+         {Score: currentGame.score, Opponents: currentGame.opponentCount}
+         );
+
+サーバー側の C#
+
+    // Set up some properties:
+    var properties = new Dictionary <string, string> 
+       {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
+    var measurements = new Dictionary <string, double>
+       {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
+
+    // Send the event:
+    telemetry.TrackEvent("WinGame", properties, measurements);
 
 
-2. [ログ フレームワーク用に、アダプターをインストールするかどうか](#capture)
-+ [診断ログの呼び出しを挿入する](#pepper)
-+ [例外](#exceptions)
-+ [ログ データの表示](#view)
-+ [ログ データを検索する](#search)
-+ [トラブルシューティング](#questions)
-+ [次のステップ](#next)
+サーバー側の VB
+
+    ' Set up some properties:
+    Dim properties = New Dictionary (Of String, String)
+    properties.Add("game", currentGame.Name)
+    properties.Add("difficulty", currentGame.Difficulty)
+
+    Dim measurements = New Dictionary (Of String, Double)
+    measurements.Add("Score", currentGame.Score)
+    measurements.Add("Opponents", currentGame.OpponentCount)
+
+    ' Send the event:
+    telemetry.TrackEvent("WinGame", properties, measurements)
+
+### アプリを実行して結果を確認します。
+
+診断検索を開きます。
+
+カスタム イベントを選択し、特定のイベント名を選択します。
+
+![](./media/app-insights-search-diagnostic-logs/appinsights-332filterCustom.png)
 
 
+プロパティ値を検索用語として入力し、さらにデータをフィルター処理します。
 
-## <a name="capture"></a> ログ フレームワーク用に、アダプターをインストールするかどうか
+![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-5.png)
 
-プロジェクトに [Application Insights][start] をまだインストールしていない場合は、今すぐインストールします。
+個々のイベントにドリルダウンして詳細なプロパティを確認します。
 
-組み込みの Application Insights SDK Track*() 呼び出しを使用する場合、アダプターは必要ありません。[次のセクションに進みます。](#pepper)
+![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-4.png)
 
-log4Net、NLog、または System.Diagnostics.Trace を使用して生成されたログを検索するには、以下のように適切なアダプターをインストールします。
+##<a name="pages"></a> ページ ビュー
+
+ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][usage]に含まれる trackPageView() 呼び出しによって送信されます。その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
+
+通常、この呼び出しは HTML ページごとに 1 回ですが、たとえば、シングル ページ アプリでユーザーが追加データを取得した場合に新しいページとして記録する必要があるときなどには、さらに呼び出しを埋め込むことができます。
+
+    appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm"); 
+
+診断検索でフィルターとして使用できるプロパティをアタッチしておくと便利な場合があります。
+
+    appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm",
+     {Game: currentGame.name, Difficulty: currentGame.difficulty});
+
+
+##<a name="trace"></a> トレース テレメトリ
+
+トレース テレメトリは、特に診断ログを作成するためだけに挿入するコードです。
+
+たとえば、次のような呼び出しを挿入できます。
+
+    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+    telemetry.TrackTrace("Slow response - database01");
+
+
+####  ログ記録フレームワークにアダプターをインストールする
+
+log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレームワークで生成されたログを検索することもできます。
 
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。 
-2. ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理] を選択します。
+2. ソリューション エクスプローラーでプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。
 3. [オンライン]、[すべて]、**[プレリリースを含める]** の順に選択し、"Microsoft.ApplicationInsights" を検索します。
 
-    ![Get the prerelease version of the appropriate adapter](./media/app-insights-search-diagnostic-logs/appinsights-36nuget.png)
+    ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-search-diagnostic-logs/appinsights-36nuget.png)
 
 4. 次のいずれかの適切なパッケージを選択します。
   + Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace 呼び出しをキャプチャするため)
@@ -53,16 +134,9 @@ log4Net、NLog、または System.Diagnostics.Trace を使用して生成され�
 
 NuGet パッケージは、必要なアセンブリをインストールし、web.config または app.config も変更します。
 
-## <a name="pepper"></a>3 診断ログの呼び出しを挿入する
+#### <a name="pepper"></a>診断ログの呼び出しを挿入する
 
-選択したログ フレームワークを使用してイベント ログ呼び出しを挿入します。 
-
-たとえば、Application Insights SDK を使用する場合は、次を挿入できます。
-
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow response - database01");
-
-または、System.Diagnostics.Trace を使用する場合
+System.Diagnostics.Trace を使用する場合、通常の呼び出しは次のようになります。
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 
@@ -70,13 +144,19 @@ log4net、または NLog を使用する場合
 
     logger.Warn("Slow response - database01");
 
-アプリケーションをデバッグ モードで実行または Web サーバーにデプロイします。
+デバッグ モードでアプリを実行するか、または、アプリをデプロイします。
+
+トレース フィルターを選択すると、診断検索にメッセージが表示されます。
 
 ### <a name="exceptions"></a>例外
 
-次のように、例外をログに送信します。
+Application Insights で例外レポートを取得すると、特に、失敗した要求と例外間をナビゲートして例外スタックを確認できるようになるため、非常に強力なエクスペリエンスが提供されます。
 
-クライアント側の JavaScript
+場合によっては、例外が自動的にキャッチされるように、[数行のコードを挿入][exceptions]する必要があります。
+
+例外テレメトリを送信する明示的なコードを記述することもできます。
+
+JavaScript
 
     try 
     { ...
@@ -88,7 +168,7 @@ log4net、または NLog を使用する場合
          State: currentGame.State.ToString()});
     }
 
-サーバー側の C#
+C#
 
     var telemetry = new TelemetryClient();
     ...
@@ -108,7 +188,7 @@ log4net、または NLog を使用する場合
        telemetry.TrackException(ex, properties, measurements);
     }
 
-サーバー側の VB
+VB
 
     Dim telemetry = New TelemetryClient
     ...
@@ -128,162 +208,56 @@ log4net、または NLog を使用する場合
 
 プロパティと測定値のパラメーターは省略可能ですが、フィルター処理と、特別な情報を追加するのに便利です。たとえば、複数のゲームを実行できるアプリケーションを使用している場合、1 つのゲームに関連する例外レポートをすべて検索できます。必要な数だけ項目を各辞書に追加できます。
 
-## <a name="view"></a>4. ログ データを表示する
+#### 例外の表示
+
+概要ブレードに表示される例外の概要をクリックすると、詳細が表示されます。次に例を示します。
 
 
-1. Application Insights で、診断検索画面を開きます。
+![](./media/app-insights-search-diagnostic-logs/appinsights-039-1exceptions.png)
 
-    ![Open diagnostic search](./media/app-insights-search-diagnostic-logs/appinsights-30openDiagnostics.png)
-   
-2. 確認するイベントの種類に対してフィルターを設定します。
+例外の種類をクリックすると、実際に発生した例外について表示されます。
 
-    ![Open diagnostic search](./media/app-insights-search-diagnostic-logs/appinsights-331filterTrace.png)
+![](./media/app-insights-search-diagnostic-logs/appinsights-333facets.png)
 
+診断検索を直接開き、例外でフィルター処理し、表示したい例外の種類を選択することもできます。
 
-イベントの種類は、次のとおりです。
+### ハンドルされていない例外のレポート
 
-* **トレース** - Web サーバーからキャプチャした診断ログを検索します。log4Net、NLog、System.Diagnostic.Trace、ApplicationInsights TrackTrace を呼び出しが含まれます。
-* **要求** - ページの要求、データの要求、画像など Web アプリケーションのサーバー コンポーネントによって受信された HTTP 要求を検索します。表示されるイベントは、Application Insights サーバー SDK から送信された利用統計情報で、要求数のレポートを作成するために使用されます。
-* **ページ ビュー** - ページ ビュー イベントを検索します。これらのイベントは、Web クライアントによって送信され、ページ ビュー レポートの作成に使用されます (ここで何も表示されない場合は、[Web クライアントの監視][usage]を設定します)。
-* **カスタム イベント** - [利用状況の監視][track]のために、TrackEvent() および TrackMetric() への呼び出しを挿入した場合は、ここで検索できます。
+Application Insights は可能な場合、[Status Monitor][usage] と [Application Insights SDK][redfield] のどちらでインスツルメントされたかにかかわらず、デバイス、[Web ブラウザー][greenbrown]、Web サーバーから送信された、ハンドルされていない例外をレポートします。
 
-目的のログ イベントを選択して詳細を表示します。 
+ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。したがって、すべての例外を確実に表示するためには、ちょっとした例外ハンドラーを作成する必要があります。最良の対処方法は、テクノロジによって異なります。詳細については、[ASP.NET の例外テレメトリ][exceptions]に関するページを参照してください。
 
-![Open diagnostic search](./media/app-insights-search-diagnostic-logs/appinsights-32detail.png)
+### ビルドとの関連付け
 
-(ワイルドカードを含まない) プレーン文字列を使用して、項目内のフィールド データをフィルター処理できます。
+診断ログを参照するとき、ソース コードは、現在のコードがデプロイされた後に変更されている可能性があります。
 
-使用できるフィールドは、ログ フレームワークと、呼び出しで使用したパラメーターに依存します。
+そのため、例外またはトレースごとに、現行バージョンの URL などのビルド情報をプロパティに入れるようにすると便利です。
 
+すべての例外呼び出しにプロパティを別途追加するのではなく、既定のコンテキストで情報を設定することができます。
 
-## <a name="search"></a>5. データを検索する
+    // Telemetry initializer class
+    public class MyTelemetryInitializer : IContextInitializer
+    {
+        public void Initialize (TelemetryContext context)
+        {
+            context.Properties["AppVersion"] = "v2.1";
+        }
+    }
 
-時間範囲を設定し、語句を検索します。範囲を狭くすると、検索時間が短くなります。 
+アプリ初期化子 (Global.asax.cs など) 内:
 
-![Open diagnostic search](./media/app-insights-search-diagnostic-logs/appinsights-311search.png)
+    protected void Application_Start()
+    {
+        // ...
+        TelemetryConfiguration.Active.ContextInitializers
+        .Add(new MyTelemetryInitializer());
+    }
 
-部分文字列ではなく語句を検索することに注意してください。語句とは、"."、"_" などのいくつかの句読文字を含む、英数字の文字列です。次に例を示します。
+###<a name="requests"></a> サーバー Web 要求
 
-<table>
-  <tr><th>語句</th><th>一致しない指定</th><th>一致する指定</th></tr>
-  <tr><td>HomeController.About</td><td>about<br/>home</td><td>h*about<br/>home*</td></tr>
-  <tr><td>IsLocal</td><td>local<br/>is<br/>*local</td><td>isl*<br/>islocal<br/>i*l</td></tr>
-  <tr><td>New Delay</td><td>w d</td><td>new<br/>delay<br/>n* AND d*</td></tr>
-</table>
+[Status Monitor を Web サーバーにインストールする][redfield]、または、[Application Insights を Web プロジェクトに追加する][greenbrown]と、要求テレメトリが自動的に送信されます。また、このテレメトリは、メトリック エクスプローラーの要求と応答のタイムチャートおよび概要ページにもフィードされます。
 
-使用できる検索表現を次に示します。
-
-<table>
-                    <tr>
-                      <th>
-                        <p>サンプル クエリ</p>
-                      </th>
-                      <th>
-                        <p>効果</p>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>
-                          <span class="code">slow</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>日付範囲内でフィールドに "slow" という語句が含まれるすべてのイベントを検索します</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>
-                          <span class="code">database??</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>database01、databaseAB などに一致します</p>
-                        <p>? は、検索語句の先頭に使用できません</p>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>
-                        <p>
-                          <span class="code">database*</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>database、database01、databaseNNNN に一致します</p>
-                        <p>* は、検索語句の先頭に使用できません</p>
-                      </td>
-                    </tr>
-                   <tr>
-                      <td>
-                        <p>
-                          <span class="code">apple AND banana</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>両方の語句を含むイベントを検索します。"and" ではなく大文字の "AND" を使用します。</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>
-                          <span class="code">apple OR banana</span>
-                        </p>
-                        <p>
-                          <span class="code">apple banana</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>どちらかの語句を含むイベントを検索します。"or" ではなく "OR" を使用します。</p>
-                        <p>短縮形。</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>
-                          <span class="code">apple NOT banana</span>
-                        </p>
-                        <p>
-                          <span class="code">apple -banana</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>ある用語を含む一方で他方の用語を含まないイベントを検索します。</p>
-                        <p>短縮形。</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>app* AND banana NOT (grape OR pear)</p>
-                        <p>
-                          <span class="code">app* AND banana -(grape pear)</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>論理演算子とかっこの使用。</p>
-                        <p>短縮形。</p>
-                      </td>
-                    </tr>
-       <!-- -- fielded search feature not ready yet --
-                    <tr>
-                      <td>
-                        <p>
-                          <span class="code">message:slow</span>
-                        </p>
-                        <p>
-                          <span class="code">ipaddress:(10.0.0.* OR 192.168.0.*)</span>
-                        </p>
-                        <p>
-                          <span class="code">properties.logEventInfo.level:Error</span>
-                        </p>
-                      </td>
-                      <td>
-                        <p>指定されたフィールドに一致します。既定では、すべてのフィールドが検索されます。使用できるフィールドを調べるには、イベントを選択して詳細を表示します。</p>
-                      </td>
-                    </tr>
- -->
-</table>
-
+その他のイベントを送信する場合は、TrackRequest() API を使用します。
 
 ## <a name="questions"></a>Q & A
 
@@ -291,34 +265,34 @@ log4net、または NLog を使用する場合
 
 Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。
 
-ソリューション エクスプローラーで、`ApplicationInsights.config`を右クリックし、**[Application Insights の更新]** を選択します。Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。これで問題は修正されます。
+ソリューション エクスプローラーで、`ApplicationInsights.config` を右クリックし、[**Application Insights の更新**] を選択します。Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。これで問題は修正されます。
 
 ### <a name="limits"></a>保持されるデータの量はどのくらいですか
 
 各アプリケーションで、1 秒あたり 500 イベントまでです。イベントは 7 日間保持されます。
 
-### <a name="cani"></a>以下のことは可能でしょうか。
-
-- イベントと例外にアラートを設定する
-- さらに詳しい分析ログをエクスポートする
-- 特定のプロパティで検索する
-
-現在はできませんが、これらのすべての機能には今後着手します。
-
 ## <a name="add"></a>次のステップ
 
-* [可用性と応答性のテストの設定][availability]
+* [可用性と応答性のテストを設定する][availability]
 * [トラブルシューティング][qna]
 
 
 
 
 
-[AZURE.INCLUDE [app-insights-learn-more](../../includes/app-insights-learn-more.md)]
+<!--Link references-->
 
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-web-failures-exceptions.md
+[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[redfield]: app-insights-monitor-performance-live-website-now.md
+[start]: app-insights-get-started.md
+[track]: app-insights-custom-events-metrics-api.md
+[usage]: app-insights-web-track-usage.md
 
-
-
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=62-->

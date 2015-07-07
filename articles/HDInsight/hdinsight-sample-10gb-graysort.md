@@ -1,5 +1,5 @@
 <properties
-	pageTitle="10 GB GraySort サンプル | Azure"
+	pageTitle="10 GB GraySort Hadoop MapReduce サンプル | Microsoft Azure"
 	description="Azure PowerShell を使用して HDInsight で Hadoop 上の非常に大量のデータ (通常 100 TB 以上) に汎用 Graysort を実行する方法について説明します。"
 	editor="cgronlun"
 	manager="paulettm"
@@ -16,7 +16,7 @@
 	ms.date="03/30/2015" 
 	ms.author="bradsev"/>
 
-# HDInsight での 10 GB GraySort Hadoop サンプル
+# HDInsight での 10 GB GraySort Hadoop MapReduce サンプル
 
 このサンプル トピックでは、Azure PowerShell を使用して、Azure HDInsight で汎用 GraySort Hadoop MapReduce プログラムを実行する方法について説明します。GraySort はベンチマーク ソートで、その評価尺度は、非常に大量のデータ、通常は最低でも 100 TB のデータをソートした際のソート速度 (TB/分) です。
 
@@ -36,11 +36,10 @@
 
 **前提条件:**
 
-- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://azure.microsoft.com/pricing/free-trial/)をご覧ください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **HDInsight クラスター**。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
-- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。
-
-- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
 
 ##Azure PowerShell を使用したサンプルの実行
@@ -418,7 +417,7 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: ../install-configure-powershell.md
 
 [hdinsight-get-started]: ../hdinsight-get-started.md
 
@@ -430,5 +429,6 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

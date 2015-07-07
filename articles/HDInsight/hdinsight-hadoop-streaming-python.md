@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="05/19/2015"
    ms.author="larryfr"/>
 
-# HDInsight 用 Python ストリーミング プログラムの開発
+#HDInsight 用 Python ストリーミング プログラムの開発
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。この記事では、Python を使用して、MapReduce 操作を実行する方法を説明します。
 
-> [AZURE.NOTE]この記事は、Michael Noll が公開する情報と例に基づいています [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/] (Python における Hadoop MapReduce Program の書き込み)。
+> [AZURE.NOTE]この記事は、Michael Noll が http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/ (Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
 
-## 前提条件
+##前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -32,7 +32,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 * Windows クライアントとして PuTTY および PSCPこれらのユーティリティは「<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY のダウンロード ページ</a>」から入手できます。
 
-## 文字数
+##文字数
 
 この例では、マッパーとレジューサを使用して、基本的な文字カウントを実装します。マッパーは文をいくつかの単語に分割し、レジューサは単語数や回数を合計して出力を生成します。
 
@@ -40,13 +40,13 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 ![MapReduce の図](./media/hdinsight-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
-## Python について
+##Python について
 
 Python は、多くの他の言語より少ないコード行で概念を表現できる高度な汎用プログラム言語です。迅速なアプリケーションに最適な構造、動的型付けのほか、その洗練された構文といった特徴のため、データ サイエンティストの間で、近年、プロトタイプ言語として一般的になりつつあります。
 
 Python はすべての HDInsight クラスターにインストールされています。
 
-## MapReduce ストリーミング
+##MapReduce ストリーミング
 
 Hadoop では、ジョブで使用される map および reduce のロジックを含むファイルを指定できます。map および reduce ロジックに固有の要件は次のとおりです。
 
@@ -58,11 +58,11 @@ Hadoop では、ジョブで使用される map および reduce のロジック
 
 Python では、STDIN からの読み取りに **sys** モジュールを、STDOUT への印刷に **print** を使用して、これらの要件を簡単に処理できます。その他、キーと値の間にタブ (`\t`) 文字を使用してデータを簡単に書式設定できます。
 
-## マッパーとレジューサの作成
+##マッパーとレジューサの作成
 
 マッパーとレジューサは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
 
-### Mapper.py
+###Mapper.py
 
 **mapper.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
@@ -92,7 +92,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 コードが読み取られ、解読されるまでしばらく待ちます。
 
-### Reducer.py
+###Reducer.py
 
 **reducer.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
@@ -131,7 +131,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 	if __name__ == "__main__":
 	    main()
 
-## ファイルのアップロード
+##ファイルのアップロード
 
 **mapper.py** と **reducer.py** はその実行前に、いずれもクラスターのヘッド ノードにある必要があります。これらをアップロードする最も簡単な方法は **scp** を使用することです (Windows クライアントを使用する場合は **pscp**)。
 
@@ -143,7 +143,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 > [AZURE.NOTE]SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`:
 
-## MapReduce の実行
+##MapReduce の実行
 
 1. SSH を使用したクラスターへの接続:
 
@@ -179,7 +179,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 完了すると、ジョブに関するステータス情報が返されます。
 
-## 出力を表示する
+##出力を表示する
 
 ジョブが完了したら、次のコマンドを使用して出力を表示します。
 
@@ -194,12 +194,13 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 	wrinkles        2
 	wrinkling       2
 
-## 次のステップ
+##次のステップ
 
 これで、HDInsight でストリーミング MapRedcue ジョブを使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

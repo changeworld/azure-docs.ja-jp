@@ -1,5 +1,5 @@
 <properties
-	pageTitle="HDInsight での Hadoop MapReduce ワード カウント サンプルの実行 | Azure"
+	pageTitle="HDInsight での Hadoop MapReduce ワード カウント サンプルの実行 | Microsoft Azure"
 	description="HDInsight の Hadoop クラスターで MapReduce ワード カウント サンプルを実行します。Java で記述されたこのプログラムは、テキスト ファイル内の単語の出現回数をカウントします。"
 	editor="cgronlun"
 	manager="paulettm"
@@ -13,13 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2015" 
+	ms.date="06/15/2015" 
 	ms.author="bradsev"/>
 
-#HDInsight の Hadoop クラスターで MapReduce ワード カウント サンプルを実行します。
+#HDInsight の Hadoop クラスターで、Java で記述された MapReduce ワード カウント サンプルを実行します。
 
 このチュートリアルでは、HDInsight の Hadoop クラスターで、MapReduce ワード カウント サンプルを実行する方法を説明します。Java で記述するこのプログラムは、テキスト ファイル内の単語出現回数をカウントし、各単語とその単語の出現回数をペアにして記録した新しいテキスト ファイルを出力します。このサンプルで分析するテキスト ファイルは、『The Notebooks of Leonardo Da Vinci (レオナルド・ダ・ヴィンチの手記)』の Project Gutenberg 電子書籍版です。
 
+> [AZURE.NOTE]このドキュメントの手順では、Windows クライアントが必要です。Linux ベースの HDInsight クラスターで、Linux、OS X、または Unix クライアントのワード カウント サンプルを使用する手順については、「[SSH による HDInsight での MapReduce と Hadoop の使用](hdinsight-hadoop-use-mapreduce-ssh.md)」、または「[Curl による HDInsight での MapReduce と Hadoop の使用](hdinsight-hadoop-use-mapreduce-curl.md)」を参照してください。
 
 **学習内容:**
 
@@ -29,17 +30,19 @@
 
 **前提条件**:
 
-- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://azure.microsoft.com/pricing/free-trial/)をご覧ください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。
+- **HDInsight クラスター**。クラスターを作成するさまざまな方法については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。
 
-- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」をご覧ください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
-<h2><a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行</h2>
+
+
+## <a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行</h2>
 
 **MapReduce ジョブを送信するには**
 
-1.	**Azure PowerShell**コンソールを開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+1.	**Azure PowerShell **コンソールを開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 
 3. 次のコマンドを実行して、2 つの変数を設定します。
 
@@ -70,7 +73,7 @@
 
 **MapReduce ジョブの結果を取得するには**
 
-1. **Azure PowerShell**コンソールを開きます。
+1. **Azure PowerShell **コンソールを開きます。
 2. 次のコマンドを実行して、3 つの変数を設定します。
 
 		$subscriptionName = "<SubscriptionName>"       # Azure subscription name
@@ -95,7 +98,7 @@
 		# Download the job output to the workstation
 		Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
-	*example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。*part-r-00000* は MapReduce ジョブの出力の既定のファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは *C:\\example\\data\\WordCountOutput* フォルダーにダウンロードされます。
+	*example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。*part-r-00000* は MapReduce ジョブの出力の既定のファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは *C:\example\data\WordCountOutput* フォルダーにダウンロードされます。
 
 5. 次のコマンドを実行して、MapReduce ジョブの出力ファイルの内容を表示します。
 
@@ -110,7 +113,7 @@
 
 MapReduce ジョブの出力ファイルは不変であることに注意してください。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
-<h2><a id="java-code"></a>ワードカウント MapReduce プログラムの Java コード</h2>
+## <a id="java-code"></a>ワードカウント MapReduce プログラムの Java コード</h2>
 
 
 
@@ -186,7 +189,7 @@ MapReduce ジョブの出力ファイルは不変であることに注意して�
 
 このチュートリアルでは、Azure PowerShell を使用して HDInsight でテキスト ファイル内の単語の出現回数を計算する MapReduce プログラムを実行する方法を紹介しました。
 
-<h2><a id="next-steps"></a>次のステップ</h2>
+## <a id="next-steps"></a>次のステップ</h2>
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce ジョブの使用方法に関するチュートリアルについては、次のトピックをご覧ください。
 
@@ -194,7 +197,7 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 * [サンプル: 10 GB GraySort][hdinsight-sample-10gb-graysort]
 * [サンプル: Pi 推定][hdinsight-sample-pi-estimator]
 * [サンプル: C ストリーミング][hdinsight-sample-cs-streaming]
-* [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
+* [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
@@ -210,8 +213,9 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-get-started]: ../hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: ../install-configure-powershell.md
 
 [image-hdi-sample-wordcount-output]: ./media/hdinsight-sample-wordcount/HDI.Sample.WordCount.Output.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

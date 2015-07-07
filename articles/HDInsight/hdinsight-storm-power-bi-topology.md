@@ -1,6 +1,6 @@
 <properties
- pageTitle="Apache Storm から Power BI にデータを書き込む"
- description="HDInsight クラスター上の Apache Storm で実行されている C# トポロジから Power BI にデータを書き込む方法の例です。データの書き込み後、Power BI を使用してレポートとリアルタイムのダッシュボードを作成する方法について取り上げます。"
+ pageTitle="Apache Storm から Power BI へのデータの書き込み | Microsoft Azure"
+ description="HDInsight の Apache Storm クラスター上で実行されている C# トポロジから Power BI にデータを書き込みます。また、Power BI を使用してレポートとリアルタイムのダッシュボードも作成します。"
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
@@ -16,7 +16,7 @@
  ms.date="04/28/2015"
  ms.author="larryfr"/>
 
-# Power BI (プレビュー) を使用して Storm トポロジのデータを視覚化する
+# Power BI (プレビュー) を使用した Apache Storm トポロジのデータの視覚化
 
 Power BI プレビューを使用すると、データをレポートとして表示したり、ダッシュボードに表示したりできます。Power BI REST API によって、HDInsight クラスター上の Apache Storm で実行しているトポロジのデータを Power BI で簡単に使用できます。
 
@@ -24,7 +24,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## 前提条件
 
-* Microsoft Azure サブスクリプション
+- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 * [Power BI](https://powerbi.com) アクセス権を持つ Azure Active Directory ユーザー
 
@@ -48,21 +48,21 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * **Data.cs**: Power BI に送信されるデータのオブジェクト/行について記述します。
 
-> [AZURE.WARNING]Power BI が、同じ名前を持つ複数のデータセットの作成を許可しているように見える場合があります。これは、データセットが存在しない場合に、トポロジで Power BI ボルトの複数のインスタンスを作成すると生じる可能性があります。これを回避するには、(この例の場合のように) ボルトの並列処理ヒントを 1 に設定するか、トポロジを展開する前にデータセットを作成します。
+> [AZURE.WARNING]Power BI が、同じ名前を持つ複数のデータセットの作成を許可しているように見える場合があります。これは、データセットが存在しない場合に、トポロジで Power BI ボルトの複数のインスタンスを作成すると生じる可能性があります。これを回避するには、(この例の場合のように) ボルトの並列処理ヒントを 1 に設定するか、トポロジをデプロイする前にデータセットを作成します。
 >
 > このソリューションに含まれている **CreateDataset** コンソール アプリケーションは、トポロジ外部でデータセットを作成する方法の例となっています。
 
 ## Power BI アプリケーションの登録
 
-1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/en-US/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
+1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/ja-jp/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
 
-2. 「[アプリの登録](https://msdn.microsoft.com/en-US/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
+2. 「[アプリの登録](https://msdn.microsoft.com/ja-jp/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
 
     > [AZURE.IMPORTANT]アプリケーション登録に**クライアント ID** を保存します。
 
 ## 例のダウンロード
 
-[HDInsight C# Storm Power BI の例]](https://github.com/Blackmist/hdinsight-csharp-storm-powerbi) をダウンロードします。ダウンロードするには、[git](http://git-scm.com/) を使用してフォーク/複製するか、**ダウンロード** リンクを使用してアーカイブの ZIP ファイルをダウンロードします。
+[HDInsight C# Storm Power BI の例](https://github.com/Blackmist/hdinsight-csharp-storm-powerbi)をダウンロードします。ダウンロードするには、[git](http://git-scm.com/) を使用してフォーク/複製するか、**ダウンロード** リンクを使用してアーカイブの ZIP ファイルをダウンロードします。
 
 ## サンプルの構成
 
@@ -78,7 +78,7 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 2. ファイルを保存して閉じます。
 
-## サンプルの展開
+## サンプルのデプロイ
 
 1. **ソリューション エクスプローラー**で **WordCount** プロジェクトを右クリックし、[**HDInsight の Storm に送信 (Submit to Storm on HDInsight)**] を選択します。[**Storm クラスター**] ドロップダウン ダイアログから HDInsight クラスターを選択します。
 
@@ -110,17 +110,17 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 5. Power BI ロゴを選択し、ダッシュボードに戻ります。これで、**Word Count** レポートが [**レポート**] に表示されるようになりました。
 
-## ライブ ダッシュ ボードの作成
+## ライブ ダッシュボードの作成
 
-1. [**ダッシュボード**] の横にある **+** アイコンを選択し、新しいダッシュボードを作成します。新しいダッシュ ボードの名前を **Live Word Count** とします。
+1. [**ダッシュボード**] の横にある **+** アイコンを選択し、新しいダッシュボードを作成します。新しいダッシュボードの名前を **Live Word Count** とします。
 
 2. 作成済みの **Word Count** レポートを選択します。表示されたら、グラフを選択し、グラフの右上にあるプッシュピン アイコンを選択します。ピン留めしたことを示す通知をダッシュボードで受信します。
 
     ![プッシュピンが表示されているグラフ](./media/hdinsight-storm-power-bi-topology/pushpin.png)
 
-2. Power BI ロゴを選択し、ダッシュボードに戻ります。**Live Word Count** ダッシュボードを選択します。ダッシュボードに Word Count グラフが含まれるようになり、HDIngiht で実行されている WordCount トポロジから Power BI に新しいエントリが送信されるとグラフが更新されます。
+2. Power BI ロゴを選択し、ダッシュボードに戻ります。**Live Word Count** ダッシュボードを選択します。ダッシュボードに Word Count グラフが含まれるようになり、HDInsight で実行されている WordCount トポロジから Power BI に新しいエントリが送信されるとグラフが更新されます。
 
-    ![ライブ ダッシュ ボード](./media/hdinsight-storm-power-bi-topology/dashboard.png)
+    ![ライブ ダッシュボード](./media/hdinsight-storm-power-bi-topology/dashboard.png)
 
 ## WordCount トポロジの停止
 
@@ -137,6 +137,6 @@ Power BI プレビューを使用すると、データをレポートとして�
 このドキュメントでは、REST を使用して Strom トポロジのデータを Power BI に送信する方法を説明します。他の Azure テクノロジを使用する方法については、以下をご覧ください。
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

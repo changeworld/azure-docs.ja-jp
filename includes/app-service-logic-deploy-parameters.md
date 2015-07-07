@@ -1,15 +1,12 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the 
-environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deploy. 
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に指定する値のパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む Parameters という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレートにおいて、それぞれのパラメーターの値は、デプロイ対象のリソースを定義するために使用されます。
 
-When defining parameters, use the **allowedValues** field to specify which values a user can provide during deployment. Use the **defaultValue** field to assign a value to the parameter, if no value is provided 
-during deployment.
+パラメーターを定義するときは、**allowedValues** フィールドを使用して、デプロイ中にユーザーが指定できる値を指定します。**defaultValue** フィールドは、デプロイ中に値が指定されなかった場合にパラメーターに割り当てる値を指定するために使用します。
 
-We will describe each parameter in the template.
+テンプレートに含まれるそれぞれのパラメーターについて説明します。
 
 ### logicAppName
 
-The name of the logic app to create.
+作成するロジック アプリの名前。
 
     "logicAppName": {
         "type": "string"
@@ -17,7 +14,7 @@ The name of the logic app to create.
 
 ### svcPlanName
 
-The name of the App Service plan to create for hosting the logic app.
+ロジック アプリをホストするために作成する App Service プランの名前。
     
     "svcPlanName": {
         "type": "string"
@@ -25,7 +22,7 @@ The name of the App Service plan to create for hosting the logic app.
 
 ### sku
 
-The pricing tier for the logic app.
+ロジック アプリの価格レベル。
 
     "sku": {
         "type": "string",
@@ -38,11 +35,11 @@ The pricing tier for the logic app.
         ]
     }
 
-The template defines the values that are permitted for this parameter (Free, Basic, Standard, or Premium), and assigns a default value (Standard) if no value is specified.
+テンプレートは、このパラメーターで許可される値 (Free、Basic、Standard、または Premium) を定義します。値が指定されない場合は既定値 (Standard) を割り当てます。
 
 ### svcPlanSize
 
-The instance size of the app.
+アプリのインスタンス サイズ。
 
     "svcPlanSize": {
         "defaultValue": "0",
@@ -54,4 +51,6 @@ The instance size of the app.
         ]
     }
 
-The template defines the values that are permitted for this parameter (0, 1, or 2), and assigns a default value (0) if no value is specified. The values correspond to small, medium and large.
+テンプレートは、このパラメーターで許可される値 (0、1、または 2) を定義します。値が指定されない場合は既定値 (0) を割り当てます。値は、小、中、および大に対応します。
+
+<!---HONumber=62-->

@@ -1,7 +1,7 @@
 <properties 
-   pageTitle="2 つの Azure データ センター間での HBase レプリケーションの構成 | Azure" 
-   description="2 つの Azure Virtual Network 間に VPN 接続を構成する方法、2 つの仮想ネットワーク間にドメイン名の解決を構成する方法、HBase geo レプリケーションを構成する方法について説明します" 
-   services="hdinsight" 
+   pageTitle="2 つのデータセンター間での HBase レプリケーションの構成 | Microsoft Azure" 
+   description="2 つのデータ センター間で HBase のレプリケーションを構成する方法と、クラスターのレプリケーションの用途について説明します。" 
+   services="hdinsight,virtual-network" 
    documentationCenter="" 
    authors="mumian" 
    manager="paulettm" 
@@ -38,18 +38,19 @@
 - [仮想ネットワーク用に DNS を構成します][hdinsight-hbase-replication-dns]
 - HBase の geo レプリケーションを構成します (このチュートリアル)
 
-次の図は、「[2 つの Azure Virtual Network 間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]」および「[2 つの Azure Virtual Network 間の DNS の構成][hdinsight-hbase-replication-dns]」で作成した 2 つの仮想ネットワークとネットワーク接続を示したものです。
+次の図は、[2 つの仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]に関するページおよび [2 つの仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]に関するページで作成した 2 つの仮想ネットワークとネットワーク接続を示したものです。
 
 ![HDInsight HBase レプリケーション仮想ネットワークの図][img-vnet-diagram]
 
 ## <a id="prerequisites"></a>前提条件
+
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- **Azure PowerShell がインストールされ構成されたワークステーション**。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install]を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Set-ExecutionPolicy コマンドレットの使用][2]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「Set-ExecutionPolicy コマンドレットの使用」を参照してください。
 
-- **VPN 接続と DNS が構成された 2 つの Azure Virtual Network**。方法については、「[2 つの Azure Virtual Network 間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」および「[2 つの Azure Virtual Network 間の DNS の構成][hdinsight-hbase-replication-dns]」を参照してください。
+- **VPN 接続と DNS が構成された 2 つの Azure 仮想ネットワーク**。方法については、「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」および「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-replication-dns]」を参照してください。
 
 
 	PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
@@ -64,7 +65,7 @@
 
 ## HDInsight での HBase クラスターのプロビジョニング
 
-「[2 つの Azure Virtual Network 間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」では、ヨーロッパと米国のデータ センターに仮想ネットワークを作成しました。2 つの仮想ネットワークは VPN で接続されています。このセッションでは、各仮想ネットワークに HBase クラスターをプロビジョニングします。このチュートリアルの後半では、一方の HBase クラスターが他の HBase クラスターにレプリケートするようにします。
+「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-replication-vnet]」では、ヨーロッパと米国のデータ センターに仮想ネットワークを作成しました。2 つの仮想ネットワークは VPN で接続されています。このセッションでは、各仮想ネットワークに HBase クラスターをプロビジョニングします。このチュートリアルの後半では、一方の HBase クラスターが他の HBase クラスターにレプリケートするようにします。
 
 Azure ポータルでは、カスタム構成オプションで HDInsight クラスターをプロビジョニングすることはできません。たとえば、*hbase.replication* を *true* に設定するような場合です。クラスターをプロビジョニングした後で構成ファイルの値を設定した場合、クラスターが再イメージ化された後で設定は失われます。詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。カスタム オプションで HDInsight クラスターをプロビジョニングする方法の 1 つは、Azure PowerShell を使用することです。
 
@@ -147,15 +148,15 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 
 
 
-# DNS 条件付フォワーダーの構成
+## DNS 条件付フォワーダーの構成
 
-「[2 つの Azure Virtual Network 間の DNS の構成][hdinsight-hbase-replication-dns]」では、2 つのネットワークに DNS サーバーを構成しました。HBase クラスターには異なるドメイン サフィックスがあります。したがって、新しく DNS 条件付フォワーダーを構成する必要があります。
+[仮想ネットワークの DNS の構成][hdinsight-hbase-replication-dns]に関するページでは、2 つのネットワークに DNS サーバーを構成しました。HBase クラスターには異なるドメイン サフィックスがあります。したがって、新しく DNS 条件付フォワーダーを構成する必要があります。
 
 条件付フォワーダーを構成するには、2 つの HBase クラスターのドメイン サフィックスを知っている必要があります。
 
 **2 つの HBase クラスターのドメイン サフィックスを調べるには**
 
-1. RDP で **Contoso-HBase-EU** に接続します。方法については、「[Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。これは、実際にはクラスターの headnode0 です。
+1. RDP で **Contoso-HBase-EU** に接続します。方法については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。これは、実際にはクラスターの headnode0 です。
 2. Windows PowerShell コンソールまたはコマンド プロンプトを開きます。
 3. **ipconfig** を実行し、**接続固有の DNS サフィックス**の値を記録します。
 4. RDP セッションを閉じないでください。後でドメイン名の解決をテストするために必要です。
@@ -298,7 +299,7 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication/HDInsight.HBase.Replication.Network.diagram.png
 
-
+[powershell-install]: ../install-configure-powershell.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
@@ -309,5 +310,5 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
-<!--HONumber=52-->
- 
+
+<!---HONumber=62-->

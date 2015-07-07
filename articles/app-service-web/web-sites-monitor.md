@@ -1,30 +1,30 @@
-<properties 
-	pageTitle="Azure App Service の Web アプリの監視" 
-	description="Azure App Service の Web アプリを管理ポータルを使用して監視する方法を説明します。" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure App Service の Web アプリの監視"
+	description="Azure App Service の Web アプリを管理ポータルを使用して監視する方法を説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/24/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/24/2015"
 	ms.author="cephalin"/>
 
 
 
-#<a name="howtomonitor"></a>Azure App Service での Web アプリの監視 
+#<a name="howtomonitor"></a>Azure App Service での Web アプリの監視
 
 [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) には、Standard および Premium の App Service プランを対象に、[監視] 管理ページで監視を行う機能があります。以下に示すように、[監視] 管理ページでは、Web アプリのパフォーマンス統計を確認できます。
 
 ##<a name="websitemetrics"></a>方法: Web アプリのメトリックを追加する
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で、Web アプリの [管理] ページから、[**監視**] タブをクリックして [**監視**] 管理ページを表示します。既定では、**[監視]** ページのグラフには、**[ダッシュボード]** ページのグラフと同じメトリックが表示されます。 
+1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で、Web アプリの [管理] ページから、[**監視**] タブをクリックして [**監視**] 管理ページを表示します。既定では、**[監視]** ページのグラフには、**[ダッシュボード]** ページのグラフと同じメトリックが表示されます。
 
 2. Web アプリのメトリックを追加するには、ページの下部にある [**メトリックの追加**] をクリックして、[**メトリックの選択**] ダイアログ ボックスを表示します。
 
@@ -44,7 +44,7 @@ Web アプリの **Standard** モードでは、Web アプリの監視メトリ�
 Web アプリの [**スケール**] 管理ページでは、Web アプリが **Shared** モードまたは **Standard** モードで実行されるように構成できます。各 Azure サブスクリプションは、リージョンごとに最大 100 個の Web アプリを **Shared** モードで実行することを目的として提供されるリソース プールにアクセスできます。この目的で各 Web アプリ サブスクリプションが使用できるリソース プールは、 **Shared** モードで実行するように構成されている同じ Geo リージョン内の他の Web アプリと共有されます。これらのリソースは他の Web アプリが使用できるように共有されるため、すべてのサブスクリプションで使用が制限されます。サブスクリプションによるこれらのリソースの使用に適用される制限は、各 Web アプリの [**ダッシュボード**] 管理ページの [使用状況の概要] セクションに、使用量のクォータとして表示されます。
 
 >[AZURE.NOTE]Web アプリが **Standard** モードで実行するように構成されている場合は、専用のリソースが割り当てられます。リソースのサイズは、[Azure での仮想マシンとクラウド サービスのサイズ][vmsizes]に関するページの表に示されている仮想マシン サイズ **S** (既定)、**M**、または **L** と同等です。サブスクリプションが **Standard** モードで Web アプリを実行するときに使用できるリソースに制限はありません。ただし、リージョンごとに作成できる **Standard** モードの Web アプリの数は 500 個です。
- 
+
 ### 方法: Shared モード用に構成された Web アプリの使用量クォータを表示する ###
 Web アプリがリソースの使用量クォータをどの程度消費しているか確認するには、次のステップに従います。
 
@@ -52,7 +52,7 @@ Web アプリがリソースの使用量クォータをどの程度消費して�
 2. [**使用状況の概要**] セクションに、各 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プランの使用量のクォータが表示されます。セクションは、
 	-	[**送信データ**]、[**CPU 時間**]、および [**メモリ**] で構成されます。クォータの制限を超えると、現在のクォータ期間が終わるまで、Web アプリが停止されます。これらの Web アプリは、次のクォータ期間の先頭から開始されます。
 	-	[**ファイル システム ストレージ**] - クォータの制限に達すると、ファイル システム ストレージには引き続きアクセスできますが、通常の Web アプリ アクティビティに必要な操作も含めて、すべての書き込み操作がブロックされます。ファイルの使用量を減らすか、クォータの大きい App Service プランに Web アプリを移行すると、書き込み操作が再開されます。
-	-	[**リンク済みリソース**] - データベースやストレージなど、Web アプリのリンク済みリソースのクォータが表示されます。   
+	-	[**リンク済みリソース**] - データベースやストレージなど、Web アプリのリンク済みリソースのクォータが表示されます。
 
 	クォータは、Web ホスティング プランごとに適用されるものと、サイトごとに適用されるものがあります。各 Web ホスティング プランの使用量のクォータの詳細については、「[Web サイトの制限](azure-subscription-service-limits.md#websiteslimits)」を参照してください。
 
@@ -61,7 +61,7 @@ Web アプリがリソースの使用量クォータをどの程度消費して�
 
 クォータは、パフォーマンスやコストに関するものではなく、Azure がマルチテナント環境においてリソースの使用量を管理する方法です。クォータを通じて、テナントが共有リソースを過剰に使用しないよう管理されます。クォータの制限を超過すると、Web アプリのダウンタイムや機能の低下が生じるため、クォータの制限に達しそうになったときにサイトが動作を維持できるようにするには、次の点を考慮してください。
 
-- Web アプリを上位の App Service プランに移行し、より大きいクォータを利用します。たとえば、 **Basic** プランと **Standard** プランのクォータは、ファイル システム ストレージのみです。 
+- Web アプリを上位の App Service プランに移行し、より大きいクォータを利用します。たとえば、 **Basic** プランと **Standard** プランのクォータは、ファイル システム ストレージのみです。
 - Web アプリのインスタンス数が増加すると、共有リソースのクォータを超過する可能性も高くなります。共有リソースのクォータを超過しそうな場合は、必要に応じて、Web アプリの追加インスタンスを減らしてください。
 
 
@@ -98,14 +98,14 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 > [AZURE.NOTE]**アプリケーション診断 (ファイル システム)**、**アプリケーション診断 (テーブル ストレージ)**、および**アプリケーション診断 (BLOB ストレージ)** は同時に有効にできます。また、それぞれ個別にログ レベルを設定できます。たとえば、エラーと警告をストレージに長期間保存すると同時に、アプリケーション コードを実装した後、問題解決に役立つ詳細ログをファイル システムに記録できます。
 
 > [AZURE.NOTE]診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。
-> 
+>
 > Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
 
 > [AZURE.NOTE]アプリケーション ログ記録は、アプリケーションが生成するログ情報に依存しています。ログ情報を生成する方法およびログ情報の形式は、アプリケーションの開発言語によって異なります。各言語でのアプリケーション ログ記録の使用方法については、次の記事を参照してください。
-> 
+>
 > - **.NET** [Enable diagnostic logging for Azure Websites (Azure Web サイトの診断ログを有効にする)](/develop/net/common-tasks/diagnostics-logging-and-instrumentation/)
 > - **Node.js** [How to debug a Node.js application in Azure Websites (Azure Web サイトでの Node.js アプリケーションのデバッグ方法)](/develop/nodejs/how-to-guides/Debug-Website/)
-> 
+>
 > テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。
 
 #### サイト診断 ####
@@ -137,7 +137,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 - アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- Default value: ....\\LogFiles\\Application
+- Default value: ....\LogFiles\Application
 
 **DIAGNOSTICS_TEXTTRACEMAXBUFFERSIZEBYTES**
 
@@ -153,7 +153,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 ###Web アプリのログ ファイルのダウンロード
 
-ログ ファイルは、FTP、Azure PowerShell、または Azure コマンド ライン ツールを使用してダウンロードすることができます。
+ログ ファイルは、FTP、Azure PowerShell、Azure CLI を使用してダウンロードすることができます。
 
 **FTP**
 
@@ -173,14 +173,14 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 		Save-AzureWebSiteLog -Name webappname
 
 	これにより、**webappname** で指定された Web アプリのログ ファイルがダウンロードされ、現在のディレクトリにある **log.zip** ファイルに保存されます。
-	
+
 	次のコマンドを使用してログ イベントのライブ ストリームを表示することもできます。
 
 		Get-AzureWebSiteLog -Name webappname -Tail
 
 	これは Azure PowerShell プロンプトに、発生したログ情報を順次表示します。
 
-**Azure コマンド ライン ツール**
+**Azure CLI**
 
 新しいコマンド プロンプト、PowerShell、bash、またはターミナル セッションを開き、次のコマンドを使用してログ ファイルをダウンロードします。
 
@@ -194,7 +194,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 これは、コマンドが実行されたコマンド プロンプト、PowerShell、bash、またはターミナル セッションにログ情報を表示します。
 
-> [AZURE.NOTE]**azure** コマンドがインストールされていない場合は、「[How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)](../virtual-machines-command-line-tools.md)」を参照して、インストールと構成を実行してください。
+> [AZURE.NOTE]**azure** コマンドがインストールされていない場合は、「[How to use the Azure CLI (Azure CLI の使用方法)](../virtual-machines-command-line-tools.md)」をご覧になって、インストールと構成を実行してください。
 
 ### ログ ファイルの読み込み ###
 
@@ -208,13 +208,13 @@ Web アプリに対するログ記録またはトレース、あるいはその�
 
 **ログ ファイルの種類: 失敗した要求トレース**
 
-- 場所: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。 
+- 場所: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
 - ファイルの閲覧に使用するツール: Internet Explorer
 
 **ログ ファイルの種類: 詳細なエラー ログ記録**
 
-- 場所: /LogFiles/DetailedErrors/。/LogFiles/DetailedErrors/ フォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。 
+- 場所: /LogFiles/DetailedErrors/。/LogFiles/DetailedErrors/ フォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
 - ファイルの閲覧に使用するツール: Web ブラウザー
 
@@ -248,10 +248,10 @@ Web アプリに対するログ記録またはトレース、あるいはその�
 **エンドポイント監視を構成するには**
 
 1.	[**Web Apps**] を開きます。構成する Web アプリの名前をクリックします。
-2.	**[構成]** タブをクリックします。 
+2.	**[構成]** タブをクリックします。
 3.     **[監視]** セクションに移動して、エンドポイント設定を入力します。
 4.	エンドポイントの名前を入力します。
-5.	監視する Web アプリの一部を指す URL を入力します。たとえば、[http://contoso.azurewebsites.net/archive](http://contoso.azurewebsites.net/archive) とします。 
+5.	監視する Web アプリの一部を指す URL を入力します。たとえば、[http://contoso.azurewebsites.net/archive](http://contoso.azurewebsites.net/archive) とします。
 6.	1 つ以上の場所を一覧から選択します。
 7.	2 つ目のエンドポイントを構成する場合は、これまでの手順を繰り返します。
 8.	**[保存]** をクリックします。Web エンドポイントの監視データが **[ダッシュボード]** と **[監視]** タブに表示されるまでに、時間がかかることがあります。
@@ -276,11 +276,11 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [fzilla]: http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

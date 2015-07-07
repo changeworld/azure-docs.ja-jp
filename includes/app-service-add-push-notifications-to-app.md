@@ -1,14 +1,14 @@
 
-## <a id="add-push"></a>Add Push Notifications to App
+## <a id="add-push"></a>アプリケーションへのプッシュ通知の追加
 
-* In QSAppDelegate.m, import the iOS SDK and QSTodoService.h:
+* QSAppDelegate.m で、iOS SDK および QSTodoService.h をインポートします。
 
 ```
         #import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
         #import "QSTodoService.h"
 ```
 
-* In `didFinishLaunchingWithOptions` in QSAppDelegate.m, insert the following lines right before `return YES;`:
+* QSAppDelegate.m の `didFinishLaunchingWithOptions` で、`return YES;` の直前に、次の行を挿入します。
 
 ```
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -16,7 +16,7 @@
         [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
 
-* In QSAppDelegate.m, add the following handler methods. Your app is now updated to support push notifications.
+* QSAppDelegate.m で、次のハンドラー メソッドを追加します。これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
 ```
         // Registration with APNs is successful
@@ -56,3 +56,5 @@
             [alert show];
         }
 ```
+
+<!---HONumber=62-->

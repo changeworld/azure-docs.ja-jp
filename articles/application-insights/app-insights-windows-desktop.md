@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Windows デスクトップ アプリ用の Application Insights" 
+	pageTitle="Windows デスクトップのアプリおよびサービス用の Application Insights" 
 	description="Application Insights を使用して Windows アプリの使用状況とパフォーマンスを分析します。" 
 	services="application-insights" 
     documentationCenter="windows"
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2015" 
+	ms.date="06/13/2015" 
 	ms.author="awills"/>
 
-# Windows デスクトップ アプリの Application Insights
+# Windows デスクトップのアプリおよびサービスに対する Application Insights
 
 *Application Insights はプレビュー段階です。*
 
@@ -23,19 +23,16 @@
 
 Application Insights を使用すると、デプロイしたアプリケーションの使用状況とパフォーマンスを監視できます。
 
-*Application Insights SDK はデスクトップ アプリで動作するように作られていますが、現在このシナリオはサポートされていません。ただし、試験的に使用する方のために、ここではヒントを示します。*
-
-
+Windows デスクトップのアプリとサービスに対するサポートは、Application Insights のコア SDK によって提供されます。この SDK は、すべてのテレメトリ データ用の API を完全にサポートしていますが、テレメトリの自動収集には対応していません。
 
 
 ## <a name="add"></a>Application Insights リソースの作成
 
 
-1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類には、ASP.NET アプリまたは Windows ストア アプリを選択します。 
+1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類には、Windows ストア アプリを選択します。 
 
     ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-desktop/01-new.png)
 
-    (選択したアプリケーションの種類に応じて、[メトリックス エクスプローラー][metrics]で使用できる概要ブレードのコンテンツとプロパティが設定されます)
 
 2.  インストルメンテーション キーをコピーします。
 
@@ -46,11 +43,9 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
 1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-desktop/03-nuget.png)
 
-2. Application Insights SDK のコアをインストールします。
+2. Application Insights API パッケージをインストールします。
 
     ![**[オンライン]**、**[プレリリースを含める]** の順に選択し、"Application Insights" を検索する](./media/app-insights-windows-desktop/04-ai-nuget.png)
-
-    (代わりに、Application Insights SDK for Web Apps を選択することもできます。これによって、パフォーマンス カウンター テレメトリがいくつか組み込まれます。)
 
 3. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
 
@@ -60,11 +55,10 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
     
     `TelemetryConfiguration.Active.InstrumentationKey = "your key";`
 
-4. Web Apps 用の SDK をインストールした場合は、ApplicationInsights.config から Web テレメトリ モジュールをコメントアウトすることもお勧めします。
 
 ## <a name="telemetry"></a>テレメトリの呼び出しの挿入
 
-`TelemetryClient` インスタンスを作成してから、[このインスタンスを使用してテレメトリを送信][track]します。
+`TelemetryClient` インスタンスを作成してから、[このインスタンスを使用してテレメトリを送信][api]します。
 
 `TelemetryClient.Flush` を使用して、アプリを閉じる前にメッセージを送信します (これは他の種類のアプリには使用しないでください)。
 
@@ -78,6 +72,15 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
         ...
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Alternative to setting ikey in config file:
+            tc.InstrumentationKey = "key copied from portal";
+
+            // Set session data:
+            tc.Context.User.Id = Environment.GetUserName();
+            tc.Context.Session.Id = Guid.NewGuid().ToString();
+            tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
+
+            // Log a page view:
             tc.TrackPageView("Form1");
             ...
         }
@@ -94,23 +97,25 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
 ```
 
-テレメトリを送信するには、[Application Insights API][track] のいずれかを使用します。Windows デスクトップ アプリケーションでは、テレメトリが自動的に送信されることはありません。通常は次のものを使用します。
+テレメトリを送信するには、[Application Insights API][api] のいずれかを使用します。Windows デスクトップ アプリケーションでは、テレメトリが自動的に送信されることはありません。通常は次のものを使用します。
 
 * フォーム、ページ、またはタブの切り替えには TrackPageView(pageName)。
 * その他のユーザーの操作には TrackEvent(eventName)。
+* 特定のイベントに関連付けられていないメトリックの標準レポートをバックグラウンド タスクで送信するには TrackMetric(name, value)。
 * [診断ログの記録][diagnostic]には TrackTrace(logEvent)。
 * Catch 句では TrackException(exception)。
-* 特定のイベントに関連付けられていないメトリックの標準レポートをバックグラウンド タスクで送信するには TrackMetric(name, value)。
 
-ユーザーとセッションの数を表示するには、コンテキストの初期化子を設定します。
+#### コンテキストの初期化子
 
-    class TelemetryInitializer: IContextInitializer
+TelemetryClient インスタンスごとにセッション データを設定する代わりに、コンテキストの初期化子を使用することもできます。
+
+```C#
+    class UserSessionInitializer: IContextInitializer
     {
         public void Initialize(TelemetryContext context)
         {
             context.User.Id = Environment.UserName;
-            context.Session.Id = DateTime.Now.ToFileTime().ToString();
-            context.Session.IsNewSession = true;
+            context.Session.Id = Guid.NewGuid().ToString();
         }
     }
 
@@ -120,8 +125,9 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
         static void Main()
         {
             TelemetryConfiguration.Active.ContextInitializers.Add(
-                new TelemetryInitializer());
+                new UserSessionInitializer());
             ...
+```
 
 
 
@@ -149,7 +155,7 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 
 ## <a name="usage"></a>次のステップ
 
-[アプリの使用状況の追跡][track]
+[アプリの使用状況の追跡][knowUsers]
 
 [診断ログのキャプチャと検索][diagnostic]
 
@@ -164,7 +170,9 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 [metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
-[track]: app-insights-custom-events-metrics-api.md
+[knowUsers]: app-insights-overview-usage.md
+[api]: app-insights-api-custom-events-metrics.md
+[CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

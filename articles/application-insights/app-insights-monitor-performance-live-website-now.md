@@ -1,10 +1,10 @@
 <properties 
 	pageTitle="実行中の Web サイトのパフォーマンスの問題の診断" 
-	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。スタンドアロンでの使用または Application Insights SDK との併用" 
+	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。依存関係のテレメトリを取得するには、スタンドアロンで使用するか、Application Insights SDK と併用します。" 
 	services="application-insights" 
-documentationCenter=".net"
+    documentationCenter=".net"
 	authors="alancameronwills" 
-	manager="kamrani"/>
+	manager="ronmart"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,57 +12,67 @@ documentationCenter=".net"
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/23/2015" 
+	ms.date="04/27/2015" 
 	ms.author="awills"/>
  
 
-# ライブ Web サーバーの監視を今すぐ始める
+# Application Insights Status Monitor をインストールして Web サイトのパフォーマンスを監視する
 
 *Application Insights はプレビュー段階です。*
 
-Web アプリケーションが動作がおかしくなっていませんか。Web アプリケーションを再構築したり再デプロイしたりすることなく、例外やパフォーマンスの問題をすぐに分析できます。Application Insights エージェントをサーバーにインストールすると、パフォーマンスのボトルネックを見つけたり、任意の例外のスタック トレースを取得したりできます。 
+Visual Studio Application Insights の Status Monitor があれば、どんな IIS サーバーで実行されている Web アプリケーションであっても、例外やパフォーマンスの問題を診断できます。IIS Web サーバーにインストールするだけで、サーバー内に見つかる ASP.NET Web アプリのインストルメント化や、Application Insights ポータルへのデータ送信がなされ、検索と分析が可能になります。管理者アクセス権をお持ちのサーバーであれば、どんな物理サーバーや仮想サーバーにでもインストールできます。
+
+![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+
+Application Insights を IIS Web アプリケーションに適用するには、次の 3 つの方法があります。
+
+* **ビルド時:** Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。次の機能が使用可能になります。
+ * さまざまな標準診断および使用状況のテレメトリ。 
+ * 独自のテレメトリを記述して使用状況追跡や問題の診断に活用するには、[Application Insights API][api] を使用できます。
+* **実行時:** Status Monitor 使用して、サーバー上の Web アプリをインストルメント化します。
+ * 既に実行されている Web アプリの監視。リビルドや再パブリッシュの必要はありません。
+ * さまざまな標準診断および使用状況のテレメトリ。
+ * 依存関係の診断 - アプリが、データベース、REST API、その他のサービスなどの他のコンポーネントを使用して発生している障害やパフォーマンス低下の個所を特定します。
+ * テレメトリに関する問題のトラブルシューティング。
+* **両方:** SDK を Web アプリ コードにコンパイルし、Web サーバー上で Status Monitor を実行します。両方の長所を活用できます。
+ * 標準診断および使用状況のテレメトリ。
+ * 依存関係の診断。
+ * API を使用したカスタム テレメトリの記述。
+ * SDK およびテレメトリに関する問題のトラブルシューティング。
 
 
-#### この方法で Application Insights を設定するのはどのような場合が適していますか?
 
-このアプローチは、主に、ライブ IIS Web サイトのパフォーマンスの問題を迅速に診断するのに適しています。
+> [AZURE.TIP][Azure App Service の Web アプリ](../app-service-web/websites-learning-map.md)をご利用ですか。 Azure のアプリのコントロール パネルから、[Application Insights SDK を追加][greenbrown]し、[Application Insights の拡張機能を追加](../insights-perf-analytics.md)してください。
 
-エージェントをサーバーにインストールするだけで、Application Insights にパフォーマンス データが表示されます。
 
-- この方法は、IIS サーバー上でホストされる ASP.NET アプリケーションに適用できます。
+## IIS Web サーバーへの Application Insights Status Monitor のインストール
 
-- データを表示するには、[Microsoft Azure アカウント](http://azure.com)が必要です。
+1. [Microsoft Azure](http://azure.com) サブスクリプションが必要です。 
 
-- Web アプリケーションが実行されているサーバーに対する管理アクセス権が必要です。 
+1. IIS Web サーバーで、管理者の資格情報を使用してログインします。
+2. [Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
 
-- Web アプリケーションのコードは*不要*です。アプリケーションの再構築や再デプロイも必要ありません。 
-
-- この方法では、Web アプリケーションがそのままインストルメント化されます。トレースまたはログ コードを挿入したりはしません (ただし、後で必要に応じてそうすることもできます)。
-
-ログまたは診断トレースを挿入する場合は、ここから続けずに、[Application Insights をプロジェクトに追加し][greenbrown]、再デプロイしてください。すべての種類のオプションについては、「[Application Insights - 開始方法][start]」を参照してください。
-
-## Web サーバーへの Application Insights エージェントのインストール
-
-1. Web サーバーで、管理者の資格情報を使用してログインします。
-
-2. Version 5.0 以降の [Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)があることを確認します。
-3. Web プラットフォーム インストーラーを使用して、Application Insights エージェントをインストールします。
-
-    ![](./media/app-insights-monitor-performance-live-website-now/appinsights-031-wpi.png)
 4. インストール ウィザードで、Microsoft Azure にサインインします。
 
-    ![](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
-5. 監視するインストール済みの Web アプリケーションまたは Web サイトを選択し、Application Insights ポータルで結果を表示するときに使用する名前を構成します。最後に、[追加] ボタンをクリックします。
+    ![Microsoft アカウントの資格情報で Azure にサインインする](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
 
-    ![](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
+5. 監視するインストール済みの Web アプリケーションまたは Web サイトを選択し、Application Insights ポータルで結果を表示するときに使用するリソースを構成します。
 
-    通常は、新しいリソースを作成する方法を選んでください。
+    ![アプリとリソースを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-    既存のリソースを使用するケースとしては、たとえば、サイト用の [Web テスト][availability]を既に設定している場合があります。  
+    通常は、新しいリソースと[リソース グループ][roles]を構成する方法を選択してください。
 
-6. 監視対象の Web サイトに ApplicationInsights.config が挿入されます。
+    既存のリソースを使用するケースとしては、たとえば、サイト用の [Web テスト][availability]や、[Web クライアントの監視][client]を既に設定している場合があります。
 
-    ![](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
+6. IIS を再起動します。
+
+    ![ダイアログの上部にある [再起動] を選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
+
+    少しの間、Web サービスが中断されます。
+
+6. 監視対象の Web アプリに ApplicationInsights.config が挿入されます。
+
+    ![Web アプリのコード ファイルの横にある、.config ファイルを見つけます。](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
 
    これ以外にも、web.config にいくつかの変更が加えられます。
 
@@ -72,45 +82,92 @@ Web アプリケーションが動作がおかしくなっていませんか。W
 
 ![Click the Application Insights icon on the task bar](./media/app-insights-monitor-performance-live-website-now/appinsights-033-aicRunning.png)
 
-## データの表示
+## パフォーマンス テレメトリの表示
 
-Azure のアカウントを開いた後、Application Insights を参照して、作成したリソースを開きます。
+[Azure プレビュー ポータル](http://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
 
-![](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
+![[参照]、[Application Insights] の順に選択し、アプリを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
 
-[アプリケーションの健全性] にデータが表示されます。
+パフォーマンス ブレードを開くと、依存関係とその他のデータが表示されます。
 
-![](./media/app-insights-monitor-performance-live-website-now/appinsights-037-results.png)
+![パフォーマンス](./media/app-insights-monitor-performance-live-website-now/21-perf.png)
 
-#### データが表示されない場合
+任意のグラフをクリックすると、より詳細な情報が表示されます。
+
+
+![](./media/app-insights-monitor-performance-live-website-now/appinsights-038-dependencies.png)
+
+#### 依存関係
+
+HTTP、SQL、AZUREBLOB というラベルの付いたグラフには、依存関係 (アプリケーションが使用する外部サービス) に対する呼び出しの応答時間および回数が表示されます。
+
+
+
+#### パフォーマンス カウンター
+
+パフォーマンス カウンターのグラフをクリックすると表示内容が変わります。新しいグラフを追加することもできます。
+ 
+#### 例外
+
+![サーバーの例外グラフをクリックする](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
+
+特定の例外 (過去 7 日間) をドリルダウンし、スタック トレースとコンテキスト データを取得できます。
+
+
+### テレメトリが見つかりませんか?
 
   * サイトを使用してデータを生成します。
-  * データが到着するまでしばらく待ちます。
-  * サーバーのファイアウォールでポート 443 を介した dc.services.visualstudio.com への発信トラフィックが許可されていることを確認します。 
+  * データが到着するまで数分待ち、[最新の情報に更新] をクリックします。
+  * 診断検索 ([検索] タイル) を開き、個々のイベントを表示します。グラフに集計データが表示される前であっても、大抵の場合、イベントは診断検索に表示されます。
+  * Status Monitor を開き、左ウィンドウ枠でアプリケーションを選択します。「通知の構成」セクションに、このアプリケーションの診断メッセージがあるかどうかを確認します。
+  
+  ![](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
 
-#### アプリケーションの使用状況レポートの使用方法
- * [データを理解して、タイルを構成します。][perf]
+  * サーバーのファイアウォールで、ポート 443 を介した dc.services.visualstudio.com への発信トラフィックが許可されていることを確認します。 
+  * サーバーに「権限が不十分」であるという内容のメッセージが表示される場合、次の点を実行してください。
+  * IIS マネージャーで、アプリケーション プールを選択し、[詳細設定] を開きます。[プロセス モデル] に表示されている ID をメモします。
+  * コンピューターの管理コントロール パネルで、この ID をパフォーマンス モニター ユーザー グループに追加します。
+  * [トラブルシューティング][qna]に関するページを参照します。
+
+## システム要件
+
+サーバー上の Application Insights Status Monitor をサポートする OS:
+
+- Windows Server 2008
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
+
+最新の SP および .NET Framework 4.0 と 4.5
+
+クライアント側: .NET Framework 4.0 と 4.5 がインストールされた Windows 7、8 および 8.1
+
+IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 ## <a name="next"></a>次のステップ
 
+* サイトがライブの状態であることを確認するには、[Web テストを作成][availability]します。
+* 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
+* Web ページ コードからの例外を参照してトレースの呼び出しを挿入するには、[Web クライアント テレメトリを追加][usage]します。
+* トレースとログの呼び出しをサーバー コードで挿入するには、[Application Insights SDK を Web サービス コードに追加][greenbrown]します。
 
-[データの表示][perf]
+## ビデオ
 
-[診断ログを検索する][diagnostic]
+#### パフォーマンスの監視
 
-[Web テスト][availability]
+[AZURE.VIDEO app-insights-performance-monitoring]
 
-[利用状況の監視の設定][start]
+<!--Link references-->
 
-[トラブルシューティング][qna]
+[api]: app-insights-api-custom-events-metrics.md
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
+[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[qna]: app-insights-troubleshoot-faq.md
+[roles]: app-insights-resources-roles-access-control.md
+[usage]: app-insights-web-track-usage.md
 
-
-
-
-[AZURE.INCLUDE [app-insights-learn-more](../../includes/app-insights-learn-more.md)]
-
-
-
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=62-->

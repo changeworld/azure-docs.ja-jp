@@ -1,28 +1,30 @@
 
-1. In Visual Studio in Solution Explorer, right click the service project and click **Start new instance** under the **Debug** context menu.
+1. Visual Studio のソリューション エクスプローラーで、サービス プロジェクトを右クリックして、**[デバッグ]** コンテンツ メニューの **[新しいインスタンスの開始]** をクリックします。
 
-    Visual Studio opens the default web page for your service. By default, Visual Studio hosts your mobile app backend locally in IIS Express.
+    Visual Studio では、サービスの既定の Web ページが表示されます。既定では、Visual Studio は、モバイル アプリ バックエンドを IIS Express でローカルにホストします。
 
-2. Right-click the tray icon for IIS Express on the Windows taskbar and verify that your mobile app backend has started.
+2. Windows タスクバーにある IIS Express のトレイ アイコンを右クリックして、モバイル アプリ バックエンドが開始していることを確認します。
 
-	 ![verify the mobile service in the taskbar](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/iis-express-tray.png)
+	 ![タスクバーにあるモバイル サービスを確認する](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/iis-express-tray.png)
 
-3. On the start page of your .NET backend, click **try it out**.
+3. .NET バックエンドの開始ページで、**[実際に使ってみる]** をクリックします。
 
-    This displays the API documentation page, which you can use to test the Mobile App.
+    API ドキュメントのページが表示されます。このページを使用してモバイル アプリをテストします。
 
-	>[AZURE.NOTE]Authentication is not required to access this page when running locally. When running in Azure, you must supply the application key as the password (with no username) to access this page.
+	>[AZURE.NOTE]ローカルで実行する場合、このページにアクセスするための認証は不要です。Azure で実行する場合、このページにアクセスするには、(ユーザー名なしで) パスワードとしてアプリケーション キーを指定する必要があります。
 
-4. Click the **GET tables/TodoItem** link.
+4. **[テーブル/TodoItem の取得]** のリンクをクリックします。
 
 	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-api-documentation-page.png)
    	
-	This displays the GET response page for the API.
+	これにより、API の GET 応答ページが表示されます。
 
-5. Click **try this out** and then click **send**.
+5. **[実際に使ってみる]**、**[送信]** の順にクリックします。
  
 	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-todoitems.png)
 
-	This sends a GET request to the local mobile app backend to return all rows in the TodoItem table. Because the table is seeded by the initializer, two TodoItem objects are returned in the body of the response message. For more information about initializers, see [How to make data model changes to a .NET backend mobile service](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md).
+	TodoItem テーブルのすべての行を返す GET 要求がローカル モバイル アプリ バックエンドに送信されます。テーブルが初期化子によってシードされているため、応答メッセージの本体に 2 つの TodoItem オブジェクトが返されます。初期化子についての詳細は、「[.NET バックエンド モバイル サービスに対してデータ モデルを変更する方法](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)」を参照してください。
 
 	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-response.png)
+
+<!---HONumber=62-->

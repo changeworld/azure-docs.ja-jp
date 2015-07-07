@@ -25,7 +25,7 @@ Azure Web アプリをバックアップから復元する方法については�
 
 <a name="whatsbackedup"></a>
 ## バックアップ対象 
-Web アプリでは、次の情報をバックアップできます。
+Web Apps では、次の情報をバックアップできます。
 
 * Web アプリの構成
 * Web アプリ ファイルの内容
@@ -47,7 +47,7 @@ Web アプリでは、次の情報をバックアップできます。
 <a name="manualbackup"></a>
 ## 手動バックアップの作成
 
-1. Azure ポータルでは、[Web アプリ] ブレードから Web アプリを選択します。これにより、新しいブレードで、Web アプリの詳細が表示されます。
+1. Azure ポータルでは、[Web Apps] ブレードから Web アプリを選択します。これにより、新しいブレードで、Web アプリの詳細が表示されます。
 2. **[設定]** オプションを選択します。**[設定]** ブレードが表示され、Web アプリを変更できるようになります。
 	
 	![バックアップ ページ][ChooseBackupsPage]
@@ -98,6 +98,84 @@ Web アプリでは、次の情報をバックアップできます。
 	
 	![保存ボタン][SaveIcon]
 
+<a name="notes"></a>
+## メモ
+
+* バックアップと復元の機能にデータベースを含めることができるように、Web アプリの **[設定]** 内の **[Web アプリ設定]** ブレードで、各データベースの接続文字列を適切に設定していることを確認します。
+* 複数の Web アプリを同じストレージ アカウントにバックアップできますが、保守しやすくするために、各 Web アプリに別々のストレージ アカウントを作成することを検討します。
+
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
+<a name="partialbackups"></a>
+## サイトの一部のみのバックアップ
+
+サイトを定期的にバックアップする場合や、サイトのコンテンツの容量が 10 GB (一度にバックアップを作成する場合の最大容量) を超えている場合など、サイト上のすべてのデータをバックアップしない場合があります。
+
+これには、ログ ファイルをバックアップしない場合などが考えられます。また、[毎週のバックアップをセットアップ](https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/#configure-automated-backups)する場合にも、古いブログ記事や画像などその後変更されることのない静的コンテンツなどでストレージ アカウントの容量を消費することは望ましくありません。
+
+部分バックアップでは、バックアップするファイルを詳細に選択できます。
+
+###バックアップしないファイルを指定する
+バックアップ対象から除外するファイルとフォルダーのリストを作成することができます。
+
+リストを _backup.filter という名前のテキスト ファイルとしてサイトの wwwroot フォルダーに保存します。このファイルにアクセスする場合は、[Kudu コンソール](https://github.com/projectkudu/kudu/wiki/Kudu-console) `http://{yoursite}.scm.azurewebsites.net/DebugConsole` で  にアクセスすると簡単です。
+
+次の手順では、Kudu コンソールを使用して _backup.filter ファイルを作成していますが、このファイルをこの場所に配置する場合にはユーザーのお好みのデプロイ方法を使用できます。
+
+###操作方法
+今後まったく変更されることのない過去のログ ファイルや静的な画像を含むサイトがあるとします。
+
+また、この古い画像が含まれているサイトは完全バックアップを作成済みです。今後、サイトのバックアップを毎日実行しますが、今後まったく変更されることのないログ ファイルや静的な画像ファイルはバックアップしないようにするとします。
+
+![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
+	
+これらのファイルをバックアップ対象から除外するには、次の手順に従います。
+
+####バックアップ対象から除外するファイルとフォルダーの指定
+この作業は簡単です。ログ ファイルはすべてバックアップしないことが決まっていたので、`D:\home\site\wwwroot\Logs` は対象から除外します。
+
+他に、Azure Web Apps のログ ファイルがすべて格納されているフォルダー (`D:\home\LogFiles`) もあります。こちらも除外します。
+
+さらに、過去数年分の画像も、何度も繰り返しバックアップしないようにします。このため、`D:\home\site\wwwroot\Images\2013` と `D:\home\site\wwwroot\Images\2014` もリストに追加します。
+
+最後に、画像フォルダーの brand.png ファイルもバックアップ対象から除外します。この場合、個々のファイルをブラック リストに追加する方法を使用します。このファイルは `D:\home\site\wwwroot\Images\brand.png` に格納されています。
+
+以上から、次のフォルダをバックアップ対象から除外します。
+
+* D:\home\site\wwwroot\Logs
+* D:\home\LogFiles
+* D:\home\site\wwwroot\Images\2013
+* D:\home\site\wwwroot\Images\2014
+* D:\home\site\wwwroot\Images\brand.png
+
+#### 除外リストの作成
+バックアップ対象から除外するファイルとフォルダーのブラック リストを、_backup.filter という名前の特殊なファイルに保存します。ファイルを作成し、`D:\home\site\wwwroot_backup.filter` に格納します。
+
+_backup.filter ファイルには、バックアップ対象から除外するファイルおよびフォルダーがすべて含まれているリストが保存されています。バックアップ対象から除外するフォルダーまたはファイルの完全パスから D:\home 以下の部分を、1 行に 1 つずつ追加します。
+
+自分のサイト場合、`D:\home\site\wwwroot\Logs` は `\site\wwwroot\Logs`、`D:\home\LogFiles` は `\LogFiles` というようになります。このため、_backup.filter の内容は次のようになります。
+
+    \site\wwwroot\Logs
+    \LogFiles
+    \site\wwwroot\Images\2013
+    \site\wwwroot\Images\2014
+    \site\wwwroot\Images\brand.png
+
+このとき、各行の先頭は必ず `` という文字から始まります。このことは重要ですので、ご注意ください。
+
+###バックアップの実行
+これで、バックアップを通常の手順と同様に実行できるようになりました。[手動](https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/#create-a-manual-backup) または[自動](https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/#configure-automated-backups) のどちらでも実行できます。
+
+_backup.filter のリストに含まれているすべてのファイルとフォルダーがバックアップ対象から除外されます。つまり、ログ ファイルと 2013 年と 2014 年の画像ファイルがバックアップされないようになります。
+
+###バックアップされたサイトの復元
+[定期的なバックアップからの復元](https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-restore/)と同様の手順で、サイトを部分バックアップから復元することもできます。この方法でも正しく処理が実行されます。
+
+####技術的な詳細
+部分バックアップではない完全バックアップでは、サイトのすべてのコンテンツがバックアップの内容と置き換えられます。サイト上に存在したファイルも、バックアップに存在しなければ削除されます。
+
+しかし、そのようなファイルも、ブラック リストに含まれているフォルダー (自分のサイトの場合は `D:\home\site\wwwroot\images\2014` など) のいずれかに保存されているコンテンツから部分バックアップで復元する場合はそのまま残されます。個々のファイルがブラック リストに含まれている場合は、それらのファイルも復元中そのまま残されます。
+
 <a name="aboutbackups"></a>
 ## バックアップの保存方法
 
@@ -113,13 +191,43 @@ Azure ポータルを使用して Web アプリ (データベースを含む) �
 
 > [AZURE.NOTE]**websitebackups** コンテナー内のファイルを変更すると、バックアップが無効になり、復元できなくなる可能性があります。
 
-<a name="notes"></a>
-## メモ
+<a name="bestpractices"></a>
+##ベスト プラクティス
+災害発生によりサイトを復元する場合は、どのようにするのですか。 事前に準備が完了していることを確認します。
 
-* バックアップと復元の機能にデータベースを含めることができるように、Web アプリの **[設定]** 内の **[Web アプリ設定]** ブレードで、各データベースの接続文字列を適切に設定していることを確認します。
-* 複数の Web アプリを同じストレージ アカウントにバックアップできますが、保守しやすくするために、各 Web アプリに別々のストレージ アカウントを作成することを検討します。
+部分バックアップがあること、および最悪の場合にはすべての内容をバックアップできるように、少なくとも 1 回はサイトの完全バックアップを作成していることが必要です。バックアップを復元する場合は、まずサイトの完全バックアップを復元し、それから最新の部分バックアップを上書きして復元します。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+これは、復元されたサイトのテストで[デプロイ スロット](https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-staged-publishing/)を使用するために必要です。これにより、実稼働サイトにまったく影響を与えないように復元プロセスをテストすることができます復元プロセスをテストすることは[非常に重要](http://axcient.com/blog/one-thing-can-derail-disaster-recovery-plan/)です。私は、ブログ サイトを復元しようとしてそのコンテンツの半分を失ったことがあります。皆様も何らかのトラブルに遭遇して同じような結果になる可能性があります。
+
+###悪い事例
+
+私のブログは、[Ghost](https://ghost.org/) というブログ作成プラットフォームで運用しています。責任感の強い開発者のように、私も自分のサイトのバックアップを作成し、万事が順調に進んでいました。ある日、新バージョンの Ghost の提供が開始され、私のブログをアップグレードできるようになったことを通知するメッセージを受け取りました。そこで、
+
+最新のブログ記事を含むバックアップをもう 1 つ作成し、
+
+実稼働サイトで Ghost をアップグレードしました。
+
+しかし、これは大きな間違いでした。
+
+このアップグレードで問題が発生し、ホーム画面が真っ白になりました。しかしこのときは、バックアップを復元するだけで問題は解決すると思っていました。
+
+アップグレード処理を復元し、すべてを元に戻そうとしましたが、ブログ記事は戻りませんでした。
+
+何が起こったのでしょうか。
+
+[Ghost のアップグレードに関する注意](http://support.ghost.org/how-to-upgrade/)をよく読んでみると、次のような警告がありました。
+
+![コンテンツやデータからデータベースのコピーを取得できますが、この操作は Ghost を実行しているときには行わず、停止してから実行してください。][GhostUpgradeWarning]
+
+Ghost の実行中にデータのバックアップを実行しても、実際にはデータはバックアップされないのです。
+
+これは困りました。
+
+テスト スロットで復元していれば、この問題を発見していたでしょうから、記事をすべて失うことはなかったでしょう。
+
+これは何よりも重要なことでした。同様のことは、[最高レベルの開発者](http://blog.codinghorror.com/international-backup-awareness-day/)にも起こる可能性があります。
+
+バックアップのテストは必ず実施しましょう。
 
 <a name="nextsteps"></a>
 ## 次のステップ
@@ -140,8 +248,8 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [Azure ストレージでの課金について](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、[Azure App Service と既存の Azure Services への影響](http://go.microsoft.com/fwlink/?LinkId=529714)に関するページをご覧ください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 <!-- IMAGES -->
 [ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage.png
@@ -154,5 +262,9 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [StartDate]: ./media/web-sites-backup/08StartDate.png
 [StartTime]: ./media/web-sites-backup/09StartTime.png
 [SaveIcon]: ./media/web-sites-backup/10SaveIcon.png
+[ImagesFolder]: ./media/web-sites-backup/11Images.png
+[LogsFolder]: ./media/web-sites-backup/12Logs.png
+[GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

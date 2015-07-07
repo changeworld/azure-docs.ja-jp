@@ -1,6 +1,6 @@
 <properties
-	pageTitle="HDInsight での Pi 推定 Hadoop サンプル | Azure"
-	description="HDInsight で Hadoop MapReduce サンプルを実行する方法について説明します。"
+	pageTitle="HDInsight での Pi 推定 Hadoop サンプル | Microsoft Azure"
+	description="HDInsight で Hadoop MapReduce サンプル Pi 推定を実行する方法について説明します。"
 	editor="cgronlun"
 	manager="paulettm"
 	services="hdinsight"
@@ -26,7 +26,7 @@
 
 このサンプルで示したスクリプトでは、Hadoop jar ジョブを送信し、マップ数を 16 として実行し、それぞれがパラメーター値として指定された 1,000 万個のサンプル点を計算します。このパラメーター値を変更すると、Pi の推定値の精度を高めることができます。参考のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
-Hadoop on Azure でアプリケーションを展開するときに必要なファイルを含む jar ファイルは zip ファイルでダウンロードできます。さまざまな圧縮ユーティリティを使ってファイルの圧縮を解除して、自由にファイルを調べることができます。
+Hadoop on Azure でアプリケーションをデプロイするときに必要なファイルを含む jar ファイルは zip ファイルでダウンロードできます。さまざまな圧縮ユーティリティを使ってファイルの圧縮を解除して、自由にファイルを調べることができます。
 
 HDInsight を使用して MapReduce ジョブをすばやく実行するのに役立つその他のサンプルは、その実行方法のリンクと共に、「[HDInsight での Hadoop のサンプルの実行][hdinsight-samples]」に挙げられています。
 
@@ -37,14 +37,13 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 
 **前提条件**:
 
-- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://azure.microsoft.com/pricing/free-trial/)をご覧ください。
-
-- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
-
-- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **HDInsight クラスター**。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 
-<h2><a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行</h2>
+
+## <a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行
 
 **MapReduce ジョブを送信するには**
 
@@ -78,7 +77,7 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 	比較のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
 
-<h2><a id="java-code"></a>Pi 推定 MapReduce プログラムの Java コード</h2>
+## <a id="java-code"></a>Pi 推定 MapReduce プログラムの Java コード
 
 
 
@@ -419,8 +418,7 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 	 }
 	 }
 
-
-<h2><a id="summary"></a>まとめ</h2>
+## <a id="summary"></a>概要
 
 このチュートリアルでは、HDInsight 上で MapReduce ジョブを実行し、このサービスで管理できる大量のデータ セットを生成するモンテカルロ法を使用する方法を説明しました。
 
@@ -447,7 +445,7 @@ HDInsight を使用して MapReduce ジョブをすばやく実行するのに�
 
 
 
-<h2><a id="next-steps"></a>次のステップ</h2>
+## <a id="next-steps"></a>次のステップ
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce ジョブの使用方法に関するチュートリアルについては、次のトピックをご覧ください。
 
@@ -461,7 +459,7 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: ../install-configure-powershell.md
 
 [hdinsight-get-started]: ../hdinsight-get-started.md
 
@@ -473,5 +471,6 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

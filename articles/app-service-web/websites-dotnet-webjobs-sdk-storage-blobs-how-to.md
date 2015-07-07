@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Web ジョブ SDK で Azure BLOB ストレージを使用する方法" 
-	description="Web ジョブ SDK で Azure BLOB ストレージを使用する方法を説明します。コンテナーに新しい BLOB が表示されたら、プロセスをトリガーし、 'poison blobs' を処理します。" 
+	description="Web ジョブ SDK で Azure BLOB ストレージを使用する方法を説明します。コンテナーに新しい BLOB が表示されたら、プロセスをトリガーし、 有害な BLOB を処理します。" 
 	services="app-service\web, storage" 
 	documentationCenter=".net" 
 	authors="tdykstra" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/03/2015" 
+	ms.date="06/08/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK で Azure BLOB ストレージを使用する方法
@@ -22,17 +22,19 @@
 
 このガイドでは、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用しています。
 
-BLOB を作成する方法を示すコード サンプルについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
+BLOB を作成する方法を示すコード サンプルについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
 		
-このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
+このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています
 
-## <a id="trigger"></a>BLOB が作成または更新されたときに、関数を開始する方法
+## <a id="trigger"></a> BLOB が作成または更新されたときに、関数を開始する方法
 
-このセクションでは、 `BlobTrigger` 属性を使用する方法を示しています。 
+このセクションでは、`BlobTrigger` 属性を使用する方法を示しています。
+
+> **注:** Web ジョブ SDK は、ログ ファイルをスキャンして新しい blob や変更された blob を監視します。このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。アプリケーションで、blob をすぐに処理する必要がある場合は、blob を作成する際にキュー メッセージを作成し、blob を処理する関数で `BlobTrigger` 属性の代わりにではなく、[QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することが推奨されます。
 
 ### 拡張子を持つ BLOB 名の 1 つのプレース ホルダー  
 
-次のコード サンプルは、 *input* コンテナーに表示される テキスト BLOB を  *output* コンテナーにコピーします。
+次のコード サンプルは、 *入力*コンテナーに表示される テキスト BLOB を *出力*コンテナーにコピーします。
 
 		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
 		    [Blob("output/{name}")] out string output)
@@ -40,7 +42,7 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 		    output = input.ReadToEnd();
 		}
 
-属性コンストラクターが、コンテナー名と BLOB 名のプレース ホルダーを指定する文字列パラメーターを取得します。たとえば、 *Blob1.txt* という名前の BLOB が  *input* コンテナーで作成されると、 *Blob1.txt* という名前の BLOB が  *output* コンテナーに作成されます。 
+属性コンストラクターが、コンテナー名と BLOB 名のプレース ホルダーを指定する文字列パラメーターを取得します。たとえば、 *Blob1.txt* という名前の BLOB が *入力*コンテナーで作成されると、*Blob1.txt* という名前の BLOB が *出力*コンテナーに作成されます。
 
 次のコード サンプルに示すように、BLOB 名のプレース ホルダーを持つ名前のパターンを指定できます。
 
@@ -50,9 +52,9 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 		    output = input.ReadToEnd();
 		}
 
-このコードは「元-」で始まる名前の BLOB のみをコピーします。たとえば、 *input* コンテナーの  *original-Blob1.txt* は、 *output* コンテナーの  *copy-Blob1.txt* にコピーされます。
+このコードは「元-」で始まる名前の BLOB のみをコピーします。たとえば、 *入力*コンテナーの *original-Blob1.txt* は、*出力*コンテナーの *copy-Blob1.txt* にコピーされます。
 
-名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ  *images* コンテナーを見つける場合は、
+名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ *イメージ*コンテナーに blob を見つける場合は、
 
 		{20140101}-soundfile.mp3
 
@@ -60,11 +62,11 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 
 		images/{{20140101}}-{name}
 
-この例では、 *name* プレース ホルダーの値は  *soundfile.mp3* になります。 
+この例では、*名前* プレース ホルダーの値は、*soundfile.mp3* になります。
 
 ### 別の BLOB 名と拡張子のプレース ホルダー
 
-次のコード サンプルでは、 *input* コンテナーに表示される BLOB を  *output* コンテナーにコピーする際にファイル拡張子を変更します。コードは、 *input* BLOB の拡張子をログに記録し、 *output* BLOB の拡張子を *.txt* に設定します。
+次のコード サンプルでは、*入力*コンテナーに表示される BLOB が *出力*コンテナーにコピーされる際にファイル拡張子を変更します。コードは、*入力* BLOB の拡張子をログに記録し、*出力* BLOB の拡張子を *.txt* に設定します。
 
 		public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
 		    [Blob("output/{name}.txt")] out string output,
@@ -77,9 +79,9 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 		    output = input.ReadToEnd();
 		}
 
-## <a id="types"></a> BLOB にバインドすることができる種類
+## <a id="types"></a>BLOB にバインドすることができる種類
 
-次の種類の  `BlobTrigger` 属性を使用できます。
+次の種類の `BlobTrigger` 属性を使用できます。
 
 * `string`
 * `TextReader`
@@ -89,11 +91,11 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 * `CloudPageBlob`
 * [ICloudBlobStreamBinder](#icbsb) によって逆シリアル化されるその他の種類 
 
-Azure のストレージ アカウントを直接操作する場合は、メソッド シグネチャに  `CloudStorageAccount` パラメーターを追加することもできます。
+Azure のストレージ アカウントを直接操作する場合は、メソッド シグネチャに `CloudStorageAccount` パラメーターを追加することもできます。
 
 ## <a id="string"></a>文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
 
-テキスト BLOB がある場合は、 `BlobTrigger` を  `string` パラメーターに適用できます。次のコード サンプルでは、テキスト BLOB を  `logMessage` という名前の  `string` パラメーターにバインドします。関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュ ボードに、BLOB の内容を記述します。 
+テキスト BLOB がある場合は、 `BlobTrigger`を `string` パラメーターに適用できます。次のコード サンプルでは、テキスト BLOB を `logMessage` という名前の `string` パラメーターにバインドします。関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュ ボードに、BLOB の内容を記述します。
  
 		public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
 		    string name, 
@@ -104,9 +106,9 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 		     logger.WriteLine(logMessage);
 		}
 
-## <a id="icbsb"></a> ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
+## <a id="icbsb"></a>ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
 
-次のコード サンプルでは、 `ICloudBlobStreamBinder` を実装するクラスを使用して  `BlobTrigger` 属性を有効化して BLOB を  `WebImage` 型にバインドします。
+次のコード サンプルでは、`ICloudBlobStreamBinder` を実装するクラスを使用して `BlobTrigger` 属性を有効化して BLOB を `WebImage` 型にバインドします。
 
 		public static void WaterMark(
 		    [BlobTrigger("images3/{name}")] WebImage input,
@@ -125,7 +127,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 		    output = input.Resize(width, height);
 		}
 
- `WebImage` バインド コードは、 `ICloudBlobStreamBinder` から派生した  `WebImageBinder` クラスに提供されます。
+`WebImage` バインド コードは、`ICloudBlobStreamBinder` から派生した `WebImageBinder` クラスに提供されます。
 
 		public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
 		{
@@ -144,19 +146,19 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 
 ## <a id="poison"></a>有害な BLOB の処理方法
 
- `BlobTrigger` 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
+`BlobTrigger` 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
 
-再試行回数の最大値の設定は変更可能です。同じ [MaxDequeueCount](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。 
+再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
 
 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId ({WebJob name}.Functions.{Function name} 形式、たとえば WebJob1.Functions.CopyBlob)
-* BlobType ("BlockBlob" か "PageBlob")
-* ContainerName
+* FunctionId (*{WebJob name}*.Functions.*{Function name}* の形式、たとえば、WebJob1.Functions.CopyBlob)
+* BLOB の種類 ("BlockBlob" か "PageBlob")
+* コンテナー名
 * BlobName
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
-次のコード サンプルでは、 `CopyBlob` 関数は、呼び出されるたびに障害が発生するコードを含んでいます。SDK は呼び出しを最大試行回数実行すると、メッセージが有害 BLOB キューに作成され、そのメッセージは、 `LogPoisonBlob` 関数によって処理されます。 
+次のコード サンプルでは、`CopyBlob` 関数は、呼び出されるたびに障害が発生するコードを含んでいます。SDK は呼び出しを最大試行回数実行すると、メッセージが有害 BLOB キューに作成され、そのメッセージは、`LogPoisonBlob` 関数によって処理されます。
 
 		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
 		    [Blob("textblobs/output-{name}")] out string output)
@@ -176,7 +178,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 		    logger.WriteLine("ETag: {0}", message.ETag);
 		}
 
-SDK は、自動的にJSON メッセージを逆シリアル化します。ここでは  `PoisonBlobMessage` クラスです。 
+SDK は、自動的にJSON メッセージを逆シリアル化します。ここでは`PoisonBlobMessage` クラスです。
 
 		public class PoisonBlobMessage
 		{
@@ -189,17 +191,17 @@ SDK は、自動的にJSON メッセージを逆シリアル化します。こ�
 
 ### <a id="polling"></a>BLOB のポーリング アルゴリズム
 
-Web ジョブ SDK は、アプリケーションの起動時に  `BlobTrigger` 属性が指定するすべてのコンテナーをスキャンします。大容量のストレージ アカウントでは、このスキャンに時間がかかるため、新しい BLOB が見つかり、 `BlobTrigger` 関数が実行されるまでにしばらく時間がかかります。
+Web ジョブ SDK は、アプリケーションの起動時に `BlobTrigger` 属性が指定するすべてのコンテナーをスキャンします。大容量のストレージ アカウントでは、このスキャンに時間がかかるため、新しい BLOB が見つかり、`BlobTrigger` 関数が実行されるまでにしばらく時間がかかります。
 
-アプリケーションの起動後に新しいまたは変更された BLOB を検出するために、SDK は定期的にBLOB ストレージ ログを読み取ります。BLOB のログはバッファーされ、10 分程度ごとに物理的に記述されるので、BLOB が作成されるか更新され、対応する  `BlobTrigger` 関数が実行されるにはかなり時間がかかる可能性があります。 
+アプリケーションの起動後に新しいまたは変更された BLOB を検出するために、SDK は定期的にBLOB ストレージ ログを読み取ります。BLOB のログはバッファーされ、10 分程度ごとに物理的に記述されるので、BLOB が作成されるか更新され、対応する `BlobTrigger` 関数が実行されるにはかなり時間がかかる可能性があります。
 
- `Blob` 属性を使用して作成する BLOB には例外があります。Web ジョブ SDK は新しい BLOB を作成すると、一致するすべての  `BlobTrigger` 関数に新しい BLOB をすぐに渡します。そのため、一連の BLOB 入力と BLOB 出力がある場合は、SDK は効率的に処理できます。ただし、その他の方法で作成または更新された BLOB に対して 低遅延で実行される BLOB 処理関数を使用する場合は、 `BlobTrigger` ではなく  `QueueTrigger` をお勧めします。
+`Blob` 属性を使用して作成する BLOB には例外があります。Web ジョブ SDK は新しい BLOB を作成すると、一致するすべての`BlobTrigger` 関数に新しい BLOB をすぐに渡します。そのため、一連の BLOB 入力と BLOB 出力がある場合は、SDK は効率的に処理できます。ただし、その他の方法で作成または更新された BLOB に対して 低遅延で実行される BLOB 処理関数を使用する場合は、`BlobTrigger` ではなく `QueueTrigger` をお勧めします。
 
 ### <a id="receipts"></a>BLOB の配信確認メッセージ
 
-Web ジョブ SDK では、 `BlobTrigger` 関数は同一の新しいまたは更新された BLOB を複数回呼び出しません。これは  *blob receipts* を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
+Web ジョブ SDK では、`BlobTrigger` 関数は同一の新しいまたは更新された BLOB を複数回呼び出しません。これは*BLOB の配信確認メッセージ*を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
-BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの  *azure-webjobs-hosts* という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
+BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
 
 * BLOB に対して呼び出された関数 ("*{WebJob name}*.Functions.*{Function name}*"。たとえば、"WebJob1.Functions.CopyBlob")
 * コンテナーの名前
@@ -211,23 +213,23 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 
 ## <a id="queues"></a>キューの記事で扱う関連トピック
 
-キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
+キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
 
 その記事では、以下のような関連トピックが紹介されています。
 
 * Async 関数
 * 複数のインスタンス
-* 正常なシャットダウン
+* グレースフル シャットダウン
 * 関数本体での Web ジョブ SDK 属性の使用
-* コード内での SDK 接続文字列の設定。
+* コード内で SDK の接続文字列を設定する。
 * コードの Web ジョブ SDK コンストラクター パラメーター値の設定
-* 有害 BLOB を処理するために  `MaxDequeueCount` を構成します。
+* 有害 BLOB を処理するために `MaxDequeueCount` を構成します。
 * 手動での関数のトリガー
 * ログの書き込み
 
 ## <a id="nextsteps"></a>次のステップ
 
-このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
+このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

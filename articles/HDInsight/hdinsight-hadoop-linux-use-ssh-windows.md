@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux ベースの HDInsight で Windows から SSH キーと Hadoop を使用する | Aure"
-   description="SSH キーを作成して、Linux ベースの HDInsight クラスターに対する認証に使用する方法について説明します。"
+   pageTitle="Windows と Linux ベースのクラスターの Hadoop の間で SSH キーを使用する | Microsoft Azure"
+   description="SSH キーを作成して、Linux ベースの HDInsight クラスターに対する認証に使用する方法について説明します。PuTTY SSH クライアントを使用して Windows ベースのクライアントからクラスターに接続します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -16,7 +16,7 @@
    ms.date="03/20/2015"
    ms.author="larryfr"/>
 
-# HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)
+#HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)
 
 > [AZURE.SELECTOR]
 - [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -26,9 +26,9 @@ Linux ベースの Azure HDInsight クラスターには、パスワードまた
 
 > [AZURE.NOTE]この記事の手順では、Windows ベースのクライアントを使用していることを前提としています。Linux、Unix、OS X クライアントを使用する場合は、[「Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する」](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
 
-## 前提条件
+##前提条件
 
-* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html</a> から入手できます。
+* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> から入手できます。
 
 * HTML5 をサポートする最新の Web ブラウザー
 
@@ -36,11 +36,11 @@ Linux ベースの Azure HDInsight クラスターには、パスワードまた
 
 * [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md)
 
-## SSH とは
+##SSH とは
 
 SSH は、リモート サーバーにログインしたり、リモート サーバーでコマンドをリモート実行したりするためのユーティリティです。Linux ベースの HDInsight では、SSH によりクラスター ヘッド ノードへの暗号化された接続が確立され、コマンドの入力に使用するコマンド ラインが提供されます。コマンドは、直接サーバーで実行されます。
 
-## SSH キーの作成 (オプション)
+##SSH キーの作成 (オプション)
 
 Linux ベースの HDInsight クラスターを作成するとき、SSH キーを使用したサーバーへの認証にパスワードまたは SSH キーを使用することを選択できます。証明書ベースであるため、SSH キーの方がより安全です。クラスターで SSH キーを使用する場合は、次の手順を実行します。
 
@@ -48,17 +48,17 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 2. **[生成するキーの種類]** に **[SSH-2 RSA]** を選択し、**[生成]** をクリックします。
 
-	![PuTTYGen interface](./media/hdinsight-hadoop-linux-use-ssh-windows/puttygen.png)
+	![PuTTYGen インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/puttygen.png)
 
 3. 進行状況バーが塗りつぶされるまで、バーの下の領域にマウスを移動します。マウスを移動すると、キーの生成に使用するランダム データが生成されます。
 
-	![moving the mouse around](./media/hdinsight-hadoop-linux-use-ssh-windows/movingmouse.png)
+	![マウスの移動](./media/hdinsight-hadoop-linux-use-ssh-windows/movingmouse.png)
 
 	キーが生成されると、パブリック キーが表示されます。
 
 4. セキュリティを強化するために、**[キーのパスフレーズ]** フィールドにパスフレーズを入力し、**[パスフレーズの確認]** フィールドに同じ値を入力します。
 
-	![passphrase](./media/hdinsight-hadoop-linux-use-ssh-windows/key.png)
+	![パスフレーズ](./media/hdinsight-hadoop-linux-use-ssh-windows/key.png)
 
 	> [AZURE.NOTE]キーにセキュリティで保護されたパスフレーズを使用することを強くお勧めします。ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
@@ -70,7 +70,7 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 	> [AZURE.NOTE]また、パブリック キーは PuTTYGen の上部に表示されます。このフィールドを右クリックし、値をコピーして、Azure ポータルの HDInsight ウィザードなどのフォームに貼り付けます。
 
-## Linux ベースの HDInsight クラスターの作成
+##Linux ベースの HDInsight クラスターの作成
 
 Linux ベースの HDInsight クラスターを作成するときには、以前に作成した公開キーを指定する必要があります。Windows ベースのクライアントから、次の 2 つの方法で、Linux ベースの HDInsight クラスターを作成できます。
 
@@ -80,35 +80,35 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 これらの各メソッドにはパブリック キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、「<a href="./hdinsight-hadoop-provision-linux-clusters/" target="_blank">HDInsight での Linux クラスターのプロビジョニング</a>」に関するページをご覧ください。
 
-### Azure ポータル
+###Azure ポータル
 
 ポータルを使用して Linux ベースの HDInsight クラスターを作成する場合は、次のフォームにユーザー名と、パスワードまたはパブリック キーを入力する必要があります。
 
-![Image of form asking for public key](./media/hdinsight-hadoop-linux-use-ssh-windows/ssh-key.png)
+![公開キーの入力を求めるフォームの画像](./media/hdinsight-hadoop-linux-use-ssh-windows/ssh-key.png)
 
 これにより、指定したユーザーのログインが作成され、パスワード認証または SSH キー認証のいずれかが有効になります。
 
-### Mac、Linux、Windows の Azure コマンド ライン インターフェイス
+###Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
 [Mac、Linux、Windows の Azure CLI](../xplat-cli.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
 このコマンドの使用方法の詳細については、「<a href="../hdinsight-hadoop-provision-linux-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。
 
-## Linux ベースの HDInsight クラスターへの接続
+##Linux ベースの HDInsight クラスターへの接続
 
 1. PuTTY を開きます。
 
-	![putty interface](./media/hdinsight-hadoop-linux-use-ssh-windows/putty.png)
+	![putty インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/putty.png)
 
 2. ユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証に使用するプライベート キーを選択する必要があります。
 
 	**[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。最後に、**[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
 
-	![putty interface, select private key](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
+	![putty インターフェイス、秘密キーの選択](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
 
 3. **[カテゴリ]** で **[セッション]** を選択します。**[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
 
-	![putty interface with ssh address entered](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
+	![ssh アドレスを入力した putty インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
 4. 後で使用するために接続情報を保存するには、**[保存されたセッション]** にこの接続の名前を入力し、**[保存]** をクリックします。接続が、保存済みセッションの一覧に追加されます。
 
@@ -118,17 +118,17 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 6. プロンプトが表示されたら、クラスターの作成時に入力したユーザーを入力します。ユーザーにパスワードを指定している場合は、その入力も求められます。
 
-### ワーカー ノードへの接続
+###ワーカー ノードへの接続
 
 ワーカー ノードは、Azure データセンターの外部からは直接アクセスできませんが、SSH を使用してクラスター ヘッド ノードからアクセスできます。
 
 ユーザー アカウントの作成時に SSH キーを指定した場合は、ワーカー ノードに接続するクラスターを認証するときに、次の手順に従ってプライベート キーを使用する必要があります。
 
-1. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html</a> から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
+1. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
 
 2. Pageant を実行します。ステータス トレイにアイコンが表示されます。アイコンを右クリックし **[キーの追加]** を選択します。
 
-    ![adding key](./media/hdinsight-hadoop-linux-use-ssh-windows/addkey.png)
+    ![キーの追加](./media/hdinsight-hadoop-linux-use-ssh-windows/addkey.png)
 
 3. [参照] ダイアログ ボックスが表示されたら、キーを含む .ppk ファイルを選択し、**[開く]** をクリックします。キーは Pageant に追加され、クラスターに接続すると PuTTY に渡されます。
 
@@ -140,7 +140,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
     **[認証パラメーター]** セクションで、**[Allow agent forwarding]** を有効にします。これにより、PuTTY はワーカー ノードに接続するときに、自動的にクラスター ヘッド ノードに接続して証明書認証を渡すことができます。
 
-    ![allow agent forwarding](./media/hdinsight-hadoop-linux-use-ssh-windows/allowforwarding.png)
+    ![エージェント転送の許可](./media/hdinsight-hadoop-linux-use-ssh-windows/allowforwarding.png)
 
 6. 上記の説明と同様に、クラスターに接続します。認証に SSH キーを使用する場合は、キーを選択する必要はありません。Pageant に追加された SSH キーがクラスターの認証に使用されます。
 
@@ -164,7 +164,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 10. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@headnode` プロンプトが表示されます。
 
-## 複数のアカウントの追加
+##複数のアカウントの追加
 
 クラスターに複数のアカウントを追加する必要がある場合は、次の手順を実行します。
 
@@ -184,7 +184,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 4. ナノ エディターが開いたら、新しいユーザー アカウントのパブリック キーの内容をコピーして貼り付けます。最後に、**Ctrl + X** キーを使用してファイルを保存し、エディターを終了します。
 
-	![image of nano editor with example key](./media/hdinsight-hadoop-linux-use-ssh-windows/nano.png)
+	![サンプル キーとナノ エディターの画像](./media/hdinsight-hadoop-linux-use-ssh-windows/nano.png)
 
 5. 次のコマンドを使用して、新しいユーザー アカウントに対する .ssh フォルダーの所有権をとコンテンツを変更します。
 
@@ -192,7 +192,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 6. これで、新しいユーザー アカウントおよびプライベート キーを使用してサーバーへの認証を行えるようになります。
 
-## <a id="tunnel"></a>SSH トンネリング
+##<a id="tunnel"></a>SSH トンネリング
 
 SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングすることもできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
 
@@ -212,7 +212,7 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 	* **[動的]** - 動的な SOCKS プロキシを有効にします。
 
-	![image of tunneling options](./media/hdinsight-hadoop-linux-use-ssh-windows/puttytunnel.png)
+	![トンネリング オプションの画像](./media/hdinsight-hadoop-linux-use-ssh-windows/puttytunnel.png)
 
 4. **[追加]** をクリックして設定を追加し、**[開く]** をクリックして SSH 接続を開きます。
 
@@ -220,13 +220,13 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 6. Firefox などのクライアント プログラムで **SOCKS v5** プロキシとして **localhost:9876** を使用するように構成します。Firefox の設定は次のようになります。
 
-	![image of Firefox settings](./media/hdinsight-hadoop-linux-use-ssh-windows/socks.png)
+	![Firefox の設定の画像](./media/hdinsight-hadoop-linux-use-ssh-windows/socks.png)
 
 	> [AZURE.NOTE]**[リモート DNS]** を選択すると DNS 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
 
 	Firefox でプロキシ設定を有効または無効にした状態で <a href="http://www.whatismyip.com/" target="_blank">http://www.whatismyip.com/</a> などのサイトにアクセスすると、トラフィックがトンネル経由でルーティングされていることを検証できます。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
 
-### ブラウザー拡張
+###ブラウザー拡張
 
 ブラウザーをトンネル ワークを使用するように構成する場合、通常、一部のトラフィックをトンネルを経由で送信しないように設定する必要があることがあります。<a href="http://getfoxyproxy.org/" target="_blank">FoxyProxy</a> などのブラウザー拡張機能では、URL 要求に対するパターン マッチングがサポートされるため (FoxyProxy Standard または Plus のみ)、特定の URL の要求のみがトンネル経由で送信されます。
 
@@ -234,11 +234,11 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 1. ブラウザーで FoxyProxy 拡張を開きます。Firefox などで、アドレス フィールドの横にある FoxyProxy アイコンを選択します。
 
-	![foxyproxy icon](./media/hdinsight-hadoop-linux-use-ssh-windows/foxyproxy.png)
+	![foxyproxy のアイコン](./media/hdinsight-hadoop-linux-use-ssh-windows/foxyproxy.png)
 
 2. **[新しいプロキシの追加]**、**[全般]** タブの順に選択し、**HDInsightProxy** のプロキシ名を入力します。
 
-	![foxyproxy general](./media/hdinsight-hadoop-linux-use-ssh-windows/foxygeneral.png)
+	![foxyproxy の全般](./media/hdinsight-hadoop-linux-use-ssh-windows/foxygeneral.png)
 
 3. **[プロキシの詳細]** タブを選択し、次のフィールドを入力します。
 
@@ -250,7 +250,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[SOCKS v5]** - プロキシに必要なバージョンを設定します。
 
-	![foxyproxy proxy](./media/hdinsight-hadoop-linux-use-ssh-windows/foxyproxyproxy.png)
+	![foxyproxy のプロキシ](./media/hdinsight-hadoop-linux-use-ssh-windows/foxyproxyproxy.png)
 
 4. **[URL パターン]** タブを選択し、**[新しいパターンの追加]** を選択します。以下を使用してパターンを定義し、**[OK]** をクリックします。
 
@@ -258,17 +258,17 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[URL パターン]** - ***headnode*** - **headnode** という単語を含む URL と一致するパターンを定義します。
 
-	![foxyproxy pattern](./media/hdinsight-hadoop-linux-use-ssh-windows/foxypattern.png)
+	![foxyproxy のパターン](./media/hdinsight-hadoop-linux-use-ssh-windows/foxypattern.png)
 
 4. **[OK]** をクリックしてプロキシを追加し、**[プロキシの設定]** を閉じます。
 
 5. FoxyProxy ダイアログの上部で、**[モードの選択]** を **[定義済みのパターンと優先順位に基づいてプロキシを使用]** に変更し、**[閉じる]** を選択します。
 
-	![foxyproxy select mode](./media/hdinsight-hadoop-linux-use-ssh-windows/selectmode.png)
+	![foxyproxy の選択モード](./media/hdinsight-hadoop-linux-use-ssh-windows/selectmode.png)
 
 これらを完了すると、**headnode** という文字列を含む URL の要求のみが SSH トンネル経由で送信されます。
 
-## 次のステップ
+##次のステップ
 
 これで、SSH キーを使用して認証する方法、また、HDInsight 上の Hadoop で MapReduce を使用する方法についてご理解いただけたと思います。
 
@@ -276,6 +276,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-* [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

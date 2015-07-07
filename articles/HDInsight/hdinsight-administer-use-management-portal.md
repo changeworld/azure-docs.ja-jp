@@ -1,45 +1,46 @@
-<properties 
-	pageTitle="Azure ポータルを使用した HDInsight での Hadoop クラスターの管理 | Microsoft Azure" 
-	description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="mumian" 
-	manager="paulettm" 
+<properties
+	pageTitle="Azure ポータルを使用した HDInsight での Hadoop クラスターの管理 | Microsoft Azure"
+	description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="mumian"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/12/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/02/2015"
 	ms.author="jgao"/>
 
 # Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 
-Azure ポータルを使用すると、Azure HDInsight で Hadoop クラスターをプロビジョニングし、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
+[Azure ポータル](https://manage.windowsazure.com)を使用すると、Azure HDInsight で Hadoop クラスターをプロビジョニングし、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
 
 ## HDInsight を管理するためのその他のツール
 Azure ポータル以外にも、HDInsight を管理するツールが用意されています。
 
 - Azure PowerShell を使用して HDInsight を管理する方法の詳細については、[Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)に関するページを参照してください。
 
-- クロスプラットフォーム コマンド ライン ツールを使用して HDInsight を管理する方法の詳細については、[クロスプラットフォーム コマンド ライン インターフェイスを使用した HDInsight の管理](hdinsight-administer-use-command-line.md)に関するページを参照してください。
+- Azure CLI を使用して HDInsight を管理する方法の詳細については、[Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)に関するページを参照してください。
 
 ##前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション** - Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料評価版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](../storage-create-storage-account.md)に関するページを参照してください。
+
 
 ##HDInsight クラスターのプロビジョニング
 
 Azure ポータルから [簡易作成] または [カスタム作成] オプションを使用して、HDInsight クラスターをプロビジョニングできます。手順については、次の各リンクを参照してください。
 
 - [簡易作成を使用したクラスターのプロビジョニング](../hdinsight-get-started.md#provision)
-- [カスタム作成を使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal) 
+- [カスタム作成を使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)
 
 [AZURE.INCLUDE [データ センターの一覧](../../includes/hdinsight-pricing-data-centers-clusters.md)]
 
@@ -50,11 +51,11 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 
 - Script Action を使用してカスタム スクリプトを実行します。これによってクラスターをカスタマイズして、クラスター構成を変更することや、Giraph や Solr などのカスタム コンポーネントをインストールすることができます。詳細については、[Script Action を使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster.md)に関するページを参照してください。
 - クラスターのプロビジョニング中に、HDInsight .NET SDK または Azure PowerShell でクラスター カスタマイズ パラメーターを使用します。そうすることで、クラスターの有効期間中はこれらの構成変更が保持され、Azure プラットフォームが保守のために定期的に実行するクラスター ノードの再イメージ化の影響も受けません。クラスター カスタマイズ パラメーターの使用法の詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
-- Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。詳細については、[プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。 
+- Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。詳細については、[プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
 
 	>[AZURE.NOTE]HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](http://azure.microsoft.com/support/options/)にお問い合わせください。
-	
+
 	> Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。サポートされているコンポーネントの一覧については、「[HDInsight によって提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 
 
@@ -87,7 +88,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 3. 接続する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
 5. ページの下部にある **[リモートを有効にする]** をクリックします。
-6. **[リモート デスクトップの構成]** ウィザードで、リモート デスクトップのユーザー名とパスワードを入力します。クラスターの作成時に使用したユーザー名 ([簡易作成] オプションの場合、既定で **admin**) とは異なるユーザー名を指定する必要があります。**[有効期限]** ボックスに有効期限の日付を入力します。有効期限としては、現在から 1 週間以内の将来の日付を指定する必要があります。有効期限の時刻は、既定で、指定した日付の真夜中と想定されます。チェック マーク アイコンをクリックします。
+6. **[リモート デスクトップの構成]** ウィザードで、リモート デスクトップのユーザー名とパスワードを入力します。クラスターの作成時に使用したユーザー名 ([簡易作成] オプションの場合、既定で **admin**) とは異なるユーザー名を指定する必要があります。**[有効期限]** ボックスに有効期限の日付を入力します。有効期限は、今日から 90 日以内の将来の日付である必要があります。有効期限の時刻は、既定で、指定した日付の真夜中と想定されます。チェック マーク アイコンをクリックします。
 
 	![HDI.CreateRDPUser][image-hdi-create-rpd-user]
 
@@ -97,7 +98,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 
 > [AZURE.NOTE]クラスターの RDP が有効になった後、クラスターに接続する前にページを更新する必要があります。
- 
+
 **RDP を使用してクラスターに接続するには**
 
 1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
@@ -113,7 +114,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 **自己署名証明書を作成するには**
 
 1. 要求を認証するために使用する自己署名証明書を作成します。証明書の作成には、インターネット インフォメーション サービス (IIS) または [makecert](http://go.microsoft.com/fwlink/?LinkId=534000) を使用できます。
- 
+
 2. 証明書の場所を参照して、証明書を右クリックします。**[証明書のインストール]** をクリックし、コンピューターの個人用ストアに証明書をインストールします。証明書のプロパティを編集し、フレンドリ名を割り当てます。
 
 3. Azure ポータルに証明書をインポートします。ポータルで、ページの左下にある **[設定]** をクリックし、**[管理証明書]** をクリックします。ページの下部で **[アップロード]** をクリックして指示に従い、前の手順で作成した .cer ファイルをアップロードします。
@@ -167,7 +168,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 6. ユーザー名とパスワードを入力して **[OK]** をクリックします。クラスターの作成時に構成したユーザー名とパスワードを使用してください。
 7. **[はい]** をクリックします。
 8. デスクトップで、**[Hadoop コマンド ライン]** をダブルクリックします。
-		
+
 	![HDI.HadoopCommandLine][image-hadoopcommandline]
 
 
@@ -178,7 +179,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 	cd %hadoop_home%
 	cd %hive_home%
 	cd %pig_home%
-	cd %sqoop_home%   
+	cd %sqoop_home%
 	cd %hcatalog_home%
 
 ##クラスターのスケール
@@ -188,7 +189,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 この記事では、Azure ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。詳細については、次の記事を参照してください。
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
-* [クロスプラットフォーム コマンド ライン インターフェイスを使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
+* [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)
 * [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [Azure HDInsight の概要](../hdinsight-get-started.md)
@@ -199,5 +200,6 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop コマンド ライン"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterCreate.UploadCert.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->
