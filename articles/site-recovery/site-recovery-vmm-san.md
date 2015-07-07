@@ -217,7 +217,12 @@ VMM コンソールで SAN を追加し、分類します。
 
 	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
 	- 次の URL に VMM サーバーからアクセスできるようにする必要があります。
-		- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。 
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。 
 	
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。
 	- VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
@@ -305,7 +310,8 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 <P>仮想マシンの保護を有効にすると、Azure Site Recovery コンソールに仮想マシンが表示されます。仮想マシンのプロパティの表示、状態の追跡、複数の仮想マシンを含むレプリケーション グループのフェールオーバーを実行できます。SAN レプリケーションでは、レプリケーション グループに関連付けられているすべての仮想マシンは、一緒にフェールオーバーする必要があることに注意してください。これは、フェールオーバーが最初にストレージ層で行われるためです。レプリケーション グループを適切にグループ化し、関連する仮想マシンだけを一緒に配置することが重要です。</P>
 
-**[ジョブ]** タブで、保護の有効化のアクション (初期レプリケーションなど) の進捗状況を確認します。保護の最終処理のジョブが実行されたら、仮想マシンはフェールオーバーを実行できる状態になります。![仮想マシン保護ジョブ](./media/site-recovery-vmm-san/SRSAN_JobPropertiesTab.png)
+**[ジョブ]** タブで、保護の有効化のアクション (初期レプリケーションなど) の進捗状況を確認します。保護の最終処理のジョブが実行されたら、仮想マシンはフェールオーバーを実行できる状態になります。
+	![仮想マシン保護ジョブ](./media/site-recovery-vmm-san/SRSAN_JobPropertiesTab.png)
 
 ## 手順 8: デプロイのテスト</h3>
 
