@@ -20,7 +20,7 @@
 
 ## 概要 ##
 
-App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、「App Service 環境の概要/app-service-app-service-environment-intro.md」を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
+App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md) を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
 
 大まかに言えば、App Service 環境は次に挙げるいくつかの主要なコンポーネントで構成されます。
 

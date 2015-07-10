@@ -67,11 +67,13 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 8. Azure で Web アプリを作成していない場合は、Visual Studio でアプリを作成できます。**[Microsoft Azure Websites を構成する]** ダイアログ ボックスで、サイト名が一意になっていることを確認します。次に、**[OK]** をクリックします
 
-	<!--todo: need 2.5.1 screenshot-->![](media/cdn-websites-with-cdn/5-create-website.png)
+	<!--todo: need 2.5.1 screenshot-->
+	![](media/cdn-websites-with-cdn/5-create-website.png)
 
 9. ASP.NET アプリケーションが作成されたら、[Web 発行アクティビティ] ウィンドウで **[`<app name>` をこのサイトに今すぐ発行する]** をクリックして、そのアプリケーションを Azure に発行します。**[発行]** をクリックしてプロセスを完了します。
 
-	<!--todo: need 2.5.1 screenshot-->![](media/cdn-websites-with-cdn/6-publish-website.png)
+	<!--todo: need 2.5.1 screenshot-->
+	![](media/cdn-websites-with-cdn/6-publish-website.png)
 
 	発行が完了すると、発行済みの Web アプリがブラウザーに表示されます。
 
@@ -558,4 +560,4 @@ bundles.Add(new StyleBundle("~/Content/css", string.Format(cdnUrl, "Content/css"
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=62-->
+<!----HONumber=62-->
