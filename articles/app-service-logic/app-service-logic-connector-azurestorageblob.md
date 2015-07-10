@@ -24,9 +24,18 @@ Azure Storage BLOB コネクタを使用すると、BLOB コンテナーから B
 ##新しい Azure Storage BLOB コネクタの作成
 Azure Storage コネクタを新しく作成するには、次の手順に従います。<ul> <li>Azure ポータルを起動します。<li>[+ 新規] (ページの下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。</ul>
 
-![Launch Azure Marketplace][1]<br> <ul> <li>[API アプリ] をクリックします。<li><i>BLOB</i> を検索し、"Azure Storage BLOB コネクタ" を選択します。</ul>
+![Launch Azure Marketplace][1]<br>
+<ul>
+<li>[API アプリ] をクリックします。
+<li><i>BLOB</i> を検索し、"Azure Storage BLOB コネクタ" を選択します。
+</ul>
 
-![Select Azure Storage Blob Connector][2] <br> <ul> <li>[作成] をクリックします。<li>[Azure Storage BLOB コネクタ] ブレードが開いたら、次のデータを指定します。</ul>
+![Select Azure Storage Blob Connector][2]
+<br>
+<ul>
+<li>[作成] をクリックします。
+<li>[Azure Storage BLOB コネクタ] ブレードが開いたら、次のデータを指定します。
+</ul>
 
 ![Create Azure Storage Blob Connector][3]
 
@@ -108,4 +117,4 @@ Azure Storage BLOB コネクタは 6 つのアクションをサポートしま�
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
  
 
-<!---HONumber=62-->
+<!----HONumber=62-->

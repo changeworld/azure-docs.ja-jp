@@ -35,7 +35,9 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 --- | --- | ---
 サイトの URL | あり | SharePoint Web サイトの完全な URL を入力します。たとえば、「*https://microsoft.sharepoint.com/teams/wabstest*」のように入力します。ドキュメント ライブラリ/リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
 
-5. 完了すると、パッケージの設定は次のようになります。<br/> ![][1]
+5. 完了すると、パッケージの設定は次のようになります。 
+<br/>
+![][1]
 
 上記の手順を完了すると、同じリソース グループ内に SharePoint Online コネクタを使用するロジック アプリを作成できます。
 
@@ -56,7 +58,9 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 ドキュメント ライブラリ/リストの相対 URL | あり | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
 
-5. 完了すると、パッケージの設定は次のようになります。<br/> ![][2]
+5. 完了すると、パッケージの設定は次のようになります。 
+<br/>
+![][2]
 
 作業が完了すると、同じリソース グループ内に SharePoint Server コネクタを使用するロジック アプリを作成できます。
 
@@ -71,13 +75,28 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 
 3. ロジック アプリの先頭で SharePoint コネクタを選択した場合、SharePoint コネクタはトリガーとして動作します。それ以外の場合は、コネクタを使用する SharePoint アカウントに対するアクションとして動作します。
 
-4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。<br/> ![][3]
+4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。
+<br/>
+![][3]
 
-5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。<br/> ![][4]
+5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。
+<br/>
+![][4]
 
-6. 代わりに操作を行わせるために、アカウントにロジック アプリのアクセス権を付与します。<br/> ![][5]
+6. 代わりに操作を行わせるために、アカウントにロジック アプリのアクセス権を付与します。
+<br/>
+![][5]
 
-7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。それ以外の場合は、アクションの一覧が表示され、実行する操作を選択できます。<br/> ![][6] <br/> **ドキュメント ライブラリ用に構成された相対 URL** <br/> ![][7] <br/> **ドキュメント リスト用に構成された相対 URL** <br/>
+7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。それ以外の場合は、アクションの一覧が表示され、実行する操作を選択できます。
+<br/>
+![][6]
+<br/>
+**ドキュメント ライブラリ用に構成された相対 URL**
+<br/>
+![][7]
+<br/>
+**ドキュメント リスト用に構成された相対 URL**
+<br/>
 
 > [AZURE.NOTE]次のトリガーでは、コネクタのパッケージ設定で "Shared Documents, Lists/Task" を入力したものと想定しています。ここで、"Shared Documents" はドキュメント ライブラリ、"Lists/Task" はリストです。
 
@@ -474,4 +493,4 @@ App Service では、Hybrid Configuration Manager を使用して、オンプレ
 [7]: ./media/app-service-logic-connector-sharepoint/image_6.png
  
 
-<!---HONumber=62-->
+<!----HONumber=62-->
