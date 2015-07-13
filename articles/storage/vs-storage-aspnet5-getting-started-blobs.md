@@ -148,7 +148,8 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 	// Delete the blob.
 	await blockBlob.DeleteAsync();
 
-[Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
+[Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。
+[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
  
 
 <!---HONumber=58_postMigration-->
