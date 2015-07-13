@@ -362,9 +362,9 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-    	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
+    	ビルドの完了後、生成された JAR ファイルは __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__ にあります。
 
-    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
+    	> [AZURE.NOTE] Mahout 1.0 がリリースされたら、事前にビルドされたパッケージを HDInsight 3.0 で使用できるようになります。
 
 2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次の例では、[HDInsight-Tools][tools] の add-hdinsightfile を使用してファイルをアップロードします。
 

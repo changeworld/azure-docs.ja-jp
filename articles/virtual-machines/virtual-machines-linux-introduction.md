@@ -103,7 +103,7 @@ Azure には、既存の仮想マシンの状態をイメージにキャプチ�
 Linux では通常、リソース ディスクは Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。
 
 
-	>[AZURE.NOTE] Note that the resource disk is a **temporary** disk, and might be deleted and reformatted when the VM is rebooted.
+	>[AZURE.NOTE] リソース ディスクは**一時的な**ディスクであり、VM の再起動時に削除および再フォーマットされる可能性があることに注意してください。
 
 Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-how-to-attach-disk.md)」で詳しく説明しています。
 
