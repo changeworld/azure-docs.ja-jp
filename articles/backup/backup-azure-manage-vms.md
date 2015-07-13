@@ -71,7 +71,7 @@
 
 最初の方法を選択した場合、バックアップ データを使用して仮想マシンを復元できます。このような仮想マシンの詳しい料金については、[ここ](http://azure.microsoft.com/pricing/details/backup/)をクリックしてください。
 
-仮想マシンに対する保護を停止するには:
+バーチャル マシンに対する保護を停止するには:
 
 1. **[保護された項目]** ページを開き、フィルターの種類として **[Azure 仮想マシン]** を選択し (まだ選択していない場合)、**[選択]** ボタンをクリックします。
 
@@ -81,7 +81,7 @@
 
     ![Stop protection](./media/backup-azure-manage-vms/stop-protection.png)
 
-3. Azure Backup の既定では、仮想マシンに関連付けられているバックアップ データは削除されません。
+3. 既定では、仮想マシンに関連付けられているバックアップ データは削除されません。
 
     ![Confirm stop protection](./media/backup-azure-manage-vms/confirm-stop-protection.png)
 
@@ -157,7 +157,7 @@
 
 **ダッシュボード** ページでは、Azure 仮想マシン、ストレージ、過去 24 時間以内に関連付けられたジョブに関する情報を確認できます。バックアップの状態と関連付けられているバックアップ エラーを表示できます。
 
-  ![Dashboard](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
+  ![ダッシュボード](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

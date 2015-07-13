@@ -107,7 +107,7 @@
 
 
 
-## <a name="search"></a>データの検索
+## データの検索
 
 すべてのプロパティ値について語句を検索できます。この機能は、プロパティ値を持つ[カスタム イベント][track]を作成している場合に特に便利です。
 
@@ -180,8 +180,6 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 
 
 
-
-
 <!--Link references-->
 
 [availability]: app-insights-monitor-web-app-availability.md
@@ -192,5 +190,6 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 [trace]: app-insights-search-diagnostic-logs.md
 [track]: app-insights-custom-events-metrics-api.md
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

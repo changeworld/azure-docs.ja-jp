@@ -20,20 +20,20 @@
 
 この記事では、[Memcache][13] プロトコルを使用して [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の WordPress Web アプリを [Azure Redis Cache][12] に接続する方法について説明します。メモリ内のキャッシュに Memcached サーバーを使用する Web アプリがすでにある場合、Azure App Service に移行して、アプリケーション コードへの変更がほとんど、もしくはまったくない状態で Microsoft Azure でファースト パーティーのキャッシュ ソリューションが使用できます。さらに、.NET、PHP、Node.js、Java、Python などの一般的なアプリケーション フレームワークを使用しながら、既存の Memcache の知識を利用してメモリ内のキャッシュ用に Azure Redis を使い、Azure App Service で拡張性の高い分散型アプリを作成できます。
 
-App Service Web Apps により、Web Apps の Memcache shim でこのアプリケーション シナリオが有効になります。Memcache shim はローカルの Memcached サーバーで、Azure Redis Cache への呼び出しをキャッシュする Memcache プロキシの役割を果たします。これにより、Memcache プロトコルを使用して通信するアプリでは Redis Cache を使用してデータをキャッシュできるようになります。この Memcache shim はプロトコル レベルで動作するので、Memcache プロトコルを使用して通信する限り、あらゆるアプリケーションやアプリケーション フレームワークで使用できます。
+App Service Web アプリにより、Web アプリの Memcache shim でこのアプリケーション シナリオが有効になります。Memcache shim はローカルの Memcached サーバーで、Azure Redis Cache への呼び出しをキャッシュする Memcache プロキシの役割を果たします。これにより、Memcache プロトコルを使用して通信するアプリでは Redis Cache を使用してデータをキャッシュできるようになります。この Memcache shim はプロトコル レベルで動作するので、Memcache プロトコルを使用して通信する限り、あらゆるアプリケーションやアプリケーション フレームワークで使用できます。
 
 ## 前提条件
 
-Web Apps の Memcache shim は、Memcache プロトコルを使用して通信することを条件に、あらゆるアプリケーションで使用できます。この特定の例では、参照アプリケーションは、Azure Marketplace からプロビジョニングできるスケーラブルな WordPress サイトです。
+Web アプリの Memcache shim は、Memcache プロトコルを使用して通信することを条件に、あらゆるアプリケーションで使用できます。この特定の例では、参照アプリケーションは、Azure Marketplace からプロビジョニングできるスケーラブルな WordPress サイトです。
 
 次の投稿で説明される手順に従います。
 
 * [Azure Redis Cache Service のインスタンスをプロビジョニングする][1]
 * [Azure でスケーラブルな WordPress サイトをデプロイする][0]
 
-スケーラブルな WordPress サイトをデプロイして、Redis Cache インスタンスをプロビジョニングしたら、Azure App Service Web アプリで Memcache shim を有効にできるようになります。
+スケーラブルな WordPress サイトを展開して、Redis Cache インスタンスをプロビジョニングしたら、Azure App Service Web アプリで Memcache shim を有効にできるようになります。
 
-## Web Apps の Memcache shim を有効にする
+## Web アプリの Memcache shim を有効にする
 
 Memcache shim を構成するためには 3 つのアプリ設定を作成する必要があります。これは、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、[以前のポータル][3]、[Azure PowerShell コマンドレット][5]、[Azure Cross Platform コマンドライン ツール][5]などのさまざまな手法を使用して実行できます。この記事では、[Azure ポータル][4]を使用してアプリ設定を行います。次の値は Redis Cache インスタンスの **[設定]** ブレードから取得できます。
 
@@ -61,7 +61,7 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 
 ### MEMCACHESHIM_REDIS_ENABLE アプリ設定の追加
 
-最後のアプリ設定は Web Apps で Memcache Shim を有効にするために使用します。REDIS_HOST と REDIS_KEY を使用して Azure Redis Cache に接続し、キャッシュの呼び出しを転送します。アプリ設定のキーを **MEMCACHESHIM_REDIS_ENABLE** に設定し、値を **true** に設定します。
+最後のアプリ設定は Web アプリで Memcache Shim を有効にするために使用します。REDIS_HOST と REDIS_KEY を使用して Azure Redis Cache に接続し、キャッシュの呼び出しを転送します。アプリ設定のキーを **MEMCACHESHIM_REDIS_ENABLE** に設定し、値を **true** に設定します。
 
 ![Web アプリのアプリ設定の MEMCACHESHIM_REDIS_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
 
@@ -77,7 +77,7 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 
 ![PHP PECL の Website](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
 
-Web Appes で有効な PHP バージョンの 非スレッド セーフ (NTS) x86 のリンクをダウンロードします(既定は PHP 5.4)。
+Web アプリで有効な PHP バージョンの 非スレッド セーフ (NTS) x86 のリンクをダウンロードします(既定は PHP 5.4)。
 
 ![PHP PECL の Website の Memcache パッケージ](./media/web-sites-connect-to-redis-using-memcache-protocol/8-php-pecl-memcache-package.png)
 
@@ -130,7 +130,7 @@ $memcached_servers = array(
 
 ## Memcache オブジェクト キャッシュ プラグインが機能していることを確認する
 
-Web Apps の Memcache shim を有効にするためのすべての手順が完了しました。最後にデータが Redis Cache インスタンスに入力されていることを確認します。
+Web アプリの Memcache shim を有効にするためのすべての手順が完了しました。最後にデータが Redis Cache インスタンスに入力されていることを確認します。
 
 ### Azure Redis Cache で非 SSL ポートのサポートを有効にする
 
@@ -154,7 +154,7 @@ Azure ポータルでこの Web アプリで作成した Redis Cache インス�
 
 ### redis-cli から Azure Redis Cache に接続する
 
->[AZURE.NOTE]この手順では、redis が開発用コンピューターにローカルでインストールされていることを前提としています。[こちらの手順に従って Redis をインストールします。][9]
+>[AZURE.NOTE]この手順では、ｒedis が開発用コンピューターにローカルでインストールされていることを前提としています。[こちらの手順に従って Redis をインストールします。][9]
 
 任意のコマンドライン コンソールを開き、次のコマンドを入力します。
 
@@ -170,7 +170,7 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 
 ## まとめ
 
-ご利用ありがとうございます。 これで、WordPress アプリには一元的なメモリ内キャッシュが導入され、増加するスループットをサポートできるようになりました。Web Apps の Memcache Shim は、プログラミング言語やアプリケーション フレームワークに関係なく、あらゆる Memcache クライアントで使用できることを忘れないでください。Web Apps の Memcache shim に関するフィードバックや質問は、[MSDN フォーラム][10] や [Stackoverflow][11] にご投稿願います。
+ご利用ありがとうございます。 これで、WordPress アプリには一元的なメモリ内キャッシュが導入され、増加するスループットをサポートできるようになりました。Web アプリの Memcache Shim は、プログラミング言語やアプリケーション フレームワークに関係なく、あらゆる Memcache クライアントで使用できることを忘れないでください。Web Apps の Memcache shim に関するフィードバックや質問は、[MSDN フォーラム][10] や [Stackoverflow][11] にご投稿願います。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 

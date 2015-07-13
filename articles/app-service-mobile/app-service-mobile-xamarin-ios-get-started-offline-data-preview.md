@@ -40,7 +40,7 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 
 モバイル アプリのオフライン同期により、ネットワークにアクセスできないときでも、エンド ユーザーはローカル データベースとやり取りできます。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`QSTodoService.cs` のオフライン同期に関連するコードについて説明します。
 
-1. Visual Studio で、[Mobile Apps の使用]に関するチュートリアルで完了したプロジェクトを開きます。ファイル `QSTodoService.cs` を開きます。
+1. Visual Studio で、[Mobile Apps の使用] に関するチュートリアルで完了したプロジェクトを開きます。ファイル `QSTodoService.cs` を開きます。
 
 2. メンバー `todoTable` の種類が `IMobileServiceSyncTable` であることに注意してください。オフライン同期では、`IMobileServiceTable` の代わりにこの同期テーブル インターフェイスを使用します。同期テーブルが使用されると、すべての操作はローカル ストアを参照し、明示的なプッシュ操作とプル操作を使用したリモート サービスとのみ同期されます。
 
@@ -59,7 +59,7 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 
     これで、クラス `MobileServiceSQLiteStore` を使用するローカル ストアが作成されます。このクラスはモバイル アプリ SDK で提供されます。また、`IMobileServiceLocalStore` を実装することにより、別のローカル ストアを実装することもできます。
 
-    `DefineTable` メソッドを実行すると、指定した型のフィールドに一致するテーブルがローカル ストアに作成されます。この例では、`ToDoItem` になります。この型に、リモート データベース内のすべての列を含める必要はありません。列のサブセットのみ格納できます。
+    `DefineTable` メソッドを実行すると、提供された型のフィールドに一致するテーブルがローカル ストアに作成されます。この例では、`ToDoItem` になります。この型に、リモート データベース内のすべての列を含める必要はありません。列のサブセットのみ格納できます。
 
 <!--     This overload of `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
  -->
@@ -90,9 +90,9 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
     Note that the `MobileServicePushFailedException` can occur for both a push and a pull operation. The next tutorial, [Handling conflicts with offline support for Mobile Services], shows how to handle these sync related exceptions.
 -->
 
-5. クラス `QSTodoService` では、メソッド `SyncAsync()` はデータ変更操作である `InsertTodoItemAsync()` や `CompleteItemAsync` の後に呼び出されます。また、`RefreshDataAsync()` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.ViewDidLoad()` が `RefreshDataAsync()` を呼び出すため、アプリケーションは起動時にも同期を実行します。
+5. クラス `QSTodoService` では、メソッド `SyncAsync()` はデータ変更操作である `InsertTodoItemAsync()` や `CompleteItemAsync` の後に呼び出されます。また、`RefreshDataAsync()` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.ViewDidLoad()` は `RefreshDataAsync()` を呼び出すため、アプリケーションは起動時に同期も実行します。
 
-    データが変更されるたびに `SyncAsync()` が呼び出されることから、このアプリケーションは、データの編集時には常にユーザーがオンラインであると想定していることになります。次のセクションでは、ユーザーがオフラインの場合でも編集できるようにアプリケーションを更新します。
+    データが変更されるたびに `SyncAsync()` が呼び出されることから、このアプリケーションは、データが編集されるたびにユーザーがオンラインであると想定します。次のセクションでは、ユーザーがオフラインの場合でも編集できるようにアプリケーションを更新します。
 
 ## アプリケーションの同期の動作を更新する
 
@@ -164,5 +164,6 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

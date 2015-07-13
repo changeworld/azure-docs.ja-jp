@@ -20,7 +20,7 @@
 
 API Management には、相互証明書を使用して API のバックエンド サービスへのアクセスを保護する機能が備わっています。このガイドでは、API パブリッシャー ポータルで証明書を管理する方法、および証明書を使用してバックエンド サービスにアクセスするように API を構成する方法を示します。
 
-API Management REST API を使用して証明書を管理する方法の詳細については、「[Azure API Management REST API 証明書エンティティ][]」を参照してください。
+API Management REST API を使用して証明書を管理する方法の詳細については、「[Azure API Management REST API 証明書エンティティ][]」をご覧ください。
 
 ## <a name="prerequisites"> </a>前提条件
 
@@ -96,7 +96,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ## 次のステップ
 
-詳細については、次のビデオを参照してください。
+詳細については、次のビデオをご覧ください。
 
 > [AZURE.VIDEO last-mile-security]
 
@@ -141,4 +141,4 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

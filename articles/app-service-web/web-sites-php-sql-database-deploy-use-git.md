@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする" 
-	description="Azure SQL データベースにデータを保存する PHP Web アプリを作成し、Azure App Service への Git デプロイを使用する方法を示すチュートリアル。" 
+	description="Azure SQL Database にデータを保存する PHP Web アプリを作成し、Azure App Service への Git デプロイを使用する方法を示すチュートリアル。" 
 	services="app-service\web, sql-database" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
@@ -33,7 +33,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##Azure Web アプリの作成と Git 発行の設定
 
@@ -65,19 +65,19 @@ Azure の Web アプリと SQL データベースを作成するには、次の�
 
 	![Web アプリ リソース グループ](./media/web-sites-php-sql-database-deploy-use-git/resource-group-blade.png)
 
-5. **[継続的なデプロイメントの設定]** > **[ソースの選択]** をクリックします。**Local[ローカル Git リポジトリ]** を選択し、**[OK]** をクリックします。
+5. **[継続的なデプロイの設定]** > **[ソースの選択]** をクリックします。**Local[ローカル Git リポジトリ]** を選択し、**[OK]** をクリックします。
 
 	![ソース コードの位置](./media/web-sites-php-sql-database-deploy-use-git/setup-local-git.png)
 
-	Git リポジトリが未選択である場合は、ユーザー名とパスワードを指定する必要があります。そのためには、Web アプリのブレードで **[デプロイメントの資格情報の設定]** をクリックします。
+	Git リポジトリが未選択である場合は、ユーザー名とパスワードを指定する必要があります。そのためには、Web アプリのブレードで **[デプロイ資格情報の設定]** をクリックします。
 
 	![](./media/web-sites-php-sql-database-deploy-use-git/deployment-credentials.png)
 
-6. **[継続的なデプロイメントの設定]** が **[No deployment found (デプロイメントが見つかりません)]** になります。それをクリックして、後ほど PHP アプリのデプロイで使用する Git リモート URL を確認します。
+6. **[継続的なデプロイの設定]** が **[デプロイが見つかりませんでした]** になります。それをクリックして、後ほど PHP アプリのデプロイで使用する Git リモート URL を確認します。
 
 ##SQL データベース接続情報を取得する
 
-Web アプリにリンクされている SQL データベース インスタンスに接続するには、データベースの作成時に指定した接続情報が必要になります。SQL データベース接続情報を取得するには、次の手順に従います。
+Web アプリにリンクされている SQL Database インスタンスに接続するには、データベースの作成時に指定した接続情報が必要になります。SQL Database 接続情報を取得するには、次の手順に従います。
 
 1. リソース グループのブレードに戻り、SQL データベース アイコンをクリックします。
 
@@ -89,7 +89,7 @@ Web アプリにリンクされている SQL データベース インスタン�
 
 ##アプリケーションの作成とローカル テスト
 
-Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は SQL データベース インスタンスに保存されます。アプリケーションは、次の 2 つのファイルで構成されます (下にあるコードをコピーし、貼り付けて使用できます)。
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は SQL Database インスタンスに保存されます。アプリケーションは、次の 2 つのファイルで構成されます (下にあるコードをコピーし、貼り付けて使用できます)。
 
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 * **createtable.php**: アプリケーション用の SQL Database テーブルを作成します。このファイルは 1 度しか使用されません。
@@ -232,7 +232,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 ##アプリケーションの発行
 
-アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを App Service Web アプリに発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL Database の接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを App Service Web Apps に発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL Database の接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、 `createdatabase.php` ファイルと `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
 
 	// DB connection info
 	$host = "tcp:<value of Server>";
@@ -245,7 +245,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 これで、Git 発行を設定してアプリケーションを発行する準備ができました。
 
-> [AZURE.NOTE]これらは、上の「**Azure の Web サイトの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです。
+> [AZURE.NOTE]これらは、上の「**Azure の Web アプリの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです。
 
 
 1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションの**登録**ディレクトリに変更して、次のコマンドを実行します。
@@ -279,7 +279,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 3. 変更内容を確認できるように、**http://[webapp name].azurewebsites.net/index.php** に移動します。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 

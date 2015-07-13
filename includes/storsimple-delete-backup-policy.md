@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="StorSimple のバックアップ ポリシーの削除"
-   description="StorSimple Manager サービスを使用して、バックアップ ポリシーを削除する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/14/2015"
-   ms.author="v-sharos" />
 
 #### StorSimple のバックアップ ポリシーを削除するには
 
@@ -26,4 +10,4 @@
 **[バックアップ ポリシー]** ページが更新され、ポリシーの新しい一覧が表示されます。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

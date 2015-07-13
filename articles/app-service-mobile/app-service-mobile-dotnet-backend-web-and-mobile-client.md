@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure App Service のモバイルおよび Web クライアントを使用してアプリを作成する"
+	pageTitle="Azure App Service でモバイルおよび Web クライアントを使用してアプリを作成する"
 	description="Azure App Service の Web サイトおよびモバイル クライアントの両方を使用してマルチチャネル アプリを作成します。"
 	services="app-service\mobile"
 	documentationCenter=".net"
@@ -16,7 +16,7 @@
 	ms.date="03/10/2015"
 	ms.author="donnam"/>
 
-# Azure App Service のモバイルおよび Web クライアントを使用してアプリを作成する
+# Azure App Service でモバイルおよび Web クライアントを使用してアプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-web-and-mobile](../../includes/app-service-mobile-dotnet-backend-web-and-mobile.md)]
  

@@ -162,7 +162,7 @@ HDInsight の Hadoop は、Azure クラウド エコシステムの一部とし�
 
 * [Web アプリ](../documentation/services/app-service/web/) や [SQL Database](../documentation/services/sql-database/) などの他の Azure サービスとの統合。
 
-* 低い導入コスト。[無料試用版](/pricing/free-trial/)から始めることができます。「[HDInsight の料金詳細](/pricing/details/hdinsight/)」も参照してください。
+* 低い導入コスト。[無料評価版](/pricing/free-trial/)から始めることができます。「[HDInsight の料金詳細](/pricing/details/hdinsight/)」も参照してください。
 
 
 HDInsight の Hadoop を使うその他のメリットについては、[HDInsight 向けの Azure の機能のページ][marketing-page]を参照してください。

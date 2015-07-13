@@ -1,6 +1,6 @@
 <properties
 	pageTitle="HDInsight での Hadoop Sqoop の使用 | Microsoft Azure"
-	description="コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL Database 間で Sqoop インポートとエクスポートを実行する方法について説明します。"
+	description="コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。"
 	editor="cgronlun"
 	manager="paulettm"
 	services="hdinsight"
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [sqoop セレクター](../../includes/hdinsight-selector-use-sqoop.md)]
 
-ワークステーションから Azure PowerShell と HDInsight .NET SDK を使用して Sqoop を実行し、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを行う方法を説明します。
+ワークステーションから Azure PowerShell と HDInsight .NET SDK を使用して Sqoop を実行し、HDInsight クラスターと Azure SQL データベースまたは SQL Server データベース間でインポートとエクスポートを行う方法を説明します。
 
 > [AZURE.NOTE]この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。
 >
@@ -49,15 +49,15 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 <tr><td>Azure BLOB コンテナー名</td><td>$containerName</td><td></td><td>この例では、既定の HDInsight クラスター ファイル システムで使用する BLOB の名前を使用します。既定では、HDInsight クラスターと同じ名前です。</td></tr>
 </table>
 
-- **Azure SQL Database**: ワークステーションから Azure SQL Database サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL Database を作成して、ファイアウォールを構成する手順については、「[Azure SQL Database の概要][sqldatabase-get-started]」を参照してください。この記事には、このチュートリアルに必要な Azure SQL Database テーブルを作成するための Windows PowerShell スクリプトが示されています。
+- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
 
 	<table border="1">
-<tr><th>Azure SQL Database のプロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-<tr><td>Azure SQL Database サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL Database サーバー。</td></tr>
-<tr><td>Azyre SQL Database のログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>Azure SQL Database のログイン名。</td></tr>
-<tr><td>Azure SQL Database のログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>Azure SQL Database のログイン パスワード。</td></tr>
-<tr><td>Azure SQL Database 名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL Database。</td></tr>
-</table> [AZURE.NOTE]既定では、Azure SQL Database は Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。Azure SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configue]」を参照してください。
+<tr><th>Azure SQL データベースのプロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+<tr><td>Azure SQL データベース サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース サーバー。</td></tr>
+<tr><td>Azyre SQL データベースのログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>Azure SQL データベースのログイン名。</td></tr>
+<tr><td>Azure SQL データベースのログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>Azure SQL データベースのログイン パスワード。</td></tr>
+<tr><td>Azure SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース。</td></tr>
+</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
 
 * **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
 
@@ -113,7 +113,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 <tr><td>sessionpagevieworder</td><td>bigint</td></tr>
 </table>
 
-まず、*sample.log* と *hivesampletable* を Azure SQL Database または SQL Server にエクスポートしてから、次のパスを使用して、モバイル デバイスのデータを含むテーブルを HDInsight にインポートして戻します。
+まず、*sample.log* と *hivesampletable* を Azure SQL データベースまたは SQL Server にエクスポートしてから、次のパスを使用して、モバイル デバイスのデータを含むテーブルを HDInsight にインポートして戻します。
 
 	/tutorials/usesqoop/importeddata
 
@@ -123,7 +123,7 @@ HDInsight はデータ ストレージとして Azure BLOB ストレージを使
 
 HDInsight クラスターをプロビジョニングするときに、HDFS と同じように、Azure ストレージ アカウントと、そのアカウントの特定の BLOB ストレージ コンテナーを、既定のファイル システムとして指定します。プロビジョニング プロセス中に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。
 
-ストレージ アカウントをさらに追加する手順については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルで使用する Windows PowerShell スクリプトを簡単にするために、ファイルはすべて、*/tutorials/usesqoop* にある既定のファイル システム コンテナーに格納されています。既定では、このコンテナーの名前は HDInsight クラスター名と同じです。構文は次のとおりです。
+ストレージ アカウントをさらに追加する手順については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルで使用する Windows PowerShell スクリプトを簡単にするために、ファイルはすべて、*/tutorials/usesqoop* にある既定のファイル システム コンテナーに格納されています。既定では、このコンテナーの名前は HDInsight クラスター名と同じです。の構文は次のとおりです。
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
@@ -144,11 +144,11 @@ HDInsight クラスターをプロビジョニングするときに、HDFS と�
 
 ##チュートリアルを準備する
 
-Azure SQL Database または SQL Server で 2 つのテーブルを作成します。これらは、チュートリアルの後半で Sqoop エクスポートで使用されます。また、Sqoop による処理の前に、sample.log ファイルを処理する必要もあります。
+Azure SQL データベースまたは SQL Server で 2 つのテーブルを作成します。これらは、チュートリアルの後半で Sqoop エクスポートで使用されます。また、Sqoop による処理の前に、sample.log ファイルを処理する必要もあります。
 
 ###SQL テーブルを作成する
 
-**Azure SQL Database の場合**
+**Azure SQL データベースの場合**
 
 1. Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)][powershell-start])」を参照してください。
 
@@ -164,7 +164,7 @@ Azure SQL Database または SQL Server で 2 つのテーブルを作成しま�
 
 	変数の詳細については、このチュートリアルの「[前提条件](#prerequisites)」セクションを参照してください。
 
-3. スクリプト ウィンドウの末尾に次のスクリプトを追加します。これは 2 つのテーブルとクラスター化インデックスを定義する SQL ステートメントです。Azure SQL Database にはクラスター化インデックスが必要です。
+3. スクリプト ウィンドウの末尾に次のスクリプトを追加します。これは 2 つのテーブルとクラスター化インデックスを定義する SQL ステートメントです。Azure SQL データベースにはクラスター化インデックスが必要です。
 
 		# SQL query strings for creating tables and clustered indexes
 		$cmdCreateLog4jTable = "CREATE TABLE [dbo].[log4jlogs](
@@ -262,12 +262,12 @@ Azure SQL Database または SQL Server で 2 つのテーブルを作成しま�
 
 ###データを生成する
 
-このチュートリアルでは、log4j ログ ファイル (区切られたファイル) と Hive テーブルを Azure SQL Database にエクスポートします。区切られたファイルは */example/data/sample.log* と呼ばれます。チュートリアルの前半で、log4j ログのサンプルをいくつか示しました。ログ ファイルには空白行がいくつかあり、その他の行は次のような内容です。
+このチュートリアルでは、log4j ログ ファイル (区切られたファイル) と Hive テーブルを Azure SQL データベースにエクスポートします。区切られたファイルは */example/data/sample.log* と呼ばれます。チュートリアルの前半で、log4j ログのサンプルをいくつか示しました。ログ ファイルには空白行がいくつかあり、その他の行は次のような内容です。
 
 	java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
 		at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
 
-これは、このデータを使用する他の例に適していますが、Azure SQL Database または SQL Server にインポートする前にこれらの例外を削除する必要があります。空の文字列がある場合、または Azure SQL Database テーブルで定義されているフィールドの数よりも要素の数が少ない行がある場合、Sqoop エクスポートは失敗します。log4jlogs テーブルには 7 個の文字列型のフィールドがあります。
+これは、このデータを使用する他の例に適していますが、Azure SQL データベースまたは SQL Server にインポートする前にこれらの例外を削除する必要があります。空の文字列がある場合、または Azure SQL データベース テーブルで定義されているフィールドの数よりも要素の数が少ない行がある場合、Sqoop エクスポートは失敗します。log4jlogs テーブルには 7 個の文字列型のフィールドがあります。
 
 **sample.log ファイルを処理するには**
 
@@ -348,9 +348,9 @@ Azure SQL Database または SQL Server で 2 つのテーブルを作成しま�
 
 ##PowerShell を使用して Sqoop エクスポートを実行する
 
-このセクションでは、Azure PowerShell を使用して Sqoop エクスポート コマンドを実行し、Hive テーブルとデータ ファイルを Azure SQL Database または SQL Server にエクスポートします。次のセクションでは、HDInsight の .NET サンプルを示します。
+このセクションでは、Azure PowerShell を使用して Sqoop エクスポート コマンドを実行し、Hive テーブルとデータ ファイルを Azure SQL データベースまたは SQL Server にエクスポートします。次のセクションでは、HDInsight の .NET サンプルを示します。
 
-> [AZURE.NOTE]接続文字列情報を除き、このセクションの手順は、Azure SQL Database または SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
+> [AZURE.NOTE]接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
 >
 > * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](http://msdn.microsoft.com/library/azure/dn133792.aspx)」を参照してください。
 > * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
@@ -562,7 +562,7 @@ Azure SQL Database または SQL Server で 2 つのテーブルを作成しま�
 
 ##Azure PowerShell を使用して Sqoop インポートを実行する
 
-このセクションでは、log4j ログ (Azure SQL Database にエクスポートしたもの) を HDInsight にインポートして戻します。
+このセクションでは、log4j ログ (Azure SQL データベースにエクスポートしたもの) を HDInsight にインポートして戻します。
 
 1. Windows PowerShell ISE を開きます。
 2. 下のウィンドウで、次のコマンドを実行して、Azure サブスクリプションに接続します。
@@ -618,7 +618,7 @@ Azure SQL Database または SQL Server で 2 つのテーブルを作成しま�
 ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
 
 - [HDInsight での Oozie の使用][hdinsight-use-oozie]: Oozie ワークフローで Sqoop アクションを使用します。
-- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
+- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]: HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
 
@@ -645,4 +645,4 @@ Azure SQL Database または SQL Server で 2 つのテーブルを作成しま�
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

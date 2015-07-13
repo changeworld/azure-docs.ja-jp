@@ -1,9 +1,11 @@
-## Understanding Azure resource templates and resource groups
+## Azure リソース テンプレートおよびリソース グループについて
 
-Most applications that are deployed and run in Microsoft Azure are built out of a combination of different cloud resource types (e.g. one or more VMs and Storage accounts, a SQL database, a virtual network, a CDN, etc).  [Azure Resource Manager templates](https://msdn.microsoft.com/library/azure/dn835138.aspx) make it possible for you to deploy and manage these different resources together by using a JSON description of the resources and associated configuration and deployment parameters.
+Microsoft Azure にデプロイされ、実行されるアプリケーションの大半は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、CDN など) から構築されます。[Azure リソース マネージャー テンプレート](https://msdn.microsoft.com/library/azure/dn835138.aspx)によって、リソースや関連する構成およびデプロイ パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
 
-Once you have defined a JSON based resource template, you can execute it and have the resources defined within it be deployed in Azure using a PowerShell command.  You can run this PowerShell command either standalone within the PowerShell command shell, or you can integrate it within a PowerShell script that contains additional automation logic.
+JSON ベースのリソース テンプレートを定義したら、それを実行して、その中で定義されているリソースを PowerShell コマンドを使用して Azure にデプロイすることができます。この PowerShell コマンドは、PowerShell コマンド シェル内でスタンドアロンとして実行するか、その他のオートメーション ロジックを含む PowerShell スクリプト内に統合することができます。
 
-The resources you create using Azure Resource Manager templates will be deployed to either a new or existing Azure resource group.  An Azure resource group allows you to manage multiple deployed resources together as a logical group. Typically, a group will contain resources related to a specific application.  Azure resource groups provide a way to manage the overall lifecycle of the group/application and provide management APIs that allow you to stop/start/delete all of the resources within the group at once, apply Role Based Access Control (RBAC) rules to lock down security permissions on them, audit operations, as well as tag resources with additional meta-data for better tracking. To learn more about Azure Resource Groups, see the [Azure Resource Manager Overview](https://azure.microsoft.com/documentation/articles/resource-group-overview/). 
+Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の Azure リソース グループにデプロイされます。Azure リソース グループを使用すると、デプロイした複数のリソースをまとめて 1 つの論理グループとして管理できます。通常、1 つのグループには、特定のアプリケーションに関連するリソースが含まれます。Azure リソース グループは、グループとアプリケーションのライフサイクル全体を管理する手段を提供します。また、Azure リソース グループが提供する管理 API を使用すると、グループ内リソースの一括停止、開始、削除や、ロールベースのアクセス制御 (RBAC) ルールの適用によるセキュリティのアクセス許可制限、操作の監査、優れた追跡機能を可能にする追加メタデータによるリソースのタグ付けが可能になります。Azure リソース グループの詳細については、[Azure リソース マネージャーの概要](https://azure.microsoft.com/documentation/articles/resource-group-overview/)に関するページをご覧ください。
 
-The following automation examples demonstrate how to use Azure Resource Manager Templates and deploy Resource Groups using PowerShell or CLI.
+次のオートメーションの例では、Azure リソース マネージャー テンプレートを使用し、PowerShell または CLI でリソース グループをデプロイする方法を示します。
+
+<!---HONumber=62-->

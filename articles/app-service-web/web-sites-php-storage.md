@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azurre ストレージを使った Azure App Service での PHP Web アプリの作成" 
+	pageTitle="Azure Storage を使った Azure App Service での PHP Web アプリの作成" 
 	description="このチュートリアルでは、Azure App Service で PHP Web アプリを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。" 
 	services="app-service\web, storage" 
 	documentationCenter="php" 
@@ -16,16 +16,16 @@
 	ms.date="04/07/2015" 
 	ms.author="tomfitz"/>
 
-# Azurre ストレージを使った Azure App Service での PHP Web アプリの作成
+# Azure Storage を使った Azure App Service での PHP Web アプリの作成
 
-このチュートリアルでは、[Azure App Service で PHP Web](http://go.microsoft.com/fwlink/?LinkId=529714) アプリを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php] および Web サーバーがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作し、テーブル ストレージ サービスにアクセスする PHP Web アプリが完成します。
+このチュートリアルでは、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で PHP Web アプリを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php] および Web サーバーがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作し、テーブル ストレージ サービスにアクセスする PHP Web アプリが完成します。
  
 学習内容:
 
 * Azure クライアント ライブラリをインストールしてアプリケーションに含める方法
 * クライアント ライブラリを使用してテーブルを作成し、テーブル エンティティを作成、照会、削除する方法
-* Azure Storage アカウントを作成し、これを使用できるようにアプリケーションをセットアップする方法
-* Azure の Web アプリを作成して Git で展開する方法
+* Azure ストレージ アカウントを作成し、これを使用できるようにアプリケーションをセットアップする方法
+* Azure の Web アプリを作成して Git でデプロイする方法
  
 このチュートリアルでは、タスク一覧用の単純な Web アプリケーション (Tasklist) を PHP で作成します。完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -33,7 +33,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##Azure クライアント ライブラリのインストール
 
@@ -94,7 +94,7 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 	
 		UseDevelopmentStorage=true
 
-* `ServicesBuilder::createTableService` ファクトリ メソッドを使用して、テーブル サービス呼び出しのラッパーをインスタンス化します。
+* `ServicesBuilder::createTableService` ファクトリ メソッドを使用して、Table サービス呼び出しのラッパーをインスタンス化します。
 
 		$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 	
@@ -346,19 +346,19 @@ Tasklist アプリケーションのホーム ページでは、既存のタス�
 
 	Web アプリが作成されると、**[通知]** ボタンが緑色の **[成功]** と点滅し、Web アプリのブレードが開き、作成した新しいリソース グループに所属することが示されます。
 
-6. Web アプリのブレードで、**[継続的デプロイメントの設定]** をクリックし、**[ローカル Git リポジトリ]** を選択します。**[OK]** をクリックします。
+6. Web アプリのブレードで、**[継続的デプロイの設定]** をクリックし、**[ローカル Git リポジトリ]** を選択します。**[OK]** をクリックします。
 
 	![Git 発行の設定][setup-git-publishing]
 
-7. ローカル Git リポジトリを Azure に展開するには、展開の資格情報も設定する必要があります。Web アプリのブレードで、**[すべての設定]** > **[デプロイメントの資格情報]** をクリックして資格情報を構成します。終了したら **[保存]** をクリックします。
+7. ローカル Git リポジトリを Azure にデプロイするには、デプロイ資格情報も設定する必要があります。Web アプリのブレードで、**[すべての設定]** > **[デプロイ資格情報]** をクリックして資格情報を構成します。終了したら **[保存]** をクリックします。
 
 	![発行資格情報の作成][credentials]
 
 	リポジトリの設定にかかる時間はわずかです。
 
-8. Git リポジトリの準備ができたら、変更をプッシュします。Web アプリのブレードにある同じ展開部をクリックするとリポジトリ URL を確認できます。
+8. Git リポジトリの準備ができたら、変更をプッシュします。Web アプリのブレードにある同じデプロイ部をクリックするとリポジトリ URL を確認できます。
 
-	![Web アプリのリポジトリの作成後に返される Git 展開の手順][git-instructions]
+	![Web アプリのリポジトリの作成後に返される Git デプロイの手順][git-instructions]
 
 	表示された指示を書き留めてください。次のセクションで、アプリケーションを発行するときに使用します。
 

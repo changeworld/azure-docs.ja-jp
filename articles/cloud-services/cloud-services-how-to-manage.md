@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2015" 
+	ms.date="06/16/2015"
 	ms.author="adegeo"/>
 
 
@@ -152,5 +152,6 @@ Azure の管理ポータルの **[クラウド サービス]** 領域では、�
 
 > [AZURE.NOTE]Azure でクラウド サービスに詳細監視が構成されている場合、クラウド サービスを削除しても、ストレージ アカウントから監視データは削除されません。データは手作業で削除する必要があります。メトリック テーブルのある場所については、「<a href="http://azure.microsoft.com/documentation/articles/cloud-services-how-to-monitor/">クラウド サービスの監視方法</a>」の「方法: 管理ポータル外で詳細監視データにアクセス」を参照してください。
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

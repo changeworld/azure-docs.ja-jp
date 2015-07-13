@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure App Service の Web アプリケーションの診断ログの有効化"
+	pageTitle="Azure App Service の Web アプリの診断ログの有効化"
 	description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。"
 	services="app-service\web"
 	documentationCenter=".net"
@@ -16,7 +16,7 @@
 	ms.date="03/29/2015"
 	ms.author="cephalin"/>
 
-# Azure App Service の Web アプリケーションの診断ログの有効化
+# Azure App Service の Web アプリの診断ログの有効化
 
 ## 概要
 
@@ -38,7 +38,7 @@ Azure では、組み込みの診断機能により、[App Service](http://go.mi
 
 ### アプリケーション診断
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -48,7 +48,7 @@ Visual Studio でのアプリケーション診断の操作については、「
 
 > [AZURE.NOTE]web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
-Azure の Web アプリケーションでは、Web アプリケーションにコンテンツを発行したときに展開情報もログに記録されます。これは自動的に行われ、展開ログの構成設定はありません。展開ログでは、展開が失敗した理由を特定できます。たとえば、カスタムの展開スクリプトを使用している場合は、展開ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
+Azure の Web アプリでは、Web アプリにコンテンツを発行したときにデプロイ情報もログに記録されます。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
 ## <a name="enablediag"></a>診断を有効にする方法
 
@@ -67,8 +67,8 @@ Azure の Web アプリケーションでは、Web アプリケーションに�
 
 * **ログ レベル** - 取得された情報を、**情報**、**警告**、**エラー**情報にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。**ログ レベル**は、**ファイル システム**、**テーブル ストレージ**、および **BLOB ストレージ**に対して、それぞれ異なるレベルを設定できます。
 * **ファイル システム** - アプリケーション診断情報が Web アプリのファイル システムに保存されます。これらのファイルは、FTP によってアクセスするか、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードできます。
-* **テーブル ストレージ** - 指定された Azure Storage アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
-* **BLOB ストレージ** - 指定された Azure Storage アカウントおよび BLOB コンテナーにアプリケーション診断情報が保存されます。
+* **テーブル ストレージ** - 指定された Azure ストレージ アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
+* **BLOB ストレージ** - 指定された Azure ストレージ アカウントおよび BLOB コンテナーにアプリケーション診断情報が保存されます。
 * **保有期間** - 既定では、**BLOB ストレージ**からログが自動的に削除されることはありません。ログを自動的に削除するには、**[保有期間の設定]** を選択して、ログを保有する日数を入力します。
 
 > [AZURE.NOTE]ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にすることができます。また、それぞれ個別にログ レベルを設定できます。たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にすることができます。
@@ -89,11 +89,11 @@ Web アプリケーション ファイル システムに保存された診断�
 
 * **Web サーバー ログ**: /LogFiles/http/RawLogs。このフォルダーには、[W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。
 
-* **デプロイ ログ**: /LogFiles/Git。このフォルダーには、Git 展開のログだけでなく、Azure の Web アプリケーションが使用する内部展開プロセスによって生成されたログも格納されます。
+* **デプロイ ログ**: /LogFiles/Git。このフォルダーには、Git デプロイのログだけでなく、Azure Web Apps が使用する内部デプロイ プロセスによって生成されたログも格納されます。
 
 ### FTP
 
-FTP を使用して診断情報にアクセスするには、Azure 管理ポータルで Web アプリの**ダッシュボード**にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[展開/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
+FTP を使用して診断情報にアクセスするには、Azure 管理ポータルで Web アプリの**ダッシュボード**にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[デプロイ/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
 
 > [AZURE.NOTE]**[デプロイ/FTP ユーザー]** エントリが設定されていない場合や、このユーザーのパスワードを忘れた場合は、**ダッシュボード**の **[概要]** セクションで **[デプロイ資格情報のリセット]** リンクを使用することで、新しいユーザーとパスワードを作成できます。
 
@@ -174,7 +174,7 @@ Visual Studio の Application Insights には、ログをフィルターおよ�
 
 	azure site log tail webappname --path http
 
-> [AZURE.NOTE]Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure コマンド ライン インターフェイスの使用方法](../xplat-cli.md)」に関するページをご覧ください。
+> [AZURE.NOTE]Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure コマンド ライン インターフェイスの使用方法](../xplat-cli.md)に関するページをご覧ください。
 
 ##<a name="understandlogs"></a> 診断ログを読む方法
 
@@ -226,7 +226,7 @@ __テーブル ストレージ__
 <td style="border:1px solid black;vertical-align:top">Web アプリケーション名</td>
 </tr>
 <tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">レベル</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Level</td>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベント レベル (例: エラー、警告、情報)</td>
 </tr>
 <tr>
@@ -321,20 +321,20 @@ BLOB に格納されるデータは次のようになります。
 
 Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx) (.aspx) で書式設定されます。この情報は、テキスト エディターを使用して表示したり、[Log Parser](http://go.microsoft.com/fwlink/?LinkId=246619) などのユーティリティで解析したりできます。
 
-> [AZURE.NOTE]Azure Web アプリによって生成されるログでは、__s-computername__、__s-ip__、または __cs-version__ のフィールドはサポートされていません。
+> [AZURE.NOTE]Azure Web Apps によって生成されるログでは、__s-computername__、__s-ip__、または __cs-version__ のフィールドはサポートされていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##<a name="nextsteps"></a> 次のステップ
 
-- [Web Apps を監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
+- [Web アプリを監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
 - [チュートリアル - Web Apps のトラブルシューティング](/ja-jp/develop/net/best-practices/troubleshooting-web-sites/)
 - [Visual Studio での Azure の Web Apps のトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
 <!---HONumber=62-->

@@ -15,7 +15,7 @@
 
 5. *DefaultConfig* で、*minSdkVersion* を 9 に変更します。
  
-6. ツール バーの **[Sync Project with Gradle Files]** ボタンをクリックします。
+6. ツール バーで **[Sync Project with Gradle Files]** をクリックします。
 
 7. **AndroidManifest.xml** を開き、このタグを *application* タグに追加します。
 
@@ -23,8 +23,4 @@
             android:value="@integer/google_play_services_version" />
  
 
-
-
-
-
-<!--HONumber=54-->
+<!---HONumber=62-->

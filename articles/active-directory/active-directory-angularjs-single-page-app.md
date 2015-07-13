@@ -178,5 +178,6 @@ Azure AD を使用して認証と承認を Web アプリケーションや Web A
 
 + [Azure Active Directory のコード例](https://msdn.microsoft.com/library/azure/dn646737.aspx)
 + [Azure AD の認証シナリオ](https://msdn.microsoft.com/library/azure/dn499820.aspx)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure のデータのファクトリでのコピー活動を使用するための例" 
-	description="例を使用して、Azure のデータのファクトリでのコピー活動を示します。" 
+	pageTitle="Azure Data Factory でコピー アクティビティを使用する例" 
+	description="Azure Data Factory でコピー アクティビティを使用する例を示します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -16,21 +16,21 @@
 	ms.date="04/14/2015" 
 	ms.author="spelluru"/>
 
-# Azure のデータのファクトリでのコピー活動を使用するための例
-パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。このトピックは、出荷時のデータ パイプラインで、コピーのアクティビティの使用の例をいくつかを示します。コピー アクティビティと、コピー アクティビティがサポートする主要なシナリオの詳細については、「[Azure Data Factory を使用してデータをコピーする][adf-copyactivity]」を参照してください。
+# Azure Data Factory でコピー アクティビティを使用する例
+パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。このトピックでは、Data Factory パイプラインでコピー アクティビティを使用する例をいくつか紹介します。コピー アクティビティと、コピー アクティビティがサポートする主要なシナリオの詳細については、「[Azure Data Factory を使用してデータをコピーする][adf-copyactivity]」を参照してください。
 
-## データを内部設置型 SQL Server データベースを Azure の blob にコピーします。
+## オンプレミスの SQL Server Database から Azure BLOB へのデータのコピー
 この例では、入力テーブルと出力テーブルが定義されます。また、これらのテーブルが、内部設置型の SQL Server データベースから Azure BLOB にデータをコピーするパイプライン内のコピー アクティビティで使用されます。
 
 ### 前提条件
-この例は、次の Azure データ工場出荷時のアイテムがあることを前提としています。
+この例は、次の Azure Data Factory アーティファクトがあることを前提としています。
 
 * **ADF** という名前のリソース グループ
 * **CopyFactory** という名前の Azure Data Factory
-* という名前のデータ管理ゲートウェイ **mygateway** が作成されはオンラインです。  
+* オンラインになっており、かつ **mygateway** という名前のデータ管理ゲートウェイ  
 
-### ソースの内部設置型 SQL Server データベースのリンクされているサービスを作成します。
-このステップでという名前のリンクされているサービスを作成する **MyOnPremisesSQLDB** 、内部設置型 SQL Server データベースを指します。
+### ソースのオンプレミスの SQL Server Database のリンクされたサービスの作成
+この手順では、オンプレミスの SQL Server Database を示す **MyOnPremisesSQLDB** という名前のリンクされたサービスを作成します。
 
 	{
 	    "name": "MyOnPremisesSQLDB",
@@ -44,14 +44,14 @@
 
 以下の点に注意してください。
 
-- **型** に設定されている **OnPremisesSqlLinkedService**です。
-- **connectionString** 、SQL Server データベースの接続文字列に設定されています。 
-- **gatewayName** 、内部設置型コンピューターにインストールされているし、Azure のデータのファクトリのサービスのポータルに登録されているが、Data Management Gateway の名前に設定されています。 
+- **type** が **OnPremisesSqlLinkedService** に設定されています。
+- **connectionString** が SQL Server Database の接続文字列に設定されています。 
+- **gatewayName** が、オンプレミスのコンピューターにインストールして Azure Data Factory サービス ポータルに登録したデータ管理ゲートウェイの名前に設定されています。 
 
-参照してください [内部設置型 SQL リンク サービス](https://msdn.microsoft.com/library/dn893523.aspx) 、内部設置型 SQL を定義するための要素の詳細については JSON サービスにリンクされています。
+オンプレミスの SQL のリンクされたサービスを定義するための JSON 要素の詳細については、[オンプレミスの SQL のリンクされたサービス](https://msdn.microsoft.com/library/dn893523.aspx)に関するページをご覧ください。
  
-### 変換先の Azure blob の場合、リンクされているサービスを作成します。
-このステップでという名前のリンクされているサービスを作成する **MyAzureStorage** 、Azure blob ストレージを参照します。
+### コピー先 Azure BLOB のリンクされたサービスの作成
+この手順では、Azure BLOB ストレージを示す **MyAzureStorage** という名前のリンクされたサービスを作成します。
 
 	{
 	    "name": "MyAzureStorage",
@@ -64,10 +64,10 @@
 
 以下の点に注意してください。
 
-- **型** に設定されている **AzureStorageLinkedService**です。
-- **connectionString** - アカウント名を指定し、アカウント、Azure のストレージのキー。
+- **type** が **AzureStorageLinkedService** に設定されています。
+- **connectionString** - Azure ストレージのアカウント名とアカウント キーを指定します。
 
-参照してください [Azure ストレージ リンク サービス](https://msdn.microsoft.com/library/dn893522.aspx) リンク サービスの詳細については、Azure のストレージを定義する JSON 要素についてです。
+Azure Storage のリンクされたサービスを定義するための JSON 要素の詳細については、[Azure Storage のリンクされたサービス](https://msdn.microsoft.com/library/dn893522.aspx)に関するページをご覧ください。
 
 ### 入力テーブルの JSON
 次の JSON スクリプトは、入力テーブルを定義します。この入力テーブルは、リンクされたサービス **MyOnPremisesSQLDB** で定義されたオンプレミスの SQL Server データベースにある SQL テーブル **MyTable** を参照します。**name** は Azure Data Factory テーブルの名前で、**tableName** は SQL Server データベース内の SQL テーブルの名前です。
@@ -93,14 +93,14 @@
 
 以下の点に注意してください。
 
-- **型** に設定されている **OnPremisesSqlServerTableLocation**です。
-- **tableName** に設定されている **MyTable**, 、ソース データが格納されます。 
-- **linkedServiceName** に設定されている **MyOnPremisesSQLDB**, 、内部設置型の SQL データベース用に作成したサービスをリンクします。
+- **type** が **OnPremisesSqlServerTableLocation** に設定されています。
+- **tableName** が、ソース データを格納する **MyTable** に設定されています。 
+- **linkedServiceName** が **MyOnPremisesSQLDB** に設定されています。これは、オンプレミスの SQL Database に対して作成したリンクされたサービスです。
 
-参照してください [場所のプロパティを内部設置型 SQL](https://msdn.microsoft.com/library/dn894089.aspx#OnPremSQL) の詳細については、SQL Server テーブルを参照する、ファクトリのデータ テーブルを定義する JSON 要素。
+SQL Server テーブルを参照する Data Factory テーブルを定義するための JSON 要素の詳細については、[オンプレミスの SQL の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#OnPremSQL)に関するセクションをご覧ください。
 
 ### 出力テーブルの JSON
-次の JSON スクリプトを出力テーブルを定義: **MyAzureBlob**, を Azure の blob を参照する: **MyBlob** blob フォルダー内: **MySubFolder** blob コンテナーに: **MyContainer**です。
+次の JSON スクリプトは、出力テーブル **MyAzureBlob** を定義します。これは、**MyContainer** という BLOB コンテナー内の **MySubFolder** という BLOB フォルダー内にある **MyBlob** という Azure BLOB を参照します。
          
 	{
    		"name": "MyAzureBlob",
@@ -131,12 +131,12 @@
 
 以下の点に注意してください。
  
-- **型** に設定されている **AzureBlobLocation**です。
-- **folderPath** に設定されている **MyContainer/MySubFolder**, 、コピーしたデータを保持する blob が含まれています。 
-- **fileName** に設定されている **MyBlob**, 、出力データを保持する blob です。
-- **linkedServiceName** に設定されている **MyAzureStorge**, 、Azure のストレージ用に作成したサービスをリンクします。    
+- **type** が **AzureBlobLocation** に設定されています。
+- **folderPath** が **MyContainer/MySubFolder** に設定されています。これは、コピーされたデータを保持する BLOB です。 
+- **fileName** が、出力データを保持する BLOB である **MyBlob** に設定されています。
+- **linkedServiceName** が **MyAzureStorge** に設定されています。これは、Azure ストレージに対して作成したリンクされたサービスです。    
 
-参照してください [Azure blob の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob) の詳細については、Azure の blob を参照する、ファクトリのデータ テーブルを定義する JSON 要素。
+Azure BLOB を参照する Data Factory テーブルを定義するための JSON 要素の詳細については、[Azure BLOB の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)に関するセクションをご覧ください。
 
 ### パイプライン (コピー アクティビティ) の JSON
 この例では、次のプロパティを使用して **CopyActivityPipeline** というパイプラインが定義されます。
@@ -144,7 +144,7 @@
 - **type** プロパティは、**CopyActivity** に設定されます。
 - **MyOnPremTable** が入力として指定されます (**inputs** タグ)。
 - **MyAzureBlob** が出力として指定されます (**outputs** タグ)。
-- **Transformation** セクションには、**source** と **sink** という 2 つのサブ セクションがあります。ソースの種類は **SqlSource** に設定され、シンクの種類は **BlobSink** に設定されます。**sqlReaderQuery** は、変換 (射影) がソース上で実行されるように定義します。すべてのプロパティの詳細については、「[JSON Scripting Reference (JSON スクリプト リファレンス)][json-script-reference]」を参照してください。
+- **Transformation** セクションには、**source** と **sink** という 2 つのサブ セクションがあります。ソースの種類は **SqlSource** に設定され、シンクの種類は **BlobSink** に設定されます。**sqlReaderQuery** は、変換 (射影) がソース上で実行されるように定義します。すべてのプロパティの詳細については、[JSON スクリプト リファレンス][json-script-reference] を参照してください。
 
          
 		{
@@ -177,19 +177,19 @@
     		}
 		}
 
-参照してください [パイプラインの JSON の参照を](https://msdn.microsoft.com/library/dn834988.aspx) の詳細については、データの工場出荷時のパイプラインを定義する JSON 要素と [サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx) [SqlSource のプロパティの (例: **sqlReaderQuery **の例では) と BlobSink 。
+Data Factory パイプラインを定義するための JSON 要素の詳細については、[パイプライン JSON リファレンス](https://msdn.microsoft.com/library/dn834988.aspx)に関するページをご覧ください。SqlSource (たとえば、例の中の **sqlReaderQuery**) と BlobSink のプロパティについては、「[サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx)」をご覧ください。
 
 
-## Azure blob に、内部設置型のファイル システムからのデータのコピー
-コピーのアクティビティを使用すると、(Windows と Linux のネットワーク共有またはローカルのホストを Windows)、内部設置型のファイル システムから Azure Blob にファイルをコピーするのにことができます。ホストには Windows または Linux で構成されている Samba のいずれかを指定できます。Data Management Gateway は、ホストに接続できる Windows マシンにインストールする必要があります。
+## オンプレミスのファイル システムから Azure BLOB へのデータのコピー
+コピー アクティビティを使用して、オンプレミスのファイル システム (Windows または Linux のネットワーク共有または Windows ローカル ホスト) から Azure BLOB にファイルをコピーできます。Samba が構成された Windows または Linux をホストとして使用できます。ホストに接続できる Windows コンピューターには Data Management Gateway をインストールする必要があります。
 
 ### 前提条件
-この例には、次の前提としています。
+この例では、次の条件を想定しています。
 
-- **ホスト** -ファイル システムをホストするサーバーの名前が: **\contoso**です。
-- **フォルダー** -入力ファイルが含まれているフォルダーの名前が: **marketingcampaign\regionaldata\ {スライス}、という名前のフォルダー {スライス}、2014121112 (2014 年、12 の月、日の 11、12 時間) などのファイルはパーティション分割します 。
-### 内部設置型のファイル システムがリンクされているサービスを作成します。
-JSON という名前のリンクされているサービスの作成に使用できる次のサンプル **FolderDataStore** 型の **OnPremisesFileSystemLinkedService**です。
+- **ホスト** - ファイル システムをホストするサーバーの名前: **\contoso**。
+- **フォルダー** - 入力ファイルが含まれているフォルダーの名前: **marketingcampaign\regionaldata\{slice}。ここで、ファイルは、{slice} という名前のフォルダー内で分割されます (例: 2014121112 (2014 年 12 月 11 日 12 時))。
+### オンプレミスのファイル システムのリンクされたサービスの作成
+次のサンプル JSON を使用すると、**OnPremisesFileSystemLinkedService** 型の **FolderDataStore** という名前のリンクされたサービスを作成できます。
 
 	{
 	    "name": "FolderDataStore",
@@ -202,12 +202,12 @@ JSON という名前のリンクされているサービスの作成に使用で
 	    }
 	}
 
-> [AZURE.NOTE]エスケープ文字を使用してください ' のホストと JSON ファイル内のフォルダーの名前です。 **\Contoso**, を使用して **\Contoso**です。
+> [AZURE.NOTE]JSON ファイル内ではホストとフォルダーの名前にエスケープ文字 () を使用してください。たとえば、**\Contoso** の場合は、**\Contoso** のように指定します。
 
-参照してください [内部設置型のファイル システム リンク サービス](https://msdn.microsoft.com/library/dn930836.aspx) 詳細については、内部設置型のファイル システムを定義する JSON 要素に関するサービスとリンクします。
+オンプレミスのファイル システムのリンクされたサービスを定義するための JSON 要素の詳細については、[オンプレミスのファイル システムのリンクされたサービス](https://msdn.microsoft.com/library/dn930836.aspx)に関するページをご覧ください。
 
-### 変換先の Azure blob の場合、リンクされているサービスを作成します。
-JSON という名前のリンクされているサービスの作成に使用できる次のサンプル **MyAzureStorage** 型の **AzureStorageLinkedSerivce**です。
+### コピー先 Azure BLOB のリンクされたサービスの作成
+次のサンプル JSON を使用すると、**AzureStorageLinkedSerivce** 型の **MyAzureStorage** という名前のリンクされたサービスを作成できます。
 
 	{
 	    "name": "MyAzureStorage",
@@ -218,10 +218,10 @@ JSON という名前のリンクされているサービスの作成に使用で
 	    }
 	}
 
-参照してください [Azure ストレージ リンク サービス](https://msdn.microsoft.com/library/dn893522.aspx) リンク サービスの詳細については、Azure のストレージを定義する JSON 要素についてです。
+Azure Storage のリンクされたサービスを定義するための JSON 要素の詳細については、[Azure Storage のリンクされたサービス](https://msdn.microsoft.com/library/dn893522.aspx)に関するページをご覧ください。
 
-### 入力テーブルを作成します。
-次の JSON スクリプトを先ほど作成した内部設置型のファイルのリンクされているシステム サービスを参照する入力テーブルを定義します。
+### 入力テーブルの作成
+次の JSON スクリプトは、前の手順で作成したオンプレミスのファイル システムのリンクされたサービスを参照する入力テーブルを定義します。
 
 	{
 	    "name": "OnPremFileSource",
@@ -242,10 +242,10 @@ JSON という名前のリンクされているサービスの作成に使用で
 	    }
 	}
 
-参照してください [場所のプロパティをファイル システムの内部設置型](https://msdn.microsoft.com/library/dn894089.aspx#OnPremFileSystem) の詳細については、内部設置型のファイル システムを参照する、ファクトリのデータ テーブルを定義する JSON 要素。
+オンプレミスのファイル システムを参照する Data Factory テーブルを定義するための JSON 要素の詳細については、[オンプレミスのファイル システムの場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#OnPremFileSystem)に関するセクションをご覧ください。
 
-### 出力を作成します。
-次の JSON スクリプトを出力テーブルを定義: **AzureBlobDest**, を Azure の blob を参照する: **MyBlob** blob フォルダー内: **MySubFolder** blob コンテナーに: **MyContainer**です。
+### 出力テーブルの作成
+次の JSON スクリプトは、出力テーブル **AzureBlobDest** を定義します。これは、**MyContainer** という BLOB コンテナー内の **MySubFolder** という BLOB フォルダー内にある **MyBlob** という Azure BLOB を参照します。
          
 	{
    		"name": "AzureBlobDest",
@@ -274,10 +274,10 @@ JSON という名前のリンクされているサービスの作成に使用で
    		}
 	}
 
-参照してください [Azure blob の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob) の詳細については、Azure の blob を参照する、ファクトリのデータ テーブルを定義する JSON 要素。
+Azure BLOB を参照する Data Factory テーブルを定義するための JSON 要素の詳細については、[Azure BLOB の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)に関するセクションをご覧ください。
 
-### パイプラインを作成します。
-JSON の次のパイプラインは、内部設置型のファイル システムから Azure の blob を変換先にデータをコピーするコピー アクティビティを含むパイプラインを定義します。
+### パイプラインの作成
+次のパイプライン JSON は、オンプレミスのファイル システムからコピー先の Azure BLOB にデータをコピーするコピー アクティビティを含むパイプラインを定義します。
  
 	{
 	    "name": "CopyFileToBlobPipeline",
@@ -305,16 +305,16 @@ JSON の次のパイプラインは、内部設置型のファイル システ�
 	    }
 	}
 
-この例では、パイプライン内容をコピー、binary としてなくいずれかの解析や変換を実行します。活用できることを確認 **同時実行** を並列でファイルのスライスをコピーします。これは、スライスが既に過去の出来事を移動する場合に役立ちます。
+この例のパイプラインは、解析や変換を実行することなく、コンテンツをバイナリとしてコピーします。**concurrency** を使って、ファイルのスライスを並列にコピーできます。この機能は、過去に既に発生したスライスを移動する場合に便利です。
 
-> [AZURE.NOTE]「サーバーまたは 1 つ以上のユーザー名を使用して、同じユーザーによって共有リソースへの複数の接続は許可されていません」など、別のユーザー アカウントを持つ UNC パスを使用して同じホストで同時実行のコピー活動はエラーに可能性があります。これは、セキュリティ上の理由には、オペレーティング システムの制限です。ホスト内で、ゲートウェイをインストールまたはし UNC パスの代わりに"localhost"または"local"を使用していずれかの別のゲートウェイと、コピー、アクティビティのスケジュールを設定します。
+> [AZURE.NOTE]UNC パスを使用する場合、異なるユーザー アカウントを複数使って同一のホストに同時にコピー アクティビティを実行すると、"同じユーザーが複数のユーザー名を使ってサーバーまたは共有リソースに複数の接続を確立することはできません" などのエラーが発生することがあります。これは、オペレーティング システムのセキュリティ上の制約によるものです。異なるゲートウェイを使用してコピー アクティビティをスケジュール設定するか、またはホスト内にゲートウェイをインストールし、UNC パスの代わりに "localhost" または "local" を使用してください。
 
-参照してください [JSON のパイプライン参照](https://msdn.microsoft.com/library/dn834988.aspx) の詳細については、データの工場出荷時のパイプラインを定義する JSON 要素と [サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx) FileSystemSource および BlobSink のプロパティのです。
+Data Factory パイプラインを定義するための JSON 要素の詳細については、[パイプライン JSON リファレンス](https://msdn.microsoft.com/library/dn834988.aspx)に関するページをご覧ください。FileSystemSource と BlobSink のプロパティについては、「[サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx)」をご覧ください。
 
-### ファイル システム テーブルを使用するための他のシナリオ
+### ファイル システム テーブルを使用する追加のシナリオ
 
-#### 特定のフォルダーの下のすべてのファイルをコピーします。
-のみです **folderPath** は JSON の例で指定します。
+#### 特定のフォルダー内のすべてのファイルをコピーする
+サンプル JSON で **folderPath** のみが指定されていることに注目してください。
 
 	{
 	    "name": "OnPremFileSource",
@@ -328,8 +328,8 @@ JSON の次のパイプラインは、内部設置型のファイル システ�
 	    }
 	}
  
-#### 特定のフォルダーの下のすべての CSV ファイルをコピーします。
-なお、 **fileFilter** に設定されている ***.csv**です。
+#### 特定のフォルダー内のすべての CSV ファイルをコピーする
+**fileFilter** が ***.csv** に設定されている点に注目してください。
 
 	{
 	    "name": "OnPremFileSource",
@@ -344,8 +344,8 @@ JSON の次のパイプラインは、内部設置型のファイル システ�
 	    }
 	}
 
-#### 特定のファイルをコピーします。
-注意して、 **fileFiter** 、特定のファイルに設定されている: **201501.csv**です。
+#### 特定のファイルをコピーする
+**fileFiter** が特定のファイル (**201501.csv**) に設定されている点に注目してください。
 
 	{
 	    "name": "OnPremFileSource",
@@ -360,11 +360,11 @@ JSON の次のパイプラインは、内部設置型のファイル システ�
 	    }
 	}
 
-## Azure blob に、内部設置型の Oracle データベースからデータをコピーします。
-コピーのアクティビティを使用すると、ファイルを内部設置型の内部設置型の Oracle データベースから、Azure の Blob をコピーするのにことができます。
+## オンプレミスの Oracle データベースから Azure BLOB へのデータのコピー
+コピー アクティビティを使用して、オンプレミスの Oracle データベースから Azure BLOB にファイルをコピーできます。
 
-### 内部設置型の Oracle データベースのリンクされているサービスを作成します。
-次の json 形式を内部設置型の Oracle データベースを指すリンクされているサービスを作成することができます。なお、 **型** に設定されている **OnPremisesOracleLinkedService**です。
+### オンプレミスの Oracle データベースのリンクされたサービスの作成
+次の JSON を使用すると、オンプレミスの Oracle データベースを示すリンクされたサービスを作成できます。**type** が **OnPremisesOracleLinkedService** に設定されている点に注目してください。
 
 	{
 	    "name": "OnPremOracleSource",
@@ -375,10 +375,10 @@ JSON の次のパイプラインは、内部設置型のファイル システ�
 	    }
 	}
 
-参照してください [内部設置型の Oracle リンク サービス](https://msdn.microsoft.com/library/dn948537.aspx) 詳細については、内部設置型の Oracle を定義する JSON 要素に関するサービスとリンクします。
+オンプレミスの Oracle のリンクされたサービスを定義するための JSON 要素の詳細については、[オンプレミスの Oracle のリンクされたサービス](https://msdn.microsoft.com/library/dn948537.aspx)に関するページをご覧ください。
 
-### 変換先の Azure blob の場合、リンクされているサービスを作成します。
-JSON という名前のリンクされているサービスの作成に使用できる次のサンプル **MyAzureStorage** 型の **AzureStorageLinkedSerivce**です。
+### コピー先 Azure BLOB のリンクされたサービスの作成
+次のサンプル JSON を使用すると、**AzureStorageLinkedSerivce** 型の **MyAzureStorage** という名前のリンクされたサービスを作成できます。
 
 	{
 	    "name": "AzureBlobDest",
@@ -389,10 +389,10 @@ JSON という名前のリンクされているサービスの作成に使用で
 	    }
 	}
 
-参照してください [Azure ストレージ リンク サービス](https://msdn.microsoft.com/library/dn893522.aspx) リンク サービスの詳細については、Azure のストレージを定義する JSON 要素についてです。
+Azure Storage のリンクされたサービスを定義するための JSON 要素の詳細については、[Azure Storage のリンクされたサービス](https://msdn.microsoft.com/library/dn893522.aspx)に関するページをご覧ください。
 
-### 入力テーブルを作成します。
-JSON の次の例を内部設置型の Oracle データベース内のテーブルを参照する Azure のデータのファクトリ テーブルを作成することができます。なお、 **の場所の種類** に設定されている **OnPremisesOracleTableLocation**です。
+### 入力テーブルの作成
+次のサンプル JSON を使用すると、オンプレミスの Oracle データベースのテーブルを参照する Azure Data Factory テーブルを作成できます。**location type** が **OnPremisesOracleTableLocation** に設定されている点に注目してください。
 
 	{
 	    "name": "TableOracle",
@@ -411,10 +411,10 @@ JSON の次の例を内部設置型の Oracle データベース内のテーブ�
 	    }
 	} 
 
-参照してください [場所のプロパティを内部設置型の Oracle](https://msdn.microsoft.com/library/dn894089.aspx#Oracle) の詳細については、内部設置型の Oracle データベース内のテーブルを参照する、ファクトリのデータ テーブルを定義する JSON 要素。
+オンプレミスの Oracle データベースのテーブルを参照する Azure Data Factory テーブルを定義するための JSON 要素の詳細については、[オンプレミスの Oracle の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#Oracle)に関するセクションをご覧ください。
 
-### 出力テーブルを作成します。
-次の JSON スクリプトを出力テーブルを定義: **MyAzureBlob**, を Azure の blob を参照する: **MyBlob** blob フォルダー内: **MySubFolder** blob コンテナーに: **MyContainer**です。
+### 出力テーブルの作成
+次の JSON スクリプトは、出力テーブル **MyAzureBlob** を定義します。これは、**MyContainer** という BLOB コンテナー内の **MySubFolder** という BLOB フォルダー内にある **MyBlob** という Azure BLOB を参照します。
          
 	{
    		"name": "MyAzureBlob",
@@ -443,10 +443,10 @@ JSON の次の例を内部設置型の Oracle データベース内のテーブ�
    		}
 	}
 
-参照してください [Azure blob の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob) の詳細については、Azure の blob を参照する、ファクトリのデータ テーブルを定義する JSON 要素。
+Azure BLOB を参照する Data Factory テーブルを定義するための JSON 要素の詳細については、[Azure BLOB の場所のプロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)に関するセクションをご覧ください。
 
-### パイプラインを作成します。
-Oracle データベースのテーブルからのデータを Azure ストレージ blob にコピーするコピー アクティビティを次のサンプル パイプラインにあります。
+### パイプラインの作成
+次のサンプル パイプラインには、Oracle データベース テーブルから Azure Storage BLOB にデータをコピーするコピー アクティビティが含まれています。
 
 	{
 	    "name": "PipelineCopyOracleToBlob",
@@ -479,7 +479,7 @@ Oracle データベースのテーブルからのデータを Azure ストレー
 	    }
 	}
 
-参照してください [JSON のパイプライン参照](https://msdn.microsoft.com/library/dn834988.aspx) の詳細については、データの工場出荷時のパイプラインを定義する JSON 要素と [サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx) OracleSource および BlobSink のプロパティのです。
+Data Factory パイプラインを定義するための JSON 要素の詳細については、[パイプライン JSON リファレンス](https://msdn.microsoft.com/library/dn834988.aspx)に関するページをご覧ください。OracleSource と BlobSink のプロパティについては、「[サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx)」をご覧ください。
 
 ## 関連項目
 
@@ -491,4 +491,4 @@ Oracle データベースのテーブルからのデータを Azure ストレー
 [adf-copyactivity]: data-factory-copy-activity.md
 [copy-activity-video]: http://azure.microsoft.com/documentation/videos/introducing-azure-data-factory-copy-activity/
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

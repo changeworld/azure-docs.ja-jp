@@ -101,7 +101,7 @@ Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作�
 <!--     >[AZURE.NOTE] To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to purge the local store.
  -->
 
-5. クラス `QSTodoService` では、メソッド `syncData` はデータ変更操作である `addItem` や `completeItem` の後に呼び出されます。また、`QSTodoListViewController.refresh` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.init` が `refresh` を呼び出すため、アプリケーションは起動時にも同期を実行します。
+5. クラス `QSTodoService` では、メソッド `syncData` はデータ変更操作である `addItem` や `completeItem` の後に呼び出されます。また、`QSTodoListViewController.refresh` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.init` は `refresh` を呼び出すため、アプリケーションは起動時に同期も実行します。
 
     データが変更されるたびに `syncData` が呼び出されることから、このアプリケーションは、データの編集時には常にユーザーがオンラインであると想定していることになります。別のセクションでは、アプリケーションを更新して、ユーザーがオフラインのときにも編集できるようにします。
 
@@ -212,9 +212,9 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 オフライン同期機能をサポートするため、`MSSyncTable` インターフェイスを使用し、ローカル ストアで `MSClient.syncContext` を初期化しました。この例では、ローカル ストアは、Core Data に基づいたデータベースでした。
 
-Core Data ローカル ストアを使用する場合は、[正しいシステム プロパティ][Review the Core Data model]を使用して、複数のテーブルを定義する必要があります。
+Core Data ローカル ストアを使用する場合、[正しいシステム プロパティ] [Core Data モデルのレビュー] を使用して、複数のテーブルを定義する必要があります。
 
-モバイル アプリに対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、すべての操作はローカル ストアに対して発生したかのように動作します。
+Mobile Apps に対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、すべての操作はローカル ストアに対して発生したかのように動作します。
 
 ローカル ストアをサーバーと同期しようとする場合は、`MSSyncTable.pullWithQuery` と `MSClient.syncContext.pushWithCompletion` の各メソッドを使用しました。
 
@@ -275,6 +275,7 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 [Soft Delete]: ../mobile-services-using-soft-delete.md
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/ja-jp/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

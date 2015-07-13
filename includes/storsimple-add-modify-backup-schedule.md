@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="StorSimple のバックアップ スケジュールの追加または変更"
-   description="StorSimple Manager サービスを使用して、バックアップ スケジュールを作成、編集する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/13/2015"
-   ms.author="v-sharos" />
 
 #### StorSimple のバックアップ スケジュールを追加または変更するには
 
@@ -44,4 +28,4 @@
 **[バックアップ ポリシー]** ページが更新され、ポリシーの変更が保存されます。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

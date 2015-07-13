@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article"
-	ms.date="02/22/2015" 
+	ms.date="06/18/2015" 
 	ms.author="yuaxu"/>
 
 # Xamarin iOS アプリにプッシュ通知を追加する
@@ -191,7 +191,7 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 
 3. ソリューション パネルでプロジェクトをダブルクリックし、**[Project Options]** を開きます。
 
-4.  **[Build]** で **[iOS Bundle Signing]** を選択し、対応する **[Identity]** とこのプロジェクトに対して設定した **[Provisioning profile]** を選択します。
+4.  **[Build]** で **[iOS Bundle Signing]** を選択し、対応する **ID** とこのプロジェクトに対して設定した**プロビジョニング プロファイル**を選択します。
 
     ![][120]
 
@@ -334,5 +334,6 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

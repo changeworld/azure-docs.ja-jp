@@ -1,9 +1,10 @@
 <properties 
-	pageTitle="Azure Stream Analytics 管理用 .NET SDK の使用 | Azure" 
-	description="Stream Analytics 管理用 .NET SDK を使用する方法を説明します" 
+	pageTitle="Stream Analytics 管理用 .NET SDK の使用方法について | Microsoft Azure" 
+	description="Stream Analytics 管理用 .NET SDK の使用分析ジョブの設定と実行方法について: プロジェクト、入力、出力、および変換を作成します。" 
+	keywords=".net skd,analytics jobs,event hub"
 	services="stream-analytics" 
 	documentationCenter="" 
-	authors="mumian" 
+	authors="jeffstokes72" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,17 +14,17 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="03/05/2015" 
-	ms.author="jgao"/>
+	ms.date="06/17/2015" 
+	ms.author="jeffstok"/>
 
 
-# Azure Stream Analytics 管理用 .NET SDK の使用
+# Azure Stream Analytics 管理用 .NET SDK を使用する分析ジョブの設定および実行
 
-[これはプレリリース資料であり、今後のリリースで変更されることがあります。]
+Azure Stream Analytics 管理用 .NET SDK を使用して分析ジョブを設定し、実行する方法について説明します。プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
 
-Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。プレビュー リリースでは、Stream Analytics により、ユーザーはデータ ストリームを分析するためにストリーミングのジョブをセットアップでき、ほぼリアルタイムで分析を実行できます。  
+Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。Stream Analytics により、ユーザーはデータ ストリームを分析するためにストリーミングのジョブを設定でき、ほぼリアルタイムで分析を実行できます。
 
-この記事では、Azure Stream Analytics 管理用 .NET SDK を使用する方法を示します。
+.NET API リファレンスについては、「[Stream Analytics 管理用 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)」を参照してください。
 
 
 ## 前提条件
@@ -31,7 +32,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 - Visual Studio 2012 または 2013 のインストール。
 - [Azure .NET SDK](http://azure.microsoft.com/downloads/) のダウンロードとインストール。 
-- サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell の詳細については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。  
+- サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」を参照してください。  
 
 
 		# Configure the Azure PowerShell session to access Azure Resource Manager
@@ -51,6 +52,8 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 
 ## プロジェクトの設定
+
+分析ジョブを作成するには、まず、プロジェクトを設定します。
 
 1. Visual Studio C# .NET コンソール アプリケーションを作成します。
 2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。2 つ目は、認証で使用する Azure Active Directory クライアントです。
@@ -100,10 +103,10 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 						ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
 		
 		            result = context.AcquireToken(
-		                resource:ConfigurationManager.AppSettings["WindowsManagementUri"],
-		                clientId:ConfigurationManager.AppSettings["AsaClientId"],
+		                resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+		                clientId: ConfigurationManager.AppSettings["AsaClientId"],
 		                redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-		                promptBehavior:PromptBehavior.Always);
+		                promptBehavior: PromptBehavior.Always);
 		        }
 		        catch (Exception threadEx)
 		        {
@@ -127,9 +130,9 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 ## Stream Analytics の管理クライアントの作成
 
-**StreamAnalyticsManagementClient** オブジェクトを使用すると、入力、出力、変換などのジョブおよびジョブ コンポーネントを管理することができます。 
+**StreamAnalyticsManagementClient** オブジェクトを使用すると、入力、出力、変換などのジョブおよびジョブ コンポーネントを管理することができます。
 
-**Main** メソッドの先頭に次のコードを追加します。 
+**Main** メソッドの先頭に次のコードを追加します。
 
 	string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
 	string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
@@ -146,9 +149,9 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	// Create Stream Analytics management client
 	StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
 
-**resourceGroupName** 変数の値は、前の手順で作成または選択したリソース グループの名前と一致している必要があります。
+**resourceGroupName** 変数の値は、前の手順で作成または選択したリソース グループの名前と同じである必要があります。
 
-この記事の以降のセクションでは、このコードが **Main** メソッドに追加されていることを前提としています。
+この記事の以降のセクションでは、このコードが **Main** メソッドの先頭にあることを前提としています。
 
 ## Stream Analytics のジョブの作成
 
@@ -218,12 +221,12 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	InputCreateOrUpdateResponse inputCreateResponse = 
 		client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
 
-入力ソースは特定のジョブに関連付けられます。1 つの入力ソースを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
+入力ソースは、BLOB ストレージのものであるか、イベント ハブのものであるかに関係なく、特定のジョブに関連付けられます。1 つの入力ソースを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
 
 
 ## Stream Analytics の入力ソースのテスト
 
-**TestConnection** メソッドは、Stream Analytics ジョブが入力ソースに接続できるかどうか、および入力ソースの種類別の側面についてテストします。たとえば、前の手順で作成した BLOB 入力ソースの場合、このメソッドでは、ストレージのアカウント名とキーのペアを使用してストレージ アカウントに接続できるかどうか、および、指定されたコンテナーが存在しているかどうかが確認されます。
+**TestConnection** メソッドは、Stream Analytics ジョブが入力ソースに接続できるかどうかと、入力ソースの種類別の他の側面についてテストします。たとえば、前の手順で作成した BLOB 入力ソースの場合、このメソッドでは、ストレージのアカウント名とキーのペアを使用してストレージ アカウントに接続できるかどうか、および、指定されたコンテナーが存在しているかどうかが確認されます。
 
 	// Test input source connection
 	DataSourceTestConnectionResponse inputTestResponse = 
@@ -271,7 +274,7 @@ Stream Analytics の出力ターゲットにも、接続をテストするため
 
 ## Stream Analytics の変換の作成
 
-次のコードでは、"select * from Input" クエリで Stream Analytics の変換を作成し、Stream Analytics ジョブにストリーミング ユニットを 1 つ割り当てるように指定します。ストリーミング ユニットの詳細については、「[Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
+次のコードでは、"select * from Input" クエリで Stream Analytics の変換を作成し、Stream Analytics ジョブにストリーミング ユニットを 1 つ割り当てるように指定します。ストリーミング ユニットの調整の詳細については、「[Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
 
 
 	// Create a Stream Analytics transformation
@@ -294,7 +297,7 @@ Stream Analytics の出力ターゲットにも、接続をテストするため
 入力や出力と同様に変換も、その下に作成された特定の Stream Analytics ジョブに関連付けられます。
 
 ## Stream Analytics ジョブの開始
-Stream Analytics ジョブとその入力、出力、変換を作成したら、**Start** メソッドを呼び出してジョブを開始できます。 
+Stream Analytics ジョブとその入力、出力、変換を作成したら、**Start** メソッドを呼び出してジョブを開始できます。
 
 次のサンプル コードは、カスタムの出力開始時刻が 2012 年 12 月 12 日 12 時 12 分 12 秒 (UTC) に設定された Stream Analytics ジョブを開始します。
 
@@ -322,15 +325,20 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 	LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
 
+## サポートを受ける
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+
+
 ## 次のステップ
 
-- [Azure Stream Analytics の概要][stream.analytics.introduction]
-- [Azure Stream Analytics の使用][stream.analytics.get.started]
-- [Azure Stream Analytics ジョブのスケーリング][stream.analytics.scale.jobs]
-- [Azure Stream Analytics の制限事項と既知の問題][stream.analytics.limitations]
-- [Azure Stream Analytics クエリ言語リファレンス][stream.analytics.query.language.reference]
-- [Azure Stream Analytics 管理用 REST API リファレンス][stream.analytics.rest.api.reference] 
+分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。詳細については、次の記事を参照してください。
 
+- [Azure Stream Analytics の概要](stream-analytics-introduction.md)
+- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+- [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+- [Azure Stream Analytics 管理用 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)
+- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 
 <!--Image references-->
@@ -353,9 +361,8 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.limitations]: ../stream-analytics-limitations.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

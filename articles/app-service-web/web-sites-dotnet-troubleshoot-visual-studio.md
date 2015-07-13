@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Visual Studio を使用した Azure Web App Service のトラブルシューティング" 
+	pageTitle="Visual Studio を使用した Azure App Service のトラブルシューティング" 
 	description="Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、Azure の Web アプリケーションのトラブルシューティングを行う方法について説明します。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
@@ -16,7 +16,7 @@
 	ms.date="06/08/2015" 
 	ms.author="tdykstra"/>
 
-# Visual Studio を使用した Azure Web App Service のトラブルシューティング
+# Visual Studio を使用した Azure App Service のトラブルシューティング
 
 ## 概要
 
@@ -89,7 +89,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 多くの場合、エラーの原因を最も簡単に見つける方法は、詳細なエラー メッセージを有効にすることです。その結果、既に示した最初のスクリーンショットのように、対応方法が表示されます。ここでは、デプロイした Web.config ファイルの変更が必要です。プロジェクト内の *Web.config* ファイルを編集し、プロジェクトを再デプロイすること、または [Web.config の変換](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)を作成し、デバッグ ビルドをデプロイすることもできますが、より簡単な方法があります。*リモート ビュー*機能を使用して、リモート Web アプリから**ソリューション エクスプローラー**でファイルを直接表示し、編集することができます。
 
-1. **サーバー エクスプ ローラー**で、**[Azure]**、**[App Service]**、Web アプリがあるリソース グループ、Web アプリのノードの順に展開します。
+1. **サーバー エクスプローラー**で、**[Azure]**、**[App Service]**、Web アプリがあるリソース グループ、Web アプリのノードの順に展開します。
 
 	Web アプリケーションのコンテンツ ファイルとログ ファイルへのアクセス許可を付与するノードが表示されます。
 
@@ -252,7 +252,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 ## リモート デバッグに関する注意
 
-* 運用環境におけるデバッグ モードの実行はお勧めできません。運用環境の Web アプリケーションが複数のサーバー インスタンスにスケール アウトされていない場合、デバッグを行うと、Web サーバーが他の要求に応答できなくなります。しかし、Web サーバーのインスタンスが複数存在する場合、デバッガーのアタッチ先となるインスタンスは無作為に決定されるため、そのインスタンスに後続のブラウザーの要求を確実に渡すことができません。また、運用環境にデバッグ ビルドを展開することも一般的ではありません。リリース ビルドに対してはコンパイラが最適化を行うため、ソース コードの状況を行レベルで把握することは不可能です。運用環境の問題をトラブルシューティングするのに最も適しているリソースは、アプリケーション トレースと Web サーバーのログです。
+* 運用環境におけるデバッグ モードの実行はお勧めできません。運用環境の Web アプリケーションが複数のサーバー インスタンスにスケール アウトされていない場合、デバッグを行うと、Web サーバーが他の要求に応答できなくなります。しかし、Web サーバーのインスタンスが複数存在する場合、デバッガーのアタッチ先となるインスタンスは無作為に決定されるため、そのインスタンスに後続のブラウザーの要求を確実に渡すことができません。また、運用環境にデバッグ ビルドをデプロイすることも一般的ではありません。リリース ビルドに対してはコンパイラが最適化を行うため、ソース コードの状況を行レベルで把握することは不可能です。運用環境の問題をトラブルシューティングするのに最も適しているリソースは、アプリケーション トレースと Web サーバーのログです。
 
 * リモート デバッグ時、ブレークポイントで長時間停止させることは避けてください。数分以上停止しているプロセスは、応答していないプロセスと見なされ、Azure によりシャットダウンされます。
 
@@ -269,7 +269,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。必要に応じて、この機能を何回でも簡単に有効に戻すことができます。積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
 
-* 手動でデバッガーを Web アプリケーション プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」を参照してください。
+* 手動でデバッガーを Web アプリケーション プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ](http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx)」を参照してください。
 
 ## <a name="logsoverview"></a>診断ログの概要
 
@@ -569,7 +569,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 	自分の Web アプリの管理ポータルの **[構成]** タブが開きます。この画面にアクセスするために、**[Web Apps]** タブをクリックして該当する Web アプリをクリックし、**[構成]** タブをクリックすることもできます。
 
-2. 管理ポータルの **[構成]** タブで、下へスクロールしてアプリケーションの診断セクションを表示し、**[アプリケーション ログ記録 (ストレージ)]** を **[オン]** に変更します。
+2. 管理ポータルの **[構成]** タブで、下へスクロールしてアプリケーション診断セクションを表示し、**[アプリケーション ログ記録 (ストレージ)]** を **[オン]** に変更します。
 
 3. **[ログ レベル]** を **[情報]** に変更します。
 
@@ -619,7 +619,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 失敗した要求トレース ログは、URL の書き換えや認証の問題など、IIS による HTTP 要求の処理を詳しく把握する必要がある状況で活用できます。
 
-Azure の Web アプリケーションでは、同じ失敗した要求トレース機能が使用されています。この機能は、IIS 7.0 以降で利用できます。ただし、ログに記録するエラーを指定するための IIS 設定にアクセスする必要はありません。失敗した要求トレースを有効にすると、すべてのエラーがキャプチャされます。
+Azure の Web アプリでは、同じ失敗した要求トレース機能が使用されています。この機能は、IIS 7.0 以降で利用できます。ただし、ログに記録するエラーを指定するための IIS 設定にアクセスする必要はありません。失敗した要求トレースを有効にすると、すべてのエラーがキャプチャされます。
 
 失敗した要求トレースは Visual Studio を使用して有効にできますが、それらを Visual Studio で表示することはできません。これらのログは XML ファイル形式になっています。ストリーミング ログ サービスで監視されるのは、プレーンテキスト モードでの読み取りが可能と判断されたファイル (*.txt*、*.html*、*.log* の各ファイル) だけです。
 
@@ -635,15 +635,15 @@ Azure の Web アプリケーションでは、同じ失敗した要求トレー
 
 2. Visual Studio で、**[Azure Web アプリ]** ウィンドウの **[構成]** タブにある **[管理ポータルで開く]** をクリックします。
 
-3. Web アプリの管理ポータル ブレードで、**[すべての設定] > [展開の資格情報]** をクリックし、次に **[デプロイ資格情報のリセット]** をクリックします。
+3. Web アプリの管理ポータル ブレードで、**[すべての設定] > [デプロイ資格情報]** をクリックし、次に **[デプロイ資格情報のリセット]** をクリックします。
 
 4. 新しいユーザー名とパスワードを入力します。
 
 	![新しい FTP ユーザー名とパスワード](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
-5. 管理ポータルの **[ダッシュボード]** タブで F5 キーを押してページを最新の情報に更新し、下へスクロールして **[展開 / FTP ユーザー]** を表示します。ユーザー名に、プレフィックスとして Web アプリケーション名が付加されていることに注目してください。**ログインする際は、ここに表示されている完全なユーザー名とその Web アプリ名プレフィックスを使用する必要があります。**
+5. 管理ポータルの **[ダッシュボード]** タブで F5 キーを押してページを最新の情報に更新し、下へスクロールして **[デプロイ / FTP ユーザー]** を表示します。ユーザー名に、プレフィックスとして Web アプリケーション名が付加されていることに注目してください。**ログインする際は、ここに表示されている完全なユーザー名とその Web アプリ名プレフィックスを使用する必要があります。**
 
-5. 新しいブラウザー ウィンドウで、**[FTP ホスト名]** (Web アプリの管理ポータル ページの **[ダッシュボード]** タブ) に表示されている URL に移動します。**[FTP ホスト名]** は、**[概要]** セクションの **[展開 / FTP ユーザー]** の近くに表示されます。
+5. 新しいブラウザー ウィンドウで、**[FTP ホスト名]** (Web アプリの管理ポータル ページの **[ダッシュボード]** タブ) に表示されている URL に移動します。**[FTP ホスト名]** は、**[概要]** セクションの **[デプロイ / FTP ユーザー]** の近くに表示されます。
 
 6. 先ほど作成した FTP 資格情報を使用してログインします (ユーザー名の Web アプリケーション名プレフィックスを含めること)。
 
@@ -682,7 +682,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 
 ### Azure の Web アプリケーションのトラブルシューティング
 
-Azure App Service の Web アプリケーションのトラブルシューティングの詳細については、以下のリソースを参照してください。
+Azure App Service の Web アプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
 * [Web アプリを監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
 * [Investigating Memory Leaks in Azure Web Apps with Visual Studio 2013 (Visual Studio 2013 を使用した Azure の Web アプリでのメモリ リークの調査)](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。マネージされるメモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
@@ -700,7 +700,7 @@ Visual Studio のデバッグ モードの使い方については、MSDN のト
 
 ### Azure でのリモート デバッグ
 
-Azure の Web アプリケーションと Web ジョブのリモート デバッグの詳細については、以下のリソースを参照してください。
+Azure の Web アプリと Web ジョブのリモート デバッグの詳細については、以下のリソースを参照してください。
 
 * [Introduction to Remote Debugging Azure App Service Web Apps (Azure App Service Web Apps のリモート デバッグの概要)](/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
 * [Introduction to Remote Debugging Azure App Service Web Apps part 2 - Inside Remote debugging (Azure App Service Web Apps のリモート デバッグの概要 2 - リモート デバッグの内部処理)](/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
@@ -747,17 +747,17 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 ### 失敗した要求トレース ログの分析
 
-失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure の Web アプリケーションで行うことはできません。
+失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。
 
 ### クラウド サービスのデバッグ
 
-Web アプリではなく Azure Cloud Services をデバッグする場合は、「[クラウド サービスのデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
+Web アプリではなく Azure Cloud Services をデバッグする場合は、「[クラウド サービスのデバッグ](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [GetStarted]: web-sites-dotnet-get-started.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md

@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="StorSimple のバックアップ ポリシーの追加"
-   description="StorSimple Manager サービスを使用して、バックアップ ポリシーを作成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/22/2015"
-   ms.author="alkohli" />
 
 #### StorSimple のバックアップ ポリシーを追加するには
 
@@ -30,4 +14,4 @@
 **[バックアップ ポリシー]** ページの表形式のビューに、新たに追加したポリシーが表示されます。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

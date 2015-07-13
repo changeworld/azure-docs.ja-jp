@@ -1,72 +1,74 @@
 <table cellspacing="0" border="1">
 <tr>
-   <th align="left" valign="middle">Resource<sup>1</sup></th>
-   <th align="left" valign="middle">Default Limit</th>
+   <th align="left" valign="middle">リソース<sup>1</sup></th>
+   <th align="left" valign="middle">既定の制限</th>
 </tr>
 <tr>
-   <td valign="middle"><p>TB per storage account</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの容量 (TB)</p></td>
    <td valign="middle"><p>500 TB</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max size of a single blob container, table, or queue</p></td>
+   <td valign="middle"><p>単一の BLOB コンテナー、テーブル、キューの最大サイズ</p></td>
    <td valign="middle"><p>500 TB</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max number of blob containers, blobs, file shares, tables, queues, entities, or messages per storage account</p></td>
-   <td valign="middle"><p>Only limit is the 500 TB storage account capacity</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数</p></td>
+   <td valign="middle"><p>制限はストレージ アカウントの容量のみ (500 TB)</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max size of a file share</p></td>
+   <td valign="middle"><p>ファイル共有の最大サイズ</p></td>
    <td valign="middle"><p>5 TB</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max number of files in a file share</p></td>
-   <td valign="middle"><p>Only limit is the 5 TB total capacity of the file share</p></td>
+   <td valign="middle"><p>ファイル共有内の最大ファイル数</p></td>
+   <td valign="middle"><p>制限は、ファイル共有の合計容量のみ (5 TB)</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max 8 KB IOPS per persistent disk (Basic Tier)</p></td>
+   <td valign="middle"><p>永続ディスクあたり最大 8 KB IOPS (Basic 階層)</p></td>
    <td valign="middle"><p>300<sup>2</sup></p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max 8 KB IOPS per persistent disk (Standard Tier)</p></td>
+   <td valign="middle"><p>永続ディスクあたり最大 8 KB IOPS (Standard 階層)</p></td>
    <td valign="middle"><p>500<sup>2</sup></p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Total Request Rate (assuming 1KB object size) per storage account</p></td>
-   <td valign="middle"><p>Up to 20,000 entities or messages per second</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの合計要求レート (オブジェクト サイズは 1KB とする)</p></td>
+   <td valign="middle"><p>毎秒最大 20,000 エンティティ (またはメッセージ)</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Target Throughput for Single Blob</p></td>
-   <td valign="middle"><p>Up to 60 MB per second, or up to 500 requests per second</p></td>
+   <td valign="middle"><p>単一 BLOB のターゲット スループット</p></td>
+   <td valign="middle"><p>毎秒最大 60 MB または毎秒最大 500 要求</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Target Throughput for Single Queue (1 KB messages)</p></td>
-   <td valign="middle"><p>Up to 2000 messages per second</p></td>
+   <td valign="middle"><p>単一キューのターゲット スループット (1 KB のメッセージ)</p></td>
+   <td valign="middle"><p>毎秒最大 2000 メッセージ</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Target Throughput for Single Table Partition (1 KB entities)</p></td>
-   <td valign="middle"><p>Up to 2000 entities per second</p></td>
+   <td valign="middle"><p>単一テーブル パーティションのターゲット スループット (1 KB のエンティティ)</p></td>
+   <td valign="middle"><p>毎秒最大 2000 エンティティ</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max ingress per storage account (US Regions)</p></td>
-   <td valign="middle"><p>10 Gbps if GRS<sup>3</sup> enabled, 20 Gbps for LRS</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの最大受信速度 (米国リージョン)</p></td>
+   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合は 10 Gbps、LRS の場合は 20 Gbps</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max egress per storage account (US Regions)</p></td>
-   <td valign="middle"><p>20 Gbps if GRS<sup>3</sup> enabled, 30 Gbps for LRS</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの最大送信速度 (米国リージョン)</p></td>
+   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合は 20 Gbps、LRS の場合は 30 Gbps</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max ingress per storage account (European and Asian Regions)</p></td>
-   <td valign="middle"><p>5 Gbps if GRS<sup>3</sup> enabled, 10 Gbps for LRS</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの最大受信速度 (ヨーロッパおよびアジア リージョン)</p></td>
+   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合は 5 Gbps、LRS の場合は 10 Gbps</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Max egress per storage account (European and Asian Regions)</p></td>
-   <td valign="middle"><p>10 Gbps if GRS<sup>3</sup> enabled, 15 Gbps for LRS</p></td>
+   <td valign="middle"><p>ストレージ アカウントあたりの最大送信速度 (ヨーロッパおよびアジア リージョン)</p></td>
+   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合は 10 Gbps、LRS の場合は 15 Gbps</p></td>
 </tr>
 </table>
 
-<sup>1</sup>For more details on these limits, see [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md).
+<sup>1</sup>これらの制限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」を参照してください。
 
-<sup>2</sup>For virtual machines in the Basic Tier, do not place more than 66 highly used VHDs in a storage account to avoid the 20,000 total request rate limit (20,000/300). For virtual machines in the Standard Tier, do not place more than 40 highly used VHDs in a storage account (20,000/500). For more information, see [Virtual Machine and Cloud Service Sizes for Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx).
+<sup>2</sup>Basic 階層の仮想マシンの場合、合計要求レート制限 20,000 に達するのを避けるためには、使用頻度の高い VHD がストレージ アカウントあたり 66 個を超えないようにしてください (20,000/300)。Standard 階層の仮想マシンの場合、使用頻度の高い VHD がストレージ アカウントあたり 40 個を超えないようにしてください (20,000/500)。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
-<sup>3</sup>GRS is [Geo Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx). LRS is [Locally Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/08/introducing-locally-redundant-storage-for-windows-azure-storage.aspx). Note that GRS is also locally redundant.
+<sup>3</sup>GRS は [Geo Redundant Storage (地理冗長ストレージ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx) の略です。LRS は [Locally Redundant Storage (ローカル冗長ストレージ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/08/introducing-locally-redundant-storage-for-windows-azure-storage.aspx) の略です。GRS はローカル冗長でもあることに注意してください。
+
+<!---HONumber=62-->

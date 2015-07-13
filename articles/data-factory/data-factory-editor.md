@@ -145,7 +145,7 @@ Data Factory エディターを起動するには、Azure データ ファクト
 
 ![アクティビティの追加オプション][add-activity-options]
 
-Azure SQL データベースから Azure BLOB ストレージにデータをコピーし、HDInsight クラスターで Pig スクリプトを使用して BLOB ストレージのデータを処理するには、まずパイプラインに**コピー アクティビティ**を追加し、次に **Pig アクティビティ**を追加します。これにより、パイプライン JSON の activities[] セクション内に 2 つのセクションが作成されます。Pig アクティビティとは、Pig 変換を含む HDInsight アクティビティにすぎません。
+Azure SQL データベースから Azure BLOB ストレージにデータをコピーし、HDInsight クラスターで Pig スクリプトを使用して BLOB ストレージのデータを処理するには、まずパイプラインに**コピー アクティビティ**を追加し、次に **Pig アクティビティ**を追加します。これにより、パイプライン JSON の activities セクション内に 2 つのセクションが作成されます。Pig アクティビティとは、Pig 変換を含む HDInsight アクティビティにすぎません。
 
 	"activities": [
     	{
@@ -221,4 +221,4 @@ Data Factory エディターを使用して Azure データ ファクトリを�
 [clone-datafactory-entity]: ./media/data-factory-editor/clone-datafactory-entity.png
 [add-activity-options]: ./media/data-factory-editor/add-activity-options.png
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

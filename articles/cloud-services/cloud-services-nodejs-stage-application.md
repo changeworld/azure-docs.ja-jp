@@ -78,16 +78,17 @@
 - [Azure の VIP スワップによりサービス アップグレードを運用環境にデプロイする方法]
 - [Azure の配置管理の概要]
 
-[手順 1. アプリケーションをステージングする]: #step1
-[Step 2: Deploy an Application to Production by Swapping VIPs]: #step2
-[手順 2. VIP スワップによりアプリケーションを運用環境にデプロイする]: #step2
-[Azure の管理ポータル]: http://manage.windowsazure.com
-[Azure 管理ポータル]: http://manage.windowsazure.com
+  [手順 1. アプリケーションをステージングする]: #step1
+  [Step 2: Deploy an Application to Production by Swapping VIPs]: #step2
+  [手順 2. VIP スワップによりアプリケーションを運用環境にデプロイする]: #step2
+  [Azure の管理ポータル]: http://manage.windowsazure.com
+  [Azure 管理ポータル]: http://manage.windowsazure.com
 [cloud-service]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
 [cloud-service-dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
-[cloud-service-staging-url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
-[vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
-[Azure の VIP スワップによりサービス アップグレードを運用環境にデプロイする方法]: http://msdn.microsoft.com/library/windowsazure/ee517253.aspx
-[Azure の配置管理の概要]: http://msdn.microsoft.com/library/windowsazure/hh386336.aspx
+  [cloud-service-staging-url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
+  [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
+  [Azure の VIP スワップによりサービス アップグレードを運用環境にデプロイする方法]: http://msdn.microsoft.com/library/windowsazure/ee517253.aspx
+  [Azure の配置管理の概要]: http://msdn.microsoft.com/library/windowsazure/hh386336.aspx
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

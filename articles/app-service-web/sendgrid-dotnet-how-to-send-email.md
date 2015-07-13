@@ -215,23 +215,30 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
 *   SendGrid API に関するドキュメント: <https://sendgrid.com/docs>
 *   Azure ユーザー向けの SendGrid 特別プラン: [https://sendgrid.com](https://sendgrid.com)
 
-[次のステップ]: #nextsteps
-[What is the SendGrid Email Service?]: #whatis
-[Create a SendGrid Account]: #createaccount
-[Reference the SendGrid .NET Class Library]: #reference
-[How to: Create an Email]: #createemail
-[How to: Send an Email]: #sendemail
-[How to: Add an Attachment]: #addattachment
-[How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
-[How to: Use Additional SendGrid Services]: #useservices
-[special offer]: https://www.sendgrid.com/windowsazure.html
-[SendGrid-NuGet-package]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid01.png
-[sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
-[sendgrid-csharp に関するページ]: https://github.com/sendgrid/sendgrid-csharp
-[SMTP vs. Web API]: https://sendgrid.com/docs/Integrate/index.html
-[アプリケーション設定]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
-[SendGrid API に関するドキュメント]: https://sendgrid.com/docs
-[トランザクション電子メール配信]: https://sendgrid.com/email-solutions
-[クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
+  [次のステップ]: #nextsteps
+  [What is the SendGrid Email Service?]: #whatis
+  [Create a SendGrid Account]: #createaccount
+  [Reference the SendGrid .NET Class Library]: #reference
+  [How to: Create an Email]: #createemail
+  [How to: Send an Email]: #sendemail
+  [How to: Add an Attachment]: #addattachment
+  [How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
+  [How to: Use Additional SendGrid Services]: #useservices
+  
+  
+  [special offer]: https://www.sendgrid.com/windowsazure.html
+  
+  
+  
+  [SendGrid-NuGet-package]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid01.png
+  [sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
+  [sendgrid-csharp に関するページ]: https://github.com/sendgrid/sendgrid-csharp
+  [SMTP vs. Web API]: https://sendgrid.com/docs/Integrate/index.html
+  [アプリケーション設定]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
+  [SendGrid API に関するドキュメント]: https://sendgrid.com/docs
+  
+  [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
+  [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

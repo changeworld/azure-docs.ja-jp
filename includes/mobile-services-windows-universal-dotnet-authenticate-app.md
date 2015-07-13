@@ -1,9 +1,5 @@
 
-1. 共有プロジェクト ファイル MainPage.cs を開き、次の using ステートメントを追加します。
-
-        using Windows.UI.Popups;
-
-2. MainPage クラスに、次のコード スニペットを追加します。
+1. MainPage.cs 共有プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
 	
 		// Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
@@ -60,7 +56,10 @@
 		<Button Name="ButtonLogin" Click="ButtonLogin_Click" 
                         Visibility="Visible">Sign in</Button>
 
-6. Windows Phone ストア アプリの前の手順を繰り返しますが、今回は、**TextBlock** 要素の後の **TitlePanel** に**ボタン**を追加します。
+6. Windows Phone アプリ プロジェクトで、**[保存]** ボタンを定義する要素の直前に次の **Button** 要素を追加します。
+
+		<Button Grid.Row ="1" Grid.Column="1" Name="ButtonLogin" Click="ButtonLogin_Click" 
+                        Visibility="Visible">Sign in</Button> 
 
 5. 共有された App.xaml.cs プロジェクト ファイルを開き、次の using ステートメントが存在しない場合はこれを追加します。
 
@@ -90,4 +89,5 @@
    	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
 9. Windows Phone ストア アプリ プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、Windows Phone ストア アプリも正常に実行していることを確認する前の手順を繰り返します。
-<!--HONumber=54-->
+
+<!---HONumber=62-->

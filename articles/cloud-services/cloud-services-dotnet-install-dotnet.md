@@ -18,7 +18,7 @@
 
 # クラウド サービスのロールに .NET をインストールする 
 
-この記事では、クラウド サービスの Web ロールとワーカー ロールに .NET Framework をインストールする方法について説明します。次の手順に従って、Azure ゲスト OS に既定で存在しない .NET Framework の 1 つのバージョンをインストールできます。ゲスト OS のリリース版の最新情報については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」を参照してください。
+この記事では、クラウド サービスの Web ロールとワーカー ロールに .NET Framework をインストールする方法について説明します。次の手順を使用すると、Azure ゲスト OS ファミリ 4 に .NET framework 4.5.2 をインストールするのにことができます。ゲスト OS のリリース版の最新情報については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」を参照してください。
 
 .NET を Web ロールやワーカー ロールにインストールするプロセスとして、クラウド プロジェクトの一部として .NET インストーラー パッケージを含め、ロールのスタートアップ タスクとしてインストーラーを起動します。
 
@@ -115,6 +115,6 @@ Azure Diagnostics を、スタートアップ スクリプトまたは .NET イ�
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
 
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

@@ -148,5 +148,6 @@ adal.js を使用することにより、これらの共通 ID 機能のすべ�
 [SPA から CORS Web API の呼び出し](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)
 
 その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

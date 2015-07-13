@@ -1,3 +1,5 @@
-For Azure RemoteApp, please see the following topic:
+Azure RemoteApp については、次のトピックを参照してください。
 
-- [RemoteApp service limits and default values](../articles/remoteapp/remoteapp-servicelimits.md)
+- [RemoteApp サービスの制限と既定値](../articles/remoteapp/remoteapp-servicelimits.md)
+
+<!---HONumber=62-->

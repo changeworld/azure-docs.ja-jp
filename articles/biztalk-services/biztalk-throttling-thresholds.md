@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="BizTalk Services でのしきい値の調整 | Azure" 
+	pageTitle="BizTalk Services での調整について | Azure" 
 	description="調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。調整は、メモリ使用率とメッセージの数に基づいて行われます。MABS、WABS" 
 	services="biztalk-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2015" 
+	ms.date="06/07/2015" 
 	ms.author="mandia"/>
 
 
@@ -22,12 +22,11 @@
 
 # BizTalk サービス: 調整
 
-Azure BizTalk Services では、メモリ使用量およびメッセージの同時処理の数の 2 つの条件に基づいてサービスの調整が実装されます。このトピックでは、調整のしきい値を示し、調整条件が発生したときのランタイムの動作について説明します。
+Azure BizTalk サービスは、メモリ使用率およびメッセージの同時処理数という 2 つの条件に基づいてサービスの調整を実装します。このトピックでは、調整のしきい値を示し、調整条件が発生したときのランタイムの動作について説明します。
 
 ## 調整のしきい値
 
 調整の対象としきい値の一覧を次の表に示します。
-
 
 <table border="1">
 
@@ -39,7 +38,7 @@ Azure BizTalk Services では、メモリ使用量およびメッセージの同
 </tr>
     <tr>
         <td>メモリ</td>
-        <td>使用可能な合計システム メモリ/PageFileBytes の割合。 
+        <td>使用可能な合計システム メモリ/PageFileBytes の割合。
 <br/><br/>
 使用可能な合計 PageFileBytes は、システムの RAM の約 2 倍です。</td>
         <td>60%</td>
@@ -62,11 +61,8 @@ Azure BizTalk サービスでは、調整の状態 (通常と調整された状�
 
 Azure BizTalk サービスが調整状態になると、次のことが発生します。
 
-- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>
-RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/>
-サーバーがビジー状態です。もう一度実行してください。<br/><br/>
-- 取り出し元は、メッセージをポーリングまたはダウンロードしません。次に例を示します。<br/>
-パイプラインは外部の FTP ソースからメッセージを取り出します。取り出しを実行するロール インスタンスは調整状態になります。この状況では、パイプラインは、ロール インスタンスが調整を停止するまで追加のメッセージのダウンロードを停止します。
+- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/> **サーバーがビジー状態です。もう一度実行してください。**<br/><br/>
+- どの取り出し元も、メッセージのポーリングやダウンロードを行いません。次に例を示します。<br/>パイプラインは外部の FTP ソースからメッセージを取り出します。取り出しを実行するロール インスタンスは調整状態になります。この状況では、パイプラインは、ロール インスタンスが調整を停止するまで追加のメッセージのダウンロードを停止します。
 - 応答がクライアントに送信され、クライアントはメッセージを再送信できるようになります。
 - 調整が解決されるまで待つ必要があります。具体的には、低いしきい値に達するまで待つ必要があります。
 
@@ -80,16 +76,16 @@ RoleInstanceA は調整中です。RoleInstanceB は調整されていません�
 
 -  [Azure BizTalk サービス SDK のインストール](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
 -  [チュートリアル: Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
--  [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+-  [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 -  [Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## 関連項目
 - [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk サービス: プロビジョニングの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 - [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 - [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 - [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=62-->

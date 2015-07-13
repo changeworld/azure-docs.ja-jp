@@ -110,7 +110,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 
 >[AZURE.NOTE]Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns-web-sites-custom-domain)」をご覧ください。
 
-<a name="awverify" />
+<a name="awverify" /></a>
 ## awverify レコードの作成 (A レコードのみ)
 
 A レコードを作成する場合、使用しようとするドメインを自分が所有していることを確認するための特別な CNAME レコードも Web アプリに作成する必要があります。この CNAME レコードの形式は次のとおりです。
@@ -129,7 +129,7 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 
 ## 次のステップ
 
-詳細については、「[Azure DNS の概要](http://azure.microsoft.com/documentation/articles/dns-getstarted-create-dnszone)」と「[Azure DNS へのドメインの委任](http://azure.microsoft.com/documentation/articles/dns-domain-delegation)」をご覧ください。
+詳細については、「[Azure DNS の概要](http://azure.microsoft.com/ja-jp/documentation/articles/dns-getstarted-create-dnszone)」と「[Azure DNS へのドメインの委任](http://azure.microsoft.com/ja-jp/documentation/articles/dns-domain-delegation)」をご覧ください。
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。

@@ -3,7 +3,7 @@
 	description="特定のユーザーのすべてのデバイスにプッシュ通知を送信する方法について説明します。"
 	services="app-service\mobile" 
 	documentationCenter="windows" 
-	authors="yuaxu" 
+	authors="ysxu" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/17/2015"
+	ms.date="06/23/2015"
 	ms.author="yuaxu"/>
 
 # 特定のユーザーにクロスプラット フォーム通知を送信する
@@ -105,5 +105,6 @@
 [認証の使用]: app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-users-preview.md
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

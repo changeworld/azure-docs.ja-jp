@@ -23,7 +23,7 @@
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 
-Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure の Web アプリに加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します ([デバイス アプリと Java サーバーも対象になります][start])。
+Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します ([デバイス アプリと Java サーバーも対象になります][start])。
 
 ![Example performance monitoring charts](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
 
@@ -63,7 +63,7 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 
 2. Web Apps 向け Application Insights SDK をインストールします。
 
-    ![Search for "Application Insights"](./media/app-insights-start-monitoring-app-health-usage/04-ai-nuget.png)
+    ![「Application Insights」を検索する](./media/app-insights-start-monitoring-app-health-usage/04-ai-nuget.png)
 
 
 3. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
@@ -157,7 +157,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### セットアップ オプション
 
-初めての場合には、Microsoft Azure プレビュー版にログインまたはサインアップするように求められます(Visual Studio Online アカウントとは異なります)。
+初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます(Visual Studio Online アカウントとは異なります)。
 
 このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
 
@@ -196,4 +196,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

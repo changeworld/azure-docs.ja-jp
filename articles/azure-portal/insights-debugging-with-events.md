@@ -1,37 +1,75 @@
 <properties 
-	pageTitle="イベントに関連したデバッグの方法" 
-	description="Azure でイベントを表示する方法について説明します。" 
+	pageTitle="イベントと監査ログの表示" 
+	description="Azure サブスクリプションで発生するすべてのイベントを表示する方法について説明します。" 
 	authors="HaniKN-MSFT" 
 	manager="kamrani" 
 	editor="" 
-	services="application-insights" 
-	documentationCenter=""/>
+	services="azure-portal" 
+	documentationCenter="na"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
+	ms.service="azure-portal" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/24/2014" 
+	ms.date="04/28/2015" 
 	ms.author="hanikn"/>
 
-# Azure のリソースまたはリソース グループに影響を与えるイベントの監視
+# イベントと監査ログの表示
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
-2. 左側のナビゲーション バー (**ジャンプ バー**とも呼びます) にある **[参照]**をクリックします。  
-    ![Browse Hub](./media/insights-debugging-with-events/Insights_Browse.png)
-3. (関心のあるイベントに応じて) リソースを選択します。説明の目的で、このドキュメントのスクリーン ショットでは、リソース グループに対応するイベントを使用しています。
-4. **[リソース グループ]** ブレードで、リソース グループの名前をクリックします。この結果、そのリソース グループに対応するブレードに移動します。  
-    ![Resource groups](./media/insights-debugging-with-events/Insights_SelectRG.png)
-5. リソース グループのブレードには、**[過去 1 週間のイベント]** というパーツが含まれています。このパーツ内にある各バーは、過去 1 週間の各日に発生したイベントの数を表します。各バーに、青およびピンクという 2 つの異なる色が表示されていることがあります。ピンクはその日の**失敗**イベントを表し、青はそれ以外のすべてのイベントを表します。  
-    ![Resource groups](./media/insights-debugging-with-events/Insights_RGBlade.png)
-6. ここで、**[過去 1 週間のイベント]** パーツをクリックします。**[イベント]** ブレードという新しいブレードが表示されます。この中には、リソース グループに影響を及ぼした、過去 1 週間のすべてのイベントが含まれています。
-    ![Resource groups](./media/insights-debugging-with-events/Insights_AllEvents.png)
-7. イベントのいずれかをクリックします。  
-    ![Resource groups](./media/insights-debugging-with-events/Insights_EventDetails.png)  
-    イベントに関して多くの詳細を示す新しいブレードが表示されます。**[失敗]** イベントに関しては、このページで通常、デバッグの目的で役立つ詳細を示す **[サブステータス]** および **[プロパティ]** というセクションが表示されます。
+作成や削除からアクセスの許可や取り消しまで、Azure のリソースに対して実行されるすべての操作は Azure リソース マネージャーで完全に監査されます。Azure ポータルでこれらのログを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用してすべてのイベントにプログラムでアクセスすることもできます。
 
+## Azure サブスクリプションに影響するイベントの参照
 
-<!--HONumber=46--> 
- 
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. **[参照]** クリックして **[監査ログ]** を選択します。![ハブの参照](./media/insights-debugging-with-events/Insights_Browse.png)
+3. これによってブレードが開き、過去 7 日間にサブスクリプションに影響を与えたイベントがすべて表示されます。上部には、レベル別にデータを示すグラフが表示され、その下には、すべてのログの一覧が表示されます。![All events](./media/insights-debugging-with-events/Insights_AllEvents.png)
+
+>[AZURE.NOTE]Azure ポータルでは、特定のサブスクリプションについて表示できるイベントは最新の 500 件のみです。
+
+4. 任意のログ エントリをクリックして、そのエントリを構成するイベントを表示できます。たとえば、リソース グループに何かをデプロイすると、さまざまなリソースが作成または変更される可能性があります。各エントリでは、次の内容が表示されます。
+    * イベントの**レベル**: たとえば、追跡するだけでよいこと (**情報**) もあれば、把握する必要がある問題が発生すること (**エラー**) もあります。 
+    * **状態**: 一般的に、最終的な状態は **"成功"** や **"失敗"** になりますが、実行時間の長い操作の場合は、**"承諾済み"** になることもあります。
+    * イベントが発生した*日時*。
+    * 操作を実行した*ユーザー* (いる場合)。すべての操作がユーザーによって実行されるとは限りません。場合によっては、バックエンド サービスで実行されるため、**呼び出し元**がない操作もあります。
+    * イベントの**関連付け ID**: この操作のセットを示す一意の識別子。
+
+5. そこから詳細ブレードに移動すると、イベントの詳細を確認できます。
+   
+    ![リソース グループ](./media/insights-debugging-with-events/Insights_EventDetails.png)
+
+    **[失敗]** イベントに関しては、このページで通常、デバッグの目的で役立つ詳細を示す**[サブステータス]** および **[プロパティ]** というセクションが表示されます。
+
+## 特定のログのフィルター処理
+
+特定のエンティティに当てはまるイベントまたは特定の種類のイベントを表示するには、**[フィルター]** コマンドをクリックして [監査ログ] ブレードをフィルター処理できます。また、[フィルター] ブレードを使用して、[監査ログ] ブレードの **[期間]** を変更することもできます。
+
+このコマンドをクリックすると、新しいブレードが開きます。
+
+![Filter](./media/insights-debugging-with-events/Insights_EventFilter.png)
+
+フィルターには、次の 4 種類があります。
+
+1. サブスクリプション
+2. **リソース グループ**
+3. **リソースの種類**
+4. 特定の**リソース**: この場合、関心のあるリソースの完全な*リソース ID* を渡す必要があります。
+
+さらに、イベントを実行したユーザーやイベントのレベルによって、イベントをフィルター処理することもできます。
+
+表示する内容の選択が完了したら、ブレードの下部にある **[更新]** をクリックします。
+
+## 特定のリソースに影響するイベントの監視
+
+1. **[参照]** をクリックして、関心のあるリソースを検索します。ある**リソース グループ**全体のログをすべて表示することもできます。
+2. そのリソースのブレードで、**[イベント]** タイルが表示されるまで下へスクロールします。![Events tile](./media/insights-debugging-with-events/Insights_EventsTile.png)
+3. そのタイルをクリックすると、選択したリソースだけになるようにフィルター処理されたイベントが表示されます。**[フィルター]** コマンドを使用すると、時間の範囲を変更したり、さらに詳細なフィルターを適用したりすることができます。
+
+## 次のステップ
+
+* イベントが発生するたびに[アラート通知を受信](insights-receive-alert-notifications.md)します。
+* [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
+* [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。  
+
+<!---HONumber=62-->

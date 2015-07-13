@@ -107,5 +107,6 @@ PowerShell を使用して、プログラムでデータベースの復元を実
 4.	「[データベース操作の状態](http://msdn.microsoft.com/library/azure/dn720371.aspx)」の操作を使用して、復元の状態を追跡します。
 
 復元が終了したら、[復旧データベースの最終処理](sql-database-recovered-finalize.md)に関するガイドに従って、復旧したデータベースを構成できます。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Data Factory - リリース ノート | Azure" 
-	description="データの工場出荷時のリリース ノート" 
+	description="Data Factory - リリース ノート" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -18,65 +18,65 @@
 
 # Azure Data Factory リリース ノート
 
-## データのファクトリの 04/10/2015年のリリース ノート
-表示されます、 **スライスを最近更新された** と **最近スライスが失敗しました** 上に一覧表示、 **テーブル** ブレードのようになりました。これらのリストは、スライスの更新時間によって並べ替えられます。次の状況では、スライスの更新時間が変更されます。
+## Data Factory の 2015 年 04 月 10 日リリース ノート
+**[テーブル]** ブレードに **[最近更新したスライス]** と **[最近失敗したスライス]** の一覧が表示されるようになりました。これらの一覧は、スライスの更新時間で並べ替えられます。次の状況では、スライスの更新時間が変更されます。
 
--  スライスのステータスは、手動で更新するなどを使用して、 **セット AzureDataFactorySliceStatus** (または) をクリックして **実行** 上、 **スライス** スライスのブレードします。
--  スライスは、実行のための状態を変更 (など、実行の開始、実行を終了し、失敗した、実行が成功したが終了したなど)。
+-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
+-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
 
-リストまたはのタイトルをクリックして **しています.(省略記号)** より大規模な一覧のスライスを参照してください。クリックして **フィルター** をスライス、フィルター処理するには、ツールバーのです。
+一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツールバーの **[フィルター]** をクリックします。
  
-クリックして、スライスの時間を並べ替えてスライスをでも表示できますが **(スライスの時刻) でのデータ スライス** 並べて表示します。これらのコレクションに、スライスは、スライスの時間で並べ替えられます。次の例では、1 時間ごとである場合、スライスになります - 4/4/2015 2015 4/4/4 の進行状況の午後 5 時の pm"成功"の 4/4/2015 3 pm 失敗。
+**[データ スライス (スライスの時刻別)]** タイルをクリックして、スライスを時間別に並べ替えて表示することもできます。これらのコレクションのスライスは、スライスの時間で並べ替えられます。たとえば、1 時間ごとのスケジュールである場合、スライスは次のようになります: 4/4/2015 5pm 処理中 - 4/4/2015 4pm 成功 - 4/4/2015 3pm 失敗
 
-しかし場合は、古いスライスが再実行され、それは表示されませんこの一覧の上部にある場合でも、ユーザーが興味はおそらく。
+ただし、使用していないスライスを再実行した場合、ユーザーがそのスライスに最も関心がある場合でも、そのスライスは一覧の先頭に表示されません。
 
-## データのファクトリの 3/31/2015年のリリース ノート
-- 更新された **Data Management Gateway** インストール パッケージにポストした [Microsoft ダウンロード センター][adf-gateway-download]です。
-- コピー **ファイルを Azure の blob のシステムの内部設置型** は現在サポートされています。詳細については、次のトピックを参照してください。
-	-  [内部設置型サービスがファイル システムにリンクされています。](https://msdn.microsoft.com/library/dn930836.aspx)
-	-  [テーブル JSON の OnPremisesFileSystemLocation プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#OnPremFileSystem)
-	-  [ソースおよびシンクのサポート](https://msdn.microsoft.com/library/dn894007.aspx)です。更新されたコピーは、マトリックスを参照してくださいと **FileSystemSource** プロパティです。 
--  コピー **内部設置型の Oracle データベースを Azure の blob に** は現在サポートされています。詳細については、次のトピックを参照してください。 
-	-  [Oracle の内部設置型サービスのリンク](https://msdn.microsoft.com/library/dn948537.aspx)
-	-  [テーブル JSON の OnPremisesOracleTableLocation プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#Oracle) 
-	-  [ソースおよびシンクのサポート](https://msdn.microsoft.com/library/dn894007.aspx)です。更新されたコピーは、マトリックスを参照してくださいと **OracleSource** プロパティです。
--  Azure Blob 内のテキスト ファイルのエンコードを指定することができます。新しい [encodingName プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)です。 
-- SQL Sink にコピーするときに、追加のパラメーターを使用してストアド プロシージャを呼び出すことができます。参照してください [SQL シンクのストアド プロシージャを呼び出す][adf-copy-advanced] の詳細。   
+## Data Factory の 2015 年 3 月 31 日リリース ノート
+- 更新された **Data Management Gateway** インストール パッケージが [Microsoft ダウンロード センター][adf-gateway-download]に投稿されました。
+- **オンプレミスのファイル システムから Azure BLOB への**コピーがサポートされるようになりました。詳細については、次のトピックを参照してください。
+	-  [オンプレミス ファイル システムのリンクされたサービス](https://msdn.microsoft.com/library/dn930836.aspx)
+	-  [JSON テーブルの OnPremisesFileSystemLocation プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#OnPremFileSystem)
+	-  [サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx)更新されたコピー マトリックスと **FileSystemSource** プロパティを参照してください。 
+-  **オンプレミスの Oracle データベースから Azure BLOB への**コピーがサポートされるようになりました。詳細については、次のトピックを参照してください。 
+	-  [オンプレミスの Oracle のリンクされたサービス](https://msdn.microsoft.com/library/dn948537.aspx)
+	-  [JSON テーブルの OnPremisesOracleTableLocation プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#Oracle) 
+	-  [サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx)更新されたコピー マトリックスと **OracleSource** プロパティを参照してください。
+-  Azure BLOB 内のテキスト ファイルのエンコードを指定できます。新しい [encodingName プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)を参照してください。 
+- SQL シンクにコピーするときに、追加のパラメーターを使用してストアド プロシージャを呼び出すことができます。詳細については、「[SQL シンクのストアド プロシージャの呼び出し][adf-copy-advanced]」を参照してください。   
 
-投稿の blob を参照してください: [Azure のデータ工場出荷時の更新プログラム データ ストアの新しい](http://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/) の例を含む追加の情報です。
+例を含む追加情報については、[Azure Data Factory の更新 - 新しいデータ ストア](http://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/)に関する BLOB の投稿を参照してください。
 
-## データの工場出荷時の 2/27/2015年のリリース ノート
+## Data Factory の 2015 年 2 月 27 日リリース ノート
 
 ### 新機能
-- **Azure データ工場出荷時のエディター**です。Azure プレビュー ポータルの一部である、データ、工場出荷時エディターでは、作成、編集、および関連付けられているサービス、データのセット、およびパイプラインを定義する JSON ファイルを配置することができます。エディターの主な目的では、高速で軽量ユーザー インターフェイス (UI) を PowerShell コマンドレットを使用することで Azure PowerShell とごとの傾斜増加をインストールすることがなく Azure のデータのファクトリのアイテムを作成します。参照してください、 [Azure データ工場出荷時のエディター - ライト重み Web エディター][adf-editor-blog] 簡単な概要と、ビデオの [データの工場出荷時のエディターのブログの投稿します。エディターの詳細については、次を参照してください。、 [データ工場出荷時のエディター][adf-editor] 記事です。          
+- **Azure Data Factory エディター**Azure プレビュー ポータルの一部である Data Factory エディターでは、リンクされたサービス、データ セット、パイプラインを定義する JSON ファイルを作成、編集、デプロイできます。このエディターの主な目的は、高速かつ軽量のユーザー インターフェイス (UI) を使用して、Azure PowerShell をインストールしたり PowerShell コマンドレットを導入せずに Azure Data Factory アーティファクトを作成することです。Data Factory エディターの概要とビデオについては、[Azure Data Factory エディター - 軽量の Web エディター][adf-editor-blog]に関するブログの投稿を参照してください。Data Factory エディターの詳細については、記事「[Data Factory エディター][adf-editor]」を参照してください。          
 
 ### 変更点
 
-## データのファクトリの 2015 26/1/リリース ノート ##
+## Data Factory の 2015 年 1 月 26 日リリース ノート ##
 
 ### 変更点
-- 更新された **Data Management Gateway** インストール パッケージにポストした [Microsoft ダウンロード センター][adf-gateway-download]です。今回のリリース以降、このダウンロードの場所での Azure データのファクトリで使用する最新の Data Management Gateway を検索できます。このインストール パッケージは Office 365 サービスの Azure データ ファクトリと Power BI の両方が機能します。両方のサービスを使用している場合は、データのファクトリを Power BI のゲートウェイを別々 のコンピューターにインストールされているし、データ ファクトリまたは Power BI のドキュメントからのガイダンスに従って構成を変更する必要があることに注意してください。
--  **コピー アクティビティ** 内部設置型 SQL Server データベースと Azure SQL データベースとの間でデータのコピー サポートようになりました。参照してください [コピー アクティビティ][adf-copy-activity] の詳細と [GitHub][adf-github-samples] JSON のサンプルについてです。
-- **SqlSink** 新しいプロパティをサポートしています。 **WriteBatchTimeout**です。このプロパティを使用すると、操作がタイムアウトになる前に完了するには、バッチ挿入操作の待機する期間を構成するには柔軟性です。ハイブリッド コピー (コピー操作を内部設置型のデータ ソースと、クラウドのデータ ソースが含まれます) のこのプロパティを使用して 1.4 以降のバージョンのゲートウェイが必要です。 
-- **サービスが SQL Server にリンクされている** ようになりました **Windows 認証**です。 
-	- SQL サーバーを作成するリンクされると、ポータルを使用してサービスを今すぐ Windows 認証を使用し、適切な資格情報の設定を選択できます。1.4 以降のバージョンのゲートウェイが必要です。 
-	- SQL サーバーを作成する Azure PowerShell を使用してサービス リンクされると、プレーン テキストで接続情報を指定または更新を使用して接続情報を暗号化できます [新規 AzureDataFactoryEncryptValue コマンドレット][adf-encrypt-value-cmdlet] し、暗号化された文字列を使用して、リンクされているサービスの JSON ペイロードでは、接続文字列のプロパティのです。参照してください [関連付けられているサービス][adf-msdn-linked-services] JSON でリンクされているサービスを定義する方法についてです。暗号化機能は、新規 AzureDataFactoryEncryptValue コマンドレットではまだサポートされません。 
+- 更新された **Data Management Gateway** インストール パッケージが [Microsoft ダウンロード センター][adf-gateway-download]に投稿されました。今回のリリース以降、このダウンロード元から Azure Data Factory で使用できる最新の Data Management Gateway を検索できるようになりました。このインストール パッケージは、Azure Data Factory と Power BI for Office 365 サービスの両方で機能します。両方のサービスを使用している場合は、Data Factory と Power BI のゲートウェイを別のコンピューターにインストールし、Data Factory または Power BI のドキュメントのガイダンスに従って個別に構成する必要があります。
+- **コピー アクティビティ**で、オンプレミスの SQL Server データベースと Azure SQL Database の間でのデータのコピーがサポートされるようになりました。詳細については、[コピー アクティビティ][adf-copy-activity]に関するページを参照してください。JSON のサンプルについては [GitHub][adf-github-samples] を参照してください。
+- **SqlSink** で新しいプロパティ **WriteBatchTimeout** がサポートされるようになりました。このプロパティを使用すると、操作がタイムアウトになる前にバッチ挿入操作が完了するまでの待機時間を柔軟に構成できます。ハイブリッド コピー (オンプレミスのデータ ソースとクラウドのデータ ソースが関連するコピー操作) の場合、このプロパティを使用するには 1.4 以上のバージョンのゲートウェイが必要です。 
+- **SQL Server のリンクされたサービス** で、**Windows 認証**がサポートようになりました。 
+	- ポータルを使用して SQL Server のリンクされたサービスを作成する場合、Windows 認証を使用して適切な資格情報を設定できるようになりました。この設定には 1.4 以上のバージョンのゲートウェイが必要です。 
+	- Azure PowerShell を使用して SQL Server のリンクされたサービスを作成する場合、プレーン テキストで接続情報を指定するか、更新された [New-AzureDataFactoryEncryptValue コマンドレット][adf-encrypt-value-cmdlet]を使用して接続情報を暗号化したうえで、リンクされたサービスの JSON ペイロードの接続文字列プロパティに、暗号化された文字列を使用できます。JSON でリンクされたサービスを定義する方法については、「[リンクされたサービス][adf-msdn-linked-services]」を参照してください現時点では、暗号化機能は New-AzureDataFactoryEncryptValue コマンドレットでサポートされていません。 
 
-## データのファクトリの 12/11/2014年リリース ノート ##
+## Data Factory の 2014 年 12 月 11 日リリース ノート ##
 
 ### 新機能
 
 - Azure Machine Learning 統合
-	- このリリースの Azure のデータのファクトリのサービスには Azure のデータのファクトリを使用して Azure マシン ラーニング (ML) と統合することができます **AzureMLLinkedService** と **AzureMLBatchScoringActivity**です。参照してください [データ ファクトリ、および Azure の機械学習を使用した予測のパイプラインを作成する][adf-azure-ml] の詳細。 
+	- Azure Data Factory サービスのこのリリースでは、**AzureMLLinkedService** と **AzureMLBatchScoringActivity** を使用して、Azure Data Factory と Azure Machine Learning (ML) を統合できます。詳細については、「[Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する][adf-azure-ml]」を参照してください。 
 - ゲートウェイ バージョンのステータスが提供される
 	- 現在インストールされているゲートウェイよりも新しいバージョンのゲートウェイを使用できる場合は、"NewVersionAvailable" ステータスが Azure プレビュー ポータルおよび Get-AzureDataFactoryGateway コマンドレットの出力に表示されます。ポータルの指示に従って新しいインストール ファイル (.msi) をダウンロードし、これを実行して最新のゲートウェイをインストールできます。追加の構成は必要ありません。
 
 ### 変更点
 
 - HdInsightOnDemandLinkedService 内の JobsContainer が削除されました。
-	- HDInsightOnDemandLinkedService の JSON の定義では指定する必要はありません **jobsContainer** これ以上のプロパティです。オンデマンドのリンクされたサービスで指定したプロパティがある場合、そのプロパティは無視されます。リンクされたサービスの JSON 定義からそのプロパティを削除し、New-AzureDataFactoryLinkedService コマンドレットを使用してリンクされたサービスの定義を更新できます。
+	- HDInsightOnDemandLinkedService の JSON 定義で、**jobsContainer** プロパティを指定する必要がありません。オンデマンドのリンクされたサービスで指定したプロパティがある場合、そのプロパティは無視されます。リンクされたサービスの JSON 定義からそのプロパティを削除し、New-AzureDataFactoryLinkedService コマンドレットを使用してリンクされたサービスの定義を更新できます。
 - HDInsightOnDemandLinkedService のオプションの構成パラメーター
-	- このリリースでは、HDInsightOnDemandLinked (オンデマンドの HDInsight クラスター) 用の複数のオプションの構成パラメーターのサポートが導入されています。参照してください [ClusterCreateParameters プロパティ][on-demand-hdi-parameters] の詳細。
+	- このリリースでは、HDInsightOnDemandLinked (オンデマンドの HDInsight クラスター) 用の複数のオプションの構成パラメーターのサポートが導入されています。詳細については、「[ClusterCreateParameters プロパティ][on-demand-hdi-parameters]」を参照してください。
 - ゲートウェイの場所が削除される
 	- ポータルまたは PowerShell (New-AzureDataFactoryGateway) 経由で Azure Data Factory ゲートウェイを作成する場合は、ゲートウェイの場所を指定する必要がありません。Data Factory 領域は継承されます。同様に、JSON を使用して SQL Server のリンクされたサービスを構成する場合、"gatewayLocation" プロパティは必要ありません。Data Factory .NET SDK もこれらの変更点を反映して更新されます。
 	- 古いバージョンの SDK および Azure PowerShell を使用している場合は、引き続き場所を設定する必要があります。
@@ -86,13 +86,13 @@
 #### 重大な変更
 	
 - CustomActivity から DotNetActivity へ
-	- **ICustomActivity** インターフェイスの名前に変更が **IDotNetActivity**です。Data Factory NuGet パッケージを更新し、カスタム アクティビティのソース コードで、ICustomActivity を IDotNetActivity に変更する必要があります。  
-	- カスタム アクティビティの JSON 定義内でカスタム アクティビティの種類を変更する必要があります **CustomActivity** に **DotNetActivity**です。 
-	-  **[Customactivity]** と **CustomActivityProperties** クラスが名前に変更されました **DotNetActivity** と **DotNetActivityProperties** 一連の同じプロパティを使用します。
+	- **ICustomActivity** インターフェイスの名前が **IDotNetActivity** に変更されました。Data Factory NuGet パッケージを更新し、カスタム アクティビティのソース コードで、ICustomActivity を IDotNetActivity に変更する必要があります。  
+	- カスタム アクティビティの JSON 定義におけるカスタム アクティビティの種類を、**CustomActivity** から **DotNetActivity** に変更する必要があります。 
+	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました （プロパティ セットは変わりません)。
 
 		古いバージョンの SDK および Azure PowerShell を使用している場合は、DotNetActivity の代わりに、引き続き CustomActivity を使用できます。
     
-  		参照してください [カスタム アクティビティを使用して、Azure のデータのファクトリのパイプラインで][adf-custom-activities] カスタム アクティビティを作成し、Azure のデータのファクトリのパイプラインで使用する方法のチュートリアルについてです。
+  		カスタム アクティビティを作成し、これを Azure Data Factory パイプラインで使用する方法のチュートリアルは、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する][adf-custom-activities]」を参照してください。
 
 [adf-azure-ml]: data-factory-create-predictive-pipelines.md
 [adf-custom-activities]: data-factory-use-custom-activities.md
@@ -108,4 +108,8 @@
 [adf-msdn-linked-services]: https://msdn.microsoft.com/library/dn834986.aspx
 [adf-encrypt-value-cmdlet]: https://msdn.microsoft.com/library/dn834940.aspx
 
-<!---HONumber=GIT-SubDir--> 
+
+
+ 
+
+<!---HONumber=62-->

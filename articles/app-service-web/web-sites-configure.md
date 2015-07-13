@@ -41,7 +41,7 @@
 
 技術的な理由で、Web アプリで Java を有効にすると、.NET、PHP、Python オプションが無効になります。
 
-<a name="platform"></a>**プラットフォーム**。Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。Free モードと Shared モードは常に 32 ビット環境で実行されます。
+<a name="platform"></a> **プラットフォーム**。Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。Free モードと Shared モードは常に 32 ビット環境で実行されます。
 
 **[Web ソケット]**。WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR](http://www.asp.net/signalr) または [socket.io](web-sites-nodejs-chat-app-socketio.md) を使用する場合)。
 
@@ -49,7 +49,7 @@
 
 **管理されたパイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] (既定) のままにしておきます。
 
-**自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+**自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、アプリ サービスは、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 
 ### デバッグ
@@ -146,10 +146,10 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 
 ドメイン名を表示するには、**[すべての設定]** > **[カスタム ドメインと SSL]** をクリックします。
 
-### デプロイ
+### 展開
 
 - 継続的なデプロイを設定します。「[Azure App Service での Git を使用した Web アプリのデプロイ](web-sites-publish-source-control.md)」を参照してください。
-- デプロイ スロット:[Azure App Service での Web アプリのステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+- 展開スロット:[Azure App Service での Web アプリのステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 デプロイ スロットを表示するには、**[すべて設定]** > **[デプロイ スロット]** をクリックします。
 

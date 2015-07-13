@@ -34,7 +34,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
  
 + localhost を使用するには、ローカル コンピューター上で次のいずれかの Web サーバーが実行されている必要があります。
 
-	+  **Windows**: IIS ExpressIIS Express は、[Microsoft Web プラットフォーム インストーラー]によってインストールされます。   
+	+  **Windows**: IIS ExpressIIS Express は、[Microsoft Web プラットフォーム インストーラー] によってインストールされます。   
 	+  **MacOS X**: Python。既にインストールされています。
 	+  **Linux**: Python。[最新バージョンの Python] をインストールする必要があります。 
 	
@@ -255,5 +255,6 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 [Cross-origin resource sharing]: http://msdn.microsoft.com/library/azure/dn155871.aspx
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

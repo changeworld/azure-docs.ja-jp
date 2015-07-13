@@ -1,10 +1,4 @@
-<properties 
-	pageTitle="C++ アプリ向けの Application Insights" 
-	description="Application Insights を使用して C++ アプリの使用状況とパフォーマンスを分析します。" 
-	services="application-insights" 
-	documentationCenter="cpp" 
-	authors="crystk" 
-	manager="jakubo"/>
+<properties pageTitle="Application Insights for C++ apps" description="Analyze usage and performance of your C++ app with Application Insights." services="application-insights" documentationCenter="cpp" authors="crystk" manager="jakubo""/>
 
 <tags 
     ms.service="application-insights" 
@@ -17,18 +11,18 @@
 
 # C++ アプリ向けの Application Insights
 
-Visual Studio Application Insights を使用すると、使用状況、イベント、およびクラッシュに関してモバイル アプリケーションを監視できます。
+Visual Studio の Application Insights を使用すると、使用状況、イベント、クラッシュに関してモバイル アプリケーションを監視できます。
 
 ## 必要条件
 
 必要なものは次のとおりです。
 
-* [Microsoft Azure](http://azure.com) のサブスクリプションWindows、XBox Live、またはその他の Microsoft クラウド サービスで所有している Microsoft アカウントを使用してサインインします。
+* [Microsoft Azure](http://azure.com) のサブスクリプションWindows、XBox Live や、その他の Microsoft クラウド サービスで所有している Microsoft アカウントを使用してサインインします。
 * Visual Studio 2015 以降。
 
 ## Application Insights リソースの作成
 
-[Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。Windows Phone または Windows ストアのオプションを選択します。
+[Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。Windows Phone か Windows ストアのオプションを選択します。
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-windows-cpp/01-universal.png)
 
@@ -49,14 +43,22 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 
 2. C++ Apps 向け Application Insights SDK をインストールします。
 
-    ![**[オンライン]**、**[プレリリースを含める]** の順に選択し、"Application Insights" を検索する](./media/app-insights-windows-cpp/04-ai-nuget.png)
+    ![**[プレリリースを含める]** を選択し、「Application Insights」を検索します。](./media/app-insights-windows-cpp/04-nuget.png)
 
-3. リリースおよびデバッグのプロジェクト設定で、次のようにします。
+3. リリースとデバッグのプロジェクト設定で、次のようにします。
   - $(SolutionDir)packages\ApplicationInsights-CPP.1.0.0-Beta\src\inc をプロジェクト プロパティ -> VC++ ディレクトリ -> Include ディレクトリに追加する
   - $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native<PLATFORM TYPE>\release\AppInsights_Win10-UAP をプロジェクト プロパティ -> VC++ ディレクトリ -> Library ディレクトリに追加する
 
 4. ApplicationInsights.winmd を $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native<PLATFORM TYPE>\release\ApplicationInsights からのプロジェクトへのリファレンスとして追加する
 5. AppInsights_Win10-UAP.dll を $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native<PLATFORM TYPE>\release\AppInsights_Win10-UAP から追加する。プロパティに移動し、内容を YES に設定します。これにより、dll がビルド ディレクトリにコピーされます。
+
+
+#### 今後のバージョンに、SDK を更新するには
+
+新しい [SDK がリリースされた](app-insights-release-notes-windows-cpp.md)場合。
+
+* NuGet パッケージ マネージャーで、インストールされている SDK を選択し、アップグレード アクションを選択します。
+* 新しいバージョン番号を使用して、インストール手順を繰り返します。
 
 ## SDK の使用
 
@@ -116,7 +118,7 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
 [アプリの使用状況の追跡][track]
 
-[API を使用してカスタム イベントおよびメトリックを送信する][api]
+[API を使用してカスタム イベントとメトリックを送信する][api]
 
 [診断検索][diagnostic]
 

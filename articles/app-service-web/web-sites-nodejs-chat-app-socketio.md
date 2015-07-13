@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築"
-	description="Azure でホストされる node.js アプリケーションで socket.io を使用する方法を示すチュートリアル。"
+	description="Azure でホストされる node.js Web アプリで socket.io を使用する方法を示すチュートリアル。"
 	services="app-service\web"
 	documentationCenter="nodejs"
 	authors="MikeWasson"
@@ -67,7 +67,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 
 Azure Web アプリを作成し、Git 発行を有効にして、Web アプリの WebSocket サポートを有効にするには、次の手順に従います。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 1. Azure コマンド ライン インターフェイス (Azure CLI) をインストールし、Azure サブスクリプションに接続します。「[Azure CLI のインストールと構成](xplat-cli)」をご覧ください。
 
@@ -169,7 +169,7 @@ __#__ は、作成するインスタンスの数です。
 
 ###接続制限
 
-Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで使用できるリソースが決まります。これには、許可される WebSocket 接続の数が含まれます。詳細については、[Web アプリの料金のページ][pricing]を参照してください。
+Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで使用できるリソースが決まります。これには、許可される WebSocket 接続の数が含まれます。詳細については、[Web Apps の料金のページ][pricing]を参照してください。
 
 ###WebSocket を使用してメッセージを送信できない
 
@@ -262,15 +262,15 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 
 	> [AZURE.NOTE]アプリケーションで **app.js** 以外のエントリ ポイントを使用している場合は、すべての **app.js** を正しいエントリ ポイントに置き換える必要があります。たとえば、**app.js** を **server.js** に置き換えます。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##次のステップ
 
 このチュートリアルでは、Azure Web アプリでホストされるチャット アプリケーションを作成する方法を説明しました。このアプリケーションは、Azure クラウド サービスとしてホストすることもできます。そのための作業手順については、「[Azure クラウド サービスで Socket.IO を使用する Node.js チャット アプリケーションの構築][cloudservice]」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [socketio]: http://socket.io/
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png

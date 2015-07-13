@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Data Factory SDK を使用して Azure Data Factory を作成、監視、管理する" 
-	description="プログラムで作成、監視、およびデータの工場出荷時の SDK を使用して Azure のデータのファクトリを管理する方法について説明します。" 
+	description="Data Factory SDK を使用して Azure データ ファクトリをプログラムによって作成、監視、管理する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -18,36 +18,36 @@
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
 ## 概要
-Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。参照してください [データ ファクトリ クラス ライブラリ リファレンス][adf-class-library-reference] データ工場出荷時の .NET SDK に関する詳細です。
+Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。Data Factory .NET SDK の詳細については、[Data Factory クラス ライブラリ リファレンス][adf-class-library-reference]に関するページをご覧ください。
 
 
 
 ## 前提条件
 
 - Visual Studio 2012 または 2013
-- ダウンロードしてインストール [Azure .NET SDK][azure-developer-center]
+- [Azure .NET SDK][azure-developer-center] のダウンロードとインストール
 - Azure Data Factory の NuGet パッケージをダウンロードしてインストールします。手順はこのチュートリアルにあります。
 
 ## チュートリアル
 1. Visual Studio 2012 または 2013 を使用して、C# .NET コンソール アプリケーションを作成します。
 	<ol type="a">
-	<li>起動 <b>Visual Studio 2012</b> または <b>Visual Studio 2013</b>です。</li>
-	<li>クリックして <b>ファイル</b>, 、順にポイント <b>新規</b>, 、] をクリック <b>プロジェクト</b>です。</li> 
-	<li>展開 <b>テンプレート</b>, 、選択 <b>Visual c#</b>です。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。</li> 
-	<li>選択 <b>コンソール アプリケーション</b> 、右側のプロジェクトの種類の一覧からです。</li>
-	<li>入力 <b>DataFactoryAPITestApp</b> の <b>名前</b>です。</li> 
-	<li>選択 <b>C:\ADFGetStarted</b> の <b>場所</b>です。</li>
+	<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
+	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
+	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。</li> 
+	<li>右側にあるプロジェクトの種類の一覧から <b>[コンソール アプリケーション]</b> を選択します。</li>
+	<li><b>[名前]</b> に「<b>DataFactoryAPITestApp</b>」と入力します。</li> 
+	<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
 	<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
 </ol>
-2. クリックして <b>ツール</b>, 、順にポイント <b>NuGet Package Manager</b>, 、] をクリック <b>パッケージ マネージャー コンソール</b>です。
-3.	 <b>パッケージ マネージャー コンソール</b>, 、1 つずつ、次のコマンドを実行します。</b>です。 
+2. <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> にカーソルを合わせ、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
+3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b> 
 
 		Install-Package Microsoft.Azure.Management.DataFactories –Pre
 		Install-Package Microsoft.DataFactories.Runtime –Pre
 		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-6. 次の追加 **appSetttings** セクション、 **App.config** ファイルです。これらは、ヘルパー メソッドを使用します。 **GetAuthorizationHeader**です。 
+6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらは、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。 
 
-	**SubscriptionId** および **ActiveDirectoryTenantId** の値を Azure サブスクリプションとテナント ID に置き換えます。これらの値を取得するには、実行して **Get AzureAccount** (Add-azureaccount を使用して最初にログインする必要があります)、Azure PowerShell からです。
+	**SubscriptionId** および **ActiveDirectoryTenantId** の値を Azure サブスクリプションとテナント ID に置き換えます。これらの値は、Azure PowerShell から **Get-AzureAccount** を実行して取得できます (最初に Add-AzureAccount を使用してログインすることが必要になる場合があります)。
  
 		<appSettings>
 		    <!--CSM Prod related values-->
@@ -60,7 +60,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		    <add key="SubscriptionId" value="49fb6e5f-3098-4fb2-ba2f-6d6eed843a65" />
     		<add key="ActiveDirectoryTenantId" value="37330244-7828-4a28-99b7-c8c3a437c7ac" />
 		</appSettings>
-6. 次の追加 **を使用して** ステートメントをプロジェクトのソース ファイル (Program.cs) にします。
+6. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
 		using System.Threading;
 		using System.Configuration;
@@ -70,7 +70,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		using Microsoft.Azure.Management.DataFactories.Models;
 		using Microsoft.IdentityModel.Clients.ActiveDirectory;
 		using Microsoft.Azure; 
-6. インスタンスを作成する次のコードを追加する **DataPipelineManagementClient** クラスを **Main** メソッドです。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力テーブルと出力テーブル、パイプラインを作成します。また、実行時にテーブルのスライスも監視します。    
+6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力テーブルと出力テーブル、パイプラインを作成します。また、実行時にテーブルのスライスも監視します。    
 
         // create data pipeline management client
         string resourceGroupName = "ADF";
@@ -84,7 +84,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
 
         DataPipelineManagementClient client = new DataPipelineManagementClient(aadTokenCredentials, resourceManagerUri);
-7. 作成する次のコードを追加、 **データ ファクトリ** を **Main** メソッドです。
+7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 
         // create a data factory
         Console.WriteLine("Creating a data factory");
@@ -99,7 +99,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             }
         );
-8. 作成する次のコードを追加、 **サービス リンク** を **Main** メソッドです。
+8. **リンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
 	> [AZURE.NOTE]**アカウント名****アカウント キー****ConnectionString** 
 
 		// create a linked service
@@ -117,11 +117,11 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             }
         );
-9. 次のコードを作成する追加 **テーブルの入力呼び出し力** を **Main** メソッドです。 
+9. **入力テーブルと出力テーブル**を作成する次のコードを **Main** メソッドに追加します。 
 
-	注意して、 **FolderPath** に設定されている入力の blob の **adftutorial/** 場所 **adftutorial** 、blob ストレージ内のコンテナーの名前を指定します。このコンテナーが、Azure blob ストレージに存在しない場合は、この名前のコンテナーを作成: **adftutorial** と、コンテナーにテキスト ファイルをアップロードします。
+	入力 BLOB の **FolderPath** を **adftutorial/** に設定します。この **adftutorial** は BLOB ストレージ内のコンテナーの名前です。Azure BLOB ストレージにこのコンテナーが存在しない場合は、**adftutorial** という名前のコンテナーを作成し、このコンテナーにテキスト ファイルをアップロードします。
 	
-	設定されている出力 blob の FolderPath が: **adftutorial/apifactoryoutput {スライス}/** 場所 **スライス** の値に基づいて動的に計算が **SliceStart** (各スライスの日付と時刻を開始します)。
+	出力 BLOB の FolderPath を **adftutorial/apifactoryoutput/{Slice}** に設定します。この **Slice** は **SliceStart** (各スライスの開始日時) の値に基づいて動的に計算されます。
 
  
         // create input and output tables
@@ -195,7 +195,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                     }
                 }
             });
-10. 次のコードを追加 **を作成し、パイプラインがアクティブになります。** を、 **Main** メソッドです。このパイプラインが、 **CopyActivity** を受け取る **BlobSource** をソースとしてと **BlobSink** シンクとして。 
+10. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。 
 
         // create a pipeline
         Console.WriteLine("Creating a pipeline");
@@ -267,7 +267,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             });
 
-11. 使用される、次のヘルパー メソッドを追加、 **Main** メソッドを **プログラム** クラスです。このメソッドを提供できるダイアログ ボックスが表示されます **ユーザー名** と **パスワード** に使用する Azure ポータルにログインします。
+11. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
  
 		public static string GetAuthorizationHeader()
         {
@@ -303,7 +303,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             throw new InvalidOperationException("Failed to acquire token");
         }  
  
-13. 次のコードを追加、 **Main** メソッドを出力テーブルのデータ スライスの状態を取得します。この例で予想されるスライスのみが存在します。
+13. 次のコードを **Main** メソッドに追加して、出力テーブルのデータ スライスのステータスを取得します。この例で予想されるスライスのみが存在します。
  
         // Pulling status within a timeout threshold
         DateTime start = DateTime.Now;
@@ -334,7 +334,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             }
         }
 
-14. 実行のデータ スライス スライスの詳細を取得するには、次のコードを追加、 **Main** メソッドです。
+14. データ スライスの実行の詳細を取得するために次のコードを **Main** メソッドに追加します。
 
         Console.WriteLine("Getting run details of a data slice");
 
@@ -356,25 +356,25 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.ReadKey();
     {
 
-15. コンソール アプリケーションをビルドします。クリックして **ビルド** ] をクリックし、メニューに **ソリューションのビルド**です。
+15. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
 16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
 		Jane, Doe
 	 
-17. クリックして、サンプルを実行 **デバッグ** ]-> [ **デバッグの開始]** メニュー。
-18. データのファクトリにいることを確認するには、Azure プレビュー ポータルを使用して: **APITutorialFactory** は、次のアイテムを作成します。 
-	- サービスのリンク: **LinkedService_AzureStorage** 
-	- テーブル: **TableBlobSource** と **TableBlobDestination**です。
+17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。
+18. Azure プレビュー ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。 
+	- リンクされたサービス: **LinkedService_AzureStorage** 
+	- テーブル: **TableBlobSource** と **TableBlobDestination**
 	- パイプライン: **PipelineBlobSample** 
-18. 出力ファイルが作成されることを確認、 **apifactoryoutput** フォルダーで、 **adftutorial** コンテナーです。
+18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
 
 ## 関連項目
 
 記事 | 説明
 ------ | ---------------
-[Azure のデータの工場出荷時の開発者向けリファレンス][developer-reference] | .NET クラス ライブラリ、コマンドレット、JSON スクリプト、関数などの包括的な参照の内容を開発者向けリファレンスには. 
+[Azure Data Factory の開発者用リファレンス][developer-reference] | この開発者用リファレンスは、.NET クラス ライブラリ、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
 
 
 [data-factory-introduction]: data-factory-introduction.md
@@ -386,5 +386,6 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
  
 [adf-class-library-reference]: http://go.microsoft.com/fwlink/?LinkID=521877
 [azure-developer-center]: http://azure.microsoft.com/downloads/
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

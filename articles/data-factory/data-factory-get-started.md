@@ -31,7 +31,7 @@
 
 - **Azure サブスクリプション**。サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[無料試用版][azure-free-trial]のページを参照してください。
 - **Azure ストレージ アカウント**。このチュートリアルでは、BLOB ストレージを**ソース** データ ストアとして使用します。Azure ストレージ アカウントがない場合の作成手順については、[ストレージ アカウントの作成][data-factory-create-storage]に関する記事を参照してください。
-- **Azure SQL Database**。このチュートリアルでは、Azure SQL Database を**ターゲット** データ ストアとして使用します。このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「[Azure SQL Database を作成して構成する方法][data-factory-create-sql-database]」を参照してください。
+- **Azure SQL データベース**。このチュートリアルでは、Azure SQL Database を**ターゲット** データ ストアとして使用します。このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「[Azure SQL Database を作成して構成する方法][data-factory-create-sql-database]」を参照してください。
 - **SQL Server 2012/2014 または Visual Studio 2013**。サンプル データベースを作成して、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
 
 ### Azure ストレージ アカウントのアカウント名とアカウント キーを収集する
@@ -63,7 +63,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 4. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
 5. **[X]** をクリックしてすべてのブレードを閉じます。
 
-### Azure BLOB ストレージと Azure SQL Database をチュートリアル用に準備する
+### Azure BLOB ストレージと Azure SQL データベースをチュートリアル用に準備する
 ここからは、次の手順を実行して、チュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備します。
 
 1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
@@ -218,4 +218,4 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 [image-data-factory-name-not-available]: ./media/data-factory-get-started/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

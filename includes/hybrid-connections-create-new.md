@@ -1,28 +1,30 @@
 
-1. On the on-premises machine, log on to the [Azure Management Portal](http://manager.windowsazure.com) (this is the old portal).
+1. オンプレミスのコンピューターで、[Azure 管理ポータル](http://manager.windowsazure.com)にログオンします (これは以前のポータルです)。
 
-2. At the bottom of the navigation pane, select **+NEW** > **App Services** > **BizTalk Service** > **Custom Create**.
+2. ナビゲーション ウィンドウの下部で、**[+ 新規]**、**[App Services]**、**[BizTalk サービス]**、**[カスタム作成]** の順に選択します。
 
-3. Provide a **BizTalk Service Name** and select an **Edition**. 
+3. **BizTalk サービス名**を指定し、**エディション**を選択します。
 
-	This tutorial uses **mobile1**. You will need to supply a unique name for your new BizTalk Service.
+	このチュートリアルでは、**mobile1** を使用します。新しい BizTalk サービスに一意の名前を指定する必要があります。
 
-4. Once the BizTalk Service has been created, select the **Hybrid Connections** tab, then click **Add**.
+4. BizTalk サービスが作成されたら、**[ハイブリッド接続]** タブをクリックし、**[追加]** をクリックします。
 
 	![Add Hybrid Connection](./media/hybrid-connections-create-new/3.png)
 
-	This creates a new hybrid connection.
+	これで、新しいハイブリッド接続が作成されます。
 
-5. Provide a **Name** and **Host Name** for your hybrid connection and set **Port** to `1433`. 
+5. ハイブリッド接続の **[名前]** と **[ホスト名] **を指定し、**[ポート]** を `1433` に設定します。
   
 	![Configure Hybrid Connection](./media/hybrid-connections-create-new/4.png)
 
-	The host name is the name of the on-premises server. This configures the hybrid connection to access SQL Server running on port 1433. If you are using a named SQL Server instance, instead use the static port you defined earlier.
+	ホスト名はオンプレミスのサーバーの名前です。これで、ポート 1433 で実行されている SQL Server にアクセスするようにハイブリッド接続が構成されます。名前付き SQL Server インスタンスを使用している場合は、前に定義した静的ポートを使用します。
 
-6. After the new connection is created, the status of the of the new connection shows **On-premises setup incomplete**.
+6. 新しい接続が作成されると、新しい接続の状態に、**"オンプレミス セットアップは完了していません"** と表示されます。
 
-7. Navigate back to your mobile service, click **Configure**, scroll down to **Hybrid connections** and click **Add hybrid connection**, then select the hybrid connection that you just created and click **OK**.
+7. モバイル サービスに戻り、**[構成]** をクリックします。下へスクロールして **[ハイブリッド接続]** に移動し、**[ハイブリッド接続の追加]** をクリックします。その後、先ほど作成したハイブリッド接続を選択し、**[OK]** をクリックします。
 
-    This enables your mobile service to use your new hybrid connection.
+    これにより、モバイル サービスで新しいハイブリッド接続を使用できます。
 
-Next, you'll need to install the Hybrid Connection Manager on the on-premises computer.
+次に、オンプレミスのコンピューターにハイブリッド接続マネージャーをインストールする必要があります。
+
+<!---HONumber=62-->

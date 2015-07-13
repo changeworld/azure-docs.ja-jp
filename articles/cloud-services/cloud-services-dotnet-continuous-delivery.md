@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/18/2015" 
+	ms.date="05/29/2015" 
 	ms.author="kempb"/>
 
 # Azure でのクラウド サービスの継続的な配信
@@ -24,15 +24,7 @@
 
 作業を開始する前に、Visual Studio からアプリケーションを発行する必要があります。これにより、発行プロセスの自動化を行う際にすべてのリソースが利用可能で、初期化されることを確認できます。
 
-このタスクの手順は次のとおりです。
-
--   [手順 1. ビルド サーバーを構成する][]
--   [手順 2. MSBuild コマンドを使用してパッケージをビルドする][]
--   [手順 3. TFS チーム ビルドを使用してパッケージをビルドする (省略可能)][]
--   [手順 4. PowerShell スクリプトを使用してパッケージを発行する][]
--   [手順 5. TFS チーム ビルドを使用してパッケージを発行する (省略可能)][]
-
-<h2> <a name="step1"> </a>手順 1. ビルド サーバーを構成する</h2>
+## ステップ 1.: ビルド サーバーを構成する
 
 MSBuild を使用して Azure パッケージを作成するには、ビルド サーバーに必要なソフトウェアおよびツールを事前にインストールしておく必要があります。
 
@@ -41,20 +33,20 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 1.  ビルド サーバーに、[.NET Framework 4][]、[.NET Framework 4.5][]、または [.NET Framework 4.5.2][] をインストールします。これには MSBuild が含まれています。
 2.  [Azure Authoring Tools][] をインストールします (ビルド サーバーのプロセッサに応じて、MicrosoftAzureAuthoringTools-x86.msi または MicrosoftAzureAuthoringTools-x64.msi を選択してください)。以前のバージョンのファイルでは、ファイル名に WindowsAzure が含まれている可能性があります。
 3. [Azure Libraries][] をインストールします (MicrosoftAzureLibsForNet-x86.msi または MicrosoftAzureLibsForNet-x64.msi を選択してください)。
-4.  インストール済みの Visual Studio の Microsoft.WebApplication.targets ファイルをビルド サーバーにコピーします。このファイルは、Visual Studio がインストールされているコンピューターの C:\\Program Files(x86)\\MSBuild\\Microsoft\\VisualStudio\\v11.0\\WebApplications (Visual Studio 2013 の場合は v12.0) ディレクトリに含まれています。このファイルを、ビルド サーバー上の同じディレクトリにコピーします。
+4.  インストール済みの Visual Studio の Microsoft.WebApplication.targets ファイルをビルド サーバーにコピーします。このファイルは、Visual Studio がインストールされているコンピューターの C:\Program Files(x86)\MSBuild\Microsoft\VisualStudio\v11.0\WebApplications (Visual Studio 2013 の場合は v12.0) ディレクトリに含まれています。このファイルを、ビルド サーバー上の同じディレクトリにコピーします。
 5.  [Azure Tools for Visual Studio][] をインストールします。Visual Studio 2012 のプロジェクトのビルドには MicrosoftAzureTools.VS110.exe、Visual Studio 2013 プロジェクトのビルドには MicrosoftAzureTools.VS120.exe、Visual Studio 2015 プレビューのプロジェクトのビルドには MicrosoftAzureTools.VS140.exe を選択してください。
 
-<h2><a name="step2"> </a>手順 2. MSBuild コマンドを使用してパッケージをビルドする</h2>
+## ステップ 2.: MSBuild コマンドを使用してパッケージをビルドする
 
 このセクションでは、Azure パッケージをビルドする MSBuild コマンドを作成する方法について説明します。ビルド サーバーでこの手順を実行し、すべてが正しく構成されていて、MSBuild コマンドが予定どおりに動作することを確認します。このコマンド ラインはビルド サーバー上の既存のビルド スクリプトに追加することができます。または、次のセクションで説明するように、TFS ビルド定義でコマンド ラインを使用できます。コマンド ライン パラメーターおよび MSBuild の詳細については、「[MSBuild コマンド ライン リファレンス][]」を参照してください。
 
 1.  ビルド サーバーに Visual Studio がインストールされている場合は、**[スタート]** メニューの **[すべてのプログラム]** をクリックし、**[Visual Studio ツール]** フォルダーの **[Visual Studio コマンド プロンプト]** をクリックします。
 
-    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\\Microsoft.NET\\Framework*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
+    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\Microsoft.NET\Framework*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
 
         set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 
-2.  コマンド プロンプトで、ビルドする Microsoft Azure プロジェクト ファイルが含まれているフォルダーに移動します。
+2.  コマンド プロンプトで、ビルドする Azure プロジェクト ファイルが含まれているフォルダーに移動します。
 
 3.  次の例に示すように、/target:Publish オプションを指定して msbuild を実行します。
 
@@ -64,7 +56,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
     必要に応じて、プロジェクト名を MSBuild のパラメーターとして指定できます。このパラメーターを指定しない場合は、現在のディレクトリが使用されます。MSBuild のコマンド ライン オプションの詳細については、「[MSBuild コマンド ライン リファレンス][1]」を参照してください。
 
-4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin*Configuration*\\app.publish)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
+4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\bin*Configuration*\app.publish)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
 
     -   Project.cspkg
     -   ServiceConfiguration.*TargetProfile*.cscfg
@@ -75,19 +67,19 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
         MSBuild /t:Publish /p:TargetProfile=Cloud
 
-6.  出力先を指定します。次の例に示すように、/p:PublishDir=*Directory*\\ オプションを使用してパスを設定します。末尾のバックスラッシュ区切り記号もパスの一部です。
+6.  出力先を指定します。次の例に示すように、/p:PublishDir=*Directory*\ オプションを使用してパスを設定します。末尾のバックスラッシュ区切り記号もパスの一部です。
 
-        MSBuild /target:Publish /p:PublishDir=\\myserver\drops\
+        MSBuild /target:Publish /p:PublishDir=\myserver\drops\
 
     プロジェクトをビルドして Azure パッケージに結合するために使用する適切な MSBuild コマンド ラインの作成とテストが完了したら、このコマンド ラインをビルド スクリプトに追加します。ビルド サーバーでカスタム スクリプトを使用する場合、このプロセスは、ビルド カスタム プロセスの特定の内容に依存します。ビルド環境として TFS を使用している場合は、次のステップに従って Azure パッケージ ビルドをビルド プロセスに追加できます。
 
-<h2> <a name="step3"> </a>手順 3. TFS チーム ビルドを使用してパッケージをビルドする (省略可能)</h2>
+## ステップ 3.: TFS チーム ビルドを使用してパッケージをビルドする (省略可能)
 
 ビルド コントローラーとして Team Foundation Server (TFS) を設定し、TFS ビルド コンピューターとしてビルド サーバーを設定している場合、Azure パッケージの自動化されたビルドを設定できます。Team Foundation Server をビルド システムとして設定および使用する方法については、「[ビルド システムのスケール アウト][]」を参照してください。特に、次の手順では、[ビルド コンピューターの構成][]に関するページの説明に従ってビルド サーバーが構成されていること、およびチーム プロジェクトを作成し、チーム プロジェクト内にクラウド サービス プロジェクトを作成していることを前提としています。
 
 Azure パッケージをビルドするために TFS を構成するには、次の手順を実行します。
 
-1.  開発コンピューターの Visual Studio で、[表示] メニューの **[チーム エクスプローラー]** をクリックするか、Ctrl + \\ キー、Ctrl + M キーを押します。[チーム エクスプローラー] ウィンドウで、**[ビルド]** ノードを展開するか、**[ビルド]** ページを選択し、**[ビルド定義の新規作成]** を選択します。
+1.  開発コンピューターの Visual Studio で、[表示] メニューの **[チーム エクスプローラー]** をクリックするか、Ctrl + \ キー、Ctrl + M キーを押します。[チーム エクスプローラー] ウィンドウで、**[ビルド]** ノードを展開するか、**[ビルド]** ページを選択し、**[ビルド定義の新規作成]** を選択します。
 
     ![][0]
 
@@ -99,7 +91,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 5.  **[プロセス]** タブをクリックします。**[プロセス]** タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの [ビルド] セクションの **[詳細設定]** セクションを展開します。
 
-6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \\\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\\myserver\\drops**」と入力します。
+6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \myserver\drops\ にコピーするには、「**/t:Publish /p:PublishDir=\myserver\drops**」と入力します。
 
     ![][2]
 
@@ -107,7 +99,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 5.  変更をプロジェクトにチェックインしてビルド手順が成功したかどうかをテストするか、または新しいビルドをキューに配置します。新しいビルドをキューに配置するには、チーム エクスプローラーで、**[すべてのビルド定義]** を右クリックし、**[新しいビルドをキューに配置]** を選択します。
 
-<h2> <a name="step4"> </a>手順 4. PowerShell スクリプトを使用してパッケージを発行する</h2>
+## ステップ 4.: PowerShell スクリプトを使用してパッケージを発行する
 
 このセクションでは、オプション パラメーターを使用して、クラウド アプリケーション パッケージ出力を Azure に発行する Windows PowerShell スクリプトを作成する方法について説明します。このスクリプトは、カスタム ビルド自動化のビルド手順の後に呼び出すことができます。このスクリプトは、Visual Studio TFS チーム ビルドのプロセス テンプレート ワークフロー アクティビティから呼び出すこともできます。
 
@@ -121,7 +113,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 4.  Azure サブスクリプションに接続できることを確認します。そのためには、サブスクリプション情報を .publishsettings ファイルからインポートします。
 
-    Import-AzurePublishSettingsFile c:\\scripts\\WindowsAzure\\default.publishsettings
+    Import-AzurePublishSettingsFile c:\scripts\WindowsAzure\default.publishsettings
 
     次に、次のコマンドを入力します。
 
@@ -129,7 +121,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     サブスクリプションに関する情報が表示されます。すべての情報が正しいことを確認します。
 
-4.  [この記事の最後][]に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure**PublishCloudService.ps1** として保存します。
+4.  [この記事の最後][]に示されているスクリプト テンプレートをスクリプト フォルダーに c:\scripts\WindowsAzure**PublishCloudService.ps1** として保存します。
 
 5.  スクリプトのパラメーター セクションを見直します。既定値を追加または変更します。これらの値は、明示的なパラメーター値を渡すことでオーバーライドできます。
 
@@ -185,7 +177,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     **警告:** このスクリプトは、既存のデプロイが検出されると、既定で常に削除または置き換えを行います。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
-<h2><a name="step5"> </a>手順 5. TFS チーム ビルドを使用してパッケージを発行する (省略可能)</h2>
+## ステップ 5.: TFS チーム ビルドを使用してパッケージを発行する (省略可能)
 
 この手順では、Azure へのパッケージ ビルドの発行を処理する、手順 4. で作成したスクリプトに TFS チーム ビルドを関連付けます。これには、ビルド定義によって使用されるプロセス テンプレートを変更して、ワークフローの最後に発行アクティビティが実行されるようにする操作が含まれます。発行アクティビティでは、ビルドからのパラメーターを渡して PowerShell コマンドを実行します。MSBuild ターゲットと発行スクリプトの出力は、パイプを使用して標準ビルド出力に送られます。
 
@@ -333,11 +325,11 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 9.  [その他] セクションのパラメーター プロパティ値を次のように設定します。
 
-    1.  CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg' *この値の派生元: ($PublishDir)ServiceConfiguration.Cloud.cscfg*
+    1.  CloudConfigLocation ='c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg' *この値の派生元: ($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
-    2.  PackageLocation = 'c:\\drops\\app.publish\\ContactManager.Azure.cspkg' *この値の派生元: ($PublishDir)($ProjectName).cspkg*
+    2.  PackageLocation = 'c:\drops\app.publish\ContactManager.Azure.cspkg' *この値の派生元: ($PublishDir)($ProjectName).cspkg*
 
-    3.  PublishScriptLocation = 'c:\\scripts\\WindowsAzure\\PublishCloudService.ps1'
+    3.  PublishScriptLocation = 'c:\scripts\WindowsAzure\PublishCloudService.ps1'
 
     4.  ServiceName = 'mycloudservicename' *適切なクラウド サービス名を使用します*
 
@@ -345,7 +337,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     6.  StorageAccountName = 'mystorageaccountname' *適切なストレージ アカウント名を使用します*
 
-    7.  SubscriptionDataFileLocation = 'c:\\scripts\\WindowsAzure\\Subscription.xml'
+    7.  SubscriptionDataFileLocation = 'c:\scripts\WindowsAzure\Subscription.xml'
 
     8.  SubscriptionName = 'default'
 
@@ -355,7 +347,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 11. パッケージのビルドと発行の両方を実行するために、ビルドをキューに配置します。トリガーを [継続的インテグレーション] に設定している場合、チェックインのたびにこの動作が実行されます。
 
-### <a name="script"> </a>PublishCloudService.ps1 スクリプト テンプレート
+### PublishCloudService.ps1 スクリプト テンプレート
 
 <pre>
 Param(  $serviceName = "",
@@ -563,31 +555,28 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 
 継続的な配信を使用する場合にリモート デバッガーを有効にするには、[これらの手順](http://go.microsoft.com/fwlink/p/?LinkID=402354)を参照してください。
 
-[Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: cloud-services-continuous-delivery-use-vso.md
-[手順 1. ビルド サーバーを構成する]: #step1
-[手順 2. MSBuild コマンドを使用してパッケージをビルドする]: #step2
-[手順 3. TFS チーム ビルドを使用してパッケージをビルドする (省略可能)]: #step3
-[手順 4. PowerShell スクリプトを使用してパッケージを発行する]: #step4
-[手順 5. TFS チーム ビルドを使用してパッケージを発行する (省略可能)]: #step5
-[Team Foundation ビルド サービス]: http://go.microsoft.com/fwlink/p/?LinkId=239963
-[.NET Framework 4]: http://go.microsoft.com/fwlink/?LinkId=239538
-[.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
-[.NET Framework 4.5.2]: http://go.microsoft.com/fwlink/?LinkId=521668
-[Azure Authoring Tools]: http://go.microsoft.com/fwlink/?LinkId=239600
-[Azure Libraries]: http://go.microsoft.com/fwlink/?LinkId=257862
-[Azure Tools for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=257862
-[MSBuild コマンド ライン リファレンス]: http://msdn.microsoft.com/library/ms164311(v=VS.90).aspx
-[1]: http://go.microsoft.com/fwlink/p/?LinkId=239966
-[ビルド システムのスケール アウト]: http://go.microsoft.com/fwlink/?LinkId=238798
-[ビルド コンピューターの構成]: http://go.microsoft.com/fwlink/?LinkId=238799
-[0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01.png
-[2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
-[Azure PowerShell コマンドレット]: http://go.microsoft.com/fwlink/?LinkId=256262
-[the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
-[この記事の最後]: #script
-[3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png
-[4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
-[5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
-[6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
+  [Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: cloud-services-continuous-delivery-use-vso.md
+  [Team Foundation ビルド サービス]: http://go.microsoft.com/fwlink/p/?LinkId=239963
+  [.NET Framework 4]: http://go.microsoft.com/fwlink/?LinkId=239538
+  [.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
+  [.NET Framework 4.5.2]: http://go.microsoft.com/fwlink/?LinkId=521668
+  [Azure Authoring Tools]: http://go.microsoft.com/fwlink/?LinkId=239600
+  [Azure Libraries]: http://go.microsoft.com/fwlink/?LinkId=257862
+  [Azure Tools for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=257862
+  [MSBuild コマンド ライン リファレンス]: http://msdn.microsoft.com/library/ms164311(v=VS.90).aspx
+  [1]: http://go.microsoft.com/fwlink/p/?LinkId=239966
+  [ビルド システムのスケール アウト]: http://go.microsoft.com/fwlink/?LinkId=238798
+  [ビルド コンピューターの構成]: http://go.microsoft.com/fwlink/?LinkId=238799
+  [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01.png
+  [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
+  [Azure PowerShell コマンドレット]: http://go.microsoft.com/fwlink/?LinkId=256262
+  [the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
+  [この記事の最後]: #script
+  
+  [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png
+  [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
+  [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
+  [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

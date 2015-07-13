@@ -23,12 +23,11 @@ BLOB サービスには、次のコンポーネントが含まれます。
 -   **BLOB**: 任意の種類およびサイズのファイルです。Azure のストレージ サービスに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルは ブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、 ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 -   **URL 形式**: BLOB は次の URL 形式でアドレス指定されます。http://`<storage
-    account>`.blob.core.windows.net/`<container>`/`<blob>\`
+    account>`.blob.core.windows.net/`<container>`/`<blob>`
       
     次の例の URL を使用すると、上の図のいずれかの BLOB をアドレス指定できます。`http://sally.blob.core.windows.net/movies/MOV1.AVI`
 
 
 [Blob1]: ./media/storage-blob-concepts-include/blob1.jpg
 
-
-<!--HONumber=52-->
+<!---HONumber=62-->

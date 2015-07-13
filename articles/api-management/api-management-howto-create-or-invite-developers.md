@@ -66,7 +66,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ## <a name="next-steps"> </a>次のステップ
 
-開発者アカウントを作成した後は、このアカウントをロールに関連付け、成果物と API をサブスクライブできます。詳細については、「[How to create and use groups (グループを作成して使用する方法)][]」を参照してください。
+開発者アカウントを作成した後は、このアカウントをロールに関連付け、成果物と API をサブスクライブできます。詳細については、「[How to create and use groups (グループを作成して使用する方法)][]」をご覧ください。
 
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
@@ -91,4 +91,4 @@ API Management では、開発者は、API Management を使用して公開さ�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [電子メール テンプレートの構成]: api-management-howto-configure-notifications.md#email-templates
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

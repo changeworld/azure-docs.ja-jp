@@ -1,4 +1,4 @@
-﻿
+
 1. Visual Studio で、Windows ストア プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、F5 キーを押して Windows ストア アプリを実行します。
 	
 	アプリが起動すると、デバイスがプッシュ通知に登録されます。
@@ -19,5 +19,4 @@
 
    	![](./media/mobile-services-javascript-backend-windows-universal-test-push/mobile-quickstart-push5-wp8.png)
 
-
-<!--HONumber=42-->
+<!---HONumber=62-->

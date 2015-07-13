@@ -41,8 +41,8 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 
 ## 関連記事:
 
-- [Azure Automation での Runbook の開始](automation-starting-a-runbook)
+- [Azure Automation での Runbook を開始する](automation-starting-a-runbook)
 - [Azure Automation で Runbook ジョブの状態を表示する方法](automation-viewing-the-status-of-a-runbook-job)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

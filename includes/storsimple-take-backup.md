@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="バックアップの作成"
-   description="StorSimple のバックアップ ポリシーを定義する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/01/2015"
-   ms.author="v-sharos" />
 
 ### バックアップを作成するには
 
@@ -40,4 +24,4 @@
 
 デバイスの構成が完了しました。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

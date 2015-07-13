@@ -1,22 +1,22 @@
-<properties 
-    pageTitle="ワークスペースの設定と設定の管理" 
-    description="Microsoft Azure のオペレーション インサイトでワークスペースを設定し、設定を管理する方法について説明します" 
-    services="operational-insights" 
-    documentationCenter="" 
-    authors="bandersmsft" 
-    manager="jwhit" 
+<properties
+    pageTitle="ワークスペースの設定と設定の管理"
+    description="Microsoft Azure のオペレーション インサイトでワークスペースを設定し、設定を管理する方法について説明します"
+    services="operational-insights"
+    documentationCenter=""
+    authors="bandersmsft"
+    manager="jwhit"
     editor=""/>
 
-<tags 
-    ms.service="operational-insights" 
-    ms.workload="operational-insights" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="04/30/2015" 
+<tags
+    ms.service="operational-insights"
+    ms.workload="operational-insights"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="06/09/2015"
     ms.author="banders"/>
 
-# ワークスペースの設定と設定の管理 
+# ワークスペースの設定と設定の管理
 
 [AZURE.INCLUDE [operational-insights-note-moms](../../includes/operational-insights-note-moms.md)]
 
@@ -24,38 +24,35 @@
 
 ワークスペースを作成した後は、ワークスペースを使用してオペレーション インサイトの管理、ダッシュ ボードでの使用状況データの表示、ストレージ アカウントの選択、エージェントへの直接接続、System Center Operations Manager への接続などのその他のタスクを実行することができます。また各ワークスペースの設定を管理することができます。
 
-Azure を使用してワークスペースを作成する方法の詳細については、次のビデオをご覧ください。
-
-> [AZURE.VIDEO creating-a-workspace-for-azure-customers-opinsights]
-
 
 ## 必要なワークスペースの数。
 ワークスペースは、Azure 管理ポータル内では、Azure のリソースとして表示されます。
 
-新しいワークスペースを作成するか、System Center Operations Manager を使用するために、すでに開いている既存のプレビューへリンクすることができます。 Azure のサブスクリプション (有料) にはまだ関連付けられていません。ワークスペースは、データが収集、集計、分析されて、オペレーション インサイト ポータルに表示されたレベルを表示します。複数のワークスペース選択して、さまざまな環境やシステムからデータを分離しておくことができます。各 Operations Manager 管理グループ (またそのすべてのエージェント) や個々 の VM/ エージェントはそれぞれ 1 つだけのワークスペースに接続できます。
+新しいワークスペースを作成することも、System Center Operations Manager を使用するために既に開いている既存のワークスペースへリンクすることもできます。Azure のサブスクリプション (有料) にはまだ関連付けられていません。ワークスペースは、データが収集、集計、分析されて、オペレーション インサイト ポータルに表示されたレベルを表示します。複数のワークスペース選択して、さまざまな環境やシステムからデータを分離しておくことができます。各 Operations Manager 管理グループ (またそのすべてのエージェント) や個々 の VM/ エージェントはそれぞれ 1 つだけのワークスペースに接続できます。
 
 各ワークスペースは、ワークスペースごとに複数の Microsoft アカウントと組織アカウントを関連付けることができます。また、各ユーザー アカウントは複数のオペレーション インサイト ワークスペースを持つことができます。既定では、ワークスペースを作成するために使用した Microsoft アカウントや組織アカウントはワークスペースの管理者になります。管理者は、追加の Microsoft アカウントを招待したり、Azure Active Directory からユーザーを選択できます。
 
-##<a id="linkworkspace"></a>既存のワークスペースを Azure サブスクリプションへリンクする
+## 既存のワークスペースを Azure サブスクリプションへリンクする
 
 [opinsights.azure.com](http://opinsights.azure.com) からワークスペースを作成することができます。ただし、これらのワークスペースには、特定の制限が存あり、無料のアカウントを使用している場合に最も注意すべきなのは、データのアップロードが 500 MB/日に制限されていることです。このワークスペースを変更するには、 **既存のワークスペースを Azure サブスクリプションにリンクする**必要があります。
 
->[AZURE.IMPORTANT]ワークスペースをリンクするためには、リンクするワークスペースに Azure アカウントが既にアクセスしていることが必要です。つまり、Azure ポータルへのアクセスに使用するアカウントは、オペレーション インサイト ワークスペースへのアクセスに使用するアカウントと **同じ**アカウントである必要があります。そうでない場合は、[既存のワークスペースへのユーザーの追加](#addusertoexistingworkspace)をご覧ください。
+>[AZURE.IMPORTANT]ワークスペースをリンクするためには、リンクするワークスペースに Azure アカウントが既にアクセスしていることが必要です。つまり、Azure ポータルへのアクセスに使用するアカウントは、オペレーション インサイト ワークスペースへのアクセスに使用するアカウントと **同じ**アカウントである必要があります。そうでない場合は、[既存のワークスペースへのユーザーの追加](#add-an-azure-active-directory-organization-to-an-existing-workspace)をご覧ください。
 
 1. Azure 管理ポータルにサインインします。
 2. ポータルの左下にある **[+ 新規]** をクリックします。
 3. **[アプリケーション サービス]** をクリックして、**[オペレーション インサイト]** までスクロールして選択します。
 4. **[簡易作成]** をクリックします。
-5.  **[アカウント]** リストに、Azure サブスクリプションにリンク*されていない*ワークスペースの一覧が表示されます。アカウントを選択します。
+5. **[アカウント]** リストに、Azure サブスクリプションにリンク*されていない*ワークスペースの一覧が表示されます。アカウントを選択します。
 
-	>[AZURE.NOTE][既存のワークスペースへのユーザーの追加](#addusertoexistingworkspace)![アカウントのリンク](./media/operational-insights-setup-workspace/link-account.png)<p>
-6. その他のフィールドに入力し、**[ワークスペースの作成]** を選択します。
+  >[AZURE.NOTE]ここで、リンクするワークスペースが表示されない場合は、オペレーション インサイト ワークスペースへのアクセス権が Azure サブスクリプションに含まれていないことを意味します。オペレーション インサイト ワークスペース内から、このアカウントへのアクセスを許可する必要があります。その方法については、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」をご覧ください。
+
+  ![アカウントのリンク](./media/operational-insights-setup-workspace/link-account.png) <p> 6.その他のフィールドに入力し、**[ワークスペースの作成]** を選択します。
 
 ## 有料プランへワークスペースをアップグレードする
 
 オペレーション インサイトのワークスペースプランには次の 3 つの種類があります： **無料**、**標準** と **プレミアム**です。*無料* プランの場合は、500 MB のデータの上限に達した可能性があります。この制限を超えるデータを収集するには、ワークスペースを ' * * 従量課金制プラン * * ' にアップグレードする必要があります。いつでもプランの種類を変更できます。オペレーション インサイトの料金の詳細については、「[料金の詳細](http://azure.microsoft.com/pricing/operational-insights/)」をご覧ください。
 
->[AZURE.IMPORTANT]ワークスペース プランは、Azure サブスクリプションに*リンク*されている場合にのみ変更できます。Azure でワークスペースを作成した場合や、*既に*ワークスペースをリンクしている場合は、このメッセージを無視してください。[opinsights.azure.com](http://opinsights.azure.com) でワークスペースを作成した場合は、[既存のワークスペースを Azure サブスクリプションへリンクする](#linkworkspace)の手順に従う必要があります。
+>[AZURE.IMPORTANT]ワークスペース プランは、Azure サブスクリプションに*リンク*されている場合にのみ変更できます。Azure でワークスペースを作成した場合や、*既に*ワークスペースをリンクしている場合は、このメッセージを無視してください。[opinsights.azure.com](http://opinsights.azure.com) でワークスペースを作成した場合は、[既存のワークスペースを Azure サブスクリプションへリンクする](#link-an-existing-workspace-to-an-Azure-subscription)の手順に従う必要があります。
 
 ### プランの種類の変更
 
@@ -75,13 +72,12 @@ Azure 管理ポータルで、アップグレードするオペレーション �
 
 ユーザーが Microsoft Azure オペレーション インサイトの管理者である場合は、ワークスペースの名前を変更することができます。
 
-###ワークスペース名を変更するには
+### ワークスペース名を変更するには
 
-1. ワークスペース名をクリックします。 <p> ![ワークスペース名](./media/operational-insights-setup-workspace/settings01.png) <p>
-2. [構成] アイコンをクリックします。<p> ![アイコンの構成](./media/operational-insights-setup-workspace/settings02.png) <p>
-3. オペレーション インサイトの **[設定]** ページの、**[ユーザー アカウントの管理]** セクションで、**[ユーザーの管理]** をクリックします。<p> ![ユーザーの管理](./media/operational-insights-setup-workspace/settings03.png) <p>
+1. ワークスペース名をクリックします。![ワークスペース名](./media/operational-insights-setup-workspace/settings01.png)
+2. [構成] アイコンをクリックします。![アイコンの構成](./media/operational-insights-setup-workspace/settings02.png)
+3. オペレーション インサイトの **[設定]** ページの、**[ユーザー アカウントの管理]** セクションで、**[ユーザーの管理]** をクリックします。![ユーザーの管理](./media/operational-insights-setup-workspace/settings03.png)
 4. オペレーション インサイト ポータルで、**[設定]** ページの **[ワークスペース名]** フィールドに新しい名前を入力します。
-
 5. **[保存]** をクリックします。
 
 ## ユーザー情報を変更する
@@ -109,7 +105,7 @@ Microsoft アカウントを持っているユーザーは、通知設定を変�
 
 2. **[保存]** をクリックします。
 
-##<a id="addusertoexistingworkspace"></a>既存のワークスペースへのユーザーの追加
+## 既存のワークスペースへのユーザーの追加
 
 
 次の手順を使用して、オペレーション インサイト ワークスペースにユーザーやグループを追加します。ユーザーやグループは、このワークスペースに関連付けられているすべてのアラートを表示し、操作することができます。
@@ -119,33 +115,27 @@ Microsoft アカウントを持っているユーザーは、通知設定を変�
 ### 既存のワークスペースにユーザーを追加するには
 1. ワークスペース名をクリックします。
 2. [構成] アイコンをクリックします。
-3. オペレーション インサイトの **[設定]** ページの、**[ユーザー アカウントの管理]** セクションで、**[ユーザーの管理]** をクリックします。<p> ![ユーザーの管理](./media/operational-insights-setup-workspace/settings04.png) <p>
-4.  **ユーザーの管理** ] ウィンドウで、**[追加]** をクリックします。<p> ![設定ページ](./media/operational-insights-setup-workspace/manage-users01.png) <p>
-5. オペレーション インサイトが、Azure Active Directory に関連付けられている場合は、**[組織アカウント]** を指定します。
-
-    >[AZURE.NOTE]<p>![ユーザー アカウントの種類の追加](./media/operational-insights-setup-workspace/manage-users02.png)<p>
-6. Microsoft アカウントや組織アカウントの新しいユーザー情報を入力します。組織アカウントを追加する場合は、ユーザーやグループの名前またはメールの別名の一部を入力できます。**[名前の確認]** をクリックして、特定のユーザーやグループを検索します。
- 
-    >[AZURE.NOTE]最適なパフォーマンスの結果を得るには、単一のオペレーション インサイト アカウントに関連付けられている Active Directory グループの数を 1つは管理者用に、1 つはユーザー用の 2 つに制限します。それ以上のグループを使用すると、オペレーション インサイトのパフォーマンスに影響を与える可能性があります。
-
-7. この新しいユーザーのロールを選択します： **[管理者]** または **[ユーザー]**。<p> ![ユーザーのワークスペースのロールの追加](./media/operational-insights-setup-workspace/manage-users03.png) <p>
+3. オペレーション インサイトの **[設定]** ページの、**[ユーザー アカウントの管理]** セクションで、**[ユーザーの管理]** をクリックします。![ユーザーの管理](./media/operational-insights-setup-workspace/settings04.png)
+4. **[ユーザーの管理]** ウィンドウで、**[追加]** をクリックします。![設定ページ](./media/operational-insights-setup-workspace/manage-users01.png)
+5. オペレーション インサイトが、Azure Active Directory に関連付けられている場合は、**[組織アカウント]** を指定します。[AZURE.NOTE]オペレーション インサイトのアカウントが Microsoft アカウントしか使用していない場合、この手順は表示されません。![ユーザー アカウントの種類の追加](./media/operational-insights-setup-workspace/manage-users02.png)
+6. Microsoft アカウントや組織アカウントの新しいユーザー情報を入力します。組織アカウントを追加する場合は、ユーザーやグループの名前またはメールの別名の一部を入力できます。**[名前の確認]** をクリックして、特定のユーザーやグループを検索します。[AZURE.NOTE]最適なパフォーマンスの結果を得るには、単一のオペレーション インサイト アカウントに関連付けられている Active Directory グループの数を 1つは管理者用に、1 つはユーザー用の 2 つに制限します。それ以上のグループを使用すると、オペレーション インサイトのパフォーマンスに影響を与える可能性があります。
+7. この新しいユーザーのロールとして、**[管理者]** または **[ユーザー]** のいずれかを選択します。![ユーザーのワークスペースのロールの追加](./media/operational-insights-setup-workspace/manage-users03.png)
 8. **[OK]** をクリックします。
-    
-    Microsoft アカウントを追加する場合は、指定したメールに、アカウントへの招待が送信されます。招待の指示に従ってオペレーション インサイトに加入すると、ユーザーは、このオペレーション インサイト アカウントのアラートとアカウント情報を表示できます。また、**[ユーザーの管理]** ウィンドウでユーザー情報を表示できます。
- 
-    組織アカウントを追加すると、ユーザーはオペレーション インサイトにすぐにアクセスすることができます。 <p> ![招待](./media/operational-insights-setup-workspace/manage-users04.png) <p>
+
+  Microsoft アカウントを追加する場合は、指定したメールに、アカウントへの招待が送信されます。招待の指示に従ってオペレーション インサイトに加入すると、ユーザーは、このオペレーション インサイト アカウントのアラートとアカウント情報を表示できます。また、**[ユーザーの管理]** ウィンドウでユーザー情報を表示できます。組織アカウントを追加すると、ユーザーはオペレーション インサイトにすぐにアクセスすることができます。![招待](./media/operational-insights-setup-workspace/manage-users04.png)
+
+
 ## 既存のワークスペースに Azure Active Directory の組織を追加する
 
 オペレーション インサイト ワークスペースを Azure Active Directory ドメインに関連付けることができます。これにより、Active Directory からユーザーをオペレーション インサイト ワークスペースに直接追加することができます。別の Microsoft アカウントは必要ありません。
 
 ### 既存のワークスペースに Azure Active Directory の組織を追加するには
 
-1. オペレーション インサイトの [設定] ページで、**[組織の追加]** をクリックします。<p> ![招待](./media/operational-insights-setup-workspace/add-org.png) <p>
+1. オペレーション インサイトの [設定] ページで、**[組織の追加]** をクリックします。![招待](./media/operational-insights-setup-workspace/add-org.png)
 2. 組織のアカウントに関する情報を確認し、**[次へ]** をクリックします。
-
 3. Azure Active Directory ドメインの管理者の ID 情報を入力し、**[サインイン]** をクリックします。
+4. **[アクセスを許可]** をクリックすることで、オペレーション インサイトが Active Directory ドメインの ID 情報を使用できるようにします。![リンク](./media/operational-insights-setup-workspace/ad-existing01.png)
 
-4. **[アクセスを許可]** をクリックして、オペレーション インサイトを有効にし、Active Directory ドメインの ID 情報を使用します。<p> ![リンク](./media/operational-insights-setup-workspace/ad-existing01.png)
 
 ## 既存のユーザー アカウントを編集する
 
@@ -188,7 +178,7 @@ Microsoft アカウントを持っているユーザーは、通知設定を変�
 
 2. ワークスペースを閉じる理由の 1 つを選ぶか、テキスト ボックスに、別の理由を入力します。
 
-3.  **[ワークスペースを閉じる]** をクリックします。
+3. **[ワークスペースを閉じる]** をクリックします。
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

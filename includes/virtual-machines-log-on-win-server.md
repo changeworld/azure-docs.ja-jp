@@ -1,4 +1,3 @@
-<properties services="virtual-machines" title="How to Log on to a Virtual Machine Running Windows Server" authors="KBDAzure" solutions="" manager="timlt" editor="tysonn" />
 
 1. まだサインインしていない場合は、[Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
 
@@ -28,4 +27,4 @@
 
 これで、仮想マシンをリモートで使用して作業できます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.date="06/23/2015" 
 	ms.author="tomfitz"/>
 
 # 新しいゲートウェイを使用する API アプリのプロビジョニング
 
 このトピックでは、Azure API アプリとゲートウェイをデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-完全なテンプレートについては、[新しいゲートウェイを使用する API アプリのテンプレート](https://github.com/tfitzmac/AppServiceTemplates/blob/master/new-gateway-new-plan-new-apiapp.json)に関するページを参照してください。
+アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
+
+完全なテンプレートについては、[新しいゲートウェイを使用する API アプリのテンプレート](../../templates/app-service-api-arm-new-gateway-provision/)に関するページを参照してください。
 
 ## デプロイ対象
 
@@ -105,7 +107,7 @@ API アプリのサービス ホスティング プランを作成します。
             },
             {
               "name": "EmaStorage",
-              "value": "D:\home\data\apiapps"
+              "value": "D:\\home\\data\\apiapps"
             },
             {
               "name": "WEBSITE_START_SCM_ON_SITE_CREATION",

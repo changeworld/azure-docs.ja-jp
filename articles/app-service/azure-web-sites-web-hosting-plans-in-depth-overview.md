@@ -94,5 +94,6 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

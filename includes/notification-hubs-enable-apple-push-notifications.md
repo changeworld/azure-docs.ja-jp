@@ -1,128 +1,128 @@
 
-The Apple Push Notification Service (APNS) uses certificates to authenticate your push notifications. Follow these instructions to create the necessary push certificate to send and receive notifications. For the official APNS feature documentation, see [Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584).
+Apple Push Notification Service (APNS) では、証明書を使用してプッシュ通知を認証します。次の手順に従って、通知を送受信するために必要なプッシュ証明書を作成します。公式な APNS 機能のドキュメントについては、[Apple プッシュ通知サービス](http://go.microsoft.com/fwlink/p/?LinkId=272584)に関するページを参照してください。
 
-##Generate the Certificate Signing Request file
+##証明書の署名要求ファイルを生成する
 
-First you must generate the Certificate Signing Request (CSR) file, which is used by Apple to generate a signed push certificate.
+まず、Apple が署名済みのプッシュ証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成する必要があります。
 
-1. From the Utilities folder, run the Keychain Access tool.
+1. **[Utilities]** フォルダーまたは **[Other]** フォルダーから Keychain Access ツールを実行します。
 
-2. Click **Keychain Access**, expand **Certificate Assistant**, then click **Request a Certificate from a Certificate Authority...**.
+2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
-3. Select your **User Email Address** and **Common Name** , make sure that **Saved to disk** is selected, and then click **Continue**. Leave the **CA Email Address** field blank as it is not required.
+3. **[User Email Address]** と **[Common Name]** を選択し、**[Saved to disk]** が選択されていることを確認して、**[Continue]** をクリックします。必要ではないため、"**CA 電子メール アドレス**" フィールドを空白のままにします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-4. Type a name for the Certificate Signing Request (CSR) file in **Save As**, select the location in **Where**, then click **Save**.
+4. **[Save As]** に証明書署名要求 (CSR) ファイルの名前を入力し、**[Where]** で保存場所を選択して **[Save]** をクリックします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
-  	This saves the CSR file in the selected location; the default location is in the Desktop. Remember the location chosen for this file.
+  	指定選択した場所に CSR ファイルが保存されます。既定の場所は [Desktop] です。このファイル用に選択した場所を忘れないでください。
 
-Next, you will register your app with Apple, enable push notifications, and upload this exported CSR to create a push certificate.
+次に、アプリケーションを Apple に登録し、プッシュ通知を有効にし、このエクスポートした CSR をアップロードしてプッシュ通知を作成します。
 
-##Register your app for push notifications
+##アプリケーションをプッシュ通知に登録する
 
-To be able to send push notifications to an iOS app, you must register your application with Apple and also register for push notifications.  
+iOS アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。
 
-1. If you have not already registered your app, navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> at the Apple Developer Center, log on with your Apple ID, click **Identifiers**, then click **App IDs**, and finally click on the **+** sign to register a new app.
+1. アプリをまだ登録していない場合は、Apple Developer センターで <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> に移動し、Apple ID でログインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリを登録します。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
 
-2. Type a descriptive name for your app in **App ID Description** name. 
+2. **[App ID Description (アプリ ID の説明)]** 名にアプリのわかりやすい名前を入力します。
 
-	Under **Explicit App ID**, enter a **Bundle Identifier** in the form `<Organization Identifier>.<Product Name>` as mentioned in the [App Distribution Guide](http://go.microsoft.com/fwlink/?LinkId=613485). The *Organization Identifier* and *Product Name* you use must match the organization identifier and product name you will use when you create your XCode project. In the screeshot below *NotificationHubs* is used as a organization idenitifier and *GetStarted* is used as the product name. Making sure this matches the values you will use in your XCode project will allow you to use the correct publishing profile with XCode. 
+	**[Explicit App ID (明示的なアプリ ID)]** に、「[App Distribution Guide (アプリ ディストリビューション ガイド)](http://go.microsoft.com/fwlink/?LinkId=613485)」で説明したように `<Organization Identifier>.<Product Name>` の形式で **Bundle Identifier** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
 	
-	Check the **Push Notifications** option in the App Services section, and then click **Continue**.
+	App Services セクションの **[Push Notifications (プッシュ通知)]** オプションを選択し、**[Continue (続行)]** をクリックします。
 
 	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-   	This generates your app ID and requests you to confirm the information. Click **Submit**
+   	これで、アプリケーション ID が生成され、情報の確認が求められます。**[Submit]** をクリックします。
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-confirm-new-appid.png)
 
 
-   	Once you click **Submit**, you will see the **Registration complete** screen, as shown below. Click **Done**.
+   	**[Submit]** をクリックすると、以下のような **[Registration complete]** 画面が表示されます。**[Done]** をクリックします。
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 
-3. Locate the app ID that you just created, and click on its row.
+3. 作成したアプリケーション ID を見つけ、その行をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
 
-   	Clicking on the app ID will display the app details. Click the **Edit** button.
+   	アプリケーション ID をクリックすると、アプリケーションの詳細が表示されます。**[編集]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-4. Scroll to the bottom of the screen, and click the **Create Certificate...** button under the section **Development Push SSL Certificate**.
+4. 画面の下部までスクロールし、**[Development Push SSL Certificate]** セクションの **[Create Certificate]** ボタンをクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-   	This displays the "Add iOS Certificate" assistant.
+   	これで、[Add iOS Certificate] アシスタントが表示されます。
 
-    > [AZURE.NOTE] This tutorial uses a development certificate. The same process is used when registering a production certificate. Just make sure that you use the same certificate type when send notifications.
+    > [AZURE.NOTE]このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。通知の送信と同じ証明書の種類を使用するようにします。
 
-5. Click **Choose File**, browse to the location where you saved the CSR file that you created in the first task, then click **Generate**.
+5. **[Choose File]** をクリックして、最初の作業で CSR ファイルを保存した場所に移動し、**[Generate]** をクリックします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
 
-6. After the certificate is created by the portal, click the **Download** button, and click **Done**.
+6. ポータルで証明書が作成されたら **[Download]** ボタンをクリックし、**[Done]** をクリックします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-   	This downloads the signing certificate and saves it to your computer in your Downloads folder.
+   	これによって、署名証明書がダウンロードされ、コンピューターの Downloads フォルダーに保存されます。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE] By default, the downloaded file a development certificate is named **aps_development.cer**.
+    > [AZURE.NOTE]既定では、ダウンロードした開発証明書ファイルの名前は **aps_development.cer** になっています。
 
-7. Double-click the downloaded push certificate **aps_development.cer**.
+7. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。
 
-   	This installs the new certificate in the Keychain, as shown below:
+   	下図のように、新しい証明書が Keychain にインストールされます。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
-    > [AZURE.NOTE] The name in your certificate might be different, but it will be prefixed with **Apple Development iOS Push Services:**.
+    > [AZURE.NOTE]証明書の名前は異なることがありますが、名前の前に **Apple Development iOS Push Services:** が付けられます。
 
-Later, you will use this certificate to generate a .p12 file to enable authentication with APNS.
+後で、この証明書を使用して .p12 ファイルを生成し、APNS による認証を有効にします。
 
-##Create a provisioning profile for the app
+##アプリケーションのプロビジョニング プロファイルを作成する
 
-1. Back in the <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a>, select **Provisioning Profiles**, select **All**, and then click the **+** button to create a new profile. This launches the **Add iOS Provisiong Profile** Wizard
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-2. Select **iOS App Development** under **Development** as the provisiong profile type, and click **Continue**. 
+2. **[Development]** でプロビジョニング プロファイルの種類として **[iOS App Development]** を選択し、**[Continue]** をクリックします。
 
 
-3. Next, select the app ID you just created from the **App ID** drop-down list, and click **Continue**
+3. 次に、**[App ID (アプリ ID)]** ドロップダウン リストから作成したばかりのアプリケーション ID を選択し、**[Continue (続行)]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
 
-4. In the **Select certificates** screen, select your usual development certificate used for code signing, and click **Continue**. This is not the push certificate you just created.
+4. **[Select certificates (証明書の選択)]** 画面で、コードの署名に使用される通常の開発証明書を選択して、**[Continue (続行)]** をクリックします。これは作成したプッシュの証明書ではありません。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
 
 
-5. Next, select the **Devices** to use for testing, and click **Continue**
+5. 次に、テストに使用する**デバイス**を選択し、**[Continue]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
 
 
-6. Finally, pick a name for the profile in **Profile Name**, click **Generate**, and click **Done**
+6. 最後に、**[Profile Name]** でプロファイルの名前を選択し、**[Generate]** をクリックしてから、**[Done]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
 
-  	This creates a new provisioning profile.
+  	新しいプロビジョニング プロファイルが作成されます。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-
+<!---HONumber=62-->

@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/10/2015" 
+	ms.date="05/25/2015" 
 	ms.author="juliako"/>
 
-# 方法:ジョブの進行状況をチェックする
+#方法: ジョブの進行状況をチェックする
 
-この記事は、[Media Services のビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。 
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
 
-ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。[StateChanged イベント ハンドラーを定義する](#statechange_event_handler) か、[Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](#check_progress_with_queues)ことで、進行状況を確認できます。このトピックでは両方の方法を説明します。 
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。進行状況は [StateChanged イベント ハンドラーを定義する](#statechange_event_handler)か、[Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](#check_progress_with_queues)ことにより確認できます。このトピックでは両方の方法を説明します。
 
-## <a id="statechange_event_handler"></a>StateChanged イベント ハンドラーを定義してジョブの進行状況を監視する
+##<a id="statechange_event_handler"></a>StateChanged イベント ハンドラーを定義してジョブの進行状況を監視する
 
 次のコード例では、StateChanged イベント ハンドラーを定義しています。このイベント ハンドラーはジョブの進行状況を追跡し、状態によってステータスを更新します。このコードでは、LogJobStop メソッドも定義しています。このヘルパー メソッドは、エラー詳細のログ記録を行います。
 
@@ -103,29 +103,29 @@
 
 
 
-## <a id="check_progress_with_queues"></a>Azure キュー ストレージを使用して Media Services ジョブ通知を監視する
+##<a id="check_progress_with_queues"></a>Azure キュー ストレージを使用して Media Services ジョブ通知を監視する
 
-Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure キュー ストレージ](../storage-dotnet-how-to-use-queues.md#what-is) に通知メッセージを配信する機能があります。このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
+Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure キュー ストレージ](../storage-dotnet-how-to-use-queues.md#what-is)に通知メッセージを配信する機能があります。このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
 
-キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。Azure キュー メッセージング アーキテクチャは、信頼性と拡張性に優れています。キュー ストレージのポーリングには、他のメソッドを使用することをお勧めします。 
+キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。Azure キュー メッセージング アーキテクチャは、信頼性と拡張性に優れています。キュー ストレージのポーリングには、他のメソッドを使用することをお勧めします。
 
-Media Services 通知をリッスンする 1 つの一般的なシナリオは、エンコード ジョブの完了後にいくつかの追加タスクを実行する必要があるコンテンツ管理システムを開発しているかどうかです (ワークフローの次の手順のトリガーや、コンテンツの発行など)。 
+Media Services 通知をリッスンする 1 つの一般的なシナリオは、エンコード ジョブの完了後にいくつかの追加タスクを実行する必要があるコンテンツ管理システムを開発しているかどうかです (ワークフローの次の手順のトリガーや、コンテンツの発行など)。
 
-### 考慮事項
+###考慮事項
 
 Azure ストレージ キューを使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
 
 - キュー サービスでは、先入先出法 (FIFO) の順次配送を保証しません。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
 - Azure ストレージ キューはプッシュ サービスではありません。キューをポーリングする必要があります。 
-- キューの数に制限はありません。詳細については、「[キュー サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)」をご覧ください。
-- Azure ストレージ キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」.の記事をご覧ください。
+- キューの数に制限はありません。詳細については、「[Queue サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)」をご覧ください。
+- Azure ストレージ キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」の記事をご覧ください。
 
-### コード例
+###コード例
 
 このセクションのコード例では、次の処理を行います。
 
 1. 通知メッセージの形式にマップする **EncodingJobMessage** クラスを定義します。このコードは、キューから受信したメッセージを **EncodingJobMessage** 型のオブジェクトに逆シリアル化します。
-1. Media Services とストレージのアカウント情報を app.config ファイルから読み込みます。.この情報を使用して、**CloudMediaContext** オブジェクトと **CloudQueue** オブジェクトを作成します。
+1. Media Services とストレージのアカウント情報を app.config ファイルから読み込みます。.この情報を使用して、**CloudMediaContext **オブジェクトと **CloudQueue** オブジェクトを作成します。
 1. エンコード ジョブに関する通知メッセージを受信するキューを作成します。
 1. キューにマップされる通知エンドポイントを作成します。
 1. ジョブに通知エンドポイントを添付し、エンコード ジョブを送信します。複数の通知エンドポイントをジョブに添付できます。
@@ -138,7 +138,7 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
 >[AZURE.NOTE]ジョブの状態を監視するお勧めの方法は、次の例に示すように、通知メッセージをリッスンすることです。
 >
->または、**IJob.State** プロパティを使用してジョブの状態を確認することもできます。**IJob** の状態が **完了** に設定される前に、ジョブの完了に関する通知メッセージが到着する場合があります。**IJob.State** プロパティは、多少遅延しますが正確な状態を反映します。
+>または、**IJob.State** プロパティを使用してジョブの状態を確認することもできます。**IJob** の状態が **[完了]** に設定される前に、ジョブの完了に関する通知メッセージが到着する場合があります。**IJob.State** プロパティは、多少遅延しますが正確な状態を反映します。
 
 	
 	using System;
@@ -425,6 +425,6 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 	job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected 
 	State: Finished
 	
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

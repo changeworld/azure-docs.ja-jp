@@ -48,12 +48,16 @@
 
     アプリの種類が一覧表示されていない場合、[[作業の開始]][start] ページを確認します。
 
-4. この例では、Web アプリを監視しますので、Visual Studio の Azure ツールを使用して SDK をインストールします。Application Insights リソースの名前を付けます。
+4. この例では、Web アプリを監視しますので、Visual Studio の Azure ツールを使用して SDK をインストールします。Application Insights リソースの名前を指定します。
 
-    ![Visual Studio の [新しいプロジェクト] ダイアログで、[Application Insights の追加] にチェック マークを付け、[テレメトリの送り先] の下で新しいアプリの作成か、既存のアプリの使用を選択します。](./media/app-insights-code-sample-export-sql-stream-analytics/030-new-project.png)
+    ![Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。[Send telemetry to] で、新しいリソースを選択するか、既存のリソースを使用します。](./media/app-insights-code-sample-export-sql-stream-analytics/appinsights-d012-addbrown.png)
+
+5. アプリを発行して Application Insights のリソースに表示されるテレメトリ データを確認します。
 
 
 ## Azure でのストレージの作成
+
+連続エクスポートでは、常に Azure のストレージ アカウントにデータが出力されるため、まずストレージを作成する必要があります。
 
 1. [Azure ポータル][portal]で、サブスクリプションのストレージ アカウントを作成します。
 
@@ -86,16 +90,16 @@
     
     表示するイベントの種類を設定します。
 
-    ![[イベントの種類の選択]](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
+    ![イベントの種類の選択](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
 
 ここで、しばらく待機し、ユーザーにアプリケーションを使用させます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー][metrics]に表示され、個々のイベントが[診断検索][diagnostic]に表示されます。
 
-また、データがストレージにエクスポートされます。そこで内容を検査できます。たとえば、Visual Studio にはストレージ ブラウザがあります。
+また、データがストレージにエクスポートされます。そこで内容を検査できます。たとえば、Visual Studio にはストレージ ブラウザーがあります。
 
 
 ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。したがって、イベント データを読み取って必要なフィールドをフィルター処理するコードを記述します。データの処理に関して行えることはありますが、今日の計画は、データを SQL データベースに移動するコードを記述することです。それにより、興味深い多くのクエリを実行しやすくなります。
+イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。このため、イベント データを読み取って必要なフィールドをフィルター処理します。データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL database に移動することです。それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## Azure SQL Database の作成
 
@@ -104,7 +108,7 @@
 ![[新規]、[データ]、[SQL]](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
 
 
-データベース サーバーに Azure サービスがアクセス可能であることを確認してください。
+データベース サーバーに Azure サービスがアクセス可能であることをご確認ください。
 
 
 ![[参照]、[サーバー]、[使用するサーバー]、[設定]、[ファイアウォール]、[Azure へのアクセスの許可]](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
@@ -115,7 +119,7 @@
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/31-sql-table.png)
 
-新しいクエリーを作成し、次の T-SQL を実行します。
+新しいクエリを作成し、次の T-SQL を実行します。
 
 ```SQL
 
@@ -196,7 +200,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 * `webapplication27` は Application Insights リソースの名前です。 
 * `1000...` は Application Insights リソースのインストルメンテーション キーです。 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類を確認してください。
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類をご確認ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。

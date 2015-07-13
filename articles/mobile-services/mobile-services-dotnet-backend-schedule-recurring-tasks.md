@@ -4,17 +4,16 @@
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
-	writer="" 
 	manager="dwrede" 
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="2/26/2015" 
+	ms.date="05/20/2015" 
 	ms.author="glenga"/>
 
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
@@ -29,16 +28,9 @@
 + 外部データ (ツイート、RSS エントリ、場所情報など) の要求と格納。
 + 格納されている画像の処理とサイズ変更。
 
-このチュートリアルでは、ジョブ スケジューラを使用してスケジュールされたジョブを作成する手順について以降に説明します。このジョブでは、Twitter からのツイート データを要求し、新しい Updates テーブルにツイートを格納します。
+このチュートリアルでは、ジョブ スケジューラを使用してスケジュールされたジョブを作成する手順について説明します。このジョブでは、Twitter にツイート データを要求し、そのツイートを新しい Updates テーブルに格納します。
 
-1. [Twitter アクセスを登録して資格情報を保存する]
-2. [LINQ to Twitter ライブラリをダウンロードしてインストールする]
-3. [新しい Updates テーブルを作成する]
-4. [新しいスケジュール済みジョブを作成する]
-5. [スケジュールされたジョブをローカルでテストする]
-6. [サービスを発行してジョブを登録する]
-
->[AZURE.NOTE]このチュートリアルでは、サード パーティの LINQ to Twitter ライブラリを使用して、Twitter v1.1API への OAuth 2.0 アクセスを簡単にします。このチュートリアルを完了するには、LINQ to Twitter の NuGet パッケージをダウンロードしてインストールする必要があります。詳細については、[LINQ to Twitter の CodePlex プロジェクトに関するページ]を参照してください。
+>[AZURE.NOTE]このチュートリアルでは、サード パーティの LINQ to Twitter ライブラリを使用して、Twitter v1.1 API への OAuth 2.0 アクセスを簡単にします。このチュートリアルを完了するには、LINQ to Twitter の NuGet パッケージをダウンロードしてインストールする必要があります。詳細については、[LINQ to Twitter の CodePlex プロジェクトに関するページ]を参照してください。
 
 ##<a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
 
@@ -283,12 +275,12 @@
 これで、スケジュールされた新しいジョブがモバイル サービスに作成されました。このジョブは、無効化または変更するまで、スケジュールに従って実行されます。
 
 <!-- Anchors. -->
-[Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
-[LINQ to Twitter ライブラリをダウンロードしてインストールする]: #install-linq2twitter
-[新しい Updates テーブルを作成する]: #create-table
-[新しいスケジュール済みジョブを作成する]: #add-job
-[スケジュールされたジョブをローカルでテストする]: #run-job-locally
-[サービスを発行してジョブを登録する]: #register-job
+[Register for Twitter access and store credentials]: #get-oauth-credentials
+[Download and install the LINQ to Twitter library]: #install-linq2twitter
+[Create the new Updates table]: #create-table
+[Create a new scheduled job]: #add-job
+[Test the scheduled job locally]: #run-job-locally
+[Publish the service and register the job]: #register-job
 [Next steps]: #next-steps
 
 <!-- Images. -->
@@ -308,4 +300,5 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

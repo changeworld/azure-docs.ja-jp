@@ -29,7 +29,7 @@
 
 ## Bottle、Django、Flask
 
-Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。 Azure App Service に最初の Web アプリを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイメントを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
+Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。 Azure App Service に最初の Web アプリを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
 
 - [Bottle を使用した Web アプリの作成](web-sites-python-create-deploy-bottle-app.md)
 - [Django を使用した Web アプリの作成](web-sites-python-create-deploy-django-app.md)
@@ -40,7 +40,7 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 
 このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure プレビュー ポータルにアクセスできることを前提としています。
 
-既存の Web アプリがない場合、[Azure プレビュー ポータル](https://portal.azure.com)から自分で作成できます。画面左下にある [新規] ボタンをクリックし、次に **[Web + モバイル]**、**[API アプリ]** の順にクリックします。
+既存の Web アプリがない場合、[Azure プレビュー ポータル](https://portal.azure.com)から自分で作成できます。画面左下にある [新規] ボタンをクリックし、次に **[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
 
 ## Git 発行
 
@@ -226,7 +226,7 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
       <action type="Rewrite" url="^/FlaskWebProject/static/.*" appendQueryString="true" />
     </rule>
 
-`WSGI_ALT_VIRTUALENV_HANDLER` はWSGI ハンドラーを指定する場所です。上記の例では、ハンドラーはルート フォルダーの `app.py` の `wsgi_app` という名前の関数であるため、`app.wsgi_app` になります。
+`WSGI_ALT_VIRTUALENV_HANDLER` は WSGI ハンドラーを指定する場所です。上記の例では、ハンドラーはルート フォルダーの `app.py` の `wsgi_app` という名前の関数であるため、`app.wsgi_app` になります。
 
 `PYTHONPATH` はカスタマイズ可能ですが、requirements.txt で指定することで、仮想環境にすべての依存関係をインストールする場合は、変更する必要はありません。
 
@@ -371,11 +371,11 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
 
 [AZURE.INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 

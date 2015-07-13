@@ -23,9 +23,9 @@
 
 一般的に、PHP Web アプリを作成するのは、Azure App Service で*任意*の Web アプリを作成するのと変わりません。既定で、PHP はすべての Web アプリに対して有効になっていますPHPの構成に関する詳細 (または独自のカスタマイズされた PHP ランタイムの提供) については、「[Azure App Service Web Apps での PHP の構成方法]」をご覧ください。
 
-ここで説明する各オプションは、共有ホスティング環境を利用して無料で Web アプリを作成する方法を示していますが、CPU と帯域幅の使用については一定の制限があります。詳細については、「[App Service 料金]」をご覧ください。アプリ サービスで Web アプリをアップグレードし、拡張する方法については、「[Azure App Service の Web アプリをスケーリングする]」をご覧ください。
+ここで説明する各オプションは、共有ホスティング環境を利用して無料で Web アプリを作成する方法を示していますが、CPU と帯域幅の使用については一定の制限があります。詳細については、「[App Service 料金]」をご覧ください。アプリ サービスで Web アプリをアップグレードし、スケールする方法については、「[Azure App Service の Web アプリをスケールする]」をご覧ください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## Azure プレビュー ポータルを使用して PHP Web アプリを作成する
 
@@ -77,19 +77,19 @@ Azure PowerShell コマンドレットを使用して PHP Web アプリを作成
 
 ## 次のステップ
 
-Azure App Service で PHP Web アプリを作成したので、アプリの管理、構成、監視、スケーリング、このアプリへの展開を行うことができます。詳細については、次のリンクを参照してください。
+Azure App Service で PHP Web アプリを作成したので、アプリの管理、構成、監視、スケール、このアプリへのデプロイを行うことができます。詳細については、次のリンクを参照してください。
 
 * [Azure App Service での Web アプリの構成](web-sites-configure.md)
-* [Azure App Service Web アプリでの PHP の構成方法]
+* [Azure App Service Web Apps での PHP の構成方法]
 * [Azure ポータルによる Web アプリの管理](web-sites-manage.md)
 * [Azure App Service の Web アプリの監視](web-sites-monitor.md)
-* [Azure App Service での Web アプリの拡張]
-* [Azure App Service での GIT による継続的なデプロイメント](web-sites-publish-source-control.md)
+* [Azure App Service での Web アプリのスケール]
+* [Azure App Service での GIT による継続的なデプロイ](web-sites-publish-source-control.md)
 
 エンド ツー エンドのチュートリアルについては、「[PHP デベロッパー センター - チュートリアル](/develop/php/tutorials/)」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
@@ -97,12 +97,11 @@ Azure App Service で PHP Web アプリを作成したので、アプリの管�
 [Azure CLI]: ../xplat-cli.md
 [powershell-cmdlets]: ../powershell-install-configure.md
 [Azure App Service Web Apps での PHP の構成方法]: web-sites-php-configure.md
-[Azure App Service Web アプリでの PHP の構成方法]: web-sites-php-configure.md
 [Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする]: web-sites-php-mysql-deploy-use-git.md
 [Azure App Service での WordPress Web アプリの作成]: web-sites-php-web-site-gallery.md
 [App Service 料金]: /pricing/details/app-service/
-[Azure App Service での Web アプリの拡張]: web-sites-scale.md
-[Azure App Service の Web アプリをスケーリングする]: web-sites-scale.md
+[Azure App Service での Web アプリのスケール]: web-sites-scale.md
+[Azure App Service の Web アプリをスケールする]: web-sites-scale.md
  
 
 <!---HONumber=62-->

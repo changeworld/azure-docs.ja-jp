@@ -100,7 +100,7 @@ Azure 仮想マシンのバックアップを開始するにはまずバック�
 
 7. バックアップ資格情報コンテナーをクリックして、**[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。![ダッシュ ボード ページの仮想マシンのバックアップ手順](./media/backup-azure-vms-introduction/vmbackup-instructions.png)
 
-    >[AZURE.NOTE]資格情報コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることをご確認ください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)][vault-storage-redundancy]」をご覧ください。
+    >[AZURE.NOTE]コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。詳細については、「setting the storage redundancy option in the backup vault (バックアップ コンテナーのストレージ冗長オプションの設定)」「vault-storage-redundancy (コンテナー ストレージ冗長)」をご覧ください。
 
 ### 2.VM エージェント
 Azure 仮想マシンのバックアップを開始する前に、Azure VM エージェントが仮想マシンに正しくインストールされていることをご確認ください。仮想マシンをバックアップするために、Azure Backup サービスは VM エージェントの拡張機能をインストールします。VM エージェントは仮想マシンを作成する際のオプション コンポーネントであるため、仮想マシンをプロビジョニングする前に、VM エージェントのチェック ボックスがオンになっていることを確認する必要があります。
@@ -133,4 +133,7 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 
 + バックアップ ジョブの監視
 
-<!---HONumber=GIT-SubDir--> 
+
+ 
+
+<!---HONumber=62-->

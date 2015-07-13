@@ -1,12 +1,12 @@
-﻿
+
 次に、登録を試みる前にユーザーが認証されるように、通知を登録するタイミングを変更する必要があります。
 
 
-1. Eclipse の Package Explorer で ToDoActivity.java ファイルを開き、 `onCreate` メソッドを見つけます。 `onCreate` メソッドの次のコードを  `createTable` メソッドの開始部分に移動します。
+1. Eclipse の Package Explorer で ToDoActivity.java ファイルを開き、`onCreate` メソッドを見つけます。`onCreate` メソッドの次のコードを `createTable` メソッドの開始部分に移動します。
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
-      `authenticate` メソッドの完了時に、 `createTable` メソッドが呼び出されます。 `createTable` メソッド全体は、次のようになります。
+     `authenticate` メソッドの完了時に、`createTable` メソッドが呼び出されます。`createTable` 全体は、次のようになります。
 
         private void createTable() {
         
@@ -26,6 +26,4 @@
             refreshItemsFromTable();
         }	
 
-
-
-<!--HONumber=52-->
+<!---HONumber=62-->

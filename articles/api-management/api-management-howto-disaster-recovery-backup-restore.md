@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/17/2015" 
+	ms.date="06/24/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
@@ -38,7 +38,7 @@ Azure リソース マネージャーを使用してリソースに実行する�
 
 最初の手順は、Azure Active Directory アプリケーションの作成です。API Management サービス インスタンスが含まれたサブスクリプションを使用して[管理ポータル](http://manage.windowsazure.com/)にログインし、既定の Azure Active Directory の **[アプリケーション]** タブに移動します。
 
->[AZURE.NOTE]Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。既定のディレクトリを見つける方法の詳細については、「[Azure ポータルで既定のディレクトリを見つける](resource-group-create-work-id-from-persona.md/#locate-your-default-directory-in-the-azure-portal)」を参照してください。
+>[AZURE.NOTE]Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。既定のディレクトリを見つける方法の詳細については、「[Azure ポータルで既定のディレクトリを見つける](../virtual-machines/resource-group-create-work-id-from-persona.md/#locate-your-default-directory-in-the-azure-portal)」を参照してください。
 
 ![Create Azure Active Directory application][api-management-add-aad-application]
 
@@ -156,7 +156,7 @@ API Management サービスをバックアップするには、次の HTTP 要�
 	    backupName : {backup blob name}  
 	}'
 
-`Content-Type` 要求ヘッダーの値を `application\json` に設定します。
+`Content-Type` 要求ヘッダーの値を `application/json` に設定します。
 
 復元は、完了までに 30 分以上かかることのある長時間の操作です。要求が成功して復元処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。`Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。復元の進行中は、「202 Accepted」状態コードの受け取りが続きます。応答コードの `200 OK` は、復元処理が正常に終了したことを示します。
 
@@ -189,4 +189,4 @@ API Management サービスをバックアップするには、次の HTTP 要�
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

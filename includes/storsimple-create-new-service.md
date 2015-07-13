@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="新しい StorSimple Manager サービスを作成する"
-   description="StorSimple Manager サービスの新しいインスタンスを作成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/28/2015"
-   ms.author="v-sharos" />
 
 
 #### 新しいサービスを作成するには

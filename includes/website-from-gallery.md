@@ -11,7 +11,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 ![Wordpress blog][13]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## ポータルで Web アプリを作成する
 
@@ -78,4 +78,4 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 [resourcegroup]: ./media/website-from-gallery/showgroup.png
 [browse]: ./media/website-from-gallery/browse.png
 
-<!--HONumber=54-->
+<!---HONumber=62-->

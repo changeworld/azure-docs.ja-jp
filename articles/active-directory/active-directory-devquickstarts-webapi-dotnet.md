@@ -139,5 +139,6 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 [Build a .NET Native Client with Azure AD (Azure AD の使用による .NET ネイティブ クライアントの構築)](../active-directory-devquickstarts-native-dotnet.md)
 
 その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

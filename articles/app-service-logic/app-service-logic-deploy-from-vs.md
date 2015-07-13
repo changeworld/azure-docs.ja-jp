@@ -64,4 +64,5 @@
 今後は、ソース管理でロジック アプリを修正し、Visual Studio を使用して新しいバージョンをデプロイできます。Azure ポータルで定義を直接変更した場合、次回 Visual Studio からデプロイすると、変更内容がオーバーライドされることに注意してください。
 
 Visual Studio を使用せず、ソース管理からロジック アプリをデプロイするツールを使用する場合は、いつでも [API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

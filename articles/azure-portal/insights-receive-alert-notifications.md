@@ -61,5 +61,6 @@
 * コードがクラウドで実行する方法を正確に理解する場合は、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

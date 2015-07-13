@@ -40,7 +40,7 @@ BizTalk XPath Extractor | **アクション** API アプリ。特定の XPath �
 待機 | 入力した期間中、または特定の時刻まで実行を延期します。ロジック アプリに追加すると、アプリ全体の実行を遅延させることができます。
 
 
-	> [AZURE.NOTE] 属性 ("<authorid= ”1”>abc</author>" など) を持つ単純なノードが入力 xml にある場合、ライブラリの JSON の出力は { “author”: { “@id” : “1”, “#text”: “abc”}}. "Id" 属性を処理するために、新しい "#text" キーがノードのテキスト コンテンツに追加されます。 この種のノードを処理するには、定数のキーを追加します。 Newtonsoft.Json ライブラリではこのように設計されています。 定数のキーを SQL に挿入するとき、"JsonOutput.Author" ではなく、"JSONOutput.Author.#text" を使用してください。
+	> [AZURE.NOTE] If the input xml has a simple node with an attribute (like "<authorid= ”1”>abc</author>"), then the JSON output of the library is { “author”: { “@id” : “1”, “#text”: “abc”}}. To handle the “Id” attribute, a new “#text” key is added for the text content of the node. To handle this kind of node, add a constant key. This is by design in the Newtonsoft.Json library. When you insert this into SQL, use “JSONOutput.Author.#text”; do not use “JsonOutput.Author”.
 
 これらの API Apps を使用して、さまざまなメッセージ処理やデータのタスクを完了することができます。たとえば、BizTalk ルール API アプリを使用すると、注文を受信し、特定の数量が注文されたときに割引を適用することができます。または、郵便番号に従って、特定の税率を課すことができます。
 
@@ -124,22 +124,14 @@ Microsoft Azure App Service は、これらの統合 API アプリを使用で�
 
 
 ## 統合 API Apps の他のリソース
-[VETR を使用して EAI ロジック アプリを作成する](app-service-logic-create-EAI-logic-app-using-VETR.md)<br/>
-[XML ドキュメントを変換する](app-service-logic-transform-xml-documents.md)<br/>
-[BizTalk のルールを使用する](app-service-logic-use-biztalk-rules.md)<br/>
-[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+[VETR を使用して EAI ロジック アプリを作成する](app-service-logic-create-EAI-logic-app-using-VETR.md)<br/> [XML ドキュメントを変換する](app-service-logic-transform-xml-documents.md)<br/> [BizTalk のルールを使用する](app-service-logic-use-biztalk-rules.md)<br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
 
 ## Logic Apps と Web Apps に関するガイド
-[Logic Apps とは](app-service-logic-what-are-logic-apps.md)<br/>
-[Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-app-azure-portal.md)
+[Logic Apps とは](app-service-logic-what-are-logic-apps.md)<br/> [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-overview.md)
 
 
 ## その他のコネクタ
-[エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md)<br/>
-[企業間コネクタ](app-service-logic-b2b-connectors.md)<br/>
-[ソーシャル コネクタ](app-service-logic-social-connectors.md)<br/> [プロトコル コネクタ](app-service-logic-protocol-connectors.md)<br/>
-[アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md)<br/>
-[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>
-[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
-<!--HONumber=54--> 
+[エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md)<br/> [企業間コネクタ](app-service-logic-b2b-connectors.md)<br/> [ソーシャル コネクタ](app-service-logic-social-connectors.md)<br/> [プロトコル コネクタ](app-service-logic-protocol-connectors.md)<br/> [アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md)<br/> [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+
+<!---HONumber=62-->

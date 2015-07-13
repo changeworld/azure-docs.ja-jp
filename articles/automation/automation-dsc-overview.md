@@ -94,7 +94,7 @@ Azure Automation DSC は Azure Automation DSC によって管理されるノー�
 現在、Azure Automation DSC では、DSC ノードを管理するために [Azure リソース マネージャーの PowerShell モジュール](../powershell-azure-resource-manager.md)で以下のコマンドレットが提供されます。
 
 -	`Get-AzureAutomationDscNode`  
--	`Register-AzureAutomationDscNode` (ノードとして Azure v2  VM をオンボードするために使用)
+-	`Register-AzureAutomationDscNode` (ノードとして Azure v2 VM をオンボードするために使用)
 -	`Get-AzureAutomationDscOnboardingMetaconfig` (ノードのオンボードに使用)
 -	`Set-AzureAutomationDscNode` (ノードとノード構成のマッピングの設定/更新に使用)
 -	`Unregister-AzureAutomationDscNode`
@@ -220,4 +220,6 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure Automation DSC VM で `Register-AzureAutomationDscNode`、`Set-AzureAutomationDscExtension`、または Azure プレビュー ポータルの Azure Automation DSC VM 拡張機能を使用して、管理対象の Azure VM をオンボードする際に、「**コンピューター名が指定されておらず、構成ディレクトリに構成ファイルが存在しません**」と表示され、登録に失敗する場合がありますが、これは誤報であり、VM 登録は実際には正常に行われています。登録が正常に行われたかどうかは、`Get-AzureAutomationDscNode` コマンドレットを使用して確認できます。
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

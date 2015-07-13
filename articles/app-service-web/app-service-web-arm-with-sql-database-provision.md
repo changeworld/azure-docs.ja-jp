@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="SQL Database を使用する Web アプリをプロビジョニングする" 
-	description="SQL Database を含む Web アプリをデプロイするには、Azure Resource Manager テンプレートを使用します。" 
+	description="SQL Database を含む Web アプリをデプロイするには、Azure リソース マネージャー テンプレートを使用します。" 
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="tfitzmac" 
@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2015" 
+	ms.date="06/22/2015" 
 	ms.author="tomfitz"/>
 
 # Web アプリと SQL Database をプロビジョニングする
 
-このトピックでは、Web アプリと SQL Database をデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、そのままデプロイで使用することも、要件に合わせてカスタマイズすることもできます。
+このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure Resource Manager テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-完全なテンプレートについては、「[Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](https://github.com/tfitzmac/AppServiceTemplates/blob/master/webandsql.json)」を参照してください。
+アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](app-service-deploy-complex-application-predictably.md)」を参照してください。
+
+完全なテンプレートについては、「[Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](../../templates/app-service-web-arm-with-sql-database-provision/)」を参照してください。
 
 ## デプロイ対象
 
@@ -114,7 +116,7 @@
 
 ## デプロイするリソース
 
-### SQL Server とデータベース
+### SQL Server と Database
 
 新しい SQL Server とデータベースを作成します。サーバーの名前を **serverName** パラメーターに、場所を **serverLocation** パラメーターに指定します。新しいサーバーを作成するときは、データベース サーバー管理者のログイン名とパスワードを指定する必要があります。
 
@@ -176,7 +178,7 @@
       },
       "properties": {
         "name": "[parameters('siteName')]",
-        "serverFarm": "[parameters('hostingPlanName')]"
+        "serverFarmId": "[parameters('hostingPlanName')]"
       },
       "resources": [
         {
@@ -187,7 +189,7 @@
           "properties": {
               "DefaultConnection":{
               "value":"[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('serverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('administratorLogin'), '@', parameters('serverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
-              "type": 2 //SQL
+              "type": 2 
             },
           }
         }

@@ -204,11 +204,11 @@ TXT レコードまたは MX レコードを作成し、Web サイトからサ�
 
 ユーザー アカウントを追加した後に、カスタム ドメイン名をクラウド サービスに追加した場合、新しいドメイン名を使用するための更新作業が必要になる場合があります。たとえば、ユーザーのアカウントを編集して、カスタム ドメインを使用するように電子メール アドレスを設定するする必要があります。
 
-## 参照トピック
+## 次の手順
 
 - [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
 - [StackOverflow](http://stackoverflow.com/questions/tagged/azure)
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx) 
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

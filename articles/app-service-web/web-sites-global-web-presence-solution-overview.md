@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure App Service Web アプリにグローバル Web プレゼンスを作成する" 
-	description="このガイドでは、Azure App Service Web アプリに組織の (.COM) サイトをホストする方法 (技術概要) について説明します。これには、デプロイメント、カスタム ドメイン、SSL、監視が含まれます。" 
+	pageTitle="Azure App Service Web Apps にグローバル Web プレゼンスを作成する" 
+	description="このガイドでは、Azure App Service Web Apps に組織の (.COM) サイトをホストする方法 (技術概要) について説明します。これには、デプロイ、カスタム ドメイン、SSL、監視が含まれます。" 
 	editor="jimbe" 
 	manager="wpickett" 
 	authors="cephalin" 
@@ -17,41 +17,41 @@
 	ms.author="cephalin"/>
 
 
-# Azure App Service Web アプリにグローバル Web プレゼンスを作成する
+# Azure App Service Web Apps にグローバル Web プレゼンスを作成する
 
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリは、.COM サイトにグローバル Web プレゼンスを確立するために必要な機能をすべて備えています。組織の規模に関係なく、ビジネス、ブランド認識、顧客とのコミュニケーションを促進するには、堅牢なセキュリティで保護された、スケーラブルなプラットフォームが必要です。App Service Web アプリは、Microsoft がサポートするビジネス継続性により、企業のブランドとアイデンティティを維持します。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps は、.COM サイトにグローバル Web プレゼンスを確立するために必要な機能をすべて備えています。組織の規模に関係なく、ビジネス、ブランド認識、顧客とのコミュニケーションを促進するには、堅牢なセキュリティで保護された、スケーラブルなプラットフォームが必要です。App Service Web Apps は、Microsoft がサポートするビジネス継続性により、企業のブランドとアイデンティティを維持します。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-以下は、App Service Web アプリで実行されている .COM Web サイトの例です。技術的な投資を最小限に抑えて、Web アプリをその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
+以下は、App Service Web Apps で実行されている .COM Web サイトの例です。技術的な投資を最小限に抑えて、Web Apps をその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/corp-website-visio.svg" width="100%" height="100%"></object>
 
-> [AZURE.NOTE]このガイドでは、Azure App Service Web アプリで公開されている .COM サイトを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、Azure App Service Web アプリで実装できるその他の一般的なソリューションもあります。これらのソリューションについては、[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)と[基幹業務アプリケーション](web-sites-business-application-solution-overview.md)のガイドをご覧ください。
+> [AZURE.NOTE]このガイドでは、Azure App Service Web Apps で公開されている .COM サイトを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、Azure App Service Web Apps で実装できるその他の一般的なソリューションもあります。これらのソリューションについては、[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)と[基幹業務アプリケーション](web-sites-business-application-solution-overview.md)のガイドをご覧ください。
 
 ## 最初から作成するか、既存のアセットを使用する
 
-ギャラリーの人気の CMS から新しいサイトをすばやく作成するか、またはさまざまな言語とフレームワークから既存の Web アセットを App Service Web アプリに取り込みます。
+ギャラリーの人気の CMS から新しいサイトをすばやく作成するか、またはさまざまな言語とフレームワークから既存の Web アセットを App Service Web Apps に取り込みます。
 
 Azure Marketplace では、[Orchard]、[Umbraco]、[Drupal]、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
-既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web アプリで実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
+既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web Apps で実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
 
-## 確実に公開する
+## 確実に発行する
 
-既存のソース管理システムから継続的に直接公開し、コンテンツのライブテストを行うことによって、Web サイトを確実に公開します。
+既存のソース管理システムから継続的に直接発行し、コンテンツのライブテストを行うことによって、Web サイトを確実に発行します。
 
-計画段階、プロトタイピング、サイト開発の初期段階で、App Service Web アプリのサイトを[ステージング スロットにデプロイ]して実際に運用する前に実際の動作バージョンを確認できます。ソース管理を Web アプリと統合することにより、ステージング スロットへ[継続的に公開]し、準備ができたらダウンタイムなしで実稼働環境にスワップできます。実稼働サイトで問題が発生した場合は、すぐにサイトの以前のバージョンにスワップできます。
+計画段階、プロトタイピング、サイト開発の初期段階で、App Service Web Apps のサイトを[ステージング スロットにデプロイ]して実際に運用する前に実際の動作バージョンを確認できます。ソース管理を Web Apps と統合することにより、ステージング スロットへ[継続的に発行]し、準備ができたらダウンタイムなしで実稼働環境にスワップできます。実稼働サイトで問題が発生した場合は、すぐにサイトの以前のバージョンにスワップできます。
 
 また、実際の Web サイトへの変更を計画する場合、実稼働環境でのテスト機能を使用して、提案されている更新で簡単に [A/B テストを実行]できます。また、実際のユーザーの行動を分析し、サイトの設計において情報を得た上で決断できるようになります。
 
 ## ブランドとセキュリティ保護
 
-無料の App Service Web アプリ ドメインを使用するか、登録したドメイン名にマップし、証明機関の署名入り SSL 証明書でブランドを安全に保護します。
+無料の App Service Web Apps ドメインを使用するか、登録したドメイン名にマップし、証明機関の署名入り SSL 証明書でブランドを安全に保護します。
 
-Web サイトを Web アプリで実行する場合、***.azurewebsites.net** ドメインは無料です。または、Web サイトを GoDaddy などの DNS レジストリから取得した[カスタム ドメイン] (contoso.com など) にマップすることもできます。
+Web サイトを Web Apps で実行する場合、***.azurewebsites.net** ドメインは無料です。または、Web サイトを GoDaddy などの DNS レジストリから取得した[カスタム ドメイン] (contoso.com など) にマップすることもできます。
 
-ユーザー情報の収集、電子商取引の実行、その他の機密データ管理などを行う場合は、ブランドの評判や顧客を [HTTPS] で保護できます。***.azurewebsites.net** ドメイン名にはすでに SSL 証明書が付属しており、カスタム ドメインを使用する場合は、SSL 証明書を Web アプリ用に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
+ユーザー情報の収集、電子商取引の実行、その他の機密データ管理などを行う場合は、ブランドの評判や顧客を [HTTPS] で保護できます。***.azurewebsites.net** ドメイン名にはすでに SSL 証明書が付属しており、カスタム ドメインを使用する場合は、SSL 証明書を Web Apps 用に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
 
 ## グローバル化
 
@@ -65,7 +65,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、.COM サイトを最適化します。
 
-ワークロードのサイズに関係なく、App Service Web アプリの[スケール アップやスケール アウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
+ワークロードのサイズに関係なく、App Service Web Apps の[スケールアップやスケールアウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
 
 [Azure Redis Cache] を使用して Web サイトの応答性を向上します。バックエンド データベースのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などのその他のことに使用します。
 
@@ -109,7 +109,7 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 [Git]: web-sites-publish-source-control.md
 
 [ステージング スロットにデプロイ]: web-sites-staged-publishing.md
-[継続的に公開]: http://rickrainey.com/2014/01/21/continuous-deployment-github-with-azure-web-sites-and-staged-publishing/
+[継続的に発行]: http://rickrainey.com/2014/01/21/continuous-deployment-github-with-azure-web-sites-and-staged-publishing/
 [A/B テストを実行]: http://blogs.msdn.com/b/tomholl/archive/2014/11/10/a-b-testing-with-azure-websites.aspx
 
 [カスタム ドメイン]: web-sites-custom-domain-name.md
@@ -120,7 +120,7 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 [Azure CDN と Web アプリを統合させて]: cdn-websites-with-cdn.md
 [CDN ノード]: https://msdn.microsoft.com/library/azure/gg680302.aspx
 
-[スケール アップやスケール アウト]: web-sites-scale.md
+[スケールアップやスケールアウト]: web-sites-scale.md
 [Azure Management Portal]: http://manage.windowsazure.com/
 [サービス管理 API]: https://msdn.microsoft.com/library/azure/ee460799.aspx
 [PowerShell スクリプト]: https://msdn.microsoft.com/library/azure/jj152841.aspx

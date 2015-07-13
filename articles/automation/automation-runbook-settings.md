@@ -58,6 +58,6 @@ Runbook の設定変更は、Azure 管理ポータルで対象 Runbook の **[�
 
 ## 関連記事:
 - [Runbook の出力とメッセージ](../automation-runbook-output-and-messages) 
-- [Runbook の作成またはインポート](https://msdn.microsoft.com/library/dn643637.aspx)
+- [Runbook の作成またはインポート](https://msdn.microsoft.com/library/dn643637.aspx) 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

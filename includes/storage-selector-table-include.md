@@ -6,4 +6,5 @@
 - [PHP](../articles/storage/storage-php-how-to-use-table-storage.md)
 - [Ruby](../articles/storage/storage-ruby-how-to-use-table-storage.md)
 - [Python](../articles/storage/storage-python-how-to-use-table-storage.md)
-<!--HONumber=52-->
+
+<!---HONumber=62-->

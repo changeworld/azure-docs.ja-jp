@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="PuTTY を使用してデバイスのシリアル コンソールに接続する"
-   description="PuTTY のターミナル エミュレーション ソフトウェアを使用して StorSimple デバイスに接続する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/01/2015"
-   ms.author="v-sharos" />
 
 #### シリアル コンソールを使用して接続するには
 
@@ -45,4 +29,4 @@
 7. **[開く]** をクリックして、シリアル セッションを開始します。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

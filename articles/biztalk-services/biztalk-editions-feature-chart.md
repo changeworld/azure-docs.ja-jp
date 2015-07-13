@@ -1,40 +1,51 @@
-<properties 
-	pageTitle="BizTalk Services のエディションに含まれる機能の詳細情報 | Azure" 
-	description="BizTalk Services のエディション(Free、Developer、Basic、Standard、Premium) の機能を比較します。MABS、WABS" 
-	services="biztalk-services" 
-	documentationCenter="" 
-	authors="MandiOhlinger" 
-	manager="dwrede" 
+<properties
+	pageTitle="BizTalk Services のエディションに含まれる機能の詳細情報 | Azure"
+	description="BizTalk サービスのエディション (無料、開発者、基本、標準、およびプレミアム) の機能を比較します。MABS、WABS"
+	services="biztalk-services"
+	documentationCenter=""
+	authors="MandiOhlinger"
+	manager="dwrede"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="biztalk-services" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2015" 
+<tags
+	ms.service="biztalk-services"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="03/03/2015"
 	ms.author="mandia"/>
-
-
 
 
 # BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート
 
-Azure BizTalk Services には、無料、開発者、基本、標準、およびプレミアムの各エディションが用意されています。
-
-**無料 (プレビュー)**: ハイブリッド接続の作成と管理が可能です。ハイブリッド接続とは、Azure Web サイトと内部設置型システム (たとえば SQL Server) とを簡単に接続するための手段です。 
-
-**開発者**: ハイブリッド接続、EAI および EDI メッセージ処理 (使いやすい取引先管理ポータルあり)、一般的な EDI スキーマのサポート、X12 および AS2 でのリッチな EDI 処理などの機能が含まれます。HTTP/S、REST、FTP、WCF、および SFTP プロトコルを使用してメッセージの読み取りと書き込みを行うクラウド内のサービスを接続する一般的な EAI シナリオを作成できます。内部設置型の LOB システムへの接続が可能であり、SAP、Oracle eBusiness、Oracle DB、Siebel、および SQL Server のためのすぐに使えるアダプターが用意されています。すべての機能は、開発とデプロイを容易にする Visual Studio ツールを使用した開発者中心の環境で使用できます。目的は開発とテストに限定されており、サービス レベル アグリーメント (SLA) はありません。
-
-**基本**: 開発者エディションのほとんどの機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。高可用性と拡張オプションに加えてサービス レベル アグリーメント (SLA) も提供されます。
-
-**標準**: 基本エディションのすべての機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。高可用性と拡張オプションに加えてサービス レベル アグリーメント (SLA) も提供されます。
+Azure BizTalk サービスは複数のエディションから選択できます。このトピックでは、シナリオとビジネス ニーズに合ったエディションを決定する方法について説明します。
 
 
-**プレミアム**: 標準エディションのすべての機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。さらに、アーカイブと高可用性の機能も含まれており、サービス レベル アグリーメント (SLA) に基づくスケールも可能です。
+## 各エディションの説明
+
+**無料 (プレビュー)**
+
+ハイブリッド接続を作成して管理できます。ハイブリッド接続とは、Azure Web サイトと内部設置型システム (たとえば SQL Server) とを簡単に接続するための手段です。
+
+**開発者**
+
+ハイブリッド接続、EAI および EDI メッセージ処理 (使いやすい取引先管理ポータルあり)、一般的な EDI スキーマのサポート、X12 および AS2 でのリッチな EDI 処理などの機能が含まれます。HTTP/S、REST、FTP、WCF、および SFTP プロトコルを使用してメッセージの読み取りと書き込みを行うクラウド内のサービスを接続する一般的な EAI シナリオを作成できます。内部設置型の LOB システムへの接続が可能であり、SAP、Oracle eBusiness、Oracle DB、Siebel、および SQL Server のためのすぐに使えるアダプターが用意されています。開発とデプロイを容易にする Visual Studio ツールによる開発者中心の環境を使用します。目的は開発とテストに限定されており、サービス レベル アグリーメント (SLA) はありません。
+
+**基本**
+
+開発者エディションのほとんどの機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。高可用性と拡張オプションに加えてサービス レベル アグリーメント (SLA) も提供されます。
+
+**標準**
+
+基本エディションのすべての機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。高可用性と拡張オプションに加えてサービス レベル アグリーメント (SLA) も提供されます。
+
+**プレミアム**
+
+標準エディションのすべての機能が含まれており、ハイブリッド接続、EAI ブリッジ、EDI 契約、BizTalk Adapter Pack 接続の数が増えています。さらに、アーカイブと高可用性の機能も含まれており、サービス レベル アグリーメント (SLA) に基づくスケールも可能です。
 
 
+## エディションのチャート
 次の表に、それらのエディションの違いを示します。
 
 <table border="1">
@@ -46,13 +57,10 @@ Azure BizTalk Services には、無料、開発者、基本、標準、および
         <th>標準</th>
         <th>プレミアム</th>
 </tr>
+
 <tr>
 <td><strong>開始価格</strong></td>
-<td><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の料金に関するページ</a>を参照してください。</td>
-<td><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の料金に関するページ</a>を参照してください。</td>
-<td><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の料金に関するページ</a>を参照してください。</td>
-<td><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の料金に関するページ</a>を参照してください。</td>
-<td><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の料金に関するページ</a>を参照してください。</td>
+<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk サービスの料金</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full">Azure 料金計算ツール</a></td>
 </tr>
 <tr>
 <td><strong>既定の最小構成</strong></td>
@@ -142,7 +150,7 @@ TPM 契約が含まれます。</td>
 <tr>
 <td><strong>高可用性</strong>
 <br/><br/>
-サービス レベル アグリーメント (SLA) については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の料金に関するページ</a>を参照してください。
+サービス レベル アグリーメント (SLA) については、「<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">BizTalk サービスの料金詳細</a>」を参照してください。
 </td>
 <td>なし</td>
 <td>なし</td>
@@ -193,12 +201,13 @@ NRR (Non-repudiation of Receipt) と追跡されたメッセージのダウン�
 </tr>
 </table>
 
-**注**
-<br/>ハードウェアの障害に対する復元性の場合、高可用性は 1 つの BizTalk ユニット内に複数の VM を備えていることを意味します。
+**注** <br/>ハードウェアの障害が発生しても復元可能とするための "高可用性" 機能を使用するときは、複数の VM を 1 つの BizTalk ユニット内に持つことになります。
+
 
 ## FAQ
+
 #### BizTalk ユニットとは何ですか。
-「ユニット」は、Azure BizTalk Services デプロイメントのアトミックなレベルです。各エディションには、計算能力とメモリが異なるユニットが用意されています。たとえば、基本ユニットは開発者ユニットより計算能力が高く、標準ユニットは基本ユニットより計算能力が高くなります。BizTalk サービスをスケールする場合は、ユニット単位でスケールします。
+「ユニット」は、Azure BizTalk サービス展開のアトミックなレベルです。各エディションには、計算能力とメモリが異なるユニットが用意されています。たとえば、基本ユニットは開発者ユニットより計算能力が高く、標準ユニットは基本ユニットより計算能力が高くなります。BizTalk サービスをスケールする場合は、ユニット単位でスケールします。
 
 #### BizTalk サービスと Azure BizTalk VM の違いは何ですか。
 BizTalk サービスは、クラウドでの統合ソリューションの構築のために真のサービスとしてのプラットフォーム (PaaS) を提供します。PaaS モデルでは、完全にアプリケーション ロジックに集中し、次のようなインフラストラクチャ管理はすべて Microsoft に任せることができます。
@@ -207,41 +216,45 @@ BizTalk サービスは、クラウドでの統合ソリューションの構築
 - 可用性は Microsoft により確保されます。
 - Azure 管理ポータルを通じて容量の増減を要求するだけで、スケールをオンデマンドで管理できます。
 
-Azure の仮想マシン上の BizTalk Server は、サービスとしてのインフラストラクチャ (IaaS) アーキテクチャを提供します。仮想マシンの作成と構成は内部設置型環境とまったく同じようにできるので、コードを変更しなくても既存のアプリケーションをクラウドで実行しやすくなります。IaaS では、仮想マシンの構成、仮想マシンの管理 (ソフトウェアや OS 修正プログラムなどのインストール)、および  高可用性のためのアプリケーションの設計 は、依然としてユーザーの責任です。
+Azure の仮想マシン上の BizTalk Server は、サービスとしてのインフラストラクチャ (IaaS) アーキテクチャを提供します。仮想マシンの作成と構成は内部設置型環境とまったく同じようにできるので、コードを変更しなくても既存のアプリケーションをクラウドで実行しやすくなります。IaaS では、仮想マシンの構成、仮想マシンの管理 (ソフトウェアや OS 修正プログラムなどのインストール)、および高可用性のためのアプリケーションの設計は、依然としてユーザーの責任です。
 
 インフラストラクチャの管理作業を最小化する新しい統合ソリューションの構築を検討している場合は、BizTalk サービスをご利用ください。既存の BizTalk ソリューションをすばやく移行することを検討している場合、または BizTalk Server アプリケーションを開発しテストするためのオンデマンドの環境を探している場合は、Azure の仮想マシンで BizTalk Server をご利用ください。
 
 #### BizTalk Adapter サービスとハイブリッド接続の違いは何ですか。
-BizTalk Adapter サービスは、Azure BizTalk サービスで使用されます。BizTalk Adapter サービスでは、内部設置型の基幹業務 (LOB) システムへの接続を目的として BizTalk Adapter Pack が使用されます。ハイブリッド接続とは、Azure のアプリケーション、たとえば Websites や Mobile Services から内部設置型リソースに簡単に接続するための手段です。 
+BizTalk Adapter サービスは、Azure BizTalk サービスで使用されます。BizTalk Adapter サービスでは、内部設置型の基幹業務 (LOB) システムへの接続を目的として BizTalk Adapter Pack が使用されます。ハイブリッド接続とは、Azure のアプリケーション、たとえば Web サイトや Mobile Services から内部設置型リソースに簡単に接続するための手段です。
 
-#### BizTalk サービスで契約を作成すると、ブリッジの数が 1 つではなく 2 つ増えるのはなぜですか。 
+#### 「ユニットあたりのハイブリッド接続データ転送量 (GB)」とはどのような意味ですか。 単位は分/時間/日/週/月のいずれですか。 制限に達するとどうなりますか。
+
+ユニットあたりのハイブリッド接続コストは、BizTalk サービスのエディションによって異なります。つまり、コストは転送するデータの量で決まります。たとえば、毎日 10 GB のデータを転送する方が、毎日 100 GB を転送するより低コストです。具体的なコストを調べるには、BizTalk サービス用の[料金計算ツール](http://azure.microsoft.com/pricing/calculator/?scenario=full)を使用してください。通常、制限は 1 日単位で適用されます。制限を超えた場合、超過分には GB あたり $1 の料金がかかります。
+
+#### BizTalk サービスで契約を作成すると、ブリッジの数が 1 つではなく 2 つ増えるのはなぜですか。
 
 各契約は、送信側の通信ブリッジと受信側の通信ブリッジの 2 つの異なるブリッジで構成されます。
 
-####  ブリッジ数または契約数のクォータの上限に達した場合はどうなりますか。 
+####  ブリッジ数または契約数のクォータの上限に達した場合はどうなりますか。
 
-新しいブリッジをデプロイしたり、新しい契約を作成したりすることができなくなります。追加のデプロイを行うためには、BizTalk サービスのユニット数をスケール アップするか、上位のエディションにアップグレードする必要があります。
+新しいブリッジを展開したり、新しい契約を作成したりすることができなくなります。追加の展開を行うためには、BizTalk サービスのユニット数をスケール アップするか、上位のエディションにアップグレードする必要があります。
 
-#### BizTalk サービスの 1 つのレベルから別のレベルに移行するにはどのようにしますか。 
+#### BizTalk サービスの 1 つのレベルから別のレベルに移行するにはどのようにしますか。
 
-1 つのレベルから別のレベルへの移行には、バックアップと復元のフローを使用します。一部の移行パスのみサポートされます。サポートされる移行パスの詳細については、「[BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)」を参照してください。
+1 つのレベルから別のレベルへの移行には、バックアップと復元のフローを使用します。一部の移行パスのみサポートされます。サポートされる移行パスの詳細については、[BizTalk サービスのバックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)に関するページを参照してください。
 
-####  BizTalk Adapter サービスはサービスに含まれていますか。ソフトウェアはどのようにして取得しますか。
+#### BizTalk Adapter サービスはサービスに含まれていますか。 ソフトウェアはどのようにして取得しますか。
 
-はい、BizTalk Adapter Pack 付きの BizTalk Adapter サービスは、Azure BizTalk Services SDK の[ダウンロード](http://www.microsoft.com/download/details.aspx?id=39087)に含まれています。
+はい、BizTalk Adapter Pack 付きの BizTalk Adapter サービスは、Azure BizTalk サービス SDK の[ダウンロード](http://www.microsoft.com/download/details.aspx?id=39087)に含まれています。
 
 ## 次へ
 
-Azure BizTalk Services を Azure の管理ポータルでプロビジョニングするには、「[Create a BizTalk Service using Azure management portal (Azure の管理ポータルを使用した BizTalk サービスの作成)](http://go.microsoft.com/fwlink/p/?LinkID=302280)」を参照してください。アプリケーションの作成を開始するには、「[BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)」を参照してください。
+Azure BizTalk サービスを Azure 管理ポータルで作成するには、「[BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)」に進んでください。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## 関連項目
-- [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk サービス: プロビジョニングの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 - [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 - [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 - [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-- [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-
-<!--HONumber=46--> 
+- [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
  
+
+<!---HONumber=62-->

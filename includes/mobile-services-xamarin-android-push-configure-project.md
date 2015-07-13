@@ -48,4 +48,5 @@
         GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
 
 これで、**ToDoActivity** は、プッシュ通知を追加するための準備が整いました。
-<!--HONumber=54-->
+
+<!---HONumber=62-->

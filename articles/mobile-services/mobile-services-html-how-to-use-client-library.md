@@ -387,7 +387,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 
 ##<a name="caching"></a>方法: ユーザーを認証する
 
-モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「[モバイル サービスでの認証の使用]」を参照してください。
+モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
 
 >[AZURE.NOTE]PhoneGap または Cordova アプリで認証を使用するときは、次のプラグインもプロジェクトに追加する必要があります。
 >
@@ -400,7 +400,7 @@ _サーバー フロー_と_クライアント フロー_という 2 つの認�
 ###サーバー フロー
 モバイル サービスによって Windows ストア アプリまたは HTML5 アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加](mobile-services-html-get-started-users.md)」を参照してください。
 
-ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] にプロバイダーの値を指定して [LoginAsync メソッド]を呼び出します。たとえば、Facebook にログインするには、次のコードを使用します。
+ID プロバイダーを登録した後は、単純にプロバイダーの [MobileServiceAuthenticationProvider] 値で [LoginAsync メソッド] を呼び出すだけです。たとえば、Facebook にログインするには、次のコードを使用します。
 
 	client.login("facebook").done(function (results) {
 	     alert("You are now logged in as: " + results.userId);
@@ -410,7 +410,7 @@ ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] 
 
 Facebook 以外の ID プロバイダーを使用している場合は、上の `login` メソッドに渡す値を `microsoftaccount`、`facebook`、`twitter`、`google`、`windowsazureactivedirectory` のいずれかに変更します。
 
-この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
+この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
 
 > [AZURE.NOTE]**Windows ストア アプリ** Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージも Mobile Services に登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「[Windows ストア アプリケーション パッケージを Microsoft 認証に登録する](/develop/mobile/how-to-guides/register-windows-store-app-package/%20target="_blank")」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、<em>useSingleSignOn</em> パラメーターに値 **true** を指定して [login](http://go.microsoft.com/fwlink/p/?LinkId=322050%20target="_blank") メソッドを呼び出します。
 
@@ -444,7 +444,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 	     alert("Error: " + err);
 	});
 
-この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 `token` に格納されるとします。現時点では、クライアント認証に Twitter を使用することはできません。
+この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 `token` に格納されるとします。現時点では、クライアント認証に Twitter を使用することはできません。この時点ではクライアント認証のために JavaScript バックエンドで Microsoft Azure Active Directory を使用することはできません。
 
 ###認証トークンをキャッシュする
 場合によっては、最初のユーザー認証の後の login メソッドの呼び出しを避けることができます。そのためには、[sessionStorage] または [localStorage] を使用して、ユーザーが初めてログインするときに使用した現在のユーザー ID をキャッシュし、それ以降はユーザー ID がキャッシュに保存されているかどうかをチェックします。キャッシュが空の場合や呼び出しが失敗した場合 (現在のログイン セッションが期限切れになったことを示します) は、ログオン プロセスを実行する必要があります。
@@ -457,7 +457,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
        client.currentUser = JSON.parse(sessionStorage.loggedInUser);
     } else {
        // Regular login flow
-    {
+   {
 
      // Log out
     client.logout();
@@ -606,5 +606,6 @@ promise はいくつかの異なる方法で使用することができます。
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 [クライアントからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

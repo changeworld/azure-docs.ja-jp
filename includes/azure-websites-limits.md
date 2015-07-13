@@ -170,9 +170,9 @@
 
 <sup>2</sup>Basic と Standard のサイトは専用マシンで実行されます。これらのマシンで実際にホストできるサイトの数は、サイトのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。
 
-<sup>3</sup>Free レベルを除き、Web ホスティング プランの制限はリソース グループ単位です。リソース グループの作成と管理の詳細については、「[リソース グループを使用した Azure リソースの管理][useresourcegroups]」を参照してください。
+<sup>3</sup>Free レベルを除き、Web ホスティング プランの制限はリソース グループ単位です。リソース グループの作成と管理の詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。
 
-<sup>4</sup>専用インスタンスのサイズは、S、M、L です。詳細については、[Azure WebSites の料金に関するページ][websitespricing]を参照してください。サポート要求を行って、インスタンスを追加することもできます。
+<sup>4</sup>専用インスタンスのサイズは、Small、Medium、Large です。詳細については、[Azure WebSites の料金に関するページ](http://azure.microsoft.com/pricing/details/web-sites/)を参照してください。サポート要求を行って、インスタンスを追加することもできます。
 
 <sup>5</sup>すべての Web サイトがサイト コンテンツ用に同じストレージ リソースを共有します。したがって、ストレージの制限は、Web サイト単位のサイズではなく、すべてのサイトの合計サイズです。サポート要求を行って、ストレージの制限を引き上げることもできます。
 
@@ -182,12 +182,8 @@
 
 <sup>8</sup>この値は、Web サイト インスタンスごとの同時 Web ソケット接続を表します。たとえば、Basic Web サイトを 2 つのインスタンスにスケールアウトした場合、同時接続は実質的に 700 件になります (350 x 2)。
 
-<sup>9</sup>Basic レベルには、標準の [SSL の料金が適用されます][sslpricing]。
+<sup>9</sup>Basic レベルには、標準の [SSL の料金が適用されます](http://azure.microsoft.com/pricing/details/web-sites/#ssl-connections)。
 
 <sup>10</sup>カスタムの実行可能ファイルやスクリプトを WebSites インスタンス内でバックグラウンド タスクとして実行できます。オンデマンドのほか、スケジュールに基づいた実行や継続的な実行も可能です。Web ジョブを継続的に実行するには、常時接続が必要です。スケジュールされた Web ジョブの実行には、Azure Scheduler Free または Standard が必要です。
 
-  [useresourcegroups]: http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups/
-  [websitespricing]: http://azure.microsoft.com/pricing/details/web-sites/
-  [sslpricing]: http://azure.microsoft.com/pricing/details/web-sites/#ssl-connections
-
-<!---HONumber=58-->
+<!---HONumber=62-->

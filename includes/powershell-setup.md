@@ -1,25 +1,15 @@
-<properties services="virtual-machines" title="Setting up PowerShell" authors="JoeDavies-MSFT" solutions="" manager="timlt" editor="tysonn" />
 
-<tags
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm=""
-   ms.workload="infrastructure"
-   ms.date="05/12/2015"
-   ms.author="josephd" />
+## PowerShell のセットアップ
 
-## Setting up PowerShell
+Azure PowerShell を使用する前に次の手順を実行します。
 
-Before you can use Azure PowerShell, follow these steps.
+### PowerShell のバージョンを確認する
 
-### Verify PowerShell versions
-
-Before you can use Windows PowerShell, you must have Windows PowerShell, Version 3.0 or 4.0. To find the version of Windows PowerShell, type this command at a Windows PowerShell command prompt.
+Windows PowerShell を使用するには、Windows PowerShell Version 3.0 か 4.0 が必要です。Windows PowerShell のバージョンを確認するには、Windows PowerShell コマンド プロンプトで次のコマンドを入力します。
 
 	$PSVersionTable
 
-You should see something like this.
+次のような結果が表示されます。
 
 	Name                           Value
 	----                           -----
@@ -31,34 +21,34 @@ You should see something like this.
 	PSCompatibleVersions           {1.0, 2.0, 3.0}
 	PSRemotingProtocolVersion      2.2
 
-Verify that the value of **PSVersion** is 3.0 or 4.0. To install a compatible version, see [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) or [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+**PSVersion** の値が 3.0 または 4.0 であることを確認します。互換バージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)」を参照してください。
 
-You should also have Azure PowerShell version 0.8.0 or later. You can check the version of Azure PowerShell that you have installed with this command at the Azure PowerShell command prompt.
+また、Azure PowerShell Version 0.8.0 以降も必要です。インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
 
 	Get-Module azure | format-table version
 
-You should see something like this.
+次のような結果が表示されます。
 
 	Version
 	-------
 	0.8.16.1
 
-For instructions and a link to the latest version, see [How to Install and Configure Azure PowerShell](powershell-install-configure.md).
+最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
 
-### Set your Azure account and subscription
+### Azure アカウントとサブスクリプションを設定する
 
-If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) or sign up for a [free trial](http://azure.microsoft.com/pricing/free-trial/).
+Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-Open an Azure PowerShell command prompt and log on to Azure with this command.
+Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
 
 	Add-AzureAccount
 
-If you have multiple Azure subscriptions, you can list your Azure subscriptions with this command.
+Azure サブスクリプションが複数ある場合は、次のコマンドで、Azure サブスクリプションの一覧を表示できます。
 
 	Get-AzureSubscription
 
-You will receive the following type of information:
+次の種類の情報が表示されます。
 
 	SubscriptionId            : fd22919d-eaca-4f2b-841a-e4ac6770g92e
 	SubscriptionName          : Visual Studio Ultimate with MSDN
@@ -71,9 +61,11 @@ You will receive the following type of information:
 	CurrentStorageAccountName : 
 	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-You can set the current Azure subscription by running these commands at the Azure PowerShell command prompt. Replace everything within the quotes, including the < and > characters, with the correct name.
+Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
 	$subscr="<SubscriptionName from the display of Get-AzureSubscription>"
 	Select-AzureSubscription -SubscriptionName $subscr -Current	
 
-For more information about Azure subscriptions and accounts, see [How to: Connect to your subscription](powershell-install-configure.md#Connect).
+Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
+
+<!---HONumber=62-->

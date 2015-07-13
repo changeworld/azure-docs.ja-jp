@@ -29,17 +29,17 @@
 
 * npm (ノード パッケージ マネージャー) を使用してノード モジュールをインストールする方法
 
-* Azure Table サービスを使用する方法
+* Azure テーブル サービスを使用する方法
 
 * Azure CLI を使用して Web アプリを作成する方法
 
-このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースの "To DO リスト" アプリケーションを作成します。タスクは Table サービスに格納されます。
+このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースの "To DO リスト" アプリケーションを作成します。タスクはテーブル サービスに格納されます。
 
 完成したアプリケーションを次に示します。
 
 ![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## 前提条件
@@ -72,7 +72,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ##モジュールのインストールとスキャフォールディングの生成
 
-ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。このアプリケーションでは、[Express] モジュールと [Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールは Table サービスへの接続を提供します。
+ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。このアプリケーションでは、[Express] モジュールと [Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールはテーブル サービスへの接続を提供します。
 
 ### express のインストールとスキャフォールディングの生成
 
@@ -179,7 +179,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 - category (文字列)
 - completed (ブール値)
 
-**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[テーブル サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 
 1. **tasklist** ディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
@@ -499,8 +499,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 	このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
 
-	<!-- ![The download page][download-publishing-settings] -->
-	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
+	<!-- ![The download page][download-publishing-settings] -->ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
 
 2. 次のコマンドを入力して設定をインポートします。
 
@@ -570,7 +569,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 アプリを発行するには、コード ファイルを Git にコミットし、azure/master にプッシュします。
 
-1. デプロイの資格情報を設定します。
+1. デプロイメント資格情報を設定します。
 
 		azure site deployment user set <name> <password>
 
@@ -593,14 +592,14 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 ## 次のステップ
 
-この記事の手順では、Table サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
+この記事の手順では、テーブル サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
 
 ## その他のリソース
 
 [Azure コマンド ライン インターフェイス]
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [Azure App Service での Node.js Web アプリの構築とデプロイ]: web-sites-nodejs-develop-deploy-mac.md
@@ -643,4 +642,4 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 [Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

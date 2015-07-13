@@ -1,27 +1,29 @@
 <table cellspacing="0" border="1">
 <tr>
-   <th align="left" valign="middle">Resource</th>
-   <th align="left" valign="middle">Default Limit</th>
-   <th align="left" valign="middle">Maximum Limit</th>
+   <th align="left" valign="middle">リソース</th>
+   <th align="left" valign="middle">既定の制限</th>
+   <th align="left" valign="middle">上限</th>
 </tr>
 <tr>
-   <td valign="middle"><p>Resources per <a href="http://azure.microsoft.com/documentation/articles/resource-group-overview/">resource group</a> (per resource type)</p></td>
-   <td valign="middle"><p>800</p></td>
-   <td valign="middle"><p>800</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>Deployments per resource group</p></td>
+   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/resource-group-overview/">リソース グループ</a>  (リソースの種類) あたりのリソース数</p></td>
    <td valign="middle"><p>800</p></td>
    <td valign="middle"><p>800</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Resources per deployment</p></td>
+   <td valign="middle"><p>リソース グループあたりのデプロイ数</p></td>
    <td valign="middle"><p>800</p></td>
    <td valign="middle"><p>800</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Management Locks (per unique scope)</p></td>
+   <td valign="middle"><p>デプロイあたりのリソース数</p></td>
+   <td valign="middle"><p>800</p></td>
+   <td valign="middle"><p>800</p></td>
+</tr>
+<tr>
+   <td valign="middle"><p>管理ロック数 (一意のスコープあたり)</p></td>
    <td valign="middle"><p>20</p></td>
    <td valign="middle"><p>20</p></td>
 </tr>
 </table>
+
+<!---HONumber=62-->

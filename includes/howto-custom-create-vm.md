@@ -1,6 +1,4 @@
-<properties authors="kathydav" editor="tysonn" manager="jeffreyg" />
-
-# カスタム仮想マシンの作成方法
+#カスタム仮想マシンの作成方法
 
 *カスタム*仮想マシンとは、**[ギャラリーから]** を選択して作成した仮想マシンを指します。この場合、**[簡易作成]** を使用した場合よりも多くのオプションを設定できます。設定できるオプションは次のとおりです。
 
@@ -53,14 +51,12 @@
 17. 矢印をクリックして、仮想マシンを作成します。
 
 
-	![Custom virtual machine creation successful](./media/howto-custom-create-vm/VMSuccessWindows.png)
+	![カスタム仮想マシンの作成に成功](./media/howto-custom-create-vm/VMSuccessWindows.png)
 
-## 次のステップ##
+##次のステップ##
 仮想マシンは、作成し終わると、自動的に開始されます。ポータルのステータスが実行中であれば、仮想マシンにログインできます。手順については、次のいずれかの記事を参照してください。
 
 - [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-how-to-log-on.md)
 - [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-log-on-windows-server.md)
 
-
-
-<!--HONumber=52-->
+<!---HONumber=62-->

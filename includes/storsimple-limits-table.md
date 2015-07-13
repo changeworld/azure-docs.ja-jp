@@ -1,41 +1,26 @@
-<properties 
-   pageTitle="StorSimple system limits table"
-   description="Describes system limits and recommended sizes for StorSimple components and connections."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="06/19/2015"
-   ms.author="alkohli" />
-
-| Limit identifier | Limit | Comments |
+| 制限の種類 | 制限 | 説明 |
 |----------------- | ------|--------- |
-| Maximum number of storage account credentials | 64 | |
-| Maximum number of volume containers | 64 | |
-| Maximum number of volumes | 255 | |
-| Maximum number of bandwidth templates | 25 | |
-| Maximum number of schedules per bandwidth template | 168 | A schedule for every hour, every day of the week (24*7). |
-| Maximum size of a volume | 64 TB |  |
-| Maximum number of iSCSI connections | 512 | |
-| Maximum number of iSCSI connections from initiators | 512 | |
-| Maximum number of access control records per device | 64 | |
-| Maximum number of volumes per backup policy | 24 | |
-| Maximum number of backups retained per backup policy | 64 | |
-| Maximum number of schedules per backup policy | 10 | |
-| Maximum number of snapshots of any type that can be retained per volume | 256 | This includes local snapshots and cloud snapshots. |
-| Maximum number of snapshots that can be present in any device | 10,000 | |
-| Maximum number of volumes that can be processed in parallel for backup, restore, or clone | 16 |<ul><li>If there are more than 16 volumes, they will be processed sequentially as processing slots become available.</li><li>New backups of a cloned or a restored volume cannot occur until the operation is finished.</li></ul>|
-| Restore and clone recover time | < 2 minutes | <ul><li>The volume is made available within 2 minutes of restore or clone operation, regardless of the volume size.</li><li>The volume performance may initially be slower than normal as most of the data and metadata still resides in the cloud. Performance may increase as data flows from the cloud to the StorSimple device.</li><li>The total time to download metadata depends on the allocated volume size. Metadata is automatically brought into the device in the background at the rate of 5 minutes per TB of allocated volume data. This rate may be affected by Internet bandwidth to the cloud.</li><li>The restore or clone operation is complete when all the metadata is on the device.</li><li>Backup operations cannot be performed until the restore or clone operation is fully complete.|
-| Thin-restore availability | Last failover | |
-| Maximum client read/write throughput (when served from the SSD tier)* | 920/720 MB/s with a single 10GbE network interface | Up to 2x with MPIO and two network interfaces. |
-| Maximum client read/write throughput (when served from the HDD tier)* | 120/250 MB/s |
-| Maximum client read/write throughput (when served from the cloud tier)* | 11/41 MB/s | Read throughput depends on clients generating and maintaining sufficient I/O queue depth. |
+| ストレージ アカウントの資格情報の最大数 | 64 | |
+| ボリューム コンテナーの最大数 | 64 | |
+| ボリュームの最大数 | 255 | |
+| 帯域幅テンプレートの最大数 | 25 | |
+| 帯域幅テンプレートごとのスケジュールの最大数 | 168 | 毎日の 1 時間ごとのスケジュール (1 日 24 時間週 7 日)。 |
+| ボリュームの最大サイズ | 64 TB | NTFS ボリュームの推奨サイズは 64 TB です。 |
+| iSCSI 接続の最大数 | 512 | |
+| イニシエーターからの iSCSI 接続の最大数 | 512 | |
+| デバイスごとのアクセス制御レコードの最大数 | 64 | |
+| バックアップ ポリシーごとのボリュームの最大数 | 24 | |
+| バックアップ ポリシーごとに保持されるバックアップの最大数 | 64 | |
+| バックアップ ポリシーごとのスケジュールの最大数 | 10 | |
+| 種類に関係なく保持されるスナップショットのボリュームあたりの最大数 | 256 | これにはローカル スナップショットとクラウド スナップショットが含まれます。 |
+| 1 つのデバイス内に存在できるスナップショットの最大数 | 10,000 | |
+| バックアップ、復元、またはクローニングのために並列に処理できるボリュームの最大数 | 16 |<ul><li>ボリュームの数が 16 を超える場合は、処理スロットが使用可能になるのに合わせて順番に処理されます。</li><li>複製または復元されたボリュームの新規バックアップは、前の操作が完了するまで実行できません。</li></ul>|
+| 復元および複製による復旧時間 | 2 分未満 | <ul><li>ボリュームは、そのサイズにかかわらず、復元または複製の操作から 2 分以内に利用可能になります。</li><li>最初は、データやメタデータの大部分がまだクラウドにあるため、ボリュームのパフォーマンスが通常より低下する場合があります。クラウドから StorSimple デバイスに移されるデータが増えるにつれて、パフォーマンスが向上することがあります。</li><li>メタデータのダウンロードにかかる合計時間は、割り当てられたボリューム サイズによって異なります。割り当てられたボリューム データの TB あたり 5 分の速度で、メタデータはバック グラウンドで自動的にデバイスに移されます。この速度はクラウドへのインターネット帯域幅によって影響を受けることがあります。</li><li>すべてのメタデータがデバイスに移動した時点で、復元または複製の操作は完了します。</li><li>復元または複製の操作が完全に完了するまで、バックアップ操作は実行できません。|
+| シン復元の可用性 | 最後のフェールオーバー | |
+| クライアントによる最大読み取り/書き込みスループット (SSD 層から提供された場合)* | 920/720 MB/秒 (単一の 10 GbE ネットワーク インターフェイスを使用) | 単一の MPIO と 2 つのネットワーク インターフェイスを使用する場合は最大 2x。 |
+| クライアントによる最大読み取り/書き込みスループット (HDD 層から提供された場合)* | 120/250 MB/秒 |
+| クライアントによる最大読み取り/書き込みスループット (クラウド層から提供された場合)* | 11/41 MB/秒 | 読み取りスループットは、十分な I/O キューの深さを生成および維持するクライアントに依存します。 |
 
-&#42; Maximum throughput per I/O type was measured with 100 percent read and 100 percent write scenarios. Actual throughput may be lower and depends on I/O mix and network conditions.
+&#42; I/O の種類ごとの最大スループットは、読み取り率と書き込み率が 100% の場合のシナリオにおいて測定されたものです。実際のスループットはこれより低くなる可能性があり、I/O の組み合わせとネットワーク状態によって異なります。
+
+<!---HONumber=62-->

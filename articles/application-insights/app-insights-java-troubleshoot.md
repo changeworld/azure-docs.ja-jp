@@ -31,10 +31,10 @@
 *Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。*
 
 * 少し待ってから、[最新の情報に更新] をクリックします。現時点では、自動での更新は行われません。
-* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、インストルメンテーション キーが定義されていることを確認してください。
-* この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことを確認してください。
+* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、インストルメンテーション キーが定義されていることをご確認ください。
+* この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことをご確認ください。
 * ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
-* Microsoft Azure のスタート ボードで、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
+* Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 * プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへのログを有効にし、[Error] から始まるエントリを調べます。
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
 * 構成ファイルが見つからない場合、出力メッセージを確認して構成ファイルの検索範囲を確かめ、ApplicationInsights.xml がこれらの検索場所のいずれかに存在していることを確認します。通例、構成ファイルは Application Insights SDK の JAR ファイルの近くに見つかります。たとえば、Tomcat の場合は WEB-INF/lib フォルダーがこれに相当します。
@@ -43,8 +43,8 @@
 
 #### データが表示されていたのに停止しました。
 
-* [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)を確認してください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いて確認します。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」を参照してください。
+* [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いて確認します。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 

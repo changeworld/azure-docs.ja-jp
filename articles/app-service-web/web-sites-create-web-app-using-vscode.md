@@ -31,7 +31,7 @@
 * Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、Windows コマンド プロンプトから Git と GitBash を使用するオプションを選択します。Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。  
 
 ## ASP.NET 5 と DNX のインストール
-ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新のクラウドおよび Web アプリを構築するたの、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
+ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新のクラウドおよび Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
 
 > [AZURE.NOTE]OS X および Linux の ASP.NET 5 および DNX (.NET Execution Environment) は、初期のベータまたはプレビュー状態にあります。
 
@@ -73,7 +73,7 @@ ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新の
 
 ## Web アプリの作成 
 
-このセクションでは、新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。ノード パッケージ マネージャー (npm) を使用して、[Yeoman](http://yeoman.io/) (アプリケーション スキャフォールディング ツール - Visual Studio での **[ファイル] > [新しいプロジェクト]** 操作に相当する VS コード)、 [Grunt](http://gruntjs.com/) (JavaScript タスク ランナー)、および [Bower](http://bower.io/) (クライアント側のパッケージ マネージャー) をインストールします。
+このセクションでは、新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。ノード パッケージ マネージャー (npm) を使用して、[Yeoman](http://yeoman.io/) (アプリケーション スキャフォールディング ツール - Visual Studio での **[ファイル] > [新しいプロジェクト]** 操作に相当する VS コード)、[Grunt](http://gruntjs.com/) (JavaScript タスク ランナー)、および [Bower](http://bower.io/) (クライアント側のパッケージ マネージャー) をインストールします。
 
 1. 管理者権限でコマンド プロンプトを開き、ASP.NET プロジェクトを作成する場所に移動します。
 
@@ -89,7 +89,7 @@ ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新の
 
 	![Yeoman - ASP.NET 5 ジェネレーター](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
 
-5. 新しい ASP.NET Web アプリの名前を **SampleWebApp** に設定します。この名前はチュートリアル全体で使用されるため、別の名前を選択する場合は、 **SampleWebApp** をすべてその名前に置き換える必要があります。Enter キーを押すと、Yeoman によって、**SampleWebApp** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
+5. 新しい ASP.NET Web アプリの名前を **SampleWebApp** に設定します。この名前はチュートリアル全体で使用されるため、別の名前を選択する場合は、**SampleWebApp** をすべてその名前に置き換える必要があります。Enter キーを押すと、Yeoman によって、**SampleWebApp** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
 
 6. コマンド プロンプトで次のコマンドを入力して、VS コードを開きます。
 

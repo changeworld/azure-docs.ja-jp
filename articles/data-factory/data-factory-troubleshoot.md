@@ -43,7 +43,7 @@ Data Gateway の高速セットアップを起動するには、Internet Explore
 ## 問題: Azure ポータルから資格情報マネージャーを起動できない
 Azure ポータルから SQL Server のリンクされたサービスをセットアップまたは更新する場合、資格情報マネージャー アプリケーションが起動してセキュリティを確保します。この場合、Internet Explorer か、Microsoft の ClickOnce と互換性のある Web ブラウザーが必要です。他のブラウザーで失敗した場合は、Internet Explorer に切り替えることができます。
 
-## 問題: オンプレミスの SQL Server に接続できない 
+## 問題: オンプレミス SQL Server に接続できない 
 ゲートウェイがインストールされているコンピューターから SQL Server に接続できることを確認します。ゲートウェイがインストールされているコンピューターで、次のことを実行できます。
 
 1. SQL Server がインストールされているコンピューターに Ping を送信します。または
@@ -190,26 +190,26 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 2.	**スタート画面**で **[ADFTutorialDataFactory]** をクリックします。**スタート画面**にデータ ファクトリのリンクが表示されていない場合は、**[参照]** ハブ、**[すべて]** の順にクリックします。**[参照]** ブレードの **[データ ファクトリ…]** をクリックし、**[ADFTutorialDataFactory]** をクリックします。
 3.	**[データセット]** タイルに **[エラーあり]** が表示されていることに注目してください。**[エラーあり]** をクリックします。**[エラーありデータセット]** ブレードが表示されます。
 
-	![Data Factory with Errors link][image-data-factory-troubleshoot-with-error-link]
+	![［エラーあり］ リンクがある Data Factory][image-data-factory-troubleshoot-with-error-link]
 
 4. **[エラーありデータセット]** ブレードで **[EmpSQLTable]** をクリックして **[テーブル]** ブレードを表示します。
 
-	![Datasets with errors blade][image-data-factory-troubleshoot-datasets-with-errors-blade]
+	![[エラーありデータセット] ブレード][image-data-factory-troubleshoot-datasets-with-errors-blade]
 
 5. **[テーブル]** ブレードに問題のあるスライスが表示されます。たとえば、ブレード下部にある **[問題のあるスライス]** リスト内の、エラーのあるスライスです。また、**[最近のスライス]** リストで最近エラーが発生したスライスを確認することもできます。**[問題のあるスライス]** リスト内のスライスをクリックします。
 
-	![Table blade with problem slices][image-data-factory-troubleshoot-table-blade-with-problem-slices]
+	![問題のあるスライスを表示している [テーブル] ブレード][image-data-factory-troubleshoot-table-blade-with-problem-slices]
 
 	**[問題のあるスライス]** (特定の問題ではない) をクリックすると、**[データ スライス]** ブレードが表示されるので、**[特定の問題のあるスライス]** をクリックして選択したデータ スライスの **[データ スライス]** スライドを表示します。
 
 6. **EmpSQLTable** の **[データ スライス]** ブレードには、ブレード下部のリスト内のスライスに対して、すべての **[アクティビティの実行]** が表示されています。リスト内の [失敗] になっている **[アクティビティの実行]** をクリックします。
 
-	![Data Slice blade with active runs][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
+	![アクティビティの実行を表示しているデータ スライス][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
 
 
 7. 選択したアクティビティの実行に対する **[アクティビティの実行の詳細]** ブレードに、エラーの詳細が表示されます。このシナリオでは、"**Invalid object name ‘emp‘**" と表示されます。
 
-	![Activity run details with an error][image-data-factory-troubleshoot-activity-run-with-error]
+	![エラーが発生しているアクティビティの実行の詳細][image-data-factory-troubleshoot-activity-run-with-error]
 
 この問題を解決するには、「[Data Factory を使ってみる][adfgetstarted]」の記事にある SQL スクリプトを使用して **emp** テーブルを作成します。
 
@@ -277,23 +277,23 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 
 1. **[Data Factory]** のホーム ページから **[データセット]** タイル上の **[エラーあり]** をクリックします。
 
-	![With errors link on Datasets tile][image-data-factory-troubleshoot-walkthrough2-with-errors-link]
+	![[データセット] タイルの ［エラーあり］ リンク][image-data-factory-troubleshoot-walkthrough2-with-errors-link]
 
 2. **[エラーありデータセット]** ブレードで、関心のある **テーブル** をクリックします。
 
-	![Datasets with errors blade][image-data-factory-troubleshoot-walkthrough2-datasets-with-errors]
+	![[エラーありデータセット] ブレード][image-data-factory-troubleshoot-walkthrough2-datasets-with-errors]
 
 3. **[テーブル]** ブレードで、**[状態]** が **[失敗]** になっている **[問題のあるスライス]** をクリックします。
 
-	![Table with problem slices][image-data-factory-troubleshoot-walkthrough2-table-with-problem-slices]
+	![問題のあるスライスを含むテーブル][image-data-factory-troubleshoot-walkthrough2-table-with-problem-slices]
 
 4. **[データ スライス]** ブレードで、失敗している **[アクティビティの実行]** をクリックします。
 
-	![Data slice with failed runs][image-data-factory-troubleshoot-walkthrough2-slice-activity-runs]
+	![実行が失敗しているデータ スライス][image-data-factory-troubleshoot-walkthrough2-slice-activity-runs]
 
 5. **[アクティビティの実行の詳細]** ブレードでは、HDInsight 処理に関連するファイルをダウンロードできます。**[Status/stderr]** の **[ダウンロード]** をクリックし、エラーの詳細を含むエラー ログ ファイルをダウンロードします。
 
-	![Activity run details with download link][image-data-factory-troubleshoot-activity-run-details]
+	![［ダウンロード］ リンクがあるアクティビティの実行の詳細][image-data-factory-troubleshoot-activity-run-details]
 
     
 ### チュートリアル: Azure PowerShell を使用して Pig/Hive 処理で発生するエラーのトラブルシューティングを行う
@@ -386,4 +386,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

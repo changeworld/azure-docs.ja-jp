@@ -60,7 +60,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 ## レポートのエディション
 
-|	レポート |	Free |	Basic |	Premium |
+|	レポート |	無料 |	基本 |	プレミアム |
 |	------												|	----	|	-----	|	--------	|
 |	不明なソースからのサインイン |	✓ |	✓ |	✓ |
 |	複数のエラー後のサインイン |	✓ |	✓ |	✓ |
@@ -91,7 +91,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | <p>このレポートは、マイクロソフトによって匿名のプロキシ IP アドレスとして認識されているクライアント IP アドレスを割り当てられているときに、ディレクトリに正常にサインインしたユーザーを示します。このようなプロキシは、自分のコンピューターの IP アドレスを隠したいユーザーによって使用されることが多く、悪意のある目的で使用される場合があります (ハッカーはこのようなプロキシを使用することがあります)。</p><p> このレポートの結果は、そのアドレスとプロキシの IP アドレスから、ユーザーがディレクトリに正常にサインインした回数を示します。</p> | [ディレクトリ] > [レポート] タブ |
 
-![不明なソースからのサインイン](./media/active-directory-view-access-usage-reports/signInsFromUnknownSources.PNG)
+![不明なソースからのサインイン](./media/active-directory-view-access-usage-reports/signInsFromUnknownSources.PNG)]
 
 ### 複数のエラー後のサインイン
 
@@ -99,7 +99,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | このレポートは、サインイン試行に何度も連続して失敗した後に、正常にサインインしたユーザーを示します。考えられる原因: <ul><li>ユーザーがパスワードを忘れた</li><li>ユーザーが、パスワードの推測に成功したブルート フォース攻撃の被害を受けた</li></ul><p>このレポートの結果には、サインインに成功するまでに失敗したサインイン試行の連続回数と、最初に成功したサインインに関連付けられているタイムスタンプが表示されます。</p><p><b>レポートの設定: </b> レポートに表示する失敗したサインイン試行の最小連続回数を構成できます。この設定を変更する場合、その変更は、既存のレポートに現在表示されている失敗した既存のサインインには適用されないことに注意してください。変更は、すべての今後のサインインに適用されます。このレポートの変更は、ライセンスを付与された管理者がのみ行うことができます。 | [ディレクトリ] > [レポート] タブ |
 
-![複数のエラー後のサインイン](./media/active-directory-view-access-usage-reports/signInsAfterMultipleFailures.PNG)
+![複数のエラー後のサインイン](./media/active-directory-view-access-usage-reports/signInsAfterMultipleFailures.PNG)]
 
 
 ### 複数の地域からのサインイン
@@ -108,7 +108,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | <p>このレポートには、2 回のサインインが異なる地域から実行されたと見なされ、サインイン間の時間により、ユーザーが 2 カ所の地域間で移動することが不可能である場合に、そのユーザーの成功したサインイン アクティビティが含まれます。考えられる原因: </p><ul><li>ユーザーが自分のパスワードを共有している</li><li>ユーザーがリモート デスクトップを使用して、サインインのために Web ブラウザーを起動している</li><li>ハッカーが他の国からユーザーのアカウントにサインインした</li></ul><p>このレポートの結果には、成功したサインイン イベント、サインイン間の時間、サインインが実行されたと見なされる地域、各地域間の推定移動時間が表示されます。</p><p>表示される移動時間は推定値にすぎず、地域間の実際の移動時間とは異なる可能性があります。また、近隣地域間のサインインに対してイベントは生成されません。</p> | [ディレクトリ] > [レポート] タブ |
 
-![複数の地域からのサインイン](./media/active-directory-view-access-usage-reports/signInsFromMultipleGeographies.PNG)
+![複数の地域からのサインイン](./media/active-directory-view-access-usage-reports/signInsFromMultipleGeographies.PNG)]
 
 
 ### 不審なアクティビティのある IP アドレスからのサインイン
@@ -117,7 +117,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | <p>このレポートには、不審なアクティビティが検出された IP アドレスからのサインイン試行が含まれます。不審なアクティビティには、短時間に同じ IP アドレスから何度もサインイン試行に失敗すること、不審と見なされたその他のアクティビティが含まれます。これは、ハッカーがこの IP アドレスからサインインを試みていたことを示している可能性があります。</p><p>このレポートの結果には、不審なアクティビティが検出された IP アドレスからのサインイン試行と、そのサインインに関連付けられたタイムスタンプが表示されます。</p> | [ディレクトリ] > [レポート] タブ |
 
-![不審なアクティビティのある IP アドレスからのサインイン](./media/active-directory-view-access-usage-reports/signInsFromIPAddressesWithSuspiciousActivity.PNG)
+![不審なアクティビティのある IP アドレスからのサインイン](./media/active-directory-view-access-usage-reports/signInsFromIPAddressesWithSuspiciousActivity.PNG)]
 
 
 ### 異常なサインイン アクティビティ
@@ -134,7 +134,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | <p>マルウェア (悪意のあるソフトウェア) が実行されている可能性があるデバイスからのサインインを確認する場合に、このレポートを使用します。マルウェア サーバーへの接続が試みられた IP アドレスに対して、サインインの IP アドレスが関連付けられます。</p><p>。推奨事項: このレポートは、いずれの場合にも IP アドレスが同じデバイスに関連付けられてると想定するため、ユーザーに連絡を取り、確認のためにユーザーのデバイスをスキャンすること勧めします。</p><p>。マルウェアの感染に対処する方法の詳細については、[Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773)を参照してください。</p> | [ディレクトリ] > [レポート] タブ |
 
-![感染している可能性があるデバイスからのサインイン](./media/active-directory-view-access-usage-reports/signInsFromPossiblyInfectedDevices.PNG)
+![感染している可能性があるデバイスからのサインイン](./media/active-directory-view-access-usage-reports/signInsFromPossiblyInfectedDevices.PNG)]
 
 
 ### 異常なサインイン アクティビティがあるユーザー
@@ -143,7 +143,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | <p>異常なサインイン アクティビティが特定されているすべてのユーザー アカウントを表示するには、このレポートを使用します。このレポートには、他のすべての異常なアクティビティ レポートからのデータが含まれています。このレポートの結果には、ユーザーに関する詳細、サインイン イベントが異常として識別された理由、日付と時間、およびその他の関連するイベントの情報が表示されます。</p> | [ディレクトリ] > [レポート] タブ |
 
-![異常なサインイン アクティビティがあるユーザー](./media/active-directory-view-access-usage-reports/usersWithAnomalousSignInActivity.PNG)
+![異常なサインイン アクティビティがあるユーザー](./media/active-directory-view-access-usage-reports/usersWithAnomalousSignInActivity.PNG)]
 
 
 ## 統合アプリケーション レポート
@@ -154,7 +154,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | ディレクトリ内のすべての SaaS アプリケーションについて使用状況を表示するには、このレポートを使用します。このレポートは、アクセス パネルでユーザーがアプリケーションをクリックした回数の合計に基づきます。 | [ディレクトリ] > [レポート] タブ |
 
-![Application usage summary](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
+![Application usage summary](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)]
 
 
 ### アプリケーションの使用状況: 詳細
@@ -163,11 +163,11 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | どの程度、特定の SaaS アプリケーションが使用されているかを表示するときに、このレポートを使用します。このレポートは、アクセス パネルでユーザーがアプリケーションをクリックした回数の合計に基づきます。 | [ディレクトリ] > [レポート] タブ |
 
-### アプリケーション ダッシュボード
+### アプリケーション ダッシュ ボード
 
 | 説明 | レポートの場所 |
 | :-------------     | :-------        |
-| このレポートは、選択した間隔で、組織内のユーザーによるアプリケーションへの累計サインインを示します。ダッシュボード ページ上のグラフは、そのアプリケーションのすべての使用状況の傾向を把握するために役立ちます。 | [ディレクトリ] > [アプリケーション] > [ダッシュボード] タブ |
+| このレポートは、選択した間隔で、組織内のユーザーによるアプリケーションへの累計サインインを示します。ダッシュボード ページ上のグラフは、そのアプリケーションのすべての使用状況の傾向を把握するために役立ちます。 | [ディレクトリ] > [アプリケーション] > [ダッシュ ボード] タブ |
 
 ## エラー レポート
 
@@ -177,7 +177,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | SaaS アプリケーションから Azure Active Directory へのアカウントの同期中に発生するエラーを監視する場合に使用します。 | [ディレクトリ] > [レポート] タブ |
 
-![アカウント プロビジョニング エラー](./media/active-directory-view-access-usage-reports/accountProvisioningErrors.PNG)
+![アカウント プロビジョニング エラー](./media/active-directory-view-access-usage-reports/accountProvisioningErrors.PNG)]
 
 
 ## ユーザー固有レポート
@@ -202,7 +202,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | ----------------------								| ---------		|
 | [アクセス パネル](http://myapps.microsoft.com/)へのサインイン | あり |
 | [Azure 管理ポータル](https://manage.windowsazure.com/)へのサインイン | あり |
-| [Microsoft Azure ポータル](http://portal.azure.com/)へのサインイン | あり |
+| Microsoft Azure [ポータル](http://portal.azure.com/)へのサインイン | あり |
 | [Office 365 ポータル](http://portal.office.com/)へのサインイン | あり |
 | Outlook などのネイティブのアプリケーションへのサインイン (次の例外を参照してください) | あり |
 | アクセス パネルを通じた Salesforce などのフェデレーション/プロビジョニング アプリケーションへのサインイン | あり |
@@ -220,7 +220,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | 過去 24 時間、過去 7 日間、または過去 30 日間内のすべての監査イベントのレコードを表示します。<br /> 詳細については、[Azure Active Directory の監査レポート イベント](active-directory-reporting-audit-events.md)を参照してください。 | [ディレクトリ] > [レポート] タブ |
 
-![監査レポート](./media/active-directory-view-access-usage-reports/auditReport.PNG)
+![監査レポート](./media/active-directory-view-access-usage-reports/auditReport.PNG)]
 
 
 ### グループのアクティビティ レポート
@@ -229,7 +229,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | ディレクトリ内でセルフ サービスにより管理されるグループのすべてのアクティビティが表示されます。 | [ディレクトリ] > [ユーザー] > <i>[ユーザー]</i> > [デバイス] タブ |
 
-![Self service groups activity](./media/active-directory-view-access-usage-reports/selfServiceGroupsActivity.PNG)
+![セルフ サービス グループ アクティビティ](./media/active-directory-view-access-usage-reports/selfServiceGroupsActivity.PNG)]
 
 
 ### パスワード リセット登録アクティビティ レポート
@@ -238,7 +238,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | 組織で実行されたすべてのパスワード リセットの登録が表示されます。 | [ディレクトリ] > [レポート] タブ |
 
-![Password reset registration activity](./media/active-directory-view-access-usage-reports/passwordResetRegistrationActivity.PNG)
+![パスワード リセット登録アクティビティ](./media/active-directory-view-access-usage-reports/passwordResetRegistrationActivity.PNG)]
 
 
 ### パスワード リセット アクティビティ
@@ -247,7 +247,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | 組織で実行されたすべてのパスワードのリセットの試行が表示されます。 | [ディレクトリ] > [レポート] タブ |
 
-![パスワード リセット アクティビティ](./media/active-directory-view-access-usage-reports/passwordResetActivity.PNG)
+![パスワード リセット アクティビティ](./media/active-directory-view-access-usage-reports/passwordResetActivity.PNG)]
 
 
 ## セキュリティ違反が疑われる場合の考慮事項
@@ -270,7 +270,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
     - 過去 7 日間
     - 過去 30 日間
 4. レポートを実行するには、チェック マーク アイコンをクリックします。
-	- Azure 管理ポータルに最大 1,000 件のイベントが表示されます。
+	- Microsoft Azure 管理ポータルに最大 1,000 件のイベントが表示されます。
 5. 必要に応じて **[ダウンロード]** をクリックして、オフラインでの閲覧またはアーカイブ目的のために、コンマ区切り値 (CSV) 形式で圧縮されたファイルのレポートをダウンロードします。
 	- ダウンロードしたファイルには、最大 75,000 件のイベントが含まれます。
 
@@ -324,9 +324,9 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 はい。Azure 管理ポータル内で異常なサインインに関連する通知をオフにするには、**[構成]** をクリックして **[通知]** セクションの下で **[無効]** をクリックします。
 
-## 参照トピック
+## 次の手順
 
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
-- [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
+- [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

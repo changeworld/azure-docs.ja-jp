@@ -1,19 +1,19 @@
-<properties 
+<properties
 	pageTitle="App Services アプリケーションに Google 認証を構成する方法"
-	description="App Services アプリケーションに Google 認証を構成する方法について説明します。" 
-    services="app-service\mobile" 
-	documentationCenter="" 
-	authors="mattchenderson,ggailey777" 
-	manager="dwrede" 
+	description="App Services アプリケーションに Google 認証を構成する方法について説明します。"
+    services="app-service\mobile"
+	documentationCenter=""
+	authors="mattchenderson" 
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="02/19/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="05/26/2015"
 	ms.author="mahender"/>
 
 # Google ログインを使用するようにアプリケーションを構成する方法
@@ -69,5 +69,6 @@
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
 [Azure の管理ポータル]: https://portal.azure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

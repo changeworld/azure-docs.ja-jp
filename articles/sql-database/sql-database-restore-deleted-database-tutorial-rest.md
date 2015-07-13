@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="storage-backup-recovery" 
-   ms.date="02/24/2015"
+   ms.date="03/17/2015"
    ms.author="elfish; v-romcal"/>
 
 # 削除済み Azure SQL データベースの REST API による復元
 
 > [AZURE.SELECTOR]
-- [削除済みデータベースの復元 - ポータル](http://azure.microsoft.com/documentation/articles/sql-database-restore-deleted-database-tutorial-management-portal/)
-- [削除済みデータベースの復元 - PowerShell](http://azure.microsoft.com/documentation/articles/sql-database-restore-deleted-database-tutorial-powershell/)
+- [Restore deleted database - portal](sql-database-restore-deleted-database-tutorial-management-portal.md)
+- [Restore deleted database - PowerShell](sql-database-restore-deleted-database-tutorial-powershell.md) 
 
 ## 概要
 
@@ -30,17 +30,17 @@
 
 ## 制限事項とセキュリティ
 
-「[Restore a deleted Azure SQL database in the Azure portal (Azure ポータルで削除された Azure SQL データベースの復元)](http://azure.microsoft.com/documentation/articles/sql-database-restore-deleted-database-tutorial-management-portal/)」をご覧ください。
+「[Azure ポータルで削除された Azure SQL データベースの復元](sql-database-restore-deleted-database-tutorial-management-portal.md)」を参照してください。
 
-## 方法:削除済みの Azure SQL データベースを REST API を使用して復元する
+## 方法: 削除済みの Azure SQL データベースを REST API を使用して復元する
 
-1.	[List Restorable Dropped Databases](http://msdn.microsoft.com/library/azure/dn509562.aspx) 操作を使用して、復元可能なすべての削除済みデータベースのリストを表示します。
+1.	「[削除された復元可能なデータベースの一覧表示](http://msdn.microsoft.com/library/azure/dn509562.aspx)」の操作を使用して、復元可能なすべての削除済みデータベースのリストを表示します。
 	
-2.	[Get Restorable Dropped Database](http://msdn.microsoft.com/library/azure/dn509574.aspx) 操作を使用して、復元する削除済みデータベースの詳細を取得します。
+2.	「[削除された復元可能なデータベースの取得](http://msdn.microsoft.com/library/azure/dn509574.aspx)」の操作を使用して、復元する削除済みデータベースの詳細を取得します。
 
-3.	[Create Database Restore Request](http://msdn.microsoft.com/library/azure/dn509571.aspx) 操作を使用して、復元を開始します。
+3.	「[データベースの復元要求の作成](http://msdn.microsoft.com/library/azure/dn509571.aspx)」の操作を使用して、復元を開始します。
 	
-4.	[Database Operation Status](http://msdn.microsoft.com/library/azure/dn720371.aspx) 操作を使用して、復元の状態を追跡します。
+4.	「[データベース操作の状態](http://msdn.microsoft.com/library/azure/dn720371.aspx)」の操作を使用して、復元の状態を追跡します。
 
 ## 次のステップ
 
@@ -51,5 +51,5 @@
 [Azure SQL Database のバックアップと復元](http://msdn.microsoft.com/library/azure/jj650016.aspx)
 
 [サービス管理 REST API リファレンス](http://msdn.microsoft.com/library/azure/ee460799.aspx)
-<!--HONumber=47-->
- 
+
+<!---HONumber=62-->

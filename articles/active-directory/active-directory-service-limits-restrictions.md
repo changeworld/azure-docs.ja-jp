@@ -37,7 +37,7 @@
 
 ##スキーマの拡張機能
 
-現在、"文字列" 型または "バイナリ" 型の単一値の属性を使用して "User"、"Group"、"TenantDetail"、"Device"、"Application"、および "ServicePrincipal" エンティティを拡張できます。この場合、次のような制限があります。
+現在、”文字列” 型または ”バイナリ” 型の単一値の属性を使用して ”User”、”Group”、”TenantDetail”、”Device”、”Application”、および ”ServicePrincipal” エンティティを拡張できます。この場合、次のような制限があります。
 
 - 文字列型の拡張の最大文字数は 256 文字です。
 - バイナリ型の拡張の最大バイト数は 256 バイトです。
@@ -75,4 +75,4 @@
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

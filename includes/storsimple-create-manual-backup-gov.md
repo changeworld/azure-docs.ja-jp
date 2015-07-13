@@ -1,11 +1,3 @@
-<properties pageTitle="手動でバックアップを作成する" description="オンデマンドのバックアップ ジョブを手動で開始する方法について説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="adinah" edito**r="tysonn" /> <tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/01/2015"
-   ms.author="v-sharos" />
 
 #### 手動でバックアップを作成するには
 
@@ -29,4 +21,4 @@
 
   カタログに表示されているバックアップ セットの一覧に、そのバックアップが表示されます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

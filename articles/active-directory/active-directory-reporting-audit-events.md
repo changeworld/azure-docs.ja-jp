@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Azure Active Directory 監査レポートのイベント" 
-   description="Azure Active Directory から表示およびダウンロードできる監査対象イベントについて説明します。" 
-   services="active-directory" 
-   documentationCenter="" 
-   authors="kenhoff" 
-   manager="mbaldwin" 
+<properties
+   pageTitle="Azure Active Directory 監査レポートのイベント"
+   description="Azure Active Directory から表示およびダウンロードできる監査対象イベントについて説明します。"
+   services="active-directory"
+   documentationCenter=""
+   authors="kenhoff"
+   manager="mbaldwin"
    editor=""/>
 
 <tags
@@ -12,18 +12,24 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="identity" 
-   ms.date="04/13/2015"
+   ms.workload="identity"
+   ms.date="06/18/2015"
    ms.author="kenhoff"/>
 
 # Azure Active Directory 監査レポートのイベント
 
-Azure Active Directory 監査レポートを利用すると、Azure Active Directory で発生した特権アクションを識別できます。特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。ユーザーは、[Azure 管理ポータル](https://manage.windowsazure.com/)を使用して Azure Active Directory に対する監査イベントのリストを取得できます。
+Azure Active Directory 監査レポートを利用すると、Azure Active Directory で発生した特権アクションを識別できます。特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。「[アクセス レポートと状況レポートの表示](active-directory-view-access-usage-reports.md)」で説明したように、ユーザーは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)を使用して Azure Active Directory に対する監査イベントのリストを取得できます。アクセスおよび使用状況レポートを表示します。
+
+## 監査レポートの保持
+
+Azure AD の監査レポートのイベントは、180 日間保持されます。レポートの保持の詳細については、「[Azure Active Directory Report Retention Policies (Azure Active Directory レポートの保持ポリシー)](active-directory-reporting-retention.md)」をご覧ください。
+
+監査イベントを長期間保存する目的のユーザーの場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。詳細については、「[Getting Started with the Reporting API (Reporting API の概要)](active-directory-reporting-api-getting-started.md)」をご覧ください。
 
 ## 各監査イベントに含まれるプロパティ
 
 | プロパティ | 説明 |
-| ------	| ------								|		
+| ------	| ------								|
 | 日付と時刻 | 監査イベントが発生した日時です |
 | アクター | アクションを実行したユーザーまたはサービス プリンシパルです |
 | アクション | 実行されたアクションです |
@@ -66,7 +72,7 @@ Azure Active Directory 監査レポートを利用すると、Azure Active Direc
 | 会社情報の設定 | 会社レベルの情報が更新されました。詳細については、[Get-MsolCompanyInformation](https://msdn.microsoft.com/library/azure/dn194126.aspx) PowerShell コマンドレットを参照してください。 |
 | ユーザー パスワードの強制変更の設定 | ログイン時にパスワードの変更をユーザーに強制するプロパティが設定されました。 |
 
-<!--- 
+<!---
 
 List of events that still need descriptions:
 
@@ -95,5 +101,6 @@ Promote tenant to partner
 | TelephoneNumber | ユーザーの電話番号です。 |
 
 監査レコードは、多くの法令遵守に必要な管理です。Azure Active Directory 監査レポートを使用してコンプライアンス規制に対応するお客様の場合、お客様がエクスポートした監査レポートのコピーにこのヘルプ トピックのコピーを添えて提出し、レポートの詳細な説明に役立てることをお勧めします。Azure が現在を満たしているコンプライアンス規制についての情報を監査担当者が必要としている場合は、監査担当者に Microsoft Azure トラスト センターの[コンプライアンス ページ](http://azure.microsoft.com/support/trust-center/compliance/)を紹介してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

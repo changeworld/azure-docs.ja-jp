@@ -1,7 +1,6 @@
 > [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(iOS | Any)](mobile-services-ios-handling-conflicts-offline-data.md)
-- [(Windows Universal C# | Any)](mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md)
-- [(Windows Phone | Any)](mobile-services-windows-phone-handling-conflicts-offline-data.md)
+- [(iOS | Any)](../articles/mobile-services-ios-handling-conflicts-offline-data.md)
+- [(Windows Runtime 8.1 universal C# | Any)](../articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md)
+- [(Windows Phone Silverlight 8.x | Any)](../articles/mobile-services-windows-phone-handling-conflicts-offline-data.md)
 
-
-<!--HONumber=42-->
+<!---HONumber=62-->

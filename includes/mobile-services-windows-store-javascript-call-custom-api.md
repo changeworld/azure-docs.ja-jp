@@ -1,13 +1,13 @@
-﻿
-## <a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. Visual Studio でクイック スタート プロジェクトの default.html ファイルを開いて、 `buttonRefresh` という **button** 要素を探し、その直後に次の要素を新たに追加します。 
+##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
+
+1. Visual Studio でクイック スタート プロジェクトの default.html ファイルを開いて、`buttonRefresh` という **button** 要素を探し、その直後に次の要素を新たに追加します。 
 
 		<button id="buttonCompleteAll" style="margin-left: 5px">Complete All</button>
 
-	新しいボタンがページに追加されます。 
+	新しいボタンがページに追加されます。
 
-2.  `js` プロジェクト フォルダー内の default.js コード ファイルを開いて、**refreshTodoItems** 関数を探し、次のコードが含まれていることを確認します。
+2. `js` プロジェクト フォルダー内の default.js コード ファイルを開いて、**refreshTodoItems** 関数を探し、次のコードが含まれていることを確認します。
 
 	    todoTable.where({ complete: false })
 	       .read()
@@ -16,7 +16,7 @@
 	           listItems.winControl.itemDataSource = todoItems.dataSource;
 	       });            
 
-	ここでは、完了済みの項目が返されないように、項目をフィルターで処理しています。
+	ここでは、完了済みの項目がクエリで返されないように、項目をフィルターで処理しています。
 
 3. **refreshTodoItems** 関数の後に、次のコードを追加します。
 
@@ -48,7 +48,7 @@
 
 	これは、新しいボタンの **Click** イベントを処理するメソッドです。POST 要求を新しいカスタム API に送信する **InvokeApiAsync** メソッドがクライアントで呼び出されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。エラーが発生した場合はそれらも表示されます。
 
-## <a name="test-app"></a>アプリをテストする
+## <a name="test-app"></a>アプリケーションをテストする
 
 1. Visual Studio で **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
@@ -62,5 +62,4 @@
 
 	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
 
-
-<!--HONumber=52-->
+<!---HONumber=62-->

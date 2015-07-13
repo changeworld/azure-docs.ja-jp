@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure での Django を使用した Web アプリの作成" 
-	description="Azure App Service Web Apps での Python Web アプリの実行について説明したチュートリアルです。" 
-	services="app-service\web" 
-	documentationCenter="python" 
-	authors="huguesv" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure での Django を使用した Web アプリの作成"
+	description="Azure App Service Web Apps での Python Web アプリの実行について説明したチュートリアルです。"
+	services="app-service\web"
+	documentationCenter="python"
+	authors="huguesv"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="04/15/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="hero-article" 
+	ms.date="04/15/2015"
 	ms.author="huguesv"/>
 
 
@@ -57,7 +57,7 @@ Python と Git は既にインストールされていると思いますが、Py
 
 アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
-1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。 
+1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。
 2. **[Web + モバイル]**、**[Azure Marketplace]**、**[Web Apps]** の順にクリックします。
 3. 検索ボックスに、「python」と入力します。
 4. 検索結果で **[Django]** を選択し、**[作成]** をクリックします。
@@ -111,7 +111,7 @@ Python と Git は既にインストールされていると思いますが、Py
     \requirements.txt
 
 このアプリケーションで必要な外部パッケージ。デプロイ スクリプトにより、このファイルに記載してあるパッケージが pip インストールされます。
- 
+
     \web.2.7.config
     \web.3.4.config
 
@@ -229,7 +229,7 @@ Azure URL を参照して、変更内容を表示します。
 
     git clone <repo-url>
     cd <repo-folder>
-    git remote add azure <repo-url> 
+    git remote add azure <repo-url>
 
 ### 仮想環境の作成
 
@@ -318,7 +318,7 @@ Azure URL を参照して、変更内容を表示します。
 
     git clone <repo-url>
     cd <repo-folder>
-    git remote add azure <repo-url> 
+    git remote add azure <repo-url>
 
 ### 仮想環境の作成
 
@@ -423,7 +423,7 @@ Django には静的ファイルの収集に関する概念が設定されてい�
 
 Django アプリケーションで静的なファイルの収集をスキップする場合は、次のようにします。
 
-    .skipDjango 
+    .skipDjango
 
 その後、ローカル コンピューターで手動で収集する必要があります。
 
@@ -453,7 +453,7 @@ Django アプリケーションで静的なファイルの収集をスキップ�
     ALLOWED_HOSTS = (
         '*',
     )
- 
+
 実際には、より複雑な設定により、デバッグ モードとリリース モードを切り替え、ホスト名を取得できます。
 
 環境変数は、Azure ポータルの **[構成]** ページの **[アプリケーション設定]** セクションで設定できます。ソースに表示しない値 (接続文字列やパスワードなど) や、Azure とローカル コンピューターで設定を変える値を設定する場合に便利です。`settings.py` では、`os.getenv` を使用して環境変数を照会できます。
@@ -480,7 +480,7 @@ Azure には、Django アプリケーションから簡単に使用できるデ�
 ## 次のステップ
 
 Django と Python Tools for Visual Studio の詳細については、次のリンクをご覧ください。
- 
+
 - [Django のドキュメント]
 - [Python Tools for Visual Studio のドキュメント]
 
@@ -490,8 +490,8 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 - [Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と MySQL]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 
 <!--Link references-->
@@ -513,6 +513,6 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 [PTVS のドキュメント]: http://pytools.codeplex.com/documentation
 [Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
 [Django のドキュメント]: https://www.djangoproject.com/
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

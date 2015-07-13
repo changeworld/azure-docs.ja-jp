@@ -56,7 +56,7 @@
 7. **[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加する]** が選択されていることを確認してください。
 8. **[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
 
-	Azure Data Factory の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialFactory の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則][data-factory-naming-rules]に関するトピックを参照してください。
+	Azure Data Factor の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialFactory の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則][data-factory-naming-rules]に関するトピックを参照してください。
 	 
 	![Data Factory name not available][image-data-factory-name-not-available]
 
@@ -79,11 +79,11 @@
 	 
 5. **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
-	![Editor New data store button][image-editor-newdatastore-button]
+	![[新しいデータ ストア] ボタン][image-editor-newdatastore-button]
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
-	![Editor Blob Storage JSON][image-editor-blob-storage-json]
+	![BLOB ストレージ JSON の編集][image-editor-blob-storage-json]
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
@@ -204,7 +204,7 @@
 	
 	* location の **type** が **AzureSQLTableLocation** に設定されています。
 	* **linkedServiceName** が **AzureSqlLinkedService** (手順 2. で作成したリンク) に設定されています。
-	* **tablename** が **emp** に設定されています。
+	* **tablename** は **emp** に設定されています。
 	* データベース内の emp テーブルに 3 つの列 (**ID**、**FirstName**、**LastName**) がありますが、ID は識別子の列であるため、ここでは **FirstName** と **LastName** のみを指定する必要があります。
 	* **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
@@ -279,7 +279,7 @@
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
 4. ツール バーの **[デプロイ]** をクリックし、**ADFTutorialPipeline** を作成してデプロイします。**"パイプラインが正常に作成されました"** というメッセージが表示されていることを確認します。
-5. **[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックして、[ADFTutorialDataFactory] ブレードをツール バーおよびツリー ビューと共に閉じます。**"保存されていない編集は破棄されます"** というメッセージが表示されたら、**[OK]** をクリックします。
+5. ここで、**[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックして、[ADFTutorialDataFactory] ブレードをツール バーおよびツリー ビューと共に閉じます。**"保存されていない編集は破棄されます"** というメッセージが表示されたら、**[OK]** をクリックします。
 6. **ADFTutorialDataFactory** の **[Data Factory]** ブレードに戻ります。
 
 **お疲れさまでした。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
@@ -289,7 +289,7 @@
 
 	![Data Factory Blade - Diagram Tile][image-datafactoryblade-diagramtile]
 
-2. 以下のような図が表示されます。
+2. 以下のような図が表示されるはずです。
 
 	![Diagram view][image-data-factory-get-started-diagram-blade]
 
@@ -363,7 +363,7 @@
 
 
 ## 概要 
-このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。また、Azure プレビュー ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL データベースにデータをコピーしました。また、Azure プレビュー ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
 
 1.	**Azure Data Factory を作成します**。
 2.	データ ストアとコンピューティングをデータ ファクトリに**リンクするサービス** (**リンクされたサービス**と呼びます) を作成します。
@@ -382,7 +382,7 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)][copy-activity] | この記事には、本チュートリアルで使用した**コピー アクティビティ**の詳細な説明が記載されています。 
 [パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources] | この記事には、**オンプレミスの SQL Server データベース**から Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。 
 [チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する**現実のシナリオ**の実行方法について、**詳細なチュートリアル**が記載されています。
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL Database のテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
+[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL データベースのテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
 [Azure Data Factory の開発者向けリファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
 
 
@@ -506,4 +506,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

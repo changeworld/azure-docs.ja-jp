@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Windows デスクトップのアプリおよびサービス用の Application Insights" 
-	description="Application Insights を使用して Windows アプリの使用状況とパフォーマンスを分析します。" 
+	pageTitle="Windows デスクトップのアプリとサービス用の Application Insights" 
+	description="Application Insights を使用して Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。" 
 	services="application-insights" 
     documentationCenter="windows"
 	authors="alancameronwills" 
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/13/2015" 
+	ms.date="06/18/2015" 
 	ms.author="awills"/>
 
-# Windows デスクトップのアプリおよびサービスに対する Application Insights
+# Windows デスクトップのアプリとサービスに対する Application Insights
 
 *Application Insights はプレビュー段階です。*
 
@@ -33,6 +33,7 @@ Windows デスクトップのアプリとサービスに対するサポートは
 
     ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-desktop/01-new.png)
 
+    (選択したアプリケーションの種類に応じて、[メトリックス エクスプローラー][metrics]で使用できる概要ブレードのコンテンツとプロパティが設定されます)
 
 2.  インストルメンテーション キーをコピーします。
 
@@ -45,11 +46,11 @@ Windows デスクトップのアプリとサービスに対するサポートは
 
 2. Application Insights API パッケージをインストールします。
 
-    ![**[オンライン]**、**[プレリリースを含める]** の順に選択し、"Application Insights" を検索する](./media/app-insights-windows-desktop/04-ai-nuget.png)
+    ![「Application Insights」の検索](./media/app-insights-windows-desktop/04-core-nuget.png)
 
 3. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
 
-    &lt;InstrumentationKey&gt;*コピーしたキー*&lt;/InstrumentationKey&gt;
+    `<InstrumentationKey>*the key you copied*</InstrumentationKey>`
 
     または、次のコードでも同じ効果が得られます。
     
@@ -60,7 +61,7 @@ Windows デスクトップのアプリとサービスに対するサポートは
 
 `TelemetryClient` インスタンスを作成してから、[このインスタンスを使用してテレメトリを送信][api]します。
 
-`TelemetryClient.Flush` を使用して、アプリを閉じる前にメッセージを送信します (これは他の種類のアプリには使用しないでください)。
+`TelemetryClient.Flush()` を使用して、アプリを閉じる前にメッセージを送信します Core SDK は、メモリ内バッファーを使用します。フラッシュのメソッドは、プロセスのシャット ダウンでデータ損失が発生しないように、このバッファーを空にすることを確認します。(これは他の種類のアプリには使用しないでください。プラットフォーム SDK では、この動作を自動的に実装します。)
 
 たとえば、Windows フォーム アプリケーションでは、次のように記述します。
 
@@ -107,9 +108,10 @@ Windows デスクトップのアプリとサービスに対するサポートは
 
 #### コンテキストの初期化子
 
-TelemetryClient インスタンスごとにセッション データを設定する代わりに、コンテキストの初期化子を使用することもできます。
+ユーザーとセッションの数を表示するために、各 `TelemetryClient` インスタンスに値を設定できます。または、コンテキストの初期化子を使用して、この加算をすべてのクライアントに実行できます。
 
 ```C#
+
     class UserSessionInitializer: IContextInitializer
     {
         public void Initialize(TelemetryContext context)
@@ -127,6 +129,7 @@ TelemetryClient インスタンスごとにセッション データを設定す
             TelemetryConfiguration.Active.ContextInitializers.Add(
                 new UserSessionInitializer());
             ...
+
 ```
 
 

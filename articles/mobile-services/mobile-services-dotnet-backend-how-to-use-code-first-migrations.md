@@ -11,27 +11,33 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/27/2015" 
+	ms.date="06/04/2015" 
 	ms.author="glenga"/>
 
 # データ モデルの変更を .NET バックエンド モバイル サービスに加える方法
 
 このトピックでは Entity Framework Code First Migrations を使用して、既存のデータを失うことなく、既存の Azure SQL データベースにデータ モデルの変更を加える方法を説明します。この手順では、モバイル サービス プロジェクトを既に Azure に発行したこと、データベース内に既存のデータがあること、およびリモートとローカルのデータ モデルが同期状態にあることを想定します。また、Azure モバイル サービスによって実装され、開発時に使用するデフォルトの Code First 初期化子についても説明します。こうした初期化子により、既存データを維持する必要がない場合に Code First Migrations を使用せずに簡単にスキーマを変更できます。
 
->[AZURE.NOTE]SQL Database でテーブルのプレフィックスとして使用されるスキーマ名は、web.config ファイルの <strong>MS_MobileServiceName</strong> アプリ設定で定義されています。ポータルからスターター プロジェクトをダウンロードするとき、この値はモバイル サービス名に既に設定されています。スキーマ名がモバイル サービスと一致すると、複数のモバイル サービスで同じデータベース インスタンスを安全に共有できます。
+>[AZURE.NOTE]SQL Database でテーブルのプレフィックスとして使用されるスキーマ名は、web.config ファイルの MS_MobileServiceName アプリ設定で定義されています。ポータルからスターター プロジェクトをダウンロードするとき、この値はモバイル サービス名に既に設定されています。スキーマ名がモバイル サービスと一致すると、複数のモバイル サービスで同じデータベース インスタンスを安全に共有できます。
+
+## データ モデルの更新
+
+.NET バックエンド モバイル サービスに機能を追加するときは、新しいコントローラーを追加して API で新しいエンドポイントを公開します。カスタム コントローラーまたはテーブル コントローラーとして、新しい API を作成します。[TableController<TEntity>] は、[EntityData] から継承するデータ型を公開します。データベースに永続化されるデータを有効にするには、このデータ型も [DbContext] の新しい [DbSet<T>] としてデータ モデルに追加する必要があります。Entity Framework の Code First の詳細については、[Code First によるモデルの作成](https://msdn.microsoft.com/data/ee712907#codefirst)をご覧ください。
+
+Visual Studio を使用すれば、クライアント アプリケーションに新しいデータ型を公開するためのテーブル コント ローラーを容易に作成できます。詳細については、[Mobile Services でコントローラーを使用してデータにアクセスする方法](https://msdn.microsoft.com/library/windows/apps/xaml/dn614132.aspx)をご覧ください。
 
 ## データ モデル初期化子
 
-モバイル サービスでは、.NET バックエンド モバイル サービス プロジェクトにおいて 2 つのデータ モデル初期化子ベースのクラスをサポートします。こうした初期化子は、Entity Framework が [DbContext] でデータ モデルの変更を検出する際に、データベースでテーブルを削除し、再び作成します。初期化子は、モバイル サービスがローカル コンピューターで実行している場合と、Azure でホストされている場合の両方で作動するように作られています。
+Mobile Services では、.NET バックエンド モバイル サービス プロジェクトにおいて 2 つのデータ モデル初期化子ベースのクラスを用意しています。初期化子は両方とも、Entity Framework が [DbContext] でデータ モデルの変更を検出すると、データベースでテーブルを削除し、再び作成します。初期化子は、モバイル サービスがローカル コンピューターで実行している場合と、Azure でホストされている場合の両方で作動するように作られています。
 
 >[AZURE.NOTE].NET バックエンド モバイル サービスを発行すると、データ アクセス操作が実行されるまで初期化子は実行されません。つまり、新たに発行されたサービスでは、クエリなどのデータ アクセス操作がクライアントによってリクエストされるまで、ストレージに使用されるデータ テーブルは作成されません。
 >
 >データ アクセス操作は、スタート ページの **[試してみる]** からアクセスできる組み込みの API ヘルプ機能を使用して実行することもできます。API ページを使用してモバイル サービスをテストする方法の詳細については、「[既存のアプリケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#test-the-service-locally)」内のセクション「モバイル サービス プロジェクトをローカルにテストする」を参照してください。
 
-初期化子ベース クラスは両方とも、モバイル サービスで使用されるスキーマのすべてのテーブル、ビュー、関数、手順をデータベースから削除します。
+初期化子は両方とも、モバイル サービスで使用されるスキーマのすべてのテーブル、ビュー、関数、手順をデータベースから削除します。
 
 + **ClearDatabaseSchemaIfModelChanges** <br/> Code First がデータ モデルで変更を検出した場合のみスキーマのオブジェクトは削除されます。[Azure の管理ポータル]からダウンロードした .NET バックエンド プロジェクトデフォルトの初期化子は、このベース クラスから継承します。
  
@@ -159,5 +165,9 @@ Code First Migrations は、実行されたときにスナップショットの�
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [DbContext]: http://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.113).aspx
 [AddOrUpdate]: http://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
+[TableController<TEntity>]: https://msdn.microsoft.com/library/azure/dn643359.aspx
+[EntityData]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.entitydata.aspx
+[DbSet<T>]: https://msdn.microsoft.com/library/azure/gg696460.aspx
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

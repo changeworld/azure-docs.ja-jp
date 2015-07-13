@@ -232,7 +232,7 @@ Media Services Encoder によって生成されるファイルの名前は、以
 マクロ間にはアンダースコアが挿入されます。たとえば、この構成で生成されるファイル名は、MyVideo_H264_4500kpbs_AAC_und_ch2_128kbps.mp4 のようになります。
 
 ##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[Media Services でジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックに進みます。
+これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックに進みます。
 
 [Azure Marketplace]: https://datamarket.azure.com/
 [Encoder Preset]: http://msdn.microsoft.com/library/dn619392.aspx
@@ -243,4 +243,4 @@ Media Services Encoder によって生成されるファイルの名前は、以
 [Task Preset for Azure Media Packager]: http://msdn.microsoft.com/library/windowsazure/hh973635.aspx
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

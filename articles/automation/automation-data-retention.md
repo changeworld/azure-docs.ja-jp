@@ -34,6 +34,6 @@ Azure Automation は、90 日を超えるジョブを自動的に削除して完
 保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。
 
 ## 関連記事:
-- [Azure オートメーションのバックアップ](https://msdn.microsoft.com/library/dn643635.aspx)
+- [Azure オートメーションのバックアップ](https://msdn.microsoft.com/library/dn643635.aspx) 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

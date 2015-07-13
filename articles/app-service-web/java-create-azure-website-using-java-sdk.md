@@ -461,7 +461,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 
 1. **Essentials** で、**FTP ホスト名**を検索してコピーします。これは、`ftp://waws-prod-bay-NNN.ftp.azurewebsites.windows.net` のような URI です。
 
-2. **Essentials** で、**FTP/デプロイ ユーザー名**を検索してコピーします。これは、*Web アプリ名\\デプロイ ユーザー名*という形式です (例: `WebDemoWebApp\deployer77`)。
+2. **Essentials** で、**FTP/デプロイ ユーザー名**を検索してコピーします。これは、*Web アプリ名\デプロイ ユーザー名*という形式です (例: `WebDemoWebApp\deployer77`)。
 
 発行プロファイルから FTP 接続情報を取得するには
 
@@ -483,7 +483,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 
 - `publishUrl` は、**FTP ホスト名**と同じで、**ホスト**で設定された値です。
 - `publishMethod="FTP"` は、**プロトコル**が **[FTP - File Transfer Protocol]**、**暗号化**が **[Use plain FTP]** に設定されていることを意味します。
-- `userName` と `userPWD` は、デプロイ資格情報をリセットするときに指定された、実際のユーザー名とパスワードの値のキーです。`userName` は、**デプロイ / FTP ユーザー**と同じです。これらは、FileZilla の**ユーザー**と**パスワード**にマップされます。
+- `userName` と `userPWD` は、デプロイ資格情報をリセットするときに指定された、実際のユーザー名とパスワードの値のキーです。`userName` は**デプロイ / FTP ユーザー**と同じです。これらは、FileZilla の**ユーザー**と**パスワード**にマップされます。
 - `ftpPassiveMode="True"` は、FTP サイトがパッシブ FTP 転送を使用することを意味します (**[転送設定]** タブで **[パッシブ]** を選択)。
 
 
@@ -542,7 +542,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 1. FileZilla で、**[ファイル] > [サイト マネージャー]** の順にクリックします。
 2. **[サイト マネージャー]** ダイアログ ボックスで、**[新しいサイト]** をクリックします。新しい空の FTP サイトが表示され、**[Select Entry]** に名前を指定するように求められます。この手順では、`AzureWebDemo-FTP` という名前を付けます。
 
-    **[一般]** タブで、次の設定を指定できます。- **[ホスト]:** ダッシュボードからコピーした**FTP ホスト名**を入力します。- **[ポート]:** (これはパッシブ転送であり、サーバーが使用するポートを決定するため、空白のままにします。)- **[Protocol]:** FTP File Transfer Protocol- **[Encryption]:** Use plain FTP- **[ログオンの種類]:** -通常- **[ユーザー]:** ダッシュ ボードからコピーしたデプロイ / FTP ユーザーを入力します。これは、*Web アプリ名\\デプロイ ユーザー名*という形式の完全な FTP ユーザー名です。- **[パスワード]:** デプロイ資格情報を設定したときに指定したパスワードを入力します。
+    **[全般]** タブで次の設定を指定します。- **[ホスト]:** ダッシュボードからコピーした **FTP ホスト名**を入力します。- **[ポート]:** (これはパッシブ転送であり、使用するポートをサーバーが決定するため、空白のままにします。) - **[プロトコル]:** FTP - File Transfer Protocol - **[暗号化]:** Use plain FTP - **[ログオン タイプ]:** 通常 - **[ユーザー]:** ダッシュボードからコピーしたデプロイ / FTP ユーザーを入力します。これは完全な FTP ユーザー名であり、その形式は *Web アプリ名\ユーザー名*になります。 - **[パスワード]:** デプロイ資格情報を設定したときに指定したパスワードを入力します。
 
     **[転送設定]** タブで **[パッシブ]** を選択します。
 
@@ -578,15 +578,16 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
-[1]: ./media/java-create-azure-website-using-java-sdk/eclipse-maven-repositories-rebuild-index.png
-[2]: ./media/java-create-azure-website-using-java-sdk/eclipse-new-java-class.png
-[3]: ./media/java-create-azure-website-using-java-sdk/eclipse-new-dynamic-web-project.png
-[4]: ./media/java-create-azure-website-using-java-sdk/eclipse-java-build-path.png
-[5]: ./media/java-create-azure-website-using-java-sdk/eclipse-targeted-runtimes-tomcat-server.png
-[6]: ./media/java-create-azure-website-using-java-sdk/eclipse-targeted-runtimes-properties-page.png
-[7]: ./media/java-create-azure-website-using-java-sdk/eclipse-run-on-server.png
-[8]: ./media/java-create-azure-website-using-java-sdk/kudu-console-drag-drop.png
-[9]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-1.png
-[10]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-2.png
+  [1]: ./media/java-create-azure-website-using-java-sdk/eclipse-maven-repositories-rebuild-index.png
+  [2]: ./media/java-create-azure-website-using-java-sdk/eclipse-new-java-class.png
+  [3]: ./media/java-create-azure-website-using-java-sdk/eclipse-new-dynamic-web-project.png
+  [4]: ./media/java-create-azure-website-using-java-sdk/eclipse-java-build-path.png
+  [5]: ./media/java-create-azure-website-using-java-sdk/eclipse-targeted-runtimes-tomcat-server.png
+  [6]: ./media/java-create-azure-website-using-java-sdk/eclipse-targeted-runtimes-properties-page.png
+  [7]: ./media/java-create-azure-website-using-java-sdk/eclipse-run-on-server.png
+  [8]: ./media/java-create-azure-website-using-java-sdk/kudu-console-drag-drop.png
+  [9]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-1.png
+  [10]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-2.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

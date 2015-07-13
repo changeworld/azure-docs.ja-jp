@@ -50,12 +50,12 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 * [Yammer コネクタ]
 
 ##Premium コネクタと API Apps##
-* AS2 コネクタ
-* BizTalk EDIFACT
+* [AS2 コネクタ]
+* [BizTalk EDIFACT]
 * [BizTalk Flat File Encoder]
 * BizTalk Transform Service
 * [BizTalk ルール]
-* BizTalk X12
+* [BizTalk X12]
 * [BizTalk XPath Extractor]
 * [BizTalk XML Validator]
 * DB2 コネクタ
@@ -111,6 +111,8 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 [BizTalk XPath Extractor]: app-service-logic-xpath-extract.md
 [BizTalk XML Validator]: app-service-logic-xml-validator.md
 [BizTalk ルール]: app-service-logic-use-biztalk-rules.md
- 
+[AS2 コネクタ]: app-service-logic-connector-as2.md
+[BizTalk EDIFACT]: app-service-logic-connector-edifact
+[BizTalk X12]: app-service-logic-connector-x12.md
 
 <!---HONumber=62-->

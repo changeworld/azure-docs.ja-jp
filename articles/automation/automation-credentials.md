@@ -19,7 +19,7 @@
 
 Automation の資格情報資産は、ユーザー名やパスワードなどのセキュリティ資格情報を含む [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを保持しています。Runbook では、認証に PSCredential オブジェクトを受け付けるコマンドレットを使用したり、PSCredential オブジェクトのユーザー名とパスワードを抽出して認証を必要とするアプリケーションやサービスに提供したりできます。資格情報のプロパティは、Azure Automation に安全に格納されており、Runbook で [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) アクティビティを使用してアクセスできます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各オートメーション アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各 Automation アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
@@ -47,7 +47,7 @@ Windows PowerShell でオートメーション資格情報資産を作成およ�
 
 ### Azure ポータルで新しい資格情報を作成するには
 
-1. オートメーション アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
+1. Automation アカウントから、ウィンドウ上部にある **[資産]** をクリックします。
 1. ウィンドウの下部にある **[設定の追加]** をクリックします。
 1. **[資格情報の追加]** をクリックします。
 2. **[資格情報の種類]** ドロップダウンで、**[PowerShell 資格情報]** を選択します。
@@ -101,4 +101,6 @@ Runbook で資格情報資産を取得するには、**Get-AutomationPSCredentia
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

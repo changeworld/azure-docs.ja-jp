@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="ハイブリッド接続を使用して Azure App Service の Web アプリから内部設置型の SQL Server に接続する" 
-	description="Microsoft Azure で Web アプリを作成し、それを内部設置型の SQL Server データベースに接続します。"
+	pageTitle="ハイブリッド接続を使用して Azure App Service の Web アプリからオンプレミスの SQL Server に接続する" 
+	description="Microsoft Azure で Web アプリを作成し、それをオンプレミスの SQL Server データベースに接続します。"
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="cephalin" 
@@ -16,13 +16,13 @@
 	ms.date="06/02/2015" 
 	ms.author="cephalin"/>
 
-# ハイブリッド接続を使用して Azure App Service の Web アプリから内部設置型の SQL Server に接続する
+# ハイブリッド接続を使用して Azure App Service の Web アプリからオンプレミスの SQL Server に接続する
 
-ハイブリッド接続により、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps を、静的 TCP ポートを使用する内部設置型リソースに接続できます。サポートされているリソースには、Microsoft SQL Server、MySQL、HTTP Web APIs、Mobile Services、およびほとんどのカスタム Web サービスが含まれます。
+ハイブリッド接続により、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps を、静的 TCP ポートを使用するオンプレミスのリソースに接続できます。サポートされているリソースには、Microsoft SQL Server、MySQL、HTTP Web APIs、Mobile Services、およびほとんどのカスタム Web サービスが含まれます。
 
-このチュートリアルでは、[Azure プレビュー](http://go.microsoft.com/fwlink/?LinkId=529715)での App Service Web アプリの作成方法、新しいハイブリッド接続機能を使用したローカルの内部設置型 SQL Server データベースへの Web アプリの接続方法、ハイブリッド接続を使用する単純な ASP.NET アプリケーションの作成方法、App Service Web アプリへのアプリケーションのデプロイ方法について説明します。完成した Azure の Web アプリでは、ユーザー資格情報を内部設置型のメンバーシップ データベースに保存します。このチュートリアルは、Azure または ASP.NET を使用した経験がない読者を対象に作成されています。
+このチュートリアルでは、[Azure プレビュー](http://go.microsoft.com/fwlink/?LinkId=529715)での App Service Web アプリの作成方法、新しいハイブリッド接続機能を使用したローカルのオンプレミス SQL Server データベースへの Web アプリの接続方法、ハイブリッド接続を使用する単純な ASP.NET アプリケーションの作成方法、App Service Web アプリへのアプリケーションのデプロイ方法について説明します。完成した Azure の Web アプリでは、ユーザー資格情報をオンプレミスのメンバーシップ データベースに保存します。このチュートリアルは、Azure または ASP.NET を使用した経験がない読者を対象に作成されています。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 >
 >ハイブリッド接続機能の Web Apps 部分は、[Azure プレビュー ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
 
@@ -30,7 +30,7 @@
 
 このチュートリアルを完了するには、以下の製品が必要です。すべて無料版を利用できるため、Azure の開発を完全に無料で始めることができます。
 
-- **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間無料評価版](/pricing/free-trial/)」を参照してください。 
+- **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間無料試用版](/pricing/free-trial/)」を参照してください。 
 
 - **Visual Studio 2013** - Visual Studio 2013 の無料試用版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」を参照してください。これをインストールしてから、次に進みます。
 
@@ -43,9 +43,9 @@
 このチュートリアルでは、Azure サブスクリプションを持っている、Visual Studio 2013 をインストールしている、および .NET Framework 3.5 をインストールしているか有効にしていると想定しています。このチュートリアルでは、Azure のハイブリッド接続機能 (静的 TCP ポートの既定のインスタンス) を使用する構成に SQL Server 2014 Express をインストールする方法を説明します。SQL Server をインストールしていない場合は、チュートリアルを開始する前に、上記の場所から SQL Server 2014 Express with Tools をダウンロードしてください。
 
 ### メモ ###
-ハイブリッド接続で内部設置型の SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server の既定のインスタンスは静的ポート 1433 を使用しますが、名前付きインスタンスは静的ポート 1433 を使用しません。
+ハイブリッド接続でオンプレミスの SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server の既定のインスタンスは静的ポート 1433 を使用しますが、名前付きインスタンスは静的ポート 1433 を使用しません。
 
-内部設置型の Hybrid Connection Manager のエージェントをインストールするコンピューターの条件は、次のとおりです。
+オンプレミス ハイブリッド接続マネージャーのエージェントをインストールするコンピューターの条件は、次のとおりです。
 
 - 次を使用して Azure に送信接続できること
 
@@ -68,14 +68,14 @@
 	</tr>
 </table>
 
-- 内部設置型リソースの *hostname*:*portnumber* に到達できること 
+- オンプレミスのリソースの *hostname*:*portnumber* に到達できること 
 
-この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
-上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[内部設置型の SQL Server を作成する](#CreateSQLDB)」から開始できます。
+上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[オンプレミスの SQL Server データベースを作成する](#CreateSQLDB)」から開始できます。
 
 <a name="InstallSQL"></a>
-## A.SQL Server Express をインストールし、TCP/IP を有効にして、内部設置型の SQL Server データベースを作成する ##
+## A.SQL Server Express をインストールし、TCP/IP を有効にして、オンプレミスの SQL Server データベースを作成する ##
 
 このセクションでは、Web アプリケーションが Azure プレビュー環境を使用するために、SQL Server Express をインストールし、TCP/IP を有効にして、データベースを作成する方法を説明します。
 
@@ -107,7 +107,7 @@
 TCP/IP を有効にするには、SQL Server Express をインストールした際にインストールされた SQL Server 構成マネージャーを使用します。次に進む前に、「[SQL Server の TCP/IP ネットワーク プロトコルの有効化](http://technet.microsoft.com/library/hh231672%28v=sql.110%29.aspx)」の手順に従ってください。
 
 <a name="CreateSQLDB"></a>
-### 内部設置型の SQL Server データベースを作成する ###
+### オンプレミスの SQL Server データベースを作成する ###
 
 Visual Studio Web アプリケーションには、Azure がアクセスできるメンバーシップ データベースが必要です。これには、(既定で MVC テンプレートが使用する LocalDB データベースではなく) SQL Server または SQL Server Express データベースが必要なため、次にメンバーシップ データベースを作成します。
 
@@ -173,10 +173,10 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![One hybrid connection created][CreateHCOneConnectionCreated]
 	
-これで、クラウド ハイブリッド接続のインフラストラクチャの重要な部分が完了しました。次に、対応する内部設置型の部分を作成します。
+これで、クラウド ハイブリッド接続のインフラストラクチャの重要な部分が完了しました。次に、対応するオンプレミスの部分を作成します。
 
 <a name="InstallHCM"></a>
-## D.内部設置型の Hybrid Connection Manager をインストールして接続を完了する ##
+## D.オンプレミス ハイブリッド接続マネージャーをインストールして接続を完了する ##
 
 [AZURE.INCLUDE [app-service-hybrid-connections-manager-install](../../includes/app-service-hybrid-connections-manager-install.md)]
 
@@ -299,11 +299,11 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 	
 	![View the results][HCTestSSMSTree]
 	
-5. ローカル メンバーシップ テーブルには、ローカルで作成したメンバーシップと、Azure クラウドで作成したメンバーシップの両方が表示されています。クラウドで作成したメンバーシップは、Azure のハイブリッド接続機能で内部設置型のデータベースに保存されています。
+5. ローカル メンバーシップ テーブルには、ローカルで作成したメンバーシップと、Azure クラウドで作成したメンバーシップの両方が表示されています。クラウドで作成したメンバーシップは、Azure のハイブリッド接続機能でオンプレミスのデータベースに保存されています。
 	
 	![Registered users in on-premises database][HCTestShowMemberDb]
 	
-これで、Azure クラウドの Web アプリと内部設置型の SQL Server データベース間のハイブリッド接続を使用する ASP.NET Web アプリケーションを作成し、デプロイすることができました。ご利用ありがとうございます。
+これで、Azure クラウドの Web アプリとオンプレミスの SQL Server データベース間のハイブリッド接続を使用する ASP.NET Web アプリケーションを作成し、デプロイすることができました。ご利用ありがとうございます。
 
 ## 関連項目 ##
 [ハイブリッド接続の概要](http://go.microsoft.com/fwlink/p/?LinkID=397274)
@@ -312,13 +312,13 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 [ハイブリッド接続の概要](/services/biztalk-services/)
 
-[BizTalk サービス: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk Services: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-dashboard-monitor-scale-tabs/)
 
 [Building a Real-World Hybrid Cloud with Seamless Application Portability (シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする) (Channel 9 のビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
-[ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)
+[ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)
 
-[Connect to an on-premises SQL Server from Azure Mobile Services using Hybrid Connections (ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する) (Channel 9 のビデオ)](http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Connect-to-an-on-premises-SQL-Server-from-Azure-Mobile-Services-using-Hybrid-Connections)
+[Connect to an on-premises SQL Server from Azure Mobile Services using Hybrid Connections (ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する) (Channel 9 のビデオ)](http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Connect-to-an-on-premises-SQL-Server-from-Azure-Mobile-Services-using-Hybrid-Connections)
 
 [ASP.NET の ID の概要](http://www.asp.net/identity)
 

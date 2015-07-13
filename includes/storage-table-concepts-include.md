@@ -15,7 +15,7 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
 
 ![Table1][Table1]
 
--   **URL 形式:** 次のアドレス形式を使用してアカウントのテーブルのアドレスを記述します。http://`<storage account>`.table.core.windows.net/`<table>\`  
+-   **URL 形式:** 次のアドレス形式を使用してアカウントのテーブルのアドレスを記述します。http://`<storage account>`.table.core.windows.net/`<table>`  
       
     このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。詳細については、[OData.org の Web サイト][]を参照してください。
 
@@ -29,7 +29,7 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
 
 
   
-[Table1]: ./media/storage-table-concepts-include/table1.png
-[OData.org の Web サイト]: http://www.odata.org/
+  [Table1]: ./media/storage-table-concepts-include/table1.png
+  [OData.org の Web サイト]: http://www.odata.org/
 
-<!--HONumber=52-->
+<!---HONumber=62-->

@@ -108,4 +108,4 @@
 
 アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](../articles/documentdb/documentdb-increase-limits.md)。
 
-<!---HONumber=58-->
+<!---HONumber=62-->

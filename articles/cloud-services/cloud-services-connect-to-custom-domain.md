@@ -22,15 +22,13 @@
 
 最初に、Azure に仮想ネットワーク (VNET) を設定します。次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNET に追加します。次に、事前に作成した VNET に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。
 
-作業を開始するにあたり、いくつか注意することがあります。
-1.	このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。Azure PowerShell の設定方法については、[Azure PowerShell をインストールして構成する方法](../install-configure-powershell.md)に関するページを参照してください。
-2.	AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNET 内にある必要があります。
+作業を開始するにあたり、いくつか注意することがあります。1.このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。Azure PowerShell の設定方法については、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。2.AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNET 内にある必要があります。
 
 このステップ バイ ステップ ガイドに従って作業しているときに問題が発生した場合はコメントを残してください。私たちはコメントを必ず読んでいるので、だれかが対応します。
 
 ## 仮想ネットワークの作成
 
-Azure に仮想ネットワークを作成するには、Azure ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure ポータルを使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](../create-virtual-network.md)に関するページを参照してください。
+Azure に仮想ネットワークを作成するには、Azure ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure ポータルを使用して仮想ネットワークを作成するには、「[仮想ネットワークの作成](../create-virtual-network.md)」を参照してください。
 
     #Create Virtual Network
 
@@ -67,11 +65,11 @@ Azure に仮想ネットワークを作成するには、Azure ポータルか P
 
     $vnetname = '<your-vnet-name>'
     $subnetname = '<your-subnet-name>'
-    $vmsvc1 = '<your-hosted-service>'
-    $vm1 = '<your-vm-name>'
-    $username = '<your-username>'
-    $password = '<your-password>'
-    $ affgrp = '<your- affgrp>'
+    $vmsvc1 = ‘<your-hosted-service>’
+    $vm1 = ‘<your-vm-name>’
+    $username = ‘<your-username>’
+    $password = ‘<your-password>’
+    $ affgrp = ‘<your- affgrp>’
 
     #Create a VM and add it to the Virtual Network
 
@@ -119,7 +117,7 @@ VM にログインした後、[カスタム AD ドメイン コントローラ�
       </NetworkConfiguration>
     </ServiceConfiguration>
 
-次に、クラウド サービス プロジェクトをビルドして Azure にデプロイします。クラウド サービス パッケージを Azure にデプロイする方法については、[クラウド サービスを作成して展開する方法]に関するページを参照してください。](cloud-services-how-to-create-deploy.md#deploy)
+次に、クラウド サービス プロジェクトをビルドして Azure にデプロイします。クラウド サービス パッケージを Azure にデプロイする方法については、「[クラウド サービスを作成して展開する方法](cloud-services-how-to-create-deploy.md#deploy)」を参照してください。
 
 ## AD ドメイン拡張機能を使用して、Web ロールまたは worker ロールをカスタム ドメインに接続する
 
@@ -127,8 +125,8 @@ Azure にクラウド サービス プロジェクトをデプロイした後は
 
     #Initialize domain variables
 
-    $domain = '<your-domain-name>';
-    $dmuser = '$domain<your-username>';
+    $domain = ‘<your-domain-name>’;
+    $dmuser = ‘$domain<your-username>’;
     $dmpswd = '<your-domain-password>';
     $dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force;
     $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd);
@@ -147,6 +145,6 @@ Azure にクラウド サービス プロジェクトをデプロイした後は
 私たちは、仮想マシンをドメイン コントローラーに昇格させる拡張機能の有用性に関して皆さんからのご意見を募集しています。このような拡張機能が便利だと思われる方は、コメントを残してください。
 
 この記事がお役に立てばさいわいです。
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

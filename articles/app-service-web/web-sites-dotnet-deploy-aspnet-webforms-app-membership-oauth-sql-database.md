@@ -238,8 +238,8 @@ namespace ContactManager.Models
         public string Zip { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-    {
-{
+    }
+}
 </pre>
 
 **Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とするプライマリ キー (`ContactID`) を定義します。**Contacts** クラスは、表示される連絡先データを表しています。Contacts オブジェクトの各インスタンスはリレーショナル データベース テーブルの各行に相当し、Contacts クラスの各プロパティは、リレーショナル データベース テーブルの各列に関連付けられます。データベースに格納されている連絡先データについては、このチュートリアルで後ほど説明します。
@@ -332,9 +332,9 @@ protected override void Seed(ContactManager.Models.ApplicationDbContext context)
             State = "WA",
             Zip = "10999",
             Email = "inesb@wideworldimporters.com",
-        {
+        }
         );
-{
+}
 </pre>
 このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。  
 7. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。  
@@ -434,7 +434,7 @@ namespace ContactManager
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity&lt;ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(20),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
-                {
+                }
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -457,9 +457,9 @@ namespace ContactManager
                 ClientId = "<mark>000000000000.apps.googleusercontent.com</mark>",
                 ClientSecret = "<mark>00000000000</mark>"
             });
-        {
+        }
     {
-{
+}
 </pre>
 12. **Ctrl キーを押しながら F5 キーを押して**アプリケーションをビルドし、実行します。**[Log in]** リンクをクリックします。
 13. **[Use another service to log in]** の **[Google]** をクリックします。![ログイン](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21d.png)  
@@ -495,7 +495,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
         if (!roleMgr.RoleExists("canEdit"))
         {
             IdRoleResult = roleMgr.Create(new IdentityRole { Name = "canEdit" });
-        {
+        }
 
         //var userStore = new UserStore&lt;ApplicationUser>(context);
         //var userMgr = new UserManager&lt;ApplicationUser>(userStore);
@@ -512,8 +512,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
         {
           //  IdUserResult = userMgr.AddToRole(appUser.Id, "canEdit");
             IdUserResult = userMgr.AddToRole(userMgr.FindByEmail("canEditUser@wideworldimporters.com").Id, "canEdit");
-        {
-    {
+        }
+    }
 </pre>
 4. `AddUserAndRole` メソッドの呼び出しを `Seed` メソッドの開始部分に追加します。以下には `Seed` メソッドの開始部分だけが表示されている点に注意してください。  
 	<pre class="prettyprint">

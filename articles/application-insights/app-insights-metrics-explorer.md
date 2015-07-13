@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/07/2015" 
+	ms.date="06/17/2015" 
 	ms.author="awills"/>
  
 # Application Insights を使用したメトリックの探索
@@ -158,7 +158,28 @@
 
 ![メトリックス エクスプローラーで、[アラート ルール]、[アラートの追加] の順に選択します](./media/app-insights-metrics-explorer/appinsights-413setMetricAlert.png)
 
-[詳細情報][alerts]。
+[アラートの詳細についてはこちらをご覧ください][alerts]。
+
+## Excel へのエクスポート
+
+メトリックス エクスプローラーに表示されるメトリック データを Excel ファイルにエクスポートできます。ポータルに示すように、エクスポートされたデータには、すべてのグラフとテーブルからのデータが含まれています。
+
+
+![メトリックス エクスプローラーで、[アラート ルール]、[アラートの追加] の順に選択します](./media/app-insights-metrics-explorer/31-export.png)
+
+各グラフやテーブルのデータが Excel ファイルの別のワークシートにエクスポートされます。
+
+表示されている内容がエクスポートされます。エクスポートするデータの範囲を変更する場合は、時間の範囲またはフィルターを変更します。テーブルの場合で、**[さらに読み込む]** が表示されている場合は、それをクリックしてから [エクスポート] をクリックすると、より多くのデータをエクスポートできます。
+
+*現時点では、Internet Explorer と Chrome でのみエクスポートできます。その他のブラウザーについてもサポートの追加に向けて対処していおります。*
+
+データを外部で処理できるよう、連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
+
+
+## 次のステップ
+
+* [Application Insights による使用状況の監視](app-insights-overview-usage.md)
+* [診断検索の使用](app-insights-diagnostic-search.md)
 
 
 <!--Link references-->
@@ -167,5 +188,6 @@
 [start]: app-insights-get-started.md
 [track]: app-insights-custom-events-metrics-api.md
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

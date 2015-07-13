@@ -62,7 +62,7 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 - **99.9% のエンタープライズ SLA** - Azure Active Directory Premium サービスでは 99.9% 以上の可用性が保証されます。
 
-    詳細については、「[Active Directory Premium SLA](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
+    詳細については、「[ほとんどの Azure サービスの SLA](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 - **ライトバック機能付きパスワード リセット** - セルフ サービスのパスワード リセットはオンプレミス ディレクトリにライトバックできます。
 
@@ -71,7 +71,7 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 ## エディションの比較: すべてのエディションに共通する機能
 
-- サービスとしてのディレクトリ。Free エディションの場合、500 K オブジェクトに制限されています。ただし、Azure Active Directory のディレクトリ サービスを利用する Office 365、Microsoft Intune、その他の Microsoft オンライン サービスに対しては、500 K オブジェクトの制限は適用されません。Basic および Premium Edition にはオブジェクトの制限はありません。
+- サービスとしてのディレクトリ。Free エディションの場合、500 K オブジェクトに制限されています。ただし、Azure Active Directory のディレクトリ サービスを利用する Office 365、Microsoft Intune、その他の Microsoft オンライン サービスに対しては、500 K オブジェクトの制限は適用されません。Basic および Premium エディションにはオブジェクトの制限はありません。
 - UI または Windows PowerShell コマンドレットを使用するユーザーとグループの管理
 - デバイス登録
 - SaaS およびカスタム アプリケーションへのシングル サインオン (SSO) ベースのユーザー アクセスのためのアクセス パネル ポータル。Azure Active Directory Free および Azure Active Directory Basic では、各 SaaS アプリへのアクセスが割り当てられているエンド ユーザーは、自身のアクセス パネルに最大 10 個のアプリが表示されており、それらのアプリにシングル サインオン アクセスできます (あらかじめ管理者によって SSO で構成されていることを前提とします)。Free でも管理者が SSO を構成してユーザー アクセスを割り当てることができる SaaS アプリの数に制限はありませんが、エンド ユーザーのアクセス パネルに一度に表示されるアプリは 10 個のみです。Azure Active Directory Premium にはアプリケーションの制限はありません。
@@ -122,4 +122,4 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

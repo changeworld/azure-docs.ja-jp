@@ -261,5 +261,6 @@ App Service SDK は、Swagger API の定義を利用してクライアント ク
 この記事では、.NET クライアントから内部 API アプリを使用する方法を説明しました。**パブリック (認証済み)** または**パブリック (匿名)** アクセス レベルに設定されている API アプリを使用する方法については、「[Azure App Service で .NET クライアントから API アプリ使用する](app-service-api-dotnet-consume.md)」を参照してください。
 
 .NET クライアントから API アプリを呼び出すコードのその他の例については、[Azure Cards](https://github.com/Azure-Samples/API-Apps-DotNet-AzureCards-Sample) サンプル アプリケーションをダウンロードしてください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

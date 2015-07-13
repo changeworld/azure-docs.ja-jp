@@ -1,33 +1,33 @@
 <a name="tellmecs"></a>
-## Tell me about cloud services
+## Cloud Services の概要
 
-Cloud Services is an example of Platform-as-a-Service (PaaS). Like [App Services](app-service-web-overview.md), this technology is designed to support applications that are scalable, reliable, and cheap to operate. Just like an [App Services](app-service-web-overview.md) are hosted on VMs, so too are Cloud Services, however, you have more control over the VMs. You can install your own software on Cloud Service VMs and you can remote into them.
+Cloud Services は、サービスとしてのプラットフォーム (PaaS) の 1 つの例です。このテクノロジは、[App Services](app-service-web-overview.md) と同様に、スケーラブルで、信頼性が高く、低運用コストの方法でアプリケーションをサポートするように設計されています。[App Services](app-service-web-overview.md) と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
 
-![cs_diagram](./media/cloud-services-choose-me-content/diagram.png) 
+![cs_diagram](./media/cloud-services-choose-me-content/diagram.png)
 
-More control also means less ease of use; unless you need the  additional control options, it's typically quicker and easier to get a web application up and running in Websites compared to Cloud Services. 
+コントロール能力の高さは、使いやすさが低下することも意味します。追加のコントロール オプションを必要としない限り、通常は Web サイトのほうが Cloud Services よりも短時間で Web アプリケーションを容易に実行できます。
 
-The technology provides two slightly different VM options: instances of *web roles* run a variant of Windows Server with IIS, while instances of *worker roles* run the same Windows Server variant without IIS. A Cloud Services application relies on some combination of these two options. 
+テクノロジにはわずかな相違がある 2 つの VM オプションが用意されています。*Web ロール*のインスタンスは IIS を搭載している Windows Server を実行し、*Worker ロール*のインスタンスは同じ Windows Server で IIS を搭載していない種類を実行します。Cloud Services アプリケーションはこの 2 つのオプションの組み合わせに依存します。
 
-Any combination of these two slightly different VM hosting options are available in a cloud service:
+これらのわずかな相違がある 2 つの VM ホスト オプションを任意に組み合わせて、クラウド サービスで使用できます。
 
-* **Web role**  
-  Runs Windows Server with your web app automatically deployed to IIS.
-* **Worker role**  
-  Runs Windows Server without IIS.
+* **Web ロール** IIS に自動的にデプロイされた Web アプリを搭載した Windows Server を実行します。
+* **Worker ロール** IIS を搭載していない Windows Server を実行します。
 
-For example, a simple application might use just a web role, while a more complex application might use a web role to handle incoming requests from users, then pass the work those requests create to a worker role for processing. (This communication could use [Service Bus](../articles/service-bus/fundamentals-service-bus-hybrid-solutions.md) or [Azure Queues](../articles/storage/storage-introduction.md).)
+たとえば、単純なアプリケーションは Web ロールだけを使用するかもしれませんが、複雑なアプリケーションは Web ロールを使用してユーザーから受け取った要求を処理してから、それらの要求が作成する作業を Worker ロールに渡して処理することがあります (この通信は、[Service Bus](../articles/service-bus/fundamentals-service-bus-hybrid-solutions.md) または [Azure キュー](../articles/storage/storage-introduction.md)を使用する可能性があります)。
 
-As the figure above suggests, all of the VMs in a single application run in the same cloud service. Because of this, users access the application through a single public IP address, with requests automatically load balanced across the application's VMs. The platform will [scale and deploy](../articles/cloud-services/cloud-services-how-to-scale.md) the VMs in a Cloud Services application in a way that avoids a single point of hardware failure. 
+上の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。このため、ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。プラットフォームは、ハードウェアの単一障害点を回避する方法で、VM を Cloud Services アプリケーションで[スケールおよびデプロイ](../articles/cloud-services/cloud-services-how-to-scale.md)します。
 
-Even though applications run in virtual machines, it's important to understand that Cloud Services provides PaaS, not IaaS. Here's one way to think about it: With IaaS, such as Azure Virtual Machines, you first create and configure the environment your application will run in, then deploy your application into this environment. You're responsible for managing much of this world, doing things such as deploying new patched versions of the operating system in each VM. In PaaS, by contrast, it's as if the environment already exists. All you have to do is deploy your application. Management of the platform it runs on, including deploying new versions of the operating system, is handled for you.
+アプリケーションは仮想マシンで実行しますが、Cloud Services は IaaS ではなく PaaS を提供することを理解することが重要です。次の例を考えてみましょう。Azure Virtual Machines のような IaaS では、アプリケーションが動作する環境を最初に作成して構成してから、この環境にアプリケーションをデプロイします。この方法では、パッチが適用された新しいオペレーティング システムのバージョンを各 VM にデプロイするなど、ほとんどの管理をユーザーが担当します。それに対し、PaaS では環境が既に存在するかのように管理できます。ユーザーはアプリケーションを展開するだけで済みます。オペレーティング システムの新バージョンのデプロイをはじめ、実行するプラットフォームの管理がユーザーに代わって処理されます。
 
-## Scaling and management
-With Cloud Services, you don't create virtual machines. Instead, you provide a configuration file that tells Azure how many of each you'd like, such as **three web role instances** and **two worker role instances**, and the platform creates them for you.  You still choose [what size](../articles/cloud-services/cloud-services-sizes-specs.md) those backing VMs should be, but you don't explicitly create them yourself. If your application needs to handle a greater load, you can ask for more VMs, and Azure will create those instances. If the load decreases, you can shut those instances down and stop paying for them.
+## スケーリングと管理
+Cloud Services では、ユーザーは仮想マシンを作成しません。代わりに、**Web ロール インスタンスを 3 個**、**Worker ロール インスタンスを 2 個**のように、それぞれがいくつ必要かを Azure に指示する設定ファイルを提供するだけで、プラットフォームがそれらを自動的に作成します。その場合も、バッキング VM の[サイズ](../articles/cloud-services/cloud-services-sizes-specs.md)を選択する必要がありますが、自身で明示的に作成する必要はありません。アプリケーションが高い負荷を処理する場合は、追加の VM を要求すると、Azure がそれらのインスタンスを作成します。負荷が減少した場合は、それらのインスタンスをシャットダウンして支払いを停止できます。
 
-A Cloud Services application is typically made available to users via a two-step process. A developer first [uploads the application](../articles/cloud-services/cloud-services-how-to-create-deploy.md) to the platform's staging area. When the developer is ready to make the application live, they use the Azure Management Portal to request that it be put into production. This [switch between staging and production](../articles/cloud-services/cloud-services-nodejs-stage-application.md) can be done with no downtime, which lets a running application be upgraded to a new version without disturbing its users. 
+Cloud Services アプリケーションは通常、2 つの手順から成るプロセスで利用可能になります。最初に、開発者はプラットフォームのステージング領域に[アプリケーションをアップロード](../articles/cloud-services/cloud-services-how-to-create-deploy.md)します。アプリケーションを稼働する準備が整ったら、Microsoft Azure 管理ポータルを使用して運用開始を要求します。[ステージングと運用の切り替え](../articles/cloud-services/cloud-services-nodejs-stage-application.md)にはダウンタイムが生じないため、ユーザーに支障を与えることなく、実行中のアプリケーションを新バージョンにアップグレードできます。
 
-## Monitoring
-Cloud Services also provides monitoring. Like Azure Virtual Machines, it will detect a failed physical server and restart the VMs that were running on that server on a new machine. But Cloud Services also detects failed VMs and applications, not just hardware failures. Unlike Virtual Machines, it has an agent inside each web and worker role, and so it's able to start new VMs and application instances when failures occur.
+## 監視
+Cloud Services は監視も提供します。Azure の仮想マシンと同様に、故障した物理サーバーを検出し、そのサーバーで実行していた VM を別のマシンで再開します。さらに、クラウド サービスはハードウェアの故障だけではなく、エラーが発生した VM やアプリケーションも検出します。仮想マシンと異なり、各 Web ロール内と Worker ロール内にエージェントが含まれているので、エラーが発生したときに、新しい VM とアプリケーションのインスタンスを開始できます。
 
-The PaaS nature of Cloud Services has other implications, too. One of the most important is that applications built on this technology should be written to run correctly when any web or worker role instance fails. To achieve this, a Cloud Services application shouldn't maintain state in the file system of its own VMs. Unlike VMs created with Azure Virtual Machines, writes made to Cloud Services VMs aren't persistent; there's nothing like a Virtual Machines data disk. Instead, a Cloud Services application should explicitly write all state to SQL Database, blobs, tables, or some other external storage. Building applications this way makes them easier to scale and more resistant to failure, both important goals of Cloud Services.
+PaaS というクラウド サービスの本質には、他の含意もあります。最も重要なことの 1 つは、このテクノロジを基盤に構築されるアプリケーションは、Web ロールや Worker ロールのインスタンスでエラーが発生したときに正しく実行するように記述することが必要です。これを実現するには、クラウド サービスのアプリケーションがそれ自体の VM のファイル システムで状態を維持してはなりません。Azure の仮想マシンで作成された VM と異なり、クラウド サービス VM への書き込みは永続的ではありません。その点で仮想マシンのデータ ディスクとは大きく異なります。クラウド サービス アプリケーションはすべての状態を SQL データベース、BLOB、テーブルか、その他の外部ストレージに明示的に書き込む必要があります。この方法でアプリケーションを構築すると、スケーリングしやすく、耐障害性が備わります。この 2 つは Cloud Services の重要なゴールです。
+
+<!---HONumber=62-->

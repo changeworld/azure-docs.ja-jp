@@ -26,7 +26,7 @@ API Management を使用するには、管理者が API を作成します。API
 
 このトピックでは、API Management の重要な概念を簡単に説明します。
 
->[AZURE.NOTE]詳細については、[クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper)に関する PDF ホワイトペーパーを参照してください。CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。
+>[AZURE.NOTE]詳細については、[クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper)に関する PDF ホワイトペーパーをご覧ください。CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。
 >
 > - API の一般的な要件と課題
 >     - API の分離とファサードの提供
@@ -35,7 +35,7 @@ API Management を使用するには、管理者が API を作成します。API
 >     - 分析とメトリック
 > - API Management プラットフォームを使用した制御と把握
 > - クラウド ソリューションとオンプレミス ソリューションの利用の違い
-> - Azure API Management
+> - Azure API 管理
 
 ## <a name="apis"> </a>API と操作
 
@@ -50,7 +50,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 
 開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。
 
-詳細については、「[Azure API Management で成果物を作成して発行する方法][]」と、次のビデオを参照してください。
+詳細については、「[Azure API Management で成果物を作成して発行する方法][]」と、次のビデオをご覧ください。
 
 > [AZURE.VIDEO using-products]
 
@@ -64,7 +64,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 
 管理者は、これらのシステム グループに加えてカスタム グループを作成できるほか、[関連付けられている Azure Active Directory テナントの外部グループを活用する](api-management-howto-aad.md/#how-to-add-an-external-azure-active-directory-group)こともできます。カスタム グループと外部グループをシステム グループと共に使用することにより、開発者には API 成果物の可視性とアクセスが提供されます。たとえば、特定のパートナー企業に所属する開発者向けにカスタム グループを 1 つ作成し、関連する API のみが含まれている成果物の API に対してアクセスを許可することができます。ユーザーは 複数のグループのメンバーになることができます。
 
-詳細については、「[How to create and use groups (グループを作成して使用する方法)][]」を参照してください。
+詳細については、「[How to create and use groups (グループを作成して使用する方法)][]」をご覧ください。
 
 ## <a name="developers"> </a> 開発者
 
@@ -78,11 +78,11 @@ API Management サービス インスタンスの基礎となるのは API で�
 
 ポリシーは、発行者がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
 
-ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。[制御フロー ポリシー][] や[変数の設定ポリシー][] など、一部のポリシーはポリシーの式に基づいています。詳細については、「[詳細なポリシー][] 」、「[ポリシーの式][] 」、および次のビデオを参照してください。
+ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。[制御フロー ポリシー][] や[変数の設定ポリシー][] など、一部のポリシーはポリシーの式に基づいています。詳細については、「[詳細なポリシー][] 」、「[ポリシーの式][] 」、および次のビデオをご覧ください。
 
 > [AZURE.VIDEO policy-expressions-in-azure-api-management]
 
-API Management の全ポリシー一覧については、「[Policy reference (ポリシー リファレンス)][]」を参照してください。ポリシーの使用と構成の詳細については、「[API Management policies (API Management のポリシー)][]」を参照してください。レート制限ポリシーとクォータ ポリシーを持った成果物の作成に関するチュートリアルについては、「[Azure API Management で成果物を作成して詳細設定を行う方法][]」を参照してください。デモについては、次のビデオをご覧ください。
+API Management の全ポリシー一覧については、「[Policy reference (ポリシー リファレンス)][]」をご覧ください。ポリシーの使用と構成の詳細については、「[API Management policies (API Management のポリシー)][]」を参照してください。レート制限ポリシーとクォータ ポリシーを持った成果物の作成に関するチュートリアルについては、「[Azure API Management で成果物を作成して詳細設定を行う方法][]」をご覧ください。デモについては、次のビデオをご覧ください。
 
 > [AZURE.VIDEO rate-limits-and-quotas]
 
@@ -114,4 +114,4 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

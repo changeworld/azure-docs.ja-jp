@@ -42,5 +42,6 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 * Azure Automation の[作業開始のチュートリアル](../automation-create-runbook-from-samples.md)に関するページを参照してください。
 * [#Azure API Management REST API の PowerShell モジュール](https://alexandrebrisebois.wordpress.com/2014/08/17/powershell-module-for-the-azure-api-management-rest-apis/)に関するコミュニティ ブログの投稿をお読みください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

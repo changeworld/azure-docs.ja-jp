@@ -21,7 +21,7 @@
 
 
 
-[AZURE.INCLUDE [sql-azure-management](../../includes/sql-azure-management.md)] 
-
-<!--HONumber=47-->
+[AZURE.INCLUDE [sql-azure-management](../../includes/sql-azure-management.md)]
  
+
+<!---HONumber=62-->

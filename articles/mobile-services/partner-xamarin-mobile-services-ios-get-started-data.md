@@ -29,7 +29,7 @@
 1. [Xamarin.iOS アプリケーション プロジェクトのダウンロード][GitHub]
 2. [モバイル サービスの作成]
 3. [ストレージのデータ テーブルの追加]
-4. [Mobile Services を使用するためのアプリケーションの更新]
+4. [Mobile Services 使用するためのアプリケーションの更新]
 5. [Mobile Services に対するアプリケーションのテスト]
 
 このチュートリアルには、[Azure Mobile Services コンポーネント]、[XCode 6.0][Install Xcode]、[Xamarin.iOS]、および iOS 7.0 以降のバージョンが必要です。
@@ -192,7 +192,7 @@
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [スクリプトを使用したデータの検証と変更] <br/>Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更] <br/>Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
 * [ページングを使用したクエリの改善] <br/>クエリ内でページングを使用して、1 回の要求で渡されるデータの量を制御する方法について説明します。
 
@@ -207,7 +207,7 @@
 [Get the Windows Store app]: #download-app
 [モバイル サービスの作成]: #create-service
 [ストレージのデータ テーブルの追加]: #add-table
-[Mobile Services を使用するためのアプリケーションの更新]: #update-app
+[Mobile Services 使用するためのアプリケーションの更新]: #update-app
 [Mobile Services に対するアプリケーションのテスト]: #test-app
 [Next Steps]: #next-steps
 
@@ -223,7 +223,7 @@
 [9]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-todoitem-data-browse.png
 
 <!-- URLs. TODO:: update download link, github link, and completed example project with new Xamarin.iOs projects -->
-[スクリプトを使用したデータの検証と変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios
 [ページングを使用したクエリの改善]: /develop/mobile/tutorials/add-paging-to-data-xamarin-ios
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-ios
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
@@ -240,5 +240,6 @@
 
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331302
 [Xamarin.iOS]: http://xamarin.com/download
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

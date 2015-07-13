@@ -122,4 +122,6 @@ Application Insights をインストールしないでログ アダプターの 
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

@@ -1,4 +1,4 @@
-1. Project Explorer で、**[app]** => **[java]** => **com.example.GetStartedWithData**、**src**、**.com.example.GetStartedWithData** の順に展開し、*ToDoActivity.java* ファイルを開きます。
+1. プロジェクト エクスプローラーで、**app**、**src**、**main**、**java**、**com.example.GetStartedWithData** の順に展開し、*ToDoActivity.java* ファイルを開きます。
 
    	![](./media/download-android-sample-code/mobile-services-android-studio-project.png)
 
@@ -24,4 +24,5 @@
    	![](./media/download-android-sample-code/mobile-quickstart-startup-android.png)
 
    	保存したテキストがメモリ内のコレクションに格納され、下のリストに表示されます。
-<!--HONumber=54-->
+
+<!---HONumber=62-->

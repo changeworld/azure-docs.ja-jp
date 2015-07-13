@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure App Service のエンタープライズ クラスの WordPress"
-	description="Azure App Service にエンタープライズ クラスの WordPress をホストする方法について説明します。"
+	description="Azure App Service にエンタープライズ クラスの WordPress サイトをホストする方法について説明します。"
 	services="app-service\web"
 	documentationCenter=""
 	authors="tfitzmac"
@@ -18,7 +18,7 @@
 
 #Azure App Service のエンタープライズ クラスの WordPress
 
-Azure App Service は、基幹業務系の大規模な [WordPress][wordpress] サイト用に、拡張性のある、安全で使いやすい環境を提供します。Microsoft も [Office][officeblog] ブログや [Bing][bingblog] ブログなどのエンタープライズ クラスのサイトを運営しています。このドキュメントでは、Azure App Service Web アプリを使用して、大量の訪問者を処理できるエンタープライズ クラスの、クラウド ベースの WordPress サイトを確立し、維持する方法について説明しています。
+Azure App Service は、基幹業務系の大規模な [WordPress][wordpress] サイト用に、拡張性のある、安全で使いやすい環境を提供します。Microsoft も [Office][officeblog] ブログや [Bing][bingblog] ブログなどのエンタープライズ クラスのサイトを運営しています。このドキュメントでは、Azure App Service Web Apps を使用して、大量の訪問者を処理できるエンタープライズ クラスの、クラウド ベースの WordPress サイトを確立し、維持する方法について説明しています。
 
 ## アーキテクチャと計画
 
@@ -32,26 +32,26 @@ Azure App Service は、基幹業務系の大規模な [WordPress][wordpress] �
 
 	> [AZURE.NOTE]最新のセキュリティ更新プログラムが適用されるよう、常に最新バージョンの PHP で実行することをお勧めします。
 
-###基本的なデプロイメント
+###基本的なデプロイ
 
-基本要件だけを使用して、Azure のリージョン内に基本的なソリューションを作成できます。
+基本要件だけを使用して、Azure リージョン内に基本的なソリューションを作成できます。
 
 ![単一の Azure リージョンでホストされている Azure Web アプリと MySQL データベース][basic-diagram]
 
-このデプロイでは、サイトの複数の Web アプリのインスタンスを作成することで、アプリケーションをスケール アウトできますが、いずれも特定リージョンのデータ センターにホストされます。このリージョンの外部からアクセスするユーザーがサイトを使用すると、応答時間が長くなることがあります。また、このリージョンのデータ センターがダウンした場合は、アプリケーションもダウンします。
+このデプロイでは、サイトの複数の Web Apps インスタンスを作成することで、アプリケーションをスケールアウトできますが、いずれも特定リージョンのデータ センターにホストされます。このリージョンの外部からアクセスするユーザーがサイトを使用すると、応答時間が長くなることがあります。また、このリージョンのデータ センターがダウンした場合は、アプリケーションもダウンします。
 
 
-###複数リージョンのデプロイメント
+###複数リージョンのデプロイ
 
 Azure [Traffic Manager][trafficmanager] を使用すると、WordPress サイトを複数のリージョンに展開する一方で、アクセスするユーザーには 1 つの URL のみを提示できます。すべてのユーザーは Traffic Manager を介してサイトにアクセスし、負荷分散構成に基づいて特定のリージョンにルーティングされます。
 
 ![Azure の Web アプリは CDBR の高可用性のルーターを使用して、地域間での MySQL にルーティングする複数の地域でホストされています。][multi-region-diagram]
 
-各リージョン内でも、WordPress サイトは複数の Web アプリ インスタンス間に展開されることがありますが、こうしたスケーリングはリージョンに固有です。つまり、トラフィックの多いリージョンと少ないリージョンでは、異なるスケーリングが実施されます。
+各リージョン内でも、WordPress サイトは複数の Web Apps インスタンス間に展開されることがありますが、こうしたスケーリングはリージョンに固有です。つまり、トラフィックの多いリージョンと少ないリージョンでは、異なるスケーリングが実施されます。
 
 複数の MySQL データベースへのレプリケーションとルーティングは、ClearDB の [CDBR High Availability Router][cleardbscale] (前掲図を参照) または [MySQL Cluster CGE][cge] を使用して実行できます。
 
-###メディア ストレージとキャッシュを用いる複数リージョンのデプロイメント
+###メディア ストレージとキャッシュを用いる複数リージョンのデプロイ
 
 サイトがアップロードを受け入れている場合、またはメディア ファイルをホストする場合は、Azure BLOB ストレージを使用します。キャッシュが必要な場合は、[Redis Cache][rediscache]、[Memcached Cloud](http://azure.microsoft.com/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/gallery/store/memcachier/memcachier/)、または [Azure ストア](http://azure.microsoft.com/gallery/store/)で取り扱われている別のキャッシュ オファリングの使用を検討してください。
 
@@ -82,13 +82,13 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 ####パフォーマンス
 
-クラウド内のパフォーマンスは、主にキャッシュとスケール アウトによって達成されます。しかし、Web アプリのホスティングに関するメモリや帯域幅などの属性も、考慮に入れる必要があります。
+クラウド内のパフォーマンスは、主にキャッシュとスケールアウトによって達成されます。しかし、Web Apps のホスティングに関するメモリや帯域幅などの属性も、考慮に入れる必要があります。
 
 目的 | 方法
 ------------------------|-----------
 **App Service インスタンス機能について学ぶ** | [App Service 階層 の機能と料金の詳細][websitepricing]
 **キャッシュ リソース** | [Redis Cache][rediscache]、[Memcached Cloud](/gallery/store/garantiadata/memcached/)、[MemCachier](/gallery/store/memcachier/memcachier/)、または [Azure ストア](/gallery/store/)で取り扱われている別のキャッシュ オファリング
-**アプリケーションのスケール** | [Azure App Service で Web アプリ][websitescale]と [ClearDB の高可用性ルーティング][cleardbscale]を拡張します。独自の MySQL インストールをホストし、管理する場合は、[MySQL Cluster CGE][cge] によるスケール アウトを検討してください。
+**アプリケーションのスケール** | [Azure App Service で Web アプリ][websitescale]と [ClearDB の高可用性ルーティング][cleardbscale]をスケールします。独自の MySQL インストールをホストし、管理する場合は、[MySQL Cluster CGE][cge] によるスケールアウトを検討してください。
 
 ####移行
 
@@ -126,7 +126,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 2. [新規 WordPress サイトを作成する](#Create-a-new-WordPress-site)セクションの手順で、新しい Web アプリを作成します
 
-3. Web アプリで WordPress サイトにログインし、**[プラグイン]**、**[新規追加]** の順にクリックします。**WordPress Importer** プラグインを検索し、インストールします。
+3. Web Apps で WordPress サイトにログインし、**[プラグイン]**、**[新規追加]** の順にクリックします。**WordPress Importer** プラグインを検索し、インストールします。
 
 4. プラグインのインストールが完了したら、**[ツール]**、**[インポート]** の順にクリックして **[WordPress]** を選択し、WordPress Importer プラグインを使用します。
 
@@ -147,7 +147,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 ####バックアップと復元による移行
 
-1. 「[WordPress Backups (WordPress のバックアップ)][wordpressbackup]」の情報を参照して、既存の WordPress をバックアップします。
+1. 「[WordPress Backups (WordPress のバックアップ)][wordpressbackup]」の情報を参照して、既存の WordPress サイトをバックアップします。
 
 2. 「[Backing Up Your Database (データベースのバックアップ)][wordpressdbbackup]」の情報を参照して、既存のデータベースをバックアップします。
 
@@ -159,9 +159,9 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 	3. データベースを更新して、ドメイン エントリを"mywordpress.azurewebsites.net" などのように、新しい Azure App Service のドメインに変更します。[WordPress データベースの検索と置換用スクリプト][searchandreplace]を使用すると、すべてのインスタンスを安全に変更できます。
 
-4. Azure ポータルで新しい Web アプリを作成し、WordPress のバックアップを公開します。
+4. Azure ポータルで新しい Web アプリを作成し、WordPress のバックアップを発行します。
 
-	1. データベースで **[新規]**、**[Web + モバイル]**、**[Azure Marketplace]**、**[Web アプリ]**、**[Web アプリ + SQL]** (または **[Web アプリ + MySQL]**)、**[作成]** を使用して [Azure プレビュー ポータル][mgmtportal]に新しい Web アプリを作成します。必要なすべての設定を構成して、空の Web アプリを作成します。
+	1. データベースで **[新規]**、**[Web + モバイル]**、**[Azure Marketplace]**、**[Web Apps]**、**[Web アプリ + SQL]** (または **[Web アプリ + MySQL]**)、**[作成]** を使用して [Azure プレビュー ポータル][mgmtportal]に新しい Web アプリを作成します。必要なすべての設定を構成して、空の Web アプリを作成します。
 
 	2. WordPress バックアップで **wp-config.php** ファイルを見つけて、エディターで開きます。以下のエントリを新しい MySQL データベースの情報に変更します。
 
@@ -173,7 +173,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 		これらのエントリを変更したら、**wp-config.php** ファイルを保存して閉じます。
 
-	3. 「[Azure App Service での Web アプリのデプロイ][deploy]」の情報を使用して、使用したいデプロイメント方法を有効にし、WordPress バックアップを Azure App Service の Web アプリにデプロイします。
+	3. 「[Azure App Service での Web アプリのデプロイ][deploy]」の情報を使用して、使用したいデプロイ方法を有効にし、WordPress バックアップを Azure App Service の Web アプリにデプロイします。
 
 5. WordPress サイトがデプロイされると、サイトの *.azurewebsite.net という URL を使用して新しいサイト (App Service Web アプリとして) アクセスできるようになります。
 
@@ -183,16 +183,16 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 
 目的 | 方法
 ------------- | -----------
-**App Service プランのモード、サイズを設定し、スケーリングを有効化する** | [Azure App Service での Web アプリの拡張][websitescale]
+**App Service プランのモード、サイズを設定し、スケーリングを有効化する** | [Azure App Service での Web アプリのスケール][websitescale]
 **永続的なデータベース接続の有効化** <p>既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。</p> | <ol><li><p><strong>wp-includes/wp-db.php</strong> ファイルを編集します。</p></li><li><p>。次の行を見つけます。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>前の行を次の行に置き換えます。</p><code>$this->dbh = mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword, $client_flags ); <br/>if ( false !== $error_reporting ) { /br/>&nbsp;&nbsp;error_reporting( $error_reporting ); <br/>} </code></li><li><p>次の行を見つけます。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>上記の行を次の行に置き換えます。</p><code>$this->dbh = @mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword, $client_flags ); </code></li><li><p><strong>wp-includes/wp-db.php</strong> ファイルを保存し、サイトを再デプロイします。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>これらの変更は、WordPress が更新されると上書きされる可能性があります。</p><p>。WordPress の既定値である自動更新は、<strong>wp-config.php</strong> ファイルを編集し、 <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p> を追加することで無効化できます。更新プログラムをアドレス指定する別の方法として、<strong>wp db.php</strong> ファイルを監視する Web ジョブ を使用し、ファイルが更新されるたびに、上記の変更を実行する方法があります。詳細については、<a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs についての紹介記事</a>をご覧ください。</p></div>
-**パフォーマンスの向上** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Web アプリのインスタンス </p></li><li><p>キャッシュの有効化で WordPress を実行している場合に、パフォーマンスを向上させる方法です。<a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="/gallery/store/">Azure ストア</a></p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">から入手できる他のキャッシュ オファリングも使用できます。WordPress を WinCache で高速化する方法</a> - WinCache は既定で Web アプリ用に有効になっています。</p></li><li><p><a href="../web-sites-scale/">Azure App Service の Web アプリ の規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>か <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a></p></li></ul> を使用します。
+**パフォーマンスの向上** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Web Apps インスタンス </p></li><li><p>キャッシュの有効化で WordPress を実行している場合に、パフォーマンスを向上させる方法です。<a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="/gallery/store/">Azure ストア</a></p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">から入手できる他のキャッシュ オファリングも使用できます。WordPress を WinCache で高速化する方法</a> - WinCache は既定で Web Apps 用に有効になっています。</p></li><li><p><a href="../web-sites-scale/">Azure App Service の Web アプリの規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>か <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a></p></li></ul> を使用します。
 **ストレージ用 BLOB の使用** | <ol><li><p><a href="../storage-create-storage-account/">Azure のストレージ アカウントの作成</a></p></li><li><p><a href="../cdn-how-to-use/">コンテンツ配信ネットワーク (CDN) を使用する</a> 方法を理解し、BLOB を用いて地理的に分散したデータ保存を実施します。</p></li><li><p><a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress プラグイン</a>をインストールし、構成します。</p><p>このプラグインに関する詳細な設定と構成の情報については、<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">ユーザー ガイド</a>をご覧ください。</p> </li></ol>
 **電子メールの有効化** | <ol><li><p><a href="/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします。</a></p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">WordPress 用の SendGrid プラグインをインストールします。</a></p></li></ol>
 **カスタム ドメイン名の構成** | [Azure App Service のカスタム ドメイン名の構成][customdomain]
 **カスタム ドメイン名に対する HTTPS の有効化** | [Web アプリに対する HTTPS を Azure App Service で有効にする][httpscustomdomain]
 **サイトの負荷分散、または地理的な分散** | [Azure Traffic Manager によるトラフィックのルーティング][trafficmanager]。カスタム ドメインを使用する場合は、カスタム ドメイン名と Traffic Manager の使用の詳細について、[Azure App Service でのカスタム ドメイン名の構成][customdomain]に関するページをご覧ください。
 **自動化されたバックアップを有効にする** | [Azure App Service での Web アプリのバックアップ][backup]
-**診断ログの有効化** | [Azure App Service の Web アプリケーションの診断ログの有効化][log]
+**診断ログの有効化** | [Azure App Service の Web アプリの診断ログの有効化][log]
 
 ## 次のステップ
 
@@ -232,10 +232,10 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 
 * [Tips for WordPress on Azure (Azure で WordPress を運用するヒント)](http://www.johnpapa.net/azurecleardbmysql/)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [performance-diagram]: ./media/web-sites-php-enterprise-wordpress/performance-diagram.png

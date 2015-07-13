@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/06/2015" 
+	ms.date="06/15/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory でコピー アクティビティを使用する高度なシナリオ 
@@ -236,7 +236,6 @@
 		<ul>
 			<li> <b>TextFormat:</b> すべての列の種類は文字列として扱われ、すべての列名は "Prop_&lt;0 ～ n>" として設定されます。</li> 
 			<li><b>AvroFormat:</b> Avro ファイルに用意された列の種類と名前を使用します。</li> 
-			<li><b>JsonFormat:</b> すべての列の種類は文字列として扱われ、JSON ファイルに用意された列名を使用します。</li>
 		</ul>
 		</td>
 	</tr>
@@ -320,7 +319,7 @@
 ストアド プロシージャ機能は[テーブル値パラメーター][table-valued-parameters]を利用しています。
 
 ## テキスト ファイルのエンコードを指定する
-UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキスト ファイルは、通常、歴史的経緯から他のエンコードを採用しています。**encodingName** プロパティを使用すると、TextFormat 型のテーブルのコード ページ名でエンコードを指定できます。有効なエンコード名の一覧については、Encoding.EncodingName プロパティを参照してください。例: windows-1250 または shift_jis。既定値は UTF-8 です。有効なエンコード名については、「[Encoding クラス](https://msdn.microsoft.com/library/system.text.encoding(v=vs.110).aspx)」を参照してください。
+UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキスト ファイルは、通常、歴史的経緯から他のエンコードを採用しています。**encodingName** プロパティを使用すると、TextFormat 型のテーブルのコード ページ名でエンコードを指定できます。有効なエンコード名の一覧については、Encoding.EncodingName プロパティを参照してください。例: windows-1250 または shift_jis。既定値は UTF-8 です。有効なエンコード名については、「[Encoding クラス](https://msdn.microsoft.com/library/system.text.encoding.aspx)」を参照してください。
 
 ## 関連項目
 
@@ -341,10 +340,11 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 
 [json-script-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[azure-table-data-type]: https://msdn.microsoft.com/en-us/library/azure/dd179338.aspx
+[azure-table-data-type]: https://msdn.microsoft.com/ja-jp/library/azure/dd179338.aspx
 
 [image-data-factory-copy-actvity]: ./media/data-factory-copy-activity/VPNTopology.png
 [image-data-factory-column-mapping-1]: ./media/data-factory-copy-activity-advanced/ColumnMappingSample1.png
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity-advanced/ColumnMappingSample2.png
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

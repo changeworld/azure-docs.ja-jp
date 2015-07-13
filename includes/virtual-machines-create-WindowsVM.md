@@ -40,4 +40,4 @@
 
 	![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

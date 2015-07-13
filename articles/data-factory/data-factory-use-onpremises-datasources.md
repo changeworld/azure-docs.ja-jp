@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="パイプラインがオンプレミスのデータを扱えるようにする | Azure Data Factory" 
-	description="オンプレミスのデータ ソースを Azure データ ファクトリに登録し、データをデータ ソース間でコピーする方法について説明します。" 
+	pageTitle="パイプラインが内部設置型のデータを扱えるようにする | Azure Data Factory" 
+	description="内部設置型のデータ ソースを Azure データ ファクトリに登録し、データをデータ ソース間でコピーする方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -16,33 +16,33 @@
 	ms.date="06/04/2015" 
 	ms.author="spelluru"/>
 
-# パイプラインがオンプレミスのデータを扱えるようにする
+# パイプラインが内部設置型のデータを扱えるようにする
 
-Azure データ ファクトリ内のパイプラインがオンプレミスのデータを扱えるようにするには、Azure 管理ポータルまたは Azure PowerShell を使用し、オンプレミスのデータ ソースをリンクされたサービスとしてデータ ファクトリに追加する必要があります。
+Azure データ ファクトリ内のパイプラインが内部設置型のデータを扱えるようにするには、Azure 管理ポータルまたは Azure PowerShell を使用し、内部設置型のデータ ソースをリンクされたサービスとしてデータ ファクトリに追加する必要があります。
  
-オンプレミスのデータ ソースをリンクされたサービスとしてデータ ファクトリに追加できるようにするには、まず Microsoft Data Management Gateway をダウンロードしてオンプレミスのコンピューターにインストールし、オンプレミスのデータ ソースがゲートウェイを使用できるようにリンクされたサービスを構成する必要があります。
+内部設置型のデータ ソースをリンクされたサービスとしてデータ ファクトリに追加できるようにするには、まず Microsoft Data Management Gateway をダウンロードして内部設置型のコンピューターにインストールし、内部設置型のデータ ソースがゲートウェイを使用できるようにリンクされたサービスを構成する必要があります。
 
 
 ## <a href="DMG"></a>Data Management Gateway
 
-**Data Management Gateway** は、管理された安全な方法でオンプレミスのデータ ソースをクラウド サービスに接続するソフトウェアです。Data Management Gateway を使用すると、以下のことを行えます。
+**Data Management Gateway** は、管理された安全な方法でオンプレミス データ ソースをクラウド サービスに接続するソフトウェアです。Data Management Gateway を使用すると、以下のことを行えます。
 
-- **ハイブリッド データ アクセスのためにオンプレミスのデータに接続する** - オンプレミスのデータをクラウド サービスに接続することで、オンプレミスのデータを使用して業務を継続しながら、クラウド サービスのメリットが得られます。
-- **安全なデータ プロキシを定義する** - ゲートウェイがクラウド サービスからのデータ要求を認証し、オンプレミスのデータ ソースを保護できるように、Data Management Gateway を使用して公開するオンプレミスのデータ ソースを定義できます。
+- **ハイブリッド データ アクセスのためにオンプレミス データに接続する** - オンプレミス データをクラウド サービスに接続することで、オンプレミス データを使用して業務を継続しながら、クラウド サービスのメリットが得られます。
+- **安全なデータ プロキシを定義する** - ゲートウェイがクラウド サービスからのデータ要求を認証し、オンプレミス データ ソースを保護できるように、Data Management Gateway を使用して公開するオンプレミス データ ソースを定義できます。
 - **徹底したガバナンスを実現するためにゲートウェイを管理する** - 管理とガバナンスを実現するために、Data Management Gateway 内であらゆるアクティビティを完全に監視し、ログに記録できます。
 - **データを効率的に移動する** - データは並列に転送されます。自動再試行ロジックにより、断続的なネットワークの問題にも対応できます。
 
 
-Data Management Gateway が持つ幅広いオンプレミスのデータ接続能力には、以下が含まれます。
+Data Management Gateway が持つ幅広い内部設置型のデータ接続能力には、以下が含まれます。
 
 - **企業のファイアウォールに影響を及ぼさない** - ファイアウォール接続を開いたり、企業のネットワーク インフラストラクチャに影響する変更を行ったりする必要なく、Data Management Gateway はインストール後すぐに機能します。 
 - **証明書を使用して資格情報を暗号化する** - データ ソースへの接続に使用される資格情報は、ユーザーが完全に所有する証明書を使用して暗号化されます。証明書を持たなければ、資格情報をプレーン テキストへと復号することは Microsoft を含めだれにもできません。
 
 ### Data Management Gateway を使用する上で考慮すること
-1.	Data Management Gateway の 1 つのインスタンスを複数のオンプレミスのデータ ソースに使用できますが、**ゲートウェイは Azure Data Factory に関連付けられており**、別のデータ ファクトリと共有することはできないことに注意してください。
-2.	コンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、オンプレミスのデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、オンプレミスのコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
-3.	**ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが**、データ ソースの近くにあると、ゲートウェイがデータ ソースに接続する際の時間が短縮されます。ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミスのデータ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
-4.	**同じオンプレミスのデータ ソースに接続する異なるコンピューターで複数のゲートウェイを使用**できます。たとえば、2 つのデータ ファクトリを提供する 2 つのゲートウェイがあり、どちらのデータ ファクトリにも同じオンプレミスのデータ ソースが登録されている場合があります。 
+1.	Data Management Gateway の 1 つのインスタンスを複数のオンプレミス データ ソースに使用できますが、**ゲートウェイは Azure Data Factory に関連付けられており**、別のデータ ファクトリと共有することはできないことに注意してください。
+2.	コンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、内部設置型のデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、内部設置型のコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
+3.	**ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが**、データ ソースの近くにあると、ゲートウェイがデータ ソースに接続する際の時間が短縮されます。ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
+4.	**同じオンプレミス データ ソースに接続する異なるコンピューターで複数のゲートウェイを使用**できます。たとえば、2 つのデータ ファクトリを提供する 2 つのゲートウェイがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。 
 5.	**Power BI** のシナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、**Azure Data Factory 用のゲートウェイ**を別のコンピューターにインストールしてください。
 
 ### ポートとセキュリティに関する考慮事項 
@@ -67,7 +67,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 
 ## チュートリアル
 
-このチュートリアルでは、オンプレミスの SQL Server データベースから、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
+このチュートリアルでは、内部設置型の SQL Server データベースから、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
 
 ## 手順 1. Azure Data Factory を作成する
 この手順では、Azure 管理ポータルを使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。Azure Data Factory のコマンドレットを使用してデータ ファクトリを作成することもできます。
@@ -84,11 +84,11 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 
 7. **[新しいデータ ファクトリ]** ブレードの **[スタート画面に追加]** がオンになっていることに注意してください。
 
-	![Add to Startboard][image-data-factory-add-to-startboard]
+	![スタート画面への追加][image-data-factory-add-to-startboard]
 
 8. **[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックします。
 
-	Azure Data Factory の名前はグローバルに一意にする必要があります。"**データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
+	Azure Data Factor の名前はグローバルに一意にする必要があります。"**データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
 
 9. 左側の **[通知]** ハブで作成プロセスの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
 
@@ -148,12 +148,12 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 8. すべてのブレードを閉じて、**Data Factory** のホーム ページに戻ります。 
 
 ## 手順 2. リンク サービスを作成する 
-この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server データベースをリンクし、**StorageLinkedService** は Azure BLOB ストアを **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、オンプレミスの SQL Server データベースから Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server データベースをリンクし、**StorageLinkedService** は Azure BLOB ストアを **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、内部設置型の SQL Server データベースから Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
-### オンプレミスの SQL Server データベースにリンクされたサービスを追加する
+### 内部設置型の SQL Server データベースにリンクされたサービスを追加する
 1.	**[DATA FACTORY]** ブレードで **[作成とデプロイ]** タイルをクリックして、Data Factory **エディター**を起動します。
 
-	![Author and Deploy Tile][image-author-deploy-tile]
+	![タイルの作成とデプロイ][image-author-deploy-tile]
 
 	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 
@@ -206,7 +206,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
     
 6. **<accountname>** と **<accountkey>** を、Azure ストレージ アカウントのアカウント名とアカウント キーに置き換えます。
 
-	![Editor Blob Storage JSON][image-editor-blob-storage-json]
+	![BLOB ストレージ JSON の編集][image-editor-blob-storage-json]
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
@@ -216,12 +216,12 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 
  
 ## 手順 3. 入力データセットと出力データセットを作成する
-このステップでは、コピー操作 (オンプレミスの SQL Server データベース => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
+このステップでは、コピー操作 (内部設置型の SQL Server データベース => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
 
 - リンク サービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 - - 「[Azure Data Factory を使ってみる][adfgetstarted]」のチュートリアルを終えていない場合は、リンク サービスとしてデータ ファクトリに追加した Azure BLOB ストレージ アカウント内に、"**adftutorial**" という名前の BLOB コンテナーを作成します。
 
-### チュートリアル用にオンプレミスの SQL Server を用意します。
+### チュートリアル用に内部設置型の SQL Server を用意します。
 
 1. オンプレミスの SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
@@ -277,7 +277,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 	以下の点に注意してください。
 	
 	- location の **type** を **OnPremisesSqlServerTableLocation** に設定します。
-	- **tableName** が **emp** に設定されています。
+	- **tableName** を **emp** に設定します。
 	- **linkedServiceName** を **SqlServerLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、JSON 内で **waitOnExternal** セクションを指定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。   
 
@@ -316,7 +316,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
   
 	以下の点に注意してください。
 	
-	- location の **type** が **AzureBlobLocation** に設定されています。
+	- location の **type** を **AzureBlobLocation** に設定します。
 	- **linkedServiceName** を **StorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。必要な操作は **adftutorial** コンテナーの作成だけです。
 	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
@@ -411,14 +411,14 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 5. **[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックして、[ADFTutorialDataFactory] ブレードをツール バーおよびツリー ビューと共に閉じます。**"保存されていない編集は破棄されます"** というメッセージが表示されたら、**[OK]** をクリックします。
 6. **ADFTutorialOnPremDF** の **[DATA FACTORY]** ブレードに戻ります。
 
-**お疲れさまでした。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
+**ご利用ありがとうございます。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
 
 ### ダイアグラム ビューでの Data Factory の表示 
 1. **Azure プレビュー ポータル**の **ADFTutorialOnPremDF** データ ファクトリのホーム ページで、**[ダイアグラム]** タイルをクリックします。
 
 	![Diagram Link][image-data-factory-diagram-link]
 
-2. 以下のような図が表示されます。
+2. 以下のような図が表示されるはずです。
 
 	![Diagram View][image-data-factory-diagram-view]
 
@@ -437,7 +437,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 
 	![EmpOnPremSQLTable slices][image-data-factory-onprem-sqltable-slices]
 
-6. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。これは、SQL Server データベースに挿入したデータが、現在まで残っているためです。下部の **[問題のあるスライス]** セクションにスライスが表示されていないことを確認します。
+6. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。これは、SQL Server データベースに挿入したデータが、現在まで残っているためです。下部の **[問題のあるスライス]** セクションにスライスが表示されていないことを確認します。
 
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
@@ -468,7 +468,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 14. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力テーブル (**Produced**) をドリル スルーします。
 15. **Azure Storage Explorer** などのツールを使用して、出力を確認します。
 
-	![Azure Storage Explorer][image-data-factory-stroage-explorer]
+	![Azure ストレージ エクスプローラー][image-data-factory-stroage-explorer]
 
 
 ## Azure PowerShell を使用したゲートウェイの作成と登録 
@@ -487,7 +487,7 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 	**コマンドと出力の例**:
 
 
-		PS C:> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+		PS C:\> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
 
 		Name              : MyGateway
 		Description       : gateway for walkthrough
@@ -509,12 +509,12 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 	**コマンドの出力例:**
 
 
-		PS C:> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
+		PS C:\> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
 
 	
 4. Azure PowerShell で **C:\Program Files\Microsoft Data Management Gateway\1.0\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
-		PS C:> .\RegisterGateway.ps1 $Key.GatewayKey
+		PS C:\> .\RegisterGateway.ps1 $Key.GatewayKey
 		
 		Agent registration is successful!
 
@@ -627,4 +627,4 @@ Data Management Gateway が持つ幅広いオンプレミスのデータ接続�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

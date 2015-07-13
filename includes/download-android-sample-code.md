@@ -1,7 +1,7 @@
 このチュートリアルは、Android アプリの **GetStartedWithData** に基づいています。このアプリケーションの UI は、リストに追加された項目がメモリにローカルで格納されることを除くと、モバイル サービス Android のクイックスタートで作成されたアプリケーションと同じです。ストレージにデータを保存するために必要なコードを追加します。
 
 
-1. <a href="https://github.com/RickSaling/mobile-services-samples/tree/androidStudio" target="blank">ここ</a>をクリックし、GitHub で **[Download ZIP]** をクリックして、アプリのプロジェクトをダウンロードします。
+1. gitHub で、<a href="https://github.com/Azure/mobile-services-samples" target="blank">ここ</a>をクリックしてから **[Download ZIP]** をクリックしてサンプル リポジトリをダウンロードします。
 
 2. ダウンロードしたファイルを解凍し、場所を書き留めておくか、それを Android Studio プロジェクトのディレクトリに移動します。
 
@@ -14,8 +14,5 @@
 
 	これで、プロジェクトを使用する準備ができました。
  
->[AZURE.NOTE]Mobile Services Android SDK の前のバージョンで使用されていたサンプル ファイルを入手する場合は、[ここ][GitHub]から入手できます。
 
-<!-- URLs. -->
-[GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
-<!--HONumber=54-->
+<!---HONumber=62-->

@@ -1,38 +1,36 @@
 ## EventProcessorHost を使用したメッセージの受信
 
-**EventProcessorHost** は、永続的なチェックポイントの管理によって Event Hub のイベントの受信を簡素化し、並列して Event Hub から受信する .NET クラスです。**EventProcessorHost** を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。この例では、受信側が単一の場合に **EventProcessorHost** を使用する方法を示します。[イベント処理のスケール アウトのサンプル]は、受信側が複数の場合に **EventProcessorHost** を使用する方法を示します。
+[EventProcessorHost] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケールアウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
 
-[EventProcessorHost] は、永続的なチェックポイントの管理によって Event Hub のイベントの受信を簡素化し、並列して Event Hub から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケール アウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
+[EventProcessorHost] を使用するには [Azure ストレージ アカウント]が必要です。
 
-[EventProcessorHost] を使用するには、[Azure Storage アカウント]が必要です。
+1. [Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
-1. [Azure の管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
 
-2. **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
-
-   	![][11]
+  ![][11]
 
 3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キーの管理]** をクリックします。
 
-   	![][12]
+  ![][12]
 
-	このチュートリアルの後で使用するため、アクセス キーをメモしておきます。
+	Copy the access key to use later in this tutorial.
 
 4. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Receiver**」と入力します。
 
-   	![][14]
+  ![][14]
 
 5. ソリューション エクスプローラーでソリューションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 	**[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
 
-6.  `Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索し、**[インストール]** をクリックして、使用条件に同意します。
+6. `Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索し、**[インストール]** をクリックして、使用条件に同意します。
 
-	![][13]
+  ![][13]
 
-	これによって、<a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ</a>への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
+	This downloads, installs, and adds a reference to the <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure Service Bus Event Hub - EventProcessorHost NuGet package</a>, with all its dependencies.
 
-7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[OK]** をクリックしてクラスを作成します。 
+7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[OK]** をクリックしてクラスを作成します。
 
 8. SimpleEventProcessor.cs ファイルの先頭に次のステートメントを追加します。
 
@@ -42,13 +40,13 @@
 
 	次に、クラスの本文に次のコードを置き換えます。
 
-		class SimpleEventProcessor :IEventProcessor
+		class SimpleEventProcessor : IEventProcessor
 	    {
 	        Stopwatch checkpointStopWatch;
 
 	        async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
 	        {
-	            Console.WriteLine(string.Format("Processor Shuting Down.Partition '{0}', Reason:'{1}'.", context.Lease.PartitionId, reason.ToString()));
+	            Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
 	            if (reason == CloseReason.Shutdown)
 	            {
 	                await context.CheckpointAsync();
@@ -57,7 +55,7 @@
 
 	        Task IEventProcessor.OpenAsync(PartitionContext context)
 	        {
-	            Console.WriteLine(string.Format("SimpleEventProcessor initialize.Partition:'{0}', Offset:'{1}'", context.Lease.PartitionId, context.Lease.Offset));
+	            Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
 	            this.checkpointStopWatch = new Stopwatch();
 	            this.checkpointStopWatch.Start();
 	            return Task.FromResult<object>(null);
@@ -69,11 +67,11 @@
 	            {
 	                string data = Encoding.UTF8.GetString(eventData.GetBytes());
 
-	                Console.WriteLine(string.Format("Message received.Partition:'{0}', Data:'{1}'",
+	                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
 	                    context.Lease.PartitionId, data));
 	            }
 
-	            //5 分ごとにチェックポイントをコールします。これによって再起動した場合 5 分後に処理を再開できます。
+	            //Call checkpoint every 5 minutes, so that worker can resume processing from the 5 minutes back if it restarts.
 	            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
                 {
                     await context.CheckpointAsync();
@@ -82,40 +80,43 @@
 	        }
 	    }
 
-	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。 `SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
+	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
-9. **Program** クラスには、上部に次の  `using` ステートメントを追加します。
+9. **Program** クラスには、上部に次の `using` ステートメントを追加します。
 
 		using Microsoft.ServiceBus.Messaging;
+		using Microsoft.Threading;
 		using System.Threading.Tasks;
 
-	次に、**Main** メソッドに、Event Hub 名と接続文字列、前のセクションでコピーしたストレージ アカウントとキーを代入する次のコードを追加します。
+	次に、以下のように、**Program** クラスの **Main** メソッドを変更し、イベント ハブの名前と接続文字列、前のセクションでコピーしたストレージ アカウントとキーを代入します。
 
-		string eventHubConnectionString = "{event hub connection string}";
-        string eventHubName = "{event hub name}";
-        string storageAccountName = "{storage account name}";
-        string storageAccountKey = "{storage account key}";
-        string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-                    storageAccountName, storageAccountKey);
+        static void Main(string[] args)
+        {
+          string eventHubConnectionString = "{event hub connection string}";
+          string eventHubName = "{event hub name}";
+          string storageAccountName = "{storage account name}";
+          string storageAccountKey = "{storage account key}";
+          string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
+              storageAccountName, storageAccountKey);
 
-        string eventProcessorHostName = Guid.NewGuid().ToString();
-        EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
-        eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>().Wait();
+          string eventProcessorHostName = Guid.NewGuid().ToString();
+          EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
+          Console.WriteLine("Registering EventProcessor...");
+          eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>().Wait();
 
-        Console.WriteLine("Receiving.Press enter key to stop worker.");
-        Console.ReadLine();
+          Console.WriteLine("Receiving. Press enter key to stop worker.");
+          Console.ReadLine();
+          eventProcessorHost.UnregisterEventProcessorAsync().Wait();
+        }
 
-> [AZURE.NOTE] このチュートリアルでは、[EventProcessorHost] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost] の複数のインスタンスを実行することをお勧めします ([イベント処理のスケール アウトのサンプル]をご覧ください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でそれぞれ *all*イベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要]」と「[Event Hubs のプログラミング ガイド]」のトピックをご覧ください。
+> [AZURE.NOTE]このチュートリアルでは、[EventProcessorHost] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost] の複数のインスタンスを実行することをお勧めします (「[イベント処理のスケール アウトのサンプル]」をご覧ください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要]」と「[Event Hubs のプログラミング ガイド]」のトピックをご覧ください。
 
 <!-- Links -->
 [Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
-[イベント処理のスケール アウト]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
-[Azure Storage アカウント]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure 管理ポータル]: http://manage.windowsazure.com
-[Azure の管理ポータル]: http://manage.windowsazure.com
 
 <!-- Images -->
 
@@ -125,5 +126,7 @@
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
 [Event Hubs のプログラミング ガイド]: http://msdn.microsoft.com/library/azure/dn789972.aspx
+[Async Await in Console Apps]: http://blogs.msdn.com/b/pfxteam/archive/2012/01/20/10259049.aspx
+[AsyncPump.cs]: http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-components-postattachments/00-10-25-90-49/AsyncPump_2E00_cs
 
-<!--HONumber=52--> 
+<!---HONumber=62-->

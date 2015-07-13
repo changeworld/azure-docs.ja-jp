@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/23/2015"
+   ms.date="06/24/2015"
    ms.author="rajram"/>
 
 
@@ -107,5 +107,6 @@ Azure 管理ポータルで画面の左下の **[+ 新規]** をクリックし�
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

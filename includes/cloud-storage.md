@@ -1,8 +1,8 @@
-# データ管理とビジネス分析
+#データ管理とビジネス分析
 
 クラウドでのデータの管理と分析は、クラウド以外での場合と同様に重要です。この作業を行うために、Azure ではリレーショナル データおよび非リレーショナル データを操作するためのさまざまなテクノロジが用意されています。この記事では、各オプションを紹介します。
 
-## 目次      
+##目次      
 
 - [BLOB ストレージ](#blob)
 - [仮想マシンでの DBMS の実行](#dbinvm)
@@ -181,4 +181,4 @@ Big Data 分析は重要なので、Hadoop も重要です。Microsoft は、Had
 [SQL-tblstor]: ./media/cloud-storage/Data_06_TblStorage.png
 [hadoop]: ./media/cloud-storage/Data_07_Hadoop.png
 
-<!--HONumber=52-->
+<!---HONumber=62-->

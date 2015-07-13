@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約" 
+<properties
+	pageTitle="Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約"
 	description="一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。制限を引き上げる方法と、最大値に関する情報も記載されています。"
-	services="" 
-	documentationCenter="" 
-	authors="rothja" 
-	manager="jeffreyg" 
+	services=""
+	documentationCenter=""
+	authors="rothja"
+	manager="jeffreyg"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/20/2015" 
+<tags
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/07/2015"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -22,313 +22,147 @@
 
 本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。現時点では、すべての Azure サービスを網羅していませんのでご了承ください。今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
 
-> [AZURE.NOTE] 「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料) してください][azurelimitsblogpost]。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> [AZURE.NOTE]「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+
+## 制限と Azure リソース マネージャー
+
+複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。Azure リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-portal.md)に関するページを参照してください。
+
+次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure リソース マネージャー**の表などがあります。制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。特に記載のない限り、制限はすべてのリージョンに適用されます。
+
+> [AZURE.NOTE]Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。コア クォータを例に説明します。コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。<!-- --> 結果として、1 つのリージョンのワークロードに対してどのくらいの Azure リソース グループのクォータが必要かを決め、デプロイメントを検討している各リージョンにその分量をリクエストするだけなので便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイメントの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
 
 ## サブスクリプションの制限
 
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">リソース</th>
-   <th align="left" valign="middle">既定の制限</th>
-   <th align="left" valign="middle">上限</th>
-</tr>
-<tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/azure/hh531793.aspx">サブスクリプション</a>あたりのコア数<sup>1</sup></p></td>
-   <td valign="middle"><p>20</p></td>
-   <td valign="middle"><p>10,000</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/azure/gg456328.aspx">共同管理者</a>数</p></td>
-   <td valign="middle"><p>200</p></td>
-   <td valign="middle"><p>200</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/storage-create-storage-account/">ストレージ アカウント</a>数</p></td>
-   <td valign="middle"><p>100</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/cloud-services-what-is/">クラウド サービス</a>数</p></td>
-   <td valign="middle"><p>20</p></td>
-   <td valign="middle"><p>200</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/azure/jj156007.aspx">仮想ネットワーク</a>数<sup>2</sup></p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/jj157100.aspx">ローカル ネットワーク</a>数</p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの SQL データベース サーバー数</p></td>
-   <td valign="middle"><p>6</p></td>
-   <td valign="middle"><p>150</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サーバーあたりの SQL データベース数</p></td>
-   <td valign="middle"><p>150</p></td>
-   <td valign="middle"><p>500</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの DNS サーバー数</p></td>
-   <td valign="middle"><p>9</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの予約済み IP 数</p></td>
-   <td valign="middle"><p>5</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりのホステッド サービスの証明書数</p></td>
-   <td valign="middle"><p>400</p></td>
-   <td valign="middle"><p>400</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/azure/jj156085.aspx">アフィニティ グループ</a>数</p></td>
-   <td valign="middle"><p>256</p></td>
-   <td valign="middle"><p>256</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups/">リソース グループ</a>数</p></td>
-   <td valign="middle"><p>300</p></td>
-   <td valign="middle"><p>300</p></td>
-</tr>
+[AZURE.INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの地域ごとの<a href="http://azure.microsoft.com/services/batch/">バッチ プレビュー</a> アカウント数</p></td>
-   <td valign="middle"><p>1</p></td>
-   <td valign="middle"><p>50</p></td>   
-</tr>
-</table>
 
-<sup>1</sup>極小のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
+## サブスクリプションの制限 - Azure リソース マネージャー 
 
-<sup>2</sup>それぞれの仮想ネットワークでサポートされる仮想ネットワーク ゲートウェイは 1 つだけです。
+次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
-## クラウド サービスの制限
+[AZURE.INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">リソース</th>
-   <th align="left" valign="middle">既定の制限</th>
-   <th align="left" valign="middle">上限</th>
-</tr>
-<tr>
-   <td valign="middle"><p><a href="http://azure.microsoft.com/documentation/articles/cloud-services-what-is/">デプロイあたりの Web/ワーカー ロール数<sup>1</sup></a></p></td>
-   <td valign="middle"><p>25</p></td>
-   <td valign="middle"><p>25</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>デプロイあたりの<a href="http://msdn.microsoft.com/library/gg557552.aspx#InstanceInputEndpoint">インスタンスの入力エンドポイント</a>数</p></td>
-   <td valign="middle"><p>25</p></td>
-   <td valign="middle"><p>25</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>デプロイあたりの<a href="http://msdn.microsoft.com/library/gg557552.aspx#InputEndpoint">入力エンドポイント</a>数</p></td>
-   <td valign="middle"><p>25</p></td>
-   <td valign="middle"><p>25</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>デプロイあたりの<a href="http://msdn.microsoft.com/library/gg557552.aspx#InternalEndpoint">内部エンドポイント</a>数</p></td>
-   <td valign="middle"><p>25</p></td>
-   <td valign="middle"><p>25</p></td>
-</tr>
-</table>
 
-<sup>1</sup>Web/worker ロールのクラウド サービスには、それぞれ運用環境用とステージング環境用の 2 つのデプロイを割り当てることができます。この制限は、別個のロール (構成) の数を指しています。ロールあたりのインスタンス数 (スケール) ではないので注意してください。 
+## リソース グループの制限
+
+[AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
+
 
 ## 仮想マシンの制限
 
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">リソース</th>
-   <th align="left" valign="middle">既定の制限</th>
-   <th align="left" valign="middle">上限</th>
-</tr>
-<tr>
-   <td valign="middle"><p>クラウド サービスあたりの<a href="http://azure.microsoft.com/documentation/services/virtual-machines/">仮想マシン</a>数<sup>1</sup></p></td>
-   <td valign="middle"><p>50</p></td>
-   <td valign="middle"><p>50</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>クラウド サービスあたりの入力エンドポイント数<sup>2</sup></p></td>
-   <td valign="middle"><p>150</p></td>
-   <td valign="middle"><p>150</p></td>
-</tr>
-</table>
+[AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
-<sup>1</sup>仮想マシンを作成すると、そのマシンを含めるクラウド サービスが自動的に作成されます。その同じクラウド サービスに、複数の仮想マシンを追加できます。
 
-<sup>2</sup>仮想マシンは、そのホストとなるクラウド サービスの外にあるため、仮想マシンとの通信は、入力エンドポイントを使用して行われます。同じクラウド サービス内の仮想マシンは、すべての UDP ポートとすべての TCP ポート間での通信が自動的に許可され、内部的な通信が可能となっています。
+## 仮想マシンの制限 - Azure リソース マネージャー
 
-## Web サイトの制限
+次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
-[AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
+[AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
+
 
 ## ネットワークの制限
 
+[AZURE.INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
+
+
+## ネットワークの制限 - Azure リソース マネージャー
+
+次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
+
+[AZURE.INCLUDE [azure-virtual-network-limits-azure-resource-manager](../includes/azure-virtual-network-limits-azure-resource-manager.md)]
+
+
+## 標準ストレージの制限
+
+[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+## Premium Storage の制限
+
 <table cellspacing="0" border="1">
 <tr>
    <th align="left" valign="middle">リソース</th>
    <th align="left" valign="middle">既定の制限</th>
-   <th align="left" valign="middle">上限</th>
 </tr>
 <tr>
-   <td valign="middle"><p>合計マシン数<sup>1</sup> <a href="http://msdn.microsoft.com/library/azure/jj156007.aspx">仮想ネットワーク</a>あたり<sup>2</sup></p></td>
-   <td valign="middle"><p>2048</p></td>
-   <td valign="middle"><p>2048</p></td>
+   <td valign="middle"><p>アカウントごとのディスク容量合計</p></td>
+   <td valign="middle"><p>35 TB</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>仮想マシンまたはロール インスタンスの同時 TCP 接続数</p></td>
-   <td valign="middle"><p>500K</p></td>
-   <td valign="middle"><p>500K</p></td>
+   <td valign="middle"><p>アカウントごとのスナップショット容量合計</p></td>
+   <td valign="middle"><p>10 TB</p></td>
 </tr>
 <tr>
-   <td valign="middle"><p>エンドポイントあたりのアクセス制御リスト (ACL) 数<sup>3</sup></p></td>
-   <td valign="middle"><p>50</p></td>
-   <td valign="middle"><p>50</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>仮想ネットワークあたりのローカル ネットワーク サイト数</p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>10</p></td>
+   <td valign="middle"><p>アカウントごとの最大帯域幅 (受信 + 送信)</p></td>
+   <td valign="middle"><p>50 Gbps</p></td>
 </tr>
 </table>
 
-<sup>1</sup>合計マシン数には、仮想マシンと Web/worker ロール インスタンスが含まれます。
 
-<sup>2</sup>それぞれの仮想ネットワークでサポートされる[仮想ネットワーク ゲートウェイ][gateway] は 1 つだけです。
+## ストレージの制限 - Azure リソース マネージャー
 
-<sup>3</sup>ACL は、仮想マシンの入力エンドポイントでサポートされます。Web/worker ロールの場合は、入力エンドポイントとインスタンスの入力エンドポイントでサポートされます。
+次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
-## ストレージの制限
+[AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">リソース<sup>1</sup></th>
-   <th align="left" valign="middle">既定の制限</th>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの容量 (TB)</p></td>
-   <td valign="middle"><p>500 TB</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>単一の BLOB コンテナー、テーブル、キューの最大サイズ</p></td>
-   <td valign="middle"><p>500 TB</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数</p></td>
-   <td valign="middle"><p>制限はストレージ アカウントの容量のみ (500 TB)</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ファイル共有の最大サイズ</p></td>
-   <td valign="middle"><p>5 TB</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ファイル共有内の最大ファイル数</p></td>
-   <td valign="middle"><p>制限は、ファイル共有の合計容量のみ (5 TB)</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>永続ディスクあたり最大 8 KB IOPS (Basic 階層)</p></td>
-   <td valign="middle"><p>300<sup>2</sup></p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>永続ディスクあたり最大 8 KB IOPS (Standard 階層)</p></td>
-   <td valign="middle"><p>500<sup>2</sup></p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの合計要求レート (オブジェクト サイズは 1KB とする)</p></td>
-   <td valign="middle"><p>毎秒最大 20,000 エンティティ (またはメッセージ)</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>単一 BLOB のターゲット スループット</p></td>
-   <td valign="middle"><p>毎秒最大 60 MB または毎秒最大 500 要求</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>単一キューのターゲット スループット (1 KB のメッセージ)</p></td>
-   <td valign="middle"><p>毎秒最大 2000 メッセージ</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>単一テーブル パーティションのターゲット スループット (1 KB のエンティティ)</p></td>
-   <td valign="middle"><p>毎秒最大 2000 エンティティ</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの最大受信速度 (米国リージョン)</p></td>
-   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合 10 Gbps、LRS に 20 Gbps</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの最大送信速度 (米国リージョン)</p></td>
-   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合 10 Gbps、LRS に 30 Gbps</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの最大受信速度 (ヨーロッパとアジア リージョン)</p></td>
-   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合 10 Gbps、LRS に 10 Gbps</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ストレージ アカウントあたりの最大送信速度 (ヨーロッパとアジア リージョン)</p></td>
-   <td valign="middle"><p>GRS<sup>3</sup> が有効な場合 15 Gbps、LRS に 10 Gbps</p></td>
-</tr>
-</table>
 
-<sup>1</sup>これらの制限の詳細については、「[Azure ストレージのスケーラビリティとパフォーマンスのターゲット][storagelimits]」をご覧ください。 
+## Cloud Services の制限
 
-<sup>2</sup>Basic 階層の仮想マシンの場合、合計要求レート制限 20,000 に達するのを避けるためには、使用頻度の高い VHD がストレージ アカウントあたり 66 個を超えないようにしてください (20,000/300)。Standard 階層の仮想マシンの場合、使用頻度の高い VHD がストレージ アカウントあたり 40 個を超えないようにしてください (20,000/500)。詳細については、「[Azure の仮想マシンとクラウド サービスのサイズ][vmsizes]」をご覧ください。 
+[AZURE.INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
-<sup>3</sup>GRS は、[Geo Redundant Storage (地理冗長ストレージ)][georedundantstorage] の略です。LRS は [Locally Redundant Storage (ローカル冗長ストレージ)][locallyredundantstorage] の略です。GRS はローカル冗長でもあることに注意してください。
+
+## Web Apps (Webs サイト) の制限
+
+[AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
+
 
 ## バッチのプレビューの制限
 
 [AZURE.INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
-## DocumentDB プレビューの制限
+
+## DocumentDB の制限
 
 [AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
 
+
+## モバイル エンゲージメントの制限
+
+[AZURE.INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
+
+
 ## SQL Database の制限
 
-SQL Database の制限については、以下のトピックをご覧ください。
+[AZURE.INCLUDE [azure-sql-database-limits](../includes/azure-sql-database-limits.md)]
 
- - [Azure SQL データベースのサービス階層 (エディション)][sqltiers]
- - [Azure SQL データベースのサービス階層とパフォーマンス レベル][sqltiersperflevels]
- - [Database Throughput Unit (DTU) Quotas (データベース スループット ユニット (DTU) のクォータ)][sqlDTU]
- - [SQL データベースのリソース制限][sqldblimits]
 
 ## Media Services の制限
 
 [AZURE.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
+
 ## Service Bus の制限
 
 [AZURE.INCLUDE [azure-servicebus-limits](../includes/azure-servicebus-limits.md)]
 
+
 ## Active Directory の制限
 
-Azure Active Directory (AD) については、次のトピックをご覧ください
+[AZURE.INCLUDE [azure-active-directory-limits](../includes/azure-active-directory-limits.md)]
 
- - [Azure の Active Directory サービスの制限と制約事項][adlimitsandrestrictions]
 
+## RemoteApp の制限
+
+[AZURE.INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]
+
+## StorSimple システムの制限
+
+[AZURE.INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
+ 
 ## 関連項目
 
-[Understanding Azure Limits and Increases (Azure の制限と増設について)][azurelimitsblogpost]
+[Understanding Azure Limits and Increases (Azure の制限と増設について)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
-[Azure の仮想マシンとクラウド サービスのサイズ][vmsizes]
+[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-[customersupportfaq]: http://azure.microsoft.com/support/faq/
-[azurelimitsblogpost]: http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-[gateway]: http://msdn.microsoft.com/library/azure/jj156210.aspx 
-[storagelimits]: http://msdn.microsoft.com/library/azure/dn249410.aspx
-[georedundantstorage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx
-[sqldblimits]: http://msdn.microsoft.com/library/azure/dn338081.aspx
-[sqltiers]: http://msdn.microsoft.com/library/azure/dn741340.aspx
-[sqltiersperflevels]: http://msdn.microsoft.com/library/azure/dn741336.aspx
-[sqlDTU]: http://msdn.microsoft.com/library/azure/ee336245.aspx#DTUs
-[vmsizes]: http://msdn.microsoft.com/library/azure/dn197896.aspx
-[georedundantstorage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx
-  [locallyredundantstorage]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/08/introducing-locally-redundant-storage-for-windows-azure-storage.aspx
-  [adlimitsandrestrictions]: http://msdn.microsoft.com/library/azure/dn764971.aspx
-
-<!--HONumber=47-->
+<!---HONumber=62-->

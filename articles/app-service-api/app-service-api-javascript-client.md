@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HTML および JavaScript を使用した Azure API アプリへのアクセス" 
+	pageTitle="HTML や JavaScript を使用した Azure API アプリへのアクセス" 
 	description="HTML および JavaScript を使用して、API アプリのバックエンドにアクセスする方法について説明します。" 
 	services="app-service\api" 
 	documentationCenter=".net"
@@ -20,7 +20,7 @@
 
 ## 概要
 
-この記事では、[Azure App Service](/documentation/services/app-service/) で [API アプリ](app-service-api-apps-why-best-platform.md)の HTML および JavaScript クライアントを作成する方法を示しています。この記事は HTML および JavaScript の実践的な知識があることを前提としており、API アプリへの REST 呼び出しを実行するために [AngularJS](https://angularjs.org/) JavaScript フレームワークを使用しています。
+この記事では、[Azure App Service](/documentation/services/app-service/) で [API アプリ](app-service-api-apps-why-best-platform.md)の HTML や JavaScript クライアントを作成する方法を示しています。この記事は HTML や JavaScript の実践的な知識があることを前提としており、API アプリへの REST 呼び出しを実行するために [AngularJS](https://angularjs.org/) JavaScript フレームワークを使用しています。
 
 事前に次のいくつかの記事に目を通してから、この記事を読み進めてください。
 

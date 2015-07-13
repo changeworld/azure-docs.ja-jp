@@ -1,5 +1,5 @@
 ## Event Hub へのメッセージ送信
-このセクションでは、イベントを Event Hub に送信するために C アプリを記述します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。これは、[こちら](https://code.msdn.microsoft.com/windowsazure/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。詳細については、「[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」をご覧ください。
+このセクションでは、イベントを Event Hub に送信するために C アプリを記述します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。これは、[ここ](https://code.msdn.microsoft.com/windowsazure/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。詳細については、「[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」をご覧ください。
 
 1. [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)の **[Installing Qpid Proton]** リンクをクリックして、環境に応じた指示に従ってください。ここでは、Linux 環境で [Azure Linux VM](../articles/virtual-machines/virtual-machines-linux-tutorial.md) と Ubuntu 14.04 を使用していると仮定します。
 
@@ -20,7 +20,7 @@
 		cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 		sudo make install
 
-5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次の内容で作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は  `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[こちら](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードできます。
+5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次の内容で作成します。Event Hub の名前と名前空間の名前の値を置き換えます (通常、後者は `{event hub name}-ns` です)。前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。[ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
 
 		#include "proton/message.h"
 		#include "proton/messenger.h"
@@ -54,7 +54,7 @@
 		void die(const char *file, int line, const char *message)
 		{
 		  printf("Dead\n");
-		  fprintf(stderr, "%s:%i:%s\n", file, line, message);
+		  fprintf(stderr, "%s:%i: %s\n", file, line, message);
 		  exit(1);
 		}
 
@@ -94,7 +94,7 @@
 				sleep(1);
 			}
 
-			// messenger リソースをリリース
+			// release messenger resources
 			pn_messenger_stop(messenger);
 			pn_messenger_free(messenger);
 
@@ -105,6 +105,6 @@
 
 		gcc sender.c -o sender -lqpid-proton
 
-> [AZURE.NOTE] 前のコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。一般に、アプリケーションではスループットが向上するようにメッセージを処理する必要があります。この環境や他の環境やバインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)」をご覧ください。
+> [AZURE.NOTE]前のコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。一般に、アプリケーションではスループットが向上するようにメッセージを処理する必要があります。この環境、他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)」をご覧ください。
 
-<!--HONumber=52--> 
+<!---HONumber=62-->

@@ -3,7 +3,7 @@
 	description="Active Directory の接続ウィザードで、サポートされていない認証の種類が検出された" 
 	services="active-directory" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="patshea123" 
 	manager="douge" 
 	editor="tglee"/>
   
@@ -13,18 +13,20 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kempb"/>
+	ms.date="05/06/2015" 
+	ms.author="patshea123"/>
 
 # 認証の検出時のエラー
 
-ウィザードが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。   
+ウィザードが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。
 
 ###確認内容
 
+**注:** プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを構築する必要があります。このエラーが発生したときに、プロジェクトに以前の認証コードがない場合は、再構築して、もう一度やり直してください。
+
 ####プロジェクトの種類
 
-ウィザードは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。プロジェクトに  `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。プロジェクトに  `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。それ以外は、ウィザードでサポートされていないと見なされます。WebForms プロジェクトは、現時点でサポートされません。
+ウィザードは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。プロジェクトに `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。プロジェクトに `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。それ以外は、ウィザードでサポートされていないと見なされます。WebForms プロジェクトは、現時点でサポートされません。
 
 #####互換性のある認証コード
 
@@ -52,7 +54,7 @@ MVC プロジェクトの場合、ウィザードは、以前にウィザード�
 * 組織アカウント 
  
 
-MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで  `authentication` 要素を探します。
+MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで `authentication` 要素を探します。
 
 <PRE class="prettyprint">
 	&lt;configuration&gt;
@@ -62,7 +64,7 @@ MVC プロジェクトで Windows 認証を検出するために、ウィザー�
 	&lt;/configuration&gt;
 </pre>
 
-Web API プロジェクトで Windows 認証を検出するために、ウィザードはプロジェクトの **.csproj** ファイルで  `IISExpressWindowsAuthentication` 要素を探します。
+Web API プロジェクトで Windows 認証を検出するために、ウィザードはプロジェクトの **.csproj** ファイルで `IISExpressWindowsAuthentication` 要素を探します。
 
 <PRE class="prettyprint">
 	&lt;Project&gt;
@@ -83,7 +85,7 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 組織アカウント認証の古い形式を検出するために、ウィザードは **web.config** ファイルで次の要素を探します:
 
 <PRE class="prettyprint">
-	&lt;configuration*gt;
+	&lt;configuration&gt;
 	    &lt;appSettings&gt;
 	        <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
 	    &lt;/appSettings&gt;
@@ -92,6 +94,7 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度ウィザードを実行します。
 
-詳細については、「[Azure AD の認証シナリオ](http://msdn.microsoft.com/library/azure/dn499820.aspx)」を参照してください。
+詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=62-->

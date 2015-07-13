@@ -4,15 +4,10 @@ MongoLab データベースをプロビジョニングすると、MongoLab に�
 
 この URI は、Azure ポータルで次のステップを使用して取得できます。
 
-1. **[アドオン]** を選択します。  
-![AddonsButton][button-addons]
-1. アドオンの一覧で MongoLab サービスを見つけます。  
-![MongolabEntry][entry-mongolabaddon]
+1. **[アドオン]** を選択します。![AddonsButton][button-addons]
+1. アドオンの一覧で MongoLab サービスを見つけます。![MongolabEntry][entry-mongolabaddon]
 1. アドオンの名前をクリックして、アドオン ページに移動します。
-1. **[接続文字列]** をクリックします。  
-![ConnectionInfoButton][button-connectioninfo]  
-MongoLab の URI が表示されます。  
-![ConnectionInfoScreen][screen-connectioninfo]  
+1. **[接続文字列]** をクリックします。![ConnectionInfoButton][button-connectioninfo]MongoLab の URI が表示されます。![ConnectionInfoScreen][screen-connectioninfo]  
 1.  MONGOLAB_URI 値の右側のクリップボード ボタンをクリックし、値全体をクリップボードにコピーします。
 
 [entry-mongolabaddon]: ./media/howto-get-connectioninfo-mongolab/entry-mongolabaddon.png
@@ -20,4 +15,4 @@ MongoLab の URI が表示されます。
 [screen-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/dialog-mongolab_connectioninfo.png
 [button-addons]: ./media/howto-get-connectioninfo-mongolab/button-addons.png
 
-<!----HONumber=62-->
+<!---HONumber=62-->

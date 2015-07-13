@@ -79,7 +79,7 @@
 
 Dropbox アカウントへの API のアクセスを有効にするには、Dropbox の開発者向けサイトで Dropbox アプリを作成する必要があます。クライアント ID とクライアント シークレットの値をその Dropbox アプリから Dropbox コネクタにコピーして、認証済みの要求のみを受け入れるようにコネクタを設定します。
 
-### Dropbox アプリの作成
+### <a id="createdbapp"></a>Dropbox アプリの作成
 
 次の手順は、Dropbox.com サイトを使用して Dropbox アプリを作成するプロセスを示しています。Dropbox.com サイトは通知なしで変更される可能性があるため、実際の UI と異なる場合があります。
 
@@ -103,7 +103,7 @@ Dropbox アカウントへの API のアクセスを有効にするには、Drop
 
 	![Dropbox アプリの作成](./media/app-service-api-connnect-your-app-to-saas-connector/dbappsettings.png)
 
-### Azure Dropbox コネクタへの Dropbox アプリ設定のコピーとその逆方向のコピー 
+### <a id="copysettings"></a>Azure Dropbox コネクタへの Dropbox アプリ設定のコピーとその逆方向のコピー 
 
 4. 別のブラウザー ウィンドウまたはタブで、[Azure プレビュー ポータル]に移動します。
 

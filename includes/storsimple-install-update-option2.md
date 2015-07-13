@@ -1,34 +1,18 @@
-<properties 
-   pageTitle="Option 2: Use the Azure Management Portal to apply Update 1"
-   description="Explains how to use the Management Portal to install StorSimple 8000 Series Update 1."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/14/2015"
-   ms.author="v-sharos" />
 
-#### To install Update 1 from the Azure Management Portal
+#### Microsoft Azure 管理ポータルを使用して Update 1 をインストールするには
 
-1. In the Management Portal, go to the **Devices** page and select your device.
+1. 管理ポータルで **[デバイス]** ページに移動し、デバイスを選択します。
  
-2. Navigate to **Devices** > **Configure**. 
+2. **[デバイス]**、**[構成]** の順にクリックします。
 
-3. Under **Network Interfaces**, locate the network interface that has a gateway assigned. This will be a network interface other than DATA 0. 
+3. **[ネットワーク インターフェイス]** で、ゲートウェイが割り当てられているネットワーク インターフェイスを見つけます。これは、DATA 0 以外のネットワーク インターフェイスです。
 
-4. Clear the gateway setting. Note that because gateway settings are required on a cloud-enabled network interface, you will need to disable the cloud access for this interface to clear the setting.
+4. ゲートウェイの設定をクリアします。クラウド対応のネットワーク インターフェイスでは、ゲートウェイの設定が必要であるため、このインターフェイスで設定をクリアするには、クラウド アクセスを無効にする必要があります。
 
-5. Repeat step 4 for any other network interface that has a gateway assigned (excluding DATA 0).
+5. ゲートウェイが割り当てられているその他のネットワーク インターフェイス (DATA 0 を除く) に対して、手順 4. を繰り返します。
 
-6. Save the modified configuration.
+6. 変更後の構成を保存します。
 
-7. You can now [use the Management Portal to install Update 1](#use-the-management-portal-to-install-update-1). 
+7. これで、[管理ポータルを使用して Update 1 をインストールする](#use-the-management-portal-to-install-update-1)ことができます。
 
-
+<!---HONumber=62-->

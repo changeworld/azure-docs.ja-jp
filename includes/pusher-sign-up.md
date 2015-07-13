@@ -1,4 +1,4 @@
-﻿最初の手順は、チュートリアル用に新しいアカウントを作成することです。このチュートリアルに最適な無料のサンドボックス プランを使用できます。
+最初の手順は、チュートリアル用に新しいアカウントを作成することです。このチュートリアルに最適な無料のサンドボックス プランを使用できます。
 
 ### Pusher アカウントにサインアップするには
 
@@ -20,11 +20,11 @@
 
 	![store-screen-1][store-screen-1]
 
-8. リージョンの値を選択します (たとえば [米国西部])。 
+8. リージョンの値を選択します (たとえば [米国西部])。
 
 9. 右矢印をクリックします。
 
-10. **[購入の確認]** タブで、プランと料金情報および法律条項を確認します。条項に同意したら、チェックマークをクリックします。チェック マークをクリックすると、Pusher アカウントのプロビジョニング プロセスが開始されます。 
+10. **[購入の確認]** タブで、プランと料金情報および法律条項を確認します。条項に同意したら、チェックマークをクリックします。チェック マークをクリックすると、Pusher アカウントのプロビジョニング プロセスが開始されます。
 
 	![store-screen-2][store-screen-2]
 
@@ -46,11 +46,11 @@ Pusher を使用する場合、Pusher アプリケーション接続の設定を
 
 	![pusher-connection-info-button][pusher-connection-info-button]
 
-2.  *Connection info* ダイアログに、アプリケーション ID、キー、およびシークレットが表示されます。この値は後で必要になります。後で使用できるようにコピーしておいてください。
+2. *[接続文字列]* ダイアログに、アプリケーション ID、キー、およびシークレットが表示されます。この値は後で必要になります。後で使用できるようにコピーしておいてください。
 
 	![pusher-connection-info][pusher-connection-info]
 
-Pusher の概要については、「[Understanding Pusher (Pusher について)][]」を参照してください。
+Pusher の概要については、「[Understanding Pusher (Pusher について)」][]を参照してください。
 
 <!--images-->
 
@@ -66,7 +66,6 @@ Pusher の概要については、「[Understanding Pusher (Pusher について)
 <!--Links-->
 
 [Azure 管理ポータル]: https://manage.windowsazure.com
-[Understanding Pusher (Pusher について)]: http://pusher.com/docs
+[Understanding Pusher (Pusher について)」]: http://pusher.com/docs
 
-
-<!--HONumber=42-->
+<!---HONumber=62-->

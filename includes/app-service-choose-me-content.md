@@ -1,21 +1,22 @@
 <a name="tellmeas"></a>
-## Tell me about app service
+## App Service について
 
-Azure Virtual Machines can handle a wide range of cloud hosting tasks. But creating and managing a VM infrastructure requires specialized skills and substantial effort. If you don't need complete control over the VMs that run your web apps, mobile app backends, API apps, etc., there's an easier (and cheaper) solution: *Platform as a Service* (PaaS). With PaaS, Azure handles most of the management work for the VMs that run your applications. [Azure App Service](../article/app-service/app-service-value-prop-what-is.md) is a fully managed PaaS offering that allows you to build, deploy, and scale enterprise-grade apps in seconds.
+Azure Virtual Machines では、幅広いクラウド ホスティング タスクを処理できます。ただし、VM インフラストラクチャを作成して管理するには、特別なスキルと多くの労力が必要です。お客様の Web Apps、Mobile App バックエンド、API apps を実行する VM を完全にコントロールする必要がない場合は、*サービスとしてのプラットフォーム* (PaaS) という、使いやすい (かつ安価な) ソリューションがあります。PaaS では、アプリケーションを実行する VM に対する管理作業のほとんどを Azure が処理します。[Azure App Service](../article/app-service/app-service-value-prop-what-is.md) は、エンタープライズ レベルのアプリの構築、デプロイ、拡張を秒単位で実行できる完全管理された PaaS 製品です。
 
-App Service is the best choice for many kinds of application workloads. A corporation might want to build or migrate a commercial website that can handle millions of hits a week and is deployed in several data centers across the globe. The same corporation might also have a line-of-business app that tracks expense reports for authenticated users from the corporate Active Directory, and the app might have a mobile device component and connect to on-premise resources and business processes. The expense reports might require periodic background jobs to calculate and summarize large volumes of information. An IT consultant might adapt a popular open source application to set up a content management system for a small business. The figure below shows some of the kinds of web apps that can run in Azure App Service.
+App Service は、さまざまな種類のアプリケーションのワークロードに最適な選択肢です。企業は、毎週数百万回のヒットに対応できる商用 Web サイトの構築や移行を望み、世界中に複数のデータセンターをデプロイすることがあります。さらに、同じ会社内に、会社の Active Directory の認証ユーザーに対する経費報告書を追跡する事業部門アプリも存在することがあり、そのアプリにはモバイル デバイスのコンポーネントがあり、オンプレミス リソースやビジネス プロセスに接続される可能性があります。この経費報告書が、大量の情報を計算して集計するための定期的なバックグラウンド ジョブを必要とすることがあります。IT コンサルタントが、一般的なオープン ソース アプリケーションを採用して、スモール ビジネス用のコンテンツ管理システムをセットアップすることがあります。次の図に、Azure App Service で実行できる Web apps の一部を示します。
 
-<a name="appservice_diagram"></a>
-![app service diagram](media/app-service-choose-me-content/diagram.png)
+<a name="appservice_diagram"></a> ![アプリ サービス図](media/app-service-choose-me-content/diagram.png)
  
-**Figure: Azure App Service supports static web pages, popular web applications, and custom web applications built with various technologies. You can also run mobile backends, API app, and non-web compute workloads (using WebJobs).** 
+**図 : Azure App Service は静的 Web ページ、一般的な Web アプリケーション、さまざまなテクノロジで構築されたカスタム Web アプリケーションをサポートしている。さらに、(Web ジョブを使用して) モバイル バックエンド、API アプリ、Web 以外のコンピューティング ワークロードを実行できます。**
 
-With Azure App Service, you can also run any kind of compute workload using the [WebJobs](../article/app-service-web/websites-webjobs-resources.md) feature. 
+Azure App Service なら、[Web ジョブ](../article/app-service-web/websites-webjobs-resources.md)機能を使用して、あらゆる種類のコンピューティング ワークロードを実行できます。
 
-Azure App Service gives you the option of running on shared VMs that contain multiple apps created by multiple users, or on VMs that are used only by you. VMs are a part of a pool of resources managed by Azure App Service and thus allow for high reliability and fault tolerance.
+Azure App Service では、複数のユーザーによって作成された複数のアプリを含む共有 VM 上で実行するか、専用の VM 上で実行するかを選択できます。VM は Azure App Service によって管理されているリソースのプールの一部であり、高い信頼性とフォルト トレランスを可能にします。
 
-Getting started is easy. With Azure App Service, users can select from a range of applications, frameworks and template and create a web app in seconds. They can then use their favorite development tools (WebMatrix, Visual Studio, any other editor) and source control options to set up continuous integration and develop as a team. Applications that rely on a MySQL DB can consume a MySQL service provided for Azure by ClearDB, a Microsoft partner.
+また、簡単に使い始めることができます。Azure App Service では、ユーザーはさまざまなアプリケーション、フレームワーク、テンプレートを選択することで、わずか数秒で Web アプリを作成できます。また、好みの開発ツール (WebMatrix、Visual Studio、その他のエディター) とソース管理オプションを使用して継続的な統合をセットアップし、チームとして開発することができます。MySQL DB に依存するアプリケーションは、Microsoft パートナーの ClearDB が Azure 向けに提供している MySQL サービスを使用できます。
 
-Developers can create large, scalable web applications with Azure App Service. The technology supports creating applications using ASP.NET, PHP, Node.js and Python. Applications can use sticky sessions, for example, and many existing web apps can be moved to this cloud platform with no changes. Web apps built on Azure App Service can use other aspects of Azure, such as Service Bus, SQL Database, and Blob Storage. You can also run multiple copies of an application in different VMs, with Azure App Service automatically load balancing requests across them. And because new web app instances are created in VMs that already exist, starting a new application instance happens very quickly; it's significantly faster than waiting for a new VM to be created.
+開発者はAzure App Service を使用して、大規模でスケーラブルな Web アプリケーションを作成できます。このテクノロジは、ASP.NET、PHP、Node.js、Python を使用したアプリケーションの作成をサポートします。アプリケーションはスティッキー セッションなどを使用でき、多数の既存の Web Apps を変更なしにこのクラウド プラットフォームに移動できます。Azure App Service 上に構築された Web Apps は、Service Bus、SQL Database、Blob Storage など、Azure の他の要素を自由に使用できます。また、アプリケーションの複数のコピーを別の VM で実行できます。 Azure App Service なら、VM 間で要求の負荷分散が自動的に実行されます。新しい Web アプリ インスタンスは既存の VM 内に作成されるため、アプリケーションの新しいインスタンスを瞬時に開始できます。つまり、VM の新規作成を待つよりもはるかに高速です。
 
-As the [figure](#appservice_diagram) above shows, you can publish code and other web content into Azure App Service in several ways. You can use FTP, FTPS, or Microsoft's WebDeploy technology. Azure App Service also supports publishing code from source control systems, including Git, GitHub, CodePlex, BitBucket, Dropbox, Mercurial, Team Foundation Server, and the cloud-based Team Foundation Service.
+次の[図 ](#appservice_diagram)に示すように、コードやその他の Web コンテンツを Azure App Service に発行する方法は複数あります。たとえば、FTP、FTPS、Microsoft の WebDeploy テクノロジを使用できます。Azure App Service は、ソース管理システム (Git、GitHub、CodePlex、BitBucket、Dropbox、Mercurial、Team Foundation Server、クラウドベースの Team Foundation Service など) からのコードの発行もサポートしています。
+
+<!---HONumber=62-->

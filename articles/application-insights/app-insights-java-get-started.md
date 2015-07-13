@@ -31,7 +31,7 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 
 ## 1.Application Insights のインストルメンテーション キーを取得する

@@ -1,20 +1,3 @@
-<properties 
-   pageTitle="デバイスを構成して登録する"
-   description="StorSimple 用 Windows PowerShell を使用して、Update 1 が実行されているデバイスを構成して登録する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/26/2015"
-   ms.author="alkohli" />
-
 
 ### デバイスを構成して登録するには
 
@@ -42,7 +25,7 @@
    - ゲートウェイ
    - プライマリ DNS サーバーの IP アドレス
     
-		処理の各手順の後に、システムによってネットワーク設定が検証されることに注意してください。
+		Note that the system is validating network settings after each step in the process.
    
       >[AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
@@ -75,10 +58,10 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png) 
   
-        デバイスの状態が **オフライン** の場合は、デバイスがオンラインになるまで数分待ちます。 
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
       
-        数分たってもデバイスがまだオフラインの場合、ファイアウォールのネットワークが [StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/dn772371.aspx) で記述されているとおりに構成されているかを確認する必要があります。HTTP 1.1 がサポートされていない場合、ポート 9354 が、送信の通信に対してオープンになっていることを確認します。このポートは、StorSimple Manager サービスおよび StorSimple デバイス間での通信に使用されます。
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](https://msdn.microsoft.com/library/dn772371.aspx). If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
      
        
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

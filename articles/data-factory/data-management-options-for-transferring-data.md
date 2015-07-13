@@ -18,7 +18,7 @@
 
 # 保存データを Azure のクラウドに転送する場合のオプション
 
-オンプレミスのデプロイメントや他のクラウドのソースからデータを Microsoft Azure に転送し、高度なデータ分析を行う場合があります。この記事では、データを転送する際のオプションを適切に選択する方法を説明します。大量のデータの転送には長い時間がかかる場合があり、適切なセキュリティ対策も必要です。 
+オンプレミスのデプロイメントや他のクラウドのソースからデータを Microsoft Azure に転送し、高度なデータ分析を行う場合があります。この記事では、データを転送する際のオプションを適切に選択する方法を説明します。大量のデータの転送には長い時間がかかる場合があり、適切なセキュリティ対策も必要です。
 
 この記事の内容:
 
@@ -35,7 +35,7 @@
 
 ## BLOB ストレージ用の Azure Import/Export サービス
 
-ネットワーク経由でのアップロード/ダウンロードが不可能か、または非常にコストがかかる場合には、Azure Import/Export サービスを使用すると、大量のファイル データを Azure BLOB ストレージに転送できます。ネットワーク経由で大量のデータ セットをアップロード/ダウンロードすると、非常に長い時間がかかります。たとえば、T3 (44.7 Mbps) 回線の場合、10 TB の転送を行うと、1 か月もかかります。Microsoft Azure Import/Export サービスは、データのアップロード/ダウンロードにかかる時間を短縮するため、お客様にハード ドライブを発送していただくサービスです。発送の日数も含めると数日かかる可能性があります。 
+ネットワーク経由でのアップロード/ダウンロードが不可能か、または非常にコストがかかる場合には、Azure Import/Export サービスを使用すると、大量のファイル データを Azure BLOB ストレージに転送できます。ネットワーク経由で大量のデータ セットをアップロード/ダウンロードすると、非常に長い時間がかかります。たとえば、T3 (44.7 Mbps) 回線の場合、10 TB の転送を行うと、1 か月もかかります。Microsoft Azure Import/Export サービスは、データのアップロード/ダウンロードにかかる時間を短縮するため、お客様にハード ドライブを発送していただくサービスです。発送の日数も含めると数日かかる可能性があります。
 
 ファイルの大量のデータを BLOB ストレージに転送するために、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送することができます。このデータ センターでデータがストレージ アカウントにアップロードされます。同様に、BLOB ストレージからデータをエクスポートするために、空のハード ドライブを Azure データ センターに発送することができます。このデータ センターで、ストレージ アカウントの BLOB データがハード ドライブにコピーされ、返送されます。データを含むドライブを発送する前に、ドライブにあるデータを暗号化してください。インポート/エクスポート サービスで、返送するデータをエクスポートするときにも、データは発送前に暗号化されます。
 
@@ -44,19 +44,19 @@
 
 ## AZCopy ユーティリティ
 
-AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ストレージ間のデータのアップロード、ダウンロード、コピーにおいて高いパフォーマンスを実現するために設計されたコマンド ライン ユーティリティです。このユーティリティは、ネットワーク経由でデータ転送が実用的な場合、Azure のストレージとオンプレミスとの間でデータを一括移動する場合に適しています。「[AzCopy コマンド ライン ユーティリティの概要][azcopy]」を参照してください。
+AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ストレージ間のデータのアップロード、ダウンロード、コピーにおいて高いパフォーマンスを実現するために設計されたコマンド ライン ユーティリティです。このユーティリティは、ネットワーク経由でデータ転送が実用的な場合、Azure のストレージとオンプレミスとの間でデータを一括移動する場合に適しています。詳細については、「[AzCopy コマンド ライン ユーティリティの概要][azcopy]」を参照してください。
 
-> [AZURE.NOTE] Linux ユーザーの方は、[Linux 用の ACP、AzCopy をダウンロードしてください。](http://www.paratools.com/acp)
+> [AZURE.NOTE]Linux ユーザーは、[Linux 用の ACP、AzCopy ](http://www.paratools.com/acp)をダウンロードしてください。
 
 
 ## Azure PowerShell
 
-Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。Azure PowerShell を使用して、BLOB ストレージにデータをアップロードできます。これにより、高度な分析や MapReduce ジョブによる処理ができるようになります。
+Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。Azure PowerShell を使用して、BLOB ストレージにデータをアップロードできます。これにより、高度な分析や MapReduce ジョブによる処理ができるようになります。
 
 次のページも参照してください。
 
-* 「[Azure PowerShell を使用して BLOB ストレージにデータをアップロードする][upload]」
-* [Azure PowerShell のインストールと構成の方法][install]
+* [Azure PowerShell を使用して BLOB ストレージにデータをアップロードする][upload]
+* [Azure PowerShell のインストールおよび構成方法][install]
 
 
 ## Azure Data Factory (プレビュー)
@@ -65,9 +65,9 @@ Azure Data Factory は、データの保存、処理、移動の各サービス�
 
 開発者は、オンプレミス、クラウドベース、インターネット サービスからデータ管理ゲートウェイ経由で取得したデータを結合、集計、変換するデータ駆動型のワークフローを構築し、シンプルな JSON スクリプトを使用して複雑なデータ処理を設定できます。その結果として得られたデータは、高度な分析を行うために Azure Storage や Azure SQL Database に保存できます。
 
-具体的には、開発者は、さまざまなソースと変換先との間で、正規のコピー アクティビティを調整できます。これについては、「[サポートされている入力と出力](data-factory-copy-activity.md#SupportedSourcesAndSinks)" 」(「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](data-factory-copy-activity.md), 」) を参照してください。この中には、さまざまな種類のデータ ストア、列マッピング、シリアル化形式、データ型処理のプロパティも含まれています。
+具体的には、開発者は、「[Azure Data Factory を使用してデータをコピーする](data-factory-copy-activity.md)」の「[サポートされているソースとシンク](data-factory-copy-activity.md#SupportedSourcesAndSinks)」のセクションで示されている、さまざまなソースとコピー先間の通常のコピー アクティビティを調整できます。これには、さまざまな種類のデータ ストア、列マッピング、シリアル化形式、データ型処理のプロパティも含まれています。
 
-このサービスは、エラーに対して自動再起動で処理できます。また、ある形式から他の形式にデータを移動する場合の形式変換が可能です。コピー アクティビティの定義については、[Data Factory の概要][start]に関するページを参照してください。データ ストアの登録とゲートウェイのインストール方法については、「[パイプラインが内部設置型のデータを扱えるようにする][pipelines]」を参照してください。 
+このサービスは、エラーに対して自動再起動で処理できます。また、ある形式から他の形式にデータを移動する場合の形式変換が可能です。コピー アクティビティを定義する方法の詳細については、「[Data Factory を使ってみる][start]」を参照してください。データ ストアの登録とゲートウェイのインストール方法については、「[パイプラインがオンプレミスのデータを扱えるようにする][pipelines]」を参照してください。
 
 次のページも参照してください。
 
@@ -77,12 +77,12 @@ Azure Data Factory は、データの保存、処理、移動の各サービス�
 
 オンプレミスの SQL サーバーおよび非 SQL サーバーのデータベースを Azure SQL Database に移行する場合には、数多くのツールを利用することができます。最適なツールは、移行するデータベースの種類、サイズ、複雑さなど個々の状況によって異なります。
 
-* 既存の Azure SQL Database のデータとスキーマは、いずれもデータベースをエクスポートした上でエクスポート ファイルを Azure BLOB ストレージ アカウントに保存し、さらに、新しい Azure SQL Database としてインポートすることによって移行できます。エクスポート時に作成されるファイルは、BACPAC ファイルと呼ばれます。詳細については、[Azure SQL Databaseでの Import/Export サービスの使用方法][sql-import]に関するページを参照してください。
-* データベースのコピー機能により、Azure 内で、既存の Azure SQL Database の複製である新しいデータベースを作成できます。このデータベースはトランザクション上の一貫性が維持されます。詳細については、[Azure SQL Database でのデータベースのコピー][sql-copy]に関するページを参照してください。
-* 複雑なデータ変換が必要な場合は、SQL Server Integration Services (SSIS) を使用できます。SSIS は、Azure SQL Database に対してデータの入出力を行う場合に使用できます。詳細については、[Integration Services を使用して Azure SQL Database にデータベースを移行する方法][integrate]に関するページと、[Azure およびハイブリッド データ移行用の SSIS][SSIS]に関するページを参照してください。
-* SQL Server のインポート/エクスポート ウィザードは、データを移行するために SSIS パッケージを簡単に作成する簡単な方法です。移行元と移行先を構成した後で、基本的なデータ変換を指定できます。このパッケージは、保存、変更、実行が可能で、ジョブとしてスケジュール設定することもできます。詳細については、[インポート/エクスポート ウィザードを使用した Azure SQL Database へのデータベースの移行][wizard]に関するページを参照してください。
-* SQL Database 移行ウィザードは、複数の Azure SQL Database サーバーの間だけでなく、オンプレミスの SQL サーバーと Azure SQL Database サーバーの間でも、スキーマとデータの両方の移行を支援するツールです。このツールは、Azure SQL Database の互換性問題に対応するために、トレース ファイルとスクリプトの分析も行います。詳細については、[SQL Database 移行ウィザードの使用方法][use-wizard]に関するページを参照してください。
-* SQL Server のテーブルに多数の新しい行をインポートする、またはテーブルからデータ ファイルにデータをエクスポートする場合には、BCP ユーティリティを使用できます。詳細については、[BCP を使用した Azure SQL Database へのデータベースの移行方法][bcp]に関するページを参照してください。
+* 既存の Azure SQL Database のデータとスキーマは、いずれもデータベースをエクスポートした上でエクスポート ファイルを Azure BLOB ストレージ アカウントに保存し、さらに、新しい Azure SQL Database としてインポートすることによって移行できます。エクスポート時に作成されるファイルは、BACPAC ファイルと呼ばれます。詳細については、「[方法: Azure SQL データベースでインポート/エクスポート サービスを使用する][sql-import]」を参照してください。
+* データベースのコピー機能により、Azure 内で、既存の Azure SQL Database の複製である新しいデータベースを作成できます。このデータベースはトランザクション上の一貫性が維持されます。詳細については、「[Azure SQL Database でのデータベースのコピー][sql-copy]」を参照してください。
+* 複雑なデータ変換が必要な場合は、SQL Server Integration Services (SSIS) を使用できます。SSIS は、Azure SQL Database に対してデータの入出力を行う場合に使用できます。詳細については、「[方法: Integration Services を使用して Azure SQL Database にデータベースを移行する方法][integrate]」および「[SSIS を使用した Azure とハイブリッドのデータの移動][SSIS]」を参照してください。
+* SQL Server のインポート/エクスポート ウィザードは、データを移行するために SSIS パッケージを簡単に作成する簡単な方法です。移行元と移行先を構成した後で、基本的なデータ変換を指定できます。このパッケージは、保存、変更、実行が可能で、ジョブとしてスケジュール設定することもできます。詳細については、「[方法: インポート/エクスポート ウィザードを使用した Azure SQL Database へのデータベースの移行][wizard]」を参照してください。
+* SQL Database 移行ウィザードは、複数の Azure SQL Database サーバーの間だけでなく、オンプレミスの SQL サーバーと Azure SQL Database サーバーの間でも、スキーマとデータの両方の移行を支援するツールです。このツールは、Azure SQL Database の互換性問題に対応するために、トレース ファイルとスクリプトの分析も行います。詳細については、「[方法: SQL Database 移行ウィザードの使用方法][use-wizard]」を参照してください。
+* SQL Server のテーブルに多数の新しい行をインポートする、またはテーブルからデータ ファイルにデータをエクスポートする場合には、BCP ユーティリティを使用できます。詳細については、「[方法: BCP を使用した Azure SQL Database へのデータベースの移行方法][bcp]」を参照してください。
 
 次のページも参照してください。
 
@@ -93,7 +93,7 @@ Azure Data Factory は、データの保存、処理、移動の各サービス�
 
 SQL データ同期 (プレビュー) は、Azure SQL Database と、SQL サーバーまたは Azure SQL Database でホストされているデータベースとの間で、定期的な同期機能を作成してスケジュール設定することができます。
 
-SQL データ同期は、オンプレミスのデータベースとクラウドの Azure データベースの間でデータの差分変更を同期する開発者に適しています。[SQL データ同期][sync]に関するページを参照してください。
+SQL データ同期は、オンプレミスのデータベースとクラウドの Azure データベースの間でデータの差分変更を同期する開発者に適しています。「[SQL データ同期][sync]」を参照してください。
 
 ##	Azure Event Hubs
 
@@ -105,23 +105,23 @@ Microsoft Azure Event Hubs は、クラウドに対し、短い待機時間と�
 
 参照:
 
-* [Event Hub サービス](/services/event-hubs/)
-* [Event Hub の概要][overview]
+* [Event Hubs サービスに関する情報](/services/event-hubs/)
+* [Event Hubs の概要][overview]
 * [Azure Stream Analytics の概要][stream]
 
 ## データ転送時の他のオプション
 
-ハイブリッド接続は、Azure Web サイトおよび Azure モバイル サービスを内部設置型リソースに簡単に接続する便利な方法を提供します。開発者は、オンプレミスから Azure にデータを移動するための Web サイトを構築できます。詳細にについては、「[ハイブリッド接続の概要][hybrid]」を参照してください。
+ハイブリッド接続は、Azure Web サイトおよび Azure モバイル サービスを内部設置型リソースに簡単に接続する便利な方法を提供します。開発者は、オンプレミスから Azure にデータを移動するための Web サイトを構築できます。詳細については、「[ハイブリッド接続の概要][hybrid]」を参照してください。
 
-[Virtual Network](/services/virtual-network/) では、Azure の仮想マシンで実行されるデータ統合ツールを使用して、オンサイトのデータ センター内にあるオンプレミス SQL Server のデータベースに安全に接続できます。同じ仮想ネットワーク内にある仮想マシンとサービスだけが識別され、相互に接続できます。場合によっては、ネットワーク サービス プロバイダーまたは Exchange プロバイダーを介して Azure への [ExpressRoute](/services/expressroute/)  直接接続を構築することによって、パブリックなインターネットをバイパスすることもできます。
+[仮想ネットワーク](/services/virtual-network/)では、Azure の仮想マシンで実行されるデータ統合ツールを使用して、オンサイトのデータ センター内にあるオンプレミス SQL Server のデータベースに安全に接続できます。同じ仮想ネットワーク内にある仮想マシンとサービスだけが識別され、相互に接続できます。場合によっては、ネットワーク サービス プロバイダーまたは Exchange プロバイダーを介して Azure への [ExpressRoute](/services/expressroute/) 直接接続を構築することによって、パブリックなインターネットを完全にバイパスできます。
 
-[Azure Marketplace](?../source=datamarket.md)  には、Storm Managed File Transfer など、Azure にデータを移動できるようにするパートナー ソリューションが用意されています。
+[Azure Marketplace](?../source=datamarket.md) には、Storm Managed File Transfer など、Azure にデータを移動できるようにするパートナー ソリューションが用意されています。
 
 ## 適切なデータ転送オプションの選択
 
 ### デシジョン ツリー
 
-![クラウド データ転送オプションの選択を支援][decision]
+![選択するクラウド データ転送オプションを決定する助けになります。][decision]
 
 デシジョン ツリーについて:
 
@@ -233,15 +233,15 @@ Microsoft Azure Event Hubs は、クラウドに対し、短い待機時間と�
 
 
 <!--Anchors-->
-[BLOB ストレージ用の Azure Import/Export サービス]: #blob
-[AZCopy ユーティリティ]: #azcopy-utility
+[Azure Import/Export service for Blob storage]: #blob
+[AZCopy utility]: #azcopy-utility
 [Azure PowerShell]: #ps
-[Azure Data Factory (プレビュー)]: #data-factory
-[Azure SQL Database 移行ツール]: #tools
-[Azure SQL データ同期 (プレビュー)]: #data-sync
+[Azure Data Factory (preview)]: #data-factory
+[Azure SQL Database migration tools]: #tools
+[Azure SQL Data Sync (preview)]: #data-sync
 [Azure Event Hubs]: #event-hubs
-[データ転送時の他のオプション]: #other
-[適切なデータ転送オプションの選択]: #choose
+[Other options for data transfer]: #other
+[Choose the right data transfer option]: #choose
 
 <!--Image references-->
 [decision]: ./media/data-management-options-for-transferring-data/data-transfer-decision-tree.png
@@ -268,6 +268,6 @@ Microsoft Azure Event Hubs は、クラウドに対し、短い待機時間と�
 [stream]: ../stream-analytics-introduction.md
 [sync]: http://msdn.microsoft.com/library/azure/hh456371.aspx
 [hybrid]: ../integration-hybrid-connection-overview.md
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

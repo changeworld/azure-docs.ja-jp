@@ -15,9 +15,9 @@
 	ms.date="04/13/2015" 
 	ms.author="heidist"/>
 
-<h1>Azure Search 開発者向けのケース スタディ</h1>
+# Azure Search 開発者向けのケース スタディ
 
-<font size="5">[WhatToPedia.com](http://whattopedia.com/) が Microsoft Azure で情報メディア ポータルをどのように構築したか</font>
+## [WhatToPedia.com](http://whattopedia.com/) が Microsoft Azure で情報メディア ポータルをどのように構築したか
 
  ![][6] &nbsp;&nbsp;&nbsp; <font size="9">大きな構想</font>
 
@@ -112,7 +112,7 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
 
 1. Azure ポータルにログインし、サブスクリプションに Search サービスを追加しました。共有バージョン (サブスクリプションは無料) を使用しました。
 2. インデックスを作成します。プロトタイプについて、ポータル UI を使用して検索フィールドを定義し、スコアリング プロファイルを作成しました。このスコアリング プロファイルは、場所のデータ: 国 | 市区町村 | 住所に基づいています (スコアリング プロファイルの追加に関するページを参照)。
-3. サービスの URL と管理者 API キーを構成ファイルにコピーします。このキーは、ポータルの Search サービス  ページにあり、サービスに対する認証に使用されます。
+3. サービスの URL と管理者 API キーを構成ファイルにコピーします。このキーは、ポータルの Search サービス ページにあり、サービスに対する認証に使用されます。
 	
 **検索インデクサー ジョブの開発 – Windows コンソール**
 
@@ -419,5 +419,6 @@ Azure SQL データベース内のサブスクライバー データは、最も
 [Link 1 to another azure.microsoft.com documentation topic]: ../virtual-machines-windows-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

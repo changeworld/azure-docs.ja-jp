@@ -31,7 +31,7 @@
 
 Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](http://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、および IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
 
-[Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。(Application Insights はプレビュー段階で、無料です。)
+[Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。Application Insights には Free レベルが用意されているため、アプリの人気が出るまでお支払いいただく必要はありません。「[料金のページ](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 使用目的 | 必要な操作 | 取得内容
 ---|---|---

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="06/08/2015" 
 	ms.author="mandia"/>
 
 # コネクタと BizTalk API Apps とは
@@ -40,12 +40,12 @@ Premium コネクタによって、企業と SAP、Oracle、DB2、Informix、Web
 ## EAI と EDI サービス
 ビジネス クリティカルなアプリの構築に必要なのは、接続だけではありません。BizTalk API Apps は、マイクロソフトの業界屈指の統合プラットフォームである BizTalk Server を基礎にして、Web アプリ、モバイル アプリ、ロジック アプリにスナップできる高度な統合機能を簡単に提供しています。これらの統合機能の一部には、検証、抽出、変換、エンコーダー、取引先管理、EDI 形式 (X12、EDIFACT、AS2 など) のサポートが含まれます。
 
-
 ## ルール
 ビジネス ルールには、ビジネス プロセスを制御するポリシーと意思決定がカプセル化されます。通常、ルールは動的で、ビジネス プランや規則などのさまざまな理由により、時間の経過と共に変化します。App Services の BizTalk ルールでは、アプリケーション コードからこれらのポリシーを分離して、より簡単かつ迅速にプロセスを変更できるようにします。
 
 
 ## コネクタと API のアプリの一覧
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -50,15 +50,15 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 > [AZURE.NOTE]io.js は開発途上のもので、Node.js に比べて、より頻繁に更新されます。多くの Node.js モジュールが io.js で動作しない可能性があります。トラブルシューティングについては、[GitHub の io.js] に関するページを参照してください。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、[Azure App Service とそれが既存の Azure サービスに与える影響](http://go.microsoft.com/fwlink/?LinkId=529714)に関するページを参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [io.js]: https://iojs.org
 [io.js の配布]: https://iojs.org/dist/
 [GitHub の io.js]: https://github.com/iojs/io.js
 [io.js デプロイメント スクリプト]: https://github.com/felixrieseberg/iojs-azure
-
-<!--HONumber=52-->
  
+
+<!---HONumber=62-->

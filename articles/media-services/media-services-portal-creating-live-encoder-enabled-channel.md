@@ -13,18 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="05/27/2015" 
 	ms.author="juliako"/>
 
 
-# 管理ポータルを使用して、シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する (プレビュー)
+#管理ポータルを使用して、シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する (プレビュー)
 
+> [AZURE.SELECTOR]
+- [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+- [.NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+- [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする**チャネル**を作成する手順について説明します。
 
 >[AZURE.NOTE]ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
-## 一般的なライブ ストリーミング シナリオ
+##一般的なライブ ストリーミング シナリオ
 
 以下に、一般的なライブ ストリーミング アプリケーションを作成する場合に関係する標準的な手順を示します。
 
@@ -50,7 +54,7 @@
 1. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
 1. プログラムを削除し、アセットを削除 (オプション) します。   
 
-## このチュートリアルの内容
+##このチュートリアルの内容
 
 このチュートリアルでは、Azure の管理ポータルを使用して、次のタスクを実行します。
 
@@ -62,14 +66,14 @@
 1.  コンテンツの再生 
 2.  クリーンアップしています
 
-## 前提条件
+##前提条件
 チュートリアルを完了するには次のものが必要です。
 
 - このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](azure.microsoft.com)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
-## ストリーミング エンドポイントの構成 (ポータル使用)
+##ストリーミング エンドポイントの構成 (ポータル使用)
 
 クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
@@ -97,7 +101,7 @@
 	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
  
-## チャネルの作成
+##チャネルの作成
 
 1.	[管理ポータル](http://manage.windowsazure.com/)で、[Media Services] をクリックし、目的の Media Services アカウント名をクリックします。
 2.	[チャネル] ページを選択します。
@@ -145,7 +149,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 詳しくは、「[シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 
-## 取り込み URL の取得
+##取り込み URL の取得
 
 チャネルが作成されると、ライブ エンコーダーに提供する取り込み URL を取得できます。エンコーダーは、これらの URL を使用して、ライブ ストリームを入力します。
 
@@ -155,9 +159,9 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 ![ingesturls](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 
-## プログラムの作成と管理
+##プログラムの作成と管理
 
-### 概要
+###概要
 
 チャネルは、ライブ ストリームのセグメントの発行と保存を管理できるプログラムに関連付けられています。プログラムはチャネルによって管理されます。チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
 
@@ -177,7 +181,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 アーカイブ済みコンテンツを保持したいが、ストリーミングには使用したくない場合は、ストリーミング ロケーターを削除します。
 
-### プログラムの作成/開始/停止
+###プログラムの作成/開始/停止
 
 ストリームがチャネルに流れ始めると、アセット、プログラム、およびストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。これにより、ストリームがアーカイブされ、ストリーミング エンドポイントを介して視聴者がストリームを使用できるようになります。
 
@@ -214,7 +218,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 ![contentasset](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-content-assets.png)
 
 
-## コンテンツの再生
+##コンテンツの再生
 
 コンテンツをストリーミングするために使用する URL をユーザーに提供するには、ロケーターを作成することにより、前のセクションで説明した方法で最初にアセットを「発行」する必要があります (ポータルを使用してアセットを発行すると、ロケーターが作成されます)。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。
 
@@ -238,7 +242,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用してスムーズ ストリームを再生することも、iOS および Android デバイスを使用して HLS バージョン 3 を再生することもできます。
 
-## クリーンアップ
+##クリーンアップ
 
 ストリーミング イベントが完了し、以前にプロビジョニングされたリソースをクリーンアップする場合は、次の手順に従います。
 
@@ -254,5 +258,5 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [standard3]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard3.png
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
-<!--HONumber=52-->
- 
+
+<!---HONumber=62-->

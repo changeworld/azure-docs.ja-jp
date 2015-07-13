@@ -11,4 +11,4 @@
 UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 ```
 
-<!--HONumber=54-->
+<!---HONumber=62-->

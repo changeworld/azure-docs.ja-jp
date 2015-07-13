@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 #Azure Media Services のジョブを操作する
 
-各**ジョブ**には、実行する処理に関するメタデータが含まれています。各**ジョブ**には、1 つ以上の**タスク**が含まれ、これらのタスクは、アトミック処理タスク、その入力アセット、出力アセット、メディア プロセッサとそれに関連付けられた設定を指定します。エンコーダーの設定の詳細については、エンコーダーに関するガイドおよびスキーマをご覧ください。
+**ジョブ**には、実行する処理に関するメタデータが含まれます。各**ジョブ**には、1 つまたは複数の**タスク**が含まれます。タスクは、アトミック処理タスク、入力アセット、出力アセット、メディア プロセッサ、関連する設定を指定します。エンコーダーの設定の詳細については、エンコーダーに関するガイドおよびスキーマをご覧ください。
 
 通常、エンコード ジョブは他の処理 (パッケージ化、またはエンコーダが生成した 1 つ以上のアセットの暗号化など) と結合されます。ジョブ内の複数のタスクは、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
@@ -45,19 +45,19 @@
 
 ##エンコード 
 
-**Azure の管理ポータル**、**.NET**、**REST API** を使用した **Azure メディア エンコーダー** でのエンコードについては、以下をご覧ください。
+**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
  
 [AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
 ##ジョブの進行状況の監視
 
-**Azure の管理ポータル**、**.NET**、**REST API** を使用してジョブの進行状況を監視するには、以下をご覧ください。
+**Azure 管理ポータル**、**.NET**、**REST API** を使用してジョブの進行状況を監視するには、以下をご覧ください。
 
 [AZURE.INCLUDE [media-services-selector-job-progress](../../includes/media-services-selector-job-progress.md)]
 
 ##関連リンク
 
-[クォータと制限](media-services-quotas-and-limitations.md) - 使用されるクォータと、Media Services エンコーダー の制限事項について説明します。
+[クォータと制限](media-services-quotas-and-limitations.md) – Media Services Encoder で使用するクォータと制限について説明します。
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

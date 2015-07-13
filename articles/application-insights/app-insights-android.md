@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Android アプリ向けの Application Insights" 
-    description="Application Insights を使用して Android  アプリの使用状況とパフォーマンスを分析します。" 
+    description="Application Insights を使用して Android アプリの使用状況とパフォーマンスを分析します。" 
     services="application-insights" 
     documentationCenter="android"
     authors="alancameronwills" 
@@ -33,11 +33,11 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-android/11-new.png)
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけて下さい。または、[参照] ボタンをクリックして、探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。または、[参照] ボタンをクリックして、探します。
 
 ## Android Studio に Application Insights プラグインをインストールします
 
- (まだインストールしていない場合)。
+(まだインストールしていない場合)。
 
 1.  Android Studio を起動し、プラグインを構成します。
 
@@ -91,12 +91,12 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 #### 省略可能: コードでインストルメンテーション キーを設定
 
-コードで、インストルメンテーション キーを設定することもできます。これにより、`AndroidManifest.xml` の設定が上書きされます。 
+コードで、インストルメンテーション キーを設定することもできます。これにより、`AndroidManifest.xml` の設定が上書きされます。
 
 ```java
 
-    AppInsights.setup(this, "<YOUR-IKEY-GOES-HERE>");
-    AppInsights.start();
+    ApplicationInsights.setup(this, "<YOUR-IKEY-GOES-HERE>");
+    ApplicationInsights.start();
 ```
 
 
@@ -104,22 +104,22 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 SDK を初期化し、テレメトリの追跡を開始します。
 
-アプリケーションのルート アクティビティに、次のインポートを追加します。
+アプリのルート アクティビティに、次のインポートを追加します。
 
 ```java
 
-     import com.microsoft.applicationinsights.TelemetryClient;
+     import com.microsoft.applicationinsights.library.ApplicationInsights;
 ```
 
-アクティビティの `onCreate`  コールバックに次のコードを追加します。
+アクティビティの `onCreate` コールバックに次のコードを追加します。
 
 ```java
 
-    AppInsights.setup(this);
-    AppInsights.start();
+    ApplicationInsights.setup(this.getApplicationContext(), this.getApplication());
+    ApplicationInsights.start();
 ```
 
-`AppInsights.start()` が呼び出されると、SDK は Android のライフ サイクル アクティビティと処理されていない例外の追跡を開始します。
+`ApplicationInsights.start()` が呼び出されると、SDK は Android のライフ サイクル アクティビティと処理されていない例外の追跡を開始します。
 
 > [AZURE.NOTE]アプリケーション ライフ サイクル イベントは、Android SDK version 15 以上 (アイスクリームサンドイッチ以上) のみで収集されます。
 
@@ -139,9 +139,9 @@ SDK を初期化し、テレメトリの追跡を開始します。
       @Override
       protected void onCreate(Bundle savedInstanceState) {
         
-        AppInsights.setup(this);
+        ApplicationInsights.setup(this);
         //... other initialization code ...//
-        AppInsights.start();
+        ApplicationInsights.start();
         
         // track telemetry data
         TelemetryClient client = TelemetryClient.getInstance();
@@ -161,7 +161,7 @@ SDK を初期化し、テレメトリの追跡を開始します。
 
 ## Application Insights でのデータの表示
 
-http://portal.azure.com に戻り、Application Insights のリソースを参照します。
+http://portal.azure.com に戻り、Application Insights リソースを参照します。
 
 [検索] をクリックして [[診断検索]][diagnostic] を開きます。ここには、最初のイベントが表示されます。何も表示されない場合は 1 ～ 2 分待機し、[更新] をクリックします。
 
@@ -178,7 +178,7 @@ http://portal.azure.com に戻り、Application Insights のリソースを参�
 
 ## <a name="usage"></a>次のステップ
 
-[アプリケーションの使用状況の追跡][track]
+[アプリの使用状況の追跡][track]
 
 [診断検索][diagnostic]
 
@@ -197,4 +197,6 @@ http://portal.azure.com に戻り、Application Insights のリソースを参�
 [qna]: app-insights-troubleshoot-faq.md
 [track]: app-insights-custom-events-metrics-api.md
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

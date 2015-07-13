@@ -1,59 +1,45 @@
+| コンピューティング オプション | 対象となる読者 |
+| ------------------ | --------   |
+| [App Service] | 任意のデバイス用のスケーラブルな Web Apps、Mobile Apps、API Apps、Logic Apps |
+| [Cloud Services] | OS のより詳細な制御が可能な、可用性と拡張性の高い N 階層のクラウド アプリケーション |
+| [Virtual Machines] | OS の完全な制御が可能な、カスタマイズされた Windows と Linux VM |
+
 <a name="tellmevm"></a>
-## Tell me about virtual machines
+## 仮想マシンに関する詳細情報
 
-Azure Virtual Machines lets developers, IT operations people, and others create and use virtual machines in the cloud. Providing what's known as *Infrastructure as a Service (IaaS)*, this technology can be used in variety of ways. This figure shows its basic components.
+Azure Virtual Machines では、クラウドで仮想マシンを作成し、使用することができます。*"サービスとしてのインフラストラクチャ (IaaS)"* として提供されるこの仮想マシン テクノロジには、さまざまな利用方法があります。次に例をいくつか示します。
 
-<a name="fig_createvms"></a>
-![vm_diagram](./media/virtual-machines-choose-me-content/diagram.png)
+- **開発とテスト用の仮想マシン (VM)。** VM は、アプリケーションのコード開発とテストに必要な特定の構成でコンピューターをすばやく簡単に作成する方法を提供するので、開発グループは一般に VM を使用します。Azure Virtual Machines は、このような VM を作成し、使用して、不要になったときに削除できる簡単で経済的な方法を提供します。
+- **クラウドでのアプリケーションの実行。** 一部のアプリケーションをパブリック クラウドで実行することには、コスト面でのメリットがあります。たとえば、需要が急増しているアプリケーションについて考えてみます。十分なハードウェアを装備した独自のデータセンターを設置すると、ピーク時の需要に対応できますが、そのハードウェアはほとんどの時間、使用率が低下することになります。このアプリケーションを Azure で実行すると、必要なときにだけ VM の追加料金を支払い、需要が少なくなったときにはシャットダウンすることができます。また、オンデマンドのコンピューティング リソースをコミットメントなしに早急に必要とするスタートアップ企業にとっても、Azure は最も適した選択肢と言えます。
+- **自社のデータセンターをパブリック クラウドに拡張する。** Azure Virtual Network があれば、自社のオンプレミスのネットワークの延長として仮想ネットワーク (VNET) を作成し、VM をその VNET に追加できます。これにより、[SharePoint](virtual-machines-sharepoint-infrastructure-services.md)、[SQL Server](virtual-machines-sql-server-infrastructure-services.md) などのアプリケーションやその他のアプリケーションを Azure VM 上で実行できます。この方法は、アプリケーションを自社のデータ センターの VM で実行するよりもデプロイが容易で、コストを抑えられます。   
+- **障害復旧。** めったに利用しないバックアップ データセンターの料金を払い続けるよりも、IaaS ベースの障害回復を使用すると、必要なコンピューティング リソースを本当に必要なときにだけ料金が発生します。たとえば、プライマリ データセンターが故障した場合、Azure で実行する VM を作成して、基幹的なアプリケーションを実行し、その後、不要になったときにはシャットダウンできます。
 
-**Figure: Azure Virtual Machines provides Infrastructure as a Service.**
-
-As the figure shows, you can create virtual machines using either the Azure Management Portal or the REST-based Azure Service Management API. The Management Portal can be accessed from any popular browser, including Internet Explorer, Mozilla, and Chrome. For the REST API, Microsoft provides client scripting tools for Windows, Linux, and Macintosh systems. Other software is also free to use this interface.
-
-However you access the platform, creating a new VM requires choosing a virtual hard disk (VHD) for the VM's image. These VHDs are stored in [Azure blobs](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage). 
-
-To get started you have two choices 
-
-1. Upload your own VHD 
-2. Use VHDs provided by Microsoft and its partners in the Azure Virtual Machines gallery or on the Microsoft open source [VMDepot](http://vmdepot.msopentech.com/) website. 
-
-The VHDs in the gallery and on VMDepot include clean Microsoft and Linux operating system images as well as images that include Microsoft and other third party products installed on them.  The options are growing all the time. Examples include various versions, editions and configurations of:
+他の仮想マシンと同様に、Azure の VM にはオペレーティング システム、ストレージ、ネットワーク機能があり、さまざまなアプリケーションを実行できます。Azure またはいずれかのパートナーから提供されたイメージを使用したり、独自のイメージを使用したりできます。例には、以下のさまざまなバージョン、エディション、および構成が含まれます。
  
 -	Windows Server 
--	Linux servers such as Suse, Ubuntu and CentOS
+-	Suse、Ubuntu、CentOS などの Linux サーバー
 -	SQL Server
 -	BizTalk Server 
 -	SharePoint Server
 
-Along with a VHD, you specify the size of your new VM.  The full stats for each size are listed [in the Azure library](http://msdn.microsoft.com/library/windowsazure/dn197896.aspx).  
+仮想マシンは、仮想ハード ディスク (VHD) を使用して、オペレーティング システム (OS) およびデータを保存します。VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。次の図はそのことに加えて、VM の作成および管理に使用できる 2 つのツールを示しています。
 
--	**Extra Small**, with a shared core and 768MB  of memory.
--	**Small**, with 1 core and 1.75GB  of memory.
--	**Medium**, with 2 cores and 3.5GB  of memory.
--	**Large**, with 4 cores and 7GB of memory.
--	**Extra Large**, with 8 cores and 14GB of memory.
--	**A6**, with 4 cores and 28GB of memory.
--	**A7**, with 8 cores and 56GB of memory.
+<a name="fig_createvms"></a> ![vm_diagram](./media/virtual-machines-choose-me-content/diagram.png)
 
-Finally, you choose which Azure datacenter your new VM should run in, whether in the US, Europe, or Asia. 
+**図: Azure Virtual Machines はサービスとしてのインフラストラクチャ (IaaS) を提供する。**
 
-Once a VM is running, you pay for each hour it runs, and you stop paying when you remove that VM. The amount you pay doesn't depend on how much your VM is used -- it's based solely on wall-clock time. A VM that sits idle for an hour costs the same as one that's heavily loaded. 
+VM は、ブラウザー ベースのポータル、スクリプトがサポートされるコマンド ライン ツール、または直接 REST API を使用して管理できます。RightScale や ScaleXtreme などの Microsoft パートナーも、REST API を基にした管理サービスを提供しています。
 
-Each running VM has an associated *OS disk*, kept in a blob. When you create a VM using a gallery VHD, that VHD is copied to your VM's OS disk. Any changes you make to the operating system of your running VM are stored here. For example, if you install an application that modifies the Windows registry, that change will be stored in your VM's OS disk. The next time you create a VM from that OS disk, the VM continues running in the same state you left it in. For VHDs stored in the gallery, Microsoft applies updates when needed, such as operating system patches. For the VHDs in your own OS disks, however, you're responsible for applying these updates (although Windows Update is turned on by default).
+OS の他に、VM で使用できるその他の構成は次のとおりです。
 
-Running VMs can also be modified and then captured using the sysprep tool. Sysprep removes specifics like the machine name so that a VHD image can be used to create additional VMs with the same general configuration. These images are stored in the Management portal alongside your uploaded images so they can be used as a starting point for additional VMs. 
+- サイズ。接続できるディスクの数や処理能力などの要因を決定します。Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。詳細については、「[Sizes for Virtual Machines (仮想マシンのサイズ)](virtual-machines-size-specs.md)」を参照してください。  
+- 新しい VM がホストされる Azure リージョン (米国、ヨーロッパ、またはアジア)。 
+- VM の拡張機能。ウイルス対策ソフトウエアの実行や Windows PowerShell の Desired State Configuration 機能の使用などの能力を仮想マシンに追加します。
 
-Virtual Machines also monitors the hardware hosting each VM you create. If a physical server running a VM fails, the platform notices this and starts the same VM on another machine. And assuming you have the right licensing, you can copy a changed VHD out of your OS disk, then run it someplace else, such as in your own on-premises datacenter or at another cloud provider. 
+VM を考慮する利点は他にもあります。それは次のとおりです。
 
-Along with its OS disk, your VM has one or more data disks. Even though each of these looks like a mounted disk drive to your VM, the contents of each one is in fact stored in a blob. Every write made to a data disk is stored persistently in the underlying blob. As with all blobs, Azure replicates these both within a single datacenter and across datacenters to guard against failures.
+**従量課金制** -- Azure では、VM のサイズおよびオペレーティング システムに基づいて時間単位の料金を請求します。時間単位を満たさない場合は、分単位でのみ請求します。ストレージは別料金で、別個に請求されます。詳細については、「[Virtual Machines Pricing (仮想マシンの料金)](http://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
-Running VMs can be managed using the Management Portal, PowerShell and other scripting tools, or directly through the REST API. (In fact, whatever you can do through the Management Portal can be done programmatically through this API.) Microsoft partners such as RightScale and ScaleXtreme also provide management services that rely on the REST API.
+**回復力** -- Azure は、動作している各 VM をホストする物理ハードウェアを監視します。VM を実行している物理サーバーに障害が生じると、Azure はこれを検出し、VM を新しいハードウェアに移動させて再起動します。このプロセスはサービス復旧と呼ばれることがあります。また、VHD の冗長なコピーを BLOB ストレージに保持することで、仮想マシンのデータを保護します。
 
-Azure Virtual Machines can be used in a variety of ways. The primary scenarios that Microsoft targets include these:
-
-- **VMs for development and test.** Development groups commonly need VMs with specific configurations for creating applications. Azure Virtual Machines provides a straightforward and economical way to create these VMs, use them, then remove them when they're no longer needed.
-- **Running applications in the cloud.** For some applications, running on the public cloud makes economic sense. Think about an application with large spikes in demand, for example. It's always possible to buy enough machines for your own datacenter to run this application, but most of those machines are likely to sit unused much of the time. Running this application on Azure lets you pay for extra VMs only when you need them, shutting them down when a demand spike has ended. Or suppose you're a start-up that needs on-demand computing resources quickly and with no commitment. Once again, Azure can be the right choice.
-- **Extending your own datacenter into the public cloud.** With Azure Virtual Network, your organization can create a virtual network (VNET) that makes a group of Azure VMs appear to be part of your own on-premises network. This allows running applications such as SharePoint and others on Azure, an approach that might be easier to deploy and/or less expensive than running them in your own datacenter. You can also run [SQL Server on VMs](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options/#sqliaas) if that meets your needs better than Azure SQL Database.  
-- **Disaster recovery.** Rather than paying continuously for a backup datacenter that's rarely used, IaaS-based disaster recovery lets you pay for the computing resources you need only when you really need them.  For example, if your primary datacenter goes down, you can create VMs running on Azure to run essential applications, then shut them down when they're no longer needed.
-
-These aren't the only possibilities, but they're good examples of how you might use Azure Virtual Machines.  
+<!---HONumber=62-->

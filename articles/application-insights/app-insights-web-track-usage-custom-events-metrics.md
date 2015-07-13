@@ -441,7 +441,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
     TelemetryConfiguration.getActive().getContextInitializers().add(new MyTelemetryInitializer());
 
 
-JavaScript Web クライアントには、現時点では既定のプロパティを設定する方法はありません。
+現時点では、JavaScript Web クライアントに、既定のプロパティを設定する方法はありません。
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 

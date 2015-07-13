@@ -1,4 +1,4 @@
-﻿
+
 1. Visual Studio で、F5 キーを押してアプリケーションを実行します。
 
 2. アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
@@ -9,4 +9,4 @@
 
    	![](./media/mobile-services-windows-store-test-push/mobile-quickstart-push2.png)
 
-<!--HONumber=42-->
+<!---HONumber=62-->

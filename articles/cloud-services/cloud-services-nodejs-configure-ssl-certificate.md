@@ -108,7 +108,7 @@ SSL 証明書をインポートするには、次の手順を実行します。
         ...
         </WebRole>
 
-    **Certificates** セクションでは、証明書の名前、場所、およびその証明書があるストアの名前を定義します。ユーザーの証明書ストアに証明書をインストールしたため、"My" という値が使用されます。他の証明書ストアの場所も使用できます。詳細については、「[サービスと証明書の関連付け]」を参照してください。
+    **Certificates** セクションでは、証明書の名前、場所、およびその証明書があるストアの名前を定義します。ユーザーの証明書ストアに証明書をインストールしたため、"My" という値が使用されます。他の証明書ストアの場所も使用できます。詳細については、[証明書をサービスに関連付け] を参照してください。
 
 2.  サービス定義ファイルで、**Endpoints** セクション内の http **InputEndpoint** 要素を更新し、HTTPS を有効にします。
 
@@ -165,24 +165,31 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
 [HTTPS エンドポイントでの SSL 証明書の構成方法]
 
-[手順 1. Node.js サービスを作成してクラウドにサービスを発行する]: #step1
-[手順 2. SSL 証明書を取得する]: #step2
-[手順 3. SSL 証明書をインポートする]: #step3
-[手順 4. サービス定義ファイルとサービス構成ファイルを変更する]: #step4
-[手順 5. HTTPS を使用してロール インスタンスに接続する]: #step5
-[**Azure PowerShell**]: http://go.microsoft.com/?linkid=9790229&clcid=0x409
-[1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
-[2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
-[3]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
-[Azure Management Portal]: http://manage.windowsazure.com
-[証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
-[サービスと証明書の関連付け]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
-[site-url]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
-[8]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-08.png
-[HTTPS エンドポイントでの SSL 証明書の構成方法]: http://msdn.microsoft.com/library/windowsazure/ff795779.aspx
-[powershell-menu]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
-[cert-wizard]: ./media/cloud-services-nodejs-configure-ssl-certificate/certificateimport.png
-[key-protection]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
-[Azure worker ロールで Node.js アプリケーションの SSL を構成する]: /develop/nodejs/common-tasks/enable-ssl-worker-role/
+  [手順 1. Node.js サービスを作成してクラウドにサービスを発行する]: #step1
+  [手順 2. SSL 証明書を取得する]: #step2
+  [手順 3. SSL 証明書をインポートする]: #step3
+  [手順 4. サービス定義ファイルとサービス構成ファイルを変更する]: #step4
+  [手順 5. HTTPS を使用してロール インスタンスに接続する]: #step5
+  [**Azure PowerShell**]: http://go.microsoft.com/?linkid=9790229&clcid=0x409
+  
+  
+  
+  
+  [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
+  [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
+  [3]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
+  [Azure Management Portal]: http://manage.windowsazure.com
+  
+  
+  [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
+  
+  [site-url]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
+  [8]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-08.png
+  [HTTPS エンドポイントでの SSL 証明書の構成方法]: http://msdn.microsoft.com/library/windowsazure/ff795779.aspx
+  [powershell-menu]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
+  [cert-wizard]: ./media/cloud-services-nodejs-configure-ssl-certificate/certificateimport.png
+  [key-protection]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
+  [Azure worker ロールで Node.js アプリケーションの SSL を構成する]: /develop/nodejs/common-tasks/enable-ssl-worker-role/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -1,6 +1,3 @@
-<properties writer="kathydav" editor="tysonn" manager="timlt" />
-
-
 
 # データ ディスクを仮想マシンから切断する方法 
 
@@ -38,4 +35,4 @@
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

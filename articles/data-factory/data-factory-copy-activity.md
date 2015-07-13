@@ -56,10 +56,12 @@
 		<th>Azure SQL Database</th>
 		<th>内部設置型 SQL Server</th>
 		<th>IaaS 上の SQL Server</th>
+		<th>Azure DocumentDB</th>
 	</tr>	
 
 	<tr>
 		<td><b>Azure BLOB</b></td>
+		<td>○</td>
 		<td>○</td>
 		<td>○</td>
 		<td>○</td>
@@ -74,10 +76,12 @@
 		<td>○</td>
 		<td></td>
 		<td></td>
+		<td>○</td>
 	</tr>	
 
 	<tr>
 		<td><b>Azure SQL Dtabase</b></td>
+		<td>○</td>
 		<td>○</td>
 		<td>○</td>
 		<td>○</td>
@@ -93,6 +97,7 @@
 		<td>○</td>
 		<td></td>
 		<td></td>
+		<td></td>
 	</tr>
 
 	<tr>
@@ -102,11 +107,13 @@
 		<td>○</td>
 		<td></td>
 		<td></td>
+		<td></td>
 	</tr>
 
 	<tr>
 		<td><b>オンプレミスのファイル システム</b></td>
 		<td>○</td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -120,13 +127,85 @@
 		<td></td>
 		<td></td>
 		<td></td>
+		<td></td>
 	</tr>
 
+	<tr>
+		<td><b>オンプレミスのファイル システム</b></td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの MySQL データベース</b></td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの DB2 データベース</b></td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの Teradata データベース</b></td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの Sybase データベース</b></td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの PostgreSQL データベース</b></td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>Azure DocumentDB</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
 
 </table>
 
+詳細については、MSDN ライブラリの「[サポート対象のソースおよびシンク](https://msdn.microsoft.com/library/dn894007.aspx)」のトピックを参照してください。
+
 ### サービスとしてのインフラストラクチャ (IaaS) 上の SQL
-IaaS 上の SQL Server は、ソースおよびシンクの両方としてもサポートされます。IaaS での SQL Server へのリンクのサービスを作成する場合は、data Management Gateway が必要です。SQL Server とリソースの競合、ゲートウェイの両方によってパフォーマンスの低下を回避する 1 つのホスティング SQL Server 以外の仮想マシンでの Data Management Gateway をインストールすることをお勧めします。Data Management Gateway の詳細については、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
+IaaS 上の SQL Server は、ソースとシンクの両方としてサポートされています。IaaS 上の SQL Server にリンクされたサービスを作成する場合は、Data Management Gateway が必要です。SQL Server とゲートウェイの両方のリソースの競合によるパフォーマンスの低下を回避するため、Data Management Gateway は SQL Server をホストしていない仮想マシンにインストールすることをお勧めします。Data Management Gateway の詳細については、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 1.	パブリック DNS 名と静的パブリック ポートを持つ VM: プライベート ポート マッピング
 2.	SQL エンドポイントが公開されていないパブリック DNS 名を持つ VM
@@ -146,7 +225,7 @@ IaaS 上の SQL Server は、ソースおよびシンクの両方としてもサ
 コピー アクティビティには、1 つの**入力テーブル**と 1 つの**出力テーブル**があります。
 
 ## <a name="CopyActivityJSONSchema"></a>コピー アクティビティの JSON
-パイプラインは、1 つ以上のアクティビティで構成されます。パイプライン内のアクティビティは、**activities []** セクションで定義されます。パイプラインの JSON は次のとおりです。
+パイプラインは、1 つ以上のアクティビティで構成されます。パイプライン内のアクティビティは、**activities ** セクションで定義されます。パイプラインの JSON は次のとおりです。
          
 	{
 		"name": "PipelineName",
@@ -364,7 +443,7 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 
 **Azure SQL Database** の場合は、暗号化された接続を明示的に要求し、サーバー証明書を信頼しないようにして "man in the middle" 攻撃を回避します。これを行うには、接続文字列で **Encrypt=True** と **TrustServerCertificate=False** を使用します。詳細については、「[SQL Database のセキュリティのガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394108.aspx)」を参照してください。
 
-**SQL Server** などの従来のデータベースの場合 (特に、インスタンスが Azure Virtual Machine 内にある場合)、暗号化された接続オプションを有効にします。このためには、接続文字列で **Encrypt=True** および **TrustServerCertificate=False** を指定して、署名された証明書を構成します。詳細については、「[データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192(v=sql.110).aspx)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
+**SQL Server** などの従来のデータベースの場合 (特に、インスタンスが Azure Virtual Machine 内にある場合)、暗号化された接続オプションを有効にします。このためには、接続文字列で **Encrypt=True** および **TrustServerCertificate=False** を指定して、署名された証明書を構成します。詳細については、[データベース エンジンへの暗号化接続の有効化]https://msdn.microsoft.com/library/ms191192(v=sql.110).aspx および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
 
 ## 高度なシナリオ
 - **構造体定義を使用した列のフィルター処理**。テーブルの種類によっては、ソースの列のサブセットを指定できます。指定するには、テーブル定義の **Structure** 定義の列を、基になるデータ ソースの列よりも少なく設定します。
@@ -405,5 +484,6 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 [image-data-factory-copy-actvity]: ./media/data-factory-copy-activity/VPNTopology.png
 [image-data-factory-column-mapping-1]: ./media/data-factory-copy-activity/ColumnMappingSample1.png
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

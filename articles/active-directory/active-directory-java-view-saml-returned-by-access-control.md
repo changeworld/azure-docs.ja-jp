@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Access Control Service によって返される SAML の表示 (Java)"
-    description="Azure でホストされる Java アプリケーションで Access Control Service によって返される SAML を表示する方法について説明します。"
+    pageTitle="Access Control サービスによって返される SAML の表示 (Java)"
+    description="Azure でホストされる Java アプリケーションで Access Control サービスによって返される SAML を表示する方法について説明します。"
 	services="active-directory" 
     documentationCenter="java"
     authors="rmcmurray"
@@ -16,19 +16,19 @@
     ms.date="06/03/2015"
     ms.author="robmcm" />
 
-# How to view SAML returned by the Azure Access Control Service (Azure Access Control Service によって返される SAML を表示する方法)
+# How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)
 
-このガイドでは、Azure Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。このガイドでは、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法][]」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。完成したアプリケーションは次のようになります。
+このガイドでは、Azure の Access Control サービス (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。このガイドでは、「[Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法][]」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。完成したアプリケーションは次のようになります。
 
 ![SAML の出力例][saml_output]
 
 ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
 
-> [AZURE.NOTE]Azure Access Control Services Filter (Microsoft Open Technologies 提供) は Community Technology Preview 版です。プレリリース版ソフトウェアとして Microsoft Open Technologies, Inc. によってもマイクロソフトによっても正式にサポートされていません。
+> [AZURE.NOTE]Azure の Access Control Services Filter (Microsoft Open Technologies 提供) は Community Technology Preview 版です。プレリリース版ソフトウェアとして Microsoft Open Technologies, Inc. によってもマイクロソフトによっても正式にサポートされていません。
 
 ## 前提条件
 
-このガイド内のタスクを完了するには、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法][]」のサンプル コードを完成させて、このチュートリアルでの出発点として使用します。
+このガイド内のタスクを完了するには、「[Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法][]」のサンプル コードを完成させて、このチュートリアルでの出発点として使用します。
 
 ## ビルド パスとデプロイ アセンブリへの JspWriter ライブラリの追加
 
@@ -128,7 +128,7 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 					                 for (i=0; i < nChild; i++)
 				                     {
 					                    Node temp = list.item(i);
-					                    displaySAMLInfo(temp, parent + nodeName + "\", out);
+					                    displaySAMLInfo(temp, parent + nodeName + "", out);
 				                     }
 				               }
 			              }
@@ -178,21 +178,22 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 
 ## アプリケーションの実行
 
-1. アプリケーションをコンピューター エミュレーターで実行するか、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法][]」の手順に従って Azure にデプロイします。
+1. アプリケーションをコンピューター エミュレーターで実行するか、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法][]」の手順に従って Azure にデプロイします。
 2. ブラウザーを起動し、Web アプリケーションを開きます。アプリケーションにログオンした後、SAML 情報 (ID プロバイダーから提供されるセキュリティ アサーションなど) が表示されます。
 
 ## 次のステップ
 
-さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0][]」を参照してください。
+さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0 (アクセス制御サービス 2.0)][]」を参照してください。
 
 [Prerequisites]: #pre
 [Modify the JSP file to display SAML]: #modify_jsp
 [Add the JspWriter library to your build path and deployment assembly]: #add_library
 [Run the application]: #run_application
 [Next steps]: #next_steps
-[Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
+[Access Control Service 2.0 (アクセス制御サービス 2.0)]: http://go.microsoft.com/fwlink/?LinkID=212360
+[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
+[Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

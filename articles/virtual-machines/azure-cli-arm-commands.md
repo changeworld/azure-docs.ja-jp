@@ -40,7 +40,7 @@ Azure CLI で **ARM** モードを使用するためのセットアップ要件�
 - [Azure CLI のインストール](../xplat-cli-install.md)
 - Azure Active Directory ID またはサービス プリンシパルを使用するための [Azure CLI の構成](../xplat-cli-connect.md)
 
-アカウントを入手し Azure CLI をインストールしたら、
+アカウントを用意して Azure CLI をインストールしたら、
 
 - 「`azure config mode arm`」と入力して **ARM** モードに切り替えます。
 - プロンプトで「`azure login`」と入力し、職場または学校の ID を使用して Azure アカウントにログインします。
@@ -305,7 +305,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 リソース グループ内のすべての仮想ネットワークが一覧表示されます。
 
 
-	C:>azure network vnet list myresourcegroup
+	C:\>azure network vnet list myresourcegroup
 
 	info:    Executing command network vnet list
 	+ Listing virtual networks
@@ -410,7 +410,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 リソース グループ内の特定の仮想ネットワークのサブネットを設定します。
 
 
-	C:>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
+	C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
 	info:    Executing command network vnet subnet set
 	+ Looking up the subnet "subnet1"
@@ -653,7 +653,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ロード バランサー セットのプローブのプロパティを一覧表示します。
 
-	C:>azure network lb probe list -g myresourcegroup -l mylb
+	C:\>azure network lb probe list -g myresourcegroup -l mylb
 
 	info:    Executing command network lb probe list
 	+ Looking up the load balancer "mylb"
@@ -1359,7 +1359,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 **ネットワーク インターフェイスを管理するコマンド**
 
 	network nic create [options] <resource-group> <name> <location>
-ネットワーク インターフェイス (NIC) と呼ばれるリソースを作成します。このリソースは、ロード バランサーに使用するか、仮想マシンと関連付けることができます。
+ネットワーク インターフェイス (NIC) と呼ばれるリソースを作成します。このリソースは、ロード バランサーに使用するか、Virtual Machine と関連付けることができます。
 
 	azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
 
@@ -1706,7 +1706,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm get-instance-view [options] <resource-group> <name>
 
-**仮想マシン上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
+**Virtual Machine 上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
 
 	vm reset-access [options] <resource-group> <name>
 
@@ -1714,7 +1714,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm set [options] <resource-group> <name>
 
-**仮想マシンのデータ ディスクを管理するコマンド**
+**Virtual Machine のデータ ディスクを管理するコマンド**
 
 	vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]
 	vm disk detach [options] <resource-group> <vm-name> <lun>
@@ -1737,4 +1737,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list [options] <location> <publisher> [offer] [sku]
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

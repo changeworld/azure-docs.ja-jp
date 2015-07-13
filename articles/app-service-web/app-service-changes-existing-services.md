@@ -89,5 +89,6 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 </table>
 
 詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

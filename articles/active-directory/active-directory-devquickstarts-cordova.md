@@ -253,5 +253,6 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 [ノード用の Web API の概要](active-directory-devquickstarts-webapi-nodejs.md)
 
 その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

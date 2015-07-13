@@ -50,19 +50,19 @@
 + [WordPress](https://wordpress.org/plugins/application-insights/)
 + [Windows ストア C#|VB](app-insights-windows-get-started.md)
 + [Windows ストア C++](app-insights-windows-cpp.md)
-+ [Windows デスクトップのアプリケーションおよびサービス](app-insights-windows-desktop.md)
++ [Windows デスクトップのアプリケーションとサービス](app-insights-windows-desktop.md)
 + [その他](#projects)
 
 
 ## ログ記録フレームワーク
 
 +	[Log4Net、NLog、または System.Diagnostics.Trace](app-insights-diagnostic-search.md)
-+	[Java、Log4J、または Logback](app-insights-java-trace-logs.md)
++	[Java、Log4J、Logback](app-insights-java-trace-logs.md)
 
 
 ## <a name="projects"></a> 独自の SDK をビルドする
 
-使用する言語またはプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードを参照してください。
+使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
 
 

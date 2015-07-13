@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="Microsoft Azure 管理ポータルを使用した Update 1 のインストール"
-   description="管理ポータルを使用して、StorSimple 8000 シリーズの Update 1 をインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/22/2015"
-   ms.author="v-sharos" />
+
 
 #### 管理ポータルを使用して Update 1 をインストールするには
 
@@ -61,4 +46,4 @@
 
     ![Maintenance page](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates7-include.png)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

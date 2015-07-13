@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Azure Active Directory の使用 (.NET プロジェクト))" 
+	pageTitle="Azure Active Directory の使用 (.NET プロジェクト)" 
 	description="Visual Studio で Azure Active Directory の使用を開始する方法" 
 	services="active-directory" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="patshea123" 
 	manager="douge" 
 	editor="tglee"/>
- 
+  
 <tags 
 	ms.service="active-directory" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kempb"/>
+	ms.date="05/06/2015" 
+	ms.author="patshea123"/>
 
 # Azure Active Directory の使用 (.NET プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [使用開始](vs-active-directory-dotnet-getting-started.md)
-> - [変更内容](vs-active-directory-dotnet-what-happened.md)
+> - [Getting Started](vs-active-directory-dotnet-getting-started.md)
+> - [What Happened](vs-active-directory-dotnet-what-happened.md)
  
 #####コントローラーへのアクセスに対して認証を要求する 
 
@@ -28,7 +28,7 @@
  
 #####SignIn/SignOut コントロールを追加する 
 
-ビューに SignIn/SignOut コントロールを追加するには、**_LoginPartial.cshtml** 部分ビューを使用してこの機能をいずれかのビューに追加します。この機能を標準 **_Layout.cshtml** ビューに追加した例を次に示します。(div class="navbar-collapse collapse" の最後の要素にご注目ください):
+ビューに SignIn/SignOut コントロールを追加するには、**_LoginPartial.cshtml** 部分ビューを使用して、この機能をいずれかのビューに追加します。この機能を標準 **__Layout.cshtml ** ビューに追加した例を次に示します。(navbar-collapse クラスの div の最後の要素に注目してください):
 
 <PRE class="prettyprint">
     &lt;!DOCTYPE html&gt; 
@@ -77,4 +77,4 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!--HONumber=49--> 
+<!---HONumber=62-->

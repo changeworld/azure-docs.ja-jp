@@ -174,5 +174,6 @@ public ActionResult About()
 [Azure AD を使用することによる Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)
 
 その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

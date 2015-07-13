@@ -64,5 +64,6 @@ SCDPM Azure Backup と組み合わせることで、次をバックアップで�
 ## 次のステップ
 + Azure Backup サービスに関してよく寄せられる質問は、[こちら](backup-azure-backup-faq.md)をご覧ください。
 + [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

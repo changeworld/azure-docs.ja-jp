@@ -21,7 +21,7 @@ Automation の接続資産には、Runbook から外部サービスまたはア�
 
 接続を作成するときは、*接続の種類*を指定する必要があります。接続の種類は、一連のプロパティを定義しているテンプレートです。接続では、その接続の種類で定義されている各プロパティの値を定義します。接続の種類は、統合モジュールで Azure Automation に追加されるか、または [Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) で作成されます。接続を作成するときに使用できる接続の種類は、オートメーション アカウントにインストールされているものだけです。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各オートメーション アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各 Automation アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
@@ -67,7 +67,7 @@ Automation の接続資産には、Runbook から外部サービスまたはア�
 
 ### Windows PowerShell で新しい接続を作成するには
 
-Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com/library/dn921825.aspx) コマンドレットを使用して新しい接続を作成します。このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している[ハッシュ テーブル](http://technet.microsoft.com/library/hh847780.aspx)を受け取る **ConnectionFieldValues** という名前のパラメーターがあります。
+Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com/library/dn921825.aspx) コマンドレットを使用して新しい接続を作成します。このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している[ハッシュ テーブル](http://technet.microsoft.com/ja-jp/library/hh847780.aspx)を受け取る **ConnectionFieldValues** という名前のパラメーターがあります。
 
 
 次のサンプル コマンドでは、テキスト メッセージを送受信できるテレフォニー サービスである [Twilio](http://www.twilio.com) に対する新しい接続を作成します。Twilio 接続種類を含むサンプルの統合モジュールは、[スクリプト センター](http://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8)で入手できます。この接続の種類では、Twilio への接続時のアカウント検証に必要なアカウント SID と承認トークンのプロパティが定義されています。このサンプル コードが動作するには、[このモジュールをダウンロード](http://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8)して、オートメーション アカウントにインストールする必要があります。
@@ -118,5 +118,6 @@ Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com
 ## 関連記事:
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

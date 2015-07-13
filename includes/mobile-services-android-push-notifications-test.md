@@ -23,4 +23,5 @@
 2. 画面の上端から下へスワイプし、通知を表示するためのデバイスの通知センターを開きます。
 
 	![通知センターでの通知の表示](./media/mobile-services-android-push-notifications-test/notification-area-received.png)
-<!--HONumber=54-->
+
+<!---HONumber=62-->

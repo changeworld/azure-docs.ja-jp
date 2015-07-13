@@ -13,16 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/10/2015" 
+	ms.date="06/18/2015" 
 	ms.author="antonba"/>
 
 # ユーザーの登録と成果物のサブスクリプションを委任する方法
 
 委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
-
-委任に関する詳細については、次のビデオを参照してください。
-
-> [AZURE.VIDEO delegating-user-authentication-and-product-subscription-to-a-3rd-party-site]
 
 ## <a name="delegate-signin-up"> </a>開発者のサインインおよびサインアップ処理の委任
 
@@ -155,6 +151,12 @@
     // compare signature to sig query parameter
 	
 	var signature = digest.toString('base64');
+
+## 次のステップ
+
+委任に関する詳細については、次のビデオをご覧ください。
+
+> [AZURE.VIDEO delegating-user-authentication-and-product-subscription-to-a-3rd-party-site]
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription

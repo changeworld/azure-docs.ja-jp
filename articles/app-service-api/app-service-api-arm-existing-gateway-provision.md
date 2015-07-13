@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.date="06/22/2015" 
 	ms.author="tomfitz"/>
 
 # 既存のゲートウェイを使用する API アプリのプロビジョニング
 
-このトピックでは、Azure API アプリと既存のゲートウェイをデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+このトピックでは、Azure API アプリと既存のゲートウェイをデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、そのままデプロイで使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure Resource Manager テンプレートのオーサリング)](../resource-group-authoring-templates.md)」をご覧ください。
 
-完全なテンプレートについては、[既存のゲートウェイを使用する API アプリのテンプレート](https://github.com/tfitzmac/AppServiceTemplates/blob/master/existing-gateway-existing-plan-new-apiapp.json)に関するページを参照してください。
+アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](../app-service-web/app-service-deploy-complex-application-predictably.md)」をご覧ください。
+
+完全なテンプレートについては、[既存のゲートウェイを使用する API アプリのテンプレート](../../templates/app-service-api-arm-existing-gateway-provision/)に関するページをご覧ください。
 
 ## デプロイ対象
 
@@ -61,7 +63,7 @@
     
 以降では、値は **variables('packageId')** として使用されています。
 
-## デプロイ対象のリソース
+## デプロイするリソース
 
 ### API アプリをホストする Web アプリ
 

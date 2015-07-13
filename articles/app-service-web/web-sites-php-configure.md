@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="03/24/2015"
+	ms.date="06/24/2015"
 	ms.author="tomfitz"/>
 
 #Azure App Service Web アプリでの PHP の構成方法
@@ -40,36 +40,36 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
 3. **[Web app settings]** ブレードの上部にある **[保存]** ボタンをクリックします。
 
 	![構成設定を保存する][save-button]
-	
+
 ### Azure PowerShell (Windows)。
 
 1. Windows PowerShell を開きます。
 2. `Set-AzureWebsite -PhpVersion [5.4 | 5.5 | 5.6] -Name <site-name>` を入力してから、Enter キーを押します。
 3. PHP バージョンが設定されました。
-	
+
 	![Azure PowerShell での PHP バージョンを設定します。][SETPHPVERPS]
 4. 「`Get-AzureWebiste -Name <site-name>`」と入力してから Enter キーを押して、これらの設定を確認することができます。
-	
+
 	![Azure PowerShell での PHP バージョンを検証します。][GETPHPVERPS]
 
 ### Azure コマンド ライン インターフェイス (Mac、Linux、Windows)
 
->[Azure.Note]Azure コマンド ライン インターフェイスで **Node.js** を使用するには、コンピューターに インストールする必要があります。
+Azure コマンド ライン インターフェイスを使用するには、**Node.js** をコンピューターにインストールする必要があります。
 
 1. ターミナルを開きます。
 2. `azure site set --php-version [5.4 | 5.5] [site-name]` を入力してから、Enter キーを押します。
 3. PHP バージョンが設定されました。
-	
-	![Azure コマンド ライン インターフェイスを使用して PHP のバージョンを設定します。][SETPHPVERXPLAT]
+
+	![Azure コマンド ライン インターフェイスを使用して PHP のバージョンを設定します。][SETPHPVERCLI]
 4. 「`azure site show [site-name]`」と入力してから Enter キーを押して、これらの設定を確認することができます。
-	
-	![Azure コマンド ライン インターフェイスを使用して PHP のバージョンを検証します。][GETPHPVERXPLAT]
+
+	![Azure コマンド ライン インターフェイスを使用して PHP のバージョンを検証します。][GETPHPVERCLI]
 
 ## 方法: ビルトインの PHP 構成を変更する
 
 次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます(php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
-### PHP_INI_USER、PHP_INI_PERDIR、PHP_INI_ALL 構成設定の変更 
+### PHP_INI_USER、PHP_INI_PERDIR、PHP_INI_ALL 構成設定の変更
 
 1. [.user.ini] ファイルをルート ディレクトリに追加します。
 2. `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を `.user.ini` ファイルに追加します。たとえば、`display_errors` 設定をオンにして `upload_max_filesize` を 10 M に設定する場合は、`.user.ini` ファイルに次のテキストを含めます。
@@ -100,7 +100,7 @@ PHP 5.5 および PHP 5.6 も使用できますが、既定では有効になっ
 ### Ini 設定を使用して構成します。
 
 1. `d:\home\site` ディレクトリを `ext` ディレクトリに追加します。
-2. `ext` ディレクトリに、`.dll` 拡張ファイル (`php_mongo.dll`、`php_xdebug.dll`  など) を配置します。拡張機能は、PHP の既定バージョン (この文書の作成時点では PHP 5.4) との互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+2. `ext` ディレクトリに、`.dll` 拡張ファイル (`php_mongo.dll`、`php_xdebug.dll` など) を配置します。拡張機能は、PHP の既定バージョン (この文書の作成時点では PHP 5.4) との互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
 3. アプリの設定 (キー `PHP_INI_SCAN_DIR`、値 `d:\home\site\ini`) を Web アプリに追加する
 4. `ini` ファイルを `extensions.ini` と呼ばれる `d:\home\site\ini` に作成します。
 5. 'php.ini' ファイルで使用するものと同じ構文を使用して、構成設定を `extensions.ini` ファイルに追加します。たとえば、MongoDB や XDebug 拡張機能を有効にする場合、 `extensions.ini` ファイルには次のテキストが含まれます。
@@ -143,7 +143,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 
 	![Web アプリ設定][settings-button]
 
-7. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[ハンドラー マッピング]** セクションまでスクロールします。[拡張] フィールドに `*.php`  を追加し、`php-cgi.exe` 実行可能ファイルのパスを追加します。アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
+7. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[ハンドラー マッピング]** セクションまでスクロールします。[拡張] フィールドに `*.php` を追加し、`php-cgi.exe` 実行可能ファイルのパスを追加します。アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
 
 	![[ハンドラー マッピング] でハンドラーを指定する][handler-mappings]
 
@@ -151,10 +151,10 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 
 	![構成設定を保存する][save-button]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [無料評価版]: https://www.windowsazure.com/pricing/free-trial/
@@ -170,9 +170,10 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
 [http://windows.php.net/download/]: http://windows.php.net/download/
 [http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
-[SETPHPVERXPLAT]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
-[GETPHPVERXPLAT]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
+[SETPHPVERCLI]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
+[GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

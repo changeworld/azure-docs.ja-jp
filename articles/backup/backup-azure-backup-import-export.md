@@ -1,20 +1,19 @@
 <properties
-	pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理"
-	description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
-	services="backup"
-	documentationCenter=""
-	authors="prvijay"
-	manager="shreeshd"
-	editor=""/>
-
+   pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理"
+   description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
+   services="backup"
+   documentationCenter=""
+   authors="prvijay"
+   manager="shreeshd"
+   editor=""/>
 <tags
-	ms.service="backup"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery"
-	ms.date="04/07/2015"
-	ms.author="prvijay"/>
+   ms.service="backup"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="storage-backup-recovery"
+   ms.date="04/07/2015"
+   ms.author="prvijay"/>
 
 # Azure Backup でのオフライン バックアップのワークフロー
 
@@ -133,5 +132,6 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 [7]: ./media/backup-azure-backup-import-export/complete.png
 [8]: ./media/backup-azure-backup-import-export/dpmoffline.png
 [9]: ./media/backup-azure-backup-import-export/dpmbackupnow.png
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

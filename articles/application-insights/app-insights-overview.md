@@ -107,4 +107,6 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [windows]: app-insights-windows-get-started.md
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

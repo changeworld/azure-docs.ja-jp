@@ -17,7 +17,7 @@
 	ms.date="04/21/2015" 
 	ms.author="tomfitz"/>
 
-# Microsoft Azure で Marketplace から Umbraco Web アプリを作成する#
+#Microsoft Azure で Marketplace から Umbraco Web アプリを作成する#
 
 Umbraco CMS は、小規模なものから複雑なものまでさまざまなアプリケーションを作成するために使用できるフル機能装備のオープン ソース コンテンツ管理システムです。Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーを使用して、スタート キットを適用するか、または自分のデザインを統合することで、数分で Umbraco CMS アプリを作成できます。
 
@@ -28,7 +28,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 - Azure プレビュー ポータルを使用して、Marketplace を通じて新しい Web アプリを作成する方法
 - Umbraco CMS を使用してブログ Web サイトをビルドする方法 
 
-## Azure プレビュー ポータルで Marketplace から Web アプリを作成する
+##Azure プレビュー ポータルで Marketplace から Web アプリを作成する
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)にログインします。
 
@@ -97,7 +97,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 
 これで終了です。 わずか数分で Umbraco CMS を使用してブログ Web アプリを正常に作成できました。
 
-## その他のリソース
+##その他のリソース
 
 [Umbraco Documentation (Umbraco のドキュメント)](http://our.umbraco.org/documentation)
 
@@ -110,7 +110,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [Azure App Service Web Apps のドキュメント](/documentation/services/websites/)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * ポータルからプレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -133,5 +133,6 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [15CreateItemUnderOverflow]: ./media/web-sites-gallery-umbraco/15CreateItemUnderOverflow.PNG
 [16EnterAName]: ./media/web-sites-gallery-umbraco/16EnterAName.PNG
 [17MyPage]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

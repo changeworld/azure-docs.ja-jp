@@ -147,10 +147,11 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 
 
 ## Logic Apps と Web Apps に関するガイド
-[Logic Apps とは](app-service-logic-what-are-logic-apps.md)<br/> [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-app-azure-portal.md)
+[Logic Apps とは](app-service-logic-what-are-logic-apps.md)<br/> [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-overview.md)
 
 
 
 ## その他のコネクタ
 [BizTalk 統合コネクタ](app-service-logic-integration-connectors.md)<br/> [企業間コネクタ](app-service-logic-b2b-connectors.md)<br/> [ソーシャル コネクタ](app-service-logic-social-connectors.md)<br/> [プロトコル コネクタ](app-service-logic-protocol-connectors.md)<br/> [アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md)<br/> [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

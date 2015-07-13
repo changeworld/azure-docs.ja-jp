@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="仮想マシン上の MongoDB を使用した Azure での Node.js Web アプリの作成" 
+<properties
+	pageTitle="仮想マシン上の MongoDB を使用した Azure での Node.js Web アプリの作成"
 	description="MongoDB を使用して、Azure にホストされた Node.js アプリケーションにデータを格納する方法。"
-	tags="azure-portal" 
-	services="app-service\web, virtual-machines" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	tags="azure-portal"
+	services="app-service\web, virtual-machines"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="04/23/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="04/23/2015"
 	ms.author="mwasson"/>
 
 
@@ -26,12 +26,12 @@
 
 * VM Depot から Ubuntu または MongoDB を実行する仮想マシンを設定する方法
 * ノード アプリケーションから MongoDB にアクセスする方法
-* Azure 用のクロスプラットフォーム ツールを使用して Azure App Service に Web アプリを作成する方法
+* Azure CLI を使用して Azure App Service で Web アプリを作成する方法
 
 このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。タスクは MongoDB に格納されます。
 
 > [AZURE.NOTE]このチュートリアルでは、仮想マシンにインストールした MongoDB のインスタンスを使用します。MongoLab が提供するホステッド MongoDB インスタンスを使用する場合は、「[Azure での MongoLab アドオンを使用して MongoDB 対応の Node.js Web アプリの作成](store-mongolab-web-sites-nodejs-store-data-mongodb)」を参照してください。
- 
+
 このチュートリアルのプロジェクト ファイルは **tasklist** という名前のディレクトリに保存され、作成されるアプリケーションは次のようになります。
 
 ![空のタスク一覧が表示されている Web ページ][node-mongo-finished]
@@ -86,7 +86,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 	* プロトコル – TCP
 	* パブリック ポート – 28017
 	* プライベート ポート – 28017
-	
+
 	![エンドポイント構成のスクリーンショット][vmendpoint]
 
 9. **[OK]** を 2 回クリックして **[作成]** をクリックすると、VM が作成されます。
@@ -113,20 +113,20 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 1. コマンド ラインで、**tasklist** ディレクトリに移動します。**tasklist** ディレクトリがない場合は作成します。
 
-	> [AZURE.NOTE]このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**\~/node/tasklist** や **c:\\node\\tasklist** など) に作成してください。
+	> [AZURE.NOTE]このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**~/node/tasklist** や **c:\node\tasklist** など) に作成してください。
 
 2. 次のコマンドを入力して、express コマンドをインストールします。
 
 	npm install express-generator -g
- 
+
 	> [AZURE.NOTE]一部のオペレーティング システムで "-g" パラメーターを使用すると、"___Error: EPERM, chmod '/usr/local/bin/express'___" というエラーが表示され、管理者としてアカウントを実行することを要求される場合があります。このような場合は、`sudo` コマンドを使用して、より高い権限レベルで npm を実行します。
 
     このコマンドの出力は次のように表示されます。
 
 		express-generator@4.0.0 C:\Users\username\AppData\Roaming\npm\node_modules\express-generator
 		├── mkdirp@0.3.5
-		└── commander@1.3.2 (keypress@0.1.0)                                                                         
- 
+		└── commander@1.3.2 (keypress@0.1.0)
+
 	> [AZURE.NOTE]express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく ___express___ コマンドにアクセスして、Web アプリのスキャフォールディングを生成できるようにするためです。
 
 4. このアプリケーションで使用するスキャフォールディングを作成するには、**express** コマンドを使用します。
@@ -152,10 +152,10 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		   create : ./public/javascripts
 		   create : ./bin
 		   create : ./bin/www
-		
+
 		   install dependencies:
 		     $ cd . && npm install
-		
+
 		   run the app:
 		     $ DEBUG=my-application ./bin/www
 
@@ -176,7 +176,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 ###追加モジュールのインストール
 
 **package.json** ファイルは、**express** コマンドで作成されるファイルの 1 つです。このファイルには、Express アプリケーションで必要な追加モジュールのリストが含まれます。このファイルは、後でこのアプリケーションを App Service Web Apps に展開するときに、アプリケーションのサポートのために Azure にインストールする必要があるモジュールを判断するために使用されます。
-	
+
 1. **tasklist** フォルダーで、**package.json** ファイルに記述されたモジュールを次のコマンドを使用してインストールします。
 
         npm install
@@ -184,19 +184,19 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
     このコマンドの出力は次のように表示されます。
 
 		debug@0.7.4 node_modules\debug
-		
+
 		cookie-parser@1.0.1 node_modules\cookie-parser
 		├── cookie-signature@1.0.3
 		└── cookie@0.1.0
-		
+
 		morgan@1.0.0 node_modules\morgan
 		└── bytes@0.2.1
-		
+
 		body-parser@1.0.2 node_modules\body-parser
 		├── qs@0.6.6
 		├── raw-body@1.1.4 (bytes@0.3.0)
 		└── type-is@1.1.0 (mime@1.2.11)
-		
+
 		express@4.0.0 node_modules\express
 		├── methods@0.1.0
 		├── parseurl@1.0.1
@@ -214,7 +214,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── type-is@1.0.0 (mime@1.2.11)
 		├── accepts@1.0.0 (negotiator@0.3.0, mime@1.2.11)
 		└── serve-static@1.0.1 (send@0.1.4)
-		
+
 		jade@1.3.1 node_modules\jade
 		├── character-parser@1.2.0
 		├── commander@2.1.0
@@ -222,7 +222,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── monocle@1.1.51 (readdirp@0.2.5)
 		├── constantinople@2.0.0 (uglify-js@2.4.13)
 		├── with@3.0.0 (uglify-js@2.4.13)
-		└── transformers@2.1.0 (promise@2.0.0, css@1.0.8, uglify-js@2.2.5)                                                                
+		└── transformers@2.1.0 (promise@2.0.0, css@1.0.8, uglify-js@2.2.5)
 
 	これによって、Express アプリケーションで使用される既定のモジュールがすべてインストールされます。
 
@@ -241,7 +241,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── mpromise@0.4.3
 		├── ms@0.1.0
 		├── mquery@0.5.3
-		└── mongodb@1.3.23 (kerberos@0.0.3, bson@0.2.5)         
+		└── mongodb@1.3.23 (kerberos@0.0.3, bson@0.2.5)
 
     > [AZURE.NOTE]C++ bson パーサーのインストールに関するメッセージは無視してかまいません。
 
@@ -309,7 +309,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
     	    });
     	  	res.redirect('/');
   		  },
-  
+
 
   		  completeTask: function(req,res) {
     		var completedTasks = req.body;
@@ -383,14 +383,14 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		  input(type="submit", value="Update tasks")
 		hr
 		form(action="/addtask", method="post")
-		  table(border="1") 
+		  table(border="1")
 		    tr
-		      td Item Name: 
-		      td 
+		      td Item Name:
+		      td
 		        input(name="item[name]", type="textbox")
 		    tr
-		      td Item Category: 
-		      td 
+		      td Item Category:
+		      td
 		        input(name="item[category]", type="textbox")
 		  input(type="submit", value="Add item")
 
@@ -443,9 +443,9 @@ To test the application on your local machine, perform the following steps:
 
 > [AZURE.NOTE]初めて App Service Web アプリを作成した場合は、Azure ポータルを使用してこのアプリケーションを展開する必要があります。
 
-###Azure クロス プラットフォーム コマンド ライン インターフェイスのインストール
+###Azure コマンド ライン インターフェイス (Azure CLI) のインストール
 
-Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) では、Azure サービスの管理操作を行うことができます。開発環境に xplat-cli をインストールおよび構成していない場合は、「[Install and configure the Azure Cross-Platform Command-Line Interface (Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成)][xplatcli]」で手順を確認してください。
+Azure CLI では、Azure サービスの管理操作を実行できます。開発環境で Azure CLI のインストールと構成をまだ行っていない場合、手順については、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページをご覧ください。
 
 ###App Service Web アプリの作成
 
@@ -454,15 +454,15 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 2. 新しい App Service Web アプリを作成するには、次のコマンドを使用します。"myuniqueappname" は作成する Web アプリの一意のサイト名に置き換えます。この値は、完成した Web アプリの URL の一部として使用されます。
 
 		azure site create myuniqueappname --git
-		
+
 	Web アプリケーションが格納されるデータ センターを尋ねられます。現在の場所に地理的に近いデータセンターを選択します。
-	
+
 	`--git` パラメーターを指定すると、**tasklist** フォルダー内にローカルに Git リポジトリが作成されます (存在しない場合)。また、'azure' という名前の [Git リモート]も作成されます。これは、Azure にアプリケーションを発行するために使用されます。[iisnode.yml] ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。最後に、.gitignore ファイルも作成されます。このファイルは、node-modules フォルダーが .git に発行されないように除外します。
-	
+
 	> [AZURE.NOTE]既に Git リポジトリが含まれているディレクトリからこのコマンドを実行した場合、ディレクトリは再初期化されません。
-	
+
 	> [AZURE.NOTE]"--git" パラメーターを省略した場合でも、ディレクトリには Git リポジトリが含まれ、"azure" リモートが作成されます。
-	
+
 	このコマンドが完了すると、次のような出力が表示されます。**Created website at** で始まる行には、App Service Web アプリの URL が含まれています。
 
 		info:   Executing command site create
@@ -498,7 +498,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 3. 最新の Git リポジトリの変更内容を App Service Web アプリにプッシュする場合、ターゲット分岐は、Web サイトのコンテンツ用に使用されるので、**master** であることを指定する必要があります。
 
 		git push azure master
-	
+
 	次のような出力が表示されます。展開時に、Azure によってすべての npm モジュールがダウンロードされます。
 
 		Counting objects: 17, done.
@@ -516,7 +516,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
 		remote: Deployment successful.
 		To https://username@mongodbtasklist.azurewebsites.net/MongoDBTasklist.git
  		 * [new branch]      master -> master
- 
+
 4. プッシュ操作が完了したら、`azure site browse` コマンドで Web アプリに移動してアプリケーションを表示します。
 
 ##次のステップ
@@ -529,12 +529,10 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 
 ##その他のリソース
 
-[Mac および Linux 用 Azure コマンド ライン ツール ]    
-[Build and deploy a Node.js web app in Azure App Service]    
-[Azure App Service の GIT を使用する連続的な展開]    
+[Mac および Linux 用 Azure コマンド ライン ツール ][Build and deploy a Node.js web app in Azure App Service] [Azure App Service の GIT を使用する連続的な展開]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [mongosecurity]: http://docs.mongodb.org/manual/security/
@@ -561,7 +559,7 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 [installguides]: http://docs.mongodb.org/manual/installation/
 [azureportal]: https://portal.azure.com
 [mongodocs]: http://docs.mongodb.org/manual/
-[xplatcli]: ../xplat-cli.md
+[Azure CLI]: ../xplat-cli.md
 
 [selectdepo]: ./media/web-sites-nodejs-store-data-mongodb/browsedepot.png
 [selectedimage]: ./media/web-sites-nodejs-store-data-mongodb/selectimage.png
@@ -572,4 +570,6 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 [vmconfig]: ./media/web-sites-nodejs-store-data-mongodb/vmconfig.png
 [vmendpoint]: ./media/web-sites-nodejs-store-data-mongodb/endpoints.png
 [mongodbonazure]: http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-linux-in-azure/
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=62-->

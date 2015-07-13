@@ -103,7 +103,7 @@ Build 2015 のカンファレンスで発表された AAD の概要を参照す�
 
 - **[WS-Federation 1.2](https://msdn.microsoft.com/library/azure/dn903702.aspx)**: Web Services Federation バージョン 1.2 仕様で指定される、WS-Federation 1.2 プロトコル。
 
-- **[Supported Token and Claim Types](active-directory-token-and-claims.md)**: SAML 2.0 および JSON Web Tokens (JWT) トークンの要求を理解して評価するためのガイドです。
+- **[Supported Token and Claim Types](active-directory-token-and-claims.md)**: SAML 2.0 および JSON Web Tokens (JWT) トークンのクレームを理解して評価するためのガイドです。
 
 ## ビデオ
 
@@ -128,8 +128,8 @@ Azure Active Directory を使用したアプリ開発に関する次の概要の
 
 - **[Azure AD Graph のブログ](http://blogs.msdn.com/b/aadgraphteam)**: Graph API に固有の Azure AD 情報を参照できます。
 
-- **[Cloud Identity](http://www.cloudidentity.net)**: Azure Active Directory のプリンシパル PM による、サービスとしての ID 管理の考察を読むことができます。
+- **[Cloud Identity](http://www.cloudidentity.net)**: Active Directory のプリンシパル PM による、サービスとしての ID 管理の考察を読むことができます。
 
 - **[Twitter での Azure AD](https://twitter.com/azuread)**: Azure AD に関する発表事項を 140 文字以内で受け取ることができます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

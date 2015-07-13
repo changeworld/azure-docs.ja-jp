@@ -71,5 +71,6 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 <!--Image references-->
 [1]: ./media/app-service-logic-create-a-b2b-process/Flow.jpg
 [2]: ./media/app-service-logic-create-a-b2b-process/Tracking.jpg
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -20,11 +20,11 @@
 
 ## 概要
 
-このガイドでは、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用しています。
+このガイドでは、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [WebJobs SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
 
 BLOB を作成する方法を示すコード サンプルについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
 		
-このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています
+このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
 
 ## <a id="trigger"></a> BLOB が作成または更新されたときに、関数を開始する方法
 
@@ -95,7 +95,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 
 ## <a id="string"></a>文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
 
-テキスト BLOB がある場合は、 `BlobTrigger`を `string` パラメーターに適用できます。次のコード サンプルでは、テキスト BLOB を `logMessage` という名前の `string` パラメーターにバインドします。関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュ ボードに、BLOB の内容を記述します。
+テキスト BLOB がある場合は、 `BlobTrigger`を `string` パラメーターに適用できます。次のコード サンプルでは、テキスト BLOB を `logMessage` という名前の `string` パラメーターにバインドします。関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュボードに、BLOB の内容を記述します。
  
 		public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
 		    string name, 
@@ -227,9 +227,9 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a> 次のステップ
 
-このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
 <!---HONumber=62-->

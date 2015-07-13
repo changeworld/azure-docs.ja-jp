@@ -64,7 +64,7 @@
 
 ## ローカルでの API アプリのデバッグ 
 
-テストまたはデバッグ サイクル中にラウンドトリップが低速になる状況を避ける場合など、API アプリをローカルでデバッグすることが必要になる場合があります。次の手順では、テスト クライアントとして Swagger UI を使用して API アプリをローカルでデバッグする方法を示します。
+テストかデバッグ サイクル中にラウンドトリップが低速になる状況を避ける場合など、API アプリをローカルでデバッグすることが必要になる場合があります。次の手順では、テスト クライアントとして Swagger UI を使用して API アプリをローカルでデバッグする方法を示します。
 
 1. Visual Studio で、API アプリのプロジェクトの *web.config* ファイルを開きます。 
  
@@ -103,9 +103,9 @@
 
 	![API App Host Application Settings for Local Debug](./media/app-service-api-dotnet-debug/ld-debug-settings.png)
 
-	**注:** このセクションで *web.config* ファイルに追加した *EMA_* 値には、機密の認証情報が含まれています。したがって、このファイルをパブリックのソース管理メディア (*github* など) にコミットするとこれらの機密情報を他のユーザーが見ることができるようになるため、注意が必要です。詳細については、[ASP.NET と Azure App Service にパスワードや他の機密情報をデプロイするときのベスト プラクティス](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)に関するページを参照してください。
+	**注:** このセクションで *web.config* ファイルに追加した *EMA_* 値には、機密の認証情報が含まれています。したがって、このファイルをパブリックのソース管理メディア (*github* など) にコミットするとこれらの機密情報を他のユーザーが見ることができるようになるため、注意が必要です。詳細については、[ASP.NET と Azure App Service にパスワードや他の機密情報をデプロイするときのベスト プラクティス](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)に関するページをご覧ください。
 
-10. API アプリのコントローラーのコード (`Get` メソッドと `Post` メソッド内) に 1 つまたは複数のブレークポイントを設定します。
+10. API アプリのコントローラーのコード (`Get` メソッドと `Post` メソッド内) に 1 つ以上のブレークポイントを設定します。
 
 	![Setting breakpoints](./media/app-service-api-dotnet-debug/ld-breakpoints.png)
 
@@ -119,7 +119,7 @@
 
 リモートで API Apps をデバッグすることで、コードが Azure App Service でどのように実行されているかを容易に確認できます。Azure API Apps の豊富な診断とデバッグのデータを Visual Studio IDE で直接利用できます。
 
-App Service API アプリは、Web サービスをホストする追加機能を備えた App Service の Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
+App Service API アプリは、Web サービスをホストする追加機能を備えた App Service の Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。詳細については、「[Visual Studio を使用した Azure Web App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
 このシリーズで作成した API アプリは、すべてのユーザーが呼び出しに使用できます。認証されたユーザーだけが呼び出すことができるように API アプリを保護する方法については、「[API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加](app-service-api-dotnet-add-authentication.md)」を参照してください。
  

@@ -29,7 +29,7 @@ Web アプリを作成するための最初の手順は、App Service プラン 
 
 App Service 環境内で既に作成済みの App Service プランを使用する場合は、目的のプランを選択した後で Web アプリの名前を入力し、[作成] を選択します。これは、通常どおりに Web アプリを作成するのと同じフローです。大きな違いは、Web アプリのアドレスが
 
-[*sitename*] [*App Service 環境の名前*].p.azurewebsites.net
+[*sitename*].[*App Service 環境の名前*].p.azurewebsites.net
 
 となることです。次のアドレスではありません。
 
@@ -71,7 +71,7 @@ ASE 内での Web アプリの実行と ASP の管理に関しては、いくつ
 
 既に説明したように、ASE の所有者は、システムのサイズに責任を持つため、目的の ASP をホストするのに十分な容量があることも保証する必要があります。利用可能なワーカーがない場合は、ASP を作成できません。これは、Web アプリをスケールアップする場合も同じです。より多くのインスタンスが必要な場合は、App Service 環境の管理者に依頼してワーカーを追加してもらう必要があります。
 
-Web アプリと ASP を作成した後はこれをスケールアップすることをお勧めします。ASE でアプリのフォールト トレランスを提供するには、常に ASP のインスタンスが 2 つ以上存在している必要があります。ASE 内の ASP のスケーリングは、通常どおり ASP UI を使用して実行します。スケーリングの詳細については、[App Service 環境内で Web アプリをスケーリングする方法](app-service-web-scale-a-web-app-in-an-app-service-environment.md)に関するページにあるドキュメントを参照してください。
+Web アプリと ASP を作成した後はこれをスケールアップすることをお勧めします。ASE でアプリのフォールト トレランスを提供するには、常に ASP のインスタンスが 2 つ以上存在している必要があります。ASE 内の ASP のスケーリングは、通常どおり ASP UI を使用して実行します。スケーリングの詳細については、[App Service 環境内で Web アプリをスケーリングする方法](app-service-web-scale-a-web-app-in-an-app-service-environment.md)についてのこちらのドキュメントを参照してください。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

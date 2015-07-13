@@ -16,8 +16,9 @@
 	ms.date="03/05/2015" 
 	ms.author="jtwist"/>
 
-## BizTalk テンプレートと Logic Apps
+##BizTalk テンプレートと Logic Apps
 
-### このドキュメントは間もなく公開されます。
+###このドキュメントは間もなく公開されます。
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=62-->

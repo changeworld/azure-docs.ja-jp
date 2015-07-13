@@ -77,11 +77,11 @@
     
     表示するイベントの種類を設定します。
 
-    ![[イベントの種類の選択]](./media/app-insights-code-sample-export-telemetry-sql-database/085-types.png)
+    ![イベントの種類の選択](./media/app-insights-code-sample-export-telemetry-sql-database/085-types.png)
 
 ここで、しばらく待機し、ユーザーにアプリケーションを使用させます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー][metrics]に表示され、個々のイベントが[診断検索][diagnostic]に表示されます。
 
-また、データがストレージにエクスポートされます。そこで内容を検査できます。たとえば、Visual Studio にはストレージ ブラウザがあります。
+また、データがストレージにエクスポートされます。そこで内容を検査できます。たとえば、Visual Studio にはストレージ ブラウザーがあります。
 
 
 ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-telemetry-sql-database/087-explorer.png)
@@ -95,7 +95,7 @@
 ![[新規]、[データ]、[SQL]](./media/app-insights-code-sample-export-telemetry-sql-database/090-sql.png)
 
 
-データベース サーバーに Azure サービスがアクセス可能であることを確認してください。
+データベース サーバーに Azure サービスがアクセス可能であることをご確認ください。
 
 
 ![[参照]、[サーバー]、[使用するサーバー]、[設定]、[ファイアウォール]、[Azure へのアクセスの許可]](./media/app-insights-code-sample-export-telemetry-sql-database/100-sqlaccess.png)

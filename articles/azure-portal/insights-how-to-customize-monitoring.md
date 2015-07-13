@@ -1,72 +1,76 @@
 <properties 
-	pageTitle="監視のカスタマイズ方法" 
+	pageTitle="サービス メトリックの監視" 
 	description="Azure でグラフの監視をカスタマイズする方法について説明します。" 
-	authors="alancameronwills" 
-	manager="kamrani" 
+	authors="stepsic-microsoft-com" 
+	manager="ronmart" 
 	editor="" 
-	services="application-insights" 
-	documentationCenter=""/>
+	services="azure-portal"
+documentationCenter=""/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
+	ms.service="azure-portal" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="2014-11-04" 
-	ms.author="awills"/>
+	ms.date="04/28/2015" 
+	ms.author="stepsic"/>
 
-# 監視のカスタマイズ
+# サービス メトリックの監視
 
-Azure アプリケーションでは、さまざまなメトリックを監視し、選択した期間にわたってそれらのグラフを表示することができます。
+すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。Azure ポータルでこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用してすべてのメトリックにプログラムでアクセスすることもできます。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)で、**[参照]** をクリックし、監視するリソースをクリックします。
-2. **[監視]** レンズには、各 Azure リソースに最も重要なメトリックが含まれています。たとえば、Web サイトには要求、エラー、[Web テスト](http://go.microsoft.com/fwlink/?LinkID=394528&clcid=0x409)、および[分析](http://go.microsoft.com/fwlink/?LinkID=394529&clcid=0x409)があります。**[今日の要求とエラー]** パーツをクリックすると、**[メトリック]** ブレードが表示されます。  
-    ![Monitoring lens](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
-3. **[メトリック]** ブレードでは、選択したメトリックに関する詳細が表示されます。ブレードの上部にはグラフがあり、下部にある表では、平均、最小値、最大値など、これらのメトリックに関する集約が表示されます。その下には、既に定義したアラートの一覧があり、ブレード上に表示されているメトリックに関連するものだけが表示されるようにフィルターが適用されています。多数のアラートが発生した場合でも、この方法により、この状況に関連するアラートのみが表示されます。**[Web サイト]** ブレードの **[アラート ルール]** パーツをクリックする方法で、Web サイトに対応するすべてのアラートを表示することもできます。  
-    ![Metric blade](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
-4. 表示されるメトリックをカスタマイズするには、グラフを右クリックし、**[クエリの編集]** をクリックします。  
-    ![Edit Query](./media/insights-how-to-customize-monitoring/Insights_MetricMenu.png)
-5. [クエリの編集] ブレードで、期間の変更および他のメトリックの選択という 2 つの操作を実行できます。  
-    ![Edit Query](./media/insights-how-to-customize-monitoring/Insights_EditQuery.png)
-6. 期間の変更は簡単であり、別の範囲 (**[過去 1 時間]** など) を選択して、ブレードの下部にある **[保存]** をクリックするだけです。プレビュー ポータルの新機能である **[カスタム]** を選択することができます。  
-    ![Custom time range](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
-7. カスタムを使用すると、過去 2 週間のうち任意の期間を選択できます。たとえば、2 週間全体、または昨日のうち特定の 1 時間のみを表示することができます。別の期間を指定するには、テキスト ボックスに入力します。
-8. 期間の下で、グラフに表示するメトリックの数として、任意の数値を選択することができます。新しいメトリックの **[Memory working set]** および **[Average memory working set]** なども表示することもできます。
+サービスによっては、メトリックを表示するために診断を有効にする必要がある場合があります。また、Virtual Machines などのサービスでは、基本的なメトリック セットを利用できますが、使用頻度の高いメトリックをすべて有効にする必要もあります。詳細については、「[監視と診断の有効化](insights-how-to-use-diagnostics.md)」を参照してください。
 
-9. [保存] をクリックすると、[Web サイト] ブレードを閉じるまでは変更内容が維持されます。後でもう一度このブレードを表示すると、変更前のメトリックと期間が表示されます。
+## 監視グラフの使用 
 
-## 新しいリソースの監視
+選択した任意の期間における任意のメトリックのグラフを作成できます。
 
-Azure プレビュー ポータルの新機能として、次のようなさまざまな新しいリソースに関するパフォーマンス メトリックを監視する機能もあります。
-- Web ホスティング プラン
-- Redis Cache
-- DocumentDB アカウント
+1. [Azure ポータル](https://portal.azure.com/)で、**[参照]** をクリックし、監視するリソースをクリックします。
 
-Web ホスティング プランは他のリソースより少し複雑です。それは、**Web サイト**が実行されているインスタンスのパフォーマンスを表しているからです。Web ホスティング プランのメトリックにアクセスするには、Web サイトの [概要] レンズ内にある Web ホスティング プランのアイコンをクリックします。
+2. **[監視]** セクションには、各 Azure リソースにとって最も重要なメトリックが含まれています。たとえば、Web アプリには "**要求とエラー**" があるのに対し、仮想マシンには "**CPU の割合**" と "**ディスクの読み取りと書き込み**" があります。![監視レンズ](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 
-![Web hosting plan](./media/insights-how-to-customize-monitoring/Insights_WHPSelect.png)
+3. いずれかのグラフをクリックすると、**[メトリック]** ブレードが表示されます。ブレードには、グラフに加えて、メトリック (選択した時間範囲の平均、最小値、最大値など) の集計を示すテーブルが表示されます。その下には、リソースのアラート ルールが示されます。![[メトリック] ブレード](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 
-**[監視]** レンズ内でグラフを表示できます。次の新しいメトリックを表示できる点を除き、[Web サイト] ブレード内のグラフと同じように動作します。
+4. 表示される行をカスタマイズするには、グラフ上の **[編集]**、または [メトリック] ブレード上の **[グラフの編集]** コマンドをクリックします。
 
-- CPU の割合
-- メモリの割合
-- HTTP キューの深さ
-- ディスク キューの深さ
+5. [クエリの編集] ブレードでは、次の 3 つの操作を実行できます。
+    - 時間範囲を変更する
+    - 棒グラフと折れ線グラフを切り替える
+    - 別のメトリックを選択する![クエリの編集](./media/insights-how-to-customize-monitoring/Insights_EditQuery.png)
+
+6. 期間の変更は簡単で、別の範囲 (**[過去 1 時間]** など) を選択して、ブレードの下部にある **[保存]** をクリックするだけです。**[カスタム]** も選択できます。これを使用すると、過去 2 週間の任意の期間を選択できます。たとえば、2 週間全体を表示することも、昨日の 1 時間だけを表示することもできます。別の期間を指定するには、テキスト ボックスに入力します。![カスタム期間](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
+
+7. 期間の下で、グラフに表示するメトリックを任意の数だけ選択できます。
+
+8. [保存] をクリックすると、その特定のリソースに対する変更が保存されます。たとえば、2 つの仮想マシンがある場合、一方でグラフを変更しても、もう一方には影響しません。
 
 ## サイド バイ サイドのグラフの作成
 
-Azure プレビュー ポータルの強力なユーザー カスタマイズ機能を使用して、サイド バイ サイドのグラフを作成し、カスタマイズすることができます。
+ポータルの強力なカスタマイズ機能を使用して、必要な数のグラフを追加できます。
 
-1. 最初に、出発点として使用するグラフを右クリックし、**[カスタマイズ]**   をクリックします。
-    ![Customize chart](./media/insights-how-to-customize-monitoring/Insights_Customize.png)
-2. 次に、**[...]** メニューの **[複製]** をクリックし、このパーツ、つまりグラフをクリップボードにコピーします。  
-    ![Clone part](./media/insights-how-to-customize-monitoring/Insights_ClonePart.png)
-3. 最後に、画面の上部にあるツール バーで **[完了]** をクリックします。これで、通常のメトリック パーツと同様に、このパーツを扱うことができます。表示されたメトリックを右クリックして変更を加えると、2 つの異なるメトリックをサイド バイ サイドで同時に表示することができます。  
-    ![Two metrics Side by Side](./media/insights-how-to-customize-monitoring/Insights_SideBySide.png)
+1. ブレードの上部にある **[...]** メニューで、**[タイルの追加]** をクリックします。![Add Menu](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
+2. 次に、画面の右側にある **[ギャラリー]** からグラフを選択できます。![ギャラリー](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
+3. 必要なメトリックが表示されない場合は、いつでも、事前設定されたメトリックの 1 つを追加し、**[編集]** でグラフを編集して必要なメトリックを表示できます。 
 
-ポータルを閉じると、グラフの期間と選択したメトリックはリセットされることに注意してください。
+## 使用量クォータの監視
 
+ほとんどのメトリックでは時間の経過に伴う傾向が示されますが、使用量クォータなどの特定のデータでは、しきい値と一緒に特定の時点の情報が表示されます。
 
-<!--HONumber=46--> 
+また、クォータを含むリソースでは、ブレードに使用量クォータを表示することもできます。
+
+![使用法](./media/insights-how-to-customize-monitoring/Insights_UsageChart.png)
+
+メトリックと同様に、[REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) や [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して、すべての使用量クォータにプログラムでアクセスできます。
+
+## 次のステップ
+
+* メトリックがしきい値を超えたときに、[アラート通知を受信](insights-receive-alert-notifications.md)します。
+* [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
+* [インスタンス数を自動的にスケール変更](insights-how-to-scale.md)して、サービスの可用性と応答性を確実にします。
+* コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
+* [JavaScript のアプリや Web ページに Application Insights](../app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
+* Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
+
+<!---HONumber=62-->

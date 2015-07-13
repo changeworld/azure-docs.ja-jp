@@ -45,7 +45,7 @@ Web アプリのドメイン名を持っていない場合は、[Microsoft Azure
 
 1. ブラウザーで、[Azure の管理ポータル](https://portal.azure.com)を開きます。
 
-2. **[Web アプリ]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメインと SSL]** の順に選択します。
+2. **[Web Apps]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメインと SSL]** の順に選択します。
 
 	![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
@@ -93,5 +93,6 @@ Web アプリのドメイン名を持っていない場合は、[Microsoft Azure
 	Once configuration has completed, the custom domain name will be listed in the **Hostname bindings** section of your web app.
 
 この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

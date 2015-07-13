@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Data Factory から MapReduce プログラムを起動する" 
-	description="Azure のデータのファクトリから、Azure の HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。" 
+	description="Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -17,23 +17,23 @@
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
-この記事を呼び出す方法について説明します、 **MapReduce** を使用して、Azure のデータのファクトリのパイプラインからプログラムを **HDInsight アクティビティ** で **MapReduce 変換**です。
+この記事では、**MapReduce の変換**で **HDInsight アクティビティ**を使用して、Azure Data Factory パイプラインから **MapReduce** プログラムを起動する方法について説明しています。
 
 ## はじめに 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、HDInsight アクティビティの MapReduce 変換を使用する方法について説明しています。
  
-参照してください [の Pig の使用、およびデータのファクトリでの Hive][data-factory-pig-hive-activities] Pig と Hive の実行の詳細について、HDInsight のアクティビティの Pig と Hive の変換を使用してに、Azure のデータの工場出荷時のパイプラインからクラスター化、HDInsight でのスクリプトです。
+HDInsight アクティビティの Pig/Hive 変換を使用して、Azure Data Factory パイプラインから HDInsight クラスター上の Pig/Hive スクリプトを実行する方法の詳細については、「[Data Factory で Pig と Hive を使用する][data-factory-pig-hive-activities]」を参照してください。
 
-## JSON の MapReduce の変換を使用して HDInsight アクティビティ 
+## MapReduce の変換を使用する HDInsight アクティビティの JSON 
 
-で、HDInsight のアクティビティの JSON の定義を指定します。
+HDInsight アクティビティの JSON の定義で、以下を設定します。
  
-1. 設定、 **型** の **アクティビティ** に **HDInsightActivity**です。
-2. 設定、 **型** の **変換** に **MapReduce**です。
-3. クラスの名前を指定 **className** プロパティです。
-4. ファイル名を含む JAR ファイルへのパスを指定して **jarFilePath** プロパティです。
-5. ための JAR ファイルが含まれている Azure Blob ストレージを参照するリンクのサービスを指定 **jarLinkedService** プロパティです。   
-6. MapReduce プログラムの引数を指定して、 **引数** セクションです。 
+1. **activity** の **type** を **HDInsightActivity** に設定します。
+2. **transformation** の **type** を **MapReduce** に設定します。
+3. **className** プロパティでクラスの名前を指定します。
+4. **jarFilePath** プロパティでファイル名を含む JAR ファイルへのパスを指定します。
+5. **jarLinkedService** プロパティで、JAR ファイルを含む Azure BLOB ストレージを参照する、リンクされたサービスを指定します。   
+6. **arguments** セクションで MapReduce プログラムに任意の引数を指定します。 
 
    
  
@@ -90,14 +90,14 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 MapReduce 変換を使用すると、HDInsight クラスター上ですべての MapReduce jar ファイルを実行できます。次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
 
 ## サンプル
-MapReduce の変換で、HDInsight のアクティビティを使用するためのサンプルをダウンロードすることができます。 [GitHub でのデータのファクトリ サンプル][data-factory-samples]です。
+MapReduce の変換で HDInsight アクティビティを使用するためのサンプルは、[Data Factory Samples on GitHub][data-factory-samples] からダウンロードできます。
 
 ## 関連項目
 
 記事 | 説明
 ------ | ---------------
-[チュートリアル: 移動し、データのファクトリを使用してログ ファイルの処理][adf-tutorial] | この記事では、実際のほぼを実装する方法について説明する、エンド ツー エンド チュートリアル insights にログ ファイルからデータを変換する Azure のデータのファクトリを使用して世界中のシナリオです。このチュートリアルでは両方を使用する Pig や Hive の変換をデータを処理します。 
-[Azure のデータの工場出荷時の開発者向けリファレンス][developer-reference] | コマンドレット、JSON スクリプト、関数などの包括的な参照の内容を開発者向けリファレンスには. 
+[チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。このチュートリアルでは、Pig と Hive の両方の変換を使用してデータを処理します。 
+[Azure Data Factory の開発者用リファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
 
 
 [data-factory-samples]: http://go.microsoft.com/fwlink/?LinkId=516907
@@ -121,5 +121,6 @@ MapReduce の変換で、HDInsight のアクティビティを使用するため
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: http://portal.azure.com
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

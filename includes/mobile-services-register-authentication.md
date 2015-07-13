@@ -1,25 +1,22 @@
 
+最初に、ID プロバイダーのサイトで ID プロバイダーにアプリを登録してから、モバイル サービスでこれらの資格情報を設定する必要があります。
 
-ユーザーを認証するには、ID プロバイダーにアプリを登録し、次に Azure Mobile Services にプロバイダーが生成したクライアント資格情報を登録します。
+1. [Azure 管理ポータル]でモバイル サービスに移動し、**[ダッシュボード]** をクリックして、**[モバイル サービス URL]** の値をメモします。
 
-1. Azure 管理ポータルにログオンし、[**Mobile Services**] をクリックして、目的のモバイル サービスをクリックします。
+2. サポートされている次のいずれかの ID プロバイダーにアプリを登録します。
 
-2. [**ダッシュボード**] タブをクリックし、[**Mobile Services URL**] の値をメモしておきます。アプリケーションを登録するときに、この値を ID プロバイダーに指定する必要が生じる場合があります。
+	* [Google](mobile-services-how-to-register-google-authentication.md)
+	* [Facebook](mobile-services-how-to-register-facebook-authentication.md)
+	* [Twitter](mobile-services-how-to-register-twitter-authentication.md)
+	* [Microsoft](mobile-services-how-to-register-microsoft-authentication.md)
+	* [Azure Active Directory](mobile-services-how-to-register-active-directory-authentication.md)  
+	
+    >[AZURE.IMPORTANT]モバイル サービスのリダイレクト URI を、ID プロバイダーの開発者向けサイトで正しく設定するようにしてください。上記リンクの各プロバイダーに関する手順で説明しているように、リダイレクト URL のパスは、.NET バックエンド モバイル サービス用 (`/signin-<provider>`) と JavaScript バックエンド サービス用 (`/login/<provider>`) で異なります。正しく構成されていないリダイレクト URI により、クライアントはアプリにサインインできません。<br/>クライアント シークレットを配布または共有しないでください。
 
-3. 次のリストから、サポート対象の ID プロバイダーを選択します。手順に従って、アプリをそのプロバイダーに登録します。プロバイダーによって生成されるクライアント ID およびシークレット値をメモしておいてください。
+3. [Azure 管理ポータル]でモバイル サービスに戻り、**[ID]** タブをクリックして、ID プロバイダーから取得したアプリ ID とシークレットの値を入力します。
 
- - <a href="/documentation/articles/mobile-services-how-to-register-microsoft-authentication/" target="_blank">Microsoft アカウント</a>
- - <a href="/documentation/articles/mobile-services-how-to-register-facebook-authentication/" target="_blank">Facebook</a>
- - <a href="/documentation/articles/mobile-services-how-to-register-twitter-authentication/" target="_blank">Twitter</a>
- - <a href="/documentation/articles/mobile-services-how-to-register-google-authentication/" target="_blank">Google </a>
- - <a href="/documentation/articles/mobile-services-how-to-register-active-directory-authentication/" target="_blank">Azure Active Directory</a>
+これで、認証用に 1 つの ID プロバイダーをサポートするようにアプリとモバイル サービスの両方が構成されました。この手順を繰り返すと、他の ID プロバイダーのサポートを追加できます。
 
-    > [AZURE.IMPORTANT]プロバイダーによって生成されるシークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 
-4. 管理ポータルに戻って **[識別]** タブをクリックし、アプリケーションの識別子と、ID プロバイダーから取得した共有シークレット値を入力して、**[保存]** をクリックします。これで、モバイル サービスとアプリケーションの両方が、選択した認証プロバイダーと連係するように構成されました。
-
-    > [AZURE.IMPORTANT]ID プロバイダーの開発者向けサイトに、正しいリダイレクト URI が設定されていることをご確認ください。上記リンクの各プロバイダーに関する手順で説明しているように、リダイレクト URI は .NET バックエンド サービス用と JavaScript バックエンド サービス用とで異なる場合があります。リダイレクト URI が正しく構成されていないと、ログイン画面が正しく表示されず、アプリが予期しない異常を起こす場合があります。
-
-5. 必要に応じて手順 3 および 4 を繰り返し、アプリケーションをサポートする他の ID プロバイダーを構成します。
-
-<!--HONumber=54-->
+<!---HONumber=62-->

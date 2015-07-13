@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/16/2015" 
+	ms.date="06/18/2015" 
 	ms.author="yuaxu"/>
 
 # Windows ストア アプリにプッシュ通知を追加する
@@ -30,7 +30,7 @@
 4. [アプリケーションにプッシュ通知を追加する](#add-push)
 5. [アプリケーションでプッシュ通知をテストする](#test)
 
-このチュートリアルは、App Service モバイル アプリのクイック スタートに基づいています。このチュートリアルを開始する前に、[App Service Mobile Apps の使用]に関するチュートリアルを完了している必要があります。
+このチュートリアルは、App Service Mobile App のクイック スタートに基づいています。このチュートリアルを開始する前に、[App Service モバイル アプリの使用] に関するチュートリアルを完了している必要があります。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -190,4 +190,5 @@ App Service モバイル アプリが WNS と連携するように構成され�
 
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

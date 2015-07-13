@@ -63,5 +63,6 @@ Web Apps 用など、Azure トラフィック マネージャーの構成方法�
 Azure トラフィック マネージャーでの負荷分散の詳細については、「[Traffic Manager での負荷分散方法について](http://msdn.microsoft.com/library/windowsazure/dn339010.aspx)」を参照してください。
 
 Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Azure Web サイトでの Azure Traffic Manager の使用](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager と Azure Web サイトの統合が可能になりました](http://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

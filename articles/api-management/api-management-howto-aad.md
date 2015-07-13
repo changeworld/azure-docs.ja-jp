@@ -3,7 +3,7 @@
 	description="API Management で Azure Active Directory を使用してユーザーを認証する方法について説明します。" 
 	services="api-management" 
 	documentationCenter="API Management" 
-	authors="sdanie" 
+	authors="steved0x" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2015" 
+	ms.date="06/16/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
@@ -207,7 +207,7 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to add and publish a product]: api-management-howto-add-products.md
-[Monitoring and analytics]: ../api-management-monitoring.md
+[Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [API Management インスタンスの作成]: api-management-get-started.md
@@ -228,5 +228,4 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 [Azure Active Directory アカウントを使用して開発者ポータルにログインする方法]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

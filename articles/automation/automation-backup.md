@@ -42,6 +42,6 @@ Azure Automation から証明書をエクスポートすることはできませ
 
 - [Runbook の作成またはインポート](https://msdn.microsoft.com/library/dn643637.aspx)
 - [オートメーションの資産](https://msdn.microsoft.com/library/dn939988.aspx)
-- [Azure コマンドレット](https://msdn.microsoft.com/library/dn690262.aspx)
+- [Azure コマンドレット](https://msdn.microsoft.com/library/dn690262.aspx) 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

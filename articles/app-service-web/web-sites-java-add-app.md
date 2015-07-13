@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="04/21/2015" 
+	ms.date="06/03/2015" 
 	ms.author="robmcm"/>
 
 # Azure App Service Web Apps への Java アプリケーションの追加
@@ -22,8 +22,8 @@
 
 **webapps** フォルダーへのナビゲーション パスは Web アプリのインスタンス設定方法によって異なります。
 
-- Azure Marketplace を使用して Web アプリを設定した場合、**webapps** フォルダーへのパスは、**d:\\home\\site\\wwwroot\\bin\\application_server\\webapps** という形式になります (**application_server** は、Web アプリのインスタンスで有効になっているアプリケーション サーバーの名前です)。 
-- Azure の構成 UI を使用して Web アプリを設定した場合、**webapps** フォルダーへのパスは、**d:\\home\\site\\wwwroot\\webapps** という形式になります。 
+- Azure Marketplace を使用して Web アプリを設定した場合、**webapps** フォルダーへのパスは、**d:\home\site\wwwroot\bin\application_server\webapps** という形式になります (**application_server** は、Web アプリのインスタンスで有効になっているアプリケーション サーバーの名前です)。 
+- Azure の構成 UI を使用して Web アプリを設定した場合、**webapps** フォルダーへのパスは、**d:\home\site\wwwroot\webapps** という形式になります。 
 
 継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web アプリにソース管理を使用する手順は、「[Azure App Service の GIT を使用する継続的な展開](web-sites-publish-source-control.md)」で参照できます。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
 
@@ -33,5 +33,6 @@ WAR ファイルを **webapps** フォルダーにアップロードすると、
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

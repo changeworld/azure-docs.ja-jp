@@ -1,24 +1,10 @@
-<properties
-   pageTitle="Configure automatic updating"
-   description="Explains how to use the StorSimple update feature to configure automatic updates."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/21/2015"
-   ms.author="v-sharos" />
 
-#### To configure automatic updating
+#### 自動更新を構成するには
 
-1. On the **Devices** page, select the device on which you want to install updates.
+1. **[デバイス]** ページで、更新プログラムをインストールするデバイスを選択します。
 
-2. Navigate to **Devices** > **Maintenance** and scroll down to **Software Updates**.
+2. **[デバイス]**、**[メンテナンス]** の順に移動し、**[ソフトウェア更新プログラム]** まで下へスクロールします。
 
-3. Set **Automatic Updates** to **Yes**. This option automatically scans for updates at 3:00 AM device time, and installs any updates at 4:00 AM every day.
+3. **[自動更新]** を **[はい]** に設定します。このオプションを選択すると、デバイスの時刻で毎日午前 3 時に更新プログラムが自動的にスキャンされ、午前 4 時にすべての更新プログラムがインストールされます。
+
+<!---HONumber=62-->

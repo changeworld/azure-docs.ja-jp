@@ -46,7 +46,7 @@ Azure Active Directory テナントを取得したら、このサンプルをテ
 
 アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
 
-- Microsoft Azure 管理ポータルにサインインします。
+- Microsoft Azure の管理ポータルにサインインします。
 - 左側のナビゲーションで **[Active Directory]** をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
 - **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
@@ -1178,4 +1178,4 @@ ADAL に関連するさらに高度な手順に興味がある場合は、学習
 [ADAL for .Net](http://msdn.microsoft.com/library/windowsazure/jj573266.aspx)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

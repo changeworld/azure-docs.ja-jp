@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="検出、トリアージ、診断" 
-	description="クラッシュを分析し、アプリケーションのパフォーマンスに関する問題を検出して診断する" 
-	authors="alancameronwills" 
-	services="application-insights" 
+<properties
+	pageTitle="検出、トリアージ、診断"
+	description="クラッシュを分析し、アプリケーションのパフォーマンスに関する問題を検出して診断する"
+	authors="alancameronwills"
+	services="application-insights"
     documentationCenter=""
 	manager="keboyd"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/02/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="04/02/2015"
 	ms.author="awills"/>
 
 # Application Insights を使用した検出、トリアージ、および診断
@@ -45,12 +45,12 @@ Application Insights は、デバイス アプリと Web アプリケーショ�
 
 
 
-## 可用性の低下を検出する 
+## 可用性の低下を検出する
 
 
 Marcela Markova は OBS チームのテスト スペシャリストで、オンライン パフォーマンスの監視を主導しています。Marcela は次のような [Web テスト][availability]を設定しました。
 
-* アプリのメイン ランディング ページの単一 URL テスト (http://fabrikambank.com/onlinebanking/)。Marcela は HTTP コード 200 と "ようこそ!" というテキストの条件を設定しました。このテストに失敗した場合は、ネットワークまたはサーバーに重大な不具合があるか、デプロイメントの問題が発生しています (または、他のメンバーが Marcela に知らせずに、ページの "ようこそ" メッセージに変更を加えた可能性もあります)。 
+* アプリのメイン ランディング ページの単一 URL テスト (http://fabrikambank.com/onlinebanking/)。Marcela は HTTP コード 200 と "ようこそ!" というテキストの条件を設定しました。このテストに失敗した場合は、ネットワークまたはサーバーに重大な不具合があるか、デプロイメントの問題が発生しています (または、他のメンバーが Marcela に知らせずに、ページの "ようこそ" メッセージに変更を加えた可能性もあります)。
 
 
 * 複数手順の詳細なテスト。ログインし、現在のアカウント一覧を取得して、各ページに関する主要な詳細情報を調べます。このテストでは、アカウント データベースへの接続が機能していることを確認します。架空の顧客 ID を使用し、その一部はテスト目的で保持されます。
@@ -67,7 +67,7 @@ Marcela Markova は OBS チームのテスト スペシャリストで、オン�
 さらに重要なこととして、あらゆるエラーに関するアラートが開発チームに電子メールで送信されます。このようにして、チームは、ほとんどの顧客よりも先にエラーの発生を把握できます。
 
 
-## パフォーマンス メトリックを監視する 
+## パフォーマンス メトリックを監視する
 
 
 可用性チャートと同じ概要ページには、さまざまな[主要メトリック][perf]を示す 1 つのチャートがあります。
@@ -107,13 +107,13 @@ Application Insights に例外が報告されるようにするには、次に�
 
     var telemetry = new TelemetryClient();
     ...
-    try 
+    try
     { ...
     }
     catch (Exception ex)
     {
        // Set up some properties:
-       var properties = new Dictionary <string, string> 
+       var properties = new Dictionary <string, string>
          {{"Game", currentGame.Name}};
 
        var measurements = new Dictionary <string, double>
@@ -131,7 +131,7 @@ Fabrikam 銀行のチームは、明らかな回復が見られない限り、�
     var successCode = AttemptTransfer(transferAmount, ...);
     if (successCode < 0)
     {
-       var properties = new Dictionary <string, string> 
+       var properties = new Dictionary <string, string>
             {{ "Code", returnCode, ... }};
        var measurements = new Dictionary <string, double>
          {{"Value", transferAmount}};
@@ -144,7 +144,7 @@ TrackException はスタックのコピーを送信するので、例外を報�
 
 ![[診断検索] で、フィルターを使用して特定の型のデータを表示する](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
 
-## 良好なイベントの監視 
+## 良好なイベントの監視
 
 
 Fabrikam の開発チームでは、問題のあるイベントだけでなく良好なイベントも追跡しています。その理由の 1 つは、良好なイベントがどれくらい、どの領域で発生しているかを知ることは気分が良いためで、もう 1 つの理由は、良好なイベントが突然停止したときは何か問題が生じているためです。
@@ -171,7 +171,7 @@ Marcela は、ただ座ってアラートを待っているのではありませ
 これをもとに、各デプロイメントがパフォーマンスに与える影響を評価できます。Marcela は通常は各週の値を前週の値と比較しています。急な悪化が見られる場合は、関連する開発者に連絡します。
 
 
-## トリアージ 
+## トリアージ
 
 
 トリアージとは、問題の重要度と影響範囲に関する評価のことで、検出後の最初のステップです。深夜にチームを呼び出すべきか。 都合がつく次の空きまでバックログに残せるか。 トリアージには重要な問いが伴います。
@@ -197,7 +197,7 @@ Marcela は、ただ座ってアラートを待っているのではありませ
 ブロックされたシナリオの重要度はどれくらいでしょうか。 特定のユーザー ストーリーをブロックしている機能上の問題は、重要度が高いのでしょうか。 顧客が請求書の支払いをできないのであれば重大です。画面の色の設定を変更できない場合は急がなくても大丈夫でしょう。イベントや例外の詳細、または遅いページの ID を見れば、顧客に問題が発生している領域がわかります。
 
 
-## 診断 
+## 診断
 
 
 診断は、デバッグとまったく同じではありません。コードのトレースを開始するには、まず、問題が発生している原因、場所、状況について大まかに理解する必要があります。
@@ -223,7 +223,7 @@ Marcela は、ただ座ってアラートを待っているのではありませ
 Fabrikam では、口座間振替で断続的な問題が発生しましたが、該当するのは特定の種類の口座のみでした。何が起こっていたかを詳しく理解するために、チームはコード内の主要ポイントに TrackTrace() の呼び出しを挿入し、各呼び出しにプロパティとして口座の種類をアタッチしました。こうすることで、[診断検索] でトレースをフィルター処理しやすくなりました。また、トレースの呼び出しにプロパティおよび測定値としてパラメーター値をアタッチしました。
 
 
-## 問題への対処 
+## 問題への対処
 
 
 問題を診断したら、修正のためのプランを作成できます。最近の変更をロールバックする必要があるかもしれませんし、修正を加えることができるかもしれません。修正が済めば、Application Insights を使用して、成功したかどうかを確認できます。
@@ -231,7 +231,7 @@ Fabrikam では、口座間振替で断続的な問題が発生しましたが�
 
 Fabrikam 銀行の開発チームは、Application Insights を使用する前と比べて、パフォーマンス測定に対するアプローチが次のように構造化されています。
 
-* Application Insights の [概要] ページで特定の測定値についてパフォーマンスの目標を設定しました。 
+* Application Insights の [概要] ページで特定の測定値についてパフォーマンスの目標を設定しました。
 
 * "じょうご" 内のユーザーの進み具合を測定するメトリックなど、パフォーマンスの測定値を最初からアプリケーションに組み込みました。
 
@@ -248,7 +248,7 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 
 ## ビデオ
 
-[AZURE.VIDEO app-insights-performance-monitoring]
+[AZURE.VIDEO performance-monitoring-application-insights]
 
 <!--Link references-->
 
@@ -258,6 +258,6 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 [metrics]: app-insights-metrics-explorer.md
 [perf]: app-insights-web-monitor-performance.md
 [usage]: app-insights-web-track-usage.md
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

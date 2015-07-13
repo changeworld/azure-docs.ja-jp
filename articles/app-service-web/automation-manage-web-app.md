@@ -18,7 +18,7 @@
 
 
 
-# Azure Automation を使用した Azure Web App の管理
+#Azure Automation を使用した Azure Web App の管理
 
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure Web App の管理を簡略化する方法について紹介します。
 
@@ -28,7 +28,7 @@
 
 Azure Automation は、ニーズに対応可能な信頼性と可用性の高いワークフロー実行エンジンを提供します。Azure Automation では、サード パーティ製のシステムによって手動でプロセスを開始したり、必要なときに正確にタスクが起動されるようにスケジュールされた間隔でプロセスを開始できます。
 
-Azure Automation によってクラウド管理タスクを自動的に実行することにより、運用上のオーバーヘッドが削減され、ビジネス価値の向上に重点的に取り組む IT と DevOps スタッフの負担が軽くなります。
+Azure Automation でクラウド管理タスクを自動実行すれば、運用上のオーバーヘッドが削減され、IT と DevOps スタッフの負担が軽減されるため、ビジネス価値の向上にフォーカスすることができます。
 
 
 ## Azure Automation を Azure Web App の管理に役立てる方法
@@ -40,7 +40,7 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Web App を管理する方法について説明しました。Azure Automation の詳細については、これらのリンクをご覧ください。
 
-* Azure Automation の[作業開始のチュートリアル](../automation-create-runbook-from-samples.md)に関するページ
+* [Azure Automation の使用](../automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

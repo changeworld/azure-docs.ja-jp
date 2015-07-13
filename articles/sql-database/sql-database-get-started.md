@@ -18,10 +18,10 @@
 	ms.author="genemi"/>
 
 
-# 最初の Azure SQL Database を作成する
+# 最初の Azure SQL データベースを作成する
 
 
-この記事では、サンプルの Azure SQL Database をわずか 5 分で作成する方法を示します。学習内容:
+この記事では、サンプルの Azure SQL データベースをわずか 5 分で作成する方法を示します。学習内容:
 
 
 - [Azure ポータル](http://portal.azure.com/)を使用して、論理サーバーをプロビジョニングする。
@@ -36,7 +36,7 @@
 
 
 1. [Azure ポータル](http://portal.azure.com/)にサインインします。
-2. **[新規]**、**[データ + ストレージ]**、**[SQL Database]** の順にクリックします。
+2. **[新規]**、**[データ + ストレージ]**、**[SQL データベース]** の順にクリックします。
 
 
 ![New SQL Database][1]
@@ -100,7 +100,7 @@
 これで、データベースに接続できる小さなクライアント プログラムを作成する準備が整いました。クイック スタート用のコード サンプルについては、次のいずれかのリンクをクリックしてください。
 
 
-- [C# を使用して SQL Database に接続し、照会する](sql-database-connect-query.md)
+- [C# を使用して SQL データベースに接続し、照会する](sql-database-connect-query.md)
 - *近日公開予定:* SQL Database のクライアント開発とクイック スタート サンプル
 
 
@@ -111,4 +111,4 @@
 [4]: ./media/sql-database-get-started/GettingStarted_FireWall.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

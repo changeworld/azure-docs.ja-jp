@@ -27,7 +27,7 @@ Flask Web フレームワークを使用してアプリケーションを作成�
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -122,7 +122,7 @@ IIS 構成ファイル。デプロイごとに web.x.y.config から作成され
 
     \env\
 
-Python 仮想環境。互換性のある仮想環境がまだアプリ上にない場合に、デプロイメント時に作成されます。requirements.txt に示されているパッケージは pip インストールされますが、パッケージを既にインストールしている場合は pip でインストールがスキップされます。
+Python 仮想環境。互換性のある仮想環境がまだアプリ上にない場合に、デプロイ時に作成されます。requirements.txt に示されているパッケージは pip インストールされますが、パッケージを既にインストールしている場合は pip でインストールがスキップされます。
 
 次の 3 つのセクションでは、以下の 3 つの異なる環境における Web アプリ開発を使用した処理方法を説明します。
 
@@ -177,7 +177,7 @@ F5 キーを押してデバッグを開始します。ローカルに実行さ�
 
 pip を使用して追加のパッケージをインストールできます。パッケージをインストールするには、仮想環境を右クリックし、**[Install Python Package]** を選択します。
 
-たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、`azure` を入力します。
+たとえば、Azure Storage、Service Bus などの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、`azure` を入力します。
 
 ![](./media/web-sites-python-create-deploy-flask-app/ptvs-install-package-dialog.png)
 
@@ -185,7 +185,7 @@ pip を使用して追加のパッケージをインストールできます。�
 
 その後、requirements.txt への変更内容を Git リポジトリにコミットします。
 
-### Azure への展開
+### Azure へのデプロイ
 
 デプロイを開始するには、**[同期]** または **[プッシュ]** をクリックします。同期ではプッシュとプルの両方が実行されます。
 
@@ -253,7 +253,7 @@ Python 3.4 の場合:
 
 アプリケーションが、Python と Flask 以外の依存関係を持つ場合があります。
 
-pip を使用して追加のパッケージをインストールできます。たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
+pip を使用して追加のパッケージをインストールできます。たとえば、Azure Storage、Service Bus などの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
 
     env\scripts\pip install azure
 
@@ -266,7 +266,7 @@ requirements.txt が更新されていることを確認します。
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Azure への展開
+### Azure へのデプロイ
 
 デプロイを開始するには、変更を Azure にプッシュします。
 
@@ -332,7 +332,7 @@ Python 3.4 の場合:
 
 アプリケーションが、Python と Flask 以外の依存関係を持つ場合があります。
 
-pip を使用して追加のパッケージをインストールできます。たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
+pip を使用して追加のパッケージをインストールできます。たとえば、Azure Storage、Service Bus などの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
 
     env/bin/pip install azure
 
@@ -345,7 +345,7 @@ requirements.txt が更新されていることを確認します。
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Azure への展開
+### Azure へのデプロイ
 
 デプロイを開始するには、変更を Azure にプッシュします。
 
@@ -379,8 +379,8 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 - [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->

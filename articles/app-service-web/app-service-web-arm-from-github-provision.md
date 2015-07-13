@@ -18,9 +18,9 @@
 
 # GitHub リポジトリにリンクされる Web アプリのデプロイ
 
-このトピックでは、GitHub リポジトリ内のプロジェクトにリンクされる Web アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、そのままデプロイで使用することも、要件に合わせてカスタマイズすることもできます。
+このトピックでは、GitHub リポジトリ内のプロジェクトにリンクされる Web アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure Resource Manager テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
 完全なテンプレートについては、「[Web App Linked to GitHub template (GitHub にリンクされる Web アプリ用のテンプレート)](https://github.com/tfitzmac/AppServiceTemplates/blob/master/WebAppLinkedToGithub.json)」を参照してください。
 

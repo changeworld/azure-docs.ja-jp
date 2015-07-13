@@ -135,7 +135,7 @@ DocumentDB データ ソースを使用するとき、DocumentDB が与える `_
 
 ***SQL 統合変更検出ポリシー***
 
-SQL データベースが [SQL 統合変更追跡](http://technet.microsoft.com/library/cc280462(v=SQL.105).aspx)をサポートする場合、SQL 統合変更追跡ポリシーの使用が推奨されます。このポリシーは最も効率的な変更追跡を可能にし、スキーマに明示的な「ソフト削除」列がなくても、Azure Search で削除済み行を識別できます。
+SQL Database が [SQL 統合変更追跡] (http://technet.microsoft.com/library/cc280462(v=SQL.105).aspx) をサポートする場合、SQL 統合変更追跡ポリシーの使用が推奨されます。このポリシーは最も効率的な変更追跡を可能にし、スキーマに明示的な「ソフト削除」列がなくても、Azure Search で削除済み行を識別できます。
 
 SQL 統合変更追跡は、SQL IaaS VM を使用している場合は SQL Server 2008 R2 より、Azure SQL を使用している場合は Azure SQL データベース V12 よりサポートされます。
 
@@ -203,7 +203,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 ### データ ソースの一覧表示
 
- **データ ソースの一覧表示**操作は Azure Search サービスのデータ ソースの一覧を返します。
+**データ ソースの一覧表示**操作は Azure Search サービスのデータ ソースの一覧を返します。
 
     GET https://[service name].search.windows.net/datasources?api-version=[api-version]
     api-key: [admin key]
@@ -320,7 +320,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 インデクサーには、必要に応じてスケジュールを指定できます。スケジュールが存在する場合、インデクサーはスケジュールに従って定期的に実行されます。スケジュールには次の属性があります。
 
-- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。これに使用されるパターンは `P(nD)(T(nH)(nM))` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
+- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`P(nD)(T(nH)(nM))` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
 
 - `startTime`: 必須。インデクサーの実行を開始する UTC 日時。
 
@@ -656,4 +656,5 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 <td>サポートされていません。Azure Search では現在のところ、プリミティブ型と文字列の集合のみをサポートしています。</td>
 </tr>
 </table>
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

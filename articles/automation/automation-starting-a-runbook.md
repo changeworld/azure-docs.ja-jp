@@ -178,7 +178,7 @@ user パラメーターに対して、次のテキストを使用できます。
 
 ### 配列
 
-パラメーターが [array] または [string[]] などの配列の場合、*[Value1,Value2,Value3]* という JSON 形式を使用して値の一覧を送信できます。これらの値は単純型にする必要があります。
+パラメーターが [array] や [string] などの配列の場合、*[Value1,Value2,Value3]* という JSON 形式を使用して値の一覧を送信できます。これらの値は単純型にする必要があります。
 
 *user* というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
@@ -230,6 +230,6 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 ## 関連記事:
 
-- [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx)
+- [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx) 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

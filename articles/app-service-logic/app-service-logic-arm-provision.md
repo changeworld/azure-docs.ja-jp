@@ -38,7 +38,7 @@
 
      "testUri": {
         "type": "string",
-        "defaultValue": "http://azure.microsoft.com/status/feed/"
+        "defaultValue": "http://azure.microsoft.com/ja-jp/status/feed/"
       }
     
 ## デプロイ対象のリソース

@@ -1,25 +1,25 @@
-<properties 
+<properties
 	pageTitle="App Services アプリケーションに Facebook 認証を構成する方法"
-	description="App Services アプリケーションに Facebook 認証を構成する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="" 
-	authors="mattchenderson,ggailey777" 
-	manager="dwrede" 
+	description="App Services アプリケーションに Facebook 認証を構成する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter=""
+	authors="mattchenderson" 
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="02/19/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="05/26/2015"
 	ms.author="mahender"/>
 
 # Facebook ログインを使用するアプリケーションを構成する方法
 
 このトピックでは、認証プロバイダーとして Facebook を使用するように Azure App Services を構成する方法を示します。
-	
+
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
@@ -38,8 +38,7 @@
 
 7. **[App Secret]** フィールドで **[Show]** をクリックし、要求された場合はパスワードを入力して、**[App ID]** と **[App Secret]** の値をメモしておきます。
 
-	> [AZURE.NOTE]**セキュリティ上の注意**
-	アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+	> [AZURE.NOTE]**セキュリティ上の注意** アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 8. 左側のナビゲーション バーで、**[Settings]** をクリックします。**[App Domains]** にゲートウェイの URL を入力し、**[Contact Email]** に連絡先のメール アドレスを入力します。
 
@@ -76,4 +75,6 @@
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure の管理ポータル]: https://portal.azure.com/
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=62-->

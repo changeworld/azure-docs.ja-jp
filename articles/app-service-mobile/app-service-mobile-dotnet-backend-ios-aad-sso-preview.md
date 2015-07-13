@@ -1,19 +1,18 @@
 <properties 
-	pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する" 
-	description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。" 
-	documentationCenter="Mobile" 
-	authors="mattchenderson" 
-	services="app-service\mobile" 
-	manager="dwrede" />
+        pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する" 
+        description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。" 
+        documentationCenter="Mobile" 
+        authors="mattchenderson" 
+        services="app-service\mobile" 
+        manager="dwrede" />
 
-<tags 
-	ms.service="app-service"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="02/20/2015" 
-	ms.author="mahender" />
+<tags ms.service="app-service"
+ms.workload="mobile"
+ms.tgt_pltfrm="mobile-ios" 
+ms.devlang="objective-c" 
+ms.topic="article" 
+ms.date="05/19/2015" 
+ms.author="mahender" />
 
 # iOS アプリに Azure Active Directory シングル サインオンを追加する
 
@@ -36,7 +35,7 @@
 
 ## <a name="require-authentication"></a>認証を要求するようにアプリケーションを構成する
 
-[AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)] 
+[AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-adal"></a>Active Directory 認証ライブラリへの参照を追加する
 
@@ -115,6 +114,7 @@
 [Azure Active Directory でモバイル アプリを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication-preview.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
-[Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
+ [Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

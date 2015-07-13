@@ -50,7 +50,7 @@ Windows PowerShell ワークフローは、**Workflow** キーワードで始ま
 
 ### 名前を付ける
 
-ワークフローの名前は、Windows PowerShell での標準である、動詞と名詞を組み合わせた形式に従う必要があります。使用する承認された動詞の一覧については、「[Windows PowerShell コマンドの承認された動詞](http://msdn.microsoft.com/library/windows/desktop/ms714428(v=vs.85).aspx)」を参照してください。ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
+ワークフローの名前は、Windows PowerShell での標準である、動詞と名詞を組み合わせた形式に従う必要があります。使用できる承認済みの動詞の一覧については、「Windows PowerShell コマンドの承認された動詞」 (http://msdn.microsoft.com/library/windows/desktop/ms714428(v=vs.85).aspx) を参照してください。ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
 
 ### 制限事項
 
@@ -165,6 +165,6 @@ InlineScript の使用の詳細については、「[ワークフローでの Wi
 
 ## 関連記事:
 
-- [Runbook の作成またはインポート](http://technet.microsoft.com/library/dn919921.aspx)
+- [Runbook の作成またはインポート](http://technet.microsoft.com/library/dn919921.aspx) 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

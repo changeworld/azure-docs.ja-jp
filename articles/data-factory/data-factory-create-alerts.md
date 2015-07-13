@@ -170,5 +170,6 @@ StorageAccountName は、デプロイしたアラートの JSON ファイルを�
 生成されたイベントを表示するには、次のコマンドを実行します。
 
 	Get-AzureResourceGroupLog –Name $ResourceGroup -All | Where-Object EventSource -eq "Microsoft.DataFactory"
+ 
 
-<!---HONumber=GIT-SubDir--> 
+<!---HONumber=62-->

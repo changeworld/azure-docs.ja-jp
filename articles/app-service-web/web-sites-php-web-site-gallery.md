@@ -27,7 +27,8 @@
 - [その他の PHP チュートリアル](/ja-jp/develop/php/tutorials/) - PHP および Azure を使用して、その他の種類のアプリケーションを作成します。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -18,17 +18,17 @@
 
 # BizTalk XML Validator
 
-BizTalk XML Validate コネクタは、アプリで XML データを定義済みの XML スキーマに対して検証するために役立ちます。ユーザーは、既存のスキーマを使用することも、フラット ファイル インスタンス、JSON インスタンス、または既存のコネクタに基づいてスキーマを生成することもできます。
+BizTalk XML Validate コネクタを使用すると、アプリで、定義済みの XML スキーマと照らして XML データを検証することができます。ユーザーは、既存のスキーマを使用することも、フラット ファイル インスタンス、JSON インスタンス、または既存のコネクタに基づいてスキーマを生成することもできます。
 
-##BizTalk XML Validator の使用
-1. BizTalk XML Validator を使用するには、まず、BizTalk XPath Extractor API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk XML Validator API アプリを選択することによって、行うことができます。
+##BizTalk XML Validator を使用する
+1. BizTalk XML Validator を使用するには、まず、BizTalk XPath Validator API アプリのインスタンスを作成する必要があります。これは、ロジック アプリの作成時にインラインで作成するか、または Azure Marketplace から BizTalk XML Validator API アプリを選択することによって作成できます。
 
 ###BizTalk XML Validator を構成する
-BizTalk XML Validator は、構成の一部としてスキーマを受け取ります。ユーザーは、Azure ポータルから直接 API アプリを起動するか、デザイナー画面で API アプリをダブルクリックすることで、API アプリ構成ブレードを起動できます。
+BizTalk XML Validator は、構成の一部としてスキーマを受け取ります。ユーザーは、Azure ポータルから直接 API App を起動するか、デザイナー画面で API App をダブルクリックすることで、API App 構成ブレードを起動できます。
 
 ![BizTalk XML Validator の構成][1]
 
-API アプリ ブレードでは、*[スキーマ]* 部分をクリックすることでスキーマを構成できます。
+API App ブレードでは、*[スキーマ]* 部分をクリックすることでスキーマを構成できます。
 
 ![BizTalk XML Validator のスキーマ部分][2]
 
@@ -38,13 +38,13 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックする�
 
 
 ###デザイン画面での BizTalk Flat File Encoder の使用
-構成が終わったら、[->] をクリックし、アクションの一覧からアクションを選択できます。
+構成が終わったら、*[->]* をクリックし、アクションの一覧からアクションを選択できます。
 
 ![BizTalk XML Validator のアクション リスト][4]
 
 ####XML を検証する
 
-XML 検証アクションは、特定の XML の入力を構成済みのスキーマに対して検証します。
+XML 検証アクションは、特定の XML の入力を、構成済みのスキーマに照らして検証します。
 
 ![BizTalk XML Validator の XML の検証][5]
 
@@ -56,13 +56,13 @@ XML 検証アクションは、特定の XML の入力を構成済みのスキ�
 	</tr>
 	<tr>
 		<td>入力 XML</td>
-		<td>string</td>
-		<td>検証される入力 XML</td>
+		<td>文字列</td>
+		<td>検証する入力 XML</td>
 	</tr>
 </table>
 
 
-アクションは出力を文字列として返します。出力には、XML Validator の応答を表すモデルが含まれます。それは、結果、スキーマ名、ルート ノード、およびエラーの説明で構成されます。
+アクションは出力をオブジェクトとして返します。出力には、XML Validator の応答を表すモデルが含まれます。これは、結果、スキーマ名、ルート ノード、およびエラーの説明で構成されます。
 
 ![6]
 

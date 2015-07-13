@@ -29,8 +29,8 @@
 * [Windows Phone とストア C++](app-insights-release-notes-windows-cpp.md)
 * [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)
 
-Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](http://azure.microsoft.com/updates/?service=application-insights)」ページも参照してください。
+Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](http://azure.microsoft.com/updates/?service=application-insights)」ページもご覧ください。
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

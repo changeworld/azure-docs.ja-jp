@@ -37,7 +37,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -169,7 +169,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
 1.  他のすべての既定値をそのまま使用し、**[発行]** をクリックします。
 
-1.  Web ブラウザーが自動的に開いて、発行した Web アプリが表示されます。想定どおりにアプリケーションが Azure でホストされている **MySQL** データベースを使用して動作していることが確認できます。
+1.  Web ブラウザーが自動的に開いて、発行した Web アプリが表示されます。想定どおりに Web アプリが Azure でホストされている **MySQL** データベースを使用して動作していることが確認できます。
 
     ご利用ありがとうございます。
 
@@ -187,8 +187,8 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 - [MySQL]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->

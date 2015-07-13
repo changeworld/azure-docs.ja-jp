@@ -1,90 +1,59 @@
 <a id="what-are-service-bus-queues"></a>
-## What are Service Bus Queues?
+## Service Bus キューとは
 
-Service Bus queues support a **brokered messaging** communication
-model. When using queues, components of a distributed application do not
-communicate directly with each other; instead they exchange messages via
-a queue, which acts as an intermediary (broker). A message producer (sender)
-hands off a message to the queue and then continues its processing.
-Asynchronously, a message consumer (receiver) pulls the message from the
-queue and processes it. The producer does not have to wait for a reply
-from the consumer in order to continue to process and send further
-messages. Queues offer **First In, First Out (FIFO)** message delivery
-to one or more competing consumers. That is, messages are typically
-received and processed by the receivers in the order in which they were
-added to the queue, and each message is received and processed by only
-one message consumer.
+Service Bus キューは、**仲介型メッセージング**通信モデルをサポートしています。キューを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者 (ブローカー) の役割を果たすキューを介してメッセージをやり取りすることになります。メッセージ プロデューサー (送信者) はキューにメッセージを送信した後で、それまでの処理を引き続き実行します。メッセージ コンシューマー (受信者) は、キューからメッセージを非同期に受信して処理します。メッセージ プロデューサーは、それ以降のメッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。キューでは、コンシューマーが競合している場合のメッセージ配信に**先入先出法 (FIFO)** を使用します。つまり、通常はキューに追加された順番にメッセージが受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。
 
 ![QueueConcepts](./media/service-bus-java-how-to-create-queue/sb-queues-08.png)
 
-Service Bus queues are a general-purpose technology that can be used for
-a wide variety of scenarios:
+Service Bus キューは汎用テクノロジであり、幅広いシナリオで使用できます。
 
--   Communication between web and worker roles in a multi-tier
-    Azure application.
--   Communication between on-premises apps and Azure hosted apps
-    in a hybrid solution.
--   Communication between components of a distributed application
-    running on-premises in different organizations or departments of an
-    organization.
+-   多層 Azure アプリケーションでの Web ロールと Worker ロールとの間の通信。
+-   ハイブリッド ソリューションでのオンプレミスのアプリと Azure によってホストされるアプリケーションとの間の通信。
+-   複数の組織で実行される分散アプリケーションまたは 1 つの組織内の異なる部署でオンプレミスで実行される分散アプリケーションのコンポーネント間の通信。
 
-Using queues enables you to scale out your applications more easily, and
-enable more resiliency to your architecture.
+キューを使用すると、アプリケーションのスケールアウトがより簡単になり、アーキテクチャの復元性が高まります。
 
-## Create a service namespace
+## サービス名前空間の作成
 
-To begin using Service Bus queues in Azure, you must first
-create a service namespace. A namespace provides a scoping
-container for addressing Service Bus resources within your application.
+Azure の Service Bus キューを使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a service namespace:
+サービス名前空間を作成するには:
 
-1.  Log on to the [Azure Management Portal][].
+1.  [Azure 管理ポータル][]へのログオン
 
-2.  In the left navigation pane of the Management Portal, click
-    **Service Bus**.
+2.  管理ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  In the lower pane of the Management Portal, click **Create**.
-	![](./media/service-bus-java-how-to-create-queue/sb-queues-03.png)
+3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。![](./media/service-bus-java-how-to-create-queue/sb-queues-03.png)
 
-4.  In the **Add a new namespace** dialog, enter a namespace name.
-    The system immediately checks to see if the name is available.
-	![](./media/service-bus-java-how-to-create-queue/sb-queues-04.png)
+4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![](./media/service-bus-java-how-to-create-queue/sb-queues-04.png)
 
-5.  After making sure the namespace name is available, choose the
-    country or region in which your namespace should be hosted (make
-    sure you use the same country/region in which you are deploying your
-    compute resources).
+5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-	IMPORTANT: Pick the **same region** that you intend to choose for
-    deploying your application. This will give you the best performance.
+	重要: アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6. 	Leave the other fields in the dialog with their default values (**Messaging** and **Standard Tier**), then click the check mark. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
+6. 	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** プラン) のままにして、チェック マークをクリックします。これで、システムによって名前空間が作成され、有効になります。システムがアカウントのリソースを準備し終わるまでに、数分間かかる場合があります。
 
 	![](./media/service-bus-java-how-to-create-queue/getting-started-multi-tier-27.png)
 
-The namespace you created takes a moment to activate, and will then appear in the management portal. Wait until the namespace status is **Active** before continuing.
+作成した名前空間はアクティブになるまで少し時間がかかります。その後、管理ポータルに表示されます。名前空間のステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
-## Obtain the default management credentials for the namespace
+## 名前空間の既定の管理資格情報の取得
 
-In order to perform management operations, such as creating a queue on
-the new namespace, you must obtain the management credentials for the
-namespace. You can obtain these credentials from the Azure management portal.
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure 管理ポータルから取得できます。
 
-###To obtain management credentials from the portal
+###ポータルから管理資格情報を取得するには
 
-1.  In the left navigation pane, click the **Service Bus** node, to
-    display the list of available namespaces:
-	![](./media/service-bus-java-how-to-create-queue/sb-queues-13.png)
+1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。 ![](./media/service-bus-java-how-to-create-queue/sb-queues-13.png)
 
-2.  Click on the namespace you just created from the list shown.
+2.  表示された一覧から先ほど作成した名前空間を選択します。
 
-3.  Click **Configure** to view the shared access policies for your namespace.
-	![](./media/service-bus-java-how-to-create-queue/sb-queues-14.png)
+3.  **[構成]** をクリックして、名前空間の共有アクセス ポリシーを表示します。![](./media/service-bus-java-how-to-create-queue/sb-queues-14.png)
 
-4.  Make a note of the primary key, or copy it to the clipboard.
+4.  プライマリ キーを書き留めておくか、クリップボードにコピーしておいてください。
 
   [Azure Management Portal]: http://manage.windowsazure.com
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure 管理ポータル]: http://manage.windowsazure.com
 
   [34]: ./media/service-bus-java-how-to-create-queue/VSProperties.png
+
+<!---HONumber=62-->

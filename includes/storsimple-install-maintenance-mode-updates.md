@@ -1,21 +1,5 @@
-<properties
-   pageTitle="メンテナンス モードの更新プログラムのインストール"
-   description="StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/21/2015"
-   ms.author="v-sharos" />
 
-### StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールするには
+#### StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールするには
 
 1. デバイスのシリアル コンソールにアクセスし、オプション 1 の **[フル アクセスによるログイン]** を選択します (まだの場合)。 
 
@@ -23,20 +7,22 @@
 
 3. コマンド プロンプトに、次のコマンドを入力します。
 
-   **Get-HcsUpdateAvailability**
+     `Get-HcsUpdateAvailability`
     
-    You will be notified if updates are available and whether the updates are disruptive or non-disruptive.
+4. 更新プログラムが利用可能かどうかと、更新プログラムが中断を伴うものであるかどうかが通知されます。中断を伴う更新プログラムを適用するには、デバイスをメンテナンス モードにする必要があります。手順については、「[メンテナンス モードを開始する](#enter-maintenance-mode)」をご覧ください。
 
-4. 中断を伴う更新プログラムを適用するには、デバイスをメンテナンス モードにする必要があります。手順については、「[メンテナンス モードを開始するには](#to-enter-maintenance-mode)」を参照してください。
-
-5. デバイスがメンテナンス モードになっている状態で、コマンド プロンプトで次のコマンドを入力します。
-
-    **Start-HcsUpdate**
+5. デバイスがメンテナンス モードになっている状態で、コマンド プロンプトで「`Start-HcsUpdate`」と入力します。
 
 6. 確認を求められます。更新プログラムを確認すると、現在アクセスしているコントローラーにインストールされます。更新プログラムがインストールされると、コントローラーが再起動されます。
 
-7. 最初のコントローラーの再起動が完了したら、その他のコントローラーに接続し、手順 1. ～ 6. を実行します。
+7. 更新プログラムの状態を監視します。次のコマンドを入力します。
 
-8. 両方のコントローラーが更新されたら、メンテナンス モードを終了します。手順については、「[メンテナンス モードを終了するには](#to-exit-maintenance-mode)」を参照してください。
+	`Get-HcsUpdateStatus`
+	
+	`RunInProgress` が `True` の場合は、更新が実行中です。`RunInProgress` が `False` の場合は、更新が完了したことを示します。
 
-<!--HONumber=52-->
+7. 更新プログラムを現在のコントローラーにインストールし、再起動が完了したら、別のコントローラーに接続して手順 1. から 6. を実行します。
+
+8. 両方のコントローラーが更新されたら、メンテナンス モードを終了します。手順については、「[メンテナンス モードを終了する](#exit-maintenance-mode)」をご覧ください。
+
+<!---HONumber=62-->

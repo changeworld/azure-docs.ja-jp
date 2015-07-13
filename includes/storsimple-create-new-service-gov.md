@@ -1,20 +1,3 @@
-<properties 
-   pageTitle="新しい StorSimple Manager サービスを作成する"
-   description="Azure Government ポータルを使用して、StorSimple Manager サービスの新しいインスタンスを作成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/20/2015"
-   ms.author="v-sharos" />
-
 
 #### 新しいサービスを作成するには
 
@@ -35,4 +18,4 @@
  
        ![サービスの作成](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="ボリューム コンテナーを作成する"
-   description="StorSimple デバイスにボリューム コンテナーを作成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/01/2015"
-   ms.author="v-sharos" />
 
 #### ボリューム コンテナーを作成するには
 
@@ -31,4 +15,4 @@
 
   新しく作成されたボリューム コンテナーが、**[ボリューム コンテナー]** ページの一覧に表示されます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

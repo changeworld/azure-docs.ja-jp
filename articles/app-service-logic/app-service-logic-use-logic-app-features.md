@@ -99,7 +99,7 @@
 
 次に、**[保存]** をクリックすると、新しいツイートが 6 回以上リツイートされるたびに Dropbox の **tweets** というフォルダーに配信されます。
 
-ロジック アプリ定義の詳細については、[「Author Logic App definitions (ロジック アプリ定義のオーサリング](app-service-logic-author-definitions.md)」を参照してください。
+Logic App 定義の詳細については、[「Author Logic App definitions (Logic App 定義のオーサリング](app-service-logic-author-definitions.md)」を参照してください。
 
 ## ロジック アプリ ワークフローの開始
 ロジック アプリで定義されているワークフローを開始するためのオプションは数種類あります。ワークフローはいつでも、[Azure ポータル]からオンデマンドで開始できます。

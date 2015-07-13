@@ -81,7 +81,7 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 
 ![リソース グループの図](./media/app-service-api-dotnet-add-authentication/rgdiagram.png)
 
-### 認証を要求するように API アプリを構成する
+### <a id="apiapp"></a>認証を要求するように API アプリを構成する
 
 認証された要求のみを受け入れるように API アプリを構成するには、API アプリのアクセス レベルを**[パブリック (認証済み)]** に設定します。さらに、Azure Active Directory、Google、Facebook などのプロバイダーからの認証を必要とするようにゲートウェイを構成します。
 

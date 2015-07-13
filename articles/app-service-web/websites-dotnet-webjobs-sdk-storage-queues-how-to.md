@@ -24,7 +24,7 @@
 
 このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
 
-ほとんどのコード スニペットは、この例のように  `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
+ほとんどのコード スニペットは、この例のように `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
 
 		static void Main(string[] args)
 		{
@@ -42,15 +42,15 @@
 	- ポーリング アルゴリズム
 	- 複数のインスタンス
 	- 並列実行
-	- キューまたはキュー メッセージのメタデータの取得
-	- 正常なシャットダウン
+	- キューまたはキュー メッセージ メタデータの取得
+	- グレースフル シャットダウン
 -   [キュー メッセージの処理中にキュー メッセージを作成する方法](#createqueue)
 	- 文字列のキュー メッセージ
 	- POCO キュー メッセージ
 	- (非同期関数での) 複数のメッセージの作成
 	- キューの属性が連携する種類
 	- 関数本体での Web ジョブ SDK 属性の使用
--   [キュー メッセージの処理中に BLOB を読み書きする方法](#blobs)
+-   [キュー メッセージの処理中に、BLOB の読み書きをする方法](#blobs)
 	- 文字列のキュー メッセージ
 	- POCO キュー メッセージ
 	- BLOB の属性が連携する種類
@@ -58,20 +58,20 @@
 	- 有害メッセージの自動処理
 	- 有害メッセージの手動処理
 -   [構成オプションの設定方法](#config)
-	- コード内での SDK 接続文字列の設定
+	- コード内で SDK の接続文字列を設定する
 	- QueueTrigger 設定の構成
 	- コードの Web ジョブ SDK コンストラクター パラメーター値の設定
 -   [関数を手動でトリガーする方法](#manual)
--   [ログの記述方法](#logs)
+-   [ログを書き込む方法](#logs)
 -   [次のステップ](#nextsteps)
 
 ## <a id="trigger"></a>キュー メッセージを受信したときに関数をトリガーする方法
 
-キュー メッセージを受信したときに Web ジョブ SDK が呼び出す関数を記述するには、 `QueueTrigger` 属性を使用します。属性コンストラクターが、ポーリングするキューの名前を指定する文字列パラメーターを取得します。[キューの名前を動的に設定](#config)することもできます。
+キュー メッセージを受信したときに WebJobs SDK が呼び出す関数を記述するには、`QueueTrigger` 属性を使用します。属性コンストラクターは、ポーリングのためにキューの名前を指定する文字列パラメーター受け取ります。また、[キューの名前を動的に設定する](#config)ことも可能です。
 
 ### 文字列のキュー メッセージ
 
-次の例では、キューに文字列メッセージが含まれます。キューメッセージの内容が含まれる  `logMessage` と呼ばれる文字列パラメーターに  `QueueTrigger` が適用されます。関数は[ダッシュボードにログ メッセージを書き込み](#logs)ます。
+次の例では、キューに文字列メッセージが含まれます。キューメッセージの内容が含まれる `logMessage` と呼ばれる文字列パラメーターに `QueueTrigger` が適用されます。この関数は[ダッシュボードにログ メッセージを書き込みます](#logs)。
  
 
 		public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
@@ -79,18 +79,18 @@
 		    logger.WriteLine(logMessage);
 		}
 
- `string` だけでなく、パラメーターにはバイト配列、 `CloudQueueMessage` オブジェクト、自分で定義した POCO があります。
+`string` だけでなく、パラメーターにはバイト配列、`CloudQueueMessage` オブジェクト、自分で定義した POCO があります。
 
-### POCO [(Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 
-次の例では、キュー メッセージには  `BlobName` プロパティを含む  `BlobInformation` オブジェクトの JSON が含まれます。SDK は自動的にオブジェクトを逆シリアル化します。
+次の例では、キュー メッセージには `BlobName` プロパティを含む `BlobInformation` オブジェクトの JSON が含まれます。SDK は自動的にオブジェクトを逆シリアル化します。
 
 		public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
 		{
 		    logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
 		}
 
-SDK では [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json)を使用してメッセージをシリアル化したり逆シリアル化したりします。キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。 
+SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json)を使用してメッセージのシリアル化と逆シリアル化を行います。キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
 
 		BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
 		var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
@@ -98,14 +98,14 @@ SDK では [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages
 
 ### Async 関数
 
-次の async 関数は[ダッシュボードにログを書き込み](#logs)ます。
+次の async 関数は[ダッシュボードにログを書き込みます](#logs)。
 
 		public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
 		{
 		    await logger.WriteLineAsync(logMessage);
 		}
 
-BLOB をコピーした次の例に示すように、Async 関数は[キャンセル トークン](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を取得する場合があります( `queueTrigger` プレースホルダーの詳細については、[Blobs](#blobs) セクションをご覧ください)。
+Async 関数は、BLOB をコピーする次の例が示すように、[キャンセル トークン](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を必要とする場合があります。(`queueTrigger` プレースホルダーの詳細については、[Blobs](#blobs) のセクションを参照してください。)
 
 		public async static Task ProcessQueueMessageAsyncCancellationToken(
 		    [QueueTrigger("blobcopyqueue")] string blobName, 
@@ -118,40 +118,40 @@ BLOB をコピーした次の例に示すように、Async 関数は[キャン�
 
 ### <a id="qtattributetypes"></a>QueueTrigger 属性が連携する種類
 
-次の種類の  `QueueTrigger` 属性を使用できます。
+次の種類の `QueueTrigger` を使用できます。
 
 * `string`
 * JSON としてシリアル化された POCO の型
 * `byte[]`
-* `POCO 型`
+* `CloudQueueMessage`
 
-### <a id="polling"></a>ポーリング アルゴリズム
+### <a id="polling"></a> ポーリング アルゴリズム
 
-SDK はランダムな指数バックオフ アルゴリズムを実装することで、ストレージ トランザクション コストにおけるアイドル状態のキューのポーリングの影響を軽減しています。SDK はメッセージを見つけると 2 秒間待ってから別のメッセージを確認します。メッセージが見つからなかった場合は、約 4 秒間待ってから再試行します。再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。[最大待ち時間は構成可能です](#config)。
+SDK はランダムな指数バックオフ アルゴリズムを実装することで、ストレージ トランザクション コストにおけるアイドル状態のキューのポーリングの影響を軽減しています。メッセージが見つかった場合、SDK は 2 秒間待機した後、別のメッセージをチェックします。 メッセージが見つからない場合は約 4 秒間待機してから再試行します。その後もキュー メッセージの取得失敗が続けば、待機時間は規定値として 1 分間に設定されている最大待機時間に達するまで増え続けます。[この最大待機時間の設定は変更可能です](#config)。
 
-### <a id="instances"></a>複数のインスタンス
+### <a id="instances"></a> 複数のインスタンス
 
-Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。一部のシナリオでは、これによっていくつかの関数が同じデータを 2 回処理する場合があるため、関数をべき等にする (同じ入力データで関数を繰り返し呼び出しても重複した結果を生成しないように記述する) 必要があります。  
+Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。一部のシナリオでは、これによっていくつかの関数が同じデータを 2 回処理する場合があるため、関数をべき等にする (同じ入力データで関数を繰り返し呼び出しても重複した結果を生成しないように記述する) 必要があります。
 
-### <a id="parallel"></a>並列実行
+### <a id="parallel"></a> 並列実行
 
-異なるキューをリッスンする複数の関数を使用している場合、複数のメッセージを同時に受信したとき、SDK では並行してそれらを呼び出します。 
+異なるキューをリッスンする複数の関数を使用している場合、複数のメッセージを同時に受信したとき、SDK では並行してそれらを呼び出します。
 
-1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。既定では、SDK では一度に 16 個のキュー メッセージがバッチとして取得され、それらを並列で処理する関数が実行されます。[バッチのサイズは構成可能です](#config)。SDK では、処理されるメッセージがバッチのサイズの半数を下回ると、別のバッチを取得してそれらの処理が開始されます。そのため、関数ごとに処理される同時実行のメッセージの最大数は、バッチのサイズの 1.5 倍になります。この制限は、 `QueueTrigger` 属性を持つ各関数に個別に適用されます。1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。
+1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。既定では、SDK は一度にキュー メッセージ 16 個のバッチを取得し、それらを並列処理する関数を実行します。[バッチ サイズの設定は変更可能です](#config)。処理中のメッセージの数がバッチ サイズの半分まで減少すると、SDK は別のバッチを取得し、そのメッセージの処理を開始します。そのため、1 つの関数につき同時に処理されるメッセージの最大数は、バッチ サイズの 1.5 倍です。この制限は、`QueueTrigger` 属性を持つ各関数に個別に適用されます。1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。
 
-### <a id="queuemetadata"></a>キューまたはキュー メッセージのメタデータの取得
+### <a id="queuemetadata"></a>キューまたはキュー メッセージ メタデータの取得
 
 メソッド シグネチャにパラメーターを追加することで、次のメッセージ プロパティを取得できます。
 
 * `DateTimeOffset` expirationTime
 * `DateTimeOffset` insertionTime
 * `DateTimeOffset` nextVisibleTime
-* `string` queueTrigger (contains message text)
+* `string` queueTrigger (メッセージのテキストが含まれます)
 * `string` id
 * `string` popReceipt
 * `int` dequeueCount
 
-Azure のストレージ API を直接操作する場合は、 `CloudStorageAccount` パラメーターを追加することもできます。
+Azure Storage API を直接操作する場合は、`CloudStorageAccount` パラメーターを追加することもできます。
 
 次の例では、このメタデータをすべて INFO アプリケーション ログに書き込みます。この例では logMessage と queueTrigger の両方にキュー メッセージの内容が含まれます。
 
@@ -180,7 +180,7 @@ Azure のストレージ API を直接操作する場合は、 `CloudStorageAcco
 		        queueTrigger);
 		}
 
-サンプル コードで記述されたログのサンプルを次に示します。
+サンプル コードによって書き込まれたサンプル ログを次に示します。
 
 		logMessage=Hello world!
 		expirationTime=10/14/2014 10:31:04 PM +00:00
@@ -192,11 +192,11 @@ Azure のストレージ API を直接操作する場合は、 `CloudStorageAcco
 		queue endpoint=https://contosoads.queue.core.windows.net/
 		queueTrigger=Hello world!
 
-### <a id="graceful"></a>正常なシャットダウン
+### <a id="graceful"></a>グレースフル シャットダウン
 
-継続的な Web ジョブで実行されている関数は、 `CancellationToken` パラメーターを受け取ることができます。これは、Web ジョブの停止がオペレーティング システムによってその関数に通知されるものです。この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+継続的な Web ジョブで実行されている関数は、`CancellationToken` パラメーターを受け取ることができます。これは、Web ジョブの停止がオペレーティング システムによってその関数に通知されるものです。この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
 
-次の例では、1 つの関数において Web ジョブの停止が確認される方法を示します。
+次の例では、関数内で Web ジョブの終了が迫っているか確認する方法を示します。
 
 	public static void GracefulShutdownDemo(
 	            [QueueTrigger("inputqueue")] string inputText,
@@ -217,15 +217,15 @@ Azure のストレージ API を直接操作する場合は、 `CloudStorageAcco
 
 **注:** このダッシュボードではシャットダウンされた関数のステータスや出力が正しく示されていない可能性があります。
  
-詳細については、「[WebJobs Graceful Shutdown (Web ジョブの正常なシャット ダウン)](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)」をご覧ください。   
+詳細については、[Web ジョブのグレースフル シャットダウン](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)に関するページを参照してください。
 
-## <a id="createqueue"></a>キュー メッセージの処理中にキュー メッセージを作成する方法
+## <a id="createqueue"></a> キュー メッセージの処理中にキュー メッセージを作成する方法
 
-新しいキュー メッセージを作成する関数を記述するには、 `Queue` 属性を使用します。 `QueueTrigger` のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定](#config)することも可能です。
+新しいキュー メッセージを作成する関数を記述するには、`Queue` 属性を使用します。`QueueTrigger` のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定](#config)することも可能です
 
 ### 文字列のキュー メッセージ
 
-次の非 Async コード サンプルでは、"inputqueue" という名前のキューに受信したキュー メッセージと同じ内容で、"outputqueue" という名前のキューにキュー メッセージを新しく作成します(このセクションの後半に示すように、非同期関数では、 `IAsyncCollector<T>` を使用します)。
+次の非 Async コード サンプルでは、"inputqueue" という名前のキューに受信したキュー メッセージと同じ内容で、"outputqueue" という名前のキューにキュー メッセージを新しく作成します(このセクションの後半に示すように、非同期関数では、`IAsyncCollector<T>` を使用します)。
 
 
 		public static void CreateQueueMessage(
@@ -235,9 +235,9 @@ Azure のストレージ API を直接操作する場合は、 `CloudStorageAcco
 		    outputQueueMessage = queueMessage;
 		}
   
-### POCO [(Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 
-文字列ではなく POCO オブジェクトを含むキュー メッセージを作成するには、出力パラメーターとして POCO 型を  `Queue` 属性のコンス トラクターに渡します。
+文字列ではなく POCO オブジェクトを含むキュー メッセージを作成するには、出力パラメーターとして POCO 型を `Queue` 属性のコンス トラクターに渡します。
  
 		public static void CreateQueueMessage(
 		    [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
@@ -250,7 +250,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 
 ### (非同期関数での) 複数のメッセージの作成
 
-複数のメッセージを作成するには、次の例に示すように、パラメーターの種類を出力キュー  `ICollector<T>` または  `IAsyncCollector<T>` としてください。
+複数のメッセージを作成するには、次の例に示すように、パラメーターの種類を出力キュー `ICollector<T>` または `IAsyncCollector<T>` としてください。
 
 		public static void CreateQueueMessages(
 		    [QueueTrigger("inputqueue")] string queueMessage,
@@ -262,23 +262,23 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 		    outputQueueMessage.Add(queueMessage + "2");
 		}
 
- `Add`  メソッドが呼び出されると、すぐに各キュー メッセージが作成されます。
+`Add` メソッドが呼び出されると、すぐに各キュー メッセージが作成されます。
 
 ### キューの属性が連携する種類
 
-次のパラメーターの種類に  `Queue` 属性を使用できます。
+次のパラメーターの種類に `Queue` 属性を使用できます。
 
 * `out string` (関数が終了したときに、パラメーター値が null でない場合は、キュー メッセージを作成します)
-* `out byte[]` ( `string` と同様に動作) 
-* `out CloudQueueMessage` ( `string` と同様に動作) 
+* `out byte[]` (`string` と同様に動作) 
+* `out CloudQueueMessage` (`string` と同様に動作) 
 * `out POCO` (シリアル化可能な型で、関数が終了したときに、パラメーターが null である場合は、null オブジェクトでメッセージを作成します)
 * `ICollector`
 * `IAsyncCollector`
 * `CloudQueue` (Azure Storage API を直接使用して、手動でメッセージを作成します)
 
-### <a id="ibinder"></a>関数本体での Web ジョブ SDK 属性の使用
+### <a id="ibinder"></a>関数本体での WebJobs SDK 属性の使用
 
- `Queue`、 `Blob`、 `Table` などの Web ジョブ SDK 属性を使用する前に関数で何らかの処理を行う必要がある場合は、 `IBinder` インターフェイスを使用できます。
+`Queue`、`Blob`、`Table` などの WebJobs SDK 属性を使用する前に関数で何らかの処理を行う必要がある場合は、`IBinder` インターフェイスを使用できます。
 
 次の例では、入力キュー メッセージを取得して同じ内容の新しい出力キュー メッセージを作成します。出力キュー名は、関数本体のコードによって設定されます。
 
@@ -292,17 +292,17 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 		    outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
 		}
 
- `Table` と  `Blob` 属性で  `IBinder` インターフェイスを使用することもできます。
+`Table` と `Blob` 属性で `IBinder` インターフェイスを使用することもできます。
 
-## <a id="blobs"></a>キュー メッセージの処理中に BLOB とテーブルを読み書きする方法
+## <a id="blobs"></a> キュー メッセージの処理中に BLOB およびテーブルの読み書きを行う方法
 
- `Blob` と  `Table` 属性を使用して、BLOB と テーブルを読み書きすることができます。このセクションのサンプルは、BLOB に適用されます。BLOB が作成または更新されたときにプロセスを開始する方法を示すコード サンプルについては、「[Web ジョブ SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」をご覧ください。また、テーブルを読み書きするためのコード サンプルについては、「[Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」をご覧ください。
+`Blob` と `Table` 属性を使用して、BLOB と テーブルを読み書きすることができます。このセクションのサンプルは、BLOB に適用されます。BLOB が作成されるか更新されたときにプロセスをトリガーするコード サンプルについては「[WebJobs SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」を参照してください。テーブルを読み書きするコード サンプルについては、「[WebJobs SDK を使用して Azure テーブル ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」を参照してください。
 
 ### BLOB の操作を開始する文字列キュー メッセージ
 
-文字列を含むキュー メッセージでは、 `queueTrigger` はメッセージの内容を含む  `Blob` 属性の  `blobPath` パラメーターで使用できるプレース ホルダーです。 
+文字列を含むキュー メッセージでは、`queueTrigger` はメッセージの内容を含む `Blob` 属性の `blobPath` パラメーターで使用できるプレース ホルダーです。
 
-次の例では、BLOB の読み取りと書き込みに  `Stream` オブジェクトを使用しています。キュー メッセージは、textblobs コンテナーにある BLOB の名前です。名前の末尾に「-new」 が追加された BLOB のコピーが同じコンテナー内に作成されます。 
+次の例では、BLOB の読み取りと書き込みに `Stream` オブジェクトを使用しています。キュー メッセージは、textblobs コンテナーにある BLOB の名前です。名前に "-new" を加えた BLOB のコピーが同じコンテナー内に作成されます。
 
 		public static void ProcessQueueMessage(
 		    [QueueTrigger("blobcopyqueue")] string blobName, 
@@ -312,11 +312,11 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 		    blobInput.CopyTo(blobOutput, 4096);
 		}
 
- `Blob` 属性コンストラクターが、コンテナーと BLOB 名を指定する  `blobPath` パラメーターを受け取ります。このプレース ホルダーの詳細については、「[Web ジョブ SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」をご覧ください。 
+`Blob` 属性コンストラクターが、コンテナーと BLOB 名を指定する `blobPath` パラメーターを受け取ります。このプレース ホルダーの詳細については、「[WebJobs SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」を参照してください。
 
-属性が  `Stream` オブジェクトを修飾するともう 1 つのコンス トラクターのパラメーターが  `FileAccess` モードを読み取り、書き込み、読み取り/書き込みとして指定します。 
+属性が `Stream` オブジェクトを修飾するともう 1 つのコンス トラクターのパラメーターが `FileAccess` モードを読み取り、書き込み、読み取り/書き込みとして指定します。
 
-次の例では、 `CloudBlockBlob` オブジェクトを使用して BLOB を削除しています。キュー メッセージは、BLOB の名前です。
+次の例では、`CloudBlockBlob` オブジェクトを使用して BLOB を削除しています。キュー メッセージは、BLOB の名前です。
 
 		public static void DeleteBlob(
 		    [QueueTrigger("deleteblobqueue")] string blobName,
@@ -325,11 +325,11 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 		    blobToDelete.Delete();
 		}
 
-### <a id="pocoblobs"></a> POCO [(Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a id="pocoblobs"></a> POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 
-キュー メッセージに JSON として格納されている POCO では、 `Queue` 属性の  `blobPath` パラメーターでオブジェクトのプロパティを指定するプレースホルダーを使用できます。プレースホルダーとして[キュー メタデータ プロパティの名前](#queuemetadata) も使用できます。 
+キュー メッセージに JSON として格納されている POCO では、`Queue` 属性の `blobPath` パラメーターでオブジェクトのプロパティを指定するプレースホルダーを使用できます。また、[キュー メタデータのプロパティ名](#queuemetadata)もプレースホルダーとして使用できます。
 
-次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。キュー メッセージは、 `BlobName` と  `BlobNameWithoutExtension` プロパティを含む  `BlobInformation` オブジェクトです。プロパティの名前は、 `Blob` 属性の BLOB パスのプレース ホルダーとして使用されます 
+次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。キュー メッセージは、`BlobName` と `BlobNameWithoutExtension` プロパティを含む `BlobInformation` オブジェクトです。プロパティの名前は、`Blob` 属性の BLOB パスのプレース ホルダーとして使用されます
  
 		public static void CopyBlobPOCO(
 		    [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
@@ -339,18 +339,17 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 		    blobInput.CopyTo(blobOutput, 4096);
 		}
 
-SDK では [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json)を使用してメッセージをシリアル化したり逆シリアル化したりします。キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
+SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json)を使用してメッセージのシリアル化と逆シリアル化を行います。キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
 
 		BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
 		var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
 		logQueue.AddMessage(queueMessage);
 
-オブジェクトに BLOB をバインドする前に関数で何らかの処理を行う必要がある場合は、[キュー属性について前述したように](#ibinder)関数本体で属性を使用できます。
+BLOB をオブジェクトにバインドする前に関数内でいくつかの処理を行う必要がある場合、[Queue 属性について前述したように](#ibinder)関数の本体で属性を使用することが可能です。
 
-### <a id="blobattributetypes"></a>BLOB 属性と連携して使用できる種類
+### <a id="blobattributetypes"></a> BLOB 属性と連携して使用できる種類
  
- `Blob` 属性は、次の種類で使用できます。
-
+`Blob` 属性は、次の種類で使用できます。
 
 * `Stream` (読み取りまたは書き込み、FileAccess コンス トラクターのパラメーターを使用して指定)
 * `TextReader`
@@ -361,20 +360,20 @@ SDK では [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages
 * out POCO (書き込みは常に、BLOB を作成し、関数が返されたときに、POCO のパラメーターが null の場合は、null オブジェクトとして作成します)
 * `CloudBlobStream` (書き込み)
 * `ICloudBlob` (読み取りまたは書き込み)
-* `CloudBlockBlob` (読み取りまたは書き込みe) 
+* `CloudBlockBlob` (読み取りまたは書き込み) 
 * `CloudPageBlob` (読み取りまたは書き込み) 
 
-## <a id="poison"></a>有害メッセージの処理方法
+## <a id="poison"></a> 有害メッセージの処理方法
 
-関数を失敗させる内容を含むメッセージを、 *poison messages*と呼びます。関数が失敗してもキュー メッセージは削除されず、もう一度送信され、その後繰り返し送信され続けます。SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
+関数の失敗を引き起こす内容を含むメッセージは*有害メッセージ*と呼ばれます。関数が失敗してもキュー メッセージは削除されず、最終的には回収されて、このサイクルを繰り返します。SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
 
 ### 有害メッセージの自動処理
 
-SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。5 回目が失敗すると、メッセージは有害メッセージ キューに移動します。[再試行の最大回数は構成可能です](#config)。 
+SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。5 回目の実行に失敗した場合、メッセージは有害キューに移動されます。[再試行回数の最大値の設定は変更可能です](#config)。
 
-有害メッセージ キューの名前は *{originalqueuename}*-poison です。有害メッセージを記録したり手動の処理が必要という通知を送信したりして、有害メッセージ キューからメッセージを処理する関数を記述できます。 
+有害キューには *{originalqueuename}*-poison という名前が付けられます。メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
-次の例では、 `CopyBlob` 関数の失敗例を示します。失敗の原因は、存在しない BLOB の名前がキュー メッセージに含まれるためです。この場合、メッセージは copyblobqueue キューから copyblobqueue-poison キューに移動します。その後、 `ProcessPoisonMessage` は有害メッセージをログに記録します。
+次の例では、`CopyBlob` 関数の失敗例を示します。失敗の原因は、存在しない BLOB の名前がキュー メッセージに含まれるためです。その場合、メッセージは copyblobqueue キューから copyblobqueue-poison キューへと移動されます。その後、`ProcessPoisonMessage` は有害メッセージをログに記録します。
 
 		public static void CopyBlob(
 		    [QueueTrigger("copyblobqueue")] string blobName,
@@ -390,13 +389,13 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 		    logger.WriteLine("Failed to copy blob, name=" + blobName);
 		}
 
-次の図は、有害メッセージが処理されたときのコンソール出力を表します。
+次の画像は、これらの関数が有害メッセージを処理したときのコンソール出力を表しています。
 
 ![有害メッセージ処理のためのコンソール出力](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/poison.png)
 
 ### 有害メッセージの手動処理
 
- `dequeueCount` という名前の  `int` パラメーターを関数に追加することで、メッセージが処理のために検知された回数を取得できます。関数コードの dequeue 回数を確認し、特定の閾値を超えたときにメッセージを処理する、独自の有害メッセージの処理を実行できます。具体例を次に示します。
+`dequeueCount` という名前の `int` パラメーターを関数に追加することで、メッセージが処理のために検知された回数を取得できます。関数コードの dequeue 回数を確認し、特定の閾値を超えたときにメッセージを処理する、独自の有害メッセージの処理を実行できます。具体例を次に示します。
 
 		public static void CopyBlob(
 		    [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
@@ -414,17 +413,17 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 		    }
 		}
 
-## <a id="config"></a>構成オプションの設定方法
+## <a id="config"></a> 構成オプションの設定方法
 
- `JobHostConfiguration` 型を使用して、次の構成オプションを設定できます。
+`JobHostConfiguration` 型を使用して、次の構成オプションを設定できます。
 
-* コード内での SDK 接続文字列の設定。
-* 最大 dequeue 回数などの  `QueueTrigger` 設定の構成
-* 構成からのキュー名の取得
+* コード内で SDK の接続文字列を設定する。
+* 最大 dequeue 回数などの `QueueTrigger` 設定の構成
+* 構成からキューの名前を取得する。
 
-### <a id="setconnstr"></a>コード内での SDK 接続文字列の設定
+### <a id="setconnstr"></a>コード内で SDK の接続文字列を設定する
 
-コードで SDK の接続文字列を設定すると、構成ファイルや環境変数で、独自の接続文字列を使用できるようになります。具体例を次に示します。
+コード内で SDK の接続文字列を設定することにより、次の例に示すように、構成ファイルまたは環境変数に独自の接続文字列の名前を使用できます。
 
 		static void Main(string[] args)
 		{
@@ -447,13 +446,13 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 ### <a id="configqueue"></a>QueueTrigger 設定の構成
 
-キュー メッセージの処理に適用される次のような設定を構成できます。
+キュー メッセージの処理に適用される次の設定を構成できます。
 
-- 同時に検出され並行して処理されるキュー メッセージの最大数 (既定は16)。
-- 有害メッセージ キューに送られるまでの最大再試行回数 (既定は 5)。
-- キューが空の場合に再度ポーリングが開始されるまでの最大待ち時間 (既定は 1 分間)。
+- 並列実行のために同時に取得するキュー メッセージの最大数 (既定値は 16)。
+- キュー メッセージが有害キューに送られるまでの最大再試行回数 (既定値は 5)。
+- キューが空の場合に再度ポーリングを実行するまでの最大待機時間 (既定値は 1 分)。
 
-これらの設定を構成する方法について次に示します。
+次の例は、これらの設定の構成方法を示しています。
 
 		static void Main(string[] args)
 		{
@@ -465,13 +464,13 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 		    host.RunAndBlock();
 		}
 
-### <a id="setnamesincode"></a>コードの Web ジョブ SDK コンストラクター パラメーター値の設定
+### <a id="setnamesincode"></a>コードの WebJobs SDK コンストラクター パラメーター値の設定
 
-キュー名、BLOB 名、コンテナー、テーブル名をハード コーディングではなく、コードに指定する場合もあります。たとえば、 `QueueTrigger` のキュー名を構成ファイルか環境変数に指定します。 
+キュー名、BLOB 名、コンテナー、テーブル名をハード コーディングではなく、コードに指定する場合もあります。たとえば、`QueueTrigger` のキュー名を構成ファイルか環境変数に指定します。
 
- `NameResolver` オブジェクトを  `JobHostConfiguration` 型に渡して実行します。WebJobs SDK 属性コンス トラクターのパラメーターにパーセント (%) 記号で囲まれた特殊なプレース ホルダーを追加し、 `NameResolver` コードでこれらのプレース ホルダーの代わりに使用する実際の値を指定します。
+`NameResolver` オブジェクトを `JobHostConfiguration` 型に渡して実行します。WebJobs SDK 属性コンストラクターのパラメーターにパーセント (%) 記号で囲まれた特殊なプレースホルダーを追加し、`NameResolver` コードでこれらのプレースホルダーの代わりに使用する実際の値を指定します。
 
-たとえば、テスト環境で logqueuetest という名前のキュー、実行環境で logqueueprod という名前のキューを使用したいとします。キュー名をハードコードする代わりに、実際のキュー名が保持される  `appSettings` コレクションのエントリの名前を指定できます。 `appSettings` キーが、logqueue である場合は、関数は次の例のようになります。
+たとえば、テスト環境で「logqueuetest」という名前のキューを、実行環境で「logqueueprod」という名前のキューを使用したいとします。キュー名をハードコードする代わりに、実際のキュー名が保持される `appSettings` コレクションのエントリの名前を指定できます。`appSettings` キーが、logqueue である場合は、関数は次の例のようになります。
 
 		public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 		{
@@ -488,7 +487,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 		    }
 		}
 
-次の例に示すように  `NameResolver` クラスを  `JobHost` オブジェクトに渡します。
+次の例に示すように `NameResolver` クラスを `JobHost` オブジェクトに渡します。
 
 		static void Main(string[] args)
 		{
@@ -502,7 +501,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 ## <a id="manual"></a>関数を手動でトリガーする方法
 
-関数を手動でトリガーするには、次の例に示すように  `JobHost` オブジェクトの  `Call` または  `CallAsync`  メソッド、関数の  `NoAutomaticTrigger` 属性を使用します。 
+関数を手動でトリガーするには、次の例に示すように `JobHost` オブジェクトの `Call` または `CallAsync` メソッド、関数の `NoAutomaticTrigger` 属性を使用します。
 
 		public class Program
 		{
@@ -523,25 +522,25 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 		    }
 		}
 
-## <a id="logs"></a>ログの記述方法
+## <a id="logs"></a>ログを書き込む方法
 
-ダッシュボードは次の 2 つの場所でログを表示します。Web ジョブのページと特定の Web ジョブの呼び出しのページです。 
+ダッシュボードは次の 2 つの場所でログを表示します。Web ジョブのページと特定の Web ジョブの呼び出しのページです。
 
 ![Web ジョブ ページのログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
 
 ![関数の呼び出しページのログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardlogs.png)
 
-関数または  `Main()`  メソッドに呼び出すコンソール メソッドの出力は、特定の メソッド呼び出しのページではなく、WebJob のダッシュボード ページに表示されます。メソッド シグネチャのパラメーターから取得した TextWriter オブジェクトの出力は、メソッド呼び出しのダッシュボード ページに表示されます。
+関数または `Main()` メソッドに呼び出すコンソール メソッドの出力は、特定の メソッド呼び出しのページではなく、WebJob のダッシュボード ページに表示されます。メソッド シグネチャのパラメーターから取得した TextWriter オブジェクトの出力は、メソッド呼び出しのダッシュボード ページに表示されます。
 
 コンソールはシングル スレッドで、多くのジョブ関数が同時に実行されるため、コンソールの出力を特定のメソッド呼び出しにリンクすることはできません。そのため、SDK は各関数の呼び出しに独自のログ書き込みオブジェクトを提供しています。
 
-[アプリケーション トレース ログ](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)に書き込むには、 `Console.Out` (INFO としてマークされるログを作成) と  `Console.Error` (ERROR としてマークされるログを作成) を使用します。代わりの方法としては、INFO と ERROR に加え、詳細、警告、重大レベルを提供する [トレースまたはトレース ソース](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)を使用します。ログをトレースするアプリケーションは、Azure Web アプリの構成方法によって、Web アプリ ログ ファイル、Azure テーブル、Azure BLOB に表示されます。すべてのコンソール出力と同様に、最新の 100 のアプリケーションのログは関数呼び出しのページではなく、Web ジョブのダッシュボード ページに表示されます。 
+[アプリケーション トレース ログ](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)を書き込むには、`Console.Out` (INFO としてマークされたログを作成) および `Console.Error` (ERROR としてマークされたログを作成) を使用します。代わりの方法としては、INFO と ERROR に加え、詳細、警告、重大レベルを提供する[トレースまたはトレース ソース](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)を使用します。ログをトレースするアプリケーションは、Azure Web アプリの構成方法によって、Web アプリ ログ ファイル、Azure テーブル、Azure BLOB に表示されます。すべてのコンソール出力と同様に、最新の 100 のアプリケーションのログは関数呼び出しのページではなく、Web ジョブのダッシュボード ページに表示されます。
 
 プログラムがローカルまたはその他の環境で実行されているのではなく、Azure Web ジョブで実行されている場合は、コンソール出力はダッシュボードにのみ表示されます。
 
-[ダッシュボードの接続文字列を null に設定](#config)してログを無効にすることができます。
+[Dashboard の接続文字列を null に設定](#config)することでログを無効にできます。
 
-ログを書き込むいくつかの方法について次に示します。
+次の例では、ログを書き込むいくつかの方法を示しています。
 
 		public static void WriteLog(
 		    [QueueTrigger("logqueue")] string logMessage,
@@ -553,36 +552,33 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 		    logger.WriteLine("TextWriter - " + logMessage);
 		}
 
-特定の関数呼び出しのページに移動して、**[出力切り替え]** をクリックすると、Web ジョブ SDK のダッシュボードで  `TextWriter` オブジェクトからの出力が表示されます。
+特定の関数呼び出しのページに移動して、**[出力切り替え]** をクリックすると、WebJobs SDK のダッシュボードで `TextWriter` オブジェクトからの出力が表示されます。
 
 ![関数呼び出しのリンクをクリックします](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardinvocations.png)
 
 ![関数の呼び出しページのログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardlogs.png)
 
-Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、**[出力切り替え]** をクリックすると、Web ジョブ SDK のダッシュボードでアプリケーション ログの最新 100 件が表示されます。
+Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、**[出力切り替え]** をクリックすると、WebJobs SDK のダッシュボードでアプリケーション ログの最新 100 件が表示されます。
  
 ![[出力切り替え] をクリックします](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
 
-継続的な Web ジョブでは、アプリケーション ログは Web アプリのファイル システムの /data/jobs/continuous/*{webjobname}*/job_log.txt に表示されます。
+連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/*{webjobname}*/job_log.txt にアプリケーション ログが表示されます。
 
 		[09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
 		[09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
 		[09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-Azure BLOB では、アプリケーション ログが次のように表示されます。
-		2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!,
-		2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!,
-		2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
+次に示したのは、Azure BLOB におけるアプリケーション ログの例です。2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
-また Azure テーブルでは、 `Console.Out` と  `Console.Error` ログは次のようになります。
+また Azure テーブルでは、`Console.Out` と `Console.Error` ログは次のようになります。
 
 ![テーブル内の INFO ログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableinfo.png)
 
 ![テーブル内の ERROR ログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableerror.png)
 
-## <a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a> 次のステップ
 
-このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
+このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

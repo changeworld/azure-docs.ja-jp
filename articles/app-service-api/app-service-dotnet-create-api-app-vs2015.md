@@ -25,7 +25,7 @@
 
 ## 概要
 
-このチュートリアルでは、[Visual Studio 2015 RC](https://www.visualstudio.com/ja-jp/downloads/visual-studio-2015-downloads-vs.aspx) を使用して ASP.NET Web API 2 プロジェクトを作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API アプリ](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。Azure へのプロジェクトのデプロイも行います。このチュートリアルの最後には、API アプリが Azure クラウドで実行するようになります。
+このチュートリアルでは、[Visual Studio 2015 RC1](https://www.visualstudio.com/ja-jp/downloads/visual-studio-2015-downloads-vs.aspx) を使用して ASP.NET Web API 2 プロジェクトを作成し、[Azure App Service](../app-service/app-service-value-prop-what-is.md) で [API app](app-service-api-apps-why-best-platform.md)としてクラウドにデプロイできるように構成する方法について説明します。Azure へのプロジェクトのデプロイも行います。このチュートリアルの最後には、API アプリが Azure クラウドで実行するようになります。
 
 このチュートリアルは、Visual Studio の**ソリューション エクスプローラー**でファイルおよびフォルダーを使用する方法を理解していることを前提としています。
 
@@ -101,9 +101,9 @@ Web API プロジェクトを API アプリとしてデプロイできるよう�
 		    }
 		}
 
-3. プロジェクト フォルダーに *Metadata* という名前のフォルダーを作成し、*Metadata* フォルダーに *deploymentTemplates* という名前のフォルダーを作成します。
+3. プロジェクト フォルダーに *Metadata* という名前のフォルダーを作成し、*Metadata* フォルダーに *デプロイTemplates* という名前のフォルダーを作成します。
 
-5. *deploymentTemplates* フォルダーに *apiappconfig.azureresource.json* という名前の *.json* ファイルを作成し、新しいファイルの内容を以下の JSON テキストに置き換えます。
+5. *デプロイ Templates* フォルダーに *apiappconfig.azureresource.json* という名前の *.json* ファイルを作成し、新しいファイルの内容を以下の JSON テキストに置き換えます。
 
 		{
 		  "$schema": "http://schemas.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -120,7 +120,7 @@ Web API プロジェクトを API アプリとしてデプロイできるよう�
 
 次の手順では、ハード コーディングされた連絡先リストを返す単純な HTTP Get メソッドのコードを追加します。
 
-1. プロジェクト フォルダー内に *[モデル]* フォルダーがない場合は作成します。
+1. プロジェクト フォルダー内に*[モデル]* フォルダーがない場合は作成します。
 
 2. *[モデル]* フォルダーで、*Contact.cs* という名前のクラス ファイルを追加し、ファイルの内容を次のコードに置き換えます。namespace ContactsList.Models { public class Contact { public int Id { get; set; } public string Name { get; set; } public string EmailAddress { get; set; } } }
 
@@ -183,7 +183,7 @@ API のテスト ページを表示するには、次の手順に従います。
 
 		![](./media/app-service-dotnet-create-api-app-vs2015/createapiapp1.png)
 
-	* **[名前]** に「ContactsList」と入力します。
+	* ** [名前]** に「ContactsList」と入力します。
 
 	* **[App Service プラン]** で **[新規作成]** をクリックし、名前を入力します (例: **ContactsList**)。
 
@@ -191,9 +191,9 @@ API のテスト ページを表示するには、次の手順に従います。
 
 	* **[価格レベル]、[すべて表示]、[無料]、[選択]** の順にクリックし、無料の価格レベルを選択します。
 
-		有料の価格レベルを使用できますが、このチュートリアルでは必要ありません。
+		有料の料金レベルを使用できますが、このチュートリアルでは必要ありません。
 
-	* **[リソース グループ]** で **[新規作成]** をクリックしてから、ContactsList などの名前を入力します。
+	* **[リソース グループ]** で** [新規作成]** をクリックしてから、ContactsList などの名前を入力します
 
 		リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-overview.md)に関するページを参照してください。
 
@@ -269,7 +269,7 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 
 ## Web API コードに操作を追加します。
 
-5. Visual Studio のプロジェクトに戻り、**ContactsController.cs** ファイルに次のコードを追加します。このコードは、新しい `Contact` インスタンスを API にポストできる **Post** メソッドを追加します。  
+5. Visual Studio のプロジェクトに戻り、 **ContactsController.cs** ファイルに次のコードを追加します。このコードは、新しい `Contact` インスタンスを API にポストできる **Post** メソッドを追加します。  
 
 		[HttpPost]
 		public HttpResponseMessage Post([FromBody] Contact contact)
@@ -280,7 +280,7 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 
 	![コントローラーへの Post メソッドの追加](./media/app-service-dotnet-create-api-app-vs2015/30-post-method-added-v3.png)
 
-6. 先ほどと同じように、プロジェクトを発行します。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** をクリックします。次に、**Web の発行**ウィザードの **[発行]** をクリックします。
+6. 先ほどと同じように、プロジェクトを発行します**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** をクリックします。次に、**Web の発行** ウィザードの **[発行]** をクリックします。
 
 12. 発行プロセスが完了したら、ポータルに戻り、先ほどと同じようにゲートウェイを再起動します。
 
@@ -297,4 +297,4 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 Visual Studio 2015 RC を使用し、API アプリを作成してデプロイしました。API アプリの詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示される、ナビゲーション ウィンドウのエントリを参照してください。API アプリ ドキュメントのほとんどでは Visual Studio 2013 が示されていますが、UI は似ていて、記述するコードおよびポータルの UI は同じなので、ほとんどは VS 2015 でも使用できます。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

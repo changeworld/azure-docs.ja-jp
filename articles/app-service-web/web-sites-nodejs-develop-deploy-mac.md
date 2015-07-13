@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure App Service での Node.js アプリの作成"
+	pageTitle="Azure App Service での Node.js Web アプリの作成"
 	description="Azure で Node.js Web アプリを構築してデプロイする方法について説明します。"
 	services="app-service\web"
 	documentationCenter="nodejs"
@@ -28,19 +28,19 @@
 
 Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料評価版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 
 2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
 
-3. **[Web + モバイル]** をクリックし、**[Web app]** をクリックします。
+3. **[Web + モバイル]** をクリックし、**[Web アプリ]** をクリックします。
 
     ![][portal-quick-create]
 
 4. **[URL]** の値を入力します。
 
-5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、料金レベル、および場所などのオプションを選択します。
+5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、価格レベル、および場所などのオプションを選択します。
 
     ![][portal-quick-create2]
 
@@ -50,7 +50,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 	![][go-to-dashboard]
 
-8. **[展開]** をクリックします。ブレードをこのパーツまでスクロールする必要がある場合があります。
+8. **[デプロイ]** をクリックします。ブレードをこのパーツまでスクロールする必要がある場合があります。
 
 	![][deployment-part]
 
@@ -130,7 +130,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 		 * [new branch]      master -> master
 
 
-5. アプリを表示するには、管理ポータルで **[Web App]** パーツの **[参照]** ボタンをクリックします。
+5. アプリを表示するには、管理ポータルで **[Web アプリ]** パーツの **[参照]** ボタンをクリックします。
 
 ##アプリケーションへの変更の発行
 
@@ -147,9 +147,9 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 	!["Hello Azure" と表示している Web ページ][helloworld-completed]
 
-4. **[展開]** で過去の展開を選択し、それに戻すことができます。
+4. **[デプロイ]** で過去のデプロイを選択し、それに戻すことができます。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##次のステップ
 
@@ -159,7 +159,7 @@ Node.js は、アプリケーションで使用できるモジュールのリッ
 
 Azure に付属している Node.js のバージョンの詳細と、アプリケーションで使用するバージョンの指定方法については、「[Azure アプリケーションでの Node.js のバージョンの指定](../nodejs-specify-node-version-azure-apps.md)」を参照してください。
 
-Azure への展開後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
+Azure へのデプロイ後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure の Web サイトでの Node.js アプリケーションのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
 
 
 ##その他のリソース
@@ -168,8 +168,8 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 * [Azure コマンド ライン インターフェイス](../xplat-cli.md)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 [nodejs.org]: http://nodejs.org

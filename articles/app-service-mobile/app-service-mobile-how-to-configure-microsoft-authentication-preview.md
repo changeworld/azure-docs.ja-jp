@@ -1,19 +1,19 @@
-<properties 
+<properties
 	pageTitle="App Services アプリケーションに Microsoft アカウント認証を構成する方法"
-	description="App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。" 
-	authors="mattchenderson,ggailey777" 
-	services="app-service\mobile" 
-	documentationCenter="" 
-	manager="dwrede" 
+	description="App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。"
+	authors="mattchenderson" 
+	services="app-service\mobile"
+	documentationCenter=""
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="02/19/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="05/26/2015"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
@@ -22,7 +22,7 @@
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
 
-1. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。 
+1. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
 
 2. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
@@ -62,6 +62,8 @@
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure の管理ポータル]: https://portal.azure.com/
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=62-->

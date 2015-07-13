@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Web アプリの障害と例外の検出と診断" 
-	description="Web アプリの障害と例外の検出と診断" 
+	pageTitle="Web Apps の障害と例外の検出と診断" 
+	description="Web Apps の障害と例外の検出と診断" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -15,9 +15,9 @@
 	ms.date="03/31/2015" 
 	ms.author="awills"/>
  
-# Application Insights を利用し、Web アプリの障害と例外を診断する
+# Application Insights を利用し、Web Apps の障害と例外を診断する
 
-[Visual Studio Application Insights][start] は、アプリケーションの障害を検出および診断するための強力なツールです。ここでは特に、Web アプリケーションについて説明します (ただし、Application Insights は [他のさまざまなプラットフォーム][platforms]にも適用できます)。
+[Visual Studio Application Insights][start] は、アプリケーションの障害を検出、診断するための強力なツールです。ここでは特に、Web アプリケーションについて説明します (ただし、Application Insights は [他のさまざまなプラットフォーム][platforms]にも適用できます)。
 
 ## Application Insights でアプリをセットアップする
 
@@ -26,7 +26,7 @@ SDK をアプリケーション プロジェクトに追加します。アプリ
 * [Application Insights を ASP.NET アプリに追加する][greenbrown]
 * [Application Insights を Java アプリに追加する][java]
 
-Web ページに大量のスクリプトがある場合、*[Application Insights を Web ページに追加することができます][track]
+Web ページに大量のスクリプトがある場合、*[Application Insights を Web ページに追加できます][track]
 
 
 ## 診断検索
@@ -39,13 +39,13 @@ Web ページに大量のスクリプトがある場合、*[Application Insights
 
 ![](./media/app-insights-web-failures-exceptions/appinsights-31search.png)
 
-詳細は、アプリケーションの種類によって異なります。個々のイベントをクリックすると詳細情報を表示できます。
+詳細は、アプリケーションの種類によって異なります。個々のイベントをクリックして詳細情報を表示できます。
 
 ##<a name="events"></a>カスタム イベント
 
-カスタム イベントは、[診断検索][diagnostic]と[メトリック エクスプローラー][metrics]の両方に表示されます。カスタム イベントは、デバイス、Web ページ、およびサーバー アプリケーションから送信できます。これらは、診断の目的にも、[使用状況のパターンを理解する][track]ためにも利用できます。
+カスタム イベントは、[診断検索][diagnostic]と[メトリック エクスプローラー][metrics]の両方に表示されます。カスタム イベントは、デバイス、Web ページ、サーバー アプリケーションから送信できます。これらは、診断の目的にも、[使用状況のパターンを理解する][track]ためにも利用できます。
 
-カスタム イベントには名前があり、プロパティを持つこともできるため、数値の測定値と共にフィルター処理することができます。
+カスタム イベントには名前があり、プロパティを持つこともできるため、数値の測定値と共にフィルター処理をすることができます。
 
 クライアント側の JavaScript
 
@@ -113,9 +113,9 @@ Web ページに大量のスクリプトがある場合、*[Application Insights
 
 ####  ログ記録フレームワークにアダプターをインストールする
 
-log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレームワークで生成されたログを検索することもできます。
+log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレームワークで生成されたログの検索もできます。
 
-1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。 
+1. log4Net や NLog を使用する場合は、プロジェクト内にインストールします。 
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。
 3. [オンライン]、[すべて]、**[プレリリースを含める]** の順に選択し、"Microsoft.ApplicationInsights" を検索します。
 
@@ -126,7 +126,7 @@ log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレー�
   + Microsoft.ApplicationInsights.NLogTarget
   + Microsoft.ApplicationInsights.Log4NetAppender
 
-NuGet パッケージは、必要なアセンブリをインストールし、web.config または app.config も変更します。
+NuGet パッケージは、必要なアセンブリをインストールし、web.config や app.config も変更します。
 
 #### <a name="pepper"></a>診断ログの呼び出しを挿入する
 
@@ -134,11 +134,11 @@ System.Diagnostics.Trace を使用する場合、通常の呼び出しは次の�
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 
-log4net、または NLog を使用する場合
+log4net や NLog を使用する場合
 
     logger.Warn("Slow response - database01");
 
-デバッグ モードでアプリを実行するか、または、アプリをデプロイします。
+デバッグ モードでアプリを実行するか、アプリをデプロイします。
 
 トレース フィルターを選択すると、診断検索にメッセージが表示されます。
 
@@ -211,23 +211,23 @@ VB
 
 ![](./media/app-insights-web-failures-exceptions/appinsights-333facets.png)
 
-診断検索を直接開き、例外でフィルター処理し、表示したい例外の種類を選択することもできます。
+診断検索を直接開き、例外でフィルター処理し、表示する例外の種類を選択することもできます。
 
 ### ハンドルされていない例外のレポート
 
-Application Insights は可能な場合、[Status Monitor][usage] と [Application Insights SDK][redfield] のどちらでインスツルメントされたかにかかわらず、デバイス、[Web ブラウザー][greenbrown]、Web サーバーから送信された、ハンドルされていない例外をレポートします。
+Application Insights は可能な場合、[Status Monitor][usage] と [Application Insights SDK][redfield] のどちらでインストルメントされたかにかかわらず、デバイス、[Web ブラウザー][greenbrown]、Web サーバーから送信された、ハンドルされていない例外をレポートします。
 
-> [AZURE.NOTE]Web ブラウザーで、CDN または他のドメインからのスクリプト ファイルを組み込む場合、スクリプト タグに属性 ```crossorigin="anonymous"``` が含まれること、およびサーバーが CORS ヘッダーを送信して、スタック トレースおよびこれらのリソースからハンドルされない javascript 例外の詳細を取得することを確認してください。
+> [AZURE.NOTE]Web ブラウザーで、CDN や他のドメインからのスクリプト ファイルを組み込む場合、スクリプト タグに属性 ```crossorigin="anonymous"``` が含まれること、サーバーが CORS ヘッダーを送信して、スタック トレースやこれらのリソースからハンドルされない javascript 例外の詳細を取得することをご確認ください。
 
-ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。したがって、すべての例外を確実に表示するためには、ちょっとした例外ハンドラーを作成する必要があります。最良の対処方法は、テクノロジによって異なります。詳細については、[このブログ](http://blogs.msdn.com/b/visualstudioalm/archive/2014/12/12/application-insights-exception-telemetry.aspx)を参照してください。
+ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。したがって、すべての例外を確実に表示するためには、ちょっとした例外ハンドラーを作成する必要があります。最良の対処方法は、テクノロジによって異なります。詳細については、[このブログ](http://blogs.msdn.com/b/visualstudioalm/archive/2014/12/12/application-insights-exception-telemetry.aspx)をご覧ください。
 
 ### ビルドとの関連付け
 
 診断ログを参照するとき、ソース コードは、現在のコードがデプロイされた後に変更されている可能性があります。
 
-そのため、例外またはトレースごとに、現行バージョンの URL などのビルド情報をプロパティに入れるようにすると便利です。
+そのため、例外やトレースごとに、現行バージョンの URL などのビルド情報をプロパティに入れるようにすると便利です。
 
-すべての例外呼び出しにプロパティを別途追加するのではなく、既定のコンテキストで情報を設定することができます。
+すべての例外呼び出しにプロパティを別途追加するのではなく、既定のコンテキストで情報を設定できます。
 
     // Telemetry initializer class
     public class MyTelemetryInitializer : IContextInitializer
@@ -249,7 +249,7 @@ Application Insights は可能な場合、[Status Monitor][usage] と [Applicati
 
 ###<a name="requests"></a> サーバー Web 要求
 
-[Status Monitor を Web サーバーにインストールする][redfield]、または、[Application Insights を Web プロジェクトに追加する][greenbrown]と、要求テレメトリが自動的に送信されます。また、このテレメトリは、メトリック エクスプローラーの要求と応答のタイムチャートおよび概要ページにもフィードされます。
+[Status Monitor を Web サーバーにインストールする][redfield]か、[Application Insights を Web プロジェクトに追加する][greenbrown]と、要求テレメトリが自動的に送信されます。また、このテレメトリは、メトリック エクスプローラーの要求と応答のタイムチャートや概要ページにもフィードされます。
 
 その他のイベントを送信する場合は、TrackRequest() API を使用します。
 

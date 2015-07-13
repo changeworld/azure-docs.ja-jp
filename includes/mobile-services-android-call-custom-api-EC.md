@@ -1,9 +1,9 @@
 
 ##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. 「Complete All」というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Eclipse で、クイック スタート プロジェクトの  *res\layout\activity_to_do.xml* ファイルを開き、 `buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
+1. "Complete All" というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Eclipse で、クイック スタート プロジェクトの *res\layout\activity_to_do.xml* ファイルを開き、`buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
 
-2. 2 番目の **LinearLayout** で、**EditText** 要素を削除し、既存の **Button** 要素の直後に次のコードｌを追加します。 
+2. 2 番目の **LinearLayout** で、**EditText** 要素を削除し、既存の **Button** 要素の直後に次のコードを追加します。
 
         <Button
             android:id="@+id/buttonCompleteItem"
@@ -42,7 +42,7 @@
 
 
 
-5. Package Explorer で、 *src* フォルダー内のプロジェクト名 (`com.example.{your projects name}`) を右クリックし、**[新規]**、**[クラス]** の順に選択します。ダイアログのクラス名フィールドに「**MarkAllResult**」と入力し、[OK] をクリックして、作成されたクラス定義を次のコードで置き換えます。
+5. Package Explorer で、*src* フォルダーのプロジェクト名 (`com.example.{your projects name}`) を右クリックし、**[New]**、**[Class]** の順にクリックします。ダイアログのクラス名フィールドに「**MarkAllResult**」と入力し、[OK] をクリックして、作成されたクラス定義を次のコードで置き換えます。
 
 		import com.google.gson.annotations.SerializedName;
 		
@@ -59,9 +59,9 @@
 			}
 		}
 
-	このクラスは、カスタム API から返される行数の値を保持する目的で使用します。 
+	このクラスは、カスタム API から返される行数の値を保持する目的で使用します。
 
-6. **ToDoActivity.java** ファイルで **refreshItemsFromTable** メソッドを見つけ、 `try` ブロックの最初のコード行が次のようになっていること確認します。
+6. **ToDoActivity.java** ファイルで **refreshItemsFromTable** メソッドを見つけ、`try` ブロックの最初のコード行が次のようになっていること確認します。
 
         final MobileServiceList<ToDoItem> result = mToDoTable.where().field("complete").eq(false).execute().get();
 
@@ -73,9 +73,9 @@
 		import com.google.common.util.concurrent.Futures;
 		import com.google.common.util.concurrent.ListenableFuture;
 
-8. **ToDoActivity.java** ファイル内に次のメソッドを追加します。
+8. **ToDoActivity.java** ファイル内に、次のメソッドを追加します。
 
-		public void completeItem(View view) {
+	public void completeItem(View view) {
 	    
 	    ListenableFuture<MarkAllResult> result = mClient.invokeApi( "completeAll2", MarkAllResult.class ); 
 	    	
@@ -112,5 +112,4 @@
 
 	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
 
-
-<!--HONumber=52-->
+<!---HONumber=62-->

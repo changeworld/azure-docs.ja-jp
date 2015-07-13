@@ -44,7 +44,7 @@ Hybrid Runbook Worker 用に Azure Automation 環境を準備するには、次�
 #### 1.Azure Operational Insights ワークスペースを作成する
 Azure アカウントに Operational Insights ワークスペースがまだない場合は、「[ワークスペースの設定と設定の管理](../operational-insights-setup-workspace)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
 
-#### 2.Automation ソリューションをデプロイする
+#### 2.Automation ソリューションを配置する
 Operational Insights の Automation ソリューションは、Runbook 環境の構成とサポートに必要なコンポーネントをプッシュダウンします。**Azure Automation** パックをインストールする場合は、「[Operational Insights ソリューション](../operational-insights-add-solution)」の手順に従ってください。
 
 ### オンプレミス マシンを構成する
@@ -70,9 +70,9 @@ Microsoft 管理エージェントはコンピューターを Operational Insigh
 	Add-HybridRunbookWorker –Name <String> -EndPoint <Url> -Token <String>
 
 
-- **Name** は、Hybrid Runbook Worker グループの名前です。Automation アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
+- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
 - **EndPoint** は、エージェント サービスの URL です。Azure プレビュー ポータルの [**キーの管理**] ブレードでこれを取得できます。  
-- **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。Automation アカウントの [要素] パネルにあるキー アイコンをクリックして、[キーの管理] ブレードを開くことができます。<br><br>![Hybrid Runbook Worker の概要](./media/automation-hybrid-runbook-worker/elements-panel-keys.png)
+- **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。オートメーション アカウントの [要素] パネルにあるキー アイコンをクリックして、[キーの管理] ブレードを開くことができます。<br><br>![Hybrid Runbook Worker の概要](./media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 
 #### 3.PowerShell モジュールをインストールする
@@ -136,4 +136,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

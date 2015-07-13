@@ -47,7 +47,7 @@ Azure App Service Web Apps は、エンタープライズ レベルの Web ア�
 - **Web ジョブ** - Web Apps VM でプログラムまたはスクリプトを実行します。複数の VM で実行するため、継続的に、またはスケジュールやスケールに基づきジョブを実行します。Azure [Web ジョブ SDK][Webjobs] を使用して Azure Storage または Service Bus と統合します。
 - **ハイブリッド接続** - [ハイブリッド接続](../integration-hybrid-connection-overview.md) と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用してオンプレミスのデータにアクセスします。
 
-## Getting Started (概要) ##
+## 始めに ##
 Web Apps を使用するには、[ASP.NET Web アプリを作成する方法][create]のチュートリアルに従ってください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][appservice] に関するページを参照してください。

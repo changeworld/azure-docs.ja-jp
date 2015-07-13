@@ -31,7 +31,7 @@
 ## 用語と定義
 
 + **セルフサービス サインアップ**: ユーザーがクラウド サービスを使用するためにこの方法でサインアップすると、電子メール ドメインに基づいた ID が Azure Active Directory で自動作成されます。 
-+ **管理されていない Azure テナント**: これは、前述の ID が作成されるディレクトリです。管理されていないテナントは、グローバル管理者がいないディレクトリです。  
++ **管理されていない Azure テナント**: これは、前述の ID が作成されるディレクトリです。管理されていないテナントは、グローバル管理者がいないディレクトリです。 
 + **電子メール検証済みユーザー**: これは Azure AD のユーザー アカウントの 1 種です。セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
 
 ## カスタマー エクスペリエンス
@@ -40,7 +40,7 @@
 
 たとえば、Dan@BellowsCollege.com という電子メールを持つユーザーが、電子メール経由で機密性の高いファイルを受信したとします。これらのファイルは、Azure Rights Management (Azure RMS) によって保護されています。しかしダンが所属するべロウズ大学は、 Azure RMS にサインアップしていないだけでなく、Active Directory RMS もデプロイしていません。この場合、ダンは個人用 RMS の無料サブスクリプションにサインアップして、保護されたファイルを参照することができます。
 
-ダンが、BellowsCollege.com の電子メール アドレスを使用してこのセルフサービス プランにサインアップした最初のユーザーであるならば、BellowsCollege.com の管理されていないテナントが  Azure AD に作成されます。BellowsCollege.com ドメインの他のユーザーがこのプランまたは類似のセルフサービス プランにサインアップすると、Azure にある管理されていない同じテナントに、電子メール検証済みアカウントが作成されます。
+ダンが、BellowsCollege.com の電子メール アドレスを使用してこのセルフサービス プランにサインアップした最初のユーザーであるならば、BellowsCollege.com の管理されていないテナントが Azure AD に作成されます。BellowsCollege.com ドメインの他のユーザーがこのプランまたは類似のセルフサービス プランにサインアップすると、Azure にある管理されていない同じテナントに、電子メール検証済みアカウントが作成されます。
 
 ### 管理者エクスペリエンス
 
@@ -62,7 +62,7 @@
 - 各ユーザー オブジェクトはバイラルとしてマークされます。
 - 各ユーザーは、サインアップしたサービスにアクセスできます。
 
-### 所有ドメインのセルフサービス  Azure テナントの要求方法
+### 所有ドメインのセルフサービス Azure テナントの要求方法
 
 セルフサービス Azure テナントを要求するには、ドメイン検証を実行します。ドメイン検証では、DNS レコードの作成によってドメインを所有していることを証明できます。
 
@@ -132,7 +132,7 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
 ## DNS ドメイン名の引き継ぎの実行方法
 
-ドメイン検証 (および必要に応じて引き継ぎ) の実行方法はいくつかあります。 
+ドメイン検証 (および必要に応じて引き継ぎ) の実行方法はいくつかあります。
 
 1.  Azure 管理ポータル
 
@@ -159,7 +159,7 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
 次に例を示します。
 
-1. セルフサービス プランに応答するために使用された資格情報を使用して、次のコマンドレットで import-module MSOnline $msolcred = get-credential connect-msolservice -credential $msolcred  Azure AD に接続します。
+1. セルフサービス プランに応答するために使用された資格情報を使用して、次のコマンドレットで import-module MSOnline $msolcred = get-credential connect-msolservice -credential $msolcred Azure AD に接続します。
 		
 2. ドメイン一覧を、次のコマンドレットで取得します。
 
@@ -169,13 +169,13 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
 	Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
 
-	例: 
+	例:
 
 	Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
 
 4. このコマンドから返される値 (チャレンジ) をコピーします。
 
-	例: 
+	例:
 
 	MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
 
@@ -234,4 +234,6 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

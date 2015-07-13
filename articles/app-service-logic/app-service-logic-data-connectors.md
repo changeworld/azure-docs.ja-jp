@@ -211,7 +211,17 @@
 
 1. Azure ポータルで、**[新規]**、**[Web + モバイル]**、**[Azure Marketplace]** の順に選択します。
 2. コネクタを**検索**するか、一覧から選択します。選択すると、新しいブレード (ウィンドウ) が開きます。**[作成]** を選択します。 
-3. コネクタについて、次のプロパティを入力します。<table> <tr><th>プロパティ</th> <th>説明</th> </tr> <tr><td>名前</td> <td>API アプリの任意の名前を入力します。たとえば、RulesDiscountTaxCode や APIAppValidateXML などの名前を付けます。</td> </tr> <tr><td>App Service プラン</td> <td>支払プランの一覧を表示します。プランは必要なリソースの増減に応じて変更することができます。</th> </td> <tr><td>価格レベル</td> <td>Azure サブスクリプション内での価格のカテゴリの一覧を表示する読み取り専用プロパティです。</td> </tr> <tr><td>リソース グループ</td> <td>新しいリソース グループを作成するか、既存のグループを使用します。リソース グループの使用に関するページに、このプロパティの説明があります。</td> </tr> <tr><td>サブスクリプション</td> <td>現在のサブスクリプションを一覧表示する読み取り専用のプロパティ</td> </tr> <tr><td>場所</td> <td>Azure サービスをホストする地理的な場所 </td></tr> <tr><td>スタート画面に追加</td> <td>スタート画面 (ホーム ページ) に API アプリを追加するには、このプロパティを選択します。</td></tr> </table> 
+3. コネクタに対して、次のプロパティを入力します。 
+	<table>
+    <tr><th>プロパティ</th> <th>説明</th> </tr>
+    <tr><td>名前</td> <td>API アプリに対して任意の名前を入力します。たとえば、RulesDiscountTaxCode や APIAppValidateXML などの名前を付けます。</td> </tr>
+    <tr><td>App Service プラン</td> <td>支払プランの一覧を表示します。プランは必要なリソースの増減に応じて変更することができます。</th> </td>
+    <tr><td>価格レベル</td> <td>Azure サブスクリプション内での価格のカテゴリの一覧を表示する読み取り専用プロパティです。</td> </tr>
+    <tr><td>リソース グループ</td> <td>新しいリソース グループを作成するか、既存のグループを使用します。リソース グループの使用に関するページに、このプロパティの説明があります。</td> </tr>
+    <tr><td>[サブスクリプション]</td> <td>現在のサブスクリプションを一覧表示する読み取り専用のプロパティ。</td> </tr>
+    <tr><td>場所</td> <td>Azure サービスをホストする地理的場所。 </td></tr>
+    <tr><td>スタート画面への追加</td> <td>スタート画面 (ホーム ページ) に API アプリを追加するには、このプロパティを選択します。</td></tr>
+</table>
 4. **[作成]** を選択します。コネクタが作成されます。完了するまで、しばらくかかる場合があります。コネクタを作成している間は、ホーム画面が表示されます。コネクタの状態を監視するには、左側の [通知] メニュー項目を使用します。
 
 最初のコネクタの作成が完了しました。このコネクタを使用した Web アプリ、モバイル アプリ、またはロジック アプリの作成を検討してください。
@@ -246,11 +256,12 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 
 
 ## Logic Apps と Web Apps に関するガイド
-[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-app-azure-portal.md) |
+[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-overview.md) |
 
 
 
 ## その他のコネクタ
 [BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) | [エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) | [企業間コネクタ](app-service-logic-b2b-connectors.md) | [ソーシャル コネクタ](app-service-logic-social-connectors.md) | [プロトコル コネクタ](app-service-logic-protocol-connectors.md) | [アプリおよびデータ サービス コネクタ](app-service-logic-data-connectors.md) | [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

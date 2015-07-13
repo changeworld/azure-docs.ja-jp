@@ -1,5 +1,3 @@
-
-
 >[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
 
@@ -15,7 +13,7 @@
 
 	チュートリアルの後の方で、クライアントの PROJECT_ID 変数に、この値を設定します。
 
-4. 左側の列の **[APIs & auth]** を展開して **[APIs]** をクリックしてから下へスクロールし、トグルをクリックして **[Google Cloud Messaging for Android]** を有効にします。次のページで、**[Enable API]** をクリックし、サービス条件に同意します。
+4. 左側の列の **[APIs & auth]** を展開して **[APIs]** をクリックしてから下へスクロールし、**[Cloud Messaging for Android]** をクリックします。次のページで、**[Enable API]** をクリックし、サービス条件に同意します。
 
 	![](./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png)
 
@@ -33,5 +31,4 @@
 
 	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 
-
-<!--HONumber=54-->
+<!---HONumber=62-->

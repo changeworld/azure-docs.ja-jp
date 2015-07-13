@@ -25,9 +25,9 @@
 
 ## 概要
 
-このチュートリアルでは、[Visual Studio Code](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 API アプリを作成する方法について説明します。ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリケーションを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の紹介](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)のページを参照してください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページを参照してください。
+このチュートリアルでは、[Visual Studio Code](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 API アプリを作成する方法について説明します。ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリケーションを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料試用版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
 
 ## 前提条件  
 
@@ -35,17 +35,17 @@
 * [Node.js](http://nodejs.org/download/) をインストールします。<br> [Node](http://nodejs.org/) は、JavaScript を使用して高速かつスケーラブルなサーバー アプリケーションを構築するためのプラットフォームです。Node はランタイム (ノード) であり、[npm](http://www.npmjs.com/) は Node モジュールのパッケージ マネージャーです。このチュートリアルでは、npm を使用して、ASP.NET 5 API アプリをスキャフォールディングします。
 
 ## ASP.NET 5 と DNX のインストール
-ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新のクラウドおよび Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
+ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 と DNX は、一から設計し直され、クラウドにデプロイされるアプリかオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
 
-> [AZURE.NOTE]OS X および Linux の ASP.NET 5 および DNX (.NET Execution Environment) は、初期のベータまたはプレビュー状態にあります。
+> [AZURE.NOTE]OS X と Linux の ASP.NET 5 と DNX (.NET Execution Environment) は、初期のベータかプレビュー状態にあります。
 
-このチュートリアルでは、最新の開発バージョンの ASP.NET 5 と DNX を使用してアプリケーションの構築を開始する方法について説明します。より安定したリリース版のエクスペリエンスが必要な場合は、[http://www.asp.net/vnext](http://www.asp.net/vnext) を参照してください。次の手順は、Windows に固有の手順です。OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
+このチュートリアルでは、最新の開発バージョンの ASP.NET 5 と DNX を使用してアプリケーションの構築を開始する方法について説明します。より安定したリリース版のエクスペリエンスが必要な場合は、[http://www.asp.net/vnext](http://www.asp.net/vnext) をご覧ください。次の手順は、Windows に固有の手順です。OS X、Linux、Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページをご覧ください。
 
 1. .NET Version Manager (DNVM) をインストールするには、コマンド ウィンドウで次のコマンドを実行します。
 
 	<pre class="prettyprint">
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&amp;{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
-</pre>DNVM スクリプトがダウンロードされ、ユーザー プロファイルに組み込まれます。
+</pre>DNVM スクリプトがダウンロードされ、ユーザー プロファイルに配置されます。
 
 2. PATH 環境変数に加えた変更を有効にするために、上記のコマンドを入力した後にログオフすることが必要になる場合があります。
 3. コマンド ウィンドウで次のコマンドを実行して、DNVM の場所を確認します。 
@@ -54,7 +54,7 @@ ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新の
 where dnvm
 </pre>コマンド ウィンドウに、次のようなパスが表示されます。
 
-	![dnvm location](./media/app-service-create-aspnet-api-app-using-vscode/00-where-dnvm.png)
+	![dnvm の場所](./media/app-service-create-aspnet-api-app-using-vscode/00-where-dnvm.png)
 
 4. これで、DNVM を利用できるようになりました。アプリケーションを実行するには、これを使って DNX をダウンロードする必要があります。コマンド ウィンドウで、次のコマンドを実行します。
 
@@ -68,9 +68,9 @@ dnvm upgrade
 dnvm list
 </pre>コマンド ウィンドウに、アクティブなランタイムの詳細が表示されます。
 
-	![dnvm location](./media/app-service-create-aspnet-api-app-using-vscode/00b-dnvm-list.png)
+	![dnvm の場所](./media/app-service-create-aspnet-api-app-using-vscode/00b-dnvm-list.png)
 
-OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
+OS X、Linux、Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページをご覧ください。
 
 ## API アプリの作成 
 
@@ -97,7 +97,7 @@ yo aspnet
 6. **Visual Studio Code** を開きます。<br> コマンド ウィンドウで「**code .**」と入力すると、VSCode を開くことができます。
 7. **[ファイル]** メニューの **[フォルダーを開く]** を選択し、ASP.NET API アプリが格納されているフォルダーを選択します。
 
-	![Select Folder dialog box](./media/app-service-create-aspnet-api-app-using-vscode/02-open-folder.png)
+	![[フォルダー] ダイアログ ボックスの選択](./media/app-service-create-aspnet-api-app-using-vscode/02-open-folder.png)
 
 	VSCode にプロジェクトが読み込まれ、**エクスプローラー** ウィンドウに表示されます。
 
@@ -110,7 +110,7 @@ yo aspnet
 dnx:dnu restore - (ContactsList)
 </pre>入力を開始すると、一覧に完全なコマンド ラインが表示されます。
 
-	![Restore command](./media/app-service-create-aspnet-api-app-using-vscode/04-dnu-restore.png)
+	![Restore コマンド](./media/app-service-create-aspnet-api-app-using-vscode/04-dnu-restore.png)
 
 	Restore コマンドは、アプリケーションを実行するために必要な NuGet パッケージをインストールします。準備が整うと、コマンド ウィンドウに "**復元が完了しました**" と表示されます。
 
@@ -132,8 +132,8 @@ namespace ContactsList.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string EmailAddress { get; set; }
-    {
-{
+    }
+}
 </pre>
 
 3. **Controllers** フォルダーを右クリックし、*ContactsController.cs* ファイルを追加します。次のような内容になります。
@@ -157,9 +157,9 @@ namespace ContactsList.Controllers
                 new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
                 new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
             };
-        {
+        }
     {
-{
+}
 </pre>
 
 4. **[ファイル]**、**[すべてを保存]** の順に選択して、すべてのファイルを保存します。
@@ -195,10 +195,10 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
     "summary": "",
     "author": "",
     "endpoints": null
-{
+}
 </pre>
 
-*apiapp.json* ファイルには、動的 Swagger API 定義 JSON のエンドポイントを指定できます。ただし、このチュートリアルでは、静的 API 定義ファイルを使用します。動的 Swagger 生成を使用する例については、[API アプリとしての Web API プロジェクトの構成](app-service-dotnet-create-api-app-visual-studio.md)に関するページを参照してください。
+*apiapp.json* ファイルには、動的 Swagger API 定義 JSON のエンドポイントを指定できます。ただし、このチュートリアルでは、静的 API 定義ファイルを使用します。動的 Swagger 生成を使用する例については、[API アプリとしての Web API プロジェクトの構成](app-service-dotnet-create-api-app-visual-studio.md)に関するページをご覧ください。
 
 ## 静的 Swagger API 定義の追加
 静的 Swagger 2.0 API 定義ファイルを指定するには、Web ルートにフォルダーを作成し、そのフォルダーに API 定義ファイルを配置する必要があります。
@@ -239,9 +239,9 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Contact"
-              {
+              }
             {
-          {
+          }
         },
         "deprecated": false
       },
@@ -270,20 +270,20 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
             "required": true,
             "schema": {
               "$ref": "#/definitions/Contact"
-            {
-          {
+            }
+          }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/Object"
-            {
-          {
+            }
+          }
         },
         "deprecated": false
-      {
-    {
+      }
+    }
   },
   "definitions": {
     "Contact": {
@@ -298,26 +298,26 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
         },
         "EmailAddress": {
           "type": "string"
-        {
-      {
+        }
+      }
     },
     "Object": {
       "type": "object",
       "properties": {}
-    {
+    }
   {
-{
+}
 </pre>
 
 このチュートリアルの後の手順で、上記のホスト URL のプレースホルダー文字列を Azure ホスト URL で置き換えます (この URL は後で作成してコピーします)。
 
 ## Azure プレビュー ポータルでの API アプリの作成
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料試用版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[無料評価版にサインアップする](/pricing/free-trial/)か、[MSDN サブスクライバーの特典を有効に](/pricing/member-offers/msdn-benefits-details/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
 
-2. ポータルの左上にある **[新規]** をクリックします。
+2. ポータルの左下にある **[新規]** をクリックします。
 
 3. **[Web + モバイル]、[API アプリ]** の順にクリックします。
 
@@ -325,7 +325,7 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 
 4. **[名前]** に ContactsList などの値を入力します。
 
-5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、価格レベル、および場所などのオプションを選択します。
+5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、料金レベル、および場所などのオプションを選択します。
 
 	![Azure New API App Blade](./media/app-service-create-aspnet-api-app-using-vscode/10-azure-newappblade.png)
 
@@ -333,7 +333,7 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 
 	![API App Blade](./media/app-service-create-aspnet-api-app-using-vscode/11-azure-apiappblade.png)
 
-	**[スタート画面にピン留めする]** チェック ボックスをオンにしてアプリを作成すると、**[ホーム]** または **[参照]** をクリックしてアプリを簡単に見つけることができるようになります。このチェック ボックスをオフにした場合は、左側の **[通知]** をクリックして API アプリの作成状態を確認し、通知をクリックして新しい API アプリのブレードに移動します。
+	**[スタート画面にピン留めする]** チェック ボックスをオンにしてアプリを作成すると、**[ホーム]** か **[参照]** をクリックしてアプリを簡単に見つけることができるようになります。このチェック ボックスをオフにした場合は、左側の **[通知]** をクリックして API アプリの作成状態を確認し、通知をクリックして新しい API アプリのブレードに移動します。
 
 7. **[設定]、[アプリケーションの設定]** の順にクリックします。
 
@@ -347,13 +347,13 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 
 Git は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。API アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、API アプリが Web アプリに基づいているために API アプリで使用できる App Service Web アプリの機能です。つまり、Azure App Service の API アプリは、Web サービスをホストするための追加の機能を持つ Web アプリであるということです。
 
-ポータルでは、**[API アプリ]** ブレードで API アプリ固有の機能を管理し、**[API アプリ ホスト]** ブレードで Web アプリと共通する機能を管理します。このセクションでは、**[API アプリ ホスト]** ブレードに移動して、Git デプロイの機能を構成します。
+ポータルでは、**[API アプリ]** ブレードで API アプリ固有の機能を管理し、**[API アプリ ホスト]** ブレードで Web アプリと共通する機能を管理します。このセクションでは、**[API アプリ ホスト]** ブレードに移動して、Git デプロイメントの機能を構成します。
 
 1. [API アプリ] ブレードの **[API アプリ ホスト]** をクリックします。
 
 	![Azure API App Host](./media/app-service-create-aspnet-api-app-using-vscode/13-azure-apiapphost.png)
 
-2. **[API アプリ]** ブレードの **[デプロイ]** セクションを見つけて、**[継続的デプロイの設定]** をクリックします。必要に応じて、ブレードのこの部分まで下へスクロールしてください。
+2. **[API アプリ]** ブレードの **[デプロイメント]** セクションを見つけて、**[継続的配置の設定]** をクリックします。必要に応じて、ブレードのこの部分まで下へスクロールしてください。
 
 	![Azure API App Host](./media/app-service-create-aspnet-api-app-using-vscode/14-azure-deployment.png)
 
@@ -361,7 +361,7 @@ Git は、Azure の Web サイトをデプロイするために使用できる�
 
 5. **[OK]** をクリックします。
 
-	![Azure Local Git Respository](./media/app-service-create-aspnet-api-app-using-vscode/15-azure-localrepository.png)
+	![Azure のローカル Git リポジトリ](./media/app-service-create-aspnet-api-app-using-vscode/15-azure-localrepository.png)
 
 6. API アプリまたはその他の App Service アプリを発行するためのデプロイ資格情報をまだ設定していない場合は、ここで設定します。
 
@@ -371,13 +371,13 @@ Git は、Azure の Web サイトをデプロイするために使用できる�
 
 	* **[保存]** をクリックします。
 
-	![Azure Deployment Credentials](./media/app-service-create-aspnet-api-app-using-vscode/16-azure-credentials.png)
+	![Azure デプロイメント資格情報](./media/app-service-create-aspnet-api-app-using-vscode/16-azure-credentials.png)
 
 7. **[API アプリ ホスト]** ブレードで、**[設定]、[プロパティ]** の順にクリックします。デプロイ先のリモート Git リポジトリの URL は、[GIT URL] の下に表示されます。
 
 8. チュートリアルの後の手順で使用するために、この **GIT URL** をコピーします。
 
-	![Azure Git URL](./media/app-service-create-aspnet-api-app-using-vscode/17-azure-giturl.png)
+	![Azure Git の URL](./media/app-service-create-aspnet-api-app-using-vscode/17-azure-giturl.png)
 
 9. さらに、**[API アプリ]** ブレードで **URL** をコピーします。この URL は、*apiDefinition.swagger.json* ファイルの "host" 値を更新するために使用します。
 
@@ -392,18 +392,18 @@ Git は、Azure の Web サイトをデプロイするために使用できる�
 このセクションでは、Azure App Service で実行されている API アプリにサンプル アプリケーションをデプロイするために、ローカル Git リポジトリを作成してそのリポジトリから Azure にプッシュします。
 
 1. VSCode の左側のナビゲーション バーで、[Git] オプションを選択します。
-2. Git がまだインストールされていない場合は、示されたリンク ([Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads)) のいずれかを選択してインストールします。Git を初めて使う場合は、**git-scm.com** を選択し、Windows コマンド プロンプトから Git と GitBash を使用するオプションを選択します。 
+2. Git がまだインストールされていない場合は、示されたリンク ([Chocolatey](https://chocolatey.org/packages/git) か [git-scm.com](http://git-scm.com/downloads)) のいずれかを選択してインストールします。Git を初めて使う場合は、**git-scm.com** を選択し、Windows コマンド プロンプトから Git と GitBash を使用するオプションを選択します。 
 3. Git がインストールされたら、VSCode を再起動し、左側のバーの [Git] オプションを選択します。
 4. VSCode で、**[git リポジトリの初期化]** を選択して、ワークスペースが git によるソース管理の対象になるように設定します。 
 
-	![Initialize Git](./media/app-service-create-aspnet-api-app-using-vscode/19-initgit.png)
+	![Git の初期化](./media/app-service-create-aspnet-api-app-using-vscode/19-initgit.png)
 
 5. 
 6. コミット メッセージを追加し、**[すべてコミット]** チェック マークを選択します。
 
-	![Git Commit All](./media/app-service-create-aspnet-api-app-using-vscode/20-git-commit.png)
+	![Git すべてコミット](./media/app-service-create-aspnet-api-app-using-vscode/20-git-commit.png)
 
-6. **GitBash** を見つけて開きます。代わりに、Windows コマンド プロンプトを使用することもできます。
+6. **GitBash** を見つけて開きます。代わりに、Windows コマンド プロンプトを使用できます。
 7. **GitBash** で、VSCode プロジェクト フォルダーに移動します。次に例を示します。
 
 	<pre class="prettyprint">
@@ -440,12 +440,12 @@ API を API アプリにデプロイしたので、Azure プレビュー ポー�
 3. **[API アプリ]** ブレードの **[再起動]** をクリックします。 
 4. **[API アプリ]** ブレードの **[API 定義]** をクリックします。<br> [API 定義] ブレードに 2 つのメソッドが表示されます。GET メソッドと POST メソッドがすぐに表示されない場合は、Azure によってアプリが更新されるまで数秒待ってください。次に、**[API アプリ]** ブレードの **[API 定義]** をクリックします。
 
-## Azure でアプリを実行します。
+## Azure でのアプリの実行
 Azure プレビュー ポータルで、目的の API アプリの **[API アプリ ホスト]** ブレードに移動し、**[参照]** をクリックします。次に、連絡先の詳細を表示するために、URL の末尾に **api/Contacts** を追加します。
 
 
 ## まとめ
-このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページを参照してください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページを参照してください。
+このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
 <!---HONumber=62-->

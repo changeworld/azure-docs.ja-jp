@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ASP.NET Web API と SQL データベースを使用する Rest サービスを Azure App Service に作成する" 
+	pageTitle="ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する" 
 	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
@@ -17,7 +17,7 @@
 	ms.date="03/24/2015" 
 	ms.author="riande"/>
 
-# ASP.NET Web API と SQL データベースを使用する Rest サービスを Azure App Service に作成する
+# ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
 
 このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。
 
@@ -37,9 +37,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 ![Web サイトのスクリーンショット][intro001]
 
-<a name="bkmk_setupdevenv"></a>
-<!-- the next line produces the "Set up the development environment" section as see at http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ -->
-[AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+<a name="bkmk_setupdevenv"></a> <!-- the next line produces the "Set up the development environment" section as see at http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ -->[AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ### プロジェクトを作成する
 
@@ -77,11 +75,10 @@ Azure にまだサインしていない場合は、サインインするよう�
 ### ページのヘッダーとフッターを設定する
 
 
-1. **ソリューション エクスプローラー**で、*Views\\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
-
+1. **ソリューション エクスプローラー**で、*Views\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
 	![_Layout.cshtml in Solution Explorer][newapp004]
 
-1. *Views\\Shared_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
+1. *Views\Shared_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
 
 
 		<!DOCTYPE html>
@@ -126,9 +123,9 @@ Azure にまだサインしていない場合は、サインインするよう�
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
 
-これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
+これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
-<h2><a name="bkmk_deploytowindowsazure1"></a> アプリケーションの Azure への展開</h2>
+<h2><a name="bkmk_deploytowindowsazure1"></a> アプリケーションの Azure へのデプロイ</h2>
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
@@ -138,9 +135,9 @@ Azure にまだサインしていない場合は、サインインするよう�
 
 12. **[発行]** をクリックします。
 
-	![Settings tab](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/pw.png)
+![Settings tab](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/pw.png)
 
-Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行された展開操作が表示され、展開が問題なく完了したことが報告されます。
+Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
 
 14. 自動的に既定のブラウザーが開き、デプロイ先のサイトの URL にアクセスします。
 
@@ -238,7 +235,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
-3. *Migrations\\Configuration.cs* ファイルを開きます。
+3. *Migrations\Configuration.cs* ファイルを開きます。
 
 4. 次の名前空間を追加します。
 
@@ -321,7 +318,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 <h2><a name="bkmk_addview"></a>ビューの編集</h2>
 
-1. *Views\\Home\\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
+1. *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
 
 
 2. このファイルの内容を次のコードに置き換えます。
@@ -478,7 +475,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	このスタイル シートは Contact Manager アプリケーションで使用されるレイアウト、色、スタイルに適用されます。
 
-6. *App_Start\\BundleConfig.cs* ファイルを開きます。
+6. *App_Start\BundleConfig.cs* ファイルを開きます。
 
 
 7. 次のコードを追加して [Knockout](http://knockoutjs.com/index.html "KO") プラグインを登録します。
@@ -501,7 +498,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. パッケージ マネージャー コンソールで、次のコマンドを実行して Knockout をインストールします。
 
-		Install-Package knockoutjs
+	Install-Package knockoutjs
 
 <h2><a name="bkmk_addwebapi"></a>Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する</h2>
 
@@ -523,13 +520,13 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 2. 連絡先を入力し、**[Add]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
 
-	![連絡先が表示された Index ページ][addwebapi004]
+	![Index page with to-do list items][addwebapi004]
 
 3. ブラウザーで、**/api/contacts** を URL に追加します。
 
 	追加後の URL は http://localhost:1234/api/contacts のようになります。追加した REST ベースの Web API によって、保存されている連絡先が返されます。Firefox と Chrome では、それらのデータが XML 形式で表示されます。
 
-	![連絡先が表示された Index ページ][rxFFchrome]
+	![Index page with to-do list items][rxFFchrome]
 	
 
 	IE では、連絡先を開くか保存するように求められます。
@@ -551,7 +548,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「[XSRF (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))」を参照してください。
+詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))XSRF (CSRF)」を参照してください。
 
 1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
@@ -627,15 +624,13 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[ValidateHttpAntiForgeryToken]** 属性にアクセスできるようになります。
 
-		using ContactManager.Filters;
+	using ContactManager.Filters;
 
 1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
 
-		[ValidateHttpAntiForgeryToken] 
-		public IHttpActionResult PutContact(int id, Contact contact) 
-		{
+	[ValidateHttpAntiForgeryToken] public IHttpActionResult PutContact(int id, Contact contact) {
 
-1. *Views\\Home\\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
+1. *Views\Home\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -690,7 +685,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
             </script>
 
 
-<h2><a name="bkmk_deploydatabaseupdate"></a>Azure および SQL データベースにアプリケーションの更新を発行する</h2>
+<h2><a name="bkmk_deploydatabaseupdate"></a>Azure および SQL Database にアプリケーションの更新を発行する</h2>
 
 アプリケーションを発行するには、前に説明した手順を繰り返します。
 
@@ -709,29 +704,29 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 1. **[次へ]** をクリックし、**[プレビュー]** をクリックします。Visual Studio で、追加または更新されるファイルの一覧が表示されます。
 
-8. **[発行]** をクリックします。展開が完了すると、ブラウザーでアプリケーションのホーム ページが開かれます。
+8. **[発行]** をクリックします。デプロイが完了すると、ブラウザーでアプリケーションのホーム ページが開かれます。
 
 	![連絡先が表示されていない Index ページ][intro001]
 
-	Visual Studio の発行プロセスにより、展開された *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、展開後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
+	Visual Studio の発行プロセスにより、デプロイされた *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、デプロイ後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
 
-	この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、展開後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
+	この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、デプロイ後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
 
-9. アプリケーションをローカルで実行したときと同様に連絡先を入力して、データベースの展開が成功したことを確認します。
+9. アプリケーションをローカルで実行したときと同様に連絡先を入力して、データベースのデプロイが成功したことを確認します。
 
 入力した項目が保存され、Contact Manager のページに表示されることを確認すると、その項目がデータベースに保存されたことがわかります。
 
 ![連絡先が表示された Index ページ][addwebapi004]
 
-これで、データの保存先に SQL データベースを使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
+これで、データの保存先に SQL Database を使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <h2><a name="nextsteps"></a> 次のステップ</h2>
 
-実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションの展開)](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションを展開する方法について説明しています。
+実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションのデプロイ)](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションをデプロイする方法について説明しています。
 
-Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
+Azure アプリケーションにデータを保存するには、Azure Storage を使用する方法もあります。Azure Storage には、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
  
 
 * [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
@@ -741,11 +736,11 @@ Azure アプリケーションにデータを保存するには、Azure スト�
 
 このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart](http://blogs.msdn.com/b/rickandy/)) の協力の下、[Rick Anderson](https://twitter.com/RickAndMSFT) (Twitter [@RickAndMSFT](https://twitter.com/blowdart)) が執筆しました。
 
-役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成と展開の自動化に関するご意見をお待ちしております。
+役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成とデプロイの自動化に関するご意見をお待ちしております。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
@@ -814,5 +809,6 @@ Azure アプリケーションにデータを保存するには、Azure スト�
 [ValidateConnection]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ValidateConnection.png
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

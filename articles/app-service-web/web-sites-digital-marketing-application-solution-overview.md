@@ -21,7 +21,7 @@
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-以下は、App Service Web アプリを使用したマルチ チャネルのグローバル デジタル マーケティング キャンペーンの例です。技術的な投資を最小限に抑えて、App Service Web アプリとその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
+以下は、App Service Web アプリを使用したマルチ チャンネルのグローバル デジタル マーケティング キャンペーンの例です。技術的な投資を最小限に抑えて、App Service Web アプリとその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/digital-marketing-notitle.svg" width="100%" height="100%"></object>
 
@@ -56,7 +56,7 @@ App Service Web アプリのデジタル マーケティング キャンペー�
 
 -  [Azure Media Services] でビデオをグローバルにアップロードしてストリームする
 -  [Azure Marketplace の SendGrid サービス]でユーザーに電子メールを送信する
--  [Mobile Services] で Windows、iOS、Android デバイスでプレゼンスを確立する
+-  [Mobile Services] によって Windows、iOS、Android デバイスでプレゼンスを確立する
 -  [Notification Hub] で多くのデバイスにプッシュ通知を送信する
 
 ## グローバル化
@@ -71,7 +71,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、Web アプリを最適化します。
 
-App Service Web アプリの[スケールアップやスケールアウト]機能は、予測できないデジタル マーケティング キャンペーンのワークロードに最適です。Web アプリは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**階層では、自動スケールにより、CPU 使用率に基づいて Web アプリを自動的にスケールアウトできます。この機能により、ユーザーのアクティビティを基に必要に応じて Web アプリをスケールアウトできるため、俊敏性を最大限にすると同時にコストを最小限に抑えることができます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
+App Service Web Apps の[スケールアップやスケールアウト]機能は、予測できないデジタル マーケティング キャンペーンのワークロードに最適です。Web アプリは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**階層では、自動スケールにより、CPU 使用率に基づいて Web アプリを自動的にスケールアウトできます。この機能により、ユーザーのアクティビティを基に必要に応じて Web アプリをスケールアウトできるため、俊敏性を最大限にすると同時にコストを最小限に抑えることができます。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
 
 [Azure Redis Cache] で Web アプリの応答性を高めます。バックエンド データベースのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などのその他のことに使用します。
 
@@ -83,7 +83,7 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
 [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web アプリの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または、Web アプリのデータの詳細な監視を行う、[New Relic] などのサードパーティー製ツールを使用します。
 
-**標準**階層では、アプリの応答性を監視して、Web アプリの応答が停止する際にメール通知を受信します。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
+**Standard** レベルでは、アプリの応答性を監視して、Web アプリの応答が停止する際にメール通知を受信します。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
 
 ## その他のリソース
 

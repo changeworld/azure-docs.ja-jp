@@ -1,27 +1,12 @@
-<properties 
-   pageTitle="Delete a StorSimple volume container"
-   description="Explains how you can use the StorSimple Manager service volume containers page to delete a volume container."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/13/2015"
-   ms.author="v-sharos" />
 
+#### ボリューム コンテナーを削除するには
 
-#### To delete a volume container
+1. **[デバイス]** ページで、デバイスを選択してダブルクリックし、**[ボリューム コンテナー]** タブをクリックします。
 
-1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
+2. 削除するボリューム コンテナーを選択します。
 
-2. Select the volume container you want to delete.
+3. ボリューム コンテナーに関連付けられているボリュームがない場合、ボリューム コンテナーを削除できます。ページの下部にある **[削除]** をクリックして、このコンテナーを削除します。確認を求められたら、**[はい]** をクリックします。ボリューム コンテナーが削除されます。
 
-3. If a volume container has no associated volumes, then it can be deleted. Click **Delete** at the bottom of the page to delete this container. When prompted for confirmation, click **Yes**. This will delete the volume container.
+ボリューム コンテナーにボリュームが関連付けられている場合は、[ボリュームをオフラインにする方法](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline)に関するページの手順に従って、ボリュームをまずオフラインにする必要があります。ボリュームがオフラインになったら、それらを削除できます。ボリューム コンテナーに関連付けられているボリュームがない場合は、上記のようにボリューム コンテナーを削除します。
 
-If the volume container has associated volumes, you will first need to take those volumes offline by following the steps in [Take a volume offline](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline). After the volumes are offline, you can delete them. When the volume container has no associated volumes, delete the volume container as described above.
+<!---HONumber=62-->

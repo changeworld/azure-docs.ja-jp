@@ -10,10 +10,10 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm=""
+	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/20/2015"
+	ms.date="06/15/2015"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -171,5 +171,6 @@
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
 [NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

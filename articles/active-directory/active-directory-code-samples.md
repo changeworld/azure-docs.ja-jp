@@ -150,4 +150,9 @@ PHP | [Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.mi
 
 [Developing Modern Applications using OAuth and Active Directory Federation Services](http://msdn.microsoft.com/library/dn633593.aspx)
 
-<!---HONumber=58--> 
+
+
+
+ 
+
+<!---HONumber=62-->

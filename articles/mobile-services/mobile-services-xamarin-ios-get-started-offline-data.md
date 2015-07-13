@@ -119,7 +119,7 @@
         const string applicationURL = @"https://your-mobile-service.azure-mobile.xxx/";
         const string applicationKey = @"AppKey";
 
-3. 更新ジェスチャの実行時にデータが同期されることを確認するため、メソッド `QSTodoListViewController.RefreshAsync()` を編集します。`SyncAsync()` への呼び出しの前に、`RefreshDataAsync()` への呼び出しを追加します。
+3. 更新ジェスチャの実行時にデータが同期されることを確認するため、メソッド `QSTodoListViewController.RefreshAsync()` を編集します。`RefreshDataAsync()` への呼び出しの前に、`SyncAsync()` への呼び出しを追加します。
 
         private async Task RefreshAsync ()
         {
@@ -182,5 +182,6 @@
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

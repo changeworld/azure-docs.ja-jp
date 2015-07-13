@@ -1,21 +1,5 @@
-<properties 
-   pageTitle="デバイスの最小セットアップを完了する"
-   description="StorSimple デバイスの最小構成を完了する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/01/2015"
-   ms.author="v-sharos" />
 
-### StorSimple の最小デバイス セットアップを完了するには
+#### StorSimple の最小デバイス セットアップを完了するには
 
 1. デバイスを選択し、**[クイック スタート]** をクリックします。**[デバイス セットアップを完了する]** をクリックして、デバイスの構成ウィザードを起動します。
 
@@ -37,6 +21,6 @@
 
 5. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png) をクリックします。デバイスの **[クイック スタート]** ページが再び表示されます。
 
-    > [AZURE.NOTE]**[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
+ >[AZURE.NOTE]**[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
 
-<!--HONumber=52-->
+<!---HONumber=62-->

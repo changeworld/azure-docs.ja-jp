@@ -31,27 +31,27 @@ Windows ストア用アプリを開発する場合、Azure AD を使用すると
 
 完全に動作するアプリケーションを構築するには、次の手順を行う必要があります。
 
-2. Azure AD にアプリケーションを登録します。
-3. ADAL をインストールし、構成します。
-5. ADAL を使用して、Azure AD からトークンを取得します。
+2. Azure AD にアプリケーションを登録する
+3. ADAL をインストールおよび構成する
+5. ADAL を使用して、Azure AD からトークンを取得する
 
 最初に、[スケルトン プロジェクトをダウンロードするか](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/skeleton.zip)、または[完全なサンプルをダウンロードします](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)。両方とも、Visual Studio 2013 ソリューションです。また、ユーザーを作成し、アプリケーションを登録することを可能にするための Azure AD テナントも必要です。テナントを所有していない場合は、「[How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
 
-## *1.ディレクトリ検索アプリケーションの登録*
-アプリケーションでトークンを取得できるようにするには、まず、アプリケーションを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
+## *1.ディレクトリ検索アプリケーションを登録する*
+アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	[Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
 -	画面の指示に従い、新しい**ネイティブ クライアント アプリケーション**を作成します。
-    -	アプリケーションの **[名前]** には、エンドユーザーがアプリケーションの機能を把握できるような名前を設定します。
+    -	アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
     -	**[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。ここでは、プレースホルダーの値を入力します (例: `http://DirectorySearcher`)。後でこの値を置き換えます。
--	登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、**[構成]** タブからコピーします。
+-	登録が完了すると、AAD により、アプリに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、**[構成]** タブからコピーします。
 - また、**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[委任されたアクセス許可]** の下の **[組織のディレクトリにアクセス]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
-## *2.ADAL のインストールと構成*
-アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするためには、アプリケーションの登録に関するいくつかの情報を提供する必要があります。まず、パッケージ マネージャー コンソールを使用して、ADAL を DirectorySearcher プロジェクトに追加します。
+## *2.ADAL をインストールおよび構成する*
+アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするためには、アプリの登録に関するいくつかの情報を提供する必要があります。まず、パッケージ マネージャー コンソールを使用して、ADAL を DirectorySearcher プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -65,16 +65,16 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
 ```
-- アプリを実行し、ブレークポイントにヒットしたら `redirectUri` の値をコピーしておきます。次のような内容です。
+- アプリを実行し、ブレークポイントにヒットしたら `redirectUri` の値をコピーしておきます。次のような内容が表示されます。
 
 ```
 ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/
 ```
 
-- Azure 管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
+- Microsoft Azure の管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
 
-## *3.ADAL の使用による AAD からのトークンの取得*
-ADAL を使用することの基本的なメリットは、アプリケーションがアクセス トークンを必要する場合、アプリケーションは `authContext.AcquireToken(…)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
+## *3.ADAL を使用して AAD からトークンを取得する*
+ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireToken(…)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
 
 -	最初の手順は、アプリの `AuthenticationContext` (ADAL のプライマリ クラス) を初期化することです。ここでは、ADAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を ADAL に渡します。
 
@@ -88,7 +88,7 @@ public MainPage()
 }
 ```
 
-- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリケーションの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
+- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
@@ -107,7 +107,7 @@ private async void Search(object sender, RoutedEventArgs e)
     ...
 }
 ```
-- アプリケーションが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由により ADAL がトークンを返せない場合、`AuthenticationResult` ステータスはエラーになります。
+- アプリが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由により ADAL がトークンを返せない場合、`AuthenticationResult` ステータスはエラーになります。
 
 - 次に、取得した access_token を使用します。また、`Search(...)` メソッドで、Graph API GET 要求の Authorization ヘッダーにトークンを設定します。
 
@@ -134,14 +134,15 @@ private void SignOut()
 }
 ```
 
-ご利用ありがとうございます。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する Windows ストア アプリが完成しました。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリケーションを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。右クリックして下部のバーを表示することによりサインアウトし、別のユーザーとしてもう一度サインインします。
+ご利用ありがとうございます。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する Windows ストア アプリが完成しました。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。右クリックして下部のバーを表示することによりサインアウトし、別のユーザーとしてもう一度サインインします。
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireToken*(…)` のみです。
+ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireToken*(…)` のみです。
 
-完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)をクリックしてください。ここからは、さらに ID シナリオに進むことができます。次の機能を試してみてください。
+完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)をクリックしてください。ここからは、さらに ID シナリオに進むことができます。次のチュートリアルを試してみてください。
 
-[Azure AD を使用することによる .NET Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)
+[Protect a Web API using Bearer tokens from Azure AD (Azure AD からのベアラー トークンを使用することによる Web API の保護)](active-directory-devquickstarts-webapi-dotnet.md)
 
 その他のリソースについては、次を参照してください。 - [GitHub の AzureAD サンプル](https://github.com/AzureAdSamples) - [CloudIdentity.com](https://cloudidentity.com) - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) での Azure AD に関するドキュメント
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=62-->

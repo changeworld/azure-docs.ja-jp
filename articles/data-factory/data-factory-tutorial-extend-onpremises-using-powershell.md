@@ -51,7 +51,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 すでに使用できるデータ ゲートウェイがある場合は、この手順をスキップします。
 
-1.	論理データ ゲートウェイを作成します。 **Azure プレビュー ポータル**, 、] をクリックして **関連付けられているサービス** 上、 **データ ファクトリ** ブレードします。
+1.	論理データ ゲートウェイを作成します。**Azure プレビュー ポータル**で、**[Data Factory]** ブレードの **[リンクされたサービス]** をクリックします。
 2.	コマンド バーの **[+ データ ゲートウェイ]** をクリックします。  
 3.	**[新しいデータ ゲートウェイ]** ブレードで、**[作成]** をクリックします。
 4.	**[作成]** ブレードで、データ ゲートウェイの **[名前]** に「**MyGateway**」と入力します。
@@ -97,46 +97,46 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 ### リンクされたサービスの作成
 
-1.	 **Azure プレビュー ポータル**, 、] をクリックして **関連付けられているサービス** タイルで、 **データ ファクトリ** のブレードに **LogProcessingFactory**です。
-2.	 **関連付けられているサービス** ブレードをクリックして **追加 (+) データ ストア**です。
-3.	 **データ ストアの新しい** ブレードで入力 **OnPremSqlLinkedService** の **名前**です。 
-4.	をクリックして **型 (必要な設定)** 選択 **SQL Server**です。表示されます、 **DATA GATEWAY**, 、**サーバー**, 、**データベース**, 、および **資格情報** の設定、 **データ ストアの新しい** ブレードのようになりました。 
-5.	をクリックして **DATA GATEWAY (必要な設定を構成する)** 選択 **MyGateway** 前に作成しました。 
-6.	入力 **名前** をホストするデータベース サーバーの **MarketingCampaigns** データベース。 
-7.	入力 **MarketingCampaigns** データベース用です。 
-8.	クリックして **資格情報**です。 
-9.	 **資格情報** ブレードで] をクリックして **資格情報を安全に設定するには、ここをクリックしてください**です。
-10.	最初に、1 回のクリックのアプリケーションをインストールし、起動、 **資格情報の設定 **] ダイアログ ボックス 。11.	 **資格情報の設定** ] ダイアログ ボックスに、入力 **ユーザー名** と **パスワード**, 、] をクリック **OK**です。ダイアログ ボックスが閉じるまで待ちます。 
-12.	クリックして **[ok]** で、 **データ ストアの新しい** ブレードします。 
-13.	 **関連付けられているサービス** ブレードでいることを確認 **OnPremSqlLinkedService** 一覧に表示され、 **状態** がリンクされているサービスの **良い**です。
+1.	**Azure プレビュー ポータル**で、**[LogProcessingFactory]** の **[Data Factory]** ブレードにある **[リンクされたサービス]** タイルをクリックします。
+2.	**[リンクされたサービス]** ブレードで、**[+ データ ストア]** をクリックします。
+3.	**[新しいデータ ストア]** ブレードで、**[名前]** に「**OnPremSqlLinkedService**」と入力します。 
+4.	**[種類 (設定が必要)]** をクリックし、**[SQL Server]** を選択します。これで、**[新しいデータ ストア]** ブレードに、**[データ ゲートウェイ]**、**[サーバー]**、**[データベース]**、**[資格情報]** の設定が表示されます。 
+5.	**[データ ゲートウェイ (必要な設定を構成する)]** をクリックし、以前に作成した **[MyGateway]** を選択します。 
+6.	**MarketingCampaigns** データベースをホストするデータベース サーバーの**名前**を入力します。 
+7.	データベースには「**MarketingCampaigns**」と入力します。 
+8.	**[資格情報]** をクリックします。 
+9.	**[資格情報]** ブレードで、**[ここをクリックして安全に資格情報を設定する]** をクリックします。
+10.	これにより、ワンクリック アプリケーションが初めてインストールされ、**[資格情報の設定] ダイアログ ボックスが開きます。11.	**[資格情報の設定]** ダイアログ ボックスで、**[ユーザー名]** と **[パスワード]** を入力し、**[OK]** をクリックします。ダイアログ ボックスが閉じるまで待ちます。 
+12.	**[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 
+13.	**[リンクされたサービス]** ブレードで、**OnPremSqlLinkedService** が一覧に表示され、リンク サービスの **[状態]** が **[良好]** であることを確認します。
 
 ## <a name="OnPremStep3"></a>手順 3: テーブルとパイプラインを作成する
 
 ### 内部設置型の論理テーブルを作成する
 
-1.	 **Azure PowerShell**, に切り替え、 **C:\ADFWalkthrough\OnPremises** フォルダーです。 
-2.	コマンドレットを使用して **新規 AzureDataFactoryTable** の次のようにテーブルを作成する **MarketingCampaignEffectivenessOnPremSQLTable.json**です。
+1.	**Azure PowerShell** で、**C:\ADFWalkthrough\OnPremises** フォルダーに移動します。 
+2.	**New-AzureDataFactoryTable** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のテーブルを作成します。
 
 			
 		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessOnPremSQLTable.json
 	 
 #### パイプラインを作成して Azure BLOB から SQL Server へデータをコピーする
 
-1.	コマンドレットを使用して **新規 AzureDataFactoryPipeline** の次のように、パイプラインを作成する **EgressDataToOnPremPipeline.json**です。
+1.	**New-AzureDataFactoryPipeline** コマンドレットを使用して、次のように **EgressDataToOnPremPipeline.json** のパイプラインを作成します。
 
 			
 		New-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\EgressDataToOnPremPipeline.json
 	 
-2. コマンドレットを使用して **セット AzureDataFactoryPipelineActivePeriod** アクティブな期間の指定に **EgressDataToOnPremPipeline**です。
+2. **Set-AzureDataFactoryPipelineActivePeriod** コマンドレットを使用して、**EgressDataToOnPremPipeline** の有効期間を指定します。
 
 			
 		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADF -DataFactoryName $df -StartDateTime 2014-05-01Z -EndDateTime 2014-05-05Z –Name EgressDataToOnPremPipeline
 
-	キーを押して **'Y'** を続行します。
+	**Y** キーを押して続行します。
 	
 ## <a name="OnPremStep4"></a>手順 4: パイプラインを監視して結果を確認する
 
-導入されたのと同じ手順を使用して今すぐ [手順 6: テーブルとパイプラインを監視する](#MainStep6) 新しいパイプラインと内部設置型の新しい ADF テーブルのデータ スライスを監視します。
+「[手順 6. テーブルとパイプラインを監視する](#MainStep6)」で説明したものと同じ手順に従い、新しいオンプレミスの ADF テーブル用の新しいパイプラインとデータ スライスを監視します。
  
 **MarketingCampaignEffectivenessOnPremSQLTable** テーブルのスライスの状態が [準備完了] に変われば、パイプラインがスライスの実行を完了したことを意味します。結果を表示するには、SQL Server 内の **MarketingCampaigns** データベースの **MarketingCampaignEffectiveness** テーブルにクエリを実行します。
  
@@ -168,4 +168,6 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 [image-data-factory-datamanagementgateway-configuration-manager]: ./media/data-factory-tutorial-extend-onpremises-using-powershell/DataManagementGatewayConfigurationManager.png
 
-<!---HONumber=GIT-SubDir--> 
+ 
+
+<!---HONumber=62-->

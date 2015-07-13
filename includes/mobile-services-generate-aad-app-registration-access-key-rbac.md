@@ -1,8 +1,8 @@
-1. [Azure の管理ポータル](https://manage.windowsazure.com/)でディレクトリ ページの **[アプリケーション]** タブをクリックします。
+1. **Azure の管理ポータル**でディレクトリ ページの [[アプリケーション]](https://manage.windowsazure.com/) タブをクリックします。
   
 2. 統合アプリケーションの登録をクリックします。
 
-3. アプリケーション ページで **[構成]** をクリックし、ページの **[キー]** セクションまで下にスクロールします。 
+3. アプリケーション ページで **[構成]** をクリックし、ページの **[キー]** セクションまで下にスクロールします。
 4. 新しいキーの期間として、**[1 年]** をクリックします。その後、**[保存]** をクリックすると、ポータルに新しいキー値が表示されます。
 5. 保存後に表示された **[クライアント ID]** と **[キー]** をコピーします。キー値は保存後に 1 回しか表示されないことに注意してください。 
 
@@ -13,29 +13,12 @@
     ![](./media/mobile-services-generate-aad-app-registration-access-key-rbac/app-perms.png)
 
 
-7. [Azure の管理ポータル](https://manage.windowsazure.com/)で、モバイル サービスに戻り、**[構成]** タブをクリックします。**[アプリケーション設定]** セクションまで下にスクロールし、次のアプリケーション設定を追加して、**[保存]** をクリックします。 
+7. [Azure の管理ポータル](https://manage.windowsazure.com/)で、モバイル サービスに戻り、**[構成]** タブをクリックします。**[アプリケーション設定]** セクションまで下にスクロールし、次のアプリケーション設定を追加して、**[保存]** をクリックします。
 
-    <table border="1">
-    <tr>
-    <th>アプリケーション設定の名前</th><th>説明</th>
-    </tr>
-    <tr>
-    <td>AAD_CLIENT_ID</td><td>前の手順で統合アプリケーションからコピーしたクライアント ID。</td>
-    </tr>
-    <tr>
-    <td>AAD_CLIENT_KEY</td><td>前の手順で AAD 統合アプリケーションで生成されたアプリケーション キー。</td>
-    </tr>
-    <tr>
-    <td>AAD_TENANT_DOMAIN</td><td>AAD ドメイン名。"mydomain.onmicrosoft.com" のような形式にする必要があります。</td>
-    </tr>
-    <tr>
-    <td>AAD_GROUP_ID</td><td>前のセクションで書き留めた Sales グループのグループ ID</td>
-    </tr>
-    </table><br/>
+    <table border="1"> <tr> <th>アプリケーション設定名</th><th>説明</th> </tr> <tr> <td>AAD_CLIENT_ID</td><td>前の手順で統合アプリケーションからコピーしたクライアント ID。</td> </tr> <tr> <td>AAD_CLIENT_KEY</td><td>前の手順で AAD 統合アプリケーションで生成されたアプリケーション キー。</td> </tr> <tr> <td>AAD_TENANT_DOMAIN</td><td>AAD ドメイン名。"mydomain.onmicrosoft.com"のような形式にする必要があります。</td> </tr> <tr> <td>AAD_GROUP_ID</td><td>前のセクションで書き留めた Sales グループのグループ ID</td> </tr> </table><br/>
 
  
     ![](./media/mobile-services-generate-aad-app-registration-access-key-rbac/aad-app-settings.png)
   
 
-
-<!--HONumber=52-->
+<!---HONumber=62-->

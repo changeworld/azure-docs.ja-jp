@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="エンタープライズ SaaS へのモバイル アプリの接続 | モバイル デベロッパー センター" 
-	description="SharePoint Online などのエンタープライズ リソースへの呼び出しを作成する方法について説明します" 
-	documentationCenter="" 
-	authors="mattchenderson" 
-	manager="dwrede" 
-	editor="na" 
+<properties
+	pageTitle="エンタープライズ SaaS へのモバイル アプリの接続 | モバイル デベロッパー センター"
+	description="SharePoint Online などのエンタープライズ リソースへの呼び出しを作成する方法について説明します"
+	documentationCenter=""
+	authors="mattchenderson"
+	manager="dwrede"
+	editor="na"
 	services="app-service\mobile"/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="03/05/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="get-started-article" 
+	ms.date="06/19/2015"
 	ms.author="mahender"/>
 
 # SaaS API へのモバイル アプリの接続
@@ -29,7 +29,7 @@
 ## <a name="configure-permissions"></a>SharePoint への委任アクセスのためにアプリケーションを構成する
 既定では、AAD から受け取るトークンは、アクセス許可が制限されています。サードパーティのリソースまたは SharePoint Online などの SaaS アプリケーションにアクセスするには、明示的にアクセスを許可する必要があります。
 
-1. **Azure 管理ポータル**の [Active Directory] セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
+1. **Azure 管理ポータル**の [[Active Directory]] セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
 
 2. **[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションまでページを下へスクロールします。**[Office 365 SharePoint Online]** を選択し、**[ユーザーのファイルを編集または削除]** 委任アクセス許可を付与します。その後、**[保存]** をクリックします。
 
@@ -90,7 +90,7 @@ SharePoint にアクセスするには、SharePoint を対象ユーザーとす�
             AuthenticationResult ar = ac.AcquireToken(sharepointURL, new ClientCredential(clientId, clientSecret), new UserAssertion(userToken));
             accessToken = ar.AccessToken;
             string upn = ar.UserInfo.UserId;
-            mySiteApiPath = "/personal/" + upn.Replace('@','_').Replace('.','_') + "/_api/web"; 
+            mySiteApiPath = "/personal/" + upn.Replace('@','_').Replace('.','_') + "/_api/web";
             clientId = settings.AzureActiveDirectoryClientId;
             clientSecret = settings["SP_ClientSecret"];
             sharepointURL = settings["SP_SharePointURL"];
@@ -158,11 +158,11 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
             TodoItem current = await InsertAsync(item);
-            
+
             SharePointUploadContext context = await SharePointUploadContext.createContext((ServiceUser)this.User, Services.Settings);
             byte[] document = CreateWordDocument(item);
             bool uploadResult = await context.UploadDocument(item.Id, document);
-            
+
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
@@ -181,9 +181,10 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 <!-- URLs. -->
 
 [Preview Azure Management Portal]: https://portal.azure.com/
-[Active Directory]: https://manage.windowsazure.com/
+[[Active Directory]]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: app-service-mobile-dotnet-backend-ios-aad-sso-preview.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -20,17 +20,17 @@
 
 ## 概要
 
-このガイドでは、[Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) バージョン 1.x を使用して Azure ストレージ テーブルを読み書きする方法を示す C# コード サンプルについて説明します。
+このガイドでは、[WebJobs SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用して Azure Storage テーブルを読み書きする方法を示す C# コード サンプルについて説明します。
 
 このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
 		
-一部のコード スニペットは、[手動で呼び出される](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)関数で使用される  `Table` 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。 
+一部のコード スニペットは、[手動で呼び出される](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)関数で使用される `Table` 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 
-## <a id="ingress"></a>エンティティをテーブルに追加する方法
+## <a id="ingress"></a> エンティティをテーブルに追加する方法
 
-エンティティをテーブルに追加するには、 `ICollector<T>` を持つ  `Table` 属性または  `T` specifies the schema of the entities you want to add. The attribute constructor takes a string parameter that specifies the name of the table.  `IAsyncCollector  パラメーターを使用します。ここで、<T>` は 
+テーブルにエンティティを追加するには、`Table` 属性を `ICollector<T>` または `IAsyncCollector<T>` パラメーター (`T` は、追加するエンティティのスキーマ) に指定します。この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。
 
-The following code sample adds `Person` *Ingress* という名前のテーブルに対するエンティティです。
+次のコード サンプルでは、*Ingress* という名前のテーブルに `Person` エンティティを追加しています。
 
 		[NoAutomaticTrigger]
 		public static void IngressDemo(
@@ -47,7 +47,7 @@ The following code sample adds `Person` *Ingress* という名前のテーブル
 		    }
 		}
 
-通常、 `ICollector` と連携して使用する種類は、 `TableEntity` から派生するか、 `ITableEntity` を実装しますが、しなくてもかまいません。次のいずれかの  `Person` クラスは、前の  `Ingress`  メソッドに示されているコードと連携します。
+`ICollector` には、`TableEntity` を継承する型または `ITableEntity` を実装する型を用いるのが一般的ですが、必須ではありません。先ほど `Ingress` メソッドに示したコードは、次の 2 つの `Person` クラスのどちらでも正しく動作します。
 
 		public class Person : TableEntity
 		{
@@ -61,27 +61,27 @@ The following code sample adds `Person` *Ingress* という名前のテーブル
 		    public string Name { get; set; }
 		}
 
-Azure のストレージ API を直接操作する場合は、メソッドシグネチャに  `CloudStorageAccount` パラメーターを追加することもできます。
+Azure Storage API を直接操作する場合は、メソッド シグネチャに `CloudStorageAccount` パラメーターを追加することもできます。
 
-## <a id="monitor"></a>リアルタイム監視
+## <a id="monitor"></a> リアルタイム監視
 
-多くの場合、データの受信関数は大量のデータを処理するため、Web ジョブ SDK のダッシュボードはリアルタイムの監視データを提供します。**呼び出しログ**セクションは、関数がまだ実行であるかどうかを示します。
+多くの場合、データの受信関数は大量のデータを処理するため、Web ジョブ SDK のダッシュボードはリアルタイムの監視データを提供します。**[Invocation Log]** セクションは、関数がまだ実行であるかどうかを示します。
 
 ![実行中の受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
 
-**呼び出しの詳細**ページは、実行中の関数の進行状況 (書き込まれるエンティティの数) を報告し、実行を中止できます。 
+**[Invocation Details]** ページには、実行中の関数の進行状況 (書き込まれたエンティティの数) が表示されます。このページで関数の実行を中止することもできます。
 
 ![実行中の受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressprogress.png)
 
-関数が終了したら、**呼び出しの詳細**ページは書き込まれた行の数を報告します。
+関数が終了すると、書き込まれた行の数が **[Invocation Details]** ページに表示されます。
 
 ![完了した受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
 ## <a id="multiple"></a>テーブルから複数のエンティティを読み取る方法
 
-テーブルを読み取るには、種類が  `T` derives from `TableEntity` の  `IQueryable<T>` パラメーターで  `Table` 属性を使用するか  `ITableEntity` を実装します。
+テーブルの読み取りを行うには、`Table` 属性を `IQueryable<T>` パラメーター (`T` は、`TableEntity` を継承する型か、`ITableEntity` を実装する型) に指定します。
 
-次のコード サンプルは、 `Ingress` テーブルからすべての行を読み取り、ログに記録します。
+次のコード サンプルは、`Ingress` テーブルからすべての行を読み取り、ログに記録します。
  
 		public static void ReadTable(
 		    [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -95,11 +95,11 @@ Azure のストレージ API を直接操作する場合は、メソッドシグ
 		    }
 		}
 
-### <a id="readone"></a>テーブルから 1 つのエンティティを読み取る方法
+### <a id="readone"></a> テーブルから 1 つのエンティティを読み取る方法
 
-1 つのテーブル エンティティにバインドする際に、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ  `Table` 属性コンストラクターがあります。
+1 つのテーブル エンティティにバインドする際に、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ `Table` 属性コンストラクターがあります。
 
-次のコード サンプルは、キュー メッセージで受信したパーティション キー値と行キー値に基づいた  `Person` エンティティのテーブル行を読み取ります。  
+次のコード サンプルは、キュー メッセージで受信したパーティション キー値と行キー値に基づいた `Person` エンティティのテーブル行を読み取ります。
 
 		public static void ReadTableEntity(
 		    [QueueTrigger("inputqueue")] Person personInQueue,
@@ -119,13 +119,13 @@ Azure のストレージ API を直接操作する場合は、メソッドシグ
 		}
 
 
-この例の  `Person` クラスは、 `ITableEntity` を実装する必要はありません。
+この例の `Person` クラスは、`ITableEntity` を実装する必要はありません。
 
-## <a id="storageapi"></a>.NET ストレージ API を直接使用して、テーブルを操作する方法
+## <a id="storageapi"></a> .NET ストレージ API を直接使用して、テーブルを操作する方法
 
-テーブルを操作する際に、 `CloudTable` オブジェクトを使用して、より柔軟に  `Table` 属性を使用することもできます。
+テーブルを操作する際に、`CloudTable` オブジェクトを使用して、より柔軟に `Table` 属性を使用することもできます。
 
-次のコード サンプルは、 `CloudTable` オブジェクトを使用して、1 つのエンティティを  *Ingress* テーブルに追加します。 
+次のコード サンプルは、`CloudTable` オブジェクトを使用して、1 つのエンティティを *Ingress* テーブルに追加します。
  
 		public static void UseStorageAPI(
 		    [Table("Ingress")] CloudTable tableBinding,
@@ -141,26 +141,26 @@ Azure のストレージ API を直接操作する場合は、メソッドシグ
 		    tableBinding.Execute(insertOperation);
 		}
 
- `CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](../storage-dotnet-how-to-use-tables.md)」をご覧ください。 
+`CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](../storage-dotnet-how-to-use-tables.md)」をご覧ください。
 
 ## <a id="queues"></a>キューのハウツー記事で紹介されている関連トピック
 
-キュー メッセージによってトリガーされるテーブルの処理の方法、テーブル処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
+キュー メッセージによってトリガーされるテーブルの処理の方法、テーブル処理に固有ではない WebJobs SDK のシナリオについては、「[WebJobs SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。
 
 その記事では、以下のようなトピックが紹介されています。
 
 * Async 関数
 * 複数のインスタンス
-* 正常なシャットダウン
+* グレースフル シャットダウン
 * 関数本体での Web ジョブ SDK 属性の使用
 * コード内での SDK 接続文字列の設定
 * コードの Web ジョブ SDK コンストラクター パラメーター値の設定
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a> 次のステップ
 
-このガイドでは、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブと Web ジョブ SDK の使用方法の詳細については、[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
+このガイドでは、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

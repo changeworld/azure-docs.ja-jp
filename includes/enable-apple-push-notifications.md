@@ -1,5 +1,5 @@
 
-## <a id="register"></a>アプリのプッシュ通知を登録する
+## <a id="register"></a>アプリをプッシュ通知に登録する
 
 * [アプリのアプリ ID を登録します](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW991)。アプリを登録するときに、**[App Services]** の **[プッシュ通知]** チェック ボックスをオンにします (このチェックボックスはオプションです)。
 

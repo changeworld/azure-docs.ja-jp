@@ -13,16 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="06/10/2015"
+	ms.date="06/18/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
 
 このガイドでは、Azure API Management でレート制限やクォータ ポリシーを構成することによって、いかに簡単にバックエンド API の保護を追加できるかを示します。
-
-詳細およびレート制限とクォータの設定のデモについては、次のビデオを参照してください。
-
-> [AZURE.VIDEO rate-limits-and-quotas]
 
 このチュートリアルでは、開発者が毎分最大 10 回、1 週間に最大 200 回まで呼び出すことができる '無料評価版' の API 成果物を作成します。次いで、API を発行し、レート制限ポリシーをテストします。
 
@@ -36,7 +32,7 @@
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+>まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
 
 左側の **[API Management]** メニューにある **[成果物]** をクリックして、**[成果物]** ページを表示します。
 
@@ -62,7 +58,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 **Administrators** グループのユーザーには、新しい成果物が既定で表示されます。ここでは、**Developers** グループを追加します。**[無料評価版]** をクリックし、**[表示]** タブを選択します。
 
->API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。詳細については、「[How to create and use groups in Azure API Management (Azure API Management でグループを作成して使用する方法)][]」を参照してください。
+>API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。詳細については、「[How to create and use groups in Azure API Management (Azure API Management でグループを作成して使用する方法)][]」をご覧ください。
 
 ![Add developers group][api-management-add-developers-group]
 
@@ -201,7 +197,7 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 
 ![Add subscription][api-management-add-subscription-multiple]
 
-**[定期受信]** をクリックすると、ユーザーの **[サブスクリプション]** リストに成果物が表示されます。
+**[サブスクライブ]** をクリックすると、ユーザーの **[サブスクリプション]** リストに成果物が表示されます。
 
 ![Subscription added][api-management-subscription-added]
 
@@ -240,6 +236,9 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 ## <a name="next-steps"> </a>次のステップ
 
 -	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+-	詳細およびレート制限とクォータの設定のデモについては、次のビデオをご覧ください。
+
+> [AZURE.VIDEO rate-limits-and-quotas]
 
 
 [api-management-management-console]: ./media/api-management-howto-product-with-rules/api-management-management-console.png

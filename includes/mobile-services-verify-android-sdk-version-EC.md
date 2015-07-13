@@ -2,7 +2,7 @@ Android SDK の開発が継続中であるため、Eclipse にインストール
 
 バージョンの不一致の場合に見られる現象は、次の 2 つです。
 
-1. Eclipse コンソールの下部にあるウィンドウに注目します。"**ターゲット 'android-n' を解決できません**" という形式のエラー メッセージが表示される場合があります。
+1. Eclipse コンソールの下部にあるウィンドウに注目します。"** ターゲット 'android-n' を解決できません**" という形式のエラー メッセージが表示される場合があります。
 
 2. `import` ステートメントに基づく解決が必要なコード内の標準の Android オブジェクトによって、エラー メッセージが生成される場合があります。
 
@@ -18,4 +18,5 @@ Android SDK の開発が継続中であるため、Eclipse にインストール
 	 	        android:targetSdkVersion="21" />
 	
 3. Eclipse Package Explorer でプロジェクト ノードを右クリックし、**[Properties]** を右クリックして、左の列から **[Android]** を選択します。**[Project Build Target]** が、**[targetSdkVersion]** と同じ SDK バージョンに設定されていることを確認します。
-<!--HONumber=54-->
+
+<!---HONumber=62-->

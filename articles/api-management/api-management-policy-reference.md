@@ -13,16 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/10/2015" 
+	ms.date="06/18/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management ポリシー リファレンス
 
-このセクションでは、「[API Management ポリシー リファレンス][]」で説明されているポリシーのインデックスを示します。ポリシーを追加および構成する方法については、「[Azure API Management のポリシー][]」を参照してください。
+このセクションでは、「[API Management ポリシー リファレンス][]」で説明されているポリシーのインデックスを示します。ポリシーを追加および構成する方法については、「[Azure API Management のポリシー][]」をご覧ください。
 
-ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。[制御フロー][] ポリシーや[変数の設定][]ポリシーなど、一部のポリシーはポリシーの式に基づいています。詳細については、「[詳細なポリシー][]」、「[ポリシーの式][]」、および次のビデオを参照してください。
-
-> [AZURE.VIDEO policy-expressions-in-azure-api-management]
+ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。[制御フロー][] ポリシーや[変数の設定][]ポリシーなど、一部のポリシーはポリシーの式に基づいています。詳細については、「[詳細なポリシー][]」と「[ポリシーの式][]」をご覧ください。
 
 ## ポリシー リファレンスのインデックス
 
@@ -56,6 +54,11 @@
 	-	[クエリ文字列パラメーターの設定][] - 要求クエリ文字列パラメーターの追加、値の置換、または削除を行います。
 	-	[URL の書き換え][] - 要求 URL をパブリックな形式から Web サービスで想定されている形式に変換します。
 
+## 次のステップ
+
+ポリシー式に関する詳細については、次のビデオをご覧ください。
+
+> [AZURE.VIDEO policy-expressions-in-azure-api-management]
 
 [アクセス制限ポリシー]: https://msdn.microsoft.com/library/azure/dn894078.aspx
 [HTTP ヘッダーを確認する]: https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#CheckHTTPHeader

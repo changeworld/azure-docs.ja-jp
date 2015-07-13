@@ -64,7 +64,7 @@ HDInsight には、Azure で Linux クラスターをプロビジョニングす
 HDInsight クラスターをプロビジョニングするとき、Hive のメタストアを格納する SQL データベースを指定します。これにより、クラスターを削除するとき、SQL データベースに外付けで格納されているメタデータ情報を保持できます。
 
 
-> [AZURE.NOTE] 現在、メタストアを使用するオプションは、.NET SDK を使用して Linux 向け HDInsight をプロビジョニングする場合にのみ使用できます。手順については、[.NET SDK を使用した HDInsight クラスター (Linux) のプロビジョニング](#sdk)をご覧ください
+> [AZURE.NOTE]現在、メタストアを使用するオプションは、.NET SDK を使用して Linux 向け HDInsight をプロビジョニングする場合にのみ使用できます。手順については、[.NET SDK を使用した HDInsight クラスター (Linux) のプロビジョニング](#sdk)をご覧ください
 
 
 
@@ -82,7 +82,7 @@ Windows | [ここ](#portal)をクリック | [ここ](#cli)をクリック | [�
 HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」をご覧ください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法](../storage-create-storage-account.md)」をご覧ください。
 
 
-> [AZURE.NOTE] 現在、HDInsight Linux クラスターをホストできるリージョンは、**東南アジア**、**北ヨーロッパ**、**米国東部**、**米国中南部**のみです。
+> [AZURE.NOTE]現在、HDInsight Linux クラスターをホストできるリージョンは、**東南アジア**、**北ヨーロッパ**、**米国東部**、**米国中南部**のみです。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
@@ -93,36 +93,32 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 	![Hadoop HDInsight クラスターの詳細を提供](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page1.png)
 
     <table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>クラスター名</td>
-			<td><p>クラスターの名前を指定します。</p>
-				<ul>
-				<li>Domain Name System (DNS) 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。</li>
-				<li>3 ～ 63 文字のクラスター名を入力できます。</li>
-				</ul></td></tr>
-		<tr><td>クラスターの種類</td>
-			<td><strong>[Hadoop]</strong> を選択 します。</td></tr>
-		<tr><td>オペレーティング システム</td>
-			<td>Linux で HDInsight クラスターをプロビジョニングするには、<b>[Ubuntu 12.04 LTS Preview]</b> を選択します。Windows クラスターをプロビジョニングするには、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。</td></tr>
-		<tr><td>HDInsight のバージョン</td>
-			<td>バージョンを選択します。Linux での HDInsight の場合、既定では HDInsight Version 3.2 で、これは Hadoop 2.6 を使用します。</td></tr>
-		</table>
-
-	表に示されている値を入力または選択し、右矢印をクリックします。
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>クラスター名</td>
+		<td><p>クラスターの名前を指定します。</p>
+			<ul>
+			<li>Domain Name System (DNS) 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。</li>
+			<li>3 ～ 63 文字のクラスター名を入力できます。</li>
+			</ul></td></tr>
+	<tr><td>クラスターの種類</td>
+		<td><strong>[Hadoop]</strong> を選択 します。</td></tr>
+	<tr><td>オペレーティング システム</td>
+		<td>Linux で HDInsight クラスターをプロビジョニングするには、<b>[Ubuntu 12.04 LTS Preview]</b> を選択します。Windows クラスターをプロビジョニングするには、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。</td></tr>
+	<tr><td>HDInsight のバージョン</td>
+		<td>バージョンを選択します。Linux での HDInsight の場合、既定では HDInsight Version 3.2 で、これは Hadoop 2.6 を使用します。</td></tr>
+	</table>表に示されている値を入力または選択し、右矢印をクリックします。
 
 4. **[クラスターの構成]** ページで、次の値を入力または選択します。
 
 	![Hadoop HDInsight クラスターの詳細を提供](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page2.png)
 
 	<table border="1">
-	<tr><th>名前</th><th>値</th></tr>
-	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
-	<tr><td>リージョン/仮想ネットワーク</td><td><p>作成済みのストレージ アカウントと同じリージョンを選択します。HDInsight クラスターは、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p></td></tr>
-	<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの仮想マシン (VM) サイズを選択します。</p></td></tr>
-	<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
-	</table>
-
-	>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
+<tr><th>名前</th><th>値</th></tr>
+<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
+<tr><td>リージョン/仮想ネットワーク</td><td><p>作成済みのストレージ アカウントと同じリージョンを選択します。HDInsight クラスターは、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p></td></tr>
+<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの仮想マシン (VM) サイズを選択します。</p></td></tr>
+<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
+</table>>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
 
 5. **[クラスター ユーザーの構成]** ページで、次の情報を指定します。
@@ -130,25 +126,23 @@ HDInsight クラスターは、既定のファイル システムとして Azure
     ![Hadoop HDInsight クラスターのユーザーを指定](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page3.png)
 
     <table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>HTTP パスワード</td>
-			<td>既定の HTTP ユーザーである <strong>admin</strong> のパスワードを指定します。</td></tr>
-		<tr><td>SSH ユーザー名</td>
-			<td>SSH ユーザー名を指定します。このユーザー名を使用して、HDInsight クラスター ノードでリモート SSH セッションを開始します。</td></tr>
-		<tr><td>SSH 認証の種類</td>
-			<td>SSH ユーザーの認証に、パスワードと SSH キーのどちらを使用するかを指定します。</td></tr>
-		<tr><td>SSH パスワード</td>
-			<td>認証の種類にパスワードを選択した場合、SSH ユーザーを認証するための SSH パスワードを指定します。リモート Linux マシンで SSH セッションを開始するときに、このパスワードの入力を求められます。</td></tr>
-		<tr><td>SSH パブリック キー</td>
-			<td>認証の種類にキーを選択した場合は、既に生成済みの SSH パブリック キーを指定します。Linux クラスターのノードで SSH セッションを開始した場合は、この公開キーに関連付けられた秘密キーを使用します。<br>
-			Linux コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">こちら</a>をご覧ください。Windows コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">こちら</a>をご覧ください。
-		</td></tr>
-		<tr><td>Hive/Oozie メタストアの入力</td>
-			<td>このチェックボックスをオンにして、クラスターと同じデータ センターにある Hive/Oozie メタストアとして使用する SQL データベースを指定します。このチェック ボックスを選択した場合、ウィザードの後続のページで Azure SQL データベースの詳細を指定する必要があります。これは、クラスターが削除された後でも Hive/Oozie ジョブに関するメタデータを保持する場合に便利です。</td></tr>
-		</td></tr>
-		</table>
-
-	> [AZURE.NOTE] パスワード認証より安全であるため、SSH による SSH パブリック キー認証を使用することをお勧めします。
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>HTTP パスワード</td>
+		<td>既定の HTTP ユーザーである <strong>admin</strong> のパスワードを指定します。</td></tr>
+	<tr><td>SSH ユーザー名</td>
+		<td>SSH ユーザー名を指定します。このユーザー名を使用して、HDInsight クラスター ノードでリモート SSH セッションを開始します。</td></tr>
+	<tr><td>SSH 認証の種類</td>
+		<td>SSH ユーザーの認証に、パスワードと SSH キーのどちらを使用するかを指定します。</td></tr>
+	<tr><td>SSH パスワード</td>
+		<td>認証の種類にパスワードを選択した場合、SSH ユーザーを認証するための SSH パスワードを指定します。リモート Linux マシンで SSH セッションを開始するときに、このパスワードの入力を求められます。</td></tr>
+	<tr><td>SSH パブリック キー</td>
+		<td>認証の種類にキーを選択した場合は、既に生成済みの SSH パブリック キーを指定します。Linux クラスターのノードで SSH セッションを開始した場合は、この公開キーに関連付けられた秘密キーを使用します。<br>
+		Linux コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">こちら</a>をご覧ください。Windows コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">こちら</a>をご覧ください。
+	</td></tr>
+	<tr><td>Hive/Oozie メタストアの入力</td>
+		<td>このチェックボックスをオンにして、クラスターと同じデータ センターにある Hive/Oozie メタストアとして使用する SQL データベースを指定します。このチェック ボックスを選択した場合、ウィザードの後続のページで Azure SQL データベースの詳細を指定する必要があります。これは、クラスターが削除された後でも Hive/Oozie ジョブに関するメタデータを保持する場合に便利です。</td></tr>
+	</td></tr>
+	</table>> [AZURE.NOTE]パスワード認証より安全であるため、SSH による SSH パブリック キー認証を使用することをお勧めします。
 
 	右矢印をクリックします。
 
@@ -158,7 +152,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 
 	Hive/OOzie のメタストアとして使用する Azure SQL データベースを指定します。Hive メタストアと Oozie メタストアの両方に同じデータベースを指定できます。この SQL データベースは、HDInsight クラスターと同じデータ センターにある必要があります。リスト ボックスの一覧には、<strong>[クラスターの詳細]</strong> ページで指定したデータ センターにある SQL データベースしか表示されません。また、ユーザー名とパスワードを指定し、選択した Azure SQL データベースに接続します。
 
-    >[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+    >[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
     右矢印をクリックします。
 
@@ -169,31 +163,29 @@ HDInsight クラスターは、既定のファイル システムとして Azure
     ![HDInsight Hadoop クラスターに対してストレージ アカウントを指定](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page5.png)
 
 	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>ストレージ アカウント</td>
-			<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。次の 3 つのオプションのいずれかを選択できます。
-			<ul>
-				<li><strong>既存のストレージを使用する</strong></li>
-				<li><strong>新しいストレージを作成する</strong></li>
-				<li><strong>別のサブスクリプションのストレージを使用する</strong></li>
-			</ul>
-			</td></tr>
-		<tr><td>アカウント名</td>
-			<td><ul>
-				<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ドロップダウンの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターにあるストレージ アカウントのみが表示されます。</li>
-				<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
-			</ul></td></tr>
-		<tr><td>アカウント キー</td>
-			<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
-		<tr><td>既定のコンテナー</td>
-			<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> フィールドで <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
-            <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
-        </td></tr>
-		<tr><td>追加のストレージ アカウント</td>
-			<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する <strong>[ストレージ アカウント]</strong> ページがウィザードに追加され、そこでアカウント情報を指定できます。たとえば、上のスクリーンショットでは、追加のストレージ アカウントが 1 つ選択されたため、ページ 5 がダイアログに追加されています。</td></tr>
-	</table>
-
-	右矢印をクリックします。
+	<tr><th>プロパティ</th><th>値</th></tr>
+	<tr><td>ストレージ アカウント</td>
+		<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。次の 3 つのオプションのいずれかを選択できます。
+		<ul>
+			<li><strong>既存のストレージを使用する</strong></li>
+			<li><strong>新しいストレージを作成する</strong></li>
+			<li><strong>別のサブスクリプションのストレージを使用する</strong></li>
+		</ul>
+		</td></tr>
+	<tr><td>アカウント名</td>
+		<td><ul>
+			<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ドロップダウンの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターにあるストレージ アカウントのみが表示されます。</li>
+			<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
+		</ul></td></tr>
+	<tr><td>アカウント キー</td>
+		<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
+	<tr><td>既定のコンテナー</td>
+		<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> フィールドで <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
+        <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
+    </td></tr>
+	<tr><td>追加のストレージ アカウント</td>
+		<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する <strong>[ストレージ アカウント]</strong> ページがウィザードに追加され、そこでアカウント情報を指定できます。たとえば、上のスクリーンショットでは、追加のストレージ アカウントが 1 つ選択されたため、ページ 5 がダイアログに追加されています。</td></tr>
+</table>右矢印をクリックします。
 
 7. クラスターの追加の記憶域を構成する場合、**ストレージ アカウントページ**で、追加のストレージ アカウントのアカウント情報を入力します。
 
@@ -202,7 +194,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
     ここでも、既存のストレージを使用する、新しいストレージを作成する、別の Azure サブスクリプションのストレージを使用する、のいずれかを選択できます。値を指定するための手順は、前の手順と同様です。
 
 
-    > [AZURE.NOTE] HDInsight クラスター用の Azure ストレージ アカウントを選択した後は、そのアカウントを削除することも、別のクラスターに変更することもできません。
+    > [AZURE.NOTE]HDInsight クラスター用の Azure ストレージ アカウントを選択した後は、そのアカウントを削除することも、別のクラスターに変更することもできません。
 
 
  	追加のストレージ アカウントを指定した後、チェック マークをオンにして、クラスターのプロビジョニングを開始します。
@@ -251,7 +243,7 @@ Azure CLI の一般的な使用方法については、「[Mac、Linux、Windows
 Azure CLI を使用する前に、ワークステーションと Azure の間の接続を構成する必要があります。Azure CLI は、Azure のサブスクリプション情報を使用してアカウントに接続します。この情報は、Azure から発行設定ファイルとして入手できます。入手した発行設定ファイルは、永続的なローカル構成設定としてインポートできます。インポートすると、Azure CLI のそれ以降の操作に使用されるようになります。発行設定のインポートは 1 回だけ行う必要があります。
 
 
-> [AZURE.NOTE] 発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、BitLocker Drive Encryption を使用します。
+> [AZURE.NOTE]発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、BitLocker Drive Encryption を使用します。
 
 
 
@@ -289,7 +281,7 @@ Azure CLI は NPM または Windows インストーラーを使用してイン�
 
 		npm install -g https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
-	> [AZURE.NOTE] NPM コマンドが見つからないというエラーが表示される場合、次のパスが **PATH** 環境変数の中にあることを確認します。<i>C:\Program Files (x86)\nodejs;C:\Users[ユーザー名]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users[ユーザー名]\AppData\Roaming\npm</i>
+	> [AZURE.NOTE]NPM コマンドが見つからないというエラーが表示される場合、次のパスが **PATH** 環境変数の中にあることを確認します。<i>C:\Program Files (x86)\nodejs;C:\Users[ユーザー名]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users[ユーザー名]\AppData\Roaming\npm</i>
 
 
 5.	次のコマンドを実行してインストールを確認します。
@@ -305,15 +297,14 @@ Azure CLI は NPM または Windows インストーラーを使用してイン�
 
 **Windows インストーラーを使用して Azure CLI をインストールするには**
 
-1.	ブラウザーで **http://azure.microsoft.com/downloads/** を開きます。
-2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[Azure コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラーのウィザードの指示に従います。
+1.	ブラウザーで **http://azure.microsoft.com/downloads/** を開きます。2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[Azure コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラーのウィザードの指示に従います。
 
 **発行設定をダウンロードしてインポートするには**
 
 Azure CLI を使用する前に、ワークステーションと Azure の間の接続を構成する必要があります。Azure CLI は、Azure のサブスクリプション情報を使用してアカウントに接続します。この情報は、Azure から発行設定ファイルとして入手できます。入手した発行設定ファイルは、永続的なローカル構成設定としてインポートできます。インポートすると、Azure CLI のそれ以降の操作に使用されるようになります。発行設定のインポートは 1 回だけ行う必要があります。
 
 
-> [AZURE.NOTE] 発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
+> [AZURE.NOTE]発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
 
 
 
@@ -383,7 +374,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 
 		azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName "<StorageAccountName>.blob.core.windows.net" --storageAccountKey <StorageAccountKey> --storageContainer <StorageContainerName> --dataNodeCount <NumberOfNodes> --location <DataCenterLocation> --userName <HDInsightClusterUsername> --password <HDInsightClusterPassword> --osType linux --sshUserName <SSH username> --sshPassword <SSH user password>
 
-	>[AZURE.NOTE] **--userName** と **--password** に指定する値は、Hadoop ユーザー用です。Hadoop ユーザーには常に --userName を "admin" として指定する必要があります。
+	>[AZURE.NOTE]**--userName** と **--password** に指定する値は、Hadoop ユーザー用です。Hadoop ユーザーには常に --userName を "admin" として指定する必要があります。
 
 	![HDI.CLIClusterCreation][image-cli-clustercreation]
 
@@ -409,7 +400,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 		azure hdinsight cluster create --config <file>
 
 
-	>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+	>[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
 
 
@@ -515,7 +506,7 @@ Linux クラスターをプロビジョニングするために設定する必�
 		New-AzureHDInsightCluster -Name $clusterName -Credential $clusterCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes -Version "3.2" -OSType Linux -SshCredential $sshCredentials -SshPublicKey $sshPublicKey
 
 
->[AZURE.NOTE] **$clusterCredentials** に指定する値は、クラスターの Hadoop ユーザー アカウントの作成に使用されます。このアカウントを使用してクラスターに接続します。**$sshCredentials** に指定する値は、クラスターの SSH ユーザーの作成に使用されます。このアカウントを使用してクラスターでリモート SSH セッションを開始し、ジョブを実行します。Azure ポータルから [簡易作成] オプションを使用してクラスターをプロビジョニングする場合、既定の Hadoop ユーザー名は "admin"、既定の SSH ユーザー名は "hdiuser" になります。
+>[AZURE.NOTE]**$clusterCredentials** に指定する値は、クラスターの Hadoop ユーザー アカウントの作成に使用されます。このアカウントを使用してクラスターに接続します。**$sshCredentials** に指定する値は、クラスターの SSH ユーザーの作成に使用されます。このアカウントを使用してクラスターでリモート SSH セッションを開始し、ジョブを実行します。Azure ポータルから [簡易作成] オプションを使用してクラスターをプロビジョニングする場合、既定の Hadoop ユーザー名は "admin"、既定の SSH ユーザー名は "hdiuser" になります。
 
 クラスターのプロビジョニングが完了するまでに数分かかる場合があります。
 
@@ -565,7 +556,7 @@ Linux クラスターをプロビジョニングするために設定する必�
 		# Create the cluster
 		New-AzureHDInsightCluster -Name $clusterName -Config $config -Credential $clusterCredentials -Location $clusterLocation -Version "3.2" -OSType Linux -SshCredential $sshCredentials -SshPublicKey $sshPublicKey
 
->[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+>[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
 クラスターのプロビジョニングが完了するまでに数分かかる場合があります。
 
@@ -600,19 +591,19 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
-	<tr>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">値</th></tr>
-	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C#/Windows</td></tr>
-	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
-	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">CreateHDICluster</td></tr>
-	</table>
+<tr>
+<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
+<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">値</th></tr>
+<tr>
+<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
+<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C#/Windows</td></tr>
+<tr>
+<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
+<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
+<tr>
+<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
+<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">CreateHDICluster</td></tr>
+</table>
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -635,7 +626,7 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
 
 9. **Main()** 関数で、次のコードをコピーしてファイルに貼り付けます。
 
-	> [AZURE.NOTE] HDInsight Linux クラスターをホストできるリージョンは、**東南アジア**、**北ヨーロッパ**、**米国東部**、**米国中南部**のみです。指定するストレージ アカウントは同じリージョンにする必要があります。
+	> [AZURE.NOTE]HDInsight Linux クラスターをホストできるリージョンは、**東南アジア**、**北ヨーロッパ**、**米国東部**、**米国中南部**のみです。指定するストレージ アカウントは同じリージョンにする必要があります。
 
         string thumbprint = "<CertificateThumbprint>";  
         string subscriptionid = "<AzureSubscriptionID>";

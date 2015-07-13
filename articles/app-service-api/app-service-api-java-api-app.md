@@ -26,7 +26,7 @@
 
 ## Azure ポータルでの API アプリの作成
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)か、[無料試用版にサインアップ](/pricing/free-trial/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)か、[無料評価版にサインアップ](/pricing/free-trial/)してください。無料評価版の [App Service アプリのサンプル](http://tryappservice.azure.com)を試すこともできます。
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)にログインします。
 
@@ -38,7 +38,7 @@
 
 4. **[名前]** に JavaAPIApp などの値を入力します。
 
-5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、価格レベル、および場所などのオプションを選択します。
+5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、料金レベル、および場所などのオプションを選択します。
 
 	![][portal-create-api]
 
@@ -58,7 +58,7 @@
 
 ## 新しい API アプリの Git 発行の有効化
 
-[Git](http://git-scm.com) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。API アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、API アプリが Web アプリに基づいているために API アプリで使用できる App Service Web Apps の機能です。つまり、Azure App Service の API アプリは、Web サービスをホストするための追加の機能を持つ Web アプリであるということです。
+[Git](http://git-scm.com) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。API アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、API アプリが Web アプリに基づいているために API アプリで使用できる App Service Web アプリの機能です。つまり、Azure App Service の API アプリは、Web サービスをホストするための追加の機能を持つ Web アプリであるということです。
 
 ポータルでは、**[API アプリ]** ブレードで API アプリ固有の機能を管理し、**[API アプリ ホスト]** ブレードで Web アプリと共通する機能を管理します。このセクションでは、**[API アプリ ホスト]** ブレードに移動して、Git デプロイメントの機能を構成します。
 
@@ -270,4 +270,4 @@ API アプリ バックエンドを使用する Java Web アプリケーショ�
 [api-definition-blade]: ./media/app-service-api-java-api-app/apidefblade.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

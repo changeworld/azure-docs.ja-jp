@@ -43,7 +43,7 @@ Azure ポータルで、Service Bus のルート SAS 接続文字列をコピー
 
 ## Hybrid Connection Manager をインストールする
 
-1. プレビュー [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、作成したコネクタを選択します。開くには、**[参照]**、**[API Apps]** の順に選択した後、コネクタまたは API アプリを選択します。<br/><br/>**[ハイブリッド接続]** の設定は **［未完了］** になっています。<br/> ![][2] 
+1. プレビュー [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、作成したコネクタを選択します。開くには、**[参照]**、**[API Apps]** の順に選択した後、コネクタまたは API App を選択します。<br/><br/>**[ハイブリッド接続]** の設定は **［未完了］** になっています。<br/> ![][2] 
 
 2. **[ハイブリッド接続]** を選択します。前に入力した Service Bus 接続文字列が表示されます。
 3. **プライマリ構成文字列**をコピーします。<br/>![][PrimaryConfigString]
@@ -108,11 +108,11 @@ TCP ポート | 理由
 
 **質問**: Hybrid Connection Manager が 2 つあります。違いは何でしょうか。<br/> **回答**: オンプレミスに接続するために主に Web Apps (以前の Web サイト) と Mobile Apps (以前のモバイル サービス) によって使用される[ハイブリッド接続](../integration-hybrid-connection-overview.md)テクノロジがあります。この Hybrid Connections Manager には独自の[セットアップ](../integration-hybrid-connection-create-manage.md)があり、Azure BizTalk Service を (バック グラウンドで) 使用します。それは、TCP プロトコルと HTTP プロトコルのみをサポートします。
 
-Azure App Service コネクタにも、Hybrid Connection Manager があります。この Hybrid Connection Manager は Azure BizTalk Service を (バック グラウンドで) 使用せず、TCP プロトコルと HTTP プロトコル以外のプロトコルもサポートします。「[Connectors and API Apps (コネクタと API Apps の一覧](app-service-logic-connectors-list.md)」を参照してください。
+Azure App Service コネクタにも、Hybrid Connection Manager があります。この Hybrid Connection Manager は Azure BizTalk Service を (バック グラウンドで) 使用せず、TCP プロトコルと HTTP プロトコル以外のプロトコルもサポートします。「[Connectors and API Apps (コネクタと API Apps の一覧)](app-service-logic-connectors-list.md)」を参照してください。
 
 どちらも、Azure Service Bus を使用してオンプレミス システムに接続します。
 
-**質問**: カスタム API アプリを作成した場合、App Service Hybrid Connection Manager を使用してオンプレミスに接続できますか。 <br/> **回答**: 従来の意味ではできません。組み込みコネクタを使用し、App Service Hybrid Connection Manager を構成することで、オンプレミス システムに接続できます。その後、カスタム API アプリの中で、ロジック アプリを利用してこのコネクタを使用します。現時点では、独自のハイブリッド API アプリ (SQL コネクタやファイル コネクタなど) は開発することも作成することもできません。
+**質問**: カスタム API App を作成した場合、App Service Hybrid Connection Manager を使用してオンプレミスに接続できますか。 <br/> **回答**: 従来の意味ではできません。組み込みコネクタを使用し、App Service Hybrid Connection Manager を構成することで、オンプレミス システムに接続できます。その後、カスタム API App の中で、Logic App を利用してこのコネクタを使用します。現時点では、独自のハイブリッド API App (SQL コネクタやファイル コネクタなど) は開発することも作成することもできません。
 
 カスタム API で TCP または HTTP ポートを使用する場合は、[ハイブリッド接続](../integration-hybrid-connection-overview.md) とその Hybrid Connection Manager を使用することができます。このシナリオでは、Azure BizTalk Service が使用されます。[オンプレミスの SQL Server に Web アプリから接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)と便利な場合があります。
 

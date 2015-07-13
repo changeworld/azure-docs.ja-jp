@@ -1,88 +1,54 @@
-## What are Service Bus Topics and Subscriptions?
+## Service Bus トピックとサブスクリプションとは
 
-Service Bus topics and subscriptions support a *publish/subscribe*
-messaging communication model. When using topics and subscriptions,
-components of a distributed application do not communicate directly with
-each other; instead they exchange messages via a topic, which acts as an
-intermediary.
+Service Bus のトピックとサブスクリプションは、メッセージ通信の*発行/サブスクライブ* モデルをサポートします。トピックとサブスクリプションを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りすることになります。
 
 ![TopicConcepts](./media/service-bus-java-how-to-create-topic/sb-topics-01.png)
 
-In contrast with Service Bus queues, in which each message is processed by a
-single consumer, topics and subscriptions provide a "one-to-many" form
-of communication, using a publish/subscribe pattern. It is possible to
-register multiple subscriptions to a topic. When a message is sent to a
-topic, it is then made available to each subscription to handle/process
-independently.
+各メッセージが 1 つのコンシューマーによって処理される Service Bus キューとは異なり、トピックとサブスクリプションでは、発行/サブスクライブ パターンを使用した "1 対多" 形式の通信を行います。複数のサブスクリプションを 1 つのトピックに登録できます。トピックに送信されたメッセージはサブスクリプションに渡され、各サブスクリプションで独立して処理できます。
 
-A subscription to a topic resembles a virtual queue that receives copies of
-the messages that were sent to the topic. You can optionally register
-filter rules for a topic on a per-subscription basis, which allows you
-to filter/restrict which messages to a topic are received by which topic
-subscriptions.
+トピックにとってのサブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。トピックに対するフィルター ルールをサブスクリプション単位で登録することもできます。これを使用すると、トピックに送信されるどのメッセージをどのトピック サブスクリプションで受信するかのフィルター処理や制限ができます。
 
-Service Bus topics and subscriptions enable you to scale to process a
-very large number of messages across a very large number of users and
-applications.
+Service Bus のトピックとサブスクリプションを使用することで、多数のユーザーとアプリケーションの間でやり取りされる膨大な数のメッセージを処理することもできます。
 
-## Create a service namespace
+## サービス名前空間の作成
 
-To begin using Service Bus topics and subscriptions in Azure,
-you must first create a service namespace. A service namespace provides
-a scoping container for addressing Service Bus resources within your
-application.
+Azure Service Bus トピックとサブスクリプションを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a service namespace:
+サービス名前空間を作成するには:
 
-1.  Log on to the [Azure Management Portal][].
+1.  [Azure 管理ポータル][]へのログオン
 
-2.  In the left navigation pane of the Management Portal, click
-    **Service Bus**.
+2.  管理ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  In the lower pane of the Management Portal, click **Create**.
-    ![][0]
+3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。![][0]
 
-4.  In the **Add a new namespace** dialog, enter a namespace name.
-    The system immediately checks to see if the name is available.
-    ![][2]
+4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![][2]
 
-5.  After making sure the namespace name is available, choose the
-    country or region in which your namespace should be hosted (make
-    sure you use the same country/region in which you are deploying your
-    compute resources).
+5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-	IMPORTANT: Pick the **same region** that you intend to choose for
-    deploying your application. This will give you the best performance.
+	重要: アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6. 	Leave the other fields in the dialog with their default values (**Messaging** and **Standard Tier**), then click the check mark. The system now creates your service
-    namespace and enables it. You might have to wait several minutes as
-    the system provisions resources for your account.
+6. 	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** プラン) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し終わるまでに、数分間かかる場合があります。
 
 	![][6]
 
 
-## Obtain the default management credentials for the namespace
+## 名前空間の既定の管理資格情報の取得
 
-In order to perform management operations, such as creating a topic or
-subscription on the new namespace, you must obtain the management
-credentials for the namespace. You can obtain these credentials from the Azure management portal.
+新規作成した名前空間に対してトピックやサブスクリプションの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure 管理ポータルから取得できます。
 
-### To obtain management credentials from the portal
+### ポータルから管理資格情報を取得するには
 
-1.  In the left navigation pane, click the **Service Bus** node to
-    display the list of available namespaces:
-    ![][0]
+1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![][0]
 
-2.  Click on the namespace you just created from the list shown:
-    ![][3]
+2.  表示された一覧から先ほど作成した名前空間を選択します。 ![][3]
 
-3.  Click **Configure** to view the shared access policies for your namespace.
-	![](./media/service-bus-java-how-to-create-topic/sb-queues-14.png)
+3.  **[構成]** をクリックして、名前空間の共有アクセス ポリシーを表示します。![](./media/service-bus-java-how-to-create-topic/sb-queues-14.png)
 
-4.  Make a note of the primary key, or copy it to the clipboard.
+4.  プライマリ キーを書き留めておくか、クリップボードにコピーしておいてください。
 
 
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure 管理ポータル]: http://manage.windowsazure.com
   [0]: ./media/service-bus-java-how-to-create-topic/sb-queues-13.png
   [2]: ./media/service-bus-java-how-to-create-topic/sb-queues-04.png
   [3]: ./media/service-bus-java-how-to-create-topic/sb-queues-09.png
@@ -90,3 +56,5 @@ credentials for the namespace. You can obtain these credentials from the Azure m
 
   [6]: ./media/service-bus-java-how-to-create-topic/getting-started-multi-tier-27.png
   [34]: ./media/service-bus-java-how-to-create-topic/VSProperties.png
+
+<!---HONumber=62-->

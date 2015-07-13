@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL データベース" 
+	pageTitle="Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database" 
 	description="Python Tools for Visual Studio を使用して、SQL database インスタンスにデータを保存する Django Web アプリを作成し、Azure App Service Web Apps にデプロイする方法について説明します。" 
 	services="app-service\web" 
 	tags="python"
@@ -20,7 +20,7 @@
 
 
 
-# Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL データベース 
+# Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database 
 
 このチュートリアルでは、[Python Tools for Visual Studio] のサンプル テンプレートを使用して、単純な投票 Web アプリを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=ZwcoGcIeHF4)でもご覧いただけます。
 
@@ -38,7 +38,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -143,7 +143,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
   	![Install Python Package ダイアログ](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackagePyodbc.png)
 
-1.  **pip** を使用して パッケージ `django-pyodbc-azure` をインストールします。
+1.  **pip** を使用して `django-pyodbc-azure` パッケージをインストールします。
 
   	![Install Python Package ダイアログ](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackageDjangoPyodbcAzure.png)
 
@@ -187,7 +187,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service Web Apps 
 
 ## 次のステップ
 
-Python Tools for Visual Studio、Django および SQL データベースの詳細については、以下のリンクを参照してください。
+Python Tools for Visual Studio、Django および SQL Database の詳細については、以下のリンクを参照してください。
 
 - [Python Tools for Visual Studio のドキュメント]
   - [Web プロジェクト]
@@ -197,8 +197,8 @@ Python Tools for Visual Studio、Django および SQL データベースの詳�
 - [SQL Database]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->

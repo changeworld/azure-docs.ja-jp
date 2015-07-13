@@ -1,6 +1,6 @@
 <properties 
 	title="How to add a users to an elastic database pool" 
-	pageTitle="エラスティック データベース プールにユーザーを追加する方法" 
+	pageTitle="弾力性データベース プールにユーザーを追加する方法" 
 	description="プール内の各 db に特権を持つユーザーを追加する必要があります。" 
 	metaKeywords="azure sql database elastic databases credentials" 
 	services="sql-database" documentationCenter=""  
@@ -16,17 +16,17 @@
 	ms.date="04/20/2015" 
 	ms.author="sidneyh" />
 
-# エラスティック データベース プールにユーザーを追加する方法
+# 弾力性データベース プールにユーザーを追加する方法
 
-エラスティック データベース ジョブにより、[エラスティック データベース プール](sql-database-elastic-pool.md)内のすべてのデータベースに対して、同じスクリプトを実行することができます。スクリプトを実行するには、プール内のすべてのデータベースに適切なアクセス許可を持つユーザーを追加する必要があります。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx?f=255&MSPPError=-2147217396)」か「[Adding Users to Your SQL Azure Database (SQL Azure Database にユーザーを追加する)](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)」をご覧ください。
+弾力性データベース ジョブにより、[弾力性データベース プール](sql-database-elastic-pool.md)内のすべてのデータベースに対して、同じスクリプトを実行することができます。スクリプトを実行するには、プール内のすべてのデータベースに適切なアクセス許可を持つユーザーを追加する必要があります。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx?f=255&MSPPError=-2147217396)」か「[Adding Users to Your SQL Azure Database (SQL Azure Database にユーザーを追加する)](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)」をご覧ください。
 
 ## 前提条件
-* [エラスティック データベース プール (プレビュー) を作成する](sql-database-elastic-pool-portal.md)
-* [エラスティック ジョブ コンポーネント](sql-database-elastic-jobs-service-installation.md)をインストールします。 
+* [弾力性データベース プール (プレビュー) を作成する](sql-database-elastic-pool-portal.md)
+* [弾力性ジョブ コンポーネント](sql-database-elastic-jobs-service-installation.md)をインストールします。 
 
 ## データベースにユーザーを追加する方法
 
-1.	まず、エラスティック データベース プール内のデータベースが存在する Azure SQL Database サーバーの**マスター**に接続し、**エラスティック データベース ジョブ**をインストールしたときに提供されたものと同じ資格情報を使用して新しいログインを作成します。
+1.	まず、弾力性データベース プール内のデータベースが存在する Azure SQL Database サーバーの**マスター**に接続し、**弾力性データベース ジョブ**をインストールしたときに提供されたものと同じ資格情報を使用して新しいログインを作成します。
 
 		CREATE LOGIN login1 WITH password='<ProvidePassword>';
 
@@ -38,7 +38,7 @@
 
 ## 次のステップ
 
-データベース プールに対してジョブを実行します。「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
+データベース プールに対してジョブを実行します。「[弾力性データベースのジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -46,4 +46,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

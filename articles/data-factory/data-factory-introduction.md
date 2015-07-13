@@ -22,7 +22,7 @@ The **Azure Data Factory** service is a fully managed service for composing data
 -->
 
 
- **Azure のデータのファクトリ** サービスは、完全に管理されたサービスを効率化された、スケーラブルで信頼性の高いデータの実稼働のパイプラインにデータの記憶域、データ処理、およびデータ移動のサービスを作成するためのです。Data Factory サービスでは、以下を実行できます。
+**Azure Data Factory** は完全に管理されたサービスで、データの保存、データの処理、データの移動の各サービスを効率的かつスケーラブルで信頼性の高いデータ生成パイプラインとして構成します。Data Factory サービスでは、以下を実行できます。
 
 - オンプレミス、クラウド ベース、およびインターネットのデータ ストアから取得したデータを結合、集計、および変換するデータ主導のワークフロー (パイプライン) を構築します。 
 - さまざまなデータ ソースの、半構造化、非構造化、および構造化されたデータを信頼できる情報に変換します。
@@ -30,10 +30,10 @@ The **Azure Data Factory** service is a fully managed service for composing data
 - 単純な JSON スクリプトを通じて、複雑なデータ処理を設定します。
 - Azure プレビュー ポータルが提供する充実したビジュアル エクスペリエンスを通じて、これらのパイプラインの監視と管理をひとめで行えます。  
 
-次のビデオは、Azure のデータのファクトリのサービスの簡単な概要を提供します。
+次のビデオは、Azure Data Factory サービスの簡単な概要を紹介します。
 
 
-- [ビデオ: Azure のデータのファクトリの概要](http://azure.microsoft.com/documentation/videos/introducing-azure-data-factory/)
+- [ビデオ: Azure Data Factory の概要](http://azure.microsoft.com/documentation/videos/introducing-azure-data-factory/)
 
 
 <!--
@@ -49,16 +49,16 @@ This article provides an overview of the Azure Data Factory service, the value i
 
 今日の企業を取り巻くデータ環境は、量、種類、複雑さのいずれにおいても指数関数的に増大し続けています。形式もスピードも異なる内部設置型データとクラウドで生成されたデータが混ざり合い、かつてないほど多様化しています。データ処理は、各地に分散する場所にまたがって行わなければならず、オープン ソース ソフトウェア、商用ソリューション、カスタム処理サービスが併用され、高コストで、統合や保守が困難なものとなっています。変化し続ける現代のビッグ データ環境への適用に欠かせない機敏性は、従来の EDW に現代の情報生成システムとして求められる各種機能を組み合わせることで獲得できます。
 
-![今日のさまざまな処理のランドス ケープ][image-data-factory-introduction-todays-diverse-processing-landspace]
+![今日のさまざまな処理のランドスケープ][image-data-factory-introduction-todays-diverse-processing-landspace]
 
- **Azure のデータのファクトリ** サービスが従来 EDWs の間で動作しデータ変化企業のすべてのデータを活用するには、データ駆動型の意思決定の使用できるようにするには、合成プラットフォームです。企業は、データの処理、保存、および移動のサービスを情報生成パイプラインとして構成して、信頼できるデータ資産を管理するプラットフォームを獲得でき、今日のデータ環境がもたらす多様性を活用できます。
+**Azure Data Factory** サービスは、従来の EDW と変化するデータ環境の両方に対して機能する構成プラットフォームであり、企業は利用可能なすべてのデータを活用してデータ主導の意思決定を行えるようになります。企業は、データの処理、保存、および移動のサービスを情報生成パイプラインとして構成して、信頼できるデータ資産を管理するプラットフォームを獲得でき、今日のデータ環境がもたらす多様性を活用できます。
 
 Azure Data Factory サービスでは、以下を実行できます。
 
-- **多様なデータの格納と処理のシステムと簡単に操作します。** Data Factory サービスでは、オンプレミス データ (SQL Server など) と、Azure SQL データベース、Azure のテーブル、BLOB などのクラウド データ ソースの両方を移動して処理する情報生成パイプラインを作成することができます。 
-- **信頼されている情報へのデータを変換します。** Data Factory サービスは、Hive、Pig、および C# の処理に加えて、Hadoop (HDInsight) クラスターの自動管理、一時的な障害発生時の再試行、構成可能なタイムアウト ポリシー、アラート機能などの主要な処理機能をサポートしています。  
-- **データ パイプラインで 1 つの場所を監視します。** Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。データ パイプライン全体の正常性を迅速に評価し、問題を特定して、必要に応じて是正処置を取ることができます。データの系列とデータ間のリレーションシップをソース全体にわたって視覚的に追跡し、ジョブの実行、システムの正常性、依存関係の履歴全体を 1 つの監視ダッシュボードから確認することもできます。
-- **機能豊富な insights 変換されたデータからを使用する** 、データのファクトリのサービスでは、これで、ビジネス インテリジェンスおよび分析ツールおよびその他のアプリケーションで使用できる、信頼されているデータを生成するデータのパイプラインを作成することができます。
+- **さまざまなデータ保存システムや処理システムと簡単に連携。** Data Factory サービスでは、オンプレミス データ (SQL Server など) と、Azure SQL データベース、Azure のテーブル、BLOB などのクラウド データ ソースの両方を移動して処理する情報生成パイプラインを作成することができます。 
+- **データを信頼できる情報に変換。** Data Factory サービスは、Hive、Pig、および C# の処理に加えて、Hadoop (HDInsight) クラスターの自動管理、一時的な障害発生時の再試行、構成可能なタイムアウト ポリシー、アラート機能などの主要な処理機能をサポートしています。  
+- **1 か所でデータ パイプラインを監視。** Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。データ パイプライン全体の正常性を迅速に評価し、問題を特定して、必要に応じて是正処置を取ることができます。データの系列とデータ間のリレーションシップをソース全体にわたって視覚的に追跡し、ジョブの実行、システムの正常性、依存関係の履歴全体を 1 つの監視ダッシュボードから確認することもできます。
+- **変換されたデータから豊富な洞察を獲得。**Data Factory サービスでは、ビジネス インテリジェンスと分析ツール、およびその他のアプリケーションで使用できる信頼性の高いデータを生成するデータ パイプラインを作成することができます。
 
 <!--
 Today, to take advantage of the benefits of Data Factory, developers interact directly with individual data pipelines, storage services, and compute services.  As the Data Factory service evolves over time, we will introduce additional storage and processing services, and new mechanisms of grouping compute and storage services and data pipelines together into ‘Hubs’.  We describe Hubs here in our introduction, as this nascent concept appears throughout the service as a precursor for future releases.
@@ -76,9 +76,9 @@ Hubs will help to encapsulate storage and compute in a way where pipelines can r
 
 Azure データ ファクトリには 3 つの情報生成段階があります。
 
-- **接続 (&) の収集**です。この段階では、さまざまなデータ ソースからデータがデータ ハブにインポートされます。データ ファクトリ内のパイプラインは、1 つまたは複数のアクティビティを持つことができます。1 つまたは複数を使用する **コピー** さらに処理するためのデータ ハブで使用して変換先データ ストアにデータ ストアをソースからデータを収集するためのデータのパイプライン内のアクティビティです。HDInsight クラスター (計算) および関連する Azure BLOB ストレージ (ストレージ) が一緒になって、データ ハブ、つまり HDInsight データ ハブを形成します。HDInsight データ ハブを使用するには、HDInsight クラスターでデータを処理できるように、すべてのソース データを HDInsight に関連付けられている Azure の BLOB ストアにコピーします。パイプラインは、HDInsight クラスターなどのデータ ハブ内のコンピューティング リソースで実行されます。      
-- **変換 (&) 強化**です。この段階では、収集されたデータが処理されます。たとえば、 **HDInsight アクティビティ** Hive と Pig スクリプトを使用して、信頼されている情報を生成する変換を実行することによって、関連付けられている Azure の blob ストアに格納されているデータ パイプラインで処理できます。(図に示すように) パイプラインを連結すると、パイプラインの出力データ セットを同じデータ ハブまたは別のデータ ハブの別のパイプラインの入力データ セットにすることもできます。  
-- **発行**です。この段階では、BI ツールや分析ツールなどのアプリケーションで使用できるように、データが発行されます。たとえば、パイプライン内でコピー アクティビティを実行する場合であれば、変換と強化の段階で実行された処理の出力データを、ビジネス インテリジェンス ソリューションの構築の土台となるデータ ストア (例: 内部設置型 SQL Server) にコピーできます。   
+- **接続と収集**。この段階では、さまざまなデータ ソースからデータがデータ ハブにインポートされます。データ ファクトリ内のパイプラインは、1 つまたは複数のアクティビティを持つことができます。データ パイプラインで 1 つまたは複数の**コピー** アクティビティを使用すると、ソース データ ストアからデータを収集し、その後の処理を行うデータ ハブ内のターゲット データ ストアに送ることができます。HDInsight クラスター (計算) および関連する Azure BLOB ストレージ (ストレージ) が一緒になって、データ ハブ、つまり HDInsight データ ハブを形成します。HDInsight データ ハブを使用するには、HDInsight クラスターでデータを処理できるように、すべてのソース データを HDInsight に関連付けられている Azure の BLOB ストアにコピーします。パイプラインは、HDInsight クラスターなどのデータ ハブ内のコンピューティング リソースで実行されます。      
+- **変換と強化。**この段階では、収集されたデータが処理されます。たとえば、パイプライン内の **HDInsight アクティビティ**では、Hive や Pig のスクリプトを使用してデータを信頼性の高い情報に変換することによって、関連付けられている Azure の BLOB ストアに格納されているデータを処理できます。(図に示すように) パイプラインを連結すると、パイプラインの出力データ セットを同じデータ ハブまたは別のデータ ハブの別のパイプラインの入力データ セットにすることもできます。  
+- **発行**。この段階では、BI ツールや分析ツールなどのアプリケーションで使用できるように、データが発行されます。たとえば、パイプライン内でコピー アクティビティを実行する場合であれば、変換と強化の段階で実行された処理の出力データを、ビジネス インテリジェンス ソリューションの構築の土台となるデータ ストア (例: 内部設置型 SQL Server) にコピーできます。   
 
 <!--
 
@@ -93,13 +93,13 @@ Finally, **pipelines** can be chained (as shown in the diagram) such that the ou
 
 
 ##次のステップ
-1. [データ ファクトリの][datafactory-getstarted]です。リンク先の記事では、Azure BLOB から Azure SQL データベースにデータをコピーする Azure Data Factory サンプルの作成方法についての詳細なチュートリアルが記載されています。
-2. [チュートリアル: 移動し、データのファクトリを使用してログ ファイルの処理を][adf-tutorial]です。この記事では、 **エンド ツー エンド チュートリアル** を実装する方法を示す、 **実際のシナリオ** insights にログ ファイルからデータを変換する Azure のデータのファクトリを使用します。
+1. [Data Factory を使ってみましょう][datafactory-getstarted]。リンク先の記事では、Azure BLOB から Azure SQL データベースにデータをコピーする Azure Data Factory サンプルの作成方法についての詳細なチュートリアルが記載されています。
+2. [チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial]この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する**現実のシナリオ**の実行方法について、**詳細なチュートリアル**が記載されています。
 
 ## 関連項目
-- [データ Factory - 用語][adf-terminology]です。この記事で、Azure のデータのファクトリのサービスを使用してデータのファクトリの作成に使われる用語を紹介します。 
-- [よく寄せられる質問 - データ ファクトリ][adf-faq]です。この記事では、よく寄せられる質問と回答の一覧を示します。
-- [Azure のデータのファクトリを使用するための一般的なシナリオ][adf-common-scenarios]です。この記事では、Azure Data Factory サービスを使用するいくつかの一般的なシナリオについて説明します。 
+- [Data Factory - 用語][adf-terminology]。この記事で、Azure Data Factory サービスで Data Factory を作成する際に使われる用語を紹介します。 
+- [Data Factory - よく寄せられる質問][adf-faq]。この記事では、よく寄せられる質問と回答の一覧を示します。
+- [Azure Data Factory を使用する一般的なシナリオ][adf-common-scenarios]。この記事では、Azure Data Factory サービスを使用するいくつかの一般的なシナリオについて説明します。 
 
 
 [Power-Query-Azure-Table]: http://office.microsoft.com/en-001/excel-help/connect-to-microsoft-azuretable-storage-HA104122607.aspx
@@ -136,4 +136,8 @@ Finally, **pipelines** can be chained (as shown in the diagram) such that the ou
 
 [image-data-factory-data-flow]: ./media/data-factory-introduction/DataFactoryDataFlow.png
 
-<!---HONumber=GIT-SubDir--> 
+
+
+ 
+
+<!---HONumber=62-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.date="06/24/2015"
 	ms.author="danlep"/>
 
 
@@ -26,7 +26,7 @@
 
 このチュートリアルは、コンピューティング クラスターまたは HPC Pack を使用した経験がない読者を対象に作成されています。これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。HPC Pack クラスター全体を Azure にセットアップする場合は、「[Azure VM の Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?linkid=330375)」をご覧ください。
 
->[AZURE.NOTE]Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](http://go.microsoft.com/fwlink/p/?LinkId=389844)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。詳細については、[A8、A9、A10、A11 コンピューティング集中型インスタンス](http://go.microsoft.com/fwlink/p/?Linkid=328042)に関するページを参照してください。
+>[AZURE.NOTE]Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
 
 ## 前提条件
 
@@ -44,7 +44,7 @@
 
 	* 重要な更新プログラムがインストールされていることを確認します。
 
-* HPC Pack 2012 R2 のインストール ファイル。無料で利用できます。最新のバージョンは、HPC Pack 2012 Update 1 です。フル インストール パッケージを[ダウンロード](http://go.microsoft.com/fwlink/p/?linkid=328024)して、ヘッド ノード コンピューターに、またはネットワーク上にコピーします。Windows Server のインストールと同じ言語を選択してください。
+* HPC Pack 2012 R2 のインストール ファイル。無料で利用できます。最新バージョンを[ダウンロード](http://go.microsoft.com/fwlink/p/?linkid=328024)して、ヘッド ノード コンピューターに、またはネットワーク上にコピーします。Windows Server のインストールと同じ言語を選択してください。
 
 * ヘッド ノード上にローカル管理者権限があるドメイン アカウント。
 
@@ -106,7 +106,7 @@ HPC Pack ではヘッド ノードに自己署名証明書 (既定の Microsoft 
 
 	![証明書の設定][upload_cert1]
 
-4. ヘッド ノードでファイル C:\\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer を参照し、**チェック** マークのボタンをクリックします。
+4. ヘッド ノードでファイル C:\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer を参照し、**チェック** マークのボタンをクリックします。
 
 	![証明書のアップロード][install_hpc10]
 
@@ -307,8 +307,7 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 * [HPC Pack 2012 R2 と HPC Pack 2012](http://go.microsoft.com/fwlink/p/?LinkID=263697)
 * [Microsoft HPC Pack を使用した Azure へのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)
 * [Azure VM の Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?linkid=330375)
-* [Azure のビッグ コンピューティング: HPC とバッチ](http://azure.microsoft.com/solutions/big-compute/)
-* [Azure のビッグ コンピューティング: HPC およびバッチの技術文書](http://msdn.microsoft.com/library/azure/dn482128.aspx)
+* [Azure における大規模なコンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](big-compute-resources.md)
 
 
 [Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
@@ -348,4 +347,4 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -5,7 +5,7 @@
 		compile 'com.android.support:support-v4:21.0.3'
     	compile 'com.google.code.gson:gson:2.2.2'
 	    compile 'com.google.guava:guava:18.0'
-	    compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.2-beta'
+	    compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.2+'
 
 
 2. ここで、**[Sync Project with Gradle Files]** をクリックして、プロジェクトを再ビルドします。
@@ -15,11 +15,7 @@
 		<uses-permission android:name="android.permission.INTERNET" />
 
 
-6. AndroidManifest.xml ファイルを開き、次の行を追加します。その結果、アプリケーションが Azure 上の Mobile Services にアクセスできるようになります。
-
-		<uses-permission android:name="android.permission.INTERNET" />
-
-5. Project Explorer で、**GetStartedWithData => app => src => java** フォルダーに含まれている TodoActivity.java ファイルを開き、次のコード行をコメント解除します。
+4. Project Explorer で、**GetStartedWithData => app => src => java** フォルダーに含まれている TodoActivity.java ファイルを開き、次のコード行をコメント解除します。
 
 
 
@@ -165,4 +161,5 @@
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: http://aka.ms/Iajk6q
-<!--HONumber=54-->
+
+<!---HONumber=62-->

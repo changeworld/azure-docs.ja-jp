@@ -1,6 +1,6 @@
-﻿
 
-1. default.js プロジェクト ファイルを開き、**app.OnActivated** メソッドのオーバーロード内で、**refreshTodoItems** メソッドの最後の呼び出しを次のコードで置き換えます。 
+
+1. default.js プロジェクト ファイルを開き、**app.OnActivated** メソッド オーバーロード内で、**refreshTodoItems** メソッドの最後の呼び出しを次のコードで置き換えます。 
 
         // Define a member variable for storing the signed-in user.
         var userId = null;
@@ -32,17 +32,16 @@
             authenticate();
         });
 
-	Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡される値を次のいずれかに変更します。_microsoftaccount_、_twitter_、_google_、_windowsazureactivedirectory_ のいずれかに変更します。
+	Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡す値を _microsoftAccount_、_twitter_、_google_、_windowsazureactivedirectory_ のいずれかに変更します。
 
-    >[AZURE.NOTE]Windows ストア アプリ パッケージ情報を Mobile Servicesに登録している場合は、<em>useSingleSignOn</em> パラメーターに値 <strong>true</strong> を指定して <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> メソッドを呼び出す必要があります。この操作を行わない場合、login メソッドが呼び出されるたびに、ユーザーにログイン プロンプトが表示されます。
+    >[AZURE.NOTE]Windows ストア アプリ パッケージ情報を Mobile Services に登録している場合は、<em>useSingleSignOn</em> パラメーターに値 <strong>true</strong> を指定して <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> メソッドを呼び出す必要があります。この操作を行わない場合、login メソッドが呼び出されるたびに、ユーザーにログイン プロンプトが表示されます。
 
-2. Windows ストア アプリ プロジェクトで、default.html プロジェクト ファイルを開き、**[保存]** ボタンを定義する要素の直前に次の **button** 要素を追加します。
+2. Windows ストア アプリ プロジェクトで、default.html プロジェクト ファイルを開き、**[保存]** ボタンを定義する要素の直前に次の **Button** 要素を追加します。
 
       	<button id="buttonLogin" style="margin-left: 5px">Sign in</button>
 
-3. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。 
+3. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-
-<!--HONumber=52-->
+<!---HONumber=62-->

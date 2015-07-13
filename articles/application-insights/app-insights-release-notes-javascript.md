@@ -18,4 +18,6 @@
 
 [JavaScript 向けの SDK を使用する](app-insights-javascript.md)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=62-->

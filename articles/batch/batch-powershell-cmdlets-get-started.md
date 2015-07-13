@@ -19,7 +19,7 @@
 # Azure Batch PowerShell コマンドレットの使用
 この記事では、Batch アカウントの管理と Batch 作業項目、ジョブ、タスクに関する情報の取得に使用できる Azure PowerShell コマンドレットについて簡単に紹介します。
 
-コマンドレット構文の詳細については、「`get-help <Cmdlet_name>`」と入力するか、または[Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)のページを参照してください。
+コマンドレット構文の詳細については、「`get-help <Cmdlet_name>`」と入力するか、[Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)のページを参照してください。
 
 
 ## 前提条件
@@ -55,7 +55,7 @@ Azure PowerShell コマンドレットを使用すると、Batch アカウント
 New-AzureResourceGroup –Name MyBatchResourceGroup –location "Central US"
 ```
 
-次に、リソース グループに新しいBatch アカウントを作成し、<*account_name*> にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
+次に、リソース グループに新しいBatch アカウントを作成し、< * account_name * > にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
 
 ```
 New-AzureBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -164,4 +164,4 @@ Get-AzureBatchWorkItem -MaxCount 2500 -BatchContext $context
 * [Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [効率的なリスト クエリ](batch-efficient-list-queries.md)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

@@ -20,7 +20,7 @@
 
 ### ストリーミング ログ ###
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)には、統合されたストリーミング ログ ビューアーが用意されており、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリのトレース イベントをリアルタイムで表示できます。
+[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)には、統合されたストリーミング ログ ビューアーが用意されており、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps のトレース イベントをリアルタイムで表示できます。
 
 この設定には、次のいくつかの簡単な手順が必要です。
 

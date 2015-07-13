@@ -24,7 +24,7 @@
 -	入力 CSV ファイルを保持する Azure BLOB ストレージ (または) 評価する入力データを含む Azure SQL Database。 
 -	スコア結果の CSV ファイルを保持する Azure BLOB ストレージ (または) 出力データを保持する Azure SQL Database。 
 
-	![Machine Learning のダッシュボード][machine-learning-dashboard]
+	![Machine Learning Dashboard][machine-learning-dashboard]
 
 	AzureMLLinkedService のバッチ スコアリング URL が上図に示すように取得されます (-‘**help**’)。: https://ussouthcentral.services.azureml.net/workspaces/da9e350b758e44b2812a6218d507e216/services/8c91ff373a81416f8f8e0d96a1162681/jobs/
 
@@ -182,7 +182,7 @@
 
 	transformation: {
     	webServiceParameters: {
-    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \'{0:yyyy-MM-dd HH:mm:ss}\'', Time.AddHours(SliceStart, 0))"
+    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = '{0:yyyy-MM-dd HH:mm:ss}'', Time.AddHours(SliceStart, 0))"
     	}
   	}
  
@@ -307,7 +307,7 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
 記事 | 説明
 ------ | ---------------
-[Azure Data Factory の開発者向けリファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、.NET クラス ライブラリ、関数などの包括的なリファレンス コンテンツです。 
+[Azure Data Factory の開発者用リファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、.NET クラス ライブラリ、関数などの包括的なリファレンス コンテンツです。 
 
 [adf-introduction]: data-factory-introduction.md
 [adf-getstarted]: data-factory-get-started.md
@@ -324,4 +324,4 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

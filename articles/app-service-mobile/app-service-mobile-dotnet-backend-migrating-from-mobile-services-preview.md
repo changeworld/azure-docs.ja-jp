@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/22/2015" 
+	ms.date="06/23/2015" 
 	ms.author="mahender"/>
 
 # 既存の Azure Mobile Service を Azure App Service モバイル アプリに移行する
@@ -114,4 +114,5 @@ Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ�
 [Azure Scheduler]: /ja-jp/documentation/services/scheduler/
 [Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
 [クロスプラットフォーム プッシュ通知の送信]: app-service-mobile-dotnet-backend-xamarin-ios-push-notifications-to-user-preview.md
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

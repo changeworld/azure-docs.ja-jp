@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Application Insights による利用状況分析" 
-	description="Application Insights による利用状況分析の概要" 
-	services="application-insights" 
+<properties
+	pageTitle="Application Insights による利用状況分析"
+	description="Application Insights による利用状況分析の概要"
+	services="application-insights"
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="alancameronwills"
 	manager="kamrani"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/03/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article" 
+	ms.date="05/03/2015"
 	ms.author="awills"/>
- 
+
 # Application Insights による利用状況分析
 
 ユーザーによるアプリケーションの使用状況を把握することで、ユーザーにとって最も重要なシナリオに重点を置いて開発作業を行うことができ、実現するのが簡単またはより困難であるとユーザーが捉えている目標を理解することができます。
@@ -22,11 +22,11 @@
 Application Insights を使用すると、アプリケーションの利用状況を明確に把握できるため、ユーザー エクスペリエンスの向上やビジネス目標の達成に役立ちます。
 
 ## すぐに利用できる分析
- 
+
 [Application Insights][start] をプロジェクトに追加するだけで、特別な作業なしでユーザーの数やその他のデータを表示するグラフを利用できるようになります。
 
 ![Azure で、[参照]、[Application Insights]、目的のプロジェクトの順に選択し、下へスクロールします](./media/app-insights-overview-usage/01-overview.png)
- 
+
 グラフ上の空白部分にマウス ポインターを移動すると、特定のポイントにおける数が表示されます。それ以外の場合、特定の期間にわたって集計された値 (平均、合計、期間における一意のユーザーの数など) が表示されます。
 
 Web アプリケーションでは、ユーザーは Cookie を使用してカウントされます。複数のブラウザーを使用しているユーザー、Cookie を消去しているユーザー、またはプライバシー機能を使用しているユーザーは、複数回カウントされます。
@@ -36,7 +36,7 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 任意のグラフをクリックすると、より詳細な情報が表示されます。次に例を示します。
 
 ![概要ブレードで、[セッション] グラフをクリックします](./media/app-insights-overview-usage/02-sessions.png)
- 
+
 (この例は Web サイトの例ですが、デバイスで実行されるアプリの場合も同じようなグラフが表示されます)。
 
 前の週と比較して、変化していることがあるかどうかを調べることができます。
@@ -51,14 +51,14 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 
 ![1 つのメトリックを表示するグラフを選択します。[グループ] をオンにし、プロパティを選択します](./media/app-insights-overview-usage/03-browsers.png)
 
- 
+
 ## ページ利用状況
 
 ページ ビュー グラフをクリックすると、その拡大バージョンと、最も人気のあるページの内訳が表示されます。
 
 
 ![概要ブレードで、[ページ ビュー] グラフをクリックします](./media/app-insights-overview-usage/05-games.png)
- 
+
 上の例はゲーム Web サイトの情報を示しています。このグラフから、次のことがわかります。
 
 * 過去 1 週間の間に利用数が伸びていない。おそらく検索エンジンの最適化について考える必要があります。
@@ -83,7 +83,7 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 
 (C#)
 
-    var tc = new Microsoft.ApplicationInsights.TelemetryClient(); 
+    var tc = new Microsoft.ApplicationInsights.TelemetryClient();
     tc.TrackEvent("GameEnd");
 
 (VB)
@@ -112,29 +112,29 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 
 
 ![概要ブレードで、いずれかのカスタム イベントの種類をクリックします。](./media/app-insights-overview-usage/07-clickEvent.png)
- 
+
 目的のイベントをクリックし、最近の特定の発生箇所を選択します。
 
 
 ![概要グラフの下の一覧で、イベントをクリックします](./media/app-insights-overview-usage/08-searchEvents.png)
- 
+
 ここで、この特定の NoGame イベントが発生したセッションのすべてのテレメトリを見てみましょう。
 
 
 ![[セッションのすべてのテレメトリ] をクリックします](./media/app-insights-overview-usage/09-relatedTelemetry.png)
- 
+
 例外はありません。ここから、ユーザーのプレイを妨げるような障害が発生していないことがわかります。
- 
+
 このセッションのページ ビューを除くすべての種類のテレメトリをフィルターで除外できます。
 
 
 ![](./media/app-insights-overview-usage/10-filter.png)
- 
+
 ここから、このユーザーは最新のスコアを確認するためにのみログオンしたことがわかります。おそらく、これを簡単にするようなユーザー ストーリーの開発を検討する必要があります (加えて、この特定のストーリーが発生したことを報告するカスタム イベントを実装する必要があります)。
 
 ## プロパティを使用してデータをフィルター処理、検索、および分割する
 イベントには任意のタグと数値をアタッチできます。
- 
+
 
 クライアント側の JavaScript
 
@@ -148,7 +148,7 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 サーバー側の C#
 
     // Set up some properties:
-    var properties = new Dictionary <string, string> 
+    var properties = new Dictionary <string, string>
         {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
     var measurements = new Dictionary <string, double>
         {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
@@ -174,15 +174,15 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 
 クライアント側の JavaScript
 
-    appInsights.trackPageView("Win", 
-        {Game: currentGame.Name}, 
+    appInsights.trackPageView("Win",
+        {Game: currentGame.Name},
         {Score: currentGame.Score});
 
 診断検索で、イベントのそれぞれの発生箇所をクリックしてプロパティを表示します。
 
 
 ![イベントの一覧で、イベントを開き、[...] をクリックしてその他のプロパティを表示します](./media/app-insights-overview-usage/11-details.png)
- 
+
 [検索] ボックスを使用して、特定のプロパティ値を持つイベントを表示します。
 
 
@@ -215,7 +215,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
     ' Now all telemetry will automatically be sent with the context property:
     telemetry.TrackEvent("WinGame")
 
-個々の利用統計情報は、既定値を無視することができます。
+個々のテレメトリは、既定値を無視することができます。
 
 すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。
 
@@ -243,18 +243,20 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 分析は、単に問題の解決に役立つだけのものではなく、開発サイクルの重要な部分を構成します。いくつかのヒントを次に示します。
 
 * アプリケーションの重要なメトリックを見極める。対象ユーザーはできる限り多数のユーザーですか。それとも少数のたいへん満足しているユーザーですか。 アクセス数または売上を最大にしたいと思いますか。
-* 各ストーリーの評価を計画する。新しいユーザー ストーリーまたは機能の概略を考える場合、または既存のユーザー ストーリーまたは機能の更新を計画する場合は、変更の成功をどのように評価するかを常に考える必要があります。コーディングを始める前に、"これが動作したときにメトリックはどのような影響を受けるか。 すべての新しいイベントを追跡する必要があるか。" を常に考える必要があります。 もちろん、機能が稼動状態になったら、分析に注目し、その結果に基づいて対応します。 
+* 各ストーリーの評価を計画する。新しいユーザー ストーリーまたは機能の概略を考える場合、または既存のユーザー ストーリーまたは機能の更新を計画する場合は、変更の成功をどのように評価するかを常に考える必要があります。コーディングを始める前に、"これが動作したときにメトリックはどのような影響を受けるか。 すべての新しいイベントを追跡する必要があるか。" を常に考える必要があります。 もちろん、機能が稼動状態になったら、分析に注目し、その結果に基づいて対応します。
 * 他のメトリックを重要なメトリックに関連付ける。たとえば、"お気に入り" 機能を追加した場合は、ユーザーがお気に入りを追加する頻度を確認することになるでしょう。しかし、ユーザーがお気に入りに再びアクセスする頻度を知る方が、おそらくより興味深い結果が得られるでしょう。そして最も重要なことは、お気に入りを利用するユーザーに最終的により多くの製品を購入してもらえるかどうか、ということになります。
 * カナリア テスト。新機能が一部のユーザーにのみ表示されるようにする機能スイッチを設定します。Application Insights を使用して、新機能が意図したように使用されるかどうかを確認します。調整を行った後、より多くのユーザーを対象にリリースします。
 * ユーザーと話をする。 分析は、それだけでは不十分ですが、良好な顧客関係を保つための補完的役割を果たします。
 
 
+## ビデオ
 
+> [AZURE.VIDEO usage-monitoring-application-insights]
 
 
 <!--Link references-->
 
 [start]: app-insights-get-started.md
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service で Node.js アプリをデバッグする方法"
-	description="Azure App Service での Node.js アプリの作成方法の学習"
+	pageTitle="Azure App Service で Node.js Web アプリをデバッグする方法"
+	description="Azure App Service での Node.js Web アプリの作成方法の学習"
 	tags="azure-portal"
 	services="app-service\web"
 	documentationCenter="nodejs"
@@ -17,16 +17,16 @@
 	ms.date="04/23/2015"
 	ms.author="mwasson"/>
 
-# Azure App Service で Node.js アプリをデバッグする方法
+# Azure App Service で Node.js Web アプリをデバッグする方法
 
-Azure では、ビルトインの診断機能により、Azure の App Service Web Apps でホストされる Node.js アプリケーションのデバッグが支援されます。Azure でホストされる Node.js アプリケーションのデバッグに役立つ、組み込みの診断機能を提供する [Azure アプリ サービス](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリです。この記事では、stdout と stderr のログ記録を有効にし、エラー情報をブラウザーに表示する方法と、ログ ファイルをダウンロードして表示する方法について説明します。
+Azure では、ビルトインの診断機能により、Azure の App Service Web Apps でホストされる Node.js アプリケーションのデバッグが支援されます。Azure でホストされる Node.js アプリケーションのデバッグに役立つ、組み込みの診断機能を提供する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリです。この記事では、stdout と stderr のログ記録を有効にし、エラー情報をブラウザーに表示する方法と、ログ ファイルをダウンロードして表示する方法について説明します。
 
 Azure でホストされる Node.js アプリケーションの診断は、[IISNode] によって提供されます。この記事では、診断情報を集めるための最も一般的な設定について説明しますが、IISNode を操作するための完全なリファレンスを提供してはいません。IISNode の操作の詳細については、GitHub の [IISNode Readme] を参照してください。
 
 <a id="enablelogging"></a>
 ## ログの有効化
 
-App Service Web アプリは、既定では Git を使用して Web アプリを展開するときなど、展開に関する診断情報だけをキャプチャします。この情報は、展開中に問題が発生した場合 (たとえば、**package.json** で参照されているモジュールのインストールが失敗した場合) や、カスタムの展開スクリプトを使用している場合に便利です。
+App Service Web アプリは、既定では Git を使用して Web アプリをデプロイするときなど、デプロイに関する診断情報だけをキャプチャします。この情報は、デプロイ中に問題が発生した場合 (たとえば、**package.json** で参照されているモジュールのインストールが失敗した場合) や、カスタムのデプロイ スクリプトを使用している場合に便利です。
 
 stdout および stderr ストリームのログ記録を有効にするには、Node.js アプリケーションのルートに **IISNode.yml** ファイルを作成し、次のコードを追加する必要があります。
 
@@ -99,22 +99,22 @@ FTP を通じて診断情報にアクセスするには、[Azure プレビュー
 
 	azure site log tail [sitename]
 
-これで、サーバーでログ イベントが発生するたびに更新される、ログ イベントのストリームが返されます。このストリームは、展開情報のほかに、stdout および stderr 情報を返します (loggingEnabled が true の場合)。
+これで、サーバーでログ イベントが発生するたびに更新される、ログ イベントのストリームが返されます。このストリームは、デプロイ情報のほかに、stdout および stderr 情報を返します (loggingEnabled が true の場合)。
 
 <a id="nextsteps"></a>
 ## 次のステップ
 
-この記事では、Azure の診断情報を有効にし、それにアクセスする方法について学習しました。この情報は、アプリケーションで発生する問題を理解するために役立ちますが、使用しているモジュールの問題や、App Service Web Apps で使用されている Node.js のバージョンが展開環境で使用されているものと異なることが指摘される場合もあります。
+この記事では、Azure の診断情報を有効にし、それにアクセスする方法について学習しました。この情報は、アプリケーションで発生する問題を理解するために役立ちますが、使用しているモジュールの問題や、App Service Web Apps で使用されている Node.js のバージョンがデプロイ環境で使用されているものと異なることが指摘される場合もあります。
 
 Azure でのモジュールの操作については、「[Azure アプリケーションでの Node.js モジュールの使用]」を参照してください。
 
 アプリケーションの Node.js バージョンの指定については、「[Azure アプリケーションでの Node.js のバージョンの指定]」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme

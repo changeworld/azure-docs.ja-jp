@@ -1,4 +1,4 @@
-<properties title="Create a Virtual Machine Running Windows Server" pageTitle="Windows Server を実行する仮想マシンを作成する方法" description="Windows 仮想マシンを作成し、データ ディスクを追加して、リモートでログオンする方法について説明します。" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
+
 
 # Windows Server を実行する仮想マシンの作成 #
 
@@ -15,7 +15,7 @@
 さらに詳しい内容は、「[仮想マシン](http://go.microsoft.com/fwlink/p/?LinkID=271224)」を参照してください。
 
 
-## <a id="createvirtualmachine"> </a>仮想マシンの作成方法##
+##<a id="createvirtualmachine"> </a>仮想マシンの作成方法##
 
 このセクションでは、管理ポータルのオプションの **[ギャラリーから]** を使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合、**[ギャラリーから]** オプションを使用する必要があります。
 
@@ -109,7 +109,7 @@
 
 	これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
 	
-## 次のステップ 
+##次のステップ 
 
 Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
 
@@ -127,6 +127,4 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 [How to attach a data disk to the new virtual machine]: #attachdisk
 [How to set up communication with the virtual machine]: #endpoints
 
-
-
-<!--HONumber=52-->
+<!---HONumber=62-->

@@ -122,4 +122,7 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=62-->

@@ -40,7 +40,7 @@ Webhook は、Runbook がその Webhook によって開始されたときに使�
 
 >[AZURE.NOTE]現在 Webhook によって設定されているパラメーターの値は、Webhook の作成後は変更できません。別のパラメーターの値を使用する別の Webhook を作成する必要があります。
 
-Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。クライアントからのデータを受信するため、Runbook は、クライアントが POST 要求に含めるデータが入る、[object] 型の **$WebhookData** という 1 つのパラメーターを受け入れることができます。
+Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
 
 ![Webhookdata](media/automation-webhooks/webhookdata.png)
 
@@ -57,7 +57,7 @@ Webhook を使用して Runbook を開始した場合、クライアントは We
 
 Webhook の作成時に $WebhookData の値を指定した場合、クライアントの要求本文にデータが含まれていなくても、クライアントの POST 要求からのデータで Webhook が Runbook を開始した時点でその値はオーバーライドされます。Webhook 以外の方法を使用して $WebhookData が含まれる Runbook を開始する場合、Runbook で認識される $Webhookdata の値を指定することができます。Runbook が正しく処理できるように、この値は $Webhookdata と同じプロパティを持つオブジェクトでなければなりません。
 
->[AZURE.NOTE]すべての入力パラメーターの値は、Runbook のジョブに記録されます。つまり、Webhook の要求でクライアントから提供された入力が記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
+>[AZURE.NOTE]すべての入力パラメーターの値は、Runbook のジョブに記録されます。つまり、Webhook の要求でクライアントから提供された入力はすべて記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
 
 ## セキュリティ
 
@@ -76,7 +76,7 @@ Runbook 内にロジックを含め、$WebhookData パラメーターの **Webho
 4. **[新しい Webhook の作成]** をクリックして、**[Webhook ブレードの作成]** を開きます。
 5. Webhook の**名前**、**有効期限**、およびそれを有効にする必要があるかどうかを指定します。これらのプロパティの詳細については、「[Webhook の詳細](#details-of-a-webhook)」を参照してください。
 6. コピー アイコンをクリックし、Ctrl + C キーを押して Webhook の URL をコピーします。次に、それを安全な場所に記録します。**Webhook を作成したら、再度 URL を取得することはできません。** <br> ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
-3. **[パラメーター]** をクリックして、Runbook のパラメーターの値を指定します。Runbook に必須のパラメーターがある場合、値を指定しない限り Webhook を作成できません。
+3. **[パラメーター]** をクリックし、Runbook のパラメーターの値を指定します。Runbook に必須のパラメーターがある場合、値を指定しない限り Webhook を作成できません。
 1. **[作成]** をクリックして Webhook を作成します。
 
 
@@ -86,23 +86,23 @@ Webhook を作成後に使用する場合、クライアント アプリケー�
 
 	http://<Webhook Server>/token?=<Token Value>
 
-クライアントは、POST 要求から次のリターン コードの 1 つを受信します。
+クライアントは、POST 要求から次のリターン コードのいずれかを受け取ります。
 
 | コード | テキスト | 説明 |
 |:---|:----|:---|
-| 202 | 承認済み | 要求が承認され、Runbook が正常にキューに登録されました。 |
+| 202 | 承認済み | 要求が承認され、Runbook が正常にキューに入れられました。 |
 | 400 | 正しくない要求 | 次のいずれかの理由で要求が受け入れられませんでした。<ul> <li>Webhook の有効期限が切れている。</li> <li>Webhook は無効になっている。</li> <li>URL 内のトークンが無効である。</li> </ul>|
 | 500 | 内部サーバー エラー | URL は有効ですが、エラーが発生しました。要求を再送信してください。 |
 
-要求が成功したと仮定した場合、Webhook の応答には、次のような JSON 形式のジョブ ID が含まれています。ここに含まれるジョブ ID は 1 つですが、JSON 形式は将来の拡張にも対応します。
+要求が成功したと仮定した場合、Webhook の応答には、次のような JSON 形式のジョブ ID が含まれています。ここに含まれるジョブ ID は 1 つですが、JSON 形式は将来拡張できるようになっています。
 
 	{"JobIds":["<JobId>"]}  
 
-Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントで決定できません。この情報は、[Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) や [Azure Automation API](https://msdn.microsoft.com/library/azure/mt163826.aspx) などの方法でジョブ ID を使用すると決定できます。
+Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントからは判別できません。この情報は、[Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) や [Azure Automation API](https://msdn.microsoft.com/library/azure/mt163826.aspx) などの方法でジョブ ID を使用すると判別できます。
 
 ### 例
 
-次の例では、Windows PowerShell を使用して Webhook で Runbook を開始します。HTTP 要求を実行できる言語では、Webhook を使用できます。ここでは、Windows PowerShell を例に取って使用します。
+次の例では、Windows PowerShell を使用して Webhook で Runbook を開始します。Webhook は、HTTP 要求を実行できる任意の言語で使用できます。ここでは、例として Windows PowerShell を使用します。
 
 Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要です。この例ではほかにも、要求のヘッダーに Runbook を開始したユーザーや日時などの情報を含めます。
 
@@ -117,15 +117,15 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 	$jobid = ConvertFrom-Json $response 
 
 
-次の図に、この要求の ([Fiddler](http://www.telerik.com/fiddler) トレースを使用した) ヘッダー情報を示します。この中には、追加したカスタムの Date ヘッダーや From ヘッダー以外に、HTTP 要求の標準ヘッダーが含まれます。これらの値は、**WebhookData** の **RequestHeaders** プロパティで Runbook に対して使用できます。
+次の図に、この要求の ([Fiddler](http://www.telerik.com/fiddler) トレースを使用した) ヘッダー情報を示します。この中には、追加したカスタムの Date ヘッダーや From ヘッダー以外に、HTTP 要求の標準ヘッダーが含まれます。これらの値は、**WebhookData** の **RequestHeaders** プロパティとして Runbook で使用できます。
 
 ![Webhook ボタン](media/automation-webhooks/webhook-request-headers.png)
 
-次の図に、**WebhookData** の **RequestBody** プロパティで Runbook に対して利用できる ([Fiddler](http://www.telerik.com/fiddler) トレースを使用した) 要求の本文を示します。要求の本文に含まれていた形式が JSON であったため、この形式は JSON になります。
+次の図に、**WebhookData** の **RequestBody** プロパティとして Runbook で利用できる ([Fiddler](http://www.telerik.com/fiddler) トレースを使用した) 要求の本文を示します。要求の本文に含まれていた形式が JSON であったため、この形式は JSON になります。
 
 ![Webhook ボタン](media/automation-webhooks/webhook-request-body.png)
 
-次の図に、Windows PowerShell と結果の応答から送信される要求を示します。ジョブ ID は応答から抽出され、文字列に変換されます。
+次の図に、Windows PowerShell から送信される要求と、結果の応答を示します。ジョブ ID が応答から抽出され、文字列に変換されます。
 
 ![Webhook ボタン](media/automation-webhooks/webhook-request-response.png)
 
@@ -173,4 +173,4 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 - [Runbook の開始](automation-starting-a-runbook.md)
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md) 
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

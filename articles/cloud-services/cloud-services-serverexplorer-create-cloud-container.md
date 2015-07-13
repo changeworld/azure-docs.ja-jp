@@ -4,7 +4,7 @@
    services="cloud-services" 
    documentationCenter=".net" 
    authors="cawaMS" 
-   manager="manager-alias" 
+   manager="dwrede" 
    editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/20/2015"
+   ms.date="05/29/2015"
    ms.author="cawa"/>
 
 # Visual Studio を使用してクラウド サービス コンテナーを作成する方法
 
-Visual Studio で**サーバー エクスプローラー**を表示するには、メニュー バーの **[表示]** を選択し、**[サーバー エクスプローラー]** を選択します。 
+Visual Studio で**サーバー エクスプローラー**を表示するには、メニュー バーの **[表示]** を選択し、**[サーバー エクスプローラー]** を選択します。
 
 1.  **[Azure]** ノードを展開します。
 
@@ -30,7 +30,7 @@ Visual Studio で**サーバー エクスプローラー**を表示するには�
 
 ## 次のステップ
 
-クラウド サービス コンテナーを作成した後は、クラウド サービスを[作成してデプロイ](cloud-services-how-to-create-deploy.md) します。
+クラウド サービス コンテナーを作成した後は、クラウド サービスを[作成してデプロイ](cloud-services-how-to-create-deploy.md)できます。
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=62-->

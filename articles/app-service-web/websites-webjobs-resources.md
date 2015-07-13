@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure の Web ジョブのドキュメント リソース" 
+	pageTitle="Azure WebJobs のドキュメント リソース" 
 	description="Azure の Web ジョブと Azure Web ジョブ SDK を使用する方法を学習するための推奨リソース。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
@@ -16,17 +16,17 @@
 	ms.date="06/07/2015" 
 	ms.author="tdykstra"/>
 
-# Azure の Web ジョブのドキュメント リソース
+# Azure WebJobs のドキュメント リソース
 
 ## 概要
 
 このトピックでは、Azure Web ジョブと Azure Web ジョブ SDK の使用方法に関するドキュメント リソースへのリンクを掲載しています。Azure Web ジョブは、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) でバック グラウンド プロセスとしてスクリプトやプログラムを実行する簡単な方法を提供します。cmd、bat、exe (.NET)、ps1、sh、php、py、js、jar などの実行可能ファイルをアップロードして、実行できます。これらのプログラムは、スケジュールに従って (cron)、または継続的に Web ジョブとして実行されます。
 
-Web ジョブ SDK を使用すると、簡単に Azure Storage を使用できます。Web ジョブ SDK には、Microsoft Azure の BLOB ストレージ、キュー、テーブルおよび Service Bus のキューと共に動作するバインドおよびトリガー システムがあります。
+Web ジョブ SDK を使用すると、簡単に Azure Storage を使用できます。Web ジョブ SDK には、Microsoft Azure Storage の BLOB、キュー、テーブルおよび Service Bus のキューと共に動作するバインドおよびトリガー システムがあります。
 
 Web ジョブの作成、デプロイ、管理は、Visual Studio の統合ツールでシームレスに行うことができます。テンプレートから Web ジョブを作成し、発行、および管理 (実行、停止、監視、デバッグ) できます。
 
-Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内の個々の関数を呼び出す機能など、強力な管理機能を提供して Web ジョブの実行をきめ細かく制御できます。また、ダッシュ ボードでは、関数の実行時間とログ出力も表示されます。
+Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内の個々の関数を呼び出す機能など、強力な管理機能を提供して Web ジョブの実行をきめ細かく制御できます。また、ダッシュボードでは、関数の実行時間とログ出力も表示されます。
 
 ##<a name="getstarted"></a>Web ジョブと Web ジョブ SDK の概要
 
@@ -53,7 +53,7 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 ##<a name="deploy"></a>Web ジョブのデプロイ
 
 * [Visual Studio を使用して Azure WebJobs をデプロイする方法](websites-dotnet-deploy-webjobs.md)
-* [Azure の管理ポータルを使用して Web ジョブをデプロイする方法](web-sites-create-web-jobs.md)
+* [Azure 管理ポータルを使用して Web ジョブをデプロイする方法](web-sites-create-web-jobs.md)
 * [Azure Web ジョブのコマンドラインまたは継続的な配信の有効化](http://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)
 * [Git で Web ジョブを使用して Azure に .NET コンソール アプリケーションをデプロイ](http://blog.amitapple.com/post/73574681678/git-deploy-console-app/)
 * [F# WebJob を Azure にデプロイする](http://blogs.msdn.com/b/dave_crooks_dev_blog/archive/2015/02/18/deploying-f-web-job-to-azure.aspx)
@@ -74,9 +74,9 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 * [Web ジョブのリモート デバッグ](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
 * [だれがその BLOB を作成したのか](http://blogs.msdn.com/b/jmstall/archive/2014/02/19/who-wrote-that-blob.aspx) 
 * [クラウドでの対話型のコードのホスティング](http://blogs.msdn.com/b/jmstall/archive/2014/04/26/hosting-interactive-code-in-the-cloud.aspx)
-* [Web ジョブ SDK を使用したローカル開発用のダッシュ ボードの取得](http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx)
+* [Web ジョブ SDK を使用したローカル開発用のダッシュボードの取得](http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx)
 * [Azure Web ジョブへのトレースの追加](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)
-* [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting/)
+* [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting/)
 * ビデオ
 	* [Web ジョブ ツールとリモート デバッグ](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
@@ -94,7 +94,7 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 * [Azure App Service での Powershell Web ジョブの実行](http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx)
 * [Azure がトリガーした Web ジョブ完了時の通知の受信](http://blog.amitapple.com/post/2014/03/webjobs-notification/)
 * [Web ジョブを使用した簡単な Web アプリのバックアップ保持ポリシー](http://azure.microsoft.com/blog/2014/04/28/simple-web-site-backup-retention-policy-with-webjobs/)
-* [Azure Web Apps および Cloud Services が、最初の要求時には応答が遅い](http://wp.sjkp.dk/windows-azure-websites-and-cloud-services-slow-on-first-request/)。Web ジョブを使用して、Standard の料金レベルでのみ使用可能な AlwaysOn 機能をシミュレートする方法を示しています。
+* [Azure Web Apps および Cloud Services が、最初の要求時には応答が遅い](http://wp.sjkp.dk/windows-azure-websites-and-cloud-services-slow-on-first-request/)。Web ジョブを使用して、Standard の価格レベルでのみ使用可能な AlwaysOn 機能をシミュレートする方法を示しています。
 * [Web ジョブのグレースフル シャットダウン](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.U72Il_5OWUl)Web ジョブ SDK のグレースフル シャットダウンについては、「[グレースフル シャットダウン](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#graceful)」を参照してください。
 * [Azure Web ジョブと AzCopy を使用したバックアップの自動化](http://markjbrown.com/azure-webjobs-azcopy/)
 * ビデオ
@@ -135,8 +135,8 @@ Azure ポータルの Web ジョブ ダッシュ ボードは、Web ジョブ内
 * [Web ジョブのバグまたは問題を報告する](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
 <!---HONumber=62-->

@@ -196,7 +196,8 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 Visual Studio から Azure Web ジョブをデプロイする方法および継続的な配信プロセスを使用して Azure Web ジョブをデプロイする方法の詳細については、「[Azure Web ジョブ - 推奨リソース - デプロイメント](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying)」を参照してください。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->

@@ -67,13 +67,11 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 8. Azure で Web アプリを作成していない場合は、Visual Studio でアプリを作成できます。**[Microsoft Azure Websites を構成する]** ダイアログ ボックスで、サイト名が一意になっていることを確認します。次に、**[OK]** をクリックします
 
-	<!--todo: need 2.5.1 screenshot-->
-	![](media/cdn-websites-with-cdn/5-create-website.png)
+	<!--todo: need 2.5.1 screenshot-->![](media/cdn-websites-with-cdn/5-create-website.png)
 
 9. ASP.NET アプリケーションが作成されたら、[Web 発行アクティビティ] ウィンドウで **[`<app name>` をこのサイトに今すぐ発行する]** をクリックして、そのアプリケーションを Azure に発行します。**[発行]** をクリックしてプロセスを完了します。
 
-	<!--todo: need 2.5.1 screenshot-->
-	![](media/cdn-websites-with-cdn/6-publish-website.png)
+	<!--todo: need 2.5.1 screenshot-->![](media/cdn-websites-with-cdn/6-publish-website.png)
 
 	発行が完了すると、発行済みの Web アプリがブラウザーに表示されます。
 
@@ -182,7 +180,7 @@ namespace cdnwebapp.Controllers
         public ActionResult Index()
         {
             return View();
-        {
+        }
 
         [HttpPost, ActionName("Index")]
     	public ActionResult Index_Post(string top, string bottom)
@@ -191,10 +189,10 @@ namespace cdnwebapp.Controllers
             if (!Memes.ContainsKey(identifier))
             {
                 Memes.Add(identifier, new Tuple&lt;string, string>(top, bottom));
-            {
+            }
 
             return Content("&lt;a href="" + Url.Action("Show", new {id = identifier}) + "">here's your meme&lt;/a>");
-        {
+        }
 
         [OutputCache(VaryByParam = "*", Duration = 1, Location = OutputCacheLocation.Downstream)]
         public ActionResult Show(string id)
@@ -203,17 +201,17 @@ namespace cdnwebapp.Controllers
             if (!Memes.TryGetValue(id, out data))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            {
+            }
 
             if (Debugger.IsAttached) // デバッグ操作を維持
             {
                 return Redirect(string.Format("/MemeGenerator/Generate?top={0}&amp;bottom={1}", data.Item1, data.Item2));
-            {
+            }
             else // Azure CDN のコンテンツを取得
             {
                 return Redirect(string.Format("http://<mark>&lt;yourCDNName></mark>.vo.msecnd.net/MemeGenerator/Generate?top={0}&amp;bottom={1}", data.Item1, data.Item2));
-            {
-        {
+            }
+        }
 
         [OutputCache(VaryByParam = "*", Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Generate(string top, string bottom)
@@ -227,17 +225,17 @@ namespace cdnwebapp.Controllers
                 using (Font arialFont = FindBestFitFont(bitmap, graphics, top.ToUpperInvariant(), new Font("Arial Narrow", 100), out size))
                 {
                     graphics.DrawString(top.ToUpperInvariant(), arialFont, Brushes.White, new PointF(((bitmap.Width - size.Width) / 2), 10f));
-                {
+                }
                 using (Font arialFont = FindBestFitFont(bitmap, graphics, bottom.ToUpperInvariant(), new Font("Arial Narrow", 100), out size))
                 {
                     graphics.DrawString(bottom.ToUpperInvariant(), arialFont, Brushes.White, new PointF(((bitmap.Width - size.Width) / 2), bitmap.Height - 10f - arialFont.Height));
-                {
-            {
+                }
+            }
 
             MemoryStream ms = new MemoryStream();
             bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             return File(ms.ToArray(), "image/png");
-        {
+        }
 
         private Font FindBestFitFont(Image i, Graphics g, String text, Font font, out SizeF size)
         {
@@ -254,10 +252,10 @@ namespace cdnwebapp.Controllers
                 Font oldFont = font;
                 font = new Font(font.Name, (float)(font.Size * .9), font.Style);
                 oldFont.Dispose();
-            {
+            }
         {
     {
-{
+}
 </pre>
 
 2. 既定の `Index()` アクション内で右クリックし、**[ビューの追加]** を選択します。
@@ -377,7 +375,7 @@ public static void RegisterBundles(BundleCollection bundles)
     bundles.Add(new StyleBundle("~/Content/css"<mark>, string.Format(cdnUrl, "Content/css")</mark>).Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
-{
+}
 </pre>`<yourCDNName>` は Azure CDN の名前で置き換えてください。
 
 	このコードでは、`bundles.UseCdn = true` を設定し、巧妙に作成された CDN URL を各バンドルに追加しています。たとえば、コードの最初のコンストラクター
@@ -476,7 +474,7 @@ public static void RegisterBundles(BundleCollection bundles)
     bundles.Add(new StyleBundle("~/Content/css", string.Format(cdnUrl, "Content/css")).Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
-{</pre>`CdnFallbackExpression` が null でない場合は、HTML にスクリプトが挿入されます。このスクリプトは、バンドルが正常に読み込まれたかどうかをテストして、正常に読み込まれていない場合はオリジン Web サーバーのバンドルに直接アクセスします。このプロパティは、それぞれの CDN バンドルが適切に読み込まれたかどうかをテストする JavaScript 式に設定する必要があります。各バンドルをテストするために必要な式は、コンテンツによって異なります。上記の既定のバンドルに対して、次のように定義されています。
+}</pre>`CdnFallbackExpression` が null でない場合は、HTML にスクリプトが挿入されます。このスクリプトは、バンドルが正常に読み込まれたかどうかをテストして、正常に読み込まれていない場合はオリジン Web サーバーのバンドルに直接アクセスします。このプロパティは、それぞれの CDN バンドルが適切に読み込まれたかどうかをテストする JavaScript 式に設定する必要があります。各バンドルをテストするために必要な式は、コンテンツによって異なります。上記の既定のバンドルに対して、次のように定義されています。
 	
 	-	`window.jquery` は jquery-{version}.js に定義されています。
 	-	`$.validator` は jquery.validate.js に定義されています。
@@ -518,9 +516,9 @@ bundles.Add(new StyleBundle("~/Content/css", string.Format(cdnUrl, "Content/css"
                         document.head.removeChild(meta);
                         if (value !== '1px') {
                             document.write('&lt;link href="/Content/css" rel="stylesheet" type="text/css" />');
-                        {
+                        }
                     {
-                {
+                }
                 return true;
             }())||document.write('&lt;script src="/Content/css">&lt;/script>');&lt;/script></mark>
 
@@ -560,4 +558,4 @@ bundles.Add(new StyleBundle("~/Content/css", string.Format(cdnUrl, "Content/css"
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!----HONumber=62-->
+<!---HONumber=62-->

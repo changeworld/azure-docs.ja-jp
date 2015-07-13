@@ -26,7 +26,7 @@ API Management には、次に示すシステム グループが用意されて�
 -	**開発者** - 認証された開発者ポータル ユーザーは、このグループに分類されます。開発者は、API の利用者です。管理者によって作成された API を使用してアプリケーションを構築します。開発者は、開発者ポータルへのアクセスが認められており、API の操作を呼び出すアプリケーションを構築します。
 -	**ゲスト** - API Management インスタンスの開発者ポータルに訪れる開発者ポータル ユーザーのうち、認証を受けていないもの (利用予定者など) がこのグループに該当します。特定の読み取り専用アクセスを許可することができます (API の閲覧はできるが、呼び出すことはできないなど)。
 
-管理者は、これらのシステム グループに加えてカスタム グループを作成できるほか、[関連付けられている Azure Active Directory テナントの外部グループを活用する](api-management-howto-aad.md/#how-to-add-an-external-azure-active-directory-group)こともできます。カスタム グループと外部グループをシステム グループと共に使用することにより、開発者には API 成果物の可視性とアクセスが提供されます。たとえば、特定のパートナー企業に所属する開発者向けにカスタム グループを 1 つ作成し、関連する API のみが含まれている成果物の API に対してアクセスを許可することができます。1 人のユーザーが複数のグループのメンバーになることができます。
+管理者は、これらのシステム グループに加えてカスタム グループを作成できるほか、[関連付けられている Azure Active Directory テナントの外部グループを活用する](api-management-howto-aad.md/#how-to-add-an-external-azure-active-directory-group)こともできます。カスタム グループと外部グループをシステム グループと共に使用することにより、開発者には API 成果物の可視性とアクセスが提供されます。たとえば、特定のパートナー企業に所属する開発者向けにカスタム グループを 1 つ作成し、関連する API のみが含まれている成果物の API に対してアクセスを許可することができます。ユーザーは 複数のグループのメンバーになることができます。
 
 このガイドでは、API Management インスタンスの管理者が新しいグループを追加して成果物および開発者に関連付ける方法について説明します。
 
@@ -36,7 +36,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+>まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
 
 左側の **[API Management]** メニューの **[グループ]** をクリックし、**[グループの追加]** をクリックします。
 
@@ -62,7 +62,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 ![Set visibility][api-management-add-group-to-product-visibility]
 
->[AZURE.NOTE]Azure Active Directory グループを追加するには、「[Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」を参照してください。
+>[AZURE.NOTE]Azure Active Directory グループを追加するには、「[Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」をご覧ください。
 >
 >**[可視性]** タブで成果物のグループを構成するには、**[グループの管理]** をクリックします。
 
@@ -82,7 +82,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 ## <a name="next-steps"> </a>次のステップ
 
-開発者をグループに関連付けると、開発者は、グループに関連付けられた成果物を表示してサブスクライブすることができます。詳細については、「[Azure API Management で成果物を作成して発行する方法][]」を参照してください。
+開発者をグループに関連付けると、開発者は、グループに関連付けられた成果物を表示してサブスクライブすることができます。詳細については、「[Azure API Management で成果物を作成して発行する方法][]」をご覧ください。
 
 
 [api-management-management-console]: ./media/api-management-howto-create-groups/api-management-management-console.png

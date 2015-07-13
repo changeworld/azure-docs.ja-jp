@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter="windows"
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2015" 
+	ms.date="06/16/2015" 
 	ms.author="awills"/>
 
 # Windows Phone アプリとストア アプリ用の Application Insights
@@ -60,11 +60,11 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 
     ![](./media/app-insights-windows-get-started/03-nuget.png)
 
-2. **[オンライン]**、**[プレリリースを含める]** の順に選択し、"Application Insights" を検索します。
+2. 「Application Insights」を検索します。
 
     ![](./media/app-insights-windows-get-started/04-ai-nuget.png)
 
-3. **Windows Phone アプリケーション用の Application Insights** を選択します。
+3. **.NET Windows アプリケーション用の Application Insights** を選択します。
 
 4. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
 
@@ -115,7 +115,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 ## <a name="ide"></a>自動セットアップ
 
-セットアップ手順を Visual Studio で自動実行したい場合は、Windows Phone、Windows ストアなどのさまざまな種類のアプリで自動実行することができます。
+セットアップ手順を Visual Studio で自動実行する場合は、Windows Phone、Windows ストアなどのさまざまな種類のアプリで自動実行できます。
 
 ###<a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合
 
@@ -132,6 +132,10 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 
 ![](./media/app-insights-windows-get-started/appinsights-d22-add.png)
+
+## SDK の新しいリリースにアップグレードするには
+
+[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを * 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの * Application Insights パッケージを選択し、アップグレード アクションを選択します。
 
 
 ## <a name="usage"></a>次のステップ

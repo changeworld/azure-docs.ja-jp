@@ -1,6 +1,6 @@
-﻿簡単なケースでは、トークン キャッシュは動作しますが、トークンが期限切れになった場合、または取り消された場合はどのようになるでしょうか。トークンが期限切れになる可能性があるのは、アプリケーションが実行されていないときです。つまり、このときにトークン キャッシュは無効になることがあります。さらに、アプリケーションによる直接の呼び出し中、または Mobile Services ライブラリによる呼び出し中に、アプリケーションが実際に実行されていると、期限切れになる場合もあります。その結果、HTTP ステータス コード 401 "認証エラー" が発生します。 
+簡単なケースでは、トークン キャッシュは動作しますが、トークンが期限切れになった場合、または取り消された場合はどのようになるでしょうか。 トークンが期限切れになる可能性があるのは、アプリケーションが実行されていないときです。つまり、このときにトークン キャッシュは無効になることがあります。さらに、アプリケーションによる直接の呼び出し中、または Mobile Services ライブラリによる呼び出し中に、アプリケーションが実際に実行されていると、期限切れになる場合もあります。その結果、HTTP ステータス コード 401 "認証エラー" が発生します。
 
-期限切れのトークンは、検出して更新できるようにする必要があります。そのためには、[Android クライアント ライブラリ](http://dl.windowsazure.com/androiddocs/) の [ServiceFilter](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/ServiceFilter.html) を使用します。
+期限切れのトークンは、検出して更新できるようにする必要があります。そのためには、[Android クライアント ライブラリ](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/ServiceFilter.html)の [ServiceFilter](http://dl.windowsazure.com/androiddocs/) を使用します。
 
 このセクションでは、HTTP ステータス コード 401 の応答を検出し、トークンとトークン キャッシュの更新を開始するように ServiceFilter を定義します。さらに、この ServiceFilter では認証中に他の送信要求をブロックして、これらの要求が更新されたトークンを使用できるようにします。
 
@@ -11,7 +11,7 @@
 
 		import com.microsoft.windowsazure.mobileservices.MobileServiceException;
  
-2. 次のメンバーを  `ToDoActivity` クラスに追加します。 
+2. 次のメンバーをクラス `ToDoActivity` クラスに追加します。
 
     	public boolean bAuthenticating = false;
 	    public final Object mAuthenticationLock = new Object();
@@ -49,7 +49,7 @@
     	}
     	
 
-4. ToDoActivity.java ファイル内で、次のメソッドを ToDoActivity クラスに追加します。このメソッドは、実際に待機を開始し、認証の完了時に送信呼び出しでトークンを更新します。 
+4. ToDoActivity.java ファイル内で、次のメソッドを ToDoActivity クラスに追加します。このメソッドは、実際に待機を開始し、認証の完了時に送信呼び出しでトークンを更新します。
 
     	
     	/**
@@ -204,9 +204,9 @@
 		}
 
 
-    このサービス フィルターでは、各応答で HTTP ステータス コード 401 "認証エラー" が発生していないかどうかを確認します。401 が発生した場合は、新しいトークンを取得する新しいログイン要求が、UI スレッドで設定されます。その他の呼び出しは、ログインが完了するか、5 回失敗するまでブロックされます。新しいトークンが取得されると、401 を引き起こした要求は新しいトークンを使用して再試行されます。またブロックされた呼び出しも、新しいトークンを使用して再試行されます。 
+    このサービス フィルターでは、各応答で HTTP ステータス コード 401 "認証エラー" が発生していないかどうかを確認します。401 が発生した場合は、新しいトークンを取得する新しいログイン要求が、UI スレッドで設定されます。その他の呼び出しは、ログインが完了するか、5 回失敗するまでブロックされます。新しいトークンが取得されると、401 を引き起こした要求は新しいトークンを使用して再試行されます。またブロックされた呼び出しも、新しいトークンを使用して再試行されます。
 
-7. ToDoActivity.java ファイルで、 `onCreate` メソッドを次のように更新します。
+7. ToDoActivity.java ファイルで、`onCreate` メソッドを次のように更新します。
 
 		@Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -237,9 +237,6 @@
 	    }
 
 
-       このコードでは、 `ProgressFilter` 以外に  `RefreshTokenCacheFilter` が使用されています。また、 `onCreate` の間に、トークン キャッシュも読み込みます。そのため、 `false` が  `authenticate` メソッドに渡されます。
+       このコードでは、`ProgressFilter` 以外に `RefreshTokenCacheFilter` が使用されています。また、`onCreate` の間に、トークン キャッシュも読み込みます。そのため、`false` が `authenticate` メソッドに渡されます。
 
-
-
-
-<!--HONumber=52-->
+<!---HONumber=62-->

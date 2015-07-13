@@ -111,4 +111,5 @@
 [認証の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-users-preview.md
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
-<!--HONumber=54--> 
+
+<!---HONumber=62-->

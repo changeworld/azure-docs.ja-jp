@@ -1,20 +1,3 @@
-<properties 
-   pageTitle="サービス登録キーを取得する"
-   description="すべての StorSimple デバイスの登録に使用する、登録キーの取得方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="05/20/2015"
-   ms.author="v-sharos" />
-
 
 #### StorSimple サービス登録キーを取得するには
 
@@ -36,4 +19,4 @@
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

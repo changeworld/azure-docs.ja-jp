@@ -79,7 +79,7 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 12. [ビルドと実行] をクリックし、iOS シミュレーターでアプリを起動します。
 
-## テレメトリ呼び出しを挿入する
+## 利用統計情報呼び出しを挿入する
 
 `[MSAIApplicationInsights start]` が呼び出されると、SDK はセッション、ページ ビュー、未処理の例外、クラッシュの追跡を開始します。
 
@@ -141,4 +141,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

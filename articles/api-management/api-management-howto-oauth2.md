@@ -120,7 +120,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 ## 次のステップ
 
-OAuth 2.0 と API Management の詳細については、次のビデオを参照してください。
+OAuth 2.0 と API Management の詳細については、次のビデオをご覧ください。
 
 > [AZURE.VIDEO protecting-web-api-backend-with-azure-active-directory-and-api-management]
 
@@ -160,4 +160,4 @@ OAuth 2.0 と API Management の詳細については、次のビデオを参照
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=62-->

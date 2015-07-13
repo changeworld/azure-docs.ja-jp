@@ -207,7 +207,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -332,7 +332,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 ### 手順 3. アプリケーションをデプロイする
 1.	**[ソリューション エクスプローラー]** で **[WadExampleVM]** プロジェクトを右クリックし、**[エクスプローラーでフォルダーを開く]** を選択します。
-2.	*bin\\Debug* フォルダーに移動し、すべてのファイル (WadExampleVM.*) をコピーします。
+2.	*bin\Debug* フォルダーに移動し、すべてのファイル (WadExampleVM.*) をコピーします。
 3.	**[サーバー エクスプローラー]** で仮想マシンを右クリックし、**[リモート デスクトップを使用して接続]** を選択します。
 4.	VM に接続されたら、WadExampleVM という名前のフォルダーを作成し、コピーしたアプリケーション ファイルをそのフォルダーに貼り付けます。
 5.	アプリケーション ファイルの WadExampleVM.exe を起動します。空白のコンソール ウィンドウが表示されます。
@@ -351,7 +351,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -397,7 +397,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 ### Azure 診断が起動しない
 診断は、ゲスト エージェント プラグインと監視エージェントの 2 つのコンポーネントで構成されます。ゲスト エージェント プラグインのログ ファイルは次のファイルにあります。
 
-*%SystemDrive%\\ WindowsAzure\\Logs\\Plugins\\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>*\\CommandExecution.log
+*%SystemDrive%\ WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>*\CommandExecution.log
 
 プラグインによって次のエラー コードが返されます。
 
@@ -764,6 +764,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 [Azure 診断のバージョンの比較]: #comparing
 [Additional Resources]: #additional
 [EventSource クラス]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
+  
 [Azure Cloud Services および Virtual Machines 用の診断の構成]: http://msdn.microsoft.com/library/windowsazure/dn186185.aspx
 [Azure アプリケーションのデバッグ]: http://msdn.microsoft.com/library/windowsazure/ee405479.aspx
 [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
@@ -775,5 +776,6 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 [Set-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495270.aspx
 [Get-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495145.aspx
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495168.aspx
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=62-->
