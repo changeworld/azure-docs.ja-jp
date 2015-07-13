@@ -79,4 +79,4 @@ Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから�
 [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

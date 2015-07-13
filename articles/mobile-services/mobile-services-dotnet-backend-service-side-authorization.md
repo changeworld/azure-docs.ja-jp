@@ -2,6 +2,7 @@
 	pageTitle=".NET バックエンドを使用したモバイル サービス内のユーザーのサービス側の承認 | モバイル デベロッパー センター"
 	description="Azure Mobile Services の .NET バックエンドでユーザーを承認する方法について説明します。"
 	services="mobile-services"
+	documentationCenter="windows"
 	authors="krisragh"
 	manager="dwrede"
 	editor=""/>
@@ -9,9 +10,10 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm=""
+	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
-	ms.date="2/18/2015"
+	ms.devlang="dotnet"
+	ms.date="05/10/2015"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
@@ -20,7 +22,7 @@
 - [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
 - [(Any | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
 
-このトピックでは、サーバー側ロジックを使用してユーザーを承認する方法を説明します。このチュートリアルでは、.NET でデータ アクセス メソッドを変更して、ユーザー ID に基づいてクエリをフィルター処理し、ユーザーが自分のデータのみにアクセスできるようにします。
+このトピックでは、サーバー側ロジックを使用してユーザーを承認する方法を説明します。このチュートリアルでは、テーブル コントローラーを変更して、ユーザー ID に基づいてクエリをフィルター処理し、ユーザーが自分のデータのみにアクセスできるようにします。ユーザー ID によるユーザーのクエリ結果のフィルター処理は、承認の最も基本的な形式です。またシナリオによっては、特定のユーザーのアクセスを許可するエンドポイントなど、より詳細なユーザーの承認情報を確認するために、ユーザーまたはロールのテーブルを作成することもできます。
 
 このチュートリアルは、「Mobile Services クイック スタート」に基づいており、「[既存の Mobile Services アプリケーションに認証を追加]」チュートリアルに基づいて作成されています。最初に「[既存の Mobile Services アプリケーションに認証を追加]」を完了してください。
 
@@ -67,11 +69,7 @@
 [3]: ./media/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Get started with Mobile Services]: mobile-services-dotnet-backend-ios-get-started.md
-[Get started with data]: mobile-services-dotnet-backend-ios-get-started-data.md
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
-[Get started with push notifications]: mobile-services-dotnet-backend-ios-get-started-push.md
+ 
 
-[Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
-
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

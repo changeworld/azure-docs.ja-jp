@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/30/2014" 
+	ms.date="06/17/2015" 
 	ms.author="juliako"/>
 
 
@@ -21,6 +21,8 @@
 # Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法 #
 
 ##概要 ##
+
+
 Open Source Media Framework 2.0 用 Microsoft スムーズ ストリーミング プラグイン (OSMF 用 SS) は、OSMF の既定の機能を拡張し、新規または既存の OSMF プレーヤーに Microsoft スムーズ ストリーミング コンテンツ再生機能を追加します。また、このプラグインは、Strobe Media Playback (SMP) にもスムーズ ストリーミング再生機能を追加します。
 
 OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが含まれています。
@@ -43,21 +45,13 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 - OSMF ビルトイン API による複数オーディオ言語切り替え
 - OSMF ビルトイン API による再生時の最高画質選択
 - OSMF キャプション プラグインによるサイドカー クローズド キャプション
-- Adobe&reg; Flash&reg; Player 10.2 以上
+- Adobe&reg; Flash&reg; Player 11.4 以上。
 - このバージョンでは OSMF 2.0 のみをサポート
 
-次の機能はサポートされません。
+## サポートされている機能と既知の問題
 
-- VC-1 および WMA コーデック
-- コンテンツ保護 (PlayReady)
-- テキスト トラックとスパース トラック
-- Trickplay (スロー モーション、早送り、巻き戻し)
+サポートされる機能、サポートされていない機能、および既知の問題の一覧については、「[このドキュメント](http://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)を参照してください。
 
-既知の問題の一覧を次に示します。
-
-- 48 KHz オーディオ トラックが含まれるスムーズ ストリーミング コンテンツの再生に問題があります。Flash ランタイムには、48 KHz オーディオ コンテンツのレンダリングに関する問題があります。この問題のため、48 Khz 設定でエンコードされたスムーズ ストリーミング コンテンツが正しく動作しないことがあります。詳細については、「[Flash Player の使用](http://forums.adobe.com/message/4483498#4483498)」および「[Adobe Flash Player 11.3 - バグ 3210964](https://bugbase.adobe.com/index.cfm?event=bug&id=3210964)」を参照してください。
-- 単一ページで複数のスムーズ ストリーミング コンテンツを再生すると、問題が発生することがあります。これは OSMF に関する既知の問題です。
-- Stage Video を再生すると、問題が発生することがあります。一部のコンピューターではビデオをまったく再生できないこともあります。回避策として、ハードウェア アクセラレータまたは Stage Video を無効にすることができます。
 
 ## プラグインの読み込み
 OSMF プラグインは、静的 (コンパイル時) または動的 (実行時) に読み込むことができます。OSMF 用スムーズ ストリーミング プラグインのダウンロードには、静的バージョンと動的バージョンの両方が含まれています。
@@ -404,4 +398,9 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 
 全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ](http://osmf.org/resources.html)を参照してください。
 
-<!--HONumber=54--> 
+
+##関連項目
+
+[OSMF を更新するための](http://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)Microsoft Adaptive Streamingプラグイン
+
+<!---HONumber=July15_HO1-->

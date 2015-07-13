@@ -10,16 +10,16 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
+	ms.date="06/15/2015" 
 	ms.author="wesmc"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理
 
-[WACOM.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
+[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
 
 ##概要
 
@@ -238,5 +238,6 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?linkid=268374
 [SQLite for Windows Phone 8]: http://go.microsoft.com/fwlink/?LinkId=397953
 [Get started with data]: mobile-services-windows-phone-get-started-data.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

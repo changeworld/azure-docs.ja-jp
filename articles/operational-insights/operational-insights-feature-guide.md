@@ -1,43 +1,55 @@
-<properties 
-	pageTitle="オペレーション インサイト機能ガイド" 
-	description="オペレーション インサイトは分析サービスで、IT 管理者は、内部設置型環境やクラウド環境を詳しく把握できるようになります。これによりリアルタイムのデータやマシンの履歴データとやり取りし、独自の洞察を迅速に作成したり、データ分析用にMicrosoft やコミュニティで開発されたパターンを提供できるようになります。" 
-	services="operational-insights" 
-	documentationCenter="" 
-	authors="bandersmsft" 
-	manager="jwhit" 
+<properties
+	pageTitle="オペレーション インサイト機能ガイド"
+	description="オペレーション インサイトは分析サービスで、IT 管理者は、オンプレミス環境やクラウド環境を詳しく把握できるようになります。これによりリアルタイムのデータやマシンの履歴データとやり取りし、独自の洞察を迅速に作成したり、データ分析用にMicrosoft やコミュニティで開発されたパターンを提供できるようになります。"
+	services="operational-insights"
+	documentationCenter=""
+	authors="bandersmsft"
+	manager="jwhit"
 	editor=""/>
 
-<tags 
-	ms.service="operational-insights" 
-	ms.workload="appservices" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/06/2014" 
+<tags
+	ms.service="operational-insights"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/11/2015"
 	ms.author="banders"/>
 
-<h1>オペレーション インサイト機能ガイド</h1>
+# Operational Insights 機能ガイド
 
-このガイドでは、オペレーション インサイトで解決できる問題、オペレーション インサイト環境の構成、そしてオペレーション サイト アカウントの作成方法とサービスへのサインインの方法について説明します。
+[AZURE.INCLUDE [operational-insights-note-moms](../../includes/operational-insights-note-moms.md)]
 
-<h2 id="whatisaad">オペレーション インサイトとは</h2>
+この記事では、このガイドでは、Operational Insights で解決できる問題、Operational Insights 環境の構成、および Operational Insights アカウントを作成してサービスにサインインする方法について説明します。
 
-オペレーション インサイトは分析サービスで、IT 管理者は、内部設置型環境やクラウド環境を詳しく把握できるようになります。これによりリアルタイムのデータやマシンの履歴データとやり取りし、独自の洞察を迅速に作成したり、データ分析用にMicrosoft やコミュニティで開発されたパターンを提供できるようになります。
+## マシン データを変換する
 
-オペレーション インサイトではマシンのデータを運用上のインテリジェンスに変換できます。具体的には、次が実行できます。
+オペレーション インサイトは分析サービスで、IT 管理者は、オンプレミス環境やクラウド環境を詳しく把握できるようになります。これによりリアルタイムのデータやマシンの履歴データとやり取りし、独自の洞察を迅速に作成したり、データ分析用にMicrosoft やコミュニティで開発されたパターンを提供できるようになります。
 
-- サーバー インフラストラクチャの容量を管理する
-- システムの更新でサーバーを更新する
-- サーバーのログ ファイルにあるデータ間のリレーションシップを把握する
-- マルウェア対策でサーバーを保護する
-- セキュリティ対策でセキュリティ上のリスクを管理する
-- サーバー全体における構成の変更を追跡する
-- SQL Server を最適化する
-- イベントと IIS ログを検索する
-- Microsoft Azure  IaaS 仮想マシンにエージェントをインストールする
-- Operations Manager を使用しないでオペレーション インサイトを使用する  
+Operational Insights では、次の機能を使用して、マシン データを運用上のインテリジェンスに変換できます。
 
-<h2 id="">オペレーション インサイト環境</h2>
+
+|**アイコン** | **使用目的** | **説明**|
+|---|---|---|
+|![](./media/operational-insights-feature-guide/cap-plan.png) | [容量計画](operational-insights-capacity.md) | Microsoft Azure Operational Insights の容量管理ソリューションを使用して、サーバー インフラストラクチャの容量を効率よく把握できます。 |
+| ![](./media/operational-insights-feature-guide/update.png) | [システムの更新の評価](operational-insights-updates.md) | Microsoft Azure Operational Insights で、システムの更新ソリューションを使用して、インフラストラクチャのサーバーに不足している更新プログラムを効率よく適用することができます。 |
+| ![](./media/operational-insights-feature-guide/log-mgt.png) | [ログの管理](operational-insights-search.md) | ログ管理ソリューションを使用して、Operational Insights 全体でログを検索するためのイベントと IIS ログを収集します。 |
+| ![](./media/operational-insights-feature-guide/malware.png) | [マルウェアの評価](operational-insights-antimalware.md) | Microsoft Azure Operational Insights のマルウェア対策ソリューションを使用して、インフラストラクチャ内のサーバーをマルウェアから保護できます。 |
+| ![](./media/operational-insights-feature-guide/sec-audit.png) | [セキュリティと監査](operational-insights-security-audit.md) | セキュリティと監査ソリューションを使用して、注意する必要がある重要な問題を検索する組み込みの検索クエリによって、組織の IT セキュリティ対策の包括的なビューを取得できます。 |
+| ![](./media/operational-insights-feature-guide/assessment.png) | [Active Directory と SQL の評価](operational-insights-assessment.md) | 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 |
+| ![](./media/operational-insights-feature-guide/alert.png) | [アラートの管理](operational-insights-alerts.md) | 警告管理ソリューションを使用して、Operations Manager によって監視されているサーバーからの警告を管理できます。 |
+
+
+さらに、以下を実行できます。
+
+- **マシン データをシステムに送信します。エージェントを使用するかどうか、System Center Operations Manager と連携させるかどうかを選択できます。**詳細については、次を参照してください。
+	- [System Center Operations Manager から Operational Insights に接続する](operational-insights-connect-scom.md)
+	- [Operational Insights にコンピューターを直接接続する](operational-insights-direct-agent.md)
+	- [Microsoft Azure でサーバーのデータを分析する](operational-insights-analyze-data-azure.md)
+- **上記のすべてをモバイル アプリケーションを使用して出先で実行します。**
+	- Windows Phone アプリケーションの詳細については、「[Operational Insights のモバイル アプリ](http://www.windowsphone.com/ja-jp/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)」を参照してください。
+
+## オペレーション インサイト環境
 
 オペレーション インサイト環境は次で構成されています。
 
@@ -47,37 +59,18 @@
 - または、System Center Operations Manager に関連付けられているサービス (必須ではありません)
 
 
-
-
 System Center Advisor と呼ばれる以前のバージョンのオペレーション インサイトを使用した場合は、ローカル環境に Advisor ソフトウェアがインストールされている可能性があります。ですが Advisor ソフトウェアはオペレーション インサイトではサポートされていません。
 
-Operations Manager サービスとしてオペレーションインサイト ソフトウェアを使用する場合、1 つ以上の管理グループと管理グループごとに少なくとも 1 つのエージェントが構成されます。Operations Manager エージェントは、サーバーからデータを収集し、インテリジェンス パック (System Center Operations Manager の管理パックに類似) を使用して分析します。分析されたデータはOperations Manager から、プロキシ サーバーを使用してオペレーション インサイトの Web サービスに定期的に送信されます。負荷が追加されないように他のサーバーはバイパスします。
+Operations Manager サービスとしてオペレーションインサイト ソフトウェアを使用する場合、1 つ以上の管理グループと管理グループごとに少なくとも 1 つのエージェントが構成されます。Operations Manager エージェントは、サーバーからデータを収集し、ソリューションを使用して分析します (ソリューションは System Center Operations Manager の管理パックに似ています)。データは、Operations Manager から Operational Insights Web サービスに定期的に送信され (必要であればプロキシ サーバー経由で送信され)、Operations Manager データベースには何も保存されないため、負荷が追加されることはありません。
 
 同様に、個々のコンピューターにインストールされたエージェントは Web サービスに直接接続し、収集したデータを送信し処理できます。
 
-各インテリジェンス パックのデータは分析され、オペレーション インサイトのポータルで表示されます。アラートや関連する修復ガイダンス、構成の評価、インフラストラクチャの容量の問題、システムの更新ステータス、マルウェア対策の警告、ログ データを表示できます。また、詳細検索を実行できます。
+各ソリューションのデータは分析され、インデックスが作成され、Operational Insights ポータルに表示されます。アラートや関連する修復ガイダンス、構成の評価、インフラストラクチャの容量の問題、システムの更新ステータス、マルウェア対策の警告、ログ データを表示できます。さらに、詳細なアドホック ログ検索と調査を実行できます。
 
-<h2 id="">オペレーション インサイト アカウントを作成し、サインインする</h2>
+![Operational Insights の概要図](./media/operational-insights-feature-guide/environment.png)
 
-次の情報を使用して Microsoft Azure オペレーション インサイトを使用するアカウントを設定し、オペレーション インサイトにサインインします。
-
-
-
-<h3>組織アカウントまたは Microsoft アカウントを取得する</h3>
-
-組織アカウントを作成したい場合は、 <a href="http://go.microsoft.com/fwlink/?LinkId=396866" target="_blank">Microsoft Account For Organizations でサインアップします</a>。次に、Windows Azure Active Directoryでオペレーション インサイトの組織アカウントへの <a href="http://aka.ms/Mr1dtz" target="_blank">アクセスを付与する必要があります</a>。
-
-
-Microsoft アカウント (旧称 "Windows Live ID") を取得するには、 <a href="http://go.microsoft.com/fwlink/?LinkId=396868" target="_blank">[サインアップ - Microsoft アカウント] でサインアップします</a>。Microsoft アカウントでは、オペレーション インサイトへのアクセスは自動的に付与されます。
-
-
-<h3>オペレーション インサイトへのサインイン</h3>
-
-1. Microsoft Azure オペレーション インサイトへ <a href="preview.opinsights.azure.com" target="_blank">移動し、ページの上部で</a>  [サインイン] を選択します。
-2. **[Microsoft アカウント]** または **[組織アカウント]** を選択し、資格情報で **サインイン** します。
-3. 求められた場合は、オペレーション インサイト アカウントを作成してサインイン情報と関連付けます。
-4. 使用するオペレーション インサイトのバージョンの選択を求められた場合、**[プレビューを試す]** を選択します。
-5. メッセージが表示されたら、招待コードを入力し、**[適用]** をクリックしてプレビューに参加します。招待コードがない場合、画面の下部に自分の情報を入力して取得します。
-
-<!--HONumber=45--> 
+### Operational Insights を利用できる地域
+Microsoft Azure Operational Insights は米国内でホストされています。Operational Insights の言語は英語ですが、サービスは英語圏以外の多数の市場で使用できます。詳細については、「[世界各国/地域でのご利用の可否](http://go.microsoft.com/fwlink/?LinkId=229842)」をご覧ください。
  
+
+<!---HONumber=July15_HO1-->

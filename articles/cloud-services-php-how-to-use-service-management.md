@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure サービス管理 API の使用方法 (PHP)" 
-	description="Azure PHP サービス管理 API を使用して、クラウド サービスおよびその他 Azure アプリケーションを管理する方法について説明します。" 
-	services="web-sites" 
-	documentationCenter="php" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+<properties
+	pageTitle="Azure サービス管理 API の使用方法 (PHP)"
+	description="Azure PHP サービス管理 API を使用して、クラウド サービスおよびその他 Azure アプリケーションを管理する方法について説明します。"
+	services="web-sites"
+	documentationCenter="php"
+	authors="tfitzmac"
+	manager="wpickett"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="11/17/2014" 
+<tags
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="article"
+	ms.date="11/17/2014"
 	ms.author="tomfitz"/>
 
 # PHP からサービス管理を使用する方法
@@ -52,14 +52,14 @@ Azure サービス管理を使用する PHP アプリケーションを作成す
 
 Azure 証明書の詳細については、「[Azure の証明書の概要](http://msdn.microsoft.com/library/azure/gg981929.aspx)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
 
-[Azure コマンド ライン ツール][command-line-tools]を使用して発行設定ファイルをダウンロードおよびインポートした場合、ツールによって作成された `.pem` ファイルを使用できます。独自に作成する必要はありません。ツールによって `.cer` が作成され、Azure にアップロードされて、対応する `.pem` ファイルがコンピューター上の `.azure` ディレクトリ (ユーザー ディレクトリ内) に保存されます。
+[Azure コマンド ライン インターフェイス][Azure CLI]を使用して発行設定ファイルをダウンロードおよびインポートした場合、ツールによって作成された `.pem` ファイルを使用できます。独自に作成する必要はありません。ツールによって `.cer` が作成され、Azure にアップロードされて、対応する `.pem` ファイルがコンピューター上の `.azure` ディレクトリ (ユーザー ディレクトリ内) に保存されます。
 
 これらのファイルを作成した後、[管理ポータル][management-portal]を通じて `.cer` ファイルを Azure にアップロードし、`.pem` ファイルを保存した場所を書き留める必要があります。
 
 サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、接続文字列を作成し、**ServicesBuilder** クラスの **createServiceManagementService** メソッドに渡すことで、Azure の管理エンドポイントに接続できます。
 
 	require_once 'vendor\autoload.php';
-	
+
 	use WindowsAzure\Common\ServicesBuilder;
 
 	$conn_string = "SubscriptionID=<your_subscription_id>;CertificatePath=<path_to_.pem_certificate>";
@@ -79,9 +79,9 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 
 	try{
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-	
+
 		$result = $serviceManagementRestProxy->listLocations();
-	
+
 		$locations = $result->getLocations();
 
 		foreach($locations as $location){
@@ -90,7 +90,7 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -99,19 +99,19 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 
 クラウド サービス、ストレージ サービス、またはアフィニティ グループを作成するときは、有効な場所を指定する必要があります。**listLocations** メソッドでは常に、現在利用可能な場所の最新のリストが返されます。この記事の執筆時点で利用可能な場所は次のとおりです。
 
-- アメリカ合衆国地域 
-- ヨーロッパ地域 
-- 西ヨーロッパ 
-- アジア地域 
-- 東南アジア 
-- 東アジア 
-- 米国中北部 
-- 北ヨーロッパ 
-- 米国中南部 
-- 米国西部 
+- アメリカ合衆国地域
+- ヨーロッパ地域
+- 西ヨーロッパ
+- アジア地域
+- 東南アジア
+- 東アジア
+- 米国中北部
+- 北ヨーロッパ
+- 米国中南部
+- 米国西部
 - 米国東部
 
-この後のコード例では、場所を文字列としてメソッドに渡しています。ただし、<code>WindowsAzure\\ServiceManagement\\Models\\Locations</code> クラスを使用して、場所を列挙型として渡すこともできます。たとえば、場所を受け取るメソッドに "米国西部" を渡す代わりに、<code>Locations::WEST_US</code> を渡すことができます。
+この後のコード例では、場所を文字列としてメソッドに渡しています。ただし、<code>WindowsAzure\ServiceManagement\Models\Locations</code> クラスを使用して、場所を列挙型として渡すこともできます。たとえば、場所を受け取るメソッドに "米国西部" を渡す代わりに、<code>Locations::WEST_US</code> を渡すことができます。
 
 ## 方法: クラウド サービスの作成
 
@@ -126,7 +126,7 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
         $name = "myhostedservice";
         $label = base64_encode($name);
         $options = new CreateServiceOptions();
@@ -138,14 +138,14 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-**listHostedServices** メソッドを使用して、サブスクリプションのすべてのホステッド サービスを列挙できます。このメソッドによって [ListHostedServicesResult] オブジェクトが返されます。次に **getHostedServices** メソッドが呼び出され、その後は [HostedServices] オブジェクトの配列をループ処理して、サービスのプロパティを取得できます。
+**listHostedServices** メソッドを使用して、サブスクリプションのすべてのホステッド サービスを列挙できます。このメソッドによって [ListHostedServicesResult] オブジェクトが返されます。次に **getHostedServices** メソッドを呼び出し、[HostedServices] オブジェクトの配列をループ処理して、サービスのプロパティを取得できます。
 
 	$listHostedServicesResult = $serviceManagementRestProxy->listHostedServices();
 
@@ -162,9 +162,9 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 特定のホステッド サービスに関する情報を取得する場合は、そのためにホステッド サービス名を **getHostedServiceProperties** メソッドに渡します。
 
 	$getHostedServicePropertiesResult = $serviceManagementRestProxy->getHostedServiceProperties("myhostedservice");
-		
+
 	$hosted_service = $getHostedServicePropertiesResult->getHostedService();
-		
+
 	echo "Service name: ".$hosted_service->getName()."<br />";
 	echo "Management URL: ".$hosted_service->getUrl()."<br />";
 	echo "Affinity group: ".$hosted_service->getAffinityGroup()."<br />";
@@ -203,7 +203,7 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
         $name = "myhostedservice";
 		$deploymentName = "v1";
         $slot = DeploymentSlot::PRODUCTION;
@@ -217,13 +217,13 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 														 $packageUrl,
 														 $configuration,
 														 $label);
-		
+
 		$status = $serviceManagementRestProxy->getOperationStatus($result);
 		echo "Operation status: ".$status->getStatus()."<br />";
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -236,7 +236,7 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 
 	$options = new GetDeploymentOptions();
 	$options->setSlot(DeploymentSlot::PRODUCTION);
-		
+
 	$getDeploymentResult = $serviceManagementRestProxy->getDeployment("myhostedservice", $options);
 	$deployment = $getDeploymentResult->getDeployment();
 
@@ -268,20 +268,20 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
         $name = "myhostedservice";
 		$configuration = base64_encode(file_get_contents('path to .cscfg file'));
 		$options = new ChangeDeploymentConfigurationOptions();
 		$options->setSlot(DeploymentSlot::PRODUCTION);
 
         $result = $serviceManagementRestProxy->changeDeploymentConfiguration($name, $configuration, $options);
-		
+
 		$status = $serviceManagementRestProxy->getOperationStatus($result);
 		echo "Operation status: ".$status->getStatus()."<br />";
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -299,19 +299,19 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 	use WindowsAzure\ServiceManagement\Models\DeploymentSlot;
 	use WindowsAzure\ServiceManagement\Models\GetDeploymentOptions;
 	use WindowsAzure\Common\ServiceException;
-	
+
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
 		$options = new GetDeploymentOptions();
 		$options->setSlot(DeploymentSlot::PRODUCTION);
-		
+
         $result = $serviceManagementRestProxy->updateDeploymentStatus("myhostedservice", DeploymentStatus::RUNNING, $options);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -324,7 +324,7 @@ Azure には、2 つの展開環境が用意されています。ステージン
 
 次の例では、**swapDeployment** メソッドを使用して 2 つのデプロイメント (デプロイメント名は `v1` と `v2`) をスワップする方法を示しています。この例では、**swapDeployment** の呼び出し前、デプロイメント `v1` は運用スロットに、デプロイメント `v2` はステージング スロットにあります。**swapDeployment** の呼び出し後、`v2` は運用スロットに、`v1` はステージング スロットにあります。
 
-	require_once 'vendor\autoload.php';	
+	require_once 'vendor\autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\Common\ServiceException;
@@ -332,12 +332,12 @@ Azure には、2 つの展開環境が用意されています。ステージン
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
 		$result = $serviceManagementRestProxy->swapDeployment("myhostedservice", "v2", "v1");
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -358,15 +358,15 @@ Azure には、2 つの展開環境が用意されています。ステージン
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
 		$options = new GetDeploymentOptions();
 		$options->setSlot(DeploymentSlot::STAGING);
-		
+
 		$result = $serviceManagementRestProxy->deleteDeployment("myhostedservice", $options);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -378,16 +378,16 @@ Azure には、2 つの展開環境が用意されています。ステージン
 [ストレージ サービス] を使用すると、Azure の [BLOB][azure-blobs]、[テーブル][azure-tables]、[キュー][azure-queues] にアクセスできます。ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 〜 24 文字の小文字)、ラベル (Base64 エンコード形式の最大 100 文字のサービス名)、場所 (またはアフィニティ グループ) が必要です。サービスの説明は省略できます。場所、アフィニティ グループ、説明は [CreateServiceOptions] オブジェクトで設定します。このオブジェクトを **createStorageService** メソッドに渡します。次の例では、場所を指定してストレージ サービスを作成する方法を示しています。アフィニティ グループを使用する場合は、まずアフィニティ グループを作成し (「[方法: アフィニティ グループを作成する](#CreateAffinityGroup)」を参照)、**CreateServiceOptions->setAffinityGroup** メソッドでアフィニティ グループを設定する必要があります。
 
 	require_once 'vendor\autoload.php';
-	 
+
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\ServiceManagement\Models\CreateServiceOptions;
 	use WindowsAzure\Common\ServiceException;
-	 
-	 
+
+
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
         $name = "mystorageaccount";
         $label = base64_encode($name);
         $options = new CreateServiceOptions();
@@ -401,7 +401,7 @@ Azure には、2 つの展開環境が用意されています。ステージン
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -430,19 +430,19 @@ Azure には、2 つの展開環境が用意されています。ステージン
 ストレージ サービスを削除するには、そのサービス名を **deleteStorageService** メソッドに渡します。ストレージ サービスを削除すると、サービスに格納されているすべてのデータ (BLOB、テーブル、キュー) が削除されます。
 
 	require_once 'vendor\autoload.php';
-	
+
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\Common\ServiceException;
 
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
 		$serviceManagementRestProxy->deleteStorageService("mystorageservice");
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -456,27 +456,27 @@ Azure には、2 つの展開環境が用意されています。ステージン
 アフィニティ グループを作成するには、グループの名前、ラベル (Base64 エンコード形式の名前)、場所が必要です。必要に応じて説明を指定できます。
 
 	require_once 'vendor\autoload.php';
-	
+
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\ServiceManagement\Models\CreateAffinityGroupOptions;
 	use WindowsAzure\Common\ServiceException;
-	 
+
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
+
         $name = "myAffinityGroup";
         $label = base64_encode($name);
         $location = "West US";
 
         $options = new CreateAffinityGroupOptions();
 		$options->setDescription = "My affinity group description.";
-		
+
         $serviceManagementRestProxy->createAffinityGroup($name, $label, $location, $options);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -488,7 +488,7 @@ Azure には、2 つの展開環境が用意されています。ステージン
 アフィニティ グループを列挙し、それらのプロパティを調べることができます。そのためには、**listAffinityGroups** メソッドを呼び出してから、[AffinityGroup] クラスの該当するメソッドを呼び出します。
 
 	$result = $serviceManagementRestProxy->listAffinityGroups();
-	
+
 	$groups = $result->getAffinityGroups();
 
 	foreach($groups as $group){
@@ -499,31 +499,33 @@ Azure には、2 つの展開環境が用意されています。ステージン
 	}
 
 ## 方法: アフィニティ グループを削除する
-	
+
 アフィニティ グループを削除するには、そのグループ名を **deleteAffinityGroup** メソッドに渡します。アフィニティ グループを削除する前に、アフィニティ グループとサービス (削除するアフィニティ グループを使用するサービス) との関連付けを解除する必要があることに注意してください。
 
 	require_once 'vendor\autoload.php';
-	
+
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\Common\ServiceException;
 
 	try{
 		// Create REST proxy.
 		$serviceManagementRestProxy = ServicesBuilder::getInstance()->createServiceManagementService($conn_string);
-		
-		// An affinity group must be disassociated from all services 
+
+		// An affinity group must be disassociated from all services
 		// before it can be deleted.
 		$serviceManagementRestProxy->deleteAffinityGroup("myAffinityGroup");
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/windowsazure/ee460801
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
+
 [ServiceManagementRestProxy]: https://github.com/WindowsAzure/azure-sdk-for-php/blob/master/WindowsAzure/ServiceManagement/ServiceManagementRestProxy.php
+
 [Azure SDK for PHP]: https://github.com/WindowsAzure/azure-sdk-for-php/blob/master/WindowsAzure/ServiceManagement/ServiceManagementRestProxy.php
 [management-portal]: https://manage.windowsazure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
@@ -531,7 +533,7 @@ Azure には、2 つの展開環境が用意されています。ステージン
 [storage-account]: storage/storage-create-storage-account.md
 
 [download-SDK-PHP]: php-download-sdk.md
-[command-line-tools]: virtual-machines-command-line-tools.md
+[Azure CLI]: virtual-machines/virtual-machines-command-line-tools.md
 [Composer]: http://getcomposer.org/
 [ServiceManagementSettings]: https://github.com/WindowsAzure/azure-sdk-for-php/blob/master/WindowsAzure/ServiceManagement/ServiceManagementSettings.php
 
@@ -556,4 +558,4 @@ Azure には、2 つの展開環境が用意されています。ステージン
 
 [Windows Azure サービスの構成スキーマ (.cscfg ファイル)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 
-<!--HONumber=54-->
+<!---HONumber=July15_HO1-->

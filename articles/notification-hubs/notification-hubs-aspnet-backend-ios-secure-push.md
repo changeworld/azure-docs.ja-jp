@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="02/26/2015" 
+	ms.date="06/02/2015" 
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
 
 <div class="dev-center-tutorial-selector sublanding">
-    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows Universal">Windows Universal</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS" class="current">iOS</a>
-		<a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
+    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows ユニバーサル">Windows ユニバーサル</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS" class="current">iOS</a> <a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
 </div>
 
 ##概要
@@ -38,21 +37,21 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 	- デバイスは、安全なペイロードを要求するバックエンドにアクセスします。
 	- アプリケーションはデバイスに通知としてペイロードを表示できます。
 
-前のフロー (およびこのチュートリアル) で重要なことは、ユーザーのログイン後、デバイスはローカル ストレージに認証トークンを格納すると想定していることです。これにより、デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
+重要なのは、前のフロー (およびこのチュートリアル) では、デバイスは、ユーザーがログインした後、認証トークンをローカル ストレージに保存すると想定していることです。デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、これによって完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
-この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは **ユーザーへの通知** チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
+この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「**ユーザーへの通知**」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE] このチュートリアルでは、[通知ハブの使用 (iOS)](notification-hubs-ios-get-started.md) での説明に従って通知ハブが作成され、構成されていると想定しています。
+> [AZURE.NOTE]このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## iOS プロジェクトを変更する
 
-通知の  *id* だけを送信するようにアプリケーション バックエンドを変更したため、iOS アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
+通知の *id* だけを送信するようにアプリケーション バックエンドを変更したため、iOS アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
 
 そのためには、アプリケーション バックエンドから安全なコンテンツを取得するロジックを作成する必要があります。
 
-1. **AppDelegate.m** で、アプリケーションがサイレント通知に登録されていることを確認し、バックエンドから送信された通知 id を処理できるようにします。didFinishLaunchingWithOption に **UIRemoteNotificationTypeNewsstandContentAvailability** オプションを追加します。
+1. **AppDelegate.m** で、バックエンドから送信された通知 ID を処理できるように、必ずアプリをサイレント通知に登録します。**UIRemoteNotificationTypeNewsstandContentAvailability** オプションを didFinishLaunchingWithOptions 内に追加します。
 
 		[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 
@@ -62,7 +61,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 		- (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
 		@end
 
-3. 次に、実装セクションに次のコードを追加します。これにより、プレースホルダー  `{back-end endpoint}` を前に取得したバックエンドのエンドポイントで置き換えます。
+3. 次に、実装セクションに次のコードを追加します。プレースホルダー `{back-end endpoint}` を前に取得したバックエンドのエンドポイントに置き換えます。
 
 		NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
 
@@ -147,12 +146,13 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 アプリケーションを実行するには、以下の手順に従います。
 
-1. XCode を使用して、物理 iOS デバイスでアプリケーションを実行します (プッシュ通知はシミュレーターでは機能しません）。
+1. XCode を使用して、物理 iOS デバイスでアプリケーションを実行します (プッシュ通知はシミュレーターでは機能しません)。
 
 2. iOS アプリケーションの UI で、ユーザー名とパスワードを入力します。文字列は任意ですが、値は同じである必要があります。
 
 3. iOS アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。通知センターに安全な通知が表示されます。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO1-->

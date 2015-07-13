@@ -42,23 +42,23 @@
 
 3.	イメージ内の現在のリポジトリを置き換えて、Ubuntu の Azure リポジトリを使用します。この手順は、Ubuntu のバージョンによって多少異なります。
 
-	/etc/apt/sources.list を編集する前に、バックアップを作成することをお勧めします。
+/etc/apt/sources.list を編集する前に、バックアップを作成することをお勧めします。
 
 		# sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
-	Ubuntu 12.04:
+Ubuntu 12.04:
 
 		# sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		# sudo apt-add-repository 'http://archive.canonical.com/ubuntu precise-backports main'
 		# sudo apt-get update
 
-	Ubuntu 12.10:
+Ubuntu 12.10:
 
 		# sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		# sudo apt-add-repository 'http://archive.canonical.com/ubuntu quantal-backports main'
 		# sudo apt-get update
 
-	Ubuntu 14 以上:
+Ubuntu 14 以上:
 
 		# sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		# sudo apt-get update
@@ -93,7 +93,7 @@
 
 	a) /etc/grub.d/00_header ファイルを開きます。
 
-	b) **make_timeout()** 関数内で **if ["\${recordfail}" = 1 ] を検索します**。
+	b) **make_timeout()** 関数内で **if ["\${recordfail}" = 1 ]; then** を検索します。
 
 	c) この行の下の文を **set timeout=5** に変更します。
 
@@ -109,12 +109,15 @@
 
 9.	Azure Linux エージェントをインストールします。
 
+
 		# sudo apt-get update
 		# sudo apt-get install walinuxagent
 
-	`NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
+
+`NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
 
 10.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+
 
 		# sudo waagent -force -deprovision
 		# export HISTSIZE=0
@@ -122,4 +125,7 @@
 
 11. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=July15_HO1-->

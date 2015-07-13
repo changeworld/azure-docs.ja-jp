@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
+	ms.date="06/03/2015" 
 	ms.author="wesmc"/>
 
 
@@ -40,7 +40,7 @@
 
 ##登録に認証が必要となるようにサービスを更新する
 
-[AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../../includes/mobile-services-javascript-backend-push-notifications-app-users.md)] 
+[AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
 
 <ol start="5"><li><p>insert 関数を次のコードに置き換え、<strong>[保存]</strong> をクリックします。</p>
 <pre><code>function insert(item, user, request) {
@@ -78,11 +78,11 @@
 
 ##登録の前にログインするようにアプリケーションを更新する
 
-[AZURE.INCLUDE [mobile-services-android-push-notifications-app-users](mobile-services-android-push-notifications-app-users.md)] 
+[AZURE.INCLUDE [mobile-services-android-push-notifications-app-users](mobile-services-android-push-notifications-app-users.md)]
 
 ##アプリケーションをテストする
 
-[AZURE.INCLUDE [mobile-services-android-test-push-users](../../includes/mobile-services-android-test-push-users.md)] 
+[AZURE.INCLUDE [mobile-services-android-test-push-users](../../includes/mobile-services-android-test-push-users.md)]
 
 <!---##Next steps
 
@@ -93,8 +93,9 @@ In the next tutorial, [Service-side authorization of Mobile Services users](mobi
 [Mobile Services アプリへの認証の追加]: mobile-services-android-get-started-users.md
 [Get started with push notifications]: mobile-services-javascript-backend-android-get-started-push.md
 [プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push.md
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

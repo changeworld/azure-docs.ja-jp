@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/28/2015"
+   ms.date="05/15/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
@@ -22,21 +22,21 @@
 
 
 ## 概念
-1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
-2. サービス プリンシパル - ディレクトリ内のアプリケーションのインスタンス。
-3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、「[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)」を参照してください。
+1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、[Azure Active Directory とは何ですか。](active-directory/active-directory-whatis.md)を参照してください。
+2. サービス プリンシパル - 他のリソースにアクセスする必要がある、ディレクトリ内のアプリケーションのインスタンス。
+3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)を参照してください。
 
 ## PowerShell を使用したサービス プリンシパルに対するアクセス付与と認証
 
-Azure PowerShell がインストールされていない場合、「[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)」を参照してください。
+Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。
 
 まず、サービス プリンシパルを作成します。これを行うには、ディレクトリにアプリケーションを作成する必要があります。このセクションでは、ディレクトリに新しいアプリケーションを作成する手順を示します。
 
 1. **New-AzureADApplication** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
 
-        PS C:> $azureAdApplication = New-AzureADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password "<Your_Password>"
+        PS C:\> $azureAdApplication = New-AzureADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password "<Your_Password>"
 
-   Azure AD アプリケーションが返されます。
+     Azure AD アプリケーションが返されます。サービス プリンシパルの作成、ロールの割り当て、および JWT トークンの取得には、**ApplicationId** プロパティが必要です。出力を保存するか、または変数内にキャプチャします。
 
         Type                    : Application
         ApplicationId           : a41acfda-d588-47c9-8166-d659a335a865
@@ -66,60 +66,87 @@ Azure PowerShell がインストールされていない場合、「[Azure Power
                           }}
 
 
-   >[AZURE.NOTE]サービス プリンシパルの作成、ロールの割り当て、および JWT トークンの取得には、**ApplicationId** プロパティが必要です。出力を保存するか、または変数内にキャプチャします。
+2. アプリケーションのサービス プリンシパルを作成します。
 
-3. アプリケーションのサービス プリンシパルを作成します。
+        PS C:\> New-AzureADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-        PS C:> New-AzureADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+     これでディレクトリにサービス プリンシパルが作成されましたが、そのサービスには権限やスコープが割り当てられていません。いくつかのスコープで操作を実行する権限を、サービス プリンシパルに明示的に付与する必要があります。
 
-   これでディレクトリにサービス プリンシパルが作成されましたが、そのサービスには権限やスコープが割り当てられていません。いくつかのスコープで操作を実行する権限を、サービス プリンシパルに明示的に付与する必要があります。
+3. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、[Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md) を参照してください。
 
-4. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。
+        PS C:\> New-AzureRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
 
-        PS C:> New-AzureRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
+4. ロールの割り当てが作成されたサブスクリプションを取得します。このサブスクリプションは、サービス プリンシパルのロールの割り当てが存在するテナントの **TenantId** を取得するために後に使用されます。
 
-5. ロールの割り当てが作成されたサブスクリプションを取得します。このサブスクリプションは、サービス プリンシパルのロールの割り当てが存在するテナントの **TenantId** を取得するために後に使用されます。
+        PS C:\> $subscription = Get-AzureSubscription | where { $_.IsCurrent }
 
-        PS C:> $subscription = Get-AzureSubscription | where { $_.IsCurrent }
+     現在選択されているサブスクリプション以外のサブスクリプション内にロールの割り当てを作成した場合、**SubscriptoinId** または **SubscriptionName** パラメーターを指定して、別のサブスクリプションを取得できます。
 
-   現在選択されているサブスクリプション以外のサブスクリプション内にロールの割り当てを作成した場合、**SubscriptoinId** または **SubscriptionName** パラメーターを指定して、別のサブスクリプションを取得できます。
+5. **Get-credential** コマンドを実行して、ユーザーの資格情報を含む新しい**PSCredential** オブジェクトを作成します。
 
-6. **Get-credential** コマンドを実行して、ユーザーの資格情報を含む新しい**PSCredential** オブジェクトを作成します。
+        PS C:\> $creds = Get-Credential
 
-        PS C:> $creds = Get-Credential
+     資格情報を入力するためのプロンプトが表示されます。
 
-   資格情報を入力するためのプロンプトが表示されます。
+     ![][1]
 
-   ![][1]
+     ユーザー名には、アプリケーションの作成時に使用した **ApplicationId** または **IdentifierUris** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
 
-   ユーザー名には、アプリケーションの作成時に使用した  **ApplicationId** または **IdentifierUris** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
+6. 入力した資格情報は、**Add-azureaccount** コマンドレットへの入力として使用します。このコマンドレットは、以下の場所のサービス プリンシパルに署名します。
 
-7. 入力した資格情報は、**Add-azureaccount** コマンドレットへの入力として使用します。このコマンドレットは、以下の場所のサービス プリンシパルに署名します。
+        PS C:\> Add-AzureAccount -Credential $creds -ServicePrincipal -Tenant $subscription.TenantId
 
-        PS C:> Add-AzureAccount -Credential $creds -ServicePrincipal -Tenant $subscription.TenantId
-
-   これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
+     これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
 
 ## Azure CLI を使用したサービス プリンシパルに対するアクセス付与と認証
 
-Azure CLI for Mac, Linux and Windows がインストールされていない場合は、「[Azure CLI のインストールと構成](xplat-cli-install.md)」を参照してください。
+Azure CLI for Mac, Linux and Windows がインストールされていない場合は、[Azure CLI のインストール](xplat-cli-install.md)を参照してください。
 
-これらの手順を実行するには、AD アプリケーションとサービス プリンシパルを既に所有している必要があります。従来の Azure ポータルによって AD アプリケーションとサービス プリンシパルをセットアップする方法については、「[従来の Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)」を参照してください。
+1. **azure ad app create** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
 
-1. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。
+        azure ad app create --name "<Your Application Display Name>" --home-page "<https://YourApplicationHomePage>" --identifier-uris "<https://YouApplicationUri>" --password <Your_Password>
+        
+    Azure AD アプリケーションが返されます。サービス プリンシパルの作成、ロールの割り当て、および JWT トークンの取得には、ApplicationId プロパティが必要です。
 
-        azure role assignment create --objectId {service-principal-object-id} -o Reader -c /subscriptions/{subscriptionId}/
+        info:    Executing command ad app create
+        + Creating application exampleapp                                                
+        data:    Application Id:          b57dd71d-036c-4840-865e-23b71d8098ec
+        data:    Application Object Id:   d5c519e2-6149-447e-b323-88d2c4ea27de
+        data:    Application Permissions:  
+        data:                             claimValue:  user_impersonation
+        data:                             description:  Allow the application to access exampleapp on behalf of the signed-in user.
+        ...
+        info:    ad app create command OK
 
-2. アカウントを一覧表示し、その出力から **TenantId** プロパティを検索することによって、サービス プリンシパルのロールの割り当てが存在するテナントの **TenantId** を決めます。
+2. アプリケーションのサービス プリンシパルを作成します。前の手順で返されたアプリケーション ID を入力します。
+
+        azure ad sp create b57dd71d-036c-4840-865e-23b71d8098ec
+        
+    新しいサービス プリンシパルが返されます。アクセス許可を付与する場合は、オブジェクト ID が必要です。
+    
+        info:    Executing command ad sp create
+        + Creating service principal for application b57dd71d-036c-4840-865e-23b71d8098ec
+        data:    Object Id:               47193a0a-63e4-46bd-9bee-6a9f6f9c03cb
+        data:    Display Name:            exampleapp
+        ...
+        info:    ad sp create command OK
+
+    これでディレクトリにサービス プリンシパルが作成されましたが、そのサービスには権限やスコープが割り当てられていません。いくつかのスコープで操作を実行する権限を、サービス プリンシパルに明示的に付与する必要があります。
+
+3. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、[Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md) を参照してください。
+
+        azure role assignment create --objectId 47193a0a-63e4-46bd-9bee-6a9f6f9c03cb -o Reader -c /subscriptions/{subscriptionId}/
+
+4. アカウントを一覧表示し、その出力から **TenantId** プロパティを検索することによって、サービス プリンシパルのロールの割り当てが存在するテナントの **TenantId** を決めます。
 
         azure account list
 
-3. サービス プリンシパルを ID として使用してサインインします。ユーザー名には、アプリケーションの作成時に使用した **ApplicationId** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
+5. サービス プリンシパルを ID として使用してサインインします。ユーザー名には、アプリケーションの作成時に使用した **ApplicationId** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
 
         azure login -u "<ApplicationId>" -p "<password>" --service-principal --tenant "<TenantId>"
 
-  これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
+    これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
 ## 次のステップ
 Getting Started (概要)
@@ -127,9 +154,10 @@ Getting Started (概要)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)  
 - [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
 - [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](virtual-machines/xplat-cli-azure-resource-manager.md)  
-- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)  
+- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)
+
   
-アプリケーションの作成と展開
+アプリケーションの作成とデプロイ
   
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)  
@@ -152,4 +180,4 @@ Getting Started (概要)
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!--HONumber=52-->
+<!---HONumber=July15_HO1-->

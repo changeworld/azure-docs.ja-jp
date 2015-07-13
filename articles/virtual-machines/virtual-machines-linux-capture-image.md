@@ -90,4 +90,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

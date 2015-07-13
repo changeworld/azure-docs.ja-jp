@@ -72,25 +72,25 @@ Docker VM 拡張機能を選択します。この操作により、Docker の説
 
 ![](./media/virtual-machines-docker-with-portal/AddExtensionFormFilled.png)
 
-> [AZURE.NOTE](上のイメージに示すように) 既定で 4243 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
+> [AZURE.NOTE](上のイメージに示すように) 既定で 2376 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
 
 ## Docker 通信エンドポイントの追加
 前に作成したリソース グループの VM が表示されているときに、下へスクロールして **[エンドポイント]** をクリックすると、下に示すように VM 上のエンドポイントが表示されます。
 
 ![](./media/virtual-machines-docker-with-portal/AddingEndpoint.png)
 
-**[+ 新規]** をクリックするとエンドポイントが 1 つ追加されます。既定で、エンドポイントの名前 (この例では **docker**) と、プライベート ポートおよびパブリック ポートとして 4243 が入力されています。**[TCP]** と表示されているプロトコルの値はそのままにし、**[OK]** をクリックして、エンドポイントを作成します。
+**[+ 新規]** をクリックするとエンドポイントが 1 つ追加されます。既定で、エンドポイントの名前 (この例では **docker**) と、プライベート ポートおよびパブリック ポートとして 2376 が入力されています。**[TCP]** と表示されているプロトコルの値はそのままにし、**[OK]** をクリックして、エンドポイントを作成します。
 
 ![](./media/virtual-machines-docker-with-portal/AddEndpointFormFilledOut.png)
 
 
 ## Docker クライアントと Azure Docker ホストのテスト
-VM のドメイン名を見つけてコピーし、クライアント コンピューターのコマンド ラインで、「`docker --tls -H tcp://`*dockerextension*`.cloudapp.net:4243 info`」と入力します (*dockerextension* は、使用している VM のサブドメインに置き換えます)。
+VM のドメイン名を見つけてコピーし、クライアント コンピューターのコマンド ラインで、「`docker --tls -H tcp://`*dockerextension*`.cloudapp.net:2376 info`」と入力します (*dockerextension* は、使用している VM のサブドメインに置き換えます)。
 
 結果は次のようになります。
 
 ```
-$ docker --tls -H tcp://dockerextension.cloudapp.net:4243 info
+$ docker --tls -H tcp://dockerextension.cloudapp.net:2376 info
 Containers: 0
 Images: 0
 Storage Driver: devicemapper
@@ -144,4 +144,4 @@ WARNING: No swap limit support
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

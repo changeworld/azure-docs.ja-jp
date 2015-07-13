@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/22/2015" 
+	ms.date="05/28/2015" 
 	ms.author="glenga"/>
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
@@ -24,17 +24,14 @@
 
 BLOB ストレージ サービスにデータを安全にアップロードするために必要な資格情報をクライアント アプリケーションで安全に配信できません。代わりに、これらの資格情報をモバイル サービスに保存し、それらを使用して、新しいイメージをアップロードするために使用される SAS (Shared Access Signature) を生成する必要があります。SAS は有効期間が短い資格情報 (この場合は 5 分間) であり、モバイル サービスによりクライアント アプリケーションに安全に返されます。アプリケーションは、この一時的な資格情報を使用してイメージをアップロードします。この例では、BLOB サービスからのダウンロードはパブリックです。
 
-このチュートリアルでは、モバイル サービスにより生成された SAS を使用して、写真を撮影してイメージを Azure にアップロードする機能を、モバイル サービス クイック スタート アプリケーションに追加します。このチュートリアルでは、モバイル サービス クイック スタートを更新してイメージを BLOB ストレージ サービスにアップロードする、次のような基本的な手順について説明します。
+このチュートリアルでは、モバイル サービスにより生成された SAS を使用して、写真を撮影してイメージを Azure にアップロードする機能を、モバイル サービス クイック スタート アプリケーションに追加します。
 
-1. [ストレージ クライアント ライブラリのインストール]
-2. [SAS を生成する挿入スクリプトの更新]
-3. [イメージをキャプチャするためのクライアント アプリケーションの更新]
-4. [アプリケーションをテストするイメージのアップロード]
+##前提条件
 
 このチュートリアルには、次のものが必要です。
 
 + Microsoft Visual Studio 2012 Express for Windows 8 以降のバージョン
-+ [Azure ストレージ アカウント][How To Create a Storage Account]
++ [Azure ストレージ アカウント](../storage-create-storage-account.md)
 + コンピューターに接続された、カメラなどのイメージ キャプチャ デバイス
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
@@ -81,10 +78,10 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
   
  
 <!-- Anchors. -->
-[ストレージ クライアント ライブラリのインストール]: #install-storage-client
-[イメージをキャプチャするためのクライアント アプリケーションの更新]: #add-select-images
-[SAS を生成する挿入スクリプトの更新]: #update-scripts
-[アプリケーションをテストするイメージのアップロード]: #test
+[Install the Storage Client library]: #install-storage-client
+[Update the client app to capture images]: #add-select-images
+[Update the insert script to generate an SAS]: #update-scripts
+[Upload images to test the app]: #test
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -93,16 +90,17 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
 
 <!-- URLs. -->
-[SendGrid を使用した Mobile Services からの電子メールの送信]: /develop/mobile/tutorials/send-email-with-sendgrid/
+[SendGrid を使用した Mobile Services からの電子メールの送信]: store-sendgrid-mobile-services-send-email-scripts.md
 [Mobile Services でのバックエンド ジョブの計画]: mobile-services-schedule-recurring-tasks.md
 [Send push notifications to Windows Store apps using Service Bus from a .NET back-end]: http://go.microsoft.com/fwlink/?LinkId=277073&clcid=0x409
-[Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
-[モバイル サービスの使用]: ../mobile-services-windows-store-get-started.md
+[Mobile Services のサーバー スクリプト リファレンス]: mobile-services-how-to-use-server-scripts.md
+[モバイル サービスの使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
-[How To Create a Storage Account]: /manage/services/storage/how-to-create-a-storage-account
+[How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
-[Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

@@ -1,35 +1,37 @@
 
-<properties 
-    pageTitle=" RemoteApp での Azure Active Directory テナントの変更"
-    description="RemoteApp に関連付けられている Azure Active Directory テナントの変更方法について説明します。 " 
-    services="remoteapp" 
+<properties
+    pageTitle="Azure RemoteApp で Azure Active Directory テナントを変更する"
+    description="Azure RemoteApp に関連付けられている Azure Active Directory テナントの変更方法について説明します。"
+    services="remoteapp"
     solutions="" documentationCenter="" 
-    authors="lizap" 
+    authors="lizap"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="02/19/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="06/24/2015"
     ms.author="elizapo" />
 
 
 
-# RemoteApp での Azure Active Directory テナントの変更
+# Azure RemoteApp で Azure Active Directory テナントを変更する
 
-RemoteApp では、Azure Active Directory (Azure AD) を使用してユーザーのアクセスを許可します。使用可能な唯一の Azure AD テナントは、Azure サブスクリプションに関連付けられているテナントです。ポータルの [設定] ページで、関連付けられているサブスクリプションを確認できます。[サブスクリプション] タブの [ディレクトリ] 列に注目します。 
+Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユーザーのアクセスを許可します。使用可能な唯一の Azure AD テナントは、Azure サブスクリプションに関連付けられているテナントです。ポータルの [設定] ページで、関連付けられているサブスクリプションを確認できます。[サブスクリプション] タブの [ディレクトリ] 列に注目します。
+
+> [AZURE.NOTE]Azure Active Directory を正常に変更するには、最初にすべての Azure RemoteApp コレクションの既存の Azure Active Directory テナントからすべてのユーザーを削除する必要があります。これを行うには、Azure ポータルに移動し、[Azure RemoteApp] タブに進み、すべての Azure RemoteApp コレクションを開きます。**[ユーザー]** タブに進み、現在の Azure Active Directory テナントに属しているユーザーを削除します。すべての既存の Azure RemoteApp コレクションに対して繰り返します。この作業を行わないと、コレクションを作成またはパッチできません。
 
 別のテナントを使用する場合は、この手順を使用して、サブスクリプションの関連付けを変更します。
 
-1. ポータルで、RemoteApp サービスへのアクセス許可を付与した Azure AD ユーザーを削除します。
+1. ポータルで、Azure RemoteApp コレクションへのアクセス許可を付与した Azure AD ユーザーを削除します。
 
 
 2. サービス管理者として、Microsoft アカウント (以前の Live ID) を設定します。(**[設定]、[管理者]** の順にクリックします。)
-	1. 右上隅の現在ログインしているユーザーをクリックして、**[明細の表示]** をクリックします。
-	2. サブスクリプションを選択して、**[サブスクリプション詳細の編集]** をクリックします。
+	1. 右上隅の現在ログインしているユーザーをクリックし、**[明細の表示]** をクリックします。
+	2. サブスクリプションを選択し、**[サブスクリプション詳細の編集]** をクリックします。
 	3. 必要な変更を加えます。
 
 
@@ -44,7 +46,6 @@ RemoteApp では、Azure Active Directory (Azure AD) を使用してユーザー
 
 
 
-これで、新しい Azure AD テナントを使用して、Azure サブスクリプションへのアクセスを制御したり、RemoteApp 内のユーザー アクセスを構成することができます。
+これで新しい Azure AD テナントを使用し、Azure サブスクリプションへのアクセスを制御したり、Azure RemoteApp 内のユーザー アクセスを構成したりできます。
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

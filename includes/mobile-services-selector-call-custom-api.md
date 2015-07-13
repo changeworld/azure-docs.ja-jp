@@ -10,4 +10,4 @@
 - [(Android | Javascript)](../articles/mobile-services-android-call-custom-api.md)
 - [(HTML | Javascript)](../articles/mobile-services-html-call-custom-api.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

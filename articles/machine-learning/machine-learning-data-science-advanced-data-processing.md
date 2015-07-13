@@ -25,4 +25,4 @@
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/machine-learning-prepare-data-for-ml.svg" width="100%" height="100%"> </object>
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

@@ -106,7 +106,7 @@ Hudson で BLOB サービスを使用するには、Azure ストレージ プラ
         cd text
         echo Hello Azure Storage from Hudson > hello.txt
         date /t > date.txt
-        time /t > date.txt
+        time /t >> date.txt
  
 5. ジョブ構成の **[Post-build Actions]** セクションで **[Upload artifacts to Microsoft Azure Blob storage]** をクリックします。
 6. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
@@ -168,4 +168,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

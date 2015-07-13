@@ -1,38 +1,25 @@
-<properties 
-	pageTitle="Azure Search サービス REST API バージョン 2014-07-31-Preview" 
-	description="Azure Search サービス REST API バージョン 2014-07-31-Preview" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
-	editor=""/>
+<properties pageTitle="Azure Search サービス REST API バージョン 2014-07-31-Preview" description="Azure Search サービス REST API: バージョン 2014-07-31-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
 
-<tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="02/11/2015" 
-	ms.author="heidist"/>
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="05/21/2015" ms.author="heidist" />
 
-# Azure Search サービス REST API バージョン 2014-07-31-Preview #
+# Azure Search サービス REST API バージョン: 2014-07-31-Preview
 
-このドキュメントでは、Azure Search サービス REST API の **2014-07-31-Preview** バージョンについて説明します。これは、Azure Search プレビュー用の REST API です。
+このドキュメントでは、Azure Search サービス REST API の以前の **2014-07-31-Preview** バージョンについて説明します。これは 2014 年 8 月に Azure Search 公開プレビューとしてリリースされたものです。Azure Search REST API の一般的に利用できるバージョンのドキュメントについては、MSDN を参照してください。詳細については、「[Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)」を参照してください。
 
-このバージョンに関連するその他の API コンテンツとしては次のものがあります。
+アプリケーション コードに API のプレビュー バージョンを使用している場合、一般公開リリースに移行することが推奨されます。ガイダンスについては、「[プレビューから一般公開 API バージョンに移行する](search-transition-from-preview.md)」を参照してください。
 
-- [スコアリング プロファイル (Azure Search サービス REST API: 2014-07-31-Preview)](../search-api-scoring-profiles-2014-07-31-preview/)
+**2014-07-31-Preview** に関連するその他の API コンテンツとしては次のものがあります。
 
-Azure Search REST API のリリース バージョンのドキュメントについては、MSDN を参照してください。詳細については、「[Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)」を参照してください。
+- [スコアリング プロファイル (Azure Search サービス REST API: 2014-07-31-Preview)](../search-api-scoring-profiles-2014-07-31-preview.md)
 
-##サービス REST API について##
+
+##サービス REST API について
 
 Azure Search はクラウド ベースのサービスであり、カスタム検索アプリケーションの作成に使用できます。Azure Search には*検索サービス*と*インデックス*の概念があり、検索サービスには 1 つまたは複数のインデックスが含まれています。検索サービスは、完全修飾ドメイン名によって一意に識別されます (例: `mysearchservice.search.windows.net`)。API キーは、サービスのプロビジョニング時に生成され、Azure Search サービスへの要求を認証するために使用されます。
 
 Azure Search サービスに対して実行できるアクションには 2 つの種類があります。
 
-- **インデックス管理**: これには、検索サービスまたは検索インデックスに対して実行される管理タスクが含まれます。 
+- **インデックス管理**: これには、検索サービスまたは検索インデックスに対して実行される管理タスクが含まれます。
 
 - **ドキュメント アクション**: これらのアクションは、特定のインデックスに対するコーパスのクエリおよび管理を行います。
 
@@ -46,24 +33,24 @@ Azure Search サービスに対して実行できるアクションには 2 つ�
 
 - すべての API 要求には、`api-version` クエリ文字列パラメーターが含まれる必要があります。その値は、現在のサービス リリースのバージョンに設定される必要があります。次にその例を示します。
 
-    GET /indexes?api-version=2014-07-31-Preview
+GET /indexes?api-version=2014-07-31-Preview
 
 - すべての API 要求では、オプションとして、`Accept` HTTP ヘッダーを設定できます。このヘッダーを設定しないと、既定で `application/json` と想定されます。
 
 サービス管理用に別の API が提供されます。サービス管理操作の例としては、サービスのプロビジョニングや容量の変更などがあります。この API の詳細については、Azure Search 管理 REST API を参照してください。
 
-### エンドポイント ###
+### エンドポイント
 
 サービス操作のエンドポイントは、プロビジョニングした Azure Search サービスの URL である https://<yourService>.search.windows.net です。
 
 
-### バージョン ###
+### バージョン
 
 Azure Search の API には複数のバージョンがあります。実稼働アプリケーションで使用するために Azure Search を評価する場合は、各 API セットに対して公開されているバージョン情報を確認することをお勧めします。特定のバージョンの選択に関するガイダンスについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
 
 <a name="Authentication"></a>
-### 認証とアクセス制御###
+### 認証とアクセス制御
 
 Azure Search サービスの認証には、Search サービスの URL と `api-key` の 2 つの情報が必要です。`api-keys` は、サービスが作成されたときに生成され、サービスがプロビジョニングされた後は必要に応じて再生成できます。`api-key` は、すべての操作へのアクセスを許可する管理者キーまたはクエリ要求のみを認証するクエリ キーのいずれかです。サービスごとに、2 個の管理者キーと最大 50 個のクエリ キーを使用できます。
 
@@ -73,7 +60,7 @@ Azure Search サービスの認証には、Search サービスの URL と `api-k
 
 **注**: 一般に、`api-key` などの機密データを要求 URI で渡すことはセキュリティが劣る方法であると考えられます。この理由から、Azure Search はクエリ文字列の `api-key` としてクエリ キーのみを受け付けます。インデックスの内容を一般に公開する必要がある場合を除き、このようなことは避ける必要があります。代わりに、要求ヘッダーとして `api-key` を渡すことをお勧めします。
 
-###API の概要###
+###API の概要
 
 Azure Search サービス API では、エンティティの検索に対して 2 種類の構文がサポートされます。次の一覧では、簡単な構文と代替 OData 構文の両方を示します。
 
@@ -121,8 +108,9 @@ Azure Search サービス API では、エンティティの検索に対して 2
 
     GET /indexes/[index name]/docs/suggest?[query parameters]
 
-________________________________________ <a name="IndexOps"></a>
-# インデックス操作 #
+________________________________________
+<a name="IndexOps"></a>
+## インデックス操作
 
 特定のインデックス リソースに対して簡単な HTTP 要求 (POST、GET、PUT、DELETE) を実行することにより、Azure Search サービスでインデックスを作成および管理できます。インデックスを作成するには、最初にインデックス スキーマが記述されている JSON ドキュメントを POST します。スキーマでは、インデックスのフィールド、データ型、使用可能な方法 (たとえば、フルテキスト検索、フィルター、並べ替え、ファセット、検索候補) が定義されています。また、インデックスの動作を構成するスコアリング プロファイルおよび他の属性も定義されています。
 
@@ -152,7 +140,7 @@ Azure Search でのインデックス処理の概要に関するビデオにつ�
 
 
 <a name="CreateIndex"></a>
-## インデックスの作成 ##
+## インデックスの作成
 
 HTTP POST 要求を使用して、Azure Search サービス内に新しいインデックスを作成できます。要求の本文は JSON ドキュメントであり、インデックス名、フィールド、クエリの動作を制御する属性、結果のスコアリング、および CORS オプションを指定します。
 
@@ -182,7 +170,7 @@ HTTPS はすべてのサービス要求に必要です。**Create Index** 要求
 - `api-key`: 必須。`api-key` は、 
 - Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。 
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページ ナビゲーションのヘルプについては、「[Configure Azure Search in the Preview Portal (プレビュー ポータルで Azure Search を構成する)](../search-configure.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 <a name="RequestData"></a> **要求本文の構文**
 
@@ -632,7 +620,7 @@ Azure Search では、さまざまな言語でフィールドのインデック�
 既定では、応答本文には作成されたインデックス定義の JSON が含まれます。`Prefer` 要求ヘッダーが `return=minimal` に設定されている場合、応答本文は空で、成功の状態コードは「201 作成されました」ではなく「204 コンテンツがありません」になります。これは、インデックスの作成に PUT または POST のどちらが使用された場合でも同じです。
 
 <a name="UpdateIndex"></a>
-## インデックスの更新 ##
+## インデックスの更新
 
 Azure Search 内の既存のインデックスを、HTTP PUT 要求を使用して更新できます。パブリック プレビューでの更新には、既存のスキーマへの新しいフィールドの追加、CORS オプションの変更、スコアリング プロファイルの変更が含まれます (「[検索インデックスにスコア付けプロファイルを追加する](http://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照)。更新するインデックスの名前を要求 URI で指定します。
 
@@ -659,7 +647,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文の構文**
 
@@ -732,7 +720,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 既定では、応答本文は空になります。ただし、`Prefer` 要求ヘッダーを `return=representation` に設定した場合は、応答本文には更新されたインデックス定義の JSON が含まれます。この場合、成功の状態コードは "200 OK" になります。
 
 <a name="ListIndexes"></a>
-## インデックスの一覧取得 ##
+## インデックスの一覧取得
 
 **List Indexes** 操作は、Azure Search サービスに現在存在するインデックスの一覧を返します。
 
@@ -751,7 +739,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
  
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**List Indexes** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -797,7 +785,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 これは、Search サービスにインデックスがたくさんある場合、帯域幅を節約する便利な方法となります。
 
 <a name="GetIndex"></a>
-## インデックスの取得 ##
+## インデックスの取得
 
 **Get Index** 操作は Azure Search からインデックスの定義を取得します。
 
@@ -808,7 +796,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 サービス要求には HTTPS が必要です。**Get Index** 要求は、GET メソッドを使用して作成できます。
  
-要求 URI の [index name] では、インデックス コレクションから返すインデックスを指定します。
+要求 URI の [index name] には、インデックス コレクションから返すインデックスを指定します。
 
 `api-version` パラメーターは必須です。有効な値は、`2014-07-31-Preview` または `2014-10-20-Preview` です。要求ごとに使用するバージョンを指定してバージョン固有の動作を取得できますが、ベスト プラクティスとしては、コード全体で同じバージョンを使用します。推奨されるバージョンは、一般的な使用の場合は `2014-07-31-Preview` です。試験的な機能を評価する場合は、`2014-10-20-Preview` を使用します。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -818,7 +806,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
  
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Get Index** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -831,7 +819,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 応答ペイロードの例については、[インデックスの作成と更新](#CreateUpdateIndexExample)の JSON の例を参照してください。
 
 <a name="DeleteIndex"></a>
-## インデックスの削除 ##
+## インデックスの削除
 
 **Delete Index** 操作は、Azure Search サービスからインデックスおよび関連するドキュメントを削除します。インデックス名は、Azure プレビュー ポータルのサービス ダッシュボードまたは API から取得できます。詳細については、「[インデックスの一覧取得](#ListIndexes)」を参照してください。
 
@@ -842,7 +830,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 サービス要求には HTTPS が必要です。**Delete Index** 要求は、DELETE メソッドを使用して作成できます。
  
-要求 URI の [index name] では、インデックス コレクションから削除するインデックスを指定します。
+要求 URI の [index name] には、インデックス コレクションから削除するインデックスを指定します。
 
 `api-version` パラメーターは必須です。有効な値は、`2014-07-31-Preview` または `2014-10-20-Preview` です。要求ごとに使用するバージョンを指定してバージョン固有の動作を取得できますが、ベスト プラクティスとしては、コード全体で同じバージョンを使用します。推奨されるバージョンは、一般的な使用の場合は `2014-07-31-Preview` です。試験的な機能を評価する場合は、`2014-10-20-Preview` を使用します。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -852,7 +840,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
  
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Delete Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページ ナビゲーションのヘルプについては、「[Configure Azure Search in the Preview Portal (プレビュー ポータルで Azure Search を構成する)](../search-configure.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -863,7 +851,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 状態コード: 応答の成功に対して「204 コンテンツがありません」が返されます。
 
 <a name="GetIndexStats"></a>
-## Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API)) ##
+## Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))
 
 **Get Index Statistics** 操作は、現在のインデックスに対するドキュメントの数と記憶域の使用状況を Azure Search から返します。
 
@@ -874,7 +862,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 すべてのサービス要求には HTTPS が必要です。**Get Index Statistics** 要求は、GET メソッドを使用して作成できます。
 
-要求 URI の [index name] では、インデックスの統計情報を取得するインデックスをサービスに対して指定します。
+要求 URI の [index name] で、指定したインデックスに関するインデックスの統計情報を返すサービスがわかります。
 
 `api-version` パラメーターは必須です。有効な値は、`2014-07-31-Preview` または `2014-10-20-Preview` です。要求ごとに使用するバージョンを指定してバージョン固有の動作を取得できますが、ベスト プラクティスとしては、コード全体で同じバージョンを使用します。推奨されるバージョンは、一般的な使用の場合は `2014-07-31-Preview` です。試験的な機能を評価する場合は、`2014-10-20-Preview` を使用します。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -884,7 +872,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
  
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Get Index Statistics** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -901,8 +889,9 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 	  "storageSize": number (size of the index in bytes)
     }
 
-________________________________________ <a name="DocOps"></a>
-# ドキュメントの操作 #
+________________________________________
+<a name="DocOps"></a>
+## ドキュメントの操作
 
 Azure Search では、インデックスはサービスにアップロードされた JSON ドキュメントを使用して設定されます。アップロードされたすべてのドキュメントが、検索データのコーパスを構成します。ドキュメントにはフィールドが含まれ、その一部はアップロード時に検索語句にトークン化されます。Azure Search API の `/docs` URL セグメントは、インデックス内のドキュメントのコレクションを表します。ドキュメントのアップロード、マージ、削除、クエリなど、コレクションに対して実行される操作はすべて単一インデックスのコンテキストで行われるので、これらの操作の URL は常に特定のインデックス名に対する `/indexes/[index name]/docs` で始まります。
 
@@ -919,7 +908,7 @@ Azure Search では、インデックスはサービスにアップロードさ�
 **注**: Azure Search パブリック プレビューは、フルテキスト検索に対してのみ英語をサポートします。
 
 <a name="AddOrUpdateDocuments"></a>
-## ドキュメントの追加、更新、削除 ##
+## ドキュメントの追加、更新、削除
 
 HTTP POST を使用して、指定したインデックスのドキュメントのアップロード、マージ、マージまたはアップロード、または削除を行うことができます。更新の数が多い場合は、ドキュメントのバッチ処理 (バッチごとに最大 1000 ドキュメント、またはバッチごとに約 16 MB) をお勧めします。
 
@@ -931,7 +920,7 @@ HTTP POST を使用して、指定したインデックスのドキュメント�
 
 HTTPS はすべてのサービス要求に必要です。HTTP POST を使用して、指定したインデックスのドキュメントのアップロード、マージ、マージまたはアップロード、または削除を行うことができます。
 
-要求 URI に含まれる [index name] では、ドキュメントを POST するインデックスを指定します。一度に 1 つのインデックスに対してのみ、ドキュメントを POST できます。
+要求 URI には、[index name] を含めて、ドキュメントを投稿するインデックスを指定します。一度に 1 つのインデックスに対してのみ、ドキュメントを POST できます。
 
 `api-version` パラメーターは必須です。有効な値は、`2014-07-31-Preview` または `2014-10-20-Preview` です。要求ごとに使用するバージョンを指定してバージョン固有の動作を取得できますが、ベスト プラクティスとしては、コード全体で同じバージョンを使用します。推奨されるバージョンは、一般的な使用の場合は `2014-07-31-Preview` です。試験的な機能を評価する場合は、`2014-10-20-Preview` を使用します。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -942,7 +931,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Add Documents** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1046,8 +1035,9 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
         }
       ]
     }
-________________________________________ <a name="SearchDocs"></a>
-## ドキュメントの検索 ##
+________________________________________
+<a name="SearchDocs"></a>
+## ドキュメントの検索
 
 **Search** 操作は、GET 要求として発行され、一致するドキュメントを選択するための条件を示すクエリ パラメーターを指定します。
 
@@ -1114,7 +1104,7 @@ ________________________________________ <a name="SearchDocs"></a>
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Search** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1215,7 +1205,7 @@ ________________________________________ <a name="SearchDocs"></a>
 
 
 <a name="LookupAPI"></a>
-##ドキュメントの参照##
+##ドキュメントの参照
 
 **Lookup Document** 操作は、Azure Search からドキュメントを取得します。これは、ユーザーが特定の検索結果をクリックして、そのドキュメントに関する詳細を検索するときに役立ちます。
 
@@ -1232,7 +1222,7 @@ ________________________________________ <a name="SearchDocs"></a>
 
     GET /indexes('[index name]')/docs('[key]')?[query parameters]
 
-要求 URI には、取得するインデックスとドキュメントを指定する[インデックス名]と[キー]が含まれます。一度に取得できるドキュメントは 1 つだけです。1 回の要求で複数のドキュメントを取得するには、**Search** を使用します。
+要求 URI は [index name] と [key] を含みます。これにより、どのインデックスからどのドキュメントを取得するかが指定されます。一度に取得できるドキュメントは 1 つだけです。1 回の要求で複数のドキュメントを取得するには、**Search** を使用します。
 
 **クエリ パラメーター**
 
@@ -1248,7 +1238,7 @@ ________________________________________ <a name="SearchDocs"></a>
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Lookup Document** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1273,7 +1263,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
     GET /indexes('hotels')/docs('3')?api-version=2014-07-31-Preview
 
 <a name="CountDocs"></a>
-##Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))##
+##Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))
 
 **Count Documents** 操作は、検索インデックス内のドキュメントの数を取得します。`$count` 構文は、OData プロトコルの一部です。
 
@@ -1296,7 +1286,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 - `Accept`: この値は `text/plain` に設定する必要があります。
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Count Documents** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1309,7 +1299,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 応答本文には、プレーン テキスト形式の整数として、カウント値が含まれます。
 
 <a name="Suggestions"></a>
-##検索候補##
+##検索候補
 
 **Suggestions** 操作は、部分的な検索入力に基づいて検索候補を取得します。通常は、ユーザーが検索語句を入力するときに、先行入力の候補を提供するために検索ボックスで使用されます。
 
@@ -1350,7 +1340,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Suggestions** 要求では、`api-key` として管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](../search-create-service.portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1392,5 +1382,6 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

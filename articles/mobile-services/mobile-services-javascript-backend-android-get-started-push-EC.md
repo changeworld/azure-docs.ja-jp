@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="02/06/2015" 
+	ms.date="06/03/2015" 
 	ms.author="ricksal"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -194,13 +194,11 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Get started with Mobile Services]: mobile-services-android-get-started.md
 [データの使用]: mobile-services-android-get-started-data.md
 [Get started with authentication]: mobile-services-android-get-started-users.md
-[Mobile Services の使用]: mobile-services-android-get-started.md
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-js
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-js
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-js
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Google Play Services SDK のセットアップに関するページ]: http://go.microsoft.com/fwlink/?LinkId=389801
-[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Services 向け Android クライアント ライブラリの使用方法]: mobile-services-android-how-to-use-client-library.md
 
@@ -213,5 +211,6 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [通知ハブとは]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

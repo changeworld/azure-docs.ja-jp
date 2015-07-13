@@ -276,4 +276,4 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

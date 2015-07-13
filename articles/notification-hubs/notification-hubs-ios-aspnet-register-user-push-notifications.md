@@ -13,29 +13,29 @@
 	ms.tgt_pltfrm="ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="02/26/2015" 
+	ms.date="06/02/2015" 
 	ms.author="wesmc"/>
 # ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows Store C#">Windows Store C#</a><a href="/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS" class="current">iOS</a>
+    <a href="/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows ストア C#">Windows ストア C#</a><a href="/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS" class="current">iOS</a>
 </div>
 
 ##概要
 
-このトピックでは、ASP.NET Web API により登録が行われる場合、Azure Notification Hubs でプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[Notification Hubs によるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[Notification Hubs によるユーザーへの通知]」を参照してください。
+このトピックでは、ASP.NET Web API により登録が実行されるときに Azure 通知ハブを使用してプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。
 
 ##アプリケーションを更新する  
 
 1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
-	+ **ラベル**:"Push to User with Notification Hubs"
-	+ **ラベル**:"InstallationId"
-	+ **ラベル**:"User"
-	+ **テキスト フィールド**:"User"
-	+ **ラベル**:"Password"
-	+ **テキスト フィールド**:"Password"
-	+ **ボタン**:"Login"
+	+ **ラベル**: "Push to User with Notification Hubs"
+	+ **ラベル**: "InstallationId"
+	+ **ラベル**: "User"
+	+ **テキスト フィールド**: "User"
+	+ **ラベル**: "Password"
+	+ **テキスト フィールド**: "Password"
+	+ **ボタン**: "Login"
 
 	この時点で、ストーリーボードは次のようになります。
 
@@ -100,7 +100,7 @@
 
 		[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 
-	最初の行では、**DeviceInfo** シングルトンが初期化されます。2 行目では、プッシュ通知の登録が開始されます。チュートリアル「[Notification Hubs の使用]」を既に終えている場合、この登録は既に存在しています。
+	最初の行では、**DeviceInfo** シングルトンが初期化されます。2 行目では、プッシュ通知の登録が開始されます。チュートリアル「[通知ハブの使用]」を既に終えている場合、この登録は既に存在しています。
 
 9. PushToUserAppDelegate.m で、AppDelegate に **didRegisterForRemoteNotificationsWithDeviceToken** メソッドを実装し、次のコードを追加します。
 
@@ -108,7 +108,7 @@
 
 	これにより、要求のデバイス トークンが設定されます。
 
-	> [AZURE.NOTE] この時点では、このメソッドに他のコードは存在しません。[「通知ハブの使用」](/manage/services/notification-hubs/get-started-notification-hubs-ios/%20target="_blank")のチュートリアルを完了したときに追加された **registerNativeWithDeviceToken** メソッド への呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
+	> [AZURE.NOTE]この時点では、このメソッドに他のコードは存在しません。チュートリアル「[通知ハブの使用](/manage/services/notification-hubs/get-started-notification-hubs-ios/%20target="_blank")」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。
 
 10.	PushToUserAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
 
@@ -219,9 +219,9 @@
 		        }
 		    }];
 
-	このメソッドは、プッシュ通知のインストール ID とチャネルの両方を取得します。これらの ID とチャネルは、デバイスの種類と共に、通知ハブで登録を作成する認証済みの Web API メソッドに送信されます。この Web API は、「[Notification Hubs によるユーザーへの通知]」で定義されたものです。
+	このメソッドは、プッシュ通知のインストール ID とチャネルの両方を取得します。これらの ID とチャネルは、デバイスの種類と共に、通知ハブで登録を作成する認証済みの Web API メソッドに送信されます。この Web API は、「[通知ハブによるユーザーへの通知]」で定義されたものです。
 
-これで、クライアント アプリケーションが更新されました。「[Notification Hubs によるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
+これで、クライアント アプリケーションが更新されました。「[通知ハブによるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
 
 <!-- Anchors. -->
 
@@ -230,9 +230,10 @@
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users-aspnet
+[通知ハブによるユーザーへの通知]: /manage/services/notification-hubs/notify-users-aspnet
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Notification Hubs の使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[Azure Management Portal]: https://manage.windowsazure.com/
+[通知ハブの使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO1-->

@@ -1,18 +1,20 @@
 <properties 
-   pageTitle="Chef で Azure 仮想マシンのデプロイメントを自動化する" 
-   description="Chef を使用した Azure 仮想マシンの自動化技術について説明します" 
-   services="virtual-machines" 
-   documentationCenter="" 
-   authors="diegoviso" 
-   manager="timlt" 
-   editor=""/>
+	pageTitle="Chef で Azure 仮想マシンのデプロイメントを自動化する" 
+	description="Chef を使用した Azure 仮想マシンの自動化技術について説明します" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="diegoviso" 
+	manager="timlt" 
+	editor=""/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" 
-ms.tgt_pltfrm="vm-multiple" 
-ms.devlang="na" 
-ms.topic="article" 
-ms.date="05/19/2015" 
-ms.author="diviso"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-multiple" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/19/2015" 
+	ms.author="diviso"/>
 
 # Chef で Azure 仮想マシンのデプロイメントを自動化する
 
@@ -110,7 +112,7 @@ PEM ファイルには組織と管理者の通信用秘密キーが含まれ、*
 
 手順は簡単です。c:\opscode の既定の場所にインストールします。このインストールは約 10 分かかります。
 
-PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin のエントリが含まれていることを確認します。
+PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername.chefdk\gem\ruby\2.0.0\bin のエントリが含まれていることを確認します。
 
 ない場合は必ずこのパスを追加してください。
 
@@ -238,4 +240,4 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 <!--Link references-->
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO1-->

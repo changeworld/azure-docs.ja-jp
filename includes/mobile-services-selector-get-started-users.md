@@ -14,4 +14,4 @@
 - [(HTML | Javascript)](../articles/mobile-services-html-get-started-users.md)
 - [(Appcelerator | Javascript)](../articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

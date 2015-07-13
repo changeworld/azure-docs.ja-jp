@@ -16,7 +16,6 @@
    ms.date="02/19/2015"
    ms.author="kundanap"/>
 
-
 # Windows でのカスタムのスクリプト拡張機能
 
 この記事では Azure PowerShell コマンドレットで Windows でカスタムのスクリプト拡張機能を使用する概要について説明します。
@@ -79,5 +78,6 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 
 <!--Image references-->
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO1-->

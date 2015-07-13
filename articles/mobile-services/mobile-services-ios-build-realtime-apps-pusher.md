@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="10/10/2014" 
+	ms.date="06/05/2015" 
 	ms.author="donnam"/>
 
 
@@ -272,7 +272,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 
 
-<h2><a name="install-scripts"></a>サーバー スクリプトをインストールする</h2>
+##<a name="install-scripts"></a>サーバー スクリプトをインストールする
 
 
 
@@ -385,7 +385,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 
 
-<h2><a name="test-app"></a>アプリケーションをテストする</h2>
+##<a name="test-app"></a>アプリをテストする
 
 
 
@@ -442,5 +442,6 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

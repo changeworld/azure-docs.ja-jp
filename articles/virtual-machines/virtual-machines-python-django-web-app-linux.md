@@ -129,4 +129,4 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 [portal-vm]: /manage/linux/tutorials/virtual-machine-from-gallery/
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

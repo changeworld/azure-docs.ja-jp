@@ -10,28 +10,19 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm=""
-	ms.devlang="Java"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="3/10/2015"
+	ms.date="05/13/2015"
 	ms.author="yuaxu"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
+##概要
+
 このトピックでは、Azure Mobile Services を使用して Xamarin.iOS 8 アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知サービス (APNS) を使用したプッシュ通知を [Mobile Services の使用]プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
-
-このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
-
-1. [証明書の署名要求を生成する]
-2. [アプリケーションを登録し、プッシュ通知を有効にする]
-3. [アプリケーションのプロビジョニング プロファイルを作成する]
-4. [Mobile Services を構成する]
-5. [Xamarin.iOS アプリケーションを構成する]
-6. [アプリケーションにプッシュ通知を追加する]
-7. [プッシュ通知を送信するようにスクリプトを更新する]
-8. [データを挿入して通知を受け取る]
 
 このチュートリアルには、次のものが必要です。
 
@@ -40,21 +31,21 @@
 + [Xamarin.iOS Studio]
 + [Azure Mobile Services コンポーネント]
 
-   >[AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+>[AZURE.IMPORTANT]APNS 要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
+APNS では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
 ## <a name="certificates"></a>証明書の署名要求ファイルを生成する
 
 まず、Apple が署名証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成する必要があります。
 
-1. Utilities から **Keychain Access ツール**を実行します。
+1. ユーティリティから、**キーチェーン アクセス** ツールを実行します。
 
 2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
     ![][5]
 
-3. **[User Email Address]** に入力し、**[Common Name]** の値を入力します。**[Saved to disk]** が選択されていることを確認して、**[Continue]** をクリックします。
+3. **[ユーザーのメールアドレス]** にメール アドレスを入力し、**[通称]** の値を入力します。**[ディスクに保存]** が選択されていることを確認し、**[続ける]** をクリックします。
 
     ![][6]
 
@@ -74,7 +65,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
     ![][102]
 
-2. **[Description]** にアプリケーションの名前を入力し、一意の**バンドル識別子**を入力して、覚えておきます。[App Services] セクションの [Push Notifications] オプションをオンにして、**[Continue]** をクリックします。この例では ID として **MobileServices.Quickstart** を使用していますが、アプリケーション ID はすべてのユーザー間で一意である必要があるので、この同じ ID を再利用することはできません。そのため、自分のフル ネームやイニシャルをアプリケーション名の後に付加することをお勧めします。
+2. **[Description]** にアプリケーションの名前を入力し、一意のバンドル識別子を **[Bundle Identifier]** に入力して、それを覚えておきます。[App Services] セクションの [Push Notifications] オプションをオンにして、**[Continue]** をクリックします。この例では ID として **MobileServices.Quickstart** を使用していますが、アプリケーション ID はすべてのユーザー間で一意である必要があるので、この同じ ID を再利用することはできません。そのため、自分のフル ネームやイニシャルをアプリケーション名の後に付加することをお勧めします。
 
     ![][103]
 
@@ -128,7 +119,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 ## <a name="profile"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動します。
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動します。
 
     ![][112]
 
@@ -182,21 +173,21 @@ APNS と連携するようにモバイル サービスが構成されました�
 
 ## <a name="configure-app"></a>Xamarin.iOS アプリケーションを構成する
 
-1. Xamarin.Studio で、**Info.plist** を開き、前に作成した ID を持つ**バンドル識別子**を更新します。
+1. Xamarin.Studio で、**Info.plist** を開き、前に作成した ID で **Bundle Identifier** を更新します。
 
     ![][121]
 
-2. **[Background Modes]** まで下にスクロールし、**[Enable Background Modes]** チェック ボックスと、**[Remote notifications]** チェック ボックスをオンにします。
+2. **[Background Modes]** まで下へスクロールし、**[Enable Background Modes]** と **[Remote notifications]** の各チェック ボックスをオンにします。
 
     ![][122]
 
-3. ソリューションのパネルでプロジェクトをダブルクリックし、**[Project Options]** を開きます。
+3. ソリューション パネルでプロジェクトをダブルクリックし、**[Project Options]** を開きます。
 
 4.  **[Build]** で **[iOS Bundle Signing]** を選択し、対応する **ID** とこのプロジェクトに対して設定した**プロビジョニング プロファイル**を選択します。
 
     ![][120]
 
-    これで、Xamarin プロジェクトはコード署名のために新しいプロファイルを使用するようになります。公式の Xamarin デバイス プロビジョニングのドキュメントについては、「[Xamarin デバイス プロビジョニング]」を参照してください。
+    これで、Xamarin プロジェクトはコード署名のために新しいプロファイルを使用するようになります。公式の Xamarin デバイス プロビジョニングのドキュメントについては、[Xamarin デバイス プロビジョニング]に関するページを参照してください。
 
 ## <a name="add-push"></a>アプリケーションにプッシュ通知を追加する
 
@@ -324,7 +315,7 @@ APNS と連携するようにモバイル サービスが構成されました�
 
    >[AZURE.NOTE]アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、意味のあるテキスト (「_新しい Mobile Services タスク_」など) を入力し、プラス記号 (**+**) のアイコンをクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「_新しい Mobile Services タスク_」) を入力し、プラス記号 (**+**) のアイコンをクリックします。
 
     ![][24]
 
@@ -339,14 +330,14 @@ APNS と連携するようにモバイル サービスが構成されました�
 これで、このチュートリアルは終了です。
 
 <!-- Anchors. -->
-[証明書の署名要求を生成する]: #certificates
-[アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
-[Mobile Services を構成する]: #configure-mobileServices
-[Xamarin.iOS アプリケーションを構成する]: #configure-app
-[プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
-[アプリケーションにプッシュ通知を追加する]: #add-push
-[データを挿入して通知を受け取る]: #test
+[Generate the certificate signing request]: #certificates
+[Register your app and enable push notifications]: #register
+[Create a provisioning profile for the app]: #profile
+[Configure Mobile Services]: #configure-mobileServices
+[Configure the Xamarin.iOS App]: #configure-app
+[Update scripts to send push notifications]: #update-scripts
+[Add push notifications to the app]: #add-push
+[Insert data to receive notifications]: #test
 
 <!-- Images. -->
 
@@ -396,12 +387,8 @@ APNS と連携するようにモバイル サービスが構成されました�
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-xamarin-ios
-[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
-[Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+[Mobile Services の使用]: mobile-services-ios-get-started.md
+
 [Xamarin デバイス プロビジョニング]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
 
 
@@ -410,5 +397,6 @@ APNS と連携するようにモバイル サービスが構成されました�
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
 [Xamarin.iOS]: http://xamarin.com/download
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

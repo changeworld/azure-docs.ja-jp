@@ -5,7 +5,7 @@
 	services=""
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"
+	editor="jimbe"
 	tags="mysql"/>
 
 <tags
@@ -14,12 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="02/24/2015"
+	ms.date="06/03/2015"
 	ms.author="robmcm"/>
+
+#Azure で MySQL データベースを作成する方法
 
 [AZURE.INCLUDE [create-mysql-db](../includes/create-mysql-db.md)]
 
-
 Azure での PHP による MySQL の使用方法を示すサンプルは、<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql> から入手できます。
 
-<!--HONumber=52-->
+<!---HONumber=July15_HO1-->

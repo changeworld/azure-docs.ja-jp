@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Web ロールとワーカー ロールを作成する" 
-	description="Azure クラウド サービスで PHP Web ロールおよび worker ロールを作成し、PHP ランタイムを構成するためのガイド。" 
-	services="" 
-	documentationCenter="php" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+<properties
+	pageTitle="Web ロールとワーカー ロールを作成する"
+	description="Azure クラウド サービスで PHP Web ロールおよび worker ロールを作成し、PHP ランタイムを構成するためのガイド。"
+	services=""
+	documentationCenter="php"
+	authors="tfitzmac"
+	manager="wpickett"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="2/5/2015" 
+<tags
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="get-started-article"
+	ms.date="06/09/2015"
 	ms.author="tomfitz"/>
 
 #PHP Web ロールとワーカー ロールを作成する方法
@@ -22,27 +22,26 @@
 
 このガイドでは、Windows 開発環境で PHP Web ロールまたはワーカー ロールを作成する方法を示します。使用可能な "ビルトイン" バージョンから特定バージョンの PHP を選択し、PHP 構成を変更して、拡張機能を有効にする方法と、Azure に展開する方法についても示します。また、指定した PHP ランタイムを (カスタムの構成および拡張機能と共に) 使用できるように Web ロールまたはワーカー ロールを構成する方法についても説明します。
 
-
-##<a name="WhatIs"></a>PHP Web ロールと worker ロールについて
+## PHP Web ロールとワーカー ロールについて
 Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure Web サイト][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] の 3 種類があります。これら 3 つのモデルはすべて、PHP をサポートしています。クラウド サービスには、Web ロールとワーカー ロールが含まれ、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[What is a Cloud Service? (クラウド サービスとは)]」を参照してください。
 
-##<a name="DownloadSdk"></a>Azure SDK for PHP をダウンロードする
+## Azure SDK for PHP をダウンロードする
 
 [Azure SDK for PHP] は、いくつかのコンポーネントで構成されています。この記事では、そのうち Azure PowerShell と Azure エミュレーターの 2 つを使用します。これら 2 つのコンポーネントをインストールするには、Microsoft Web プラットフォーム インストーラーを使用します。[ここをクリックしてインストールしてください][install ps and emulators]。
 
-##<a name="CreateProject"></a>方法: クラウド サービス プロジェクトを作成する
+## 方法: クラウド サービス プロジェクトを作成する
 
 PHP Web ロールまたはワーカー ロールを作成するための最初のステップは、Azure サービス プロジェクトを作成することです。Azure サービス プロジェクトは、Web ロールおよびワーカー ロールの論理コンテナーとして機能し、プロジェクトの[サービス定義ファイル (.csdef)] と[サービス構成ファイル (.cscfg)] を格納します。
 
 新しい Azure サービス プロジェクトを作成するには、Azure PowerShell を管理者として実行し、次のコマンドを実行します。
 
-	PS C:>New-AzureServiceProject myProject
+	PS C:\>New-AzureServiceProject myProject
 
 このコマンドを実行すると、Web ロールおよび worker ロールを追加できる新しいディレクトリ (`myProject`) が作成されます。
 
-##<a name="AddRole"></a>方法: PHP Web ロールまたは worker ロールを追加する
+## 方法: PHP Web ロールまたはワーカー ロールを追加する
 
 PHP Web ロールをプロジェクトに追加するには、プロジェクトのルート ディレクトリで次のコマンドを実行します。
 
@@ -54,7 +53,7 @@ PHP Web ロールをプロジェクトに追加するには、プロジェクト
 
 > [AZURE.NOTE]`roleName` パラメーターは省略可能です。省略した場合、ロール名は自動的に生成されます。たとえば、最初に作成された Web ロールは `WebRole1`、2 番目は `WebRole2` になります。最初に作成された worker ロールは `WorkerRole1`、2 番目は `WorkerRole2` になります。
 
-##<a name="SpecifyPHPVersion"></a>方法: ビルトイン PHP バージョンを指定する
+## 方法: ビルトイン PHP バージョンを指定する
 
 PHP Web ロールまたはワーカー ロールをプロジェクトに追加すると、プロジェクトの構成ファイルが変更され、アプリケーションの展開時に、アプリケーションの各 Web インスタンスまたはワーカー インスタンスに PHP がインストールされるように指定されます。既定でインストールされる PHP のバージョンを確認するには、次のコマンドを実行します。
 
@@ -78,7 +77,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 > [AZURE.NOTE]今後は PHP バージョンが増え、使用可能なバージョンが変更される可能性があります。
 
-##<a name="CustomizePHP"></a>方法: ビルトインの PHP ランタイムをカスタマイズする
+## 方法: ビルトインの PHP ランタイムをカスタマイズする
 
 前に示した手順に従ってインストールした PHP ランタイムの構成は、`php.ini` 設定の変更や拡張機能の有効化など、詳細に制御できます。
 
@@ -93,14 +92,14 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 > [AZURE.NOTE]使用する `php.ini` ファイル内で明示的に指定されていない設定は、自動的に既定値に設定されます。ただし、すべてを指定した `php.ini` ファイルを追加できることも覚えておいてください。
 
-##<a name="OwnPHP"></a>方法: 独自の PHP ランタイムを使用する
+## 方法: 独自の PHP ランタイムを使用する
 必要に応じて、ビルトインの PHP ランタイムを選択して前の手順のように構成する代わりに、独自の PHP ランタイムを使用することができます。たとえば、開発環境で使用するものと同じ PHP ランタイムを Web ロールまたはワーカー ロールで使用すると、運用環境でもアプリケーションの動作が変わらないことが容易に確認できます。
 
-<h3><a name="OwnPHPWebRole"></a>独自の PHP ランタイムが使用されるように Web ロールを構成する</h3>
+### 独自の PHP ランタイムが使用されるように Web ロールを構成する
 
 指定した PHP ランタイムが使用されるように Web ロールを構成するには、次の操作を行います。
 
-1. 前の「[方法: クラウド サービス プロジェクトを作成する](#CreateProject)」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する](#AddRole)」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP Web ロールを追加します。
+1. 前の「[方法: クラウド サービス プロジェクトを作成する](#how-to-create-a-cloud-services-project)」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する](#how-to-add-php-web-or-worker-roles)」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP Web ロールを追加します。
 2. Web ロールのルート ディレクトリにある `bin` フォルダー内に `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3. (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers] が使用されている場合は、Web ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][sql native client] がインストールされるように指定する必要があります。これを行うには、Web ロールのルート ディレクトリにある `bin` フォルダーに、`sqlncli.msi` インストーラーを追加します。このインストーラーは次のリンクからダウンロードできます: [sqlncli.msi x64 インストーラー]。次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
@@ -110,14 +109,14 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 		@ECHO ON
 		cd "%~dp0"
-		
+
 		if "%EMULATED%"=="true" exit /b 0
-		
+
 		msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-		
+
 		SET PHP_FULL_PATH=%~dp0php\php-cgi.exe
 		SET NEW_PATH=%PATH%;%RoleRoot%\base\x86
-		
+
 		%WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%',maxInstances='12',idleTimeout='60000',activityTimeout='3600',requestTimeout='60000',instanceMaxRequests='10000',protocol='NamedPipe',flushNamedPipe='False']" /commit:apphost
 		%WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%'].environmentVariables.[name='PATH',value='%NEW_PATH%']" /commit:apphost
 		%WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']" /commit:apphost
@@ -126,15 +125,15 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 5. アプリケーション ファイルを Web ロールのルート ディレクトリに追加します。これは Web サーバーのルート ディレクトリになります。
 
-6. 後の「[方法: アプリケーションを発行する](#Publish)」セクションの説明に従って、アプリケーションを発行します。
+6. 後の「[方法: アプリケーションを発行する](#how-to-publish-your-application)」セクションの説明に従って、アプリケーションを発行します。
 
 > [AZURE.NOTE]前の手順で説明されていた、独自の PHP ランタイムを使用するための操作を実行した後、`download.ps1` スクリプト (Web ロールのルート ディレクトリにある `bin` フォルダー内) は削除することができます。
 
-<h3><a name="OwnPHPWorkerRole"></a>独自の PHP ランタイムが使用されるように worker ロールを構成する</h3>
+### 独自の PHP ランタイムが使用されるように worker ロールを構成する
 
 指定した PHP ランタイムが使用されるように worker ロールを構成するには、次の操作を行います。
 
-1. 前の「[方法: クラウド サービス プロジェクトを作成する](#CreateProject)」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する](#AddRole)」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP worker ロールを追加します。
+1. 前の「[方法: クラウド サービス プロジェクトを作成する](#how-to-create-a-cloud-services-project)」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する](#how-to-add-php-web-or-worker-roles)」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP worker ロールを追加します。
 2. worker ロールのルート ディレクトリに `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3. (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers] が使用されている場合は、worker ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][sql native client] がインストールされるように指定する必要があります。これを行うには、worker ロールのルート ディレクトリに、`sqlncli.msi` インストーラーを追加します。このインストーラーは次のリンクからダウンロードできます: [sqlncli.msi x64 インストーラー]。次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
@@ -165,13 +164,13 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 		:error
 
 		echo FAILED
-		exit /b -1	
+		exit /b -1
 
 5. アプリケーション ファイルをワーカー ロールのルート ディレクトリに追加します。
 
-6. 後の「[方法: アプリケーションを発行する](#Publish)」セクションの説明に従って、アプリケーションを発行します。
+6. 後の「[方法: アプリケーションを発行する](#how-to-publish-your-application)」セクションの説明に従って、アプリケーションを発行します。
 
-##<a name="Emulators"></a>方法: コンピューティング エミュレーターとストレージ エミュレーターでアプリケーションを実行する
+## 方法: コンピューティング エミュレーターとストレージ エミュレーターでアプリケーションを実行する
 
 Azure コンピューティング エミュレーターとストレージ エミュレーターでは、Azure アプリケーションをクラウドにデプロイする前にテストできるローカル環境が提供されます。ただし、エミュレーターと Azure 環境では、いくつか相違点があります。詳細については、「[コンピューティング エミュレーターと Windows Azure との違い](http://msdn.microsoft.com/library/windowsazure/gg432960.aspx)」および「[ストレージ エミュレーターと Windows Azure ストレージ サービスとの違い](http://msdn.microsoft.com/library/windowsazure/gg433135.aspx)」を参照してください。
 
@@ -194,7 +193,7 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 
 	PS C:\MyProject> Stop-AzureEmulator
 
-##<a name="Publish"></a>方法: アプリケーションを発行する
+## 方法: アプリケーションを発行する
 
 アプリケーションを発行するには、まず **Import-PublishSettingsFile** コマンドレットを使用して発行設定をインポートする必要があります。次に **Publish-AzureServiceProject** コマンドレットを使用して、アプリケーションを発行できます。これらのコマンドレットの使用方法については、[発行の設定をインポートする方法]および[Azure にクラウド サービスを展開する方法]に関するページを参照してください。
 
@@ -213,4 +212,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [発行の設定をインポートする方法]: /develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
 [Azure にクラウド サービスを展開する方法]: /develop/php/how-to-guides/powershell-cmdlets/#Deploy
 
-<!--HONumber=54-->
+<!---HONumber=July15_HO1-->

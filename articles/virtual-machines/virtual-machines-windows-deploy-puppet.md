@@ -33,14 +33,17 @@ Puppet はクライアント サーバー システムです。Puppet マスタ�
 
 [Windows Server が実行されている仮想マシンにログオンする方法]
 
-[Linux を実行する仮想マシンにログオンする方法]
+[Linux が実行されている仮想マシンにログオンする方法]
 
 [拡張機能の管理]
 
 <!--Link references-->
 [Microsoft Azure と Visual Studio との新しい統合]: http://puppetlabs.com/blog/new-integrations-windows-azure-and-visual-studio
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-log-on-windows-server.md
-[Linux を実行する仮想マシンにログオンする方法]: virtual-machines-linux-how-to-log-on.md
+[Linux が実行されている仮想マシンにログオンする方法]: virtual-machines-linux-how-to-log-on.md
 [Azure VM Extensions and Features]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=July15_HO1-->

@@ -2,7 +2,7 @@
 
 2. 下方向へスクロールして **[Extras]** を展開し、下に示すように **[Google Play Services]** をオンにします。**[Install Packages]** をクリックします。SDK のパスはこの後の手順で使用するので、メモしておいてください。
 
-   	![](./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png)
+	![](./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png)
 
 
 3. アプリ ディレクトリの **build.gradle** ファイルを開きます。
@@ -23,4 +23,4 @@
             android:value="@integer/google_play_services_version" />
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

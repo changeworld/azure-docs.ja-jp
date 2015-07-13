@@ -15,4 +15,4 @@
 	>
 	>Id、__createdAt、__updatedAt、および __version の列を含む新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://msdn.microsoft.com/library/windowsazure/jj193175.aspx)」を参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

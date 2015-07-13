@@ -14,4 +14,4 @@
 - [(Xamarin.Android | Javascript)](../articles/partner-xamarin-mobile-services-android-get-started-users.md)
 - [(HTML | Javascript)](../articles/mobile-services-html-get-started-users.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

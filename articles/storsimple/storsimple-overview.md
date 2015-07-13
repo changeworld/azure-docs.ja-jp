@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple について" 
-   description="StorSimple の機能、アーキテクチャ、コンポーネントについて説明します。" 
+   description="StorSimple の機能とアーキテクチャについて説明し、StorSimple のコンポーネントを紹介します。" 
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="02/17/2015"
+   ms.date="05/27/2015"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple について 
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple には、次のような利点があります。
 
 次の図は、Microsoft Azure StorSimple ソリューションの全体像を示したものです。
 
-![StorSimple アーキテクチャ](./media/storsimple-overview/hcs-data-services-storsimple-system-architecture.png)
+![StorSimple のアーキテクチャ](./media/storsimple-overview/hcs-data-services-storsimple-system-architecture.png)
 
 **Microsoft Azure StorSimple アーキテクチャ**
 
@@ -41,9 +41,10 @@ Microsoft Azure StorSimple には、次のような利点があります。
 Microsoft Azure StorSimple ソリューションには、次のコンポーネントが含まれています。
 
 - **Microsoft Azure StorSimple デバイス** - ソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) に、冗長コントローラーと自動フェールオーバー機能を組み合わせたオンプレミスのハイブリッド ストレージ アレイです。ストレージの階層管理はコントローラーによって行われます。現在使用されているデータ (ホット データ) はローカル ストレージ (デバイスまたはオンプレミス サーバー) に配置され、使用頻度の低いデータはクラウドに移動されます。
-- **StorSimple 仮想デバイス** - 物理ハイブリッド ストレージ デバイスのアーキテクチャと機能をそのまま再現したソフトウェア版の StorSimple デバイスです (仮想アプライアンスともいいます)。StorSimple 仮想デバイスは、Azure 仮想マシン内の単一ノードで動作します。仮想デバイスは、テスト シナリオや小規模な試験的シナリオに適しています。StorSimple デバイスやオンプレミスのサーバーに StorSimple 仮想デバイスを作成することはできません。
+- **StorSimple 仮想デバイス** - 物理ハイブリッド ストレージ デバイスのアーキテクチャと機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple 仮想アプライアンス)。StorSimple 仮想デバイスは、Azure 仮想マシン内の単一ノードで動作します。仮想デバイスは、テスト シナリオや小規模な試験的シナリオに適しています。StorSimple デバイスやオンプレミスのサーバーに StorSimple 仮想デバイスを作成することはできません。
 - **StorSimple 用 Windows PowerShell** - StorSimple デバイスの管理に使用するコマンドライン インターフェイスです。StorSimple 用 Windows PowerShell の機能を使って、StorSimple デバイスの登録、デバイスのネットワーク インターフェイスの構成、特定の種類の更新プログラムのインストール、サポート セッションへのアクセスによるデバイスのトラブルシューティング、デバイスの状態の変更などを行うことができます。StorSimple 用 Windows PowerShell には、シリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
-- **StorSimple Manager サービス** - StorSimple デバイスまたは StorSimple 仮想デバイスを単一の Web インターフェイスから管理できる、Azure の管理ポータルの拡張機能です。StorSimple Manager サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
+- **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。StorSimple 用の Azure PowerShell コマンドレットの詳細については、「[コマンドレット リファレンス](https://msdn.microsoft.com/library/dn920427.aspx)」を参照してください。
+- **StorSimple Manager サービス** - StorSimple デバイスまたは StorSimple 仮想デバイスを単一の Web インターフェイスから管理できる、Azure 管理ポータルの拡張機能です。StorSimple Manager サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
 - **StorSimple Snapshot Manager** - ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合性のあるバックアップを生成する MMC スナップインです。また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。 
 - **SharePoint 用 StorSimple アダプター** - Microsoft Azure StorSimple のストレージとデータ保護を SharePoint サーバー ファームにまで透過的に拡張すると共に、SharePoint 管理ポータルで Azure StorSimple ストレージを表示して管理できるようにするツールです。
 
@@ -53,6 +54,6 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 
 
 
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

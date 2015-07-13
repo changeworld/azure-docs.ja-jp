@@ -1,6 +1,6 @@
 このチュートリアルを完了するには、以下が必要です。
 
-- Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AED8DE357" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+- Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AED8DE357" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 
 - [Azure Mobile Services Android SDK](http://aka.ms/Iajk6q)
@@ -14,4 +14,4 @@
 [Mobile Services の使用]: ../articles/mobile-services/mobile-services-android-get-started.md
 [既存のアプリケーションへのMobile Services の追加]: ../articles/mobile-services/mobile-services-android-get-started-data.md
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

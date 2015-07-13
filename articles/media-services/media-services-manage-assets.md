@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Media Services でアセットを管理する方法 - Azure" 
-	description="Media Services アセットを管理する方法について説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+	pageTitle="Media Services でアセットを管理する方法" 
+	description="メディア サービスでアセットを管理する方法について説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/15/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 
 #方法: ストレージ内のアセットを管理する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」と「[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
 
 メディア アセットを作成すると、 サーバー上のアセットにアクセスし、管理できます。サーバー上には、それ以外にも、ジョブ、タスク、アクセス ポリシー、ロケーターなど、メディア サービスのさまざまなオブジェクトが存在しますが、それらのオブジェクトも管理対象にすることができます。
 
-次の例は、assetId でアセットを照会する方法を示しています。 
+次の例は、assetId でアセットを照会する方法を示しています。
 
 	static IAsset GetAsset(string assetId)
 	{
@@ -77,13 +77,13 @@
 	    Console.Write(builder.ToString());
 	}
 
-次のコード スニペットは、Media Services アカウントからすべてのアセットを削除します。アセットがプログラムに関連付けられている場合は、最初にプログラムを削除する必要があります。
+次のコード スニペットは、メディア サービス アカウントからすべてのアセットを削除します。アセットがプログラムに関連付けられている場合は、最初にプログラムを削除する必要があります。
 
 	foreach (IAsset asset in _context.Assets)
 	{
 	    asset.Delete();
 	}
 
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Microsoft Azure プレビュー ポータルの概要" 
-	description="Microsoft Azure プレビュー ポータルの使用方法を説明します。" 
-	services="" 
-	documentationCenter="" 
-	authors="davidwrede" 
-	manager="dwrede" 
+<properties
+	pageTitle="Microsoft Azure プレビュー ポータルの概要"
+	description="Microsoft Azure プレビュー ポータルの使用方法を説明します。"
+	services=""
+	documentationCenter=""
+	authors="davidwrede"
+	manager="dwrede"
 	editor="jimbe"/>
 
-<tags 
-	ms.service="na" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
+<tags
+	ms.service="na"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/28/2015" 
+	ms.topic="hero-article"
+	ms.date="04/28/2015"
 	ms.author="dwrede"/>
 
 # Microsoft Azure プレビュー ポータルの概要
@@ -32,7 +32,7 @@ Azure には、1 か所で作成できる何千という項目を備えたマー
 
 1.	Windows Server 2012 が推奨されているため、[コンピューティング] カテゴリからこれを選択します。  
 2.	フォームに基本的な情報を入力します。
-3.	[作成] をクリックすると、VM ですぐにプロビジョニングが開始されます。 
+3.	[作成] をクリックすると、VM ですぐにプロビジョニングが開始されます。
 
 リソースが作成されたことが通知ハブから通知され、管理ブレードが開きます (リソースは後でいつでも参照できます)。
 
@@ -87,4 +87,4 @@ Microsoft Azure プレビュー ポータルならクラウドでのアプリケ
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
 
-<!--HONumber=52-->
+<!---HONumber=July15_HO1-->

@@ -3,8 +3,7 @@
 	description="" 
 	services="" 
 	documentationCenter="" 
-	authors="flanakin" 
-	writer="" 
+	authors="tfitzmac"
 	manager="wpickett" 
 	editor=""/>
 
@@ -14,8 +13,8 @@
 	ms.tgt_pltfrm="AzurePortal" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2015" 
-	ms.author="micflan"/>
+	ms.date="06/24/2015" 
+	ms.author="tomfitz"/>
 
 
 # タグを使用した Azure リソースの整理
@@ -44,7 +43,7 @@ Azure クラシック ポータルでは、サブスクリプションがリソ�
 
 最初に、[最新の Azure PowerShell モジュール](./install-configure-powershell.md)を入手します。Azure PowerShell モジュールを初めて使用する場合は、参考として[このドキュメント](./install-configure-powershell.md)をお読みください。この記事では、既にアカウントを追加し、タグを付けるリソースを含むサブスクリプションを選択しているものと想定しています。
 
-タグ付けは、[リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)で使用可能なリソースおよびリソース グループに対してのみ行うことができます。そこで、次の作業として、リソース マネージャーを使用するための操作を行います。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+タグ付けは、[リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)で使用可能なリソースおよびリソース グループに対してのみ行うことができます。そこで、次の作業として、リソース マネージャーを使用するための操作を行います。詳細については、[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)をご覧ください。
 
     Switch-AzureMode AzureResourceManager
 
@@ -89,15 +88,25 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 ![スタート画面にタグをピン留めする](./media/resource-group-using-tags/pin-tags.png)
 
+## タグ付けと課金
+
+サービスがサポートされていれば、タグを使用して課金データをグループ化できます。たとえば、 [Azure リソース マネージャーに統合された Virtual Machines](/virtual-machines/virtual-machines-azurerm-versus-azuresm.md) を使用すると、仮想マシンの課金データを整理するためのタグを定義および適用できます。異なる組織向けに複数の VM を実行している場合は、タグを使用すると、コスト センターごとに課金データをグループ化できます。また、タグを使用すると、実稼働環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
+
+タグに関する情報は、[使用状況 API](billing-usage-rate-card-overview.md) から、 あるいは [Microsoft Azure へようこそ](https://account.windowsazure.com/)または [Microsoft サインイン](https://ea.azure.com)からダウンロードできる使用状況のコンマ区切り値 (CSV) ファイルから取得できます。
+
+課金のタグがサポートされているサービスの使用状況 CSV ファイルをダウンロードした場合、タグは「**Tags**」列に表示されます。詳細については、[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](billing-understand-your-bill.md) を参照してください。
+
+![課金タグを参照してください](./media/resource-group-using-tags/billing_csv.png)
+
 ## 次のステップ
 Getting Started (概要)
 
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)  
 - [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](./xplat-cli-azure-resource-manager.md)  
+- [Azure リソース 管理での Mac、Linux、および Windows 用の Azure CLI の使用](./xplat-cli-azure-resource-manager.md)  
 - [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)  
   
-アプリケーションの作成と展開
+アプリケーションの作成とデプロイ
   
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)  
@@ -107,9 +116,9 @@ Getting Started (概要)
   
 アクセスの管理と監査
   
-- [リソースへのアクセスの管理と監査](./resource-group-rbac.md)  
+- [Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](./resource-group-rbac.md)  
 - [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)  
 - [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)  
   
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

@@ -1,11 +1,10 @@
 <properties 
-	pageTitle="データの処理  Azure BLOB" 
-	description="Azure BLOB のデータの処理" 
-	metaKeywords="" 
-	services="machine-learning" 
+	pageTitle="Azure BLOB データを高度な分析を使用して処理する | Microsoft Azure" 
+	description="Azure BLOB ストレージのデータを処理します。" 
+	services="machine-learning,storage" 
 	solutions="" 
 	documentationCenter="" 
-	authors="sunliangms,fashah,msolhab" 
+	authors="msolhab" 
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -15,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2015" 
-	ms.author="sunliangms,fashah,msolhab,garye" /> 
+	ms.date="05/29/2015" 
+	ms.author="sunliangms;fashah;msolhab;garye;bradsev" />
 
-#<a name="heading"></a>データ サイエンス環境における Azure BLOB データの処理
+#<a name="heading"></a>Azure BLOB データを高度な分析を使用して処理する
 
-このドキュメントでは、データの探索および Azure BLOB に格納されたデータからの特徴の生成について説明します。このためには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、探索と操作のため、Pandas データ フレームに読み込むことができます。実行する手順を次に示します。
+このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。このためには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、探索と操作のため、Pandas データ フレームに読み込むことができます。実行する手順を次に示します。
 
 1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。 
 
@@ -48,7 +47,7 @@
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。
 
-####<a name="blob-dataexploration"></a>データの探索
+##<a name="blob-dataexploration"></a>データの探索
 
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
@@ -89,7 +88,7 @@
 	
 		dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})		
 
-8. 変数の分布をプロットする可変個の箱を使用して、ヒストグラム図を作成します。	
+8. 変数の分布をプロットする可変個の箱を使用して、ヒストグラム図を作成します。
 	
 		dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 		
@@ -104,11 +103,11 @@
 		dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 	
 	
-####<a name="blob-featuregen"></a>特徴の生成
+##<a name="blob-featuregen"></a>特徴の生成
 	
 次のように、Python を使用して特徴を生成できます。
 
-#####<a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
+###<a name="blob-countfeature">インジケーター値ベースの特徴の生成</a>
 
 カテゴリの特徴は、次のように作成できます。
 
@@ -121,7 +120,7 @@
 		#generate the indicator column
 		dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
 
-3. インジケーター列と元のデータ フレームを結合します。 
+3. インジケーター列と元のデータ フレームを結合します。
  
 			#Join the dummy variables back to the original data frame
 			dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
@@ -131,7 +130,7 @@
 		#Remove the original column rate_code in df1_with_dummy
 		dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 	
-#####<a name="blob-binningfeature"></a>ビン分割特徴の生成
+###<a name="blob-binningfeature"></a>ビン分割特徴の生成
 
 ビン分割特徴を生成するには、次のように進めます。
 
@@ -148,11 +147,9 @@
 
 		dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)	
 
-####<a name="sql-featuregen"></a>Azure BLOB にデータを書き込み、Azure ML で使用する
+##<a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
 
-データを探索し必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードし Azure ML で使用します。
-同様に、追加の特徴も Azure ML Studio で作成できることに注意してください。 
-1. ローカル ファイルへのデータ フレームの書き込み
+データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。1.ローカル ファイルへのデータ フレームの書き込み
 
 		dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
 
@@ -178,10 +175,15 @@
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. 以下の画面に示すとおり、Azure、ML  *Reader Module* を使用して BLOB からデータを読み取れるようになりました。
+3. これで、次の画面に示すように、Azure Machine Learning の[リーダー][reader] モジュールを使用して BLOB からデータを読み取ることができます。
  
-![reader blob][1]
+![リーダー BLOB][1]
 
 [1]: ./media/machine-learning-data-science-process-data-blob/reader_blob.png
 
-<!--HONumber=49--> 
+
+<!-- Module References -->
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+ 
+
+<!---HONumber=July15_HO1-->

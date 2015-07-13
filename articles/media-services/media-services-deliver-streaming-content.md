@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="メディア サービスからストリーミング コンテンツを配信する方法 â€ Azure" 
+	pageTitle="Media Services からストリーミング コンテンツを配信する方法" 
 	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	authors="juliako" 
 	manager="dwrede" 
@@ -13,22 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 
 #方法: ストリーミング コンテンツを配信する
 
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」と「[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
 ##概要
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。「[アセットをエンコードする](media-services-encode-asset.md)」トピックでは、アダプティブ ビットレート MP4 セットのエンコード方法を説明しています。ロケーターを作成する前に、[こちら](media-services-dotnet-configure-asset-delivery-policy.md) のトピックで説明されているようにアセット配信ポリシーを構成する必要があります。 
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。ロケーターを作成する前に、[このトピック](media-services-dotnet-configure-asset-delivery-policy.md)で説明されているようにアセット配信ポリシーを構成する必要があります。
 
-また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
+また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。 
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
   	 
 ##オンデマンド ストリーミング ロケーターを作成する
 
@@ -44,7 +44,7 @@
 
 ###Media Services .NET SDK を使用する 
 
-ストリーミング URL を構築する 
+ストリーミング URL を構築する
 
 	private static void BuildStreamingURLs(IAsset asset)
 	{
@@ -92,7 +92,7 @@
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 	
 
-プログレッシブ ダウンロード URL を作成します。 
+プログレッシブ ダウンロード URL を作成します。
 
 	private static void BuildProgressiveDownloadURLs(IAsset asset)
 	{
@@ -150,6 +150,6 @@
 	Console.WriteLine(smoothStreamingUri);
 	Console.WriteLine(hlsUri);
 	Console.WriteLine(mpegDashUri);
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

@@ -13,19 +13,18 @@
 	ms.tgt_pltfrm="windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/24/2015" 
+	ms.date="06/02/2015" 
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/documentation/articles/notification-hubs-windows-dotnet-secure-push/" title="Windows Universal" class="current">Windows Universal</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a>
-		<a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
+    	<a href="/documentation/articles/notification-hubs-windows-dotnet-secure-push/" title="Windows ユニバーサル" class="current">Windows ユニバーサル</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a> <a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
 </div>
 
 ##概要
 
-Microsoft Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。 
+Microsoft Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。
 
 規制やセキュリティの制約により、アプリケーションでは、標準のプッシュ通知インフラストラクチャからは転送できないものを通知に含める必要がある場合があります。このチュートリアルでは、クライアントのデバイスとアプリケーションのバックエンドとの間の安全で認証された接続を通して機密情報を送信することによって、同じエクスペリエンスを実現する方法について説明します。
 
@@ -38,22 +37,21 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 	- デバイスは、安全なペイロードを要求するバックエンドにアクセスします。
 	- アプリケーションはデバイスに通知としてペイロードを表示できます。
 
-前のフロー (およびこのチュートリアル) で重要なことは、ユーザーのログイン後、デバイスはローカル ストレージに認証トークンを格納すると想定していることです。これにより、デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
+重要なのは、前のフロー (およびこのチュートリアル) では、デバイスは、ユーザーがログインした後、認証トークンをローカル ストレージに保存すると想定していることです。デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、これによって完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
-この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは **ユーザーへの通知** チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
+この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「**ユーザーへの通知**」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」での説明に従って通知ハブが作成され、構成されていると想定しています。
-また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
+> [AZURE.NOTE]このチュートリアルは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」の説明に従って通知が作成され、構成されていることを前提としています。また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## Windows Phone プロジェクトを変更する
 
-1. **NotifyUserWindowsPhone** プロジェクトで、次のコードを App.xaml.cs に追加して、プッシュ バックグラウンド タスクを登録します。 `OnLaunched()` メソッドの最後に次のコード行を追加します。
+1. **NotifyUserWindowsPhone** プロジェクトで、次のコードを App.xaml.cs に追加して、プッシュ バックグラウンド タスクを登録します。`OnLaunched()` メソッドの最後に次のコード行を追加します。
 
 		RegisterBackgroundTask();
 
-2. 引き続き App.xaml.cs で、 `OnLaunched()` メソッドの直後に次のコードを追加します。
+2. 引き続き App.xaml.cs で、`OnLaunched()` の直後に次のコードを追加します。
 
 		private async void RegisterBackgroundTask()
         {
@@ -69,7 +67,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
             }
         }
 
-3. App.xaml.cs ファイルの先頭に次の  `using` ステートメントを追加します。
+3. App.xaml.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
 		using Windows.Networking.PushNotifications;
 		using Windows.ApplicationModel.Background;
@@ -80,7 +78,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 次の手順では、プッシュ バックグラウンド コンポーネントを作成します。
 
-1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、**Solution SecurePush**) を右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
+1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、[**Solution SecurePush**]) を右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
 
 2. **[ストア アプリ]** を展開し、**[Windows Phone アプリ]**、**[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。プロジェクトの名前として「**PushBackgroundComponent**」と入力し、**[OK]** をクリックしてプロジェクトを作成します。
 
@@ -88,7 +86,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 3. ソリューション エクスプローラーで、**PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**PushBackgroundTask.cs**」という名前を付けます。**[追加]** をクリックしてクラスを生成します。
 
-4. **PushBackgroundComponent** 名前空間定義の内容全体を次のコードで置き換えます。これにより、プレースホルダー  `{back-end endpoint}` をバックエンドのデプロイ時に取得したバックエンド エンドポイントで置き換えます。
+4. **PushBackgroundComponent** 名前空間定義の内容全体を次のコードで置き換えます。プレースホルダー `{back-end endpoint}` をバックエンドのデプロイ時に取得したバックエンド エンドポイントで置き換えます。
 
 		public sealed class Notification
     		{
@@ -143,7 +141,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 9. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。**Json.NET** パッケージをインストールし、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
-10. **PushBackgroundTask.cs** ファイルの先頭に次の  `using` ステートメントを追加します。
+10. **PushBackgroundTask.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
 		using Windows.ApplicationModel.Background;
 		using Windows.Networking.PushNotifications;
@@ -154,7 +152,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 		using Windows.UI.Notifications;
 		using Windows.Data.Xml.Dom;
 
-11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、**[参照の追加...]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、**[OK]** をクリックします。
+11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、**[参照の追加]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、**[OK]** をクリックします。
 
 12. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[Package.appxmanifest]** をダブルクリックします。**[通知]** で、**[トースト対応]** を **[はい]** に設定します。
 
@@ -185,5 +183,6 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO1-->

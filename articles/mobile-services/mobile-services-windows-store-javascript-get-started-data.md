@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="02/26/2015" 
+	ms.date="06/04/2015" 
 	ms.author="glenga"/>
 
 
@@ -21,12 +21,12 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-data-legacy](../../includes/mobile-services-selector-get-started-data-legacy.md)]
 
-#概要
-このトピックでは、Azure のモバイル サービスを使用して Windows ストア アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションの Visual Studio 2013 プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
+##概要
+このトピックでは、Azure のモバイル サービスを使用して Windows ストア アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションの Visual Studio 2013 プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにサインインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-windows-store-javascript-get-started-data%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-windows-store-javascript-get-started-data%2F)を参照してください。
 * Visual Studio 2013。Windows ストア アプリ プロジェクトを Mobile Services に接続できる機能を備えています。
 
 ##GetStartedWithData プロジェクトをダウンロードする
@@ -35,7 +35,7 @@
 
 1. JavaScript バージョンの GetStartedWithData サンプル アプリケーションを[デベロッパー サンプル コード集のサイト]からダウンロードします。 
 
-2. Visual Studio 2012 Express for Windows 8 で、ダウンロードしたプロジェクトを開き、**js** フォルダーを展開して、default.js ファイルを確認します。
+2. Visual Studio で、ダウンロードしたプロジェクトを開き、**js** フォルダーを展開して、default.js ファイルを確認します。
 
    	追加された **TodoItem** オブジェクトはメモリ内の **List** オブジェクトに格納されます。
 
@@ -66,7 +66,7 @@
 
 [AZURE.INCLUDE [mobile-services-create-new-table-vs2013](../../includes/mobile-services-create-new-table-vs2013.md)]
 
-#モバイル サービスを使用するためのアプリケーションの更新
+##モバイル サービスを使用するためのアプリケーションの更新
 
 [AZURE.INCLUDE [mobile-services-windows-javascript-update-data-app](../../includes/mobile-services-windows-javascript-update-data-app.md)]
 
@@ -110,9 +110,9 @@
 
 このチュートリアルでは、Windows ストア アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。次に、以下のその他のトピックのいずれかを読むことを検討してください。
 
-* [認証の使用] <br/>アプリケーションのユーザーを認証する方法について説明します。
+* [アプリへの認証の追加](mobile-services-windows-store-javascript-get-started-users.md) <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [アプリケーションにプッシュ通知を追加する](mobile-services-javascript-backend-windows-store-javascript-get-started-push.md) <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [Mobile Services サービス HTML/JavaScript の使用方法の概念リファレンス](mobile-services-html-how-to-use-client-library.md) <br/>HTML と JavaScript で Mobile Services を使用する方法について説明します。
 
@@ -133,18 +133,12 @@
 
 
 <!-- URLs. -->
-[Validate and modify data with scripts]: ../mobile-services-windows-store-javascript-validate-modify-data-server-scripts.md
-[Refine queries with paging]: ../mobile-services-windows-store-javascript-add-paging-data.md
-[Get started with Mobile Services]: mobile-services-javascript-backend-windows-store-javascript-get-started.md
-[Get started with data]: mobile-services-windows-store-javascript-get-started-data.md
-[認証の使用]: mobile-services-windows-store-javascript-get-started-users.md
-[プッシュ通知の使用]: mobile-services-javascript-backend-windows-store-javascript-get-started-push.md
-
 [Azure Management Portal]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=328660
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkId=328660
 [Mobile Services HTML/JavaScript How-to Conceptual Reference]: mobile-services-html-how-to-use-client-library.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

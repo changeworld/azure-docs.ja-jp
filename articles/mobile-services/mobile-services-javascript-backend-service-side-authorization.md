@@ -2,6 +2,7 @@
 	pageTitle="JavaScript バックエンドを使用したモバイル サービスでのユーザーのサービス側承認 | モバイル デベロッパー センター"
 	description="Azure モバイル サービスの JavaScript バックエンドでユーザーを承認する方法を学習します。"
 	services="mobile-services"
+	documentationCenter=""
 	authors="krisragh"
 	manager="dwrede"
 	editor=""/>
@@ -9,9 +10,10 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm=""
+	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
-	ms.date="2/18/2015"
+	ms.devlang="javascript"
+	ms.date="05/20/2015"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
@@ -20,37 +22,31 @@
 - [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
 - [(Any | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
 
-このトピックでは、サーバー側スクリプトを使用してユーザーを承認する方法を示します。このチュートリアルでは、Azure モバイル サービスでスクリプトを登録し、ユーザー ID に基づいてクエリをフィルターし、ユーザーに自分のデータのみへのアクセスを提供します。
+このトピックでは、サーバー側スクリプトを使用してユーザーを承認する方法を示します。このチュートリアルでは、Azure モバイル サービスでスクリプトを登録し、ユーザー ID に基づいてクエリをフィルターし、ユーザーに自分のデータのみへのアクセスを提供します。ユーザー ID によるユーザーのクエリ結果のフィルター処理は、承認の最も基本的な形式です。またシナリオによっては、特定のユーザーのアクセスを許可するエンドポイントなど、より詳細なユーザーの承認情報を確認するために、ユーザーまたはロールのテーブルを作成することもできます。
 
 このチュートリアルは、「Mobile Services クイック スタート」に基づいており、「[既存の Mobile Services アプリケーションに認証を追加]」チュートリアルに基づいて作成されています。最初に「[既存の Mobile Services アプリケーションに認証を追加]」を完了してください。
 
 ## <a name="register-scripts"></a>スクリプトを登録する
 
-1. [[Azure 管理ポータル]]にログオンし、[**Mobile Services**]をクリックして、お使いのモバイル サービスをクリックします。**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+1. Azure 管理ポータル]]にログオンし、[**Mobile Services**]をクリックして、お使いのモバイル サービスをクリックします。**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-2. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
-
-   	![][2]
-
-3. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。このスクリプトは、挿入前に項目に認証済みユーザーのユーザー ID を追加します。
+2. **[スクリプト]** をクリックし、**挿入**操作を選択して、既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
           item.userId = user.userId;
           request.execute();
         }
 
+	このスクリプトは、挿入前に項目に認証済みユーザーのユーザー ID を追加します。
 
-    > [AZURE.NOTE] これを機能させるには[動的スキーマを有効にする必要があります](https://msdn.microsoft.com/library/azure/jj193175.aspx)。新しいモバイル サービスの既定ではこの設定は有効です。
+    >[AZURE.NOTE][動的スキーマ](https://msdn.microsoft.com/library/azure/jj193175.aspx) が有効であることを確認します。それ以外の場合、*userId* 列は自動的には追加されません。新しいモバイル サービスの既定ではこの設定は有効になります。
 
-5. 同様に、既存の**読み取り**操作を次の関数で置き換えます。このスクリプトは、ユーザーが自身に挿入した項目だけを受信できるように、返された TodoItem オブジェクトをフィルターします。
+3. 同様に、既存の**読み取り**操作を次の関数で置き換えます。このスクリプトは、ユーザーが自身に挿入した項目だけを受信できるように、返された TodoItem オブジェクトをフィルターします。
 
         function read(query, user, request) {
            query.where({ userId: user.userId });
            request.execute();
         }
-
-
-
 
 ## <a name="test-app"></a>アプリケーションをテストする
 
@@ -63,21 +59,15 @@
 [Next Steps]: #next-steps
 
 <!-- Images. -->
-[0]: ./media/mobile-services-ios-authorize-users-in-scripts/mobile-services-selection.png
-[1]: ./media/mobile-services-ios-authorize-users-in-scripts/mobile-portal-data-tables.png
-[2]: ./media/mobile-services-javascript-backend-service-side-authorization/mobile-insert-script-users.png
-[3]: ./media/mobile-services-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
 
 [Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/p/?LinkID=257677
 [Mobile Services server script reference]: http://go.microsoft.com/fwlink/p/?LinkId=262293
 [My Apps dashboard]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
-[Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-with-data-ios
 [既存の Mobile Services アプリケーションに認証を追加]: /develop/mobile/tutorials/get-started-with-users-ios
-[Add Push Notifications to Existing App]: /develop/mobile/tutorials/get-started-with-push-ios
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

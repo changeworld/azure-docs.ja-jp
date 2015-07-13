@@ -124,4 +124,4 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

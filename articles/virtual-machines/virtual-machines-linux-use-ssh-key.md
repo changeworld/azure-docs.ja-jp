@@ -174,5 +174,6 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 	![linuxputtyprivatekey](./media/virtual-machines-linux-use-ssh-key/linuxputtyprivatekey.png)
 
 5.	**[Open]** をクリックして、仮想マシンに接続します。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO1-->

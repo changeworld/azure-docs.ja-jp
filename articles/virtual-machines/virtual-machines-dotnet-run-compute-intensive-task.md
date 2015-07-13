@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/18/2015"
+	ms.date="06/25/2015"
 	ms.author="wpickett"/>
 
 # Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法
@@ -443,9 +443,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 ### 多くのコンピューティング処理を要するアプリケーションの実行方法
 
 1. 仮想マシンにログオンします。
-2. **C:\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
-3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **C:\TSP** にコピーします。
-4. **C:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
+2. **c:\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
+3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **c:\TSP** にコピーします。
+4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
 		City_1, 1002.81, -1841.35
 		City_2, -953.55, -229.6
@@ -498,7 +498,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 		City_49, -120.3, -463.13
 		City_50, 588.51, 679.33
 
-5. コマンド プロンプトで、ディレクトリを C:\TSP に変更します。
+5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
 6. 巡回セールスマン問題を解くプログラムを実行する前に、Service Bus キューを作成する必要があります。次のコマンドを実行して、Service Bus キューを作成します。
 
         TSPSolver createqueue
@@ -515,9 +515,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 ### 監視用のクライアント アプリケーションの実行方法
 1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**C:\TSP** です。
-3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を C:\TSP フォルダーにコピーします。
-4. コマンド プロンプトで、ディレクトリを C:\TSP に変更します。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
+3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を c:\TSP フォルダーにコピーします。
+4. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
 5. 次のコマンドを実行します。
 
         TSPClient
@@ -547,4 +547,4 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

@@ -11,7 +11,7 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="C#" 
+	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/07/2015" 
 	ms.author="piyushjo" />
@@ -35,5 +35,6 @@
 - `EngagementIconCloseDark.png`: モバイル エンゲージメントのリーチ通知のWindows Phone ダーク テーマ用 [終了] アイコンです。
 
 - `EngagementConfiguration.xml`: モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

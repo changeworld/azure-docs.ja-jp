@@ -31,7 +31,7 @@ Azure Government は、スピード、規模、セキュリティ、コンプラ
 
 ![][2]
 
-Azure Government には、Infrastructure-as-a-Service (IaaS) や Platform-as-a-Service (PaaS) の主要なコンポーネントが含まれています。主要コンポーネントには、インフラストラクチャ、ネットワーク、ストレージ、データ管理、ID 管理、その他多くのサービスが含まれます。Azure Government は、geo 同期データ複製や自動スケーリングなど、Azure で採用されているものと同じ機能をサポートしています。Microsoft は、<a href="https://www.gartner.com/doc/2575715/magic-quadrant-cloud-infrastructure-service" target="_new">IaaS</a> や <a href="https://www.gartner.com/doc/2645317/magic-quadrant-enterprise-application-platform" target="_new">PaaS<a/> などの技術の最先端に立っており、業界をリードしています。
+Azure Government には、Infrastructure-as-a-Service (IaaS) や Platform-as-a-Service (PaaS) の主要なコンポーネントが含まれています。主要コンポーネントには、インフラストラクチャ、ネットワーク、ストレージ、データ管理、ID 管理、その他多くのサービスが含まれます。Azure Government は、geo 同期データ複製や自動スケーリングなど、Azure で採用されているものと同じ機能をサポートしています。Microsoft は、<a href="https://www.gartner.com/doc/2575715/magic-quadrant-cloud-infrastructure-service" target="_new">IaaS</a> や <a href="https://www.gartner.com/doc/2645317/magic-quadrant-enterprise-application-platform" target="_new">PaaS</a> などの技術の最先端に立っており、業界をリードしています。
 
 Azure で信頼性の高いサービスや機能を公的に提供しているだけでなく、Azure Government で米国政府機関に対して多くの機能を提供し、データの安全性を保証しています。
 
@@ -103,4 +103,4 @@ Azure Government のさらに詳細については、次のページをご覧く
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

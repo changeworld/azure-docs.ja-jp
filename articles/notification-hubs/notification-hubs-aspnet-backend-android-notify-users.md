@@ -393,7 +393,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                     .getText().toString();
     
             // JSON String
-            nhMessage = "\"" + nhMessage + "\"";
+            nhMessage = """ + nhMessage + """;
     
             if (((ToggleButton)findViewById(R.id.toggleButtonWNS)).isChecked())
             {
@@ -434,4 +434,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

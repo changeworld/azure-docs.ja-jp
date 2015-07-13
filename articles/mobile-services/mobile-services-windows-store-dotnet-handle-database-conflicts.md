@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/25/2015" 
+	ms.date="06/18/2015" 
 	ms.author="wesmc"/>
 
 # データベースの書き込み競合の処理
@@ -31,7 +31,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ Microsoft Visual Studio 2012 Express for Windows 以降。
++ Microsoft Visual Studio 2013 以降
 + このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。 
 + [Azure アカウント]
 + Azure モバイル サービス NuGet パッケージ 1.1.0 以降。最新バージョンを入手するには、次の手順に従います。
@@ -66,12 +66,7 @@
 		</ListView>
 
 
-3. MainPage.xaml.cs ファイルで、次の `using` ディレクティブをページの先頭に追加します。
-
-		using System.Threading.Tasks;
-
-
-4. Visual Studio ソリューション エクスプローラーで MainPage.xaml.cs を開きます。次に示すように、MainPage に TextBox の `LostFocus` イベントのイベント ハンドラーを追加します。
+4. Visual Studio Solution Explorer で、共有プロジェクトにある MainPage.cs を開きます。次に示すように、MainPage に TextBox の `LostFocus` イベントのイベント ハンドラーを追加します。
 
 
         private async void ToDoText_LostFocus(object sender, RoutedEventArgs e)
@@ -86,7 +81,7 @@
             }
         }
 
-4. MainPage.xaml.cs で、次に示すように、イベント ハンドラーで参照される MainPage の `UpdateToDoItem()` メソッドの定義を追加します。
+4. 共有プロジェクトの MainPage.cs で、次に示すように、イベント ハンドラーで参照される MainPage の `UpdateToDoItem()` メソッドの定義を追加します。
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -112,8 +107,8 @@
 
 シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。[オプティミスティック同時実行制御]では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。Azure Mobile Services はオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。前回のクエリ以降にレコードが変更されている場合は、アプリケーションで更新しようとしたときに `MobileServicePreconditionFailedException` が通知されます。その際、データベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ]に関するページを参照してください。
 
-1. MainPage.xaml.cs で、**TodoItem** クラスの定義を次のコードに更新します。このコードには **__version** システム プロパティが含まれており、書き込み競合の検出がサポートされます。
-		
+1. 共有プロジェクトで TodoItem.cs を開き、`TodoItem` クラスの定義を次のコードで更新し、書き込み競合の検出サポートを有効にする `__version` システム プロパティを含めます。
+
 		public class TodoItem
 		{
 			public string Id { get; set; }			
@@ -133,7 +128,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 `````
 
 
-2. `Version` クラスに `TodoItem` プロパティを追加することで、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` 例外が通知されます。この例外には、サーバーから取得された最新バージョンの項目が含まれます。MainPage.xaml.cs に、例外を処理するための次のコードを `UpdateToDoItem()` メソッドに追加します。
+2. `Version` クラスに `TodoItem` プロパティを追加することで、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` 例外が通知されます。この例外には、サーバーから取得された最新バージョンの項目が含まれます。共有プロジェクトの MainPage.cs で、例外を処理するための次のコードを `UpdateToDoItem()` メソッドに追加します。
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -167,7 +162,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
         }
 
 
-3. MainPage.xaml.cs に、`ResolveConflict()` で参照される `UpdateToDoItem()` メソッドの定義を追加します。競合を解決する順序に注意してください。ローカル項目のバージョンをサーバーから取得された更新後のバージョンに設定した後で、ユーザーの決定をコミットします。この順序に従わない場合、競合が次々と発生します。
+3. MainPage.cs で、`UpdateToDoItem()` で参照される `ResolveConflict()` メソッドの定義を追加します。競合を解決する順序に注意してください。ローカル項目のバージョンをサーバーから取得された更新後のバージョンに設定した後で、ユーザーの決定をコミットします。この順序に従わない場合、競合が次々と発生します。
 
 
         private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
@@ -369,5 +364,6 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle=".NET を使用した Media Services アカウントへの接続" 
-	description="このトピックでは、.NET を使用して、メディア サービスに接続する方法を説明します。" 
+	description="このトピックでは、.NET を使用して、Media Services に接続する方法を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/03/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 
 # Media Services SDK for .NET を使用した Media Services アカウントへの接続
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) および[メディア サービスのライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md) シリーズの一部です。 
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
-このトピックでは、Media Services SDK for .NET でプログラミングする場合に、Microsoft Azure メディア サービスにプログラムから接続する方法について説明します。
+このトピックでは、Media Services SDK for .NET でプログラミングする場合に、Microsoft Azure Media Services にプログラムから接続する方法について説明します。
 
 
-## メディア サービスへの接続
+## Media Services への接続
 
-プログラムでメディア サービスに接続するには、事前に Azure アカウントを設定し、そのアカウントに メディア サービスを構成し、Media Services SDK for .NET で開発するための Visual Studio プロジェクトをセットアップする必要があります。詳細については、「Setup for Development with the Media Services SDK for .NET (Media Services SDK による開発のためのセットアップ)」をご覧ください。
+プログラムで Media Services に接続するには、事前に Azure アカウントを設定し、そのアカウントに Media Services を構成し、Media Services SDK for .NET で開発するための Visual Studio プロジェクトをセットアップする必要があります。詳細については、「Setup for Development with the Media Services SDK for .NET (Media Services SDK による開発のためのセットアップ)」をご覧ください。
 
 Media Services アカウントのセットアップ プロセスの最後で、次の必須接続値を取得しました。これらの値を使用して、プログラムから Media Services に接続します。
 
@@ -34,17 +34,17 @@ Media Services アカウントのセットアップ プロセスの最後で、�
 
 - Media Services アカウント キー
 
-これらの値を確認するには、Azure 管理ポータルに移動して、メディア サービスを選んで、ポータル ウィンドウの下にある [**キーの管理**] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
+これらの値を確認するには、Azure 管理ポータルに移動して、Media Services アカウントを選んで、ポータル ウィンドウの下にある [**キーの管理**] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
 
 
 ## CloudMediaContext インスタンスの作成
 
-メディア サービスに対するプログラミングを開始するには、サーバー コンテキストを表す **CloudMediaContext** インスタンスを作成する必要があります。**CloudMediaContext** には、ジョブ、アセット、ファイル、アクセス ポリシー、ロケーターなどの重要なコレクションへの参照が含まれています。
+Media Services に対するプログラミングを開始するには、サーバー コンテキストを表す **CloudMediaContext** インスタンスを作成する必要があります。**CloudMediaContext** には、ジョブ、アセット、ファイル、アクセス ポリシー、ロケーターなどの重要なコレクションへの参照が含まれています。
 
->[AZURE.NOTE] **CloudMediaContext** クラスはスレッド セーフではありません。スレッドごと、一連の操作ごとに、新しい CloudMediaContext を作成する必要があります。
+>[AZURE.NOTE]**CloudMediaContext** クラスはスレッド セーフではありません。スレッドごと、一連の操作ごとに、新しい CloudMediaContext を作成する必要があります。
 
 
-CloudMediaContext には、5 つのコンストラクター オーバーロードがあります。**MediaServicesCredentials** をパラメーターとして受け取るコンストラクターを使用することをお勧めします。詳細については、以下の**「アクセス制御サービス トークンの再利用」**をご覧ください。 
+CloudMediaContext には、5 つのコンストラクター オーバーロードがあります。**MediaServicesCredentials** をパラメーターとして受け取るコンストラクターを使用することをお勧めします。詳細については、次の**Access Control Service トークンの再利用**をご覧ください。
 
 次の例では、public CloudMediaContext (MediaServicesCredentials credentials) コンストラクターを使用します。
 
@@ -61,11 +61,11 @@ CloudMediaContext には、5 つのコンストラクター オーバーロー�
 このセクションでは、パラメーターとして MediaServicesCredentials を受け取る CloudMediaContext コンストラクターを使用してアクセス制御サービス トークンを再利用する方法を示します。
 
 
-[Azure Active Directory Access Control](https://msdn.microsoft.com/library/hh147631.aspx) (アクセス制御サービスか ACS とも呼ばれます) は、認証とユーザーへの Web アプリへのアクセス許可を簡単に行うことができるクラウドベースのサービスです。Microsoft Azure メディア サービスは、ACS トークンを必要とする OAuth プロトコルを使用して、サービスへのアクセスを制御します。メディア サービスは、承認サーバーから ACS トークンを受け取ります。
+[Azure Active Directory Access Control](https://msdn.microsoft.com/library/hh147631.aspx) (Access Control Service か ACS とも呼ばれます) は、認証とユーザーへの Web アプリへのアクセス許可を簡単に行うことができるクラウドベースのサービスです。Microsoft Azure Media Services は、ACS トークンを必要とする OAuth プロトコルを使用して、サービスへのアクセスを制御します。Media Services は、承認サーバーから ACS トークンを受け取ります。
 
 Media Services SDK を使用して開発する場合、SDK コードでトークンを管理できるため、トークンの処理をしないことも選択できます。ただし、ACS トークンを完全に SDK で管理すると、不要なトークン要求が生成されます。トークン要求には時間がかかり、クライアントとサーバーのリソースが消費されます。また、ACS サーバーは、要求の発生率が高すぎる場合、要求を調整します。要求の上限は 1 秒あたり 30 回です。詳細については、「[ACS サービスの制限事項](https://msdn.microsoft.com/library/gg185909.aspx)」をご覧ください。
 
-Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用できるようになりました。**MediaServicesCredentials** をパラメーターとして受け取る **CloudMediaContext** コンストラクターでは、複数のコンテキスト間で ACS トークンを共有できます。MediaServicesCredentials クラスは、メディア サービスの資格情報をカプセル化します。ACS トークンが使用可能で、有効期限がわかっている場合は、トークンを使用して新しい MediaServicesCredentials インスタンスを作成し、そのインスタンスを CloudMediaContext のコンストラクターに渡すことができます。有効期限が切れると、Media Services SDK によって、トークンが自動的に更新されることにご注意ください。次の例で示すように、ACS トークンを再利用するには、2 つの方法があります。
+Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用できるようになりました。**MediaServicesCredentials** をパラメーターとして受け取る **CloudMediaContext** コンストラクターでは、複数のコンテキスト間で ACS トークンを共有できます。MediaServicesCredentials クラスは、Media Services の資格情報をカプセル化します。ACS トークンが使用可能で、有効期限がわかっている場合は、トークンを使用して新しい MediaServicesCredentials インスタンスを作成し、そのインスタンスを CloudMediaContext のコンストラクターに渡すことができます。有効期限が切れると、Media Services SDK によって、トークンが自動的に更新されることにご注意ください。次の例で示すように、ACS トークンを再利用するには、2 つの方法があります。
 
 - **MediaServicesCredentials** オブジェクトをメモリ (たとえば、静的クラス変数) 内にキャッシュできます。次に、CloudMediaContext コンストラクターに、キャッシュされたオブジェクトを渡します。MediaServicesCredentials オブジェクトには ACS トークンが含まれており、トークンの有効期限が切れていない場合は、トークンを再利用できます。有効期限が切れている場合、トークンは、MediaServicesCredentials コンストラクターに渡された資格情報を使用して、Media Services SDK によって更新されます。
 
@@ -85,7 +85,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 - AccessToken 文字列と TokenExpiration の値もキャッシュできます。キャッシュした値は、キャッシュしたトークン データを使用して後から新しい MediaServicesCredentials オブジェクトを作成するときに使用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
 
-	次のコード スニペットでは、この例では定義されていない SaveTokenDataToExternalStorage メソッド、GetTokenDataFromExternalStorage メソッド、UpdateTokenDataInExternalStorageIfNeeded メソッドを呼び出しています。これらのメソッドを定義すると、外部ストレージにトークン データを格納し、格納したデータを取得して更新できます。 
+	次のコード スニペットでは、この例では定義されていない SaveTokenDataToExternalStorage メソッド、GetTokenDataFromExternalStorage メソッド、UpdateTokenDataInExternalStorageIfNeeded メソッドを呼び出しています。これらのメソッドを定義すると、外部ストレージにトークン データを格納し、格納したデータを取得して更新できます。
 
 		CloudMediaContext context1 = new CloudMediaContext(_mediaServicesAccountName, _mediaServicesAccountKey);
 		
@@ -96,7 +96,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		// Save token values for later use. 
 		// The SaveTokenDataToExternalStorage method should check 
 		// whether the TokenExpiration value is valid before saving the token data. 
-		// If it is not valid, call MediaServicesCredentials's RefreshToken before caching.
+		// If it is not valid, call MediaServicesCredentials’s RefreshToken before caching.
 		SaveTokenDataToExternalStorage(accessToken, tokenExpiration);
 		
 	保存したトークン値を使用して、MediaServicesCredentials を作成します。
@@ -117,7 +117,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		
 		CloudMediaContext context2 = new CloudMediaContext(credentials);
 
-	トークンが Media Services SDK により更新された場合は、トークンのコピーを更新します。 
+	トークンが Media Services SDK により更新された場合は、トークンのコピーを更新します。
 	
 		if(tokenExpiration != context2.Credentials.TokenExpiration)
 		{
@@ -125,7 +125,7 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 		}
 		
 
-- 負荷分散や地理的分散の目的などで、複数の Media Services アカウントを使用している場合、System.Collections.Concurrent.ConcurrentDictionary コレクションを使用して、MediaServicesCredentials オブジェクトをキャッシュできます (ConcurrentDictionary コレクションは、複数のスレッドから同時にアクセスできるキー/値のペアのスレッドセーフ コレクションを表します)。この場合、GetOrAdd メソッドを使用して、キャッシュした資格情報を取得できます。 
+- 負荷分散や地理的分散の目的などで、複数の Media Services アカウントを使用している場合、System.Collections.Concurrent.ConcurrentDictionary コレクションを使用して、MediaServicesCredentials オブジェクトをキャッシュできます (ConcurrentDictionary コレクションは、複数のスレッドから同時にアクセスできるキー/値のペアのスレッドセーフ コレクションを表します)。この場合、GetOrAdd メソッドを使用して、キャッシュした資格情報を取得できます。
 
 		// Declare a static class variable of the ConcurrentDictionary type in which the Media Services credentials will be cached.  
 		private static readonly ConcurrentDictionary<string, MediaServicesCredentials> mediaServicesCredentialsCache = 
@@ -172,12 +172,12 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 
 <pre><code>
-&lt;configuration&gt;
-    &lt;appSettings&gt;
-	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" /&gt;
-    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /&gt;
-    &lt;/appSettings&gt;
-&lt;/configuration&gt;
+&lt;configuration>
+    &lt;appSettings>
+	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+    &lt;/appSettings>
+&lt;/configuration>
 </code></pre>
 
 構成から接続値を取得するには、**ConfigurationManager** クラスを使用し、コードでフィールドに値を割り当てます。
@@ -191,5 +191,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 <!-- URLs. -->
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Azure PowerShell のインストールと構成の方法"
+	pageTitle="Azure PowerShell のインストールおよび構成方法"
 	description="Azure PowerShell のインストールと構成の方法について説明します。"
 	editor="tysonn"
 	manager="stevenka"
 	documentationCenter=""
 	services=""
-	authors="coreyp69"/>
+	authors="coreyp-at-msft"/>
 
 <tags
 	ms.service="multiple"
@@ -16,11 +16,11 @@
 	ms.date="02/20/2015"
 	ms.author="coreyp"/>
 
-# Azure PowerShell のインストールと構成の方法#
+# Azure PowerShell のインストールおよび構成方法#
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/manage/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Cross-Platform CLI">クロスプラットフォーム  CLI</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/manage/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Azure CLI">Azure CLI</a></div>
 
-Windows PowerShell を使用して、Azure でさまざまなタスクを実行できます。Windows PowerShell は、コマンド プロンプトで対話形式によって操作する方法でも、スクリプトで自動的に処理する方法でも使用できます。Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、展開、管理できます。ほとんどの場合、このコマンドレットを使用して、Azure 管理ポータルで実行できるタスクと同じタスクを実行できます。たとえば、クラウド サービス、仮想マシン、仮想ネットワーク、Web アプリを作成および構成できます。 
+Windows PowerShell を使用して、Azure でさまざまなタスクを実行できます。Windows PowerShell は、コマンド プロンプトで対話形式によって操作する方法でも、スクリプトで自動的に処理する方法でも使用できます。Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。ほとんどの場合、このコマンドレットを使用して、Azure 管理ポータルで実行できるタスクと同じタスクを実行できます。たとえば、クラウド サービス、仮想マシン、仮想ネットワーク、Web アプリを作成および構成できます。
 
 モジュールはダウンロード可能なファイルとして配布され、ソース コードは一般公開されているリポジトリで管理されます。ダウンロード可能なファイルへのリンクは、このトピックの後半にあるインストール手順の中で紹介しています。ソース コードの詳細については、[Azure PowerShell のコード リポジトリ](https://github.com/Azure/azure-powershell)を参照してください。
 
@@ -28,20 +28,20 @@ Windows PowerShell を使用して、Azure でさまざまなタスクを実行�
 
 ### <a id="Prereq"></a>Azure PowerShell を使用するための前提条件
 
-Azure はサブスクリプション方式のプラットフォームです。つまり、プラットフォームを使用するにはサブスクリプションが必要です。ほとんどの場合、サブスクリプションを使用してコマンドレットでタスクを実行するには、サブスクリプション情報が必要です(ストレージ関連の一部のコマンドレットは、サブスクリプション情報なしで使用できます)。この情報を提供するため、サブスクリプションに接続するようにコンピューターを構成します。手順については、この記事の「方法: サブスクリプションへの接続」で説明しています。
+Azure はサブスクリプション方式のプラットフォームです。つまり、プラットフォームを使用するにはサブスクリプションが必要です。ほとんどの場合、サブスクリプションを使用してコマンドレットでタスクを実行するには、サブスクリプション情報が必要です(ストレージ関連の一部のコマンドレットは、サブスクリプション情報なしで使用できます)。 この情報を提供するため、サブスクリプションに接続するようにコンピューターを構成します。手順については、この記事の「方法: サブスクリプションへの接続」で説明しています。
 
-> [AZURE.NOTE] バージョン 0.8.5 以降、Azure PowerShell モジュールの利用には、Microsoft .NET Framework 4.5 が必要です。
+> [AZURE.NOTE]バージョン 0.8.5 以降、Azure PowerShell モジュールの利用には、Microsoft .NET Framework 4.5 が必要です。
 
 モジュールをインストールすると、インストーラーによって、システムに必要なソフトウェアがチェックされ、正しいバージョンの Windows PowerShell、.NET Framework など、すべての依存関係がインストールされます。
 
-<h2> <a id="Install"></a>方法: Azure PowerShell をインストールするには</h2>
+<a id="Install"></a>
+## 方法: Azure PowerShell をインストールするには
 
 Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?LinkId=320376) を実行してダウンロードおよびインストールすることができます。メッセージが表示されたら、**[実行]** をクリックします。Azure PowerShell モジュールおよびすべての依存関係がインストールされます。表示される指示に従って、インストールを完了します。
 
-> [AZURE.NOTE] PowerShell Installer のダウンロードだけを行う場合は、https://github.com/Azure/azure-powershell/releases にアクセスしてください。
-PowerShell コマンドレットのソース コードは、このリポジトリにもあります。
+> [AZURE.NOTE]PowerShell Installer のダウンロードだけを行う場合は、https://github.com/Azure/azure-powershell/releases にアクセスしてください。PowerShell コマンドレットのソース コードは、このリポジトリにもあります。
 
-Azure で使用できるコマンドライン ツールの詳細については、[コマンドライン ツール]( http://go.microsoft.com/fwlink/?LinkId=320796)のページを参照してください。
+Azure に使用できるコマンドライン ツールの詳細については、「[コマンドライン ツール](http://go.microsoft.com/fwlink/?LinkId=320796)」を参照してください。
 
 モジュールをインストールすると、Azure PowerShell 用にカスタマイズされたコンソールもインストールされます。コマンドレットは、標準の Windows PowerShell コンソールまたは Azure PowerShell コンソールから実行できます。
 
@@ -51,9 +51,10 @@ Azure で使用できるコマンドライン ツールの詳細については�
 
 - Windows 8 よりも前、または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、[スタート] メニューを使用します。[スタート] メニューから、**[すべてのプログラム]**、**[Azure]**、**[Azure PowerShell]** の順にクリックします。
 
-<h2><a id="Connect"></a>方法: サブスクリプションへの接続</h2>
+<a id="Connect"></a>
+## 方法: サブスクリプションへの接続
 
-Azure を使用するにはサブスクリプションが必要です。サブスクリプションがない場合は、[Azure の使用](http://go.microsoft.com/fwlink/p/?LinkId=320795)に関するページを参照してください。
+Azure を使用するにはサブスクリプションが必要です。サブスクリプションがない場合は、「[Azure を使ってみる](http://go.microsoft.com/fwlink/p/?LinkId=320795)」を参照してください。
 
 コマンドレットでサービスを管理するには、サブスクリプションが必要です。Windows PowerShell にサブスクリプション情報を提供するには、次の 2 つの方法があります。サブスクリプション情報を含む管理証明書を使用します。または、Microsoft アカウントか、職場または学校のアカウントを使用して Azure にサインインします。サインインすると、Azure Active Directory (Azure AD) により資格情報が認証され、Azure PowerShell がアカウントを管理するためのアクセス トークンが返されます。
 
@@ -62,11 +63,11 @@ Azure を使用するにはサブスクリプションが必要です。サブ�
 - 通常は、簡単にサブスクリプションへのアクセスを管理できる Azure AD での認証をお勧めします。バージョン 0.8.6 へのアップデートを行うことによって、職場や学校のアカウントを使用している場合でも、Azure AD での認証を使用した自動化のシナリオを利用できます。Azure AD での認証は、Azure リソース マネージャー API でも利用できます。
 - 証明書方式では、サブスクリプションおよび証明書が有効な限りサブスクリプション情報を使用できます。ただし、この方式では、複数のユーザーがアクセスを許可されているアカウントなど、共有サブスクリプションへのアクセス管理が難しくなります。また、Azure リソース マネージャー API では、証明書による認証を行うことができません。
 
-Azure での認証とサブスクリプション管理の詳細については、「[アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796)」を参照してください。
+Azure の認証とサブスクリプション管理の詳細については、「[アカウント、サブスクリプション、管理者ロールを管理する](http://go.microsoft.com/fwlink/?LinkId=324796)」を参照してください。
 
-<h3>Azure AD 方式を使用する</h3>
+### Azure AD 方式を使用する
 
-1. Azure PowerShell コンソール ウィンドウを開きます。手順については、「[方法:Azure PowerShell をインストールするには](#Install)」を参照してください。
+1. Azure PowerShell コンソール ウィンドウを開きます。手順は「[方法: Azure PowerShell をインストールするには](#Install)」を参照してください。
 
 2. 次のコマンドを入力します。
 
@@ -81,42 +82,40 @@ Azure での認証とサブスクリプション管理の詳細については�
         $cred = Get-Credential
         Add-AzureAccount -Credential $cred
 
-    > セキュリティと資格情報の使用の詳細については、[ASP.NET と Azure の Web サイトでパスワードや他の機密情報をデプロイするときのベスト プラクティス](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)に関するページを参照してください。
+	> [AZURE.NOTE]セキュリティと資格情報の使用の詳細については、[ASP.NET と Azure Websites でパスワードや他の機密情報をデプロイするときのベスト プラクティスに関するページ](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)を参照してください。
 
-
-	> [AZURE.NOTE] この非対話型のログイン方法は、職場または学校のアカウントでのみ機能します。職場または学校のアカウントは、職場または学校によって管理されているユーザーで、職場または学校の Azure Active Directory インスタンスで定義されています。現在、職場または学校のアカウントがなく、Microsoft アカウントを使用して Azure サブスクリプションにログインしている場合は、次の手順を使用して簡単に職場または学校のアカウントを作成できます。
+	> [AZURE.NOTE]この非対話型のログイン方法は、職場または学校のアカウントでのみ機能します。職場または学校のアカウントは、職場または学校によって管理されているユーザーで、職場または学校の Azure Active Directory インスタンスで定義されています。現在、職場または学校のアカウントがなく、Microsoft アカウントを使用して Azure サブスクリプションにログインしている場合は、次の手順を使用して簡単に職場または学校のアカウントを作成できます。
 	>
-	> 1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインして、**[Active Directory]** をクリックします。
+	> 1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインし、**[Active Directory]** をクリックします。
 	>
 	> 2. ディレクトリがない場合は、**[ディレクトリの作成]** を選択し、求められる情報を入力します。
 	>
 	> 3. ディレクトリを選択し、新しいユーザーを追加します。この新しいユーザーは、職場または学校のアカウントを使用してサインインできます。
 	>
-	>     ユーザーの作成時、ユーザーの電子メール アドレスと仮パスワードの両方が通知されます。この情報は別の手順で使用するため、保存しておきます。
+	>     ユーザーの作成時、ユーザーの電子メール アドレスと仮パスワードの両方が通知されます。この情報は別の手順で使用するため保管しておいてください。
 	>
 	> 4. 管理ポータルで **[設定]**、**[Administrators]** の順に選択します。**[追加]** を選択し、共同管理者として新しいユーザーを追加します。これにより、職場または学校のアカウントで Azure サブスクリプションを管理できるようになります。
 	>
 	> 5. 最後に、Azure ポータルからログアウトし、職場または学校のアカウントを使用してログインし直します。初めてこのアカウントを使用してログインする場合は、パスワードを変更するように求められます。
 	>
-	>職場または学校のアカウントを使用して Microsoft Azure にサインアップする方法の詳細については、[組織としての Microsoft Azure へのサインアップ](sign-up-organization.md).に関するページを参照してください。
+	>職場または学校のアカウントを使用して Microsoft Azure にサインアップする方法の詳細については、[組織としての Microsoft Azure へのサインアップに関するページ](sign-up-organization.md)を参照してください。
 
-<h3>証明書方式を使用する</h3>
+### 証明書方式を使用する
 
 Azure モジュールには、証明書をダウンロードしてインポートするためのコマンドレットが用意されています。
 
-> [AZURE.NOTE] AzureResourceManager モジュールのコマンドレットには Azure AD メソッド(Add-AzureAccount).が必要です。これらのコマンドレットは、発行設定ファイルをサポートしていません。AzureResourceManager モジュールのコマンドレットの詳細については、[Azure Resource Manager のコマンドレット](http://go.microsoft.com/fwlink/?LinkID=394765)に関するページを参照してください。
+> [AZURE.NOTE]AzureResourceManager モジュールのコマンドレットでは、Azure AD 方式 (Add-AzureAccount) を使用する必要があります。AzureResourceManager モジュールのコマンドレットは、発行設定ファイルをサポートしていません。AzureResourceManager モジュールのコマンドレットの詳細については、「[Azure Resource Manager Cmdlets (Azure リソース マネージャー コマンドレット)](http://go.microsoft.com/fwlink/?LinkID=394765)」を参照してください。
 
 
-- **Get-AzurePublishSettingsFile** コマンドレットは、
-Azure 管理ポータル上の Web ページを開きます。ここから、サブスクリプション情報をダウンロードできます。この情報は発行設定ファイルに含まれています。
+- **Get-AzurePublishSettingsFile** コマンドレットで Azure 管理ポータル上の Web ページを開き、そこからサブスクリプション情報をダウンロードすることができます。この情報は発行設定ファイルに含まれています。
 
 - **Import-AzurePublishSettingsFile** は、モジュールが使用する発行設定ファイルをインポートします。このファイルには、セキュリティ資格情報が記載されている管理証明書が含まれています。
 
-> [AZURE.IMPORTANT] これらの設定をインポートした後、<b>Get-AzurePublishSettingsFile</b> を使用してダウンロードした発行設定ファイルを削除することをお勧めします。管理証明書にはセキュリティ資格情報が含まれているため、未承認ユーザーによるアクセスを防ぐ必要があります。サブスクリプションに関する情報は、[Azure 管理ポータル](http://manage.windowsazure.com/)または [Microsoft Online Services カスタマー ポータル](http://go.microsoft.com/fwlink/p/?LinkId=324875)から入手できます。
+> [AZURE.IMPORTANT]これらの設定をインポートした後、<b>Get-AzurePublishSettingsFile</b> を使用してダウンロードした発行設定ファイルを削除することをお勧めします。管理証明書にはセキュリティ資格情報が含まれているため、未承認ユーザーによるアクセスを防ぐ必要があります。サブスクリプションに関する情報は、[Azure 管理ポータル](http://manage.windowsazure.com/)または [Microsoft Online Services カスタマー ポータル](http://go.microsoft.com/fwlink/p/?LinkId=324875)から入手できます。
 
 1. Azure アカウントの資格情報を使用して、[Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Azure PowerShell コンソール ウィンドウを開きます。手順については、「[方法:Azure PowerShell をインストールするには](#Install)」を参照してください。
+2. Azure PowerShell コンソール ウィンドウを開きます。手順は「[方法: Azure PowerShell をインストールするには](#Install)」を参照してください。
 
 3. 次のコマンドを入力します。
 
@@ -124,15 +123,16 @@ Azure 管理ポータル上の Web ページを開きます。ここから、サ
 
 4. メッセージが表示されたら、発行プロファイルをダウンロードして保存し、発行設定ファイルのパスと名前をメモしておきます。この情報は、**Import-AzurePublishSettingsFile** コマンドレットを実行して設定をインポートする際に必要です。既定の場所とファイル名の形式は次のとおりです。
 
-			C:\\Users<UserProfile>\\Download[*MySubscription*-...]-*downloadDate*-credentials.publishsettings
+			C:\Users<UserProfile>\Download[*MySubscription*-...]-*downloadDate*-credentials.publishsettings
 
 5. プレースホルダーを Windows アカウント名、パス、ファイル名に置き換えて、次のようなコマンドを入力します。
 
 		Import-AzurePublishSettingsFile C:\Users<UserProfile>\Downloads<SubscriptionName>-credentials.publishsettings
 
-> [AZURE.NOTE] 発行設定をインポートした後に、他のサブスクリプションに共同管理者として追加された場合は、このプロセスを繰り返して、新しい発行設定ファイルをダウンロードし、それらの設定をインポートする必要があります。サブスクリプションのサービスを管理する共同管理者の追加の詳細については、[Azure サブスクリプションへの共同管理者の追加と削除](http://msdn.microsoft.com/library/windowsazure/gg456328.aspx)に関するページを参照してください。
+> [AZURE.NOTE]発行設定をインポートした後、他のサブスクリプションに共同管理者として追加された場合は、このプロセスを繰り返して、新しい発行設定ファイルをダウンロードし、それらの設定をインポートする必要があります。サブスクリプションのサービスを管理する共同管理者の追加の詳細については、[Azure サブスクリプションへの共同管理者の追加と削除に関するページ](http://msdn.microsoft.com/library/windowsazure/gg456328.aspx)を参照してください。
 
-<h3> アカウントおよびサブスクリプションの詳細を表示する</h3>
+### アカウントおよびサブスクリプションの詳細を表示する
+
 Azure PowerShell で使用するためのアカウントとサブスクリプションは、複数所有することができます。Add-AzureAccount を繰り返し実行すると、複数のストレージ アカウントを追加できます。
 
 利用できる Azure アカウントを表示するには、次のように入力します。
@@ -149,9 +149,9 @@ Azure サブスクリプションを表示するには、次のように入力�
 
 1. Azure PowerShell コンソールを開きます。
 
-2. Web アプリの名前を入力します。DNS の名前付け規則に従った名前を付けてください。名前には「a」から「z」の文字、「0」から「9」の数字、ハイフン「-」のみが使用できます。 
+2. Web アプリの名前を入力します。DNS の名前付け規則に従った名前を付けてください。名前には「a」から「z」の文字、「0」から「9」の数字、ハイフン「-」のみが使用できます。
 
-	Web アプリの名前は、Azure 内で一意である必要があります。この例では「mySite」を使用しますが、アカウント名に数字をプラスした名前などの別の名前を必ず指定してください。  
+	Web アプリの名前は、Azure 内で一意である必要があります。この例では「mySite」を使用しますが、アカウント名に数字をプラスした名前などの別の名前を必ず指定してください。
 
 	名前を決めたら、次のようにコマンドを入力します。"mySite" は、Web アプリの名前に置き換えてください。
 
@@ -171,11 +171,11 @@ Azure サブスクリプションを表示するには、次のように入力�
 
 		Stop-AzureWebsite -Name mySite
 
-6. サイトの状態が  'stopped' であることを確認するには、Get-AzureWebsite コマンドを再度実行します。
+6. サイトが停止状態 (stopped) であることを確認するには、Get-AzureWebsite コマンドをもう一度実行します。
 
 		Get-AzureWebsite
 
-7. このテストを完了するために、Web アプリを削除します。次のコマンドを入力します。  
+7. このテストを完了するために、Web アプリを削除します。次のコマンドを入力します。
 
 		Remove-AzureWebsite -Name mySite
 
@@ -188,45 +188,45 @@ Azure サブスクリプションを表示するには、次のように入力�
 これらのリソースは、特定のコマンドレットに関するヘルプ情報を提供します。
 
 
--   コンソールから、組み込みのヘルプ システムを使用できます。**Get-Help** コマンドレットを実行すると、このヘルプ システムにアクセスできます。次の表は、ヘルプを表示するためのコマンドの例です。コンソールで「**help**」と入力すると、詳細情報を表示できます。
+-   コンソールから、組み込みのヘルプ システムを使用できます。**Get-Help** コマンドレットを実行すると、ヘルプ システムにアクセスできます。次の表は、ヘルプを表示するためのコマンドの例です。コンソールで「**help**」と入力すると、詳細情報を表示できます。
 
     <table border="1" cellspacing="4" cellpadding="4">
-    <tbody>
-    <tr align="left" valign="top">
-		<td><b>コマンド</b></td>
-		<td><b>結果</b></td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>Get-Help</td>
-		<td>ヘルプ システムの使用方法を表示します。 <p><b>注</b>:この説明には、Azure モジュールには該当しないヘルプ ファイルの情報も含まれています。ヘルプ ファイルは、モジュールのインストール時にインストールされます。個別にダウンロードすることはできません。</p>
+<tbody>
+<tr align="left" valign="top">
+	<td><b>コマンド</b></td>
+	<td><b>結果</b></td>
+</tr>
+<tr align="left" valign="top">
+	<td>Get-Help</td>
+	<td>ヘルプ システムの使用方法を表示します。<p><b>注</b>: この説明には、Azure モジュールには該当しないヘルプ ファイルの情報も含まれています。ヘルプ ファイルは、モジュールのインストール時にインストールされます。個別にダウンロードすることはできません。</p>
 </td>
-    </tr>
+</tr>
+<tr align="left" valign="top">
+	<td>Get-Help Azure</td>
+	<td>Azure モジュール内のすべてのコマンドレットを取得します。</td>
+</tr>
+<tr align="left" valign="top">
+	<td>Get-Help &lt;<b>language</b>>-dev</td>
+	<td>指定された言語でアプリケーションの開発と管理に使用するコマンドレットを取得します。たとえば、help node-dev、help php-dev、または help python-dev のように指定します。</td>
+</tr>
     <tr align="left" valign="top">
-		<td>Get-Help Azure</td>
-		<td>Azure モジュール内のすべてのコマンドレットを取得します。</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td>Get-Help &lt;<b>language</b>&gt;-dev</td>
-		<td>指定された言語でアプリケーションの開発と管理に使用するコマンドレットを取得します。たとえば、help node-dev、help php-dev、または help python-dev のように指定します。</td>
-    </tr>
-	    <tr align="left" valign="top">
-		<td>Get-Help &lt;<b>cmdlet</b>&gt;</td>
-		<td>Windows PowerShell コマンドレットについてのヘルプを取得します。<cmdlet> をコマンドレット名に置き換えます。</td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>Get-Help &lt;<b>cmdlet</b>&gt; -Parameter *</td>
-		<td>コマンドレット パラメーターの詳細を取得します。アスタリスク (*) は、「すべて」を意味します。</td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>Get-Help &lt;<b>cmdlet</b>&gt; -Examples</td>
-		<td>コマンドレットを使用するための構文と例を取得します。</td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>Get-Help &lt;<b>cmdlet</b>&gt; -Full</td>
-		<td>技術的詳細を含む、コマンドレットのすべてのヘルプを取得します。</td>
-    </tr>
-    </tbody>
-    </table>
+	<td>Get-Help &lt;<b>cmdlet</b>></td>
+	<td>Windows PowerShell コマンドレットについてのヘルプを取得します。<cmdlet> をコマンドレット名に置き換えます。</td>
+</tr>
+<tr align="left" valign="top">
+	<td>Get-Help &lt;<b>cmdlet</b>> -Parameter *</td>
+	<td>コマンドレット パラメーターの詳細を取得します。アスタリスク (*) は、「すべて」を意味します。</td>
+</tr>
+<tr align="left" valign="top">
+	<td>Get-Help &lt;<b>cmdlet</b>> -Examples</td>
+	<td>コマンドレットを使用するための構文と例を取得します。</td>
+</tr>
+<tr align="left" valign="top">
+	<td>Get-Help &lt;<b>cmdlet</b>> -Full</td>
+	<td>技術的詳細を含む、コマンドレットのすべてのヘルプを取得します。</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -234,31 +234,30 @@ Azure サブスクリプションを表示するには、次のように入力�
 
 コミュニティの情報を参照する場合は、以下の人気フォーラムもご覧ください。
 
-- [MSDN 上の Azure フォーラム]( http://go.microsoft.com/fwlink/p/?LinkId=320212)
-- [Stackoverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
+- [MSDN 上の Azure フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=320212)
+- [StackOverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
 
 
-## <a id="Resources"></a>その他のリソース##
+## <a id="Resources"></a>その他のリソース ##
 
 Azure や Windows PowerShell の使用方法を学習するためのリソースもご利用いただけます。
 
-- Azure Storage コンポーネントにアクセスする方法の詳細については、[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md).に関するページを参照してください。
+- Azure Storage コンポーネントにアクセスする方法の詳細については、[Azure Storage での Azure PowerShell の使用に関するページ](storage-powershell-guide-full.md)を参照してください。
 
-- コマンドレットについてのフィードバック、問題の報告、ソース コードの閲覧をする場合は、[Azure PowerShell のコード リポジトリ](https://github.com/WindowsAzure/azure-sdk-tools)を参照してください。
+- コマンドレットについてのフィードバックや問題の報告をする場合や、ソース コードを閲覧する場合は、[Azure PowerShell のコード リポジトリ](https://github.com/WindowsAzure/azure-sdk-tools)を参照してください。
 
-- Windows PowerShell コマンド ラインとスクリプト環境については、[TechNet スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=320211)を参照してください。
+- Windows PowerShell コマンド ラインおよびスクリプト環境については、[TechNet スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=320211)を参照してください。
 
-- Windows PowerShell のインストール、学習、使用、カスタマイズについては、[Windows PowerShell を使用したスクリプト作成](http://go.microsoft.com/fwlink/p/?LinkId=320210)に関するページを参照してください。
+- Windows PowerShell のインストール、学習、使用、カスタマイズについては、「[Windows PowerShell](http://go.microsoft.com/fwlink/p/?LinkId=320210)」を参照してください。
 
-- Windows PowerShell スクリプトの説明と実行方法については、[スクリプトの実行](http://go.microsoft.com/fwlink/p/?LinkId=320627)に関するページを参照してください。スクリプトの作成、スクリプトを実行するためのコンピューターの構成に関する基本情報を説明しています。
+- Windows PowerShell のスクリプトの説明および使用方法については、「[スクリプトのサポート](http://go.microsoft.com/fwlink/p/?LinkId=320627)」を参照してください。スクリプトの作成、スクリプトを実行するためのコンピューターの構成に関する基本情報を説明しています。
 
-- Azure AD のコマンドレットの詳細については、「[Windows PowerShell による Azure AD の管理](http://go.microsoft.com/fwlink/p/?LinkId=320628)」を参照してください。
-
-
+- Azure AD のコマンドレットについては、「[Windows PowerShell を使用して Azure AD を管理する](http://go.microsoft.com/fwlink/p/?LinkId=320628)」を参照してください。
 
 
 
-  [Microsoft Online Services カスタマー ポータル]: https://mocp.microsoftonline.com/site/default.aspx
 
 
-<!--HONumber=52-->
+  [Microsoft Online Services Customer Portal]: https://mocp.microsoftonline.com/site/default.aspx
+
+<!---HONumber=July15_HO1-->

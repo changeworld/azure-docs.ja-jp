@@ -58,4 +58,4 @@ Azure Libraries for Java は、[Apache License Version 2.0][license] に準拠�
 [license]: http://www.apache.org/licenses/LICENSE-2.0.html
 [zip-download]: http://go.microsoft.com/fwlink/?LinkId=253887
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure Blob ストレージ  との間のデータの移動" 
-	description="Azure Blob ストレージ  との間のデータの移動" 
-	services="machine-learning" 
+	pageTitle="Azure Blob ストレージとの間のデータの移動 | Microsoft Azure" 
+	description="Azure Blob ストレージとの間のデータの移動" 
+	services="machine-learning,storage" 
 	documentationCenter="" 
-	authors="sunliangms,sachouks" 
+	authors="msolhab" 
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -13,48 +13,46 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2015" 
-	ms.author="sunliangms,sachouks" />
+	ms.date="05/29/2015" 
+	ms.author="sunliangms;sachouks;mohabib;bradsev" />
 
 # Azure Blob ストレージとの間のデータの移動
 
-[クラウド データ サイエンスのサンプル シナリオ](http://azure.microsoft.com/documentation/articles/machine-learning-data-science-plan-sample-scenarios)の記事は、さまざまなデータ サイエンス ワークフローで必要なリソースを判断するのに役立ちます。Azure Blob ストレージとの間でデータを移動する必要がある場合、次の方法のいずれかを使用します。
+高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「[Azure Machine Learning での Advanced Analytics Process and Technology (ADAPT) のためのシナリオ](../machine-learning-data-science-plan-sample-scenarios.md)」が役立ちます。Azure Blob ストレージとの間でデータを移動する必要がある場合、次の方法のいずれかを使用します。
 
 - [Azure ストレージ エクスプローラーの使用](#explorer)
 - [AzCopy コマンド ライン ユーティリティの使用](#AzCopy)
 - [Python での Azure SDK の使用](#PythonSDK)
 
 
+> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-jp/services/data-factory/) を使用して、Azure BLOB ストレージからデータをダウンロードして公開済みの Azure Machine Learning Web サービスに渡し、予測分析の結果を受け取ってストレージにアップロードするパイプラインを作成してスケジュールできます。詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../data-factory/data-factory-create-predictive-pipelines.md)」を参照してください。
 
-> [AZURE.NOTE] Azure Blob ストレージの完全な概要については、「[Azure Blob の基礎](../storage-dotnet-how-to-use-blobs.md)」および  「[Azure Blob サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。 
+<para></para>
 
-データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。これを行うには、「[ストレージ アカウントの管理](../storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。このドキュメントは Azure Storage のアカウントと、対応するストレージ キーがあることを前提としています。
+> [AZURE.NOTE]Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+
+データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。この情報を取得する方法については、「[ストレージ アカウントの管理](../storage-create-storage-account.md)」の「方法: ストレージ アクセス キーの表示、コピーおよび再生成」を参照してください。このドキュメントは Azure Storage のアカウントと、対応するストレージ キーがあることを前提としています。
+
 
 <a id="explorer"></a>
 ## Azure ストレージ エクスプローラーの使用 
 
-Azure ストレージ エクスプローラーは、Azure Storage アカウント内のデータを検査および変更するための無料の Windows ベースのツールです。これは、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)からダウンロードできます。次の手順では、Azure ストレージ エクスプローラーを使用してデータをアップロード/ダウンロードする方法について説明します。 
+Azure ストレージ エクスプローラーは、Azure Storage アカウント内のデータを検査および変更するための無料の Windows ベースのツールです。これは、「[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)」からダウンロードできます。次の手順では、Azure ストレージ エクスプローラーを使用してデータをアップロード/ダウンロードする方法について説明します。
 
 1.  Azure ストレージ エクスプローラーの起動 
-2.  アクセスするストレージ アカウントが、Azure ストレージ エクスプローラーに追加されていない場合は、[アカウントの追加] ボタンをクリックしてアカウントを追加します。既に追加されている場合は、「--ストレージ アカウントの選択--」ドロップダウンから、アカウントを選択します。  
-![Create workspace][1]
-<br>
-3. ストレージ アカウント名とストレージ アカウント キーを入力して、[ストレージ アカウントの追加] をクリックします。複数のストレージ アカウントを追加できます。その場合、各アカウントがタブに表示されます。このストレージ アカウント下のコンテナーは、左側のパネルに表示されます。コンテナーを選択すると、右側のパネルにコンテナー内の BLOB が表示されます。  
-![Create workspace][2]
-<br>
-![Create workspace][3]
-<br>
+2.  アクセスするストレージ アカウントが、Azure ストレージ エクスプローラーに追加されていない場合は、[アカウントの追加] ボタンをクリックしてアカウントを追加します。既に追加されている場合は、[--ストレージ アカウントの選択--] ドロップダウンからアカウントを選択します。![Create workspace][1] <br>
+3. ストレージ アカウント名とストレージ アカウント キーを入力して、[ストレージ アカウントの追加] をクリックします。複数のストレージ アカウントを追加できます。その場合、各アカウントがタブに表示されます。このストレージ アカウント下のコンテナーは、左側のパネルに表示されます。コンテナーを選択すると、右側のパネルにコンテナー内の BLOB が表示されます。![Create workspace][2] <br> ![Create workspace][3] <br>
 4. データをアップロードするには、[アップロード] ボタンをクリックします。アップロードする 1 つまたは複数のファイルをファイル システムから選択し、[開く] をクリックしてファイルのアップロードを開始します。
 5. 対応するコンテナー内の BLOB を選択し、[ダウンロード] ボタンをクリックして、データをダウンロードします。
 
 <a id="AzCopy"></a>
 ## AzCopy の使用
 
-AzCopy は、データをアップロードおよびダウンロードするためのコマンド ライン ユーティリティです。 
+AzCopy は、データをアップロードおよびダウンロードするためのコマンド ライン ユーティリティです。
 
-**警告** クラウド データ サイエンス プロセスで既に設定されている VM とは異なるマシンを使用している場合、次のインストール手順を使用して、AzCopy をインストールしてください。[AzCopy のダウンロードとインストール](../storage-use-azcopy.md#install).
+**警告:** 高度な分析プロセスで既に設定されている VM とは異なるマシンを使用している場合は、「[AzCopy のダウンロードとインストール](../storage-use-azcopy.md#install)」のインストール手順を使用して、AzCopy をインストールしてください。
 
-####BLOB との間でのファイルのアップロード/ダウンロードの例:
+###BLOB との間でのファイルのアップロード/ダウンロードの例:
 
 	# Uploading from local file system
 	AzCopy /Source:<your_local_directory> /Dest: https://<your_account_name>.blob.core.windows.net/<your_container_name> /DestKey:<your_account_key> /S 
@@ -72,10 +70,7 @@ AzCopy は、データをアップロードおよびダウンロードするた�
 	<your_local_directory>: directory of local file system where files to be uploaded from or the directory of local file system files to be downloaded to
 	<file_pattern>: pattern of file names to be transferred. The standard wildcards are supported
 
-> [AZURE.TIP]   
-> 1.ファイルをアップロードする場合、/S を指定するとファイルを再帰的にアップロードします。このパラメーターを指定しなかった場合、サブディレクトリ内のファイルは 1 つもアップロードされません。  
-> 2.ファイルをダウンロードする場合、/S を指定すると、指定したディレクトリとそのサブディレクトリ内のすべてのファイル、または指定されたディレクトリとそのサブディレクトリ内の指定したパターンと一致するすべてのファイルがダウンロードされるまで、コンテナーを再帰的に検索します。  
-> 3./Source パラメーターを使用して、ダウンロードする特定の BLOB ファイルを指定することはできません。特定のファイルをダウンロードするには、/Pattern パラメーターを使用して、ダウンロードする BLOB ファイル名を指定します。/S パラメーターは、AzCopy でファイル名パターンを再帰的に検索する場合に使用できます。パターンのパラメーターを指定しなかった場合、AzCopy はそのディレクトリ内のすべてのファイルをダウンロードします。 
+> [AZURE.TIP]1.ファイルをアップロードする場合、/S を指定するとファイルを再帰的にアップロードします。このパラメーターを指定しなかった場合、サブディレクトリ内のファイルは 1 つもアップロードされません。2.ファイルをダウンロードする場合、/S を指定すると、指定したディレクトリとそのサブディレクトリ内のすべてのファイル、または指定されたディレクトリとそのサブディレクトリ内の指定したパターンと一致するすべてのファイルがダウンロードされるまで、コンテナーを再帰的に検索します。3./Source パラメーターを使用して、ダウンロードする特定の BLOB ファイルを指定することはできません。特定のファイルをダウンロードするには、ダウンロードする BLOB ファイル名を /Pattern パラメーターを使用して指定します。/S パラメーターは、AzCopy にファイル名のパターンを再帰的に検索させるために使用できます。パターンのパラメーターを指定しなかった場合、AzCopy はそのディレクトリ内のすべてのファイルをダウンロードします。
 
 AzCopy の使用方法の詳細については、「[AzCopy コマンド ライン ユーティリティの概要](../storage-use-azcopy.md#install)」を参照してください。
 
@@ -91,11 +86,12 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 - コンテナー内の BLOB を一覧表示する
 - BLOB を削除する
 
-このセクションでは、BLOB を一覧表示、アップロード、およびダウンロードする方法について説明します。Python API の使用方法の詳細については、「[Python から BLOB ストレージ サービスを使用する方法](../storage-python-how-to-use-blob-storage.md)」を参照してください。 
+このセクションでは、BLOB を一覧表示、アップロード、およびダウンロードする方法について説明します。Python API の使用方法の詳細については、「[Python から BLOB ストレージ サービスを使用する方法](../storage-python-how-to-use-blob-storage.md)」を参照してください。
 
-> [AZURE.NOTE] クラウド データ サイエンス プロセスで既に設定されている VM とは異なるマシンを使用している場合、次のサンプル コードを使用する前に [Python Azure SDK](../python-how-to-install.md) をインストールする必要があります。
+> [AZURE.NOTE]高度な分析プロセスで既に設定されている VM とは異なるマシンを使用している場合、次のサンプル コードを使用する前に [Python Azure SDK](../python-how-to-install.md) をインストールする必要があります。
 
-###BLOB へのデータのアップロード
+### BLOB へのデータのアップロード
+
 プログラム的に Azure ストレージにアクセスするためのすべての Python コードの先頭付近に、次のスニペットを追加します。
 
 	from azure.storage import BlobService
@@ -140,21 +136,17 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 	    except:
 	        print "something wrong happened when uploading the data %s"%blob_name
 
-###BLOB からのデータのダウンロード
+### BLOB からのデータのダウンロード
 
-BLOB からデータをダウンロードするには、次のメソッドを使用します。
-1. get_blob_to_path
-2. get_blob_to_file
-3. get_blob_to_bytes
-4. get_blob_to_text 
+BLOB からデータをダウンロードするには、次のメソッドを使用します。 1. get_blob_to_path 2. get_blob_to_file 3. get_blob_to_bytes 4. get_blob_to_text
 
-これらのメソッドは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行します。 
+これらのメソッドは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行します。
 
-次のサンプル コードでは、コンテナー内の BLOB の内容をローカル ファイルにダウンロードします。 
+次のサンプル コードでは、コンテナー内の BLOB の内容をローカル ファイルにダウンロードします。
 
 	blob_service.get_blob_to_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
-次のサンプル コードでは、コンテナーからすべての BLOB をダウンロードします。list_blobs を使用して、コンテナーで使用可能な BLOB の一覧を取得し、それらをローカル ディレクトリにダウンロードします。 
+次のサンプル コードでは、コンテナーからすべての BLOB をダウンロードします。list_blobs を使用して、コンテナーで使用可能な BLOB の一覧を取得し、それらをローカル ディレクトリにダウンロードします。
 
 	from azure.storage import BlobService
 	from os.path import join
@@ -181,5 +173,6 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 [1]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img1.png
 [2]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img2.png
 [3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO1-->

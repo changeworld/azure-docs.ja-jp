@@ -1,6 +1,6 @@
 
 <properties 
-    pageTitle="ハイブリッド コレクションの作成のトラブルシューティング"
+    pageTitle="RemoteApp ハイブリッド コレクション作成のトラブルシューティング"
     description="RemoteApp のハイブリッド コレクション作成でエラーが発生したときのトラブルシューティング方法について説明します。" 
     services="remoteapp" 
     solutions="" documentationCenter="" 
@@ -9,51 +9,78 @@
 
 <tags 
     ms.service="remoteapp" 
-    ms.workload="tbd" 
+    ms.workload="compute" 
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="02/20/2015" 
-    ms.author="vikbucha" />
+    ms.date="06/30/2015" 
+    ms.author="elizapo" />
 
 
 
-# ハイブリッド コレクションの作成のトラブルシューティング
+# Azure RemoteApp ハイブリッド コレクション作成のトラブルシューティング
 
-ハイブリッド コレクション作成時のエラーのトラブルシューティングを行う前に、ハイブリッド コレクションの作成方法を理解しておくことが有用です。ハイブリッド コレクションでは、RemoteApp インスタンスのドメインへの参加が必要です。これは、コレクションの作成時に行います。コレクションの作成プロセスが開始されると、アップロードしたテンプレート イメージのコピーが VNET 内に作成され、VNET 作成時に指定された DNS IP レコードによって解決されたドメインへのサイト間 VPN トンネルを使用してドメインに参加します。
+ハイブリッド コレクション では、Azure クラウドにホストされ、データはクラウドに格納されますが、ユーザーはローカル ネットワークに格納されたデータとリソースにアクセスすることもできます。ユーザーは、Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。既存の Azure 仮想ネットワークを使用するハイブリッド コレクションをデプロイすることも、新しい仮想ネットワークを作成することもできます。今後、予測される Azure RemoteApp の成長に十分な CIDR 範囲で仮想ネットワーク サブネットを作成または使用することが推奨されます。
 
-Azure 管理ポータルでの一般的なエラー:
+コレクションをまだ作成していませんか。 手順については、「[ハイブリッド コレクションの作成](remoteapp-create-hybrid-deployment.md)」を参照してください。
 
-	DNS server could not be reached
+コレクションの作成で問題が発生した場合、あるいはコレクションが予想どおりに動作しない場合、次の情報を確認してください。
 
-	Could not join the domain. Unable to reach the domain.
+## VNET で強制トンネリングを使用していますか。 ##
+現在のところ、RemoteApp は強制トンネリングを有効にした VNET に対応していません。この機能を使用する必要がある場合は、RemoteApp チームにサポートを要求してください。
 
-上のエラーのいずれかが表示される場合は、次のことを確認してください。
+要求が承認されたら、Azure RemoteApp に選択したサブネットとサブネットの VM で次のポートが開いていることを確認します。サブネットの VM はネットワーク セキュリティ グループに関するセクションで説明した URL にもアクセスできなければなりません。
 
-- DNS IP 構成が有効であることの確認
-- DNS IP レコードが、パブリック IP レコードであるか、または VNET 作成時に指定した "ローカル アドレス空間" の一部であることの確認
-- VNET トンネルがアクティブまたは接続状態であることの確認 
-- VPN 接続のオンプレミス側がネットワーク トラフィックをブロックしていないことを確認します。これは、ローカルの VPN デバイスかソフトウェアのログで確認できます。
-- コレクションの作成時に指定したドメインが稼働していることを確認します。
+送信: TCP: 443、TCP: 10101-10175
 
-	ProvisioningTimeout
+## VNET にはネットワーク セキュリティ グループが定義されていますか。 ##
+コレクションに使用しているサブネットでネットワーク セキュリティ グループを定義している場合、サブネット内から次の URL にアクセスできることを確認します。
 
+	https://management.remoteapp.windowsazure.com  
+	https://opsapi.mohoro.com  
+	https://telemetry.remoteapp.windowsazure.com  
+	https://*.remoteapp.windowsazure.com  
+	https://login.windows.net (if you have Active Directory)  
+	https://login.microsoftonline.com  
+	Azure storage *.remoteapp.windowsazure.com  
+	*.core.windows.net  
+	https://www.remoteapp.windowsazure.com  
+	https://www.remoteapp.windowsazure.com  
 
-このエラーが表示される場合は、次のことを確認してください。
+仮想ネットワーク サブネットで次のポートを開きます。
 
-- VPN 接続のオンプレミス側がネットワーク トラフィックをブロックしていないことを確認します。これは、ローカルの VPN デバイスかソフトウェアのログで確認できます。
-- アップロードした RemoteApp テンプレート イメージが適切に sysprep されていることを確認します。RemoteApp イメージの要件は、ここで確認することができます: http://azure.microsoft.com/documentation/articles/remoteapp-create-custom-image/ 
-- アップロードしたテンプレート イメージを使用して VM を作成し、(a) ローカルの Hyper-V サーバーと (b) Azure サブスクリプションでの Azure IAAS VM の作成のいずれでも問題なく起動して実行できることを確認します。VM の作成に失敗するか VM が起動しない場合は、通常はテンプレート イメージが適切に準備されていなくて修正が必要であることを示します。
+受信 - TCP: 3030、TCP: 443 送信 - TCP: 443
 
-	DomainJoinFailed_InvalidUserNameOrPassword
+厳密な制御のために、サブネットに配置した VM にネットワーク セキュリティ グループを追加できます。
 
-	DomainJoinFailed_InvalidParameter
+## 独自の DNS サーバーを使用していますか。 そのサーバーには VNET サブネットからアクセスできますか。 ##
+ハイブリッド コレクションには、独自の DNS サーバーを使用します。それは仮想ネットワークの構築時にネットワーク構成スキーマに指定するか、管理ポータルで指定します。DNS サーバーは (ラウンド ロビン方式ではなく) フェールオーバー方式で指定されている順序で使用されます。
 
-上のエラーのいずれかが表示される場合は、次のことを確認してください。
+コレクションの DNS サーバーにはそのコレクションに指定した VNET サブネットからアクセスできて利用できることを確認します。
 
-- ドメイン参加のために入力した資格情報が有効であることの確認
-- ドメイン参加の資格情報が正しいか、ドメイン参加のための適切なアクセス許可があることの確認
-- 組織単位 (OU) が適切にフォーマットされていて、Active Directory 内に存在していることを確認します。 
+次に例を示します。
 
+	<VirtualNetworkConfiguration>
+    <Dns>
+      <DnsServers>
+        <DnsServer name="" IPAddress=""/>
+      </DnsServers>
+    </Dns>
+	</VirtualNetworkConfiguration>
 
-<!--HONumber=52--> 
+![DNS を定義する](./media/remoteapp-hybridtrouble/dnsvpn.png)
+
+詳細については、「[独自の DNS サーバーを使用した名前解決](https://msdn.microsoft.com/library/azure/jj156088.aspx#bkmk_BYODNS)」を参照してください。
+
+## コレクションで Active Directory ドメイン コント ローラーを使用していますか。 ##
+現在のところ、1 つの Active Directory ドメインだけを Azure RemoteApp に関連付けることができます。ハイブリッド コレクションは、Windows Server Active Directory の展開から DirSync ツールを使用して同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。内部設置型ドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。
+
+詳細については、「[Azure RemoteApp の Active Directory を構成する](remoteapp-ad.md)」を参照してください。
+
+入力したドメイン詳細が有効であることと、Azure Remote App に使用されるサブネットで作成された VM からドメイン コントローラーに到達できることを確認します。また、入力したサービス アカウント資格情報で指定ドメインにコンピューターを追加できることと、指定の AD 名を VNET の指定 DNS から解決できることを確認します。
+
+## コレクションを作成したとき、どのようなドメイン名を指定しましたか。 ##
+
+作成または追加したドメイン名は (Azure AD ドメイン名ではなく) 内部ドメイン名であり、解決可能な DNS 形式 (contoso.local) になっている必要があります。たとえば、Active Directory 内部名 (contoso.local) と Active Directory UPN (contoso.com) が与えられている場合、コレクションの作成時にその内部名を使用する必要があります。
+
+<!---HONumber=July15_HO1-->

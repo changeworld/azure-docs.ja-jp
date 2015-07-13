@@ -62,7 +62,7 @@
 LoadBalancerDistribution は、2 組 (ソース IP と接続先 IP) の負荷分散の場合は sourceIP、3 組 (ソース IP、接続先 IP、プロトコル) の負荷分散の場合は sourceIPProtocol に設定できます。設定しない場合は、既定の動作 (5 組の負荷分散) を使用します。
 
 ### エンドポイント ロード バランサー分散モード構成を取得する
-    PS C:> Get-AzureVM â€“ServiceName "mySvc" -Name "MyVM1" | Get-AzureEndpoint
+    PS C:\> Get-AzureVM â€“ServiceName "mySvc" -Name "MyVM1" | Get-AzureEndpoint
     
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -96,7 +96,7 @@ LoadBalancerDistribution 要素が存在しない場合、Azure ロード バラ
 
 Azure SDK for .NET を使用してクラウド サービスをアップデートできます。
 
-クラウド サービスのエンドポイントの設定は、.csdef で行われます。ロード バランサー分散モードをアップデートしてクラウド サービスを展開するには、デプロイのアップグレードが必要です。
+クラウド サービスのエンドポイントの設定は、.csdef で行われます。ロード バランサー分散モードをアップデートしてクラウド サービスをデプロイするには、デプロイのアップグレードが必要です。
 
 エンドポイント設定の .csdef の変更例は次の通りです。
 
@@ -120,7 +120,7 @@ Azure SDK for .NET を使用してクラウド サービスをアップデート
 
 ロード バランサーの分散は、サービス管理 API を使って構成できます。x-ms-version ヘッダーが 2014-09-01 以降のバージョンで設定されていることをご確認ください。
 
-### デプロイメントで指定した負荷分散セットの構成をアップデートします。
+### デプロイで指定した負荷分散セットの構成をアップデートします。
 
 #### 要求
 
@@ -161,4 +161,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     Date: Thu, 16 Oct 2014 22:49:21 GMT
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

@@ -1,11 +1,10 @@
 <properties 
-	pageTitle="SQL パーティション テーブルを使用した並列の一括データ インポート | Azure" 
+	pageTitle="SQL パーティション テーブルを使用した並列の一括データ インポート | Microsoft Azure" 
 	description="SQL パーティション テーブルを使用した並列の一括データ インポート" 
-	metaKeywords="" 
 	services="machine-learning" 
 	solutions="" 
 	documentationCenter="" 
-	authors="msolhab" 
+	authors="msolhab"
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -15,24 +14,25 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2015" 
-	ms.author="msolhab" /> 
+	ms.date="05/29/2015" 
+	ms.author="msolhab" />
 
 # SQL パーティション テーブルを使用した並列の一括データ インポート
 
-SQL データベースへのビッグ データの読み込み/転送の場合、パーティション テーブルとビューを使用することによって、SQL DB と後続のクエリへのデータのインポートを向上させることができます。このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。
+SQL データベースへのビッグ データの読み込み/転送では、_パーティション テーブルとビュー_を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。
+
 
 ## 新しいデータベースとファイル グループのセットの作成
 
 - [新しいデータベースを作成する](https://technet.microsoft.com/library/ms176061.aspx) (存在しない場合)
 - パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加する
-- 注:新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます
+- 注: 新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
 
 - 1 つまたは複数のファイル (必要に応じて) を各データベース ファイル グループに追加する
 
- > [AZURE.NOTE] このパーティションのデータを格納するターゲットのファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
+ >[AZURE.NOTE]このパーティションのデータを格納するターゲットのファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
  
-次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。既定のファイルの場所の詳細については、「[SQL Server の既定インスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
+次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -67,7 +67,7 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
 	    	'20130501', '20130601', '20130701', '20130801',
 	    	'20130901', '20131001', '20131101', '20131201' )
 
-- パーティション関数の各パーティションの範囲を物理ファイル グループにマップする[パーティション構成を作成します](https://msdn.microsoft.com/library/ms179854.aspx)。たとえば、以下のようにします。
+- パーティション関数の各パーティションの範囲を物理ファイル グループにマップする[パーティション スキームを作成します](https://msdn.microsoft.com/library/ms179854.aspx)。たとえば、以下のようにします。
 
 	    CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
 	    PARTITION <DatetimeFieldPFN> TO (
@@ -75,7 +75,7 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
 	    <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
 	    <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
 
-- ヒント:関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
+- ヒント: 関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
 
 	    SELECT psch.name as PartitionScheme,
 	    	prng.value AS ParitionValue,
@@ -85,18 +85,18 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
 	    INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
 	    WHERE pfun.name = <DatetimeFieldPFN>
 
-- データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション構成および制約フィールドを指定します。たとえば、以下のようにします。
+- データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション スキーマと制約フィールドを指定します。たとえば、以下のようにします。
 
 	    CREATE TABLE <table_name> ( [include schema definition here] )
 	    ON <TablePScheme>(<partition_field>)
 
-- 詳細については、「[パーティション分割されたテーブルとインデックスを作成する](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
+- 詳細については、「[パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
 
 ## 個別のパーティション テーブルごとにデータを一括インポートする
 
-- BCP、BULK INSERT、または [SQL Server の移行ウィザード](http://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。ここで示されている例では BCP による方法を使用します。
+- BCP、BULK INSERT、[SQL Server 移行ウィザード](http://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。ここで示されている例では BCP による方法を使用します。
 
-- [データベースを変更して](https://msdn.microsoft.com/library/bb522682.aspx)、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
+- [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
 
 	    ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
 
@@ -169,7 +169,7 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
 
 - 複数のテーブルからモデリング用のデータを抽出する場合、結合のパフォーマンスを向上させるには、結合キーのインデックスを作成します。
 
-- パーティションごとに同じファイル グループをターゲットとする[インデックスを作成します](https://technet.microsoft.com/library/ms188783.aspx) (クラスター化または非クラスター化)。たとえば、以下のようにします。
+- パーティションごとに同じファイル グループをターゲットとする (クラスター化または非クラスター化された) [インデックスを作成](https://technet.microsoft.com/library/ms188783.aspx)します。たとえば、以下のようにします。
 
 	    CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
 	    ON <TablePScheme>(<partition)field>)
@@ -178,10 +178,11 @@ SQL データベースへのビッグ データの読み込み/転送の場合�
 	    CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
 	    ON <TablePScheme>(<partition)field>)
 
- > [AZURE.NOTE] データを一括インポートする前に、インデックスを作成することもできます。一括インポートする前にインデックスを作成すると、データの読み込みが低下します。
+ >[AZURE.NOTE]データを一括インポートする前に、インデックスを作成することもできます。一括インポートする前にインデックスを作成すると、データの読み込みが低下します。
 
-### 実行中の Azure データ サイエンスの例
+### 実行中の Advanced Analytics Process and Technology の例
 
-公開されているデータセットを使用した Azure のデータ サイエンス プロセスのエンドツーエンドのチュートリアルの例については、「[実行中の Azure データ サイエンス プロセス](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+Advanced Analytics Process and Technology (ADAPT) とパブリック データセットを使用した完全なチュートリアルの例については、「[実行中の Advanced Analytics Process and Technology: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO1-->

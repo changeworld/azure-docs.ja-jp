@@ -13,37 +13,29 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="02/03/2015" 
+	ms.date="06/03/2015" 
 	ms.author="ricksal"/>
 
 
 # モバイル サービス向け Android クライアント ライブラリの使用方法
 
-<div class="dev-center-tutorial-selector sublanding"> 
-  <a href="/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android" class="current">Android</a><a href="/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
-</div>
-
+[AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
 このガイドでは、Azure のモバイル サービス向け Android クライアントを使用して一般的なシナリオを実行する方法について説明します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理、クライアントのカスタマイズなどです。
 
-モバイル サービスを初めて使用する場合は、最初に「[モバイル サービスの使用][Get started with Mobile Services]」を完了してください。このチュートリアルを完了すると、Android Studio がインストールされ、アカウントの構成、初めてのモバイル サービスの作成、Mobile Services SDK のインストールに役立ちます。Mobile Services SDK は、Android 2.2 以降をサポートしていますが、Android 4.2 以降にビルドすることをお勧めします。
+Mobile Services を初めて使用する場合は、クイックスタート チュートリアル「[Mobile Services を使い始める]」を先に完了しておく必要があります。このチュートリアルを完了すると、Android Studio がインストールされ、アカウントの構成、初めてのモバイル サービスの作成、Mobile Services SDK のインストールに役立ちます。Mobile Services SDK は、Android 2.2 以降をサポートしていますが、Android 4.2 以降にビルドすることをお勧めします。
 
-
-
+[ここ](http://go.microsoft.com/fwlink/p/?LinkId=298735)で、Android クライアント ライブラリの Javadoc API リファレンスを検索できます。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
-
-<h2><a name="setup"></a>セットアップと前提条件</h2>
+##<a name="setup"></a>セットアップと前提条件
 
 前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成](http://go.microsoft.com/fwlink/p/?LinkId=298592)」を参照してください。このトピックで使用するコードでは、次の列を含むテーブル *ToDoItem* を想定しています。
 
-<ul>
-<li>id</li>
-<li>text</li>
-<li>完了</li>
-
-</ul>
+- id
+- text
+- 完了
 
 これに対応する型指定されたクライアント側オブジェクトを次に示します。
 
@@ -55,22 +47,21 @@
 	
 動的スキーマが有効な場合、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure のモバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/p/?LinkId=296271)」を参照してください。
 
-<h2><a name="create-client"></a>方法: Mobile Services クライアントを作成する</h2>
-
+##<a name="create-client"></a>方法: Mobile Services クライアントを作成する
 次のコードは、モバイル サービスにアクセスするために使用される [MobileServiceClient](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) オブジェクトを生成します。このコードは、**MAIN** アクションと **LAUNCHER** カテゴリとして *AndroidManifest.xml* で指定された Activity クラスの `onCreate` メソッドにあります。
 
-			MobileServiceClient mClient = new MobileServiceClient(
-					"MobileServiceUrl", // Replace with the above Site URL
-					"AppKey", 			// replace with the Application Key 
-					this)
+		MobileServiceClient mClient = new MobileServiceClient(
+				"MobileServiceUrl", // Replace with the above Site URL
+				"AppKey", 			// replace with the Application Key 
+				this)
 
 前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure 管理ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
 
-<h2><a name="instantiating"></a>方法: テーブル参照を作成する</h2>
+##<a name="instantiating"></a>方法: テーブル参照を作成する
 
-Java は厳密に型指定された言語であるため、モバイル サービスのデータを照会または変更する最も簡単な方法は*型指定されたプログラミング モデル*を使用する方法です (後で*型指定されない*モデルについて説明します)。このモデルは、クライアントとモバイル サービスの間でデータを送信するときに <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用して JSON にシームレスなシリアル化と非シリアル化を提供します。開発者は何も作業する必要がありません。フレームワークによってすべてが処理されます。
+Java は厳密に型指定された言語であるため、モバイル サービスのデータを照会または変更する最も簡単な方法は*型指定されたプログラミング モデル*を使用する方法です (後で*型指定されない*モデルについて説明します)。このモデルは、クライアントとモバイル サービスの間でデータを送信するときに [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) ライブラリを使用して JSON にシームレスなシリアル化と非シリアル化を提供します。開発者は何も作業する必要がありません。フレームワークによってすべてが処理されます。
 
-データを照会または変更するためには、最初に [MobileServiceClient](http://go.microsoft.com/fwlink/p/?LinkId=296835) の **getTable** メソッドを呼び出して [**MobileServiceTable**](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) オブジェクトを作成します。ここでは、このメソッドの 2 つのオーバーロードに注目します。
+データを照会または変更するためには、最初に [**MobileServiceClient**](http://go.microsoft.com/fwlink/p/?LinkId=296835) の [getTable](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) メソッドを呼び出して **MobileServiceTable** オブジェクトを作成します。ここでは、このメソッドの 2 つのオーバーロードに注目します。
 
 	public class MobileServiceClient {
 	    public <E> MobileServiceTable<E> getTable(Class<E> clazz);
@@ -88,21 +79,18 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 		MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
- 
-
-
 ## <a name="api"></a>API の構造
 
 クライアント ライブラリのバージョン 2.0 以降、モバイル サービスのテーブル操作は、クエリや挿入、更新、削除の操作を含むメソッドなどのすべての非同期操作で、[Future](http://developer.android.com/reference/java/util/concurrent/Future.html) オブジェクトと [AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html) オブジェクトを使用します。これにより、複数の入れ子になったコールバックを処理しなくても (バックグラウンド スレッドで) 簡単に複数の操作を実行できます。
 
 
-<h2><a name="querying"></a>方法: モバイル サービスのデータを照会する</h2>
+##<a name="querying"></a>方法: モバイル サービスのデータを照会する
 
 このセクションでは、モバイル サービスにクエリを発行する方法について説明します。サブセクションでは、並べ替え、フィルター処理、ページングなど、さまざまな処理について説明します。最後に、これらの操作を連結する方法について説明します。
 
 ### <a name="showAll"></a>方法: テーブルからすべての項目を返す
 
-次のコードは、*ToDoItem* テーブル内のすべての項目を返します。この項目をアダプターに追加して、UI に表示します。このコードは、[Mobile Services クイック スタート][Get started with Mobile Services]のコードに似ています。
+次のコードは、*ToDoItem* テーブル内のすべての項目を返します。この項目をアダプターに追加して、UI に表示します。このコードは、クイックスタート チュートリアル「[Mobile Services を使い始める]」で説明されているコードに似ています。
 
 		new AsyncTask<Void, Void, Void>() {
 
@@ -241,7 +229,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 メソッドを連結する場合の主な要件として、*where* メソッドと述語を最初に記述する必要があります。それ以降、アプリケーションのニーズに最も合う順番で後続のメソッドを呼び出すことができます。
 
 
-<h2><a name="inserting"></a>方法: モバイル サービスにデータを挿入する</h2>
+##<a name="inserting"></a>方法: モバイル サービスにデータを挿入する
 
 次のコードは、テーブルに新しい行を挿入する方法を示しています。
 
@@ -311,132 +299,132 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 `id` の値は一意である必要があり、次のセット内の文字を含まないようにする必要があります。
 
 + 制御文字: [0x0000-0x001F] および [0x007F-0x009F]。詳細については、[ASCII 制御コード C0 および C1 に関するページ]を参照してください。
-+  印刷可能文字: **"** (0x0022)、**+** (0x002B)、**/** (0x002F)、**?** (0x003F)、**\** (0x005C)、**`** (0x0060)
++  印刷可能文字: **"** (0x0022)、**+** (0x002B)、**/** (0x002F)、**?** (0x003F)、**** (0x005C)、**`** (0x0060)
 +  ID "." および ".."
 
-また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[モバイル サービス テーブルの管理用コマンド]」を参照してください。
+また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「Mobile Services テーブルを管理するための CLI」を参照してください。
 
 
-<h2><a name="updating"></a>方法: モバイル サービスのデータを更新する</h2>
+##<a name="updating"></a>方法: モバイル サービスのデータを更新する
 
 次のコードは、テーブルのデータを更新する方法を示しています。この例では、*item* は、いくつかの変更が加えられた *ToDoItem* テーブルの行への参照です。次のメソッドは、テーブルと UI アダプターを更新します。
 
-		private void updateItem(final ToDoItem item) {
-		    if (mClient == null) {
-		        return;
-		    }
-		
-		    new AsyncTask<Void, Void, Void>() {
-		
-		        @Override
-		        protected Void doInBackground(Void... params) {
-		            try {
-		                mToDoTable.update(item).get();
-		                runOnUiThread(new Runnable() {
-		                    public void run() {
-		                        if (item.isComplete()) {
-		                            mAdapter.remove(item);
-		                        }
-		                        refreshItemsFromTable();
-		                    }
-		                });
-		            } catch (Exception exception) {
-		                createAndShowDialog(exception, "Error");
-		            }
-		            return null;
-		        }
-		    }.execute();
-{
+	private void updateItem(final ToDoItem item) {
+	    if (mClient == null) {
+	        return;
+	    }
+	
+	    new AsyncTask<Void, Void, Void>() {
+	
+	        @Override
+	        protected Void doInBackground(Void... params) {
+	            try {
+	                mToDoTable.update(item).get();
+	                runOnUiThread(new Runnable() {
+	                    public void run() {
+	                        if (item.isComplete()) {
+	                            mAdapter.remove(item);
+	                        }
+	                        refreshItemsFromTable();
+	                    }
+	                });
+	            } catch (Exception exception) {
+	                createAndShowDialog(exception, "Error");
+	            }
+	            return null;
+	        }
+	    }.execute();
+	}
 
-<h2><a name="deleting"></a>方法: モバイル サービスのデータを削除する</h2>
+##<a name="deleting"></a>方法: モバイル サービスのデータを削除する
 
 次のコードは、テーブルのデータを削除する方法を示しています。これは、UI で **[完了]** チェック ボックスがオンになっている ToDoItem テーブルから、既存の項目を削除します。
 
-		public void checkItem(final ToDoItem item) {
-			if (mClient == null) {
-				return;
-			}
-	
-			// Set the item as completed and update it in the table
-			item.setComplete(true);
-			
-			new AsyncTask<Void, Void, Void>() {
-	
-	            @Override
-	            protected Void doInBackground(Void... params) {
-	                try {
-	                    mToDoTable.delete(item);
-	                    runOnUiThread(new Runnable() {
-	                        public void run() {
-	                            if (item.isComplete()) {
-	                                mAdapter.remove(item);
-	                            }
-	                            refreshItemsFromTable();
-	                        }
-	                    });
-	                } catch (Exception exception) {
-	                    createAndShowDialog(exception, "Error");
-	                }
-	                return null;
-	            }
-	        }.execute();
+	public void checkItem(final ToDoItem item) {
+		if (mClient == null) {
+			return;
 		}
+
+		// Set the item as completed and update it in the table
+		item.setComplete(true);
+		
+		new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    mToDoTable.delete(item);
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            if (item.isComplete()) {
+                                mAdapter.remove(item);
+                            }
+                            refreshItemsFromTable();
+                        }
+                    });
+                } catch (Exception exception) {
+                    createAndShowDialog(exception, "Error");
+                }
+                return null;
+            }
+        }.execute();
+	}
 
 
 次のコードは、別の方法でこの操作を行う方法を示しています。このコードでは、削除する行の id フィールドの値 ("2FA404AB-E458-44CD-BC1B-3BC847EF0902" に等しいと想定) を指定して、ToDoItem テーブル内の既存の項目を削除します。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、使用している Azure Mobile Services ポータルにアクセスして、**[データ]** タブをクリックし、テストする ID をコピーします。
 
-	    public void deleteItem(View view) {
-	
-	        final String ID = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
-	        new AsyncTask<Void, Void, Void>() {
-	
-	            @Override
-	            protected Void doInBackground(Void... params) {
-	                try {
-	                    mToDoTable.delete(ID);
-	                    runOnUiThread(new Runnable() {
-	                        public void run() {
-	                            refreshItemsFromTable();
-	                        }
-	               });
-	                } catch (Exception exception) {
-	                    createAndShowDialog(exception, "Error");
-	                }
-	                return null;
-	            }
-	        }.execute();
-	    }
+    public void deleteItem(View view) {
 
-<h2><a name="lookup"></a>方法: 特定の項目を検索する</h2>
-一般的にクエリを使って特定の条件を満たした項目のコレクションを取得する代わりに、特定の項目を *id* で検索する必要がある場合があります。その方法を次のコードに示します (ここでは *id* = "0380BAFB-BCFF-443C-B7D5-30199F730335" と想定しています)。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、使用している Azure Mobile Services ポータルにアクセスして、**[データ]** タブをクリックし、テストする ID をコピーします。
+        final String ID = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
+        new AsyncTask<Void, Void, Void>() {
 
-	    /**
-	     * Lookup specific item from table and UI
-	     */
-	    public void lookup(View view) {
-	
-	        final String ID = "0380BAFB-BCFF-443C-B7D5-30199F730335";
-	        new AsyncTask<Void, Void, Void>() {
-	
-	            @Override
-	            protected Void doInBackground(Void... params) {
-	                try {
-	                    final ToDoItem result = mToDoTable.lookUp(ID).get();
-	                    runOnUiThread(new Runnable() {
-	                        public void run() {
-	                            mAdapter.clear();
-	                            mAdapter.add(result);
-	                        }
-	               });
-	                } catch (Exception exception) {
-	                    createAndShowDialog(exception, "Error");
-	                }
-	                return null;
-	            }
-	        }.execute();
-	    }
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    mToDoTable.delete(ID);
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            refreshItemsFromTable();
+                        }
+               });
+                } catch (Exception exception) {
+                    createAndShowDialog(exception, "Error");
+                }
+                return null;
+            }
+        }.execute();
+    }
 
-<h2><a name="untyped"></a>方法: 型指定のないデータを処理する</h2>
+##<a name="lookup"></a>方法: 特定の項目を検索する
+一般的にクエリを使って特定の条件を満たした項目のコレクションを取得する代わりに、特定の項目を *id* で検索する必要がある場合があります。その方法を次のコードに示します (ここでは id 値として `0380BAFB-BCFF-443C-B7D5-30199F730335` を想定しています)。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、使用している Azure Mobile Services ポータルにアクセスして、**[データ]** タブをクリックし、テストする ID をコピーします。
+
+    /**
+     * Lookup specific item from table and UI
+     */
+    public void lookup(View view) {
+
+        final String ID = "0380BAFB-BCFF-443C-B7D5-30199F730335";
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    final ToDoItem result = mToDoTable.lookUp(ID).get();
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            mAdapter.clear();
+                            mAdapter.add(result);
+                        }
+               });
+                } catch (Exception exception) {
+                    createAndShowDialog(exception, "Error");
+                }
+                return null;
+            }
+        }.execute();
+    }
+
+##<a name="untyped"></a>方法: 型指定のないデータを処理する
 
 型指定のないプログラミング モデルでは、JSON シリアル化を的確に制御できます。このモデルを使用するシナリオとしては、モバイル サービス テーブルに大量の列が含まれ、参照する必要があるのはそのいくつかのみである場合などが想定されます。型指定されたモデルを使用するには、モバイル サービス テーブルのすべての列をデータ クラスに定義する必要があります。一方、型指定のないモデルでは、使用する列を定義するだけで済みます。
 
@@ -511,44 +499,44 @@ ID を使用してインスタンスを直接削除することもできます�
 
 ### <a name="json_get"></a>方法: 型指定のないテーブルからすべての行を返す
 
-次のコードは、テーブル全体を取得する方法を示しています。Json テーブルを使用しているため、テーブルの列の一部のみを選択的に取得できます。
+次のコードは、テーブル全体を取得する方法を示しています。JSON テーブルを使用しているため、テーブルの列の一部のみを選択的に取得できます。
 
-	    public void showAllUntyped(View view) {
-	        new AsyncTask<Void, Void, Void>() {
-	            @Override
-	            protected Void doInBackground(Void... params) {
-	                try {
-	                    final JsonElement result = mJsonToDoTable.execute().get();
-	                    final JsonArray results = result.getAsJsonArray();
-	                    runOnUiThread(new Runnable() {
-	
-	                        @Override
-	                        public void run() {
-	                            mAdapter.clear();
-	                            for (JsonElement item : results) {
-	                                String ID = item.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
-	                                String mText = item.getAsJsonObject().getAsJsonPrimitive("text").getAsString();
-	                                Boolean mComplete = item.getAsJsonObject().getAsJsonPrimitive("complete").getAsBoolean();
-	                                ToDoItem mToDoItem = new ToDoItem();
-	                                mToDoItem.setId(ID);
-	                                mToDoItem.setText(mText);
-	                                mToDoItem.setComplete(mComplete);
-	                                mAdapter.add(mToDoItem);
-	                            }
-	                        }
-	                    });
-	                } catch (Exception exception) {
-	                    createAndShowDialog(exception, "Error");
-	                }
-	                return null;
-	            }
-	        }.execute();
-	    }
+    public void showAllUntyped(View view) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    final JsonElement result = mJsonToDoTable.execute().get();
+                    final JsonArray results = result.getAsJsonArray();
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            mAdapter.clear();
+                            for (JsonElement item : results) {
+                                String ID = item.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
+                                String mText = item.getAsJsonObject().getAsJsonPrimitive("text").getAsString();
+                                Boolean mComplete = item.getAsJsonObject().getAsJsonPrimitive("complete").getAsBoolean();
+                                ToDoItem mToDoItem = new ToDoItem();
+                                mToDoItem.setId(ID);
+                                mToDoItem.setText(mText);
+                                mToDoItem.setComplete(mComplete);
+                                mAdapter.add(mToDoItem);
+                            }
+                        }
+                    });
+                } catch (Exception exception) {
+                    createAndShowDialog(exception, "Error");
+                }
+                return null;
+            }
+        }.execute();
+    }
 
 型指定されたプログラミング モデルで使用されたのと同じ名前を持つメソッドを連結して、フィルター処理、並べ替え、およびページングを行うことができます。
 
 
-<h2><a name="binding"></a>方法: データをユーザー インターフェイスにバインドする</h2>
+##<a name="binding"></a>方法: データをユーザー インターフェイスにバインドする
 
 データ バインドには、次の 3 つのコンポーネントが関係します。
 
@@ -566,27 +554,27 @@ ID を使用してインスタンスを直接削除することもできます�
  
 レイアウトは、XML コードの複数のスニペットで定義されます。既存のレイアウトがあり、次のコードがサーバーのデータを設定する **ListView** を表すと想定します。
 
-	    <ListView
-	        android:id="@+id/listViewToDo"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        tools:listitem="@layout/row_list_to_do" >
-	    </ListView>
+    <ListView
+        android:id="@+id/listViewToDo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/row_list_to_do" >
+    </ListView>
 	
 
 前のコードで、*listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。より複雑なレイアウトでは、表示する追加フィールドを指定することもできます。このコードは、*row_list_to_do.xml* ファイルに含まれています。
 
-		<?xml version="1.0" encoding="utf-8"?>
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
-		    android:orientation="horizontal">		    
-		    <CheckBox
-		        android:id="@+id/checkToDoItem"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/checkbox_text" />
-		</LinearLayout>
+	<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="horizontal">		    
+	    <CheckBox
+	        android:id="@+id/checkToDoItem"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/checkbox_text" />
+	</LinearLayout>
 		
 
 ### <a name="adapter"></a>方法: アダプターを定義する
@@ -595,87 +583,85 @@ ID を使用してインスタンスを直接削除することもできます�
 
 コードでは、*ArrayAdapter&lt;E&gt;* クラスの拡張である次のクラスを定義します。
 
-		public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
-
+	public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 
 アダプターの *getView* メソッドはオーバーライドする必要があります。その方法の 1 つを次のサンプル コードに示します。詳細はアプリケーションによって異なります。
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
-
+	
 		final ToDoItem currentItem = getItem(position);
-
+	
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
 			row = inflater.inflate(R.layout.row_list_to_do, parent, false);
 		}
-
+	
 		row.setTag(currentItem);
-
+	
 		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
 		checkBox.setText(currentItem.getText());
 		checkBox.setChecked(false);
 		checkBox.setEnabled(true);
-
+	
 		return row;
 	}
 
 次に示すように、このクラスのインスタンスを Activity 内で作成します。
 
-		ToDoItemAdapter mAdapter;
-		mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
+	ToDoItemAdapter mAdapter;
+	mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 
 ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレイアウトへの参照であることに注意してください。コンストラクターの呼び出しに続けて、次のコードを記述します。このコードは、最初に **ListView** への参照を取得します。次に、*setAdapter* を呼び出して、作成したアダプターを使用するようにそれ自体を構成します。
 
-		ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
-		listViewToDo.setAdapter(mAdapter);
+	ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
+	listViewToDo.setAdapter(mAdapter);
 
 
 ### <a name="use-adapter"></a>方法: アダプターを使用する
 
 これで、データ バインドを使用する準備が整いました。次のコードでは、モバイル サービス テーブルの項目を取得した後、アダプターをクリアしています。次に、アダプターの *add* メソッドを呼び出して、返された項目をアダプターに設定しています。
 
-	    public void showAll(View view) {
-	        new AsyncTask<Void, Void, Void>() {
-	            @Override
-	            protected Void doInBackground(Void... params) {
-	                try {
-	                    final MobileServiceList<ToDoItem> result = mToDoTable.execute().get();
-	                    runOnUiThread(new Runnable() {
-	
-	                        @Override
-	                        public void run() {
-	                            mAdapter.clear();
-	                            for (ToDoItem item : result) {
-	                                mAdapter.add(item);
-	                            }
-	                        }
-	                    });
-	                } catch (Exception exception) {
-	                    createAndShowDialog(exception, "Error");
-	                }
-	                return null;
-	            }
-	        }.execute();
-	    }
+    public void showAll(View view) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    final MobileServiceList<ToDoItem> result = mToDoTable.execute().get();
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            mAdapter.clear();
+                            for (ToDoItem item : result) {
+                                mAdapter.add(item);
+                            }
+                        }
+                    });
+                } catch (Exception exception) {
+                    createAndShowDialog(exception, "Error");
+                }
+                return null;
+            }
+        }.execute();
+    }
 
 *ToDoItem* テーブルを変更したときにその結果を表示するには、その都度アダプターを呼び出す必要があります。変更はレコード単位で加えられるため、操作の対象はコレクションではなく行になります。項目を挿入する場合は、アダプターの *add* メソッドを呼び出します。項目を削除する場合は、*remove* メソッドを呼び出します。
 
 
-<h2><a name="authentication"></a>方法: ユーザーを認証する</h2>
+##<a name="authentication"></a>方法: ユーザーを認証する
 
-モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
+モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、バックエンドで承認ルールを実装することもできます。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
 
 *サーバー* フローと*クライアント* フローという 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 アプリケーションで認証を有効にするには、次の 3 つの手順を実行する必要があります。
 
-<ol>
-<li>認証するアプリケーションをプロバイダーに登録し、モバイル サービスを構成する</li>
-<li>テーブルのアクセス許可を、認証されたユーザーのみに制限する</li>
-<li>アプリケーションに認証コードを追加する</li>
-</ol>
+- 認証するアプリケーションをプロバイダーに登録し、モバイル サービスを構成する
+- テーブルのアクセス許可を、認証されたユーザーのみに制限する
+- アプリケーションに認証コードを追加する
+
 
 モバイル サービスは、ユーザーを認証するために使用できる次の既存の ID プロバイダーをサポートしています。
 
@@ -705,27 +691,27 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 2. アクティビティ クラスの **onCreate** メソッドで、`MobileServiceClient` オブジェクトを作成するコードの後に、次のコード行を追加します。`MobileServiceClient` オブジェクトへの参照は *mClient* であると想定しています。
 	
-		    // Login using the Google provider.
-		    
-			ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
-	
-	    	Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
-	    		@Override
-	    		public void onFailure(Throwable exc) {
-	    			createAndShowDialog((Exception) exc, "Error");
-	    		}   		
-	    		@Override
-	    		public void onSuccess(MobileServiceUser user) {
-	    			createAndShowDialog(String.format(
-	                        "You are now logged in - %1$2s",
-	                        user.getUserId()), "Success");
-	    			createTable();	
-	    		}
-	    	}); 
+	    // Login using the Google provider.
+	    
+		ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
+
+    	Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
+    		@Override
+    		public void onFailure(Throwable exc) {
+    			createAndShowDialog((Exception) exc, "Error");
+    		}   		
+    		@Override
+    		public void onSuccess(MobileServiceUser user) {
+    			createAndShowDialog(String.format(
+                        "You are now logged in - %1$2s",
+                        user.getUserId()), "Success");
+    			createTable();	
+    		}
+    	}); 
 
     このコードでは、Google ログインを使用してユーザーを認証します。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    > [AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を _MicrosoftAccount_、_Facebook_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。</div>
+    > [AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_ MicrosoftAccount_、_Facebook_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 
 3. アプリケーションを実行したときに、選択した ID プロバイダーを使ってサインインします。
@@ -792,56 +778,60 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 	}
 
 
-トークンが期限切れになった場合はどのような処理が行われるでしょうか。 その場合、トークンを使用して接続を試みると、"*401 許可されていません*" 応答が返されます。ユーザーは、ログインして新しいトークンを取得する必要があります。モバイル サービスの呼び出しとモバイル サービスからの応答を取得するフィルターを使用すると、アプリケーション内でモバイル サービスを呼び出すすべての場所にこれを処理するコードを書かずに済みます。フィルター コードでは、次に 401 の応答の有無をテストし、必要に応じてログイン プロセスをトリガーし、401 を生成した要求を再開します。
+トークンが期限切れになった場合はどのような処理が行われるでしょうか。 その場合、トークンを使用して接続を試みると、"*401 許可されていません*" 応答が返されます。ユーザーは、ログインして新しいトークンを取得する必要があります。Mobile Services の呼び出しと Mobile Services からの応答を取得するフィルターを使用すると、アプリケーション内でモバイル サービスを呼び出すすべての場所にこれを処理するコードを書かずに済みます。フィルター コードは、401 の応答の有無をテストし、必要に応じてログイン プロセスをトリガーし、401 を生成した要求を再開します。
 
 
-<h2><a name="customizing"></a>方法: クライアントをカスタマイズする</h2>
+##<a name="customizing"></a>方法: クライアントをカスタマイズする
+
+Mobile Services クライアントの既定の動作は、さまざまな方法でカスタマイズできます。
 
 ### <a name="headers"></a>方法: 要求ヘッダーをカスタマイズする
 
-すべての出力要求にカスタム ヘッダーを接続する場合があります。次のような ServiceFilter を構成することによって実現できます。
+すべての出力要求にカスタム ヘッダーを接続する場合があります。次のような **ServiceFilter** を構成することによって実現できます。
 
-		private class CustomHeaderFilter implements ServiceFilter {
-	
-	        @Override
-	        public ListenableFuture<ServiceFilterResponse> handleRequest(
-	                	ServiceFilterRequest request, 
-						NextServiceFilterCallback next) {
-	
-	            runOnUiThread(new Runnable() {
-	
-	                @Override
-	                public void run() {
-		        		request.addHeader("My-Header", "Value");	                }
-	            });
-	
-	            SettableFuture<ServiceFilterResponse> result = SettableFuture.create();
-	            try {
-	                ServiceFilterResponse response = next.onNext(request).get();
-	                result.set(response);
-	            } catch (Exception exc) {
-	                result.setException(exc);
-	            }
-	        }
+	private class CustomHeaderFilter implements ServiceFilter {
+
+        @Override
+        public ListenableFuture<ServiceFilterResponse> handleRequest(
+                	ServiceFilterRequest request, 
+					NextServiceFilterCallback next) {
+
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+	        		request.addHeader("My-Header", "Value");	                }
+            });
+
+            SettableFuture<ServiceFilterResponse> result = SettableFuture.create();
+            try {
+                ServiceFilterResponse response = next.onNext(request).get();
+                result.set(response);
+            } catch (Exception exc) {
+                result.setException(exc);
+            }
+        }
 
 ### <a name="serialization"></a>方法: シリアル化をカスタマイズする
 
-モバイル サービスでは、サーバー上のテーブル名、列名、データ型のすべてがクライアント上の対応する名前や型と一致するものと既定で想定しています。ただし、サーバーとクライアントとの間で名前が一致しない理由はいくつかあります。1 つの例として、既存のクライアントがあり、これを競合企業の製品の代わりに Azure のモバイル サービスを使用するように変更することを検討しているとします。
+モバイル サービスでは、サーバー上のテーブル名、列名、データ型のすべてがクライアント上の対応する名前や型と一致するものと既定で想定しています。ただし、サーバーとクライアントとの間で名前が一致しない理由はいくつかあります。1 つの例として、既存のクライアントがあり、これを競合企業の製品の代わりに Mobile Services を使用するように変更することを検討しているとします。
 
-次の種類のカスタマイズを行うことができます。<ul> <li>モバイル サービス テーブルで使用されている列名がクライアントで使用されている名前と一致しない</li>
+次の種類のカスタマイズを行うことができます。
 
-<li>クライアントでマップされているクラスと異なる名前を持つモバイル サービス テーブルを使用する</li>
-<li>プロパティの大文字の自動設定を有効にする</li>
-
-<li>複合プロパティをオブジェクトに追加する</li>
-
-</ul>
+- モバイル サービス テーブルで使用されている列名がクライアントで使用されている名前と一致しない
+- クライアントでマップされているクラスと異なる名前を持つモバイル サービス テーブルを使用する
+- プロパティの大文字の自動設定を有効にする
+- 複合プロパティをオブジェクトに追加する
 
 ### <a name="columns"></a>方法: クライアントとサーバーの間で異なる名前をマップする
 
-Java クライアント コードにおいて *ToDoItem* オブジェクト プロパティに次のような標準 Java 形式の名前を使用しているものとします。 <ul> <li>mId</li> <li>mText</li> <li>mComplete</li> <li>mDuration</li>
+Java クライアント コードで、ToDoItem オブジェクト プロパティに次のような標準 Java 形式の名前を使用しているとします。
 
-</ul>
+- mId
+- mText
+- mComplete
+- mDuration
+
 
 クライアントの名前は、サーバー上の*ToDoItem* テーブルの列名と一致する JSON 名にシリアル化する必要があります。<a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用してこの操作を行うコードを次に示します。
 
@@ -861,7 +851,7 @@ Java クライアント コードにおいて *ToDoItem* オブジェクト プ�
 
 クライアントのテーブル名を異なるモバイル サービス テーブル名にマップするのは簡単です。次のコードに示すように、<a href="http://go.microsoft.com/fwlink/p/?LinkId=296840" target="_blank">getTable()</a> 関数のオーバーライドの 1 つを使用するだけです。
 
-		mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
+	mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
 
 ### <a name="conversions"></a>方法: 列名のマッピングを自動化する
@@ -895,11 +885,6 @@ Java クライアント コードにおいて *ToDoItem* オブジェクト プ�
 これを行う方法の例については、<a href="http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson" target="_blank">モバイル サービス Android クライアントでの <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用したシリアル化のカスタマイズに関するブログ記事を参照してください。</a>
 
 この汎用的な方法は、JSON やモバイル サービス テーブルに自動的にシリアル化されない複合オブジェクトがある場合にいつでも使用できます。
-
-
-## <a name="next-steps"></a>次のステップ
-
-Android クライアント API に関する Javadocs リファレンスについては、[http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/package-summary.html](http://go.microsoft.com/fwlink/p/?LinkId=298735 "ここ") を参照してください。
 
 <!-- Anchors. -->
 
@@ -938,26 +923,9 @@ Android クライアント API に関する Javadocs リファレンスについ
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- URLs. -->
-[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-android/
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?linkid=280126
-[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-android/
+[Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[モバイル サービス テーブルの管理用コマンド]: http://azure.microsoft.com/documentation/articles/command-line-tools/#Commands_to_manage_mobile_services
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

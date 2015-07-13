@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Engagement の概念" 
+<properties
+	pageTitle="Mobile Engagement の概念"
 	description="Mobile Engagement の概念"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="kpiteira" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="kpiteira"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="" 
-	ms.topic="article" 
-	ms.date="01/24/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="01/24/2015"
 	ms.author="kapiteir" />
 
 #Azure Mobile Engagement の概念
@@ -67,14 +67,16 @@ Mobile Engagement は、各デバイスの一意の識別子を生成するこ�
 
 アプリケーション情報は、Mobile Engagement SDK の API を使用するか、Mobile Engagement プラットフォームのデバイス API を使用して登録できます。
 
-アプリケーション情報は、デバイスに関連付けられているキー/値ペアです。キーは、アプリケーション情報の名前です (64 文字の ASCII 文字 [[a-zA-Z]]、[[0-9]] の数字、およびアンダースコア [_] に制限されます)。値 (1024 文字に制限されます) には、任意の文字列、整数、日付 (yyyy-MM-dd)、またはブール値 (true または false) を指定できます。
+アプリケーション情報は、デバイスに関連付けられているキー/値ペアです。キーは、アプリケーション情報の名前です (64 文字の ASCII 文字 [a-zA-Z]、[0-9] の数字、およびアンダースコア [_] に制限されます)。値 (1024 文字に制限されます) には、任意の文字列、整数、日付 (yyyy-MM-dd)、またはブール値 (true または false) を指定できます。
 
 Mobile Engagement 価格条件で定義されている制限内で、任意の数のアプリケーション情報をデバイスに関連付けることができます。指定されたキーについて、Mobile Engagement は最新の値セットのみ追跡します (履歴はありません)。アプリケーション情報の値を設定または変更すると、Mobile Engagement はこのアプリケーション情報の対象ユーザー条件のセット (指定されている場合) の再評価を強制されるため、アプリケーション情報を使用してリアルタイム プッシュをトリガーできます。
 
 ##追加のデータ
 追加のデータ (または extras) は、イベント、エラー、アクティビティ、およびジョブにアタッチできる任意のデータです。
 
-extras は JSON オブジェクトと同様に構造化されます。キー/値ペアのツリーで構成されます。キーは、64 文字の ASCII 文字 [[a-zA-Z]]、[[0-9]] の数字、およびアンダースコア [_] に制限され、extras の合計サイズは 1024 文字に制限されます (Mobile Engagement SDK によって JSON でエンコードされた後)。
+extras は JSON オブジェクトと同様に構造化されます。キー/値ペアのツリーで構成されます。キーは、64 文字の ASCII 文字 [a-zA-Z]、[0-9] の数字、およびアンダースコア [_] に制限され、extras の合計サイズは 1024 文字に制限されます (Mobile Engagement SDK によって JSON でエンコードされた後)。
 
 キー/値ペアのツリー全体が JSON オブジェクトとして格納されます。それにもかかわらず、キー/値の最初のレベルだけが分解されてセグメントのような一部の高度な機能から直接アクセス可能になります (たとえば、過去 1 か月間に値 "scifi" を設定した追加キー "content_type" で "content_viewed" という名前のイベントを 10 回以上を送信したすべてのユーザーから構成される "SciFi fans" というセグメントを簡単に定義できます)。したがって、スカラー値 (文字列、日付、整数、ブール値など) を使用してキー/値ペアの単純なリストから構成される extras のみを送信することを強くお勧めします。
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=July15_HO1-->

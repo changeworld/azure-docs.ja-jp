@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="02/13/2015" 
+	ms.date="05/13/2015" 
 	ms.author="ricksal"/>
 
 
@@ -56,10 +56,6 @@
 
 	これにより、モバイル サービスを実装する Visual Studio プロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-<!--
-4. Also, download your publish profile, save the downloaded file to your local computer, and make a note of where you save it.
--->
-
 ## モバイル サービスをテストする
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../../includes/mobile-services-dotnet-backend-test-local-service.md)]
@@ -86,12 +82,10 @@
 
 ## Android アプリを実行する
 
-[WACOM.INCLUDE [mobile-services-run-your-app](mobile-services-android-get-started.md)]
+[AZURE.INCLUDE [mobile-services-run-your-app](../../includes/mobile-services-android-get-started.md)]
 
 ## <a name="next-steps"> </a>次のステップ
 クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
-
-* [データの使用] <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
 
 * [認証の使用] <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
@@ -124,7 +118,7 @@
 
 <!-- URLs. -->
 [Eclipse の使用]: mobile-services-dotnet-backend-android-get-started-EC.md
-[データの使用]: mobile-services-dotnet-backend-android-get-started-data.md
+[Get started with data]: mobile-services-dotnet-backend-android-get-started-data.md
 [認証の使用]: mobile-services-dotnet-backend-android-get-started-users.md
 [プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
@@ -133,5 +127,6 @@
 [Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
 [管理ポータル]: https://manage.windowsazure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

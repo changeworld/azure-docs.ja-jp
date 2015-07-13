@@ -19,7 +19,7 @@
 
 #Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
 
-この FAQ では、予測モデリングのためのクラウド サービス Azure Machine Learning と Web サービスを使ったソリューション運用についての疑問点に答えます。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
+この FAQ では、Web サービスを使用して予測モデリングとソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
  
 ##一般的な質問
 
@@ -93,8 +93,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。 
-<!--
+少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。<!--
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -305,4 +304,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!----HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

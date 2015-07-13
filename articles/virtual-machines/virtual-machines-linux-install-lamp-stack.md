@@ -123,5 +123,6 @@ LAMP スタックは次のさまざまな要素で構成されています。
 Ubuntu 上での LAMP スタックの設定については、他にも多くのリソースがあります。
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO1-->

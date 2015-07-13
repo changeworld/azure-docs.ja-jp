@@ -15,25 +15,23 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="02/03/2015" 
+	ms.date="06/01/2015" 
 	ms.author="ricksal"/>
 
 
-# Mobile Services アプリへのプッシュ通知の追加
+# Mobile Services Android アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 ## 概要
 
-このトピックでは、Azure モバイル サービスで Google Cloud Messaging (GCM) を使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Azure Notification Hubs を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
+このトピックでは、Azure Mobile Services を使用して、Google Cloud Messaging (GCM) を使用する Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルの前提条件である、クイック スタート プロジェクトに、プッシュ通知を追加します。プッシュ通知はモバイル サービスに含まれている Azure Notification Hub で有効になっています。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
 <!-- [AZURE.NOTE] If you would like to see the source code of the completed app, go <a href="https://github.com/RickSaling/mobile-services-samples/tree/androidStudio/GettingStartedWithPush/AndroidStudio" target="_blank">here</a>.
 -->
 
-> [AZURE.NOTE]このチュートリアルの Eclipse バージョンを確認する場合は、「[プッシュ通知の使用 (Eclipse)]」をご覧ください。
 
-
-##前提条件
+## 前提条件
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
@@ -47,9 +45,7 @@
 
 ##<a id="add-push"></a>アプリケーションにプッシュ通知を追加する
 
-###Android SDK バージョンの検証
 
-[AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version.md)]
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
@@ -77,17 +73,11 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 このアプリケーションをエミュレーターで実行する場合は、Google API をサポートしている Android Virtual Device (AVD) を使用してください。
 
-1. Eclipse を再開し、Package Explorer でプロジェクトを右クリックして、**[Properties]**、**[Android]** の順にクリックし、**[Google APIs]** をオンにしてから **[OK]** をクリックします。
-
-	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-services-import-android-properties.png)
-
-  	これで、プロジェクトの対象が Google API になります。
-
-2. **[Window]** で **[Android Virtual Device Manager]** を選択し、デバイスを選択してから **[Edit]** をクリックします。
+1. ツールバーの右端から [Android Virtual Device Manager] を選択し、デバイスを選択して右側の [編集] アイコンをクリックします。
 
 	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-services-android-virtual-device-manager.png)
 
-3. **[Target]** で **[Google APIs]** を選択し、[OK] をクリックします。
+2. デバイスの説明行で **[変更]** を選択して、**[Google APIs]** を選択してから [ok] をクリックします。
 
    	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-services-android-virtual-device-manager-edit.png)
 
@@ -95,16 +85,32 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 ###テストの実行
 
-1. Eclipse の **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
+1. **[実行]** メニュー アイテムの **[Run app (アプリを実行)]** をクリックして、アプリケーションを開始します。
 
 2. アプリケーションで、意味のあるテキスト (たとえば、「_新しいモバイル サービス タスク_」) を入力し、**[Add]** をクリックします。
 
   	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-quickstart-push1-android.png)
 
-3. 画面の上端から下へスワイプし、通知を表示するためのデバイスの通知センターを開きます。
+3. 画面の上端から下へスワイプし、通知を表示するためのデバイスの通知ドロアーを開きます。
 
 
 これで、このチュートリアルは終了です。
+
+## トラブルシューティング
+
+### Android SDK バージョンの検証
+
+[AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version.md)]
+
+
+## 古いコードのバージョン
+
+このチュートリアルの Eclipse バージョンを確認する場合は、「[プッシュ通知の使用 (Eclipse)]」をご覧ください。
+
+
+<!--
+To see a completed version of the source code in an Eclipse project, go <a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/Android">here</a>.
+-->
 
 
 ## <a name="next-steps"> </a>次のステップ
@@ -127,7 +133,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 * [認証の使用] <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [通知ハブとは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs アプリケーションのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -168,8 +174,9 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 [Send push notifications to authenticated users]: mobile-services-javascript-backend-android-push-notifications-app-users.md
 
-[通知ハブとは]: ../notification-hubs-overview.md
+[Notification Hubs とは]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

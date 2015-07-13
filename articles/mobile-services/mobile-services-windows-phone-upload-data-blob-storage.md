@@ -2,8 +2,7 @@
 	pageTitle="Mobile Services を使用した画像の BLOB ストレージへのアップロード (Windows Phone) | Mobile Services" 
 	description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードする方法を説明します。" 
 	documentationCenter="windows" 
-	authors="wesmc7777" 
-	writer="wesmc" 
+	authors="ggailey777" 
 	services="mobile-services" 
 	manager="dwrede" 
 	editor=""/>
@@ -11,11 +10,11 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
-	ms.author="wesmc"/>
+	ms.date="06/04/2015" 
+	ms.author="glenga"/>
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
 
@@ -49,7 +48,7 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
 2. 左側のウィンドウで、**[オンライン]** カテゴリ、**[プレリリースを含める]** の順に選択し、**WindowsAzure.Storage-Preview** を探します。**Azure Storage** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
 
-  	![][2]
+  	![Azure ストレージ NuGet の追加](./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png)
 
   	これにより、Azure のストレージ サービス用のクライアント ライブラリがプロジェクトに追加されます。
 
@@ -77,6 +76,8 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
   モバイル サービスのジョブ スケジューラ機能を使用して、定義したスケジュールに従って実行されるサーバー スクリプト コードを定義する方法について説明します。
 
+##関連項目
+
 + [Mobile Services のサーバー スクリプト リファレンス]
 
   サーバー側のタスクを実行するサーバー スクリプトの使用および他の Azure コンポーネントおよび外部リソースとの統合に関するトピックを参照してください。
@@ -85,34 +86,21 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
   .NET でモバイル サービスを使用する方法について説明します
   
- 
-
 <!-- Images. -->
 
-
-[2]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
-
-
-[5]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png
-[6]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-upload-blob-app-view-wp8.png
-[7]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-upload-blob-app-view-camera-wp8.png
-[8]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-upload-blob-app-view-save-wp8.png
-[9]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-upload-blob-app-view-final-wp8.png
-
-[11]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-upload-blob-app-view-camera-accept-wp8.png
-
 <!-- URLs. -->
-[SendGrid を使用した Mobile Services からの電子メールの送信]: /develop/mobile/tutorials/send-email-with-sendgrid/
-[Mobile Services でのバックエンド ジョブの計画]: /develop/mobile/tutorials/schedule-backend-tasks/
-[Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+[SendGrid を使用した Mobile Services からの電子メールの送信]: store-sendgrid-mobile-services-send-email-scripts.md
+[Mobile Services でのバックエンド ジョブの計画]: mobile-services-schedule-recurring-tasks.md
+[Mobile Services のサーバー スクリプト リファレンス]: mobile-services-how-to-use-server-scripts.md
 [Get started with Mobile Services]: ../mobile-services-windows-phone-get-started.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
-[How To Create a Storage Account]: /manage/services/storage/how-to-create-a-storage-account
+[How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
-[Mobile Services .NET の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-net-client-library
+[Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Windows Phone SDK 8.0]: http://www.microsoft.com/download/details.aspx?id=35471
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

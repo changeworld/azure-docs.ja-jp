@@ -11,7 +11,7 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="C#" 
+	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/07/2015" 
 	ms.author="piyushjo" />
@@ -53,5 +53,6 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 ### 古いバージョンからのアップグレード
 
 [アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

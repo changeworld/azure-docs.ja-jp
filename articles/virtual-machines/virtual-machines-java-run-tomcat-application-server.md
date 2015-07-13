@@ -160,4 +160,4 @@ Tomcat が実行されていることを外部コンピューターから確認�
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

@@ -13,27 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 
-# 方法:ストリーミング コンテンツを配信する
+#方法: ストリーミング コンテンツを配信する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
-## 概要
+##概要
 
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-rest-encode-asset.md)トピックでは、アダプティブ ビットレート MP4 セットのエンコード方法を説明しています。 
-ロケーターを作成する前に、[こちら](media-services-rest-configure-asset-delivery-policy.md)のトピックで説明されているようにアセット配信ポリシーを構成する必要があります。 
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。ロケーターを作成する前に、[このトピック](media-services-rest-configure-asset-delivery-policy.md)で説明されているようにアセット配信ポリシーを構成する必要があります。
 
-また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
+また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
 このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
 
-[次の](#types) セクションでは、値が REST コールで使われる列挙型が示されます。   
+[次](#types)のセクションに、値が REST コールで使われる列挙型を示します。
   
-## オンデマンド ストリーミング ロケーターを作成する
+##オンデマンド ストリーミング ロケーターを作成する
 
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
 
@@ -46,7 +45,7 @@
    4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
 
 
-### アクセス ポリシーを作成します。
+###アクセス ポリシーを作成します。
 
 要求:
 		
@@ -83,7 +82,7 @@
 	
 	{"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
-### オンデマンド ストリーミング ロケーターを作成する
+###オンデマンド ストリーミング ロケーターを作成する
 
 指定されたアセットとアセット ポリシーのロケーターを作成します。
 
@@ -122,24 +121,24 @@
 	
 	{"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"http://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"http://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
-### ストリーミング URL を作成します。
+###ストリーミング URL を作成します。
 
-ロケーター作成後に返される **Path** 値を使って、Smooth、HLS、MPEG DASH の URL を作成します。 
+ロケーター作成後に返される **Path** 値を使って、Smooth、HLS、MPEG DASH の URL を作成します。
 
-スムーズ ストリーミング:**パス** + マニフェスト ファイル名 + "/manifest"
+Smooth Streaming: **Path** + マニフェスト ファイル名 + "/manifest"
 
 例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS:**パス** + マニフェスト ファイル名 + "/manifest(format=m3u8-aapl)"
+HLS: **Path** + マニフェスト ファイル名 + "/manifest(format=m3u8-aapl)"
 
 例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH:**パス** + マニフェスト ファイル名 + "/manifest(format=mpd-time-csf)"
+DASH: **Path** + マニフェスト ファイル名 + "/manifest(format=mpd-time-csf)"
 
 
 例:
@@ -147,17 +146,17 @@ DASH:**パス** + マニフェスト ファイル名 + "/manifest(format=mpd-tim
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-### プログレッシブ ダウンロード URL を作成します。
+###プログレッシブ ダウンロード URL を作成します。
 
-ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。   
+ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。
 
-URL:**パス** + アセット ファイル mp4 名
+URL: **Path** + アセット ファイル mp4 名
 
 例:
 
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>列挙型
+##<a id="types"></a>列挙型
 
     [Flags]
     public enum AccessPermissions
@@ -174,7 +173,6 @@ URL:**パス** + アセット ファイル mp4 名
         None = 0,
         Sas = 1,
         OnDemandOrigin = 2,
-    }
+    } 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

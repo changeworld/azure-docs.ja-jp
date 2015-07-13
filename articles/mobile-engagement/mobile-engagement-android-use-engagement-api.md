@@ -11,7 +11,7 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="" 
+	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="01/24/2015" 
 	ms.author="kapiteir" />
@@ -173,7 +173,7 @@ Engagement を使用してアプリケーションのセッション、アクテ
 
 ログイン プロセス中に発生したエラーについてレポートを作成する場合は、次のとおりです。
 
-[...] public void signIn(Context context, ...) {
+			[...] public void signIn(Context context, ...) {
 
 			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
 			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
@@ -296,5 +296,6 @@ Engagement を使用してアプリケーションのセッション、アクテ
 前の例では、サーバーに送信される JSON は 44 文字です。
 
 			{"expiration":"2016-12-07","status":"premium"}
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

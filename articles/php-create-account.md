@@ -1,9 +1,9 @@
-﻿<properties 
+<properties 
 	pageTitle="Azure アカウントの作成" 
 	description="アカウントの作成" 
 	authors="tfitzmac" 
 	manager="wpickett" 
-	editor="mollybos" 
+	editor="jimbe" 
 	services="" 
 	documentationCenter="php"/>
 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/17/2014" 
+    ms.date="06/03/2015"
 	ms.author="tomfitz"/>
 
-[WACOM.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
+# Azure アカウントを作成してプレビュー機能を有効にする
 
-<!--HONumber=35.2-->
+[AZURE.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
 
-<!--HONumber=46--> 
+<!---HONumber=July15_HO1-->

@@ -68,4 +68,4 @@ Pusher の概要については、「[Understanding Pusher (Pusher について)
 [Azure 管理ポータル]: https://manage.windowsazure.com
 [Understanding Pusher (Pusher について)」]: http://pusher.com/docs
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

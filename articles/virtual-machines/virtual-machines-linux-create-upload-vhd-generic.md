@@ -192,4 +192,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

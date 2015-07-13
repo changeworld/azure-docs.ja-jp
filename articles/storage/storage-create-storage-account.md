@@ -163,4 +163,4 @@ Azure Storage に格納するすべてのオブジェクトは一意の URL ア�
 - [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

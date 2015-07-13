@@ -28,7 +28,7 @@
 2.  Azure SDK がインストールされていること。
 3.  Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、[Azure SDK for Java のダウンロード]のページを参照してください。
 4.  Azure ストレージ アカウントがセットアップされていること。後に示すコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する]」をご覧ください。アカウント キーの取得については[ストレージ アカウントを管理する方法]に関するページをご覧ください。
-5.  ローカル画像ファイルが作成され、C:\myimages\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
+5.  ローカル画像ファイルが作成され、c:\myimages\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
 
 [AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
@@ -106,7 +106,7 @@
 
 **File** コンストラクターを使用して、アップロードするローカルで作成したファイルへの参照を取得します (このファイルは、コードを実行する前に作成しておいてください)。
 
-    File fileReference = new File ("C:\myimages\image1.jpg");
+    File fileReference = new File ("c:\myimages\image1.jpg");
 
 **CloudBlockBlob.upload** メソッドの呼び出しによってローカル ファイルをアップロードします。**CloudBlockBlob.upload** メソッドの 1 つ目のパラメーターは、Azure Storage にアップロードするローカル ファイルを表す **FileInputStream** オブジェクトです。2 つ目のパラメーターは、ファイルのサイズ (バイト単位) です。
 
@@ -237,7 +237,7 @@
                 // Upload an image file.
                 blob = container.getBlockBlobReference("image1.jpg");
 
-                File fileReference = new File("C:\myimages\image1.jpg");
+                File fileReference = new File("c:\myimages\image1.jpg");
                 blob.upload(new FileInputStream(fileReference), fileReference.length());
 
                 // At this point the image is uploaded.
@@ -368,4 +368,4 @@
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

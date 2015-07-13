@@ -40,7 +40,7 @@ SSH キーまたはパスワード認証を使用して Linux 仮想マシンに
 `/etc/sudoers.d/waagent` ファイルを編集して、パスワードなし sudo を有効にすることもできます。
 
 	#/etc/sudoers.d/waagent
-	azureuser (ALL) = (ALL) NOPASSWD: ALL
+	azureuser ALL = (ALL) NOPASSWD: ALL
 
 この変更によって、azureuser ユーザーはパスワードなしで sudo を実行できます。
 
@@ -52,4 +52,6 @@ SSH キー認証を使用して Linux 仮想マシンにログオンし、`sudo`
 
 この場合はパスワードの入力が**求められません**。`<enter>` を押した後、`sudo` によってコマンドが `root` 権限で実行されます。
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO1-->

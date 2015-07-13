@@ -10,7 +10,7 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="03/16/2015" 
@@ -119,7 +119,7 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 
 ##<a name="next-steps"> </a>次のステップ
 
-+  **iOS** や Android モバイル アプリのパフォーマンスを最適化する方法については、[New Relic Mobile] のページを参照してください。
++ **iOS** や Android モバイル アプリのパフォーマンスを最適化する方法については、[New Relic Mobile] のページを参照してください。
 + 料金情報については、[Windows Azure ストアの New Relic のページ]を参照してください。
 + New Relic の使用方法については、New Relic ドキュメントの「[Applications Overview (アプリケーションの概要)]」を参照してください。 
 
@@ -152,5 +152,6 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 [データの使用]: /develop/mobile/tutorials/get-started-with-data-dotnet
 [New Relic Mobile]: http://newrelic.com/mobile-monitoring
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

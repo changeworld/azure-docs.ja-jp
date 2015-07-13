@@ -68,7 +68,7 @@ Azure の管理ポータルの [仮想マシン] ページで、データ ディ
 
 [http://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-RAID/](http://azure.microsoft.com/documentation/articles/virtual-machines-linux-configure-RAID/)
 
->[AZURE.NOTE] XFS ファイル システムを使用している場合は RAID を作成した後に次の手順に従ってください。
+>[AZURE.NOTE]XFS ファイル システムを使用している場合は RAID を作成した後に次の手順に従ってください。
 
 Debian、Ubuntu、または Linux Mint に XFS をインストールするには、次のコマンドを使用します。
 
@@ -131,9 +131,9 @@ Debian 配布ファミリ:
 	root@mysqlnode1:~# sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash elevator=noop"/g' /etc/default/grub
 	root@mysqlnode1:~# update-grub
 
->[AZURE.NOTE] これを /dev/sda だけに設定するのは役に立ちません。データベースが存在するすべてのデータ ディスクに設定する必要があります。  
+>[AZURE.NOTE]これを /dev/sda だけに設定するのは役に立ちません。データベースが存在するすべてのデータ ディスクに設定する必要があります。
 
-次の出力では、grub.cfg が正常に再構築され、既定のスケジューラが NOOP に更新されたことが参照できます。  
+次の出力では、grub.cfg が正常に再構築され、既定のスケジューラが NOOP に更新されたことが参照できます。
 
 	Generating grub configuration file ...
 	Found linux image: /boot/vmlinuz-3.13.0-34-generic
@@ -144,16 +144,16 @@ Debian 配布ファミリ:
 	Found memtest86+ image: /memtest86+.bin
 	done
 
-Redhat 配布ファミリでは、次のコマンドのみが必要です。   
+Redhat 配布ファミリでは、次のコマンドのみが必要です。
 
 	echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ##システム ファイルの操作設定を構成する
-1 つのベスト プラクティスは、ファイル システム上の atime ログ機能を無効にすることです。Atime はファイルの最後のアクセス時刻です。ファイルがアクセスされるたびに、ファイル システムは、ログにタイムスタンプを記録します。ただし、この情報はほとんど使用しません。必要としない場合は、無効にして全体的なディスク アクセス時間を短縮することができます。  
+1 つのベスト プラクティスは、ファイル システム上の atime ログ機能を無効にすることです。Atime はファイルの最後のアクセス時刻です。ファイルがアクセスされるたびに、ファイル システムは、ログにタイムスタンプを記録します。ただし、この情報はほとんど使用しません。必要としない場合は、無効にして全体的なディスク アクセス時間を短縮することができます。
  
 Atime のログ記録を無効にするには、ファイル システムの構成ファイルの /etc/fstab を変更し、**noatime** オプションを追加する必要があります。
 
-たとえば、次のように vim/etc/fstab ファイルを編集して、noatime を追加します。  
+たとえば、次のように vim/etc/fstab ファイルを編集して、noatime を追加します。
 
 	# CLOUD_IMG: This file was created/modified by the Cloud Image build process
 	UUID=3cc98c06-d649-432d-81df-6dcd2a584d41       /        ext4   defaults,discard        0 0
@@ -167,7 +167,7 @@ Atime のログ記録を無効にするには、ファイル システムの構�
 
 変更された結果をテストします。テスト ファイルを変更すると、アクセス時間が更新されないことに注意してください。
 
-実行前の例:		
+実行前の例:
 
 ![][5]
  
@@ -179,7 +179,7 @@ Atime のログ記録を無効にするには、ファイル システムの構�
 MySQL は同時実行性の高いデータベースです。同時実行処理の既定数は、Linuxでは 1024 ですが、必ずしも十分ではありません。**次の手順で、システムの同時実行処理の最大数を増やして、MySQL の高い同時実行性をサポートします**。
 
 ###手順 1. limits.conf ファイルを変更する
-/etc/security/limits.conf ファイルで、次の 4 つの行を追加して、許可される同時実行処理の最大数を増やします。システムがサポートできる最大数は 65536 であることに注意してください。   
+/etc/security/limits.conf ファイルで、次の 4 つの行を追加して、許可される同時実行処理の最大数を増やします。システムがサポートできる最大数は 65536 であることに注意してください。
 
 	* soft nofile 65536
 	* hard nofile 65536
@@ -187,34 +187,33 @@ MySQL は同時実行性の高いデータベースです。同時実行処理�
 	* hard nproc 65536
 
 ###手順 2. 新しい制限値にシステムを更新する
-次のコマンドを実行します。  
+次のコマンドを実行します。
 
 	ulimit -SHn 65536
 	ulimit -SHu 65536 
 
 ###手順 3. 制限値が起動時に更新されることを確認する
-起動するたびに有効になるように /etc/rc.local ファイルに次の起動コマンドを入力します。  
+起動するたびに有効になるように /etc/rc.local ファイルに次の起動コマンドを入力します。
 
 	echo “ulimit -SHn 65536” >>/etc/rc.local
 	echo “ulimit -SHu 65536” >>/etc/rc.local
 
 ##MySQL データベースの最適化 
-オンプレミスのマシンに設定するのと同様に、パフォーマンス チューニング戦略を使用して Azure に MySQL を設定できます。  
+オンプレミスのマシンに設定するのと同様に、パフォーマンス チューニング戦略を使用して Azure に MySQL を設定できます。
 
-メインの I/O の最適化のルールは、次のとおりです。   
+メインの I/O の最適化のルールは、次のとおりです。
 
 -	キャッシュ サイズを増加する。
 -	I/O 応答時間を短縮する。  
 
 MySQL サーバーの設定を最適化するために、サーバーとクライアント コンピューターの両方の既定の構成ファイルである my.cnf file を更新することができます。
 
-次の構成項目は、MySQL のパフォーマンスに影響する主な要素です。  
+次の構成項目は、MySQL のパフォーマンスに影響する主な要素です。
 
 -	**innodb_buffer_pool_size**: バッファー プールには、バッファー内のデータとインデックスが含まれています。通常、これは物理メモリの 70% に設定します。
 -	**innodb_log_file_size**: これは、再実行ログのサイズです。再実行ログを使用して、書き込み操作が高速かつ信頼性が高く、クラッシュ後に回復可能なことを確認します。これは、書き込み操作を記録するのに十分な領域である 512 MB に設定されています。
 -	**max_connections**: アプリケーションは適切に接続を終了しない場合があります。大きな値では、サーバーがアイドル状態の接続をリサイクルするのに時間がかかります。最大接続数は 10000 ですが、推奨される最大値は 5000 です。
--	**innodb_file_per_table**: この設定は、個別のファイルにテーブルを保存する InnoDB の機能を有効または無効にします。このオプションを有効にすると、いくつかの高度な管理操作を効率的に適用できます。パフォーマンスの観点では、テーブルの領域の転送を高速化し、ごみ管理のパフォーマンスを最適化できます。そのため、推奨設定では ON です。</br>
-	MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
+-	**innodb_file_per_table**: この設定は、個別のファイルにテーブルを保存する InnoDB の機能を有効または無効にします。このオプションを有効にすると、いくつかの高度な管理操作を効率的に適用できます。パフォーマンスの観点では、テーブルの領域の転送を高速化し、ごみ管理のパフォーマンスを最適化できます。そのため、推奨設定では ON です。</br> MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
 -	**innodb_flush_log_at_trx_commit**: 既定値は 1 に、範囲は 0 ～ 2 に設定されています。既定値は、スタンドアロン MySQL DB の最も適切なオプションです。2 の設定は、ほとんどのデータの整合性を実現し、MySQL のクラスターのマスターに適しています。0 の設定は、信頼性に影響を与えるデータ損失が発生する可能性がありますが、優れたパフォーマンスを実現する場合もあり、MySQL のクラスター内のスレーブに適してします。
 -	**innodb_log_buffer_size**: ログ バッファーによって、トランザクションがコミットする前にログをディスクにフラッシュすることなくトランザクションを実行できます。ただし、ラージ バイナリ オブジェクトまたはテキスト フィールドがある場合、キャッシュが非常に簡単に使用され、頻繁にディスク I/O がトリガーされます。Innodb_log_waits 状態変数が 0 でない場合は、バッファー サイズを大きくすることが推奨されます。
 -	**query_cache_size**: 最善のオプションは、最初から無効にすることです。query_cache_size は、0 (これは MySQL 5.6 では既定の設定です) に設定し、その他のメソッドを使用してクエリを高速化します。  
@@ -238,7 +237,7 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 ###手順 3. "show" コマンドを使用して設定が有効になっているかどうかを確認する
  
-![][7]   
+![][7]
    
 ![][8]
  
@@ -257,24 +256,22 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 ![][9]
  
-**テスト コマンド:**  
+**テスト コマンド:**
 
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=5G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 
 >AZURE.NOTE: このテストの作業負荷は、RAID の上限に到達するために、64 のスレッドを使用します。
 
-<a name="AppendixB"></a>付録 B:  **さまざまな RAID レベルでの MySQL のパフォーマンス (スループット) の比較** (XFS ファイル システム)
+<a name="AppendixB"></a>付録 B: **さまざまな RAID レベルでの MySQL のパフォーマンス (スループット) の比較** (XFS ファイル システム)
 
  
-![][10]  
-![][11]
+![][10] ![][11]
 
 **テスト コマンド:**
 
 	mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write –engine=innodb
 
-**さまざまな RAID レベルでの MySQL のパフォーマンス (OLTP) の比較**  
-![][12]
+**さまざまな RAID レベルでの MySQL のパフォーマンス (OLTP) の比較** ![][12]
 
 **テスト コマンド:**
 
@@ -285,7 +282,7 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
  
 ![][13]
 
-**テスト コマンド:**  
+**テスト コマンド:**
 
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=30G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 	fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=1G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite  
@@ -304,15 +301,15 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 **既定と最適化の構成設定は、次のとおりです。**
 
-|パラメーター	|既定値	|最適化
+|パラメーター |既定値 |最適化
 |-----------|-----------|-----------
-|**innodb_buffer_pool_size**	|なし		|7 G
-|**innodb_log_file_size**	|5 M	|512 M
-|**max_connections**	|100	|5000
-|**innodb_file_per_table**	|0	|1
-|**innodb_flush_log_at_trx_commit**	|1 |2
-|**innodb_log_buffer_size**	|8 M	|128 M
-|**query_cache_size**	|16 M	|0
+|**innodb_buffer_pool_size** |なし |7 G
+|**innodb_log_file_size** |5 M |512 M
+|**max_connections** |100 |5000
+|**innodb_file_per_table** |0 |1
+|**innodb_flush_log_at_trx_commit** |1 |2
+|**innodb_log_buffer_size** |8 M |128 M
+|**query_cache_size** |16 M |0
 
 
 詳細な最適化構成パラメーターは、mysql の正式な説明を参照してください。
@@ -321,14 +318,14 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 [http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method)
 
-**テスト環境**  
+**テスト環境**
 
-|ハードウェア	|詳細
+|ハードウェア |詳細
 |-----------|-------
-|CPU	|AMD Opteron(tm) プロセッサ 4171 HE/4 コア
-|メモリ	|14 G
-|disk	|10 G/ディスク
-|OS	|Ubuntu 14.04.1 LTS
+|CPU |AMD Opteron(tm) プロセッサ 4171 HE/4 コア
+|メモリ |14 G
+|disk |10 G/ディスク
+|OS |Ubuntu 14.04.1 LTS
 
 
 
@@ -346,5 +343,6 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [12]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
+ 
 
-<!----HONumber=58--> 
+<!---HONumber=July15_HO1-->

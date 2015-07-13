@@ -42,4 +42,4 @@ API ヘルプ ページには、R、C#、Python の各プログラミング言�
 
 <!-- Add link to Derrick's articles on web services -->
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

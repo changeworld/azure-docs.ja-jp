@@ -16,7 +16,7 @@
 					// Change 'MobileService' to the name of your MobileServiceClient instance.
 					// Sign-in using Facebook authentication.
                     user = await App.MobileService
-                        .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                        .LoginAsync(MobileServiceAuthenticationProvider.Facebook, true);
                     message = 
                         string.Format("You are now signed in - {0}", user.UserId);
                 }
@@ -59,7 +59,7 @@
 6. Windows Phone アプリ プロジェクトで、**[保存]** ボタンを定義する要素の直前に次の **Button** 要素を追加します。
 
 		<Button Grid.Row ="1" Grid.Column="1" Name="ButtonLogin" Click="ButtonLogin_Click" 
-                        Visibility="Visible">Sign in</Button> 
+                        Visibility="Visible" Margin="10, 0, 0, 0">Sign in</Button> 
 
 5. 共有された App.xaml.cs プロジェクト ファイルを開き、次の using ステートメントが存在しない場合はこれを追加します。
 
@@ -90,4 +90,4 @@
 
 9. Windows Phone ストア アプリ プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、Windows Phone ストア アプリも正常に実行していることを確認する前の手順を繰り返します。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

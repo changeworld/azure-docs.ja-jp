@@ -17,4 +17,4 @@
 
     ![](./media/mobile-services-aad-rbac-test-app/success.png)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

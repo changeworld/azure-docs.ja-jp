@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/08/2014" 
+	ms.date="06/18/2015" 
 	ms.author="tamram"/>
 
 # ストレージ メトリックの有効化とメトリック データの表示
@@ -27,7 +27,7 @@
 Azure 管理ポータルで、ストレージ アカウントの構成ページを使用し、ストレージ メトリックを制御します。監視の場合、BLOB、テーブル、キューごとにレベルと保有期間 (日数) を設定できます。いずれの場合も、レベルは次のいずれかになります。
 
 
-- [オフ] - メトリックは収集されません。
+- [オフ] — メトリックは収集されません。
 
 - [最低限] - ストレージ メトリックは、BLOB サービス、テーブル サービス、キュー サービスに対して集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなど、一連の基本的なメトリックを収集します。
 
@@ -56,7 +56,7 @@ Azure 管理ポータルで、ストレージ アカウントの構成ページ�
 
 `Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob`
 
-Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法の詳細については、「[Azure PowerShell のインストールと構成方法](http://azure.microsoft.com/documentation/articles/install-configure-powershell/)」をご覧ください。
+Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」をご覧ください。
 
 ## プログラムを利用してストレージ メトリックを有効にする方法
 
@@ -89,7 +89,7 @@ CloudBlobClient、CloudQueueClient、CloudTableClient クラスにはすべて�
 - 特定のメトリックが特定の値に到達したら通知するように電子メール アラートを構成します。
 
 
-長期間ストレージのメトリックをダウンロードし、それらをローカルで分析する場合、ツールを使用するか、コードを記述し、テーブルを読み込む必要があります。分析のために分単位メトリックをダウンロードする必要があります。ストレージ アカウントにすべてのテーブルを一覧表示した場合、このテーブルは表示されない場合がありますが、名前で直接アクセスできます。多くのサードパーティ製ストレージ閲覧ツールはこれらのテーブルを認識するため、直接表示できます (利用できるツールの一覧については、「[Microsoft Azure ストレージ エクスプローラー (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)」をご覧ください。
+長期間ストレージのメトリックをダウンロードし、それらをローカルで分析する場合、ツールを使用するか、コードを記述し、テーブルを読み込む必要があります。分析のために分単位メトリックをダウンロードする必要があります。ストレージ アカウントにすべてのテーブルを一覧表示した場合、このテーブルは表示されない場合がありますが、名前で直接アクセスできます。多くのサードパーティ製ストレージ閲覧ツールはこれらのテーブルを認識するため、直接表示できます (利用できるツールの一覧については、[Microsoft Azure Storage エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)に関するブログ記事をご覧ください)。
 
 ### 時間単位のメトリック
 - $MetricsHourPrimaryTransactionsBlob
@@ -104,14 +104,14 @@ CloudBlobClient、CloudQueueClient、CloudTableClient クラスにはすべて�
 ### 容量
 - $MetricsCapacityBlob
 
-これらのテーブルのスキーマの完全な詳細は、「[Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/azure/hh343264.aspx)」にあります。下のサンプル行は、一部の利用できる列のみを示していますが、ストレージ メトリックがこれらのメトリックを保存するしくみについて、重要な特徴をいくつか説明しています。
+これらのテーブルのスキーマの全詳細については、「[Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/azure/hh343264.aspx)」をご覧ください。下のサンプル行は、一部の利用できる列のみを示していますが、ストレージ メトリックがこれらのメトリックを保存するしくみについて、重要な特徴をいくつか説明しています。
 
-| PartitionKey  |       RowKey       |                    Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Availability | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | タイムスタンプ | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | 可用性 | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 |---------------|:------------------:|-----------------------------:|---------------|-----------------------|--------------|-------------|--------------|-------------------|----------------------|----------------|
-| 20140522T1100 |      user;All      | 2014-05-22T11:01:16.7650250Z | 7             | 7                     | 4003         | 46801       | 100          | 104.4286          | 6.857143             | 100            |
-| 20140522T1100 | user;QueryEntities | 2014-05-22T11:01:16.7640250Z | 5             | 5                     | 2694         | 45951       | 100          | 143.8             | 7.8                  | 100            |
-| 20140522T1100 |  user;QueryEntity  | 2014-05-22T11:01:16.7650250Z | 1             | 1                     | 538          | 633         | 100          | 3                 | 3                    | 100            |
-| 20140522T1100 | user;UpdateEntity  | 2014-05-22T11:01:16.7650250Z | 1             | 1                     | 771          | 217         | 100          | 9                 | 6                    | 100               |
+| 20140522T1100 | user;All | 2014-05-22T11:01:16.7650250Z | 7 | 7 | 4003 | 46801 | 100 | 104.4286 | 6.857143 | 100 |
+| 20140522T1100 | user;QueryEntities | 2014-05-22T11:01:16.7640250Z | 5 | 5 | 2694 | 45951 | 100 | 143.8 | 7.8 | 100 |
+| 20140522T1100 | user;QueryEntity | 2014-05-22T11:01:16.7650250Z | 1 | 1 | 538 | 633 | 100 | 3 | 3 | 100 |
+| 20140522T1100 | user;UpdateEntity | 2014-05-22T11:01:16.7650250Z | 1 | 1 | 771 | 217 | 100 | 9 | 6 | 100 |
 
 この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。行キーは、行に保存され、アクセス タイプと要求タイプという 2 つの情報から構成されるタイプの情報を識別します。
 
@@ -122,7 +122,7 @@ CloudBlobClient、CloudQueueClient、CloudTableClient クラスにはすべて�
 
 上記のサンプル データは、1 つの分単位 (午前 11 時から始まる) に対するすべてのレコードを示します。つまり、QueryEntities 要求の数に QueryEntity 要求の数と UpdateEntity 要求の数を足すと 7 になり、これが user:All 行に表示される合計です。同様に、((143.8 * 5) + 3 + 9)/7 を計算し、端末間の平均待機時間 104.4286 を user:All 行で導くことができます。
 
-ストレージ メトリックがストレージ サービスの動作の重要な変化を自動的に通知するように、[モニタ] ページの管理ポータルでアラートを設定するようにしてください。ストレージ エクスプローラーを使用して、このメトリック データを区切り形式でダウンロードした場合、Microsoft Excel でデータを分析できます。使用できるストレージ エクスプローラー ツールの一覧については、「[Microsoft Azure ストレージ エクスプローラー (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)」をご覧ください。
+ストレージ メトリックがストレージ サービスの動作の重要な変化を自動的に通知するように、[モニタ] ページの管理ポータルでアラートを設定するようにしてください。ストレージ エクスプローラーを使用して、このメトリック データを区切り形式でダウンロードした場合、Microsoft Excel でデータを分析できます。使用できるストレージ エクスプローラー ツールの一覧については、[Microsoft Azure Storage エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)に関するブログ記事をご覧ください。
 
 
 
@@ -190,6 +190,6 @@ CloudBlobClient、CloudQueueClient、CloudTableClient クラスにはすべて�
 
 ## 次のステップ:
 [ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
-
-<!--HONumber=47-->
  
+
+<!---HONumber=July15_HO1-->

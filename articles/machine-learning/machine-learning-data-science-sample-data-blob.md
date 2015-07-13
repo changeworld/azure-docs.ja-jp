@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure BLOB ストレージのサンプル データ | Azure" 
+	pageTitle="Azure BLOB ストレージ内のデータのサンプリング | Microsoft Azure" 
 	description="Azure BLOB ストレージのサンプル データ" 
-	services="machine-learning" 
+	services="machine-learning,storage" 
 	documentationCenter="" 
-	authors="sunliangms,fashah,msolhab" 
+	authors="msolhab" 
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2015" 
-	ms.author="sunliangms,fashah,msolhab,garye" /> 
+	ms.date="05/29/2015" 
+	ms.author="sunliangms;fashah;msolhab;garye;bradsev" />
 
-#<a name="heading"></a>Azure BLOB ストレージのサンプル データ
+#<a name="heading"></a>Azure BLOB ストレージ内のデータのサンプリング
 
 このドキュメントでは、Azure BLOB ストレージに格納されたデータのサンプリングについて説明します。これは、プログラムを使用してこのデータをダウンロードしてから、Python のサンプル コードでサンプリングして行います。これを行う手順は、次のとおりです。
 
@@ -45,7 +45,7 @@
 	    #directly ready from file on disk
     	dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. 次のように、 `numpy` の  `random.choice` を使用してデータをサンプリングします。
+3. 次のように、`numpy` の `random.choice` を使用してデータをサンプリングします。
 
 	    # A 1 percent sample
     	sample_ratio = 0.01 
@@ -55,7 +55,7 @@
 
 	これで、上記の 1 パーセントのサンプルのデータ フレームを操作して、さらなる探索および特徴の生成を行えるようになりました。
 
-##<a name="heading"></a>Azure Machine Learning に接続する
+##<a name="heading"></a>Azure Machine Learning への接続
 
 次のサンプル コードを使用すると、次のようにデータをダウンサンプリングして、 Azure ML で直接使用することができます。
 
@@ -85,10 +85,15 @@
 	    except:	        
 		    print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. 次のスクリーン ショットに示すように、Azure ML  *Reader Module* を使用して Azure BLOB からデータを読み取る
+3. 次のスクリーン ショットに示すように、Azure ML の[リーダー](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)を使用して Azure BLOB からデータを読み取ります。
  
-![reader blob][1]
+![リーダー BLOB][1]
 
 [1]: ./media/machine-learning-data-science-sample-data-blob/reader_blob.png
 
-<!--HONumber=49--> 
+
+<!-- Module References -->
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+ 
+
+<!---HONumber=July15_HO1-->

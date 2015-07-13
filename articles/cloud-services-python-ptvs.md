@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Python Tools 2.1 for Visual Studio による Python Web ロールと Python worker ロール" 
-	description="Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要" 
-	services="" 
-	documentationCenter="python" 
-	authors="huguesv" 
-	manager="wpickett" 
+<properties
+	pageTitle="Python Tools 2.1 for Visual Studio による Python Web ロールと Python worker ロール"
+	description="Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
+	services=""
+	documentationCenter="python"
+	authors="huguesv"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="02/09/2015" 
+<tags
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="get-started-article" 
+	ms.date="02/09/2015"
 	ms.author="huvalo"/>
 
 
@@ -104,7 +104,7 @@ Python Tools for Visual Studio で Web ロールまたは worker ロールを扱
 - [クラウド サービス プロジェクト][]
 
 Web ロールまたは worker ロールから、Azure Storage、Service Bus などの Azure サービスを使用する方法の詳細については、次のガイドを参照してください。
- 
+
 - [BLOB サービス][]
 - [テーブル サービス][]
 - [キュー サービス][]
@@ -139,4 +139,4 @@ Web ロールまたは worker ロールから、Azure Storage、Service Bus な�
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!--HONumber=54-->
+<!---HONumber=July15_HO1-->

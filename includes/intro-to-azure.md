@@ -372,11 +372,11 @@ Notification Hubs は、いずれのバックエンドでも動作するよう�
 ###Site Recovery###
 
  
-Azure Site Recovery (以前の Hyper-V Recovery Manager) は、サイト間での Hyper-V イメージのレプリケーションと回復を調整することで、重要なアプリケーションを保護するために役立ちます。専用のセカンダリ サイトやホスト側サイトにバックアップすることもできれば、Azure を使用して専用のセカンダリの場所を構築し管理する費用と複雑さを回避することもできます。Azure はデータと通信を暗号化するため、保存データの暗号化を有効にするオプションもあります。
+Azure Site Recovery (以前の Hyper-V Recovery Manager) は、サイト間でのレプリケーションと回復を調整することで、重要なアプリケーションの保護を支援します。Site Recovery は、hyper-v、VMWare、または SAN に基づいてアプリケーションを保護する機能を、セカンダリ サイト、ホスト側のサイト、または Azure に提供することで、独自のセカンダリの場所を構築したり管理したりするための費用と複雑さを回避できるようにします。Azure によってデータと通信が安定化され、保管されているデータの暗号化を有効にするオプションもあります。
 
-サービスの正常性を継続的に監視し、プライマリ データセンターでのサイトが機能停止した際に秩序立てて自動的にサービスを回復できるよう支援します。また、調整された形式で Virtual Machines を導入することで、複雑な多層のワークロードの場合でも、サービスの迅速な復元を可能にします。
+Azure は継続的にサービスの正常性を監視し、プライマリ データ センターでサイトの停止が発生した場合のサービスの回復は正常を自動化します。サービスの正常性を継続的に監視し、プライマリ データセンターでのサイトが機能停止した際に秩序立てて自動的にサービスを回復できるよう支援します。また、調整された形式で Virtual Machines を導入することで、複雑な多層のワークロードの場合でも、アプリケーションの迅速な復元を可能にします。
 
-Site Recovery は、Hyper-V Replica、System Center、SQL Server AlwaysOn などの既存のテクノロジと連携動作します。
+Site Recovery は、Hyper-V Replica、System Center、SQL Server AlwaysOn などの既存のテクノロジと連携動作します。詳細については、「[Azure Site Recovery の概要](hyper-v-recovery-manager-overview.md)」を参照してください。
 
 ###Azure Backup###
 ![Azure Backup](./media/intro-to-azure/AzureBackupIntroNew.png) **図: Azure Backup は、オンプレミスの Windows Server からクラウドにデータをバックアップする。**
@@ -578,4 +578,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

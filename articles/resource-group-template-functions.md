@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートの関数"
-   description="アプリを Azure にデプロイするために Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
+   description="値の取得、文字列の書式設定、およびデプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
    services="na"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2015"
-   ms.author="tomfitz;ilygre"/>
+   ms.date="06/08/2015"
+   ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
 
@@ -52,6 +52,33 @@
         }
     }
 
+## デプロイ
+
+**デプロイ()**
+
+現在のデプロイ操作に関する情報を返します。
+
+デプロイに関する情報が、次のプロパティを含むオブジェクトとして返されます。
+
+    {
+      "name": "",
+      "properties": {
+        "template": {},
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+      }
+    }
+
+次の例は、デプロイ情報を出力のセクションで返す方法を示します。
+
+    "outputs": {
+      "exampleOutput": {
+        "value": "[deployment()]",
+        "type" : "object"
+      }
+    }
+
 ## listKeys
 
 **listKeys (resourceName or resourceIdentifier, [apiVersion])**
@@ -72,7 +99,29 @@
       } 
     } 
 
-## 指定
+## padLeft
+
+**padLeft(stringToPad, totalLength, paddingCharacter)**
+
+指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
+  
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToPad | あり | 右揃えにする文字列。
+| totalLength | あり | 返される文字列の文字合計数。
+| paddingCharacter | あり | 左余白の長さに到達するまで使用する文字。
+
+次の例では、文字列が 10 文字に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値に埋め込む方法を示します。元のパラメーター値が 10 文字より長い場合、文字は追加されません。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
+    }
+
+
+## parameters
 
 **parameters (parameterName)**
 
@@ -148,6 +197,27 @@
       }
     }
 
+## replace
+
+**replace(originalString, oldCharacter, newCharacter)**
+
+指定された文字列内で、1 文字を別の文字で置き換えたすべてのインスタンスを含む新しい文字列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| originalString | あり | 1 文字を別の文字で置き換えたすべてのインスタンスを含む文字列。
+| oldCharacter | あり | 元の文字列から削除する文字。
+| newCharacter | あり | 削除された文字の代わりに追加する文字。
+
+次の例では、ユーザーが指定した文字列からすべてのダッシュ (-) を削除する方法を示します。
+
+    "parameters": {
+        "identifier": { "type": "string" }
+    },
+    "variables": { 
+        "newidentifier": "[replace(parameters('identifier'),'-','')]"
+    }
+
 ## resourceGroup
 
 **resourceGroup()**
@@ -160,7 +230,7 @@
       "location": "{resourceGroupLocation}",
     }
 
-次の例では、リソース グループの場所を使用して、web サイトの場所を割り当てます。
+次の例では、リソース グループの場所を使用して、Web サイトの場所を割り当てます。
 
     "resources": [
        {
@@ -187,7 +257,7 @@
 | resourceName1 | あり | リソースの名前。
 | resourceName2 | いいえ | リソースが入れ子になっている場合、次のリソース名セグメント 。
 
-次の例では、web サイトとデータベースのリソース ID を取得する方法を示します。web サイトは **myWebsitesGroup** という名前のリソース グループ内にあり、データベースはこのテンプレートの現在のリソース グループ内にあります。
+次の例では、Web サイトとデータベースのリソース ID を取得する方法を示します。Web サイトは **myWebsitesGroup** という名前のリソース グループ内にあり、データベースはこのテンプレートの現在のリソース グループ内にあります。
 
     [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
     [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'),parameters('databaseName'))]
@@ -236,7 +306,7 @@
     }
 
 
-## サブスクリプション
+## subscription
 
 **subscription()**
 
@@ -247,7 +317,7 @@
         "subscriptionId": "#####"
     }
 
-次の例は、出力セクションで呼び出される  subscription 関数を示しています。
+次の例は、出力セクションで呼び出される subscription 関数を示しています。
 
     "outputs": { 
       "exampleOutput": { 
@@ -255,6 +325,45 @@
           "type" : "object" 
       } 
     } 
+
+## toLower
+
+**toLower(stringToChange)**
+
+指定された文字列を小文字に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToChange | あり | 小文字に変換する文字列。
+
+次の例では、ユーザー指定のパラメーター値を小文字に変換します。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "lowerCaseAppName": "[toLower(parameters('appName'))]"
+    }
+
+## toUpper
+
+**toUpper(stringToChange)**
+
+指定した文字列を大文字に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringToChange | あり | 大文字に変換する文字列。
+
+次の例では、ユーザー指定のパラメーター値を大文字に変換します。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "upperCaseAppName": "[toUpper(parameters('appName'))]"
+    }
+
 
 ## variables
 
@@ -270,7 +379,7 @@
 ## 次のステップ
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resouce-group-template-deploy.md)
+- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)
 
-<!--HONumber=52-->
+<!---HONumber=July15_HO1-->

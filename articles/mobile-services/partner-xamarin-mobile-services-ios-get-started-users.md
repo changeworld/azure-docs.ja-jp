@@ -10,10 +10,10 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm=""
+	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/23/2014"
+	ms.date="05/14/2015"
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -32,11 +32,11 @@
 
 このチュートリアルを実施するには、[Xamarin.iOS]、XCode 6.0、および iOS 7.0 以降のバージョンが必要です。
 
-<h2><a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する</h2>
+##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
-<h2><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する</h2>
+##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
@@ -46,21 +46,21 @@
 
 4. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
 
-   	この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-<h2><a name="add-authentication"></a>アプリケーションに認証を追加する</h2>
+##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-1. **TodoService** プロジェクト ファイルを開き、次の変数を追加します。
+1. **ToDoService** プロジェクト ファイルを開き、次の変数を追加します。
 
 		// Mobile Service logged in user
 		private MobileServiceUser user;
 		public MobileServiceUser User { get { return user; } }
 
-2. **TodoService** に **Authenticate** という名前の新しいメソッドを追加し、次のように定義します。
+2. **ToDoService** に **Authenticate** という名前の新しいメソッドを追加し、次のように定義します。
 
-        private async Task Authenticate(UIViewController view)
+        private async Task Authenticate(MonoTouch.UIKit.UIViewController view)
         {
             try
             {
@@ -74,34 +74,34 @@
 
 	> [AZURE.NOTE]Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _Facebook_、_Twitter_、_Google_、または _WindowsAzureActiveDirectory_ のいずれかに変更します。
 
-3. **TodoItem** テーブルに対する要求を、**TodoService** コンストラクターから **CreateTable** という名前の新しいメソッドに移動します。
+3. **ToDoItem** テーブルに対する要求を、**ToDoService** コンストラクターから **CreateTable** という名前の新しいメソッドに移動します。
 
         private async Task CreateTable()
         {
-            // Create an MSTable instance to allow us to work with the TodoItem table
-            todoTable = client.GetTable<TodoItem>();
+            // Create an MSTable instance to allow us to work with the ToDoItem table
+            todoTable = client.GetSyncTable<ToDoItem>();
         }
 
 4. **LoginAndGetData** という名前の新しい非同期パブリック メソッドを作成し、次のように定義します。
 
-        public async Task LoginAndGetData(UIViewController view)
+        public async Task LoginAndGetData(MonoTouch.UIKit.UIViewController view)
         {
             await Authenticate(view);
             await CreateTable();
         }
 
-5. **TodoListViewController** で、**ViewDidAppear** メソッドをオーバーライドし、次のように定義します。これにより、ユーザーに対するハンドルが **TodoService** にまだない場合は、ユーザーにログインします。
+5. **TodoListViewController** で、**ViewDidAppear** メソッドをオーバーライドし、次のように定義します。これにより、ユーザーに対するハンドルが **￼ToDoService￼** にまだない場合は、ユーザーにログインします。
 
         public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
 
-            if (TodoService.DefaultService.User == null)
+            if (QSToDoService.DefaultService.User == null)
             {
-                await TodoService.DefaultService.LoginAndGetData(this);
+                await QSToDoService.DefaultService.LoginAndGetData(this);
             }
 
-            if (TodoService.DefaultService.User == null)
+            if (QSToDoService.DefaultService.User == null)
             {
                 // TODO:: show error
                 return;
@@ -113,7 +113,7 @@
 
 7. **[Run]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
 ## 完成したサンプルの入手
 [完成したサンプル プロジェクト]をダウンロードします。**applicationURL** 変数と **applicationKey** 変数を独自の Azure 設定で更新してください。
@@ -149,5 +149,6 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

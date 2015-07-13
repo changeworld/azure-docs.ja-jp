@@ -29,16 +29,22 @@
 
 	これにより、認証されたユーザー資格情報を有する同じクライアント インスタンスによって登録が確実に行われます。そうしなければ、登録は失敗し、認証エラー (401) を返します。
 
-3. MainPage.xaml.cs プロジェクト ファイルを開き、**OnNavigatedTo** メソッドのオーバーライドを次のコードに置き換えます。
+3. 共有 MainPage.cs プロジェクト ファイルを開き、**ButtonLogin_Click** ハンドラーを次のコードに置き換えます。
 
-	    protected override async void OnNavigatedTo(NavigationEventArgs e)
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            await AuthenticateAsync();            
-            todolistPush.UploadChannel();
-            RefreshTodoItems();
+            // Login the user and then load data from the mobile service.
+            await AuthenticateAsync();
+			todolistPush.UploadChannel();
+
+            // Hide the login button and load items from the mobile service.
+            this.ButtonLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            await RefreshTodoItems();
         }
 
-	このコードでは、生成されたプッシュ クラス名 (`todolistPush`) をウィザードによって生成されるクラス名 (形式は通常、<code><em>mobile_service</em>Push</code>) に置き換える必要があります。
+	これにより、プッシュ登録が試行される前に、認証が行われるようになります。
+
+4. 	前のコードでは、生成されたプッシュ クラス名 (`todolistPush`) をウィザードによって生成されるクラス名 (形式は通常、<code><em>mobile_service</em>Push</code>) に置き換える必要があります。
 
 ###手動で有効にされたプッシュ通知		
 
@@ -48,13 +54,19 @@
  
 2. **InitNotificationsAsync** メソッドのアクセシビリティを、`private` から `public` に変更し、`static` 修飾子を追加します。
 
-3. MainPage.xaml.cs プロジェクト ファイルを開き、**OnNavigatedTo** メソッドのオーバーライドを次のコードに置き換えます。
+3. 共有 MainPage.cs プロジェクト ファイルを開き、**ButtonLogin_Click** ハンドラーを次のコードに置き換えます。
 
-	    protected override async void OnNavigatedTo(NavigationEventArgs e)
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            await AuthenticateAsync();            
-            App.InitNotificationsAsync();
-            RefreshTodoItems();
-        }
+            // Login the user and then load data from the mobile service.
+            await AuthenticateAsync();
+			App.InitNotificationsAsync();
 
-<!---HONumber=62-->
+            // Hide the login button and load items from the mobile service.
+            this.ButtonLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            await RefreshTodoItems();
+        }
+	
+	これにより、プッシュ登録が試行される前に、認証が行われるようになります。
+
+<!---HONumber=July15_HO1-->

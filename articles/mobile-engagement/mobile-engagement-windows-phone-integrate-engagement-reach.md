@@ -11,7 +11,7 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="C#" 
+	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/07/2015" 
 	ms.author="piyushjo" />
@@ -264,5 +264,6 @@ Reach UI をカスタマイズできるようにします。
 [アプリケーション ポリシー]: http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
 [Content Policies]: http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
 [特定のアプリケーションの種類の追加要件]: http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

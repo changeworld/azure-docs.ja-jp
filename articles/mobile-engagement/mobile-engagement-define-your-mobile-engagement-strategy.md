@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Engagement 戦略の定義" 
-	description="オンボードを使用し、分析およびプッシュ通知で Mobile Engagement を最適化する方法を説明します。" 
-	services="mobile-engagement" 
-	documentationCenter="Mobile" 
-	authors="kpiteira" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Engagement 戦略の定義"
+	description="オンボードを使用し、分析およびプッシュ通知で Mobile Engagement を最適化する方法を説明します。"
+	services="mobile-engagement"
+	documentationCenter="Mobile"
+	authors="kpiteira"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
-	ms.devlang="" 
-	ms.topic="article" 
-	ms.date="02/10/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="02/10/2015"
 	ms.author="kapiteir" />
 
 #Mobile Engagement 戦略の定義
@@ -48,9 +48,9 @@
 統合に基づいて、アプリケーションが発行されると、マーケティング担当者はリアルタイムで分析を参照し、対象ユーザーをセグメント化してから、スマート ターゲット プッシュ通知の送信を開始してアプリの内外でエンドユーザーと情報交換できるようになります。
 
 ###開始のユース ケース
-1. ようこそ戦略: 最初のセッションから 2/5/10/15 日後に再び関心を引き、最初の実行の保持期間を延ばすために、アプリケーションの起動時にエンドユーザーの行動に基づいていくつかのプッシュ通知キャンペーンを作成します。	
-2. エンドユーザーの行動に基づいて新しいコンテンツ (機能、記事/ビデオ、製品など) をプロモートして、関心を引く可能性の高い情報だけをエンドユーザーに送信します。	
-3. アプリケーションの評価: ストアでアプリを 5 つ星として評価する可能性が最も高い、ユーザー ベースの 1% 未満を対象とします。	
+1. ようこそ戦略: 最初のセッションから 2/5/10/15 日後に再び関心を引き、最初の実行の保持期間を延ばすために、アプリケーションの起動時にエンドユーザーの行動に基づいていくつかのプッシュ通知キャンペーンを作成します。
+2. エンドユーザーの行動に基づいて新しいコンテンツ (機能、記事/ビデオ、製品など) をプロモートして、関心を引く可能性の高い情報だけをエンドユーザーに送信します。
+3. アプリケーションの評価: ストアでアプリを 5 つ星として評価する可能性が最も高い、ユーザー ベースの 1% 未満を対象とします。
 4. サブスクリプションの促進: 貴重なコンテンツをまだ見たことのないエンドユーザーにプロモートして、サブスクリプションを増やします。
 5. チュートリアル: すべてのユーザーに必須のチュートリアルは不要です。アプリ内に優れたチュートリアルを構築し、ユーザーが機能を使用していないと思われる場合や機能の使用に問題があると思われる場合にのみアプリ内メッセージでそれらをトリガーしましょう。
 
@@ -91,7 +91,7 @@
 ###優れたタグ計画の作成方法
 
 タグ計画は、ユーザーパスの説明またはアプリケーションのワークフローの一種のようなものにして、ユーザーの行動を理解し、ユーザー ベースを適切にセグメント化するのに十分な分析を行うために収集する必要のあるすべてのタグ (データ) を提供する必要があります。これは技術的なプロセスではありません。そのため、マーケティング担当者は、Mobile Engagement 戦略に基づいて収集するデータを指定できます。
- 
+
 少なくとも、アプリケーションのすべての画面 (Mobile Engagement では `Activities` と呼ばれる) にタグを付けます。これにより、ユーザーパスを理解できます。
 
 アクティビティには、ボタンのクリックなどの操作情報を収集する `Events` を埋め込むことができます。これにより、アプリケーション内でのやり取りを収集できます。そのため、マーケティング担当者は、ユーザーがアクセスしている画面や実行している操作を把握できます。
@@ -126,5 +126,6 @@
 <!-- URLs. -->
 [Mobile Engagement Concepts の概念]: http://azure.microsoft.com/documentation/articles/mobile-engagement-concepts/
 [チュートリアル]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

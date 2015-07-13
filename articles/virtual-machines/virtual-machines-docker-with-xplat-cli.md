@@ -87,7 +87,7 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 Azure 上に作成した Docker VM をテストするために、次のコマンドを入力します。
 
-`docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:4243 info`
+`docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:2376 info`
 
 *<vm-name-you-used>* は、`azure vm docker create` の呼び出しで使用した仮想マシンの名前です。以下のような応答が表示されます。Azure 上で Docker ホスト VM が稼働し、コマンドの入力を待機していることが示されています。
 
@@ -96,10 +96,10 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 ### Docker ホスト VM の認証
 コマンド `azure vm docker create` では、Docker VM の作成に加えて、必要な証明書も自動的に作成されます。Docker クライアント コンピューターは、この証明書を使用することで、HTTPS を介して Azure コンテナー ホストに接続できます。証明書は必要に応じてクライアントとホスト マシンのどちらにも格納されます。以降の実行では、既存の証明書が再利用され、新しいホストと共有されます。
 
-既定では、証明書は `~/.docker` に配置されます。Docker はポート **4243** で実行するように構成されます。別のポートやディレクトリを使用する場合は、以下の `azure vm docker create` コマンド ライン オプションのいずれかを使用して、Docker コンテナー ホスト VM がクライアントとの接続に別のポートや証明書を使用するよう構成できます。
+既定では、証明書は `~/.docker` に配置されます。Docker はポート **2376** で実行するように構成されます。別のポートやディレクトリを使用する場合は、以下の `azure vm docker create` コマンド ライン オプションのいずれかを使用して、Docker コンテナー ホスト VM がクライアントとの接続に別のポートや証明書を使用するよう構成できます。
 
 ```
--dp, --docker-port [port]              Port to use for docker [4243]
+-dp, --docker-port [port]              Port to use for docker [2376]
 -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
 ```
 
@@ -139,4 +139,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

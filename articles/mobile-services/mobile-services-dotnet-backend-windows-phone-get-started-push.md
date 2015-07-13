@@ -1,10 +1,9 @@
 <properties 
-	pageTitle=".NET ランタイム モバイル サービスを使用したプッシュ通知ハブの使用" 
+	pageTitle="Azure Mobile Services と Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します。" 
 	description="Notification Hubs と Azure Mobile Services を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
-	authors="wesmc7777" 
-	writer="wesmc" 
+	authors="ggailey777" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
+	ms.date="06/04/2015" 
 	ms.author="wesmc"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -23,12 +22,11 @@
 
 ##概要
 
-このトピックでは、Azure のモバイル サービスを .NET バックエンドで使用して Windows Phone Silverlight 8 アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、クイック スタート プロジェクトへの Azure 通知ハブを使用したプッシュ通知を有効にします。完了すると、モバイル サービスは、レコードが挿入されるたびに通知ハブを使用してプッシュ通知を送信します。作成する通知ハブはモバイル サービスでは無料で、モバイル サービスから独立して管理することができ、他のアプリケーションおよびサービスで使用できます。
+このトピックでは、Azure Mobile Services と .NET バックエンドを使用して、Microsoft Push Notification Service (MPNS) で Windows Phone Silverlight 8 アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、クイック スタート プロジェクトへの Azure Notification Hubs を使用したプッシュ通知を有効にします。完了すると、モバイル サービスは、レコードが挿入されるたびに Notification Hubs を使用してプッシュ通知を送信します。作成する通知ハブはモバイル サービスでは無料で、モバイル サービスから独立して管理することができ、他のアプリケーションおよびサービスで使用できます。
 
+このチュートリアルは、Mobile Services の TodoList プロジェクトに基づいています。このチュートリアルを開始する前に、「[既存のアプリケーションへの Mobile Services の追加]」を完了してプロジェクトをモバイル サービスに接続している必要があります。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[既存のアプリケーションへの Mobile Services の追加]」を完了してプロジェクトをモバイル サービスに接続している必要があります。
-
->[AZURE.NOTE]このチュートリアルは Windows Phone 8.1 "Silverlight" アプリケーションを対象にしています。Windows Phone 8.1 ストア アプリケーションを作成している場合は、このチュートリアルの [Windows ストア アプリ](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) バージョンを参照してください。Windows Phone Silverlight アプリケーションについての情報と Windows Phone ストア アプリケーションとの比較については [Windows Phone Silverlight 8.1 アプリケーション]を参照してください。
+>[AZURE.NOTE]このチュートリアルは Windows Phone 8.1 Silverlight アプリケーションを対象にしています。Windows Phone 8.1 ストア アプリケーションを作成している場合は、このチュートリアルの [Windows ストア アプリ](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) バージョンを参照してください。Windows Phone Silverlight アプリケーションについての情報と Windows Phone ストア アプリケーションとの比較については [Windows Phone Silverlight 8.1 アプリケーション]を参照してください。
 
 ##アプリケーションを更新して通知に登録する
 
@@ -140,7 +138,7 @@
 
 3. **[プッシュ]** タブをクリックし、**[非認証プッシュ通知を有効にします]** をオンにして、**[保存]** をクリックします。
 
-   	![][4]
+   	![Mobile Services の [プッシュ] タブ](./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-push-tab.png)
 
 	>[AZURE.NOTE]このチュートリアルでは、非認証モードで MPNS を使用します。このモードでは、MPNS はデバイス チャネルに送信できる通知の数を制限します。この制限を削除するには、<strong>[アップロード]</strong> をクリックして証明書を生成してアップロードし、その証明書を選択する必要があります。証明書を生成する方法の詳細については、「<a href="http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx">認証済み Web サービスを設定して Windows Phone のプッシュ通知を送信する</a>」を参照してください。
 
@@ -159,29 +157,21 @@
 
 5. アプリケーションのテキストボックスに「hello push」と入力して、**[保存]** をクリックし、すぐに [開始] ボタンまたは [戻る] ボタンを押してアプリケーションを閉じます。
 
-   	![][2]
+   	![テキストの挿入][2]
 
   	これにより、追加された項目を保存するための挿入要求がモバイル サービスに送信されます。デバイスは **hello push** というトースト通知を受信します。
 
-	![][5]
+	![受信したプッシュ通知](./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-quickstart-push5-wp8.png)
 
 	>[AZURE.NOTE]アプリケーションが開いている場合は通知を受信しません。アプリケーション起動中にトースト通知を受信するには、[ShellToastNotificationReceived](http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived.aspx) イベントを処理する必要があります。
 
 ##次のステップ
 
-このチュートリアルでは、Windows Phone アプリケーションを有効にしてモバイル サービスと通知ハブを使用してプッシュ通知を送信する基本事項について説明しました。次は、タグを使用して、プッシュ通知をモバイル サービスから認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[プッシュ通知を認証ユーザーに送信する]」を行うことをお勧めします。
+このチュートリアルでは、Windows Phone アプリケーションを有効にしてモバイル サービスと通知ハブを使用してプッシュ通知を送信する基本事項について説明しました。次のチュートリアル「[認証されたユーザーにプッシュ通知を送信する]」を完了してください。このチュートリアルではタグを使用してモバイル サービスから認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
 
-<!--+ [Send push notifications to authenticated users]
-	<br/>Learn how to use tags to send push notifications from a Mobile Service to only an authenticated user.
-
-+ [Send broadcast notifications to subscribers]
-	<br/>Learn how users can register and receive push notifications for categories they're interested in.
--->
 次のモバイル サービスと通知ハブのトピックの詳細を確認することをお勧めします。
 
-* [データの使用] <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
-
-* [認証の使用] <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
+* [アプリへの認証の追加] <br/>Mobile Services を使用して別の種類のアカウントでアプリケーションのユーザーを認証する方法について説明します。
 
 * [通知ハブとは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
@@ -197,18 +187,12 @@
 [1]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-app-enable-push-wp8.png
 [2]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-quickstart-push3-wp8.png
 [3]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-quickstart-push4-wp8.png
-[4]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-push-tab.png
-[5]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-quickstart-push5-wp8.png
 
 <!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: ../mobile-services-dotnet-backend-windows-phone-get-started.md
 [既存のアプリケーションへの Mobile Services の追加]: mobile-services-dotnet-backend-windows-phone-get-started-data.md
-[認証の使用]: mobile-services-dotnet-backend-windows-phone-get-started-users.md
+[アプリへの認証の追加]: mobile-services-dotnet-backend-windows-phone-get-started-users.md
 
-[プッシュ通知を認証ユーザーに送信する]: mobile-services-dotnet-backend-windows-phone-push-notifications-app-users.md
+[認証されたユーザーにプッシュ通知を送信する]: mobile-services-dotnet-backend-windows-phone-push-notifications-app-users.md
 
 [通知ハブとは]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-windows-phone-send-breaking-news.md
@@ -218,5 +202,6 @@
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
 [Windows Phone Silverlight 8.1 アプリケーション]: http://msdn.microsoft.com/library/windowsphone/develop/dn642082(v=vs.105).aspx
 [Azure の管理ポータル]: https://manage.windowsazure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

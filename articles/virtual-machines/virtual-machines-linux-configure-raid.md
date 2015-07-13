@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/18/2014" 
+	ms.date="03/13/2015" 
 	ms.author="szark"/>
 
 
@@ -24,9 +24,9 @@
 
 
 ## データ ディスクをアタッチする
-2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Windows Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](http://azure.microsoft.com/documentation/articles/storage-windows-attach-disk/#attachempty)」を参照してください。
+2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Windows Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](storage-windows-attach-disk.md#attachempty)」を参照してください。
 
->[AZURE.NOTE] XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Windows Azure (Windows Azure の仮想マシンとクラウド サービスのサイズ)](http://msdn.microsoft.com/library/windowsazure/dn197896.aspx)」を参照してください。
+>[AZURE.NOTE]XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンとクラウド サービスのサイズ)](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
 
 ## mdadm ユーティリティをインストールする
@@ -51,20 +51,20 @@
 - fdisk を使用してパーティションの作成を開始する
 
 		# sudo fdisk /dev/sdc
-		デバイスには、有効な DOS パーティション テーブルも、Sun、SGI、OSF ディスク ラベルもありません。
-		新しい DOS ディスク ラベルをディスク識別子 0xa34cb70c で作成します。
-		変更は書き込まれるまでメモリにのみ残ります。
-		書き込み後、以前の内容は回復できなくなります。
+		Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
+		Building a new DOS disklabel with disk identifier 0xa34cb70c.
+		Changes will remain in memory only, until you decide to write them.
+		After that, of course, the previous content won't be recoverable.
 
-		警告:DOS 互換モードは廃止されました。次の手順を実行することを強くお勧めします。
-				 現在のモードをオフにし (コマンド 'c')、表示単位を
-				 セクターに変更します (コマンド 'u')。
+		WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
+				 switch off the mode (command 'c') and change display units to
+				 sectors (command 'u').
 
-- プロンプトが表示されたら N キーを押して、**新しい**パーティションを作成します。
+- プロンプトが表示されたら N キーを押して、新しいパーティションを作成します。
 
 		Command (m for help): n
 
-- 次に、P キーを押して、**プ**ライマリ パーティションを作成します。
+- 次に、P キーを押して、プライマリ パーティションを作成します。
 
 		Command action
 			e   extended
@@ -85,7 +85,7 @@
 		Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
 		Using default value 1305
 
-- 次に、パーティションの ID とタイプを変更します (コマンド "**t**")。既定の ID "83" (Linux) から ID 'fd' (Linux raid auto) に変更してください。
+- 次に、パーティションの ID とタイプを変更します (コマンド 't')。既定の ID '83' (Linux) から ID 'fd' (Linux raid auto) に変更してください。
 
 		Command (m for help): t
 		Selected partition 1
@@ -122,12 +122,12 @@
 		# sudo -i chkconfig --add boot.md
 		# sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
 
-	>[AZURE.NOTE] SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。
+	>[AZURE.NOTE]SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。
 
 
 ## 新しいファイル システムを /etc/ fstab に追加する
 
-**警告:** /etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+**注意事項:** /etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
 
 1. 新しいファイル システムに必要なマウント ポイントを作成します。たとえば、次のようになります。
 
@@ -161,7 +161,9 @@
 		.................
 		/dev/md127 on /data type ext4 (rw)
 
-5. 省略可能なパラメーター
+5. (オプション) フェールセーフ ブート パラメーター
+
+	**fstab 構成**
 
 	多くのディストリビューションでは、`nobootwait` または `nofail` のいずれかのマウント パラメーターが /etc/fstab ファイルに追加されている場合があります。これらのパラメーターにより、特定のファイル システムをマウントしているときのエラーが許容されます。RAID ファイル システムを適切にマウントできない場合でも、Linux システムの起動を続行できるようになります。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
@@ -169,10 +171,12 @@
 
 		UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,nobootwait  0  2
 
-	これらのパラメーターのほかにも、カーネル パラメーター "`bootdegraded=true`" では、RAID が破損または劣化として認識された場合、たとえばデータ ドライブが誤って仮想マシンから削除された場合でも、システムを起動できるようになります。既定では、この場合はシステムが起動できなくなる可能性があります。
+	**Linux ブート パラメーター**
 
-	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
+	これらのパラメーターの他にも、カーネル パラメーター "`bootdegraded=true`" では、RAID が破損または劣化として認識された場合、たとえばデータ ドライブが誤って仮想マシンから削除された場合でも、システムを起動できるようになります。既定では、この場合はシステムが起動できなくなる可能性があります。
 
+	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
-<!--HONumber=45--> 
  
+
+<!---HONumber=July15_HO1-->

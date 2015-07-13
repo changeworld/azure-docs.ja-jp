@@ -8,21 +8,21 @@
 5. zip ファイルを右クリックし、**[すべて展開]** をクリックします。 「C:\」を指定し、**[展開]** をクリックします。ファイルが展開されたら、インストール フォルダーの名前をシンプルな名前に変更すると便利です。たとえば、"MongoDB" という名前を使用します。
 6. MongoDB データとログ ディレクトリを、前の手順で作成したデータ ディスク (ドライブ **F:** など) に作成します。**[スタート]** で **[コマンド プロンプト]** を選択し、コマンド プロンプト ウィンドウを開きます。型:
 
-		C:> F:
+		C:\> F:
 		F:> mkdir \MongoData
 		F:> mkdir \MongoLogs
 
 7. データベースを実行するには、次を実行します。
 
 		F:> C:
-		C:> cd \MongoDB\bin
+		C:\> cd \MongoDB\bin
 		C:\my_mongo_dir\bin> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
 	mongod.exe サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが *F:\MongoLogs\mongolog.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
 
 8. MongoDB 管理シェルを開始するには、**[スタート]** から他のコマンド ウィンドウを開き、次のように入力します。
 
-		C:> cd \my_mongo_dir\bin  
+		C:\> cd \my_mongo_dir\bin  
 		C:\my_mongo_dir\bin> mongo  
 		>db  
 		test  	  
@@ -93,4 +93,4 @@
 [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

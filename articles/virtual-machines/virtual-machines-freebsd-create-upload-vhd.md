@@ -41,22 +41,22 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 1. **DHCP を有効にする**
 
-		# echo 'ifconfig_hn0="SYNCDHCP"' > /etc/rc.conf
+		# echo 'ifconfig_hn0="SYNCDHCP"' >> /etc/rc.conf
 		# service netif restart
 
 2. **SSH を有効にする**
 
     SSH は、ディスクからインストールすると、既定で有効になります。有効になっていない場合または FreeBSD VHD を直接使用する場合は、次のように入力します。
 
-		# echo 'sshd_enable="YES"' > /etc/rc.conf 
+		# echo 'sshd_enable="YES"' >> /etc/rc.conf 
 		# ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key 
 		# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key 
 		# service sshd restart
 
 3. **シリアル コンソールをセットアップする**
 
-		# echo 'console="comconsole vidconsole"' > /boot/loader.conf
-		# echo 'comconsole_speed="115200"' > /boot/loader.conf
+		# echo 'console="comconsole vidconsole"' >> /boot/loader.conf
+		# echo 'comconsole_speed="115200"' >> /boot/loader.conf
 
 4. **sudo をインストールする**
 
@@ -206,4 +206,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

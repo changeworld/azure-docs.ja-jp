@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2015" 
+	ms.date="05/25/2015" 
 	ms.author="juliako"/>
 
-# 方法:ジョブの進行状況をチェックする
+#方法: ジョブの進行状況をチェックする
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。 
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。ジョブの状態プロパティを使用して、ジョブの状態を調べることができます。状態プロパティの詳細については、[Job Entity Properties (Job エンティティのプロパティ)](https://msdn.microsoft.com/library/azure/5100ddd7-92ff-4c37-84d2-4f84fee250a7#job_entity_properties)をご覧ください。
 
@@ -52,7 +52,6 @@
 	Strict-Transport-Security: max-age=31536000; includeSubDomains
 	Date: Wed, 11 Feb 2015 01:46:39 GMT
 	
-	{"odata.metadata":"https://media.windows.net/api/$metadata#Jobs","value":[{"Id":"nb:jid:UUID:f3c43f94-327f-2347-90bb-3bf79f8559f1","Name":"Encoding BigBuckBunny into to H264 Adaptive Bitrate MP4 Set 720p","Created":"2015-02-11T01:46:08.897","LastModified":"2015-02-11T01:46:08.897","EndTime":null,"Priority":0,"RunningDuration":0.0,"StartTime":"2015-02-11T01:46:16.58","State":2,"TemplateId":null,"JobNotificationSubscriptions":[]}]}
+	{"odata.metadata":"https://media.windows.net/api/$metadata#Jobs","value":[{"Id":"nb:jid:UUID:f3c43f94-327f-2347-90bb-3bf79f8559f1","Name":"Encoding BigBuckBunny into to H264 Adaptive Bitrate MP4 Set 720p","Created":"2015-02-11T01:46:08.897","LastModified":"2015-02-11T01:46:08.897","EndTime":null,"Priority":0,"RunningDuration":0.0,"StartTime":"2015-02-11T01:46:16.58","State":2,"TemplateId":null,"JobNotificationSubscriptions":[]}]} 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO1-->

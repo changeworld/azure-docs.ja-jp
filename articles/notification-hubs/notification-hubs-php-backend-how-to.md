@@ -3,7 +3,7 @@
 	description="PHP バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="yuaxu" 
+	authors="ysxu" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="php" 
 	ms.devlang="php" 
 	ms.topic="article" 
-	ms.date="11/14/2014" 
+	ms.date="04/14/2015" 
 	ms.author="yuaxu"/>
 
 # PHP から Notification Hubs を使用する方法
@@ -26,12 +26,12 @@ MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/libr
 このトピックでは、次の方法について説明します。
 
 * PHP で Notification Hubs 機能の REST クライアントを記述します。
-* 選択したモバイル プラットフォームの「[通知ハブの使用](notification-hubs-ios-get-started.md) 」に従って、PHP のバックエンド部分を実装します。
+* 選択したモバイル プラットフォームの「[Notification Hubs の使用](notification-hubs-ios-get-started.md)」に従って、PHP のバックエンド部分を実装します。
 
 ## クライアント インターフェイス
-メイン クライアント インターフェイスは、「[.NET クラス ライブラリ](http://msdn.microsoft.com/library/jj933431.aspx)」で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
+メイン クライアント インターフェイスは、[.NET 通知ハブの SDK](http://msdn.microsoft.com/library/jj933431.aspx) で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
 
-[PHP REST ラッパーのサンプル] ページで利用可能なすべてのコードを検索できます。
+「[PHP REST wrapper sample (PHP REST ラッパー サンプル)]」で利用可能なすべてのコードを検索できます。
 
 たとえば、クライアントを作成する場合:
 
@@ -43,8 +43,7 @@ iOS ネイティブ通知を送信する場合:
 	$hub->sendNotification($notification);
 
 ## 実装
-まだ実施していない場合は、「[Notification Hubs の使用]」に従って最後のセクションまで進み、バックエンドを実装します。
-また、必要があれば [PHP REST ラッパーのサンプル] ページのコードを使用し、直接「[チュートリアルを完了する](#complete-tutorial)」の セクションを参照してください。
+まだ実施していない場合は、「[Notification Hubs の使用]」に従って最後のセクションまで進み、バックエンドを実装します。また、必要があれば「[PHP REST wrapper sample (PHP REST ラッパー サンプル)]」のコードを使用し、直接[チュートリアルの完了](#complete-tutorial)セクションに進むこともできます。
 
 REST ラッパーすべての実装の詳細については、[MSDN の記事](http://msdn.microsoft.com/library/dn530746.aspx)を参照してください。このセクションでは、Notification Hubs REST エンドポイントにアクセスするために必要な主要手順の PHP 実装について説明します。
 
@@ -90,8 +89,7 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 
 ### セキュリティ トークンを作成する
-セキュリティ トークンの作成の詳細については、[こちら](http://msdn.microsoft.com/library/dn495627.aspx)で参照できます。
-現在の要求の URI および接続文字列から抽出した資格情報に基づいてトークンを作成するには、次のメソッドを **NotificationHub** クラスに追加する必要があります。
+セキュリティ トークンの作成の詳細については、[こちら](http://msdn.microsoft.com/library/dn495627.aspx)をご覧ください。現在の要求の URI、および接続文字列から抽出した資格情報に基づきトークンを作成するため、**NotificationHub** クラスに次のメソッドを追加する必要があります。
 
 	private function generateSasToken($uri) {
 		$targetUri = strtolower(rawurlencode(strtolower($uri)));
@@ -135,7 +133,7 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 利用可能なすべてのオプションについては、「[REST API のメソッド](http://msdn.microsoft.com/library/dn495827.aspx)」、および特定の通知プラットフォームの形式を参照してください。
 
-このクラスを利用して、**NotificationHub** クラス内に通知を送信するメソッドを作成できます。
+このクラスを利用して、**NotificationHub** クラス内に送信通知メソッドを作成できます。
 
 	public function sendNotification($notification) {
 		$this->sendNotification($notification, "");
@@ -200,11 +198,10 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 上記のメソッドは、HTTP POST 要求、および通知を送信する正しい本体とヘッダーを通知ハブの /messages エンドポイントに送信します。
 
-##<a name="complete-tutorial"></a>チュートリアルを完了する
+##<a name="complete-tutorial"></a>チュートリアルの完了
 ここで、PHP バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
-Notification Hubs のクライアントを初期化します (「[Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
-	$hub = new NotificationHub("connection string", "hubname");	
+Notification Hubs クライアントを初期化します (「[Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます) $hub = new NotificationHub("connection string", "hubname")。
 
 次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。
 
@@ -251,12 +248,14 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 ## 次のステップ
 このトピックでは、Notification Hubs 用の単純な Java REST クライアントの作成方法を説明しました。次は、以下を実行できます。
 
-* [PHP REST ラッパーのサンプル]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
-* 引き続き、[ニュース速報チュートリアル] で Notification Hubs のタグ付け機能について学習してください。
+* [PHP REST ラッパー サンプル]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
+* 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。
 * 個別ユーザーへの通知のプッシュについては、「[ユーザーへの通知チュートリアル]」で学習してください。
 
 
-[PHP REST ラッパーのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
+[PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
+[PHP REST ラッパー サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO1-->

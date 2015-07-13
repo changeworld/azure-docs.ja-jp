@@ -27,12 +27,7 @@
 
 ## 目次
 
-[Blitline とは][]
-[Blitline に当てはまらないこと][]
-[Blitline アカウントの作成][]
-[Blitline ジョブを作成する方法][]
-[画像を Azure ストレージに保存する方法][]
-[次のステップ][]
+[Blitline とは][] [Blitline に当てはまらないこと][] [Blitline アカウントの作成][] [Blitline ジョブを作成する方法][] [画像を Azure ストレージに保存する方法][] [次のステップ][]
 
 ## <a id="whatis"></a>Blitline とは
 
@@ -148,12 +143,11 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
 * サード パーティの Nuget ライブラリ <http://nuget.org/packages/Blitline.Net>
 
 
-[次のステップ]: #nextsteps
-[Blitline とは]: #whatis
-[Blitline に当てはまらないこと]: #whatisnot
-[Blitline アカウントの作成]: #createaccount
-[Blitline ジョブを作成する方法]: #createjob
-[画像を Azure ストレージに保存する方法]: #saveazure
+  [次のステップ]: #nextsteps
+  [Blitline とは]: #whatis
+  [Blitline に当てはまらないこと]: #whatisnot
+  [Blitline アカウントの作成]: #createaccount
+  [Blitline ジョブを作成する方法]: #createjob
+  [画像を Azure ストレージに保存する方法]: #saveazure
 
-
-<!--HONumber=52-->
+<!---HONumber=July15_HO1-->

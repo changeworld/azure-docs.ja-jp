@@ -10,16 +10,16 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
+	ms.date="06/15/2015" 
 	ms.author="wesmc"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理
 
-[WACOM.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
+[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
 
 ##概要
 
@@ -51,7 +51,7 @@
 
 2. 「[オフライン データの使用]」チュートリアルで説明された手順で SQLite for Windows 8.1 および Windows Phone 8.1 をインストールしていない場合は、両方をランタイムでインストールします。
 
-3. Visual Studio 2013 で、*mobile-services-samples\\TodoOffline\\WindowsUniversal\\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
+3. Visual Studio 2013 で、*mobile-services-samples\TodoOffline\WindowsUniversal\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
 
     >[AZURE.NOTE]SQLite ランタイムへの以前の参照を削除し、これを「[オフライン データの使用]」チュートリアルで説明したように、更新された参照で置き換える必要がある場合があります。
 
@@ -164,5 +164,6 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Handling Database Conflicts]: mobile-services-windows-store-dotnet-handle-database-conflicts.md#test-app
 [Mobile Services のサンプルの GitHub リポジトリ]: http://go.microsoft.com/fwlink/?LinkId=512865
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

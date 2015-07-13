@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/20/2015" 
+	ms.date="06/09/2015" 
 	ms.author="wesmc"/>
 
 # Mobile Services と Azure Active Directory でのロール ベースのアクセス制御
@@ -62,7 +62,7 @@
 
 1. Visual Studio で、モバイル サービスの .NET バックエンド プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. [NuGet パッケージ マネージャー] ダイアログ ボックスで、検索条件に「**ADAL**」と入力してモバイル サービスの **Active Directory 認証ライブラリ**を検索し、インストールします。このチュートリアルは、ADAL パッケージの 3.0.110281957-alpha (プレリリース) バージョンで最後にテストされています。
+2. [NuGet パッケージ マネージャー] ダイアログ ボックスで、検索条件に「**ADAL**」と入力してモバイル サービスの **Active Directory 認証ライブラリ**を検索し、インストールします。このチュートリアルは、ADAL パッケージの 3.3.205061641-alpha (プレリリース) バージョンで最後にテストされています。
 
 3. Visual Studio で、モバイル サービス プロジェクトを右クリックし、**[追加]**、**[新しいフォルダー]** の順にクリックします。新しいフォルダーに "**Utilities**" という名前を付けます。
 
@@ -178,7 +178,8 @@
 
     >[AZURE.NOTE]ADAL for .NET には、Active Directory に対する余分なネットワーク トラフィックを軽減するために、既定でメモリ内トークン キャッシュが含まれます。ただし、独自のキャッシュ実装を作成したり、完全にキャッシュを無効にしたりできます。詳細については、[Azure AD Authentication Library for .NET]」を参照してください。
 
-        private string GetAADToken()
+        // Use ADAL and the authentication app settings from the Mobile Service to get an AAD access token
+        private async Task<string> GetAADToken()
         {
             // Try to get the required AAD authentication app settings from the mobile service.  
             if (!(services.Settings.TryGetValue("AAD_CLIENT_ID", out clientid) &
@@ -192,8 +193,8 @@
             ClientCredential clientCred = new ClientCredential(clientid, clientkey);
             string authority = String.Format(CultureInfo.InvariantCulture, AadInstance, tenantdomain);
             AuthenticationContext authContext = new AuthenticationContext(authority);
-            AuthenticationResult result = authContext.AcquireTokenAsync(GraphResourceId, clientCred).Result;
 
+            AuthenticationResult result = await authContext.AcquireTokenAsync(GraphResourceId, clientCred);
             if (result != null)
                 token = result.AccessToken;
             else
@@ -391,4 +392,5 @@
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info.md
 [Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
-<!--HONumber=54--> 
+
+<!---HONumber=July15_HO1-->

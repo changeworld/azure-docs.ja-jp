@@ -5,4 +5,4 @@
 - [(Android | Any)](../articles/mobile-services-android-how-to-use-client-library.md)
 - [(Xamarin | Any)](../articles/partner-xamarin-mobile-services-how-to-use-client-library.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

@@ -125,7 +125,7 @@ Docker ホストで、次のコマンドを実行します。```
 ## Azure CLI コマンドの実行
 
 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、cmd.exe など) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、Windows で help コマンドを実行するには、管理者特権でコマンド プロンプト (cmd.exe) を起動します。```
-	c:> azure help
+	C:\> azure help
 ```
 
 これで準備が整いました。 [Azure CLI から Azure サブスクリプションに接続](xplat-cli-connect.md)することで、**azure** コマンドの使用を開始できます。
@@ -150,7 +150,7 @@ Azure CLI をインストールすると、コマンド ライン インター�
 [mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
 [windows-installer]: http://go.microsoft.com/?linkid=9828653&clcid=0x409
 [linux-installer]: http://go.microsoft.com/fwlink/?linkid=253472
-[cliasm]: virtual-machines-command-line-tools.md
-[cliarm]: xplat-cli-azure-resource-manager.md
+[cliasm]: virtual-machines/virtual-machines-command-line-tools.md
+[cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

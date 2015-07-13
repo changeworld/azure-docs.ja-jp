@@ -11,7 +11,7 @@
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="C#" 
+	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/07/2015" 
 	ms.author="piyushjo" />
@@ -377,5 +377,6 @@ SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリ�
 前の例では、サーバーに送信される JSON は 44 文字です。
 
 			{"subscription":"2013-12-07","premium":"true"}
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO1-->

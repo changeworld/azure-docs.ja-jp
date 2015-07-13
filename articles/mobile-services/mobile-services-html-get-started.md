@@ -34,7 +34,7 @@
 
 このチュートリアルを完了することは、HTML アプリの他のすべての Mobile Services チュートリアルの前提条件です。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。
 
 ###その他の要件
 
@@ -159,4 +159,4 @@
 [Cross-origin resource sharing]: http://msdn.microsoft.com/library/windowsazure/dn155871.aspx
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

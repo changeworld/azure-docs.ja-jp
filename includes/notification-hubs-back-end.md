@@ -100,4 +100,4 @@
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO1-->

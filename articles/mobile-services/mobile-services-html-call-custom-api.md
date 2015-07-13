@@ -3,18 +3,17 @@
 	description="カスタム API を定義し、Azure Mobile Services を使用する HTML アプリからそれを呼び出す方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="ggailey777" 
-	writer="jparrel" 
+	authors="bureado"  
 	manager="dwrede" 
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile-html" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="02/26/2015" 
+	ms.date="06/04/2015" 
 	ms.author="glenga"/>
 
 # HTML アプリケーションからのカスタム API 呼び出し
@@ -25,19 +24,13 @@
 
 このトピックで作成したカスタム API では、テーブル内のすべての Todo 項目の完了フラグを `true` に設定する単一の POST 要求を送信できます。このカスタム API を使用せずにこれを行う場合、クライアントは、テーブル内の各 Todo 項目について個別にフラグの更新要求を送信する必要があります。
 
-チュートリアル「[モバイル サービスの使用]」または「[データの使用]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
-
-1. [カスタム API を定義する]
-2. [カスタム API を呼び出すようにアプリケーションを更新する]
-3. [アプリケーションをテストする] 
-
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。
+このチュートリアルは、Mobile Services のクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」または[既存のアプリケーションへの Mobile Services の追加]に関するチュートリアルを完了しておく必要があります。
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
 [AZURE.INCLUDE [mobile-services-create-custom-api](../../includes/mobile-services-create-custom-api.md)]
 
-<h2><a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する</h2>
+##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
 1. テキスト エディターを使用して index.html ファイルを開き、`buttonRefresh` という **button** 要素を探し、その直後に次の要素を新たに追加します。 
 
@@ -79,19 +72,24 @@
 
 ## 次のステップ
 
-ここまでで、カスタム API を作成し、HTML アプリケーションから呼び出す方法について説明しました。モバイル サービスに関連する次のトピックも参考にしてください。
+このトピックでは、**invokeApi** 関数を使用して、HTML/JavaScript アプリからごく簡単なカスタム API を呼び出す方法を紹介しました。**invokeApi** 関数の詳しい使用方法については、[Azure Mobile Services のカスタム API に関する投稿](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)を参照してください。
+
+また、次の Mobile Services のトピックの詳細を確認することをお勧めします。
 
 * [Mobile Services のサーバー スクリプト リファレンス] <br/>カスタム API の作成について説明します。
 
+* [ソース管理へのサーバー スクリプトの保存] <br/> ソース管理機能を使用して、カスタム API スクリプト コードを簡単かつ安全に開発、発行する方法について説明します。
+
 <!-- Anchors. -->
-[カスタム API を定義する]: #define-custom-api
-[カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
-[アプリケーションをテストする]: #test-app
+[Define the custom API]: #define-custom-api
+[Update the app to call the custom API]: #update-app
+[Test the app]: #test-app
 [Next Steps]: #next-steps
 
 <!-- URLs. -->
 [Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[モバイル サービスの使用]: mobile-services-html-get-started.md
-[データの使用]: mobile-services-html-get-started-data.md
-<!--HONumber=54--> 
+[Mobile Services の使用]: mobile-services-html-get-started.md
+[既存のアプリケーションへの Mobile Services の追加]: mobile-services-html-get-started-data.md
+[ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
+
+<!---HONumber=July15_HO1-->

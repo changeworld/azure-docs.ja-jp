@@ -52,4 +52,4 @@ Baltimore CyberTrust Root を追加する必要がある場合、そのシリア
 
 Azure で使用するルート証明書の詳細については、[Azure ルート証明書の移行](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)に関するページを参照してください。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO1-->

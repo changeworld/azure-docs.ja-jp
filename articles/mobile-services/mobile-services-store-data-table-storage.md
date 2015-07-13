@@ -11,16 +11,17 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="" 
+	ms.tgt_pltfrm="mobile" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/23/2014" 
+	ms.date="06/05/2015" 
 	ms.author="yuaxu"/>
 
 # Mobile Services を使用した Azure テーブル ストレージへのデータの格納
 
-[Mobile Services と Azure Storage] に関する Chris Risner のチュートリアルに従って、Mobile Services を通じてテーブル ストレージを操作する方法を説明します。
+Chris Risner のチュートリアル「[Mobile Services と Microsoft Azure Storage]」に従って、Mobile Services を通じてテーブル ストレージを操作する方法を説明します。
 
-[Mobile Services と Azure Storage]: http://chrisrisner.com/Mobile-Services-and-Windows-Azure-Storage
-<!--HONumber=47-->
+[Mobile Services と Microsoft Azure Storage]: http://chrisrisner.com/Mobile-Services-and-Windows-Azure-Storage
  
+
+<!---HONumber=July15_HO1-->
