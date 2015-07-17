@@ -28,7 +28,10 @@ Azure 管理ポータルを開くと、自動的に [**すべてのアイテム*
 新しいウィンドウが開き、次のタブが表示されます。このトピックでは、これらのタブについて説明します。
 
 ## クイック スタート (![クイック スタート][QuickStart])
-BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。<table border="1"> <tr> <td><strong>ツールの入手</strong></td>
+BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。
+<table border="1">
+    <tr>
+        <td><strong>ツールの入手</strong></td>
 
         <td>Download the BizTalk Services SDK to install the Visual Studio project templates on your on-premises development computer. These templates create the <strong>BizTalk Services</strong> (bridge) and the <strong>BizTalk Service Artifacts</strong> (Transform) Visual Studio projects that are deployed to your BizTalk Service.
         <br/><br/>
@@ -233,10 +236,20 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 ##### グラフ内のメトリックを削除または表示するには:
 1. **[監視]** タブを選択します。
-2. タスク バーで [**メトリックの追加**] を選択します。<br/>![[メトリックの追加] を選択する][AddMetrics]
+2. タスク バーで [**メトリックの追加**] を選択します。
+<br/>
+![[メトリックの追加] を選択する][AddMetrics]
 3. 表示したいパフォーマンス メトリックのチェック ボックスをオンにします。
 4. チェックマークを選択して **[監視]** タブに戻ります。
-5. グラフにメトリック値を表示するメトリックの横にある円を選択します。<br/> たとえば、[**CPU 使用率**] メトリックは淡色表示になっており、その出力はグラフに表示されません。 <br/> ![CPU 使用率のメトリックは淡色表示される][GrayedMetric] <br/> 淡色表示されている円を選択して [**CPU 使用率**] メトリックの出力をグラフに表示します。 <br/> ![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
+5. グラフにメトリック値を表示するメトリックの横にある円を選択します。
+<br/>
+たとえば、[**CPU 使用率**] メトリックは淡色表示になっており、その出力はグラフに表示されません。
+<br/>
+![CPU 使用率のメトリックは淡色表示される][GrayedMetric]
+<br/>
+淡色表示されている円を選択して [**CPU 使用率**] メトリックの出力をグラフに表示します。
+<br/>
+![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
 
 6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
 
@@ -355,4 +368,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=62-->
+<!----HONumber=62-->

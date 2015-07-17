@@ -126,7 +126,8 @@ Azure テーブル ストレージの使用を開始するには、テーブル�
 次のページで、Azure テーブル情報を入力します。出力のエイリアスは、クエリの出力をこのテーブルにダイレクトするために、クエリ内で使用できる名前です。
 
 
-![図 14][graphic14] ![図 15][graphic15]
+![図 14][graphic14]
+![図 15][graphic15]
 
 バッチ サイズは、バッチ操作の対象となるレコード数です。使い慣れていない場合は既定値のままにします。詳細については、[https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx) を参照してください。
 
