@@ -63,9 +63,9 @@
 	
 	ネットワーク構成ファイルの次の行を編集して、値を置き換えます。
 
-	**古い値 :** <VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
+	**古い値 :** \<VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
 
-	**新しい値 :** <VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
+	**新しい値 :** \<VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
 
 1. 変更を保存し、ネットワーク構成を Azure に[インポート](../virtual-networks-using-network-configuration-file/)します。
 

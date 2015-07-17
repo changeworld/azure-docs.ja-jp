@@ -92,19 +92,20 @@ private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIden
 
 6.	次に、Web.config に対応する変更を加えます。Web.config を開き、アプリ設定を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
-&lt;appSettings>
-  &lt;add key="webpages:Version" value="3.0.0.0" />
-  &lt;add key="webpages:Enabled" value="false" />
-  &lt;add key="ClientValidationEnabled" value="true" />
-  &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" />
-  <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /></del></mark>
-  <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /></del></mark>
-  <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /></del></mark>
-  <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /></mark>
-  <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /></mark>
+	&lt;appSettings&gt;
+	  &lt;add key="webpages:Version" value="3.0.0.0" /&gt;
+	  &lt;add key="webpages:Enabled" value="false" /&gt;
+	  &lt;add key="ClientValidationEnabled" value="true" /&gt;
+	  &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;
+	  <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
+	  <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /&gt;</del></mark>
+	  <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /&gt;</del></mark>
+	  <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /&gt;</mark>
+	  <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /&gt;</mark>
 
-&lt;/appSettings>
-</pre>それぞれの環境に合わせてキーの値を入力してください。
+	&lt;/appSettings&gt;
+	</pre>
+	それぞれの環境に合わせてキーの値を入力してください。
 
 7.	アプリケーションをビルドしてエラーがないことを確認します。
 
@@ -208,7 +209,8 @@ c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticat
 		param = c1.OriginalIssuer,
 		param = "",
 		param = c2.Value);
-</pre>これで、次のようなカスタム規則が作成されました。
+	</pre>
+	これで、次のようなカスタム規則が作成されました。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/6-per-session-identifier.png)
 
@@ -276,14 +278,22 @@ public ActionResult Contact()
 
     return View();
 }
-</pre>この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
+	</pre>
+	この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
 
 3. `F5` キーを押してデバッガーを起動してサインインし、**[About]** をクリックします。認証されたユーザーによるこの操作の実行が承認されている場合、`~/About/Index` ページが正常に表示されます。
 4. 次に、**[Contact]** をクリックします。この例の **Test User** には、この操作は承認されません。ただし、ブラウザーは AD FS にリダイレクトされ、次のメッセージが表示されます。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/13-authorize-adfs-error.png)
 
-	AD FS サーバーのイベント ビューアーでこのエラーを調べると、次の例外メッセージを確認できます。<pre class="prettyprint"> Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details. at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context) at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response) at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler) at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context) </pre>
+	AD FS サーバーのイベント ビューアーでこのエラーを調べると、次の例外メッセージを確認できます。
+	<pre class="prettyprint">
+	Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details.
+	   at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context)
+	   at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response)
+	   at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler)
+	   at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)
+	</pre>
 
 	このエラーの理由は、ユーザーのロールが承認されない場合に MVC が既定で 401 Unauthorized を返すためです。これが、ID プロバイダー (AD FS) への再認証クレームのトリガーとなります。ユーザーは既に認証されているため、AD FS によって同じページが表示されることになります。これが原因で別の 401 が発行され、結果的にリダイレクト ループになります。そこで、リダイレクト ループを続ける代わりに意味のメッセージを表示する単純なロジックで `HandleUnauthorizedRequest` の メソッドをオーバーライドします。
 

@@ -312,7 +312,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 1. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
 
-	> **Note** Don't use the port number of the HTML client project. You can right-click the API project and click **Debug > Start New Instance** to get a browser window that shows the port number.
+	> **注意**: HTML クライアント プロジェクトのポート番号を使用しないでください。API プロジェクトを右クリックし、[デバッグ]、[新しいインスタンスを開始] の順にクリックして、ポート番号を示すブラウザー ウィンドウを表示できます。
 
 1. HTML クライアントを実行したときに API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。 
 

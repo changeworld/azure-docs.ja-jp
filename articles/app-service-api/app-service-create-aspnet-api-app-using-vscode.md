@@ -32,7 +32,8 @@
 ## 前提条件  
 
 * [Visual Studio Code](http://code.visualstudio.com/Docs/setup) をインストールしてセットアップします。
-* [Node.js](http://nodejs.org/download/) をインストールします。<br> [Node](http://nodejs.org/) は、JavaScript を使用して高速かつスケーラブルなサーバー アプリケーションを構築するためのプラットフォームです。Node はランタイム (ノード) であり、[npm](http://www.npmjs.com/) は Node モジュールのパッケージ マネージャーです。このチュートリアルでは、npm を使用して、ASP.NET 5 API アプリをスキャフォールディングします。
+* [Node.js](http://nodejs.org/download/) をインストールします。<br\> 
+	[Node](http://nodejs.org/) は、JavaScript を使用して高速かつスケーラブルなサーバー アプリケーションを構築するためのプラットフォームです。Node はランタイム (ノード) であり、[npm](http://www.npmjs.com/) は Node モジュールのパッケージ マネージャーです。このチュートリアルでは、npm を使用して、ASP.NET 5 API アプリをスキャフォールディングします。
 
 ## ASP.NET 5 と DNX のインストール
 ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 と DNX は、一から設計し直され、クラウドにデプロイされるアプリかオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
@@ -45,14 +46,16 @@ ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラ
 
 	<pre class="prettyprint">
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&amp;{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
-</pre>DNVM スクリプトがダウンロードされ、ユーザー プロファイルに配置されます。
+	</pre>
+	DNVM スクリプトがダウンロードされ、ユーザー プロファイルに組み込まれます。
 
 2. PATH 環境変数に加えた変更を有効にするために、上記のコマンドを入力した後にログオフすることが必要になる場合があります。
 3. コマンド ウィンドウで次のコマンドを実行して、DNVM の場所を確認します。 
 
 	<pre class="prettyprint">
 where dnvm
-</pre>コマンド ウィンドウに、次のようなパスが表示されます。
+	</pre>
+	コマンド ウィンドウに、次のようなパスが表示されます。
 
 	![dnvm の場所](./media/app-service-create-aspnet-api-app-using-vscode/00-where-dnvm.png)
 
@@ -66,7 +69,8 @@ dnvm upgrade
 
 	<pre class="prettyprint">
 dnvm list
-</pre>コマンド ウィンドウに、アクティブなランタイムの詳細が表示されます。
+	</pre>
+	マンド ウィンドウに、アクティブなランタイムの詳細が表示されます。
 
 	![dnvm の場所](./media/app-service-create-aspnet-api-app-using-vscode/00b-dnvm-list.png)
 
@@ -93,11 +97,12 @@ yo aspnet
 
 	![Yoman - ASP.NET 5 generator](./media/app-service-create-aspnet-api-app-using-vscode/01-yo-aspnet.png)
 
-5. 新しい ASP.NET API アプリの名前を **ContactsList** に設定します。この名前は、このチュートリアルの後半で示すコードで使用されます。<br>Yoman によって、**ContactsList** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
+5. 新しい ASP.NET API アプリの名前を **ContactsList** に設定します。この名前は、このチュートリアルの後半で示すコードで使用されます。<br>
+	Yoman によって、**ContactsList** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
 6. **Visual Studio Code** を開きます。<br> コマンド ウィンドウで「**code .**」と入力すると、VSCode を開くことができます。
 7. **[ファイル]** メニューの **[フォルダーを開く]** を選択し、ASP.NET API アプリが格納されているフォルダーを選択します。
 
-	![[フォルダー] ダイアログ ボックスの選択](./media/app-service-create-aspnet-api-app-using-vscode/02-open-folder.png)
+	![フォルダー ダイアログ ボックスの選択](./media/app-service-create-aspnet-api-app-using-vscode/02-open-folder.png)
 
 	VSCode にプロジェクトが読み込まれ、**エクスプローラー** ウィンドウに表示されます。
 
@@ -108,7 +113,8 @@ yo aspnet
 
 	<pre class="prettyprint">
 dnx:dnu restore - (ContactsList)
-</pre>入力を開始すると、一覧に完全なコマンド ラインが表示されます。
+	</pre>
+	入力を開始すると、一覧に完全なコマンド ラインが表示されます。
 
 	![Restore コマンド](./media/app-service-create-aspnet-api-app-using-vscode/04-dnu-restore.png)
 
@@ -150,7 +156,7 @@ namespace ContactsList.Controllers
     {
         // GET: api/Contacts
         [HttpGet]
-        public IEnumerable&lt;Contact> Get()
+	        public IEnumerable&lt;Contact&gt; Get()
         {
             return new Contact[]{
                 new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
@@ -158,7 +164,7 @@ namespace ContactsList.Controllers
                 new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
             };
         }
-    {
+	    }
 }
 </pre>
 
@@ -167,7 +173,8 @@ namespace ContactsList.Controllers
 
 	<pre class="prettyprint">
 dnx: kestrel - (ContactsList, Microsoft.AspNet.Hosting --server Kestrel --server.urls http://localhost:5001
-</pre>コマンド ウィンドウに "*開始しました*" と表示されます。コマンド ウィンドウに "*開始しました*" と表示されない場合は、VSCode の左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
+	</pre>
+	マンド ウィンドウに "*開始しました*" と表示されます。コマンド ウィンドウに "*開始しました*" と表示されない場合は、VSCode の左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
 
 5. ブラウザーを開き、次の URL に移動します。
 
@@ -240,7 +247,7 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
               "items": {
                 "$ref": "#/definitions/Contact"
               }
-            {
+	            }
           }
         },
         "deprecated": false
@@ -305,7 +312,7 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
       "type": "object",
       "properties": {}
     }
-  {
+	  }
 }
 </pre>
 
@@ -420,7 +427,8 @@ git remote add azure [URL for remote repository]
 
 	<pre class="prettyprint">
 git push azure master
-</pre>以前作成したパスワードを入力するように求められます。**注: パスワードは表示されません。**
+	</pre>
+	以前作成したパスワードを入力するように求められます。**注: パスワードは表示されません。**
 
 	上記のコマンドの出力は、デプロイが成功したことを示すメッセージで終わります。
 
@@ -438,7 +446,8 @@ API を API アプリにデプロイしたので、Azure プレビュー ポー�
 1. Azure プレビュー ポータルで、前に作成した API アプリの **[API アプリ]** ブレードに移動して、**[ゲートウェイ]** リンクをクリックします。
 2. **[ゲートウェイ]** ブレードの **[再起動]** をクリックします。これでこのブレードを閉じることができます。
 3. **[API アプリ]** ブレードの **[再起動]** をクリックします。 
-4. **[API アプリ]** ブレードの **[API 定義]** をクリックします。<br> [API 定義] ブレードに 2 つのメソッドが表示されます。GET メソッドと POST メソッドがすぐに表示されない場合は、Azure によってアプリが更新されるまで数秒待ってください。次に、**[API アプリ]** ブレードの **[API 定義]** をクリックします。
+4. **[API アプリ]** ブレードの **[API 定義]** をクリックします。<br>
+	 [API 定義] ブレードに 2 つのメソッドが表示されます。GET メソッドと POST メソッドがすぐに表示されない場合は、Azure によってアプリが更新されるまで数秒待ってください。次に、**[API アプリ]** ブレードの **[API 定義]** をクリックします。
 
 ## Azure でのアプリの実行
 Azure プレビュー ポータルで、目的の API アプリの **[API アプリ ホスト]** ブレードに移動し、**[参照]** をクリックします。次に、連絡先の詳細を表示するために、URL の末尾に **api/Contacts** を追加します。

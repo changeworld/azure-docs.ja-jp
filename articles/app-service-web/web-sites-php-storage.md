@@ -41,7 +41,8 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 
 1. [Git のインストール][install-git]
 
-	> [AZURE.NOTE]Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
+	> [AZURE.NOTE]
+	> Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 

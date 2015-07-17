@@ -96,7 +96,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 ![Policy editor][api-management-policy-editor-inbound]
 
-このチュートリアルでは、[[呼び出しレート制限]][] と [[使用量クォータの設定]][] という 2 つのポリシーを追加します。
+このチュートリアルでは、[呼び出しレート制限][] と [使用量クォータの設定][] という 2 つのポリシーを追加します。
 
 ![Policy statements][api-management-limit-policies]
 
@@ -289,8 +289,8 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 [Call an operation and test the rate limit]: #test-rate-limit
 [Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 
-[[呼び出しレート制限]]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[[使用量クォータの設定]]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[呼び出しレート制限]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
  
 
 <!---HONumber=62-->

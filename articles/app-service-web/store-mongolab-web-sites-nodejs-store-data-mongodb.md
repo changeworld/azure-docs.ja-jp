@@ -48,10 +48,13 @@
 Azure ストアにある程度慣れている場合は、このセクションを使ってクイック スタートを目指してください。そうでない場合は、以下の「[データベースの準備][provision]」に進んでください。
 
 1. **[新規]** > **[Marketplace]** をクリックして、Azure Marketplace を開きます。  
-<!-- ![Store][button-store] -->
-2. **MongoLab** アドオンをクリックします。![MongoLab][entry-mongolab]
-3. アドオン一覧で **MongoLab** アドオンをクリックし、**[接続文字列]** をクリックします。![ConnectionInfoButton][button-connectioninfo]  
-4. **MONGOLAB_URI** をクリップボードにコピーします。![ConnectionInfoScreen][screen-connectioninfo]
+<!--- ![Store][button-store] -->
+2. **MongoLab** アドオンをクリックします。  
+![MongoLab][entry-mongolab]
+3. アドオン一覧で **MongoLab** アドオンをクリックし、**[接続文字列]** をクリックします。  
+![ConnectionInfoButton][button-connectioninfo]  
+4. **MONGOLAB_URI** をクリップボードにコピーします。  
+![ConnectionInfoScreen][screen-connectioninfo]
 
 	>[AZURE.NOTE]この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。
 
@@ -447,11 +450,11 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 
 1. Azure ポータルで、**[新規]** をクリックします。![新規][button-new]
 2. **[コンピューティング]、[Web アプリ]、[簡易作成]** の順に選択します。
-<!-- ![Create Web App][screen-mongolab-newwebsite] -->
+<!--- ![Create Web App][screen-mongolab-newwebsite] -->
 3. URL のプレフィックスを入力します。好みの名前を選択します。ただし、重複した名前は使用できません ("mymongoapp" はおそらく使用できません)。
 4. **[Web アプリの作成]** をクリックします。
 5. Web アプリの作成が完了したら、Web アプリ一覧で、作成した Web アプリの名前をクリックします。Web アプリのダッシュボードが表示されます。
-<!-- ![Web App Dashboard][screen-mongolab-websitedashboard] -->
+<!--- ![Web App Dashboard][screen-mongolab-websitedashboard] -->
 6. **[概要]** の **[ソース管理からの展開の設定]** をクリックして GitHub を選択し、目的の Git ユーザー名とパスワードを入力します。このパスワードは、Web アプリにプッシュするときに使用します (ステップ 9.)。  
 7. 前の手順で Web アプリを作成した場合、次のコマンドでプロセスを完了します。ただし、既に 1 つ以上の Web アプリがある場合、前の手順をスキップして、次の同じコマンドを使用して新しい Web アプリを作成できます。**tasklist** プロジェクト ディレクトリから、次のコマンドを実行します。
 
@@ -570,4 +573,4 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 [mongolab-view]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/mongolab-view.png
  
 
-<!---HONumber=62-->
+<!----HONumber=62-->
