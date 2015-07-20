@@ -1,5 +1,5 @@
 ### Azure サービス管理と Azure リソース マネージャー
  
-この記事は、Azure サービス管理ベースの Azure リソースについて記載しています。Microsoft では、Azure リソース マネージャーの使用をお勧めします。リソース マネージャーを使用する利点の詳細については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。Azure リソース マネージャーを使用する場合と同等のタスクを行うには、次の記事を参照してください。
+この記事は、サービス管理で作成されるリソースについて記載しています。Microsoft では、新しい Azure リソースにリソース マネージャーを使用することをお勧めします。リソース マネージャーを使用する利点の詳細については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。リソース マネージャーを使用する場合と同等のタスクを行うには、次の記事を参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -203,4 +203,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

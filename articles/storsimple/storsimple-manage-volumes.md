@@ -5,7 +5,7 @@
    documentationCenter="NA"
    authors="SharS"
    manager="adinah"
-   editor="tysonn" /> 
+   editor="tysonn" />
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
@@ -29,7 +29,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ## [ボリューム] ページ
 
- **[ボリューム]** ページでは、イニシエーター (サーバー) 用に Microsoft Azure StorSimple デバイスにプロビジョニングされているストレージ ボリュームを管理することができます。このページには、StorSimple デバイス上のボリュームの一覧が表示されます。
+**[ボリューム]** ページでは、イニシエーター (サーバー) 用に Microsoft Azure StorSimple デバイスにプロビジョニングされているストレージ ボリュームを管理することができます。このページには、StorSimple デバイス上のボリュームの一覧が表示されます。
 
  ![[ボリューム] ページ](./media/storsimple-manage-volumes/HCS_VolumesPage.png)
 
@@ -55,7 +55,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ## ボリュームを追加する
 
- [ボリュームの作成](storsimple-deployment-walkthrough.md#step-6:-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
+[ボリュームの作成](storsimple-deployment-walkthrough.md#step-6:-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
 
 ### ボリュームを追加するには
 
@@ -76,10 +76,10 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
      ![ボリュームの追加](./media/storsimple-manage-volumes/HCs_AddVolume2M.png)
    
-5.  **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
+5. **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
   
   1. ボックスの一覧で、アクセス制御レコード (ACR) を選択します。また、新しい ACR を追加することもできます。ACR は、ホストの IQN をレコードに記載されている IQN と照合することによって、ボリュームにアクセスできるホストを判定します。
-  2.  **[このボリュームの既定のバックアップ]** では、**[有効]** チェック ボックスをオンにして、既定のバックアップを有効にすることをお勧めします。
+  2. **[このボリュームの既定のバックアップ]** では、**[有効]** チェック ボックスをオンにして、既定のバックアップを有効にすることをお勧めします。
    3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
 
 新しいボリュームが使用できるようになります。
@@ -101,7 +101,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 4. ボリュームの変更ウィザードの **[基本設定]** では、次の操作を実行できます。
 
-  -  **名前**と**アプリケーションの種類**を編集する。
+  - **名前**と**アプリケーションの種類**を編集する。
   - **プロビジョニング容量**を増やす。**プロビジョニング容量**は、増やすことしかできません。ボリュームを作成した後で小さくすることはできません。
 
     > [AZURE.NOTE]ボリュームにボリューム コンテナーを割り当てた後でボリューム コンテナーを変更することはできません。
@@ -179,6 +179,6 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
 
 
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

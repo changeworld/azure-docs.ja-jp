@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/06/2015"
+   ms.date="05/27/2015"
    ms.author="v-sharos" />
 
 # StorSimple デバイスのデプロイメントのトラブルシューティング
@@ -30,7 +30,7 @@
 デバイスの初回デプロイ時に問題が発生した場合は、次の点を確認してください。
 
 - 物理デバイスのトラブルシューティングを行う場合、「[デバイスのハードウェア設置](https://msdn.microsoft.com/library/azure/dn772375.aspx)」の説明に従ってハードウェアの設置と構成が済んでいることを確認してください。
-- デプロイの前提条件を確認します。[デプロイ チェック リスト](storsimple-deployment-walkthrough.md#pre-installation checklist)に記載されているすべての情報が満たされていることを確認してください。
+- デプロイの前提条件を確認します。[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#pre-installation-checklist)にすべての情報が説明されていることを確認します。
 - StorSimple のリリース ノートを読んで、該当する問題についての記述があるかどうかを確認します。設置に関して既に確認されている問題については、リリース ノートに回避策が記述されています。 
 
 デバイスをデプロイするときに最も多く見られる問題は、セットアップ ウィザードの実行時と StorSimple 用 Windows PowerShell によるデバイスの登録時に発生します (StorSimple デバイスの登録と構成は、StorSimple 用 Windows PowerShell を使用して行います。デバイスの登録の詳細については、「[デバイスの登録](https://msdn.microsoft.com/library/azure/dn757742.aspx)」を参照してください)。
@@ -39,7 +39,7 @@
 
 ## 初回セットアップ ウィザード プロセス
 
-次の手順は、セットアップ ウィザードのプロセスの概要を示します。セットアップの詳細については、[StorSimple のデプロイメントのチュートリアル](storsimple-deployment-walkthrough.md)に関するページを参照してください。
+次の手順は、セットアップ ウィザードのプロセスの概要を示します。セットアップの詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
 
 1. [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) コマンドレットを実行してセットアップ ウィザードを起動し、画面の指示に従います。 
 2. ネットワークの構成: セットアップ ウィザードの指示に従って、StorSimple デバイスに対する DATA 0 ネットワーク インターフェイスのネットワーク設定を構成します。これらの設定には、次の内容が含まれています。
@@ -47,8 +47,8 @@
   - プライマリ DNS サーバー: [Set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) コマンドレットがバックグラウンドで実行されます。StorSimple ソリューションの DNS 設定が構成されます。
   - NTP サーバー – [Set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) コマンドレットがバックグラウンドで実行されます。StorSimple ソリューションの NTP サーバーの設定が構成されます。
   - (省略可能) Web プロキシ: [Set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) コマンドレットがバックグラウンドで実行されます。StorSimple ソリューションの Web プロキシの構成が設定され、有効化されます。
-3. パスワードの設定: 次に、デバイス管理者と StorSimple Snapshot Manager のパスワードを設定します。
-  - デバイス管理者のパスワードは、デバイスへのログオンに使用します。デバイスの既定のパスワードは *Password1* です。
+3. パスワードの設定: 次に、デバイス管理者と StorSimple Snapshot Manager のパスワードを設定します。Update 1 を実行している場合、StorSimple Snapshot Manager パスワードを設定する必要はありません。
+  - デバイス管理者のパスワードは、デバイスへのログオンに使用します。デバイスの既定のパスワードは **Password1** です。
   - StorSimple Snapshot Manager のパスワードは、StorSimple Snapshot Manager を使用するための構成をデバイスに対して行う際に必要となります。このパスワードは、セットアップ ウィザードで最初に設定しておく必要があります。その後、StorSimple Manager サービスから設定したり変更したりすることができます。StorSimple Snapshot Manager に対しては、このパスワードによってデバイスが認証されます。
  
     > [AZURE.IMPORTANT]パスワードは登録前に収集されますが、適用されるのは、デバイスの登録に成功した後になります。パスワードの適用に失敗した場合、必要な (複雑さの要件を満たした) パスワードが収集されるまで、パスワードを再入力するように求められます。
@@ -88,7 +88,7 @@
 
 ### デバイス管理者と StorSimple Snapshot Manager のパスワードを設定するときに発生するエラー
 
-デバイス管理者の既定のパスワードは *Password1* です。このパスワードは、初回ログオン後に有効期限が切れるため、セットアップ ウィザードを使用して変更する必要があります。デバイスの初回登録時に、デバイス管理者の新しいパスワードを指定してください。
+デバイス管理者の既定のパスワードは **Password1** です。このパスワードは、初回ログオン後に有効期限が切れるため、セットアップ ウィザードを使用して変更する必要があります。デバイスの初回登録時に、デバイス管理者の新しいパスワードを指定してください。
 
 Windows Server ホスト上で実行されている StorSimple Snapshot Manager ソフトウェアを使用してデバイスを管理している場合は、初回登録時に StorSimple Snapshot Manager のパスワードも指定する必要があります。
 
@@ -183,6 +183,16 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
 - Test-Connection: ネットワークの内部と外部のネットワーク接続を確認するには、このコマンドレットを使用します。
 
 - Test-HcsmConnection: 正常に登録されたデバイスの接続を確認するには、このコマンドレットを使用します。
+
+StorSimple デバイスで Update 1 を実行している場合、次の診断のコマンドレットも使用できます。
+
+- Sync-HcsTime: デバイスの時刻を表示し、NTP サーバーとの時間の同期を強制するにはこのコマンドレットを使用します。
+
+- Enable-HcsPing と Disable-HcsPing: StorSimple デバイスでホストがネットワーク インターフェイスを ping を実行できるようにするにはこのコマンドレットを使用します。既定では、StorSimple のネットワーク インターフェイスは ping 要求に応答しません。
+
+- Trace-HcsRoute: ルート トレース ツールとしてこのコマンドレットを使用します。最終的な宛先までにある各ルーターに長期にわたってパケットを送信し、各ホップから返されるパケットに基づく結果を計算します。Trace-HcsRoute では、指定のルーターやリンクのパケット損失の程度を表示するため、ネットワークの問題の原因となっているルーターやリンクが特定できます。
+
+- Get-HcsRoutingTable: ローカル IP ルーティング テーブルを表示するにはこのコマンドレットを使用します。
 
 ## Get-NetAdapter コマンドレットを使用したトラブルシューティング
 
@@ -299,9 +309,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
    - ErrorCode.CiSApplianceDNSError – WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
    - ErrorCode.CiSApplianceACSError – サービスから認証エラーが返されたが、接続されていることを示します。
    
-   Web の例外がスローされなかった場合は、次を確認します。
-
-   - ErrorCode.CiSApplianceFailure – アプライアンスに障害が発生したことを示します。
+    Web の例外がスローされなかった場合は、ErrorCode.CiSApplianceFailure を確認します。これは、アプライアンスが失敗したことを示します。
 
 5. クラウド サービスの接続を確認します。サービスによって Web の例外がスローされた場合は、次のエラーが表示されることがあります。
 
@@ -310,8 +318,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
   - ErrorCode.CiSApplianceDNSError – WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
   - ErrorCode.CiSApplianceACSError – サービスから認証エラーが返されたが、接続されていることを示します。
   
-  Web の例外がスローされなかった場合は、次を確認します。
-  - ErrorCode.CiSApplianceSaasServiceError – StorSimple Manager サービスに問題が発生したことを示します。
+    Web の例外がスローされなかった場合は、ErrorCode.CiSApplianceSaasServiceError を確認します。これは、StorSimple Manager サービスの問題を示します。
  
 6. Azure Service Bus の接続を確認します。ErrorCode.CiSApplianceServiceBusError は、デバイスが Service Bus に接続できないことを示します。
  
@@ -323,7 +330,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
  
 Test-HcsmConnection コマンドレットの次の出力サンプルを参照してください。
 
-**サンプルの出力 – 正常に登録されたデバイス**
+**サンプル出力 - StorSimple リリースを実行している正常に登録済みのデバイス (2014 年 7 月)**
 
 最初のサンプルは、StorSimple Manager サービスに正常に登録され、接続の問題が発生していないデバイスの出力です。
 
@@ -337,7 +344,39 @@ Test-HcsmConnection コマンドレットの次の出力サンプルを参照し
      Checking connectivity from StorSimple Manager service to StorSimple device. .... Success.
      Controller1>
 
-**出力の例 – オフライン デバイス**
+**サンプル出力 - StorSimple Update 1 を実行している正常に登録済みのデバイス (2015 年 5 月)**
+
+StorSimple デバイスで Update 1 を実行している場合、Verbose スイッチを使用して実行する必要はありません。
+
+      Controller1>Test-HcsmConnection
+       
+      Checking device registration state  ... Success
+      Device registered successfully
+       
+      Checking primary NTP server [time.windows.com] ... Success
+       
+      Checking web proxy  ... NOT SET
+       
+      Checking primary IPv4 DNS server [10.222.118.154] ... Success
+      Checking primary IPv6 DNS server  ... NOT SET
+      Checking secondary IPv4 DNS server [10.222.120.24] ... Success
+      Checking secondary IPv6 DNS server  ... NOT SET
+       
+      Checking device online  ... Success
+ 
+      Checking device authentication  ... This will take a few minutes.
+      Checking device authentication  ... Success
+       
+      Checking connectivity from device to service  ... This will take a few minutes.
+       
+      Checking connectivity from device to service  ... Success
+       
+      Checking connectivity from service to device  ... Success
+       
+      Checking connectivity to Microsoft Update servers  ... Success
+      Controller1>
+
+**サンプル出力 - StorSimple リリースを実行しているオフライン デバイス (2014 年 7 月)**
 
 このサンプルは、管理ポータルでの状態が**オフライン**のデバイスの出力です。
 
@@ -347,6 +386,133 @@ Test-HcsmConnection コマンドレットの次の出力サンプルを参照し
 
 デバイスは現在の Web プロキシ構成では接続できませんでした。原因としては、Web プロキシ構成またはネットワーク接続の問題が考えられます。この場合は、Web プロキシの設定が正しく、Web プロキシ サーバーがオンラインになっており、アクセスできることを確認する必要があります。
 
+## Sync-HcsTime コマンドレットを使用したトラブルシューティング
+
+デバイスの時刻を表示するには、このコマンドレットを使用します。デバイスの時刻が NTP サーバーでオフセットになる場合、このコマンドレットを使用して時間を NTP サーバーと強制同期します。NTP サーバーとデバイス間のオフセットが 5 分以上の場合は、警告が表示されます。オフセットが 15 分を超えている場合、デバイスはオフラインになります。それでもこのコマンドレットを使用して時間を強制同期できます。ただし、オフセットが 15 時間を超える場合、時間を強制同期することはできず、エラー メッセージが表示されます。
+
+**サンプル出力 – Sync-HcsTime を使用した時間の強制同期**
+ 
+     Controller0>Sync-HcsTime
+     The current device time is 4/24/2015 4:05:40 PM UTC.
+ 
+     Time difference between NTP server and appliance is 00.0824069 seconds. Do you want to resync time with NTP server?
+     [Y] Yes [N] No (Default is "Y"): Y
+     Controller0>
+
+## Enable-HcsPing と Disable-HcsPing コマンドレットを使用したトラブルシューティング
+
+デバイス上のネットワーク インターフェイスが ICMP ping 要求に応答することを確認するには、これらのコマンドレットを使用します。既定では、StorSimple ネットワーク インターフェイスは ping 要求に応答しません。このコマンドレットを使用すると、最も簡単な方法でデバイスがオンラインかどうか、到達可能かどうかを確認できます。
+
+**サンプル出力 – Enable-HcsPing と Disable-HcsPing**
+
+     Controller0>
+     Controller0>Enable-HcsPing
+     Successfully enabled ping.
+     Controller0>
+     Controller0>
+     Controller0>Disable-HcsPing
+     Successfully disabled ping.
+     Controller0>
+
+## Trace-HcsRoute コマンドレットを使用したトラブルシューティング
+
+ルート トレース ツールとしてこのコマンドレットを使用します。最終的な宛先までにある各ルーターに長期にわたってパケットを送信し、各ホップから返されるパケットに基づく結果を計算します。コマンドレットでは指定のルーターやリンクのパケット損失の程度を表示するため、ネットワークの問題の原因となっているルーターやリンクが特定できます。
+
+**Trace-HcsRoute でパケットのルートをトレースする方法を示すサンプル出力**
+
+     Controller0>Trace-HcsRoute -Target 10.126.174.25
+     
+     Tracing route to contoso.com [10.126.174.25]
+     over a maximum of 30 hops:
+       0  HCSNode0 [10.126.173.90]
+       1  contoso.com [10.126.174.25]
+      
+     Computing statistics for 25 seconds...
+                 Source to Here   This Node/Link
+     Hop  RTT    Lost/Sent = Pct  Lost/Sent = Pct  Address
+       0                                           HCSNode0 [10.126.173.90]
+                                     0/ 100 =  0%   |
+       1    0ms     0/ 100 =  0%     0/ 100 =  0%  contoso.com
+      [10.126.174.25]
+      
+     Trace complete.
+
+## Get-HcsRoutingTable コマンドレットを使用したトラブルシューティング
+
+StorSimple デバイスのルーティング テーブルを表示するには、このコマンドレットを使用します。ルーティング テーブルは、インターネット プロトコル (IP) ネットワーク上を流れるデータ パケットの宛先の特定に役立つ一連のルールです。
+
+ルーティング テーブルでは、インターフェイスとデータを指定したネットワークにルーティングするゲートウェイが表示されます。また、これは特定の送信先に到達するために使用するパスの意思決定者となるルーティング メトリックも提供します。ルーティング メトリックが低いと、優先順位が高くなります。
+
+たとえば、2 つのネットワーク インターフェイス、DATA 2、DATA 3 をインターネットに接続しているとします。DATA 2 と DATA 3 のルーティング メトリックがそれぞれ 15 と 261 である場合、下位のルーティング メトリックの DATA 2 は、インターネットに接続するために使用される優先インターフェイスとなります。
+
+StorSimple デバイスで Update 1 を実行している場合は、DATA 0 のネットワーク インターフェイスがクラウド トラフィックで最優先されます。これは、クラウド対応インターフェイスがほかにある場合でも、クラウド トラフィックは DATA 0 を経由してルーティングされることを意味します。
+
+パラメーターを指定しないで Get-HcsRoutingTable コマンドレットを実行する場合 (次の例を参照)、コマンドレットでは IPv4 と IPv6 両方のルーティング テーブルを出力します。または `Get-HcsRoutingTable -IPv4` や `Get-HcsRoutingTable -IPv6` を指定して関連するルーティング テーブルを取得できます。
+
+      Controller0>
+      Controller0>Get-HcsRoutingTable
+      ===========================================================================
+      Interface List
+       14...00 50 cc 79 63 40 ......Intel(R) 82574L Gigabit Network Connection
+       12...02 9a 0a 5b 98 1f ......Microsoft Failover Cluster Virtual Adapter
+       13...28 18 78 bc 4b 85 ......HCS VNIC
+        1...........................Software Loopback Interface 1
+       21...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
+       22...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #3
+      ===========================================================================
+       
+      IPv4 Route Table
+      ===========================================================================
+      Active Routes:
+      Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0  192.168.111.100  192.168.111.101     15
+              127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
+              127.0.0.1  255.255.255.255         On-link         127.0.0.1    306
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+            169.254.0.0      255.255.0.0         On-link     169.254.1.235    261
+          169.254.1.235  255.255.255.255         On-link     169.254.1.235    261
+        169.254.255.255  255.255.255.255         On-link     169.254.1.235    261
+          192.168.111.0    255.255.255.0         On-link   192.168.111.101    266
+        192.168.111.101  255.255.255.255         On-link   192.168.111.101    266
+        192.168.111.255  255.255.255.255         On-link   192.168.111.101    266
+              224.0.0.0        240.0.0.0         On-link         127.0.0.1    306
+              224.0.0.0        240.0.0.0         On-link     169.254.1.235    261
+              224.0.0.0        240.0.0.0         On-link   192.168.111.101    266
+        255.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+        255.255.255.255  255.255.255.255         On-link     169.254.1.235    261
+        255.255.255.255  255.255.255.255         On-link   192.168.111.101    266
+      ===========================================================================
+      Persistent Routes:
+        Network Address          Netmask  Gateway Address  Metric
+                0.0.0.0          0.0.0.0  192.168.111.100       5
+      ===========================================================================
+       
+      IPv6 Route Table
+      ===========================================================================
+      Active Routes:
+       If Metric Network Destination      Gateway
+        1    306 ::1/128                  On-link
+       13    276 fd99:4c5b:5525:d80b::/64 On-link
+       13    276 fd99:4c5b:5525:d80b::1/128
+                                          On-link
+       13    276 fd99:4c5b:5525:d80b::3/128
+                                          On-link
+       13    276 fe80::/64                On-link
+       12    261 fe80::/64                On-link
+       13    276 fe80::17a:4eba:7c80:727f/128
+                                          On-link
+       12    261 fe80::fc97:1a53:e81a:3454/128
+                                          On-link
+        1    306 ff00::/8                 On-link
+       13    276 ff00::/8                 On-link
+       12    261 ff00::/8                 On-link
+       14    266 ff00::/8                 On-link
+      ===========================================================================
+      Persistent Routes:
+        None
+       
+      Controller0>
+ 
 ## ステップ バイ ステップのトラブルシューティングの例
 
 次の例では、StorSimple デプロイメントのステップ バイ ステップのトラブルシューティングを示します。この例では、ネットワーク設定または DNS 名に誤りがあるという内容のエラー メッセージが表示されてデバイスの登録に失敗する、というシナリオを取り上げています。
@@ -369,11 +535,11 @@ Test-HcsmConnection コマンドレットの次の出力サンプルを参照し
 
 1. デバイス構成を確認します。アクティブ コントローラーで **Invoke-HcsSetupWizard** を実行します。
 
-     > [AZURE.NOTE]セットアップ ウィザードはアクティブ コントローラー上で実行する必要があります。アクティブ コントローラーに接続されているかどうかは、シリアル コンソールに表示されるバナーを見て確認できます。接続先がコントローラー 0 であるかコントローラー 1 であるか、また、コントローラーがアクティブであるかパッシブであるかがバナーに表示されます。詳細については、「[デバイスでのアクティブなコントローラーの識別](https://msdn.microsoft.com/library/azure/dn790262.aspx)」を参照してください。
+     >[AZURE.NOTE]セットアップ ウィザードはアクティブ コントローラー上で実行する必要があります。アクティブ コントローラーに接続されているかどうかは、シリアル コンソールに表示されるバナーを見て確認できます。接続先がコントローラー 0 であるかコントローラー 1 であるか、また、コントローラーがアクティブであるかパッシブであるかがバナーに表示されます。詳細については、「[デバイスでのアクティブなコントローラーの識別](https://msdn.microsoft.com/library/azure/dn790262.aspx)」を参照してください。
  
 2. デバイスが正しく配線されていることを確認します。デバイスのバック プレーンでネットワークのケーブル配線を確認します。ケーブル配線はデバイスのモデルによって異なります。詳細については、「[8100 デバイスにケーブルを接続する](https://msdn.microsoft.com/library/azure/dn757738.aspx)」または「[8600 デバイスにケーブルを接続する](https://msdn.microsoft.com/library/azure/dn757762.aspx)」を参照してください。
 
-     > [AZURE.NOTE]10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。詳細については、[Mellanox ポートの OEM サプライヤー推奨ケーブル、スイッチ、トランシーバーの一覧](http://www.mellanox.com/page/cables?mtag=cable_overview)を参照してください。
+     >[AZURE.NOTE]10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。詳細については、[Mellanox ポートの OEM サプライヤー推奨ケーブル、スイッチ、トランシーバーの一覧](http://www.mellanox.com/page/cables?mtag=cable_overview)を参照してください。
  
 3. ネットワーク インターフェイスの状態を確認します。
 
@@ -397,16 +563,16 @@ Test-HcsmConnection コマンドレットの次の出力サンプルを参照し
 
 7. ファイアウォールによってブロックされている可能性がないか確認します。仮想 IP (VIP)、サブネット、ゲートウェイ、DNS の設定がすべて正しいことを確認してもなお、接続の問題が解消しない場合、デバイスと外部ネットワーク間の通信がファイアウォールによってブロックされている可能性があります。内側から外側への通信について、StorSimple デバイスのポート 80 とポート 443 を開放する必要があります。詳細については、「[StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/azure/dn772371.aspx)」を参照してください。
 
-8. ログを確認します。「[トラブルシューティングに使用できるサポート パッケージとデバイス ログ](#support-packages-and-device logs-for-troubleshooting)」を参照してください。
+8. ログを確認します。「[トラブルシューティングに使用できるサポート パッケージとデバイス ログ](#support-packages-and-device-logs-available-for-troubleshooting)」をご覧ください。
 
 9. 以上の手順で問題を解決できない場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。
 
 ## 次のステップ
-[運用デバイスのトラブルシューティング](../storsimple-troubleshoot-an-operational-device.md)
+[運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)
 
 <!--Link references-->
 
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
-<!--HONumber=52-->
- 
+
+<!---HONumber=July15_HO2-->

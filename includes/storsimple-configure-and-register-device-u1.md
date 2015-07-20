@@ -1,3 +1,20 @@
+<properties 
+   pageTitle="デバイスを構成して登録する"
+   description="StorSimple 用 Windows PowerShell を使用して、Update 1 が実行されているデバイスを構成して登録する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="adinah"
+   editor="tysonn" />
+<tags 
+   ms.service="storsimple"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="05/26/2015"
+   ms.author="alkohli" />
+
 
 ### デバイスを構成して登録するには
 
@@ -64,4 +81,4 @@
      
        
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

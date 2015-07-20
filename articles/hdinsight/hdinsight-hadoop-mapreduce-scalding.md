@@ -12,7 +12,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/17/2015"
+ ms.date="07/06/2015"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発
@@ -168,7 +168,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
           //Tokenizer to split sentance into words
           def tokenize(text : String) : Array[String] = {
-            text.toLowerCase.replaceAll("[^a-zA-Z0-9\s]", "").split("\s+")
+            text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
           }
         }
 
@@ -288,6 +288,5 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

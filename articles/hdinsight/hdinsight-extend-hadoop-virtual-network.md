@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 
@@ -173,4 +173,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)に関するページを参照してください。
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

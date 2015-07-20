@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/12/2015"
+	ms.date="07/01/2015"
 	ms.author="krisragh"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -80,4 +80,4 @@
 [クイック スタート]: ../mobile-services-javascript-backend-ios-get-started.md
 [iOS の GetStartedWithData アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=268622
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

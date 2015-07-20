@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/20/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)
@@ -28,7 +28,7 @@ Linux ベースの Azure HDInsight クラスターには、パスワードまた
 
 ##前提条件
 
-* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> から入手できます。
+* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
 
 * HTML5 をサポートする最新の Web ブラウザー
 
@@ -78,7 +78,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 * **Mac、Linux、Windows 用の Azure CLI** - コマンドラインでコマンドを使用してクラスターを作成します。
 
-これらの各メソッドにはパブリック キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、「<a href="./hdinsight-hadoop-provision-linux-clusters/" target="_blank">HDInsight での Linux クラスターのプロビジョニング</a>」に関するページをご覧ください。
+これらの各メソッドにはパブリック キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、[HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 ###Azure ポータル
 
@@ -92,7 +92,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 [Mac、Linux、Windows の Azure CLI](../xplat-cli.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
-このコマンドの使用方法の詳細については、「<a href="../hdinsight-hadoop-provision-linux-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。
+このコマンドの使用方法の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 ##Linux ベースの HDInsight クラスターへの接続
 
@@ -124,7 +124,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 ユーザー アカウントの作成時に SSH キーを指定した場合は、ワーカー ノードに接続するクラスターを認証するときに、次の手順に従ってプライベート キーを使用する必要があります。
 
-1. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
+1. [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
 
 2. Pageant を実行します。ステータス トレイにアイコンが表示されます。アイコンを右クリックし **[キーの追加]** を選択します。
 
@@ -224,11 +224,11 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 	> [AZURE.NOTE]**[リモート DNS]** を選択すると DNS 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
 
-	Firefox でプロキシ設定を有効または無効にした状態で <a href="http://www.whatismyip.com/" target="_blank">http://www.whatismyip.com/</a> などのサイトにアクセスすると、トラフィックがトンネル経由でルーティングされていることを検証できます。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
+	Firefox でプロキシ設定を有効または無効にして、[http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トラフィックがトンネルを経由しているかどうか確認できます。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
 
 ###ブラウザー拡張
 
-ブラウザーをトンネル ワークを使用するように構成する場合、通常、一部のトラフィックをトンネルを経由で送信しないように設定する必要があることがあります。<a href="http://getfoxyproxy.org/" target="_blank">FoxyProxy</a> などのブラウザー拡張機能では、URL 要求に対するパターン マッチングがサポートされるため (FoxyProxy Standard または Plus のみ)、特定の URL の要求のみがトンネル経由で送信されます。
+ブラウザーをトンネル ワークを使用するように構成する場合、通常、一部のトラフィックをトンネルを経由で送信しないように設定する必要があることがあります。[FoxyProxy](http://getfoxyproxy.org/) などのブラウザー拡張機能では、URL 要求に対するパターン マッチングがサポートされるため (FoxyProxy Standard または Plus のみ)、特定の URL の要求のみがトンネル経由で送信されます。
 
 FoxyProxy Standard をインストール済みの場合は、次の手順を使用して、HDInsight の トラフィックだけをトンネル経由で転送するように構成します。
 
@@ -277,6 +277,5 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

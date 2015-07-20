@@ -67,7 +67,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 ### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
 
 **エンゲージメントを使用しない場合:**
 
@@ -206,5 +206,6 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [NSLocationAlwaysUsageDescription]: https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
 [startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

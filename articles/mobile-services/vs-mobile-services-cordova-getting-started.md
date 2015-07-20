@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/22/2015" 
+	ms.date="06/22/2015" 
 	ms.author="patshea123"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
@@ -34,7 +34,7 @@
 
 次のコードは、TodoItem のデータを含むテーブルへの参照を取得します。この後でデータ テーブルの読み取りと更新の操作を実行する際に、TodoItem のデータを使用できます。モバイル サービスを作成すると、TodoItem テーブルが自動的に作成されます。
 
-var todoTable = mobileServiceClient.getTable('TodoItem');
+    var todoTable = mobileServiceClient.getTable('TodoItem');
 
 これらの例を使用するには、テーブルのアクセス許可を **[アプリケーション キーを持つユーザー]** に設定する必要があります。後で、認証を設定できます。詳細については、「[Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)](mobile-services-html-get-started-users.md)」を参照してください。
 
@@ -42,19 +42,35 @@ var todoTable = mobileServiceClient.getTable('TodoItem');
 
 新しい項目をデータ テーブルに挿入します。ID (文字列型の GUID) が新しい行のプライマリ キーとして自動的に作成されます。返された [Promise](https://msdn.microsoft.com/library/dn802826.aspx) オブジェクトの `done()` メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
-function TodoItem(text) { this.text = text; this.complete = false; }
-
-var items = new Array(); todoTable.insert(todoItem).done(function (item) { items.push(item) }); };
+    function TodoItem(text) {
+        this.text = text;
+        this.complete = false;
+    }
+    
+    var items = new Array();
+    var insertTodoItem = function (todoItem) {
+        todoTable.insert(todoItem).done(function (item) {
+            items.push(item)
+        });
+    };
 
 #####テーブルの読み取りまたは照会を実行する
 
 次のコードは、テーブルに対してテキスト フィールドでソートされたすべての項目を照会します。コードを追加して、success ハンドラーでクエリ結果を処理できます。この場合、項目のローカル配列が更新されます。
 
-todoTable.orderBy('text') .read().done(function (results) { items = results.slice(); }); });
+    todoTable.orderBy('text')
+        .read().done(function (results) {
+            items = results.slice();
+        });
 
 where メソッドを使用してクエリを変更できます。次の例では、完了した項目を除外します。
 
-todoTable.where(function () { return (this.complete === false); }) .read().done(function (results) { items = results.slice(); });
+    todoTable.where(function () {
+            return (this.complete === false);
+        })
+        .read().done(function (results) {
+            items = results.slice();
+        });
 
 使用できる他のクエリ例については、「[query オブジェクト](http://msdn.microsoft.com/library/azure/jj613353.aspx)」を参照してください。
 
@@ -62,14 +78,19 @@ todoTable.where(function () { return (this.complete === false); }) .read().done(
 
 データ テーブルの行を更新します。このコードでは、モバイル サービスが応答すると、項目は一覧から削除されます。返された [Promise](https://msdn.microsoft.com/library/dn802826.aspx) オブジェクトの `done()` メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
-todoTable.update(todoItem).done(function (item) { // Update a local collection of items. items.splice(items.indexOf(todoItem), 1, item); });
+    todoTable.update(todoItem).done(function (item) {
+        // Update a local collection of items.
+        items.splice(items.indexOf(todoItem), 1, item);
+    });
 
 #####テーブル項目を削除する
 
 **del** メソッドを使用してデータ テーブルの行を削除します。返された [Promise](https://msdn.microsoft.com/library/dn802826.aspx) オブジェクトの `done()` メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
-todoTable.del(todoItem).done(function (item) { items.splice(items.indexOf(todoItem), 1); });
+    todoTable.del(todoItem).done(function (item) {
+        items.splice(items.indexOf(todoItem), 1);
+    });
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

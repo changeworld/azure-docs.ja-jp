@@ -13,20 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/16/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 
-#Azure Media Services を使用したライブ ストリーミングの配信
+#Azure Media Services を使用したライブ ストリーミング配信
 
 ##概要
 
 Microsoft Azure Media Services は、要求を Media Services に送信して操作 (例: 作成、開始、停止、チャネルの削除) を開始する API を提供します。これらは実行時間の長い操作です。
 
-Media Services .NET SDK は、要求を送信し、その操作が完了するまで待機する API を提供します (内部的には、API は一定の間隔で操作の進行状況をポーリングします)。たとえば、channel.Start() を呼び出すと、このメソッドはチャネルが開始された後に戻ります。また、非同期バージョンの await channel.StartAsync() を使用することもできます (タスク ベースの非同期パターンの詳細については、「[TAP](https://msdn.microsoft.com/library/hh873175(v=vs.110).aspx)」を参照してください)。操作要求を送信し、操作が完了するまで状態をポーリングする API は、"ポーリング メソッド" と呼ばれます。これらのメソッド (特に非同期バージョン) は、リッチ クライアント アプリケーションやステートフル サービスに対して推奨されます。
+Media Services .NET SDK は、要求を送信し、その操作が完了するまで待機する API を提供します (内部的には、API は一定の間隔で操作の進行状況をポーリングします)。たとえば、channel.Start() を呼び出すと、このメソッドはチャネルが開始された後に戻ります。また、非同期バージョンの await channel.StartAsync() を使用することもできます (タスク ベースの非同期パターンの詳細については、「TAP」を参照してください)。https://msdn.microsoft.com/library/hh873175(v=vs.110).aspx))操作要求を送信し、操作が完了するまで状態をポーリングする API は、"ポーリング メソッド" と呼ばれます。これらのメソッド (特に非同期バージョン) は、リッチ クライアント アプリケーションやステートフル サービスに対して推奨されます。
 
-ときには、アプリケーションで実行時間の長い http 要求を待機できず、操作の進行状況を手動でポーリングすることが必要な場合があります。一般的な例としては、ステートレス Web サービスとのやり取りするブラウザーが挙げられます。ブラウザーがチャネルの作成を要求すると、Web サービスは実行時間の長い操作を開始し、操作 ID をブラウザーに返します。その後、ブラウザーはその ID で Web サービスに照会して、操作の状態を取得できます。Media Services .NET SDK は、こうした場合に役立つ API を提供します。これらの API は、"非ポーリング メソッド" と呼ばれます。
-"非ポーリング メソッド" の命名パターンは、次のとおりです。Send*OperationName*Operation (たとえば、SendCreateOperation)。Send*OperationName*Operation メソッドは、**IOperation** オブジェクトを返します。返されたオブジェクトには、操作の追跡に使用する情報が含まれています。Send*OperationName*OperationAsync メソッドは、**Task<IOperation>** を返します。
+ときには、アプリケーションで実行時間の長い http 要求を待機できず、操作の進行状況を手動でポーリングすることが必要な場合があります。一般的な例としては、ステートレス Web サービスとのやり取りするブラウザーが挙げられます。ブラウザーがチャネルの作成を要求すると、Web サービスは実行時間の長い操作を開始し、操作 ID をブラウザーに返します。その後、ブラウザーはその ID で Web サービスに照会して、操作の状態を取得できます。Media Services .NET SDK は、こうした場合に役立つ API を提供します。これらの API は、"非ポーリング メソッド" と呼ばれます。"非ポーリング メソッド" の命名パターンは、次のとおりです。Send*OperationName*Operation (たとえば、SendCreateOperation)。Send*OperationName*Operation メソッドは、**IOperation** オブジェクトを返します。返されたオブジェクトには、操作の追跡に使用する情報が含まれています。Send*OperationName*OperationAsync メソッドは、**Task<IOperation>** を返します。
 
 現時点では、非ポーリング メソッドをサポートしているクラスは、**Channel**、**StreamingEndpoint**、および **Program** です。
 
@@ -43,7 +42,7 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 
 	/// <summary> 
 	/// The ChannelOperations class only implements 
-	/// the Channel's creation operation. 
+	/// the Channel’s creation operation. 
 	/// </summary> 
 	public class ChannelOperations
 	{
@@ -185,6 +184,6 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 	
 	// If we got here, we should have the newly created channel id.
 	Console.WriteLine(channelId);
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

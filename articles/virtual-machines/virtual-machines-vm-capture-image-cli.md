@@ -162,4 +162,4 @@ Azure ではこのテンプレートをイメージとして扱い、イメー�
 [データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

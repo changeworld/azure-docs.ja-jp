@@ -2,4 +2,4 @@
 - [(Windows 8.x Store C# | .NET)](../articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md)
 - [(Windows 8.x Store C# | JavaScript)](../articles/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac.md)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->

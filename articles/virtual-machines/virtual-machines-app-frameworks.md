@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="infrastructure"
-   ms.date="06/03/2015"
+   ms.date="07/02/2015"
    ms.author="rasquill"/>
 
 # テンプレートを使用したアプリケーション フレームワーク
@@ -22,6 +22,7 @@
 
 | テンプレート名 | 説明 | テンプレートを見る | 今すぐデプロイする |
 |:---|:---|:---:|:---:|
+| 'N' VM をすばやく展開する | れは、Microsoft が作成した 'N' の新規 VM を展開するテンプレートです。(新規 VNet およびストレージアカウント) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/resource-loop-vms-vnet-aset/) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresource-loop-vms-vnet-aset%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Active Directory フォレストと Active Directory ドメイン | このテンプレートは、新しい VM を 2 つ (新しい VNet、ストレージ アカウント、ロード バランサーと共に) デプロイし、AD フォレストと AD ドメインを新たに作成します。それぞれの VM は新しいドメインの DC として作成され、可用性セットに配置され、さらに、パブリックの負荷分散 IP アドレスで RDP エンドポイントが追加されます。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Apache Web サーバー | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して Apache Web サーバーをデプロイします。Ubuntu VM を作成し、Apache2 をインストールして、単純な HTML ファイルを作成します。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 | Couchbase クラスター | このテンプレートは、Couchbase クラスターを Ubuntu 仮想マシンにデプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/couchbase-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcouchbase-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
@@ -49,4 +50,4 @@
 Azure のリソース管理の詳細については、[こちら](../resource-group-template-deploy.md)を参照してください。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

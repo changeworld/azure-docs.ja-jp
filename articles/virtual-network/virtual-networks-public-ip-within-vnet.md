@@ -45,10 +45,10 @@
 
 ## 次のステップ
 
-[Virtual Network (VNet) のプロパティの管理方法](../virtual-networks-settings)
+[仮想ネットワーク (VNet) のプロパティの管理方法](../virtual-networks-settings)
 
 [Virtual Network (VNet) で使用される DNS サーバーの管理方法](../virtual-networks-manage-dns-in-vnet)
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

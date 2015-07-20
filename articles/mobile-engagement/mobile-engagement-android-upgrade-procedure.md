@@ -23,27 +23,88 @@
 
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、1.4.0 から 1.6.0 に移行する場合、まず「1.4.0から 1.5.0」への手順を実行してから「1.5.0 から 1.6.0」への手順を実行する必要があります。
 
-どのバージョンからアップグレードする場合でも、`mobile-engagement-VERSION.jar` をすべて新しいバージョンのものに置き換える必要があります。
+どのバージョンからアップグレードする場合でも、`mobile-engagement-VERSION.jar` を新しいバージョンのものに置き換える必要があります。
 
-###2.4.0 から 3.0.0 に移行
+##3.0.0 から 4.0.0 に移行
 
-Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
+### ネイティブ プッシュ通知
+
+ネイティブ プッシュ通知 (GCM/ADM) がアプリ内通知にも使用されるようになったので、すべての種類のプッシュ キャンペーンについてネイティブのプッシュの資格情報を設定する必要があります。
+
+設定が完了していない場合は、[こちらの手順](mobile-engagement-android-integrate-engagement-reach.md#native-push)に従ってください。
+
+### AndroidManifest.xml
+
+``AndroidManifest.xml`` の Reach 統合が変更されました。
+
+こちらに置き換えてください。
+
+    <receiver
+      android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver"
+      android:exported="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="com.microsoft.azure.engagement.intent.action.AGENT_CREATED"/>
+        <action android:name="com.microsoft.azure.engagement.intent.action.MESSAGE"/>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.ACTION_NOTIFICATION"/>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.EXIT_NOTIFICATION"/>
+        <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.DOWNLOAD_TIMEOUT"/>
+      </intent-filter>
+    </receiver>
+
+別
+
+    <receiver
+      android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver"
+      android:exported="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="com.microsoft.azure.engagement.intent.action.AGENT_CREATED"/>
+        <action android:name="com.microsoft.azure.engagement.intent.action.MESSAGE"/>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.ACTION_NOTIFICATION"/>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.EXIT_NOTIFICATION"/>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.DOWNLOAD_TIMEOUT"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachDownloadReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+      </intent-filter>
+    </receiver>
+
+アナウンス (テキスト/Web コンテンツを含む) またはポーリングをクリックすると、場合によって読み込み画面が表示されるようになりました。4.0.0 でこれらのキャンペーンを動作させるには、次を追加する必要があります。
+
+    <activity
+      android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity"
+      android:theme="@android:style/Theme.Dialog">
+      <intent-filter>
+        <action android:name="com.microsoft.azure.engagement.reach.intent.action.LOADING"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+### リソース
+
+プロジェクトに新しい `res/layout/engagement_loading.xml` ファイルが埋め込まれました。
+
+##2.4.0 から 3.0.0 に移行
+
+Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 2.4.0 に移行し、次の手順を適用してください。
 
 >[AZURE.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
 
-以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 2.4 に移行し、次の手順を適用してください。
-
-#### JAR ファイル
+### JAR ファイル
 
 `libs` フォルダーの `capptain.jar` を `mobile-engagement-VERSION.jar` に置き換えます。
 
-#### リソース ファイル
+### リソース ファイル
 
 提供されるすべてのリソース ファイル (`capptain_` で始まるファイル) を新しいファイル (`engagement_` で始まるファイル) に置き換える必要があります。
 
 これらのファイルがカスタマイズされている場合、新しいファイルにもそのカスタマイズを再適用する必要があります。**リソース ファイル内のすべての識別子の名前も変更されています**。
 
-#### アプリケーション ID
+### アプリケーション ID
 
 Engagement では、接続文字列を使用してアプリケーション ID などの SDK の識別子を構成します。
 
@@ -63,7 +124,7 @@ Engagement では、接続文字列を使用してアプリケーション ID �
 
 			<meta-data android:name="capptain:appId" android:value="<YOUR_APPID>"/>
 
-#### Java API
+### Java API
 
 SDK の Java クラスに対する呼び出しの名前をすべて変更する必要があります。たとえば、`CapptainAgent.getInstance(this)` は `EngagementAgent.getInstance(this)`、`extends CapptainActivity` は `extends EngagementActivity` などのように名前を変更します。
 
@@ -71,7 +132,7 @@ SDK の Java クラスに対する呼び出しの名前をすべて変更する�
 
 Web 通知を作成する場合、Javascript バインダーは `engagementReachContent` になります。
 
-#### AndroidManifest.xml
+### AndroidManifest.xml
 
 多数の変更が発生し、サービスが共有されなくなったため、多くの受信者をエクスポートできなくなりました。
 
@@ -289,7 +350,7 @@ Reach のアクティビティがカスタマイズされている場合は、�
 
 			sendXMPPMessage(android.os.Bundle msg)
 
-#### Proguard
+### Proguard
 
 Proguard の構成はブランド変更の影響を受けるため、ルールは次のようになります。
 
@@ -300,5 +361,6 @@ Proguard の構成はブランド変更の影響を受けるため、ルール�
 			-keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
 			  <methods>;
 			}
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

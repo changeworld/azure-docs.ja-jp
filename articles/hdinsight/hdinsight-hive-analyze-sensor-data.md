@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Hive と Hadoop を使用したセンサー データの分析 | Microsoft Azure" 
-	description="Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="Blackmist" 
-	manager="paulettm" 
+<properties
+	pageTitle="Hive と Hadoop を使用したセンサー データの分析 | Microsoft Azure"
+	description="Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/20/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/06/2015" 
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
@@ -53,4 +53,4 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

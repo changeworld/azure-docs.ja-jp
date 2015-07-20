@@ -16,7 +16,7 @@
 	ms.date="04/23/2015" 
 	ms.author="kathydav"/>
 
-# Azure 上で Linux を実行するカスタム仮想マシンを作成する方法
+#Azure 上で Linux を実行するカスタム仮想マシンを作成する方法
 
 *カスタム*仮想マシンとは、**[ギャラリーから]** オプションで作成する仮想マシンのことです。**[簡易作成]** オプションよりも構成の選択肢が多いことから、このように呼びます。選択できるオプションは次のとおりです。
 
@@ -31,6 +31,6 @@
 [AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-LinuxVM.md)]
 
 
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

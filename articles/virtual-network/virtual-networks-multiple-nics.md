@@ -1,10 +1,10 @@
 <properties 
    pageTitle="複数 NIC を持つ VM の作成"
-   description="複数 NIC を持つ VM を作成する方法"
+   description="複数の NIC を使用する VM を作成して構成する方法について説明します"
    services="virtual-network, virtual-machines"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="adinah"
+   manager="carolz"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/30/2015"
+   ms.date="07/02/2015"
    ms.author="telmos" />
 
 # 複数 NIC を持つ VM の作成
@@ -43,11 +43,11 @@
 |VM のサイズ (標準的な SKU)|NICの数 (VM ごとに許可される最大数)|
 |---|---|
 |Basic のすべてのサイズ|1|
-|A0\極小|1|
-|A1\小|1|
-|A2\中|1|
-|A3\大|2|
-|A4\極大|4|
+|A0\\極小|1|
+|A1\\小|1|
+|A2\\中|1|
+|A3\\大|2|
+|A4\\極大|4|
 |A5|1|
 |A6|2|
 |A7|4|
@@ -119,9 +119,11 @@
 - 構成済みの仮想ネットワーク。Vnet の詳細については、「[仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
 - Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell)」を参照してください。
 
-1. Azure VM イメージ ギャラリーから VM イメージを選択します。イメージは頻繁に変更され、リージョンごとに利用できることに注意してください。次の例で指定されたイメージは変更されたり、リージョンによって提供されていない可能性があるため、必ず必要なイメージを指定してください。 
+複数の NIC を使用する VM を作成するには、次の手順に従います。
 
-	    $image = Get-AzureVMImage `
+1. Azure VM イメージ ギャラリーから VM イメージを選択します。イメージは頻繁に変更され、リージョンごとに利用できることに注意してください。次の例で指定されたイメージは変更されたり、リージョンによって提供されていない可能性があるため、必ず必要なイメージを指定してください。 
+	    
+		$image = Get-AzureVMImage `
 	    	-ImageName "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201410.01-en.us-127GB.vhd"
 
 1. VM 構成を作成します。
@@ -143,21 +145,111 @@
 
 1. 既定の NIC のサブネットと IP アドレスを指定します。
 
-		Set-AzureSubnet -SubnetNames "Frontend" -VM $vm Set-AzureStaticVNetIP  `
-			-IPAddress "10.1.0.100" -VM $vm
+		Set-AzureSubnet -SubnetNames "Frontend" -VM $vm 
+		Set-AzureStaticVNetIP -IPAddress "10.1.0.100" -VM $vm
 
 1. 仮想ネットワーク内に VM を作成します。
 
 		New-AzureVM -ServiceName "MultiNIC-CS" –VNetName "MultiNIC-VNet" –VMs $vm
 
->[AZURE.NOTE]ここでは既存の VNet を指定する必要があります (前提条件で説明)。次の例では "MultiNIC-VNet" という名前の仮想ネットワークを指定します。
+>[AZURE.NOTE]ここでは既存の VNet を指定する必要があります (前提条件で説明)。次の例では **MultiNIC-VNet** という名前の仮想ネットワークを指定します。
 
-## 関連項目
+## 他のサブネットへのセカンダリ NIC アクセス
 
-[仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)
+Azure の現在のモデルでは、仮想マシンのすべての NIC にはデフォルト ゲートウェイが設定されます。これにより、NIC はサブネットの外部の IP アドレスと通信できます。Linux などの弱いホスト ルーティング モデルを使用するオペレーティング システムでは、受信トラフィックと送信トラフィックが異なる NIC を使用している場合、インターネット接続が中断します。
 
-[仮想ネットワークの構成タスク](https://msdn.microsoft.com/library/azure/jj156206.aspx)
+この問題を解決するため、2015 年 7 月の最初の週に、セカンダリ NIC からデフォルト ゲートウェイを削除する更新プログラムがプラットフォームに展開されます。仮想マシンを再起動するまで、これによる既存の仮想マシンへの影響はありません。再起動後に新しい設定が有効になり、セカンダリ NIC でのトラフィック フローは同じサブネット内に制限されるようになります。ユーザーは、セカンダリ NIC がユーザーのサブネットの外部と通信できるようにする場合は、以下に示すように、ルーティング テーブルにエントリを追加してゲートウェイを構成する必要があります。
 
-[ブログ投稿: 複数の NIC を持つ VM と Azure での VNet アプライアンス](../multiple-vm-nics-and-network-virtual-appliances-in-azure)
+### Windows VM の構成
 
-<!---HONumber=58--> 
+次のような 2 つの NIC を備えた Windows VM があるものとします。
+
+- プライマリ NIC の IP アドレス: 192.168.1.4
+- セカンダリ NIC の IP アドレス: 192.168.2.5
+
+この VM の IPv4 ルーティング テーブルは、次のようになります。
+
+	IPv4 Route Table
+	===========================================================================
+	Active Routes:
+	Network Destination        Netmask          Gateway       Interface  Metric
+	          0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4      5
+	        127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
+	        127.0.0.1  255.255.255.255         On-link         127.0.0.1    306
+	  127.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+	    168.63.129.16  255.255.255.255      192.168.1.1      192.168.1.4      6
+	      192.168.1.0    255.255.255.0         On-link       192.168.1.4    261
+	      192.168.1.4  255.255.255.255         On-link       192.168.1.4    261
+	    192.168.1.255  255.255.255.255         On-link       192.168.1.4    261
+	      192.168.2.0    255.255.255.0         On-link       192.168.2.5    261
+	      192.168.2.5  255.255.255.255         On-link       192.168.2.5    261
+	    192.168.2.255  255.255.255.255         On-link       192.168.2.5    261
+	        224.0.0.0        240.0.0.0         On-link         127.0.0.1    306
+	        224.0.0.0        240.0.0.0         On-link       192.168.1.4    261
+	        224.0.0.0        240.0.0.0         On-link       192.168.2.5    261
+	  255.255.255.255  255.255.255.255         On-link         127.0.0.1    306
+	  255.255.255.255  255.255.255.255         On-link       192.168.1.4    261
+	  255.255.255.255  255.255.255.255         On-link       192.168.2.5    261
+	===========================================================================
+
+既定のルート (0.0.0.0) はプライマリ NIC だけが使用できることに注意してください。次に示すように、セカンダリ NIC のサブネットの外部にあるリソースにはアクセスできません。
+
+	C:\Users\Administrator>ping 192.168.1.7 -S 192.165.2.5
+	 
+	Pinging 192.168.1.7 from 192.165.2.5 with 32 bytes of data:
+	PING: transmit failed. General failure.
+	PING: transmit failed. General failure.
+	PING: transmit failed. General failure.
+	PING: transmit failed. General failure.
+
+セカンダリ NIC で既定のルートを追加するには、次の手順に従います。
+
+1. コマンド プロンプトから次のコマンドを実行して、セカンダリ NIC のインデックス番号を識別します。
+
+		C:\Users\Administrator>route print
+		===========================================================================
+		Interface List
+		 29...00 15 17 d9 b1 6d ......Microsoft Virtual Machine Bus Network Adapter #16
+		 27...00 15 17 d9 b1 41 ......Microsoft Virtual Machine Bus Network Adapter #14
+		  1...........................Software Loopback Interface 1
+		 14...00 00 00 00 00 00 00 e0 Teredo Tunneling Pseudo-Interface
+		 20...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
+		===========================================================================
+
+2. インデックスが 27 (この例の場合) である表の 2 番目のエントリに注意してください。
+3. 次に示すように、コマンド プロンプトから **route add** コマンドを実行します。この例では、セカンダリ NIC のデフォルト ゲートウェイとして 192.168.2.1 を指定します。
+
+		route ADD -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5000 IF 27
+
+4. 接続をテストするには、コマンド プロンプトに戻り、次の例で示すように、セカンダリ NIC から別のサブネットに対して ping を試みます。
+
+		C:\Users\Administrator>ping 192.168.1.7 -S 192.165.2.5
+		 
+		Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
+		Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
+		Reply from 192.168.1.7: bytes=32 time=2ms TTL=128
+		Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
+
+5. 次に示すように、ルート テーブルで新しく追加されたルートを確認することもできます。
+
+		C:\Users\Administrator>route print
+
+		...
+
+		IPv4 Route Table
+		===========================================================================
+		Active Routes:
+		Network Destination        Netmask          Gateway       Interface  Metric
+		          0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4      5
+		          0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.5   5005
+		        127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
+
+### Linux VM を構成します。
+
+Linux VM の場合、既定の動作では弱いホスト ルーティングが使用されるので、セカンダリ NIC を同じサブネット内のトラフィック フローだけに制限することをお勧めします。ただし、特定のシナリオでサブネット外部への接続が必要な場合は、送信と受信のトラフィックが同じ NIC を使用するようにポリシー ベースのルーティングを有効にする必要があります。
+
+## 次のステップ
+
+- [複数の NIC を持つ VM と Azure での VNet アプライアンス](../multiple-vm-nics-and-network-virtual-appliances-in-azure)の使用について学習してください。
+
+<!---HONumber=July15_HO2-->

@@ -123,4 +123,4 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

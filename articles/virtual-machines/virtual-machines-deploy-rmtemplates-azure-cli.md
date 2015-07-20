@@ -1281,7 +1281,9 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 ## <a id="start-a-virtual-machine"></a>タスク: VM の起動
 
-次のコマンドを実行します: Azure Resource Manager Overview azure vm start <group name> <virtual machine name>
+次のコマンドを実行します。
+
+    azure vm start <group name> <virtual machine name>
 
 ## <a id="attach-a-data-disk"></a>タスク: データ ディスクの接続
 
@@ -1313,4 +1315,4 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

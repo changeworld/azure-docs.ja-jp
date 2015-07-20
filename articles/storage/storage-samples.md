@@ -79,6 +79,6 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 ### C++ のリソース
 
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
-- [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
+- [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/) 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

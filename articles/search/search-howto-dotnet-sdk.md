@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="04/17/2015"
+   ms.date="07/08/2015"
    ms.author="brjohnst"/>
 
 # .NET アプリケーションから Azure Search を使用する方法 #
@@ -29,9 +29,9 @@ SDK は、クライアント ライブラリ `Microsoft.Azure.Search` で構成�
 - [Microsoft.Azure.Search](https://msdn.microsoft.com/library/azure/microsoft.azure.search.aspx)
 - [Microsoft.Azure.Search.Models](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.aspx)
 
-Azure Search .NET SDK の現在のバージョンは `0.10.0-preview` です。これは、SDK のプレリリース版です。最初の安定バージョンに組み込むためのフィードバックを提供する場合は、[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)を使用してください。
+Azure Search .NET SDK の現在のバージョンはプレリリース版です。最初の安定バージョンに組み込むためのフィードバックを提供する場合は、[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)を使用してください。
 
-.NET SDK はバージョン `2015-02-28` の Azure Search REST API をサポートします。ドキュメントは [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。マイクロソフトの自然言語プロセッサや `moreLikeThis` 検索パラメーターなど、このバージョンの一部では*ない*新機能は[プレビュー](../search-api-2015-02-28-preview/)段階であり、SDK ではまだ使用できません。これらの機能の最新の状態については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」または「[What’s new in the latest update to Azure Search (Azure Search の最新の更新での新機能)](../search-latest-updates/)」で確認できます。
+.NET SDK はバージョン `2015-02-28` の Azure Search REST API をサポートします。ドキュメントは [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。マイクロソフトの自然言語プロセッサや `moreLikeThis` 検索パラメーターなど、このバージョンの一部では*ない*新機能は[プレビュー](search-api-2015-02-28-preview.md)段階であり、SDK ではまだ使用できません。これらの機能の最新の状態については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」または「[What’s new in the latest update to Azure Search (Azure Search の最新の更新での新機能)](search-latest-updates.md)」で確認できます。
 
 この SDK でサポートされない他の機能は次のとおりです。
 
@@ -41,7 +41,7 @@ Azure Search .NET SDK の現在のバージョンは `0.10.0-preview` です。�
 
 1. Visual Studio 2013 以降のバージョン。
 
-2. 自分が所有する Azure Search サービス。SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。「[ポータルでの Azure Search サービスの作成](../search-create-service-portal/)」は、これらの手順の参考になります。
+2. 自分が所有する Azure Search サービス。SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」は、これらの手順の参考になります。
 
 3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.Search)をダウンロードします。NuGet.org でパッケージの名前 `Microsoft.Azure.Search` を検索してください。[Include Prerelease] を選択して、プレリリースの SDK が検索結果に表示されるようにします。
 
@@ -623,5 +623,6 @@ Hotel.cs:
             }
         }
     }
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

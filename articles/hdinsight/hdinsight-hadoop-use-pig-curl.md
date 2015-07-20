@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/03/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #Curl を使用した HDInsight の Hadoop での Pig ジョブの実行
@@ -24,7 +24,7 @@
 
 Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし、Pig ジョブを実行、監視して、その結果を取得する方法を示すために使用します。これは、HDInsight クラスターで提供される WebHCat REST API (旧称: Templeton) を使用することで機能します。
 
-> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -32,9 +32,9 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
 
-* <a href="http://curl.haxx.se/" target="_blank">Curl</a>
+* [Curl](http://curl.haxx.se/)
 
-* <a href="http://stedolan.github.io/jq/" target="_blank">jq</a>
+* [jq](http://stedolan.github.io/jq/)
 
 ##<a id="curl"></a>Curl を使用した Pig ジョブの実行
 
@@ -42,7 +42,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 >
 > このセクションのコマンドでは、**USERNAME** をクラスターを認証するユーザーの名前に、**PASSWORD** をユーザー アカウントのパスワードに置き換えてください。**CLUSTERNAME** はクラスターの名前に置き換えます。
 >
-> REST API のセキュリティは、<a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">基本アクセス認証</a>を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+> REST API のセキュリティは、[基本アクセス認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
@@ -97,8 +97,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 	azure storage blob download <container-name> <blob-name> <destination-file>
 
-> [AZURE.NOTE]`-a` や `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を設定する必要があります。詳細情報については、「<a href="../hdinsight-upload-data/" target="_blank"」をご覧ください。
-
+> [AZURE.NOTE]`-a` や `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を設定する必要があります。
 
 ##<a id="summary"></a>概要
 
@@ -118,4 +117,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

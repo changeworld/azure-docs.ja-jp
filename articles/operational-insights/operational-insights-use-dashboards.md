@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="オペレーション インサイト ダッシュボード" 
-	description="オペレーション インサイトの基本的なダッシュ ボードの使用についての情報記事" 
-	services="operational-insights" 
-	documentationCenter="" 
-	authors="bandersmsft" 
-	manager="jwhit" 
+<properties
+	pageTitle="オペレーション インサイト ダッシュボード"
+	description="オペレーション インサイトの基本的なダッシュ ボードの使用についての情報記事"
+	services="operational-insights"
+	documentationCenter=""
+	authors="ehissey"
+	manager="jwhit"
 	editor=""/>
 
-<tags 
-	ms.service="operational-insights" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/30/2015" 
-	ms.author="banders"/>
+<tags
+	ms.service="operational-insights"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/02/2015"
+	ms.author="evanhi"/>
 
 # オペレーション インサイト ダッシュボード
 
 [AZURE.INCLUDE [operational-insights-note-moms](../../includes/operational-insights-note-moms.md)]
 
-このガイドでは、環境をわかりやすく表示しながら、オペレーション インサイトが保存したすべての検索を視覚化する方法について説明します。
+このガイドでは、環境をわかりやすく表示しながら、オペレーション インサイトが保存したすべてのログ検索を視覚化する方法について説明します。
 
 ![サンプルのダッシュ ボード](./media/operational-insights-use-dashboards/example-dash.png)
 
@@ -34,15 +34,15 @@
 
 ## タイルの追加
 
-ダッシュ ボードでは、タイルは、保存済みの検索が提供します。オペレーション インサイトには、すぐ始められるように、事前に作成され、保存された多くの検索が付属しています。開始方法を説明した次の図をご覧ください。
+ダッシュ ボードでは、タイルは、保存済みのログ検索が提供します。オペレーション インサイトには、すぐ始められるように、事前に作成され、保存された多くのログ検索が付属しています。開始方法を説明した次の図をご覧ください。
 
 ![図](./media/operational-insights-use-dashboards/pictorial.png)
 
-My Dashboard ビューで、ページの下部の [カスタマイズ] の歯車をクリックし、カスタマイズ モードに移動します。ページの右側に表示されたパネルに、ワークスペースが保存したすべての検索が表示されます。
+My Dashboard ビューで、ページの下部の [カスタマイズ] の歯車をクリックし、カスタマイズ モードに移動します。ページの右側に表示されたパネルに、ワークスペースが保存したすべてのログ検索が表示されます。
 
 ![タイル 1 の追加](./media/operational-insights-use-dashboards/add-tile1.png)
 
-保存した検索をタイルとして表示するには、左側の空の領域にドラッグします。ドラッグすると、タイルになります。
+保存したログ検索をタイルとして表示するには、左側の空の領域にドラッグします。ドラッグすると、タイルになります。
 
 ![タイル 2 の追加](./media/operational-insights-use-dashboards/add-tile2.png)
 
@@ -58,11 +58,11 @@ My Dashboard ビューで、ページの下部の [カスタマイズ] の歯車
 
 **横棒グラフ** <p> ![横棒グラフ](./media/operational-insights-use-dashboards/bar-chart.png)
 
-保存した検索結果のタイムラインを表示します。あるいは検索がフィールドごとに集計されているかどうかによって、フィールドごとに結果の一覧を表示します。
+保存したログ検索結果のタイムラインを表示します。あるいはログ検索がフィールドごとに集計されているかどうかによって、フィールドごとに結果の一覧を表示します。
 
 **メトリック** <p> ![メトリック](./media/operational-insights-use-dashboards/metric.png)
 
-検索結果の合計のヒット数をタイルに数値として表示します。メトリックのタイルでは、しきい値に達したときに、タイルを強調表示するしきい値を設定することができます。
+ログ検索結果の合計のヒット数をタイルに数値として表示します。メトリックのタイルでは、しきい値に達したときに、タイルを強調表示するしきい値を設定することができます。
 
 ### しきい値
 メトリックの視覚エフェクトを使用して、タイルのしきい値を作成できます。タイルにしきい値の値を作成するを選択します。値が選択したしきい値未満、または以上の場合に強調表示するかどうかを選択し、しきい値を設定します。
@@ -74,4 +74,5 @@ My Dashboard ビューで、ページの下部の [カスタマイズ] の歯車
 
 ## タイルの削除
 タイルを削除するには、My Dashboard ビューに移動し、ページの下部の **[カスタマイズ]** の歯車をクリックし、カスタマイズ モードに移動します。削除するタイルを選択し、右側のパネルで **[タイルの削除]** を選択します。![タイルの削除](./media/operational-insights-use-dashboards/remove-tile.png)
-<!--HONumber=54--> 
+
+<!---HONumber=July15_HO2-->

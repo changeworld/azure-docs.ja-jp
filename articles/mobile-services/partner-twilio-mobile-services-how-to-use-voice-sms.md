@@ -105,7 +105,7 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 		  "keywords":[]
 		}
 
-	>[AZURE.NOTE]Twilio の dependency は、`"twilio": "~1.7.0"` のように (\~) が追加されます。caret (^) を用いた参照はサポートされていません。
+	>[AZURE.NOTE]Twilio の dependency は、`"twilio": "~1.7.0"` のように (~) が追加されます。caret (^) を用いた参照はサポートされていません。
 
 4. このファイルへの更新をコミットし、更新をモバイル サービスにプッシュします。
 
@@ -228,5 +228,6 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
 [azure_twilio_howto_ruby]: /develop/ruby/how-to-guides/twilio-voice-and-sms-service/
 [azure_twilio_howto_python]: /develop/python/how-to-guides/twilio-voice-and-sms-service/
 [azure_twilio_howto_php]: /develop/php/how-to-guides/twilio-voice-and-sms-service/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

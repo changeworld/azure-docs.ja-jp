@@ -8,12 +8,12 @@
 	authors="HeidiSteen"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
+	ms.service="search" 
+	ms.workload="search" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/12/2015" 
+	ms.date="06/24/2015" 
 	ms.author="heidist"/>
 
 # Azure Search の概要 #
@@ -40,6 +40,6 @@
 **ダウンロード:**
 
 * <a href="http://go.microsoft.com/fwlink/p/?LinkId=522547" target="_blank">「Introducing Azure Search (Azure Search の概要)」 (PDF)</a>
-* <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">「Introducing Azure Search (Azure Search の概要)」 (Microsoft Word)</a> 
-<!----HONumber=52-->
- 
+* <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">Azure Search の概要に関するドキュメント (Microsoft Word)</a> 
+
+<!---HONumber=July15_HO2-->

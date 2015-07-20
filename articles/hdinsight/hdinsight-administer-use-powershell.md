@@ -279,4 +279,4 @@ Hive の使用法の詳細については、「[HDInsight での Hive の使用]
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

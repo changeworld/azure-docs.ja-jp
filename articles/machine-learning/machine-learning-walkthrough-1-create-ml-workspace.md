@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="手順 1: Machine Learning ワークスペースの作成 | Azure" 
-	description="ソリューションのチュートリアル手順 1: 新しい Azure Machine Learning Studio ワークスペースを作成する" 
+	pageTitle="手順 1: Machine Learning ワークスペースの作成 | Microsoft Azure" 
+	description="予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio ワークスペースを設定する方法の 1 番目の手順です。" 
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="garyericson" 
@@ -13,54 +13,47 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/29/2015" 
+	ms.date="04/22/2015" 
 	ms.author="garye"/>
 
 
-これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][develop]」の最初の手順です。
+# チュートリアル手順 1: Machine Learning ワークスペースの作成
 
-[develop]: ../machine-learning-walkthrough-develop-predictive-solution/
+これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発](machine-learning-walkthrough-develop-predictive-solution.md)」の最初の手順です。
 
-1.	**ML ワークスペースを作成する**
-2.	[既存のデータをアップロードする][upload-data]
-3.	[新しい実験を作成する][create-new]
-4.	[モデルをトレーニングして評価する][train-models]
-5.	[Web サービスを発行する][publish]
-6.	[Web サービスにアクセスする][access-ws]
 
-[create-workspace]: ../machine-learning-walkthrough-1-create-ml-workspace/
-[upload-data]: ../machine-learning-walkthrough-2-upload-data/
-[create-new]: ../machine-learning-walkthrough-3-create-new-experiment/
-[train-models]: ../machine-learning-walkthrough-4-train-and-evaluate-models/
-[publish]: ../machine-learning-walkthrough-5-publish-web-service/
-[access-ws]: ../machine-learning-walkthrough-6-access-web-service/
+1.	**Machine Learning ワークスペースの作成**
+2.	[既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)
+3.	[新しい実験を作成する](machine-learning-walkthrough-3-create-new-experiment.md)
+4.	[モデルをトレーニングして評価する](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5.	[Web サービスを発行する](machine-learning-walkthrough-5-publish-web-service.md)
+6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
 ----------
 
-# 手順 1.Azure Machine Learning ワークスペースの作成
+Machine Learning Studio を使用するには、Microsoft Azure Machine Learning ワークスペースが必要です。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
-ML Studio を使用するには、ML ワークスペースを作成する必要があります。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
-
-## ワークスペースを作成するには  
+##ワークスペースを作成するには  
 
 1.	Microsoft Azure のアカウントを使用してサインインします。
-2.	Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。  
-![Create workspace][1]
+2.	Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。![Create workspace][1]
 
 3.	**[ML ワークスペースを作成]** をクリックします。
-4.	**[簡易作成]** ページにワークスペースの情報を入力して、**[ML ワークスペースを作成]** をクリックします。
+4.	**[簡易作成]** ページにワークスペースの情報を入力して、**[ML ワークスペースを作成]**. をクリックします。
 
-	>**注** - **[ワークスペースの所有者]** は Microsoft アカウント (name@outlook.com など) または組織アカウントです。
+	> [AZURE.NOTE]**[ワークスペースの所有者]** はマイクロソフト アカウント (name@outlook.com など) や組織アカウントです。
 
-ML ワークスペースが作成されると、**[Machine Learning]** ページの一覧に表示されます。  
+Machine Learning ワークスペースが作成されると、**機械学習**のページの一覧に表示されます。
 
->**ヒント** - ワークスペースに招待することで、作業中の実験を自分以外のユーザーと共有することができます。これは、ML Studio の **[設定]** ページから実行でき、必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
+> [AZURE.TIP]ワークスペースに招待することで、作業中の実験を自分以外のユーザーと共有できます。これは、Machine Learning Studio の **[設定]** ページから実行でき、必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
+
+詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
 
 ----------
 
-**次の手順: [既存のデータをアップロードする][upload-data]**
+**次: [既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)**
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=July15_HO2-->

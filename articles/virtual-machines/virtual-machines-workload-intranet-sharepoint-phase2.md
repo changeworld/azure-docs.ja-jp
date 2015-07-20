@@ -113,7 +113,7 @@ V、S、A、C の各表は、「[フェーズ 1: Azure の構成](virtual-machin
 6.	**[リモート デスクトップ接続]** ダイアログで、**[接続]** をクリックします。
 7.	**[Windows セキュリティ]** ダイアログで、**[別のアカウントを使用]** をクリックします。
 8.	**[ユーザー名]** に、VM の名前と、VM で作成されたローカル管理者アカウント (ローカル コンピューター アカウント) のユーザー名を入力します。次の形式を使用します。 
-- *ComputerName**LocalAdministratorAccountName*
+- *ComputerName*\\*LocalAdministratorAccountName*
 9.	**[パスワード]** に、ローカル管理者アカウントのパスワードを入力します。
 10.	**[OK]** をクリックします。
 11.	**[リモート デスクトップ接続]** ダイアログで、**[はい]** をクリックします。新しいマシンのデスクトップがリモート デスクトップ セッション ウィンドウに表示されます。
@@ -175,7 +175,7 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 - sp_install: ロールと機能をインストールするために必要なドメイン管理権限を持つユーザー アカウント。
 - sqlservice: SQL インスタンスを実行できるユーザー アカウント。
 
-次に、ドメイン コントローラーがメンバーであるドメインのドメイン管理者アカウントを使用して、任意のコンピューターにログオンします。管理者レベルの Windows PowerShell コマンド プロンプトを開き、次のコマンドを 1 つずつ実行します。**
+次に、ドメイン コントローラーがメンバーであるドメインのドメイン管理者アカウントを使用して、任意のコンピューターにログオンします。管理者レベルの Windows PowerShell コマンド プロンプトを開き、次のコマンドを 1 つずつ実行します。
 
 	New-ADUser -SamAccountName sp_farm -AccountPassword (read-host "Set user password" -assecurestring) -name "sp_farm" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
 	
@@ -234,7 +234,7 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 ## その他のリソース
 
-[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)
+[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
@@ -242,4 +242,7 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
-<!--HONumber=54--> 
+[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
+ 
+
+<!---HONumber=July15_HO2-->

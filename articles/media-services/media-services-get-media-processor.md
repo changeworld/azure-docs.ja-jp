@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="メディア プロセッサを作成する方法 - Azure" 
-	description="メディア プロセッサ コンポーネントを作成し、Azure メディア サービス用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+	description="メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/10/2015" 
+	ms.date="05/13/2015" 
 	ms.author="juliako"/>
 
 
 #方法: メディア プロセッサ インスタンスを取得する
 
-この記事は、[メディア サービスのビデオ オンデマンド ワークフロー](media-services-video-on-demand-workflow.md) シリーズの一部です。 
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
 
 ##概要
 
@@ -39,7 +39,7 @@
     <tr>
        <td>Azure メディア エンコーダー</td>
        <td>Azure メディア エンコーダーを使用してエンコード タスクを実行できます。</td>
-       <td><a href="http://msdn.microsoft.com/library/jj129582.aspx">Task Preset Strings for the Azure Media Encoder (Azure メディア エンコーダー用のタスク プリセット文字列)</a></td>
+       <td><a href="http://msdn.microsoft.com/library/jj129582.aspx">Azure メディア エンコーダー用のタスク プリセット文字列</a></td>
     </tr>
     <tr>
        <td>メディア エンコーダー プレミアム ワークフロー</td>
@@ -49,7 +49,7 @@
 	<tr>
         <td>Azure メディア インデクサー</td>
         <td>メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。</td>
-		<td><a href="http://azure.microsoft.com/documentation/articles/media-services-index-content/">Azure Media Indexer によるメディア ファイルのインデックス作成</a>.</td>
+		<td><a href="http://azure.microsoft.com/documentation/articles/media-services-index-content/">Azure Media Indexer によるメディア ファイルのインデックス作成</a></td>
     </tr>
     <tr>
         <td>Windows Azure Media Packager</td>
@@ -61,6 +61,11 @@
         <td>PlayReady Protection を使用してメディア アセットを暗号化できます。</td>
         <td><a href="http://msdn.microsoft.com/library/hh973610.aspx">Azure Media Packager 用のタスクのプリセット</a></td>
     </tr>
+	<tr>
+		<td>Azure Media Hyperlapse (プレビュー)</td>
+		<td>ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。</td>
+		<td><a href="http://go.microsoft.com/fwlink/?LinkId=613274">Azure Media Hyperlapse</a></td>
+	</tr>
     <tr>
         <td>Storage Decryption</td>
         <td>ストレージ暗号化を使用して暗号化されたメディア アセットを復号化できます。</td>
@@ -72,7 +77,7 @@
 
 ##MediaProcessor の取得
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。「[方法: メディア サービスにプログラムから接続する]」をご覧ください。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、「[方法: メディア サービスにプログラムから接続する]」で説明しているように、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。
 
 	private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
 	{
@@ -86,11 +91,10 @@
 	}
 
 ##次のステップ
-これで、プロセッサ インスタンスの取得方法を学習できました。次は、[方法: アセットをエンコードする][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
+これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
 
-[方法: アセットをエンコードする]: media-services-encode-asset.md
-[Task Preset Strings for the Azure Media Encoder (Azure メディア エンコーダー用のタスク プリセット文字列)]: http://msdn.microsoft.com/library/jj129582.aspx
-[方法:Media Services にプログラムから接続する]: ../media-services-set-up-computer/
+[アセットをエンコードする方法]: media-services-encode-asset.md
+[Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
+[方法: メディア サービスにプログラムから接続する]: ../media-services-set-up-computer/
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

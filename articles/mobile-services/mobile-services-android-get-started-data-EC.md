@@ -100,11 +100,9 @@
 
 次に、他の Android チュートリアルで以下を試します。
 
-* [認証の使用] 
-	<br/>アプリケーションのユーザーを認証する方法について説明します。
+* [認証の使用] <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用]
-  <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [プッシュ通知の使用] <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 [Download the Android app project]: #download-app
@@ -132,5 +130,6 @@
 [Mobile Services Android SDK]: http://aka.ms/Iajk6q
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

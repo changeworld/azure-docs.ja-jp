@@ -13,56 +13,84 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="02/20/2015"
+   ms.date="06/24/2015"
    ms.author="kasing"/>
 
 # Azure PowerShell を使用した仮想マシンの管理
 
-開始する前に、Azure PowerShell がインストールされていることをご確認ください。インストールするには、[「Azure PowerShell のインストールと構成方法」をご覧ください。](../install-configure-powershell.md)
+Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
-## イメージの取得
+>[AZURE.NOTE]Azure PowerShell をまだインストールして構成していない場合は、[こちら](../install-configure-powershell.md)から手順を参照してください。
 
-仮想マシンを作成する前に、**どのイメージを使用するか**決める必要があります。次のコマンドレットを使ってイメージの一覧を取得できます。
-
-      Get-AzureVMImage
-
-このコマンドレットは、Azure で使用できるすべてのイメージの一覧を返します。とても多くのイメージが一覧化されていますので、使用するイメージを見つけるのが大変かもしれません。下記の例では、別の PowerShell コマンドレットを使って、返されるイメージの一覧を **Windows Server 2012 R2 Datacenter** に基づいたものが含まれるイメージのみに絞り込んでいます。さらに、返されるイメージの配列に [-1] を指定することで最新のイメージのみを選択しています。
-
-    $img = (Get-AzureVMImage | Select -Property ImageName, Label | where {$_.Label -like '*Windows Server 2012 R2 Datacenter*'})[-1]
-
-## 仮想マシンの作成
-
-**New-AzureVMConfig** コマンドレットで始まる仮想マシンの作成ここで仮想マシンの **名前**、**サイズ**、その仮想マシンで使用される **イメージ**を指定します。このコマンドレットではローカル仮想マシンオブジェクトである **$myVM** が作成されます。これはこのガイドの他の Azure PowerShell コマンドレットを使って後で変更されます。
-
-      $myVM = New-AzureVMConfig -Name "testvm" -InstanceSize "Small" -ImageName $img.ImageName
-
-次に仮想マシンの**ユーザー名**と**パスワード**を選択する必要があります。**Add-AzureProvisioningConfig** コマンドレットを使って選択できます。こちらで仮想マシンの OS を指定できます。ここではまだローカル **$myVM** オブジェクトに対して変更を加えているということにご注意ください。
-
-    $user = "azureuser"
-    $pass = "&Azure1^Pass@"
-    $myVM = Add-AzureProvisioningConfig -Windows -AdminUsername $user -Password $pass
-
-これで Azure で仮想マシンを使用する準備ができました。**New-AzureVM** コマンドレットを使用して使用を開始します。
-
-> [AZURE.NOTE] 仮想マシンを作成する前に、クラウド サービスを構成する必要があります。2 つの方法があります。
-* New-AzureService コマンドレットを使ってクラウド サービスを作成します。この方法を選択した場合、下記 New-AzureVM コマンドレットで指定した場所がクラウド サービスの場所と合致する必要があります。合致しない場合、New-AzureVM コマンドレットの実行は失敗します。
-* New-AzureVM コマンドレットを使用して行います。サービスの名前は固有である必要があります。そうでない場合、New-AzureVM コマンドレットの実行は失敗します。
-
-    New-AzureVM -ServiceName "mytestserv" -VMs $myVM -Location "West US"
-
-**オプション**
-
-**Add-AzureDataDisk** や **Add-AzureEndpoint** などの他のコマンドレットを使用して仮想マシンのオプションを追加構成できます。
+## 例のコマンドを使用する方法
+コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。記号の < and > は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
 
 ## 仮想マシンの取得
-Azure で仮想マシンを作成した後は、その動作を確認します。下記のとおり、**Get-AzureVM** コマンドレットを使って確認できます。
+これは頻繁に使用することになる基本的なタスクです。VM に関する情報の取得、VM でのタスクの実行、変数に格納する出力の取得に使用します。
 
-    Get-AzureVM -ServiceName "mytestserv" -Name "testvm"
+VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 (< and > を含む) を置き換えます。
 
+     Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## 次のステップ
-[RDP または SSH を使用した Azure 仮想マシンへの接続](https://msdn.microsoft.com/library/azure/dn535788.aspx)<br>
-[Azure Virtual Machines FAQ (Azure 仮想マシンの FAQ)](https://msdn.microsoft.com/library/azure/dn683781.aspx)
+出力を $vm 変数に格納するには、次のように実行します。
 
-<!--HONumber=47-->
- 
+    $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
+
+## Windows ベースの仮想マシンへのログオン
+
+次の各コマンドを実行します。
+
+>[AZURE.NOTE]仮想マシンとクラウド サービス名は、**Get-azurevm** コマンドの表示から取得できます。
+>
+	$svcName="<cloud service name>"
+	$vmName="<virtual machine name>"
+	$localPath="<drive and folder location to store the downloaded RDP file, example: c:\temp >"
+	$localFile=$localPath + "" + $vmname + ".rdp"
+	Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
+
+## VM の停止
+
+次のコマンドを実行します。
+
+    Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
+
+>[AZURE.IMPORTANT]このパラメーターは、VM がクラウド サービス内の最後の VM である場合に、そのクラウド サービスの仮想 IP (VIP) を保持するために使用します。<br><br> StayProvisioned パラメーターを使用する場合は、その VM に対して引き続き課金されます。
+
+## VM の起動
+
+次のコマンドを実行します。
+
+    Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
+
+## データ ディスクの接続
+このタスクには、いくつかの手順が必要です。最初に、****Add-AzureDataDisk**** コマンドレットを使用して $vm オブジェクトにディスクを追加し、次に Update-AzureVM コマンドレットを使用して VM の構成を更新します。
+
+新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
+
+新しいディスクを接続するには、次のコマンドを実行します。
+
+    Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM <$vm> `
+              | Update-AzureVM
+
+既存のデータ ディスクを接続するには、次のコマンドを実行します。
+
+    Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> `
+              | Update-AzureVM
+
+BLOB ストレージにある既存の .vhd ファイルからデータ ディスクを接続するには、次のコマンドを実行します。
+
+    Add-AzureDataDisk -ImportFrom -MediaLocation `
+              "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" `
+              -DiskLabel "<main>" -LUN <0> `
+              | Update-AzureVM
+
+## Windows VM の作成
+
+Azure で Windows ベースの仮想マシンを新たに作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」をご覧ください。このトピックでは、次の項目を事前構成することができる Windows 仮想マシンを作成するための PowerShell コマンド セットを作成する手順を説明します。
+
+- Active Directory ドメイン メンバーシップ
+- 追加のディスク
+- 既存の負荷分散セットのメンバーとしての設定
+- 静的 IP アドレス
+
+<!---HONumber=July15_HO2-->

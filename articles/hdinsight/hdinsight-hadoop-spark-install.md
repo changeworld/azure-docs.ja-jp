@@ -83,7 +83,7 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 
 1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>￼」をご覧ください。
 
-2. Remote Desktop Protocol (RDP) セッションで、デスクトップから Hadoop コマンド ライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\apps\dist\spark-1.2.0** に移動します。
+2. Remote Desktop Protocol (RDP) セッションで、デスクトップから Hadoop コマンド ライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
 
 3. 次のコマンドを実行して、Spark シェルを起動します。
@@ -117,7 +117,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>￼」をご覧ください。
 
-2. RDP セッションで、デスクトップから Hadoop コマンドライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\apps\dist\spark-1.2.0** に移動します。
+2. RDP セッションで、デスクトップから Hadoop コマンドライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
 
 3. 次のコマンドを実行して、Spark シェルを起動します。
@@ -199,20 +199,20 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 	>[AZURE.NOTE]必ずファイル内に空の行を保持してください。
 
 	
-3. **SimpleScalaApp** フォルダーの下にディレクトリ構造 **\src\main\scala** を作成し、前に作成した Scala プログラム (**SimpleApp.scala**) を \src\main\scala フォルダーの下に貼り付けます。
+3. **SimpleScalaApp** フォルダーの下にディレクトリ構造 **\\src\\main\\scala** を作成し、前に作成した Scala プログラム (**SimpleApp.scala**) を \\src\\main\\scala フォルダーの下に貼り付けます。
 4. コマンド プロンプトを開き、SimpleScalaApp ディレクトリに移動して、次のコマンドを入力します。
 
 
 		sbt package
 
 
-	アプリケーションがコンパイルされると、ルート SimpleScalaApp フォルダー内の **\target\scala-2.10** ディレクトリの下に **simpleapp_2.10-1.0.jar** ファイルが作成されます。
+	アプリケーションがコンパイルされると、ルート SimpleScalaApp フォルダー内の **\\target\\scala-2.10** ディレクトリの下に **simpleapp_2.10-1.0.jar** ファイルが作成されます。
 
 
 #### クラスター上でジョブを実行する
 このセクションでは、Spark がインストールされているクラスターにリモート接続し、SimpleScalaApp プロジェクトの対象フォルダーをコピーします。次に、**spark-submit** コマンドを使用して、クラスター上のジョブを送信します。
 
-1. Spark がインストールされているクラスターにリモート接続します。SimpleApp.scala プログラムを作成し、ビルドしたコンピューターから **SimpleScalaApp\target** フォルダーをコピーし、クラスター上の場所に貼り付けます。
+1. Spark がインストールされているクラスターにリモート接続します。SimpleApp.scala プログラムを作成し、ビルドしたコンピューターから **SimpleScalaApp\\target** フォルダーをコピーし、クラスター上の場所に貼り付けます。
 2. RDP セッションで、デスクトップから Hadoop コマンドラインを開き、**target** フォルダーを貼り付けた場所に移動します。
 3. 次のコマンドを入力して、SimpleApp.scala プログラムを実行します。
 
@@ -405,7 +405,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 **アプリケーションを実行するには**
 
-Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
+Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateSparkCluster <cluster-name>
 
@@ -427,4 +427,4 @@ Azure PowerShell コンソールを開き、Visual Studio プロジェクトを�
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

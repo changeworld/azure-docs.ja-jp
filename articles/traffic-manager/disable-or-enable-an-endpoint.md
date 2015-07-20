@@ -3,7 +3,7 @@
    description="この記事では、Traffic Manager プロファイル エンドポイントの無効化または有効化について説明します。"
    services="traffic-manager"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="joaoma"
    manager="adinah"
    editor="tysonn" />
 <tags 
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2015"
-   ms.author="cherylmc" />
+   ms.date="05/27/2015"
+   ms.author="joaoma;cherylmc" />
 
 # Traffic Manager エンドポイントの無効化または有効化
 
 Traffic Manager プロファイルを構成する個々のエンドポイントを無効にすることもできます。エンドポイントには、クラウド サービスと Web サイトの両方が含まれます。無効にしたエンドポイントはその後もプロファイルの一部として残りますが、プロファイルは、エンドポイントが含まれていないかのように機能します。この操作は、メンテナンス モードのエンドポイントや再デプロイされるエンドポイントを一時的に削除するときに役立ちます。エンドポイントが再度稼働状態になったら、有効にできます。
 
-[AZURE.NOTE] **エンドポイントを無効にすることと Azure でのデプロイの状態とは無関係です。正常なエンドポイントは、Traffic Manager で無効になっていても、稼働状態のままでトラフィックを受信できます。また、1 つのプロファイル内のエンドポイントを無効にしても、別のプロファイル内の状態には影響しません。**
+[AZURE.NOTE]**エンドポイントの無効化は、Azure でのデプロイメント状態とは関係ありません。正常なエンドポイントは、Traffic Manager で無効になっていても、稼働状態のままでトラフィックを受信できます。また、あるプロファイルでエンドポイントを無効化しても、そのエンドポイントの他のプロファイルでの状態には影響しません。**
 
 ## エンドポイントを無効にするには
 
@@ -38,15 +38,16 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 ## 関連項目
 
-[Traffic Manager を構成する方法](https://msdn.microsoft.com/library/azure/hh744830.aspx)
+[Traffic Manager の構成タスク](https://msdn.microsoft.com/library/azure/hh744830.aspx)
 
 [Traffic Manager の概要](../traffic-manager.md)
 
-[クラウド サービス](http://go.microsoft.com/fwlink/?LinkId=314074)
+[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Web サイト](http://go.microsoft.com/fwlink/p/?LinkId=393327)
+[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
 
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

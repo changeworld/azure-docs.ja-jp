@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure Machine Learning Web サービスに接続する | Azure" 
+	pageTitle="Machine Learning Web サービスを発行する | Microsoft Azure" 
 	description="C# または Python を使用して、Azure Machine Learning Web サービスに承認キーを利用して接続します。" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="derrickv" 
+	authors="garyericson" 
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
+	ms.date="04/07/2015" 
 	ms.author="derrickv" />
 
 
 # Azure Machine Learning Web サービスに接続する 
-開発者が体験する Azure Machine Learning は、入力データから予測をリアルタイムまたはバッチ モードで作成する Web サービス API です。Azure Machine Learning Studio (ML Studio) を使用し、予測を作成して Azure ML Web サービスを発行します。 
+開発者が体験する Azure Machine Learning は、入力データから予測をリアルタイムまたはバッチ モードで作成する Web サービス API です。Azure Machine Learning Studio を使用して予測を作成し、Azure Machine Learning Web サービスを発行します。
 
-ML Studio を使用して Azure Machine Learning Web サービスを作成して発行する方法の詳細については、次を参照してください。
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-- [Azure ML プロセスの概要](../machine-learning-overview-of-azure-ml-process.md)
+Studio を使用して Azure Machine Learning Web サービスを作成して発行する方法の詳細については、次をご覧ください。
+
+- [Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)
 - [ML Studio を使ってみる](http://azure.microsoft.com/documentation/videos/getting-started-with-ml-studio/)
 - [Azure Machine Learning のプレビュー](https://studio.azureml.net/)
 - [Machine Learning ドキュメント センター](http://azure.microsoft.com/documentation/services/machine-learning/)
@@ -33,48 +35,46 @@ Azure Machine Learning (ML) Web サービスを使用して、外部のアプリ
 
 Azure Machine Learning には、2 種類のサービスがあります。
 
-- 要求応答サービス (RRS) - 待ち時間が短く拡張性の高い、ML Studio から作成および発行されたステートレスなモデルへのインターフェイスを提供するサービス。
-- バッチ実行サービス (BES) - データ レコードのバッチをスコア付けする非同期のサービス。
+- 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、ML Studio から作成および発行されたステートレスなモデルへのインターフェイスを提供するサービス。
+- バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。
 
-Azure Machine Learning Web サービスの詳細については、「[Azure ML プロセスの概要](../machine-learning-overview-of-azure-ml-process.md)」を参照してください。
+Azure Machine Learning Web サービスの詳細については、「[Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 ## Azure Machine Learning の承認キーを取得する ##
 Web サービスの API キーを ML Web サービスから取得します。Microsoft Azure Machine Learning Studio または Azure 管理ポータルから取得できます。
 ### Microsoft Azure Machine Learning Studio ###
-1. Microsoft Azure Machine Learning Studio で、左側の [**Web サービス**] をクリックします。
-2. Web サービスをクリックします。[API キー] が [**ダッシュボード**] タブにあります。
+1. Microsoft Azure Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
+2. Web サービスをクリックします。**[ダッシュボード]** タブに [API キー] があります。
 
 ### Azure 管理ポータル ###
 
-1. 左側の [**Machine Learning**] をクリックします。
+1. 左側の **[Machine Learning]** をクリックします。
 2. ワークスペースをクリックします。
-3. [**Web サービス**] をクリックします。
+3. **[Web サービス]** をクリックします。
 4. Web サービスをクリックします。
 5. エンドポイントをクリックします。[API キー] が右下にあります。
 
 ## <a id="connect"></a>Azure Machine Learning Web サービスに接続する
 
-HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Azure Machine Learning  Web サービスに接続することができます。Azure ML Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
+HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Azure Machine Learning Web サービスに接続することができます。Azure ML Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
 
 ### Azure ML Web サービス API のヘルプ ページを表示するには ###
 Azure ML API ヘルプ ページは、Web サービスを発行するときに作成されます。「[Azure Machine Learning チュートリアル - Web サービスを発行する](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。
 
 
-**Azure ML API のヘルプ ページを表示するには**
-Microsoft Azure Machine Learning Studio
+**Azure ML API のヘルプ ページを表示するには、**Microsoft Azure Machine Learning Studio で次のようにします。
 
-1. [**Web サービス**] を選択します。
+1. **[Web サービス]** を選択します。
 2. Web サービスを選択します。
-3. [**API ヘルプ ページ**] - [**要求/応答**] または [**バッチの実行**] を選択します。
+3. **[API ヘルプ ページ]** - **[要求/応答]** または **[バッチの実行]** を選択します。
 
 
-**Azure ML API ヘルプ ページ**
-Azure ML API のヘルプ ページには、次のような予測 Web サービスに関する詳細が含まれます。
+**Azure ML API のヘルプ ページ** Azure ML API のヘルプ ページには、次のような予測 Web サービスに関する詳細が含まれています。
 
 
 <table>
 	<tr>
-		<td>&nbsp;</td>
+		<td>&#160;</td>
 		<td>例 </td>
 	</tr>
 	<tr>
@@ -86,17 +86,17 @@ Azure ML API のヘルプ ページには、次のような予測 Web サービ�
 	<tr>
 		<td>要求のサンプル </td>
 		<td>{ <br/> 
-			&nbsp;&nbsp; "Id":"score00001",   <br/>
-			&nbsp;&nbsp; "Instance": <br/>
-			&nbsp;&nbsp;&nbsp;&nbsp; {  <br/>  
- 			&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FeatureVector":{ <br/>
-			&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  "Col1":"0", <br/>      
-			&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  "Col2":"0", <br/>      
-			&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  "Col3":"0", <br/>  
-			&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  ...     },   <br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;   "GlobalParameters":{}   <br/>
-			&nbsp;&nbsp;&nbsp;&nbsp; { <br/>
-		}</td>
+			&#160;&#160; "Id": "score00001",  <br/>
+			&#160;&#160; "Instance": <br/>
+			&#160;&#160;&#160;&#160; {  <br/>  
+ 			&#160;&#160;&#160;&#160; &#160;&#160; "FeatureVector": { <br/>
+			&#160;&#160;&#160;&#160; &#160;&#160;  "Col1": "0",<br/>      
+			&#160;&#160;&#160;&#160; &#160;&#160;  "Col2": "0",<br/>      
+			&#160;&#160;&#160;&#160; &#160;&#160;  "Col3": "0",<br/>  
+			&#160;&#160;&#160;&#160; &#160;&#160;  ... },  <br/>
+			&#160;&#160;&#160;&#160;   "GlobalParameters": {}   <br/>
+			&#160;&#160;&#160;&#160; { <br/>
+		{</td>
 	</tr>
 	<tr>
 		<td>応答本文 </td>
@@ -110,10 +110,10 @@ Azure ML API のヘルプ ページには、次のような予測 Web サービ�
 	
 			<tr>
 				<td>機能</td>
-				<td>文字列</td>
+				<td>String</td>
 			</tr>
 			<tr>
-				<td>数</td>
+				<td>カウント</td>
 				<td>数値</td>
 			</tr>
 			<tr>
@@ -121,39 +121,39 @@ Azure ML API のヘルプ ページには、次のような予測 Web サービ�
 				<td>数値 </td>
 			</tr>
 			<tr>
-				<td>... </td>
-				<td>... </td>
+				<td>...</td>
+				<td>...</td>
 			</tr>
 		</table>
 		</td>
 	</tr>
 	<tr>
 		<td>応答のサンプル </td>
-		<td>[&quot;Col1&quot;,&quot;1&quot;,&quot;1&quot;,...] </td>
+		<td>["Col1","1","1",…] </td>
 	</tr>
 	<tr>
-		<td>サンプル コード:  </td>
+		<td>サンプル コード </td>
 		<td>(C#、Python、および R のサンプル コード) </td>
 	</tr>
 </table>
 
-**注** 例はサンプル 1 からです。UCI からデータセットをダウンロードします。Azure ML のサンプル コレクションの成人向け 2 クラス データセットの部分。
+**注** これらの例は、Azure ML のサンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」からのものです。
 
 ### C# のサンプル ###
 
-Azure ML Web サービスに接続するには、ScoreData を渡す **HttpClient** を使用します。ScoreData には FeatureVector が含まれますが、これは n 次元の  ベクトルで、ScoreData を表す数値の機能です。API キーを使用して、Azure ML サービスを認証できます。
+Azure ML Web サービスに接続するには、ScoreData を渡す **HttpClient** を使用します。ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。API キーを使用して、Azure ML サービスを認証できます。
 
 ML Web サービスに接続するには、**Microsoft.AspNet.WebApi.Client** Nuget パッケージをインストールする必要があります。
 
 **Microsoft.AspNet.WebApi.Client Nuget in Visual Studio をインストールする**
 
-1. UCI からデータセットを発行します。成人向け 2 クラス データセット Web サービス。
-2. [**ツール**] > [**Nuget パッケージ マネージャー**] > [**パッケージ マネージャー コンソール**] をクリックします。
-2. [**Install-Package Microsoft.AspNet.WebApi.Client**] を選択します。
+1. 「UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」Web サービスを発行します。
+2. **[ツール]** > **[Nuget パッケージ マネージャー]** > **[Package Manager Console]** をクリックします。
+2. **[Install-Package Microsoft.AspNet.WebApi.Client]** を選択します。
 
 **サンプル コードを実行するには**
 
-1. "サンプル 1 を発行します。UCI からデータセットをダウンロードします。Azure ML のサンプル コレクションの成人向け 2 クラス データセットの実験。
+1. Azure ML サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
 2. Web サービスからのキーを持つ apiKey を割り当てます。Azure の ML 承認キーを取得する方法を参照してください。
 3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
 
@@ -256,12 +256,12 @@ ML Web サービスに接続するには、**Microsoft.AspNet.WebApi.Client** Nu
 
 ### Python サンプル ###
 
-Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2** ライブラリを使用します。ScoreData には FeatureVector が含まれますが、これは n 次元の  ベクトルで、ScoreData を表す数値の機能です。API キーを使用して、Azure ML サービスを認証できます。
+Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2** ライブラリを使用します。ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。API キーを使用して、Azure ML サービスを認証できます。
 
 
 **サンプル コードを実行するには**
 
-1. "サンプル 1 を発行します。UCI からデータセットをダウンロードします。Azure ML のサンプル コレクションの成人向け 2 クラス データセットの実験。
+1. Azure ML サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
 2. Web サービスからのキーを持つ apiKey を割り当てます。Azure の ML 承認キーを取得する方法を参照してください。
 3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
 
@@ -312,5 +312,6 @@ Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2**
 	
 		result = response.read()
 		print(result) 
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

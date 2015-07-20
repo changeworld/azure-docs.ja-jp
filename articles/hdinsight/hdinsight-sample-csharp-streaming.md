@@ -204,4 +204,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [hdinsight-use-pig]: hdinsight-use-pig.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

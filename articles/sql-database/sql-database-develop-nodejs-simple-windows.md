@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-このトピックでは、Azure SQL Database への接続に使用できる Node.js  コード サンプルについて説明します。Node.js プログラムは、Windows クライアント コンピューター上で実行されます。接続の管理には、msnodesql ドライバーが使用されます。
+このトピックでは、Azure SQL Database への接続に使用できる Node.js コード サンプルについて説明します。Node.js プログラムは、Windows クライアント コンピューター上で実行されます。接続の管理には、msnodesql ドライバーが使用されます。
 
 
 ## 必要条件
@@ -49,14 +49,16 @@
 	npm install -g node-gyp
 
 
-node-gyp がインストールされたら、ディレクトリ *YourProjectDirectory* に移動し、次に **node_modules\msnodesql** に移動します。**cmd.exe** ウィンドウで、次のコマンドを発行します。
+node-gyp がインストールされたら、ディレクトリ *YourProjectDirectory* に移動し、次に **node_modules\\msnodesql** に移動します。**cmd.exe** ウィンドウで、次のコマンドを発行します。
 
 
 	node-gyp configure 
 	node-gyp build
 
 
-次に、ディレクトリ **build\release** に移動します。**sqlserver.node** ファイルをコピーし、**msnodesql\lib** ディレクトリに貼り付けます。必要な場合は、古いファイルを置き換えます。
+次に、ディレクトリ **build\\release** に移動します。**sqlserver.node** ファイルをコピーし、**msnodesql\\lib** ディレクトリに貼り付けます。必要な場合は、古いファイルを置き換えます。
+
+[チーム ブログ](http://blogs.msdn.com/b/sqlphp/archive/2015/05/12/getting-started-with-node-js-and-microsoft-sql-server-and-azure-sql-database.aspx)と[ビデオ](https://www.youtube.com/watch?v=kQo_L-D_zk8)をチェックして、上記の要件をインストールおよびセットアップする方法を確認してください。
 
 
 ### データベースを作成し、接続文字列を取得します。
@@ -230,4 +232,6 @@ node-gyp がインストールされたら、ディレクトリ *YourProjectDire
 	    });
 	});
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

@@ -31,4 +31,4 @@
 
 	![](./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-response.png)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

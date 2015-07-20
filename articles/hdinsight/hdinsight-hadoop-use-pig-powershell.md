@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #PowerShell を使用した Pig ジョブの実行
@@ -22,7 +22,7 @@
 
 このドキュメントでは、Azure PowerShell を使用して HDInsight クラスターで Pig ジョブを Hadoop に送信する方法を説明します。Pig では map 関数や reduce 関数ではなく、データ変換をモデル化する言語 (Pig Latin) を使用して MapReduce ジョブを記述できます。
 
-> [AZURE.NOTE]このドキュメントには、例で使用される Pig Latin ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される Pig Latin については「<a href="hdinsight-use-pig.md" target="_blank">HDInsight での Pig Latin と Hadoop の使用</a>」をご覧ください。
+> [AZURE.NOTE]このドキュメントには、例で使用される Pig Latin ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される Pig Latin については「[HDInsight での Pig Latin と Hadoop の使用](hdinsight-use-pig.md)」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -35,7 +35,7 @@
 
 ##<a id="powershell"></a>PowerShell を使用した Pig ジョブの実行
 
-Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行できる*コマンドレット*が提供されます。これは、HDInsight クラスター上で実行する <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a> への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
+Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行できる*コマンドレット*が提供されます。これは、HDInsight クラスター上で実行される [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
 
 リモート HDInsight クラスターで Pig ジョブを実行するときに次のコマンドレットを使用します。
 
@@ -141,6 +141,5 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="07/07/2015" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサルでエンゲージメント API を使用する方法
@@ -358,5 +358,6 @@ SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリ�
 前の例では、サーバーに送信される JSON は 44 文字です。
 
 			{"birthdate":"1983-12-07","gender":"female"}
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

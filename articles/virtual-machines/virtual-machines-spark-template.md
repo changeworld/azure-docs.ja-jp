@@ -57,7 +57,7 @@ Azure リソース マネージャーとこのデプロイメントに使用す�
 
 ### 手順 1-a. PowerShell を使用して、テンプレート ファイルをダウンロードします。
 
-JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\Azure\Templates\Spark)。
+JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\Spark)。
 
 フォルダー名をローカル フォルダーのフォルダー名に置き換えて、次のコマンドを実行します。
 
@@ -91,7 +91,7 @@ foreach ($file in $files)
 
 	git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\Azure\Templates の **spark-on-ubuntu** フォルダーを探します。
+完了後に、C:\\Azure\\Templates の **spark-on-ubuntu** フォルダーを探します。
 
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
@@ -416,7 +416,7 @@ Azure CLI を使用して Spark クラスターをデプロイするには、ま
 
 このセクションでは、Spark クラスターの **azuredeploy.json** ファイルの構造について、順を追って説明します。
 
-テンプレート ファイルのコピーをまだダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\Azure\Templates\Spark)。フォルダー名を指定して以下のコマンドを実行します。
+テンプレート ファイルのコピーをまだダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates\\Spark)。フォルダー名を指定して以下のコマンドを実行します。
 
 ```powershell
 $folderName="<folder name, such as C:\Azure\Templates\Spark>"
@@ -844,4 +844,4 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 [テンプレートのデプロイに関するトラブルシューティング](resource-group-deploy-debug.md)。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

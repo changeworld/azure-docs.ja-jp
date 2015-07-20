@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/03/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # クエリ コンソールを使用して Hive クエリを実行
@@ -24,7 +24,7 @@
 
 > [AZURE.NOTE]クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -32,9 +32,9 @@
 
 * 最新の Web ブラウザー
 
-## <a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
+##<a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
 
-1. <a href="https://manage.windowsazure.com" target="_blank">Azure ポータル</a>を開き、HDInsight クラスターを選択します。ページの下部にある、**[クエリ コンソール]** を選択します。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+1. [Azure ポータル](https://manage.windowsazure.com)を開き、HDInsight クラスターを選択します。ページの下部にある、**[クエリ コンソール]** を選択します。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
 
     > [AZURE.NOTE]また、ブラウザーで **https://CLUSTERNAME.azurehdinsight.net** と入力することでクエリ コンソールを起動できます。
 
@@ -61,20 +61,20 @@
 
     * **ROW FORMAT**: Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
     * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
-    * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
 2. **[Submit]** をクリックします。ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 
 3. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。詳細ページの **[ジョブ出力]** に `[ERROR]	3` が含まれます。このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。
 
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このように、クエリ コンソールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
 Hive クエリ コンソールを使用した Hive ジョブの実行の詳細については、クエリ コンソールの上部にある **[概要]** を選択し、サンプルを使用します。各サンプルでは順を追って Hive を使用してデータを分析します。また、サンプルで使用されている HiveQL ステートメントについての説明も含まれています。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -106,18 +106,18 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[Powershell-install-configure]: install-configure-powershell.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

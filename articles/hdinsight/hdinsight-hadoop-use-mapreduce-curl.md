@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/03/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
-# Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行
+#Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行
 
 [AZURE.INCLUDE [mapreduce セレクター](../../includes/hdinsight-selector-use-mapreduce.md)]
 
@@ -26,23 +26,23 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 > [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「[Linux ベースの HDInsight の Hadoop について知っておくべきこと](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスター (Linux または Windows ベース) の Hadoop
 
-* <a href="http://curl.haxx.se/" target="_blank">Curl</a>
+* [Curl](http://curl.haxx.se/)
 
-* <a href="http://stedolan.github.io/jq/" target="_blank">jq</a>
+* [jq](http://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Curl を使用した MapReduce ジョブの実行
+##<a id="curl"></a>Curl を使用した MapReduce ジョブの実行
 
 > [AZURE.NOTE]Curl、または WebHCat を使用したその他の REST 通信が使用できる場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。また、サーバーへの要求の送信に使用する URI にクラスター名を含める必要があります。
 >
 > このセクションのコマンドでは、**USERNAME** をクラスターを認証するユーザーの名前に、**PASSWORD** をユーザー アカウントのパスワードに置き換えてください。**CLUSTERNAME** はクラスターの名前に置き換えます。
 >
-> REST API のセキュリティは、<a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">基本アクセス認証</a>の使用によって保護されています。資格情報を安全にサーバーに送信するには、必ず HTTPS を使用して要求を行う必要があります。
+> REST API のセキュリティは、[基本アクセス認証](http://en.wikipedia.org/wiki/Basic_access_authentication)の使用によって保護されています。資格情報を安全にサーバーに送信するには、必ず HTTPS を使用して要求を行う必要があります。
 
 1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
@@ -96,13 +96,13 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 > [AZURE.NOTE]`-a` や `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を設定する必要があります。詳細については、「[データを HDInsight へアップロードする方法](hdinsight-upload-data.md)」をご覧ください。
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このドキュメントを参照して、未加工の HTTP 要求を使用して、HDInsight クラスターで Hive ジョブを実行、監視し、その結果を表示できます。
 
 この記事で使用されている REST インターフェイスの詳細については、「[WebHCat リファレンス](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)」に関するページをご覧ください。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
@@ -114,4 +114,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

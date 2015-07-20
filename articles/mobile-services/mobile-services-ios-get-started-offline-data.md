@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/19/2015"
+	ms.date="07/01/2015"
 	ms.author="krisragh;donnam"/>
 
-# モバイル サービスでのオフライン データの同期の使用
+# Mobile Services でのオフライン データの同期の使用
 
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
@@ -30,13 +30,13 @@
 * 複数のデバイス間でデータを同期させる。
 * 同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target="_blank")を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target=”_blank”) を参照してください。
 
 最初に、このチュートリアルの基になっている [Mobile Services のクイック スタート チュートリアル]を完了しておく必要があります。まず、クイック スタートで説明したオフラインの同期に関連するコードを確認してみましょう。
 
 ## <a name="review-sync"></a>Mobile Services 同期コードのレビュー
 
-ネットワークにアクセスできない場合、エンドユーザーは Azure モバイル サービスのオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、`MSSyncTable` インターフェイスを使用してテーブルを参照します。
+ネットワークにアクセスできない場合、エンドユーザーは Azure Mobile Services スのオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、`MSSyncTable` インターフェイスを使用してテーブルを参照します。
 
 * **QSTodoService.m** で、メンバー `syncTable` の種類が `MSSyncTable` であることを確認します。オフラインの同期では、これを、`MSTable` の代わりに使用します。同期テーブルが使用されると、すべての操作はローカル ストアを参照し、明示的なプッシュ操作とプル操作を使用したリモート サービスとのみ同期されます。
 
@@ -226,7 +226,7 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期]
 
-* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーションに関するページ] \(注: デモは、Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます\)。
+* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] (注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
 
 <!-- URLs. -->
 
@@ -269,8 +269,8 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 [論理的な削除]: mobile-services-using-soft-delete.md
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Azure Mobile Services のオフライン対応アプリケーションに関するページ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!---HONumber=54--> 
+<!---HONumber=July15_HO2-->

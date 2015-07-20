@@ -13,9 +13,9 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
- 
+
 #Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
 
 [AZURE.INCLUDE [pig セレクター](../../includes/hdinsight-selector-use-pig.md)]
@@ -24,7 +24,7 @@
 
 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
-> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -32,7 +32,7 @@ Pig Latin プログラミング言語では、入力データに適用される�
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
-* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> などのクライアントをダウンロードする必要があります。
+* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
 ##<a id="ssh"></a>SSH を使用した接続
 
@@ -46,13 +46,13 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 **HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
+HDInsight での SSH の使用に関する詳細については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
+
 ###PuTTY (Windows ベースのクライアント)
 
-Windows ではビルトイン SSH クライアントは提供されません。<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html</a> からダウンロードできる **PuTTY** を使用することをお勧めします。
+Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
-PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の**Putty を使用して Linux 仮想マシンに接続する**セクションをご覧ください。
-
-> [AZURE.NOTE]HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の **Putty 用の PPK を作成する**セクションも参照する必要があります。
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
 ##<a id="pig"></a>Pig コマンドの使用
 
@@ -153,4 +153,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

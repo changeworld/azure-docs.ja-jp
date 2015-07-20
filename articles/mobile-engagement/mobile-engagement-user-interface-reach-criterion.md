@@ -26,7 +26,7 @@
 - [UI ドキュメント - Reach - 新しいのプッシュ キャンペーン][Link 27]
 
 ## 対象ユーザーの条件には次のようなものを使用できます:
-- **テクニカル：**  [Analytics (分析)] と [Monitor (モニター)] セクションに表示されるのと同一の技術情報に基づいて対象を絞り込むことができます。**関連項目：** [ UI ドキュメント - Analytics][Link 15]、[UI ドキュメント- Monitor][Link 16] - **位置:** Geo-Fencing を用いた "Real time location reporting (リアルタイムの位置報告)" を使用するアプリケーションでは、Geo-Location を条件として使用して GPS の位置から対象ユーザーを設定できます。"Lazy Area Location Reporting (大まかなエリアの位置報告)" の呼び出しを使用して携帯電話の位置から対象ユーザーを決定することもできます ("Real time location reporting" と "Lazy Area Location Reporting" は、SDK からアクティブ化する必要があります)。**関連項目:**[「SDK ドキュメント - iOS - 統合][Link 5]、[SDK ドキュメント - Android - 統合][Link 5]
+- **テクニカル：** [Analytics (分析)] と [Monitor (モニター)] セクションに表示されるのと同一の技術情報に基づいて対象を絞り込むことができます。**関連項目：** [ UI ドキュメント - Analytics][Link 15]、[UI ドキュメント- Monitor][Link 16] - **位置:** Geo-Fencing を用いた "Real time location reporting (リアルタイムの位置報告)" を使用するアプリケーションでは、Geo-Location を条件として使用して GPS の位置から対象ユーザーを設定できます。"Lazy Area Location Reporting (大まかなエリアの位置報告)" の呼び出しを使用して携帯電話の位置から対象ユーザーを決定することもできます ("Real time location reporting" と "Lazy Area Location Reporting" は、SDK からアクティブ化する必要があります)。**関連項目:**[「SDK ドキュメント - iOS - 統合][Link 5]、[SDK ドキュメント - Android - 統合][Link 5]
 - **Reach のフィードバック:** アナウンス、アンケート、データ プッシュからのリーチ フィードバックを通じて、過去のリーチ通知へのユーザーのフィードバックに基づいて対象ユーザーを設定できます。この方法は、初めてのキャンペーンよりも数回リーチ キャンペーンを行った後に使用することでより的確な対象ユーザーを絞り込むことができます。また、特定の過去のキャンペーンをすでに受信したユーザーにキャンペーンを送信しないよう設定すると、すでに同様のコンテンツの通知を受け取ったユーザーを除外できます。さらに、現在アクティブな特定のキャンペーンに含まれているユーザーを新しいプッシュから除外することもできます。**関連項目:** [UI ドキュメント - Reach - プッシュのコンテンツ][Link 29]
 - **インストールの追跡:** ユーザーがアプリをインストールした場所に基づいて情報を追跡できます。関連項目: UI ドキュメント - 設定**関連項目:** [UI ドキュメント - 設定][Link 20]
 - **ユーザー プロファイル:** 標準のユーザー情報に基づいたターゲティングや、作成したカスタムのアプリ情報に基づいたターゲティングもできます。これには、過去のキャンペーンへの反応だけでなく、現在ログインしているユーザーと、特定の質問に応答したユーザーが含まれます。アプリで定義したすべてのアプリ情報はこの一覧に表示されます。
@@ -171,5 +171,6 @@
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

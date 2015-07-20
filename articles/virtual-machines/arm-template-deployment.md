@@ -450,4 +450,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

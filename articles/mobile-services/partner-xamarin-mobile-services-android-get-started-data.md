@@ -18,7 +18,7 @@
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data.md)] 
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure Mobile Services を使用して Xamarin.Android アプリのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
@@ -29,7 +29,7 @@
 1. [Xamarin.Android アプリ プロジェクトのダウンロード][GitHub] 
 2. [モバイル サービスの作成]
 3. [ストレージのデータ テーブルの追加]
-4. [Mobile Services を使用するためのアプリケーションの更新]
+4. [Mobile Services 使用するためのアプリケーションの更新]
 5. [Mobile Services に対するアプリケーションのテスト]
 
 > [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5"%20target="_blank)を参照してください。
@@ -249,7 +249,7 @@
 [Get the Windows Store app]: #download-app
 [モバイル サービスの作成]: #create-service
 [ストレージのデータ テーブルの追加]: #add-table
-[Mobile Services を使用するためのアプリケーションの更新]: #update-app
+[Mobile Services 使用するためのアプリケーションの更新]: #update-app
 [Mobile Services に対するアプリケーションのテスト]: #test-app
 [Next Steps]: #next-steps
 
@@ -281,5 +281,6 @@
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331302
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

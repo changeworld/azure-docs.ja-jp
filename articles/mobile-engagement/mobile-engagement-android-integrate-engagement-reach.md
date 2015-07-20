@@ -57,16 +57,25 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 			    <category android:name="android.intent.category.DEFAULT" />
 			  </intent-filter>
 			</activity>
-			<receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver"
-			  android:exported="false">
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog">
+			  <intent-filter>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.LOADING"/>
+			    <category android:name="android.intent.category.DEFAULT"/>
+			  </intent-filter>
+			</activity>
+			<receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver" android:exported="false">
 			  <intent-filter>
 			    <action android:name="android.intent.action.BOOT_COMPLETED"/>
 			    <action android:name="com.microsoft.azure.engagement.intent.action.AGENT_CREATED"/>
 			    <action android:name="com.microsoft.azure.engagement.intent.action.MESSAGE"/>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ACTION_NOTIFICATION"/>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.EXIT_NOTIFICATION"/>
-			    <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.DOWNLOAD_TIMEOUT"/>
+			  </intent-filter>
+			</receiver>
+			<receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachDownloadReceiver">
+			  <intent-filter>
+			    <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
 			  </intent-filter>
 			</receiver>
 
@@ -95,6 +104,19 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 
 			-dontwarn android.**
 			-keep class android.support.v4.** { *; }
+
+## Native Push (ネイティブのプッシュ)
+
+Reach モジュールを構成したので、デバイスのキャンペーンを受信できるようにネイティブ プッシュ通知を設定する必要があります。
+
+Android では次の 2 つのサービスをサポートしています。
+
+  - Google Play デバイス: 「[GCM を Mobile Engagement に統合する方法](mobile-engagement-android-gcm-integrate.md)」ガイドに従って、[Google Cloud Messaging] を使用します。
+  - Amazon デバイス: 「[ADM を Engagement に統合する方法](mobile-engagement-android-adm-integrate.md)」ガイドに従って、[Amazon Device Messaging] を使用します。
+
+Amazon と Google Play の両方のデバイスを対象とするコードは、1 つの AndroidManifest.xml/APK 内で開発することもできます。ただし、アプリケーションに GCM のコードが見つかると、Amazon に送信する際に却下されることがあります。
+
+その場合は、複数の APK を使用してください。
 
 **お使いのアプリケーションで Reach キャンペーンを受信して表示する準備が整いました。**
 
@@ -148,19 +170,6 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 
 -   `Replied` は、ブロードキャスト レシーバーの 1 つが `true` または `false` のいずれかを返すとインクリメントされます。
 -   `Actioned` は、ブロードキャスト レシーバーが `true` を返す場合にのみインクリメントされます。
-
-##任意のタイミングでキャンペーンを受信する方法
-
-上記の統合手順を実行すると、Engagement サービスは (1 分間のタイムアウトに加えて) 統計情報のレポートを作成するタイミングでのみ Engagement サーバーに接続します。このため、**Reach キャンペーンはユーザー セッション中にのみ受信できます**。幸いなことに、Engagement では**アプリケーションで Reach キャンペーンを任意のタイミングで受信するように**構成できます。これには、デバイスがスリープ状態にある間も含まれます (もちろん、デバイスにはアクティブなネットワーク接続が必要であるため、デバイスがオフラインの間はメッセージが遅延します)。
-
-「任意のタイミング」でプッシュを受け取るには、対象のデバイスに応じて 1 つ以上のネイティブ プッシュ サービスを使用する必要があります。
-
-  - Google Play デバイス: 「[GCM を Mobile Engagement に統合する方法](mobile-engagement-android-gcm-integrate.md)」ガイドに従って、[Google Cloud Messaging] を使用します。
-  - Amazon デバイス: 「[ADM を Engagement に統合する方法](mobile-engagement-android-adm-integrate.md)」ガイドに従って、[Amazon Device Messaging] を使用します。
-
-Amazon と Google Play の両方のデバイスを対象とするコードは、1 つの AndroidManifest.xml/APK 内で開発することもできます。ただし、アプリケーションに GCM のコードが見つかると、Amazon に送信する際に却下されることがあります。
-
-その場合は、複数の APK を使用してください。
 
 ##キャンペーンをカスタマイズする方法
 
@@ -636,5 +645,6 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [こちら]: http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

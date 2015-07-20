@@ -1,22 +1,21 @@
 
-<properties 
-  pageTitle="BLOB ストレージのプロパティおよびメタデータの設定と取得 | Microsoft Azure" 
-  description="Azure Storage のコンテナーおよび BLOB のプロパティとメタデータを設定および取得する方法について説明します。" 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="adinah" 
-  editor=""/>
+<properties 
+  pageTitle="BLOB ストレージのプロパティおよびメタデータの設定と取得 | Microsoft Azure" 
+  description="Azure Storage コンテナーおよび BLOB のプロパティとメタデータを設定および取得する方法について説明します。" 
+  services="storage" 
+  documentationCenter="" 
+  authors="tamram" 
+  manager="adinah" 
+  editor=""/>
 
-
-<tags 
-  ms.service="storage" 
-  ms.workload="storage" 
-  ms.tgt_pltfrm="na" 
-  ms.devlang="na" 
-  ms.topic="article" 
-  ms.date="04/21/2015" 
-  ms.author="tamram"/>
+<tags 
+  ms.service="storage" 
+  ms.workload="storage" 
+  ms.tgt_pltfrm="na" 
+  ms.devlang="na" 
+  ms.topic="article" 
+  ms.date="04/21/2015" 
+  ms.author="tamram"/>
 
 
 # プロパティおよびメタデータの設定と取得 #
@@ -37,7 +36,7 @@
 
 コンテナーまたは BLOB でプロパティを読み取るには、**FetchAttributes** メソッドを呼び出してから、プロパティ値を取得します。
 
-次のコード例では、コンテナーと BLOB を作成し、プロパティ値をコンソール ウィンドウに書き込みます。この例では、ストレージ エミュレーターが使用されているため、コードが動作するためにはエミュレート済みのストレージ サービスが実行されている必要があります。
+次のコード例では、コンテナーと BLOB を作成し、プロパティ値をコンソール ウィンドウに書き込みます。この例では、ストレージ エミュレーターが使用されているため、コードが動作するためにはエミュレート済みの Storage サービスが実行されている必要があります。
 
 	// Use the storage emulator account.
 	CloudStorageAccount storageAccount = CloudStorageAccount.DevelopmentStorageAccount;
@@ -160,6 +159,6 @@
 
 - [Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 - [.NET 用の BLOB ストレージの概要](storage-dotnet-how-to-use-blobs.md)  
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

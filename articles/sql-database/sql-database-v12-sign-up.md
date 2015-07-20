@@ -65,4 +65,6 @@ V12 オプションの特権をアクティブ化した後は、次に示す Azu
 <!-- References, Images. -->
 [Image1]: ./media/sql-database-v12-sign-up/V12Preview-YesNo-Option-New-SQLDatabase-Server-Newserver-Screenshot-e23.png
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

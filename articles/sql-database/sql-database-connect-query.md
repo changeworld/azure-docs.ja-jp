@@ -137,4 +137,4 @@
 2. プログラムは、コンソール ウィンドウにクエリ結果を出力します。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

@@ -136,4 +136,4 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される | V
 ネットワーク マッピングに関する理解を深めたので、[ベスト プラクティス](site-recovery-best-practices.md)を読み、デプロイの準備をします。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

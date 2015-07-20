@@ -1,5 +1,4 @@
 
-
 #### 新しいサービスを作成するには
 
 1. Microsoft アカウント資格情報を使用して、この URL ([http://azure.microsoft.com/](http://azure.microsoft.com/)) から管理ポータルにログオンします。
@@ -19,4 +18,4 @@
  
        ![サービスの作成](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

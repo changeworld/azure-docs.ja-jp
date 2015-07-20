@@ -329,7 +329,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 **アプリケーションを実行するには**
 
-Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
+Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateGiraphCluster <cluster-name>
 
@@ -353,4 +353,4 @@ Azure PowerShell コンソールを開き、Visual Studio プロジェクトを�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

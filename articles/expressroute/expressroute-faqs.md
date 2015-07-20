@@ -1,17 +1,18 @@
-<properties 
+<properties
    pageTitle="ExpressRoute の FAQ"
    description="ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
    manager="adinah"
-   editor="tysonn"/> <tags 
+   editor="tysonn"/>
+<tags
    ms.service="expressroute"
    ms.devlang="na"
-   ms.topic="article" 
+   ms.topic="get-started-article" 
    ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="05/05/2015"
+   ms.workload="infrastructure-services"
+   ms.date="06/26/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -110,8 +111,8 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 
 次のチュートリアルが役立ちます。
 
-- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
-- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
+- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
+- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
 - [ExpressRoute 用の仮想ネットワークとゲートウェイの構成](expressroute-configuring-vnet-gateway.md)
 
 ### 当社の ExpressRoute 回線に接続境界はありますか。
@@ -120,7 +121,7 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 ### 複数の仮想ネットワークを ExpressRoute 回線に接続できますか。
 はい。最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。
 
-### 複数のサブスクリプションに属している仮想ネットワークを ExpressRoute 回線に接続できますか。
+### 仮想ネットワークを含む複数の Azure サブスクリプションがあります。個別のサブスクリプション内の仮想ネットワークを 1 つの ExpressRoute 回線に接続できますか。
 はい。最大 10 個の Azure サブスクリプションで、1 つの ExpressRoute 回線を使用することを承認できます。ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
 
 詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](https://msdn.microsoft.com/library/azure/dn835110.aspx)」を参照してください。
@@ -140,8 +141,8 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 ### 同じ ExpressRoute 回線に接続されている仮想ネットワークは互いに通信できますか。
 はい。同じ ExpressRoute 回線に接続されている仮想ネットワークにデプロイされた仮想マシンは互いに通信できます。
 
-### 仮想ネットワーク用のサイト間接続やポイント対サイト接続を、ExpressRoute と併用できますか。
-はい。ExpressRoute は、サイト間 VPN やポイント対サイト VPN と共存できます。そのためには、最初に ExpressRoute のゲートウェイを作成してから、同じ仮想ネットワークに対する動的ルーティング ゲートウェイを作成する必要があります。
+### 仮想ネットワーク用のサイト間接続を、ExpressRoute と併用できますか。
+はい。ExpressRoute は、サイト間 VPN と共存できます。
 
 ### 仮想ネットワークを、サイト間/ポイント対サイト構成から ExpressRoute を使用する構成に移行できますか。
 はい。仮想ネットワーク内に ExpressRoute ゲートウェイを作成する必要があります。このプロセスに関連して、わずかにダウンタイムが発生します。
@@ -160,29 +161,29 @@ BGP を介してアドバタイズされるプレフィックスは /29 以上 (
 ### BGP の上限を超えるとどうなりますか。
 BGP セッションが切断されます。プレフィックス数が上限未満になると、BGP セッションはリセットされます。
 
-### 仮想ネットワークへの既定ルート (0.0.0.0/0) のアドバタイズ後に、Azure Virtual Network で実行する Windows をライセンス認証できません。どうすればよいですか。
+### 仮想ネットワークへの既定ルート (0.0.0.0/0) のアドバタイズ後に、Azure Virtual Network で実行する Windows をライセンス認証できません。どうしたらいいですか。
 次の手順を実行して、Azure にライセンス認証要求を認識させることができます。
 
 1. ExpressRoute 回線用にパブリック ピアリングを確立します。
 2. DNS 参照を実行し、**kms.core.windows.net** の IP アドレスを見つけます。
 3. 次の 2 つの項目のいずれかを実行すると、Azure からのライセンス認証要求がキー管理サービスによって認識され、要求が受け付けられます。
 	- オンプレミス ネットワークで、(手順 2 で取得した) IP アドレス宛てのトラフィックをパブリック ピアリング経由で Azure にルーティングする。
-	- NSP プロバイダーに依頼して、トラフィックをパブリック ピアリング経由で Azure に U ターンしてもらう。 
+	- NSP プロバイダーに依頼して、トラフィックをパブリック ピアリング経由で Azure に U ターンしてもらう。
 
 ### ExpressRoute 回線の帯域幅を変更できますか。
 はい。ExpressRoute 回線を切断せずに、帯域幅を増やすことができます。接続プロバイダーに連絡して、帯域幅の増加をサポートするようにネットワーク内の調整を更新してもらう必要があります。ただし、ExpressRoute 回線の帯域幅を減らすことはできなくなります。帯域幅を減らす必要が生じた場合は、ExpressRoute 回線の切断と再作成が必要になります。
 
-### ExpressRoute 回線の帯域幅はどのようにして変更できますか。 
+### ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
 専用回線の更新用の API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
 
 ## ExpressRoute Premium
 
 ### ExpressRoute Premium とは何ですか。
 ExpressRoute Premium は、次に示す機能で構成されたサービスです。
- 
+
  - パブリック ピアリングおよびプライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
  - ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。詳細については、下の表を参照してください。
- - Microsoft のコア ネットワーク経由のグローバル接続。ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。**例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。 
+ - Microsoft のコア ネットワーク経由のグローバル接続。ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。**例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。
 
 ### ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
 ExpressRoute 回線に接続できる VNET 数の上限の増加分は、次の表のとおりです。既定の上限は 10 です。
@@ -195,7 +196,7 @@ ExpressRoute 回線に接続できる VNET 数の上限の増加分は、次の�
 | 50 Mbps | 10 | 20 |
 | 100 Mbps | 10 | 25 |
 | 500 Mbps | 10 | 40 |
-| 1 Gbps | 10 | 50                                                                                     
+| 1 Gbps | 10 | 50
 |
 
 
@@ -236,7 +237,7 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 1. [ExpressRoute の前提条件](expressroute-prerequisites.md)に関するページを参照して、要件を満たしていることを確認します。
 2. [ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページでサービス プロバイダーとサービスの場所の一覧を参照し、接続ニーズが満たされることを確認します。
 3. [Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページを参照し、容量の要件を計画します。
-4. 以下のワークフローに示されている手順に従って、接続を設定します。 
+4. 以下のワークフローに示されている手順に従って、接続を設定します。
 
 	- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
 	- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
@@ -249,7 +250,7 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 - [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
 - [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
 
-### ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。 
+### ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
 **次の Office 365 サービスがサポートされています。**
 
@@ -258,7 +259,6 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 - Skype for Business Online
 - Office Online
 - Azure Active Directory と Azure AD Sync
-- CRM Online
 - Office 365 ビデオ
 - Power BI
 - Delve
@@ -268,7 +268,7 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 
 - Yammer
 - Office 365 ProPlus クライアントのダウンロード
-- オンプレミス ID プロバイダーのサインイン 
+- オンプレミス ID プロバイダーのサインイン
 - 中国での Office 365 (21 Vianet が運営) サービス
 
 これらのサービスにはインターネット経由で接続できます。
@@ -284,4 +284,6 @@ NSP 経由と EXP 経由の両方で Office 365 サービスへの接続がサ�
 
 ### 自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=July15_HO2-->

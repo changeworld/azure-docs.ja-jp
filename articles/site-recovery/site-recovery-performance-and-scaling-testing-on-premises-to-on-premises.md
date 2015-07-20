@@ -194,13 +194,13 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 |メトリック|カウンター|
 |---|---|
-|CPU|\Processor(_Total)% Processor Time|
-|使用可能なメモリ|\Memory\Available MBytes|
-|IOPS|\PhysicalDisk(_Total)\Disk Transfers/sec|
-|VM 読み取り (IOPS) 操作数/秒|\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec|
-|VM 書き込み (IOPS) 操作数/秒|\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S|
-|VM 読み取りスループット|\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec|
-|VM 書き込みスループット|\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec|
+|CPU|\\Processor(_Total)\% Processor Time|
+|使用可能なメモリ|\\Memory\\Available MBytes|
+|IOPS|\\PhysicalDisk(_Total)\\Disk Transfers/sec|
+|VM 読み取り (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Operations/Sec|
+|VM 書き込み (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Operations/S|
+|VM 読み取りスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Bytes/sec|
+|VM 書き込みスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Bytes/sec|
 
 
 ## 次のステップ
@@ -214,4 +214,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

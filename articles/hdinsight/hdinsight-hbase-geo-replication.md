@@ -311,4 +311,4 @@ Azure ポータルでは、カスタム構成オプションで HDInsight クラ
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

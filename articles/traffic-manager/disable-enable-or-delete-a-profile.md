@@ -3,7 +3,7 @@
    description="この記事では、Traffic Manager プロファイルを操作する方法について説明します。"
    services="traffic-manager"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="joaoma"
    manager="adinah"
    editor="tysonn" />
 <tags 
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2015"
-   ms.author="cherylmc" />
+   ms.date="05/27/2015"
+   ms.author="joaoma;cherylmc" />
 
 # プロファイルの無効化、有効化、または削除
 
@@ -32,7 +32,7 @@
 
 1. 有効にするプロファイルを選択します。プロファイルを選択するには、[Traffic Manager] ページのプロファイル名の横の列をクリックして、プロファイルを強調表示します。プロファイルの名前または名前の横の矢印をクリックしないでください。クリックすると、プロファイルの設定ページへ移動します。
 1. プロファイルを選択した後に、ページ下部にある [有効化] をクリックします。
-1. CNAME レコードの種類を使用するようにインターネット DNS サーバー上の DNS リソース レコードを変更します。これによって、会社のドメイン名が Traffic Manager プロファイルのドメイン名に対応付けられます。詳細については、[会社のインターネット ドメインが Traffic Manager ドメインをポイントするように設定する方法](../point-a-company-internet-domain-to-a-traffic-manager-domain.md) に関するページを参照してください。
+1. CNAME レコードの種類を使用するようにインターネット DNS サーバー上の DNS リソース レコードを変更します。これによって、会社のドメイン名が Traffic Manager プロファイルのドメイン名に対応付けられます。詳細については、「[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](../point-a-company-internet-domain-to-a-traffic-manager-domain.md)」を参照してください。
 1. トラフィックは再度、エンドポイントに送信されるようになります。
 
 ## プロファイルの削除
@@ -49,8 +49,9 @@
 
 [Traffic Manager](../traffic-manager.md)
 
-[Traffic Manager を構成する方法](https://msdn.microsoft.com/library/azure/hh744830.aspx)
+[Traffic Manager の構成タスク](https://msdn.microsoft.com/library/azure/hh744830.aspx)
 
 
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

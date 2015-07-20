@@ -396,7 +396,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 1. 完全バックアップをコピーし、**NORECOVERY** で復元します。
 1. ログインなど、‘out of user DB’ 依存オブジェクトをコピーします。
 1. 内部ロード バランサー (ILB) を新しく作成するか、または外部ロード バランサー (ELB) を使用して、両方の新しいノードにロード バランサー エンドポイントを設定します。
-> [AZURE.NOTE] 続行する前に、すべてのノードのエンドポイント構成が適切であることをチェックしてください
+> [AZURE.NOTE]
 
 1. (記憶域プールを使用している場合) SQL サーバーへのユーザー/アプリケーション アクセスを停止します。
 1. (記憶域プールを使用している場合) SQL Server エンジン サービスをすべてのノードで停止します。
@@ -1143,4 +1143,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

@@ -13,23 +13,23 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/15/2015" 
+	ms.date="04/15/2015" 
 	ms.author="juliako"/>
 
 
-# REST で ContentKey を作成する
+#REST で ContentKey を作成する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。  
+この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
-Media Services では、暗号化されたアセットを新しく作成して送信できます。**ContentKey** で**アセット**に安全にアクセスできます。 
+Media Services では、暗号化されたアセットを新しく作成して送信できます。**ContentKey** により、**アセット**に安全にアクセスすることができます。
 
-新しいアセットを作成するときは ([ファイルをアップロードする](media-services-rest-upload-files.md)前など)、**StorageEncrypted**、**CommonEncryptionProtected**、**EnvelopeEncryptionProtected** などの暗号化オプションを指定できます。 
+新しいアセットを作成するときは ([ファイルをアップロードする](media-services-rest-upload-files.md)前など)、次の暗号化オプションを指定できます: **StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。
 
-クライアントにアセットを配信するときには、[アセットを動的に暗号化するように構成](media-services-rest-configure-asset-delivery-policy.md)できます。その際、**DynamicEnvelopeEncryption** か **DynamicCommonEncryption** のいずれか 1 つを使用します。
+クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-rest-configure-asset-delivery-policy.md): **DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
 
 暗号化されたアセットには、**ContentKey** を関連付ける必要があります。この記事では、コンテンツ キーの作成方法について説明します。
 
-暗号化するアセットに関連付けるコンテンツ キーを生成する一般的な手順を次に示します。 
+暗号化するアセットに関連付けるコンテンツ キーを生成する一般的な手順を次に示します。
 
 1. 16 バイトの AES キー (CommonEncryption と EnvelopeEncryption 向け) か 32 バイトの AES キー (StorageEncryption 向け) をランダムに生成します。 
 
@@ -37,8 +37,8 @@ Media Services では、暗号化されたアセットを新しく作成して�
 2.	[GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
 3.	X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
 
-	Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。具体例については、[EncryptSymmetricKeyData function (EncryptSymmetricKeyData 関数)](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Encryption/EncryptionUtils.cs)をご覧ください。
-4.	そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。詳細については、[ここhttp://www.microsoft.com/playready/documents/)で PlayReady Header Object ドキュメントの「PlayReady AES Key Checksum Algorithm (PlayReady AES キー checksum アルゴリズム)」セクションをご覧ください。
+	Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。具体例については、「[EncryptSymmetricKeyData function](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)」 (EncryptSymmetricKeyData 関数) を参照してください。
+4.	そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。詳細については、[ここ](http://www.microsoft.com/playready/documents/)にある、『PlayReady Header Object』(PlayReady のヘッダー オブジェクト) ドキュメントの「PlayReady AES Key Checksum Algorithm」(PlayReady AES キーの checksum アルゴリズム) セクションを参照してください。
 
 	次の .NET の例では、キー識別子の GUID 部とクリアなコンテンツ キーを使用して checksum を計算しています。
 	
@@ -65,13 +65,13 @@ Media Services では、暗号化されたアセットを新しく作成して�
 AES キーの生成、キーの暗号化、checksum 計算の例は、このトピックから削除されました。Media Servicesを操作する方法についての例のみご覧いただけます。
 
 
->[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
+>[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
 >
->Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API 開発用の設定](media-services-rest-how-to-use.md)」をご覧ください。
+>Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
->https://media.windows.net に正常に接続されると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用した Media Services への接続](media-services-rest-connect_programmatically.md)」で説明されているように、新しい URI に後続の呼び出しを行う必要があります。 
+>https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 
-## ProtectionKeyId の取得 
+##ProtectionKeyId の取得 
  
 
 次の例では、コンテンツ キーを暗号化するときに必要な ProtectionKeyId と証明書のサムプリントを取得する方法を示します。この手順を実行してコンピューターに適切な証明書があることを確認します。
@@ -107,7 +107,7 @@ AES キーの生成、キーの暗号化、checksum 計算の例は、このト�
 	
 	{"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## ProtectionKeyId の ProtectionKey の取得
+##ProtectionKeyId の ProtectionKey の取得
 
 次の例では、前の手順で受け取った ProtectionKeyId を使用して、X.509 証明書を取得する方法を示します。
 
@@ -144,7 +144,7 @@ AES キーの生成、キーの暗号化、checksum 計算の例は、このト�
 	{"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
 	"value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-## ContentKey を作成します。 
+##ContentKey を作成します。 
 
 X.509 証明書を取得して、その公開キーを使ってコンテンツ キーを暗号化した後、**ContentKey** エンティティを作成してプロパティの値を適宜設定します。
 
@@ -170,20 +170,10 @@ X.509 証明書を取得して、その公開キーを使ってコンテンツ �
         /// Specifies a content key for encrypting encoding configuration data that may contain sensitive preset information. 
         /// </summary>
         ConfigurationEncryption = 2,
-
-        /// <summary>
-        /// Specifies a content key for url encryption.  Only used internally.
-        /// </summary>
-        UrlEncryption = 3,
-
-        /// <summary>
-        /// Specifies a content key for Envelope encryption.  Only used internally.
-        /// </summary>
-        EnvelopeEncryption = 4
     }
 
 
-この例では、**ContentKey** を **ContentKeyType** セットと作成する方法について示しています。StorageEncryption を ("1") に、**ProtectionKeyType** を "0" に設定し、保護キー ID が X.509 証明書のサムプリントであることを示します。  
+次の例では、**ContentKeyType** をストレージの暗号化 ("1") に設定し、保護キー ID が X.509 証明書のサムプリントであることを示すために **ProtectionKeyType** を "0" に設定して、**ContentKey** を作成する方法を示します。
 
 
 要求
@@ -234,7 +224,7 @@ X.509 証明書を取得して、その公開キーを使ってコンテンツ �
 	"ProtectionKeyType":0,
 	"Checksum":"calculated checksum"}
 
-## ContentKey をアセットに関連付ける
+##ContentKey をアセットに関連付ける
 
 ContentKey を作成した後、次の例に示すように $links 演算子を使用して ContentKey をアセットに関連付けます。
 	
@@ -255,7 +245,6 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 
 応答:
 
-	HTTP/1.1 204 No Content
+	HTTP/1.1 204 No Content 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

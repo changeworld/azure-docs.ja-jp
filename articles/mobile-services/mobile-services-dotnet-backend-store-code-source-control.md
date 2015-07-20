@@ -13,22 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/13/2015" 
+	ms.date="05/20/2015" 
 	ms.author="glenga"/>
-
-<div class="dev-center-tutorial-subselector">
-	<a href="/documentation/articles/mobile-services-dotnet-backend-store-code-source-control/" title=".NET バックエンド" class="current">.NET バックエンド</a> | <a href="/documentation/articles/mobile-services-store-scripts-source-control/"  title="JavaScript バックエンド">JavaScript バックエンド</a>
-</div>
 
 # ソース管理にプロジェクトのコードを格納する
 
+> [AZURE.SELECTOR-LIST (Platform | Backend)]
+- [(Any | .NET)](mobile-services-dotnet-backend-store-code-source-control.md)
+- [(Any | Javascript)](mobile-services-store-scripts-source-control.md)
+
 このトピックでは、.NET バックエンド サービス プロジェクトの格納に Azure のモバイル サービスによって提供される、ソース管理を使用する方法を説明します。実稼働環境のモバイル サービスに、ローカルの Git リポジトリからアップロードすることで、プロジェクトをパブリッシュできます。
-
-このチュートリアルでは、以下の各手順について説明します。
-
-1. [モバイル サービスでソース管理を有効にする]。
-2. [Git をインストールし、ローカル リポジトリを作成する]。
-3. [Git を使用して、プロジェクトを発行する]
 
 このチュートリアルを完了するには、「[Mobile Services の使用]」または「[既存のアプリにモバイル サービスを追加する]」チュートリアルを完了し、モバイル サービスを作成しておく必要があります。
 
@@ -93,18 +87,7 @@
 
 モバイル サービス プロジェクトは、ソース管理で管理され、ローカル リポジトリから更新をプッシュすることで、サービスの更新を発行することができます。SQL データベースを使用して、.NET バックエンド モバイル サービスでデータ モデルの変更を行う方法の詳細については、「[.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]」を参照してください。
 
-## <a name="next-steps"> </a>次のステップ
-
-このチュートリアルでは、スクリプトをソース管理に保存する方法について説明しました。モバイル サービスの詳細を確認してください。
-
-+ [データ モデルの変更を .NET バックエンド モバイル サービスに加える方法] <br/>Entity Framework Code First Migrations を使用して、既存のデータを失うことなく、既存の Azure SQL データベースにデータ モデルの変更を加える方法を説明します。 	
-
-+ [クライアントからのカスタム API 呼び出し] <br/>クライアントから呼び出すことのできる、カスタム API を作成する方法を説明します。
-
 <!-- Anchors. -->
-[モバイル サービスでソース管理を有効にする]: #enable-source-control
-[Git をインストールし、ローカル リポジトリを作成する]: #clone-repo
-[Git を使用して、プロジェクトを発行する]: #deploy-scripts
 
 <!-- Images. -->
 
@@ -115,8 +98,8 @@
 [Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
 [既存のアプリにモバイル サービスを追加する]: mobile-services-dotnet-backend-ios-get-started-data.md
 [Azure Management Portal]: https://manage.windowsazure.com/
-[クライアントからのカスタム API 呼び出し]: mobile-services-dotnet-backend-ios-call-custom-api.md
+[Call a custom API from the client]: mobile-services-dotnet-backend-ios-call-custom-api.md
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
-[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

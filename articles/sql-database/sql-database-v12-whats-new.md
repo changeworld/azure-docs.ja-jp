@@ -152,4 +152,4 @@ V12 は、次のリージョンではプレビューとして利用できます�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

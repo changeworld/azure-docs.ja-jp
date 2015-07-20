@@ -32,7 +32,6 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
 
 	![][6]
 
-
 ## 名前空間の既定の管理資格情報の取得
 
 新規作成した名前空間に対してトピックやサブスクリプションの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は、Azure 管理ポータルまたは Visual Studio サーバー エクスプローラーから取得できます。
@@ -49,7 +48,7 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
 
 ### 管理資格情報をサーバー エクスプローラーから取得するには
 
-管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、[こちら](http://http://msdn.microsoft.com/library/windowsazure/ff687127.aspx)の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Azure]** ツリーの下にある **[Service Bus]** ノードには、既に作成したすべての名前空間が自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
+管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、[こちら](http://msdn.microsoft.com/library/azure/ff687127.aspx)の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Azure]** ツリーの下にある **[Service Bus]** ノードには、既に作成したすべての名前空間が自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
 
 **SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
 
@@ -65,4 +64,4 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
   [6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
   [34]: ./media/howto-service-bus-topics/VSProperties.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

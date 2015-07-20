@@ -77,11 +77,11 @@ VMM ソース サイトが存在する場合、スクリプトをその VMM サ�
 - スクリプトは、Windows PowerShell を使用して記述します。
 - VMM コマンドレットは、Windows PowerShell モジュール内で配布されます。VMM Windows PowerShell モジュールは、VMM コンソールと一緒にインストールされます。VMM モジュールは、スクリプト内のコマンド (Import-Module -Name virtualmachinemanager) を使用して読み込まれます。詳細については、[ここ](hhttps://technet.microsoft.com/library/hh875013.aspx)をクリックしてください。
 - VMM デプロイに 1 つ以上のライブラリ サーバーが存在することを確認します。既定では、VMM サーバーのライブラリ共有パスは、VMM サーバーにローカルに配置され、MSCVMMLibrary のフォルダー名を持ちます。
-- ライブラリ共有パスがリモートである (または、ローカルであるが MSCVMMLibrary と共有されていない) 場合は、次の手順を実行して共有パスを構成します (ここでは、例として \libserver2.contoso.com\share\ が使用されています)。
+- ライブラリ共有パスがリモートである (または、ローカルであるが MSCVMMLibrary と共有されていない) 場合は、次の手順を実行して共有パスを構成します (ここでは、例として \\libserver2.contoso.com\\share\\ が使用されています)。
 	- レジストリ エディターを開きます。
-	- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter\Registration に移動します。
+	- HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Microsoft System Center Virtual Machine Manager Server\\DRAdapter\\Registration に移動します。
 	- 値 ScriptLibraryPath を編集します。
-	- \libserver2.contoso.com\share の値を設定します。完全な FQDN を指定します。
+	- \\libserver2.contoso.com\\share の値を設定します。完全な FQDN を指定します。
 	- 共有場所にアクセス許可を設定します。
 
 - 復旧計画のスクリプトは VMM サービス アカウントのコンテキストで実行されます。このアカウントに、スクリプトが配置されているリモート共有に対する読み取りアクセス許可が付与されていることを確認します。また、スクリプトが VMM サービス アカウント権限レベルで実行されることをテストします。
@@ -90,15 +90,15 @@ VMM ソース サイトが存在する場合、スクリプトをその VMM サ�
 	- 昇格された特権を使用して、64 ビット Windows PowerShell コンソールを開きます。
 	- 「**Set-executionpolicy bypass**」と入力します。詳細については、「[Set-ExecutionPolicy コマンドレットの使用](https://technet.microsoft.com/library/ee176961.aspx)」を参照してください。
 - try-catch ブロックを使用して、例外を適切に処理するようにしてください。スクリプト内で例外が発生すると、実行が停止し、タスクが失敗したことが表示されます。エラーが発生すると、スクリプトの残りの部分は実行されません。計画されていないフェールオーバーの実行時にエラーが発生した場合、復旧計画は続行します。計画されたフェールオーバーの実行時にエラーが発生した場合、復旧計画は停止します。復旧計画が停止したら、スクリプトを修正し、想定どおりに実行されることを確認して、復旧計画を再び実行します。
-- Write-Host コマンドは、復旧計画スクリプトで動作しないので、このコマンドが含まれていると、スクリプトは失敗します。出力を作成する必要がある場合、メイン スクリプトとして動作するプロキシ スクリプトを作成し、すべての出力が、> コマンドを使用することによりパイプを通して作成されることを確認します。
+- Write-Host コマンドは、復旧計画スクリプトで動作しないので、このコマンドが含まれていると、スクリプトは失敗します。出力を作成する必要がある場合、メイン スクリプトとして動作するプロキシ スクリプトを作成し、すべての出力が、>> コマンドを使用することによりパイプを通して作成されることを確認します。
 - スクリプトは、600 秒以内に実行制御を戻さないとタイムアウトとなります。
 - STDERR に何かが書き出されると、スクリプトは "失敗" と分類されます。この情報は、スクリプト実行についての詳細画面に表示されます。
 
 次の手順に従って、スクリプトを作成します。
 
-1. ライブラリ共有に新しいフォルダー (たとえば、<VMMServerName>\MSSCVMMLibrary\RPScripts) を作成します。このフォルダーを、ソース VMM サーバーとターゲット VMM サーバーに配置します。
+1. ライブラリ共有に新しいフォルダー (たとえば、<VMMServerName>\\MSSCVMMLibrary\\RPScripts) を作成します。このフォルダーを、ソース VMM サーバーとターゲット VMM サーバーに配置します。
 2. スクリプト (たとえば、RPScript) を作成し、期待どおりに動作することを確認します。
-3. スクリプトを、ソース VMM サーバーとターゲット VMM サーバーの <VMMServerName>\MSSCVMMLibrary に配置します。
+3. スクリプトを、ソース VMM サーバーとターゲット VMM サーバーの <VMMServerName>\\MSSCVMMLibrary に配置します。
 
 #### Azure Automation Runbook の作成
 
@@ -110,7 +110,7 @@ VMM ソース サイトが存在する場合、スクリプトをその VMM サ�
 1. カスタマイズする復旧計画を開きます。
 2. 仮想マシンまたは新しいグループをクリックして追加します。
 3. スクリプトまたは手動アクションを追加するには、**[ステップ]** リストから任意の項目をクリックし、**[スクリプト]** または **[手動アクション (Manual Action)]** をクリックします。選択した項目の前または後のどちらにスクリプトまたはアクションを追加するかを指定します。**[上へ移動]** および **[下へ移動]** のコマンド ボタンを使用して、スクリプトの位置を上下に移動します。
-4. VMM スクリプトを追加する場合、**[VMM へのフェールオーバー スクリプト (Failover to VMM script)]** を選択して、**[スクリプト パス]** に共有の相対パスを入力します。サンプルでは、共有は <VMMServerName>\MSSCVMMLibrary\RPScripts に配置されているので、パスとして、「\RPScripts\RPScript.PS1」 を入力します。
+4. VMM スクリプトを追加する場合、**[VMM へのフェールオーバー スクリプト (Failover to VMM script)]** を選択して、**[スクリプト パス]** に共有の相対パスを入力します。サンプルでは、共有は \<VMMServerName>\\MSSCVMMLibrary\\RPScripts に配置されているので、パスとして、「\\RPScripts\\RPScript.PS1」 を入力します。
 5. Azure Automation Runbook を追加する場合、Runbook が配置されている **Azure Automation アカウント**を指定し、適切な **Azure Runbook スクリプト**を選択します。
 5. 復旧計画のフェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 
@@ -122,4 +122,4 @@ VMM ソース サイトが存在する場合、スクリプトをその VMM サ�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

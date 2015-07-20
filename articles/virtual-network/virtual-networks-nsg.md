@@ -1,7 +1,7 @@
 <properties 
    pageTitle="ネットワーク セキュリティ グループ (NSG)"
    description="ネットワーク セキュリティ グループ (NSG) の詳細"
-   services="traffic-manager"
+   services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
    manager="carolz"
@@ -118,7 +118,7 @@ VM に対する NSG の関連付け - VM に対して NSG を直接関連付け�
 
 サブネットと VM に対する NSG の関連付け - ある NSG を VM に関連付け、その VM が存在するサブネットに異なる NSG を関連付けることができます。これはサポートされており、この場合、VM は 2 つの保護レイヤーを取得します。次の図に示すように、受信トラフィックの場合、パケットには、VM のルールの次に、サブネットで指定されたアクセスルールが適用され、送信の場合は、サブネットで指定したルールが適用される前に、まず VM で指定したルールが適用されます。
 
-![NSG ACLs](./media/virtual-networks-nsg/figure1.png)
+![NSG ACL](./media/virtual-networks-nsg/figure1.png)
 
 VM またはサブネットに NSG を関連付ける場合、ネットワーク アクセス制御のルールは、非常に明示的になります。プラットフォームによって、特定のポートへのトラフィックを許可する暗黙のルールが挿入されることはありません。この場合、VM 内にエンドポイントを作成するときには、インターネットからのトラフィックを許可するルールも作成する必要があります。これを行わない場合、VIP:<Port> には、外部からアクセスできなくなります。
 
@@ -127,6 +127,27 @@ VM またはサブネットに NSG を関連付ける場合、ネットワーク
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |------|----------|-----------|-------------|----------------|------------------|----------|--------|
 | WEB | 100 | INTERNET | * | * | 80 | TCP | ALLOW |
+
+## 設計上の考慮事項
+
+NSG を設計するときは、VM がインフラストラクチャ サービスや、Azure によってホストされる PaaS サービスと通信する方法を理解しておく必要があります。SQL Database や Storage などのほとんどの Azure PaaS サービスは、パブリックに公開されたインターネット アドレスからのみアクセスできます。負荷分散プローブについても同様です。
+
+VM や PaaS ロールなどのオブジェクトを、インターネット アクセスの必要性の有無に基づいてサブネットに分離するのは、Azure においてよくあるシナリオです。このようなシナリオでは、SQL Database や Storage などの Azure PaaS サービスへのアクセスは必要であり、パブリック インターネットとの間での送受信通信は必要ではない、VM またはロール インスタンスのサブネットを使用することがあります。
+
+このようなシナリオに対する次のような NSG ルールを考えます。
+
+| 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
+|------|----------|-----------|-------------|----------------|------------------|----------|--------|
+|NO INTERNET|100| VIRTUAL_NETWORK|&\#42;|INTERNET|&\#42;|TCP|DENY| 
+
+このルールは仮想ネットワークからインターネットへのすべてのアクセスを拒否するので、VM は、SQL Database などのパブリック インターネット エンドポイントを必要とするすべての Azure PaaS サービスにアクセスできません。
+
+拒否ルールを使用する代わりに、次に示すような、仮想ネットワークからインターネットへのアクセスは許可し、インターネットから仮想ネットワークへのアクセスは拒否するルールの使用を考えます。
+
+| 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
+|------|----------|-----------|-------------|----------------|------------------|----------|--------|
+|TO INTERNET|100| VIRTUAL_NETWORK|&\#42;|INTERNET|&\#42;|TCP|ALLOW|
+|FROM INTERNET|110| INTERNET|&\#42;|VIRTUAL_NETWORK|&\#42;|TCP|DENY| 
 
 
 ## 計画 - ネットワーク セキュリティ グループのワークフロー
@@ -187,6 +208,11 @@ VM またはサブネットに NSG を関連付ける場合、ネットワーク
 	| Set-AzureNetworkSecurityGroupConfig -NetworkSecurityGroupName "MyVNetSG" `
 	| Update-AzureVM
 
+**Vm に関連付けられている NSG の表示**
+
+	Get-AzureVM -ServiceName "MyWebsite" -Name "Instance1" `
+	| Get-AzureNetworkSecurityGroupAssociation
+
 **VM からの NSG の削除**
 
 	Get-AzureVM -ServiceName "MyWebsite" -Name "Instance1" `
@@ -198,6 +224,11 @@ VM またはサブネットに NSG を関連付ける場合、ネットワーク
 	Get-AzureNetworkSecurityGroup -Name "MyVNetSG" `
 	| Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'VNetUSWest' `
 		-SubnetName 'FrontEndSubnet'
+
+**サブネットに関連付けられている NSG の表示**
+
+	Get-AzureNetworkSecurityGroupForSubnet -SubnetName 'FrontEndSubnet' `
+		-VirtualNetworkName 'VNetUSWest' 
 
 **サブネットからの NSG の削除**
 
@@ -213,5 +244,8 @@ VM またはサブネットに NSG を関連付ける場合、ネットワーク
 
 	Get-AzureNetworkSecurityGroup -Name "MyVNetSG" -Detailed
  
+**NSG に関連するすべての Azure PowerShell コマンドレットの表示**
 
-<!---HONumber=62-->
+	Get-Command *azurenetworksecuritygroup*
+
+<!---HONumber=July15_HO2-->

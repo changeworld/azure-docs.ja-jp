@@ -57,7 +57,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 	# write some PHP
 	echo <center><h1>My Demo App</h1><br/></center> > /var/www/html/phpinfo.php
-	echo <\?php phpinfo()\; \?> > /var/www/html/phpinfo.php
+	echo <\?php phpinfo()\; \?> >> /var/www/html/phpinfo.php
 
 	# restart Apache
 	apachectl restart
@@ -107,4 +107,4 @@ Azure CLI、Linux、カスタム スクリプト拡張機能の詳細につい�
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

@@ -1,6 +1,6 @@
 ## EventProcessorHost を使用したメッセージの受信
 
-[EventProcessorHost] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケールアウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
+[EventProcessorHost] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[[イベント処理のスケールアウトのサンプル]]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
 
 [EventProcessorHost] を使用するには [Azure ストレージ アカウント]が必要です。
 
@@ -8,17 +8,17 @@
 
 2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
 
-  ![][11]
+    ![][11]
 
 3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キーの管理]** をクリックします。
 
-  ![][12]
+    ![][12]
 
-	Copy the access key to use later in this tutorial.
+    このチュートリアルの後で使用するため、アクセス キーをメモしておきます。
 
 4. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Receiver**」と入力します。
 
-  ![][14]
+    ![][14]
 
 5. ソリューション エクスプローラーでソリューションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -26,9 +26,9 @@
 
 6. `Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索し、**[インストール]** をクリックして、使用条件に同意します。
 
-  ![][13]
+    ![][13]
 
-	This downloads, installs, and adds a reference to the <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure Service Bus Event Hub - EventProcessorHost NuGet package</a>, with all its dependencies.
+	これによって、<a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ</a>への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
 7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[OK]** をクリックしてクラスを作成します。
 
@@ -113,6 +113,7 @@
 
 <!-- Links -->
 [Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
+[[イベント処理のスケールアウトのサンプル]]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
@@ -129,4 +130,4 @@
 [Async Await in Console Apps]: http://blogs.msdn.com/b/pfxteam/archive/2012/01/20/10259049.aspx
 [AsyncPump.cs]: http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-components-postattachments/00-10-25-90-49/AsyncPump_2E00_cs
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -79,4 +79,4 @@ wget で URL が http://watestsdp2008r2.cloudapp.net/Default.aspx に対して 3
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

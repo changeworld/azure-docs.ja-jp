@@ -1,5 +1,5 @@
 <properties
-	pageTitle="R を使用した実験の拡張 | Azure"
+	pageTitle="R を使用した実験の拡張 | Microsoft Azure"
 	description="R スクリプトの実行モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張する方法。"
 	services="machine-learning"
 	documentationCenter=""
@@ -165,7 +165,7 @@
 | dplyr | dplyr: データ操作の文法 |
 | DPpackage | R のベイズ ノンパラメトリック モデリング |
 | dse | 動的なシステムの推定 (時系列パッケージ) |
-| e1071 | 統計部門の他の関数 (e1071)、TU Wien  |
+| e1071 | 統計部門の他の関数 (e1071)、TU Wien |
 | EbayesThresh | 経験的ベイズしきい値処理と関連メソッド |
 | ebdbNet | 動的ベイジアン ネットワークの実証的ベイズ推定 |
 | effects | リニア、一般化線形、多項ロジット、比例オッズ ロジット モデル、混合効果モデルのエフェクトを表示 |
@@ -272,7 +272,7 @@
 | lmPerm | 線形モデルの順列テスト |
 | lmtest | 線形回帰モデルのテスト |
 | locfit | 局所回帰、可能性と密度推定 |
-| lpSolve | 線形 / 整数プログラムを解決するための Lp_solve v 5.5 のインターフェイス |
+| lpSolve | 線形 / 整数プログラムを解決するための Lp_solve v. 5.5 のインターフェイス |
 
 
 ###M ～ R で始まる R モジュール
@@ -501,5 +501,6 @@
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

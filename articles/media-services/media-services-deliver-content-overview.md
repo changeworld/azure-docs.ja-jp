@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
 
@@ -21,33 +21,45 @@
 
 ##概要
 
-Media Services を操作する際の一般的なシナリオには次のようなものがあります。
+コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。
 
-1. 入力ファイル (中間ファイル) をアセットにアップロードする。(例: H.264、MP4、WMV)。
-1. アダプティブ ビットレート mp4 セットにそのアセットをエンコードする。
-1. アセットを公開する。 
-2. [動的パッケージ](http://msdn.microsoft.com/library/azure/jj889436.aspx)を使用して次のいずれかの形式でクライアントにコンテンツを配信する: MPEG DASH、Apple HLS、Smooth Streaming。 
+この目標を実現するには:
 
-このトピックでは、主な[概念](../media-services-deliver-content.md#concepts) の概要と、コンテンツの配信[作業](../media-services-deliver-content.md#tasks).の実行方法を示すトピックへのリンクを紹介します。
+- ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
+- Media Services の[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。Media Services で配信がサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
+
+このトピックでは、[コンテンツ配信の概念](media-services-deliver-content-overview.md#concepts)の概要と、コンテンツ配信[作業](media-services-deliver-content-overview.md#tasks)の実行方法を示すトピックへのリンクを紹介します。
 
 ##<a id="concepts"></a>概念
 
 メディアを配信する際に知っておくと役立つ用語や概念を以下に示します。
 
+###動的パッケージ
+
+コンテンツの配信には、動的パッケージの使用をお勧めします。詳細については、「[動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
+
+動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+
+###フィルターと動的マニフェスト
+
+Media Services では、アセットにフィルターを定義できます。これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (アセットに関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。このアセットのフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
+
+詳細については、「[フィルターと動的マニフェスト](media-services-dynamic-manifest-overview.md)」を参照してください。
+
 ###ロケーター
 
-コンテンツのストリーミングやダウンロードに使用できる URL をユーザーに提供するには、まずロケーターを作成してアセットを「発行」する必要があります。ロケーターは、アセットに含まれているファイルにアクセスするためのエントリ ポイントになります。Media Services では、2 種類のロケーターがサポートされています。 
+ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成してアセットを "発行" する必要があります。ロケーターは、アセットに含まれているファイルにアクセスするためのエントリ ポイントになります。Media Services では、2 種類のロケーターがサポートされています。
 
 - **OnDemandOrigin** ロケーターは、メディアのストリーム (MPEG DASH、HLS、スムーズ ストリーミングなど) やファイルのプログレッシブ ダウンロードに使用します。
--  **SAS** (アクセス署名) URL ロケーターは、メディア ファイルをローカル コンピューターにダウンロードする際に使用します。
+-  **SAS** (アクセス署名) URL ロケーターは、メディア ファイルをローカル コンピューターにダウンロードする際に使用します。 
 
 **アクセス ポリシー**は、アクセス許可 (読み取り、書き込み、一覧など) や、クライアントが特定のアセットにアクセスできる期間を定義する際に使用します。一覧表示のアクセス許可 (AccessPermissions.List) は、OrDemandOrigin ロケーターを作成するときには使用しないでください。
 
-ロケーターには、有効期限があります。ポータルを使用してアセットを発行する場合、100 年の有効期限の日付を含むロケーターが作成されます。 
+ロケーターには、有効期限があります。ポータルを使用してアセットを発行すると、有効期限が 100 年のロケーターが作成されます。
 
->[AZURE.NOTE] 2015 年 3 月以前にポータルを使用してロケーターを作成した場合は、ロケーターの有効期限は 2 年間になります。  
+>[AZURE.NOTE]2015 年 3 月以前にポータルを使用してロケーターを作成した場合は、ロケーターの有効期限は 2 年間になります。
 
-ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator ) API か [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新する場合は URL が変更されることにご注意ください。 
+ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
  
 ロケーターは、ユーザーごとのアクセス制御を管理するためのものではありません。個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。詳細については、「[メディアの保護](http://msdn.microsoft.com/library/azure/dn282272.aspx)」をご覧ください。
 
@@ -56,29 +68,20 @@ Media Services を操作する際の一般的なシナリオには次のよう�
 
 ###アダプティブ ストリーミング 
 
-アダプティブ ビットレート テクノロジでは、ビデオ再生アプリケージョンでネットワークの状態を特定し、複数のビットレートの中から選択できます。ネットワーク通信のパフォーマンスが低下した場合、クライアントはそれより低いビットレートを選択して、より低い画質レベルでビデオの再生をプレーヤーで継続できます。ネットワークの状態が改善したら、顧客はより高画質なより高いビットレートに切り替えることができます。Azure Media Services は、次のアダプティブ ビットレート テクノロジをサポートします。HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS。
+アダプティブ ビットレート テクノロジでは、ビデオ再生アプリケージョンでネットワークの状態を特定し、複数のビットレートの中から選択できます。ネットワーク通信のパフォーマンスが低下した場合、クライアントはそれより低いビットレートを選択して、より低い画質レベルでビデオの再生をプレーヤーで継続できます。ネットワークの状態が改善したら、顧客はより高画質なより高いビットレートに切り替えることができます。Azure Media Services でサポートされるアダプティブ ビットレート テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS です。
 
-ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。ロケーターを作成すると、ストリーミングするコンテンツが含まれているアセットの基本パスが提供されます。ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターの Path の値とマニフェスト (filename.ism) ファイルの名前を連結する必要があります。その後、/Manifest と適切な形式 (必要な場合) をロケーターのパスに付加します。 
+ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。ロケーターを作成すると、ストリーミングするコンテンツが含まれているアセットの基本パスが提供されます。ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターの Path の値とマニフェスト (filename.ism) ファイルの名前を連結する必要があります。その後、/Manifest と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
-SSL 接続経由でコンテンツのストリーミングもできます。そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 
+SSL 接続経由でコンテンツのストリーミングもできます。そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。
 
-SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。"origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。 
+SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。"origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
 
 
 ####ストリーミング URL の形式:
 
-**ストリーミング URL の形式**
-
-{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
-
-例:
-
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
-
-
 **MPEG DASH 形式**
 
-{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf) 
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
 例
 
@@ -86,39 +89,56 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 **Apple HTTP Live Streaming (HLS) V4 形式**
 
-{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 **Apple HTTP Live Streaming (HLS) V3 形式**
 
-{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
 	
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
+
+**スムーズ ストリーミング形式**
+
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
+
+例:
+
+	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+
+**Smooth Streaming 2.0 マニフェスト (旧マニフェスト)**
+
+既定では、スムーズ ストリーミングのマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。ただし、一部のプレーヤーは、r タグをサポートしていません。このようなクライアントは、r タグを無効にする形式を使用できます。
+
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)
+
+	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+
 **HDS (Adobe PrimeTime/Access ライセンスのみ)**
 
-{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=f4m-f4f)
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f)
 
 
 ###動的パッケージ
 
-メディア サービスには動的パッケージ化機能があり、アダプティブ ビットレート MP4 やスムーズ ストリーミングでエンコードされたコンテンツを、メディア サービスでサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 
+Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはスムーズ ストリーミングでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- 中間 (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードする。
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[メディア サービスの規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints/)」 をご覧ください。
+- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。アダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードする。
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
 
-動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。メディア サービスがクライアントからの要求に応じて適切な応答を構築して返します。 
+動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
 動的パッケージ化機能を使用できることに加え、オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できます。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。
 
 ###プログレッシブ ダウンロード 
 
-プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始することができます。.ism* (ismv, isma, ismt, ismc) ファイルのプログレッシブ ダウンロードはできません。 
+プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。.ism* (ismv, isma, ismt, ismc) ファイルのプログレッシブ ダウンロードはできません。
 
 コンテンツをプログレッシブ ダウンロードするには、OnDemandOrigin のロケーター型を使用します。次の例は、OnDemandOrigin のロケーター型に基づいた URL を示しています。
 
@@ -131,7 +151,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 ###ダウンロード
 
-クライアント デバイスにコンテンツをダウンロードするには、SAS ロケーターを作成する必要があります。SAS ロケーターでは、ファイルが配置されている Azure ストレージ コンテナーにアクセスできます。ダウンロード URL を作成するには、ホストと SAS 署名の間にファイル名を埋め込む必要があります。 
+クライアント デバイスにコンテンツをダウンロードするには、SAS ロケーターを作成する必要があります。SAS ロケーターでは、ファイルが配置されている Azure ストレージ コンテナーにアクセスできます。ダウンロード URL を作成するには、ホストと SAS 署名の間にファイル名を埋め込む必要があります。
 
 次の例は、SAS ロケーターに基づいている URL を示しています。
 
@@ -146,9 +166,26 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 ###ストリーミング エンドポイント
 
-**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやオンデマンド ビデオ アセットがあります。さらに、ストリーミング占有ユニットを調整することで、ストリーミング エンドポイント サービスの容量を制御し、帯域幅の増化ニーズに対応することができます。実稼働環境のアプリケーションに、1 つ以上の予約済みユニットを割り当てる必要があります。詳細については、「[メディア サービスの規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやオンデマンド ビデオ アセットがあります。さらに、ストリーミング占有ユニットを調整することで、ストリーミング エンドポイント サービスの容量を制御し、帯域幅の増化ニーズに対応できます。実稼働環境のアプリケーションに、1 つ以上の予約済みユニットを割り当てる必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 
 ##<a id="tasks"></a>アセット配信に関連する作業
+
+
+###ストリーミング エンドポイントの構成
+
+ストリーミング エンドポイントの概要とその管理方法の詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。
+
+###メディアのアップロード 
+
+**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、ファイルをアップロードします。
+
+[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
+
+###アセットのエンコード
+
+**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
+ 
+[AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
 ###アセット配信ポリシーの構成
 
@@ -158,7 +195,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 ###アセットの公開
 
-**Azure 管理ポータル** または **.NET** を使用してアセットを公開します (ロケータを作成して)。
+**Azure の管理ポータル**または **.NET** を使用してアセットを公開します (ロケータを作成して)。
 
 [AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
 
@@ -166,6 +203,6 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 ##関連トピック
 
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

@@ -75,10 +75,6 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
     たとえば、`azure sql server create admin password "West US"` です。
 
-    > [AZURE.NOTE]アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
-    >
-    > `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
-
     コマンドが完了したら、次のような応答が返されます。
 
         info:    Executing command sql server create
@@ -94,6 +90,9 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
     コマンドが完了すると、"OK" というメッセージが返されます。
 
+	> [AZURE.NOTE]アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
+	>
+	> `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
 
 ##テーブルの作成
 
@@ -264,6 +263,5 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

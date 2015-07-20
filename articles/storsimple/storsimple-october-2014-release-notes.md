@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="StorSimple のリリース ノート - 2014 年 10 月"
+    pageTitle="StorSimple 8000 シリーズ Update 0.1 リリース ノート - 2014 年 10 月"
     description="StorSimple の 2014 年 10 月リリースにおける新機能、問題、回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
@@ -12,14 +12,14 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="04/13/2015"
+    ms.date="05/27/2015"
     ms.author="v-sharos" />
 
-# StorSimple のリリース ノート - 2014 年 10 月  
+# StorSimple 8000 シリーズ Update 0.1 リリース ノート - 2014 年 10 月  
 
 ## 概要
 
-次のリリース ノートには、Microsoft Azure StorSimple の 2014 年 10 月リリースに関する未解決の重大な問題が示されています。また、このリリースに含まれる StorSimple のソフトウェアおよびファームウェアの更新プログラムの一覧も含まれています。これは、Microsoft Azure StorSimple の一般公開 (GA) リリース後の最初のリリースであり、ソフトウェア バージョン 6.3.9600.17312 に対応しています。
+次のリリース ノートでは、2014 年 10 月にリリースされた StorSimple 8000 シリーズ Update 0.1 の未解決の重要な問題を示します。また、このリリースに含まれる StorSimple のソフトウェアおよびファームウェアの更新プログラムの一覧も含まれています。これは、StorSimple 8000 シリーズのリリース バージョンが 2014 年 7 月に一般提供された後の、初のリリースで、ソフトウェア バージョン 6.3.9600.17312 に対応します。
 
 デバイスをインストールしたら、利用可能な更新プログラムをすぐに確認して適用することをお勧めします。更新プログラムの自動的なダウンロードを有効にして、Microsoft から優先度の高い更新プログラムがリリースされたらすぐにインストールすることもできます。詳細については、[更新プログラム](https://msdn.microsoft.com/library/azure/1a2cd7de-706b-4d3c-8efb-02e322d3ae73#BKMK_Updates)をインストールする方法を参照してください。
 
@@ -97,6 +97,6 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 ## 10 月のリリースでの仮想デバイスの更新プログラム
 
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

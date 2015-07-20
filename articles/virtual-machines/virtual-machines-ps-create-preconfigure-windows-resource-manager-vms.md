@@ -338,4 +338,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

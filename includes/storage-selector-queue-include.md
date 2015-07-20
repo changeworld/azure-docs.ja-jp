@@ -7,4 +7,4 @@
 - [Ruby](../articles/storage/storage-ruby-how-to-use-queue-storage.md)
 - [Python](../articles/storage/storage-python-how-to-use-queue-storage.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

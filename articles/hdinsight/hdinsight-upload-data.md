@@ -279,4 +279,4 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

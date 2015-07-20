@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
-# Curl を使用した HDInsight の Hadoop での Hive クエリの実行
+#Curl を使用した HDInsight の Hadoop での Hive クエリの実行
 
 [AZURE.INCLUDE [Hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
@@ -24,25 +24,25 @@
 
 Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive クエリを実行、監視し、その結果を取得する方法を指定するために使用します。これは、HDInsight クラスターで提供される WebHCat REST API (旧称: Templeton) を使用することで機能します。
 
-> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」を参照してください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスター (Linux または Windows ベース) の Hadoop
 
-* <a href="http://curl.haxx.se/" target="_blank">Curl</a>
+* [Curl](http://curl.haxx.se/)
 
-* <a href="http://stedolan.github.io/jq/" target="_blank">jq</a>
+* [jq](http://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Curl を使用した Hive クエリの実行
+##<a id="curl"></a>Curl を使用した Hive クエリの実行
 
 > [AZURE.NOTE]Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
-> 
+>
 > このセクションのコマンドでは、**USERNAME** をクラスターを認証するユーザーの名前に、**PASSWORD** をユーザー アカウントのパスワードに置き換えてください。**CLUSTERNAME** はクラスターの名前に置き換えます。
-> 
-> REST API のセキュリティは、<a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">基本認証</a>を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+>
+> REST API のセキュリティは、[基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
@@ -57,7 +57,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
     * **-u**: 要求の認証に使用するユーザー名とパスワード
     * **-G**: GET 要求であることを示します。
 
-    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス  **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
+    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
 
@@ -74,15 +74,15 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
     * **-d**: `-G` が使用されていないため、要求は既定で POST メソッドになります。`-d` は要求で送信されるデータ値を指定します。
 
         * **user.name**: コマンドを実行するユーザー
-        
+
         * **execute**: 実行する HiveQL ステートメント
-        
+
         * **statusdir**: ジョブのステータスが書き込まれるディレクトリ
 
     これらのステートメントは次のアクションを実行します。
 
     * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
-    
+
     * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは Hive にテーブル定義のみを格納します。データは元の場所に残されます。
 
 		> [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
@@ -90,9 +90,9 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 		> 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
     * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
-    
+
     * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
-    
+
     * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
     > [AZURE.NOTE]Curl を使用したとき、HiveQL ステートメントのスペースが `+` に置き換わることに注意してください。スペースを含む引用符で囲まれた値 (区切り記号など) は `+` に置き換わりません。
@@ -138,13 +138,13 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 7. 返されたジョブ ID を使用して、ジョブのステータスを確認します。確認できたら、前述のように Mac、Linux、Windows 用 Azure CLI を使用して、結果をダウンロードし、表示します。出力には、それぞれに **[ERROR]** が含まれた 3 つの行が返されます。
 
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このドキュメントを参照して、未加工の HTTP 要求を使用して、HDInsight クラスターで Hive ジョブを実行、監視し、その結果を表示できます。
 
 この記事で使用されている REST インターフェイスの詳細については、「<a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat リファレンス</a>」に関するページをご覧ください。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -189,4 +189,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

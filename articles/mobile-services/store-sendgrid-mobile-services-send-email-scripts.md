@@ -134,5 +134,6 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
 [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

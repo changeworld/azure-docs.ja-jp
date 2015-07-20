@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - リーチ コンテンツ" 
-   description="Azure モバイル エンゲージメントでさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します" 
+   pageTitle="Azure Mobile Engagement ユーザー インターフェイス - リーチ コンテンツ" 
+   description="Azure Mobile Engagement でさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -32,13 +32,13 @@
 ### アナウンスの種類を選択します:
 -    通知のみ: シンプルな標準的な通知です。ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
 -    テキストのアナウンス: ユーザーにテキスト ビューを閲覧するよう促す通知です。
--    Web のアナウンス:  ユーザーに Web ビューを閲覧するよう促す通知です。
+-    Web のアナウンス: ユーザーに Web ビューを閲覧するよう促す通知です。
 
 ### 関連項目
 - [リーチ - 方法 - アナウンス][Link 3] 
 
 ### Web ビューのアナウンスについて:
-ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。この方法では、Azure モバイル エンゲージメント デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。全画面表示の Web ビューを作成する場合は (既定の [Action (アクション)] と [Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます:
+ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。この方法では、Azure Mobile Engagement デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。全画面表示の Web ビューを作成する場合は (既定の [Action (アクション)] と [Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます:
 
 -    アナウンスの操作を実行する: ReachContent.actionContent()
 -    アナウンスを終了する: ReachContent.actionContent()
@@ -46,11 +46,11 @@
 ### アクションを選択する:
 
 ### アクションの URL について:
-対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。アプリケーションがサポートする専用の URL (ユーザーを特定の画面にジャンプさせるなど) をアクション URL として使用することも可能です。発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。これを使用して、Azure モバイル エンゲージメントのデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
+対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。アプリケーションがサポートする専用の URL (ユーザーを特定の画面にジャンプさせるなど) をアクション URL として使用することも可能です。発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。これを使用して、Azure Mobile Engagement のデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
 
 - **Android + iOS のアクション**
     - Web ページを開く
-    - http://[web-site-domain] 
+    - http://[web-site-domain\] 
     - 例:http://www.azure.com
     - メールを送信する
     - mailto:[メール宛先]?subject=[件名]&body=[メッセージ] 
@@ -62,30 +62,30 @@
     - tel: [電話番号] 
     - 例: tel:2125551212
 - **Android のみのアクション**
-    - Play Store でアプリケーションをダウンロードする
+    - Play ストアでアプリケーションをダウンロードする
     - market://details?id=[appパッケージ] 
     - 例:market://details?id=com.microsoft.office.word
     - 地理的にローカライズされた検索を開始する
     - geo:0、0? q = [検索クエリ] 
     - 例: geo:0,0?q=starbucks,paris
 - **iOS のみのアクション**
-    - App Store でアプリケーションをダウンロードする
+    - App ストアでアプリケーションをダウンロードする
     - http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
     - 例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
     - Windows のアクション
     - Web ページを開く
-    - http://[web-site-domain] 
+    - http://[web-site-domain\] 
     - 例:http://www.azure.com
     - メールを送信する
     - mailto:[メール宛先]?subject=[件名]&body=[メッセージ] 
     - 例:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
-    - SMS を送信する (Skype Store アプリが必要)
+    - SMS を送信する (Skype ストア アプリが必要)
     - sms: [電話番号] 
     - 例: sms:2125551212
-    - 電話をかける (Skype Store アプリが必要)
+    - 電話をかける (Skype ストア アプリが必要)
     - tel: [電話番号] 
     - 例: tel:2125551212
-    - Play Store でアプリケーションをダウンロードする
+    - Play ストアでアプリケーションをダウンロードする
     - ms-windows-store:PDP?PFN=app package ID 
     - 例: ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
     - Bingmaps 検索を開始する
@@ -94,7 +94,7 @@
     - カスタムのスキームを使用する
     - [custom scheme]://[custom scheme params] 
     - 例:myCustomProtocol://myCustomParams
-    - パッケージ データを使用する (拡張機能読み取りのための Store App が必要)
+    - パッケージ データを使用する (拡張機能読み取りのためのストア アプリ が必要)
     - [folder][data].[extension] 
     - 例: myfolderdata.txt
  
@@ -228,5 +228,6 @@
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

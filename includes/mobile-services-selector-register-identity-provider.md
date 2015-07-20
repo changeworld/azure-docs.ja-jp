@@ -5,4 +5,4 @@
 - [Microsoft account](../articles/mobile-services/mobile-services-how-to-register-microsoft-authentication.md)
 - [Twitter](../articles/mobile-services/mobile-services-how-to-register-twitter-authentication.md)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->

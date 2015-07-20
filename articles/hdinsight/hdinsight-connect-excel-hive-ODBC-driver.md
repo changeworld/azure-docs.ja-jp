@@ -127,4 +127,4 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="04/09/2015" 
+	ms.date="07/08/2015" 
 	ms.author="heidist"/>
 
 #Azure Search 関連の最新の更新履歴情報#
@@ -29,8 +29,8 @@ Azure Search の一般提供が開始されています。これは [API バー�
 
 ##.NET SDK 0.10.0-Preview
 
-これは、.NET クライアント ライブラリ Microsoft.Azure.Search.dll の、2 番目のイテレーションです。
-このバージョンでは、.NET クラスを使用してインデクサーを作成、管理、および使用できるようになりました。また、Azure SQL インデクサーの場合、地理ポイントのインデックス作成が新しくサポートされます。
+これは、.NET クライアント ライブラリ Microsoft.Azure.Search.dll の、2 番目のイテレーションです。  
+このバージョンでは、.NET クラスを使用してインデクサーを作成、管理、および使用できるようになりました。また、Azure SQL インデクサーの場合、地理ポイントのインデックス作成が新しくサポートされます。  
 
 
 - [Indexers クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.indexer.aspx)
@@ -57,7 +57,7 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - インデクサーは、fieldMapping コンストラクトをサポートするようになりました。これは実際のフィールド名が外部データベースと Azure Search インデックスとの間で異なる場合に、フィールド割り当てを提供します。`2015-02-28-preview` バージョンのインデクサーの資料については、「[Indexer Operations](search-api-indexers-2015-02-28-Preview.md)」を参照してください。
 
-- さらにこのプレビューの更新では、インデクサーはフィールドの型変換をサポートするようになったため、ソース フィールドが JSON 配列を表すと仮定して、SQL テーブル内の文字列フィールドを、検索インデックス内の文字列コレクション フィールドにマッピングできます。
+- さらにこのプレビューの更新では、インデクサーはフィールドの型変換をサポートするようになったため、ソース フィールドが JSON 配列を表すと仮定して、SQL テーブル内の文字列フィールドを、検索インデックス内の文字列コレクション フィールドにマッピングできます。  
 
 
 **リリース日: 2015 年 3 月 5 日**
@@ -89,9 +89,9 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 このバージョンは、次のコア機能を提供する、Azure Search のパブリック プレビュー リリースでした。
 
-- インデックスとドキュメントの操作のための REST API。この API バージョンの大半は、2015-02-28 バージョンでも変更されていません。バージョン `2014-07-31-Preview` のドキュメントは、「[Azure Search Service REST API Version 2014-07-31-Preview](../search-api-2014-07-31-preview.md)」にあります。
+- インデックスとドキュメントの操作のための REST API。この API バージョンの大半は、2015-02-28 バージョンでも変更されていません。バージョン `2014-07-31-Preview` のドキュメントは、「[Azure Search Service REST API Version 2014-07-31-Preview](search-api-2014-07-31-preview.md)」にあります。
 
-- 検索結果のチューニングのためのスコアリング プロファイル。スコアリング プロファイルは、検索スコアの計算に使用する条件を追加します。この機能のドキュメントは、「[Scoring Profiles (Azure Search Service REST API Version 2014-07-31-Preview)](../search-api-scoring-profiles-2014-07-31-preview.md)」にあります。
+- 検索結果のチューニングのためのスコアリング プロファイル。スコアリング プロファイルは、検索スコアの計算に使用する条件を追加します。この機能のドキュメントは、「[Scoring Profiles (Azure Search Service REST API Version 2014-07-31-Preview)](search-api-scoring-profiles-2014-07-31-preview.md)」にあります。
 
 - 地理空間サポートは当初より利用可能です。これは最初から Azure Search の一部であった `Edm.GeographyPoint` データ型により提供されます。
 
@@ -105,8 +105,9 @@ SDK のインストールおよび使用のガイダンスについては、「[
 ##管理 API バージョン 2014-07-31-Preview
 **リリース日: 2014 年 10 月**
 
-プレビュー リリースの[管理 REST API](../search-management-api-2014-07-31-preview.md) は、プログラムからサービスを管理できるようにするために追加されました。これは、サービス REST API とは独立してバージョン管理されます。
+プレビュー リリースの[管理 REST API](search-management-api-2014-07-31-preview.md) は、プログラムからサービスを管理できるようにするために追加されました。これは、サービス REST API とは独立してバージョン管理されます。
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

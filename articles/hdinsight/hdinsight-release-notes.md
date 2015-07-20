@@ -13,11 +13,45 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/18/2015"
+	ms.date="06/26/2015"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+
+## HDInsight の 2015 年 06 月 26 日リリース ノート ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.601.1610731 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.601.1610731 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.601.1610731 (HDP 2.1.15.0-2334 - 変更なし)
+* HDInsight 3.2.4.601.1610731 (HDP 2.2.6.1-0011)
+* SDK 1.5.8
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+<th>影響を受ける領域 (例: サービス、コンポーネント、SDK)</p></th>
+<th>クラスターの種類 (例: Hadoop、HBase、Storm)</th>
+<th>JIRA (該当する場合)</th>
+</tr>
+
+
+<tr>
+<td>HDInsight 3.2 クラスターの更新された HDP バージョン</td>
+<td>このリリースでは、HDInsight 3.2 は HDP 2.2.6.1 をデプロイします</td>
+<td>サービス</td>
+<td>すべて</td>
+<td>該当なし</td>
+</tr>
+
+</table>
 
 ## HDInsight の 2015 年 06 月 18 日リリース ##
 
@@ -1246,4 +1280,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

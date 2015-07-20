@@ -25,5 +25,6 @@ SQL Database では、数千のデータベースの[スケール アップ](sql
 SQL Database は、Basic、Standard、Premium の[サービス階層](sql-database-service-tiers.md)で使用できます。これらのサービス階層では、軽量のデータベースから大規模なデータベースまで、さまざまなワークロードをサポートしているため、サービス階層を移動したり組み合わせたりして、革新的なアプリケーションを設計できます。Azure の強力さと幅広さを利用して、さまざまな Azure サービスを SQL Database とうまく組み合わせることにより、独自の最新アプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
 
 [無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使用して、[初めて SQL Database を作成する方法](sql-database-get-started.md)について学びましょう。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

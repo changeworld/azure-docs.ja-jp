@@ -35,7 +35,7 @@ Media Services アカウントに複数のストレージ アカウントをア�
 
 その他の考慮事項
 
-Media Services は、ストリーミング コンテンツ (たとえば、http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。Name プロパティの値には、[パーセントエンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#[]" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+Media Services は、ストリーミング コンテンツ (例: http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
 ##Azure サービス管理 REST API でストレージ アカウントをアタッチするには
 
@@ -53,7 +53,7 @@ Media Services は、ストリーミング コンテンツ (たとえば、http:
 
 	using Microsoft.WindowsAzure.MediaServices.Client; using System; using System.Collections.Generic; using System.Configuration; using System.IO; using System.Linq; using System.Text; using System.Threading; using System.Threading.Tasks;
 	
-	namespace MultipleStorageAccounts { class Program { // Location of the media file that you want to encode. private static readonly string _singleInputFilePath = Path.GetFullPath(@"../..\supportFiles\multifile\interview2.wmv");
+	namespace MultipleStorageAccounts { class Program { // Location of the media file that you want to encode. private static readonly string _singleInputFilePath = Path.GetFullPath(@"../..\\supportFiles\\multifile\\interview2.wmv");
 	
 	        private static readonly string MediaServicesAccountName = 
 	            ConfigurationManager.AppSettings["MediaServicesAccountName"];
@@ -234,5 +234,6 @@ Media Services は、ストリーミング コンテンツ (たとえば、http:
 	        }
 	    }
 	{
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

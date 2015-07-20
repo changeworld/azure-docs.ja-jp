@@ -42,5 +42,6 @@ SSMS と SSDT を使用して Azure SQL データベースを管理する方法�
 PowerShell などのコマンド ライン ツールを使って、Azure SQL データベースを管理したり、Azure のリソースのデプロイを自動化したりできます。Microsoft では、多数の Azure SQL データベースを管理する場合や運用環境にリソースの変更をデプロイする場合にこのツールをお勧めします。
 
 コマンド ライン ツールを使った Azure SQL データベースの管理の詳細については、[ここをクリック](sql-database-command-line-tools.md)してください。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

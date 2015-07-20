@@ -10,10 +10,10 @@
 <tags 
 	ms.service="virtual-machines" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-sharepoint" 
+	ms.tgt_pltfrm="vm-windows-sharepoint" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/09/2015" 
+	ms.date="07/07/2015" 
 	ms.author="josephd"/>
 
 
@@ -41,7 +41,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	ストレージ アカウント: 初期構成中に指定されます。
 -	仮想ネットワーク 	
 	-   種類: クラウドのみ	
-    -	アドレス空間: 192.168.16.0/26    
+    -	アドレス空間: 10.0.0.0/26    
 
 - 仮想マシン
 	-	*HostNamePrefix*-DC (AD DS ドメイン コントローラー)
@@ -62,14 +62,14 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 	-	サイズ: A5 (既定)
 	-	データベース アクセス アカウント名: 初期構成中に指定されます。
 	-	データベース アクセス アカウント パスワード: 初期構成中に指定されます。
-	-	SQL Server サービス アカウント名: 初期構成中に指定されます。
+	-	SQL Server サービス アカウント名: sqlservice (既定)
 	-	SQL Server サービス アカウント パスワード: 初期構成中に指定されます。
 
 - SharePoint サーバー
 	-	仮想マシン イメージ: SharePoint Server 2013 試用版です。
 	-	ホスト名プレフィックス: 初期構成中に指定されます。
 	-	サイズ: A2 (既定)
-	-	SharePoint ファーム アカウント名: 初期構成中に指定されます。
+	-	SharePoint ファーム アカウント名: sp_farm (既定)
 	-	SharePoint ファーム アカウント パスワード: 初期構成中に指定されます。
 	-	SharePoint ファーム パスフレーズ: 初期構成中に指定されます。
 
@@ -87,7 +87,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	ストレージ アカウント: 初期構成中に指定されます。
 -	仮想ネットワーク	
 	-	種類: クラウドのみ
-	-	アドレス空間: 192.168.16.0/26	
+	-	アドレス空間: 10.0.0.0/26	
 
 -	仮想マシン
 	-	*HostNamePrefix*-DC1 (AD DS ドメイン コントローラー)
@@ -111,21 +111,25 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	SQL Server
 	-	仮想マシン イメージ: SQL Server 2014 RTM Enterprise on Windows Server 2012 R2 です。
 	-	ホスト名プレフィックス: 初期構成中に指定されます。
-	-	サイズ: A5 (既定)
+	-	サイズ: SQL サーバーは A5 (既定)、ファイル共有監視は A0 (既定)
 	-	データベース アクセス アカウント名: 初期構成中に指定されます。
 	-	データベース アクセス アカウント パスワード: 初期構成中に指定されます。
-	-	SQL Server サービス アカウント名: 初期構成中に指定されます。
+	-	SQL Server サービス アカウント名: sqlservice (既定)
 	-	SQL Server サービス アカウント パスワード: 初期構成中に指定されます。
 
 -	SharePoint サーバー
 	-	仮想マシン イメージ: SharePoint Server 2013 試用版です。
 	-	ホスト名プレフィックス: 初期構成中に指定されます。
 	-	サイズ: A2 (既定)
-	-	SharePoint ファーム アカウント名: 初期構成中に指定されます。
-	-	SharePoint ファーム アカウント パスワード: 初期構成中に指定されます。		
+	-	SharePoint ファーム アカウント名: sp_farm (既定)
+	-	SharePoint ファーム アカウント パスワード: 初期構成中に指定されます。	
 	-	SharePoint ファーム パスフレーズ: 初期構成中に指定されます。
 
 > [AZURE.NOTE]SharePoint サーバーは、SharePoint Server 2013 試用版のイメージから作成されます。評価期間終了後も継続して仮想マシンを使用するには、インストールを変換して SharePoint Server 2013 の Standard エディションまたは Enterprise エディションの製品版またはボリューム ライセンス キーを使用する必要があります。
+
+## Azure リソース マネージャー
+
+Azure プレビュー ポータルの SharePoint サーバー ファーム機能は、サービス管理内で仮想マシンを作成します。リソース マネージャーで SharePoint Server 2013 ファームを作成するには、「[Deploy SharePoint Farms with Azure Resource Manager Templates (Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ)](virtual-machines-workload-template-sharepoint.md)」を参照してください。
 
 ## その他のリソース
 
@@ -136,4 +140,4 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

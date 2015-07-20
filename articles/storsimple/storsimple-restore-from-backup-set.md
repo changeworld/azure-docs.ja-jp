@@ -1,18 +1,10 @@
-<properties 
-   pageTitle="バックアップ セットからの StorSimple ボリュームの復元"
-   description="バックアップ カタログを使用してバックアップ セットから StorSimple ボリュームを復元する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
+<properties pageTitle="Restore a StorSimple volume from a backup set (バックアップ セットから StorSimple ボリュームを復元する)" | Microsoft Azure description="バックアップ カタログを使用してバックアップ セットから StorSimple ボリュームを復元する方法を説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="carolz" editor="" /> <tags 
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/13/2015"
+   ms.date="06/25/2015"
    ms.author="v-sharos" />
 
 # バックアップ セットからの StorSimple ボリュームの復元
@@ -27,7 +19,7 @@
 
 ## バックアップ カタログの使用方法 
 
- **[バックアップ カタログ]** ページには、バックアップ セットの選択を絞り込むことができるクエリが用意されています。次のパラメーターに基づいて、取得するバックアップ セットをフィルター選択できます。
+**[バックアップ カタログ]** ページには、バックアップ セットの選択を絞り込むことができるクエリが用意されています。次のパラメーターに基づいて、取得するバックアップ セットをフィルター選択できます。
 
 - **[デバイス]** - バックアップ セットが作成されたデバイス。
 - **[バックアップ ポリシー]** または **[ボリューム]** - このバックアップ セットに関連付けられているバックアップ ポリシーまたはボリューム。
@@ -80,6 +72,6 @@
 
 ## 次のステップ
 
-[StorSimple ボリュームを管理する](storsimple-manage-volumes.md)方法について説明します
-<!--HONumber=52-->
- 
+[StorSimple ボリュームを管理する](storsimple-manage-volumes.md)方法について説明します。
+
+<!---HONumber=July15_HO2-->

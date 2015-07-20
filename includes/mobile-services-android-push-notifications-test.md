@@ -24,4 +24,4 @@
 
 	![通知センターでの通知の表示](./media/mobile-services-android-push-notifications-test/notification-area-received.png)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

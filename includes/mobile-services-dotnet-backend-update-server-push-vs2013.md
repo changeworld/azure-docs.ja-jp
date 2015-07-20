@@ -46,4 +46,4 @@
 
 	>[AZURE.NOTE]この POST メソッドは、いずれかの安全ではないアプリケーション キーを持つクライアントによって呼び出されます。エンドポイントをセキュリティで保護するには、認証を求めるメソッドまたはクラスに属性 `[AuthorizeLevel(AuthorizationLevel.User)]` を適用します。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -1,29 +1,30 @@
-<properties 
-	pageTitle="Windows Phone Silverlight アプリの Azure モバイル エンゲージメントの概要" 
+<properties
+	pageTitle="Windows Phone Silverlight アプリの Azure モバイル エンゲージメントの概要"
 	description="Windows Phone Silverlight アプリで Azure モバイル エンゲージメントの分析機能やプッシュ通知を使用する方法について説明します。"
-	services="mobile-engagement" 
-	documentationCenter="windows" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="windows"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/30/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="get-started-article" 
+	ms.date="04/30/2015"
 	ms.author="piyushjo" />
-	
+
 # Windows Phone Silverlight アプリの Azure モバイル エンゲージメントの概要
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md) 
-- [iOS - Obj C](mobile-engagement-ios-get-started.md) 
+- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
+- [iOS - Obj C](mobile-engagement-ios-get-started.md)
 - [iOS - Swift](mobile-engagement-ios-swift-get-started.md)
-- [Android](mobile-engagement-android-get-started.md) 
+- [Android](mobile-engagement-android-get-started.md)
+- [Cordova](mobile-engagement-cordova-get-started.md)
 
 このトピックでは、Azure モバイル エンゲージメントを使用してアプリの使用状況を把握し、Windows Phone Silverlight アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。チュートリアル内で空白の Windows Phone Silverlight アプリを作成し、このアプリで基本的なデータを収集して、Microsoft Push Notification Service (MPNS) を使用してプッシュ通知を受信します。完了すると、デバイス プロパティに基づいて、すべてのデバイスまたは特定のターゲット ユーザーに (MPNS を利用して) プッシュ通知をブロードキャストできるようになります。モバイル エンゲージメントを使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒にご覧ください。
 
@@ -45,20 +46,20 @@
    	![][7]
 
 3. 表示されたポップアップに、次の情報を入力します。
- 
+
    	![][8]
 
 	- **アプリケーション名**: アプリケーションの名前を入力します。自由に任意の文字を使用してください。
-	- **プラットフォーム**: アプリ向けのターゲット プラットフォーム (**Windows Phone Silverlight**) を選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。 
+	- **プラットフォーム**: アプリ向けのターゲット プラットフォーム (**Windows Phone Silverlight**) を選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。
 	- **アプリケーション リソース名**: この名前を使用して、API と URL を通じてこのアプリケーションにアクセスします。従来の URL の文字のみを使用する必要があります。自動生成された名前は、ベースとなる名前として役立ちます。また、この名前は一意である必要があるので、重複を避けるために、プラットフォーム名を付加することをお勧めします。
-	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。 
+	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。
 	- **コレクション**: アプリケーションを既に作成済みの場合は以前に作成したコレクションを選択し、そうでない場合は新しいコレクションを選択します。
 	- **コレクション名**。 これは、グループのアプリケーションを表します。すべてのアプリを 1 つのグループに含めることで、それらをメトリック集計できます。該当する場合は、ここで会社名や部門を使用する必要があります。
 
 4. **[アプリケーション]** タブで、作成したアプリを選択します。
 
 5. **[接続情報]** をクリックして、モバイル アプリに統合する SDK に組み込む接続設定を表示します。
- 
+
    	![][10]
 
 6. **[接続文字列]** をコピーします - これは、アプリケーション コード内で、このアプリケーションを識別し、Phone アプリからモバイル エンゲージメント サービスに接続するために必要なものです。
@@ -83,12 +84,12 @@
 
 これで、Azure モバイル エンゲージメント SDK を統合する新しい Windows Phone Silverlight アプリが作成されました。
 
-###アプリをモバイル エンゲージメントのバックエンドに接続する 
+###アプリをモバイル エンゲージメントのバックエンドに接続する
 
 1. プロジェクトに[モバイル サービス Windows Phone SDK] nuget パッケージをインストールします。
 
 2. `WMAppManifest.xml` ([プロパティ] フォルダーの下) を開き、`<Capabilities />` タグで次が宣言されていることを確認します (宣言されていない場合、追加します)。
-		
+
 		<Capability Name="ID_CAP_NETWORKING" />
 		<Capability Name="ID_CAP_IDENTITY_DEVICE" />
 
@@ -105,7 +106,7 @@
 			using Microsoft.Azure.Engagement;
 
 	b.`Application_Launching` メソッドで SDK を初期化します。
-			
+
 			private void Application_Launching(object sender, LaunchingEventArgs e)
 			{
 			  EngagementAgent.Instance.Init();
@@ -133,7 +134,7 @@
 3. `MainPage.xml` ファイルで、次の操作を行います。a.次の内容を名前空間宣言に追加します。
 
 			xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
-	
+
 	b.xml タグ名の `phone:PhoneApplicationPage` を `engagement:EngagementPage` で置き換えます。
 
 ###アプリがリアルタイム監視に接続していることを確認する
@@ -164,8 +165,8 @@
 
 `WMAppManifest.xml` ファイルに新しい Capabilities を追加します。
 
-		ID_CAP_PUSH_NOTIFICATION 
-		ID_CAP_WEBBROWSERCOMPONENT 
+		ID_CAP_PUSH_NOTIFICATION
+		ID_CAP_WEBBROWSERCOMPONENT
 
 ![][34]
 
@@ -235,5 +236,6 @@
 [37]: ./media/mobile-engagement-windows-phone-get-started/campaign-content.png
 [39]: ./media/mobile-engagement-windows-phone-get-started/campaign-activate.png
 [40]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

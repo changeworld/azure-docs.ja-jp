@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="RemoteApp のハイブリッド コレクションの作成方法" 
+	pageTitle="Azure RemoteApp のハイブリッド コレクションの作成方法" 
 	description="内部ネットワークに接続する RemoteApp のデプロイメントを作成する方法について説明します。" 
 	services="remoteapp" 
 	documentationCenter="" 
@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2015" 
+	ms.date="05/28/2015" 
 	ms.author="elizapo"/>
 
-# RemoteApp のハイブリッド コレクションの作成方法
+# Azure RemoteApp のハイブリッド コレクションの作成方法
 
 RemoteApp のコレクションには、次の 2 種類があります:
 
 - クラウド: Azure に完全に常駐し、Azure 管理ポータルの **[簡易作成]** オプションを使用して作成されます。  
-- ハイブリッド: 内部設置型アクセス用の仮想ネットワークを含み、管理ポータルの **[VNET で作成]** オプションを使用して作成されます。
+- ハイブリッド: オンプレミスのアクセス用の仮想ネットワークを含み、管理ポータルの **[VNET で作成]** オプションを使用して作成されます。
 
-このチュートリアルでは、ハイブリッド コレクションを作成する手順について説明します。以下の 7 つのステップがあります。
+このチュートリアルでは、ハイブリッド コレクションを作成する手順について説明します。次の 8 つの手順があります。
 
-1.	[RemoteApp のカスタム イメージ](remoteapp-imageoptions.md)を作成するか、またはサブスクリプションに含まれているイメージの 1 つを選択する。
+1.	コレクションに使用する[イメージ](remoteapp-imageoptions.md)を決定する。これには、カスタム イメージを作成するか、サブスクリプションに含まれているいずれかの Microsoft イメージを使用します。
 2. 仮想ネットワークをセットアップする。
 2.	RemoteApp コレクションを作成する。
 2.	コレクションを仮想ネットワークに関連付ける。
@@ -40,10 +40,10 @@ RemoteApp のコレクションには、次の 2 種類があります:
 
 - RemoteApp に[サインアップ](http://azure.microsoft.com/services/remoteapp/)します。 
 - RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
-- 内部設置型ネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
+- オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
 - [Azure PowerShell](../install-configure-powershell.md) モジュールをインストールします。
-- アクセス権を付与するユーザーに関する情報を集めます。この情報とは、Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
-- テンプレート イメージを作成します。RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細については、「[RemoteApp イメージの作成](remoteapp-imageoptions.md)」を参照してください。 
+- アクセス権を付与するユーザーに関する情報を集めます。ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。
+- テンプレート イメージを選択します。RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細については、[RemoteApp イメージのオプション](remoteapp-imageoptions.md)に関するページを参照してください。 
 - [RemoteApp を使用するために Active Directory を構成します](remoteapp-ad.md)。
 
 
@@ -72,10 +72,10 @@ RemoteApp コレクションを作成する前に、新しい仮想ネットワ�
 
 
 
-1. [Azure の管理ポータル](http://manage.windowsazure.com)で、[RemoteApp] ページに移動します。
+1. [Azure 管理ポータル](http://manage.windowsazure.com)で、[RemoteApp] ページに移動します。
 2. **[新規] > [VNET で作成]** の順にクリックします。
 3. コレクションの名前を入力します。
-4. 使用する標準的なまたは基本的なプランを選択します。
+4. Standard または Basic から、使用するプランを選択します。
 5. **[RemoteApp コレクションの作成]** をクリックします。
 
 RemoteApp コレクションを作成したら、RemoteApp の **[クイック スタート]** ページに進んでセットアップの手順を続行します。
@@ -134,5 +134,6 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 これで、RemoteApp ハイブリッド コレクションの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、RemoteApp の [クイック スタート] ページにあります。次に、ユーザーがクライアントにログインし、発行したアプリケーションにアクセスします。
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

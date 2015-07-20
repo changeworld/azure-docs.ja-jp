@@ -126,7 +126,7 @@ Mobile Services のテーブル データにアクセスするコードとその
 
 この 2 つの方法は等価であり、区別しないで使用できます。複数の述語を 1 つのクエリに連結する前のオプションが、よりコンパクトでありお勧めです。
 
-`where` 句は、Mobile Services の OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、!=、<、<=、>、>=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、これらすべてを組み合わせた式が含まれます。
+`where` 句は、Mobile Services の OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、!=、<、<=、>、>=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、およびこれらすべてを組み合わせた式が含まれます。
 
 ### <a name="sorting"></a>方法: 返されるデータを並べ替える
 
@@ -197,7 +197,7 @@ Mobile Services のテーブル データにアクセスするコードとその
 
 ### <a name="lookingup"></a>方法: ID でデータを検索する
 
-`LookupAsync` 関数を使用すると、データベースから特定の ID を持つオブジェクトを検索することができます。
+`LookupAsync` 関数を使うと、データベースから特定の ID を持つオブジェクトを検索することができます。
 
 	// This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
 	TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
@@ -262,7 +262,7 @@ Mobile Services は、テーブルの **ID** 列で一意のカスタム文字�
 
 ##<a name="deleting"></a>方法: モバイル サービスのデータを削除する
 
-次のコードは、既存のインスタンスを削除する方法を示しています。インスタンスは、`todoItem` に設定した "ID" フィールドで識別されます。
+次のコードは、既存のインスタンスを削除する方法を示しています。インスタンスは、`todoItem` に設定した "Id" フィールドで識別されます。
 
 	await todoTable.DeleteAsync(todoItem);
 
@@ -699,5 +699,6 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [クライアントからのカスタム API 呼び出し]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="06/24/2015" 
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (ASP.NET プロジェクト)
@@ -201,7 +201,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 ## キューの長さを取得する
 
-キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するよう Queue サービスに要求します。**ApproximateMethodCount** プロパティは、Queue サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -244,9 +244,9 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 <ul>
-<li>利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
+<li>利用可能な API の詳細については、キュー サービスのリファレンス ドキュメントを参照してください。
   <ul>
-    <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
+    <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
     <li><a href="http://msdn.microsoft.com/library/azure/dd179355">REST API リファレンス</a></li>
   </ul>
@@ -263,7 +263,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 </ul>
 
   [Download and install the Azure SDK for .NET]: /develop/net/
-  [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+  [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731
   [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
   [CloudStorageAccount]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx
   [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
@@ -275,4 +275,4 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

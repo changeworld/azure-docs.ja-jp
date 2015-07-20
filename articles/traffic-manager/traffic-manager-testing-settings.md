@@ -75,4 +75,6 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

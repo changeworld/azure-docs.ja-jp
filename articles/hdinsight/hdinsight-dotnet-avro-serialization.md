@@ -19,7 +19,6 @@
 
 # Microsoft Avro ライブラリを使用した Hadoop のデータのシリアル化
 
-##概要
 このトピックでは、<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> を使用して、オブジェクトとその他のデータ構造をストリームにシリアル化し、メモリ、データベース、またはファイルに格納する方法を示します。さらに、逆シリアル化を行って元のオブジェクトを回復する方法についても説明します。
 
 
@@ -1397,9 +1396,14 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 クラスターをクリーンアップするには、次のコマンドを実行します。
 
     AvroHDISample clean
+
+
+
+
 [deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
 [deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

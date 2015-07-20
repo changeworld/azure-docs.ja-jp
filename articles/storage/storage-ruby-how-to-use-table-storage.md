@@ -1,9 +1,9 @@
 <properties 
 	pageTitle="Ruby から Table ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Ruby API を使用して記述されています。" 
+	description="Azure で Table ストレージ サービスを使用する方法について説明します。コード サンプルは Ruby API を使用して記述されています。" 
 	services="storage" 
 	documentationCenter="ruby" 
-	authors="tfitzmac,tamram" 
+	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -23,9 +23,7 @@
 
 ## 概要
 
-このガイドでは、Windows Azure キュー サービスを使用して
-Azure Table サービスサンプルは Ruby API を使用して
-記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
+このガイドでは、Microsoft Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -33,9 +31,9 @@ Azure Table サービスサンプルは Ruby API を使用して
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、[Azure での Ruby アプリケーションの作成](/develop/ruby/tutorials/web-app-with-linux-vm/) に関するページを参照してください。
+Ruby アプリケーションを作成します。手順については、[Windows Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## アプリケーションからストレージへのアクセスの構成
+## アプリケーションのストレージへのアクセスの構成
 
 Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
@@ -74,27 +72,27 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 	azure_table_service = Azure::TableService.new
 	begin
-	 azure_table_service.create_table("testtable")
+	  azure_table_service.create_table("testtable")
 	rescue
-	 puts $!
+	  puts $!
 	end
 
 ## エンティティをテーブルに追加する方法
 
-エンティティを追加するには、エンティティのプロパティを定義するハッシュ オブジェクトを最初に作成します。すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。Azure ストレージ サービスでは、テーブルのエンティティを多数のストレージ ノードに自動的に配布するために **PartitionKey** を使用します。**PartitionKey** が同じエンティティは同じノードに格納されます。**RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。 
+エンティティを追加するには、エンティティのプロパティを定義するハッシュ オブジェクトを最初に作成します。すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。Azure Storage サービスでは、テーブルのエンティティを多数のストレージ ノードに自動的に配布するために **PartitionKey** を使用します。**PartitionKey** が同じエンティティは同じノードに格納されます。**RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
 
 	entity = { "content" => "test entity", 
 	  :PartitionKey => "test-partition-key", :RowKey => "1" }
 	azure_table_service.insert_entity("testtable", entity)
 
-## 方法:エンティティを更新する
+## 方法: エンティティを更新する
 
 既存のエンティティを更新するには、複数のメソッドがあります。
 
 * **update_entity():** 既存のエンティティを、置換することで更新します。
 * **merge_entity():** 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。
-* **insert _or_merge_entity ():** 置換することで、既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
-* **insert _or_replace_entity ():** 既存のエンティティに新しいプロパティ値をマージすることで、既存のエンティティを更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert_or_merge_entity():** 既存のエンティティを、置換することで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert_or_replace_entity():** 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
 次の例に、**update_entity()** を使用してエンティティを更新する方法を示します。
 
@@ -104,7 +102,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 **update_entity()** と **merge_entity()** では、更新されるエンティティが存在しないと更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insert_or_replace_entity()** または **insert_or_merge_entity()** を使用する必要があります。
 
-## 方法:エンティティのグループを操作する
+## 方法: エンティティのグループを操作する
 
 状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。このためには、まず **Batch** オブジェクトを作成し、次に **TableService** の **execute_batch()** メソッドを使用します。次の例では、RowKey が 2 および 3 である 2 つのエンティティをバッチで送信する方法を示します。これは、同じ PartitionKey を持つエンティティでのみ機能することに注意してください。
 
@@ -116,14 +114,14 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 	end
 	results = azure_table_service.execute_batch(batch)
 
-## 方法:エンティティを照会する
+## 方法: エンティティを照会する
 
 テーブル内のエンティティを照会するには、**get_entity()** メソッドを使用して、テーブル名、**PartitionKey**、および **RowKey** を渡します。
 
 	result = azure_table_service.get_entity("testtable", "test-partition-key", 
 	  "1")
 
-## 方法:エンティティのセットを照会する
+## 方法: エンティティのセットを照会する
 
 テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query_entities()** メソッドを使用します。次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
 
@@ -132,7 +130,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 **注** 結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用すると、後続のページを取得できます。
 
-## 方法:エンティティ プロパティのサブセットを照会する
+## 方法: エンティティ プロパティのサブセットを照会する
 
 テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。"プロジェクション" と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。select 句を使用して、クライアントに渡すプロパティの名前を指定します。
 
@@ -140,15 +138,15 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 	  :select => ["content"] }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-## 方法:エンティティを削除する
+## 方法: エンティティを削除する
 
 エンティティを削除するには、**delete_entity()** メソッドを使用します。目的のエンティティを含んでいるテーブルの名前と、エンティティの PartitionKey および RowKey を渡す必要があります。
 
 		azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
-## 方法:テーブルを削除する
+## 方法: テーブルを削除する
 
-テーブルを削除するには、**delete_table()** を使用して、削除するテーブルの名前を渡します。
+テーブルを削除するには、**delete_table()** メソッドを使用して、削除するテーブルの名前を渡します。
 
 		azure_table_service.delete_table("testtable")
 
@@ -156,8 +154,9 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-- MSDN リファレンス:[Azure ストレージ](http://msdn.microsoft.com/library/azure/gg433040.aspx)
-- [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
+- [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

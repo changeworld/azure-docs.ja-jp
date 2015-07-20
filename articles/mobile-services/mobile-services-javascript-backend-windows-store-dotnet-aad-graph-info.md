@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
+	ms.date="06/18/2015" 
 	ms.author="wesmc"/>
 
 # Azure Active Directory Graph 情報へのアクセス
@@ -24,9 +24,9 @@
 
 Mobile Services で提供する他の ID プロバイダーと同様に、Azure Active Directory (AAD) プロバイダーも、ディレクトリにプログラムでアクセスできるリッチな Graph API をサポートしています。このチュートリアルでは、[Graph REST Library] を使用してディレクトリから取得したユーザーの詳細情報を返す、認証されたユーザーのアプリケーション エクスペリエンスを個人用に設定できるように、ToDoList アプリケーションを更新します。
 
-Azure AD Graph API の詳細については、「[Azure Active Directory Graph チームのブログ]」を参照してください。
+Azure AD Graph API の詳細については、[Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)] を参照してください。
 
->[AZURE.NOTE]このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE]このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル [Mobile Services アプリへの認証の追加]を完了しておく必要があります。このチュートリアルでは、[Mobile Services アプリへの認証の追加]で使用した TodoItem アプリケーションを引き続き更新します。
 
 
 
@@ -34,7 +34,7 @@ Azure AD Graph API の詳細については、「[Azure Active Directory Graph �
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
-+ [アプリへの認証の追加] <br/>TodoList サンプル アプリケーションにログイン要件を追加します。
++ [Mobile Services アプリへの認証の追加] <br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
 + [Custom API Tutorial (カスタム API チュートリアル)]<br/>カスタム API の呼び出し方法を示します。
 
@@ -43,7 +43,7 @@ Azure AD Graph API の詳細については、「[Azure Active Directory Graph �
 ##AAD でのアプリケーション登録のアクセス キーを生成する
 
 
-チュートリアル「[アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したとき、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。
+チュートリアル [Mobile Services アプリへの認証の追加]では、手順[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]を完了したとき、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。
 
 [AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
@@ -53,7 +53,7 @@ Azure AD Graph API の詳細については、「[Azure Active Directory Graph �
 
 このセクションでは、[Graph REST API] を使用して AAD からユーザーについての追加情報を取得する GetUserInfo カスタム API を作成します。
 
-Mobile Services でカスタム API をまったく使用したことがない場合は、このセクションを完了する前に、「[Custom API Tutorial (カスタム API チュートリアル)]」を見直すことをお勧めします。
+Mobile Services でカスタム API をまったく使用したことがない場合は、このセクションを完了する前に、[クライアントからのカスタム API 呼び出し]を見直すことをお勧めします。
 
 1. [Azure の管理ポータル]で、モバイル サービスのための新しい GetUserInfo カスタム API を作成して、**認証されたユーザーだけ**に get メソッドに対する許可を設定します。
 
@@ -142,7 +142,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 ##GetUserInfo を使用するようにアプリケーションを更新する
 
 
-このセクションでは、カスタム API を呼び出し、AAD からユーザーに関する追加情報を返すように、「[認証の使用]」チュートリアルに実装した `AuthenticateAsync` メソッドを更新します。
+このセクションでは、カスタム API を呼び出し、AAD からユーザーに関する追加情報を返すように、「認証の使用」チュートリアルで実装した `AuthenticateAsync` メソッドを更新します。
 
 [AZURE.INCLUDE [mobile-services-aad-graph-info-update-app](../../includes/mobile-services-aad-graph-info-update-app.md)]
 
@@ -159,7 +159,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 ##次のステップ
 
-次のチュートリアル、「[Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]」では、Azure Active Directory (AAD) でロール ベースのアクセス制御を使用して、アクセスを許可する前にグループ メンバーシップを確認します。
+次のチュートリアル、[Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]では、Azure Active Directory (AAD) でロール ベースのアクセス制御を使用して、アクセスを許可する前にグループ メンバーシップを確認します。
 
 
 
@@ -168,10 +168,11 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 
 <!-- URLs. -->
-[アプリへの認証の追加]: ../mobile-services-windows-store-dotnet-get-started-users.md
+[Mobile Services アプリへの認証の追加]: ../mobile-services-windows-store-dotnet-get-started-users.md
 [How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [Custom API Tutorial (カスタム API チュートリアル)]: mobile-services-windows-store-dotnet-call-custom-api.md
+[クライアントからのカスタム API 呼び出し]: mobile-services-windows-store-dotnet-call-custom-api.md
 [Store Server Scripts]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
 [Graph API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
@@ -179,5 +180,6 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Graph REST Library]: http://msdn.microsoft.com/library/azure/hh974478.aspx
 [ユーザーの取得]: http://msdn.microsoft.com/library/azure/dn151678.aspx
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-javascript-backend-windows-store-dotnet-aad-rbac.md
-[Azure Active Directory Graph チームのブログ]: http://go.microsoft.com/fwlink/?LinkId=510536
-<!--HONumber=54--> 
+[Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)]: http://go.microsoft.com/fwlink/?LinkId=510536
+
+<!---HONumber=July15_HO2-->

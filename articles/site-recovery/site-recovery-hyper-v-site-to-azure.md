@@ -61,11 +61,7 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 - 最新バージョンのプロバイダーとエージェントを実行する必要があります。
 - コンテナー内のすべての Hyper-V サーバーは、同じバージョンである必要があります。
 - プロバイダーは、インターネット経由で Azure Site Recovery に接続する必要があります。このことは、プロキシを使用せずに、現在 VMM サーバーで構成されているプロキシ設定を使用して、またはプロバイダーのインストール中に構成するカスタム プロキシ設定を使用して行えます。既存のプロキシ サーバーを使用するには、 Azure に接続する次の URL がファイアウォールを通過するのを許可します。
-	- *.hypervrecoverymanager.windowsazure.com
-	- *.accesscontrol.windows.net
-	- *.backup.windowsazure.com
-	- *.blob.core.windows.net
-	- *.store.core.windows.net
+	- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net
 - カスタム プロキシを使用するには、プロバイダーをインストールする前に、プロキシ サーバーを設定します。プロバイダーのセットアップ中には、プロキシ サーバーのアドレスとポート、およびアクセスのために使用できる資格情報を指定する必要があります。
 
 次の図は、Azure Site Recovery でオーケストレーションやレプリケーションに使用される、さまざまな通信チャネルと通信ポートを示しています。
@@ -143,11 +139,7 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 	- Hyper-V サーバー上の既定のプロキシに認証が必要な場合は、カスタム プロキシ サーバーの使用を選択する必要があります。既定のプロキシの詳細を入力し、資格情報を指定します。
 	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。 
 	- 次の URL に Hyper-V ホストからアクセスできるようにする必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
+		- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 9. **[コンテナーの設定]** ページで **[参照]** をクリックし、キー ファイルを選択します。Azure Site Recovery のサブスクリプション、コンテナー名、Hyper-V サーバーが属している Hyper-V サイトを指定します。
@@ -165,15 +157,15 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Server 2012 R2 にプロバイダーをインストールする場合は、次の操作を行います。
 
-1. プロバイダーのインストール ファイルと、登録キーをダウンロードします。
+1. プロバイダーのインストール ファイルと、登録キーを C:\\ASR などのフォルダーにダウンロードします。
 2. 次を入力して、プロバイダーのインストーラーを抽出します。
 
-	    C:\Windows\System32> CD C:\Program Files\Azure Site Recovery Provider
-	    C:\Program Files\Azure Site Recovery Provider>AzureSiteRecoveryProvider.exe /x:. /q
+	    C:\Windows\System32> CD C:\ASR
+	    C:\ASR>AzureSiteRecoveryProvider.exe /x:. /q
 
 3. 次のコマンドを入力して、プロバイダーをインストールします。
 
-	    C:\Program Files\Azure Site Recovery Provider> setupdr.exe /i
+	    C:\ASR> setupdr.exe /i
 
 4. 次のコマンドを入力して、サーバーを登録します。
 
@@ -187,17 +179,18 @@ Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Se
 		- /proxyUsername <username>: プロキシに認証が必要な場合の資格情報。
 		- proxyPassword <password>
 
+>[AZURE.NOTE]異なるネットワーク帯域幅設定を使用して Azure に仮想マシンをレプリケートするように個々の Hyper-V ホストを構成することができます。詳細については、「[Azure 保護ネットワーク帯域幅使用のオンプレミスでの管理方法](https://support.microsoft.com/ja-jp/kb/3056159)」を参照してください。
+
+
 ## ステップ 4: Azure リソースの作成
 
 1. **[リソースの準備]** で、**[ストレージ アカウントの作成]** を選択し、Azure ストレージ アカウントを作成します (保有していない場合)。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。
 
 	![ストレージ アカウントの作成](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_CreateResources1.png)
 
-
 ## ステップ 5: 保護グループの作成と構成
 
-保護グループは、同じ保護設定を使用して保護する仮想マシンの論理グループです。保護設定を保護グループに適用すると、これらの設定はグループに追加するすべての仮想マシンに適用されます。
-1.**[保護グループの作成と構成]** で、**[保護グループの作成]** をクリックします。前提条件が満たされていない場合は、メッセージが発行され、**[詳細の表示]** をクリックすると、詳細情報が表示されます。
+保護グループは、同じ保護設定を使用して保護する仮想マシンの論理グループです。保護設定を保護グループに適用すると、これらの設定はグループに追加するすべての仮想マシンに適用されます。1.**[保護グループの作成と構成]** で、**[保護グループの作成]** をクリックします。前提条件が満たされていない場合は、メッセージが発行され、**[詳細の表示]** をクリックすると、詳細情報が表示されます。
 
 2. **[保護グループ]** タブで、保護グループを追加します。名前、ソースの Hyper-V サイト、ターゲットの **Azure**、Azure Site Recovery のサブスクリプション名、Azure ストレージ アカウントを指定します。
 
@@ -213,6 +206,7 @@ Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Se
 
 
 ## ステップ 6: 仮想マシンの保護の有効化
+
 
 仮想マシンを保護グループに追加し、保護を有効にします。
 
@@ -251,7 +245,7 @@ Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Se
 		- **ターゲット IP アドレス**: 静的 IP アドレスを使用するようソース仮想マシンのネットワーク アダプターが構成されている場合、フェールオーバー後にターゲット仮想マシンの IP アドレスが同じになるよう、ターゲット仮想マシンの IP アドレスを指定できます。IP アドレスを指定しない場合、フェールオーバー時に、使用可能なアドレスが割り当てられます。使用中のアドレスを指定すると、フェールオーバーは失敗します。
 		 
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_VMMultipleNic.png)
-	
+
 ## ステップ 7: 復旧計画の作成
 
 デプロイをテストするために、単一の仮想マシンに対して、または 1 つ以上の仮想マシンを含む復旧計画に対してテスト フェールオーバーを実行できます。復旧計画を作成するには、[こちらの手順に従ってください](site-recovery-create-recovery-plans.md)
@@ -302,4 +296,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

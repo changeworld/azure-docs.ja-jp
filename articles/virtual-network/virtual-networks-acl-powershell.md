@@ -97,4 +97,4 @@ ACL PowerShell コマンドレットの完全な一覧を取得するには、�
 
 [仮想マシンとの通信をセットアップする方法](http://go.microsoft.com/fwlink/?LinkId=303938)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

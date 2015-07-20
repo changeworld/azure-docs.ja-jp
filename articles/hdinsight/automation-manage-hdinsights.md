@@ -18,7 +18,7 @@
 
 
 
-# Azure Automation を使用した Azure HDInsight の管理
+#Azure Automation を使用した Azure HDInsight の管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure HDInsight でのクラスターの管理を簡略化し、一般的なタスクを自動化する方法について紹介します。
 
 ## Azure Automation とは
@@ -39,8 +39,8 @@ Azure HDInsight コマンドレットでは、Linux または Windows での HDI
 ## 次のステップ
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure HDInsight を管理する方法について説明しました。Azure Automation の詳細については、こちらのリンクをご覧ください。
 
-* Azure Automation の[作業開始のチュートリアル](../automation-create-runbook-from-samples.md)に関するページ
+* Azure Automation の[作業開始のチュートリアル](../automation-create-runbook-from-samples.md)に関するページを参照してください。
 
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

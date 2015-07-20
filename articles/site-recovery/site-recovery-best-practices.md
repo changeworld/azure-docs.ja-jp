@@ -155,7 +155,7 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 - **データ ディスクのサイズ**: Azure にレプリケートする場合、仮想マシンには、各サイズが最大 1 TB の、最大で 32 個のデータ ディスクを備えることができます。これにより、最大 32 TB の仮想マシンのレプリケートとフェールオーバーを効率的に行うことができます。
 - **復旧計画の制限**: Site Recovery は、何千もの仮想マシンを処理するようにスケールアップできます。復旧計画は、ひとまとまりでフェールオーバーする必要があるアプリケーション向けのモデルとして設計されているため、復旧計画で用いるマシン数は 50 個までに制限されています。
 - **Azure サービスの制限**: すべての Azure サブスクリプションには、コアやクラウド サービスなどに一連の既定の制限が設定されています。サブスクリプション内のリソースの可用性については、テスト フェールオーバーを実行して検証することをお勧めします。これらの制限は、Azure サポートを使用して変更することができます。
-- **キャパシティ プランニング**: ガイダンスとして、「[Capacity Planner for Hyper-V Replica (Hyper-V レプリカ用のキャパシティ プランニング ツール)](http://www.microsoft.com/ja-jp/download/details.aspx?id=39057)」を使用します。
+- **キャパシティ プランニング**: ガイダンスとして、「[Capacity Planner for Hyper-V Replica (Hyper-V レプリカ用のキャパシティ プランニング ツール)](http://www.microsoft.com/en-in/download/details.aspx?id=39057)」を使用します。
 - **レプリケーションの帯域幅**: レプリケーションの帯域幅が不足する場合は、次の点に注意してください。
 	- **ExpressRoute**: Site Recovery は、Azure ExpressRoute や、Riverbed などの WAN オプティマイザーと連携します。ExpressRoute の詳細については、[こちら](http://blogs.technet.com/b/virtualization/archive/2014/07/20/expressroute-and-azure-site-recovery.aspx)を参照してください。
 	- **レプリケーション トラフィック**: Site Recovery は、VHD 全体ではなく、データ ブロックのみを使用してスマート初期レプリケーションを実行します。レプリケーション進行中にレプリケートされるのは、変更箇所のみです。
@@ -189,4 +189,4 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

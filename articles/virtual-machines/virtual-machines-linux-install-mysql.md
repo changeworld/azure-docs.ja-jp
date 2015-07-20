@@ -237,5 +237,6 @@ MySQL のインストール方法として、バイナリ パッケージ、rpm 
     システムの起動時に MySQL が開始するように設定するには、次のコマンドを実行します。
 
            #mysql-test:~ # insserv mysql
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

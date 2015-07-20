@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Machine Learning の Recommendations API のクイック スタート ガイド | Azure" 
+	pageTitle="クイック スタート ガイド: Machine Learning Recommendations API | Microsoft Azure" 
 	description="Azure Machine Learning Recommendations - クイック スタート ガイド" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,94 +13,106 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
-	ms.author="jaymathe"/>
+	ms.date="06/12/2015" 
+	ms.author="luisca"/>
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
 
-このドキュメントでは、サービスまたはアプリケーションで Azure ML の Recommendations を使用する方法について説明します。 
+このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。
 
-##目次
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-* 概要	
-* 制限事項	        
-* 統合	        
-  * 認証	
-  *	サービス URI	    
-  *	API バージョン	    
-  *	モデルの作成	
-  *	カタログ データのインポート	
-  *	使用状況データのインポート	
-     * ファイルのアップロード	
-	 * データ取得の使用	
-* 推奨モデルの構築	
-* ビルド状態の取得	
-* 推奨の取得	
-* モデルの更新	
-* 法的情報	
-
- 
 ##概要
 
-Azure ML の Recommendations を使用するには、次の手順を実行する必要があります。
+Azure Machine Learning の Recommendations を使用するには、次の手順を実行する必要があります。
 
-* モデルの作成 - モデルは、使用状況データ、カタログ データ、および推奨モデルのコンテナーです。
+* モデルの作成 – モデルは、使用状況データ、カタログ データ、推奨モデルのコンテナーです。
 * カタログ データのインポート - これは省略可能な手順です。カタログには、項目のメタデータが含まれています。カタログ データをアップロードしない場合、Recommendations サービスは、使用状況データから暗黙的にカタログについて学習します。
-* 使用状況データのインポート - 使用状況データは、2 つの方法のいずれか (または両方) でアップロードできます。
+* 使用状況データのインポート – 使用状況データは、2 つの方法のいずれか (または両方) でアップロードできます。
 	* 使用状況データを含むファイルをアップロードする。
-	* データ取得イベントを送信する。
-	通常は、使用状況ファイルをアップロードして初期の推奨モデル (ブートストラップ) を作成し、システムがデータ取得形式を使用して十分なデータを収集するまではそのモデルを使用します。
-* 推奨モデルの構築 - これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。ビルドをトリガーするときにビルド ID が取得されるので、Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。 
-* 推奨の使用 - 特定の項目または項目一覧に対する推奨を取得します。
+	* データ取得イベントを送信する。通常は、使用状況ファイルをアップロードして初期の推奨モデル (ブートストラップ) を作成し、システムがデータ取得形式を使用して十分なデータを収集するまではそのモデルを使用します。
+* 推奨モデルの構築 – これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。ビルドをトリガーすると、ビルドの ID を取得します。Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。
+* 推奨の使用 – 特定の項目や項目一覧に対する推奨を取得します。
 
-これらの手順がすべて、Azure ML の Recommendations API で実行されます。
+これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。
 
 ##制限事項
 
-* サブスクリプションごとのモデルの最大数:  10
-* カタログが保持できる項目の最大数:  100,000
-* 保持される使用状況ポイントの最大数は約 5,000,000 です。新しいポイントがアップロードまたは報告されると、最も古いポイントから削除されます。
+* サブスクリプションごとのモデルの最大数は 10 です。
+* カタログが保持できる項目の最大数は 100,000 です。
+* 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-* アクティブでない推奨モデル ビルドに対する 1 秒あたりのトランザクション数は約 2 TPS です。アクティブな推奨モデル ビルドのみが 20 TPS を保持できます。
+* 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
 ##統合
 
 ###認証
-認証に関する Microsoft Azure Marketplace のガイドラインに従ってください。Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。
+Micosoft Azure Marketplace は、Basic または OAuth のいずれかの認証方法をサポートします。
+####基本認証
+承認ヘッダーの追加:
 
-###サービス URI 
-Azure ML の各 Recommendations API のサービス ルート URI は、[ここです。](https://api.datamarket.azure.com/amla/recommendations/v1/)
+	Authorization: Basic <creds>
+               
+	Where <creds> = ConvertToBase64(“AccountKey:” + yourAccountKey);  
+	
+Base 64 に変換 (c#)
 
-サービス URI はすべて、OData 仕様の要素を使用して表されます。  
+	var bytes = Encoding.UTF8.GetBytes(“AccountKey:” + yourAccountKey);
+	var creds = Convert.ToBase64String(bytes);
+	
+Base 64 に変換 (JavaScript)
+
+	var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
+	
+アカウント キーは[こちら](https://datamarket.azure.com/account/keys)で取得します。
+
+
+
+###サービス URI
+Azure Machine Learning Recommendations API のサービス ルート URI は、[ここ](https://api.datamarket.azure.com/amla/recommendations/v2/)です。
+
+サービス URI はすべて、OData 仕様の要素を使用して表されます。
 
 ###API バージョン
-各 API 呼び出しでは、最後に apiVersion というクエリ パラメーターを 1.0 に設定する必要があります。
+各 API 呼び出しでは、最後に apiVersion というクエリ パラメーターを「1.0」に設定する必要があります。
+
+###ID には大文字小文字の区別がある
+API のいずれかにより返される ID は大文字と小文字の区別があり、後続の API 呼び出しにパラメーターとして渡されるときにはそのとおりに使用する必要があります。たとえば、モデル ID およびカタログ ID では、大文字と小文字が区別されます。
 
 ###モデルの作成
 "モデルの作成" 要求を作成します。
 
-![Table1][1]
+| HTTP メソッド | URI |
+|:--------|:--------|
+|POST |`<rootURI>/CreateModel?modelName=%27<model_name>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/CreateModel?modelName=%27MyFirstModel%27&apiVersion=%271.0%27`|
 
-応答:
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+|	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 20 |
+|	apiVersion | 1.0 |
+||| | Request Body | NONE |
 
-HTTP 状態コード:  200
+
+**応答**:
+
+HTTP ステータス コード: 200
+
+- `feed/entry/content/properties/id` – モデル ID が含まれます。**注**: モデル ID は大文字小文字を区別します。
 
 OData XML
-	
-	feed/entry/content/properties/id - contains the model id
 
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/CreateModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/CreateModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
 	  <title type="text" />
 	  <subtitle type="text">Create A New Model</subtitle>
-	  <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/CreateModel?modelName='MyFirstModel'&apiVersion='1.0'</id>
-	  <rights type="text" />	
+	  <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/CreateModel?modelName='MyFirstModel'&amp;apiVersion='1.0'</id>
+	  <rights type="text" />
 	  <updated>2014-10-05T06:35:21Z</updated>
- 	 <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/CreateModel?modelName='MyFirstModel'&apiVersion='1.0'" />
+ 	 <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/CreateModel?modelName='MyFirstModel'&amp;apiVersion='1.0'" />
 	  <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/CreateModel?modelName='MyFirstModel'&apiVersion='1.0'&$skip=0&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/CreateModel?modelName='MyFirstModel'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1</id>
     <title type="text">CreateANewModelEntity2</title>
     <updated>2014-10-05T06:35:21Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/CreateModel?modelName='MyFirstModel'&apiVersion='1.0'&$skip=0&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/CreateModel?modelName='MyFirstModel'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">a658c626-2baa-43a7-ac98-f6ee26120a12</d:Id>
@@ -122,29 +134,39 @@ OData XML
 
 複数の呼び出しで同じモデルに複数のカタログ ファイルがアップロードされた場合は、新しいカタログ項目のみを挿入します。既存の項目は、元の値でそのまま残ります。
 
-![Table2][2]
+| HTTP メソッド | URI |
+|:--------|:--------|
+|POST |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
 
-応答:
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+|	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1.0 |
+||| | 要求本文 | カタログ データ。形式:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>名前</th><th>必須</th><th>タイプ</th><th>説明</th></tr><tr><td>項目 ID</td><td>Yes</td><td>英数字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>項目名</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>、項目名</td></tr><tr><td>項目カテゴリ</td><td>Yes</td><td>英数字、最大の長さ 255</td><td>この項目 (例: 料理ブック、ドラマ...) が属しているカテゴリ</td></tr><tr><td>説明</td><td>No</td><td>英数字、最大の長さ 4000</td><td>この項目の説明</td></tr></table><br>最大ファイル サイズ 200 MB<br><br>例:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</pre> |
 
-HTTP 状態コード:  200
 
-OData XML	
+**応答**:
 
-	Feed\entry\content\properties\LineCount - number of lines accepted
-	Feed\entry\content\properties\ErrorCount - number of lines that were not inserted due to an error
+HTTP ステータス コード: 200
 
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportCatalogFile" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+- `Feed\entry\content\properties\LineCount` – 受け入れられる行数。
+- `Feed\entry\content\properties\ErrorCount` – エラーのために挿入されなかった行数。
+
+OData XML
+
+	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportCatalogFile" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
 	  <title type="text" />
   		<subtitle type="text">Import catalog file</subtitle>
-  		<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='catalog10_small.txt'&apiVersion='1.0'</id>
+  		<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='catalog10_small.txt'&amp;apiVersion='1.0'</id>
   	<rights type="text" />
   	<updated>2014-10-05T06:58:04Z</updated>
-  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='catalog10_small.txt'&apiVersion='1.0'" />
+  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='catalog10_small.txt'&amp;apiVersion='1.0'" />
   	<entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='catalog10_small.txt'&apiVersion='1.0'&$skip=0&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='catalog10_small.txt'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1</id>
     <title type="text">ImportCatalogFileEntity2</title>
     <updated>2014-10-05T06:58:04Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='catalog10_small.txt'&apiVersion='1.0'&$skip=0&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportCatalogFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='catalog10_small.txt'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:LineCount m:type="Edm.String">4</d:LineCount>
@@ -160,32 +182,40 @@ OData XML
 ####ファイルのアップロード
 このセクションでは、ファイルを使用して使用状況データをアップロードする方法を示します。この API は使用状況データと共に何度も呼び出すことができます。すべての呼び出しですべての使用状況データが保存されます。
 
-![Table3a][3]
-![Table3b][4]
+| HTTP メソッド | URI |
+|:--------|:--------|
+|POST |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`|
 
-応答:
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+|	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1.0 |
+| Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>次の形式の日付: YYYY/MM/DDTHH:MM:SS (例. 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
-HTTP 状態コード:  200
+**応答**:
 
-OData XML	
+HTTP ステータス コード: 200
 
-	Feed\entry\content\properties\LineCount - number of lines accepted
-	Feed\entry\content\properties\ErrorCount - number of lines that were not inserted due to an error
-	Feed\entry\content\properties\FileId - the file identifier
+- `Feed\entry\content\properties\LineCount` – 受け入れられる行数。
+- `Feed\entry\content\properties\ErrorCount` – エラーのために挿入されなかった行数。
+- `Feed\entry\content\properties\FileId` – ファイル識別子。
 
 
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportUsageFile" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+OData XML
+
+    <feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportUsageFile" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   	<title type="text" />
   	<subtitle type="text">Add bulk usage data (usage file)</subtitle>
-  	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='ImplicitMatrix10_Guid_small.txt'&apiVersion='1.0'</id>
+  	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='ImplicitMatrix10_Guid_small.txt'&amp;apiVersion='1.0'</id>
   	<rights type="text" />
   	<updated>2014-10-05T07:21:44Z</updated>
-  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='ImplicitMatrix10_Guid_small.txt'&apiVersion='1.0'" />
+  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='ImplicitMatrix10_Guid_small.txt'&amp;apiVersion='1.0'" />
   	<entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='ImplicitMatrix10_Guid_small.txt'&apiVersion='1.0'&$skip=0&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='ImplicitMatrix10_Guid_small.txt'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1</id>
     <title type="text">AddBulkUsageDataUsageFileEntity2</title>
     <updated>2014-10-05T07:21:44Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&filename='ImplicitMatrix10_Guid_small.txt'&apiVersion='1.0'&$skip=0&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ImportUsageFile?modelId='a658c626-2baa-43a7-ac98-f6ee26120a12'&amp;filename='ImplicitMatrix10_Guid_small.txt'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:LineCount m:type="Edm.String">33</d:LineCount>
@@ -198,140 +228,142 @@ OData XML
 
 
 ####データ取得の使用
-このセクションでは、Web サイトから Azure ML の Recommendations にリアルタイムでイベントを送信する方法を示します。
+このセクションでは、Web サイトから Azure Machine Learning Recommendations にリアルタイムでイベントを送信する方法を示します。
 
-![Table4][5]
+| HTTP メソッド | URI |
+|:--------|:--------|
+|POST |`<rootURI>/AddUsageEvent?apiVersion=%271.0%27-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
 
-Request body
-
-	送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。
-
-
-	Example of Click:
-	<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  	<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
-  	<SessionId>11112222</SessionId>
-  	<EventData>
-    <EventData>
-      <Name>Click</Name>
-      <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
-    </EventData>
-  	</EventData>
-	</Event> 
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+|	apiVersion | 1.0 |
+||| |要求本文| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルをご覧ください)。|
 
 
-	Example of Recommendation Click:
-	<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  	<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
-  	<SessionId>11112222</SessionId>
-  	<EventData>
-    <EventData>
-      <Name>RecommendationClick</Name>
-      <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
-    </EventData>
-  	</EventData>
-	</Event>
+- 'Click' のイベントの例:
 
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+		<SessionId>11112222</SessionId>
+		<EventData>
+		<EventData>
+		<Name>Click</Name>
+		<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+		</EventData>
+		</EventData>
+		</Event>
 
-	Example of Adding to shop cart:
-	<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  	<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
-  	<SessionId>11112222</SessionId>
-  	<EventData>
-    <EventData>
-      <Name>AddShopCart</Name>
-      <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
-    </EventData>
-  	</EventData>
-	</Event>
+- 'RecommendationClick' のイベントの例:
 
-	Example of Removing from shop cart:
-	<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  	<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
-  	<SessionId>11112222</SessionId>
-  	<EventData>
-    <EventData>
-      <Name>RemoveShopCart</Name>
-      <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
-    </EventData>
-  	</EventData>
-	</Event>
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+  		<SessionId>11112222</SessionId>
+  		<EventData>
+    	<EventData>
+      	<Name>RecommendationClick</Name>
+      	<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+    	</EventData>
+  		</EventData>
+		</Event>
 
-	Example of Purchase:
-	<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">   
-	<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>   
-	<SessionId>11112222</SessionId>   
-	<EventData>     
-	<EventData>       
-		<Name>Purchase</Name> 
-		<PurchaseItems>
-			<PurchaseItems>
-				<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>       
-				<Count>3</Count>
-			</PurchaseItems>
-		</PurchaseItems>
-	</EventData>     
-	</EventData> 
-	</Event>
+- 'AddShopCart' のイベントの例:
 
-	Example of sending 2 events "Click" and "AddShopCart:
-	<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  	<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
-  	<SessionId>11112222</SessionId>
-  	<EventData>
-    <EventData>
-      <Name>Click</Name>
-      <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
-      <ItemName>itemName</ItemName>
-      <ItemDescription>item description</ItemDescription>
-      <ItemCategory>category</ItemCategory>
-    </EventData>
-    <EventData>
-      <Name>AddShopCart</Name>
-      <ItemId>552A1940-21E4-4399-82BB-594B46D7ED54</ItemId>
-    </EventData>
-  	</EventData>
-	</Event>
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+  		<SessionId>11112222</SessionId>
+  		<EventData>
+    	<EventData>
+      	<Name>AddShopCart</Name>
+      	<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+    	</EventData>
+  		</EventData>
+		</Event>
 
-応答:
-HTTP 状態コード:  200
+- 'RemoveShopCart' のイベントの例:
+
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+  		<SessionId>11112222</SessionId>
+  		<EventData>
+    	<EventData>
+      	<Name>RemoveShopCart</Name>
+      	<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+    	</EventData>
+  		</EventData>
+		</Event>
+
+- 'Purchase' のイベントの例: <Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId> <SessionId>11112222</SessionId> <EventData> <EventData> <Name>Purchase</Name> <PurchaseItems> <PurchaseItems> <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId> <Count>3</Count> </PurchaseItems> </PurchaseItems> </EventData> </EventData> </Event>
+
+- 2 つのイベント "Click" と "AddShopCart" を送信する例:
+
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+  		<SessionId>11112222</SessionId>
+  		<EventData>
+    	<EventData>
+      	<Name>Click</Name>
+      	<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+      	<ItemName>itemName</ItemName>
+      	<ItemDescription>item description</ItemDescription>
+      	<ItemCategory>category</ItemCategory>
+    	</EventData>
+    	<EventData>
+      	<Name>AddShopCart</Name>
+      	<ItemId>552A1940-21E4-4399-82BB-594B46D7ED54</ItemId>
+    	</EventData>
+  		</EventData>
+		</Event>
+
+**応答**: HTTP 状態コード: 200
 
 ###推奨モデルの構築
 
-![Table5][6]
+| HTTP メソッド | URI |
+|:--------|:--------|
+|POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
 
-応答:
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+| modelId |	モデルの一意識別子 (大文字小文字を区別する) |
+| userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
+| apiVersion | 1.0 |
+||| | Request Body | NONE |
 
-HTTP 状態コード:  200
+**応答**:
 
-	OData XML	
-	This is an asynchronous API. You will get a Build Id as a response. To know when the build has ended, you should call the "Get Builds Status of a Model" API and locate this build Id in the response. Note that a build can take from minutes to hours depending on the size of the data.
-	You cannot consume recommendations till the build ends.
+HTTP 状態コード: 200
 
-	Valid build status:
+これは、非同期 API です。応答として、ビルド ID が表示されます。ビルドがいつ終了したかを知るには、「モデルのビルド状態を取得する」API を呼び出し、応答でこのビルド ID を検索する必要があります。データのサイズによっては、ビルドが数分から数時間かかる可能性があることに注意してください。
 
-	* Create - model was created
-	* Queued - model build was triggered and it is queued
-	* Building - the model is being build
-	* Success - the build ended successfully
-	* Error - the build ended with a failure
-	* Cancelled - build was canceled
-	* Cancelling - build is being cancelled
+ビルドが終了するまで推奨事項を使用することはできません。
 
-	Feed\entry\content\properties\Id - contains the build id
+有効なビルド状態:
 
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/BuildModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+- Create – モデルが作成されました。
+- Queued – モデルのビルドがトリガーされ、キューに登録されています。
+- Building – モデルをビルドしています。
+- Success - ビルドが正常に終了しました。
+- Error – ビルドでエラーが発生して終了しました。
+- Cancelled – ビルドが取り消されました。
+- Cancelling – ビルドが取り消されます。
+
+
+ビルド ID は、次のパスの下にあります：`Feed\entry\content\properties\Id`
+
+OData XML
+
+	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/BuildModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   	<title type="text" />
   	<subtitle type="text">Build a Model with RequestBody</subtitle>
-  	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&userDescription='First build'&apiVersion='1.0'</id>
+  	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;userDescription='First build'&amp;apiVersion='1.0'</id>
   	<rights type="text" />
   	<updated>2014-10-05T08:56:34Z</updated>
-  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&userDescription='First%20build'&apiVersion='1.0'" />
+  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;userDescription='First%20build'&amp;apiVersion='1.0'" />
   	<entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&userDescription='First build'&apiVersion='1.0'&$skip=0&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;userDescription='First build'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1</id>
     <title type="text">BuildAModelEntity2</title>
     <updated>2014-10-05T08:56:34Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&userDescription='First%20build'&apiVersion='1.0'&$skip=0&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/BuildModel?modelId='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;userDescription='First%20build'&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">1000272</d:Id>
@@ -358,35 +390,58 @@ HTTP 状態コード:  200
 	</feed>
 
 ###モデルのビルド状態の取得
-![Table6][7]
 
-応答:
+| HTTP メソッド | URI |
+|:--------|:--------|
+|GET |`<rootURI>/GetModelBuildsStatus?modelId=%27<modelId>%27&onlyLastBuild=<bool>&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/GetModelBuildsStatus?modelId=%279559872f-7a53-4076-a3c7-19d9385c1265%27&onlyLastBuild=true&apiVersion=%271.0%27`|
 
-HTTP 状態コード:  200
 
-	OData XML	Valid build status:
-	* Create - model was created
-	* Queued - model build was triggered and it is queued
-	* Building - the model is being build
-	* Success - the build ended successfully
-	* Error - the build ended with a failure
-	* Cancelled - build was canceled
-	* Cancelling - build is being cancelled
 
-	Feed\entry\content\properties\Status -contains the build status
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+|	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
+|	onlyLastBuild |	モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します。 |
+|	apiVersion |	1.0 |
 
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/GetModelBuildsStatus" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+
+**応答**:
+
+HTTP 状態コード: 200
+
+応答には、ビルドごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+
+- `feed/entry/content/properties/UserName` – ユーザーの名前。
+- `feed/entry/content/properties/ModelName` – モデルの名前。
+- `feed/entry/content/properties/ModelId` – モデルの一意識別子。
+- `feed/entry/content/properties/IsDeployed` – ビルドがデプロイされている (アクティブなビルド) かどうか。
+- `feed/entry/content/properties/BuildId` – ビルドの一意識別子。
+- `feed/entry/content/properties/BuildType` - ビルドの種類。
+- `feed/entry/content/properties/Status` – ビルド状態。次のいずれか: Error、Building、Queued、Cancelling、Cancelled、Success
+- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
+- `feed/entry/content/properties/Progress` – ビルドの進捗状況 (%)。
+- `feed/entry/content/properties/StartTime` – ビルドの開始時刻。
+- `feed/entry/content/properties/EndTime` – ビルドの終了時刻。
+- `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
+- `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
+
+有効なビルドの状態: - Created - ビルド要求のエントリが作成されました。 - Queued – ビルド要求がトリガーされ、キューに登録されました。 - Building – ビルドが処理中です。 - Success - ビルドが正常に終了しました。 - Error - ビルドがエラーで終了しました。 - Cancelled - ビルドは取り消されました。 - Cancelling - ビルドは取り消されます。
+
+ビルドの種類における有効な値: - Rank - 順番付けのビルド。(順番付けのビルドの詳細については、「Machine Learning Recommendation API ドキュメント」をご覧ください)。 - 推奨事項 - 推奨事項のビルド。- Fbt - Frequently Bought Together ビルド
+
+OData XML
+
+	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/GetModelBuildsStatus" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
 	<title type="text" />
 	<subtitle type="text">Get builds status of a model</subtitle>
-	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&onlyLastBuild=False&apiVersion='1.0'</id>
+	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&amp;onlyLastBuild=False&amp;apiVersion='1.0'</id>
 	<rights type="text" />
 	<updated>2014-11-05T17:51:10Z</updated>
-	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&onlyLastBuild=False&apiVersion='1.0'" />
+	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&amp;onlyLastBuild=False&amp;apiVersion='1.0'" />
 	<entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&onlyLastBuild=False&apiVersion='1.0'&$skip=0&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&amp;onlyLastBuild=False&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1</id>
     <title type="text">GetBuildsStatusEntity</title>
     <updated>2014-11-05T17:51:10Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&onlyLastBuild=False&apiVersion='1.0'&$skip=0&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/GetModelBuildsStatus?modelId='1d20c34f-dca1-4eac-8e5d-f299e4e4ad66'&amp;onlyLastBuild=False&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:UserName m:type="Edm.String">b-434e-b2c9-84935664ff20@dm.com</d:UserName>
@@ -394,6 +449,7 @@ HTTP 状態コード:  200
         <d:ModelId m:type="Edm.String">1d20c34f-dca1-4eac-8e5d-f299e4e4ad66</d:ModelId>
         <d:IsDeployed m:type="Edm.String">true</d:IsDeployed>
         <d:BuildId m:type="Edm.String">1000272</d:BuildId>
+        <d:BuildType m:type="Edm.String">Recommendation</d:BuildType>
         <d:Status m:type="Edm.String">Success</d:Status>
         <d:StatusMessage m:type="Edm.String"></d:StatusMessage>
         <d:Progress m:type="Edm.String">0</d:Progress>
@@ -409,29 +465,48 @@ HTTP 状態コード:  200
 
 
 ###推奨の取得
-![Table7][8]
 
-HTTP 状態コード:  200
+| HTTP メソッド | URI |
+|:--------|:--------|
+|GET |`<rootURI>/ItemRecommend?modelId=%27<modelId>%27&itemIds=%27<itemId>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemIds=%271003%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27`|
 
-	OData XML	The response includes one entry per recommended item, each entry has the following data:
-	* Feed\entry\content\properties\Id - The recommended item id
-	* Feed\entry\content\properties\Name - The name of the item 
-	* Feed\entry\content\properties\Rating - The rating of the recommendation, higher number means higher confidence
-	* Feed\entry\content\properties\Reasoning - the recommendation reasoning
-	The example response below includes 10 recommended items:
 
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+| modelId | モデルの一意識別子 (大文字小文字を区別する) |
+| itemIds | <br> の推奨項目のコンマ区切りの一覧。最大の長さ: 1024 |
+| numberOfResults | 必要な結果の数 |
+| includeMetatadata | 将来的に利用 (常に false) |
+| apiVersion | 1.0 |
+
+**応答:**
+
+HTTP 状態コード: 200
+
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+
+OData XML
+
+次の応答例には、10 個の推奨項目が含まれています。
+
+	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   	<title type="text" />
  	 <subtitle type="text">Get Recommendation</subtitle>
- 	 <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'</id>
+ 	 <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'</id>
   	<rights type="text" />
   	<updated>2014-10-05T12:28:48Z</updated>
-  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'" />
+  	<link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'" />
   	<entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=0&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=0&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=0&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">159</d:Id>
@@ -442,10 +517,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=1&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=1&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=1&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=1&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">52</d:Id>
@@ -456,10 +531,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=2&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=2&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=2&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=2&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">35</d:Id>
@@ -470,10 +545,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=3&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=3&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=3&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=3&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">124</d:Id>
@@ -484,10 +559,10 @@ HTTP 状態コード:  200
     </content>
   	</entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=4&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=4&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=4&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=4&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">120</d:Id>
@@ -498,10 +573,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=5&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=5&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=5&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=5&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">96</d:Id>
@@ -512,10 +587,10 @@ HTTP 状態コード:  200
     </content>
   	</entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=6&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=6&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=6&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=6&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">69</d:Id>
@@ -526,10 +601,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=7&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=7&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=7&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=7&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">172</d:Id>
@@ -540,10 +615,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=8&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=8&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=8&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=8&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">155</d:Id>
@@ -554,10 +629,10 @@ HTTP 状態コード:  200
     </content>
  	 </entry>
  	 <entry>
-    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=9&$top=1</id>
+    <id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=9&amp;$top=1</id>
     <title type="text">GetRecommendationEntity</title>
     <updated>2014-10-05T12:28:48Z</updated>
-    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations-preview/v1/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&itemIds='1003'&numberOfResults=10&includeMetadata=false&apiVersion='1.0'&$skip=9&$top=1" />
+    <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend?modelId='2779c063-48fb-46c1-bae3-74acddc8c1d1'&amp;itemIds='1003'&amp;numberOfResults=10&amp;includeMetadata=false&amp;apiVersion='1.0'&amp;$skip=9&amp;$top=1" />
     <content type="application/xml">
       <m:properties>
         <d:Id m:type="Edm.String">32</d:Id>
@@ -570,44 +645,38 @@ HTTP 状態コード:  200
 	</feed>
 
 ###モデルの更新
-モデルの説明またはアクティブなビルド ID を更新することができます。
-アクティブなビルド ID - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
+モデルの説明やアクティブなビルド ID を更新できます。*アクティブなビルド ID* - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。
 
 このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
-![Table8][9]
+| HTTP メソッド | URI |
+|:--------|:--------|
+|PUT |`<rootURI>/UpdateModel?id=%27<modelId>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27&apiVersion=%271.0%27`|
 
-応答:
 
-HTTP 状態コード:  200
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
+| id | モデルの一意識別子 (大文字小文字を区別する) |
+| apiVersion | 1.0 |
+|||| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
-	OData XML
-	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/UpdateModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+**応答**:
+
+HTTP ステータス コード: 200
+
+OData XML
+
+	<feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/UpdateModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   	<title type="text" />
   	<subtitle type="text">Update an Existing Model</subtitle>
-  	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/UpdateModel?id='9559872f-7a53-4076-a3c7-19d9385c1265'&apiVersion='1.0'</id>
+  	<id>https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/UpdateModel?id='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;apiVersion='1.0'</id>
   	<rights type="text" />
  	 <updated>2014-10-05T10:27:17Z</updated>
- 	 <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v1/UpdateModel?id='9559872f-7a53-4076-a3c7-19d9385c1265'&apiVersion='1.0'" />
+ 	 <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/UpdateModel?id='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;apiVersion='1.0'" />
 	</feed>
 
 ##法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。 
-使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。 
-このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。 
-(c) 2014 Microsoft. All rights reserved. 
-
-
-[1]: ./media/machine-learning-recommendation-api-quick-start-guide/Table01.png
-[2]: ./media/machine-learning-recommendation-api-quick-start-guide/Table02.png
-[3]: ./media/machine-learning-recommendation-api-quick-start-guide/Table03a.png
-[4]: ./media/machine-learning-recommendation-api-quick-start-guide/Table03b.png
-[5]: ./media/machine-learning-recommendation-api-quick-start-guide/Table04.png
-[6]: ./media/machine-learning-recommendation-api-quick-start-guide/Table05.png
-[7]: ./media/machine-learning-recommendation-api-quick-start-guide/Table06.png
-[8]: ./media/machine-learning-recommendation-api-quick-start-guide/Table07.png
-[9]: ./media/machine-learning-recommendation-api-quick-start-guide/Table08.png
-
-
-<!--HONumber=46--> 
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
+
+<!---HONumber=July15_HO2-->

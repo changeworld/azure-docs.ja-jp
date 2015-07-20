@@ -362,9 +362,9 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-    	ビルドの完了後、生成された JAR ファイルは __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__ にあります。
+    	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	> [AZURE.NOTE] Mahout 1.0 がリリースされたら、事前にビルドされたパッケージを HDInsight 3.0 で使用できるようになります。
+    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
 2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次の例では、[HDInsight-Tools][tools] の add-hdinsightfile を使用してファイルをアップロードします。
 
@@ -410,9 +410,9 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 
 ここまで、Mahout の使用方法を学習し、HDInsight でデータを操作するその他の方法を確認してきました。
 
-* [HDInsight での Hive](../hadoop-use-hive.md)
-* [HDInsight での Pig](../hadoop-use-pig.md)
-* [HDInsight での MapReduce](../hadoop-use-mapreduce.md)
+* [HDInsight での Hive の使用](../hadoop-use-hive.md)
+* [HDInsight での Pig の使用](../hadoop-use-pig.md)
+* [HDInsight での MapReduce の使用](../hadoop-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: ../powershell-install-configure.md
@@ -429,4 +429,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

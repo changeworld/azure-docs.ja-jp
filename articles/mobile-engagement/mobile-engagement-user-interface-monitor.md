@@ -142,6 +142,6 @@ UI の [監視］ セクションは、リアルタイムの分析情報を提�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

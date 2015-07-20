@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Machine Learning でモデル結果を解釈する方法 | Azure" 
+	pageTitle="Machine Learning でモデル結果を解釈する方法 | Microsoft Azure" 
 	description="モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。" 
 	services="machine-learning"
 	documentationCenter="" 
@@ -21,7 +21,7 @@
  
 **「モデルのスコア付け」出力の理解と視覚化** このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。モデルのトレーニングと予測が完了したら (「モデルのスコア付け」)、得られた予測結果を理解し、解釈する必要があります。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)] 
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 Azure Machine Learning には、主に次の 4 種類の機械学習モデルがあります。
 
@@ -307,5 +307,6 @@ Web サービスを実行して返された結果は、図 14 のようになり
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
 [train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

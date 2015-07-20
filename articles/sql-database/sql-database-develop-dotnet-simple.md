@@ -127,4 +127,6 @@ SQL Database „ÅÆ [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) „É
 	}
 	```
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

@@ -37,4 +37,4 @@
 
     ![](./media/mobile-services-aad-rbac-create-sales-group/sales-group-id-app-setting.png)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->

@@ -39,4 +39,4 @@
 <!-- URLs. -->
 [ローカル コンピューターにポート規則を作成するには]: http://go.microsoft.com/fwlink/?LinkId=392240
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->

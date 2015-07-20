@@ -121,5 +121,6 @@ GCM を統合すると、アプリケーションが実行されていないと�
 [GCM クライアント ライブラリ]: http://developer.android.com/guide/google/gcm/gs.html#libs
 [Google Developers Console]: https://cloud.google.com/console
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

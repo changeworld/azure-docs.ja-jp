@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.devlang="NA"
 	ms.topic="article"
-	ms.date="05/20/2015"
+	ms.date="07/02/2015"
 	ms.author="alfran"/>
 
 # Operational Insights のソリューション
@@ -128,6 +128,5 @@ Microsoft Azure Operational Insights で、システムの更新ソリューシ�
 - 自動更新の有効化の方法
 - 前回更新からの経過日数
 - Windows Update エージェントのバージョン
- 
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

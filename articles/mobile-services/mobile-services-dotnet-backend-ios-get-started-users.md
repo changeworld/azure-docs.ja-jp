@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="04/13/2015"
+	ms.date="07/01/2015"
 	ms.author="krisragh"/>
 
 # 既存の Azure Mobile Services アプリへの認証の追加
@@ -65,4 +65,4 @@ Xcode で、プロジェクトを開きます。**[実行]** をクリックし�
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

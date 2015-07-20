@@ -111,5 +111,6 @@ OAuth Credentials (クライアント ID とクライアントシークレット
 [ADM クライアント ライブラリ]: https://developer.amazon.com/sdk/adm/setup.html
 [統合 ADM]: https://developer.amazon.com/sdk/adm/integrating-app.html
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

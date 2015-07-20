@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Windows ユニバーサル アプリ Reach SDK 統合" 
-	description="Windows ユニバーサル アプリと Azure モバイル エンゲージメント Reach を統合する方法"
+	description="Windows ユニバーサル アプリと Azure Mobile Engagement Reach を統合する方法"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="piyushjo" 
@@ -13,26 +13,26 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/06/2015" 
+	ms.date="07/07/2015" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサル アプリ Reach SDK 統合
 
-このガイドの手順を実行する前に、「[Windows Phone ユニバーサル エンゲージメント SDK 統合](mobile-engagement-windows-store-integrate-engagement.md)」の統合手順を実行する必要があります。
+このガイドの手順を実行する前に、[Windows Universal Engagement SDK 統合](mobile-engagement-windows-store-integrate-engagement.md)の統合手順を実行する必要があります。
 
 ##エンゲージメント Reach SDK を Windows ユニバーサル プロジェクトに組み込む
 
 追加するものは何もありません。`EngagementReach` のリファレンスとリソースは、既にプロジェクト内に存在します。
 
-> [AZURE.TIP]プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定のエンゲージメント アイコンであるブランド アイコン)。ユニバーサル アプリでは、共有プロジェクトの `Resources` フォルダーを移動させ、そのコンテンツをアプリ間で共有できますが、`Resources\EngagementConfiguration.xml` ファイルはプラットフォーム依存のため、その既定の場所に維持する必要があります。
+> [AZURE.TIP]プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定の Engagement アイコンであるブランド アイコン)。ユニバーサル アプリでは、共有プロジェクトの `Resources` フォルダーを移動させ、そのコンテンツをアプリ間で共有できますが、`Resources\EngagementConfiguration.xml` ファイルはプラットフォーム依存のため、その既定の場所に維持する必要があります。
 
 ##Windows 通知サービスを有効にする
 
-`Package.appxmanifest` ファイルで **Windows 通知サービス** (WNS) を使用するために、`Application UI` で左下のボックスから [`All Image Assets`] をクリックします。`Notifications` のボックスの右で、`toast capable` を `(not set)` から `Yes` に変更します。
+`Package.appxmanifest` ファイルで **Windows 通知サービス** (WNS) を使用するために、`Application UI` で左下のボックスから [`All Image Assets`] をクリックします。`Notifications` のボックスの右で、`toast capable` を `(not set)` から `(Yes)` に変更します。
 
-さらに、アプリを、Microsoft アカウントとエンゲージメント プラットフォームと同期させる必要があります。エンゲージメントのフロントエンドで、[`native push`] のアプリ設定に移動し、資格情報を貼り付けます。その後、プロジェクトを右クリックし、[`store`] と [`Associate App with the Store...`] を選択します。
+さらに、アプリを、Microsoft アカウントとエンゲージメント プラットフォームと同期させる必要があります。これには、アカウントを作成するか、[Windows デベロッパー センター](https://dev.windows.com)にログインする必要があります。その後に、新しいアプリケーションを作成して SID と秘密キーを検索します。エンゲージメントのフロントエンドで、[`native push`] のアプリ設定に移動し、資格情報を貼り付けます。その後、プロジェクトを右クリックし、[`store`] と [`Associate App with the Store...`] を選択します。同期するには、前に作成したアプリケーションを選択する必要があります。
 
-##エンゲージメント Reach SDK を初期化する
+##Engagement Reach SDK を初期化する
 
 `App.xaml.cs` を変更します。
 
@@ -48,7 +48,7 @@
 		  EngagementReach.Instance.Init(args);
 		}
 
--   アプリがアクティブ化されているときに、エンゲージメント Reach を起動する場合は、`OnActivated` メソッドをオーバーライドします。
+-   コマンド、別のアプリケーション、またはカスタム スキームによってアプリがアクティブ化されたときに、Engagement Reach を有効にするには、`OnActivated` メソッドを次のようにオーバーライドします。
 
 		protected override void OnActivated(IActivatedEventArgs args)
 		{
@@ -58,23 +58,23 @@
 
 	`EngagementReach.Instance.Init` は専用のスレッドで稼働します。自分で実行する必要はありません。
 
-> [AZURE.TIP]プロジェクトの `Resources\EngagementConfiguration.xml` ファイルの `<channelName></channelName>` で、アプリの WNS プッシュ チャネルの名前を指定できます。既定では、エンゲージメントはアプリ ID に基づいて、名前を作成します。エンゲージメントの外部でプッシュ チャネルを使用する計画がある場合を除いて、自分で名前を指定する必要はありません。
+> [AZURE.TIP]プロジェクトの `Resources\EngagementConfiguration.xml` ファイルの `<channelName></channelName>` で、アプリの WNS プッシュ チャネルの名前を指定できます。既定では、Engagement はアプリ ID に基づいて、名前を作成します。Engagement の外部でプッシュ チャネルを使用する計画がある場合を除いて、自分で名前を指定する必要はありません。
 
 ##統合
 
-エンゲージメントでは、2 通りの方法で Reach の通知とお知らせを実装できます。オーバーレイ統合と Web ビュー統合です。
+Engagement では、2 通りの方法で Reach の通知とアナウンスを実装できます。オーバーレイ統合と Web ビュー統合です。
 
-windows-sdk-engagement-overlay-integration の場合、大量のコードをアプリに記述する必要がありません。EngagementPageOverlay を使用して、ページ、xaml ファイル、cs ファイルにタグ付けをするだけです。さらに、エンゲージメントの既定のビューをカスタマイズした場合、そのカスタマイズはタグ付けされたすべてのページで共有されるので、一度定義するだけで済みます。ページが EngagementPageOverlay 以外のオブジェクトから継承する必要がある場合は、処理が中断し、Web ビュー統合を使用するように強制されます。
+オーバーレイ統合の場合、アプリケーションに大量のコードを記述する必要がありません。EngagementPageOverlay を使用して、ページ、xaml ファイル、cs ファイルにタグ付けをするだけです。さらに、Engagement の既定のビューをカスタマイズした場合、そのカスタマイズはタグ付けされたすべてのページで共有されるので、一度定義するだけで済みます。ページが EngagementPageOverlay 以外のオブジェクトから継承する必要がある場合は、処理が中断し、Web ビュー統合を使用するように強制されます。
 
-windows-sdk-engagement-webview-integration の場合、実装がより複雑になります。ただし、アプリ ページが「Page」以外のオブジェクトから継承する必要がある場合は、Web ビューとその動作を統合する必要があります。
+Web ビュー統合の場合、実装方法がより複雑です。ただし、アプリ ページが「Page」以外のオブジェクトから継承する必要がある場合は、Web ビューとその動作を統合する必要があります。
 
-> [AZURE.TIP]第 1 レベルの `<Grid></Grid>` 要素を追加し、全ページ内容を囲むことを検討してください。Web ビュー統合では、Web ビューをこのグリッドの子として追加します。エンゲージメント コンポーネントを他の場所に設定する必要がある場合は、表示サイズを自分で管理する必要があることに注意してください。
+> [AZURE.TIP]ルート レベルの `<Grid></Grid>` 要素を追加し、ページの全内容を囲むことを検討してください。Web ビュー統合では、Web ビューをこのグリッドの子として追加します。Engagement コンポーネントを他の場所に設定する必要がある場合は、表示サイズを自分で管理する必要があることに注意してください。
 
 ### オーバーレイ統合
 
-エンゲージメントは、通知とアナウンスを表示するためのオーバーレイを提供します。
+Engagement は、通知とアナウンスを表示するためのオーバーレイを提供します。
 
-それを使用する場合、windows-sdk-engagement-webview-integration を使用しないでください。
+オーバーレイ統合を使用する場合は、Web ビュー統合を使用しないでください。
 
 .xaml ファイルで、EngagementPage リファレンスを EngagementPageOverlay に変更します。
 
@@ -84,7 +84,7 @@ windows-sdk-engagement-webview-integration の場合、実装がより複雑に�
 
 -   `engagement:EngagementPage` を `engagement:EngagementPageOverlay` に置き換えます。
 
-**エンゲージメントを使用する場合:**
+**EngagementPage を使用する場合:**
 
 		<engagement:EngagementPage 
 		    xmlns:engagement="using:Microsoft.Azure.Engagement">
@@ -115,7 +115,7 @@ windows-sdk-engagement-webview-integration の場合、実装がより複雑に�
 
 -   `EngagementPage` を `EngagementPageOverlay` に置き換えます。
 
-**エンゲージメントを使用する場合:**
+**EngagementPage を使用する場合:**
 
 			using Microsoft.Azure.Engagement;
 			
@@ -157,7 +157,7 @@ windows-sdk-engagement-webview-integration の場合、実装がより複雑に�
 
 ### Web ビュー統合
 
-それを使用する場合、windows-sdk-engagement-overlay-integration を使用しないでください。
+Web ビュー統合を使用する場合は、オーバーレイ統合を使用しないでください。
 
 エンゲージメントの内容を表示するには、各ページで 2 つの xaml Web ビューを統合し、通知とアナウンスを表示する必要があります。そのため、次のコードを xaml ファイルに追加します。
 
@@ -265,9 +265,9 @@ windows-sdk-engagement-webview-integration の場合、実装がより複雑に�
 			  return true;
 			};
 
-各メソッドのコールバックがブール値を返すことを確認できます。データのプッシュをディスパッチした後、エンゲージメントはバックエンドにフィードバックを送信します。コールバックが false を返した場合、`exit` フィードバックが送信されます。それ以外の場合は、`action` になります。イベントにコールバックが設定されていない場合は、`drop` フィードバックがエンゲージメントに返されます。
+各メソッドのコールバックがブール値を返すことを確認できます。データのプッシュをディスパッチした後、Engagement はバックエンドにフィードバックを送信します。コールバックが false を返した場合、`exit` フィードバックが送信されます。それ以外の場合は、`action` になります。イベントにコールバックが設定されていない場合は、`drop` フィードバックが Engagement に返されます。
 
-> [AZURE.WARNING]エンゲージメントは、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
+> [AZURE.WARNING]Engagement は、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
 
 ##UI をカスタマイズする (オプション)
 
@@ -300,17 +300,17 @@ Reach UI をカスタマイズできるようにします。
 			  // Engagement Agent and Reach initialization
 			}
 
-> [AZURE.NOTE]既定では、エンゲージメントは `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、エンゲージメントの基本オブジェクトを選択します。
+> [AZURE.NOTE]既定では、Engagement は `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、Engagement の基本オブジェクトを選択します。
 
 ### Web ビュー
 
 既定では、Reach は DLL に組み込まれたリソースを使用して、通知とページを表示します。
 
-完全なカスタマイズを可能にするには、Web ビューのみを使用します。レイアウトをカスタマイズする場合は、リソース ファイルの `EngagementAnnouncement.html` と `EngagementNotification.html` を直接上書きしてください。エンゲージメントを正常に実行するには、すべてのコードを `<body></body>` の中に含める必要があります。ただし、タグを `engagement_webview_area` の外部に追加ができます。
+完全なカスタマイズを可能にするには、Web ビューのみを使用します。レイアウトをカスタマイズする場合は、リソース ファイルの `EngagementAnnouncement.html` と `EngagementNotification.html` を直接上書きしてください。Engagement を正常に実行するには、すべてのコードを `<body></body>` の中に含める必要があります。ただし、タグを `engagement_webview_area` の外部に追加ができます。
 
 また、独自のリソースを使用することも決定できます。
 
-サブクラスの `EngagementReachHandler` メソッドをオーバーライドして、独自のレイアウトを使用するようにエンゲージメントに指示ができますが、組み込まれたエンゲージメントのメカニズムに注意してください。
+サブクラスの `EngagementReachHandler` メソッドをオーバーライドして、独自のレイアウトを使用するように Engagement に指示ができますが、組み込まれたエンゲージメントのメカニズムに注意してください。
 
 **サンプル コード:**
 			
@@ -340,19 +340,19 @@ NotfificationHTML は `ms-appx-web:///Resources/EngagementNotification.html` で
 
 ### カスタマイズ
 
-エンゲージメント オブジェクトを保持する場合、希望する通知とアナウンスの Web ビューをカスタマイズできます。Web ビュー オブジェクトは 3 回記述されていることに注意してください。1 回目は xaml ファイルで、2 回目は .cs ファイルの "setwebview()" メソッドで、3 回目は html ファイルで記述されます。
+Engagement オブジェクトを保持する場合、希望する通知とアナウンスの Web ビューをカスタマイズできます。Web ビュー オブジェクトは 3 回記述されていることに注意してください。1 回目は xaml ファイルで、2 回目は .cs ファイルの "setwebview()" メソッドで、3 回目は html ファイルで記述されます。
 
 -   xaml ファイルでは、現在のグラフィカル レイアウトの Web ビュー コンポーネントを記述します。
 -   .cs ファイルでは、"setwebview()" を定義して、2 つの Web ビュー (通知とアナウンス) のディメンションを設定できます。この機能は、アプリケーションがサイズ変更する場合に非常に効果的です。
--   エンゲージメントの html ファイルで、Web ビューのコンテンツ、デザイン、互いの要素間の位置を記述します。
+-   Engagement の html ファイルで、Web ビューのコンテンツ、デザイン、互いの要素間の位置を記述します。
 
 ### メッセージを起動する
 
-ユーザーがシステム通知 (トースト) をクリックすると、エンゲージメントがアプリケーションを起動して、プッシュ メッセージの内容をロードし、対応するキャンペーンのページを表示します。
+ユーザーがシステム通知 (トースト) をクリックすると、Engagement がアプリケーションを起動して、プッシュ メッセージの内容をロードし、対応するキャンペーンのページを表示します。
 
 アプリケーションが起動されてからページが表示されるまでの間に、(ネットワークの速度に応じて) 遅延が発生します。
 
-読み込み中であることをユーザーに示すには、進行状況バーや進行状況インジケーターなどの視覚的な情報を提供する必要があります。エンゲージメント自身では、それに対応することはできませんが、いくつかのハンドラーを提供します。
+読み込み中であることをユーザーに示すには、進行状況バーや進行状況インジケーターなどの視覚的な情報を提供する必要があります。Engagement 自身では、それに対応することはできませんが、いくつかのハンドラーを提供します。
 
 コールバックを実装するには、App.xaml.cs の "Public App(){}" に次の内容を追加します。
 
@@ -408,5 +408,6 @@ NotfificationHTML は `ms-appx-web:///Resources/EngagementNotification.html` で
 			    }
 			  }
 			  #endregion
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

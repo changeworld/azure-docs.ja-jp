@@ -1,0 +1,254 @@
+<properties
+   pageTitle="混乱のテストの実行"
+   description="この記事では、Microsoft 提供の事前定義された Service Fabric のシナリオについて説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="anmolah"
+   manager="timlt"
+   editor=""/>
+
+<tags
+   ms.service="service-fabric"
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="04/14/2015"
+   ms.author="anmola"/>
+
+# Testability のシナリオ
+クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。高品質なサービスのコードを記述するには、開発者はこうした信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。Service Fabric を使用すると、開発者は障害アクションを誘発して、障害のある状態でサービスをテストできます。ただし、ターゲットを特定した障害のシミュレーションには限界があります。さらなるテストを行えるように、Service Fabric には、事前に作成されたテスト シナリオが用意されています。それらのシナリオでは、長時間にわたり、クラスター全体で、グレースフルと非グレースフルの両方が交互配置された連続した障害がシミュレートされます。障害の発生率と種類を構成し、C# API または PowerShell を使用してクライアント側ツールとして実行し、クラスターとサービスに障害を生成します。Testability 機能の一部として、次のシナリオが用意されています。
+
+1.	混乱のテスト
+2.	フェールオーバー テスト
+
+## 混乱のテスト
+混乱のシナリオでは、Service Fabric クラスター全体にわたる障害を生成します。このシナリオには、一般的に数か月間または数年間から数時間で発生するエラーが圧縮されています。障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。これにより、サービスのコードの品質が大幅に向上します。
+
+### 混乱のテストでシミュレートされる障害
+ - ノードの再起動
+ - デプロイされたコード パッケージの再起動
+ - レプリカの削除
+ - レプリカの再起動
+ - プライマリ レプリカの移動 (オプション)
+ - セカンダリ レプリカの移動 (オプション)
+
+混乱のテストでは、一定の期間、障害とクラスターの検証が複数回実行されます。クラスターが安定し、検証が成功するまでの時間も設定できます。クラスターの検証で 1 つの障害が検出されると、シナリオは失敗します。たとえば、テストを最大 3 つの障害が同時に発生し、1 時間実行されるように設定したとします。テストは 3 つの障害を誘発してから、クラスターの正常性を検証します。テストはクラスターが異常な状態になるまで、または 1 時間経過するまで前述の手順を繰り返します。繰り返しの途中で、クラスターの状態が異常 (つまり、設定時間内に安定した状態にならない) になると、テストは例外で失敗します。この例外は、問題が発生し、さらに調査する必要があることを示します。現在の形式では、混乱のテストのエラー生成エンジンでは、安全な障害しか誘発されません。これは、外部障害がなければ、クォーラムまたはデータの損失が起こらないことを意味します。
+
+### 重要な構成オプション
+ - **TimeToRun**: テストが正常に完了する前に実行される時間の合計。検証エラーにならないようにテストを早めに完了できます。
+ - **MaxClusterStabilizationTimeout**: テストが失敗する前に、クラスターが正常になるのを待機する最大時間。実行されるチェックは、クラスターの正常性が OK かどうか、サービスの正常性が OK がどうか、サービス パーティション用に実現されたターゲット レプリカ セットのサイズ、InBuild レプリカがないことです。
+ - **MaxConcurrentFaults**: 各イテレーションで誘発される同時実行のエラーの最大数。数値が大きいほど、より積極的なテストとなり、結果的に、より複雑なフェールオーバーと遷移の組み合わせになります。このテストは、外部エラーが存在しない場合、この構成がどれだけ高い値であったとしても、クォーラムまたはデータの損失が発生しないことを保証します。
+ - **EnableMoveReplicaFaults**: フォールトを有効または無効にして、プライマリまたはセカンダリ レプリカを移動させます。このようなエラーは、既定で無効になっています。
+ - **WaitTimeBetweenIterations**: イテレーション間 (つまり、1 ラウンドのフォールトと対応する検証の後) の待機時間。
+
+### 混乱のテストを実行する方法
+C# のサンプル
+
+```csharp
+// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
+
+using System;
+using System.Fabric;
+using System.Fabric.Testability;
+using System.Fabric.Testability.Scenario;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Test
+{
+    public static int Main(string[] args)
+    {
+        string clusterConnection = "localhost:19000";
+
+        Console.WriteLine("Starting Chaos Test Scenario...");
+        try
+        {
+            RunChaosTestScenarioAsync(clusterConnection).Wait();
+        }
+        catch (AggregateException ae)
+        {
+            Console.WriteLine("Chaos Test Scenario did not complete: ");
+            foreach (Exception ex in ae.InnerExceptions)
+            {
+                if (ex is FabricException)
+                {
+                    Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
+                }
+            }
+            return -1;
+        }
+
+        Console.WriteLine("Chaos Test Scenario completed.");
+        return 0;
+    }
+
+    static async Task RunChaosTestScenarioAsync(string clusterConnection)
+    {
+        TimeSpan maxClusterStabilizationTimeout = TimeSpan.FromSeconds(180);
+        uint maxConcurrentFaults = 3;
+        bool enableMoveReplicaFaults = true;
+
+        // Create FabricClient with connection & security information here.
+        FabricClient fabricClient = new FabricClient(clusterConnection);
+
+        // The Chaos Test Scenario should run at least 60 minutes or up until it fails.
+        TimeSpan timeToRun = TimeSpan.FromMinutes(60);
+        ChaosTestScenarioParameters scenarioParameters = new ChaosTestScenarioParameters(
+          maxClusterStabilizationTimeout,
+          maxConcurrentFaults,
+          enableMoveReplicaFaults,
+          timeToRun);
+
+        // Other related parameters:
+        // Pause between two iterations for a random duration bound by this value.
+        // scenarioParameters.WaitTimeBetweenIterations = TimeSpan.FromSeconds(30);
+        // Pause between concurrent actions for a random duration bound by this value.
+        // scenarioParameters.WaitTimeBetweenFaults = TimeSpan.FromSeconds(10);
+
+        // Create the scenario class and execute it asynchronously.
+        ChaosTestScenario chaosScenario = new ChaosTestScenario(fabricClient, scenarioParameters);
+
+        try
+        {
+            await chaosScenario.ExecuteAsync(CancellationToken.None);
+        }
+        catch (AggregateException ae)
+        {
+            throw ae.InnerException;
+        }
+    }
+}
+```
+
+Powershell
+
+```powershell
+$connection = "localhost:19000"
+$timeToRun = 60
+$maxStabilizationTimeSecs = 180
+$concurrentFaults = 3
+$waitTimeBetweenIterationsSec = 60
+
+Connect-ServiceFabricCluster $connection
+
+Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterStabilizationTimeoutSec $maxStabilizationTimeSecs -MaxConcurrentFaults $concurrentFaults -EnableMoveReplicaFaults -WaitTimeBetweenIterationsSec $waitTimeBetweenIterationsSec
+```
+
+
+## フェールオーバー テスト
+
+フェールオーバー テスト シナリオは、特定のサービス パーティションを対象にした、混乱のテスト シナリオのバージョンです。他のサービスには影響が及ばない状態で、特定のサービス パーティションに対するフェールオーバーの影響をテストします。ターゲット パーティションの情報とその他のパラメーターを構成し、クライアント側ツールとして実行します。C# API または Powershell を使用して対象のサービス パーティションのフォールトを生成します。このシナリオでは、ワークロードが発生する側でビジネス ロジックを実行しながら、一連のシミュレートされたフォールトとサービス検証を反復処理します。サービス検証の失敗は、さらに調査の必要な問題があることを示します。
+
+### フェールオーバーのテストでシミュレートされたエラー
+- パーティションがホストされているデプロイ済みコード パッケージを再起動します
+- プライマリ/セカンダリ レプリカまたはステートレス インスタンスを削除します
+- プライマリ/セカンダリ レプリカを再起動します (永続化されたサービスの場合)
+- プライマリ レプリカを移動します
+- セカンダリ レプリカを移動します
+- パーティションを再起動します。
+
+フェールオーバー テストは、選択したエラーを誘発し、サービスの検証を実行してサービスの安定性を確認します。フェールオーバー テストは、一度に 1 つのエラーのみを誘発します。これに対し、混乱のテストでは可能性のある複数のエラーを発生させます。各エラーの後、構成したタイムアウト時間内にサービス パーティションが安定しない場合、テストは失敗します。テストは安全なエラーのみを誘発します。つまり、外部障害がなければ、クォーラムまたはデータの損失が起こらないことを意味します。
+
+### 重要な構成オプション
+ - **PartitionSelector**: ターゲットにする必要があるパーティションを指定するセレクター オブジェクト。
+ - **TimeToRun**: テストが完了する前に実行される時間の合計。
+ - **MaxServiceStabilizationTimeout**: テストが失敗する前に、クラスターが正常になるまで待機する最大時間。実行されるチェックは、サービスの正常性が OK がどうか、サービス パーティション用に実現されたターゲット レプリカ セットのサイズ、InBuild レプリカがないことです。
+ - **WaitTimeBetweenFaults**: エラーと検証のサイクル間の待機する時間
+
+### フェールオーバーのテストを実行する方法
+C# のサンプル
+
+```csharp
+// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
+
+using System;
+using System.Fabric;
+using System.Fabric.Testability;
+using System.Fabric.Testability.Scenario;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Test
+{
+    public static int Main(string[] args)
+    {
+        string clusterConnection = "localhost:19000";
+        Uri serviceName = new Uri("fabric:/samples/PersistentToDoListApp/PersistentToDoListService");
+
+        Console.WriteLine("Starting Chaos Test Scenario...");
+        try
+        {
+            RunFailoverTestScenarioAsync(clusterConnection, serviceName).Wait();
+        }
+        catch (AggregateException ae)
+        {
+            Console.WriteLine("Chaos Test Scenario did not complete: ");
+            foreach (Exception ex in ae.InnerExceptions)
+            {
+                if (ex is FabricException)
+                {
+                    Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
+                }
+            }
+            return -1;
+        }
+
+        Console.WriteLine("Chaos Test Scenario completed.");
+        return 0;
+    }
+
+    static async Task RunFailoverTestScenarioAsync(string clusterConnection, Uri serviceName)
+    {
+        TimeSpan maxServiceStabilizationTimeout = TimeSpan.FromSeconds(180);
+        PartitionSelector randomPartitionSelector = PartitionSelector.RandomOf(serviceName);
+
+        // Create FabricClient with connection & security information here.
+        FabricClient fabricClient = new FabricClient(clusterConnection);
+
+        // The Chaos Test Scenario should run at least 60 minutes or up until it fails.
+        TimeSpan timeToRun = TimeSpan.FromMinutes(60);
+        FailoverTestScenarioParameters scenarioParameters = new FailoverTestScenarioParameters(
+          randomPartitionSelector,
+          timeToRun,
+          maxServiceStabilizationTimeout);
+
+        // Other related parameters:
+        // Pause between two iterations for a random duration bound by this value.
+        // scenarioParameters.WaitTimeBetweenIterations = TimeSpan.FromSeconds(30);
+        // Pause between concurrent actions for a random duration bound by this value.
+        // scenarioParameters.WaitTimeBetweenFaults = TimeSpan.FromSeconds(10);
+
+        // Create the scenario class and execute it asynchronously.
+        FailoverTestScenario chaosScenario = new FailoverTestScenario(fabricClient, scenarioParameters);
+
+        try
+        {
+            await chaosScenario.ExecuteAsync(CancellationToken.None);
+        }
+        catch (AggregateException ae)
+        {
+            throw ae.InnerException;
+        }
+    }
+}
+```
+
+
+Powershell
+
+```powershell
+$connection = "localhost:19000"
+$timeToRun = 60
+$maxStabilizationTimeSecs = 180
+$waitTimeBetweenFaultsSec = 10
+$serviceName = "fabric:/SampleApp/SampleService"
+
+Connect-ServiceFabricCluster $connection
+
+Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
+```
+
+ 
+
+<!---HONumber=July15_HO2-->

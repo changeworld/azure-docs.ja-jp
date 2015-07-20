@@ -215,7 +215,7 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 ## その他のリソース
 
-[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)
+[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
@@ -223,5 +223,7 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
+[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

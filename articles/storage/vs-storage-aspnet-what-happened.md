@@ -3,7 +3,7 @@
 	description="Visual Studio の ASP.NET プロジェクトで Azure ストレージを作成するときに起きることについて説明します。" 
 	services="storage" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="patshea123" 
 	manager="douge" 
 	editor="tglee"/>
 
@@ -13,19 +13,20 @@
 	ms.tgt_pltfrm="vs-what-happened" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kempb"/>
+	ms.date="04/20/2015" 
+	ms.author="patshea123"/>
+
+# プロジェクトの変更点
 
 > [AZURE.SELECTOR]
-> - [概要](vs-storage-aspnet-getting-started-blobs.md)
-> - [変更内容](vs-storage-aspnet-what-happened.md)
+> - [Getting Started](vs-storage-aspnet-getting-started-blobs.md)
+> - [What Happened](vs-storage-aspnet-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
 
 ##### リファレンスの追加
 
-Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。  
-このパッケージは、次の .NET 参照を追加します。
+Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。このパッケージは、次の .NET 参照を追加します。
 
 - `Microsoft.Data.Edm`
 - `Microsoft.Data.OData`
@@ -39,6 +40,6 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 #####Azure Storage の接続文字列の追加 
 選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの web.config ファイル内に要素が作成されました。
 
-詳細については、「[ASP.NET](http://www.asp.net)」をご覧ください。
-<!--HONumber=47-->
- 
+詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
+
+<!---HONumber=July15_HO2-->

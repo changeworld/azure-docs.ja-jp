@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure SQL Database に対する C# による CREATE ASSEMBLY"
+	pageTitle="C# による Azure SQL Database に対する CREATE ASSEMBLY"
 	description="最初に DLL ファイルをエンコードして長い 16 進数を含む文字列にした後、CREATE ASSEMBLY を Azure SQL Database に対して発行する C# ソース コードを用意します。" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="sql-database" 
-	ms.workload="sql-database" 
+	ms.workload="data-management" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/25/2015" 
+	ms.date="04/17/2015" 
 	ms.author="genemi"/>
 
 
@@ -38,7 +38,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
 - [CLR テーブル値関数](http://msdn.microsoft.com/library/ms131103.aspx)<br/>CREATE ASSEMBLY Transact-SQL ステートメントが、他のステートメントと共にオンプレミスの Microsoft SQL Server にどのように動作するかを説明します。
 
 
-## A. 全体的な手法
+## A.全体的な手法
 
 
 1. 必要に応じて、それ以前の実行をクリーンアップするための DROP FUNCTION および DROP ASSEMBLY。
@@ -50,9 +50,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
 5. T-SQL SELECT ステートメントにより、関数を呼び出してテストします。
 
 
-前のリストには、下記のものに言及されていません。<br/>
-**execute sp_configure 'clr enabled', 1;**<br/>
-これは Microsoft SQL Server では必要ですが、Azure SQL Database では不要だからです。
+上記の一覧では Microsoft SQL Server では必要でも Azure SQL Database では不要なため...<br/> **execute sp_configure 'clr enabled', 1;**<br/> ... については言及していません。
 
 
 再実行で必要な場合、関数とアセンブリをドロップするための T-SQL コードは、次のようになります。
@@ -62,7 +60,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
     DROP ASSEMBLY CreateAssemblyFunctions3;
 
 
-## B. 参照する T-SQL 関数の単純なアセンブリ DLL
+## B.参照する T-SQL 関数の単純なアセンブリ DLL
 
 
 このセクションに示されている単純な C# コード サンプルをコンパイルすると、アセンブリ DLL ファイルになります。
@@ -90,7 +88,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
 	}
 
 
-## C. CREATE ASSEMBLY を発行する EXE 用 C&#x23; コード サンプル
+## C.CREATE ASSEMBLY を発行する EXE 用 C&#x23; コード サンプル
 
 
 この C# サンプルからビルドされる EXE を実行すると、以下の順番で実行が進みます。
@@ -262,7 +260,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
 
 - Visual Studio 2013, update 4
  - 使用したプロジェクト テンプレート型は、単純なコンソール アプリケーションです。
-- .NET Framework 4.5。
+- .NET Framework 4.5
 
 
 この Visual Studio プロジェクトでは、コンパイルにおいて以下のアセンブリが参照されています。
@@ -295,7 +293,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
 説明を簡単にするため、この例では、パスワードをコマンド ライン パラメーターとして渡しています。実際の設計では、CONFIG ファイルからパスワードを入手するような C# コードにするのが良いでしょう。
 
 
-## D. CREATE FUNCTION ステートメントの実行
+## D.CREATE FUNCTION ステートメントの実行
 
 
 Azure SQL Database サーバーにアセンブリが格納された後、そのアセンブリの中のメソッドを参照する Transact-SQL CREATE FUNCTION ステートメントを実行する必要があります。
@@ -330,5 +328,4 @@ Transact-SQL の以下のコード ブロックには、若干の不要な SELEC
 
 <!-- EndOfFile -->
 
-
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

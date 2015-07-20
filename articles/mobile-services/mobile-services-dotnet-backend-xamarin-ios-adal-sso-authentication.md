@@ -4,7 +4,7 @@
 	documentationCenter="xamarin" 
 	authors="mattchenderson" 
 	manager="dwrede" 
-	editor="" 
+	editor="dwrede" 
 	services="mobile-services"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/25/2015" 
+	ms.date="06/19/2015" 
 	ms.author="mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
@@ -140,4 +140,5 @@
 [iOS 用 Active Directory 認証ライブラリに対する Xamarin バインド]: https://github.com/AzureADSamples/NativeClient-Xamarin-iOS
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
 [Xamarin Studio]: http://xamarin.com/download
-<!--HONumber=54--> 
+
+<!---HONumber=July15_HO2-->

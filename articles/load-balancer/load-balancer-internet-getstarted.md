@@ -124,4 +124,4 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

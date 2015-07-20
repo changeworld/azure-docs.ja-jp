@@ -102,4 +102,4 @@ Azure PowerShell については、「[Mac、Linux、および Windows 用 Azure
 
 [Azure ハイブリッド クラウド テスト環境]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

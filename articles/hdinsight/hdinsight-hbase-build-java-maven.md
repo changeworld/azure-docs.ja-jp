@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/31/2014"
+	ms.date="07/06/2014"
 	ms.author="larryfr"/>
 
 #Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)
@@ -28,7 +28,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 * [Maven](http://maven.apache.org/)
 
-* [Azure HDInsight クラスターと HBase](../hdinsight-hbase-get-started.md#create-hbase-cluster)
+* [Azure HDInsight クラスターと HBase](hdinsight-hbase-get-started.md#create-hbase-cluster)
 
 ##プロジェクトを作成する
 
@@ -591,4 +591,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

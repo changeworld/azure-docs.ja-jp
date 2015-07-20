@@ -26,4 +26,4 @@
 <!-- URLs. -->
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

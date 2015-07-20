@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="03/05/2015" 
+	ms.date="07/08/2015" 
 	ms.author="heidist"/>
 
 #API バージョン 2014* から API バージョン 2015* へのプレビューの移行#
@@ -22,12 +22,12 @@
 
 プレビューを利用されているユーザーは、次のいずれかのプレビュー バージョンを使用された可能性があります。
 
-- [2014-07-31-Preview](../search-api-2014-07-31-preview.md)
+- [2014-07-31-Preview](search-api-2014-07-31-preview.md)
 - [2014-10-20-Preview](search-api-2014-10-20-preview.md)
 
-Azure Search は一般公開されているので、新しいリリースに移行されることをお勧めします。2015-02-28 は、一般提供されている Azure Search リリースの公式 API バージョンです。このバージョンについては、「[MSDN ](https://msdn.microsoft.com/ja-jp/library/azure/dn798933.aspx)」に記載されています。
+Azure Search は一般公開されているので、新しいリリースに移行されることをお勧めします。2015-02-28 は、一般提供されている Azure Search リリースの公式 API バージョンです。このバージョンについては、「[MSDN ](https://msdn.microsoft.com/library/azure/dn798933.aspx)」に記載されています。
 
-次にリリースするプレビュー バージョン [2015-02-28-Preview](../search-api-2015-02-28-preview.md) には、まだ開発段階にある機能が搭載されています。[Azure Search フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azuresearch)または[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)のいずれかでフィードバックをお願いいたします。
+次にリリースするプレビュー バージョン [2015-02-28-Preview](search-api-2015-02-28-preview.md) には、まだ開発段階にある機能が搭載されています。[Azure Search フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuresearch)または[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)のいずれかでプレビュー API についてフィードバックすることができます。
 
 ###移行時のチェックリスト###
 
@@ -41,7 +41,7 @@ Azure Search は一般公開されているので、新しいリリースに移�
 
 この API の最初のリリースには、オート コンプリートまたは入力に先行した候補表示機能が含まれていました。この機能は便利でしたが、プレフィックスのマッチング機能に限られていたので、検索対象は検索用語の最初の数文字のみで、フィールド内の他の部分は対象になっていませんでした。この実装は `suggestions` と呼ばれるブール型プロパティで、特定フィールドでプレフィックスのマッチング機能を有効にする場合は `true` に設定する必要がありました。
 
-この元の実装は、[インデックス](https://msdn.microsoft.com/ja-jp/library/azure/dn798941.aspx)機能で定義される新しい `Suggesters` 構造を優先するために推奨されなくなりました。この構造では、挿入辞一致とあいまい一致が可能になります。名称からわかるように、挿入辞一致とあいまい一致が可能になると一致検索機能は強化されます。挿入辞一致にはプレフィックスも含まれるため、先頭の文字による一致検索も引き続き可能ですが、文字列の残りの部分も一致検索対象に含まれるよう機能が拡張されています。
+この元の実装は、[インデックス](https://msdn.microsoft.com/library/azure/dn798941.aspx)機能で定義される新しい `Suggesters` 構造を優先するために推奨されなくなりました。この構造では、挿入辞一致とあいまい一致が可能になります。名称からわかるように、挿入辞一致とあいまい一致が可能になると一致検索機能は強化されます。挿入辞一致にはプレフィックスも含まれるため、先頭の文字による一致検索も引き続き可能ですが、文字列の残りの部分も一致検索対象に含まれるよう機能が拡張されています。
 
 前の実装 (前述のブール型プロパティ) を中止することにしたのは、新しいソリューションを構築しているユーザーが誤って導入しないようにするためです。この実装は、いずれの 2015 バージョンにも含まれておらず、下位互換性もありません。`2015-02-28` または `2015-02-28-Preview` のいずれかを使用する場合は、 新しい `Suggesters` 構造を使用して、入力に先行した候補表示クエリを有効にする必要があります。
 
@@ -135,12 +135,13 @@ Azure Search は一般公開されているので、新しいリリースに移�
 ソリューションを移行し、期待どおりに実行されることを確認できましたら、次に示すリンク先で新機能に関する情報を参照してください。
 
 - [Azure Search の一般提供が開始 (ブログ投稿)](http://go.microsoft.com/fwlink/p/?LinkId=528211)
-- [Azure Search の最新機能について](../search-latest-updates/)
-- [Azure Search の概要](https://msdn.microsoft.com/ja-jp/library/azure/dn798933.aspx)
+- [Azure Search の最新機能について](search-latest-updates.md)
+- [Azure Search とは](search-what-is-azure-search.md)
 
 ##問い合わせ##
 
-API バージョン `2015-02-28` は SLA でサポートされています。[こちらのページ](http://azure.microsoft.com/support/options/)にあるサポート オプションおよびリンクを使用して、 サポート チケットを申請してください。
+API バージョン `2015-02-28` は SLA でサポートされています。[こちらのページ](../support/options/)にあるサポート オプションおよびリンクを使用して、 サポート チケットを申請してください。
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

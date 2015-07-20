@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/02/2015"
+   ms.date="06/30/2015"
    ms.author="jgao"/>
 
 #Hadoop、HBase、または Apache Storm クラスターのスケール設定を使用して HDInsight のデータ ノード数を変更する 
@@ -145,4 +145,4 @@ HDInsight SDK を使用して Hadoop クラスターのサイズを変更する�
 HDInsight .NET SDK の使用の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」のトピックをご覧ください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

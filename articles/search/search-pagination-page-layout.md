@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="04/16/2015" 
+	ms.date="07/08/2015" 
 	ms.author="heidist"/>
 
 #Azure Search でのページ検索結果の表示方法#
@@ -96,7 +96,7 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 
     	GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-`$filter` 式の詳細については、 「[ドキュメントの検索  (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+`$filter` 式の詳細については、 「[ドキュメントの検索 (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
 ## 関連項目 ##
 
@@ -113,4 +113,5 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
-<!--HONumber=54--> 
+
+<!---HONumber=July15_HO2-->

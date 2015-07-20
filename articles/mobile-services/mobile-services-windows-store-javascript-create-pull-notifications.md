@@ -157,5 +157,6 @@
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [定期的な通知の概要]: http://msdn.microsoft.com/library/windows/apps/jj150587.aspx
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

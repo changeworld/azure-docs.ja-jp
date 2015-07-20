@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成" 
-	description="Azure Mobile Services と .NET バックエンドを使用して Windows ストア アプリケーションを作成する方法について説明します。" 
+	pageTitle=".NET バックエンドを使用した Windows ストアのランキング アプリの作成 | Azure Mobile Services" 
+	description="Azure Mobile Services の .NET バックエンドを使用して、Windows ストアのランキング アプリを作成する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="MikeWasson" 
 	manager="dwrede" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
-	ms.author="mwasson"/>
+	ms.date="06/24/2015" 
+	ms.author="glenga"/>
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
 
@@ -111,9 +111,9 @@ Visual Studio 2013 では、ASP.NET Web アプリケーション プロジェク
 
 これらのクラスはいずれも **EntityData** クラスから継承しています。**EntityData** から派生することで、アプリケーションは Azure Mobile Services 用のクロスプラットフォーム クライアント ライブラリを使用して、データを簡単に使用できるようになります。また、**EntityData** によって、アプリケーションで[データベースの書き込み競合を処理する](mobile-services-windows-store-dotnet-handle-database-conflicts.md)のが簡単になります。
 
-`PlayerRank` クラスには、関連する `Player` エンティティを指す[ナビゲーション プロパティ](http://msdn.microsoft.com/data/jj713564.aspx)があります。**[ForeignKey]** 属性は、`Player` プロパティが外部キーを表すことを EF に示します。
+`PlayerRank` クラスには、関連する `Player` エンティティを指す[ナビゲーション プロパティ](http://msdn.microsoft.com/data/jj713564.aspx)があります。**[ForeignKey] **属性は、`Player` プロパティが外部キーを表すことを EF に示します。
 
-# Web API コントローラーを追加する
+## Web API コントローラーを追加する
 
 次に、`Player` と `PlayerRank` に対する Web API コントローラーを追加します。通常の Web API コントローラーの代わりに、特に Azure Mobile Services 用に設計された "*table controller*" という名前の特殊なコントローラーを追加します。
 
@@ -318,7 +318,7 @@ LINQ の Select ステートメントを使用する代わりに、AutoMapper �
 
 	[Route("api/score")]
 
-このメソッドは、別のコントローラーに配置することもできます。どちらの方法が優れているということはありません。お好みのコードの整理方法を選んでください。**[Route]** 属性の詳細については、「[Attribute Routing in ASP.NET Web API 2 (ASP.NET Web API 2 での属性のルーティング)](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)」を参照してください。
+このメソッドは、別のコントローラーに配置することもできます。どちらの方法が優れているということはありません。お好みのコードの整理方法を選んでください。**[Route]** の詳細については、[Attribute Routing in Web API (Web API での属性のルーティング)](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2) を参照してください。
 
 ## Windows ストア アプリケーションを作成する
 
@@ -332,7 +332,7 @@ NuGet Package Manager を使用して、Mobile Services クライアント ラ�
 
 	Install-Package WindowsAzure.MobileServices -Project LeaderboardApp
 
-\-Project スイッチは、パッケージをインストールするプロジェクトを指定します。
+-Project スイッチは、パッケージをインストールするプロジェクトを指定します。
 
 ## モデル クラスを追加する
 
@@ -760,5 +760,6 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 [プッシュ通知の追加]: ../notification-hubs-windows-store-dotnet-get-started.md
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-dotnet
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

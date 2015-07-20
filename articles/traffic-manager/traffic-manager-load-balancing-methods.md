@@ -3,7 +3,7 @@
    description="この記事では、Traffic Manager で使用されるさまざまな負荷分散方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="cherylmc"
+   authors="joaoma"
    manager="adinah"
    editor="tysonn" />
 <tags 
@@ -12,26 +12,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/27/2015"
-   ms.author="cherylmc" />
+   ms.date="07/01/2015"
+   ms.author="joaoma" />
 
-# Traffic Manager での負荷分散方法について
+# Traffic Manager のルーティング方法
 
-Traffic Manager では、3 つの負荷分散方法を使用できます。各 Traffic Manager プロファイルで一度に使用できる負荷分散方法は 1 つだけですが、プロファイルに対していつでも別の負荷分散方法を選択できます。
+Traffic Manager では、3 つのルーティング方法を使用できます。各 Traffic Manager プロファイルで一度に使用できるルーティング方法は 1 つだけですが、プロファイルに対していつでも別のルーティング方法を選択できます。
 
-重要なのは、すべての負荷分散方法にエンドポイント監視が含まれている点です。Traffic Manager プロファイルを構成して、最も要件に合う負荷分散方法を指定したら、監視の設定を構成します。監視が適切に構成されていると、Traffic Manager は、クラウド サービスや Web サイトで構成されているエンドポイントの状態を監視し、利用できないエンドポイントに対してはトラフィックを送信しません。Traffic Manager の監視の詳細については、[Traffic Manager の監視](traffic-manager-monitoring.md) に関するページを参照してください。 
+重要なのは、すべてのルーティング方法にエンドポイント監視が含まれている点です。Traffic Manager プロファイルを構成して、最も要件に合うルーティング方法を指定したら、監視の設定を構成します。監視が適切に構成されていると、Traffic Manager は、クラウド サービスや Web サイトで構成されているエンドポイントの状態を監視し、利用できないエンドポイントに対してはトラフィックを送信しません。Traffic Manager の監視の詳細については、「[Traffic Manager の監視について](traffic-manager-monitoring.md)」を参照してください。
 
-Traffic Manager での 3 つの負荷分散方法を次に示します。
+Traffic Manager での 3 つのルーティング方法を次に示します。
 
-- **フェールオーバー**:同一または異なる Azure データセンター (管理ポータルではリージョンと呼ばれます) にエンドポイントがあり、すべてのトラフィックにプライマリ エンドポイントを使用するが、プライマリ エンドポイントやバックアップ エンドポイントが利用不可になったときに備えてバックアップを用意する場合は、フェールオーバーを選択します。詳細については、「[フェールオーバー負荷分散方法](#failover-load-balancing-method)」を参照してください。
+- **フェールオーバー**: 同一または異なる Azure データセンター (管理ポータルでは「リージョン」と呼ばれます) にエンドポイントがあり、すべてのトラフィックにプライマリ エンドポイントを使用するが、プライマリ エンドポイントやバックアップ エンドポイントが利用不可になったときに備えてバックアップを用意する場合は、フェールオーバーを選択します。詳細については、「[フェールオーバー負荷分散方法](#failover-load-balancing-method)」を参照してください。
 
-- **ラウンド ロビン**:同一データセンター内または異なるデータセンターにある一連のエンドポイントに負荷を分散する場合は、ラウンド ロビンを選択します。詳細については、「[ラウンド ロビン負荷分散方法](#round-robin-load-balancing-method)」を参照してください。
+- **ラウンド ロビン**: 同一データセンター内または異なるデータセンターにある一連のエンドポイントに負荷を分散する場合は、ラウンド ロビンを選択します。詳細については、「[ラウンド ロビン負荷分散方法](#round-robin-load-balancing-method)」を参照してください。
 
-- **パフォーマンス**:地理的に異なる場所にエンドポイントがあり、待機時間が最短という意味で "最も近い" エンドポイントを使用するようにクライアントに要求する場合は、パフォーマンスを選択します。詳細については、「[パフォーマンス負荷分散方法](#performance-load-balancing-method)」を参照してください。
+- **パフォーマンス**: 地理的に異なる場所にエンドポイントがあり、待機時間が最短という意味で "最も近い" エンドポイントを使用するようにクライアントに要求する場合は、パフォーマンスを選択します。詳細については、「[パフォーマンス負荷分散方法](#performance-load-balancing-method)」を参照してください。
 
 Azure Websites では、データセンター内の Web サイト向けに、Web サイトのモードに関係なく、フェールオーバーおよびラウンド ロビンによる負荷分散機能が既に用意されています。Traffic Manager を使用すると、異なるデータセンター内の Web サイトに対して、フェールオーバーおよびラウンド ロビンによる負荷分散を指定できます。
 
->[AZURE.NOTE] DNS の有効期限 (TTL) により、DNS クライアントおよびリゾルバーは、解決された名前が DNS サーバー上でキャッシュされる期間を認識します。クライアントは、名前のローカル DNS キャッシュ エントリの期限が切れるまで、指定されたエンドポイントを使用してドメイン名を解決します。
+>[AZURE.NOTE]DNS の有効期限 (TTL) により、DNS クライアントおよびリゾルバーは、解決された名前が DNS サーバー上でキャッシュされる期間を認識します。クライアントは、名前のローカル DNS キャッシュ エントリの期限が切れるまで、指定されたエンドポイントを使用してドメイン名を解決します。
 
 ### フェールオーバー負荷分散方法
 
@@ -43,9 +43,9 @@ Azure Websites では、データセンター内の Web サイト向けに、Web
 
 ![Traffic Manager でのフェールオーバー負荷分散](./media/traffic-manager-load-balancing-methods/IC750592.jpg)
 
-**Figure 1**
+**図 1**
 
-以下の手順の番号は、図 1 内の番号に対応しています。
+次の手順の番号は、図 1 内の番号に対応しています。
 
 1. Traffic Manager は DNS を介してクライアントから受信要求を受け取り、プロファイルを見つけます。
 2. プロファイルには、順序が指定されたエンドポイントのリストが含まれています。Traffic Manager は、リストの最初にあるエンドポイントを調べます。そのエンドポイントがオンラインである場合 (実行中のエンドポイント監視に基づいて判別します)、そのエンドポイントの DNS 名をクライアントに対する DNS 応答で指定します。エンドポイントがオフラインの場合、Traffic Manager はリスト内の次のオンライン エンドポイントを判別します。この例では、CS-A はオフライン (利用不可) ですが、CS-B はオンライン (利用可能) です。
@@ -54,7 +54,7 @@ Azure Websites では、データセンター内の Web サイト向けに、Web
 
 ### ラウンド ロビン負荷分散方法
 
-負荷分散の一般的なパターンは、同一のエンドポイントのセットを提供し、ラウンド ロビン方式で各エンドポイントにトラフィックを送信することです。ラウンド ロビン方式では、トラフィックがさまざまなエンドポイントに分割されます。正常なエンドポイントがランダムに選択され、サービスが停止していることが検出されるとトラフィックは送信されません。詳細については、[Traffic Manager の監視](../traffic-manager-onitoring.md).に関するページを参照してください。
+負荷分散の一般的なパターンは、同一のエンドポイントのセットを提供し、ラウンド ロビン方式で各エンドポイントにトラフィックを送信することです。ラウンド ロビン方式では、トラフィックがさまざまなエンドポイントに分割されます。正常なエンドポイントがランダムに選択され、サービスが停止していることが検出されるとトラフィックは送信されません。詳細については、「[Traffic Manager の監視](../traffic-manager-onitoring.md)」を参照してください。
 
 図 2 に、一連のエンドポイントに対するラウンド ロビン負荷分散方法の例を示します。
 
@@ -62,7 +62,7 @@ Azure Websites では、データセンター内の Web サイト向けに、Web
 
 **図 2**
 
-以下の手順の番号は、図 2 内の番号に対応しています。
+次の手順の番号は、図 2 内の番号に対応しています。
 
 1. Traffic Manager はクライアントから受信要求を受け取り、プロファイルを見つけます。
 2. プロファイルにはエンドポイントのリストが含まれています。Traffic Manager はこのリストからランダムにエンドポイントを選択します。その際、Traffic Manager のエンドポイント監視でオフライン (利用不可) と判別されたエンドポイントはすべて除外されます。この例では、エンドポイント CS-B が選択されます。
@@ -85,7 +85,7 @@ Azure Websites では、データセンター内の Web サイト向けに、Web
 
 REST API の使用方法の詳細については、「[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=313584)」を参照してください。
 
-Azure PowerShell コマンドレットの使用方法の詳細については、「[Azure Traffic Manager Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。構成の例については、Azure ブログの「[Azure Traffic Manager External Endpoints and Weighted Round Robin via PowerShell](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)」を参照してください。
+Azure PowerShell コマンドレットの使用方法の詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。構成の例については、Azure ブログの「[Azure Traffic Manager External Endpoints and Weighted Round Robin via PowerShell](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)」を参照してください。
 
 単一のクライアントからのプロファイルをテストして、均等ラウンド ロビンまたは重み付けラウンド ロビンの動作を確認するには、プロファイルの均等値または重み値に従って、DNS 名が異なるエンドポイントの IP アドレスに解決されることを確認します。テストの際には、クライアント側の DNS キャッシュを無効にするか、毎回 DNS キャッシュをクリアして、新しい DNS 名のクエリが送信されるようにする必要があります。
 
@@ -101,7 +101,7 @@ Azure PowerShell コマンドレットの使用方法の詳細については、
 
 **図 4**
 
-以下の手順の番号は、図 4 内の番号に対応しています。
+次の手順の番号は、図 4 内の番号に対応しています。
 
 1. Traffic Manager は、定期的にインターネット待機時間テーブルを作成します。Traffic Manager のインフラストラクチャでは、世界のさまざまな地点と、エンドポイントをホストしている Azure データセンター間のラウンドトリップ時間を判別するためのテストが実行されます。
 2. Traffic Manager は、ローカル DNS サーバーを介してクライアントから受信要求を受け取り、プロファイルを見つけます。
@@ -119,7 +119,7 @@ Azure PowerShell コマンドレットの使用方法の詳細については、
 
 ## Traffic Manager に関する図
 
-Traffic Manager に関する独自のプレゼンテーション用の PowerPoint スライドとして、または独自の目的に合わせて変更するために、このトピックで扱った図が必要な場合は、[MSDN ドキュメント内の Traffic Manager に関する図](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)を参照してください。
+Traffic Manager に関する独自のプレゼンテーション用の PowerPoint スライドとして、または独自の目的に合わせて変更するために、このトピックで扱った図が必要な場合は、MSDN ドキュメント内の「[Traffic Manager に関する図](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)」を参照してください。
 
 ## 関連項目
 
@@ -129,11 +129,12 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
 
-[クラウド サービス](http://go.microsoft.com/fwlink/p/?LinkId=314074)
+[Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
 
-[Web サイト](http://go.microsoft.com/fwlink/p/?LinkId=393327)
+[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

@@ -13,26 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
-# SSH による HDInsight での Hive と Hadoop の使用
+#SSH による HDInsight での Hive と Hadoop の使用
 
 [AZURE.INCLUDE [Hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
 この記事では、Secure Shell (SSH) を使用して Azure HDInsight クラスターで Hadoop に接続してから、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを対話的に実行する方法について説明します。
 
-> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」を参照してください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
 
-* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> などのクライアントをダウンロードする必要があります。
+* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a id="ssh"></a>SSH を使用した接続
+##<a id="ssh"></a>SSH を使用した接続
 
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。以下の例では、**myhdinsight** という名前のクラスターに接続します。
 
@@ -44,15 +44,15 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 **HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
-### PuTTY (Windows ベースのクライアント)
+HDInsight での SSH の使用に関する詳細については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-Windows ではビルトイン SSH クライアントは提供されません。<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html</a> からダウンロードできる **PuTTY** を使用することをお勧めします。
+###PuTTY (Windows ベースのクライアント)
 
-PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の**Putty を使用して Linux 仮想マシンに接続する**セクションをご覧ください。
+Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
-> [AZURE.NOTE]HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の **Putty 用の PPK を作成する**セクションも参照する必要があります。
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a id="hive"></a>Hive コマンドの使用
+##<a id="hive"></a>Hive コマンドの使用
 
 2. 接続したら、次のコマンドを使用して Hive CLI を起動します。
 
@@ -72,7 +72,7 @@ PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com
     * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは Hive にテーブル定義のみを格納します。データは元の場所に残されます。
     * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
     * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
-    * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
     > [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
@@ -89,7 +89,7 @@ PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com
     * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
     * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
 
-    **errorLogs** テーブルに格納された、t4 列に **[ERROR]** を含む列のみを確認するには、次のステートメントを使用して、**errorLogs** テーブルからすべての列を返します。
+    **errorLogs** テーブルには t4 列に **[ERROR]** を含む行のみが格納されていることを確認するには、次のステートメントを使用して、**errorLogs** 列からすべての列を返します。
 
         SELECT * from errorLogs;
 
@@ -97,11 +97,11 @@ PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com
 
     > [AZURE.NOTE]外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -131,18 +131,18 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

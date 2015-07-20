@@ -18,20 +18,13 @@
 
 # ソース管理にプロジェクトのコードを格納する
 
-<div class="dev-center-tutorial-subselector">
-	<a href="/documentation/articles/mobile-services-dotnet-backend-store-code-source-control/" title=".NET バックエンド">.NET バックエンド</a> | <a href="/documentation/articles/mobile-services-store-scripts-source-control/"  title="JavaScript バックエンド" class="current">JavaScript バックエンド</a>
-</div>
+> [AZURE.SELECTOR-LIST (Platform | Backend)]
+- [(Any | .NET)](mobile-services-dotnet-backend-store-code-source-control.md)
+- [(Any | Javascript)](mobile-services-store-scripts-source-control.md)
 
 このトピックでは、Azure Mobile Services で提供されているソース管理を使用してサーバー スクリプトを保存する方法を示します。スクリプトとその他の JavaScript バンクエンド コード ファイルは、ローカル Git リポジトリから運用モバイル サービスに昇格させることができます。さらに、複数のスクリプトで必要になる場合がある共有コードを定義する方法と、package.json ファイルを使用して Node.js モジュールをモバイル サービスに追加する方法も説明します。
 
-このチュートリアルでは、以下の各手順について説明します。
-
-1. [モバイル サービスでソース管理を有効にする]。
-2. [Git をインストールし、ローカル リポジトリを作成する]。
-3. [更新されたスクリプト ファイルをモバイル サービスに展開する]。
-4. [サーバー スクリプトで共有コードと Node.js モジュールを活用する]。
-
-このチュートリアルを完了するには、「[Mobile Services の使用]」または「[既存のアプリにモバイル サービスを追加する]」チュートリアルを完了し、モバイル サービスを作成しておく必要があります。
+このチュートリアルを完了するには、[Mobile Services の使用]または[既存のアプリに Mobile Services を追加する]チュートリアルを完了し、モバイル サービスを作成しておく必要があります。
 
 ##<a name="enable-source-control"></a>モバイル サービスでソース管理を有効にする
 
@@ -41,7 +34,7 @@
 
 1. ローカル コンピューターに Git をインストールします。 
 
-	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
+	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、[Installing Git (Git のインストール)] を参照してください。
 
 	> [AZURE.NOTE]オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
 
@@ -68,11 +61,11 @@
 
 7. .\\service\\table サブフォルダーを開くと、TodoItem.json ファイルが含まれていることがわかります。これは、TodoItem テーブルに対する操作のアクセス許可の JSON 表現です。
 
-	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。スケジューラ スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、「[ソース管理]」を参照してください。
+	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。スケジューラ スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、[ソース管理]を参照してください。
 
 これでローカル リポジトリが作成できたので、サーバー スクリプトを変更して、モバイル サービスに変更をプッシュ バックできます。
 
-##<a name="deploy-scripts"></a>更新されたスクリプト ファイルをモバイル サービスに展開する
+##<a name="deploy-scripts"></a>更新されたスクリプト ファイルをモバイル サービスにデプロイする
 
 1. .\\service\\table サブフォルダーに移動し、まだファイル todoitem.insert.js が存在しない場合は、ここで作成します。
 
@@ -100,31 +93,21 @@
 	
 	コミットがモバイル サービスにデプロイされることを示す一連のコマンドが表示されるはずです。
 
-6. 管理ポータルに戻って **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
-
-	![][5]
-
-3. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
-
-	![][6]
-
+6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。
+7. 
 	表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
 
 ##<a name="use-npm"></a>サーバー スクリプトで共有コードと Node.js モジュールを活用する
 
-モバイル サービスでは、すべての Node.js コア モジュールにアクセスでき、コード内で **require** 関数を使用することでそのモジュールを利用することができます。さらに、Node.js コア パッケージに含まれない Node.js モジュールも使用できるだけでなく、自分で作成した共有コードを Node.js モジュールとして定義することもできます。モジュールの作成方法の詳細については、Node.js API リファレンス ドキュメントの「[Modules (モジュール)][Node.js API Documentation: Modules]」を参照してください。
+Mobile Services では、すべての Node.js コア モジュールにアクセスでき、コード内で **require** 関数を使用することでそのモジュールを利用することができます。さらに、Node.js コア パッケージに含まれない Node.js モジュールも使用できるだけでなく、自分で作成した共有コードを Node.js モジュールとして定義することもできます。モジュールの作成方法の詳細については、Node.js API リファレンス ドキュメントの [Modules (モジュール)] を参照してください。
 
 Node.js モジュールをモバイル サービスに追加するための推奨される方法では、リファレンスをサービスの package.json ファイルに追加します。次に、package.json ファイルを更新して、[node-uuid] Node.js モジュールを Mobile Services に追加します。更新が Azure にプッシュされると、モジュール サービスが再起動され、モジュールがインストールされます。次に、このモジュールを使用して、挿入された項目の **uuid** プロパティに対応する新しい GUID 値を生成します。
 
-2. ローカル Git リポジトリの `.\service` フォルダーに移動し、テキスト エディターで package.json ファイルを開きます。
+2. ローカル Git リポジトリの `.\service` フォルダーに移動し、テキスト エディターで package.json ファイルを開いてから、次のフィールドを**依存関係**オブジェクトに追加します。
 
-3. 次を見つけます。
+		"node-uuid": "~1.4.3"
 
-		npm install node-uuid
-
-	NPM は現在の場所で `node_modules` ディレクトリを作成し、`\node-uuid` サブディレクトリで [node-uuid] モジュールをインストールします。
-
-	> [AZURE.NOTE]ディレクトリ階層の中に `node_modules` ディレクトリが既に存在している場合、リポジトリに新しい `node_modules` が作成されるのではなく、その既存のディレクトリの中に `\node-uuid` サブディレクトリが作成されます。この場合、既存の `node_modules` ディレクトリを削除してください。
+	>[AZURE.NOTE]このように package.json ファイルが更新されると、コミットをプッシュしたときにモバイル サービスが再起動します。
 
 4. .\\service\\table サブフォルダーに移動し、todoitem.insert.js ファイルを開いて、次のように変更します。
 
@@ -149,15 +132,15 @@ Node.js モジュールをモバイル サービスに追加するための推�
 
 このチュートリアルでは、スクリプトをソース管理に保存する方法について説明しました。サーバー スクリプトとカスタム API の操作の詳細については、以下を参照してください。
 
-+ [モバイル サービスのサーバー スクリプトの操作] <br/>サーバー スクリプト、ジョブ スケジューラ、およびカスタム API の操作方法について説明します。
++ [Mobile Services のサーバー スクリプトの操作] <br/>サーバー スクリプト、ジョブ スケジューラ、およびカスタム API の操作方法について説明します。
 
 + [クライアントからのカスタム API 呼び出し] <br/>クライアントから呼び出すことのできる、カスタム API を作成する方法を説明します。
 
 <!-- Anchors. -->
-[モバイル サービスでソース管理を有効にする]: #enable-source-control
-[Git をインストールし、ローカル リポジトリを作成する]: #clone-repo
-[更新されたスクリプト ファイルをモバイル サービスに展開する]: #deploy-scripts
-[サーバー スクリプトで共有コードと Node.js モジュールを活用する]: #use-npm
+[Enable source control in your mobile service]: #enable-source-control
+[Install Git and create the local repository]: #clone-repo
+[Deploy updated script files to your mobile service]: #deploy-scripts
+[Leverage shared code and Node.js modules in your server scripts]: #use-npm
 
 <!-- Images. -->
 [4]: ./media/mobile-services-store-scripts-source-control/mobile-source-local-repo.png
@@ -169,12 +152,12 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [ソース管理]: http://msdn.microsoft.com/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [Mobile Services の使用]: mobile-services-ios-get-started.md
-[既存のアプリにモバイル サービスを追加する]: mobile-services-ios-get-started-data.md
-[モバイル サービスのサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[既存のアプリに Mobile Services を追加する]: mobile-services-ios-get-started-data.md
+[Mobile Services のサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 [クライアントからのカスタム API 呼び出し]: mobile-services-ios-call-custom-api.md
-[Node.js API Documentation: Modules]: http://nodejs.org/api/modules.html
+[Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

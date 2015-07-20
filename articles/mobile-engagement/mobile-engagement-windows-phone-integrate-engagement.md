@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Windows Phone Silverlight エンゲージメント SDK 統合" 
-	description="Windows Phone Silverlight アプリと Azure モバイル エンゲージメントを統合する方法" 					
+	pageTitle="Windows Phone Silverlight Engagement SDK 統合" 
+	description="Windows Phone Silverlight アプリと Azure Mobile Engagement を統合する方法" 					
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="piyushjo" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="07/07/2015" 
 	ms.author="piyushjo" />
 
-#Windows Phone Silverlight エンゲージメント SDK 統合
+#Windows Phone Silverlight Engagement SDK 統合
 
 > [AZURE.SELECTOR] 
 - [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
@@ -24,9 +24,9 @@
 - [iOS](mobile-engagement-ios-integrate-engagement.md) 
 - [Android](mobile-engagement-android-integrate-engagement.md) 
 
-ここでは、Windows Phone Silverlight アプリケーションで Azure モバイル エンゲージメントの分析やモニタリング機能を有効にする簡単な方法について説明します。
+ここでは、Windows Phone Silverlight アプリケーションで Azure Mobile Engagement の分析やモニタリング機能を有効にする簡単な方法について説明します。
 
-次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報を計算するのに必要なログのレポートを有効にするためのものです。イベント、エラー、ジョブの統計はアプリケーションに依存するため、それらのログ レポートは、Engagement API を使用して手動で行う必要があります (後述の「[How to use the advanced Mobile Engagement tagging API in your Windows Phone Silverlight app (Windows Phone Silverlight で高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-phone-use-engagement-api.md)」をご覧ください)。
+次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報を計算するのに必要なログのレポートを有効にするためのものです。イベント、エラー、ジョブの統計はアプリケーションに依存するため、それらのログ レポートは、Engagement API を使用して手動で行う必要があります (後述の[Windows Phone Silverlight で Engagement API を使用する方法](mobile-engagement-windows-phone-use-engagement-api.md)をご覧ください)。
 
 ##サポートされているバージョン
 
@@ -35,9 +35,9 @@ Mobile Engagement SDK for Windows Silverlight は次を対象としたアプリ�
 -   Windows Phone 8.0
 -   Windows Phone 8.1 Silverlight
 
-> [AZURE.NOTE]Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、「[Windows Universal の統合手順](mobile-engagement-windows-store-integrate-engagement.md)」を参照してください。
+> [AZURE.NOTE]Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、[Windows Universal の統合手順](mobile-engagement-windows-store-integrate-engagement.md)を参照してください。
 
-##モバイル エンゲージメント Silverlight SDK をインストールする
+##Mobile Engagement Silverlight SDK をインストールする
 
 Mobile Engagement SDK for Windows Silverlight は「*MicrosoftAzure.MobileEngagement*」という名称の Nuget パッケージとして利用できます。これは Visual Studio Nuget Package Manager からインストールできます。
 
@@ -50,9 +50,9 @@ Engagement SDK が正常に動作するには、Windows Phone Silverlight SDK �
 -   `ID_CAP_NETWORKING`
 -   `ID_CAP_IDENTITY_DEVICE`
 
-##エンゲージメント SDK を初期化する
+##Engagement SDK を初期化する
 
-### エンゲージメントの構成
+### Engagement の構成
 
 Engagement の構成は、プロジェクトの `Resources\EngagementConfiguration.xml` ファイルで集中管理されます。
 
@@ -60,7 +60,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `<connectionString>` タグと `<\connectionString>` タグの間のアプリケーション接続文字列。
 
-代わりに指定を実行時に行う場合は、エンゲージメント エージェントを初期化する前に、次のメソッドを呼び出すことができます。
+代わりに指定を実行時に行う場合は、Engagement エージェントを初期化する前に、次のメソッドを呼び出すことができます。
 
 	/* Engagement configuration. */
 	EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -71,9 +71,9 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 アプリケーションの接続文字列が Azure 管理ポータルに表示されます。
 
-### エンゲージメントの初期化
+### Engagement の初期化
 
-新しいプロジェクトを作成すると、`App.xaml.cs` ファイルが生成されます。このクラスは、`Application` から継承し、多くの重要なメソッドが含まれています。また、エンゲージメント SDK を初期化するためにも使用されます。
+新しいプロジェクトを作成すると、`App.xaml.cs` ファイルが生成されます。このクラスは、`Application` から継承し、多くの重要なメソッドが含まれています。また、Engagement SDK を初期化するためにも使用されます。
 
 `App.xaml.cs` を変更します。
 
@@ -95,13 +95,13 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		   EngagementAgent.Instance.OnActivated(e);
 		}
 
-> [AZURE.WARNING]エンゲージメントの初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。ただし、`EngagementAgent.Instance.Init` メソッドは UI スレッドではなく専用スレッドで実行する点にご注意ください。
+> [AZURE.WARNING]Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。ただし、`EngagementAgent.Instance.Init` メソッドは UI スレッドではなく専用スレッドで実行する点にご注意ください。
 
 ##基本的なレポート
 
 ### 推奨される方法: `PhoneApplicationPage` クラスをオーバーロードします
 
-ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関する統計情報を計算するために、エンゲージメントが必要とするすべてのログのレポートを有効にするには、単純にすべての `PhoneApplicationPage` サブクラスが `EngagementPage` クラスから継承されるようにします。
+ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関する統計情報を計算するために、Engagement が必要とするすべてのログのレポートを有効にするには、単純にすべての `PhoneApplicationPage` サブクラスが `EngagementPage` クラスから継承されるようにします。
 
 次に、この操作をアプリケーションのページに対して実行する例を示します。同じことを、アプリケーションのすべてのページに対して実行できます。
 
@@ -115,7 +115,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `PhoneApplicationPage` を `EngagementPage` に置き換えます。
 
-**エンゲージメントを使用しない場合:**
+**Engagement を使用しない場合:**
 
 		namespace Example
 		{
@@ -125,7 +125,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		  }
 		}
 
-**エンゲージメントを使用する場合:**
+**Engagement を使用する場合:**
 
 		using Microsoft.Azure.Engagement;
 		
@@ -149,13 +149,13 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `phone:PhoneApplicationPage` を `engagement:EngagementPage` に置き換えます。
 
-**エンゲージメントを使用しない場合:**
+**Engagement を使用しない場合:**
 
 		<phone:PhoneApplicationPage>
 		    <!-- layout -->
 		</phone:PhoneApplicationPage>
 
-**エンゲージメントを使用する場合:**
+**Engagement を使用する場合:**
 
 		<engagement:EngagementPage 
 		    xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP">
@@ -165,7 +165,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 #### 既定の動作をオーバーライドします。
 
-既定では、ページのクラス名は、何も付加しないアクティビティ名として報告されます。クラスが「Page」サフィックスを使用している場合、エンゲージメントはそれも削除します。
+既定では、ページのクラス名は、何も付加しないアクティビティ名として報告されます。クラスが「Page」サフィックスを使用している場合、Engagement はそれも削除します。
 
 既定の動作の名前をオーバーライドする場合は、次をコードに追加します。
 
@@ -201,19 +201,19 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 > [AZURE.IMPORTANT]セッションは正常に終了してください。
 >
-> この SDK は、アプリケーションが閉じられると、`EndActivity` メソッドを自動的に呼び出します。そのため、ユーザーのアクティビティが変化するごとに `StartActivity` メソッドを呼び出し、`EndActivity` メソッドは**決して**呼び出さないようにすることを**強く**お勧めします。このメソッドを呼び出すと現在のセッションを強制的に終了します。
+> この SDK は、アプリケーションが閉じられると、`EndActivity` メソッドを自動的に呼び出します。そのため、ユーザーのアクティビティが変化するごとに `StartActivity` メソッドを呼び出し、`EndActivity` メソッドは**決して**呼び出さないことを**強く**お勧めします。このメソッドは、現在のユーザーがアプリケーションを終了したと Engagement サーバーに通知するため、すべてのアプリケーション ログが影響を受けるからです。
 
 ##詳細な報告
 
-オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。エンゲージメント API により、エンゲージメントのすべての高度な機能を使用できます。
+オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。Engagement API により、Engagement のすべての高度な機能を使用できます。
 
-詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Phone Silverlight app (Windows Phone Silverlight で高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-phone-use-engagement-api/)」をご覧ください
+詳細については、[Windows Phone Silverlight で高度な Mobile Engagement タグ付け API を使用する方法](../mobile-engagement-windows-phone-use-engagement-api/)をご覧ください。
 
 ##詳細な構成
 
 ### 自動クラッシュ レポートを無効にする
 
-エンゲージメントの自動クラッシュ レポート機能を無効にできます。その場合、未処理の例外が発生しても、エンゲージメントは何も行いません。
+Engagement の自動クラッシュ レポート機能を無効にできます。その場合、未処理の例外が発生しても、Engagement は何も行いません。
 
 > [AZURE.WARNING]この機能を無効にする場合は、アプリで未処理のクラッシュが発生した場合に Engagement からクラッシュを送信せず、**さらに**セッションとジョブも閉じられませんのでご注意ください。
 
@@ -234,7 +234,7 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 
 ### バースト モード
 
-既定では、エンゲージメント サービスはログをリアルタイムで報告します。アプリケーションがログを非常に頻繁に報告する場合、ログをバッファーに格納して、それらすべてを定期的に一度に報告する方が適切です (これを「バースト モード」と呼びます)。
+既定では、Engagement サービスはログをリアルタイムで報告します。アプリケーションがログを非常に頻繁に報告する場合、ログをバッファーに格納して、それらすべてを定期的に一度に報告する方が適切です (これを「バースト モード」と呼びます)。
 
 そのためには、次のメソッドを呼び出します。
 
@@ -242,7 +242,9 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 
 引数の値は**ミリ秒**単位です。リアルタイムのログ報告を再度有効にする場合は常に、パラメーターを指定しないか、値 0 を指定して、このメソッドを呼び出します。
 
-バースト モードではわずかにバッテリーの寿命が延びますが、エンゲージメントの監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。
+バースト モードではわずかにバッテリーの寿命が延びますが、Engagement の監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。保存できるログは 300 項目に制限されていることに気を付けてください。送信時間が長すぎる場合は、ログがいくつか失われる可能性があります。
 
 > [AZURE.WARNING]バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=July15_HO2-->

@@ -31,4 +31,4 @@
     data:    1    20        pinkylinux-f8ef0006ab182209.vhd
     info:    vm disk list command OK
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

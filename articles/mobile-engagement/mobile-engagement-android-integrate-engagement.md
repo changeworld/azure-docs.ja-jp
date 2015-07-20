@@ -32,7 +32,7 @@
 
 ##Android プロジェクトに Engagement SDK とサービスを埋め込む
 
-`mobile-engagement-VERSION.jar` を取得し、Android プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
+Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)からダウンロードします。`mobile-engagement-VERSION.jar` を選択して、Andorid プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
 
 > [AZURE.IMPORTANT]アプリケーション パッケージを ProGuard でビルドする場合は、いくつかのクラスを保持する必要があります。次の構成スニペットを使うことができます。
 >
@@ -165,7 +165,7 @@
 
 ##テスト
 
-「Android での Engagement の統合をテストする方法」を読んで、統合を検証してください。
+エミュレーターまたはデバイスでモバイル アプリを実行し、このアプリによって [監視] タブにセッションが登録されることを確認して、統合を検証してください。
 
 この後のセクションはオプションです。
 
@@ -309,5 +309,6 @@ Engagement では、この設定を管理するために設定ファイル内で
 
 <!-- URLs. -->
 [デバイス API]: http://go.microsoft.com/?linkid=9876094
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

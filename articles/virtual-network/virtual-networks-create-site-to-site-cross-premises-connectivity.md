@@ -178,7 +178,7 @@ Azure の仮想ネットワークを作成した後、サイト間 VPN を作成
 
 7.	VPN デバイス構成スクリプト テンプレートをダウンロードするには、ダッシュボードで **[VPN デバイス スクリプトのダウンロード]** をクリックします。
 
-8.	**[VPN デバイス構成スクリプトのダウンロード]** ダイアログ ボックスで、会社の VPN デバイスのベンダー、プラットフォーム、オペレーティング システムを選択します。チェックマークをクリックして、ファイルを保存します。 
+8.	**[VPN デバイス構成スクリプトのダウンロード]** ダイアログ ボックスで、会社の VPN デバイスのベンダー、プラットフォーム、オペレーティング システムを選択します。チェックマークをクリックして、ファイルを保存します。
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_11_DownloadVPNDeviceScript.png)
 
@@ -215,30 +215,30 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 3.	次のいずれかのコマンドを実行して接続をテストします。
 
 	<table border="1">
-	<tr>
-	<th>-</th>
-	<th>Cisco ASA</th>
-	<th>Cisco ISR/ASR</th>
-	<th>Juniper SSG/ISG</th>
-	<th>Juniper SRX/J</th>
-	</tr>
+<tr>
+<th>-</th>
+<th>Cisco ASA</th>
+<th>Cisco ISR/ASR</th>
+<th>Juniper SSG/ISG</th>
+<th>Juniper SRX/J</th>
+</tr>
 
-	<tr>
-	<td><b>メイン モード SA の確認</b></td>
-	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
-	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
-	<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
-	<td><FONT FACE="courier" SIZE="-1">show security ike security-association</FONT></td>
-	</tr>
+<tr>
+<td><b>メイン モード SA の確認</b></td>
+<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
+<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
+<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
+<td><FONT FACE="courier" SIZE="-1">show security ike security-association</FONT></td>
+</tr>
 
-	<tr>
-	<td><b>クイック モード SA の確認</b></td>
-	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
-	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
-	<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
-	<td><FONT FACE="courier" SIZE="-1">show security ipsec security-association</FONT></td>
-	</tr>
-	</table>
+<tr>
+<td><b>クイック モード SA の確認</b></td>
+<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
+<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
+<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
+<td><FONT FACE="courier" SIZE="-1">show security ipsec security-association</FONT></td>
+</tr>
+</table>
 
 
 ##  次のステップ
@@ -271,4 +271,4 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

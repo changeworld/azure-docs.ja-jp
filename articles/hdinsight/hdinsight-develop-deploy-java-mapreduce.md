@@ -1,29 +1,32 @@
-<properties 
-	pageTitle="Hadoop 用 Java MapReduce プログラムの開発 | Microsoft Azure" 
-	description="HDInsight Emulator で Java MapReduce プログラムを開発する方法、それらのプログラムを HDInsight にデプロイする方法について説明します。" 
-	services="hdinsight" 
-	editor="cgronlun" 
-	manager="paulettm" 
-	authors="nitinme" 
+<properties
+	pageTitle="Hadoop 用 Java MapReduce プログラムの開発 | Microsoft Azure"
+	description="HDInsight Emulator で Java MapReduce プログラムを開発する方法、それらのプログラムを HDInsight にデプロイする方法について説明します。"
+	services="hdinsight"
+	editor="cgronlun"
+	manager="paulettm"
+	authors="nitinme"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="04/01/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="04/01/2015"
 	ms.author="nitinme"/>
 
 # HDInsight での Hadoop 用 Java MapReduce プログラムの開発
-このチュートリアルでは、Apache Maven を使って Java でワード カウント Hadoop MapReduce ジョブを開発する場合の全工程にわたるシナリオについて説明します。さらに、アプリケーションを HDInsight Emulator for Azure でテストした後で Azure HDInsight クラスターにデプロイして実行する方法についても説明します。
+
+[AZURE.INCLUDE [pig セレクター](../../includes/hdinsight-maven-mapreduce-selector.md)]
+
+このチュートリアルでは、Apache Maven を使って Java でワード カウント Hadoop MapReduce ジョブを開発する場合の全工程にわたるシナリオについて説明します。さらに、アプリケーションを HDInsight Emulator for Azure でテストした後で Windows ベースの HDInsight クラスターにデプロイして実行する方法についても説明します。
 
 ##<a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
-- HDInsight Emulator のインストール手順については、「[HDInsight Emulator の概要][hdinsight-emulator]」を参照してください。必要なサービスがすべて実行されていることを確認します。HDInsight Emulator をインストールしているコンピューターで、デスクトップのショートカットから Hadoop コマンド ラインを起動し、**C:\\hdp** に移動して、コマンド **start_local_hdp_services.cmd** を実行します。	
+- HDInsight Emulator のインストール手順については、「[HDInsight Emulator の概要][hdinsight-emulator]」を参照してください。必要なサービスがすべて実行されていることを確認します。HDInsight Emulator をインストールしているコンピューターで、デスクトップのショートカットから Hadoop コマンド ラインを起動し、**C:\\hdp** に移動して、コマンド **start_local_hdp_services.cmd** を実行します。
 - エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 - エミュレーター コンピューターへの Java プラットフォーム JDK 7 以降のインストール。これはエミュレーター コンピューターで既に利用可能です。
 - [Apache Maven](http://maven.apache.org/) のインストールおよび構成。
@@ -41,8 +44,7 @@
 
 **Maven を使ってプロジェクトを作成するには**
 
-1. **C:\Tutorials\WordCountJava\** という名前のディレクトリを作成します。
-2. 開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
+1. **C:\\Tutorials\\WordCountJava という名前のディレクトリを作成します。2. 開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
 3. Maven でインストールされた __mvn__ コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
 		mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -68,10 +70,10 @@
       	  <artifactId>hadoop-mapreduce-client-common</artifactId>
       	  <version>2.5.1</version>
     	</dependency>
-    	<dependency>                                                                                     
-      	  <groupId>org.apache.hadoop</groupId>                                                                                                       
-      	  <artifactId>hadoop-common</artifactId>                                                                                                         
-      	  <version>2.5.1</version>                                                                                            
+    	<dependency>
+      	  <groupId>org.apache.hadoop</groupId>
+      	  <artifactId>hadoop-common</artifactId>
+      	  <version>2.5.1</version>
     	</dependency>
 
 	このコードは、プロジェクトで特定のバージョン (<version> 内に記載) のライブラリ ( <artifactId> 内に記載) を必要とすることを Maven に通知しています。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)を使用して、その他の情報を表示できます。
@@ -98,7 +100,7 @@
           			</goals>
         	    </execution>
       		  </executions>
-      	    </plugin>       
+      	    </plugin>
   		  </plugins>
 	    </build>
 
@@ -115,7 +117,7 @@
 2. 次のプログラムをコピーして、メモ帳に貼り付けます。
 
 		package org.apache.hadoop.examples;
-		
+
 		import java.io.IOException;
 		import java.util.StringTokenizer;
 		import org.apache.hadoop.conf.Configuration;
@@ -130,13 +132,13 @@
 		import org.apache.hadoop.util.GenericOptionsParser;
 
 		public class WordCount {
-		
-		  public static class TokenizerMapper 
+
+		  public static class TokenizerMapper
 		       extends Mapper<Object, Text, Text, IntWritable>{
-		    
+
 		    private final static IntWritable one = new IntWritable(1);
 		    private Text word = new Text();
-		      
+
 		    public void map(Object key, Text value, Context context
 		                    ) throws IOException, InterruptedException {
 		      StringTokenizer itr = new StringTokenizer(value.toString());
@@ -146,12 +148,12 @@
 		      }
 		    }
 		  }
-		  
-		  public static class IntSumReducer 
+
+		  public static class IntSumReducer
 		       extends Reducer<Text,IntWritable,Text,IntWritable> {
 		    private IntWritable result = new IntWritable();
-		
-		    public void reduce(Text key, Iterable<IntWritable> values, 
+
+		    public void reduce(Text key, Iterable<IntWritable> values,
 		                       Context context
 		                       ) throws IOException, InterruptedException {
 		      int sum = 0;
@@ -162,7 +164,7 @@
 		      context.write(key, result);
 		    }
 		  }
-		
+
 		  public static void main(String[] args) throws Exception {
 		    Configuration conf = new Configuration();
 		    String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
@@ -184,7 +186,7 @@
 		}
 
 	パッケージ名は **org.apache.hadoop.examples** で、クラス名は **WordCount** です。これらの名前は MapReduce ジョブを送信するときに使用します。
-	
+
 3. ファイルを保存します。
 
 **アプリケーションをビルドおよびパッケージ化するには**
@@ -202,7 +204,7 @@
 	> [AZURE.NOTE]__wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
 
-##<a name="test"></a>エミュレーターでプログラムをテストする
+##</a><a name="test">エミュレーターでプログラムをテストする
 
 HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 
@@ -256,7 +258,7 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 
 クラスター上で MapReduce ジョブを正常に実行するために、hdfs という名前のユーザー グループを作成する必要があります。次に、このグループに対し、hadoop という名前のユーザーと、エミュレーターにログオンするときに使用するローカル ユーザーを追加します。管理者特権のコマンド プロンプトで、次のコマンドを使用します。
 
-		# Add a user group called hdfs		
+		# Add a user group called hdfs
 		net localgroup hdfs /add
 
 		# Adds a user called hadoop to the group
@@ -321,10 +323,10 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 		# Select an Azure subscription
 		Select-AzureSubscription $subscriptionName
-		
+
 		# Create a Storage account
 		New-AzureStorageAccount -StorageAccountName $storageAccountName_Data -location $location
-				
+
 		# Create a Blob storage container
 		$storageAccountKey = Get-AzureStorageKey $storageAccountName_Data | %{ $_.Primary }
 		$destContext = New-AzureStorageContext –StorageAccountName $storageAccountName_Data –StorageAccountKey $storageAccountKey  
@@ -356,7 +358,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		# Get a list of the .txt files
 		$filesAll = Get-ChildItem $localFolder
 		$filesTxt = $filesAll | where {$_.Extension -eq ".txt"}
-		
+
 4. 次のコマンドを実行して、ストレージ コンテキスト オブジェクトを作成します。
 
 		# Create a storage context object
@@ -366,14 +368,14 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 5. 次のコマンドを実行して、ファイルをコピーします。
 
-		# Copy the files from the local workstation to the Blob container        
+		# Copy the files from the local workstation to the Blob container
 		foreach ($file in $filesTxt){
-		 
+
 		    $fileName = "$localFolder\$file"
 		    $blobName = "$destFolder/$file"
-		
+
 		    write-host "Copying $fileName to $blobName"
-		
+
 		    Set-AzureStorageBlobContent -File $fileName -Container $containerName_Data -Blob $blobName -Context $destContext
 		}
 
@@ -425,9 +427,9 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 このセクションでは、次のタスクを実行する Azure PowerShell スクリプトを作成します。
 
 1. HDInsight クラスターをプロビジョニングする
-	
+
 	1. HDInsight クラスターの既定のファイル システムとして使用されるストレージ アカウントを作成する
-	2. BLOB ストレージ コンテナーを作成する 
+	2. BLOB ストレージ コンテナーを作成する
 	3. HDInsight クラスターの作成
 
 2. MapReduce ジョブを送信する
@@ -448,7 +450,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 1. メモ帳を開きます。
 2. 次のコードをコピーして貼り付けます。
-		
+
 		# The Storage account and the HDInsight cluster variables
 		$subscriptionName = "<AzureSubscriptionName>"
 		$stringPrefix = "<StringForPrefix>"
@@ -457,9 +459,9 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 		$storageAccountName_Data = "<TheDataStorageAccountName>"
 		$containerName_Data = "<TheDataBlobStorageContainerName>"
-		
+
 		$clusterName = $stringPrefix + "hdicluster"
-		
+
 		$storageAccountName_Default = $stringPrefix + "hdistore"
 		$containerName_Default =  $stringPrefix + "hdicluster"
 
@@ -469,62 +471,62 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$mrInput = "wasb://$containerName_Data@$storageAccountName_Data.blob.core.windows.net/WordCount/Input/"
 		$mrOutput = "wasb://$containerName_Data@$storageAccountName_Data.blob.core.windows.net/WordCount/Output/"
 		$mrStatusOutput = "wasb://$containerName_Data@$storageAccountName_Data.blob.core.windows.net/WordCount/MRStatusOutput/"
-		
+
 		# Create a PSCredential object. The user name and password are hardcoded here. You can change them if you want.
 		$password = ConvertTo-SecureString "Pass@word1" -AsPlainText -Force
-		$creds = New-Object System.Management.Automation.PSCredential ("Admin", $password) 
-		
+		$creds = New-Object System.Management.Automation.PSCredential ("Admin", $password)
+
 		Select-AzureSubscription $subscriptionName
-		
+
 		#=============================
 		# Create a Storage account used as the default file system
 		Write-Host "Create a storage account" -ForegroundColor Green
 		New-AzureStorageAccount -StorageAccountName $storageAccountName_Default -location $location
-		
+
 		#=============================
 		# Create a Blob storage container used as the default file system
 		Write-Host "Create a Blob storage container" -ForegroundColor Green
 		$storageAccountKey_Default = Get-AzureStorageKey $storageAccountName_Default | %{ $_.Primary }
 		$destContext = New-AzureStorageContext –StorageAccountName $storageAccountName_Default –StorageAccountKey $storageAccountKey_Default
-		
+
 		New-AzureStorageContainer -Name $containerName_Default -Context $destContext
-		
+
 		#=============================
 		# Create an HDInsight cluster
 		Write-Host "Create an HDInsight cluster" -ForegroundColor Green
 		$storageAccountKey_Data = Get-AzureStorageKey $storageAccountName_Data | %{ $_.Primary }
-		
+
 		$config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes $clusterNodes |
 		    Set-AzureHDInsightDefaultStorage -StorageAccountName "$storageAccountName_Default.blob.core.windows.net" -StorageAccountKey $storageAccountKey_Default -StorageContainerName $containerName_Default |
 		    Add-AzureHDInsightStorage -StorageAccountName "$storageAccountName_Data.blob.core.windows.net" -StorageAccountKey $storageAccountKey_Data
-		
+
 		New-AzureHDInsightCluster -Name $clusterName -Location $location -Credential $creds -Config $config
-		
+
 		#=============================
 		# Create a MapReduce job definition
 		Write-Host "Create a MapReduce job definition" -ForegroundColor Green
 		$mrJobDef = New-AzureHDInsightMapReduceJobDefinition -JobName mrWordCountJob  -JarFile $jarFile -ClassName $className -Arguments $mrInput, $mrOutput -StatusFolder /WordCountStatus
-		
+
 		#=============================
 		# Run the MapReduce job
 		Write-Host "Run the MapReduce job" -ForegroundColor Green
-		$mrJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $mrJobDef 
-		Wait-AzureHDInsightJob -Job $mrJob -WaitTimeoutInSeconds 3600 
-		
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $mrJob.JobId -StandardError 
+		$mrJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $mrJobDef
+		Wait-AzureHDInsightJob -Job $mrJob -WaitTimeoutInSeconds 3600
+
+		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $mrJob.JobId -StandardError
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $mrJob.JobId -StandardOutput
-				
+
 		#=============================
 		# Delete the HDInsight cluster
 		Write-Host "Delete the HDInsight cluster" -ForegroundColor Green
 		Remove-AzureHDInsightCluster -Name $clusterName  
-		
+
 		# Delete the default file system Storage account
 		Write-Host "Delete the storage account" -ForegroundColor Green
 		Remove-AzureStorageAccount -StorageAccountName $storageAccountName_Default
 
 3. スクリプトの最初の 6 つの変数を設定します。**$stringPrefix** 変数は、指定した文字列をプレフィックスとして HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に付けるために使用されます。これらの名前の長さは 3 ～ 24 文字である必要があるため、指定する文字列とこのスクリプトで使用する名前の合計の長さが名前の文字制限を超えないように注意してください。**$stringPrefix** には、すべて小文字を使用する必要があります。
- 
+
 	**$storageAccountName_Data** 変数と **$containerName_Data** 変数は、データ ファイルとアプリケーションの格納に使用するストレージ アカウントとコンテナーです。**$location** 変数は、データ ストレージ アカウントの場所と一致する必要があります。
 
 4. 残りの変数を確認します。
@@ -551,9 +553,9 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$storageAccountName_Data = "<TheDataStorageAccountName>"
 		$containerName_Data = "<TheDataBlobStorageContainerName>"
 		$blobName = "WordCount/Output/part-r-00000"
-	
+
 3. 次のコマンドを実行して、Azure Storage のコンテキスト オブジェクトを作成します。
-		
+
 		Select-AzureSubscription $subscriptionName
 		$storageAccountKey = Get-AzureStorageKey $storageAccountName_Data | %{ $_.Primary }
 		$storageContext = New-AzureStorageContext –StorageAccountName $storageAccountName_Data –StorageAccountKey $storageAccountKey  
@@ -607,5 +609,4 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

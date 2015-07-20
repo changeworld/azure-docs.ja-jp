@@ -157,7 +157,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure 管理ポータルの [クラウド サービス] ボックスの一覧または、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure の管理ポータルの [クラウド サービス] ボックスの一覧または、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
 
 オプション 2. 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -174,7 +174,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure の Automation Runbook として保存する。
+- Microsoft Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
@@ -270,4 +270,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

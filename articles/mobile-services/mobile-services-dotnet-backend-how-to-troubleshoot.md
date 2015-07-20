@@ -68,7 +68,7 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
     ![Configure symbol loading][SymbolLoading]
 
-3. 左側の **[シンボル]** ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して (SymbolSource)[http://symbolsource.org] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
+3. 左側の [**シンボル**] ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して (SymbolSource)[http://symbolsource.org] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
  
     ![Configure symbol server][SymbolServer]
 
@@ -133,9 +133,9 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 <a name="EFMigrations"></a>
 ## Entity Framework の移行に関するトラブルシューティング
 
-SQL データベースと共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 (*スキーマ*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/data/jj591621) とも呼ばれます。
+SQL Database と共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 (*スキーマ*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/data/jj591621) とも呼ばれます。
 
-移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、「[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)」を参照してください。
+移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)を参照してください。
 
 <!-- IMAGES -->
 
@@ -153,4 +153,5 @@ SQL データベースと共に Mobile Services .NET バックエンドを使用
 [LogsServerExplorer]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/12.png
 [LogsPortal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
 [HelpConflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
-<!--HONumber=54--> 
+
+<!---HONumber=July15_HO2-->

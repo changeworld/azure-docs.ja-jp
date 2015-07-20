@@ -3,7 +3,7 @@
 	description="Visual Studio のクラウド サービス プロジェクトで Azure ストレージを作成するときに起きることについて説明します。" 
 	services="storage" 
 	documentationCenter="" 
-	authors="kempb" 
+	authors="patshea123" 
 	manager="douge" 
 	editor="tglee"/>
 
@@ -13,19 +13,20 @@
 	ms.tgt_pltfrm="vs-what-happened" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2015" 
-	ms.author="kempb"/>
+	ms.date="04/20/2015" 
+	ms.author="patshea123"/>
+
+# プロジェクトの変更点
 
 > [AZURE.SELECTOR]
-> - [Getting Started (概要)](vs-storage-cloud-services-getting-started-blobs.md)
-> - [変更内容](vs-storage-cloud-services-what-happened.md)
+> - [Getting Started](vs-storage-cloud-services-getting-started-blobs.md)
+> - [What Happened](vs-storage-cloud-services-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
 
 ###### リファレンスの追加
 
-Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。  
-このパッケージは、次の .NET 参照を追加します。
+Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。このパッケージは、次の .NET 参照を追加します。
 
 - `Microsoft.Data.Edm`
 - `Microsoft.Data.OData`
@@ -43,6 +44,6 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 - `ServiceConfiguration.Cloud.cscfg`
 - `ServiceConfiguration.Local.cscfg`
 
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=July15_HO2-->

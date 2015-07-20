@@ -4,4 +4,4 @@
 
    ![](./media/mobile-services-dotnet-adal-install-nuget/mobile-services-adal-nuget-package.png)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

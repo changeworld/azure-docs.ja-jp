@@ -13,11 +13,8 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/18/2015"
+	ms.date="07/01/2015"
 	ms.author="krisragh"/>
-
-
-
 
 # Azure Mobile Services 向け iOS クライアント ライブラリの使用方法
 
@@ -330,4 +327,4 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

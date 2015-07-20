@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="04/23/2015" 
+	ms.date="07/06/2015" 
 	ms.author="larryfr"/>
 
 #HDInsight における Python と Hive および Pig の使用
@@ -326,9 +326,8 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

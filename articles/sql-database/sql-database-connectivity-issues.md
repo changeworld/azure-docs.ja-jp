@@ -70,4 +70,6 @@ SQL Server Management Studio か SQLCMD を使用します。EXE をデータベ
 
 - データベースの接続イベントのメトリックは、クエリを実行してアクセスできる、[**sys.database_connection_stats (Azure SQL Database)**](https://msdn.microsoft.com/library/dn269986.aspx) ビューを照会して確認できます。
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

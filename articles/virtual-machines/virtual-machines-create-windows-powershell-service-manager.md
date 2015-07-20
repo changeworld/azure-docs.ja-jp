@@ -153,7 +153,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 	$svcName="<cloud service name>"
 	$vmName="<virtual machine name>"
 	$localPath="<drive and folder location to store the downloaded RDP file, example: c:\temp >"
-	$localFile=$localPath + "\" + $vmname + ".rdp"
+	$localFile=$localPath + "" + $vmname + ".rdp"
 	Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
 
 >[AZURE.NOTE]仮想マシンとクラウド サービス名は、**Get-azurevm** コマンドの表示から取得できます。
@@ -203,4 +203,4 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

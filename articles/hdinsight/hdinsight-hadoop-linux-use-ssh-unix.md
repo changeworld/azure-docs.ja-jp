@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/20/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)
@@ -61,12 +61,12 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 	次の情報の入力を求められます。
 
-	* ファイルの場所 - 既定値は ~/.ssh/id_rsa です。
+	* ファイルの場所 - 既定値は ~/.ssh/id\\_rsa です。
 	* パスフレーズ - 1 回入力した後に再入力を求められます。
 
 		> [AZURE.NOTE]キーにセキュリティで保護されたパスフレーズを使用することを強くお勧めします。ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
-	コマンドが完了すると、秘密キー (**id_rsa** など) と公開キー (**id_rsa.pub** など) の 2 つの新しいファイルが作成されます。
+	コマンドが完了すると、秘密キー (**id\\_rsa** など) と公開キー (**id\\_rsa.pub** など) の 2 つの新しいファイルが作成されます。
 
 ##Linux ベースの HDInsight クラスターの作成
 
@@ -76,7 +76,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 * **Mac、Linux、Windows 用の Azure CLI** - コマンドラインでコマンドを使用してクラスターを作成します。
 
-これらの方法では、それぞれパスワードまたは公開キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、「<a href="/documentation/articles/hdinsight-hadoop-provision-linux-clusters/" target="_blank">HDInsight での Linux クラスターのプロビジョニング</a>」に関するページをご覧ください。
+これらの方法では、それぞれパスワードまたは公開キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、[HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 ###Azure ポータル
 
@@ -94,7 +94,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 [Mac、Linux、Windows の Azure CLI](../xplat.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
-このコマンドの使用方法の詳細については、「<a href="../hdinsight-hadoop-provision-linux-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。
+このコマンドの使用方法の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 ##Linux ベースの HDInsight クラスターへの接続
 
@@ -139,7 +139,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    何も返されない場合は、**ssh-agent** が実行していないことを示します。**ssh-agent** のインストールと構成に関する具体的な手順については、オペレーティング システムのマニュアルまたは 「<a href="http://mah.everybody.org/docs/ssh" target="_blank">Using ssh-agent with ssh (ssh での ssh-agent の使用)</a>」をご覧ください。
+    何も返されない場合は、**ssh-agent** が実行していないことを示します。**ssh-agent** のインストールと構成に関する具体的な手順については、オペレーティング システムのマニュアルまたは「[Using ssh-agent with ssh (ssh での ssh-agent の使用)](http://mah.everybody.org/docs/ssh)」を参照してください。
 
 4. **ssh-agent** が実行していることを確認したら、次のコマンドを使用して SSH 秘密キーをエージェントに追加します。
 
@@ -241,11 +241,11 @@ SSH トンネルを作成し、ブラウザーでこれを使用してクラス�
 
 	> [AZURE.NOTE]**[リモート DNS]** を選択するとドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
 
-	Firefox でプロキシ設定を有効または無効にした状態で <a href="http://www.whatismyip.com/" target="_blank">http://www.whatismyip.com/</a> などのサイトにアクセスすると、トラフィックがトンネル経由でルーティングされていることを検証できます。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
+	Firefox でプロキシ設定を有効または無効にして、[http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トラフィックがトンネルを経由しているかどうか確認できます。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
 
 ###ブラウザー拡張
 
-ブラウザーをトンネル ワークを使用するように構成する場合、通常、一部のトラフィックをトンネルを経由で送信しないように設定する必要があることがあります。<a href="http://getfoxyproxy.org/" target="_blank">FoxyProxy</a> などのブラウザー拡張機能では、URL 要求に対するパターン マッチングがサポートされるため (FoxyProxy Standard または Plus のみ)、特定の URL の要求のみがトンネル経由で送信されます。
+ブラウザーをトンネル ワークを使用するように構成する場合、通常、一部のトラフィックをトンネルを経由で送信しないように設定する必要があることがあります。[FoxyProxy](http://getfoxyproxy.org/) などのブラウザー拡張機能では、URL 要求に対するパターン マッチングがサポートされるため (FoxyProxy Standard または Plus のみ)、特定の URL の要求のみがトンネル経由で送信されます。
 
 FoxyProxy Standard をインストール済みの場合は、次の手順を使用して、HDInsight の トラフィックだけをトンネル経由で転送するように構成します。
 
@@ -294,6 +294,5 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

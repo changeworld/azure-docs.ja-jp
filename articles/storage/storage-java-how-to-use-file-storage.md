@@ -97,7 +97,7 @@ Azure ファイル ストレージ共有には、少なくとも、ファイル�
 共有のルート ディレクトリの参照が与えられたので、次のコードを利用してディレクトリにファイルをアップロードできます。
 
 	// Define the path to a local file.
-	final String filePath = "C:\temp\Readme.txt";
+	final String filePath = "C:\\temp\\Readme.txt";
 
 	CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
 	cloudFile.uploadFromFile(filePath);
@@ -221,4 +221,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

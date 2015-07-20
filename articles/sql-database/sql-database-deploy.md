@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="SQL データベースのデプロイ方法 - Azure" 
-	description="SQL Server データベースを Azure にデプロイする方法について説明します。データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。" 
+	pageTitle="SQL Azure に SQL Database をデプロイする方法" 
+	description="SQL Server 2016 Management Studio のウィザードを使用して、Azure SQL Databaseに SQL Server データベースを展開します。" 
 	services="sql-database" 
 	documentationCenter="" 
-	authors="jeffgoll" 
+	authors="sidneyh" 
 	manager="jeffreyg" 
 	editor=""/>
 
@@ -13,35 +13,38 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/25/2015" 
-	ms.author="jeffreyg"/>
+	ms.date="07/01/2015" 
+	ms.author="sidneyh"/>
 
 
+# SQL Server データベースを Azure SQL Database にデプロイする方法
 
+この記事では、**データベースの Azure SQL Database へのデプロイ ウィザード**を使用して、Azure SQL Database にサンプル データベースをアップロードします。このチュートリアル用に **SQL Server 2016 Management Studio (CTP 2.1)** をダウンロードする必要があります。
 
+推定完了時間: 15 分 (ダウンロード時間を含む)
 
+> [AZURE.NOTE]このチュートリアルでは、意図的に単純にしてある school サンプル データベースを使用しています。オブジェクトはすべて SQL データベースと互換性があり、移行のためにデータベースを変更または準備する必要はありません。より複雑な既存のデータベースを移行する場合、[SQL Database 移行ウィザード](http://sqlazuremw.codeplex.com/)を使用することを検討し、この「[概要](sql-database-cloud-migrate.md)」を参照してください。
 
-<h1><a id="howtodeploySQLdb"></a>データベースを Azure にデプロイする方法</h1>
+## 前提条件
 
-オンプレミスの SQL Server データベースを Azure に移動する方法はいくつかあります。このタスクでは、データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。
+**Microsoft Azure アカウント**。無料評価版については、[こちら](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-School サンプル データベースはシンブルで便利です。オブジェクトはすべて SQL データベースと互換性があり、移行のためにデータベースを変更または準備する必要がありません。新しい管理者として、まずシンプルなデータベースのデプロイを試して手順を学んだ後で、自分のデータベースを使用してください。 
+[**SQL Server Management Studio**](https://msdn.microsoft.com/library/mt238290.aspx) をダウンロードします。(このツールの詳細については、「[SQL Server Management Studio - 2015 年 6 月のリリース ノート](https://msdn.microsoft.com/library/mt238486.aspx)」を参照してください。)。
 
-**注:** Azure に移行する内部設置型のデータベースを準備する方法については、SQL データベースの移行に関するガイドをご覧ください。また、Azure のトレーニング キットをダウンロードすることもできます。キットに含まれたラボで、内部設置型データベースの移行に関するその他の方法も紹介しています。
+Azure SQL Database 上の既存のサーバー。新しいデータベースを (新しいサーバー上に) 作成する方法の手順の詳細については、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。
 
+## 内部設置型サーバーに school データベースを作成する
 
-<h2><a id="schooldb"></a>方法:内部設置型サーバーに school データベースを作成する</h2>
+SQL Server Management Studio (SSMS) でこれらのスクリプトを実行して、school データベースの内部設置型バージョンを作成します。
 
-このデータベースを作成するスクリプトは、[SQL データベース管理の概要に関するページ][]にあります。このガイドでは、Management Studio でこれらのスクリプトを実行して、school データベースの内部設置型バージョンを作成します。
+1. SSMS で内部設置型のサーバーに接続します。**[データベース]** を右クリックし、**[新しいデータベース]** をクリックして、「*school*」と入力します。
 
-1. Management Studio で、オンプレミス サーバーに接続します。**[データベース]** を右クリックし、**[新しいデータベース]** をクリックして、「 *school*」と入力します。
+2. *school* を右クリックし、**[新しいクエリ]** をクリックします。
 
-2. [ *school*] を右クリックし、**[新しいクエリ]** をクリックします。 
-
-3. チュートリアルからスキーマ作成スクリプトをコピーして実行します。 
+3. このスクリプトをコピーし、実行します。
 
 <div style="width:auto; height:300px; overflow:auto"><pre>
-	-- Create the Department table.
+	-- テーブル クライアントを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 	   	WHERE object_id = OBJECT_ID(N'[dbo].[Department]') 
 	  	AND type in (N'U'))
@@ -60,7 +63,7 @@ School サンプル データベースはシンブルで便利です。オブジ
     END;
 	GO
 
-	-- Create the Person table.
+	-- Person テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[Person]') 
 		AND type in (N'U'))
@@ -79,7 +82,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	-- Create the OnsiteCourse table.
+	-- OnsiteCourse テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[OnsiteCourse]') 
 		AND type in (N'U'))
@@ -97,7 +100,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	-- Create the OnlineCourse table.
+	-- OnlineCourse テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[OnlineCourse]') 
 		AND type in (N'U'))
@@ -113,7 +116,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	--Create the StudentGrade table.
+	-- StudentGrade テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[StudentGrade]') 
 		AND type in (N'U'))
@@ -131,7 +134,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	-- Create the CourseInstructor table.
+	-- CourseInstructor テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[CourseInstructor]') 
 		AND type in (N'U'))
@@ -148,7 +151,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	-- Create the Course table.
+	-- Course テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[Course]') 
 		AND type in (N'U'))
@@ -166,7 +169,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	-- Create the OfficeAssignment table.
+	-- OfficeAssignment テーブルを作成します。
 	IF NOT EXISTS (SELECT * FROM sys.objects 
 		WHERE object_id = OBJECT_ID(N'[dbo].[OfficeAssignment]')
 		AND type in (N'U'))
@@ -183,7 +186,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	END;
 	GO
 
-	-- Define the relationship between OnsiteCourse and Course.
+	-- OnsiteCourse と Course の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
        WHERE object_id = OBJECT_ID(N'[dbo].[FK_OnsiteCourse_Course]')
        AND parent_object_id = OBJECT_ID(N'[dbo].[OnsiteCourse]'))
@@ -195,7 +198,7 @@ School サンプル データベースはシンブルで便利です。オブジ
        CONSTRAINT [FK_OnsiteCourse_Course];
 	GO
 
-	-- Define the relationship between OnlineCourse and Course.
+	-- OnlineCourse と Course の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
        WHERE object_id = OBJECT_ID(N'[dbo].[FK_OnlineCourse_Course]')
        AND parent_object_id = OBJECT_ID(N'[dbo].[OnlineCourse]'))
@@ -206,7 +209,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	ALTER TABLE [dbo].[OnlineCourse] CHECK 
        CONSTRAINT [FK_OnlineCourse_Course];
 	GO
-	-- Define the relationship between StudentGrade and Course.
+	-- StudentGrade と Course の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
        WHERE object_id = OBJECT_ID(N'[dbo].[FK_StudentGrade_Course]')
        AND parent_object_id = OBJECT_ID(N'[dbo].[StudentGrade]'))
@@ -218,7 +221,7 @@ School サンプル データベースはシンブルで便利です。オブジ
        CONSTRAINT [FK_StudentGrade_Course];
 	GO
 
-	--Define the relationship between StudentGrade and Student.
+	-- StudentGrade と Student の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
        WHERE object_id = OBJECT_ID(N'[dbo].[FK_StudentGrade_Student]')
        AND parent_object_id = OBJECT_ID(N'[dbo].[StudentGrade]'))	
@@ -230,7 +233,7 @@ School サンプル データベースはシンブルで便利です。オブジ
        CONSTRAINT [FK_StudentGrade_Student];
 	GO
 
-	-- Define the relationship between CourseInstructor and Course.
+	-- CourseInstructor と Course の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
   	 WHERE object_id = OBJECT_ID(N'[dbo].[FK_CourseInstructor_Course]')
   	 AND parent_object_id = OBJECT_ID(N'[dbo].[CourseInstructor]'))
@@ -242,7 +245,7 @@ School サンプル データベースはシンブルで便利です。オブジ
  	  CONSTRAINT [FK_CourseInstructor_Course];
 	GO
 
-	-- Define the relationship between CourseInstructor and Person.
+	-- CourseInstructor と Person の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
  	  WHERE object_id = OBJECT_ID(N'[dbo].[FK_CourseInstructor_Person]')
 	   AND parent_object_id = OBJECT_ID(N'[dbo].[CourseInstructor]'))
@@ -254,7 +257,7 @@ School サンプル データベースはシンブルで便利です。オブジ
   	 CONSTRAINT [FK_CourseInstructor_Person];
 	GO
 
-	-- Define the relationship between Course and Department.
+	-- Course と Department の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
        WHERE object_id = OBJECT_ID(N'[dbo].[FK_Course_Department]')
        AND parent_object_id = OBJECT_ID(N'[dbo].[Course]'))
@@ -265,7 +268,7 @@ School サンプル データベースはシンブルで便利です。オブジ
 	ALTER TABLE [dbo].[Course] CHECK CONSTRAINT [FK_Course_Department];
 	GO
 
-	--Define the relationship between OfficeAssignment and Person.
+	-- OfficeAssignment と Person の間のリレーションシップを定義します。
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys 
 	  WHERE object_id = OBJECT_ID(N'[dbo].[FK_OfficeAssignment_Person]')
  	  AND parent_object_id = OBJECT_ID(N'[dbo].[OfficeAssignment]'))
@@ -531,68 +534,63 @@ School サンプル データベースはシンブルで便利です。オブジ
 	VALUES (1061, 30, 4);
 	GO
 </pre></div>
+これで、Azure にエクスポートできる内部設置型データベースが準備できました。次は、ウィザードを実行して .bacpac ファイルを作成し、そのファイルを Azure に読み込み、SQL データベースにインポートします。
 
-   これで、Azure にエクスポートできる内部設置型データベースが準備できました。次は、ウィザードを実行して .bacpac ファイルを作成し、そのファイルを Azure に読み込み、SQL データベースにインポートします。
+	
+## Azure SQL へのデータベースのデプロイ 
+	
+1. Management Studio で作成した school データベースを右クリックして、**[タスク]** をポイントし、**[データベースの Microsoft Azure SQL データベースへのデプロイ]** をクリックします。
+2. **[デプロイの設定]** で、データベースの名前を入力します (*school*など)。
+5. **[接続]** をクリックします。接続の問題を解決するには、この[トラブルシューティング ツール](https://support2.microsoft.com/common/survey.aspx?scid=sw;en;3844&showpage=1)を試してください。
+6. **[サーバー名]** ボックスに、10 文字のサーバー名の後に** .database.windows.net **を付けて入力します。
+7. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
+8. SQL Database の論理サーバーのプロビジョニング時に作成した、管理者のログイン名とパスワードを入力します。
+9. **[オプション]** をクリックします。
+10. [接続プロパティ] の **[データベースへの接続]** で、「**master**」と入力します。
 
+	**注** Azure SQL Database サーバーにデータベースを作成する際には、必ず **master** データベースに接続する必要があります。 
+11. **[接続]** をクリックします。これで接続指定が完了し、ウィザードに戻ります。
+12. **[次へ]** をクリックし、**[完了]** をクリックしてウィザードを実行します。
 
-<h2><a id="deploydb"></a>方法:SQL データベースにデプロイする</h2>
+	
+## 方法: データベース デプロイを確認する
+	
+1. Management Studio の**オブジェクト エクスプローラー**で **[接続]** アイコンをクリックします。
+2. **サーバー**名ボックスに、後に **.database.windows.net** を付け、Azure SQL Server の名前を入力します。
+3. **[認証] **で、**[SQL Server 認証]** を選択します。
+4. 管理者ログイン名と、サーバーのプロビジョニング時に作成したパスワードを入力します。 
+5. **[オプション]** ボタンをクリックします。
+6. **[データベースに接続]** ドロップダウンで、**[サーバーの参照]** をクリックします。次のダイアログ ボックスで **[はい]** をクリックし、サーバーの参照を許可します。
+7. **school** データベースをクリックして選択し、**[OK]** をクリックします。 
+8. 次いで **[接続]** をクリックします。接続の問題を解決するには、この[トラブルシューティング ツール](https://support2.microsoft.com/common/survey.aspx?scid=sw;en;3844&showpage=1)を試してください。
+2. **データベース **フォルダーを展開します。一覧に **school** データベースが表示されます。
 
-1. Management Studio で、移行するデータベースがある内部設置型 SQL Server インスタンスに接続します。
-
-2. 作成した school データベースを右クリックして、**[タスク]** をポイントし、**[SQL Azure へのデータベースのデプロイ]** をクリックします。
-
-3. [デプロイの設定] で、 *school* のようなデータベースの名前を入力します。 
-
-4. **[接続]** をクリックします。
-
-5. [サーバー名] ボックスに、10 文字のサーバー名の後に .database.windows.net を付けて入力します。
-
-6. [認証] ボックスで、**[SQL Server 認証]** を選択します。
-
-7. SQL データベース論理サーバーの作成時に準備した管理者ログイン名とパスワードを入力します。
-
-8. **[オプション]** をクリックします。
-
-9. [接続プロパティ] の **[データベースへの接続]** で、「**master**」と入力します。
-
-10. **[接続]** をクリックします。これで接続指定が完了し、ウィザードに戻ります。
-
-
-11. **[次へ]** をクリックし、**[完了]** をクリックしてウィザードを実行します。
-
-
-<h2><a id="verify"></a>方法:データベース デプロイを確認する</h2>
-
-1. Management Studio のオブジェクト エクスプローラーで、データベースを最新の状態に更新して、作成した新しいデータベースを表示します。
-
-2. **データベース** フォルダーを展開します。一覧に **school** データベースが表示されます。
-
-3. school データベースを右クリックして、**[新しいクエリ]** をクリックします。
-
+	**注** クエリを実行するデータベースには接続している必要があります。 
+3. **school** を右クリックし、**[新しいクエリ]** をクリックします。
 4. 以下のクエリを実行して、データがアクセス可能であることを確認します。
 
-<div style="width:auto; height:auto; overflow:auto"><pre>
-	SELECT
-		Course.Title as "Course Title"
-  		,Department.Name as "Department"
-  		,Person.LastName as "Instructor"
-  		,OnsiteCourse.Location as "Location"
-  		,OnsiteCourse.Days as "Days"
-  		,OnsiteCourse.Time as "Time"
-	FROM
- 	 Course
- 	 INNER JOIN Department
-  	  ON Course.DepartmentID = Department.DepartmentID
- 	 INNER JOIN CourseInstructor
- 	   ON Course.CourseID = CourseInstructor.CourseID
- 	 INNER JOIN Person
- 	   ON CourseInstructor.PersonID = Person.PersonID
- 	 INNER JOIN OnsiteCourse
+		SELECT
+			Course.Title as "Course Title"
+				,Department.Name as "Department"
+				,Person.LastName as "Instructor"
+				,OnsiteCourse.Location as "Location"
+				,OnsiteCourse.Days as "Days"
+				,OnsiteCourse.Time as "Time"
+		FROM
+			 Course
+			 INNER JOIN Department
+			  ON Course.DepartmentID = Department.DepartmentID
+			 INNER JOIN CourseInstructor
+			   ON Course.CourseID = CourseInstructor.CourseID
+			 INNER JOIN Person
+			   ON CourseInstructor.PersonID = Person.PersonID
+			 INNER JOIN OnsiteCourse
 		ON OnsiteCourse.CourseID = CourseInstructor.CourseID;
-</pre></div>
+		
+## 次のステップ
 
-[SQL データベース管理の概要に関するページ]: /manage/services/sql-databases/getting-started-w-sql-databases/  
+新しい Azure SQL Database の作成に関するチュートリアルについては、「[SQL Database 管理の概要](sql-database-get-started.md)」を参照してください。C# アプリから Azure SQL Database への接続の基本については、「[C# を使用して SQL Database に接続し、照会する](sql-database-connect-query.md)」を参照してください。(PHP など) さまざまなプラットフォームからの接続のその他のチュートリアルについては、「[Azure SQL Database 開発: 操作方法に関するトピック](https://msdn.microsoft.com/library/azure/ee621787.aspx)」を参照してください。
 
-
-<!--HONumber=47-->
  
+
+<!---HONumber=July15_HO2-->

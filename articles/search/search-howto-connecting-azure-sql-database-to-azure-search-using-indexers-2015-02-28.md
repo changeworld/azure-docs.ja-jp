@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="04/18/2015" 
+	ms.date="07/08/2015" 
 	ms.author="eugenesh"/>
 
 #インデクサーを使用した Azure Search への Azure SQL Database の接続#
@@ -261,5 +261,6 @@ A: はい。インデクサーは検索サービス内のノードの 1 つで�
 
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

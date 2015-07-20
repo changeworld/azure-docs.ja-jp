@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Operations Manager とオペレーション インサイトの連携に関する考慮事項"
    description="Microsoft Azure オペレーション インサイトを Operations Manager と連携させる場合、Operations Manager エージェントと管理グループのディストリビューションを使用して分析対象となるデータを収集し、そのデータをオペレーション インサイト サービスに送信することになります。"
    services="operational-insights"
@@ -6,18 +6,22 @@
    authors="bandersmsft"
    manager="jwhit"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="operational-insights"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/20/2015"
+   ms.date="07/02/2015"
    ms.author="banders" />
 
 # Operations Manager とオペレーション インサイトの連携に関する考慮事項
 
+[AZURE.INCLUDE [operational-insights-note-moms](../../includes/operational-insights-note-moms.md)]
+
 Microsoft Azure オペレーション インサイトを Operations Manager と連携させる場合、Operations Manager エージェントと管理グループのディストリビューションを使用して分析対象となるデータを収集し、そのデータをオペレーション インサイト サービスに送信することになります。ただし、Web サービスに直接接続するエージェントを使用する場合、Operations Manager は不要です。オペレーション インサイトを Operations Manager と連携させるときは、以下の点を考慮してください。
+
+また、自身の Operations Manager から Operational Insights への監視されたワークロードの実行アカウントの資格情報を指定する必要もあります。
 
 ## オペレーション インサイト ソフトウェアの機能と要件
 
@@ -39,11 +43,11 @@ Operations Manager エージェント (データの収集) と管理グループ
 
 ## Operations Manager との連携
 
-Operations Manager とオペレーション インサイトとの連携においてサポートされるのは、System Center Operations Manager 2012 R2 または System Center Operations Manager 2012 SP1 の Operations Manager エージェントだけです。それより前のバージョンの System Center Operations Manager との連携はサポートされません。データの収集には Operations Manager エージェントが使用されるため、SharePoint 2012 など、一部の分析対象ワークロードについては、特定の資格情報 (アクション アカウントまたは実行アカウント) を使用してサポートされます。
+Operations Manager と Operational Insights との連携においてサポートされるのは、System Center Operations Manager 2012 R2 または System Center Operations Manager 2012 SP1 の Operations Manager エージェントだけです。それより前のバージョンの System Center Operations Manager との連携はサポートされません。データの収集には Operations Manager エージェントが使用されるため、SharePoint 2012 など、一部の分析対象ワークロードについては、特定の資格情報 (アクション アカウントまたは実行アカウント) を使用してサポートされます。
 
-## オペレーション インサイトと SQL Server 2012
+## Operational Insights と SQL Server 2012
 
-Operations Manager を使用しているときは、System Center ヘルス サービスがローカル システム アカウントで実行されます。SQL Server 2008 R2 より前の SQL Server バージョンでは、ローカル システム アカウントが既定で有効になっており、システム管理者サーバー ロールに含まれていました。SQL Server 2012 では、システム管理者サーバー ロールにローカル システム ログインは含まれていません。そのため、オペレーション インサイトを使用すると、SQL Server 2012 インスタンスを完全には監視できず、一部のルールでアラートが生成される可能性があります。
+Operations Manager を使用しているときは、System Center ヘルス サービスがローカル システム アカウントで実行されます。SQL Server 2008 R2 より前の SQL Server バージョンでは、ローカル システム アカウントが既定で有効になっており、システム管理者サーバー ロールに含まれていました。SQL Server 2012 では、システム管理者サーバー ロールにローカル システム ログインは含まれていません。そのため、Operational Insights を使用すると、SQL Server 2012 インスタンスを完全には監視できず、一部のルールでアラートが生成される可能性があります。
 
 ## インターネットと内部ネットワークの接続
 
@@ -85,20 +89,143 @@ Windows Server を実行する複数のコンピューターが同じフェー�
     </tr>
     <tr align="left" valign="top">
 		<td>5</td>
-		<td>約 2.5 MB (5 エージェント × 100 KB データ/日 × 5 日 ＝ 2,500 KB)</td>
+		<td>最大 2.5 MB (5 エージェント × 100 KB データ/日 × 5 日 ＝ 2,500 KB)</td>
     </tr>
     <tr align="left" valign="top">
 		<td>50</td>
-		<td>約 25 MB (50 エージェント × 100 KB データ/日 × 5 日 ＝ 25,000 KB)</td>
+		<td>最大 25 MB (50 エージェント × 100 KB データ/日 × 5 日 ＝ 25,000 KB)</td>
     </tr>
 
     </tbody>
     </table>
 
+## オペレーション インサイトで使用される Operations Manager の実行アカウント
+
+Operational Insights は、データの収集 とOperational Insights サービスへのデータの送信に、Operations Manager エージェントと管理グループを使用します。オペレーション インサイトは、ワークロード用の管理パックを基に付加価値サービスを実現しています。それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン アカウントなど)。Operations Manager の実行アカウントを構成して資格情報を与えることが必要です。
+
+以降のセクションでは、次のワークロードを対象に、Operations Manager の実行アカウントを設定する方法について説明しています。
+
+- SQL の評価
+- Virtual Machine Manager
+- Lync Server
+- SharePoint
+
+### SQL の評価に使用する実行アカウントの設定
+
+ SQL Server 管理パックを既に使用している場合、SQL Server の実行アカウントを使用する必要があります。
+
+#### オペレーション コンソールで SQL の実行アカウントを構成するには
+
+1. Operations Manager でオペレーション コンソールを開き、**[管理]** をクリックします。
+
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[オペレーション インサイト SQL の評価の実行プロファイル]** を開きます。
+
+3. **[実行アカウント]** ページの **[追加]** をクリックします。
+
+4. SQL Server に必要な資格情報を含んだ Windows 実行アカウントを選択するか、**[新規]** をクリックして新たに作成します。
+	>[AZURE.NOTE]実行アカウントの種類は Windows であることが必要です。さらに、SQL Server インスタンスをホストするすべての Windows Server 上のローカルの Administrators グループに、その実行アカウントが属している必要があります。
+
+5. **[保存]** をクリックします。
+
+6. 次の T-SQL サンプルに変更を加えて、各 SQL Server インスタンスで実行します。実行アカウントで SQL の評価を行うために必要な最低限の権限が付与されます。ただし、実行アカウントが既に SQL Server インスタンスの sysadmin サーバー ロールに属している場合、この作業は不要です。
+
+```
+---
+    -- Replace <UserName> with the actual user name being used as Run As Account.
+    USE master
+
+    -- Create login for the user, comment this line if login is already created.
+    CREATE LOGIN [<UserName>] FROM WINDOWS
+
+    -- Grant permissions to user.
+    GRANT VIEW SERVER STATE TO [<UserName>]
+    GRANT VIEW ANY DEFINITION TO [<UserName>]
+    GRANT VIEW ANY DATABASE TO [<UserName>]
+
+    -- Add database user for all the databases on SQL Server Instance, this is required for connecting to individual databases.
+    -- NOTE: This command must be run anytime new databases are added to SQL Server instances.
+    EXEC sp_msforeachdb N'USE [?]; CREATE USER [<UserName>] FOR LOGIN [<UserName>];'
+
+```
+#### To configure the SQL Run As account using Windows PowerShell
+
+Open a PowerShell window and run the following script after you’ve updated it with your information:
+
+```
+
+    import-module OperationsManager
+    New-SCOMManagementGroupConnection "<your management group name>"
+     
+    $profile = Get-SCOMRunAsProfile -DisplayName "Operational Insights SQL Assessment Run As Profile"
+    $account = Get-SCOMrunAsAccount | Where-Object {$_.Name -eq "<your run as account name>"}
+    Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
+```
+
+
+### Virtual Machine Manager の実行アカウントの設定
+
+実行アカウントには、次の操作の特権が付与されている必要があります。
+
+- VMM Windows PowerShell モジュールを使用する
+
+- VMM データベースに対してクエリを実行する
+
+- 仮想化ホスト上で動作する VMM エージェントをリモートから管理する
+
+オペレーション インサイトを Operations Manager に接続するときは、以下の手順に従ってアカウントを設定してください。
+
+#### VMM の資格情報を設定するには
+
+1. Operations Manager でオペレーション コンソールを開き、**[管理]** をクリックします。
+
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[オペレーション インサイト VMM 実行アカウント]** を開きます。
+
+3. **[実行アカウント]** ページの **[追加]** をクリックします。
+
+4. VMM に必要な資格情報を含んだ Windows 実行アカウントを選択するか、**[新規]** をクリックして新たに作成します。
+	>[AZURE.NOTE]実行アカウントの種類は Windows であることが必要です。
+
+5. **[保存]** をクリックします。
+
+
+### Lync Server に使用する実行アカウントの設定
+
+ 実行アカウントは、ローカルの Administrators グループと Lync RTCUniversalUserAdmins セキュリティ グループの両方に属している必要があります。
+
+#### Lync アカウントの資格情報を設定するには
+
+1. Operations Manager でオペレーション コンソールを開き、**[管理]** をクリックします。
+
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[オペレーション インサイト Lync 実行アカウント]** を開きます。
+
+3. **[実行アカウント]** ページの **[追加]** をクリックします。
+
+4. ローカルの Administrators グループと Lync RTCUniversalUserAdmins セキュリティ グループの両方に属している Windows 実行アカウントを選択します。
+	>[AZURE.NOTE]実行アカウントの種類は Windows であることが必要です。
+
+5. **[保存]** をクリックします。
+
+
+### SharePoint に使用する実行アカウントの設定
+
+
+#### SharePoint アカウントの資格情報を設定するには
+
+1. Operations Manager でオペレーション コンソールを開き、**[管理]** をクリックします。
+
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[オペレーション インサイト SharePoint 実行アカウント]** を開きます。
+
+3. **[実行アカウント]** ページの **[追加]** をクリックします。
+
+4. SharePoint に必要な資格情報を含んだ Windows 実行アカウントを選択するか、**[新規]** をクリックして新たに作成します。
+	>[AZURE.NOTE]実行アカウントの種類は Windows であることが必要です。
+
+5. **[保存]** をクリックします。
+
+
+
 ## 地理的な場所
 
 さまざまな地理的な場所にあるサーバーからのデータを分析する場合は、場所ごとに 1 つの管理グループを設けることを検討してください。エージェントから管理グループへのデータ転送のパフォーマンスを向上させることができます。
 
-
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

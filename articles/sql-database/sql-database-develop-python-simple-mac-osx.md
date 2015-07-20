@@ -31,7 +31,8 @@
 
 
 - [Python 2.7.6](https://www.python.org/download/releases/2.7.6/)。
-
+- [FreeTDS](https://github.com/brianb/FreeTDS)
+- [Pymssql](https://github.com/pymssql/pymssql)
 
 ### 必要なモジュールのインストール
 
@@ -117,4 +118,4 @@ SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) �
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

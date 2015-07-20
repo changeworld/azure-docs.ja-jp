@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/07/2015" 
+	ms.date="06/25/2015" 
 	ms.author="josephd"/>
 
 # Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法
 
 パスワードを忘れたか、リモート デスクトップ サービスの構成に問題があるために Windows 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccess 拡張機能を使用してローカル管理者パスワードをリセットするか、リモート デスクトップ サービスの構成をリセットします。
+
+> [AZURE.NOTE]この記事は、Azure リソース マネージャー ベースの仮想マシンには適用されません。
 
 ## Azure プレビュー ポータル
 
@@ -27,7 +29,7 @@
 
 ![](./media/virtual-machines-windows-reset-password/Portal-RDP-Reset-Windows.png)
 
- [Azure プレビュー ポータル](https://portal.azure.com)のローカル管理者アカウントの名前とパスワードをリセットするには、**[参照]**、**[仮想マシン]**、*ご使用の Windows 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックします。たとえば次のようになります。
+[Azure プレビュー ポータル](https://portal.azure.com)のローカル管理者アカウントの名前とパスワードをリセットするには、**[参照]**、**[仮想マシン]**、*ご使用の Windows 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックします。たとえば次のようになります。
 
 ![](./media/virtual-machines-windows-reset-password/Portal-PW-Reset-Windows.png)
 
@@ -88,7 +90,7 @@ VMAccess 拡張機能によって VM で次の 2 つのコマンドが実行さ�
 
 	このコマンドで、組み込みの Windows ファイアウォール グループが有効になり、TCP ポート 3389 を使用するリモート デスクトップの着信トラフィックが許可されます。
 
-- **Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0**
+- **Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -name "fDenyTSConnections" -Value 0**
 
 	このコマンドは fDenyTSConnections レジストリ値を 0 に設定します。これでリモート デスクトップ接続が有効になります。
 
@@ -108,4 +110,6 @@ Azure IaaS (Windows) 診断パッケージを実行できないか、実行し�
 
 [RDP または SSH を使用した Azure 仮想マシンへの接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

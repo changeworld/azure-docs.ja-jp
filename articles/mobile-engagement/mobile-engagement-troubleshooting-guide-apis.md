@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs" 
-   description="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド" 
+   description="Azure Mobile Engagement 関連のトラブルシューティング ガイド - API" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/17/2015"
+   ms.date="06/18/2015"
    ms.author="piyushjo"/>
 
 # API の問題のトラブルシューティング ガイド
@@ -35,7 +35,8 @@
 
 ### 関連項目
  
-- [概念 - 用語集][Link 6]、[API ドキュメント][Link 4]、[XMPP プロトコル情報](http://xmpp.org/extensions/xep-0199.html)
+- [API ドキュメント][Link 4]
+- [XMPP プロトコル情報](http://xmpp.org/extensions/xep-0199.html)
  
 ## Azure モバイル エンゲージメント UI で使用できるアクションと同じアクションを、API を使用して実行できません
 
@@ -77,7 +78,7 @@
         409        Name already associated to a different device ID or campaign.
         413        Too many device identifiers (current limit is 1,000), POST URL encoded entity is over 2MB, or the period is too large to be displayed (the server didn’t retrieve the analytics because the user request is for a period that is too large).
         503        Analytics not available yet (the requested information is not computed yet for an application).
-        504         The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
+        504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
 ### 関連項目
 
@@ -95,7 +96,7 @@
 
 ### 関連項目
 
-- [トラブルシューティング ガイド - SDK][Link 25]、[SDK ドキュメント][Link 5]
+- [トラブルシューティング ガイド - SDK][Link 25]
  
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface.md
@@ -127,5 +128,6 @@
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

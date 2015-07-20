@@ -33,10 +33,11 @@ ASP.NET 5 プロジェクトでプログラムを使用してキューにアク�
 
 1. プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
 
-		using Microsoft.Framework.ConfigurationModel;
+		using Microsoft.Framework.Configuration;
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Queue;
 		using System.Threading.Tasks;
+		using LogLevel = Microsoft.Framework.Logging.LogLevel;
 
 2. 次のコードを使用して構成設定を取得します。
 
@@ -104,4 +105,4 @@ PeekMessageAsync() メソッドを呼び出すと、キューの先頭にある�
 [Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

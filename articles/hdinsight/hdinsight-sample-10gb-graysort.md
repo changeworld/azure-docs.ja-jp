@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2015" 
+	ms.date="03/30/2015"
 	ms.author="bradsev"/>
 
 # HDInsight での 10 GB GraySort Hadoop MapReduce サンプル
 
 このサンプル トピックでは、Azure PowerShell を使用して、Azure HDInsight で汎用 GraySort Hadoop MapReduce プログラムを実行する方法について説明します。GraySort はベンチマーク ソートで、その評価尺度は、非常に大量のデータ、通常は最低でも 100 TB のデータをソートした際のソート速度 (TB/分) です。
+
+> [AZURE.NOTE]このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターでこれと他のサンプルを実行する方法については、「[HDInsight での Hadoop のサンプルの実行](hdinsight-hadoop-run-samples-linux.md)」をご覧ください。
 
 このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
@@ -429,6 +431,5 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

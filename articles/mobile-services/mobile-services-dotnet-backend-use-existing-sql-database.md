@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成 - Azure Mobile Services" 
-	description="既存のクラウドまたは内部設置型 SQL データベースと .NET ベースのモバイル サービスを使用する方法について説明します。" 
+	description="既存のクラウドまたはオンプレミス SQL データベースと .NET ベースのモバイル サービスを使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
@@ -13,28 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/13/2015" 
+	ms.date="05/20/2015" 
 	ms.author="glenga"/>
 
 
 # Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成
 
-Mobile Services .NET バックエンドを使用すると、モバイル サービスの作成で簡単に既存のアセットを利用できます。特に興味深いシナリオの 1 つに、他のアプリケーションで既に使用した可能性がある (内部設置型またはクラウドに配置された) 既存の SQL データベースを使用して、既存のデータをモバイル クライアントが利用できるようにする方法があります。この場合、既存のソリューションが機能し続けるには、データベース モデル (つまり*スキーマ*) が変更されない状態のままであることが必要です。
-
-このチュートリアルで取り上げる内容は次のとおりです。
-
-1. [既存のデータベース モデルを調査する](#ExistingModel)
-2. [モバイル サービス用にデータ転送オブジェクト (DTO) を作成する](#DTOs)
-3. [DTO とモデルとの間にマッピングを確立する](#Mapping)
-4. [ドメイン専用のロジックを実装する](#DomainManager)
-5. [DTO を使用して TableController を実装する](#Controller)
+Mobile Services .NET バックエンドを使用すると、モバイル サービスの作成で簡単に既存のアセットを利用できます。特に興味深いシナリオの 1 つに、他のアプリケーションで既に使用した可能性がある (オンプレミスまたはクラウドに配置された) 既存の SQL データベースを使用して、既存のデータをモバイル クライアントが利用できるようにする方法があります。この場合、既存のソリューションが機能し続けるには、データベース モデル (つまり*スキーマ*) が変更されない状態のままであることが必要です。
 
 <a name="ExistingModel"></a>
 ## 既存のデータベース モデルを調査する
 
-このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。内部設置型データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
+このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。オンプレミス データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスからオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
-1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [モバイル サービス] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
+1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [Mobile Service] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
 
 2. **Customer.cs** ファイルを **Models** フォルダーに作成して、次の実装を使用します。**System.ComponentModel.DataAnnotations** へのアセンブリ参照をプロジェクトに追加する必要があります。
 
@@ -158,7 +150,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
         using System.ComponentModel.DataAnnotations;
         using System;
 
-    その後、次のようにこれらの追加のプロパティを、それぞれのクラスに追加します。
+4. その後、次のようにこれらの追加のプロパティを、それぞれのクラスに追加します。
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Index]
@@ -187,7 +179,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
         using Microsoft.WindowsAzure.Mobile.Service.Tables;
         using System.Linq;
 
-    その後、次のように **ExistingContext** の本体で [**OnModelCreating**](http://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating.aspx) をオーバーライドします。
+5. **ExistingContext** の本体で [**OnModelCreating**](http://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating.aspx) をオーバーライドします。
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -621,5 +613,6 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
     }
 
-次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。
-<!--HONumber=54--> 
+次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。詳細については、[既存のアプケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#update-the-app-to-use-the-mobile-service)を参照してください。
+
+<!---HONumber=July15_HO2-->

@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Mac、Linux、および Windows 用 Azure CLI を使用した Azure VM の管理"
+   pageTitle="Mac、Linux、および Windows 用の Azure CLI を使用した Azure VM の管理 | Microsoft Azure"
    description="Mac、Linux、および Windows 用 Azure CLI を使用して、Azure VM を作成、管理、削除する方法について説明します。"
    services="virtual-machines"
    documentationCenter="virtual-machines"
-   authors="squillace"
+   authors="dlepow"
    manager="timlt"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="04/23/2015"
-   ms.author="rasquill"/>
+   ms.date="06/09/2015"
+   ms.author="danlep"/>
 
 # Mac、Linux、および Windows 用 Azure CLI を使用した仮想マシンの管理
 
@@ -38,7 +38,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 出力を JSON ドキュメントとして $vm 変数に格納するには、次のように実行します。
 
     vmInfo=$(azure vm show -g <group name> -n <virtual machine name> --json)
-    
+
 または、stdout をファイルにパイプすることができます。
 
 ## Linux ベースの仮想マシンへのログオン
@@ -62,7 +62,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
 新しいディスクを接続するには、次のコマンドを実行します。
 
-     azure vm disk attach-new <resource-group> <vm-name> <size-in-gb> 
+     azure vm disk attach-new <resource-group> <vm-name> <size-in-gb>
 
 既存のデータ ディスクを接続するには、次のコマンドを実行します。
 
@@ -73,20 +73,12 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 Linux ベースの VM を新たに作成するには、いくつかの値を用意する必要があります。具体的には、リソース グループ名、場所、イメージ名、VM 名、バックアップの .vhd イメージを格納するためのストレージ アカウントなどです。使用する情報が揃ったら、次のように入力して、Azure CLI でその値の入力を求める対話型セッションを作成することができます。
 
     azure vm create
-    
+
 既にこれらの値が揃っている場合は、次のように入力して、値を直接渡すための適切なスイッチを検索することができます。`azure help vm create`
 
 ## 次のステップ
 
 **arm** モードでの Azure CLI のその他の使用例については、[Azure リソース管理による Mac、Linux、および Windows 用 Microsoft Azure CLI の使用](../xplat-cli-resource-manager.md)に関するページを参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
-
-
-
-
-
-
-
-
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

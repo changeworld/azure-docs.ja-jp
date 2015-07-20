@@ -18,7 +18,7 @@
 
 # Microsoft アカウントを使用して、クライアントによって管理される認証で Windows ストア アプリを認証します。
 
-[AZURE.INCLUDE [mobile-services-selector-single-signon](../../includes/mobile-services-selector-single-signon.md)] 
+[AZURE.INCLUDE [mobile-services-selector-single-signon](../../includes/mobile-services-selector-single-signon.md)]
 
 ##概要
 このトピックでは、Windows ストア アプリケーションから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、Live Connect を使用して、クイック スタート プロジェクトに認証を追加します。Live Connect によって正常に認証されると、ログインしたユーザーの名前が認識され、ユーザー ID 値が表示されます。
@@ -41,7 +41,7 @@
 
 次に、サインインしたユーザーのみがリソース (この場合は *TodoItems* テーブル) にアクセスできるようにリソースへのアクセスを制限する必要があります。
 
-[AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../../includes/mobile-services-restrict-permissions-windows.md)] 
+[AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../../includes/mobile-services-restrict-permissions-windows.md)]
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
@@ -143,5 +143,6 @@
 [スクリプトを使用したユーザーの認証]: ../mobile-services-windows-store-javascript-authorize-users-in-scripts.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

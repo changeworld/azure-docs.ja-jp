@@ -12,13 +12,9 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="03/17/2015"
+	ms.topic="get-started-article"
+	ms.date="07/02/2015"
 	ms.author="sethm"/>
-
-
-
-
 
 # Service Bus キューを使用する .NET 多層アプリケーション
 
@@ -127,26 +123,6 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
 10.  これらの資格情報を書き留めておくか、クリップボードにコピーします。
 
-## Visual Studio サーバー エクスプローラーを使用して名前空間とメッセージング エンティティを管理する
-
-Azure の管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、[こちら](http://msdn.microsoft.com/library/ff687127.aspx)の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
-
-**SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
-
-![][34]
-
-**注**: **サーバー エクスプローラー**を使用して他のサブスクリプションの Service Bus 名前空間を管理することもできます。手順は次のとおりです:
-
-1. Visual Studio のメニュー バーで **[表示]** を選択し、**[サーバー エクスプローラー]** をクリックします。サーバー エクスプローラーの階層内で **[Azure]** に **[Service Bus]** ノードが表示されます (次の図を参照)。
-
-	![][21]
-
-2. サーバー エクスプローラーで **[Microsoft Azure]** を展開し、**[Service Bus]** を右クリックしてから、**[新しい接続の追加]** をクリックします。
-
-3. **[接続の追加]**ダイアログ ボックスで、名前空間の接続文字列にサービス名前空間の名前、発行者名、発行者キーを入力するか、貼り付けます。発行者キーに関連付けられている権限は、この名前空間で実行できる操作を決定します。続けて **[OK]** をクリックして接続します。
-
-	![][22]
-
 ## Web ロールを作成する
 
 このセクションでは、アプリケーションのフロンドエンドを作成します。最初に、アプリケーションで表示するさまざまなページを作成します。その後、Service Bus キューに項目を送信し、キューに関するステータス情報を表示するコードを追加します。
@@ -178,13 +154,13 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
 
 6.  **ソリューション エクスプローラー**で **[参照設定]** を右クリックし、**[NuGet パッケージの管理]** または **[ライブラリ パッケージ参照の追加]** をクリックします。
 
-7.  ダイアログの左側の **[オンライン]** をクリックします。" <b>Service Bus</b>" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。次に、インストールを完了し、 このダイアログを閉じます。
+7.  ダイアログの左側の **[オンライン]** をクリックします。"**Service Bus**" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。次に、インストールを完了し、 このダイアログを閉じます。
 
     ![][13]
 
 8.  これで、必要なクライアント アセンブリを参照できるようになり、新しいコード ファイルがいくつか追加されました。
 
-9.  **ソリューション エクスプローラー**で **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。**[名前]** ボックスに「**OnlineOrder.cs**」と入力します。 **[追加]** をクリックします。
+9.  **ソリューション エクスプローラー**で **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。**[名前]** ボックスに「**OnlineOrder.cs**」と入力します。**[追加]** をクリックします。
 
 ### Web ロール用のコードの作成
 
@@ -258,19 +234,19 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
             }
         }
 
-4.  **[ビルド]** メニューの **[ソリューションのビルド]** をクリックします。
+4.  **[ビルド]** メニューの **[ソリューションのビルド]** をクリックして、ここまでの作業に問題がないことを確認します。
 
 5.  次に、前の手順で作成した **Submit()** メソッドのビューを作成します。Submit() メソッド内で右クリックし、**[ビューの追加]** を選択します。
 
     ![][14]
 
-6.  ビューを作成するためのダイアログが表示されます。**[モデル クラス]** ドロップダウンから  **[OnlineOrder]** クラスを選択し、**[テンプレート]** ドロップダウンから **[作成]** を選択します。
+6.  ビューを作成するためのダイアログが表示されます。**[テンプレート]** ドロップダウン リストから **[作成]** を選択します。**[モデル クラス]** ドロップダウン リストで **OnlineOrder** クラスをクリックします。
 
     ![][15]
 
 7.  **[追加]** をクリックします。
 
-8.  次に、アプリケーションの表示名を変更します。**ソリューション エクスプローラー**で、**Views\\Shared\_Layout.cshtml** ファイルをダブルクリックし、Visual Studio エディターで開きます。
+8.  次に、アプリケーションの表示名を変更します。**ソリューション エクスプローラー**で、**Views\\Shared\\_Layout.cshtml** ファイルをダブルクリックして Visual Studio エディターで開きます。
 
 9.  **My ASP.NET Application** となっている箇所をすべて **LITWARE'S Products** に置き換えます。
 
@@ -280,7 +256,7 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
 
 11. 最後に、キューに関する情報を表示できるように、送信ページを変更します。**ソリューション エクスプローラー**で、**Views\\Home\\Submit.cshtml** ファイルをダブルクリックし、Visual Studio エディターで開きます。**&lt;h2>Submit&lt;/h2>** という行の下に、次の行を追加します。この時点では、**ViewBag.MessageCount** は空の状態です。この値は後で入力します。
 
-        <p>Current Number of Orders in Queue Waiting to be Processed: @ViewBag.MessageCount</p>
+        <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
 
 
 12. これで、UI の実装が終わりました。**F5** キーを押してアプリケーションを実行し、期待どおりに表示されることを確認します。
@@ -289,7 +265,7 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
 
 ### Service Bus キューに項目を送信するためのコードの作成
 
-次に、項目をキューに送信するためのコードを追加します。最初に、Service Bus キューの接続情報を含むクラスを作成します。次に、**Global.aspx.cs** から接続を初期化します。最後に、Service Bus キューに実際に項目を送信できるように、**HomeController.cs** 内に作成してある送信用のコードを更新します。
+次に、項目をキューに送信するためのコードを追加します。最初に、Service Bus キューの接続情報を含むクラスを作成します。次に、**Global.aspx.cs** から接続を初期化します。最後に、Service Bus キューに実際に項目を送信するために、**HomeController.cs** 内に作成してある送信用のコードを更新します。
 
 1.  ソリューション エクスプローラーで、**FrontendWebRole** を右クリックします (ロールではなくプロジェクトを右クリック)。**[追加]**、**[クラス]** の順にクリックします。
 
@@ -355,7 +331,7 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
             }
         }
 
-    **注**: チュートリアル後半で**名前空間**と SAS キーの値を構成ファイルに保存する方法を学習します。
+    注: このチュートリアルの後半で、**名前空間**と SAS キーの値を構成ファイルに保存する方法を学習します。
 
 4.  次に、**Initialize** メソッドが呼び出されるようにします。**ソリューション エクスプローラー**で、**Global.asax\\Global.asax.cs** をダブルクリックします。
 
@@ -363,7 +339,7 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
 
         FrontendWebRole.QueueConnector.Initialize();
 
-6.  最後に、前の手順で作成した Web コードを更新し、アイテムをキューに送信します。**ソリューション エクスプローラー**で、前に作成した **Controllers\\HomeController.cs** をダブルクリックします。
+6.  最後に、前の手順で作成した Web コードを更新し、項目をキューに送信します。**ソリューション エクスプローラー**で、**[Controllers\\HomeController.cs]** をダブルクリックします。
 
 7.  **Submit()** メソッドを次のように更新し、キューのメッセージ数を取得できるようにします。
 
@@ -409,7 +385,7 @@ Azure の管理ポータルの代わりに Visual Studio を使用して名前�
 
 Service Bus 名前空間の接続文字列を構成ファイルに保存している場合は、**GetSettings** メソッドを使用して接続文字列を読み取り、それを使用して **NamespaceMananger** オブジェクトをインスタンス化できます。**NamespaceMananger** インスタンスを使用して Service Bus 名前空間をプログラムで構成できます。同じ接続文字列を使用してクライアントのオブジェクト (**QueueClient**、**TopicClient**、**EventHubClient** オブジェクトなど) をインスタンス化し、メッセージの送受信などのランタイム操作を実行できます。
 
-### 接続文字列
+### Connection string
 
 クライアント (たとえば、**Service Bus の QueueClient**) をインスタンス化するための構成情報は、接続文字列として表すことができます。その接続文字列を使用してクライアントの型をインスタンス化する `CreateFromConnectionString()` メソッドがクライアント側には用意されています。たとえば、次の構成セクションがあるとします。
 
@@ -518,52 +494,49 @@ Azure のクラウド サービスではなく、Azure Web サイトに多層ア
 Azure Web サイトにフロンドエンドを展開する方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](http://azure.microsoft.com/develop/net/tutorials/get-started/)」を参照してください。Azure のクラウド サービスにバックエンドを展開する方法については、「[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション][mutitierstorage]」を参照してください。
 
 
-[0]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
-[1]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
-[sbqueuecomparison]: http://msdn.microsoft.com/library/hh767287.aspx
-[2]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
-[ツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
-[3]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-3.png
+  [0]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
+  [1]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
+  [sbqueuecomparison]: http://msdn.microsoft.com/library/hh767287.aspx
+  [2]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
+  [ツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
+  [3]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-3.png
 
 
 
-[Azure Management Portal]: http://manage.windowsazure.com
-[Azure の管理ポータル]: http://manage.windowsazure.com
-[6]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
-[7]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
-[8]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-09.png
-[9]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
-[10]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
-[11]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
-[12]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-12.png
-[13]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-13.png
-[14]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-33.png
-[15]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-34.png
-[16]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-35.png
-[17]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-36.png
-[18]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-37.png
+  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure の管理ポータル]: http://manage.windowsazure.com
+  [6]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
+  [7]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
+  [8]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-09.png
+  [9]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
+  [10]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
+  [11]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
+  [12]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-12.png
+  [13]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-13.png
+  [14]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-33.png
+  [15]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-34.png
+  [16]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-35.png
+  [17]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-36.png
+  [18]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-37.png
 
-[19]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-38.png
-[20]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-39.png
-[21]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBExplorer.png
-[22]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBExplorerAddConnect.png
-[23]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRole1.png
-[24]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBExplorerProperties.png
-[25]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRoleProperties.png
-[26]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
-[27]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-27.png
-[28]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
-[30]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-09.png
-[31]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-06.png
-[32]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-41.png
-[33]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-4-2-WebPI.png
-[34]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/VSProperties.png
-[35]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
-[sbmsdn]: http://msdn.microsoft.com/library/ee732537.aspx
-[sbwacom]: /documentation/services/service-bus/
-[sbwacomqhowto]: /develop/net/how-to-guides/service-bus-queues/
-[mutitierstorage]: /develop/net/tutorials/multi-tier-web-site/1-overview/
-[executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
-
-<!--HONumber=52-->
+  [19]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-38.png
+  [20]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-39.png
+  [23]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRole1.png
+  [24]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBExplorerProperties.png
+  [25]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRoleProperties.png
+  [26]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
+  [27]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-27.png
+  [28]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
+  [30]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-09.png
+  [31]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-06.png
+  [32]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-41.png
+  [33]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-4-2-WebPI.png
+  [35]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
+  [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx
+  [sbwacom]: /documentation/services/service-bus/
+  [sbwacomqhowto]: /develop/net/how-to-guides/service-bus-queues/
+  [mutitierstorage]: /develop/net/tutorials/multi-tier-web-site/1-overview/
+  [executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
  
+
+<!---HONumber=July15_HO2-->

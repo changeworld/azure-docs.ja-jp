@@ -95,4 +95,7 @@ Azure PowerShell コマンドレットを使用してこれを設定するには
 
 [ネットワーク セキュリティ グループについて](https://msdn.microsoft.com/library/azure/dn848316.aspx)
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=July15_HO2-->

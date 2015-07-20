@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Excel からの Azure Machine Learning Web サービスの使用 | Azure" 
+	pageTitle="Excel からの Machine Learning Web サービスの使用 | Microsoft Azure" 
 	description="Excel からの Azure Machine Learning Web サービスの使用" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,43 +13,43 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2015" 
-	ms.author="luisca"/>
+	ms.date="05/18/2015" 
+	ms.author="tedway"/>
 
 
 # Excel からの Azure Machine Learning Web サービスの使用 #
 
- Azure Machine Learning Studio では、Excel から直接スコア付け Web サービスを簡単に使用でき、コードを作成する必要がありません。 
+ Azure Machine Learning Studio では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)] 
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## 手順
 
-1. Web サービスを発行します。[このページ ](machine-learning-walkthrough-5-publish-web-service.md) では、その方法を説明しています。現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。 
+1. Web サービスを発行します。[このページ](machine-learning-walkthrough-5-publish-web-service.md)では、その方法を説明しています。現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。 
  
-2. Web サービスを作成したら、Studio の左側の [**WEB サービス**] セクションをクリックして、Excel から使用する Web サービスを選択します。 
+2. Web サービスを作成したら、Studio の左側の **[WEB サービス]** セクションをクリックして、Excel から使用する Web サービスを選択します。
 
-3. Web サービスの [**ダッシュボード**] タブに、**要求/応答**サービスの行があります。このサービスに 1 つの出力がある場合は、その行の**Excel ブックのダウンロード**のリンクを確認してください。
+3. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
 
 	![][1]
  
-4. [**Excel ブックのダウンロード**] をクリックして、Excel で開きます。
+4. **[Excel ブックのダウンロード]** をクリックして、Excel で開きます。
 
-5. セキュリティの警告が表示されます。[**編集を有効にする**] ボタンをクリックします。
+5. セキュリティの警告が表示されます。**[編集を有効にする]** ボタンをクリックします。
 
 	![][2]
 
-6. セキュリティの警告が表示されます。[**コンテンツの有効化**] ボタンをクリックして、スプレッドシートのマクロを実行します。
+6. セキュリティの警告が表示されます。**[コンテンツの有効化]** ボタンをクリックして、スプレッドシートのマクロを実行します。
 
-	![][3] 
+	![][3]
  
-7. マクロが有効になると、テーブルが生成されます。青の列は RRS Web サービス、または**PARAMETERS** への入力として必要です。RRS サービス **PREDICTED VALUES** の出力は緑色で表示されます。特定の行のすべての列がいっぱいになると、ブックは自動的に、スコア付け API を呼び出し、スコア付けされた結果を表示します。 
+7. マクロが有効になると、テーブルが生成されます。青の列は RRS Web サービス、または **PARAMETERS** への入力として必要です。RRS サービス **PREDICTED VALUES** の出力は緑色で表示されます。特定の行のすべての列がいっぱいになると、ブックは自動的に、スコア付け API を呼び出し、スコア付けされた結果を表示します。
 
 	![][4]
 
 7. 複数の行のスコア付けを実行するには、2 番目の行にデータを入力すると、予測値が生成されます。複数の行を一度に貼り付けることもできます。
 
-8. これで、Excel 機能 (グラフ、Power Map、条件付き書式など) と予測値を使用できます。    
+8. これで、Excel 機能 (グラフ、Power Map、条件付き書式など) と予測値を使用できます。
 
 
 ## ブックを共有する
@@ -68,5 +68,6 @@ RRS 呼び出しは、次の 2 つの状況で発生します。
 [2]: ./media/machine-learning-consuming-from-excel/enableeditting.png
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

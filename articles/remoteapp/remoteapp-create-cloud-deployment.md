@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2015" 
+	ms.date="05/26/2015" 
 	ms.author="elizapo"/>
 
-# RemoteApp のクラウド コレクションの作成方法
+# Azure RemoteApp のクラウド コレクションの作成方法
 
-RemoteApp のコレクションには、次の 2 種類があります:
+Azure RemoteApp のコレクションには、次の 2 種類があります。
 
 - クラウド: Azure に完全に常駐し、Azure 管理ポータルの **[簡易作成]** オプションを使用して作成されます。  
-- ハイブリッド: 内部設置型アクセス用の仮想ネットワークを含み、管理ポータルの **[VPN で作成]** オプションを使用して作成されます。
+- ハイブリッド: オンプレミスのアクセス用の仮想ネットワークを含み、管理ポータルの **[VNET で作成]** オプションを使用して作成されます。
 
 このチュートリアルでは、クラウド コレクションを作成する手順について説明します。次の 4 つのステップがあります。
 
 1.	RemoteApp コレクションを作成する。
-2.	オプションでディレクトリの同期を構成する。RemoteApp では、内部設置型 Active Directory のユーザー、連絡先、およびパスワードを Azure Active Directory テナントと同期するためにこの構成が必要となります。
+2.	オプションでディレクトリの同期を構成する。RemoteApp では、オンプレミスの Active Directory のユーザー、連絡先、およびパスワードを Azure Active Directory テナントと同期するためにこの構成が必要となります。
 5.	RemoteApp のアプリを発行する。
 6.	ユーザー アクセスを構成する。
 
@@ -46,7 +46,7 @@ RemoteApp のコレクションには、次の 2 種類があります:
 1. 管理ポータルで、[RemoteApp] ページに移動します。
 2. **[新規] > [簡易作成]** をクリックします。
 3. コレクションの名前を入力し、リージョンを選択します。
-4. 使用する標準的なまたは基本的なプランを選択します。
+4. Standard または Basic から、使用するプランを選択します。
 5. このコレクションに使用するテンプレートを選択します。 
 
 	**ヒント:** RemoteApp のサブスクリプションには、Word などの公開されたプログラムおよび公開する準備の完了したプログラムを含む Office 365 または Office 2013 (評価版) プログラムが含まれている[テンプレート イメージ](remoteapp-images.md)が付属しています。また、新しい [Custom Template Image (カスタム テンプレート イメージ)](remoteapp-imageoptions.md) を作成し、クラウド コレクションで使用することができます。
@@ -61,7 +61,7 @@ RemoteApp コレクションを作成したら、RemoteApp の **[クイック �
 
 ## 手順 2. Active Directory ディレクトリの同期を構成する (省略可能) ##
 
-Active Directory を使用する場合、RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。
+Active Directory を使用する場合、RemoteApp では、Azure Active Directory とオンプレミスの Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。
 
 ## 手順 3. RemoteApp のアプリを発行する ##
 
@@ -91,5 +91,6 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
 これで、RemoteApp クラウド コレクションの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、RemoteApp の [クイック スタート] ページにあります。次に、ユーザーがクライアントにログインし、発行したアプリケーションにアクセスします。
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

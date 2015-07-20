@@ -125,4 +125,4 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

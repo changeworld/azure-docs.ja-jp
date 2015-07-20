@@ -159,4 +159,4 @@
 RRAS を使用して VNet 接続を構成する場合は、[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用したサイト間 VPN の構成](https://msdn.microsoft.com/library/dn636917.aspx)に関するページを参照してください。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

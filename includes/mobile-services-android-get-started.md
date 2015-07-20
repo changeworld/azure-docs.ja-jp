@@ -27,7 +27,7 @@
 
    	![][10]
 
-	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
+   	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
 	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.java ファイルにあるデータを照会および挿入するコードを確認できます。
 
@@ -35,7 +35,7 @@
 
    	![](./media/mobile-services-android-get-started/mobile-data-tab1.png)
 
-	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
+   	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
    	![](./media/mobile-services-android-get-started/mobile-data-browse.png)
 
@@ -61,4 +61,4 @@
 
 [Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->

@@ -3,4 +3,4 @@
 - [.NET SDK](../articles/media-services/media-services-check-job-progress.md)
 - [REST API](../articles/media-services/media-services-rest-check-job-progress.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2015" 
+	ms.date="03/30/2015"
 	ms.author="bradsev"/>
 
 # HDInsight での Pi 推定 Hadoop サンプル
 
 このトピックでは、Azure PowerShell を使用して Azure HDinsight で数学定数パイ (Pi) の値を推定する Hadoop MapReduce プログラムを実行する方法を紹介します。また、Pi の検査値を計算するための MapReduce プログラムで使用する Java コードについても説明します。
+
+> [AZURE.NOTE]このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターでこれと他のサンプルを実行する方法については、「[HDInsight での Hadoop のサンプルの実行](hdinsight-hadoop-run-samples-linux.md)」をご覧ください。
 
 プログラムでは統計的手法 (準モンテカルロ法) に基づいて Pi の値を計算します。単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
@@ -471,6 +473,5 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

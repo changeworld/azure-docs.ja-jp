@@ -3,7 +3,7 @@
    description="Azure モバイル エンゲージメントのユーザー インターフェイスの概要" 
    services="mobile-engagement" 
    documentationCenter="" 
-   authors="v-micada" 
+   authors="piyushjo" 
    manager="dwrede" 
    editor=""/>
 
@@ -13,27 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/17/2015"
-   ms.author="v-micada"/>
-
-<div class="dev-center-tutorial-selector sublanding">
-<a href="../mobile-engagement-user-interface" title="概要">概要</a> 
-<a href="../mobile-engagement-user-interface-navigation" title="ナビゲーション">ナビゲーション</a> 
-<a href="../mobile-engagement-user-interface-home/" title="ホーム">ホーム</a> 
-<a href="../mobile-engagement-user-interface-my-account" title="マイ アカウント">マイ アカウント</a> 
-<a href="../mobile-engagement-user-interface-analytics" title="分析">分析</a> 
-<a href="../mobile-engagement-user-interface-monitor" title="モニター">モニター</a> 
-<a href="../mobile-engagement-user-interface-reach" title="リーチ">リーチ</a> 
-<a href="../mobile-engagement-user-interface-reach-campaign" title="リーチ - キャンペーン">リーチ - キャンペーン</a> 
-<a href="../mobile-engagement-user-interface-reach-criterion" title="リーチ - 基準">リーチ - 基準</a> 
-<a href="../mobile-engagement-user-interface-reach-content" title="リーチ - コンテンツ">リーチ - コンテンツ</a> 
-<a href="../mobile-engagement-how-tos" title="リーチ - 方法">リーチ - 方法</a> 
-<a href="../mobile-engagement-user-interface-segments" title="セグメント">セグメント</a> 
-<a href="../mobile-engagement-user-interface-dashboard" title="ダッシュボード">ダッシュボード</a> 
-<a href="../mobile-engagement-user-interface-settings" title="設定">設定</a>
-</div>
+   ms.date="05/12/2015"
+   ms.author="piyushjo"/>
 
 # エンドユーザーに通知するためのプッシュの利用と管理を始める方法
+
 SDK とアプリを完全統合したら、UI のリーチ セクションでアプリのユーザーにプッシュ通知を実行できます。
 
 ## 最初のプッシュ通知キャンペーンの実行
@@ -128,7 +112,7 @@ SDK とアプリを完全統合したら、UI のリーチ セクションでア
 [アプリ外のみ] 配信モードは、アプリケーションが閉じている場合にプッシュ通知を提供します。これは標準のプッシュ通知です。[アプリ外のみ] を選択する場合は、アプリケーションをビルドしているプラットフォーム (APNS または GCM) から証明書を既に提供している必要があります。
 
 ### 関連項目
--  [Apple Push Notification Service – Certificates (Apple プッシュ通知サービス – 証明書) (http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9)、Google Cloud Messaging – Certificate (Google クラウド メッセージング - 証明書)](http://developer.android.com/google/gcm/index.html) 
+-  [Apple Push Notification Service – Certificates (Apple プッシュ通知サービス – 証明書)](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9)、Google Cloud Messaging – Certificate (Google クラウド メッセージング - 証明書)](http://developer.android.com/google/gcm/index.html) 
 
 ### [アプリ内のみ] 配信モード
 ![Differentiate3][17]
@@ -217,7 +201,7 @@ Web ビューとは、Web コンテンツを含むポップアップです。こ
 ### アナウンスメントの種類について:
 - 通知のみ: シンプルな標準的な通知です。ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
 - テキストのアナウンス: ユーザーにテキスト ビューを閲覧するよう促す通知です。
-- Web のアナウンス:  ユーザーに Web ビューを閲覧するよう促す通知です。「Web アナウンスメント」の内容を選択します。
+- Web のアナウンス: ユーザーに Web ビューを閲覧するよう促す通知です。「Web アナウンスメント」の内容を選択します。
 
 > 注: Web ビューをプッシュした場合は、常に通知が最初に表示されます。
 
@@ -307,5 +291,6 @@ Web ビューとは、Web コンテンツを含むポップアップです。こ
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

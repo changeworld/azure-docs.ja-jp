@@ -1,3 +1,19 @@
+<properties 
+   pageTitle="デバイスの最小セットアップを完了する"
+   description="StorSimple デバイスの最小構成を完了する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="adinah"
+   editor="tysonn" />
+<tags 
+   ms.service="storsimple"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="05/21/2015"
+   ms.author="v-sharos" />
 
 #### StorSimple の最小デバイス セットアップを完了するには
 
@@ -29,4 +45,4 @@
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

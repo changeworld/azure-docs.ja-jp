@@ -5,27 +5,22 @@
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
-    editor="mattshel"/>
+    editor=""/>
 
 <tags
     ms.service="service-bus"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="02/26/2015"
+    ms.topic="get-started-article"
+    ms.date="07/02/2015"
     ms.author="sethm"/>
-
-
-
-
 
 # Service Bus キューの使用方法
 
-<span>このガイドでは、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは、**キューの作成、メッセージの送受信**、と
-**キューの削除**です。キューの詳細については、「[次のステップ]」のセクションをご覧ください。 </span>
+このガイドでは、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは**キューの作成**と**メッセージの送受信**です。キューの詳細については、「[次のステップ](#Next-steps)」セクションを参照してください。
 
-[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+[AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
 [AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -35,31 +30,29 @@ Service Bus を使用するアプリケーションを作成するときには�
 
 ## サービス バス NuGet パッケージの追加
 
-サービス バス **NuGet** パッケージは、Service Bus API を取得し、サービス バス依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio と Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。サービス バス NuGet パッケージは、Service Bus API を取得し、サービス バス依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
+Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。サービス バス NuGet パッケージは、Service Bus API を取得し、サービス バス依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
 
 アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
-1.  ソリューション エクスプローラーで、**[参照]** を右クリックし、
-    **[NuGet パッケージの管理]** をクリックします。
-2.  "Service Bus" を検索し、**[Microsoft Azure Service Bus]** 項目をクリックします。**[インストール]** をクリックし、インストールが完了したら、このダイアログを閉じます。
+1.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+2.  "Service Bus" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]** をクリックし、インストールが 完了したら、このダイアログを閉じます。
 
     ![][7]
 
 これで、Service Bus に対応するコードを作成する準備ができました。
 
-
 ## Service Bus の接続文字列の設定方法
 
-Service Bus では、接続文字列を使用してエンドポイントと資格情報を格納します。接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
+Service Bus では、接続文字列を使用してエンドポイントと資格情報を格納します。接続文字列は、ハードコーディングするのではなく、構成ファイルの中で指定します。
 
-- Azure のクラウド サービスを使用するときには、Azure サービス構成システム (`*.csdef` と `*.cscfg` ファイル) を使用して接続文字列を格納することをお勧めします。
-- Azure の Web サイトまたは Azure の仮想マシンを使用する場合には、.NET 構成システム ( `web.config` ファイルなど) を使用して接続文字列を格納することをお勧めします。
+- Azure Cloud Services を使用するときには、Azure サービス構成システム (***.csdef** ファイルと ***.cscfg** ファイル) を使用して接続文字列を格納することをお勧めします。
+- Azure Websites または Azure Virtual Machines を使用する場合には、.NET 構成システム (**Web.config** ファイルなど) を使用して接続文字列を格納することをお勧めします。
 
-いずれの場合でも、このガイドで後ほど説明する  `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
+いずれの場合でも、このガイドで後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
 ### クラウド サービスを使用する場合の接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure 管理ポータルから構成設定を動的に変更できます。たとえば、サービス定義 (`*.csdef`) ファイルに設定を追加するには、以下のようにします。
+サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure 管理ポータルから構成設定を動的に変更できます。たとえば、次のようにサービス定義 (***.csdef**) ファイルに `Setting` ラベルを追加します。
 
     <ServiceDefinition name="Azure1">
     ...
@@ -71,7 +64,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
     ...
     </ServiceDefinition>
 
-次に、サービス構成 (`*.cscfg`) ファイルで値を指定します。
+次に、サービス構成 (***.cscfg**) ファイルで値を指定します。
 
     <ServiceConfiguration serviceName="Azure1">
     ...
@@ -84,11 +77,11 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
     ...
     </ServiceConfiguration>
 
-前のセクションで説明したように、管理ポータルから取得したキーの値を発行者と Shared Access Signature (SAS) に使用します。
+前のセクションで説明したように、管理ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
 
 ### Web サイトまたは仮想マシンを使用する場合の接続文字列の構成
 
-Web サイトまたは仮想マシンを使用する場合には、.NET 構成システム ( `web.config` など) を使用することをお勧めします。`<appSettings>` 要素を使用して接続文字列を格納します。
+Web サイトまたは仮想マシンを使用する場合には、.NET 構成システム (**Web.config** など) を使用することをお勧めします。`<appSettings>` 要素を使用して接続文字列を格納します。
 
     <configuration>
         <appSettings>
@@ -97,14 +90,13 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
         </appSettings>
     </configuration>
 
-前のセクションで説明したように管理ポータルから取得した発行者とキーの値を使用します。
+前のセクションで説明したように、管理ポータルから取得した SAS 名とキー値を使用します。
 
 ## キューの作成方法
 
-**NamespaceManager** クラスによって Service Bus キューに対する管理操作を実行できます。**NamespaceManager** クラスには、キューの作成、列挙、削除のためのメソッドが用意されています。
+[`NamespaceManager` クラス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)を利用し、Service Bus キューに管理操作を実行できます。このクラスにはキューの作成、列挙、削除のためのメソッドが用意されています。
 
-この例では、Azure の **CloudConfigurationManager** クラスと接続文字列を使用して **NamespaceManager** オブジェクトを作成します。この接続文字列は、Service Bus サービス名前空間のベース アドレスと、それを管理する権限を備えた適切な
-SAS の資格情報で構成されます。この接続文字列は、次のようになっています。
+この例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus サービス名前空間のベース アドレスと、それを管理する権限を備えた適切な資格情報で構成されます。この接続文字列は、次のようになっています。
 
     Endpoint=sb://yourServiceNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedSecretValue=yourKey
 
@@ -122,14 +114,14 @@ SAS の資格情報で構成されます。この接続文字列は、次のよ�
         namespaceManager.CreateQueue("TestQueue");
     }
 
-**CreateQueue** メソッドにはオーバーロードがあり、(キューに送信されるメッセージに対して既定の "time-to-live" 値が適用されるように設定するなど) キューのプロパティを調整できるようになっています。このような設定は、**QueueDescription** クラスを使用して適用します。次の例では、名前が "TestQueue"、最大サイズが 5 GB、メッセージの既定の有効期間が 1 分のキューを作成する方法を示します。
+[`CreateQueue`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createqueue.aspx) メソッドにはオーバーロードがあり、(キューに送信されるメッセージに対して既定の "Time to Live" 値が適用されるように設定するなど) キューのプロパティを調整できるようになっています。このような設定は、[`QueueDescription`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.aspx) クラスを使用して適用します。次の例では、名前が "TestQueue"、最大サイズが 5 GB、メッセージの既定の有効期間が 1 分であるキューを作成する方法を示しています。
 
-    // Configure Queue Settings
+    // Configure queue settings
     QueueDescription qd = new QueueDescription("TestQueue");
     qd.MaxSizeInMegabytes = 5120;
     qd.DefaultMessageTimeToLive = new TimeSpan(0, 1, 0);
 
-    // Create a new Queue with custom settings
+    // Create a new queue with custom settings
     string connectionString =
         CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
@@ -141,14 +133,13 @@ SAS の資格情報で構成されます。この接続文字列は、次のよ�
         namespaceManager.CreateQueue(qd);
     }
 
-**注:** 指定した名前のキューがサービス名前空間に既に存在するかどうかを確認するには、**NamespaceManager** オブジェクトで **QueueExists** メソッドを使用できます。
+> [AZURE.NOTE][`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトの [`QueueExists`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## メッセージをキューに送信する方法
 
-アプリケーションで Service Bus キューにメッセージを送信するには、
-接続文字列を使用して **QueueClient** オブジェクトを作成します。
+アプリケーションでは Service Bus キューにメッセージを送信するにあたって、接続文字列を使用して [`QueueClient`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) オブジェクトが作成されます。
 
-以下のコードでは、上で **CreateFromConnectionString** API 呼び出しを使用して作成した "TestQueue" というキューに **QueueClient** オブジェクトを作成する方法を示しています。
+以下のコードでは、[`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.createfromconnectionstring.aspx) API 呼び出しを使用して作成した "TestQueue" キューの [`QueueClient`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) オブジェクトを作成する方法を示しています。
 
     string connectionString =
         CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
@@ -158,12 +149,9 @@ SAS の資格情報で構成されます。この接続文字列は、次のよ�
 
     Client.Send(new BrokeredMessage());
 
-Service Bus キューに送信されたメッセージ (と Service Bus キューから受信したメッセージ) は、**BrokeredMessage** クラスのインスタンスになります。**BrokeredMessage** オブジェクトには、(**Label**、**TimeToLive** などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。アプリケーションでは、
-**BrokeredMessage** のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な**DataContractSerializer** を使用してオブジェクトをシリアル化します。この方法に代わって、
-**System.IO.Stream** を使用できます。
+Service Bus キューに送信された (およびキューから受信された) メッセージは [`BrokeredMessage`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) クラスのインスタンスです。`BrokeredMessage` オブジェクトには、([`Label`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) や [`TimeToLive`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリと任意のアプリケーション データの本体が備わっています。アプリケーションでは、[`BrokeredMessage`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) オブジェクトのコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。この方法に代わって、**System.IO.Stream** を使用できます。
 
-以下の例では、前に示したコード スニペットで取得した
-"TestQueue" の **QueueClient** にテスト メッセージを 5 件送信する方法を示しています。
+以下の例では、上のコード スニペットで取得した "TestQueue" の [`QueueClient`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) オブジェクトにテスト メッセージを 5 件送信する方法を示しています。
 
      for (int i=0; i<5; i++)
      {
@@ -178,21 +166,17 @@ Service Bus キューに送信されたメッセージ (と Service Bus キュ�
        Client.Send(message);
      }
 
-Service Bus キューでは、最大 256 Kb までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーは、64 Kb が最大サイズです)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。
+Service Bus キューでは、[最大 256 KB](service-bus-quotas.md) までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[メッセージング エンティティのパーティション分割](https://msdn.microsoft.com/library/azure/dn520246.aspx)」を参照してください。
 
 ## キューからメッセージを受信する方法
 
-最も簡単にキューからメッセージを受信する方法は、
-**QueueClient** オブジェクトです。このオブジェクトには、2 つの異なる動作モードがあります。**ReceiveAndDelete** と **PeekLock** です。
+キューからメッセージを受信する方法で推奨される方法は、[`QueueClient`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) オブジェクトを使用することです。`QueueClient` オブジェクトは [`ReceiveAndDelete` と `PeekLock`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) という 2 つの異なるモードで動作します。
 
-**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** は最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**PeekLock** モード (既定のモード) では、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応できます。サービス バスは要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して **Complete** を呼び出して受信処理の第 2 段階を完了します。Service
-Bus が **Complete** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
+**PeekLock** モード (既定のモード) では、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。サービス バスは要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [`Complete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出して受信処理の第 2 段階を完了します。Service Bus が `Complete` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-次の例では、既定の **PeekLock** モードを使用したメッセージの受信と処理の方法を示しています。別の
-**ReceiveMode** 値を指定する場合には、
-**CreateFromConnectionString** に別のオーバーロードを使用できます。この例では、**OnMessage** コールバックを使用して、"TestQueue" にメッセージが到着するごとに処理しています。
+次の例では、既定の **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。別の [`ReceiveMode`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 値を指定する場合には、[`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.createfromconnectionstring.aspx) の別のオーバーロードを使用できます。この例では、[`OnMessage`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.onmessage.aspx) コールバックを使用して、**TestQueue** にメッセージが到着するごとに処理しています。
 
     string connectionString =
       CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
@@ -223,45 +207,42 @@ Bus が **Complete** の呼び出しを確認すると、メッセージが読�
             // Indicates a problem, unlock message in queue
             message.Abandon();
         }
-    };
+    }, options);
 
-この例では、**OnMessageOptions** オブジェクトを使用して、**OnMessage** コールバックを構成します。**AutoComplete** は **false** に設定され、受信したメッセージで **Complete** を呼び出すタイミングを手動で制御できるようになります。
-**AutoRenewTimeout** は 1 分に設定され、クライアントは呼び出しがタイムアウトになるまで最大で 1 分間メッセージを待ち、新しい呼び出しを行ってメッセージを確認します。これにより、クライアントがメッセージを取得しない課金対象の呼び出しを行う回数が減ります。
+この例では、[`OnMessageOptions`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) オブジェクトを使用して [`OnMessage`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.onmessage.aspx) コールバックが構成されます。受信したメッセージで [`Complete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出すタイミングを手動制御するために [`AutoComplete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) が **false** に設定されます。[`AutoRenewTimeout`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) は 1 分に設定され、呼び出しがタイムアウトになるまでクライアントは最大 1 分待機します。クライアントは新しい呼び出しを行い、メッセージを確認します。このプロパティ値により、メッセージを取得しない課金対象呼び出しをクライアントが行う回数が減ります。
 
 ## アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
-サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、受信したメッセージで (**Complete** メソッドの代わりに) **Abandon** メソッドを呼び出すことができます。このメソッドが呼び出されると、サービス バスによってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージについて ([`Complete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) メソッドの代わりに) [`Abandon`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx) メソッドを呼び出すことができます。このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
-キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、
-Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
+キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、メッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、**Complete** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般的に、
-この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの
-**MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、[`Complete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般的に、この動作は **1 回以上の処理**と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの [`MessageId`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## 次のステップ
 
-これで、サービス バスキューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
+これで、サービス バスキューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   MSDN リファレンス:[キュー、トピック、サブスクリプション][]
--   Service Bus キューとの間でメッセージを送受信する
-    実用アプリケーションの作成:[Service Bus が仲介するメッセージングに関する .NET チュートリアル]。
+-   「MSDN 概要: [キュー、トピック、サブスクリプション][]」を参照してください。
+-   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus が仲介するメッセージングに関する .NET チュートリアル]。
+-   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、[MSDN][] で概要を参照してください。
 
-  [次のステップ]: #next-steps
-  [Service Bus キューとは]: #what-queues
-  [サービス名前空間の作成]: #create-namespace
-  [名前空間の既定の管理資格情報の取得]: #obtain-creds
-  [Service Bus を使用するようにアプリケーションを構成する]: #configure-app
-  [方法:Service Bus の接続文字列を設定する]: #set-up-connstring
-  [方法:接続文字列を構成する]: #config-connstring
-  [方法:キューを作成する]: #create-queue
-  [方法:メッセージをキューに送信する]: #send-messages
-  [方法:キューからメッセージを受信する]: #receive-messages
-  [方法:アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #handle-crashes
-  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [What are Service Bus Queues]: #what-queues
+  [Create a Service Namespace]: #create-namespace
+  [Obtain the Default Management Credentials for the Namespace]: #obtain-creds
+  [Configure Your Application to Use Service Bus]: #configure-app
+  [How to: Set Up a Service Bus Connection String]: #set-up-connstring
+  [How to: Configure your Connection String]: #config-connstring
+  [How to: Create a Queue]: #create-queue
+  [How to: Send Messages to a Queue]: #send-messages
+  [How to: Receive Messages from a Queue]: #receive-messages
+  [How to: Handle Application Crashes and Unreadable Messages]: #handle-crashes
+  [Azure Management Portal]: http://manage.windowsazure.com
   [7]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
-  [キュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/hh367516.aspx
-  [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: http://msdn.microsoft.com/library/hh367512.aspx
-
-<!--HONumber=47-->
+  [キュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+  [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: http://msdn.microsoft.com/library/azure/hh367512.aspx
+  [Azure のサンプル]: https://code.msdn.microsoft.com/windowsazure/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+  [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
  
+
+<!---HONumber=July15_HO2-->

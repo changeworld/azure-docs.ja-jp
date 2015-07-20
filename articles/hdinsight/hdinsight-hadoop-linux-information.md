@@ -152,4 +152,4 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

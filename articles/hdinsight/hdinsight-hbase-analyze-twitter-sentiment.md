@@ -98,13 +98,11 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 3. **名前**、**説明**、**Web サイト**を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
 
 	<table border="1">
-	<tr><th>フィールド</th><th>値</th></tr>
-	<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
-	<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
-	<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
-	</table>
-
-	> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
+<tr><th>フィールド</th><th>値</th></tr>
+<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
+<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
+<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
+</table>> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
@@ -222,7 +220,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
         // Sentiment dictionary file and the punctuation characters
         const string DICTIONARYFILENAME = @"....\data\dictionary\dictionary.tsv";
         private static char[] _punctuationChars = new[] { 
-            ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
+            ' ', '!', '"', '#', '$', '%', '&', ''', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
 
         // For writting to HBase
@@ -414,9 +412,9 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 	このコードにより、以下の機能が提供されます。
 
-	- **Hbase [ HBaseWriter() ]への接続**: この HBase SDK により、クラスター URL と Hadoop ユーザー資格情報を使用して *￼ClusterCredentials* オブジェクトを作成してから、ClusterCredentials オブジェクトを使用して *HBaseClient* オブジェクトを作成します。
-	- **HBase テーブル[ HBaseWriter() ]の作成**: このメソッド コールは *HBaseClient.CreateTable()* です。
-	- **HBase table [ WriterThreadFunction() ]への書き込み**: このメソッド コールは *HBaseClient.StoreCells()* です。
+	- **Hbase [ HBaseWriter() ] への接続**: この HBase SDK により、クラスター URL と Hadoop ユーザー資格情報を使用して *ClusterCredentials* オブジェクトを作成してから、ClusterCredentials オブジェクトを使用して *HBaseClient* オブジェクトを作成します。
+	- **HBase テーブル [ HBaseWriter() ] の作成**: このメソッド呼び出しは *HBaseClient.CreateTable()* です。
+	- **HBase テーブル [ WriterThreadFunction() ] への書き込み**: このメソッド呼び出しは *HBaseClient.StoreCells()* です。
 
 **Program.cs を完成させるには**
 
@@ -675,7 +673,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 4. **HBaseReader** クラス内で、次の定数値を変更します。
 
-	- **CLUSTERNAME**:  *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
+	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
     - **HBASETABLENAME** = "tweets_by_words";
@@ -1177,8 +1175,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 **layout.cshtml を変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。
-2. 次のコンテンツに置き換えます。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。2. 次のコンテンツに置き換えます。
 
 		<!DOCTYPE html>
 		<html>
@@ -1356,5 +1353,6 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

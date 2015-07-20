@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Machine Learning Web サービスのログ記録の有効化 | Azure" 
-	description="Machine Learning Web サービスのログ記録を有効にする方法について説明します。" 
+	pageTitle="Machine Learning Web サービスのログ記録 | Microsoft Azure" 
+	description="Machine Learning Web サービスのログ記録を有効にする方法について説明します。ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。" 
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="raymondlaghaeian" 
@@ -13,9 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data" 
-	ms.date="02/12/2015"
-	ms.author="garye"/>
-
+	ms.date="06/30/2015"
+	ms.author="raymondl;garye"/>
 
 #Machine Learning Web サービスのログ記録の有効化  
 
@@ -35,10 +34,11 @@
 		-	要求応答メソッドの実行  
 		-	要求応答コンテナーの初期化  
 	-	各 BLOB の名前には、プレフィックスが付きます (形式: {ワークスペース ID}-{Web サービス ID}-{エンドポイント ID}/{ログの種類})。  
--	ログの種類 (次のいずれかの値)：
-バッチ
-スコア/要求
+-	ログの種類 (次のいずれかの値)：  
+バッチ  
+スコア/要求  
 スコア/初期化  
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

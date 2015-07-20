@@ -44,7 +44,7 @@ Microsoft Azure Media Services にライブ インジェストを適用する特
 
 1. 'Ftyp'、LiveServerManifestBox、'moov' ボックスは、各要求 (HTTP POST) とともに送信しなければなりません。ストリームの開始時に送信し、ストリームの取り込みを再開するたびにエンコーダーを再接続しなければなりません。詳細については、[1] のセクション 6 をご覧ください。
 2. [1] のセクション 3.3.2 では、StreamManifestBox と呼ばれるオプションのボックスをライブ インジェストに定義します。Microsoft Azure のロード バランサーのルーティング ロジックにより、このボックスの使用は廃止されました。Microsoft Azure Media Service へのインジェスト時に存在すべきではありません。このボックスが存在しても、Azure Media Services 何も行わずに無視します。
-3. 3.2.3.2 で定義された TrackFragmentExtendedHeaderBox [1] は、各フラグメントに存在しなければなりません。
+3. [1] の 3.2.3.2 で定義された TrackFragmentExtendedHeaderBox は、各フラグメントに存在しなければなりません。
 4. TrackFragmentExtendedHeaderBox のバージョン 2 は、複数のデータセンターで同一の URL を使用するメディア セグメントを生成するために使用する必要があります。フラグメントのインデックス フィールドは、Apple HTTP Live Streaming (HLS) や インデックス ベースの MPEG DASH などのインデックス ベースのストリーミング形式のデータセンター間のフェールオーバーで必要です。データセンター間のフェールオーバーを有効にするには、フラグメントのインデックスを複数のエンコーダー間で同期しなければなりません。また、エンコーダーが再起動または失敗した場合でも、連続するメディア フラグメントごとに 1 ずつ増やします。
 5. [1] のセクション 3.3.6 では、ライブ インジェストの最後に送信してチャネルで EOS (ストリームの終わり) を示す　MovieFragmentRandomAccessBox (‘mfra’) と呼ばれるボックスを定義する場合があります。Azure Media Services のインジェスト ロジックにより、EOS (ストリームの終わり) の使用は廃止されました。ライブ インジェストの 'mfra' ボックスを送信すべきではありません。送信されても、Azure Media Services は何も行わずに無視します。[Channel のリセット](https://msdn.microsoft.com/library/azure/dn783458.aspx#reset_channels)を使用して取り込みポイントの状態をリセットし、[Program の停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)を使用して、プレゼンテーションとストリームを終了することをお勧めします。
 6. MP4 フラグメントの継続時間は、クライアント マニフェストのサイズを小さくし、繰り返しタグを使用してクライアントのダウンロードのヒューリスティックを改善するために、定数にする必要があります。整数以外のフレーム レートを補正するため、継続時間は変動する場合があります。
@@ -118,7 +118,7 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 2. HTTP 要求のメッセージ チャンクの送信に、短いタイムアウトを使用します。ターゲット MP4 フラグメントの継続時間が N 秒の場合、N ～ 2N 秒の間の送信タイムアウトを使用します。たとえば、MP4 フラグメントの継続時間が 6 秒の場合は、6 ～ 12 秒のタイムアウトを使用します。タイムアウトが発生したら、接続をリセットし、新しい接続を開いて、新しい接続でストリーム インジェストを再開します。 
 3. サービスに対して正常にすべて送信された最後の 2 つのフラグメントが含まれるローリング バッファーを各トラックで維持します。ストリームの HTTP POST 要求がストリームの終了前に終了またはタイムアウトした場合、新しい接続を開き、別の HTTP POST 要求を開始して、ストリーム ヘッダーを再送信し、各トラックの最後の 2 つのフラグメントを再送信することによって、メディア タイムラインに不連続性を発生させずにストリームを再開します。これにより、データが失われる確率が減少します。
 4. エンコーダーで、接続を確立する際や TCP エラーが発生した後にストリーミングを再開する際の再試行回数を制限しないことをお勧めします。
-5. TCP エラー後: 
+5. TCP エラー後:
 	1. 現在の接続を終了し、新しい HTTP POST 要求用に新しい接続を作成しなければなりません。
 	2. 新しい HTTP POST URL は、最初の POST URL と同じでなければなりません。
 	3. 新しい HTTP POST URL には、最初の POST と同じストリーム ヘッダー ('ftyp'、“Live Server Manifest Box”、'moov' ボックス) が含まれていなければなりません。
@@ -204,4 +204,6 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 [image6]: ./media/media-services-fmp4-live-ingest-overview/media-services-image6.png
 [image7]: ./media/media-services-fmp4-live-ingest-overview/media-services-image7.png
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

@@ -36,4 +36,4 @@ File ストレージには次の構成要素があります。
 
 [files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

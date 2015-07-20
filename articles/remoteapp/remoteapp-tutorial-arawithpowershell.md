@@ -13,30 +13,30 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="04/14/2015"
-   ms.author="guscatal;spatnaik"/>
+   ms.date="07/07/2015"
+   ms.author="guscatal;spatnaik;elizapo"/>
 
 
 
-Powershell とともに Azure RemoteApp を使用開始する
+# Powershell とともに Azure RemoteApp を使用開始する
 =====================================
 
 
-コマンドレットの取得 
-------------- 
+## コマンドレットの取得 
+-------------
 最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードする必要があります。RemoteApp のコマンドレットもそれに含まれています。
 
-サブスクリプションを使用するために Azure コマンドレットを構成します。
+## サブスクリプションを使用するために Azure コマンドレットを構成します。
 ------------------
 [このガイド](../powershell-install-configure.md)に従うと、Azure サブスクリプションに対してコマンドレットを使用できるようになります。
 
-Create a cloud collection (クラウド コレクションを作成する)
+## Create a cloud collection (クラウド コレクションを作成する)
 --------------------
 次のコマンドを実行するだけです。
 
     New-AzureRemoteAppCollection -Collectionname RAppO365Col1 -ImageName "Office 365 ProPlus (Subscription required)" -Plan Basic -Location "West US" - Description "Office 365 Collection."
 
-上記のコマンドを実行すると、Microsoft Office 365 アプリケーション  (Excel、OneNote、Outlook、PowerPoint、Visio および Word) が自動的に発行されます。
+上記のコマンドを実行すると、Microsoft Office 365 アプリケーション (Excel、OneNote、Outlook、PowerPoint、Visio および Word) が自動的に発行されます。
 
 コレクションの作成には、完了まで 30 分以上かかる場合があります。そのため、このコマンドは追跡に使用できる次のような ID を返します。
 
@@ -49,6 +49,7 @@ Create a cloud collection (クラウド コレクションを作成する)
 
 これで完了です。 ユーザーは、[ここ](https://www.remoteapp.windowsazure.com/)にある Azure RemoteApp クライアントを使用してアプリケーションに接続できるはずです。
 
+## 利用可能なコマンドレット
 他にも多くのコマンドがあり、それらのコマンドに関するドキュメントも間もなく公開される予定です。
 
 基本的な RemoteApp コレクションのコマンドレット:
@@ -96,6 +97,6 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppWorkspace
 - Set-AzureRemoteAppWorkspace
 - Get-AzureRemoteAppOperationResult
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

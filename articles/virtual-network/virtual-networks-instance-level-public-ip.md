@@ -125,4 +125,4 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

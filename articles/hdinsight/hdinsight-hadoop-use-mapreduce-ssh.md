@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # SSH による HDInsight での MapReduce と Hadoop の使用
@@ -22,17 +22,17 @@
 
 この記事では、Secure Shell (SSH) を使用して HDInsight クラスターで Hadoop に接続し、Hadoop コマンドを使用して MapReduce ジョブを送信する方法を説明します。
 
-> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「<a href="../hdinsight-hadoop-linux-information/" target="_blank">Linux ベースの HDInsight の Hadoop について知っておくべきこと</a>」をご覧ください。
+> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
-* SSH クライアントSSH クライアントを備えた Linux、Unix、Mac オペレーティング システムWindows ユーザーは <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> などのクライアントをダウンロードする必要があります。
+* SSH クライアントSSH クライアントを備えた Linux、Unix、Mac オペレーティング システムWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a id="ssh"></a>SSH を使用した接続
+##<a id="ssh"></a>SSH を使用した接続
 
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。以下の例では、**myhdinsight** という名前のクラスターに接続します。
 
@@ -44,15 +44,15 @@ SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメ
 
 **HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
-### PuTTY (Windows クライアント)
+HDInsight での SSH の使用に関する詳細については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-Windows ではビルトイン SSH クライアントは提供されません。**PuTTY** を使用することをお勧めします。PuTTY をダウンロードするには、「<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY のダウンロード ページ</a>」をご覧ください。
+###PuTTY (Windows クライアント)
 
-PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の**PuTTY を使用して Linux 仮想マシンに接続する**セクションをご覧ください。
+Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
-> [AZURE.NOTE]HDInsight クラスターの SSH 認証で証明書を使用した場合は、「<a href="http://azure.microsoft.com/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">Azure 上の Linux における SSH の使用方法</a>」の**PuTTY 用の PPK を作成する**セクションも参照する必要があります。
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a id="hadoop"></a>Hadoop コマンドの使用
+##<a id="hadoop"></a>Hadoop コマンドの使用
 
 1. HDInsight クラスターに接続されたら、以下に従って **Hadoop** コマンドを使用して MapReduce ジョブを起動します。
 
@@ -60,7 +60,7 @@ PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com
 
 	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
 
-	> [AZURE.NOTE]この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md" target="_blank">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
+	> [AZURE.NOTE]この MapReduce ジョブとサンプル データの詳細については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」をご覧ください。
 
 2. 処理中に詳細が生成され、ジョブが完了すると、次のような情報が返されます。
 
@@ -91,11 +91,11 @@ PuTTY の使用の詳細については、「<a href="http://azure.microsoft.com
 		wretched        6
 		wriggling       1
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このように、Hadoop コマンドを使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ出力を表示できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
@@ -107,4 +107,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

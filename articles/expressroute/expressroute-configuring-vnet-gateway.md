@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/21/2015"
+   ms.date="06/25/2015"
    ms.author="cherylmc"/>
 
 #  ExpressRoute 用の Virtual Network の構成
@@ -39,6 +39,8 @@
 	- **名前**: ローカル (オンプレミス) のネットワーク サイトに付ける名前です。
 	- **アドレス空間**: 開始 IP と CIDR (アドレス数) を指定します。仮想ネットワークのアドレスの範囲と重複しない限り、任意のアドレス範囲を指定できます。
 	- **アドレス空間の追加**: この設定は ExpressRoute とは関係ありません。
+	- 
+**注:** ExpressRoute のローカル ネットワーク サイトを作成する必要があります。ローカル ネットワーク サイトに指定されたアドレス プレフィックスは無視されます。ExpressRoute 回線を経由して Microsoft に提供されるアドレス プレフィックスは、ルーティングの目的で使用されます。
 
 6. **[Virtual Network アドレス空間]** ページで、次の情報を入力し、右下にあるチェックマークをクリックしてネットワークを構成します。仮想ネットワーク アドレス空間に関しては、さまざまな規則があります。詳細については、「[[Virtual Network アドレス空間] ページ](https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNET_ADDRESS)」を参照してください。
 
@@ -72,4 +74,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](expres
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

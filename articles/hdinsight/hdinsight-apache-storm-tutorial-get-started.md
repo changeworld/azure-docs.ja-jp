@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 
@@ -44,7 +44,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
 
-新しいストレージ アカウントの作成方法の詳細については、「<a href="../storage-create-storage-account/" target="_blank">ストレージ アカウントの作成方法</a>」をご覧ください。
+ストレージ アカウント作成の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 ##Azure ポータルでの Storm クラスターのプロビジョニング
 
@@ -92,7 +92,7 @@ Storm ダッシュボードが読み込まれると、**[トポロジの送信]*
 
 ###<a id="run"></a>GitHub の Storm Starter プロジェクトからワードカウント サンプルを実行する
 
-クラスターに付属しているサンプルには、ワードカウント トポロジのいくつかのバリエーションが含まれます。これらのサンプルには、センテンスをランダムに出力する**スパウト**と各センテンスを個別の単語に分割し、各単語が発生した回数をカウントする**ボルト**が含まれています。これらのサンプルは、Apache Storm の一部である <a href="https://github.com/apache/storm/tree/master/examples/storm-starter" target="_blank">Storm Starter サンプル</a>で提供されています。
+クラスターに付属しているサンプルには、ワードカウント トポロジのいくつかのバリエーションが含まれます。これらのサンプルには、センテンスをランダムに出力する**スパウト**と各センテンスを個別の単語に分割し、各単語が発生した回数をカウントする**ボルト**が含まれています。これらのサンプルは、Apache Storm の一部である [Storm Starter サンプル](https://github.com/apache/storm/tree/master/examples/storm-starter)で提供されています。
 
 次の手順に従って、Storm Starter サンプルを実行します。
 
@@ -143,7 +143,7 @@ Storm UI を使用してトポロジを監視できます。
 
 	* **アクティブ化の解除** - 実行中のトポロジを一時停止します
 
-	* **再調整** - トポロジの並列処理を調整します。クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。詳細については、「<a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)</a>」をご覧ください。
+	* **再調整** - トポロジの並列処理を調整します。クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。詳細については、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」を参照してください。
 
 	* **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 
@@ -190,9 +190,9 @@ Storm UI を使用してトポロジを監視できます。
 
 * **HDInsight Tools for Visual Studio** - HDInsight ツールでは、前述の Storm ダッシュボードのように、Visual Studio を使用して Storm トポロジを送信、監視、管理できます。また HDInsight ツールは、C# Storm のトポロジを作成する機能を提供しており、クラスター上に展開し、実行できるトポロジ サンプルを含んでいます。
 
-	詳細については、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Hadoop Tools for Visual Studio の使用開始</a>」をご覧ください。
+	詳細については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
-* **サンプル ファイル** - HDInsight Storm クラスターでは、**%STORM_HOME%\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
+* **サンプル ファイル** - HDInsight Storm クラスターでは、**%STORM_HOME%\\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
 
 	* ソース コード - storm-starter-0.9.1.2.1.5.0-2057-sources.jar など
 
@@ -204,7 +204,7 @@ Storm UI を使用してトポロジを監視できます。
 
 	> [AZURE.NOTE]Java ドキュメントは Web ページで構成されます。抽出後、ブラウザーを使用して **index.html** ファイルを表示します。
 
-	これらのサンプルにアクセスするには、HDInsight クラスターの Storm のリモート デスクトップを有効にし、**%STORM_HOME%\contrib** からファイルをコピーする必要があります。
+	これらのサンプルにアクセスするには、HDInsight クラスターの Storm のリモート デスクトップを有効にし、**%STORM_HOME%\\contrib** からファイルをコピーする必要があります。
 
 * 次のドキュメントには、HDInsight の Storm と使用できるその他のサンプルの一覧が含まれています。
 
@@ -216,6 +216,5 @@ Storm UI を使用してトポロジを監視できます。
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

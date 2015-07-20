@@ -16,4 +16,4 @@ MongoLab UI にアクセスするには、以下の手順を実行します。
 [button-addons]: ./media/howto-access-mongolab-ui/button-addons.png
 [screen-dblanding]: ./media/howto-access-mongolab-ui/screen-mongolab_dblanding.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

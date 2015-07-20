@@ -190,5 +190,6 @@
 [reference-docs]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/#Commands_to_manage_mobile_services
 [Mac および Linux 用 Windows Azure コマンド ライン ツールのインストール方法]: http://go.microsoft.com/fwlink/p/?LinkId=275795
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

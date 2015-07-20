@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Machine Learning Web サービスのパラメーターの使用 | Azure" 
+	pageTitle="Azure Machine Learning Web サービスのパラメーターの使用 | Microsoft Azure" 
 	description="Azure Machine Learning Web サービスを使用して、Web サービス アクセス時のモデルの動作を変更する方法です。" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="06/29/2015" 
 	ms.author="raymondl;garye"/>
 
 #Azure Machine Learning Web サービスのパラメーターの使用
@@ -22,7 +22,7 @@ Azure Machine Learning Web サービスは、変更可能なパラメーター�
 
 一般的な例として、発行された Web サービスのユーザーが、Web サービスにアクセスしたときに別のデータ ソースを指定できるように[リーダー][reader] モジュールを設定する場合があります。または、別の宛先を指定できるように[ライター][writer] モジュールを構成します。その他の例としては、[特徴ハッシュ][feature-hashing] モジュールのビット数の変更や、[フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールにおける目的の特徴の数の変更があります。
 
-Web サービスのパラメーターを定義して、1 つまたは複数のモジュール パラメーターに関連付け、必須かオプションかを指定することができます。Web サービスのユーザーは、サービスにアクセスするときにこれらのパラメーターの値を指定することができ、モジュールの操作はそれに応じて変更されます。
+Web サービスのパラメーターを定義して、1 つまたは複数のモジュール パラメーターに関連付け、必須かオプションかを指定することができます。Web サービスのユーザーは、サービスにアクセスするときにこれらのパラメーターの値を指定でき、モジュールの操作は実行時に変更されます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -48,7 +48,8 @@ Web サービスのドキュメント (Machine Learning Studio の Web サービ
 
     - **[Please specify data destination]** の下の [Azure Blob Storage] を選択します。
     - **[Please specify authentication type]** の下の [アカウント] を選択します。
-    - Azure BLOB ストレージのアカウント情報を入力します。<p />
+    - Azure BLOB ストレージのアカウント情報を入力します。 
+    <p />
 
 3.	**[Path to blob beginning with container parameter]** の右にあるアイコンをクリックします。次のように表示されています。
 
@@ -88,5 +89,6 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

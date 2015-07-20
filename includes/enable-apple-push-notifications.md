@@ -1,5 +1,5 @@
 
-## <a id="register"></a>アプリをプッシュ通知に登録する
+## <a id="register"></a>アプリのプッシュ通知を登録する
 
 * [アプリのアプリ ID を登録します](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html#//apple_ref/doc/uid/TP40012582-CH30-SW991)。アプリを登録するときに、**[App Services]** の **[プッシュ通知]** チェック ボックスをオンにします (このチェックボックスはオプションです)。
 
@@ -11,4 +11,4 @@
 
 * 最後に、[Xcode クイックスタート プロジェクト内のプロビジョニング プロファイルを更新](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringPushNotifications/ConfiguringPushNotifications.html#//apple_ref/doc/uid/TP40012582-CH32-SW10)した後、[プロビジョニング プロファイルがプッシュ通知を有効にするように作成されたか登録されたことを確認します](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringPushNotifications/ConfiguringPushNotifications.html#//apple_ref/doc/uid/TP40012582-CH32-SW12)。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

@@ -110,4 +110,7 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [仮想ネットワークの概要]: http://msdn.microsoft.com/library/azure/jj156007.aspx
 [Azure VM 構成設定について]: http://msdn.microsoft.com/library/azure/dn763935.aspx
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=July15_HO2-->

@@ -65,4 +65,4 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

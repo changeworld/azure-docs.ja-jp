@@ -1,6 +1,6 @@
 <properties
 	pageTitle="HDInsight での Apache Storm の概要 |Microsoft Azure"
-	description="Apache Storm の汎用的な概要と、HDInsight で Apache Storm を使用した、クラウドでのリアルタイムのデータ分析ソリューションを構築する方法について説明します。"
+	description="Apache Storm の概要と、HDInsight で Storm を使用した、クラウドでのリアルタイムのデータ分析ソリューションを構築する方法について説明します。"
 	keywords="apache storm,real time analytics"
 	services="hdinsight"
 	documentationCenter=""
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
@@ -27,13 +27,13 @@ Apache Storm は、Hadoop を使用して、リアルタイムでデータを処
 
 ##HDInsight で Apache Storm を使用する理由
 
-HDInsight の Apache Storm  は、管理されるクラスターとして、Azure 環境に統合されて提供されます。次の主要な利点を提供します。
+HDInsight の Apache Storm は、管理されるクラスターとして、Azure 環境に統合されて提供されます。次の主要な利点を提供します。
 
 * 稼働時間 99.9% の SLA を使用した管理されたサービスとして実行します。
 
 * 好みの言語を使用できます: **Java**、**C#**、**Python** で書かれた Storm コンポーネントのサポートを提供します。
 
-	* さまざまなプログラミング言語をサポートしています:  Java を使用してデータを読み取り、C# を使用して処理できます。
+	* さまざまなプログラミング言語をサポートしています: Java を使用してデータを読み取り、C# を使用して処理できます。
 
 	* **Trident** Java インターフェイスを使用して、メッセージの「厳密に 1 回」処理、「トランザクション」のデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジを作成します。
 
@@ -75,7 +75,7 @@ HDInsight クラスター上の各 Storm には、クラスターで実行され
 
 ![Storm ダッシュボード](./media/hdinsight-storm-overview/dashboard.png)
 
-Storm ダッシュボードの使用に関する詳細については、「[HDInsight での Apache Storm トポロジの展開と管理](hdinsight-storm-deploy-monitor-topology.md)」をご覧ください。
+Storm ダッシュボードの使用に関する詳細については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」をご覧ください。
 
 HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、「[Event Hubs の使用](service-bus-event-hubs-c-storm-getstarted.MD)」と「[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.MD)」をご覧ください。
 
@@ -89,7 +89,7 @@ Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。
 
 ![Nimbus、Zookeeper、スーパーバイザのダイアグラム](./media/hdinsight-storm-overview/nimbus.png)
 
-###スケーリング
+###スケール
 
 作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。すべての HDInsight クラスターで、データの処理中でも、クラスター内のノード数を変更できます。
 
@@ -209,4 +209,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: ../hdinsight-storm-getting-started.md
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

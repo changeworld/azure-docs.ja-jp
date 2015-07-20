@@ -29,16 +29,16 @@
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE.NOTE] Python または [Python Azure パッケージ][]をインストールする場合は、[Python インストール ガイド](../python-how-to-install.md) を参照してください。
+[AZURE.NOTE]Python または [Python Azure パッケージ][]をインストールする場合は、[Python インストール ガイド](../python-how-to-install.md)を参照してください。
 
 
 ## テーブルの作成方法
 
-**TableService** オブジェクトを使用して、Table サービスを操作できます。次のコードでは、**TableService** オブジェクトを作成します。プログラムを使用して Azure ストレージにアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
+**TableService** オブジェクトを使用して、テーブル サービスを操作できます。次のコードでは、**TableService** オブジェクトを作成します。プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
 
 	from azure.storage import TableService, Entity
 
-次のコードでは、ストレージ アカウント名とアカウント キーを使用して **TableService** オブジェクトを作成します。 'myaccount' と  'mykey' の部分は、実際のアカウントとキーに置き換えてください。
+次のコードでは、ストレージ アカウント名とアカウント キーを使用して **TableService** オブジェクトを作成します。'myaccount' と 'mykey' の部分は、実際のアカウントとキーに置き換えてください。
 
 	table_service = TableService(account_name='myaccount', account_key='mykey')
 
@@ -46,9 +46,7 @@
 
 ## エンティティをテーブルに追加する方法
 
-エンティティを追加するには、最初に、エンティティのプロパティ名と値を定義するディクショナリを作成します。すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。システムでは **PartitionKey** が使用されて多くのストレージ ノードにテーブル エンティティが自動的に配布されます。
-**PartitionKey** が同じエンティティは同じノードに格納されます。 
-**RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
+エンティティを追加するには、最初に、エンティティのプロパティ名と値を定義するディクショナリを作成します。すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。システムでは **PartitionKey** が使用されて多くのストレージ ノードにテーブル エンティティが自動的に配布されます。**PartitionKey** が同じエンティティは同じノードに格納されます。**RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
 
 エンティティをテーブルに追加するには、ディクショナリ オブジェクトを **insert_entity** メソッドに渡します。
 
@@ -71,8 +69,7 @@
 	task = {'description' : 'Take out the garbage', 'priority' : 250}
 	table_service.update_entity('tasktable', 'tasksSeattle', '1', task)
 
-更新されるエンティティが存在しない場合、更新操作は失敗します。既に存在しているかどうかに関係なくエンティティを格納するには、**insert_or_replace_entity** を使用します。 
-次の例では、最初の呼び出しで既存のエンティティを置き換えます。2 番目の呼び出しでは、指定された **PartitionKey** と **RowKey** を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
+更新されるエンティティが存在しない場合、更新操作は失敗します。既に存在しているかどうかに関係なくエンティティを格納するには、**insert_or_replace_entity** を使用します。次の例では、最初の呼び出しで既存のエンティティを置き換えます。2 番目の呼び出しでは、指定された **PartitionKey** と **RowKey** を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
 
 	task = {'description' : 'Take out the garbage again', 'priority' : 250}
 	table_service.insert_or_replace_entity('tasktable', 'tasksSeattle', '1', task)
@@ -110,13 +107,11 @@
 
 ## エンティティ プロパティのサブセットを照会する方法
 
-テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
- *projection* と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。**select** パラメーターを使用して、クライアントに提供するプロパティの名前を渡します。
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。*プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。**select** パラメーターを使用して、クライアントに提供するプロパティの名前を渡します。
 
 次のコードのクエリは、テーブル内のエンティティの説明だけを返します。
 
-*次のスニペットはクラウド ストレージ サービスに対してのみ機能します。これはストレージ エミュレーターでは
-サポートされていません。*
+*次のスニペットはクラウド ストレージ サービスに対してのみ機能します。これはストレージ エミュレーターではサポートされていません。*
 
 	tasks = table_service.query_entities('tasktable', "PartitionKey eq 'tasksSeattle'", 'description')
 	for task in tasks:
@@ -138,11 +133,12 @@
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
--   MSDN リファレンス:[Azure でのデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   [Azure Storage チーム ブログ][]
 
-[Azure でのデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-[Python Azure パッケージ]: https://pypi.python.org/pypi/azure  
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Python Azure パッケージ]: https://pypi.python.org/pypi/azure
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

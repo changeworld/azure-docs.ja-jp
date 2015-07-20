@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/03/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での Hive と Hadoop の使用
@@ -22,9 +22,9 @@
 
 この記事では、リモート デスクトップを使用して HDInsight クラスターに接続し、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを実行する方法について説明します。
 
-> [AZURE.NOTE]このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL については「<a href="hdinsight-use-hive.md" target="_blank">HDInsight での Hive と Hadoop の使用</a>」をご覧ください。
+> [AZURE.NOTE]このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL については、「[HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -32,11 +32,11 @@
 
 * Windows 10、Window 8、Windows 7 を実行するクライアント コンピューター
 
-## <a id="connect"></a>リモート デスクトップへの接続
+##<a id="connect"></a>リモート デスクトップへの接続
 
-「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
+「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a id="hive"></a>Hive コマンドの使用
+##<a id="hive"></a>Hive コマンドの使用
 
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hive を使用します。
 
@@ -46,7 +46,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
         %hive_home%\bin\hive
 
-    CLI が起動すると、Hive CLI プロンプトの`hive>`  が表示されます。
+    CLI が起動すると、Hive CLI プロンプトの`hive>` が表示されます。
 
 3. CLI を使用して次のステートメントを入力し、サンプル データを使用して **log4jLogs** という名前の新しいテーブルを作成します。
 
@@ -68,7 +68,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 	* **ROW FORMAT**: Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
 
-    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
+    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。
 
     * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
@@ -94,11 +94,11 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
     3 つのデータ行が返され、各行の t4 列には **[ERROR]** が含まれます。
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
@@ -131,18 +131,18 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[Powershell-install-configure]: ../powershell-install-configure.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

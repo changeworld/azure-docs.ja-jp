@@ -3,7 +3,7 @@
 	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。コード サンプルは Ruby で記述されています。" 
 	services="storage" 
 	documentationCenter="ruby" 
-	authors="tfitzmac,tamram" 
+	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="03/11/2015" 
+	ms.date="05/11/2015" 
 	ms.author="tomfitz"/>
 
 
@@ -23,9 +23,7 @@
 
 ## 概要
 
-このガイドでは、Azure BLOB サービスを使用して
-一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。
-紹介するシナリオは、BLOB の**アップロード、一覧の取得、ダウンロード**、および**削除**です。
+このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Ruby API を使用して記述されています。紹介するシナリオは、BLOB の**アップロード、一覧表示、ダウンロード**、および**削除**です。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -33,10 +31,9 @@
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、 
-[Azure での Ruby アプリケーションの作成]に関するページを参照してください。/develop/ruby/tutorials/web-app-with-linux-vm/).
+Ruby アプリケーションを作成します。手順については、[Windows Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## アプリケーションからストレージへのアクセスの構成
+## アプリケーションのストレージへのアクセスの構成
 
 Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
@@ -54,8 +51,7 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** および **AZURE_STORAGE_ACCESS_KEY** 
-を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** および **AZURE_STORAGE_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
@@ -68,7 +64,9 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
 
-## 方法:コンテナーを作成する
+## 方法: コンテナーを作成する
+
+[AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 **Azure::BlobService** オブジェクトを使用して、コンテナーと BLOB を操作できます。コンテナーを作成するには、**create_container()** メソッドを使用します。
 
@@ -81,7 +79,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 	  puts $!
 	end
 
-コンテナー内のファイルを公開する場合は、コンテナーのアクセス許可を設定できます。 
+コンテナー内のファイルを公開する場合は、コンテナーのアクセス許可を設定できます。
 
 <strong>create_container()</strong> の呼び出しを変更して、次のように **:public_access_level** オプションを渡すだけです。
 
@@ -91,9 +89,9 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 **:public_access_level** オプションに指定できる値は次のとおりです。
 
-* **BLOB:** コンテナーと BLOB データに完全パブリック読み取りアクセスを指定します。クライアントは匿名の要求でコンテナー内に BLOB を列挙できますが、ストレージ アカウント内にコンテナーを列挙することはできません。
+* **blob:** コンテナーと BLOB のデータに対する完全パブリック読み取りアクセスを指定します。クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
 
-* **コンテナー:** BLOB にパブリック読み取りアクセスを指定します。このコンテナー内の BLOB データは匿名の要求で読み取ることができますが、コンテナー データは使用できません。クライアントは匿名の要求でコンテナー内に BLOB を列挙できません。
+* **container:** BLOB に対するパブリック読み取りアクセスを指定します。該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません。
 
 別の方法として、**set_container_acl()** メソッドを使用してパブリック アクセス レベルを指定することでも、コンテナーのパブリック アクセス レベルを変更できます。
  
@@ -101,9 +99,9 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 	azure_blob_service.set_container_acl('test-container', "container")
 
-## 方法:コンテナーに BLOB をアップロードする
+## 方法: コンテナーに BLOB をアップロードする
 
-BLOB にコンテンツをアップロードするには、**create_block_blob()** メソッドを使用して BLOB を作成し、ファイルまたは文字列を BLOB のコンテンツとして使用します。 
+BLOB にコンテンツをアップロードするには、**create_block_blob()** メソッドを使用して BLOB を作成し、ファイルまたは文字列を BLOB のコンテンツとして使用します。
 
 次のコードでは、ファイル **test.png** を、コンテナー内の新しい BLOB として "image-blob" という名前でアップロードします。
 
@@ -112,10 +110,9 @@ BLOB にコンテンツをアップロードするには、**create_block_blob()
 	  "image-blob", content)
 	puts blob.name
 
-## 方法:コンテナー内の BLOB を一覧表示する
+## 方法: コンテナー内の BLOB を一覧表示する
 
-コンテナーの一覧を取得するには、**list_containers()** メソッドを使用します。 
-コンテナー内の BLOB の一覧を取得するには、**list_blobs()** メソッドを使用します。 
+コンテナーの一覧を取得するには、**list_containers()** メソッドを使用します。コンテナー内の BLOB の一覧を取得するには、**list_blobs()** メソッドを使用します。
 
 次のコードでは、アカウントのすべてのコンテナーからすべての BLOB の URL を出力します。
 
@@ -127,16 +124,16 @@ BLOB にコンテンツをアップロードするには、**create_block_blob()
 	  end
 	end
 
-## 方法:BLOB をダウンロードする
+## 方法: BLOB をダウンロードする
 
-BLOB をダウンロードするには、**get_blob()** メソッドを使用してコンテンツを取得します。 
+BLOB をダウンロードするには、**get_blob()** メソッドを使用してコンテンツを取得します。
 
 次の例は、**get_blob()** を使用して "image-blob" のコンテンツをダウンロードし、ローカル ファイルに書き込む方法を示しています。
 
 	blob, content = azure_blob_service.get_blob(container.name,"image-blob")
 	File.open("download.png","wb") {|f| f.write(content)}
 
-## 方法:BLOB を削除する
+## 方法: BLOB を削除する
 最後に、BLOB を削除するには、**delete_blob()** メソッドを使用します。次の例は、BLOB の削除方法を示しています。
 
 	azure_blob_service.delete_blob(container.name, "image-blob")
@@ -145,8 +142,9 @@ BLOB をダウンロードするには、**get_blob()** メソッドを使用し
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-- MSDN リファレンス:[Azure ストレージ](http://msdn.microsoft.com/library/azure/gg433040.aspx)
-- [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
+- [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

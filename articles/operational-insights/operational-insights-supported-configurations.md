@@ -1,17 +1,18 @@
-<properties 
+<properties
    pageTitle="オペレーション インサイトにサポートされる構成"
    description="オペレーション インサイトに必要な構成に関して説明します"
    services="operational-insights"
    documentationCenter=""
    authors="bandersmsft"
    manager="jwhit"
-   editor="tysonn" /> <tags 
+   editor="tysonn" />
+<tags
    ms.service="operational-insights"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/30/2015"
+   ms.date="07/02/2015"
    ms.author="banders" />
 
 # オペレーション インサイトにサポートされる構成
@@ -23,7 +24,7 @@
 
 ## System Center 2012 の Operations Manager の構成
 
-オペレーション インサイトは、System Center 2012 R2 や System Center 2012 SP1 R2 の Operations Manager に関連付けられているサービスとして使用することができます。これにより、Operations Manager のオペレーション コンソールを使用してオペレーション インサイトのアラートと構成情報を表示することができます。オペレーション インサイトを Operations Manager  に関連付けられているサービスとして使用する場合、エージェントは、管理サーバーと直接通信し、次にオペレーション インサイト サービスを通信します。
+オペレーション インサイトは、System Center 2012 R2 や System Center 2012 SP1 R2 の Operations Manager に関連付けられているサービスとして使用することができます。これにより、Operations Manager のオペレーション コンソールを使用してオペレーション インサイトのアラートと構成情報を表示することができます。オペレーション インサイトを Operations Manager に関連付けられているサービスとして使用する場合、エージェントは、管理サーバーと直接通信し、次にオペレーション インサイト サービスを通信します。
 
 関連付けられているサービスとしてオペレーション インサイトを使用するには、次の前提条件が必要です。
 
@@ -38,14 +39,8 @@
 
 インストールと構成の手順の詳細については、「[オペレーション インサイトのアラートの表示](http://go.microsoft.com/fwlink/?LinkID=293793)」をご覧ください。
 
-SharePoint Server 2010、Lync Server 2013、Lync Server 2010、System Center 2012 SP1  – Virtual Machine Manager に関するオペレーション インサイトのアラートを表示するには、これらのワークロードに使用する実行アカウントを構成する必要があります。次の情報を入力します。
+SharePoint Server 2010、Lync Server 2013、Lync Server 2010、System Center 2012 SP1 – Virtual Machine Manager に関するオペレーション インサイトのアラートを表示するには、これらのワークロードに使用する実行アカウントを構成する必要があります。実行アカウントの設定の詳細については、「[Operations Manager とオペレーション インサイトの連携に関する考慮事項](operational-insights-operations-manager.md)」を参照してください。
 
-
-- [SharePoint に使用する実行アカウントの設定](../operational-insights-run-as.md)
-
-- [Lync Server に使用する実行アカウントの設定](../operational-insights-run-as.md)
-
-- [Virtual Machine Manager (VMM) の実行アカウントの設定](../operational-insights-run-as.md)
 
 ### Operations Manager のオペレーティング システム
 
@@ -105,5 +100,4 @@ SQL Server では、分析用に次の 32 ビットと 64 ビット エディシ
 
 また、WOW64 実装で実行する場合は、SQL Server の32 ビット エディションがサポートされています。
 
-
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

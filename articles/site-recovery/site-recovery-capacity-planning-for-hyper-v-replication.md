@@ -120,7 +120,7 @@ Azure を復旧サイトとして利用している場合、あるいはオン�
 
 	g.**[認証とストレージ]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可するかどうか、あるいは特定のプライマリ サーバーからのデータに受け入れを制限するかどうかを指定します。ワイルドカード文字を利用し、特定のドメインからのサーバーに受け入れを制限できます。個々に指定する必要がありません (たとえば、*.contoso.com)。
 
-	h.すべての復旧 Hyper-V ホストでファイアウォール ポートを開きます。Port 443 (Certificate auth): Get-ClusterNode | ForEach-Object {Invoke-command -computername \$_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}
+	h.すべての復旧 Hyper-V ホストでファイアウォール ポートを開きます。Port 443 (Certificate auth): Get-ClusterNode | ForEach-Object {Invoke-command -computername \\$_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}
 
 
           Port 80 (Kerberos auth):
@@ -193,11 +193,11 @@ c.クラスターの任意のノード
 
     既定のレポートの場所:
 
-    %systemdrive%\Users\Public\Documents\Capacity Planner
+    %systemdrive%\\Users\\Public\\Documents\\Capacity Planner
 
     ログの場所:
 
-    %systemdrive%\Users\Public\Documents\CapacityPlanner
+    %systemdrive%\\Users\\Public\\Documents\\CapacityPlanner
 
 ## 手順 4: 結果を解釈します。
 次の 2 つのシナリオのいずれかでリストアップされないメトリックはこのシナリオが関連しないため、無視できます。
@@ -239,4 +239,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 - [Set up protection with a single VMM server (単一の VMM サーバーを使用した保護の設定)](site-recovery-single-vmm)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

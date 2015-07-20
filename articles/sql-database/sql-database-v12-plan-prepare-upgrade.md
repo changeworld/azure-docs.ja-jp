@@ -14,17 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/15/2015"
+	ms.date="07/07/2015"
 	ms.author="genemi"/>
 
 
 # SQL Database V12 へのアップグレードの計画と準備をする
-
-
-<!-- What is being changed this time?:
-GeneMi , 2015-May-15 14:31pm
-Powershell cmdlets.
--->
 
 
 このトピックでは、Azure SQL Database を V11 から V12 ([一部の地域ではプレビュー](sql-database-v12-whats-new.md#V12AzureSqlDbPreviewGaTable)) にアップグレードするために必要な、計画と準備について説明します。
@@ -54,9 +48,9 @@ Powershell cmdlets.
 このドキュメントで取り扱うのは、Microsoft Azure SQL Database のバージョン V11 から V12 へのアップグレードです。正式には、バージョン番号は次の 2 つのような値になります。これらは Transact-SQL ステートメント **SELECT @@version;** によって取得できます。
 
 
-- 11.0.9228.18 *(V11)*
 - 12.0.2000.8 *(または少し高い、V12)*
-
+- 11.0.9228.18 *(V11)*
+ - V11 は SAWA v2 とも呼ばれました。
 
 ### サービス階層の計画
 
@@ -156,6 +150,9 @@ Visual Studio 2013 (VS2013) で Azure SQL Database に接続することをお�
 ### V12 へのアップグレード*中*の制限事項
 
 
+V11 データベースは、V12 へのアップグレード中も、引き続きデータ アクセスに使用できます。ただし、考慮すべきいくつかの制限があります。
+
+
 | 制限事項 | 説明 |
 | :--- | :--- |
 | アップグレードの実行時間 | アップグレードの実行時間は、サーバーにあるデータベースのサイズ、エディション、数によって異なります。特に、次のようなデータベースを持つサーバーの場合は、アップグレード プロセスの実行に数時間から数日かかる場合があります。<br/><br/>* 50 GB を超える<br/>* Premium 以外のサービス階層<br/><br/>アップグレード中にサーバーで新しいデータベースを作成する場合も、アップグレードの実行時間が長くなる場合があります。 |
@@ -245,5 +242,6 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2015" 
+	ms.date="05/24/2015" 
 	ms.author="juliako"/>
 
-# 方法:ストレージ アクセス キーをローリングした後に Media Services を更新する
+#方法: ストレージ アクセス キーをローリングした後に Media Services を更新する
 
 新しく Azure Media Services アカウントを作成すると、メディア コンテンツの保存に使用する Azure Storage アカウントも選択するよう求めるメッセージが表示されます。Media Services アカウントには複数のストレージ アカウントを追加できます。
 
@@ -24,26 +24,26 @@
 
 Media Services は、1 つのストレージ キー (プライマリまたはセカンダリ) に依存します。特に、アセットのストリーミングやダウンロードに使用されるロケーターはアクセス キーに依存します。ストレージ アクセス キーをローリングする際は、ストリーミング サービスが中断されないようにロケーターも更新する必要があります。
 
->[AZURE.NOTE]ストレージ キーを再生成した後は、必ず、更新を Media Services と同期するようにしてください。 
+>[AZURE.NOTE]ストレージ キーを再生成した後は、必ず、更新を Media Services と同期するようにしてください。
 
 このトピックでは、適切なストレージ キーを使用するために、ストレージ キーをローリングして Media Services を更新する手順について説明しています。ストレージ アカウントが複数ある場合、この手順はストレージ アカウントごとに実行する必要があることにご注意ください。
 
 >[AZURE.NOTE]このトピックで説明する手順を実稼働アカウントで実行する前に、実稼働前のアカウントでテストするようにしてください。
 
 
-## 手順 1:セカンダリ ストレージ アクセス キーを再生成する
+## 手順 1: セカンダリ ストレージ アクセス キーを再生成する
 
-セカンダリ ストレージ キーの再生成から開始します。既定では、セカンダリ キーは Media Services で使用されません。ストレージ キーをローリングする方法については、「[方法:ストレージ アクセス キーを表示、コピー、再生成する](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).」をご覧ください。
+セカンダリ ストレージ キーの再生成から開始します。既定では、セカンダリ キーは Media Services で使用されません。ストレージ キーをローリングする方法の詳細については、「[方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
   
-## <a id="step2"></a>手順 2:Media Services を更新して新しいセカンダリ ストレージ キーを使用する
+##<a id="step2"></a>手順 2: Media Services を更新して新しいセカンダリ ストレージ キーを使用する
 
 Media Services を更新してセカンダリ ストレージ アクセス キーを使用します。再生成されたストレージ キーを Media Services と同期するには、次の 2 つの方法のどちらかを使用できます。
 
 - Azure ポータルを使用する場合: Media Service アカウントを選択し、ポータル ウィンドウの下部にある [キーの管理] アイコンをクリックします。Media Services で同期するストレージ キーに応じて、同期するキーをプライマリ キーとセカンダリ キーのどちらかに指定します。この例では、セカンダリ キーを使用します。
 
-- Media Services Management REST API を使用します。 
+- Media Services Management REST API を使用します。
 
-	次のコード例は、指定したストレージ キーを Media Services と同期するために、https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求を作成する方法を示しています。この例では、セカンダリ ストレージ キーの値が使用されます。詳細については、「[方法:Media Services Management REST API の使用](http://msdn.microsoft.com/library/azure/dn167656.aspx)」をご覧ください。
+	次のコード例では、指定したストレージ キーを Media Services と同期するために、https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求を作成する方法を示します。この例では、セカンダリ ストレージ キーの値が使用されます。詳細については、「[方法: Media Services Management REST API の使用](http://msdn.microsoft.com/library/azure/dn167656.aspx)」を参照してください。
  
 		public void UpdateMediaServicesWithStorageAccountKey(string mediaServicesAccount, string storageAccountName, string storageAccountKey)
 		{
@@ -83,29 +83,29 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
 
 >[AZURE.NOTE]保留中のジョブに影響しないよう、30 分待ってから、Media Services で操作を行います (新しいロケーターの作成など)。
 
-## 手順 3:ロケーターを更新する 
+##手順 3: ロケーターを更新する 
 
-30 分が経過したら、既存のロケーターを更新して、新しいセカンダリ ストレージ キーとの依存関係を確立できます。  
+30 分が経過したら、既存のロケーターを更新して、新しいセカンダリ ストレージ キーとの依存関係を確立できます。
 
-ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator ) または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。 
+ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
-## 手順 5:プライマリ ストレージ アクセス キーを再生成する
+##手順 5: プライマリ ストレージ アクセス キーを再生成する
 
-プライマリ ストレージ アクセス キーを再生成します。ストレージ キーをローリングする方法については、「[方法:ストレージ アクセス キーを表示、コピー、再生成する](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+プライマリ ストレージ アクセス キーを再生成します。ストレージ キーをローリングする方法の詳細については、「[方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 
-## 手順 6:Media Services を更新して新しいプライマリ ストレージ キーを使用する
+##手順 6: Media Services を更新して新しいプライマリ ストレージ キーを使用する
 	
 [手順 2](media-services-roll-storage-access-keys.md#step2) と同じ手順を使用しますが、ここで Media Services アカウントと同期するのは新しいプライマリ ストレージ アクセス キーです。
 
 >[AZURE.NOTE]保留中のジョブに影響しないよう、30 分待ってから、Media Services で操作を行います (新しいロケーターの作成など)。
 
-## 手順 7:ロケーターを更新する  
+##手順 7: ロケーターを更新する  
 
-30 分が経過したら、既存のロケーターを更新して、新しいプライマリ ストレージ キーとの依存関係を確立できます。  
+30 分が経過したら、既存のロケーターを更新して、新しいプライマリ ストレージ キーとの依存関係を確立できます。
 
-ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator ) または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。 
+ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
  
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

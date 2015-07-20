@@ -20,7 +20,7 @@
 
 このトピックでは、3 台のサーバーから成る SharePoint ファームの azuredeploy.json テンプレート ファイルの構造について段階的に説明します。[こちら](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-three-vm/azuredeploy.json)からブラウザーでこのテンプレートの内容を見ることができます。
 
-または、azuredeploy.json ファイルのローカル コピーを調べるために、ファイルの場所としてローカル フォルダー (たとえば、C:\Azure\Templates\SharePointFarm) を指定してファイルを作成することもできます。Azure PowerShell のコマンド プロンプトでフォルダー名を入力して次のコマンドを実行します。
+または、azuredeploy.json ファイルのローカル コピーを調べるために、ファイルの場所としてローカル フォルダー (たとえば、C:\\Azure\\Templates\\SharePointFarm) を指定してファイルを作成することもできます。Azure PowerShell のコマンド プロンプトでフォルダー名を入力して次のコマンドを実行します。
 
 	$folderName="<folder name, such as C:\Azure\Templates\SharePointFarm>"
 	$webclient = New-Object System.Net.WebClient
@@ -378,4 +378,4 @@ JSON ファイルの **"resources"** セクションのサブセクションの�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

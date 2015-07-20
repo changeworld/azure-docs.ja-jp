@@ -50,7 +50,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 	SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
 
-    * **Linux、Unix または OS X クライアント**: [Linux、OS X または Unix からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)に関するページを参照してください。
+    * **Linux、Unix または OS X クライアント**: 「[Linux、OS X または Unix からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
 
     * **Windows クライアント**: [Windows からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)に関するページを参照してください。
 
@@ -255,4 +255,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

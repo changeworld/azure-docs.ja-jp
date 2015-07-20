@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="プログラムで HDInsight YARN アプリケーション ログにアクセスする| Microsoft Azure" 
-	description="プログラムで HDInsight アプリケーション ログにアクセスする。" 
+	pageTitle="プログラムで Hadoop YARN アプリケーション ログにアクセスする| Microsoft Azure" 
+	description="HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="bradsev" 
@@ -16,7 +16,7 @@
 	ms.date="03/31/2015" 
 	ms.author="bradsev"/>
 
-# プログラムで HDInsight の YARN アプリケーション ログにアクセスする
+# プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする
 
 このトピックでは、Azure HDInsight の Hadoop クラスター上に作成された YARN (Yet Another Resource Negotiator) アプリケーションをプログラムを使って列挙する方法と、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続せずに、アプリケーション ログにプログラムを使ってアクセスする方法について説明します。具体的には、次の新しいコンポーネントと新しい API が追加されました。
 
@@ -137,7 +137,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 上記のコードは、アプリケーション履歴クライアントを使用して対象のアプリケーションの一覧表示または検索を行い、それらのアプリケーションのログをローカル フォルダーにダウンロードします。
 
-または、次のコード スニペットで、アプリケーション ID がわかっているアプリケーションのログをダウンロードします。アプリケーション ID は、リソース マネージャーにより割り当てられる、アプリケーションのグローバルに一意の識別子です。これは、リソース マネージャーの開始時刻とそこに送信されるアプリケーションのカウンターを使用して作成されます。カウンター数は単調に増加します。アプリケーション ID の形式は "application_<RM-start-time>_<Counter>” です。アプリケーション ID とジョブ ID は異なることに注意してください。アプリケーション ID はフレームワークに依存しない YARN の概念であるのに対して、ジョブ ID は MapReduce フレームワークに固有の概念です。YARN では、ジョブ ID は、リソース マネージャーに送信された MapReduce アプリケーションのアプリケーション マスターによって処理される、特定の MapReduce ジョブを識別します。
+または、次のコード スニペットで、アプリケーション ID がわかっているアプリケーションのログをダウンロードします。アプリケーション ID は、リソース マネージャーにより割り当てられる、アプリケーションのグローバルに一意の識別子です。これは、リソース マネージャーの開始時刻とそこに送信されるアプリケーションのカウンターを使用して作成されます。カウンター数は単調に増加します。アプリケーション ID の形式は "application_<RM-start-time>_<Counter>" です。アプリケーション ID とジョブ ID は異なることに注意してください。アプリケーション ID はフレームワークに依存しない YARN の概念であるのに対して、ジョブ ID は MapReduce フレームワークに固有の概念です。YARN では、ジョブ ID は、リソース マネージャーに送信された MapReduce アプリケーションのアプリケーション マスターによって処理される、特定の MapReduce ジョブを識別します。
 
 	// Download application logs for an application whose application ID is known
 	string applicationId = "application_1416017767088_0028";
@@ -163,10 +163,14 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 	{
 	    appHistoryClient.DownloadApplicationLogs(container, downloadLocation);
 	}
+
+
+
 [YARN-timeline-server]: http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]: http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]: https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]: https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

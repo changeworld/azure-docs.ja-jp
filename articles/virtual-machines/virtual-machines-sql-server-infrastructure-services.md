@@ -51,27 +51,27 @@ SQL Server を実行する Azure VM にデータを移行するには、いく�
 
 [Azure の仮想マシンにおける SQL Server に関する技術記事][technicalarticles]
 
-[sqlvmlanding]: http://azure.microsoft.com/services/virtual-machines/sql-server/
-[sqldbcompared]: http://azure.microsoft.com/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas
-[createvmportal]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
-[setupconnectivity]: https://msdn.microsoft.com/library/azure/dn133152.aspx
-[provisionsqlvm]: http://azure.microsoft.com/documentation/articles/virtual-machines-provision-sql-server/
-[sqlalwaysonportal]: http://go.microsoft.com/fwlink/?LinkId=526941
-[sqlalwaysonmanual]: https://msdn.microsoft.com/library/azure/dn249504.aspx
-[sqlhadr]: https://msdn.microsoft.com/library/azure/jj870962.aspx
-[sqlbi]: https://msdn.microsoft.com/library/azure/jj992719.aspx
-[sqldw]: https://msdn.microsoft.com/library/azure/dn387396.aspx
-[sqloltp]: https://msdn.microsoft.com/library/azure/eb0188e2-5569-48ff-b92c-1f6c0bf79620#about
-[migratesql]: https://msdn.microsoft.com/library/azure/dn133142.aspx
-[backupurl]: https://msdn.microsoft.com/library/dn435916(v=sql.120).aspx
-[managedbackup]: https://msdn.microsoft.com/library/dn449496.aspx
-[autobackup]: https://msdn.microsoft.com/library/azure/dn906091.aspx
-[autopatching]: https://msdn.microsoft.com/library/azure/dn961166.aspx
-[managementtasks]: https://msdn.microsoft.com/library/azure/dn906886.aspx
-[sqlmsdnlanding]: https://msdn.microsoft.com/library/azure/jj823132.aspx
-[sqlvmgetstarted]: https://msdn.microsoft.com/library/azure/dn133151.aspx
-[sqlperf]: https://msdn.microsoft.com/library/azure/dn133149.aspx
-[sqlsecurity]: https://msdn.microsoft.com/library/azure/dn133147.aspx
-[technicalarticles]: https://msdn.microsoft.com/library/azure/dn248435.aspx
-<!--HONumber=52-->
- 
+  [sqlvmlanding]: http://azure.microsoft.com/services/virtual-machines/sql-server/
+  [sqldbcompared]: http://azure.microsoft.com/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas
+  [createvmportal]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
+  [setupconnectivity]: https://msdn.microsoft.com/library/azure/dn133152.aspx
+  [provisionsqlvm]: http://azure.microsoft.com/documentation/articles/virtual-machines-provision-sql-server/
+  [sqlalwaysonportal]: http://go.microsoft.com/fwlink/?LinkId=526941
+  [sqlalwaysonmanual]: https://msdn.microsoft.com/library/azure/dn249504.aspx
+  [sqlhadr]: https://msdn.microsoft.com/library/azure/jj870962.aspx
+  [sqlbi]: https://msdn.microsoft.com/library/azure/jj992719.aspx
+  [sqldw]: https://msdn.microsoft.com/library/azure/dn387396.aspx
+  [sqloltp]: https://msdn.microsoft.com/library/azure/eb0188e2-5569-48ff-b92c-1f6c0bf79620#about
+  [migratesql]: https://msdn.microsoft.com/library/azure/dn133142.aspx
+  [backupurl]: https://msdn.microsoft.com/library/dn435916(v=sql.120).aspx
+  [managedbackup]: https://msdn.microsoft.com/library/dn449496.aspx
+  [autobackup]: https://msdn.microsoft.com/library/azure/dn906091.aspx
+  [autopatching]: https://msdn.microsoft.com/library/azure/dn961166.aspx
+  [managementtasks]: https://msdn.microsoft.com/library/azure/dn906886.aspx
+  [sqlmsdnlanding]: https://msdn.microsoft.com/library/azure/jj823132.aspx
+  [sqlvmgetstarted]: https://msdn.microsoft.com/library/azure/dn133151.aspx
+  [sqlperf]: https://msdn.microsoft.com/library/azure/dn133149.aspx
+  [sqlsecurity]: https://msdn.microsoft.com/library/azure/dn133147.aspx
+  [technicalarticles]: https://msdn.microsoft.com/library/azure/dn248435.aspx
+
+<!---HONumber=July15_HO2-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Machine Learning Python クライアント ライブラリを使って Python からデータ セットにアクセスする | Azure " 
+	pageTitle="Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする | Microsoft Azure" 
 	description="Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。" 
 	services="machine-learning" 
 	documentationCenter="python" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/21/2015" 
+	ms.date="07/07/2015" 
 	ms.author="huvalo;bradsev" />
 
 
@@ -80,7 +80,10 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 次のいずれかを実行することで認証トークンを取得できます。
 
-1. 所有者からトークンをリクエストします。所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。![](http://i.imgur.com/h33GoZX.jpg) プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
+1. 所有者からトークンをリクエストします。所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
+
+    ![](http://i.imgur.com/h33GoZX.jpg)
+
 2. 所有者への役割の昇格を申請するそのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
 
 開発者がワークスペース ID と認証トークンを取得したら、役割に関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
@@ -362,5 +365,6 @@ Python クライアント ライブラリは、Pandas DataFrame を次の形式�
 <!-- Module References -->
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

@@ -13,19 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.date="05/27/2015" 
 	ms.author="juliako"/>
 
 
-# .NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する (プレビュー)
+#.NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する (プレビュー)
 
-## 概要
+> [AZURE.SELECTOR]
+- [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+- [.NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+- [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+- 
+##概要
 
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする**チャネル**を作成する手順について説明します。
 
 >[AZURE.NOTE]ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
-## 一般的なライブ ストリーミング シナリオ
+>[AZURE.NOTE]Media Services .NET SDK バージョン 3.2.0.0 以降を使用する必要があります。
+
+##一般的なライブ ストリーミング シナリオ
 
 次の手順では、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクを示します。
 
@@ -57,7 +64,7 @@
 1. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
 1. プログラムを削除し、アセットを削除 (オプション) します。   
 
-## このトピックの内容
+##このトピックの内容
 
 このトピックでは Media Services .NET SDK を使用したチャネルとプログラムでさまざまな操作を実行する方法を示します。多くの操作は実行時間が長いため、長時間の操作を管理する .NET API が使用されます。
 
@@ -72,7 +79,7 @@
 1. スレートを表示および非表示にします。広告を起動および停止します。実行時間の長い API が使用されます。
 1. チャネルと関連付けられているすべてのリソースをクリーンアップします。
 
-## 前提条件
+##前提条件
 チュートリアルを完了するには次のものが必要です。
 
 - このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](azure.microsoft.com)を参照してください。
@@ -80,12 +87,12 @@
 - Visual Studio 2010 SP1 以降。
 - シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
-## With Media Services SDK for .NET を使用して開発を行うためにセットアップします。
+##With Media Services SDK for .NET を使用して開発を行うためにセットアップします。
  
 1. Visual Studio を使用して、コンソール アプリケーションを作成します。
 1. Media Services NuGet パッケージを使用して、コンソール アプリケーションに .NET 用 Media Services SDK を追加します。
 
-## メディア サービスへの接続
+##メディア サービスへの接続
 ベスト プラクティスとして、メディア サービス名とアカウント キーを格納するために app.config ファイルを使用する必要があります。
 
 >[AZURE.NOTE]名前とキーの値を確認するには、Azure ポータルに移動して、Media Services アカウントを選択し、ポータル ウィンドウの下にある [キーの管理] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
@@ -103,7 +110,7 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 	 
 	
 
-## コード例
+##コード例
 
 	using System;
 	using System.Collections.Generic;
@@ -489,8 +496,9 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 	
 
 	
-## 関連トピック
+##関連トピック
 
-[シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md) 
-<!--HONumber=52-->
+[シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
  
+
+<!---HONumber=July15_HO2-->

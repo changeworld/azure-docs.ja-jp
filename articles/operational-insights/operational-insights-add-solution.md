@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/11/2015"
+    ms.date="07/02/2015"
     ms.author="banders"/>
 
 # Operational Insights のソリューション
@@ -42,11 +42,15 @@ Microsoft Azure オペレーション インサイトには、基本の "構成�
 
 - [SQL と Active Directory の評価](operational-insights-assessment.md)
 
-ただし、次のソリューションは、Microsoft Monitoring Agent でサポート*されていません*。
+ただし、次のソリューションは、Microsoft Monitoring Agent でサポート*されておらず*、System Center Operations Manager (SCOM) が必要です。
 
 - [容量管理](operational-insights-capacity.md)
 
-- [構成の評価](../operational-insights-configuration-assessment.md)
+- [アラートの管理](operational-insights-alerts.md)
+
+- [構成の評価](operational-insights-solutions.md#configuration-assessment)
+
+これらのソリューションを Operations Manager で使用するガイダンスについては、「[Operations Manager と Operational Insights の連携に関する考慮事項](operational-insights-operations-manager.md)」を参照してください。
 
 IIS ログの収集は、以下がインストールされたコンピューターでサポートされています。
 
@@ -85,6 +89,5 @@ IIS ログの収集は、以下がインストールされたコンピュータ�
 
 
 3. [確認] ページで **[はい]** をクリックすると、ソリューションが削除されます。
- 
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

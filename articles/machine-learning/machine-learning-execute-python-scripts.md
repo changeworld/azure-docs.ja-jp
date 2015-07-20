@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Azure Machine Learning での Python スクリプトの実行 | Azure" 
-	description="Azure Machine Learning における Python のサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。" 
+	pageTitle="Python Machine Learning スクリプトの実行 |Microsoft Azure" 
+	description="Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。" 
+	keywords="python machine learning,pandas,python pandas,python scripts"
 	services="machine-learning"
 	documentationCenter="" 
 	authors="garyericson" 
@@ -17,11 +18,9 @@
 	ms.author="bradsev;garye" />
 
 
-# Azure Machine Learning での Python スクリプトの実行
+# Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
 
-## はじめに
-
-このトピックでは、Azure Machine Learning における現在の Python のサポートの基になる設計原則について説明します。また、既存のコードのインポートや視覚化のエクスポートのサポートを含む主要な機能の概要と、最後に、いくつかの制限事項と進行中の作業についても説明します。
+このトピックでは、Azure Machine Learning における現在の Python スクリプトのサポートの基になる設計原則について説明します。また、既存のコードのインポートや視覚化のエクスポートのサポートを含む主要な機能の概要と、最後に、いくつかの制限事項と進行中の作業についても説明します。
 
 [Python](https://www.python.org/) は、多くのデータ サイエンティストにとって欠かせないツールです。洗練された簡潔な構文、クロス プラットフォームのサポート、膨大で強力なライブラリ、完成度の高い開発ツールを備えています。Python は、データの取り込みと処理から、トレーニング、検証、モデルのデプロイへの特徴構築に至る、Machine Learning のモデリングで通常使用されるワークフローのすべてのフェーズで使用されています。
 
@@ -30,12 +29,12 @@ Azure Machine Learning Studio は、Machine Learning の実験のさまざまな
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
-## 設計原則
+## Machine Learning での Python スクリプトの設計原則
 Azure Machine Learning Studio でのPython の主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します (図 1 参照)。
 
-![Image1](./media/machine-learning-execute-python-scripts/figure1a.png)
+![Image1](./media/machine-learning-execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
-![Image2](./media/machine-learning-execute-python-scripts/figure1b.png)
+![Image2](./media/machine-learning-execute-python-scripts/embedded-machine-learning-python-script.png)
 
 図 1.**Python スクリプトの実行**モジュール
 
@@ -50,14 +49,16 @@ Azure Machine Learning Studio でのPython の主要なインターフェイス�
   * R を使用した結果の評価と後処理。
 
 
-## 基本的な使用方法
-このセクションでは、[Python スクリプトの実行][execute-python-script]モジュールのいくつかの基本的な使用方法を調査します。前述のように、Python モジュールへの入力は、Pandas データ フレームとして公開されます。Pandas の詳細と、効果的かつ効率的にデータを操作するための Pandas の使用方法については、「*Python for Data Analysis (Python によるデータ分析)*」(Sebastopol, CA.: O'Reilly, 2012) をご覧ください。この関数は、Python [シーケンス](https://docs.python.org/2/c-api/sequence.html) (タプル、リスト、NumPy 配列など) の内部にパッケージ化された 1 つの Pandas データ フレームを返す必要があります。このシーケンスの最初の要素は、モジュールの最初の出力ポートに返されます。図 2 に、この方法を示します。
+## Machine Learning での Python スクリプトの基本的な使用シナリオ
+このセクションでは、[Python スクリプトの実行][execute-python-script]モジュールのいくつかの基本的な使用方法を調査します。前述のように、Python モジュールへの入力は、Pandas データ フレームとして公開されます。Python Pandas の詳細と、効果的かつ効率的にデータを操作するための Python Pandas の使用方法については、「*Python によるデータ分析*」(Sebastopol, CA.: O'Reilly, 2012) をご覧ください。この関数は、Python [シーケンス](https://docs.python.org/2/c-api/sequence.html) (タプル、リスト、NumPy 配列など) の内部にパッケージ化された 1 つの Pandas データ フレームを返す必要があります。このシーケンスの最初の要素は、モジュールの最初の出力ポートに返されます。図 2 に、この方法を示します。
 
-![Image3](./media/machine-learning-execute-python-scripts/figure2.png) 図 2:パラメーターに入力ポートをマッピングし、出力ポートに値を返す。
+![Image3](./media/machine-learning-execute-python-scripts/map-of-python-script-inputs-outputs.png)
+
+図 2.パラメーターに入力ポートをマッピングし、出力ポートに値を返す。
 
 入力ポートが `azureml_main` 関数のパラメーターにマッピングされる方法の詳細なセマンティクスを、表 1 に示します。
 
-![image1T](./media/machine-learning-execute-python-scripts/table-1.png)
+![image1T](./media/machine-learning-execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 表 1関数パラメーターへの入力ポートのマッピング。
 
@@ -75,13 +76,13 @@ Azure Machine Learning Studio でのPython の主要なインターフェイス�
 
 ![image4](./media/machine-learning-execute-python-scripts/figure3a.png)
 
-![image5](./media/machine-learning-execute-python-scripts/figure3b.png)
+![image5](./media/machine-learning-execute-python-scripts/python-script-with-python-pandas.png)
 
 図 3:Python 式を評価するための Web サービス。
 
 この実験から作成された Web サービスは、入力として Python 式を受け取り (文字列として)、これを Python インタープリターに送信し、式と評価結果の両方を含むテーブルを返します。
 
-## 既存の Python モジュールをインポートする
+## 既存の Python スクリプト モジュールをインポートする
 多くのデータ サイエンティスト向けの一般的な使用例は、既存の Python スクリプトを Azure Machine Learningの実験に組み込むことです。すべてのコードを連結して 1 つのスクリプト ボックスに貼り付ける代わりに、[Python スクリプトの実行][execute-python-script]モジュールが、Python モジュールが含まれている zip ファイルに接続する 3 番目の入力ポートを受け入れます。このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。`azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。
 
 たとえば、単純な “Hello, World” 関数を含む Hello.py ファイルについて考えてみます。
@@ -109,7 +110,7 @@ Azure Machine Learning Studio でのPython の主要なインターフェイス�
 図 7:[Python スクリプトの実行][execute-python-script]モジュール内で使用中のユーザー定義関数。
 
 ## 視覚化の操作
-ブラウザーでビジュアル化できる MatplotLib を使用して作成されたプロットは、[Python スクリプト][execute-python-script]によって返されます。ただし、プロットは、R を使用しているときのように、自動的にイメージにリダイレクトされません。そのため、プロットが Azure Machine Learning に返される場合、ユーザーは明示的にプロットを PNG ファイルに保存する必要があります。
+ブラウザーでビジュアル化できる MatplotLib を使用して作成されたプロットは、[Python スクリプト][execute-python-script]によって返されます。ただし、R を使用している場合、プロットは自動的にリダイレクトされません。このため、プロットを Azure Machine Learning に返す場合、ユーザーはすべてのプロットを PNG ファイルに明示的に保存する必要があります。
 
 MatplotLib からのイメージを生成するには、次の手順を完了する必要があります。
 
@@ -138,7 +139,7 @@ MatplotLib からのイメージを生成するには、次の手順を完了す
 
 
 ## 高度な例
-Azure Machine Learning にインストールされている Anaconda 環境には、 NumPy、SciPy、Scikits-Learn などの一般的なパッケージが含まれています。これらは、通常の機械学習パイプラインのさまざまなデータ処理タスクで効果的に使用できますたとえば、次の実験とスクリプトは、データセットの特徴の重要度スコアを計算するための Scikits-Learn でのアンサンブル学習者の使用を示しています。このスコアは、別の機械学習モデルに供給する前に、監視する特徴を選択するために使用されます。
+Azure Machine Learning にインストールされている Anaconda 環境には、NumPy、SciPy、Scikits-Learn などの一般的なパッケージが含まれています。これらは、通常の機械学習パイプラインのさまざまなデータ処理タスクで効果的に使用できます。たとえば、次の実験とスクリプトは、データセットの特徴の重要度スコアを計算するための Scikits-Learn でのアンサンブル学習者の使用を示しています。このスコアは、別の機械学習モデルに供給する前に、監視する特徴を選択するために使用されます。
 
 重要度スコアを計算し、それに基づいて特徴を順序付ける Python 関数を以下に示します。
 
@@ -168,5 +169,6 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 <!-- Module References -->
 [execute-python-script]: https://msdn.microsoft.com/library/azure/cdb56f95-7f4c-404d-bde7-5bb972e6f232/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

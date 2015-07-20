@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET サービス バス API で AMQP 1.0 を使用する方法 - Azure" 
+	pageTitle=".NET Service Bus API で AMQP 1.0 を使用する方法 - Azure" 
 	description="Azure .NET Service Bus API で Advanced Message Queuing Protodol (AMQP) 1.0 を使用する方法について説明します。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -13,27 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
+	ms.date="07/02/2015" 
 	ms.author="sethm"/>
-
-
-
-
-
 
 # .NET サービス バス API で AMQP 1.0 を使用する方法
 
-## はじめに
-
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
 
-サービス バスでの AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューとトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。さらに、さまざまな言語、フレームワーク、オペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
+サービス バスでの AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-このガイドでは、Service Bus .NET API を使って .NET アプリケーションからサービス バスの仲介型メッセージング機能 (キューとトピック発行/サブスクライブ) を使用する方法を説明します。標準 Java Message Service (JMS) API を使用して同じ作業を実行する方法が説明されているハウツー ガイドがあります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+このガイドでは、Service Bus .NET API を使って .NET アプリケーションからサービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明します。標準 Java Message Service (JMS) API を使用して同じ作業を実行する方法が説明されているハウツー ガイドがあります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## Service Bus の概要
 
-このガイドは、"queue1" という名前のキューが含まれているサービス バス名前空間が既にあることを前提としています。まだない場合は、[Azure 管理ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。サービス バス 名前空間とキューの作成方法の詳細については、「[サービス バス キューの使用方法](https://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/)」をご覧ください。
+このガイドは、"queue1" という名前のキューが含まれているサービス バス名前空間が既にあることを前提としています。 まだない場合は、[Azure 管理ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。サービス バス 名前空間とキューの作成方法の詳細については、「[サービス バス キューの使用方法](https://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/)」を参照してください。
 
 ## Service Bus SDK のダウンロード
 
@@ -43,7 +36,7 @@ AMQP 1.0 のサポートは、Service Bus SDK バージョン 2.1 以降で使�
 
 既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使ってサービス バス サービスと通信します。既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、サービス バス接続文字列を明示的に構成する必要があります。AMQP 1.0 を使用する際、アプリケーション コードはこの変更以外には基本的に変更されません。
 
-現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。サポートされていない機能については、後ほど「サポートされていない機能と制限」で紹介します。そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。それらの設定は、この短いガイドでは使用しませんが、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」で詳しく説明されています。
+現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。サポートされていない機能については、後ほど「サポートされていない機能と制限」で紹介します。 そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。それらの設定は、この短いガイドでは使用しませんが、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」で詳しく説明されています。
 
 ### App.config による構成
 
@@ -66,17 +59,17 @@ App.config ファイルの例を以下に示します。
 
 	Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 
-[namespace] と [SAS key] は、Azure 管理ポータルから取得します。詳細については、「[Service Bus キューの使用方法][]」をご覧ください。
+[namespace] と [SAS key] は、Azure 管理ポータルから取得します。詳細については、「Service Bus キューの使用方法」を参照してください。
 
 AMQP を使用するときには、接続文字列の末尾に ";TransportType=Amqp" を追加します。これで、AMQP 1.0 を使ってサービス バスに接続するようにクライアント ライブラリに通知されます。
 
 ### エンティティ名の構成
 
-このサンプル アプリケーションでは、App.config ファイルの **appSettings** セクションにある "EntityName" の設定を使って、メッセージ交換に使用するキューの名前を構成します。
+このサンプル アプリケーションでは、App.config ファイルの **appSettings** セクションにある `EntityName` の設定を使って、メッセージ交換に使用するキューの名前を構成します。
 
 ### Service Bus キューを使用するシンプルな .NET アプリケーション
 
-Service Bus キューとの間でメッセージを送受信する例を次に示します。
+サービス バス キューとの間でメッセージを送受信する例を次に示します。
 
 	// SimpleSenderReceiver.cs
 	
@@ -209,7 +202,7 @@ Service Bus キューとの間でメッセージを送受信する例を次に�
 このアプリケーションを実行すると、次の形式の出力が生成されます。
 
 	> SimpleSenderReceiver.exe
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	
 	Sent message with MessageID = fb7f5d3733704e4ba4bd55f759d9d7cf
 	Received message with MessageID = fb7f5d3733704e4ba4bd55f759d9d7cf
@@ -225,9 +218,9 @@ Service Bus キューとの間でメッセージを送受信する例を次に�
 
 これまでに、.NET を使ってサービス バスにメッセージを送信する方法と、.NET を使ってそれらのメッセージを受信する方法を紹介しました。しかし、AMQP 1.0 の主な利点の 1 つは、さまざまな言語で書かれたコンポーネントからアプリケーションを作成して、高い信頼性と完全な忠実度でメッセージ交換を行えることにあります。
 
-上で説明したサンプル .NET アプリケーションと、Java 版のガイド ([サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ](http://aka.ms/ll1fm3)) に含まれている同様の Java アプリケーションを使用すると、.NET と Java の間でメッセージを交換できます。 
+上で説明したサンプル .NET アプリケーションと、Java 版のガイド ([サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ](service-bus-java-how-to-use-jms-api-amqp.md)) に含まれている同様の Java アプリケーションを使用すると、.NET と Java の間でメッセージを交換することができます。
 
-サービス バスと AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」をご覧ください。
+サービス バスと AMQP 1.0 を使ったクロスプラットフォーム メッセージングの詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/azure/jj841071.aspx)」を参照してください。
 
 ### JMS から .NET
 
@@ -241,7 +234,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 ### JMS アプリケーションの出力
 
 	> java SimpleSenderReceiver sendonly
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Sent message with JMSMessageID = ID:4364096528752411591
 	Sent message with JMSMessageID = ID:459252991689389983
 	Sent message with JMSMessageID = ID:1565011046230456854
@@ -250,7 +243,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 ### .NET アプリケーションの出力
 
 	> SimpleSenderReceiver.exe	
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Received message with MessageID = 4364096528752411591
 	Received message with MessageID = 459252991689389983
 	Received message with MessageID = 1565011046230456854
@@ -268,7 +261,7 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 #### .NET アプリケーションの出力
 
 	> SimpleSenderReceiver.exe sendonly
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Sent message with MessageID = d64e681a310a48a1ae0ce7b017bf1cf3	
 	Sent message with MessageID = 98a39664995b4f74b32e2a0ecccc46bb
 	Sent message with MessageID = acbca67f03c346de9b7893026f97ddeb
@@ -278,13 +271,13 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 #### JMS アプリケーションの出力
 
 	> java SimpleSenderReceiver	
-	Press [enter] to send a message.Type 'exit' + [enter] to quit.
+	Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	Received message with JMSMessageID = ID:d64e681a310a48a1ae0ce7b017bf1cf3
 	Received message with JMSMessageID = ID:98a39664995b4f74b32e2a0ecccc46bb
 	Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
 	exit
 
-<h2>サポートされていない機能と制限</h2>
+## サポートされていない機能および制限
 
 .NET Service Bus API の次の機能は、現在のところ AMQP の使用時はサポートされていません。
 
@@ -299,21 +292,20 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 * セッション ロックの更新
 * いくつかの動作の小さな違い
 
-詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」をご覧ください。このトピックには、サポートされていない API の詳細なリストが含まれています。
+詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/azure/jj841071.aspx)」を参照してください。このトピックには、サポートされていない API の詳細なリストが含まれています。
 
-<h2>まとめ</h2>
+## 概要
 
-このガイドでは、AMQP 1.0 と Service Bus .NET API を使って .NET からサービス バスの仲介型メッセージング機能 (キューとトピック発行/サブスクライブ) を使用する方法を説明しました。
+このガイドでは、AMQP 1.0 と Service Bus .NET API を使って .NET からサービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明しました。
 
-Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語からも使用できます。Service Bus で AMQP 1.0 を使用すると、これらの言語を使って作成されたコンポーネントで信頼性と正確性の高いメッセージ交換を実現できます。詳細については、「[Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」をご覧ください。
+Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語からも使用できます。サービス バスで AMQP 1.0 を使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/azure/jj841071.aspx)」を参照してください。
 
-<h2>詳細情報</h2>
+## 次のステップ
 
-* [Service Bus での AMQP 1.0 サポート](http://aka.ms/pgr3dp)
-* [サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法](http://aka.ms/ll1fm3)
-* [Service Bus AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)
-* [Service Bus キューの使用方法](http://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/)
+* [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
+* [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](service-bus-java-how-to-use-jms-api-amqp.md)
+* [Service Bus AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/library/azure/jj841071.aspx)
+* [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
+ 
 
-[Service Bus キューの使用方法]: http://azure.microsoft.com/develop/net/how-to-guides/service-bus-queues/
-
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

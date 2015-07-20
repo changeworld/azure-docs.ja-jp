@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="二項分布スイート | Azure" 
+	pageTitle="二項分布スイート | Microsoft Azure" 
 	description="二項分布スイート" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/11/2015" 
-	ms.author="jaymathe"/> 
+	ms.date="06/24/2015" 
+	ms.author="jaymathe"/>
 
 
 #二項分布スイート
@@ -22,87 +22,148 @@
 
 
 
-二項分布スイートは、一連のサンプル Web サービス ([二項ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/bdg5)、[確率計算]( https://datamarket.azure.com/dataset/aml_labs/bdp4)、[変位値計算]( https://datamarket.azure.com/dataset/aml_labs/bdq5)) で、具体的には二項分布を生成し処理する 3 つのサービスです。これらのサービスにより、任意の長さの二項分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。二項分布スイートは、R の統計パッケージに含まれている R 関数 qbinom、rbinom、および pbinom に基づいています。 
+二項分布スイートは、一連のサンプル Web サービス ([二項ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/bdg5)、[確率計算](https://datamarket.azure.com/dataset/aml_labs/bdp4)、[変位値計算](https://datamarket.azure.com/dataset/aml_labs/bdq5)) で、具体的には二項分布を生成し処理します。これらのサービスにより、任意の長さの二項分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。二項分布スイートは、R の統計パッケージに含まれている R 関数 qbinom、rbinom、pbinom に基づいています。
 
->この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどから、Marketplace 上で直接ユーザーが使用できますが、この Web サービスのもう 1 つの目的は、Azure ML を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure ML Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
+
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+>この Web サービスは、 モバイル アプリ、Web サイト、ローカル コンピューターなどから、Marketplace 上で直接ユーザーが使用できます。この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
 
 ##Web サービスの使用
 二項分布スイートには、次の 3 つのサービスが含まれています。
 
 ###二項分布の変位値計算
-このサービスでは、正規分布の 4 つの引数を使用し、関連付けられている変位値を計算します。
-入力引数は、次のとおりです。
+このサービスでは、正規分布の 4 つの引数を使用し、関連付けられている変位値を計算します。入力引数は、次のとおりです。
 
-- p - 複数の試行回数の 1 つの集計された確率  
-- size - 試行の回数
-- prob - 試行で成功する確率
+- p – 複数の試行回数の 1 つの集計された確率  
+- size – 試行の回数
+- prob – 試行で成功する確率
 - Side - L は分布の下部、U は分布の上部 
 
 サービスの出力は計算された変位値で、指定された確率に関連付けられています。
 
 ###二項分布の確率計算
-このサービスでは、二項分布の 4 つの引数を使用し、関連する変位値を計算します。
-入力引数は、次のとおりです。
+このサービスでは、二項分布の 4 つの引数を使用し、関連する変位値を計算します。入力引数は、次のとおりです。
 
-- q - 二項分布でのイベントの 1 つの変位値 
-- size - 試行の回数
-- prob - 試行で成功する確率
-- side- L は分布の下部、U は分布の上部、または E は 1 つの成功数に相当します。
+- q – 二項分布でのイベントの 1 つの変位値 
+- size – 試行の回数
+- prob – 試行で成功する確率
+- side– L は分布の下部、U は分布の上部、E は 1 つの成功数に相当します。
 
 サービスの出力は計算された確率で、指定された変位値に関連付けられています。
 
 ###二項分布ジェネレーター
-このサービスは、二項分布の 3 つの引数を使用し、二項分布の数値のランダム シーケンスを生成します。 
-要求には、次の引数を指定する必要があります。
+このサービスは、二項分布の 3 つの引数を使用し、二項分布の数値のランダム シーケンスを生成します。要求には、次の引数を指定する必要があります。
 
-- n - 観察数 
-- size - 試行の回数
-- prob - 成功する確率
+- n – 観察数 
+- size – 試行の回数
+- prob – 成功する確率
 
 サービスの出力は、size と prob の引数に基づいた二項分布の長さ n のシーケンスです。
 
->Microsoft Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST または GET メソッドによって呼び出すことができます。 
+>Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。
 
-自動でサービスを使用するための複数の方法があります (アプリケーション例: [ジェネレーター](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx)、
-[確率計算](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx)、
-[変位値計算](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator))。 
+自動でサービスを使用するための複数の方法があります (アプリケーション例: [ジェネレーター](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx)、[確率計算](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx)、[変位値計算](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator))。
 
 ###Web サービスを使用する C# コードを開始します。
 
-	public class Input{
-	public double Recency;
-	public double Frequency;
-	public double Monetary;
-	public double Time;
-	public double Class;
+###二項分布の変位値計算
+	public class Input
+	{
+	        public string p;
+	        public string size;
+	        public string prob;
+	        public string side;
+	}
+	
+    public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
+	{
+	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+	}
+	
+    void main()
+	{
+	        var input = new Input() { p = TextBox1.Text, size = TextBox2.Text, prob = TextBox3.Text, side = TextBox4.Text };
+	        var json = JsonConvert.SerializeObject(input);
+	        var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+	        var httpClient = new HttpClient();
+	
+	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	
+	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+	        var result = response.Result.Content;
+		    var scoreResult = result.ReadAsStringAsync().Result;
 	}
 
-	public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
-    {
-        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
-        System.Diagnostics.Debug.WriteLine("AuthenticationHeaderValue" + new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray)));
-        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-    }
-       
+###二項分布の確率計算
+	public class Input
+	{
+	        public string q;
+	        public string size;
+	        public string prob;
+	        public string side;
+	}
+	
+    public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
+	{
+	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+	}
+	
 	void Main()
 	{
-  	var input = new Input(){Recency =1, Frequency=0,Monetary=0,Time=1, Class= 0};
-	var json = JsonConvert.SerializeObject(input);
-	var acitionUri =  "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
-       
-  	var httpClient = new HttpClient();
-   	httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere","ChangeToAPIKey");
-   	httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-  	var query = httpClient.PostAsync(acitionUri,new StringContent(json));
-  	var result = query.Result.Content;
-  	var scoreResult = result.ReadAsStringAsync().Result;
-  	scoreResult.Dump();
+	        var input = new Input() { q = TextBox1.Text, size = TextBox2.Text, prob = TextBox3.Text, side = TextBox4.Text };
+	        var json = JsonConvert.SerializeObject(input);
+	        var acitionUri = " PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+	        var httpClient = new HttpClient();
+	
+	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	
+	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+	        var result = response.Result.Content;
+		    var scoreResult = result.ReadAsStringAsync().Result;
 	}
+
+
+###二項分布ジェネレーター
+	public class Input
+	{
+	        public string n;
+	        public string size;
+	        public string p;
+	}
+	
+    public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
+	{
+	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+	}
+	
+	void Main()
+	{
+	        var input = new Input() { n = TextBox1.Text, size = TextBox2.Text, p = TextBox3.Text };
+	        var json = JsonConvert.SerializeObject(input);
+	        var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+	        var httpClient = new HttpClient();
+	
+	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	
+	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+	        var result = response.Result.Content;
+		    var scoreResult = result.ReadAsStringAsync().Result;
+	}
+
+
+
 
 
 ##Web サービスの作成 
 
->この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
+>この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
 ###二項分布の変位値計算
 
@@ -147,7 +208,8 @@
     }
 
     output = as.data.frame(quantile)
-    # Select data.frame to be sent to the output Dataset port
+    
+	# Select data.frame to be sent to the output Dataset port
     maml.mapOutputPort("output");
 
 
@@ -184,7 +246,8 @@
     }
 
     output = as.data.frame(prob)
-    # Select data.frame to be sent to the output Dataset port
+    
+	# Select data.frame to be sent to the output Dataset port
     maml.mapOutputPort("output");
 
 ###二項分布ジェネレーター
@@ -203,14 +266,15 @@
     dist = rbinom(param$n,param$size,param$p)
 
     output = as.data.frame(t(dist))
-    # Select data.frame to be sent to the output Dataset port
+    
+	# Select data.frame to be sent to the output Dataset port
     maml.mapOutputPort("output");
 
 ##制限事項 
 これらは、二項分布周辺のきわめて単純な例です。上のコード例からわかるように、エラーのキャッチはほとんど実装されていません。
 
 ##FAQ
-Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/documentation/articles/machine-learning-marketplace-faq)を参照してください。
+Web サービスの使用や、Azure Marketplace への発行に関するよく寄せられる質問については、[ここ](machine-learning-marketplace-faq.md)をご覧ください。
 
 
 [1]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_1.png
@@ -224,6 +288,6 @@ Web サービスの使用、または Marketplace への発行に関するよく
 [5]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_5.png
 
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=July15_HO2-->

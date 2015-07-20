@@ -5,22 +5,18 @@
    documentationCenter="na"
    authors="cherylmc"
    manager="adinah"
-   editor="tysonn" /> <tags 
+   editor="tysonn" />
+<tags 
    ms.service="expressroute"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/29/2015"
+   ms.date="07/07/2015"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
-この表に、以下の詳細を示します。
-
-1. ExpressRoute 接続プロバイダー (EXP と NSP)
-2. ExpressRoute の地理的範囲
-3. ExpressRoute でサポートされる Microsoft クラウド サービス
-4. ExpressRoute システム インテグレーター (SI)
+このページの表では、ExpressRoute 接続プロバイダー (EXP と NSP)、ExpressRoute の地理的範囲、ExpressRoute でサポートされる Microsoft クラウド サービス、ExpressRoute システム インテグレーター (SI) に関する情報を提供します。
 
 ## ExpressRoute 接続プロバイダー
 ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。次のマップは、Azure のリージョンと ExpressRoute の場所を一覧しています。ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
@@ -36,20 +32,57 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ロンドン|
 |**アジア**|東アジア、東南アジア|香港、シンガポール|
 |**日本**|西日本、東日本|東京|
-|**オーストラリア**|オーストラリア東部、オーストラリア南東部|シドニー|
+|**オーストラリア**|オーストラリア東部、オーストラリア南東部|メルボルン、シドニー|
+|**インド**|インド西部、インド中部、インド南部|チェンナイ、ムンバイ|
 
 地理的リージョン間の接続はサポートされていません。接続プロバイダーを利用して、組織のネットワークを使って地理的リージョン間の接続を拡張できます。
 
 
-### Exchange プロバイダー (EXP) の場所
-- Exchange プロバイダーと、そのプロバイダーがサポートされる場所の一覧については、こちらの[表](https://msdn.microsoft.com/library/azure/4da69a0f-8f52-49ea-a990-dacd4202150a#BKMK_EXP)をご覧ください。
--  接続を設定する手順については、「[EXP 接続の構成](expressroute-configuring-exps.md)」に関するページをご覧ください。
+## Exchange プロバイダー (EXP) の場所
 
-### ネットワーク サービス プロバイダー (NSP) の場所
-- ネットワーク サービス プロバイダーと、そのプロバイダーがサポートされる場所の一覧については、こちらの[表](https://msdn.microsoft.com/library/azure/4da69a0f-8f52-49ea-a990-dacd4202150a#BKMK_NSP)をご覧ください。
-- 接続を設定する手順については、「[NSP 接続の構成](expressroute-configuring-nsps.md)」に関するページをご覧ください。
+| **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
+|-----------------------|--------------------|----------------|---------------|
+| **[Aryaka Networks](http://www.aryaka.com/)** | サポートされています | サポートされていません | シリコン バレー、シンガポール、ワシントン DC |
+| **[Colt Ethernet](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされていません | アムステルダム、ロンドン |
+| **Comcast** | サポートされています | サポートされていません | シリコン バレー、ワシントン DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | 近日対応予定 | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
+| **[InterCloud](https://www.intercloud.com/)** | サポートされています | サポートされていません | アムステルダム、ロンドン、シンガポール、ワシントン DC |
+| **Internet Solutions - Cloud Connect** | サポートされています | サポートされていません | アムステルダム、ロンドン |
+| **Interxion** | サポートされています | サポートされていません | アムステルダム |
+| **[Level 3 Communications - Exchange](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ、ダラス、ロンドン、シアトル、シリコン バレー、ワシントン DC |
+| **NEXTDC** | サポートされています | サポートされていません | メルボルン、シドニー+ |
+| **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | サポートされています | 近日対応予定 | アムステルダム、ロンドン |
+| **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン+、シドニー |
+| **[Zayo Group](http://www.zayo.com/)** | サポートされています | サポートされていません | ワシントン DC |
 
-### 上記以外のサービス プロバイダー経由の接続
+ **+** は近日対応予定を表します
+
+接続を設定する手順については、[EXP 接続の構成](expressroute-configuring-exps.md)に関するページを参照してください。
+
+## ネットワーク サービス プロバイダー (NSP) の場所
+
+
+| **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
+|-----------------------|--------------------|----------------|---------------|
+| **[AT&T](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | 近日対応予定 | アムステルダム+、ロンドン+、ダラス、シリコン バレー、ワシントン DC |
+| **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | 近日対応予定 | アムステルダム、ロンドン、シリコン バレー+、ワシントン DC |
+|**China Telecom Global** | 近日対応予定 | サポートされていません | 香港+ |
+| **[Colt IPVPN](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされていません | アムステルダム、ロンドン |
+| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2013/pdf/Azure_E.pdf)** | サポートされています | サポートされていません | 東京 |
+| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ、ダラス、ロンドン、シアトル、シリコン バレー、ワシントン DC |
+| **NTT Communications** | 近日対応予定 | サポートされていません | 東京+ | 
+| **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされていません | アムステルダム、ロンドン、シリコン バレー、ワシントン DC |
+| **PCCW Global Limited** | サポートされています | サポートされていません | 香港 |
+| **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
+| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | 近日対応予定 | アムステルダム、チェンナイ+、香港、ロンドン、ムンバイ+、シンガポール |
+| **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン+、シドニー |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | ロンドン、香港、シリコン バレー、ワシントン DC |
+
+ **+** は近日対応予定を表します
+
+接続を設定する手順については、[NSP 接続の構成](expressroute-configuring-nsps.md)に関するページをご覧ください。
+
+## 一覧にないサービス プロバイダー経由の接続 
 
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
@@ -66,40 +99,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|---|
 |**[XO Communications](http://www.xo.com/)**|Equinix|シリコン バレー|
 
-
-## ExpressRoute と Microsoft クラウド サービス
-次の表は、接続プロバイダーの詳細と、接続プロバイダーがサポートする Microsoft クラウド サービスの一覧を示しています。サービス プロバイダーにお問い合わせください。
-
-**Exchange プロバイダー (EXP)**
-
-|**サービス プロバイダー**|**Microsoft Azure サービス**|**Office 365 サービス**|
-|---|---|---|
-|**Aryaka**|サポートされています||
-|**Colt Ethernet**|サポートされています||
-|**Equinix**|サポートされています|近日対応予定|
-|**InterCloud**|サポートされています||
-|**Level 3 EVPL Service**|サポートされています||
-|**TeleCity Group**|サポートされています||
-|**Zayo Group**|サポートされています||
-
-**ネットワーク サービス プロバイダー (NSP)**
-
-|**サービス プロバイダー**|**Microsoft Azure サービス**|**Office 365 サービス**|
-|---|---|---|
-|**AT&T**|サポートされています|近日対応予定|
-|**British Telecom**|サポートされています|近日対応予定|
-|**Colt IPVPN**|サポートされています||
-|**Internet Initiative Japan Inc. - IIJ**|サポートされています||
-|**Level3 IPVPN**|サポートされています||
-|**Orange**|サポートされています|| 
-|**SingTel**|サポートされています||
-|**Tata Communications**|サポートされています||
-|**Telstra Corporation**|サポートされています||
-|**Verizon**|サポートされています|| 
-
-
 ## ExpressRoute システム インテグレーター
-ニーズに合わせてプライベート接続を有効にすると、ネットワークの規模によっては難しい場合があります。次の表のいずれかのシステム インテグレーターを使用すると、ExpressRoute の利用開始に役立ちます。
+ネットワークの規模によっては、ニーズに合わせてプライベート接続を有効にするのは難しい場合があります。次の表のいずれかのシステム インテグレーターを使用すると、ExpressRoute の利用開始に役立ちます。
 
 
 |**システム インテグレーター**|**大陸**|
@@ -110,7 +111,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ## 次のステップ
 - [ExpressRoute の前提条件](expressroute-prerequisites.md)を満たしていることをご確認ください。
 - 詳細については、[FAQ](expressroute-faqs.md) をご覧ください。
-- プロバイダーを選択して接続を構成します。構成の詳細については、「[EXP 接続の構成](expressroute-configuring-exps.md)」または「[NSP 接続の構成](expressroute-configuring-nsps.md)」に関するページをご覧ください。
+- ExpressRoute 接続を構成する必要がある場合は、[EXP 接続の構成](expressroute-configuring-exps.md)または [NSP 接続の構成](expressroute-configuring-nsps.md)に関するページを参照してください。
+- 同じ仮想ネットワークに対してサイト間 VPN 接続と ExpressRoute の両方を構成する必要がある場合は、「[Configure ExpressRoute and Site-to-Site VPN connections that coexist (共存する ExpressRoute とサイト間 VPN の接続の構成)](expressroute-coexist.md)」を参照してください。
+ 
 
-
-<!---HONumber=54--> 
+<!---HONumber=July15_HO2-->

@@ -361,4 +361,6 @@ Request body
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
  
 
-<!---HONumber=58--> 
+ 
+
+<!---HONumber=July15_HO2-->

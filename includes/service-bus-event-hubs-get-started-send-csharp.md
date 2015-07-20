@@ -1,4 +1,5 @@
 ## Event Hub へのメッセージ送信
+
 このセクションでは、Windows コンソール アプリを記述して、Event Hub にイベントを送信します。
 
 1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Sender**」と入力します。
@@ -63,4 +64,4 @@
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

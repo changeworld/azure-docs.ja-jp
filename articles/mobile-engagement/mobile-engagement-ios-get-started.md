@@ -1,29 +1,30 @@
-<properties 
-	pageTitle="Objective C で IOS の Azure Mobile Engagement を開始する" 
+<properties
+	pageTitle="Objective C で IOS の Azure Mobile Engagement を開始する"
 	description="iOS アプリ の分析やプッシュ通知で Azure モバイル エンゲージメントを使用する方法を説明します。"
-	services="mobile-engagement" 
-	documentationCenter="Mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="Mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="04/30/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="get-started-article" 
+	ms.date="04/30/2015"
 	ms.author="piyushjo" />
 
 # Objective C で IOS アプリ の Azure Mobile Engagement を開始する
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md) 
-- [iOS - Obj C](mobile-engagement-ios-get-started.md) 
+- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
+- [iOS - Obj C](mobile-engagement-ios-get-started.md)
 - [iOS - Swift](mobile-engagement-ios-swift-get-started.md)
-- [Android](mobile-engagement-android-get-started.md) 
+- [Android](mobile-engagement-android-get-started.md)
+- [Cordova](mobile-engagement-cordova-get-started.md)
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、iOS アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知システム (APNS) を使用して基本データを収集し、プッシュ通知を受信する空の iOS アプリケーションを作成します。完了すると、デバイス プロパティに基づいて、すべてのデバイスまたは特定のターゲット ユーザーに、プッシュ通知をブロードキャストできるようになります。
 
@@ -54,20 +55,20 @@
    	![][7]
 
 3. 表示されたポップアップに、次の情報を入力します。
- 
+
    	![][8]
 
 	- **アプリケーション名**: アプリケーションの名前を入力します。自由に任意の文字を使用してください。
-	- **プラットフォーム**: アプリ向けのターゲット プラットフォームを選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。 
+	- **プラットフォーム**: アプリ向けのターゲット プラットフォームを選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。
 	- **アプリケーション リソース名**: この名前を使用して、API と URL を通じてこのアプリケーションにアクセスします。従来の URL の文字のみを使用する必要があります。自動生成された名前は、ベースとなる名前として役立ちます。また、この名前は一意である必要があるので、重複を避けるために、プラットフォーム名を付加することをお勧めします。
-	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。 
+	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。
 	- **コレクション**: アプリケーションを既に作成済みの場合は以前に作成したコレクションを選択し、そうでない場合は新しいコレクションを選択します。
 	- **コレクション名**。 これは、グループのアプリケーションを表します。すべてのアプリを 1 つのグループに含めることで、それらをメトリック集計できます。該当する場合は、ここで会社名や部門を使用する必要があります。
 
 4. **[アプリケーション]** タブで、作成したアプリを選択します。
 
 5. **[接続情報]** をクリックして、モバイル アプリに統合する SDK に組み込む接続設定を表示します。
- 
+
    	![][10]
 
 6. **[接続文字列]** をコピーします - これは、アプリケーション コード内で、このアプリケーションを識別し、Phone アプリからモバイル エンゲージメント サービスに接続するために必要なものです。
@@ -76,7 +77,7 @@
 
 ##<a id="connecting-app"></a>アプリをモバイル エンゲージメントのバックエンドに接続する
 
-このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントは、[Mobile Engagement iOS SDK ドキュメンテーション]にあります。
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントは、Mobile Engagement iOS SDK ドキュメンテーションにあります。
 
 統合のデモンストレーションを行うために、XCode で基本的なアプリを作成します。
 
@@ -98,7 +99,7 @@
 
 Xcode で、Mobile Engagement の統合先のデモ アプリが作成されます。
 
-###アプリをモバイル エンゲージメントのバックエンドに接続する 
+###アプリをモバイル エンゲージメントのバックエンドに接続する
 
 1. [Mobile Engagement iOS SDK] のダウンロード
 2. コンピューター上のフォルダーに .tar.gz ファイルを抽出します
@@ -184,7 +185,7 @@ Xcode で、Mobile Engagement の統合先のデモ アプリが作成されま�
 1. 実装ファイルの先頭で、Engagement リーチ モジュールをインポートします
 
 		#import "AEReachModule.h"
-	
+
 2. `application:didFinishLaunchingWithOptions` 内に reach モジュールを作成し、それを既存の Engagement 初期化行に渡します
 
 		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -192,7 +193,7 @@ Xcode で、Mobile Engagement の統合先のデモ アプリが作成されま�
 			[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
 			[...]
 			return YES;
-		}	
+		}
 
 ###アプリで APNS プッシュ通知を受信できるようにする
 
@@ -208,7 +209,7 @@ Xcode で、Mobile Engagement の統合先のデモ アプリが作成されま�
 		}
 
 2. 次のように、`application:didRegisterForRemoteNotificationsWithDeviceToken` メソッドを追加します。
- 
+
 		(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 		{
  			[[EngagementAgent shared] registerDeviceToken:deviceToken];
@@ -248,7 +249,7 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 1. Mobile Engagement ポータルで [リーチ] タブに移動します
 
 2. **[新しいお知らせ]** をクリックして、プッシュ キャンペーンを作成します。
-	
+
 	![][35]
 
 3. キャンペーンの 1 番目のフィールドを設定します
@@ -299,6 +300,6 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 [37]: ./media/mobile-engagement-ios-get-started/campaign-content.png
 [38]: ./media/mobile-engagement-ios-get-started/campaign-create.png
 [39]: ./media/mobile-engagement-ios-get-started/campaign-activate.png
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

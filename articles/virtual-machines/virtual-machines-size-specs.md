@@ -1,18 +1,18 @@
-<properties 
- pageTitle="仮想マシン サイズ" 
- description="仮想マシンのさまざまなサイズとその容量を一覧を示します。" 
- services="virtual-machines" 
- documentationCenter="" 
- authors="KBDAzure" 
- manager="timlt" 
+<properties
+ pageTitle="仮想マシン サイズ"
+ description="仮想マシンのさまざまなサイズとその容量を一覧を示します。"
+ services="virtual-machines"
+ documentationCenter=""
+ authors="KBDAzure"
+ manager="timlt"
  editor=""/>
-<tags 
-ms.service="virtual-machines" 
- ms.devlang="na" 
- ms.topic="article" 
- ms.tgt_pltfrm="vm-multiple" 
+<tags
+ms.service="virtual-machines"
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="vm-multiple"
  ms.workload="infrastructure-services"
- ms.date="05/28/2015" 
+ ms.date="07/02/2015"
  ms.author="kathydav"/>
 
 # 仮想マシンのサイズ
@@ -39,15 +39,28 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-*   A0\Basic_A0 サイズを利用できるのは、Azure SDK Version 1.3 以降を使用している場合のみです。  
+*   A0\\Basic_A0 サイズを利用できるのは、Azure SDK Version 1.3 以降を使用している場合のみです。  
 
-*   運用環境のワークロードで推奨される最小サイズは A1\Basic_A1 です。
+*   運用環境のワークロードで推奨される最小サイズは A1\\Basic_A1 です。
 
 *   SQL Server Enterprise Edition を使用する場合は、4 個または 8 個の CPU コアを搭載した仮想マシンを選択します。
 
 *   Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <machine name> を構成できませんでした**" または "**仮想マシン <machine name> を作成できませんでした**" というエラー メッセージが表示されることがあります。各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](http://social.msdn.microsoft.com/Forums/WAVirtualMachinesforWindows/thread/9693f56c-fcd3-4d42-850e-5e3b56c7d6be) というトピックを参照してください。
 
-*   A8/A10 と A9/A11 の仮想マシンのサイズは、同じ容量です。A8 と A9 の仮想マシンのインスタンスには、仮想マシン間の高速通信用のリモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された追加のネットワーク アダプターが含まれています。A8 と A9 のインスタンスは、実行中にノード間で持続的で待ち時間の少ない通信を必要とする高パフォーマンス コンピューティング アプリケーション (Message Passing Interface (MPI) を使用するアプリケーションなど) 向けに設計されています。A10 と A11 の仮想マシン インスタンスには、追加のネットワーク アダプターが含まれていません。A10 と A11 のインスタンスは、ノード間で一定した待ち時間の少ない通信を必要としない高パフォーマンス コンピューティング アプリケーション (パラメトリックまたは驚異的並列アプリケーションとも呼ばれる) 向けに設計されています。
+*   A8/A10 と A9/A11 の仮想マシンのサイズは、同じ容量です。A8 と A9 の仮想マシンのインスタンスには、仮想マシン間の高速通信用のリモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された追加のネットワーク アダプターが含まれています。A8 と A9 のインスタンスは、実行中にノード間で持続的で待ち時間の少ない通信を必要とする高パフォーマンス コンピューティング アプリケーション (Message Passing Interface (MPI) を使用するアプリケーションなど) 向けに設計されています。A10 と A11 の仮想マシン インスタンスには、追加のネットワーク アダプターが含まれていません。A10 と A11 のインスタンスは、ノード間で一定した待ち時間の少ない通信を必要としない高パフォーマンス コンピューティング アプリケーション (パラメトリックまたは Embarrassingly Parallel アプリケーションとも呼ばれる) 向けに設計されています。
+
+## 一般的な制限事項
+
+次の表は、サービス管理ツールで作成された VM について、VM のサイズにかかわらず適用される制限実行を示したものです。
+
+
+[AZURE.INCLUDE [azure-virtual-machines-limits](../../includes/azure-virtual-machines-limits.md)]
+
+次の表は、リソース マネージャーで作成された VM について、VM のサイズにかかわらず適用される制限実行を示したものです。
+
+[AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
+
+## サイズ一覧表
 
 次の表では、それぞれのプランで提供されるサイズと容量を示します。
 
@@ -55,24 +68,24 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 ## Basci レベル
 
-|サイズ – 管理ポータル\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 300)|
+|サイズ – 管理ポータル\\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 300)|
 |---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|<p>OS = 1,023 GB</p><p>一時ディスク = 20 GB</p>|1|1 x 300|
-|A1\Basic_A1|1|1.75 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 40 GB</p>|2|2 x 300|
-|A2\Basic_A2|2|3.5 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 60 GB</p>|4|4 x 300|
-|A3\Basic_A3|4|7 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 120 GB</p>|8|8 x 300|
-|A4\Basic_A4|8|14 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 240 GB</p>|16|16 x 300|
+|A0\\Basic_A0|1|768 MB|<p>OS = 1,023 GB</p><p>一時ディスク = 20 GB</p>|1|1 x 300|
+|A1\\Basic_A1|1|1.75 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 40 GB</p>|2|2 x 300|
+|A2\\Basic_A2|2|3.5 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 60 GB</p>|4|4 x 300|
+|A3\\Basic_A3|4|7 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 120 GB</p>|8|8 x 300|
+|A4\\Basic_A4|8|14 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 240 GB</p>|16|16 x 300|
 
 ## Standard レベル
 ### A シリーズおよび D シリーズ
 
-|サイズ – 管理ポータル\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
+|サイズ – 管理ポータル\\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|
-|A0\極小|1|768 MB|<p>OS = 1,023 GB</p><p>一時ディスク = 20 GB</p>|1|1 x 500|
-|A1\小|1|1.75 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 70 GB</p>|2|2 x 500|
-|A2\中|2|3.5 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 135 GB</p>|4|4 x 500|
-|A3\大|4|7 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 285 GB</p>|8|8 x 500|
-|A4\極大|8|14 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 605 GB</p>|16|16 x 500|
+|A0\\極小|1|768 MB|<p>OS = 1,023 GB</p><p>一時ディスク = 20 GB</p>|1|1 x 500|
+|A1\\小|1|1.75 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 70 GB</p>|2|2 x 500|
+|A2\\中|2|3.5 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 135 GB</p>|4|4 x 500|
+|A3\\大|4|7 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 285 GB</p>|8|8 x 500|
+|A4\\極大|8|14 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 605 GB</p>|16|16 x 500|
 |A5 (同)|2|14 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 135 GB</p>|4|4 x 500|
 |A6 (同)|4|28 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 285 GB</p>|8|8 x 500|
 |A7 (同)|8|56 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 605 GB</p>|16|16 x 500|
@@ -92,7 +105,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 ### Standard レベル – DS シリーズ*
 
-|サイズ – 管理ポータル\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅|
+|サイズ – 管理ポータル\\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅|
 |---|---|---|---|---|---|---|
 |Standard_DS1 (同)|1|3.5|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 7 GB</p>|2|43|<p>3,200</p><p>32 MB/秒</p>|
 |Standard_DS2 (同)|2|7|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 14 GB</p>|4|86|<p>6,400</p><p>64 MB/秒</p>|
@@ -107,7 +120,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 ### Standard レベル – G シリーズ
 
-|サイズ – 管理ポータル\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
+|サイズ – 管理ポータル\\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|
 |Standard_G1 (同)|2|28 GB|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 384 GB</p>|4|4 x 500|
 |Standard_G2 (同)|4|56 GB|<p>OS = 1,023 GB</p><p>ローカル SSD ディスク = 768 GB</p>|8|8 x 500|
@@ -118,8 +131,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 ### 関連項目
 
 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
- 
-[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](http://go.microsoft.com/fwlink/p/?linkid=328042)
- 
 
-<!---HONumber=58_postMigration-->
+[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
+
+<!---HONumber=July15_HO2-->

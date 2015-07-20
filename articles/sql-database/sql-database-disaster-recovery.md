@@ -99,5 +99,6 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 4.	[Database Operation Status](http://msdn.microsoft.com/library/azure/dn720371.aspx) 操作で回復の状態を追跡します。
 
 データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

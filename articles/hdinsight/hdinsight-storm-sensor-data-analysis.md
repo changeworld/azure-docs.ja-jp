@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
@@ -258,7 +258,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 2. Web サイトが作成されたら、Azure ポータルに移動して、**[構成]** を選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 
-2. **hdinsight-eventhub-example\TemperatureMonitor\src\main\java\com\microsoft\examples\bolts\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
+2. **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts\\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
 
 		socket = IO.socket("http://mywebsite.azurewebsites.net");
 
@@ -362,13 +362,13 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 ### HBase ボルトを有効にします。
 
-1. **hdinsight-eventhub-example\TemperatureMonitor\conf\hbase-site.xml** を開き、次の行の `suffix` エントリを前に HBase クラスターに取得した DNS サフィックスに置き換えます。これらの変更を行った後は、ファイルを保存します。
+1. **hdinsight-eventhub-example\\TemperatureMonitor\\conf\\hbase-site.xml** を開き、次の行の `suffix` エントリを前に HBase クラスターに取得した DNS サフィックスに置き換えます。これらの変更を行った後は、ファイルを保存します。
 
 		<value>zookeeper0.suffix,zookeeper1.suffix,zookeeper2.suffix</value>
 
 	これは、HBase クラスターとの通信に HBase ボルトによって使用されます。
 
-1. テキスト エディターで、**hdinsight-eventhub-example\TemperatureMonitor\src\main\java\com\microsoft\examples\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
+1. テキスト エディターで、**hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
 
 		topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
@@ -385,7 +385,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 2. デスクトップで HDInsight コマンド ラインを開始し、次のコマンドを入力します。
 
-    cd %HBASE_HOME% bin\hbase shell
+    cd %HBASE_HOME% bin\\hbase shell
 
 3. HBase シェルから、次のコマンドを入力して、センサー データを格納するテーブルを作成します。
 
@@ -419,6 +419,5 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 * .NET でトポロジを作成する方法の詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 [azure-portal]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

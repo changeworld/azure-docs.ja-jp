@@ -21,9 +21,7 @@
 
 このトピックでは、[Docker](https://www.docker.com/) を [Swarm](https://github.com/docker/swarm) で使用して、Azure で Swarm 管理のクラスターを作成するとても簡単な方法について説明します。ここでは Azure で 4 つの仮想マシンが作成されます。1 つは Swarm マネージャーとして動作し、その他の 3 つは Docker ホストのクラスターの一部として機能します。終了すれば、Swarm を使ってクラスターを確認し、クラスター上で Docker を使用できるようになります。また、このトピックの Azure CLI 呼び出しではサービス管理 (asm) モードを使用します。
 
-> [AZURE.NOTE]こちらの記述ではソフトウェアの以前のバージョンが使用されています。大規模で、バランスがとれ、コントロールされた Docker コンテナーのクラスターを Azure で使用できるようにするため、アップデートをご確認ください。また Docker Swarm のドキュメントもご確認いただき、すべての機能をご覧ください。
-<!-- -->
-> さらにこのトピックでは、異なるツールがそれぞれ独立性を保ちながら連携するしくみを示すため、**docker-machine** を*使用せずに*、docker を swarm および Azure CLI と共に使用します。**docker-machine** には **--swarm** スイッチがあり、**docker-machine** で直接 Swarm にノードを追加できます。具体例については、[docker-machine](https://github.com/docker/machine) のドキュメントを参照してください。Azure VM に対して実行している **docker-machine** がない場合は、「[Azure で docker-machine を使用する方法](virtual-machines-docker-machine.md)」を参照してください。
+> [AZURE.NOTE]こちらの記述ではソフトウェアの以前のバージョンが使用されています。大規模で、バランスがとれ、コントロールされた Docker コンテナーのクラスターを Azure で使用できるようにするため、アップデートをご確認ください。また Docker Swarm のドキュメントもご確認いただき、すべての機能をご覧ください。<!-- --> さらにこのトピックでは、異なるツールがそれぞれ独立性を保ちながら連携するしくみを示すため、**docker-machine** を*使用せずに*、docker を swarm および Azure CLI と共に使用します。**docker-machine** には **--swarm** スイッチがあり、**docker-machine** で直接 Swarm にノードを追加できます。具体例については、[docker-machine](https://github.com/docker/machine) のドキュメントを参照してください。Azure VM に対して実行している **docker-machine** がない場合は、「[Azure で docker-machine を使用する方法](virtual-machines-docker-machine.md)」を参照してください。
 
 ## Azure 仮想マシンでの Docker ホストの作成
 
@@ -46,7 +44,7 @@
 
 このトピックでは、[Docker Swarm ドキュメントのインストールするコンテナーのモデル](https://github.com/docker/swarm#1---docker-image)を使用しますが、**swarm-master** に対する SSH を使うこともできます。このモデルでは、**Swarm** は Swarm を実行する Docker コンテナーとしてダウンロードされます。下記では、*Docker を使ってノート パソコンからリモートで*この手順を実行し、**swarm-master** VM に接続してクラスターの ID 生成コマンドである **swarm create** を使うように指定しています。クラスター ID を使うことで、**Swarm** で Swarm グループのメンバーを見つけられるようになります(リポジトリを複製して自身で構築することも可能です。そうすると完全に制御でき、デバッグもできます)。
 
-    $ docker --tls -H tcp://swarm-master.cloudapp.net:4243 run --rm swarm create
+    $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 run --rm swarm create
     Unable to find image 'swarm:latest' locally
     511136ea3c5a: Pull complete
     a8bbe4db330c: Pull complete
@@ -62,15 +60,13 @@
 
 最後の行がクラスター ID です。ノード VM を Swarm マスターに結合して「Swarm」を作成する際に再度使いますので、どこかに保存しておいてください）。この例では、クラスター ID は **36731c17189fd8f450c395db8437befd** です。
 
-> [AZURE.NOTE] ここでは、ローカルにインストールされている Docker を使用して Azure の **swarm-master** VM に接続しています。また、**swarm-master** で **create** コマンドをダウンロード、インストール、実行する手順を説明します。このコマンドによって、後で検索に使用するクラスター ID が返されます。
-<!-- -->
-> 確認するには、`docker -H tcp://`*&lt;hostname&gt;* ` images` を実行して、**swarm-master** マシンおよび別のノードのコンテナー処理を一覧表示して比較します (前に Swarm コマンドを **--rm** スイッチで実行したため、終了後にコンテナーが削除されます。そのため、**docker ps -a** を使用しても何も返されません)。
+> [AZURE.NOTE]ここでは、ローカルにインストールされている Docker を使用して Azure の **swarm-master** VM に接続しています。また、**swarm-master** で **create** コマンドをダウンロード、インストール、実行する手順を説明します。このコマンドによって、後で検索に使用するクラスター ID が返されます。<!-- --> 確認するには、`docker -H tcp://`*&lt;hostname&gt;* ` images` を実行して、**swarm-master** マシンおよび別のノードのコンテナー処理を一覧表示して比較します (前に Swarm コマンドを **--rm** スイッチで実行したため、終了後にコンテナーが削除されます。そのため、**docker ps -a** を使用しても何も返されません)。
 
 
-        $ docker --tls -H tcp://swarm-master.cloudapp.net:4243 images
+        $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 images
         REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
         swarm               latest              92d78d321ff2        11 days ago         7.19 MB
-        $ docker --tls -H tcp://swarm-node-1.cloudapp.net:4243 images
+        $ docker --tls -H tcp://swarm-node-1.cloudapp.net:2376 images
         REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
         $
 <P />
@@ -85,14 +81,14 @@
     + Getting virtual machines
     data:    Name    Protocol  Public Port  Private Port  Virtual IP      EnableDirectServerReturn  Load Balanced
     data:    ------  --------  -----------  ------------  --------------  ------------------------  -------------
-    data:    docker  tcp       4243         4243          138.91.112.194  false                     No
+    data:    docker  tcp       2376         2376          138.91.112.194  false                     No
     data:    ssh     tcp       22           22            138.91.112.194  false                     No
     info:    vm endpoint list command OK
 
 
 **Docker** と `-H` オプションを使用してノード VM における Docker クライアントを指定し、クラスター ID とノードの Docker ポート (**--addr** を使用) を送って作成している Swarm にそのノードを結合します。
 
-    $ docker --tls -H tcp://swarm-node-1.cloudapp.net:4243 run -d swarm join --addr=138.91.112.194:4243 token://36731c17189fd8f450c395db8437befd
+    $ docker --tls -H tcp://swarm-node-1.cloudapp.net:2376 run -d swarm join --addr=138.91.112.194:2376 token://36731c17189fd8f450c395db8437befd
     Unable to find image 'swarm:latest' locally
     511136ea3c5a: Pull complete
     a8bbe4db330c: Pull complete
@@ -108,7 +104,7 @@
 
 問題ないようです。**swarm** が **swarm-node-1** で実行されていることを確認するには、次のように入力します。
 
-    $ docker --tls -H tcp://swarm-node-1.cloudapp.net:4243 ps -a
+    $ docker --tls -H tcp://swarm-node-1.cloudapp.net:2376 ps -a
         CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS               NAMES
         bbf88f61300b        swarm:latest        "/swarm join --addr=   13 seconds ago      Up 12 seconds       2375/tcp            angry_mclean
 
@@ -116,12 +112,12 @@
 
 ## Swarm クラスター管理の開始
 
-    $ docker --tls -H tcp://swarm-master.cloudapp.net:4243 run -d -p 2375:2375 swarm manage token://36731c17189fd8f450c395db8437befd
+    $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 run -d -p 2375:2375 swarm manage token://36731c17189fd8f450c395db8437befd
     d7e87c2c147ade438cb4b663bda0ee20981d4818770958f5d317d6aebdcaedd5
 
 これで次のようにクラスターのノードを一覧表示できます。
 
-    ralph@local:~$ docker --tls -H tcp://swarm-master.cloudapp.net:4243 run --rm swarm list token://73f8bc512e94195210fad6e9cd58986f
+    ralph@local:~$ docker --tls -H tcp://swarm-master.cloudapp.net:2376 run --rm swarm list token://73f8bc512e94195210fad6e9cd58986f
     54.149.104.203:2375
     54.187.164.89:2375
     92.222.76.190:2375
@@ -134,5 +130,6 @@ Swarm でお試しください。詳細については、[https://github.com/doc
 <!-- links -->
 
 [docker-machine-azure]: virtual-machines-docker-machine.md
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

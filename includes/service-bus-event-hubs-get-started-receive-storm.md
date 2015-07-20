@@ -6,7 +6,7 @@ Event Hubs の受信パターンの詳細については、「[Event Hub の概�
 
 このチュートリアルでは、[HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に既に利用できます。
 
-1. [HDInsight Storm の使用](../articles/hdinsight-storm-getting-started.md)の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
+1. [HDInsight Storm の使用](../hdinsight/hdinsight-storm-overview.md)の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
 
 2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。これには events-storm-spout が含まれています。
 
@@ -220,9 +220,9 @@ Event Hubs の受信パターンの詳細については、「[Event Hub の概�
 	このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
 <!-- Links -->
-[Event Hub の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
-[HDInsight Storm]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-overview/
-[HDInsight センサー分析のチュートリアル]: http://azure.microsoft.com/documentation/articles/hdinsight-storm-sensor-data-analysis/
+[Event Hub の概要]: event-hubs-overview.md
+[HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md
+[HDInsight センサー分析のチュートリアル]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 
 <!-- Images -->
 
@@ -230,4 +230,4 @@ Event Hubs の受信パターンの詳細については、「[Event Hub の概�
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->

@@ -1,29 +1,30 @@
-<properties 
-	pageTitle="Azure モバイル エンゲージメントの使用" 
+<properties
+	pageTitle="Azure モバイル エンゲージメントの使用"
 	description="Android アプリ の分析やプッシュ通知で Azure モバイル エンゲージメントを使用する方法を説明します。"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="05/01/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="get-started-article" 
+	ms.date="05/01/2015"
 	ms.author="piyushjo" />
-	
+
 # Android アプリの Azure Mobile Engagement を開始する
 
 > [AZURE.SELECTOR]
 - [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
-- [iOS - Obj C](mobile-engagement-ios-get-started.md) 
+- [iOS - Obj C](mobile-engagement-ios-get-started.md)
 - [iOS - Swift](mobile-engagement-ios-swift-get-started.md)
 - [Android](mobile-engagement-android-get-started.md)
+- [Cordova](mobile-engagement-cordova-get-started.md)
 
 このトピックでは、Azure Mobile Engagement を使ってアプリの使用状況を理解し、Android アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法を示します。このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。このシナリオでは、基本的なデータを収集する空の Android アプリを作成し、Google Cloud Messaging (GCM) を使ってプッシュ通知を受信します。完了すると、デバイス プロパティに基づいて、すべてのデバイスまたは特定のターゲット ユーザーに、プッシュ通知をブロードキャストできるようになります。モバイル エンゲージメントを使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒にご覧ください。
 
@@ -45,14 +46,14 @@ You will use your GCM API key later when setting up your app for Mobile Engageme
 
 ##<a id="setup-azme"></a>アプリ用の Mobile Engagement の設定
 
-1. [Azure 管理ポータル]にログオンし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログオンし、画面の下部にある **[+新規]** をクリックします。
 
 2. [**アプリ サービス**]、[**モバイル エンゲージメント**]、[**作成**] の順にクリックします。
 
    	![][7]
 
 3. 表示されたポップアップに、次の情報を入力します。
- 
+
    	![][8]
 
 	1. **アプリケーション名**: アプリケーションの名前を入力できます。自由に任意の文字を使用してください。
@@ -66,11 +67,11 @@ You will use your GCM API key later when setting up your app for Mobile Engageme
 	終了したら、チェック ボタンをクリックして、アプリの作成を完了します。
 
 4. [**アプリケーション**] タブで、作成したアプリをクリックして選択します。
- 
+
    	![][9]
 
 5. 次に、[**接続情報**] をクリックして、統合する SDK に組み込む接続設定を表示します。
- 
+
    	![][10]
 
 6. 最後に、[**接続文字列**] をメモに取ります。これは、アプリケーション コードからこのアプリを特定する際に必要になります。
@@ -118,7 +119,7 @@ SDK ライブラリをダウンロードして統合する
 
 1. [Mobile Engagement Android SDK] をダウンロードします。
 2. アーカイブ ファイルをコンピューターのフォルダーに抽出します。
-3. SDK の現在のバージョン用の .jar ライブラリを識別し、クリップボードにコピーします (このドキュメントは SDK 3.0.0 バージョン用に作成されています) 。
+3. SDK の現在のバージョン用の .jar ライブラリを見つけて、クリップボードにコピーします。
 
 	![][17]
 
@@ -154,34 +155,27 @@ SDK ライブラリをダウンロードして統合する
 ###アクセス権限とサービス宣言を追加する
 
 1. 次のアクセス権限をプロジェクトの Manifest.xml の `<application>` タグの直前または直後に追加します。
-	
+
 		<uses-permission android:name="android.permission.INTERNET"/>
 		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 		<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 		<uses-permission android:name="android.permission.VIBRATE" />
-		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 		<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
 
 	結果は次のようになります。
 
 	![][21]
 
-2. 次の設定を < application >タグと</application > タグの間に追加して、エージェント サービスを宣言します。
+2. 次の設定を `<application>`タグと`</application>`タグの間に追加して、エージェント サービスを宣言します。
 
 		<service
  			android:name="com.microsoft.azure.engagement.service.EngagementService"
  			android:exported="false"
- 			android:label="<Your application name>Service"
+ 			android:label="<Your application name>"
  			android:process=":Engagement"/>
 
-3. 貼り付けたばかりのコードの label 内の < Your application name> をアプリケーション名に置き換えます。次に例を示します。
-
-		<service
- 			android:name="com.microsoft.azure.engagement.service.EngagementService"
- 			android:exported="false"
- 			android:label="MySuperAppService"
- 			android:process=":Engagement"/>
+3. 貼り付けたばかりのコードの label 内の `"<Your application name>"` をアプリケーション名に置き換えます。この内容は、ユーザーがデバイスで実行されているサービスを確認することができる [設定] メニューに表示されます。たとえば、このラベルに「サービス」という語句を追加できます。
 
 ###画面をモバイル エンゲージメントに送信する
 
@@ -218,7 +212,7 @@ SDK ライブラリをダウンロードして統合する
 
 ### アプリ内メッセージの有効化
 
-1. Manifest.xml の < application > タグと </application > タグの間に、次のアプリ内メッセージ リソースをコピーします。
+1. Manifest.xml の `<application>` タグと `</application>` タグの間に、次のアプリ内メッセージ リソースをコピーします。
 
 		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light">
   			<intent-filter>
@@ -240,6 +234,12 @@ SDK ライブラリをダウンロードして統合する
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+		<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog">
+			<intent-filter>
+				<action android:name="com.microsoft.azure.engagement.reach.intent.action.LOADING"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
 		<receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachReceiver" android:exported="false">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -247,33 +247,49 @@ SDK ライブラリをダウンロードして統合する
 				<action android:name="com.microsoft.azure.engagement.intent.action.MESSAGE"/>
 				<action android:name="com.microsoft.azure.engagement.reach.intent.action.ACTION_NOTIFICATION"/>
 				<action android:name="com.microsoft.azure.engagement.reach.intent.action.EXIT_NOTIFICATION"/>
-				<action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
 				<action android:name="com.microsoft.azure.engagement.reach.intent.action.DOWNLOAD_TIMEOUT"/>
+			</intent-filter>
+		</receiver>
+		<receiver android:name="com.microsoft.azure.engagement.reach.EngagementReachDownloadReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
 			</intent-filter>
 		</receiver>
 
 2. 次の手順に従って、プロジェクトにリソースをコピーします。
-	1. SDK ダウンロード コンテンツに戻り、'res' フォルダーを開きます。
-	2. 2 つのフォルダーを選び、それらをクリップボードにコピーします。
+	1. SDK ダウンロード コンテンツに戻り、'res' フォルダーをコピーします。
 
 		![][23]
 
-	4. Android Studio に戻り、プロジェクトの 'res' 部分を選び、リソースを貼り付けてプロジェクトに追加します。
+	2. Android Studio に戻り、プロジェクト ファイルの ’main’ ディレクトリを選択し、リソースを貼り付けてプロジェクトに追加します。
 
 		![][24]
 
-###通知の既定のアイコンを指定する
-次のコードは、通知と一緒に表示する既定のアイコンを定義します。ここでは、Android Studio によって作成されるプロジェクトと一緒に提供されるアイコンを使います。この xml スニペットを Manifest.xml の < application > タグと </application > タグの間に貼り付けます。ic_launcher がファイルに存在することを確認するか、別のアイコン ファイルを使用します。いずれのファイルもなければ、通知は表示されません。
+###通知のアイコンを指定します。
 
-		<meta-data android:name="engagement:reach:notification:icon" android:value="ic_launcher" />
+次のコードでは、アプリとシステムの両方で通知の表示に使用されるアイコンを定義します。
+
+アイコンはアプリ内通知では任意ですが、システム通知では必須であり、Android では無効なアイコンが設定されたシステム通知は拒否されます。
+
+この xml スニペットを Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。
+
+いずれかの**描画可能な**フォルダーにあるアイコン (``engagement_close.png`` など) を使用してください。**mipmap** フォルダーはサポートされていません。
+	
+		<meta-data android:name="engagement:reach:notification:icon" android:value="engagement_close"/>
+
+この例は構文を示すためだけのものですので、[Android の設計ガイドライン](http://developer.android.com/design/patterns/notifications.html)に従って、通知に適したアイコンを使用する必要があります。
+
+ランチャー アイコンは使用しないでください。このアイコンの解像度は異なっており、一般に、サポート対象外の mipmap フォルダー内にあります。
+
+>[AZURE.TIP][これらの例](https://www.google.com/design/icons)を参考にして、適切なアイコンの解像度を使用していることを確認できます。*[Notification]* セクションまでスクロールして 1 つのアイコンをクリックし、`PNGS` をクリックして描画可能なアイコンのセットをダウンロードします。アイコンのバージョンごとの解像度から、どの描画可能なフォルダーを使用すればよいかを確認できます。
 
 ###アプリが GCM のプッシュ通知を受信できるようにする
 
-1. gcm:sender メタデータをコピーして、Manifest.xml の < application > タグと </application > タグの間に貼り付けます。下の非表示の値 (* が付いています) は、Google Play コンソールから取得した `project number` です。\\n は意図的に付けられています。プロジェクト番号の末尾には必ずこれを付けてください。 
+1. gcm:sender メタデータをコピーして、Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。下の非表示の値 (* が付いています) は、Google Play コンソールから取得した `project number` です。\\n は意図的に付けられています。プロジェクト番号の末尾には必ずこれを付けてください。
 
 		<meta-data android:name="engagement:gcm:sender" android:value="************\n" />
 
-2. 次のコードを、Manifest.xml の < application > タグと </application > タグの間に貼り付けます。`<category android:name="com.mycompany.mysuperapp" />` では、プロジェクトのパッケージ名を使用していることに注意してください。実稼動プロジェクトでは異なる値になります。
+2. 次のコードを、Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。<Your package name> をパッケージ名に置き換えます。
 
 		<receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
 		android:exported="false">
@@ -281,20 +297,20 @@ SDK ライブラリをダウンロードして統合する
 				<action android:name="com.microsoft.azure.engagement.intent.action.APPID_GOT" />
 			</intent-filter>
 		</receiver>
-		
+
 		<receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMReceiver" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-				<category android:name="com.mycompany.mysuperapp" />
+				<category android:name="<Your package name>" />
 			</intent-filter>
 		</receiver>
 
-3. 次に強調表示する最新のアクセス権限セットを、< application> タグの前または後に追加します。ここでも、実稼働アプリケーションでは置き換える必要があるプロジェクトのパッケージ名を使っています。
+3. `<application>` タグの前に、強調表示する最新のアクセス許可セットを追加します。`<Your package name>` をアプリケーションの実際のパッケージ名で置き換えます。
 
 		<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-		<uses-permission android:name="com.mycompany.mysuperapp.permission.C2D_MESSAGE" />
-		<permission android:name="com.mycompany.mysuperapp.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+		<uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />
+		<permission android:name="<Your package name>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
 ###Mobile Engagement に GCM API キーへのアクセス権限を与える
 
@@ -378,4 +394,4 @@ Mobile Engagement がプッシュ通知を送信できるようにするには�
 [38]: ./media/mobile-engagement-android-get-started/campaign-create.png
 [39]: ./media/mobile-engagement-android-get-started/campaign-activate.png
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

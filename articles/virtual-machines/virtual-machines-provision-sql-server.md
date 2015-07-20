@@ -3,7 +3,7 @@
 	description="Azure で SQL Server 仮想マシンを作成して構成する方法を学習するチュートリアルです。" 
 	services="virtual-machines" 
 	documentationCenter="" 
-	authors="jeffgoll" 
+	authors="rothja" 
 	manager="jeffreyg" 
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vm-windows-sql-server" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/06/2015" 
-	ms.author="jeffreyg"/>
+	ms.date="06/17/2015" 
+	ms.author="jroth"/>
 
 # Azure での SQL Server 仮想マシンのプロビジョニング #
 
@@ -27,9 +27,9 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 * [別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する](#SSMS)
 * [次のステップ](#Optional)
 
-##<a id="Provision">Azure の管理ポータルに接続し、ギャラリーから仮想マシンのプロビジョニングを行う</a>
+##<a id="Provision">ギャラリーからの SQL Server 仮想マシンのプロビジョニング</a>
 
-1. アカウントを使用して [Azure の管理ポータル](http://manage.windowsazure.com)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://www.windowsazure.com/pricing/free-trial/)にアクセスしてください。
+1. アカウントを使用して [Azure の管理ポータル](http://manage.windowsazure.com)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
 2. Azure の管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
@@ -39,7 +39,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 Azure でサポートされる SQL Server イメージの最新情報については、「[Azure の仮想マシンにおける SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure の仮想マシンにおける SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
 
    
->[AZURE.NOTE]プラットフォーム イメージの SQL Server 評価エディションを使用して仮想マシンを作成した場合、それをギャラリーにある分単位課金エディション イメージにアップグレードすることはできません。次の 2 つのオプションのいずれかを選択できます。ギャラリーから時間単位の有償 SQL Server エディションを使用して、新しい仮想マシンを作成できます。次に、「[Azure の仮想マシン間でデータ ディスクを使用して SQL Server のデータベース ファイルとスキーマを移行する方法](http://go.microsoft.com/fwlink/p/?LinkId=294738)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移行します。**または**、「[SQL Server 2014 の別のエディションへのアップグレード](http://go.microsoft.com/fwlink/?LinkId=396915)」の手順に従って、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://www.windowsazure.com/pricing/license-mobility/)契約に基づいて、SQL Server 評価版の既存のインスタンスを SQL Server の別のエディションにアップグレードできます。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
+>[AZURE.NOTE]プラットフォーム イメージの SQL Server 評価エディションを使用して仮想マシンを作成した場合、それをギャラリーにある分単位課金エディション イメージにアップグレードすることはできません。次の 2 つのオプションのいずれかを選択できます。ギャラリーから時間単位の有償 SQL Server エディションを使用して、新しい仮想マシンを作成できます。次に、「[Azure の仮想マシン間でデータ ディスクを使用して SQL Server のデータベース ファイルとスキーマを移行する方法](http://go.microsoft.com/fwlink/p/?LinkId=294738)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移行します。**または**、「[SQL Server 2014 の別のエディションへのアップグレード](http://go.microsoft.com/fwlink/?LinkId=396915)」の手順に従って、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)契約に基づいて、SQL Server 評価版の既存のインスタンスを SQL Server の別のエディションにアップグレードできます。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
 
 
 4. 最初の **[仮想マシンの構成]** ページで、次の情報を指定します。
@@ -54,7 +54,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 	右下にある次へ進む矢印をクリックして続行します。
 
-	![VM 構成](./media/virtual-machines-provision-sql-server/4VM-Config.png)
+	![VM 構成][Image4]
 
 
 5. 2 回目の **[仮想マシンの構成]** ページで、ネットワーキング、ストレージ、可用性に関するリソースを構成します。
@@ -80,7 +80,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 	- 実行中
 	
 
-##<a id="RemoteDesktop">リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する</a>
+##<a id="RemoteDesktop">リモート デスクトップを使用して VM を開き、設定を完了します。</a>
 
 1. プロビジョニングが完了したら、仮想マシンの名前をクリックして [ダッシュボード] ページに移動します。ページの下部にある **[接続]** をクリックします。
 2. **[開く]** ボタンをクリックします。![Click the Open button][Image37]
@@ -92,9 +92,11 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 Windows リモート デスクトップで仮想マシンに接続したら、仮想マシンは他のコンピューターと同様に使用できます。SQL Server Management Studio (仮想マシン上で実行) を使用して、通常どおりに SQL Server の既定インスタンスに接続します。
 
-##<a id="SSMS">別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する</a>
+##<a id="SSMS">別のコンピューターで SSMS から SQL Server VM インスタンスに接続します。</a>
 
-インターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
+次の手順で、SQL Server Management Studio (SSMS) を使用してインターネット経由で SQL Server インスタンスに接続する方法を説明します。ただし、同じ手順が、アプリケーションのアクセスが可能な SQL Server 仮想マシンを作成し、オンプレミスと Azure の両方で実行する際に適用されます。
+
+別の VM またはインターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
 
 - [仮想マシン用の TCP エンドポイントを作成する](#Endpoint)
 - [Windows ファイアウォールで TCP ポートを開く](#FW)
@@ -109,9 +111,11 @@ Windows リモート デスクトップで仮想マシンに接続したら、�
 
 ![SQL Server 仮想マシンに接続する][Image8b]
 
-##<a id="Endpoint">仮想マシン用の TCP エンドポイントを作成する</a>
+###<a id="Endpoint">仮想マシン用の TCP エンドポイントを作成する</a>
 
-仮想マシンには、着信する TCP 通信をリッスンするエンドポイントが必要です。この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
+インターネットから SQL Server にアクセスするには、仮想マシンに、着信する TCP 通信をリッスンするエンドポイントが必要です。この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
+
+>[AZURE.NOTE]同じクラウド サービスまたは仮想ネットワーク内で接続する場合は、公開されたエンドポイントを作成する必要はありません。その場合は、次のステップに進むことができます。詳細については、「[Azure Virtual Machines における SQL Server の接続に関する考慮事項](https://msdn.microsoft.com/library/azure/dn133152.aspx)」を参照してください。
 
 1. Azure の管理ポータルで、**[仮想マシン]** をクリックします。
 	
@@ -128,7 +132,7 @@ Windows リモート デスクトップで仮想マシンに接続したら、�
 
 6. チェック マークをクリックして続行します。エンドポイントが作成されます。
 
-##<a id="FW">データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く</a>
+###<a id="FW">データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く</a>
 
 1. Windows リモート デスクトップを介して仮想マシンに接続します。ログインしたら、スタート画面で「**WF.msc**」と入力し、Enter キーを押します。 
 
@@ -151,7 +155,7 @@ Windows リモート デスクトップで仮想マシンに接続したら、�
 
 	![接続を許可する][Image15]
 
-7. **[プロファイル]** ダイアログ ボックスで、**[パブリック]** をオンにし、**[次へ]** をクリックします。
+7. **[プロファイル]** ダイアログ ボックスで、**[パブリック]** 、**[プライベート]** および**[ドメイン]** を選択します。その後、**[次へ]** をクリックします。
 
     **セキュリティ上の注意:** **[パブリック]** をオンにすると、インターネット経由のアクセスが許可されます。可能であれば、できるだけ制限の厳しいプロファイルを選択してください。
 
@@ -186,7 +190,9 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
 
 ###<a id="Mixed">混合モード認証用に SQL Server を構成する</a>
 
-ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます(Azure の仮想ネットワークを構成した場合は、混合モード認証の構成が不要である可能性があります)。詳細については、「[Azure の仮想マシンにおける SQL Server](http://go.microsoft.com/fwlink/?LinkId=294723)」ドキュメント セットの「[Azure の仮想マシンにおける SQL Server の接続に関する考慮事項](http://go.microsoft.com/fwlink/?LinkId=294719)」トピックを参照してください。
+ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます
+
+>[AZURE.NOTE]構成されたドメイン環境でAzure の Virtual Network を構成した場合は、混合モード認証の構成が不要である可能性があります。
 
 1. 仮想マシンに接続している間に、[スタート] ページで「**SQL Server 2014 Management Studio**」と入力し、選択したアイコンをクリックします。
 
@@ -194,7 +200,7 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
 
 	初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。これには数分かかることがあります。
 
-2. Management Studio では、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで _**your_VM_name**\your_local_administrator_ をそのまま使用します。**[接続]** をクリックします。
+2. Management Studio では、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで _**your_VM_name**\\your_local_administrator_ をそのまま使用します。**[接続]** をクリックします。
 
 	![サーバーへの接続][Image19]
 
@@ -276,11 +282,11 @@ SQL Server のログインの詳細については、「[ログインの作成](
 
 	![SSMS を使用した接続][Image33]
 
-### <a id="cdea">アプリケーションからデータベース エンジンに接続する</a>
+## <a id="cdea">アプリケーションからデータベース エンジンに接続する</a>
 
 Azure の仮想マシンで実行されている SQL Server のインスタンスに Management Studio から接続できる場合は、次のような接続文字列を使用して接続できます。
 
-	connectionString="Server=<DNS_Name>;Integrated Security=false;User ID=<login_name>;Password=<your_password>;"providerName="System.Data.SqlClient"
+	connectionString = "Server=tutorialtestVM.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
 詳細については、「[How to Troubleshoot Connecting to the SQL Server Database Engine (SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法)](http://social.technet.microsoft.com/wiki/contents/articles/how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)」を参照してください。
 
@@ -306,10 +312,6 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 [Azure の仮想マシンにおける SQL Server の接続に関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294723)
 
-- チュートリアル: 同一クラウド サービス内の SQL Server に接続する方法 
-- チュートリアル: 異なるクラウド サービス内の SQL Server に接続する方法 
-- チュートリアル: ASP.NET アプリケーションを Azure 内の SQL Server に Virtual Network を介して接続する方法 
-
 [Azure Virtual Machines における SQL Server のパフォーマンスに関する考慮事項](http://go.microsoft.com/fwlink/?LinkId=294724)
 
 [Azure 仮想マシンにおける SQL Server のセキュリティに関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294725)
@@ -322,10 +324,6 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 - チュートリアル: Azure AlwaysOn 可用性グループ (PowerShell)
 - チュートリアル: Azure AlwaysOn 可用性グループのリスナー構成
 - チュートリアル: Azure レプリカの追加ウィザード
-- チュートリアル: Azure での障害復旧に備えるデータベース ミラーリング
-- チュートリアル: ハイブリッド IT での障害復旧のためのデータベース ミラーリング 
-- チュートリアル: Azure における高可用性のためのデータベース ミラーリング
-- チュートリアル: ハイブリッド IT における障害復旧のためのログ配布 
 - Azure の可用性グループ リスナーに関するトラブルシューティング
 
 [Azure の仮想マシンにおける SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/p/?LinkId=294728)
@@ -340,16 +338,15 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 [Azure の仮想マシンにおける SQL Server に関する技術記事](http://msdn.microsoft.com/library/azure/dn248435.aspx)
 
-- [ホワイト ペーパー: Azure SQL Database と Azure VM 内の SQL Server について](http://azure.microsoft.com/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas/)
+- [ホワイト ペーパー: Azure SQL Database と Azure VM 内の SQL Server について](sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)
 
 - [ホワイト ペーパー: Azure の仮想マシンにおける SQL Server のアプリケーション パターンと開発計画](http://msdn.microsoft.com/library/azure/dn574746.aspx)
 
 - [ホワイト ペーパー: Azure の仮想マシンでの SQL Server Business Intelligence のデプロイ](http://msdn.microsoft.com/library/windowsazure/dn321998.aspx)
 
-- [ホワイト ペーパー: Azure の仮想マシンにおける SQL Server のパフォーマンス ガイダンス](http://msdn.microsoft.com/library/windowsazure/dn248436.aspx)
-
 - [ホワイト ペーパー: Reporting Services レポート ビューアー コントロールと Microsoft Azure 仮想マシン ベースのレポート サーバー](http://msdn.microsoft.com/library/azure/dn753698.aspx)
 
+[Image4]: ./media/virtual-machines-provision-sql-server/4VM-Config.png
 [Image5]: ./media/virtual-machines-provision-sql-server/5VM-Mode.png
 [Image5b]: ./media/virtual-machines-provision-sql-server/5VM-Connect.png
 [Image6]: ./media/virtual-machines-provision-sql-server/6VM-Options.png
@@ -361,7 +358,7 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 [Image13]: ./media/virtual-machines-provision-sql-server/13New-FW-Rule.png
 [Image14]: ./media/virtual-machines-provision-sql-server/14Port-1433.png
 [Image15]: ./media/virtual-machines-provision-sql-server/15Allow-Connection.png
-[Image16]: ./media/virtual-machines-provision-sql-server/16Public-Profile.png
+[Image16]: ./media/virtual-machines-provision-sql-server/16Public-Private-Domain-Profile.png
 [Image17]: ./media/virtual-machines-provision-sql-server/17Rule-Name.png
 [Image18]: ./media/virtual-machines-provision-sql-server/18Start-SSMS.png
 [Image19]: ./media/virtual-machines-provision-sql-server/19Connect-to-Server.png
@@ -382,5 +379,6 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 [Image36]: ./media/virtual-machines-provision-sql-server/sql-vm-port-number.png
 [Image37]: ./media/virtual-machines-provision-sql-server/click-open-to-connect.png
 [Image38]: ./media/virtual-machines-provision-sql-server/credentials.png
+ 
 
-<!---HONumber=58--> 
+<!---HONumber=July15_HO2-->

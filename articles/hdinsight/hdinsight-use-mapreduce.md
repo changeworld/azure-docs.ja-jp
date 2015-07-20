@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDInsight での MapReduce と Hadoop の使用"
-   description="HDInsight での MapReduce と Hadoop の使用方法を説明します。"
+   pageTitle="HDInsight での MapReduce と Hadoop | Microsoft Azure"
+   description="HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。Java MapReduce ジョブとして実装されている基本的なワード カウントの操作を実行します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/23/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # HDInsight での MapReduce と Hadoop の使用
@@ -192,4 +192,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

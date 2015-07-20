@@ -40,4 +40,7 @@ Azure はウイルスまたはマルウェアへの対策に使用できる数�
 ##その他のリソース
 Microsoft Azure のトラスト センターの[リソース](http://azure.microsoft.com/support/trust-center/resources/)
 
-<!---HONumber=58--> 
+
+ 
+
+<!---HONumber=July15_HO2-->

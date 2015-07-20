@@ -60,4 +60,9 @@
 
 geo レプリケーションでは連続コピーを使用します。そのため、[sys.dm_continuous_copy_status](https://msdn.microsoft.com/library/azure/dn741329.aspx) 動的管理ビュー (DMV) を使用して、最新のレプリケーション時刻とその他の情報を取得します。
 
-<!---HONumber=58--> 
+
+
+
+ 
+
+<!---HONumber=July15_HO2-->

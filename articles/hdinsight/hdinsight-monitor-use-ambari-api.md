@@ -176,4 +176,4 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

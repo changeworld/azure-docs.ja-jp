@@ -13,60 +13,37 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/20/2015" 
+	ms.date="04/24/2015" 
 	ms.author="kathydav"/>
 
-#データ ディスクを Windows 仮想マシンに接続する方法
+# データ ディスクを Windows 仮想マシンに接続する方法
 
-空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。 
+空のディスクと、データが含まれているディスクを接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
 
-> [AZURE.NOTE] 仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。**データの格納に D ドライブを使用しないでください。**名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
-
-- [方法:空のディスクの接続](#attachempty)
-- [方法:既存のディスクの接続](#attachexisting)
-- [方法:Windows Server での新しいデータ ディスクの初期化](#initializeinWS)
-
+> [AZURE.NOTE]仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。**データの格納に D ドライブを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
-##<a id="initializeinWS"></a>方法:Windows Server での新しいデータ ディスクの初期化
+## <a id="initializeinWS"></a>方法: Windows Server での新しいデータ ディスクの初期化
 
 1. 仮想マシンへの接続詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法][logon]」を参照してください。
 
-2. マシンにログオンしたら、左側のウィンドウで**サーバー マネージャー**を開き、**[ストレージ]** を展開して、**[ディスクの管理]** をクリックします。
+2. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
+	![サーバー マネージャーを開く](./media/storage-windows-attach-disk/fileandstorageservices.png)
 
+3. メニューを展開し、**[ディスク]** を選択します。
 
-	![Open Server Manager](./media/storage-windows-attach-disk/ServerManager.png)
+4. **[ディスク]** セクションには、disk 0、disk 1、disk 2 が一覧表示されます。disk 0 は OS ディスクで、disk 1 は一時的なディスク (データ ストレージ用には使用できない) です。disk 2 は仮想マシンに接続したデータ ディスクです。データ ディスクの容量は、ディスクに指定したものやディスクを接続したタイミングに基づいて、5 GB になります。disk 2 を右クリックし、**[初期化]** を選択します。
 
+5.	ディスクの初期化時にすべてのデータが消去されることが通知されます。**[はい]** をクリックして警告を了解し、ディスクを初期化します。次に、もう一度 disk 2 を右クリックし、**[ボリューム]** を選択します。
 
+6.	既定の値を使用してウィザードを完了します。ウィザードが終了すると、**[ボリューム]** セクションに新しいボリュームが表示されます。ディスクがオンラインになり、データを格納できるようになります。
 
-3. **[ディスク 2]** を右クリックして、**[ディスクの初期化]** をクリックし、**[OK]** をクリックします。
+	![ボリュームの初期化に成功](./media/storage-windows-attach-disk/newvolumecreated.png)
 
+> [AZURE.NOTE]仮想マシンのサイズによって、アタッチできるディスクの数が決まります。詳細は、「[クラウド サービスと仮想マシンのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
+[logon]: virtual-machines-log-on-windows-server.md
 
-	![Initialize the disk](./media/storage-windows-attach-disk/InitializeDisk.png)
-
-
-4. ディスク 2 のスペース割り当て領域を右クリックして、**[新しいシンプル ボリューム]** をクリックし、既定値を使ってウィザードを終了します。
- 
-
-	![Initialize the volume](./media/storage-windows-attach-disk/InitializeDiskVolume.png)
-
-
-[logon]: ../virtual-machines-log-on-windows-server/
-
-
-
-	これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
-
-
-
-	![Volume successfully initialized](./media/storage-windows-attach-disk/InitializeSuccess.png)
-
-> [AZURE.NOTE] 仮想マシンに接続できるディスクの最大数は、仮想マシンのサイズによって変化します。たとえば、標準 A2 には 4 つのディスクのみを接続できますが、標準 D14 には 32 のディスク、標準 G5 には 64 のディスクを接続できます。仮想マシンのサイズによって接続できるディスク数の詳細は、[こちら](https://msdn.microsoft.com/ja-jp/library/azure/dn197896.aspx)をご覧ください。
-
-
-
-<!--HONumber=42-->
- 
+<!---HONumber=July15_HO2-->

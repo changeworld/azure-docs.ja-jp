@@ -1,3 +1,4 @@
+
 #カスタム仮想マシンの作成方法
 
 *カスタム*仮想マシンとは、**[ギャラリーから]** を選択して作成した仮想マシンを指します。この場合、**[簡易作成]** を使用した場合よりも多くのオプションを設定できます。設定できるオプションは次のとおりです。
@@ -59,4 +60,4 @@
 - [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-how-to-log-on.md)
 - [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-log-on-windows-server.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

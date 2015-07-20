@@ -131,4 +131,6 @@
 [Management Portal]: https://manage.windowsazure.com/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=328660
-<!--HONumber=54--> 
+   
+
+<!---HONumber=July15_HO2-->

@@ -8,4 +8,4 @@ Visual Studio がインストールされていない場合は、SDK と共に V
 
 [Azure SDK for Visual Studio 2013]: http://go.microsoft.com/fwlink/?LinkID=324322
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

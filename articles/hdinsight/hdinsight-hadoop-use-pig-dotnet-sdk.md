@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -36,7 +36,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 Azure HDInsight にアプリケーションを認証するには、自己署名証明書を作成して開発ワークステーションにインストールすると同時に、それを Azure サブスクリプションにもアップロードする必要があります。
 
-この方法に関する手順については、「<a href="http://go.microsoft.com/fwlink/?LinkId=511138" target="_blank">自己署名証明書の作成</a>」をご覧ください。
+この方法に関する手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」をご覧ください。
 
 > [AZURE.NOTE]後で使用するため、証明書にはわかりやすい名前を付けてください。
 
@@ -44,7 +44,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
 
-1. <a href="https://manage.windowsazure.com/" target="_blank">Azure 管理コンソール</a>にアクセスします。
+1. [Azure 管理コンソール](https://manage.windowsazure.com/)にアクセスします。
 
 2. ポータルの左側のバーから **[設定]** を選択します。
 
@@ -94,14 +94,14 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		using System.Linq;
 		using System.Text;
 		using System.Threading.Tasks;
-		
+
 		using System.IO;
 		using System.Threading;
 		using System.Security.Cryptography.X509Certificates;
-		
+
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.Hadoop.Client;
-		
+
 		namespace SubmitPigJob
 		{
 		    class Program
@@ -113,13 +113,13 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 		            // Get the certificate name
 		            string certFriendlyName = PromptForInput("Enter the management certificate name:");
-		
+
 		            // Get the cluster name
 		            string clusterName = PromptForInput("Enter the HDInsight cluster name:");
-		
+
 		            // Set the folder that job status is written to
 		            string statusFolderName = @"/tutorials/usepig/status";
-		
+
 		            // The Pig Latin statements to run
 		            string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
 		                "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
@@ -128,32 +128,32 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		                "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
 		                "RESULT = order FREQUENCIES by COUNT desc;" +
 		                "DUMP RESULT;";
-		
+
 		            // Define the Pig job
 		            PigJobCreateParameters myJobDefinition = new PigJobCreateParameters()
 		            {
 		                Query = queryString,
 		                StatusFolder = statusFolderName
 		            };
-		
+
 		            // Get the certificate object from certificate store using the friendly name to identify it
 		            X509Store store = new X509Store();
 		            store.Open(OpenFlags.ReadOnly);
 		            X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certFriendlyName);
-		
+
 		            JobSubmissionCertificateCredential creds = new JobSubmissionCertificateCredential(new Guid(subscriptionID), cert, clusterName);
-		
+
 		            // Create a hadoop client to connect to HDInsight
 		            var jobClient = JobSubmissionClientFactory.Connect(creds);
-		
+
 		            // Run the MapReduce job
 		            Console.WriteLine("----- Submit the Pig job ...");
 		            JobCreationResults mrJobResults = jobClient.CreatePigJob		(myJobDefinition);
-		
+
 		            // Wait for the job to complete
 		            Console.WriteLine("----- Wait for the Pig job to complete ...");
 		            WaitForJobCompletion(mrJobResults, jobClient);
-		
+
 		            // Display the error log
 		            Console.WriteLine("----- The Pig job error log.");
 		            using (Stream stream = jobClient.GetJobErrorLogs(mrJobResults.JobId))
@@ -161,7 +161,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		                var reader = new StreamReader(stream);
 		                Console.WriteLine(reader.ReadToEnd());
 		            }
-		
+
 		            // Display the output log
 		            Console.WriteLine("----- The Pig job output log.");
 		            using (Stream stream = jobClient.GetJobOutput(mrJobResults.JobId))
@@ -169,11 +169,11 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		                var reader = new StreamReader(stream);
 		                Console.WriteLine(reader.ReadToEnd());
 		            }
-		
+
 		            Console.WriteLine("----- Press ENTER to continue.");
 		            Console.ReadLine();
 		        }
-		
+
 		        private static void WaitForJobCompletion(JobCreationResults jobResults, IJobSubmissionClient client)
 		        {
 		            JobDetails jobInProgress = client.GetJob(jobResults.JobId);
@@ -183,7 +183,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		                Thread.Sleep(TimeSpan.FromSeconds(10));
 		            }
 		        }
-		
+
 		        private static string PromptForInput(string message)
 		        {
 		            Console.WriteLine(message);
@@ -229,4 +229,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

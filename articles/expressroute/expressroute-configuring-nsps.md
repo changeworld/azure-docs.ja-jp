@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="04/29/2015"
+   ms.date="06/29/2015"
    ms.author="cherylmc"/>
 
 #  ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成
@@ -89,7 +89,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 		Verizon              Silicon Valley,Washington DC   10Mbps:10, 50Mbps:50, 100Mbps:100, 500Mbps:500, 1Gbps:1000
 		
 
-3. **サービス キーを要求し、交換プロバイダーに渡します。**
+3. **サービス キーを要求し、ネットワーク サービス プロバイダーに渡します。**
 
 	この要求を行うには、PowerShell コマンドレットを使用します。この例では、AT&T Netbond をサービス プロバイダーとして使用しており、シリコン バレーで 50 Mbps の ExpressRoute 回線を指定しています。別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。
 
@@ -150,4 +150,4 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 		
 		Provisioned 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

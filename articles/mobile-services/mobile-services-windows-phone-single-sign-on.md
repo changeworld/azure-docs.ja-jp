@@ -18,7 +18,7 @@
 
 # Microsoft アカウントを使用して、クライアントによって管理される認証で Windows Phone アプリを認証します。
 
-[AZURE.INCLUDE [mobile-services-selector-single-signon](../../includes/mobile-services-selector-single-signon.md)] 
+[AZURE.INCLUDE [mobile-services-selector-single-signon](../../includes/mobile-services-selector-single-signon.md)]
 ##概要
 このトピックでは、Windows Phone 8 または Windows Phone 8.1 の Silverlight アプリケーションから、Live SDK を使用して、Microsoft アカウントの認証トークンを取得する方法を示します。このトークンを使用して、Azure Mobile Services でユーザーを認証します。このチュートリアルでは、Live SDK を使用して、既存のプロジェクトに Microsoft アカウント認証を追加します。正常に認証されると、ログインしたユーザーの名前が認識され、ユーザー ID 値が表示されます。
 
@@ -40,7 +40,7 @@
 
 次に、サインインしたユーザーのみがリソース (この場合は *TodoItems* テーブル) にアクセスできるようにリソースへのアクセスを制限する必要があります。
 
-[AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../../includes/mobile-services-restrict-permissions-windows.md)] 
+[AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../../includes/mobile-services-restrict-permissions-windows.md)]
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
@@ -140,5 +140,6 @@
 [スクリプトを使用したユーザーの認証]: ../mobile-services-windows-phone-authorize-users-in-scripts.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

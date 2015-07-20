@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/30/2015"
+	ms.date="07/06/2015"
 	ms.author="larryfr"/>
 
 
-#HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用 
+#HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
 
 Hive と Pig は Azure HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。Hive と Pig の両方を使用すると、ユーザー定義関数 (UDF) またはストリーミングから外部コードを呼び出すことができます。
 
@@ -29,15 +29,15 @@ Hive と Pig は Azure HDInsight でデータを処理する場合にきわめ�
 
 * 以下のバージョンの Visual Studio:
 
-	* Visual Studio 2012 Professional/Premium/Ultimate の<a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">アップデート 4</a>
+	* Visual Studio 2012 Professional/Premium/Ultimate の[アップデート 4](http://www.microsoft.com/download/details.aspx?id=39305)
 
-	* Visual Studio 2013 Community/Professional/Premium/Ultimate の<a href="https://www.microsoft.com/download/details.aspx?id=44921" target="_blank">アップデート 4</a>
+	* Visual Studio 2013 Community/Professional/Premium/Ultimate の[アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
 
 	* Visual Studio 2015 プレビュー版
 
 * HDInsight クラスターの Hadoop - クラスターを作成する手順については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。
 
-* Hadoop Tools for Visual Studio。ツールをインストールして構成する手順については、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started" target="_blank">HDInsight Hadoop Tools for Visual Studio の使用開始</a>」をご覧ください。
+* Hadoop Tools for Visual Studio。ツールをインストールして構成する手順については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
 ##HDInsight の .NET
 
@@ -122,7 +122,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 6. そのクラスターの **[既定のコンテナー]** をダブルクリックします。既定のコンテナーの内容を表示する新しいウィンドウが開きます。
 
-7. アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin \debug** フォルダーを参照します。最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+7. アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin \\debug** フォルダーを参照します。最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
 	![アップロード アイコン](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
 
@@ -152,7 +152,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 6. **[更新]** をクリックし、**[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。ジョブの出力を表示するには、**[ジョブの出力]** をクリックします。
 
-###Pig と C#
+##Pig と C#
 
 ###C# プロジェクトを作成する
 
@@ -193,7 +193,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 ###アプリケーションをアップロードする
 
-1. pig ストリーミングは、アプリケーションがクラスター ファイル システムでローカルであると想定しています。「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
+1. pig ストリーミングは、アプリケーションがクラスター ファイル システムでローカルであると想定しています。「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
 2. 接続されたら、ローカル コンピューターの PigUDF プロジェクトの **bin/debug** ディレクトリから **PigUDF.exe** をコピーし、クラスターの **%PIG_HOME%** ディレクトリに貼り付けます。
 
@@ -239,6 +239,5 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

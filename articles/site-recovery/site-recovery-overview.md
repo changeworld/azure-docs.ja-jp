@@ -181,4 +181,4 @@ Oracle | 近日対応予定 | 近日対応予定 | Y (Microsoft によってテ�
 この概要の終了後、[ベスト プラクティスを確認して](site-recovery-best-practices.md)、デプロイの計画を開始します。
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

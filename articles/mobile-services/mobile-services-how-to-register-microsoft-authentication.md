@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/07/2015" 
+	ms.date="06/14/2015" 
 	ms.author="glenga"/>
 
 # 認証で Microsoft アカウントを使用するためのアプリケーションの登録
+
+[AZURE.INCLUDE [mobile-services-selector-register-identity-provider](../../includes/mobile-services-selector-register-identity-provider.md)]
+
+## 概要 
 
 このトピックでは、Azure Mobile Services の ID プロバイダーとして Microsoft アカウントを使用できるようにモバイル アプリを登録する方法について説明します。Live SDK を使用するサービス主導型認証とクライアント主導型認証の両方に同じ手順が適用されます。
 
@@ -30,13 +34,13 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
    	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-submit-win8-app.png)
 
-2. [**一意の名前を予約することにより新しいアプリを作成する**] をクリックし、[**続行**] をクリックし、[**アプリ名**] にアプリケーションの名前を入力し、[**アプリの名前の予約**] をクリックし、[**保存**] をクリックします。
+2. [**一意の名前を予約することにより新しいアプリを作成する**] をクリックしてから [**続行**] をクリックし、[**アプリ名**] にアプリケーションの名前を入力し、[**アプリの名前の予約**] 、[**保存**] 順にクリックします。
 
    	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-name.png)
 
    	これでアプリケーションの新しい Windows ストア登録が作成されます。
 
-3. Visual Studio で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
+3. Visual Studio で、チュートリアル [Mobile Services の使用](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md)を実行したときに作成したプロジェクトを開きます。
 
 4. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、[**ストア**]、[**アプリケーションをストアと関連付ける**] の順にクリックします。
 
@@ -44,7 +48,7 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
    	**アプリケーションを Windows ストアと関連付ける**ウィザードが表示されます。
 
-5. ウィザードで、**[サインイン]** をクリックし、Microsoft アカウントでログインし、手順 2 で予約したアプリケーション名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。
+5. ウィザードで、[**サインイン**] をクリックしてから Microsoft アカウントでログインし、手順 2 で予約したアプリケーションを選択して[**次へ**] 、[**関連付け**] の順にクリックします。
 
    	この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
 
@@ -54,13 +58,13 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
    	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit-app.png)
 
-7. [サービス] ページで **[Azure のモバイル サービス]** の **[Live サービス サイト]** をクリックします。
+7. [サービス] ページで **[Azure Mobile Services]** の **[Live サービス サイト]** をクリックします。
 
 	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit2-app.png)
 
 これにより、アプリの Microsoft アカウント ページが表示されます。
 
-## Microsoft アカウントの登録の構成と Mobile Servicesモバイル サービスへの接続
+## Microsoft アカウントの登録の構成と Mobile Services への接続
 
 このセクションの最初の手順は、Windows Phone 8、Windows Phone 8.1 Silverlight、および Windows 以外のストア アプリにのみ適用されます。これらのアプリの場合、Windows ストア アプリでだけ使用可能なパッケージ セキュリティ ID (SID) も無視できます。
 
@@ -77,9 +81,10 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 	**[ルート ドメイン]** は自動的に設定されます。
 
 4. **[アプリ設定]** をクリックして、**[クライアント ID]**、**[クライアント シークレット]**、**[パッケージ SID]** の値を書き留めます。
-
+	
    	![Microsoft アカウント アプリの設定](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-push-auth.png)
-
+	
+	
     > [AZURE.NOTE]クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。Windows ストア アプリの登録でのみ、パッケージ SID フィールドが表示されます。
 
 4. [Azure 管理ポータル]で、モバイル サービスの **[ID]** タブをクリックし、ID プロバイダーから入手したクライアント ID、クライアント シークレット、パッケージ SID を入力して、**[保存]** をクリックします。
@@ -100,5 +105,6 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

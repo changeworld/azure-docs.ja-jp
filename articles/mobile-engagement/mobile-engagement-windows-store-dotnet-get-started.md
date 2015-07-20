@@ -1,29 +1,30 @@
-<properties 
-	pageTitle="Windows ユニバーサル アプリの Azure モバイル エンゲージメントの概要" 
+<properties
+	pageTitle="Windows ユニバーサル アプリの Azure モバイル エンゲージメントの概要"
 	description="Windows ユニバーサル アプリで Azure モバイル エンゲージメントの分析機能やプッシュ通知を使用する方法について説明します。"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/30/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="get-started-article" 
+	ms.date="04/30/2015"
 	ms.author="piyushjo" />
-	
+
 # Windows ユニバーサル アプリの Azure モバイル エンゲージメントの概要
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md) 
-- [iOS - Obj C](mobile-engagement-ios-get-started.md) 
+- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
+- [iOS - Obj C](mobile-engagement-ios-get-started.md)
 - [iOS - Swift](mobile-engagement-ios-swift-get-started.md)
-- [Android](mobile-engagement-android-get-started.md) 
+- [Android](mobile-engagement-android-get-started.md)
+- [Cordova](mobile-engagement-cordova-get-started.md)
 
 このトピックでは、アプリの使用状況を理解して、プッシュ通知を Windows ユニバーサル アプリケーションのセグメント化されたユーザーに送信するために、Azure モバイル エンゲージメントの使用方法を説明します。このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。基本的なアプリ使用データを収集し、Windows 通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ユニバーサル アプリを作成します。完了すると、デバイス プロパティに基づいて、すべてのデバイスまたは特定のターゲット ユーザーに、プッシュ通知をブロードキャストできるようになります。モバイル エンゲージメントを使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒にご覧ください。
 
@@ -43,13 +44,13 @@
    	![][7]
 
 3. 表示されたポップアップに、次の情報を入力します。
- 
+
    	![][8]
 
 	- **アプリケーション名**: アプリケーションの名前を入力します。自由に任意の文字を使用してください。
-	- **プラットフォーム**: アプリ向けのターゲット プラットフォーム (**Windows ユニバーサル**) を選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。 
+	- **プラットフォーム**: アプリ向けのターゲット プラットフォーム (**Windows ユニバーサル**) を選択します (アプリが複数のプラットフォームをターゲットにしている場合は、各プラットフォームに対してこのチュートリアルを繰り返します)。
 	- **アプリケーション リソース名**: この名前を使用して、API と URL を通じてこのアプリケーションにアクセスします。従来の URL の文字のみを使用する必要があります。自動生成された名前は、ベースとなる名前として役立ちます。また、この名前は一意である必要があるので、重複を避けるために、プラットフォーム名を付加することをお勧めします。
-	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。 
+	- **場所**: このアプリ (さらに重要なそのコレクション) がホストされるデータ センターを選択します。
 	- **コレクション**: アプリケーションを既に作成済みの場合は以前に作成したコレクションを選択し、そうでない場合は新しいコレクションを選択します。
 	- **コレクション名**。 これは、グループのアプリケーションを表します。すべてのアプリを 1 つのグループに含めることで、それらをメトリック集計できます。該当する場合は、ここで会社名や部門を使用する必要があります。
 
@@ -58,7 +59,7 @@
 4. **[アプリケーション]** タブで、作成したアプリを選択します。
 
 5. **[接続情報]** をクリックして、モバイル アプリに統合する SDK に組み込む接続設定を表示します。
- 
+
    	![][10]
 
 6. **[接続文字列]** をコピーします - これは、アプリケーション コード内で、このアプリケーションを識別し、ユニバーサル アプリからモバイル エンゲージメント サービスに接続するために必要なものです。
@@ -83,12 +84,12 @@
 
 これで、Azure モバイル エンゲージメント SDK を統合する新しい Windows ユニバーサル アプリ プロジェクトが作成されました。
 
-###アプリをモバイル エンゲージメントのバックエンドに接続する 
+###アプリをモバイル エンゲージメントのバックエンドに接続する
 
-1. プロジェクトに[モバイル サービス Windows ユニバーサル SDK] nuget パッケージをインストールします。Windows と Windows Phone の両方のプラットフォームを対象としている場合、両方のプロジェクトにこれを行う必要があります。同じの Nuget パッケージが各プロジェクトに適切なプラットフォーム固有のバイナリを配置します。 
+1. プロジェクトに[モバイル サービス Windows ユニバーサル SDK] nuget パッケージをインストールします。Windows と Windows Phone の両方のプラットフォームを対象としている場合、両方のプロジェクトにこれを行う必要があります。同じの Nuget パッケージが各プロジェクトに適切なプラットフォーム固有のバイナリを配置します。
 
 2. `Package.appxmanifest` を開き、次が自動的に追加されない場合、それを追加します。
-		
+
 		Internet (Client)
 
 	![][20]
@@ -106,11 +107,11 @@
 			using Microsoft.Azure.Engagement;
 
 	b.`OnLaunched` メソッドで SDK を初期化します。
-			
+
 			protected override void OnLaunched(LaunchActivatedEventArgs e)
 			{
 			  EngagementAgent.Instance.Init(e);
-			
+
 			  //... rest of the code
 			}
 
@@ -119,7 +120,7 @@
 			protected override void OnActivated(IActivatedEventArgs e)
 			{
 			  EngagementAgent.Instance.Init(e);
-			
+
 			  //... rest of the code
 			}
 
@@ -140,7 +141,7 @@
 	a.次の内容を名前空間宣言に追加します。
 
 			xmlns:engagement="using:Microsoft.Azure.Engagement"
-	
+
 	b.xml タグ名の `Page` を `engagement:EngagementPage` で置き換えます。
 
 ###アプリがリアルタイム監視に接続していることを確認する
@@ -195,7 +196,7 @@
 
 ###通知を送信するためにモバイル エンゲージメントへのアクセスを許可する
 
-1. アプリを Windows ストア アプリに関連付け、`Package security identifier (SID)` と `Secret Key` (クライアント シークレット) を取得する必要があります。[Windows ストア デベロッパー センター]からアプリを作成し、Visual Studio から**アプリとストアを関連付ける**ことができます。 
+1. アプリを Windows ストア アプリに関連付け、`Package security identifier (SID)` と `Secret Key` (クライアント シークレット) を取得する必要があります。[Windows ストア デベロッパー センター]からアプリを作成し、Visual Studio から**アプリとストアを関連付ける**ことができます。
 
 2. Mobile Engagement ポータルの [**設定**] に移動し、左側の [`Native Push`] セクションをクリックします。
 
@@ -257,5 +258,6 @@
 [38]: ./media/mobile-engagement-windows-store-dotnet-get-started/campaign-first-params.png
 [39]: ./media/mobile-engagement-windows-store-dotnet-get-started/campaign-content.png
 [41]: ./media/mobile-engagement-windows-store-dotnet-get-started/campaign-activate.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

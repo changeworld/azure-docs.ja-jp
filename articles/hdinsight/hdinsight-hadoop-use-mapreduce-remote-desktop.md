@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/18/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での MapReduce と Hadoop の使用
@@ -22,7 +22,7 @@
 
 この記事では、リモート デスクトップを使用して HDInsight クラスター上の Hadoop に接続し、Hive コマンドを使用して MapReduce ジョブを実行する方法について説明します。
 
-## <a id="prereq"></a>前提条件
+##<a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -30,11 +30,11 @@
 
 * Windows 10、Windows 8、Windows 7 を実行するクライアント コンピューター
 
-## <a id="connect"></a>リモート デスクトップへの接続
+##<a id="connect"></a>リモート デスクトップへの接続
 
-「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
+「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a id="hadoop"></a>Hadoop コマンドの使用
+##<a id="hadoop"></a>Hadoop コマンドの使用
 
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hadoop コマンドを使用して MapReduce ジョブを実行します。
 
@@ -79,11 +79,11 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 		wretched        6
 		wriggling       1
 
-## <a id="summary"></a>概要
+##<a id="summary"></a>概要
 
 このように、Hadoop を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ出力を表示できます。
 
-## <a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
@@ -95,4 +95,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="StorSimple のリリース ノート - 2014 年 7 月"
+    pageTitle="StorSimple 8000 シリーズ リリース バージョンのリリース ノート - 2014 年 7 月"
     description="Microsoft Azure StorSimple の 2014 年 7 月リリースにおける新機能、問題、回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
@@ -12,14 +12,14 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="04/28/2015"
+    ms.date="05/27/2015"
     ms.author="v-sharos" />
 
-# StorSimple のリリース ノート - 2014 年 7 月 
+# StorSimple 8000 シリーズ リリース バージョンのリリース ノート - 2014 年 7 月 
 
 ## 概要
 
-次のリリース ノートには、Microsoft Azure StorSimple の 2014 年 7 月一般公開 (GA) リリースに関する未解決の重大な問題が示されています。このリリースは、ソフトウェア バージョン 6.3.9600.17215 に対応します。
+次のリリース ノートには、2014 年 7 月に一般公開 (GA) リリースされた Microsoft Azure StorSimple の StorSimple 8000 シリーズに関する未解決の重大な問題が示されています。このリリースは、ソフトウェア バージョン 6.3.9600.17215 に対応します。
 
 特に断りのない限り、これらのリリース ノートは StorSimple デバイスの全モデルに当てはまります。リリース ノートは継続的に更新されます。回避策を必要とする重大な問題が見つかった場合は追加されます。Microsoft Azure StorSimple ソリューションをデプロイする前に、次の情報を考慮してください。
 
@@ -40,6 +40,6 @@
 | 10 | ネットワーク インターフェイス | 以前は、ネットワーク インターフェイスの DATA 2 と DATA 3 はソフトウェアでスワップされました。 | これらのインターフェイスを構成する必要がある場合は、Microsoft サポートにお問い合わせください。 | あり | いいえ |
 
 
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

@@ -145,4 +145,4 @@ Azure データセンターの場所を指定する必要があります。Azure
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

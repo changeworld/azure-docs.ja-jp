@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Media Services を使用したライブ ストリーミングの配信" 
-	description="このトピックでは、一般的なメディア サービスのライブ ストリーミングのワークフローの手順を説明します。" 
+	pageTitle="Azure Media Services を使用したライブ ストリーミング配信" 
+	description="このトピックでは、ライブ ストリーミングに関連する主要なコンポーネントの概要を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,105 +13,76 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2015" 
+	ms.date="05/26/2015" 
 	ms.author="juliako"/>
 
 
-#Azure Media Services を使用したライブ ストリーミングの配信
+#Azure Media Services を使用したライブ ストリーミング イベントの配信
 
 ##概要
 
-このトピックでは、一般的な Azure Media Services (AMS) のライブ ストリーミングのワークフローの手順を説明します。各手順は関連するトピックにリンクしています。さまざまなテクノロジを使用して達成できるタスクでは、任意のテクノロジへリンクするボタンがあります (たとえば、.NET または REST)。   
+ライブ ストリーミングを使用する場合は、通常、次のコンポーネントが関連しています。
 
-メディア サービスは既存のツールとプロセスに統合できます。たとえば、コンテンツをオンサイトでエンコードして、複数の形式にトランスコードするためにメディア サービスにアップロードし、Azure CDN やサードパーティ CDN を通じて配信します。 
+- イベントのブロードキャストに使用されるカメラ。
+- カメラからの信号をライブ ストリーミング サービスに送信されるストリームに変換するライブ ビデオ エンコーダー。 
+  
+	必要に応じて、複数のライブ エンコーダー。非常に高い可用性と高品質が要求される重要なライブ イベントでは、アクティブ/アクティブの冗長エンコーダーを使用して、データを失わないシームレスなフェールオーバーを実現することをお勧めします。
+- 次の操作を実行できるライブ ストリーミング サービス。 
+	- さまざまなライブ ストリーミング プロトコル (RTMP、スムーズ ストリーミングなど) を使用してライブ コンテンツを取り込む。 
+	- ストリームをアダプティブ ビットレート ストリームにエンコードする。
+	- ライブ ストリームをプレビューする。
+	- 後でストリーミングするために、取り込んだコンテンツを保存する (ビデオ オン デマンド)。
+	- コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS、HDS など) を使用して顧客に配信したり、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信する。 
+	
+		
+**Microsoft Azure Media Services** (AMS) は、ライブ ストリーミング コンテンツの取り込み、エンコード、プレビュー、保存、配信を行う機能を提供します。
 
-次の図は、ライブ ストリーミング ワークフローに関連する Media Services プラットフォームの主要な部分を示しています。
+コンテンツを顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。品質とネットワーク条件に対応するには、ライブ エンコーダーを使用して、ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。異なるデバイスでのストリーミングに対応するには、Media Services の[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。Media Services で配信がサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
-![ライブのワークフロー][live-overview]
+Azure Media Services、**チャネル**、**プログラム**、**ストリーミング エンドポイント**で、インジェスト、書式設定、DVR、セキュリティ、スケーラビリティ、冗長性などのすべてのライブ ストリーミングの機能を処理します。
 
-このトピックでは、ライブ ストリーミングに関連する概念を説明し、ライブ ストリーミングのタスクの実行方法を示すトピックへのリンクを紹介します。
-
-##概念
-
-ライブ ストリーミングに関連する概念については、「[Azure Media Services の概念](media-services-concepts.md)」をご覧ください。
-
-##Media Services アカウントの作成
-
-**Azure 管理ポータル**を使用して、[Media Services アカウントを作成](media-services-create-account.md)します。
-
-##ストリーミング エンドポイントの構成
-
-ストリーミング エンドポイントの概要と、その管理方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」をご覧ください。
-
-##開発環境の設定  
-
-開発環境の **.NET** または **REST API** を選択します。
-
-[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
-
-##プログラムによる接続  
-
-**.NET** または **REST API** を選択して、プログラムによって Azure メディア サービスに接続します。
-
-[AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
+**チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。現時点では、チャネルは次の方法でライブ入力ストリームを受信できます。
 
 
-##内部設置型のライブ エンコーダーを使用してマルチ ビットレート ストリーミングをチャネルに出力する
+- オンプレミスのライブ エンコーダーは、RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効なチャネルに送信します。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
-##サードパーティのライブ トランスコーダーの操作
-
-詳細については、「[Azure Media Services でのサード パーティ ライブ エンコーダーの使用](https://msdn.microsoft.com/library/azure/dn783464.aspx)」をご覧ください。
-
-##チャネル、プログラム、アセットの管理
-
-**概要**: [チャネルとプログラムの管理の概要](media-services-manage-channels-overview.md).
-
-**[ポータル]**、**[.NET]**、**[REST API]** をクリックするとサンプルを確認できます。
-
-[AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
-
-##アセット配信ポリシーの構成
-
-**.NET** または **REST API** を使用してアセット配信ポリシーを構成します。
-
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
-
-##コンテンツ キーの作成
-
- **.NET** や **REST API** を使用してアセットを暗号化するコンテンツ キーを作成します。
-
-[AZURE.INCLUDE [media-services-selector-create-contentkey](../../includes/media-services-selector-create-contentkey.md)]
-
-##コンテンツ キーの承認ポリシーの構成 
-
-**.NET** または **REST API** を使用してコンテンツ保護やキー承認ポリシーを構成するには、以下をご覧ください。
-
-[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
+	Media Services でのライブ ストリームのエンコードは、**プレビュー**になっています。
+- オンプレミスのライブ エンコーダーは、マルチ ビットレート **RTMP** または **スムーズ ストリーミング** (Fragmented MP4) をチャネルに送信します。マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。取り込んだストリームは、追加の処理なしで**チャネル**を通過します。ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 
-##アセットの公開と配信
-
-**概要**: [コンテンツの配信の概要](media-services-deliver-content-overview.md)
-
-**Azure 管理ポータル** または **.NET** を使用してアセットを公開します (ロケータを作成して)。
-
-[AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
+##Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する
 
 
-##Azure CDN の有効化
+次の図は、Media Services によるライブ エンコードの実行が有効なチャネルのライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
-Media Services では、Azure CDN との統合をサポートしています。Azure CDN を有効にする方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md#enable_cdn)」をご覧ください。
+![ライブ ワークフロー][live-overview1]
 
-##Media Services アカウントのスケーリング
+詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
-準備するアカウントの **ストリーミング占有ユニット** の数を指定して、**Media Services ** の規模を設定できます。 
 
-ストリーミング ユニットの規模の設定については、[「ストリーミング ユニットの拡張」](media-services-manage-origins.md#scale_streaming_endpoints.md)をご覧ください。
+##オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
+
+
+次の図は、ライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
+
+![ライブ ワークフロー][live-overview2]
+
+詳細については、「[オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」をご覧ください。
+
+
+##関連トピック
+
+[Media Services の概念](media-services-concepts.md)
+
+[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
 
 
 
 
-[live-overview]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
 
+[live-overview1]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png
 
-<!--HONumber=52--> 
+[live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
+ 
+
+<!---HONumber=July15_HO2-->

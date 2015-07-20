@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="正規分布の Web サービス スイート | Azure" 
+	pageTitle="正規分布の Web サービス スイート | Microsoft Azure" 
 	description="正規分布の Web サービス スイート" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,16 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/11/2015" 
+	ms.date="06/24/2015" 
 	ms.author="jaymathe"/>
 
-#正規分布の Web サービス スイート
+#正規分布スイート
 
 
 
-正規分布のスイートは、一連のサンプル Web サービス ([正規分布ジェネレーター]( https://datamarket.azure.com/dataset/aml_labs/ndg7)、[変位値計算]( https://datamarket.azure.com/dataset/aml_labs/ndq5)、[確率計算]( https://datamarket.azure.com/dataset/aml_labs/ndp5)) で、具体的には正規分布を生成し処理する 3 つのサービスです。これらのサービスにより、任意の長さの正規分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。正規分布スイートは、R の統計パッケージに含まれている R 関数 qnorm、rnorm、および pnorm に基づいています。
+正規分布のスイートは、一連のサンプル Web サービス ([正規分布ジェネレーター](https://datamarket.azure.com/dataset/aml_labs/ndg7)、[変位値計算](https://datamarket.azure.com/dataset/aml_labs/ndq5)、[確率計算](https://datamarket.azure.com/dataset/aml_labs/ndp5)) で、正規分布を生成し処理します。これらのサービスにより、任意の長さの正規分布シーケンスの生成、与えられた確率からの変位値の計算、および与えられた変位値からの確率の計算ができます。それぞれのサービスは、選択したサービスに基づいて異なる結果を出力します (以下の説明を参照してください)。正規分布スイートは、R の統計パッケージに含まれている R 関数 qnorm、rnorm、および pnorm に基づいています。
 
->この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できますが、この Web サービスのもう 1 つの目的は、Azure ML を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure ML Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。  
+
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+>この Web サービスは、モバイル アプリ、Web サイト、ローカル コンピューターなどからユーザーが使用できます。この Web サービスのもう 1 つの目的は、Azure Machine Learning を使用して R コード上に Web サービスを作成する方法の例を示すことです。数行の R コードを記述し、Azure Machine Learning Studio 内でボタンを何回かクリックするだけで、R コードで実験を作成し、Web サービスとして発行できます。この Web サービスは Azure Marketplace に発行され、Web サービスの作成者がインフラストラクチャを設定することなく、世界中のユーザーやデバイスで使用されます。
  
 
 ##Web サービスの使用
@@ -33,9 +36,9 @@
 
 入力引数は、次のとおりです。
 
-* p - 正規分布のイベントの 1 つの確率 
-* Mean - 正規分布の平均
-* SD - 正規分布の標準偏差 
+* p – 正規分布のイベントの 1 つの確率 
+* mean – 正規分布の平均
+* SD – 正規分布の標準偏差 
 * Side - L は分布の下部、U は分布の上部
 
 サービスの出力は計算された変位値で、指定された確率に関連付けられています。
@@ -45,73 +48,134 @@
 
 入力引数は、次のとおりです。
 
-* q - 正規分布でのイベントの 1 つの変位値 
-* Mean - 正規分布の平均
-* SD - 正規分布の標準偏差 
+* q – 正規分布でのイベントの 1 つの変位値 
+* mean – 正規分布の平均
+* SD – 正規分布の標準偏差 
 * Side - L は分布の下部、U は分布の上部
 
 サービスの出力は計算された確率で、指定された変位値に関連付けられています。
 
 ###正規分布ジェネレーター
-このサービスは、正規分布の 3 つの引数を使用し、正規分布の数値のランダム シーケンスを生成します。 
-要求には、次の引数を指定する必要があります。
+このサービスは、正規分布の 3 つの引数を使用し、正規分布の数値のランダム シーケンスを生成します。要求には、次の引数を指定する必要があります。
 
-* n - 観察数 
-* mean - 正規分布の平均
-* sd - 正規分布の標準偏差 
+* n – 観察数 
+* Mean – 正規分布の平均
+* SD – 正規分布の標準偏差 
 
 サービスの出力は、mean と sd の引数に基づいた正規分布での長さ n のシーケンスです。
 
->Microsoft Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST または GET メソッドによって呼び出すことができます。 
+>Azure Marketplace でホストされているこのサービスは、OData サービスです。これらは、POST や GET メソッドによって呼び出すことができます。
 
-自動でサービスを使用するための複数の方法があります (アプリケーション例: [ジェネレーター](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx)、
-[確率計算](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionProbabilityCalculator.aspx)、
-[変位値計算](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionQuantileCalculator.aspx))。
+自動でサービスを使用するための複数の方法があります (アプリケーション例: [ジェネレーター](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx)、[確率計算](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionProbabilityCalculator.aspx)、[変位値計算](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionQuantileCalculator.aspx))。
 
 ###Web サービスを使用する C# コードを開始します。
 
-	public class Input{
-	public double Recency;
-	public double Frequency;
-	public double Monetary;
-	public double Time;
-	public double Class;
+###正規分布の変位値計算:
+	public class Input
+	{
+	        public string p;
+	        public string mean;
+	        public string sd;
+	        public string side;
 	}
-
+	
 	public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
-    {
-        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
-        System.Diagnostics.Debug.WriteLine("AuthenticationHeaderValue" + new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray)));
-        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-    }
-       
+	{
+	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+	}
+	
 	void Main()
 	{
-  	var input = new Input(){Recency =1, Frequency=0,Monetary=0,Time=1, Class= 0};
-	var json = JsonConvert.SerializeObject(input);
-	var acitionUri =  "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
-       
-  	var httpClient = new HttpClient();
-   	httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere","ChangeToAPIKey");
-   	httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-  	var query = httpClient.PostAsync(acitionUri,new StringContent(json));
-  	var result = query.Result.Content;
-  	var scoreResult = result.ReadAsStringAsync().Result;
-  	scoreResult.Dump();
+	        var input = new Input() { p = TextBox1.Text, mean = TextBox2.Text, sd = TextBox3.Text, side = TextBox4.Text };
+	        var json = JsonConvert.SerializeObject(input);
+	        var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+	        var httpClient = new HttpClient();
+	
+	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	
+	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+	        var result = response.Result.Content;
+	    	var scoreResult = result.ReadAsStringAsync().Result;
 	}
 
+
+###正規分布の確率計算:
+	public class Input
+	{
+	        public string q;
+	        public string mean;
+	        public string sd;
+	        public string side;
+	}
+	
+    public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
+	{
+	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+	}
+	
+	void Main()
+	{
+	        var input = new Input() { q = TextBox1.Text, mean = TextBox2.Text, sd = TextBox3.Text, side = TextBox4.Text };
+	        var json = JsonConvert.SerializeObject(input);
+	        var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+	        var httpClient = new HttpClient();
+	
+	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	
+	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+	        var result = response.Result.Content;
+		    var scoreResult = result.ReadAsStringAsync().Result;
+	}
+
+###正規分布ジェネレーター
+	public class Input
+	{
+	        public string n;
+	        public string mean;
+	        public string sd;
+	}
+	
+    public AuthenticationHeaderValue CreateBasicHeader(string username, string password)
+	{
+	        byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(username + ":" + password);
+	        return new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+	}
+	
+	void Main()
+	{
+	        var input = new Input() { n = TextBox1.Text, mean = TextBox2.Text, sd = TextBox3.Text };
+	        var json = JsonConvert.SerializeObject(input);
+	        var acitionUri = "PutAPIURLHere,e.g.https://api.datamarket.azure.com/..../v1/Score";
+	        var httpClient = new HttpClient();
+	
+	        httpClient.DefaultRequestHeaders.Authorization = CreateBasicHeader("PutEmailAddressHere", "ChangeToAPIKey");
+	        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	
+	        var response = httpClient.PostAsync(acitionUri, new StringContent(json));
+	        var result = response.Result.Content;
+		    var scoreResult = result.ReadAsStringAsync().Result;
+	}
+
+
 ##Web サービスの作成 
->この Web サービスは、Azure ML を使用して作成されました。無料評価版の場合、実験を作成して[Web サービスを発行する](http://azure.microsoft.com/documentation/articles/machine-learning-publish-web-service-to-azure-marketplace/)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) も参照してください。 
+>この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。
 
 Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
 ###正規分布の変位値計算:
-実験フロー
-![Experiment flow][2]
+
+実験フロー:
+
+![実験フロー][2]
  
-	#data schema with example data (replaced with data from web service)
+	#Data schema with example data (replaced with data from web service)
 	data.set=data.frame(p=0.1,mean=0,sd=1,side='L');
 	maml.mapOutputPort("data.set"); #send data to output port
+	
 	# Map 1-based optional input ports to variables
 	dataset1 <- maml.mapInputPort(1) # class: data.frame
 
@@ -134,16 +198,19 @@ Web サービスを作成した実験のスクリーン ショット、および
 	}
 
 	output = as.data.frame(q)
+	
 	# Select data.frame to be sent to the output Dataset port
 	maml.mapOutputPort("output");
 	
 ###正規分布の確率計算:
-実験フロー
-![Experiment flow][3]
+実験フロー:
+
+![実験フロー][3]
  
- 	#data schema with example data (replaced with data from web service)
+ 	#Data schema with example data (replaced with data from web service)
 	data.set=data.frame(q=-1,mean=0,sd=1,side='L');
 	maml.mapOutputPort("data.set"); #send data to output port
+	
 	# Map 1-based optional input ports to variables
 	dataset1 <- maml.mapInputPort(1) # class: data.frame
 
@@ -161,16 +228,19 @@ Web サービスを作成した実験のスクリーン ショット、および
 	}
 
 	output = as.data.frame(prob)
+	
 	# Select data.frame to be sent to the output Dataset port
 	maml.mapOutputPort("output");
 	
-###正規分布ジェネレーター:
-実験フロー
-![Experiment flow][4]
+###正規分布ジェネレーター
+実験フロー:
 
-	#data schema with example data (replaced with data from web service)
+![実験フロー][4]
+
+	#Data schema with example data (replaced with data from web service)
 	data.set=data.frame(n=50,mean=0,sd=1);
 	maml.mapOutputPort("data.set"); #send data to output port
+	
 	# Map 1-based optional input ports to variables
 	dataset1 <- maml.mapInputPort(1) # class: data.frame
 
@@ -187,12 +257,12 @@ Web サービスを作成した実験のスクリーン ショット、および
 これらは、正規分布周辺のきわめて単純な例です。上のコード例からわかるように、エラーのキャッチはほとんど実装されていません。
 
 ##FAQ
-Web サービスの使用、または Marketplace への発行に関するよく寄せられる質問については、[ここ](http://azure.microsoft.com/documentation/articles/machine-learning-marketplace-faq)を参照してください。
+Web サービスの使用や、Azure Marketplace への発行に関するよく寄せられる質問については、[ここ](machine-learning-marketplace-faq.md)をご覧ください。
 
 [1]: ./media/machine-learning-r-csharp-normal-distribution/normal-img1.png
 [2]: ./media/machine-learning-r-csharp-normal-distribution/normal-img2.png
 [3]: ./media/machine-learning-r-csharp-normal-distribution/normal-img3.png
 [4]: ./media/machine-learning-r-csharp-normal-distribution/normal-img4.png
-
-<!--HONumber=46--> 
  
+
+<!---HONumber=July15_HO2-->

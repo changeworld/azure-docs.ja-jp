@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Machine Learning Studio での実験イテレーションの管理 | Azure" 
+	pageTitle="Machine Learning Studio での実験イテレーションの管理 | Microsoft Azure" 
 	description="Azure Machine Learning Studio での実験イテレーションの管理方法" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -83,5 +83,6 @@ ML Studio の **[EXPERIMENTS]** タブの実験のリストには、実験の最
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

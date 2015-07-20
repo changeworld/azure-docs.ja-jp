@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm を使用した Twitter のトレンディング トピックの確認
@@ -139,4 +139,4 @@ HDInsight での Storm のその他の例:
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

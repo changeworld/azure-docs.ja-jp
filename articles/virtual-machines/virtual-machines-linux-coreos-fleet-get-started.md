@@ -1,23 +1,21 @@
-<properties 
-	pageTitle="Azure 上の CoreOS で fleet を使ってみる" 
-	description="Azure の CoreOS Linux 仮想マシン上での fleet と Docker を使用方法を紹介します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="dlepow" 
+<properties
+	pageTitle="Azure 上の CoreOS で fleet を使ってみる"
+	description="Azure の CoreOS Linux 仮想マシン上での fleet と Docker を使用方法を紹介します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="dlepow"
 	manager="timlt"
 	editor="madhana"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.workload="infrastructure-services" 
-	ms.date="03/17/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-linux"
+	ms.workload="infrastructure-services"
+	ms.date="03/17/2015"
 	ms.author="danlep"/>
 
-
-<!--The next line, with one pound sign at the beginning, is the page title-->
 # Azure 上の CoreOS で fleet を使ってみる
 
 この記事では、[fleet](https://github.com/coreos/fleet) と [Docker](https://www.docker.com/) を使用して、[CoreOS] 仮想マシンのクラスターでアプリケーションを実行する簡単な例を 2 つ紹介します。
@@ -92,7 +90,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload helloworld.service
 
 CoreOS、Docker、および** fleet **を使用する利点の 1 つは、可用性の高い方法だとサービス実行が簡単になるということです。この例では、3 つの同じコンテナーで構成される、Apache Web サーバーを実行するサービスをデプロイします。これらのコンテナーは、クラスター内にある 3 つの VM 上で実行されます。この例は、 「[fleet を使用してコンテナーを起動する]」で説明した例に似ており、 [CoreOS Apache Docker Hub イメージ]が使用されています。
 
->[AZURE.NOTE]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS  クラスターの作成後に、Azure 管理ポータルまたは **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
+>[AZURE.NOTE]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure 管理ポータルまたは **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
 
 クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** テンプレート ユニット ファイルを作成し、apache@.service という名前を付けます。このテンプレートを使用して、apache@1.service 、apache@2.service、および apache@3.service という名前の 3 つの独立したインスタンスを起動します。
 
@@ -156,7 +154,7 @@ Azure 上の 3 ノード構成 CoreOS クラスターでは、この他さまざ
 Azure での Linux VM およびオープン ソース環境の使用に関する詳細は、「[Azure 上での Linux およびオープン ソース コンピューティング]」を参照してください。
 
 <!--Link references-->
-[Azure Cross-Platform Interface (xplat-cli)]: ../xplat-cli.md
+[Azure Command-Line Interface (Azure)]: ../xplat-cli.md
 [CoreOS]: https://coreos.com/
 [CoreOS の概要]: https://coreos.com/using-coreos/
 [CoreOS with Azure]: https://coreos.com/docs/running-coreos/cloud-providers/azure/
@@ -171,4 +169,6 @@ Azure での Linux VM およびオープン ソース環境の使用に関する
 [BusyBox Docker Hub イメージ]: https://registry.hub.docker.com/_/busybox/
 [CoreOS Apache Docker Hub イメージ]: https://registry.hub.docker.com/u/coreos/apache/
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
-<!--HONumber=54--> 
+ 
+
+<!---HONumber=July15_HO2-->

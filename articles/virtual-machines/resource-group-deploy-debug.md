@@ -49,7 +49,7 @@ Azure CLI には、エラーを防止し、実行中の不具合を検出する�
           "location": "East US,West US,West Europe,East Asia,Southeast Asia,North Europe"
         }
 
-- **azure group template validate <resource group>**。このコマンドでは、テンプレートとテンプレート パラメーターを使用する前に検証します。カスタム テンプレートまたはギャラリー テンプレートと、使用するテンプレート パラメーター値を入力します。このコマンドレットは、テンプレートが内部的に一貫性があるかどうか、およびパラメーター値セットがテンプレートと一致するかどうかをテストします。
+- **azure group template validate <resource group>**。このコマンドでは、テンプレートとテンプレート パラメーターを使用する前に検証します。カスタム テンプレートまたはギャラリー テンプレートと、使用するテンプレート パラメーター値を入力します。
 
     次の例は、テンプレートと必要なパラメーターの検証方法を示しています。Azure CLI は、必要なパラメーター値を求めるメッセージを表示します。
 
@@ -66,7 +66,7 @@ Azure CLI には、エラーを防止し、実行中の不具合を検出する�
 
 ## Azure CLI を使用してデプロイメントの問題を修正する情報を取得する
 
-- **azure group log show <resource group>**: このコマンドは、リソース グループの各デプロイメントのログのエントリを取得します。問題が生じた場合は、展開ログを調べることにから開始します。
+- **azure group log show <resource group>**: このコマンドは、リソース グループの各デプロイメントのログのエントリを取得します。問題が生じた場合は、デプロイ ログを調べることにから開始します。
 
         info:    Executing command group log show
         info:    Getting group logs
@@ -115,7 +115,7 @@ Azure CLI には、エラーを防止し、実行中の不具合を検出する�
                                        Subnet-1
                                        "}}}]}}
 
-        Use the **--last-deployment** option to retrieve only the log for the most recent deployment. The following script uses the **--json** option and **jq** to search the log for deployment failures.
+**--last-deployment** オプションを使用して、最新のデプロイのログのみを取得します。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイ エラーのログを検索します。
 
         azure group log show templates --json | jq '.[] | select(.status.value == "Failed")'
 
@@ -199,7 +199,7 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 
 ## Windows PowerShell でデプロイメントの問題を修正するための情報を取得する
 
-- **Get-AzureResourceGroupLog**: このコマンドレットは、リソース グループの各デプロイのログのエントリを取得します。問題が生じた場合は、展開ログを調べることにから開始します。
+- **Get-AzureResourceGroupLog**: このコマンドレットは、リソース グループの各デプロイのログのエントリを取得します。問題が生じた場合は、デプロイ ログを調べることにから開始します。
 
 - **Verbose および Debug**: AzureResourceManager モジュールのこのコマンドレットは、実際の作業を行う REST API を呼び出します。API が返すメッセージを表示するには、$DebugPreference 変数を "Continue" に設定して、コマンドで Verbose 共通パラメーターを使用します。多くの場合、メッセージはエラーの原因に関する重要な手掛かりを提供します。
 
@@ -213,6 +213,26 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 
 また、デプロイが既定のクォータに達すると、問題が発生する場合があります。既定のクォータは、リソース グループごと、サブスクリプションごと、アカウントごと、および他のスコープである可能性があります。正しくデプロイするために使用可能なリソースを持っているかどうかの満足度を確認します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](../azure-subscription-service-limits.md)」をご覧ください。
 
+サブスクリプションのコアのクォータを調べるには、Azure CLI では `azure vm list-usage` コマンド、 PowerShell では `Get-AzureVMUsage` コマンドレットを使用する必要があります、次に Azure CLI のコマンドを示します。また、無料試用版アカウントのコア クォータが 4 であることも示しています。
+
+    azure vm list-usage
+    info:    Executing command vm list-usage
+    Location: westus
+    data:    Name   Unit   CurrentValue  Limit
+    data:    -----  -----  ------------  -----
+    data:    Cores  Count  0             4    
+    info:    vm list-usage command OK
+
+上記のサブスクリプションで、米国西部リージョンに 4 つ以上のコアを作成するテンプレートをデプロイしようとした場合、 (ポータルでまたはデプロイ ログを調査して) 次のようなデプロイ エラーになります。
+
+    statusCode:Conflict
+    serviceRequestId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    statusMessage:{"error":{"code":"OperationNotAllowed","message":"Operation results in exceeding quota limits of Core. Maximum allowed: 4, Current in use: 4, Additional requested: 2."}}
+
+このような場合はポータルに移動し、ファイルをデプロイするリージョンのクォータを増加させるように、サポートに問題を報告してください。
+
+> [AZURE.NOTE]リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース管理のコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース管理コアを要求する必要があります。<!-- --> コアについて具体的にするには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。 <!-- --> azure provider show Microsoft.Compute --json | jq '.resourceTypes | select(.name == "virtualMachines") | { name,apiVersions, locations}' { "name": "virtualMachines", "apiVersions": [ "2015-05-01-preview", "2014-12-01-preview" ], "locations": [ "East US", "West US", "West Europe", "East Asia", "Southeast Asia" ] }
+     
 
 ## Azure CLI および PowerShell のモードの問題
 
@@ -243,7 +263,7 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
         data:    Microsoft.Sql                    Registered
         info:    provider list command OK
 
-    Again, if you want more information about providers, including their regional availability, type `azure provider list --json`. The following selects only the first one in the list to view:
+この場合も、リージョン別の提供状況などのプロバイダーの詳細については、`azure provider list --json` と入力します。次のコードはリストの先頭にあるのみを選択して表示します。
 
         azure provider list --json | jq '.[0]'
         {
@@ -351,8 +371,6 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
     }
 
-
-
 ## 次のステップ
 
 テンプレートの作成をマスターするには、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をお読みください。さらに、デプロイできる使用例については [AzureRMTemplates リポジトリ](https://github.com/azurermtemplates/azurermtemplates)に目を通してください。**dependsOn** プロパティの使用例は、[受信の NAT 規則のテンプレートを使用するロード バランサー](https://github.com/azurermtemplates/azurermtemplates/blob/master/101-create-internal-loadbalancer/azuredeploy.json)です。
@@ -367,6 +385,6 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 [gog]: http://google.com/
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

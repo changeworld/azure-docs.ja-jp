@@ -166,4 +166,7 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
-<!--HONumber=54--> 
+[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
+ 
+
+<!---HONumber=July15_HO2-->

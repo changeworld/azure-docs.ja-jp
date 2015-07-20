@@ -387,4 +387,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

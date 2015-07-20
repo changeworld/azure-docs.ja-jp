@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="Fiddler を使用して Azure Search REST API を評価およびテストする方法" 
-	description="コードを作成せずに、Fiddler を使用して、Azure Search の可用性を検証し、REST API を試してみます。" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
+<properties
+	pageTitle="Fiddler を使用して Azure Search REST API を評価およびテストする方法"
+	description="コードを作成せずに、Fiddler を使用して、Azure Search の可用性を検証し、REST API を試してみます。"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="mblythe"
 	editor=""/>
 
-<tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="03/12/2015" 
+<tags
+	ms.service="search"
+	ms.devlang="rest-api"
+	ms.workload="search"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.date="07/08/2015"
 	ms.author="heidist"/>
 
 # Fiddler を使用して Azure Search REST API を評価およびテストする方法
 
-この手順では、コードを記述することなく、[Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler) Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示します。Azure Search サービス REST API については、[MSDN](https://msdn.microsoft.com/ja-jp/library/azure/dn798935.aspx) を参照してください。
+この記事では、コードを記述することなく、[Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler) Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。Azure Search サービス REST API については、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。
 
 以下の手順では、インデックスを作成し、ドキュメントをアップロードし、インデックスのクエリを実行してから、システムでサービス情報のクエリを実行します。
 
@@ -26,7 +26,7 @@
 
 ## インデックスを作成する
 
-1. Fiddler を起動します。ファイル メニューの **[トラフィックのキャプチャ]** をオフにして、現在のタスクには関係ない外部の HTTP アクティビティを非表示にします。 
+1. Fiddler を起動します。ファイル メニューの **[トラフィックのキャプチャ]** をオフにして、現在のタスクには関係ない外部の HTTP アクティビティを非表示にします。
 
 3. [Composer] タブで、次のような要求を生成します。
 
@@ -66,7 +66,7 @@
           {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
           {"name": "rating", "type": "Edm.Int32"},
           {"name": "location", "type": "Edm.GeographyPoint"}
-         ] 
+         ]
         }
 
 6.	**[実行]** をクリックします。
@@ -183,7 +183,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
         api-key: 1111222233334444
 
 応答コードは 200 で、応答出力は次の図のようになります。
- 
+
    ![][4]
 
 次のクエリ例は、MSDN の「[Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))](http://msdn.microsoft.com/library/dn798927.aspx)」に記載されているものです。このトピックのクエリ例の多くに、Fiddler では許可されないスペースが含まれています。Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
@@ -206,7 +206,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 2.	次のように、サービスの URL の後に「/indexes/hotels/stats?api-version=2015-02-28」を続けて URL を入力します。
 
-        https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28 
+        https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
 
 3.	ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
 
@@ -234,6 +234,6 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [3]: ./media/search-fiddler/AzureSearch_Fiddler3_Query.png
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
+ 
 
-
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

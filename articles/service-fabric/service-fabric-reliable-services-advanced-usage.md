@@ -62,4 +62,4 @@ Service Fabric に関する詳細なトピックについては、次の記事�
 - [Azure Service Fabric のステートフル サービスのレプリケーション トラフィックのセキュリティ保護](../service-fabric/service-fabric-replication-security.md)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

@@ -3,7 +3,7 @@
 	description="Java バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="yuaxu" 
+	authors="ysxu" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="java" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="01/12/2015" 
+	ms.date="04/14/2015" 
 	ms.author="yuaxu"/>
 
 # Java から Notification Hubs を使用する方法
@@ -21,10 +21,9 @@
     	<a href="/documentation/articles/notification-hubs-java-backend-how-to/" title="Java" class="current">Java</a><a href="/documentation/articles/notification-hubs-php-backend-how-to/" title="PHP">PHP</a><a href="/documentation/articles/notification-hubs-python-backend-how-to/" title="Python">Python</a><a href="/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs/" title="Node.js">Node.js</a>
 </div>
 
-このトピックでは、新しい Azure Notification Hub Java SDK の主な機能について説明します。Azure Notification Hub Java SDK は、完全にサポートされている公式の SDK です。 
-これはオープン ソース プロジェクトであり、SDK コード全体は [Java SDK] で確認できます。 
+このトピックでは、新しい Azure Notification Hub Java SDK の主な機能について説明します。Azure Notification Hub Java SDK は、完全にサポートされている公式の SDK です。これはオープン ソース プロジェクトであり、SDK コード全体は [Java SDK] で確認できます。
 
-MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、通常は、Notification Hub REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。この Java SDK は、これらの REST インターフェイスを使用して、Java で Thin ラッパーを提供します。 
+MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、通常は、Notification Hub REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。この Java SDK は、これらの REST インターフェイスを使用して、Java で Thin ラッパーを提供します。
 
 現在 SDK でサポートされている項目は次のとおりです。
 
@@ -35,13 +34,13 @@ MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/libr
 - 通常の送信
 - スケジュールされた送信
 - Java NIO を使用した非同期操作
-- サポートされているプラットフォーム:APNS (iOS)、GCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android) 
+- サポート対象のプラットフォーム: APNS (iOS)、GCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android) 
 
 ## SDK の使用例
 
 ### コンパイルとビルド
 
-[Maven] を使用します。
+[Maven] を使用
 
 次のコードを使用してビルドします。
 
@@ -121,7 +120,7 @@ MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/libr
 	
 	hub.deleteRegistration(regid);
 
-**登録のクエリを実行する:**
+**登録をクエリする:**
 
 * 	**1 つの登録を取得する:**
 	
@@ -142,16 +141,14 @@ MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/libr
 すべてのコレクション クエリでは $top トークンと継続トークンがサポートされます。
 
 ### インストール API の使用例
-インストール API は登録管理の代替メカニズムです。間違った方法または非効率的な方法で容易に完了した可能性のある重要な複数の登録を保持する代わりに、単一の Installation オブジェクトを使用できるようになりました。 
-Installation には、プッシュ チャネル (デバイス トークン)、タグ、テンプレート、セカンダリ タイル (WNS および APNS 用) などの必要な情報がすべて格納されます。ID を取得するためにサービスを呼び出す必要はありません。GUID またはその他の識別子を生成してデバイスに保存し、プッシュ チャネル (デバイス トークン) と共にバックエンドに送信するだけです。 
-バックエンドで行う必要があるのは、単一の CreateOrUpdateInstallation の呼び出しのみです。CreateOrUpdateInstallation はべき等であるため、必要に応じて自由に再試行してください。
+インストール API は登録管理の代替メカニズムです。間違った方法または非効率的な方法で容易に完了した可能性のある重要な複数の登録を保持する代わりに、単一の Installation オブジェクトを使用できるようになりました。Installation には、プッシュ チャネル (デバイス トークン)、タグ、テンプレート、セカンダリ タイル (WNS および APNS 用) などの必要な情報がすべて格納されます。ID を取得するためにサービスを呼び出す必要はありません。GUID またはその他の識別子を生成してデバイスに保存し、プッシュ チャネル (デバイス トークン) と共にバックエンドに送信するだけです。バックエンドで行う必要があるのは、単一の CreateOrUpdateInstallation の呼び出しのみです。CreateOrUpdateInstallation はべき等であるため、必要に応じて自由に再試行してください。
 
 Amazon Kindle Fire の場合の例は次のようになります。
 
 	Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
 	hub.createOrUpdateInstallation(installation);
 
-更新する場合は、次のようになります。 
+更新する場合は、次のようになります。
 
 	installation.addTag("foo");
 	installation.addTemplate("template1", new InstallationTemplate("{"data":{"key1":"$(value1)"}}","tag-for-template1"));
@@ -226,13 +223,12 @@ CreateOrUpdate、Patch、および Delete は、最終的には Get と一致し
 
 	List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**SAS 署名を含む URI:** 
-これは、一部の BLOB ファイルまたは BLOB コンテナーの URL に、一連のパラメーター (アクセス許可や有効期限など)、およびアカウントの SAS キーを使用して作成されたこれらすべての項目の署名を加えたものです。Azure Storage Java SDK には、このような種類の URI を作成を含む豊富な機能が用意されています。シンプルな代替手段として、署名アルゴリズムの非常に基本的かつコンパクトな実装を含む (GitHub の) ImportExportE2E テスト クラスを使用できます。
+**SAS 署名を含む URI:** これは、一部の BLOB ファイルまたは BLOB コンテナーの URL に、一連のパラメーター (アクセス許可や有効期限など)、およびアカウントの SAS キーを使用して作成されたこれらすべての項目の署名を加えたものです。Azure Storage Java SDK には、このような種類の URI を作成を含む豊富な機能が用意されています。シンプルな代替手段として、署名アルゴリズムの非常に基本的かつコンパクトな実装を含む (GitHub の) ImportExportE2E テスト クラスを使用できます。
 
 ###通知の送信
 Notification オブジェクトはヘッダー付きの本文にすぎません。一部のユーティリティ メソッドはネイティブ オブジェクトとテンプレート通知オブジェクトのビルドに役立ちます。
 
-* **Windows ストアおよび Windows Phone 8.1 (非 Silverlight)**
+* **Windows ストアおよび Windows Phone 8.1 (Silverlight 以外)**
 
 		String toast = "<toast><visual><binding template="ToastText01"><text id="1">Hello from Java!</text></binding></visual></toast>";
 		Notification n = Notification.createWindowsNotification(toast);
@@ -274,7 +270,7 @@ Notification オブジェクトはヘッダー付きの本文にすぎません�
 		tags.add("foo");
 		hub.sendNotification(n, tags);
 
-* **タグ式に送信する**       
+* **タグ式に送信する**
 
 		hub.sendNotification(n, "foo && ! bar");
 
@@ -293,19 +289,20 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 
 * [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。 
 * サンプルを試します。
-	- [Get Started with Notification Hubs (Notification Hubs の使用)]
-	- [Send breaking news (ニュース速報の送信)]
-	- [Send localized breaking news (ローカライズ ニュース速報の送信)]
-	- [Send notifications to authenticated users (認証されたユーザーへの通知の送信)]
-	- [Send cross-platform notifications to authenticated users (認証されたユーザーへのクロスプラットフォーム通知の送信)]
+	- [Notification Hubs の使用]
+	- [ニュース速報の送信]
+	- [ローカライズ ニュース速報の送信]
+	- [認証されたユーザーへの通知の送信]
+	- [認証されたユーザーへのクロスプラットフォーム通知の送信]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Get started tutorial (入門チュートリアル)]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Get Started with Notification Hubs (Notification Hubs の使用)]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/
-[Send breaking news (ニュース速報の送信)]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/
-[Send localized breaking news (ローカライズ ニュース速報の送信)]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/
-[Send notifications to authenticated users (認証されたユーザーへの通知の送信)]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
-[Send cross-platform notifications to authenticated users (認証されたユーザーへのクロスプラットフォーム通知の送信)]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Notification Hubs の使用]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/
+[ニュース速報の送信]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/
+[ローカライズ ニュース速報の送信]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/
+[認証されたユーザーへの通知の送信]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
+[認証されたユーザーへのクロスプラットフォーム通知の送信]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 [Maven]: http://maven.apache.org/
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

@@ -49,4 +49,4 @@
 
 これで、**ToDoActivity** は、プッシュ通知を追加するための準備が整いました。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

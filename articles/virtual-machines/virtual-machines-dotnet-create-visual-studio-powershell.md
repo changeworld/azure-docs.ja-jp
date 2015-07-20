@@ -53,7 +53,8 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 
 <br/> 13.(必要に応じて) 新しい仮想マシンに接続できます。**サーバー エクスプローラー**で、**[仮想マシン]** ノードを展開し、作成した仮想マシンのノードをクリックします。そのショートカット メニューで、**[リモート デスクトップを使用して接続する]** をクリックします。
 
-	![][5]
+ ![][5]
+
 
 ## 次のステップ
 
@@ -64,7 +65,6 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 [2]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_CreateVM.PNG
 [3]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_Provisioning.png
 [4]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_SolutionExplorer.png
-[5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_CreateVM_Connect.png
- 
+[5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_Create_VM_Connect.png
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Machine Learning Web service を発行する | Azure" 
+	pageTitle="Machine Learning Web サービスに接続する | Microsoft Azure" 
 	description="トレーニング実験をスコア付け実験に変換する方法、発行の準備をする方法、Azure Machine Learning Web サービスとして発行する方法について説明します。" 
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2015" 
+	ms.date="05/27/2015" 
 	ms.author="garye"/>
 
 #Azure Machine Learning Web サービスを発行する
@@ -93,8 +93,7 @@ Machine Learning Web サービスにアクセスする詳細については、�
 
 Azure 管理ポータルでは、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、その後 **[WEB SERVICES]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスを発行するときに作成される既定のエンドポイントに加えて 2 つ目のエンドポイントを追加することもできます。
 
-詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
-<!-- When this article gets published, fix the link and uncomment
+詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。<!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**. 
 -->
 
@@ -107,5 +106,6 @@ Web サービスを更新するには、元の Web サービス発行に使用�
 
 > [AZURE.NOTE]たとえば元の Web サービスの構成に変更を加えた場合や新しい表示名または説明を入力した場合、それらの値をもう一度入力する必要が生じます。
 
+Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

@@ -10,10 +10,10 @@
 <tags 
 	ms.service="mobile-services" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="multiple" 
+	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/04/2015" 
+	ms.date="06/09/2015" 
 	ms.author="wesmc"/>
 
 # Azure Active Directory Graph 情報へのアクセス
@@ -59,7 +59,7 @@ Azure AD Graph API の詳細については、「[Azure Active Directory Graph �
 Mobile Services でカスタム API をまったく使用したことがない場合は、このセクションを完了する前に、「[Custom API Tutorial (カスタム API チュートリアル)]」を参照してください。
 
 1. Visual Studio で、モバイル サービスの .NET バックエンド プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-2. [NuGet パッケージ マネージャー] ダイアログ ボックスで、検索条件に「**ADAL**」と入力してモバイル サービスの **Active Directory 認証ライブラリ**を検索し、インストールします。このチュートリアルは、ADAL パッケージの 3.0.110281957-alpha (プレリリース) バージョンで最後にテストされています。
+2. [NuGet パッケージ マネージャー] ダイアログ ボックスで、検索条件に「**ADAL**」と入力してモバイル サービスの **Active Directory 認証ライブラリ**を検索し、インストールします。このチュートリアルは、ADAL パッケージの 3.3.205061641-alpha (プレリリース) バージョンで最後にテストされています。
 
 
 3. Visual Studio で、モバイル サービス プロジェクトの **Controllers** フォルダーを右クリックし、**[追加]** をクリックして、`GetUserInfoController` という名前の新しい **Microsoft Azure モバイル サービス カスタム コントローラー**を追加します。クライアントがこの API を呼び出して、Active Directory からユーザー情報を取得します。
@@ -252,5 +252,6 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Azure Active Directory Graph チームのブログ]: http://go.microsoft.com/fwlink/?LinkId=510536
 [Get User]: http://msdn.microsoft.com/library/azure/dn151678.aspx
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

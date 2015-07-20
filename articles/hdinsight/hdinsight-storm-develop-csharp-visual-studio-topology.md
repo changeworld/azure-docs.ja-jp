@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2015"
+   ms.date="07/06/2015"
    ms.author="larryfr"/>
 
 # Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
@@ -26,23 +26,23 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 -	下記いずれかのバージョンの Visual Studio
 
-	-	Visual Studio 2012 (<a href="http://www.microsoft.com/download/details.aspx?id=39305" target="_blank">Update 4</a>)
+	-	Visual Studio 2012 ([Update 4](http://www.microsoft.com/download/details.aspx?id=39305))
 
-	-	Visual Studio 2013 (<a href="http://www.microsoft.com/download/details.aspx?id=44921" target="_blank">Update 4</a>) または <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
+	-	Visual Studio 2013 ([Update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
 
-	-	<a href="http://visualstudio.com/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
+	-	[Visual Studio 2015 CTP6](http://visualstudio.com/downloads/visual-studio-2015-ctp-vs)
 
 -	Azure SDK 2.5.1 以降
 
--	HDInsight Tools for Visual Studio - HDInsight Tools for Visual Studio のインストールと構成については、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」をご覧ください。
+-	HDInsight Tools for Visual Studio: HDInsight Tools for Visual Studio のインストールと構成については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
--	HDInsight 上の Apache Storm クラスター - クラスターを作成する手順については、「<a href="../hdinsight-storm-getting-started/" target="_blank">HDInsight での Apache Storm の使用</a>」をご覧ください。
+-	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-storm-getting-started.md)」をご覧ください。
 
 	> [AZURE.NOTE]現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
 
 ##C# トポロジの作成
 
-1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「<a href="../hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Tools for Visual Studio の使用開始</a>」をご覧ください。
+1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
 2.	Visual Studio を開いて、**[ファイル]** > **[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -58,7 +58,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 	-	**Bolt.cs**: スパウトが出力する数字をカウントするサンプル ボルト
 
-	プロジェクト作成の過程で最新の <a href="https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/" target="_blank">SCP.NET パッケージ</a>が NuGet からダウンロードされます。
+	プロジェクト作成の過程で最新の [SCP.NET パッケージ](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)が NuGet からダウンロードされます。
 
 次のセクションでは、このプロジェクトを基本的な WordCount アプリケーションに変更します。
 
@@ -579,7 +579,7 @@ SCP.Net バージョン 0.9.4.203 には、Event Hub スパウト (Event Hub か
 
 6.	変更を保存して、**F5** キーをクリックするか、**[デバッグ]** > **[デバッグの開始]** を使用してプロジェクトを起動します。コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。**[テストの完了]** と表示されたら、いずれかのキーを押してウィンドウを閉じます。
 
-7.	**Windows エクスプローラー**を使用して、たとえば、**C:\Users<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
+7.	**Windows エクスプローラー**を使用して、たとえば、**C:\\Users<your_user_name>\\Documents\\Visual Studio 2013\\Projects\\WordCount\\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
 
 	> [AZURE.NOTE]これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は「and」という単語を示します。
 
@@ -638,6 +638,5 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 **HDInsight での Apache HBase**
 
 -	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

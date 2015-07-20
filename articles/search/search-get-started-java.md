@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Java での Azure Search の使用" 
-	description="プログラミング言語として Java を使用してカスタム Azure Search アプリケーションを作成する手順を示します。" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
+<properties
+	pageTitle="Java での Azure Search の使用"
+	description="プログラミング言語として Java を使用してカスタム Azure Search アプリケーションを作成する手順を示します。"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="mblythe"
 	editor=""/>
 
-<tags 
-	ms.service="search" 
-	ms.devlang="na" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="03/30/2015" 
+<tags
+	ms.service="search"
+	ms.devlang="na"
+	ms.workload="search"
+	ms.topic="hero-article" 
+	ms.tgt_pltfrm="na"
+	ms.date="06/24/2015"
 	ms.author="heidist"/>
 
 #Java での Azure Search の使用#
@@ -57,39 +57,39 @@
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ジャンプ バーで、**[新規]**、**[データ + ストレージ]**、**[検索]** の順にクリックします。
- 
+2. ジャンプバーで、[**新規**] | [**データ + ストレージ**] | [**Search**] をクリックします。
+
      ![][1]
 
 3. サービス名、価格レベル、リソース グループ、サブスクリプション、および場所を構成します。これらの設定は必須であり、サービスがプロビジョニングされた後は変更できません。
 
      ![][2]
 
-	- **[サービス名]** はスペースなし、15 文字以下の小文字で、一意である必要があります。この名前は、Azure Search サービスのエンドポイントの一部になります。名前付け規則の詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」を参照してください。 
-	
-	- **[価格レベル]** では、容量と課金を決定します。どちらのレベルも同じ機能を提供しますが、リソース レベルが異なります。
-	
-		- **[無料]** レベルは、他のサブスクライバーと共有されているクラスター上で実行されます。無料版はチュートリアルを試用して概念実証コードを書くには充分な機能を提供しますが、運用アプリケーションには対応していません。無料サービスは、通常は数分で展開できます。
-		- **[標準]** レベルは専用リソースで実行され、拡張性に優れています。最初、標準サービスは 1 つのレプリカと 1 つのパーティションを使用してプロビジョニングされますが、サービスを作成した後は容量を調整できます。標準サービスをデプロイするには、通常は約 15 分かかります。
-	
+	- **[サービス名]** はスペースなし、15 文字以下の小文字で、一意である必要があります。この名前は、Azure Search サービスのエンドポイントの一部になります。名前付け規則の詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」を参照してください。
+
+	- [**価格レベル**] では、容量と課金を決定します。どちらのレベルも同じ機能を提供しますが、リソース レベルが異なります。
+
+		- **[無料]** レベルは、他のサブスクライバーと共有されているクラスター上で実行されます。無料版はチュートリアルを試用して概念実証コードを書くには十分な機能を提供しますが、運用アプリケーションには対応していません。無料サービスは、通常は数分で展開できます。
+		- **[標準]** レベルは専用リソースで実行され、拡張性に優れています。最初、標準サービスは 1 つのレプリカと 1 つのパーティションを使用してプロビジョニングされますが、サービスを作成した後で容量を調整することができます。標準サービスをデプロイするには、通常は約 15 分かかります。
+
 	- **リソース グループ**は、一般的な目的で使用するサービスとリソースのコンテナーです。たとえば、Azure Search、Azure Websites、Azure BLOB ストレージを使用してカスタム検索アプリケーションを構築する場合は、リソース グループを作成することで、これらのサービスをポータル管理ページにまとめておくことができます。
-	
+
 	- **[サブスクリプション]** では、複数のサブスクリプションがある場合に、複数のサブスクリプションから選択できます。
-	
+
 	- **[場所]** はデータ センターのリージョンです。現時点では、すべてのリソースは同じデータ センターで実行する必要があります。複数のデータ センターにリソースを分散させることはできません。
 
 4. **[作成]** をクリックしてサービスをプロビジョニングします。
 
-ジャンプ バーで通知を確認します。サービスが使用できるようになると、通知が表示されます。
+ジャンプバーで、通知を確認します。サービスが使用できるようになると、通知が表示されます。
 
 <a id="sub-2"></a>
 ## Azure Search サービスのサービス名と API キーの取得
 
 サービスを作成した後は、ポータルに戻って URL および `api-key` を取得できます。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
-1. ジャンプ バーで **[ホーム]** をクリックし、Search サービスをクリックして、サービスのダッシュボードを開きます。 
+1. ジャンプ バーで **[ホーム]** をクリックし、Search サービスをクリックして、サービスのダッシュボードを開きます。
 
-2. サービスのダッシュ ボードには、基本情報のタイルのほか、管理キーにアクセスするためのキー アイコンが表示されます。
+2. サービスのダッシュ ボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
   	![][3]
 
@@ -121,8 +121,8 @@
 
 ## サービスの URL と API キーの構成
 
-1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。 
- 
+1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
+
 2. この記事で前述の手順を参照し、[Azure ポータル](https://portal.azure.com) でサービスの URL と API キーを探して、**config.properties** に入力する値を取得します。
 
 3. **config.properties** で、「API キー」をサービスの API キーに置き換えます。次に、サービス名 (URL http://servicename.search.windows.net の最初のコンポーネント) で同じファイルの「サービス名」を置き換えます。
@@ -148,13 +148,13 @@
 6. 次のページでは、Tomcat のインストール ディレクトリを指定します。Windows コンピューターでは、通常、C:\\Program Files\\Apache Software Foundation\\Tomcat *version* です。
 
 6. **[完了]** をクリックします。
- 
+
 7. **[Window]**、**[Preferences]**、**[Java]**、**[Installed JREs]**、**[Add]** の順に選択します。
 
 8. **[Add JRE]** で、**[Standard VM]** を選択します。
 
 10. **[次へ]** をクリックします。
- 
+
 11. [JRE Definition] の [JRE home] で、**[Directory]** をクリックします。
 
 12. **[Program Files]**、**[Java]** に移動し、先にインストールした JDK を選択します。JRE として JDK を選択することが重要です。
@@ -170,13 +170,13 @@
 構成タスクが完了しました。次に、プロジェクトをビルドして実行します。
 
 ## プロジェクトのビルド
- 
+
 1. Project Explorer で、プロジェクト名を右クリックし、**[Run As]**、**[Maven build...]** の順に選択してプロジェクトを構成します。
 
     ![][10]
 
 8. [Edit Configuration] の [Goals] に「clean install」と入力し、**[Run]** をクリックします。
- 
+
 ステータス メッセージがコンソール ウィンドウに出力されます。[BUILD SUCCESS] と表示されれば、プロジェクトはエラーなしでビルドされています。
 
 ## アプリの実行
@@ -213,12 +213,12 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 
 これは、Java と USGS データセットに基づく最初の Azure Search チュートリアルです。カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
-Azure Search についての知識が既にある場合は、このサンプルを基にして、さらに調べることができます。[検索ページ](../search-pagination/)を変更したり、[ファセット ナビゲーション](../search-faceted-navigation/)を実装したりしてみてください。また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
+Azure Search についての知識が既にある場合は、このサンプルを基にして、さらに調べることができます。[検索ページ](search-pagination.md)を変更したり、[ファセット ナビゲーション](../search-faceted-navigation/)を実装したりしてみてください。また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
 
 Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。他のリソースについては、[ドキュメントのページ](http://azure.microsoft.com/documentation/services/search/)を参照してください。[ビデオとチュートリアルの一覧](https://msdn.microsoft.com/library/azure/dn798933.aspx)のリンクから、さらに多くの情報にアクセスすることもできます。
 
 <!--Image references-->
-[1]: ./media/search-get-started-java/create-search-portal-11.PNG
+[1]: ./media/search-get-started-java/create-search-portal-1.PNG
 [2]: ./media/search-get-started-java/create-search-portal-21.PNG
 [3]: ./media/search-get-started-java/create-search-portal-31.PNG
 [4]: ./media/search-get-started-java/AzSearch-Java-Import1.PNG
@@ -230,5 +230,6 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [10]: ./media/search-get-started-java/AzSearch-Java-BuildProject1.PNG
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

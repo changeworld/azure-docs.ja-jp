@@ -6,4 +6,4 @@
 - [.NET SDK for Hadoop](../articles/hdinsight/hdinsight-hadoop-use-pig-dotnet-sdk.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-pig-curl.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO2-->

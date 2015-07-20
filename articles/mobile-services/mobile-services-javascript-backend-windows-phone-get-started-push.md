@@ -180,4 +180,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

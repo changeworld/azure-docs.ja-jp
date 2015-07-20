@@ -31,4 +31,4 @@
 
 	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO2-->
