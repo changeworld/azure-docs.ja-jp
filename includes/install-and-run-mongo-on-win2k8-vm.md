@@ -3,26 +3,27 @@
 > [AZURE.IMPORTANT]認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。詳細については、「[Security and Authentication (セキュリティと認証)](http://www.mongodb.org/display/DOCS/Security+and+Authentication)」を参照してください。
 
 1. リモート デスクトップを使用して仮想マシンに接続したら、**[スタート]** メニューから Internet Explorer を開きます。
-2. 右上にある **[ツール]** を選択します。**[インターネット オプション]** で、**[セキュリティ]** タブ、**[信頼済みサイト]** アイコンの順に選択し、**[サイト]** をクリックします。信頼済みサイトの一覧に *http://*.mongodb.org* を追加します。3. [MongoDB のダウンロード ページ][MongoDownloads]にアクセスします。
+2. 右上にある **[ツール]** を選択します。**[インターネット オプション]** で、**[セキュリティ]** タブ、**[信頼済みサイト]** アイコンの順に選択し、**[サイト]** をクリックします。信頼済みサイトの一覧に *http://*.mongodb.org* を追加します。
+3. [MongoDB のダウンロード ページ][MongoDownloads]にアクセスします。
 4. **[Production Release (Recommended)]** セクションで最新のリリースを見つけ、[Windows 64-bit] 列の ***[2008+]** リンクをクリックします。**[Save As]** をクリックして、zip ファイルをデスクトップに保存します。
-5. zip ファイルを右クリックし、**[すべて展開]** をクリックします。 「C:\\」を指定し、**[展開]** をクリックします。ファイルが展開されたら、インストール フォルダーの名前をシンプルな名前に変更すると便利です。たとえば、"MongoDB" という名前を使用します。
+5. zip ファイルを右クリックし、**[すべて展開]** をクリックします。 「C:\」を指定し、**[展開]** をクリックします。ファイルが展開されたら、インストール フォルダーの名前をシンプルな名前に変更すると便利です。たとえば、"MongoDB" という名前を使用します。
 6. MongoDB データとログ ディレクトリを、前の手順で作成したデータ ディスク (ドライブ **F:** など) に作成します。**[スタート]** で **[コマンド プロンプト]** を選択し、コマンド プロンプト ウィンドウを開きます。型:
 
-		C:> F:
+		C:\> F:
 		F:> mkdir \MongoData
 		F:> mkdir \MongoLogs
 
 7. データベースを実行するには、次を実行します。
 
 		F:> C:
-		C:> cd \MongoDB\bin
+		C:\> cd \MongoDB\bin
 		C:\my_mongo_dir\bin> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-	mongod.exe サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが *F:\\MongoLogs\\mongolog.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
+	mongod.exe サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが *F:\MongoLogs\mongolog.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
 
 8. MongoDB 管理シェルを開始するには、**[スタート]** から他のコマンド ウィンドウを開き、次のように入力します。
 
-		C:> cd \my_mongo_dir\bin  
+		C:\> cd \my_mongo_dir\bin  
 		C:\my_mongo_dir\bin> mongo  
 		>db  
 		test  	  
@@ -93,4 +94,4 @@
 [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
 
-<!---HONumber=July15_HO2-->
+<!----HONumber=July15_HO2-->

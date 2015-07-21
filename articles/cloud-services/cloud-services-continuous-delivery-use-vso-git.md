@@ -23,7 +23,7 @@
 
 Visual Studio Online チーム プロジェクトを使用してソース コードの Git リポジトリをホストし、コミットをリポジトリにプッシュするたびに自動的にビルドして Azure の Web アプリまたはクラウド サービスにデプロイすることができます。
 
-Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
+Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、[www.visualstudio.com](http://www.visualstudio.com) で**無料利用の開始**リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 
 > [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Online のアカウントが必要です。[Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
@@ -134,11 +134,13 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 	<table>
 <tr><td><b>プロパティ</b></td><td><b>既定値</b></td></tr>
 ><tr><td>信頼されていない証明書を許可</td><td>false の場合、SSL 証明書はルート証明機関によって署名される必要があります。</td></tr>
-<tr><td>アップグレードの許可</td><td>新規作成の代わりに、既存のデプロイを更新するデプロイを許可します。IP アドレスを保持します。</td></tr><tr><td>削除しない</td><td>true の場合、既存の関連のない展開を上書きしません (アップグレードは許可)。</td></tr>
+<tr><td>アップグレードの許可</td><td>新規作成の代わりに、既存のデプロイを更新するデプロイを許可します。IP アドレスを保持します。</td></tr>
+><tr><td>削除しない</td><td>true の場合、既存の関連のない展開を上書きしません (アップグレードは許可)。</td></tr>
 <tr><td>展開設定へのパス</td><td>リポジトリのルート フォルダーを基準とした Web アプリの .pubxml ファイルへのパス。クラウド サービスでは無視されます。</td></tr>
 <tr><td>Sharepoint 展開環境</td><td>サービス名と同じ</td></tr>
 <tr><td>Azure 配置環境</td><td>Web アプリ名またはクラウド サービス名</td></tr>
-</table> <br/>
+</table>
+<br/>
 
 11. この時点で、ビルドは正常に完了しています。<br/>
 ![][28]

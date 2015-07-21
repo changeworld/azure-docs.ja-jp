@@ -147,12 +147,19 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 コネクタは、OAuth か、ユーザー名とパスワードを使用します。
 
 ## Logic Apps と Web Apps に関するガイド
-[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | [Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-overview.md) |
+[Logic Apps とは](app-service-logic-what-are-logic-apps.md) | 
+[Azure App Service の Websites と Web Apps](../app-service-web/app-service-web-overview.md) |
 
 
 ## その他のコネクタ
 
-[BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) | [エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) | [企業間コネクタ ソーシャル コネクタ](app-service-logic-b2b-connectors.md) | [プロトコル コネクタ](app-service-logic-protocol-connectors.md) | [App + データ サービス コネクタ](app-service-logic-data-connectors.md) | [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+[BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) | 
+[エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) | 
+[企業間コネクタ ソーシャル コネクタ](app-service-logic-b2b-connectors.md) | 
+[プロトコル コネクタ](app-service-logic-protocol-connectors.md) | 
+[App + データ サービス コネクタ](app-service-logic-data-connectors.md) | 
+[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> 
+[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
  
 
 <!---HONumber=62-->

@@ -40,10 +40,12 @@ Azure にはアプリケーションを実行するための複数のホステ�
 
 Azure には、次のような特殊な目的に合わせるためのコンピューティング ホスティング モデルも用意されています。
 
-* モバイル デバイスで実行されるアプリに対するクラウド バックエンドを提供するように最適化されている[モバイル サービス](/services/mobile-services/)。
-* 類似する大量のタスク (理想的には複数のコンピューターで並列タスクとして実行されるワークロード) を処理するように最適化された[バッチ](/services/batch/)。
-* Hadoop クラスターで [MapReduce](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options/#hadoop) ジョブを実行するよう最適化された [HDInsight (Hadoop)](/services/hdinsight/)。 
-
+* [モバイル サービス](/services/mobile-services/)  
+  モバイル デバイスで実行されるアプリに対するクラウド バックエンドを提供するように最適化されています
+* [バッチ](/services/batch/)  
+  類似する大量のタスク (理想的には複数のコンピューターで並列タスクとして実行されるワークロード) を処理するように最適化されています。
+* [(Hadoop)](/services/hdinsight/)  
+  [MapReduce](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options/#hadoop) ジョブを Hadoop クラスターで実行するように最適化されています。
 ## 使用するモデルを 選択する
 
 一般的な目的に適合する 3 つの Azure コンピューティング ホスティング モデルは、どのモデルでもスケーラブルで信頼性の高いアプリケーションをクラウドで構築できます。この基本的な類似性を前提に、どれを使用すればよいでしょうか。
