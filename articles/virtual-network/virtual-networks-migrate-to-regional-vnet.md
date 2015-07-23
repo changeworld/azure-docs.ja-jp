@@ -63,9 +63,9 @@
 	
 	ネットワーク構成ファイルの次の行を編集して、値を置き換えます。
 
-	**古い値 :** <VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
+	**古い値 :** \<VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
 
-	**新しい値 :** <VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
+	**新しい値 :** \<VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
 
 1. 変更を保存し、ネットワーク構成を Azure に[インポート](../virtual-networks-using-network-configuration-file/)します。
 
@@ -86,4 +86,4 @@
 VM をデプロイすると、単一のスケール ユニットにデプロイされます。アフィニティ グループは、新しい VM のデプロイの際に利用できる一連の VM サイズを制限できますが、デプロイ済みの既存の VM は、VM がデプロイされているスケール ユニット内で使用できる VM サイズに既に制限されています。このため、アフィニティ グループから VM を削除しても影響はありません。
  
 
-<!---HONumber=July15_HO2-->
+<!----HONumber=July15_HO2-->

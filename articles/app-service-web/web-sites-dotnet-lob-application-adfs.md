@@ -81,14 +81,14 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 
 5.	App_Start\Startup.Auth.cs で、静的文字列定義を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
-private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
-<mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
-<mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
-<mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
-<mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
+	private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
+    <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
+    <mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
+    <mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
+    <mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
 
-<mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
-</pre>
+    <mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
+    </pre>
 
 6.	次に、Web.config に対応する変更を加えます。Web.config を開き、アプリ設定を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
@@ -105,6 +105,7 @@ private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIden
 
 	&lt;/appSettings&gt;
 	</pre>
+
 	それぞれの環境に合わせてキーの値を入力してください。
 
 7.	アプリケーションをビルドしてエラーがないことを確認します。
@@ -198,18 +199,19 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 10.	**[カスタム規則を使ってクレームを送信する]** を選択し、**[次へ]** をクリックします。
 11.	次の規則言語を **[カスタムの規則]** ボックスに貼り付けます。この規則に **Per Session Identifier** という名前を付けて、**[完了]** をクリックします。  
 	<pre class="prettyprint">
-c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] &amp;&amp;
-c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
-	=> add(
-		store = "_OpaqueIdStore",
-		types = ("<mark>http://contoso.com/internal/sessionid</mark>"),
-		query = "{0};{1};{2};{3};{4}",
-		param = "useEntropy",
-		param = c1.Value,
-		param = c1.OriginalIssuer,
-		param = "",
-		param = c2.Value);
+	c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] &amp;&amp;
+	c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
+		=> add(
+			store = "_OpaqueIdStore",
+			types = ("<mark>http://contoso.com/internal/sessionid</mark>"),
+			query = "{0};{1};{2};{3};{4}",
+			param = "useEntropy",
+			param = c1.Value,
+			param = c1.OriginalIssuer,
+			param = "",
+			param = c2.Value);
 	</pre>
+
 	これで、次のようなカスタム規則が作成されました。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/6-per-session-identifier.png)
@@ -263,22 +265,23 @@ RP 信頼構成にロール クレームとしてグループ メンバーシッ
 1. Controllers\HomeController.cs を開きます。
 2. 認証されたユーザーが持つセキュリティ グループ メンバーシップを使用して、次のように `About` と `Contact` の操作メソッドを装飾します。  
 	<pre class="prettyprint">
-<mark>[Authorize(Roles="Test Group")]</mark>
-public ActionResult About()
-{
-    ViewBag.Message = "Your application description page.";
+    <mark>[Authorize(Roles="Test Group")]</mark>
+    public ActionResult About()
+    {
+        ViewBag.Message = "Your application description page.";
 
-    return View();
-}
+        return View();
+    }
 
-<mark>[Authorize(Roles="Domain Admins")]</mark>
-public ActionResult Contact()
-{
-    ViewBag.Message = "Your contact page.";
+    <mark>[Authorize(Roles="Domain Admins")]</mark>
+    public ActionResult Contact()
+    {
+        ViewBag.Message = "Your contact page.";
 
-    return View();
-}
+        return View();
+    }
 	</pre>
+
 	この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
 
 3. `F5` キーを押してデバッガーを起動してサインインし、**[About]** をクリックします。認証されたユーザーによるこの操作の実行が承認されている場合、`~/About/Index` ページが正常に表示されます。
@@ -353,4 +356,4 @@ Azure App Service Web Apps では、[ハイブリッド接続](../integration-hy
  
  
 
-<!---HONumber=62-->
+<!----HONumber=62-->

@@ -45,16 +45,18 @@ ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラ
 1. .NET Version Manager (DNVM) をインストールするには、コマンド ウィンドウで次のコマンドを実行します。
 
 	<pre class="prettyprint">
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "&amp;{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
+	@powershell -NoProfile -ExecutionPolicy unrestricted -Command "&amp;{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
 	</pre>
+
 	DNVM スクリプトがダウンロードされ、ユーザー プロファイルに組み込まれます。
 
 2. PATH 環境変数に加えた変更を有効にするために、上記のコマンドを入力した後にログオフすることが必要になる場合があります。
 3. コマンド ウィンドウで次のコマンドを実行して、DNVM の場所を確認します。 
 
 	<pre class="prettyprint">
-where dnvm
+	where dnvm
 	</pre>
+
 	コマンド ウィンドウに、次のようなパスが表示されます。
 
 	![dnvm の場所](./media/app-service-create-aspnet-api-app-using-vscode/00-where-dnvm.png)
@@ -62,14 +64,15 @@ where dnvm
 4. これで、DNVM を利用できるようになりました。アプリケーションを実行するには、これを使って DNX をダウンロードする必要があります。コマンド ウィンドウで、次のコマンドを実行します。
 
 	<pre class="prettyprint">
-dnvm upgrade
-</pre>
+	dnvm upgrade
+	</pre>
 
 5. コマンド ウィンドウで次のコマンドを実行して、DNVM を確認し、アクティブなランタイムを表示します。
 
 	<pre class="prettyprint">
-dnvm list
+	dnvm list
 	</pre>
+
 	マンド ウィンドウに、アクティブなランタイムの詳細が表示されます。
 
 	![dnvm の場所](./media/app-service-create-aspnet-api-app-using-vscode/00b-dnvm-list.png)
@@ -84,14 +87,14 @@ OS X、Linux、Windows 用の詳細なインストール手順については、
 2. コマンド ウィンドウで次のコマンドを入力して、Yeoman とサポート ツールをインストールします。
 
 	<pre class="prettyprint">
-npm install -g yo grunt-cli generator-aspnet bower
-</pre>
+	npm install -g yo grunt-cli generator-aspnet bower
+	</pre>
 
 3. コマンド ウィンドウで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
 
 	<pre class="prettyprint">
-yo aspnet
-</pre>
+	yo aspnet
+	</pre>
 
 4. 表示されるジェネレーターの指示に従ってスクロールし、**[Web API Application]** タイプを選択します。
 
@@ -112,8 +115,9 @@ yo aspnet
 9. **コマンド パレット**で、次のコマンドを入力します。
 
 	<pre class="prettyprint">
-dnx:dnu restore - (ContactsList)
+	dnx:dnu restore - (ContactsList)
 	</pre>
+
 	入力を開始すると、一覧に完全なコマンド ラインが表示されます。
 
 	![Restore コマンド](./media/app-service-create-aspnet-api-app-using-vscode/04-dnu-restore.png)
@@ -131,49 +135,50 @@ dnx:dnu restore - (ContactsList)
 2. **Models** フォルダーを右クリックし、次のコードを含む新しいクラス *Contact.cs* を作成します。
 
 	<pre class="prettyprint">
-namespace ContactsList.Models
-{
-    public class Contact
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string EmailAddress { get; set; }
-    }
-}
-</pre>
+	namespace ContactsList.Models
+	{
+	    public class Contact
+	    {
+	        public int Id { get; set; }
+	        public string Name { get; set; }
+	        public string EmailAddress { get; set; }
+	    }
+	}
+	</pre>
 
 3. **Controllers** フォルダーを右クリックし、*ContactsController.cs* ファイルを追加します。次のような内容になります。
 
 	<pre class="prettyprint">
-using System.Collections.Generic;
-using Microsoft.AspNet.Mvc;
-using ContactsList.Models;
-
-namespace ContactsList.Controllers
-{
-    [Route("api/[controller]")]
-    public class ContactsController : Controller
-    {
-        // GET: api/Contacts
-        [HttpGet]
+	using System.Collections.Generic;
+	using Microsoft.AspNet.Mvc;
+	using ContactsList.Models;
+	
+	namespace ContactsList.Controllers
+	{
+	    [Route("api/[controller]")]
+	    public class ContactsController : Controller
+	    {
+	        // GET: api/Contacts
+	        [HttpGet]
 	        public IEnumerable&lt;Contact&gt; Get()
-        {
-            return new Contact[]{
-                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
-                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
-                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
-            };
-        }
+	        {
+	            return new Contact[]{
+	                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+	                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+	                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+	            };
+	        }
 	    }
-}
-</pre>
+	}
+	</pre>
 
 4. **[ファイル]**、**[すべてを保存]** の順に選択して、すべてのファイルを保存します。
 5. **コマンド パレット**で、次のコマンドを入力してアプリをローカルで実行します。
 
 	<pre class="prettyprint">
-dnx: kestrel - (ContactsList, Microsoft.AspNet.Hosting --server Kestrel --server.urls http://localhost:5001
+	dnx: kestrel - (ContactsList, Microsoft.AspNet.Hosting --server Kestrel --server.urls http://localhost:5001
 	</pre>
+
 	マンド ウィンドウに "*開始しました*" と表示されます。コマンド ウィンドウに "*開始しました*" と表示されない場合は、VSCode の左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
 
 5. ブラウザーを開き、次の URL に移動します。
@@ -192,18 +197,18 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 3. *apiapp.json* ファイルに次のコードを追加します。
 
 	<pre class="prettyprint">
-{
-    "$schema": "http://json-schema.org/schemas/2014-11-01/apiapp.json#",
-    "id": "ContactsList",
-    "namespace": "microsoft.com",
-    "gateway": "2015-01-14",
-    "version": "1.0.0",
-    "title": "ContactsList",
-    "summary": "",
-    "author": "",
-    "endpoints": null
-}
-</pre>
+	{
+	    "$schema": "http://json-schema.org/schemas/2014-11-01/apiapp.json#",
+	    "id": "ContactsList",
+	    "namespace": "microsoft.com",
+	    "gateway": "2015-01-14",
+	    "version": "1.0.0",
+	    "title": "ContactsList",
+	    "summary": "",
+	    "author": "",
+	    "endpoints": null
+	}
+	</pre>
 
 *apiapp.json* ファイルには、動的 Swagger API 定義 JSON のエンドポイントを指定できます。ただし、このチュートリアルでは、静的 API 定義ファイルを使用します。動的 Swagger 生成を使用する例については、[API アプリとしての Web API プロジェクトの構成](app-service-dotnet-create-api-app-visual-studio.md)に関するページをご覧ください。
 
@@ -215,106 +220,106 @@ ASP.NET API プロジェクトを API アプリとしてデプロイできるよ
 3. 次の json 構文を新しいファイルに追加します。
 
 	<pre class="prettyprint">
-{
-  "swagger": "2.0",
-  "info": {
-    "version": "v1",
-    "title": "ContactsList"
-  },
-  "host": "MUST REPLACE THIS WITH YOUR HOST URL",
-  "schemes": [
-    "https"
-  ],
-  "paths": {
-    "/api/Contacts": {
-      "get": {
-        "tags": [
-          "Contacts"
-        ],
-        "operationId": "Contacts_Get",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Contact"
-              }
+	{
+	  "swagger": "2.0",
+	  "info": {
+	    "version": "v1",
+	    "title": "ContactsList"
+	  },
+	  "host": "MUST REPLACE THIS WITH YOUR HOST URL",
+	  "schemes": [
+	    "https"
+	  ],
+	  "paths": {
+	    "/api/Contacts": {
+	      "get": {
+	        "tags": [
+	          "Contacts"
+	        ],
+	        "operationId": "Contacts_Get",
+	        "consumes": [],
+	        "produces": [
+	          "application/json",
+	          "text/json",
+	          "application/xml",
+	          "text/xml"
+	        ],
+	        "responses": {
+	          "200": {
+	            "description": "OK",
+	            "schema": {
+	              "type": "array",
+	              "items": {
+	                "$ref": "#/definitions/Contact"
+	              }
 	            }
-          }
-        },
-        "deprecated": false
-      },
-      "post": {
-        "tags": [
-          "Contacts"
-        ],
-        "operationId": "Contacts_Post",
-        "consumes": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml",
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "parameters": [
-          {
-            "name": "contact",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Contact"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Object"
-            }
-          }
-        },
-        "deprecated": false
-      }
-    }
-  },
-  "definitions": {
-    "Contact": {
-      "type": "object",
-      "properties": {
-        "Id": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "EmailAddress": {
-          "type": "string"
-        }
-      }
-    },
-    "Object": {
-      "type": "object",
-      "properties": {}
-    }
+	          }
+	        },
+	        "deprecated": false
+	      },
+	      "post": {
+	        "tags": [
+	          "Contacts"
+	        ],
+	        "operationId": "Contacts_Post",
+	        "consumes": [
+	          "application/json",
+	          "text/json",
+	          "application/xml",
+	          "text/xml",
+	          "application/x-www-form-urlencoded"
+	        ],
+	        "produces": [
+	          "application/json",
+	          "text/json",
+	          "application/xml",
+	          "text/xml"
+	        ],
+	        "parameters": [
+	          {
+	            "name": "contact",
+	            "in": "body",
+	            "required": true,
+	            "schema": {
+	              "$ref": "#/definitions/Contact"
+	            }
+	          }
+	        ],
+	        "responses": {
+	          "200": {
+	            "description": "OK",
+	            "schema": {
+	              "$ref": "#/definitions/Object"
+	            }
+	          }
+	        },
+	        "deprecated": false
+	      }
+	    }
+	  },
+	  "definitions": {
+	    "Contact": {
+	      "type": "object",
+	      "properties": {
+	        "Id": {
+	          "format": "int32",
+	          "type": "integer"
+	        },
+	        "Name": {
+	          "type": "string"
+	        },
+	        "EmailAddress": {
+	          "type": "string"
+	        }
+	      }
+	    },
+	    "Object": {
+	      "type": "object",
+	      "properties": {}
+	    }
 	  }
-}
-</pre>
+	}
+	</pre>
 
 このチュートリアルの後の手順で、上記のホスト URL のプレースホルダー文字列を Azure ホスト URL で置き換えます (この URL は後で作成してコピーします)。
 
@@ -414,29 +419,30 @@ Git は、Azure の Web サイトをデプロイするために使用できる�
 7. **GitBash** で、VSCode プロジェクト フォルダーに移動します。次に例を示します。
 
 	<pre class="prettyprint">
-cd c:\VSCodeProjects\ContactsList
-</pre>
+	cd c:\VSCodeProjects\ContactsList
+	</pre>
 
 7. コピーしておいた (".git" で終わる) Git URL を使用して、作成した Web アプリ (API アプリ ホスト) に更新をプッシュするためのリモート参照を作成します。
 
 	<pre class="prettyprint">
-git remote add azure [URL for remote repository]
-</pre>
+	git remote add azure [URL for remote repository]
+	</pre>
 
 8. 次のコマンドを入力して、変更内容を Azure にプッシュします。
 
 	<pre class="prettyprint">
-git push azure master
+	git push azure master
 	</pre>
+
 	以前作成したパスワードを入力するように求められます。**注: パスワードは表示されません。**
 
 	上記のコマンドの出力は、デプロイが成功したことを示すメッセージで終わります。
 
 	<pre class="prettyprint">
-remote: Deployment successful.
-To https://user@testsite.scm.azurewebsites.net/testsite.git
-[new branch]      master -> master
-</pre>
+	remote: Deployment successful.
+	To https://user@testsite.scm.azurewebsites.net/testsite.git
+	[new branch]      master -> master
+	</pre>
 
 > [AZURE.NOTE]アプリを変更した場合は再パブリッシュできます。そのためには、VSCode で **[すべてコミット]** チェック マークを選択して、**GitBash** で **git push azure master** コマンドを入力します。
 
@@ -457,4 +463,4 @@ Azure プレビュー ポータルで、目的の API アプリの **[API アプ
 このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
-<!---HONumber=62-->
+<!-----HONumber=62-->

@@ -102,11 +102,11 @@ SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) �
 このコード例は、以下のトランザクションの使用について示します。
 
 
-- トランザクションの開始
+-トランザクションの開始
 
-- データの挿入
+-データの挿入
 
-- トランザクションをロールバックして、挿入を元に戻す
+-トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -118,4 +118,4 @@ SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) �
 
  
 
-<!---HONumber=July15_HO2-->
+<!----HONumber=July15_HO2-->
