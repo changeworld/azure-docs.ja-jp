@@ -361,7 +361,9 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		</configuration>
 
 	* **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
-	> [AZURE.WARNING]パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
+
+
+	> [AZURE.WARNING] パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
 
 	* **JOBTRACKERADDRESS** を、前に返された JobTracker/ResourceManager のアドレスに置き換えます。
 
@@ -725,4 +727,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=July15_HO2-->
+<!-----HONumber=July15_HO2-->
