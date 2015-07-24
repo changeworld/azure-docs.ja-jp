@@ -35,7 +35,7 @@ ARM を使用する場合、Azure ロード バランサーには次の子リソ
 - 受信 NAT 規則: フロントエンド IP を通過し、バックエンド IP に配信される受信トラフィックを定義する NAT 規則です。
 
 
-![](https://acomdpsstorage.blob.core.windows.net/dpsmedia-prod/azure.microsoft.com/ja-jp/documentation/articles/resource-groups-networking/20150429054039/figure5.png)
+![](https://acomdpsstorage.blob.core.windows.net/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/resource-groups-networking/20150429054039/figure5.png)
 
 
 

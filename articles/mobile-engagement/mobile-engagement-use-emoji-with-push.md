@@ -38,7 +38,8 @@
 
 7. アナウンスをテストまたはアクティブ化すると、指定どおりの絵文字を含む通知が表示されます。
 
-	![][3] ![][4]
+	![][3] 
+	![][4]
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-use-emoji-with-push/emoji.png
@@ -47,4 +48,4 @@
 [4]: ./media/mobile-engagement-use-emoji-with-push/notification_ios.png
  
 
-<!---HONumber=July15_HO2-->
+<!----HONumber=July15_HO2-->

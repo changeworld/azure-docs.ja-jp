@@ -44,11 +44,13 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 - **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border="1">
-<tr><th>クラスター プロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>HDInsight クラスターの名前です。</td></tr>
-<tr><td>クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>プロビジョニングで指定されたクラスター ユーザー名です。</td></tr>
-<tr><td>クラスター パスワード</td><td>$clusterPassword</td><td></td><td>クラスター ユーザー パスワードです。</td></tr>
-</table>> [AZURE.NOTE]テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
+	<tr><th>クラスター プロパティ</th><th>Azure PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+	<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>HDInsight クラスターの名前です。</td></tr>
+	<tr><td>クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>プロビジョニングで指定されたクラスター ユーザー名です。</td></tr>
+	<tr><td>クラスター パスワード</td><td>$clusterPassword</td><td></td><td>クラスター ユーザー パスワードです。</td></tr>
+	</table>
+
+	> [AZURE.NOTE] テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
 
 
 
