@@ -430,4 +430,4 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 [git-instructions]: ./media/web-sites-php-storage/git-instructions.png
  
 
-<!---HONumber=July15_HO3-->
+<!----HONumber=July15_HO3-->

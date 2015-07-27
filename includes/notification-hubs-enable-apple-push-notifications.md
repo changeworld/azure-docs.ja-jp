@@ -7,7 +7,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. **[Utilities]** フォルダーまたは **[Other]** フォルダーから Keychain Access ツールを実行します。
 
-2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
+2. **[キーチェーン アクセス]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 

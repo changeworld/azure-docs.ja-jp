@@ -27,7 +27,9 @@
 
 Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/azure/dn546726.aspx)、または [REST API](https://msdn.microsoft.com/library/dn505719.aspx) を使用すると、サービス階層間を簡単に移行できます。
 
-サービス階層間を移行するときは、次の点に注意してください。- 別のサービス階層またはパフォーマンス レベルにアップグレードする前に、サーバー上のクォータが十分であることを確認してください。追加のクォータが必要な場合は、カスタマー サポートにお問い合わせください。- 統合データベースは、Basic、Standard、または Premium サービス階層にアップグレードできません。
+サービス階層間を移行するときは、次の点に注意してください。
+- 別のサービス階層またはパフォーマンス レベルにアップグレードする前に、サーバー上のクォータが十分であることを確認してください。追加のクォータが必要な場合は、カスタマー サポートにお問い合わせください。
+- 統合データベースは、Basic、Standard、または Premium サービス階層にアップグレードできません。
 
 - データベースをダウングレードするには、データベースがダウングレード後のサービス階層で許可されている最大サイズより小さい必要があります。各サービス階層に対して許可されているサイズの詳細については、後に示すサービス階層とデータベース サイズの表を参照してください。
 
@@ -41,9 +43,11 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 
 - データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 
-次の点に注意してください。- Business および Web のサービス階層は、2015 年 9 月に提供終了となります。詳細については、「[Web および Business エディションの終了に関する FAQ](https://msdn.microsoft.com/library/azure/dn741330.aspx)」を参照してください。
+次の点に注意してください。
+- Business および Web のサービス階層は、2015 年 9 月に提供終了となります。詳細については、「[Web および Business エディションの終了に関する FAQ](https://msdn.microsoft.com/library/azure/dn741330.aspx)」を参照してください。
 
-<note included> - [フェデレーションの現在の実装は Web および Business のサービス階層と共に終了](https://msdn.microsoft.com/library/azure/dn741330.aspx)します。[Azure SQL Database 用の Elastic Scale](sql-database-elastic-scale-get-started.md) を使用して、Azure SQL Database にシャーディングされたスケール アウト ソリューションを構築することを検討してください。試すには、Azure SQL Database Elastic Scale プレビューの使用に関するトピックを参照してください。
+<note included> 
+- [フェデレーションの現在の実装は Web および Business のサービス階層と共に終了](https://msdn.microsoft.com/library/azure/dn741330.aspx)します。[Azure SQL Database 用の Elastic Scale](sql-database-elastic-scale-get-started.md) を使用して、Azure SQL Database にシャーディングされたスケール アウト ソリューションを構築することを検討してください。試すには、Azure SQL Database Elastic Scale プレビューの使用に関するトピックを参照してください。
 
 ## 上位サービス階層へのアップグレード
 データベースをアップグレードするには、次のどちらかの方法を使用します。この手順は Premium サービス階層へのアップグレード方法ですが、すべてのアップグレードに利用できます。
@@ -64,7 +68,11 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 2. New-AzureSqlDatabaseServerContext コマンドレットを使用して、サーバー コンテキストを設定します。サンプル構文は、「Azure PowerShell コマンドの使用」セクションに記載されています。
 3. データベースおよび対象のパフォーマンス レベルのハンドルを取得します。Set-AzureSqlDatabase -ServiceObjective を使用して、パフォーマンス レベルを指定します。
 
-**使用例** 次の点に注意してください。- ここでは、Premium サービス階層へのアップグレードについて説明します。- データベース名 "somedb" を示す $db ハンドルが作成されます。- Premium パフォーマンス レベル 1 を示す $P1 ハンドルが作成されます。- データベース $db のパフォーマンス レベルは $P1 に設定されます。
+**使用例** 次の点に注意してください。
+- ここでは、Premium サービス階層へのアップグレードについて説明します。
+- データベース名 "somedb" を示す $db ハンドルが作成されます。
+- Premium パフォーマンス レベル 1 を示す $P1 ハンドルが作成されます。
+- データベース $db のパフォーマンス レベルは $P1 に設定されます。
 
 		Windows PowerShell:
 
@@ -120,7 +128,8 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 
 アクティブ geo レプリケーション リレーションシップが構成されている Premium データベースのパフォーマンス レベルを変更する場合、プライマリ データベースとアクティブ セカンダリ データベースについて次の順序に従ってください。
 
-これは、アクティブ セカンダリ データベースのパフォーマンス レベルがプライマリ データベース以上である必要があるためです。- 上位のパフォーマンス レベルを下位のパフォーマンス レベルに変更する場合、まずプライマリ データベースから始めて、その後に 1 つまたは複数のアクティブ セカンダリ データベースを処理してください。
+これは、アクティブ セカンダリ データベースのパフォーマンス レベルがプライマリ データベース以上である必要があるためです。
+- 上位のパフォーマンス レベルを下位のパフォーマンス レベルに変更する場合、まずプライマリ データベースから始めて、その後に 1 つまたは複数のアクティブ セカンダリ データベースを処理してください。
 
 - 下位のパフォーマンス レベルを上位のパフォーマンス レベルに変更する場合は、アクティブ セカンダリ データベースから始めて、最後にプライマリ データベースを処理してください。
 
@@ -229,4 +238,4 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 [Set-AzureSqlDatabase](http://go.microsoft.com/fwlink/?LinkId=391412)
  
 
-<!---HONumber=July15_HO3-->
+<!----HONumber=July15_HO3-->

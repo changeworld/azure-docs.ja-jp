@@ -112,7 +112,7 @@ IPython とその依存モジュールを Windows VM にインストールする
 
 	* `PATH` 環境変数に `C:\OpenSSL-Win32\bin` を追加する必要があります。
 
-	> [AZURE.NOTE]OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
+	> [AZURE.NOTE] OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
 
 1.  次のコマンドを使用して IPython をインストールします。
 
@@ -146,7 +146,7 @@ Linux の場合:
 
 Windows:
 
-    cd \users\azureuser\.ipython\profile_nbserver
+    cd \users\azureuser.ipython\profile_nbserver
 
 どちらのプラットフォームの場合も、次のようにして SSL 証明書を作成します。
 
@@ -177,7 +177,7 @@ Windows:
     c.NotebookApp.certfile = u'/home/azureuser/.ipython/profile_nbserver/mycert.pem'
     
     # And if using a Windows VM:
-    c.NotebookApp.certfile = r'C:\Users\azureuser\.ipython\profile_nbserver\mycert.pem'
+    c.NotebookApp.certfile = r'C:\Users\azureuser.ipython\profile_nbserver\mycert.pem'
     
     # Create your own password as indicated above
     c.NotebookApp.password = u'sha1:b86e933199ad:a02e9592e5 etc... '
@@ -273,4 +273,4 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [openssl]: http://slproweb.com/products/Win32OpenSSL.html
  
 
-<!---HONumber=July15_HO3-->
+<!----HONumber=July15_HO3-->

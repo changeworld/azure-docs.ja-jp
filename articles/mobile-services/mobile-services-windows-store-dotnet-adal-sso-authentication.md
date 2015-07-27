@@ -212,9 +212,9 @@
 <!-- URLs. -->
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[[Active Directory]]: https://manage.windowsazure.com/
+[Active Directory]: https://manage.windowsazure.com/
 [データの使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=July15_HO2-->
+<!----HONumber=July15_HO2-->

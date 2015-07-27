@@ -71,6 +71,7 @@ function insert(item, user, request) {
 [プッシュ通知の使用]: mobile-services-javascript-backend-ios-get-started-push.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library.md
 
 <!---HONumber=July15_HO2-->
