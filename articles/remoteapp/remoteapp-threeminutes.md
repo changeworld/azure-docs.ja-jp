@@ -1,9 +1,9 @@
 
 <properties 
-    pageTitle="手持ちのデバイスで RemoteApp を 3 分以内に試してみる"
-    description="サービスをインストールせずに、RemoteApp の機能を試してみましょう。" 
+    pageTitle="手持ちのデバイスで Azure RemoteApp を 3 分以内に試してみる"
+    description="サービスをインストールせずに、Azure RemoteApp の機能を試してみましょう。" 
     services="remoteapp" 
-    solutions="" documentationCenter="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="03/02/2015" 
+    ms.date="05/28/2015" 
     ms.author="mbaldwin" />
 
 
 
-# 手持ちのデバイスで RemoteApp を 3 分以内に試してみる
+# 手持ちのデバイスで Azure RemoteApp を 3 分以内に試してみる
 
-デバイス上に RemoteApp を表示するにはMicrosoft アカウントをお持ちの場合は、デモ デプロイメントに 10 分間アクセスできます。Office をはじめ、いくつかのアプリケーションが利用可能です。これは、3 分もかからずに RemoteApp のユーザー エクスペリエンスを試せるすばらしい機会です。
+デバイス上に RemoteApp を表示するには Microsoft アカウントをお持ちの場合は、デモ デプロイメントに 10 分間アクセスできます。Office をはじめ、いくつかのアプリケーションが利用可能です。これは、3 分もかからずに Azure RemoteApp のユーザー エクスペリエンスを試せるすばらしい機会です。
 
 ご興味がおありでしたら、
 
@@ -29,12 +29,12 @@
 3. デバイスが自動的に検出され、そのデバイス用のクライアントが表示されます。クライアントをインストールします。
 4. [http://remoteapp.azure.com](http://remoteapp.azure.com) に戻って、Microsoft アカウントでサインインします。
  
-これで、RemoteApp でリアルタイムで実行されているアプリケーションにアクセスできます。 
+これで、RemoteApp でリアルタイムで実行されているアプリケーションにアクセスできます。
 
 お客様のご意見は重要です。各セッションの終了時に、フィードバック用のダイアログ ボックスが表示されます。お時間がありましたら、お客様のご意見と、追加情報の収集のために Microsoft からご連絡を差し上げても差し支えないかどうかをお知らせください。
 
->[AZURE.NOTE] これはデモ用に制御された環境であるため、発行されたデモ アプリケーションから外部へのインターネット アクセスは有効になっていません。そのため、OneDrive などのサービスにはアクセスできません。また、クリップボードの共有 (コピーと貼り付け)、USB やプリンターへのリダイレクトも無効になっています。  
+>[AZURE.NOTE]これはデモ用に制御された環境であるため、発行されたデモ アプリケーションから外部へのインターネット アクセスは有効になっていません。そのため、OneDrive などのサービスにはアクセスできません。また、クリップボードの共有 (コピーと貼り付け)、USB やプリンターへのリダイレクトも無効になっています。
 
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO2-->

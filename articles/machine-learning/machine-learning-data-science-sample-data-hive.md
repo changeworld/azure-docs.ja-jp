@@ -1,63 +1,60 @@
-<properties 
-	pageTitle="Azure HDInsight Hive テーブルのデータのサンプリング | Azure" 
-	description="Azure HDInsight Hive テーブルのデータのダウンサンプリング" 
-	metaKeywords="" 
-	services="machine-learning" 
-	solutions="" 
-	documentationCenter="" 
-	authors="hangzh-msft" 
-	manager="jacob.spoelstra" 
-	editor="cgronlun"  />
+<properties
+	pageTitle="Azure HDInsight Hive テーブル内のデータのサンプリング | Microsoft Azure"
+	description="Azure HDInsight Hive テーブルのデータのダウンサンプリング"
+	services="machine-learning,hdinsight"
+	documentationCenter=""
+	authors="hangzh-msft"
+	manager="paulettm" 
+	editor="cgronlun" />
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/16/2015" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/29/2015"
 	ms.author="hangzh;bradsev" />
 
-# Azure HDInsight Hive テーブル内のデータのサンプリング 
+# Azure HDInsight Hive テーブル内のデータのサンプリング
 
-分析しようとしているデータセットが大規模な場合、通常、ダウンサンプリングして、より小さく、しかし典型的なものにして、管理できるサイズにデータを縮小することは賢明なことです。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。データ サイエンス プロセスにおけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+分析しようとしているデータセットが大規模な場合、通常、ダウンサンプリングして、より小さく、しかし典型的なものにして、管理できるサイズにデータを縮小することは賢明なことです。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Azure Machine Learning の Advanced Analytics Process and Technology (ADAPT) におけるその役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルのデータをダウンサンプリングする方法を説明します。一般的に使用されている 3 つのサンプリング方法である、一様ランダム サンプリング、グループごとのランダム サンプリング、および階層サンプリングについて説明します。
+この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルのデータをダウンサンプリングする方法を説明します。一般的に使用されている 3 つのサンプリング方法である、一様ランダム サンプリング、グループごとのランダム サンプリング、階層サンプリングについて説明します。
 
-Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン コンソールから Hive クエリを送信する必要があります。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリの送信方法](machine-learning-data-science-process-hive-tables.md#submit)」を参照してください。 
+Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン コンソールから Hive クエリを送信する必要があります。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](machine-learning-data-science-process-hive-tables.md#submit)」をご覧ください。
 
-## <a name="uniform"></a> 一様ランダム サンプリング ##
-一様ランダム サンプリングとは、データ セットの各行にサンプリングされる機会が均等にあるという意味です。これを実装するには、追加のフィールド rand() を、内部の "select"クエリのデータセットに追加し、そのランダム フィールドについての条件を外部の "select" クエリに追加します。 
+## <a name="uniform"></a>一様ランダム サンプリング ##
+一様ランダム サンプリングとは、データ セットの各行にサンプリングされる機会が均等にあるという意味です。これを実装するには、追加のフィールド rand() を、内部の "select"クエリのデータセットに追加し、そのランダム フィールドについての条件を外部の "select" クエリに追加します。
 
 クエリの使用例を次に示します。
 
 	SET sampleRate=<sample rate, 0-1>;
 	select
-		field1, field2, ..., fieldN
+		field1, field2, …, fieldN
 	from
 		(
 		select
-			field1, field2, ..., fieldN, rand() as samplekey 
+			field1, field2, …, fieldN, rand() as samplekey
 		from <hive table name>
 		)a
 	where samplekey<='${hiveconf:sampleRate}'
 
-ここで、`<sample rate, 0-1>` は、ユーザーがサンプリングするレコードの割合を指定しています。 
+ここで、`<sample rate, 0-1>` は、ユーザーがサンプリングするレコードの割合を指定しています。
 
-## <a name="group"></a> グループごとのランダム サンプリング ##
+## <a name="group"></a>グループごとのランダム サンプリング ##
 
-カテゴリ別のデータをサンプリングする場合、カテゴリ変数の一部が特定の値であるすべてのインスタンスを含めるか除外することができます。これが「グループごとのサンプリング」が意味するものです。
-たとえば、値 NY、MA、CA、NJ、PA などを持つカテゴリ変数 "State" がある場合に、サンプリングされているかどうかにかかわらず同じ州のレコードを常に一緒にしておくことができます。 
+カテゴリ別のデータをサンプリングする場合、カテゴリ変数の一部が特定の値であるすべてのインスタンスを含めるか除外することができます。これが「グループごとのサンプリング」が意味するものです。たとえば、値 NY、MA、CA、NJ、PA などを持つカテゴリ変数 "State" がある場合に、サンプリングされているかどうかにかかわらず同じ州のレコードを常に一緒にしておくことができます。
 
 グループごとのサンプリングを実行するサンプルのクエリは次のとおりです。
 
 	SET sampleRate=<sample rate, 0-1>;
-    select 
-		b.field1, b.field2, ..., b.catfield, ..., b.fieldN
+    select
+		b.field1, b.field2, …, b.catfield, …, b.fieldN
 	from
 		(
-		select 
-			field1, field2, ..., catfield, ..., fieldN
+		select
+			field1, field2, …, catfield, …, fieldN
 		from <table name>
 		)b
 	join
@@ -66,7 +63,7 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 			catfield
 		from
 			(
-			select 
+			select
 				catfield, rand() as samplekey
 			from <table name>
 			group by catfield
@@ -82,19 +79,20 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 クエリの使用例を次に示します。
 
 	SET sampleRate=<sample rate, 0-1>;
-    select 
-		field1, field2, field3, ..., fieldN, state 
+    select
+		field1, field2, field3, ..., fieldN, state
 	from
 		(
-		select 
+		select
 			field1, field2, field3, ..., fieldN, state,
-			count(*) over (partition by state) as state_cnt, 
+			count(*) over (partition by state) as state_cnt,
       		rank() over (partition by state order by rand()) as state_rank
       	from <table name>
-		) a 
+		) a
 	where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 
 
-Hive で使用できるより高度なサンプリング方法の詳細については、「[LanguageManual のサンプリング](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)」を参照してください。
+Hive で使用できるより高度なサンプリング方法については、「[LanguageManual Sampling (LanguageManual のサンプリング)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)」をご覧ください。
+ 
 
-<!--HONumber=49--> 
+<!---HONumber=July15_HO2-->

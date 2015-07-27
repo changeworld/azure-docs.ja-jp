@@ -1,11 +1,9 @@
 <properties 
-	pageTitle="実行中の Azure データ サイエンス プロセス: HDInsight Hadoop クラスターを使用する | Azure" 
-	description="公開されている使用可能なデータセットを使用してモデルのビルドと配置を行うための HDInsight Hadoop クラスターを使用したエンド ツー エンド Azure データ サイエンス プロセス。" 
-	metaKeywords="" 
-	services="machine-learning" 
-	solutions="" 
+	pageTitle="Advanced Analytics Process and Technology の活用: Hadoop クラスターを使用する | Microsoft Azure" 
+	description="HDInsight Hadoop クラスターを使用したエンド ツー エンドのシナリオで Advanced Analytics Process and Technology (ADAPT) を使用し、公開されているデータセットを使ってモデルを作成してデプロイします。"  
+	services="machine-learning,hdinsight"
 	documentationCenter="" 
-	authors="hangzh-msft" 
+	authors="bradsev" 
 	manager="paulettm" 
 	editor="cgronlun" />
 
@@ -15,20 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/23/2015" 
-	ms.author="hangzh;bradsev" /> 
+	ms.date="05/29/2015" 
+	ms.author="hangzh;bradsev" />
 
                 
-# Azure データ サイエンス プロセスの操作: HDInsight Hadoop クラスターを使用する
+# Advanced Analytics Process and Technology の活用 - HDInsight Hadoop クラスターを使用する
 
-このチュートリアルでは、Azure HDInsight Hadoop クラスターを使用してエンド ツー エンドで Azure データ サイエンス プロセス マップに従って、[NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットという公開されている使用可能なデータセットを操作するモデルのビルドと配置を行います。 
+このチュートリアルでは、[Azure HDInsight Hadoop クラスター](http://azure.microsoft.com/services/hdinsight/)を使用したエンド ツー エンドのシナリオで Advanced Analytics Process and Technology (ADAPT) を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
+
+HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「[Advanced Analytics Process and Technology の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)」をご覧ください。
+
+iPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。この方法を試してみたい方は、「[Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)」のトピックをご覧ください。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
 
 NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切り値 (CSV) ファイル (非圧縮で最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。各旅行レコードには、pickup (乗車) と drop-off (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion (タクシーの一意の ID) 番号が含まれています。データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
-1.  'trip_data' CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。いくつかのサンプル レコードを次に示します。
+1. 'trip_data' CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。いくつかのサンプル レコードを次に示します。
 
 		medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
 		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -37,7 +39,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 
-2.  'trip_fare' CSV ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、および合計支払金額など) が含まれます。いくつかのサンプル レコードを次に示します。
+2. 'trip_fare' CSV ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金、税、チップ、道路などの通行料、合計支払金額など) が含まれます。いくつかのサンプル レコードを次に示します。
 
 		medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
 		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -46,17 +48,21 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip_data と trip_fare を結合するための一意のキーは、[medallion]、[hack_licence] および [pickup_datetime} の各フィールドで構成されています。
+trip_data と trip_fare を結合するための一意のキーは medallion、hack_licence、pickup_datetime の各フィールドで構成されています。
 
-それぞれ 12 の乗車 'trip_data' および 'trip_fare' ファイルがあります。ファイル名の 1 ～ 12 の番号は、乗車があった月を表しています。 
+特定の乗車に関する詳細をすべて取得するには、3 つのキー ("medallion"、"hack_license"、"pickup_datetime") と連結するだけで十分です。
+
+データの詳細については、この後で Hive テーブルにデータを格納するときに説明します。
 
 ## <a name="mltasks"></a>予測タスクの例
-データ処理に取り掛かる際、分析に基づいて一種の予測を行うことを目標にすると、プロセスに含める必要があるタスクを明確にするのに役立ちます。
-このチュートリアルで取り扱う 3 つの予測問題の例を以下に示します。これらの例の公式は、 *tip_amount* に基づいています。
+データ処理に取り掛かる際、分析に基づいて一種の予測を行うことを目標にすると、プロセスに含める必要があるタスクを明確にするのに役立ちます。このチュートリアルで扱う予測問題の 3 つの例を以下に示します。これらの例の公式は、*tip_amount* に基づいています。
 
-1. **二項分類**:乗車においてチップが支払われたかどうかを予測します。つまり、 *tip_amount* が $0 より大きい場合は肯定的な例で、 *tip_amount* が $0 の場合は否定的な例です。
+1. **二項分類**: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip_amount* が $0 より大きい場合は肯定的な例で、*tip_amount* が $0 の場合は否定的な例です。
 
-2. **多クラス分類**:乗車でチップとして支払われた金額の範囲を予測します。 *tip_amount* を次の 5 つの箱つまりクラスに分割します。
+		Class 0 : tip_amount = $0
+		Class 1 : tip_amount > $0
+
+2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。*tip_amount* を次の 5 つの箱つまりクラスに分割します。
 	
 		Class 0 : tip_amount = $0
 		Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -64,80 +70,95 @@ trip_data と trip_fare を結合するための一意のキーは、[medallion]
 		Class 3 : tip_amount > $10 and tip_amount <= $20
 		Class 4 : tip_amount > $20
 
-3. **回帰タスク**:乗車で支払われたチップの金額を予測します。  
+3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。
 
 
-## <a name="setup"></a>Azure データ サイエンス環境を設定する
+## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 
-「[環境の計画](machine-learning-data-science-plan-your-environment.md)」ガイドから分かるように、Azure で NYC タクシー乗車データセットを操作する際に実行できるいくつかのアプローチがあります。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
-- Azure BLOB でデータを操作し、Azure Machine Learning でモデリングする
-- データを SQL Server データベースに読み込み、Azure Machine Learning でモデリングする
-- データを HDInsight Hive テーブルに読み込み、Azure Machine Learning でモデリングする
+HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
-データセットのサイズ、データ ソースの場所、および選択された Azure の対象環境に基づくと、このシナリオは[シナリオ #7:ローカル ファイル内の大規模なデータセット、Azure HDInsight Hadoop クラスターの Hive をターゲットにする](../machine-learning-data-science-plan-sample-scenarios.md#largedbtohive) と類似しています。
+1. [ストレージ アカウントを作成する](../storage-whatis-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。ここには、HDInsight クラスターで使用するデータも格納されます。
 
-Azure HDInsight Hadoop クラスターを使用するこのアプローチ用に、より具体的には、データを格納および処理する Hive テーブルとクエリ用に Azure データ サイエンス環境をセット アップするには、以下の手順を実行します。
+2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md): この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
 
-1. [ストレージ アカウントを作成する](../storage-whatis-account.md)
+	* 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。このストレージ アカウントは、クラスター内で処理されるデータにアクセスするために使用されます。
+	
+	* クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。**[構成]** タブに移動して、**[リモートを有効にする]** をクリックします。この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
 
-2. [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
-
-3. [データ サイエンス **Windows** 仮想マシンをプロビジョニングする] (machine-learning-data-science-setup-virtual-machine.md)。
-
-	> [AZURE.NOTE] サンプル スクリプトは、仮想マシンのセットアップ プロセス中に、データ サイエンスの仮想マシンにダウンロードされます。仮想マシンのインストール後スクリプトが完了すると、サンプルは  *C:\Users<user_name>\Documents\Data Science Scripts* にある仮想マシンのドキュメント ライブラリに入ります。  以下のように、このサンプル フォルダーは **Sample Scripts** といいます。サンプルの Hive クエリは、**Sample Scripts** フォルダー内の .hql 拡張子が付いたファイルに含まれています。このフォルダーへのパスの中の *<user_name>* は、Azure ユーザー名ではなく仮想マシンの Windows ログイン名であることに注意してください。
-
-4. [データ サイエンス用に Azure HDInsight Hadoop Clusters をカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)。この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。カスタマイズされた Hadoop クラスターを作成したら、このカスタマイズのトピックで概説する手順を使用して、Azure ポータルにある Hadoop クラスターのヘッド ノードへのリモート アクセスを有効にします。
-
+3. [Azure Machine Learning ワークスペースを作成する](machine-learning-create-workspace.md): この Azure Machine Learning ワークスペースは、Machine Learning モデルの作成に使用されます。このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
 
-公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure BLOB ストレージとの間でデータを移動する](machine-learning-data-science-move-azure-blob.md)」で説明するいずれかの方法を使用して、データを新しい仮想マシンにコピーします。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
-AzCopy を使用してデータをコピーするには
+公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure BLOB ストレージとの間でデータを移動する](machine-learning-data-science-move-azure-blob.md)」で説明されているいずれかの方法を使用して、データをコンピューターにコピーします。
 
-1. 仮想マシン (VM) にログインする
+ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../storage-use-azcopy.md)」に記載されている手順に従います。
 
-2. VM のデータ ディスクにディレクトリを新規作成する (注:データ ディスクとして仮想マシンに付属する一時ディスクを使用しないでください)。
+1. コマンド プロンプト ウィンドウで、次の AzCopy コマンドを発行し、*<path_to_data_folder>* を、目的の転送先に置き換えます。
 
-3. コマンド プロンプト ウィンドウで、次の AzCopy コマンドを実行します。<path_to_data_folder> を、(2) で作成したデータ フォルダーのパスに置き換えます。
+		
+		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://getgoing.blob.core.windows.net/nyctaxitrip /Dest:<path_to_data_folder> /S
+2. コピーが完了すると、合計 24 個の Zip ファイルが選択したデータのフォルダー内に見つかります。ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。圧縮されていないファイルが存在するフォルダーをメモしておきます。*<path_to_unzipped_data_files>* として参照されるこのフォルダーについては、後ほど説明します。
 
-		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://getgoing.blob.core.windows.net/nyctaxifare /Dest:<path_to_data_folder> /S
-
-	AzCopy が完了すると、合計 24 のZIP CSV ファイル (trip_data に 12 個、trip_fare に 12 個) がデータ フォルダーにあるはずです。
-
-	>[AZURE.NOTE] *Source:https://getgoing.blob.core.windows.net/nyctaxitrip* および *Source:https://getgoing.blob.core.windows.net/nyctaxifare* では、非圧縮の NYC タクシー データをユーザーと共有するために使用する 2 つの Azure パブリック コンテナーを指定します。これらの 2 つの Azure パブリック コンテナーの読み取りには、アクセス キーは不要です。 
 
 ## <a name="upload"></a>データを Azure HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 
-コマンド プロンプトまたは仮想マシンの Windows PowerShell ウィンドウで、次の AzCopy コマンドを実行します。次のパラメーターを、Hadoop クラスターの作成時に指定した値に置き換えます。次のように置き換えます。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
-* ***&#60;path_to_data_folder>*** を、前のセクションで作成したデータ フォルダーに 
-* ***&#60;Hadoop クラスターのストレージ アカウント名>*** を、クラスターで使用するストレージ アカウントに
-* ***&#60;Hadoop クラスターの既定のコンテナー>*** を、クラスターで使用する既定のコンテナーに
-* ***&#60;ストレージ アカウント キー>*** を、クラスターで使用するストレージ アカウントのキーに
+次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-このコマンドで参照する ***nyctaxitripraw*** または ***nyctaxifareraw*** が存在しない場合は、コンテナーに作成されます。 
+* ***&#60;path_to_data_folder>*** を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) に置き換えます。  
+* ***&#60;Hadoop クラスターのストレージ アカウント名>*** を、HDInsight クラスターに関連付けられているストレージ アカウントに置き換えます。
+* ***&#60;Hadoop クラスターの既定のコンテナー>*** を、クラスターで使用する既定のコンテナーに置き換えます。通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
+* ***&#60;ストレージ アカウント キー>*** を、クラスターで使用するストレージ アカウントのキーに置き換えます。
 
-		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_data_folder> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
-		
-		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_data_folder> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+コンピューターのコマンド プロンプトまたは Windows PowerShell ウィンドウで、次の 2 つの AzCopy コマンドを実行します。
+
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxitripraw*** ディレクトリに乗車データをアップロードします。
+
+		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxitripraw*** ディレクトリに料金データをアップロードします。
+
+		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+
+これで、データが Azure BLOB ストレージに格納され、HDInsight クラスター内で利用できるようになりました。
+
+## <a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をする
+
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
+
+探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」で説明されている手順に従います。
+
+このチュートリアルでは、SQL に似たクエリ言語である [Hive](https://hive.apache.org/) で記述されたクエリを主に使用して、事前のデータ探索を行います。Hive クエリは .hql ファイルに保存されています。その後、モデル作成のために、Azure Machine Learning で使用されるこのデータをダウンサンプリングします。
+
+探索的データ分析用にクラスターを準備するために、関連する Hive スクリプトを含む .hql ファイルを [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) からヘッド ノード上のローカル ディレクトリ (C:\temp) にダウンロードします。これを行うには、クラスターのヘッド ノードから**コマンド プロンプト**を開き、次の 2 つのコマンドを発行します。
+
+	set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
+
+	@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+
+この 2 つのコマンドによって、このチュートリアルで必要なすべての .hql ファイルが、ヘッド ノード上のローカル ディレクトリ (***C:\temp&#92;***) にダウンロードされます。
 
 ## <a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 
-このチュートリアルで使用する Hive クエリにアクセスして実行するには、Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、次のコマンドを入力して Hive ディレクトリに入ります。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
+
+これで、NYC タクシー データセットの Hive テーブルを作成する準備ができました。Hadoop クラスターのヘッド ノード内で、ヘッド ノードのデスクトップで ***Hadoop コマンド ライン***を開き、次のコマンドを入力して Hive ディレクトリに入ります。
 
     cd %hive_home%\bin
 
-これらの手順または代わりの手順についてさらに支援が必要な場合は、「[Hadoop コマンド ラインから直接 Hive クエリを送信する](machine-learning-data-science-process-hive-tables.md#submit)」セクションを参照してください。 
+>[AZURE.NOTE]**このチュートリアルでは、上記の Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。これは自動的にすべてのパスの問題に対処します。このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。**
 
-「[Azure データ サイエンス環境](#setup)」の手順に従って Azure 仮想マシンを作成した場合、Hive クエリの例が **Sample Scripts** フォルダーにある仮想マシンに既にダウンロードされているはずです。代わりに、ユーザーは .hql ファイルを [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) からチェック アウトすることもできます。 
+Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを入力し、Hive クエリを送信して Hive データベースとテーブルを作成します。
+	
+	hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-.hql ファイルで Hive クエリを送信するには、.hql ファイルを Hadoop クラスターのヘッド ノードのローカル ディレクトリに転送する必要があります。次の例では、.hql ファイルがヘッド ノードの ***C:\temp&#92;*** ディレクトリに転送されていることを前提としています。
-
-***C:\temp\sample_hive_create_db_and_tables.hql*** ファイルの内容を以下に示します。このファイルでは、Hive データベース ***nyctaxidb*** およびテーブル ***trip*** と ***fare*** が作成されます。
+***C:\temp\sample_hive_create_db_and_tables.hql*** ファイルの内容を以下に示します。このファイルでは、Hive データベース ***nyctaxidb***、テーブル ***trip***、***fare*** が作成されます。
 
 	create database if not exists nyctaxidb;
 
@@ -178,20 +199,27 @@ AzCopy を使用してデータをコピーするには
 	ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
 	STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
 
-ヘッド ノードの Hadoop コマンド ラインに次のコマンドを入力して、これらの Hive クエリを送信します。
-	
-	hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+この Hive スクリプトでは 2 つのテーブルが作成されます。
 
+* テーブル "trip" には、乗車ごとの詳細 (運転手の詳細、乗車時間、乗車距離、乗車回数) が含まれます。 
+* テーブル "fare" には、料金の詳細 (料金、チップ、道路などの通行料、追加料金) が含まれます。
 
-## <a name="#load-data"></a>パーティションごとにテーブルにデータを読み込む
-Hadoop コマンド ラインで次の PowerShell コマンドを実行すると、月ごとにパーティション分割されて Hive テーブルにデータが読み込まれます。
+これらの手順または代わりの手順についてさらに支援が必要な場合は、「[Hive クエリを直接 Hadoop コマンドラインから送信する](machine-learning-data-science-process-hive-tables.md#submit)」をご覧ください。
+
+## <a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
+
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
+
+NYC タクシー データセットは、月ごとに自然にパーティション分割されているので、これを使用することで処理を高速化し、クエリ時間を短縮できます。次の PowerShell コマンド (**Hadoop コマンド ライン** を使用して、Hive ディレクトリから発行) は、月ごとにパーティション分割された "trip" および "fare" Hive テーブルにデータを読み込みます。
 
 	for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-検査用の  *sample_hive_load_data_by_partitions.hql* ファイルの内容を次に示します。
+*Sample_hive_load_data_by_partitions.hql* ファイルには、次の **LOAD** コマンドが含まれています。
 
 	LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
-	LOAD DATA INPATH 'wasb:///nyctaxifareraw/fare_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+	LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+
+この探索プロセスで使用する多くの Hive クエリは、1 つのパーティションのみまたはいくつかのパーティションのみを対象としていますが、これらのクエリをデータ全体に対して実行することもできます。
 
 ### <a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
 
@@ -199,13 +227,56 @@ Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラス�
 
 	hive -e "show databases;"
 
-### <a name="#show-tables"></a>nyctaxidb データベースのテーブルを表示する 
+### <a name="#show-tables"></a>nyctaxidb データベースの Hive テーブルを表示する 
 	
 nyctaxidb データベースのテーブルを表示するには、Hadoop コマンドラインで次のコマンドを実行します。
 	
 	hive -e "show tables in nyctaxidb;"
+
+次のコマンドを発行して、テーブルがパーティション分割されていることを確認できます。
+
+	hive -e "show partitions nyctaxidb.trip;"
+
+予想される出力を次に示します。
+
+	month=1
+	month=10
+	month=11
+	month=12
+	month=2
+	month=3
+	month=4
+	month=5
+	month=6
+	month=7
+	month=8
+	month=9
+	Time taken: 2.075 seconds, Fetched: 12 row(s)
+	
+同様に、次のコマンドを発行して、fare テーブルがパーティション分割されていることを確認できます。
+
+	hive -e "show partitions nyctaxidb.fare;"
+
+予想される出力を次に示します。
+
+	month=1
+	month=10
+	month=11
+	month=12
+	month=2
+	month=3
+	month=4
+	month=5
+	month=6
+	month=7
+	month=8
+	month=9
+	Time taken: 1.887 seconds, Fetched: 12 row(s)
    
 ## <a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
+
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+
 Hive テーブルに読み込まれるデータのデータの探索タスクおよび特徴エンジニアリング タスクは、Hive クエリを使用して実現します。このセクションのチュートリアルで行うこのようなタスクの例を次に示します。
 
 - 両方のテーブルの、上位 10 個のレコードを表示する。
@@ -213,35 +284,102 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 - [経度] フィールドと [緯度] フィールドのデータの品質を調査する。
 - **tip_amount** に基づいて、二項分類および多クラス分類のラベルを生成する。
 - 直線乗車距離を計算して、特徴を生成する。
-- 2 つのテーブルを結合して、モデルのビルドに使用するランダム サンプルを抽出する。
 
-Hive でこれらのデータ探索と特徴エンジニアリングが完了すると、Azure Machine Learning にすぐに進める状態になっていることが期待できます。最後の Hive クエリを保存してデータの抽出とサンプリングを行い、その後クエリをコピーし、直接 Azure Machine Learning のリーダー モジュールに貼り付けます。これで、このデータのモデルをビルドできる状態になりました。
+### 探索: trip テーブルの上位 10 個のレコードを表示する
 
-### 探索:trip テーブルの上位 10 個のレコードを表示する
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
-データ スキーマの特性とデータの外観を把握するために、各テーブルから上位 10 個のレコードを抽出します。レコードを検査するには、Hadoop コマンド ライン コンソールから次の 2 つのクエリを実行します。
+データがどのように表示されるかを確認するために、各テーブルから 10 個のレコードを確認します。レコードを検査するには、Hadoop コマンド ライン コンソールの Hive ディレクトリ プロンプトから次の 2 つのクエリを実行します。
 
- *table _trip_* で上位 10 個のレコードを取得するには:
+最初の月から "trip" テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 
 	hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
     
- *table _fare_* で上位 10 個のレコードを取得するには:
+最初の月から "fare" テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 	
 	hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-### 探索:12 個のそれぞれのパーティションのレコードの数を表示する
+レコードをファイルに保存すると、レコードを簡単に表示できるので便利です。これを実現するには、上記のクエリを少し変更します。
 
-12 個の月単位のそれぞれのパーティションのレコード数を表示するには、Hadoop コマンド ライン コンソールで次のコマンドを実行します。
+	hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+
+### 探索: 12 個のそれぞれのパーティションのレコードの数を表示する
+
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+
+関心事は、年間で乗車数がどのように変化するかです。月ごとにグループ化することで、乗車のこの分布がどのように表示されるかを見ることができます。
 	
 	hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-### 探索:medallion (タクシー番号) ごとの乗車回数の分布
+これにより、次のような結果が表示されます。
 
-この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。クエリは、パーティション分割されたテーブルのアクセスの恩恵を受けています。これは、パーティション分割されたテーブルが、パーティション変数 **month** によって条件設定されているためです。 
+	1       14776615
+	2       13990176
+	3       15749228
+	4       15100468
+	5       15285049
+	6       14385456
+	7       13823840
+	8       12597109
+	9       14107693
+	10      15004556
+	11      14388451
+	12      13971118
+	Time taken: 283.406 seconds, Fetched: 12 row(s)
 
-	hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql"
+ここでは、最初の列は月で、2 番目の列はその月の乗車数を表しています。
 
-検査用の  *sample_hive_trip_count_by_medallion.hql* ファイルの内容を次に示します。
+Hive ディレクトリ プロンプトで次のコマンドを発行して、乗車データ セットの合計レコード数をカウントすることもできます。
+
+	hive -e "select count(*) from nyctaxidb.trip;"
+
+次が生成されます。
+
+	173179759
+	Time taken: 284.017 seconds, Fetched: 1 row(s)
+
+乗車データ セットの場合と同様のコマンドを使用して、Hive ディレクトリ プロンプトから Hive クエリを発行し、料金データ セットのレコード数を検証できます。
+
+	hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+
+これにより、次のような結果が表示されます。
+
+	1       14776615
+	2       13990176
+	3       15749228
+	4       15100468
+	5       15285049
+	6       14385456
+	7       13823840
+	8       12597109
+	9       14107693
+	10      15004556
+	11      14388451
+	12      13971118
+	Time taken: 253.955 seconds, Fetched: 12 row(s)
+
+2 つのデータ セットでまったく同じ月ごとの乗車数が返されています。これで、データが正しく読み込まれていることが検証されました。
+
+Hive ディレクトリ プロンプトから次のコマンドを使用して、料金データ セット内の合計レコード数をカウントできます。
+
+	hive -e "select count(*) from nyctaxidb.fare;"
+
+次の結果が生成されます。
+
+	173179759
+	Time taken: 186.683 seconds, Fetched: 1 row(s)
+
+2 つのテーブルの合計レコード数も同じです。これで、データが正しく読み込まれていることが再度検証されました。
+
+### 探索: medallion (タクシー番号) ごとの乗車回数の分布
+
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+
+この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。このクエリは、パーティション変数 **month** によって条件設定されているので、パーティション テーブルへのアクセスによるメリットが得られます。クエリ結果は、ヘッド ノード上の `C:\temp` にあるローカル ファイル queryoutput.tsv に書き込まれます。
+
+	hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+
+検査用の *sample_hive_trip_count_by_medallion.hql* ファイルの内容を次に示します。
 
 	SELECT medallion, COUNT(*) as med_count
 	FROM nyctaxidb.fare
@@ -250,13 +388,28 @@ Hive でこれらのデータ探索と特徴エンジニアリングが完了す
 	HAVING med_count > 100 
 	ORDER BY med_count desc;
 
-### 探索:medallion および hack_license ごとの乗車回数の分布
+NYC タクシーのデータ セット内にある medallion (タクシー番号) は、一意のタクシーを識別します。特定の期間に特定の乗車数を超えるタクシーを確認することで、"忙しい" タクシーを特定できます。次の例では、最初の 3 か月間で乗車回数が 100 を超えるタクシーを識別し、クエリ結果を C:\temp\queryoutput.tsv ローカル ファイルに保存します。
 
-テーブルの複数の列によるグループ化の例を次に示します。この場合は、"medallion" 列と "hack_license" 列です。Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
+検査用の *sample_hive_trip_count_by_medallion.hql* ファイルの内容を次に示します。
 
-	hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql"
+	SELECT medallion, COUNT(*) as med_count
+	FROM nyctaxidb.fare
+	WHERE month<=3
+	GROUP BY medallion
+	HAVING med_count > 100 
+	ORDER BY med_count desc;
 
-検査用の  *sample_hive_trip_count_by_medallion_license.hql* ファイルの内容を次に示します。
+Hive ディレクトリ プロンプトで次のコマンドを発行します。
+
+	hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+
+### 探索: medallion および hack_license ごとの乗車回数の分布
+
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+
+データセットの探索時に、値のグループの出現回数を確認する必要があることがよくあります。このセクションでは、タクシーと運転手に対してこれを行う方法の一例を紹介します。
+
+*sample_hive_trip_count_by_medallion_license.hql* ファイルは、"medallion" と "hack_license" で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。その内容を次に示します。
 	
     SELECT medallion, hack_license, COUNT(*) as trip_count
 	FROM nyctaxidb.fare
@@ -265,36 +418,46 @@ Hive でこれらのデータ探索と特徴エンジニアリングが完了す
 	HAVING trip_count > 100
 	ORDER BY trip_count desc;
 
-### データ品質の評価:経度または緯度が無効なレコードを確認する
+このクエリは、タクシーと特定の運転手の組み合わせを乗車回数の多い順に返します。
 
-この例では、[経度] フィールドまたは [緯度] フィールドに無効な値 (ラジアン角は -90 ～ 90 の間である必要があります) または座標 (0, 0) が含まれているかどうかを調査します。
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
+	hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
 
-	hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+クエリ結果は、ローカル ファイル C:\temp\queryoutput.tsv に書き込まれます。
 
-このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。このコマンドは、Hive クエリの画面出力を読みやすくするので役立ちます。 
+### 探索: 無効な経度と緯度のレコードをチェックしてデータの品質を評価する
 
-検査用の  *sample_hive_quality_assessment.hql* ファイルの内容を次に示します。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+
+探索的データ分析の共通の目標は、無効または正しくないレコードを除外することです。このセクションの例では、緯度または経度のいずれかのフィールドに NYC 領域から大きく外れる値が含まれていないかどうかを判断します。そのようなレコードには緯度と経度の値にエラーがある可能性が高いため、モデリングに使用するすべてのデータからそれらを排除します。
+
+検査用の *sample_hive_quality_assessment.hql* ファイルの内容を次に示します。
 
     	SELECT COUNT(*) FROM nyctaxidb.trip
     	WHERE month=1
-    	AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
-    	OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
-	    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
-	    OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
-	    OR    (pickup_longitude = '0' AND pickup_latitude = '0')
-	    OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'));
+    	AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+    	OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+	    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
+	    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
-### 探索:チップが支払われた乗車と支払われなかった乗車の頻度
 
-この例では、特定の期間中 (または、1 年間をカバーする場合は全データセットで) チップが支払われた乗車と支払われなかった乗車の数を確認します。この分布は、後で二項分類モデリングに使用する、二項 ラベル分布を反映しています。
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
+	hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-	hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。このコマンドは、Hive クエリの画面出力を読みやすくするので役立ちます。
 
-検査用の  *sample_hive_tipped_frequencies.hql* ファイルの内容を次に示します。
+### 探索: チップの二項分類の分布
+
+**注:** これは、通常、**データ サイエンティスト** タスクです。
+
+「[予測タスクの例](machine-learning-data-science-process-hive-walkthrough.md#mltasks)」で説明されている二項分類の問題では、チップが支払われたかどうかがわかると便利です。このチップの分布は、次の二項です。
+
+* tip given(Class 1, tip_amount > $0)  
+* no tip (Class 0, tip_amount = $0) 
+
+次に示す *sample_hive_tipped_frequencies.hql* ファイルがこれを実行します。
 
     SELECT tipped, COUNT(*) AS tip_freq 
     FROM 
@@ -304,15 +467,16 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
     )tc
     GROUP BY tipped;
 
-### 探索:チップの範囲の頻度
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-この例では、指定した期間内に (または、1 年間をカバーする場合は全データセットで) チップの範囲の分布を計算します。これは、後で多クラス分類モデリングに使用されるラベル クラスの分布です。
+	hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
-Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
 
-	hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+### 探索: 多クラス設定での分類分布
 
-検査用の  *sample_hive_tip_range_frequencies.hql* の内容を次に示します。
+**注:** これは、通常、**データ サイエンティスト** タスクです。
+
+「[予測タスクの例](machine-learning-data-science-process-hive-walkthrough.md#mltasks)」で説明されている多クラス分類の問題では、このデータセットは支払われるチップの金額を予測する自然な分類にも対処します。箱を使って、クエリのチップの範囲を定義できます。さまざまなチップの範囲のクラス分布を取得するには、*sample_hive_tip_range_frequencies.hql* ファイルを使います。その内容を次に示します。
 
 	SELECT tip_class, COUNT(*) AS tip_freq 
     FROM 
@@ -325,57 +489,122 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
     )tc
     GROUP BY tip_class;
 
-### 探索:直線距離の計算および乗車距離との比較
-
-この例では、直線乗車距離を (マイル単位で) 計算します。この例では、前述したデータ品質評価のクエリを使用して、結果を有効な座標のみに限定します。
-
 Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
 
-	hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
+	hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-検査用の  *sample_hive_trip_direct_distance.hql* ファイルの内容を次に示します。
+### 探索: 経度緯度の 2 つの場所の直線距離を計算する
+
+**注:** これは、通常、**データ サイエンティスト** タスクです。
+
+直線距離を測定することで、その距離と実際の乗車距離の違いを確認できます。運転手が意図的に長いルートを走行したことに乗客が気づいた場合に、チップが支払われる可能性が低くなることを指摘するために、この機能が開発されました。
+
+実際の乗車距離と緯度経度の 2 つの地点の [Haversine distance (球面上の距離)](http://en.wikipedia.org/wiki/Haversine_formula) を比較するために、Hive 内で利用できる次のような三角関数を使用します。
 
     set R=3959;
     set pi=radians(180);
 	
 	insert overwrite directory 'wasb:///queryoutputdir'
+
     select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-        ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-        *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-        *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-        +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
-        pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance 
+    ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+     *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+     *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+     /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
+     +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
+     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance 
     from nyctaxidb.trip 
     where month=1 
-        and pickup_longitude between -90 and -30
-        and pickup_latitude between 30 and 90
-        and dropoff_longitude between -90 and -30
-        and dropoff_latitude between 30 and 90;
+    and pickup_longitude between -90 and -30
+    and pickup_latitude between 30 and 90
+    and dropoff_longitude between -90 and -30
+    and dropoff_latitude between 30 and 90;
 
-クエリが完了すると、結果は Hadoop クラスターの既定のコンテナーにある Azure BLOB ***queryoutputdir/000000_0*** に書き込まれます。Azure ストレージ エクスプローラーを使用すれば、次の図に示すように、Hadoop クラスターの既定のコンテナーのこの BLOB を確認できます。
+上記のクエリで R は地球半径をマイルで表したもので、pi はラジアンに変換されます。緯度経度の 2 つの地点は NYC 領域から大きく外れた値を除外するために "フィルター" されます。
 
-![Create workspace][2]
+この場合、"queryoutputdir" というディレクトリに結果が書き込まれます。次に示す一連のコマンドでは、まずこの出力ディレクトリを作成してから、Hive コマンドを実行します。
 
-名前に指定した文字がある BLOB のみを取得するには、フィルター (赤いボックスで強調表示されている) を適用することに注意してください。 
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-クエリの完了後、Azure SDK を使用して Azure BLOB からクエリの出力を読み取り、pandas データ フレームに入れることで、さらに探索と処理を行えます。Azure BLOB を pandas データ フレームに読み込む方法の説明については、「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」を参照してください。 
-	
-### モデルのビルド用にデータを準備する
+	hdfs dfs -mkdir wasb:///queryoutputdir
 
-このセクションに記載されているクエリでは、テーブル **"nyctaxidb.trip"** および **"nyctaxidb.fare"** を結合し、二項分類ラベル **[tipped]** および多クラス分類ラベル **[tip_class]** を生成します。このクエリをコピーして、[Azure Machine Learning Studio](https://studio.azureml.net) リーダー モジュールに直接貼り付けることで、 Azure の **Hive クエリ**から直接データを取り込みます。また、このクエリは、座標の緯度または経度が正しくないレコードを除外します。
+	hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
-このクエリは、Hive の組み込み UDF を直接適用して、Hive レコードから複数の特徴を生成します。Hive レコードにはフィールド "field _pickup_datetime_" の時間、1 年の週、曜日 (1 は月曜日の略、7 は日曜日の略です) などがあります。Hive の組み込み UDF の完全なリストについては、「[LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)」を参照してください。
 
-さらに、このクエリは、データをダウンサンプリングして、クエリの結果が Azure Machine Learning Studio に合うようにします。Studio にインポートされるのは約 1% にすぎません。
+クエリ結果は Hadoop クラスターの既定のコンテナーにある 9 つの Azure BLOB (***queryoutputdir/000000_0*** ～ ***queryoutputdir/000008_0***) に書き込まれます。
 
-Hadoop コマンド ライン コンソールから次のコマンドを実行して、クエリを送信します。
+個々の BLOB のサイズを表示するには、Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-	hive -f "C:\temp\sample_hive_prepare_for_aml.hql"
+	hdfs dfs -ls wasb:///queryoutputdir
 
-検査用の  *sample_hive_prepare_for_aml.hql* ファイルの内容を次に示します。
-	
-    select 
+たとえば 000000_0 などの指定されたファイルの内容を参照するには、Hadoop の `copyToLocal` コマンドを使います。
+
+	hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+
+**警告:** ファイル サイズが大きい場合、`copyToLocal` の処理に時間がかかる可能性があるため、大きなファイルではこのコマンドを使用しないことをお勧めします。
+
+Azure BLOB にこのデータがあることの主な利点は、[リーダー][reader] モジュールを使って Azure Machine Learning 内でデータを探索できることです。
+
+
+## <a name="#downsample"></a>Azure Machine Learning でデータをダウンサンプリングしてモデルを作成する
+
+**注:** これは、通常、**データ サイエンティスト** タスクです。
+
+探索的データ分析フェーズが終了したら、Azure Machine Learning.でデータをダウンサンプリングし、モデルを作成できます。このセクションでは、Hive クエリを使って、Azure Machine Learning の[リーダー][reader] モジュールからアクセスするデータをダウンサンプリングする方法を説明します。
+
+### データをダウンサンプリングする
+
+これには、2 つの手順があります。まず、すべてのレコードに存在する 3 つのキー ("medallion"、"hack_license"、"pickup_datetime") で、**nyctaxidb.trip** テーブルと **nyctaxidb.fare** テーブルを結合します。その後、二項分類ラベル **tipped** と多クラス分類ラベル **tip_class** を作成します。
+
+Azure Machine Learning の[リーダー][reader] モジュールからダウンサンプリングされたデータを直接使用できるようにするには、上記のクエリの結果を内部の Hive テーブルに格納する必要があります。以下では、内部の Hive テーブルを作成し、結合されダウンサンプリングされたデータでその内容を設定します。
+
+クエリでは、標準の Hive 関数を直接適用して、"pickup_datetime" フィールドから時間、1 年の週、曜日 (1 は月曜日、7 は日曜日の略) を生成し、乗車場所と降車場所の直線距離も生成します。標準の Hive 関数の一覧は、「[LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)」に記載されています。
+
+さらに、クエリはデータをダウンサンプリングして、クエリの結果が Azure Machine Learning Studio に合うようにします。元のデータセットの約 1% だけが Studio にインポートされます。
+
+Azure Machine Learning でモデル作成用データを準備する *sample_hive_prepare_for_aml_full.hql* ファイルの内容を以下に示します。
+		
+		set R = 3959;
+	    set pi=radians(180);
+
+		create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+
+        medallion string,
+        hack_license string,
+        vendor_id string,
+        rate_code string,
+        store_and_fwd_flag string,
+        pickup_datetime string,
+        dropoff_datetime string,
+        pickup_hour string,
+        pickup_week string,
+        weekday string,
+        passenger_count int,
+        trip_time_in_secs double,
+        trip_distance double,
+        pickup_longitude double,
+        pickup_latitude double,
+        dropoff_longitude double,
+        dropoff_latitude double,
+        direct_distance double,
+        payment_type string,
+        fare_amount double,
+        surcharge double,
+        mta_tax double,
+        tip_amount double,
+        tolls_amount double,
+        total_amount double,
+        tipped string,
+        tip_class string
+		)
+		row format delimited fields terminated by ','
+		lines terminated by '\n'
+		stored as textfile;
+
+		--- now insert contents of the join into the above internal table
+
+    	insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
+    	select 
         t.medallion, 
         t.hack_license,
         t.vendor_id,
@@ -393,6 +622,7 @@ Hadoop コマンド ライン コンソールから次のコマンドを実行�
         t.pickup_latitude,
         t.dropoff_longitude,
         t.dropoff_latitude,
+		t.direct_distance,
         f.payment_type, 
         f.fare_amount, 
         f.surcharge, 
@@ -402,132 +632,161 @@ Hadoop コマンド ライン コンソールから次のコマンドを実行�
         f.total_amount,
         if(tip_amount>0,1,0) as tipped,
         if(tip_amount=0,0,
-            if(tip_amount>0 and tip_amount<=5,1,
-            if(tip_amount>5 and tip_amount<=10,2,
-            if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
-    from
-    (
-        select medallion, 
-            hack_license,
-            vendor_id,
-            rate_code,
-            store_and_fwd_flag,
-            pickup_datetime,
-            dropoff_datetime,
-            passenger_count,
-            trip_time_in_secs,
-            trip_distance,
-            pickup_longitude,
-            pickup_latitude,
-            dropoff_longitude,
-            dropoff_latitude,
-            rand() as sample_key 
-        from nyctaxidb.trip
-        where pickup_latitude between 30 and 60
-            and pickup_longitude between -90 and -60
-            and dropoff_latitude between 30 and 60
-            and dropoff_longitude between -90 and -60
-    )t
-    join
-    (
+        if(tip_amount>0 and tip_amount<=5,1,
+        if(tip_amount>5 and tip_amount<=10,2,
+        if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
+
+    	from
+    	(
         select 
-            medallion, 
-            hack_license, 
-            vendor_id, 
-            pickup_datetime, 
-            payment_type, 
-            fare_amount, 
-            surcharge, 
-            mta_tax, 
-            tip_amount, 
-            tolls_amount, 
-            total_amount
+		medallion, 
+        hack_license,
+        vendor_id,
+        rate_code,
+        store_and_fwd_flag,
+        pickup_datetime,
+        dropoff_datetime,
+        passenger_count,
+        trip_time_in_secs,
+        trip_distance,
+        pickup_longitude,
+        pickup_latitude,
+        dropoff_longitude,
+        dropoff_latitude,
+		${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+        *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+        *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
+        +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
+        rand() as sample_key
+
+        from nyctaxidb.trip
+        where pickup_latitude between 30 and 90
+            and pickup_longitude between -90 and -30
+            and dropoff_latitude between 30 and 90
+            and dropoff_longitude between -90 and -30
+        )t
+        join
+        (
+        select 
+        medallion, 
+        hack_license, 
+        vendor_id, 
+        pickup_datetime, 
+        payment_type, 
+        fare_amount, 
+        surcharge, 
+        mta_tax, 
+        tip_amount, 
+        tolls_amount, 
+        total_amount
         from nyctaxidb.fare 
-    )f
-    on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-    where t.sample_key<=0.01
+        )f
+        on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
+        where t.sample_key<=0.01
 
-## <a name="mlmodel"></a>Azure Machine Learning でモデルをビルドする
+このクエリは、Hive ディレクトリ プロンプトで次のように実行します。
 
-これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルの配置に進む準備が整いました。データも、上で決めた予測問題の対応に使用できるようになりました。
+	hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-1. **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
+これで、Azure Machine Learning で [リーダー][reader] モジュールを使ってアクセスできる内部テーブル "nyctaxidb.nyctaxi_downsampled_dataset" ができました。さらに、このデータセットを使って Machine Learning モデルを作成できます。
 
-2. **多クラス分類**:乗車で支払われたチップの金額の範囲を予測するには、以前定義したクラスを使用します。 
+### Azure Machine Learning のリーダー モジュールを使ってダウンサンプリングされたデータにアクセスする
 
-3. **回帰タスク**:乗車で支払われたチップの金額を予測します。  
+Azure Machine Learning の[リーダー][reader] モジュールで Hive クエリを発行する前提条件として、Azure Machine Learning ワークスペースにアクセスし、クラスターの資格情報とクラスターに関連付けられたストレージ アカウントにアクセスする必要があります。
 
-モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。Machine Learning ワークスペースをまだ作成していない場合は、「[Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)」を参照してください。
+[リーダー][reader] モジュールと入力するパラメーターの詳細は次のとおりです。
 
-1. Azure Machine Learning の使用を開始するには、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+**HCatalog サーバー URI**: クラスター名が abc123 の場合、単に https://abc123.azurehdinsight.net となります。
 
-2. [Azure Machine Learning Studio](https://studio.azureml.net) にログインします。
+**Hadoop ユーザー アカウント名**: クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 
-3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。Azure Machine Learning の詳細については、[Azure Machine Learning ドキュメント センター](http://azure.microsoft.com/documentation/services/machine-learning/) を参照してください。
+**Hadoop ユーザー アカウントのパスワード**: クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
 
-一般的な実験トレーニングは以下のもので構成されています。
+**出力データの場所**: Azure になるよう選択されます。
 
-1. 実験の**新規**作成。
-2. Azure ML へのデータの取得。
-3. 必要に応じたデータの事前処理、変換、および操作。
-4. 必要に応じた特徴の生成。
-5. トレーニング/検証/テスト データ セットへのデータの分割 (またはそれぞれに個別のデータセットを用意する)。
-6. 解決する学習問題によって変わる、1 つ以上の機械学習アルゴリズムの選択。例: 二項分類、多クラス分類、回帰。
-7. トレーニング データセットを使用した、1 つ以上のモデルのトレーニング。
-8. トレーニング済みのモデルを使用した、検証データセットのスコアリング。
-9. 学習問題の関連メトリックを計算するためのモデルの評価。
-10. モデルの微調整および配置に最適なモデルの選択。
+**Azure ストレージ アカウント名**: クラスターに関連付けられている既定のストレージ アカウント名。
 
-この演習で、私たちは既に、Hive のデータの探索とエンジニアリングを行い (手順 1 ～ 4)、Azure ML に取り込むサンプルのサイズを決定しました。1 つ以上の予測モデルをビルドするには、
+**Azure コンテナー名**: クラスターの既定のコンテナー名。通常はクラスター名と同じです。"abc123" というクラスターの場合、これは abc123 になります。
 
-1. **リーダー** モジュール (「**データの入力と出力**」セクションで使用可能) を使用して、 Azure ML にデータを取得します。詳細については、「[リーダー](http://msdn.microsoft.com/library/dn784775) モジュールのリファレンス」ページを参照してください。
+**重要な注意事項:** **Azure Machine Learning で [リーダー][reader] モジュールを使って照会するすべてのテーブルは、内部テーブルである必要があります。** D.db データベース内のテーブル T が内部テーブルかどうかを判断するヒントを次に示します。
 
-	![Create workspace][15]
+Hive ディレクトリ プロンプトで次のコマンドを発行します。
 
-2. **Hive クエリ** を、**[プロパティ]** パネルの**データ ソース**として選択します。
+	hdfs dfs -ls wasb:///D.db/T
 
-3. 次のように HDInsight Hadoop クラスターの情報を入力します。**[Azure ストレージ アカウント名]** は、HDInsight Hadoop クラスターの作成に使用するストレージ アカウントである必要があります。**[Azure コンテナー名]** は、Hadoop クラスターの既定のコンテナーである必要があります。 
+テーブルが内部テーブルであり、テーブルにデータが設定されている場合は、その内容がここで表示される必要があります。テーブルが内部テーブルかどうかを判断する別の方法は、Azure ストレージ エクスプローラーを使用することです。Azure ストレージ エクスプローラーを使用してクラスターの既定のコンテナー名に移動し、テーブル名でフィルターします。テーブルとその内容が表示されれば、内部テーブルであることがわかります。
 
-	![Create workspace][11]
+Hive クエリと[リーダー][reader] モジュールのスナップショットを次に示します。
 
-4. **[Hive データベース クエリ]** テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
+![](http://i.imgur.com/1eTYf52.png)
 
-Hive クエリから直接データを読み取る二項分類の実験の例を次の図に示します。同様の実験を、多クラス分類と回帰問題で構築することができます。
+ここでは、ダウンサンプリングされたデータは既定のコンテナーに存在するため、Azure Machine Learning の Hive クエリは、"SELECT * FROM nyctaxidb.nyctaxi_downsampled_data" という非常に単純なものになります。
 
-![Create workspace][12]
+このデータセットを Machine Learning モデル作成のための出発点として使用します。
 
-> [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外**することです。たとえば、二項分類を使用する場合は、ラベル **"tipped"** を使用し、フィールド **[tip_class]**、**[tip_amount]**、および **[total_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+### <a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 
-> この実験では、最初の**メタデータ エディター** モジュールが、リーダー モジュールからの出力データに列名を追加します。Hive クエリからデータを読み取るリーダー モジュールは出力データの列名を作成しないため、このモジュールが必要になります。 
+これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイメントに進む準備が整いました。データも、以前に特定した予測問題への対応に使用できる状態になりました。
 
-> 不要な列またはターゲット リークを除外するために、**プロジェクトの列**モジュールまたは**メタデータ エディター**を使用できます。詳細については、「[プロジェクトの列](http://msdn.microsoft.com/library/dn784740)」および「[メタデータ エディター](http://msdn.microsoft.com/library/dn784761)」リファレンス ページを参照してください。
+**1.二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
 
-## <a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
+**使用する学習者: **2 クラスのロジスティック回帰
 
-モデルの準備ができたら、実験から直接 Web サービスとして配置することができます。Azure ML Web サービスの発行の詳細については、「[Azure Machine Learning API サービスの操作](../machine-learning-overview-of-azure-ml-process.md)」を参照してください。
+a.この問題では、ターゲット (またはクラス) ラベルは "tipped" です元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。具体的には、tip_class、tip_amount、total_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。ここでは、[プロジェクト列][project-columns]モジュールを使ってこれらの列を考慮事項から除外します。
 
-新しい Web サービスを配置するには以下のことを実行する必要があります。
+次のスナップショットは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
-1. スコアリングの実験の作成。
-2. Web サービスの発行。
+![](http://i.imgur.com/QGxRz5A.png)
 
-**終了した**トレーニング実験からスコアリング実験を作成するには、下部の操作バーにある**[スコアリング実験の作成]** をクリックしてください。
+b.この実験では、ターゲット ラベルの分布がほぼ 1:1 です。
 
-![Azure Scoring][13]
+次のスナップショットは、二項分類の問題のための、チップのクラス ラベルの分布を示しています。
 
-Azure Machine Learning は、トレーニング実験のコンポーネントに基づいて、スコアリング実験の作成を試みます。特に、以下のことを実行します。
+![](http://i.imgur.com/9mM4jlD.png)
 
-1. トレーニング済みのモデルを保存し、モデルのトレーニング モジュールを削除する。
-2. 予想される入力データ スキーマを表す論理**入力ポート**を特定する。
-3. 予想される Web サービスの出力スキーマを表す論理**出力ポート**を特定する。
+その結果、次の図に示す 0.987 の AUC を取得します。
 
-スコアリングの実験が作成されたら、確認して、必要に応じて調整します。一般的な調整は、ラベル フィールドを除外した入力データセットまたはクエリを置き換えることです。これらはサービスが呼び出されるときに使用できないためです。入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。出力ポートでは、一般的に、すべての入力フィールドを除外して、**プロジェクトの列**モジュールを使用して、出力の**スコアリングしたラベル**および**スコアリングした確率**のみを含めます。
+![](http://i.imgur.com/8JDT0F8.png)
 
-スコアリングの実験のサンプルを次の図に示します。発行できる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
+**2.多クラス分類**: 以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
 
-![Create workspace][14]
+**使用する学習者: **多クラスのロジスティック回帰
 
-要点をまとめると、このチュートリアルでは、大規模な公開されているデータセットを操作する Azure データ サイエンス環境を作成しました。データの取得から始め、データ サイエンス プロセスの探索および特徴エンジニアリング タスク、Azure Machine Learning Web サービスのモデルのトレーニングおよび発行へと進みました。
+a.この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる "tip_class" になります。二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。具体的には、tipped、tip_amount、total_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。ここでは、[プロジェクト列][project-columns]モジュールを使ってこれらの列を削除します。
+
+次のスナップショットは、チップが少なくなる可能性の高い箱 ( クラス 0: チップ = $0、クラス 1 : チップ > $0 とチップ <= $5、クラス 2 : チップ > $5 とチップ <= $10、クラス 3 : チップ > $10 とチップ <= $20、クラス 4 : チップ > $20) を予測する実験を示しています。
+
+![](http://i.imgur.com/5ztv0n0.png)
+
+実際のテスト クラスの分布がどのようになるかを次に示します。クラス 0 とクラス 1 は一般的ですが、他のクラスはまれであることがわかります。
+
+![](http://i.imgur.com/Vy1FUKa.png)
+
+b.この実験では、混同行列を使って、予測精度を確認します。一般的なイメージを以下に示します。
+
+![](http://i.imgur.com/cxFmErM.png)
+
+一般的なクラスのクラス精度がかなり良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていないことに注意してください。
+
+
+**3.回帰タスク**: 乗車で支払われたチップの金額を予測します。
+
+**使用する学習者:** ブースト デシジョン ツリー
+
+a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。この場合のターゲット リークは、tipped、tip_class、total_amount です。これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。ここでは、[プロジェクト列][project-columns]モジュールを使ってこれらの列を削除します。
+
+次のスナップショットは、支払われるチップの金額を予測する実験を示しています。
+
+![](http://i.imgur.com/11TZWgV.png)
+
+b.回帰の問題については、予測や決定係数での二乗誤差を見ることで予測の精度を測定します。これらについて以下に示します。
+
+![](http://i.imgur.com/Jat9mrz.png)
+
+決定係数が 0.709 であり、これは約 71% という分散がモデル係数で説明されていることを意味しています。
+
+**重要な注意事項:** Azure Machine Learning の詳細と Azure Machine Learning にアクセスして使用する方法の詳細については、「[Azure Machine Learning とは](machine-learning-what-is-machine-learning.md)」をご覧ください。Azure Machine Learning の一連の実験を再生する非常に便利なリソースとして[ギャラリー](https://gallery.azureml.net/)があります。ギャラリーには、すべての実験についての説明があり、Azure Machine Learning の機能範囲が詳しく説明されています。
 
 ## ライセンス情報
 
@@ -535,9 +794,8 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 ## 参照
 
-*	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-*	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-*	[ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) • [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) • [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
 [11]: ./media/machine-learning-data-science-process-hive-walkthrough/hive-reader-properties.png
@@ -546,4 +804,9 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [14]: ./media/machine-learning-data-science-process-hive-walkthrough/binary-classification-scoring.png
 [15]: ./media/machine-learning-data-science-process-hive-walkthrough/amlreader.png
 
-<!--HONumber=49--> 
+<!-- Module References -->
+[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+ 
+
+<!---HONumber=July15_HO2-->

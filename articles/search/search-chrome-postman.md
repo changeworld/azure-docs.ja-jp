@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure Search で Chrome Postman を使用する方法" 
-	description="Azure Search で Chrome Postman を使用する方法" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
+<properties
+	pageTitle="Azure Search で Chrome Postman を使用する方法"
+	description="Azure Search で Chrome Postman を使用する方法"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="mblythe"
 	editor=""
     tags="azure-portal"/>
 
-<tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="04/27/2015" 
+<tags
+	ms.service="search"
+	ms.devlang="rest-api"
+	ms.workload="search"
+	ms.topic="get-started-article" 
+	ms.tgt_pltfrm="na"
+	ms.date="07/08/2015"
 	ms.author="heidist"/>
 
 # Azure Search で Chrome Postman を使用する方法 #
@@ -22,7 +22,7 @@
 [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm "Chrome Postman") は、開発者が Azure Search などの REST ベースの API サービスで効率的に作業できるように、Google Chrome の一部として提供されるツールです。コードを記述しなくても、Postman を介して API 呼び出しを送信することで、Postman を使用して検索インデックスを簡単に作成およびクエリすることができます。この方法では、API について効率的に学習し、新しい機能を試すことができます。
 
 ![][1]
- 
+
 ## 必要条件 ##
 
 Azure Search サービスを備えている必要があります。Azure Search を使用するすべてのカスタム アプリケーションと同様に、サービスへの URL のほか、インデックスを作成するために管理者 `api-key` が必要です。Search サービスの価値を引き出す方法の詳細については、[ポータルでのサービスの作成](search-create-service-portal.md)に関するページを参照してください。
@@ -31,7 +31,7 @@ Azure Search サービスを備えている必要があります。Azure Search 
 Postman をダウンロードするには、[Google Chrome ストア](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm)にアクセスします。このページのリンクを使用して、Postman の REST クライアントをダウンロードしてインストールすることができます。インストールすると、Chrome アプリ ランチャーから Postman を起動できるようになります。
 
 ![][2]
- 
+
 ## Azure Search のクエリ用の Postman の構成 ##
 Postman を構成するには、次の手順に従います。
 
@@ -55,19 +55,19 @@ Postman を構成するには、次の手順に従います。
 3. RAW 本文のコンテンツに、次の JSON を入力します。
 
 	    {
-	    "name": "trails", 
+	    "name": "trails",
 	    "fields": [
-	    {"name": "id", "type": "Edm.String", "key": true, "searchable": false}, 
-	    {"name": "name", "type": "Edm.String"}, 
-	    {"name": "county", "type": "Edm.String"}, 
-	    {"name": "elevation", "type": "Edm.Int32"}, 
+	    {"name": "id", "type": "Edm.String", "key": true, "searchable": false},
+	    {"name": "name", "type": "Edm.String"},
+	    {"name": "county", "type": "Edm.String"},
+	    {"name": "elevation", "type": "Edm.Int32"},
 	    {"name": "location", "type": "Edm.GeographyPoint"} ]
 	    }
 
 4. [**送信**] をクリックします。
 
 ![][4]
- 
+
 ## Postman での Azure Search インデックスへのドキュメントのポスト ##
 インデックスが作成されたので、ドキュメントを読み込むことができます。そのために、米国地質調査所 (USG) のデータセットにある 5 つのトレイルのデータを使用して、ドキュメントのグループをバッチでポストします。
 
@@ -84,7 +84,7 @@ Postman を構成するには、次の手順に従います。
 		    {"@search.action": "upload", "id": "1517508", "name": "Cavanaugh-Oso Truck Trail", "county": "Skagit", "elevation":339, "location": { "type": "Point", "coordinates": [-121.9470829,48.2981608] }}
 	      ]
 	    }
-    
+
 4. [**送信**] をクリックします。
 
 ![][5]
@@ -95,7 +95,7 @@ Postman を構成するには、次の手順に従います。
 1. 検索サービス名を使用して、URL に `https://[SEARCH SERVICE].search.windows.net/indexes/trails/docs?api-version=2015-02-28&search=trail` を入力します。URL には、`search` のクエリ パラメーターおよび検索語句 *trail* が含まれています。
 2. HTTP 要求の種類を `GET` に変更します。
 3. [**送信**] をクリックします。
- 
+
 応答には、Azure Search から返された JSON 検索結果が表示されます。
 
 ![][6]
@@ -117,5 +117,6 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [4]: ./media/search-chrome-postman/create_index.png
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

@@ -1,4 +1,11 @@
-<properties pageTitle="Web アプリケーションからの Azure Key Vault の使用 | 概要" description="このチュートリアルを使用すると、Web アプリケーションから Azure Key Vault を使用する方法について学習できます。" services="key-vault" documentationCenter="" authors="adamhurwitz" manager="" tags="azure-resource-manager"//>
+<properties 
+	pageTitle="Web アプリケーションからの Azure Key Vault の使用 | 概要" 
+	description="このチュートリアルを使用すると、Web アプリケーションから Azure Key Vault を使用する方法について学習できます。" 
+	services="key-vault" 
+	documentationCenter="" 
+	authors="adamhurwitz" 
+	manager=""
+	tags="azure-resource-manager"//>
 
 <tags 
 	ms.service="key-vault" 
@@ -125,4 +132,4 @@ Azure の Web アプリがある場合は、Azure ポータルでアプリ設定
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

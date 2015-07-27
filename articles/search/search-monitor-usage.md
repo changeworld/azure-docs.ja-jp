@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required" 
-   ms.date="04/27/2015"
+   ms.date="07/08/2015"
    ms.author="heidist"/>
 
 # Azure Search サービスでの使用状況と統計の監視
@@ -55,5 +55,6 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
 
 
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

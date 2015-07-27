@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Hive と HiveQL の使用方法の説明 |Microsoft Azure"
-	description="Apache Hive と HDInsight での Hadoop との使用方法について説明します。Hive ジョブを実行し、HiveQL を使用して Apache log4j サンプル ファイルを分析する方法を選択します。" 
-	keywords="hiveql,what is hive"
+	description="Apache Hive と HDInsight での Hadoop との使用方法について説明します。Hive ジョブを実行し、HiveQL を使用して Apache log4j サンプル ファイルを分析する方法を選択します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="04/23/2015"
+	ms.date="07/06/2015"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -24,7 +23,7 @@
 
 このチュートリアルでは、HDInsight の Hadoop での Apache Hive の使用方法と、Hive ジョブの実行方法の選択について説明します。また、HiveQL と、Apache log4j サンプル ファイルを分析する方法についても説明します。
 
-##<a id="why"></a>Hive の説明と使用する理由 
+##<a id="why"></a>Hive の説明と使用する理由
 [Apache Hive](http://hive.apache.org/) は Hadoop のデータ ウェアハウス システムで、HiveQL (SQL に似たクエリ言語) を使用してデータを集約、照会、および分析することができます。Hive を使用することで、データを対話的に探索したり、再利用可能なバッチ処理ジョブを作成したりすることができます。
 
 Hive では、大規模な非構造化データに構造を投影することができます。構造を定義したら、Hive を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。**HiveQL** (Hive のクエリ言語) では、T-SQL に似たステートメントを使用してクエリを記述することができます。
@@ -73,7 +72,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 * **CREATE EXTERNAL TABLE**: Hive に新しい**外部**テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは元の場所に元の形式で残します。
 * **ROW FORMAT**: Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
 * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
-* **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を選択します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
+* **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
 > [AZURE.NOTE]基盤となるデータを外部ソースで更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作で更新する場合に、常に Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
 >
@@ -90,7 +89,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ ウェアハウスに格納され、Hive によって完全に管理されます。
 * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
-* **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルから行を選択し、**errorLogs** テーブルにデータを挿入します。
+* **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにデータを挿入します。
 
 > [AZURE.NOTE]外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
 
@@ -124,7 +123,7 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 これで、Hive と、HDInsight での Hadoop との使用方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
+* [HDInsight での Pig の使用][hdinsight-use-pig]
 * [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
@@ -163,4 +162,4 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

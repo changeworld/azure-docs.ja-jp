@@ -1,24 +1,27 @@
 <properties 
 	pageTitle="基本構成テスト環境" 
-	description="イントラネットをシミュレーションする単純な開発/テスト環境を Azure で作成する方法について説明します。" 
+	description="イントラネットをシミュレーションする単純な開発/テスト環境を Microsoft Azure で作成する方法について説明します。" 
 	documentationCenter=""
 	services="virtual-machines" 
 	authors="JoeDavies-MSFT" 
 	manager="timlt" 
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="07/07/2015" 
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
 
-このトピックでは、Windows Server 2012 R2 が実行されているコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。完成したテスト環境は、次の用途に使うことができます。
+この記事では、サービスマネージメントで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
+
+完成したテスト環境は、次の用途に使うことができます。
 
 - アプリケーションの開発とテストを行う。
 - [ハイブリッド クラウド環境をシミュレーション](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)する。
@@ -166,7 +169,7 @@ DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
 1 つ目のコマンドを実行すると、User1 アカウントのパスワードを入力するよう求められます。このアカウントは、CORP ドメインに属しているすべてのコンピューターのリモート デスクトップ接続に使用されるため、強力なパスワードを選んでください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
 
-CORP\\User1 アカウントを使用して DC1 仮想マシンに再接続します。
+CORP\User1 アカウントを使用して DC1 仮想マシンに再接続します。
 
 今度は、Ping ツールのトラフィックを許可します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを実行してください。
 
@@ -191,7 +194,7 @@ APP1 は、Web サービスとファイル共有サービスを提供します�
 	$vm1 | Set-AzureSubnet -SubnetNames Corpnet
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName TestLab
 
-次に、CORP\\User1 の資格情報で APP1 仮想マシンに接続し、管理者レベルの Windows PowerShell コマンド プロンプトを開きます。
+次に、CORP\User1 の資格情報で APP1 仮想マシンに接続し、管理者レベルの Windows PowerShell コマンド プロンプトを開きます。
 
 名前解決が正しく実行されることと、APP1 と DC1 間のネットワーク通信を確認するために、「**ping dc1.corp.contoso.com**」コマンドを実行し、応答が 4 回返されることを確認します。
 
@@ -224,7 +227,7 @@ CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タ�
 	$vm1 | Set-AzureSubnet -SubnetNames Corpnet
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName TestLab
 
-次に、CORP\\User1 の資格情報を使用して、CLIENT1 仮想マシンに接続します。
+次に、CORP\User1 の資格情報を使用して、CLIENT1 仮想マシンに接続します。
 
 名前解決が正しく実行されることと、CLIENT1 と DC1 間のネットワーク通信を確認するために、Windows PowerShell コマンド プロンプトから「**ping dc1.corp.contoso.com**」コマンドを実行し、応答が 4 回返されることを確認します。
 
@@ -234,9 +237,8 @@ CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タ�
 2.	**CLIENT1 のプロパティ**で、**[IE セキュリティ強化の構成]** の横にある **[有効]** をクリックします。
 3.	**[Internet Explorer セキュリティ強化の構成]** で、**[Administrators]** と **[Users]** の **[オフ]** をクリックし、**[OK]** をクリックします。
 4.	スタート画面で、**[Internet Explorer]** をクリックして、**[OK]** をクリックします。
-5.	アドレス バーに「**http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。
-6.	デスクトップのタスク バーからエクスプローラー アイコンをクリックします。
-7.	アドレス バーに「**\\\\app1\\Files**」と入力し、Enter キーを押します。
+5.	アドレス バーに「**http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。6.	デスクトップのタスク バーからエクスプローラー アイコンをクリックします。
+7.	アドレス バーに「**\app1\Files**」と入力し、Enter キーを押します。
 8.	フォルダー ウィンドウに、Files 共有フォルダー内容が表示されます。
 9.	**[Files]** 共有フォルダー ウィンドウで、**Example.txt** ファイルをダブルクリックします。Example.txt ファイルの内容が表示されます。
 10.	**[example.txt - メモ帳]** ウィンドウと **[Files]** 共有フォルダー ウィンドウを閉じます。
@@ -279,6 +281,6 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "DC1"
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

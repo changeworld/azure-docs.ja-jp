@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Stream Analytics ジョブのスケーリング | Azure"
-	description="Stream Analytics ジョブのスケールを設定する方法について説明します。"
+	pageTitle="スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Azure"
+	description="Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -13,29 +13,36 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="04/28/2015"
+	ms.date="07/01/2015"
 	ms.author="jeffstok"/>
 
-# Azure Stream Analytics ジョブのスケーリング
+# スループット向上のための Azure Stream Analytics ジョブのスケーリング #
 
 Stream Analytics ジョブの*ストリーミング ユニット*を計算する方法と、Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
 
-Azure Stream Analytics のジョブ定義は、入力、クエリ、および出力で構成されます。入力は、ジョブがデータ ストリームを読み取る場所です。クエリは、入力ストリームを変換するために使用します。出力は、ジョブがジョブ結果を送信する宛先です。
+## Stream Analytics ジョブの構成について教えてください。 ##
+Azure Stream Analytics のジョブ定義は、入力、クエリ、および出力で構成されます。入力は、ジョブがデータ ストリームを読み取る場所です。クエリは、データ入力ストリームを変換するために使用します。出力は、ジョブがジョブ結果を送信する宛先です。
 
-ジョブには少なくとも 1 つのデータ ストリームの入力ソースが必要です。データ ストリームの入力ソースは、Azure Service Bus Event Hub または Azure BLOB ストレージに格納できます。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」、「[Azure Stream Analytics の使用](stream-analytics-get-started.md)」、および「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」を参照してください。
+ジョブにはデータ ストリーミング用に少なくとも 1 つの入力ソースが必要です。データ ストリームの入力ソースは、Azure Service Bus Event Hub または Azure BLOB ストレージに格納できます。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」、「[Azure Stream Analytics の使用](stream-analytics-get-started.md)」、および「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」を参照してください。
 
-Stream Analytics ジョブの処理に使用できるリソースは、ストリーミング ユニットで測定されます。各ストリーミング ユニットは最大 1 MB/秒のスループットを提供できます。各ジョブには最低 1 つのストリーミング ユニットが必要です。また、すべてのジョブに既定で 1 つが設定されています。Azure ポータルを使用して、1 つの Stream Analytics ジョブに最大 50 個のストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションで設定できるストリーミング ユニットの最大数は、特定のリージョン内のすべてのジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには (最大で 100 個)、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
+## ストリーミング ユニットの構成 ##
+ストリーミング ユニット (SU) は、Azure Stream Analytics ジョブを実行するリソースとパワーを表します。SU は、CPU、メモリ、および読み取りと書き込みのレートを組み合わせた測定に基づいて、相対的なイベントの処理能力を記述する方法を提供します。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。
 
-ジョブで使用できるストリーミング ユニットの数は、入力のパーティション構成とジョブに定義されているクエリによって異なります。この記事では、スループットを向上させるための計算とクエリ チューニングの方法について説明します。
+特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。Azure ポータルを使用して、1 つのジョブにクォータまでのストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションの既定のクォータでは、ストリーミング ユニットの最大数は特定のリージョン内のすべての分析ジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
 
+ジョブで使用できるストリーミング ユニットの数は、入力のパーティション構成とジョブに定義されているクエリによって異なります。ストリームのユニットの有効な値を使用する必要がある点にも注意してください。次に示すように、有効な値は 1、3、6 から開始し、増分単位 6 で増加します。
 
-## ジョブのストリーミング ユニットの最大数を計算する
+![Azure Stream Analytics のストリーミング ユニットのスケーリング][img.stream.analytics.streaming.units.scale]
+
+この記事では、分析ジョブのスループットを向上させるための計算とクエリ チューニングの方法について説明します。
+
+## ジョブのストリーミング ユニットの最大数を計算する ##
 Stream Analytics ジョブで使用できるストリーミング ユニットの合計数は、ジョブに定義されたクエリのステップ数と各ステップのパーティション数によって異なります。
 
-### クエリでのステップ
+### クエリでのステップ ###
 1 つのクエリに 1 つ以上のステップを含めることができます。各ステップは、WITH 句を使用して定義されたサブクエリです。WITH 句の範囲外にある唯一のクエリもステップと見なされます。たとえば、以下のクエリの SELECT ステートメントは、ステップと見なされます。
 
-	WITH Step1 (
+	WITH Step1 AS (
 		SELECT COUNT(*) AS Count, TollBoothId
 		FROM Input1 Partition By PartitionId
 		GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
@@ -43,13 +50,13 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 	SELECT SUM(Count) AS Count, TollBoothId
 	FROM Step1
-	GROUP BY TumblingWindow(minute,3), TollBoothId, PartitionId
+	GROUP BY TumblingWindow(minute,3), TollBoothId
 
 上のクエリのステップは 2 つです。
 
 > [AZURE.NOTE]このサンプル クエリについては、記事の後半で説明します。
 
-### ステップをパーティション分割する
+### ステップをパーティション分割する ###
 
 ステップをパーティション分割するには、次の条件を満たす必要があります。
 
@@ -59,7 +66,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 クエリがパーティション分割されている場合、入力イベントは処理されて個々のパーティション グループに集計され、そのグループごとに出力イベントが生成されます。結合された集計が望ましい場合は、パーティション分割されていない 2 つ目のステップを集計用に作成する必要があります。
 
-### ジョブのストリーミング ユニットの最大数を計算する
+### ジョブのストリーミング ユニットの最大数を計算する ###
 
 Stream Analytics ジョブのパーティション分割されていないステップは、最大 6 個のストリーミング ユニットにスケールアップできます。ストリーミング ユニットを追加するには、ステップをパーティション分割する必要があります。各パーティションには 6 個のストリーミング ユニットを設定できます。
 
@@ -103,7 +110,7 @@ Stream Analytics ジョブのパーティション分割されていないステ
 <td>24 (パーティション分割されたステップ用に 18 + パーティションされていないステップ用に 6)</td></tr>
 </table>
 
-### スケールの例
+### スケールの例 ###
 次のクエリは、3 つのブースがある高速道路の料金所を 3 分間に通過する車の台数を計算します。このクエリを最大 6 個のストリーミング ユニットにスケールアップできます。
 
 	SELECT COUNT(*) AS Count, TollBoothId
@@ -120,7 +127,7 @@ Stream Analytics ジョブのパーティション分割されていないステ
 
 Input1 の各パーティションは Stream Analytics によって個別に処理され、同じタンブリング ウィンドウで同じ料金所の複数の通過台数レコードが作成されます。入力パーティション キーを変更できない場合は、パーティション分割されていないステップを追加することで、この問題を解決できます。たとえば次のようにします。
 
-	WITH Step1 (
+	WITH Step1 AS (
 		SELECT COUNT(*) AS Count, TollBoothId
 		FROM Input1 Partition By PartitionId
 		GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
@@ -128,14 +135,14 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 
 	SELECT SUM(Count) AS Count, TollBoothId
 	FROM Step1
-	GROUP BY TumblingWindow(minute, 3), TollBoothId, ParititonId
+	GROUP BY TumblingWindow(minute, 3), TollBoothId
 
 このクエリは 24 個のストリーミング ユニットにスケールできます。
 
 >[AZURE.NOTE]2 つのストリームを結合している場合は、結合を実行した列のパーティション キーでストリームがパーティション分割され、両方のストリームに同じ数のパーティションが作成されていることを確認してください。
 
 
-## Stream Analytics ジョブのパーティションを構成する
+## Stream Analytics ジョブのパーティションを構成する ##
 
 **ジョブのストリーミング ユニットを調整するには**
 
@@ -147,7 +154,7 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 ![Azure Stream Analytics のジョブのスケーリングの構成][img.stream.analytics.configure.scale]
 
 
-## ジョブのパフォーマンスを監視する
+## ジョブのパフォーマンスを監視する ##
 
 管理ポータルを使用して、ジョブのスループット (イベント数/秒) を追跡できます。
 
@@ -155,12 +162,12 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 
 ワークロードのスループット予測 (イベント数/秒) を計算します。スループットが予測よりも小さい場合、入力パーティションのチューニングとクエリのチューニングを実行し、ジョブにストリーミング ユニットを追加してください。
 
-##スケールごとの ASA のスループット - Raspberry Pi のシナリオ
+## スケールごとの ASA のスループット - Raspberry Pi のシナリオ ##
 
 
 複数のストリーミング ユニット間での処理スループットを考察する標準的なシナリオで、ASA がどのようにスケールするかを理解するために、ここでセンサー データ (クライアント) を Event Hub に送信し、ASA がそのデータを処理して、別の Event Hub に出力としてアラートまたは統計を送信するというテストをします。
 
-クライアントは ASA 向けの合成されたセンサー データを  JSON 形式で Event Hubs に送信し、ASA からのデータ出力も JSON 形式とします。サンプル データは次のようになります。
+クライアントは ASA 向けの合成されたセンサー データを JSON 形式で Event Hubs に送信し、ASA からのデータ出力も JSON 形式とします。サンプル データは次のようになります。
 
     {"devicetime":"2014-12-11T02:24:56.8850110Z","hmdt":42.7,"temp":72.6,"prss":98187.75,"lght":0.38,"dspl":"R-PI Olivier's Office"}
 
@@ -220,11 +227,11 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
-## 問い合わせ
+## 問い合わせ ##
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 
-## 次のステップ
+## 次のステップ ##
 
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 - [Azure Stream Analytics の使用](stream-analytics-get-started.md)
@@ -238,6 +245,7 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 [img.stream.analytics.monitor.job]: ./media/stream-analytics-scale-jobs/StreamAnalytics.job.monitor.png
 [img.stream.analytics.configure.scale]: ./media/stream-analytics-scale-jobs/StreamAnalytics.configure.scale.png
 [img.stream.analytics.perfgraph]: ./media/stream-analytics-scale-jobs/perf.png
+[img.stream.analytics.streaming.units.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsStreamingUnitsExample.jpg
 
 <!--Link references-->
 
@@ -246,10 +254,10 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 [azure.event.hubs.developer.guide]: http://msdn.microsoft.com/library/azure/dn789972.aspx
 
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
-[stream.analytics.limitations]: ../stream-analytics-limitations.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

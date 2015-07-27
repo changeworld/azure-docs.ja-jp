@@ -1,13 +1,11 @@
 <properties
-	urlDisplayName="How to connect to an Azure SQL database using SSMS"
-	pageTitle="SSMS を使用して Azure SQL Database に接続する方法" metaKeywords=""
+	pageTitle="SSMS を使用して Azure SQL Database に接続する方法" 
 	description="SSMS を使用して Azure SQL Database に接続する方法について説明します。"
-	metaCanonical=""
 	services="sql-database"
 	documentationCenter=""
-	title="How to connect to an Azure SQL database using SSMS"
-	authors="sidneyh" solutions=""
-	manager="jhubbard" editor="" />
+	authors="sidneyh" 
+	manager="jhubbard" 
+	editor="" />
 
 <tags
 	ms.service="sql-database"
@@ -15,17 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="04/02/2015"
+	ms.date="06/25/2015"
 	ms.author="sidneyh" />
 
-# SSMS を使用して Azure SQL Database に接続する方法
+# SQL Server Management Studio を使用した SQL Database への接続方法
 
-これらは、SQL Server Management Studio を使用して、Microsoft Azure SQL Database に接続する手順です。
+これらは、SQL Server Management Studio (SSMS) を使用して、Microsoft Azure SQL Database に接続する手順です。
 
 ## 前提条件
 * Azure SQL Database のプロビジョニングと実行。新しい SQL Database を作成するには、「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」をご覧ください。
 * SQL Database の管理者の名前とパスワードを入力します。
 * SQL Server Management Studio 2014。ツールを入手するには、「[SQL Express のダウンロード](http://www.hanselman.com/blog/DownloadSQLServerExpress.aspx)」をご覧ください。
+* データベースのファイアウォール設定を構成します。「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## SQL Database のインスタンスに接続するには
 1. [Azure 管理ポータル](https://portal.azure.com)にログインします。
@@ -63,4 +62,4 @@ Transact-SQL ステートメントを使用してデータベースを作成、�
 [5]: ./media/sql-database-connect-to-database/ssms-master.png
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

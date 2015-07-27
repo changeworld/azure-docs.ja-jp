@@ -1,9 +1,9 @@
 
 <properties
     pageTitle="アプリにアクセスする"
-    description="RemoteApp にサポートされているクライアントとアプリへのアクセス方法について説明します。"
+    description="Azure RemoteApp にサポートされているクライアントとアプリへのアクセス方法について説明します。"
     services="remoteapp"
-    solutions="" documentationCenter=""
+	documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/27/2015"
+    ms.date="06/30/2015"
     ms.author="elizapo" />
 
 
 
-# アプリにアクセスする
+# Azure RemoteApp でのアプリへのアクセス
 
-RemoteApp の優れた点の 1 つは、どのデバイスからでも発行されたアプリにアクセスできることです。さらに、1 つのデバイスで作業を開始し、2 つ目のデバイスにシームレスに移行し、中断した箇所から作業を再開できます。開始するには、デバイスの適切なクライアントをダウンロードして、サービスにサインインする必要があります。
+Azure RemoteApp の優れた点の 1 つは、どのデバイスからでも発行されたアプリにアクセスできることです。さらに、1 つのデバイスで作業を開始し、2 つ目のデバイスにシームレスに移行し、中断した箇所から作業を再開できます。開始するには、デバイスの適切なクライアントをダウンロードして、サービスにサインインする必要があります。
 
 このトピックでは、現在サポートされているクライアントの一覧とダウンロードする方法を確認してから、各クライアントから RemoteApp へサインインする方法を説明します。
 
@@ -66,7 +66,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 ![サインインのプロンプト](./media/remoteapp-clients/Android2.png)
 
-3. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したプロセスが開始されます。
+3. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したサインイン プロセスが開始されます。
 
 ![Azure Active Directory の最初のページ](./media/remoteapp-clients/Android3.png)
 
@@ -78,7 +78,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 ![フィードによる接続センター](./media/remoteapp-clients/Android5.png)
 
-6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**「無料評価版を試す」** をタップします。
+6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
 
 ![デモ フィードのプロンプト](./media/remoteapp-clients/Android6.png)
 
@@ -106,7 +106,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 ![フィードによる接続センター](./media/remoteapp-clients/IOS4.png)
 
-5. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**「無料評価版を試す」** をタップします。
+5. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
 
 ![デモ フィードのプロンプト](./media/remoteapp-clients/IOS5.png)
 
@@ -126,7 +126,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 ![サインインのプロンプト](./media/remoteapp-clients/Mac2.png)
 
-3. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したプロセスが開始されます。
+3. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したサインイン プロセスが開始されます。
 
 ![Azure Active Directory の最初のページ](./media/remoteapp-clients/Mac3.png)
 
@@ -138,7 +138,7 @@ Google Play ストアから、Microsoft リモート デスクトップ アプ�
 
 ![フィードによる接続センター](./media/remoteapp-clients/Mac5.png)
 
-6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**「Go to free trial」** をタップします。
+6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
 
 ![デモ フィードのプロンプト](./media/remoteapp-clients/Mac6.png)
 
@@ -186,7 +186,7 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 
 ![サインインのプロンプト](./media/remoteapp-clients/WinPhone3.png)
 
-4. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したプロセスが開始されます。
+4. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したサインイン プロセスが開始されます。
 
 ![Azure Active Directory の最初のページ](./media/remoteapp-clients/WinPhone4.png)
 
@@ -205,5 +205,6 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 8. これで基本的なアプリのセットにアクセスし、RemoteApp を開始できます。
 
 ![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO2-->

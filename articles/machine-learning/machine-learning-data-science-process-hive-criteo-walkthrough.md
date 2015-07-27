@@ -1,9 +1,7 @@
 <properties 
 	pageTitle="Advanced Analytics Process and Technology の活用: 1 TB Criteo データセットで Hadoop クラスターを使用する | Microsoft Azure" 
 	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Adva nced Analytics Process and Technology (ADAPT) を使用し、大量の (1 TB) 公開されている使用可能なデータセットを使用してモデルを構築してデプロイします。" 
-	metaKeywords="" 
 	services="machine-learning,hdinsight" 
-	solutions="" 
 	documentationCenter="" 
 	authors="bradsev" 
 	manager="paulettm" 
@@ -648,4 +646,4 @@ Web サービス用の 2 つのリンクが左側に表示されます。
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

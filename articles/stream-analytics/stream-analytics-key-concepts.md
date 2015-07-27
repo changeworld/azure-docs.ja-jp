@@ -1,7 +1,6 @@
 <properties 
 	pageTitle="Stream Analytics の主要概念の説明 |Microsoft Azure" 
 	description="Azure Stream Analytics の主要な概念に関する詳細情報: サポートされる入出力、ジョブ構成の詳細、メトリックなど、Stream Analytics ジョブのコンポーネント。" 
-	keywords="event processing,data stream,key concepts,serialization"	
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -14,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="06/16/2015" 
+	ms.date="07/01/2015" 
 	ms.author="jeffstok" />
 
 
@@ -32,7 +31,7 @@ Stream Analytics では、次のことが可能です。
 
 詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」を参照してください。
 
-Stream Analytics ジョブには、次のすべてが含まれています。* 1 つまたは複数の入力ソース * 着信データ ストリームに対するクエリ * 出力ターゲット。
+Stream Analytics ジョブには、次のすべてが含まれています。- 1 つまたは複数の入力ソース - 着信データ ストリームに対するクエリ - 出力ターゲット。
 
 
 ## 入力
@@ -139,10 +138,14 @@ Stream Analytics は、参照データという 2 次タイプの入力ソース
 - Azure テーブル ストレージ - Azure テーブル ストレージは、スキーマに対する制約が少ない構造化データ ストアです。スキーマと型が異なるエンティティも、同じ Azure テーブルに格納できます。Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。詳細については、「[Microsft Azure Storage の概要](../storage/storage-introduction.md)」と「[Azure テーブル ストレージのスケーラブルなパーティション分割方法の設計](https://msdn.microsoft.com/library/azure/hh508997.aspx)」を参照してください。
 - Azure SQL データベース - この出力ターゲットは、実質的にリレーショナルであるデータや、データベースでホストされているコンテンツに依存するアプリケーションに適しています。
 
+## ストリーミング ユニット数 ##
+顧客のパフォーマンス体験をより予測可能なものにするための一環として、Azure Stream Analytics はジョブを実行するためのリソースとパワーを表すために、ストリーミング ユニット (SU) を使用します。SU は、CPU、メモリ、および読み取りと書き込みのレートを組み合わせた測定に基づいて、相対的なイベントの処理能力を記述する方法を提供します。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。各 Azure Stream Analytics ジョブには最低 1 つのストリーミング ユニットが必要です。また、すべてのジョブに既定で 1 つが設定されています。ジョブに対して適切な数の SU を選択する方法の詳細については、「[Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
 
 ## ジョブの規模の設定
 
-Stream Analytics ジョブは、ジョブが受信するデータの処理能力の大きさを定義するストリーミング ユニットを構成することで拡張できます。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。各サブスクリプションには、そのリージョン内のジョブ間で割り当てられた、リージョンあたり 12 のストリーミング ユニットのクォータがあります。
+次に定義される SU % 使用率のメトリックは、Azure Stream Analytics ジョブをスケーリングする必要があるかどうかのインジケーターです。SU % 使用率が高い場合は、クエリ ウィンドウが大きい、入力に大規模なイベントがある、大規模な順不同許容範囲ウィンドウ、またはそれらの組み合わせの結果である場合があります。クエリをパーティション分割、またはより多くのステップにクエリーを分解すること、および [スケール] タブからより多くの SU を追加することは、いずれもこのような状況を回避する方法です。
+
+入力イベントがなくても、システムは一定量のリソースを消費するため、ベースラインのリソース使用率がわかります。システムによって消費されるリソースの量も、時間の経過と共に変動します。
 
 詳細については、「[Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
 
@@ -156,9 +159,9 @@ Stream Analytics ジョブは、ジョブが受信するデータの処理能力
 ### メトリック
 次のメトリックは、Stream Analytics の使用状況とジョブのパフォーマンスの監視に利用できます。
 
+- SU % 使用率 - クエリのステップの 1 つ以上の相対的なイベント処理能力を示すインジケーター。このインジケーターが 80% 以上に達した場合、イベントの処理が遅れたり、進行が遅延または停止する可能性があります。
 - エラー - Stream Analytics のジョブから発生したエラー メッセージの数。
-- 入力イベント - Stream Analytics のジョブが受信したデータの 
-- イベント数単位の量。
+- 入力イベント - Stream Analytics のジョブが受信したデータのイベント数単位の量。
 - 出力イベント - Stream Analytics のジョブから出力ターゲットに送信されたデータのイベント数単位の量。
 - 順不同イベント - 順不同ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。
 - データ変換エラー - Stream Analytics のジョブによって発生した、データ変換エラーの数。
@@ -203,4 +206,4 @@ Stream Analytics の主要概念を理解できたら、以下を試してみて
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO2-->

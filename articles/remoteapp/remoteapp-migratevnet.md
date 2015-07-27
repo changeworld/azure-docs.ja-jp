@@ -2,7 +2,6 @@
     pageTitle="RemoteApp VNET から Azure VNET に移行する方法"
     description="RemoteApp VNET から Azure VNET に移行する方法の詳細" 
     services="remoteapp" 
-    solutions="" 
 	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
@@ -13,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/23/2015" 
+    ms.date="05/28/2015" 
     ms.author="elizapo" />
 
 
@@ -27,7 +26,7 @@
 
 1.	[[管理ポータル]](http://manage.windowsazure.com/) の **[Networks]** タブで、*RemoteAppVNET* に使用しているのと同じ場所、DNS 構成、およびアドレス空間を使用して (*AzureVNET* サブネット用に少なくとも 1 つ)、*AzureVNET* という名前の VNET を作成します。
 2.	*AzureVNET* を構成し、*OriginalCollection* の参加先ドメインになっている Active Directory デプロイメントをホストするか、これにネットワーク接続するようにします。
-3.	**[Remoteapp]** タブで、*New Collection* という名前の RemoteApp コレクションを新規に作成します。(**[VPN で作成]** オプションを使用し、**[簡易作成]** オプションは使用しないでください。)
+3.	**[Remoteapp]** タブで、*New Collection* という名前の RemoteApp コレクションを新規に作成します。(**[VNet で作成]** オプションを使用し、**[簡易作成]** オプションは使用しないでください。)
 3.	*NewCollection* が *AzureVNET* のサブネットにデプロイされるように構成します。
 4.	*NewCollection* が *OriginalCollection* に使用したのと同じイメージとドメイン参加情報を使用するように構成します。
 5.	数時間後にはアクティブな状態の *NewCollection* がコレクション リストに表示されます。
@@ -49,6 +48,6 @@
 これで完了です。
 
 ご質問がある場合、または特別なサポートが必要な場合は、[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help) に電子メールをお送りください。
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->

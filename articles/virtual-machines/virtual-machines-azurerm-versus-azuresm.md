@@ -5,7 +5,8 @@
    documentationCenter="dev-center-name"
    authors="mahthi"
    manager="coreysa"
-   editor=""/>
+   editor=""
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
@@ -107,6 +108,6 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 **新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線に接続することはできますか。**
 
 現時点ではサポートされません。新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線と接続することはできません。これは、後でサポートされます。
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO2-->
