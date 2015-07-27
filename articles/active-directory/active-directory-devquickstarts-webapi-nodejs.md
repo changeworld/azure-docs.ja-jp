@@ -847,7 +847,7 @@ var server = restify.createServer({
     formatters: {
         'application/json': function(req, res, body){
             if(req.params.callback){
-                var callbackFunctionName = req.params.callback.replace(/[^A-Za-z0-9_.]/g, '');
+                var callbackFunctionName = req.params.callback.replace(/[^A-Za-z0-9_\.]/g, '');
                 return callbackFunctionName + "(" + JSON.stringify(body) + ");";
             } else {
                 return JSON.stringify(body);
@@ -1178,4 +1178,4 @@ ADAL に関連するさらに高度な手順に興味がある場合は、学習
 [ADAL for .Net](http://msdn.microsoft.com/library/windowsazure/jj573266.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

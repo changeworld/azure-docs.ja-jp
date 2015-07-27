@@ -18,4 +18,4 @@ Traffic Manager に到着したトラフィックは、構成された負荷分�
 
 > [AZURE.NOTE]いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (**contoso.com** など) ではなく、サブドメイン (**www.contoso.com** など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、<a href="http://en.wikipedia.org/wiki/CNAME_record">CNAME レコードに関するウィキペディアの項目</a>、または <a href="http://tools.ietf.org/html/rfc1035">IETF ドメイン名 - 実装と仕様書</a>を参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -1,6 +1,6 @@
 新しい Todo 項目が挿入された場合に SAS を生成する、新しい挿入スクリプトが登録されます。
 
-0. まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)]」を参照してください。
+0. まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)](../storage/storage-create-storage-account.md)」を参照してください。
 
 1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
@@ -16,6 +16,8 @@
 	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png)
 
 	ストレージ アカウントのアクセス キーは暗号化された状態でアプリケーション設定に保存されます。このキーには、実行時にどのサーバー スクリプトからでもアクセスできます。詳細については、「[アプリ設定]」を参照してください。
+
+4. [構成] タブで、[動的スキーマ](http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7)が有効であることを確認します。TodoItem テーブルに新しい列を追加するには、動的スキーマが有効になっている必要があります。運用環境のサービスでは、動的スキーマを有効にしないでください。
 
 4. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
@@ -76,7 +78,9 @@
 
    	この操作により、TodoItem テーブルで挿入が発生したときに呼び出される関数が、新しいスクリプトに置き換わります。この新しいスクリプトは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の `sasQueryString` プロパティに割り当てます。`imageUri` プロパティに新しい BLOB のリソース パスが設定され、クライアント UI でのバインド中にイメージを表示できるようになります。
 
-	>[AZURE.NOTE]このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature メソッド</a>を呼び出すことができます。次に例を示します。<pre><code>blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);</code></pre>
+	>[AZURE.NOTE]このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って [generateSharedAccessSignature メソッド](http://go.microsoft.com/fwlink/?LinkId=390455)</a>を呼び出すことができます。次に例を示します。
+	>                 
+	>     blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);
 
 次に、挿入時に生成される SAS を使用してイメージ アップロード機能を追加する、クイック スタート アプリケーションを更新します。
  
@@ -85,7 +89,6 @@
 <!-- Images. -->
 
 <!-- URLs. -->
-[How To Create a Storage Account (ストレージ アカウントの作成方法)]: /manage/services/storage/how-to-create-a-storage-account
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

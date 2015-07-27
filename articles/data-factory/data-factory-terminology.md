@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="07/07/2015" 
 	ms.author="spelluru"/>
 
 #Azure Data Factory - 用語
@@ -113,4 +113,4 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

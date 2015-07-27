@@ -3,7 +3,6 @@
 	description="Mobile Services を使用してデータをテーブル ストレージに格納する方法を説明します。" 
 	documentationCenter="" 
 	authors="ysxu" 
-	writer="yuaxu" 
 	services="mobile-services" 
 	manager="dwrede" 
 	editor=""/>
@@ -24,4 +23,4 @@ Chris Risner のチュートリアル「[Mobile Services と Microsoft Azure Sto
 [Mobile Services と Microsoft Azure Storage]: http://chrisrisner.com/Mobile-Services-and-Windows-Azure-Storage
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -210,4 +210,4 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

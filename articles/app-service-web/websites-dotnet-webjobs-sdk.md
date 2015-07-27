@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/03/2015" 
+	ms.date="06/29/2015" 
 	ms.author="tdykstra"/>
 
 # Azure Web ジョブ SDK とは
@@ -22,7 +22,7 @@
 
 この記事では、Web ジョブ SDK の特徴を紹介すると共に、一般的な用途を確認し、コードでの使い方の概要を示します。
 
-[WebJobs](web-sites-create-web-jobs.md) は、同じコンテキストのプログラムやスクリプトを Web アプリとして実行することができる Azure App Service の機能です。Web ジョブ SDK の目的は、Web ジョブとして実行され、Azure Storage のキュー、BLOB、テーブルや、Service Bus キューと組み合わせて動作するコードを記述するタスクを簡素化することです。
+[WebJobs](websites-webjobs-resources.md) は、同じコンテキストのプログラムやスクリプトを Web アプリとして実行することができる Azure App Service の機能です。Web ジョブ SDK の目的は、Web ジョブとして実行され、Azure Storage のキュー、BLOB、テーブルや、Service Bus キューと組み合わせて動作するコードを記述するタスクを簡素化することです。
 
 Web ジョブ SDK には次のコンポーネントが含まれています。
 
@@ -105,4 +105,4 @@ Azure Storage のキュー、テーブル、BLOB や、Service Bus キューを�
 Web ジョブ SDK の詳細については、「[Azure WebJobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

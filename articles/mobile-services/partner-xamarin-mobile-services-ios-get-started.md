@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/16/2015"
+	ms.date="07/09/2015"
 	ms.author="craig.dunn@xamarin.com"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -98,6 +98,8 @@
 ## 次のステップ
 クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
+* [データの使用]<br/>モバイル サービスに新しいテーブルを追加して、そのテーブルから読み書きする方法を学習します。
+
 * [オフライン データの同期の使用]<br/>クイックスタートでオフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
 
 * [認証の使用] <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
@@ -122,15 +124,14 @@
 
 
 <!-- URLs. -->
-[Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[オフライン データの同期の使用]: /develop/mobile/tutorials/mobile-services-xamarin-ios-get-started-offline-data
-[認証の使用]: /develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-xamarin-ios
+[データの使用]: partner-xamarin-mobile-services-ios-get-started-data.md
+[オフライン データの同期の使用]: mobile-services-xamarin-ios-get-started-offline-data.md
+[認証の使用]: partner-xamarin-mobile-services-ios-get-started-users.md
+[プッシュ通知の使用]: partner-xamarin-mobile-services-ios-get-started-push.md
 
 [Xamarin Studio]: http://xamarin.com/download
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [Management Portal]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -86,4 +86,4 @@ Azure Marketplace から Jetty を使用して構築した Web アプリは次�
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="07/10/2015" 
 	ms.author="garye"/>
 
 
@@ -40,6 +40,6 @@ Web サービスとして役に立つためには、ユーザーが Web サー�
 
 API ヘルプ ページには、R、C#、Python の各プログラミング言語に対応したサンプルがあります。
 
-<!-- Add link to Derrick's articles on web services -->
+これらの Web サービスにアクセスして使用する方法の詳細については、「[Machine Learning の実験から発行された Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -67,7 +67,7 @@ Automation の接続資産には、Runbook から外部サービスまたはア�
 
 ### Windows PowerShell で新しい接続を作成するには
 
-Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com/library/dn921825.aspx) コマンドレットを使用して新しい接続を作成します。このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している[ハッシュ テーブル](http://technet.microsoft.com/ja-jp/library/hh847780.aspx)を受け取る **ConnectionFieldValues** という名前のパラメーターがあります。
+Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com/library/dn921825.aspx) コマンドレットを使用して新しい接続を作成します。このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している[ハッシュ テーブル](http://technet.microsoft.com/library/hh847780.aspx)を受け取る **ConnectionFieldValues** という名前のパラメーターがあります。
 
 
 次のサンプル コマンドでは、テキスト メッセージを送受信できるテレフォニー サービスである [Twilio](http://www.twilio.com) に対する新しい接続を作成します。Twilio 接続種類を含むサンプルの統合モジュールは、[スクリプト センター](http://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8)で入手できます。この接続の種類では、Twilio への接続時のアカウント検証に必要なアカウント SID と承認トークンのプロパティが定義されています。このサンプル コードが動作するには、[このモジュールをダウンロード](http://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8)して、オートメーション アカウントにインストールする必要があります。
@@ -120,4 +120,4 @@ Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

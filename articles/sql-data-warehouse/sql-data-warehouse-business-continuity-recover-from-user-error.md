@@ -120,4 +120,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

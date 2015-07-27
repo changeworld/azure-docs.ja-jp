@@ -58,7 +58,7 @@ IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定�
 
 ### アイドル タイムアウトの構成を取得します。
 
-    PS C:\> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
+    PS C:> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
     
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -152,4 +152,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     </LoadBalancedEndpointList>
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -115,4 +115,4 @@ Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ�
 [Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
 [クロスプラットフォーム プッシュ通知の送信]: app-service-mobile-dotnet-backend-xamarin-ios-push-notifications-to-user-preview.md
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

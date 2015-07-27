@@ -48,4 +48,4 @@ Premium コネクタによって、企業と SAP、Oracle、DB2、Informix、Web
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

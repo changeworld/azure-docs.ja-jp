@@ -74,7 +74,7 @@ Swashbuckle は、コントローラー名とメソッド名を連結するこ�
 		    }
 		}
 
-2. *App_Start\SwaggerConfig.cs* ファイルで、`OperationFilter` メソッドを呼び出し、Swashbuckle が `IOperationFilter` の新しい実装を使うようにします。
+2. *App_Start\\SwaggerConfig.cs* ファイルで、`OperationFilter` メソッドを呼び出し、Swashbuckle が `IOperationFilter` の新しい実装を使うようにします。
 
 		c.OperationFilter<MultipleOperationsWithSameVerbFilter>();
 
@@ -250,4 +250,4 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 この記事では Swashbuckle により操作 ID と有効な応答コードを生成する方法のカスタマイズについて説明しました。詳細については、[GitHub の Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) をご覧ください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

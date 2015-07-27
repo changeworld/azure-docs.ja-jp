@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2015" 
+	ms.date="07/14/2015" 
 	ms.author="mandia"/>
 
 
@@ -99,6 +99,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 	- プライマリ内部設置型接続文字列が使用されるように、内部設置型リソースが自動的に構成されます。
 
 - Hybrid Connection Manager は、承認のために有効な内部設置型文字列を使用する必要があります。Azure Web アプリまたはモバイル アプリは、承認のために有効なアプリケーション接続文字列を使用する必要があります。
+- Hybrid Connection Manager の別のインスタンスを別のサーバーにインストールすることにより、ハイブリッド接続を拡張できます。最初の内部設置型リスナーと同じアドレスを使用するように、内部設置型リスナーを構成します。この状況では、トラフィックは複数のアクティブな内部設置型リスナーにランダムに分散されます (ラウンド ロビン方式)。 
 
 
 ## <a name="ManageHybridConnection"></a>ハイブリッド接続の管理
@@ -123,8 +124,8 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 2. ファイルを解凍します。
 3. グループ ポリシーを変更するコンピューターで、以下の手順を実行します。 
 
-	- .ADMX ファイルを *%WINROOT%\PolicyDefinitions* フォルダーにコピーします。
-	- .ADML ファイルを *%WINROOT%\PolicyDefinitions\ja-jp* フォルダーにコピーします。
+	- .ADMX ファイルを *%WINROOT%\\PolicyDefinitions* フォルダーにコピーします。
+	- .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-jp* フォルダーにコピーします。
 
 コピーが終了すると、グループ ポリシー エディターを使用してポリシーを変更できます。
 
@@ -145,4 +146,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

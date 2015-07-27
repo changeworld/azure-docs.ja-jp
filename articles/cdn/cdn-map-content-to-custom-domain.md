@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na" 
 	 ms.devlang="na" 
 	 ms.topic="article" 
-	 ms.date="03/05/2015" 
+	 ms.date="07/07/2015" 
 	 ms.author="mazha"/>
 
 #Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法
@@ -83,11 +83,11 @@
 
 		http://www.mydomain.com/cdn/mycloudservice
 
-#関連項目
+##関連項目
 
 
-[Azure の Content Delivery Network (CDN) を有効にする方法](./cdn-create-new-endpoint.md) **Azure CDN の概要**
+[Azure の Content Delivery Network (CDN) を有効にする方法](./cdn-create-new-endpoint.md)
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -50,4 +50,4 @@ Azure AD を管理する方法、 ディレクトリの取得方法、 ディレ
 * [Azure ID](fundamentals-identity.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

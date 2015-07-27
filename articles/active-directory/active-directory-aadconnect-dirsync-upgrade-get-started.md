@@ -22,7 +22,8 @@
 
 ## Azure AD Connect のダウンロード
 
-Azure AD Connect の使用を開始するには、次を使用して、最新のバージョンをダウンロードすることができます。[Azure AD Connect パブリック プレビューのダウンロード](http://connect.microsoft.com/site1164/program8612)
+Azure AD Connect の使用を開始するには、[Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) のページから最新バージョンをダウンロードします。
+
 
 ## Azure AD Connect をインストールする前に
 Azure AD Connect をインストール、および DirSync からアップグレードする前に、いくつか必要な項目があります。
@@ -125,7 +126,7 @@ Azure AD Connect を新しいサーバーでインストールする場合、Dir
 1. Azure AD Connect インストーラー (MSI) を実行します。
 2. 「Azure AD Connect へようこそ」が表示されたら、ウィンドウの右上隅で、[X] をクリックして、ウィザードを終了します。
 3. コマンド プロンプトを開きます。
-4. Azure AD Connect のインストール場所から (既定: C:\Program files \microsoft Azure Active Directory の接続)、次のコマンドを実行します。
+4. Azure AD Connect のインストール場所から (既定: C:\\Program files \\microsoft Azure Active Directory の接続)、次のコマンドを実行します。
     * AzureADConnect.exe /migrate
 
 Azure AD Connects と、次の UI が表示されます。
@@ -205,4 +206,4 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

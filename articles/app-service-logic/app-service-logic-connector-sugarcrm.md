@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="SugarCRM コネクタ" 
-   description="SugarCRM コネクタの使用方法" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="anuragdalmia" 
-   manager="dwrede" 
+<properties
+   pageTitle="SugarCRM コネクタ"
+   description="SugarCRM コネクタの使用方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,9 +12,9 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="04/01/2015"
-   ms.author="vagarw"/>
+   ms.workload="integration"
+   ms.date="07/02/2015"
+   ms.author="sameerch"/>
 
 
 #Logic App で SugarCRM コネクタを使用する#
@@ -32,7 +32,7 @@
 
 ##SugarCRM コネクタのアクション##
 次に、SugarCRM コネクタで使用できるさまざまなアクションを示します。
- 
+
 - モジュールの作成 - このアクションを使用して、アカウント、潜在顧客、連絡先などの SugarCRM モジュールの新しいレコードを作成します。
 
 - モジュールの更新 - このアクションを使用して、SugarCRM モジュールの既存のレコードを更新します。
@@ -48,7 +48,7 @@
 - 重複するモジュールの確認 - このアクションを使用して、モジュール内で重複するレコードを確認します。
 
 *注*: クエリでサポートされている引数の詳細については、SugarCRM REST API のドキュメントをご覧ください。
-   
+
 ##SugarCRM コネクタの API App を作成する##
 1.	Azure ポータルの右下にある [+ 新規] オプションを使用して Azure Marketplace を開きます。
 2.	[Web + モバイル]、[API Apps] の順に移動し、“SugarCRM” を検索します。
@@ -154,7 +154,4 @@ SugarCRM にアカウントを作成し、このアカウントの請求先住�
 [8]: ./media/app-service-logic-connector-sugarcrm/8_Update_Account_Address.png
 [9]: ./media/app-service-logic-connector-sugarcrm/9_Create_new_SugarCRM_connector.png
 
-
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

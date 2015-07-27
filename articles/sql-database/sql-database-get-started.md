@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/14/2015"
+	ms.date="07/15/2015"
 	ms.author="genemi"/>
 
 
@@ -111,4 +111,4 @@
 [4]: ./media/sql-database-get-started/GettingStarted_FireWall.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

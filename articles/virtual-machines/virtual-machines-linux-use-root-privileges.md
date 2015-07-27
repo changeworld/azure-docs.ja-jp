@@ -54,4 +54,4 @@ SSH キー認証を使用して Linux 仮想マシンにログオンし、`sudo`
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

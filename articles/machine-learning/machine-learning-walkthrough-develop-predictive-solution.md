@@ -1,7 +1,6 @@
 <properties
 	pageTitle="信用リスク評価のための予測分析ソリューションを Machine Learning で開発する | Microsoft Azure"
 	description="信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する方法を詳しく紹介したチュートリアルです。"
-	keywords="credit risk, predictive analytics solution,risk assessment"	
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="04/22/2015"
+	ms.date="07/10/2015"
 	ms.author="garye"/>
 
 
@@ -42,4 +41,4 @@ Machine Learning Studio を開くには、[https://studio.azureml.net/Home](http
 このチュートリアルは、Machine Learning Studio に含まれる「[Credit risk prediction sample experiment (クレジット リスク予測のサンプル実験)](../machine-learning-sample-credit-risk-prediction.md)」の簡略版に基づきます。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

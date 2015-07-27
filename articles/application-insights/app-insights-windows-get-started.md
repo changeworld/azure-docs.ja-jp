@@ -35,7 +35,7 @@ Visual Studio Application Insights を使用すると、発行されたアプリ
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1.Application Insights リソースの作成 
+## 1\.Application Insights リソースの作成 
 
 [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
 
@@ -50,7 +50,7 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 ![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
 
 
-## 2.アプリへの Application Insights SDK の追加
+## 2\.アプリへの Application Insights SDK の追加
 
 Visual Studio で、適切な SDK をプロジェクトに追加します。
 
@@ -64,13 +64,33 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 
     ![](./media/app-insights-windows-get-started/04-ai-nuget.png)
 
-3. **.NET Windows アプリケーション用の Application Insights** を選択します。
+3. **Windows アプリケーション用の Application Insights** を選択する
 
-4. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
+4. ソリューションのルートに ApplicationInsights.config ファイルを追加し、上でコピーしたインストルメンテーション キーを挿入します。この構成ファイルのサンプル xml を次に示します。**ApplicationInsights.config ファイルのビルド アクションが [コンテンツ] に、[出力ディレクトリにコピー] が [常にコピーする] になっていることを確認します**。
 
-    `<InstrumentationKey>`*コピーしたキー*`</InstrumentationKey>`
+	```xml
+		<?xml version="1.0" encoding="utf-8" ?>
+		<ApplicationInsights>
+			<InstrumentationKey>YOUR COPIED KEY FROM ABOVE</InstrumentationKey>
+		</ApplicationInsights>
+	```
+	
+	![](./media/app-insights-windows-get-started/AIConfigFileSettings.png)
 
-**Windows ユニバーサル アプリ**: Phone プロジェクトとストア プロジェクトの両方に対して手順を繰り返します。
+5. 次の初期化コードを追加します。このコードを `App()` コンストラクターに追加することをお勧めします。アプリ コンストラクターでこの初期化を行わないと、pageviews の初期自動収集が行われない可能性があります。
+
+```C#
+	public App()
+	{
+	   // Add this initilization line. 
+	   WindowsAppInitializer.InitializeAsync();
+	
+	   this.InitializeComponent();
+	   this.Suspending += OnSuspending;
+	}  
+```
+
+**Windows ユニバーサル アプリ**: Phone プロジェクトとストア プロジェクトの両方に対して手順を繰り返します。[Windows 8.1 ユニバーサル アプリの例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal)。
 
 ## <a name="network"></a>3.アプリのネットワーク アクセスの有効化
 
@@ -85,6 +105,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 ![](./media/app-insights-windows-get-started/appinsights-09eventcount.png)
 
 デバッグ モードでは、テレメトリは生成されるとすぐに送信されます。リリース モードでは、テレメトリはデバイスに格納され、アプリケーションの再開時にのみ送信されます。
+
 
 ## <a name="monitor"></a>5.監視データの表示
 
@@ -105,6 +126,44 @@ Visual Studio で、受け取ったイベント数を確認できます。
 ## <a name="deploy"></a>5.ストアへのアプリケーションの発行
 
 [アプリケーションを発行](http://dev.windows.com/publish)して、ユーザーがそのアプリケーションをダウンロードして使用すると累積されるデータを確認します。
+
+## テレメトリのカスタマイズ
+
+#### コレクターの選択
+
+Application Insights SDK には、さまざまな種類のデータをアプリから自動的に収集する、複数のコレクターが用意されています。既定では、これらはすべてアクティブです。ただし、アプリ コンストラクターでどのコレクターを初期化するかを選択することができます。
+
+    WindowsAppInitializer.InitializeAsync( "00000000-0000-0000-0000-000000000000",
+       WindowsCollectors.Metadata
+       | WindowsCollectors.PageView
+       | WindowsCollectors.Session 
+       | WindowsCollectors.UnhandledException);
+
+#### 独自のテレメトリ データを送信する
+
+[API][api] を使用して、イベント、メトリック、および診断データを Application Insights に送信します。概要:
+
+```C#
+
+ var tc = new TelemetryClient(); // Call once per thread
+
+ // Send a user action or goal:
+ tc.TrackEvent("Win Game");
+
+ // Send a metric:
+ tc.TrackMetric("Queue Length", q.Length);
+
+ // Provide properties by which you can filter events:
+ var properties = new Dictionary{"game", game.Name};
+
+ // Provide metrics associated with an event:
+ var measurements = new Dictionary{"score", game.score};
+
+ tc.TrackEvent("Win Game", properties, measurements);
+
+```
+
+詳細については、[カスタムのイベントとメトリック][api]に関する記事を参照してください。
 
 ## 次の手順
 
@@ -168,4 +227,4 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

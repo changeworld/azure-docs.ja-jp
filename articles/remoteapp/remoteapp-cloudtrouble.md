@@ -3,7 +3,7 @@
     pageTitle="RemoteApp クラウド コレクションの作成のトラブルシューティング"
     description="RemoteApp のクラウド コレクション作成でエラーが発生したときのトラブルシューティング方法について説明します。" 
     services="remoteapp" 
-    solutions="" documentationCenter="" 
+    documentationCenter="" 
     authors="vkbucha" 
     manager="mbaldwin" />
 
@@ -38,4 +38,4 @@ Azure 管理ポータルでの一般的なエラー:
 このエラーが表示される場合、通常は、次のようなことを意味します。有料アカウントにアップグレード済みであるのに、サービスの試用版モードでのみ有効な Microsoft 提供のイメージを使用している。この場合は、適切なイメージを指定して、クラウド コレクションを再度作成してみてください。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

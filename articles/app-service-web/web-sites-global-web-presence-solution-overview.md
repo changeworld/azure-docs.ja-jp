@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2015" 
+	ms.date="07/06/2015" 
 	ms.author="cephalin"/>
 
 
@@ -140,4 +140,4 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

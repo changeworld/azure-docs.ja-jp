@@ -1,28 +1,28 @@
-<properties 
-	pageTitle="Microsoft Azure ポータルでのロールベースのアクセス制御" 
-	description="ロール ベースのアクセス制御のしくみとその設定方法について説明します。" 
-	services="" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="terrylan" 
+<properties
+	pageTitle="Microsoft Azure ポータルでのロールベースのアクセス制御"
+	description="ロール ベースのアクセス制御のしくみとその設定方法について説明します。"
+	services=""
+	documentationCenter=""
+	authors="Justinha"
+	manager="terrylan"
 	editor=""/>
 
-<tags 
-	ms.service="multiple" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="Ibiza" 
-	ms.workload="infrastructure-services" 
-	ms.date="05/05/2015" 
+<tags
+	ms.service="multiple"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="Ibiza"
+	ms.workload="infrastructure-services"
+	ms.date="06/29/2015"
 	ms.author="justinha"/>
 
-# Microsoft Azure ポータルでのロールベースのアクセス制御 
+# Microsoft Azure ポータルでのロールベースのアクセス制御
 
 Microsoft Azure ポータルでのロールベースのアクセス制御 (RBAC) のサポートが追加されたので、組織がアクセス管理の要件を簡単かつ正確に満たせるようになりました。[ブログの記事](http://go.microsoft.com/fwlink/?LinkId=511576)に、機能が簡単に紹介されているので、すぐに使い始めることができます。このトピックでは、概念について詳しく説明し、追加の使用事例も記載しています。
 
 
 ## Azure での RBAC
-                                                                   
+
 各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Microsoft Azure 管理ポータルか Azure リソース マネージャーの API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。
 
 ![][1]
@@ -43,7 +43,7 @@ Azure AD のユーザーやサービスにアクセス権を付与するには�
 
 + **ユーザー**: Azure サブスクリプションが関連付けられている Azure AD 内の組織ユーザーにロールを割り当てることができます。Azure ポータルで招待アクションを使ってユーザーにロールを割り当てることにより、外部 Microsoft アカウント ユーザー (joe@outlook.com など) にロールを割り当てることもできます。ロールを外部 Microsoft アカウント ユーザーに割り当てると、そのユーザーに関するゲスト アカウントが Azure AD 内に作成されます。ディレクトリ内でこのゲスト アカウントを無効にすると、外部ユーザーはアクセス権を付与されている Azure リソースへのアクセスが許可されなくなります。
 + **グループ**: Azure AD セキュリティ グループにロールを割り当てることができます。アクセス権を付与されたグループのメンバーになったユーザーには、リソースに対するアクセス権を自動的に付与されます。同様にユーザーがグループから削除されると、リソースに対するアクセス権が自動的に失われます。ロールを直接ユーザーに割り当てるより、ロールをグループに割り当て、そのグループにユーザーを追加して、グループ単位でアクセスを管理する方がベスト プラクティスです。Azure RBAC は配布リストへのロールの割り当てを許可しません。ロールをグループに割り当てる機能により、組織は既存のアクセス制御モデルをオンプレミスのディレクトリからクラウドへと拡張できるので、オンプレミスのアクセスを制御するために既に確立しているセキュリティ グループを再利用して Azure ポータル内のリソースに対するアクセスを制御できます。オンプレミスのディレクトリからユーザーやグループを同期化するさまざまなオプションの詳細については、「[ディレクトリ統合の概要](http://technet.microsoft.com/library/jj573653.aspx)」を参照してください。Azure AD Premium は、[委任されたグループ管理機能](http://msdn.microsoft.com/library/azure/dn641267.aspx)も提供しており、グループを作成して管理する機能を Azure AD から管理者以外のユーザーに委任できます。
-+ **サービス プリンシパル**: サービス ID はディレクトリ内でサービス プリンシパルとして表されます。サービス プリンシパルは Azure AD での認証を実施し、相互に安全に通信できます。Azure リソースに対するアクセス権をサービスに付与するには、Windows PowerShell 用の Azure モジュールで、そのサービスを表す Azure AD サービス プリンシパルにロールを割り当てます。 
++ **サービス プリンシパル**: サービス ID はディレクトリ内でサービス プリンシパルとして表されます。サービス プリンシパルは Azure AD での認証を実施し、相互に安全に通信できます。Azure リソースに対するアクセス権をサービスに付与するには、Windows PowerShell 用の Azure モジュールで、そのサービスを表す Azure AD サービス プリンシパルにロールを割り当てます。
 
 #### リソースのスコープ
 
@@ -73,7 +73,7 @@ Azure AD のユーザーやサービスにアクセス権を付与するには�
 
 アクセス要件と Azure でのセットアップ方法について以下に要約します。
 
-ユーザー/グループ | アクセス要件 | アクセスに関するロールとスコープ	
+ユーザー/グループ | アクセス要件 | アクセスに関するロールとスコープ
 ------------- | -------------  | ------------
 Jill Santos のチームの全員 | すべての Azure リソースの読み取り | Jill Santos のチームを表す AD グループを Azure サブスクリプションに関する閲覧者ロールに追加
 Jill Santos のチームの全員 | テスト リソース グループ内のすべてのリソースの作成と管理 | Jill Santos のチームを表す AD グループをテスト リソース グループに関する共同作業者ロールに追加
@@ -98,7 +98,7 @@ Brock を実働リソース グループの共同作業者ロールに追加す�
 
 Windows PowerShell 用の Microsoft Azure モジュールを使ってロールの割り当てを管理することもできます。ポータルではなく New-AzureRoleAssignment コマンドレットを使って Brock のアカウントを追加する例を以下に示します。
 
-	PS C:\> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
+	PS C:> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
 
 Windows PowerShell を使ったアクセス権の追加や削除の詳細については、「[Windows PowerShell を使用したロールベースのアクセス制御の管理](role-based-access-control-powershell.md)」を参照してください。
 
@@ -110,7 +110,7 @@ Windows PowerShell を使ったアクセス権の追加や削除の詳細につ�
 
 Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削除する方法の例を以下に示します。
 
-	PS C:\> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
+	PS C:> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
 
 ### 外部ユーザーに関するアクセス権の追加または削除
 
@@ -137,7 +137,296 @@ Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削�
 外部ユーザーを追加する際には、ディレクトリ内にゲストが作成されます。その後、このゲストをグループに追加したりグループから削除したりするか、または他のディレクトリ ユーザーと同様に個別にロールから追加したり削除したりできます。
 
 ユーザーを削除する場合と同様に、ゲストをロールから削除することもできます。ゲストをリソース上のロールから削除しても、そのゲストはディレクトリから削除されません。
- 
+
+## ロールの割り当ての変更を追跡する方法
+
+ロールの割り当ての変更は、他のイベントの場合と同様な[監査ログ](http://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/)に記録されます。ロールの割り当ての変更に関するログは、[Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx) または [Azure リソース マネージャーの REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx) を使用して取得できます。
+
+たとえば、サブスクリプション全体に対するロールの割り当ての変更の一覧を取得するには、Azure PowerShell で次の 2 つのコマンドレットを実行します。最初のコマンドレットによって、Azure リソース マネージャー モードに切り替わります。
+
+`Switch-AzureMode -name AzureResourceManager`
+
+`Get-AzureSubscriptionIdLog –DetailedOutput -StartTime '06-15-15' -EndTime '06-29-15'`
+
+ロールの割り当ての変更は、ResourceProviderName が `Microsoft.Authorization` であるイベントでキャプチャされます。どのようなプリンシパルがどのロールにどのようなスコープで割り当てられたかなど、割り当ての実際の詳細は、イベントの詳細でキャプチャされます。ロールの割り当ての変更は、ポータルで監査ログを参照したときに表示されますが、ポータルではイベントの詳細は表示されません。イベントの詳細を表示するには、Azure PowerShell を使用する必要があります。
+
+###イベントの詳細
+
+ロールの割り当ての変更に関するイベントの詳細の例を次に示します。
+
+```
+Authorization        :
+                       Scope     : /subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-W
+                       estUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes/providers/Microsoft.Authoriza
+                       tion/roleAssignments/531f036a-37ff-40c1-9bb9-aa580ebe7e78
+                       Action    : Microsoft.Authorization/roleAssignments/write
+                       Role      : Subscription Admin
+                       Condition :
+Caller               : William.Hennum@contoso.com
+Claims               :
+                       aud            : https://management.core.windows.net/
+                       iss            : https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/
+                       iat            : 1435333533
+                       nbf            : 1435333533
+                       exp            : 1435337433
+                       ver            : 1.0
+                       http://schemas.microsoft.com/identity/claims/tenantid: 72f988bf-86f1-41af-91ab-2d7cd011db47
+                       http://schemas.microsoft.com/identity/claims/objectidentifier:
+                       dda50086-5e3d-4a4b-b8bc-f54771104d89
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn: William.Hennum@contoso.com
+                       puid           : 10030000803CDC0B
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier:
+                       MJwntjqWaULfl30NJMiDRVSVCWMX5GzmMNU4oqitDXs
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: William
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: Hennum
+                       name           : William Hennum
+                       http://schemas.microsoft.com/claims/authnmethodsreferences: rsa,wia,mfa
+                       _claim_names   : {"groups":"src1"}
+                       _claim_sources : {"src1":{"endpoint":"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011
+                       db47/users/dda50086-5e3d-4a4b-b8bc-f54771104d89/getMemberObjects"}}
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: William.Hennum@contoso.com
+                       onprem_sid     : S-1-5-21-1721254763-462695806-1538882281-3175325
+                       appid          : c44b4083-3bb0-49c1-b47d-974e53cbdf3c
+                       appidacr       : 2
+                       http://schemas.microsoft.com/identity/claims/scope: user_impersonation
+                       http://schemas.microsoft.com/claims/authnclassreference: 1
+CorrelationId        : d724ffd0-31a4-4564-941b-f3a5d32ad8a4
+Description          :
+EventChannels        : Operation
+EventDataId          : ed8e79b6-c7d1-4332-adcf-70d37546c5a6
+EventName            : BeginRequest
+EventSource          : Administrative
+EventTimestamp       : 6/26/2015 3:53:34 PM
+HttpRequest          :
+                       ClientId        : F7272386-295A-4545-96BD-21F0856A43FE
+                       Method          : PUT
+                       Url             :
+                       ClientIpAddress : 23.99.81.159
+Id                   : /subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/provid
+                       ers/Microsoft.ClassicStorage/storageAccounts/authzwaes/providers/Microsoft.Authorization/roleAss
+                       ignments/531f036a-37ff-40c1-9bb9-aa580ebe7e78/events/ed8e79b6-c7d1-4332-adcf-70d37546c5a6/ticks/
+                       635709308140011864
+Level                : Informational
+OperationId          : d724ffd0-31a4-4564-941b-f3a5d32ad8a4
+OperationName        : Microsoft.Authorization/roleAssignments/write
+Properties           :
+                       requestbody    : {"Id":"531f036a-37ff-40c1-9bb9-aa580ebe7e78","Properties":{"PrincipalId":"dda50
+                       086-5e3d-4a4b-b8bc-f54771104d89","RoleDefinitionId":"/subscriptions/ff945b8d-441a-41ef-a9db-7bd5
+                       fcc99978/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7"
+                       ,"Scope":"/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-Wes
+                       tUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes"}}
+ResourceGroupName    : Default-Storage-WestUS
+ResourceProviderName : Microsoft.Authorization
+ResourceId           : /subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/provid
+                       ers/Microsoft.ClassicStorage/storageAccounts/authzwaes/providers/Microsoft.Authorization/roleAss
+                       ignments/531f036a-37ff-40c1-9bb9-aa580ebe7e78
+Status               : Started
+SubmissionTimestamp  : 6/26/2015 3:53:50 PM
+SubscriptionId       : ff945b8d-441a-41ef-a9db-7bd5fcc99978
+SubStatus            :`
+```
+
+イベントの各情報の意味は、次のとおりです。
+
+| フィールド | 値 | 詳細 |
+| --- | --- | --- |
+| Caller |	`William.Hennum@contoso.com` | ロールの割り当てを行ったプリンシパル。このプリンシパルは、ユーザー、グループ、またはサービス プリンシパルです。
+| HttpRequest: Method | `PUT` | 実行されたアクション。PUT は割り当てを許可し、DELETE は割り当てを削除します。 |
+| Properties: PrincipalId | `dda50086-5e3d-4a4b-b8bc-f54771104d89` | 	ロールに割り当てられたプリンシパルのオブジェクト ID。このプリンシパルは、ユーザー、グループ、またはサービス プリンシパルです。プリンシパルの名前と種類は、Azure PowerShell を使用して Azure Active Directory で確認できます。 |
+| Properties: RoleDefinitionId |	`/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7	` | 割り当てられたロール。Azure PowerShell を使用して、ロールの表示名を確認できます。 |
+| Properties: Scope | `/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes` |	ロールの割り当てが行われたリソース。これは、リソース、リソース グループ、またはサブスクリプションです。 |
+
+###PowerShell のコード スニペットのサンプル
+
+最初に、PrincipalId を名前と種類にマップする Azure PowerShell のサンプル コードを示します。
+
+```
+# Sample - how to resolve a principal
+function Get-PrincipalDetails($principalId)
+{
+    $principalDetails = "" | select Name, Type
+    $user = Get-AzureADUser -ObjectId $principalId
+    if ($user) {
+        $principalDetails.Name = $user.DisplayName
+        $principalDetails.Type = "User"
+    } else {
+        $group = Get-AzureADGroup -ObjectId $principalId
+        if ($group) {
+            $principalDetails.Name = $group.DisplayName
+            $principalDetails.Type = "Group"
+        } else {
+            $servicePrincipal = Get-AZureADServicePrincipal -objectId $principalId
+            if ($servicePrincipal) {
+                $principalDetails.Name = $servicePrincipal.DisplayName
+                $principalDetails.Type = "Service Principal"
+            }
+        }
+    }
+
+    $principalDetails
+}
+```
+
+次に、スコープをリソースの名前と種類にマップする Azure PowerShell のサンプル コードを示します。
+
+```
+# Sample - how to resolve a resource
+function Get-ResourceDetails($resourceId)
+{
+    $resourceDetails = "" | select Name, Type
+    $resource = Get-AzureResource -Id $resourceId -OutputObjectFormat New
+    if ($resource) {
+        if ($resource.ResourceName) {
+            $resourceDetails.Name = $resource.ResourceName
+            $resourceDetails.Type = "Resource"
+        } elseif ($resource.ResourceGroupName) {
+            $resourceDetails.Name = $resource.ResourceGroupName
+            $resourceDetails.Type = "Resource Group"
+        } elseif ($resource.SubscriptionId) {
+            $resourceDetails.Name = $resource.SubscriptionId
+            $resourceDetails.Type = "Subscription"
+        }
+    }
+    $resourceDetails
+}
+```
+次に、RoleDefinitionId をロールの表示名にマップする Azure PowerShell のサンプル コードを示します。
+
+```
+
+# Get the name of a role
+function Get-AzureRoleDefinitionName($roleDefinitionId)
+{
+    if (!$Global:_azureRoleDefinitionCache) {
+        $Global:_azureRoleDefinitionCache = @{}
+        Get-AzureRoleDefinition | % { $Global:_azureRoleDefinitionCache[$_.Id] = $_; }
+    }
+
+    if ($Global:_azureRoleDefinitionCache[$roleDefinitionId]) {
+        return $Global:_azureRoleDefinitionCache[$roleDefinitionId].Name
+    } else {
+        return ""
+    }
+}
+
+```
+
+###Azure PowerShell のサンプル スクリプト
+
+これらをまとめたものとして、指定した日付範囲内のロールの割り当てイベントを取得してテーブルとして出力するサンプル スクリプトを次に示します。
+
+```
+# Sample - how to resolve a principal
+function Get-PrincipalDetails($principalId)
+{
+    $principalDetails = "" | select Name, Type
+    $user = Get-AzureADUser -ObjectId $principalId
+    if ($user) {
+        $principalDetails.Name = $user.DisplayName
+        $principalDetails.Type = "User"
+    } else {
+        $group = Get-AzureADGroup -ObjectId $principalId
+        if ($group) {
+            $principalDetails.Name = $group.DisplayName
+            $principalDetails.Type = "Group"
+        } else {
+            $servicePrincipal = Get-AZureADServicePrincipal -objectId $principalId
+            if ($servicePrincipal) {
+                $principalDetails.Name = $servicePrincipal.DisplayName
+                $principalDetails.Type = "Service Principal"
+            }
+        }
+    }
+
+    $principalDetails
+}
+# Sample - how to resolve a resource
+function Get-ResourceDetails($resourceId)
+{
+    $resourceDetails = "" | select Name, Type
+    $resource = Get-AzureResource -Id $resourceId -OutputObjectFormat New
+    if ($resource) {
+        if ($resource.ResourceName) {
+            $resourceDetails.Name = $resource.ResourceName
+            $resourceDetails.Type = "Resource"
+        } elseif ($resource.ResourceGroupName) {
+            $resourceDetails.Name = $resource.ResourceGroupName
+            $resourceDetails.Type = "Resource Group"
+        } elseif ($resource.SubscriptionId) {
+            $resourceDetails.Name = $resource.SubscriptionId
+            $resourceDetails.Type = "Subscription"
+        }
+    }
+    $resourceDetails
+}
+# Get the name of a role
+function Get-AzureRoleDefinitionName($roleDefinitionId)
+{
+    if (!$Global:_azureRoleDefinitionCache) {
+        $Global:_azureRoleDefinitionCache = @{}
+        Get-AzureRoleDefinition | % { $Global:_azureRoleDefinitionCache[$_.Id] = $_; }
+    }
+
+    if ($Global:_azureRoleDefinitionCache[$roleDefinitionId]) {
+        return $Global:_azureRoleDefinitionCache[$roleDefinitionId].Name
+    } else {
+        return ""
+    }
+}
+# Sample - output the list of role assignment events
+function Get-AzureRBACAuditLog($startDateTime, $endDateTime)
+{
+    $log = Get-AzureSubscriptionIdLog -DetailedOutput -StartTime $startDateTime -EndTime $endDateTime
+    $log = $log | ? { $_.ResourceProviderName -ieq "Microsoft.Authorization" }
+    $startEvents = $log | ? { $_.httpRequest -and $_.Status -ieq "Started" }
+    $endEvents = @{}
+    $log | ? { $_.httpRequest -and $_.Status -ne "Started" } | % { $endEvents[$_.OperationId] = $_ }
+
+    $startEvents | ? { $endEvents.ContainsKey($_.OperationId) } | % {
+        $endEvent = $endEvents[$_.OperationId];
+        $out = "" | select Timestamp, Caller, Action, PrincipalId, PrincipalName, PrincipalType, RoleName, Scope, ScopeName, ScopeType, RoleDefinitionId
+        $out.Timestamp = $endEvent.EventTimestamp
+        $out.Caller = $_.Caller
+        if ($_.HttpRequest.Method -ieq "PUT") {
+            $out.Action = "Granted"
+            if ($_.Properties.Content.ContainsKey("requestbody")) {
+                $messageBody = ConvertFrom-Json $_.Properties.Content["requestbody"]
+            }
+        }
+        elseif ($_.HttpRequest.Method -ieq "DELETE") {
+            $out.Action = "Revoked"
+            if ($endEvent.Properties.Content.ContainsKey("responseBody")) {
+                $messageBody = ConvertFrom-Json $endEvent.Properties.Content["responseBody"]
+            }
+        }
+
+        if ($messageBody) {
+            $out.PrincipalId = $messageBody.properties.principalId
+            $pd = Get-PrincipalDetails $out.PrincipalId
+            $out.PrincipalName = $pd.Name
+            $out.PrincipalType = $pd.Type
+            $out.RoleName = (Get-AzureRoleDefinitionName $messageBody.properties.roleDefinitionId)
+            $out.Scope = $messageBody.properties.Scope
+            $rd = Get-ResourceDetails $out.Scope
+            $out.ScopeName = $rd.Name
+            $out.ScopeType = $rd.Type
+            $out.RoleDefinitionId = $messageBody.properties.roleDefinitionId
+        }
+
+        $out
+    }
+}
+
+```
+
+スクリプトを実行するコマンドを次に示します。
+
+```
+$log = Get-AzureRBACAuditLog '2015-06-26' '2015-06-27'
+
+$log | Format-Table
+```
+
 ## ロールベースのアクセス制御を使用する際の既知の問題
 
 ロールベースのアクセス制御機能の使用時に問題が発生した場合は、その問題に関連している可能性がある既知の問題について、[ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md)に関するページを参照してください。
@@ -150,7 +439,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 対応するリンクをクリックし、ロール定義の **actions** と **not actions** プロパティを確認します。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。ロール定義の **not actions** プロパティは、許可されているアクションから除外しなければならないアクションを指定します。
 
 
-ロール名 | 説明  	
+ロール名 | 説明
 ------------- | -------------  
 [API 管理サービスの共同作業者](#api-management-service-contributor) | アクセス権以外の API Management サービスを管理します。
 [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) | アクセス権以外の Application Insights コンポーネントを管理します。
@@ -1004,4 +1293,4 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

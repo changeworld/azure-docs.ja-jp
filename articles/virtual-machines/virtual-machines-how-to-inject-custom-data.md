@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management" />
 
 <tags
 	ms.service="virtual-machines"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2015"
+	ms.date="07/14/2015"
 	ms.author="rasquill"/>
 
 
@@ -27,11 +28,11 @@ Azure の仮想マシンをプロビジョニングしているときに、ス�
 
 - いくつかのシステムで利用できる特殊なツールを使用して、自動的にカスタム データを検出し、操作する。
 
-> [AZURE.NOTE]このトピックは、この機能に対する [Azure ブログへの投稿記事](http://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)をさらに詳しく説明するものです。新しい機能の登場によりこのトピックも更新されます。
+> [AZURE.NOTE]この記事では、Azure サービス管理コンピューティング スタックで作成されたカスタム データを、VM を使用して挿入する方法について説明します。Azure リソース管理コンピューティング スタックを使用する方法については、[こちらのサンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)を参照してください。
 
 ## Azure 仮想マシンにカスタム データを挿入する
 
-この機能は、現在、[Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat)でのみサポートされています。`azure vm create` コマンドのオプションはすべて使用できますが、以下の方法は、きわめて基本的な方法の 1 つです。
+この機能は、現在、[Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)でのみサポートされています。`azure vm create` コマンドのオプションはすべて使用できますが、以下の方法は、きわめて基本的な方法の 1 つです。
 
 ```
     PASSWORD='AcceptablePassword -- more than 8 chars, a cap, a num, a special'
@@ -79,4 +80,4 @@ Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから�
 [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat)
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

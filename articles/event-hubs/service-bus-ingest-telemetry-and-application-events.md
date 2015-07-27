@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/18/2015" 
+	ms.date="07/02/2015" 
 	ms.author="sethm"/>
 
 # 大規模な利用統計情報とアプリケーション イベントの取り込み
@@ -22,16 +22,18 @@
 
 
 ## 確認
-- [Event Hub](http://msdn.microsoft.com/library/dn789973.aspx)
+- [Event Hub](event-hubs-overview.md)
 - [Event Hub の料金詳細](http://azure.microsoft.com/pricing/details/event-hubs/)
+- [イベント ハブの可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)
 - [Event Sourcing Pattern](http://msdn.microsoft.com/library/dn589792.aspx)
  
 ## 構築
-- [Event Hubs REST API](https://msdn.microsoft.com/library/dn790674.aspx)
+- [Event Hubs REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790674.aspx)
 - [Event Hubs のコード サンプル](https://code.msdn.microsoft.com/windowsazure/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
  
 ## 関連サービス
 - [Azure ストレージ](http://azure.microsoft.com/documentation/services/storage/)
 - [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
+ 
 
-<!--HONumber=54--> 
+<!---HONumber=July15_HO3-->

@@ -107,4 +107,4 @@
 
 > [AZURE.NOTE]前のコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。一般に、アプリケーションではスループットが向上するようにメッセージを処理する必要があります。この環境、他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)」をご覧ください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

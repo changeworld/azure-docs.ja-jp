@@ -35,27 +35,9 @@
 
 ## API アプリ プロジェクトの作成
 
-1. Visual Studio 2013 を開きます。
+プロジェクトの名前を入力するよう要求されたら、「*ContactsList*」と入力します。
 
-2. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。
-
-3. **[ASP.NET Web アプリケーション]** テンプレートを選択します。
-
-4. **[Application Insights をプロジェクトに追加]** チェック ボックスがオフになっていることを確認します。
-
-4. プロジェクトに「*ContactsList*」という名前を付けます。
-
-	![](./media/app-service-dotnet-create-api-app/01-filenew-v3.png)
-
-5. **[OK]** をクリックします。
-
-6. **[新しい ASP.NET プロジェクト]** ダイアログで、**[Azure API アプリ]** プロジェクト テンプレートを選択します。
-
-	![](./media/app-service-dotnet-create-api-app/02-api-app-template-v3.png)
-
-7. **[OK]** をクリックしてプロジェクトを生成します。
-
-Visual Studio によって、API アプリとしてデプロイされるように構成された Web API プロジェクトが作成されます。
+[AZURE.INCLUDE [app-service-api-create](../../includes/app-service-api-create.md)]
 
 [AZURE.INCLUDE [app-service-api-review-metadata](../../includes/app-service-api-review-metadata.md)]
 
@@ -68,4 +50,4 @@ Visual Studio によって、API アプリとしてデプロイされるよう�
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

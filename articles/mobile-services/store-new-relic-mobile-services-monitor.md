@@ -3,7 +3,7 @@
 	description="New Relic アドオンを使用して、モバイル サービスを監視する方法について説明します。" 
 	documentationCenter="" 
 	authors="stepsic-microsoft-com" 
-	manager="carolz" 
+	manager="carolz"
 	editor="" 
 	services="mobile-services"/>
 
@@ -154,4 +154,4 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

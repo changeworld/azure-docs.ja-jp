@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="JoeDavies-MSFT" 
 	manager="timlt" 
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines" 
@@ -13,20 +14,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/11/2015" 
+	ms.date="07/09/2015" 
 	ms.author="josephd"/>
 
 # Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal](virtual-machines-linux-tutorial.md)
+- [Azure CLI](virtual-machines-linux-tutorial.md)
 - [PowerShell](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
-以下の手順では、Azure PowerShell コマンド セットのカスタマイズ方法を示します。このコマンド セットは構成ブロック手法を使用することにより、Linux ベースの Azure 仮想マシンを作成と事前構成します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイメントを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
+以下の手順では、一連の Azure PowerShell コマンドのカスタマイズ方法を示します。これらのコマンドは構成ブロック手法を使用することにより、Linux ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイメントを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
 
-これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
+これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、Azure PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。Azure PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-このトピックと対になっている、Windows ベースの仮想マシンの構成については、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
+このトピックと対になっている、Windows ベースの仮想マシンの構成については、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」を参照してください。
 
 ## 手順 1. Azure PowerShell をインストールする
 
@@ -257,8 +258,8 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
 
-[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
+[Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

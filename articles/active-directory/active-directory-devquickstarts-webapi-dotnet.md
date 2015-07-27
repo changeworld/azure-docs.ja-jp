@@ -141,4 +141,4 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

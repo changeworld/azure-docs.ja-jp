@@ -41,7 +41,7 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
 - [Node.js][] バージョン v0.10.29 以降
 - [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 - [Git][]
@@ -93,7 +93,7 @@
 
 	![package.json タブのスクリーン ショット](./media/documentdb-nodejs-application/image17.png)
 
-       これにより、アプリケーションがこれらの追加モジュールに依存していることが Node に (後で Azure にも) 通知されます。
+       これにより、アプリケーションがこれらの追加モジュールに依存していることが Node に (後で Azure にも) 通知されます。
 
 ## <a name="_Toc395783180"></a>手順 4: ノード アプリケーションでの DocumentDB サービスの使用
 
@@ -176,8 +176,7 @@
 				
 		module.exports = DocDBUtils;
 
-> [AZURE.TIP]createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。
-> DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> [AZURE.TIP]createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 		
 3. **docdbUtils.js** ファイルを保存して閉じます。
 
@@ -390,7 +389,7 @@
 		
 		module.exports = config;
 
-3. [Microsoft Azure ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH_KEY の値を更新します。
+3. [Microsoft Azure プレビュー ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH_KEY の値を更新します。
 
 4. **config.js** ファイルを保存して閉じます。
  
@@ -424,7 +423,7 @@
 		app.post('/completetask', taskList.completeTask.bind(taskList));
 
 
-6. これらの行は、**TaskDao** オブジェクトの新しいインスタンスを DocumentDB への新しい接続によって定義し (**config.js** から読み取った値を使用して)、タスク オブジェクトを初期化して、その後フォーム アクションを **TaskList** コントローラー上のメソッドにバインドします。 
+6. これらの行は、**TaskDao** オブジェクトの新しいインスタンスを DocumentDB への新しい接続によって定義し (**config.js** から読み取った値を使用して)、タスク オブジェクトを初期化して、その後フォーム アクションを **TaskList** コントローラー上のメソッドにバインドします。
 
 7. 最後に、**app.js** ファイルを保存して閉じると、これでほぼ完了です。
  
@@ -451,8 +450,7 @@
 
 
 
-	このコードでは、アプリケーション用に HTML を描画するよう **Jade** エンジンに効果的な指示を与え、**content** という名前の **ブロック** を作成しています。このブロックでは、コンテンツ ページのレイアウトを指定することができます。
-	**layout.jade** ファイルを保存して閉じます。
+	このコードでは、アプリケーションの特定の HTML を描画し、コンテンツ ページのレイアウトを指定するための、**content** という名前の**ブロック (block)** を作成することを **Jade** エンジンに指示しています。**layout.jade** ファイルを保存して閉じます。
 
 4. アプリケーションが使用するビューである **index.jade** ファイルを開き、そのファイルの中身を次のコードに置き換えます。
 
@@ -496,9 +494,7 @@
 
 	これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
 	
-	このレイアウトでは、2 つの HTML フォームを作成しています。
-	1 つ目のフォームは、データ用のテーブルと、コントローラーの **/completetask** メソッドに対するポストによって項目の更新ができるボタンを含みます。
-	2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
+	このレイアウトでは、2 つの HTML フォームを作成しています。1 つ目のフォームは、データ用のテーブルと、コントローラーの **/completetask** メソッドに対するポストによって項目の更新ができるボタンを含みます。2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
 	
 	アプリケーションが動作するために必要なコードはこれですべてです。
 
@@ -559,8 +555,8 @@
 
 アプリケーションの完全なソース コードは[こちら](https://github.com/Azure/azure-documentdb-node/tree/master/tutorial/todo)からダウンロードできます。ぜひご参考ください。
 
-[Node.js]: http://nodejs.org/
-[Git]: http://git-scm.com/
-
-<!--HONumber=52-->
+  [Node.js]: http://nodejs.org/
+  [Git]: http://git-scm.com/
  
+
+<!---HONumber=July15_HO3-->

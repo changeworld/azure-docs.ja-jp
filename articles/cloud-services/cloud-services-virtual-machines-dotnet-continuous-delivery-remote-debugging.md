@@ -95,4 +95,4 @@ $vm | Update-AzureVM
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

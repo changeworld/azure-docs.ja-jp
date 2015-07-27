@@ -2,7 +2,7 @@
 
 > [AZURE.NOTE]より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
 
-Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。
+Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。この記事では、クライアント証明書の認証については扱っていません。それにについては、「[How To Configure TLS Mutual Authentication for Web Apps (Web アプリ用に TLS 相互認証を構成する方法)](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」(英語) を参照してください。
 
 ##<a name="bkmk_azurewebsites"></a>*.azurewebsites.net ドメインの HTTPS
 
@@ -517,7 +517,7 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
-[customdomain]: ../article/app-service-web/web-sites-custom-domain-name.md
+[customdomain]: ../articles/app-service-web/web-sites-custom-domain-name.md
 [iiscsr]: http://technet.microsoft.com/library/cc732906(WS.10).aspx
 [cas]: http://go.microsoft.com/fwlink/?LinkID=269988
 [installcertiis]: http://technet.microsoft.com/library/cc771816(WS.10).aspx
@@ -541,4 +541,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

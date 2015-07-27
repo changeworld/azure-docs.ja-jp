@@ -48,4 +48,4 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

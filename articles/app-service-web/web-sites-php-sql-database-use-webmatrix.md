@@ -41,7 +41,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##前提条件
 
@@ -95,7 +95,7 @@ Azure の Web アプリと SQL データベースを作成するには、次の�
 
 ##SQL データベース接続情報を取得する
 
-Web アプリにリンクされている SQL データベース インスタンスに接続するには、データベースの作成時に指定した接続情報が必要になります。SQL データベース接続情報を取得するには、次の手順に従います。
+Web アプリにリンクされている SQL Database インスタンスに接続するには、データベースの作成時に指定した接続情報が必要になります。SQL Database 接続情報を取得するには、次の手順に従います。
 
 1. リソース グループのブレードに戻り、SQL データベース アイコンをクリックします。
 
@@ -209,7 +209,7 @@ Web アプリにリンクされている SQL データベース インスタン�
 ここまで、WebMatrix から Web アプリを作成して Azure App Service Web Apps にデプロイする方法を学習しました。WebMatrix の詳細については、[WebMatrix の Web サイト](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service および既存の Azure サービスへの影響](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * ポータルからプレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
 
 
@@ -248,4 +248,4 @@ Web アプリにリンクされている SQL データベース インスタン�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

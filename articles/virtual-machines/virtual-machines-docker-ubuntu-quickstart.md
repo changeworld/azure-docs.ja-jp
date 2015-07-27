@@ -30,11 +30,11 @@
 - [Canonical と MSOpenTech の Docker イメージを使用した VM の作成]
 - [SSH による接続と簡単な設定]
 
-## <a id='logon'></a>ポータルへのログオン
+## <a id='logon'>ポータルへのログオン</a>
 
 この作業は Azure アカウントさえあれば、問題ありません。[アカウントがない場合も簡単に取得できます](http://azure.microsoft.com/pricing/free-trial/)。
 
-## <a id='createvm'></a>Canonical と MSOpenTech の Docker イメージを使用した VM の作成
+## <a id='createvm'>Canonical と MSOpenTech の Docker イメージを使用した VM の作成</a>
 
 1. ログオンしたら、左下にある **[新規]** をクリックして新しい VM イメージを作成します。すぐにバナーに適切なイメージが表示されます。
 
@@ -52,7 +52,7 @@
 
 > ![Docker image running in portal](./media/virtual-machines-docker-ubuntu-quickstart/DockerUbuntuRunning.png)
 
-## <a id='havingfun'></a>SSH による接続と簡単な設定
+## <a id='havingfun'>SSH による接続と簡単な設定</a>
 
 次は楽しい作業です。SSH ですぐに VM に接続できます。
 
@@ -81,4 +81,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -32,6 +32,33 @@
 * 新旧のバージョンの ApplicationInsights.config を比較します。旧バージョンに対して行ったカスタマイズをもう一度マージします。
 * ソリューションをリビルドします。
 
+## バージョン 1.0.0
+
+### Windows App SDK
+
+- Windows アプリの新しい初期化。新しい `WindowsAppInitializer` クラスと `InitializeAsync()` メソッドにより、SDK コレクションのブートストラップの初期化が可能になりました。この変更により、以前の ApplicationInsights.config の手法より細かい制御とアプリ初期化パフォーマンスの飛躍的な向上が実現されます。
+- DeveloperMode は自動設定されなくなりました。DeveloperMode 動作を変更するには、コード内に指定する必要があります。
+- NuGet パッケージでは、ApplicationInsights.config が挿入されません。手動で NuGet パッケージを追加するときに、新しい WindowsAppInitializer を使用することをお勧めします。
+- ApplicationInsights.config は `<InstrumentationKey>` を読み取るだけで、他のすべての設定はWindowsAppInitializer 設定の優先設定で無視されます。
+- Store Market は SDK によって自動収集されます。
+- 多くのバグが修正され、安定性とパフォーマンスが向上しています。
+
+### コア SDK
+
+- ApplicationInsights.config ファイルが不要になり、NuGet パッケージによって追加もされません。構成はコード内で完全に指定できます。
+- NuGet パッケージは、ターゲット ファイルをソリューションに追加しません。これにより、デバッグ ビルド時に DeveloperMode の自動設定が削除されます。DeveloperMode をコード内に手動で設定する必要があります。
+
+## バージョン 0.17
+
+### Windows App SDK
+
+- Windows App SDK で、Windows 10 テクニカル プレビューに対して、または VS 2015 RC により作成されたユニバーサル Windows アプリがサポートされるようになりました。
+
+### コア SDK
+
+- TelemetryClient は既定で InMemoryChannel を初期化します。
+- 新しい API、`TelemetryClient.Flush()` が追加されました。このフラッシュのメソッドは、そのクライアントに記録されたすべてのテレメトリのアップロードの即時ブロックをトリガーします。これにより、プロセスのシャット ダウン前にアップロードを手動でトリガーできます。
+- NuGet パッケージに .Net 4.5 ターゲットが追加されました。このターゲットには外部依存関係がありません (BCL および EventSource 依存関係は削除されました)。
 
 ## バージョン 0.16 
 
@@ -50,4 +77,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

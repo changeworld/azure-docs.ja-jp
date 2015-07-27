@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Azure"
 	description="この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。"
-	keywords="quickstart,r language,r programming language,r programming tutorial"
 	services="machine-learning"
 	documentationCenter=""
 	authors="Blackmist"
@@ -499,7 +498,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 2. 各ケースで値 NA を返します。副作用がより少ないその他の選択肢も多数存在します。たとえば、ゼロ ベクトル、またはオリジナルの入力ベクトルを返すこともできます。
 
-3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`warning()` ではなく `stop()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
+3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`stop()` ではなく `warning()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
 
 4. 例外が発生せず、処理が突然中断しないように、対数計算は `tryCatch()` の中に含まれています。`tryCatch()` を使用しない場合、R 関数により発生したほとんどのエラーは、停止信号になっていしまい、処理が中断します。
 
@@ -1117,4 +1116,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

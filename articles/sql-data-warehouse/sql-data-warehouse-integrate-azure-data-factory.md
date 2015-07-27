@@ -52,4 +52,4 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 <!--Other Web references-->
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

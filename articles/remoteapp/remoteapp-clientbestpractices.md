@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp クライアントのベストプラクティス"
     description="RemoteApp のクライアントを使用するためのベスト プラクティスについて説明します" 
     services="remoteapp" 
-    solutions="" documentationCenter="" 
+    documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -27,4 +27,4 @@
 - RemoteApp はユーザーが一定の時間、非アクティブな状態になるとユーザーを自動的にログオフします。データの損失を防ぐためには、サービスの使用を終了する際には、アプリケーションを閉じることをお勧めします。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -145,4 +145,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 その他のリソースについては、次を参照してください。 - [GitHub の AzureAD サンプル](https://github.com/AzureAdSamples) - [CloudIdentity.com](https://cloudidentity.com) - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) での Azure AD に関するドキュメント
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

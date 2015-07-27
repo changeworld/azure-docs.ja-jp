@@ -21,7 +21,7 @@
 
 Visual Studio Application Insights は、2 つのレベルの使用状況の追跡を提供します。
 
-* **ユーザーとセッション データ** - 既定で提供されています。  
+* **ユーザー、セッション、およびページ ビュー データ** - 既定で提供されています。  
 * **カスタム テレメトリ** - アプリのユーザー エクスペリエンスを使用して[コードを記述][api]してユーザーを追跡します。 
 
 ## 設定
@@ -33,10 +33,6 @@ Web アプリケーションからの使用状況データは、クライアン�
 Application Insights リソースは、アプリのテレメトリ データが分析され、表示される Microsoft Azure 内の場所です。[ASP.NET][greenbrown] か [J2EE][java] のサーバー側からのデータを表示するためにApplication Insights リソース を既にセットアップしています。そうでない場合は、その作業を実行できます。
 
 通常、サーバーからのデータと同じリソースで、Web クライアントからの使用状況データを表示することをお勧めします。これにより、両端から診断とメトリックを簡単に関連付けることができます。そのため、リソースが既にある場合は、次の手順に進みます。
-
-使用状況データに個別のリソースを使用する場合は、[Azure ポータル][portal]にログインして作成します。
-
-![](./media/app-insights-web-track-usage/01-create.png)
 
 #### Web ページにコードを挿入する
 
@@ -57,50 +53,18 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 ![](./media/app-insights-web-track-usage/14-usage.png)
 
-* **ユーザー:** グラフの時間範囲内で変化する一意のユーザーの数。(戻ってくるユーザーを識別するために Cookie が使用されます)。
-* **セッション:** ユーザーが 30 分間何の要求も出さないと、セッションがカウントされます。
+* **ユーザー:** グラフの時間範囲内で変化する別個のアクティブ ユーザーの数。 
+* **セッション:** アクティブなセッションの数
 * **ページ ビュー**: trackPageView() の呼び出し数をカウントします。通常、各 Web ページで 1 回呼び出されます。
 
 グラフをクリックすると、詳細が表示されます。グラフの時間範囲を変更できます。
-
-
-### 最もアクセス数の多いページを調べる
-
-ページ ビュー グラフをクリックして詳細を表示します。
-
-![](./media/app-insights-web-track-usage/appinsights-49usage.png)
-
-
-グラフをクリックして表示するメトリックを選択するか、新しいグラフを追加して表示するメトリックを選択します。
-
-![](./media/app-insights-web-track-usage/appinsights-63usermetrics.png)
-
-> [AZURE.NOTE]メトリックは、いくつかの組み合わせでしか表示できないことがあります。メトリックを選択すると、互換性のないメトリックは無効になります。
-
-
 
 ### ユーザーの居住地を調べる
 
 [使用状況] ブレードで [ユーザー] グラフをクリックして詳細を表示します。
 
-![概要ブレードで、[セッション] グラフをクリックします](./media/app-insights-web-track-usage/02-sessions.png)
+![[使用状況] ブレードで [ユーザー] グラフをクリックします。](./media/app-insights-web-track-usage/02-sessions.png)
  
-(この例は Web サイトの例ですが、デバイスで実行されるアプリの場合も同じようなグラフが表示されます)。
-
-### 前の週と比較する
-
-前の週と比較して、変化していることがあるかどうかを調べることができます。
-
-![1 つのメトリックを表示するグラフを選択し、[前の週] をオンにします](./media/app-insights-web-track-usage/021-prior.png)
-
-
-### 新しいユーザーの割合を調べる
-
-2 つのメトリック (たとえば、ユーザーと新しいユーザー) を比較することもできます。
-
-![グラフを選択します。メトリックを検索し、オンまたはオフにします。](./media/app-insights-web-track-usage/031-dual.png)
-
-
 ### 使用されているブラウザーまたはオペレーティング システムを調べる
 
 プロパティ (ブラウザー、オペレーティング システム、市区町村など) に基づいてデータをグループ化 (分割) できます。
@@ -151,7 +115,7 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 特定の間隔の**ユーザー数**メトリックは、この間隔の間に記録されたアクティビティとの一意のユーザー数として定義されます。その結果、時間範囲を1 時間未満に設定した場合、長いセッションを持つユーザーは複数回カウントされることがあります。
 
-**新しいユーザー**は、最初のセッションに、この間隔の間に発生したアプリを持つユーザーをカウントします。Cookie によってユーザーをカウントする既定のメソッドを使用した場合、Cookie をクリアするか、新しいデバイスやブラウザーを使用して最初にアプリにアクセスしているユーザーも含まれます。
+**新しいユーザー**は、最初のセッションに、この間隔の間に発生したアプリを持つユーザーをカウントします。Cookie によってユーザーをカウントする既定のメソッドを使用した場合、Cookie をクリアしているユーザー、または、新しいデバイスやブラウザーを使用して初めてアプリにアクセスするユーザーも含まれます。![[使用状況] ブレードで [ユーザー] グラフをクリックして新しいユーザーを確認します。](./media/app-insights-web-track-usage/031-dual.png)
 
 ## 合成トラフィック
 
@@ -186,16 +150,16 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 カスタム イベントを使用できます。カスタム イベントは、デバイスのアプリ、Web ページ、または Web サーバーから送信できます。
 
-(JavaScript)
+*JavaScript*
 
     telemetryClient.trackEvent("GameEnd");
 
-(C#)
+*C#*
 
     var tc = new Microsoft.ApplicationInsights.TelemetryClient(); 
     tc.TrackEvent("GameEnd");
 
-(VB)
+*VB*
 
     Dim tc = New Microsoft.ApplicationInsights.TelemetryClient()
     tc.TrackEvent("GameEnd")
@@ -245,7 +209,9 @@ Application Insight は合成トラフィックを自動的に特定して分類
 イベントには任意のタグと数値をアタッチできます。
  
 
-クライアント側の JavaScript
+*クライアント側の JavaScript*
+
+```JavaScript
 
     appInsights.trackEvent("WinGame",
         // String properties:
@@ -253,8 +219,11 @@ Application Insight は合成トラフィックを自動的に特定して分類
         // Numeric measurements:
         {Score: currentGame.score, Opponents: currentGame.opponentCount}
     );
+```
 
-サーバー側の C#
+*サーバー側の C#*
+
+```C#
 
     // Set up some properties:
     var properties = new Dictionary <string, string> 
@@ -264,8 +233,11 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
     // Send the event:
     telemetry.TrackEvent("WinGame", properties, measurements);
+```
 
-サーバー側の VB
+*サーバー側の VB*
+
+```VB
 
     ' Set up some properties:
     Dim properties = New Dictionary (Of String, String)
@@ -278,14 +250,19 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
     ' Send the event:
     telemetry.TrackEvent("WinGame", properties, measurements)
+```
 
 次のようにページ ビューを同じ方法でプロパティに結び付けます。
 
-クライアント側の JavaScript
+*クライアント側の JavaScript*
+
+```JS
 
     appInsights.trackPageView("Win", 
+        url,
         {Game: currentGame.Name}, 
         {Score: currentGame.Score});
+```
 
 診断検索で、イベントのそれぞれの発生箇所をクリックしてプロパティを表示します。
 
@@ -306,7 +283,9 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 Application Insights ポータルでは、タグに基づいてデータをフィルター選択およびグループ化 (分割) して、異なるバージョンを比較できます。
 
-サーバー側の C#
+*サーバー側の C#*
+
+```C#
 
     using Microsoft.ApplicationInsights.DataContracts;
 
@@ -315,18 +294,24 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
     var telemetry = new TelemetryClient(context);
     // Now all telemetry will automatically be sent with the context property:
     telemetry.TrackEvent("WinGame");
+```
 
-サーバー側の VB
+*サーバー側の VB*
+
+```VB
 
     Dim context = New TelemetryContext
     context.Properties("Game") = currentGame.Name
     Dim telemetry = New TelemetryClient(context)
     ' Now all telemetry will automatically be sent with the context property:
     telemetry.TrackEvent("WinGame")
+```
 
 個々のテレメトリは、既定値を無視することができます。
 
 すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。
+
+```C#
 
     // Telemetry initializer class
     public class MyTelemetryInitializer : IContextInitializer
@@ -336,8 +321,11 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
             context.Properties["AppVersion"] = "v2.1";
         }
     }
+```
 
 アプリ初期化子 (Global.asax.cs など) 内:
+
+```C#
 
     protected void Application_Start()
     {
@@ -345,6 +333,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
         TelemetryConfiguration.Active.ContextInitializers
         .Add(new MyTelemetryInitializer());
     }
+```
 
 
 ## ビルド、評価、学習
@@ -360,7 +349,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
 ## ビデオ
 
-> [Azure.VIDEO usage-monitoring-application-insights]
+> [AZURE.VIDEO usage-monitoring-application-insights]
 
 
 <!--Link references-->
@@ -377,4 +366,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

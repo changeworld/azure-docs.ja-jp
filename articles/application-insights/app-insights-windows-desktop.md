@@ -46,16 +46,11 @@ Windows デスクトップのアプリとサービスに対するサポートは
 
 2. Application Insights API パッケージをインストールします。
 
-    ![「Application Insights」の検索](./media/app-insights-windows-desktop/04-core-nuget.png)
+    ![Search for "Application Insights"](./media/app-insights-windows-desktop/04-core-nuget.png)
 
-3. (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
+3. `TelemetryConfiguration.Active` オブジェクトを使用して、InstrumentationKey をコードに設定します。
 
-    `<InstrumentationKey>*the key you copied*</InstrumentationKey>`
-
-    または、次のコードでも同じ効果が得られます。
-    
     `TelemetryConfiguration.Active.InstrumentationKey = "your key";`
-
 
 ## <a name="telemetry"></a>テレメトリの呼び出しの挿入
 
@@ -178,4 +173,4 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

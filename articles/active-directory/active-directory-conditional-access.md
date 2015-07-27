@@ -45,4 +45,4 @@ Azure Active Directory、Office 365、Microsoft Intune が提供する複数の�
 [1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

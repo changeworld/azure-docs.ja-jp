@@ -57,4 +57,4 @@
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO3-->

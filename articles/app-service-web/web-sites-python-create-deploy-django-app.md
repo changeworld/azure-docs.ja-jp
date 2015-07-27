@@ -27,7 +27,7 @@ Django Web フレームワークを使用してアプリケーションを作成
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## 前提条件
@@ -200,7 +200,7 @@ F5 キーを押してデバッグを開始します。ローカルに実行さ�
 
 pip を使用して追加のパッケージをインストールできます。パッケージをインストールするには、仮想環境を右クリックし、**[Install Python Package]** を選択します。
 
-たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、`azure` を入力します。
+たとえば、Azure Storage、Service Bus などの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、`azure` を入力します。
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-install-package-dialog.png)
 
@@ -208,7 +208,7 @@ pip を使用して追加のパッケージをインストールできます。�
 
 その後、requirements.txt への変更内容を Git リポジトリにコミットします。
 
-### Azure への展開
+### Azure へのデプロイ
 
 デプロイを開始するには、**[同期]** または **[プッシュ]** をクリックします。同期ではプッシュとプルの両方が実行されます。
 
@@ -286,7 +286,7 @@ Python 3.4 の場合:
 
 アプリケーションが、Python と Django 以外の依存関係を持つ場合があります。
 
-pip を使用して追加のパッケージをインストールできます。たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
+pip を使用して追加のパッケージをインストールできます。たとえば、Azure Storage、Service Bus などの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
 
     env\scripts\pip install azure
 
@@ -299,7 +299,7 @@ requirements.txt が更新されていることを確認します。
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Azure への展開
+### Azure へのデプロイ
 
 デプロイを開始するには、変更を Azure にプッシュします。
 
@@ -375,7 +375,7 @@ Python 3.4 の場合:
 
 アプリケーションが、Python と Django 以外の依存関係を持つ場合があります。
 
-pip を使用して追加のパッケージをインストールできます。たとえば、Azure ストレージ、サービス バスなどの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
+pip を使用して追加のパッケージをインストールできます。たとえば、Azure Storage、Service Bus などの他の Azure サービスにアクセスできるようになる Azure SDK for Python をインストールするには、次のように入力します。
 
     env/bin/pip install azure
 
@@ -388,7 +388,7 @@ requirements.txt が更新されていることを確認します。
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Azure への展開
+### Azure へのデプロイ
 
 デプロイを開始するには、変更を Azure にプッシュします。
 
@@ -423,7 +423,7 @@ Django には静的ファイルの収集に関する概念が設定されてい�
 
 Django アプリケーションで静的なファイルの収集をスキップする場合は、次のようにします。
 
-    .skipDjango
+    \.skipDjango
 
 その後、ローカル コンピューターで手動で収集する必要があります。
 
@@ -491,7 +491,7 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->
@@ -515,4 +515,4 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 [Django のドキュメント]: https://www.djangoproject.com/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

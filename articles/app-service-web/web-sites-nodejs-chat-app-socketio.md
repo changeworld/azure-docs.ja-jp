@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="03/24/2015"
+	ms.date="07/02/2015"
 	ms.author="mwasson"/>
 
 
@@ -33,7 +33,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 1.  Socket.IO プロジェクトの [ZIP または GZ アーカイブ リリース][release]をダウンロードします (このドキュメントではバージョン 1.3.5 を使用しました)。
 
 
-3.  アーカイブを展開し、**examples\chat** ディレクトリを新しい場所にコピーします。たとえば、**\node\chat** です。
+3.  アーカイブを展開し、**examples\\chat** ディレクトリを新しい場所にコピーします。たとえば、**\\node\\chat** です。
 
 ## App.js の変更とモジュールのインストール
 
@@ -57,7 +57,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 		  "socket.io": "1.3.5"
 		}
 
-4. コマンド ラインで **\node\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを npm を使用してインストールします。
+4. コマンド ラインで **\\node\\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを npm を使用してインストールします。
 
         npm install
 
@@ -76,7 +76,7 @@ Azure Web アプリを作成し、Git 発行を有効にして、Web アプリ�
 		azure site deployment user set [username] [password]
 
 
-3. **\node\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Web アプリとローカル Git リポジトリを作成します。このコマンドにより、「azure」という名前の Git リモートも作成されます。
+3. **\\node\\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Web アプリとローカル Git リポジトリを作成します。このコマンドにより、「azure」という名前の Git リモートも作成されます。
 
 		azure site create mysitename --git
 
@@ -91,7 +91,7 @@ Azure Web アプリを作成し、Git 発行を有効にして、Web アプリ�
 
 		git push azure master
 
-	モジュールがサーバーにインポートされると、ステータス メッセージを受信します。この処理が完了すると、アプリケーションが Azure Web アプリでホストされるようになります。
+	メッセージが表示されたら、手順 2. の資格情報を入力します。モジュールがサーバーにインポートされると、ステータス メッセージを受信します。この処理が完了すると、アプリケーションが Azure Web アプリでホストされるようになります。
 
  	> [AZURE.NOTE]モジュールのインストール中に、"インポートされたプロジェクト ... が見つかりませんでした" というエラーが表示される場合があります。このエラーは無視してかまいません。
 
@@ -125,7 +125,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###Redis および socket.io-redis モジュールの追加
 
-1. コマンド ラインから、__\node\chat__ ディレクトリに移動し、次のコマンドを実行します。
+1. コマンド ラインから、__\\node\\chat__ ディレクトリに移動し、次のコマンドを実行します。
 
 		npm install socket.io-redis@0.1.4 redis@0.12.1 --save
 
@@ -151,7 +151,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###変更のコミットと再デプロイ
 
-__\node\chat__ ディレクトリのコマンド ラインから、次のコマンドを使用して変更をコミットし、アプリケーションを再デプロイします。
+__\\node\\chat__ ディレクトリのコマンド ラインから、次のコマンドを使用して変更をコミットし、アプリケーションを再デプロイします。
 
 	git add .
 	git commit -m "implementing scale out"
@@ -260,7 +260,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 		  </system.webServer>
 		</configuration>
 
-	> [AZURE.NOTE]アプリケーションで **app.js** 以外のエントリ ポイントを使用している場合は、すべての **app.js** を正しいエントリ ポイントに置き換える必要があります。たとえば、**app.js** を **server.js** に置き換えます。
+	アプリケーションで **app.js** 以外のエントリ ポイントを使用している場合は、すべての **app.js** を正しいエントリ ポイントに置き換える必要があります。たとえば、**app.js** を **server.js** に置き換えます。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -269,7 +269,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 このチュートリアルでは、Azure Web アプリでホストされるチャット アプリケーションを作成する方法を説明しました。このアプリケーションは、Azure クラウド サービスとしてホストすることもできます。そのための作業手順については、「[Azure クラウド サービスで Socket.IO を使用する Node.js チャット アプリケーションの構築][cloudservice]」を参照してください。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [socketio]: http://socket.io/
@@ -283,4 +283,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [pricing]: /pricing/details/web-sites/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

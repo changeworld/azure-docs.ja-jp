@@ -69,4 +69,4 @@
 [モバイル アプリの使用]: app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-preview.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

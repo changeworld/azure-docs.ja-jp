@@ -103,4 +103,4 @@ Promote tenant to partner
 監査レコードは、多くの法令遵守に必要な管理です。Azure Active Directory 監査レポートを使用してコンプライアンス規制に対応するお客様の場合、お客様がエクスポートした監査レポートのコピーにこのヘルプ トピックのコピーを添えて提出し、レポートの詳細な説明に役立てることをお勧めします。Azure が現在を満たしているコンプライアンス規制についての情報を監査担当者が必要としている場合は、監査担当者に Microsoft Azure トラスト センターの[コンプライアンス ページ](http://azure.microsoft.com/support/trust-center/compliance/)を紹介してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

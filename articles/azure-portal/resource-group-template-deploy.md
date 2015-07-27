@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートを使用したアプリケーションの展開"
-   services="azure-portal"
+   services="azure-resource-manager"
    description="Azure リソース マネージャーを使用してアプリケーションを Azure に展開します。テンプレートは JSON ファイルであり、ポータル、PowerShell、Azure コマンドライン インターフェイス (Mac、Linux、Windows 用)、または REST で使用できます。"
    documentationCenter="na"
    authors="tfitzmac"
@@ -8,12 +8,12 @@
    editor=""/>
 
 <tags
-   ms.service="azure-portal"
+   ms.service="azure-resource-manager"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/22/2015"
+   ms.date="07/15/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションの展開
@@ -58,7 +58,7 @@ Azure リソース マネージャーのテンプレートを使用すると、�
 
 1. Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
-        PS C:\> Add-AzureAccount
+        PS C:> Add-AzureAccount
 
         Id                             Type       ...
         --                             ----    
@@ -66,15 +66,15 @@ Azure リソース マネージャーのテンプレートを使用すると、�
 
 2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
 
-        PS C:\> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
+        PS C:> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
 
 3. Azure リソース マネージャー モジュールに切り替える
 
-        PS C:\> Switch-AzureMode AzureResourceManager
+        PS C:> Switch-AzureMode AzureResourceManager
 
 4. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
 
-        PS C:\> New-AzureResourceGroup -Name ExampleResourceGroup -Location "West US"
+        PS C:> New-AzureResourceGroup -Name ExampleResourceGroup -Location "West US"
    
         ResourceGroupName : ExampleResourceGroup
         Location          : westus
@@ -92,16 +92,16 @@ Azure リソース マネージャーのテンプレートを使用すると、�
    
      - インライン パラメーターを使用する
 
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
+            PS C:> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
 
      - パラメーター オブジェクトを使用する
 
-            PS C:\> $parameters = @{"<ParameterName>"="<Parameter Value>"}
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
+            PS C:> $parameters = @{"<ParameterName>"="<Parameter Value>"}
+            PS C:> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
 
      - パラメーター ファイルの使用テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。
 
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
+            PS C:> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
 
      リソース グループをデプロイすると、デプロイメントの概要が表示されます。
 
@@ -114,11 +114,11 @@ Azure リソース マネージャーのテンプレートを使用すると、�
 
 6. デプロイメント エラーに関する情報を取得するには
 
-        PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed
+        PS C:> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed
 
 7. デプロイメント エラーに関する詳細情報を取得するには
 
-        PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
+        PS C:> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
 
 ## Mac、Linux、および Windows 用の Azure CLI で展開する
 
@@ -256,4 +256,4 @@ Azure リソース マネージャーのテンプレートを使用すると、�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

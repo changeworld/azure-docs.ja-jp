@@ -1,9 +1,9 @@
 
 <properties 
-    pageTitle="RemoteApp イメージの要件"
-    description="RemoteApp で使用するイメージを作成するための要件について説明します。" 
+    pageTitle="Azure RemoteApp イメージの要件"
+    description="Azure RemoteApp で使用するイメージを作成するための要件について説明します。" 
     services="remoteapp" 
-    solutions="" documentationCenter="" 
+    documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -13,15 +13,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="05/28/2015" 
+    ms.date="07/06/2015" 
     ms.author="elizapo" />
 
 
 
-# RemoteApp イメージの要件
-RemoteApp では Windows Server 2012 R2 イメージを使用して、ユーザーと共有するすべてのプログラムをホストします。RemoteApp のカスタム イメージを作成するには、既存のイメージを使用することも、[新しいイメージを作成する](remoteapp-create-custom-image.md)こともできます。
+# Azure RemoteApp イメージの要件
+Azure RemoteApp では Windows Server 2012 R2 イメージを使用して、ユーザーと共有するすべてのプログラムをホストします。カスタム イメージを作成するには、既存のイメージを使用することも、[新しいイメージを作成する](remoteapp-create-custom-image.md)こともできます。
 
-> [AZURE.TIP]Azure RemoteApp サブスクリプションを利用すれば、Azure VM ギャラリーにある作成済みの Windows Server 2012 R2 イメージにアクセスし、独自のテンプレート イメージを作成できることをご存じでしたか。 [ご覧ください](remoteapp-image-on-azurevm.md)。
+> [AZURE.TIP]Azure RemoteApp サブスクリプションを利用すれば、Azure VM ギャラリーにある Windows Server 2012 R2 イメージにアクセスし、独自のテンプレート イメージを作成できることをご存じでしたか。 [ご覧ください](remoteapp-image-on-azurevm.md)。
 
 
 Azure RemoteApp で使用するためにアップロードできるイメージの要件は次のとおりです。
@@ -43,4 +43,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - スナップショット チェーンからの VHD のアップロードはサポートされていません。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

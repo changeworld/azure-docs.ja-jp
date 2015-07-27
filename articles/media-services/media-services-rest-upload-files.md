@@ -367,4 +367,4 @@ Azure ストレージ BLOB の使用の詳細については、[BLOB サービ�
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

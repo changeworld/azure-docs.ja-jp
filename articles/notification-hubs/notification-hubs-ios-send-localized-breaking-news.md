@@ -222,4 +222,4 @@ MainStoryboard_iPhone.storyboard で、サポートする 3 つの言語 (英語
 [方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

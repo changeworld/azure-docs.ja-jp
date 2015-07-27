@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search" 
-   ms.date="05/25/2015"
+   ms.date="07/10/2015"
    ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
@@ -133,7 +133,7 @@ HTTP POST または PUT 要求を使用して、Azure Search サービス内に�
 
 インデックスを作成すると、検索操作で格納および使用されるドキュメントの構造が決まります。インデックスを設定するのは、別の操作です。この手順では、[インデクサー](https://msdn.microsoft.com/library/azure/mt183328.aspx) (サポートされるデータ ソースに使用できます) または[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)操作を使用できます。ドキュメントが POST されると、逆インデックスが生成されます。
 
-**注**: 許可されるインデックスの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 個のインデックスが許可されます。標準サービスでは、Search サービスごとに 50 個のインデックスが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+**注**: 許可されるインデックスの最大数は価格レベルによって異なります。Free サービスの場合、最大 3 個のインデックスが許可されます。Standard サービスでは、Search サービスごとに 50 個のインデックスが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
 
 **要求**
 
@@ -795,7 +795,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 	</tr>
   	<tr>
 		<td>韓国語</td>
-		<td>ko.microsfot</td>
+		<td>ko.microsoft</td>
 		<td>
 		<ul>
 			<li>還元的ステマー (レンマ化)</li>
@@ -2107,4 +2107,4 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

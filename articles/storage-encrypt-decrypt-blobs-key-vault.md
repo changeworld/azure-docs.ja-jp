@@ -237,4 +237,4 @@ Microsoft Azure Storage の最新情報については、[Microsoft Azure Storag
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

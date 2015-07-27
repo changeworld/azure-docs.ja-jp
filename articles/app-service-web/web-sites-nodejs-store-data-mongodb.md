@@ -46,7 +46,7 @@ Node.js を使用するこのチュートリアルの手順では、開発環境
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##仮想マシンの作成
 
@@ -113,7 +113,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 1. コマンド ラインで、**tasklist** ディレクトリに移動します。**tasklist** ディレクトリがない場合は作成します。
 
-	> [AZURE.NOTE]このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**~/node/tasklist** や **c:\node\tasklist** など) に作成してください。
+	> [AZURE.NOTE]このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**~/node/tasklist** や **c:\\node\\tasklist** など) に作成してください。
 
 2. 次のコマンドを入力して、express コマンドをインストールします。
 
@@ -572,4 +572,4 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 [mongodbonazure]: http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-linux-in-azure/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -78,7 +78,7 @@
 
 ##登録の前にログインするようにアプリケーションを更新する
 
-[AZURE.INCLUDE [mobile-services-android-push-notifications-app-users](mobile-services-android-push-notifications-app-users.md)]
+[AZURE.INCLUDE [mobile-services-android-push-notifications-app-users](../../includes/mobile-services-android-push-notifications-app-users.md)]
 
 ##アプリケーションをテストする
 
@@ -98,4 +98,4 @@ In the next tutorial, [Service-side authorization of Mobile Services users](mobi
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

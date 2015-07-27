@@ -63,8 +63,8 @@ Apache Cordova がコンピューターにセットアップされていない�
 	-   [ios sim](https://www.npmjs.org/package/ios-sim) – コマンド ラインから iOS シミュレーターで iOS アプリケーションを起動することができます (`npm install -g ios-sim` として、端末経由で簡単にインストールできます)。
 
 - Android 向けにアプリケーションを構築して実行する場合
-	- [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上をインストールします。`JAVA_HOME` (環境変数) が JDK インストール パス (たとえば、C:\Program Files\Java\jdk1.7.0_75) に従って正しく設定されていることを確認します。
-	- [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) をインストールし、`<android-sdk-location>\tools` の場所 (たとえば、C:\tools\Android\android-sdk\tools) を `PATH` 環境変数に追加します。
+	- [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上をインストールします。`JAVA_HOME` (環境変数) が JDK インストール パス (たとえば、C:\\Program Files\\Java\\jdk1.7.0_75) に従って正しく設定されていることを確認します。
+	- [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) をインストールし、`<android-sdk-location>\tools` の場所 (たとえば、C:\\tools\\Android\\android-sdk\\tools) を `PATH` 環境変数に追加します。
 	- Android SDK Manager を開き (たとえば、端末 `android` 経由で)、以下をインストールします。
     - *Android 5.0.1 (API 21)* プラットフォーム SDK
     - *Android SDK ビルド ツール* バージョン 19.1.0 以上
@@ -255,4 +255,4 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

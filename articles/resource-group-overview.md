@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure リソース マネージャーの概要"
    description="Azure リソース マネージャーを使用して、 Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。"
-   services="multiple"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="multiple"
+   ms.service="azure-resource-manager"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/22/2015"
+   ms.date="07/15/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -68,6 +68,8 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 テンプレートの定義の詳細については、[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)を参照してください。
 
+テンプレートのスキーマについては、「[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)」を参照してください。
+
 デプロイにテンプレートを使用する方法については、[Deploy an application with Azure Resource Manager template (Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ)](azure-portal/resource-group-template-deploy.md) と [Deploy a complex application predictably in Azure (Azure での複雑なアプリケーションの予測可能な方法でのデプロイ)](app-service-web/app-service-deploy-complex-application-predictably.md) を参照してください。
 
 ## タグ
@@ -76,7 +78,7 @@ Azure リソース マネージャーでは、管理や課金の要件に合わ�
 
 次のプレビュー ポータルで、タグのアイコンをクリックして操作を開始します。
 
-![タグ](./media/resource-group-overview/tags.png)
+![tags](./media/resource-group-overview/tags.png)
 
 タグを共有するために、リソースが同じリソース グループ内に格納されている必要はありません。組織内のユーザーが類似したタグを誤って適用しないよう (「department」の代わりに「dep」など) 、組織内のすべてのユーザーが共通のタグを使用できる独自のタグ分類法を作成することができます。
 
@@ -94,7 +96,7 @@ Azure リソース マネージャーでは、監査のために、自動的に�
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。
 
-ロールベースのアクセス制御の詳細については、[Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)を参照してください。
+ロールベースのアクセス制御の詳細については、[Microsoft Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)を参照してください。
 
 アクセス ポリシー設定の例については、[Managing and Auditing Access to Resources (リソースへのアクセスの管理および監視)](azure-portal/resource-group-rbac.md) を参照してください。
 
@@ -102,7 +104,7 @@ Azure リソース マネージャーでは、監査のために、自動的に�
 
 Azure リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
+PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャーのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
 
 Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)を参照してください。
 
@@ -120,10 +122,11 @@ Getting Started (概要)
 - [テンプレートの作成](./resource-group-authoring-templates.md)
 - [テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)
 - [デプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)
-- [Azure で複雑なアプリケーションを予測どおりにデプロイ](app-service-web/app-service-deploy-complex-application-predictably.md)
+- [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)
 - [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](virtual-machines/arm-template-deployment.md)
 - [テンプレート関数](./resource-group-template-functions.md)
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)
+- [テンプレートのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)
 
 リソースの整理
 
@@ -131,9 +134,9 @@ Getting Started (概要)
 
 アクセスの管理と監査
 
-- [Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md)
+- [リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)
 - [Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)
 - [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)
 - [Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -270,4 +270,4 @@ Microsoft Azure Event Hubs は、クラウドに対し、短い待機時間と�
 [hybrid]: ../integration-hybrid-connection-overview.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

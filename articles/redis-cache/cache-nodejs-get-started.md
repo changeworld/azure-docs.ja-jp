@@ -91,4 +91,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
 [Socket.IO を使用した Node.js チャット アプリケーションの構築]: ../app-service-web/web-sites-nodejs-chat-app-socketio.md
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -60,4 +60,4 @@
 [クォータと制限](media-services-quotas-and-limitations.md) – Media Services Encoder で使用するクォータと制限について説明します。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

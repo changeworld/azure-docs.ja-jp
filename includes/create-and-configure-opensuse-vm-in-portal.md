@@ -28,13 +28,13 @@
 ##仮想マシンへの接続
 コンピューターで実行するオペレーティング システムに応じて、SSH または PuTTY を使用して仮想マシンを接続します。
 
-- Linux を使用している場合、SSH を使用して VM に接続します。コマンド プロンプトで、次のコマンドを実行します。 
+- Linux を使用している場合、SSH を使用して VM に接続します。コマンド プロンプトで、次のコマンドを実行します。
 
 	`$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
-	
+
 	ユーザーのパスワードを入力します。
 
-- Windows コンピューターを使用している場合、PuTTY を使用して VM に接続します。PuTTY は、[PuTTY のダウンロード ページ][PuTTYDownLoad]からダウンロードできます。
+- Windows コンピューターを使用している場合、PuTTY を使用して VM に接続します。PuTTY は、[PuTTY のダウンロード ページ][PuTTYDownload]からダウンロードできます。
 
 	**putty.exe** を、コンピューター上のディレクトリにダウンロードします。コマンド プロンプトを開き、フォルダーに移動して、**putty.exe** を実行します。
 
@@ -58,4 +58,4 @@
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

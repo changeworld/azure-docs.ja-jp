@@ -110,7 +110,7 @@ DROP TABLE #Nmbr
 ```
 
 ## 次のステップ
-開発に関するその他のヒントについては、「[開発の概要][]」を参照してください。
+開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -121,4 +121,4 @@ DROP TABLE #Nmbr
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

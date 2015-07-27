@@ -72,14 +72,14 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 最初に、SQL Server データベース、テーブル、ユーザー定義型、およびストアド プロシージャを作成する必要があります。これらは **MarketingCampaignEffectiveness** の結果を Azure BLOB から SQL Server データベースに移動するために使用されます。
 
-1.	**エクスプローラー**で、**C:\ADFWalkthrough** (またはサンプルを展開した場所) にある **OnPremises** サブフォルダーに移動します。
+1.	**エクスプローラー**で、**C:\\ADFWalkthrough** (またはサンプルを展開した場所) にある **OnPremises** サブフォルダーに移動します。
 2.	お好みのエディターで **prepareOnPremDatabase&Table.ps1** を開き、強調表示部分を自分の SQL Server 情報に置き換え、ファイルを保存します (**SQL 認証**の詳細を入力してください)。このチュートリアルのために、データベースの SQL 認証を有効にします。 
 			
 		$dbServerName = "<servername>"
 		$dbUserName = "<username>"
 		$dbPassword = "<password>"
 
-3. **Azure PowerShell** で、**C:\ADFWalkthrough\OnPremises** フォルダーに移動します。
+3. **Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。
 4.	**prepareOnPremDatabase&Table.ps1** を実行します **(& を二重引用符で囲むか、以下のようにします)**。
 			
 		& '.\prepareOnPremDatabase&Table.ps1'
@@ -115,14 +115,14 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 ### 内部設置型の論理テーブルを作成する
 
 1.	**Data Factory エディター**で、ツール バーの **[新しいデータ セット]** をクリックして、**[内部設置型 SQL]** を選択します。 
-2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\OnPremises** フォルダーにある **MarketingCampaignEffectivenessOnPremSQLTable.json** の JSON スクリプトに置き換えます。
+2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\OnPremises** フォルダーにある **MarketingCampaignEffectivenessOnPremSQLTable.json** の JSON スクリプトに置き換えます。
 3. 関連付けられているサービスの名前 (**linkedServiceName** プロパティ) を **OnPremSqlServerLinkedService** から **SqlServerLinkedService** に変更します。
 4. ツール バーの **[デプロイ]** をクリックして、テーブルをデプロイします。 
 	 
 #### パイプラインを作成して Azure BLOB から SQL Server へデータをコピーする
 
 1.	1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
-2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\OnPremises** フォルダーにある **EgressDataToOnPremPipeline.json** の JSON スクリプトに置き換えます。
+2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\OnPremises** フォルダーにある **EgressDataToOnPremPipeline.json** の JSON スクリプトに置き換えます。
 3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
 
         "start": "2014-05-01T00:00:00Z",
@@ -169,4 +169,4 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

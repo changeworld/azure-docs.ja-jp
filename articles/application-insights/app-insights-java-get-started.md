@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter="java"
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/11/2015" 
+	ms.date="06/30/2015" 
 	ms.author="awills"/>
  
 # Java Web プロジェクトで Application Insights を使う
@@ -21,12 +21,11 @@
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
-Visual Studio Application Insights をプロジェクトに追加すると、パフォーマンスの問題や例外を検出して診断できます。
-
+Application Insights は拡張可能な分析サービスで、ライブ アプリケーションのパフォーマンスや使用状況を把握するのに役立ちます。パフォーマンスの問題や例外を検出および診断したり、アプリケーションで何が実行されているかを追跡する[コードを記述][api]したりすることができます。
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
-さらに、アプリケーションの可用性を監視するための [Web テスト][availability]を設定したり、使用パターンを把握するための[コードを Web ページ][api]に挿入したりできます。
+[Application Insights Web テスト][availability]では、アプリケーションの可用性を監視します。
 
 必要なものは次のとおりです。
 
@@ -34,7 +33,7 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
 * [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 
-## 1.Application Insights のインストルメンテーション キーを取得する
+## 1\.Application Insights のインストルメンテーション キーを取得する
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします。
 2. 新しい Application Insights リソースを作成します。
@@ -47,7 +46,7 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
 
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
 
-## 2.Application Insights SDK for Java をプロジェクトに追加する
+## 2\.Application Insights SDK for Java をプロジェクトに追加する
 
 *プロジェクトに適した方法を選択してください。*
 
@@ -74,13 +73,12 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-web</artifactId>
         <!-- or applicationinsights-core for bare API -->
-        <version>[0.9,)</version>
+        <version>[1.0,)</version>
       </dependency>
     </dependencies>
 
 
-* *ビルド エラーかチェックサムの検証エラーが発生していますか。*
- * 次のようにして特定のバージョンを試してください:* `<version>0.9.n</version>`。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `<version>1.0.n</version>`。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
 * *新しい SDK に更新するには*
  * プロジェクトの依存関係を更新します。
 
@@ -95,11 +93,11 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
     }
 
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '0.9.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.+'
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'0.9.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。* 
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。* 
 * *新しい SDK に更新するには*
  * プロジェクトの依存関係を更新します。
 
@@ -107,34 +105,23 @@ Visual Studio Application Insights をプロジェクトに追加すると、パ
 
 SDK を手動で追加する:
 
-1. [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードします。
-2. Zip ファイルから次のバイナリを抽出し、プロジェクトに追加します。
- * applicationinsights-core
- * applicationinsights-web
- * annotation-detector
- * commons-codec
- * commons-io
- * commons-lang
- * commons-logging
- * guava
- * httpclient
- * httpcore
- * jsr305
+1. [Application Insights SDK for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) のダウンロード
+2. zip ファイルからバイナリを抽出し、プロジェクトに追加します。
 
 疑問がある場合...
 
-* *`-core` コンポーネントと `-web` コンポーネントの関係について*
+* *zip 内の `-core` コンポーネントと `-web` コンポーネントの関係について*
 
- * `applicationinsights-core` は、自動テレメトリのない最小限の API を提供します。
- * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。 
+ * `applicationinsights-core` は最小限の API を提供します。これは常に必要です。
+ * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。これは、このテレメトリを自動的に収集したくない場合 (独自のコードを記述する場合など) は省略できます。
 
 * *SDK を更新するには*
- * 最新の [Azure Libraries for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードして、古いものと置き換えます。
+ * 最新の [Application Insights SDK for Java](http://dl.msopentech.com/lib/PackageForWindowsAzureLibrariesForJava.html) をダウンロードして、古いものと置き換えます。
  * 変更は [SDK リリース ノート](app-insights-release-notes-java.md)に記載されます。
 
 
 
-## 3.Application Insights の xml ファイルを追加する
+## 3\.Application Insights の xml ファイルを追加する
 
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されるようにします。次の XML をファイルにコピーします。
 
@@ -175,7 +162,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 * HTTP 要求コンポーネントはオプションです。このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 
-## 4.HTTP フィルターを追加する
+## 4\.HTTP フィルターを追加する
 
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
 
@@ -218,18 +205,19 @@ Application Insights パッケージを含めるように次の要素を編集�
 
 (既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます)。
 
+## 5\.サーバーにインストールします。
 
-## 5.パフォーマンス カウンター コレクションを有効にする
-
-サーバー コンピューターが Windows マシンである場合は、次のものをインストールします。
+Windows サーバーに次のものをインストールします。
 
 * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
 
-## 6.アプリケーションを実行する
+(これにより、パフォーマンス カウンターが有効になります。)
+
+## 6\.アプリケーションを実行する
 
 開発用コンピューターでデバッグ モードで実行するか、サーバーに発行します。
 
-## 7.Application Insights でのテレメトリを表示する
+## 7\.Application Insights でのテレメトリを表示する
 
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
@@ -261,12 +249,21 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 
-## 未処理の例外と要求エラー
+## 例外と要求エラー
 
+未処理の例外は、次のように収集されます。
 
 ![](./media/app-insights-java-get-started/21-exceptions.png)
 
-その他の例外に関するデータを収集するには、[TrackException への呼び出しをコードに挿入][apiexceptions]します。
+その他の例外に関するデータを収集するには 2 つのオプションがあります。
+
+* [TrackException への呼び出しをコードに挿入][apiexceptions]します。
+* [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。監視するメソッドを指定します。
+
+
+## メソッドの呼び出しと外部依存関係の監視
+
+[Java エージェントをインストール](app-insights-java-agent.md)して、JDBC を通じて指定された内部メソッドと実行された呼び出しをタイミング データと共にログに記録します。
 
 
 ## パフォーマンス カウンター
@@ -307,7 +304,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 
 
-#### Windows (64 ビット) パフォーマンス カウンター 
+#### Windows パフォーマンス カウンター 
 
 それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
 
@@ -327,6 +324,10 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
+
+### Unix パフォーマンス カウンター
+
+* [Application Insights プラグインを使用して collectd をインストール](app-insights-java-collectd.md)し、さまざまな種類のシステムとネットワークに関するデータを取得します。
 
 ## ユーザーとセッションのデータを取得する
 
@@ -370,4 +371,4 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

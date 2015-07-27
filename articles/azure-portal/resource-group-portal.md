@@ -4,7 +4,6 @@
 	services="azure-portal" 
 	documentationCenter="" 
 	authors="" 
-	writer="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -75,7 +74,7 @@ Getting Started (概要)
   
 - [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)  
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)
-- [Azure で複雑なアプリケーションを予測どおりに展開する](../app-service-web/app-service-deploy-complex-application-predictably.md)
+- [Azure で複雑なアプリケーションを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)
 - [Azure でのリソース グループのデプロイのトラブルシューティング](../resource-group-deploy-debug.md)  
 - [Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)  
 - [高度なテンプレートの操作](../resource-group-advanced-template.md)  
@@ -95,4 +94,4 @@ Getting Started (概要)
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

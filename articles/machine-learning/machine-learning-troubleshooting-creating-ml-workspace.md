@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="07/01/2015" 
 	ms.author="garye"/>
 
 
@@ -27,7 +27,7 @@
 
 新しい Azure Machine Learning ワークスペースを作成する場合、[ワークスペースの所有者] フィールドに入力する ID は、有効な Microsoft アカウント (以前の Windows Live ID) である必要があります。たとえば john-contoso@live.com や john-contoso@hotmail.com のようなアカウントです。会社の電子メール アカウントなどの Microsoft アカウント以外のアカウントを指定することはできません。無料の Microsoft アカウントを作成するには、[www.live.com](http://www.live.com) にアクセスします。
 
-Azure ポータルにサインインするために使用するアカウントでワークスペースを作成する場合、所有者としてそのアカウントを指定しない限り、ワークスペースを開く権限は自動的には与えられないことに注意してください。Machine Learning Studio でワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。ただし、Azure ポータルからワークスペースを*管理*でき、所有者を変更したり、アクセスを構成することができます。
+Azure ポータルにサインインするために使用するアカウントでワークスペースを作成する場合、所有者としてそのアカウントを指定しない限り、ワークスペースを*開く*権限は自動的には与えられないことに注意してください。Machine Learning Studio でワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。ただし、Azure ポータルからワークスペースを*管理*でき、所有者を変更したり、アクセスを構成することができます。
 
 ワークスペースの管理方法の詳細については、「[Azure Machine Learning ワークスペースの管理]」をご覧ください。
 
@@ -77,4 +77,4 @@ Cookie が削除されたら、ブラウザーを再起動し、[Microsoft Azure
 [screen6]: media/machine-learning-troubleshooting-creating-ml-workspace/screen6.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="06/29/2015" 
 	ms.author="juliako"/>
 
 
@@ -70,4 +70,4 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

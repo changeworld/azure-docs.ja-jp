@@ -26,12 +26,12 @@ Azure PowerShell を使用して Azure DNS を管理するには、次の手順�
 ### 手順 1.
  Azure DNS では、Azure リソース マネージャー (ARM) を使用します。ARM コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager)」を参照してください。<BR><BR>
 
-		PS C:\> Switch-AzureMode -Name AzureResourceManager
+		PS C:> Switch-AzureMode -Name AzureResourceManager
 
 ### 手順 2.
  Azure アカウントにログインします。<BR><BR>
 
-		PS C:\> Add-AzureAccount
+		PS C:> Add-AzureAccount
 
 資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
@@ -39,14 +39,14 @@ Azure PowerShell を使用して Azure DNS を管理するには、次の手順�
 使用する Azure サブスクリプションを選択します。<BR>
 
 
-		PS C:\> Select-AzureSubscription -SubscriptionName "MySubscription"
+		PS C:> Select-AzureSubscription -SubscriptionName "MySubscription"
 
 使用できるサブスクリプションの一覧を表示するには、"Get-AzureSubscription" コマンドレットを使用します。<BR>
 
 ### 手順 4.
 新しいリソース グループを作成します (既存のリソース グループを使用している場合は、この手順をスキップしてください)。<BR>
 
-		PS C:\> New-AzureResourceGroup -Name MyAzureResourceGroup -location "West US"
+		PS C:> New-AzureResourceGroup -Name MyAzureResourceGroup -location "West US"
 
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。ただし、すべての DNS リソースはグローバルであり、リージョンの違いがないため、リソース グループの場所を選択しても、Azure DNS には影響しません。<BR>
@@ -55,7 +55,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 Azure DNS サービスは Microsoft.Network リソース プロバイダーによって管理されます。Azure DNS を使用するには、このリソース プロバイダーを使用するように Azure サブスクリプションを登録する必要があります。この操作は、サブスクリプションごとに 1 回だけ実行します。
 
-	PS C:\> Register-AzureProvider -ProviderNamespace Microsoft.Network
+	PS c:> Register-AzureProvider -ProviderNamespace Microsoft.Network
 
 
 
@@ -75,13 +75,13 @@ Azure DNS PowerShell は、既定で、ゾーンおよびレコード セット�
 ### タグ
 タグは Etag とは異なります。タグは名前と値のペアのリストであり、Azure リソース マネージャーでは、課金またはグループ化のためのリソースのラベル付けに使用されます。タグの詳細については、タグを使用した Azure リソースの整理に関するページを参照してください。Azure DNS PowerShell では、ゾーンとレコード セットの両方でタグをサポートしており、オプションの "-Tag" パラメーターを使用して指定します。次の例では、'project = demo' と 'env = test' の 2 つのタグを持つ DNS ゾーンの作成方法を示します。
 
-	PS C:\> New-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGRoup -Tag @( @{ Name="project"; Value="demo" }, @{ Name="env"; Value="test" } )
+	PS C:> New-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @( @{ Name="project"; Value="demo" }, @{ Name="env"; Value="test" } )
 
 
 ## DNS ゾーンの作成
 DNS ゾーンは、New-AzureDnsZone コマンドレットを使用して作成します。次の例では、'MyResourceGroup' というリソース グループに 'contoso.com' という DNS ゾーンを作成します。<BR>
 
-		PS C:\> New-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGRoup
+		PS C:> New-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 >[AZURE.NOTE]Azure DNS では、ゾーン名を指定する際に末尾に '.' を付けないでください。たとえば、'contoso.com.' ではなく 'contoso.com' にします。<BR>
 
@@ -95,7 +95,7 @@ DNS ゾーンは、New-AzureDnsZone コマンドレットを使用して作成�
 
 これらのレコードを表示するには、Get-AzureDnsRecordSet を使用します。
 
-		PS C:\> Get-AzureDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
+		PS C:> Get-AzureDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
 	Name              : @
 	ZoneName          : contoso.com
@@ -123,7 +123,7 @@ DNS ゾーンは、New-AzureDnsZone コマンドレットを使用して作成�
 
 Azure DNS の新しいゾーンを使用するためのドメインの委任をまだ行っていない場合は、ゾーンのネーム サーバーの 1 つに DNS クエリを直接送信する必要があります。ゾーンのネーム サーバーは、上記の Get-AzureDnsRecordSet によって一覧表示されたように、NS レコードに示されます。以下のコマンドの値を、ゾーンの正しい値に置き換えてください。<BR>
 
-		C:\> nslookup
+		C:> nslookup
 		> set type=SOA
 		> server ns1-01.azure-dns.com
 		> contoso.com
@@ -147,4 +147,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

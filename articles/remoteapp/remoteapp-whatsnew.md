@@ -3,7 +3,8 @@
     pageTitle="Azure RemoteApp の新機能。"
     description="Azure RemoteApp の変更点と改善点について説明します。" 
     services="remoteapp" 
-    solutions="" documentationCenter="" 
+    solutions="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -51,4 +52,4 @@ Azure RemoteApp が実際に使われている様子を確認したいですか�
 
 お読みいただいてありがとうございました。翌月はさらに多くの更新を届けます。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

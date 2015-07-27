@@ -3,7 +3,7 @@
    description="このトピックでは、AS2 メッセージのアーカイブについて説明します" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
-   authors="harishkragarwal" 
+   authors="rajram" 
    manager="dwrede" 
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/18/2015"
-   ms.author="hariag"/>
+   ms.date="07/01/2015"
+   ms.author="rajram"/>
 
 
 #AS2 メッセージのアーカイブ
@@ -41,4 +41,4 @@ AS2 コネクタの API アプリ インスタンスを参照して [追跡] を
 [1]: ./media/app-service-logic-archive-as2-messages/Tracking.jpg
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

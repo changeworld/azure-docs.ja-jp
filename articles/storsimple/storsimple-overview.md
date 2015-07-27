@@ -50,10 +50,10 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 
 ## 次のステップ
 
-[StorSimple のコンポーネント](https://technet.microsoft.com/library/cc754482.aspx)に関する記事と [StorSimple のリリース ノート](https://msdn.microsoft.com/library/azure/dn772367.aspx)を読む
+「[StorSimple のコンポーネントについて](storsimple-components.md)」をご覧ください。
 
 
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

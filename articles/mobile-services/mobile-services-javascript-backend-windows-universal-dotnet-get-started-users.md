@@ -20,9 +20,9 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、ユニバーサル Windows アプリから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
+このトピックでは、ユニバーサル Windows アプリから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、Mobile Services でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。チュートリアルの「[Mobile Services を使い始める]」または「[既存のアプリに Mobile Services を追加する](mobile-services-javascript-backend-windows-universal-dotnet-get-started-data.md)」のいずれかを完了しておくことも必要です。
+このチュートリアルは、Mobile Services のクイック スタートに基づいています。チュートリアルの「[Mobile Services を使い始める]」または「[既存のアプリに Mobile Services を追加する](mobile-services-javascript-backend-windows-universal-dotnet-get-started-data.md)」のいずれかを完了しておくことも必要です。
 
 >[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone Store 8.1 アプリでユーザーを認証する方法について説明します。Windows Phone 8.0 アプリまたは Windows Phone Silverlight 8.1 アプリの場合、このバージョンの「[モバイル サービスでの認証の使用](mobile-services-windows-phone-get-started-users.md)」を参照してください。
 
@@ -84,4 +84,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

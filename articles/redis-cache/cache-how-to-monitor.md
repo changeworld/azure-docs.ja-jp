@@ -221,4 +221,4 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

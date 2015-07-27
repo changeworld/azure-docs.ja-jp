@@ -1,6 +1,6 @@
 <properties
-	pageTitle=".NET バックエンドを使用したモバイル サービス内のユーザーのサービス側の承認 | モバイル デベロッパー センター"
-	description="Azure Mobile Services の .NET バックエンドでユーザーを承認する方法について説明します。"
+	pageTitle=".NET バックエンド モバイル サービスでのユーザーのサービス側承認 | Azure Mobile Services"
+	description=".NET バックエンド モバイル サービスで権限のあるユーザーのアクセスを制限する方法を学習します。"
 	services="mobile-services"
 	documentationCenter="windows"
 	authors="krisragh"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
 	ms.devlang="dotnet"
-	ms.date="05/10/2015"
+	ms.date="07/02/2015"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
@@ -34,20 +34,28 @@
 
 	>[AZURE.NOTE]このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md) を使用する必要があります。
 
-2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs** を開きます。**PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。このコードでは、TodoItem テーブルに挿入される前に、項目に、認証済みユーザーのユーザー ID を追加します。
+2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs** を開き、ステートメントを使用して次を追加します。
 
-			// Get the logged in user
-			var currentUser = User as ServiceUser;
+		using Microsoft.Azure.Mobile.Server.Security;
 
-			// Set the user ID on the item
-			item.UserId = currentUser.Id;
+3. **PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。
 
-3. **GetAllTodoItems** メソッドを見つけ、既存の **return** ステートメントを次のコード行と置き換えます。このクエリは、返される TodoItem オブジェクトにフィルター処理を実施して、それぞれのユーザーが自分で挿入した項目のみを受け取るためのものです。
+		// Get the logged in user
+		var currentUser = User as ServiceUser;
+	
+		// Set the user ID on the item
+		item.UserId = currentUser.Id;
+	
+	このコードでは、TodoItem テーブルに挿入される前に、項目に、認証済みユーザーのユーザー ID を追加します。
 
-				// Get the logged in user
-				var currentUser = User as ServiceUser;
+3. **GetAllTodoItems** メソッドを見つけ、既存の **return** ステートメントを次のコード行と置き換えます。
 
-				return Query().Where(todo => todo.UserId == currentUser.Id);
+		// Get the logged in user
+		var currentUser = User as ServiceUser;
+
+		return Query().Where(todo => todo.UserId == currentUser.Id);
+		
+	このクエリは、返される TodoItem オブジェクトにフィルター処理を実施して、それぞれのユーザーが自分で挿入した項目のみを受け取るためのものです。
 
 4. モバイル サービス プロジェクトを Azure に対して再発行します。
 
@@ -72,4 +80,4 @@
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.date="07/10/2015" 
 	ms.author="awills"/>
  
 # JavaScript Web アプリのための Application Insights
@@ -44,7 +44,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。次に例を示します。
 
-* ASP.NET MVC プロジェクトで、View\Shared_Layout.cshtml にスクリプトを配置します。
+* ASP.NET MVC プロジェクトで、View\\Shared\\_Layout.cshtml にスクリプトを配置します。
 * SharePoint サイトのコントロール パネルで、[[サイト設定 / マスター ページ](app-insights-sharepoint.md)] を開きます。
 
 このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。
@@ -135,11 +135,15 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![](./media/app-insights-javascript/12-search-pages.png)
 
-いずれかのイベントをクリックして、詳細を表示します。
+いずれかのイベントをクリックして、詳細を表示します。詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
 
 > [AZURE.NOTE][検索][diagnostic]を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「*bou」を検索しても「About」とは一致しません。
 
 > [診断検索の詳細][diagnostic]
+
+### ページ ビュー プロパティ
+
+* **ページ ビュー時間** ページの読み込みや、スクリプト実行の開始にかかる時間です。具体的には、ページ読み込みの開始から trackPageView の実行までの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。 
 
 ## 使用状況の追跡 (カスタム)
 
@@ -177,4 +181,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

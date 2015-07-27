@@ -16,7 +16,7 @@
 
 	- **[新しいユーザー名]** とは、サーバーの管理に使用する管理アカウントの名前です。このアカウント用の一意のパスワードを作成し、忘れないように記憶してください。**仮想マシンにログオンする際に、このユーザー名とパスワードが必要になります。**
 
-	- 仮想マシンのサイズによって、使用料金が変わります。また、接続できるデータ ディスク数などの構成オプションも料金に影響します。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://go.microsoft.com/fwlink/p/?LinkId=466520)」を参照してください。
+	- 仮想マシンのサイズによって、使用料金が変わります。また、接続できるデータ ディスク数などの構成オプションも料金に影響します。詳細については、Asure の[仮想マシンのサイズ](../articles/virtual-machines-size-specs.md)と[クラウド サービスのサイズ](../articles/cloud-services-sizes-specs.md)を参照してください。
 
 
 6. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。次に、フィールドの入力内容について補足説明します。
@@ -40,4 +40,4 @@
 
 	![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

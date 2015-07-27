@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.date="06/29/2015" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用したロジック アプリの作成
@@ -24,11 +24,15 @@
 
 テンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
 
-完全なテンプレートについては、[ロジック アプリのテンプレート](https://github.com/tfitzmac/AppServiceTemplates/blob/master/LogicApp.json)に関するページを参照してください。
+完全なテンプレートについては、[ロジック アプリのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)に関するページを参照してください。
 
 ## デプロイ対象
 
 このテンプレートを使用して、ロジック アプリをデプロイします。
+
+展開を自動的に実行するには、次のボタンをクリックします。
+
+[![Azure への展開](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 ## パラメーター
 
@@ -38,7 +42,7 @@
 
      "testUri": {
         "type": "string",
-        "defaultValue": "http://azure.microsoft.com/ja-jp/status/feed/"
+        "defaultValue": "http://azure.microsoft.com/status/feed/"
       }
     
 ## デプロイ対象のリソース
@@ -127,13 +131,13 @@ App Service プランを作成します。
 
 ### PowerShell
 
-    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/tfitzmac/AppServiceTemplates/master/LogicApp.json -ResourceGroupName ExampleDeployGroup
+    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
 ### Azure CLI
 
-    azure group deployment create --template-uri https://raw.githubusercontent.com/tfitzmac/AppServiceTemplates/master/LogicApp.json -g ExampleDeployGroup
+    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

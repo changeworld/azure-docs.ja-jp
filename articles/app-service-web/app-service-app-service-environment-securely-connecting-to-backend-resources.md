@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="06/30/2015" 
 	ms.author="stefsh"/>
 
 # App Service 環境からバックエンド リソースへの安全な接続 #
@@ -27,6 +27,12 @@ App Service 環境は常に地域内の[仮想ネットワーク][virtualnetwork
 
 これらのすべてのシナリオで、App Service 環境で実行中のアプリが、さまざまなサーバーとリソースに安全に接続できます。App Service 環境で実行されているアプリから同じ仮想ネットワーク内の (または同じ仮想ネットワークに接続されている) プライベート エンドポイントへの送信トラフィックは、仮想ネットワーク経由でのみ行われます。プライベート エンドポイントへの送信トラフィックがパブリック インターネット経由で送信されることはありません。
 
+## 発信接続と DNS の要件 ##
+App Service 環境を適切に機能させるには、Azure Storage だけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
+
+顧客の仮想ネットワーク内にカスタム DNS サーバーが構成されていることもあります。App Service 環境は、*.database.windows.net、*.file.core.windows.net、および *.blob.core.windows.net の Azure エンドポイントを解決できる必要があります。
+
+また、App Service 環境を作成する前に、仮想ネットワーク上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。
 
 ## SQL Server への接続
 SQL Server の構成には一般的に、ポート 1433 でリッスンしているエンドポイントがあります。
@@ -104,4 +110,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -37,4 +37,4 @@
 
 <sup>3</sup>ACL は、Virtual Machines の入力エンドポイントでサポートされます。Web/Worker ロールの場合は、入力エンドポイントとインスタンスの入力エンドポイントでサポートされます。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

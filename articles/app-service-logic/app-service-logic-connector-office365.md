@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Office 365 コネクタ" 
-   description="Office 365 コネクタの使用方法" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="sutalasi" 
-   manager="dwrede" 
+<properties
+   pageTitle="Office 365 コネクタ"
+   description="Office 365 コネクタの使用方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,9 +12,9 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="03/20/2015"
-   ms.author="sutalasi"/>
+   ms.workload="integration"
+   ms.date="07/02/2015"
+   ms.author="sameerch"/>
 
 
 #ロジック アプリでの Office 365 コネクタの使用#
@@ -80,7 +80,7 @@ O365 コネクタの API アプリを作成するには、次の手順に従い�
 	![][9]
 
 11. Office 365 の "新しい電子メール" トリガーが構成され、出力パラメーターも表示されているのが確認できます。
-	
+
 	![][10]
 
 12.	ギャラリーの [最近使用した項目] セクションから [Office 365 コネクタ] を選択すると、新しい "Office 365" アクションが追加されます。
@@ -157,7 +157,4 @@ O365 コネクタの API アプリを作成するには、次の手順に従い�
 [20]: ./media/app-service-logic-connector-office365/20_Office365_Send_Configured.png
 [21]: ./media/app-service-logic-connector-office365/21-create-new-o365-api-app.png
 
-
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

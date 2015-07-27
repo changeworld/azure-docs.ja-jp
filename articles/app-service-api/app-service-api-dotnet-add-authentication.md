@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="06/26/2015" 
 	ms.author="tdykstra"/>
 
 # API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加
@@ -30,6 +30,8 @@
 - 構成したプロバイダーにログインします。
 - API アプリをもう一度呼び出して、認証されたアクセスが機能することを確認します。
 - ログオン ユーザーの要求を取得するコードを作成してテストします。
+
+Azure App Service での認証の詳細については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
 
 ## 前提条件
 
@@ -85,61 +87,13 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 
 認証された要求のみを受け入れるように API アプリを構成するには、API アプリのアクセス レベルを**[パブリック (認証済み)]** に設定します。さらに、Azure Active Directory、Google、Facebook などのプロバイダーからの認証を必要とするようにゲートウェイを構成します。
 
-1. 保護する API アプリの **[API アプリ]** ブレードに戻ります。
+[AZURE.INCLUDE [app-service-api-config-auth](../../includes/app-service-api-config-auth.md)]
 
-2. **[API アプリ]** ブレードで、**[設定]**、**[アプリケーションの設定]** の順にクリックします。
-
-	![[設定] のクリック](./media/app-service-api-dotnet-add-authentication/clicksettings.png)
-
-	![[アプリケーションの設定] をクリック](./media/app-service-api-dotnet-add-authentication/clickbasicsettings.png)
-
-3. **[アプリケーションの設定]** ブレードで、**[アクセス レベル]** を **[パブリック (認証済み)]** に変更し、**[保存]** をクリックします。
-
-	![[基本設定] をクリック](./media/app-service-api-dotnet-add-authentication/setpublicauth.png)
-
-	これで、認証されていないアクセスから API アプリが保護されます。次に、ゲートウェイを構成して、使用する認証プロバイダーを指定する必要があります。
+これで、認証されていないアクセスから API アプリが保護されます。次に、ゲートウェイを構成して、使用する認証プロバイダーを指定する必要があります。
 
 ### <a id="gateway"></a>認証プロバイダーを使用するようにゲートウェイを構成する
 
-4. スクロールして左側の **[API アプリ]** ブレードに戻り、ゲートウェイへのリンクをクリックします。
-
-	![[ゲートウェイ] をクリック](./media/app-service-api-dotnet-add-authentication/gateway.png)
-
-7. **[ゲートウェイ]** ブレードで、**[設定]**、**[ID]** の順にクリックします。
-
-	![[設定] のクリック](./media/app-service-api-dotnet-add-authentication/clicksettingsingateway.png)
-
-	![[ID] をクリック](./media/app-service-api-dotnet-add-authentication/clickidentity.png)
-
-	**[ID]** ブレードからは、Azure Active Directory や他のさまざまなプロバイダーを使用して認証を構成する別のブレードに移動することができます。
-
-	![[ID] ブレード](./media/app-service-api-dotnet-add-authentication/identityblade.png)
-  
-3. 使用する ID プロバイダーを選択し、該当する記事の手順に従って、API アプリをそのプロバイダーで構成します。これらの記事はモバイル アプリ向けに書かれていますが、API アプリでも手順は同じです。一部の手順では、[Azure ポータル]を使用する必要があります。
-
- - [Microsoft アカウント](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication-preview.md)
- - [Facebook ログイン](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication-preview.md)
- - [Twitter ログイン](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication-preview.md)
- - [Google ログイン](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication-preview.md)
- - [Azure Active Directory](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication-preview.md)
-
-たとえば、次のスクリーン ショットは、Azure Active Directory の認証を設定した後の [Azure ポータル]のページと [Azure プレビュー ポータル]のブレードを示しています。
-
-Azure プレビュー ポータルでは、**[Azure Active Directory]** ブレードに、Azure ポータルの [Azure Active Directory] タブで作成したアプリケーションの**クライアント ID** が表示されます。さらに、**[許可されたテナント]** に、Azure Active Directory テナント ("contoso.onmicrosoft.com" など) が表示されます。
-
-![[Azure Active Directory] ブレード](./media/app-service-api-dotnet-add-authentication/tdinaadblade.png)
-
-Azure ポータルでは、**[Azure Active Directory]** タブで作成したアプリケーションの **[構成]** タブに、Azure プレビュー ポータルの **[Azure Active Directory]** ブレードの **[サインオン URL]**、**[アプリケーション ID/URI]**、および **[応答 URL]** が表示されます。
-
-![](./media/app-service-api-dotnet-add-authentication/oldportal1.png)
-
-![](./media/app-service-api-dotnet-add-authentication/oldportal2.png)
-
-![](./media/app-service-api-dotnet-add-authentication/oldportal3.png)
-
-![](./media/app-service-api-dotnet-add-authentication/oldportal4.png)
-
-(この図の応答 URL には、同じ URL が 2 つ表示されています。1 つには `http:`、もう 1 つには `https:` が付いています。)
+[AZURE.INCLUDE [app-service-api-gateway-config-auth](../../includes/app-service-api-gateway-config-auth.md)]
 
 ## 認証の動作の確認
 
@@ -188,6 +142,8 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 	![ログイン完了](./media/app-service-api-dotnet-add-authentication/logincomplete.png)
 
 	![Chrome の GET 応答](./media/app-service-api-dotnet-add-authentication/chromeget.png)
+
+	Swagger UI を有効にしている場合、Swagger UI ページにも移動できるようになりました。ただし、ページの右下隅に赤い**エラー** アイコンが表示されます。このアイコンをクリックすると、Swagger JSON ファイルにアクセスできないことを示すメッセージが表示されます。これは、Swagger で Zumo トークンを含めずに AJAX を呼び出し、JSON ファイルを取得しようとすることが原因です。これは、Swagger UI ページの動作を妨げません。
 
 ## Postman を使用した Post 要求の送信
 
@@ -307,12 +263,9 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 
 ## 次のステップ
 
-ここまでは、Azure Active Directory またはソーシャル プロバイダーの認証を必要とすることによって Azure API アプリを保護する方法について説明しました。詳細については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
+ここまでは、Azure Active Directory またはソーシャル プロバイダーの認証を必要とすることによって Azure API アプリを保護する方法について説明しました。詳細については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
 
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="クラウド サービスの管理方法 - Azure" 
-	description="Azure の管理ポータルでクラウド サービスを管理する方法について説明します。" 
+	description="Azure ポータルでクラウド サービスを管理する方法について説明します。" 
 	services="cloud-services" 
 	documentationCenter="" 
 	authors="Thraka" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015"
+	ms.date="07/01/2015"
 	ms.author="adegeo"/>
 
 
@@ -22,14 +22,18 @@
 
 # クラウド サービスの管理方法
 
-Azure の管理ポータルの **[クラウド サービス]** 領域では、サービス ロールまたは展開の更新、ステージングされた展開の運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたは展開の削除ができます。
+> [AZURE.SELECTOR]
+- [Azure Portal](cloud-services-how-to-manage.md)
+- [Azure Preview Portal](cloud-services-how-to-manage-portal.md)
+
+Azure ポータルの **[クラウド サービス]** 領域では、サービス ロールまたはデプロイメントの更新、ステージングされたデプロイメントの運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたはデプロイメントの削除ができます。
 
 
 ## 方法: クラウド サービス ロールまたは展開の更新
 
 クラウド サービスのアプリケーション コードを更新する必要がある場合は、ダッシュボード、**[クラウド サービス]** ページ、または **[インスタンス]** ページの **[更新]** を使用します。1 つのロールを更新することも、すべてのロールを更新することもできます。新しいサービス パッケージとサービス構成ファイルをアップロードする必要があります。
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com/)のダッシュボード、**[クラウド サービス]** ページ、または **[インスタンス]** ページで、**[更新]** をクリックします。
+1. [Azure ポータル](https://manage.windowsazure.com/)のダッシュボード、**[クラウド サービス]** ページ、または **[インスタンス]** ページで、**[更新]** をクリックします。
 
 	![UpdateDeployment](./media/cloud-services-how-to-manage/CloudServices_UpdateDeployment.png)
 
@@ -154,4 +158,4 @@ Azure の管理ポータルの **[クラウド サービス]** 領域では、�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

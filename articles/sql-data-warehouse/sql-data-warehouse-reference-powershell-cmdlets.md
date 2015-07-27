@@ -99,4 +99,4 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

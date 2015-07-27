@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/13/2015"
+   ms.date="07/10/2015"
    ms.author="bwren" />
 
 # Azure Automation の構成
@@ -61,10 +61,10 @@ Azure Automation を初めて開始するときに、少なくとも 1 つのオ
 	Add-AzureAccount –Credential $cred
 	Select-AzureSubscription –SubscriptionName "My Subscription"
 
-Runbook のすべての[チェックポイント](automation-runbook-execution/#checkpoints)の後で、これらの行を繰り返す必要があります。Runbook が中断された後、別のワーカーで再開した場合は、もう一度認証を実行する必要があります。
+Runbook のすべての[チェックポイント](automation-runbook-execution#checkpoints)の後で、これらの行を繰り返す必要があります。Runbook が中断された後、別のワーカーで再開した場合は、もう一度認証を実行する必要があります。
 
 ## 関連記事:
 - [Azure オートメーション: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

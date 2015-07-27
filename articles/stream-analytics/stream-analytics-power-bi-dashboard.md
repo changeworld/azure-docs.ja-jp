@@ -1,7 +1,6 @@
 <properties 
 	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure" 
 	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。" 
-	keywords="business intelligence tools,power bi,streaming data,power bi dashboard"	
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -14,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/12/2015" 
+	ms.date="06/30/2015" 
 	ms.author="jeffstok"/>
 	
 # Azure Stream Analytics & Power BI: ストリーミング データのリアルタイム分析に関するライブ ダッシュボード
@@ -27,12 +26,12 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 > [AZURE.NOTE]Power BI 出力は Azure Stream Analytics のプレビュー機能です。
 
-##前提条件
+## 前提条件 ##
 
 * 組織 ID を使用している Microsoft Azure アカウント (Power BI は組織 ID のみに対応しています。組織 ID とは、xyz@mycompany.com などの仕事またはビジネス用電子メール アドレスです。xyz@hotmail.com などの個人用電子メールは組織 ID ではありません。組織 ID の詳細については、[こちら](https://msdn.microsoft.com/subscriptions/dn531048.aspx)をご覧ください。[こちら](http://go.microsoft.com/fwlink/?linkid=331007&clcid=0x409)からダウンロード可能な FAQ もあります)。
 * ストリーミング データの使用元となる Stream Analytics ジョブの入力。Stream Analytics は、Azure Event Hubs または Azure BLOB ストレージストアからの入力を受け入れます。  
 
-##Azure Stream Analytics ジョブの作成
+## Azure Stream Analytics ジョブの作成 ##
 
 [Azure ポータル](https://manage.windowsazure.com)で、**[新規]、[データ サービス]、[Stream Analytics]、[簡易作成]** の順にクリックします。
 
@@ -48,7 +47,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 > [AZURE.TIP]新しいジョブは、**[未開始]** の状態で表示されます。ページの下部にある **[開始]** ボタンが無効になっていることがわかります。ジョブを開始する前に、ジョブの入力、出力、クエリなどを構成する必要があるため、これは予期された動作です。
 
-##ジョブの入力の指定
+## ジョブの入力の指定 ##
 
 このチュートリアルでは、JSON シリアル化と UTF-8 エンコードによる入力としてイベント ハブを使用することを前提としています。
 
@@ -73,7 +72,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
   *	**[エンコード]** - UTF8
 *	チェック ボタンをクリックしてこのソースを追加し、Stream Analytics がイベント ハブに正常に接続できることを確認します。
 
-##Power BI 出力の追加
+## Power BI 出力の追加 ##
 
 1.  ページの上部にある **[出力]** をクリックしてから、**[出力の追加]** をクリックします。Power BI が出力オプションとして表示されます。
 
@@ -104,7 +103,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 >	[AZURE.WARNING] Also be aware that if Power BI already had a dataset and table with the same name as the one you provided in this Stream Analytics job, the existing data will be overwritten.
 
 
-##クエリの記述
+## クエリの記述 ##
 
 ジョブの **[クエリ]** タブに移動します。Power BI で目的の出力を得るためのクエリを記述します。たとえば、次の SQL クエリのようなクエリを記述します。
 
@@ -125,7 +124,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
     
 ジョブを開始します。イベント ハブがイベントを受け取り、クエリによって予期された結果が生成されることを確認します。クエリによって行が出力されない場合、Power BI データセットとテーブルは自動的に作成されません。
 
-##Power BI でのダッシュボードの作成
+## Power BI でのダッシュボードの作成 ##
 
 [Powerbi.com](https://powerbi.com) にアクセスして、組織 ID でログインします。Stream Analytics ジョブ クエリで結果が出力された場合は、データセットが既に作成されていることがわかります。
 
@@ -161,10 +160,34 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](http://support.powerbi.com/knowledgebase/articles/424868-dashboards-in-power-bi-preview)に関する記事をご覧ください。
 
-## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+## 制限事項とベスト プラクティス ##
+Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI の価格") で説明するように、同時実行性とスループットの制約の両方を採用しています。
 
-## 次のステップ
+そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データのプッシュが最大で 1 プッシュ/秒となり、クエリがスループット要件の範囲内に収まるようにするには、TumblingWindow または HoppingWindow の使用をお勧めします。また、次の式を使用して、現在のウィンドウに設定する値 (秒) を計算ができます。![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
+
+たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
+
+つまり、元のクエリが次のように変更されます。
+
+    SELECT
+    	MAX(hmdt) AS hmdt,
+    	MAX(temp) AS temp,
+    	System.TimeStamp AS time,
+    	dspl
+    INTO
+    	OutPBI
+    FROM
+    	Input TIMESTAMP BY time
+    GROUP BY
+    	TUMBLINGWINDOW(ss,4),
+    	dspl
+
+
+
+## 問い合わせ ##
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+
+## 次のステップ ##
 
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 - [Azure Stream Analytics の使用](stream-analytics-get-started.md)
@@ -185,4 +208,4 @@ Power BI を使用したダッシュボードの作成の詳細については�
 [graphic10]: ./media/stream-analytics-power-bi-dashboard/10-stream-analytics-power-bi-dashboard.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

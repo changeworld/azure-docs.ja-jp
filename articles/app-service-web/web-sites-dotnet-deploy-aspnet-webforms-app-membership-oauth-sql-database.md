@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/09/2015" 
+	ms.date="06/30/2015" 
 	ms.author="erikre"/>
 
 
@@ -41,20 +41,18 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 ![Contacts - Edit Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms00.png)
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。アカウントにサインアップする前に Azure を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure で、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。アカウントにサインアップする前に Azure を実際に使ってみるには、「[App Service を試す](https://tryappservice.azure.com/)」にアクセスしてください。Azure で、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##開発環境を設定する 
 最初に、Visual Studio 2013 と Azure SDK for .NET をインストールして開発環境を設定します。
 
 1. まだインストールしていない場合は [Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkId=306566) をインストールします。  
-2. [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。  
-
-	>[AZURE.NOTE]マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
+2. [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。  
 
 3. インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
 4. **Web Platform Installer** のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。![Web Platform Installer](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-01.png)  
 
-	>[AZURE.NOTE]この SDK をインストール済みの場合、インストールされる項目の数は 0 になります。インストールされる項目の数は **[Web Platform Installer]** ウィンドウの左下に表示されます。
+      この SDK をインストール済みの場合、インストールされる項目の数は 0 になります。インストールされる項目の数は **[Web Platform Installer]** ウィンドウの左下に表示されます。
 
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。
 
@@ -93,7 +91,7 @@ Web アプリを作成しましたが、まだその中にコンテンツがあ�
 3. 中央の列で **[ASP.NET Web アプリケーション]** を選択します。
 4. プロジェクトに *ContactManager* という名前を付けて、**[OK]** をクリックします。![[新しいプロジェクト] ダイアログ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms02.png)  
 
-	>[AZURE.NOTE]このチュートリアル シリーズでは、プロジェクトの名前を **ContactManager** としています。チュートリアル シリーズのさまざまな場面で提供されるコードを説明どおりに動作させるため、まったく同じ名前を使用することをお勧めします。
+      このチュートリアル シリーズでは、プロジェクトの名前を **ContactManager** としています。チュートリアル シリーズのさまざまな場面で提供されるコードを説明どおりに動作させるため、まったく同じ名前を使用することをお勧めします。
 
 5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Web フォーム]** テンプレートを選択します。**[クラウドでのホスト]** チェック ボックスをオフにして (オンになっている場合)、**[OK]** をクリックします。![New ASP.NET Project dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms03.png) Web フォーム アプリケーションが作成されます。
 ###マスター ページを更新する
@@ -203,7 +201,8 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。![Select Publish](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms05.png)**[Web の発行]** ダイアログ ボックスが表示されます。  
 
-2. **[Web の発行]** ダイアログ ボックスの **[プロファイル]** タブで、**[Azure Web アプリ]** をクリックします。![Publish Web dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms06.png)
+2. **[Web の発行]** ダイアログ ボックスの **[プロファイル]** タブで、**[Azure Web アプリ]** をクリックします。
+	  
 3. まだサインインしていない場合、**[既存の Web アプリを選択]** ダイアログ ボックスの **[サインイン]** をクリックします。サインインしたら、このチュートリアルの最初に作成した Web アプリを選択します。**[OK]** をクリックして続行します。![Select Existing Web Site dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms07.png) Visual Studio によって発行設定がダウンロードされます。
 4. **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。![Publish Web dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms08.png) Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発行の全体的なステータスが表示されます。![Web Publishing Activity](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms09.png)  
 
@@ -257,11 +256,11 @@ namespace ContactManager.Models
 6. **ソリューション エクスプローラー**で*プロジェクト*を右クリックし、**[追加]**、**[新しいスキャフォールディング項目]** の順に選択します。**[スキャフォールディングの追加]** ダイアログ ボックスが表示されます。
 7. 左側のウィンドウで **[Web フォーム]** を選択し、中央のウィンドウで **[Entity Framework を使用している Web フォーム]** を選択して、**[追加]** をクリックします。![Add Scaffold dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13a.png) **[Web フォーム ページの追加]** ダイアログ ボックスが表示されます。  
 
-8. **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contact (ContactManager.Models)` に設定します。**[データ コンテキスト クラス]** を `ApplicationDbContext (ContactManager.Models)` に設定します。**[追加]** をクリックします。![Add Web Forms Pages dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13b.png)
+8. **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contacts (ContactManager.Models)` に設定します。**[データ コンテキスト クラス]** を `ApplicationDbContext (ContactManager.Models)` に設定します。**[追加]** をクリックします。![Add Web Forms Pages dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13b.png)
 
 Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*、*Insert.aspx* の各ページを格納する新しいフォルダーが作成されます。また、*DynamicData* フォルダーも作成されます。このフォルダーには *EntityTemplates* フォルダーと *FieldTemplates* フォルダーが格納されています。`ApplicationDbContext` はメンバーシップ データベースと連絡先データの両方に使用されます。
 
-###データ モデルを使用できるようアプリケーションを構成する 
+###データ モデルを使用するようにアプリケーションを構成する 
 次の作業では、作成したデータ モデルに基づいてデータベースを作成するための Code First Migrations 機能を有効化すると共に、サンプル データとデータ初期化子を追加します。
 
 1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。![Add Web Forms Pages dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13c.png)  
@@ -273,7 +272,7 @@ enable-migrations
 	<pre class="prettyprint">
 add-migration Initial
 </pre>`add-migration Initial` コマンドは、データベースを作成する <date_stamp>Initial ファイルを *Migrations* フォルダーに生成します。最初のパラメーター (Initial) は任意です。このパラメーターは、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。`Initial` クラスでは、`Up` メソッドを使用して `Contact` テーブルを作成し、`Down` メソッドを使用してそのテーブルを削除します (前の状態に戻します)。  
-4. *Migrations\Configuration.cs* ファイルを開きます。 
+4. *Migrations\\Configuration.cs* ファイルを開きます。 
 5. 次の名前空間を追加します。  
 	<pre class="prettyprint">
 using ContactManager.Models;
@@ -376,7 +375,7 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 次の手順を実行することで、Google 認証プロバイダーを追加できます。
 
-1. *App_Start\Startup.Auth.cs* ファイルを開きます。 
+1. *App_Start\\Startup.Auth.cs* ファイルを開きます。 
 2. `app.UseGoogleAuthentication()` メソッドのコメント文字を削除して、メソッドを次のような記述にします。  
 	<pre class="prettyprint">
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
@@ -672,13 +671,10 @@ Web アプリケーションが完成したら、Azure に発行することが�
 ###SQL Azure DB を調べる 
 1. Visual Studio で**サーバー エクスプローラー**を開き、**[ContactDB]** に移動します。
 2. **[ContactDB]** を右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。![Open in SQL Server Object Explorer menu item](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms32.png)  
-3. **[ファイアウォール ルールの追加]** ダイアログ ボックスが表示されたら、**[ファイアウォール ルールを追加]** をクリックします。  
+3. **[ファイアウォール ルールの追加]** ダイアログ ボックスが表示されたら、**[ファイアウォール ルールを追加]** をクリックします。**[SQL データベース]** を展開できず、**ContactDB** を Visual Studio で表示できない場合は、手順に従って特定のファイアウォール ポート (またはポート範囲) を開放する必要があります。これには、**MVC チュートリアル**の最後に記載されている「[Azure のファイアウォール ルールを設定する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」の手順を実行します。または、アプリケーションをローカルでビルド、実行し (Visual Studio で **Ctrl キーを押しながら F5 キーを押す**)、データを追加して、ローカル データベースのデータを確認する方法もあります。  
 
-	>[AZURE.NOTE]**[SQL データベース]** を展開できず、**ContactDB** を Visual Studio で表示できない場合は、手順に従って特定のファイアウォール ポート (またはポート範囲) を開放する必要があります。これには、**MVC チュートリアル**の最後に記載されている「[Azure のファイアウォール ルールを設定する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」の手順を実行します。または、アプリケーションをローカルでビルド、実行し (Visual Studio で **Ctrl キーを押しながら F5 キーを押す**)、データを追加して、ローカル データベースのデータを確認する方法もあります。
+4. **[サーバーへの接続]** ダイアログ ボックスが表示された場合、このチュートリアルの冒頭で作成した**パスワード**を入力して **[接続]** ボタンをクリックします。パスワードを思い出せない場合は、ローカルのプロジェクト ファイルから見つけることができます。これには、**ソリューション エクスプローラー**で *Properties* フォルダー、*PublishProfiles* フォルダーの順に展開し、*contactmanager.pubxml* ファイルを開き (別の名前が付けられている可能性があります)、発行パスワードを検索します。
 
-4. **[サーバーへの接続]** ダイアログ ボックスが表示された場合、このチュートリアルの冒頭で作成した**パスワード**を入力して **[接続]** ボタンをクリックします。
-
-	>[AZURE.NOTE]**ソリューション エクスプローラー***プロパティ**PublishProfiles**contactmanager.pubxml*
 5. **[contactDB]** データベース、**[テーブル]** の順に展開します。
 6. **[dbo.AspNetUsers]** テーブルを右クリックし、**[データの表示]** を選択します。![View Data menu item](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms34.png) canEditUser@contoso.com ユーザーに関連付けられているデータが表示されます。![ContactManager window](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms35.png)  
 
@@ -701,4 +697,4 @@ ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[L
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

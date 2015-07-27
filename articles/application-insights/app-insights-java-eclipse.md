@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter="java"
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/03/2015" 
+	ms.date="07/13/2015" 
 	ms.author="awills"/>
  
 # Eclipse で Java 用に Application Insights を使う
@@ -100,9 +100,17 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
 ## クライアント側のテレメトリ
 
-Web ページに追加するスクリプトは、概要ブレードの [クイック スタート] タイルから入手できます。
+クイック スタートブレードで、[マイ Web ページを監視するためのコードを取得する] をクリックします。
 
-概要ブレードに、ページ ビュー、ユーザー、セッションのメトリックが表示されます。
+![アプリの概要ブレードで、クイック スタートを選択し、マイ Web ページを監視するためのコードを取得します。スクリプトをコピーします。](./media/app-insights-java-eclipse/02-monitor-web-page.png)
+
+HTML ファイルの先頭にコード スニペットを挿入します。
+
+#### クライアント側のデータの表示
+
+更新された Web ページを開いて使用します。1 ～ 2 分待ってから、Application Insights に戻り、[使用状況] ブレードを更新します。
+
+[使用状況] ブレードに、ページ ビュー、ユーザー、セッションのメトリックが表示されます。
 
 ![セッション、ユーザー、ページ ビュー](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
@@ -110,7 +118,7 @@ Web ページに追加するスクリプトは、概要ブレードの [クイ�
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。セットアップするには、概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
 
 応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
 
@@ -156,9 +164,9 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-web-track-usage.md
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

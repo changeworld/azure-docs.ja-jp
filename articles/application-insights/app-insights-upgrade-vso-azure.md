@@ -43,7 +43,7 @@ ApplicationInsights.config を開きます。`ActiveProfile` および `Profiles
     ![](./media/app-insights-upgrade-vso-azure/csdef.png)
 4. SDK: プロジェクトを右クリックし、[[Application Insights の追加] を選択][greenbrown]します。これによって SDK がプロジェクトに追加され、さらに Azure で新しい Application Insights リソースが作成されます。
 5. ログ: コードに LogEvent() など、以前の API の呼び出しが含まれている場合、それらはソリューションをビルドしようとしたときに見つかります。こういった呼び出しを、[新しい API を使用する][track]ように更新します。
-6. Web ページ: プロジェクトに Web ページが含まれている場合、<head> セクション内のスクリプトを置き換えます。通常、Views\Shared_Layout.cshtml などのマスター ページにはコピーが 1 つだけあります。[Azure の Application Insights リソースの [クイック スタート] ブレードから新しいスクリプトを取得][usage]します。Web ページの本文に logEvent や logPage などのテレメトリ呼び出しが含まれている場合、[新しい API を使用するようにそれらを更新][api]します。
+6. Web ページ: プロジェクトに Web ページが含まれている場合、<head> セクション内のスクリプトを置き換えます。通常、Views\\Shared_Layout.cshtml などのマスター ページにはコピーが 1 つだけあります。[Azure の Application Insights リソースの [クイック スタート] ブレードから新しいスクリプトを取得][usage]します。Web ページの本文に logEvent や logPage などのテレメトリ呼び出しが含まれている場合、[新しい API を使用するようにそれらを更新][api]します。
 7. サーバー モニター: アプリが IIS 上で実行中のサービスである場合、サーバーから Microsoft Monitoring Agent をアンインストールし、[Application Insights Status Monitor をインストール][redfield]します。
 8. Web テスト: Web 可用性テストを使用していた場合、アラートを含む Web 可用性テストを[新しいポータルで再作成][availability]します。
 9. アラート: Azure ポータルで、[メトリックに対するアラート][alerts]を設定します。
@@ -73,4 +73,4 @@ ApplicationInsights.config を開きます。`ActiveProfile` および `Profiles
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

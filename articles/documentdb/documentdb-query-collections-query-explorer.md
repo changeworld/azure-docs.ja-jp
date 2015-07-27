@@ -78,4 +78,4 @@
 - クエリ エクスプローラーでサポートされている DocumentDB SQL の文法の詳細については、[ここ](documentdb-sql-query.md)をクリックしてください。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

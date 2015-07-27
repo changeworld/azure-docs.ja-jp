@@ -336,4 +336,4 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

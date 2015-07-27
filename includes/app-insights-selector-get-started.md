@@ -7,4 +7,4 @@
 - [Android](../article/application-insights/app-insights-android.md)
 - [Other](../article/application-insights/app-insights-platforms.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

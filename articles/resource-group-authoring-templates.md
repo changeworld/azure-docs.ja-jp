@@ -1,25 +1,27 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートの作成"
    description="宣言型 JSON 構文を使用して Azure にアプリケーションをデプロイする Azure リソース マネージャーのテンプレートを作成します。"
-   services="multiple"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="multiple"
+   ms.service="azure-resource-manager"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/22/2015"
+   ms.date="07/15/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの作成
 
 Azure アプリケーションでは、通常、目的を達成するためにリソース (データベース サーバー、データベース、Web サイトなど) を組み合わせる必要があります。  
 展開して、各リソースを別々 に管理するではなく、使用する Azure リソース マネージャーのテンプレートを配置およびプロビジョニングするすべての調整、1 つの操作で、アプリケーションのリソースを作成できます。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。
+
+このトピックでは、テンプレートの各セクションについて説明します。実際のスキーマについては、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
 ## テンプレートの形式
 
@@ -43,7 +45,7 @@ Azure アプリケーションでは、通常、目的を達成するために�
 | contentVersion | あり | テンプレートのバージョン (1.0.0.0 など)。  
 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。  
 
-| 指定 | いいえ | リソースの展開をカスタマイズするのにはデプロイを実行すると、提供されている値です。
+| parameters | いいえ | リソースの展開をカスタマイズするのにはデプロイを実行すると、提供されている値です。
 | variables | いいえ | テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。  
 
 | リソース | あり | リソース グループ内でデプロイまたは更新されるサービスの種類。  
@@ -447,7 +449,8 @@ For more information, see the [resourceId function](../resource-group-template-f
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)
-- [Azure で複雑なアプリケーションを予測どおりに展開する](app-service-web/app-service-deploy-complex-application-predictably.md)
+- [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)
+- [Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

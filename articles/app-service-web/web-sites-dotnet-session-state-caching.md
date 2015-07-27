@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="06/24/2015" 
 	ms.author="riande"/>
 
 
@@ -24,10 +24,10 @@
 
 ASP.NET Web アプリケーションでセッション状態を使用している場合は、外部セッション状態プロバイダー (Redis Cache Service または SQL Server セッション状態プロバイダー) を構成する必要があります。セッション状態を使用し、外部プロバイダーを使用しない場合は、Web アプリケーションの 1 つのインスタンスに制限されます。Redis Cache Service は、最も高速で最も簡単に実現できるキャッシュ サービスです。
 
-<h2><a id="createcache"></a>キャッシュを作成する</h2>
+##<a id="createcache"></a>キャッシュを作成する
 [ここにある手順](../cache-dotnet-how-to-use-azure-redis-cache.md#create-cache)に従ってキャッシュを作成します。
 
-<h2><a id="configureproject"></a>RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加する</h2>
+##<a id="configureproject"></a>RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加する
 NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソール ([**Tools**]、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) からインストール するには、次のコマンドを使用します。
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
@@ -36,7 +36,7 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
 
 詳細については、[NuGet RedisSessionStateProvider のページ](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/)および「[キャッシュ クライアントの構成](../cache-dotnet-how-to-use-azure-redis-cache.md#NuGet)」を参照してください。
 
-<h2><a id="configurewebconfig"></a>Web.Config ファイルを修正する</h2>
+##<a id="configurewebconfig"></a>Web.Config ファイルを修正する
 キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは *web.config* ファイルにスタブ エントリを追加します。
 
 1. *web.config* を開き、**sessionState** 要素を見つけます。
@@ -74,8 +74,7 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
   &lt;/system.web></pre>
 
 
-<h2><a id="usesessionobject"></a>コードでセッション オブジェクトを使用する</h2>
-最後に、ASP.NET コードでセッション オブジェクトを使用します。**Session.Add** メソッドを使用して、セッション状態にオブジェクトを追加します。このメソッドではキーと値のペアに基づいて、セッション状態キャッシュにアイテムが格納されます。
+<a id="usesessionobject">コードでセッション オブジェクトを使用する</a>最後に、ASP.NET コードでセッション オブジェクトを使用します。**Session.Add** メソッドを使用して、セッション状態にオブジェクトを追加します。このメソッドではキーと値のペアに基づいて、セッション状態キャッシュにアイテムが格納されます。
 
     string strValue = "yourvalue";
 	Session.Add("yourkey", strValue);
@@ -91,7 +90,7 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
   *著者 [Rick Anderson](https://twitter.com/RickAndMSFT)*
@@ -109,4 +108,4 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

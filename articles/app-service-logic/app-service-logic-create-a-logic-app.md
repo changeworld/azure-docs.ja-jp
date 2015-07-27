@@ -172,4 +172,4 @@
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

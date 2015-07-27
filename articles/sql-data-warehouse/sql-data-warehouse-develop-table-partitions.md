@@ -319,4 +319,4 @@ SQL Data Warehouse にデータベース スキーマを正常に移行したら
 
 <!-- Other web references -->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

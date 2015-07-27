@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="SAP コネクタ" 
-   description="SAP コネクタの使用方法" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="harishkragarwal" 
-   manager="dwrede" 
+<properties
+   pageTitle="SAP コネクタ"
+   description="SAP コネクタの使用方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="harishkragarwal"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,14 +12,14 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="03/20/2015"
-   ms.author="hariag"/>
+   ms.workload="integration"
+   ms.date="07/02/2015"
+   ms.author="sameerch"/>
 
 
 # SAP コネクタ #
 
-コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。ファイアウォールの背後にあるオンプレミスにインストールされた SAP を操作することが必要になる場合があるシナリオがあります。SAP コネクタをフローで使用すると、さまざまなシナリオを実現できます。例をいくつか示します。
+コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。ファイアウォールの内側にあるオンプレミスにインストールされた SAP の操作が必要になる場合があるシナリオがあります。SAP コネクタをフローで使用すると、さまざまなシナリオを実現できます。例をいくつか示します。
 
 1.	Web またはモバイル ユーザーのフロント エンドを介して、SAP に存在するデータの一部を公開する
 2.	目的の処理を行った後に SAP にデータを発行する
@@ -38,8 +38,10 @@ SAP コネクタを使用するには、まず SAP コネクタ API アプリの
 1. Azure ポータルの左下にある [+ 新規] を使用して Azure Marketplace を開きます。
 2. [Web + モバイル]、[API アプリ] の順に移動して、"SAP コネクタ" を検索します。
 3. SAP コネクタを次のように構成します。
-	1. 最初のブレードで、名前、アプリ サービス プランなどの一般的な詳細を入力します。
-	2. パッケージの設定の一部として、SAP の資格情報を入力します。さらに、Azure Servce Bus 接続文字列を入力します。これは、オンプレミスの SAP とのハイブリッド接続を確立するために使用されます。 
+	1. 最初のブレードで、名前、App Service プランなどの一般的な詳細を入力します。
+
+	2. パッケージの設定の一部として、SAP の資格情報を入力します。さらに、Azure Service Bus 接続文字列を入力します。これは、オンプレミスの SAP とのハイブリッド接続を確立するために使用されます。
+
 	3. RFC、TRFC、BAPI、IDOC については、シナリオのニーズに基づいて構成します。複数の値を指定する必要がある場合は、値をコンマで区切ります。
 
 ![][1]
@@ -92,7 +94,4 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

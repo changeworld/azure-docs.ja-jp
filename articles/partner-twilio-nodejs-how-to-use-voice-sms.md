@@ -21,7 +21,7 @@
 
 このガイドでは、Azure で Twilio と node.js によって通信するアプリケーションを構築する方法を示します。
 
-<a id="whatis"></a>
+<a id="whatis"/>
 ## Twilio とは
 
 Twilio は、開発者が簡単に音声通話の発着信処理、テキスト メッセージの送受信、およびブラウザー ベースでネイティブのモバイル アプリケーションへの VoIP 通話の埋め込みができるようにする API プラットフォームです。ここでは、詳細について説明する前に、そのしくみを簡単に解説します。
@@ -38,12 +38,12 @@ Twilio Web サービス API に対する HTTP 要求を作成することで、�
 
 Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。ブラウザーで実行される Twilio JavaScript SDK のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode]で詳細を読むことができます。
 
-<a id="signup"></a>
+<a id="signup"/>
 ## Twilio へのサインアップ (Microsoft ディスカウント)
 
 Twilio サービスを使用する前に、まず、[アカウントにサインアップ][signup]する必要があります。Microsoft Azure のお客様は特別割引をご利用いただけます。[こちらからサインアップ][signup]してください。
 
-<a id="azuresite"></a>
+<a id="azuresite"/>
 ## node.js Azure Web サイトの作成およびデプロイ
 
 次に、Azure 上で実行される node.js Web サイトを作成する必要があります。[そのための公式なドキュメントは、ここにあります][azure_new_site]。大まかには、次の作業を行います。
@@ -54,7 +54,7 @@ Twilio サービスを使用する前に、まず、[アカウントにサイン
 * シンプルな node.js Web アプリケーションでファイル `server.js` を作成する
 * このシンプルなアプリケーションを Azure にデプロイする
 
-<a id="twiliomodule"></a>
+<a id="twiliomodule"/>
 ## Twilio モジュールの構成
 
 次に、Twilio API を使用するシンプルな node.js アプリケーションの記述を開始します。その前に、Twilio アカウント資格情報を構成する必要があります。
@@ -77,7 +77,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 
 このコードは、一般的な [express Web フレームワーク][express]および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。これで設定はすべて終わりました。コードの記述を始めましょう。
 
-<a id="makecall"></a>
+<a id="makecall"/>
 ## 発信通話の実行
 
 選択した番号に電話をかける単純なフォームを作成しましょう。server.js を開き、次のコードを入力します。"CHANGE_ME" と記述されている個所は、自分の Azure Web サイトの名前に置き換えてください。
@@ -172,7 +172,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 
 ここで、Web サイトを Azure にデプロイし、ホームを開きます。自分の電話番号をテキスト フィールドに入力し、Twilio 番号からの通話を着信できるはずです。
 
-<a id="sendmessage"></a>
+<a id="sendmessage"/>
 ## SMS メッセージの送信
 
 ここでは、テキスト メッセージの送信ロジックを処理するユーザー インターフェイスとフォームをセットアップします。"server.js" を開いて、最後の "app.post" の呼び出しの後に次のコードを追加します。
@@ -208,7 +208,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 
 アプリケーションを Azure に再デプロイします。今度は、そのフォームを送信し、テキスト メッセージを自分 (または親しい友人) に送ることができるはずです。
 
-<a id="nextsteps"></a>
+<a id="nextsteps"/>
 ## 次のステップ
 
 これで、通信するアプリケーションを node.js と Twilio を使用して構築する方法の基本を学習できました。ただし、これらは、Twilio と node.js でできることの初歩的な例にすぎません。Node.js と Twilio の使用方法の詳細については、次のリソースをご覧ください。
@@ -233,4 +233,4 @@ Azure で node.js と Twilio を活用してください。
 [pair]: http://www.twilio.com/blog/2013/06/pair-programming-in-the-browser-with-twilio.html
 [azure-admin-console]: ./media/partner-twilio-nodejs-how-to-use-voice-sms/twilio_1.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

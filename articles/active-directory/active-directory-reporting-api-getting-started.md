@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/22/2015"
+   ms.date="07/08/2015"
    ms.author="yossib"/>
 
 
@@ -76,7 +76,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 ディレクトリで動作するように以下の PowerShell スクリプトを編集するには、$ClientID、$ClientSecret、$tenantdomain を、「Delegating Access in Azure AD (Azure AD でのアクセスの委任)」の正しい値に置き換えます。
 
     # This script will require the Web Application and permissions setup in Azure Active Directory
-    $ClientID      = <<YOUR CLIENT ID HERE>>                # Should be a ~35 character string insert your info here
+    $ClientID      = "<<YOUR CLIENT ID HERE>>"                # Should be a ~35 character string insert your info here
     $ClientSecret  = "<<YOUR CLIENT SECRET HERE>>"          # Should be a ~44 character string insert your info here
     $loginURL      = "https://login.windows.net"
     $tenantdomain  = "<<YOUR TENANT NAME HERE>>"            # For example, contoso.onmicrosoft.com
@@ -127,7 +127,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 
 
 ## スクリプトの実行
-スクリプトの編集が完了したら、実行して、予期したデータが返されることを確認します。
+スクリプトの編集が完了したら、実行して、AuditEvents レポートから予期したデータが返されることを確認します。
 
 スクリプトは、使用可能なすべてのレポートの一覧、および AccountProvisioningEvents レポートからの出力を、PowerShell ウィンドウに JSON 形式で返します。また、同じ出力を JSON、テキスト、XML でファイルに作成します。他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
 
@@ -136,6 +136,5 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - 使用可能なセキュリティ、監査、およびアクティビティ レポートに興味がある場合は、 「[View your access and usage reports (アクセスおよび使用状況のレポートの表示)](active-directory-view-access-usage-reports.md)」を参照してください
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights を使用したアプリケーションの状態と利用状況の監視" 
-	description="Application Insights の使用を開始します。オンプレミスや Microsoft Azure アプリケーションの使用状況、可用性、パフォーマンスを分析します。" 
+	description="Application Insights の使用を開始します。内部設置型または Microsoft Azure アプリケーションの使用状況、可用性、パフォーマンスを分析します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -20,9 +20,9 @@
 *Application Insights はプレビュー段階です。*
 
 
-アプリケーションが正常に実行されていることと障害がすぐに検出されることを確認します。[Application Insights][start] はパフォーマンス上の問題や例外を通知し、問題の原因を把握して診断するのに役立ちます。
+アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。[Application Insights][start] はパフォーマンス上の問題や例外を通知し、問題の原因を把握して診断するのに役立ちます。
 
-Application Insights が監視できるのは、オンプレミス、仮想マシン、Microsoft Azure Web サイトでホストされる、ASP.NET Web アプリケーションと WCF サービスです。
+Application Insights が監視できるのは、オンプレミス、仮想マシン、および Microsoft Azure Websites でホストされる、ASP.NET Web アプリケーションおよび WCF サービスです。
 
 
 ## <a name="setup"></a>パフォーマンス モニターの設定
@@ -160,7 +160,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 [利用状況を追跡する][usage] - ご使用のアプリケーションをどれほどのユーザーが使用しているかを調べます。
 
-[トラブルシューティング][qna] - と Q & A
+[トラブルシューティング][qna] - および Q & A
 
 ## ビデオ
 
@@ -178,4 +178,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

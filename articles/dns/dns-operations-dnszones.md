@@ -24,7 +24,7 @@
 
 ドメインをホストする新しい DNS ゾーンを作成するには、New-AzureDnsZone コマンドレットを使用します。
 
-		PS C:\> $zone = New-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup [–Tag $tags] 
+		PS C:> $zone = New-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup [–Tag $tags] 
 
 この操作により、Azure DNS に新しい DNS ゾーンが作成され、そのゾーンに対応するローカル オブジェクトが返されます。必要に応じて、Azure リソース マネージャーのタグの配列を指定することができます。詳細については、「[Etag とタグ](../dns-getstarted-create-dnszone#Etags-and-tags)」を参照してください。
 
@@ -36,14 +36,14 @@
 
 DNS ゾーンを取得するには、Get-AzureDnsZone コマンドレットを使用します。
 
-		PS C:\> $zone = Get-AzureDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
+		PS C:> $zone = Get-AzureDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
 
 この操作により、Azure DNS 内の既存のゾーンに対応する DNS ゾーン オブジェクトが返されます。このオブジェクトには、ゾーンに関するデータ (レコード セットの数など) が含まれますが、レコード セット自体は含まれません。
 
 ## DNS ゾーンの一覧表示
 Get-AzureDnsZone からゾーン名を省略することで、リソース グループ内のすべてのゾーンを列挙できます。
 
-	PS C:\> $zoneList = Get-AzureDnsZone -ResourceGroupName MyAzureResourceGroup
+	PS C:> $zoneList = Get-AzureDnsZone -ResourceGroupName MyAzureResourceGroup
 この操作により、ゾーン オブジェクトの配列が返されます。
 
 ## DNS ゾーンの更新
@@ -55,14 +55,14 @@ DNS ゾーンを更新するには、次の 2 つの方法のいずれかを使�
  
 ゾーン名とリソース グループを使用してゾーンを指定します。
 
-	PS C:\> Set-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup [-Tag $tags]
+	PS C:> Set-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup [-Tag $tags]
 
 ### 方法 2
 Get-AzureDnsZone の $zone オブジェクトを使用してゾーンを指定します。
 
-	PS C:\> $zone = Get-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
-	PS C:\> <..modify $zone.Tags here...>
-	PS C:\> Set-AzureDnsZone -Zone $zone [-Overwrite]
+	PS C:> $zone = Get-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
+	PS C:> <..modify $zone.Tags here...>
+	PS C:> Set-AzureDnsZone -Zone $zone [-Overwrite]
 
 $zone オブジェクトで Set-AzureDnsZone を使用すると、同時変更が上書きされないように 'Etag' チェックが使用されます。オプションの "-Overwrite" スイッチを使用して、これらのチェックが実行されないように指定できます。詳細については、「[Etag とタグ](../dns-getstarted-create-dnszone#Etags-and-tags)」を参照してください。
 
@@ -78,15 +78,15 @@ DNS ゾーンを削除するには、次の 2 つの方法のいずれかを使�
 
 ゾーン名とリソース グループ名を使用してゾーンを指定します。
 
-	PS C:\> Remove-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup [-Force] 
+	PS C:> Remove-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup [-Force] 
 
 この操作では、オプションの "-Force" スイッチが使用されます。これにより、DNS ゾーンを削除するかどうかの確認メッセージは表示されなくなります。
 ### 方法 2
 
 Get-AzureDnsZone の $zone オブジェクトを使用してゾーンを指定します。
 
-	PS C:\> $zone = Get-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
-	PS C:\> Remove-AzureDnsZone -Zone $zone [-Force] [-Overwrite]
+	PS C:> $zone = Get-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
+	PS C:> Remove-AzureDnsZone -Zone $zone [-Force] [-Overwrite]
 
 "-Force" スイッチは方法 1 と同じです。
 
@@ -94,7 +94,7 @@ Get-AzureDnsZone の $zone オブジェクトを使用してゾーンを指定�
 
 ゾーン オブジェクトは、パラメーターとして渡す代わりに、パイプすることもできます。
 
-	PS C:\> Get-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureDnsZone [-Force] [-Overwrite]
+	PS C:> Get-AzureDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureDnsZone [-Force] [-Overwrite]
 
 ## 次のステップ
 
@@ -103,4 +103,4 @@ Get-AzureDnsZone の $zone オブジェクトを使用してゾーンを指定�
 
 [.NET SDK を使用した操作の自動化](../dns-sdk)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

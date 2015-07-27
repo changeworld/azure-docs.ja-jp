@@ -23,4 +23,4 @@
 + [Mobile Services アプリケーションにプッシュ通知を追加する](mobile-services-javascript-backend-windows-phone-get-started-push.md)<br/>TodoList のモバイル サービスを更新し、Azure Notification Hubs を使用して TodoList サンプル アプリケーションのユーザーに通知を送信できるようにします。
 + [プッシュ通知を認証ユーザーに送信する](mobile-services-javascript-backend-windows-phone-push-notifications-app-users.md)<br/>1 つ前のチュートリアルを拡張し、サインインしているユーザーのみが通知を登録できるようにします。 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

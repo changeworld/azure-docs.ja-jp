@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2015" 
+	ms.date="07/11/2015" 
 	ms.author="awills"/>
  
 # Application Insights を利用し、ASP.NET アプリの障害と例外を診断する  
@@ -31,9 +31,8 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 
 ![失敗した要求のインスタンスを選択し、例外の詳細で、例外のインスタンスを表示します。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-*例外が表示されませんか? 「[例外のキャプチャ](#exceptions)」を参照してください。*
 
-あるいは、[障害] ブレードのさらに下にある例外の一覧から開始できます。個別の例外が表示されるまでクリックしてください。
+**あるいは、**[障害] ブレードのさらに下にある例外の一覧から開始できます。個別の例外が表示されるまでクリックしてください。
 
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/040-exception-drill.png)
@@ -57,7 +56,25 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 
 *依存関係の障害がありませんか? それは良かったです。しかしながら、依存関係のデータを取得していることを確認するために、[パフォーマンス] ブレードを開き、[依存関係の期間] グラフを確認します。*
 
-## POST 要求とその他のログ データを表示する方法
+ 
+
+## カスタムのトレースとログ データ
+
+アプリに固有の診断データを取得するには、独自のテレメトリ データを送信するコードを挿入します。これは、要求、ページ ビュー、およびその他の自動収集されたデータとともに、診断検索に表示されます。
+
+いくつかのオプションがあります。
+
+* [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索のカスタム イベントの下にも表示されます。イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理][diagnostic]できます。
+* [TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) は、POST 情報などの長いデータを送信できます。
+* [TrackException()](#exceptions) は、スタック トレースを送信します。[例外に関する詳細](#exceptions)をご覧ください。
+* 既に Log4Net、NLog などのログ記録フレームワークを使用している場合は、[これらのログのキャプチャ][netlogs]して、診断検索の要求や例外データの横に表示できます。
+
+これらのイベントを表示するには [[検索]][diagnostic]、[フィルター] と開き、[カスタム イベント]、[トレース]、または [例外] を選択します。
+
+
+![ドリル スルー](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
+
+### 要求の POST データを表示する方法
 
 要求詳細では、POST 呼び出しでアプリに送信されたデータは含まれません。このデータを報告するには:
 
@@ -66,10 +83,6 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 * 失敗した要求を調査するときは、関連付けられているトレースを検索します。  
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/060-req-related.png)
-
-Log4Net や NLog など、ログ記録フレームワークを使用している場合、[それらのログをキャプチャし][netlogs]、同じ方法で参照できます。
-
-[カスタム イベント][api]は通常、使用状況の追跡に使用されますが、[この要求のすべての利用統計情報] の下にもあります。
 
 
 ## <a name="exceptions"></a> 例外と関連する診断データをキャプチャする
@@ -428,4 +441,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

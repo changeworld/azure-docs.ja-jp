@@ -459,4 +459,4 @@ HTTP コマンドを使用したリソースの操作の詳細については、
 [3]: media/documentdb-resources/resources3.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

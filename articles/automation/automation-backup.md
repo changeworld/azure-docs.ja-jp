@@ -44,4 +44,4 @@ Azure Automation から証明書をエクスポートすることはできませ
 - [オートメーションの資産](https://msdn.microsoft.com/library/dn939988.aspx)
 - [Azure コマンドレット](https://msdn.microsoft.com/library/dn690262.aspx) 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

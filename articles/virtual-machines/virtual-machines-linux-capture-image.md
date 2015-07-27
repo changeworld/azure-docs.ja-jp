@@ -3,7 +3,7 @@
 	description="Linux を実行する Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="dsk-2015"
 	manager="timlt"
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/11/2015" 
-	ms.author="kathydav"/>
+	ms.date="06/11/2015"
+	ms.author="dkshir"/>
 
 
 # テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法##
@@ -88,6 +88,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 [カスタム仮想マシンの作成方法]: virtual-machines-create-custom.md
 [データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
 
- 
-
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -20,7 +20,7 @@
 
 ## データ定義言語 (DDL) ステートメント
 
-- [ALTER DATABASE](https://msdn.microsoft.com/library/ms174269.aspx)
+- [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 - [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
 - [ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
 - [ALTER SCHEMA](https://msdn.microsoft.com/library/ms173423.aspx)
@@ -127,4 +127,4 @@
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

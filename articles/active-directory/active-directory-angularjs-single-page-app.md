@@ -180,4 +180,4 @@ Azure AD を使用して認証と承認を Web アプリケーションや Web A
 + [Azure AD の認証シナリオ](https://msdn.microsoft.com/library/azure/dn499820.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

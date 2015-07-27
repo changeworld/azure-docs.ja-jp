@@ -1,9 +1,7 @@
 <properties 
-	title="How to add a users to an elastic database pool" 
 	pageTitle="弾力性データベース プールにユーザーを追加する方法" 
 	description="プール内の各 db に特権を持つユーザーを追加する必要があります。" 
-	metaKeywords="azure sql database elastic databases credentials" 
-	services="sql-database" documentationCenter=""  
+	services="sql-database" documentationCenter="" 
 	manager="jeffreyg" 
 	authors="sidneyh"/>
 
@@ -16,9 +14,9 @@
 	ms.date="04/20/2015" 
 	ms.author="sidneyh" />
 
-# 弾力性データベース プールにユーザーを追加する方法
+# エラスティック データベース プールにユーザーを追加する方法
 
-弾力性データベース ジョブにより、[弾力性データベース プール](sql-database-elastic-pool.md)内のすべてのデータベースに対して、同じスクリプトを実行することができます。スクリプトを実行するには、プール内のすべてのデータベースに適切なアクセス許可を持つユーザーを追加する必要があります。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx?f=255&MSPPError=-2147217396)」か「[Adding Users to Your SQL Azure Database (SQL Azure Database にユーザーを追加する)](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)」をご覧ください。
+**エラスティック データベース ジョブ**では、[エラスティック データベース プール](sql-database-elastic-pool.md)内のすべてのデータベースに対して、同じスクリプトを実行することができます。スクリプトを実行するには、プール内のすべてのデータベースに適切なアクセス許可を持つユーザーを追加する必要があります。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx?f=255&MSPPError=-2147217396)」か「[Adding Users to Your SQL Azure Database (SQL Azure Database にユーザーを追加する)](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)」をご覧ください。
 
 ## 前提条件
 * [弾力性データベース プール (プレビュー) を作成する](sql-database-elastic-pool-portal.md)
@@ -38,7 +36,7 @@
 
 ## 次のステップ
 
-データベース プールに対してジョブを実行します。「[弾力性データベースのジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
+エラスティック データベース プールに対してジョブを実行します。「[弾力性データベースのジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -46,4 +44,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

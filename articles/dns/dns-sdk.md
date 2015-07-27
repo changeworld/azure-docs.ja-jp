@@ -107,4 +107,4 @@ Zones コレクションと RecordSets コレクションを使用すると、�
 
 [Visual Studio SDK のサンプル プロジェクト](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

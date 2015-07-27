@@ -167,4 +167,4 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 <!-- URLs. -->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

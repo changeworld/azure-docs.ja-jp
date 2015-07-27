@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2015"
+	ms.date="07/13/2015"
 	ms.author="mwasson"/>
 
 # Azure App Service のカスタム ドメイン名の構成
@@ -27,7 +27,7 @@
 
 Web アプリを作成するときに、Azure は azurewebsites.net のサブドメインにそのアプリを割り当てます。たとえば、Web アプリの名前が **contoso** の場合、URL は **contoso.azurewebsites.net** になります。また Azure によって仮想 IP アドレスも割り当てられます。
 
-運用 Web アプリでは、通常、カスタム ドメイン名をユーザーに表示します。この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) を使用してカスタム ドメインを予約または構成する方法について説明します(この記事では、すべてのドメイン レジストラーに共通する一般的な手順を示します。特定のレジストラーについては、この記事の上部にあるタブをクリックしてください)。
+運用 Web アプリでは、通常、カスタム ドメイン名をユーザーに表示します。この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) を使用してカスタム ドメインを予約または構成する方法について説明します
 
 [AZURE.INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
@@ -70,7 +70,8 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 3.	**[Web Apps]** ブレードをクリックします。
 4.	Web アプリの名前をクリックします。
 5.	**[Essentials]** ページで、**[すべての設定]** をクリックします。
-6.	**[カスタム ドメインと SSL]** をクリックします。IP アドレスは、ページの下部にあります (**[SSL バインド]** セクションのすぐ上)。
+6.	**[カスタム ドメインと SSL]** をクリックします。 
+7.	**[カスタム ドメインと SSL]** ブレードで **[外部ドメインの使用]** をクリックします。IP アドレスは、この部分の下部にあります。
 
 ## DNS レコードの作成
 
@@ -105,12 +106,12 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 
 ここでカスタム ドメイン名を "contoso.com" とすると、次のレコードが作成されます。
 
-- 127.0.0.1 にマップされた **contoso.com**
+- 127\.0.0.1 にマップされた **contoso.com**
 - **contoso.azurewebsites.net** にマップされた **www.contoso.com**
 
 >[AZURE.NOTE]Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns-web-sites-custom-domain)」をご覧ください。
 
-<a name="awverify" /></a>
+<a name="awverify" />
 ## awverify レコードの作成 (A レコードのみ)
 
 A レコードを作成する場合、使用しようとするドメインを自分が所有していることを確認するための特別な CNAME レコードも Web アプリに作成する必要があります。この CNAME レコードの形式は次のとおりです。
@@ -124,16 +125,16 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## 次のステップ
 
-詳細については、「[Azure DNS の概要](http://azure.microsoft.com/ja-jp/documentation/articles/dns-getstarted-create-dnszone)」と「[Azure DNS へのドメインの委任](http://azure.microsoft.com/ja-jp/documentation/articles/dns-domain-delegation)」をご覧ください。
+詳細については、「[Azure DNS の概要](../dns/dns-getstarted-create-dnszone)」と「[Azure DNS へのドメインの委任](../dns/dns-domain-delegation)」をご覧ください。
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- Anchors. -->
 [Overview]: #overview
@@ -146,4 +147,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

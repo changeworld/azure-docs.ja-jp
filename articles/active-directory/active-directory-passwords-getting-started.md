@@ -194,7 +194,7 @@
 パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。[ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#download-azure-ad-connect)
 
 #### Azure AD Sync のバージョンを確認するには
-1.	**%ProgramFiles%\Azure Active Directory Sync * * に移動します。2.	**ConfigWizard.exe** 実行可能ファイルを参照します。
+1.	**%ProgramFiles%\\Azure Active Directory Sync * * に移動します。2.	**ConfigWizard.exe** 実行可能ファイルを参照します。
 3.	この実行可能ファイルを右クリックして、 コンテキスト メニューから [**プロパティ**] オプションを選択します。
 4.	[**詳細**] タブをクリックします。
 5.	[**ファイル バージョン**] フィールドを参照します。
@@ -300,7 +300,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 * [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
 * [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
 * [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [How to get Operational Insights with Password Management Reports (パスワード管理のレポートからの情報取得方法)](active-directory-passwords-get-insights.md)
+* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
 * [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
 * [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [詳細情報](active-directory-passwords-learn-more.md)
@@ -342,4 +342,4 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

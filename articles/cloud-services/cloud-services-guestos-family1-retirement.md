@@ -78,4 +78,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
 ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

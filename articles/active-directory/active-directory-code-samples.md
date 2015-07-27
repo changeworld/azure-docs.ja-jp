@@ -155,4 +155,4 @@ PHP | [Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.mi
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -3,4 +3,4 @@
 - [(Xamarin.iOS | .NET)](../articles/app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md)
 - [(Windows 8.x Store | .NET)](../articles/app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-push-preview.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

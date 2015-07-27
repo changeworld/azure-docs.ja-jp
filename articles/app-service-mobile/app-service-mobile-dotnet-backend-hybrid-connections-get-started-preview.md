@@ -168,4 +168,4 @@
 [Get started with Mobile Services]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

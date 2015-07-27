@@ -4,7 +4,6 @@
 	services="azure-portal"
 	documentationCenter="na" 
 	authors="stepsic-microsoft-com" 
-	writer="" 
 	manager="terrylan" 
 	editor=""/>
 
@@ -83,4 +82,4 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
     
 これらのいずれかのタイルにアクセスできない場合、管理者に問い合わせてリソース グループに対する共同作成者アクセス権を得る必要があります。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="06/25/2015" 
 	ms.author="sidneyh"/>
 
-# 弾力性データベース ジョブ コンポーネントのインストール方法
+# エラスティック データベース ジョブ コンポーネントのアンインストール方法
 
-弾力性データベース ジョブ サービスのインストール中にエラーが発生した場合は、サービスのリソース グループを削除します。
+エラスティック データベース ジョブ サービスのインストール中にエラーが発生した場合は、サービスのリソース グループを削除します。
 
 ## サービス コンポーネントのアンインストール
 
@@ -50,12 +50,12 @@
 
 ## 次のステップ
 
-弾力性データベース ジョブを再インストールするには、「[弾力性データベース ジョブ サービスのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
+エラスティック データベース ジョブを再インストールするには、「[エラスティック データベース ジョブ コンポーネントのインストール)](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
 
-弾力性ジョブ サービスの概要については、「[弾力性データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+エラスティック データベース ジョブ サービスの概要については、「[Create and manage a SQL Database elastic pool (preview) (SQL Database エラスティック データベース プールの作成 (プレビュー))](sql-database-elastic-jobs-overview.md)」をご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-job-uninstall/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

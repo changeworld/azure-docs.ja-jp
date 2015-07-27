@@ -192,4 +192,4 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

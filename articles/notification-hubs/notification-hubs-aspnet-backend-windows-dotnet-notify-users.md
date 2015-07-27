@@ -373,4 +373,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [通知ハブを使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

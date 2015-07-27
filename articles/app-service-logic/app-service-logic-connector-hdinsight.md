@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="HDInsight コネクタ" 
-   description="HDInsight コネクタの使用方法" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="anuragdalmia" 
-   manager="dwrede" 
+<properties
+   pageTitle="HDInsight コネクタ"
+   description="HDInsight コネクタの使用方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,9 +12,9 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="03/20/2015"
-   ms.author="sutalasi"/>
+   ms.workload="integration"
+   ms.date="07/02/2015"
+   ms.author="sameerch"/>
 
 
 # Microsoft HDInsight コネクタ #
@@ -22,7 +22,7 @@
 コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し、Hive、Pig、MapReduce、ストリーミング MapReduce など、さまざまな Hadoop ジョブを作成して送信できます。Azure HDInsight サービスは、Apache Hadoop クラスターをクラウドにデプロイしてプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。Hadoop コアには、データ ストレージの信頼性を高める Hadoop 分散ファイル システム (HDFS) と、この分散システムに格納されているデータの処理と分析を同時に行うシンプルな MapReduce プログラミング モデルが用意されています。HDInsight コネクタを使用して、クラスターの作成または削除、ジョブの送信、ジョブの完了待機を実行できます。
 
 ###基本的なアクション
-		
+
 - クラスターを作成
 - クラスターの作成を待機
 - Pig ジョブを送信
@@ -78,7 +78,7 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 
 
 
-- ロジック アプリで構成されると、アクションが表示されます。アクションの出力が表示されます。これは、後続のアクションの入力として使用できます。 
+- ロジック アプリで構成されると、アクションが表示されます。アクションの出力が表示されます。これは、後続のアクションの入力として使用できます。
 
 ![][7]
 
@@ -121,6 +121,5 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 [9]: ./media/app-service-logic-connector-hdinsight/LogicApp5.jpg
 [10]: ./media/app-service-logic-connector-hdinsight/LogicApp6.jpg
 [11]: ./media/app-service-logic-connector-hdinsight/LogicApp7.jpg
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

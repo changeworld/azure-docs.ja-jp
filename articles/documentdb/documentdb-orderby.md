@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.date="07/06/2015" 
 	ms.author="arramac"/>
 
 # Order By を使用した DocumentDB の並べ替え
@@ -33,11 +33,11 @@ SQL クエリの完全なリファレンスについては、[DocumentDB クエ�
 ANSI SQL 同様、DocumentDB のクエリで、SQL ステートメントにオプションで Order By 句を含められるようになりました。句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。
 
 ### SQL を使用した順序付け
-PublishTimestamp の降順でブックを取得するクエリの例を次に示します。
+タイトルの降順でブックを取得するクエリの例を次に示します。
 
     SELECT * 
     FROM Books 
-    ORDER BY Books.PublishTimestamp DESC
+    ORDER BY Books.Title DESC
 
 ### SQL とフィルターを使用した順序付け
 Books.ShippingDetails.Weight などのドキュメント内の入れ子になったプロパティを使って並べ替えたり、次の例のように、WHERE 句と Order By を組み合わせて追加のフィルターを指定したりできます。
@@ -73,49 +73,56 @@ DocumentDB SDK 内でネイティブ ページング サポートを使用して
         }
     }
 
-DocumentDB では数値型 (文字列ではなく) に対する順序付けをサポートし、また機能のこのプレビューでは、クエリあたり 1 つの Order By プロパティのみをサポートしています。詳細については、[今後予定された機能](#Whats_coming_next)を参照してください。
+DocumentDB では、クエリあたり、1 つの数値プロパティ、文字列プロパティ、またはブール プロパティでの順序付けがサポートされています。これに近日公開予定のクエリの種類が加わります。詳細については、[今後予定された機能](#Whats_coming_next)を参照してください。
 
 ## Order By のインデックス作成ポリシーの構成
-Order By クエリを実行するには、次のいずれかの操作を行います。
 
-- 最大有効桁数によりドキュメント内の特定のパスのインデックスを作成します。または、 
-- 最大有効桁数によりコレクション全体の*すべて*のパスを再帰的にインデックス作成します。 
+DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この 2 つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。
 
-最大有効桁数 (JSON 構成で有効桁数 -1 として表される) は、インデックス作成される値に基づいて可変のバイト数を利用します。そのため、次のようになります。
-
-- 数値の大きいプロパティ (エポック タイムスタンプなど) では、最大有効桁数のインデックス オーバーヘッドは高くなります。 
-- 数値の小さいプロパティ (列挙値、ゼロ、郵便番号、年齢など) では、最大有効桁数のインデックス オーバーヘッドは低くなります。
+>[AZURE.NOTE]文字列の範囲インデックスは、REST API のバージョン2015-06-03 により、2015 年 7 月 7 日に導入されました。文字列に対して Order By のポリシーを作成するには、.NET SDK の SDK バージョン 1.2.0、あるいは Python、Node.js、または Java SDK のバージョン 1.1.0 を使用する必要があります。
+>
+>REST API の 2015-06-03 より前のバージョンでは、文字列と数値の両方において既定のコレクションのインデックス作成ポリシーはハッシュとなっていました。これが、文字列についてはハッシュ、数値については範囲というように変更されました。
 
 詳細については、「[DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」を参照してください。
 
-### すべての数値プロパティに対する Order By のインデックスを作成する
-任意の (数値) プロパティに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。
+### すべてのプロパティに対する Order By のインデックスを作成する
+コレクション内の JSON ドキュメント内に表示される任意のまたはすべての数値プロパティまたは文字列プロパティに対する Order By に必要な「すべての範囲」インデックス作成を使用してコレクションを作成する方法を示します。ここで、"/*" はコレクション内のすべての JSON プロパティ/パスを表し、-1 は最大有効桁数を表します。
                    
-
     booksCollection.IndexingPolicy.IncludedPaths.Add(
-        new IndexingPath {
-            IndexType = IndexType.Range, 
-            Path = "/",
-            NumericPrecision = -1 });
+        new IncludedPath { 
+            Path = "/*", 
+            Indexes = new Collection<Index> { 
+                new RangeIndex(DataType.String) { Precision = -1 }, 
+                new RangeIndex(DataType.Number) { Precision = -1 }
+            }
+        });
 
     await client.CreateDocumentCollectionAsync(databaseLink, 
         booksCollection);  
 
+>[AZURE.NOTE]Order By では、RangeIndex でインデックスが作成されるデータ型 (文字列と数値) の結果しか返さないので注意してください。たとえば、既定のインデックスポリシーに、数値に対する RangeIndex しか含まれていない場合、文字列値を使用したパスに対する Order By はドキュメントを返しません。
+
 ### 1 つのプロパティに対する Order By のインデックス作成
-PublishTimestamp プロパティのみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。
-
+Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう 1 つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。
+    
     booksCollection.IndexingPolicy.IncludedPaths.Add(
-        new IndexingPath {
-            IndexType = IndexType.Range,
-            Path = "/"PublishTimestamp"/?",
-            NumericPrecision = -1
-        });
-
+        new IncludedPath { 
+            Path = "/Title/?", 
+            Indexes = new Collection<Index> { 
+                new RangeIndex(DataType.String) { Precision = -1 } } 
+            });
+    
+    // Use defaults which are:
+    // (a) for strings, use Hash with precision 3 (just equality queries)
+    // (b) for numbers, use Range with max precision (for equality, range and order by queries)
     booksCollection.IndexingPolicy.IncludedPaths.Add(
-        new IndexingPath {
-            Path = "/"
+        new IncludedPath { 
+            Path = "/*",
+            Indexes = new Collection<Index> { 
+                new HashIndex(DataType.String) { Precision = 3 }, 
+                new RangeIndex(DataType.Number) { Precision = -1 }
+            }            
         });
-
 
 ## サンプル
 この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
@@ -124,17 +131,15 @@ PublishTimestamp プロパティのみに対する Order By のインデック�
 
 今回導入された Order By サポートは、今後のサービス更新で拡張される予定です。現在、次の追加機能に取り組んでおり、お客様からのフィードバックを基に、これらの機能強化のリリースを優先して行う予定です。
 
-- 動的なインデックス作成ポリシー: コレクション作成後のインデックス作成ポリシーの変更のサポート
-- 文字列の範囲インデックス: 文字列値に対する範囲クエリ (>、<、>=、<=) をサポートするインデックス作成。これをサポートするために、インデックス作成ポリシーに新しいより高度なスキーマを導入する予定です。
-- DocumentDB クエリでの文字列の Order By のサポート。
-- Azure プレビュー ポータルを使用してインデックス作成ポリシーを更新できるようにする。
+- 動的なインデックス作成ポリシー: コレクション作成後の Azure ポータルでのインデックス作成ポリシーの変更のサポート
 - 複合インデックスのサポートによる、より効率的な Order By の実現と、複数のプロパティでの Order By のサポート
 
 ## FAQ
 
 **並べ替えがサポートされた SDK のプラットフォームまたはバージョンを教えてください。**
 
-Order By はサーバー側で更新されるため、この機能の使用にあたり SDK の新しいバージョンをダウンロードする必要はありません。サーバー側 JavaScript SDK を含むすべての SDK のプラットフォームとバージョンで、SQL クエリ文字列を使用して Order By を使用できます。LINQ を使用している場合は、Nuget から バージョン 1.2.0 以降をダウンロードする必要があります。
+Order By に必要なインデックス作成ポリシーを使用してコレクションを作成するためには、SDK の最新のバージョン (.NET のバージョン 1.2.0、Node.js、JavaScript、Python、および Java のバージョン 1.1.0) をダウンロードする必要があります。.NET SDK 1.2.0 は、LINQ 式内で OrderBy() および OrderByDescending() を使用する場合にも必要です。
+
 
 **Order By クエリの予測される要求単位 (RU) の消費はどのくらいですか?**
 
@@ -143,11 +148,7 @@ Order By では参照に DocumentDB インデックスを利用するため、Or
 
 **Order By で予測されるインデックス作成のオーバーヘッドはどのくらいですか?**
 
-インデックス作成ストレージのオーバーヘッドは、数値プロパティの数に比例します。最悪のシナリオでは、インデックスのオーバーヘッドはデータの 100% です。Range/Order By インデックスと既定のハッシュ インデックス間のスループット (要求単位) オーバーヘッドに違いはありません。
-
-**今回の変更は Order By を使用しないクエリに影響しますか?**
-
-Order By を使用しないクエリの動作に何の変更も導入されません。この機能のリリース以前は、すべての DocumentDB クエリで返される結果は ResourceId (_rid) 順でした。Order By を使用すると、クエリは指定した順番で返されます。Order By クエリでは、_同じ値を持つ複数のドキュメントが返された場合、2 番目の並べ替え順序として rid が使用されます。
+インデックス作成ストレージのオーバーヘッドは、プロパティの数に比例します。最悪のシナリオでは、インデックスのオーバーヘッドはデータの 100% です。Range/Order By インデックスと既定のハッシュ インデックス間のスループット (要求単位) オーバーヘッドに違いはありません。
 
 **Order By を使用して DocumentDB の既存のデータにクエリを実行する方法を教えてください。**
 
@@ -155,15 +156,14 @@ Order By を使用しないクエリの動作に何の変更も導入されま�
 
 **Order By の現在の制限を教えてください。**
 
-Order By は数値プロパティに対してのみ指定でき、また最大有効桁数 (-1) のインデックスによる範囲インデックス作成の場合にのみ指定できます。Order By はドキュメント コレクションに対してのみサポートされています。
+プロパティが最大有効桁数 (-1) でインデックス付けされる範囲である場合、Order By は数値プロパティまたは文字列プロパティに対してのみ指定できます。
 
 次の操作は実行できません。
  
-- 文字列プロパティに対する Order By の使用 (近日提供予定)。
 - 内部文字列プロパティ (id、_rid、_self (近日提供予定) に対する Order By の使用。- 内部ドキュメントの結合の結果から取得されたプロパティに対する Order By の使用 (近日提供予定)。
 - 複数のプロパティに対する Order By の使用 (近日提供予定)。
+- データベース、コレクション、ユーザー、アクセス許可、または添付ファイルに対するクエリでの　Order By　の使用 (近日対応予定)。
 - 計算されたプロパティ (式または UDF/組み込み関数の結果など) に対する Order By の使用。
-- データベース、コレクション、ユーザー、アクセス許可、または添付ファイルに対するクエリでの　Order By　の使用。
 
 ## 次のステップ
 
@@ -176,4 +176,4 @@ Order By は数値プロパティに対してのみ指定でき、また最大�
 * [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

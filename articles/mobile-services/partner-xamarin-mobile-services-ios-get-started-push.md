@@ -33,7 +33,7 @@
 
 >[AZURE.IMPORTANT]APNS 要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-APNS では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
+APNS では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、Mobile Service にアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
 ## <a name="certificates"></a>証明書の署名要求ファイルを生成する
 
@@ -115,7 +115,7 @@ APNS では、証明書を使用してモバイル サービスを認証しま�
 
     メモ: 証明書の名前は異なることがありますが、名前の前に <strong>Apple Development iOS Push Notification Services:</strong> が付きます。
 
-後で、この証明書を使用して .p12 ファイルを生成し、それをモバイル サービスにアップロードして APNS による認証を有効にします。
+後で、この証明書を使用して .p12 ファイルを生成し、それを Mobile Service にアップロードして APNS による認証を有効にします。
 
 ## <a name="profile"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
@@ -399,4 +399,4 @@ APNS と連携するようにモバイル サービスが構成されました�
 [Xamarin.iOS]: http://xamarin.com/download
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

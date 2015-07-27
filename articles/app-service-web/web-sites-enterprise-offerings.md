@@ -4,7 +4,6 @@
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="apwestgarth" 
-	writer="cephalin" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -154,4 +153,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

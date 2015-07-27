@@ -140,4 +140,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

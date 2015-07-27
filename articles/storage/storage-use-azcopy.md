@@ -42,12 +42,21 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 
 > [AZURE.NOTE]AzCopy バージョン 3.0.0 より、AzCopy コマンド ライン構文では、すべてのパラメーターにパラメーター名を含めて指定する必要があります (*例*: `/ParameterName:ParameterValue`)。
 
+## 初めての AzCopy コマンドを書く
+
+**ファイル システムのファイルを BLOB ストレージにアップロードする場合:**
+	
+	AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:abc.txt
+
+単一ファイルをコピーするときには、/Pattern オプションにファイル名指定してください。この記事の後のセクションには、さらに多くのサンプルが記載されています。
+
+## パラメーターの概要
+
 以下の表に、AzCopy 用パラメーターを示します。AzCopy の使用中にコマンド ラインから以下のコマンドのいずれかを入力して、ヘルプを表示することもできます。
 
 - AzCopy に関する詳細なコマンド ライン ヘルプを表示する場合: `AzCopy /?`
 - AzCopy パラメーターに関する詳細なヘルプを表示する場合: `AzCopy /?:SourceKey`
 - コマンド ラインの例を表示する場合: `AzCopy /?:Samples` 
-
 
 <table>
   <tr>
@@ -732,7 +741,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 既定では、AzCopy は 2 つのストレージ エンドポイント間で非同期でデータをコピーします。そのため、コピー操作は、BLOB のコピー速度に関する SLA のない予備の帯域幅容量を使用してバック グラウンドで実行され、AzCopy はコピーが完了または失敗するまで定期的にコピー状態を確認します。
 
-3.1.0 リリースの新機能である `/SyncCopy` オプションは、一定速度のコピー操作を保証します。AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
+3\.1.0 リリースの新機能である `/SyncCopy` オプションは、一定速度のコピー操作を保証します。AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
 
 	AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
 
@@ -779,7 +788,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 ### Azure File ストレージでファイルを同期的にコピーする
 
-4.1.0-プレビュー バージョンの新しいオプション SyncCopy を使用して、ユーザーはファイルをファイル ストレージ間、ファイル ストレージから BLOB ストレージ、BLOB ストレージからファイル ストレージにコピーできます。
+4\.1.0-プレビュー バージョンの新しいオプション SyncCopy を使用して、ユーザーはファイルをファイル ストレージ間、ファイル ストレージから BLOB ストレージ、BLOB ストレージからファイル ストレージにコピーできます。
 
 	AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
 
@@ -810,7 +819,7 @@ AzCopy は、次の名前付け規則を使用して JSON データ ファイル
 
 生成される JSON データ ファイルは、最小のメタデータ用のペイロード形式に準じます。このペイロード形式の詳細については、「[テーブル サービス操作のペイロード形式](http://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
 
-ストレージ テーブル エンティティをストレージの Blob にエクスポートするとき、AzCopy はまずテーブル エンティティをローカルの一時データ ファイルにエクスポートし、次にそれらのファイルを Blob にアップロードします。このような一時データ ファイルは、既定のパス “<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>” を持つジャーナル ファイル フォルダーに格納されます。/Z:[journal-file-folder] を指定すれば、ジャーナル ファイル フォルダーの場所を変更して、一時データ ファイルの場所を変更することができます。一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは Blob にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
+ストレージ テーブル エンティティをストレージの Blob にエクスポートするとき、AzCopy はまずテーブル エンティティをローカルの一時データ ファイルにエクスポートし、次にそれらのファイルを Blob にアップロードします。このような一時データ ファイルは、既定のパス “<code>%LocalAppData%\\Microsoft\\Azure\\AzCopy</code>” を持つジャーナル ファイル フォルダーに格納されます。/Z:[journal-file-folder] を指定すれば、ジャーナル ファイル フォルダーの場所を変更して、一時データ ファイルの場所を変更することができます。一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは Blob にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
 
 ### エクスポート ファイルを分割する
 
@@ -902,4 +911,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

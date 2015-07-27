@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="05/04/2015"
+   ms.date="07/09/2015"
    ms.author="coreyp"/>
 
 # Azure Automation DSC の概要 #
 
->[AZURE.IMPORTANT]**Azure Automation DSC は限定プレビュー版であり**、実稼働ワークロードではサポートされていません。現時点ではコマンドレット ベースのみであり、グラフィカル ユーザー インターフェイスはありません。Azure Automation DSC のプレビュー版にサインアップすると、この機能がプレビュー段階であること、[サービス契約](https://go.microsoft.com/fwLink/p/?LinkID=389530&clcid=0x409)に記載されているサービス利用規約が削減または変更される可能性があること、および[プレビューの補足利用規約](https://go.microsoft.com/fwLink/p/?LinkID=247638&clcid=0x409)に同意したものとみなされます。サービスは現在自由に使用できますが、今後価格が設定されます。
+>[AZURE.IMPORTANT]**Azure Automation DSC は限定プレビュー版であり**、実稼働ワークロードではサポートされていません。現時点ではほとんどがコマンドレット ベースであり、グラフィカル ユーザー インターフェイスは最小限です。Azure Automation DSC のプレビュー版にサインアップすると、この機能がプレビュー段階であること、[サービス契約](https://go.microsoft.com/fwLink/p/?LinkID=389530&clcid=0x409)に記載されているサービス利用規約が削減または変更される可能性があること、および[プレビューの補足利用規約](https://go.microsoft.com/fwLink/p/?LinkID=247638&clcid=0x409)に同意したものとみなされます。サービスは現在自由に使用できますが、今後価格が設定されます。
 
 ## PowerShell DSC とは ##
 Desired State Configuration (DSC) は Windows PowerShell における新しい管理プラットフォームです。これにより、宣言型 PowerShell 構文を使用する物理ホストと仮想マシンの構成管理が可能になります。
@@ -49,6 +49,8 @@ Azure Automation DSC は、構成管理をより容易にするために PowerSh
 
 Azure Automation DSC を使用することで、[PowerShell Desired State Configuration の作成や管理](https://technet.microsoft.com/library/dn249918.aspx)、[DSC リソース](https://technet.microsoft.com/library/dn282125.aspx)のインポート、および DSC ノード構成 (MOF ドキュメント) の生成がすべてクラウドで可能になります。これらの DSC 項目は、Azure Automation の [DSC プル サーバー](https://technet.microsoft.com/library/dn249913.aspx)に配置されるため、クラウドおよびオンプレミスのターゲット ノード (物理および仮想マシンなど) はそれらを選択し、指定した必要な状態に自動的に準拠して、Azure Automation に必要な状態の準拠に関するレポートを返します。
 
+> [AZURE.VIDEO microsoft-ignite-2015-heterogeneous-configuration-management-using-microsoft-azure-automation]
+
 ## Azure Automation DSC の利用規約 ##
 ### 構成 ###
 PowerShell DSC では、構成という新しい概念が導入されました。構成では、PowerShell 構文を使用して、環境の必要な状態を定義することができます。DSC を使用して環境を構成するには、まず、構成キーワードを使用して Windows PowerShell スクリプト ブロックを定義してから、その後に識別子と、ブロックを区切る中かっこ ({}) を付加します。
@@ -69,7 +71,7 @@ DSC 構成を実行 (コンパイル) すると、1 つ以上の DSC ノード�
 
 Azure Automation DSC では、Azure Automation での DSC 構成のインポート、作成、およびコンパイルが可能です。これは、Azure Automation で Runbook をインポート、作成、および開始する方法に似ています。
 
-現在、Azure Automation DSC では、DSC 構成を管理するために **Azure リソース マネージャーの PowerShell モジュール**で以下のコマンドレットが提供されます。
+現在、Azure Automation DSC では、DSC 構成を管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
 
 - `Get-AzureAutomationDscConfiguration`
 - `Import-AzureAutomationDscConfiguration`
@@ -82,7 +84,7 @@ DSC 構成がコンパイルされると、構成内のノード ブロックに
 
 PS DSC ノードは、DSC プッシュまたはプル メソッドのいずれかを使用して制定する必要があるノード構成を認識するようになります。Azure Automation DSC は、Azure Automation DSC プル サーバーから適用する必要があるノード構成をノードが要求する DSC プル方式に依存します。ノードは Azure Automation DSC に対して要求を行うため、ファイアウォールの内側に配置したり、受信ポートをすべて閉じたりすることができます。これらに必要なのは、インターネットへの発信アクセスのみです。
 
-現在、Azure Automation DSC では、DSC ノード構成を管理するために **Azure リソース マネージャーの PowerShell モジュール**で次のコマンドレットが提供されます。`Get-AzureAutomationDscNodeConfiguration`
+現在、Azure Automation DSC では、DSC ノード構成を管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で次のコマンドレットが提供されます。`Get-AzureAutomationDscNodeConfiguration`
 
 
 ###ノード###
@@ -91,7 +93,7 @@ DSC ノードは任意のコンピューターで、構成は DSC によって�
 
 Azure Automation DSC は Azure Automation DSC によって管理されるノードのオンボードを容易にし、ノード サーバー側にそれぞれ割り当てられているノード構成を変更できるようにするため、ノードは次回サーバーの指示を確認する際に、別のロールを想定し、一致するように構成方法を変更します。また、ノードはその状態と構成の準拠について、Azure Automation DSC にレポートします。
 
-現在、Azure Automation DSC では、DSC ノードを管理するために [Azure リソース マネージャーの PowerShell モジュール](../powershell-azure-resource-manager.md)で以下のコマンドレットが提供されます。
+現在、Azure Automation DSC では、DSC ノードを管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
 
 -	`Get-AzureAutomationDscNode`  
 -	`Register-AzureAutomationDscNode` (ノードとして Azure v2 VM をオンボードするために使用)
@@ -137,7 +139,7 @@ PowerShell:
         ConfigurationFunction = "RegistrationMetaConfig.ps1\RegistrationMetaConfig"
 
         # update these DSC agent configurations if these defaults are not what you want. 
-        # See https://technet.microsoft.com/ja-jp/library/dn249922.aspx?f=255&MSPPError=-2147217396 for more details
+        # See https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396 for more details
         Properties = @{
             RegistrationKey = $RegistrationInfo.PrimaryKey
             RegistrationUrl = $RegistrationInfo.Endpoint
@@ -168,7 +170,7 @@ DSC リソースは、一連の組み込み DSC リソースを拡張するた�
 
 Azure Automation DSC には、PS DSC と同じ組み込み DSC リソースがすべて付属しています。Azure Automation にリソースを含む PowerShell モジュールをインポートすることで、Azure Automation DSC にリソースをさらに追加することができます。
 
-現在、Azure Automation DSC では、DSC ノードを管理するために [Azure リソース マネージャーの PowerShell モジュール](../powershell-azure-resource-manager.md)で以下のコマンドレットが提供されます。
+現在、Azure Automation DSC では、DSC ノードを管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
 
 - `New-AzureAutomationModule`
 - `Remove-AzureAutomationModule`
@@ -185,7 +187,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 >[AZURE.NOTE]Runbook と同じように、構成を発行することができます。これは、Azure Automation DSC プル サーバーへの DSC 項目の配置とは関係ありません。コンパイル ジョブにより、DSC 項目は Azure Automation DSC プル サーバーに配置されます。Azure Automation での「発行」の詳細については、「[Runbook の公開](https://msdn.microsoft.com/library/dn903765.aspx)」を参照してください。
 
 
-現在、Azure Automation DSC では、コンパイル ジョブを管理するために [Azure リソース マネージャーの PowerShell モジュール](../powershell-azure-resource-manager.md)で以下のコマンドレットが提供されます。
+現在、Azure Automation DSC では、コンパイル ジョブを管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
 
 -	`Get-AzureAutomationDscCompilationJob`
 -	`Get-AzureAutomationDscCompilationJobOutput`
@@ -218,8 +220,10 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - ノードが Azure Automation アカウントに最初に登録されるとき、または別のノード構成のサーバー側にマップするために変更された場合、ノードの状態が実際には現在マップされているノード構成に非準拠の場合でもその状態は準拠になります。ノードが登録後またはノード構成のマッピング変更後に最初のレポートを送信した後であれば、ノードの状態を信頼できます。
 
-- Azure Automation DSC VM で `Register-AzureAutomationDscNode`、`Set-AzureAutomationDscExtension`、または Azure プレビュー ポータルの Azure Automation DSC VM 拡張機能を使用して、管理対象の Azure VM をオンボードする際に、「**コンピューター名が指定されておらず、構成ディレクトリに構成ファイルが存在しません**」と表示され、登録に失敗する場合がありますが、これは誤報であり、VM 登録は実際には正常に行われています。登録が正常に行われたかどうかは、`Get-AzureAutomationDscNode` コマンドレットを使用して確認できます。
+- Azure Automation DSC VM で `Register-AzureAutomationDscNode`、`Set-AzureVMExtension`、または Azure プレビュー ポータルの Azure Automation DSC VM 拡張機能を使用して、管理対象の Azure VM をオンボードする際に、「**コンピューター名が指定されておらず、構成ディレクトリに構成ファイルが存在しません**」と表示され、登録に失敗する場合がありますが、これは誤報であり、VM 登録は実際には正常に行われています。登録が正常に行われたかどうかは、`Get-AzureAutomationDscNode` コマンドレットを使用して確認できます。
 
- 
+- Azure プレビュー ポータルで `Register-AzureAutomationDscNode`、`Set-AzureVMExtension`、または Azure Automation DSC VM 拡張機能を使用して Azure Automation DSC での管理用に Azure VM をオンボードするときは、VM が DSC ノードとして Azure Automation に表示されるまでに最大で 1 時間かかることがあります。これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 
-<!---HONumber=62-->
+- Azure Automation DSC にオンボードされた DSC ノードは、最初、マップされている DSC ノード構成に実際には適合していない場合であっても、「適合」状態を示します。ノードが初めてのプルを実行して、最初の DSC レポートを Azure Automation DSC に送信した後、ノードの状態は正しくなります。
+
+<!---HONumber=July15_HO3-->

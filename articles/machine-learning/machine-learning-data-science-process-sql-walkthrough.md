@@ -2,7 +2,6 @@
 	pageTitle="Advanced Analytics Process and Technology の活用: SQL Server を使用する | Microsoft Azure" 
 	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="msolhab" 
 	manager="paulettm" 
@@ -716,4 +715,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

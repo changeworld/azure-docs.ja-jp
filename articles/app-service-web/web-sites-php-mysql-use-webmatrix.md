@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="07/07/2015" 
 	ms.author="tomfitz"/>
 
 
@@ -41,7 +41,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##前提条件
 
@@ -175,9 +175,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
 	![WebMatrix - Publish][edit_publish]
 
-3. **[Windows Azure から既存のサイトを選択]** を選択します。
-
-	![](./media/web-sites-php-mysql-use-webmatrix/webmatrix-publish-existing-site.png)
+3. **[Microsoft Azure から既存のサイトを選択]** をクリックします。
 
 3. 先ほど作成した App Service の Web アプリを選択します。
 
@@ -263,4 +261,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

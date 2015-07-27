@@ -3,4 +3,4 @@
 - [.NET SDK](../articles/media-services/media-services-dotnet-encode-asset.md)
 - [REST API](../articles/media-services/media-services-rest-encode-asset.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

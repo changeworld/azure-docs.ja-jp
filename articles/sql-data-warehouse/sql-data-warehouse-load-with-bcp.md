@@ -71,7 +71,7 @@ GO
 20150101,1,3
 ```
 
-これをローカル一時ディレクトリ C:\Temp\DimDate2.txt に保存します。
+これをローカル一時ディレクトリ C:\\Temp\\DimDate2.txt に保存します。
 
 ### 手順 3: データに接続し、インポートする
 bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
@@ -150,4 +150,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

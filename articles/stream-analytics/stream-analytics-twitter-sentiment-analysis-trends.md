@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Stream Analytics でのリアルタイム Twitter センチメント分析 |Microsoft Azure"
 	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
-	keywords="real-time twitter,sentiment analysis,social media analysis,social media analytics tools"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -14,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="04/28/2015"
+	ms.date="07/01/2015"
 	ms.author="jeffstok"/>
 
 
@@ -30,7 +29,7 @@
 
 ## 前提条件
 1.	このチュートリアルでは、Twitter アカウントが必要です。  
-2.	このチュートリアルでは、GitHub にあるイベント ジェネレーターを使用します。[ここ](https://github.com/streamanalytics/samples/tree/master/TwitterClient)からダウンロードし、次の手順に従って、ソリューションを設定します。
+2.	このチュートリアルでは、GitHub にある Twitter クライアント アプリケーションを使用します。[ここ](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)からダウンロードし、次の手順に従って、ソリューションを設定します。
 
 ## イベント ハブ入力とコンシューマー グループの作成
 
@@ -49,9 +48,9 @@
 5.	ページの下部にある **[保存]** をクリックします。
 6.	**[ダッシュボード]** に移動し、ページ下部の **[接続情報]** をクリックして、接続情報をコピーして保存します (検索アイコンの下のコピー アイコンを使用します)。
 
-## イベント ジェネレーター アプリケーションの構成と起動
+## Twitter クライアント アプリケーションの構成および開始
 
-パラメーター化された一連のトピックに関するツイート イベントを収集するために、[Twitter の REST API](https://dev.twitter.com/rest/public) を介して Twitter データを利用するクライアント アプリケーションが提供されています。サード パーティのオープン ソース ツール [Sentiment140](http://help.sentiment140.com/) を使用して、各ツイートにセンチメント値 (0: 否定的、2: 普通、4: 肯定的) を割り当てた後、ツイート イベントをイベント ハブにプッシュします。
+パラメーター化された一連のトピックに関するツイート イベントを収集するために、[Twitter の ストリーミング API](https://dev.twitter.com/streaming/overview) を介して Twitter データを利用するクライアント アプリケーションが提供されています。サード パーティのオープン ソース ツール [Sentiment140](http://help.sentiment140.com/) を使用して、各ツイートにセンチメント値 (0: 否定的、2: 普通、4: 肯定的) を割り当てた後、ツイート イベントをイベント ハブにプッシュします。
 
 アプリケーションを設定するには、次の手順に従います。
 
@@ -153,7 +152,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 #### トレンディング トピックの特定: スライディング ウィンドウ
 
-トレンディング トピックを特定するには、一定期間にメンションのしきい値を超えるトピックを検索します。このチュートリアルでは、[スライディング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835051.aspx)を使用して、5 秒間に 21 回以上メンションされたトピックをチェックします。
+トレンディング トピックを特定するには、一定期間にメンションのしきい値を超えるトピックを検索します。このチュートリアルでは、[スライディング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835051.aspx)を使用して、直近の 5 秒間に 20 回を超えてメンションされたトピックをチェックします。
 
 1.	コード エディターでクエリを次のように変更します。
 
@@ -183,7 +182,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 ## 出力シンクの作成
 
-イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義したところで、最後に、ジョブの出力シンクを定義します。ジョブ クエリから Azure BLOB に集計済みツイート イベントを書き込みます。また、結果は、アプリケーションのニーズに応じて、SQL Database、テーブル ストア、またはイベント ハブにプッシュできます。
+イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義したところで、最後に、ジョブの出力シンクを定義します。ジョブ クエリから Azure BLOB に集計済みツイート イベントを書き込みます。また、結果は、具体的なアプリケーションのニーズに応じて、SQL Database、テーブル ストア、またはイベント ハブにプッシュできます。
 
 BLOB ストレージ用のコンテナーがまだない場合は、次の手順に従って作成します。
 
@@ -224,7 +223,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -236,4 +235,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

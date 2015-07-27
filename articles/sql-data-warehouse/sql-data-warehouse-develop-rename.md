@@ -67,7 +67,7 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 
 
 ## 次のステップ
-開発に関するその他のヒントについては、「[開発の概要][]」を参照してください。
+開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -80,4 +80,4 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 <!--Other Web references-->
 [Azure management portal]: http://portal.azure.com/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

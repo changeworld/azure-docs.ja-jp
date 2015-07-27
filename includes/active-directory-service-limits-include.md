@@ -1,54 +1,53 @@
-Here are the usage constraints and other service limits for the Azure Active Directory service. If you’re looking for the full set of Microsoft Azure service limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](azure-subscription-service-limits.md).
+ここでは、Azure Active Directory サービスの使用上の制約およびその他のサービスの制限を説明します。
 
-## Directories
+### ディレクトリ
 
-A single user can only be associated with a maximum of 20 Azure Active Directory directories. This limit can be reached in any of the following examples:
+1 人のユーザーに関連付けできるのは最大 20 個の Azure Active Directory ディレクトリです。次のような場合に、この制限に達する可能性があります。
 
-- A single user creates 20 directories.
-- A single user is added to 20 directories as a member.
-- A single user creates 10 directories and later is added by others to 10 different directories.
+- 1 人のユーザーが 20 個のディレクトリを作成する。
+- 1 人のユーザーがメンバーとして 20 個のディレクトリに追加される。
+- 1 人のユーザーが 10 個のディレクトリを作成し、後で他のユーザーによって別の 10 個のディレクトリに追加される。
 
-## Objects
+### オブジェクト
 
-- There are no limits for subscribers of Azure Active Directory Premium or Azure Active Directory Basic, Enterprise Mobility Suite, Office 365, Microsoft Intune, or any other Microsoft online service that relies on Azure Active Directory for directory services.
-- A maximum of 500,000 objects can be used in a single directory with the Free edition of Azure Active Directory.
-- A non-admin user can create up to 250 objects.
+- Azure Active Directory Premium、Azure Active Directory Basic、Enterprise Mobility Suite、Office 365、Microsoft Intune、またはディレクトリ サービスに Azure Active Directory を利用しているその他の Microsoft オンライン サービスのサブスクライバーには制限がありません。
+- Free エディションの Azure Active Directory では、1 つのディレクトリで最大 500,000 個のオブジェクトを使用できます。
+- 管理者以外のユーザーは、最大 250 個のオブジェクトを作成できます。
 
-##Schema extensions
+###スキーマの拡張機能
 
-Currently “User”, “Group”, “TenantDetail”, “Device”, “Application” and “ServicePrincipal” entities can be extended with “String” type or “Binary” type single-valued attributes. These include the following limitations:
+現在、”文字列” 型または ”バイナリ” 型の単一値の属性を使用して ”User”、”Group”、”TenantDetail”、”Device”、”Application”、および ”ServicePrincipal” エンティティを拡張できます。この場合、次のような制限があります。
 
-- String type extensions can have maximum of 256 characters.
-- Binary type extensions are limited to 256 bytes.
-- 100 extension values (across ALL types and ALL applications) can be written to any single object.
-- Schema extensions are available only in Graph API-version 1.21-preview. The application must be granted write access to register an extension.
+- 文字列型の拡張の最大文字数は 256 文字です。
+- バイナリ型の拡張の最大バイト数は 256 バイトです。
+- 1 つのオブジェクトに対して、(すべての型とすべてのアプリケーションで合計) 100 個の拡張値を書き込むことができます。
+- スキーマ拡張は、Graph API-version 1.21-preview でのみ使用できます。拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。
 
-## Applications
+### アプリケーション
 
-A maximum of 10 users can be owners of a single application.
+1 つのアプリケーションに対して、最大 10 ユーザーが所有者になれます。
 
-## Groups
+### グループ
 
-- A maximum of 10 users can be owners of a single group.
-- Any number of objects can be members of a single group in Azure Active Directory.
+- 最大 10 人のユーザーが 1 つのグループの所有者になれます。
+- 1 つの Azure Active Directory グループのメンバーとして登録できるオブジェクト数に制限はありません。
 
 
 > [AZURE.NOTE]
 >
-There is a limit for the number of objects you can synchronize from your On Premises Active Directory to Azure Active Directory.
-- If you’re using DirSync the limit is 15K users.
-- If you’re using Azure AD Connect, the limit is 50K users.
+> オンプレミスの Active Directory から Azure Active Directory に同期できるオブジェクトの数には、制限があります。
+>
+> - DirSync を使用している場合、制限は 15,000 ユーザーです。
+> - Azure AD Connect を使用している場合、制限は 50,000 ユーザーです。
 
-## Access Panel
+<br/>
+### アクセス パネル
 
-- There is no limit to the number of applications that can be seen in the Access Panel per end user for subscribers to Azure AD Premium or the Enterprise Mobility Suite.
-- A maximum of 10 preintegrated SaaS apps (examples: Box, Salesforce, or Dropbox) can be seen in the Access Panel for each end user with the Free or Azure AD Basic editions of Azure Active Directory. End users might see more than 10 apps if your organization developed apps that were integrated afterward with Azure Active Directory. This limit does not apply to Administrator accounts.
+- Azure AD Premium または Enterprise Mobility Suite のサブスクライバーである場合、各エンド ユーザーのアクセス パネルに表示できるアプリケーション数に制限はありません。
+- Azure Active Directory の Free または Azure AD Basic エディションでは、最大 10 個のアプリ タイル (例: Box、Salesforce、または Dropbox) を各エンド ユーザーのアクセス パネルに表示できます。この制限は、管理者アカウントには適用されません。
 
-## Reports
+### レポート
 
-A maximum of 1,000 rows can be viewed or downloaded in any report. Any additional data is truncated.
+いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。それを超えるデータは切り捨てられます。
 
-## What's next
-- [Sign up for Azure as an organization](sign-up-organization.md)
-- [How Azure subscriptions are associated with Azure AD](active-directory-how-subscriptions-associated-directory.md)
-- [Azure AD terminology](active-directory-terminology.md)
+<!---HONumber=July15_HO3-->

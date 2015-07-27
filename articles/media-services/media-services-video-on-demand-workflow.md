@@ -118,7 +118,7 @@ Media Services は既存のツールとプロセスに統合できます。た�
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
-###ジョブまたはタスクを作成する
+###ジョブまたはタスクの作成
 
 ジョブは、一連のタスク (エンコード、インデックス作成など) に関するメタデータを含むエンティティです。各タスクでは、入力アセットでアトミック操作が実行されます。エンコード ジョブの作成方法の例については、以下をご覧ください。
 
@@ -220,4 +220,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

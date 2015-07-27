@@ -3,7 +3,7 @@
 	description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="dsk-2015"
 	manager="timlt"
 	editor="tysonn"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/15/2015"
-	ms.author="kathydav"/>
+	ms.author="dkshir"/>
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
@@ -140,6 +140,5 @@ VHD ファイルをアップロードするストレージ アカウントが必
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
- 
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

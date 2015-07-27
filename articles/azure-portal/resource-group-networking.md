@@ -333,12 +333,12 @@ Traffic Manager プロファイルの主なプロパティは次のとおりで�
 
 テンプレートから Azure にサービスを展開するには、PowerShell、AzureCLI を使用するか、または GitHub からクリック操作によって展開します。GitHub でテンプレートからサービスを展開するには、次の手順を実行します。
 
-1. GitHub で template3 ファイルを開きます。たとえば、[2 つのサブネットを含む Virtual Network](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network) を開きます。
+1. GitHub で template3 ファイルを開きます。たとえば、[2 つのサブネットを含む仮想ネットワーク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network) を開きます。
 2. **[Azure に展開]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
 3. テンプレートを確認し、**[保存]** をクリックします。
-4. **[パラメーターの編集]** をクリックし、vnet およびサブネットの場所 (*[米国西部]* など) を選択します。
+4. **[パラメーターの編集]** をクリックし、VNET およびサブネットの場所 (*[米国西部]* など) を選択します。
 5. 必要に応じて、**ADDRESSPREFIX** および **SUBNETPREFIX** パラメーターを変更し、**[OK]** をクリックします。
-6. **[リソース グループの選択]** をクリックし、vnet とサブネットに追加するリソース グループをクリックします。あるいは、**[新規作成]** をクリックして、新しいリソース グループを作成することもできます。
+6. **[リソース グループの選択]** をクリックし、VNET とサブネットの追加先となるリソース グループをクリックします。あるいは、**[新規作成]** をクリックして、新しいリソース グループを作成することもできます。
 3. **[作成]** をクリックします。**[テンプレートの展開をプロビジョニング中]**というタイトルが表示されます。展開が完了すると、画面の表示は以下のようになります。
 
 ![サンプル テンプレートの展開](./media/resource-group-networking/Figure6.png)
@@ -363,4 +363,4 @@ Traffic Manager プロファイルの主なプロパティは次のとおりで�
 
 [テンプレートの展開](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

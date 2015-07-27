@@ -53,4 +53,4 @@ SQL Data Warehouse のビューはメタデータ専用です。
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

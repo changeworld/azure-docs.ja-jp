@@ -91,4 +91,4 @@
   [Azure の配置管理の概要]: http://msdn.microsoft.com/library/windowsazure/hh386336.aspx
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

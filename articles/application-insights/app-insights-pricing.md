@@ -23,7 +23,7 @@
 
 各 Application Insights リソースは個々のサービスとして課金され、Azure のサブスクリプションの課金内容に加えられます。
 
-[料金プランをご確認ください][pricing]。
+[「料金プラン」を参照してください][pricing]。
 
 ## Application Insights リソースのクォータと料金プランの確認
 
@@ -81,4 +81,4 @@ Application Insights の課金は Azure の課金内容に加えられます。A
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

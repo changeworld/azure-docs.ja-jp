@@ -58,7 +58,7 @@ AD FS とのフェデレーション|ユーザーは、オンプレミスのネ�
 <center>![ユーザー サインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png) </center>
 
 ### ディレクトリの接続
-Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントの資格情報が必要です。このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。ただし、シナリオによっては、追加のアクセス許可が必要なことがあります。詳細については [Azure AD Connect アカウントの概要](active-directory-addconnect-account-summary)に関するページを参照してください。
+Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントの資格情報が必要です。このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。ただし、シナリオによっては、追加のアクセス許可が必要なことがあります。詳細については [Azure AD Connect アカウントの概要](active-directory-aadconnect-account-summary.md)に関するページを参照してください。
 
 <center>![ユーザー サインイン](./media/active-directory-aadconnect-get-started-custom/connectdir.png) </center>
 
@@ -125,6 +125,9 @@ Azure AD アプリと属性フィルター|Azure AD アプリと属性フィル�
 <center>![同期フィルタリング](./media/active-directory-aadconnect-get-started-custom/extension4.png) </center>
 
 ## ユーザーの書き戻し (プレビュー)
+
+> [AZURE.WARNING]現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
+
 ユーザーの書き戻しでは、Azure AD で作成されたユーザーを取得し (ポータル、グラフ、PowerShell、または他の方法で)、そのユーザーをオンプレミスの ADDS に書き戻すことができます。この機能を有効にするには、[オプション機能] ページで [ユーザーの書き戻し] を選択します。これらのユーザーを作成する場所が表示されます。既定の構成では、AD DS 内の 1 つの場所にすべてのユーザーが作成されます。
 
 <center>![同期フィルタリング](./media/active-directory-aadconnect-get-started-custom/writeback2.png) </center>
@@ -133,6 +136,9 @@ Azure AD アプリと属性フィルター|Azure AD アプリと属性フィル�
 >[AZURE.NOTE]パスワードの同期とパスワードの書き戻しは、このプレビュー機能と互換性はありません。
 
 ## グループの書き戻し (プレビュー)
+
+> [AZURE.WARNING]現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
+
 オプション機能のグループの書き戻しのためのオプションでは、"Office 365 のグループ" を Exchange がインストールされているフォレストに書き戻すことができます。これは、クラウドで常に管理される新しいグループの種類です。次のように outlook.office365.com や myapps.microsoft.com で確認することができます。
 
 
@@ -152,7 +158,16 @@ Azure AD アプリと属性フィルター|Azure AD アプリと属性フィル�
 詳細については、[こちら](http://blogs.office.com/2014/09/25/delivering-first-chapter-groups-office-365/)で確認できます。
 
 ## デバイスの書き戻し (プレビュー)
-デバイスの書き戻し機能では、クラウドに登録されているデバイス (Intune など) を AD DS に置いて、条件付きアクセスすることができます。この機能を有効にするには、AD DS を準備する必要があります。AD FS とデバイス登録サービス (DRS) をインストールしている場合は、AD でデバイスの書き戻しを準備するための PowerShell コマンドレットが DRS に用意されています。DRS をインストールしていない場合は、C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncAdPrep.psm1 as an enterprise admin を実行できます。
+
+> [AZURE.WARNING]現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
+
+デバイスの書き戻し機能では、クラウドに登録されているデバイス (Intune など) を AD DS に置いて、条件付きアクセスすることができます。この機能を有効にするには、AD DS を準備する必要があります。AD FS とデバイス登録サービス (DRS) をインストールしている場合は、AD でデバイスの書き戻しを準備するための PowerShell コマンドレットが DRS に用意されています。DRS をインストールしていない場合は、C:\\Program Files\\Microsoft Azure Active Directory Connect\\AdPrep\\AdSyncAdPrep.psm1 as an enterprise admin を実行できます。
+
+PowerShell コマンドレットを実行する前に、まずインポートする必要があります。
+
+	Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
+
+これを実行するには、Active Directory と MSOnline PowerShell がローカルにインストールされている必要があります。
 
 
 
@@ -258,4 +273,4 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 * [詳細情報](active-directory-aadconnect-learn-more.md)
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx) 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

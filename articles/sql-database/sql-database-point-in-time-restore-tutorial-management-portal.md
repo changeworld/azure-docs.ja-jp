@@ -74,4 +74,4 @@
 
 [Azure SQL データベースのポイント イン タイム リストア (ブログ)](http://azure.microsoft.com/blog/2014/10/01/azure-sql-database-point-in-time-restore/)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

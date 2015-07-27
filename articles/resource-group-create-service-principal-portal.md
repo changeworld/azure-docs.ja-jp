@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure ポータルを使用した Azure サービス プリンシパルの新規作成"
    description="Azure リソース マネージャーでロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Azure サービス プリンシパルを作成する方法について説明します。"
-   services="na"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="na"
+   ms.service="azure-resource-manager"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2015"
+   ms.date="07/15/2015"
    ms.author="tomfitz"/>
 
 # Azure ポータルを使用した Azure サービス プリンシパルの新規作成
@@ -134,4 +134,4 @@ Getting Started (概要)
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

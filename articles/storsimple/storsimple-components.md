@@ -152,4 +152,4 @@ SharePoint 用 StorSimple アダプターは、SharePoint サーバーの全体�
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

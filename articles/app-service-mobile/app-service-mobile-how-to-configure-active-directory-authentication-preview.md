@@ -73,4 +73,4 @@ Azure Active Directory シングル サインオンでモバイル アプリの�
 [ios-adal]: ../app-service-mobile-dotnet-backend-xamarin-ios-aad-sso-preview.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

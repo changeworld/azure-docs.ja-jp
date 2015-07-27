@@ -1,7 +1,6 @@
 <properties 
 	pageTitle="Azure Machine Learning FAQ | Microsoft Azure" 
 	description="Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。" 
-	keywords="machine learning introduction,predictive modeling,what is machine learning"
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="pablissima" 
@@ -93,8 +92,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
-<!--
+少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。<!--
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -305,4 +303,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!-----HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

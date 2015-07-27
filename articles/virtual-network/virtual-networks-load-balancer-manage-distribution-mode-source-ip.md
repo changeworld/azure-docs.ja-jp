@@ -62,7 +62,7 @@
 LoadBalancerDistribution は、2 組 (ソース IP と接続先 IP) の負荷分散の場合は sourceIP、3 組 (ソース IP、接続先 IP、プロトコル) の負荷分散の場合は sourceIPProtocol に設定できます。設定しない場合は、既定の動作 (5 組の負荷分散) を使用します。
 
 ### エンドポイント ロード バランサー分散モード構成を取得する
-    PS C:\> Get-AzureVM â€“ServiceName "mySvc" -Name "MyVM1" | Get-AzureEndpoint
+    PS C:> Get-AzureVM â€“ServiceName "mySvc" -Name "MyVM1" | Get-AzureEndpoint
     
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -161,4 +161,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     Date: Thu, 16 Oct 2014 22:49:21 GMT
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

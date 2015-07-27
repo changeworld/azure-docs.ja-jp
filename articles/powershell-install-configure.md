@@ -123,7 +123,7 @@ Azure モジュールには、証明書をダウンロードしてインポー�
 
 4. メッセージが表示されたら、発行プロファイルをダウンロードして保存し、発行設定ファイルのパスと名前をメモしておきます。この情報は、**Import-AzurePublishSettingsFile** コマンドレットを実行して設定をインポートする際に必要です。既定の場所とファイル名の形式は次のとおりです。
 
-			C:\Users<UserProfile>\Download[*MySubscription*-...]-*downloadDate*-credentials.publishsettings
+			C:\\Users<UserProfile>\\Download\[*MySubscription*-...]-*downloadDate*-credentials.publishsettings
 
 5. プレースホルダーを Windows アカウント名、パス、ファイル名に置き換えて、次のようなコマンドを入力します。
 
@@ -260,4 +260,4 @@ Azure や Windows PowerShell の使用方法を学習するためのリソース
 
   [Microsoft Online Services Customer Portal]: https://mocp.microsoftonline.com/site/default.aspx
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

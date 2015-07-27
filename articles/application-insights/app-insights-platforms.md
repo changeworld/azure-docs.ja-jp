@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/06/2015" 
+	ms.date="07/11/2015" 
 	ms.author="awills"/>
  
 # Application Insights: プラットフォーム
@@ -40,7 +40,7 @@
 + [ASP.NET 5](app-insights-asp-net-five.md)
 + [Android](https://github.com/Microsoft/ApplicationInsights-Android)
 + [Azure Web アプリと VM](../insights-perf-analytics.md)
-+ [Azure Cloud Services](app-insights-cloudservices.md)
++ Web ロールと worker ロールの両方を含む [Azure Cloud Services](app-insights-cloudservices.md)
 + [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [Angular](https://www.npmjs.com/package/angular-applicationinsights)
@@ -57,8 +57,8 @@
 ## ログ記録フレームワーク
 
 +	[Log4Net、NLog、または System.Diagnostics.Trace](app-insights-diagnostic-search.md)
-+	[Java、Log4J、Logback](app-insights-java-trace-logs.md)
-
++	[Java、Log4J、または Logback](app-insights-java-trace-logs.md)
++   [セマンティック ログ](https://github.com/fidmor89/SLAB_AppInsights) - [セマンティック ログ アプリケーション ブロックと連携](https://msdn.microsoft.com/library/dn440729.aspx)
 
 ## <a name="projects"></a> 独自の SDK をビルドする
 
@@ -73,4 +73,4 @@
 
 <!--Link references-->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

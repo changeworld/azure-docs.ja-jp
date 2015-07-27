@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2015" 
+	ms.date="07/08/2015" 
 	ms.author="bradyg;tarcher"/>
 
 # Azure App Service の API アプリのデバッグ
@@ -68,7 +68,7 @@
 
 1. Visual Studio で、API アプリのプロジェクトの *web.config* ファイルを開きます。 
  
-2. ブラウザーで、[Azure プレビュー ポータル](http://portal.azure.com)に移動します。
+2. ブラウザーで、[Azure プレビュー ポータル](https://portal.azure.com)に移動します。
 
 3. サイド バーで **[参照]** をクリックし、**[API Apps]** を選択します。
 
@@ -109,11 +109,26 @@
 
 	![Setting breakpoints](./media/app-service-api-dotnet-debug/ld-breakpoints.png)
 
-11. F5 キーを押して Visual Studio のデバッグ セッションを開始します。ページがブラウザーに読み込まれると、エラー メッセージが表示されます。ブラウザーのアドレス バーで、URL の最後に */swagger* を追加し、Enter キーを押します。
+11. F5 キーを押して Visual Studio のデバッグ セッションを開始します。
+ 
+13.  API アプリのアクセス レベルが **[パブリック (匿名)]** に設定されている場合、Swagger UI ページをテストに使用できます。
 
-12. Swagger UI が読み込まれたら、ブラウザー ウィンドウの **[Get]** 動詞をクリックして Contact オブジェクトのスキーマを表示し、**[Try it Out]** をクリックします。前の手順で設定したブレークポイントでプログラムの実行が停止するため、コントローラーのロジックをデバッグできます。
+	* ページがブラウザーに読み込まれると、エラー メッセージが表示されます。ブラウザーのアドレス バーで、URL の最後に */swagger* を追加し、Enter キーを押します。
 
-	![実際に使ってみる](./media/app-service-api-dotnet-debug/ld-try-it-out.png)
+	* Swagger UI が読み込まれたら、ブラウザー ウィンドウの **[Get]** 動詞をクリックして Contact オブジェクトのスキーマを表示し、**[Try it Out]** をクリックします。
+
+		前の手順で設定したブレークポイントでプログラムの実行が停止するため、コントローラーのロジックをデバッグできます。
+
+		![実際に使ってみる](./media/app-service-api-dotnet-debug/ld-try-it-out.png)
+
+14.	API アプリのアクセス レベルが **[パブリック (認証)]** に設定されている場合は、以下のとおり、「[API アプリの保護](app-service-api-dotnet-add-authentication.md#use-postman-to-send-a-post-request)」で説明する Post 要求の手順に従って認証を行い、ブラウザー ツールを使用する必要があります。
+
+	* ゲートウェイのログイン URL に移動し、ログインするための資格情報を入力します。
+	* x-zumo-auth Cookie から Zumo トークンの値を取得します。
+	* 要求に x-zumo-auth ヘッダーを追加し、その値を x-zumo-auth Cookie の値に設定します。
+	* 要求を送信します。
+
+	**注:** ローカルで実行している場合は、API アプリに対するアクセスを Azure で制御して、そのメソッドの実行を認証済みのユーザーのみに限定することができません。Azure で実行している場合、API アプリを対象とするすべてのトラフィックはゲートウェイを介してルーティングされるため、認証されていない要求がゲートウェイを通過することはありません。ローカルで実行している場合はリダイレクトされません。つまり、認証されていない要求から API アプリへのアクセスが妨げられることはありません。このような認証により、ログオン ユーザーに関する情報を取得するコードなど、API アプリの認証関連コードを正常に実行できるという利点があります。ゲートウェイが API アプリの認証を処理する方法の詳細については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md#azure-app-service-gateway)に関するページを参照してください。
 
 ## 次のステップ
 
@@ -121,7 +136,7 @@
 
 App Service API アプリは、Web サービスをホストする追加機能を備えた App Service の Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。詳細については、「[Visual Studio を使用した Azure Web App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
-このシリーズで作成した API アプリは、すべてのユーザーが呼び出しに使用できます。認証されたユーザーだけが呼び出すことができるように API アプリを保護する方法については、「[API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加](app-service-api-dotnet-add-authentication.md)」を参照してください。
+このシリーズで作成した API アプリは、すべてのユーザーが呼び出しに使用できます。認証済みユーザーのみが API アプリを呼び出すことができるように、API アプリを保護する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

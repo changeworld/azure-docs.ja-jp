@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/01/2015" 
+	ms.date="07/09/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -217,7 +217,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 -	Microsoft Patterns & Practices から次のガイダンスが公開されています。
 	-	[キャッシュに関するガイダンス](https://github.com/mspnp/azure-guidance/blob/master/Caching.md)。
 	-	[Azure クラウド アプリケーションの設計および実装に関するガイダンス](https://github.com/mspnp/azure-guidance)
--	[Azure Redis Cache の一般的なキャッシュ パターン](cache-howto-common-cache-patterns/)
+-	[Azure Redis Cache の一般的なキャッシュ パターン](cache-howto-common-cache-patterns.md)
 
 <a name="cache-reference"></a>
 ## 他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由
@@ -226,4 +226,4 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

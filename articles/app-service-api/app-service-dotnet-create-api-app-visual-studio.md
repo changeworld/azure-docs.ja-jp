@@ -83,4 +83,4 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

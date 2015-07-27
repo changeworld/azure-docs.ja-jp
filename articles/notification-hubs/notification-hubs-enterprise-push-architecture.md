@@ -272,4 +272,4 @@
 [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

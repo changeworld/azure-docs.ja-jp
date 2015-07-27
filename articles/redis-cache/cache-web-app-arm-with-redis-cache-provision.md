@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="07/08/2015" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用し、Web アプリと Redis Cache を作成する
@@ -76,40 +76,40 @@ Web アプリで使用される Azure Redis Cache を作成します。キャッ
 Redis Cache との連動を可能にするアプリ設定プロパティで Web アプリが構成されることに注意してください。このアプリ設定は展開時に指定された値に基づいて動的に作成されます。
         
     {
-      "apiVersion": "2014-06-01",
+      "apiVersion": "2015-04-01",
       "name": "[parameters('siteName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('siteLocation')]",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+          "[resourceId('Microsoft.Web/serverFarms', parameters('hostingPlanName'))]",
+          "[resourceId('Microsoft.Cache/Redis', parameters('redisCacheName'))]"
       ],
       "properties": {
-        "name": "[parameters('siteName')]",
-        "serverFarm": "[parameters('hostingPlanName')]"
+          "serverFarmId": "[parameters('hostingPlanName')]"
       },
       "resources": [
-        {
-          "apiVersion": "2014-04-01",
-          "type": "config",
-          "name": "web",
-          "dependsOn": [
-            "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
-          ],
-          "properties": {
-            "appSettings": [
-              {
-                "name": "REDIS_HOST",
-                "value": "[concat(parameters('siteName'), '.redis.cache.windows.net:6379')]"
-              },
-              {
-                "name": "REDIS_KEY",
-                "value": "[listKeys(resourceId('Microsoft.Cache/Redis', parameters('siteName')), '2014-04-01').primaryKey]"
+          {
+              "apiVersion": "2015-06-01",
+              "type": "config",
+              "name": "web",
+              "dependsOn": [
+                  "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+              ],
+              "properties": {
+                  "appSettings": [
+                      {
+                          "name": "REDIS_HOST",
+                          "value": "[concat(parameters('siteName'), '.redis.cache.windows.net:6379')]"
+                      },
+                      {
+                          "name": "REDIS_KEY",
+                          "value": "[listKeys(resourceId('Microsoft.Cache/Redis', parameters('redisCacheName')), '2014-04-01').primaryKey]"
+                      }
+                  ]
               }
-            ]
           }
-        }
       ]
-    }     
+    }
 
 
 
@@ -125,4 +125,4 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

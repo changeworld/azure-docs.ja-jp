@@ -350,17 +350,17 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [CTAS][] の使用方法に関する詳細については、MSDN を参照してください。これは、Azure SQL Data Warehouse で最も重要なステートメントの 1 つです。よく理解しておいてください。
 
 ## 次のステップ
-その他の開発に関するヒントについては、[development overview (開発の概要)][] を参照してください。
+開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
 
 <!--Article references-->
-[development overview (開発の概要)]: sql-data-warehouse-overview-develop.md
+[開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 [CTAS]: https://msdnstage.redmond.corp.microsoft.com/ja-jp/library/mt204041.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

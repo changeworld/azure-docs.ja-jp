@@ -104,4 +104,4 @@ Azure App Service で PHP Web アプリを作成したので、アプリの管�
 [Azure App Service の Web アプリをスケールする]: web-sites-scale.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

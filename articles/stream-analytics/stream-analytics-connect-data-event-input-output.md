@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="04/24/2015" 
+	ms.date="07/01/2015" 
 	ms.author="jeffstok"/>
 
 #入力と出力への接続
@@ -90,8 +90,7 @@ Stream Analytics ジョブの各入力は、独自のイベント ハブ コン�
 3. イベント ハブ ポリシー名: イベント ハブにアクセスするための共有アクセス ポリシーの名前。共有アクセス ポリシーは、[構成] タブでイベント ハブに対して構成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。
 4. イベント ハブ ポリシー キー: イベント ハブにアクセスするための共有アクセス ポリシーのプライマリ キーとセカンダリ キー。  
 5. イベント ハブ コンシューマー グループ: イベント ハブ入力のオプション パラメーター。イベント ハブからのデータを取り込むためのコンシューマー グループです。指定しないと、Stream Analytics ジョブは既定のコンシューマー グループを使用してイベント ハブからデータを取り込みます。Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。
-
-パーティション キー列: イベント ハブ出力のオプションのパラメーター。イベント ハブ出力のパーティション キーとして使用されるデータ属性列です。
+6. パーティション キー列: イベント ハブ出力のオプションのパラメーター。イベント ハブ出力のパーティション キーとして使用されるデータ属性列です。 
 
 ##Azure テーブル出力の使用
 
@@ -126,8 +125,7 @@ Azure テーブル ストレージの使用を開始するには、テーブル�
 次のページで、Azure テーブル情報を入力します。出力のエイリアスは、クエリの出力をこのテーブルにダイレクトするために、クエリ内で使用できる名前です。
 
 
-![図 14][graphic14]
-![図 15][graphic15]
+![図 14][graphic14] ![図 15][graphic15]
 
 バッチ サイズは、バッチ操作の対象となるレコード数です。使い慣れていない場合は既定値のままにします。詳細については、[https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx) を参照してください。
 
@@ -151,7 +149,7 @@ Azure テーブル ストレージの使用を開始するには、テーブル�
 ![図 19][graphic19]
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -185,4 +183,4 @@ Azure テーブル ストレージの使用を開始するには、テーブル�
 [graphic19]: ./media/stream-analytics-connect-data-event-input-output/19-stream-analytics-connect-data-event-input-output.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -66,7 +66,7 @@
 
 ###コードの追加
 
-1. Notification Hubs Android SDK を<a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">ここ</a>からダウンロードします。.zip ファイルを展開し、**notificationhubs\notification-hubs-0.4.jar** と **notifications\notifications-1.0.1.jar** をプロジェクトの **app\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。libs フォルダーを更新します。
+1. Notification Hubs Android SDK を<a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">ここ</a>からダウンロードします。.zip ファイルを展開し、**notificationhubs\\notification-hubs-0.4.jar** と **notifications\\notifications-1.0.1.jar** をプロジェクトの **app\\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。libs フォルダーを更新します。
 
 
 
@@ -511,4 +511,4 @@
 [通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

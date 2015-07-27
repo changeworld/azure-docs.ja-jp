@@ -258,16 +258,16 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 - [VIEWS (Transact-SQL)](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## 次のステップ
-詳細な参照情報については、「[SQL Data Warehouse リファレンス概要][]」を参照してください。
+詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse リファレンス概要]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

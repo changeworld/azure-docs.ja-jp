@@ -214,7 +214,7 @@ IngestManifestAsset は、アセットを、一括取り込みのための一括
 	        CloudBlobClient blobClient = storageaccount.CreateCloudBlobClient();
 	        CloudBlobContainer blobContainer = blobClient.GetContainerReference(destBlobURI);
 	
-	        string[] splitfilename = filename.Split('');
+	        string[] splitfilename = filename.Split('\');
 	        var blob = blobContainer.GetBlockBlobReference(splitfilename[splitfilename.Length - 1]);
 	
 	        using (var stream = System.IO.File.OpenRead(filename))
@@ -306,4 +306,4 @@ IngestManifestAsset は、アセットを、一括取り込みのための一括
 [メディア プロセッサの取得]: media-services-get-media-processor.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

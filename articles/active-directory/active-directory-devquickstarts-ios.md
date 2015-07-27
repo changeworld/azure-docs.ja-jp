@@ -227,4 +227,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

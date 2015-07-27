@@ -4,7 +4,6 @@
 	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="Rick-Anderson" 
-	writer="Rick-Anderson" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="06/16/2015" 
 	ms.author="riande"/>
 
 # ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
@@ -37,7 +36,8 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 ![Web サイトのスクリーンショット][intro001]
 
-<a name="bkmk_setupdevenv"></a> <!-- the next line produces the "Set up the development environment" section as see at http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ -->[AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+<!-- the next line produces the "Set up the development environment" section as see at http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ -->
+[AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ### プロジェクトを作成する
 
@@ -75,10 +75,10 @@ Azure にまだサインしていない場合は、サインインするよう�
 ### ページのヘッダーとフッターを設定する
 
 
-1. **ソリューション エクスプローラー**で、*Views\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
+1. **ソリューション エクスプローラー**で、*Views\\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
 	![_Layout.cshtml in Solution Explorer][newapp004]
 
-1. *Views\Shared_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
+1. *Views\\Shared_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
 
 
 		<!DOCTYPE html>
@@ -125,7 +125,7 @@ Azure にまだサインしていない場合は、サインインするよう�
 
 これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
-<h2><a name="bkmk_deploytowindowsazure1"></a> アプリケーションの Azure へのデプロイ</h2>
+## Azure にアプリケーションを展開する
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
@@ -145,7 +145,7 @@ Azure サーバーにファイルをコピーする処理が開始されます�
 	
 	![To Do List home page running in Azure][rxz2]
 
-<h2><a name="bkmk_addadatabase"></a>アプリケーションにデータベースを追加する</h2>
+## アプリケーションにデータベースを追加する
 
 次に、MVC アプリケーションを更新して、連絡先を表示および更新してデータをデータベースに保存する機能を追加します。アプリケーションでは、データベースの作成およびデータベース内のデータの読み取りと更新に Entity Framework を使用します。
 
@@ -191,7 +191,7 @@ Azure サーバーにファイルをコピーする処理が開始されます�
 
 ASP.NET MVC では、スキャフォールディング機能によって、作成、読み取り、更新、および削除 (CRUD) の各操作を実行するコードを自動的に生成できます。
 
-<h2><a name="bkmk_addcontroller"></a>データのコントローラーとビューを追加する</h2>
+## データのコントローラーとビューを追加する
 
 1. **ソリューション エクスプローラー**で、Controllers フォルダーを展開します。
 
@@ -235,7 +235,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
-3. *Migrations\Configuration.cs* ファイルを開きます。
+3. *Migrations\\Configuration.cs* ファイルを開きます。
 
 4. 次の名前空間を追加します。
 
@@ -316,9 +316,9 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 ![MVC view of data][rxz3]
 
-<h2><a name="bkmk_addview"></a>ビューの編集</h2>
+## ビューの編集
 
-1. *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
+1. *Views\\Home\\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
 
 
 2. このファイルの内容を次のコードに置き換えます。
@@ -475,7 +475,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	このスタイル シートは Contact Manager アプリケーションで使用されるレイアウト、色、スタイルに適用されます。
 
-6. *App_Start\BundleConfig.cs* ファイルを開きます。
+6. *App_Start\\BundleConfig.cs* ファイルを開きます。
 
 
 7. 次のコードを追加して [Knockout](http://knockoutjs.com/index.html "KO") プラグインを登録します。
@@ -499,10 +499,9 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 1. パッケージ マネージャー コンソールで、次のコマンドを実行して Knockout をインストールします。
 
 	Install-Package knockoutjs
+## Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する
 
-<h2><a name="bkmk_addwebapi"></a>Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する</h2>
-
-1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。 
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
@@ -541,8 +540,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 	![Web API の保存確認のダイアログ ボックス][addwebapi007]
 
 	**セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、「[クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止][prevent-csrf-attacks]」を参照してください。
-
-<h2><a name="xsrf"></a>XSRF 保護を追加する</h2>
+## XSRF 保護を追加する
 
 クロスサイト リクエスト フォージェリ (XSRF または CSRF) は、Web でホストされるアプリケーションに対する攻撃であり、それによって悪意のある Web サイトが、クライアント ブラウザーとそのブラウザーが信頼する Web サイトの間のやり取りに影響を及ぼす可能性があります。これらの攻撃が可能になるのは、要求ごとに Web ブラウザーが自動的に認証トークンを Web サイトに送信するからです。標準的な例は、ASP.NET のフォーム認証チケットなどの認証クッキーです。ただし、永続的な認証メカニズム (Windows 認証や基本認証など) を使用する Web サイトも、これらの攻撃の対象になることがあります。
 
@@ -630,7 +628,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 	[ValidateHttpAntiForgeryToken] public IHttpActionResult PutContact(int id, Contact contact) {
 
-1. *Views\Home\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
+1. *Views\\Home\\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -685,7 +683,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
             </script>
 
 
-<h2><a name="bkmk_deploydatabaseupdate"></a>Azure および SQL Database にアプリケーションの更新を発行する</h2>
+## Azure および SQL データベースにアプリケーションの更新を発行する
 
 アプリケーションを発行するには、前に説明した手順を繰り返します。
 
@@ -722,7 +720,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<h2><a name="nextsteps"></a> 次のステップ</h2>
+## 次のステップ
 
 実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションのデプロイ)](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションをデプロイする方法について説明しています。
 
@@ -739,7 +737,7 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成とデプロイの自動化に関するご意見をお待ちしております。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- bookmarks -->
@@ -811,4 +809,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/17/2015" 
+	ms.date="07/14/2015" 
 	ms.author="awills"/>
  
 # Application Insights を使用したメトリックの探索
@@ -29,18 +29,7 @@
 
 点線は、1 週間前のメトリックの値を示します。
 
-## ポイント値
 
-グラフ上にマウス ポインターを置くと、そのポイントのメトリックの値が表示されます。
-
-
-![グラフ上にマウス ポインターを置きます](./media/app-insights-metrics-explorer/02-focus.png)
-
-特定のポイントのメトリックの値は、先行するサンプリング間隔の集計です。サンプリング間隔は、グラフ全体の時間範囲に応じて異なります。
-
-サンプリング間隔または "粒度" は、ブレードの上部に表示されます。
-
-![ブレードのヘッダー。](./media/app-insights-metrics-explorer/11-grain.png)
 
 ## 時間範囲
 
@@ -56,6 +45,23 @@
 
 ![グラフの一部をドラッグします。](./media/app-insights-metrics-explorer/12-drag.png)
 
+## 粒度とポイント値
+
+グラフ上にマウス ポインターを置くと、そのポイントのメトリックの値が表示されます。
+
+![グラフ上にマウス ポインターを置きます](./media/app-insights-metrics-explorer/02-focus.png)
+
+特定のポイントのメトリックの値は、先行するサンプリング間隔の集計です。
+
+サンプリング間隔または "粒度" は、ブレードの上部に表示されます。
+
+![ブレードのヘッダー。](./media/app-insights-metrics-explorer/11-grain.png)
+
+[時間範囲] ブレードで粒度を調整できます。
+
+![ブレードのヘッダー。](./media/app-insights-metrics-explorer/grain.png)
+
+使用できる粒度は、選択した時間範囲によって異なります。明示的な粒度は、時間範囲の "自動" 粒度の代替手段です。
 
 ## メトリックス エクスプローラー
 
@@ -190,4 +196,4 @@
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

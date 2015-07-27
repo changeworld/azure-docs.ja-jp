@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="06/07/2015" 
 	ms.author="awills"/>
  
 # トラブルシューティングと Q & A - Application Insights for ASP.NET
@@ -54,7 +54,7 @@ Application Insights ポータルとの通信に失敗した場合やアカウ�
 
 #### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 
-Application Insights をインストールしているときや、ログ アダプターをインストールしているときに、何かの問題が発生した可能性があります。
+Application Insights をインストールしているとき、またはログ アダプターをインストールしているときに、何かの問題が発生した可能性があります。
 
 ソリューション エクスプローラーで、`ApplicationInsights.config` を右クリックし、[**Application Insights の更新**] を選択します。Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。
 
@@ -128,7 +128,7 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 + 概要ページで、検索タイルをクリックして診断検索を開いてください。データはまずここに表示されます。
 + [更新] ボタンをクリックします。現在のバージョンでは、ブレードの内容は自動的に更新されません。
 + Microsoft Azure のスタート ボードで、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
-+ [ステータス ブログ](http://blogs.msdn.com/b/applicationinsights-status/archive/2015/04/14/data-latency-and-data-access-issue-with-data-storage-service-4-14-investigating.aspx)もご覧ください。
++ [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)も参照してください。
 + ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
 + プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) を設定します。
 + Windows Server 2008: 更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) をインストールしていることを確認します。
@@ -152,7 +152,7 @@ dc.services.visualstudio.com への https POST 呼び出しを中継できるプ
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」を参照してください。
 
 
 
@@ -232,4 +232,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

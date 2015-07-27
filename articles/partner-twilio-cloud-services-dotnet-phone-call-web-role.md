@@ -19,13 +19,13 @@
 
 
 
-<h1>Azure の Web ロールで Twilio を使用して通話する方法</h1>
+# Azure の Web ロールで Twilio を使用して通話する方法
 
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
-![Twilio および ASP.NET を使用した Azure 通話フォーム][twilio_dotnet_basic_form]
+![Azure call form using Twilio and ASP.NET][twilio_dotnet_basic_f
 
-<h2><a name="twilio-prereqs"></a>前提条件</h2>
+## <a name="twilio-prereqs"></a>前提条件
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
@@ -34,9 +34,9 @@
 
 Azure での基本的な Web ロールの作成について詳しく理解している必要があります。
 
-<h2><a name="howtocreateform"></a>方法: 通話用の Web フォームの作成</h2>
+## <a name="howtocreateform"></a>方法: 通話用の Web フォームの作成
 
-<h3><a id="use_nuget"></a>Twilio ライブラリを Web ロール プロジェクトに追加するには</h3>
+<a id="use_nuget"></a>Twilio ライブラリを Web ロール プロジェクトに追加するには
 
 1.  Visual Studio でソリューションを開きます。
 2.  **[参照]** を右クリックします。
@@ -69,7 +69,7 @@ Azure での基本的な Web ロールの作成について詳しく理解して
         </div>
     </asp:Content>
 
-<h2><a id="howtocreatecode"></a>方法: 通話用のコードの作成</h2>
+## <a id="howtocreatecode"></a>方法: 通話用のコードの作成
 次のコードはユーザーがフォームへの入力を完了すると呼び出され、このコードによって通話メッセージが作成され、通話が生成されます。この例では、コードは、フォームのボタンの onclick イベント ハンドラーで実行されます(次のコードは、**accountSID** および **authToken** に割り当てられたプレースホルダー値の代わりに Twilio アカウントと認証トークンを使用します)。
 
     using System;
@@ -155,10 +155,10 @@ Azure での基本的な Web ロールの作成について詳しく理解して
 
 TwiML の詳細については、[http://www.twilio.com/docs/api/twiml][twiml] を参照してください。&lt;Say&gt; およびその他の Twilio 動詞の詳細については、[http://www.twilio.com/docs/api/twiml/say][twilio_say] を参照してください。
 
-<h2><a id="nextsteps"></a>次のステップ</h2>
+## <a id="nextsteps"></a>次のステップ
 Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示すために、このコードが用意されました。運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。次に例を示します。
 
-* Web フォームを使用する代わりに、Azure BLOB ストレージまたは Azure SQL データベース インスタンスを使用して、電話番号と通話テキストを保存できます。Azure での BLOB の使用に関する詳細については、「[.NET での Azure BLOB ストレージ サービスの使用方法][howto_blob_storage_dotnet]」を参照してください。SQL データベースの使用の詳細については、「[.NET アプリケーションでの Azure SQL データベースの使用方法][howto_sql_azure_dotnet]」を参照してください。
+* Web フォームを使用する代わりに、Azure BLOB ストレージまたは Azure SQL Database インスタンスを使用して、電話番号と通話テキストを保存できます。Azure での BLOB の使用に関する詳細については、「[.NET での Azure BLOB ストレージ サービスの使用方法][howto_blob_storage_dotnet]」を参照してください。SQL Database の使用の詳細については、「[.NET アプリケーションでの Azure SQL Database の使用方法][howto_sql_azure_dotnet]」を参照してください。
 * RoleEnvironment.getConfigurationSettings を使用すると、Twilio アカウント ID と認証トークンは、その値をフォーム内にハードコーディングするのではなく、デプロイの構成設定から取得できます。RoleEnvironment クラスの詳細については、「[Microsoft.WindowsAzure.ServiceRuntime 名前空間][azure_runtime_ref_dotnet]」を参照してください。
 * また、Twilio に関するセキュリティ ガイドライン [https://www.twilio.com/docs/security][twilio_docs_security] も参照してください。
 * Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を参照してください。
@@ -192,4 +192,4 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 
 [azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

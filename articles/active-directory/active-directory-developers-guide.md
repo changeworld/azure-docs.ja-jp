@@ -132,4 +132,4 @@ Azure Active Directory を使用したアプリ開発に関する次の概要の
 
 - **[Twitter での Azure AD](https://twitter.com/azuread)**: Azure AD に関する発表事項を 140 文字以内で受け取ることができます。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

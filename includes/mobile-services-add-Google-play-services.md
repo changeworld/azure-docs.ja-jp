@@ -23,4 +23,4 @@
             android:value="@integer/google_play_services_version" />
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

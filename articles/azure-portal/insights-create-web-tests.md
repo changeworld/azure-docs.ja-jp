@@ -22,4 +22,4 @@
 > [AZURE.NOTE]この記事は移動しました。[Web サイトの可用性と応答性の監視](../app-insights-monitor-web-app-availability.md)に関するページを参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

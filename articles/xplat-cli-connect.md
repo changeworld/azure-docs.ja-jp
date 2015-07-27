@@ -145,4 +145,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

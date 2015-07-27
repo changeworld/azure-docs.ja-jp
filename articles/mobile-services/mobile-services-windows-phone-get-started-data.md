@@ -194,4 +194,4 @@
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

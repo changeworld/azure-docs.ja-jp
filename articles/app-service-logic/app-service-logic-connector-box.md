@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="03/20/2015"
-   ms.author="vagarw"/>
+   ms.date="07/02/2015"
+   ms.author="andalmia"/>
 
 # ロジック アプリでの Box コネクタの使用
 
@@ -160,4 +160,4 @@ API アプリを作成したら、Logic App のアクションとして Box コ�
 [4]: ./media/app-service-logic-connector-box/image_3.jpg
 [5]: ./media/app-service-logic-connector-box/image_4.jpg
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

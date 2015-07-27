@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015"
+	ms.date="06/28/2015"
 	ms.author="adegeo"/>
 
 
@@ -21,13 +21,20 @@
 
 # Azure でアプリケーションの SSL を構成する
 
-[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
+> [AZURE.SELECTOR]
+- [Azure Portal](cloud-services-configure-ssl-certificate.md)
+- [Azure Preview Portal](cloud-services-configure-ssl-certificate-portal.md)
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 > [AZURE.NOTE]このタスクの手順は、Azure クラウド サービス に適用されます。Web サイトについては、「[Azure Web サイトの SSL 証明書の構成](../web-sites-configure-ssl-certificate.md)」を参照してください。
 
 このタスクでは、運用環境の展開を使用します。ステージング環境の展開を使用する場合に関する情報については、このトピックの最後で紹介します。
+
+クラウド サービスを作成していない場合は、まず[こちら](cloud-services-how-to-create-deploy.md)を参照してください。
+
+[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
+
 
 ## 手順 1. SSL 証明書を取得する
 
@@ -105,27 +112,22 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイをパッケージ化します。**cspack** を使用している場合は、**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、先ほど挿入した証明書情報が上書きされるためです。
 
-## ステップ 3: 展開パッケージと証明書をアップロードする
+## ステップ 3: 証明書のアップロード
 
 デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、管理ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
-1. [Azure の管理ポータル][]にログインします。 
-2. **[新規]**、**[クラウド サービス]**、**[カスタム作成]** の順にクリックします。
-3. **[クラウド サービスを作成する]** ダイアログで、URL、リージョン/アフィニティ グループ、およびサブスクリプションの値を入力します。**[今すぐクラウド サービス パッケージを展開します]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
-3. **[クラウド サービスの発行]** ダイアログで、クラウド サービスに必要な情報を入力し、環境で **[運用]** をクリックして、**[今すぐ証明書を追加]** チェック ボックスがオンになっていることを確認します(いずれかのロールに単一のインスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でも展開する]** チェック ボックスがオンになっていることを確認してください)。 
+1. [Azure 管理ポータル][]にログインします。 
+2. 左側のナビゲーション ウィンドウで、**[Cloud Services]** をクリックします。
+3. 目的のクラウド サービスをクリックします。
+4. **[証明書]** タブをクリックします。
 
-    ![クラウド サービスの発行][0]
+    ![[証明書] タブをクリックします。](./media/cloud-services-configure-ssl-certificate/click-cert.png)
 
-4.  **[次へ]** をクリックします。
-5.  **[証明書の追加]** ダイアログで、SSL 証明書 .pfx ファイルの場所と証明書のパスワードを入力し、**[証明書のアタッチ]** をクリックします。  
+5. **[アップロード]** ボタンをクリックします。
 
-    ![証明書の追加][1]
-
-6.  証明書が **[アタッチされた証明書]** セクションに表示されていることを確認します。
-
-    ![アタッチされた証明書][4]
-
-7.  **[完了]** をクリックしてクラウド サービスを作成します。展開の状態が **[準備完了]** になったら、次の手順に進むことができます。
+    ![アップロード](./media/cloud-services-configure-ssl-certificate/upload-button.png)
+    
+6. **[ファイル]**、**[パスワード]** を指定し、**[完了]** (チェック マーク) をクリックします。
 
 ## ステップ 4: HTTPS を使用してロール インスタンスに接続する
 
@@ -152,7 +154,7 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [Windows Azure のサービス証明書を作成する]: http://msdn.microsoft.com/library/azure/gg432987.aspx
   [サービスと証明書の関連付け]: http://msdn.microsoft.com/library/azure/gg465718.aspx
   [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/library/azure/gg465718.aspx
-  [Azure の管理ポータル]: http://manage.windowsazure.com
+  [Azure 管理ポータル]: http://manage.windowsazure.com
   [0]: ./media/cloud-services-configure-ssl-certificate/CreateCloudService.png
   [1]: ./media/cloud-services-configure-ssl-certificate/AddCertificate.png
   [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
@@ -161,4 +163,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [HTTPS エンドポイントでの SSL 証明書の構成方法]: http://msdn.microsoft.com/library/azure/ff795779.aspx
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

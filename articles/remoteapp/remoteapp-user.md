@@ -2,7 +2,6 @@
     pageTitle="RemoteApp にユーザーを追加する" 
     description="RemoteApp でユーザーを追加する方法を説明します。" 
     services="remoteapp" 
-    solutions="" 
 	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
@@ -13,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="05/28/2015" 
+    ms.date="06/30/2015" 
     ms.author="elizapo" />
 
 # RemoteApp にユーザーを追加する方法
@@ -42,7 +41,7 @@ Office 365 ユーザーは、Azure Active Directory のユーザーです。そ�
 |パスワード同期がある ADsync |あり |あり |
 |パスワード同期がない ADsync|	あり |いいえ |
 |AD FS がある ADsync |あり |あり |
-|サード パーティの Azure サポート ID プロバイダー (Ping など) |あり |いいえ|	
+|サード パーティの Azure サポート ID プロバイダー (Ping など) |あり |あり|	
 |Multi-Factor Authentication |あり |あり |
 
 RemoteApp を使用するために Active Directory を構成する方法の詳細については、[ここ](remoteapp-ad.md)を参照してください。
@@ -54,4 +53,4 @@ RemoteApp を使用するために Active Directory を構成する方法の詳�
 コレクションに、Office 365 ProPlus のテンプレート イメージを使用しているか*または* Office 365 を使用するカスタム イメージを作成した場合は、サブスクリプションの既定のドメイン用の Office 365 サブスクリプションを持つ Azure Active Directory のユーザーのみを追加できます。詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/23/2015"
+	ms.date="07/01/2015"
 	ms.author="donnam"/>
 
 # iOS モバイル アプリのオフライン同期を有効にする
@@ -48,7 +48,7 @@ Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作�
 
     同期テーブルへの参照を取得するには、メソッド `syncTableWithName` を使用します。オフライン同期機能を解除するには、代わりに `tableWithName` を使用します。
 
-3. テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。これは、`QSTodoService.init` メソッド内の関連コードです。
+2. テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。これは、`QSTodoService.init` メソッド内の関連コードです。
 
         MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
 
@@ -58,9 +58,9 @@ Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作�
 
     `initWithDelegate` の最初のパラメーターは、競合ハンドラーを指定するために使用します。`nil` を渡したため、既定の競合ハンドラーが取得されます。この競合ハンドラーは、競合が発生すると失敗します。
 
-<!-- For details on how to implement a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services]. -->
+	<!-- For details on how to implement a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services]. -->
 
-4. メソッド `pullData` と `syncData` は、実際の同期操作を実行します。まず `syncData` が新しい変更をプッシュし、次にリモート バックエンドからデータを取得するために `pullData` を呼び出します。
+3. メソッド `pullData` と `syncData` は、実際の同期操作を実行します。まず `syncData` が新しい変更をプッシュし、次にリモート バックエンドからデータを取得するために `pullData` を呼び出します。
 
         -(void)syncData:(QSCompletionBlock)completion
         {
@@ -98,7 +98,7 @@ Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作�
 
     `pullWithQuery` に対する 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `ms_updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`nil` をクエリ ID として渡します。これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
 
-<!--     >[AZURE.NOTE] To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to purge the local store.
+	<!--     >[AZURE.NOTE] To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to purge the local store.
  -->
 
 5. クラス `QSTodoService` では、メソッド `syncData` はデータ変更操作である `addItem` や `completeItem` の後に呼び出されます。また、`QSTodoListViewController.refresh` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.init` は `refresh` を呼び出すため、アプリケーションは起動時に同期も実行します。
@@ -212,13 +212,13 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 オフライン同期機能をサポートするため、`MSSyncTable` インターフェイスを使用し、ローカル ストアで `MSClient.syncContext` を初期化しました。この例では、ローカル ストアは、Core Data に基づいたデータベースでした。
 
-Core Data ローカル ストアを使用する場合、[正しいシステム プロパティ] [Core Data モデルのレビュー] を使用して、複数のテーブルを定義する必要があります。
+Core Data ローカル ストアを使用する場合は、[正しいシステム プロパティ](#review-core-data)を使用して、複数のテーブルを定義する必要があります。
 
-Mobile Apps に対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、すべての操作はローカル ストアに対して発生したかのように動作します。
+モバイル アプリに対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、すべての操作はローカル ストアに対して発生したかのように動作します。
 
 ローカル ストアをサーバーと同期しようとする場合は、`MSSyncTable.pullWithQuery` と `MSClient.syncContext.pushWithCompletion` の各メソッドを使用しました。
 
-*  変更内容をサーバーにプッシュするために、`Review the Core Data model` を呼び出しました。このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブルではなく `MSSyncContext` のメンバーです。
+*  変更内容をサーバーにプッシュするために、`pushWithCompletion` を呼び出しました。このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブルではなく `MSSyncContext` のメンバーです。
 
     何らかの方法で (CUD 操作により) ローカルで変更されたレコードだけが、サーバー宛てに送信されます。
 
@@ -275,7 +275,7 @@ Mobile Apps に対する通常の CRUD 操作は、アプリケーションは�
 [Soft Delete]: ../mobile-services-using-soft-delete.md
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/ja-jp/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -41,4 +41,4 @@
 [.NET backend version]: ../mobile-services-dotnet-backend-windows-phone-get-started.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

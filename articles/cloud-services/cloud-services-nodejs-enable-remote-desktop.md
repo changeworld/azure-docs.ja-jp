@@ -116,4 +116,4 @@
   [Azure ロールでのリモート デスクトップの使用]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

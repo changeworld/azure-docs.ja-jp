@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="アプリケーション パフォーマンスを監視する" 
+	pageTitle="Azure Web アプリのパフォーマンスの監視" 
 	description="チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。" 
 	services="azure-portal"
     documentationCenter="na"
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="azure-portal" 
@@ -12,32 +12,32 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2015" 
+	ms.date="07/08/2015" 
 	ms.author="awills"/>
 
-# アプリケーション パフォーマンスを監視する
+# Azure Web アプリのパフォーマンスの監視
 
-[Azure ポータル](http://portal.azure.com)を使用すると、Web Apps または Virtual Machines のアプリケーションの依存関係の統計と詳細を収集する監視を設定できます。
+[Azure ポータル](http://portal.azure.com)を使用すると、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)または [Virtual Machines](../virtual-machines/virtual-machines-about.md) のアプリケーションの依存関係の統計と詳細を収集する監視を設定できます。
 
 Azure は、*拡張機能*を活用してアプリケーション パフォーマンス監視 (*APM*) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
+
+Application Insights と New Relic は、利用できるパフォーマンス監視拡張機能のうちの 2 つです。New Relic を使用するには、実行時にエージェントをインストールします。Application Insights を使用するには、SDK でコードを再ビルドします。また、追加データにアクセスできる拡張機能もインストールできます。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
 
 ## 拡張機能を有効にする
 
 1. **[参照]** をクリックし、インストルメント化する Web アプリまたは仮想マシンを選択します。
 
-2. **[監視]** の **[アプリケーション監視]** をクリックします。
+2. Application Insights または New Relic の拡張機能を追加します。Web アプリをインストルメント化する場合:
 
-3. **[Application Insights]** や **[New Relic]** などの、使用する拡張機能プロバイダーを選択します。
-
-![Web app APM](./media/insights-perf-analytics/05-extend.png)
+![設定、拡張機能、追加、Application Insights](./media/insights-perf-analytics/05-extend.png)
 
 仮想マシンを使用している場合は、次のように操作します。
 
-![仮想マシン](./media/insights-perf-analytics/10-vm1.png)
+![分析タイルをクリックする](./media/insights-perf-analytics/10-vm1.png)
 
 ### Application Insights 用: SDK を使用して再構築する
 
-New Relic は追加のインストルメンテーションなしで自動的にインストールされますが、Application Insights には 1 つの追加要件があります。
+Application Insights は、アプリに SDK をインストールすることによって機能します。
 
 Application Insights SDK を Visual Studio のプロジェクトに追加します。
 
@@ -81,4 +81,4 @@ Application Insights のブレードが表示されたら、[パフォーマン�
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

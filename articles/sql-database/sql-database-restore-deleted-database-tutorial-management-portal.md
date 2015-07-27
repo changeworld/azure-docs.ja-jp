@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="storage-backup-recovery" 
-   ms.date="03/18/2015"
+   ms.date="07/15/2015"
    ms.author="elfish; v-romcal"/>
 
 # Azure ポータルで削除した Azure SQL データベースを復元する
@@ -73,4 +73,4 @@
 
 [Azure SQL Database のバックアップと復元](http://msdn.microsoft.com/library/azure/jj650016.aspx)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

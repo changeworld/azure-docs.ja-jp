@@ -630,4 +630,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

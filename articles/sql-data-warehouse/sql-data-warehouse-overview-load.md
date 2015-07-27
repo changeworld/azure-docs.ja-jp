@@ -44,7 +44,7 @@ ADF は、データの保存、処理、移動の各サービスを効率的で�
 PolyBase は、Hadoop や Azure Storage BLOB ストレージをクエリする方法を提供することでデータ分析を簡略化する Microsoft テクノロジです。すべては標準の Transact-SQL を使用して実行可能であり、MapReduce を使用する必要はありません。PolyBase は Azure BLOB ストレージから SQL Data Warehouse にデータをロードすることもできます。開始するには、「[PolyBase を使用したデータのロード][]」チュートリアルに従ってください。
 
 ### SQL Server Integration Services (SSIS)
-[SSIS][] は、エンタープライズ レベルのデータの統合と変換ソリューションを構築するためのプラットフォームです。SQL Data Warehouse に接続するパッケージをビルドするには、標準の [SQL Server 変換先アダプター][]を使用します。
+[SSIS][] は、エンタープライズ レベルのデータの統合と変換ソリューションを構築するためのプラットフォームです。SQL Data Warehouse に接続するパッケージを構築するには、ADO.Net 接続マネージャーを使用して標準の OLE DB 変換先アダプターを使用します。
 
 ### サード パーティ製のツール
 SQL Data Warehouse は、データをロードするための主要な業界ソリューションをサポートします。詳細については、[ソリューション パートナー][]のリストを参照してください。
@@ -63,10 +63,10 @@ SQL Data Warehouse は、データをロードするための主要な業界ソ�
 <!--MSDN references-->
 [サポートされたソース/シンク]: https://msdn.microsoft.com/library/dn894007.aspx
 [コピー アクティビティ]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server 変換先アダプター]: https://msdn.microsoft.com/library/ms141095.aspx
+[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141237.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

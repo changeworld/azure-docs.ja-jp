@@ -89,7 +89,7 @@ PolyBase では、データ ファイルは UTF-8 形式でエンコードされ
 UTF-16 を使用してエンコードされたファイルにはすべて、データ転送の前に再度書き込みを行う必要があります。
 
 ### データ ファイルの形式
-PolyBase では、固定行ターミネータとして \n または改行を使用する必要があります。データ ファイルは、この標準に準拠する必要があります。文字列または列のターミネータに関する制限はありません。
+PolyBase では、固定行ターミネータとして \\n または改行を使用する必要があります。データ ファイルは、この標準に準拠する必要があります。文字列または列のターミネータに関する制限はありません。
 
 PolyBase で外部テーブルの一部として、ファイル内のすべての列を定義する必要があります。エクスポートされたすべての列が必要であり、型が必須の標準に準拠していることを確認します。
 
@@ -172,9 +172,9 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy]: storage/storage-use-azcopy.md
-[ADF コピー]: storage/data-factory-copy-activity.md
-[ADF コピーの例]: data-factory/data-factory-copy-activity-examples.md
+[AZCopy]: ../storage/storage-use-azcopy.md
+[ADF コピー]: ../data-factory/data-factory-copy-activity.md
+[ADF コピーの例]: ../data-factory/data-factory-copy-activity-examples.md
 [開発の概要]: sql-data-warehouse-develop-overview.md
 [SQL Data Warehouse へのソリューションの移行]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
@@ -193,4 +193,4 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 [プレビュー バージョン]: http://aka.ms/downloadazcopypr/
 [SSIS のドキュメント]: https://msdn.microsoft.com/ja-jp/library/ms141026.aspx
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -1,18 +1,11 @@
 <properties 
-	urlDisplayName="Jenkins Continuous Integration" 
 	pageTitle="Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用 | Microsoft Azure" 
-	metaKeywords="" 
 	description="このチュートリアルでは、Jenkins 継続的インテグレーション ソリューションで作成されるビルド アーティファクトのリポジトリとして Azure BLOB サービスを使用する方法について説明します。" 
-	metaCanonical="" 
 	services="storage" 
 	documentationCenter="java" 
-	title="" 
 	authors="rmcmurray" 
-	solutions="" 
 	manager="wpickett" 
-	editor="jimbe" 
-	scriptId="" 
-	videoId=""/>
+	editor="jimbe" />
 
 <tags 
 	ms.service="storage" 
@@ -109,7 +102,7 @@ Jenkins で BLOB サービスを使用するには、Azure ストレージ プ�
         cd text
         echo Hello Azure Storage from Jenkins > hello.txt
         date /t > date.txt
-        time /t > date.txt
+        time /t >> date.txt
  
 5. ジョブ構成の **[Post-build Actions]** セクションで **[Add post-build action]** をクリックした後、**[Upload artifacts to Windows Azure Blob storage]** を選択します。
 6. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
@@ -172,4 +165,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ms-open-tech]: http://msopentech.com
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO3-->

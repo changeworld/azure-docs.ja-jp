@@ -26,6 +26,7 @@ ASE 機能は、基本的に、Azure App Service を顧客の VNET にデプロ�
 
 - 地域 VNET が 512 (/23) 個以上のアドレスを持つ。
 - この VNET 内のサブネットが 256 (/24) 個以上のアドレスを持つ。
+- サブネットには、**その他のコンピューティング リソースを含めることはできません**。サブネットには App Service 環境を 1 つだけデプロイできます。サブネット内に既にその他のコンピューティング リソースが既に存在する場合は、作成操作は失敗します。
 
 App Service 環境をホストするための VNET をまだ用意していない場合は、App Service 環境の作成時に作成できます。
 
@@ -142,4 +143,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

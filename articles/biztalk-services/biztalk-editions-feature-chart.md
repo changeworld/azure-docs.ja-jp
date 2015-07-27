@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="03/03/2015"
+	ms.date="06/23/2015"
 	ms.author="mandia"/>
 
 
@@ -237,7 +237,7 @@ BizTalk Adapter サービスは、Azure BizTalk サービスで使用されま�
 
 #### BizTalk サービスの 1 つのレベルから別のレベルに移行するにはどのようにしますか。
 
-1 つのレベルから別のレベルへの移行には、バックアップと復元のフローを使用します。一部の移行パスのみサポートされます。サポートされる移行パスの詳細については、[BizTalk サービスのバックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)に関するページを参照してください。
+1 つのレベルから別のレベルへの移行には、バックアップと復元のフローを使用します。一部の移行パスのみサポートされます。サポートされる移行パスの詳細については、[BizTalk サービスのバックアップと復元](biztalk-backup-restore.md)に関するページを参照してください。
 
 #### BizTalk Adapter サービスはサービスに含まれていますか。 ソフトウェアはどのようにして取得しますか。
 
@@ -245,16 +245,16 @@ BizTalk Adapter サービスは、Azure BizTalk サービスで使用されま�
 
 ## 次へ
 
-Azure BizTalk サービスを Azure 管理ポータルで作成するには、「[BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)」に進んでください。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+Azure BizTalk サービスを Azure 管理ポータルで作成するには、「[BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](biztalk-provision-services.md)」に進んでください。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## 関連項目
-- [Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-- [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-- [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+- [Azure 管理ポータルを使用して BizTalk サービスを作成する](biztalk-provision-services.md)<br/>
+- [BizTalk サービス: サービスの状態のチャート](biztalk-service-state-chart.md)<br/>
+- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+- [BizTalk サービス: バックアップと復元](biztalk-backup-restore.md)<br/>
+- [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)<br/>
+- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

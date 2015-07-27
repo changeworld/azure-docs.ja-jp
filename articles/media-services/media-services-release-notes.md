@@ -301,7 +301,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 ### <a name="jan_fab_14_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.1、3.0.0.2、および 3.0.0.3
 
-3.0.0.1 および 3.0.0.2 における変更:
+3\.0.0.1 および 3.0.0.2 における変更:
 
 * OrderBy ステートメントでの LINQ クエリの使用に関する問題が修正されました。
 
@@ -309,11 +309,11 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 変更の詳細については、「[Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]」を参照してください。
 
-3.0.0.3 では次の点が変更されました。
+3\.0.0.3 では次の点が変更されました。
 
 * バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。 
 
-* 3.0.*.* リリースの下位互換性の問題が修正されました。
+* 3\.0.*.* リリースの下位互換性の問題が修正されました。
 
 
 ##<a id="december_changes_13"></a>2013 年 12 月のリリース
@@ -540,4 +540,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

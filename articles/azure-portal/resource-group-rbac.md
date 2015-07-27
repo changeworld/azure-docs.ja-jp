@@ -1,19 +1,19 @@
 <properties
    pageTitle="リソースへのアクセスの管理と監査"
    description="ロールベースのアクセス制御 (RBAC) を使用して、Azure に展開されたリソースに対するアクセス許可を管理します。"
-   services="azure-portal"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="azure-portal"
+   ms.service="azure-resource-manager"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="AzurePortal"
    ms.workload="na"
-   ms.date="06/18/2015"
+   ms.date="07/15/2015"
    ms.author="tomfitz"/>
 
 # リソースへのアクセスの管理と監査
@@ -59,7 +59,7 @@ Azure PowerShell の最新バージョンをまだインストールしていな
 
 1. 資格情報を使用して Azure アカウントにログインします。アカウントの情報が返されます。
 
-        PS C:\> Add-AzureAccount
+        PS C:> Add-AzureAccount
           
         Id                             Type       ...
         --                             ----    
@@ -67,16 +67,16 @@ Azure PowerShell の最新バージョンをまだインストールしていな
 
 2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
 
-        PS C:\> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
+        PS C:> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
 
 3. Azure リソース マネージャー モジュールに切り替える
 
-        PS C:\> Switch-AzureMode AzureResourceManager
+        PS C:> Switch-AzureMode AzureResourceManager
 
 ### 使用可能なロールを表示する
 サブスクリプションで使用可能なすべてのロールを表示するには、**Get-AzureRoleDefinition** コマンドを実行します。
 
-    PS C:\> Get-AzureRoleDefinition
+    PS C:> Get-AzureRoleDefinition
 
     Name                          Id                            Actions                  NotActions
     ----                          --                            -------                  ----------
@@ -87,7 +87,7 @@ Azure PowerShell の最新バージョンをまだインストールしていな
 ### サブスクリプションを対象にした閲覧者アクセス許可をグループに付与する
 1. **Get-AzureRoleDefinition** コマンドの実行時にロール名を指定して**閲覧者**ロールの定義を確認する。実行できる操作が、割り当てようとしている操作であることを確認する。
 
-        PS C:\> Get-AzureRoleDefinition Reader
+        PS C:> Get-AzureRoleDefinition Reader
    
         Name            Id                            Actions           NotActions
         ----            --                            -------           ----------
@@ -95,11 +95,11 @@ Azure PowerShell の最新バージョンをまだインストールしていな
 
 2. **Get-AzureADGroup** コマンドを実行して必要なセキュリティ グループを取得する。サブスクリプション内のグループの実際の名前を指定する。次の例では、ExampleAuditorGroup となっています。
 
-        PS C:\> $group = Get-AzureAdGroup -SearchString ExampleAuditorGroup
+        PS C:> $group = Get-AzureAdGroup -SearchString ExampleAuditorGroup
 
 3. 監査セキュリティ グループのロール割り当てを作成します。コマンドが完了すると、新しいロール割り当てが返されます。
 
-        PS C:\> New-AzureRoleAssignment -ObjectId $group.Id -Scope /subscriptions/{subscriptionId}/ -RoleDefinitionName Reader
+        PS C:> New-AzureRoleAssignment -ObjectId $group.Id -Scope /subscriptions/{subscriptionId}/ -RoleDefinitionName Reader
 
         Mail               :
         RoleAssignmentId   : /subscriptions/####/providers/Microsoft.Authorization/roleAssignments/####
@@ -113,32 +113,32 @@ Azure PowerShell の最新バージョンをまだインストールしていな
 ###リソース グループを対象にした共同作業者アクセス許可をアプリケーションに付与する
 1. **Get-AzureRoleDefinition** コマンドの実行時にロール名を指定して**共同作業者**ロールの定義を確認します。実行できる操作が、割り当てようとしている操作であることを確認する。
 
-        PS C:\> Get-AzureRoleDefinition Contributor
+        PS C:> Get-AzureRoleDefinition Contributor
 
 2. **Get-AzureADServicePrincipal** コマンドを実行してからサブスクリプション内のアプリケーションの名前を指定して、サービス プリンシパル オブジェクト ID を取得します。次の例では、ExampleApplication となっています。
 
-        PS C:\> $service = Get-AzureADServicePrincipal -SearchString ExampleApplicationName
+        PS C:> $service = Get-AzureADServicePrincipal -SearchString ExampleApplicationName
 
 3. **New-AzureRoleAssignment** コマンドを実行してサービス プリンシパルのロール割り当てを作成します。
 
-        PS C:\> New-AzureRoleAssignment -ObjectId $service.Id -ResourceGroupName ExampleGroupName -RoleDefinitionName Contributor
+        PS C:> New-AzureRoleAssignment -ObjectId $service.Id -ResourceGroupName ExampleGroupName -RoleDefinitionName Contributor
 
 Azure Active Directory アプリケーションおよびサービス プリンシパルのセットアップの詳細については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」を参照してください。
 
 ###リソースを対象にした所有者アクセス許可をユーザーに付与する
 1. **Get-AzureRoleDefinition** コマンドの実行時にロール名を指定して**所有者**ロールの定義を確認する。実行できる操作が、割り当てようとしている操作であることを確認する。
 
-        PS C:\> Get-AzureRoleDefinition Owner
+        PS C:> Get-AzureRoleDefinition Owner
 
 2. ユーザーのロール割り当てを作成する。
 
-        PS C:\> New-AzureRoleAssignment -UserPrincipalName "someone@example.com" -ResourceGroupName {groupName} -ResourceType "Microsoft.Web/sites" -ResourceName "mysite" -RoleDefinitionName Owner
+        PS C:> New-AzureRoleAssignment -UserPrincipalName "someone@example.com" -ResourceGroupName {groupName} -ResourceType "Microsoft.Web/sites" -ResourceName "mysite" -RoleDefinitionName Owner
 
 
 ###リソース グループの監査ログを一覧表示する。
 リソース グループの監査ログを取得するには、**Get-AzureResourceGroupLog** コマンドを実行します。
 
-      PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleGroupName
+      PS C:> Get-AzureResourceGroupLog -ResourceGroup ExampleGroupName
 
 ## Mac、Linux、Windows 用の Azure CLI の使用方法
 
@@ -270,4 +270,4 @@ Azure リソース マネージャーの REST API を介してロールベース
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

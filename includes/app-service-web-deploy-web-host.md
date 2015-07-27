@@ -15,4 +15,4 @@ Web アプリをホストするためのサービス プランを作成します
        }
     }
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

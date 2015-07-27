@@ -43,7 +43,7 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 
 ## 次のステップ
-開発に関するその他のヒントについては、「[開発の概要][]」を参照してください。
+開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -54,4 +54,4 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

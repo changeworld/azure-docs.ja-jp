@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="07/07/2015" 
 	ms.author="spelluru"/>
 
 
@@ -72,14 +72,14 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 最初に、SQL Server データベース、テーブル、ユーザー定義型、およびストアド プロシージャを作成する必要があります。これらは **MarketingCampaignEffectiveness** の結果を Azure BLOB から SQL Server データベースに移動するために使用されます。
 
-1.	**エクスプローラー**で、**C:\ADFWalkthrough** (またはサンプルを展開した場所) にある **OnPremises** サブフォルダーに移動します。
+1.	**エクスプローラー**で、**C:\\ADFWalkthrough** (またはサンプルを展開した場所) にある **OnPremises** サブフォルダーに移動します。
 2.	お好みのエディターで **prepareOnPremDatabase&Table.ps1** を開き、強調表示部分を自分の SQL Server 情報に置き換え、ファイルを保存します (**SQL 認証**の詳細を入力してください)。このチュートリアルのために、データベースの SQL 認証を有効にします。 
 			
 		$dbServerName = "<servername>"
 		$dbUserName = "<username>"
 		$dbPassword = "<password>"
 
-3. **Azure PowerShell** で、**C:\ADFWalkthrough\OnPremises** フォルダーに移動します。
+3. **Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。
 4.	**prepareOnPremDatabase&Table.ps1** を実行します **(& を二重引用符で囲むか、以下のようにします)**。
 			
 		& '.\prepareOnPremDatabase&Table.ps1'
@@ -114,7 +114,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 ### 内部設置型の論理テーブルを作成する
 
-1.	**Azure PowerShell** で、**C:\ADFWalkthrough\OnPremises** フォルダーに移動します。 
+1.	**Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。 
 2.	**New-AzureDataFactoryTable** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のテーブルを作成します。
 
 			
@@ -170,4 +170,4 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

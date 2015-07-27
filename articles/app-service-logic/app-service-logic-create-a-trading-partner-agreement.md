@@ -3,7 +3,7 @@
    description="取引先契約の作成" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
-   authors="harishkragarwal" 
+   authors="rajram" 
    manager="dwrede" 
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/22/2015"
-   ms.author="hariag"/>
+   ms.date="07/01/2015"
+   ms.author="rajram"/>
 
 
 # 取引先契約の作成   
@@ -78,4 +78,4 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.jpg
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

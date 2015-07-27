@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Machine Learning Studio にデータをインポートする | Microsoft Azure"
 	description="さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする方法サポートされているデータ型とデータ形式に関する説明"
-	keywords="import data,data format,data types,data sources,training data"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -144,4 +143,4 @@ OData URL を指定することによって、データ フィード プロバ�
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

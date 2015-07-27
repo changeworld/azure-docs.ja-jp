@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="06/30/2015" 
 	ms.author="stefsh"/>
 
 # App Service 環境への受信トラフィックを制御する方法
@@ -41,6 +41,13 @@ App Service 環境で使用されるポートの一覧を次に示します。
 - 4016: Visual Studio 2012 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 - 4018: Visual Studio 2013 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 - 4020: Visual Studio 2015 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
+
+## 発信接続と DNS の要件 ##
+App Service 環境を適切に機能させるには、Azure Storage だけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
+
+顧客の仮想ネットワーク内にカスタム DNS サーバーが構成されていることもあります。App Service 環境は、*.database.windows.net、*.file.core.windows.net、および *.blob.core.windows.net の Azure エンドポイントを解決できる必要があります。
+
+また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。
 
 ## ネットワーク セキュリティ グループの作成 ##
 ネットワーク セキュリティ グループの動作の詳細については、次の[情報][NetworkSecurityGroups]を参照してください。ネットワーク セキュリティ グループの構成と App Service 環境を含むサブネットへの適用に重点を置いて、ネットワーク セキュリティ グループの特徴を以下で詳しく説明します。
@@ -123,4 +130,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

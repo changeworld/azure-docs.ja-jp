@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.date="07/07/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)
@@ -40,23 +40,15 @@
 ## サポートされているソースとシンク
 コピー アクティビティでは、次のデータ移行のシナリオがサポートされています。
 
-- Azure BLOB から Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、または IaaS 上の SQL Server へのデータのコピー。
-- Azure SQL Database から Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server へのデータのコピー。
-- Azure テーブルから Azure BLOB、Azure テーブル、または Azure SQL Database へのデータのコピー。
-- オンプレミスの SQL Server または IaaS 上の SQL Server から Azure BLOB または Azure SQL Database へのデータのコピー。
-- オンプレミスの Oracle データベースから Azure BLOB へのデータのコピー。
-- オンプレミスのファイル システムから Azure BLOB へのデータのコピー。
- 
-
 <table border="1">	
 	<tr>
 		<th><i>ソース/シンク<i></th>
 		<th>Azure BLOB</th>
 		<th>Azure テーブル</th>
 		<th>Azure SQL Database</th>
-		<th>内部設置型 SQL Server</th>
-		<th>IaaS 上の SQL Server</th>
 		<th>Azure DocumentDB</th>
+		<th>Azure VM 上の SQL Server</th>
+		<th>内部設置型 SQL Server</th>
 	</tr>	
 
 	<tr>
@@ -74,11 +66,10 @@
 		<td>○</td>
 		<td>○</td>
 		<td>○</td>
-		<td></td>
-		<td></td>
+		<td>○</td>
+		<td>○</td>
 		<td>○</td>
 	</tr>	
-
 	<tr>
 		<td><b>Azure SQL Dtabase</b></td>
 		<td>○</td>
@@ -88,108 +79,6 @@
 		<td>○</td>
 		<td>○</td>
 	</tr>
-
-
-	<tr>
-		<td><b>オンプレミスの SQL Server</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>IaaS 上の SQL Server</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスのファイル システム</b></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの Oracle Database</b></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスのファイル システム</b></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの MySQL データベース</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの DB2 データベース</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの Teradata データベース</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの Sybase データベース</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの PostgreSQL データベース</b></td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
 	<tr>
 		<td><b>Azure DocumentDB</b></td>
 		<td>○</td>
@@ -198,6 +87,106 @@
 		<td></td>
 		<td></td>
 		<td></td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの SQL Server</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>Azure VM 上の SQL Server</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスのファイル システム</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの Oracle Database</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスのファイル システム</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの MySQL データベース</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの DB2 データベース</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの Teradata データベース</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの Sybase データベース</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
+	</tr>
+
+	<tr>
+		<td><b>オンプレミスの PostgreSQL データベース</b></td>
+		<td>○</td>
+		<td>○</td>
+		<td>○</td>
+		<td></td>
+		<td>○</td>
+		<td>○</td>
 	</tr>
 
 </table>
@@ -443,7 +432,7 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 
 **Azure SQL Database** の場合は、暗号化された接続を明示的に要求し、サーバー証明書を信頼しないようにして "man in the middle" 攻撃を回避します。これを行うには、接続文字列で **Encrypt=True** と **TrustServerCertificate=False** を使用します。詳細については、「[SQL Database のセキュリティのガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394108.aspx)」を参照してください。
 
-**SQL Server** などの従来のデータベースの場合 (特に、インスタンスが Azure Virtual Machine 内にある場合)、暗号化された接続オプションを有効にします。このためには、接続文字列で **Encrypt=True** および **TrustServerCertificate=False** を指定して、署名された証明書を構成します。詳細については、[データベース エンジンへの暗号化接続の有効化]https://msdn.microsoft.com/library/ms191192(v=sql.110).aspx および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
+**SQL Server** などの従来のデータベースの場合 (特に、インスタンスが Azure Virtual Machine 内にある場合)、暗号化された接続オプションを有効にします。このためには、接続文字列で **Encrypt=True** および **TrustServerCertificate=False** を指定して、署名された証明書を構成します。詳細については、[データベース エンジンへの暗号化接続の有効化]https://msdn.microsoft.com/library/ms191192(v=sql.110) および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
 
 ## 高度なシナリオ
 - **構造体定義を使用した列のフィルター処理**。テーブルの種類によっては、ソースの列のサブセットを指定できます。指定するには、テーブル定義の **Structure** 定義の列を、基になるデータ ソースの列よりも少なく設定します。
@@ -486,4 +475,4 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

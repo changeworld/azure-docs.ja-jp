@@ -237,4 +237,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure の管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

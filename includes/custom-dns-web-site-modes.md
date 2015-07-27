@@ -2,4 +2,4 @@
 
 サイトのモードの変更方法など、App Service のプラン モードの詳細については、[Web アプリのスケールの設定方法](../article/app-service-web/web-sites-scale.md)に関するページを参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -36,8 +36,7 @@
 **[Framework バージョン]**。アプリでこれらのフレームワークを使用する場合は、以下のオプションを設定します。
 
 - **.NET Framework**: .NET Framework のバージョンを設定します。 
-- **PHP**: PHP のバージョンを設定するか、**PHP を無効にする場合は **[オフ] を設定します。
-- **Java**: Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。**[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
+- **PHP**: PHP のバージョンを設定するか、**PHP を無効にする場合は **[オフ] を設定します。- **Java**: Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。**[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
 - **Python**: Python のバージョンを選択するか、Python を無効にする場合は **[オフ]** を選択します。
 
 技術的な理由で、Web アプリで Java を有効にすると、.NET、PHP、Python オプションが無効になります。
@@ -129,7 +128,7 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 ![](./media/web-sites-configure/configure03.png)
 
 
-完全な FTP ユーザー名は "app\username" です。*app* は Web アプリの名前です。username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
+完全な FTP ユーザー名は "app\\username" です。*app* は Web アプリの名前です。username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
 
 ![](./media/web-sites-configure/configure02.png)
 
@@ -175,4 +174,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!----HONumber=62-->
+<!---HONumber=July15_HO3-->

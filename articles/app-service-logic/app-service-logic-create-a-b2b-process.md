@@ -3,7 +3,7 @@
    description="B2B プロセスの作成の概要" 
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
-   authors="harishkragarwal" 
+   authors="rajram" 
    manager="dwrede" 
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/22/2015"
-   ms.author="hariag"/>
+   ms.date="07/01/2015"
+   ms.author="rajram"/>
 
 
 # B2B プロセスを作成する
@@ -73,4 +73,4 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 [2]: ./media/app-service-logic-create-a-b2b-process/Tracking.jpg
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -101,11 +101,11 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 1. 開発用コンピューターで (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for .NET](http://azure.microsoft.com/develop/net/) をダウンロードします。
 2. **TSPSolver** というプロジェクト名で .NET コンソール アプリケーションを作成します。ターゲット フレームワークを .**NET Framework 4** 以降に設定します (**.NET Framework 4 Client Profile** ではありません)。ターゲット フレームワークは、プロジェクトを作成した後に変更することもできます。その場合は、Visual Studio で **[プロジェクト]** メニューの **[プロパティ]** をクリックし、**[アプリケーション]** タブをクリックして、**[ターゲット フレームワーク]** の値を設定します。
-3. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\Program Files\Microsoft SDKs\Azure.NET SDK\v2.5\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
+3. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\\Program Files\\Microsoft SDKs\\Azure.NET SDK\\v2.5\\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
 4. System Runtime Serialization ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]** をクリックします。**[.NET]** タブをクリックし、**[System.Runtime.Serialization]** を参照として選択します。
 5. このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
 6. **your_connection_string** プレースホルダーを実際の Service Bus の**接続文字列**に変更します。
-7. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\release** または **bin\debug**) に **TSPSolver.exe** が作成されます。この実行可能ファイルと Microsoft.ServiceBus.dll を後で仮想マシンにコピーします。
+7. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\\release** または **bin\\debug**) に **TSPSolver.exe** が作成されます。この実行可能ファイルと Microsoft.ServiceBus.dll を後で仮想マシンにコピーします。
 
 <p/>
 
@@ -326,11 +326,11 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 ## 多くのコンピューティング処理を要するタスクの進捗状況を監視する .NET アプリケーションの作成方法
 
 1. 開発用コンピューターで、**TSPClient** というプロジェクト名で .NET コンソール アプリケーションを作成します。ターゲット フレームワークを .**NET Framework 4** 以降に設定します (**.NET Framework 4 Client Profile** ではありません)。ターゲット フレームワークは、プロジェクトを作成した後に変更することもできます。その場合は、Visual Studio で **[プロジェクト]** メニューの **[プロパティ]** をクリックし、**[アプリケーション]** タブをクリックして、**[ターゲット フレームワーク]** の値を設定します。
-2. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPClient]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\Program Files\Microsoft SDKs\Azure.NET SDK\v2.5\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
+2. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPClient]** を右クリックし、**[参照の追加]**、**[参照]** タブの順にクリックします。Azure .NET SDK (**C:\\Program Files\\Microsoft SDKs\\Azure.NET SDK\\v2.5\\ToolsRef** など) がある場所に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
 3. System Runtime Serialization ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPClient]** を右クリックし、**[参照の追加]** をクリックします。**[.NET]** タブをクリックし、**[System.Runtime.Serialization]** を参照として選択します。
 4. このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
 5. **your_connection_string** プレースホルダーを実際の Service Bus の**接続文字列**に変更します。
-6. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\release** または **bin\debug**) に **TSPClient.exe** が作成されます。このコードを開発用コンピューターから実行することも、別のコンピューターに実行可能ファイルと Microsoft.ServiceBus.dll をコピーして、そこでクライアント アプリケーションを実行することもできます (アプリケーションを仮想マシン上に置く必要はありません)。
+6. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\\release** または **bin\\debug**) に **TSPClient.exe** が作成されます。このコードを開発用コンピューターから実行することも、別のコンピューターに実行可能ファイルと Microsoft.ServiceBus.dll をコピーして、そこでクライアント アプリケーションを実行することもできます (アプリケーションを仮想マシン上に置く必要はありません)。
 
 <p/>
 
@@ -443,9 +443,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 ### 多くのコンピューティング処理を要するアプリケーションの実行方法
 
 1. 仮想マシンにログオンします。
-2. **c:\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
-3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **c:\TSP** にコピーします。
-4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
+2. **c:\\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
+3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **c:\\TSP** にコピーします。
+4. **c:\\TSP\\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
 		City_1, 1002.81, -1841.35
 		City_2, -953.55, -229.6
@@ -498,7 +498,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 		City_49, -120.3, -463.13
 		City_50, 588.51, 679.33
 
-5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+5. コマンド プロンプトで、ディレクトリを c:\\TSP に変更します。
 6. 巡回セールスマン問題を解くプログラムを実行する前に、Service Bus キューを作成する必要があります。次のコマンドを実行して、Service Bus キューを作成します。
 
         TSPSolver createqueue
@@ -515,9 +515,9 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 ### 監視用のクライアント アプリケーションの実行方法
 1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
-2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
-3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を c:\TSP フォルダーにコピーします。
-4. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\\TSP** です。
+3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を c:\\TSP フォルダーにコピーします。
+4. コマンド プロンプトで、ディレクトリを c:\\TSP に変更します。
 5. 次のコマンドを実行します。
 
         TSPClient
@@ -547,4 +547,4 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

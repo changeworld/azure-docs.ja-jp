@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Machine Learning Studio での簡単な実験の作成 | Microsoft Azure"
 	description="機械学習に初めて取り組む方のためのチュートリアルです。Azure Machine Learning Studio で線形回帰モデルをトレーニングし、テストする単純な実験を作成する方法について説明しています。"
-	keywords="experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article" 
-	ms.date="04/21/2015"
+	ms.date="07/09/2015"
 	ms.author="garye"/>
 
 #Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する
@@ -23,9 +22,9 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Machine Learning Studio の実験は、*モデルの作成*、*モデルのトレーニング*、*モデルのスコア付けとテスト*から成る、ドラッグ アンド ドロップに対応したコンポーネントで構成されます。実験では、データを取り込んで、そのデータに対してモデルをトレーニングし、新しいデータにモデルを適用する Machine Learning Studio モジュール形式の予測モデリング手法を用います。また、データを前処理して特徴を選択し、データをトレーニング セットとテスト セットに分割することもできます。さらに、モデルの品質を評価または相互検証したりするモジュールを追加することもできます。
+Machine Learning Studio の実験では、コンポーネントをキャンバスにドラッグ アンド ドロップし、*モデルの作成*、*モデルのトレーニング*、*モデルのスコア付けとテスト*を行うためにそれらを接続します。実験では、データを取り込んで、そのデータに対してモデルをトレーニングし、新しいデータにモデルを適用する Machine Learning Studio モジュール形式の予測モデリング手法を用います。また、データを前処理して特徴を選択し、データをトレーニング セットとテスト セットに分割することもできます。さらに、モデルの品質を評価または相互検証したりするモジュールを追加することもできます。
 
-Machine Learning Studio を開くには、[https://studio.azureml.net/Home](https://studio.azureml.net/Home) のリンクをクリックします。Machine Learning Studio の概要の詳細については、[Microsoft Azure Machine Learning Studio ホーム](https://studio.azureml.net/)をご覧ください。
+Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)) に進み、[開始する] ボタンをクリックします。[ゲスト アクセス] を選択するか、Microsoft アカウントを使用してサインインできます。
 
 Machine Learning Studio に関する全般的な情報については、「[Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」をご覧ください。
 
@@ -233,4 +232,4 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

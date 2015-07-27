@@ -2,7 +2,7 @@
 	pageTitle="SQL Server 仮想マシンを IPython Notebook サーバーとして設定する | Microsoft Azure"
 	description="SQL Server および IPython Server のあるデータ サイエンス仮想マシンを設定します。"
 	services="machine-learning"
-	solutions="" documentationCenter=""
+	documentationCenter=""
 	authors="msolhab" 
 	manager="paulettm"
 	editor="cgronlun" />
@@ -137,7 +137,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
     初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。これには数分かかることがあります。
 
-2.  Management Studio が開くと、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで ***your_VM_name**\your_local_administrator* をそのまま使用します。**[接続]** をクリックします。
+2.  Management Studio が開くと、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで ***your_VM_name**\\your_local_administrator* をそのまま使用します。**[接続]** をクリックします。
 
     ![サーバーへの接続][6]
 
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

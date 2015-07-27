@@ -56,4 +56,4 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 [Active Directory のコード例](active-directory-code-samples.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

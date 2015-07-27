@@ -48,7 +48,7 @@ App Service 環境でサポートされる使用可能なコンピューティ�
 
 App Service 環境の使用を開始するには、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
 
-Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページをご覧ください。
+Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページを参照してください。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -73,4 +73,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

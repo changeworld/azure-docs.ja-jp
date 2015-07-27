@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter="windows"
 	authors="alancameronwills" 
-	manager="kamrani"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/28/2015" 
+	ms.date="07/01/2015" 
 	ms.author="awills"/>
 
 # Application Insights による Windows ストア アプリと Windows Phone アプリでのクラッシュの検出と診断
@@ -21,7 +21,7 @@
 
 自分のアプリでユーザーがクラッシュに遭遇した場合は、それをすばやく把握し、何が起きたのかを詳しく知る必要があります。Application Insights では、クラッシュの発生頻度の監視や、発生時のアラート取得、各インシデントのレポートの調査などができます。
 
-"クラッシュ" とは、キャッチされない例外に起因してアプリケーションが終了することを意味します。アプリが例外をキャッチした場合は TrackException() API でそれをレポートできますが、動作は継続します。その場合、クラッシュとしてはログに記録されません。
+"クラッシュ" とは、キャッチされない例外に起因してアプリケーションが終了することを意味します。アプリが例外をキャッチした場合は [TrackException API][apiexceptions] でそれをレポートできますが、動作は継続します。その場合、クラッシュとしてはログに記録されません。
 
 
 ## クラッシュ発生頻度の監視
@@ -80,6 +80,8 @@
 
 [Application Insights を使用した問題の検出、トリアージ、および診断][detect]
 
+[Application Insights API][api]
+
 [診断ログのキャプチャ][trace]
 
 [トラブルシューティング](app-insights-windows-troubleshoot.md)
@@ -89,12 +91,15 @@
 
 <!--Link references-->
 
+[api]: app-insights-api-custom-events-metrics.md
+[apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
 [detect]: app-insights-detect-triage-diagnose.md
 [diagnostic]: app-insights-diagnostic-search.md
+[platforms]: app-insights-platforms.md
 [portal]: http://portal.azure.com/
 [trace]: app-insights-search-diagnostic-logs.md
 [windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

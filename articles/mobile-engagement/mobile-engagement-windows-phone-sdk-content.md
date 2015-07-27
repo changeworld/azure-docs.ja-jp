@@ -4,23 +4,23 @@
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="piyushjo" 
-	manager="dwrede" 
+	manager="dwrede"
 	editor="" />
 
 <tags 
 	ms.service="mobile-engagement" 
 	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/07/2015"
 	ms.author="piyushjo" />
 	
 #Windows Phone Silverlight SDK コンテンツ
 
 このドキュメントでは、アプリケーションで SDK により展開されるコンテンツについて説明します。
 
-##`/Resources` フォルダー
+##`/Resources` フォルダー 
 
 このフォルダーには、モバイル エンゲージメントが必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
 
@@ -37,4 +37,4 @@
 - `EngagementConfiguration.xml`: モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -4,7 +4,7 @@
 	description="Azure 仮想マシンを復元する方法について説明します。"
 	services="backup"
 	documentationCenter=""
-	authors="aashishr"
+	authors="trinadhk"
 	manager="shreeshd"
 	editor=""/>
 
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/27/2015"
-	ms.author="aashishr"/>
+	ms.author="trinadhk"/>
 
 # 仮想マシンの復元
 復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
@@ -90,7 +90,7 @@
 
 ![復元ジョブの完了](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの[エンドポイントを再作成する](virtual-machines-set-up-endpoints)必要がある場合があります。
+仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの[エンドポイントを変更する](virtual-machines-set-up-endpoints)必要がある場合があります。
 
 ## エラーのトラブルシューティング
 多くのエラーは、エラーの詳細に示す推奨される操作を実行できます。次にトラブルシューティングに役立つポイントをいくつか示します。
@@ -104,4 +104,4 @@
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

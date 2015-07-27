@@ -101,4 +101,4 @@ Web Apps に Drupal をデプロイした後は、引き続き Git または FTP
   [Azure Integration Module]: http://drupal.org/project/azure
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

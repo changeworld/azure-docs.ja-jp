@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/08/2015"
+   ms.date="07/06/2015"
    ms.author="telmosampaio"/>
 
 # 仮想ネットワークの作成
@@ -48,15 +48,8 @@
 
 
 ## 次のステップ
--  [仮想ネットワークの概要](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)
+-  Asure の[仮想ネットワーク](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)について学習します。 
 
--  [仮想ネットワークへの仮想マシンの追加](virtual-machines-create-custom)
+-  仮想ネットワークへ [Virtual Machine を追加](../virtual-machines/virtual-machines-create-custom.md)します。
 
--  [Virtual Network FAQ](http://msdn.microsoft.com/library/windowsazure/dn133803.aspx)
-
--  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file)
-
--  [Azure の名前解決の概要](http://go.microsoft.com/fwlink/?LinkId=248097)
- 
-
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -211,4 +211,4 @@ TXT レコードまたは MX レコードを作成し、Web サイトからサ�
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx) 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

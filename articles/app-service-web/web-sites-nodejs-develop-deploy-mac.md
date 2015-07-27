@@ -32,7 +32,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 
-2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
+2. ポータルの左上にある **[+ 新規]** アイコンをクリックします。
 
 3. **[Web + モバイル]** をクリックし、**[Web アプリ]** をクリックします。
 
@@ -134,7 +134,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 ##アプリケーションへの変更の発行
 
-1. テキスト エディターで **server.js** ファイルを開き、'Hello World\n' を 'Hello Azure\n' に変更します。ファイルを保存します。
+1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。ファイルを保存します。
 2. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを実行します。
 
 		git add .
@@ -168,7 +168,7 @@ Azure へのデプロイ後にアプリケーションで問題が発生した�
 * [Azure コマンド ライン インターフェイス](../xplat-cli.md)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -197,4 +197,4 @@ Azure へのデプロイ後にアプリケーションで問題が発生した�
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

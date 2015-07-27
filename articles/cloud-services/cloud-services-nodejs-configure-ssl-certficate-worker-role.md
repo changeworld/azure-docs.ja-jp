@@ -77,9 +77,9 @@ Azure PowerShell を使用し、以下の手順に従って簡単な Node.js "he
 
 Node.js アプリケーションを worker ロールに展開すると、サーバー証明書と SSL 接続は Node.exe によって管理されます。SSL トラフィックを処理するには、"http" ではなく "https" モジュールを使用する必要があります。次の手順を実行して、SSL 証明書をプロジェクトに追加し、この証明書を使用するようにアプリケーションを変更します。
 
-1.   証明機関 (CA) から提供された **.pfx** ファイルを、アプリケーションが格納されているディレクトリに保存します。たとえば、この記事で使用されているアプリケーションが格納されているディレクトリは **c:\node\securesite\workerrole1** です。
+1.   証明機関 (CA) から提供された **.pfx** ファイルを、アプリケーションが格納されているディレクトリに保存します。たとえば、この記事で使用されているアプリケーションが格納されているディレクトリは **c:\\node\\securesite\\workerrole1** です。
 
-2.   Notepad.exe を使用して **c:\node\securesite\workerrole1\server.js** ファイルを開き、ファイルの内容を次の内容に置き換えます。
+2.   Notepad.exe を使用して **c:\\node\\securesite\\workerrole1\\server.js** ファイルを開き、ファイルの内容を次の内容に置き換えます。
 
 		var https = require('https');
 		var fs = require('fs');
@@ -173,4 +173,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

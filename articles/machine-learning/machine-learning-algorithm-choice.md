@@ -1,8 +1,6 @@
 <properties 
-	title="" 
 	pageTitle="Machine Learning アルゴリズムの選択方法 | Microsoft Azure" 
 	description="クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法" 
-	keywords="machine learning algorithms,types of machine learning algorithms,types of machine learning,clustering,clustering algorithm"	
 	services="machine-learning"
 	documentationCenter="" 
 	authors="garyericson" 
@@ -264,4 +262,4 @@ Machine Learning Studio で使用可能な Machine Learning アルゴリズム�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO3-->

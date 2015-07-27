@@ -3,7 +3,7 @@
 	description="API Management で API とその操作、成果物を作成する方法について説明します。" 
 	services="app-service\logic" 
 	documentationCenter="" 
-	authors="jtwist" 
+	authors="joshtwist" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/05/2015" 
+	ms.date="07/08/2015" 
 	ms.author="jtwist"/>
 
-##BizTalk テンプレートと Logic Apps
+# BizTalk テンプレートと Logic Apps
 
-###このドキュメントは間もなく公開されます。
+### このドキュメントは間もなく公開されます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="07/08/2015" 
 	ms.author="mandia"/>
 
 
 # Microsoft Azure App Service の BizTalk 統合 API Apps
+
+> [AZURE.NOTE]このトピックは廃止されています。使用できるすべての組み込みコネクタと API Apps を確認するには、「[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)」を参照してください。
+
+
 Microsoft Azure App Service (略称: App Service) には、統合環境に不可欠な数多くの BizTalk API Apps が含まれています。これらの API Apps は、BizTalk Server 内で使用される概念およびツールに基づいていますが、Azure App Service の一部として利用できるようになりました。
 
 これらの API Apps のカテゴリの 1 つに BizTalk 統合 API Apps があります。BizTalk API Apps を使用すると、ビジネス ルールの追加、XML メッセージの変換と検証、フラット ファイルと JSON データのエンコードなどを簡単に実行できます。オンプレミスの BizTalk Server を使用しているのと変わりません。
@@ -132,6 +136,7 @@ Microsoft Azure App Service は、これらの統合 API アプリを使用で�
 
 
 ## その他のコネクタ
-[エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md)<br/> [企業間コネクタ](app-service-logic-b2b-connectors.md)<br/> [ソーシャル コネクタ](app-service-logic-social-connectors.md)<br/> [プロトコル コネクタ](app-service-logic-protocol-connectors.md)<br/> [アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md)<br/> [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=62-->
+[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+
+<!---HONumber=July15_HO3-->

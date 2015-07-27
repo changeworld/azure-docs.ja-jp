@@ -104,4 +104,4 @@ Azure Machine Learning は、形式の整った表形式のデータを取り込
 >_Data Mining: Concepts and Techniques_、第 3 版、Morgan Kaufmann 発行、2011 年、Jiawei Han、Micheline Kamber、Jian Pei 共著
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

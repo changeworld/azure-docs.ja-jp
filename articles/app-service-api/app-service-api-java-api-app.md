@@ -38,7 +38,7 @@
 
 4. **[名前]** に JavaAPIApp などの値を入力します。
 
-5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、料金レベル、および場所などのオプションを選択します。
+5. App Service プランを選択するか、新しいプランを作成します。新しいプランを作成する場合は、価格レベル、および場所などのオプションを選択します。
 
 	![][portal-create-api]
 
@@ -270,4 +270,4 @@ API アプリ バックエンドを使用する Java Web アプリケーショ�
 [api-definition-blade]: ./media/app-service-api-java-api-app/apidefblade.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

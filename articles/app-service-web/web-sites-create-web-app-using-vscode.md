@@ -31,7 +31,7 @@
 * Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、Windows コマンド プロンプトから Git と GitBash を使用するオプションを選択します。Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。  
 
 ## ASP.NET 5 と DNX のインストール
-ASP.NET 5 および DNX は、OS X、Linux、Windows 上で動作する最新のクラウドおよび Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
+ASP.NET 5 と DNX は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
 
 > [AZURE.NOTE]OS X および Linux の ASP.NET 5 および DNX (.NET Execution Environment) は、初期のベータまたはプレビュー状態にあります。
 
@@ -220,9 +220,13 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 
 		git remote add azure [URL for remote repository]
 
-7. 次のコマンドを入力して、変更内容を Azure にプッシュします。
+7. 資格情報をローカルに保存するように Git を構成して、VS コードから生成される push コマンドに資格情報が自動的に追加されるようにします。
 
-		git push azure master
+		git config credential.helper store
+
+8. 次のコマンドを入力して、変更内容を Azure にプッシュします。この Azure への初回の push を実行した後、VS コードからすべての push コマンドを実行できます。
+
+		git push -u azure master
 
 	以前作成したパスワードを入力するように求められます。**注: パスワードは表示されません。**
 
@@ -232,7 +236,9 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 		To https://user@testsite.scm.azurewebsites.net/testsite.git
 		[new branch]      master -> master
 
-> [AZURE.NOTE]アプリを変更した場合は再パブリッシュできます。そのためには、VS コードで **[すべてコミット]** オプションを選択して、コマンド プロンプトで **git push azure master** コマンドを入力します。
+> [AZURE.NOTE]アプリを変更した場合は、組み込み Git 機能を使用して VS コードに直接再パブリッシュできます。これを行うには、**[すべてコミット]** オプションに続けて **[プッシュ]** オプションを選択します。**[プッシュ]** オプションは、**[すべてコミット]** ボタンと **[更新]** ボタンの隣のドロップダウン メニューに含まれています。
+
+プロジェクトで共同作業を行う必要がある場合は、Azure へのプッシュの間に GitHub へのプッシュを実行することを考慮してください。
 
 ## Azure でのアプリの実行
 これで Web アプリがデプロイされたため、Azure でホストされているアプリを実行してみましょう。
@@ -250,4 +256,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)の記事を参照してください。App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

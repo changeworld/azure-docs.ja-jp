@@ -50,7 +50,7 @@
         [JsonProperty(PropertyName = "imageUri")]
         public string ImageUri { get; set; } 
 
-   	>[AZURE.NOTE]新しいプロパティを TodoItem オブジェクトに追加するには、モバイル サービスで動的スキーマを有効にする必要があります。動的スキーマが有効になっていると、TodoItem テーブルに、これらの新しいプロパティに対応する新しい列が自動的に追加されます。
+   	>[AZURE.NOTE]JavaScript バックエンド モバイル サービスで新しいプロパティを TodoItem オブジェクトに追加するには、モバイル サービスで動的スキーマを有効にする必要があります。動的スキーマが有効になっていると、TodoItem テーブルに、これらの新しいプロパティに対応する新しい列が自動的に追加されます。.NET バックエンド モバイル サービスについては、「[データモデルの変更を .NET バックエンド モバイル サービスに加える方法](../articles/mobile-services/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)」のトピックを参照してください。
 
 5. MainPage クラスで、次のコードを追加します。
 
@@ -142,4 +142,4 @@
 
    	>[AZURE.NOTE]新しい項目の <code>imageUri</code> プロパティが <strong>Image</strong> コントロールにバインドされると、イメージは Blob ストレージ サービスから自動的にダウンロードされます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

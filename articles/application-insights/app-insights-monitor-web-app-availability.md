@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/21/2015" 
+	ms.date="07/08/2015" 
 	ms.author="awills"/>
  
 # Web サイトの可用性と応答性の監視
@@ -74,15 +74,17 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 ### <a name="monitor"></a>3.可用性レポートを表示する
 
-1 ～ 2 分後に、可用性ブレードで [更新] をクリックします(自動的には更新されません)。
+1 ～ 2 分後に、可用性/Web テスト ブレードで [更新] をクリックします(自動的には更新されません)。
 
 ![Summary results on the home blade](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
-可用性ブレードのグラフに、このアプリケーションのすべての Web テストの結果がまとめられます。
+その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
 
-#### ページのコンポーネント
+これらのグラフでは、このアプリケーションのすべての Web テストの結果が結合されます。
 
-イメージ、スタイル シート、スクリプトとその他の静的なコンポーネントは、テストの一部として要求されます。
+#### Web ページのコンポーネント
+
+Web ページのイメージ、スタイル シート、スクリプトとその他の静的なコンポーネントは、テストの一部として要求されます。
 
 記録される応答時間は、すべてのコンポーネントの読み込みが完了するまでの所要時間です。
 
@@ -90,7 +92,11 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 ## <a name="failures"></a>エラーが発生する場合
 
-Web テスト ブレードを下へスクロールし、エラーが表示されているテストをクリックします。
+赤い点をクリックします。
+
+![赤い点をクリックします](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+
+または、下にスクロールし、成功が 100% に満たないテストをクリックします。
 
 ![Click a specific webtest](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
@@ -123,7 +129,7 @@ URL の順序に関連するシナリオを監視することができます。�
 
 複数手順のテストを作成するには、Visual Studio を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。Application Insights は周期的にそのシナリオを再生し、応答を確認します。
 
-#### 1.シナリオを記録する
+#### 1\.シナリオを記録する
 
 Web セッションを記録するには、Visual Studio Ultimate を使用します。
 
@@ -150,7 +156,7 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
 (Web テストのコードには、ループを挿入しないでください。)
 
-#### 2.Web テストを Application Insights にアップロードする
+#### 2\.Web テストを Application Insights にアップロードする
 
 1. Application Insights ポータルで、新しい Web テストを作成します。
 
@@ -223,4 +229,4 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

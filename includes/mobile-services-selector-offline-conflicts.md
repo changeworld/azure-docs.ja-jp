@@ -3,4 +3,4 @@
 - [(Windows Runtime 8.1 universal C# | Any)](../articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md)
 - [(Windows Phone Silverlight 8.x | Any)](../articles/mobile-services-windows-phone-handling-conflicts-offline-data.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

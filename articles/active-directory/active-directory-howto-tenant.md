@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.topic="hero-article"
+	ms.date="07/02/2015"
 	ms.author="dastrock"/>
 
 # Azure Active Directory テナントを取得する方法
@@ -64,6 +64,5 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
 上記のいずれにも当てはまらなくても、心配しないでください。[https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) にアクセスして、新しい組織で Azure にサインアップするだけです。プロセスが完了すると、サインアップ時に選択したドメイン名で専用の Azure AD テナントが作成されます。[Azure 管理ポータル](https://manage.windowsazure.com)の左側にあるナビゲーションで [Active Directory] に移動すると、テナントを見つけることができます。
 
 Azure へのサインアップ プロセスの中で、クレジット カードの詳細を提供する必要があります。Azure AD でのアプリケーションの発行または新しいテナントの作成には料金は発生しないので安心してください。
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

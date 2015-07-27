@@ -23,7 +23,7 @@
 TTL を制御するためのオプションが 2 つあります。
 
 1.	キャッシュの値を設定しないで、既定の TTL である 7 日を使用します。 
-2.	*x-ms-blob-cache-control* プロパティを **Put Blob**、**Put Block List**、または **Set Blob Properties** 要求で明示的に設定します。または Azure マネージ ライブラリを使用して [BlobProperties.CacheControl](http://msdn.microsoft.com/library/microsoft.windowsazure.storageclient.blobproperties.cachecontrol.aspx) プロパティを設定します。このプロパティを設定すると、BLOB の *Cache-Control* ヘッダーの値が設定されます。ヘッダーまたはプロパティの値には、秒単位で適切な値を指定する必要があります。たとえば、キャッシュの最大期間を 1 年に設定する場合は、要求ヘッダーとして `x-ms-blob-cache-control: public, max-age=31556926` を指定できます。キャッシュ ヘッダーの設定の詳細については、[HTTP/1.1 仕様](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。  
+2.	*x-ms-blob-cache-control* プロパティを **Put Blob**、**Put Block List**、または **Set Blob Properties** 要求で明示的に設定します。または Azure マネージ ライブラリを使用して [BlobProperties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) プロパティを設定します。このプロパティを設定すると、BLOB の *Cache-Control* ヘッダーの値が設定されます。ヘッダーまたはプロパティの値には、秒単位で適切な値を指定する必要があります。たとえば、キャッシュの最大期間を 1 年に設定する場合は、要求ヘッダーとして `x-ms-blob-cache-control: public, max-age=31556926` を指定できます。キャッシュ ヘッダーの設定の詳細については、[HTTP/1.1 仕様](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。  
 
 CDN を使用してキャッシュするすべてのコンテンツは、公開されているアクセス可能な BLOB として、Azure ストレージ アカウントに格納する必要があります。Azure BLOB サービスの詳細については、**BLOB サービスの概念**に関するページを参照してください。
 
@@ -96,4 +96,4 @@ BLOB が CDN 固有の URL を介して利用できることをテストしま�
 
 [Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-cloud-service-content.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

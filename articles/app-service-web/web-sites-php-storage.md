@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="07/02/2015" 
 	ms.author="tomfitz"/>
 
 # Azure Storage を使った Azure App Service での PHP Web アプリの作成
@@ -41,23 +41,24 @@ Azure 向け PHP クライアント ライブラリを Composer 経由でイン�
 
 1. [Git のインストール][install-git]
 
-	> [AZURE.NOTE]
-	> Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
+	> [AZURE.NOTE]Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
-		{
-			"require": {
-				"microsoft/windowsazure": "*"
-			},			
-			"repositories": [
-				{
-					"type": "pear",
-					"url": "http://pear.php.net"
-				}
-			],
-			"minimum-stability": "dev"
-		}
+         {
+             "repositories": [
+                 {
+                     "type": "pear",
+                     "url": "http://pear.php.net"
+                 }
+             ],
+             "require": {
+                 "pear-pear.php.net/mail_mime" : "*",
+                 "pear-pear.php.net/http_request2" : "*",
+                 "pear-pear.php.net/mail_mimedecode" : "*",
+                 "microsoft/windowsazure": "*"
+             }
+         }
 
 3. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
 
@@ -429,4 +430,4 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 [git-instructions]: ./media/web-sites-php-storage/git-instructions.png
  
 
-<!----HONumber=62-->
+<!---HONumber=July15_HO3-->

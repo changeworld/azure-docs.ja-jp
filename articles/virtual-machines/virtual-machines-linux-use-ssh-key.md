@@ -79,7 +79,7 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 ### msysgit を使用する ###
 
 1.	次の場所から msysgit をダウンロードしてインストールします: [http://msysgit.github.com/](http://msysgit.github.com/)
-2.	インストールしたディレクトリ (c:\msysgit\msys.exe など) から `msys` を実行します。
+2.	インストールしたディレクトリ (c:\\msysgit\\msys.exe など) から `msys` を実行します。
 3.	「`cd bin`」と入力し、`bin` ディレクトリに移動します。
 
 
@@ -176,4 +176,4 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -350,4 +350,4 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

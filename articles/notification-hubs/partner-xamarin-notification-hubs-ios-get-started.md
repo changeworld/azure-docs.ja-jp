@@ -480,4 +480,4 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

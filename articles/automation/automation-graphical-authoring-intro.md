@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/04/2015"
+   ms.date="07/10/2015"
    ms.author="bwren" />
 
 # Azure Automation でのグラフィカル作成
@@ -115,11 +115,11 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 |:---|:---|
 |定数値|パラメーターの値を入力します。これを使用できるのは、Int32、Int64、String、Boolean、DateTime、Switch というデータ型の場合のみです。 |
 |アクティビティの出力|ワークフローの現在のアクティビティより前のアクティビティからの出力です。有効なすべてのアクティビティが一覧表示されます。パラメーター値にその出力を使用するアクティビティだけを選択します。アクティビティが複数のプロパティを持つオブジェクトを出力する場合は、アクティビティを選択してからプロパティの名前を入力できます。|
-|Runbook の入力パラメーター<br>*(近日対応予定)*|Runbook の入力パラメーターをアクティビティ パラメーターへの入力として選択します。|  
-|Automation の変数資産<br>*(近日対応予定)*|Automation の変数を入力として選択します。|  
-|Automation の資格情報資産<br>*(近日対応予定)*|Automation の資格情報を入力として選択します。|  
-|Automation の証明書資産<br>*(近日対応予定)*|Automation の証明書を入力として選択します。|  
-|Automation の接続資産<br>*(近日対応予定)*|Automation の接続を入力として選択します。| 
+|Runbook の入力パラメーター|Runbook の入力パラメーターをアクティビティ パラメーターへの入力として選択します。|  
+|Automation の変数資産|Automation の変数を入力として選択します。|  
+|Automation の資格情報資産|Automation の資格情報を入力として選択します。|  
+|Automation の証明書資産|Automation の証明書を入力として選択します。|  
+|Automation の接続資産|Automation の接続を入力として選択します。| 
 |PowerShell 式|簡単な PowerShell 式を指定します。式は、アクティビティとパラメーター値に使用される結果の前に評価されます。変数を使用すれば、アクティビティの出力または Runbook の入力パラメーターを参照することができます。|
 |空の文字列|空の文字列値です。|
 |Null|Null 値です。|
@@ -228,7 +228,7 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 
 ### チェックポイント
 
-Runbook で[チェックポイント](automation-runbook-concepts/#checkpoints)を設定するための同じガイダンスがグラフィカル Runbook にも適用されます。チェックポイントを設定する必要がある場合は、Checkpoint-Workflow コマンドレットのアクティビティを追加することができます。次に、このアクティビティの後に Add-AzureAccount を続ける必要があります (Runbook が別のワーカーのこのチェックポイントから開始する場合)。
+Runbook で[チェックポイント](automation-powershell-workflow/#checkpoints)を設定するための同じガイダンスがグラフィカル Runbook にも適用されます。チェックポイントを設定する必要がある場合は、Checkpoint-Workflow コマンドレットのアクティビティを追加することができます。次に、このアクティビティの後に Add-AzureAccount を続ける必要があります (Runbook が別のワーカーのこのチェックポイントから開始する場合)。
 
 ## Azure リソースの認証
 
@@ -276,8 +276,8 @@ Runbook の入力パラメーターには、Runbook ツールバーの [**入力
 
 ## 関連記事:
 
-- [Azure Automation の Runbook の概念](automation-runbook-concepts.md)
+- [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 - [オートメーションの資産](http://msdn.microsoft.com/library/azure/dn939988.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

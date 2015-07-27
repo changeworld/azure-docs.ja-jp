@@ -2,7 +2,6 @@
 	pageTitle="Azure で SQL Server にデータを移動する| Microsoft Azure" 
 	description="Azure で SQL Server にデータを移動する" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="msolhab" 
 	manager="paulettm" 
@@ -19,7 +18,7 @@
 
 #Azure で SQL Server にデータを移動する
 
-このドキュメントでは、フラット ファイル (csv/tsv) またはオンプレミスの SQL Server から Azure の SQL Server へのデータの移動について説明します。このタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。
+このドキュメントでは、フラット ファイル (csv/tsv) またはオンプレミスの SQL Server から、Azure の SQL Server へのデータの移動について説明します。このタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。
 
 
 <table>
@@ -233,4 +232,4 @@ SQL Server は以下のものをサポートします。
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -138,4 +138,4 @@
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

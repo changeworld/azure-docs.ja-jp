@@ -31,4 +31,4 @@
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-WindowsVM.md)]
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

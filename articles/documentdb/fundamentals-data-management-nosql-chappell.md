@@ -31,4 +31,4 @@ Azure で利用できる一連の NoSQL テクノロジに関心があるもの�
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

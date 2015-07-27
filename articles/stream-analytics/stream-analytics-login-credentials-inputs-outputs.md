@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="04/24/2015" 
+	ms.date="07/01/2015" 
 	ms.author="jeffstok"/>
 
 #入力/出力の資格情報の交換
@@ -56,7 +56,8 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 11. パート 2 に進みます。  
 
 ###SQL データベース
-[AZURE.NOTE]注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
+
+>[AZURE.NOTE]注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
 
 1.  Azure の管理ポータルで [SQL データベース] 拡張に移動します。![図 14][graphic14]
 2.  ジョブで使用されている SQL Database を見つけ、同じ行にある**サーバーのリンクをクリック**します。![図 15][graphic15]
@@ -136,7 +137,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 	Command(s) completed successfully.
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -192,4 +193,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -608,4 +608,4 @@ promise はいくつかの異なる方法で使用することができます。
 [クライアントからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

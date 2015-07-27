@@ -29,26 +29,26 @@
 
 > [AZURE.TIP]このチュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトを [GitHub](https://github.com/Azure/azure-documentdb-java) からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
-## <a id="Prerequisites"></a>前提条件 ##
+##<a id="Prerequisites"></a>前提条件 ##
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
 - [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
 - [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](../web-sites-java-get-started.md)。
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
-## <a id="CreateDB"></a>手順 1: DocumentDB データベース アカウントを作成する ##
+##<a id="CreateDB"></a>手順 1: DocumentDB データベース アカウントを作成する ##
 DocumentDB データベース アカウントを Azure でプロビジョニングするには:
 
 1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
 2. 次の図に示す **[キー]** ブレードからエンドポイントの **[URI]** 値と **[プライマリ キー]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
 
-![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている][1]
+![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][1]
 
 
-## <a id="CreateJSP"></a>手順 2: JSP アプリケーションを作成する ##
+##<a id="CreateJSP"></a>手順 2: JSP アプリケーションを作成する ##
 
 JSP アプリケーションを作成するには:
 
@@ -75,7 +75,7 @@ JSP アプリケーションを作成するには:
 
 	![](./media/documentdb-java-application/image12.png)
 
-## <a id="InstallSDK"></a>手順 3: DocumentDB Java SDK をインストールする ##
+##<a id="InstallSDK"></a>手順 3: DocumentDB Java SDK をインストールする ##
 
 DocumentDB Java SDK とその依存関係をインストールするには、[Apache Maven](http://maven.apache.org/) を使用するのが最も簡単です。
 
@@ -103,7 +103,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
 6. pom.xml ファイルを保存します。
 
-## <a id="UseService"></a>手順 4: Java アプリケーションで DocumentDB サービスを使用する ##
+##<a id="UseService"></a>手順 4: Java アプリケーションで DocumentDB サービスを使用する ##
 
 1. まず TodoItem オブジェクトを定義します。
 
@@ -357,7 +357,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    }
 
 
-## <a id="Wire"></a>手順5: アプリケーションの残りの部分を連結する ##
+##<a id="Wire"></a>手順5: アプリケーションの残りの部分を連結する ##
 
 これで、楽しい作業が終わりました。残っているのは簡単なユーザー インターフェイスの作成と DAO への連結です。
 
@@ -734,7 +734,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 6. 項目が表示されたら、チェック ボックスを切り替え、**[Update Tasks]** をクリックすることで、その項目が完了しているかどうかを確認できます。
 
-## <a id="Deploy"></a>手順 6: Azure Websites にアプリケーションをデプロイする ##
+##<a id="Deploy"></a>手順 6: Azure Websites にアプリケーションをデプロイする ##
 
 Azure Web サイトでの Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: GIT) または FTP のいずれかを使用してアップロードするだけです。
 
@@ -749,7 +749,7 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 	WAR ファイルを webapps フォルダーにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
 4. 完成したアプリケーションの動作を確認するには、http://YOUR_SITE_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
 
-## <a id="GetProject"></a>GitHub からのプロジェクトの入手##
+##<a id="GetProject"></a>GitHub からのプロジェクトの入手##
 
 このチュートリアルで紹介したすべてのサンプルは、GitHub にある [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトに含まれています。このプロジェクトは、[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) リポジトリの一部です。todo プロジェクトを Eclipse にインポートするには、「[前提条件](#Prerequisites)」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
 
@@ -777,6 +777,6 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Websites にアプリケーションをデプロイする](#Deploy)」を参照してください。 
 
 [1]: media/documentdb-java-application/keys.png
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO3-->

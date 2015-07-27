@@ -48,4 +48,4 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

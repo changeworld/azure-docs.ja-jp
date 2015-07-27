@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.date="07/13/2015" 
 	ms.author="awills"/>
 
 # Application Insights で SharePoint を監視する
@@ -41,7 +41,7 @@ Visual Studio Application Insights を使うと、アプリの可用性、パフ
 
 ![](./media/app-insights-sharepoint/02-monitor-web-page.png)
 
-追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。たとえば、ASP.NET MVC プロジェクトで、View\Shared_Layout.cshtml にスクリプトを配置します。
+追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。たとえば、ASP.NET MVC プロジェクトで、View\\Shared_Layout.cshtml にスクリプトを配置します。
 
 このスクリプトには、Application Insights リソースに利用統計情報を転送するインストルメンテーション キーが含まれています。
 
@@ -73,6 +73,8 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 ## アプリに関するデータを表示する
 
+アプリケーションを再デプロイします。
+
 [Azure ポータル](http://portal.azure.com)で、アプリケーションのブレードに戻ります。
 
 [診断検索] に最初のイベントが表示されます。
@@ -81,11 +83,11 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
-**使用状況の分析**では、ユーザー、セッション、ページ ビューの簡単なスナップショットが与えられます。
+**利用状況分析**がユーザー、セッション、およびページ ビューのグラフにリンクされます。
 
 ![](./media/app-insights-sharepoint/06-usage.png)
 
-ページ ビューをクリックし、詳細を表示します。
+たとえば、ページ ビューをクリックすると、より詳細な情報が表示されます。
 
 ![](./media/app-insights-sharepoint/07-pages.png)
 
@@ -106,4 +108,4 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 <!--Link references-->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

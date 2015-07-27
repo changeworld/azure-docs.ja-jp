@@ -145,4 +145,4 @@ SQLDW にデータベース スキーマを正常に移行した後、次の記�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

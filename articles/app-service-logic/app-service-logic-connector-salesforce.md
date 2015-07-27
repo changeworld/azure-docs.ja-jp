@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Salesforce コネクタ" 
-   description="Salesforce コネクタの使用方法" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="sutalasi" 
-   manager="dwrede" 
+<properties
+   pageTitle="Salesforce コネクタ"
+   description="Salesforce コネクタの使用方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,22 +12,22 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="03/20/2015"
-   ms.author="sutalasi"/>
+   ms.workload="integration"
+   ms.date="07/02/2015"
+   ms.author="sameerch"/>
 
 
 #ロジック アプリでの Salesforce コネクタの使用#
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。Salesforce コネクタでは、取引先企業や潜在顧客などのさまざまなエンティティを作成および変更できます。Salesforce に関連する一般的な統合シナリオを次に示します。
 
-- Salesforce と ERP システム (SAP、QuickBooks など) との間のアカウントの同期	
+- Salesforce と ERP システム (SAP、QuickBooks など) との間のアカウントの同期
 
 - Salesforce から ERP システムへの受注から入金までのフロー
 
 
 コネクタ パッケージの設定の一部として、ユーザーは、コネクタで管理できるエンティティを指定できます。アクション、入力パラメーター、および出力パラメーターは、動的に設定されます。Salesforce コネクタで使用できるさまざまなアクションを次に示します。
- 
+
 - [エンティティの作成] - アカウント、事例、カスタム オブジェクトなどの新しい Salesforce エンティティを作成するには、この操作を使用します。
 
 - [エンティティの更新] - Salesforce の既存のエンティティを更新するには、このアクションを使用します。
@@ -133,7 +133,4 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 [14]: ./media/app-service-logic-connector-salesforce/14_Update_Account_Address.png
 [15]: ./media/app-service-logic-connector-salesforce/15_Create_new_salesforce_connector.png
 
-
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

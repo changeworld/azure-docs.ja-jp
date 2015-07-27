@@ -30,7 +30,7 @@ Azure には、Azure プレビュー ポータルの構成 UI や Azure Marketpl
 - 1 つの HTTP リスナー以外のすべてのリッスン ポートを無効にする必要があります。Tomcat では、それはシャットダウン、HTTPS、AJP などのポートです。
 - コンテナーは IPv4 トラフィック専用に構成する必要があります。
 - アプリケーションの**スタートアップ** コマンドはこの構成で設定する必要があります。
-- 書き込みアクセス許可のあるディレクトリを必要とするアプリケーションは、Azure の Web アプリのコンテンツ ディレクトリ (**D:\home**) に配置する必要があります。環境変数 `HOME` は、D:\home を参照します。  
+- 書き込みアクセス許可のあるディレクトリを必要とするアプリケーションは、Azure の Web アプリのコンテンツ ディレクトリ (**D:\\home**) に配置する必要があります。環境変数 `HOME` は、D:\\home を参照します。  
 
 web.config ファイルで必要に応じて環境変数を設定できます。
 
@@ -46,7 +46,7 @@ web.config ファイルで必要に応じて環境変数を設定できます。
     arguments="start"
     
     processPath="%JAVA_HOME\bin\java.exe"
-    arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
+    arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115"; -jar ";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar";"
 
 
 **processPath** - HTTP 要求のリッスン プロセスを起動する実行可能ファイルまたはスクリプトへのパス。
@@ -71,7 +71,7 @@ web.config ファイルで必要に応じて環境変数を設定できます。
                                                                                       
 **stdoutLogEnabled** (Default="true")。 true の場合、**processPath** 設定で指定されたプロセスの **stdout** と **stderr** は、**stdoutLogFile** で指定されたファイルにリダイレクトされます (「**stdoutLogFile**」を参照)。
                                     
-**stdoutLogFile** (Default="d:\home\LogFiles\httpPlatformStdout.log")。 **processPath** で指定されたプロセスの **stdout** と **stderr** を記録するログの絶対ファイル パス。
+**stdoutLogFile** (Default="d:\\home\\LogFiles\\httpPlatformStdout.log")。 **processPath** で指定されたプロセスの **stdout** と **stderr** を記録するログの絶対ファイル パス。
                                     
 > [AZURE.NOTE]`%HTTP_PLATFORM_PORT%` は特殊なプレースホルダーであり、**arguments** の一部として、または **httpPlatform** **environmentVariables** リストの一部として指定する必要があります。このプレース ホルダーは、**HttpPlatformHandler** によって内部で生成されたポートに置き換えられるため、**processPath** で指定されたプロセスがこのポートをリッスンできるようになります。
 
@@ -125,7 +125,7 @@ Tomcat の場合と同様、Jetty の独自のインスタンスをアップロ�
 	      <add name="httppPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified" />
 	    </handlers>
 	    <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" 
-	         arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
+	         arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115"; -jar ";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar";"
 	        startupTimeLimit="20"
 		  startupRetryCount="10"
 		  stdoutLogEnabled="true">
@@ -139,9 +139,9 @@ Jetty の構成を start.ini で変更して、`java.net.preferIPv4Stack=true` �
 
 Microsoft のテストでは、Hudson 3.1.2 war と既定の Tomcat 7.0.50 インスタンスを使用しましたが、セットアップに UI を使用しませんでした。Hudson はソフトウェア ビルド ツールであるため、Web アプリで **AlwaysOn** フラグを設定できる専用のインスタンスにインストールすることをお勧めします。
 
-1. Web アプリのルート ディレクトリ (**d:\home\site\wwwroot**) に **webapps** ディレクトリを作成し (存在しない場合)、**d:\home\site\wwwroot\webapps** に Hudson.war を配置します。
-2. apache maven 3.0.5 (Hudson と互換性あり) をダウンロードし、**d:\home\site\wwwroot** に配置します。
-3. **d:\home\site\wwwroot** に web.config を作成し、そのファイルに次の内容を貼り付けます。
+1. Web アプリのルート ディレクトリ (**d:\\home\\site\\wwwroot**) に **webapps** ディレクトリを作成し (存在しない場合)、**d:\\home\\site\\wwwroot\\webapps** に Hudson.war を配置します。
+2. apache maven 3.0.5 (Hudson と互換性あり) をダウンロードし、**d:\\home\\site\\wwwroot** に配置します。
+3. **d:\\home\\site\\wwwroot** に web.config を作成し、そのファイルに次の内容を貼り付けます。
 	
 		<?xml version="1.0" encoding="UTF-8"?>
 		<configuration>
@@ -194,7 +194,7 @@ Tomcat にバンドルされている Liferay 6.1.2 Community Edition GA3 を使
 - HTTP コネクタを `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />` に変更。
 - AJP コネクタをコメントアウト。
 
-**liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** フォルダーで、**portal-ext.properties** という名前のファイルを作成します。このファイルには、次に示している 1 行を追加する必要があります。
+**liferay\\tomcat-7.0.40\\webapps\\ROOT\\WEB-INF\\classes** フォルダーで、**portal-ext.properties** という名前のファイルを作成します。このファイルには、次に示している 1 行を追加する必要があります。
 
     liferay.home=%HOME%/site/wwwroot/liferay
 
@@ -236,4 +236,4 @@ Liferay の詳細については、[http://www.liferay.com](http://www.liferay.c
  
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -77,7 +77,7 @@ API Management を使用するにあたって最初に行うことは、サー�
 
 ![New API Management service][api-management-create-instance-step2]
 
-API Management サービス インスタンスは、Developer、 Standard、Premium の 3 つのレベルで利用できます。既定では、新しい API Management サービス インスタンスは、Developer レベルを使用して作成されます。Standard レベルまたは Premium レベルを選択するには、**[詳細設定]** チェックボックスをオンにし、次の画面で希望のレベルを選択します。
+API Management サービス インスタンスは、Developer、Standard、Premium の 3 つのレベルで利用できます。既定では、新しい API Management サービス インスタンスは、Developer レベルを使用して作成されます。Standard レベルまたは Premium レベルを選択するには、**[詳細設定]** チェックボックスをオンにし、次の画面で希望のレベルを選択します。
 
 >Microsoft Azure は、API Management サービスを実行できる Developer、Standard、Premium の 3 つのレベルを提供します。Developer レベル は、高可用性が重要ではない、開発、テスト、パイロット API プログラム用です。Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。このチュートリアルは、いずれのレベルを使用しても実行できます。API Management レベルの詳細については、「[API Management の料金][]」をご覧ください。
 
@@ -243,4 +243,4 @@ API および操作とともにサンプルの説明とパラメーターがイ�
 [api-management-]: ./media/api-management-get-started/api-management-.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

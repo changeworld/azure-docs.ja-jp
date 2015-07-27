@@ -59,4 +59,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [1]: ./media/cache-python-get-started/cache01.png
 [2]: ./media/cache-python-get-started/cache02.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

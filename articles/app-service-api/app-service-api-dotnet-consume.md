@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2015" 
+	ms.date="06/30/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service で .NET クライアントから API アプリ使用する 
@@ -59,27 +59,9 @@
  
 2. Visual Studio で、コンソール アプリケーション プロジェクトを作成します。
  
-### App Service SDK で生成されたクライアント コードの追加
+### <a id="addclient"></a>App Service SDK で生成されたクライアント コードの追加
 
-3. **ソリューション エクスプローラー**で、プロジェクト (ソリューションではありません) を右クリックします。**[追加]、[Azure API アプリ クライアント]** の順にクリックします。 
-
-	![](./media/app-service-api-dotnet-consume/03-add-azure-api-client-v3.png)
-	
-3. **[Azure API アプリ クライアントの追加]** ダイアログ ボックスで、**[Azure API アプリからダウンロード]** をクリックします。
-
-5. ドロップダウン リストから、呼び出す API アプリを選択します。
-
-7. **[OK]** をクリックします。
-
-	![生成画面](./media/app-service-api-dotnet-consume/04-select-the-api-v3.png)
-
-	ウィザードによって、API メタデータ ファイルがダウンロードされ、API アプリを呼び出すための型指定されたインターフェイスが生成されます。
-
-	![生成中を示す画面](./media/app-service-api-dotnet-consume/05-metadata-downloading-v3.png)
-
-	コードの生成が完了すると、API アプリの名前が付いた新しいフォルダーが**ソリューション エクスプローラー**に表示されます。このフォルダーには、クライアント クラスとデータ モデルを実装するコードが含まれています。
-
-	![生成完了画面](./media/app-service-api-dotnet-consume/06-code-gen-output-v3.png)
+[AZURE.INCLUDE [app-service-api-dotnet-add-generated-client](../../includes/app-service-api-dotnet-add-generated-client.md)]
 
 ### API アプリを呼び出すコードの追加
 
@@ -116,9 +98,7 @@ API アプリを呼び出すには、次の例のように、クライアント 
 
 ## Windows デスクトップ アプリケーションからの認証された呼び出し
 
-このセクションでは、Windows デスクトップ アプリケーション プロジェクトを作成し、そのプロジェクトに、認証を要求する API アプリを呼び出すコードを追加します。このコードでは、Oauth 2 の*サーバー認証フロー*が実装されます。つまり、クライアント アプリケーションではなく、API アプリのゲートウェイが認証プロバイダーからトークンを取得します。
-
-Azure API アプリでは、クライアント認証フローもサポートされています。クライアント フロー認証に関するシナリオは、このチュートリアルに今後追加される予定です。
+このセクションでは、Windows デスクトップ アプリケーション プロジェクトを作成し、そのプロジェクトに、認証を要求する API アプリを呼び出すコードを追加します。
 
 ### API アプリの設定とプロジェクトの作成
 
@@ -198,11 +178,31 @@ Azure API アプリでは、クライアント認証フローもサポートさ�
 
 	![](./media/app-service-api-dotnet-consume/formaftercall.png)
 
+### <a id="client-flow"></a>サーバー フローとクライアント フローの比較
+
+サンプル アプリケーションは[サーバー フロー](../app-service/app-service-authentication-overview.md#server-flow)を示しています。これは、ゲートウェイが ID プロバイダーのアクセス トークンを取得する流れを示しています。[クライアント フロー](../app-service/app-service-authentication-overview.md#client-flow)の場合、クライアント アプリケーションが ID プロバイダーからアクセス トークンを直接取得してゲートウェイに送信するため、`SetCurrentUser` ではなく `LoginAsync` を呼び出します。
+
+次のコード例は、`providerAccessToken` という名前の文字列変数に ID プロバイダーのアクセス トークンがあり、`idProvider` という名前の文字列変数に ID プロバイダーのインジケーター ("aad"、"microsoftaccount"、"google"、"twitter"、または "facebook") があることを前提としています。
+
+		var appServiceClient = new AppServiceClient(GATEWAY_URL);
+		var providerAccessTokenJSON = new JObject();
+		providerAccessTokenJSON["access_token"] = providerAccessToken;
+		var appServiceUser = await appServiceClient.LoginAsync(idProvider, providerAccessTokenJSON);
+
+		var contactsListClient = appServiceClient.CreateContactsList();
+		var contacts = contactsListClient.Contacts.Get();
+		foreach (Contact contact in contacts)
+		{
+		    textBox1.Text += contact.Name + " " + contact.EmailAddress + System.Environment.NewLine;
+		}
+
 ## 次のステップ
 
 この記事では、アクセス レベルが**パブリック (匿名)** または**パブリック (認証済み)** に設定された API アプリについて、.NET クライアントから API アプリを使用する方法について説明しました。
 
 .NET クライアントから API アプリを呼び出すコードのその他の例については、[Azure Cards](https://github.com/Azure-Samples/API-Apps-DotNet-AzureCards-Sample) サンプル アプリケーションをダウンロードしてください。
+
+API アプリで認証を使用する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

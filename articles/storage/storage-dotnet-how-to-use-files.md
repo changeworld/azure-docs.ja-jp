@@ -1,6 +1,6 @@
 <properties
 			pageTitle="PowerShell と .NET で Azure File ストレージを使用する方法 | Microsoft Azure"
-            description="Azure File ストレージを使用して、クラウド ファイル共有を作成し、ファイルの内容を管理する方法について説明します。File ストレージを使用することで、企業は SMB ファイル共有に依存するアプリケーションを Azure に移行することができます。サンプルは PowerShell および C# で記述されています。"
+            description="Azure File ストレージを使用して、クラウド ファイル共有を作成し、ファイルの内容を管理する方法について説明します。File ストレージを使用することで、企業は SMB ファイル共有に依存するアプリケーションを Azure に移行できます。再起動時にファイル共有に再接続するためには、仮想マシンのストレージ アカウントの資格情報を保持してください。"
             services="storage"
             documentationCenter=".net"
             authors="tamram"
@@ -12,14 +12,18 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="06/22/2015"
+      ms.date="07/06/2015"
       ms.author="tamram" />
 
 # PowerShell と .NET で Azure File ストレージを使用する方法
 
 ## 概要
 
-この概要ガイドでは、Microsoft Azure File ストレージの基本的な使用方法を説明します。このチュートリアルでは、次のことを行います。
+Azure File サービスは、標準の SMB 2.1 プロトコルを使用して、ファイル共有を公開します。Azure 内で稼働するアプリケーションは、ReadFile や WriteFile などの使い慣れた標準のファイル システム API を使用して VM 間でファイルを容易に共有できます。また、REST インターフェイスを介して同時にファイルにアクセスできるため、さまざまなハイブリッド シナリオを開くことができます。最後に、Azure File は、BLOB、テーブル、およびキュー サービスと同じテクノロジ上に構築されます。つまり Azure File では、既存の可用性、持続性、スケーラビリティ、およびプラットフォームに組み込まれている geo 冗長性を利用できます。
+
+## このチュートリアルについて
+
+この概要チュートリアルでは、Microsoft Azure File ストレージの基本的な使用方法を説明します。このチュートリアルでは、次のことを行います。
 
 - PowerShell を使用して、新しい Azure File 共有の作成、ディレクトリの追加、共有へのローカル ファイルのアップロード、ディレクトリ内のファイルの一覧表示の方法を示します。
 - Azure の仮想マシンのファイル共有を、SMB 共有と同じようにマウントします。
@@ -114,17 +118,17 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有に置き換えてください。
 
-    net use <drive-letter>: <storage-account-name>.file.core.windows.net<share-name>
+    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
 
 	example :
-	net use z: \samples.file.core.windows.net\logs
+	net use z: \\samples.file.core.windows.net\logs
 
 > [AZURE.NOTE]前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、`net use` コマンドのパラメーターで資格情報を指定してください。
 
-    net use <drive-letter>: <storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
+    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
 
 	example :
-	net use z: \samples.file.core.windows.net\logs /u:samples <storage-account-key>
+	net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
 
 これで、他のドライブの場合と同じように仮想マシンから File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間] (http://msdn.microsoft.com/library/gg145019(v=vs.110).aspx) の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。
 
@@ -233,4 +237,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

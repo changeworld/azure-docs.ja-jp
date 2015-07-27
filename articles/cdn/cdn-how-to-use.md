@@ -51,7 +51,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
 
     http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
 
-    **重要:** この URL は、ストレージ アカウントの URI のサブドメインとなるため、Azure のすべてのホステッド サービスで一意である必要があります。
+    **重要:** この URL は、ストレージ アカウントの URI のサブドメインとなるため、Azure のすべてのホストされたサービスで一意である必要があります。
 
 	この値は、このストレージ アカウントの名前として、ポータルやプログラムでこのアカウントにアクセスするときにも使用されます。
 
@@ -126,4 +126,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [create-new-storage-account]: ./media/cdn-how-to-use/CDN_CreateNewStorageAcct.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

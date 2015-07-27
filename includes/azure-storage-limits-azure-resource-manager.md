@@ -1,3 +1,5 @@
+次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時にのみ適用されます。
+
 <table cellspacing="0" border="1">
 <tr>
    <th align="left" valign="middle">リソース</th>
@@ -13,4 +15,4 @@
 </tr>
 </table>
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

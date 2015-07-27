@@ -24,4 +24,4 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 - **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

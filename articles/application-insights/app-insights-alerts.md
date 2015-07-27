@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/17/2015" 
+	ms.date="07/13/2015" 
 	ms.author="awills"/>
  
 # Application Insights のアラートの設定
@@ -36,7 +36,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ![[アラート ルール] ブレードで、[アラートの追加] をクリックします。測定するリソースとしてアプリケーションを設定し、アラートの名前を指定し、メトリックを選択します。](./media/app-insights-alerts/01-set-metric.png)
 
-その他のプロパティの前に、リソースを設定します。パフォーマンスまたは使用状況のメトリックにアラートを設定する場合、Web テスト リソースは選択しないでください。
+その他のプロパティの前に、リソースを設定します。パフォーマンスまたは使用状況のメトリックにアラートを設定する場合は、**「(コンポーネント)」のリソースを選択**します。
 
 しきい値を入力するように求められたら、単位に注意してください。
 
@@ -80,4 +80,4 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

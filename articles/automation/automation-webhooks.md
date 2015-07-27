@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/03/2015"
+   ms.date="07/05/2015"
    ms.author="bwren" />
 
 # Azure Automation Webhook
@@ -92,6 +92,7 @@ Webhook を作成後に使用する場合、クライアント アプリケー�
 |:---|:----|:---|
 | 202 | 承認済み | 要求が承認され、Runbook が正常にキューに入れられました。 |
 | 400 | 正しくない要求 | 次のいずれかの理由で要求が受け入れられませんでした。<ul> <li>Webhook の有効期限が切れている。</li> <li>Webhook は無効になっている。</li> <li>URL 内のトークンが無効である。</li> </ul>|
+| 404 | 見つかりません | 次のいずれかの理由で要求が受け入れられませんでした。<ul><li>Webhook が見つかりませんでした。</li> <li>Runbook が見つかりませんでした。</li> <li>アカウントが見つかりませんでした。</li> </ul> |
 | 500 | 内部サーバー エラー | URL は有効ですが、エラーが発生しました。要求を再送信してください。 |
 
 要求が成功したと仮定した場合、Webhook の応答には、次のような JSON 形式のジョブ ID が含まれています。ここに含まれるジョブ ID は 1 つですが、JSON 形式は将来拡張できるようになっています。
@@ -173,4 +174,4 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 - [Runbook の開始](automation-starting-a-runbook.md)
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md) 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -54,4 +54,4 @@ Azure 管理ポータルを使用して送信元の CDN を有効にできます
 [customorigin]: ./media/cdn-create-new-endpoint/cdn-custom-origin.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

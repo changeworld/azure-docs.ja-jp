@@ -52,4 +52,4 @@
 
 <sup>3</sup>これらの機能は、Azure リソース グループと Azure リソース マネージャーでは必要なくなりました。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

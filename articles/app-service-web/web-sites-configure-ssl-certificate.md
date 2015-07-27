@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="07/02/2015" 
 	ms.author="cephalin"/>
 
 
 [AZURE.INCLUDE [configure-ssl-web-site](../../includes/configure-ssl-web-site.md)]
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

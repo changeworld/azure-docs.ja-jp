@@ -130,4 +130,4 @@ Azure での PHP と SQL データベースの使用方法を示すサンプル�
 [quick-create]: ./media/sql-database-php-how-to-use/create-new-sql.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

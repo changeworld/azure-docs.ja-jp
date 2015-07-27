@@ -105,7 +105,7 @@ Azure AD Connect の詳細については、[Azure Active Directory Connect](act
 * [パスワード管理の概要](active-directory-passwords-getting-started.md)
 * [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
 * [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [How to get Operational Insights with Password Management Reports (パスワード管理のレポートからの情報取得方法)](active-directory-passwords-get-insights.md)
+* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
 * [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
 * [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [詳細情報](active-directory-passwords-learn-more.md)
@@ -122,4 +122,4 @@ Azure AD Connect の詳細については、[Azure Active Directory Connect](act
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,10 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="07/08/2015" 
 	ms.author="mandia"/>
 
 # Microsoft Azure App Service のエンタープライズ コネクタ
+
+> [AZURE.NOTE]このトピックは廃止されています。使用できるすべての組み込みコネクタと API Apps を確認するには、「[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)」を参照してください。
+
 Microsoft Azure App Service (略して App Service) には、SAP や Marketo などのエンタープライズ システムで使用できるいくつかのコネクタが含まれています。これらのコネクタを使用すると、エンタープライズ システムに簡単に接続してさまざまなタスクを完了できます。
 
 エンタープライズ コネクタには、"トリガー" や "アクション" などの機能が用意されています。トリガーは、MongoDb のエントリを更新するなどの特定のイベントに基づいて新しいインスタンスを開始します。アクションは、トリガーの結果であり、MongoDB のエントリを更新した後で、MongoDB からエントリを取得するなどの動作です。
@@ -152,6 +155,7 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 
 
 ## その他のコネクタ
-[BizTalk 統合コネクタ](app-service-logic-integration-connectors.md)<br/> [企業間コネクタ](app-service-logic-b2b-connectors.md)<br/> [ソーシャル コネクタ](app-service-logic-social-connectors.md)<br/> [プロトコル コネクタ](app-service-logic-protocol-connectors.md)<br/> [アプリ + データ サービス コネクタ](app-service-logic-data-connectors.md)<br/> [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=62-->
+[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+
+<!---HONumber=July15_HO3-->

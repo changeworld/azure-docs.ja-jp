@@ -128,7 +128,7 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 					                 for (i=0; i < nChild; i++)
 				                     {
 					                    Node temp = list.item(i);
-					                    displaySAMLInfo(temp, parent + nodeName + "", out);
+					                    displaySAMLInfo(temp, parent + nodeName + "\", out);
 				                     }
 				               }
 			              }
@@ -196,4 +196,4 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

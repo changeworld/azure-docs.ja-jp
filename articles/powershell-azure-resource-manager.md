@@ -1,19 +1,19 @@
 <properties 
 	pageTitle="Azure リソース マネージャーでの Windows PowerShell の使用" 
 	description="Azure PowerShell を使用すると、リソース グループとして複数のリソースを Azure にデプロイできます。" 
-	services="" 
+	services="azure-resource-manager" 
 	documentationCenter="" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="multiple" 
+	ms.service="azure-resource-manager" 
 	ms.workload="multiple" 
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2015" 
+	ms.date="07/15/2015" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでの Windows PowerShell の使用
@@ -43,15 +43,15 @@ Azure リソース マネージャーでは、Azure リソースに関するま�
 ## Azure PowerShell モジュールについて
 Version 0.8.0 以降、Azure PowerShell のインストールには次の複数の Windows PowerShell モジュールが含まれています。Azure モジュールまたは Azure リソース マネージャー モジュールで利用できるコマンドを使用するかどうかを明示的に指定する必要があります。これらを簡単に切り替えるために、新しいコマンドレット **Switch-AzureMode** を Azure Profile モジュールに追加しました。
 
-Azure PowerShell を使用する場合、Azure モジュールのコマンドレットが既定でインポートされます。Azure Resource Manager モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。これによって、Azure モジュールはセッションから削除され、Azure リソース マネージャーおよび Azure プロファイル モジュールがインポートされます。
+Azure PowerShell を使用する場合、Azure モジュールのコマンドレットが既定でインポートされます。Azure リソース マネージャー モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。これによって、Azure モジュールはセッションから削除され、Azure リソース マネージャーおよび Azure プロファイル モジュールがインポートされます。
 
 AzureResoureManager モジュールに切り替えるには、次のように入力します。
 
-    PS C:\> Switch-AzureMode -Name AzureResourceManager
+    PS C:> Switch-AzureMode -Name AzureResourceManager
 
 Azure モジュールに切り替えるには、次のように入力します。
 
-    PS C:\> Switch-AzureMode -Name AzureServiceManagement
+    PS C:> Switch-AzureMode -Name AzureServiceManagement
 
 既定では、Switch-AzureMode は、現在のセッションのみに影響します。スイッチをすべての PowerShell セッションで有効にするには、Switch-AzureMode の **Global** パラメーターを使用します。
 
@@ -59,7 +59,7 @@ Switch-AzureMode コマンドレットについての質問は、`Get-Help Switc
   
 ヘルプの概要と AzureResourceManager モジュールのコマンドレットの一覧を取得するには、次のように入力します。
 
-    PS C:\> Get-Command -Module AzureResourceManager | Get-Help | Format-Table Name, Synopsis
+    PS C:> Get-Command -Module AzureResourceManager | Get-Help | Format-Table Name, Synopsis
 
 次のような出力が表示されます。
 
@@ -92,11 +92,11 @@ Azure リソース マネージャーのコマンドの全セットについて�
 
 2. **Switch-AzureMode** コマンドレットを使用して、AzureResourceManager モジュールおよび AzureProfile モジュールのコマンドレットをインポートします。
 
-        PS C:\> Switch-AzureMode AzureResourceManager
+        PS C:> Switch-AzureMode AzureResourceManager
 
 3. Azure アカウントを Windows PowerShell セッションに追加するには、**Add-AzureAccount** コマンドレットを使用します。
 
-        PS C:\> Add-AzureAccount
+        PS C:> Add-AzureAccount
 
 このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。ログイン後にアカウント設定がダウンロードされるため、Windows PowerShell で使用できるようになります。
 
@@ -114,13 +114,13 @@ Azure リソース グループ テンプレート ギャラリーのすべて�
 
 PowerShell プロンプトで、次のように入力します。
     
-    PS C:\> Get-AzureResourceGroupGalleryTemplate -Publisher Microsoft
+    PS C:> Get-AzureResourceGroupGalleryTemplate -Publisher Microsoft
 
 コマンドレットは、発行元が Microsoft であるギャラリー テンプレートの一覧を返します。**Identity** プロパティを使用して、コマンドのテンプレートを識別します。
 
 Microsoft.WebSiteSQLDatabase.0.2.6-preview テンプレートは、興味深いものです。新しいバージョンがリリースされたために、コマンドを実行する時点で、テンプレートのバージョンは少し異なる場合があります。最新バージョンのテンプレートを使用します。ギャラリー テンプレートの詳細を確認するには、**Identity** パラメーターを使用します。Identity パラメーターの値は、そのテンプレートの ID です。
 
-    PS C:\> Get-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.2.6-preview
+    PS C:> Get-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.2.6-preview
 
 コマンドレットは、概要や説明など、テンプレートに関するより多くの情報を持つオブジェクトを返します。
 
@@ -132,7 +132,7 @@ Microsoft.WebSiteSQLDatabase.0.2.6-preview テンプレートは、興味深い�
 
 Save-AzureResourceGroupGalleryTemplate はテンプレートを保存して、パス、JSON テンプレート ファイルのファイル名を返します。
 
-	PS C:\> Save-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.2.6-preview -Path C:\Azure\Templates\New_WebSite_And_Database.json
+	PS C:> Save-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.2.6-preview -Path C:\Azure\Templates\New_WebSite_And_Database.json
 
 	Path
 	----
@@ -234,7 +234,7 @@ Save-AzureResourceGroupGalleryTemplate はテンプレートを保存して、�
 
 コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。**Get-AzureLocation** の出力を使用して、リソース グループの場所を選択します。**GalleryTemplateIdentity** パラメーターを使用して、ギャラリー テンプレートを指定します。
 
-	PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview
+	PS C:> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview
             ....
 
 テンプレート名を入力すると、New-AzureResourceGroup がテンプレートを取得し、解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、Windows PowerShell から値を求められます。
@@ -243,25 +243,25 @@ Save-AzureResourceGroupGalleryTemplate はテンプレートを保存して、�
 
 パラメーターを取得するには、マイナス記号 (-) を入力してパラメーター名を示し、Tab キーを押します。または、siteName などのパラメーター名の最初の数文字を入力して、Tab キーを押します。
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -si<TAB>
+    PS C:> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -si<TAB>
 
 PowerShell がパラメーター名を完了します。パラメーター名を順番に繰り返し、Tab キーも繰り返し押します。
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName 
+    PS C:> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName 
 
 Web サイトの名前を入力して、各パラメーターの Tab 処理を繰り返します。既定値があるパラメーターは省略可能です。既定値をそのまま使用するには、コマンドのパラメーターを省略します。
 
 テンプレート パラメーターにこのテンプレートの sku パラメーターのような列挙値がある場合は、パラメーターの値を周期的に繰り返して Tab キーを押します。
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku <TAB>
+    PS C:> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku <TAB>
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku Basic<TAB>
+    PS C:> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku Basic<TAB>
 
-    PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku Free<TAB>
+    PS C:> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -sku Free<TAB>
 
 必要なテンプレート パラメーターと **Verbose** 共通パラメーターのみを指定する New-AzureResourceGroup コマンドの例を次に示します。**administratorLoginPassword** は省略します
 
-	PS C:\> New-AzureResourceGroup -Name TestRG -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -hostingPlanName TestPlan -siteLocation "East Asia" -serverName testserver -serverLocation "East Asia" -administratorLogin Admin01 -databaseName TestDB -Verbose
+	PS C:> New-AzureResourceGroup -Name TestRG -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.2.6-preview -siteName TestSite -hostingPlanName TestPlan -siteLocation "East Asia" -serverName testserver -serverLocation "East Asia" -administratorLogin Admin01 -databaseName TestDB -Verbose
 
 コマンドを入力すると、不足している必須パラメーター **administratorLoginPassword** を入力するように求められます。パスワードを入力すると、セキュリティ保護された文字列値が隠されます。この対策によって、プレーンテキストでパスワードを提供することの危険性が解消されます。
 
@@ -280,7 +280,7 @@ Web サイトの名前を入力して、各パラメーターの Tab 処理を�
 
 - サブスクリプションのすべてのリソース グループを取得するには、**Get-AzureResourceGroup** コマンドレットを使用します。
 
-		PS C:\>Get-AzureResourceGroup
+		PS C:>Get-AzureResourceGroup
 
 		ResourceGroupName : TestRG
 		Location          : eastasia
@@ -292,7 +292,7 @@ Web サイトの名前を入力して、各パラメーターの Tab 処理を�
 
 - リソース グループのリソースを取得するには、**Get-AzureResource** コマンドレットおよびその ResourceGroupName パラメーターを使用します。パラメーターがない場合、Get-AzureResource は Azure サブスクリプション内のすべてのリソースを取得します。
 
-		PS C:\> Get-AzureResource -ResourceGroupName TestRG
+		PS C:> Get-AzureResource -ResourceGroupName TestRG
 		
 		ResourceGroupName : TestRG
 		Location          : eastasia
@@ -315,11 +315,11 @@ Web サイトの名前を入力して、各パラメーターの Tab 処理を�
 
 - リソース グループにリソースを追加するには、**New-AzureResource** コマンドレットを使用します。このコマンドは、新しい Web サイトを TestRG リソース グループに追加します。このコマンドは、テンプレートを使用しないため、もう少し複雑です。 
 
-        PS C:\>New-AzureResource -Name TestSite2 -Location "North Europe" -ResourceGroupName TestRG -ResourceType "Microsoft.Web/sites" -ApiVersion 2014-06-01 -PropertyObject @{"name" = "TestSite2"; "siteMode"= "Limited"; "computeMode" = "Shared"}
+        PS C:>New-AzureResource -Name TestSite2 -Location "North Europe" -ResourceGroupName TestRG -ResourceType "Microsoft.Web/sites" -ApiVersion 2014-06-01 -PropertyObject @{"name" = "TestSite2"; "siteMode"= "Limited"; "computeMode" = "Shared"}
 
 - テンプレート ベースの新しいデプロイをリソース グループに追加するには、**New-AzureResourceGroup デプロイ** コマンドを使用します。
 
-		PS C:\>New-AzureResourceGroupDeployment ` 
+		PS C:>New-AzureResourceGroupDeployment ` 
 		-ResourceGroupName TestRG `
 		-GalleryTemplateIdentity Microsoft.WebSite.0.2.6-preview `
 		-siteName TestWeb2 `
@@ -328,9 +328,7 @@ Web サイトの名前を入力して、各パラメーターの Tab 処理を�
 
 ## リソースの移動
 
-- 既存のリソースをリソース グループに移動するには、**Move-AzureResource** コマンドを使用します。
-
-		PS C:\> Move-AzureResource -DestinationResourceGroupName TestRG -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OtherExample/providers/Microsoft.ClassicStorage/storageAccounts/examplestorage
+新しいリソース グループに、既存のリソースを移動できます。例については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
 ## リソース グループの削除
 
@@ -380,7 +378,7 @@ Getting Started (概要)
 - [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](./xplat-cli-azure-resource-manager.md)
 - [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)
 
-アプリケーションの作成と展開
+アプリケーションの作成とデプロイ
 
 - [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)
@@ -399,4 +397,4 @@ Getting Started (概要)
 - [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)
 - [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

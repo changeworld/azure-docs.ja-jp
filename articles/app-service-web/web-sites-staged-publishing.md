@@ -4,7 +4,6 @@
 	services="app-service\web"
 	documentationCenter=""
 	authors="cephalin"
-	writer="cephalin"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -241,7 +240,7 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [Microsoft Azure 無料試用版](/pricing/free-trial/)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- IMAGES -->
@@ -260,4 +259,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

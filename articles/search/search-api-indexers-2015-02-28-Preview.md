@@ -12,12 +12,12 @@ ms.service="search"
 ms.devlang="rest-api" 
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na" 
-ms.date="04/23/2015" 
+ms.date="07/08/2015" 
 ms.author="heidist" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)
 
-> [AZURE.NOTE]この記事では、[2015-02-28-Preview](../search-api-2015-02-28-preview.md) のインデクサーについて説明します。現在のところ、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) に記載されている `2015-02-28` バージョンとここに記載する `2015-02-28-Preview` バージョンの唯一の違いは、このプレビューでは *fieldMappings* を提供するという点です。この機能の説明は「[インデクサーの作成](#CreateIndexer)」にあります。
+> [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のインデクサーについて説明します。現在のところ、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) に記載されている `2015-02-28` バージョンとここに記載する `2015-02-28-Preview` バージョンの唯一の違いは、このプレビューでは *fieldMappings* を提供するという点です。この機能の説明は「[インデクサーの作成](#CreateIndexer)」にあります。
 
 ## 概要
 
@@ -775,4 +775,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

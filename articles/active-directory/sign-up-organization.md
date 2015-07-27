@@ -36,4 +36,4 @@
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.date="07/08/2015" 
 	ms.author="awills"/>
  
 # Application Insights での依存関係に関する問題の診断
@@ -31,7 +31,7 @@ Java Web アプリやデバイス アプリなど、それ以外の種類では�
 すぐに使用できる依存関係モニターは現在、次の種類の依存関係の呼び出しを報告します。
 
 * SQL データベース
-* ASP.NET Web および wcf サービス
+* HTTP ベースのバインドを使用する ASP.NET Web および WCF サービス
 * ローカルまたはリモートの HTTP 呼び出し
 * Azure DocumentDb、テーブル、BLOB ストレージ、およびキュー
 
@@ -96,6 +96,32 @@ Java Web アプリやデバイス アプリなど、それ以外の種類では�
 ![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/app-insights-dependencies/07-faildetail.png)
 
 
+## カスタム依存関係の追跡
+
+標準の依存関係追跡モジュールは、外部の依存関係 (データベース、REST API など) を自動的に検出しますが、同じように扱える追加のコンポーネントが必要になる可能性もあります。
+
+標準のモジュールで使用するのと同じ [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) を使用して、依存関係情報を送信するコードを記述できます。
+
+たとえば、自分で記述していないアセンブリを使ってコードを作成する場合、それに対するすべての呼び出しを測定し、何が応答時間に貢献するかを知ることができます。このデータを Application Insights 内の依存関係グラフに表示するには、データを `TrackDependency` を使用して送信します。
+
+```C#
+
+            var success = false;
+            var startTime = DateTime.UtcNow;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                success = dependency.Call();
+            }
+            finally
+            {
+                timer.Stop();
+                telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+            }
+```
+
+標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) の DependencyTrackingTelemetryModule への参照を削除します。
+
 <!--Link references-->
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

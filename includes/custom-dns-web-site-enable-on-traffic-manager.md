@@ -26,4 +26,4 @@
 
 この時点でブラウザーにトラフィック マネージャー ドメイン名 (contoso.trafficmanager.net) を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

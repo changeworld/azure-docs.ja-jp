@@ -47,4 +47,4 @@ Azure 仮想マシンに Chef クライアントをインストールするに�
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure における大規模なコンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース"
-   description="この記事では、Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースを一覧します。"
+   pageTitle="ビッグ コンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース | Microsoft Azure"
+   description="Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
    authors="dlepow"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="06/24/2015"
+   ms.date="07/09/2015"
    ms.author="danlep"/>
 
 # Azure における大規模なコンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
@@ -23,7 +23,7 @@
 
 Azure の大規模なコンピューティング オプションについて説明し、ワークロードやビジネス ニーズに適切なアプローチを選択します。
 
-* [概要](https://msdn.microsoft.com/library/azure/dn482130.aspx)
+* [Batch と HPC ソリューション](batch-hpc-solutions.md)
 
 * [ビデオ: Azure と HPC を使用したクラウドでの大規模なコンピューティング](http://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
@@ -31,8 +31,6 @@ Azure の大規模なコンピューティング オプションについて説�
 ## Azure Batch
 
 [Batch](http://azure.microsoft.com/services/batch/) は、アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
-
-* [プレビュー](http://azure.microsoft.com/services/preview/)のサインアップ
 
 * [ドキュメント](http://azure.microsoft.com/documentation/services/batch/)
 
@@ -50,13 +48,13 @@ Azure の大規模なコンピューティング オプションについて説�
 
 ### Microsoft HPC Pack
 
-[HPC Pack](https://technet.microsoft.com/library/cc514029) は Microsoft の無料のクラスター マネージャーであり、オンプレミス、ハイブリッド、クラウド ベース HPC のためのジョブ スケジューリング ソリューションです。
+[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) は Microsoft の無料のクラスター マネージャーであり、オンプレミス、ハイブリッド、クラウド ベース HPC のためのジョブ スケジューリング ソリューションです。
 
 * [HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 
 * [Azure VM の HPC Pack](https://msdn.microsoft.com/library/azure/dn518135.aspx)
 
-* [チュートリアル: Azure での HPC Pack を使用したハイブリッド クラスターのセットアップ](../cloud-services-setup-hybrid-hpcpack-cluster.md)
+* [チュートリアル: Azure での HPC Pack を使用したハイブリッド クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
 
 * [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
 
@@ -81,7 +79,7 @@ Azure リソース マネージャーのテンプレートを使用して、Linu
 
 ## コンピューティング集中型インスタンス
 
-Azure では、Batch や HPC ワークロードを実行するために、コンピューティング集中型の [A8、A9、A10、A11 インスタンス](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)などの[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。
+Azure では、Linux および Windows の HPC ワークロードを実行するために、コンピューティング集中型の [A8、A9、A10、A11 インスタンス](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)などの[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。
 
 * [A8および A9 インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)
 
@@ -118,4 +116,4 @@ Azure では、Batch や HPC ワークロードを実行するために、コン
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

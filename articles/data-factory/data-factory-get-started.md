@@ -66,7 +66,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 ### Azure BLOB ストレージと Azure SQL データベースをチュートリアル用に準備する
 ここからは、次の手順を実行して、チュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備します。
 
-1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
+1. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\\ADFGetStarted** フォルダーに保存します。
 
         John, Doe
 		Jane, Doe
@@ -218,4 +218,4 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 [image-data-factory-name-not-available]: ./media/data-factory-get-started/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/29/2015" 
+	ms.date="06/30/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps と Mobile Apps の認証
@@ -94,17 +94,17 @@ App Service ゲートウェイは、2 つの方法でクライアントを認証
 
 ログインしているユーザーの代理で、サービスとしてのソフトウェア (SaaS) プラットフォームへの呼び出しを送信できます。また、[コネクタ API アプリ](../app-service-mobile/app-service-logic-what-are-biztalk-api-apps.md) を使用できます。たとえば、[Twitter の SDK](https://dev.twitter.com/overview/api/twitter-libraries) を使用できる Twitter アカウント からツイートを投稿したり、Azure サブスクリプションの [Twitter コネクタ](../app-service-mobile/app-service-logic-connector-twitter.md)をプロビジョニングしたり、それを呼び出したりできます。このセクションでは、API アプリ か モバイル アプリで実行されているコードから SaaS プラットフォームにアクセスする方法について説明します。
 
-### ID プロバイダーの使用 
+### <a id="obotoidprovider"></a> ID プロバイダー トークンの使用 
 
 ゲートウェイは、Zumo トークンを複数の ID プロバイダー アクセス トークンと更新トークンに関連付ける*トークン ストア* を保持します。有効な Zumo トークンを持った HTTP要求を受信した場合、ゲートウェイはどの ID プロバイダー トークンがそのユーザーに関連しているのかを認識します。
   
-API アプリやモバイル アプリで実行されているコードが、ログオン ユーザーの代わりに保護されたリソースに呼び出しを行う必要がある場合は、次の図に示すように、ゲートウェイのトークン ストアから、ID プロバイダーのトークンを取得して使用できます。
+API アプリやモバイル アプリで実行されているコードが、ログオン ユーザーの代わりに保護されたリソースに呼び出しを行う必要がある場合は、次の図に示すように、ゲートウェイのトークン ストアから、ID プロバイダーのトークンを取得して使用できます。この図は、クライアントが既にゲートウェイで認証されていて Zumo トークンがあることを前提としています。
 
 ![](./media/app-service-authentication-overview/idprovidertoken.png)
 
 たとえば、ID プロバイダーが Azure Active Directory (AAD) であり、API アプリで AAD アクセス トークンを使用して AAD Graph API を呼び出すか、ユーザーのアクセス許可がある SharePoint サイトへのアクセスを要求すると仮定します。ゲートウェイに要求を送信して AAD トークンを取得し、その AAD トークンを使用して Graph API を呼び出すか、SharePoint サイトのアクセス トークンを取得できます。
 
-### その他のリソースにアクセスするためにユーザーの同意を取得する
+### <a id="obotosaas"></a>その他のリソースにアクセスするためにユーザーの同意を取得する
 
 ゲートウェイには、元の ID プロバイダー以外のプロバイダーによってセキュリティ保護されたリソースにアクセスするときに、ユーザーの同意を取得する組み込みの機能もあります。たとえば、Azure Active Directory を使用してサインインするユーザーは、ユーザーの Dropbox アカウント内のファイルにアクセスできます。
 
@@ -121,8 +121,10 @@ API アプリやモバイル アプリで実行されているコードが、ロ
 * SharePointOnline
 * Twitter
 * Yammer
+* Azure Active Directory
+* Microsoft アカウント
 
-これらのプロバイダーでは、ゲートウェイはアクセス トークンを保持し、ID プロバイダー アクセス トークンと同様に、Zumo トークンと関連付けます。次の図に、ユーザーの同意を取得し、SaaS プラットフォームを呼び出すプロセスを示します。
+これらのプロバイダーでは、ゲートウェイはアクセス トークンを保持し、ID プロバイダー アクセス トークンと同様に、Zumo トークンと関連付けます。次の図に、ユーザーの同意を取得し、SaaS プラットフォームを呼び出すプロセスを示します。この図は、クライアントが既にゲートウェイで認証されていて Zumo トークンがあることを前提としています。
 
 ![](./media/app-service-authentication-overview/saastoken.png)
 
@@ -185,16 +187,17 @@ Azure の [ASP.NET Identity](http://www.asp.net/identity) や [Thinktecture](htt
 ### <a id="apiaclient"></a>API Apps のクライアントのフロー
 
 * [API アプリの保護](../app-service-api/app-service-api-dotnet-add-authentication.md) - API アプリの構成 パーツは、クライアント フローとサーバー フローの両方に適用されますが、ブラウザー内テスト パーツは、サーバー フローを示します。
+* [.NET クライアントから Azure App Service で API アプリを使用する](../app-service-api/app-service-api-dotnet-consume.md) - 認証された呼び出しのサンプル アプリはサーバー フローを示していますが、その後にサンプル コードによる[クライアント フロー](../app-service-api/app-service-api-dotnet-consume.md#client-flow)のセクションが続きます。
 
 ### <a id="apiaserver"></a>API Apps サーバー フロー
 
-* [API アプリの保護](../app-service-api/app-service-api-dotnet-add-authentication.md) - API アプリの構成 パーツは、クライアント フローとサーバー フローの両方に適用されますが、ブラウザー内テスト パーツは、サーバー フローを示します。
+* [API アプリの保護](../app-service-api/app-service-api-dotnet-add-authentication.md) - API アプリの構成 パーツは、クライアント フローとサーバー フローの両方に適用されます。またブラウザー内テスト パーツは、サーバー フローを示します。
 * [.NET クライアントから Azure App Service で API アプリを使用する](../app-service-api/app-service-api-dotnet-consume.md) - 認証された呼び出しのサンプル コードはサーバー フローを示しています。 
 
-### <a id="apiaobo"></a>セキュリティで保護されたリソースへの API Apps の代理呼び出し
+### <a id="apiaobo"></a>API Apps の代理呼び出し
 
 * [Azure App Service の SaaS コネクタ API アプリのデプロイと構成](../app-service-api/app-service-api-connnect-your-app-to-saas-connector.md) - 事前にパッケージされたコネクタ API アプリのプロビジョニング、構成、ブラウザー ツールを使用した呼び出し方法を示します。
-* 独自のコネクタの記述方法を示すチュートリアル -- セキュリティで保護されたリソースへの代理呼び出しを行うカスタム API アプリのプロビジョニングと構成 -- は開発中です。
+* [Azure App Service での ASP.NET API アプリから SaaS のプラットフォームへの接続](../app-service-api/app-service-api-dotnet-connect-to-saas.md) - 独自のコネクタ、つまり、SaaS プロバイダーに対する代理呼び出しを実行するカスタム API アプリのコードをプロビジョニング、構成、記述する方法を示しています。
 
 ### <a id="maclient"></a>Mobile Apps のクライアント フロー
 
@@ -211,4 +214,4 @@ Azure の [ASP.NET Identity](http://www.asp.net/identity) や [Thinktecture](htt
 
 * [アクセス トークンを取得し、Mobile Apps の SharePoint API を呼び出す](../app-service-mobile/app-service-mobile-dotnet-backend-get-started-connect-to-enterprise.md#obtain-token)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

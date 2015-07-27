@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET から BLOB ストレージを使用する方法 | Microsoft Azure"
-	description="Microsoft Azure BLOB ストレージを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは C# で記述されています。"
+	description="Azure BLOB ストレージの概要、コンテナーの作成方法、BLOB コンテンツのアップロード、ダウンロード、一覧表示、および削除を行う方法について説明します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article" 
-	ms.date="06/15/2015"
+	ms.date="07/06/2015"
 	ms.author="tamram"/>
 
 
@@ -304,4 +304,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

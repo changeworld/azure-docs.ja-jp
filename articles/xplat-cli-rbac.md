@@ -118,7 +118,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 - 次を使用すると、リソース グループ レベルでの役割の割り当てが作成されます。
 
-    `PS C:\> azure role assignment create --mail <user's email> -o Contributor -g group1`
+    `PS C:> azure role assignment create --mail <user's email> -o Contributor -g group1`
 
 - 次を使用すると、リソース レベルでの役割の割り当てが作成されます。
 
@@ -128,8 +128,8 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 ご使用のアカウントに役割の割り当てがあることを確認してから、次を実行することで、実際に役割の割り当てが付与したアクセス許可を確認することができます。
 
-    PS C:\> azure group list
-    PS C:\> azure resource list
+    PS C:> azure group list
+    PS C:> azure resource list
 
 これらの 2 つのコマンドレットでは、読み取りのアクセス許可があるリソース グループまたはリソースのみが返されます。また、持っているアクセス許可も表示します。
 
@@ -143,4 +143,4 @@ Azure CLI を使用したロールベースのアクセス制御の管理の詳�
 - [リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)
 - [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](resource-groups-overview.md): Microsoft Azure 管理ポータルでリソース グループを作成して管理する方法について説明します。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

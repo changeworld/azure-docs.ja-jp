@@ -1,8 +1,6 @@
 <properties 
-	title="Upgrade to the latest elastic database client library" 
 	pageTitle="最新の Elastic Database クライアント ライブラリへのアップグレード" 
 	description="PowerShell と C# を使用したアップグレード手順" 
-	metaKeywords="sharding,elastic scale, Azure SQL DB sharding" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
@@ -50,7 +48,7 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 
 4. [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)から Elastic Database クライアントのアップグレード スクリプトレットをダウンロードして、DLL が含まれる同じフォルダーに保存します。
 
-5. そのフォルダーのコマンド プロンプトから"PowerShell.\upgrade.ps1"を実行し、画面の指示に従います。
+5. そのフォルダーのコマンド プロンプトから"PowerShell.\\upgrade.ps1"を実行し、画面の指示に従います。
  
 ***オプション 2: C# を使用してメタデータをアップグレードする***
 
@@ -96,4 +94,4 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 [1]: ./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

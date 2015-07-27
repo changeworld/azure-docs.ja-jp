@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="07/07/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用する一般的なシナリオ
@@ -76,4 +76,4 @@ Power Query からのデータの利用については、次のトピックを�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

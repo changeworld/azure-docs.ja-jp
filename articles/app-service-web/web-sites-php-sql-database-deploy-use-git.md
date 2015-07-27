@@ -292,4 +292,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

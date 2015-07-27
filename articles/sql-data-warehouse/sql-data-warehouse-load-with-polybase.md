@@ -37,11 +37,11 @@ PolyBase テクノロジを使用して、複数のソースからデータを�
 まず、Azure BLOB ストレージ内のデータに接続し、クエリを実行するために PolyBase で必要なオブジェクトを作成します。
 
 ## データベース マスター キーの作成
-サーバー上のマスター データベースに接続し、データベース マスター キーを作成します。このキーは、次の手順で資格情報シークレットの暗号化に使用されます。
+サーバー上のユーザー データベースに接続し、データベース マスター キーを作成します。このキーは、次の手順で資格情報シークレットの暗号化に使用されます。
 
 ```
 -- Creating master key
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo';
+CREATE MASTER KEY;
 ```
 
 リファレンス トピック: [CREATE MASTER KEY (Transact-SQL)][]。
@@ -49,8 +49,13 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0me!nfo';
 ## データベース スコープの資格情報の作成
 Azure BLOB ストレージにアクセスするには、Azure ストレージ アカウントの認証情報を格納するデータベース スコープの資格情報を作成する必要があります。Data Warehouse データベースに接続し、アクセスする各 Azure ストレージ アカウントのデータベース スコープ資格情報を作成します。ユーザー名と Azure ストレージ アカウント キーをシークレットとして指定します。ユーザー名は、Azure Storage への認証には影響を及ぼしません。
 
+データベース スコープの資格情報が既に存在するかどうかを確認するには、サーバーの資格情報のみを表示する sys.credentials ではなく sys.database_credentials を使用します。
+
 ```
--- Creating credential
+-- Check for existing database-scoped credentials.
+SELECT * FROM sys.database_credentials;
+
+-- Create a database scoped credential
 CREATE DATABASE SCOPED CREDENTIAL ASBSecret WITH IDENTITY = 'joe', 
 	Secret = 'myazurestoragekey==';
 ```
@@ -202,4 +207,4 @@ PolyBase でのロードでは、UTF-8 エンコード スタイルのみがサ�
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189450.aspx
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

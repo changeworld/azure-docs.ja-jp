@@ -2,7 +2,7 @@
     pageTitle="Azure RemoteApp ライセンス" 
     description="Azure RemoteApp のライセンスの仕組みについて説明します。" 
     services="remoteapp" 
-    solutions="" documentationCenter="" 
+    documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -34,4 +34,4 @@ RemoteApp に同梱される Office 365 テンプレート イメージを使用
 クラウド コレクションでは CAL またはボリューム ライセンス契約を使用できないことに注意してください。ボリューム ライセンス契約を使用して、ハイブリッド コレクションのアプリケーションをライセンス認証することが*できます* (Office を除く)。ボリューム ライセンス メディアから、テンプレート イメージにインストールする必要があります。アプリケーションのベンダの情報に従ってリモート デスクトップ環境にライセンスをインストールしてください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

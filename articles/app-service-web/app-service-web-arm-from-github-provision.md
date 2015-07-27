@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.date="06/29/2015" 
 	ms.author="tomfitz"/>
 
 # GitHub リポジトリにリンクされる Web アプリのデプロイ
@@ -22,17 +22,39 @@
 
 テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-完全なテンプレートについては、「[Web App Linked to GitHub template (GitHub にリンクされる Web アプリ用のテンプレート)](https://github.com/tfitzmac/AppServiceTemplates/blob/master/WebAppLinkedToGithub.json)」を参照してください。
+完全なテンプレートについては、「[Web App Linked to GitHub template (GitHub にリンクされる Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json)」を参照してください。
 
 ## デプロイ対象
 
 このテンプレートを使用して、GitHub 内のプロジェクトのコードを含む Web アプリケーションをデプロイします。
 
+展開を自動的に実行するには、次のボタンをクリックします。
+
+[![Azure への展開](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+
 ## パラメーター
 
 [AZURE.INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
+
+### repoURL
+
+デプロイするプロジェクトを含む GitHub リポジトリの URL。このパラメーターは既定値を含みますが、この値は、リポジトリに URL を指定する方法を示すことのみを目的としています。この値はテンプレートのテスト時に使用できますが、テンプレートを使用する場合には、独自のリポジトリに URL を指定します。
+
+    "repoURL": {
+        "type": "string",
+        "defaultValue": "https://github.com/davidebbo-test/Mvc52Application.git"
+    }
+
+### 分岐
+
+アプリケーションのデプロイ時に使用するリポジトリの分岐。既定値は master ですが、デプロイするリポジトリ内のいずれかの分岐の名前を指定することもできます。
+
+    "branch": {
+        "type": "string",
+        "defaultValue": "master"
+    }
     
-## デプロイするリソース
+## デプロイ対象のリソース
 
 [AZURE.INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
@@ -77,13 +99,13 @@ GitHub 内のプロジェクトにリンクされる Web アプリを作成し�
 
 ### PowerShell
 
-    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/tfitzmac/AppServiceTemplates/master/WebAppLinkedToGithub.json -siteName ExampleSite -hostingPlanName ExamplePlan -siteLocation "West US" -ResourceGroupName ExampleDeployGroup
+    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json -siteName ExampleSite -hostingPlanName ExamplePlan -siteLocation "West US" -ResourceGroupName ExampleDeployGroup
 
 ### Azure CLI
 
-    azure group deployment create --template-uri https://raw.githubusercontent.com/tfitzmac/AppServiceTemplates/master/WebAppLinkedToGithub.json
+    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
 
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

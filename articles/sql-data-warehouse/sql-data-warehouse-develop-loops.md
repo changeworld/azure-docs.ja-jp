@@ -69,7 +69,7 @@ DROP TABLE #tbl;
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## 次のステップ
-開発に関するその他のヒントについては、「[開発の概要][]」を参照してください。
+開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -82,4 +82,4 @@ DROP TABLE #tbl;
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

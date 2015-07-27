@@ -1,10 +1,9 @@
 <properties 
- pageTitle="Azure PowerShell を使用した Azure Redis Cache の管理" 
- description="Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。" 
- services="redis-cache" 
+   pageTitle="Azure PowerShell を使用した Azure Redis Cache の管理" 
+   description="Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。" 
+   services="redis-cache" 
    documentationCenter="" 
    authors="Rick-Anderson" 
-   writer="Rick-Anderson" 
    manager="wpickett" 
    editor=""/>
 
@@ -87,12 +86,13 @@
 		Remove-AzureRedisCache -Name $movieCache.Name -ResourceGroupName $movieCache.ResourceGroupName  -Force 
 
 ## 次のステップ
-Microsoft Azure PowerShell の使用の詳細については、次を参照してください。
+
+Azure での Windows PowerShell の使用の詳細については、次のリソースを参照してください。
  
-- [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
-- [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](http://azure.microsoft.com/documentation/articles/azure-preview-portal-using-resource-groups): Microsoft Azure 管理ポータルでリソース グループを作成して管理する方法について説明します。
+- [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
+- [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](../azure-portal/resource-group-portal): Microsoft Azure 管理ポータルでリソース グループを作成して管理する方法について説明します。
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

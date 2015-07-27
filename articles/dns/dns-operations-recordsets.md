@@ -32,26 +32,33 @@ DNS レコード セットと個々の DNS レコードの違いを理解する�
 
 Azure DNS では、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT というレコードの種類がサポートされています。SOA という種類のレコード セットは、各ゾーンと共に自動的に作成されるため、個別には作成できません。
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name www -Zone $zone -RecordType A -Ttl 300 [-Tag $tags] [-Overwrite] [-Force]
+	PS C:> $rs = New-AzureDnsRecordSet -Name www -Zone $zone -RecordType A -Ttl 300 [-Tag $tags] [-Overwrite] [-Force]
 
 レコード セットが既に存在する場合は、-Overwrite スイッチを使用しないと、コマンドは失敗します。"-Overwrite" オプションによって確認プロンプトが表示されますが、これは -Force スイッチを使用して、表示されないように設定できます。
 
 上の例では、Get-AzureDnsZone や New-AzureDnsZone によって返されるようなゾーン オブジェクトを使用して、ゾーンを指定しています。別の方法として、ゾーン名とリソース グループ名によってゾーンを指定することもできます。
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name www –ZoneName contoso.com –ResourceGroupName MyAzureResourceGroup -RecordType A -Ttl 300 [-Tag $tags] [-Overwrite] [-Force]
+	PS C:> $rs = New-AzureDnsRecordSet -Name www –ZoneName contoso.com –ResourceGroupName MyAzureResourceGroup -RecordType A -Ttl 300 [-Tag $tags] [-Overwrite] [-Force]
 
 New-AzureDnsRecordSet は、Azure DNS に作成されたレコード セットを表すローカル オブジェクトを返します。
 
 >[AZURE.NOTE]CNAME レコード セットは、同じ名前を持つ他のレコード セットとは共存できません。たとえば、相対名 "www" を持つ CNAME と相対名 "www" を持つ A レコードを同時に作成することはできません。ゾーンの頂点 (名前は '@') には、ゾーンの作成時に作成された NS および SOA レコード セットが必ず含まれるため、ゾーンの頂点で CNAME レコード セットを作成することはできません。これらの制約は、DNS 標準から生じるものであり、Azure DNS の制限事項ではありません。
 
+### ワイルドカード レコード
+Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wiki/Wildcard_DNS_record)をサポートしています。ワイルドカード レコードは、一致する名前を含むクエリに対してに返されます (非ワイルドカード レコード セットに、より近い一致がない場合)。
+
+>[AZURE.NOTE]ワイルドカード レコード セットを作成するには、レコード セット名 "*" を使用するか、最初のラベルが "*" の名前 ("*.foo" など) を使用します。
+
+>ワイルドカード レコード セットは、NS と SOA を除くすべてのレコードの種類でサポートされています。
+
 ## レコード セットの取得
 既存のレコード セットを取得するには、"Get-AzureDnsRecordSet" を使用して、レコード セットの相対名、レコードの種類、およびゾーンを指定します。
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name www –RecordType A -Zone $zone
+	PS C:> $rs = Get-AzureDnsRecordSet -Name www –RecordType A -Zone $zone
 
 New-AzureDnsRecordSet と同様に、レコード名は相対名、つまりゾーン名を除いた名前にする必要があります。ゾーンは、ゾーン オブジェクト (上記)、またはゾーン名とリソース グループ名を使用して指定できます。
 
-	PS C:\> $rs = Get-AzureDnsRecordSet –Name www –RecordType A -Zonename contoso.com -ResourceGroupName MyAzureResourceGroup
+	PS C:> $rs = Get-AzureDnsRecordSet –Name www –RecordType A -Zonename contoso.com -ResourceGroupName MyAzureResourceGroup
 
 Get-AzureDnsRecordSet は、Azure DNS に作成されたレコード セットを表すローカル オブジェクトを返します。
 
@@ -61,12 +68,12 @@ Get-AzureDnsRecordSet は、–Name パラメーターと –RecordType パラ�
 ### 方法 1 
 すべてのレコード セットの一覧を表示します。これにより、名前またはレコードの種類に関係なく、すべてのレコード セットが返されます。
 
-	PS C:\> $list = Get-AzureDnsRecordSet -Zone $zone
+	PS C:> $list = Get-AzureDnsRecordSet -Zone $zone
 ### 方法 2 
 
 指定したレコードの種類のレコード セットの一覧を表示します。これにより、指定したレコードの種類 (この場合は A レコード) に一致するすべてのレコード セットが返されます。
 
-	PS C:\> $list = Get-AzureDnsRecordSet –RecordType A -Zone $zone 
+	PS C:> $list = Get-AzureDnsRecordSet –RecordType A -Zone $zone 
 
 上記のどちらの場合も、ゾーンを指定するには、例に示したゾーン オブジェクトを使用するか、–ZoneName および –ResourceGroupName パラメーターを使用することができます。
 
@@ -81,51 +88,51 @@ Get-AzureDnsRecordSet は、–Name パラメーターと –RecordType パラ�
 
 ### 1 つのレコードを含む A レコード セットの作成
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address "1.2.3.4"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address "1.2.3.4"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 レコード セット オブジェクトをパラメーターとして渡すのではなく、パイプを使用して渡すことによって、レコードを作成するための一連の操作を "パイプ" することもできます。次に例を示します。
 
-	PS C:\> New-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone -Ttl 60 | Add-AzureDnsRecordConfig -Ipv4Address "1.2.3.4" | Set-AzureDnsRecordSet
+	PS C:> New-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone -Ttl 60 | Add-AzureDnsRecordConfig -Ipv4Address "1.2.3.4" | Set-AzureDnsRecordSet
 
 ### 1 つのレコードを含む AAAA レコード セットの作成
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "test-aaaa" -RecordType AAAA -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv6Address "2607:f8b0:4009:1803::1005"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "test-aaaa" -RecordType AAAA -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv6Address "2607:f8b0:4009:1803::1005"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### 1 つのレコードを含む CNAME レコード セットの作成
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "test-cname" -RecordType CNAME -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Cname "www.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "test-cname" -RecordType CNAME -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Cname "www.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### 1 つのレコードを含む MX レコード セットの作成
 この例では、レコード セット名 "@" を使用してゾーンの頂点 ("contoso.com" など) に MX レコードを作成します。これは、MX レコードに共通です。
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "@" -RecordType MX -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "@" -RecordType MX -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### 1 つのレコードを含む NS レコード セットの作成
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "test-ns" -RecordType NS -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Nsdname "ns1.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "test-ns" -RecordType NS -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Nsdname "ns1.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 ### 1 つのレコードを含む SRV レコード セットの作成
 
 ゾーンのルートに SRV レコードを作成する場合は、レコード名に _サービスと _プロトコルを指定するだけです。レコード名に "@" も含める必要はありません。
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "_sip._tls" -RecordType SRV -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs –Priority 0 –Weight 5 –Port 8080 –Target "sip.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "_sip._tls" -RecordType SRV -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs –Priority 0 –Weight 5 –Port 8080 –Target "sip.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### 1 つのレコードを含む TXT レコード セットの作成
 
-	PS C:\> $rs = New-AzureDnsRecordSet -Name "test-txt" -RecordType TXT -Zone $zone -Ttl 60
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = New-AzureDnsRecordSet -Name "test-txt" -RecordType TXT -Zone $zone -Ttl 60
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ## 既存のレコード セットの変更
 既存のレコード セットの変更は、レコードの作成に似た手順に従って行います。一連の操作は次のとおりです。
@@ -139,9 +146,9 @@ Get-AzureDnsRecordSet は、–Name パラメーターと –RecordType パラ�
 ### 既存のレコード セット内のレコードの更新
 この例では、既存の A レコードの IP アドレスを変更します。
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -name "test-a" -RecordType A -Zone $zone 
-	PS C:\> $rs.Records[0].Ipv4Address = "134.170.185.46"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs 
+	PS C:> $rs = Get-AzureDnsRecordSet -name "test-a" -RecordType A -Zone $zone 
+	PS C:> $rs.Records[0].Ipv4Address = "134.170.185.46"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs 
 
 Set-AzureDnsRecordSet コマンドレットでは、同時変更が上書きされないように "etag" チェックが使用されます。これらのチェックが実行されないようにするには、"-Overwrite" フラグを使用します。詳細については、「Etag とタグ」を参照してください。
 
@@ -151,9 +158,9 @@ Set-AzureDnsRecordSet コマンドレットでは、同時変更が上書きさ�
 
 次の例では、SOA レコードの "Email" プロパティを変更する方法を示します。
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "@" -RecordType SOA -Zone $zone
-	PS C:\> $rs.Records[0].Email = "admin.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs 
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "@" -RecordType SOA -Zone $zone
+	PS C:> $rs.Records[0].Email = "admin.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs 
 
 ### ゾーンの頂点にある NS レコードの変更
 
@@ -161,17 +168,17 @@ Set-AzureDnsRecordSet コマンドレットでは、同時変更が上書きさ�
 
 次の例では、NS レコード セットの TTL プロパティを変更する方法を示します。
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "@" -RecordType NS -Zone $zone
-	PS C:\> $rs.Ttl = 300
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs 
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "@" -RecordType NS -Zone $zone
+	PS C:> $rs.Ttl = 300
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs 
 
 ### 既存のレコード セットへのレコードの追加
 この例では、2 つの MX レコードを既存のレコード セットに追加します。
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -name "test-mx" -RecordType MX -Zone $zone
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail2.contoso.com" -Preference 10
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail3.contoso.com" -Preference 20
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs 
+	PS C:> $rs = Get-AzureDnsRecordSet -name "test-mx" -RecordType MX -Zone $zone
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail2.contoso.com" -Preference 10
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail3.contoso.com" -Preference 20
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs 
 
 ## 既存のレコード セットからのレコードの削除
 
@@ -180,50 +187,50 @@ Set-AzureDnsRecordSet コマンドレットでは、同時変更が上書きさ�
 レコード セットから最後のレコードを削除しても、レコード セットは削除されません。詳細については、以下の「[レコード セットの削除](#delete-a-record-set)」を参照してください。
 
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "test-a" -RecordType A –Zone $zone
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address "1.2.3.4"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "test-a" -RecordType A –Zone $zone
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address "1.2.3.4"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 レコード セット オブジェクトをパラメーターとして渡すのではなく、パイプを使用して渡すことによって、レコード セットからレコードを削除するための一連の操作を "パイプ" することもできます。次に例を示します。
 
-	PS C:\> Get-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone | Remove-AzureDnsRecordConfig -Ipv4Address "1.2.3.4" | Set-AzureDnsRecordSet
+	PS C:> Get-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone | Remove-AzureDnsRecordConfig -Ipv4Address "1.2.3.4" | Set-AzureDnsRecordSet
 ### レコード セットからの AAAA レコードの削除
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "test-aaaa" -RecordType AAAA –Zone $zone
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs -Ipv6Address "2607:f8b0:4009:1803::1005"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "test-aaaa" -RecordType AAAA –Zone $zone
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs -Ipv6Address "2607:f8b0:4009:1803::1005"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### レコード セットからの CNAME レコードの削除
 
 CNAME レコード セットに格納できるレコードは最大 1 つであるため、そのレコードを削除すると、空のレコード セットが残ります。
 
-	PS C:\> $rs =  Get-AzureDnsRecordSet -name "test-cname" -RecordType CNAME –Zone $zone	
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs -Cname "www.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs =  Get-AzureDnsRecordSet -name "test-cname" -RecordType CNAME –Zone $zone	
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs -Cname "www.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### レコード セットからの MX レコードの削除
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -name "test-mx" -RecordType 'MX' –Zone $zone	
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = Get-AzureDnsRecordSet -name "test-mx" -RecordType 'MX' –Zone $zone	
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### レコード セットからの NS レコードの削除
 	
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "test-ns" -RecordType NS -Zone $zone
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs -Nsdname "ns1.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "test-ns" -RecordType NS -Zone $zone
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs -Nsdname "ns1.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### レコード セットからの SRV レコードの削除
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "_sip._tls" -RecordType SRV -Zone $zone
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs –Priority 0 –Weight 5 –Port 8080 –Target "sip.contoso.com"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "_sip._tls" -RecordType SRV -Zone $zone
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs –Priority 0 –Weight 5 –Port 8080 –Target "sip.contoso.com"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ### レコード セットからの TXT レコードの削除
 
-	PS C:\> $rs = Get-AzureDnsRecordSet -Name "test-txt" -RecordType TXT -Zone $zone
-	PS C:\> Remove-AzureDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
-	PS C:\> Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:> $rs = Get-AzureDnsRecordSet -Name "test-txt" -RecordType TXT -Zone $zone
+	PS C:> Remove-AzureDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
+	PS C:> Set-AzureDnsRecordSet -RecordSet $rs
 
 ## レコード セットの削除
 レコード セットは、Remove-AzureDnsRecordSet コマンドレットを使用して削除できます。
@@ -234,28 +241,28 @@ CNAME レコード セットに格納できるレコードは最大 1 つであ�
 ### 方法 1
 名前ですべてのパラメーターを指定します。
 
-	PS C:\> Remove-AzureDnsRecordSet -Name "test-a" -RecordType A -Zonename "contoso.com" -ResourceGroupName MyAzureResourceGroup [-Force]
+	PS C:> Remove-AzureDnsRecordSet -Name "test-a" -RecordType A -Zonename "contoso.com" -ResourceGroupName MyAzureResourceGroup [-Force]
 オプションの "-Force" スイッチを使用すると、確認プロンプトが表示されないように設定できます。
 
 ### 方法 2
 名前と種類でレコード セットを指定し、オブジェクトでゾーンを指定します。
 
-	PS C:\> Remove-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone [-Force]
+	PS C:> Remove-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone [-Force]
 
 ### 方法 3
 オブジェクトでレコード セットを指定します。
 
-	PS C:\> Remove-AzureDnsRecordSet –RecordSet $rs [-Overwrite] [-Force]
+	PS C:> Remove-AzureDnsRecordSet –RecordSet $rs [-Overwrite] [-Force]
 
 オブジェクトを使用してレコード セットを指定すると、"etag" チェックによって同時変更の削除を防止することができます。オプションの "-Overwrite" フラグを使用すると、これらのチェックが行われなくなります。詳細については、「[Etag とタグ](../dns-getstarted-create-dnszone#Etags-and-tags)」を参照してください。
 
 レコード セット オブジェクトは、パラメーターとして渡す代わりに、パイプすることもできます。
 
-	PS C:\> Get-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone | Remove-AzureDnsRecordSet [-Overwrite] [-Force]
+	PS C:> Get-AzureDnsRecordSet -Name "test-a" -RecordType A -Zone $zone | Remove-AzureDnsRecordSet [-Overwrite] [-Force]
 
 ##関連項目
 
 [レコード セットとレコードの作成の概要](../dns-getstarted-create-recordset)<BR> [DNS ゾーンに対する操作の実行](../dns-operations-dnszones)<BR> [.NET SDK を使用した操作の自動化](../dns-sdk)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

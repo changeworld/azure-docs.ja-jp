@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/15/2015" 
+	ms.date="07/08/2015" 
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
@@ -41,15 +41,7 @@ Azure [CloudConfigurationManager](https://msdn.microsoft.com/library/microsoft.w
 
 ## ストレージ エミュレーターへの接続文字列を作成する
 
-ストレージ エミュレーター アカウントは、既知の名前とキーを持つローカル アカウントです。ショートカット文字列形式 `UseDevelopmentStorage=true` を使用して、接続文字列内からストレージ エミュレーターを参照できます。たとえば、app.config 内でのストレージ エミュレーターへの接続文字列は次のようになります。
-
-    <appSettings>
-      <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
-    </appSettings>
-
-また、サービスをストレージ エミュレーターでテストする際に使用する HTTP プロキシを指定することもできます。これは、ストレージ サービスに対する操作をデバッグするとき、HTTP の要求と応答を調べる場合に便利です。プロキシを指定するには、`DevelopmentStorageProxyUri` オプションを接続文字列に追加し、値としてプロキシ URI を設定します。たとえば、次に示す接続文字列は、ストレージ エミュレーターを指しており、HTTP プロキシを構成しています。
-
-    UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri
+[AZURE.INCLUDE [storage-emulator-connection-string-include](../../includes/storage-emulator-connection-string-include.md)]
 
 ストレージ エミュレーターについて詳しくは、「[開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)」を参照してください。
 
@@ -60,9 +52,10 @@ Azure ストレージ アカウントへの接続文字列を作成するには�
     DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey
 
 たとえば、接続文字列は次のサンプルの接続文字列のようになります。
-
-```        DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=KWPLd0rpW2T0U7K2pVpF8rYr1BgYtB7wYQw33AYiXeUoquiaY6o0TWqduxmPHlqeCNZ3LU0DHptbeIAy5l/Yhg==
-```
+ 
+	DefaultEndpointsProtocol=https;
+	AccountName=storagesample;
+	AccountKey=<account-key>
 
 > [AZURE.NOTE]Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、HTTPS の使用を強くお勧めします。
     
@@ -75,9 +68,12 @@ Azure ストレージ アカウントへの接続文字列を作成するには�
 
 明示的な BLOB エンドポイントを指定する接続文字列を作成するには、次に示す形式を使用して、プロトコル仕様 (HTTP または HTTPS) を含む完全なサービス エンドポイントをサービスごとに指定します。
 
-``` 
-BlobEndpoint=myBlobEndpoint;QueueEndpoint=myQueueEndpoint;TableEndpoint=myTableEndpoint;FileEndpoint=myFileEndpoint;[credentials]
-```
+	BlobEndpoint=myBlobEndpoint;
+	QueueEndpoint=myQueueEndpoint;
+	TableEndpoint=myTableEndpoint;
+	FileEndpoint=myFileEndpoint;
+	[credentials]
+
 
 サービス エンドポイントは 1 つ以上指定する必要がありますが、すべてを指定する必要はありません。たとえば、カスタムの BLOB エンドポイントで使用する接続文字列を作成する場合は、キューとテーブルのエンドポイントの指定は省略できます。接続文字列からキューとテーブルのエンドポイントを除外することを選択した場合、その接続文字列を使用してコードからキュー サービスやテーブル サービスにアクセスすることはできないことにご注意ください。
 
@@ -92,9 +88,11 @@ BLOB サービスで使用するためにカスタム ドメイン名が登録�
 
 たとえば、カスタム ドメイン上の BLOB エンドポイントへの接続文字列は、次のようになります。
 
-```
-DefaultEndpointsProtocol=https;BlobEndpoint=www.mydomain.com;AccountName=storagesample;AccountKey=KWPLd0rpW2T0U7K2pVpF8rYr1BgYtB7wYQw33AYiXeUoquiaY6o0TWqduxmPHlqeCNZ3LU0DHptbeIAy5l/Yhg== 
-```
+	DefaultEndpointsProtocol=https;
+	BlobEndpoint=www.mydomain.com;
+	AccountName=storagesample;
+	AccountKey=<account-key> 
+
 
 ### 共有アクセス署名で BLOB エンドポイントを指定する 
 
@@ -116,8 +114,12 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 
 たとえば、接続文字列は次のサンプルの接続文字列のように表示されます。
 
-	DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=KWPLd0rpW2T0U7K2pVpF8rYr1BgYtR7wYQk33AYiXeUoquiaY6o0TWqduxmPHlqeCNZ3LU0DHptbeIHy5l/Yhg==;EndpointSuffix=core.chinacloudapi.cn;
+	DefaultEndpointsProtocol=https;
+	AccountName=storagesample;
+	AccountKey=<account-key>;
+	EndpointSuffix=core.chinacloudapi.cn;
+
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

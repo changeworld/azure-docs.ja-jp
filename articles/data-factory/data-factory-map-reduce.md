@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="07/07/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
@@ -123,4 +123,4 @@ MapReduce の変換で HDInsight アクティビティを使用するための�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

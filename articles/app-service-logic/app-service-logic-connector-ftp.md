@@ -1,7 +1,7 @@
 <properties
 	pageTitle="FTP コネクタ"
 	description="FTP コネクタの使用"
-	authors="anuragdalmia"
+	authors="rajram"
 	manager="dwrede"
 	editor=""
 	services="app-service\logic"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/05/2015"
-	ms.author="rajeshramabathiran"/>
+	ms.date="07/01/2015"
+	ms.author="rajram"/>
 
 #FTP コネクタ
 
@@ -29,9 +29,7 @@ FTP コネクタを使用すると、FTP サーバーとの間でデータを移
 - 必要に応じて FTP サーバー上のファイルを削除する
 
 ##新しい FTP コネクタの作成
-新しい FTP コネクタを作成するには、次の手順に従います。
-- Azure ポータルを起動します。
-- [+ 新規] \(ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
+新しい FTP コネクタを作成するには、次の手順に従います。- Azure ポータルを起動します。- [+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。
 
 	![Launch Azure Marketplace][1]
 
@@ -180,4 +178,4 @@ FTP コネクタは、次の 4 つのアクションをサポートしていま�
 [13]: ./media/app-service-logic-connector-ftp/ConfiguredUploadFile.PNG
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

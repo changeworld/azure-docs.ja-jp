@@ -17,7 +17,7 @@
 	ms.date="04/29/2015" 
 	ms.author="ryancraw"/>
 
-# <a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築
+#<a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築
 
 この記事では、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を取り上げます。ToDo リストの Web アプリケーションを Azure DocumentDB を使って構築するエンド ツー エンドの手順を紹介しています。対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
 
@@ -31,7 +31,7 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
 - [Visual Studio 2013](http://www.visualstudio.com/) Update 4 以降。
 - Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web Platform Installer][] にて提供)。
 
@@ -56,15 +56,15 @@
    	**[新しいプロジェクト]** ダイアログ ボックスが表示されます。
 2. **[プロジェクトの種類]** ウィンドウで、**[テンプレート]**、**[Visual C#]**、**[Web]** の順に展開し、**[ASP.NET Web アプリケーション]** を選択します。
 
-    ![ASP.NET Web アプリケーション プロジェクトの種類が強調表示されている [新しいプロジェクト] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image10.png)
+  	![ASP.NET Web アプリケーション プロジェクトの種類が強調表示されている [新しいプロジェクト] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image10.png)
 
-3. **[名前]** ボックスに、プロジェクトの名前を入力します。このチュートリアルでは、"todo" という名前を使用します。これ以外の名前を使用する場合は、このチュートリアルで todo 名前空間について言及されているすべての場所で、提供されているコード サンプルを、ここでアプリケーションに対して指定した名前に変更する必要があります。 
+3. **[名前]** ボックスに、プロジェクトの名前を入力します。このチュートリアルでは、"todo" という名前を使用します。これ以外の名前を使用する場合は、このチュートリアルで todo 名前空間について言及されているすべての場所で、提供されているコード サンプルを、ここでアプリケーションに対して指定した名前に変更する必要があります。
 
 4. **[参照]** をクリックして、プロジェクトを作成するフォルダーに移動し、**[OK]** をクリックします。
 
-   	**[新しい ASP.NET プロジェクト]** ダイアログ ボックスが表示されます。
+  	**[新しい ASP.NET プロジェクト]** ダイアログ ボックスが表示されます。
 
-    ![MVC テンプレートが強調表示され、[クラウドでのホスト] ボックスがオンになっている、[新しい ASP.NET プロジェクト] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image11.png)
+  	![MVC テンプレートが強調表示され、[クラウドでのホスト] ボックスがオンになっている、[新しい ASP.NET プロジェクト] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image11.png)
 
 5. テンプレート ウィンドウで、**[MVC]** を選択します。
 
@@ -74,11 +74,11 @@
 
 8. これをクラウドでホストすることを選択した場合、少なくとも 1 つの画面が表示され、Azure アカウントにログインして新しい Web サイトの値を指定するよう求められます。追加の値をすべて指定して続行します。
 
-    ここでは Azure SQL Database サーバーを使用しないため、ここで [データベース サーバー] を選択していません。後で Azure DocumentDB アカウントを Microsoft Azure ポータルで作成する予定です。
+  	ここでは Azure SQL Database サーバーを使用しないため、ここで [データベース サーバー] を選択していません。後で Azure DocumentDB アカウントを Azure プレビュー ポータルで作成する予定です。
 
 	**App Service プラン**と**リソース グループ**の選択の詳細については、「[Azure App Service プランの詳細な概要](azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
 
-    ![[Microsoft Azure Websites を構成する] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image11_1.png)
+  	![[Microsoft Azure Websites を構成する] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image11_1.png)
 
 9. Visual Studio によってスケルトン MVC アプリケーションが作成されると、空の ASP.NET アプリケーションをローカルに実行できる状態となります。
 
@@ -90,26 +90,26 @@
 
 1. DocumentDB .NET SDK は、NuGet パッケージの形式で配布されています。Visual Studio で NuGet パッケージを取得するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして表示される Visual Studio の NuGet パッケージ マネージャーを使用します。
 
-    ![[NuGet パッケージの管理] が強調表示されている、ソリューション エクスプローラーでのプロジェクトの右クリック オプションのスクリーン ショット](./media/documentdb-dotnet-application/image21.png)
+  	![[NuGet パッケージの管理] が強調表示されている、ソリューション エクスプローラーでのプロジェクトの右クリック オプションのスクリーン ショット](./media/documentdb-dotnet-application/image21.png)
 
-    **[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
+    **[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
 
-2. **[オンラインで検索]** ボックスに、「***Azure DocumentDB***」と入力します。 
+2. **[オンラインで検索]** ボックスに、「***Azure DocumentDB***」と入力します。
     
     結果から、**Microsoft Azure DocumentDB クライアント ライブラリ** パッケージをインストールします。これにより、DocumentDB パッケージだけでなく、依存関係のあるすべてのコンポーネント (Newtonsoft.Json など) がダウンロードされてインストールされます。
 
-    ![Microsoft Azure DocumentDB クライアント ライブラリが強調表示されている [NuGet パッケージの管理] ウィンドウのスクリーン ショット](./media/documentdb-dotnet-application/nuget.png)
+  	![Microsoft Azure DocumentDB クライアント ライブラリが強調表示されている [NuGet パッケージの管理] ウィンドウのスクリーン ショット](./media/documentdb-dotnet-application/nuget.png)
 
-    または、パッケージ マネージャー コンソールを使用してパッケージをインストールすることもできます。そのためには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。プロンプトで、次のように入力します。
+  	または、パッケージ マネージャー コンソールを使用してパッケージをインストールすることもできます。そのためには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。プロンプトで、次のように入力します。
 
     	Install-Package Microsoft.Azure.DocumentDB
 
 3. パッケージがインストールされると、次のように、Microsoft.Azure.Documents.Client と Newtonsoft.Json の 2 つの新しい参照が Visual Studio ソリューションに追加されます。
 
-    ![ソリューション エクスプローラーでプロジェクトに追加された 2 つの参照のスクリーン ショット](./media/documentdb-dotnet-application/image22.png)
+  	![ソリューション エクスプローラーでプロジェクトに追加された 2 つの参照のスクリーン ショット](./media/documentdb-dotnet-application/image22.png)
 
 
-## <a name="_Toc395637763"></a>手順 4: ASP.NET MVC アプリケーションをセットアップする
+##<a name="_Toc395637763"></a>手順 4: ASP.NET MVC アプリケーションをセットアップする
  
 次に、モデル、ビュー、およびコントローラーをこの MVC アプリケーションに追加します。
 
@@ -124,9 +124,9 @@
 
 1. **ソリューション エクスプローラー**で、**Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-    **[新しい項目の追加]** ダイアログ ボックスが表示されます。
+  	**[新しい項目の追加]** ダイアログ ボックスが表示されます。
 
-2. 新しいクラスに **Item.cs** という名前を設定して、**[追加]** をクリックします。 
+2. 新しいクラスに **Item.cs** という名前を設定して、**[追加]** をクリックします。
 
 3. この新しい **Item.cs** ファイルで、最後の *using ステートメント*の後に次のコードを追加します。
 		
@@ -151,7 +151,9 @@
         	[JsonProperty(PropertyName = "desc")]
         	public string Description { get; set; }
 		
-            [JsonProperty(PropertyName="isComplete")] public bool Completed { get; set; } }
+       		[JsonProperty(PropertyName="isComplete")]
+        	public bool Completed { get; set; }    
+		}
 
 	DocumentDB のすべてのデータは、JSON 形式でネットワーク越しに渡され、保存されます。JSON.NET によってオブジェクトをシリアル化または逆シリアル化する方法を制御するには、作成した **Item** クラスで示したとおり、**JsonProperty** 属性を使用できます。これを行う必要はありませんが、プロパティが JSON camelCase 名前付け規則に従っていることを確認しておきましょう。
 	
@@ -252,7 +254,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスの名前として「**DocumentDBRepository**」と入力し、**[追加]** をクリックします。
  
-2. 新しく作成した **DocumentDBRepository** クラスで、名前空間**の宣言の上に次の using ステートメント**を追加します。
+2. 新しく作成した **DocumentDBRepository** クラスで、名前空間の宣言の上に次の using ステートメントを追加します。
 		
 		using Microsoft.Azure.Documents; 
 	    using Microsoft.Azure.Documents.Client; 
@@ -392,15 +394,15 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 3. 構成からいくつかの値を読み取るので、アプリケーションの **Web.config** ファイルを開き、以下の行を `<AppSettings>` セクションの下に追加します。
 	
-    	<add key="endpoint" value="enter the URI from the Keys blade of the Azure portal"/>
-    	<add key="authKey" value="enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure portal"/>
+    	<add key="endpoint" value="enter the URI from the Keys blade of the Azure Preview portal"/>
+    	<add key="authKey" value="enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Preview portal"/>
     	<add key="database" value="ToDoList"/>
     	<add key="collection" value="Items"/>
 	
-4. 次に、Azure ポータルの [キー] ブレードを使用して、*endpoint* と *authKey* の値を更新します。[キー] ブレードの **[URI]** を endpoint 設定の値として使用し、[キー] ブレードの **[プライマリ キー]** または **[セカンダリ キー]** を authKey 設定の値として使用します。
+4. 次に、Azure プレビュー ポータルの [キー] ブレードを使用して、*endpoint* と *authKey* の値を更新します。[キー] ブレードの **[URI]** を endpoint 設定の値として使用し、[キー] ブレードの **[プライマリ キー]** または **[セカンダリ キー]** を authKey 設定の値として使用します。
 
 
-    DocumentDB リポジトリを接続したら、アプリケーション ロジックを追加してみます.
+    これで DocumentDB リポジトリは接続できるので、アプリケーション ロジックを追加してみましょう。
 
 5. 最初に、この todo リスト アプリケーションに、未完了の項目を表示する機能を追加します。次のコード スニペットをコピーし、**DocumentDBRepository** クラス内のどこかに貼り付けます。
 
@@ -411,7 +413,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 				.AsEnumerable(); 
 		} 
 
-6. 前に追加した **ItemController** を開き、名前空間の宣言の上に次の using ステートメント**を追加します。
+6. 前に追加した **ItemController** を開き、名前空間の宣言の上に次の using ステートメントを追加します。
 
 		using System.Net;
 		using System.Threading.Tasks;
@@ -445,7 +447,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 ここでは、ルーティングの動作を制御するための値を URL に指定していない場合、**Home** の代わりに **Item** をコント ローラーとしてユーザー **インデックス**をビューとして使用するように ASP.NET MVC に指示しています。
 
-ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views\Item\Index** ビューに対するすべての不完全な項目が返されます。
+ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\\**Item**\\**Index** ビューに対するすべての不完全な項目が返されます。
 
 このプロジェクトをビルドして実行すると、次のように表示されます。
 
@@ -471,9 +473,9 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
     	public ActionResult Create()
     	{ 
 			return View(); 
-        }
+   		}
 
-	このコントローラーには、**Create** ビューから送信された内容を受け取るためのコードを追加する必要があります。
+	このコントローラーには、**[Create]** ビューから送信された内容を受け取るためのコードを追加する必要があります。
 
 2. 次のコード ブロックを ItemController.cs クラスに追加します。このコードは、このコントローラーに対するフォームの POST で行う処理を ASP.NET MVC に伝えます。
 	
@@ -488,11 +490,11 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 			}   
 			return View(item);   
 		}
-       このコードは DocumentDBRepository を呼び出し、CreateItemAsync メソッドを使用して新しい todo 項目をデータベースに保存します。
+	このコードは DocumentDBRepository を呼び出し、CreateItemAsync メソッドを使用して新しい todo 項目をデータベースに保存します。
  
-	**セキュリティに関する注意:**: **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法については、[クロスサイト リクエスト フォージェリの防止に関するページ][]を参照してください。 [Github][] で提供されるソース コードには、完全な実装が組み込まれています。
+	**セキュリティに関する注意**: **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。この詳細と正しい実装方法については、「[Preventing Cross-Site Request Forgery][]」(クロスサイト リクエスト フォージェリの防止) を参照してください。[GitHub][] で提供されるソース コードには、完全な実装が組み込まれています。
 
-	**セキュリティに関する注意:**: メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作]を参照してください。.
+	**セキュリティに関する注意**: メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。詳細については、「[ASP.NET MVC での基本的な CRUD 操作][]」を参照してください。
 
 データベースに新しい項目を追加するために必要なコードは以上です。
 
@@ -562,7 +564,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 		}
 		
 	
-	1 つ目のメソッドは、ユーザーが **[Index]** ビューから **[Edit]** リンクをクリックしたときに発生する Http GET を処理します。 このメソッドによって、DocumentDB から [**Document**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) が取得されて、**[Edit]** ビューに渡されます。
+	1 つ目のメソッドは、ユーザーが **[Index]** ビューから **[Edit]** リンクをクリックしたときに発生する Http GET を処理します。このメソッドによって、DocumentDB から [**Document**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) が取得されて、**[Edit]** ビューに渡されます。
 
 	**[Edit]** ビューは、**IndexController** に Http POST を行います。
 	
@@ -596,7 +598,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 4. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。これで、アプリケーションをデプロイする準備が整いました。
 
-## <a name="_Toc395637774"></a>手順 7: Azure Websites にアプリケーションをデプロイする
+##<a name="_Toc395637774"></a>手順 7: Azure Websites にアプリケーションをデプロイする
 
 以上で、DocumentDB と連携するアプリケーションが完成しました。今度は、この Web アプリケーションを Azure Websites にデプロイします。空の ASP.NET MVC プロジェクトを作成するときに **[クラウドでホストする]** を選択した場合、デプロイはごく簡単です。必要な作業の大半は自動的に行われます。
 
@@ -610,13 +612,13 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 数秒すると、Web アプリケーションの発行が完了し、ブラウザーが起動されます。作成したアプリケーションが Azure で実行されているようすが確認できます。
 
-## <a name="_Toc395637775"></a>次のステップ
+##<a name="_Toc395637775"></a>次のステップ
 
 ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC アプリケーションを作成し、Azure Websites に発行する方法を説明しました。このチュートリアルに含まれていない詳細や削除の機能など、完全なアプリケーションのソース コードは、[GitHub][] からダウンロードまたは複製できます。これらの機能を自分のアプリケーションに追加する場合は、該当するコードを入手してアプリケーションに追加してください。
 
 アプリケーションに機能を追加する場合は、[DocumentDB .NET ライブラリ](http://msdn.microsoft.com/library/azure/dn783362.aspx)から入手できる API を参考にしてください。[GitHub][] の DocumentDB .NET ライブラリにも気軽に投稿してください。
 
-## <a id="GetProject"></a>GitHub からのソリューションの入手
+##<a id="GetProject"></a>GitHub からのソリューションの入手
 
 時間を節約するために、コードを自分で追加することなく完全な todo ソリューションをビルドすることもできます。GitHub から完全なソリューションを入手して、次の手順に従うと、ソリューションを数分でビルドしてデプロイできます。
 
@@ -628,17 +630,17 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 3. Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、**ソリューション エクスプローラー**で todo ソリューションを右クリックし、**[NuGet パッケージの復元を有効にする]** をクリックして参照を復元します。
 
-4. [Azure ポータル](https://portal.azure.com/)の DocumentDB アカウントの **[キー]** ブレードから、**[URI]** 値と **[プライマリ キー]** または **[セカンダリ キー]** 値を入手します。
+4. [Azure プレビュー ポータル](https://portal.azure.com/)の DocumentDB アカウントの **[キー]** ブレードから、**[URI]** 値と **[プライマリ キー]** または **[セカンダリ キー]** 値を入手します。
 
 	
 	アカウントを持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってアカウントを設定します。
 
-	![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。アクティブなハブが強調表示され、[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている](media/documentdb-dotnet-application/keys.png)
+	![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット](media/documentdb-dotnet-application/keys.png)
 
 5. Web.config ファイルの **endpoint** キーと **authKey** キーの既定値を更新します。
 
-    	<add key="endpoint" value="~enter URI for your DocumentDB Account, from Azure classic portal~" /> 
-		<add key="authKey" value="~enter either Primary or Secondary key for your DocumentDB Account, from Azure classic portal~" /> 
+    	<add key="endpoint" value="~enter URI for your DocumentDB Account, from Azure Preview portal~" /> 
+		<add key="authKey" value="~enter either Primary or Secondary key for your DocumentDB Account, from Azure Preview portal~" /> 
 
 	- [キー] ブレードの **[URI]** 値をコピーし、**endpoint** プロパティ値に貼り付けます。 
 	- **[キー]** ブレードの **[プライマリ キー]** または **[セカンダリ キー]** 値をコピーし、**authKey** プロパティ値に貼り付けます。
@@ -652,8 +654,8 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [GitHub]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
-[クロスサイト リクエスト フォージェリの防止に関するページ]: http://go.microsoft.com/fwlink/?LinkID=517254
+[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
-
-<!--HONumber=52-->
  
+
+<!---HONumber=July15_HO3-->

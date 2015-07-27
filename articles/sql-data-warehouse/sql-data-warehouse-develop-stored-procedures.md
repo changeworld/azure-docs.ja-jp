@@ -94,4 +94,4 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

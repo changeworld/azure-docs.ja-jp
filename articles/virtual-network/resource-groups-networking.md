@@ -363,4 +363,4 @@ Traffic Manager プロファイルの主なプロパティは次のとおりで�
 
 [テンプレートの展開](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

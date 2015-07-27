@@ -6,4 +6,4 @@ Mobile Services プロジェクトでは、新しい Mobile Services をロー�
 
 2. **F5** キーを押してプロジェクトをリビルドし、モバイル サービスをローカルで開始します。モバイル サービスが正常に起動した後、Web ページが表示されます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

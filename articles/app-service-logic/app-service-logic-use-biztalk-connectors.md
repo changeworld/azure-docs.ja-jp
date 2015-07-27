@@ -13,10 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="03/20/2015"
+   ms.date="07/07/2015"
    ms.author="prkumar"/>
 
 #コネクタ#
+
+> [AZURE.NOTE]このトピックは廃止されています。使用できるすべての組み込みコネクタと API Apps を確認するには、「[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)」を参照してください。
+
+
 コネクタは、クラウドやオンプレミスで実行されるデータとサービスに接続するための API アプリです。コネクタを使うと、Logic Apps などで簡単にアクセスできるさまざまな組み込みのトリガーとアクションを使用して、データに簡単にアクセスできます。
 
 Azure App Services では、すぐに使用できるさまざまなコネクタが提供されています。
@@ -46,14 +50,16 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 * [SugarCRM コネクタ]
 * [Twilio コネクタ]
 * [Twitter コネクタ]
-* 待機コネクタ
+* [待機コネクタ]
 * [Yammer コネクタ]
+
 
 ##Premium コネクタと API Apps##
 * [AS2 コネクタ]
 * [BizTalk EDIFACT]
 * [BizTalk Flat File Encoder]
-* BizTalk Transform Service
+* [BizTalk JSON エンコーダー]
+* [BizTalk Transform Service]
 * [BizTalk ルール]
 * [BizTalk X12]
 * [BizTalk XPath Extractor]
@@ -112,7 +118,10 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 [BizTalk XML Validator]: app-service-logic-xml-validator.md
 [BizTalk ルール]: app-service-logic-use-biztalk-rules.md
 [AS2 コネクタ]: app-service-logic-connector-as2.md
-[BizTalk EDIFACT]: app-service-logic-connector-edifact
+[BizTalk EDIFACT]: app-service-logic-connector-edifact.md
 [BizTalk X12]: app-service-logic-connector-x12.md
+[JSON Encoder]: app-service-logic-json-encoder.md
+[BizTalk Transform Service]: app-service-logic-transform-xml-documents.md
+[待機コネクタ]: app-service-logic-wait.md
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,11 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="07/08/2015" 
 	ms.author="deonhe"/>
 
 
 # Microsoft Azure App Service のデータ コネクタ
+
+> [AZURE.NOTE]このトピックは廃止されています。使用できるすべての組み込みコネクタと API Apps を確認するには、「[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)」を参照してください。
 
 
 ## アプリ + データ サービス API アプリ コネクタとは
@@ -47,17 +49,6 @@
 <td>Azure Service Bus コネクタでは、キューやトピックなどの Service Bus エンティティからメッセージを送信し、キューやサブスクリプションなどの Service Bus エンティティからメッセージを受信できます。
 <td>新しいメッセージ
 <td>メッセージを送信
-</tr>
-<tr>
-<td>Azure Storage Table
-<td>Azure Storage Table コネクタでは、Azure Storage Table に接続して、エンティティの取得、エンティティの照会、エンティティの挿入、エンティティの更新、エンティティの削除、データを取得するためのトリガー機能など、さまざまなアクションを実行できます。
-<td>新しいエンティティ
-<td><li>エンティティを取得
-	<li>エンティティを挿入
-	<li>エンティティを削除
-	<li>エンティティを更新
-	<li>クエリ
-
 </tr>
 
 <tr>
@@ -126,17 +117,6 @@
 	<li>テーブルから選択
 	<li>テーブルから削除
 	<li>ストアド プロシージャの呼び出し
-</tr>
-
-<tr>
-<td>MongoDB
-<td>MongoDB コネクタでは、MongoDB コレクションからのドキュメントの作成、更新、削除、取得を実行できます。
-<td>新しいドキュメント
-<td>	<li>ドキュメントを追加
-		<li>ドキュメントを更新
-		<li>ドキュメントを取得
-		<li>ドキュメントを upsert
-		<li>ドキュメントを削除
 </tr>
 
 
@@ -261,7 +241,8 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 
 
 ## その他のコネクタ
-[BizTalk 統合コネクタ](app-service-logic-integration-connectors.md) | [エンタープライズ コネクタ](app-service-logic-enterprise-connectors.md) | [企業間コネクタ](app-service-logic-b2b-connectors.md) | [ソーシャル コネクタ](app-service-logic-social-connectors.md) | [プロトコル コネクタ](app-service-logic-protocol-connectors.md) | [アプリおよびデータ サービス コネクタ](app-service-logic-data-connectors.md) | [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
+
+[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

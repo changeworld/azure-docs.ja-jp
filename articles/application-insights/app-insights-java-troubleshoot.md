@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter="java"
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2015" 
+	ms.date="06/17/2015" 
 	ms.author="awills"/>
  
 # Java 用 Application Insights のトラブルシューティングおよび Q&A
@@ -138,4 +138,4 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -94,4 +94,4 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

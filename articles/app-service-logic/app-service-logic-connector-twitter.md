@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Twitter Connector API アプリ" 
-   description="TwitterConnector の使い方" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="anuragdalmia" 
-   manager="dwrede" 
+<properties
+   pageTitle="Microsoft Azure App Service での Twitter コネクタの使用"
+   description="Twitter コネクタ API アプリを使用する方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,57 +12,75 @@
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="03/20/2015"
-   ms.author="adgoda"/>
+   ms.workload="integration"
+   ms.date="07/14/2015"
+   ms.author="sameerch"/>
 
 
-# ロジック アプリで Twitter Connector を使用する #
+# Twitter コネクタ
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
+Twitter フィードに接続して、ツイートを投稿し、自分のタイムライン、友人のタイムライン、Twitter アカウントのフォロワーからツイートを取得します。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Twitter コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
-Twitter Connector を使えば、自分の Twitter アカウントからツイートを投稿したり、自分のタイムライン、友人、フォロワーのツイートを取得したりできます。
+- 指定したキーワードまたはテキストに関連付けられている新しいツイートを取得します。新しいツイートを取得すると、ワークフローの新しいインスタンスがトリガーされ、ワークフローの次のコネクタにデータが渡されます。たとえば、Twitter コネクタを作成し、#peanutbutterandjelly を監視する New Tweet From Search トリガーを使用します。#peanutbutterandjelly で新しいツイートがある場合は、必ずワークフロー (ロジック アプリともいいます) が自動的に開始されます。
+- "Search Tweets" など、さまざまなアクションを使用して、応答を取得し、ワークフロー内で使用します。たとえば、会社名でツイートを検索できます。見つかった場合は、ロジック アプリを使用して、SQL Server データベースにこのデータを書き込むことができます。次に、SQL Server のデータを使用して、会社のどのような話題がツイートされているのかを特定します。 
 
-- Twitter Connector トリガーは、特定のキーワードが関連付けられた新しいツイートを取得するものです。新しいツイートが取得されると、フローの新しいインスタンスをトリガーし、要求で受信したデータを処理のためにフローに渡します。 
-- Twitter Connector アクションは、"ツイート"、"ツイートの検索"、"リツイート"、"ユーザーのタイムラインの取得" などを可能にするものです。これらのアクションによって応答を取得すると、フローの後続のアクションで使用できます。
 
-## ロジック アプリのための Twitter Connector を作成する ##
-Twitter Connector を使用するにはまず、Twitter Connector API アプリのインスタンスを作成する必要があります。そのためには、次の手順に従います。
+## トリガーとアクション
+*トリガー*とは、発生するイベントを指します。たとえば、新しいツイートは、ワークフローまたはプロセスをトリガー、つまり開始できます。*アクション*とは、何かの操作の結果です。たとえば、特定のツイートを検索して見つかったときに、電子メールを送信したり、データベースを更新したりします。
 
-1. Azure ポータルの左下にある [+ 新規] を使用して Azure Marketplace を開きます。
-1. [API Apps] に移動して、"Twitter Connector" を検索します。
-1. Twitter Connector を以下のように構成します。
+Twitter コネクタは、ロジック アプリでトリガーまたはアクションとして使用でき、JSON 形式と XML 形式のデータをサポートします。
+
+Twitter コネクタでは、次のトリガーとアクションを使用できます。
+
+トリガー | アクション
+--- | ---
+New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>Tweet</li><li>Get Mentions Timeline</li><li>Get Home Timeline</li><li>Get Followers</li><li>Get Friends</li><li>Get User Details</li><li>Tweet to User</li><li>Send Direct Message</li></ul>
+
+> [AZURE.IMPORTANT]**New Tweet** トリガーはアーカイブされました。現時点では、高度な操作として引き続き使用できます。**Retweet** アクションが削除され、サポートされなくなりました。Retweet アクションを使用すると、実行時に失敗します。よって、ロジック アプリから、Retweet アクションを削除してください。
+
+
+## Twitter コネクタの作成
+コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
+
+1. Azure のスタート画面で、**[Marketplace]** を選択します。
+2. "Twitter コネクタ" を検索します。
+3. 名前、App Service プラン、その他のプロパティを入力します。
 
 	![][1]
-4.	[OK] をクリックして作成します。
-5.	API アプリのインスタンスを作成したら、同じリソース グループに、Twitter Connector を使用するロジック アプリを作成します。 
-	- Twitter Connector API アプリのインスタンスは、ロジック アプリから作成することもできます。 
-	- ロジック アプリ エディターを開き、右側に表示されているギャラリーから、Twitter Connector をクリックします。
-	- このようにすると、ロジック アプリと同じリソース グループに Twitter Connector API アプリのインスタンスが作成されます。
+4.	**[作成]** をクリックします。
 
 
-## ロジック アプリで Twitter Connector を使用する ##
-API アプリを作成した後は、ロジック アプリのトリガーおよびアクションとして Twitter Connector を使用できます。そのためには、次の手順を実行する必要があります。
+## ロジック アプリで Twitter Connector を使用する
+API アプリを作成した後は、ロジック アプリのトリガーまたはアクションとして Twitter コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	ロジック アプリを作成し、Twitter Connector と同じリソース グループを選択します。
- 	
+1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。
+
 	![][2]
-2.	[トリガーとアクション] を選択してロジック アプリ デザイナーを開き、フローを構成します。 
- 	
-	![][3]
-3.	右側のギャラリーの [最近使用した項目] セクションに、Twitter Connector が表示されます。それを選択します。
- 
-	![][4]
-4.	右側に表示されているギャラリーの [最近使用した項目] セクションで [Twitter Connector] をクリックして、エディターに Twitter Connector API アプリをドロップします。[承認] をクリックします。Twitter の資格情報を入力します。[アプリを認証] をクリックします。
- 
-	![][5]
-6.	これで、フローに Twitter Connector を使用できるようになりました。今後は、Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。
- 
-	![][6]
-7.	フローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、それぞれのアクションの入力を構成してください。
+2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。
 
-	![][7]
-	![][8]
+	![][3]
+3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。
+
+	![][4]
+4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。
+
+	![][5]
+
+
+これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。
+
+![][6]
+
+ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。
+
+![][7] ![][8]
+
+## コネクタでできること
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
 	<!--Image references-->
 [1]: ./media/app-service-logic-connector-twitter/img1.png
@@ -70,9 +88,8 @@ API アプリを作成した後は、ロジック アプリのトリガーおよ
 [3]: ./media/app-service-logic-connector-twitter/img3.png
 [4]: ./media/app-service-logic-connector-twitter/img4.png
 [5]: ./media/app-service-logic-connector-twitter/img5.png
-[6]: ./media/app-service-logic-connector-twitter/img6.png
+[6]: ./media/app-service-logic-connector-twitter/triggers.png
 [7]: ./media/app-service-logic-connector-twitter/img7.png
-[8]: ./media/app-service-logic-connector-twitter/img8.png
- 
+[8]: ./media/app-service-logic-connector-twitter/actions.png
 
-<!----HONumber=62-->
+<!---HONumber=July15_HO3-->

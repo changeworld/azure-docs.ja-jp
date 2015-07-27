@@ -33,4 +33,4 @@ Visual Studio で**サーバー エクスプローラー**を表示するには�
 クラウド サービス コンテナーを作成した後は、クラウド サービスを[作成してデプロイ](cloud-services-how-to-create-deploy.md)できます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

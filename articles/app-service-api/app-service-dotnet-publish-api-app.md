@@ -50,7 +50,7 @@ Visual Studio を使用して独自の API アプリを積極的に開発して�
 - **[アクセス レベル]** で、**[すべてのユーザーが利用できる]** を選択します。これは API を完全にパブリックにするオプションですが、このチュートリアルでは問題ありません。Azure ポータルを使用して後でアクセスを制限することができます。
 - リージョンを選択します。  
 
-![Microsoft Azure Web Apps の構成ダイアログ](./media/app-service-dotnet-publish-api-app/24-new-api-app-dialog-v3.png)
+![Microsoft Azure Web アプリの構成ダイアログ](./media/app-service-dotnet-publish-api-app/24-new-api-app-dialog-v3.png)
 
 **[OK]** をクリックします。サブスクリプションに API アプリが作成されます。このプロセスには数分かかることがあります。プロセスが開始されたことを通知するダイアログが Visual Studio に表示されます。
 
@@ -122,4 +122,4 @@ API アプリがプロビジョニングされたら、ソリューション エ
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

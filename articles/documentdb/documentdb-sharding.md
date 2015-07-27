@@ -167,4 +167,4 @@ Microsoft では、.NET SDK のお客様からいただいたフィードバッ�
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO3-->

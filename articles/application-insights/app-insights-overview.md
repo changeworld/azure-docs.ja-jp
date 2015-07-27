@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,24 +12,54 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="07/14/2015" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
 
-Visual Studio Application Insights を利用すれば、ライブ Web またはデバイス アプリケーションのパフォーマンスと使用状況を追跡できます。
+Application Insights は拡張可能な分析サービスで、ライブ アプリケーションのパフォーマンスや使用状況を把握するのに役立ちます。開発者向けに設計された Application Insights を使用すると、アプリのパフォーマンスやユーザビリティを継続的に向上させることができます。
 
+さまざまなプラットフォーム上の Web アプリやスタンドアロン アプリ (オンプレミスまたはクラウドでホストされた .NET または J2EE、Windows、iOS、Android、OSX、およびその他のプラットフォーム上のデバイス アプリなど) と連携します。
+
+開発チームを支援することを目的としています。Application Insights では、次のことを行えます。
+
+* [使用パターンの分析][knowUsers]。ユーザーを深く理解し、アプリを継続的に向上させます。 
+ * ページ ビューのカウント、新規ユーザーと再訪問ユーザー、位置情報、プラットフォーム、その他の主要な使用状況分析
+ * 使用状況のパスをトレースして、各機能の使用方法を評価します。
 * ほとんどのユーザーが気付く前にパフォーマンスの問題を[検出し、優先順位を付け、診断し][detect]、解決します。
  *  パフォーマンスの変化またはクラッシュに関するアラート。
  *  応答時間、CPU 使用率、依存関係追跡など、パフォーマンス問題の診断に役立つメトリック。
  *  Web アプリケーションの可用性テスト。
  *  クラッシュと例外のレポートとアラート。
  *  診断ログの高性能検索 (お気に入りのログ記録フレームワークのログ トレースを含む)。
-* ユーザーがあなたのアプリケーションで何をするかということを理解し、[アプリケーションを継続的に改善します][knowUsers]。 
- * ページ ビューのカウント、新規ユーザーと再訪問ユーザー、その他の主要な使用状況分析。
- * 独自のイベントを追跡し、使用状況パターンと各機能の成功を評価します。
 
-## それはどのように機能しますか?
+各プラットフォーム用の SDK には、そのまま使用できるアプリを監視するさまざまなモジュールが用意されています。さらに、調整されたより詳しい分析のために、独自のテレメトリをコーディングすることもできます。
+
+アプリケーションから収集されたテレメトリ データは Azure ポータルに格納、分析されます。ここでは、直感的なビューやパワフルなツールにより迅速な分析や診断を行えます。
+
+![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
+
+
+## プラットフォームと言語
+
+SDK は増え続けるプラットフォームに対応します。最新の一覧を次に示します。
+
+ * [ASP.NET サーバー][greenbrown] (Azure または IIS サーバー上)
+ * [Azure Cloud Services](app-insights-cloudservices.md)
+ * [J2EE サーバー][java]
+ * [Web ページ][client]: HTML+JavaScript
+ * [Windows Phone、Windows Store、Windows 10 ユニバーサル アプリのほか、Windows 10 開発者向けポータルに直接統合できます][windows]
+ * [Windows デスクトップ][desktop]
+ * [iOS][ios]
+ * [Android][android]
+ * [他のプラットフォーム][platforms] - Node.js、PHP、Python、Ruby、Joomla、SharePoint、WordPress
+
+Application Insights では、再構築せずに、IIS 上の既存の ASP.NET Web アプリからテレメトリを取得することもできます。
+
+アプリにクライアント、サーバー、およびその他のコンポーネントがある場合、それらすべてをインストルメント化できます。たとえば、データを Application Insights ポータルに組み込んで、クライアントのイベントをサーバーのイベントと関連付けることができます。
+
+
+## 動作のしくみ
 
 小規模の SDK をアプリケーションにインストールし、Application Insights ポータルにアカウントを設定します。SDK はアプリを監視し、利用統計情報データをポータルに送信します。ポータルは統計グラフを表示し、問題の診断に役立つ高性能な検索ツールを提供します。
 
@@ -42,54 +72,52 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 * 再構築または再インストールすることなく、Web アプリを監視します。
 * 依存関係モジュールの呼び出しを追跡します。
 
-## どのような種類のアプリと連動しますか?
+### オーバーヘッドとは
 
-現在のところ、次のための SDK があります。
-
-* Web アプリ
- * Azure または IIS サーバーの [ASP.NET][greenbrown]
- * JRE の [Java][java] 
- * [Web ページ][client]: HTML+JavaScript
-* デバイス アプリ
- * [Windows][windows]
- * [iOS][ios]
- * [Android][android]
- * Cordova
- * [その他のプラットフォーム][platforms]
+パフォーマンスへの影響はごく小さいものです。追跡は非ブロッキングを呼び出し、バッチ処理されて、個別のスレッドに送信されます。
 
 
-## 使用方法は?
+## 作業を開始するには:
 
-* [問題の検出、トリアージ、診断][detect]
-* [アプリの使用状況の分析][knowUsers]
+1. 使用を開始するには、[Microsoft Azure](http://azure.com) のサブスクリプションが必要です。サインアップは無料で、Application Insights の無料の[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。
+
+2. [Azure プレビュー ポータル](http://portal.azure.com)にサインインする
+3. Application Insights リソースを作成します。アプリのデータはここに表示されます。
+
+    ![[追加]、[開発者向けサービス]、[Application Insights]](./media/app-insights-overview/11-new.png)
+
+    アプリケーションの種類を選択します。
+
+4. 新しいリソースを開き、クイック スタート ガイドを開きます。
+    
+    ![参照](./media/app-insights-overview/quickstart.png)
+
+    これは、アプリで SDK をインストールする方法について説明します。Web アプリについては、SDK を Web ページに追加したり、可用性テストを設定する方法についても記載されています。
 
 
-## これを使用するには何が必要ですか?
-
-* Microsoft Azure のサブスクリプションApplication Insights は、Web サイト、データベース、VM なども含まれている Azure のさまざまなクラウド サービスの 1 つです。(ただし、Application Insights を利用し、あらゆるアプリケーションを監視できます。アプリを Azure で実行する必要はありません。) 
-
- * あなたの会社にアカウントが与えられている場合があります。
+詳細については、このページの左側のナビゲーション バーの [開始] でアプリの種類を選択してください。
 
 
-## 開始するには?
+## サポートとフィードバック
 
-左側の [開始] メニューからお使いのプラットフォームを選択します。
+* 質問および問題点:
+ * [トラブルシューティング][qna]
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+ * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* バグ:
+ * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
+* ご提案:
+ * [ユーザーの声](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
 
-いずれのプラットフォームでも、基本的な手順は次のようになります。
 
-1. [Azure][portal] で Application Insights リソースを作成します (それから、そのインストルメンテーション キーを取得します)。
-2. 適切な SDK でアプリケーションをインストルメント化します (それから、インストルメンテーション キーで構成します)。
-3. デバッグ モードまたはライブでアプリケーションを実行します。
-4. [Azure][portal] でリソースの結果を確認します。
+## ビデオ
 
-場合によっては、最初の 2 つの手順を自動で実行するプラグインを IDE に利用できます (Visual Studio や Eclipse など)。ただし、常に、手動で手順を進めることができます。
 
-アプリが Web サイトまたはサービスの場合、基本的な手順にいくつかのオプションやバリエーションが追加されます。
+> [AZURE.VIDEO 218]
 
-* SDK をサーバー側のアプリケーションとクライアント [デバイス][windows]または [Web ページ][client]の両方に追加します。両方の端でイベントを相互に関連付けられるように、利用統計情報データがポータルで結合されます。
-* 世界中の場所からサイトの可用性を監視する Web テストを設定します。
-* 再構築または再展開せずに、既にライブになっているサーバー側のアプリケーションをインストルメント化します。これは [IIS サーバー][redfield]と [Azure Web アプリ][azure]で利用できます。
-* データベースなど、他のコンポーネントに、あるいは REST API を介してアプリが行う依存関係呼び出しを監視します。[IIS サーバー][redfield]と [Azure Web アプリ][azure]で利用できます。
+> [AZURE.VIDEO usage-monitoring-application-insights]
+
+> [AZURE.VIDEO performance-monitoring-application-insights]
 
 
 <!--Link references-->
@@ -97,6 +125,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 [android]: app-insights-android.md
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
+[desktop]: app-insights-windows-desktop.md
 [detect]: app-insights-detect-triage-diagnose.md
 [greenbrown]: app-insights-start-monitoring-app-health-usage.md
 [ios]: app-insights-ios.md
@@ -104,9 +133,10 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 [knowUsers]: app-insights-overview-usage.md
 [platforms]: app-insights-platforms.md
 [portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

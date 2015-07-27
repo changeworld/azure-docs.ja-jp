@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="04/10/2015" 
+	ms.date="07/02/2015" 
 	ms.author="tomfitz"/>
 
 # Azure App Service での WordPress Web アプリの作成
@@ -31,4 +31,4 @@
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

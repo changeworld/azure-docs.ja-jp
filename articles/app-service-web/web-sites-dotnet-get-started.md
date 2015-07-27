@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article" 
-	ms.date="03/24/2015"
+	ms.date="06/26/2015"
 	ms.author="tdykstra"/>
 
 # Azure アプリ サービスでの ASP.NET Web アプリの作成
@@ -58,7 +58,7 @@
 
 3. ターゲット フレームワークとして **.NET Framework 4.5** が選択されていることを確認します。
 
-4. **[Application Insights をプロジェクトに追加する]** チェック ボックスをオフにします。
+4.  [Application Insights](app-insights-overview.md) は、Web アプリの可用性、パフォーマンス、および利用状況を監視します。Application Insights を使わない場合は、**[Application Insights をプロジェクトに追加する]** チェック ボックスをオフにします。
 
 4. アプリケーションに「**MyExample**」という名前を付けて、**[OK]** をクリックします。
 
@@ -295,7 +295,7 @@
 
 * アイドル時間終了後のウェイクアップの待機時間を回避する方法
 
-	既定では、アイドル状態がしばらく続いている Web アプリはアンロードされます。アイドル状態後の初回要求は、Web アプリが再度読み込まれるまで待機する必要があります。この待機時間を回避するために、AlwaysOn 機能を有効にすることができます。詳細については、[Web アプリを構成する方法](web-sites-configure.md)に関するページで構成オプションを参照してください。
+	既定では、アイドル状態がしばらく続いている Web アプリはアンロードされます。アイドル状態後の初回要求は、Web アプリが再度読み込まれるまで待機する必要があります。この待機時間を回避するために、AlwaysOn 機能を有効にすることができます。詳細については、「[Web アプリを構成する方法](web-sites-configure.md)」の構成オプションを参照してください。
 
 * リアルタイム機能 (チャットなど) の追加方法
 
@@ -316,4 +316,4 @@
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

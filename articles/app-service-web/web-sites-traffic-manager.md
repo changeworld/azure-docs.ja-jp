@@ -4,7 +4,6 @@
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="cephalin" 
-	writer="cephalin" 
 	manager="wpickett" 
 	editor="mollybos"/>
 
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="07/02/2015" 
 	ms.author="cephalin"/>
 
 # Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御
@@ -33,7 +32,7 @@ Azure トラフィック マネージャーは 3 つの異なる負荷分散方�
 	
 * **パフォーマンス**: この方法では、クライアントへの最短の往復時間に基づいてトラフィックを振り分けます。この方法は同じリージョン内または異なるリージョン内の Web アプリに使用できます。
 
-Azure トラフィック マネージャーでの負荷分散の詳細については、「[Traffic Manager での負荷分散方法について](http://msdn.microsoft.com/library/windowsazure/dn339010.aspx)」を参照してください。
+Azure トラフィック マネージャーでの負荷分散の詳細については、「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
 
 ##Web アプリとトラフィック マネージャーのプロファイル 
 Web アプリのトラフィック制御を構成するには、Azure トラフィック マネージャーでプロファイルを作成し、前に説明している 3 つの負荷分散方法のいずれかをプロファイルで指定します。その後、トラフィックを制御するエンドポイント (この場合は Web アプリ) をプロファイルに追加します。Web アプリの状態 (実行中、停止、または削除済み) は定期的にプロファイルに反映されて、その状態に応じて Azure トラフィック マネージャーはトラフィックを振り分けることができます。
@@ -56,13 +55,13 @@ Azure トラフィック マネージャーを Azure で使用する場合は、
 
 ## 次のステップ
 
-Azure トラフィック マネージャーの概念と技術的概要については、「[Traffic Manager Overview (トラフィック マネージャーの概要)](http://msdn.microsoft.com/library/windowsazure/hh744833.aspx)」を参照してください。
+Azure トラフィック マネージャーの概念と技術的概要については、「[Traffic Manager Overview (トラフィック マネージャーの概要)](../traffic-manager/traffic-manager-overview.md)」を参照してください。
 
 Web Apps 用など、Azure トラフィック マネージャーの構成方法については、「[トラフィック マネージャーの構成タスク](http://msdn.microsoft.com/library/windowsazure/hh744830.aspx)」を参照してください。
 
-Azure トラフィック マネージャーでの負荷分散の詳細については、「[Traffic Manager での負荷分散方法について](http://msdn.microsoft.com/library/windowsazure/dn339010.aspx)」を参照してください。
+Azure トラフィック マネージャーでの負荷分散の詳細については、「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
 
 Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Azure Web サイトでの Azure Traffic Manager の使用](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager と Azure Web サイトの統合が可能になりました](http://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

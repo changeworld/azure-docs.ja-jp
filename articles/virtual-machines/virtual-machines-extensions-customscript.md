@@ -80,4 +80,4 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

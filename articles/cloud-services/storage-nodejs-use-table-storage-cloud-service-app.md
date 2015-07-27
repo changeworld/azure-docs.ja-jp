@@ -50,7 +50,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 
 1.  Azure PowerShell をまだ開いていない場合は起動します。**[スタート]** メニューで **[すべてのプログラム]、[Azure]** の順に展開し、**[Azure PowerShell]** を右クリックして、**[管理者として実行]** を選択します。
 
-2.  アプリケーションが含まれているフォルダーに移動します。たとえば、C:\node\tasklist\WebRole1 です。
+2.  アプリケーションが含まれているフォルダーに移動します。たとえば、C:\\node\\tasklist\\WebRole1 です。
 
 3.  Azure Powershell ウィンドウで次のコマンドレットを入力して、ストレージ アカウント情報を取得します。
 
@@ -321,7 +321,7 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 
 **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 
-1. [Twitter Bootstrap](http://getbootstrap.com/) のファイルをダウンロードして展開します。**bootstrap\dist\css** フォルダーから** bootstrap.min.css** ファイルを tasklist アプリケーションの **public\stylesheets** ディレクトリにコピーします。
+1. [Twitter Bootstrap](http://getbootstrap.com/) のファイルをダウンロードして展開します。**bootstrap\\dist\\css** フォルダーから** bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 
 2. **views** フォルダーから、テキスト エディターで **layout.jade** を開き、内容を次の内容に置き換えます。
 
@@ -408,4 +408,4 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
  
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

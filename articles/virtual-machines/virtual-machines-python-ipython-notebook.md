@@ -17,9 +17,6 @@
 	ms.author="huvalo"/>
 
 
-
-
-
 # Azure での IPython Notebook
 
 [IPython プロジェクト](http://ipython.org)には、科学技術計算用ツールのコレクションが用意されています。このコレクションには、強力な対話型のシェル、高いパフォーマンスを実現する使いやすい並列ライブラリ、IPython Notebook と呼ばれる Web ベースの環境が含まれています。この Notebook よって、コードの実行とリアルタイムなコンピューティング ドキュメントの作成を統合した、対話型コンピューティング向けの作業環境が実現されます。作成されるノートブック ファイルには、任意のテキスト、数式、入力コード、結果、グラフィックス、ビデオ、その他の種類のメディアなど、最新の Web ブラウザーで表示できるデータを含めることができます。
@@ -149,7 +146,7 @@ Linux の場合:
 
 Windows:
 
-    cd \users\azureuser.ipython\profile_nbserver
+    cd \users\azureuser\.ipython\profile_nbserver
 
 どちらのプラットフォームの場合も、次のようにして SSL 証明書を作成します。
 
@@ -180,7 +177,7 @@ Windows:
     c.NotebookApp.certfile = u'/home/azureuser/.ipython/profile_nbserver/mycert.pem'
     
     # And if using a Windows VM:
-    c.NotebookApp.certfile = r'C:\Users\azureuser.ipython\profile_nbserver\mycert.pem'
+    c.NotebookApp.certfile = r'C:\Users\azureuser\.ipython\profile_nbserver\mycert.pem'
     
     # Create your own password as indicated above
     c.NotebookApp.password = u'sha1:b86e933199ad:a02e9592e5 etc... '
@@ -262,18 +259,18 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 
 
 [tornado]: http://www.tornadoweb.org/ "Tornado"
-[PyZMQ]: https://github.com/zeromq/pyzmq "PyZMQ"
-[NumPy]: http://www.numpy.org/ "NumPy"
-[Matplotlib]: http://matplotlib.sourceforge.net/ "Matplotlib"
+[pyzmq]: https://github.com/zeromq/pyzmq "PyZMQ"
+[numpy]: http://www.numpy.org/ "NumPy"
+[matplotlib]: http://matplotlib.sourceforge.net/ "Matplotlib"
 
 [portal-vm-windows]: /manage/windows/tutorials/virtual-machine-from-gallery/
 [portal-vm-linux]: /manage/linux/tutorials/virtual-machine-from-gallery/
 
 [リポジトリ]: https://github.com/ipython/ipython
-[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[python Tools for visual studio]: http://aka.ms/ptvs
 
-[Python 2.7]: http://www.python.org/download
-[OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
+[python 2.7]: http://www.python.org/download
+[openssl]: http://slproweb.com/products/Win32OpenSSL.html
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

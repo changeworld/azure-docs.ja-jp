@@ -55,7 +55,7 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 レコード セットを作成し、変数 $rs に割り当てます。
 
-	PS C:\>$rs = New-AzureDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
+	PS C:>$rs = New-AzureDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
 
 レコード セットには、DNS ゾーン "contoso.com" の相対名 "www" が含まれているため、レコードの完全修飾名は "www.contoso.com" になります。レコードの種類は "A" で、TTL は 60 秒です。
 
@@ -67,8 +67,8 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 手順 1. でレコード セットの作成時に割り当てた $rs 変数を使用して、"www" レコード セットに IPv4 A レコードを追加します。
 
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
-	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
+	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
 
 Add-AzureDnsRecordConfig を使用してレコード セットにレコードを追加する操作は、オフライン操作です。ローカル変数 $rs のみが更新されます。
 
@@ -81,7 +81,7 @@ Add-AzureDnsRecordConfig を使用してレコード セットにレコードを
 変更が完了しました。Get-AzureDnsRecordSet を使用して、Azure DNS からレコード セットを取得できます。
 
 
-	PS C:\> Get-AzureDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
+	PS C:> Get-AzureDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
 
 	Name              : www
@@ -100,7 +100,7 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 >[AZURE.NOTE]ゾーンの作成時と同様に、まだドメインを Azure DNS ネーム サーバーに委任していない場合は、ゾーンのネーム サーバー アドレスを明示的に指定する必要があります。
 
 
-	C:\> nslookup www.contoso.com ns1-01.azure-dns.com
+	C:> nslookup www.contoso.com ns1-01.azure-dns.com
 
 	Server: ns1-01.azure-dns.com
 	Address:  208.76.47.1
@@ -119,4 +119,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

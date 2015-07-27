@@ -138,4 +138,4 @@ Azure Redis Cache インスタンスは、Azure ポータルのほか、[Microso
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

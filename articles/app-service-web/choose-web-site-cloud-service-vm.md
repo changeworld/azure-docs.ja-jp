@@ -367,4 +367,4 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
   [ストレージ]: http://www.windowsazure.com/documentation/services/storage/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

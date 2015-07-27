@@ -4,7 +4,6 @@
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="tdykstra" 
-	writer="tdykstra" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="06/26/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブでバックグラウンド タスクを実行する
@@ -166,7 +165,7 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 
 ## <a name="WHPNotes"></a>メモ
 	
-- 2014 年 3 月の時点では、scm (デプロイ) サイトへの要求がなく Azure で Web アプリのポータルが開かれていない場合、[無料] モードの Web アプリは 20 分後にタイムアウトすることがあります。実際のサイトへの要求があっても、この状態はリセットされません。
+- scm (デプロイ) サイトへの要求がなく Azure で Web アプリのポータルが開かれていない場合、[無料] モードの Web アプリは 20 分後にタイムアウトすることがあります。実際のサイトへの要求があっても、この状態はリセットされません。
 - 連続するジョブのコードは、無限ループで実行されるように記述する必要があります。
 - 連続するジョブが連続的に実行されるのは、アプリが稼働状態になっているときのみです。
 - [基本] モードと [標準] モードには [常時接続] 機能が用意されており、この機能を有効にすると、Web アプリがアイドル状態にならなくなります。
@@ -210,4 +209,4 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

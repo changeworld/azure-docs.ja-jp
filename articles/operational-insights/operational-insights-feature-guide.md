@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2015"
+	ms.date="07/02/2015"
 	ms.author="banders"/>
 
 # Operational Insights 機能ガイド
@@ -71,6 +71,5 @@ Operations Manager サービスとしてオペレーションインサイト ソ
 
 ### Operational Insights を利用できる地域
 Microsoft Azure Operational Insights は米国内でホストされています。Operational Insights の言語は英語ですが、サービスは英語圏以外の多数の市場で使用できます。詳細については、「[世界各国/地域でのご利用の可否](http://go.microsoft.com/fwlink/?LinkId=229842)」をご覧ください。
- 
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

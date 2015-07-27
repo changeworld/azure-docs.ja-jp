@@ -81,4 +81,4 @@ Microsoft は、System Center のコンポーネントと他の製品を自動�
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

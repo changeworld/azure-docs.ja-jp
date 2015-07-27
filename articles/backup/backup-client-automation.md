@@ -30,12 +30,12 @@ Azure PowerShell を使用して次のセットアップおよび登録タスク
 - ネットワーク
 
 ### Microsoft Azure Backup エージェントのインストール
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\Downloads* などの、簡単にアクセスできる場所に保存します。
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
 ```
-PS C:\> MARSAgentInstaller.exe /q
+PS C:> MARSAgentInstaller.exe /q
 ```
 
 これにより、エージェントはすべて既定のオプションが指定されてインストールされます。インストールは、バックグラウンドで数分かかります。*/nu* オプションを指定しない場合、インストールの最後に **[Windows Update]** ウィンドウが開き、更新プログラムが確認されます。インストールすると、エージェントが、インストールされているプログラムの一覧に表示されます。
@@ -49,23 +49,14 @@ PS C:\> MARSAgentInstaller.exe /q
 コマンドラインで利用可能なすべてのオプションを表示するには、次のコマンドを使用します。
 
 ```
-PS C:\> MARSAgentInstaller.exe /?
+PS C:> MARSAgentInstaller.exe /?
 ```
 
 利用可能なオプションは、次のとおりです。
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - |
-| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m | Microsoft Update のオプトイン | - |
-| /nu | インストールの完了後に更新プログラムを確認しない | - |
-| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
-| /ph | プロキシ ホストのアドレス | - |
-| /po | プロキシ ホストのポート番号 | - |
-| /pu | プロキシ ホストのユーザー名 | - |
-| /pw | プロキシ パスワード | - |
+| /q | サイレント インストール | - | | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent | | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch | | /m | Microsoft Update のオプトイン | - | | /nu | インストールの完了後に更新プログラムを確認しない | - | | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - | | /ph | プロキシ ホストのアドレス | - | | /po | プロキシ ホストのポート番号 | - | | /pu | プロキシ ホストのユーザー名 | - | | /pw | プロキシ パスワード | - |
 
 
 ### Microsoft Azure Backup サービスへの登録
@@ -73,11 +64,11 @@ Microsoft Azure Backup サービスへの登録を実行する前に、[前提�
 
 - 有効な Azure サブスクリプションがあること
 - バックアップ コンテナーを作成していること
-- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
 コンテナーへのマシンの登録は、[Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを使用して実行します。
 
 ```
-PS C:\> Start-OBRegistration -VaultCredentials "C:\Downloads\register.vaultcredentials" -Confirm:$false
+PS C:> Start-OBRegistration -VaultCredentials "C:\Downloads\register.vaultcredentials" -Confirm:$false
 
 CertThumbprint      : 7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
@@ -97,10 +88,10 @@ Machine registration succeeded.
 プロキシと帯域幅の詳細の設定は、[Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) コマンドレットを使用して実行します。
 
 ```
-PS C:\> Set-OBMachineSetting -NoProxy
+PS C:> Set-OBMachineSetting -NoProxy
 Server properties updated successfully.
 
-PS C:\> Set-OBMachineSetting -NoThrottle
+PS C:> Set-OBMachineSetting -NoThrottle
 Server properties updated successfully.
 ```
 
@@ -108,7 +99,7 @@ Server properties updated successfully.
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。
 
 ```
-PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
+PS C:> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
 Server properties updated successfully
 ```
 
@@ -124,7 +115,7 @@ Windows サーバーおよびクライアントから Microsoft Azure Backup へ
 このドキュメントでは、バックアップを自動化するため、構成を何も行っていないことを前提としています。まず、[New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) コマンドレットを使って新しいバックアップ ポリシーを作成します。
 
 ```
-PS C:\> $newpolicy = New-OBPolicy
+PS C:> $newpolicy = New-OBPolicy
 ```
 
 この時点でポリシーは空で、どの項目を含むまたは除外するか、またバックアップをいつ実行するか、どこに格納するかを定義する他のコマンドレットが必要です。
@@ -138,20 +129,20 @@ PS C:\> $newpolicy = New-OBPolicy
 たとえば、毎週土曜日と日曜日の午後 4 時に実行されるようにバックアップ ポリシーを構成できます。
 
 ```
-PS C:\> $sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
+PS C:> $sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
 ```
 
 バックアップ スケジュールはポリシーに関連付ける必要があります。これを行うには、[Set-OBSchedule](https://technet.microsoft.com/library/hh770407) コマンドレットを使用します。
 
 ```
-PS C:\> Set-OBSchedule -Policy $newpolicy -Schedule $sched
+PS C:> Set-OBSchedule -Policy $newpolicy -Schedule $sched
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 ### 保有ポリシーの構成
 保有ポリシーでは、バックアップ ジョブから作成した回復ポイントをどのくらいの期間保持するかを定義します。[New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) コマンドレットを使って新しい保有ポリシーを作成するとき、Microsoft Azure Backup でバックアップの回復ポイントを保持する日数を指定できます。次の例では、7 日間の保有ポリシーを設定します。
 
 ```
-PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
+PS C:> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
 > [AZURE.NOTE]現在、PowerShell コマンドレットでは長期間の保有ポリシーの設定はサポートされていません。長期的な保有期間ポリシーを設定するには、Azure Backup の UI コンソールを使用してください。
@@ -159,7 +150,7 @@ PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 保有ポリシーは、コマンドレット [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405) を使用してメインのポリシーと関連付ける必要があります。
 
 ```
-PS C:\> Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
+PS C:> Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
 
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
@@ -192,11 +183,11 @@ PolicyState     : Valid
 次の例では、ボリューム C: および D: をバックアップし、Windows フォルダーと任意の一時フォルダー内の OS バイナリを除外します。このためには、[New-OBFileSpec](https://technet.microsoft.com/library/hh770408) コマンドレットを使用して 2 つのファイル指定 (内包用と除外用にそれぞれ 1 つずつ) を作成します。ファイル指定が作成されたら、[Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) コマンドレットを使用してポリシーに関連付けます。
 
 ```
-PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:", "D:")
+PS C:> $inclusions = New-OBFileSpec -FileSpec @("C:", "D:")
 
-PS C:\> $exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
+PS C:> $exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
 
-PS C:\> Add-OBFileSpec -Policy $newpolicy -FileSpec $inclusions
+PS C:> Add-OBFileSpec -Policy $newpolicy -FileSpec $inclusions
 
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
@@ -234,7 +225,7 @@ State           : New
 PolicyState     : Valid
 
 
-PS C:\> Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
+PS C:> Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
 
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
@@ -284,14 +275,14 @@ PolicyState     : Valid
 これで、ポリシー オブジェクトが完了し、バックアップ スケジュール、保有ポリシー、およびファイルの包含/除外リストに関連付けられました。次に、Microsoft Azure Backup で使用するためにこのポリシーをコミットできます。新しく作成されたポリシーを適用する前に、[Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) コマンドレットを使用して、サーバーに関連付けられた既存のバックアップ ポリシーがないことを確認します。ポリシーを削除すると確認のダイアログが表示されます。確認をスキップするには、コマンドレットで ```-Confirm:$false``` フラグを使用します。
 
 ```
-PS C:\> Get-OBPolicy | Remove-OBPolicy
+PS C:> Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) コマンドレットで、ポリシー オブジェクトのコミットを実行します。ここでも、確認のダイアログが表示されます。確認をスキップするには、コマンドレットで ```-Confirm:$false``` フラグを使用します。
 
 ```
-PS C:\> Set-OBPolicy -Policy $newpolicy
+PS C:> Set-OBPolicy -Policy $newpolicy
 Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : {DataSource DatasourceId:4508156004108672185 Name:C:\ FileSpec:FileSpec FileSpec:C:\ IsExclude:False IsRecursive:True ,FileSpec FileSpec:C:\windows IsExclude:True IsRecursive:True ,FileSpec FileSpec:C:\temp IsExclude:True IsRecursive:True
               , DataSource
@@ -318,11 +309,11 @@ State : Existing PolicyState : Valid
 既存のバックアップ ポリシーの詳細を表示するには、[Get-OBPolicy](https://technet.microsoft.com/library/hh770406) コマンドレットを使用します。バックアップ スケジュール用の [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) コマンドレット、保有ポリシー用の [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) コマンドレットを使用してさらにドリルダウンできます。
 
 ```
-PS C:\> Get-OBPolicy | Get-OBSchedule
+PS C:> Get-OBPolicy | Get-OBSchedule
 SchedulePolicyName : 71944081-9950-4f7e-841d-32f0a0a1359a ScheduleRunDays : {Saturday, Sunday} ScheduleRunTimes : {16:00:00} State : Existing
-PS C:\> Get-OBPolicy | Get-OBRetentionPolicy
+PS C:> Get-OBPolicy | Get-OBRetentionPolicy
 RetentionDays : 7 RetentionPolicyName : ca3574ec-8331-46fd-a605-c01743a5265e State : Existing
-PS C:\> Get-OBPolicy | Get-OBFileSpec
+PS C:> Get-OBPolicy | Get-OBFileSpec
 FileName : * FilePath : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ FileSpec : D:\ IsExclude : False IsRecursive : True
 FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\ FileSpec : C:\ IsExclude : False IsRecursive : True
 FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\windows FileSpec : C:\windows IsExclude : True IsRecursive : True
@@ -333,7 +324,7 @@ FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\temp Fil
 バックアップ ポリシーが設定されると、スケジュールに従ってバックアップが実行されます。[Start-OBBackup](https://technet.microsoft.com/library/hh770426) コマンドレットを使って、アドホック バックアップを起動することもできます。
 
 ```
-PS C:\> Get-OBPolicy | Start-OBBackup
+PS C:> Get-OBPolicy | Start-OBBackup
 Taking snapshot of volumes... Preparing storage... Estimating size of backup items... Estimating size of backup items... Transferring data... Verifying backup... Job completed. The backup operation completed successfully.
 ```
 
@@ -349,8 +340,8 @@ Taking snapshot of volumes... Preparing storage... Estimating size of backup ite
 Microsoft Azure Backup から項目を復元するには、まず、項目のソースを特定する必要があります。Windows サーバーまたは Windows クライアントのコンテキストでコマンドを実行するため、コンピューターは既に特定されています。ソースを特定する次の手順は、それを含むボリュームを特定することです。該当のコンピューターからバックアップするボリュームまたはソースの一覧は、[Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) コマンドレットを実行して取得できます。このコマンドは、このサーバー/クライアントでバックアップされるすべてのソースの配列を返します。
 
 ```
-PS C:\> $source = Get-OBRecoverableSource
-PS C:\> $source FriendlyName : C:\ RecoverySourceName : C:\ ServerName : myserver.microsoft.com
+PS C:> $source = Get-OBRecoverableSource
+PS C:> $source FriendlyName : C:\ RecoverySourceName : C:\ ServerName : myserver.microsoft.com
 FriendlyName : D:\ RecoverySourceName : D:\ ServerName : myserver.microsoft.com
 ```
 
@@ -358,7 +349,7 @@ FriendlyName : D:\ RecoverySourceName : D:\ ServerName : myserver.microsoft.com
 バックアップ ポイントの一覧は、[Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) コマンドレットと適切なパラメーターを実行して取得できます。この例では、ソース ボリューム *D:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
 
 ```
-PS C:\> $rps = Get-OBRecoverableItem -Source $source[1]
+PS C:> $rps = Get-OBRecoverableItem -Source $source[1]
 IsDir : False ItemNameFriendly : D:\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ LocalMountPoint : D:\ MountPointName : D:\ Name : D:\ PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime :
 IsDir : False ItemNameFriendly : D:\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ LocalMountPoint : D:\ MountPointName : D:\ Name : D:\ PointInTime : 17-Jun-15 6:31:31 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime :
 ```
@@ -370,30 +361,30 @@ IsDir : False ItemNameFriendly : D:\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2
 この例では、ファイル *finances.xls* を復元するには、オブジェクト ```$filesFolders[1]``` を使用してこれを参照できます。
 
 ```
-PS C:\> $filesFolders = Get-OBRecoverableItem $rps[0]
-PS C:\> $filesFolders IsDir : True ItemNameFriendly : D:\MyData\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\ LocalMountPoint : D:\ MountPointName : D:\ Name : MyData PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-PS C:\> $filesFolders = Get-OBRecoverableItem $filesFolders[0]
-PS C:\> $filesFolders IsDir : False ItemNameFriendly : D:\MyData\screenshot.oxps ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps LocalMountPoint : D:\ MountPointName : D:\ Name : screenshot.oxps PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : 228313 ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
+PS C:> $filesFolders = Get-OBRecoverableItem $rps[0]
+PS C:> $filesFolders IsDir : True ItemNameFriendly : D:\MyData\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\ LocalMountPoint : D:\ MountPointName : D:\ Name : MyData PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
+PS C:> $filesFolders = Get-OBRecoverableItem $filesFolders[0]
+PS C:> $filesFolders IsDir : False ItemNameFriendly : D:\MyData\screenshot.oxps ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps LocalMountPoint : D:\ MountPointName : D:\ Name : screenshot.oxps PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : 228313 ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
 IsDir : False ItemNameFriendly : D:\MyData\finances.xls ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls LocalMountPoint : D:\ MountPointName : D:\ Name : finances.xls PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : 96256 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
 復元する項目を検索するには、```Get-OBRecoverableItem``` コマンドレットを使用します。この例では、*finances.xls* を検索するために、次のコマンドを実行して、ファイルのハンドルを取得します。
 
 ```
-PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
+PS C:> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### 復元プロセスのトリガー
-復元プロセスをトリガーするには、まず、回復オプションを指定する必要があります。これを行うには、[New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) コマンドレットを使用します。この例では、ファイルを *C:\temp* に復元すると仮定します。また、宛先フォルダー *C:\temp* に既に存在するファイルをスキップすると仮定します。こうした回復オプションを作成するには、次のコマンドを使用します。
+復元プロセスをトリガーするには、まず、回復オプションを指定する必要があります。これを行うには、[New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) コマンドレットを使用します。この例では、ファイルを *C:\\temp* に復元すると仮定します。また、宛先フォルダー *C:\\temp* に既に存在するファイルをスキップすると仮定します。こうした回復オプションを作成するには、次のコマンドを使用します。
 
 ```
-PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
+PS C:> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
 次に、```Get-OBRecoverableItem``` コマンドレットの出力から選択した ```$item``` で [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) コマンドを使用して復元をトリガーします。
 
 ```
-PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option Estimating size of backup items... Estimating size of backup items... Estimating size of backup items... Estimating size of backup items... Job completed. The recovery operation completed successfully.
+PS C:> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option Estimating size of backup items... Estimating size of backup items... Estimating size of backup items... Estimating size of backup items... Job completed. The recovery operation completed successfully.
 ```
 
 
@@ -401,7 +392,7 @@ PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option 
 Microsoft Azure Backup エージェントのアンインストールは、次のコマンドを使用して実行できます。
 
 ```
-PS C:\> .\MARSAgentInstaller.exe /d /q
+PS C:> .\MARSAgentInstaller.exe /d /q
 ```
 
 エージェント バイナリをコンピューターからアンインストールすると、考慮すべき別の結果が生じます。
@@ -418,7 +409,7 @@ Microsoft Azure Backup エージェント、ポリシー、およびデータ �
 既定では、WinRM サービスは手動で開始されるように設定されています。スタートアップの種類は*自動*に設定する必要があります。これにより、サービスが開始されます。WinRM サービスが実行していることを確認するには、Status プロパティの値が *[実行中]* になっていることを確認します。
 
 ```
-PS C:\> Get-Service WinRM
+PS C:> Get-Service WinRM
 
 Status   Name               DisplayName
 ------   ----               -----------
@@ -428,27 +419,27 @@ Running  winrm              Windows Remote Management (WS-Manag...
 リモート処理用に Azure PowerShell を構成します。
 
 ```
-PS C:\> Enable-PSRemoting -force
+PS C:> Enable-PSRemoting -force
 WinRM is already set up to receive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.
 
-PS C:\> Set-ExecutionPolicy unrestricted -force
+PS C:> Set-ExecutionPolicy unrestricted -force
 ```
 
 コンピューターを、エージェントのインストールを始め、リモートで管理できるようになりました。たとえば、次のスクリプトは、エージェントをリモート コンピューターにコピーし、インストールします。
 
 ```
-PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
-PS C:\> $agent = "\\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
-PS C:\> $args = "/q"
-PS C:\> Copy-Item "C:\Downloads\MARSAgentInstaller.exe" -Destination $dloc - force
+PS C:> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
+PS C:> $agent = "\\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
+PS C:> $args = "/q"
+PS C:> Copy-Item "C:\Downloads\MARSAgentInstaller.exe" -Destination $dloc - force
 
-PS C:\> $s = New-PSSession -ComputerName REMOTESERVER01
-PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePath $d $a -Wait } -ArgumentList $agent $args
+PS C:> $s = New-PSSession -ComputerName REMOTESERVER01
+PS C:> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePath $d $a -Wait } -ArgumentList $agent $args
 ```
 
 ## 次のステップ
 Azure Backup for Windows Server/Client の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

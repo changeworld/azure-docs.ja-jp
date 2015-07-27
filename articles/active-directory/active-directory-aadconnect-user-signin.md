@@ -64,4 +64,4 @@ Azure AD Connect では、ユーザーは同じパスワードを使用して、
 	- デバイス登録、Azure AD 参加、または Intune MDM ポリシーを使用するオンプレミスとクラウド両方のリソースへの条件付きアクセス
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

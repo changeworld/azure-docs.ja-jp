@@ -1,6 +1,6 @@
 <properties pageTitle="Azure Search 管理 REST API バージョン 2014-07-31-Preview" description="Azure Search 管理 REST API: バージョン 2014-07-31-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="05/21/2015" ms.author="heidist" />
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="07/08/2015" ms.author="heidist" />
 
 # 管理 API: バージョン 2014-07-31-Preview
 
@@ -815,4 +815,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -139,4 +139,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

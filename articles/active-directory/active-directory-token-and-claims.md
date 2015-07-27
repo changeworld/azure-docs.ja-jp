@@ -413,4 +413,4 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
 [Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

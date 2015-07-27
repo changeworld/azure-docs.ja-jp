@@ -171,10 +171,10 @@ ORDER BY 1,2,3
 
 
 ## 次のステップ
-開発に関するその他のヒントについては、「[開発の概要][]」を参照してください。
+開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-develop-group-by/sql-data-warehouse-develop-group-by-cube.png
+[1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
 
 <!--Article references-->
 [開発の概要]: sql-data-warehouse-overview-develop.md
@@ -185,4 +185,4 @@ ORDER BY 1,2,3
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

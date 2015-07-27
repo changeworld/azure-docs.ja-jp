@@ -1,10 +1,10 @@
-<properties 
+<properties
 	pageTitle="Dropbox コネクタ"
 	description="Dropbox コネクタの使用"
-	authors="anuragdalmia" 
-	manager="dwrede" 
-	editor="" 
-	services="app-service\logic" 
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""
+	services="app-service\logic"
 	documentationCenter=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/31/2015"
-	ms.author="adgoda"/>
+	ms.date="07/02/2015"
+	ms.author="sameerch"/>
 
 # ロジック アプリで Dropbox コネクタを使用する #
 
@@ -28,14 +28,8 @@ Dropbox コネクタを使用するには、まず Dropbox コネクタ API ア�
 1.	Azure ポータルの左下にある [+ 新規] を使用して Azure Marketplace を開きます。
 2.	[Web + モバイル]、[Azure Marketplace] の順に移動し、"Dropbox コネクタ" を検索します。
 3.	次のように、Dropbox コネクタを構成します。
- 
-	![][1]
-	- **[場所]** - コネクタをデプロイする地理的な場所を選択します。
-	- **[サブスクリプション]** - このコネクタを作成するサブスクリプションを選択します。
-	- **[リソース グループ]** - コネクタを格納するリソース グループを選択または作成します。
-	- **[App Service プラン]** - Web ホスティング プランを選択または作成します。
-	- **[価格レベル]** - コネクタの価格レベルを選択します。
-	- **[名前]** - Dropbox コネクタの名前を指定します。
+
+	![][1] - **[場所]** - コネクタをデプロイする地理的な場所を選択します。 - **[サブスクリプション]** - このコネクタを作成するサブスクリプションを選択します。 - **[リソース グループ]** - コネクタを格納するリソース グループを選択または作成します。 - **[App Service プラン]** - Web ホスティング プランを選択または作成します。 - **[価格レベル]** - コネクタの価格レベルを選択します。 - **[名前]** - Dropbox コネクタの名前を指定します。
 4. [作成] をクリックします。新しい Dropbox コネクタが作成されます。
 5. API アプリのインスタンスが作成されたら、同じリソース グループ内に、この Dropbox コネクタを使用するロジック アプリを作成できます。
 
@@ -43,23 +37,20 @@ Dropbox コネクタを使用するには、まず Dropbox コネクタ API ア�
 API アプリが作成されたら、Logic App のアクションとして Dropbox コネクタを使用できます。そのためには、次の手順を実行する必要があります。
 
 1.	新しい Logic App を作成し、Dropbox コネクタと同じリソース グループを選択します。
- 	
+
 	![][2]
-2.	[トリガーとアクション] を選択してロジック アプリ デザイナーを開き、フローを構成します。 
- 	
+2.	[トリガーとアクション] を選択してロジック アプリ デザイナーを開き、フローを構成します。
+
 	![][3]
 3.	Dropbox コネクタが右側のギャラリーの [API Apps in this resource group (このリソース グループの API Apps)] セクションに表示されます。
- 
+
 	![][4]
 4.	[Dropbox コネクタ] をクリックして、Dropbox コネクタの API アプリをエディターにドロップできます。[承認] ボタンをクリックします。Dropbox 資格情報を入力します。[許可する] をクリックします。
- 
-	![][5]
-	![][6]
-	![][7]
+
+	![][5] ![][6] ![][7]
 6.	これで、フローで Dropbox コネクタを使用できるようになりました。Dropbox アクションの [ファイルのアップロード] を使用して Dropbox アカウントにファイルをアップロードできます。
- 
-	![][8]
-	![][9]
+
+	![][8] ![][9]
 
 [ファイルのアップロード] アクションの入力プロパティを次のように構成します。
 
@@ -79,6 +70,5 @@ API アプリが作成されたら、Logic App のアクションとして Dropb
 [7]: ./media/app-service-logic-connector-dropbox/img7.PNG
 [8]: ./media/app-service-logic-connector-dropbox/img8.PNG
 [9]: ./media/app-service-logic-connector-dropbox/img9.PNG
- 
 
-<!-----HONumber=62--->
+<!---HONumber=July15_HO3-->

@@ -1,5 +1,5 @@
 
-##<a name="storage-client-server"></a>モバイル サービス プロジェクトでのストレージ クライアントのインストール
+##モバイル サービス プロジェクトでのストレージ クライアントのインストール
 
 SAS を生成して BLOB ストレージにイメージをアップロードできるようにするには、最初に、モバイル サービス プロジェクト用のストレージ クライアント ライブラリをインストールする NuGet パッケージを追加する必要があります。
 
@@ -11,7 +11,7 @@ SAS を生成して BLOB ストレージにイメージをアップロードで�
 
   	これにより、Azure Storage サービス用のクライアント ライブラリがモバイル サービス プロジェクトに追加されます。
 
-##<a name="update-data-model"></a>データ モデルでの TodoItem 定義の更新
+##データ モデルでの TodoItem 定義の更新
 
 TodoItem クラスはデータ オブジェクトを定義し、このクラスにはクライアントで定義したものと同じプロパティを追加する必要があります。
 
@@ -28,7 +28,7 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 
 	>[AZURE.NOTE]データベースの既定の初期化子を使用する場合は、Code First 定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](../articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)を参照してください。
 
-##<a name="update-scripts"></a>共有アクセス署名を生成する TodoItem コント ローラーを更新する 
+##共有アクセス署名を生成する TodoItem コント ローラーを更新します。 
 
 新規 TodoItem が挿入されたら **PostTodoItem** メソッドが SAS を生成するように、既存の **TodoItemController** を更新します。また、次のことも実行できます。
 
@@ -132,4 +132,4 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 [How To Create a Storage Account (ストレージ アカウントの作成方法)]: ../articles/storage/storage-create-storage-account.md
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

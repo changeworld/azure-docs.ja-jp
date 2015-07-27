@@ -51,4 +51,4 @@
 [Store server scripts in source control]: mobile-services-store-scripts-source-control.md
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

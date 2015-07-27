@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure 上で Linux を実行する仮想マシンへのログオン" 
-	description="Linux を実行する Azure の仮想マシンに Secure Shell (SSH) クライアントを使用してログオンする方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="KBDAzure" 
-	manager="timlt" 
+<properties
+	pageTitle="Azure 上で Linux を実行する仮想マシンへのログオン"
+	description="Linux を実行する Azure の仮想マシンに Secure Shell (SSH) クライアントを使用してログオンする方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
 	editor=""/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/16/2015" 
-	ms.author="kathydav"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/16/2015"
+	ms.author="rasquill"/>
 
 
 
@@ -47,11 +47,10 @@ Linux オペレーティング システムを実行する仮想マシンへの�
 	![仮想マシンへのログオン](./media/virtual-machines-linux-how-to-log-on/sshlogin.png)
 
 >[AZURE.NOTE]VMAccess 拡張機能では、SSH キーやパスワードを忘れた場合にリセットできます。ユーザー名を忘れた場合は、拡張機能を使用して sudo 権限で新しいユーザー名を作成できます。手順については、「[Linux 仮想マシンのパスワードまたは SSH をリセットする方法]」を参照してください。
-	
+
 これで、仮想マシンを他のサーバーとまったく同様に扱うことができます。
 
 <!-- LINKS -->
 [Linux 仮想マシンのパスワードまたは SSH をリセットする方法]: http://go.microsoft.com/fwlink/p/?LinkId=512138
- 
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

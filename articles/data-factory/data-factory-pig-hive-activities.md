@@ -24,7 +24,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 ### 前提条件
 1. 「[Azure Data Factory を使ってみる][adfgetstarted]」の記事にあるチュートリアルを完了してください。
-2. 以下の内容を記述した **hivequery.hql** ファイルを **C:\ADFGetStarted** の下の **Hive** という名前のサブフォルダー内に作成します。
+2. 以下の内容を記述した **hivequery.hql** ファイルを **C:\\ADFGetStarted** の下の **Hive** という名前のサブフォルダー内に作成します。
     		
     	DROP TABLE IF EXISTS adftutorialhivetable; 
 		CREATE EXTERNAL TABLE  adftutorialhivetable
@@ -140,7 +140,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		                        "Month":"$$Text.Format('{0:%M}',SliceStart)",
 		                        "Day":"$$Text.Format('{0:%d}',SliceStart)"
 		                    },
-		                    "scriptpath": "adftutorial\hivequery.hql",
+		                    "scriptpath": "adftutorial\\hivequery.hql",
 						    "scriptLinkedService": "StorageLinkedService"
 						},
 						"policy":
@@ -258,7 +258,7 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 					"transformation":
 					{
     					"type": "Hive",
-    					"scriptpath": "adfwalkthrough\scripts\transformdata.hql",    		
+    					"scriptpath": "adfwalkthrough\\scripts\\transformdata.hql",    		
 						"scriptLinkedService": "StorageLinkedService", 
 						"extendedProperties":
 						{
@@ -353,4 +353,4 @@ Data Factory の Pig アクティビティと Hive アクティビティでは�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

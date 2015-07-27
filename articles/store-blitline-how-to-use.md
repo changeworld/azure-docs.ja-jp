@@ -150,4 +150,4 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
   [Blitline ジョブを作成する方法]: #createjob
   [画像を Azure ストレージに保存する方法]: #saveazure
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

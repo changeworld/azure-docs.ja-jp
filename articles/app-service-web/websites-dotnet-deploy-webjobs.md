@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="04/03/2015" 
+	ms.date="06/29/2015" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用して Web ジョブを展開する
@@ -193,11 +193,11 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 
 ## <a id="nextsteps"></a>次のステップ
 
-Visual Studio から Azure Web ジョブをデプロイする方法および継続的な配信プロセスを使用して Azure Web ジョブをデプロイする方法の詳細については、「[Azure Web ジョブ - 推奨リソース - デプロイメント](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying)」を参照してください。
+この記事では、Visual Studio を使用して Web ジョブを展開する方法について説明しました。Visual Studio から Azure Web ジョブをデプロイする方法および継続的な配信プロセスを使用して Azure Web ジョブをデプロイする方法の詳細については、「[Azure Web ジョブ - 推奨リソース - デプロイメント](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying)」を参照してください。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

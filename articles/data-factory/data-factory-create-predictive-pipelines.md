@@ -159,10 +159,14 @@
 		               "timeout":"02:00:00"
 		            }
 		         }
-		        ]
+		        ],
+
+				"start": "2015-02-13T00:00:00Z",
+        		"end": "2015-02-14T00:00:00Z"
 		    }
 		}
 
+	**start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
 
 ## Web サービス パラメーター
 発行されている Azure Machine Learning Web サービスによって公開されている Web サービス パラメーターを Azure Data Factory (ADF) パイプラインで使用できます。Azure Machine Learning で実験を作成して Web サービスとして発行した後、この Web サービスを複数の ADF パイプラインまたはアクティビティで使用するときに、Web サービス パラメーターを介して異なる入力を渡すことができます。
@@ -182,7 +186,7 @@
 
 	transformation: {
     	webServiceParameters: {
-    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = '{0:yyyy-MM-dd HH:mm:ss}'', Time.AddHours(SliceStart, 0))"
+    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \'{0:yyyy-MM-dd HH:mm:ss}\'', Time.AddHours(SliceStart, 0))"
     	}
   	}
  
@@ -298,7 +302,7 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 - ライターのパラメーター ("1" サフィックスが付加されたパラメーター) は、Data Factory サービスによって自動的に設定されません。したがって、これらのパラメーターについては、アクティビティ JSON の **webServiceParameters** セクションで値を指定する必要があります。  
 - **Customer ID**、**scored labels**、**scored probabilities** は、コンマ区切りの列として保存されます。 
 - この例の **Data table name** は、出力データベースのテーブルに対応します。
-- **start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
+- **start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
 
 
 
@@ -324,4 +328,4 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -4,7 +4,6 @@
 	services="" 
 	documentationCenter="" 
 	authors="JustinBeckwith" 
-	writer="" 
 	manager="carolz" 
 	editor=""/>
 
@@ -26,11 +25,11 @@ Microsoft Azure プレビュー ポータルは、最新の主要なデスクト
 ### サポートされているブラウザー
 次のブラウザーの最新バージョンがサポートされています。
 
-- Internet Explorer (10 以降)
+- Internet Explorer (11 以降)
 - Safari (7 以降)
 - Chrome (最新バージョン)
 - Firefox (最新バージョン)
 
 *Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -2,7 +2,6 @@
 	pageTitle="SQL Azure からデータを処理する | Microsoft Azure" 
 	description="SQL Azure からのデータを処理する" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="fashah" 
 	manager="paulettm" 
@@ -17,7 +16,7 @@
 	ms.date="05/29/2015" 
 	ms.author="fashah;garye" />
 
-#<a name="heading"></a>Azure の SQL Server Virtual Machine でデータを処理する
+#<a name="heading">Azure の SQL Server Virtual Machine でデータを処理する</a>
 
 このドキュメントでは、Azure の SQL Server VM に格納されたデータに対するデータの探索と特徴の生成について説明します。これは、以下の方法で実行できます。
 
@@ -157,4 +156,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

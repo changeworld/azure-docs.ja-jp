@@ -3,7 +3,7 @@
 	description="ユーザーのすべてのデバイスにプッシュ通知を送信する方法について説明します" 
 	services="app-service\mobile" 
 	documentationCenter="windows" 
-	authors="yuaxu" 
+	authors="ysxu" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/17/2015"
+	ms.date="06/25/2015"
 	ms.author="yuaxu"/>
 
 # 特定のユーザーにクロスプラット フォーム通知を送信する
@@ -112,4 +112,4 @@
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

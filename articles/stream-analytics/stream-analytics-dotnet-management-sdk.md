@@ -1,8 +1,6 @@
 <properties 
 	pageTitle="Stream Analytics 管理用 .NET SDK の使用方法について | Microsoft Azure" 
 	description="Stream Analytics 管理用 .NET SDK の使用分析ジョブの設定と実行方法について: プロジェクト、入力、出力、および変換を作成します。" 
-	keywords=".net skd,analytics jobs,event hub"
-	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
 	manager="paulettm" 
@@ -14,7 +12,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="06/17/2015" 
+	ms.date="07/16/2015" 
 	ms.author="jeffstok"/>
 
 
@@ -58,7 +56,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 1. Visual Studio C# .NET コンソール アプリケーションを作成します。
 2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。2 つ目は、認証で使用する Azure Active Directory クライアントです。
 
-		Install-Package Microsoft.Azure.Management.StreamAnalytics -Pre
+		Install-Package Microsoft.Azure.Management.StreamAnalytics
 		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 4. 次の **appSettings** セクションを App.config ファイルに追加します。
@@ -70,8 +68,8 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 		  <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 		  <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
 		  <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
-		  <add key="SubscriptionId" value="<YOUR AZURE SUBSCRIPTION>" />
-		  <add key="ActiveDirectoryTenantId" value="<YOU TENANT ID>" />
+		  <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION" />
+		  <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
 		</appSettings>
 
 
@@ -326,7 +324,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -365,4 +363,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

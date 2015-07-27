@@ -40,7 +40,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -72,9 +72,9 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 別の方法として、Azure 上で実行する独自の仮想マシンを作成し、自分で MongoDB をインストールして管理できます。
 
-次の手順に従って、MongoLab を使用した無料評価版を作成できます。
+次の手順に従って、MongoLab を使用した無料試用版を作成できます。
 
-1.  [Azure の管理ポータル]にログインします。
+1.  [Azure 管理ポータル]にログインします。
 
 1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -219,7 +219,7 @@ Python Tools for Visual Studio、Bottle および MongoDB の詳細について�
 [Azure Cloud Services]: ../cloud-services-python-ptvs.md
 
 <!--External Link references-->
-[Azure の管理ポータル]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [Microsoft Azure 管理ポータル]: https://manage.windowsazure.com
 [RoboMongo]: http://robomongo.org/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
@@ -239,4 +239,4 @@ Python Tools for Visual Studio、Bottle および MongoDB の詳細について�
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

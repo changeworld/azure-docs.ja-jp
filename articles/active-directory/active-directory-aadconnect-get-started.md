@@ -25,11 +25,12 @@
 
 次のドキュメントは、Azure Active Directory Connect の使用を開始する際に役立ちます。このドキュメントでは、Azure AD Connect の高速インストールの使用について説明します。カスタム インストールについては、[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)に関するページを参照してください。DirSync から Azure AD Connect へのアップグレードについては、[DirSync から Azure Active Directory Connect へのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページを参照してください。
 
+
 ## Azure AD Connect のダウンロード
 
 
 
-Azure AD Connect の使用を開始するには、[Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkID=615771) のページから最新バージョンをダウンロードします。
+Azure AD Connect の使用を開始するには、[Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkID=615771) ページから最新バージョンをダウンロードします。
 
 ## Azure AD Connect をインストールする前に
 簡単設定を使用して Azure AD Connect をインストールする前に、必要なものがいくつかあります。
@@ -41,6 +42,21 @@ Azure AD Connect の使用を開始するには、[Azure AD Connect のダウン
 - Windows Server 2008 以降を使用している AD ドメイン コントローラーまたはメンバー サーバー
 - ローカルの Active Directory のエンタープライズ管理者アカウント
 - 省略可能: 同期を検証するテスト ユーザー アカウント。 
+
+### Azure AD Connect のハードウェア要件
+次の表は、Azure AD Connect コンピューターの最小要件を示しています。
+
+| Active Directory 内のオブジェクトの数 | CPU | メモリ | ハード ドライブのサイズ |
+| ------------------------------------- | --- | ------ | --------------- |
+| 10,000 未満 | 1\.6 GHz | 4 GB | 70 GB |
+| 10,000 ～ 50,000 | 1\.6 GHz | 4 GB | 70 GB |
+| 50,000 ～ 100,000 | 1\.6 GHz | 16 GB | 100 GB |
+| オブジェクトが 100,000 個以上の場合は完全バージョンの SQL Server が必要| | | |
+| 100,000 ～ 300,000 | 1\.6 GHz | 32 GB | 300 GB |
+| 300,000 ～ 600,000 | 1\.6 GHz | 32 GB | 450 GB |
+| 600,000 を超過 | 1\.6 GHz | 32 GB | 500 GB |
+
+
 
 
 複数のフォレストやフェデレーション サインオンなどのカスタム オプションについては、[こちら](active-directory-aadconnect-get-started-custom.md)で追加要件を参照してください。
@@ -92,6 +108,10 @@ Azure AD Connect を正常にインストールした後は、Azure ポータル
 ## 次に必要な作業
 Azure AD Connect がインストールされたので、[こちら](active-directory-aadconnect-whats-next.md)のリンクを使用して、ユーザーへの Azure AD Premium または Enterprise Mobility のライセンスの割り当てやその他のオプションの構成などのインストール後のタスクに着手できます。
 
+**その他のリソース**
+
+[ディレクトリ統合ツールの比較](active-directory-aadconnect-get-started-tools-comparison.md)
+
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

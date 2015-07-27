@@ -107,7 +107,7 @@ The error indicates it couldn't find the type, not the instance.
 	
 	![One hybrid connection created][CreateHCOneConnectionCreated]
 	
-これで、クラウド ハイブリッド接続のインフラストラクチャの重要な部分が完了しました。次に、対応する内部設置型の部分を作成します。
+これで、クラウド ハイブリッド接続のインフラストラクチャの重要な部分が完了しました。次に、対応するオンプレミスの部分を作成します。
 
 <a name="InstallHCM"></a>
 ## 内部設置型の Hybrid Connection Manager をインストールして接続を完了する ##
@@ -207,4 +207,4 @@ The error indicates it couldn't find the type, not the instance.
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

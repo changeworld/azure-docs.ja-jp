@@ -287,10 +287,9 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?linkid=268374
 [Soft Delete]: mobile-services-using-soft-delete.md
 [論理削除]: mobile-services-using-soft-delete.md
-[論理的な削除]: mobile-services-using-soft-delete.md
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

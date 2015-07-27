@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/19/2015" 
+	ms.date="06/30/2015" 
 	ms.author="mahender"/>
 
 # Xamarin.iOS アプリに認証を追加する
@@ -109,4 +109,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

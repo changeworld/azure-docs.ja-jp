@@ -185,4 +185,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

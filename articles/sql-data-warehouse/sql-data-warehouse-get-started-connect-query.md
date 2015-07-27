@@ -141,13 +141,13 @@ sqlcmd を使用するときに SQL DW の特定のインスタンスに接続�
 したがって、SQL DW インスタンスに接続するには、次のように入力します。
 
 ```
-C:\>sqlcmd -U <User>@<Server Name>.database.windows.net -P <Password> -S <Server Name>.database.windows.net -d <Database> -I
+C:>sqlcmd -U <User>@<Server Name>.database.windows.net -P <Password> -S <Server Name>.database.windows.net -d <Database> -I
 ```
 
 接続後、インスタンスに対してサポートされているすべての Transact-SQL ステートメントを発行できます。たとえば、以下のステートメントでは、[CREATE TABLE](https://msdn.microsoft.com/library/azure/dn268335.aspx) ステートメントを使用して、新しいテーブルを作成します。
 
 ```
-C:\>sqlcmd -U <User>@<Server Name>.database.windows.net -P <Password> -S <Server Name>.database.windows.net -d <Database> -I
+C:>sqlcmd -U <User>@<Server Name>.database.windows.net -P <Password> -S <Server Name>.database.windows.net -d <Database> -I
 1> CREATE TABLE table1 (Col1 int, Col2 varchar(20));
 2> GO
 3> QUIT
@@ -183,4 +183,4 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 ## 次のステップ ##
 [Start developing code]: ./articles/sql-data-warehouse-overview-develop/
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

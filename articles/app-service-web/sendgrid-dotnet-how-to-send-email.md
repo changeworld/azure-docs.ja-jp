@@ -241,4 +241,4 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

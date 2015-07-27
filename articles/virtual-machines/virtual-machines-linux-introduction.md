@@ -110,4 +110,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.date="07/10/2015" 
 	ms.author="spelluru"/>
 
 # パイプラインが内部設置型のデータを扱えるようにする
@@ -62,8 +62,8 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 2.	ゲートウェイ コンピューターの推奨される最小限の**構成**は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
 3.	ホスト コンピューターが休止状態の場合、ゲートウェイはデータ要求に応答できません。そのため、ゲートウェイをインストールする前に、コンピューターの適切な**電源プラン**を構成します。コンピューターが休止状態に構成されている場合、ゲートウェイのインストール時にメッセージが表示されます。  
 
+Data Management Gateway では、データのシリアル化と逆シリアル化、データがホストされているコンピューター上のデータの同期が行われます。また、データのコピー時にデータの型変換も実行されます。コピー操作中に、ゲートウェイでソースのデータがメモリ バッファーに読み取られ、それと同時に、別のライター スレッドでバッファーがシンクに書き込まれます。ピーク時には、ゲートウェイ ホスト コンピューターで同時に複数のコピー操作ジョブが実行される可能性があるので、メモリと CPU リソースの使用量がアイドル時よりもはるかに多くなります。そのため、Data Management Gateway を実行するホスト コンピューターでは、上記で推奨されている最小限のコンピューター構成よりも多くのリソースが必要になる場合や、アイドル時に必要なリソースが少なくなる場合があります。
 
- 
 
 ## チュートリアル
 
@@ -117,7 +117,7 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 
 	![Gateway - Configure blade][image-data-factory-gateway-configure-blade]
 
-	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\Program Files\Microsoft Data Management Gateway\1.0\Shared** フォルダーにあります。
+	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
 	このブレード内のリンクを使用してゲートウェイのダウンロードとインストールを手動で行い、**[キーで登録]** ボックスに表示されるキーを使用して登録することもできます。
 	
@@ -166,7 +166,7 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 4.	JSON ウィンドウで次の手順を実行します。
 	1.	**gatewayName** プロパティで、「**adftutorialgateway**」と入力して、二重引用符で囲まれたすべてのテキストを置き換えます。  
 	2.	**SQL 認証**を使用している場合は、次の手順を実行します。 
-		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。	
+		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。インスタンス名を指定するには、エスケープ文字 \\ を使用します。たとえば、**server\\instancename** と指定します。 	
 		2.	JSON ファイルから最後の 2 つのプロパティ (**username** と **password**) を削除し、残りの JSON スクリプトの最後の行の末尾にある**コンマ (,)** を削除します。
 		
 				{
@@ -487,7 +487,7 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 	**コマンドと出力の例**:
 
 
-		PS C:\> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+		PS C:> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
 
 		Name              : MyGateway
 		Description       : gateway for walkthrough
@@ -509,12 +509,12 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 	**コマンドの出力例:**
 
 
-		PS C:\> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
+		PS C:> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
 
 	
-4. Azure PowerShell で **C:\Program Files\Microsoft Data Management Gateway\1.0\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+4. Azure PowerShell で **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
-		PS C:\> .\RegisterGateway.ps1 $Key.GatewayKey
+		PS C:> .\RegisterGateway.ps1 $Key.GatewayKey
 		
 		Agent registration is successful!
 
@@ -627,4 +627,4 @@ Data Management Gateway が持つ幅広い内部設置型のデータ接続能�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

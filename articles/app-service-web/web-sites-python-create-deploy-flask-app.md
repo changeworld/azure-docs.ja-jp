@@ -379,7 +379,7 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 - [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -401,4 +401,4 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Flask のドキュメント]: http://flask.pocoo.org/
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

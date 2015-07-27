@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2015" 
+	ms.date="07/12/2015" 
 	ms.author="mandia"/>
 
 
@@ -48,12 +48,12 @@ Azure Web ジョブ | Web ジョブに接続します。
 [QuickBooks](app-service-logic-connector-quickbooks.md) | このコネクタを使用すると、Intuit QuickBooks のさまざまなエンティティ (顧客、項目、請求書など) の作成、更新、読み取り、削除、クエリなどの操作を実行できます。
 [SFTP](app-service-logic-connector-sftp.md) (SSH ファイル転送プロトコル)| SFTP に接続して、ファイルのアップロード、ファイルの取得、ファイルの削除、ファイルの一覧の取得を実行できます。さらに、トリガーを使用してファイルを取得することができます。
 [SMTP](app-service-logic-connector-smtp.md) (簡易メール転送プロトコル) | SMTP サーバーに接続して、添付ファイルを含む電子メールを送信します。
-[Slack](app-service-logic-connector-slack.md) | 
+[Slack](app-service-logic-connector-slack.md) | Slack に接続し、Slack チャネルにメッセージを投稿します。
 [Salesforce](app-service-logic-connector-salesforce.md) | Salesforce コネクタは、Salesforce アカウントのさまざまなエンティティ (アカウント、潜在顧客、営業案件、事例など) を管理します。さらに、さまざまなエンティティの作成、更新、upsert、クエリ、削除などの操作を実行できます。
 [SugarCRM](app-service-logic-connector-sugarcrm.md) | SugarCRM Online に接続して、さまざまな種類のモジュール (アカウント、連絡先、製品など) の作成、更新、読み取り、削除などの操作を実行できます。
 [Twilio](app-service-logic-connector-twilio.md) | Twilio に接続して、メッセージの送信、メッセージの取得、メッセージの一覧の取得、使用状況の一覧の取得、使用可能な無料通話番号の取得、使用可能な携帯電話番号の取得、使用可能な市内番号の取得、着信電話番号の一覧の取得、着信電話番号の取得、着信電話番号の追加などの操作を行うことができます。
 [Twitter](app-service-logic-connector-twitter.md) | Twitter に接続して、ユーザー タイムラインの取得、ツイートの検索、フォロワーの取得、友人の取得、ユーザーの検索、ホーム タイムラインの取得、メンション タイムラインの取得、ツイートの投稿、ユーザーへのツイートの投稿、ダイレクト メッセージの送信などの操作を実行できます。さらに、Twitter コネクタでは、キーワードによるツイートの取得、ユーザー ハンドルによるツイートの取得、ハッシュタグによるツイートの取得などのトリガーも使用します。
-待機 | このコネクタを使用して、アプリの実行を遅らせることができます。アプリの実行を、指定した時間分遅らせることも、特定の時点まで遅らせることもできます。
+[待機](app-service-logic-connector-wait.md) | このコネクタを使用して、アプリの実行を遅らせることができます。アプリの実行を、指定した時間分遅らせることも、特定の時点まで遅らせることもできます。
 
 
 ## Premium コネクタ
@@ -61,11 +61,11 @@ Azure Web ジョブ | Web ジョブに接続します。
 
 名前 | 説明
 ------------- | -------------
-AS2 コネクタ | AS2 コネクタは、企業間の通信において AS2 トランスポート プロトコルを使用してメッセージを送受信できます。データは、デジタル証明書と暗号化を使用してインターネット経由で安全かつ確実に転送されます。
-BizTalk EDIFACT | EDIFACT API アプリは、企業間通信で EDIFACT プロトコルを使用して、メッセージを送受信します。
-BizTalk X12 | BizTalk X12 | X12 API アプリは、企業間通信で X12 プロトコルを使用して、メッセージを送受信します。
-BizTalk 取引先管理 | 取引先管理 API アプリは、パートナー、契約、および契約で使用されるスキーマと証明書を使用して、企業間リレーションシップを定義および保持します。これらのリレーションシップは、AS2、EDIFACT、および X12 API Apps を使用して適用されます。
-BizTalk JSON エンコーダー | アプリでの JSON データと XML データの相互運用に役立つエンコーダーおよびデコーダーです。JSON インスタンスを指定して XML に変換したり、その逆方向に変換したりできます。
+[AS2 コネクタ](app-service-logic-connector-as2.md) | AS2 コネクタは、企業間の通信において AS2 トランスポート プロトコルを使用してメッセージを送受信できます。データは、デジタル証明書と暗号化を使用してインターネット経由で安全かつ確実に転送されます。
+[BizTalk EDIFACT](app-service-logic-connector-edifact.md) | EDIFACT API アプリは、企業間通信で EDIFACT プロトコルを使用して、メッセージを送受信します。
+[BizTalk X12](app-service-logic-connector-x12.md) | BizTalk X12 | X12 API アプリは、企業間通信で X12 プロトコルを使用して、メッセージを送受信します。
+[BizTalk 取引先管理](app-service-logic-connector-tpm.md) | 取引先管理 API アプリは、パートナー、契約、および契約で使用されるスキーマと証明書を使用して、企業間リレーションシップを定義および保持します。これらのリレーションシップは、AS2、EDIFACT、および X12 API Apps を使用して適用されます。
+[BizTalk JSON エンコーダー](app-service-logic-connector-jsonencoder.md) | アプリでの JSON データと XML データの相互運用に役立つエンコーダーおよびデコーダーです。JSON インスタンスを指定して XML に変換したり、その逆方向に変換したりできます。
 [BizTalk ルール](app-service-logic-use-biztalk-rules.md) | BizTalk ルールは、組織の構造、運用、および戦略を定義および制御します。ビジネス ポリシーは、関連付けられているアプリケーションを再コンパイルして再デプロイすることなく更新できます。
 DB2 コネクタ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM DB2 データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
 Informix | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM Informix データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
@@ -87,11 +87,11 @@ MQ | Windows オペレーティング システムを実行している Azure �
 コネクタは、Logic App 内でアクションとして使用することもできます。アクションは、実行時に使用する Logic App 内のデータの検索に役立ちます。たとえば、注文を処理するときに、顧客に関する情報を求めて SQL データベースのデータを検索することが必要になる場合があります。または、変換先のデータの書き込み、更新、または削除が必要になる場合があります。これらを実行するために、コネクタによって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義されているとおりに、API Apps 内の操作と対応付けられています。
 
 ## 独自のコネクタと API Apps の作成
-[コネクタと API Apps のリファレンス](http://aka.ms/appservicesconnectorreference)<br/> [Azure App Service API アプリ トリガー](../app-service-api/app-service-api-dotnet-triggers.md)
+[コネクタと API Apps のリファレンス](http://aka.ms/appservicesconnectorreference)<br/> [Azure App Service の API アプリのトリガー](../app-service-api/app-service-api-dotnet-triggers.md)<br/> [Logic Apps のリファレンス](https://msdn.microsoft.com/library/azure/dn948510.aspx)
 
 
-## その他のコネクタ
+## コネクタと API Apps の詳細
 
-[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)<br/> [Azure App Service でのハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)
+[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)<br/> [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

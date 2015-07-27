@@ -191,4 +191,4 @@ App Service モバイル アプリが WNS と連携するように構成され�
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

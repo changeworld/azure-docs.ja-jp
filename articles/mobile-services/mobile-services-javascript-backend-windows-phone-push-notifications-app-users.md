@@ -70,7 +70,7 @@
 
 ##<a name="update-app"></a>登録の前にログインするようにアプリケーションを更新する
 
-[AZURE.INCLUDE [mobile-services-windows-phone-push-notifications-app-users](mobile-services-windows-phone-push-notifications-app-users.md)]
+[AZURE.INCLUDE [mobile-services-windows-phone-push-notifications-app-users](../../includes/mobile-services-windows-phone-push-notifications-app-users.md)]
 
 
 ##<a name="test"></a>アプリケーションをテストする
@@ -91,4 +91,4 @@
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

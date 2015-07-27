@@ -3,7 +3,7 @@
 	description="SQL Database を使ってみます。SQL Database インスタンスの作成方法と ADO.NET、ODBC、EntityClient プロバイダーを使用した接続方法について説明します。" 
 	services="sql-database" 
 	documentationCenter=".net" 
-	authors="jeffreyg" 
+	authors="jeffgoll" 
 	manager="jeffreyg" 
 	editor=""/>
 
@@ -13,13 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/16/2015" 
+	ms.date="07/07/2015" 
 	ms.author="jeffreyg"/>
-
-
-
-
-
 
 
 # .NET アプリケーションで Azure SQL データベースを使用する方法
@@ -46,11 +41,11 @@ SQL データベースは、Azure におけるリレーショナル データの
 
 次に、データベースとサーバーを作成して構成します。Azure 管理ポータルで、改訂されたワークフローに従ってまずデータベースを作成し、次にサーバー プロビジョニングを行います。
 
-<h3 name="createsrvr">データベース インスタンスと論理サーバーの作成</h3>
+**データベース インスタンスと論理サーバーの作成**
 
-1. [Azure の管理ポータル][]にサインインします。
+1. [Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. ページの下部にある **[+新規]** をクリックします。
+2. ページの下部にある **[新規]** をクリックします。
 
 3. **[データ サービス]** をクリックします。
 
@@ -66,7 +61,7 @@ SQL データベースは、Azure におけるリレーショナル データの
 
 	データベースを最初に作成するときに MAXSIZE を指定します。この値は、後で ALTER DATABASE を使用して変更できます。MAXSIZE は、データベースのサイズを制限する機能を提供します。
 
-	実際には、Azure に作成された SQL データベース 1 つにつき、3 つのレプリカが存在します。これは、高可用性を確保するためです。フェールオーバーは透過的な機能であり、サービスの一部です。[サービス レベル アグリーメント][]では、SQL Database の 99.9% のアップタイムが約束されます。
+	実際には、Azure に作成された SQL データベース 1 つにつき、3 つのレプリカが存在します。これは、高可用性を確保するためです。フェールオーバーは透過的な機能であり、サービスの一部です。
 
 8. [サーバー] で、**[新しい SQL データベース サーバー]** を選択します。
 
@@ -91,16 +86,16 @@ SQL データベースは、Azure におけるリレーショナル データの
 データベースを作成したら、クリックしてそのダッシュボードを開きます。ダッシュボードに表示される接続文字列をコピーして、アプリケーション コードで使用できます。Management Studio やその他の管理ツールからデータベースに接続する場合に指定する必要がある管理 URL も表示されます。
 
 
-![image](./media/sql-database-dotnet-how-to-use/SQLDbDashboard.PNG)
+![SQL Database ダッシュボード](./media/sql-database-dotnet-how-to-use/SQLDbDashboard.PNG)
 
 
 次の手順では、ネットワークで実行中のアプリケーションからの接続によるアクセスが許可されるようにファイアウォールを構成します。
 
-<h3 name="configFWLogical">論理サーバーのファイアウォールの構成</h3>
+**論理サーバーのファイアウォールの構成**
 
 1. **[SQL データベース]** をクリックし、ページの上部にある **[サーバー]** をクリックして、作成したサーバーをクリックします。
 
-	![Image2](./media/sql-database-dotnet-how-to-use/SQLDBFirewall.PNG)
+	![ファイアウォールの設定](./media/sql-database-dotnet-how-to-use/SQLDBFirewall.PNG)
 
 2. **[構成]** をクリックします。
 
@@ -114,7 +109,7 @@ SQL データベースは、Azure におけるリレーショナル データの
 
 6. ルールの横にあるチェックマークをクリックして、ルールを保存します。
 
-	![Image3](./media/sql-database-dotnet-how-to-use/SQLDBIPRange.PNG)
+	![ファイアウォール設定の IP 範囲](./media/sql-database-dotnet-how-to-use/SQLDBIPRange.PNG)
 
 7. ページの下部にある **[保存]** をクリックして、手順を完了します。**[保存]** が表示されない場合は、ブラウザーのページを更新します。
 
@@ -126,7 +121,7 @@ SQL データベースは、Azure におけるリレーショナル データの
 このセクションでは、さまざまに異なる .NET Framework データ プロバイダーを使用して SQL データベース インスタンスに接続する方法について説明します。SQL Database サーバーおよびデータベースへの接続について中心となる推奨事項は、以下を参照してください。
 
 
-- [SQL Database への接続: 中心的な推奨事項](../sql-database-connect-central-recommendations/)。
+- [SQL Database への接続: 中心的な推奨事項](../sql-database-connect-central-recommendations.md)。
 
 
 Visual Studio を使用することを選択した場合、構成に Azure Web アプリケーションがフロントエンドとして含まれていないときは、開発コンピューターに追加のツールや SDK をインストールする必要はありません。すぐにアプリケーションの開発を開始できます。
@@ -209,35 +204,11 @@ Entity Framework を使用することで、開発者は、リレーショナル
 
     metadata=res://*/SchoolModel.csdl|res://*/SchoolModel.ssdl|res://*/SchoolModel.msl;provider=System.Data.SqlClient;provider connection string="Data Source=xxxxxxxxxx.database.windows.net;Initial Catalog=School;Persist Security Info=True;User ID=MyAdmin;Password=***********"
 
-詳細については、「[Entity Framework 用の EntityClient プロバイダー][]」を参照してください。
+詳細については、「[Entity Framework 用の EntityClient プロバイダー](http://msdn.microsoft.com/library/bb738561.aspx)」を参照してください。
 
 ## 次のステップ
 
-これで、SQL データベースへの接続の基本を学習できました。SQL データベースについてさらに詳細な情報が必要な場合は、次のリソースを参照してください。
-
--   [開発作業の方法に関するトピック (Windows Azure SQL データベース)][]
--   [SQL Database][]
-
-
-  [What is SQL Database]: #WhatIs
-  [Sign in to Azure]: #PreReq1
-  [Create and Configure SQL Database]: #PreReq2
-  [Connect to SQL Database]: #connect-db
-  [Connect Using ADO.NET]: #using-sql-server
-  [Connect Using ODBC]: #using-ODBC
-  [Connect Using EntityClient Provider]: #using-entity
-  [Next Steps]: #next-steps
-  [Azure Free Trial]: {localLink:2187} "Free Trial"
-  [Azure の管理ポータル]: http://manage.windowsazure.com
-  [How to Create a SQL Database Server]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-server.aspx
-  [Management Portal for SQL Database]: http://msdn.microsoft.com/library/windowsazure/gg442309.aspx
-  [SQL Database Firewall]: http://social.technet.microsoft.com/wiki/contents/articles/sql-azure-firewall.aspx
-  [Tools and Utilities Support (SQL Database)]: http://msdn.microsoft.com/library/windowsazure/ee621784.aspx
-  [How to Create a SQL Database on Azure]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-database.aspx
-  [サービス レベル アグリーメント]: {localLink:1132} "SLA"
-  [Entity Framework 用の EntityClient プロバイダー]: http://msdn.microsoft.com/library/bb738561.aspx
-  [開発作業の方法に関するトピック (Windows Azure SQL データベース)]: http://msdn.microsoft.com/library/windowsazure/ee621787.aspx
-  [SQL Database]: http://msdn.microsoft.com/library/windowsazure/ee336279.aspx
+これで、SQL Database への接続の基本を学習できました。「[Azure SQL データベース開発:操作方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)」をご覧ください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

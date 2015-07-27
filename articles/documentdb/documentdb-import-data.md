@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="DocumentDB へのデータのインポート | Azure" 
-	description="オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、DocumentDB コレクションなど、さまざまなソースからデータを DocumentDB にインポートする方法について説明します。" 
+	description="オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを DocumentDB にインポートする方法について説明します。" 
 	services="documentdb" 
 	authors="stephbaron" 
 	manager="johnmac" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.date="07/10/2015" 
 	ms.author="stbaro"/>
 
 # DocumentDB にデータをインポートする #
 
-この記事では、オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、DocumentDB コレクションなど、さまざまなソースからデータを [Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) にインポートする方法について説明します。
+この記事では、オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを [Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) にインポートする方法について説明します。
 
 この記事を読むと、次の質問に回答できるようになります。
 
@@ -27,6 +27,8 @@
 -	SQL Server のデータを DocumentDB にインポートするにはどうすればよいか。
 -	MongoDB のデータを DocumentDB にインポートするにはどうすればよいか。
 -	Azure テーブル ストレージからデータを DocumentDB にインポートするにはどうすればよいか。
+-	Amazon DynamoDB のデータを DocumentDB にインポートするにはどうすればよいか。
+-	HBase のデータを DocumentDB にインポートするにはどうすればよいか。
 -	DocumentDB コレクション間でデータを移行するにはどうすればよいか。
 
 ##<a id="Prerequisites"></a>前提条件 ##
@@ -44,6 +46,8 @@ DocumentDB データ移行ツールはオープン ソース ソリューショ�
 - SQL Server
 - CSV ファイル
 - Azure テーブル ストレージ
+- Amazon DynamoDB
+- HBase
 - DocumentDB コレクション
 
 このインポート ツールにはグラフィカル ユーザー インターフェイス (dtui.exe) が搭載されていますが、コマンド ライン (dt.exe) から実行することもできます。さらに、UI でインポートを設定した後で関連コマンドを出力するオプションもあります。インポート時には、表形式ソース データ (SQL Server や CSV ファイルなど) を変換して、階層関係 (サブドキュメント) を作成できます。最後まで目を通し、ソース オプション、各ソースからインポートするためのサンプル コマンド ライン、ターゲット オプション、およびインポート結果の表示に関する詳細を確認してください。
@@ -77,7 +81,7 @@ JSON ファイルをインポートするためのコマンド ライン サン�
 	dt.exe /s:JsonFile /s.Files:C:\Tweets*.*;C:\LargeDocs***.*;C:\TESessions\Session48172.json;C:\TESessions\Session48173.json;C:\TESessions\Session48174.json;C:\TESessions\Session48175.json;C:\TESessions\Session48177.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:subs /t.CollectionTier:S3
 
 	#Import a single JSON file and partition the data across 4 collections
-	dt.exe /s:JsonFile /s.Files:D:\CompanyData\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionTier:S3
+	dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionTier:S3
 
 ##<a id="MongoDB"></a>MongoDB からのインポート ##
 
@@ -197,6 +201,34 @@ Azure テーブル ストレージからインポートするためのコマン�
 
 	dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:metrics /t.CollectionTier:S3
 
+##<a id="DynamoDBSource"></a>Amazon DynamoDB からのインポート ##
+
+Amazon DynamoDB のソース インポーター オプションを使用すると、個々の Amazon DynamoDB テーブルからインポートし、必要に応じてインポートするエンティティをフィルターすることができます。インポートの設定が可能な限り簡単になるように、いくつかのテンプレートが用意されています。
+
+![Screenshot of Amazon DynamoDB source options](./media/documentdb-import-data/dynamodbsource1.png)
+
+![Screenshot of Amazon DynamoDB source options](./media/documentdb-import-data/dynamodbsource2.png)
+
+Amazon DynamoDB の接続文字列の形式は次のとおりです。
+
+	ServiceURL=<Service Address>;AccessKey=<Access Key>;SecretKey=<Secret Key>;
+
+> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した Amazon DynamoDB インスタンスにアクセスできることを確認してください。
+
+Amazon DynamoDB からインポートするためのコマンド ライン サンプルを以下に示します。
+
+	dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:catalogCollection /t.CollectionTier:S3
+
+##<a id="BlobImport"></a>Azure BLOB ストレージからのファイルのインポート##
+
+JSON ファイル、MongoDB のエクスポート ファイル、および CSV ファイル ソースのインポーター オプションを使用すると、Azure BLOB ストレージから 1 つ以上のファイルをインポートできます。BLOB コンテナーの URL とアカウント キーを指定した後に、正規表現を使用してインポートするファイルを選択してください。
+
+![Screenshot of Blob file source options](./media/documentdb-import-data/blobsource.png)
+
+Azure BLOB ストレージから JSON ファイルをインポートするためのコマンド ライン サンプルを以下に示します。
+
+	dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:doctest
+
 ##<a id="DocumentDBSource"></a>DocumentDB からのインポート ##
 
 DocumentDB ソース インポーターのオプションを使用して、1 つ以上の DocumentDB コレクションからデータをインポートできます。また、必要に応じて、クエリを使用してドキュメントをフィルター処理できます。
@@ -233,7 +265,25 @@ DocumentDB からインポートするためのコマンド ライン サンプ�
 	dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /s.Collection:comp1|comp2|comp3|comp4 /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:singleCollection /t.CollectionTier:S3
 
 	#Export a DocumentDB collection to a JSON file
-	dt.exe /s:DocumentDB /s.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionTier:S3
+	dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionTier:S3
+
+##<a id="HBaseSource"></a>HBase からのインポート ##
+
+HBase のソース インポーター オプションを使用すると、HBase テーブルのデータをインポートし、必要に応じてデータをフィルターすることができます。インポートの設定が可能な限り簡単になるように、いくつかのテンプレートが用意されています。
+
+![Screenshot of HBase source options](./media/documentdb-import-data/hbasesource1.png)
+
+![Screenshot of HBase source options](./media/documentdb-import-data/hbasesource2.png)
+
+HBase Stargate の接続文字列の形式は次のとおりです。
+
+	ServiceURL=<server-address>;Username=<username>;Password=<password>
+
+> [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した HBase インスタンスにアクセスできることを確認してください。
+
+HBase からインポートするためのコマンド ライン サンプルを以下に示します。
+
+	dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:hbaseimport
 
 ##<a id="DocumentDBBulkTarget"></a>DocumentDB へのインポート (一括インポート) ##
 
@@ -333,11 +383,33 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 
 > [AZURE.TIP]インポート ツールの接続モードは既定で [DirectTcp] に設定されています。ファイアウォールの問題が発生した場合は、ポート 443 のみを使用する必要があるため、接続モードを [ゲートウェイ] に切り替えてください。
 
+##<a id="IndexingPolicy"></a>DocumentDB コレクションを作成するときにインデックス作成ポリシーを指定する ##
+
+移行ツールを使用してインポート中にコレクションを作成するときに、コレクションのインデックス作成ポリシーを指定できます。DocumentDB の一括インポートと DocumentDB のシーケンシャル レコード オプションの詳細オプション セクションで、[インデックス作成オプション] セクションに移動します。
+
+![Screenshot of DocumentDB Indexing Policy advanced options](./media/documentdb-import-data/indexingpolicy1.png)
+
+[インデックス作成ポリシー] の詳細オプションを使用すると、インデックス作成ポリシー ファイルを選択するか、インデックス作成ポリシーを手動で入力するか、既定のテンプレート セットから選択することができます (インデックス作成ポリシー テキスト ボックスを右クリックします)。
+
+ツールには、次のポリシー テンプレートが用意されています。
+
+- [既定]。このポリシーは、文字列に対しては等値クエリを実行し、数値に対しては ORDER BY、範囲、および等値クエリを使用する場合に最適です。[範囲] よりもインデックスのストレージ オーバーヘッドが少なくいポリシーです。
+- [ハッシュ]。このポリシーは、数値と文字列の両方に対して等値クエリを実行する場合に最適です。インデックスのストレージ オーバーヘッドが最も低いポリシーです。
+- [範囲]。このポリシーは、数値と文字列の両方に対してORDER BY、範囲、等値クエリを使用する場合に最適です。[既定] または [ハッシュ] よりもインデックスのストレージ オーバーヘッドが高いポリシーです。
+
+
+![Screenshot of DocumentDB Indexing Policy advanced options](./media/documentdb-import-data/indexingpolicy2.png)
+
+> [AZURE.NOTE]インデックス作成ポリシーを指定しないと、既定のポリシーが適用されます。DocumentDB のインデックス作成ポリシーの詳細については、[こちら](documentdb-indexing-policies.md)を参照してください。
+
+
 ## JSON ファイルへのエクスポート
 
-DocumentDB JSON エクスポーターを使用して、使用可能な任意のソース オプションを、JSON ドキュメントの配列が含まれた JSON ファイルにエクスポートできます。エクスポートはツールによって処理されますが、その結果生成される移行コマンドを表示し、自分でコマンドを実行することもできます。
+DocumentDB JSON エクスポーターを使用して、使用可能な任意のソース オプションを、JSON ドキュメントの配列が含まれた JSON ファイルにエクスポートできます。エクスポートはツールによって処理されますが、その結果生成される移行コマンドを表示し、自分でコマンドを実行することもできます。結果の JSON ファイルは、ローカルまたは Azure BLOB ストレージに保存できます。
 
-![Screenshot of DocumentDB JSON export option](./media/documentdb-import-data/jsontarget.png)
+![Screenshot of DocumentDB JSON local file export option](./media/documentdb-import-data/jsontarget.png)
+
+![Screenshot of DocumentDB JSON Azure Blob storage export option](./media/documentdb-import-data/jsontarget2.png)
 
 必要に応じて、出力される JSON に prettify を実行できます。これにより、生成されるドキュメントのサイズは大きくなりますが、内容は人間が判読しやすいものになります。
 
@@ -404,4 +476,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
  
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO3-->

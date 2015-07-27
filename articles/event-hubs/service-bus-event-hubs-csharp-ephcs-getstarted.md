@@ -1,19 +1,19 @@
 <properties
 	pageTitle="Event Hubs の使用"
 	description="このチュートリアルでは、Azure Event Hubs と C# の EventProcessorHost を使用する方法について説明します。"
-	services="service-bus"
+	services="event-hubs,service-bus"
 	documentationCenter=""
 	authors="fsautomata"
 	manager="timlt"
 	editor=""/>
 
 <tags
-	ms.service="service-bus"
+	ms.service="event-hubs"
 	ms.workload="core"
 	ms.tgt_pltfrm="csharp"
 	ms.devlang="csharp"
 	ms.topic="hero-article"
-	ms.date="04/13/2015"
+	ms.date="06/17/2015"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -22,37 +22,37 @@
 
 ## はじめに
 
-Event Hubs は、接続されているデバイスとアプリケーションから大量のイベント データを処理するために使用できるサービスです。Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。この大規模なイベントの収集と処理の機能は、モノのインターネットなど最新アプリケーション アーキテクチャの重要なコンポーネントです。
+Event Hubs は、接続されているデバイスとアプリケーションから大量のイベント データを処理するために使用できるサービスです。Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。
 
-このチュートリアルでは、Azure 管理ポータルを使用して、Event Hub を作成する方法を説明します。また、C# のコンソール アプリケーションを使用して Event Hub にメッセージを収集し、C# の[イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、Azure 管理ポータルを使用して、Event Hub を作成する方法を説明します。また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、C# の[イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、以下が必要になります。
 
 + Microsoft Visual Studio 2013、Microsoft Visual Studio Express 2013 for Windows。
 
-+ アクティブな Azure アカウント <br/>アカウントがない場合は、無料の試用アカウントを数分で作成できます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>をご覧ください
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、￼<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>をご覧ください。
 
-## イベント ハブの作成
+## Event Hub を作成する
 
 1. [Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
-2. **[アプリケーション サービス]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
+2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
    	![][1]
 
-3. イベント ハブの名前を入力して、目的のリージョンを選択し、**[新しいイベント ハブを作成する]** をクリックします。
+3. Event Hub の名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
 
    	![][2]
 
-4. 作成した名前空間 (通常は ***event hub name*-ns**) をクリックします。
+4. 先ほど作成した名前空間 (通常は ***event hub name*-ns**) をクリックします。
 
    	![][3]
 
-5. ページの上部にある **[イベント ハブ]** タブをクリックして、作成したばかりのイベント ハブをクリックします。
+5. ページ上部にある、**[Event Hubs]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
 
    	![][4]
 
-6. 上部の **[構成]** タブをクリックし、**SendRule** という名前のルールに *Send* 権限を追加します。もう 1 つの **ReceiveRule** というルールには *Manage、Send、Listen* 権限を追加し、**[保存]** をクリックします。
+6. 上部の **[構成]** タブをクリックし、**SendRule** という名前のルールに *Send* 権限を追加します。もう 1 つの R**eceiveRule** というルールには *Manage、Send、Listen* 権限を追加し、**[保存]** をクリックします。
 
    	![][5]
 
@@ -60,7 +60,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
    	![][6]
 
-これでイベント ハブが作成され、イベントを送受信するために必要な接続文字列も用意できました。
+イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
 
@@ -69,7 +69,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 ## アプリケーションの実行
 
-これでアプリケーションを実行する準備ができました。
+これで、アプリケーションを実行する準備が整いました。
 
 1.	Visual Studio 内で **Receiver** プロジェクトを実行し、すべてのパーティションに対してレシーバーが起動するまで待機します。
 
@@ -85,7 +85,7 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 - [Event Hub を使用する完全なサンプル アプリケーション]
 - [Event Hub でイベント処理の拡張]サンプル
-- Service Bus キューを使用する [キューに格納されたメッセージング ソリューション]
+- Service Bus キューを使用する[キューに格納されたメッセージング ソリューション]
 
 <!-- Images. -->
 [1]: ./media/service-bus-event-hubs-csharp-ephcs-getstarted/create-event-hub1.png
@@ -101,10 +101,10 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 <!-- Links -->
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: http://msdn.microsoft.com/library/azure/dn836025.aspx
+[Event Hubs Overview]: http://msdn.microsoft.com/library/azure/dn836025.aspx
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 [Event Hub でイベント処理の拡張]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md
+ 
 
-
-<!--HONumber=52--> 
+<!---HONumber=July15_HO3-->

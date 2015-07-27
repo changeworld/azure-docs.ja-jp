@@ -79,4 +79,4 @@
 
 「[帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)」サンプルでは、クライアントで使用されている帯域幅を監視できます。帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

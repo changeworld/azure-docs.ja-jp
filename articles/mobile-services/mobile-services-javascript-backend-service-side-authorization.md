@@ -1,5 +1,5 @@
 <properties
-	pageTitle="JavaScript バックエンドを使用したモバイル サービスでのユーザーのサービス側承認 | モバイル デベロッパー センター"
+	pageTitle="JavaScript バックエンド モバイル サービスでのユーザーのサービス側承認 | Azure Mobile Services"
 	description="Azure モバイル サービスの JavaScript バックエンドでユーザーを承認する方法を学習します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -28,7 +28,7 @@
 
 ## <a name="register-scripts"></a>スクリプトを登録する
 
-1. Azure 管理ポータル]]にログオンし、[**Mobile Services**]をクリックして、お使いのモバイル サービスをクリックします。**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+1. [[Azure 管理ポータル]]にログオンし、[**Mobile Services**]をクリックして、お使いのモバイル サービスをクリックします。**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
 2. **[スクリプト]** をクリックし、**挿入**操作を選択して、既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
@@ -70,4 +70,4 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

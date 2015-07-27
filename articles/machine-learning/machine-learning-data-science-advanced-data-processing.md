@@ -2,7 +2,6 @@
 	pageTitle="学習ガイド: Azure での高度なデータ処理 | Microsoft Azure" 
 	description="Azure Machine Learning の Advanced Analytics Process and Technology (ADAPT) で使用するデータを準備します。" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="bradsev"  
 	manager="paulettm" />
@@ -25,4 +24,4 @@
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/machine-learning-prepare-data-for-ml.svg" width="100%" height="100%"> </object>
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

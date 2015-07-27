@@ -3,7 +3,6 @@
     pageTitle="Azure RemoteApp で Office 365 を使用する" 
     description="Azure RemoteApp で Office 365 を使用する方法について説明します。" 
     services="remoteapp" 
-    solutions="" 
 	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
@@ -49,4 +48,4 @@ RemoteApp の 30 日間の無償試用期間中は、Office 2013 Professional Pl
 試用期間の終了後に実稼働モードに移行しないと、RemoteApp コレクションは無効になります。データは保存されます - 設定とユーザーのデータはあと 90 日間保存されますので、サービスをアクティブ化してデータを失うことなく、実稼働モードに切り替えることができます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

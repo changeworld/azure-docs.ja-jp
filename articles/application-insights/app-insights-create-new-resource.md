@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/19/2015" 
+	ms.date="07/14/2015" 
 	ms.author="awills"/>
 
 # 新しい Application Insights リソースを作成します。
@@ -55,20 +55,20 @@ Visual Studio Application Insights には、Microsoft Azure *リソース*のア
 次回 Azure にログインするときにそこへ戻るには、スタート画面 (ホーム画面) 上のアプリのクイック スタート タイルを探してください。あるいは、[参照] ボタンをクリックして探します。
 
 
-## インストルメンテーション キーをコピーします。
+## インストルメンテーション キーのコピー
 
+インストルメンテーション キーは作成したリソースを識別します。これは、SDK に渡すために必要です。
 
-直前で作成したリソースにアプリの SDK からデータを送信するために、そのインストルメンテーション キーがすぐに必要になります。
+![Essentials、インストルメンテーション キーの順にクリックし、Ctrl キーを押しながら C キーを押します。](./media/app-insights-create-new-resource/02-props.png)
 
-![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-create-new-resource/02-props.png)
+## アプリケーションでの SDK のインストール
 
-## SDK の構成
+アプリで Application Insights SDK をインストールします。この手順は、アプリケーションの種類に大きく依存します。
 
 インストルメンテーション キーを使用して、[アプリケーションにインストールする SDK][start] を構成します。
 
-この手順は、使用しているアプリケーションの種類に大きく依存します。
+SDK には、コードを記述せずにテレメトリを送信する標準的なモジュールが含まれています。ユーザーの操作を追跡したり、問題をより詳しく診断したりするには、[API を使用][api]して、独自のテレメトリを送信します。
 
-場合によっては、コードを記述せずにテレメトリを送信する標準的なモジュールをインストールできます。常に、[API][api] を使用して、独自のテレメトリを送信できます。
 
 ## <a name="monitor"></a>テレメトリ データを参照
 
@@ -92,4 +92,4 @@ Visual Studio Application Insights には、Microsoft Azure *リソース*のア
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

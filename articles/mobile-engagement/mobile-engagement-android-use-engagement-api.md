@@ -3,8 +3,8 @@
 	description="最新の Android SDK - Engagement API を Android で使用する方法"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="kapiteir" 
-	manager="dwrede" 
+	authors="kpiteira" 
+	manager="dwrede"
 	editor="" />
 
 <tags 
@@ -18,7 +18,7 @@
 
 #Engagement API を Android で使用する方法
 
-このドキュメントは、ドキュメント「[Engagement を Android に統合する方法](mobile-engagement-android-integrate-engagement.md)」のアドオンです。エンゲージメントを使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
+このドキュメントは、ドキュメント「[Engagement を Android に統合する方法](mobile-engagement-android-integrate-engagement.md)」の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
 Engagement を使用してアプリケーションのセッション、アクティビティ、クラッシュ、および技術情報に関するレポートのみを作成する場合、すべての `Activity` サブクラスを対応する `EngagementActivity` クラスから継承するように設定する方法が簡単です。
 
@@ -173,7 +173,7 @@ Engagement を使用してアプリケーションのセッション、アクテ
 
 ログイン プロセス中に発生したエラーについてレポートを作成する場合は、次のとおりです。
 
-			[...] public void signIn(Context context, ...) {
+[...] public void signIn(Context context, ...) {
 
 			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
 			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
@@ -298,4 +298,4 @@ Engagement を使用してアプリケーションのセッション、アクテ
 			{"expiration":"2016-12-07","status":"premium"}
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

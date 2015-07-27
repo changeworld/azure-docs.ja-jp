@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="07/08/2015" 
 	ms.author="awills"/>
  
 # Application Insights の診断検索の使用
@@ -81,6 +81,12 @@
 
 さらに、この期間中に発生している他のイベントを確認するには、**[未定義のプロパティを持つイベントを含める]** チェック ボックスをオフにします。
 
+## Bot と Web テストのトラフィックの除外
+
+**[実トラフィックまたは人工トラフィック]** フィルターを使用し、**[実トラフィック]** にチェック マークを付けます。
+
+**[人工トラフィックのソース]** フィルターを適用することもできます。
+
 ## 個々の発生の確認
 
 この要求の名前をフィルター セットに追加して、そのイベントの個々の発生を確認できます。
@@ -89,7 +95,7 @@
 
 要求イベントの場合、要求の処理中に発生した例外が詳細情報として表示されます。
 
-例外をクリックすると、詳細が表示されます。
+例外をクリックすると、スタック トレースなど、詳細が表示されます。
 
 ![例外をクリックします](./media/app-insights-diagnostic-search/06-callStack.png)
 
@@ -192,4 +198,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

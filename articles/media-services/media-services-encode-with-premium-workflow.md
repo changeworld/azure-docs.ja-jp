@@ -265,4 +265,4 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

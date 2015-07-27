@@ -4,4 +4,4 @@
 - [iOS](../articles/notification-hubs/notification-hubs-ios-send-breaking-news.md)
 - [Android](../articles/notification-hubs/notification-hubs-aspnet-backend-android-breaking-news.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO3-->

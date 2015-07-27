@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="04/13/2015"
+   ms.date="07/14/2015"
    ms.author="elfish"/>
 
 # ユーザー エラーからの Azure SQL Database の復旧
@@ -109,4 +109,4 @@ PowerShell を使用して、プログラムでデータベースの復元を実
 復元が終了したら、[復旧データベースの最終処理](sql-database-recovered-finalize.md)に関するガイドに従って、復旧したデータベースを構成できます。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

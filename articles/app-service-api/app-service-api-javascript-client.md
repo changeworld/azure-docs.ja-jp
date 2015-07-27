@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HTML や JavaScript を使用した Azure API アプリへのアクセス" 
+	pageTitle="HTML および JavaScript を使用した Azure API アプリへのアクセス" 
 	description="HTML および JavaScript を使用して、API アプリのバックエンドにアクセスする方法について説明します。" 
 	services="app-service\api" 
 	documentationCenter=".net"
@@ -20,7 +20,7 @@
 
 ## 概要
 
-この記事では、[Azure App Service](/documentation/services/app-service/) で [API アプリ](app-service-api-apps-why-best-platform.md)の HTML や JavaScript クライアントを作成する方法を示しています。この記事は HTML や JavaScript の実践的な知識があることを前提としており、API アプリへの REST 呼び出しを実行するために [AngularJS](https://angularjs.org/) JavaScript フレームワークを使用しています。
+この記事では、[Azure App Service](/documentation/services/app-service/) で [API アプリ](app-service-api-apps-why-best-platform.md)の HTML および JavaScript クライアントを作成する方法を示しています。この記事は HTML や JavaScript の実践的な知識があることを前提としており、API アプリへの REST 呼び出しを実行するために [AngularJS](https://angularjs.org/) JavaScript フレームワークを使用しています。
 
 事前に次のいくつかの記事に目を通してから、この記事を読み進めてください。
 
@@ -310,9 +310,9 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             $scope.refresh();
         });
 
-1. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
+1\. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
 
-	> **注意**: HTML クライアント プロジェクトのポート番号を使用しないでください。API プロジェクトを右クリックし、[デバッグ]、[新しいインスタンスを開始] の順にクリックして、ポート番号を示すブラウザー ウィンドウを表示できます。
+	> **Note** Don't use the port number of the HTML client project. You can right-click the API project and click **Debug > Start New Instance** to get a browser window that shows the port number.
 
 1. HTML クライアントを実行したときに API アプリ プロジェクトも実行されていることを確認します。実行されていない場合は、JavaScript HTML が正しく機能しません。ソリューションを右クリックして、**[プロパティ]** を選択します。その後、両方の Web プロジェクトを **[デバッグなしで開始]** に設定します。最初に API プロジェクトが実行されます。 
 
@@ -365,9 +365,10 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
 
 	![ソリューション エクスプローラーの apiapp.json と Metadata](./media/app-service-api-javascript-client/18-web-app-visible-in-resource-group.png)
 
-## 概要 
+## 次のステップ 
+
 この例では、API アプリのバックエンドにアクセスするために、AngularJS を JavaScript プラットフォームとしてどのように使用できるかについて説明しました。REST アクセス機能を変更して、その他の JavaScript フレームワークを使用することもできます。
 
- 
+この例は、API アプリへの認証されていないアクセスを示します。App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

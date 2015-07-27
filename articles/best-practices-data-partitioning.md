@@ -477,4 +477,4 @@ _図 10. - 顧客の注文とそれらの詳細情報を記録するために Re
 - Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Azure (Azure の CentOS Linux VM で Redis を実行)](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx)」ページでは、Azure VM として動作する Redis ノードを構築および構成する方法を示すサンプルが詳細に説明されています。
 - Redis Web サイトの「[Data Types (データ型)](http://redis.io/topics/data-types)」ページでは、Redis および Azure Redis Cache で利用可能なデータ型が説明されています。
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

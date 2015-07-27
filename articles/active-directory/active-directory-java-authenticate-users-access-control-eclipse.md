@@ -76,9 +76,9 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 - Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。 
 - Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
 - Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
-- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690946.aspx)」を参照してください。
+- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
 - アプリケーションで使用する X.509 証明書。この証明書は .cer (公開証明書) と .PFX (Personal Information Exchange) の両方の形式のものが必要です。(この証明書の作成方法についてはこのチュートリアルで後で説明)。
-- [Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターへのデプロイ手法に精通していること。
+- [Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターへのデプロイ手法に精通していること。
 
 ## ACS 名前空間の作成
 
@@ -203,7 +203,7 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
 
 1. Eclipse の Project Explorer で、**MyACSHelloWorld** を右クリックし、**[Azure]**、**[Package for Azure]** の順にクリックします。
 2. **[Project name]** で、「**MyAzureACSProject**」と入力し、**[Next]** をクリックします。
-3. JDK とアプリケーション サーバーを選択します(これらの手順の詳細については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」のチュートリアルを参照)。
+3. JDK とアプリケーション サーバーを選択します(これらの手順の詳細については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」のチュートリアルを参照)。
 4. **[完了]** をクリックします。
 5. **[Run in Azure Emulator]** ボタンをクリックします。
 6. Java Web アプリケーションがコンピューティング エミュレーターで起動した後、ブラウザーのすべてのインスタンスを閉じます (ブラウザー セッションが開いていると ACS ログイン テストの妨げになるためです)。
@@ -237,11 +237,11 @@ Azure に展開するには、ACS 名前空間の証明書利用者領域と戻�
 
 13. **[Finish]** をクリックして、**[Edit Library]** ダイアログ ボックスを閉じます。
 14. **[OK]** をクリックして **[Properties for MyACSHelloWorld]** ダイアログ ボックスを閉じます。
-15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「**Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)**」の「[To deploy your application to Azure (アプリケーションを Azure に展開するには)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」で行ったものと同様です。 
+15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「**Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)**」の「[To deploy your application to Azure (アプリケーションを Azure に展開するには)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」で行ったものと同様です。 
 
 Web アプリケーションのデプロイ後、開いているブラウザー セッションをすべて閉じてから、Web アプリケーションを実行します。Windows Live ID 資格情報でログインするように求められます。その資格情報は証明書利用者アプリケーションの戻り先 URL に送信されます。
 
-ACS Hello World アプリケーションの使用後は展開を削除することを忘れないでください (展開の削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」を参照)。
+ACS Hello World アプリケーションの使用後は展開を削除することを忘れないでください (展開の削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」を参照)。
 
 
 ## <a name="next_steps"></a>次のステップ
@@ -309,4 +309,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

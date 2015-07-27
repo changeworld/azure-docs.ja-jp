@@ -1,10 +1,23 @@
-<properties title="" pageTitle="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" description="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" metaKeywords="" services="search" solutions="" documentationCenter="" authors="HeidiSteen" manager="mblythe" videoId="" scriptId="" />
+<properties 
+	pageTitle="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" 
+	description="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" />
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="04/20/2015" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="07/08/2015" 
+	ms.author="heidist" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)
 
-> [AZURE.NOTE]この記事では、API のリリース バージョンに含まれていない新しい機能のプロトタイプについて説明します。バージョンとサポートの詳細については、MSDN の「[検索サービスのバージョン管理](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。このプレビュー API のその他の機能の詳細については、「[Azure 検索サービス REST API バージョン: 2014-10-20-Preview](../search-api-2014-10-20-preview/)」を参照してください。
+> [AZURE.NOTE]この記事では、API のリリース バージョンに含まれていない新しい機能のプロトタイプについて説明します。バージョンとサポートの詳細については、MSDN の「[検索サービスのバージョン管理](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。このプレビュー API のその他の機能の詳細については、「[Azure 検索サービス REST API バージョン: 2014-10-20-Preview](search-api-2014-10-20-preview.md)」を参照してください。
 
 ## 概要
 
@@ -80,7 +93,7 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には (クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含めます。 
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[Azure Search の使用](search-get-started.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure プレビュー ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="CreateDataSourceRequestSyntax"></a> **要求本文の構文**
 
@@ -135,7 +148,7 @@ DocumentDB データ ソースを使用するとき、DocumentDB が与える `_
 
 ***SQL 統合変更検出ポリシー***
 
-SQL Database が [SQL 統合変更追跡] (http://technet.microsoft.com/library/cc280462(v=SQL.105).aspx) をサポートする場合、SQL 統合変更追跡ポリシーの使用が推奨されます。このポリシーは最も効率的な変更追跡を可能にし、スキーマに明示的な「ソフト削除」列がなくても、Azure Search で削除済み行を識別できます。
+SQL Database が [SQL 統合変更追跡](http://technet.microsoft.com/library/cc280462.aspx)をサポートする場合、SQL 統合変更追跡ポリシーの使用が推奨されます。このポリシーは最も効率的な変更追跡を可能にし、スキーマに明示的な「ソフト削除」列がなくても、Azure Search で削除済み行を識別できます。
 
 SQL 統合変更追跡は、SQL IaaS VM を使用している場合は SQL Server 2008 R2 より、Azure SQL を使用している場合は Azure SQL データベース V12 よりサポートされます。
 
@@ -657,4 +670,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

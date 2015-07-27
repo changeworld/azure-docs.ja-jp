@@ -2,7 +2,6 @@
 	pageTitle="Azure App Service と、それが既存の Azure サービスに与える影響" 
 	description="新しい Azure App Service とその機能が Azure の既存のサービスにどのように影響するかを説明します。" 
 	authors="yochayk" 
-	writer="yochayk" 
 	editor="yochayk" 
 	manager="nirma" 
 	services="app-service\web" 
@@ -91,4 +90,4 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

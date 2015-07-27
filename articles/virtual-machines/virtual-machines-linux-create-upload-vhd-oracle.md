@@ -227,4 +227,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

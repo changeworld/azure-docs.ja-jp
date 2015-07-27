@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="03/26/2015"
+	ms.date="07/01/2015"
     ms.author="donnam"/>
 
 # Xamarin iOS モバイル アプリケーションのオフライン同期を有効にする
@@ -166,4 +166,4 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="06/02/2015"
+	ms.topic="article"
+	ms.date="07/02/2015"
 	ms.author="curtand"/>
 
 # Azure AD の使用開始方法
@@ -43,6 +43,5 @@ Azure AD には、管理者用に多くのレポートがあります。Azure AD
 
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
- 
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

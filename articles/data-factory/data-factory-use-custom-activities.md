@@ -54,7 +54,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 ## パイプラインでのカスタム アクティビティの使用
 パイプライン内でカスタム アクティビティを使用するには:
 
-1.	プロジェクトの **bin\debug** または **bin\release** 出力フォルダーから、すべてのバイナリ ファイルを **zip ファイルにまとめます**。 
+1.	プロジェクトの **bin\\debug** または **bin\\release** 出力フォルダーから、すべてのバイナリ ファイルを **zip ファイルにまとめます**。 
 2.	この zip ファイルを BLOB として **Azure BLOB ストレージ**に**アップロード**します。 
 3.	**パイプライン JSON** ファイルを更新して、パイプライン JSON 内で、zip ファイル、カスタム アクティビティ DLL、アクティビティ クラス、および zip ファイルが格納された BLOB を参照します。JSON ファイル内では:
 	<ol type ="a">
@@ -286,8 +286,8 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 
 10. プロジェクトをコンパイルします。メニューの **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\debug** フォルダーまたは **bin\release** フォルダーに移動します。
-12. <project folder>\bin\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。
+11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\\debug** フォルダーまたは **bin\\release** フォルダーに移動します。
+12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。
 13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **MyBlobStore** リンク サービスが使用する Azure BLOB ストレージ内にあります。**blobcustomactivitycontainer** が存在しない場合は、この BLOB コンテナーを作成します。 
 
 
@@ -523,4 +523,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

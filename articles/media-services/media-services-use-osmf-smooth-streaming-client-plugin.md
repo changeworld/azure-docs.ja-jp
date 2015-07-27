@@ -403,4 +403,4 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 
 [OSMF を更新するための](http://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)Microsoft Adaptive Streamingプラグイン
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

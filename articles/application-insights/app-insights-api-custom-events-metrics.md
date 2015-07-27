@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/09/2015" 
+	ms.date="07/11/2015" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -35,6 +35,7 @@ Application Insights でデータを集めるとき、この API を使用すれ
 [`TrackException`](#track-exception)|例外を記録し、診断に利用します。他のイベントとの関連で例外の発生箇所を追跡し、スタック トレースを調べます。
 [`TrackRequest`](#track-request)| サーバー要求の頻度と期間を記録し、パフォーマンス分析に利用します。
 [`TrackTrace`](#track-trace)|メッセージを記録し、診断に利用します。サード パーティのログをキャプチャすることもできます。
+[`TrackDependency`](#track-dependency)|アプリが依存する外部コンポーネントへの呼び出しの実行時間と頻度をログに記録します。
 
 これらのテレメトリの呼び出しのほとんどに[プロパティとメトリックをアタッチ](#properties)できます。
 
@@ -231,6 +232,7 @@ TelemetryClient はスレッド セーフです。
     telemetry.TrackEvent(event);
 
 
+
 #### <a name="timed"></a> タイミング イベント
 
 何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
@@ -367,7 +369,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 ## 例外を追跡する
 
-例外を Application Insights に送信して[数え][metrics]、問題の発生頻度を示し、[個々の問題を調べます][diagnostic]。
+例外を Application Insights に送信して[数え][metrics]、問題の発生頻度を示し、[個々の問題を調べます][diagnostic]。レポートにはスタック トレースが含まれます。
 
 *C#*
 
@@ -397,6 +399,30 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
 `message`のサイズ制限はプロパティの制限よりも高くなっています。メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
+
+## 依存関係の追跡
+
+標準の依存関係追跡モジュールは、データベースや REST API などの外部の依存関係への呼び出しのログにこの API を使用します。外部の依存関係はモジュールによって自動的に検出されますが、同じように扱える追加のコンポーネントが必要になる可能性もあります。
+
+たとえば、自分で記述していないアセンブリを使ってコードを作成する場合、それに対するすべての呼び出しを測定し、何が応答時間に貢献するかを知ることができます。このデータを Application Insights 内の依存関係グラフに表示するには、データを `TrackDependency` を使用して送信します。
+
+```C#
+
+            var success = false;
+            var startTime = DateTime.UtcNow;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                success = dependency.Call();
+            }
+            finally
+            {
+                timer.Stop();
+                telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+            }
+```
+
+標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) を編集して `DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。
 
 ## <a name="defaults"></a>選択したカスタム テレメトリに既定値を設定する
 
@@ -432,6 +458,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
     gameTelemetry.TrackEvent("WinGame");
     
 個別のテレメトリの呼び出しはプロパティ ディクショナリの既定値を上書きできます。
+
 
 
 
@@ -692,6 +719,9 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
 * **User** によって、ユーザーを数えることができます。Web アプリケーションで、Cookie がある場合、ユーザー Id は Cookie から取得されます。Cookie がない場合は、新しい Id が生成されます。ユーザーがアプリケーションにログインする必要がある場合は、認証済みの ID から Id を設定できます。これにより、ユーザーが別のコンピューターからサインインしている場合でも、正確でより信頼できる数が提供されます。 
 
+
+
+
 ## 制限
 
 アプリケーションごとのメトリックとイベントの数には制限があります。
@@ -704,6 +734,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * *質問: データは、どのくらいの期間保持されますか。*
 
     [データの保持とプライバシーに関するページ][data]を参照してください。
+
 
 ## リファレンス ドキュメント
 
@@ -747,4 +778,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

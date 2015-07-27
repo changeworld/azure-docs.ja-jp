@@ -1,9 +1,7 @@
 <properties
-	title="Elastic database Split-Merge tool tutorial"
 	pageTitle="Elastic Database Split-Merge ツールに関するチュートリアル | Microsoft Azure"
 	description="Elastic Database ツールによる分割とマージ"
-	metaKeywords="elastic database tools, split and merge, Azure SQL Database sharding, elastic scale, splitting and merging elastic databases"
-	services="sql-database" documentationCenter=""  
+	services="sql-database" documentationCenter="" 
 	manager="jeffreyg"
 	authors="sidneyh"/>
 
@@ -13,7 +11,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2015"
+	ms.date="07/14/2015"
 	ms.author="sidneyh" />
 
 # Elastic Database Split-Merge ツールに関するチュートリアル
@@ -23,19 +21,19 @@
 2. コマンド プロンプトを開き、nuget.exe をダウンロードしたディレクトリに移動します。
 3. 次のコマンドを使用して、最新の Split-Merge パッケージを現在のディレクトリにダウンロードします。`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge`  
 
-前の手順を実行すると Split-Merge ファイルが現在のディレクトリにダウンロードされます。ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。**content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、**content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要な .dll) が格納されています。
+前の手順を実行すると Split-Merge ファイルが現在のディレクトリにダウンロードされます。ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。**content\\splitmerge\\service** サブディレクトリに Split-Merge サービス ファイル、**content\\splitmerge\\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要な .dll) が格納されています。
 
 ## 前提条件
 
-1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。[Azure プレビュー ポータル](https://ms.portal.azure.com)にアクセスします。新しい **SQL Database** を作成します。データベース名を入力し、新しいユーザーとパスワードを作成します。今後の使用のために、パスワードと名前を必ず記録しておいてください。
+1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。[Azure ポータル](https://ms.portal.azure.com)にアクセスします。新しい **SQL Database** を作成します。データベース名を入力し、新しいユーザーとパスワードを作成します。今後の使用のために、パスワードと名前を必ず記録しておいてください。
 
-2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。[プレビュー ポータル](https://ms.portal.azure.com)の **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。[保存] アイコンをクリックします。
+2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。[保存] アイコンをクリックします。
 
     ![使用できるサービス][1]
 
-3. 診断の出力に使用する Azure Storage アカウントを作成します。[Azure 管理ポータル](https://manage.windowsazure.com)に移動します。左下の **[新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+3. 診断の出力に使用する Azure Storage アカウントを作成します。Azure プレビュー ポータルにアクセスします。左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
 
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。[Azure 管理ポータル](https://manage.windowsazure.com)に移動します。左下の **[新規]** をクリックし、**[コンピューティング]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
+4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。Azure プレビュー ポータルにアクセスします。左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、および **[作成]** の順にクリックします。
 
 
 ## 分割-結合サービスの構成
@@ -54,13 +52,13 @@
 5.    **SplitMergeWorker** ロールの場合は、**WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure ストレージへの有効な接続文字列を入力します。
         
 ### セキュリティの構成
-サービスのセキュリティを構成する詳細な手順については、「[Split-Merge セキュリティ構成](../sql-database-elastic-scale-configure-security.md)」を参照してください。
+サービスのセキュリティを構成する詳細な手順については、「[Split-Merge セキュリティ構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
 
 このチュートリアルを完了するのに適したシンプルなテスト デプロイという目的のため、最小限の構成の手順セットを行ってサービスを起動および実行します。以下の手順では、サービスを実行する 1 つのコンピューター/アカウントのみがサービスと通信できます。
 
 ### 自己署名証明書の作成
 
-新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](http://msdn.microsoft.com/ja-jp/library/ms229859.aspx) ウィンドウを使用して次のコマンドを実行します。
+新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](http://msdn.microsoft.com/library/ms229859.aspx) ウィンドウを使用して次のコマンドを実行します。
 
     makecert ^
     -n "CN=*.cloudapp.net" ^
@@ -87,7 +85,7 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 
 ### クラウド サービスへの PFX ファイルのアップロード
 
-[Azure 管理ポータル](https://manage.windowsazure.com)に移動します。
+[Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
 
 1. **[クラウド サービス]** を選択します。
 2. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
@@ -113,10 +111,11 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
 
-運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。この詳細な手順については、[セキュリティの構成](../sql-database-elastic-scale-configure-security.md)に関するページを参照してください。
+運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。この詳細な手順については、[セキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)に関するページを参照してください。
 
 ### Split-Merge サービスのデプロイ
-1. [Azure 管理ポータル](https://manage.windowsazure.com)に移動します。
+
+1. [Azure ポータル](https://manage.windowsazure.com)にアクセスします。
 2. 左側の **[クラウド サービス]** タブをクリックし、先ほど作成したクラウド サービスを選択します。
 3. **[ダッシュボード]** をクリックします。
 4. ステージング環境を選択し、**[新しいステージング環境のデプロイをアップロードします]** をクリックします。
@@ -131,6 +130,7 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 
 
 ## デプロイのトラブルシューティング
+
 Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。SSL が前の説明どおりに構成されていることをご確認ください。
 
 worker ロールのオンライン化に失敗した場合に最も考えられるのは、先に作成した状態データベースへの接続に問題があることです。
@@ -145,6 +145,7 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
 * Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。確認するには、https://manage.windowsazure.com を開き、左側の [SQL Databases] をクリックし、上部の [サーバー] をクリックしてサーバーを選択します。上部の **[構成]** をクリックし、**[Azure サービス]** の値が [はい] に設定されていることを確認します(この記事の冒頭にある前提条件をご覧ください)。
 
 ## Split-Merge サービスのデプロイのテスト
+
 ### Web ブラウザーを使用した接続
 
 Split-Merge サービスの Web エンドポイントを決定します。エンドポイントを見つけるには、Azure 管理ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。既定のセキュリティ設定では HTTP エンドポイントは無効なため、**http://** を **https://** で置き換えます。この URL のページをブラウザーに読み込みます。
@@ -327,4 +328,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

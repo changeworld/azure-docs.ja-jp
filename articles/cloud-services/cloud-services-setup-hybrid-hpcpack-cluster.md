@@ -106,7 +106,7 @@ HPC Pack ではヘッド ノードに自己署名証明書 (既定の Microsoft 
 
 	![証明書の設定][upload_cert1]
 
-4. ヘッド ノードでファイル C:\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer を参照し、**チェック** マークのボタンをクリックします。
+4. ヘッド ノードでファイル C:\\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer を参照し、**チェック** マークのボタンをクリックします。
 
 	![証明書のアップロード][install_hpc10]
 
@@ -347,4 +347,4 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/23/2015" 
+	ms.date="07/01/2015" 
 	ms.author="tomfitz"/>
 
 # 新しいゲートウェイを使用する API アプリのプロビジョニング
@@ -24,7 +24,7 @@
 
 アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 
-完全なテンプレートについては、[新しいゲートウェイを使用する API アプリのテンプレート](../../templates/app-service-api-arm-new-gateway-provision/)に関するページを参照してください。
+完全なテンプレートについては、[新しいゲートウェイを使用する API アプリのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/201-api-app-gateway-new/azuredeploy.json)に関するページを参照してください。
 
 ## デプロイ対象
 
@@ -34,9 +34,28 @@
 - 新しいゲートウェイ
 - 新しい App Service ホスティング プラン
 
+デプロイを自動的に実行するには、次のボタンをクリックします。
+
+[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-app-gateway-new%2Fazuredeploy.json)
+
 ## パラメーター
 
 [AZURE.INCLUDE [app-service-api-deploy-parameters](../../includes/app-service-api-deploy-parameters.md)]
+
+### hostingPlanSettings
+
+新しいホスティング プランの設定です。
+
+    "hostingPlanSettings": {
+      "type": "Object",
+      "defaultValue": {
+        "computeMode": "Dedicated",
+        "siteMode": "Limited",
+        "sku": "Standard",
+        "workerSize": "0",
+        "hostingEnvironment": ""
+      }
+    }
     
 ## 変数
 
@@ -72,7 +91,7 @@ API アプリのサービス ホスティング プランを作成します。
 
 ゲートウェイをホストする Web アプリを作成します。
 
-**kind** が **gateway** に設定されています。これにより、この Web アプリがゲートウェイをホストしていることが Azure ポータルに通知されます。Web アプリは、ポータルの Web アプリの参照ブレードに表示されなくなります。ホスティング アプリとゲートウェイの間にリンクが定義されています。アプリ設定セクションには、API アプリをホストするために必要な値が含まれています。
+**kind** が **gateway** に設定されています。これにより、この Web アプリがゲートウェイをホストしていることが Azure ポータルに通知されます。Web アプリは、ポータルの Web アプリの参照ブレードに表示されなくなります。ホスティング Web アプリとゲートウェイの間にリンクが定義されています。アプリ設定セクションには、API アプリをホストするために必要な値が含まれています。
 
 
     {
@@ -159,7 +178,7 @@ API アプリのサービス ホスティング プランを作成します。
 
 API アプリをホストする Web アプリを作成します。
 
-**kind** が **apiApp** に設定されています。これにより、この Web アプリがゲートウェイをホストしていることが Azure ポータルに通知されます。Web アプリは、ポータルの Web アプリの参照ブレードに表示されなくなります。アプリには、既定の空の API アプリ パッケージをインストールする拡張機能が含まれています。API アプリとホスティング Web アプリの間にリンクが定義されています。アプリ設定セクションには、API アプリをホストするために必要な値が含まれています。
+**kind** が **apiApp** に設定されています。これにより、この Web アプリが API アプリをホストしていることが Azure ポータルに通知されます。Web アプリは、ポータルの Web アプリの参照ブレードに表示されなくなります。アプリには、既定の空の API アプリ パッケージをインストールする拡張機能が含まれています。API アプリとホスティング Web アプリの間にリンクが定義されています。アプリ設定セクションには、API アプリをホストするために必要な値が含まれています。
 
     {
       "type": "Microsoft.Web/sites",
@@ -272,13 +291,13 @@ API アプリを作成します。
 
 ### PowerShell
 
-    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/tfitzmac/AppServiceTemplates/master/new-gateway-new-plan-new-apiapp.json
+    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-api-app-gateway-new/azuredeploy.json
 
 ### Azure CLI
 
-    azure group deployment create --template-uri https://raw.githubusercontent.com/tfitzmac/AppServiceTemplates/master/new-gateway-new-plan-new-apiapp.json
+    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-api-app-gateway-new/azuredeploy.json
 
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

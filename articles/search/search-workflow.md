@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article" 
 	ms.tgt_pltfrm="na"
-	ms.date="04/23/2015"
+	ms.date="07/08/2015"
 	ms.author="heidist"/>
 
 # Azure Search 開発の一般的ワークフロー
@@ -22,7 +22,7 @@
 
 次のセクションでは、Azure Search がアプリケーションの検索要件を満たすかどうかを評価する際に役立つ、最初のプロトタイプの一般的なワークフローを紹介します。この記事の後半では、より重大なアプリケーション開発作業を考慮する、設計上の重要な決定について取り上げます。
 
-プロトタイプの作成を開始する前に、準備として入門チュートリアルの 1 つか、この [1 時間の詳細なプレゼンテーション動画](http://azure.microsoft.com/documentation/videos/tech-ed-europe-2014-azure-search-deep-dive/)をご利用されることをお勧めします。入門チュートリアルは [.NET](../search-get-started-dotnet/)、[Java](../search-get-started-java/)、[Node.JS](../search-get-started-nodejs/) 言語のものが用意されています。
+プロトタイプの作成を開始する前に、準備として入門チュートリアルの 1 つか、この [1 時間の詳細なプレゼンテーション動画](http://azure.microsoft.com/documentation/videos/tech-ed-europe-2014-azure-search-deep-dive/)をご利用されることをお勧めします。入門チュートリアルは [.NET](search-get-started-dotnet.md)、[Java](search-get-started-java.md)、[Node.JS](search-get-started-nodejs.md) 言語のものが用意されています。
 
 ##プロトタイプの開発
 
@@ -34,7 +34,7 @@
 
 ###手順 1: サービスをプロビジョニングする
 
-Azure Search は Azure サブスクリプションで利用できる完全管理オンライン サービスです。[Azure にサインアップすると](http://azure.microsoft.com/pricing/free-trial/)、検索サービスを簡単に追加できます。検索サービスをサブスクリプションに追加する方法については、「[ポータルで検索サービスを作成する](../search-create-service-portal/)」を参照してください。
+Azure Search は Azure サブスクリプションで利用できる完全管理オンライン サービスです。[Azure にサインアップすると](http://azure.microsoft.com/pricing/free-trial/)、検索サービスを簡単に追加できます。検索サービスをサブスクリプションに追加する方法については、「[ポータルで検索サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 2 つの価格レベルから選択できます。プロトタイプの作成には共有 (無料) サービスをお勧めします。注意点として、扱うデータの量が限られます。既存の会員様 (試用版または通常の会員) は共有サービスを無料で利用し、短時間で設定できます。ただし、使用できるインデックスとドキュメントの数に制約があり、3 つのインデックス、インデックスごとに最大 10,000 ドキュメント、50 MB のストレージ合計のいずれかに到達した時点で上限となります。
 
@@ -42,7 +42,7 @@ Azure Search は Azure サブスクリプションで利用できる完全管理
 
 サービスを作成したら、インデックスの作成を開始できます。スキーマの定義から始めます。
 
-インデックスを作成する最も迅速かつ簡単な方法はポータルを利用することです。少なくとも、各ドキュメントに一意のキーを含め、検索可能データが含まれるフィールドを 1 つ以上含める必要があります。最初に、「[ポータルでインデックスを作成する](../search-create-index-portal/)」を参照してください。
+インデックスを作成する最も迅速かつ簡単な方法はポータルを利用することです。少なくとも、各ドキュメントに一意のキーを含め、検索可能データが含まれるフィールドを 1 つ以上含める必要があります。最初に、「[ポータルでインデックスを作成する](search-create-index-portal.md)」を参照してください。
 
 > [AZURE.NOTE]**Azure Search インデックス内**
 >
@@ -66,14 +66,14 @@ Azure Search にインデックスを保存したら、次の手順として、�
 
 ####インデックスにデータを読み込む方法
 
-1 つの方法としてインデクサーの使用があります。Azure の Azure DocumentDB または SQL Server のリレーショナル データ ソースの場合 (特に、Azure SQL Database または Azure VM の SQL Server)、[インデクサー](https://msdn.microsoft.com/library/dn946891.aspx)を使用し、サポートされているデータ ソースからドキュメントを取得します。ドキュメントを読み込むためにインデクサーを使用するコード サンプルは [.NET](../search-get-started-dotnet/)、[Java](../search-get-started-java/)、[Node.JS](../search-get-started-nodejs/) の入門チュートリアルにあります。
+1 つの方法としてインデクサーの使用があります。Azure の Azure DocumentDB または SQL Server のリレーショナル データ ソースの場合 (特に、Azure SQL Database または Azure VM の SQL Server)、[インデクサー](https://msdn.microsoft.com/library/dn946891.aspx)を使用し、サポートされているデータ ソースからドキュメントを取得します。ドキュメントを読み込むためにインデクサーを使用するコード サンプルは [.NET](search-get-started-dotnet.md)、[Java](search-get-started-java.md)、[Node.JS](search-get-started-nodejs.md) の入門チュートリアルにあります。
 
 2 つ目の選択肢は、REST API または .NET ライブラリを利用し、ドキュメントを読み込む簡単なプログラムを記述することです。
 
 - [ドキュメントの追加、更新、削除 (REST API)](https://msdn.microsoft.com/library/dn798930.aspx)
 - [DocumentOperationsExtensions クラス](https://msdn.microsoft.com/library/microsoft.azure.search.documentoperationsextensions.aspx)
 
-非常に少ないデータセットで機能する 3 つ目の選択肢は [Fiddler](../search-fiddler/) または [Chrome Postman](../search-chrome-postman/) を使用してドキュメントをアップロードすることです。
+非常に少ないデータセットで機能する 3 つ目の選択肢は [Fiddler](search-fiddler.md) または [Chrome Postman](search-chrome-postman.md) を使用してドキュメントをアップロードすることです。
 
 4 つ目の選択肢は、おそらく最も簡単な方法ですが、ソリューションの組み込みデータベース (.mdf) からドキュメントを読み込む [Adventure Works C# REST API のサンプル](https://azuresearchadventureworksdemo.codeplex.com/)とソリューションに含まれる JSON データ ファイルからデータを読み込む[スコアリング プロファイル C# REST API のサンプル](https://azuresearchscoringprofiles.codeplex.com/)からコードを借りることです。
 
@@ -83,7 +83,7 @@ Azure Search にインデックスを保存したら、次の手順として、�
 
 ドキュメントがインデックスに読み込まれたら、最初のクエリを記述できます。
 
-検索サービスから最初の検索結果を取得する最も速い方法は、[Fiddler](../search-fiddler/) または [Chrome Postman](../search-chrome-postman/) を使用して応答を表示することです。ただし、現実的には、読みやすい形式で結果を表示する簡単な UI コードを記述することになります。
+検索サービスから最初の検索結果を取得する最も速い方法は、[Fiddler](search-fiddler.md) または [Chrome Postman](search-chrome-postman.md) を使用して応答を表示することです。ただし、現実的には、読みやすい形式で結果を表示する簡単な UI コードを記述することになります。
 
 検索操作のための API には次があります。
 
@@ -100,19 +100,19 @@ Azure Search のクエリは非常に簡単です。URI に `search=*` を含め
 
 サービスとインデックスが与えられたので、検索をさらに充実させるような各種機能を試すことができます。試すべき機能の簡単な一覧を次に示します。
 
-**検索ページ**では、多くの場合、結果セットにドキュメント カウントが表示されます。あるいは、改ページを使用し、結果をもっと管理しやすい数に分割します。詳細については、「[改ページ調整](../search-pagination-page-layout/)」を参照してください。
+**検索ページ**では、多くの場合、結果セットにドキュメント カウントが表示されます。あるいは、改ページを使用し、結果をもっと管理しやすい数に分割します。詳細については、「[改ページ調整](search-pagination-page-layout.md)」を参照してください。
 
 **searchMode=all** は Azure Search による NOT 演算子の評価方法を変更するクエリ パラメーターです。既定では、NOT (-) を含むクエリは結果を絞り込まず、拡大します。このパラメーターを設定し、NOT 演算子の評価方法を変更できます。この詳細は「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」または「[SearchMode 列挙](https://msdn.microsoft.com/library/microsoft.azure.search.models.searchmode.aspx)」にあります。
 
-**スコアリング プロファイル**は検索スコアの押し上げに使用されます。事前定義基準に一致する項目が検索結果の上位に表示されます。この機能の詳細については、「[スコアリング プロファイルの概要](../search-get-started-scoring-profiles/)」を参照してください。
+**スコアリング プロファイル**は検索スコアの押し上げに使用されます。事前定義基準に一致する項目が検索結果の上位に表示されます。この機能の詳細については、「[スコアリング プロファイルの概要](search-get-started-scoring-profiles.md)」を参照してください。
 
 **フィルター**は選択に基準を追加し、検索結果を絞り込むために使用されます。フィルターの式はクエリ内に配置されます。詳細については、「[ドキュメントの検索](https://msdn.microsoft.com/library/dn798927.aspx)」を参照してください。
 
-**ファセット ナビゲーション**は自律フィルター処理のために使用されます。Azure Search が構造を構築して返し、コードがファセット ナビゲーション構造を検索結果ページに表示します。詳細については、「[ファセット ナビゲーション](../search-faceted-navigation/)」を参照してください。
+**ファセット ナビゲーション**は自律フィルター処理のために使用されます。Azure Search が構造を構築して返し、コードがファセット ナビゲーション構造を検索結果ページに表示します。詳細については、「[ファセット ナビゲーション](search-faceted-navigation.md)」を参照してください。
 
 **サジェスター**は先行入力またはオートコンプリートのクエリであり、検索語句の最初の文字が入力されると、検索語句の候補を返します。詳細については、「[提案操作](https://msdn.microsoft.com/library/dn798936.aspx)」または「[Suggesters クラス](https://msdn.microsoft.com/library/microsoft.azure.search.models.suggester.aspx)」を参照してください。
 
-**言語アナライザー**は、テキストの解析中に、使用される言語の規則を提供します。Azure Search の既定の言語アナライザーは Lucene English です。ただし、インデックスに指定すれば、別のアナライザーまたは複数のアナライザーを使用できます。Lucene アナライザーはすべての API で使用できます。Microsoft の自然言語のプロセッサは [2015-02-28-Preview REST API](../search-api-2015-02-28-preview/) でのみ利用できます。詳細については、「[言語サポート](https://msdn.microsoft.com/library/dn879793.aspx)」を参照してください。
+**言語アナライザー**は、テキストの解析中に、使用される言語の規則を提供します。Azure Search の既定の言語アナライザーは Lucene English です。ただし、インデックスに指定すれば、別のアナライザーまたは複数のアナライザーを使用できます。Lucene アナライザーはすべての API で使用できます。Microsoft の自然言語のプロセッサは [2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) でのみ利用できます。詳細については、「[言語サポート](https://msdn.microsoft.com/library/dn879793.aspx)」を参照してください。
 
 ###手順 6: インデックスとドキュメントの更新
 
@@ -144,7 +144,7 @@ Azure Search は 2 つのプログラミング モデルを提供します。.NE
 - [moreLikeThis 機能 - プレビューのみ](../search-api-2015-02-28-preview/)
 - [管理 API](https://msdn.microsoft.com/library/dn832684.aspx)
 
-[更新情報](../search-latest-updates/)記事を定期的に確認してください。機能ステータスの変更がわかります。
+[更新情報](search-latest-updates.md)記事を定期的に確認してください。機能ステータスの変更がわかります。
 
 ###データの同期方法としてプッシュまたはプルを選択する
 
@@ -191,4 +191,4 @@ Standard 価格レベルのみをスケールアップまたはスケールダ�
 [1]: ./media/search-workflow/AzSearch-Workflow.png
  
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

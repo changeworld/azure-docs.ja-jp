@@ -16,24 +16,24 @@
    ms.date="06/09/2015"
    ms.author="danlep"/>
 
-# Azure コマンドライン インターフェイス (Azure CLI) を使用して VM を作成する
+# Azure Command-Line Interface (Azure CLI) を使用して VM を作成する
 Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。
 
 Azure CLI をインストールして Azure サブスクリプションを持つことで、いたずらに仮想マシンを作成せずに済みます。手順を追って見ていきましょう。Azure アカウントをお持ちでない場合は、[無料版を取得してください](http://azure.microsoft.com/pricing/free-trial/)。
 
 ## Azure CLI のインストール
 
-次の手順に従って、[Azure CLI](../xplat-cli.md#install) をインストールします。
+[Azure CLI のインストール](../xplat-cli.md#install)の手順に従ってください。
 
-## Azure CLI を使用して Azure に接続します。
+## Azure CLI を使用して Azure へ接続する
 
 Azure CLI のインストールを個人の Azure アカウント、仕事用アカウント、学校用アカウントに紐付けることができます。相違点を理解して選択するには、「[Azure サブスクリプションに関連付ける方法](../xplat-cli.md#configure)」を参照してください。
 
-## Azure での仮想マシンの作成と接続
+## Azure で VM を作成および接続する
 
 イメージを選択 (またはアップロード) し、`azure vm create` コマンドを使って仮想マシンを作成します
 
-1. コマンドラインでイメージを選択するには、`azure vm image list` コマンドを使って利用できる仮想マシンのイメージの一覧を取得します。非常に多くのイメージがあるため、`more` で結果をページングしたり、`grep` (Linux) や `findstr` (Windows) でフィルター処理したりできます。たとえば、Linux で Ubuntu のイメージを探している場合、次のようなコマンドを使用します。
+1. コマンドラインでイメージを選択するには、`azure vm image list` コマンドを使って利用できる仮想マシンのイメージの一覧を取得します。非常に多くのイメージがあるため、`more` を使用して結果をページングしたり、`grep` (Linux) や `findstr` (Windows) を使用してフィルター処理できます。たとえば、Linux で Ubuntu のイメージを探している場合、次のようなコマンドを使用します。
 
         azure vm image list | grep Ubuntu
 
@@ -45,9 +45,7 @@ Azure CLI のインストールを個人の Azure アカウント、仕事用ア
 
         azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-jp-30GB
 
-2. 仮想マシンの作成
-
-    仮想マシンのイメージを選択したら、`vm create` コマンドを使ってイメージを作成します。このコマンドには多くのオプションがあります。help コマンドで一覧を表示できます。
+2. 仮想マシンのイメージを選択したら、`vm create` コマンドを使ってイメージを作成します。このコマンドには多くのオプションがあります。`help` コマンドを使用して一覧表示できます。
 
         vm create --help
 
@@ -71,10 +69,9 @@ Azure CLI のインストールを個人の Azure アカウント、仕事用ア
 
     ssh myadminuser@my-new-cli-vm.cloudapp.net
 
-Azure CLI を使って Azure インフラストラクチャを管理する多くの具体例については、[Azure CLI コマンド リファレンス](../virtual-machines-command-line-tools.md)に関するページを参照してください。
+Azure CLI を使って Azure インフラストラクチャを管理する多くの具体例については、[Azure CLI コマンド リファレンスに関するページ](../virtual-machines-command-line-tools.md)を参照してください。
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
- 
 
-<!---HONumber=July15_HO1-->
+<!---HONumber=July15_HO3-->

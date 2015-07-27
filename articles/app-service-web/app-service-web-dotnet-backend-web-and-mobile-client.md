@@ -21,4 +21,4 @@
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-web-and-mobile](../../includes/app-service-mobile-dotnet-backend-web-and-mobile.md)]
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

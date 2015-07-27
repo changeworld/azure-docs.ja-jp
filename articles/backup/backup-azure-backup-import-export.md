@@ -1,19 +1,11 @@
 <properties
-   pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理"
+   pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理 | Microsoft Azure"
    description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
    services="backup"
    documentationCenter=""
-   authors="prvijay"
+   authors="aashishr"
    manager="shreeshd"
-   editor=""/>
-<tags
-   ms.service="backup"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="storage-backup-recovery"
-   ms.date="04/07/2015"
-   ms.author="prvijay"/>
+   editor=""/> <tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/14/2015" ms.author="aashishr"; "jimpark"/>
 
 # Azure Backup でのオフライン バックアップのワークフロー
 
@@ -26,51 +18,44 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 ## 前提条件
 
 1. Azure Import/Export のワークフローを理解することが重要です (詳しくは[こちら](../storage-import-export-service.md)をご覧ください)。
-
 2. ワークフローを開始する前に、Azure Backup 資格情報コンテナーが作成され、資格情報コンテナーの資格情報がダウンロードされ、Azure Backup エージェントが Windows Server、Windows クライアント、System Center Data Protection Manager (SCDPM) サーバーのいずれかにインストールされ、Azure Backup 資格情報コンテナーにコンピューターが登録されていることを確認します。
-
 3. データをバックアップするコンピューターで、[こちら](https://manage.windowsazure.com/publishsettings)から Azure 発行ファイル設定をダウンロードします。
-
 4. *ステージング場所*を準備します。これは、コンピューター上のネットワーク共有や追加ドライブにすることができます。ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (これより少ない領域が使用されます)。ステージング領域は '一時ストレージ' であり、このワークフロー中に一時的に使用されます。
-
 5. 外部 SATA ドライブ ライター、外部 3.5 インチ SATA ドライブ。Import/Export サービスで使用できるのは、3.5 インチ SATA II/III ハード ドライブだけです。4 TB を超えるハード ドライブは、サポートされていません。大部分のコンピューターには、SATA II/III ディスクを SATA II/III USB アダプターで外部接続できます。サービスでサポートされている最新のドライブについては、Azure Import/Export のドキュメントをご確認ください。
-
-5. SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
-
-6. [こちら](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)から、SATA ドライブ ライターが接続されているコンピューターに Azure Import/Export ツールをダウンロードします。
-
+6. SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
+7. [こちら](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)から、SATA ドライブ ライターが接続されているコンピューターに Azure Import/Export ツールをダウンロードします。
 
 ## ワークフロー
 このセクションで提供される情報は、**オフライン バックアップ** ワークフローを完了するためのものなので、このデータを Azure データ センターに配信したり、Azure ストレージにアップロードしたりできます。インポート サービスやプロセスの他の側面について質問がある場合は、[上記](../storage-import-export-service.md)で参照したインポート サービスの概要をご覧ください。
 
 ### オフライン バックアップを開始する
 
-1. バックアップのスケジュール設定の一部として、次の画面が表示されます (Windows Server、Windows クライアント、SCDPM 上)。<br/> ![インポート画面][1]
+1. バックアップのスケジュール設定の一部として、次の画面が表示されます (Windows Server、Windows クライアント、SCDPM 上)。
 
-  SCDPM の対応する画面は、次のように表示されます。<br/> ![DPM のインポート画面][8]
+    ![インポート画面](./media/backup-azure-backup-import-export/importscreen.png)
 
-各値の説明:
+    SCDPM の対応する画面は、次のように表示されます。<br/> ![DPM のインポート画面](./media/backup-azure-backup-import-export/dpmoffline.png)
 
-+ **ステージング場所** - これは、初期バックアップ コピーが書き込まれる一時的なストレージの場所を参照します。これは、ネットワーク共有やローカル コンピューターにすることができます。
+    各値の説明:
 
-+ **Azure インポート ジョブ名** - このワークフローの完了の一部として、Azure ポータルで*インポート ジョブ*を作成する必要があります (ドキュメントの後半で説明します)。後で Azure ポータルでも使用する名前を入力します。
+    - **ステージング場所** - これは、初期バックアップ コピーが書き込まれる一時的なストレージの場所を参照します。これは、ネットワーク共有やローカル コンピューターにすることができます。
+    - **Azure インポート ジョブ名** - このワークフローの完了の一部として、Azure ポータルで*インポート ジョブ*を作成する必要があります (ドキュメントの後半で説明します)。後で Azure ポータルでも使用する名前を入力します。
+    - **Azure 発行設定** - これは、サブスクリプションのプロファイルに関する情報を含む XML ファイルです。サブスクリプションに関連付けられている、セキュリティで保護された資格情報も含まれています。このファイルは[こちら](https://manage.windowsazure.com/publishsettings)からダウンロードできます。発行設定ファイルへのローカル パスを指定します。
+    - **Azure サブスクリプション ID** - Azure インポート ジョブを開始する Azure サブスクリプション ID を指定します。複数の Azure サブスクリプションを使用している場合は、インポート ジョブに関連付けられている ID を使用します。
+    - **Azure ストレージ アカウント** - このインポート ジョブに関連付ける Azure ストレージ アカウントの名前を入力します。
+    - **Azure ストレージ コンテナー** - このジョブのデータのインポート先のストレージ BLOB 名を入力します。
 
-+ **Azure 発行設定** - これは、サブスクリプションのプロファイルに関する情報を含む XML ファイルです。サブスクリプションに関連付けられている、セキュリティで保護された資格情報も含まれています。このファイルは[こちら](https://manage.windowsazure.com/publishsettings)からダウンロードできます。発行設定ファイルへのローカル パスを指定します。
+2. ワークフローが完了したら、Azure Backup MMC で **[今すぐバックアップ]** を選択してオフラインのバックアップ コピーを開始します。初期バックアップが、この手順の一部としてステージング領域に書き込まれます。
 
-+ **Azure サブスクリプション ID** - Azure インポート ジョブを開始する Azure サブスクリプション ID を指定します。複数の Azure サブスクリプションを使用している場合は、インポート ジョブに関連付けられている ID を使用します。
+    ![今すぐバックアップ](./media/backup-azure-backup-import-export/backupnow.png)
 
-+ **Azure ストレージ アカウント** - このインポート ジョブに関連付ける Azure ストレージ アカウントの名前を入力します。
+    **[保護グループ]** をクリックし、**[回復ポイントの作成]** オプションを選択して、SCDPM の対応するワークフローを有効にします。次に、**[オンライン保護]** オプションを選択します。
 
-+ **Azure ストレージ コンテナー** - このジョブのデータのインポート先のストレージ BLOB 名を入力します。
+    ![DPM の今すぐバックアップ](./media/backup-azure-backup-import-export/dpmbackupnow.png)
 
+    操作が完了すると、*.AIBBlob* ファイルと *.BaseBlob* ファイルがステージング場所に作成されます。
 
-ワークフローが完了したら、Azure Backup MMC で **[今すぐバックアップ]** を選択してオフラインのバックアップ コピーを開始します。初期バックアップが、この手順の一部としてステージング領域に書き込まれます。<br/>
-
-  ![今すぐバックアップ][2]
-
-**[保護グループ]** をクリックし、**[回復ポイントの作成]** オプションを選択して、SCDPM の対応するワークフローを有効にします。次に、**[オンライン保護]** オプションを選択します。<br/> ![DPM の今すぐバックアップ][9]
-
-操作が完了すると、*.AIBBlob* ファイルと *.BaseBlob* ファイルがステージング場所に作成されます。<br/> ![出力][3]
+    ![出力](./media/backup-azure-backup-import-export/opbackupnow.png)
 
 ### SATA ドライブを準備する
 
@@ -78,10 +63,10 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 
 2. *WAImportExport.zip* ファイルを解凍します。*WAImportExport* ツールを実行すると、SATA ドライブがフォーマットされ、SATA ドライブにバックアップ データが書き込まれて暗号化されます。次のコマンドを実行する前に、BitLocker がコンピューターで有効になっていることを確認します。<br/>
 
-*.\WAImportExport.exe PrepImport /j:<*ジャーナル ファイル*>.jrn /id: <*セッション ID*> /sk:<*ストレージ アカウント キー*> /BlobType:**PageBlob** /t:<*ターゲット ドライブ文字*> /format /encrypt /srcdir:<*ステージング場所*> /dstdir: <*コピー先 BLOB 仮想ディレクトリ*>/*
+    *.\\WAImportExport.exe PrepImport /j:<*ジャーナル ファイル*>.jrn /id: <*セッション ID*> /sk:<*ストレージ アカウント キー*> /BlobType:**PageBlob** /t:<*ターゲット ドライブ文字*> /format /encrypt /srcdir:<*ステージング場所*> /dstdir: <*コピー先 BLOB 仮想ディレクトリ*>/*
 
 
-| パラメーター | 説明|
+| パラメーター | 説明
 |-------------|-------------|
 | /j: <*ジャーナル ファイル*>| ジャーナル ファイルへのパス。各ドライブには、ジャーナル ファイルが必ず 1 つあります。ターゲット ドライブには、ジャーナル ファイルは存在しません。ジャーナル ファイルの拡張子は .jrn で、このコマンドの実行の一部として作成されます。|
 |/id:<*セッション ID*> | セッション ID は*コピー セッション*を識別します。中断されたコピー セッションを正しく復元するために使用されます。コピー セッションでコピーされるファイルは、ターゲット ドライブ上のセッション ID の名前が付いたディレクトリに格納されます。|
@@ -95,43 +80,31 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 
   >[AZURE.NOTE]ジャーナル ファイルは WAImportExport フォルダーに作成され、ワークフロー全体の情報を収集します。このファイルは、Azure ポータルでインポート ジョブを作成するときに必要です。
 
-  ![PowerShell の出力][4]
+  ![PowerShell の出力](./media/backup-azure-backup-import-export/psoutput.png)
 
 ### Azure ポータルでインポート ジョブを作成する
-1. [管理ポータル](https://manage.windowsazure.com/)でストレージ アカウントに移動し、作業ウィンドウで **[インポート/エクスポート]**、**[インポート ジョブの作成]** の順にクリックします。<br/> ![ポータル][5]
+1. [管理ポータル](https://manage.windowsazure.com/)でストレージ アカウントに移動し、作業ウィンドウで **[インポート/エクスポート]**、**[インポート ジョブの作成]** の順にクリックします。
+
+    ![ポータル](./media/backup-azure-backup-import-export/azureportal.png)
 
 2. ウィザードの手順 1 で、ドライブの準備ができており、ドライブのジャーナル ファイルが使用可能であることを示します。ウィザードのステップ 2. で、このインポート ジョブの担当者の連絡先情報を入力します。
-
 3. ステップ 3. で、前のセクションで取得したドライブのジャーナル ファイルをアップロードします。
-
 4. ステップ 4. で、インポート ジョブのわかりやすい名前を入力します。名前に含めることができるのは、アルファベットの小文字、数字、ハイフン、アンダースコアだけです。また、先頭の文字はアルファベットにします。スペースを含めることはできません。ここで入力した名前を使って、進行中および完了後にジョブを追跡します。
+5. 次に、データ センターのリージョンを一覧から選択します。データ センターのリージョンに、パッケージの発送先となるデータ センターとその住所が示されます。
 
-5. 次に、データ センターのリージョンを一覧から選択します。データ センターのリージョンに、パッケージの発送先となるデータ センターとその住所が示されます。<br/>![DC][6]
+    ![DC](./media/backup-azure-backup-import-export/dc.png)
 
 6. ステップ 5. で、返送に利用する宅配業者を一覧から選択し、業者のアカウント番号を入力します。マイクロソフトでは、インポート ジョブの完了後、このアカウントを使用してドライブを返送します。
 
-7. ディスクを発送して問い合わせ番号を入力し、出荷の状態を追跡します。ディスクがデータ センターに到着すると、ストレージ アカウントにコピーされ、状態が更新されます。<br/>
+7. ディスクを発送して問い合わせ番号を入力し、出荷の状態を追跡します。ディスクがデータ センターに到着すると、ストレージ アカウントにコピーされ、状態が更新されます。
 
-![完了状態][7]
+    ![完了状態](./media/backup-azure-backup-import-export/complete.png)
 
 ### ワークフローの完了
 ストレージ アカウントで初期バックアップ データが使用可能になると、Azure Backup エージェントは、データの内容をこのアカウントからマルチテナントのバックアップ ストレージ アカウントにコピーします。次回のスケジュール バックアップで、Azure Backup エージェントは初期バックアップ コピーの上に増分バックアップを実行します。
 
 ## 次のステップ
-+ Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage-import-export-service.md)をご覧ください。
+- Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage-import-export-service.md)をご覧ください。
+- ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
-+ ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
-
-<!--Image references-->
-[1]: ./media/backup-azure-backup-import-export/importscreen.png
-[2]: ./media/backup-azure-backup-import-export/backupnow.png
-[3]: ./media/backup-azure-backup-import-export/opbackupnow.png
-[4]: ./media/backup-azure-backup-import-export/psoutput.png
-[5]: ./media/backup-azure-backup-import-export/azureportal.png
-[6]: ./media/backup-azure-backup-import-export/dc.png
-[7]: ./media/backup-azure-backup-import-export/complete.png
-[8]: ./media/backup-azure-backup-import-export/dpmoffline.png
-[9]: ./media/backup-azure-backup-import-export/dpmbackupnow.png
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

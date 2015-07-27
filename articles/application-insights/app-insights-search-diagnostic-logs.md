@@ -121,7 +121,7 @@
 
 log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレームワークで生成されたログの検索もできます。
 
-1. log4Net や NLog を使用する場合は、プロジェクト内にインストールします。 
+1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。 
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。
 3. [オンライン]、[すべて]、**[プレリリースを含める]** の順に選択し、"Microsoft.ApplicationInsights" を検索します。
 
@@ -295,4 +295,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

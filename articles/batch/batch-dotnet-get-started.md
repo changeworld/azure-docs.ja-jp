@@ -31,7 +31,7 @@ Azure Batch の背景情報とシナリオについては、[Azure Batch の技�
 このチュートリアルでは、Azure Batch サービスを使用してプール内の仮想マシン間で分散計算をセットアップするコンソール アプリケーションを作成する方法を示します。このチュートリアルで作成するタスクは、Azure ストレージ内のファイルのテキストを評価して、最もよく使用される単語を返します。例は C# のコードで記述され、.NET 向け Azure Batch ライブラリを利用しています。
 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料試用版のアカウントを作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 >
 >NuGet を使用して **Microsoft.Azure.Batch.dll** アセンブリを取得する必要があります。Visual Studio でプロジェクトを作成した後、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。"**Azure.Batch**" をオンラインで検索し、[インストール] をクリックして Azure Batch のパッケージと依存関係をインストールします。
 >
@@ -424,7 +424,7 @@ Batch Apps は、Batch のワークロードを管理および実行するため
 
 Batch Apps シナリオでは、Batch Apps Cloud SDK を使用して、コードを記述します。コードでは、ジョブを並列タスクに分割し、これらのタスク間の依存関係を記述し、各タスクを実行する方法を指定します。このコードは、Batch アカウントにデプロイされます。クライアントは、ジョブの種類と REST API への入力ファイルを指定するだけで、ジョブを実行できます。
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。NuGet を使用すると、<a href="http://www.nuget.org/packages/Microsoft.Azure.Batch.Apps.Cloud/">Batch Apps Cloud</a> アセンブリと <a href="http://www.nuget.org/packages/Microsoft.Azure.Batch.Apps/">Batch Apps Client</a> アセンブリの両方を取得できます。Visual Studio でプロジェクトを作成した後、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。アプリケーションをクラウド対応にするプロジェクト テンプレートとアプリケーションをデプロイする機能が含まれた Batch Apps 用 Visual Studio 拡張機能は、<a href="https://visualstudiogallery.msdn.microsoft.com/8b294850-a0a5-43b0-acde-57a07f17826a">ここ</a>からダウンロードすることもできます。また、Visual Studio の [拡張機能と更新プログラム] で "**Batch Apps**" を検索することもできます。また、<a href="https://go.microsoft.com/fwLink/?LinkID=512183&clcid=0x409">MSDN でエンド ツー エンドのサンプル</a>を見つけることもできます。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料試用版のアカウントを作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。NuGet を使用すると、<a href="http://www.nuget.org/packages/Microsoft.Azure.Batch.Apps.Cloud/">Batch Apps Cloud</a> アセンブリと <a href="http://www.nuget.org/packages/Microsoft.Azure.Batch.Apps/">Batch Apps Client</a> アセンブリの両方を取得できます。Visual Studio でプロジェクトを作成した後、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。アプリケーションをクラウド対応にするプロジェクト テンプレートとアプリケーションをデプロイする機能が含まれた Batch Apps 用 Visual Studio 拡張機能は、<a href="https://visualstudiogallery.msdn.microsoft.com/8b294850-a0a5-43b0-acde-57a07f17826a">ここ</a>からダウンロードすることもできます。また、Visual Studio の [拡張機能と更新プログラム] で "**Batch Apps**" を検索することもできます。また、<a href="https://go.microsoft.com/fwLink/?LinkID=512183&clcid=0x409">MSDN でエンド ツー エンドのサンプル</a>を見つけることもできます。
 >
 
 ###Azure Batch Apps の基礎
@@ -602,4 +602,4 @@ RunExternalMergeProcess の実装は RunExternalTaskProcess によく似てい�
 [3]: ./media/batch-dotnet-get-started/batch-dotnet-get-started-03.jpg
 [4]: ./media/batch-dotnet-get-started/batch-dotnet-get-started-04.jpg
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

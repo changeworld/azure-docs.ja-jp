@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="06/25/2015" 
 	ms.author="sidneyh"/>
 
-# 弾力性データベース ジョブ コンポーネントのインストール
+# エラスティック データベース ジョブ コンポーネントのインストール
 
-[弾力性データベース プール](sql-database-elastic-pool-portal.md)は、大量のデータベースをデプロイするために予測可能なモデルを提供します。弾力性データベース プールを作成すると、**弾力性データベース ジョブ**を使用して、弾力性データベース プール内の各データベース間の管理タスクを実行できます。たとえば、適切な資格情報を持つ人にのみ、データ機密性の高いデータを表示する各データベースの RLS ポリシーの設定などの新しいスキーマをデプロイすることができます。これが**弾力性データベース ジョブ**のインストール方法です。
+[エラスティック データベース プール (プレビュー)](sql-database-elastic-pool-portal.md) は、大量のデータベースをデプロイするために予測可能なモデルを提供します。エラスティック データベース プールを作成すると、**エラスティック データベース ジョブ**を使用して、エラスティック データベース プール内の各データベース間の管理タスクを実行できます。たとえば、適切な資格情報を持つ人にのみ、データ機密性の高いデータを表示する各データベースの RLS ポリシーの設定などの新しいスキーマをデプロイすることができます。以下に、**エラスティック データベース ジョブ**のインストール方法を示します。
 
 **推定所要時間:** 10 分。
 
 ## 前提条件
 * Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](http://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
-* 弾力性データベース プール。「[Create an Azure SQL Database elastic pool (preview) (Azure SQL Database 弾力性プールの作成) (プレビュー)](sql-database-elastic-pool-portal.md)」をご覧ください。
+* 弾力性データベース プール。「[Create and manage a SQL Database elastic pool (preview) (SQL Database エラスティック プールの作成 (プレビュー))](sql-database-elastic-pool-portal.md)」をご覧ください。
 
 ## サービス コンポーネントのインストール
 最初に、[Azure プレビュー ポータル](https://ms.portal.azure.com/#)に移動します。
@@ -63,4 +63,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

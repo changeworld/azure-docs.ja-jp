@@ -1,10 +1,10 @@
-<properties 
+<properties
 	pageTitle="Microsoft Azure App Service でオンプレミスの SAP サーバーと統合する"
 	description="オンプレミスの SAP サーバーと統合する方法について説明します。"
-	authors="rajeshramabathiran" 
-	manager="dwrede" 
-	editor="" 
-	services="app-service\logic" 
+	authors="rajeshramabathiran"
+	manager="dwrede"
+	editor=""
+	services="app-service\logic"
 	documentationCenter=""/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2015"
-	ms.author="harish"/>
+	ms.date="07/02/2015"
+	ms.author="sameerch"/>
 
 
 # オンプレミスの SAP サーバーと統合する
 SAP コネクタを使用すると、Azure App Services を構成する Web アプリ、モバイル アプリ、ロジック アプリを既存の SAP サーバーに接続できます。RFC、BAPI、tRFC を呼び出すだけでなく、SAP サーバーに IDOC を送信することもできます。
-	
+
 オンプレミスのファイアウォールの背後に SAP サーバーを置くこともできます。オンプレミスのサーバーの場合は、図のように、ハイブリッド リスナーを介して接続が確立されます。
 
 ![ハイブリッド接続のフロー][1]
@@ -40,12 +40,12 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 
 
 ## 新しい SAP アダプターの作成
-1. Microsoft Azure の管理ポータルにサインインします。 
+1. Microsoft Azure の管理ポータルにサインインします。
 2. **[新規]** を選択します。
 3. [作成] ブレードで、**[コンピューティング]**、**[Azure Marketplace]** の順に選択します。
 4. Marketplace のブレードで、**[API Apps]** を選択し、検索バーで "SAP" を検索します。
-	
-	![SAP コネクタの API アプリ][2]	
+
+	![SAP コネクタの API アプリ][2]
 5. マイクロソフト発行の **SAP コネクタ**を選択します。
 6. SAP コネクタのブレードで、**[作成]** を選択します。
 7. 表示された新しいブレードで、次のように入力します。
@@ -125,8 +125,4 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://download.microsoft.com/download/2/D/7/2D7CE8DF-A6C5-45F0-8319-14C3F1F9A0C7/InstallationGuide.htm
 
-
-
- 
-
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->

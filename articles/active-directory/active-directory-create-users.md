@@ -112,4 +112,4 @@ Azure AD では、別の Azure AD ディレクトリからのユーザーや、M
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO3-->
