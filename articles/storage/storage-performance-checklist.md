@@ -54,8 +54,7 @@ Azure Files サービスは現在プレビュー期間中であり、今後、�
 ||BLOB| BLOB のコピー| [効率的な方法で BLOB をコピーしていますか?](#subheading17) 
 ||BLOB| BLOB のコピー| [BLOB の一括コピーに AzCopy を使用していますか?](#subheading18) 
 ||BLOB| BLOB のコピー| [きわめて大量のデータ転送に Azure のインポート/エクスポートを使用していますか?](#subheading19) 
-||BLOB| メタデータの使用| [BLOB に関するメタデータで頻繁に使用するものを、その BLOB のメタデータに格納していますか?](#subheading20) 
-||BLOB| 迅速なアップロード| [1 つの BLOB を迅速にアップロードするときに、ブロックを並列アップロードしていますか?](#subheading21) 
+||BLOB| メタデータの使用| [BLOB に関するメタデータで頻繁に使用するものを、その BLOB のメタデータに格納していますか?](#subheading20) ||BLOB| 迅速なアップロード| [1 つの BLOB を迅速にアップロードするときに、ブロックを並列アップロードしていますか?](#subheading21) 
 ||BLOB| 迅速なアップロード| [多数の BLOB を迅速にアップロードするときに、ブロックを並列アップロードしていますか?](#subheading22) 
 ||BLOB| 正しい BLOB の種類| [適宜、ページ BLOB やブロック BLOB を使用していますか?](#subheading23) 
 ||テーブル| スケーラビリティ ターゲット| [1 秒あたりのエンティティに対するスケーラビリティ ターゲットに近づいていませんか?](#subheading24) 
@@ -104,7 +103,10 @@ Azure Files サービスは現在プレビュー期間中であり、今後、�
 -	アプリケーションがスケーラビリティ ターゲットに達する場合は、再試行に指数関数的バックオフを使用していることを確認してください (「[再試行](#subheading14)」を参照)。望ましいのは、前の方法のいずれかを使用して、スケーラビリティ ターゲットに近づけないことですが、そうするとアプリケーションを迅速に再試行できなくなり、調整の質が低下します。  
 
 ####有用な情報
-以下のリンクから、スケーラビリティ ターゲットに関する詳細を確認できます。 - MSDN の「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/azure/dn249410.aspx)」では、現在のスケーラビリティ ターゲットを表示できます。 - ストレージの冗長オプションについては、ブログ記事「[Azure ストレージの冗長オプションと読み取りアクセス地理冗長ストレージ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)」に詳しい説明があります。詳細については、次のセクションを参照してください。 - 各種 Azure サービスの料金の最新情報については、「[Azure の料金設定](http://azure.microsoft.com/pricing/overview/)」を参照してください。
+以下のリンクから、スケーラビリティ ターゲットに関する詳細を確認できます。 
+-	MSDN の「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/azure/dn249410.aspx)」では、現在のスケーラビリティ ターゲットを表示できます。 
+-	ストレージの冗長オプションについては、ブログ記事「[Azure ストレージの冗長オプションと読み取りアクセス地理冗長ストレージ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)」に詳しい説明があります。詳細については、次のセクションを参照してください。 
+-	各種 Azure サービスの料金の最新情報については、「[Azure の料金設定](http://azure.microsoft.com/pricing/overview/)」を参照してください。
 
 ###ネットワーク
 API 呼び出しは重要ですが、一方で、アプリケーションの物理的ネットワークに存在する制約がパフォーマンスに大きな影響を及ぼすことも少なくありません。以下では、ユーザーが遭遇するいくつかの制限について説明します。
@@ -173,7 +175,7 @@ CORS の詳細については、「[Azure ストレージ サービスでのク�
 
 	ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 
-詳細については、MSDN の「ThreadPool.SetMinThreads メソッド」(http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110).aspx) を参照してください。
+詳細については、MSDN の「[ThreadPool.SetMinThreads メソッド](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110).aspx)」 を参照してください。
 
 ####<a name="subheading11"></a>.NET 4.5 のガベージ コレクションを活用する
 クライアント アプリケーション用に .NET 4.5 以降を使用すると、サーバー ガベージ コレクションによるパフォーマンス向上が期待できます。
@@ -384,4 +386,4 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 この記事では、Azure Storage 使用時のパフォーマンスを最適化する実証済みプラクティスのうち、よく用いられるものをいくつか取り上げました。すべてのアプリケーション開発者に対して、この記事で示した個々のプラクティスに照らしてアプリケーションを評価し、推奨事項に基づく動作によって、Azure Storage を使用するアプリケーションが優れたパフォーマンスを発揮できるように検討することをお勧めします。
  
 
-<!---HONumber=July15_HO3-->
+<!----HONumber=July15_HO3-->
