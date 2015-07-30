@@ -87,7 +87,7 @@
 <!-- URLs. -->
 [アプリに認証を追加する]: mobile-services-windows-phone-get-started-users.md
 [アプリケーションにプッシュ通知を追加する]: mobile-services-javascript-backend-windows-phone-get-started-push.md
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 
  
 

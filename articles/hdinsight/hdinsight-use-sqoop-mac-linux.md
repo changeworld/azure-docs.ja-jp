@@ -186,6 +186,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 ##Sqoop のインポート
 
 1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
+
         sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
     インポートされたデータには、タブ文字で区切られたフィールドと、改行文字で終了する行が含まれます。

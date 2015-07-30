@@ -247,7 +247,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 
 通知のカテゴリ ハンドラーを登録するには、アプリケーションが初期化される際に呼び出しを追加する必要があります。
 
-> [AZURE.IMPORTANT]先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 <android-sdk-engagement-process> に関する警告を確認してください。
+> [AZURE.IMPORTANT] 先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 \<android-sdk-engagement-process\> に関する警告を確認してください。
 
 次の例では、前述の警告について把握しており、`EngagementApplication` のサブクラスを使用していることを前提としています。
 

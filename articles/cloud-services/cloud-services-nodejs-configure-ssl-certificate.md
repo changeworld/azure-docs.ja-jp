@@ -182,7 +182,7 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   
   
   [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
-  
+  [証明書をサービスに関連付け]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
   [site-url]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
   [8]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-08.png
   [HTTPS エンドポイントでの SSL 証明書の構成方法]: http://msdn.microsoft.com/library/windowsazure/ff795779.aspx

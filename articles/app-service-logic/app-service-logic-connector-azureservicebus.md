@@ -37,7 +37,9 @@ Message Available | メッセージを送信
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. **[API Apps]** を選択し、"Azure Service Bus コネクタ" を検索します。
-3. 名前、App Service プラン、その他のプロパティを入力します。<br/> ![][1]
+3. 名前、App Service プラン、その他のプロパティを入力します。
+<br/>
+![][1]
 
 4. 次のパッケージの設定を入力します。
 
@@ -54,17 +56,31 @@ Message Available | メッセージを送信
 ## ロジック アプリでの Azure Service Bus コネクタの使用
 コネクタが作成されたら、ロジック アプリのトリガーやアクションとして Azure Service Bus コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成し、Azure Service Bus コネクタが存在する同じリソース グループを選択します。<br/> ![][2]
+1.	新しいロジック アプリを作成し、Azure Service Bus コネクタが存在する同じリソース グループを選択します。
+<br/>
+![][2]
 
-2.	[トリガーとアクション] を開き、Logic Apps デザイナーを開いてワークフローを構成します。<br/> ![][3]
+2.	[トリガーとアクション] を開き、Logic Apps デザイナーを開いてワークフローを構成します。
+<br/>
+![][3]
 
-3. Azure Service Bus コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。<br/> ![][4]
+3. Azure Service Bus コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。
+<br/>
+![][4]
 
 4. [Azure Service Bus コネクタ] をクリックして、Azure Service Bus コネクタをエディターにドロップできます。
 
-5.	これで、ワークフローで Azure Service Bus コネクタを使用できるようになりました。今後は、Azure Service Bus トリガー ("Message Available") を使って取得したメッセージを、フローの他のアクションで使用できます。<br/> ![][5] <br/> ![][6]
+5.	これで、ワークフローで Azure Service Bus コネクタを使用できるようになりました。今後は、Azure Service Bus トリガー ("Message Available") を使って取得したメッセージを、フローの他のアクションで使用できます。
+<br/>
+![][5]
+<br/>
+![][6]
 
-Azure Service Bus の "Message Available" アクションを使用することもできます。<br/>![][7]<br/>![][8]
+Azure Service Bus の "Message Available" アクションを使用することもできます。
+<br/>
+![][7]
+<br/>
+![][8]
 
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。

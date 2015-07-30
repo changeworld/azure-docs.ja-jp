@@ -20,7 +20,7 @@
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。この記事では、Python を使用して、MapReduce 操作を実行する方法を説明します。
 
-> [AZURE.NOTE]この記事は、Michael Noll が http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/ (Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
+> [AZURE.NOTE]この記事は、Michael Noll が [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/](Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
 
 ##前提条件
 

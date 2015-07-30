@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ" 
-	description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について説明します。" 
+	description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について説明します" 
 	services="virtual-machines,virtual-network,storage" 
 	documentationCenter="" 
 	authors="davidmu1" 
