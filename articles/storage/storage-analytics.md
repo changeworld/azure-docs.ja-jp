@@ -62,7 +62,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 - エラー コード 304 (Not Modified) で失敗した GET 要求
 
-その他の失敗した匿名要求は一切記録されません。ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)」および「[Storage Analytics のログの形式]」(https://msdn.microsoft.com/library/hh343259.aspx)) をご覧ください。
+その他の失敗した匿名要求は一切記録されません。ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)」および「[Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx)) をご覧ください。
 
 ### ログの保存方法
 すべてのログは、Storage Analytics をストレージ アカウントに対して有効にしたときに自動的に作成される $logs という名前のコンテナー内のブロック BLOB に格納されます。$logs コンテナーは、ストレージ アカウントの BLOB 名前空間にあります (例: `http://<accountname>.blob.core.windows.net/$logs`)。Storage Analytics を有効にした後は、このコンテナーを削除することはできません。ただし、コンテナーの内容を削除することはできます。
@@ -206,4 +206,4 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 - [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx) 
 - [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
 
-<!---HONumber=July15_HO3-->
+<!-----HONumber=July15_HO3-->
