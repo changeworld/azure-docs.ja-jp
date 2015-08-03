@@ -129,4 +129,4 @@ Microsoft Azure Operational Insights で、システムの更新ソリューシ�
 - 前回更新からの経過日数
 - Windows Update エージェントのバージョン
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -89,4 +89,4 @@ Microsoft Azure 管理ポータルにアプリを登録するときに、次の 
  
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

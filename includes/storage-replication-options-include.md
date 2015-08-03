@@ -26,4 +26,4 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 
 Azure Storage の持続性に関するアーキテクチャの詳細については、[Azure Storage SOSP ペーパー](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)のページを参照してください。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

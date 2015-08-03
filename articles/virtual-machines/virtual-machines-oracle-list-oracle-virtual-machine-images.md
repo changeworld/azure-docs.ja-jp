@@ -1,4 +1,4 @@
-<properties title="List of Oracle Virtual Machine Images" pageTitle="Oracle 仮想マシン イメージの一覧" description="Azure ギャラリーで Oracle イメージの一覧を取得し、いずれかに基づく Oracle 仮想マシンを作成する方法を参照します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties pageTitle="Oracle 仮想マシン イメージの一覧" description="Azure ギャラリーで Oracle イメージの一覧を取得し、いずれかに基づく Oracle 仮想マシンを作成する方法を参照します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Oracle 仮想マシン イメージの一覧
 Oracle イメージに基づく Virtual Machines を作成するには、[Azure ポータル](https://ms.portal.azure.com/)にログインして **[Marketplace]** をクリック後、**[Compute]** をクリックし、検索ボックスに「**Oracle**」と入力します。イメージを選択し、手順に従って Microsoft Azure でイメージを設定します。[Azure ポータル](https://ms.portal.azure.com/)では、Microsoft による Oracle イメージは Windows で、Oracle による Oracle イメージは Oracle Linux で実行されることに注意してください。
@@ -50,4 +50,4 @@ Azure の Oracle Linux 上で実行される、事前に構成された利用可
 
 [Oracle 仮想マシン イメージ - 他の考慮事項](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

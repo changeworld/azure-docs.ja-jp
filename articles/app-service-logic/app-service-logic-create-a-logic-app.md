@@ -137,7 +137,7 @@
 
 	これによって、値 `@first(body('twitterconnector')).TweetText` がテキスト ボックスに入力されます。この値の各部の意味は、以下のとおりです。
 
-	部分 | 説明
+部分 | 説明
 	------------------------------------------ | ------------
 	 `@` | 実際の値ではなく、関数を入力しようとしていることを示します。
 	`actions('twitterconnector').outputs.body` | Twitter Connector のクエリの結果として返されたツイートを取得します。
@@ -172,4 +172,4 @@
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

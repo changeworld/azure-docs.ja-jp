@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

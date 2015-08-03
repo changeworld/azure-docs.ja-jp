@@ -64,8 +64,8 @@ Microsoft Patterns and Practices は、MSDN と PDF ダウンロードの両方�
 ![Patterns and Practices Cloud Patterns Poster](./media/architecture-overview/PnPPatternPosterThumb.jpg)
 
 ##アーキテクチャのインフォグラフィック
-Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](http://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)と[Cloud Services への対応](http://azure.microsoft.com/documentation/infographics/cloud-services/)が含まれています。
+Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。[実際のクラウド アプリケーションの作成](http://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)と[クラウド サービスへの対応](http://azure.microsoft.com/documentation/infographics/cloud-services/)が含まれています。
 
 ![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

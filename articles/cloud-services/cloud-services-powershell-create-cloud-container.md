@@ -41,4 +41,4 @@ Get-help New-AzureService
     - Azure にクラウド サービス プロジェクトを発行する方法については、「[Azure でのクラウド サービスの継続的な配信](cloud-services-dotnet-continuous-delivery.md)」の **PublishCloudService.ps1** コード サンプルを参照してください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

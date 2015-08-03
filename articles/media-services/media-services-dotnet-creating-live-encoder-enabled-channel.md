@@ -501,4 +501,4 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 [シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

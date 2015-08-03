@@ -34,4 +34,4 @@
 [Azure ストア]: ../articles/overview.md
 [portal]: http://windows.azure.com/
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

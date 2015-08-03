@@ -147,4 +147,4 @@ SQL Data Warehouse では、一時テーブルを実装するときに制限事�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

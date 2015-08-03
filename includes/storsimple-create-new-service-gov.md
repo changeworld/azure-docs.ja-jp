@@ -18,4 +18,4 @@
  
        ![サービスの作成](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

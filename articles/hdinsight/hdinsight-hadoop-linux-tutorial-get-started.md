@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/13/2015"
+   ms.date="07/11/2015"
    ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する (プレビュー)
@@ -22,13 +22,13 @@
 - [Windows](hdinsight-hadoop-tutorial-get-started-windows.md)
 - [Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
 
-この Hadoop チュートリアルでは、Linux 上の Azure HDInsight の基本的な使用方法を紹介するために、Linux 上で Hadoop クラスターをプロビジョニングする方法と、Hive クエリを実行して非構造化データから意味のある情報を抽出する方法を説明します。
+この Hadoop のチュートリアルでは、Linux 上の Azure HDInsight の基本的な使用方法を紹介するために、Linux 上で Hadoop クラスターをプロビジョニングする方法と、Hive クエリを実行する方法を説明します。
 
 
 > [AZURE.NOTE]Hadoop とビッグ データを初めて扱う方は、<a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510086" target="_blank">MapReduce</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510087" target="_blank">Hadoop Distributed File System (HDFS)</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510085" target="_blank">Hive</a> に関するトピックをご覧ください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
 
 
-## このチュートリアルで目的とする操作 ##
+## このチュートリアルで目的とする操作 
 
 構造化されていないデータ セットが大量にあり、このデータ セットに対してクエリを実行して、意味のある情報を抽出したいとします。これを実現するには、次の手順を実行します。
 
@@ -67,9 +67,9 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.StorageAccount.QuickCreate.png)
 
-3. **[URL]**、**[場所]**、**[レプリケーション]** に情報を入力し、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。新しいストレージ アカウントがストレージ一覧に表示されます。
+3. **[URL]**、**[場所]**、**[レプリケーション]** に値を入力し、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。新しいストレージ アカウントがストレージ一覧に表示されます。
 
-	>[AZURE.NOTE]このチュートリアルで使用したような、HDInsight Linux クラスターをプロビジョニングする簡易作成オプションでは、クラスターをプロビジョニングする際に場所をたずねるメッセージが表示されません。クラスターは、既定でストレージ アカウントと同じデータ センターに配置されます。そのため、ストレージ アカウントは、クラスターでサポートされる場所 (**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、**米国中南部**) に作成してください。
+	>[AZURE.NOTE]このチュートリアルで使用したような、HDInsight Linux クラスターをプロビジョニングする簡易作成オプションでは、クラスターをプロビジョニングする際に場所をたずねるメッセージが表示されません。クラスターは、既定でストレージ アカウントと同じデータ センターに配置されます。
 
 4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
 5. 一覧の新しいストレージ アカウントを選択し、ページの下部の **[アクセス キーの管理]** をクリックします。
@@ -271,4 +271,4 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -81,4 +81,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -1,28 +1,29 @@
-<properties 
-	pageTitle="PowerShell と Azure サービス管理で Windows 仮想マシンを作成する" 
-	description="Azure PowerShell を使用して、新しい Windows 仮想マシンをすばやく作成します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
-	editor=""/>
+<properties
+	pageTitle="Azure PowerShell を使用してサービス管理で Windows 仮想マシンを作成および管理する"
+	description="Azure PowerShell を使用してサービス管理で新しい Windows ベースの仮想マシンを素早く作成し、管理機能を実行します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="KBDAzure"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/09/2015" 
-	ms.author="josephd"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/09/2015"
+	ms.author="kathydav"/>
 
-# PowerShell と Azure サービス管理で Windows 仮想マシンを作成する
+# Azure PowerShell を使用したサービス管理での Windows ベース仮想マシンの作成と管理
 
-このトピックでは、Azure サービス管理と PowerShell を使用して Windows ベースの Azure Virtual Machine を作成および管理する方法について説明します。
+このトピックでは、Azure PowerShell を使用して、サービス管理で Windows ベースの Azure 仮想マシンを作成および管理する方法について説明します。
 
 [AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
 
-- [Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
+- [Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
 ## Azure PowerShell の設定
 
@@ -32,7 +33,7 @@ Azure PowerShell をインストール済みである場合、Azure PowerShell V
 
 まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
 
-まず、次のコマンドで Azure にログインする必要があります。
+まず、次のコマンドを使用して Azure にサインインする必要があります。
 
 	Add-AzureAccount
 
@@ -49,13 +50,13 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 ## 仮想マシンの作成
 
-最初に、ストレージ アカウントが必要です。現在使用しているストレージ アカウントは、次のコマンドで一覧表示できます。
+最初に、ストレージ アカウントが必要になります。現在使用しているストレージ アカウントは、次のコマンドを使用すると一覧表示できます。
 
 	Get-AzureStorageAccount | sort Label | Select Label
 
 まだストレージ アカウントを持っていない場合は、新しいストレージ アカウントを作成します。小文字と数字のみから成る一意の名前を選んでください。ストレージ アカウントの名前が一意であるかどうかは、次のコマンドを使用することで確認できます。
 
-	Test-AzureName -Storage <Proposed storage account name>
+	Test-AzureName -Storage <Proposed Storage account name>
 
 このコマンドで "False" が返された場合は、提案した名前は一意です。
 
@@ -63,9 +64,9 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 	Get-AzureLocation | sort Name | Select Name
 
-以下のコマンドで、ストレージ アカウントの作成と設定を行います。引用符で囲まれた部分 (< and > を含む) は、実際のストレージ アカウントの名前に置き換えてください。
+以下のコマンドを使用して、ストレージ アカウントの作成と設定を行います。引用符で囲まれた部分 (< and > を含む) は、実際のストレージ アカウントの名前に置き換えてください。
 
-	$stAccount="<chosen storage account name>"
+	$stAccount="<chosen Storage account name>"
 	$locName="<Azure location>"
 	New-AzureStorageAccount -StorageAccountName $stAccount -Location $locName
 	Set-AzureStorageAccount -StorageAccountName $stAccount
@@ -75,39 +76,45 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 たとえば、"TestCS-*UniqueSequence*" という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestCS-Tailspin という名前を付けることができます。
 
-次の Azure PowerShell コマンドで名前の一意性を確認することができます。
+次の Azure PowerShell コマンドを使用することで、名前の一意性を確認することができます。
 
 	Test-AzureName -Service <Proposed cloud service name>
 
-このコマンドで "False" が返された場合は、提案した名前は一意です。以下のコマンドでクラウド サービスを作成してください。
+このコマンドで "False" が返された場合は、提案した名前は一意です。以下のコマンドを使用して、クラウド サービスを作成します。
 
 	$csName="<cloud service name>"
 	$locName="<Azure location>"
 	New-AzureService -Service $csName -Location $locName
 
-次に、以下に示した一連の PowerShell コマンドをメモ帳などのテキスト エディターにコピーします。
+次に、以下の一連の Azure PowerShell コマンドを、メモ帳などのテキスト エディターにコピーします。
 
 	$vmName="<machine name>"
 	$csName="<cloud service name>"
 	$locName="<Azure location>"
-	$vm=New-AzureVMConfig -Name $vmName -InstanceSize Medium -ImageName "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201503.01-en.us-127GB.vhd"
+	$image=Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
+	$vm=New-AzureVMConfig -Name $vmName -InstanceSize Medium -ImageName $image
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
 	$vm | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 	New-AzureVM –ServiceName $csName –Location $locName -VMs $vm
 
 ご使用のテキスト エディターで、仮想マシンの名前、クラウド サービスの名前、場所を入力します。
 
-最後に、一連のコマンドをクリップボードにコピーしてから、開いている Azure PowerShell コマンド プロンプトを右クリックします。すると、一連の PowerShell コマンドが実行され、ローカル管理者アカウントの名前とパスワードの入力を求めるメッセージが表示されて、Azure Virtual Machines が作成されます。以下の例は、一連のコマンドが実行されるようすを示しています。
+最後に、一連のコマンドをクリップボードにコピーしてから、開いている Azure PowerShell コマンド プロンプトを右クリックします。これにより一連の Azure PowerShell コマンドが実行され、ローカル管理者アカウントの名前とパスワードの入力を求めるメッセージが表示されてから、Azure 仮想マシンが作成されます。以下の例に、一連のコマンドが実行される様子を示します。
 
-	PS C:> $vmName="PSTest"
-	PS C:> $csName=" TestCS-Tailspin"
-	PS C:> $locName="West US"
-	PS C:> $vm=New-AzureVMConfig -Name $vmName -InstanceSize Medium -ImageName "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201503.01-en.us-127GB.vhd"
-	PS C:> $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-	PS C:> $vm | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.
+	PS C:\> $vmName="PSTest"
+	PS C:\> $csName=" TestCS-Tailspin"
+	PS C:\> $locName="West US"
+	PS C:\> $image=Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
+	VERBOSE: 3:01:17 PM - Begin Operation: Get-AzureVMImage
+	VERBOSE: 3:01:22 PM - Completed Operation: Get-AzureVMImage
+	VERBOSE: 3:01:22 PM - Begin Operation: Get-AzureVMImage
+	VERBOSE: 3:01:23 PM - Completed Operation: Get-AzureVMImage
+	PS C:\> $vm=New-AzureVMConfig -Name $vmName -InstanceSize Medium -ImageName $image
+	PS C:\> $cred=Get-Credential -Message "Type the name and password of the local administrator account."
+	PS C:\> $vm | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.
 	GetNetworkCredential().Password
 
-	
+
 	AvailabilitySetName               :
 	ConfigurationSets                 : PSTest,Microsoft.WindowsAzure.Commands.ServiceManagement.Model.NetworkConfigurationSet}
 	DataVirtualHardDisks              : {}
@@ -126,15 +133,15 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 	ResourceExtensionReferences       : {BGInfo}
 	DataVirtualHardDisksToBeDeleted   :
 	VMImageInput                      :
-	
-	PS C:> New-AzureVM -ServiceName $csName -Location $locName -VMs $vm
+
+	PS C:\> New-AzureVM -ServiceName $csName -Location $locName -VMs $vm
 	VERBOSE: 3:01:46 PM - Begin Operation: New-AzureVM - Create Deployment with VM PSTest
 	VERBOSE: 3:02:49 PM - Completed Operation: New-AzureVM - Create Deployment with VM PSTest
-	
+
 	OperationDescription                    OperationId                            OperationStatus
 	--------------------                    -----------                            --------------
 	New-AzureVM                             8072cbd1-4abe-9278-9de2-8826b56e9221   Succeeded
-	
+
 ## 仮想マシンに関する情報の表示
 これは頻繁に使用することになる基本的なタスクです。VM に関する情報の取得、VM でのタスクの実行、変数に格納する出力の取得に使用します。
 
@@ -173,34 +180,33 @@ VM に関する情報を取得するには、このコマンドを実行し、�
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## データ ディスクの接続
-このタスクには、いくつかの手順が必要です。最初に、**Add-AzureDataDisk** コマンドレットを使用して $vm オブジェクトにディスクを追加し、次に Update-AzureVM コマンドレットを使用して VM の構成を更新します。
+このタスクには、いくつかの手順が必要です。まず、**Add-AzureDataDisk** コマンドレットを使用して、$vm オブジェクトにディスクを追加します。次に、Update-AzureVM コマンドレットを使用して、仮想マシンの構成を更新します。
 
 新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
 
 新しいディスクを接続するには、次のコマンドを実行します。
 
-    Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM <$vm> | Update-AzureVM
+    Add-AzureDataDisk -CreateNew -DiskSizeInGB <disk size> -DiskLabel "<label name>" -LUN <LUN number> -VM $vm | Update-AzureVM
 
 既存のデータ ディスクを接続するには、次のコマンドを実行します。
 
-    Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> | Update-AzureVM
+    Add-AzureDataDisk -Import -DiskName "<existing disk name>" -LUN <LUN number> | Update-AzureVM
 
 BLOB ストレージにある既存の .vhd ファイルからデータ ディスクを接続するには、次のコマンドを実行します。
 
-    Add-AzureDataDisk -ImportFrom -MediaLocation  "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" -DiskLabel "<main>" -LUN <0> | Update-AzureVM
+    $diskLoc="https://mystorage.blob.core.windows.net/mycontainer/" + "<existing disk name>" + ".vhd"
+	Add-AzureDataDisk -ImportFrom -MediaLocation  $diskLoc -DiskLabel "<label name>" -LUN <LUN number> | Update-AzureVM
 
 ## その他のリソース
 
-[Azure リソース マネージャーと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager.md)
+[リソース マネージャーと Azure PowerShell を使用して Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager.md)
 
-[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template-simple.md)
+[リソース マネージャー テンプレートと Azure PowerShell を使用して Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template-simple.md)
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
- 
-
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -1,24 +1,25 @@
-<properties 
-	pageTitle="仮想マシンへのディスクの接続 | Azure" 
-	description="データ ディスクを Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。" 
-	services="virtual-machines, storage" 
-	documentationCenter="" 
-	authors="KBDAzure" 
-	manager="timlt" 
-	editor="tysonn"/>
+<properties
+	pageTitle="仮想マシンへのディスクの接続 | Azure"
+	description="データ ディスクを Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。"
+	services="virtual-machines, storage"
+	documentationCenter=""
+	authors="KBDAzure"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/16/2015"
 	ms.author="kathydav"/>
 
 # データ ディスクを Windows 仮想マシンに接続する方法
 
-空のディスクと、データが含まれているディスクを接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
+空のデータ ディスクもデータの入ったディスクも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
 
 > [AZURE.NOTE]仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。**データの格納に D ドライブを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
@@ -42,8 +43,14 @@
 
 	![ボリュームの初期化に成功](./media/storage-windows-attach-disk/newvolumecreated.png)
 
-> [AZURE.NOTE]仮想マシンのサイズによって、アタッチできるディスクの数が決まります。詳細は、「[クラウド サービスと仮想マシンのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+> [AZURE.NOTE]仮想マシンのサイズによって、アタッチできるディスクの数が決まります。詳細については、「[Sizes for Virtual Machines (仮想マシンのサイズ)](virtual-machines-size-specs.md)」を参照してください。
+
+## その他のリソース
+
+[Windows 仮想マシンからディスクを切断する方法](storage-windows-detach-disk.md)
+
+[仮想マシン用のディスクと VHD について](virtual-machines-disks-vhds.md)
 
 [logon]: virtual-machines-log-on-windows-server.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

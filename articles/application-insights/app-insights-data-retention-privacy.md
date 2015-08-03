@@ -236,4 +236,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

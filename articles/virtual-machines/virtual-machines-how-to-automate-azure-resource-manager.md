@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure リソース マネージャーを使用して自動化する方法" 
-	description="Azure リソース マネージャーを使用して仮想マシンを自動化する方法に関するトピックへのリンクを紹介します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+<properties
+	pageTitle="Azure リソース マネージャーを使用して自動化する方法"
+	description="リソース マネージャーを使用して Azure 仮想マシンの作成と管理を自動化する方法に関するトピックへのリンクを取得します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/12/2015" 
-	ms.author="josephd"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="index-page"
+	ms.date="07/09/2015"
+	ms.author="davidmu"/>
 
 # Azure リソース マネージャーを使用して自動化する方法
 
@@ -59,7 +59,7 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 ## .NET での自動化
 
 [.NET ライブラリを使用した Azure リソースのデプロイ](virtual-machines-arm-deployment.md)
-   
+
 ## Azure Automation での自動化
 
 [Azure Automation を使用した VM タスクの管理](automation-manage-virtual-machines.md)
@@ -70,6 +70,4 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
- 
-
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

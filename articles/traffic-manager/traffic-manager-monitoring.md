@@ -119,4 +119,4 @@ Azure Traffic Manager は、管理ポータルで、プロファイルとエン�
 [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

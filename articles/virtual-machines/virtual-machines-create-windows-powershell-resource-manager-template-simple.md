@@ -3,7 +3,7 @@
 	description="リソース マネージャー テンプレートと Azure PowerShell を使用して新しい Windows 仮想マシンを作成します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="davidmu1"
 	manager="timlt"
 	editor=""/>
 
@@ -14,23 +14,32 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="04/29/2015"
-	ms.author="josephd"/>
+	ms.author="davidmu"/>
 
-# リソース マネージャー テンプレートと Azure PowerShell で Windows 仮想マシンを作成する
+# リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する
 
-Windows ベースの Azure Virtual Machines は、Azure PowerShell からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
+Windows ベースの Azure Virtual Machines (VM) は、Azure PowerShell からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
 
 ![](./media/virtual-machines-create-windows-powershell-resource-manager-template-simple/windowsvm.png)
 
-作業する前に、Azure、Windows PowerShell、Azure PowerShell がきちんと構成され準備が整っているかどうかを確認する次の手順に従います。
+実際の作業を開始する前に、Azure PowerShell が構成され、準備が整っていることを確認してください。
 
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
-## Windows 仮想マシンを作成する
+## Windows VM の作成
 
-Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure PowerShell を使用して Windows 仮想マシンを作成するには、以下の手順に従います。
+Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure PowerShell を使用して Windows VM を作成するには、以下の手順に従います。
 
-次の例に従ってコマンドを実行し、Azure のデプロイ名、リソース グループ名、および Azure データ センターの場所を指定します。**New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められますので注意が必要です。パラメーターの値がすべて指定されていれば、リソース グループと仮想マシンが作成されます。
+Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
+
+	$deployName="<deployment name>"
+	$RGName="<resource group name>"
+	$locName="<Azure location, such as West US>"
+	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
+	New-AzureResourceGroup –Name $RGName –Location $locName
+	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
+
+**New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。パラメーターの値がすべて指定されていれば、リソース グループと仮想マシンが作成されます。
 
 	$deployName="TestDeployment"
 	$RGName="TestRG"
@@ -83,14 +92,14 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure リソース マネージャーの概要](../resource-group-overview.md)
+[Azure リソース マネージャーの概要](resource-group-overview.md)
 
-[Azure リソース マネージャーと Azure PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager.md)
+[Azure リソース マネージャーと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager.md)
 
-[Azure PowerShell と Azure サービス マネージャーで Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-service-manager.md)
+[PowerShell と Azure サービス マネージャーで Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-service-manager.md)
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+[Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/21/2014" 
+	ms.date="07/17/2015" 
 	ms.author="tomfitz"/>
 
 # PHP と Azure Active Directory による Web シングル サインオン
@@ -131,7 +131,7 @@
 
 5. **[New PHP File]** ダイアログ ボックスで、ファイルに **secureResource.php** という名前を付け、**[Finish]** をクリックします。
 
-6. 新しい **secureResource.php** ファイルに次のコードを入力して、**c:\\phpLibraries** パスを、サンプル コードをダウンロードした root の場所に置き換えます。root 場所には **simpleSAML.php** ファイルと **federation** フォルダーがあることが必要です。
+6. 新しい **secureResource.php** ファイルに次のコードを入力して、**c:\phpLibraries** パスを、サンプル コードをダウンロードした root の場所に置き換えます。root 場所には **simpleSAML.php** ファイルと **federation** フォルダーがあることが必要です。
 
 		<?php
 		ini_set('include_path', ini_get('include_path').';c:\phpLibraries\;');
@@ -203,4 +203,4 @@ PHP Web サイト用に Azure Active Directory とシングル サインオン�
 [Azure Active Directory 用の PHP サンプル コード]: https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

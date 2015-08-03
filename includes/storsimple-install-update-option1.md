@@ -37,7 +37,7 @@
     サンプル出力を次に示します。
 
         ````
-        Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
+        Controller0>Start-HcsHotfix -Path \10.100.100.100\share
         \hcsmdssoftwareupdate.exe -Credential contoso\John
       
         Confirm
@@ -97,4 +97,4 @@
 
     ファームウェアの状態が **UpToDate** になっています。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -1,7 +1,6 @@
 <properties
 	pageTitle="HDInsight での Hadoop とは: クラウドのビッグ データ分析 | Microsoft Azure"
 	description="HDInsight のクラウドでの Hadoop コンポーネントの紹介です。HDInsight が Hadoop クラスターを使用してビッグ データを管理、分析、レポート生成する方法について説明します。"
-	keywords="big data,big data analysis,hadoop,introduction to hadoop,what is hadoop"
 	services="hdinsight"
 	documentationCenter=""
 	authors="cjgronlund"
@@ -247,4 +246,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [zookeeper]: http://zookeeper.apache.org/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

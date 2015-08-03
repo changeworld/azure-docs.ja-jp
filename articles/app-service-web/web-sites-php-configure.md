@@ -120,7 +120,7 @@ Azure コマンド ライン インターフェイスを使用するには、**N
 	![Web アプリ設定][settings-button]
 
 5. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[アプリの設定]** セクションまでスクロールします。
-6. **[アプリの設定]** セクションで、**PHP_EXTENSIONS** キーを作成します。このキーの値は、Web サイト ルート (**bin\\your-ext-file**) への相対パスになります。
+6. **[アプリの設定]** セクションで、**PHP_EXTENSIONS** キーを作成します。このキーの値は、Web サイト ルート (**bin\your-ext-file**) への相対パスになります。
 
 	![[アプリケーション設定] で拡張機能を有効にする][php-extensions]
 
@@ -176,4 +176,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

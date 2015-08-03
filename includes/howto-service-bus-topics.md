@@ -64,4 +64,4 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
   [6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
   [34]: ./media/howto-service-bus-topics/VSProperties.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

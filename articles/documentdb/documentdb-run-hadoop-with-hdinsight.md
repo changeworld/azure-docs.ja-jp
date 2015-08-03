@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="06/11/2015" 
+	ms.date="07/20/2015" 
 	ms.author="anhoh"/>
 
 #<a name="DocumentDB-HDInsight"></a>DocumentDB と HDInsight を使用した Hadoop ジョブの実行
 
-このチュートリアルでは、DocumentDB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。DocumentDB の Hadoop コネクタを使用すると、DocumentDB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に DocumentDB を使用します。
+このチュートリアルでは、DocumentDB の Hadoop コネクタを使用して、 [Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。DocumentDB の Hadoop コネクタを使用すると、DocumentDB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に DocumentDB を使用します。
 
 このチュートリアルを完了すると、次の項目について説明できるようになります。
 
@@ -39,18 +39,21 @@
 ## <a name="NewestVersion"></a>最新バージョン
 
 <table border='1'>
-	<tr><th>Hadoop Connector のバージョン</th>
-		<td>1.0.0</td></tr>
+	<tr><th>Hadoop コネクタのバージョン</th>
+		<td>1.1.0</td></tr>
 	<tr><th>スクリプト URI</th>
 		<td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v03.ps1</td></tr>
 	<tr><th>更新日時</th>
-		<td>06/11/2015</td></tr>
+		<td>07/20/2015</td></tr>
 	<tr><th>サポートされる HDInsight のバージョン</th>
 		<td>3.1、3.2</td></tr>
 	<tr><th>変更履歴</th>
-		<td>コネクタと <a href="https://www.microsoft.com/download/details.aspx?id=40886">Microsoft Hive ODBC ドライバー</a>の互換性修正</br>
+		<td>DocumentDB Java SDK 1.1.0 への更新</br>
+			カスタム インデックス作成パスの追加出力パラメーターの削除</br>
+			カスタム文字列の有効桁数 (既定で-1) のオプションのパラメーターの追加</br>
+			6/11/2015</br>
+			コネクタと <a href="https://www.microsoft.com/download/details.aspx?id=40886">Microsoft Hive ODBC ドライバー</a>の互換性修正</br>
 			出力コレクションのプランの種類 (既定では S3 プラン) を変更する機能追加</br>
-			マイナー バグの修正</br>
 		</td></tr>
 </table>
 
@@ -79,7 +82,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 	
 	> [AZURE.NOTE]現在、Azure HDInsight は Azure の管理ポータルでサポートされていますが、Azure DocumentDB は Microsoft Azure ポータルにしかありません。
 
-2. 左下隅にある **[+ 新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。![Azure portal where you can use Quick Create to set up a new storage account.][image-storageaccount-quickcreate]
+2. 左下隅にある **[+ 新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。][image-storageaccount-quickcreate]
 
 3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。
 	
@@ -467,4 +470,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

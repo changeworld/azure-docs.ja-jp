@@ -20,11 +20,11 @@
 
 Apache Spark は、大規模なデータ処理のための高速エンジンです。Spark には、循環型のデータ フローとインメモリ コンピューティングをサポートする高度な DAG 実行エンジンがあります。また、HDFS、Spark、HBase、S3 など、多様なデータ ソースにアクセスできます。
 
-Spark は、Mesos や YARN クラスター マネージャーで実行されるだけでなく、単純なスタンドアロン型のデプロイ モードも用意されています。このチュートリアルでは、サンプルの Azure リソース マネージャー (ARM) テンプレートと、[Azure PowerShell](../powershell-install-configure.md) または [Azure CLI](../xplat-cli.md) を使用して、Ubuntu VM に Spark Cluster をデプロイする手順について説明します。
+Spark は、Mesos や YARN クラスター マネージャーで実行されるだけでなく、単純なスタンドアロン型のデプロイ モードも用意されています。このチュートリアルでは、サンプルの Azure リソース マネージャー テンプレートと、[Azure PowerShell](../powershell-install-configure.md) または [Azure CLI](../xplat-cli.md) を使用して、Ubuntu VM に Spark Cluster をデプロイする手順について説明します。
 
 このテンプレートで、Ubuntu 仮想マシンに Spark クラスターがデプロイされます。このテンプレートでは、インストールに必要なストレージ アカウント、仮想ネットワーク、可用性セット、パブリック IP アドレス、およびネットワーク インターフェイスも準備されます。Spark クラスターはサブネットの背後に作成されるので、パブリック IP で Spark クラスターにアクセスすることはできません。デプロイの一部として、オプションの “jump box” をデプロイできます。この “jump box” はサブネットにもデプロイされる Ubuntu VM ですが、接続できる開かれた SSH ポートでパブリック IP アドレスを公開*します*。“jump box” からは、サブネット内にあるすべての Spark VM に SSH で接続できます。
 
-このテンプレートでは、「小」、「中」、「大」の Spark クラスター セットアップを指定するために、「T シャツのサイズ」の概念を使用します。テンプレートの言語がさらに動的なテンプレートのサイズ指定をサポートするようになったら、この概念は Spark クラスターのマスター ノード数、スレーブ ノード数、VM サイズなどの指定に変更される可能性があります。今のところは、azuredeploy.json で定義されている VM のサイズおよびマスターとスレーブの数は、変数 tshirtSizeS、tshirtSizeM、および tshirtSizeL で見ることができます。
+このテンプレートでは、「小」、「中」、「大」の Spark クラスター セットアップを指定するために、「T シャツのサイズ」の概念を使用します。テンプレートの言語がさらに動的なテンプレートのサイズ指定をサポートするようになったら、この概念は Spark クラスターのマスター ノード数、スレーブ ノード数、VM サイズなどの指定に変更される可能性があります。今のところは、azuredeploy.json で定義されている VM のサイズおよびマスターとスレーブの数は、変数 **tshirtSizeS**、**tshirtSizeM**、および **tshirtSizeL** で見ることができます。
 
 - S: 1 マスター、1 スレーブ
 - S: 1 マスター、4 スレーブ
@@ -43,9 +43,9 @@ Spark は、Mesos や YARN クラスター マネージャーで実行される�
 -	同じ仮想サブネットで実行されている 4 つのスレーブ ノードと、マスター ノードとしての可用性セット。
 -	同じ仮想ネットワーク内にあるジャンプ ボックス VM と、クラスターのアクセスに使用できるサブネット。
 
-Spark バージョン 3.0.0 は既定のバージョンです。Spark リポジトリにある任意のビルト済みのバイナリに変更することもできます。また、スクリプトで、ソースのビルドのコメントを解除するプロビジョニングもあります。各 Spark マスター ノードには、10.0.0.10 という静的 IP アドレスが割り当てられます。また、テンプレート内から IP アドレスのリストを動的に構成できないという現在の制限を回避するために、各 Spark スレーブ ノードには静的な IP アドレスが割り当てられます (既定では、最初のノードには 10.0.0.30、2 番目のノードには 10.0.0.31 などのプライベート IP が順に割り当てられます)。デプロイ エラーを確認するには、新しい Azure ポータルを開き、**[リソース グループ]** > **[最後の展開]** > **[操作の詳細の確認]** を選択します。
+Spark バージョン 3.0.0 は既定のバージョンです。Spark リポジトリにある任意のビルト済みのバイナリに変更することもできます。また、スクリプトで、ソースのビルドのコメントを解除するプロビジョニングもあります。静的 IP アドレスは、各 Spark マスター ノード 10.0.0.10 に割り当てられます。テンプレート内から IP アドレスの一覧を動的に作成できない現在の制限を回避するために、静的 IP アドレスは、各 Spark スレーブ ノードに割り当てられます。(既定では、最初のノードは、10.0.0.30 のプライベート IP アドレスに割り当てられ、2 番目のノードは 10.0.0.31 に割り当てられます。3 番目以降も、同様に割り当てられます。) デプロイ エラーを確認するには、新しい Azure ポータルを開き、**[リソース グループ]** > **[最後の展開]** > **[操作の詳細の確認]** を選択します。
 
-Azure リソース マネージャーとこのデプロイメントに使用するテンプレートに関連する詳細に進む前に、Azure PowerShell または Azure CLI の構成が正常に完了していることを確認してください。
+Azure リソース マネージャーとこのデプロイに使用するテンプレートに関連する詳細に進む前に、Azure PowerShell または Azure CLI の構成が正常に完了していることを確認してください。
 
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
@@ -53,11 +53,11 @@ Azure リソース マネージャーとこのデプロイメントに使用す�
 
 ## リソース マネージャー テンプレートを使用して Spark クラスターを作成する
 
-次の手順に従い、リソース マネージャー テンプレートで、Azure PowerShell または Azure CLI を使用して、Github テンプレート リポジトリから Spark クラスターを作成します。
+次の手順に従い、リソース マネージャー テンプレートで、Azure PowerShell または Azure CLI を使用して、GitHub テンプレート リポジトリから Spark クラスターを作成します。
 
-### 手順 1-a. PowerShell を使用して、テンプレート ファイルをダウンロードします。
+### 手順 1-a: Azure PowerShell を使用してテンプレート ファイルをダウンロードする
 
-JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\Spark)。
+JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\Azure\Templates\Spark)。
 
 フォルダー名をローカル フォルダーのフォルダー名に置き換えて、次のコマンドを実行します。
 
@@ -87,17 +87,17 @@ foreach ($file in $files)
 
 ### 手順 1-b: Azure CLI を使用してテンプレート ファイルをダウンロードする
 
-たとえば次のようにして、任意の Git クライアントを使用して、テンプレート リポジトリ全体を複製します。
+たとえば次のように任意の Git クライアントを使用して、テンプレート リポジトリ全体を複製します。
 
 	git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\\Azure\\Templates の **spark-on-ubuntu** フォルダーを探します。
+複製の完了後に、C:\Azure\Templates の **spark-on-ubuntu** フォルダーを探します。
 
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
 テンプレートを使用して Spark クラスターを作成したら、構成パラメーター セットを指定して、必要な複数の設定を処理します。テンプレートの定義でこれらのパラメーターを宣言することで、外部ファイルまたはコマンドラインによってデプロイの実行中に値を指定することができます。
 
-**azuredeploy.json** ファイルの先頭にある "parameters" セクションで、Spark クラスターを構成するためにテンプレートに必要なパラメーター セットが見つかります。このテンプレートの azuredeploy.json ファイルの parameters セクションの例を次に示します。
+azuredeploy.json ファイルの先頭にある "parameters" セクションで、Spark クラスターを構成するためにテンプレートに必要なパラメーター セットが見つかります。このテンプレートの azuredeploy.json ファイルの parameters セクションの例を次に示します。
 
 ```json
 "parameters": {
@@ -117,14 +117,14 @@ foreach ($file in $files)
 		"type": "string",
 		"defaultValue": "Canonical",
 		"metadata": {
-			"Description": "Image Publisher"
+			"Description": "Image publisher"
 		}
 	},
 	"imageOffer": {
 		"type": "string",
 		"defaultValue": "UbuntuServer",
 		"metadata": {
-			"Description": "Image Offer"
+			"Description": "Image offer"
 		}
 	},
 	"imageSKU": {
@@ -138,7 +138,7 @@ foreach ($file in $files)
 		"type": "string",
 		"defaultValue": "uniquesparkstoragev12",
 		"metadata": {
-			"Description": "Unique namespace for the Storage Account where the Virtual Machine's disks will be placed"
+			"Description": "Unique namespace for the Storage account where the virtual machine's disks will be placed"
 		}
 	},
 	"region": {
@@ -173,7 +173,7 @@ foreach ($file in $files)
 		"type": "string",
 		"defaultValue": "Subnet-1",
 		"metadata": {
-			"Description": "Subnet name for the virtual network that resources will be provisioned in to"
+			"Description": "Subnet name for the virtual network that resources will be provisioned into"
 		}
 	},
 	"subnetPrefix": {
@@ -218,7 +218,7 @@ foreach ($file in $files)
 		"disabled"
 		],
 		"metadata": {
-			"Description": "The flag allowing to enable or disable provisioning of the jumpbox VM that can be used to access the Spark nodes"
+			"Description": "The flag allowing to enable or disable provisioning of the jump-box VM that can be used to access the Spark nodes"
 		}
 	},
 	"tshirtSize": {
@@ -236,13 +236,13 @@ foreach ($file in $files)
 }
 ```
 
-各パラメーターには、データ型や許容値などの詳細が記述されています。これにより、対話モード (PowerShell や Azure CLI など) でのテンプレート実行時に渡されるパラメーターだけでなく、必要なパラメーターとその記述のリストを解析することによって動的に構築できる自己発見型の UI を検証することが可能になります。
+各パラメーターには、データ型や許容値などの詳細が記述されています。これにより、対話モード (Azure PowerShell や Azure CLI など) でのテンプレート実行時に渡されるパラメーターだけでなく、必要なパラメーターとその記述のリストを解析することによって動的に構築できる自己発見型の UI を検証することが可能になります。
 
-### 手順 3-a: PowerShell とテンプレートを使用して Spark クラスターをデプロイする
+### 手順 3-a: Azure PowerShell とテンプレートを使用して Spark クラスターをデプロイする
 
-すべてのパラメーターの実行時の値を含む JSON ファイルを作成することによって、デプロイメント用の parameters ファイルを準備します。このファイルは、単一のエンティティとしてデプロイメント コマンドに渡されます。parameters ファイルが指定されていない場合、PowerShell はテンプレートで指定されているすべての既定値を使用し、残りの値を入力するように要求します。
+すべてのパラメーターの実行時の値を含む JSON ファイルを作成することによって、デプロイ用の parameters ファイルを準備します。このファイルは、単一のエンティティとしてデプロイ コマンドに渡されます。parameters ファイルが指定されていない場合、Azure PowerShell はテンプレートで指定されているすべての既定値を使用し、残りの値を入力するように要求します。
 
-次に、**azuredeploy-parameters.json** ファイルのパラメーター セットの例を示します。パラメーター storageAccountName、adminUsername、adminPassword、およびその他のパラメーターの任意のカスタマイズに有効な値を指定する必要があります。
+次に、azuredeploy-parameters.json ファイルのパラメーター セットの例を示します。パラメーター **storageAccountName**、**adminUsername**、**adminPassword**、およびその他のパラメーターの任意のカスタマイズに有効な値を指定する必要があります。
 
 ```json
 {
@@ -290,7 +290,7 @@ foreach ($file in $files)
   }
 }
 ```
-Azure のデプロイメント名、リソース グループ名、Azure の場所、JSON デプロイ ファイルの保存先フォルダーを指定します。次のコマンドを実行します。
+Azure のデプロイ名、リソース グループ名、Azure の場所、JSON デプロイ ファイルの保存先フォルダーを指定します。次のコマンドを実行します。
 
 ```powershell
 $deployName="<deployment name>"
@@ -302,16 +302,16 @@ $templateParameterFile= $folderName + "\azuredeploy-parameters.json"
 New-AzureResourceGroup -Name $RGName -Location $locName
 New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParamterFile $templateParameterFile -TemplateFile $templateFile
 ```
-> [AZURE.NOTE]$RGName は、サブスクリプション内で一意である必要があります。
+> [AZURE.NOTE]**$RGName** は、サブスクリプション内で一意である必要があります。
 
 **New-AzureResourceGroupDeployment** コマンドを実行すると、JSON parameters ファイルからパラメーター値が抽出され、それに基づきテンプレートが実行されます。さまざまな環境 (テスト環境、運用環境など) によって複数のパラメーター ファイルを定義し、使用することは、テンプレートの再利用を推進し、複雑な多環境ソリューションを単純化します。
 
-デプロイ時には新しい Azure ストレージ アカウントを作成する必要があるため、ストレージ アカウント パラメーターとして指定する名前は一意であり、かつ Azure ストレージ アカウントのすべての要件 (小文字と数字のみ) を満たしている必要がある点に留意してください。
+デプロイ時には新しい Azure Storage アカウントを作成する必要があるため、Storage アカウント パラメーターとして指定する名前は一意であり、かつ Azure Storage アカウントのすべての要件 (小文字と数字のみ) を満たしている必要がある点に留意してください。
 
-デプロイメントの間に、次のような情報が表示されます。
+デプロイの間に、次のような情報が表示されます。
 
 ```powershell
-PS C:> New-AzureResourceGroup -Name $RGName -Location $locName
+PS C:\> New-AzureResourceGroup -Name $RGName -Location $locName
 
 ResourceGroupName : SparkResourceGroup
 Location          : westus
@@ -324,7 +324,7 @@ Permissions       :
 
 ResourceId        : /subscriptions/2018abc3-dbd9-4437-81a8-bb3cf56138ed/resourceGroups/sparkresourcegroup
 
-PS C:> New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParameterFile $templateParameterFile -TemplateFile $templateFile
+PS C:\> New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParameterFile $templateParameterFile -TemplateFile $templateFile
 VERBOSE: 10:08:28 AM - Template is valid.
 VERBOSE: 10:08:28 AM - Create template deployment 'SparkTestDeployment'.
 VERBOSE: 10:08:37 AM - Resource Microsoft.Resources/deployments 'shared-resources' provisioning status is running
@@ -375,13 +375,13 @@ Parameters        :
                     tshirtSize       String                     M
 ```
 
-デプロイメント中およびデプロイメント後には、プロビジョニング中に行われたすべての要求 (発生したすべてのエラーを含む) を確認できます。
+デプロイ中およびデプロイ後には、プロビジョニング中に行われたすべての要求 (発生したすべてのエラーを含む) を確認できます。
 
 確認するには、[Azure ポータル](https://portal.azure.com)に移動し、次の操作を行います。
 
-- 左側のナビゲーション バーで [参照] をクリックし、下へスクロールして [リソース グループ] をクリックします。
-- 作成したリソース グループをクリックすると、[リソース グループ] ブレードが表示されます。
-- [リソース グループ] ブレードの [監視] 部分にある [イベント] 棒グラフをクリックすると、デプロイのイベントが表示できます。
+- 左側のナビゲーション バーで **[参照]** をクリックし、下へスクロールして **[リソース グループ]** をクリックします。
+- 作成したリソース グループをクリックして、[リソース グループ] ブレードを表示します。
+- [リソース グループ] ブレードの **[監視]** 部分にある **[イベント]** 棒グラフをクリックすると、デプロイのイベントが表示できます。
 - 個々のイベントをクリックすることで、テンプレートのために実行された個別の操作の詳細にドリル ダウンできます。
 
 ![portal-events](media/virtual-machines-spark-template/portal-events.png)
@@ -398,25 +398,25 @@ Azure CLI を使用して Spark クラスターをデプロイするには、ま
 
 	azure group create SparkResourceGroup "West US"
 
-このリソース グループ名、JSON テンプレート ファイルの場所、および parameters ファイルの場所 (詳細については、前述の PowerShell に関する説明を参照) を、次のコマンドに渡します。
+このリソース グループ名、JSON テンプレート ファイルの場所、および parameters ファイルの場所 (詳細については、前述の Azure PowerShell に関する説明を参照) を、次のコマンドに渡します。
 
 	azure group deployment create SparkResourceGroup -f .\azuredeploy.json -e .\azuredeploy-parameters.json
 
-次のコマンドを実行することにより、個々のリソース デプロイメントのステータスをチェックできます。
+次のコマンドを使用することにより、個々のリソース デプロイのステータスをチェックできます。
 
 	azure group deployment list SparkResourceGroup
 
 ## Spark のテンプレート構造とファイル編成について
 
-堅牢で再利用可能なリソース マネージャー テンプレートを設計するには、さらに検討を加え、Spark のような複雑なソリューションのデプロイ時に必要な、複雑で相互に関連する一連のタスクを整理する必要があります。関連する拡張機能によるスクリプト実行に加え、ARM の**テンプレート リンク**機能や**リソース ループ**機能を活用することで、実質的にはどのような複雑なテンプレート ベースのデプロイにも再利用可能なモジュール式の手法を実行できます。
+堅牢で再利用可能なリソース マネージャー テンプレートを設計するには、さらに検討を加え、Spark のような複雑なソリューションのデプロイ時に必要な、複雑で相互に関連する一連のタスクを整理する必要があります。関連する拡張機能によるスクリプト実行に加え、リソース マネージャーのテンプレート リンク機能やリソース ループ機能を活用することで、実質的にはどのような複雑なテンプレート ベースのデプロイにも再利用可能なモジュール式の手法を実行できます。
 
-次の図は、このデプロイメントの GitHub からダウンロードされるすべてのファイル間の関係を表しています。
+次の図は、このデプロイの GitHub からダウンロードされるすべてのファイル間の関係を表しています。
 
 ![spark-files](media/virtual-machines-spark-template/spark-files.png)
 
-このセクションでは、Spark クラスターの **azuredeploy.json** ファイルの構造について、順を追って説明します。
+このセクションでは、Spark クラスターの azuredeploy.json ファイルの構造について、順を追って説明します。
 
-テンプレート ファイルのコピーをまだダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates\\Spark)。フォルダー名を指定して以下のコマンドを実行します。
+テンプレート ファイルのコピーをまだダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\Azure\Templates\Spark)。フォルダー名を指定して以下のコマンドを実行します。
 
 ```powershell
 $folderName="<folder name, such as C:\Azure\Templates\Spark>"
@@ -430,7 +430,7 @@ $webclient.DownloadFile($url,$filePath)
 
 ### "parameters" セクション
 
-**azuredeploy.json** の "parameters" セクションには、このテンプレートで使用される、変更可能なパラメーターを指定します。前述の **azuredeploy-parameters.json** ファイルは、テンプレート実行時に、値を azuredeploy.json の "parameters" セクションに渡すために使用されます。
+azuredeploy.json の "parameters" セクションには、このテンプレートで使用される、変更可能なパラメーターを指定します。前述の azuredeploy-parameters.json ファイルは、テンプレート実行時に、値を azuredeploy.json の "parameters" セクションに渡すために使用されます。
 
 「T シャツ サイズ」のパラメーターの例を次に示します。
 
@@ -449,7 +449,7 @@ $webclient.DownloadFile($url,$filePath)
 },
 ```
 
->()。[AZURE.NOTE]"allowedValues"だけでなく、"defaultValue" も指定できます。
+> [AZURE.NOTE]**allowedValues** だけでなく、**defaultValue** も指定できます。
 
 ### "variables" セクション
 
@@ -486,16 +486,16 @@ $webclient.DownloadFile($url,$filePath)
 },
 ```
 
-"**vmStorageAccountContainerName**" は、サンプル名/値変数の例です。"**vnetID**" は、関数 "**resourceId**" と "**parameters**" を使用して実行時に計算される変数の例です。"**numberOfMasterInstances**" と "**vmSize**" 変数の値は、"**concat**"、"**variables**"、および "**parameters**" 関数を使用して実行時に計算されます。
+**vmStorageAccountContainerName** は、サンプル名/値変数の例です。**vnetID** は、関数 **resourceId** と **parameters** を使用して実行時に計算される変数の例です。**numberOfMasterInstances** と **vmSize** 変数の値は、**concat**、**variables**、および **parameters** 関数を使用して実行時に計算されます。
 
-Spark クラスターのデプロイのサイズをカスタマイズするには、azuredeploy.json テンプレート内の変数 tshirtSizeS、tshirtSizeM、および tshirtSizeL のプロパティを変更します。
+Spark クラスターのデプロイのサイズをカスタマイズするには、azuredeploy.json テンプレート内の変数 **tshirtSizeS**、**tshirtSizeM**、および **tshirtSizeL** のプロパティを変更します。
 
 テンプレート言語の詳細については、MSDN の「[Azure リソース マネージャーのテンプレート言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
 
 
 ### "resources" セクション
 
-**"resources"** セクションではアクションの大部分が発生します。このセクションを注意深く確認すると、すぐに 2 つの異なるケースを特定できます。1 つ目は、基本的にはメインのデプロイメントでの入れ子になったデプロイメントの呼び出しを意味する型の `Microsoft.Resources/deployments` について定義された要素です。"templateLink" 要素 (および関連するバージョン プロパティ) を通して、一連のパラメーターを入力として渡しながら呼び出されるリンク済みテンプレート ファイルを指定できます (次のフラグメントを参照)。
+"resources" セクションではアクションの大部分が発生します。このセクションを注意深く調べると、2 つの異なるケースがあることがすぐにわかります。1 つ目は、基本的にはメインのデプロイに入れ子になったデプロイメントを呼び出す `Microsoft.Resources/deployments` 型で定義された要素です。2 つ目は、一連のパラメーターを入力として呼び出されるリンクされたテンプレート ファイルを指定できるようにする **templateLink** プロパティ (および関連する **contentVersion** プロパティ) です。次のテンプレート フラグメントはこれらを示したものです。
 
 ```json
 "resources": [
@@ -533,18 +533,18 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 },
 ```
 
-この 1 つ目の例から明らかなように、このシナリオの **azuredeploy.json** は、ある種のオーケストレーション メカニズムとして編成され、それぞれが必要なデプロイメント アクティビティの一部を担う、他の数多くのテンプレート ファイルを呼び出しています。
+この 1 つ目の例から明らかなように、このシナリオの azuredeploy.json は、ある種のオーケストレーション メカニズムとして編成され、他の数多くのテンプレート ファイルを呼び出しています。各ファイルは、必要なデプロイ アクティビティの一部を担っています。
 
-特に、このデプロイメントには次のリンク済みテンプレートが使用されます。
+特に、このデプロイには次のリンク済みテンプレートが使用されます。
 
--	**shared-resource.json**: デプロイメント全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。
+-	**shared-resource.json**: デプロイ全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用される Storage アカウントです。
 -	**jumpbox-resources-enabled.json**: “jump box” の VM、および環境への SSH に使用されるネットワーク インターフェイス、パブリック IP アドレス、入力エンドポイントなどのすべての関連リソースです。
 
-これら 2 つのテンプレートを呼び出すと、**azuredeploy.json** によって、すべての Spark クラスター ノード VM と接続されているリソース (ネットワーク カード、プライベート IP など) がプロビジョニングされます。また、このテンプレートで VM 拡張機能 (Linux 用のカスタム スクリプト) がデプロイされ、bash スクリプト (**spark-cluster-install.sh**) が呼び出されて、各ノードに Spark が物理的にインストールされ、セットアップされます。
+これら 2 つのテンプレートを呼び出すと、azuredeploy.json によって、すべての Spark クラスター ノード VM と接続されているリソース (ネットワーク アダプター、プライベート IP など) がプロビジョニングされます。また、このテンプレートで VM 拡張機能 (Linux 用のカスタム スクリプト) がデプロイされ、bash スクリプト (spark-cluster-install.sh) が呼び出されて、各ノードに Spark が物理的にインストールされ、セットアップされます。
 
-この最後のテンプレート **azuredeploy.json** は、テンプレート開発の観点から見て最も興味深いテンプレートの 1 つです。このテンプレートの*使用方法*について、詳しく見てみましょう。注意が必要な重要な概念は、どのようにすれば 1 つのテンプレート ファイルによって単一の種類のリソースの複数のコピーをデプロイできるか、また、各インスタンスが必要な設定に対して一意の値を設定できるかということです。この概念は、**リソース ループ**と呼ばれています。
+この最後のテンプレート azuredeploy.json は、テンプレート開発の観点から見て最も興味深いテンプレートの 1 つです。このテンプレートの*使用方法*について、詳しく見てみましょう。注意が必要な重要な概念は、どのようにすれば 1 つのテンプレート ファイルによって単一の種類のリソースの複数のコピーをデプロイできるか、また、各インスタンスが必要な設定に対して一意の値を設定できるかということです。この概念は、**リソース ループ**と呼ばれています。
 
-"copy" 要素を使用するリソースは、"copy" 要素の "count" パラメーターで指定されている回数だけ自分自身を「コピー」します。デプロイ済みのリソースの異なるインスタンス間で一意の値を指定する必要があるすべての設定に対して、特定のリソース ループ作成における現在のインデックスを示す数値の取得に **copyindex()** 関数を使用できます。**azuredeploy.json** の次のフラグメントでは、この概念が複数のネットワーク カード、VM、および Spark クラスター用に作成された VM 拡張機能に適用されていることを確認できます。
+**copy** 要素を使用するリソースは、**copy** 要素の **count** パラメーターで指定されている回数だけ自分自身を「コピー」します。デプロイ済みのリソースの異なるインスタンス間で一意の値を指定する必要があるすべての設定に対して、特定のリソース ループ作成における現在のインデックスを示す数値の取得に **copyindex()** 関数を使用できます。azuredeploy.json の次のフラグメントでは、この概念が複数のネットワーク アダプター、VM、および Spark クラスター用に作成された VM 拡張機能に適用されていることを確認できます。
 
 ```json
 {
@@ -760,9 +760,9 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 	}
 ```
 
-リソース作成におけるもう 1 つの重要な概念は、**dependsOn** JSON 配列からわかるように、リソース間の依存関係と優先順位を指定できる点です。このテンプレートでは、Spark クラスター ノードが、共有リソースと最初に作成される networkInterfaces リソースに依存していることがわかります。
+リソース作成におけるもう 1 つの重要な概念は、**dependsOn** JSON 配列からわかるように、リソース間の依存関係と優先順位を指定できる点です。このテンプレートでは、Spark クラスター ノードが、共有リソースと最初に作成される **networkInterfaces** リソースに依存していることがわかります。
 
-注意が必要なもう 1 つの興味深いフラグメントとして、**CustomScriptForLinux** VM 拡張機能に関連するものがあります。これらは、各クラスター ノードに依存関係を持つ別の種類のリソースとしてインストールされます。この場合、これは各 VM ノードに Spark をインストールしてセットアップするために使われます。これらを使用する **azuredeploy.json** テンプレートのスニペットを見てみましょう。
+注意が必要なもう 1 つの興味深いフラグメントとして、**CustomScriptForLinux** VM 拡張機能に関連するものがあります。これらは、各クラスター ノードに依存関係を持つ別の種類のリソースとしてインストールされます。この場合、これは各 VM ノードに Spark をインストールしてセットアップするために使われます。これらを使用する azuredeploy.json テンプレートのスニペットを見てみましょう。
 
 ```json
 {
@@ -817,21 +817,21 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 }
 ```
 
-マスター ノードとスレーブ ノードのリソースの拡張機能は、プロビジョニング プロセスの一部として、**commandToExecute プロパティ**に定義されている別のコマンドを実行します。
+マスター ノードとスレーブ ノードのリソースの拡張機能は、プロビジョニング プロセスの一部として、**commandToExecute** プロパティに定義されている別のコマンドを実行します。
 
-このリソースは既にデプロイされているリソース VM に依存することがわかります (**Microsoft.Compute/virtualMachines/vmMember<X>**)。ここで、**<X>** はパラメーター "**machineSettings.machineIndex**" であり、“**copyindex()**” 関数を使用してこのスクリプトに渡された VM のインデックスです。
+最新の仮想マシンの拡張機能の JSON スニペットを見ると、このリソースが、仮想マシン リソースとそのネットワーク インターフェイスに依存していることが分かります。これは、この VM の拡張機能をプロビジョニングし、実行する前に、これらの 2 つのリソースを展開しておく必要があることを示しています。**copyindex()**関数を使用して、各スレーブ仮想マシンに対してこの手順を繰り返すことにも注意してください。
 
-このデプロイメントに含まれる他のファイルを熟知することで、Azure リソース マネージャー テンプレートを活用しながら、任意のテクノロジに基づく複数ノード ソリューションの複雑なデプロイメント戦略を編成および調整するために必要な、すべての詳細とベスト プラクティスを理解することができます。必須ではありませんが、次の図で表されているようにテンプレート ファイルを構築する手法をお勧めします。
+このデプロイに含まれる他のファイルを熟知することで、Azure リソース マネージャー テンプレートを活用しながら、任意のテクノロジに基づく複数ノード ソリューションの複雑なデプロイ戦略を編成および調整するために必要な、すべての詳細とベスト プラクティスを理解することができます。必須ではありませんが、次の図で表されているようにテンプレート ファイルを構築する手法をお勧めします。
 
 ![spark-template-structure](media/virtual-machines-spark-template/spark-template-structure.png)
 
 この手法では、基本的に次のことを提案しています。
 
--	すべてのデプロイメント アクティビティに対する中心的なオーケストレーション ポイントとして、核となるテンプレート ファイルを定義し、サブテンプレートの実行を呼び出すためにテンプレート リンクを活用します。
--	他のすべてのデプロイメント タスク (ストレージ アカウント、VNET 構成など) の間で共有されるすべてのリソースをデプロイする、特定のテンプレート ファイルを作成します。これは、共通のインフラストラクチャに関して類似した要件を持つデプロイメント間で頻繁に再利用できます。
+-	すべてのデプロイ アクティビティに対する中心的なオーケストレーション ポイントとして、核となるテンプレート ファイルを定義し、サブテンプレートの実行を呼び出すためにテンプレート リンクを活用します。
+-	他のすべてのデプロイ タスク (ストレージ アカウント、仮想ネットワーク構成など) の間で共有されるすべてのリソースをデプロイする、特定のテンプレート ファイルを作成します。これは、共通のインフラストラクチャに関して類似した要件を持つデプロイ間で頻繁に再利用できます。
 -	特定のリソースに固有のスポット要件用にオプションのリソース テンプレートを含みます。
 -	リソース グループの同一メンバー (クラスター内のノードなど) に対して、一意のプロパティを持つ複数のインスタンスをデプロイするため、リソース ループを活用する特定のテンプレートを作成します。
--	すべてのデプロイメント後のタスク (製品のインストールや構成など) について、スクリプト デプロイメントの拡張機能を活用し、各テクノロジに固有のスクリプトを作成します。
+-	すべてのデプロイ後のタスク (製品のインストールや構成など) について、スクリプト デプロイの拡張機能を活用し、各テクノロジに固有のスクリプトを作成します。
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
 
@@ -841,7 +841,6 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 
 [その他のアプリケーション フレームワークについてはこちら](virtual-machines-app-frameworks.md)を参照してください。
 
-[テンプレートのデプロイに関するトラブルシューティング](resource-group-deploy-debug.md)。
- 
+[Troubleshoot template deployments (テンプレート デプロイのトラブルシューティング)](resource-group-deploy-debug.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

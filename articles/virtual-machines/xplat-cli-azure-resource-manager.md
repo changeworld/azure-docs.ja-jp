@@ -340,4 +340,4 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

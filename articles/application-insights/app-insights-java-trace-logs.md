@@ -87,9 +87,9 @@
 
 ロガー | ダウンロード | ライブラリ
 ----|----|----
-Logback|[Logback アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/logbackAppender.zip)|applicationinsights-logging-logback
-Log4J v2.0|[Log4J v2 アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/log4j2Appender.zip)|applicationinsights-logging-log4j2 
-Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](http://dl.msopentech.com/applicationinsights/javabin/log4j1_2Appender.zip)|applicationinsights-logging-log4j1_2 
+Logback|[Logback アペンダーを含む SDK](http://dl.windowsazure.com/applicationinsights/javabin/logbackAppender.zip)|applicationinsights-logging-logback
+Log4J v2.0|[Log4J v2 アペンダーを含む SDK](http://dl.windowsazure.com/applicationinsights/javabin/log4j2Appender.zip)|applicationinsights-logging-log4j2 
+Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](http://dl.windowsazure.com/applicationinsights/javabin/log4j1_2Appender.zip)|applicationinsights-logging-log4j1_2 
 
 
 
@@ -149,4 +149,4 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

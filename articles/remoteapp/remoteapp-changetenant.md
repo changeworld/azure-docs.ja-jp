@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp で Azure Active Directory テナントを変更する"
     description="Azure RemoteApp に関連付けられている Azure Active Directory テナントの変更方法について説明します。"
     services="remoteapp"
-    documentationCenter="" 
+	documentationCenter="" 
     authors="lizap"
     manager="mbaldwin" />
 
@@ -48,4 +48,4 @@ Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユー�
 
 これで新しい Azure AD テナントを使用し、Azure サブスクリプションへのアクセスを制御したり、Azure RemoteApp 内のユーザー アクセスを構成したりできます。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

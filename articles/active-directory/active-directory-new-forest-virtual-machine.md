@@ -38,11 +38,12 @@
 
 ドメイン コントローラーの内部設置型へのインストールと Azure へのインストールにそれほど大きな違いはありません。主な違いを次の表に示します。
 
-構成対象 | 内部設置型 | Azure 仮想ネットワーク	
+構成対象 | オンプレミスの  
+ | Azure Virtual Network	
 ------------- | -------------  | ------------
 **ドメイン コントローラーの IP アドレス** | ネットワーク アダプターのプロパティの静的 IP アドレスを割り当てる | Set-AzureStaticVNetIP コマンドレットを実行して、静的 IP アドレスを割り当てる
 **DNS クライアント リゾルバー** | ドメイン メンバーのネットワーク アダプターのプロパティの優先および代替 DNS サーバー アドレスを設定する | 仮想ネットワークのプロパティの DNS サーバー アドレスを設定する
-**Active Directory データベース ストレージ** | 既定の保存先を C:\\ から変更する (省略可能) | 既定の保存先を C:\\ から変更する (必須)
+**Active Directory データベース ストレージ** | 既定の保存先を C:\ から変更する (省略可能) | 既定の保存先を C:\ から変更する (必須)
 
 
 
@@ -79,7 +80,7 @@ UI ではなく Windows PowerShell を使用して VM を作成する方法に�
 
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
-静的 IP アドレスを設定する方法の詳細については、「[VM 用の静的内部 IP アドレスを構成する](https://msdn.microsoft.com/library/azure/dn630228.aspx)」をご覧ください。
+静的 IP アドレスを設定する方法の詳細については、「[VM 用の静的内部 IP アドレスを構成する](../virtual-network/virtual-networks-reserved-private-ip.md)」をご覧ください。
 
 ## Windows Server Active Directory をインストールする
 
@@ -139,4 +140,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -40,4 +40,4 @@
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/15/2015" 
+	ms.date="07/20/2015" 
 	ms.author="juliako"/>
 
 
@@ -25,6 +25,7 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
+- [2015 年 7 月のリリース](#july_changes_15)
 - [2015 年 6 月のリリース](#june_changes_15)
 - [2015 年 5 月のリリース](#may_changes_15)
 - [2015 年 4 月のリリース](#april_changes_15)
@@ -62,6 +63,23 @@
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
 Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
+
+##<a id="july_changes_15"></a>2015 年 7 月のリリース
+
+メディア エンコーダー スタンダードの一般公開の発表。詳細については、[この投稿](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
+
+メディア エンコーダー スタンダードでは、[この](http://go.microsoft.com/fwlink/?LinkId=618336)セクションで説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合、**プレミアム ** 予約ユニットの種類になります。詳細については、「[エンコードの規模の設定方法](media-services-portal-encoding-units)」を参照してください。
+
+
+###Media Services .NET SDK の更新
+
+Azure Media Services .NET SDK が 3.4.0.0 にバージョン アップしました。今回のリリースでは、次の機能が追加されました。
+
+- ライブ アーカイブのサポートが実装されました。ライブ アーカイブを含むアセットはダウンロードできません。
+- 動的フィルターのサポートが実装されました
+- ユーザーがストレージ コンテナーを維持しながらアセットを削除できる機能が実装されました
+- チャネルの再試行ポリシーに関連するバグが修正されました
+- **メディア エンコーダー プレミアム ワークフロー**が有効になりました
 
 ##<a id="june_changes_15"></a>2015 年 6 月のリリース
 
@@ -301,7 +319,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 ### <a name="jan_fab_14_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.1、3.0.0.2、および 3.0.0.3
 
-3\.0.0.1 および 3.0.0.2 における変更:
+3.0.0.1 および 3.0.0.2 における変更:
 
 * OrderBy ステートメントでの LINQ クエリの使用に関する問題が修正されました。
 
@@ -309,11 +327,11 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 変更の詳細については、「[Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]」を参照してください。
 
-3\.0.0.3 では次の点が変更されました。
+3.0.0.3 では次の点が変更されました。
 
 * バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。 
 
-* 3\.0.*.* リリースの下位互換性の問題が修正されました。
+* 3.0.*.* リリースの下位互換性の問題が修正されました。
 
 
 ##<a id="december_changes_13"></a>2013 年 12 月のリリース
@@ -540,4 +558,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

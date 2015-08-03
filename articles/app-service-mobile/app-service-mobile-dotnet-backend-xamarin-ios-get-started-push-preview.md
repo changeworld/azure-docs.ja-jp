@@ -33,6 +33,10 @@
 
 Apple Push Notification Service (APNs) では、証明書を使用してモバイル アプリを認証します。次の手順に従って、必要な証明書を作成し、モバイル アプリにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
+##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-push-preview](../../includes/app-service-mobile-dotnet-backend-enable-push-preview.md)]
+
 ## <a name="certificates"></a>証明書の署名要求ファイルを生成する
 
 まず、Apple が署名証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成する必要があります。
@@ -336,4 +340,4 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

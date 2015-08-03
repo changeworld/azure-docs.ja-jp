@@ -356,4 +356,4 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 	
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

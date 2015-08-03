@@ -113,4 +113,4 @@ DocumentDB を使用することで、いつでも作成したコレクション
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

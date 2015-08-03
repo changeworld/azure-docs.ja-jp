@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション" 
 	description="弾力性データベース ツールと行レベルのセキュリティを使用して、Azure SQL Database にマルチテナントのシャードをサポートする拡張性の高いデータ層を持つアプリケーションを作成する方法について説明します。" 
 	services="sql-database" 
@@ -340,4 +340,4 @@ GO
 [1]: ./media/sql-database-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

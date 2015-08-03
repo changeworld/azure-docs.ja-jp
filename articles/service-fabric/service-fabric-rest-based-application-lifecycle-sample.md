@@ -49,9 +49,9 @@
 
 アプリケーション パッケージを作成し、作成したパッケージを ImageStore にコピーする方法は、次のとおりです。
 
-1. C:\\Samples\\Services\\VS2015\\WordCountUpgrade\\WordCount\\pkg\\Debug を C:\\Temp\\WordCount にコピーします。これにより、WordCount アプリケーション パッケージが作成されます。 
-2. C:\\Temp\\WordCount を C:\\Temp\\WordCountUpgrade にコピーします。これにより、WordCountUpgrade アプリケーション パッケージが作成されます。
-3. C:\\Temp\\WordCountUpgrade\\ApplicationManifest.xml をテキスト エディターで開きます。
+1. C:\Samples\Services\VS2015\WordCountUpgrade\WordCount\pkg\Debug を C:\Temp\WordCount にコピーします。これにより、WordCount アプリケーション パッケージが作成されます。 
+2. C:\Temp\WordCount を C:\Temp\WordCountUpgrade にコピーします。これにより、WordCountUpgrade アプリケーション パッケージが作成されます。
+3. C:\Temp\WordCountUpgrade\ApplicationManifest.xml をテキスト エディターで開きます。
 4. ApplicationManifest 要素で、ApplicationTypeVersion 属性を "1.1.0.0" に変更します。これにより、アプリケーションのバージョン番号が更新されます。
 5. 変更された ApplicationManifest.xml ファイルを保存します。
 6. 以下の PowerShell スクリプトを管理者として実行し、アプリケーションを ImageStore にコピーします。
@@ -712,4 +712,4 @@ namespace ServiceFabricRestCaller
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

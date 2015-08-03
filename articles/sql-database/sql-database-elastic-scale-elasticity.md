@@ -155,4 +155,4 @@ Azure SQL DB には、シャード弾力性のデータ ソースとして利用
 [Action]: #action
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

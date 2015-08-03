@@ -46,15 +46,15 @@ Chef には 3 つの主要なアーキテクチャ コンポーネント**Chef �
 
 まずはワークステーションを準備します。ここでは、標準の Windows ワークステーションを使用します。構成ファイルと Cookbook を保存するディレクトリを作成する必要があります。
 
-最初に **C:\\chef** というディレクトリを作成します。
+最初に **C:\chef** というディレクトリを作成します。
 
-次に 2 個目のディレクトリ **c:\\chef\\cookbooks** を作成します。
+次に 2 個目のディレクトリ **c:\chef\cookbooks** を作成します。
 
 Azure 設定ファイルをダウンロードして Chef が Azure のサブスクリプションと通信できるようにする必要があります。
 
 発行設定は次のリンクからダウンロードしてください。<a href="https://manage.windowsazure.com/publishsettings/" target="_blank">https://manage.windowsazure.com/publishsettings/</a>
 
-発行設定ファイルを **C:\\chef** に保存します。
+発行設定ファイルを **C:\chef** に保存します。
 
 ##管理された Chef アカウントの作成
 
@@ -74,15 +74,15 @@ Azure 設定ファイルをダウンロードして Chef が Azure のサブス�
 
 ##Chef ワークステーションの構成
 
-chef-starter.zip を **C:\\chef** に展開します。
+chef-starter.zip を **C:\chef** に展開します。
 
-**chef-starter\\chef-repo.chef** にあるすべてのファイルを **c:\\chef** にコピーします。
+**chef-starter\chef-repo.chef** にあるすべてのファイルを **c:\chef** にコピーします。
 
 これでディレクトリは次のようになるはずです。
 
 ![][5]
 
-c:\\chef のルートには Azure パブリッシュ ファイルを含む 4 つのファイルがあるはずです。
+c:\chef のルートには Azure パブリッシュ ファイルを含む 4 つのファイルがあるはずです。
 
 PEM ファイルには組織と管理者の通信用秘密キーが含まれ、**knife.rb** ファイルには knife 構成が含まれています。**knife.rb** ファイルを編集する必要があります。
 
@@ -98,7 +98,7 @@ PEM ファイルには組織と管理者の通信用秘密キーが含まれ、*
 
 ![][6]
 
-これらの行によって、Knife が c:\\chef\\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
+これらの行によって、Knife が c:\chef\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
 
 ## Chef 開発キットのインストール
 
@@ -108,9 +108,9 @@ PEM ファイルには組織と管理者の通信用秘密キーが含まれ、*
 
 ![][7]
 
-手順は簡単です。c:\\opscode の既定の場所にインストールします。このインストールは約 10 分かかります。
+手順は簡単です。c:\opscode の既定の場所にインストールします。このインストールは約 10 分かかります。
 
-PATH 変数に C:\\opscode\\chefdk\\bin;C:\\opscode\\chefdk\\embedded\\bin;c:\\users\\yourusername\\.chefdk\\gem\\ruby\\2.0.0\\bin のエントリが含まれていることを確認します。
+PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin のエントリが含まれていることを確認します。
 
 ない場合は必ずこのパスを追加してください。
 
@@ -143,15 +143,15 @@ PATH 変数に C:\\opscode\\chefdk\\bin;C:\\opscode\\chefdk\\embedded\\bin;c:\\u
 
 Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。Cookbook は簡単に作成でき、chef generate cookbook コマンドを使用して Cookbook のテンプレートを生成します。ポリシーで IIS を自動的に展開させるため、Cookbook webserver を呼び出します。
 
-C:\\Chef ディレクトリで次のコマンドを実行します。
+C:\Chef ディレクトリで次のコマンドを実行します。
 
 	chef generate cookbook webserver
 
-これで、ディレクトリ **C:\\Chef\\cookbooks\\webserver** に一連のファイルが生成されます。 次に、管理する VM で Chef クライアントに実行させる一連のコマンドを定義する必要があります。
+これで、ディレクトリ **C:\Chef\cookbooks\webserver** に一連のファイルが生成されます。 次に、管理する VM で Chef クライアントに実行させる一連のコマンドを定義する必要があります。
 
 コマンドはファイル **default.rb.** に保存されています。 このファイルでは、IIS をインストールして、起動し、wwwroot フォルダーにテンプレートをコピーする一連のコマンドを定義します。
 
-**C:\\chef\\cookbooks\\webserver\\recipes\\default.rb** を変更して次の行を追加します。
+**C:\chef\cookbooks\webserver\recipes\default.rb** を変更して次の行を追加します。
 
 	powershell_script 'Install IIS' do
  		action :run
@@ -177,7 +177,7 @@ C:\\Chef ディレクトリで次のコマンドを実行します。
 
 	chef generate template webserver Default.htm
 
-ファイル **C:\\chef\\cookbooks\\webserver\\templates\\default\\Default.htm.erb** に移動して、ファイルを編集します。
+ファイル **C:\chef\cookbooks\webserver\templates\default\Default.htm.erb** に移動して、ファイルを編集します。
 
 シンプルな「Hello World」 html コードを追加してファイルを保存します。
 
@@ -238,4 +238,4 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 <!--Link references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

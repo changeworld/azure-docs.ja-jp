@@ -58,11 +58,11 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	回線を作成する前に、サービス プロバイダー、サポートされているロケーション、各ロケーションで選択できる帯域幅のリストが必要になります。次の PowerShell コマンドレットを実行すると、この情報が返されます。この情報は、後のステップで使用します。
 
-		PS C:> Get-AzureDedicatedCircuitServiceProvider
+		PS C:\> Get-AzureDedicatedCircuitServiceProvider
 
 	返される情報は、次の例のようになります。
 
-		PS C:> Get-AzureDedicatedCircuitServiceProvider
+		PS C:\> Get-AzureDedicatedCircuitServiceProvider
 	
 		Name                 DedicatedCircuitLocations      DedicatedCircuitBandwidths                                                                                                                                                                                   
 		----                 -------------------------      --------------------------                                                                                                                                                                                   
@@ -118,7 +118,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	この情報は、Get-AzureCircuit コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは ServiceKey フィールドに表示されます。
 
-		PS C:> Get-AzureDedicatedCircuit
+		PS C:\> Get-AzureDedicatedCircuit
 		
 		Bandwidth                        : 500
 		CircuitName                      : NetBondSVTest
@@ -145,9 +145,9 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	少なくとも 1 つの Azure 仮想ネットワークでゲートウェイが作成済みであることを確認します。ゲートウェイが実行されている必要があります。
 
-		PS C:> $Vnet = "MyTestVNet"
+		PS C:\> $Vnet = "MyTestVNet"
 		New-AzureDedicatedCircuitLink -ServiceKey $ServiceKey -VNetName $Vnet
 		
 		Provisioned 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

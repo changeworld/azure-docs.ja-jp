@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 # インフラストラクチャの容量を管理する
@@ -162,4 +162,6 @@ Microsoft Azure オペレーション インサイトの **[直接接続スト�
 
 4. **予測ツール**では、日付スライダーを移動して選択した日付に使用される容量の予測を表示します。
 
-<!---HONumber=July15_HO2-->
+[AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
+
+<!---HONumber=July15_HO4-->

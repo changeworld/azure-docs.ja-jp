@@ -53,7 +53,7 @@
 
 1. オペレーティング システムにログインします。
 
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。ディレクトリを **%windir%\\system32\\sysprep** に変更し、`sysprep.exe` を実行します。
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
 
 	![コマンド プロンプト ウィンドウを開く](./media/virtual-machines-create-upload-vhd-windows-server/sysprep_commandprompt.png)
 
@@ -211,4 +211,4 @@
 [手順 4. .vhd ファイルをアップロードする]: #upload
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

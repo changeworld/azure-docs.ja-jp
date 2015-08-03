@@ -68,4 +68,4 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="adinah"
+   manager="jdial"
    editor="tysonn" />
 <tags
    ms.service="expressroute"
@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/30/2015"
+   ms.date="07/20/2015"
    ms.author="cherylmc"/>
 
 # 共存する ExpressRoute とサイト間 VPN の接続の構成
@@ -45,10 +45,11 @@ ExpressRoute とサイト間 VPN を同じ仮想ネットワークに接続で�
 
 ### 注意と制限
 
-- ExpressRoute ゲートウェイとサイト間 VPN ゲートウェイは両方とも、標準または高パフォーマンス ゲートウェイの SKU である必要があります。ゲートウェイの SKU については、「[ゲートウェイの SKU](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
+- サイト間 VPN 経由で接続されたローカル ネットワークと ExpressRoute 経由で接続されたローカル ネットワーク間で (Azure 経由で) ルーティングすることはできません。
+- ExpressRoute に接続されているのと同じ VNet に対しては、ポイント対サイト VPN 接続を有効にできません。ポイント対サイト VPN と ExpressRoute を同じ VNet に共存させることはできません。
+- ExpressRoute ゲートウェイとサイト間 VPN ゲートウェイは両方とも、標準または高パフォーマンス ゲートウェイの SKU である必要があります。ゲートウェイの SKU については、[ゲートウェイの SKU](../vpn-gateway/vpn-gateway-about-vpngateways.md) に関するページをご覧ください。
 - ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は (シナリオ 1)、ローカル ネットワーク内で静的ルートを構成して、パブリック インターネットへのサイト間 VPN 接続をルーティングする必要があります。 
 - サイト間 VPN ゲートウェイを追加する前に、まず ExpressRoute ゲートウェイを作成する必要があります。
-- サイト間 VPN 経由で接続されたローカル ネットワークと ExpressRoute 経由で接続されたローカル ネットワーク間で (Azure 経由で) ルーティングすることはできません。
 - どちらの手順も、既に ExpressRoute 回線を構成していることを前提としています。構成していない場合は、次の記事を参照してください。 
 
 	- [ネットワーク サービス プロバイダー (NSP) による ExpressRoute 接続の構成](expressroute-configuring-nsps.md) 
@@ -151,7 +152,7 @@ ExpressRoute とサイト間 VPN を同じ仮想ネットワークに接続で�
 		OperationStatus      : Succeeded
 
 	
-8. ローカルの VPN デバイスを構成して新しいゲートウェイに接続します。VPN デバイスを構成するときに、手順 6 で取得した情報を使用します。VPN デバイス構成の詳細については、「[VPN デバイスの構成](vpn-gateway-configure-vpn-gateway-mp.md/#gather-information-for-your-vpn-device-configuration)」を参照してください。
+8. ローカルの VPN デバイスを構成して新しいゲートウェイに接続します。VPN デバイスを構成するときに、手順 6 で取得した情報を使用します。VPN デバイス構成の詳細については、「[VPN デバイスの構成](http://go.microsoft.com/fwlink/p/?linkid=615099)」を参照してください。
 	
 
 9. Azure のサイト間 VPN ゲートウェイをローカル ゲートウェイにリンクします。
@@ -203,4 +204,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](expres
 
 VPN ゲートウェイの詳細については、「[VPN ゲートウェイについて](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -25,7 +25,7 @@
 
 次の図は、Azure Media Services と castLabs の統合アーキテクチャを大まかに示しています。
 
-![[スケール] ページ](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![統合](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ##一般的なシステムの設定
 
@@ -114,4 +114,4 @@ castLabs プレイヤーを使用して Chrome の HTML5 で保護されたビ�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

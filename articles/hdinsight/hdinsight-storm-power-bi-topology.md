@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/28/2015"
+ ms.date="07/17/2015"
  ms.author="larryfr"/>
 
 # Power BI (プレビュー) を使用した Apache Storm トポロジのデータの視覚化
@@ -54,9 +54,9 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## Power BI アプリケーションの登録
 
-1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/en-US/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
+1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/ja-jp/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
 
-2. 「[アプリの登録](https://msdn.microsoft.com/en-US/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
+2. 「[アプリの登録](https://msdn.microsoft.com/ja-jp/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
 
     > [AZURE.IMPORTANT]アプリケーション登録に**クライアント ID** を保存します。
 
@@ -137,6 +137,5 @@ Power BI プレビューを使用すると、データをレポートとして�
 このドキュメントでは、REST を使用して Strom トポロジのデータを Power BI に送信する方法を説明します。他の Azure テクノロジを使用する方法については、以下をご覧ください。
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

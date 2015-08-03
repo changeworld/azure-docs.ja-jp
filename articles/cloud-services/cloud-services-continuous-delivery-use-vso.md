@@ -80,7 +80,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 2. ソリューション ファイルの保存場所に移動し、ファイルを開きます。<br/> ![][16]
 
-3. ソリューション エクスプローラーで、ファイルを開き、変更します。たとえば、MVC Web ロールの Views\\Shared フォルダーにある _Layout.cshtml ファイルを変更します。<br/> ![][17]
+3. ソリューション エクスプローラーで、ファイルを開き、変更します。たとえば、MVC Web ロールの Views\Shared フォルダーにある _Layout.cshtml ファイルを変更します。<br/> ![][17]
 
 4. サイトのロゴを編集し、Ctrl + S キーを押してファイルを保存します。<br/> ![][18]
 
@@ -239,4 +239,4 @@ Visual Studio Online での単位テストの詳細については、[「ビル�
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

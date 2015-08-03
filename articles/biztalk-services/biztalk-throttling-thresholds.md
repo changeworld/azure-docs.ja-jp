@@ -88,4 +88,4 @@ Azure BizTalk サービスが調整状態になると、次のことが発生し
 - [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

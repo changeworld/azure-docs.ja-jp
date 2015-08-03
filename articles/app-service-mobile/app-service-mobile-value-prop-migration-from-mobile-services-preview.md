@@ -67,4 +67,4 @@ Mobile services では、バックエンド コードのすべてのインスタ
 *Azure App Service モバイル アプリ*機能が一般公開されるまで、既存の Mobile Services に、移行対象として選択する App Service へのシームレスな移行エクスペリエンスが提供されます。その間に *App Service* の調査を開始し、こちらの[チュートリアル](app-service-mobile-dotnet-backend-migrating-from-mobile-services-preview.md)に従って既存の Mobile Service に *App Service* を活用することができます。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

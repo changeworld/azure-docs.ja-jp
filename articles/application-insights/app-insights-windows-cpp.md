@@ -46,11 +46,11 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
     ![**[プレリリースを含める]** を選択し、「Application Insights」を検索します。](./media/app-insights-windows-cpp/04-nuget.png)
 
 3. リリースとデバッグのプロジェクト設定で、次のようにします。
-  - $(SolutionDir)packages\\ApplicationInsights-CPP.1.0.0-Beta\\src\\inc をプロジェクト プロパティ -> VC++ ディレクトリ -> Include ディレクトリに追加する
-  - $(SolutionDir)packages\\ApplicationInsights.1.0.0-Beta\\lib\\native<PLATFORM TYPE>\\release\\AppInsights_Win10-UAP をプロジェクト プロパティ -> VC++ ディレクトリ -> Library ディレクトリに追加する
+  - $(SolutionDir)packages\ApplicationInsights-CPP.1.0.0-Beta\src\inc をプロジェクト プロパティ -> VC++ ディレクトリ -> Include ディレクトリに追加する
+  - $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native<PLATFORM TYPE>\release\AppInsights_Win10-UAP をプロジェクト プロパティ -> VC++ ディレクトリ -> Library ディレクトリに追加する
 
-4. ApplicationInsights.winmd を $(SolutionDir)packages\\ApplicationInsights.1.0.0-Beta\\lib\\native<PLATFORM TYPE>\\release\\ApplicationInsights からのプロジェクトへのリファレンスとして追加する
-5. AppInsights_Win10-UAP.dll を $(SolutionDir)packages\\ApplicationInsights.1.0.0-Beta\\lib\\native<PLATFORM TYPE>\\release\\AppInsights_Win10-UAP から追加する。プロパティに移動し、内容を YES に設定します。これにより、dll がビルド ディレクトリにコピーされます。
+4. ApplicationInsights.winmd を $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native<PLATFORM TYPE>\release\ApplicationInsights からのプロジェクトへのリファレンスとして追加する
+5. AppInsights_Win10-UAP.dll を $(SolutionDir)packages\ApplicationInsights.1.0.0-Beta\lib\native<PLATFORM TYPE>\release\AppInsights_Win10-UAP から追加する。プロパティに移動し、内容を YES に設定します。これにより、dll がビルド ディレクトリにコピーされます。
 
 
 #### 今後のバージョンに、SDK を更新するには
@@ -139,4 +139,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

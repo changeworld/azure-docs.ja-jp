@@ -25,4 +25,4 @@
 [AZURE.INCLUDE [cloud-storage](../../includes/cloud-storage.md)]
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

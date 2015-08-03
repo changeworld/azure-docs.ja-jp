@@ -76,4 +76,4 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 [SendGrid のプロビジョニング プロセス]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [すべての API]: https://sendgrid.com/docs/API_Reference/index.html
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

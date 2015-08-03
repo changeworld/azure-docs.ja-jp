@@ -101,6 +101,9 @@ Azure Machine Learning 内で、新しい空白の実験が作成され、ワー
     time_of_interest="500"
     index_time="1"
     index_event="2"
+    
+    # 0 - continuous; 1 -  factor
+    variable_types="0;0;1;1"
 
     sampleInput=data.frame(trainingdata,testingdata,time_of_interest,index_time,index_event,variable_types)
 
@@ -204,4 +207,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -189,4 +189,4 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

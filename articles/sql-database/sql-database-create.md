@@ -66,4 +66,4 @@ SQL Database V12 [(一部の地域ではプレビュー)](sql-database-v12-whats
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

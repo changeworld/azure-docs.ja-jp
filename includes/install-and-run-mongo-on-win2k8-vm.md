@@ -10,24 +10,24 @@
 
 4. **[Current Stable Release]** を見つけ、[Windows] 列で最新の **64 ビット** バージョンを選択し、MSI インストーラーをダウンロードして実行します。
 
-5. MongoDB は、通常は C:\\Program Files\\MongoDB にインストールされます。デスクトップで環境変数を検索し、MongoDB のバイナリ パスを PATH 変数に追加します。たとえば、バイナリはコンピューターの C:\\Program Files\\MongoDB\\Server\\3.0\\bin に入っている可能性があります。
+5. MongoDB は、通常は C:\Program Files\MongoDB にインストールされます。デスクトップで環境変数を検索し、MongoDB のバイナリ パスを PATH 変数に追加します。たとえば、バイナリはコンピューターの C:\Program Files\MongoDB\Server\3.0\bin に入っている可能性があります。
 
 6. MongoDB データとログ ディレクトリを、前の手順で作成したデータ ディスク (ドライブ **F:** など) に作成します。**[スタート]** で **[コマンド プロンプト]** を選択し、コマンド プロンプト ウィンドウを開きます。型:
 
-		C:> F:
+		C:\> F:
 		F:> mkdir \MongoData
 		F:> mkdir \MongoLogs
 
 7. データベースを実行するには、次を実行します。
 
 		F:> C:
-		C:> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
+		C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-	mongod.exe サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが *F:\\MongoLogs\\mongolog.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
+	mongod.exe サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが *F:\MongoLogs\mongolog.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
 
 8. MongoDB 管理シェルを開始するには、**[スタート]** から他のコマンド ウィンドウを開き、次のように入力します。
 
-		C:> cd \my_mongo_dir\bin  
+		C:\> cd \my_mongo_dir\bin  
 		C:\my_mongo_dir\bin> mongo  
 		>db  
 		test
@@ -108,4 +108,4 @@
 [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

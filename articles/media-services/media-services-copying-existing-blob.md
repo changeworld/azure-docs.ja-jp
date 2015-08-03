@@ -283,4 +283,4 @@ blob は、Media Services アカウントに関連付けられた (または関�
 		}
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

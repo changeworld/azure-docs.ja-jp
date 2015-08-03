@@ -245,4 +245,4 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

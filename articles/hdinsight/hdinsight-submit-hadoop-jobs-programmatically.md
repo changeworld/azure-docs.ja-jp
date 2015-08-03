@@ -38,7 +38,7 @@ Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する�
 ##Azure PowerShell を使用して MapReduce ジョブを送信する
 Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」をご覧ください。
 
-Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには JAR ファイル (*\\example\\jars\\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。
+Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには JAR ファイル (*\example\jars\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。
 
 サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、ワークステーションから Azure PowerShell を使用して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」をご覧ください。
 
@@ -111,7 +111,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 	*example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。*part-r-00000* は MapReduce ジョブの出力の既定のファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは以下にダウンロードされます。
 
-*C:\\example\\data\\WordCountOutput* 
+*C:\example\data\WordCountOutput* 
 
 5. 次のコマンドを実行して、MapReduce ジョブの出力ファイルの内容を表示します。
 
@@ -300,7 +300,7 @@ Hive の詳細については、「[HDInsight での Hive の使用][hdinsight-u
 「[Hadoop .NET SDK と HDInsight の使用][hdinsight-use-sqoop]」を参照してください。
 
 ##HDInsight .NET SDK を使用して MapReduce ジョブを送信する
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには JAR ファイル (*\\example\\jars\\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」をご覧ください。
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには JAR ファイル (*\example\jars\hadoop-mapreduce-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」をご覧ください。
 
 
 SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
@@ -729,4 +729,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [apache-hive]: http://hive.apache.org/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

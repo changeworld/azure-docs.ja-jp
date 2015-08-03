@@ -13,7 +13,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="NA" 
 	ms.workload="data-services" 
-	ms.date="04/29/2015" 
+	ms.date="07/21/2015" 
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成 #
@@ -88,7 +88,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 4. **[Select Dependency]** ウィンドウで、次の操作を行います。
  - **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
  - **[Artifact Id]** ボックスに、「azure-documentdb」と入力します。
- - **[Version]** ボックスに、「1.0.0」と入力します。
+ - **[Version]** ボックスに、「1.1.0」と入力します。
 
 	![](./media/documentdb-java-application/image13.png)
 
@@ -97,7 +97,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    <dependency>
 		    <groupId>com.microsoft.azure</groupId>
 		    <artifactId>azure-documentdb</artifactId>
-		    <version>1.0.0</version>
+		    <version>1.1.0</version>
 	    </dependency>
 
 5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
@@ -662,7 +662,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      var id = checkboxElement.attr('id');
 		      var isComplete = checkboxElement.is(':checked');
 		
-		      // Togle table row color
+		      // Toggle table row color
 		      if (isComplete) {
 		        rowElement.addClass("active");
 		        rowElement.removeClass("warning");
@@ -763,7 +763,7 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
 10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。DocumentDB プロジェクトには、依存関係として追加される DocumentDB Java SDK が含まれています。
-11. **Project Explorer** で、azure-documentdb-java-sample\\src\\com.microsoft.azure.documentdb.sample.dao\\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
+11. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
 12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
 13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
 14. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Targeted Runtimes]** をクリックします。
@@ -779,4 +779,4 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -93,7 +93,7 @@
 
 	a) /etc/grub.d/00_header ファイルを開きます。
 
-	b) **make_timeout()** 関数内で **if ["\\${recordfail}" = 1 ]; then** を検索します。
+	b) **make_timeout()** 関数内で **if ["\${recordfail}" = 1 ]; then** を検索します。
 
 	c) この行の下の文を **set timeout=5** に変更します。
 
@@ -125,4 +125,4 @@
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

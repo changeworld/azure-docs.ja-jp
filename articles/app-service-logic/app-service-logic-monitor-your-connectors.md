@@ -133,4 +133,4 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -75,4 +75,4 @@ Visual Studio では、**[ソリューション エクスプローラー]** で 
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

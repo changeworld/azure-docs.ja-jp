@@ -70,28 +70,28 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 
 これで、SMTP コネクタを構成して、ワークフローで使用できます。**Send Email** アクションを選択し、入力プロパティを次のように構成します。
 
-	Property | Description
+	プロパティ | 説明
 	--- | ---
-	To | Enter the email address of recipient(s). Separate multiple email addresses using a semicolon (;). For example, enter: *recipient1@domain.com;recipient2@domain.com*.
-	Cc | Enter the email address of the carbon copy recipient(s). Separate multiple email addresses using a semicolon (;). For example, enter: *recipient1@domain.com;recipient2@domain.com*.
-	Subject | Enter the subject of the email.
-	Body | Enter body of the email.
-	Is HTML | When this property is set to true, the contents of the body are sent as HTML.
-	Bcc | Enter the email address of recipient(s) for blind carbon copy. Separate multiple email addresses using a semicolon (;). For example, enter: *recipient1@domain.com;recipient2@domain.com*.
-	Importance | Enter the Importance of the email. The options are Normal, Low, and High.
-	Attachments | Attachments to be sent along with the email. It contains the following fields: <ul><li>Content (String)</li><li>Content transfer Encoding (Enum) (“none”|”base64”)</li><li>Content Type (String)</li><li>Content ID (String)</li><li>File Name (String)</li></ul>
+	To | 受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
+	Cc | カーボン コピーの受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
+	Subject | メールの件名を入力します。
+	Body | メールの本文を入力します。
+	Is HTML |このプロパティが true に設定されている場合は、本文の内容は HTML として送信されます。
+	Bcc | ブラインド カーボン コピーの受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
+	Importance | メールの重要度を入力します。[標準]、[低]、[高] のいずれかです。
+	Attachments | メールと共に送信される添付ファイルです。これには、次のフィールドが含まれます。 <ul><li>Content (String)</li><li>Content transfer Encoding (Enum) (“none”|”base64”)</li><li>Content Type (String)</li><li>Content ID (String)</li><li>File Name (String)</li></ul>
 
 	![][5]
 	![][6]
 
 ## コネクタでできること
-コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
-	<!--Image references-->
+<!--Image references-->
 [1]: ./media/app-service-logic-connector-smtp/img1.PNG
 [2]: ./media/app-service-logic-connector-smtp/img2.PNG
 [3]: ./media/app-service-logic-connector-smtp/img3.png
@@ -99,4 +99,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

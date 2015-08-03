@@ -71,8 +71,7 @@ API アプリにパブリックにアクセスできることを確認する最�
 
 ## API アプリの保護
 
-API アプリをデプロイしたときに、リソース グループにデプロイしました。Web アプリと他の API アプリを同じリソース グループに追加することができます。リソース グループ内の各 API アプリには、次の 3 種類のアクセス レベルのいずれかを設定することができます。
-<!--todo: diagram showing different accessibility settings-->
+API アプリをデプロイしたときに、リソース グループにデプロイしました。Web アプリと他の API アプリを同じリソース グループに追加することができます。リソース グループ内の各 API アプリには、次の 3 種類のアクセス レベルのいずれかを設定することができます。<!--todo: diagram showing different accessibility settings-->
 
 - **パブリック (匿名)** - すべてのユーザーがログインせずにリソース グループの外部から API アプリを呼び出すことができます。
 - **パブリック (認証済み)** - 認証されたユーザーのみがリソース グループの外部から API アプリを呼び出すことができます。
@@ -269,4 +268,4 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

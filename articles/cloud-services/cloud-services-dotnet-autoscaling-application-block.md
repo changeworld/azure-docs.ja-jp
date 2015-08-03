@@ -380,4 +380,4 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
   [Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減]: http://msdn.microsoft.com/library/jj838718(PandP.50).aspx
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

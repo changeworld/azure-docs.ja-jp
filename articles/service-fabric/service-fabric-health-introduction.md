@@ -255,9 +255,9 @@ SourceId、エンティティ識別子、プロパティおよび正常性状態
 次の例では、Powershell を使用して、fabric:/WordCount という名前のアプリケーションの正常性レポートを MyWatchdog というソースから送信します。正常性レポートには、"エラー" の正常性状態の正常性プロパティ Availability に関する情報が、無限に設定された TTL と共に含まれています。次いで、アプリケーションの正常性がクエリされ、集計された正常性状態のエラーおよび報告された正常性イベントが、正常性イベントの一覧の一部として返されます。
 
 ```powershell
-PS C:> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error
+PS C:\> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error
 
-PS C:> Get-ServiceFabricApplicationHealth fabric:/WordCount
+PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount
 
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Error
@@ -336,4 +336,4 @@ HealthEvents                    :
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

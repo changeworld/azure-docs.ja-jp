@@ -22,15 +22,13 @@
 
 このガイドでは、Azure でホストされるアプリケーションに New Relic による世界クラスのパフォーマンスの監視を追加する方法について説明します。アプリケーションに New Relic をすぐに追加できる簡単なプロセスについて説明し、New Relic の機能をいくつか紹介します。New Relic の使い方の詳細については、「[New Relic の使用](#using-new-relic)」を参照してください。
 
-New Relic とは
---
+New Relic とは --
 
 New Relic は、実稼働アプリケーションを監視してそのパフォーマンスと信頼性を詳しく把握できるようにする開発者向けのツールです。パフォーマンス上の問題を特定して診断する時間を短縮できるように設計されており、その問題の解決に必要な情報をすぐに確認できます。
 
 New Relic は、Web トランザクションの読み込み時間とスループットを、サーバーとユーザーのブラウザーの両方から追跡します。データベースでの処理にかかった時間の表示、時間がかかったクエリと Web 要求の分析、アップタイムの監視と通知、アプリケーションの例外の追跡など、多数の処理を実行します。
 
-Azure ストアの New Relic 特別料金
---
+Azure ストアの New Relic 特別料金 --
 
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。New Relic Pro は、Azure Cloud Services のインスタンス サイズに基づいて提供されます。
 
@@ -40,8 +38,7 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
-Azure ストアを使用して New Relic にサインアップする
---
+Azure ストアを使用して New Relic にサインアップする --
 
 New Relic は、Azure の Web ロールおよびワーカー ロールとシームレスに統合されます。
 
@@ -95,7 +92,7 @@ Azure ストアから New Relic に直接サインアップするには、次の
 	![クラウド プロジェクトの発行](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget09.png)
 
 
-**メモ:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「<a href="/develop/net/tutorials/get-started/">ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする</a>」を参照してください。
+**メモ:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「<a href="/develop/net/tutorials/get-started/">Deploying an ASP.NET Web Application to an Azure Website</a>」を参照してください。
 
 ![発行の設定](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget10.png)
 
@@ -176,4 +173,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
  * [Real User Monitoring](https://newrelic.com/docs/features/real-user-monitoring): Real User Monitoring (RUM) を使用して、ユーザーのブラウザーで Web ページの読み込みにかかった時間、アクセス元の地域、および使用しているブラウザーに関する詳細を確認する方法の概要
  * [Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help): New Relic のオンライン ヘルプ センターで利用できるリソース
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

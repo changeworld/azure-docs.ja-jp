@@ -1,19 +1,3 @@
-<properties 
-   pageTitle="ボリュームを作成する"
-   description="StorSimple デバイスにボリュームを追加する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="04/28/15"
-   ms.author="v-sharos" />
 
 #### ボリュームを作成するには
 
@@ -38,4 +22,4 @@
 
 4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-volume/HCS_CheckIcon-include.png) をクリックします。指定された設定でボリュームが作成されます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

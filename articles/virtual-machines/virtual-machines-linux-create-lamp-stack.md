@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2015"
+	ms.date="07/10/2015"
 	ms.author="ningk"/>
 
 #Microsoft Azure を使用した LAMP スタックの作成方法
@@ -32,9 +32,7 @@
 
 このトピックに加え、既に仮想マシンをインストールしていており、別の Linux ディストリビューションへの LAMP スタックのインストールの基本について知りたい場合は、「[Azure 上の Linux 仮想マシンへの LAMP スタックのインストール](virtual-machines-linux-install-lamp-stack.md)」を参照してください。
 
-Azure Marketplace から事前構成済みの LAMP イメージをデプロイすることもできます。次の 10 分間のビデオは、Azure Marketplace から構築済みの LAMP イメージをデプロイする方法を紹介しています。
-
-> [AZURE.VIDEO lamp-stack-on-azure-vms-with-guy-bowerman]
+Azure Marketplace から事前構成済みの LAMP イメージをデプロイすることもできます。次の 10 分間のビデオは、Azure Marketplace から構築済みの LAMP イメージをデプロイする方法を紹介しています (Azure VM 上の LAMP スタック (https://channel9.msdn.com/Shows/Azure-Friday/LAMP-stack-on-Azure-VMs-with-Guy-Bowerman))。
 
 ##フェーズ 1: イメージを作成する
 このフェーズでは、Azure の Linux イメージを使用して仮想マシンを作成します。
@@ -44,15 +42,15 @@ SSH はシステム管理者にとって重要なツールです。しかし、�
 
 SSH 認証キーを生成するには、次の手順に従います。
 
--	[http://www.chiark.greenend.org.uk/~sgtatham/](http://www.chiark.greenend.org.uk/~sgtatham/)putty/download.html から puttygen をダウンロードしてインストールします。
+-	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/)
 -	puttygen.exe を実行します。
 -	**[生成]** をクリックしてキーを生成します。処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。![][1]
 -	生成処理が終わると、生成されたキーが表示されます。次に例を示します。![][2]
 -	**[キー]** の公開キーを選択してコピーし、**publicKey.pem** という名前のファイルに保存します。保存された公開キーの形式は使用する公開キーの形式と異なるため、**[公開キーの保存]** をクリックしないでください。
 -	**[秘密キーの保存]** をクリックし、**privateKey.ppk** という名前のファイルに保存します。
 
-###手順 2. Azure プレビュー ポータルでイメージを作成する
-[Azure プレビュー ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックし、次の手順に従ってイメージを作成して、ニーズに合った Linux イメージを選択します。この例では Ubuntu 14.04 イメージを使用します。
+###手順 2. Azure ポータルでイメージを作成する
+[Azure ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックし、次の手順に従ってイメージを作成して、ニーズに合った Linux イメージを選択します。この例では Ubuntu 14.04 イメージを使用します。
 
 ![][3]
 
@@ -74,7 +72,7 @@ Azure のエンドポイントはプロトコル (TCP または UDP) の他に�
 
 TCP ポート 80 は、Apache がリッスンする既定のポート番号です。このポートを Azure エンドポイントで開くと、ユーザーやその他のインターネット クライアントが Apache Web サーバーにアクセスできるようになります。
 
-Azure プレビュー ポータルで、**[参照] -> [仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。
+Azure ポータルで、**[参照]、[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。
 
 ![][5]
 
@@ -87,8 +85,8 @@ Azure プレビュー ポータルで、**[参照] -> [仮想マシン]** の順
 エンドポイントを構成します。
 
 1.	**[エンドポイント]** にエンドポイントの名前を入力します。
-2.	**[パブリック ポート]** に 80 と入力します。Apache の既定のリッスン ポートを変更している場合は、Apache のリッスン ポートと同じになるように [プライベート ポート] を更新する必要があります。
-3.	**[パブリック ポート]** に 80 と入力します。既定では、HTTP トラフィックはポート 80 を使用します。80 に設定している場合は、Apache Web サービスに接続するための URL にポート番号を含める必要はありません。たとえば、「http://lampdemo.cloudapp.net」のように入力します。Apache のリッスン ポートを 81 などの別の値に設定している場合は、Apache Web サービスにアクセスするための URL にポート番号を追加する必要があります。(例: http://lampdemo.cloudapp.net:81/)。
+2.	**[パブリック ポート]** に「80」と入力します。Apache の既定のリッスン ポートを変更している場合は、Apache のリッスン ポートと同じになるように [プライベート ポート] を更新する必要があります。
+3.	**[パブリック ポート]** に「80」と入力します。既定では、HTTP トラフィックはポート 80 を使用します。80 に設定している場合は、Apache Web サービスに接続するための URL にポート番号を含める必要はありません。たとえば、「http://lampdemo.cloudapp.net」のように入力します。Apache のリッスン ポートを 81 などの別の値に設定している場合は、Apache Web サービスにアクセスするための URL にポート番号を追加する必要があります。(例: http://lampdemo.cloudapp.net:81/)。
 
 ![][7]
 
@@ -100,7 +98,7 @@ Azure プレビュー ポータルで、**[参照] -> [仮想マシン]** の順
 ###手順 2. 作成したイメージに接続する
 SSH ツールを選択すると、新しい仮想マシンに接続できます。この例では、Putty を使用します。
 
-最初に、Azure プレビュー ポータルから仮想マシンの DNS 名を取得します。**[参照] -> [仮想マシン] ->** 仮想マシン名** -> [プロパティ]** の順にクリックし、**[プロパティ]** タイルの **[ドメイン名]** フィールドを調べます。
+最初に、Azure ポータルから仮想マシンの DNS 名を取得します。**[参照]、[仮想マシン]**、仮想マシン名、**[プロパティ]** の順にクリックし、**[プロパティ]** タイルの "**ドメイン名**" フィールドを調べます。
 
 **[SSH]** フィールドから、SSH 接続のポート番号を取得します。たとえば次のようになります。
 
@@ -112,7 +110,7 @@ SSH ツールを選択すると、新しい仮想マシンに接続できます�
 
 ![][9]
 
-左側のウィンドウで、**[接続] -> [SSH] -> [認証]** の順にクリックし、**[参照]** をクリックして **privateKey.ppk** ファイルの場所を指定します。このファイルには、「フェーズ 1: イメージを作成する」で puttygen によって生成された秘密キーが含まれています。たとえば次のようになります。
+左側のウィンドウで、**[接続]、[SSH]、[認証]** の順にクリックし、**[参照]** をクリックして **privateKey.ppk** ファイルの場所を指定します。このファイルには、「フェーズ 1: イメージを作成する」で puttygen によって生成された秘密キーが含まれています。たとえば次のようになります。
 
 ![][10]
 
@@ -144,7 +142,7 @@ Apache をインストールするには、ターミナルを開いて次のコ�
 
 	sudo service httpd start
 ####Apache のテスト
-Apache が正常にインストールされたかどうかを確認するには、Apache サーバーの DNS 名を参照します (この記事のサンプル URL の場合は、http://lampdemo.cloudapp.net/))。ページには「It works! (成功です)」と表示されます。![][14]
+Apache が正常にインストールされたかどうかを確認するには、Apache サーバーの DNS 名を参照します (この記事のサンプル URL の場合は、http://lampdemo.cloudapp.net/))。ページには "It works! (成功です)" と表示されます。![][14]
 
 ####トラブルシューティング
 Apache は実行されているが、上述の Apache の既定ページが表示されない場合は、次の項目を確認する必要があります。
@@ -348,7 +346,7 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 		sudo chmod g+w /var/www/html/                 # grant write permission to group lampappgroup
 
 	>[AZURE.NOTE]
--	SFTP クライアント (FileZilla など) を使用して仮想マシンの DNS 名 (例: lampdemo.cloudapp.net) に接続し、/var/www/html に移動してサイトを公開します。![][18]
+-	SFTP クライアント (FileZilla など) を使用して仮想マシンの DNS 名 (例: lampdemo.cloudapp.net) に接続し、/**var/www/html** に移動してサイトを公開します。![][18]
 
 
 
@@ -454,4 +452,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

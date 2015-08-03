@@ -76,4 +76,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 [StorSimple デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)を行う方法
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

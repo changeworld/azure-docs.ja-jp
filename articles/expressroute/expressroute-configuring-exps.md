@@ -60,7 +60,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	回線を作成する前に、サービス プロバイダー、サポートされているロケーション、各ロケーションで選択できる帯域幅のリストが必要になります。次の PowerShell コマンドレットを実行すると、この情報が返されます。この情報は、後のステップで使用します。
 
-    	PS C:> Get-AzureDedicatedCircuitServiceProvider
+    	PS C:\> Get-AzureDedicatedCircuitServiceProvider
 		**The information returned will look similar to the example below:**
 
 
@@ -117,7 +117,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	この情報は、Get-AzureCircuit コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは ServiceKey フィールドに表示されます。
 
-		PS C:> Get-AzureDedicatedCircuit
+		PS C:\> Get-AzureDedicatedCircuit
 
 		Bandwidth                        : 200
 		CircuitName                      : EquinixSVTest
@@ -136,7 +136,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	これにより、プロバイダーがいつ回線を有効にしたのかを知ることができます。回線が有効になると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
 
-		PS C:> Get-AzureDedicatedCircuit
+		PS C:\> Get-AzureDedicatedCircuit
 
 		Bandwidth                        : 200
 		CircuitName                      : EquinixSVTest
@@ -170,7 +170,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	以下に示す応答で返された情報が、次のステップで必要になります。ピア ASN は、ルーターの VRF に対する BGP の構成に使用します。
 
-		PS C:> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
+		PS C:\> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
 
 		AzureAsn            : 12076
 		PeerAsn             : 65001
@@ -205,7 +205,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	以下に示す応答で返された情報が、次のステップで必要になります。ピア ASN は、ルーターの VRF に対する BGP の構成に使用します。
 
-		PS C:> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
+		PS C:\> New-AzureBGPPeering -ServiceKey $ServiceKey -PrimaryPeerSubnet $PriSN -SecondaryPeerSubnet $SecSN -PeerAsn $ASN -VlanId $VLAN –AccessType Private
 
 		AzureAsn            : 12076
 		PeerAsn             : 65001
@@ -224,8 +224,8 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 	- ServiceProviderProvisioningState: Provisioned
 	- Status: Enabled
 
-			PS C:> $Vnet = "MyTestVNet"
+			PS C:\> $Vnet = "MyTestVNet"
 			New-AzureDedicatedCircuitLink -ServiceKey $ServiceKey -VNetName $Vnet
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

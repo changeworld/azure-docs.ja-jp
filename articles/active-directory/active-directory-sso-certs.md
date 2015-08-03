@@ -80,4 +80,4 @@
 
 [アプリケーションへのアクセスと Azure AD でのシングル サインオン](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

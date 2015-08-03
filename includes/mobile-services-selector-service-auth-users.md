@@ -14,4 +14,4 @@
 data/)
 - [(Xamarin.Android | JavaScript)](../articles/partner-xamarin-mobile-services-android-authorize-users-in-scripts.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

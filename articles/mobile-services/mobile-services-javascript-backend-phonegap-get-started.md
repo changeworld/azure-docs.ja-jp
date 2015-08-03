@@ -76,7 +76,7 @@
 
 	+ **Windows Phone 8**
 
-		1. Windows Phone 8: Visual Studio 2012 Express for Windows Phone の **platforms\\wp8** フォルダーにある .sln ファイルを開きます。
+		1. Windows Phone 8: Visual Studio 2012 Express for Windows Phone の **platforms\wp8** フォルダーにある .sln ファイルを開きます。
 
 		2. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
@@ -171,4 +171,4 @@
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

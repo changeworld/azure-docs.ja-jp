@@ -419,8 +419,8 @@ For more information, see the [resourceId function](../resource-group-template-f
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
 - [高度なテンプレートの操作](./resource-group-advanced-template.md)
-- [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)
+- [Azure で複雑なアプリケーションを予測どおりに展開する](app-service-web/app-service-deploy-complex-application-predictably.md)
 - [Azure リソース マネージャーの概要](./resource-group-overview.md)
 - [Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

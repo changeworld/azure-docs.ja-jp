@@ -233,4 +233,4 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

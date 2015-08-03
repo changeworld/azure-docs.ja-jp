@@ -245,4 +245,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

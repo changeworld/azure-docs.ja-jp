@@ -1,27 +1,27 @@
-<properties 
-	pageTitle="Azure インフラストラクチャ サービスでホストされる SharePoint ファーム" 
-	description="Microsoft Azure インフラストラクチャ サービスで開発/テストまたは運用 SharePoint 2013 ファームをセットアップする方法について説明する主要記事を紹介します。" 
-	documentationCenter="" 
+<properties
+	pageTitle="Azure インフラストラクチャ サービスでホストされる SharePoint ファーム"
+	description="Microsoft Azure インフラストラクチャ サービスで開発/テストまたは運用 SharePoint 2013 ファームをセットアップする方法について説明する主要記事を紹介します。"
+	documentationCenter=""
 	services="virtual-machines"
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows-sharepoint" 
-	ms.devlang="na" 
-	ms.topic="index-page" 
-	ms.date="07/07/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.devlang="na"
+	ms.topic="index-page"
+	ms.date="07/21/2015"
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスでホストされる SharePoint ファーム
 
 Microsoft Azure インフラストラクチャ サービスで、最初または次の開発/テスト環境または運用環境の SharePoint ファームを設定します。ここでは、簡単に構成できる機能と、新機能を追加したり主要な機能を最適化するためにファームを迅速に拡張する機能を活用することができます。
 
-## 基本的な SharePoint 開発/テスト ファーム 
+## 基本的な SharePoint 開発/テスト ファーム
 
 サービス管理内で作成された仮想マシンについては、Azure プレビュー ポータルの [SharePoint Server ファーム](virtual-machines-sharepoint-farm-azure-preview.md)機能を使用することで、インターネットに接続した SharePoint Web サイトに対応した、基本的な開発/テスト ファームを作成することができます。
 
@@ -51,11 +51,16 @@ Microsoft Azure インフラストラクチャ サービスで、最初または
 
 ## その他のリソース
 
-[Azure インフラストラクチャ サービスでの SharePoint Server](https://msdn.microsoft.com/library/dn275955.aspx)
+Azure における SharePoint の詳細と構成については、次のリソースを参照してください。
 
-[Azure インフラストラクチャ サービスでの SharePoint 2013 の計画](https://msdn.microsoft.com/library/dn275958.aspx)
+- [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
-[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
- 
+- [SharePoint Server 2013 を使用した Microsoft Azure のインターネット サイト](https://technet.microsoft.com/library/dn635307.aspx)
 
-<!---HONumber=July15_HO2-->
+- [Microsoft Azure での SharePoint Server 2013 の障害復旧](https://technet.microsoft.com/library/dn635313.aspx)
+
+- [SharePoint 2013 認証に Microsoft Azure Active Directory を使用する](https://technet.microsoft.com/library/dn635311.aspx)
+
+- [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
+
+<!---HONumber=July15_HO4-->

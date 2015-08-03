@@ -159,4 +159,4 @@
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

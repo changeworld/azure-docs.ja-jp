@@ -276,4 +276,4 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
 [.NET API for Service Bus]: https://msdn.microsoft.com/library/microsoft.servicebus.aspx
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

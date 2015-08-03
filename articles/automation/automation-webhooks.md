@@ -174,4 +174,4 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 - [Runbook の開始](automation-starting-a-runbook.md)
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md) 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -73,4 +73,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

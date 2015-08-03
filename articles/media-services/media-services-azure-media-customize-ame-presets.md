@@ -458,9 +458,9 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 
 1. 変更したプリセット ファイルをローカル ハード ドライブに保存し、次のようなコードを使用してこのカスタム プリセットでエンコードします。
 	
-	// ファイルをアップロードして、アセットを作成する IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None, @"C:\\TEMP\\Original.mp4");
+	// ファイルをアップロードして、アセットを作成する IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None, @"C:\TEMP\Original.mp4");
 	 
-	string inputPresetFile = @"C:\\TEMP\\H264 Broadband 720p NoAudioNorm.xml"; string presetName = Path.GetFileNameWithoutExtension(inputPresetFile);
+	string inputPresetFile = @"C:\TEMP\H264 Broadband 720p NoAudioNorm.xml"; string presetName = Path.GetFileNameWithoutExtension(inputPresetFile);
 	 
 	IJob job = _context.Jobs.Create("Encode Job for " + asset.Name + ", encoded using " + presetName);
 	
@@ -482,4 +482,4 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 
 [Azure メディア エンコーダーの XML スキーマ](https://msdn.microsoft.com/library/azure/dn584702.aspx)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

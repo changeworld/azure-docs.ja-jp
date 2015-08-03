@@ -143,4 +143,4 @@ Elastic Database ツールには多くの追加機能 ([マルチシャード �
 [3]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -117,4 +117,4 @@
 
 [バックアップ カタログ] ページを使用して[バックアップ セットからデバイスを復元する](storsimple-restore-from-backup-set.md)方法について説明します。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

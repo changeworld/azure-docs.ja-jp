@@ -129,7 +129,7 @@ URL の順序に関連するシナリオを監視することができます。�
 
 複数手順のテストを作成するには、Visual Studio を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。Application Insights は周期的にそのシナリオを再生し、応答を確認します。
 
-#### 1\.シナリオを記録する
+#### 1.シナリオを記録する
 
 Web セッションを記録するには、Visual Studio Ultimate を使用します。
 
@@ -156,7 +156,7 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
 (Web テストのコードには、ループを挿入しないでください。)
 
-#### 2\.Web テストを Application Insights にアップロードする
+#### 2.Web テストを Application Insights にアップロードする
 
 1. Application Insights ポータルで、新しい Web テストを作成します。
 
@@ -229,4 +229,4 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -154,7 +154,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 	1. Windows 画面から **[システムの詳細設定の表示]** を開きます。
 	2. **[環境変数]** をクリックします。  
-	3. 新しい **JAVA_HOME** 環境変数を追加します。これは、**C:\\Program Files\\Java\\jdk1.7.0_55** または JDK がインストールされている場所を指します。
+	3. 新しい **JAVA_HOME** 環境変数を追加します。これは、**C:\Program Files\Java\jdk1.7.0_55** または JDK がインストールされている場所を指します。
 
 	![JDK の適切な構成値の設定][image-hdi-hivejson-jdk]
 
@@ -170,9 +170,9 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 4: このパッケージをダウンロードしたフォルダーに移動して、「mvn package」と入力します。これにより必要な jar ファイルが作成されるので、クラスターにコピーします。
 
-5: パッケージをダウンロードしたルート フォルダーの下にある対象フォルダーに移動します。クラスターのヘッド ノードに json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar ファイルをアップロードします。通常は、Hive バイナリ フォルダーである C:\\apps\\dist\\hive-0.13.0.2.1.11.0-2316\\bin などに配置します。
+5: パッケージをダウンロードしたルート フォルダーの下にある対象フォルダーに移動します。クラスターのヘッド ノードに json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar ファイルをアップロードします。通常は、Hive バイナリ フォルダーである C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin などに配置します。
  
-6: Hive プロンプトで、「add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar」と入力します。この例では jar は C:\\apps\\dist\\hive-0.13.x\\bin フォルダーにあるので、次に示す名前の jar を直接追加できます。
+6: Hive プロンプトで、「add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar」と入力します。この例では jar は C:\apps\dist\hive-0.13.x\bin フォルダーにあるので、次に示す名前の jar を直接追加できます。
 
     add jar json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
 
@@ -261,4 +261,4 @@ Hive コンソールの出力を次に示します。
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -129,4 +129,4 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 [Image8]: ./media/sql-database-dynamic-data-masking-get-started/8_DDM_Security_Enabled_Access.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

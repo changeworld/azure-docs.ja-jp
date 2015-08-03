@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="php"
 	ms.topic="article"
-	ms.date="06/10/2015"
+	ms.date="07/20/2015"
 	ms.author="mebha"/>
 
 
@@ -27,19 +27,7 @@
 このトピックでは、Windows 上で実行される PHP で記述されたクライアント アプリケーションから Azure SQL Database に接続する方法について説明します。
 
 
-## 前提条件
-
-
-このトピックで指定された PHP のコード サンプルを実行するには、クライアント コンピューターに、以下のソフトウェア アイテムがインストールされていることが必要です。
-
-
-- [Microsoft Drivers for PHP for Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=20098) (SQLSRV32.EXE には、最新のビットが含まれています)
-- [Microsoft SQL Server Native Client 11.0](http://www.microsoft.com/download/details.aspx?id=36434)
-- [Microsoft ODBC Driver](https://www.microsoft.com/ja-jp/download/details.aspx?id=36434)
-- IIS Express
-- [PHP 5.6 for IIS Express](http://www.microsoft.com/web/downloads/platform.aspx): プラットフォーム インストーラーを使ってダウンロードします。Internet Explorer を使ってプラットフォーム インストーラーをダウンロードしてください。
-
-[チーム ブログ](http://blogs.msdn.com/b/sqlphp/archive/2015/05/11/getting-started-with-php-and-microsoft-sql-server.aspx)と[ビデオ](https://www.youtube.com/watch?v=0oCjiRK_tUk)をチェックして、上記の要件をインストールおよびセットアップする方法を確認してください。
+[AZURE.INCLUDE [sql-database-develop-includes-prerequisites-php-windows](../../includes/sql-database-develop-includes-prerequisites-php-windows.md)]
 
 
 ## データベースを作成し、接続文字列を取得します。
@@ -105,7 +93,7 @@
 ## 行を挿入し、パラメーターを渡し、生成されたプライマリ キーを取得する
 
 
-SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENECE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトは、[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値の自動生成に使用できます。
+SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトを使用して、[プライマリ キーの値](https://msdn.microsoft.com/library/ms179610.aspx)を自動生成できます。
 
 
 	function InsertData()
@@ -192,4 +180,4 @@ PHP のインストールと使用に関する詳細については、「[Access
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

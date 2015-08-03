@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 
@@ -56,4 +56,6 @@ Microsoft Azure Operational Insights でアラートの管理を使用するに�
 3. タイルまたは任意の項目をクリックして、**[検索]** ページに詳細情報を表示します。
 4. 表示された情報を使用して、アラートを調査し、問題を解決するために必要な追加のアクションを決定します。
 
-<!---HONumber=July15_HO2-->
+[AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
+
+<!---HONumber=July15_HO4-->

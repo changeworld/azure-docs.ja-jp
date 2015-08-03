@@ -32,7 +32,7 @@ A レコードは、名前をその IP アドレスに対応付けるために�
  
 A レコードを作成して $rs 変数に割り当てます。
 	
-	PS C:>$rs=New-AzureDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 
+	PS C:\>$rs=New-AzureDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 
 
 ### 手順 2.
 
@@ -40,7 +40,7 @@ A レコードを作成して $rs 変数に割り当てます。
 
 > [AZURE.NOTE]Web アプリの IP アドレスを確認するには、「[Azure App Service のカスタム ドメイン名の構成](../web-sites-custom-domain-name/#Find-the-virtual-IP-address)」の手順に従います。
 
-	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address <your web app IP address>
+	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Ipv4Address <your web app IP address>
 
 ### 手順 3.
 
@@ -56,7 +56,7 @@ A レコードを作成して $rs 変数に割り当てます。
 
 PowerShell を開き、新しい CNAME レコード セットを作成して $rs 変数に割り当てます。
 
-	PS C:> $rs = New-AzureDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
+	PS C:\> $rs = New-AzureDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
  
 	Name              : www
 	ZoneName          : contoso.com
@@ -75,7 +75,7 @@ CNAME レコード セットが作成されたら、Web アプリを指すエイ
 
 既に割り当て済みの "$rs" 変数を使用すると、次の PowerShell コマンドを使用して、Web アプリ contoso.azurewebsites.net のエイリアスを作成できます。
 
-	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
+	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
  
 	Name              : www
 	ZoneName          : contoso.com
@@ -90,11 +90,11 @@ CNAME レコード セットが作成されたら、Web アプリを指すエイ
 
 Set-AzureDnsRecordSet コマンドレットを使用して変更をコミットします。
 
-	PS C:>Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:\>Set-AzureDnsRecordSet -RecordSet $rs
 
 次のように nslookup を使用して "www.contoso.com" にクエリを実行することによって、レコードが正しく作成されたかどうかを検証できます。
 
-	PS C:> nslookup
+	PS C:\> nslookup
 	Default Server:  Default
 	Address:  192.168.0.1
  
@@ -117,7 +117,7 @@ Web アプリの A レコードを使用する場合は、カスタム ドメイ
 
 ### 手順 1.
 
-	PS C:> $rs = New-AzureDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "awverify" -RecordType "CNAME" -Ttl 600
+	PS C:\> $rs = New-AzureDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "awverify" -RecordType "CNAME" -Ttl 600
  
 	Name              : awverify
 	ZoneName          : contoso.com
@@ -133,7 +133,7 @@ Web アプリの A レコードを使用する場合は、カスタム ドメイ
 
 awverify レコード セットが作成されると、次のコマンドに示すように、CNAME レコード セットのエイリアスを awverify.contoso.azurewebsites.net に割り当てる必要があります。
 
-	PS C:> Add-AzureDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
+	PS C:\> Add-AzureDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
  
 	Name              : awverify
 	ZoneName          : contoso.com
@@ -148,7 +148,7 @@ awverify レコード セットが作成されると、次のコマンドに示�
 
 次のコマンドに示すように、Set-AzureDnsRecordSet コマンドレットを使用して変更をコミットします。
 
-	PS C:>Set-AzureDnsRecordSet -RecordSet $rs
+	PS C:\>Set-AzureDnsRecordSet -RecordSet $rs
 
 これで、[App Service のカスタム ドメイン名の構成](../web-sites-custom-domain-name)に関するページの手順に進んで、カスタム ドメインを使用するよう Web アプリを構成できるようになりました。
 
@@ -165,4 +165,4 @@ awverify レコード セットが作成されると、次のコマンドに示�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

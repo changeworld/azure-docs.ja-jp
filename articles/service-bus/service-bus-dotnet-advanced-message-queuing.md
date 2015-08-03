@@ -308,4 +308,4 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

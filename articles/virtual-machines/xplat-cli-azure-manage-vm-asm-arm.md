@@ -63,4 +63,4 @@ VM イメージの表示 | `azure vm image show [options]` | 使用できませ�
 * Azure CLI を使用して arm モードでリソースを操作する方法の詳細については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページと、[Azure コマンド ライン インターフェイスによる役割ベースのアクセス制御の管理](../role-based-access-control-xplat-cli.md)に関するページを参照してください。
 * CLI コマンドのその他の例については、[Azure コマンド ライン インターフェイスの使用](../virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](azure-cli-arm-commands.md)に関するページをご覧ください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

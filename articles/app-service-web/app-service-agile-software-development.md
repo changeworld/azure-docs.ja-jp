@@ -87,7 +87,7 @@
 
 		git clone https://github.com/<your_fork>/ToDoApp.git 
 
-4.	ローカル クローンを作成したら、*&lt;repository_root>*\\ARMTemplates に移動し、次のように deploy.ps1 スクリプトを実行します。
+4.	ローカル クローンを作成したら、*&lt;repository_root>*\ARMTemplates に移動し、次のように deploy.ps1 スクリプトを実行します。
 
 		.\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git
 
@@ -97,7 +97,7 @@
 
 	![](./media/app-service-agile-software-development/production-2-app-in-browser.png)
  
-	>[AZURE.TIP]*&lt;repository_root>*\\ARMTemplates\\Deploy.ps1 を見て、どのような方法でリソースが一意の ID で生成されるかを確認してください。同じ方法で、同じデプロイのクローンを、リソース名の競合を心配せずに作成できます。
+	>[AZURE.TIP]*&lt;repository_root>*\ARMTemplates\Deploy.ps1 を見て、どのような方法でリソースが一意の ID で生成されるかを確認してください。同じ方法で、同じデプロイのクローンを、リソース名の競合を心配せずに作成できます。
  
 6.	Git Shell セッションに戻り、次を実行します。
 
@@ -109,7 +109,7 @@
  
 5.	[Azure プレビュー ポータル](https://portal.azure.com)にログインして、何が作成されたかを調べます。
 
-	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository_root>*\\ARMTemplates\\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
+	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository_root>*\ARMTemplates\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
 	![](./media/app-service-agile-software-development/production-3-resource-group-view.png)
 
@@ -174,7 +174,7 @@ ProdAndStage.json テンプレート ファイルと Dev.json テンプレート
 
 		git checkout Dev
 
-2.	[ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに簡単な変更を加えます。*&lt;repository_root>*\\src\\MultiChannelToDo.Web\\app\\index.cshtml を開き、次の図で強調表示されているように変更します。
+2.	[ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに簡単な変更を加えます。*&lt;repository_root>*\src\MultiChannelToDo.Web\app\index.cshtml を開き、次の図で強調表示されているように変更します。
 
 	![](./media/app-service-agile-software-development/commit-1-changes.png)
 
@@ -279,4 +279,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -9,4 +9,4 @@
 - [Xamarin.Android](../articles/notification-hubs/notification-hubs-android-get-started.md)
 - [Chrome](../articles/notification-hubs/notification-hubs-chrome-get-started.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

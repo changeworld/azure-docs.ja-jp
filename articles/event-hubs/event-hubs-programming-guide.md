@@ -185,4 +185,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

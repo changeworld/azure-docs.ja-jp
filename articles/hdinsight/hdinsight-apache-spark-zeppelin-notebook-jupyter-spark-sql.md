@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.date="07/19/2015" 
 	ms.author="nitinme"/>
 
 
@@ -78,7 +78,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.NewNote.Connected.png "Zeppelin Notebook のステータス")
 
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
+4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\HdiSamples\SensorSampleData\hvac** にコピーされます。
 
 	新しい Notebook に既定で作成される空の段落に、次のスニペットを貼り付けます。
 
@@ -140,9 +140,9 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	![Zeppelin インタープリターを再起動します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Zeppelin.Restart.Interpreter.png "Zeppelin インタープリターを再起動します")
 
-##<a name="jupyter"></a>Python ベースの Jupyter Notebook を使用して Spark SQL クエリを実行する
+##<a name="jupyter"></a>Jupyter Notebook を使用して Spark SQL クエリを実行する
 
-Python を使用して Spark SQL クエリを実行することもできます。このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。
+このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
 
@@ -169,7 +169,7 @@ Python を使用して Spark SQL クエリを実行することもできます�
 
 	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Jupyter.Job.Status.png "Jupyter Notebook ジョブのステータス")
 
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
+4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\HdiSamples\SensorSampleData\hvac** にコピーされます。
 
 	次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。このスニペットは、**hvac** という一時テーブルにデータを登録します。
 
@@ -243,4 +243,4 @@ Python を使用して Spark SQL クエリを実行することもできます�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

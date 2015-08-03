@@ -58,4 +58,4 @@ Storm トポロジでは、次のコンポーネントが使用されます。
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」を参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

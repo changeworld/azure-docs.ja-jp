@@ -106,7 +106,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 
 ここでカスタム ドメイン名を "contoso.com" とすると、次のレコードが作成されます。
 
-- 127\.0.0.1 にマップされた **contoso.com**
+- 127.0.0.1 にマップされた **contoso.com**
 - **contoso.azurewebsites.net** にマップされた **www.contoso.com**
 
 >[AZURE.NOTE]Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns-web-sites-custom-domain)」をご覧ください。
@@ -147,4 +147,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

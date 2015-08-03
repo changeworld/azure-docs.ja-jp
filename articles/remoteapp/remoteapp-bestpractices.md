@@ -2,7 +2,7 @@
     pageTitle="Azure ソリューションのベスト プラクティス"
     description="Azure RemoteApp を構成し、使用するためのベスト プラクティス"
     services="remoteapp"
-    documentationCenter=""
+	documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -44,4 +44,4 @@
 	- 発行済みのアプリケーションのソフトウェアの自動更新を無効にします - 代わりにそれらをテンプレート イメージに手動で適用し、テンプレートから展開する前にテストします。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -18,14 +18,6 @@
 
 # 復旧された Azure SQL データベースの最終処理を行う
 
-> [AZURE.SELECTOR]
-- [Point in Time Restore - portal](sql-database-point-in-time-restore-tutorial-management-portal.md)
-- [Point in Time Restore - PowerShell](sql-database-point-in-time-restore-tutorial-powershell.md)
-- [Point in Time Restore - REST API](sql-database-point-in-time-restore-tutorial-rest.md)
-- [Geo-Restore - portal](sql-database-geo-restore-tutorial-management-portal.md)
-- [Geo-Restore - PowerShell](sql-database-geo-restore-tutorial-powershell.md)
-- [Geo-Restore - REST API](sql-database-geo-restore-tutorial-rest.md)
-
 ## 概要
 
 この記事では、新しく復旧された Azure SQL データベースを運用環境に戻す前に実行する必要のあるタスクのチェック リストを示します。このチェック リストは、geo レプリケーション フェールオーバー、削除したデータベースの復元、ポイント イン タイム リストア、または地理リストア操作で復旧されたデータベースに適用されます。
@@ -64,4 +56,4 @@
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、[SQL Database 監査の使用](sql-database-auditing-get-started.md)に関するページを参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

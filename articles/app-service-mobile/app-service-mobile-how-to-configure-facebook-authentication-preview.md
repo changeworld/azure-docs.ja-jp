@@ -18,6 +18,8 @@
 
 # Facebook ログインを使用するアプリケーションを構成する方法
 
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+
 このトピックでは、認証プロバイダーとして Facebook を使用するように Azure App Services を構成する方法を示します。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
@@ -77,4 +79,4 @@
 [Azure の管理ポータル]: https://portal.azure.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

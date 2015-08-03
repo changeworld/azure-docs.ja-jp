@@ -289,4 +289,4 @@ Azure Search サービス REST API インデックスの作成 (Azure Search API
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

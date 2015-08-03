@@ -28,12 +28,11 @@
 
 Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
 
-> [AZURE.NOTE]
-> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 
-2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
+2. ポータルの左上にある **[+ 新規]** アイコンをクリックします。
 
 3. **[Web + モバイル]** をクリックし、**[Web アプリ]** をクリックします。
 
@@ -98,8 +97,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 		git init
 
-	> [AZURE.NOTE]**Git コマンドが使用できない場合** 
-	> [Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")を参照してください。
+	> [AZURE.NOTE]**Git コマンドが使用できない場合** [Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")を参照してください。
 
 2. 次のコマンドを使用して、リポジトリにファイルを追加します。
 
@@ -151,7 +149,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 4. **[デプロイ]** で過去のデプロイを選択し、それに戻すことができます。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##次のステップ
 
@@ -199,4 +197,4 @@ Azure へのデプロイ後にアプリケーションで問題が発生した�
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
  
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

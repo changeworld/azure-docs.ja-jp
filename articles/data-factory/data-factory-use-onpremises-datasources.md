@@ -117,7 +117,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 	![Gateway - Configure blade][image-data-factory-gateway-configure-blade]
 
-	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
+	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\Program Files\Microsoft Data Management Gateway\1.0\Shared** フォルダーにあります。
 
 	このブレード内のリンクを使用してゲートウェイのダウンロードとインストールを手動で行い、**[キーで登録]** ボックスに表示されるキーを使用して登録することもできます。
 	
@@ -166,7 +166,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 4.	JSON ウィンドウで次の手順を実行します。
 	1.	**gatewayName** プロパティで、「**adftutorialgateway**」と入力して、二重引用符で囲まれたすべてのテキストを置き換えます。  
 	2.	**SQL 認証**を使用している場合は、次の手順を実行します。 
-		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。インスタンス名を指定するには、エスケープ文字 \\ を使用します。たとえば、**server\\instancename** と指定します。 	
+		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。インスタンス名を指定するには、エスケープ文字 \ を使用します。たとえば、**server\instancename** と指定します。 	
 		2.	JSON ファイルから最後の 2 つのプロパティ (**username** と **password**) を削除し、残りの JSON スクリプトの最後の行の末尾にある**コンマ (,)** を削除します。
 		
 				{
@@ -487,7 +487,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	**コマンドと出力の例**:
 
 
-		PS C:> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+		PS C:\> New-AzureDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
 
 		Name              : MyGateway
 		Description       : gateway for walkthrough
@@ -509,12 +509,12 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	**コマンドの出力例:**
 
 
-		PS C:> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
+		PS C:\> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
 
 	
-4. Azure PowerShell で **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+4. Azure PowerShell で **C:\Program Files\Microsoft Data Management Gateway\1.0\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
-		PS C:> .\RegisterGateway.ps1 $Key.GatewayKey
+		PS C:\> .\RegisterGateway.ps1 $Key.GatewayKey
 		
 		Agent registration is successful!
 
@@ -627,4 +627,4 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -18,4 +18,4 @@
 [2]: ./media/create-an-azure-account/antares-iaas-preview-05.png
 [3]: ./media/create-an-azure-account/antares-iaas-preview-06.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

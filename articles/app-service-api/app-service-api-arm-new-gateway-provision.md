@@ -36,7 +36,7 @@
 
 デプロイを自動的に実行するには、次のボタンをクリックします。
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-app-gateway-new%2Fazuredeploy.json)
+[![Azure への展開](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-app-gateway-new%2Fazuredeploy.json)
 
 ## パラメーター
 
@@ -126,7 +126,7 @@ API アプリのサービス ホスティング プランを作成します。
             },
             {
               "name": "EmaStorage",
-              "value": "D:\\home\\data\\apiapps"
+              "value": "D:\home\data\apiapps"
             },
             {
               "name": "WEBSITE_START_SCM_ON_SITE_CREATION",
@@ -300,4 +300,4 @@ API アプリを作成します。
 
  
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

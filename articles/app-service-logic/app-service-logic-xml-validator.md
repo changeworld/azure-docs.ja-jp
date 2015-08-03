@@ -75,4 +75,4 @@ XML 検証アクションは、特定の XML の入力を、構成済みのス�
 [6]: ./media/app-service-logic-xml-validator/img1.PNG
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

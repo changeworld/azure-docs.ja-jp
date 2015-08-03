@@ -3,19 +3,19 @@
    description="リソース マネージャーのアーキテクチャと、演算、ネットワーク、およびストレージリソースプロバイダー間の関係について学ぶことができます。"
    services="virtual-machines"
    documentationCenter=""
-   authors="JoeDavies-MSFT"
+   authors="davidmu1"
    manager="timlt"
    editor=""
    tags="azure-resource-manager"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2015" 
-	ms.author="josephd"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/07/2015"
+	ms.author="davidmu"/>
 
 # Azure リソース マネージャーのアーキテクチャ
 
@@ -32,8 +32,8 @@ Azure リソース マネージャーに触れ、またさまざまなリソー�
 コンポーネントと Azure サービス管理のための関係を示します。
 
 ![](./media/virtual-machines-azure-resource-manager-architecture/arm_arch1.png)
- 
-## リソース マネージャーのアーキテクチャ 
+
+## リソース マネージャーのアーキテクチャ
 
 Azure リソース マネージャーでは、リソース プロバイダーは必要な構成で機能する仮想マシンを作成するための個別のリソースをサポートします。仮想マシンには 3 つの主要なリソース プロバイダーがあります。
 
@@ -50,13 +50,13 @@ Azure リソース マネージャーでは、リソース プロバイダーは
 - Load Balancer のインスタンスは仮想マシンの NIC を含め(オプション)、Load Balancer パブリックまたはプライベート IP アドレス (オプション) を参照している IP アドレスのバックエンドプールを参照します。
 
 ![](./media/virtual-machines-azure-resource-manager-architecture/arm_arch2.png)
- 
+
 リソースのコンポーネント化では、Azure でホストされている IT 負荷のインフラストラクチャを構成するときにより柔軟性を高めることができます。Azure リソース マネージャーのテンプレートは、特定の構成に必要な依存のリソースのセットを作成するために、このような柔軟性を活用しています。テンプレートを実行する時、リソース マネージャーはリソースの構成は、依存関係および参照を保持する適切な順序で作成されていることを確認します。たとえば、リソース マネージャーは、サブネットと IP アドレス (ネットワークのセキュリティ グループはオプション) の仮想ネットワークが作成されるまで、仮想マシンの NIC を作成しません。
 
 リソース グループは、複数の仮想マシン、NIC、IP アドレス、Load Balancer、サブネット、およびネットワーク セキュリティ グループで構成される、アプリケーションの関連リソースを保持するための論理コンテナです。たとえば、すべてのアプリケーションのリソースを1 つの管理単位として管理できます。それらをすべて一緒に作成、更新、削除できます。これは、1 つのリソース グループに展開されているサンプル アプリケーションです。
 
 ![](./media/virtual-machines-azure-resource-manager-architecture/arm_arch3.png)
- 
+
 アプリケーションは、次で構成されます。
 
 - 同じストレージ アカウントを使用する 2 つのバーチャル マシンは、同じ可用性セットおよび仮想ネットワークの同じサブネット上にあります。
@@ -79,4 +79,4 @@ Azure リソース マネージャーでは、リソース プロバイダーは
 
 [Azure リソース マネージャーの概要](resource-group-overview.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

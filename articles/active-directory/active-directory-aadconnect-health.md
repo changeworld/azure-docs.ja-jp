@@ -37,7 +37,7 @@ Azure AD Connect Health の今後の更新には、監視の追加と、他の I
 
 ## Azure AD Connect Health を使用する理由
 
-オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。ただし、この統合には課題があります。ユーザーが任意のデバイスからオンプレミスとクラウド両方のリソースに安全にアクセスできるように、環境を健全に保つ必要があります。Azure AD Connect Health では、Office 365 や他の Azure AD アプリケーションにアクセスするときに使用するオンプレミスの ID インフラストラクチャを、簡単なクラウドベースのアプローチで監視し分析することができます。オンプレミスの各 ID サーバーにエージェントをインストールするぐらいにシンプルです。
+オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースに共通の ID が提供されるため、ユーザーの生産性が向上します。ただし、この統合には課題があります。ユーザーが任意のデバイスからオンプレミスとクラウド両方のリソースに安全にアクセスできるように、環境を健全に保つ必要があります。Azure AD Connect Health では、Office 365 や他の Azure AD アプリケーションにアクセスするときに使用するオンプレミスの ID インフラストラクチャを、簡単なクラウドベースのアプローチで監視し分析することができます。オンプレミスの各 ID サーバーにエージェントをインストールするぐらいにシンプルです。
 
 Azure AD Connect Health for AD FS は、Windows Server 2008/2008 R2 の AD FS 2.0 と Windows Server 2012/2012R2 の AD FS をサポートします。これらには、エクストラネット アクセスの認証をサポートする AD FS プロキシまたは Web アプリケーション プロキシ サーバーも含まれます。Azure AD Connect Health for AD FS の主な機能セットは次のとおりです。
 
@@ -56,7 +56,7 @@ Azure Active Directory Connect Health の使用を開始するには、次の手
 
 1. [Microsoft Azure ポータル](https://portal.azure.com/)にサインインします。
 2. Azure Active Directory Connect Health にアクセスするには、Marketplace に移動して検索するか、Marketplace を選択して [セキュリティ + ID] を選択します。
-3. 概要ブレード (ブレードとは、全体的なビューの 1 つの部分で、ウィンドウやフライアウトと考えることができます) で、[作成] をクリックします。ディレクトリの情報を含む別のブレードが開きます。
+3. 概要ブレード (ブレードは、全体的なビューの 1 つの部分です。ウィンドウやフライアウトと考えることができます) で、[作成] をクリックします。ディレクトリの情報を含む別のブレードが開きます。
 4. ディレクトリのブレードで、[作成] をクリックします。Azure Active Directory Premium ライセンスをお持ちでない場合、Azure AD Connect Health を使用するにはこのライセンスが必要になります。Azure AD Premium の詳細については、Azure AD Premium の概要に関するページを参照してください。
 
 
@@ -69,22 +69,22 @@ Azure Active Directory Connect Health の使用を開始するには、次の手
 
 
 ## Azure Active Directory Connect Health ポータル
-Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、および使用状況の分析を表示できます。Azure AD Connect Health に初めてアクセスすると、最初のブレードが表示されます。ブレードは、全体的なビューの 1 つの部分です。ブレードは、ウィンドウと考えることができます。最初のブレードには、クイック スタート、サービス、構成が表示されます。スクリーン ショットの下に、それぞれの簡単な説明を示します。
+Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、および使用状況の分析を表示できます。Azure AD Connect Health に初めてアクセスすると、最初のブレードに表示されます。ブレードは、全体的なビューの 1 つの部分です。ブレードは、ウィンドウと考えることができます。最初のブレードには、クイック スタート、サービス、構成が表示されます。スクリーンショットの下に、それぞれの簡単な説明を示します。
 
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/portal2.png)
 
 - **[クイック スタート]** – これを選択すると [クイック スタート] ブレードが開きます。ここで、[ツールの取得] を選択して Azure AD Connect Health エージェントをダウンロードしたり、ドキュメントにアクセスしたり、フィードバックを提供したりできます。
 - **[Active Directory フェデレーション サービス]** – Azure AD Connect Health が現在監視しているすべての AD FS サービスを表します。このセクションに表示されるオプションについては、以下のセクションで説明します。「Azure Active Directory Connect Health サービス」を参照してください。
-- [構成] – 以下の機能のオン/オフを切り替えることができます。
+- [構成] – 以下の機能のオンとオフを切り替えることができます。
 <ol>
 1. Azure AD Connect Health エージェントを最新バージョンに自動更新する - Azure AD Connect Health エージェントの最新バージョンが使用可能になると、自動的に更新されます。この機能は、既定では有効になっています。
-2. Microsoft がトラブルシューティングの目的でのみ Azure AD ディレクトリの正常性データにアクセスすることを許可する - この機能が有効になっていると、ユーザーに表示されているデータと同じデータを Microsoft でも表示できます。これは問題のトラブルシューティングと支援に役立ちます。この機能は、既定では無効になっています。
+2. Microsoft がトラブルシューティングの目的でのみ Azure AD ディレクトリの正常性データにアクセスすることを許可する - この機能が有効になっていると、ユーザーに表示されているデータと同じデータを Microsoft が表示できます。これは問題のトラブルシューティングと支援に役立ちます。この機能は、既定では無効になっています。
 
 
 
 
 ## Azure Active Directory Connect Health サービス
-このセクションには、Azure AD Connect Health が監視しているアクティブなサービスとそのサービスのインスタンスが表示されます。省略記号 (...) をクリックするとブレードが開き、すべてのインスタンスが表示されます。
+このセクションには、Azure AD Connect Health が監視しているアクティブなサービスとそのサービスのインスタンスが表示されます。省略記号 ([...]) をクリックするとブレードが開き、すべてのインスタンスが表示されます。
 
 ![Azure AD Connect Health Services](./media/active-directory-aadconnect-health/portal3.png)
 
@@ -99,7 +99,7 @@ Azure AD Connect Health の使用を開始するには、こちら ([Azure AD Co
 
 ----------------------------------------------------------------------------------------------------------
 
-## Azure Active Directory Connect Health アラート
+## Azure Active Directory Connect Health のアラート
 Azure AD Connect Health アラート セクションには、アクティブなアラートの一覧が表示されます。各アラートには、関連情報、解決の手順、関連ドキュメントのリンクが含まれます。アクティブまたは解決済みのアラートを選択すると、新しいブレードが開き、アラートの解決に利用できる手順やその他のドキュメントへのリンクなどの追加情報が表示されます。過去に解決されたアラートの履歴データも表示できます。
 
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/alert1.png)
@@ -144,8 +144,8 @@ Azure AD Connect Health 利用状況分析では、フェデレーション サ�
 | ユーザー数: システムでアクティブな一意のユーザー数の平均 | すべて | 選択したタイム スライスにフェデレーション サービスを使用するユーザー数の平均を示します。ユーザーはグループ化されません。<br>平均は、選択したタイム スライスによって異なります。 |
 | | アプリケーション | ターゲット アプリケーション (証明書利用者) に基づいて、ユーザー数の平均をグループ化します。これは、どのアプリケーションを何人のユーザーが使用しているかを把握するのに役立ちます。 |
 
-## 次の手順
-Azure AD Connect Health を開始するには、「[Azure AD Connect Health の要件](active-directory-aadconnect-health-requirements.md)」を参照してください。エージェントをインストール済みでデータを収集している場合は、「[Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)」を参照してください。Azure AD Connect Health の構成の詳細については、[FAQ](active-directory-aadconnect-health-faq.md) を確認してください。
+## 参照トピック
+Azure AD Connect Health の使用を開始するには、「[Azure AD Connect Health の要件](active-directory-aadconnect-health-requirements.md)」を参照してください。エージェントをインストール済みでデータを収集している場合は、「[Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)」を参照してください。Azure AD Connect Health の構成の詳細については、[FAQ](active-directory-aadconnect-health-faq.md) を確認してください。
 
 
 **その他のリソース**
@@ -155,4 +155,4 @@ Azure AD Connect Health を開始するには、「[Azure AD Connect Health の�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -471,4 +471,4 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
 [Get started with data]: mobile-services-ios-get-started-data.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -18,7 +18,8 @@
 
 #Azure Data Factory - 用語
 
-## データ ファクトリ
+## Data Factory  
+
 **Azure Data Factory** には、Azure HDInsight などのリンクされたコンピューティング サービスを使用して、リンクされたデータ ストア (Azure Storage、Azure SQL Database、オンプレミスの SQL Server など) のデータを処理するパイプラインが 1 つ以上あります。Azure データ ファクトリ自体にはデータは含まれません。データは前に説明したデータ ストアに格納されます。
 
 ## リンクされたサービス
@@ -36,7 +37,8 @@ Azure Data Factory の**パイプライン**は、リンクされたコンピュ
 
 Azure Data Factory インスタンスを作成するための一般的な手順は、次のとおりです。
 
-1. **データ ファクトリ**を作成する。
+1. **Data Factory  
+**を作成する。
 2. データ ストアまたはコンピューティング サービスごとに**リンクされたサービス**を作成する。
 3. 入力**データセット**と出力データセットを作成する。
 4. **パイプライン**を作成する。 
@@ -113,4 +115,4 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -581,4 +581,4 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

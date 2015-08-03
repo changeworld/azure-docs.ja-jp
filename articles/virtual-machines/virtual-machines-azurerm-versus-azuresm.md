@@ -110,4 +110,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 現時点ではサポートされません。新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線と接続することはできません。これは、後でサポートされます。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -321,4 +321,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

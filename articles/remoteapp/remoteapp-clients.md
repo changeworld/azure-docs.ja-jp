@@ -207,4 +207,4 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 ![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

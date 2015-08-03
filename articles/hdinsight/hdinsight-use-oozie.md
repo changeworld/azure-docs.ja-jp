@@ -94,7 +94,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
 
 1. **DROP TABLE ステートメント**は、log4j Hive テーブルが存在する場合、削除します。
-2. **CREATE TABLE ステートメント**は、log4j ログ ファイルの場所を指す log4j Hive 外部テーブルを作成します。フィールド区切り記号はコンマ (,) です。既定の行区切り記号は "\\n" です。Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
+2. **CREATE TABLE ステートメント**は、log4j ログ ファイルの場所を指す log4j Hive 外部テーブルを作成します。フィールド区切り記号はコンマ (,) です。既定の行区切り記号は "\n" です。Hive 外部テーブルは、Oozie ワークフローを複数回実行する場合に、データ ファイルが元の場所から削除されないようにするために使用されています。
 3. **INSERT OVERWRITE ステートメント**は、log4j Hive テーブルの各ログ レベル タイプの出現回数をカウントし、その出力を Azure Storage の BLOB に保存します。
 
 Hive パスには既知の問題があります。この問題は Oozie ジョブの送信時に発生します。この問題の修正手順については、TechNet Wiki の「[HDInsight Hive エラー: 名前を変更できません][technetwiki-hive-error]」を参照してください。
@@ -115,7 +115,7 @@ Hive パスには既知の問題があります。この問題は Oozie ジョ�
 
 	ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
-2. **ANSI(ASCII)** エンコードを使用して、ファイルを **C:\\Tutorials\\UseOozie\\useooziewf.hql** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。) チュートリアルでは、このスクリプト ファイルは後で HDInsight クラスターにデプロイされます。
+2. **ANSI(ASCII)** エンコードを使用して、ファイルを **C:\Tutorials\UseOozie\useooziewf.hql** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。) チュートリアルでは、このスクリプト ファイルは後で HDInsight クラスターにデプロイされます。
 
 
 
@@ -199,7 +199,7 @@ Hive パスには既知の問題があります。この問題は Oozie ジョ�
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 </table>Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 
-2. ANSI(ASCII) エンコードを使用して、ファイルを **C:\\Tutorials\\UseOozie\\workflow.xml** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。)
+2. ANSI(ASCII) エンコードを使用して、ファイルを **C:\Tutorials\UseOozie\workflow.xml** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。)
 
 ##Oozie プロジェクトをデプロイしてチュートリアルを準備する
 
@@ -511,7 +511,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **ジョブのエラー ログを確認するには**
 
-ワークフローのトラブルシューティングを行うには、クラスター ヘッド ノードの *C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log* または *C:\\apps\\dist\\oozie-4.0.0.2.0.7.0-1528\\oozie-win-distro\\logs\\Oozie.log* にある Oozie ログ ファイルを参照します。RDP については、「[Azure 管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」を参照してください。
+ワークフローのトラブルシューティングを行うには、クラスター ヘッド ノードの *C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log* または *C:\apps\dist\oozie-4.0.0.2.0.7.0-1528\oozie-win-distro\logs\Oozie.log* にある Oozie ログ ファイルを参照します。RDP については、「[Azure 管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」を参照してください。
 
 **チュートリアルを再実行するには**
 
@@ -614,4 +614,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

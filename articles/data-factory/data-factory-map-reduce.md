@@ -123,4 +123,4 @@ MapReduce の変換で HDInsight アクティビティを使用するための�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

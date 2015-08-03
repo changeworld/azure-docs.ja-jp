@@ -196,4 +196,4 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

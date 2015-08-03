@@ -928,4 +928,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

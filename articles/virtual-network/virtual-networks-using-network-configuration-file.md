@@ -70,4 +70,4 @@ PowerShell または管理ポータルを使用して、ネットワーク構成
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

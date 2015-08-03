@@ -19,7 +19,7 @@
 # SQL Data Warehouse での同時実行とワークロード管理
 SQL Data Warehouse では、予測可能なパフォーマンスを広く提供するために、ワークロードの同時実行とコンピューティング リソースの割り当ての両方を管理するメカニズムを実装しています。
 
-この記事では、同時実行とワークロード管理の機能がどのように実装されたか、そしてこれらの機能をデータ ウェアハウスでどのように制御するかを説明しながら、両機能の概念を紹介します。
+この記事では、同時実行とワークロード管理の機能がどのように実装されたか、そしてこれらの機能をデータ ウェアハウスでどのように制御できるかについて説明しながら、両機能の概念を紹介します。
 
 ## 同時実行
 SQL Data Warehouse が、**同時実行クエリ**と**同時実行スロット**の 2 つの概念によって管理されていることを理解することは重要です。
@@ -136,10 +136,10 @@ SQL Data Warehouse では、ワークロード管理の実装の一環として�
 
 | ワークロード グループ | 同時実行スロットのマッピング | 優先順位のマッピング |
 | :------------  | :----------------------- | :--------------- |
-| SloDWGroupC00 | 1 | 中 |
-| SloDWGroupC01 | 2 | 中 |
-| SloDWGroupC02 | 4 | 中 |
-| SloDWGroupC03 | 8 | 中 |
+| SloDWGroupC00 | 1 | Medium |
+| SloDWGroupC01 | 2 | Medium |
+| SloDWGroupC02 | 4 | Medium |
+| SloDWGroupC03 | 8 | Medium |
 | SloDWGroupC04 | 16 | 高 |
 | SloDWGroupC05 | 32 | 高 |
 | SloDWGroupC06 | 64 | 高 |
@@ -149,9 +149,9 @@ SQL Data Warehouse では、ワークロード管理の実装の一環として�
 
 | リソース クラス | ワークロード グループ | 使用される同時実行スロット数 | [重要度] |
 | :------------- | :------------- | :---------------------   | :--------- |
-| smallrc | SloDWGroupC00 | 1 | 中 |
-| mediumrc | SloDWGroupC02 | 4 | 中 |
-| largerc | SloDWGroupC03 | 8 | 中 |
+| smallrc | SloDWGroupC00 | 1 | Medium |
+| mediumrc | SloDWGroupC02 | 4 | Medium |
+| largerc | SloDWGroupC03 | 8 | Medium |
 | xlargerc | SloDWGroupC04 | 16 | 高 |
 
 リソース ガバナーの観点からメモリ リソースの割り当ての違いを詳細に確認するには、次のクエリを使用します。
@@ -213,7 +213,7 @@ CREATE LOGIN newperson WITH PASSWORD = 'mypassword'
 CREATE USER newperson for LOGIN newperson
 ```
 
-[AZURE.NOTE]Azure SQL Database と SQL Data Warehouse の両方を使用する場合は、マスター データベースにログイン用のユーザーを作成することをお勧めします。このレベルでは 2 つのサーバー ロールを利用できます。これらのロールは、メンバーシップを許可するためには、ログインがマスターにユーザーを持つ必要があります。これらのロールは、`Loginmanager` と `dbmanager` です。これらのロールは、Azure SQL Database と SQL Data Warehouse の両方で、ログインを管理し、データベースを作成する権限を付与します。この点が SQL Server とは異なります。詳細については、「[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]」の記事をご覧ください。
+[AZURE.NOTE]Azure SQL Database と SQL Data Warehouse の両方を使用する場合は、マスター データベースにログイン用のユーザーを作成することをお勧めします。このレベルでは 2 つのサーバー ロールを利用できますが、メンバーシップを付与するために、ログインでマスター内にユーザーが必要です。これらのロールは、`Loginmanager` と `dbmanager` です。これらのロールは、Azure SQL Database と SQL Data Warehouse の両方で、ログインを管理し、データベースを作成する権限を付与します。この点が SQL Server とは異なります。詳細については、「[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]」の記事をご覧ください。
  
 ログインを作成したら、ユーザー アカウントを追加する必要があります。
 
@@ -223,7 +223,7 @@ SQL Data Warehouse データベースへの接続を開き、次のコマンド�
 CREATE USER newperson FOR LOGIN newperson
 ```
 
-ユーザーに対して、1 回完全なアクセス許可が付与される必要があります。次の例は、SQL Data Warehouse データベースで `CONTROL` を付与します。データベース レベルの `CONTROL` は、SQL サーバーの db_owner SQL server に相当します。
+ユーザーに対して、一度、完全なアクセス許可が付与される必要があります。次の例は、SQL Data Warehouse データベースで `CONTROL` を付与します。データベース レベルの `CONTROL` は、SQL サーバーの db_owner SQL server に相当します。
 
 ```
 GRANT CONTROL ON DATABASE::MySQLDW to newperson
@@ -245,7 +245,7 @@ AND     ro.[is_fixed_role]  = 0
 EXEC sp_addrolemember 'largerc', 'newperson' 
 ```
 
-ワークロード管理ロールからユーザーを削除するのには、次のクエリを使用します。
+ワークロード管理ロールからユーザーを削除するには、次のクエリを使用します。
 
 ``` 
 EXEC sp_droprolemember 'largerc', 'newperson' 
@@ -377,4 +377,4 @@ FROM	sys.dm_pdw_wait_stats w
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -72,4 +72,4 @@
 
          azure group log show -l -v ExampleResourceGroup
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

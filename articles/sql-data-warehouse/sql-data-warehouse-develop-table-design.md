@@ -306,4 +306,4 @@ SQL Data Warehouse では、次の機能は使用またはサポートされま�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

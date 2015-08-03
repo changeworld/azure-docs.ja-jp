@@ -51,4 +51,4 @@ Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/j
 <li>これらのアプリを使用してる場合は、指定されたアプリ パスワードをコピーし、非ブラウザー アプリケーションに貼り付けます。Outlook および Lync など、個々のアプリケーションでの手順については、「電子メールのパスワードをアプリ パスワードに変更する」と「アプリケーションのパスワードをアプリ パスワードに変更する」を参照してください。</li>
 <li>[Done] をクリックします。</li>
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

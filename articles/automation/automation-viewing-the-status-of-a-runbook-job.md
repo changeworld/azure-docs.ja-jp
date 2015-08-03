@@ -86,4 +86,4 @@ Runbook Dashboard を表示するには、次の手順を使用します。
 
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

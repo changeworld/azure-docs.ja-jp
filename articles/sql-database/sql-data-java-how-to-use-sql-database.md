@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
-	manager="wpickett" 
+	manager="jeffreyg" 
 	editor="jimbe"/>
 
 <tags 
@@ -726,4 +726,4 @@ Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドラ�
 [allowed_ips_dialog]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -28,4 +28,4 @@ Testability は、Microsoft Azure Service Fabric で構築したサービスの�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

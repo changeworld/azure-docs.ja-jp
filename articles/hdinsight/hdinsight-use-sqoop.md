@@ -352,7 +352,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 
 > [AZURE.NOTE]接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
 >
-> * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](http://msdn.microsoft.com/library/azure/dn133792.aspx)」を参照してください。
+> * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md)」を参照してください。
 > * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
 > * **SQL Server 2014**: 仮想ネットワークに安全に接続するために、認証と、VPN クライアント構成パッケージの実行を許可する構成。
 
@@ -405,7 +405,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 		Write-Host "Standard Output" -BackgroundColor Green
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
-	フィールドの区切り記号は **\\0x20** (スペース) です。区切り記号は、sample.log ファイルの Azure PowerShell スクリプトで定義されています。**-m 1** については、[Sqoop ユーザー ガイド][sqoop-user-guide-1.4.4]を参照してください。
+	フィールドの区切り記号は **\0x20** (スペース) です。区切り記号は、sample.log ファイルの Azure PowerShell スクリプトで定義されています。**-m 1** については、[Sqoop ユーザー ガイド][sqoop-user-guide-1.4.4]を参照してください。
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
 6. [Azure ポータル][azure-management-portal]を使用して、エクスポートされたデータを確認します。
@@ -645,4 +645,4 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

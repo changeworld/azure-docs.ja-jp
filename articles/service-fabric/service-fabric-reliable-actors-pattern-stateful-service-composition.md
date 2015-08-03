@@ -92,4 +92,4 @@ SOA サービスはステートレスな性質により水平方向にシーム�
 [3]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-3.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

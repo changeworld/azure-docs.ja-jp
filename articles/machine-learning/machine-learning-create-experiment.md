@@ -232,4 +232,4 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

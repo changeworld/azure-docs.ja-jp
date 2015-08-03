@@ -15,4 +15,4 @@
 - [(PhoneGap | Javascript)](../articles/mobile-services-javascript-backend-phonegap-get-started.md)
 - [(Sencha | Javascript)](../articles/partner-sencha-mobile-services-get-started.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

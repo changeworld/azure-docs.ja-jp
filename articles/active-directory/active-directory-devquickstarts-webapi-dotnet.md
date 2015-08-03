@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.date="07/17/2015"
 	ms.author="dastrock"/>
 
 
@@ -37,7 +37,7 @@ ASP.NET Web アプリでは、.NET Framework 4.5 に含まれるコミュニテ�
 ## *1.アプリケーションを Azure AD に登録する*
 アプリケーションをセキュリティで保護するには、まず、テナントでアプリケーションを作成し、Azure AD にいくつかの重要な情報を提供する必要があります。
 
--	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -118,7 +118,7 @@ public IEnumerable<TodoItem> Get()
 ## *3.クライアント アプリケーションを構成し、サービスを実行する*
 Todo List Service の動作を確認できるようにするには、Todo List Client を構成して、Todo List Client が AAD からトークンを取得し、サービスを呼び出せるようにする必要があります。
 
-- [Microsoft Azure の管理ポータル](https://manage.windowsazure.com)に戻ります。
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)に戻ります。
 - Azure AD テナントで新しいアプリケーションを作成し、表示されるプロンプトで **[ネイティブ クライアント アプリケーション]** を選択します。
     -	アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
     -	**[リダイレクト URI]** 値には、「`http://TodoListClient/`」を入力します。
@@ -138,7 +138,6 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 [Build a .NET Native Client with Azure AD (Azure AD の使用による .NET ネイティブ クライアントの構築)](../active-directory-devquickstarts-native-dotnet.md)
 
-その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
- 
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

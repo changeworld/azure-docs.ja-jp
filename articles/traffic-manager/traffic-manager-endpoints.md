@@ -77,4 +77,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 [Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

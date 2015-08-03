@@ -176,7 +176,7 @@ CDN は、アプリケーションの負荷を最小限に抑え、可用性と�
   <rewrite>
     <rules>
       <rule name="VersionedResource" stopProcessing="false">
-        <match url="(.*)_v(.*)\.(.*)" ignoreCase="true" />
+        <match url="(.*)_v(.*).(.*)" ignoreCase="true" />
         <action type="Rewrite" url="{R:1}.{R:3}" appendQueryString="true" />
       </rule>
       <rule name="CdnImages" stopProcessing="true">
@@ -219,4 +219,4 @@ CDN は、アプリケーションの負荷を最小限に抑え、可用性と�
 + [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 + [Azure コンテンツ配信ネットワークのベスト プラクティス](http://azure.microsoft.com/blog/2011/03/18/best-practices-for-the-windows-azure-content-delivery-network/)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

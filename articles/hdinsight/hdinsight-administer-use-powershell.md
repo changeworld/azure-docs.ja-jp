@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="07/21/2015" 
 	ms.author="jgao"/>
 
 # Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
@@ -279,4 +279,4 @@ Hive の使用法の詳細については、「[HDInsight での Hive の使用]
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

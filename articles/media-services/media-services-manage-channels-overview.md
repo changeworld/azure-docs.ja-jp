@@ -331,4 +331,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

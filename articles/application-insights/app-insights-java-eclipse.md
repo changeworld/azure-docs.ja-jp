@@ -39,7 +39,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 
     ![[Help]、[Install New Software]](./media/app-insights-java-eclipse/0-plugin.png)
 
-2. SDK は、http://dl.msopentech.com/eclipse の Azure Toolkit のページから入手できます。
+2. SDK は、http://dl.windowsazure.com/eclipse の Azure Toolkit のページから入手できます。
 3. **[Contact all update sites]** チェック ボックスをオフにします。
 
     ![Application Insights SDK の場合、[Contact all update sites] チェック ボックスをオフにします](./media/app-insights-java-eclipse/1-plugin.png)
@@ -169,4 +169,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

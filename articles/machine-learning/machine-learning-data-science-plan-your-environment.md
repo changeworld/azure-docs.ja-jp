@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="Azure Machine Learning の高度な分析環境を計画する | Microsoft Azure" 
 	description="重要事項を考慮して、高度な分析環境を計画します。" 
-	services="machine-learning"
+	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="msolhab"
 	manager="paulettm" 
@@ -78,4 +79,4 @@ Advanced Analytics Process and Technology ワークフローは、「[Azure で�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

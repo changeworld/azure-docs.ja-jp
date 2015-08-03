@@ -32,4 +32,4 @@ Microsoft Azure プレビュー ポータルは、最新の主要なデスクト
 
 *Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

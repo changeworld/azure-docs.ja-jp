@@ -93,7 +93,7 @@ VM への接続方法については、「[Windows Server が実行されてい�
 次のいずれかのオプションを使用して、SQL Server VM を構築します。
 
 - 上記の手順 1. から手順 7. に従って、SQL Server 2012 VM を作成します。ただし、手順 3. では、Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用します。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
-	- このオプションを選択した場合は、プロビジョニング プロセスで SQL Server 2012 セットアップ ファイルのコピーが C:\\SQLServer_11.0_Full ディレクトリに残されるため、インストールをカスタマイズできます。たとえば、ライセンス キーを使用して SQL Server 2012 の評価版をライセンス版に変換できます。
+	- このオプションを選択した場合は、プロビジョニング プロセスで SQL Server 2012 セットアップ ファイルのコピーが C:\SQLServer_11.0_Full ディレクトリに残されるため、インストールをカスタマイズできます。たとえば、ライセンス キーを使用して SQL Server 2012 の評価版をライセンス版に変換できます。
 
 - SQL Server システム準備 (SysPrep) ツールを使用して、基本オペレーティング システムの VM に SQL Server をインストールします (上記の手順 1. ～ 7. を参照)。詳細については、「[SysPrep を使用した SQL Server 2014 のインストール](http://msdn.microsoft.com/library/ee210664.aspx)」を参照してください。
 
@@ -285,4 +285,4 @@ SharePoint Server を Azure の仮想マシンに正常にデプロイするに�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

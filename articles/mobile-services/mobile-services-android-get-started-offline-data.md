@@ -221,4 +221,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (モバイル サービスのクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

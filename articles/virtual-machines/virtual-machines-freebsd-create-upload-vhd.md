@@ -66,12 +66,12 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 5. Azure エージェントの前提条件
 
-    5\.1 **Python をインストールする**
+    5.1 **Python をインストールする**
 
 		# pkg install python27 py27-asn1
 		# ln -s /usr/local/bin/python2.7 /usr/bin/python
 
-    5\.2 **wget をインストールする**
+    5.2 **wget をインストールする**
 
 		# pkg install wget 
 
@@ -206,4 +206,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

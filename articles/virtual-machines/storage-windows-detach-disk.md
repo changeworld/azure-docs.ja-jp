@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Windows 仮想マシンからのディスクの切断 | Azure" 
+	pageTitle="Windows 仮想マシンからのディスクの切断 | Azure"
 	description="Azure の仮想マシンからディスクを切断する方法について説明します。"
 	services="virtual-machines, storage"
 	documentationCenter=""
 	authors="KBDAzure"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2015"
+	ms.date="07/14/2015"
 	ms.author="kathydav"/>
 
 
@@ -24,6 +25,8 @@
 
 ## その他のリソース
 
+[仮想マシン用のディスクと VHD について](virtual-machines-disks-vhds.md)
+
 [データ ディスクを Windows 仮想マシンに接続する方法](storage-windows-attach-disk.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

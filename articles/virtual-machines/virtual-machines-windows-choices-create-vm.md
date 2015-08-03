@@ -1,30 +1,31 @@
-<properties 
-	pageTitle="Windows 仮想マシンを作成するさまざまな方法" 
-	description="Windows 仮想マシンを作成するさまざまな方法を紹介し、手順へのリンクを提供します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="KBDAzure" 
-	manager="timlt" 
-	editor=""/>
+<properties
+	pageTitle="Windows 仮想マシンを作成するさまざまな方法"
+	description="Windows 仮想マシンを作成するさまざまな方法を紹介し、手順へのリンクを提供します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="KBDAzure"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager,azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="vm-windows" 
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="index-page"
+	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="05/14/2015" 
+	ms.date="07/15/2015"
 	ms.author="kathydav"/>
 
 # Windows 仮想マシンを作成するさまざまな方法
 
 VM は多様なユーザーや目的に適しているため、Azure には VM を作成するためのさまざまな方法が用意されています。このため、VM とその作成方法について、いくつかの選択をする必要があります。この記事には、これらの選択肢の概要と、手順へのリンクが記載されています。
 
-仮想マシンとその各種リソースを 1 つの論理的なデプロイメント単位として作成および管理する手段として、Azure リソース マネージャー テンプレートが最近導入されました。このアプローチに関する手順が、以下で該当する箇所に記載されています。Azure リソース マネージャー、およびリソースを 1 つの単位として管理する方法の詳細については、[概要][]に関するページを参照してください。
+仮想マシンとその各種リソースを 1 つの論理的なデプロ単位として作成および管理する手段として、Azure リソース マネージャー テンプレートが最近導入されました。このアプローチに関する手順が、以下で該当する箇所に記載されています。Azure リソース マネージャー、およびリソースを 1 つの単位として管理する方法の詳細については、[概要][]に関するページを参照してください。
 
 ## ツールの選択肢
 
-### GUI: Azure ポータルまたは Azure プレビュー ポータル 
+### GUI: Azure ポータルまたは Azure プレビュー ポータル
 
 Azure ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。VM の作成は、Azure ポータルと Azure プレビュー ポータルのいずれかを使用して行います。
 
@@ -34,9 +35,9 @@ Azure ポータルのグラフィカル ユーザー インターフェイスを
 
 コマンド シェルを使用する場合は、Mac および Linux ユーザー向けの Azure コマンド ライン インターフェイス (CLI) と、Azure 用 Windows PowerShell コマンドレットおよびカスタム コンソールを備えた Azure PowerShell のいずれかを選択します。
 
-Azure CLI の場合は、[Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応][]に関するページを参照してください。テンプレートを使用する場合は、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。
+Azure CLI の場合は、[Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応][]に関するページを参照してください。リソース マネージャー テンプレートを使用する場合は、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。
 
-Azure PowerShell については、「[Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応][]」を参照してください。テンプレートの使用方法については、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。
+Azure PowerShell については、「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する][]」を参照してください。テンプレートの使用方法については、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理][]」を参照してください。サービス管理スタック内で仮想マシンを作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する][]」を参照してください。
 
 ### 開発環境: Visual Studio
 
@@ -56,7 +57,7 @@ Azure PowerShell については、「[Mac、Linux、および Windows 用 Azure
 
 既存の Azure 仮想マシンをベースにしたイメージを使用するには、その VM を*キャプチャする*か、独自のイメージを仮想ハード ディスク (VHD) に格納してアップロードします。
 
-- [テンプレートとして使用する Windows 仮想マシンのキャプチャ方法][]
+- [Windows 仮想マシンをキャプチャする方法][]
 - [Windows Server VHD の作成と Azure へのアップロード][]
 
 ## 次のステップ
@@ -79,12 +80,12 @@ Azure PowerShell については、「[Mac、Linux、および Windows 用 Azure
 
 [Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応]: xplat-cli-azure-manage-vm-asm-arm.md
 [Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理]: virtual-machines-deploy-rmtemplates-azure-cli.md
+[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する]: virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md
 [Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理]: virtual-machines-deploy-rmtemplates-powershell.md
-[Mac、Linux、および Windows 用 Azure CLI での VM 操作に使用するリソース マネージャーおよびサービス管理コマンドの対応]: virtual-machines-ps-create-preconfigure-windows-vms.md
-
+[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する]: virtual-machines-ps-create-preconfigure-windows-vms.md
 [Windows を実行するカスタム仮想マシンを作成する方法]: virtual-machines-windows-create-custom.md
 
-[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法]: virtual-machines-capture-image-windows-server.md
+[Windows 仮想マシンをキャプチャする方法]: virtual-machines-capture-image-windows-server.md
 
 [Windows Server VHD の作成と Azure へのアップロード]: virtual-machines-create-upload-vhd-windows-server.md
 
@@ -102,4 +103,4 @@ Azure PowerShell については、「[Mac、Linux、および Windows 用 Azure
 
 [Azure ハイブリッド クラウド テスト環境]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

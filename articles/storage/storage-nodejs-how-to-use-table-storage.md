@@ -449,4 +449,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Create and deploy a Node.js application to an Azure Web Site]: ../web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

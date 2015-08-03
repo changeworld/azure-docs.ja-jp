@@ -161,4 +161,4 @@
 - [.NET 用の BLOB ストレージの概要](storage-dotnet-how-to-use-blobs.md)  
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

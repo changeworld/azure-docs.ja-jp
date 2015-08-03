@@ -63,7 +63,7 @@ IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定�
  
 アイドル タイムアウトの構成を取得します。
 
-	PS C:> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
+	PS C:\> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
 	VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
 	LBSetName : MyLoadBalancedSet
 	LocalPort : 80
@@ -166,4 +166,4 @@ Azure SDK for .NET 2.4 を使用してクラウド サービスを更新でき�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

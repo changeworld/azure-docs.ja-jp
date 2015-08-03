@@ -208,4 +208,4 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
  [Scheduler 送信認証](scheduler-outbound-authentication.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

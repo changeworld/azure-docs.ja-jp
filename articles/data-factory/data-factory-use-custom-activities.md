@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.date="07/16/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -21,65 +21,6 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 この記事では、カスタム アクティビティを作成し、Azure Data Factory のパイプラインで使用する方法について説明します。カスタム アクティビティを作成して使用するための詳細なチュートリアルも提供します。チュートリアルでは、HDInsight リンク サービスを使用します。代わりに Azure Batch リンク サービスを使用するには、**AzureBatchLinkedService** 型のリンク サービスを作成し、パイプライン JSON (**linkedServiceName**) のアクティビティ セクションで使用します。カスタム アクティビティでの Azure Batch の使用方法の詳細については、[Azure Batch リンク サービス](#AzureBatch)に関するセクションをご覧ください。
 
-## 前提条件
-最新の [Azure Data Factory NuGet パッケージ][nuget-package]をダウンロードし、インストールします。手順については、この記事の[チュートリアル](#SupportedSourcesAndSinks)をご覧ください。
-
-## カスタム アクティビティの作成
-
-カスタム アクティビティを作成するには:
- 
-1.	Visual Studio 2013 で、**クラス ライブラリ** プロジェクトを作成します。
-3. クラス ライブラリ内のソース ファイル最上部にあるステートメントを使用して、以下を追加します。
-	
-		using Microsoft.Azure.Management.DataFactories.Models;
-		using Microsoft.DataFactories.Runtime; 
-
-4. クラスを更新して **IDotNetActivity** インターフェイスを実装します。
-	<ol type='a'>
-	<li>
-		<b>IDotNetActivity</b> からクラスを派生させます。
-		<br/>
-		例: <br/>
-		public class <b>MyDotNetActivity : IDotNetActivity</b>
-	</li>
-
-	<li>
-		<b>IDotNetActivity</b> インターフェイスの <b>Execute</b> メソッドを実装します。
-	</li>
-
-</ol>
-5. プロジェクトをコンパイルします。
-
-
-## パイプラインでのカスタム アクティビティの使用
-パイプライン内でカスタム アクティビティを使用するには:
-
-1.	プロジェクトの **bin\\debug** または **bin\\release** 出力フォルダーから、すべてのバイナリ ファイルを **zip ファイルにまとめます**。 
-2.	この zip ファイルを BLOB として **Azure BLOB ストレージ**に**アップロード**します。 
-3.	**パイプライン JSON** ファイルを更新して、パイプライン JSON 内で、zip ファイル、カスタム アクティビティ DLL、アクティビティ クラス、および zip ファイルが格納された BLOB を参照します。JSON ファイル内では:
-	<ol type ="a">
-	<li><b>アクティビティの型</b>は、<b>DotNetActivity</b> に設定する必要があります。</li>
-	<li><b>AssemblyName</b> は、Visual Studio プロジェクトからの出力 DLL の名前です。</li>
-	<li><b>EntryPoint</b> は、<b>IDotNetActivity</b> インターフェイスを実装する<b>クラス</b>の<b>名前空間</b>と<b>名前</b>を指定します。</li>
-	<li><b>PackageLinkedService</b> は、zip ファイルが格納された BLOB を参照するリンク サービスです。</li>
-	<li><b>PackageFile</b> は、Azure BLOB ストレージにアップロードされた zip ファイルの場所と名前を指定します。</li>
-	<li><b>LinkedServiceName</b> は、(オンデマンドまたは独自の) HDInsight クラスターをデータ ファクトリにリンクするリンク サービスの名前です。カスタム アクティビティは指定された HDInsight クラスター上でマップ専用のジョブとして動作します。</li>
-</ol>**JSON の部分例**
-
-		"Name": "MyDotNetActivity",
-    	"Type": "DotNetActivity",
-    	"Inputs": [{"Name": "EmpTableFromBlob"}],
-    	"Outputs": [{"Name": "OutputTableForCustom"}],
-		"LinkedServiceName": "myhdinsightcluster",
-    	"Transformation":
-    	{
-	    	"AssemblyName": "MyDotNetActivity.dll",
-    	    "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-    	    "PackageLinkedService": "MyBlobStore",
-    	    "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
-
-## カスタム アクティビティの更新
-カスタム アクティビティのコードを更新する場合は、カスタム アクティビティを構築し、新しいバイナリを含む zip ファイルを BLOB ストレージにアップロードします。
 
 ## <a name="walkthrough" />チュートリアル
 このチュートリアルでは、カスタム アクティビティを作成し、そのアクティビティを Azure Data Factory パイプラインで使用する手順について説明します。このチュートリアルは、「[Azure Data Factory を使ってみる][adfgetstarted]」のチュートリアルをさらに進めたものです。カスタム アクティビティの動作について確認したい場合は、まず「Azure Data Factory を使ってみる」のチュートリアルを終えてから、このチュートリアルを始めてください。
@@ -90,7 +31,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 - 「[Azure Data Factory を使ってみる][adfgetstarted]」のチュートリアル。本チュートリアルを実行する前に、この記事のチュートリアルを完了しておく必要があります。
 - Visual Studio 2012 または 2013
 - [Azure .NET SDK][azure-developer-center] をダウンロードし、インストールします。
-- 最新の [Azure Data Factory NuGet パッケージ][nuget-package]をダウンロードし、インストールします。手順はこのチュートリアルにあります。
+- 最新の [Azure Data Factory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories/)をダウンロードし、インストールします。手順はこのチュートリアルにあります。
 - Azure ストレージの NuGet パッケージをダウンロードしてインストールします。チュートリアルで方法を説明しているため、この手順は省略できます。
 
 ## 手順 1. カスタム アクティビティを作成する
@@ -110,10 +51,6 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 		Install-Package Microsoft.Azure.Management.DataFactories –Pre
 
-3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを実行して <b>Microsoft.DataFactories.Runtime</b> をインポートします。ダウンロードした Data Factory NuGet パッケージがある場所にフォルダーを置き換えます。
-
-		Install-Package Microsoft.DataFactories.Runtime –Pre
-
 4. Azure Storage NuGet パッケージをプロジェクトにインポートします。
 
 		Install-Package Azure.Storage
@@ -125,8 +62,8 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 		using System.Diagnostics;
 	
 		using Microsoft.Azure.Management.DataFactories.Models;
-		using Microsoft.DataFactories.Runtime; 
-	
+		using Microsoft.Azure.Management.DataFactories.Runtime;
+
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Blob;
   
@@ -145,22 +82,22 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 	次のサンプル コードでは、入力 BLOB 内の行数をカウントし、BLOB へのパス、BLOB 内の行数、アクティビティが実行されたコンピューター、現在の日時を出力 BLOB に生成します。
 
         public IDictionary<string, string> Execute(
-                    IEnumerable<ResolvedTable> inputTables, 
-                    IEnumerable<ResolvedTable> outputTables, 
-                    IDictionary<string, string> extendedProperties, 
-                    IActivityLogger logger)
+          IEnumerable<DataSet> inputTables,
+          IEnumerable<DataSet> outputTables,
+          IDictionary<string, string> extendedProperties,
+          IActivityLogger logger)
         {
             string output = string.Empty;
 
-            logger.Write(TraceEventType.Information, "Before anything...");
+            logger.Write("Before anything...");
 
-            logger.Write(TraceEventType.Information, "Printing dictionary entities if any...");
+            logger.Write("Printing dictionary entities if any...");
             foreach (KeyValuePair<string, string> entry in extendedProperties)
             {
-                logger.Write(TraceEventType.Information, "<key:{0}> <value:{1}>", entry.Key, entry.Value);
+                logger.Write("<key:{0}> <value:{1}>", entry.Key, entry.Value);
             }
 
-            foreach (ResolvedTable inputTable in inputTables)
+            foreach (DataSet inputTable in inputTables)
             {
                 string connectionString = GetConnectionString(inputTable.LinkedService);
                 string folderPath = GetFolderPath(inputTable.Table);
@@ -171,7 +108,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
                     continue;
                 }
 
-                logger.Write(TraceEventType.Information, "Reading blob from: {0}", folderPath);
+                logger.Write("Reading blob from: {0}", folderPath);
 
                 CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
                 CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
@@ -180,13 +117,13 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
                 do
                 {
-                    BlobResultSegment result = inputClient.ListBlobsSegmented(folderPath, 
-												true, 
-												BlobListingDetails.Metadata, 
-												null, 
-												continuationToken, 
-												null, 
-												null);
+                    BlobResultSegment result = inputClient.ListBlobsSegmented(folderPath,
+                                                true,
+                                                BlobListingDetails.Metadata,
+                                                null,
+                                                continuationToken,
+                                                null,
+                                                null);
                     foreach (IListBlobItem listBlobItem in result.Results)
                     {
                         CloudBlockBlob inputBlob = listBlobItem as CloudBlockBlob;
@@ -200,7 +137,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
                                     string line = sr.ReadLine();
                                     if (count == 0)
                                     {
-                                        logger.Write(TraceEventType.Information, "First line: [{0}]", line);
+                                        logger.Write("First line: [{0}]", line);
                                     }
                                     count++;
                                 }
@@ -222,7 +159,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
                 } while (continuationToken != null);
             }
 
-            foreach (ResolvedTable outputTable in outputTables)
+            foreach (DataSet outputTable in outputTables)
             {
                 string connectionString = GetConnectionString(outputTable.LinkedService);
                 string folderPath = GetFolderPath(outputTable.Table);
@@ -233,7 +170,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
                     continue;
                 }
 
-                logger.Write(TraceEventType.Information, "Writing blob to: {0}", folderPath);
+                logger.Write("Writing blob to: {0}", folderPath);
 
                 CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
                 Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + Guid.NewGuid() + ".csv");
@@ -245,19 +182,21 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
             return new Dictionary<string, string>();
 
         }
+    } }
 
 9. 以下のヘルパー メソッドを追加します。**Execute** メソッドがこれらのヘルパー メソッドを呼び出します。**GetConnectionString** メソッドは Azure Storage の接続文字列を取得し、**GetFolderPath** メソッドは BLOB の場所を取得します。
 
 
         private static string GetConnectionString(LinkedService asset)
         {
-            AzureStorageLinkedService storageAsset;
+
             if (asset == null)
             {
                 return null;
             }
 
-            storageAsset = asset.Properties as AzureStorageLinkedService;
+            AzureStorageLinkedService storageAsset = asset.Properties.TypeProperties as AzureStorageLinkedService;
+          
             if (storageAsset == null)
             {
                 return null;
@@ -268,26 +207,25 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
         private static string GetFolderPath(Table dataArtifact)
         {
-            AzureBlobLocation blobLocation;
             if (dataArtifact == null || dataArtifact.Properties == null)
             {
                 return null;
             }
 
-            blobLocation = dataArtifact.Properties.Location as AzureBlobLocation;
-            if (blobLocation == null)
+            AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
+            if (blobDataset == null)
             {
                 return null;
             }
 
-            return blobLocation.FolderPath;
+            return blobDataset.FolderPath;
         }
    
 
 
 10. プロジェクトをコンパイルします。メニューの **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\\debug** フォルダーまたは **bin\\release** フォルダーに移動します。
-12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。
+11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\debug** フォルダーまたは **bin\release** フォルダーに移動します。
+12. <project folder>\bin\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。
 13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **MyBlobStore** リンク サービスが使用する Azure BLOB ストレージ内にあります。**blobcustomactivitycontainer** が存在しない場合は、この BLOB コンテナーを作成します。 
 
 
@@ -358,11 +296,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 					"folderPath": "adftutorial/customactivityoutput/{Slice}",
 					"partitionedBy": [ { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } }],
 
-					"linkedServiceName": "MyBlobStore"
+					"linkedServiceName": "StorageLinkedService"
         		},
         		"availability": 
         		{
-            		"frequency": "hour",
+            		"frequency": "Hour",
             		"interval": 1
         		}   
     		}
@@ -396,7 +334,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
                      	{
                         	"AssemblyName": "MyDotNetActivity.dll",
                             "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-                            "PackageLinkedService": "MyBlobStore",
+                            "PackageLinkedService": "StorageLinkedService",
                             "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
                             "ExtendedProperties":
 							{
@@ -447,6 +385,9 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	![download logs from custom activity][image-data-factory-download-logs-from-custom-activity]
    
 データセットとパイプラインを監視する手順の詳細については、「[Azure Data Factory を使ってみる][adfgetstarted]」をご覧ください。
+
+## カスタム アクティビティの更新
+カスタム アクティビティのコードを更新する場合は、カスタム アクティビティを構築し、新しいバイナリを含む zip ファイルを BLOB ストレージにアップロードします。
     
 ## <a name="AzureBatch"></a>Azure Batch リンク サービスの使用 
 > [AZURE.NOTE]Azure Batch サービスの概要については、「[Azure Batch の技術概要][batch-technical-overview]」をご覧ください。Azure Batch サービスの使用をスムーズに開始するには、「[.NET 向け Azure Batch ライブライの概要][batch-get-started]」をご覧ください。
@@ -523,4 +464,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

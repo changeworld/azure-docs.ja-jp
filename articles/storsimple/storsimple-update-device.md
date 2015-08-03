@@ -121,4 +121,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 [StorSimple 用 Windows PowerShell](https://msdn.microsoft.com/library/azure/dn772425.aspx) について説明します。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

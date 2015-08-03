@@ -1,4 +1,4 @@
-<properties title="Configuring Oracle GoldenGate for Azure" pageTitle="Azure 用の Oracle GoldenGate の構成" description="高可用性と障害復旧のために Oracle GoldenGate を Azure Virtual Machines にセットアップして実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties pageTitle="Azure 用の Oracle GoldenGate の構成" description="高可用性と障害復旧のために Oracle GoldenGate を Azure Virtual Machines にセットアップして実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure 用の Oracle GoldenGate の構成
 このチュートリアルでは、高可用性と障害復旧のために Azure Virtual Machines 環境用に Oracle GoldenGate をセットアップする方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースに対する[双方向レプリケーション](http://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_about_gg.htm)に重点を合わせており、両サイトがアクティブである必要があります。
@@ -116,7 +116,7 @@ Oracle データベースと Oracle GoldenGate の今後のリリースでは、
 	      grant delete any table to ggate;
 	      grant drop any table to ggate;
 
-次に、サイト A とサイト B で %ORACLE_HOME%\\database フォルダー内の INIT<DatabaseSID>.ORA ファイルを見つけて、以下のデータベース パラメーターを INITTEST.ora に追加します。
+次に、サイト A とサイト B で %ORACLE_HOME%\database フォルダー内の INIT<DatabaseSID>.ORA ファイルを見つけて、以下のデータベース パラメーターを INITTEST.ora に追加します。
 
 	UNDO_MANAGEMENT=AUTO
 	UNDO_RETENTION=86400
@@ -189,7 +189,7 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 ##3.DDL レプリケーションのサポートに必要なすべてのオブジェクトを作成する
 このセクションでは、DDL レプリケーションのサポートに必要なすべてのオブジェクトを作成する際に使用する必要があるスクリプトを一覧表示します。サイト A とサイト B の両方で、このセクションで指定されているスクリプトを実行する必要があります。
 
-Windows コマンド プロンプトを開き、C:\\OracleGG などの Oracle GoldenGate フォルダーに移動します。サイト A とサイト B で **SYSDBA** などのデータベース管理者特権を使用して、SQL*Plus コマンド プロンプトを起動します。
+Windows コマンド プロンプトを開き、C:\OracleGG などの Oracle GoldenGate フォルダーに移動します。サイト A とサイト B で **SYSDBA** などのデータベース管理者特権を使用して、SQL*Plus コマンド プロンプトを起動します。
 
 次に、以下のスクリプトを実行します。
 	
@@ -277,7 +277,7 @@ EDIT PARAMS コマンドを使用してパラメーター ファイルを開き�
 	GGSCI (MachineGG1) 17> add rmttrail C:\OracleGG\dirdat\ab extract dpump1
 	RMTTRAIL added.
 
-EDIT PARAMS コマンドを使用してパラメーター ファイルを開き、以下の情報を追加します。GGSCI (MachineGG1) 18> edit params ext1 EXTRACT ext1 USERID ggate, PASSWORD ggate EXTTRAIL C:\\OracleGG\\dirdat\\aa TRANLOGOPTIONS EXCLUDEUSER ggate TABLE scott.inventory, GETBEFORECOLS ( ON UPDATE KEYINCLUDING (prod_category,qty_in_stock, last_dml), ON DELETE KEYINCLUDING (prod_category,qty_in_stock, last_dml));
+EDIT PARAMS コマンドを使用してパラメーター ファイルを開き、以下の情報を追加します。GGSCI (MachineGG1) 18> edit params ext1 EXTRACT ext1 USERID ggate, PASSWORD ggate EXTTRAIL C:\OracleGG\dirdat\aa TRANLOGOPTIONS EXCLUDEUSER ggate TABLE scott.inventory, GETBEFORECOLS ( ON UPDATE KEYINCLUDING (prod_category,qty_in_stock, last_dml), ON DELETE KEYINCLUDING (prod_category,qty_in_stock, last_dml));
 
 EDIT PARAMS コマンドを使用してパラメーター ファイルを開き、以下の情報を追加します。
 
@@ -583,4 +583,4 @@ Oracle GoldenGate 構成を確認するには、サイト A でデータベー�
 ##その他のリソース
 [Oracle Virtual Machine images for Azure (Azure の Oracle 仮想マシン イメージ)](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

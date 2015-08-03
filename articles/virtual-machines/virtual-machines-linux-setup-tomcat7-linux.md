@@ -303,4 +303,4 @@ Tomcat サービスを再起動するには:
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -208,11 +208,13 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 
 **前提条件**
 
-このトピックで説明した Azure PowerShell コマンドレットを使用するには、PowerShell を実行するコンピューターに次のソフトウェアをインストールする必要があります。1.http://www.microsoft.com/ja-jp/download/details.aspx?id=34595 で Windows PowerShell 3.0 以降をダウンロードします。
+このトピックで説明した Azure PowerShell コマンドレットを使用するには、PowerShell を実行するコンピューターに次のソフトウェアをインストールする必要があります。
+1. http://www.microsoft.com/ja-jp/download/details.aspx?id=34595 で Windows PowerShell 3.0 以降をダウンロードします。
 
 2. [Azure SDK とツールのダウンロード](http://azure.microsoft.com/downloads/) ページのコマンドライン ツールのセクションから Azure PowerShell をダウンロードします。
 
-次の手順を実行します。**[スタート]** 画面または **[スタート]** メニューから、Azure PowerShell に移動して開始します。
+次の手順を実行します。
+**[スタート]** 画面または **[スタート]** メニューから、Azure PowerShell に移動して開始します。
 
 サーバーのユーザー名とパスワードを入力します。
 
@@ -229,7 +231,8 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 		$serverContext = New-AzureSqlDatabaseServerContext -ServerName "myserver" -UseSubscription
 
 
-**Azure PowerShell の参照情報** このトピックで使用されている Azure PowerShell コマンドレットの詳細については、[Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/dn546726.aspx)に関するページを参照してください。
+**Azure PowerShell の参照情報**
+このトピックで使用されている Azure PowerShell コマンドレットの詳細については、[Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/dn546726.aspx)に関するページを参照してください。
 
 [New-AzureSqlDatabaseServerContext](http://go.microsoft.com/fwlink/?LinkId=391026)
 
@@ -238,4 +241,4 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 [Set-AzureSqlDatabase](http://go.microsoft.com/fwlink/?LinkId=391412)
  
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

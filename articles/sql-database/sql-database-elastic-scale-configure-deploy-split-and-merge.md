@@ -1,7 +1,8 @@
 <properties
 	pageTitle="Elastic Database Split-Merge ツールに関するチュートリアル | Microsoft Azure"
 	description="Elastic Database ツールによる分割とマージ"
-	services="sql-database" documentationCenter="" 
+	services="sql-database" 
+	documentationCenter="" 
 	manager="jeffreyg"
 	authors="sidneyh"/>
 
@@ -21,7 +22,7 @@
 2. コマンド プロンプトを開き、nuget.exe をダウンロードしたディレクトリに移動します。
 3. 次のコマンドを使用して、最新の Split-Merge パッケージを現在のディレクトリにダウンロードします。`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge`  
 
-前の手順を実行すると Split-Merge ファイルが現在のディレクトリにダウンロードされます。ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。**content\\splitmerge\\service** サブディレクトリに Split-Merge サービス ファイル、**content\\splitmerge\\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要な .dll) が格納されています。
+前の手順を実行すると Split-Merge ファイルが現在のディレクトリにダウンロードされます。ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。**content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、**content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要な .dll) が格納されています。
 
 ## 前提条件
 
@@ -328,4 +329,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

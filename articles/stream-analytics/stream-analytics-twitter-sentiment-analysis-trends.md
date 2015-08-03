@@ -35,7 +35,7 @@
 
 サンプル アプリケーションでは、イベントを生成し、それらを Event Hubs インスタンス (略して、イベント ハブ) にプッシュします。Service Bus イベント ハブは、Stream Analytics に推奨されるイベント取り込み方法です。イベント ハブのドキュメントについては、[Service Bus のドキュメント](/documentation/services/service-bus/)を参照してください。
 
-イベント ハブを作成するには、次の手順に従います。
+Event Hub を作成するには、次の手順に従います。
 
 1.	Azure ポータルで **[新規]**、**[APP SERVICES]**、**[SERVICE BUS]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックし、名前、リージョン、新規または既存の名前空間を指定して、新しいイベント ハブを作成します。  
 2.	ベスト プラクティスとして、各 Stream Analytics ジョブは、単一の Event Hubs コンシューマー グループから読み取ります。以下でコンシューマー グループを作成するプロセスを段階的に説明します。詳細について、ここで学習できます。コンシューマー グループを作成するには、新たに作成されたイベント ハブに移動し、**[コンシューマー グループ]** タブをクリックし、ページ下部の **[作成]** をクリックして、コンシューマー グループの名前を指定します。
@@ -223,7 +223,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -235,4 +235,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

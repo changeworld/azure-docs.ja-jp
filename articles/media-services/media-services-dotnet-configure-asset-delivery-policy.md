@@ -291,4 +291,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         EnvelopeEncryptionIV,
     } 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

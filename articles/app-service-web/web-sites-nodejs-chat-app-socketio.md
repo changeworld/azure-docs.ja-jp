@@ -33,7 +33,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 1.  Socket.IO プロジェクトの [ZIP または GZ アーカイブ リリース][release]をダウンロードします (このドキュメントではバージョン 1.3.5 を使用しました)。
 
 
-3.  アーカイブを展開し、**examples\\chat** ディレクトリを新しい場所にコピーします。たとえば、**\\node\\chat** です。
+3.  アーカイブを展開し、**examples\chat** ディレクトリを新しい場所にコピーします。たとえば、**\node\chat** です。
 
 ## App.js の変更とモジュールのインストール
 
@@ -57,7 +57,7 @@ Socket.IO は、WebSocket を使用して node.js サーバーとクライアン
 		  "socket.io": "1.3.5"
 		}
 
-4. コマンド ラインで **\\node\\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを npm を使用してインストールします。
+4. コマンド ラインで **\node\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを npm を使用してインストールします。
 
         npm install
 
@@ -76,7 +76,7 @@ Azure Web アプリを作成し、Git 発行を有効にして、Web アプリ�
 		azure site deployment user set [username] [password]
 
 
-3. **\\node\\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Web アプリとローカル Git リポジトリを作成します。このコマンドにより、「azure」という名前の Git リモートも作成されます。
+3. **\node\chat** ディレクトリに移動し、次のコマンドを使用して新しい Azure Web アプリとローカル Git リポジトリを作成します。このコマンドにより、「azure」という名前の Git リモートも作成されます。
 
 		azure site create mysitename --git
 
@@ -125,7 +125,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###Redis および socket.io-redis モジュールの追加
 
-1. コマンド ラインから、__\\node\\chat__ ディレクトリに移動し、次のコマンドを実行します。
+1. コマンド ラインから、__\node\chat__ ディレクトリに移動し、次のコマンドを実行します。
 
 		npm install socket.io-redis@0.1.4 redis@0.12.1 --save
 
@@ -151,7 +151,7 @@ __アダプター__を使用してメッセージとイベントを複数のア�
 
 ###変更のコミットと再デプロイ
 
-__\\node\\chat__ ディレクトリのコマンド ラインから、次のコマンドを使用して変更をコミットし、アプリケーションを再デプロイします。
+__\node\chat__ ディレクトリのコマンド ラインから、次のコマンドを使用して変更をコミットし、アプリケーションを再デプロイします。
 
 	git add .
 	git commit -m "implementing scale out"
@@ -283,4 +283,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [pricing]: /pricing/details/web-sites/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

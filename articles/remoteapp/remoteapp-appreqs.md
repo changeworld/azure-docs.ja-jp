@@ -56,4 +56,4 @@ RemoteApp は、Windows Server 2012 R2 インストールの 32 ビットまた�
 - パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで[検出する](https://msdn.microsoft.com/library/aa380798.aspx)ことをお勧めします。 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

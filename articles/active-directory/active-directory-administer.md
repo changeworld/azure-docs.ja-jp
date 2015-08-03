@@ -147,4 +147,4 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

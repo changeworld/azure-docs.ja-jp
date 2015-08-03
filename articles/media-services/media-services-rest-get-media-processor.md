@@ -45,17 +45,17 @@
     <tr>
        <td>メディア エンコーダー プレミアム ワークフロー</td>
        <td>メディア エンコーダー プレミアム ワークフローを使用してエンコード タスクを実行できます。</td>
-       <td><a href="http://azure.microsoft.com/documentation/articles/media-services-encode-with-premium-workflow/">メディア エンコーダー プレミアム ワークフローでの高度なエンコード</a></td>
+       <td><a href="http://azure.microsoft.com/documentation/articles/media-services-encode-with-premium-workflow/">メディア エンコーダー プレミアム ワークフローを使用したエンコード</a></td>
     </tr>    
 	<tr>
-        <td>Azure メディア インデクサー</td>
+        <td>Azure Media Indexer</td>
         <td>メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。</td>
 		<td><a href="http://azure.microsoft.com/documentation/articles/media-services-index-content/">Azure Media Indexer によるメディア ファイルのインデックス作成</a></td>
     </tr>
     <tr>
         <td>Windows Azure Media Packager</td>
         <td>メディア アセットを .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア アセットを変換できます。</td>
-		<td><a href="http://msdn.microsoft.com/library/hh973635.aspx">Azure Media Packager 用のタスク プリセット文字列</a></td>
+		<td><a href="http://msdn.microsoft.com/library/hh973635.aspx">Azure Media Packager 用のタスクのプリセット</a></td>
     </tr>
     <tr>
         <td>Windows Azure Media Encryptor</td>
@@ -127,4 +127,4 @@
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: ../media-services-rest-connect_programmatically/
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -42,8 +42,8 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |サイズ|CPU<br>コア|メモリ|ディスク サイズ|
 |---|---|---|---|
 |ExtraSmall|1|768 MB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 19 GB<br/>アプリ = 約 1.5 GB|
-|Small|1|1\.75 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 224 GB<br/>アプリ = 約 1.5 GB|
-|Medium|2|3\.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 489 GB<br/>アプリ = 約 1.5 GB|
+|Small|1|1.75 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 224 GB<br/>アプリ = 約 1.5 GB|
+|Medium|2|3.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 489 GB<br/>アプリ = 約 1.5 GB|
 |Large|4|7 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 999 GB<br/>アプリ = 約 1.5 GB|
 |ExtraLarge|8|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 2,039 GB<br/>アプリ = 約 1.5 GB|
 |A5|2|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 489 GB<br/>アプリ = 約 1.5 GB|
@@ -53,7 +53,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |A9|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1.77 TB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
 |A10|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1.77 TB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
 |A11|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1.77 TB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
-|Standard_D1|1|3\.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 50 GB<br/>アプリ = 約 1.5 GB|
+|Standard_D1|1|3.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 50 GB<br/>アプリ = 約 1.5 GB|
 |Standard_D2|2|7 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 100 GB<br/>アプリ = 約 1.5 GB|
 |Standard_D3|4|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 200 GB<br/>アプリ = 約 1.5 GB|
 |Standard_D4|8|28 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 400 GB<br/>アプリ = 約 1.5 GB|
@@ -66,4 +66,4 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 [Azure のクラウド サービスのセットアップ](https://msdn.microsoft.com/library/hh124108) [クラウド サービスのサイズの構成](https://msdn.microsoft.com/library/ee814754)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -712,4 +712,4 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

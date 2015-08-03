@@ -105,4 +105,4 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 - [Azure Automation で Runbook ジョブの状態を表示する方法](automation-viewing-the-status-of-a-runbook-job)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

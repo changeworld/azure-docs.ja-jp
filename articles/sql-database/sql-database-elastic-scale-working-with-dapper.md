@@ -174,4 +174,4 @@ Dapper と DapperExtensions を使用するアプリケーションは、Azure S
 [1]: ./media/sql-database-elastic-scale-working-with-dapper/dapperimage1.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

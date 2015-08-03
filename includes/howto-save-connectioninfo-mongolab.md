@@ -13,11 +13,11 @@ MongoLab URI をコードに貼り付けることはできますが、管理し�
 1. **[種類]** ボックスの一覧で、既定値の **[SQLAzure]** の代わりに **[カスタム]** を選択します。
 1. ツール バーの **[保存]** をクリックします。![SaveWebApp][button-website-save]
 
-**注:** Azure では、この変数に **CUSTOMCONNSTR\\_** というプレフィックスが追加されます。そのため上のコードでは **CUSTOMCONNSTR\\_MONGOLAB_URI** を参照しています。
+**注:** Azure では、この変数に **CUSTOMCONNSTR\_** というプレフィックスが追加されます。そのため上のコードでは **CUSTOMCONNSTR\_MONGOLAB_URI** を参照しています。
 
 [entry-website]: ./media/howto-save-connectioninfo-mongolab/entry-website.png
 [focus-mongolab-websitedashboard-config]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websitedashboard-config.png
 [focus-mongolab-websiteconnectionstring]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websiteconnectionstring.png
 [button-website-save]: ./media/howto-save-connectioninfo-mongolab/button-website-save.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

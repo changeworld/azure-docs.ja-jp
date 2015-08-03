@@ -54,4 +54,4 @@ CDN にキャッシュされたコンテンツにアクセスするには、ポ�
 [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

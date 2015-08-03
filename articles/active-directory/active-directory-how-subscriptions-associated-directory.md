@@ -88,7 +88,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 
 ![][3]
 
-Azure AD とコンシューマー Microsoft アカウント システムに同じ名前のユーザー アカウントがあります。使用する Azure サブスクリプションに関連付けるアカウントを選択する必要があります。このユーザーに対してサブスクリプションが存在しないというエラーが表示される場合は、正しくないオプションを選択した可能性があります。サインアウトして、もう一度やり直してください。サインインを妨げる可能性のあるエラーの詳細については、「[Troubleshooting "We were unable to find any subscriptions associated with your account" errors ("アカウントに関連付けられたサブスクリプションはありませんでした" というエラーのトラブルシューティング)](https://social.msdn.microsoft.com/Forums/en-US/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)」を参照してください。
+Azure AD とコンシューマー Microsoft アカウント システムに同じ名前のユーザー アカウントがあります。使用する Azure サブスクリプションに関連付けるアカウントを選択する必要があります。このユーザーに対してサブスクリプションが存在しないというエラーが表示される場合は、正しくないオプションを選択した可能性があります。サインアウトして、もう一度やり直してください。サインインを妨げる可能性のあるエラーの詳細については、「[Troubleshooting "We were unable to find any subscriptions associated with your account" errors ("アカウントに関連付けられたサブスクリプションはありませんでした" というエラーのトラブルシューティング)](https://social.msdn.microsoft.com/Forums/ja-jp/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)」を参照してください。
 
 ## Azure での Office 365 サブスクリプションのディレクトリの管理
 
@@ -126,4 +126,4 @@ Azure にサインアップする前に Office 365 にサインアップした�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

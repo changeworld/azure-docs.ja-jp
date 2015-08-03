@@ -238,7 +238,7 @@ Service Bus トピックでは、[最大 256 Kb のメッセージ](service-bus-
     options.AutoComplete = false;
     options.AutoRenewTimeout = TimeSpan.FromMinutes(1);
 
-    subscriptionClientHigh.OnMessage((message) =>
+    Client.OnMessage((message) =>
     {
         try
         {
@@ -301,4 +301,4 @@ Service Bus トピックでは、[最大 256 Kb のメッセージ](service-bus-
   [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

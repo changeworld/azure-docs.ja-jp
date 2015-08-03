@@ -30,7 +30,7 @@
 
 
 
-Azure AD Connect の使用を開始するには、[Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkID=615771) ページから最新バージョンをダウンロードします。
+Azure AD Connect の使用を開始するには、[Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkID=615771) のページから最新バージョンをダウンロードします。
 
 ## Azure AD Connect をインストールする前に
 簡単設定を使用して Azure AD Connect をインストールする前に、必要なものがいくつかあります。
@@ -48,13 +48,13 @@ Azure AD Connect の使用を開始するには、[Azure AD Connect のダウン
 
 | Active Directory 内のオブジェクトの数 | CPU | メモリ | ハード ドライブのサイズ |
 | ------------------------------------- | --- | ------ | --------------- |
-| 10,000 未満 | 1\.6 GHz | 4 GB | 70 GB |
-| 10,000 ～ 50,000 | 1\.6 GHz | 4 GB | 70 GB |
-| 50,000 ～ 100,000 | 1\.6 GHz | 16 GB | 100 GB |
+| 10,000 未満 | 1.6 GHz | 4 GB | 70 GB |
+| 10,000 ～ 50,000 | 1.6 GHz | 4 GB | 70 GB |
+| 50,000 ～ 100,000 | 1.6 GHz | 16 GB | 100 GB |
 | オブジェクトが 100,000 個以上の場合は完全バージョンの SQL Server が必要| | | |
-| 100,000 ～ 300,000 | 1\.6 GHz | 32 GB | 300 GB |
-| 300,000 ～ 600,000 | 1\.6 GHz | 32 GB | 450 GB |
-| 600,000 を超過 | 1\.6 GHz | 32 GB | 500 GB |
+| 100,000 ～ 300,000 | 1.6 GHz | 32 GB | 300 GB |
+| 300,000 ～ 600,000 | 1.6 GHz | 32 GB | 450 GB |
+| 600,000 を超過 | 1.6 GHz | 32 GB | 500 GB |
 
 
 
@@ -114,4 +114,4 @@ Azure AD Connect がインストールされたので、[こちら](active-direc
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

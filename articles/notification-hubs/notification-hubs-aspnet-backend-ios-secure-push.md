@@ -155,4 +155,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

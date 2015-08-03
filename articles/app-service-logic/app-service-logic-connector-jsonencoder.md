@@ -61,7 +61,7 @@ BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON En
 アクションは、入力コンテンツを JSON 表記で返します。
 
 ## コネクタでできること
-これでコネクタが作成されたため、このコネクタをロジック アプリを使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+これでコネクタが作成されたため、このコネクタを Logic App を使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
 
@@ -76,4 +76,4 @@ BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON En
 <!--Links -->
 [ロジック アプリの作成]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

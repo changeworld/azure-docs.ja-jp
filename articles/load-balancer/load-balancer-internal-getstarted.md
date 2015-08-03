@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/15/2015"
+   ms.date="07/10/2015"
    ms.author="joaoma" />
 
 # 内部ロード バランサーの構成の開始
@@ -102,7 +102,7 @@ ILB インスタンスの作成時に IP アドレスを指定した場合は、
 
 Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメモし、サーバーまたは DNS レコードに必要な変更を加えて、トラフィックが VIP に送信されることを確認します。
 
->[AZURE.IMPORTANT]Microsoft Azure Platform は、さまざまな管理シナリオに静的でパブリックにルーティング可能な IPv4 アドレスを使用します。IP アドレスは 168.63.129.16 です。この IP アドレスはファイアウォールによってブロックされないように設定しておく必要があります。ブロックされると、予期しない動作を引き起こす可能性があります。Azure ILB については、この IP アドレスはロード バランサーからの監視プローブによって使用され、負荷が分散されたセットでの VM の正常性状態が判別されます。ネットワーク セキュリティ グループが、内部で負荷が分散されたセットで Azure Virtual Machines へのトラフィックを制限するために使用されている場合、または Virtual Network のサブネットに適用されている場合、168.63.129.16 からのトラフィックを許可するネットワーク セキュリティ ルールが追加されていることを確認します。
+>[AZURE.NOTE]Microsoft Azure Platform は、さまざまな管理シナリオに静的でパブリックにルーティング可能な IPv4 アドレスを使用します。IP アドレスは 168.63.129.16 です。この IP アドレスはファイアウォールによってブロックされないように設定しておく必要があります。ブロックされると、予期しない動作を引き起こす可能性があります。Azure ILB については、この IP アドレスはロード バランサーからの監視プローブによって使用され、負荷が分散されたセットでの VM の正常性状態が判別されます。ネットワーク セキュリティ グループが、内部で負荷が分散されたセットで Azure Virtual Machines へのトラフィックを制限するために使用されている場合、または Virtual Network のサブネットに適用されている場合、168.63.129.16 からのトラフィックを許可するネットワーク セキュリティ ルールが追加されていることを確認します。
 
 
 
@@ -224,15 +224,59 @@ Contoso Corporation は、Azure の Web サーバー セットで基幹業務 (L
 
 ILB は仮想マシンとクラウド サービスの両方でサポートされています。地域仮想ネットワークの外部にあるクラウド サービスで作成された ILB エンドポイントは、そのクラウド サービス内でのみアクセスできます。
 
-次のコマンドレット例に示すように、ILB 構成は、クラウド サービスの最初のデプロイメントの作成時に設定する必要があります。
+次の例に示すように、ILB 構成は、クラウド サービスの最初のデプロイメントの作成時に設定する必要があります。
 
-### ローカルの ILB オブジェクトを作成する
-	$myilbconfig = New-AzureInternalLoadBalancerConfig -InternalLoadBalancerName "MyILB"
+>[AZURE.IMPORTANT]以下の手順の前提条件は、クラウド デプロイメントのために仮想ネットワークを作成しておくことです。ILB を作成するには仮想ネットワークの名前とサブネットの名前が必要です。
 
-### 新しいサービスに内部ロード バランサーを追加する
+### 手順 1.
 
-	New-AzureVMConfig -Name "Instance1" -InstanceSize Small -ImageName <imagename> | Add-AzureProvisioningConfig -Windows -AdminUsername <username> -Password <password> | New-AzureVM -ServiceName "Website2" -InternalLoadBalancerConfig $myilbconfig -Location "West US"
+Visual Studio でクラウド デプロイメントのサービス構成ファイル (.cscfg) を開き、次のセクションを追加し、ネットワーク構成の最後の "</Role>" 項目の下に ILB を作成します。
 
+
+
+
+	<NetworkConfiguration>
+	  <LoadBalancers>
+	    <LoadBalancer name="name of the load balancer">
+	      <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
+	    </LoadBalancer>
+	  </LoadBalancers>
+	</NetworkConfiguration>
+ 
+
+ネットワーク構成ファイルの値を追加し、どのように見えるか確認しましょう。この例では、「test_vnet」という名前のサブネットを「test_subnet」という名前のサブネット 10.0.0.0/24 と静的 IP 10.0.0.4 で作成したと仮定します。ロード バランサーの名前は「testLB」になります。
+
+	<NetworkConfiguration>
+	  <LoadBalancers>
+	    <LoadBalancer name="testLB">
+	      <FrontendIPConfiguration type="private" subnet="test_subnet" staticVirtualNetworkIPAddress="10.0.0.4"/>
+	    </LoadBalancer>
+	  </LoadBalancers>
+	</NetworkConfiguration>
+
+ロード バランサー スキーマの詳細については、「[ロード バランサーの追加](https://msdn.microsoft.com/library/azure/dn722411.aspx)」を参照してください。
+
+### 手順 2.
+
+
+サービス定義 (.csdef) ファイルを変更し、ILB にエンドポイントを追加します。ロール インスタンスが作成された直後に、サービス定義ファイルによりそのロール インスタンスが ILB に追加されます。
+
+
+	<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
+	  <Endpoints>
+	    <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" loadBalancer="load-balancer-name" />
+	  </Endpoints>
+	</WorkerRole>
+
+上記の例と同じ値を利用してサービス定義ファイルに値を追加してみましょう。
+
+	<WorkerRole name=WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
+	  <Endpoints>
+	    <InputEndpoint name="endpoint1" protocol="http" localPort="80" port="80" loadBalancer="testLB" />
+	  </Endpoints>
+	</WorkerRole>
+
+ネットワーク トラフィックの負荷は testLB ロード バランサーで分散されます。受信要求にはポート 80 が使用されます。worker ロール インスタンスへの送信もポート 80 で行われます。
 
 
 ## ILB 構成の削除
@@ -266,6 +310,7 @@ ILB インスタンスからエンドポイントとして仮想マシンを削�
 	Remove-AzureInternalLoadBalancer -ServiceName $svc
 
 
+
 ## ILB コマンドレットに関する追加情報
 
 
@@ -286,4 +331,4 @@ ILB コマンドレットに関する追加情報を取得するには、Azure W
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

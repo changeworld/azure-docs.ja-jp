@@ -26,7 +26,7 @@ Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内�
 
 ローカル デプロイメント環境は、「[set up your Service Fabric development environment (Service Fabric デプロイメント環境の設定)](service-fabric-get-started.md)」の手順に従って設定されている必要があります。
 
-ローカルのインストール パス (%Program Files%\\Microsoft SDKs\\Service Fabric\\Tools\\ServiceFabricExplorer\\ServiceFabricExplorer.exe) から Service Fabric Explorer を実行します。ツールはローカル デプロイメント クラスター (存在する場合) に自動的に接続します。クラスターに関する次のような情報が表示されます。
+ローカルのインストール パス (%Program Files%\Microsoft SDKs\Service Fabric\Tools\ServiceFabricExplorer\ServiceFabricExplorer.exe) から Service Fabric Explorer を実行します。ツールはローカル デプロイメント クラスター (存在する場合) に自動的に接続します。クラスターに関する次のような情報が表示されます。
 
 - クラスターで実行されているアプリケーション
 - クラスターのノードに関する情報
@@ -76,4 +76,4 @@ Service Fabric Explorer を使用して、クラスターで実行されてい�
 [servicefabricexplorer]: ./media/service-fabric-visualizing-your-cluster/servicefabricexplorer.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

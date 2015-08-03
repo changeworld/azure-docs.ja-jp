@@ -21,8 +21,8 @@
 </tr>
 <tr>
    <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/resource-group-overview/">リソース グループ数</a></p></td>
-   <td valign="middle"><p>500</p></td>
-   <td valign="middle"><p>500</p></td>
+   <td valign="middle"><p>800</p></td>
+   <td valign="middle"><p>800</p></td>
 </tr>
 <tr>
    <td valign="middle"><p>リソース マネージャー API 読み取り数</p></td>
@@ -52,4 +52,4 @@
 
 <sup>3</sup>これらの機能は、Azure リソース グループと Azure リソース マネージャーでは必要なくなりました。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

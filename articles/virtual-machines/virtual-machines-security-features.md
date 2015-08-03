@@ -43,4 +43,4 @@ Microsoft Azure のトラスト センターの[リソース](http://azure.micro
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

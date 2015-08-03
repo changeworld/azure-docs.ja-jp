@@ -1,6 +1,7 @@
 <properties
     pageTitle="Microsoft Azure Machine Learning とは | Microsoft Azure"
     description="ソリューションを作成、操作、収益化する際に使用するクラウド テクノロジーである完全に管理された Machine Learning のサービスの基本的な概念について説明します。"
+	keywords="what is machine learning,cloud technology,predictive,what is predictive analytics,operationalize"
 	services="machine-learning"
     documentationCenter=""
     authors="cjgronlund"
@@ -115,4 +116,4 @@ Azure Machine Learning では、モデルはトレーニング データを処�
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -205,4 +205,4 @@ API アプリを呼び出すには、次の例のように、クライアント 
 API アプリで認証を使用する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

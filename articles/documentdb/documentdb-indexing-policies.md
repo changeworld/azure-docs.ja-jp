@@ -1,6 +1,6 @@
 <properties 
     pageTitle="DocumentDB インデックス作成ポリシー | Azure" 
-    description="DocumentDB でのインデックス作成のしくみと、インデックス作成ポリシーを構成する方法について説明します。" 
+    description="DocumentDB でのインデックス作成のしくみと、インデックス作成ポリシーを構成および変更する方法について説明します。" 
     services="documentdb" 
     documentationCenter="" 
     authors="mimig1" 
@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="07/06/2015" 
+    ms.date="07/19/2015" 
     ms.author="mimig"/>
 
 
@@ -41,81 +41,55 @@ DocumentDB インデックス作成サブシステムは以下をサポートす
 - 最終的な更新のインデックスはどのように構成すればよいか。
 - Order By クエリまたは範囲クエリを実行できるようにインデックス作成を構成するにはどうすればよいか。
 
-
 ## DocumentDB インデックス作成のしくみ
 
 DocumentDB のインデックス作成は、JSON 文法によりドキュメントの**ツリー表現**が可能になるという事実を活用しています。JSON ドキュメントをツリーとして表現するには、ダミーのルート ノードを作成し、その下のドキュメントに含まれる実際のノードに対する親とする必要があります。JSON ドキュメント内の配列インデックスを含む各ラベルはツリーのノードになります。次の図には、JSON ドキュメントと対応するツリー表現の例を示しています。
 
 ![インデックス作成ポリシー](media/documentdb-indexing-policies/image001.png)
 
-たとえば、上の例の JSON プロパティである {"headquarters": "Belgium"} プロパティはパス /"headquarters"/"Belgium" に対応します。JSON 配列 {"exports": [{"city": “Moscow"}, {"city": Athens"}]} はパス /"exports"/0/"city"/"Moscow" と /"exports"/1/"city"/"Athens" に対応します。
+たとえば、上の例の JSON プロパティ `{"headquarters": "Belgium"}` は、パス `/headquarters/Belgium` に対応しています。JSON 配列 `{"exports": [{"city": “Moscow"}, {"city": Athens"}]}` は、パス `/exports/[]/city/Moscow` と `/exports/[]/city/Athens` に対応しています。
 
 >[AZURE.NOTE]パス表現は構造やスキーマとドキュメント内のインスタンス値の境界をぼやかし、DocumentDB を完全にスキーマフリーにします。
 
-DocumentDB において、ドキュメントは、SQL を使用して照会したり、単一のトランザクション スコープ内で処理したりできる、コレクションに編成されます。各コレクションは、パス単位の独自のインデックス作成ポリシーにより構成できます。次のセクションでは、DocumentDB コレクションのインデックス処理の動作を構成する方法を説明します。
+DocumentDB において、ドキュメントは、SQL を使用してクエリを行ったり、単一のトランザクション スコープ内で処理したりできる、コレクションに編成されます。各コレクションは、パス単位の独自のインデックス作成ポリシーにより構成できます。次のセクションでは、DocumentDB コレクションのインデックス処理の動作を構成する方法を説明します。
 
 ## コレクションのインデックス作成ポリシーの構成
 
-次の例では、コレクションを作成するときに、DocumentDB REST API を使用してカスタムのインデックス作成のポリシーを設定する方法を示します。この例では、パス、インデックスの種類、有効桁数で表現されるインデックス作成ポリシーを表します。
+すべての DocumentDB コレクションに対して、次のオプションを構成できます。
 
-    POST https://<REST URI>/colls HTTP/1.1
-    Accept: application/json 
+- インデックス作成モード: **Consistent**、**Lazy** (非同期更新の場合)、または **None** ("id" ベースのアクセスのみ)
+- 包含および除外パス: JSON のパスで含める、および除外するものを選択します
+- インデックスの種類: **Hash** (等値クエリの場合) の場合、**Range **(広いストレージを使用した等値、範囲、および order by クエリの場合)
+- インデックスの有効桁数: 1 ～ 8 またはストレージとパフォーマンスのトレードオフのためには最大値 (-1)
+- 自動: **true** または **false** で有効/無効を切り替えるか、または **manual **(挿入ごとにオプトイン)
 
-    {
-       "id":"customIndexCollection",
-       "indexingPolicy":{
-          "automatic":true,
-          "indexingMode":"Consistent",
-          "includedPaths":[
-             {
-                "path":"/*",
-                "indexes":[
+次の .NET コード スニペットは、コレクションの作成時に、カスタムのインデックス作成ポリシーを設定する方法を示します。ここでは、最大有効桁数で文字列や数値の範囲のインデックスを持つポリシーを設定します。このポリシーでは、文字列に対して Order By クエリを実行することができます。
+
+    var collection = new DocumentCollection { Id = "myCollection" };
     
-                ]
-             }
-          ],
-          "excludedPaths":[
-             {
-                "path":"/nonIndexedContent/*"
-             }
-          ]
-       }
-    }
-     ...
+    collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
+    
+    collection.IndexingPolicy.IncludedPaths.Add(
+        new IncludedPath { 
+            Path = "/*", 
+            Indexes = new Collection<Index> { 
+                new RangeIndex(DataType.String) { Precision = -1 }, 
+                new RangeIndex(DataType.Number) { Precision = -1 }
+            }
+        });
 
+    await client.CreateDocumentCollectionAsync(database.SelfLink, collection);   
 
-     HTTP/1.1 201 Created
 
 >[AZURE.NOTE]インデックス作成ポリシーの JSON スキーマは、REST API のバージョン 2015-06-03 のリリースにより変更され、文字列に対して範囲インデックスをサポートするようになりました。.NET SDK の 1.2.0、および Java、Python、Node.js SDK の 1.1.0 では新しいポリシー スキーマをサポートします。古い SDK では、REST API バージョン 2015-04-08 を使用してインデックス作成ポリシーの古いスキーマをサポートしています。
 >
->コレクションのインデックス作成ポリシーは、コレクションの作成時に指定する必要があります。コレクションの作成後にインデックス作成ポリシーを変更することは許可されていませんが、DocumentDB の今後のリリースではサポートされる予定です。
->
->既定では、DocumentDB は常にドキュメント内のすべてのパスについて、ハッシュ インデックスと合わせてインデックスを作成します。内部のタイムスタンプ (_ts) のパスは、範囲インデックスと共に格納されます。
-
-### 自動インデックス作成
-
-コレクションがすべてのドキュメントのインデックスを自動的に作成するか選択できます。既定では、すべてのドキュメントのインデックスが自動的に作成されますが、これを無効にすることができます。自動インデックス作成が無効になっている場合、自己リンクまたは ID を使用したクエリでのみドキュメントにアクセスできます。
-
-自動インデックス作成が無効になっている場合でも、特定のドキュメントだけを選択してインデックスに追加できます。反対に、自動インデックス作成を有効にしたまま、特定のドキュメントだけを選択して除外できます。インデックス作成の有効または無効の構成は、ドキュメントのサブセットだけにクエリを実行する必要がある場合に役立ちます。
-
-自動のプロパティの値を true または false に指定することで、既定のポリシーを構成できます。ドキュメントの挿入または置換の際に x-ms-indexingdirective 要求ヘッダーを設定して1 つのドキュメントをオーバーライドできます。
-
-次の例は、[DocumentDB .NET SDK](https://github.com/Azure/azure-documentdb-java) と [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) プロパティを使用して、明示的にドキュメントを含める方法を示しています。
-
-    // If you want to override the default collection behavior to either
-    // exclude (or include) a Document from indexing,
-    // use the RequestOptions.IndexingDirective property.
-    client.CreateDocumentAsync(defaultCollection.SelfLink,
-        new { id = "AndersenFamily", isRegistered = true },
-        new RequestOptions { IndexingDirective = IndexingDirective.Include });
-        
-
+>既定では、DocumentDB はハッシュ インデックスに応じたドキュメント内のすべての文字列プロパティと、範囲インデックスを含む数値プロパティのインデックスを作成します。
 
 ### インデックス作成モード
 
-同期 (**一貫した**) または非同期 (**遅延**) のインデックス更新を選択できます。既定では、コレクションに対するドキュメントの挿入、置換、削除のたびに、インデックスが同期的に更新されます。これにより、クエリには、インデックスが「追いつく」必要がある遅延が発生せず、ドキュメントの読み取りと同じ一貫性レベルが保証されます。
+同期 (**Consistent**)、非同期 (**Lazy**)、およびなし (**None**) のインデックス更新を選択できます。既定では、コレクションに対するドキュメントの挿入、置換、削除のたびに、インデックスが同期的に更新されます。これにより、クエリには、インデックスが「追いつく」必要がある遅延が発生せず、ドキュメントの読み取りと同じ一貫性レベルが保証されます。
 
-DocumentDB は、書き込みを最適化し、同期インデックス メンテナンスによってドキュメントの持続的書き込みをサポートしていますが、特定のコレクションのインデックスが遅れて更新されるように構成することもできます。インデックスの遅延作成はデータが一括で書き込まれ、コンテンツのインデックス作成に必要な処理が比較的長い時間にわたって定期的に分割される場合に適しています。これにより、プロビジョニングされるスループットを効果的に使用し、ピーク時の書き込み要求を最小の待機時間で処理できます。インデックスが遅延作成される場合でも、クエリの結果は、データベースのアカウント用に構成された整合性レベルに関係なく、最終的に一貫性を持ちます。
+DocumentDB は、書き込みを最適化し、同期インデックス メンテナンスによってドキュメントの持続的書き込みをサポートしていますが、特定のコレクションのインデックスが遅れて更新されるように構成することもできます。インデックスの遅延作成はデータが一括で書き込まれ、コンテンツのインデックス作成に必要な処理が比較的長い時間に渡って定期的に分割される場合に適しています。これにより、プロビジョニングされるスループットを効果的に使用し、ピーク時の書き込み要求を最小の待機時間で処理できます。インデックスが遅延作成される場合でも、クエリの結果は、データベースのアカウント用に構成された整合性レベルに関係なく、最終的に一貫性を持ちます。
 
 次に示すサンプルは、すべてのドキュメントの挿入に一貫性のある自動インデックス作成と .NET SDK を使用して DocumentDB コレクションを作成する方法を示します。
 
@@ -135,43 +109,13 @@ DocumentDB は、書き込みを最適化し、同期インデックス メン�
      
      collection = await client.CreateDocumentCollectionAsync(database.SelfLink, collection);
 
-### インデックスの種類と有効桁数
-
-インデックス エントリに使用される種類またはスキームは、インデックスのストレージとパフォーマンスに直接の影響を及ぼします。通常、使用する有効桁数が高いスキームほど、クエリの速度は高くなります。ただし、インデックスのストレージのオーバーヘッドも高くなります。低い有効桁数を選択することは、クエリの実行時により多くのドキュメントを処理する必要があることを意味しますが、ストレージのオーバーヘッドは低くなります。
-
-任意のパスの値に対するインデックスの有効桁数は 1 ～ 8 の間にすることができます。また、-1 に設定する場合、最大の必要有効桁数をパスが使用しなければならないことを示します。各パスは、インデックスの配列を使用して構成できます。データ型 (文字列型と数値型) ごとに 1 つずつ構成し、それぞれに有効桁数を指定します。
-
-サポートされるインデックスの種類にはハッシュと範囲の 2 つがあります。インデックスの種類として**ハッシュ**を選択すると、効率的な等値クエリが可能になります。ほとんどのケースでは、ハッシュ インデックスには既定値 3 バイトより高い有効桁数は不要です。
-
-インデックスの種類として**範囲**を選択すると、**Order By** クエリだけでなく範囲クエリ (>、<、>=、<=、!= を使用) が可能になります。また、Order By クエリでは既定で、結果の総順序を保証するために、範囲インデックスがインデックスの最大有効桁数 (-1) で作成される必要があります。
-
-値の範囲が大きいパスの場合、6 バイトなど高い有効桁数の使用が推奨されます。より高い有効桁数の範囲インデックスが必要なケースで一般的なものは、エポック時間として格納されるタイムスタンプです。
-
-Order BY や効率的な範囲クエリを必要としない場合、ハッシュ インデックスの既定値でストレージとパフォーマンスの最適なバランスが提供されます。Order By または範囲クエリをサポートするには、カスタムまたは既定以外のインデックス ポリシーを指定する必要があります。
-
-次の例では、.NET SDK を使用して、コレクション内の範囲インデックスの有効桁数を増やす方法を示します。特定のパス "/" を使用することに注意してください。これについては、次のセクションで説明します。
-
-    var rangeDefault = new DocumentCollection { Id = "rangeCollection" };
-    
-    rangeDefault.IndexingPolicy.IncludedPaths.Add(
-        new IncludedPath { 
-            Path = "/*", 
-            Indexes = new Collection<Index> { 
-                new RangeIndex(DataType.String) { Precision = -1 }, 
-                new RangeIndex(DataType.Number) { Precision = -1 }
-            }
-        });
-
-    await client.CreateDocumentCollectionAsync(database.SelfLink, rangeDefault);   
-
-
 ### インデックスのパス
 
 ドキュメントでインデックス作成に含めたり除外したりするパスを選択できます。これにより、クエリのパターンが事前にわかっている場合に、書き込みパフォーマンスの向上とインデックス ストレージの削減が可能になります。
 
 インデックスのパスはルート (/) で始まり、通常、? ワイルドカード演算子で終わります。これは、プレフィックスに複数の可能な値があることを示します。たとえば、SELECT * FROM Families F WHERE F.familyName = "Andersen" を処理するには、コレクションのインデックス ポリシーに /familyName/? のインデックスのパスを含める必要があります。
 
-インデックスのパスは * ワイルドカード演算子を使用して、プレフィックスの下のパスの動作を再帰的に指定することもできます。たとえば、/payload/* を使用して、payload プロパティの下のすべてをインデックス作成から除外できます。
+インデックスのパスは * ワイルドカード演算子を使用して、プレフィックスに続くパスの動作を再帰的に指定することもできます。たとえば、/payload/* を使用して、payload プロパティの下のすべてをインデックス作成から除外できます。
 
 インデックスのパスを指定するための一般的なパターンは次のとおりです。
 
@@ -217,12 +161,15 @@ Order BY や効率的な範囲クエリを必要としない場合、ハッシ�
                 <p>
                     SELECT * FROM collection c WHERE c.prop > 5
                 </p>
+                <p>
+                    SELECT * FROM collection c ORDER BY c.prop
+                </p>                
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    /prop/*
+                    /"prop"/*
                 </p>
             </td>
             <td valign="top">
@@ -238,7 +185,9 @@ Order BY や効率的な範囲クエリを必要としない場合、ハッシ�
                 <p>
                     SELECT * FROM collection c WHERE c.prop.subprop.nextprop = "value"
                 </p>
-
+                <p>
+                    SELECT * FROM collection c ORDER BY c.prop
+                </p>
             </td>
         </tr>
         <tr>
@@ -293,14 +242,17 @@ Order BY や効率的な範囲クエリを必要としない場合、ハッシ�
                 <p>
                     SELECT * FROM collection c WHERE c.prop.subprop > 5
                 </p>
+                <p>
+                    SELECT * FROM collection c ORDER BY c.prop.subprop
+                </p>                
             </td>
         </tr>
     </tbody>
 </table>
 
->[AZURE.NOTE]カスタム インデックスのパスを設定するときに、特定のパス "/*" で表されるドキュメント ツリー全体の既定のインデックス作成ルールを指定する必要があります。
+>[AZURE.NOTE]カスタム インデックスのパスを設定するときに、特定のパス "/" で表されるドキュメント ツリー全体の既定のインデックス作成ルールを指定する必要があります。
 
-次の例では、範囲インデックスと 20 バイトのカスタムの有効桁数を使用して、特定のパスを構成します。
+次の例では、範囲インデックス作成と 20 バイトのカスタムの有効桁数を使用して、特定のパスを構成します。
 
     var collection = new DocumentCollection { Id = "rangeSinglePathCollection" };    
     
@@ -311,15 +263,60 @@ Order BY や効率的な範囲クエリを必要としない場合、ハッシ�
                 new RangeIndex(DataType.String) { Precision = 20 } } 
             });
 
+    // Default for everything else
     collection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
-            Path = "/*" 
+            Path = "/*" ,
+            Indexes = new Collection<Index> {
+                new HashIndex(DataType.String) { Precision = 3 }, 
+                new RangeIndex(DataType.Number) { Precision = -1 } 
+            }
         });
         
     collection = await client.CreateDocumentCollectionAsync(database.SelfLink, pathRange);
 
+### インデックスのデータ型、種類、および有効桁数
 
-クエリが Order By を使用しているのに、最大有効桁数でのクエリ パスに対して範囲インデックスが存在しない場合、DocumentDB はエラーを返します。範囲インデックス (有効桁数は任意) が存在しない場合、>= のような範囲演算子を使用したクエリに対してはエラーが返されます。ただし、インデックスで処理できるその他のフィルターが含まれている場合、クエリの処理は可能です。x-ms-documentdb-enable-scans ヘッダーを REST API で使用するか、または .NET SDK を使用した EnableScanInQuery 要求オプションで使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。
+パスの指定方法について説明したので、ここからはパスのインデックス作成ポリシーの構成で使用できるオプションを見てみましょう。すべてのパスに対して 1 つ以上のインデックス作成定義を指定することができます。
+
+- データ型: **String** または **Number** (パスのデータ型ごとにエントリを 1 つだけ含めることができます)
+- インデックスの種類: **Hash** (等値クエリ) または **Range** (等値、範囲、または Order By クエリ)
+- 有効桁数: 数値の場合は 1 ～ 8 または -1 (最大有効桁数)、文字列の場合は 1 ～ 100 (最大有効桁数)
+
+#### インデックスの種類
+
+DocumentDB はすべてのパスとデータ型のペアに対して 2 種類のインデックスをサポートします。
+
+- **Hash** は効率的な等値クエリをサポートします。ほとんどのケースでは、ハッシュ インデックスには既定値 3 バイトより高い有効桁数は不要です。
+- **Range** は効率的な等値クエリ、範囲クエリ (>, <, >=, <=, != を使用)、および Order By クエリをサポートします。既定では Order By クエリには、インデックスの最大有効桁数 (-1) も必要です。
+
+#### インデックスの有効桁数
+
+インデックスの有効桁数により、インデックスのストレージ オーバーヘッドとクエリのパフォーマンスをトレードオフすることができます。数値の場合、既定の有効桁数の構成 -1 を使用することをお勧めします。JSON では数値は 8 バイトであるため、これは、8 バイトの構成と同じです。1 ～ 7 などの小さい値の有効桁数を選択すると、特定の範囲内の値が同じインデックス エントリにマップされることになります。したがって、インデックスのストレージ領域が削減されますが、クエリの実行でより多くのドキュメントを処理しなければならなくなるため、使用されるスループット、つまり要求単位も増えます。
+
+インデックスの有効桁数の構成は、文字列の範囲を使用するとより実際に役立ちます。文字列は任意の長さにできるため、インデックスの有効桁数を選択することで、文字列の範囲クエリのパフォーマンスと、必要なインデックスのストレージ領域の量に影響を与えることができます。文字列の範囲のインデックスは 1 ～ 100 または最大有効桁数の値 (-1) で構成することができます。文字列に Order By が必要な場合は、指定されたパス (-1) の上に指定する必要があります。
+
+次の例では、.NET SDK を使用して、コレクション内の範囲インデックスの有効桁数を増やす方法を示します。この場合、既定のパス"/*" が使用されます。
+
+    var rangeDefault = new DocumentCollection { Id = "rangeCollection" };
+    
+    rangeDefault.IndexingPolicy.IncludedPaths.Add(
+        new IncludedPath { 
+            Path = "/*", 
+            Indexes = new Collection<Index> { 
+                new RangeIndex(DataType.String) { Precision = -1 }, 
+                new RangeIndex(DataType.Number) { Precision = -1 }
+            }
+        });
+
+    await client.CreateDocumentCollectionAsync(database.SelfLink, rangeDefault);   
+
+
+> [AZURE.NOTE]クエリが Order By を使用しているのに、最大有効桁数でのクエリ パスに対して範囲インデックスが存在しない場合、DocumentDB はエラーを返します。
+>
+> 範囲インデックス (有効桁数は任意) が存在しない場合、>= のような範囲演算子を使用したクエリに対してはエラーが返されます。ただし、インデックスで処理できるその他のフィルターが含まれている場合、クエリの処理は可能です。
+> 
+> x-ms-documentdb-enable-scans ヘッダーを REST API で使用するか、または .NET SDK を使用した EnableScanInQuery 要求オプションで使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。
 
 同様に、インデックス作成からパスを完全に除外することができます。次の例では、ワイルドカード "*" を使用して、ドキュメントのセクション全体 (別名サブツリー) をインデックス作成から除外する方法を示します。
 
@@ -330,9 +327,24 @@ Order BY や効率的な範囲クエリを必要としない場合、ハッシ�
     collection = await client.CreateDocumentCollectionAsync(database.SelfLink, excluded);
 
 
+### 自動インデックス作成
+
+コレクションがすべてのドキュメントのインデックスを自動的に作成するかどうかを選択できます。既定では、すべてのドキュメントのインデックスが自動的に作成されますが、これを無効にすることができます。自動インデックス作成が無効になっている場合、自己リンクまたは ID を使用したクエリでのみドキュメントにアクセスできます。
+
+自動インデックス作成が無効になっている場合でも、特定のドキュメントだけを選択してインデックスに追加できます。反対に、自動インデックス作成を有効にしたまま、特定のドキュメントだけを選択して除外できます。インデックス作成の有効または無効の構成は、ドキュメントのサブセットだけにクエリを実行する必要がある場合に役立ちます。
+
+次の例は、[DocumentDB .NET SDK](https://github.com/Azure/azure-documentdb-java) と [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) プロパティを使用して、明示的にドキュメントを含める方法を示しています。
+
+    // If you want to override the default collection behavior to either
+    // exclude (or include) a Document from indexing,
+    // use the RequestOptions.IndexingDirective property.
+    client.CreateDocumentAsync(defaultCollection.SelfLink,
+        new { id = "AndersenFamily", isRegistered = true },
+        new RequestOptions { IndexingDirective = IndexingDirective.Include });
+
 ## パフォーマンスのチューニング
 
-別のインデックス作成ポリシーの構成を評価する場合は、DocumentDB API からポリシーの記憶域とスループットの影響を測定する必要があります。
+DocumentDB API は使用されているインデックス ストレージ、すべての操作のスループット コスト (要求単位) などのパフォーマンス メトリックに関する情報を提供します。この情報は、さまざまなインデックス作成ポリシーの比較やパフォーマンス チューニングに使用することができます。
 
 コレクションの記憶域のクォータと使用状況を確認するには、HEAD 要求または GET 要求をコレクションのリソースに対して実行し、x-ms-request-quota と x-ms-request-usage のヘッダーを調べます。.NET SDK では、[ResourceResponse<T>](http://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) プロパティと [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
 
@@ -342,7 +354,7 @@ Order BY や効率的な範囲クエリを必要としない場合、ハッシ�
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (または、.NET SDK の [ResourceResponse<T>](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
+書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (または、.NET SDK の [ResourceResponse](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge プロパティ](http://msdn.microsoft.com/library/dn799099.aspx)) を調査して、これらの操作で使用される要求単位の数を測定します。
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);              
@@ -367,13 +379,13 @@ JSON 仕様に次の変更が実装されました。
 
 - インデックス作成ポリシーでは文字列に対して範囲インデックスをサポートします。
 - 各パスのインデックス定義は複数であってもかまいません (各データ型に 1 つ)。
-- インデックス作成時の有効桁数は、数字に対する 1 ～ 8、文字列に対する 1 ～ 100、および -1 (最大有効桁数) に対応します。
-- パス セグメントに、各パスをエスケープするための二重引用符は必要ありません。たとえば、パス /title/? を追加する場合、/"title"/? とする必要はありません。
+- インデックス作成時の有効桁数は、数字で 1 ～ 8、文字列で 1 ～ 100、および -1 (最大有効桁数) をサポートします。
+- パス セグメントに、各パスをエスケープするための二重引用符は必要ありません。たとえば、/"title"/? の代わりに /title/? のパスを追加することができます。
 - 「すべてのパス」を表すルート パスは、/* (/ に加えて) で表現できます。
 
 バージョン 1.1.0 以前の.NET SDK で作成されたカスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングするコードがある場合、SDK バージョン 1.2.0 に移行するには、アプリケーション コードを変更して変更内容に対応する必要があります。インデックス作成ポリシーを構成するコードがない場合、または以前の SDK バージョンを引き続き使用する場合、変更の必要はありません。
 
-ここで、API バージョン 2015-06-03 と前のバージョン 2015-04-08 との違いを表す例を紹介します。
+実際に比較を行うため、REST API のバージョン 2015-06-03 と以前のバージョン 2015-04-08 を使用して記述されたカスタム インデックス作成ポリシーの例を示します。
 
 **以前のインデックス作成ポリシー JSON**
 
@@ -432,4 +444,4 @@ JSON 仕様に次の変更が実装されました。
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

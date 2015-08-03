@@ -98,7 +98,7 @@ Brock を実働リソース グループの共同作業者ロールに追加す�
 
 Windows PowerShell 用の Microsoft Azure モジュールを使ってロールの割り当てを管理することもできます。ポータルではなく New-AzureRoleAssignment コマンドレットを使って Brock のアカウントを追加する例を以下に示します。
 
-	PS C:> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
+	PS C:\> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
 
 Windows PowerShell を使ったアクセス権の追加や削除の詳細については、「[Windows PowerShell を使用したロールベースのアクセス制御の管理](role-based-access-control-powershell.md)」を参照してください。
 
@@ -110,7 +110,7 @@ Windows PowerShell を使ったアクセス権の追加や削除の詳細につ�
 
 Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削除する方法の例を以下に示します。
 
-	PS C:> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
+	PS C:\> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
 
 ### 外部ユーザーに関するアクセス権の追加または削除
 
@@ -441,7 +441,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 
 ロール名 | 説明
 ------------- | -------------  
-[API 管理サービスの共同作業者](#api-management-service-contributor) | アクセス権以外の API Management サービスを管理します。
+[API Management サービスの共同作業者](#api-management-service-contributor) | アクセス権以外の API Management サービスを管理します。
 [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) | アクセス権以外の Application Insights コンポーネントを管理します。
 [BizTalk の共同作業者](#biztalk-contributor) | アクセス権以外の BizTalk Services を管理します。
 [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) | アクセス権以外の ClearDB MySQL データベースを管理します。
@@ -466,7 +466,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 [Web サイトの共同作業者](#website-contributor) | アクセス権以外、Web プラン以外の Web サイトを管理します。
 
 
-### API 管理サービスの共同作業者
+### API Management サービスの共同作業者
 
 <table style=width:100%">
 <tr>
@@ -474,7 +474,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 </tr>
 <tr>
 <td>Microsoft.ApiManagement/Services/*</td>
-<td>API 管理サービスの作成と管理</td>
+<td>API Management サービスの作成と管理</td>
 </tr>
 <tr>
 <td>Microsoft.Authorization/*/read</td>
@@ -1293,4 +1293,4 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -324,4 +324,4 @@ Media Services では、アセットまたはそのファイルに関するア�
 	}
 	
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

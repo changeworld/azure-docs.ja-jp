@@ -63,9 +63,9 @@ Build 2015 のカンファレンスで発表された AAD の概要を参照す�
 
 次の記事では、Azure Active Directory (AD) を使用して特定のタスクを実行する方法について説明しています。
 
-- [Azure Active Directory テナントを取得する方法](active-directory-howto-tenant.md)
-- [Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md)
-- [アプリでの Office 365 API の使用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
+- [How to get an Azure Active Directory tenant](active-directory-howto-tenant.md)
+- [Listing your application in the Azure Active Directory application gallery](active-directory-app-gallery-listing.md)
+- [Get started with Office 365 APIs in apps](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [販売者ダッシュボードに Office 365 用 Web アプリを送信する方法](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 
 
@@ -132,4 +132,4 @@ Azure Active Directory を使用したアプリ開発に関する次の概要の
 
 - **[Twitter での Azure AD](https://twitter.com/azuread)**: Azure AD に関する発表事項を 140 文字以内で受け取ることができます。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -57,4 +57,4 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 [Traffic Manager での負荷分散方法について](../about-traffic-manager-balancing-methods.md) [Traffic Manager を構成する方法](https://msdn.microsoft.com/library/azure/hh744830.aspx) [Traffic Manager](../traffic-manager.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -232,4 +232,4 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 - [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx) 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

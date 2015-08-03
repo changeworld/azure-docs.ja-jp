@@ -133,4 +133,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -301,4 +301,4 @@ Silverlight でサポートされる保護レベルの例については、「[S
 	  <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
 	</xs:schema>
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

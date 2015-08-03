@@ -35,4 +35,4 @@
 
 [api-management-howto-edit-contents-of-page-manage-content]: ./media/api-management-howto-edit-contents-of-page/api-management-customization-manage-content.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

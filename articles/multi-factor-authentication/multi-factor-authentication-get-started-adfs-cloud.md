@@ -27,7 +27,7 @@
 1. ユーザーがアカウントを有効にするには、「[多要素認証をオンにする](multi-factor-authentication-get-started-cloud/#turn-on-multi-factor-authentication-for-users)」で説明されている手順を使用します。
 2. 要求規則をセットアップするには、次の手順を使用します。
 
-<center>![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)</center>
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 
 - 	AD FS 管理コンソールを起動します。
 - 	[証明書利用者信頼] に移動し、[証明書利用者信頼] を右クリックします。[要求ルールの編集...] を選択します。
@@ -48,7 +48,62 @@
 
 ユーザーはオンプレミスの方式 (スマート カードなど) を使用してサインインを完了することができます。
 
+## フェデレーション ユーザー用の信頼できる IP
+管理者は、信頼できる IP を使用して、特定の IP アドレスまたはイントラネット内から要求が送信されているフェデレーション ユーザーの多要素認証をバイパスできます。次のセクションで、要求がフェデレーション ユーザーのイントラネット内から送信されている場合に、信頼できる IP とフェデレーション ユーザーを Azure Multi-Factor Authentication にどのように構成し、多要素認証をどのようにバイパスするかについて説明します。これは、要求の種類 [企業ネットワーク内] で [入力方向の要求をパススルーするかフィルター処理する] テンプレートを使用するように AD FS を構成することによって実現されます。ここで示す例では、証明書利用者信頼で Office 365 を使用します。
 
- 
+### AD FS 要求規則を構成する
 
-<!---HONumber=July15_HO2-->
+最初に実行する必要があるのは、AD FS の要求を構成することです。ここでは、2 つの要求規則を作成します。1 つは [企業ネットワーク内] という要求の種類用であり、1 つはユーザーのサインイン状態を維持するためのものです。<ol>
+
+<li>AD FS 管理を開きます。</li>
+<li>左側で、[証明書利用者信頼] を選択します。</li>
+<li>中央で、[Microsoft Office 365 ID プラットフォーム] を右クリックし、**[要求規則の編集…]** を選択します。</li>
+
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
+
+<li>[発行変換規則] で、**[規則の追加]** をクリックします。</li>
+
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
+
+<li>変換要求規則追加ウィザードで、ドロップダウンから [入力方向の要求をパススルーするかフィルター処理する] を選択し、[次へ] をクリックします。</li>
+
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
+
+<li>[要求規則名] の横にあるボックスに、規則の名前を入力します。例: InsideCorpNet。</li>
+<li>[入力方向の要求の種類] の一覧から、[企業ネットワーク内] を選択します。</li>
+
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
+
+<li>[完了] をクリックします。</li>
+<li>[発行変換規則] で、**[規則の追加]** をクリックします。</li>
+<li>変換要求規則の追加ウィザードで、ドロップダウンから [カスタムの規則を使用して要求を送信する] を選択し、[次へ] をクリックします。</li>
+<li>[要求規則名] の下のボックスに 「Keep Users Signed In」 (ユーザーをサインインしたままにする) と入力します。</li>
+<li>[カスタムの規則] ボックスに、「c:[Type == "http://schemas.microsoft.com/2014/03/psso"] => issue(claim = c);」と入力します。
+</li>
+
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
+
+<li>**[完了]** をクリックします。</li>
+<li>**[適用]** をクリックします。</li>
+<li>**[OK]** をクリックします。</li>
+
+<li>AD FS 管理を閉じます。</li>
+
+### Azure Multi-Factor Authentication の信頼できる IP とフェデレーション ユーザーを構成する
+これで要求が準備できたため、信頼できる IP を構成できます。<ol>
+
+<li>Azure 管理ポータルにサインインします。</li>
+<li>左側の [Active Directory] をクリックします。</li>
+<li>[ディレクトリ] で、信頼できる IP を設定するディレクトリをクリックします。</li>
+<li>選択したディレクトリで、[構成] をクリックします。</li>
+<li>[多要素認証] セクションで、[サービス設定の管理を] クリックします。</li>
+<li>[サービス設定] ページの [信頼できる IP] で、**[イントラネットから送信されるフェデレーション ユーザーからの要求]** を選択します。</li>
+
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+
+<li>[保存] をクリックします。</li>
+<li>更新が適用されたら、[閉じる] をクリックします。</li>
+
+これで終了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
+
+<!---HONumber=July15_HO4-->

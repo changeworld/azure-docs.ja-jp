@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する" 
-	description="Linux ベースの Azure 仮想マシンを作成と事前構成するための Azure PowerShell の使用方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+<properties
+	pageTitle="Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する"
+	description="Linux ベースの Azure 仮想マシンを作成と事前構成するための Azure PowerShell の使用方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="KBDAzure"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/09/2015" 
-	ms.author="josephd"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/09/2015"
+	ms.author="kathydav"/>
 
 # Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する
 
@@ -57,7 +57,7 @@ Linux ベースのコンピューターで使用する ImageFamily 値の例は�
 - SUSE Linux Enterprise Server 12
 
 任意のテキスト エディターの最新インスタンスまたは PowerShell Integrated Scripting Environment (ISE) のインスタンスを開きます。新しいテキスト ファイルまたは PowerShell ISE に次のコードをコピーし、ImageFamily 値を置き換えます。
- 
+
 	$family="<ImageFamily value>"
 	$image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
@@ -84,7 +84,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 最初の Linux ユーザー名とパスワードを指定します (必須)。強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
 
-	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."	
+	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."
 	$vm1 | Add-AzureProvisioningConfig -Linux -LinuxUser $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 
 場合によっては、サブスクリプションにデプロイ済みの SSH キー ペアのセットを指定します。
@@ -158,7 +158,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Microsoft Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。 
+- Microsoft Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
@@ -169,7 +169,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 次の条件で MySQL サーバー用の最初の Linux 仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
 - Ubuntu Server 12.10 イメージを使用する
-- 名前は AZMYSQL1 
+- 名前は AZMYSQL1
 - 500 GB の追加データ ディスク容量
 - 静的 IP アドレスは 192.168.244.4
 - AZDatacenter 仮想ネットワークの BackEnd サブネットに属している
@@ -184,7 +184,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 	$vmsize="Large"
 	$vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."	
+	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."
 	$vm1 | Add-AzureProvisioningConfig -Linux -LinuxUser $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 
 	$vm1 | Set-AzureSubnet -SubnetNames "BackEnd"
@@ -207,7 +207,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 - SUSE Linux Enterprise Server 12 イメージを使用する
 - 名前は LOB1
-- 50 GB の追加データ ディスク容量 
+- 50 GB の追加データ ディスク容量
 - 標準 Web トラフィックの LOBServers ロード バランサー セットのメンバーである
 - AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している
 - Azure-TailspinToys クラウド サービスに属している
@@ -221,7 +221,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 	$vmsize="Medium"
 	$vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."	
+	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."
 	$vm1 | Add-AzureProvisioningConfig -Linux -LinuxUser $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 
 	$vm1 | Set-AzureSubnet -SubnetNames "FrontEnd"
@@ -260,6 +260,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
- 
-
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

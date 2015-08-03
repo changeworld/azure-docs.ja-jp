@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="05/19/2015" 
+	ms.date="07/20/2015" 
 	ms.author="mebha"/>
 
 
@@ -76,7 +76,7 @@
 
 ## 行を挿入し、パラメーターを渡し、生成されたプライマリ キーを取得する
 
-SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENECE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトは、[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値の自動生成に使用できます。
+SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトを使用して、[プライマリ キーの値](https://msdn.microsoft.com/library/ms179610.aspx)を自動生成できます。
 
 
 	import pymssql
@@ -95,11 +95,11 @@ SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) �
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -112,4 +112,4 @@ SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) �
 
  
 
-<!----HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

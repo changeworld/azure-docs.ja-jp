@@ -59,7 +59,7 @@ Microsoft Azure Search は、検索機能をカスタム アプリケーショ�
 
 1. ジャンプバーで [**ホーム**] をクリック、検索サービスをクリックして、サービスのダッシュボードを開きます。
 
-2. サービスのダッシュ ボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
+2. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
   	![][3]
 
@@ -120,4 +120,4 @@ Search 構成の最後の手順では、サービスがクライアント アプ
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -41,4 +41,4 @@ Azure AD のデバイス登録は、ユーザーのサインイン時にデバ�
 * [Azure ID](fundamentals-identity.md)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

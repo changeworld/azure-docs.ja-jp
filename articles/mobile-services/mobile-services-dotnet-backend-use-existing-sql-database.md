@@ -615,4 +615,4 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。詳細については、[既存のアプケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#update-the-app-to-use-the-mobile-service)を参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

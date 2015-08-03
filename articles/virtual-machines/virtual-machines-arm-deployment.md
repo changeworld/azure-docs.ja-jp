@@ -1,19 +1,12 @@
-<properties 
-	pageTitle="Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ" 
-	description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について説明します" 
-	services="virtual-machines,virtual-network,storage" 
-	documentationCenter="" 
-	authors="davidmu1" 
-	manager="timlt" 
-	editor="tysonn"/>
+<properties pageTitle="Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ" description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure でリソースを作成および削除する方法について説明します。" services="virtual-machines,virtual-network,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="vm-windows" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
+<tags
+	ms.service="virtual-machines" 
+	ms.workload="multiple"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/27/2015"
 	ms.author="davidmu"/>
 
 # Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ
@@ -55,7 +48,7 @@ Azure AD を使用して Azure リソース マネージャーへの要求を認
 
 5. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
-        New-AzureADServicePrincipal -ApplicationId {application-id} 
+        New-AzureADServicePrincipal -ApplicationId {application-id}
 
 6. アプリケーションを使用するためのアクセス許可を設定します。
 
@@ -108,7 +101,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
           ClientCredential cc = new ClientCredential("{application-id}", "{password}");
             var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
             var result = context.AcquireToken("https://management.azure.com/", cc);
-          
+
           if (result == null)
           {
             throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -141,7 +134,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 		public async static void CreateResourceGroup(TokenCloudCredentials credential)
 		{
 		  Console.WriteLine("Creating the resource group...");
-		  
+
           using (var resourceManagementClient = new ResourceManagementClient(credential))
 		  {
 		    var rgResult = await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync("mytestrg1", new ResourceGroup { Location = "West US" });
@@ -169,7 +162,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 		public async static void CreateStorageAccount(TokenCloudCredentials credential)
         {
           Console.WriteLine("Creating the storage account...");
-          
+
           using (var storageManagementClient = new StorageManagementClient(credential))
           {
             var saResult = await storageManagementClient.StorageAccounts.CreateAsync(
@@ -182,7 +175,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
         }
 
 3.	追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
-		
+
 		CreateStorageAccount(credential);
 		Console.ReadLine();
 
@@ -285,7 +278,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
                 Location = "West US"
               } );
             Console.WriteLine(avSetResponse.StatusCode);
-                
+
             var networkClient = new NetworkResourceProviderClient(credential);
             var nicResponse = await networkClient.NetworkInterfaces.GetAsync("mytestrg1", "mytestnic1");
 
@@ -334,7 +327,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
                   {
                     Name = "myosdisk1",
                     CreateOption = "FromImage",
-                    VirtualHardDisk = new VirtualHardDisk 
+                    VirtualHardDisk = new VirtualHardDisk
                     {
                       Uri = "http://mytestsa1.blob.core.windows.net/vhds/myosdisk1.vhd"
                     }
@@ -387,4 +380,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

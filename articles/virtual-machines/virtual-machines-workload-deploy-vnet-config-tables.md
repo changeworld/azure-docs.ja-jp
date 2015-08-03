@@ -5,7 +5,8 @@
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2015"
+	ms.date="07/21/2015"
 	ms.author="josephd"/>
 
 # 構成テーブルを使用してクロスプレミス仮想ネットワークを作成する
@@ -27,7 +28,7 @@
 
 これらのテーブルは通常、Azure 内の IT ワークロードの構成を説明するトピックで設定され、クロスプレミス仮想ネットワークを含みます。例については、「[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)」を参照してください。
 
-次の手順では、これらのテーブルの情報を参考にして、仮想ネットワークの構成プロセスの手順を説明します。別のトピックでこれらのテーブルの設定をまだ指定していない状態で、クロスプレミス仮想ネットワークを構成する場合は、「[Azure 仮想ネットワークへのクロスプレミス サイト間接続の構成](https://msdn.microsoft.com/library/dn133795.aspx)」を参照してください。
+次の手順では、これらのテーブルの情報を参考にして、サービス管理における仮想ネットワークの構成プロセスの手順を説明します。別のトピックでこれらのテーブルの設定をまだ指定していない状態で、クロスプレミス仮想ネットワークを構成する場合は、「[Azure 仮想ネットワークへのクロスプレミス サイト間接続の構成](https://msdn.microsoft.com/library/dn133795.aspx)」を参照してください。
 
 > [AZURE.NOTE]この手順では、サイト間 VPN 接続を使用する仮想ネットワークを作成します。サイト間接続に Azure ExpressRoute を使用する方法については、「[ExpressRoute の技術概要](https://msdn.microsoft.com/library/dn606309.aspx)」を参照してください。
 
@@ -66,4 +67,4 @@
 
 [Azure Virtual Network へのクロスプレミスのサイト間接続の構成](https://msdn.microsoft.com/library/dn133795.aspx)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

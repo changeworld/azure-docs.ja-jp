@@ -175,7 +175,8 @@ RestoreFailed<br/></b></td>
         <th> </th>
         <th>スケール</th>
         <th>構成の更新</th>
-        <th>バックアップ</th>
+        <th>Backup
+</th>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Active</b></td>
@@ -267,4 +268,4 @@ RestoreFailed<br/></b></td>
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

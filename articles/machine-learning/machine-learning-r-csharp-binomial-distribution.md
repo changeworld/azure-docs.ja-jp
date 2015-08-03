@@ -290,4 +290,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

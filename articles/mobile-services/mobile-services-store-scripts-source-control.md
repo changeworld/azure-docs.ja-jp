@@ -36,8 +36,7 @@
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、[Installing Git (Git のインストール)] を参照してください。
 
-	> [AZURE.NOTE]
-	> オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
+	> [AZURE.NOTE]オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
 
 2. **GitBash** (Windows) や **Bash** (Unix シェル) などのコマンド ラインを開きます。OS X システムでは、**ターミナル** アプリケーションを使用してコマンド ラインにアクセスできます。
 
@@ -60,7 +59,7 @@
 
 	ここでは、新しいディレクトリがモバイル サービスの名前で作成されています。これが、データ サービスのローカル リポジトリになります。
 
-7. .\\service\\table サブフォルダーを開くと、TodoItem.json ファイルが含まれていることがわかります。これは、TodoItem テーブルに対する操作のアクセス許可の JSON 表現です。
+7. .\service\table サブフォルダーを開くと、TodoItem.json ファイルが含まれていることがわかります。これは、TodoItem テーブルに対する操作のアクセス許可の JSON 表現です。
 
 	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。スケジューラ スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、[ソース管理]を参照してください。
 
@@ -68,7 +67,7 @@
 
 ##<a name="deploy-scripts"></a>更新されたスクリプト ファイルをモバイル サービスにデプロイする
 
-1. .\\service\\table サブフォルダーに移動し、まだファイル todoitem.insert.js が存在しない場合は、ここで作成します。
+1. .\service\table サブフォルダーに移動し、まだファイル todoitem.insert.js が存在しない場合は、ここで作成します。
 
 2. テキスト エディターで新しいファイル todoitem.insert.js を開き、次のコードを貼り付けて変更を保存します。
 
@@ -110,7 +109,7 @@ Node.js モジュールをモバイル サービスに追加するための推�
 
 	>[AZURE.NOTE]このように package.json ファイルが更新されると、コミットをプッシュしたときにモバイル サービスが再起動します。
 
-4. .\\service\\table サブフォルダーに移動し、todoitem.insert.js ファイルを開いて、次のように変更します。
+4. .\service\table サブフォルダーに移動し、todoitem.insert.js ファイルを開いて、次のように変更します。
 
 		function insert(item, user, request) {
 		    var uuid = require('node-uuid');
@@ -133,11 +132,9 @@ Node.js モジュールをモバイル サービスに追加するための推�
 
 このチュートリアルでは、スクリプトをソース管理に保存する方法について説明しました。サーバー スクリプトとカスタム API の操作の詳細については、以下を参照してください。
 
-+ [Mobile Services のサーバー スクリプトの操作] 
-	<br/>サーバー スクリプト、ジョブ スケジューラ、およびカスタム API の操作方法について説明します。
++ [Mobile Services のサーバー スクリプトの操作] <br/>サーバー スクリプト、ジョブ スケジューラ、およびカスタム API の操作方法について説明します。
 
-+ [クライアントからのカスタム API 呼び出し] 
-	<br/>クライアントから呼び出すことのできる、カスタム API を作成する方法を説明します。
++ [クライアントからのカスタム API 呼び出し] <br/>クライアントから呼び出すことのできる、カスタム API を作成する方法を説明します。
 
 <!-- Anchors. -->
 [Enable source control in your mobile service]: #enable-source-control
@@ -158,10 +155,9 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [既存のアプリに Mobile Services を追加する]: mobile-services-ios-get-started-data.md
 [Mobile Services のサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
 [Azure Management Portal]: https://manage.windowsazure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
 [クライアントからのカスタム API 呼び出し]: mobile-services-ios-call-custom-api.md
 [Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

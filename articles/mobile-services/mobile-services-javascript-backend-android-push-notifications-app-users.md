@@ -98,4 +98,4 @@ In the next tutorial, [Service-side authorization of Mobile Services users](mobi
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

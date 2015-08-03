@@ -40,4 +40,4 @@ Mobile Engagement サービス要求を開いたら、次の情報を入力し�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

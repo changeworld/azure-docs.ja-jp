@@ -122,4 +122,39 @@ IP サブネット|ネットマスク|IP 範囲
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-server/import2.png)</center>
 
-<!---HONumber=July15_HO2-->
+## ユーザーへの電子メールの送信
+Azure Multi-Factor Authentication Server にユーザーをインポートしたら、多要素認証に登録されたことを知らせる電子メールをユーザーに送信することをお勧めします。
+
+Azure Multi-Factor Authentication Server では、さまざまな方法で多要素認証を使用するようにユーザーを構成できます。たとえば、ユーザーの電話番号を知っている場合や、会社のディレクトリから Azure Multi-Factor Authentication Server に電話番号をインポートできる場合は、電子メールでユーザーが Azure Multi-Factor Authentication を使用するように構成されたことを通知し、Azure Multi-Factor Authentication の使用に関する手順を提供するほか、ユーザーに認証を受け取る電話番号を通知します。
+
+電子メールの内容は、ユーザーに設定されている認証方法 (電話、SMS、モバイル アプリなど) によって異なります。たとえば、認証に PIN が要求される場合は、PIN の初期設定を電子メールで通知します。ユーザーは通常、最初の認証時に PIN の変更を要求されます。
+
+ユーザーの電話番号が構成または Azure Multi-Factor Authentication Server にインポートされていない場合、またはユーザーがモバイル アプリ認証を使用するように事前に構成されている場合は、Azure Multi-Factor Authentication を使用するように構成されたことを通知し、Azure Multi-Factor Authentication ユーザー ポータルを通じてアカウントの登録を完了するように指示する電子メールを送信できます。ユーザー ポータルには記載のハイパーリンクからアクセスできます。ユーザーがハイパーリンクをクリックすると、Web ブラウザーが開き、ユーザーの会社の Azure Multi-Factor Authentication ユーザー ポータルに移動します。
+
+
+### 電子メールと電子メール テンプレートの構成
+
+左側の電子メール アイコンをクリックしてこれらの電子メールを送信するための設定をセットアップできます。ここにメール サーバーの SMTP 情報を入力し、[ユーザーへ電子メールを送信する] チェック ボックスをオンにすると幅広い宛先に電子メールを送信できます。
+
+![電子メールの設定](./media/multi-factor-authentication-get-started-server/email1.png)
+
+[電子メールの内容] タブにある各種電子メール テンプレートからテンプレートを選択できます。多要素認証を使用するユーザーの構成方法によって、最適なテンプレートを選択できます。
+
+![Email templates](./media/multi-factor-authentication-get-started-server/email2.png)
+
+## Azure Multi-Factor Authentication Server の高度な構成
+高度な設定や構成に関する追加情報は、次の表に記載されています。
+
+メソッド|説明
+:------------- | :------------- | 
+[ユーザー ポータル](multi-factor-authentication-get-started-portal.md)| デプロイやユーザーのセルフサービスなど、ユーザー ポータルのセットアップと構成に関する情報です。
+[Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)|AD FS による Azure Multi-Factor Authentication の設定に関する情報です。
+[RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)| RADUIS による Azure MFA Server のセットアップと構成に関する情報です。
+[IIS 認証](multi-factor-authentication-get-started-server-iis.md)|IIS を使用した Azure MFA Server のセットアップと構成に関する情報です。
+[Windows 認証](multi-factor-authentication-get-started-server-windows.md)| Windows 認証による Azure MFA Server のセットアップと構成に関する情報です。
+[LDAP 認証](multi-factor-authentication-get-started-server-ldap.md)|LDAP 認証による Azure MFA Server のセットアップと構成に関する情報です。
+[RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](multi-factor-authentication-get-started-server-rdg.md)| RADIUS を使用したリモート デスクトップ ゲートウェイによる Azure MFA Server のセットアップと構成に関する情報です。
+[Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
+[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
+
+<!---HONumber=July15_HO4-->

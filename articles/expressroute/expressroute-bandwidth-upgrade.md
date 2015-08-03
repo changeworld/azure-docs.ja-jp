@@ -42,15 +42,15 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 	次の PowerShell コマンドレットを使用して、ExpressRoute 回線の詳細を取得できます。
 		
 
-    	PS C:> Get-AzureDedicatedCircuit
+    	PS C:\> Get-AzureDedicatedCircuit
 	
 	このコマンドは、サブスクリプションで作成したすべての回線の一覧を返します。サービス キーがある場合は、特定の ExpressRoute 回線の詳細を取得するために次のコマンドを使用できます。
 
-		 PS C:> Get-AzureDedicatedCircuit -ServiceKey <skey>
+		 PS C:\> Get-AzureDedicatedCircuit -ServiceKey <skey>
 
 	<skey> を実際のサービス キーで置き換えます。
 	
-		PS C:> Get-AzureDedicatedCircuit -ServiceKey *********************************
+		PS C:\> Get-AzureDedicatedCircuit -ServiceKey *********************************
 
 		Bandwidth                        : 200
 		CircuitName                      : TestCircuit
@@ -66,7 +66,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 	
 	プロバイダーでサポートされている帯域幅のオプションについては、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを確認してください。既存の回線のサイズを超えるサイズを選択することができます。必要なサイズを決定した後、次のコマンドを使用して、回線のサイズを変更することができます。
 
-		PS C:> Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
+		PS C:\> Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
 		
 		Bandwidth                        : 1000
 		CircuitName                      : TestCircuit
@@ -85,4 +85,4 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

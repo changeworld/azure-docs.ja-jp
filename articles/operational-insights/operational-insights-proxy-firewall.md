@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 # Operational Insights のプロキシとファイアウォール設定の構成
@@ -79,9 +79,23 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 ## Operations Manager でプロキシとファイアウォールの設定を構成する
 
-Operational Insights サービスに Operations Manager 管理グループを接続し登録するには、ドメインのポート番号と URL へのアクセスが必要になります。Operations Manager 管理サーバーと Operational Insights サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。インターネットへのアクセスを制限するためにファイアウォールを使用する場合は、Operational Insights へのアクセスを許可するようにファイアウォールを構成する必要があります。次の表では、これらのタスクに関連するポートを一覧を示します。
+Operational Insights サービスに Operations Manager 管理グループを接続し登録するには、ドメインのポート番号と URL へのアクセスが必要になります。Operations Manager 管理サーバーと Operational Insights サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。インターネットへのアクセスを制限するためにファイアウォールを使用する場合は、Operational Insights へのアクセスを許可するようにファイアウォールを構成する必要があります。Operations Manager 管理サーバーがプロキシ サーバーの背後にない場合でも、そのエージェントは存在する可能性があります。この場合、セキュリティとログの管理ソリューションのデータを Operational Insights Web サービスに送信することを許可するには、プロキシ サーバーをエージェントと同じように構成する必要があります。
+
+Operations Manager エージェントが Operational Insights サービスと通信するには、Operations Manager インフラストラクチャ (エージェントを含む) に適切なプロキシ設定とバージョンが必要です。エージェントのプロキシ設定は、Operations Manager コンソールで指定します。バージョンは次のいずれかにする必要があります。
+
+- Operations Manager 2012 SP1 更新プログラム ロールアップ 7 以降
+- Operations Manager 2012 R2 更新プログラム ロールアップ 3 以降
+
+
+次の表では、これらのタスクに関連するポートを一覧を示します。
 
 >[AZURE.NOTE]次のリソースの一部は Advisor について説明していますが、表示されたリソースは、今後変更される予定です。
+
+|**エージェントのリソース**|**ポート**|
+|--------------|-----|
+|*.ods.opinsights.azure.com|ポート 443| |*.oms.opinsights.azure.com|ポート 443|
+|ods.systemcenteradvisor.com|ポート 443|
+|*.blob.core.windows.net/*|ポート 443|
 
 |**管理サーバーのリソース**|**ポート**|
 |--------------|-----|
@@ -119,6 +133,7 @@ Operational Insights サービスに Operations Manager 管理グループを接
 
 
 ### プロキシ サーバーで認証が必要な場合の資格情報を指定するには
+ プロキシ サーバーの資格情報と設定は、Operational Insights にデータを送信する管理対象コンピューターに反映する必要があります。これらのサーバーは、*Microsoft System Center Advisor Monitoring Server Group* にある必要があります。資格情報は、グループ内の各サーバーのレジストリに暗号化されます。
 
 1. Operations Manager コンソールを開き、**[Administration (管理)]** ワークスペースを選択します。
 
@@ -128,28 +143,10 @@ Operational Insights サービスに Operations Manager 管理グループを接
 4. Run As Profile (Run As プロファイル) ウィザードで **[追加]** をクリックして Run As アカウント (実行アカウント) を使用します。新しい Run As アカウント(実行アカウント) を作成するか、既存のアカウントを使用できます。このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。![image of the Run As Profile Wizard](./media/operational-insights-proxy-firewall/proxyacct2.png)
 
 5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** をクリックして、[オブジェクトの検索] ボックスを開きます。![image of the Run As Profile Wizard](./media/operational-insights-proxy-firewall/proxyacct2-1.png)
-6. 「**Operations Manager Management Servers**」を検索し、選択します。![image of the Object Search boxc](./media/operational-insights-proxy-firewall/proxyacct3.png)
+6. **Microsoft System Center Advisor Monitoring Server Group** を検索して選択します。![image of the Object Search boxc](./media/operational-insights-proxy-firewall/proxyacct3.png)
 7. **[OK]** をクリックして、[実行アカウントの追加] ボックスを閉じます。![image of the Run As Profile Wizard](./media/operational-insights-proxy-firewall/proxyacct4.png)
 8. ウィザードを完了し、変更を保存します。![image of the Run As Profile Wizard](./media/operational-insights-proxy-firewall/proxyacct5.png)
 
-
-### WinHTTP の各管理サーバーにプロキシ サーバーを構成するには
-
-1. Operations Manager が Operations Manager 2012 R2 Update Rollup 3 や Operations Manager 2012 SP1 Update Rollup 7 以降に更新されていない場合、Operations Manager 管理サーバーで管理者としてコマンド プロンプト ウィンドウを開きます。それ以外の場合はこの手順を使用する必要はありません。
-
-2. **netsh winhttp set proxy myproxy:80** と入力します。
-
-3. コマンド プロンプト ウィンドウを閉じ、System Center Management サービス (HealthService) を再起動します。
-
-4. 管理グループの各管理サーバーで、手順 2 を実行します。
-
-### 各管理サーバーにプロキシ サーバーを構成するには
-
-1. Operations Manager コンソールを開き、**[Administration (管理)]** ワークスペースを選択します。
-
-2. **[Device Management (デバイスの管理)]** をクリックし、**[Management Servers (管理サーバー)]** をクリックします。
-
-3. 各管理サーバーの名前を右クリックし、**[プロパティ]** をクリックして、**[プロキシの設定]** タブで情報を設定します。![Proxy Settings tab](./media/operational-insights-proxy-firewall/proxyms.png)
 
 ### Operational Insights の管理パックがダウンロードされることを確認するには
 
@@ -169,4 +166,4 @@ Operational Insights サービスに Operations Manager 管理グループを接
 3. **HTTP** から始まるすべてのカウンターを追加します。![add counters](./media/operational-insights-proxy-firewall/sendingdata1.png)
 4. Operations Manager の構成が適切であれば、Operational Insights と構成済みのログ収集ポリシーで追加した、管理パックに基づく Health Service Management カウンターのイベントやその他のデータ アイテムにおけるアクティビティが表示されます。![Performance Monitor showing activity](./media/operational-insights-proxy-firewall/sendingdata2.png)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

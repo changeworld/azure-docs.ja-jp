@@ -115,6 +115,17 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 詳細については、[正常性プローブ](https://msdn.microsoft.com/library/azure/jj151530.aspx)のサービス定義スキーマをご確認ください。
 
+## PowerShell を使用してロード バランサーを設定する
+
+仮想マシンを作成した後は、PowerShell コマンドレットを使用し、同じクラウド サービス内の仮想マシンにロード バランサーを追加できます。
+
+次の例では、「webfarm」というロード バランサーをクラウド サービス エンドポイント「mycloudservice」 (あるいは mycloudservice.cloudapp.net) と仮想マシン名「myVM」に追加します。ロード バランサーはポート 80 でトラフィックを受信し、HTTP を利用し、ポート 8080 で仮想マシン間のネットワーク トラフィックの負荷を分散します。
+
+	Get-AzureVM -ServiceName "mycloudservice" -Name "MyVM" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -LBSetName "WebFarm" -ProbePort 80 -ProbeProtocol "http" -ProbePath '/' | Update-AzureVM
+
+
+
+
 ## 次のステップ
 
 [内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
@@ -124,4 +135,4 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

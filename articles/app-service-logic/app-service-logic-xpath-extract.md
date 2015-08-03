@@ -63,4 +63,4 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 <!-- Links -->
 [新しいロジック アプリを作成します]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

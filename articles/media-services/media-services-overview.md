@@ -87,4 +87,4 @@ Azure Media Services には、ほとんどのプラットフォーム (iOS デ�
 [overview]: ./media/media-services-overview/media-services-overview.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

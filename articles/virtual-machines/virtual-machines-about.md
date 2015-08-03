@@ -6,15 +6,15 @@
 	authors="KBDAzure"
 	manager="timlt"
 	editor="tysonn"
-	tags="azure-resource-manager, azure-service-management"/>
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
-	ms.date="06/19/2015"
+	ms.topic="get-started-article"
+	ms.date="07/14/2015"
 	ms.author="kathydav"/>
 
 #Azure の仮想マシンについて
@@ -26,7 +26,7 @@ Azure の仮想マシンは、Azure が提供するオンデマンドでスケ�
 この表では、Azureが提供するさまざまなオプションを比較することができます。
 
 [AZURE.INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
- 
+
 ## 次のステップ
 
 単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。手順については、次のいずれかのチュートリアルを参照してください。
@@ -41,7 +41,7 @@ Azure の仮想マシンは、Azure が提供するオンデマンドでスケ�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-Azure の仮想マシンについて習得を始めたばかりであれば、よく寄せられる質問も合わせてご覧ください。
+Azure の仮想マシンについて習得を始めたばかりであれば、「[よく寄せられる質問](virtual-machines-questions.md)」も合わせてご覧ください。
 
 
 <!--links-->
@@ -49,4 +49,4 @@ Azure の仮想マシンについて習得を始めたばかりであれば、�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

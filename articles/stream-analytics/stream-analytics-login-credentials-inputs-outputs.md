@@ -28,7 +28,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 * BLOB ストレージ
 * Event Hubs
-* SQL データベース
+* SQL Database
 * テーブル ストレージ
 
 その他の入力/出力の場合は、パート2 へ進んでください。
@@ -42,7 +42,8 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 6.  新しく生成されたキーをコピーします。![図 5][graphic5]
 7.  パート 2 に進みます。
 
-###イベント ハブ
+###Event Hubs  
+
 1.  Azure の管理ポータルで [Service Bus] 拡張に移動します。![図 6][graphic6]
 2.  ジョブで使用されている Service Bus 名前空間を見つけ、そこに移動します。![図 7][graphic7]
 3.  ジョブが Service Bus 名前空間で共有アクセス ポリシーを使用している場合は、手順 6. に進みます。  
@@ -55,7 +56,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 10. 新しく生成されたキーをコピーします。![図 13][graphic13]
 11. パート 2 に進みます。  
 
-###SQL データベース
+###SQL Database
 
 >[AZURE.NOTE]注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
 
@@ -92,7 +93,8 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 3.	変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
 4.	パート 4 に進みます。
 
-###イベント ハブ
+###Event Hubs  
+
 1.	[イベント ハブ ポリシー キー] フィールドを見つけ、新しく生成されたキーをそこに貼り付けます。![図 33][graphic33]
 2.	[保存] コマンドをクリックし、変更内容の保存を確定します。![図 34][graphic34]
 3.	変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
@@ -107,7 +109,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 3.	変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
 4.	パート 4 に進みます。
 
-###SQL データベース
+###SQL Database
 1.	[ユーザー名] フィールドと [パスワード] のフィールドを見つけ、新しく作成された資格情報セットをそこに貼り付けます。![図 38][graphic38]
 2.	[保存] コマンドをクリックし、変更内容の保存を確定します。![図 39][graphic39]
 3.	変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。  
@@ -125,10 +127,10 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 ###BLOB ストレージとテーブル ストレージ
 ジョブで以前に使用されていたアクセス キーに対してパート 1 を繰り返し、現在未使用のアクセス キーを更新します。
 
-###イベント ハブ
+###Event Hubs
 ジョブで以前に使用されていたキーに対してパート 1 を繰り返し、現在未使用のキーを更新します。
 
-###SQL データベース
+###SQL Database
 1.	パート 1 の手順 7. のクエリ ウィンドウに戻り、次のクエリを入力して、<previous_login_name> を、以前ジョブで使用されていたユーザー名に置き換えます。`DROP LOGIN <previous_login_name>`  
 2.	[実行] をクリックします。![図 43][graphic43]  
 
@@ -137,7 +139,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 	Command(s) completed successfully.
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -193,4 +195,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

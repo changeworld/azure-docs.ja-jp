@@ -49,14 +49,14 @@
 	npm install -g node-gyp
 
 
-node-gyp がインストールされたら、ディレクトリ *YourProjectDirectory* に移動し、次に **node_modules\\msnodesql** に移動します。**cmd.exe** ウィンドウで、次のコマンドを発行します。
+node-gyp がインストールされたら、ディレクトリ *YourProjectDirectory* に移動し、次に **node_modules\msnodesql** に移動します。**cmd.exe** ウィンドウで、次のコマンドを発行します。
 
 
 	node-gyp configure 
 	node-gyp build
 
 
-次に、ディレクトリ **build\\release** に移動します。**sqlserver.node** ファイルをコピーし、**msnodesql\\lib** ディレクトリに貼り付けます。必要な場合は、古いファイルを置き換えます。
+次に、ディレクトリ **build\release** に移動します。**sqlserver.node** ファイルをコピーし、**msnodesql\lib** ディレクトリに貼り付けます。必要な場合は、古いファイルを置き換えます。
 
 [チーム ブログ](http://blogs.msdn.com/b/sqlphp/archive/2015/05/12/getting-started-with-node-js-and-microsoft-sql-server-and-azure-sql-database.aspx)と[ビデオ](https://www.youtube.com/watch?v=kQo_L-D_zk8)をチェックして、上記の要件をインストールおよびセットアップする方法を確認してください。
 
@@ -234,4 +234,4 @@ node-gyp がインストールされたら、ディレクトリ *YourProjectDire
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

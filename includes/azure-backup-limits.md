@@ -13,4 +13,4 @@
 - <sup>1</sup>1.65 TB の制限は、IaaS VM のバックアップには適用されません。
 - <sup>2</sup>どのような順列を使用しても 366 未満の数値になります。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

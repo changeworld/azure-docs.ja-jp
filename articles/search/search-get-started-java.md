@@ -89,7 +89,7 @@
 
 1. ジャンプ バーで **[ホーム]** をクリックし、Search サービスをクリックして、サービスのダッシュボードを開きます。
 
-2. サービスのダッシュ ボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
+2. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
   	![][3]
 
@@ -145,7 +145,7 @@
 
 	![][7]
 
-6. 次のページでは、Tomcat のインストール ディレクトリを指定します。Windows コンピューターでは、通常、C:\\Program Files\\Apache Software Foundation\\Tomcat *version* です。
+6. 次のページでは、Tomcat のインストール ディレクトリを指定します。Windows コンピューターでは、通常、C:\Program Files\Apache Software Foundation\Tomcat *version* です。
 
 6. **[完了]** をクリックします。
 
@@ -232,4 +232,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

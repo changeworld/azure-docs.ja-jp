@@ -114,4 +114,4 @@
 ## 次のステップ
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

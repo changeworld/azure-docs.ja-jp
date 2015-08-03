@@ -78,7 +78,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 3. __u.data__ ファイルを、HDInsight クラスターの __example/data/u.data__ にアップロードします。[Azure PowerShell][aps] を持っている場合は、[HDInsight-Tools][tools] モジュールを使用してファイルをアップロードできます。ファイルをアップロードするその他の方法については、「[データを HDInsight にアップロードする方法][upload]」を参照してください。次のコマンドは `Add-HDInsightFile` を使用してファイルをアップロードします。
 
-    	PS C:> Add-HDInsightFile -LocalPath "path\to\u.data" -DestinationPath "example/data/u.data" -ClusterName "your cluster name"
+    	PS C:\> Add-HDInsightFile -LocalPath "path\to\u.data" -DestinationPath "example/data/u.data" -ClusterName "your cluster name"
 
     これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。次に、__wasb:///example/data/u.data__HDInsight ジョブの URI を使用してこのデータにアクセスできます。
 
@@ -234,7 +234,7 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 
 このスクリプトを使用するには、以前に抽出された __ml-100k__ フォルダーと Mahout ジョブで生成された __part-r-00000__ 出力ファイルのローカル コピーが必要です。スクリプトを実行する例を次に示します。
 
-	PS C:> show-recommendation.ps1 -userId 4 -userDataFile .\ml-100k\u.data -movieFile .\ml-100k\u.item -recommendationFile .\output.txt
+	PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\ml-100k\u.data -movieFile .\ml-100k\u.item -recommendationFile .\output.txt
 
 出力は次のようになります。
 
@@ -353,7 +353,7 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 1. 使用する Mahout のバージョンは、使用するクラスターの HDInsight バージョンによって異なります。[Azure PowerShell][aps] コマンドで以下を使用することにより、クラスター バージョンを特定できます。
 
-    	PS C:> Get-AzureHDInsightCluster -Name YourClusterName | Select version
+    	PS C:\> Get-AzureHDInsightCluster -Name YourClusterName | Select version
 
 
   * __HDInsight 2.1 __ の場合は、[Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar) を含む Java アーカイブ (JAR) ファイルをダウンロードできます。
@@ -368,7 +368,7 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次の例では、[HDInsight-Tools][tools] の add-hdinsightfile を使用してファイルをアップロードします。
 
-    	PS C:> .\Add-HDInsightFile -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"
+    	PS C:\> .\Add-HDInsightFile -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"
 
 ###ファイルを上書きできない
 
@@ -429,4 +429,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

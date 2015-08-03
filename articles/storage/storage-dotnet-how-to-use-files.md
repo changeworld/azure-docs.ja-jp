@@ -121,14 +121,14 @@ Azure のファイル共有をマウントする方法を示すために、こ�
     net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
 
 	example :
-	net use z: \\samples.file.core.windows.net\logs
+	net use z: \samples.file.core.windows.net\logs
 
 > [AZURE.NOTE]前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、`net use` コマンドのパラメーターで資格情報を指定してください。
 
     net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
 
 	example :
-	net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
+	net use z: \samples.file.core.windows.net\logs /u:samples <storage-account-key>
 
 これで、他のドライブの場合と同じように仮想マシンから File ストレージ共有を利用できるようになります。コマンド プロンプトから標準のファイル コマンドを発行したり、マウントした共有とその内容をエクスプローラーで表示したりできます。.NET Framework の [System.IO 名前空間] (http://msdn.microsoft.com/library/gg145019(v=vs.110).aspx) の API など、標準の Windows ファイル I/O API を使用してファイル共有にアクセスするコードを仮想マシン内で実行することもできます。
 
@@ -237,4 +237,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

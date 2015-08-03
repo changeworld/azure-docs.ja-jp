@@ -26,7 +26,7 @@
 
 Mobile Services で提供する他の ID プロバイダーと同様に、Azure Active Directory (AAD) プロバイダーも、ディレクトリにプログラムでアクセスできるリッチな Graph API をサポートしています。このチュートリアルでは、[Graph REST Library] を使用してディレクトリから取得したユーザーの詳細情報を返す、認証されたユーザーのアプリケーション エクスペリエンスを個人用に設定できるように、ToDoList アプリケーションを更新します。
 
-Azure AD Graph API の詳細については、「[Azure Active Directory Graph チームのブログ]」を参照してください。
+Azure AD Graph API の詳細については、[Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)] を参照してください。
 
 
 >[AZURE.NOTE]このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
@@ -249,9 +249,9 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Custom API Tutorial (カスタム API チュートリアル)]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
 [Store Server Scripts]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
-[Azure Active Directory Graph チームのブログ]: http://go.microsoft.com/fwlink/?LinkId=510536
+[Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)]: http://go.microsoft.com/fwlink/?LinkId=510536
 [Get User]: http://msdn.microsoft.com/library/azure/dn151678.aspx
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

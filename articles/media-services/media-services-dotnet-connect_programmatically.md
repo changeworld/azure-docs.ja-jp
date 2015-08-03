@@ -191,4 +191,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 <!-- URLs. -->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

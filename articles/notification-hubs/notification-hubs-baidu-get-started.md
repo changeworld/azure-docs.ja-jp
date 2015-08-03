@@ -480,4 +480,4 @@ Notification Hubs を使用すると、<a href="http://msdn.microsoft.com/librar
 [Baidu ポータル]: http://www.baidu.com/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

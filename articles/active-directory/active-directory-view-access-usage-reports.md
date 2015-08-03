@@ -200,7 +200,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | どの程度、特定の SaaS アプリケーションが使用されているかを表示するときに、このレポートを使用します。このレポートは、アクセス パネルでユーザーがアプリケーションをクリックした回数の合計に基づきます。 | [ディレクトリ] > [レポート] タブ |
 
-### アプリケーション ダッシュボード
+### アプリケーション ダッシュ ボード
 
 | 説明 | レポートの場所 |
 | :-------------     | :-------        |
@@ -300,6 +300,6 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 ## 次の手順
 
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
-- [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
+- [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

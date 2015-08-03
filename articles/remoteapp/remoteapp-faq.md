@@ -82,4 +82,4 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

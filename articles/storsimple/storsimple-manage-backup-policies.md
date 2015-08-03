@@ -84,4 +84,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 [StorSimple Snapshot Manager](https://msdn.microsoft.com/library/azure/dn772365.aspx) を使用して StorSimple バックアップを管理する方法について説明します。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

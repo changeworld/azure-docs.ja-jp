@@ -114,4 +114,4 @@ API Management インスタンスの電子メール テンプレートを表示�
 [API Management インスタンスの作成]: api-management-get-started.md
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

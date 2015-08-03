@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ" 
-	description="リソース マネージャーのテンプレートと Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して、SQL Server AlwaysOn をサポートする 5 つのサーバーを簡単にデプロイします。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+<properties
+	pageTitle="Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ"
+	description="リソース マネージャーのテンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して、SQL Server AlwaysOn をサポートする 5 つのサーバーを簡単にデプロイします。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/29/2015" 
-	ms.author="josephd"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/29/2015"
+	ms.author="davidmu"/>
 
 # Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ
 
@@ -24,26 +24,26 @@
 ![](./media/virtual-machines-workload-template-sql-alwayson/five-server-sqlao.png)
 
 テンプレートは、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して実行できます。
- 
+
 ## Azure プレビュー ポータル
 
-リソース マネージャー テンプレートや Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)をクリックします。
+リソース マネージャー テンプレートと Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)をクリックします。
 
 ![](./media/virtual-machines-workload-template-sql-alwayson/azure-portal-template.png)
- 
+
 1.	**[テンプレート]** ウィンドウで、**[保存]** をクリックします。
 2.	**[パラメーター]** をクリックします。**[パラメーター]** ウィンドウで、新しい値を入力、使用できる値から選択、または既定の値をそのまま使用して、**[OK]** をクリックします。
 3.	必要に応じて、**[サブスクリプション]** をクリックし、適切な Azure サブスクリプションを選択します。
 4.	**[リソース グループ]** をクリックし、既存のリソース グループを選択します。または、**[新規作成]** をクリックして、このワークロード用の新しいグループを作成します。
 5.	必要に応じて、**[リソース グループの場所]** をクリックし、適切な Azure の場所を選択します。
-6.	必要に応じて、[法律条項] をクリックして、テンプレートの使用に関する条項や契約書を確認します。
+6.	必要に応じて、**[法律条項]**をクリックして、テンプレートの使用に関する条項や契約書を確認します。
 7.	**[作成]** をクリックします。
 
 テンプレートによっては、Azure でのワークロードの構築に時間がかかる場合があります。テンプレートの実行が完了すると、5 サーバーの新しい SQL Server AlwaysOn 構成が既存または新規のリソース グループに作成されます。
 
 ## Azure PowerShell
 
-開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
+開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[ここ](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
 
 次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
@@ -71,13 +71,13 @@
 
 ## Azure CLI
 
-開始する前に、適切なバージョンの Azure CLI がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-azure-cli.md#getting-ready)をクリックします。
+開始する前に、適切なバージョンの Azure CLI がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[ここ](virtual-machines-deploy-rmtemplates-azure-cli.md#getting-ready)をクリックします。
 
 まず、新しいリソース グループを作成します。次のコマンドを使用して、グループの名前と、デプロイ先の Azure データ センターの場所を指定します。
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sql-server-2014-alwayson-dsc/azuredeploy.json <group name> <deployment name>
 
@@ -93,7 +93,7 @@
 
 ## その他のリソース
 
-[Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
+[Azure リソース マネージャー テンプレートと Azure PowerShell を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
@@ -105,4 +105,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -37,4 +37,4 @@ Azure Redis Cache の使用の詳細については、次を参照してくだ�
 - [Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする:](http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/): このブログの投稿は、ASP.NET MVC アプリで Azure Redis Cache を使用するためのクイック スタートについて説明しています。
 - [Azure Websites で ASP.NET セッション状態を使用する方法](../app-service-web/web-sites-dotnet-session-state-caching.md): このトピックでは、Azure Redis Cache Service を使用してセッション状態をサポートする方法について説明します。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -3,7 +3,7 @@
 	description="R をインストールして使用し、Hadoop クラスターをカスタマイズする方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
-	authors="bradsev" 
+	authors="mumian" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
-	ms.author="bradsev"/>
+	ms.date="07/09/2015" 
+	ms.author="jgao"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
 
@@ -265,7 +265,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="runApp"></a>アプリケーションを実行するには
 
-Azure PowerShell コンソールを開き、プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
+Azure PowerShell コンソールを開き、プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateRCluster <cluster-name>
 
@@ -283,4 +283,4 @@ Azure PowerShell コンソールを開き、プロジェクトを保存した場
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

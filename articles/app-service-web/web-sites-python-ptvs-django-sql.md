@@ -221,4 +221,4 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 [SQL Database]: /documentation/services/sql-database/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

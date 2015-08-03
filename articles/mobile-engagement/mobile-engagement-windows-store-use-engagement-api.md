@@ -360,4 +360,4 @@ SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリ�
 			{"birthdate":"1983-12-07","gender":"female"}
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

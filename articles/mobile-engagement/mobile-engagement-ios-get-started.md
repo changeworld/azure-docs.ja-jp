@@ -302,4 +302,4 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 [39]: ./media/mobile-engagement-ios-get-started/campaign-activate.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

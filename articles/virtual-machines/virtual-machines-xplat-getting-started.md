@@ -74,4 +74,4 @@ Azure CLI を使って Azure インフラストラクチャを管理する多く
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

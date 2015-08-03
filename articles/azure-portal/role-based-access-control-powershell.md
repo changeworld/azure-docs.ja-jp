@@ -57,22 +57,22 @@ Windows PowerShell を使って RBAC を管理するには、その前に以下�
 
 RBAC は Azure リソース マネージャーのみと協働するので、最初に以下のように入力して Azure リソース マネージャー モードに切り替えます。
 
-    PS C:> Switch-AzureMode -Name AzureResourceManager
+    PS C:\> Switch-AzureMode -Name AzureResourceManager
 
 詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 ご使用の Azure サブスクリプションに接続するには、以下のように入力します。
 
-    PS C:> Add-AzureAccount
+    PS C:\> Add-AzureAccount
 
 ポップアップ ブラウザー コントロールで、Azure アカウントのユーザー名とパスワードを入力します。PowerShell は、このアカウントのサブスクリプションをすべて入手し、最初のサブスクリプションを既定として使うと想定します。RBAC の使用時には、共同管理者であるか役割が割り当てられていることによってアクセス許可があるサブスクリプションのみを入手できることに注意してください。
 
 サブスクリプションが複数ある場合に、別のサブスクリプションに切り替えるには、以下のように入力します。
 
     # This will show you the subscriptions under the account.
-    PS C:> Get-AzureSubscription
+    PS C:\> Get-AzureSubscription
     # Use the subscription name to select the one you want to work on.
-    PS C:> Select-AzureSubscription -SubscriptionName <subscription name>
+    PS C:\> Select-AzureSubscription -SubscriptionName <subscription name>
 
 詳細については、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
 
@@ -80,7 +80,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 
 ここで、既にサブスクリプションに存在している役割の割り当てを確認しましょう。次のコマンドを入力します。
 
-    PS C:> Get-AzureRoleAssignment
+    PS C:\> Get-AzureRoleAssignment
 
 サブスクリプション内の役割の割り当てがすべて返されます。注意点が 2 つあります。
 
@@ -89,7 +89,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 
 特定の役割の定義向けに、特定のスコープで、特定のユーザーに対して行われた既存の役割の割り当てを確認することもできます。次のコマンドを入力します。
 
-    PS C:> Get-AzureRoleAssignment -ResourceGroupName group1 -Mail <user email> -RoleDefinitionName Owner
+    PS C:\> Get-AzureRoleAssignment -ResourceGroupName group1 -Mail <user email> -RoleDefinitionName Owner
 
 AD テナント内の特定のユーザー (リソース グループ「group1」に関する「所有者」役割の割り当てを持つユーザー) に関する役割の割り当てがすべて返されます。役割は、次の 2 つの場所から割り当てられます。
 
@@ -104,48 +104,48 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 役割を割り当てるユーザー: 次の Azure Active Directory コマンドレットを使用して、AD テナントにいるユーザー、グループおよびサービス プリンシパルを確認できます。
 
-    PS C:> Get-AzureADUser
-	PS C:> Get-AzureADGroup
-	PS C:> Get-AzureADGroupMember
-	PS C:> Get-AzureADServicePrincipal
+    PS C:\> Get-AzureADUser
+	PS C:\> Get-AzureADGroup
+	PS C:\> Get-AzureADGroupMember
+	PS C:\> Get-AzureADServicePrincipal
 
 割り当てる役割: 次のコマンドレットを使用して、サポートされているロールの定義を表示できます。
 
-    PS C:> Get-AzureRoleDefinition
+    PS C:\> Get-AzureRoleDefinition
 
 割り当てるスコープ: スコープには 3 つのレベルがあります。
 
     - The current subscription
-    - A resource group, to get a list of resource groups, type `PS C:> Get-AzureResourceGroup`
-    - A resource, to get a list of resources, type `PS C:> Get-AzureResource`
+    - A resource group, to get a list of resource groups, type `PS C:\> Get-AzureResourceGroup`
+    - A resource, to get a list of resources, type `PS C:\> Get-AzureResource`
 
 次に、`New-AzureRoleAssignment` ￼￼￼ を使ってロールの割り当てを作成します。次に例を示します。
 
 
 次を使用すると、ユーザーに閲覧者として現在のサブスクリプション レベルでの役割の割り当てが作成されます。
 
-	 PS C:> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Reader
+	 PS C:\> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Reader
 
 次を使用すると、リソース グループ レベルでのロールの割り当てが作成されます。
 
-	PS C:> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Contributor -ResourceGroupName group1
+	PS C:\> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Contributor -ResourceGroupName group1
 
 次を使用すると、リソース グループ レベルでのグループへのロールの割り当てが作成されます。
 
-	PS C:> New-AzureRoleAssignment -ObjectID <group object ID> -RoleDefinitionName Reader -ResourceGroupName group1
+	PS C:\> New-AzureRoleAssignment -ObjectID <group object ID> -RoleDefinitionName Reader -ResourceGroupName group1
 
 次を使用すると、リソース レベルでのロールの割り当てが作成されます。
 
-	PS C:> $resources = Get-AzureResource
-    PS C:> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Owner -Scope $resources[0].ResourceId
+	PS C:\> $resources = Get-AzureResource
+    PS C:\> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Owner -Scope $resources[0].ResourceId
 
 
 ## アクセス許可の確認
 
 ご使用のアカウントに役割の割り当てがあることを確認してから、次を実行することで、実際に役割の割り当てが付与したアクセス許可を確認することができます。
 
-    PS C:> Get-AzureResourceGroup
-    PS C:> Get-AzureResource
+    PS C:\> Get-AzureResourceGroup
+    PS C:\> Get-AzureResource
 
 これらの 2 つのコマンドレットでは、読み取りのアクセス許可があるリソース グループまたはリソースのみが返されます。また、持っているアクセス許可も表示します。
 
@@ -165,4 +165,4 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

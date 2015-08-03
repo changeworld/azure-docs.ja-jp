@@ -3,7 +3,7 @@
    description="StorSimple を初めてデプロイするときに発生するエラーを診断し、修正する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
-   authors="SharS"
+   authors="alkohli"
    manager="adinah"
    editor="tysonn" />
 <tags 
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/27/2015"
-   ms.author="v-sharos" />
+   ms.date="07/17/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスのデプロイメントのトラブルシューティング
 
@@ -64,7 +64,7 @@
 - デバイス管理者と StorSimple Snapshot Manager のパスワードを設定する。 
 - デバイスを登録する。 
 
-### 必要なネットワーク設定を構成する際に発生するエラー
+## 必要なネットワークの設定中のエラー
 
 | 番号| エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | ---| ------------- | --------------- | ------------------ |
@@ -76,7 +76,7 @@
 | 6 | Invoke-HcsSetupWizard: IPv6 アドレスが無効です。 | 指定された IP アドレスの形式に誤りがあります。| 形式を確認し、IP アドレスを指定し直してください。詳細については、[Ipv6 のアドレス指定][2]に関するページを参照してください。|
 | 7 | Invoke-HcsSetupWizard: エンドポイント マッパーから使用できるエンドポイントはこれ以上ありません (HRESULT からの例外: 0x800706D9) | クラスターの機能が正常に動作していません。 | [Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。
 
-### オプションの Web プロキシ設定を構成する際に発生するエラー
+## 省略可能な Web プロキシの設定中のエラー
 
 | 番号| エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | ---| ------------- | --------------- | ------------------ |
@@ -86,7 +86,7 @@
 | 4 | Invoke-HcsSetupWizard: クラスター リソースが見つかりません (HRESULT からの例外: 0x8007138f) | クラスター リソースが見つかりません。これはインストールが適切でなかった場合に発生することがあります。 | デバイスを工場出荷時の既定の設定にリセットすることが必要な場合があります。[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスター リソースを作成します。|
 | 5 | Invoke-HcsSetupWizard: クラスター リソースがオンラインになっていません (HRESULT からの例外: 0x8007138c)| クラスター リソースがオンラインになっていません。 | [Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。|
 
-### デバイス管理者と StorSimple Snapshot Manager のパスワードを設定するときに発生するエラー
+## デバイス管理者パスワードと StorSimple Snapshot Manager のパスワードに関連するエラー
 
 デバイス管理者の既定のパスワードは **Password1** です。このパスワードは、初回ログオン後に有効期限が切れるため、セットアップ ウィザードを使用して変更する必要があります。デバイスの初回登録時に、デバイス管理者の新しいパスワードを指定してください。
 
@@ -124,7 +124,7 @@ Windows Server ホスト上で実行されている StorSimple Snapshot Manager 
 - [デバイス管理者のパスワードの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec09)
 - [StorSimple Snapshot Manager のパスワードの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec08)
 
-### デバイスを登録するときに発生するエラー
+## デバイス登録中のエラー
 
 デバイスを登録するために、Microsoft Azure で実行されている StorSimple Manager サービスを使用します。デバイスの登録中、次に示すエラーが発生することがあります。エラーは複数発生する場合もあります。
 
@@ -575,4 +575,4 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

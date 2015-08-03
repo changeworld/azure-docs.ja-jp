@@ -124,4 +124,4 @@ Azure App Services では、すぐに使用できるさまざまなコネクタ�
 [BizTalk Transform Service]: app-service-logic-transform-xml-documents.md
 [待機コネクタ]: app-service-logic-wait.md
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

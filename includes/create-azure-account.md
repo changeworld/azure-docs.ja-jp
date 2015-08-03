@@ -8,4 +8,4 @@
 [0]: ./media/create-azure-account/freetrialonwindowsazurehomepage.png
  
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO4-->

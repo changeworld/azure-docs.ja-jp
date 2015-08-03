@@ -56,4 +56,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [JavaScript backend version]: ../mobile-services-ios-get-started.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

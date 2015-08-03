@@ -379,4 +379,4 @@ SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリ�
 			{"subscription":"2013-12-07","premium":"true"}
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -51,4 +51,4 @@ Scheduler では、ポータルでスクリプトを使用し、["ジョブ コ�
  [Scheduler 送信認証](scheduler-outbound-authentication.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

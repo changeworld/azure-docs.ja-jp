@@ -80,4 +80,4 @@ Azure SQL Database の機能である Elastic Database ツールに関する用�
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

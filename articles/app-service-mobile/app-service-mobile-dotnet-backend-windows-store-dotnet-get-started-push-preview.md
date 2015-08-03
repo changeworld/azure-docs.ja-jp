@@ -37,6 +37,10 @@
 * アクティブな [Microsoft ストア アカウント](http://go.microsoft.com/fwlink/p/?LinkId=280045)。
 * <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Community 2013</a>。
 
+##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-push-preview](../../includes/app-service-mobile-dotnet-backend-enable-push-preview.md)]
+
 ##<a id="register"></a>アプリをプッシュ通知に登録する
 
 Azure App Service を使用して Windows ユニバーサル アプリにプッシュ通知を送信するには、アプリケーションを Windows ストアに提出する必要があります。さらに、モバイル アプリ プッシュ通知サービスの資格情報を構成して、WNS と統合する必要があります。
@@ -191,4 +195,4 @@ App Service モバイル アプリが WNS と連携するように構成され�
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

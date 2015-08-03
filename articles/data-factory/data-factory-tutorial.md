@@ -31,7 +31,7 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。Data Factory コマンドレットを実行し、サンプル データと pig/hive スクリプトを BLOB ストレージにアップロードします。 
 2.	**(推奨)** ポータルとコマンドレットに慣れるための簡単なチュートリアルについての記事「[Azure Data Factory を使ってみる][adfgetstarted]」にあるチュートリアルを確認し、実際に行ってみます。
 3.	**(推奨)** パイプラインを作成してオンプレミスのデータ ソースから Azure BLOB ストアにデータを移動するチュートリアルについての記事「[Azure Data Factory で Pig と Hive を使用する][usepigandhive]」にあるチュートリアルを確認し、実際に行ってみます。
-4.	[ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\\ADFWalkthrough** フォルダーにダウンロードしますが、**以下のフォルダー構造は維持してください**。
+4.	[ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\ADFWalkthrough** フォルダーにダウンロードしますが、**以下のフォルダー構造は維持してください**。
 	- **Pipelines:** パイプラインの定義を含む JSON ファイルが含まれています。
 	- **Tables:** テーブルの定義を含む JSON ファイルが含まれています。
 	- **LinkedServices:** ストレージおよびコンピューティング (HDInsight) クラスターの定義を含む JSON ファイルが含まれています。 
@@ -106,7 +106,7 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 
 テーブル、ユーザー定義型、およびストアド プロシージャは、マーケティング キャンペーン有効性の結果を Azure BLOB ストレージから Azure SQL データベースに移動する際に使用されます。
 
-1. お好みのエディターで **C:\\ADFWalkthrough** フォルダー (または展開したファイルを含むフォルダー) から **uploadSampleDataAndScripts.ps1** を開き、強調表示されている部分を自分のクラスター情報に置き換え、ファイルを保存します。
+1. お好みのエディターで **C:\ADFWalkthrough** フォルダー (または展開したファイルを含むフォルダー) から **uploadSampleDataAndScripts.ps1** を開き、強調表示されている部分を自分のクラスター情報に置き換え、ファイルを保存します。
 
 
 		$storageAccount = <storage account name>
@@ -118,10 +118,10 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
  
 	このスクリプトを使用するには、コンピューターに sqlcmd ユーティリティがインストールされている必要があります。SQL Server がインストール済みであれば、これもインストールされています。そうでない場合は、このユーティリティを[ダウンロード][sqlcmd-install]し、インストールしてください。
 	
-	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
+	または、C:\ADFWalkthrough\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
 2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Azure 管理ポータル**またはマスター データベース上の **sp_set_firewall_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
-4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
+4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
 
@@ -292,7 +292,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 ### テーブルを作成するには
 	
 1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューから **[Azure BLOB ストレージ]** をクリックします。 
-2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\Tables** フォルダーにある **RawGameEventsTable.json** の JSON スクリプトに置き換えます。
+2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\Tables** フォルダーにある **RawGameEventsTable.json** の JSON スクリプトに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックし、テーブルを作成してデプロイします。エディターのタイトル バーに "**テーブルが正常に作成されました**" というメッセージが表示されていることを確認します。
 4. 次のファイルの内容で手順 1. ～ 3. を繰り返します。 
 	1. PartitionedGameEventsTable.json
@@ -314,7 +314,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 ### パイプラインを作成するには
 
 1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
-2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\Pipelines** フォルダーにある **PartitionGameLogsPipeline.json** の JSON スクリプトに置き換えます。
+2. 右側のウィンドウにある JSON を、**C:\ADFWalkthrough\Pipelines** フォルダーにある **PartitionGameLogsPipeline.json** の JSON スクリプトに置き換えます。
 3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
 
         "start": "2014-05-01T00:00:00Z",
@@ -525,4 +525,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

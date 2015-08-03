@@ -2,10 +2,11 @@
 	pageTitle="Advanced Analytics Process and Technology 向けに Hadoop クラスターをカスタマイズする | Microsoft Azure" 
 	description="一般的な Python モジュールは、カスタムの Azure HDInsight Hadoop クラスターで利用できます。"
 	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
-	editor="cgronlun" />
+	editor="cgronlun"  />
 
 <tags 
 	ms.service="machine-learning" 
@@ -97,4 +98,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

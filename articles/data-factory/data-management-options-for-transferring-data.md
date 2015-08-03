@@ -3,8 +3,8 @@
 	description="高度な分析を行うためにオンプレミスまたは他のクラウドのソースから Microsoft Azure にデータを転送する場合の最適なオプションを選択する方法について説明します。" 
 	services="data-factory, hdinsight, machine-learning, storage, sql-database" 
 	documentationCenter="" 
-	authors="cjgronlund" 
-	manager="paulettm" 
+	authors="spelluru" 
+	manager="jeffgoll" 
 	editor=""/>
 
 <tags 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.workload="big-data" 
 	ms.date="01/07/2014" 
-	ms.author="cgronlun"/>
+	ms.author="spelluru"/>
 
 # 保存データを Azure のクラウドに転送する場合のオプション
 
@@ -270,4 +270,4 @@ Microsoft Azure Event Hubs は、クラウドに対し、短い待機時間と�
 [hybrid]: ../integration-hybrid-connection-overview.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

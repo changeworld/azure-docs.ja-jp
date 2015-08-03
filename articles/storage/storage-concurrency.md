@@ -285,4 +285,4 @@ Azure Storage の詳細については、以下を参照してください。
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

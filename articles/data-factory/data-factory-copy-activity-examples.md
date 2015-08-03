@@ -188,7 +188,6 @@ Data Factory パイプラインを定義するための JSON 要素の詳細に�
 
 - **ホスト** - ファイル システムをホストするサーバーの名前: **\contoso**。
 - **フォルダー** - 入力ファイルが含まれているフォルダーの名前: **marketingcampaign\regionaldata\{slice}。ここで、ファイルは、{slice} という名前のフォルダー内で分割されます (例: 2014121112 (2014 年 12 月 11 日 12 時))。
-
 ### オンプレミスのファイル システムのリンクされたサービスの作成
 次のサンプル JSON を使用すると、**OnPremisesFileSystemLinkedService** 型の **FolderDataStore** という名前のリンクされたサービスを作成できます。
 
@@ -196,14 +195,14 @@ Data Factory パイプラインを定義するための JSON 要素の詳細に�
 	    "name": "FolderDataStore",
 	    "properties": {
 	        "type": "OnPremisesFileSystemLinkedService",
-	        "host": "\contoso",
+	        "host": "\\contoso",
 	        "userId": "username",
 	        "password": "password",
 	        "gatewayName": "ContosoGateway"
 	    }
 	}
 
-> [AZURE.NOTE]JSON ファイル内ではホストとフォルダーの名前にエスケープ文字 () を使用してください。たとえば、**\Contoso** の場合は、**\Contoso** のように指定します。
+> [AZURE.NOTE]JSON ファイル内ではホストとフォルダーの名前にエスケープ文字 (\) を使用してください。たとえば、**\Contoso** の場合は、**\\Contoso** のように指定します。
 
 オンプレミスのファイル システムのリンクされたサービスを定義するための JSON 要素の詳細については、[オンプレミスのファイル システムのリンクされたサービス](https://msdn.microsoft.com/library/dn930836.aspx)に関するページをご覧ください。
 
@@ -462,7 +461,7 @@ Azure BLOB を参照する Data Factory テーブルを定義するための JSO
 	                "transformation": {
 	                    "source": {
 	                        "type": "OracleSource",
-	                        "oracleReaderQuery": "$$Text.Format('select * from LOG where "Timestamp" >= to_date('{0:yyyy-MM-dd}', 'YYYY-MM-DD') AND "Timestamp" < to_date('{1:yyyy-MM-dd}', 'YYYY-MM-DD')', SliceStart, SliceEnd)"
+	                        "oracleReaderQuery": "$$Text.Format('select * from LOG where "Timestamp" >= to_date(\'{0:yyyy-MM-dd}\', \'YYYY-MM-DD\') AND "Timestamp" < to_date(\'{1:yyyy-MM-dd}\', \'YYYY-MM-DD\')', SliceStart, SliceEnd)"
 	                    },
 	                    "sink": {
 	                        "type": "BlobSink"
@@ -492,4 +491,4 @@ Data Factory パイプラインを定義するための JSON 要素の詳細に�
 [adf-copyactivity]: data-factory-copy-activity.md
 [copy-activity-video]: http://azure.microsoft.com/documentation/videos/introducing-azure-data-factory-copy-activity/
 
-<!----HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

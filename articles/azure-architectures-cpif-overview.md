@@ -59,4 +59,4 @@ Azure でのソリューション アーキテクチャの開発をサポート�
 
 [Azure Search](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-e581d65d)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

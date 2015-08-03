@@ -178,4 +178,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

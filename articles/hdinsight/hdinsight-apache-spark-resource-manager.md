@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.date="07/19/2015" 
 	ms.author="nitinme"/>
 
 
@@ -36,7 +36,7 @@
 HDInsight の Apache Spark クラスターはマルチテナント用に設計されているので、リソースは複数のコンポーネントに分割されます (Notebook、ジョブ サーバーなど)。これにより、コンポーネントが実行するためのリソースを取得できないことを心配することなくすべての Spark コンポーネントを同時に使用できますが、リソースがフラグメント化されるため各コンポーネントは遅くなります。これは、ニーズに基づいて調整できます。
 
 
-### Spark クラスターで IPython だけを使用します。どうすればすべてのリソースを IPython に割り当てることができますか。
+### Spark クラスターを含む Jupyter Notebook のみを使用します。どうすればすべてのリソースを割り当てることができますか。
 
 1. **[Spark ダッシュボード]** で **[Spark UI]** タブをクリックして、アプリケーションに割り当てることができる最大コア数と最大 RAM を調べます。
 
@@ -79,4 +79,4 @@ Thrift サーバーのコア数と Thrift サーバーの実行プログラム �
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -68,7 +68,21 @@ Azure SQL インデクサーをセットアップして構成するときは、[
 
 その後、ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[ポータル UI](https://portal.azure.com) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。SQL と Azure Search のデータ型のマッピングについては、次の表を参照してください。
 
-**SQL のデータ型と Azure Search のデータ型のマッピング** <table style="font-size:12"> <tr> <td>SQL のデータ型</td> <td>許容されるターゲット インデックス フィールドの型</td> <td>備考</td> </tr> <tr> <td>bit</td> <td>Edm.Boolean、Edm.String</td> <td></td> </tr> <tr> <td>int、smallint、tinyint</td> <td>Edm.Int32、Edm.Int64、Edm.String</td> <td></td> </tr> <tr> <td>bigint</td> <td>Edm.Int64、Edm.String</td> <td></td> </tr> <tr> <td>real、loat</td> <td>Edm.Double、Edm.String</td> <td></td> </tr> <tr> <td>smallmoney、money<br/>decimal<br/>numeric </td> <td>Edm.String</td> <td>精度が失われるため、Azure Search は decimal 型から Edm.Double への変換をサポートしません </td> </tr> <tr> <td>char、nchar、varchar、nvarchar</td> <td>Edm.String<br/>Collection(Edm.String)</td> <td>string 列を Collection(Edm.String) に変換するには、プレビュー API バージョン 2015-02-28-Preview を使用する必要があります。詳細については、[この記事](search-api-indexers-2015-02-28-Preview.md#create-indexer)を参照してください</td> </tr> <tr> <td>smalldatetime、datetime、datetime2、date、datetimeoffset</td> <td>Edm.DateTimeOffset、Edm.String</td> <td></td> </tr> <tr> <td>uniqueidentifer</td> <td>Edm.String</td> <td></td> </tr> <tr> <td>geography</td> <td>Edm.GeographyPoint</td> <td>SRID 4326 の POINT 型の地理インスタンスのみがサポートされます</td> </tr> <tr> <td>rowversion</td> <td>N/A</td> <td>行バージョンの列は検索インデックスに格納できませんが、変更追跡には使用できます</td> </tr> <tr> <td>time、timespan<br>binary、varbinary、image、<br>xml、geometry、CLR 型</td> <td>N/A</td> <td>サポートされません</td> </tr> </table>
+**JSON データ型と Azure Search データ型の間のマッピング**
+
+|SQL データ型 | ターゲット インデックス フィールドに許可される型 |メモ 
+|------|-----|----|
+|ビット|Edm.Boolean、Edm.String| |
+|int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String| |
+| bigint | Edm.Int64、Edm.String | |
+| real、float |Edm.Double、Edm.String | |
+| smallmoney、money decimal numeric | Edm.String| Azure Search では、小数点を Edm.Double に変換できません。精度が失われるためです。 |
+| char、nchar、varchar、nvarchar | Edm.String<br/>Collection(Edm.String)|string 列を Collection(Edm.String) に変換するには、プレビュー API バージョン 2015-02-28-Preview を使用する必要があります。詳細については、[こちらの記事](search-api-indexers-2015-02-28-Preview.md#create-indexer)を参照してください。| 
+|smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String| |
+|uniqueidentifer | Edm.String | |
+|地理 | Edm.GeographyPoint | 型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 | | 
+|rowversion| 該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 | |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 型 | 該当なし |サポートされていません |
 
 最後に、名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
@@ -263,4 +277,4 @@ A: はい。インデクサーは検索サービス内のノードの 1 つで�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

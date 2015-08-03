@@ -117,4 +117,4 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
  
 > [AZURE.NOTE]Azure Data Catalog のプライベート プレビューでは、直接サポートされているのは Microsoft Excel のみです。**[接続]** メニューで使用できます。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

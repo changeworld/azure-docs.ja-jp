@@ -38,10 +38,10 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 次に、Azure PowerShell を開き、次のコマンドを実行します。`ACCOUNT_NAME` と `ACCOUNT_KEY== ` を自分のストレージ アカウント資格情報に換えます。`CONTAINER_NAME` を自分で選択した名前に変えます。
 
-    PS C:> $context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
-	PS C:> New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
-	PS C:> $now = Get-Date
-	PS C:> New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+    PS C:\> $context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+	PS C:\> New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+	PS C:\> $now = Get-Date
+	PS C:\> New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 
 新しいコンテナーの共有アクセス署名 URI は次のようになります。
 
@@ -176,4 +176,4 @@ BLOB、テーブル、キューの詳細は次のリンクで確認できます�
 [Microsoft Azure ストレージの概要](storage-introduction.md) [.NET から BLOB ストレージを利用する方法](storage-dotnet-how-to-use-blobs.md) [.NET からテーブル ストレージを利用する方法](storage-dotnet-how-to-use-tables.md) [.NET からキュー ストレージを利用する方法](storage-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

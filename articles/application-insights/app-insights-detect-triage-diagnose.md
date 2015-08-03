@@ -260,4 +260,4 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 [usage]: app-insights-web-track-usage.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

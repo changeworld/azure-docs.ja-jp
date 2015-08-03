@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 # 評価ソリューションを使用した環境の最適化
@@ -123,4 +123,6 @@ Microsoft Azure Operational Insights の評価ソリューションを使用す�
 
 4. **[推奨する解決方法]** で推奨された修正措置を行います。項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。修正された項目は **[合格したオブジェクト]** として表示されます。
 
-<!---HONumber=July15_HO2-->
+[AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
+
+<!---HONumber=July15_HO4-->

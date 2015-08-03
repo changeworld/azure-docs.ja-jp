@@ -2,10 +2,11 @@
 	pageTitle="Advanced Analytics Process and Technology で Hadoop クラスターに Hive クエリを送信する | Microsoft Azure"
 	description="Hive クエリで Hive テーブルからのデータを処理します。"
 	services="machine-learning"
+	solutions=""
 	documentationCenter=""
 	authors="hangzh-msft"
 	manager="paulettm" 
-	editor="cgronlun" />
+	editor="cgronlun"  />
 
 <tags
 	ms.service="machine-learning"
@@ -322,4 +323,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 [15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

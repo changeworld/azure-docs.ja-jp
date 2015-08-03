@@ -133,4 +133,4 @@ WAP の既定では、コンピューティング、メモリ、およびネッ�
 [8]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workbook-Scheduling.png "図 8 - ブックのスケジュール設定"
 [9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "図 9 - ワークロードのコスト比較シナリオのサンプル レポート"
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

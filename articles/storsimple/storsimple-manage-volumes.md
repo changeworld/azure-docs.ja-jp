@@ -55,7 +55,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ## ボリュームを追加する
 
-[ボリュームの作成](storsimple-deployment-walkthrough.md#step-6:-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
+[ボリュームの作成](storsimple-deployment-walkthrough.md#to-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
 
 ### ボリュームを追加するには
 
@@ -181,4 +181,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

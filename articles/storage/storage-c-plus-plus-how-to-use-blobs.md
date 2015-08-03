@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-	ms.date="05/11/2015" 
+	ms.date="07/19/2015" 
     ms.author="tamram"/>
 
 # C++ から BLOB ストレージを使用する方法  
@@ -165,6 +165,8 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 		}
 	}
 
+一覧取得操作の詳細については、「[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)」を参照してください。
+
 ## 方法: BLOB をダウンロードする
 BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **download_to_stream** メソッドを呼び出します。次の例は、**download_to_stream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
 
@@ -231,6 +233,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 -	[C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
+-	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 -	[C++ 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/gg433040.aspx) 
 -	[Azure Storage の MSDN リファレンス](https://msdn.microsoft.com/library/azure/gg433040.aspx)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
@@ -240,4 +243,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

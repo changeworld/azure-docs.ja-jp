@@ -262,4 +262,4 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 <!--Image references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

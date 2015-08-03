@@ -128,7 +128,7 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 ![](./media/web-sites-configure/configure03.png)
 
 
-完全な FTP ユーザー名は "app\\username" です。*app* は Web アプリの名前です。username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
+完全な FTP ユーザー名は "app\username" です。*app* は Web アプリの名前です。username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
 
 ![](./media/web-sites-configure/configure02.png)
 
@@ -174,4 +174,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

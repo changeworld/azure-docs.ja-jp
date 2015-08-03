@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="01/16/2015"
+	ms.date="07/11/2015"
 	ms.author="nitinme"/>
 
 
@@ -25,4 +25,4 @@ HDInsight では、Hadoop、HBase、Apache Storm、カスタマイズされた�
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/HDI.Content.Flow.svg" width="100%" height="100%"> </object>
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

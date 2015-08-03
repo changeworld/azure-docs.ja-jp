@@ -89,4 +89,4 @@ Virtual Network のクロスプレミス接続の詳細については、「[Vir
 RRAS を使用して VNet 接続を構成する場合は、「[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

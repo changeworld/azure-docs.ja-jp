@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/15/2015" 
+	ms.date="07/21/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory でコピー アクティビティを使用する高度なシナリオ 
@@ -24,34 +24,11 @@
 ## 構造体定義を使用した列のフィルター処理
 テーブルの種類によっては、テーブル定義の **Structure** 定義の列を、基になるデータ ソースの列よりも少なく指定することで、ソースの列のサブセットを指定できます。次の表は、さまざまな種類のテーブルの列フィルタリング ロジックをまとめたものです。
 
-<table>
-
-	<tr>
-		<th align="left">テーブルの種類</th>
-		<th align="left">列フィルタリング ロジック</th>
-	<tr>
-
-	<tr>
-		<td>AzureBlobLocation</td>
-		<td>テーブル JSON 内の <b>Structure</b> 定義は、BLOB の構造と一致する必要があります。列のサブセットを選択するには、次のセクション「変換ルール - 列マッピング」で説明する列マッピング機能を使用します。</td>
-	<tr>
-
-	<tr>
-		<td>AzureSqlTableLocation と OnPremisesSqlServerTableLocation</td>
-		<td align="left">
-			コピー アクティビティ定義の中でプロパティ <b>SqlReaderQuery</b> が指定されている場合、テーブルの <b>Structure</b> 定義は、クエリで選択された列と一致している必要があります。<br/><br/>
-			プロパティ <b>SqlReaderQuery</b> が指定されていない場合は、コピー アクティビティによって、テーブル定義の <b>Structure</b> 定義で指定された列に基づいて自動的に SELECT クエリが作成されます。
-		</td>
-	<tr>
-
-	<tr>
-		<td>AzureTableLocation</td>
-		<td>
-			テーブル定義の <b>Structure</b> セクションには、基になる Azure テーブルの列の完全なセットまたはサブセットを含めることができます。
-		</td>
-	<tr>
-
-</table>
+| テーブルの種類 | 列フィルタリング ロジック |
+|-------------------|----------------------- |
+| AzureBlobLocation |テーブル JSON 内の Structure 定義は、BLOB の構造と一致する必要があります。列のサブセットを選択するには、次のセクション「変換ルール - 列マッピング」で説明する列マッピング機能を使用します。 | 
+| AzureSqlTableLocation と OnPremisesSqlServerTableLocation | プロパティ SqlReaderQuery がコピー アクティビティ定義の一部として指定されている場合、テーブルの構造体定義は、クエリで選択されている列に一致している必要があります。プロパティ SqlReaderQuery が指定されていない場合は、コピー アクティビティによって、テーブル定義の構造体定義で指定された列に基づいて自動的に SELECT クエリが作成されます。 |
+| AzureTableLocation | テーブル定義の Structure セクションには、基になる Azure テーブルの列の完全なセットかサブセットを含めることができます。
 
 ## 変換ルール - 列マッピング
 列マッピングを使用して、ソース テーブルの列をシンク テーブルの列にマップする方法を指定できます。列マッピングは、次のシナリオをサポートしています。
@@ -213,49 +190,14 @@
 
 テーブル定義の Structure セクションで指定するデータ型は、**BlobSource** でのみ受け入れられます。次の表は、その他の種類のソースおよびシンクでのデータ型の処理方法を示しています。
 
-<table>	
-	<tr>
-		<th align="left">ソース/シンク</th>
-		<th align="left">データ型の処理ロジック</th>
-	</tr>	
-
-	<tr>
-		<td>SqlSource</td>
-		<td>テーブル定義の <b>Structure</b> セクションで定義されたデータ型は無視されます。基になる SQL データベースで定義されたデータ型は、コピー アクティビティのデータ抽出に使用されます。</td>
-	</tr>
-
-	<tr>
-		<td>SqlSink</td>
-		<td>テーブル定義の <b>Structure</b> セクションで定義されたデータ型は無視されます。基になるソースとターゲットのデータ型を比較し、型の不一致がある場合は、暗黙的な型の変換が行われます。</td>
-	</tr>
-
-	<tr>
-		<td>BlobSource</td>
-		<td><b>BlobSource</b> から <b>BlobSink</b> に転送する場合、型の変換は行われません。テーブル定義の <b>Structure</b> セクションで定義されたデータ型は無視されます。<b>BlobSink</b> 以外のターゲットの場合は、テーブル定義の <b>Structure</b> セクションで定義されたデータ型が受け入れられます。<br/><br/>
-		テーブル定義で <b>Structure</b> が指定されていない場合、型の処理は、次に示す <b>BlobSource</b> テーブルの <b>format</b> プロパティに基づいて実行されます。
-		<ul>
-			<li> <b>TextFormat:</b> すべての列の種類は文字列として扱われ、すべての列名は "Prop_&lt;0 ～ n>" として設定されます。</li> 
-			<li><b>AvroFormat:</b> Avro ファイルに用意された列の種類と名前を使用します。</li> 
-		</ul>
-		</td>
-	</tr>
-
-	<tr>
-		<td>BlobSink</td>
-		<td>テーブル定義の <b>Structure</b> セクションで定義されたデータ型は無視されます。基になる入力データ ストアで定義されたデータ型が使用されます。列は、Avro シリアル化の null 許容型として指定されます。</td>
-	</tr>
-
-	<tr>
-		<td>AzureTableSource</td>
-		<td>テーブル定義の <b>Structure</b> セクションで定義されたデータ型は無視されます。基になる Azure テーブルで定義されたデータ型が使用されます。</td>
-	</tr>
-
-	<tr>
-		<td>AzureTableSink</td>
-		<td>テーブル定義の <b>Structure</b> セクションで定義されたデータ型は無視されます。基になる入力データ ストアで定義されたデータ型が使用されます。</td>
-	</tr>
-
-</table>
+| ソース/シンク | データ型の処理ロジック |
+| ----------- | ------------------------ |
+| SqlSource | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる SQL データベースで定義されたデータ型は、コピー アクティビティのデータ抽出に使用されます。 |
+| SqlSink | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になるソースとターゲットのデータ型を比較し、型の不一致がある場合は、暗黙的な型の変換が行われます。 |
+| BlobSource | BlobSource から BlobSink に転送する場合、型の変換は行われません。テーブル定義の Structure セクションで定義されたデータ型は無視されます。BlobSink 以外のターゲットの場合は、テーブル定義の Structure セクションで定義されたデータ型が受け入れられます。テーブル定義で Structure が指定されていない場合、型の処理は BlobSource の format プロパティに基づいて実行されます。TextFormat：すべての列の種類は文字列として扱われ、すべての列名は "Prop_<0-N>"で設定されます。AvroFormat: Avro ファイルに用意された列の種類と名前を使用します。
+| BlobSink | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる入力データ ストアで定義されたデータ型が使用されます。列は、Avro シリアル化の null 許容型として指定されます。 |
+| AzureTableSource | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる Azure テーブルで定義されたデータ型が使用されます。 |
+| AzureTableSink | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる入力データ ストアで定義されたデータ型が使用されます。 |
 
 **注:** Azure テーブルでは、限られたデータ型のセットのみをサポートしています。詳細については、「[テーブル サービス データ モデルについて][azure-table-data-type]」を参照してください。
 
@@ -347,4 +289,4 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity-advanced/ColumnMappingSample2.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

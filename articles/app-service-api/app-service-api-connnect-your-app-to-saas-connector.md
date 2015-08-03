@@ -236,4 +236,4 @@ SaaS コネクタをインストール、構成、テストする方法を説明
 [Azure ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

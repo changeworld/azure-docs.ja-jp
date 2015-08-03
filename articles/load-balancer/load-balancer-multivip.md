@@ -156,4 +156,4 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

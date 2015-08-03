@@ -3,7 +3,7 @@
 	description="特徴選択と特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるこれらの役割の例を示します。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev"
+	authors="YanZhangADS"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/21/2015"
+	ms.date="07/14/2015"
 	ms.author="zhangya;bradsev" />
 
 
@@ -135,4 +135,4 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

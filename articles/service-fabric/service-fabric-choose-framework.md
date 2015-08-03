@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/15/2015"
+   ms.date="07/09/2015"
    ms.author="seanmck"/>
 
 # サービスのフレームワークの選択
@@ -35,6 +35,5 @@ Service Fabric は、高信頼アクター API と高信頼サービス API と�
 
 - [高信頼アクター API についての詳細](service-fabric-reliable-actors-introduction.md)
 - [高信頼サービス API についての詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

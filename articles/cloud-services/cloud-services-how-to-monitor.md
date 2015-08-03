@@ -124,7 +124,7 @@
 2. **DeploymentId/RoleName/RoleInstance** のパターンを使用して BLOB のパス内を移動し、ロール インスタンスの構成を検索します。 
 
 	![Visual Studio のストレージ エクスプローラー](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioStorage.png)
-3. ロール インスタンスの構成ファイルをダウンロードし、更新してカスタム パフォーマンス カウンターを追加します。たとえば、*C ドライブ*の *Disk Write Bytes/sec* を監視するには、次の設定を **PerformanceCounters\\Subscriptions** ノードの下に追加します。
+3. ロール インスタンスの構成ファイルをダウンロードし、更新してカスタム パフォーマンス カウンターを追加します。たとえば、*C ドライブ*の *Disk Write Bytes/sec* を監視するには、次の設定を **PerformanceCounters\Subscriptions** ノードの下に追加します。
 
 	```xml
 	<PerformanceCounterConfiguration>
@@ -192,4 +192,4 @@
 	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

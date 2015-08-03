@@ -165,7 +165,7 @@ ASP.NET Web アプリケーション内にあるすべての静的コンテン�
 		cd <ProjectFolder>
 		.\UploadContentToAzureBlobs.ps1 -StorageAccount "<yourStorageAccountName>" -StorageContainer "<yourContainerName>"
 
-このスクリプトは、*\\Content* フォルダーおよび *\\Scripts* フォルダーのすべてのファイルを、指定されたストレージ アカウントおよびコンテナーにアップロードします。これには次の利点があります。
+このスクリプトは、*\Content* フォルダーおよび *\Scripts* フォルダーのすべてのファイルを、指定されたストレージ アカウントおよびコンテナーにアップロードします。これには次の利点があります。
 
 -	Visual Studio プロジェクトのファイル構造が自動的にレプリケートされる
 -	必要に応じて BLOB コンテナーが自動的に作成される
@@ -174,7 +174,7 @@ ASP.NET Web アプリケーション内にあるすべての静的コンテン�
 
 `-StorageContainer` パラメーターには、Web アプリケーションの名前または Visual Studio プロジェクト名を使用すると便利です。汎用 "cdn" をコンテナー名として使用する代わりに、Web アプリケーションの名前を使用することにより、関連するコンテンツを識別しやすい同じコンテナーに編成できます。
 
-コンテンツでアップロードが完了した後で、.cshtml ファイルなどの HTML コード内で `http://<yourCDNName>.vo.msecnd.net/<containerName>` を使用して、*\\Content* フォルダーおよび *\\Scripts* フォルダーにリンクできます。Razor ビューで使用できる例を次に示します。
+コンテンツでアップロードが完了した後で、.cshtml ファイルなどの HTML コード内で `http://<yourCDNName>.vo.msecnd.net/<containerName>` を使用して、*\Content* フォルダーおよび *\Scripts* フォルダーにリンクできます。Razor ビューで使用できる例を次に示します。
 
 	<img alt="Mugshot" src="http://az623979.vo.msecnd.net/MyMvcApp/Content/cephas_lin.png" />
 
@@ -230,7 +230,7 @@ CSS 更新を発行して、CSS URL で別のバージョン番号を使用す�
 
 &lt;link href=";http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=@cdnVersion</mark>"; rel=";stylesheet";/&gt; </pre>
 
-すべての発行サイクルの一部としてアセンブリ番号を変更すれば、Web アプリケーションを発行するたびに同様に一意のバージョン番号を取得することができます。これは、次の発行サイクルまでそのまま維持されます。または、Visual Studio プロジェクトで *Properties\\AssemblyInfo.cs* を開き、`*` を `AssemblyVersion` で使用することにより、Web アプリケーションのビルドのたびに Visual Studio でアセンブリ バージョン番号が自動的にインクリメントされます。次に例を示します。
+すべての発行サイクルの一部としてアセンブリ番号を変更すれば、Web アプリケーションを発行するたびに同様に一意のバージョン番号を取得することができます。これは、次の発行サイクルまでそのまま維持されます。または、Visual Studio プロジェクトで *Properties\AssemblyInfo.cs* を開き、`*` を `AssemblyVersion` で使用することにより、Web アプリケーションのビルドのたびに Visual Studio でアセンブリ バージョン番号が自動的にインクリメントされます。次に例を示します。
 
 	[assembly: AssemblyVersion("1.0.0.*")]
 
@@ -261,4 +261,4 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -211,4 +211,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [MySQL]: http://www.mysql.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

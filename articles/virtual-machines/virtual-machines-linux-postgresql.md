@@ -251,4 +251,4 @@ Postgres データベースを作成します。
 ##PostgreSQL に関する詳細
 Microsoft Azure Linux 仮想マシンへの PostgreSQL のインストールは以上で完了です。Microsoft Azure の使用をお楽しみください。PostgreSQL に関する詳細については、[こちら](http://www.postgresql.org/)を参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -4,7 +4,6 @@
 	services="key-vault"
 	documentationCenter=""
 	authors="msmbaldwin"
-	manager="mbaldwin"
 	manager="mbaldwin"tags="azure-resource-manager"/>
 
 <tags
@@ -253,4 +252,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Key Vault の REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)」と「[Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)」をご覧ください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

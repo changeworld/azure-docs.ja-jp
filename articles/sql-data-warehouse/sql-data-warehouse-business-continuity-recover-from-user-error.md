@@ -108,8 +108,8 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL Database のビジネス継続性の概要]: sql-database/sql-database-business-continuity/,d
-[Finalize a recovered database (復旧データベースの最終処理)]: sql-database/sql-database-recovered-finalize/
+[Azure SQL Database のビジネス継続性の概要]: sql-database/sql-database-business-continuity.md
+[Finalize a recovered database (復旧データベースの最終処理)]: sql-database/sql-database-recovered-finalize.md
 
 <!--MSDN references-->
 [データベースの復元要求の作成]: http://msdn.microsoft.com/library/azure/dn509571.aspx
@@ -120,4 +120,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

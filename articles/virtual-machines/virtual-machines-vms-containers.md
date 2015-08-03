@@ -1,9 +1,7 @@
 <properties 
-	title="Virtual Machines and Containers in Azure" 
 	pageTitle="仮想マシンとコンテナーが Azure にもたらすメリット" 
 	description="仮想マシン、Docker および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するためのアプローチと、各アプローチのメリットについて説明します。また、どのアプローチがどのようなシナリオに適しているかについても説明します。" 
 	services="virtual-machines" 
-	solutions="infrastructure" 
 	documentationCenter="virtual-machines" 
 	authors="squillace" 
 	manager="timlt" 
@@ -238,4 +236,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

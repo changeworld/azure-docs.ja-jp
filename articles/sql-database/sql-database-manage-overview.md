@@ -44,4 +44,4 @@ PowerShell などのコマンド ライン ツールを使って、Azure SQL デ
 コマンド ライン ツールを使った Azure SQL データベースの管理の詳細については、[ここをクリック](sql-database-command-line-tools.md)してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

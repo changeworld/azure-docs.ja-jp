@@ -292,4 +292,4 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 [W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -23,4 +23,4 @@
 
 これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="07/16/2015" 
 	ms.author="juliako"/>
 
 
@@ -41,13 +41,13 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 	![[プロセッサ] ページ](./media/media-services-portal-encoding-units/media-services-encoding-scale.png)
 
 	  
-	>[Azure.Note]シンガポール、香港、大阪、北京、上海のデータ センターでは、Premium 占有ユニットの種類を提供していません。
+	>[AZURE.NOTE]シンガポール、香港、大阪、北京、上海のデータ センターでは、Premium 占有ユニットの種類を提供していません。
 
 3. [保存] ボタンを押して、変更を保存します。
 
 	新しいエンコード占有ユニットは、[保存] をクリックするとすぐに割り当てられます。
 
-	>[Azure.Note]コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
+	>[AZURE.NOTE]コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
 
 ##クォータと制限
 
@@ -58,4 +58,4 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

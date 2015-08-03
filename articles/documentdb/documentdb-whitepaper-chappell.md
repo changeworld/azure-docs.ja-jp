@@ -31,4 +31,4 @@
 **PDF ダウンロード**: [DocumentDB の概要 - Microsoft Azure の NoSQL データベースに関するドキュメント](http://go.microsoft.com/fwlink/?LinkId=511318)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -568,7 +568,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ソリューションをビルドしたら、次の手順でアプリケーションを実行します。
 
-1. コマンド プロンプトからサービス (ImageListener\\bin\\Debug\\ImageListener.exe) を実行します。
+1. コマンド プロンプトからサービス (ImageListener\bin\Debug\ImageListener.exe) を実行します。
 
 2. コマンド プロンプトのアドレスをコピーし、ブラウザーに貼り付けて画像を確認します。
 
@@ -580,4 +580,4 @@ namespace Microsoft.ServiceBus.Samples
 
 - [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

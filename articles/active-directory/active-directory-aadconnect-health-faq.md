@@ -68,7 +68,7 @@ Register-AdHealthAgent (インストールの最後の手順) を実行する前
 - 手順 1 – machine.config ファイルにエントリを追加する
 
 
-machine.config ファイルを探します。ファイルのパスは、%windir%\\Microsoft.NET\\Framework64\\[version]\\config\\machine.config です。</li>
+machine.config ファイルを探します。ファイルのパスは、%windir%\Microsoft.NET\Framework64\[version]\config\machine.config です。</li>
 
 machine.config ファイルの <configuration></configuration> 要素の下に、次のエントリを追加します。
  
@@ -125,4 +125,4 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80 と 443 を開く必要があります。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="07/21/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)
@@ -40,156 +40,22 @@
 ## サポートされているソースとシンク
 コピー アクティビティでは、次のデータ移行のシナリオがサポートされています。
 
-<table border="1">	
-	<tr>
-		<th><i>ソース/シンク<i></th>
-		<th>Azure BLOB</th>
-		<th>Azure テーブル</th>
-		<th>Azure SQL Database</th>
-		<th>Azure DocumentDB</th>
-		<th>Azure VM 上の SQL Server</th>
-		<th>内部設置型 SQL Server</th>
-	</tr>	
+| *ソース/シンク* | Azure BLOB | Azure テーブル | Azure SQL Database | Azure DocumentDB | Azure VM 上の SQL Server | 内部設置型 SQL Server |
+| ------------- | ---------- | ----------- | ------------------ | ---------------- | ------------------ | ------------------- |
+| Azure BLOB | ○ | ○ | ○ | ○ | ○ | ○ |
+| Azure テーブル | ○ | ○ | ○ | ○ | ○ | ○ |
+| Azure SQL Database | ○ | ○ | ○ | ○ | ○ | ○ |
+| Azure DocumentDB | ○ | ○ | ○ | | | |  
+| 内部設置型 SQL Server | ○ | ○ | ○ | | ○ | ○ |
+| Azure VM 上の SQL Server | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスのファイル システム | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの Oracle Database | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの MySQL データベース| ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの DB2 データベース | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの Teradata データベース | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの Sybase データベース | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの PostgreSQL データベース | ○ | ○ | ○ | | ○ | ○ |
 
-	<tr>
-		<td><b>Azure BLOB</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>Azure テーブル</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-	</tr>	
-	<tr>
-		<td><b>Azure SQL Dtabase</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-	<tr>
-		<td><b>Azure DocumentDB</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの SQL Server</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>Azure VM 上の SQL Server</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスのファイル システム</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの Oracle Database</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスのファイル システム</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの MySQL データベース</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの DB2 データベース</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの Teradata データベース</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの Sybase データベース</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-	<tr>
-		<td><b>オンプレミスの PostgreSQL データベース</b></td>
-		<td>○</td>
-		<td>○</td>
-		<td>○</td>
-		<td></td>
-		<td>○</td>
-		<td>○</td>
-	</tr>
-
-</table>
 
 詳細については、MSDN ライブラリの「[サポート対象のソースおよびシンク](https://msdn.microsoft.com/library/dn894007.aspx)」のトピックを参照してください。
 
@@ -198,7 +64,7 @@ IaaS 上の SQL Server は、ソースとシンクの両方としてサポート
 
 1.	パブリック DNS 名と静的パブリック ポートを持つ VM: プライベート ポート マッピング
 2.	SQL エンドポイントが公開されていないパブリック DNS 名を持つ VM
-3.	仮想ネットワーク
+3.	Virtual Network
 	<ol type='a'>
 <li>一覧の最後に次のトポロジが含まれている Azure クラウド VPN</li>	
 <li>Azure Virtual Network を使用した内部設置型からクラウドへのサイト間 VPN を持つ VM</li>	
@@ -249,57 +115,15 @@ IaaS 上の SQL Server は、ソースとシンクの両方としてサポート
 
 次の表では、アクティビティのセクションで使用されるタグについて説明します。
 
-<table border="1">	
-	<tr>
-		<th align="left">タグ</th>
-		<th align="left">説明</th>
-		<th align="left">必須</th>
-	</tr>	
-
-	<tr>
-		<td>name</td>
-		<td>アクティビティの名前です。</td>
-		<td>Y</td>
-	</tr>	
-
-	<tr>
-		<td>description</td>
-		<td>アクティビティの用途を説明するテキストです。</td>
-		<td>Y</td>
-	</tr>
-
-	<tr>
-		<td>type</td>
-		<td>アクティビティの種類を指定します。<br/><br/><b>type</b> は、<b>CopyActivity</b> に設定します。</td>
-		<td>Y</td>
-	</tr>
-
-	<tr>
-		<td>inputs</td>
-		<td>アクティビティで使用される入力テーブルです。コピー アクティビティに 1 つの入力テーブルのみを指定します。</td>
-		<td>Y</td>
-	</tr>
-
-	<tr>
-		<td>outputs</td>
-		<td>アクティビティで使用される出力テーブルです。コピー アクティビティに 1 つの出力テーブルのみを指定します。</td>
-		<td>Y</td>
-	</tr>
-
-	<tr>
-		<td>transformation</td>
-		<td>transformation のプロパティは type に依存します。<b>コピー アクティビティ</b>では、<b>transformation</b> セクション内の<b>source</b> セクションと <b>sink</b> セクションを指定する必要があります。詳細については、この記事の後半で説明します。</td>
-		<td>Y</td>
-	</tr>
-
-	<tr>
-		<td>policy</td>
-		<td>アクティビティの実行時の動作に影響するポリシーです。指定されていない場合は既定値が使用されます。</td>
-		<td>N</td>
-	</tr>
-
-
-</table>
+| タグ | 説明 | 必須 |
+|-----|-------------|----------|
+|name|アクティビティの名前です。|Y|
+|description|アクティビティの用途を説明するテキストです。|Y|
+|type|アクティビティの種類を指定します。type は、**CopyActivity** に設定します。 |Y|
+|inputs|アクティビティで使用される入力テーブルです。コピー アクティビティに 1 つの入力テーブルのみを指定します。 | Y
+|outputs|アクティビティで使用される出力テーブルです。コピー アクティビティに 1 つの出力テーブルのみを指定します。 | Y
+|transformation|transformation のプロパティは type に依存します。コピー アクティビティでは、transformation セクション内の source セクションと sink セクションを指定する必要があります。詳細については、この記事の後半で説明します。|Y
+|policy| アクティビティの実行時の動作に影響するポリシーです。指定されていない場合は既定値が使用されます。 | N
 
 JSON プロパティとスクリプトの詳細については、「[JSON Scripting Reference (JSON スクリプト リファレンス)][json-script-reference]」を参照してください。
 
@@ -475,4 +299,4 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

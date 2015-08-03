@@ -236,4 +236,4 @@
 [通知ハブの使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -6,7 +6,7 @@ Azure のアプリケーションを開発する場合に注意する必要の�
 
 ##概要
 
-アプリケーションのセキュリティは、アプリケーションの表面で機能します。アプリケーションの公開先が増えるほど、セキュリティ上の懸念が拡大します。たとえば、自動のバッチ プロセスとして実行されるアプリケーションは、セキュリティの面からは、一般ユーザーが利用できる Web サイトよりも小規模で公開されます。
+アプリケーションのセキュリティは、アプリケーションの表面で機能します。アプリケーションの公開先が増えるほど、セキュリティ上の懸念が拡大します。たとえば、自動のバッチ プロセスとして実行されるアプリケーションは、セキュリティの面から、一般ユーザーが利用できる Web サイトよりも公開先が少ないです。
 
 クラウドに移行すると、インフラストラクチャやネットワーキングに関する管理者の負担は軽減されます。世界規模のセキュリティ手法、ツール、テクノロジを備えたデータ センターで管理されるためです。その一方で、クラウドの性質上、アプリケーションの公開規模は大きくなるため、攻撃を受ける可能性が高まります。そのため、多くのクラウド テクノロジやサービスは、エンドポイント コンポーネントまたはメモリ内のコンポーネントとして公開されています。Azure ストレージ、Service Bus、SQL Database (旧 SQL Azure)、その他の多くのサービスは、ネットワーク経由でエンドポイントからアクセスできます。
 
@@ -21,7 +21,7 @@ Azure のアプリケーションを開発する場合に注意する必要の�
 -   監査やログ機能を適切に実装し、非否認の脅威を抑制します。
 -   認証と承認を、プラットフォームが提供する実証済みのメカニズムを使用して実装し、ID のなりすましや特権の昇格の脅威を抑制します。
 
-脅威、攻撃、脆弱性、対処法の包括的な一覧については、patterns & practices の「[一覧: Web アプリケーションのセキュリティ フレーム](http://msdn.microsoft.com/library/ff649461.aspx)」と「[アプリケーション セキュリティ ガイダンス インデックス](http://msdn.microsoft.com/library/ff650760.aspx)」をご覧ください。
+脅威、攻撃、脆弱性、対処法の包括的な一覧については、patterns & practices の[一覧: Web アプリケーションのセキュリティ フレーム](http://msdn.microsoft.com/library/ff649461.aspx)と[アプリケーション セキュリティ ガイダンス インデックス](http://msdn.microsoft.com/library/ff650760.aspx)をご覧ください。
 
 クラウドにおける認証とアクセス制御のメカニズムは、内部設置型アプリケーションの場合と大きく異なります。クラウド アプリケーションでは、より多くの認証とアクセス制御のオプションを利用できます。これが、混乱の原因となり、実装の欠陥につながります。クラウド アプリケーションの定義では、さらに混乱が生じます。たとえば、アプリケーションをクラウドにデプロイしても、認証メカニズムは Active Directory が提供することがあります。反対に、アプリケーションを内部設置でデプロイし、認証メカニズムはクラウドで提供することもあります。たとえば、Azure Active Directory Access Control (以前の Access Control Service (ACS)) を使用します。
 
@@ -99,7 +99,7 @@ ID とアクセス関連の脆弱性は、対策しない限り、STRIDE モデ�
 -   **要求対応アプリケーションとサービスにおけるロールベースの Access Control (RBAC) 承認。** このシナリオでは、ロールに基づいて アプリケーションに承認ロジックを実装します。
 -   **要求対応アプリケーションとサービスにおける要求ベースの承認。** このシナリオでは、複雑な承認ルールに基づいて アプリケーションに承認ロジックを実装します。
 -   **Azure ストレージ サービスの ID とアクセスのシナリオ。**このシナリオでは、Azure のストレージ BLOB とコンテナーへの共有アクセスを安全に保護する必要があります。
--   **Azure SQL Database の ID とアクセスのシナリオ。**SQL Database では、SQL Server 認証のみがサポートされています。Windows 認証 (統合セキュリティ) はサポートされていません。ユーザーは SQL データベースに接続するたびに、資格情報 (ログイン名とパスワード) を入力する必要があります。
+-   **Azure SQL Database の ID とアクセスのシナリオ。**SQL Database では、SQL Server 認証のみがサポートされています。Windows 認証 (統合セキュリティ) はサポートされていません。ユーザーは SQL Database に接続するたびに、資格情報 (ログイン名とパスワード) を入力する必要があります。
 -   **Azure Service Bus の ID とアクセスのシナリオ。**このシナリオでは、Azure Service Bus キューに安全にアクセスする必要があります。
 -   **メモリ内キャッシュの ID とアクセスのシナリオ。**このシナリオでは、メモリ内キャッシュによって管理されるデータに安全にアクセスする必要があります。
 -   **Azure Marketplace の ID とアクセスのシナリオ。**このシナリオでは、Azure Marketplace のデータセットに安全にアクセスする必要があります。
@@ -279,22 +279,29 @@ ClaimsAuthorizationManager を WIF の機能拡張ポイントとして使用し
 -   [最近使いやすくなった共有アクセス署名 (ブログの投稿)](http://blog.smarx.com/posts/shared-access-signatures-are-easy-these-days)
 
 
-##Azure SQL Database の ID とアクセスのシナリオ
+## Azure SQL Database の ID とアクセスのシナリオ
 
-SQL データベースでは SQL Server 認証のみがサポートされています。Windows 認証 (統合セキュリティ) はサポートされていません。ユーザーは SQL Database に接続するたびに、資格情報 (ログイン名とパスワード) を入力する必要があります。情報漏えいを防ぐため、ユーザー名とパスワードの管理には特に注意を払ってください。
+
+SQL Database では SQL Server 認証のみがサポートされています。Windows 認証 (統合セキュリティ) はサポートされていません。ユーザーは SQL Database に接続するたびに、資格情報 (ログイン名とパスワード) を入力する必要があります。情報漏えいを防ぐため、ユーザー名とパスワードの管理には特に注意を払ってください。
+
 
 ![][15]
 
-このシナリオを解決するには、以下のリソースを参照してください。
 
--   [セキュリティのガイドラインと制限事項 (SQL Database)](http://msdn.microsoft.com/library/windowsazure/ff394108.aspx#authentication)
--   [方法: sqlcmd を使用した Azure SQL Database への接続](http://msdn.microsoft.com/library/windowsazure/ee336280.aspx)
--   [方法: ADO.NET を使用して SQL Database に接続する](http://msdn.microsoft.com/library/windowsazure/ee336243.aspx)
--   [方法: ASP.NET で Azure SQL Database に接続する](http://msdn.microsoft.com/library/windowsazure/ee621781.aspx)
--   [How to: Connect to Azure SQL Database Through WCF Data Services (方法: WCF Data Services で SQL Database に接続する)](http://msdn.microsoft.com/library/windowsazure/ee621789.aspx)
--  [方法: PHP を使用した Azure SQL Database への接続](http://msdn.microsoft.com/library/windowsazure/ff394110.aspx)
--   [方法: JDBC を使用した Azure SQL Database への接続](http://msdn.microsoft.com/library/windowsazure/gg715284.aspx)
--   [方法: ADO.NET Entity Framework を使用して Azure SQL Database に接続する](http://msdn.microsoft.com/library/windowsazure/ff951633.aspx)
+このシナリオを解決するには、次のヘルプ トピックを参照してください。<br/>[Azure SQL Database 開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
+
+
+または、数多くある子トピックのいずれかを参照してください。次に一部のトピックを示します。
+
+
+- [方法: sqlcmd を使用した Azure SQL Database への接続](http://msdn.microsoft.com/library/azure/ee336280.aspx)
+- [方法: ADO.NET を使用して Azure SQL Database に接続する](http://msdn.microsoft.com/library/azure/ee336243.aspx)
+- [方法: PHP を使用した Azure SQL Database への接続](http://msdn.microsoft.com/library/azure/ff394110.aspx)
+- [方法: JDBC を使用した Azure SQL Database への接続](http://msdn.microsoft.com/library/azure/gg715284.aspx)
+
+
+あるいは次を参照してください。<br/> [Azure SQL Database のセキュリティのガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ff394108.aspx#authentication)
+
 
 ##Azure Service Bus の ID とアクセスのシナリオ
 
@@ -376,7 +383,7 @@ WIF に関する主なセキュリティのヒントは次のとおりです。�
 -   **wsFederation's requireHttps="true"**:ID プロバイダーとのフェデレーション プロトコル通信を SSL プロトコル経由で行うことを指定します。
 -   **tokenReplayDetection enabled="true"**:トークン再生検出機能を有効にすることを指定します。この機能は、使用されたトークンのローカル コピーの管理時にサーバー アフィニティを作成することに注意してください。
 -   **audienceUris**トークンの想定されている読者を指定します。アプリケーションが想定しないトークンを受け取ると、WIF によって拒否されます。
--   **requestValidation** と **httpRuntime requestValidationType**:ASP.NET 検証機能を有効または無効にします。「[Windows Identity Foundation (WIF): A Potentially Dangerous Request.Form Value Was Detected from the Client (Windows Identity Foundation (WIF): 潜在的に危険な Request.Form 値がクライアントから検出された)](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx)」のガイダンスをご覧ください。
+-   **requestValidation** と **httpRuntime requestValidationType**:ASP.NET 検証機能を有効または無効にします。[Windows Identity Foundation (WIF): A Potentially Dangerous Request.Form Value Was Detected from the Client (Windows Identity Foundation (WIF): 潜在的に危険な Request.Form 値がクライアントから検出された)](http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx) のガイダンスをご覧ください。
 
 ###Azure AD Access Control
 
@@ -444,4 +451,4 @@ Azure AD Access Control のデプロイにおいては、次のセキュリテ�
 [Web SSO Design]: http://technet.microsoft.com/library/dd807033(WS.10).aspx
 [Federated Web SSO Design]: http://technet.microsoft.com/library/dd807050(WS.10).aspx
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

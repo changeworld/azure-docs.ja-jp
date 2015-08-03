@@ -21,4 +21,4 @@
     ![](./media/mobile-services-generate-aad-app-registration-access-key-rbac/aad-app-settings.png)
   
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

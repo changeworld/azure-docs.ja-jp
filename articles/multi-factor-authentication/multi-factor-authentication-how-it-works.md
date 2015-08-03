@@ -102,4 +102,4 @@ Azure Multi-Factor Authentication を使用する際は、次の 2 種類の課�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

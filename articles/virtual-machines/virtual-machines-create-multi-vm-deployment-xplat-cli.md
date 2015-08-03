@@ -67,4 +67,4 @@
 * [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

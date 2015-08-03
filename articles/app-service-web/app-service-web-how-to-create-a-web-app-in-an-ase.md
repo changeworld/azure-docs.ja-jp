@@ -91,4 +91,4 @@ Web アプリと ASP を作成した後はこれをスケールアップする�
 [HowtoConfigureASE]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

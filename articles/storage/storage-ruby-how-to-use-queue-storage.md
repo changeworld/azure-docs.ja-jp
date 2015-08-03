@@ -153,4 +153,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較](http://msdn.microsoft.com/library/azure/hh767287.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

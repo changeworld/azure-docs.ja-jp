@@ -225,4 +225,4 @@ public Task PublishMessageAsync(long participantId, string message)
 [2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

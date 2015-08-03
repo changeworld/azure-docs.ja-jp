@@ -112,4 +112,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
  
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

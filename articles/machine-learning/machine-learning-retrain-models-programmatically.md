@@ -69,7 +69,7 @@ ML のトレーニング プロセスの一環として、モデルのトレー�
 
 	コード サンプルには、更新が必要なコードの箇所を示すコメントが含まれます。また Reqeust Payload で "output1" の場所を指定する場合、"RelativeLocation" のファイル拡張子は "Outputs": {Global Parameters ... { "output1": { "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageacct;AccountKey=Dx9WbMIThAvXRQWap/aLnxT9LV5txxw==", "RelativeLocation": "mycontainer/output1results.ilearner"}} のように ".ileaner" に変更します。
 
-	1. Azure Storage の情報を提供する。BES 用コード サンプルは、ローカル ドライブのファイル (たとえば "C:\\temp\\CensusIpnput.csv") を Azure Storage にアップロードして、処理し、結果を Azure Storage に戻して書き込みます。  
+	1. Azure Storage の情報を提供する。BES 用コード サンプルは、ローカル ドライブのファイル (たとえば "C:\temp\CensusIpnput.csv") を Azure Storage にアップロードして、処理し、結果を Azure Storage に戻して書き込みます。  
 
 		これを完了するには、ストレージ アカウント用 Azure の管理ポータルでストレージ アカウント名、キー、コンテナー情報を取得して、このコードを更新する必要があります。また、入力ファイルがコードで指定した場所で有効であることを確認する必要があります。
 
@@ -107,4 +107,4 @@ ML のトレーニング プロセスの一環として、モデルのトレー�
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

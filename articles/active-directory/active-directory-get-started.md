@@ -44,4 +44,4 @@ Azure AD には、管理者用に多くのレポートがあります。Azure AD
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

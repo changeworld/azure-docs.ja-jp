@@ -93,4 +93,4 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -44,7 +44,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 ### 手順 1-a: Azure PowerShell を使用してテンプレート ファイルをダウンロードする
 
-JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\RedisCluster)。
+JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\Azure\Templates\RedisCluster)。
 
 フォルダー名をローカル フォルダーのフォルダー名に置き換えて、次のコマンドを実行します。
 
@@ -96,7 +96,7 @@ $webclient.DownloadFile($url,$filePath)
 git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 ```
 
-複製の完了後に、C:\\Azure\\Templates ディレクトリで **redis-high-availability** フォルダーを探します。
+複製の完了後に、C:\Azure\Templates ディレクトリで **redis-high-availability** フォルダーを探します。
 
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
@@ -283,7 +283,7 @@ New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -T
 
 デプロイメントの間に、次のような情報が表示されます。
 
-	PS C:> New-AzureResourceGroup –Name $RGName –Location $locName
+	PS C:\> New-AzureResourceGroup –Name $RGName –Location $locName
 
 	ResourceGroupName : TestRG
 	Location          : westus
@@ -296,7 +296,7 @@ New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -T
 
 	ResourceId        : /subscriptions/1234abc1-abc1-1234-12a1-ab1ab12345ab/resourceGroups/TestRG
 
-	PS C:> New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParameterFile $templateParameterFile -TemplateFile $templateFile
+	PS C:\> New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateParameterFile $templateParameterFile -TemplateFile $templateFile
 	VERBOSE: 2:39:10 PM - Template is valid.
 	VERBOSE: 2:39:14 PM - Create template deployment 'TestDeployment'.
 	VERBOSE: 2:39:25 PM - Resource Microsoft.Resources/deployments 'shared-resources' provisioning status is running
@@ -387,7 +387,7 @@ azure group deployment list TestRG
 
 このセクションでは、Redis クラスターの azuredeploy.json テンプレートの構造について、順を追って説明します。
 
-テンプレート ファイルのコピーをダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates\\RedisCluster)。フォルダー名を指定して以下のコマンドを実行します。
+テンプレート ファイルのコピーをダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\Azure\Templates\RedisCluster)。フォルダー名を指定して以下のコマンドを実行します。
 
 ```powershell
 $folderName="<folder name, such as C:\Azure\Templates\RedisCluster>"
@@ -666,4 +666,4 @@ node-resources.json は、メインの azuredeploy.json ファイルから呼び
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

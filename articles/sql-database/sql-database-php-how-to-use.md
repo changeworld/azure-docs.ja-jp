@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
-	manager="wpickett" 
+	manager="jeffreyg" 
 	editor="mollybos"/>
 
 <tags 
@@ -130,4 +130,4 @@ Azure での PHP と SQL データベースの使用方法を示すサンプル�
 [quick-create]: ./media/sql-database-php-how-to-use/create-new-sql.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

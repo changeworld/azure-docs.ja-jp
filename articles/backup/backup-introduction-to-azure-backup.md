@@ -3,7 +3,7 @@
 	description="この記事では、Azure にデータをバックアップできる Azure Backup サービスの概要について説明します。"
 	services="backup"
 	documentationCenter=""
-	authors="prvijay"
+	authors="trinadhk"
 	manager="shreeshd"
 	editor="tysonn"/>
 
@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2015"
-	ms.author="prvijay"/>
+	ms.date="07/13/2015"
+	ms.author="trinadhk"/>
 
 # Azure Backup の概要
-この記事では、オンプレミスのデータを Azure にバックアップできるマイクロソフトのクラウド統合バックアップ ソリューションの概要について説明します。
+この記事では、オンプレミスまたは Azure に存在するデータをバックアップできる Microsoft のクラウド統合バックアップ ソリューションの概要について説明します。
 
 ## Azure Backup とは
-Azure Backup は、オンプレミスのデータを Azure にバックアップできるマルチテナントの Azure サービスです。既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのサービスに置き換えます。Azure Backup は、拡張性、持続性、高可用性に優れた世界クラスのインフラストラクチャの上に構築されます。このソリューションを使用して、System Center Data Protection Manager (SCDPM) サーバー、Windows サーバーまたは Windows クライアントのコンピューターからデータやアプリケーションをバックアップできます。Azure Backup と SCDPM は、Microsoft のクラウド統合バックアップ ソリューションを構成する基本的なテクノロジです。
+Azure Backup は、オンプレミスまたは Azure に存在するデータをバックアップできるマルチテナントの Azure サービスです。既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのサービスに置き換えます。クラウドで実行されているアセットを保護するための柔軟性も提供します。Azure Backup は、拡張性、持続性、高可用性に優れた世界クラスのインフラストラクチャの上に構築されます。このソリューションを使用して、System Center Data Protection Manager (SCDPM) サーバー、Windows サーバー、Windows クライアント コンピューター、Azure IaaS 仮想マシンからデータやアプリケーションをバックアップできます。Azure Backup と SCDPM は、Microsoft のクラウド統合バックアップ ソリューションを構成する基本的なテクノロジです。
+
+> [AZURE.VIDEO what-is-azure-backup]
 
 ## クラウド設計ポイント
 従来のバックアップ ソリューションは、クラウドをディスクやテープなどのエンドポイントのように扱えるように進化してきました。この方法は簡単でデプロイしやすく、一貫性のある処理を行いますが、使用が制限され、基になるプラットフォームを最大限に活用できません。これは、エンド ユーザーにとって非効率的でコストの高いソリューションになります。Azure を "単なるストレージ エンドポイント" として扱うため、バックアップ ソリューションはパブリック クラウド プラットフォームの豊富な機能を活用できません。一方、Azure Backup は強力で低コストのバックアップ ソリューションを配布するクラウド構造を利用して真のサービスを提供します。エンド ツー エンドのハイブリッド ソリューションを提供するため、オンプレミスのバックアップ ソリューション (SCDPM) を統合しています。
@@ -47,23 +49,24 @@ Azure Backup は、オンプレミスのデータを Azure にバックアップ
 
 6. **コスト効率**: Azure Backup 料金には、インスタンスごとのバックアップ管理手数料と Azure で使用中のストレージのコスト (ブロック BLOB 料金) が含まれます。他のクラウド ベースのバックアップ ソリューションとは異なり、Azure Backup では復元操作に対して料金がかかりません。また、復元操作時の出力 (送信) データの転送コストもかかりません。
 
+7. **クラウドでのバックアップ**: Azure Backup は、仮想マシンをシャットダウンせずに、実行中の Azure IaaS 仮想マシンの VSS ベースのアプリケーション整合性バックアップを提供します。また、ファイルシステムの整合性を維持しながら、Azure で Linux 仮想マシンをバックアップすることもできます。
 
-## Azure にバックアップ可能なアプリケーションとワークロード
-SCDPM Azure Backup と組み合わせることで、次をバックアップできます。
 
-+ 会社のクライアントやサーバー コンピューターからのファイルとフォルダー
+## アプリケーションとワークロード
 
-+ Microsoft HYPER-V 仮想マシンのホスト レベルの仮想マシンのバックアップ
-
-+ Microsoft SQL Server
-
-+ Microsoft SharePoint
-
-+ Microsoft Exchange
+| ワークロード | ソース コンピューター | Azure Backup ソリューション |
+| --- | --- |---|
+| ファイルとフォルダー | Windows Server、Windows クライアント | Azure Backup エージェント |
+| ファイルとフォルダー | Windows Server、Windows クライアント | System Center DPM |
+| Hyper-V 仮想マシン (Windows) | Windows Server | System Center DPM |
+| Hyper-V 仮想マシン (Linux) | Windows Server | System Center DPM |
+| Microsoft SQL Server | Windows Server | System Center DPM |
+| Microsoft SharePoint | Windows Server | System Center DPM |
+| Microsoft Exchange | Windows Server | System Center DPM |
+| Azure IaaS VMs (Windows)| - | Azure Backup | | Azure IaaS VMs (Linux) | - | Azure Backup |
 
 ## 次のステップ
 + Azure Backup サービスに関してよく寄せられる質問は、[こちら](backup-azure-backup-faq.md)をご覧ください。
 + [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
- 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

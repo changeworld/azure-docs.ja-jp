@@ -13,5 +13,6 @@
 - [(Python | Windows. Starter)](sql-database-develop-python-simple-windows.md)
 - [(Python | Mac. Starter)](sql-database-develop-python-simple-mac-osx.md)
 - [(Ruby | Linux. Starter)](sql-database-develop-ruby-simple-linux.md)
+- [(Ruby | Mac. Starter)](sql-database-develop-ruby-simple-mac-osx.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

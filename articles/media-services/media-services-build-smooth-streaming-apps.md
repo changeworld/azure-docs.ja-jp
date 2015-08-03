@@ -1004,4 +1004,4 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

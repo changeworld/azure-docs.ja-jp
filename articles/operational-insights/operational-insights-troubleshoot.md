@@ -72,7 +72,7 @@ Get-SCOMManagementPack | where {$_.Name -match 'IntelligencePacks'} | Select Nam
 ### 手順 2: 直接エージェントに正しいインソリューションがダウンロードされたかどうかを検証する
 >[AZURE.NOTE]Operations Manager のみを使用している場合、この手順は無視することができます。
 
-直接エージェントでは、ソリューションの収集ポリシーが **C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\Health Service State\\Management Packs** にキャッシュされています。
+直接エージェントでは、ソリューションの収集ポリシーが **C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs** にキャッシュされています。
 
 
 ### 手順 3: Advisor サービスにデータが送信されているかどうか (または、少なくとも送信が試行されているかどうか) を検証する
@@ -145,4 +145,4 @@ DNS 名前解決に失敗しました。サーバーが、データの送信先�
 
 このページには、ソリューションごとに分類されたサービスへのデータ送信量に関する情報の測定機能も備えています (これには、ログ検索インデックスではなく課金システムが使用され、2 ～ 3 時間おきに更新されます)。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

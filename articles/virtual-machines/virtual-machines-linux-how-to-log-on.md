@@ -53,4 +53,4 @@ Linux オペレーティング システムを実行する仮想マシンへの�
 <!-- LINKS -->
 [Linux 仮想マシンのパスワードまたは SSH をリセットする方法]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

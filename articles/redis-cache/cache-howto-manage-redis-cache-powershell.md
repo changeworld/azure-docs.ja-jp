@@ -1,7 +1,7 @@
 <properties 
-   pageTitle="Azure PowerShell を使用した Azure Redis Cache の管理" 
-   description="Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。" 
-   services="redis-cache" 
+ pageTitle="Azure PowerShell を使用した Azure Redis Cache の管理" 
+ description="Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。" 
+ services="redis-cache" 
    documentationCenter="" 
    authors="Rick-Anderson" 
    manager="wpickett" 
@@ -95,4 +95,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -41,4 +41,4 @@ Azure 管理ポータルの [構成] タブで、[委任されたグループ管
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

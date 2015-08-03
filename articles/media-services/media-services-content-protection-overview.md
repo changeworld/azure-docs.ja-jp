@@ -141,4 +141,4 @@ Media Services には PlayReady ライセンスを提供するサービスが用
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

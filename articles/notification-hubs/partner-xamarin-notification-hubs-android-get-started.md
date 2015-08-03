@@ -498,4 +498,4 @@ Microsoft では、.NET プラットフォームに通知を送信するため�
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

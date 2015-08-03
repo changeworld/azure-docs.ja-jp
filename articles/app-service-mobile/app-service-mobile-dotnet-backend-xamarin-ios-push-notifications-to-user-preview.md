@@ -112,4 +112,4 @@
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

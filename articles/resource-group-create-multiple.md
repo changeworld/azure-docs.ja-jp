@@ -1,7 +1,7 @@
 <properties
    pageTitle="リソースの複数のインスタンスの作成"
    description="Azure リソース マネージャー テンプレートで copy 操作を使用して、リソースをデプロイする際に複数回反復処理する方法について説明します。"
-   services="na"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
@@ -35,13 +35,13 @@
 
 ## name でのインデックス値の使用
 
-copy 操作では、増分するインデックス値に基づいた一意の名前を付けたリソースの複数のインスタンスを作成できます。たとえば、デプロイ済みの各リソース名の末尾に一意の数値を追加することもできます。次の 3 つの Web サイトをデプロイするには:
+copy 操作では、増分するインデックス値に基づいた一意の名前を付けたリソースの複数のインスタンスを作成できます。たとえば、デプロイ済みの各リソース名の末尾に一意の数値を追加することもできます。次の 3 つの Web サイトをデプロイするとします。
 
 - examplecopy-0
 - examplecopy-1
 - examplecopy-2.
 
-次のテンプレートを使用します。
+この場合は、次のテンプレートを使用します。
 
     "parameters": { 
       "count": { 
@@ -73,13 +73,13 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 ## 配列の使用
    
-コピー操作は、配列内の各要素に対して反復処理するため、配列で作業するときに特に便利です。次の 3 つの Web サイトをデプロイするには:
+コピー操作は、配列内の各要素に対して反復処理するため、配列で作業するときに特に便利です。次の 3 つの Web サイトをデプロイするとします。
 
 - examplecopy-Contoso
 - examplecopy-Fabrikam
 - examplecopy-Coho
 
-次のテンプレートを使用します。
+この場合は、次のテンプレートを使用します。
 
     "parameters": { 
       "org": { 
@@ -114,4 +114,4 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 - [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

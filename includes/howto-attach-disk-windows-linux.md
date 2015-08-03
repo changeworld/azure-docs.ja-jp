@@ -1,5 +1,5 @@
 
-ディスクの詳細については、「[Azure の仮想マシンのディスクについて](../articles/virtual-machines-disks-vhds.md)」を参照してください。
+ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](../articles/virtual-machines-disks-vhds.md) を参照してください。
 
 ##<a id="attachempty"></a>方法: 空のディスクの接続
 空のディスクを接続すると、Azure が .vhd ファイルを作成してそれをストレージ アカウントに保存するため、データ ディスクを比較的簡単に追加できます。
@@ -57,4 +57,4 @@
 
 > [AZURE.NOTE]データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

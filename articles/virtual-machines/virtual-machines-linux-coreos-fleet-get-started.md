@@ -171,4 +171,4 @@ Azure での Linux VM およびオープン ソース環境の使用に関する
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

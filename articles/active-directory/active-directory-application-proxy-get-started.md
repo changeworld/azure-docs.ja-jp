@@ -61,4 +61,4 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 * [Azure への組織としてのサインアップ](../sign-up-organization.md)
 * [Azure ID](../fundamentals-identity.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

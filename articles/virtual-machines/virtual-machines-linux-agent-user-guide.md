@@ -317,4 +317,4 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

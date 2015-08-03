@@ -30,7 +30,7 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。 
 2.	**(推奨)** ポータルとコマンドレットに慣れるための簡単なチュートリアルについての記事「[Azure Data Factory を使ってみる][adfgetstarted]」にあるチュートリアルを確認し、実際に行ってみます。
 3.	**(推奨)** パイプラインを作成してオンプレミスのデータ ソースから Azure BLOB ストアにデータを移動するチュートリアルについての記事「[Azure Data Factory で Pig と Hive を使用する][usepigandhive]」にあるチュートリアルを確認し、実際に行ってみます。
-4.	[ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\\ADFWalkthrough** フォルダーにダウンロードしますが、**以下のフォルダー構造は維持してください**。
+4.	[ADFWalkthrough][adfwalkthrough-download] ファイルを **C:\ADFWalkthrough** フォルダーにダウンロードしますが、**以下のフォルダー構造は維持してください**。
 	- **Pipelines:** パイプラインの定義を含む JSON ファイルが含まれています。
 	- **Tables:** テーブルの定義を含む JSON ファイルが含まれています。
 	- **LinkedServices:** ストレージおよびコンピューティング (HDInsight) クラスターの定義を含む JSON ファイルが含まれています。 
@@ -104,7 +104,7 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 
 テーブル、ユーザー定義型、およびストアド プロシージャは、マーケティング キャンペーン有効性の結果を Azure BLOB ストレージから Azure SQL データベースに移動する際に使用されます。
 
-1. お好みのエディターで **C:\\ADFWalkthrough** フォルダー (または展開したファイルを含むフォルダー) から **uploadSampleDataAndScripts.ps1** を開き、強調表示されている部分を自分のクラスター情報に置き換え、ファイルを保存します。
+1. お好みのエディターで **C:\ADFWalkthrough** フォルダー (または展開したファイルを含むフォルダー) から **uploadSampleDataAndScripts.ps1** を開き、強調表示されている部分を自分のクラスター情報に置き換え、ファイルを保存します。
 
 
 		$storageAccount = <storage account name>
@@ -116,10 +116,10 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
  
 	このスクリプトを使用するには、コンピューターに sqlcmd ユーティリティがインストールされている必要があります。SQL Server がインストール済みであれば、これもインストールされています。そうでない場合は、このユーティリティを[ダウンロード][sqlcmd-install]し、インストールしてください。
 	
-	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
+	または、C:\ADFWalkthrough\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
 2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、**Azure 管理ポータル**またはマスター データベース上の **sp_set_firewall_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
-4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
+4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
 
@@ -246,7 +246,7 @@ Contoso は、ゲーム機、携帯機器、パーソナル コンピュータ�
 
 		Switch-AzureMode AzureResourceManager
 
-16. **C:\\ADFWalkthrough** またはファイルの展開先のフォルダーから **LinkedServices** サブフォルダーに移動します。
+16. **C:\ADFWalkthrough** またはファイルの展開先のフォルダーから **LinkedServices** サブフォルダーに移動します。
 17. 好みのエディターで **HDInsightLinkedService.json** を開き、種類が **HDInsightOnDemandLinkedService** に設定されていることを確認します。
 
 
@@ -296,7 +296,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 ### テーブルを作成するには
 
-1.	Azure PowerShell で、サンプルを展開した場所から **Tables** フォルダー (**C:\\ADFWalkthrough\\Tables**) に移動します。 
+1.	Azure PowerShell で、サンプルを展開した場所から **Tables** フォルダー (**C:\ADFWalkthrough\Tables**) に移動します。 
 2.	**New-AzureDataFactoryTable** コマンドレットを使用して、次のように **RawGameEventsTable**.json のテーブルを作成します。	
 
 
@@ -334,7 +334,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 ## <a name="MainStep5"></a>手順 5. パイプラインを作成してスケジュールを設定する
 この手順では、PartitionGameLogsPipeline、EnrichGameLogsPipeline、AnalyzeMarketingCampaignPipeline の各パイプラインを作成します。
 
-1. **エクスプローラー**で、**C:\\ADFWalkthrough** フォルダー (またはサンプルを展開した場所) から **Pipelines** サブフォルダーに移動します。
+1. **エクスプローラー**で、**C:\ADFWalkthrough** フォルダー (またはサンプルを展開した場所) から **Pipelines** サブフォルダーに移動します。
 2.	好みのエディターで **PartitionGameLogsPipeline.json** を開き、強調表示されている部分をデータ ストレージ アカウント情報の自分のストレージ アカウントに置き換え、ファイルを保存します。
 			
 		"RAWINPUT": "wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/logs/rawgameevents/",
@@ -346,7 +346,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 	**重要:** すべての <storageaccountname> を自分のストレージ アカウント名に置き換えたことを確認してください。
  
-4.  **Azure PowerShell** で、**C:\\ADFWalkthrough** フォルダー (またはサンプルを展開した場所) から **Pipelines** サブフォルダーに移動します。
+4.  **Azure PowerShell** で、**C:\ADFWalkthrough** フォルダー (またはサンプルを展開した場所) から **Pipelines** サブフォルダーに移動します。
 5.  **New-AzureDataFactoryPipeline** コマンドレットを使用して、次のように **PartitionGameLogspeline**.json のパイプラインを作成します。	 
 			
 		New-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionGameLogsPipeline.json
@@ -559,4 +559,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.date="07/20/2015" 
 	ms.author="mebha"/>
 
 
@@ -125,7 +125,7 @@ OSX 10.10 Yosemite に node.js をインストールするには、簡単にイ�
 ## 行を挿入し、パラメーターを適用し、生成されたプライマリ キーを取得する
 
 
-SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENECE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトは、[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値の自動生成に使用できます。この例では、INSERT ステートメントを実行し、SQL インジェクションから保護されているパラメーターを安全に渡し、自動生成されたプライマリ キー値を取得する方法について説明しています。
+SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトを使用して、[プライマリ キーの値](https://msdn.microsoft.com/library/ms179610.aspx)を自動生成できます。この例では、INSERT ステートメントを実行し、SQL インジェクションから保護されているパラメーターを安全に渡し、自動生成されたプライマリ キー値を取得する方法について説明しています。
 
 
 このセクションのコード サンプルは、SQL の INSERT ステートメントにパラメーターを適用します。生成されるプライマリ キーの値は、プログラムによって取得されます。
@@ -170,4 +170,4 @@ SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) �
 		connection.execSql(request);
 	}
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

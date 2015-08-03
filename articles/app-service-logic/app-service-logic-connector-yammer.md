@@ -102,4 +102,4 @@ API アプリを作成すると、Logic App のトリガーやアクションと
 [10]: ./media/app-service-logic-connector-yammer/img10.PNG
 [11]: ./media/app-service-logic-connector-yammer/img11.PNG
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

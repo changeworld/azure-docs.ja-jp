@@ -36,6 +36,10 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 * Visual Studio 2013
 * Visual Studio の [Xamarin 拡張機能]**または** OS X の [Xamarin Studio]
 
+##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-offline-preview](../../includes/app-service-mobile-dotnet-backend-enable-offline-preview.md)]
+
 ## モバイル アプリ同期コードの確認
 
 モバイル アプリのオフライン同期により、ネットワークにアクセスできないときでも、エンド ユーザーはローカル データベースとやり取りできます。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`QSTodoService.cs` のオフライン同期に関連するコードについて説明します。
@@ -166,4 +170,4 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -36,4 +36,4 @@ Service Fabric リソース バランサーの実行時に、これは、すべ�
 詳細: [リソース バランサーのアーキテクチャ](service-fabric-resource-balancer-architecture.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

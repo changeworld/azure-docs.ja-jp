@@ -3,7 +3,7 @@
    description="StorSimple 8600 デバイスの開梱、ラック取り付け、およびケーブル接続の方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
-   authors="SharS"
+   authors="alkohli"
    manager="carolz"
    editor="" />
 <tags 
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/08/2015"
-   ms.author="v-sharos" />
+   ms.date="07/17/2015"
+   ms.author="alkohli" />
 
 # StorSimple 8600 デバイスの取り付け
 
@@ -382,4 +382,4 @@ H、I | ホスト (ファイル サーバーなど)
 これで[オンプレミス StorSimple デバイスを配置して構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

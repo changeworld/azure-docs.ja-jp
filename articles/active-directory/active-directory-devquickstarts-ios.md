@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.date="07/17/2015"
 	ms.author="brandwe"/>
 
 # Azure AD の iOS アプリへの統合
+
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
@@ -51,7 +53,7 @@ iOS のリダイレクト URI の形式は次のとおりです。
 ## *2.DirectorySearcher アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	Microsoft Azure の管理ポータルにサインインします。
+-	Microsoft Azure 管理ポータルにサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -221,10 +223,6 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [Azure AD による Node.JS Web API のセキュリティ保護 >>](../active-directory-devquickstarts-webapi-nodejst.md)
 
-##その他のリソースについては、以下を参照してください。
-- [GitHub の Azure AD サンプル >>](https://github.com/AzureAdSamples)
-- [CloudIdentity.com >>](https://cloudidentity.com)
-- [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
- 
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 # サーバーと使用量データの管理
@@ -57,4 +57,6 @@ Operations Manager 管理グループからオペレーション インサイト
 
 3. データを送信していない管理グループがある場合は、**[トラブルシューティング]** をクリックすると、詳しいトラブルシューティング情報が表示されます。管理グループとそこにデータを送信しているすべてのエージェントが今後不要である場合、**[削除]** をクリックします。
 
-<!---HONumber=July15_HO2-->
+[AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
+
+<!---HONumber=July15_HO4-->

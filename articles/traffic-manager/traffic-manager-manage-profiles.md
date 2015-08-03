@@ -89,4 +89,4 @@ Traffic Manager プロファイルを使用して、Traffic Manager で監視す
 [Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

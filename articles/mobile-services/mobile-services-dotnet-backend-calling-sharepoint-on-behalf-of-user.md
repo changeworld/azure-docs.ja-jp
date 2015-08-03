@@ -214,9 +214,9 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [アプリケーションをテストする]: #test-application
 
 <!-- URLs. -->
-[Active Directory]: https://manage.windowsazure.com/
+[[Active Directory]]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
  
 
-<!----HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

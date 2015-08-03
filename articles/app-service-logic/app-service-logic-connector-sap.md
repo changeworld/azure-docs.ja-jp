@@ -38,7 +38,7 @@ SAP コネクタを使用するには、まず SAP コネクタ API アプリの
 1. Azure ポータルの左下にある [+ 新規] を使用して Azure Marketplace を開きます。
 2. [Web + モバイル]、[API アプリ] の順に移動して、"SAP コネクタ" を検索します。
 3. SAP コネクタを次のように構成します。
-	1. 最初のブレードで、名前、App Service プランなどの一般的な詳細を入力します。
+	1. 最初のブレードで、名前、アプリ サービス プランなどの一般的な詳細を入力します。
 
 	2. パッケージの設定の一部として、SAP の資格情報を入力します。さらに、Azure Service Bus 接続文字列を入力します。これは、オンプレミスの SAP とのハイブリッド接続を確立するために使用されます。
 
@@ -94,4 +94,4 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

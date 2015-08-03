@@ -1,4 +1,4 @@
-<properties title="Creating an Oracle Database Virtual Machine in Azure" pageTitle="Azure での Oracle Database 仮想マシンの作成" description="例として Microsoft Azure で Oracle 仮想マシンを作成し、続いてその上に Oracle データベースを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties pageTitle="Azure での Oracle Database 仮想マシンの作成" description="例として Microsoft Azure で Oracle 仮想マシンを作成し、続いてその上に Oracle データベースを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure での Oracle Database 仮想マシンの作成
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle Database のイメージに基づいて、Azure で仮想マシンを作成する方法を示しています。手順は 2 つです。仮想マシンを作成し、次に仮想マシン内に Oracle Database を作成します。この例で示されているのは Oracle Database バージョン 12c ですが、手順はバージョン 11g とほぼ同じです。
@@ -179,4 +179,4 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

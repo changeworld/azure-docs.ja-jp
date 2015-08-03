@@ -218,4 +218,4 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

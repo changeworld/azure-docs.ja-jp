@@ -121,7 +121,7 @@ API アプリから SaaS プラットフォームへの呼び出しを送信す�
 	 
 			install-package DropboxRestAPI  
 
-1. *Controllers\\ValuesController.cs* を開き、ファイル内のすべてのコードを次のコードに置き換えます。
+1. *Controllers\ValuesController.cs* を開き、ファイル内のすべてのコードを次のコードに置き換えます。
 
 		using DropboxRestAPI;
 		using Microsoft.Azure.AppService.ApiApps.Service;
@@ -447,4 +447,4 @@ SaaS プラットフォームに接続する API アプリのコード記述と�
 [Azure preview portal]: https://portal.azure.com/
 [Azure portal]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

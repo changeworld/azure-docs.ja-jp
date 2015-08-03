@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/15/2015"
+   ms.date="07/17/2015"
    ms.author="subramar"/>
 
 
@@ -80,7 +80,7 @@ UpgradeTimeout = 3000
 
 ## 手順 4: アプリケーションのアップグレードの準備
 
-アプリケーションはビルドされ、アップグレードの準備は完了しています。PowerShell ウィンドウを管理者として開き、「**Get-ServiceFabricApplication**」と入力すると、デプロイされているのが **VisualObjects** のアプリケーションの種類 1.0.0.0 であることが表示されます。アプリケーション パッケージは、Service Fabric SDK を圧縮解除した次の相対パスの下に格納されています - *Samples\\Services\\Stateful\\VisualObjects\\VisualObjects\\obj\\x64\\Debug*。そのディレクトリ内に "パッケージ" フォルダーが見つかるはずです。このフォルダーにアプリケーション パッケージが格納されます。タイムスタンプを確認して、最新のビルドであることを確認します (場合によってはパスを適切に変更する必要もあります)。
+アプリケーションはビルドされ、アップグレードの準備は完了しています。PowerShell ウィンドウを管理者として開き、「**Get-ServiceFabricApplication**」と入力すると、デプロイされているのが **VisualObjects** のアプリケーションの種類 1.0.0.0 であることが表示されます。アプリケーション パッケージは、Service Fabric SDK を圧縮解除した次の相対パスの下に格納されています - *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。そのディレクトリ内に "パッケージ" フォルダーが見つかるはずです。このフォルダーにアプリケーション パッケージが格納されます。タイムスタンプを確認して、最新のビルドであることを確認します (場合によってはパスを適切に変更する必要もあります)。
 
 次に、更新されたアプリケーション パッケージを Service Fabric ImageStore (アプリケーション パッケージが Service Fabric により保存される場所) にコピーします。*ApplicationPackagePathInImageStore* パラメーターから、Service Fabric にアプリケーション パッケージが見つかる場所が通知されます。"VisualObjects_V2" に更新されたアプリケーションが次のコマンド付きで格納されています (場合によってはここでも適切にパスを変更する必要があります)。
 
@@ -126,4 +126,4 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

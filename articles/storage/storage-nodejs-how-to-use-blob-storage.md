@@ -376,4 +376,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

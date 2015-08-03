@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/27/2015"
+   ms.date="07/10/2015"
    ms.author="joaoma" />
 
-# Traffic Manager の概要
+# Traffic Manager について
 
 Microsoft Azure Traffic Manager では、指定したエンドポイントへのユーザー トラフィックの分散を制御できます。このエンドポイントには、Azure Cloud Services、Azure Websites、その他のエンドポイントを指定できます。トラフィック マネージャーは、インターネット リソースのドメイン名に関するドメイン ネーム システム (DNS) クエリに、インテリジェントなポリシー エンジンを適用することで機能します。Azure Cloud Services や Azure Websites は、世界中のさまざまなデータセンターで実行できます。
 
@@ -160,7 +160,7 @@ Traffic Manager プロファイルをエンドポイントとして追加し、�
 
 Traffic Manager に関する独自のプレゼンテーション用の PowerPoint スライドとして、または独自の目的に合わせて変更するために、このトピックで扱った図が必要な場合は、[MSDN ドキュメント内の Traffic Manager に関する図](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)を参照してください。
 
-## 関連項目
+## 次のステップ
 
 [Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
 
@@ -170,4 +170,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

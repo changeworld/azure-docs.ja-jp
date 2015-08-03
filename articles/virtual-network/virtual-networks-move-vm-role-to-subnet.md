@@ -51,4 +51,4 @@ VM に対して静的 DIP が指定されている場合は、VM を新しいサ
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

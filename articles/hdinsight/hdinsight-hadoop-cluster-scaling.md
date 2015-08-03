@@ -145,4 +145,4 @@ HDInsight SDK を使用して Hadoop クラスターのサイズを変更する�
 HDInsight .NET SDK の使用の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」のトピックをご覧ください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

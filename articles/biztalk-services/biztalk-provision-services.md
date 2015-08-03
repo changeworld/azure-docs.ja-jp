@@ -238,4 +238,4 @@ BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシ
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

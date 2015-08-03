@@ -107,4 +107,4 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow) 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

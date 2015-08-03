@@ -55,4 +55,4 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 SSL オフロードを構成します。「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

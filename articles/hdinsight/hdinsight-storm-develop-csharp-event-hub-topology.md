@@ -532,7 +532,7 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 * トポロジが強制終了され、**同じ名前で**再起動されます。
 
-また、保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure のストレージ) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\\apps\\dist\\storm-0.9.3.2.2.1.0-2340\\zkdatatool-1.0\\bin** の HDInsight クラスター上の Storm に配置されています。
+また、保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure のストレージ) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\apps\dist\storm-0.9.3.2.2.1.0-2340\zkdatatool-1.0\bin** の HDInsight クラスター上の Storm に配置されています。
 
 >[AZURE.NOTE]クラスターにインストールされた Storm のバージョンは今後変更される可能性があるため、パスのバージョン番号は異なる場合があります。
 
@@ -557,4 +557,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

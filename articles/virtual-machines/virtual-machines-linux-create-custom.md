@@ -1,27 +1,27 @@
-<properties 
-	pageTitle="Azure 上で Linux を実行するカスタム仮想マシンの作成" 
-	description="Azure 上で Linux を実行するカスタム仮想マシンを作成する方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="KBDAzure" 
-	manager="timlt" 
+<properties
+	pageTitle="Azure 上で Linux を実行するカスタム仮想マシンの作成"
+	description="Azure 上で Linux を実行するカスタム仮想マシンを作成する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="dsk-2015"
+	manager="timlt"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/23/2015" 
-	ms.author="kathydav"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/23/2015"
+	ms.author="dkshir"/>
 
 #Azure 上で Linux を実行するカスタム仮想マシンを作成する方法
 
 *カスタム*仮想マシンとは、**[ギャラリーから]** オプションで作成する仮想マシンのことです。**[簡易作成]** オプションよりも構成の選択肢が多いことから、このように呼びます。選択できるオプションは次のとおりです。
 
 - 仮想ネットワークと VM との接続
-- VM エージェントとマルウェア対策用などの拡張機能のインストール 
+- VM エージェントとマルウェア対策用などの拡張機能のインストール
 - 既存のクラウド サービスへの VM の追加
 - 既存のストレージ アカウントへの VM の追加
 - 可用性セットへの VM の追加
@@ -30,7 +30,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-LinuxVM.md)]
 
-
- 
-
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

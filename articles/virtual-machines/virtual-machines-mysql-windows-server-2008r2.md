@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/20/2015" 
+	ms.date="07/10/2015" 
 	ms.author="kathydav"/>
 
 
@@ -22,6 +22,7 @@
 
 [MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure 管理ポータル](http://manage.windowsazure.com)では、Windows Server 2012 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。次に、MySQL Server としてこれをインストールと構成できます。
 
+Linux 上で MySQL をインストールする方法の詳細については、[「MySQL を Azure でインストールする方法」](virtual-machines-linux-install-mysql.md)を参照してください。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -83,7 +84,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_CommandPrompt.png)
  
-19.	また、**C:\\Program Files (x86)\\MySQL\\MySQL Server 5.6\\my-default.ini** ファイルに入力することにより、ベース ディレクトリやデータ ディレクトリ、ドライブなど、サーバー構成に関する既定の設定についても構成できます。詳細については、[5.1.2 サーバー構成の既定値](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)に関するページを参照してください。
+19.	また、**C:\Program Files (x86)\MySQL\MySQL Server 5.6\my-default.ini** ファイルに入力することにより、ベース ディレクトリやデータ ディレクトリ、ドライブなど、サーバー構成に関する既定の設定についても構成できます。詳細については、[5.1.2 サーバー構成の既定値](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)に関するページを参照してください。
 
 
 インターネット上の MySQL クライアント コンピューターで MySQL Server サービスを利用可能にするには、MySQL Server サービスがリッスンしている TCP ポートにエンドポイントを構成し、別の Windows ファイアウォール ルールを作成する必要があります。前の手順 10. で説明した [Type and Networking] ページで別のポートを指定した場合を除き、これは TCP ポート 3306 です。
@@ -127,4 +128,4 @@ MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

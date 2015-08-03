@@ -53,4 +53,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
  * [Azure Automation: クラウド内の SQL エージェント](http://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) (ブログ投稿)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

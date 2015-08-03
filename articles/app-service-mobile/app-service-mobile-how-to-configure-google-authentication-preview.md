@@ -18,6 +18,8 @@
 
 # Google ログインを使用するようにアプリケーションを構成する方法
 
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+
 このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
@@ -71,4 +73,4 @@
 [Azure の管理ポータル]: https://portal.azure.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

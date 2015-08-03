@@ -37,7 +37,7 @@ PHP Web ロールまたはワーカー ロールを作成するための最初�
 
 新しい Azure サービス プロジェクトを作成するには、Azure PowerShell を管理者として実行し、次のコマンドを実行します。
 
-	PS C:>New-AzureServiceProject myProject
+	PS C:\>New-AzureServiceProject myProject
 
 このコマンドを実行すると、Web ロールおよび worker ロールを追加できる新しいディレクトリ (`myProject`) が作成されます。
 
@@ -212,4 +212,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [発行の設定をインポートする方法]: /develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
 [Azure にクラウド サービスを展開する方法]: /develop/php/how-to-guides/powershell-cmdlets/#Deploy
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

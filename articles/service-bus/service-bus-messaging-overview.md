@@ -38,4 +38,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [How to use Service Bus Topics (Service Bus トピックの利用方法)](service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

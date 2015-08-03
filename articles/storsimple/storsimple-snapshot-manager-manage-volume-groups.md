@@ -142,4 +142,4 @@
 
 [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

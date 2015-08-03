@@ -161,7 +161,7 @@ Azure AD アプリと属性フィルター|Azure AD アプリと属性フィル�
 
 > [AZURE.WARNING]現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
 
-デバイスの書き戻し機能では、クラウドに登録されているデバイス (Intune など) を AD DS に置いて、条件付きアクセスすることができます。この機能を有効にするには、AD DS を準備する必要があります。AD FS とデバイス登録サービス (DRS) をインストールしている場合は、AD でデバイスの書き戻しを準備するための PowerShell コマンドレットが DRS に用意されています。DRS をインストールしていない場合は、C:\\Program Files\\Microsoft Azure Active Directory Connect\\AdPrep\\AdSyncAdPrep.psm1 as an enterprise admin を実行できます。
+デバイスの書き戻し機能では、クラウドに登録されているデバイス (Intune など) を AD DS に置いて、条件付きアクセスすることができます。この機能を有効にするには、AD DS を準備する必要があります。AD FS とデバイス登録サービス (DRS) をインストールしている場合は、AD でデバイスの書き戻しを準備するための PowerShell コマンドレットが DRS に用意されています。DRS をインストールしていない場合は、C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncAdPrep.psm1 as an enterprise admin を実行できます。
 
 PowerShell コマンドレットを実行する前に、まずインポートする必要があります。
 
@@ -273,4 +273,4 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 * [詳細情報](active-directory-aadconnect-learn-more.md)
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx) 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

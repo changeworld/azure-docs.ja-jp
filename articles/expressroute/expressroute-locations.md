@@ -57,7 +57,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
  **+** は近日対応予定を表します
 
-接続を設定する手順については、[EXP 接続の構成](expressroute-configuring-exps.md)に関するページを参照してください。
+接続を設定する手順については、[EXP 接続の構成](expressroute-configuring-exps.md)に関するページをご覧ください。
 
 ## ネットワーク サービス プロバイダー (NSP) の場所
 
@@ -115,4 +115,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - 同じ仮想ネットワークに対してサイト間 VPN 接続と ExpressRoute の両方を構成する必要がある場合は、「[Configure ExpressRoute and Site-to-Site VPN connections that coexist (共存する ExpressRoute とサイト間 VPN の接続の構成)](expressroute-coexist.md)」を参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

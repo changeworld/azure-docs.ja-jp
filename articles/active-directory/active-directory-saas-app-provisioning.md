@@ -106,4 +106,4 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からメッセージを送信してください。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

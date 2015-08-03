@@ -18,6 +18,8 @@ ms.author="mahender" />
 
 [AZURE.INCLUDE [app-service-mobile-selector-aad-sso](../../includes/app-service-mobile-selector-aad-sso.md)]
 
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+
 このチュートリアルでは、Active Directory 認証ライブラリを使用して、クイック スタート プロジェクトに認証を追加します。
 
 ユーザーを認証できるようにするには、Azure Active Directory (AAD) テナントにアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、App Service を登録し、App Service に対するアクセス許可を公開する必要があります。次に、iOS アプリを登録し、これらのアクセス許可へのアクセス権を付与する必要があります。
@@ -28,6 +30,10 @@ ms.author="mahender" />
 * [Mobile Apps の使用]に関するチュートリアルを完了していること。
 * Microsoft Azure Mobile Services SDK
 * [iOS 向け Active Directory 認証ライブラリ]
+
+##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-auth-preview](../../includes/app-service-mobile-dotnet-backend-enable-auth-preview.md)]
 
 ## <a name="register-application"></a>Azure Active Directory にアプリケーションを登録する
 
@@ -117,4 +123,4 @@ ms.author="mahender" />
  [Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

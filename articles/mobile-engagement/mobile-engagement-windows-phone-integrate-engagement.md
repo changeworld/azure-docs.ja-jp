@@ -247,4 +247,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 > [AZURE.WARNING]バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

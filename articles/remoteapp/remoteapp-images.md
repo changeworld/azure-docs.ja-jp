@@ -2,7 +2,7 @@
     pageTitle="RemoteApp テンプレート イメージとは何ですか。"
     description="RemoteApp に含まれるテンプレート イメージについて説明します。"
     services="remoteapp"
-    documentationCenter=""
+	documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -101,4 +101,4 @@ Office 365 ProPlus のアプリのすべての機能は、Office 365 ProPlus の
 > [AZURE.IMPORTANT]**法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、*運用環境では使用できません*。Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。RemoteApp のライセンス体系の詳細については、「[How does licensing work in Azure RemoteApp?](remoteapp-licensing.md)」を参照してください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/19/2015"
+   ms.date="07/13/2015"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。この記事では、Python を使用して、MapReduce 操作を実行する方法を説明します。
 
-> [AZURE.NOTE]この記事は、Michael Noll が [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/](Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
+> [AZURE.NOTE]この記事は、Michael Noll が http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/ (Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
 
 ##前提条件
 
@@ -97,19 +97,19 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 **reducer.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
 	#!/usr/bin/env python
-	
+
 	# import modules
 	from itertools import groupby
 	from operator import itemgetter
 	import sys
-	
+
 	# 'file' in this case is STDIN
 	def read_mapper_output(file, separator='\t'):
 		# Go through each line
 	    for line in file:
 			# Strip out the separator character
 	        yield line.rstrip().split(separator, 1)
-	
+
 	def main(separator='\t'):
 	    # Read the data using read_mapper_output
 	    data = read_mapper_output(sys.stdin, separator=separator)
@@ -127,7 +127,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 	        except ValueError:
 	            # Count was not a number, so do nothing
 	            pass
-	
+
 	if __name__ == "__main__":
 	    main()
 
@@ -153,12 +153,12 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 2. MapReduce ジョブを開始するには次のコマンドを使用します。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/davinci.txt -output wasb:///example/wordcountout
+		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
 
 	このコマンドには次のようなものがあります。
 
 	* **hadoop-streaming.jar**: MapReduce 操作のストリーミングを実行する際に使用します。Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
-	
+
 	* **-files**: 指定されたファイルがこの MapReduce ジョブに必要なこと、また、すべてのワーカー ノードにコピーする必要があることを Hadoop に伝えます。
 
 	* **-mapper**: マッパーとして使用するファイルを Hadoop に伝えます。
@@ -201,6 +201,5 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

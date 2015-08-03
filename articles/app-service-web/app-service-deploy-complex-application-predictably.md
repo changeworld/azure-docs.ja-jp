@@ -274,7 +274,7 @@ Web アプリにドリルダウンすると、下のスクリーンショット�
 2.	テンプレート ファイルに合うパラメーター ファイルを作成する
 3.	パラメーター ファイルを使用してテンプレート ファイルをデプロイする
 
-最後の手順は、PowerShell コマンドレットで簡単に実行されます。Visual Studio でアプリケーションをデプロイしたときに実行された内容を確認するには、Scripts\\Deploy-AzureResourceGroup.ps1 を開きます。大量のコードが存在しますが、パラメーター ファイルを使用してテンプレート ファイルをデプロイするために必要な関連するすべてのコードのみを強調表示しています。
+最後の手順は、PowerShell コマンドレットで簡単に実行されます。Visual Studio でアプリケーションをデプロイしたときに実行された内容を確認するには、Scripts\Deploy-AzureResourceGroup.ps1 を開きます。大量のコードが存在しますが、パラメーター ファイルを使用してテンプレート ファイルをデプロイするために必要な関連するすべてのコードのみを強調表示しています。
 
 ![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
@@ -304,4 +304,4 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

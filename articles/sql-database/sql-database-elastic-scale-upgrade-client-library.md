@@ -48,7 +48,7 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 
 4. [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)から Elastic Database クライアントのアップグレード スクリプトレットをダウンロードして、DLL が含まれる同じフォルダーに保存します。
 
-5. そのフォルダーのコマンド プロンプトから"PowerShell.\\upgrade.ps1"を実行し、画面の指示に従います。
+5. そのフォルダーのコマンド プロンプトから"PowerShell.\upgrade.ps1"を実行し、画面の指示に従います。
  
 ***オプション 2: C# を使用してメタデータをアップグレードする***
 
@@ -94,4 +94,4 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 [1]: ./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

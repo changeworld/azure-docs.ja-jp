@@ -139,4 +139,4 @@ App Service API アプリは、Web サービスをホストする追加機能を
 このシリーズで作成した API アプリは、すべてのユーザーが呼び出しに使用できます。認証済みユーザーのみが API アプリを呼び出すことができるように、API アプリを保護する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

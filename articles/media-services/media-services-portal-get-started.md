@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ne"
 	ms.topic="get-started-article" 
-	ms.date="04/08/2015"
+	ms.date="07/16/2015"
 	ms.author="juliako"/>
 
 
@@ -175,7 +175,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成してアセットを "発行" する必要があります。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
 
-アセットの発行に Azure 管理ポータルを使用するとロケーターが作成され、OnDemantOrigin ベースの URL (アセットに .ism ファイルが含まれている場合) または SAS URL が提供されます。
+アセットの発行に Azure 管理ポータルを使用するとロケーターが作成され、OnDemand ベースの URL (アセットに .ism ファイルが含まれている場合) または SAS URL が提供されます。
 
 SAS URL には次の形式があります。
 
@@ -255,4 +255,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

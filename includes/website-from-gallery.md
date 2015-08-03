@@ -88,4 +88,4 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 [marketplace]: ./media/website-from-gallery/marketplace-icon.png
 [groupname]: ./media/website-from-gallery/set-rg.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

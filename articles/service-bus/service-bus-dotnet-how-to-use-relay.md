@@ -268,4 +268,4 @@ App.config ファイルを使用してクライアントを構成することも
   [MSDN]: https://msdn.microsoft.com/ja-jp/library/azure/dn194201.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

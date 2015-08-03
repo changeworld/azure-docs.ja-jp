@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.date="07/19/2015" 
 	ms.author="nitinme"/>
 
 # 概要: Azure HDInsight での Apache Spark 
@@ -48,7 +48,7 @@ Azure HDInsight は、完全に管理された Spark サービスを提供しま
 | BI ツールとの統合 | HDInsight の Spark には、データ分析用の [Power BI](http://www.powerbi.com/) や [Tableau](http://www.tableau.com/products/desktop) などの人気のある BI ツールへのコネクタが要されています。|
 | 読み込み済みの Anaconda ライブラリ | HDInsight の Spark クラスターには、Anaconda ライブラリが事前にインストールされています。[Anaconda](http://docs.continuum.io/anaconda/) は、機械学習、データ分析、視覚化などのための 200 個近いライブラリを提供します。|
 | 拡張性 | 作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。すべての HDInsight クラスターでは、クラスター内のノード数を変更できます。また、すべてのデータは Azure BLOB ストレージに格納されるため、Spark クラスターはデータの損失なしで削除できます。 |
-| 常時サポート | HDInsight の Spark では、エンタープライズ レベルの 24 時間無休体制のサポートと、アップタイム 99.9% の SLA が提供されます。|
+| 常時サポート | HDInsight の Spark では、エンタープライズ レベルの 24 時間体制のサポートと、アップタイム 99.9% の SLA が提供されます。|
 
 
 
@@ -66,13 +66,13 @@ HDInsight の Apache Spark では、データは Azure BLOB に格納されま�
 
 [チュートリアルを見る](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
-Apache Spark には、Spark を基にして作成された機械学習ライブラリである [MLlib](http://spark.apache.org/mllib/) が付属しています。さらに、HDInsight の Spark には、機械学習用のさまざまなパッケージを含む Python ディストリビューションである Anaconda も含まれています。これと IPython Notebook の組み込みサポートを組み合わせることで、機械学習アプリケーションを作成するための最高の環境が提供されます。
+Apache Spark には、Spark を基にして作成された機械学習ライブラリである [MLlib](http://spark.apache.org/mllib/) が付属しています。さらに、HDInsight の Spark には、機械学習用のさまざまなパッケージを含む Python ディストリビューションである Anaconda も含まれています。これと Jupyter Notebook の組み込みサポートを組み合わせることで、機械学習アプリケーションを作成するための最高の環境が提供されます。
 
 ### ストリーミングおよびリアルタイムのデータ分析
 
 [チュートリアルを見る](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 
-リアルタイムのデータ分析は、到着したデータの処理によるデータ洞察の時間短縮から、真のストリーミング ソリューションの構築まで、広範囲のシナリオに使用されます。HDInsight の Spark では、リアルタイム分析ソリューションを構築するためのリッチなサポートが提供されます。Spark には既に Kafka、Flume、Twitter、ZeroMQ、TCP ソケットなどの多数のソースからデータを取り込むためのコネクタがありますが、HDInsight の Spark では Azure Event Hubs からデータを取り込むためのファーストクラスのサポートが追加されます。Event Hubs は、Azure で最も広く使用されているキュー サービスです。すぐに使用できる Event Hubs のサポートにより、HDInsight の Spark はリアルタイム分析パイプラインを構築するための理想的なプラットフォームです。
+リアルタイムのデータ分析は、到着したデータの処理によるデータ洞察の時間短縮から、真のストリーミング ソリューションの構築まで、広範囲のシナリオに使用されます。HDInsight の Spark では、リアルタイム分析ソリューションを構築するためのリッチなサポートが提供されます。Spark には既に Kafka、Flume、Twitter、ZeroMQ、TCP ソケットなどの多数のソースからデータを取り込むためのコネクタがありますが、HDInsight の Spark では Azure Event Hubs からデータを取り込むための最上位のサポートが追加されます。Event Hubs は、Azure で最も広く使用されているキュー サービスです。すぐに使用できる Event Hubs のサポートにより、HDInsight の Spark はリアルタイム分析パイプラインを構築するための理想的なプラットフォームです。
 
 ##<a name="next-steps"></a>Spark クラスターに含まれるコンポーネント
 
@@ -82,7 +82,7 @@ HDInsight の Spark には、クラスターで使用できる次のコンポー
 - [Anaconda](http://docs.continuum.io/anaconda/)
 - [Spark ジョブ サーバー](https://github.com/spark-jobserver/spark-jobserver)
 - [Zeppelin Notebook](https://zeppelin.incubator.apache.org)
-- [IPython Notebook](https://jupyter.org)
+- [Jupyter Notebook](https://jupyter.org)
 
 HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツールから HDInsight の Spark クラスターに接続するための [ODBC ドライバー](http://go.microsoft.com/fwlink/?LinkId=616229)も提供されます。
 
@@ -99,4 +99,4 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

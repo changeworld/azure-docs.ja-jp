@@ -24,4 +24,4 @@
 
 デバイスの構成が完了しました。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

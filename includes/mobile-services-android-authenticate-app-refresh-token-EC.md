@@ -239,4 +239,4 @@
 
        このコードでは、`ProgressFilter` 以外に `RefreshTokenCacheFilter` が使用されています。また、`onCreate` の間に、トークン キャッシュも読み込みます。そのため、`false` が `authenticate` メソッドに渡されます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

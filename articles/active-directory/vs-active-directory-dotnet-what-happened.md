@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Active Directory 認証の使用 - 変更内容" 
-	description="Visual Studio の Azure Active Directory プロジェクトでの変更内容について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+<properties
+	pageTitle="Active Directory 認証の使用 - 変更内容"
+	description="Visual Studio の Azure Active Directory プロジェクトでの変更内容について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
-  
-<tags 
-	ms.service="active-directory" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-what-happened" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/06/2015" 
+
+<tags
+	ms.service="active-directory"
+	ms.workload="web"
+	ms.tgt_pltfrm="vs-what-happened"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/06/2015"
 	ms.author="patshea123"/>
 
 # プロジェクトの変更点
@@ -23,7 +23,7 @@
 > - [What Happened](vs-active-directory-dotnet-what-happened.md)
 
 ###<span id="whathappened">プロジェクトの変更点</span>
- 
+
 リファレンスが追加されました。
 
 #####NuGet パッケージのリファレンス
@@ -50,28 +50,55 @@
 - `System.IdentityModel.Tokens.Jwt`
 - `System.Runtime.Serialization`
 
-#####コード ファイルがプロジェクトに追加された 
+#####コード ファイルがプロジェクトに追加された
 
 認証スタートアップ クラス `App_Start/Startup.Auth.cs` が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。さらに、`SignIn()` メソッドおよび `SignOut()` メソッドを含むコントローラー クラス Controllers/AccountController.cs が追加されました。最後に、SignIn/SignOut のアクション リンクを含む部分ビュー `Views/Shared/_LoginPartial.cshtml` が追加されました。
 
 #####スタートアップ コードがプロジェクトに追加された
- 
+
 既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが更新されて `ConfigureAuth(app)` 呼び出しが含まれています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。
 
-#####app.config または web.config に新しい構成値が含まれる 
+#####app.config または web.config に新しい構成値が含まれる
 
 次の構成エントリが追加されました。<pre> `<appSettings>
-	    <add key="ida:ClientId" value="ClientId from the new Azure AD App" /> 
-	    <add key="ida:AADInstance" value="https://login.windows.net/" /> 
+	    <add key="ida:ClientId" value="ClientId from the new Azure AD App" />
+	    <add key="ida:AADInstance" value="https://login.microsoftonline.com/" />
 	    <add key="ida:Domain" value="The selected Azure AD Domain" />
 	    <add key="ida:TenantId" value="The Id of your selected Azure AD Tenant" />
-	    <add key="Ida:PostLogoutRedirectURI" value="Your project start page" /> 
+	    <add key="ida:PostLogoutRedirectUri" value="Your project start page" />
 	</appSettings>` </pre>
 
-#####Azure Active Directory (AD) アプリが作成された 
+#####Azure Active Directory (AD) アプリが作成された
 ウィザードで選択したディレクトリに Azure AD アプリケーションが作成されました。
 
-###*[ディレクトリ データの読み取り]* チェック ボックスをオンにした場合は、プロジェクトがさらに変更されています。
+###*[個々のユーザー アカウントの認証を無効にする]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
+NuGet パッケージのリファレンスが削除されるほか、ファイルが削除およびバックアップされます。プロジェクトの状態によっては、追加のリファレンスやファイルを手動で削除したり、必要に応じてコードを変更しなければならない場合があります。
+
+#####削除される NuGet パッケージのリファレンス (存在する場合)
+
+- `Microsoft.AspNet.Identity.Core`
+- `Microsoft.AspNet.Identity.EntityFramework`
+- `Microsoft.AspNet.Identity.Owin`
+
+#####バックアップおよび削除されるコード ファイル (存在する場合)
+
+以下の各ファイルがバックアップされ、プロジェクトから削除されます。バックアップ ファイルは、プロジェクト ディレクトリのルートにある "Backup" フォルダーに配置されます。
+
+- `App_Start\IdentityConfig.cs`
+- `Controllers\ManageController.cs`
+- `Models\IdentityModels.cs`
+- `Models\ManageViewModels.cs`
+
+#####バックアップされるコード ファイル (存在する場合)
+
+以下の各ファイルがバックアップされてから置き換えられます。バックアップ ファイルは、プロジェクト ディレクトリのルートにある "Backup" フォルダーに配置されます。
+
+- `Startup.cs`
+- `App_Start\Startup.Auth.cs`
+- `Controllers\AccountController.cs`
+- `Views\Shared_LoginPartial.cshtml`
+
+###*[ディレクトリ データの読み取り]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
 リファレンスがさらに追加されました。
 
 #####NuGet パッケージの追加リファレンス
@@ -96,18 +123,18 @@
 - `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms`
 - `System.Spatial`
 
-#####コード ファイルがプロジェクトにさらに追加された 
+#####コード ファイルがプロジェクトにさらに追加された
 
 トークン キャッシュをサポートするために 2 つのファイル (`Models\ADALTokenCache.cs` と `Models\ApplicationDbContext.cs`) が追加されました。Azure Graph API を使用するユーザー プロファイル情報へのアクセスについて説明するために、コント ローラーとビューがさらに追加されました。これらのファイルは `Controllers\UserProfileController.cs` と `Views\UserProfile\Index.cshtml` です。
 
 #####スタートアップ コードがプロジェクトにさらに追加された
- 
+
 `startup.auth.cs` ファイルでは、新しい `OpenIdConnectAuthenticationNotifications` オブジェクトが `OpenIdConnectAuthenticationOptions` の `Notifications` メンバーに追加されました。これは、OAuth コードを受信できるようにして、アクセス トークンと交換するためのものです。
 
 #####app.config または web.config にさらに変更が加えられた
 
 次の構成エントリがさらに追加されました。<pre>`<appSettings>
-	    <add key="Ida:ClientSecret" value="Your Azure AD App's new client secret" /> 
+	    <add key="ida:ClientSecret" value="Your Azure AD App's new client secret" />
 	</appSettings>`</pre>
 
 次の構成セクションと接続文字列が追加されました。<pre> `<configSections>
@@ -130,9 +157,8 @@
 
 
 #####Azure Active Directory アプリが更新された
-Azure Active Directory アプリが更新され、*[ディレクトリ データの読み取り]* アクセス許可が含まれるようになりました。また、`web.config` ファイルで *ClientSecret* として使用される追加のキーが作成されました。
+Azure Active Directory アプリが更新され、*[ディレクトリ データの読み取り]* アクセス許可が含まれるようになりました。また、`web.config` ファイルで *ida:ClientSecret* として使用される追加のキーが作成されました。
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
- 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

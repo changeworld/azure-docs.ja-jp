@@ -107,4 +107,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

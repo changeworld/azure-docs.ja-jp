@@ -325,4 +325,4 @@ MSDN の「[Azure Search サービス REST API](http://msdn.microsoft.com/librar
 [1]: ./media/search-api-scoring-profiles-2014-10-20-Preview/scoring_interpolations.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

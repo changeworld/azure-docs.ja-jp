@@ -118,4 +118,4 @@ SDK のいくつかのバージョンがない場合は、次の手順に従う�
 
 プロジェクトに新しい `res/layout/engagement_loading.xml` ファイルが埋め込まれました。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

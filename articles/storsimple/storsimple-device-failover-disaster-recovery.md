@@ -140,4 +140,4 @@ StorSimple Manager サービスを使用してデバイスを管理する方法�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

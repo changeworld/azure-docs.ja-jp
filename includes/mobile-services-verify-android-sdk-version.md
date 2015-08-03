@@ -20,4 +20,4 @@ Android SDK の開発が継続中であるため、Android Studio にインス�
 
 4. Android Studio では Eclipse と異なり、ターゲットの SDK バージョンと最小の SDK バージョンを指定するためにマニフェスト ファイルを使用しません。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.date="07/17/2015"
 	ms.author="vittorib"/>
 
 # Azure AD と Apache Cordova アプリとの統合
+
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
@@ -63,8 +65,8 @@ Apache Cordova がコンピューターにセットアップされていない�
 	-   [ios sim](https://www.npmjs.org/package/ios-sim) – コマンド ラインから iOS シミュレーターで iOS アプリケーションを起動することができます (`npm install -g ios-sim` として、端末経由で簡単にインストールできます)。
 
 - Android 向けにアプリケーションを構築して実行する場合
-	- [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上をインストールします。`JAVA_HOME` (環境変数) が JDK インストール パス (たとえば、C:\\Program Files\\Java\\jdk1.7.0_75) に従って正しく設定されていることを確認します。
-	- [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) をインストールし、`<android-sdk-location>\tools` の場所 (たとえば、C:\\tools\\Android\\android-sdk\\tools) を `PATH` 環境変数に追加します。
+	- [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上をインストールします。`JAVA_HOME` (環境変数) が JDK インストール パス (たとえば、C:\Program Files\Java\jdk1.7.0_75) に従って正しく設定されていることを確認します。
+	- [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) をインストールし、`<android-sdk-location>\tools` の場所 (たとえば、C:\tools\Android\android-sdk\tools) を `PATH` 環境変数に追加します。
 	- Android SDK Manager を開き (たとえば、端末 `android` 経由で)、以下をインストールします。
     - *Android 5.0.1 (API 21)* プラットフォーム SDK
     - *Android SDK ビルド ツール* バージョン 19.1.0 以上
@@ -79,7 +81,7 @@ Apache Cordova がコンピューターにセットアップされていない�
 
 Azure AD は、認識しているアプリケーションに対してのみトークンを発行します。アプリケーションから Azure AD を使用するには、アプリケーション用のエントリをテナントで事前に作成しておく必要があります。新しいアプリケーションをテナントに登録するには、次の手順を実行します。
 
-- Microsoft Azure の管理ポータルにサインインします。
+- Microsoft Azure 管理ポータルにサインインします。
 - 左側のナビゲーションで [Active Directory] をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
 - [アプリケーション] タブをクリックし、下部のドロアーで [追加] をクリックします。
@@ -250,9 +252,9 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 
 参照用の完全なサンプル (構成値を除く) が、ここで提供されています。ここからは上級のさらに興味深いシナリオに移動することができます。次のチュートリアルを試してみてください。
 
-[ノード用の Web API の概要](active-directory-devquickstarts-webapi-nodejs.md)
+[Azure AD による Node.JS Web API のセキュリティ保護 >>](active-directory-devquickstarts-webapi-nodejs.md)
 
-その他のリソースについては、[GitHub の AzureAD サンプル](https://github.com/AzureAdSamples)、[CloudIdentity.com](https://cloudidentity.com)、および [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) にある Azure AD に関するドキュメントを参照してください。
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

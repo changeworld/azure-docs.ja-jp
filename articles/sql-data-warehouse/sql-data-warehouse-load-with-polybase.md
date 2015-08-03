@@ -207,4 +207,4 @@ PolyBase でのロードでは、UTF-8 エンコード スタイルのみがサ�
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189450.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -233,4 +233,4 @@ Azure で node.js と Twilio を活用してください。
 [pair]: http://www.twilio.com/blog/2013/06/pair-programming-in-the-browser-with-twilio.html
 [azure-admin-console]: ./media/partner-twilio-nodejs-how-to-use-voice-sms/twilio_1.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

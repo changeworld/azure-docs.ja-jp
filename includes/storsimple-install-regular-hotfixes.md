@@ -1,19 +1,3 @@
-<properties
-   pageTitle="通常の修正プログラムのインストール"
-   description="StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="NA" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="06/02/2015"
-   ms.author="alkohli" />
 
 #### StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールするには
 
@@ -31,4 +15,4 @@
 
 5. 確認を求められます。「**Y**」と入力して修正プログラムのインストールを続行します。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -62,7 +62,7 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 
 次に、新しい Office 365 FastTrack 試用版にサインアップします。
 
-1.	CORP\\User1 アカウント資格情報で CLIENT1 にログオンします。
+1.	CORP\User1 アカウント資格情報で CLIENT1 にログオンします。
 2.	Internet Explorer を開き、**http://fasttrack.office.com** にアクセスします。3.	**[Getting started with FastTrack]** をクリックします。
 4.	[Getting Started with FastTrack] ページで、**[First, sign up for an Office 365 trial]** の下の **[For enterprises, sign up here]** をクリックします。
 5.	手順 1. のページで、**[Business email address]** に新しい Microsoft アカウントを指定してページに入力してから、**[Next]** をクリックします。
@@ -96,7 +96,7 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 3.	DS1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-	- 名前: **CORP\\User1**
+	- 名前: **CORP\User1**
 	- パスワード: [User1 アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -128,7 +128,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 4.	**"Active Directory 同期をアクティブ化しますか?"** というメッセージが表示されたら、**[アクティブ化]** をクリックします。この後に、手順 3. にメッセージ **"Active Directory 同期がアクティブ化されています。"** が表示されます。
 5.	**[Active Directory 同期のセットアップと管理]** ページを CLIENT1 で開いたままにしておきます。
 
-次に、CORP\\User1 アカウントで DC1 にログオンし、管理者レベルで Windows PowerShell コマンド プロンプトを開きます。これらのコマンドを 1 つずつ実行して、contoso_users と呼ばれる新しい組織単位を作成し、Marci Kaufman と Lynda Meyer 用の新しいユーザー アカウントを 2 つ追加します。
+次に、CORP\User1 アカウントで DC1 にログオンし、管理者レベルで Windows PowerShell コマンド プロンプトを開きます。これらのコマンドを 1 つずつ実行して、contoso_users と呼ばれる新しい組織単位を作成し、Marci Kaufman と Lynda Meyer 用の新しいユーザー アカウントを 2 つ追加します。
 
 	New-ADOrganizationalUnit -Name contoso_users -Path "DC=corp,DC=contoso,DC=com"
 	New-ADUser -SamAccountName marcik -AccountPassword (Read-Host "Set user password" -AsSecureString) -name "Marci Kaufman" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Path "OU=contoso_users,DC=corp,DC=contoso,DC=com"
@@ -138,12 +138,12 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 次に、DS1 のディレクトリ同期を構成します。
 
-1.	CORP\\User1 アカウントで DS1 にログインします。
+1.	CORP\User1 アカウントで DS1 にログインします。
 2.	**[スタート]** 画面で、「**ディレクトリ同期**」と入力します。
 3.	**[ディレクトリ同期の構成]** を右クリックし、**[管理者として実行]** をクリックします。これによって、構成ウィザードが開始されます。
 4.	[ようこそ] ページで **[次へ]** をクリックします。
 5.	[Microsoft Azure Active Directory の資格情報] ページで、フェーズ 2 で Office 365 FastTrack 試用版をセットアップするときに作成した初期アカウントの電子メール アドレスとパスワードを入力します。[次へ] をクリックします。 
-6.	[Active Directory の資格情報] ページで、**[ユーザー名]** に「**CORP\\User1**」と入力し、**[パスワード]** に User1 アカウントのパスワードを入力します。**[次へ]** をクリックします。
+6.	[Active Directory の資格情報] ページで、**[ユーザー名]** に「**CORP\User1**」と入力し、**[パスワード]** に User1 アカウントのパスワードを入力します。**[次へ]** をクリックします。
 7.	[混合環境] ページで、**[混合環境を有効にする]** を選択してから、**[次へ]** をクリックします。
 8.	[パスワード同期] ページで、**[パスワード同期を有効にする]** を選択してから、**[次へ]** をクリックします。
 9.	[構成] ページが表示されます。構成が完了したら、**[次へ]** をクリックします。
@@ -194,4 +194,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

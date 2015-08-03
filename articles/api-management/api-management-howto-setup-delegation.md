@@ -168,4 +168,4 @@
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

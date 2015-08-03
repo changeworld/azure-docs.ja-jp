@@ -104,4 +104,4 @@ Azure DocumentDB を導入するには、次のリソースを参照してくだ
 [1]: ./media/documentdb-introduction/intro.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

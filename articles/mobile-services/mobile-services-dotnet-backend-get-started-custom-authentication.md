@@ -164,7 +164,7 @@
 
 ## LoginProvider を作成する
 
-Mobile Services 認証パイプラインの基本的なコンストラクトの 1 つに **LoginProvider** があります。このセクションでは、独自の `CustomLoginProvider` を作成します。これは、組み込みのプロバイダーのようにパイプラインにプラグインされるのではなく、いくつかの便利な機能を提供します。
+Mobile Services 認証パイプラインの基本的なコンストラクトの 1 つに **LoginProvider** があります。このセクションでは、独自の `CustomLoginProvider` を作成します。これは、組み込みのプロバイダーのようにパイプラインにプラグインされるのではなく、いくつかの便利な機能を提供します。Visual Studio 2013 を使用している場合、必要に応じて、`WindowsAzure.MobileServices.Backend.Security` nuget パッケージをインストールして `LoginProvider` の参照を追加します。
 
 1. **LoginProvider** の新しい派生クラス `CustomLoginProvider` を作成し、次の `using` ステートメントを追加します。
 
@@ -420,4 +420,4 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -69,4 +69,4 @@ SQL Data Warehouse は、データをロードするための主要な業界ソ�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -98,4 +98,4 @@ Azure PowerShell コマンドレットを使用してこれを設定するには
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -80,4 +80,4 @@
 <li>上部で、[ユーザー] をクリックします。</li>
 <li>ページの下部で、[多要素認証の管理] をクリックします。これにより、Multi-Factor Authentication ページが開きます。<li>管理するユーザーを見つけ、その名前の横にあるチェック ボックスをオンにします。上部でビューを変更することが必要になる場合があります。</li> <li>これにより、右側に **[ユーザー設定の管理]** リンクが表示されます。このボタンをクリックします。</li> <li>[中断しているすべてのデバイスに Multi-Factor Authentication を復元] チェック ボックスをオンにします。</li> ![アプリ パスワードを削除する](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png) <li>[保存] をクリックします。</li> <li>[閉じる] をクリックします。</li>
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

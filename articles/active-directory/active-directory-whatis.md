@@ -1,6 +1,6 @@
 <properties 
                 pageTitle="Azure Active Directory とは" 
-                description="Azure Active Directory を使用すると、既存のオンプレミス ID をクラウドに拡張し、または Azure AD 統合アプリケーションを開発することができます。" 
+                description="Azure Active Directory を使用すると、既存の内部設置型 ID をクラウドに拡張し、または Azure AD 統合アプリケーションを開発することができます。" 
                 services="active-directory" 
                 documentationCenter="" 
                 authors="markusvi" 
@@ -92,4 +92,4 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 - [クラウドを利用したオンプレミス ID システムの強化と監視](https://msdn.microsoft.com/library/azure/dn906722.aspx)
 - [標準に基づく機能豊富な開発者向けプラットフォーム](https://msdn.microsoft.com/library/azure/ff800682.aspx)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -42,9 +42,9 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	* __pom.xml__: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
-	* __src__: アプリケーションを作成する __main\\java\\com\\microsoft\\examples__ ディレクトリに含まれるディレクトリです。
+	* __src__: アプリケーションを作成する __main\java\com\microsoft\examples__ ディレクトリに含まれるディレクトリです。
 
-3. __src\\test\\java\\com\\microsoft\\examples\\apptest.java__ ファイルはこの例では使用されないため、削除します。
+3. __src\test\java\com\microsoft\examples\apptest.java__ ファイルはこの例では使用されないため、削除します。
 
 ##プロジェクト オブジェクト モデルを更新する
 
@@ -103,7 +103,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 		  </plugins>
 		</build>
 
-	これにより、HBase の構成情報が含まれているリソース (__conf\\hbase-site.xml__) が構成されます。
+	これにより、HBase の構成情報が含まれているリソース (__conf\hbase-site.xml__) が構成されます。
 
 	> [AZURE.NOTE]コードを介して構成値を設定することもできます。その方法については、__CreateTable__ サンプル内のコメントをご覧ください。
 
@@ -155,13 +155,13 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	このファイルは、HDInsight クラスター用の HBase 構成の読み込みに使用されます。
 
-	> [AZURE.NOTE]これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。HDInsight で使用される完全バージョンの hbase-site.xml 構成ファイルについては、「[Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。hbase-site.xml ファイルは C:\\apps\\dist\\hbase-&lt;version number>-hadoop2\\conf ディレクトリにあります。ファイル パスの "version number" の部分は、クラスターで HBase が更新されると変わります。
+	> [AZURE.NOTE]これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。HDInsight で使用される完全バージョンの hbase-site.xml 構成ファイルについては、「[Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。hbase-site.xml ファイルは C:\apps\dist\hbase-&lt;version number>-hadoop2\conf ディレクトリにあります。ファイル パスの "version number" の部分は、クラスターで HBase が更新されると変わります。
 
 3. __hbase-site.xml__ ファイルを保存します。
 
 ##アプリケーションを作成する
 
-1. __hbaseapp\\src\\main\\java\\com\\microsoft\\examples__ ディレクトリに移動し、app.java ファイルの名前を __CreateTable.java__ に変更します。
+1. __hbaseapp\src\main\java\com\microsoft\examples__ ディレクトリに移動し、app.java ファイルの名前を __CreateTable.java__ に変更します。
 
 2. __CreateTable.java__ ファイルを開き、既存の内容を次のコードで置き換えます。
 
@@ -231,7 +231,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 3. __CreateTable.java__ ファイルを保存します。
 
-4. __hbaseapp\\src\\main\\java\\com\\microsoft\\examples__ ディレクトリに、__SearchByEmail.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+4. __hbaseapp\src\main\java\com\microsoft\examples__ ディレクトリに、__SearchByEmail.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
 		package com.microsoft.examples;
 		import java.io.IOException;
@@ -308,7 +308,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 5. __SearchByEmail.java__ ファイルを保存します。
 
-6. __hbaseapp\\src\\main\\hava\\com\\microsoft\\examples__ ディレクトリに、__DeleteTable.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+6. __hbaseapp\src\main\hava\com\microsoft\examples__ ディレクトリに、__DeleteTable.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
 		package com.microsoft.examples;
 		import java.io.IOException;
@@ -344,7 +344,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドしてパッケージ化します。
 
-3. コマンドが完了すると、__hbaseapp\\target__ ディレクトリに __hbaseapp-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
+3. コマンドが完了すると、__hbaseapp\target__ ディレクトリに __hbaseapp-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
 	> [AZURE.NOTE]__hbaseapp-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
 
@@ -591,4 +591,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

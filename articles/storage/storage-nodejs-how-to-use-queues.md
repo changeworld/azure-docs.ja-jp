@@ -332,4 +332,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
  [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

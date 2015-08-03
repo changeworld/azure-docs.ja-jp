@@ -520,7 +520,7 @@ HiveQL スクリプトは、次の作業を実行します。
 	Write-Host "==================================" -ForegroundColor Green
 	#end region
 
-> [AZURE.NOTE]Hive テーブルでは \\001 をフィールド区切り記号として使用します。区切り記号は出力には表示されません。
+> [AZURE.NOTE]Hive テーブルでは \001 をフィールド区切り記号として使用します。区切り記号は出力には表示されません。
 
 分析結果が Azure BLOB ストレージに配置されると、Azure SQL Database/SQL Server へのデータのエクスポート、Power Query を使用してのデータの Excel へのエクスポート、または Hive ODBC ドライバーを使用してのアプリケーションのデータへの接続ができます。詳細については、「[HDInsight での Sqoop の使用][hdinsight-use-sqoop]」、「[HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]」、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」、および「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]」を参照してください。
 
@@ -559,4 +559,4 @@ HiveQL スクリプトは、次の作業を実行します。
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

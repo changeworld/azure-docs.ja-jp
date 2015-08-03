@@ -74,7 +74,7 @@ Azure ポータルで、Logic Apps、Web アプリ、またはモバイル ア�
 2. API アプリを選択します。新しいブレードで **[作成]** を選択します。 
 3. 次のプロパティを入力します。 
 
-	プロパティ | 説明
+プロパティ | 説明
 --- | ---
 名前 | API アプリに対して任意の名前を入力します。たとえば、*RulesDiscountTaxCode* や *APIAppValidateXML* などの名前にできます。
 App Service プラン | 支払プランの一覧を表示します。プランは必要なリソースの増減に応じて変更することができます。
@@ -88,7 +88,7 @@ App Service プラン | 支払プランの一覧を表示します。プラン�
 ## BizTalk API Apps を構成する
 Azure の管理ポータルで、BizTalk API アプリを開きます。**[コンポーネント]** セクションで、API アプリの完成に必要なその他のコンポーネントを追加することができます。
 
-	API App | Tasks
+API App | Tasks
 --- | ---
 BizTalk Flat File Encoder | Excel や csv ファイルなど、XML に変換するフラット ファイルを入力します。または、フラット ファイルに変換する XML ファイルを入力します。
 BizTalk JSON Encoder | XML に変換する JSON ファイルを入力します。または、JSON に変換する XML ファイルを入力します。 
@@ -139,4 +139,4 @@ Microsoft Azure App Service は、これらの統合 API アプリを使用で�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

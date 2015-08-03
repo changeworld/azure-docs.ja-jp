@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.date="07/19/2015" 
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Apache Spark を使用した機械学習アプリケーションの構築
 
-HDInsight の Apache Spark クラスターを使用して機械学習アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Python Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
+HDInsight の Apache Spark クラスターを使用して機械学習アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
 
 **前提条件:**
 
@@ -32,7 +32,7 @@ HDInsight の Apache Spark クラスターを使用して機械学習アプリ�
 
 アプリケーションの作成を始める前に、データの構造およびデータに対して実行する分析の種類を説明します。
 
-この記事では、すべての HDInsight クラスターにおいて既定で使用できる **HVAC.csv** サンプル データ ファイル (**\\HdiSamples\\SensorSampleData\\hvac**) を使用します。CSV ファイルをダウンロードして開き、データのスナップショットを取得します。
+この記事では、すべての HDInsight クラスターにおいて既定で使用できる **HVAC.csv** サンプル データ ファイル (**\HdiSamples\SensorSampleData\hvac**) を使用します。CSV ファイルをダウンロードして開き、データのスナップショットを取得します。
 
 ![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.ML.Show.Data.png "HVAC データのスナップショット")
 
@@ -240,4 +240,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

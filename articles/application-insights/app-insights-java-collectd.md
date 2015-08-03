@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="collectd: perf stats for Java on Unix in Application Insights (collectd: Application Insights での Unix 上の Java のパフォーマンス統計)" 
-	description="Extended monitoring of your Java website with the CollectD plug-in for Application Insights (Application Insights の CollectD プラグインを使用した Java Web サイトの監視の拡張)" 
+	pageTitle="collectd: Application Insights での Unix 上の Java のパフォーマンス統計" 
+	description="Application Insights の CollectD プラグインを使用した Java Web サイトの監視の拡張" 
 	services="application-insights" 
     documentationCenter="java"
 	authors="alancameronwills" 
@@ -21,17 +21,17 @@
 
 [Application Insights](app-insights-overview.md) で Unix システムのパフォーマンス メトリックを探索するには、[collectd](http://collectd.org/) を Application Insights のプラグインと共にインストールします。このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 
-一般的に、collectd は、[Application Insights でJava Web サービスを既にインストルメント化][java]している場合に使用します。これにより、アプリのパフォーマンスの向上や問題の診断に役立つより多くのデータを入手できます。
+一般的に、collectd は、[Application Insights で Java Web サービスを既にインストルメント化][java]している場合に使用します。これにより、アプリのパフォーマンスの向上や問題の診断に役立つより多くのデータを入手できます。
 
-![サンプルのグラフ](./media/app-insights-java-collectd/sample.png)
+![Sample charts](./media/app-insights-java-collectd/sample.png)
 
 ## インストルメンテーション キーの取得
 
-[Microsoft Azure ポータル](http://portal.azure.com)で、データを表示する [Application Insights](start) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
+[Microsoft Azure ポータル](http://portal.azure.com)で、データを表示する [Application Insights](start) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します)。
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
-![Browse all, open your resource, and then in the Esssentials drop-down, select and copy the Instrumentation Key (すべてを参照し、リソースを開いてから、[Esssentials] ドロップダウンでインストルメンテーション キーを選択およびコピーする)](./media/app-insights-java-collectd/02-props.png)
+![Browse all, open your resource, and then in the Esssentials drop-down, select and copy the Instrumentation Key](./media/app-insights-java-collectd/02-props.png)
 
 
 
@@ -143,4 +143,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

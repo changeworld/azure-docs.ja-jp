@@ -402,4 +402,4 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 [2]: ./media/sql-database-elastic-pool-guidance/four-databases.png
 [3]: ./media/sql-database-elastic-pool-guidance/twenty-databases.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

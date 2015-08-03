@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="07/17/2015" 
 	ms.author="awills"/>
 
 # Azure Web アプリのパフォーマンスの監視
@@ -27,7 +27,9 @@ Application Insights と New Relic は、利用できるパフォーマンス監
 
 1. **[参照]** をクリックし、インストルメント化する Web アプリまたは仮想マシンを選択します。
 
-2. Application Insights または New Relic の拡張機能を追加します。Web アプリをインストルメント化する場合:
+2. Application Insights または New Relic の拡張機能を追加します。
+
+    Web アプリをインストルメント化する場合:
 
 ![設定、拡張機能、追加、Application Insights](./media/insights-perf-analytics/05-extend.png)
 
@@ -81,4 +83,4 @@ Application Insights のブレードが表示されたら、[パフォーマン�
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

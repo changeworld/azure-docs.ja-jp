@@ -26,14 +26,14 @@
 
 ##概要
 
-Microsoft Azure Media Services では、高度暗号化標準 (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。Media Services は、クライアントがキーまたはライセンスを取得して暗号化されたコンテンツを再生する **Key\\License 配信サービス**も提供しています。
+Microsoft Azure Media Services では、高度暗号化標準 (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。Media Services は、クライアントがキーまたはライセンスを取得して暗号化されたコンテンツを再生する **Key\License 配信サービス**も提供しています。
 
 このトピックでは、**Microsoft Azure 管理ポータル**を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。キーは、動的にコンテンツを暗号化するために、後で使用できます。現時点で暗号化できるストリーミング形式は、HLS、MPEG DASH、およびスムーズ ストリーミングであることに注意してください。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
  
 プレーヤーが動的に暗号化するように設定されたストリームを要求すると、Media Services は、AES または PlayReady 暗号化で構成済みのキーを使用してコンテンツを暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 
-複数のコンテンツ キーを設定する、または Media Services のキー配信サービス以外の **Key\\License 配信サービス** URL を指定する場合は、Media Services .NET SDK または REST API を使用します。
+複数のコンテンツ キーを設定する、または Media Services のキー配信サービス以外の **Key\License 配信サービス** URL を指定する場合は、Media Services .NET SDK または REST API を使用します。
 
 [Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md)
 
@@ -95,4 +95,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -25,11 +25,11 @@
 
 クラウド サービスを作成するときに、Azure は cloudapp.net のサブドメインにそのアプリを割り当てます。たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://&lt;*contoso*>.cloudapp.net のような URL でアプリケーションにアクセスできます。また Azure によって仮想 IP アドレスも割り当てられます。
 
-ただし、contoso.com のような独自のドメイン名を使用してアプリケーションを公開することもできます。この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
+ただし、contoso.com のような独自のドメイン名を使用してアプリケーションを公開することもできます。この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約、構成する方法について説明します。
 
 CNAME レコードと A レコードについて既に理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
-> [AZURE.NOTE]より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! Azure クラウド サービスまたは Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
+> [AZURE.NOTE]より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! Azure クラウド サービスや Azure Websites を使用したカスタム ドメイン名の関連付けや通信 (SSL) のセキュリティ保護がすばやく行えます。
 
 <p/>
 
@@ -44,7 +44,7 @@ CNAME レコード (またはエイリアス レコード) および A レコー
 
 CNAME レコードは、*contoso.com* や **www.contoso.com** などの**特定の**ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。作成すると、CNAME は **[myapp].cloudapp.net** のエイリアスを作成します。CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
 
-> [AZURE.NOTE]いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)](http://en.wikipedia.org/wiki/CNAME_record)」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)](http://tools.ietf.org/html/rfc1035)」を参照してください。
+> [AZURE.NOTE]いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)](http://en.wikipedia.org/wiki/CNAME_record)」か、「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)](http://tools.ietf.org/html/rfc1035)」をご覧ください。
 
 ### A レコード
 
@@ -91,7 +91,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
 **www.contoso.com** の訪問者が本当のホスト (contoso.cloudapp.net) を識別することはないため、転送プロセスはエンド ユーザーから見えなくなります。
 
-> [AZURE.NOTE]上の例は、**www** サブドメインのトラフィックのみに該当します。CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。サブドメイン (*.contoso.com など) からトラフィックを cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、または A レコードを作成します。
+> [AZURE.NOTE]上の例は、**www** サブドメインのトラフィックのみに該当します。CNAME レコードにはワイルドカードを使用できないため、各ドメインとサブドメインに 1 つの CNAME を作成する必要があります。サブドメイン (*.contoso.com など) からトラフィックを cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、A レコードを作成します。
 
 
 ## カスタム ドメインの A レコードの追加
@@ -130,7 +130,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 | ホスト名/サブドメイン | IP アドレス |
 | ------------------- | -------------- |
-| @ | 137\.135.70.239 |
+| @ | 137.135.70.239 |
 
 
 この例では、ルート ドメインの A レコードを作成する方法を示します。すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「__*__」と入力します。
@@ -153,4 +153,4 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [csurl]: ./media/cloud-services-custom-domain-name/csurl.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

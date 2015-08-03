@@ -188,7 +188,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ![Azure の技術解説図](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
 
-**create-new** BLOB ストレージ (この図では e:\\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
+**create-new** BLOB ストレージ (この図では e:\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
@@ -2346,4 +2346,4 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

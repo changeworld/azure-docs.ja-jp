@@ -1,10 +1,10 @@
 <properties
-   pageTitle="VNet 間の接続の構成"
+   pageTitle="VNet 間の接続の構成 | Microsoft Azure"
    description="サブスクリプションまたはリージョンが同じ場合または異なる場合に、Azure Virtual Network を接続する方法。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="adinah"
+   manager="jdial"
    editor="tysonn"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/28/2015"
+   ms.date="07/14/2015"
    ms.author="cherylmc"/>
 
 
@@ -85,7 +85,7 @@ VNet の定義の例を表 1 に示します。以下の範囲は、あくまで
 
 **表 1**
 
-|Virtual Network |仮想ネットワーク サイトの定義 |ローカル ネットワーク サイトの定義|
+|Virtual Network |Virtual Network サイトの定義 |ローカル ネットワーク サイトの定義|
 |:----------------|:-------------------------------|:----------------------------|
 |VNet1 |VNet1 (10.1.0.0/16) |VNet2 (10.2.0.0/16) |
 |VNet2 |VNet2 (10.2.0.0/16) |VNet1 (10.1.0.0/16) |
@@ -102,7 +102,7 @@ VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
 
 2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[ネットワーク サービス]** をクリックし、**[仮想ネットワーク]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
-**[仮想ネットワークの詳細]** ページで、以下の情報を入力します。詳細ページの設定の詳細については、「[[仮想ネットワークの詳細] ページ](https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNetDetails)」を参照してください。
+**[仮想ネットワークの詳細]** ページで、以下の情報を入力します。
 
   ![仮想ネットワークの詳細](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
 
@@ -111,7 +111,7 @@ VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
 
 
 
-**[DNS サーバーおよび VPN 接続]** ページで次の情報を入力し、右下にある次へ進む矢印をクリックします。このページでの設定の詳細については、「[[DNS サーバーおよび VPN 接続] ページ](https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETDNS)」を参照してください。
+**[DNS サーバーおよび VPN 接続] ページで**、次の情報を入力し、右下にある次へ進む矢印をクリックします。
 
   ![DNS サーバーと VPN 接続](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)
 
@@ -120,7 +120,7 @@ VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
 
   - いずれのチェック ボックスも選択しないでください。右下にある矢印をクリックし、次の画面に移動します。
 
-**[仮想ネットワーク アドレス空間]** ページで、仮想ネットワークに使用するアドレス範囲を指定します。これらが動的 IP アドレス (DIPS) として、この仮想ネットワークにデプロイする VM や各種ロール インスタンスに割り当てられます。仮想ネットワーク アドレス空間に関してはさまざまな規則があります。詳細については、「[[仮想ネットワーク アドレス空間] ページ](https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNET_ADDRESS)」を参照してください。オンプレミス ネットワークに使用されている範囲と重複しない範囲を選択することが特に重要です。仮想ネットワークに使用する IP アドレスの範囲をネットワーク管理者にオンプレミス ネットワークのアドレス空間から切り出してもらうために、ネットワーク管理者との調整が必要となる場合があります。
+**[仮想ネットワーク アドレス空間] ページで**、仮想ネットワークに使用するアドレス範囲を指定します。これらが動的 IP アドレス (DIPS) として、この仮想ネットワークにデプロイする VM や各種ロール インスタンスに割り当てられます。オンプレミス ネットワークに使用されている範囲と重複しない範囲を選択することが特に重要です。仮想ネットワークに使用する IP アドレスの範囲をネットワーク管理者にオンプレミス ネットワークのアドレス空間から切り出してもらうために、ネットワーク管理者との調整が必要となる場合があります。
 
 
   ![[仮想ネットワーク アドレス空間] ページ](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736057.jpg)
@@ -130,7 +130,7 @@ VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
   - **[アドレス空間]**: 開始 IP とアドレス数を指定します。指定したアドレス空間がオンプレミス ネットワーク内に存在するどのアドレス空間とも重複していないことを確認してください。この例では、VNet1 に 10.1.0.0/16 を使用します。
   - **[サブネットの追加]**: 開始 IP とアドレス数を指定します。追加サブネットは必須ではありませんが、VM 用に静的 DIP を持つ別のサブネットを作成することをお勧めします。または、他のロール インスタンスとは分離したサブネットに VM を配置することができます。
 
-ページの右下にある**チェックマークをクリック**すると、仮想ネットワークの作成が開始されます。完了すると、管理ポータルの *Networks * ページにある [*状態*] に [*作成済み*] と表示されます。
+ページの右下にある**チェックマークをクリック**すると、仮想ネットワークの作成が開始します。完了すると、管理ポータルの *Networks * ページにある *[状態]* に *[作成済み]* と表示されます。
 
 ## 別の仮想ネットワークを作成する
 
@@ -195,11 +195,11 @@ VNet 間の構成を作成する場合は、VNet が互いをローカル ネッ
 
 VNet1 の場合
 
-	PS C:> Set-AzureVNetGatewayKey -VNetName VNet1 -LocalNetworkSiteName VNet2 -SharedKey A1b2C3D4
+	PS C:\> Set-AzureVNetGatewayKey -VNetName VNet1 -LocalNetworkSiteName VNet2 -SharedKey A1b2C3D4
 
 VNet2 の場合
 
-	PS C:> Set-AzureVNetGatewayKey -VNetName VNet2 -LocalNetworkSiteName VNet1 -SharedKey A1b2C3D4
+	PS C:\> Set-AzureVNetGatewayKey -VNetName VNet2 -LocalNetworkSiteName VNet1 -SharedKey A1b2C3D4
 
 接続が初期化されるのを待ちます。ゲートウェイが初期化されると、ゲートウェイは下図のようになり、仮想ネットワークどうしが接続されます。
 
@@ -207,20 +207,20 @@ VNet2 の場合
 
 ## 次のステップ
 
-Virtual Network のクロスプレミス接続の詳細については、「[Virtual Network のセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」を参照してください。
+Virtual Network のクロスプレミス接続の詳細については、[Virtual Network のセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)を参照してください。
 
 
 サイト間 VPN 接続を構成する場合は、[サイト間 VPN 接続の構成](vpn-gateway-site-to-site-create.md)に関するページを参照してください。
 
-仮想マシンを仮想ネットワークに追加する場合は、「[カスタム Virtual Machine の作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
+仮想マシンを仮想ネットワークに追加する場合は、[カスタム Virtual Machine の作成方法](../virtual-machines/virtual-machines-create-custom.md)を参照してください。
 
-RRAS を使用して VNet 接続を構成する場合は、「[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx)」をご覧ください。
+RRAS を使用して VNet 接続を構成する場合は、[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx) をご覧ください。
 
-構成スキーマの詳細については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
+構成スキーマの詳細については、[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)をご覧ください。
 
 
 [1]: ../hdinsight-hbase-geo-replication-configure-vnets.md
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -132,7 +132,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 - アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- Default value: ..\\..\\LogFiles\\Application
+- Default value: ..\..\LogFiles\Application
 
 **DIAGNOSTICS_TEXTTRACEMAXBUFFERSIZEBYTES**
 
@@ -277,4 +277,4 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

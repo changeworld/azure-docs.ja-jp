@@ -33,4 +33,4 @@
 
 	![[Azure App Service アクティビティ] ウィンドウによる状態の通知](./media/app-service-api-pub-web-create/26-provisioning-success-v3.png)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

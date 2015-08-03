@@ -234,4 +234,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [Client-Side Encryption for Microsoft Azure Storage – Preview (Microsoft Azure Storage のクライアント側の暗号化 – プレビュー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview.aspx) Download the [Azure Storage Client Library for .NET NuGet package](http://www.nuget.org/packages/WindowsAzure.Storage/4.4.0-preview) (Azure Storage Client Library for .NET NuGet パッケージのダウンロード) Download the [Azure Storage Client Library for .NET Source Code](https://github.com/Azure/azure-storage-net/tree/preview) from GitHub (Azure Storage Client Library for .NET Source Code のダウンロード (GitHub)) Download the Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/), and [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) packages (Azure Key Vault NuGet コア、クライアント、および拡張機能パッケージのダウンロード) Visit the [Azure Key Vault Documentation](../articles/key-vault-whatis.md) (Visit the Azure Key Vault ドキュメントにアクセスする)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

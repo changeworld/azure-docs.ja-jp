@@ -33,4 +33,4 @@ Application Insights サービス全体の主要な機能強化をまとめた�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

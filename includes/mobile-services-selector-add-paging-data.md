@@ -11,4 +11,4 @@
 - [(Xamarin.Android | Javascript)](../articles/partner-xamarin-mobile-services-android-add-paging-data.md)
 - [(HTML | Javascript)](../articles/mobile-services-html-add-paging-data.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

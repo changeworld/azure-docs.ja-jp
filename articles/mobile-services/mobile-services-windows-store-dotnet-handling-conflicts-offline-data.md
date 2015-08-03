@@ -51,7 +51,7 @@
 
 2. 「[オフライン データの使用]」チュートリアルで説明された手順で SQLite for Windows 8.1 および Windows Phone 8.1 をインストールしていない場合は、両方をランタイムでインストールします。
 
-3. Visual Studio 2013 で、*mobile-services-samples\\TodoOffline\\WindowsUniversal\\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
+3. Visual Studio 2013 で、*mobile-services-samples\TodoOffline\WindowsUniversal\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
 
     >[AZURE.NOTE]SQLite ランタイムへの以前の参照を削除し、これを「[オフライン データの使用]」チュートリアルで説明したように、更新された参照で置き換える必要がある場合があります。
 
@@ -166,4 +166,4 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

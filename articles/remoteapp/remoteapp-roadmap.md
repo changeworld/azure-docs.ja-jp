@@ -39,4 +39,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

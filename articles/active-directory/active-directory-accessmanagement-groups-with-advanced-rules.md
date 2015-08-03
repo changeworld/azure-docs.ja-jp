@@ -124,7 +124,7 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 | passwordPolicies | なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意の文字列値または $null。 | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意の文字列値または $null。 | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "en-US") |
+| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-jp") |
 | sipProxyAddress | 任意の文字列値または $null。 | (user.sipProxyAddress -eq "value") |
 | state | 任意の文字列値または $null。 | (user.state -eq "value") |
 | streetAddress | 任意の文字列値または $null。 | (user.streetAddress -eq "value") |
@@ -158,4 +158,4 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

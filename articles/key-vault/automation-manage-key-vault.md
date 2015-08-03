@@ -46,4 +46,4 @@ Azure Key Vault コマンドレットによって、キーの作成やインポ�
 * [Azure Key Vault の PowerShell スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Azure-Key-Vault-Powershell-1349b091)に関するページを参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

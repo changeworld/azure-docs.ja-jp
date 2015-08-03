@@ -185,7 +185,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ ##
 
@@ -208,4 +208,4 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 [graphic10]: ./media/stream-analytics-power-bi-dashboard/10-stream-analytics-power-bi-dashboard.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -43,4 +43,4 @@ Azure 管理ポータルまたは Azure Media Services API を使用して、キ
 3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

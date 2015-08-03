@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="07/21/2015"
    ms.author="larryfr"/>
 
 # Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
@@ -30,19 +30,42 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 	-	Visual Studio 2013 ([Update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
 
-	-	[Visual Studio 2015 CTP6](http://visualstudio.com/downloads/visual-studio-2015-ctp-vs)
+	-	Visual Studio 2015 または [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 
 -	Azure SDK 2.5.1 以降
 
 -	HDInsight Tools for Visual Studio: HDInsight Tools for Visual Studio のインストールと構成については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
--	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-storm-getting-started.md)」をご覧ください。
+    > [AZURE.NOTE]HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
+
+-	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[HDInsight での Apache Storm の使用](hdinsight-storm-getting-started.md)」をご覧ください。
 
 	> [AZURE.NOTE]現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
 
+##テンプレート
+
+HDInsight Tools for Visual Studio には次のテンプレートがあります。
+
+| プロジェクトの種類 | 対象 |
+| ------------ | ------------- |
+| Storm アプリケーション | 空の Storm トポロジ プロジェクト |
+| Storm Azure SQL ライターのサンプル | Azure SQL データベースに書き込む方法 |
+| Storm DocumentDB リーダーのサンプル | Azure DocumentDB から読み取る方法 |
+| Storm DocumentDB ライターのサンプル | Azure DocumentDB を記述する方法 |
+| Storm EventHub リーダーのサンプル | Azure Event Hubs から読み取る方法 |
+| Storm EventHub ライターのサンプル | Azure Event Hubs に記述する方法 |
+| Storm HBase リーダーのサンプル | HDInsight クラスターで HBase から読み取る方法 |
+| Storm HBase ライターのサンプル | HDInsight クラスターで HBase に記述する方法 |
+| Storm ハイブリッドのサンプル | Java コンポーネントを使用する方法 |
+| Storm サンプル | 基本的なワード カウント トポロジ |
+
+> [AZURE.NOTE]HBase のリーダーとライターのサンプルは、HBase Java API ではなく、HBase REST API を利用して HDInsight の HBase と通信します。
+
+このドキュメントの手順では、基本的な種類の Storm アプリケーション プロジェクトを使用して新しいトポロジを作成します。
+
 ##C# トポロジの作成
 
-1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
 2.	Visual Studio を開いて、**[ファイル]** > **[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -426,27 +449,20 @@ SCP.Net バージョン 0.9.4.203 には、Event Hub スパウト (Event Hub か
 
 > [AZURE.NOTE]これらによって、他の Java コンポーネントよりも、Event Hub スパウトの操作が容易になりますが、スパウトによって生成されたデータをシリアル化するには、CustomizedInteropJSONSerializer を引き続き使用する必要があります。
 
+##SCP.NET を更新する方法
+
+SCP.NET の最新リリースでは、NuGet からパッケージをアップグレードできます。新しい更新プログラムが利用できる場合、アップグレードの通知が表示されます。手動でアップグレードを確認するには、次の手順に従います。
+
+1. **[ソリューション エクスプローラー]** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+
+2. パッケージ マネージャーから **[更新プログラム]** を選択します。更新プログラムが利用できる場合、それが一覧表示されます。パッケージをインストールするには、**[更新プログラム]** ボタンをクリックします。
+
+> [AZURE.IMPORTANT]パッケージ更新に NuGet を使用しない以前のバージョンの SCP.NET を利用してプロジェクトが作成された場合、次の手順で新しいバージョンに更新する必要があります。
+>
+> 1. **[ソリューション エクスプローラー]** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+> 2. **[検索]** フィールドを利用して **Microsoft.SCP.Net.SDK** を検索し、プロジェクトに追加します。
+
 ##トラブルシューティング
-
-###SCP.Net コンポーネントの更新
-
-初めて C# Storm トポロジを作成するときに、SCP.Net の最新のバージョンがインストールされます。ただし、手動の手順を実行して、最新バージョンに既存のプロジェクトを更新する必要があります。
-
-1.	**[ソリューション エクスプローラー]** でプロジェクト名を右クリックし、**[NuGet パッケージの管理]** を選択します。
-
-2.	パッケージ マネージャーが表示されたら、検索用のフィールドを使用して、SCP.Net の最新バージョンを探し、インストールします。
-
-	> [AZURE.IMPORTANT]インストールが完了すると、トポロジ内で SCP.Net の更新されたバージョンを使用できます。ただし、HDInsight クラスターにトポロジをデプロイするときにエラーが発生する場合があります。これは、デプロイ時に使用されるバージョンも、更新する必要があるためです。
-
-3.	インストール後、ソリューションを含むディレクトリに移動して、**packages** ディレクトリを開きます。**Microsoft.SCP.Net.SDK.#.#.#.###** という名前のサブディレクトリがあります。'#' は、バージョン番号を表します。
-
-4.	**Microsoft.SCP.Net.SDK.#.#.#.###** ディレクトリを開き、内容をコピーします。
-
-5.	ソリューションを含むディレクトリで、C# Storm トポロジのプロジェクトを含むディレクトリを開き、**Microsoft.SCP.Net.SDK** フォルダーを探します。ここには、アプリケーションをパッケージ化して、HDInsight クラスターにデプロイするために使用される SCP.Net コンポーネントが含まれます。
-
-6.	**Microsoft.SCP.Net.SDK** ディレクトリの既存の内容を削除し、**packages/Microsoft.SCP.Net.SDK.#.#.#.###** からコピーしたバージョンで置き換えます。
-
-この時点で、プロジェクトは NuGet からインストールされたバージョンを使用するよう更新されています。ローカルでの開発と HDInsight クラスターへのデプロイの両方で使用できます。
 
 ###トポロジをローカルでテストする
 
@@ -579,7 +595,7 @@ SCP.Net バージョン 0.9.4.203 には、Event Hub スパウト (Event Hub か
 
 6.	変更を保存して、**F5** キーをクリックするか、**[デバッグ]** > **[デバッグの開始]** を使用してプロジェクトを起動します。コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。**[テストの完了]** と表示されたら、いずれかのキーを押してウィンドウを閉じます。
 
-7.	**Windows エクスプローラー**を使用して、たとえば、**C:\\Users<your_user_name>\\Documents\\Visual Studio 2013\\Projects\\WordCount\\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
+7.	**Windows エクスプローラー**を使用して、たとえば、**C:\Users<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
 
 	> [AZURE.NOTE]これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は「and」という単語を示します。
 
@@ -639,4 +655,4 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 -	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

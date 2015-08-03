@@ -1,5 +1,5 @@
 <properties
-   pageTitle="HDInsight での Hadoop Pig と Curl の使用 | Microsoft Azure"
+   pageTitle="HDInsight での Hadoop Hive と Curl の使用 | Microsoft Azure"
    description="Curl を使用して Pig ジョブを HDInsight にリモートで送信する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -189,4 +189,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

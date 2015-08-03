@@ -55,4 +55,4 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 ## 次のステップ
 - Azure へのデータとアプリケーションのバックアップについて詳しくは、「[スケジュールされたバックアップ](backup-azure-backup-and-recover.md)」をご覧ください。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -222,4 +222,4 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 [11]: ./media/data-catalog-get-started/connect2.png
 [12]: ./media/data-catalog-get-started/ownership.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

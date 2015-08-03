@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/23/2015"
+   ms.date="07/21/2015"
    ms.author="abhisram"/>
 
 # Fabric アクターの Service Fabric プラットフォームの使用方法
@@ -241,6 +241,5 @@ public class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

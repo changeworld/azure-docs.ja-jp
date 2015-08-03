@@ -179,13 +179,13 @@ AzCopy を使用すると、インターネット経由で VHD を簡単にア�
 2. Azure PowerShell を開き、AzCopy がインストールされているフォルダーに移動します。  
 3. 次のコマンドを使用して、"Source" から "Destination" に VHD ファイルをコピーします。 
 
-		AzCopy /Source: <source> /SourceKey: <source-account-key> /Destination: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>  
+		AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>  
 
 	次に AzCopy コマンドで使用するパラメーターを示します。
 
  - **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。    
  - **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。  
- - **/Destination: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
+ - **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
  - **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
  - **/BlobType: page:** コピー先がページ BLOB であることを指定。
  - **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
@@ -315,4 +315,4 @@ OS イメージまたは OS ディスクを登録したら、新しい DS シリ
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -59,4 +59,4 @@ Azure 仮想マシンから (コレクションで共有するアプリを保持
 これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

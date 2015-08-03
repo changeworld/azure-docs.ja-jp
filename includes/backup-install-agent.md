@@ -48,4 +48,4 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 
     ![Azure Backup を構成する](./media/backup-install-agent/configure.png)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

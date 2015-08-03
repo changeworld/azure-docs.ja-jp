@@ -225,4 +225,4 @@ Java サンプル コードの全体について説明します。後続のセ�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

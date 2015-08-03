@@ -100,4 +100,4 @@ Azure Linux エージェントの詳細については、[Azure Linux エージ�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

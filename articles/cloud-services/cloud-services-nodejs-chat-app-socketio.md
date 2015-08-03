@@ -40,7 +40,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
 
 
-2. **c:\\node** ディレクトリに移動し、次のコマンドを入力して **chatapp** という名前の新しいソリューションと **WorkerRole1** という名前の worker ロールを作成します。
+2. **c:\node** ディレクトリに移動し、次のコマンドを入力して **chatapp** という名前の新しいソリューションと **WorkerRole1** という名前の worker ロールを作成します。
 
 		PS C:\node> New-AzureServiceProject chatapp
 		PS C:\Node> Add-AzureNodeWorkerRole
@@ -57,13 +57,13 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
     ![https://github.com/LearnBoost/socket.io/tree/master/examples/chat が表示され、ZIP のダウンロード アイコンが強調表示されているブラウザー ウィンドウ][chat-example-view]
 
-3.  ローカル リポジトリのディレクトリ構造を、**examples\\chat** ディレクトリまで移動します。このディレクトリの内容を、先ほど作成した **C:\\node\\chatapp\\WorkerRole1** ディレクトリにコピーします。
+3.  ローカル リポジトリのディレクトリ構造を、**examples\chat** ディレクトリまで移動します。このディレクトリの内容を、先ほど作成した **C:\node\chatapp\WorkerRole1** ディレクトリにコピーします。
 
-    ![アーカイブから展開された examples\\chat ディレクトリの内容を表示しているエクスプローラー][chat-contents]
+    ![アーカイブから展開された examples\chat ディレクトリの内容を表示しているエクスプローラー][chat-contents]
 
-    上記のスクリーンショットの強調表示されている項目は、**examples\\chat** ディレクトリからコピーされたファイルです。
+    上記のスクリーンショットの強調表示されている項目は、**examples\chat** ディレクトリからコピーされたファイルです。
 
-4.  **C:\\node\\chatapp\\WorkerRole1** ディレクトリで、**server.js** ファイルを削除し、**app.js** ファイルの名前を **server.js** に変更します。これにより、前に **Add-AzureNodeWorkerRole** コマンドレットで作成された既定の **server.js** ファイルが削除され、チャットのサンプルのアプリケーション ファイルに置き換えられます。
+4.  **C:\node\chatapp\WorkerRole1** ディレクトリで、**server.js** ファイルを削除し、**app.js** ファイルの名前を **server.js** に変更します。これにより、前に **Add-AzureNodeWorkerRole** コマンドレットで作成された既定の **server.js** ファイルが削除され、チャットのサンプルのアプリケーション ファイルに置き換えられます。
 
 ### Server.js の変更とモジュールのインストール
 
@@ -89,7 +89,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 
 server.js の変更内容を保存した後、次の手順に従って必要なモジュールをインストールし、Azure エミュレーターでアプリケーションをテストします。
 
-1.  **Azure PowerShell** を使用して、**C:\\node\\chatapp\\WorkerRole1** ディレクトリに移動し、次のコマンドを使用して、このアプリケーションで必要なモジュールをインストールします。
+1.  **Azure PowerShell** を使用して、**C:\node\chatapp\WorkerRole1** ディレクトリに移動し、次のコマンドを使用して、このアプリケーションで必要なモジュールをインストールします。
 
         PS C:\node\chatapp\WorkerRole1> npm install
 
@@ -158,4 +158,4 @@ server.js の変更内容を保存した後、次の手順に従って必要な�
   
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

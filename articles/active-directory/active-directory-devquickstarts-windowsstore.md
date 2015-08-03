@@ -13,19 +13,21 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.date="07/17/2015"
 	ms.author="dastrock"/>
 
 
-# Windows Phone アプリから Web API を呼び出す
+# Azure AD と Windows ストア アプリの統合
+
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
 Windows ストア用アプリを開発する場合、Azure AD を使用すると、Active Directory アカウントを使用してユーザーの認証処理を容易に行うことができます。また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 
-保護されたリソースにアクセスする必要がある Windows ストア デスクトップ アプリに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリケーションがアクセス トークンを容易に取得できるようにすることです。どれほど簡単かを示すため、ここでは次のような機能を備えた「ディレクトリ検索」 Windows ストア アプリを作成します。
+保護されたリソースにアクセスする必要がある Windows ストア デスクトップ アプリに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。どれほど簡単かを示すため、ここでは次のような機能を備えた「ディレクトリ検索」 Windows ストア アプリを作成します。
 
--	[OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して Azure AD Graph API を呼び出すためのアクセストークンを取得します。
+-	[OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して Azure AD Graph API を呼び出すためのアクセス トークンを取得します。
 -	指定された UPN を持つユーザーをディレクトリで検索します。
 -	ユーザーのサインアウト処理を行います。
 
@@ -40,7 +42,7 @@ Windows ストア用アプリを開発する場合、Azure AD を使用すると
 ## *1.ディレクトリ検索アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -71,7 +73,7 @@ redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCur
 ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/
 ```
 
-- Microsoft Azure の管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
+- Microsoft Azure 管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
 
 ## *3.ADAL を使用して AAD からトークンを取得する*
 ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireToken(…)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
@@ -122,7 +124,7 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 // Update the Page UI to represent the signed in user
 ActiveUser.Text = result.UserInfo.DisplayableId;
 ```
-- 最後に、ADAL を使用してアプリケーションからユーザーをサインアウトさせることができます。ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` の呼び出しでサインイン ビューが表示されるようにする必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じぐらい容易に達成できます。
+- 最後に、ADAL を使用してアプリケーションからユーザーをサインアウトさせることができます。ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` の呼び出しでサインイン ビューが表示されるようにする必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
 
 ```C#
 private void SignOut()
@@ -142,7 +144,7 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [Protect a Web API using Bearer tokens from Azure AD (Azure AD からのベアラー トークンを使用することによる Web API の保護)](active-directory-devquickstarts-webapi-dotnet.md)
 
-その他のリソースについては、次を参照してください。 - [GitHub の AzureAD サンプル](https://github.com/AzureAdSamples) - [CloudIdentity.com](https://cloudidentity.com) - [Azure.com](http://azure.microsoft.com/documentation/services/active-directory/) での Azure AD に関するドキュメント
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

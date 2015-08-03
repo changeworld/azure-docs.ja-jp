@@ -81,4 +81,4 @@ Azure 管理ポータルには、Azure メディア サービス アカウント
   [管理ポータル]: http://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

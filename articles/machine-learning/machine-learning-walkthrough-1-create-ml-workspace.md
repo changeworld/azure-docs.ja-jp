@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2015" 
+	ms.date="07/10/2015" 
 	ms.author="garye"/>
 
 
@@ -56,4 +56,4 @@ Machine Learning ワークスペースが作成されると、**機械学習**�
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -19,4 +19,4 @@ Azure App Service では、複数のユーザーによって作成された複�
 
 次の[図 ](#appservice_diagram)に示すように、コードやその他の Web コンテンツを Azure App Service に発行する方法は複数あります。たとえば、FTP、FTPS、Microsoft の WebDeploy テクノロジを使用できます。Azure App Service は、ソース管理システム (Git、GitHub、CodePlex、BitBucket、Dropbox、Mercurial、Team Foundation Server、クラウドベースの Team Foundation Service など) からのコードの発行もサポートしています。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

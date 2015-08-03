@@ -369,20 +369,10 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		  }
 		}
 
-	上記のスクリプトの注意事項は次のとおりです。
-	- *window.onload* は、UI の 2 つのボタンのボタン クリック イベント (GCM への登録を行うイベントと、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行うイベント) を定義します。
-	- *updateLog* 関数は、単純なログ関数を定義します。 
-	- *registerWithGCM* は、Chrome アプリ インスタンスを登録するために、GCM に対して *chrome.gcm.register* を呼び出す最初のボタン クリック ハンドラーです。 
-	- *registerCallback* は、上記の GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。 
-	- *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した *hubName* と *connectionString* を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。 
-	- *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、http://msdn.microsoft.com/library/dn495627.aspx を参照してください。 
-	- *sendNHRegistrationRequest* は、HTTP REST 呼び出しを実行する関数です。 
-	- *registrationPayload* は、登録 xml ペイロードを定義します。これについての詳細は、「[登録の作成]」を参照してください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。
-	- *client* は、HTTP POST 要求の発行のために使用する *XMLHttpRequest* のインスタンスです。*Authorization* ヘッダーは sasToken を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
+	上記のスクリプトの注意事項は次のとおりです。 - *window.onload* は、UI の 2 つのボタンのボタン クリック イベント (GCM への登録を行うイベントと、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行うイベント) を定義します。 - *updateLog* 関数は、単純なログ関数を定義します。 - *registerWithGCM* は、Chrome アプリ インスタンスを登録するために、GCM に対して *chrome.gcm.register* を呼び出す最初のボタン クリック ハンドラーです。 - *registerCallback* は、上記の GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。 - *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した *hubName* と *connectionString* を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。 - *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、http://msdn.microsoft.com/library/dn495627.aspx を参照してください。 - *sendNHRegistrationRequest* は、HTTP REST 呼び出しを実行する関数です。 - *registrationPayload* は、登録 xml ペイロードを定義します。これについての詳細は、「[登録の作成]」を参照してください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。 - *client* は、HTTP POST 要求の発行のために使用する *XMLHttpRequest* のインスタンスです。*Authorization* ヘッダーは sasToken を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
 
 
-8. 最後に、フォルダーについて次のビューが表示されます。
-   	![][21]
+8. 最後に、フォルダーについて次のビューが表示されます。![][21]
 
 ###Chrome アプリケーションのセットアップとテスト
 
@@ -410,8 +400,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 
 Notification Hubs を使用すれば、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからでも通知を送信できますが、このチュートリアルでは、.NET コンソール アプリケーションを使用して通知を送信します。
 
-通知ハブと統合した Azure モバイル サービス バックエンドからの通知の送信例については、「**モバイル サービスでのプッシュ通知の使用**」([.NET バックエンド](../mobile-services-javascript-backend-android-get-started-push.md) | [JavaScript バックエンド](../mobile-services-javascript-backend-android-get-started-push.md)) を参照してください。  
-REST API を使用して通知を送信する方法の例については、「**Java/PHP/Python から Notification Hubs を使用する方法**」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md) | [Python](notification-hubs-python-backend-how-to.md)) を参照してください。
+通知ハブと統合した Azure モバイル サービス バックエンドからの通知の送信例については、「**モバイル サービスでのプッシュ通知の使用**」([.NET バックエンド](../mobile-services-javascript-backend-android-get-started-push.md) | [JavaScript バックエンド](../mobile-services-javascript-backend-android-get-started-push.md)) を参照してください。REST API を使用して通知を送信する方法の例については、「**Java/PHP/Python から Notification Hubs を使用する方法**」 ([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md) | [Python](notification-hubs-python-backend-how-to.md)) を参照してください。
 
 1. Visual Studio で、**[ファイル]** メニューから、**[新規作成]**、**[プロジェクト]** をクリックし、**[Visual C#]** で **[Windows]**、**[コンソール アプリケーション]**、**[OK]** の順にクリックします。これで、新しいコンソール アプリケーション プロジェクトが作成されます。
 
@@ -455,9 +444,7 @@ REST API を使用して通知を送信する方法の例については、「**
 
 ## <a name="next-steps"> </a>次のステップ
 
-この簡単な例では、Chrome アプリケーションに通知をブロードキャストします。
-Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。
-特定のユーザーをターゲットとするには、「[Azure Notification Hubs によるユーザーへの通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
+この簡単な例では、Chrome アプリケーションに通知をブロードキャストします。Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。特定のユーザーをターゲットとするには、「[Azure Notification Hubs によるユーザーへの通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -499,4 +486,4 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

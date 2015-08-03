@@ -51,4 +51,4 @@
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

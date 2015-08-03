@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 # 変更の追跡を使用して違いを特定する
@@ -51,6 +51,7 @@ Operational Insights で変更の追跡を使用するには、事前にソリ�
 
 3. どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。結果を絞り込むファセットを使用してフィルター処理することもできます。
 
-4. ログ検索のすべてのページは、結果の詳細を CSV ファイルに**エクスポート**して、Excel または他のアプリケーションで開いて表示または編集することができます。
 
-<!---HONumber=July15_HO2-->
+[AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
+
+<!---HONumber=July15_HO4-->

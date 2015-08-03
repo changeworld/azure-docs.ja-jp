@@ -46,4 +46,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

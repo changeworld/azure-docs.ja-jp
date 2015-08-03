@@ -393,4 +393,4 @@
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info.md
 [Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

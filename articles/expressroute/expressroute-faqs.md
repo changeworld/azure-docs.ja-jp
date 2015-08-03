@@ -286,4 +286,4 @@ NSP 経由と EXP 経由の両方で Office 365 サービスへの接続がサ�
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

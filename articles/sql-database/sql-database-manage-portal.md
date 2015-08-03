@@ -45,7 +45,8 @@ Azure SQL データベースは、すべてのデータベース イベントを
 また、Azure SQL データベースは、権限を持たないユーザーに対して機密データをマスクするように構成することもできます。Azure SQL Database の動的データ マスク機能の詳細については、[こちら][AzureDb datamasking]を参照してください。
 
 ## 4.geo レプリケーション
-![Geo-replication](./media/sql-database-manage-portal/sqldatabase_georeplication.png)
+![geo レプリケーション  
+](./media/sql-database-manage-portal/sqldatabase_georeplication.png)
 
 Azure SQL データベースは、コミットされたトランザクションをセカンダリ データベースに非同期にレプリケートするように構成できます。管理ポータルの geo レプリケーション パートでは、セカンダリ データベースを配置する Azure リージョンを選択できます。Azure のデータベースの geo レプリケーションの詳細については、[こちら][Database geo-replication]を参照してください。
 
@@ -70,4 +71,4 @@ Azure SQL データベースは、コミットされたトランザクション�
  
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

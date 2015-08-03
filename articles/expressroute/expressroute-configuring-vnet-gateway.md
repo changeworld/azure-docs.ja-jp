@@ -61,7 +61,7 @@
 
 	少なくとも 1 つの Azure Virtual Network でゲートウェイが作成済みであることを確認します。ExpressRoute 接続を使用するためには、ゲートウェイ サブネットが /28 以上で、稼動している必要があります。
 
-			PS C:> $Vnet = "MyTestVNet"
+			PS C:\> $Vnet = "MyTestVNet"
 			New-AzureDedicatedCircuitLink -ServiceKey $ServiceKey -VNetName $Vnet
 			Provisioned
 
@@ -74,4 +74,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](expres
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

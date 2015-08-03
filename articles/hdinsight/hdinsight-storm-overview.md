@@ -77,7 +77,7 @@ HDInsight クラスター上の各 Storm には、クラスターで実行され
 
 Storm ダッシュボードの使用に関する詳細については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」をご覧ください。
 
-HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、「[Event Hubs の使用](service-bus-event-hubs-c-storm-getstarted.MD)」と「[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.MD)」をご覧ください。
+HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、「[Event Hubs の使用](service-bus-event-hubs-c-storm-getstarted.MD)」と「[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.MD)」をご覧ください。
 
 ###信頼性
 
@@ -109,7 +109,8 @@ HDInsight の Storm には、完全なエンタープライズ レベルの 24 �
 * Extract Transform Load (ETL)
 * ネットワーク監視
 * 検索
-* モバイル エンゲージメント
+* Mobile Engagement  
+
 
 ##HDInsight Storm のデータの処理方法
 
@@ -156,7 +157,7 @@ HDInsight Tools for Visual Studio では、.NET 開発者は、C# のトポロ�
 
 Trident の詳細については、apache.org の「[Trident のチュートリアル](https://storm.incubator.apache.org/documentation/Trident-tutorial.html)」をご覧ください。
 
-未加工の Java と Trident トポロジの例については、HDInsight Storm クラスターの **%storm_home%\\contrib\\storm-starter** ディレクトリをご覧ください。
+未加工の Java と Trident トポロジの例については、HDInsight Storm クラスターの **%storm_home%\contrib\storm-starter** ディレクトリをご覧ください。
 
 ##一般的な開発パターンの例
 
@@ -209,4 +210,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: ../hdinsight-storm-getting-started.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -370,4 +370,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

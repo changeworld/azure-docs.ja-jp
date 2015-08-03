@@ -76,4 +76,4 @@ As the figure illustrates, the Cloud Services VMs run in a separate cloud servic
 * [Cloud Service](services/cloud-services/) に関する詳細情報
 * [Virtual Machines ](https://msdn.microsoft.com/library/azure/jj156143.aspx)に関する詳細情報 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -60,4 +60,4 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 -   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

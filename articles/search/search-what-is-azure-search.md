@@ -131,4 +131,4 @@ ID に基づいて特定のドキュメントを探し、特定のアイテム�
 
 [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md) [Azure Search .NET の使用](search-get-started-dotnet.md) [Azure Search: チュートリアル、ビデオ デモ、サンプル](https://msdn.microsoft.com/library/azure/dn818681.aspx)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

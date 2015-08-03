@@ -82,4 +82,4 @@ Microsoft OLE DB Provider for DB2 バージョン 5.0 (Data Provider) では、I
 https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
 -->
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

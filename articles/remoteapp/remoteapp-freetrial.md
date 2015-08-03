@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp の 30 日間無料評価版"
     description="Azure RemoteApp の 30 日間無料評価版をお試しください。"
     services="remoteapp"
-    documentationCenter=""
+	documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -30,4 +30,4 @@ Azure サブスクリプションをお持ちであれば、[Azure RemoteApp を
 
 フィードバックが欲しい場合 [ディスカッション フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)に質問を投稿してください。[Azure サポート プラン](http://azure.microsoft.com/support/plans/)に加入している場合は、サポート ケースを送信できます。[フィードバック フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)には、どなたでもフィードバックを送信できます。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

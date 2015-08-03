@@ -149,8 +149,8 @@ VMware 仮想マシンまたは物理サーバーにインストールします�
 
 - **Windows サーバー**:
 	-  64 ビット オペレーティング システム: Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 以降が必要です。
-	-  ホスト名、マウント ポイント、デバイス名、Windows のシステム パス (例: C:\\Windows) (英語のみ)。
-	-  C:\\ ドライブ上のオペレーティング システム。
+	-  ホスト名、マウント ポイント、デバイス名、Windows のシステム パス (例: C:\Windows) (英語のみ)。
+	-  C:\ ドライブ上のオペレーティング システム。
 	-  基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされません。
 
 - **Linux サーバー**:
@@ -169,10 +169,10 @@ VMware 仮想マシンまたは物理サーバーにインストールします�
 --- | --- 
 <p>**VMM 用 Azure Site Recovery Provider**</p><p>**Azure Recovery Services エージェント**</p> | <p></p>**初回インストール**: [クイック スタート] ページから最新バージョンをインストールします<p></p>**使用中**: Site Recovery のダッシュボードから最新バージョン (と旧バージョン) をダウンロードできます。また、Microsoft Updates を使用している場合、最新バージョンの Provider とエージェントがサーバーに自動的にインストールされます。
 <p>**プロセス サーバー**</p><p>**構成サーバー**</p><p>**マスター ターゲット サーバー**</p> | Site Recovery ダッシュボードで更新プログラムを確認します。 
-**モビリティ サービス** | <p>保護する各コンピューターに最新のモビリティ サービスの更新プログラムをインストールします。<p><p>最新の更新プログラムをダウンロードできます。</p><p>[Windows](http://download.microsoft.com/download/7/C/7/7C70CA53-2D8E-4FE0-BD85-8F7A7A8FA163/Microsoft-ASR_UA_8.3.0.0_Windows_GA_03Jul2015_release.exe)</p><p>[RHELP6-64](http://download.microsoft.com/download/B/4/5/B45D1C8A-C287-4339-B60A-70F2C7EB6CFE/Microsoft-ASR_UA_8.3.0.0_RHEL6-64_GA_03Jul2015_release.tar.gz)</p><p>[OL6-64](http://download.microsoft.com/download/9/4/8/948A2D75-FC47-4DED-B2D7-DA4E28B9E339/Microsoft-ASR_UA_8.3.0.0_OL6-64_GA_03Jul2015_release.tar.gz)</p><p>[SLES11-SP3-64](http://download.microsoft.com/download/6/A/2/6A22BFCD-E978-41C5-957E-DACEBD43B353/Microsoft-ASR_UA_8.3.0.0_SLES11-SP3-64_GA_03Jul2015_release.tar.gz)</p><p>また、プロセス サーバーが最新の状態であることを確認した後に、プロセス サーバーの C:\\pushinstallsvc\\repository フォルダーから最新バージョンのモビリティ サービスをダウンロードできます</p>  
+**モビリティ サービス** | <p>保護する各コンピューターに最新のモビリティ サービスの更新プログラムをインストールします。<p><p>最新の更新プログラムをダウンロードできます。</p><p>[Windows](http://download.microsoft.com/download/7/C/7/7C70CA53-2D8E-4FE0-BD85-8F7A7A8FA163/Microsoft-ASR_UA_8.3.0.0_Windows_GA_03Jul2015_release.exe)</p><p>[RHELP6-64](http://download.microsoft.com/download/B/4/5/B45D1C8A-C287-4339-B60A-70F2C7EB6CFE/Microsoft-ASR_UA_8.3.0.0_RHEL6-64_GA_03Jul2015_release.tar.gz)</p><p>[OL6-64](http://download.microsoft.com/download/9/4/8/948A2D75-FC47-4DED-B2D7-DA4E28B9E339/Microsoft-ASR_UA_8.3.0.0_OL6-64_GA_03Jul2015_release.tar.gz)</p><p>[SLES11-SP3-64](http://download.microsoft.com/download/6/A/2/6A22BFCD-E978-41C5-957E-DACEBD43B353/Microsoft-ASR_UA_8.3.0.0_SLES11-SP3-64_GA_03Jul2015_release.tar.gz)</p><p>また、プロセス サーバーが最新の状態であることを確認した後に、プロセス サーバーの C:\pushinstallsvc\repository フォルダーから最新バージョンのモビリティ サービスをダウンロードできます</p>  
 
 ## 次のステップ
 
 デプロイ シナリオに合わせてコンポーネントを構成します。[詳細情報](site-recovery-overview.md)。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

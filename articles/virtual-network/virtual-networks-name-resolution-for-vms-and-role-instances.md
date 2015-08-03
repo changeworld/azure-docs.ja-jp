@@ -127,4 +127,4 @@ VM およびロール インスタンスで使用するように複数の DNS �
 
 [Azure サービスの構成スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/ee758710) [Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100) [管理ポータルでの仮想ネットワークの設定について](https://msdn.microsoft.com/library/azure/jj156074.aspx) [ネットワーク構成ファイルを使用した仮想ネットワークの構成](https://msdn.microsoft.com/library/azure/jj156097.aspx) [仮想ネットワークの構成タスク](https://msdn.microsoft.com/library/azure/jj156206.aspx)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

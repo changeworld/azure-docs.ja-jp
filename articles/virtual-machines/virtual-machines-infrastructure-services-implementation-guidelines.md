@@ -3,7 +3,7 @@
 	description="Azure インフラストラクチャ サービスでの IT ワークロードのデプロイに関する主要な設計と実装のガイドラインについて説明します。" 
 	documentationCenter=""
 	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
+	authors="squillace" 
 	manager="timlt" 
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
-	ms.author="josephd"/>
+	ms.date="07/09/2015" 
+	ms.author="rasquill"/>
 
 # Azure インフラストラクチャ サービス実装ガイドライン
  
@@ -77,7 +77,7 @@ Azure のコンポーネント、サービス、または製品 | Rg (リソー�
 - リソース グループ
 - Cloud Services
 - 仮想マシン
-- エンドポイント
+- Endpoints
 - ネットワーク セキュリティ グループ
 - ロール
 
@@ -168,7 +168,7 @@ BLOB の最大サイズは 1024 GB で、それには VHD ファイルのメタ�
 ### ストライピングされたディスク
 1023 GB より大きいディスクを作成できるだけでなく、多くの場合、データ ディスクにストライピングを使用すると、複数の BLOB で単一ボリュームのストレージをバックアップできるので、パフォーマンスが向上します。これにより、単一ディスクのデータの読み書きに必要な I/O が並列化されます。
 
-Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」をご覧ください。
+Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、[「Sizes for Virtual Machines (仮想マシンのサイズ)」](virtual-machines-size-specs.md)を参照してください。
 
 Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 
@@ -204,7 +204,7 @@ Azure データ ディスクにディスク ストライピングを使用する
 
 - 名前付け規則を使用してストレージ アカウントのセットを作成します。Azure プレビュー ポータル、Azure 管理ポータル、または **New-AzureStorageAccount** PowerShell コマンドレットを使用できます。
 
-## 4.Cloud Services
+## 4.サブスクリプションあたりの
 
 クラウド サービスは、PaaS と IaaS の両方のサービスに関して、Azure Service Management の基本的な構成要素です。PaaS では、クラウド サービスはインスタンスが相互に通信できるロールの関連付けを表します。クラウド サービスは、パブリック仮想 IP (VIP) アドレスおよびロード バランサーに関連付けられており、インターネットからの着信トラフィックを受け取って、そのトラフィックを受信するように構成されているロールに負荷分散します。
 
@@ -232,7 +232,7 @@ Azure サブスクリプションは、最大 200 個のクラウド サービ�
 
 - 名前付け規則を使用してクラウド サービスのセットを作成します。Azure 管理ポータルまたは **New-AzureService** PowerShell コマンドレットを使用できます。
 
-## 5.をクリックし、
+## 5.仮想ネットワーク
 
 次の論理ステップは、ソリューション内の仮想マシン間の通信をサポートするために必要な仮想ネットワークを作成することです。1 つのクラウド サービスだけで IT ワークロードの複数の仮想マシンをホストできますが、仮想ネットワークを使用することをお勧めします。
 
@@ -288,7 +288,7 @@ Azure サブスクリプションは、最大 200 個のクラウド サービ�
 - 仮想ネットワークのアドレス空間を定義します。
 - サブネットのセットおよびそれぞれに対するアドレス空間を定義します。
 - クロスプレミス仮想ネットワークの場合、仮想ネットワーク内の仮想マシンが到達する必要のあるオンプレミスの場所に対するローカル ネットワーク アドレス空間のセットを定義します。
-- 名前付け規則を使用して仮想ネットワークを作成します。Azure プレビュー ポータルまたは Azure 管理ポータルを使用できます。
+- 名前付け規則を使用して仮想ネットワークを作成します。Azure プレビュー ポータルまたは Azure ポータルを使用できます。
 
 ## 6.可用性セット
 
@@ -312,7 +312,7 @@ Azure IaaS では、各 IaaS 仮想マシンが単一インスタンスのロー
 
 Azure PaaS では、Azure が仮想マシンとそれに関連付けられているディスクを管理します。ユーザーはクラウド サービスとロールを作成して名前を付ける必要があり、Azure はそれらのロールに関連付けられるインスタンスを作成します。Azure IaaS の場合は、クラウド サービス、仮想マシン、および関連付するディスクの名前はユーザーが指定する必要があります。
 
-管理上の負担を軽減するため、Azure 管理ポータルでは、関連するクラウド サービスの既定の名前として、コンピューター名が提案されます (ユーザーが、仮想マシン作成ウィザードの一部として、新しいクラウド サービスを作成することを選択した場合)。
+管理上の負担を軽減するため、Azure ポータルでは、関連するクラウド サービスの既定の名前として、コンピューター名が提案されます (ユーザーが、仮想マシン作成ウィザードの一部として、新しいクラウド サービスを作成することを選択した場合)。
 
 さらに、Azure は、クラウド サービス名、コンピューター名、および作成日の組み合わせを使用して、ディスクおよびそれがサポートする VHD BLOB の名前を指定します。
 
@@ -430,7 +430,7 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)
 
-[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)
+[仮想マシンのサイズ](virtual-machines-size-specs.md)
 
 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage-scalability-targets.md)
 
@@ -438,7 +438,7 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [データセンター拡張機能の参照アーキテクチャの図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
-[Azure リソース マネージャーにおける Azure Compute、Network、Storage のプロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
+[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

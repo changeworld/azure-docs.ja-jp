@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/06/2015" 
+	ms.date="07/11/2015" 
 	ms.author="nitinme"/>
 
 # Web サイトのログを分析するための HDInsight での Hive の使用
@@ -31,7 +31,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 
 ##前提条件
 
-- **HDInsight クラスター**のプロビジョニングを終えている必要があります。手順については、「[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。 
+- Azure HDInsight 上で Hadoop クラスターをプロビジョニングしておく必要があります。手順については、「[HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。 
 - Microsoft Excel 2013 または Microsoft Excel 2010 がインストールされていること。
 - Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886)があること。
 
@@ -58,4 +58,4 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

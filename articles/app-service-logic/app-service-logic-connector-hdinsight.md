@@ -122,4 +122,4 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 [10]: ./media/app-service-logic-connector-hdinsight/LogicApp6.jpg
 [11]: ./media/app-service-logic-connector-hdinsight/LogicApp7.jpg
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

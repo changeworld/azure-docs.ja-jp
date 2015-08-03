@@ -191,4 +191,4 @@ iterationSleep | "00:00:00.1000000"
 lastExceptionType | "Microsoft.ServiceBus.Messaging.MessagingCommunicationException"
 exceptionMessage | "The remote name could not be resolved: 'retry-guidance-tests.servicebus.windows.net'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3,TimeStamp:9/5/2014 10:00:13 PM"
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -124,4 +124,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

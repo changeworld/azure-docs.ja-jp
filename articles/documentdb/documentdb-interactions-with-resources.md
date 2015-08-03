@@ -262,4 +262,4 @@ REST API を使用してリソースを操作する方法については、「[A
 [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

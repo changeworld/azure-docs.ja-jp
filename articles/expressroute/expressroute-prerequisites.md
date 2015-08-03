@@ -45,4 +45,4 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 	- [Configure an ExpressRoute Connection through an Exchange Provider (Exchange プロバイダーによる ExpressRoute 接続の構成)](expressroute-configuring-exps.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

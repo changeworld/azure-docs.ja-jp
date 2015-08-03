@@ -94,4 +94,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)<br/> [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -50,4 +50,4 @@
 VM 用に構成できる内容とそのタイミングについては、[「Azure VM 構成設定について」](http://msdn.microsoft.com/library/azure/dn763935.aspx)を参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

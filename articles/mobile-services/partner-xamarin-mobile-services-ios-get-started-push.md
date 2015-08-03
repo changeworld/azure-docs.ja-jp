@@ -399,4 +399,4 @@ APNS と連携するようにモバイル サービスが構成されました�
 [Xamarin.iOS]: http://xamarin.com/download
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -104,4 +104,4 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

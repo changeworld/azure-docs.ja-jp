@@ -51,7 +51,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 「[基本構成テスト環境](../virtual-machines/virtual-machines-base-configuration-test-environment.md)」の手順を使用して、TestLab という Azure Virtual Network で DC1、APP1、および CLIENT1 の各コンピューターを構成します。
 
-ローカル コンピューターで Azure の管理ポータルから CORP\\User1 の資格情報を使用して DC1 に接続します。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
+ローカル コンピューターで Azure の管理ポータルから CORP\User1 の資格情報を使用して DC1 に接続します。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
@@ -200,7 +200,7 @@ ping コマンドで IP アドレス 10.0.0.4 からの応答が 4 回成功す�
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 	Install-ADDSDomainController -Credential (Get-Credential CORP\User1) -DomainName "corp.contoso.com" -InstallDns:$true -DatabasePath "F:\NTDS" -LogPath "F:\Logs" -SysvolPath "F:\SYSVOL"
 
-CORP\\User1 のパスワードとディレクトリ サービス復元モード (DSRM) のパスワードの両方を入力し、DC2 を再起動するよう求められます。
+CORP\User1 のパスワードとディレクトリ サービス復元モード (DSRM) のパスワードの両方を入力し、DC2 を再起動するよう求められます。
 
 これで TestVNET 仮想ネットワーク独自の DNS サーバー (DC2) が設定されたので、この DNS サーバーを使用するように TestVNET 仮想ネットワークを構成する必要があります。
 
@@ -273,4 +273,4 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

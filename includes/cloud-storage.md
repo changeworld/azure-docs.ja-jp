@@ -181,4 +181,4 @@ Big Data 分析は重要なので、Hadoop も重要です。Microsoft は、Had
 [SQL-tblstor]: ./media/cloud-storage/Data_06_TblStorage.png
 [hadoop]: ./media/cloud-storage/Data_07_Hadoop.png
 
-<!---HONumber=62-->
+<!---HONumber=July15_HO4-->

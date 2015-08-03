@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="07/14/2015" 
 	ms.author="huvalo;bradsev" />
 
 
@@ -367,4 +367,4 @@ Python クライアント ライブラリは、Pandas DataFrame を次の形式�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

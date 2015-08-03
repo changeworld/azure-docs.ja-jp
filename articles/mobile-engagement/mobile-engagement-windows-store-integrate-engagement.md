@@ -83,7 +83,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 ### Engagement の初期化
 
-新しいプロジェクトを作成すると、`App.xaml.cs` ファイルが生成されます。このクラスは、`Application` から継承し、多くの重要なメソッドが含まれています。また、 Engagement SDK を初期化するためにも使用されます。
+新しいプロジェクトを作成すると、`App.xaml.cs` ファイルが生成されます。このクラスは、`Application` から継承し、多くの重要なメソッドが含まれています。また、Engagement SDK を初期化するためにも使用されます。
 
 `App.xaml.cs` を変更します。
 
@@ -271,4 +271,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

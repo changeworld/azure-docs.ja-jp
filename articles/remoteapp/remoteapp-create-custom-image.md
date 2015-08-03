@@ -120,11 +120,11 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 	別の方法としては、次の DWORD 値をレジストリに設定または追加できます。
 
 		HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisableEncryption = 1
-9.	Azure 仮想マシン内にイメージを作成している場合は、後で使用するアップロード スクリプトの動作をブロックする **\%windir%\\Panther\\Unattend.xml** ファイルの名前を変更します。このファイルの名前を Unattend.old に変更して、デプロイを元に戻す必要が生じた場合に備えてファイルを温存しておいてください。
+9.	Azure 仮想マシン内にイメージを作成している場合は、後で使用するアップロード スクリプトの動作をブロックする **\%windir%\Panther\Unattend.xml** ファイルの名前を変更します。このファイルの名前を Unattend.old に変更して、デプロイを元に戻す必要が生じた場合に備えてファイルを温存しておいてください。
 10.	Windows Update に移動し、すべての重要な更新プログラムをインストールします。すべての更新プログラムを適用するには、Windows Update を複数回実行することが必要になる場合があります(更新プログラムをインストールするときに、更新内容自体に更新が必要ということもあります)。
 10.	イメージを SYSPREP します。管理者特権のコマンド プロンプトで、次のコマンドを実行します。
 
-	**C:\\Windows\\System32\\sysprep\\sysprep.exe /generalize /oobe /shutdown**
+	**C:\Windows\System32\sysprep\sysprep.exe /generalize /oobe /shutdown**
 
 	**注:** 仮想マシンであっても SYSPREP コマンドで **/mode:vm** スイッチは使用しないでください。
 
@@ -137,4 +137,4 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 - [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

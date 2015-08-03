@@ -110,7 +110,7 @@ Split/Merge の最新バージョンにアップグレードするには、次�
     // Publish 
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo); 
 
-region テーブルと nation テーブルは参照テーブルとして定義されていて、分割/マージ/移動操作によってコピーされます。customer テーブルと orders テーブルは、シャード化テーブルとして定義されています。C_CUSTKEY と O_CUSTKEY は、シャーディング キーとして機能します。
+‘region’ テーブルと ‘nation’ テーブルは参照テーブルとして定義されており、分割/マージ/移動の各操作によってコピーされます。一方、‘customer’ と ‘orders’ は共有テーブルとして定義されています。C_CUSTKEY と O_CUSTKEY は、シャーディング キーとして機能します。
 
 **参照整合性**: Split/Merge サービスは、テーブル間の依存関係を分析し、外部キーと主キーのリレーションシップを使用して、参照テーブルとシャードレットを移動する操作をステージングします。一般に、最初に参照テーブルが依存関係の順にコピーされ、次にシャードレットが各バッチ内での依存関係の順にコピーされます。これは、新しいデータが到着するときにターゲット シャード上の外部キーと主キーの制約が適用されるために必要な操作です。
 
@@ -252,4 +252,4 @@ NuGet パッケージで提供される Web ロール用とワーカー ロー�
 [3]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

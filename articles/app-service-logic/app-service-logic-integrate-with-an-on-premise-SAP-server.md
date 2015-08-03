@@ -125,4 +125,4 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://download.microsoft.com/download/2/D/7/2D7CE8DF-A6C5-45F0-8319-14C3F1F9A0C7/InstallationGuide.htm
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

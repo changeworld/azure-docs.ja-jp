@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article" 
-	ms.date="06/25/2015"
+	ms.date="07/22/2015"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -211,7 +211,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
-この BYOK パッケージを生成する方法の詳細な手順については、「[Azure Key Vault の HSM 保護キーを生成し、転送する方法](https://msdn.microsoft.com/library/azure/dn903624.aspx)」をご覧ください。
+この BYOK パッケージを生成する方法の詳細な手順については、「[Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)」をご覧ください。
 
 ## <a id="delete"></a>Key Vault と関連付けられているキーやシークレットを削除する ##
 
@@ -248,4 +248,4 @@ Azure Key Vault の Windows PowerShell コマンドレットの一覧につい�
 プログラミング リファレンスについては、MSDN の Microsoft Azure ドキュメント ライブラリにある「[Key Vault](https://msdn.microsoft.com/library/azure/dn903625.aspx)」をご覧ください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

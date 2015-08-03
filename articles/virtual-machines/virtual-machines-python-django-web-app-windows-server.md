@@ -76,7 +76,7 @@
 
 1. FastCGI のサポートを利用して IIS をインストールします。この操作には数分かかる可能性があります。
 
-		start /wait %windir%\System32\\PkgMgr.exe /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-LoggingLibraries;IIS-RequestMonitor;IIS-Security;IIS-RequestFiltering;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementConsole;WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-CGI
+		start /wait %windir%\System32\PkgMgr.exe /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-LoggingLibraries;IIS-RequestMonitor;IIS-Security;IIS-RequestFiltering;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementConsole;WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-CGI
 
 
 ### Python 2.7
@@ -148,7 +148,7 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 ## 新しい Django アプリケーションの作成
 
 
-1.  *C:\\inetpub\\wwwroot* から以下のコマンドを入力して、新しい Django プロジェクトを作成します。
+1.  *C:\inetpub\wwwroot* から以下のコマンドを入力して、新しい Django プロジェクトを作成します。
 
     Python 2.7 の場合、以下のコマンドを使用します。
 
@@ -162,13 +162,13 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 1.  **django-admin** コマンドによって、Django ベースの Web サイトの基本的な構造が生成されます。
 
-  -   **helloworld\\manage.py** を使用すると、Django ベースの Web サイトのホスティングを開始および停止できます。
-  -   **helloworld\\helloworld\\settings.py** には、アプリケーション向けの Django の設定が含まれています。
-  -   **helloworld\\helloworld\\urls.py** には、各 URL とそのビューとの間のマッピング コードが含まれています。
+  -   **helloworld\manage.py** を使用すると、Django ベースの Web サイトのホスティングを開始および停止できます。
+  -   **helloworld\helloworld\settings.py** には、アプリケーション向けの Django の設定が含まれています。
+  -   **helloworld\helloworld\urls.py** には、各 URL とそのビューとの間のマッピング コードが含まれています。
 
 
 
-1.  **views.py** という名前の新しいファイルを *C:\\inetpub\\wwwroot\\helloworld\\helloworld* ディレクトリに作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、以下のコードを入力します。
+1.  **views.py** という名前の新しいファイルを *C:\inetpub\wwwroot\helloworld\helloworld* ディレクトリに作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、以下のコードを入力します。
 
 		from django.http import HttpResponse
 		def home(request):
@@ -198,4 +198,4 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

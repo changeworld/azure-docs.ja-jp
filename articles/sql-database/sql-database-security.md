@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services" 
-   ms.date="04/02/2015"
+   ms.date="07/14/2015"
    ms.author="thmullan;jackr"/>
 
 
@@ -98,4 +98,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](http://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

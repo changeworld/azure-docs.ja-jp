@@ -475,4 +475,4 @@ Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、�
 [keys]: media/documentdb-get-started/keys.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

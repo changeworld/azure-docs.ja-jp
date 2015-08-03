@@ -250,4 +250,4 @@ WebMatrix を使用してサイトを修正し、それを Web Apps インスタ
 [sendgridexample]: http://azure.microsoft.com/documentation/articles/sendgrid-dotnet-how-to-send-email/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

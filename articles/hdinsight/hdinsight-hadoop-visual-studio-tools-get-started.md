@@ -14,14 +14,14 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="04/08/2015"
+	ms.date="07/21/2015"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
 
 HDInsight Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
 
->[AZURE.NOTE]最新のリリースでは、Hive エディター Intellisense のサポート、Hive スクリプトのローカルでの検証、YARN ログへのアクセスといった一部の新機能が追加されました。
+>[AZURE.NOTE]最新のリリースでは、Hive エディターのサポート、Hive スクリプトのローカルでの検証、YARN ログへのアクセスといった一部の新機能が追加されました。
 
 
 ## 前提条件
@@ -39,12 +39,12 @@ HDInsight Tools for Visual Studio を使用して HDInsight クラスターに�
 	- 下記のいずれかのバージョンの Visual Studio
 		- Visual Studio 2012 Professional/Premium/Ultimate の[アップデート 4](http://www.microsoft.com/download/details.aspx?id=39305)
 		- Visual Studio 2013 Community/Professional/Premium/Ultimate の[アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
-		- Visual Studio 2015 RC (Community/Enterprise)
+		- Visual Studio 2015 (Community/Enterprise)
 
 	>[AZURE.NOTE]現時点では HDInsight Tools for Visual Studio は英語版のみになります。
 
 
-## Hadoop Tools for Visual Studio のインストール
+## HDInsight Tools for Visual Studio をインストールする
 
 HDInsight Tools for Visual Studio は、Microsoft Azure SDK for .NET バージョン 2.5.1 以降に付属しています。[Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) でインストールできます。お使いの Visual Studio バージョンに対応するものを選択する必要があります。また、この Hadoop ツールでは、32 ビットと 64 ビットの両方の Microsoft Hive ODBC ドライバーもインストールされます。
 
@@ -53,7 +53,7 @@ HDInsight Tools for Visual Studio は、Microsoft Azure SDK for .NET バージ�
 
 >[AZURE.NOTE]Visual Studio 2015 または 2012 を使用していて、Azure SDK 2.5 をインストールしている場合は、最新バージョンをインストールする前に以前のバージョンを手動で削除する必要があります。Visual Studio 2013 では、即時更新をサポートしています。
 
-## Azure サブスクリプションへの接続
+## Azure サブスクリプションに接続する
 HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへの接続、いくつかの基本的な管理操作の実行、Hive クエリの実行が可能です。
 
 >[AZURE.NOTE]HDInsight Emulator の使用法については、「[HDInsight Emulator の概要](../hdinsight-get-started-emulator.md/#vstools)」をご覧ください。
@@ -135,7 +135,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 1. **サービス エクスプローラー**から、**[Azure]**、**[HDInsight クラスター]** の順に展開します。
 2. クエリを実行するクラスターを右クリックして、**[Hive クエリの作成]** をクリックします。
-3. Hive クエリを入力します。Hive エディターは Intellisense をサポートしています。HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの読み込みがサポートされます。たとえば、"SELECT * FROM" と入力すると、Intellisense には推奨されるテーブル名が一覧表示されます。テーブル名を指定すると、列名が Intellisense に一覧表示されます。
+3. Hive クエリを入力します。Hive エディターは Intellisense をサポートしています。HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの読み込みがサポートされます。たとえば、"SELECT * FROM" と入力すると、Intellisense には推奨されるテーブル名が一覧表示されます。テーブル名を指定すると、列名が Intellisense に一覧表示されます。ツールは、ほとんどすべての Hive の DML ステートメント、サブクエリ、および組み込みの UDF をサポートします。 
 
 	![Hadoop ツール: HDInsight Visual Studio Tools Intellisense][13]
 
@@ -181,6 +181,18 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 
 	![Hadoop ツール: HDinsight Visual Studio ツールで新しい Hive ジョブを表示する][12]
 
+### Tez Hive ジョブのパフォーマンス グラフ
+
+HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、[HDInsight での Hive の使用][hdinsight.hive]に関するページを参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、更新ボタンをクリックする必要があります。
+
+> [AZURE.NOTE]この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
+
+![hadoop hive tez パフォーマンス グラフ](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
+
+## Pig のスクリプトを実行する
+
+HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsight クラスターへの送信をサポートしています。ユーザーは、テンプレートから Pig プロジェクトを作成して、HDInsight クラスターにスクリプトを送信できます。
+
 ## 次のステップ
 この記事では、Hadoop ツール パッケージを使用して Visual Studio から HDInsight クラスターに接続し、Hive クエリを実行する方法を説明しました。詳細については、次を参照してください。
 
@@ -211,6 +223,7 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 [13]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.table.names.png
 [14]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.column.names.png
 
+
 <!--Link references-->
 [hdinsight-provision]: ../hdinsight/hdinsight-provision-clusters.md
 [hdinsight.introduction]: ../hdinsight-introduction.md
@@ -223,4 +236,4 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

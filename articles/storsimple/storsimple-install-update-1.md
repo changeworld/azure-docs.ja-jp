@@ -100,4 +100,4 @@ Azure 管理ポータルを使用して GA バージョンを実行している�
 
 [Microsoft Azure StorSimple](storsimple-overview.md) の詳細を確認する
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -44,7 +44,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。次に例を示します。
 
-* ASP.NET MVC プロジェクトで、View\\Shared\\_Layout.cshtml にスクリプトを配置します。
+* ASP.NET MVC プロジェクトで、View\Shared\_Layout.cshtml にスクリプトを配置します。
 * SharePoint サイトのコントロール パネルで、[[サイト設定 / マスター ページ](app-insights-sharepoint.md)] を開きます。
 
 このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。
@@ -181,4 +181,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

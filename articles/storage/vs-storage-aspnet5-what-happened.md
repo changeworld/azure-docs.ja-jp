@@ -50,4 +50,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 詳細については、「[￼￼￼￼￼￼￼ASP.NET 5￼￼￼￼￼￼￼￼￼￼￼￼](http://www.asp.net/vnext)」を参照してください。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -56,7 +56,7 @@
 1.	Visual Studio で、**AdventureWorksCatalog.sln** という名前の Azure Search デモ ソリューションを開きます。  
 2.	ソリューション エクスプローラーで **[CatalogIndexer]** を右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。こうすると、**F5** キーを押した場合に **AdventureWorksWeb** プロジェクトではなく、このアプリケーションが実行されます。
 3.	このプロジェクトの **App.config** を開き、"SearchServiceName" および "SearchServiceApiKey" の値を、使用する Azure Search サービスの該当する値に更新します。Search サービス名については、"mysearch.search.windows.net" というサービスであれば、"mysearch" と入力します。
-4.	App.config には、オプションで "SourceSqlConnectionString" のエントリを含めることができます。その場合、SQL Server 2014 Express LocalDB (Server=(LocalDB)\\v11.0) の使用が前提となります。エディションが異なる SQL Server を使用している場合は、それに応じてサーバー名を更新してください。たとえば、ローカルの既定のインスタンスがある場合、(local) または localhost を使用できます。
+4.	App.config には、オプションで "SourceSqlConnectionString" のエントリを含めることができます。その場合、SQL Server 2014 Express LocalDB (Server=(LocalDB)\v11.0) の使用が前提となります。エディションが異なる SQL Server を使用している場合は、それに応じてサーバー名を更新してください。たとえば、ローカルの既定のインスタンスがある場合、(local) または localhost を使用できます。
 5.	**App.config** を保存します。
 6.	**F5** キーを押して、プロジェクトを起動します。
 
@@ -206,4 +206,4 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [11]: ./media/search-create-first-solution/AzureSearch_Create1_Suggestions.PNG
 [12]: ./media/search-create-first-solution/AzureSearch_Create1_CodeplexDownload.PNG
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

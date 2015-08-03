@@ -152,7 +152,7 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 
 3. **[結果]** ウィンドウで、デバイスの名前を右クリックしてから **[詳細]** をクリックします。
 
-4\. **[デバイスの詳細]** ダイアログ ボックスが表示されます。このボックスには、名前、モデル、バージョン、シリアル番号、状態、対象の iSCSI 修飾名 (IQN)、および最終同期の日時が表示されます。
+4. **[デバイスの詳細]** ダイアログ ボックスが表示されます。このボックスには、名前、モデル、バージョン、シリアル番号、状態、対象の iSCSI 修飾名 (IQN)、および最終同期の日時が表示されます。
 
    - **[再同期]** をクリックして、デバイスを同期します。
 
@@ -238,7 +238,7 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 3. 古いデバイスに関連する構成情報を削除します。
 
-    1. File Explorer で、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。 
+    1. File Explorer で、C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。 
 
     2. BACatalog フォルダーでファイルを削除します。
 
@@ -262,4 +262,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 [StorSimple Snapshot Manager を使用したボリュームの表示と管理](storsimple-snapshot-manager-manage-volumes.md)。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

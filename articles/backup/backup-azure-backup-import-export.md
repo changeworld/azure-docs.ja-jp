@@ -63,7 +63,7 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 
 2. *WAImportExport.zip* ファイルを解凍します。*WAImportExport* ツールを実行すると、SATA ドライブがフォーマットされ、SATA ドライブにバックアップ データが書き込まれて暗号化されます。次のコマンドを実行する前に、BitLocker がコンピューターで有効になっていることを確認します。<br/>
 
-    *.\\WAImportExport.exe PrepImport /j:<*ジャーナル ファイル*>.jrn /id: <*セッション ID*> /sk:<*ストレージ アカウント キー*> /BlobType:**PageBlob** /t:<*ターゲット ドライブ文字*> /format /encrypt /srcdir:<*ステージング場所*> /dstdir: <*コピー先 BLOB 仮想ディレクトリ*>/*
+    *.\WAImportExport.exe PrepImport /j:<*ジャーナル ファイル*>.jrn /id: <*セッション ID*> /sk:<*ストレージ アカウント キー*> /BlobType:**PageBlob** /t:<*ターゲット ドライブ文字*> /format /encrypt /srcdir:<*ステージング場所*> /dstdir: <*コピー先 BLOB 仮想ディレクトリ*>/*
 
 
 | パラメーター | 説明
@@ -107,4 +107,4 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 - Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage-import-export-service.md)をご覧ください。
 - ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

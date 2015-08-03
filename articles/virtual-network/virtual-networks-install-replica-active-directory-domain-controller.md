@@ -78,7 +78,7 @@
 
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
-静的 IP アドレスを設定する方法の詳細については、「[VM 用の静的内部 IP アドレスを構成する](https://msdn.microsoft.com/library/azure/dn630228.aspx)」をご覧ください。
+静的 IP アドレスを設定する方法の詳細については、「[VM 用の静的内部 IP アドレスを構成する](../virtual-network/virtual-networks-reserved-private-ip.md)」をご覧ください。
 
 ## Azure VM に AD DS をインストールする
 
@@ -123,4 +123,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 [1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

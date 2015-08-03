@@ -104,7 +104,7 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 
 	$VaultName = "<testvault123>"
 	$VaultGeo  = "<Southeast Asia>"
-	$OutputPathForSettingsFile = "<c:>"
+	$OutputPathForSettingsFile = "<C:\>"
 
 ```
 
@@ -125,7 +125,7 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 	
 		$VaultName = "<testvault123>"
 		$VaultGeo  = "<Southeast Asia>"
-		$OutputPathForSettingsFile = "<c:>"
+		$OutputPathForSettingsFile = "<C:\>"
 	
 		$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
 	
@@ -307,7 +307,7 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 
 ```
 
-PS C:> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSubscriptionId $Subscriptions[0].SubscriptionId -AzureVMNetworkId $AzureVmNetworks[0].Id
+PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSubscriptionId $Subscriptions[0].SubscriptionId -AzureVMNetworkId $AzureVmNetworks[0].Id
 
 ```
 
@@ -354,7 +354,7 @@ PS C:> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSu
 
 ### 復旧計画の作成
 
-1. 次のデータを使用して .xml ファイルを復旧計画のテンプレートとして作成し、「C:\\RPTemplatePath.xml」として保存します。
+1. 次のデータを使用して .xml ファイルを復旧計画のテンプレートとして作成し、「C:\RPTemplatePath.xml」として保存します。
 2. RecoveryPlan ノードの Id、Name、PrimaryServerId、SecondaryServerId を変更します。
 3. ProtectionEntity ノードの PrimaryProtectionEntityId (VMM の vmid) を変更します。
 4. ProtectionEntity ノードを追加することでさらに VM を追加することができます。
@@ -461,4 +461,4 @@ if($isJobLeftForProcessing)
 
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/22/2015"
+   ms.date="07/09/2015"
    ms.author="seanmck"/>
 
 # ローカル開発クラスターのセットアップをトラブルシューティングする
@@ -85,6 +85,5 @@ Visual Studio を使用してデバッグしている際に、FabricConnectionDe
 
 - [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

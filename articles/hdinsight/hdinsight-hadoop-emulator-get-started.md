@@ -76,9 +76,9 @@ Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用し
 
 ![エミュレーター ウィンドウに一覧表示された Hadoop エコシステムのサービス。][image-hdi-emulator-services]
 
-HDInsight Emulator に関連するサービスは既定で自動的に開始されません。サービスを開始するには、Hadoop コマンド ラインで、C:\\hdp の **start_local_hdp_services.cmd** (既定の場所) を実行します。コンピューターの再起動後にサービスが自動的に開始されるようにするには、**set-onebox-autostart.cmd** を実行します。
+HDInsight Emulator に関連するサービスは既定で自動的に開始されません。サービスを開始するには、Hadoop コマンド ラインで、C:\hdp の **start_local_hdp_services.cmd** (既定の場所) を実行します。コンピューターの再起動後にサービスが自動的に開始されるようにするには、**set-onebox-autostart.cmd** を実行します。
 
-HDInsight Emulator のインストールと実行に関する既知の問題については、「[HDInsight Emulator のリリース ノート](hdinsight-emulator-release-notes.md)」をご覧ください。インストール ログは **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log** にあります。
+HDInsight Emulator のインストールと実行に関する既知の問題については、「[HDInsight Emulator のリリース ノート](hdinsight-emulator-release-notes.md)」をご覧ください。インストール ログは **C:\HadoopFeaturePackSetup\HadoopFeaturePackSetupTools\gettingStarted.winpkg.install.log** にあります。
 
 ##<a name="vstools"></a>Visual Studio の HDInsight ツールでのエミュレーターの使用
 
@@ -108,9 +108,9 @@ HDInsight Visual Studio ツールのインストール方法については、[�
 
 ## トラブルシューティング: HDInsight Emulator への HDInsight ツールの接続
 
-1. HDInsight Emulator の接続中に、ダイアログ ボックスに HiveServer2 の接続成功が表示された場合でも、C:\\hdp\\hive-*version*\\conf\\hive-site.xml にある Hive 構成ファイルの **hive.security.authorization.enabled プロパティ**を手動で **false** に設定し、ローカル エミュレーターを再起動する必要があります。HDInsight Tools for Visual Studio は、テーブルの上位 100 行をプレビューしている場合のみ、HiveServer2 に接続します。このようなクエリを使用しない場合は、Hive 構成をそのままにすることができます。
+1. HDInsight Emulator の接続中に、ダイアログ ボックスに HiveServer2 の接続成功が表示された場合でも、C:\hdp\hive-*version*\conf\hive-site.xml にある Hive 構成ファイルの **hive.security.authorization.enabled プロパティ**を手動で **false** に設定し、ローカル エミュレーターを再起動する必要があります。HDInsight Tools for Visual Studio は、テーブルの上位 100 行をプレビューしている場合のみ、HiveServer2 に接続します。このようなクエリを使用しない場合は、Hive 構成をそのままにすることができます。
 
-2. HDInsight Emulator を実行するコンピュータで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更する必要がある場合があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
+2. HDInsight Emulator を実行するコンピュータで動的 IP の割り当て (DHCP) を使用している場合は、C:\hdp\hadoop-*version*\etc\hadoop\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更する必要がある場合があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
 
 		<property>
 			<name>hadoop.proxyuser.hadoop.hosts</name>
@@ -123,7 +123,7 @@ HDInsight Visual Studio ツールのインストール方法については、[�
 
 これで、ワークステーション上に HDInsight Emulator が構成されました。インストールをテストするために MapReduce のチュートリアルを試してみましょう。まず、HDFS にデータ ファイルをいくつかアップロードした後、それらのファイルに特定の単語が出現する回数を数えるワード カウント MapReduce ジョブを実行します。
 
-ワード カウント MapReduce プログラムは *hadoop-mapreduce-examples-2.4.0.2.1.3.0-1981.jar* にパッケージ化されています。jar ファイルは *C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\hadoop\\mapreduce* フォルダーにあります。
+ワード カウント MapReduce プログラムは *hadoop-mapreduce-examples-2.4.0.2.1.3.0-1981.jar* にパッケージ化されています。jar ファイルは *C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\hadoop\mapreduce* フォルダーにあります。
 
 MapReduce ジョブは、次の 2 つの引数を受け取ります。
 
@@ -209,7 +209,7 @@ Azure PowerShell スクリプトの importdata.ps1 を使用して、データ�
 **サンプル W3C ログ データをインポートするには**
 
 1. デスクトップから Hadoop コマンド ラインを開きます。
-2. ディレクトリを **C:\\hdp\\GettingStarted** に変更します。
+2. ディレクトリを **C:\hdp\GettingStarted** に変更します。
 3. 次のコマンドを実行して、データを生成し HDFS にインポートします。
 
 		powershell -File importdata.ps1 w3c -ExecutionPolicy unrestricted
@@ -243,12 +243,12 @@ MapReduce は Hadoop の基本的計算エンジンです。既定で Java で�
 
 	hadoop jar <jarFileName>.jar <className> <inputFiles> <outputFolder>
 
-jar ファイルとソース ファイルは C:\\Hadoop\\GettingStarted\\Java フォルダーにあります。
+jar ファイルとソース ファイルは C:\Hadoop\GettingStarted\Java フォルダーにあります。
 
 **Web ページのヒット数を計算する MapReduce ジョブを実行するには**
 
 1. Hadoop コマンド ラインを開きます。
-2. ディレクトリを **C:\\hdp\\GettingStarted** に変更します。
+2. ディレクトリを **C:\hdp\GettingStarted** に変更します。
 3. 次のコマンドを実行して、出力ディレクトリが存在している場合は削除します。出力ディレクトリが既に存在していると、MapReduce ジョブは失敗します。
 
 		hadoop fs -rm -r /w3c/output
@@ -257,7 +257,7 @@ jar ファイルとソース ファイルは C:\\Hadoop\\GettingStarted\\Java �
 
 		hadoop jar .\Java\w3c_scenarios.jar "microsoft.hadoop.w3c.TotalHitsForPage" "/w3c/input/small/data_w3c_small.txt" "/w3c/output"
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>パラメーター</td><td>注</td></tr> <tr><td>w3c_scenarios.jar</td><td>この jar ファイルは C:\\hdp\\GettingStarted\\Java フォルダーにあります。</td></tr> <tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>この型は、次のどちらかに置き換えることができます。<ul> <li>microsoft.hadoop.w3c.AverageTimeTaken</li> <li>microsoft.hadoop.w3c.ErrorsByPage</li> </ul></td></tr> <tr><td>/w3c/input/small/data_w3c_small.txt</td><td>この入力ファイルは、次のどちらかに置き換えることができます。<ul> <li>/w3c/input/medium/data_w3c_medium.txt</li> <li>/w3c/input/large/data_w3c_large.txt</li> </ul></td></tr> <tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr> </table>
+	コマンドの要素を次の表に示します。<table border="1"> <tr><td>パラメーター</td><td>注</td></tr> <tr><td>w3c_scenarios.jar</td><td>この jar ファイルは C:\hdp\GettingStarted\Java フォルダーにあります。</td></tr> <tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>この型は、次のどちらかに置き換えることができます。<ul> <li>microsoft.hadoop.w3c.AverageTimeTaken</li> <li>microsoft.hadoop.w3c.ErrorsByPage</li> </ul></td></tr> <tr><td>/w3c/input/small/data_w3c_small.txt</td><td>この入力ファイルは、次のどちらかに置き換えることができます。<ul> <li>/w3c/input/medium/data_w3c_medium.txt</li> <li>/w3c/input/large/data_w3c_large.txt</li> </ul></td></tr> <tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr> </table>
 
 4. 次のコマンドを実行して、出力ファイルの内容を表示します。
 
@@ -278,7 +278,7 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 **Hive ジョブを実行するには**
 
 1. Hadoop コマンド ラインを開きます。
-2. ディレクトリを **C:\\hdp\\GettingStarted** に変更します。
+2. ディレクトリを **C:\hdp\GettingStarted** に変更します。
 3. 次のコマンドを実行して、**/w3c/hive/input** フォルダーが存在している場合は削除します。このフォルダーが存在していると、Hive ジョブは失敗します。
 
 		hadoop fs -rmr /w3c/hive/input
@@ -315,7 +315,7 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 
         C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd -f ./Hive/w3c/w3ctotalhitsbypage.hql
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\\hdp\\hive-0.13.0.2.1.3.0-1981\\bin\\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr> <tr><td>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3ctotalhitsbypage.hql</td><td> この Hive スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3caveragetimetaken.hql</li> <li>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3cerrorsbypage.hql</li> </ul> </td></tr>
+	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr> <tr><td>C:\hdp\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td> この Hive スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\hdp\GettingStarted\Hive\w3c\w3caveragetimetaken.hql</li> <li>C:\hdp\GettingStarted\Hive\w3c\w3cerrorsbypage.hql</li> </ul> </td></tr>
 
 	</table>
 
@@ -352,12 +352,12 @@ Pig 処理では、*Pig Latin* と呼ばれるデータ フロー言語が使用
 **Pig ジョブを実行するには**
 
 1. Hadoop コマンド ラインを開きます。
-2. ディレクトリを **C:\\hdp\\GettingStarted** フォルダーに変更します。
+2. ディレクトリを **C:\hdp\GettingStarted** フォルダーに変更します。
 3. 次のコマンドを実行して、Pig ジョブを送信します。
 
 		C:\hdp\pig-0.12.1.2.1.3.0-1981\bin\pig.cmd -f ".\Pig\w3c\TotalHitsForPage.pig" -p "input=/w3c/input/small/data_w3c_small.txt"
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\\hdp\\pig-0.12.1.2.1.3.0-1981\\bin\\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr> <tr><td>C:\\hdp\\GettingStarted\\Pig\\w3c\\TotalHitsForPage.pig</td><td>この Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\\hdp\\GettingStarted\\Pig\\w3c\\AverageTimeTaken.pig</li> <li>C:\\hdp\\GettingStarted\\Pig\\w3c\\ErrorsByPage.pig</li> </ul> </td></tr> <tr><td>/w3c/input/small/data_w3c_small.txt</td><td> このパラメーターは次のようなもっと大きなファイルに置き換えることができます。
+	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\hdp\pig-0.12.1.2.1.3.0-1981\bin\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr> <tr><td>C:\hdp\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td>この Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\hdp\GettingStarted\Pig\w3c\AverageTimeTaken.pig</li> <li>C:\hdp\GettingStarted\Pig\w3c\ErrorsByPage.pig</li> </ul> </td></tr> <tr><td>/w3c/input/small/data_w3c_small.txt</td><td> このパラメーターは次のようなもっと大きなファイルに置き換えることができます。
 
 	<ul>
 <li>/w3c/input/medium/data_w3c_medium.txt</li>
@@ -406,7 +406,7 @@ Azure ストレージ アカウントにアクセスする前に、構成ファ�
 
 **Azure ストレージ アカウントへの接続を構成するには**
 
-1. メモ帳で **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\etc\\hadoop\\core-site.xml** を開きます。
+1. メモ帳で **C:\hdp\hadoop-2.4.0.2.1.3.0-1981\etc\hadoop\core-site.xml** を開きます。
 2. 次の <property> タグを他の <property> タグの横に追加します。
 
 		<property>
@@ -491,4 +491,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

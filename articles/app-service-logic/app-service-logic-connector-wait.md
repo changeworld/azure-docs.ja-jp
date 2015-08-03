@@ -48,7 +48,7 @@
 	</tr>
 	<tr>
 		<td>期間 (分)</td>
-		<td>integer</td>
+		<td>整数</td>
 		<td>分単位の遅延期間</td>
 	</tr>
 </table>
@@ -64,4 +64,4 @@
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

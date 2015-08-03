@@ -1,5 +1,5 @@
 <properties
-   pageTitle="&quot;システムの更新&quot; でサーバーを更新する"
+   pageTitle="";システムの更新"; でサーバーを更新する"
    description="Microsoft Azure Operational Insights で、システムの更新ソリューションを使用して、インフラストラクチャのサーバーに不足している更新プログラムを効率よく適用する方法について説明します。"
    services="operational-insights"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/21/2015"
    ms.author="banders" />
 
 # "システムの更新" でサーバーを更新する
@@ -34,4 +34,6 @@ Microsoft Azure Operational Insights でシステムの更新を使用する前�
 5. Web ブラウザーでは、更新プログラムを説明しているサポート情報の記事が表示されます。![[更新プログラム] ページの画像](./media/operational-insights-updates/updates05.png)
 6. 検出された情報を基に、不足している更新プログラムを適用するためのプランを作成することができます。
 
-<!---HONumber=July15_HO2-->
+[AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
+
+<!---HONumber=July15_HO4-->

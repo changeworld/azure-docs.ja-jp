@@ -127,4 +127,4 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 
 [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

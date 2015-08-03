@@ -43,7 +43,7 @@ Active Directory フェデレーション サービスを使用した Azure AD �
 
 AD FS を使用した Azure Multi-Factor Authentication または Azure Multi-Factor Authentication Server の設定の詳細については、次を参照してください。
 
-- [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-cloud)
+- [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-cloud.md)
 - [Azure Multi-Factor Authentication Server と Windows Server 2012 R2 AD FS を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-w2k12.md)
 - [Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-adfs2.md)
 
@@ -55,4 +55,4 @@ AD FS を使用した Azure Multi-Factor Authentication または Azure Multi-Fa
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

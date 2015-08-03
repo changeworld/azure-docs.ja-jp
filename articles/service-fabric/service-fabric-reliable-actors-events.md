@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/17/2015"
+   ms.date="07/09/2015"
    ms.author="amanbha"/>
 
 
@@ -55,7 +55,7 @@ class GameEventsHandler : IGameEvents
 }
 ```
 
-クライアントで、イベントを公開するアクターに対してプロキシを作成し、イベントをサブスクライブします。
+クライアント側で、イベントを公開するアクターに対してプロキシを作成し、そのイベントをサブスクライブします。
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -71,6 +71,5 @@ proxy.SubscribeAsync(new GameEventsHandler()).Wait();
 var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
 ```
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

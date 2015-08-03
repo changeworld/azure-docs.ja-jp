@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/08/2015"
+   ms.date="07/09/2015"
    ms.author="ryanwi"/>
 
 # Service Fabric サービスの管理
@@ -30,6 +30,7 @@
 - [サービス マニフェスト リソース](service-fabric-service-manifest-resources.md)
 - [アプリケーションのパッケージ化](service-fabric-application-model.md)
 - [アプリケーションのデプロイと削除](service-fabric-deploy-remove-applications.md)
+- [既存のアプリケーションのデプロイ](service-fabric-deploy-existing-app.md)
 - [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 
 ## アプリケーションのアップグレード
@@ -49,4 +50,4 @@
 - [Service Fabric アプリケーションのスケーリング](service-fabric-concepts-scalability.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

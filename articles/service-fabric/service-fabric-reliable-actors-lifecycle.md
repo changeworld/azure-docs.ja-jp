@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/17/2015"
+   ms.date="07/09/2015"
    ms.author="amanbha"/>
 
 
@@ -91,4 +91,4 @@ class HelloActor : Actor, IHello
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

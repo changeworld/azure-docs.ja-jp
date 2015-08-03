@@ -40,4 +40,4 @@
 ## 次のステップ
 [Azure Backup エージェントのダウンロード、インストール、および登録](backup-azure-backup-download-register)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -148,4 +148,4 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

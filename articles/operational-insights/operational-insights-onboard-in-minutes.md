@@ -97,4 +97,4 @@ Operations Management Suite では、Azure Cloud Services の診断を有効に�
 - [検索](operational-insights-search.md)について理解する
 - カスタム検索結果を保存および表示するために[ダッシュボード](operational-insights-use-dashboards.md)を使用する
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

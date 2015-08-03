@@ -98,4 +98,4 @@ SAS キーの名前と値は、Azure ポータル接続情報に含まれてい�
 [Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

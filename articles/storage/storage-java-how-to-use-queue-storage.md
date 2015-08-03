@@ -392,4 +392,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -277,7 +277,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 
 1. プロジェクト [tutorial] を右クリックし、**config.py** ファイルを追加します。この config は、Flask のフォームで必要になります。これを使用して秘密キーを指定することもできます。このチュートリアルでは必要ありません。
 
-2. 次のコードを config.py に追加します。**DOCUMENTDB\\_HOST** および **DOCUMENTDB\\_KEY** の値を変更します。
+2. 次のコードを config.py に追加します。**DOCUMENTDB\_HOST** および **DOCUMENTDB\_KEY** の値を変更します。
 
     	CSRF_ENABLED = True
     	SECRET_KEY = 'you-will-never-guess'
@@ -350,4 +350,4 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
   [Azure Management Portal]: http://portal.azure.com
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

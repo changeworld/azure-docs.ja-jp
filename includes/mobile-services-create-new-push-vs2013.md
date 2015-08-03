@@ -27,4 +27,4 @@
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet/
 [Import your publishsettings file in Visual Studio 2013]: ../articles/mobile-services/mobile-services-windows-how-to-import-publishsettings.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

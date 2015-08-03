@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
+	ms.date="07/08/2015" 
 	ms.author="jgao"/>
 
 
@@ -149,8 +149,8 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 mapper と reducer の実行可能ファイルは次の場所にあります。
 
-- C:\\Tutorials\\WordCount\\WordCountMapper\\bin\\Debug\\WordCountMapper.exe
-- C:\\Tutorials\\WordCount\\WordCountReducer\\bin\\Debug\\WordCountReducer.exe
+- C:\Tutorials\WordCount\WordCountMapper\bin\Debug\WordCountMapper.exe
+- C:\Tutorials\WordCount\WordCountReducer\bin\Debug\WordCountReducer.exe
 
 
 ##<a name="test"></a>エミュレーターでプログラムをテストする
@@ -167,7 +167,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 このチュートリアルでは、次のフォルダー構造を使用します。
 
-<table border="1"> <tr><td>フォルダー</td><td>説明</td></tr> <tr><td>\\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> <tr><td>\\WordCount\\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> <tr><td>\\WordCount\\Input</td><td>MapReduce ソース ファイル フォルダー。</td></tr> <tr><td>\\WordCount\\Output</td><td>MapReduce 出力ファイル フォルダー。</td></tr> <tr><td>\\WordCount\\MRStatusOutput</td><td>ジョブ出力フォルダー。</td></tr> </table></br>
+<table border="1"> <tr><td>フォルダー</td><td>説明</td></tr> <tr><td>\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> <tr><td>\WordCount\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> <tr><td>\WordCount\Input</td><td>MapReduce ソース ファイル フォルダー。</td></tr> <tr><td>\WordCount\Output</td><td>MapReduce 出力ファイル フォルダー。</td></tr> <tr><td>\WordCount\MRStatusOutput</td><td>ジョブ出力フォルダー。</td></tr> </table></br>
 
 このチュートリアルでは、%hadoop_home% ディレクトリにある .txt ファイルを使用します。
 
@@ -278,7 +278,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 	"|more" をコマンドの最後に付けることで、ページ ビューを得られます。
 
 ##<a id="upload"></a>Azure BLOB ストレージにデータをアップロードする
-Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop_home%\\share\\doc\\hadoop\\common ディレクトリ内の .txt ファイルです。
+Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop_home%\share\doc\hadoop\common ディレクトリ内の .txt ファイルです。
 
 
 **ストレージ アカウントとコンテナーを作成するには**
@@ -316,7 +316,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 		$localFolder = "C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common"
 		$destFolder = "WordCount/Input"
 
-	ローカル ソース ファイル フォルダーは **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
+	ローカル ソース ファイル フォルダーは **C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
 
 3. 次のコマンドを実行して、ソース ファイル フォルダー内の .txt ファイルの一覧を取得します。
 
@@ -551,4 +551,4 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

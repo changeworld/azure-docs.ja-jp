@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/17/2015"
+   ms.date="07/10/2015"
    ms.author="claudioc"/>
 
 # 信頼性の高いアクター: 正規の HelloWorld のチュートリアル シナリオ
@@ -36,14 +36,17 @@
 Visual Studio 用の Service Fabric ツールをインストールした後、新しいプロジェクトの種類を作成できます。新しいプロジェクトの種類は、[新しいプロジェクト] ダイアログの [クラウド] カテゴリにあります。
 
 
-![][1]
+![VS 向け Service Fabric ツール - 新しいプロジェクト][1]
 
+次のダイアログで、作成するプロジェクトの種類を選択できます。
+
+![Service Fabric プロジェクトのテンプレート][5]
 
 HelloWorld プロジェクトで、Service Fabric アクター サービスを使用してみます。
 
 ソリューションを作成したら、次の構造が表示されます。
 
-![][2]
+![Service Fabric プロジェクトの構造][2]
 
 ## 信頼性の高いアクターの基本的な構成要素
 
@@ -138,12 +141,12 @@ fabricRuntime.RegisterActor(typeof(MyNewActor));
 
 Visual Studio 用の Service Fabric ツールは、ローカル マシンでのデバッグをサポートします。デバッグ セッションを開始するには、F5 キーを押します。Visual Studio は、ローカル Service Fabric クラスター上でアプリケーションを構築 (必要な場合)、パッケージ化、および配置し、デバッガーをアタッチします。エクスペリエンスは、ASP.NET アプリケーションのデバッグに似ています。配置プロセス中には、出力ウィンドウで進行状況を確認できます。
 
-![][3]
+![Service Fabric デバッグ出力ウィンドウ][3]
 
 ## アプリケーションのデプロイ
 Visual Studio から、Service Fabric アプリケーション プロジェクトを選択して右クリックすることで、デバッガーを起動しなくても、ローカル クラスターでアプリケーションをパッケージ化して配置することもできます。
 
-![][4]
+![Service Fabric - アプリケーションをデプロイおよびパッケージ化するためのプロジェクト メニュー][4]
 
 * [**配置**]: アプリをパッケージ化し、配置プロセスを開始します。
 * [**配置の削除**]: ローカル クラスターからアプリケーションを削除するために使用できます。
@@ -151,8 +154,7 @@ Visual Studio から、Service Fabric アプリケーション プロジェク�
 
 ## 次のステップ
 
-[Service Fabric アクターの概要](service-fabric-reliable-actors-introduction.md)
-
+[Service Fabric のアクターの概要](service-fabric-reliable-actors-introduction.md)[アクター API のリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)[サンプル コード](https://github.com/Azure/servicefabric-samples)
 
 
 <!--Image references-->
@@ -160,6 +162,7 @@ Visual Studio から、Service Fabric アプリケーション プロジェク�
 [2]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-projectstructure.PNG
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
+[5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

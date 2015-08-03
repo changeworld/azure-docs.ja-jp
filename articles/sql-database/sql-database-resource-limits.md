@@ -152,4 +152,4 @@ Azure SQL Database は、トランザクション ログ、I/O、およびその
 
 [要求拒否または接続終了を防ぐための Azure SQL データベースのベスト プラクティス](https://msdn.microsoft.com/library/azure/dn338082.aspx)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

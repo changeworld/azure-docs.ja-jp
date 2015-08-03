@@ -19,4 +19,4 @@
 [Azure SDK for Visual Studio 2012]: http://go.microsoft.com/fwlink/?LinkID=324323
 [WebPIAzureSdk]: ./media/install-sdk-2012-only/WebPI46-2012.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/23/2015" 
+	ms.date="07/21/2015" 
 	ms.author="sethm"/>
 
 
@@ -71,30 +71,12 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 現時点では、次のクライアント ライブラリが サービス バスで機能することがわかっています。
 
-<table>
-  <tr>
-    <th>言語</th>
-    <th>ライブラリ</th>
-  </tr>
-  <tr>
-    <td>Java</td>
-    <td>Apache Qpid Java Message Service (JMS) クライアント<br/>
-        IIT Software SwiftMQ Java クライアント</td>
-  </tr>
-  <tr>
-    <td>C</td>
-    <td>Apache Qpid Proton-C</td>
-  </tr>
-  <tr>
-    <td>PHP</td>
-    <td>Apache Qpid Proton-PHP</td>
-  </tr>
-  <tr>
-    <td>Python</td>
-    <td>Apache Qpid Proton-Python</td>
-  </tr>
-
-</table>
+| 言語 | ライブラリ |
+|----------|-------------------------------------------------------------------------------|
+| Java | Apache Qpid Java Message Service (JMS) クライアント<br/>IIT Software SwiftMQ Java クライアント |
+| C | Apache Qpid Proton-C |
+| PHP | Apache Qpid Proton-PHP |
+| Python | Apache Qpid Proton-Python |
 
 
 **図 2: AMQP 1.0 クライアント ライブラリの表**
@@ -116,4 +98,4 @@ Service Bus からライブラリを取得して使用する方法の詳細に�
 [0]: ./media/service-bus-amqp-overview/Example1.png
 [Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/library/jj841071.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

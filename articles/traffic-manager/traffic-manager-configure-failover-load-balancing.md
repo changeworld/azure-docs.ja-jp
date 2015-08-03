@@ -51,4 +51,4 @@ Azure Websites では、Web サイトのモードにかかわらず、データ�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -79,4 +79,4 @@ SQL Data Warehouse に関する開発の原則、ベスト プラクティス、
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

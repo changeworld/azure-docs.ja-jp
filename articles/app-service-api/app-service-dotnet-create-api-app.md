@@ -50,4 +50,4 @@
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -334,7 +334,7 @@ public class OwinCommunicationListener : ICommunicationListener
 
 Web サーバーのポートを取得する前に、Service Fabric が、アプリケーションとそれが実行される基盤のオペレーティング システム間のバッファーとして機能するアプリケーション層を提供することを理解しておくことが重要です。そのために Service Fabric は、サービスの*エンドポイント*を構成する方法を提供します。Service Fabric は、サービスでエンドポイントを確実に使用できるように準備するため、ユーザーは基盤の OS 環境で、自分でそれを構成する必要はありません。これにより、さまざまな環境で、Service Fabric アプリケーションを変更する必要なく簡単にホストできます (たとえば、Azure や独自のデータ センターで、同じアプリケーションをホストできます)。
 
-PackageRoot\\ServiceManifest.xml で HTTP エンドポイントを構成します。
+PackageRoot\ServiceManifest.xml で HTTP エンドポイントを構成します。
 
 ```xml
 
@@ -613,4 +613,4 @@ ASP.NET 5 でも、Web アプリケーションで*ホスト*から*アプリケ
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

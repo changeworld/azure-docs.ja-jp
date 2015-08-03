@@ -58,4 +58,4 @@ ServiceFabric のすべての通信 API は、現在 C# でのみ使用可能で
 * [Reliable Services の WCF ベースの通信スタック](service-fabric-reliable-services-communication-wcf.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

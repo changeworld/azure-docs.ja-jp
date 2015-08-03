@@ -39,13 +39,13 @@
 1. [Get-azuresqlrecoverabledatabase](http://msdn.microsoft.com/library/azure/dn720219.aspx) コマンドレットを使用して回復可能なデータベースの一覧を取得します。次のパラメーターを指定します。
 	* データベースが存在する場所の **ServerName**。	
 
-	`PS C:>Get-AzureSqlRecoverableDatabase -ServerName "myserver"`
+	`PS C:\>Get-AzureSqlRecoverableDatabase -ServerName "myserver"`
 
 2. [Get-azuresqlrecoverabledatabase](http://msdn.microsoft.com/library/azure/dn720219.aspx) コマンドレットを使用して、回復するデータベースを選択します。次のパラメーターを指定します。
 	* データベースが存在する場所の **ServerName**。
 	* 回復するデータベースの **DatabaseName**。
 
-	`PS C:>$Database = Get-AzureSqlRecoverableDatabase -ServerName "myserver" –DatabaseName “mydb”`
+	`PS C:\>$Database = Get-AzureSqlRecoverableDatabase -ServerName "myserver" –DatabaseName “mydb”`
 	 
 3. [Start-AzureSqlDatabaseRecovery](http://msdn.microsoft.com/library/dn720224.aspx) コマンドレットを使用して回復を開始します。次のパラメーターを指定します。
 	* 回復する **SourceDatabase**。
@@ -54,14 +54,14 @@
 
 	**$RestoreRequest** という変数に返された結果を格納します。この変数には、復元の状態を監視するための復元要求 ID が含まれています。
 
-	`PS C:>$RecoveryRequest = Start-AzureSqlDatabaseRecovery -SourceDatabase $Database –TargetDatabaseName “myrecoveredDB” –TargetServerName “mytargetserver”`
+	`PS C:\>$RecoveryRequest = Start-AzureSqlDatabaseRecovery -SourceDatabase $Database –TargetDatabaseName “myrecoveredDB” –TargetServerName “mytargetserver”`
 	
 データベースの回復は完了するまで時間がかかる場合があります。回復の状態を監視するには、[Get AzureSqlDatabaseOperation](http://msdn.microsoft.com/library/azure/dn546738.aspx) コマンドレットを使用して、次のパラメーターを指定します。
 
 * 復元先のデータベースの **ServerName**。
 * 手順 3 で **$RecoveryRequest** 変数に格納した復元要求 ID **OperationGuid**。
 
-	`PS C:>Get-AzureSqlDatabaseOperation –ServerName “mytargetserver” –OperationGuid $RecoveryRequest.ID`
+	`PS C:\>Get-AzureSqlDatabaseOperation –ServerName “mytargetserver” –OperationGuid $RecoveryRequest.ID`
 
 **[State]** と **[PercentComplete]** のフィールドには復元の状態が表示されます。
 
@@ -82,4 +82,4 @@
 [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

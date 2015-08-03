@@ -423,7 +423,7 @@ Django には静的ファイルの収集に関する概念が設定されてい�
 
 Django アプリケーションで静的なファイルの収集をスキップする場合は、次のようにします。
 
-    \.skipDjango
+    .skipDjango
 
 その後、ローカル コンピューターで手動で収集する必要があります。
 
@@ -515,4 +515,4 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 [Django のドキュメント]: https://www.djangoproject.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/01/2015"
+   ms.date="07/10/2015"
    ms.author="joaoma" />
 
 
@@ -77,7 +77,11 @@ Azure ロード バランサーの構成は、UDP のFull cone NAT をサポー�
 
 ![snat](./media/load-balancer-overview/load-balancer-snat.png)
 
-VM によって開始された新しい送信接続ごとに、送信ポートも Azure ロード バランサーによって割り当てられます。外部ホストは、VIP: allocated port からのトラフィックを認識します。大量の送信接続が必要なシナリオの場合は、送信 IP を Source Network Address Translation (SNAT) 専用にできるように、VM ではインスタンス レベルのパブリック IP を使用することをお勧めします。これにより、ポートの枯渇のリスクが減少します。
+
+>[AZURE.NOTE]VM によって開始された新しい送信接続ごとに、送信ポートも Azure ロード バランサーによって割り当てられます。外部ホストは、VIP: allocated port からのトラフィックを認識します。大量の送信接続が必要なシナリオの場合は、送信 IP を Source Network Address Translation (SNAT) 専用にできるように、VM ではインスタンス レベルのパブリック IP を使用することをお勧めします。これにより、ポートの枯渇のリスクが減少します。
+>
+>VIP または ILPIP で使用できるポートの最大数は 64k です。これは TCP の標準的な限度です。
+
 
 **仮想マシンの複数の負荷分散された IP のサポート**
 
@@ -95,4 +99,4 @@ VM によって開始された新しい送信接続ごとに、送信ポート�
 [インターネットに接続するロード バランサーの開始](load-balancer-internet-getstarted.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -22,4 +22,4 @@ Azure RemoteApp サービスの制限と既定値に関する情報は、「[Azu
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

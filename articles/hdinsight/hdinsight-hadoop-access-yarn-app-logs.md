@@ -3,7 +3,7 @@
 	description="HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。" 
 	services="hdinsight" 
 	documentationCenter="" 
-	authors="bradsev" 
+	authors="mumian" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2015" 
-	ms.author="bradsev"/>
+	ms.date="07/09/2015" 
+	ms.author="jgao"/>
 
 # プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする
 
@@ -115,7 +115,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 アプリケーション履歴クライアントを使用して、完了したアプリケーションの一覧表示、条件に基づくアプリケーションのフィルター処理、関連するアプリケーション ログのダウンロードができます。次のコード スニペットは、プログラムで実行する方法を示しています。
 
 	// Local download folder location where the logs will be placed
-	string downloadLocation = "E:\\YarnApplicationLogs";
+	string downloadLocation = "E:\YarnApplicationLogs";
 	
 	// List completed applications on your cluster that were submitted in the last 24 hours but failed
 	// Search for applications based on application name
@@ -173,4 +173,4 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 [YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

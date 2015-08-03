@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/22/2015" 
+	ms.date="07/19/2015" 
     ms.author="tamram"/>
 
 # C++ から Table ストレージを使用する方法
@@ -410,9 +410,10 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 
 -	[C++ から BLOB ストレージを使用する方法](storage-c-plus-plus-how-to-use-blobs.md)
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
+-	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 -	[C++ 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/gg433040.aspx) 
 -	[Azure Storage の MSDN リファレンス](https://msdn.microsoft.com/library/azure/gg433040.aspx)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

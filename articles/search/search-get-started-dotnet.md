@@ -798,4 +798,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [12]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-2.PNG
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

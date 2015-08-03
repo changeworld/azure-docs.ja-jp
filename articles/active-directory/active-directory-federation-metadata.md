@@ -149,4 +149,4 @@ SAML に固有のセクションで、WS-Federation メタデータ リーダー
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -153,4 +153,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

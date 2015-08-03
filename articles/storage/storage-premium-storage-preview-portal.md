@@ -136,7 +136,7 @@ Premium Storage のメリットを活用するには、アカウントの種類�
 
 - 同じ DS シリーズの VM 内では、Premium Storage ディスクと Standard Storage ディスクの両方を使用できます。
 - Premium Storage を使用すると、DS シリーズの VM をプロビジョニングし、複数の永続データ ディスクをVM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。[記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。ただし、8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。PowerShell の [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) コマンドレットの *NumberOfColumns* パラメーターを使用して、仮想ディスクが使用する列数を指定できます。詳細については、[記憶域スペースの概要](http://technet.microsoft.com/library/jj822938.aspx)に関するページおよび「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
-- DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加することは避けてください。回避策の 1 つは、既存の VHD を新しいクラウド サービスに移行し、このクラウドでは DS シリーズ VM だけを運用するというものです。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](https://msdn.microsoft.com/library/azure/dn690120.aspx)機能を使います。
+- DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加することは避けてください。回避策の 1 つは、既存の VHD を新しいクラウド サービスに移行し、このクラウドでは DS シリーズ VM だけを運用するというものです。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](virtual-networks-configure-vnet-to-vnet-connection.md)機能を使います。
 - DS シリーズの Azure 仮想マシンで使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。OS ディスクをマシンの起動のみに使用する場合は、Standard Storage ベースの OS ディスクの使用を検討してください。コストの点で有利であり、起動後のパフォーマンスは Premium Storage とほぼ同じであるからです。マシン起動以外のタスクも OS ディスクで実行する場合は、Premium Storage を使用すると、より高いパフォーマンスが得られます。たとえば、アプリケーションで OS ディスクの読み取りと書き込みを行う場合は、Premium Storage ベースの OS ディスクを使うと VM のパフォーマンスが向上します。
 - Premium Storage で [Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md) を使用できます。Azure CLI を使用して、いずれかのディスクのキャッシュ ポリシーを変更するには、次のコマンドを実行します。
 
@@ -391,4 +391,4 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

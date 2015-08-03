@@ -32,7 +32,7 @@ Azure AD Connect を使用して、Active Directory フェデレーション サ
 - 管理者特権の PSH コマンド ウィンドウで、コマンド "Enable-PSRemoting –force" を使用します。
 	- ウィザードを実行しているコンピューターでの要件 (ターゲット コンピューターがドメインに参加していないか、信頼されていないドメインにある場合) 
 
-- 管理者特権の PSH コマンド ウィンドウで、コマンド "Set-item WSMan:\\localhost\\Client\\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate" を使用します。
+- 管理者特権の PSH コマンド ウィンドウで、コマンド "Set-item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate" を使用します。
 	- サーバー マネージャーでの要件
 		- DMZ WAP ホストをコンピューターのプールに追加します ([サーバー マネージャー]、[管理]、[サーバーの追加] の順にクリックし、[DNS] タブを使用)。 
 		- サーバー マネージャーの [すべてのサーバー] タブ: WAP サーバーを右クリックし、[管理に使用する資格情報] を選択し、WAP コンピューターのローカルの資格情報 (ドメインの資格情報ではない) を入力します。 
@@ -45,4 +45,4 @@ Azure AD Connect を使用して、Active Directory フェデレーション サ
 * [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx) 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

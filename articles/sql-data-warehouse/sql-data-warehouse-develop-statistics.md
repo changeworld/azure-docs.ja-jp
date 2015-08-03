@@ -3,8 +3,8 @@
    description="ソリューション開発のための Azure SQL Data Warehouse での統計の管理に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="barbkess"
-   manager="jhubbard"
+   authors="jrowlandjones"
+   manager="barbkess"
    editor=""/>
 
 <tags
@@ -152,7 +152,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 > [AZURE.NOTE]クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
 
-次の例では、ヒストグラムは *product_category* で使用されます。列間の統計は、*product_category* と *product_sub_c\\ategory* で計算されます。
+次の例では、ヒストグラムは *product_category* で使用されます。列間の統計は、*product_category* と *product_sub_c\ategory* で計算されます。
 
 ```
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -280,13 +280,13 @@ prc_sqldw_create_stats;
 特定の統計オブジェクトを更新するには、次の構文を使用します。
 
 ```
-UPDATE STATISTICS ON [schema_name].[table_name]([stat_name]);
+UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
 次に例を示します。
 
 ```
-UPDATE STATISTICS ON [dbo].[table1] ([stats_col1]);
+UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
 特定の統計オブジェクトを更新することで、統計を管理するために必要な時間とリソースを最小限に抑えることができます。ただし、この場合、更新する最適な統計オブジェクトの選択について少し検討する必要があります。
@@ -296,13 +296,13 @@ UPDATE STATISTICS ON [dbo].[table1] ([stats_col1]);
 テーブルのすべての統計オブジェクトを更新する簡単な方法を次に示します。
 
 ```
-UPDATE STATISTICS ON [schema_name].[table_name];
+UPDATE STATISTICS [schema_name].[table_name];
 ```
 
 次に例を示します。
 
 ```
-UPDATE STATISTICS ON dbo.table1;
+UPDATE STATISTICS dbo.table1;
 ```
 
 これは使いやすいステートメントです。このステートメントはテーブルのすべての統計を更新するので、必要以上の処理が実行される可能性があります。パフォーマンスが問題でない場合は、これが、統計が最新の状態であることを保証する最も簡単で最も包括的な方法であることは確かです。
@@ -452,4 +452,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がよ
 [sys.table_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

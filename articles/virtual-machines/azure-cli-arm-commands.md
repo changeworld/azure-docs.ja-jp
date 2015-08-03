@@ -305,7 +305,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 リソース グループ内のすべての仮想ネットワークが一覧表示されます。
 
 
-	C:>azure network vnet list myresourcegroup
+	C:\>azure network vnet list myresourcegroup
 
 	info:    Executing command network vnet list
 	+ Listing virtual networks
@@ -410,7 +410,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 リソース グループ内の特定の仮想ネットワークのサブネットを設定します。
 
 
-	C:>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
+	C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
 	info:    Executing command network vnet subnet set
 	+ Looking up the subnet "subnet1"
@@ -653,7 +653,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ロード バランサー セットのプローブのプロパティを一覧表示します。
 
-	C:>azure network lb probe list -g myresourcegroup -l mylb
+	C:\>azure network lb probe list -g myresourcegroup -l mylb
 
 	info:    Executing command network lb probe list
 	+ Looking up the load balancer "mylb"
@@ -1737,4 +1737,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list [options] <location> <publisher> [offer] [sku]
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

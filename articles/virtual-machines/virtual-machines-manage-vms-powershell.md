@@ -93,4 +93,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定
 - 静的 IP アドレス
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

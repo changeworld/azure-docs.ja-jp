@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="仮想ネットワーク FAQ"
+   pageTitle="Virtual Network FAQ"
    description="Azure の仮想ネットワーク (VNet) に関する FAQ"
    services="virtual-network"
    documentationCenter="na"
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/08/2015"
+   ms.date="07/20/2015"
    ms.author="telmos" />
 
-# 仮想ネットワーク FAQ
+# Virtual Network FAQ
 
 [AZURE.INCLUDE [virtual-networks-vnet-faq-include](../../includes/virtual-networks-vnet-faq-include.md)]
 
@@ -23,4 +23,4 @@
 
 仮想ネットワーク VPN の最新の FAQ については、[VPN ゲートウェイ FAQ](vpn-gateway-vpn-faq.md) を参照してください。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

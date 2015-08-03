@@ -169,4 +169,4 @@ Code First Migrations は、実行されたときにスナップショットの�
 [DbSet<T>]: https://msdn.microsoft.com/library/azure/gg696460.aspx
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -107,4 +107,4 @@ Azure CLI、Linux、カスタム スクリプト拡張機能の詳細につい�
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

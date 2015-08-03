@@ -19,4 +19,4 @@
 
 この記事の内容は、「[Windows PowerShell ワークフローについて](automation-powershell-workflow.md)」に移動されました。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

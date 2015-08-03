@@ -112,4 +112,4 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

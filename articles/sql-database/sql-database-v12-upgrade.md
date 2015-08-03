@@ -94,4 +94,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 [9]: ./media/sql-database-v12-upgrade/cancel.PNG
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

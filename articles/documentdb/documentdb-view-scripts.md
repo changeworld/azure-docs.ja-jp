@@ -82,4 +82,4 @@
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

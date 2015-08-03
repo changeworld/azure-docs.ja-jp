@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="04/13/2015"
+   ms.date="07/15/2015"
    ms.author="mihaelab"/>
 
 #災害復旧訓練の実行
@@ -81,6 +81,4 @@
 
 - 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続文字列、ログイン、基本的な機能のテスト、その他の標準的なアプリケーションのサインオフのプロシージャの検証など)。
 
- 
-
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

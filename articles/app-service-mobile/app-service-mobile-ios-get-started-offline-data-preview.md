@@ -31,6 +31,10 @@
 
 Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作成]に関するチュートリアルを完了してください。
 
+##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-offline-preview](../../includes/app-service-mobile-dotnet-backend-enable-offline-preview.md)]
+
 ## <a name="get-app"></a>オフラインの ToDo サンプル アプリケーションの取得
 
 [GitHub の Mobile Apps サンプル リポジトリ]で、リポジトリを複製し、[オフライン iOS サンプル] プロジェクトを Xcode で開きます。
@@ -278,4 +282,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

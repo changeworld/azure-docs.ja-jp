@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/09/2015" 
+	ms.date="07/21/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する 
@@ -166,7 +166,7 @@
 		    }
 		}
 
-	**start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
+	**start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)をご覧ください。
 
 ## Web サービス パラメーター
 発行されている Azure Machine Learning Web サービスによって公開されている Web サービス パラメーターを Azure Data Factory (ADF) パイプラインで使用できます。Azure Machine Learning で実験を作成して Web サービスとして発行した後、この Web サービスを複数の ADF パイプラインまたはアクティビティで使用するときに、Web サービス パラメーターを介して異なる入力を渡すことができます。
@@ -213,39 +213,11 @@ Azure Data Factory パイプライン経由で Azure SQL リーダーを使用�
 #### Azure SQL ライター
 Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービス パラメーターとして公開されるプロパティがあります。Azure SQL ライターは、出力テーブルまたは入力テーブルに関連付けられたリンクされたサービスの設定を使用します。次の表に、リンクされたサービスが入力と出力で使用された場合について説明します。
 
-<table>
-<tr>
-<td>出力/入力</td>
-<td><b>入力は Azure SQL</b></td>
-<td><b>入力は Azure BLOB</b></td>
-</tr>
-<tr>
-<td><b>出力は Azure SQL</b></td>
-<td><p>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。</p>
-<p>Azure ML モデルの Azure SQL リーダーと Azure SQL ライターが上記の同じ Web サービス パラメーターを共有する場合は問題ありません。Azure SQL リーダーと Azure SQL ライターが同じ Web サービス パラメーターを共有しない場合、たとえば、Azure SQL ライターが異なるパラメーター名 (Database server name1、Database name1、Server user account name1、Server user account password1 のように末尾に "1" が付加された名前) を使用する場合、アクティビティ JSON の webServiceParameters セクションを使用して、これらの出力 Web サービス パラメーターの値を渡す必要があります。</p>
-<p>
-他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。 
-</p>
-
-</td>
-<td>
-<p>Data Factory サービスは、出力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。</p>
-<p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。<p>入力 BLOB は、入力の場所として使用されます。</p>
-</td>
-</tr>
-<tr>
-<td><b>出力は Azure BLOB</b></td>
-<td>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。
-</td>
-<td>
-<p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡す必要があります。</p> 
-
-<p>BLOB は、入力の場所と出力の場所として使用されます。</p>
-
-</td>
-<tr>
-
-</table>
+| 出力/入力 | 入力は Azure SQL | 入力は Azure BLOB |
+| ------------ | ------------------ | ------------------- |
+| 出力は Azure SQL | <p>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio の Web サービス パラメーターではこれらの既定の名前を使用する必要があります</p><p>。Azure ML モデルの Azure SQL リーダーと Azure SQL ライターが上記の同じ Web サービス パラメーターを共有する場合は問題ありません。Azure SQL リーダーと Azure SQL ライターが同じ Web サービス パラメーターを共有しない場合、たとえば、Azure SQL ライターが異なるパラメーター名 (Database server name1、Database name1、Server user account name1、Server user account password1 のように末尾に "1" が付加された名前) を使用する場合は、アクティビティ JSON の webServiceParameters セクションを使用して、これらの出力 Web サービス パラメーターの値を渡す必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。</p> | <p>Data Factory サービスは、出力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。<p>入力 BLOB は、入力の場所として使用されます。</p> |
+|出力は Azure BLOB | Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。 | <p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡す必要があります。</p><p>BLOB は、入力の場所と出力の場所として使用されます。</p> |
+    
 
 > [AZURE.NOTE]Azure SQL ライターが ID 列を上書きする場合、キー違反が発生することがあります。このような状況を回避するには、出力テーブルを構造化する必要があります。
 > 
@@ -328,4 +300,4 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

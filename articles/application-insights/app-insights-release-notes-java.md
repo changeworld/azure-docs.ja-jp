@@ -60,4 +60,4 @@
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

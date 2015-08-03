@@ -228,4 +228,4 @@ Open a PowerShell window and run the following script after you’ve updated it 
 
 さまざまな地理的な場所にあるサーバーからのデータを分析する場合は、場所ごとに 1 つの管理グループを設けることを検討してください。エージェントから管理グループへのデータ転送のパフォーマンスを向上させることができます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

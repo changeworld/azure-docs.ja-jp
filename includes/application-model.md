@@ -52,11 +52,11 @@ Azure でホステッド サービスを実行する場合は、アプリケー�
 <tbody>
 <tr>
 <td style="width: 100px;">
-<strong>国/リージョン</strong>
+**国/リージョン**
 
 </td>
 <td style="width: 200px;">
-<strong>サブ リージョン</strong>
+**サブ リージョン**
 
 </td>
 </tr>
@@ -120,7 +120,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 ## <a id="def"> </a>サービス定義ファイル
 
-既に述べたように、サービス定義 (CSDEF) ファイルはアプリケーション全体を構成するさまざまなロールが記述された XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/library/windowsazure/ee758711.aspx][] を参照してください。CSDEF ファイルにはアプリケーションに必要な各ロールの WebRole または WorkerRole 要素が含まれます。(WebRole 要素を使って) ロールを Web ロールとしてデプロイした場合、コードは Windows Server 2008 とインターネット インフォメーション サービス (IIS) を含むロール インスタンスで実行されます。(WorkerRole 要素を使って) ロールを worker ロールとしてデプロイした場合、ロール インスタンスでは Windows Server 2008 が実行されます (IIS はインストールされません)。
+既に述べたように、サービス定義 (CSDEF) ファイルはアプリケーション全体を構成するさまざまなロールが記述された XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/library/windowsazure/ee758711.aspx] を参照してください。CSDEF ファイルにはアプリケーションに必要な各ロールの WebRole または WorkerRole 要素が含まれます。(WebRole 要素を使って) ロールを Web ロールとしてデプロイした場合、コードは Windows Server 2008 とインターネット インフォメーション サービス (IIS) を含むロール インスタンスで実行されます。(WorkerRole 要素を使って) ロールを worker ロールとしてデプロイした場合、ロール インスタンスでは Windows Server 2008 が実行されます (IIS はインストールされません)。
 
 他のメカニズムを使用して受信 Web 要求をリッスンする worker ロールを作成してデプロイできます (コードで .NET HttpListener を作成して使用するなど)。どのロール インスタンスでも Windows Server 2008 が実行されるため、Windows Server 2008 で実行されるアプリケーションで問題なく利用できる処理であれば、コードで実行することができます。
 
@@ -130,29 +130,29 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 <tbody>
 <tr align="left" valign="top">
 <td>
-<strong>VM サイズ</strong>
+**VM サイズ**
 
 </td>
 <td>
-<strong>CPU</strong>
+**CPU**
 
 </td>
 <td>
-<strong>RAM</strong>
+**RAM**
 
 </td>
 <td>
-<strong>ディスク</strong>
+**ディスク**
 
 </td>
 <td>
-<strong>ピーク ネットワーク I/O</strong>
+**ピーク ネットワーク I/O**
 
 </td>
 </tr>
 <tr align="left" valign="top">
 <td>
-<strong>XS</strong>
+**XS**
 
 </td>
 <td>
@@ -174,7 +174,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 </tr>
 <tr align="left" valign="top">
 <td>
-<strong>S</strong>
+**S**
 
 </td>
 <td>
@@ -196,7 +196,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 </tr>
 <tr align="left" valign="top">
 <td>
-<strong>M</strong>
+**M**
 
 </td>
 <td>
@@ -218,7 +218,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 </tr>
 <tr align="left" valign="top">
 <td>
-<strong>L</strong>
+**L**
 
 </td>
 <td>
@@ -240,7 +240,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 </tr>
 <tr align="left" valign="top">
 <td>
-<strong>XL</strong>
+**XL**
 
 </td>
 <td>
@@ -266,7 +266,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 サービス定義 (CSDEF) ファイルも、アプリケーションの各ロールに関する多数の属性を指定する場所です。さらに便利な項目うち、いくつかを次に示します。
 
--   **証明書**:証明書は、データを暗号化する場合か、Web サービスで SSL をサポートしている場合に使用します。すべての証明書を Azure にアップロードする必要があります。詳細については、[Azure での証明書の管理][]に関するページを参照してください。この XML 設定により、既にアップロードされている証明書がロール インスタンスの証明書ストアにインストールされ、アプリケーション コードで使用できるようになります。
+-   **証明書**:証明書は、データを暗号化する場合か、Web サービスで SSL をサポートしている場合に使用します。すべての証明書を Azure にアップロードする必要があります。詳細については、[証明書の管理] を参照してください。この XML 設定により、既にアップロードされている証明書がロール インスタンスの証明書ストアにインストールされ、アプリケーション コードで使用できるようになります。
 
 -   **構成設定名**:ロール インスタンスでの実行中にアプリケーションで読み取る値に使用します。構成設定の実際の値は、コードを再度デプロイしなくてもいつでも更新できるサービス構成 (CSCFG) ファイルで設定します。実際に、アプリケーションは、ダウンタイムを招くことなく、変更された構成値を検出できるような方法でコーディングできます。
 
@@ -284,7 +284,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 サービス構成 (CSCFG) ファイルは、アプリケーションを再度デプロイしなくても変更できる設定が記述される XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/library/windowsazure/ee758710.aspx][] を参照してください。CSCFG ファイルには、アプリケーションの各ロールに対応する Role 要素が含まれています。CSCFG ファイルで指定できる項目のいくつかを次に示します。
 
--   **OS バージョン**:この属性により、アプリケーション コードを実行するすべてのロール インスタンスに使用するオペレーティング システム (OS) バージョンを選択できます。この OS は*ゲスト OS* と呼ばれ、新しいバージョンごとに、ゲスト OS のリリース時に入手可能な最新のセキュリティ修正プログラムと更新プログラムが含まれます。osVersion 属性値を "*" に設定した場合、新しいゲスト OS バージョンが利用可能になると、各ロール インスタンスでゲスト OS が自動的に更新されます。ただし、特定のゲスト OS バージョンを選択することで、自動更新を避けることができます。たとえば、osVersion 属性を "WA-GUEST-OS-2.8_201109-01" という値に設定すると、すべてのロール インスタンスが [http://msdn.microsoft.com/library/hh560567.aspx][] に記載されているものを取得します。ゲスト OS のバージョンの詳細については、[Azure ゲスト OS のアップグレードの管理]に関するページを参照してください。
+-   **OS バージョン**:この属性により、アプリケーション コードを実行するすべてのロール インスタンスに使用するオペレーティング システム (OS) バージョンを選択できます。この OS は*ゲスト OS* と呼ばれ、新しいバージョンごとに、ゲスト OS のリリース時に入手可能な最新のセキュリティ修正プログラムと更新プログラムが含まれます。osVersion 属性値を "*" に設定した場合、新しいゲスト OS バージョンが利用可能になると、各ロール インスタンスでゲスト OS が自動的に更新されます。ただし、特定のゲスト OS バージョンを選択することで、自動更新を避けることができます。たとえば、osVersion 属性を "WA-GUEST-OS-2.8_201109-01" という値に設定すると、すべてのロール インスタンスが [http://msdn.microsoft.com/library/hh560567.aspx][] に記載されているものを取得します。ゲスト OS のバージョンの詳細については、[Azure ゲスト OS リリースと SDK の互換性対応表] を参照してください。
 
 -   **インスタンス**:この要素の値は、特定のロール向けのコードを実行するためにプロビジョニングするロール インスタンスの数を示します。Azure にはアプリケーションを再度デプロイしなくても新しい CSCFG ファイルをアップロードできるため、簡単にこの要素の値を変更し、新しい CSCFG ファイルをアップロードして、アプリケーション コードを実行するロール インスタンスの数を動的に増減できます。そのため、実際に必要なワークロードに合わせてアプリケーションのスケール アップとスケール ダウンを簡単に行うことができるほか、ロール インスタンスの実行にかかるコストを管理できます。
 
@@ -292,7 +292,7 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 ## <a id="hostedservices"> </a>ホステッド サービスの作成とデプロイ
 
-ホステッド サービスを作成するには、最初に [Azure の管理ポータル]にアクセスし、DNS プレフィックスと最終的にコードが実行されるデータ センターを指定して、ホステッド サービスをプロビジョニングする必要があります。その後、開発環境で、サービス定義 (CSDEF) ファイルを作成し、アプリケーション コードをビルドして、これらすべてのファイルをサービス パッケージ (CSPKG) ファイルにパッケージ化 (zip) します。さらに、サービス構成 (CSCFG) ファイルも準備する必要があります。ロールをデプロイするには、Azure サービス管理 API を使用して CSPKG ファイルと CSCFG ファイルをアップロードします。デプロイ後、Azure は (構成データに基づいて) ロール インスタンスをデータ センターでプロビジョニングし、アプリケーション コードをパッケージから抽出します。さらにそれをロール インスタンスにコピーし、インスタンスを起動します。これで、コードを実行できるようになります。
+ホステッド サービスを作成するには、最初に [Azure 管理ポータル]にアクセスし、DNS プレフィックスと最終的にコードが実行されるデータ センターを指定して、ホステッド サービスをプロビジョニングする必要があります。その後、開発環境で、サービス定義 (CSDEF) ファイルを作成し、アプリケーション コードをビルドして、これらすべてのファイルをサービス パッケージ (CSPKG) ファイルにパッケージ化 (zip) します。さらに、サービス構成 (CSCFG) ファイルも準備する必要があります。ロールをデプロイするには、Azure サービス管理 API を使用して CSPKG ファイルと CSCFG ファイルをアップロードします。デプロイ後、Azure は (構成データに基づいて) ロール インスタンスをデータ センターでプロビジョニングし、アプリケーション コードをパッケージから抽出します。さらにそれをロール インスタンスにコピーし、インスタンスを起動します。これで、コードを実行できるようになります。
 
 次の図は、開発コンピューター上で作成する CSPKG ファイルと CSCFG ファイルを示しています。CSPKG ファイルには、CSDEF ファイルのほか、2 つのロールのコードが含まれます。Azure サービス管理 API を使用して CSPKG ファイルと CSCFG ファイルをアップロードすると、ロール インスタンスがデータ センターに作成されます。この例では、CSCFG ファイルはロール #1 のインスタンスを 3 つとロール #2 のインスタンスを 2 つ作成する設定になっています。
 
@@ -316,33 +316,34 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
 
 </div>
 
-[Azure アプリケーション モデルの利点]: #benefits
-[ホステッド サービスの中心概念]: #concepts
-[ホステッド サービスの設計に関する考慮事項]: #considerations
-[規模に合わせたアプリケーションの設計]: #scale
-[ホステッド サービスの定義と構成]: #defandcfg
-[サービス定義ファイル]: #def
-[サービス構成ファイル]: #cfg
-[ホステッド サービスの作成と展開]: #hostedservices
-[参照]: #references
-[0]: ./media/application-model/application-model-3.jpg
-[1]: ./media/application-model/application-model-4.jpg
-[2]: ./media/application-model/application-model-5.jpg
-[Azure でのカスタム ドメイン名の構成]: http://www.windowsazure.com/develop/net/common-tasks/custom-dns/
-[Azure におけるデータ ストレージ サービス]: http://www.windowsazure.com/develop/net/fundamentals/cloud-storage/
-[3]: ./media/application-model/application-model-6.jpg
-[4]: ./media/application-model/application-model-7.jpg
-[Azure の料金]: http://www.windowsazure.com/pricing/calculator/
-[Azure での証明書の管理]: http://msdn.microsoft.com/library/windowsazure/gg981929.aspx
-[http://msdn.microsoft.com/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
-[http://msdn.microsoft.com/library/hh560567.aspx]: http://msdn.microsoft.com/library/hh560567.aspx
-[Azure ゲスト OS のアップグレードの管理]: http://msdn.microsoft.com/library/ee924680.aspx
-[Azure の管理ポータル]: http://manage.windowsazure.com/
-[5]: ./media/application-model/application-model-8.jpg
-[Azure アプリケーションのデプロイと更新]: http://www.windowsazure.com/develop/net/fundamentals/deploying-applications/
-[Azure 対応のホステッド サービスの作成]: http://msdn.microsoft.com/library/gg432967.aspx
-[Azure におけるホステッド サービスの管理]: http://msdn.microsoft.com/library/gg433038.aspx
-[Azure へのアプリケーションの移行]: http://msdn.microsoft.com/library/gg186051.aspx
-[Azure アプリケーションの構成]: http://msdn.microsoft.com/library/windowsazure/ee405486.aspx
+  [Azure アプリケーション モデルの利点]: #benefits
+  [ホステッド サービスの中心概念]: #concepts
+  [ホステッド サービスの設計に関する考慮事項]: #considerations
+  [規模に合わせたアプリケーションの設計]: #scale
+  [ホステッド サービスの定義と構成]: #defandcfg
+  [サービス定義ファイル]: #def
+  [サービス構成ファイル]: #cfg
+  [ホステッド サービスの作成と展開]: #hostedservices
+  [参照]: #references
+  [0]: ./media/application-model/application-model-3.jpg
+  [1]: ./media/application-model/application-model-4.jpg
+  [2]: ./media/application-model/application-model-5.jpg
+  [Azure でのカスタム ドメイン名の構成]: http://www.windowsazure.com/develop/net/common-tasks/custom-dns/
+  [Azure におけるデータ ストレージ サービス]: http://www.windowsazure.com/develop/net/fundamentals/cloud-storage/
+  [3]: ./media/application-model/application-model-6.jpg
+  [4]: ./media/application-model/application-model-7.jpg
+  
+  [Azure の料金]: http://www.windowsazure.com/pricing/calculator/
+  [Managing Certificates in Azure]: http://msdn.microsoft.com/library/windowsazure/gg981929.aspx
+  [http://msdn.microsoft.com/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+  [http://msdn.microsoft.com/library/hh560567.aspx]: http://msdn.microsoft.com/library/hh560567.aspx
+  [Managing Upgrades to the Azure Guests OS]: http://msdn.microsoft.com/library/ee924680.aspx
+  [Azure 管理ポータル]: http://manage.windowsazure.com/
+  [5]: ./media/application-model/application-model-8.jpg
+  [Azure アプリケーションのデプロイと更新]: http://www.windowsazure.com/develop/net/fundamentals/deploying-applications/
+  [Azure 対応のホステッド サービスの作成]: http://msdn.microsoft.com/library/gg432967.aspx
+  [Azure におけるホステッド サービスの管理]: http://msdn.microsoft.com/library/gg433038.aspx
+  [Azure へのアプリケーションの移行]: http://msdn.microsoft.com/library/gg186051.aspx
+  [Azure アプリケーションの構成]: http://msdn.microsoft.com/library/windowsazure/ee405486.aspx
 
-<!--HONumber=52-->
+<!---HONumber=July15_HO4-->

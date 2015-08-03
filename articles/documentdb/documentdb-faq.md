@@ -98,4 +98,4 @@ DocumentDB ではストアド プロシージャがサポートされるため�
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

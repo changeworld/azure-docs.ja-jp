@@ -204,4 +204,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

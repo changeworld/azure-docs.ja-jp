@@ -80,4 +80,4 @@
 [クイック スタート]: ../mobile-services-javascript-backend-ios-get-started.md
 [iOS の GetStartedWithData アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=268622
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

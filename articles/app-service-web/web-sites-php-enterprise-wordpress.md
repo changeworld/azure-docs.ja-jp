@@ -283,4 +283,4 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [cdn]: ../cdn-how-to-use.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

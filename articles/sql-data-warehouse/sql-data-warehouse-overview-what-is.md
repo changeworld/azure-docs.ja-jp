@@ -63,15 +63,15 @@ SQL Data Warehouse は数秒で簡単にデプロイできます。このサー�
 
 
 ## 次のステップ
-データ ウェアハウスのワークロードについて学習します。
+[データ ウェアハウスのワークロード]について学習します。
 
 <!--Image references-->
 
 <!--Article references-->
-「データ ウェアハウスのワークロード」sql-data-warehouse-overview-workload.md
+[データ ウェアハウスのワークロード]: ./sql-data-warehouse-overview-workload.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

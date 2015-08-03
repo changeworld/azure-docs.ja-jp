@@ -370,4 +370,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 - **[削除]** をクリックして、すべて仮想マシンのディスクの削除を選択します。
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

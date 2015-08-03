@@ -47,7 +47,7 @@
        <td><a href="http://azure.microsoft.com/documentation/articles/media-services-encode-with-premium-workflow/">メディア エンコーダー プレミアム ワークフローを使用したエンコード</a></td>
     </tr>    
 	<tr>
-        <td>Azure メディア インデクサー</td>
+        <td>Azure Media Indexer</td>
         <td>メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。</td>
 		<td><a href="http://azure.microsoft.com/documentation/articles/media-services-index-content/">Azure Media Indexer によるメディア ファイルのインデックス作成</a></td>
     </tr>
@@ -97,4 +97,4 @@
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [方法: メディア サービスにプログラムから接続する]: ../media-services-set-up-computer/
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

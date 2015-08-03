@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp の Active Directory を構成する" 
     description="Azure RemoteApp で動作するように Active Directory をセットアップする方法について説明します。" 
     services="remoteapp" 
-    documentationCenter="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -108,4 +108,4 @@ RemoteApp は、内部設置型 Active Directory に 2 つのオブジェクト�
 ここで Azure Directory 同期ツールを起動し、**myAzureSyncUser@mydomain.com**最初のプロンプトに対して資格情報 (Microsoft Azure Active Directory 管理者資格情報) を、2 番目のプロンプトに対して **myDomainSyncUser@mydomain.com** を使用します。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

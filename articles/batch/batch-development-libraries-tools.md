@@ -20,7 +20,8 @@
 # Azure Batch 開発ライブラリおよびツール 
 <p>Azure Batch と Batch Apps アプリケーションを開発するために、これらのライブラリとツールを取得します。
 
-## バッチ
+## Batch  
+
 
 + [.NET 向け Batch クライアント ライブラリ](http://www.nuget.org/packages/Azure.Batch/) (NuGet) - Batch サービスを使用してジョブを実行するクライアント アプリケーションを開発します
 + [Batch 管理ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) (NuGet) - Batch サービスのアカウントを管理します
@@ -49,4 +50,4 @@
 [Batch Apps]: #batch-apps
 [Additional resources]: #additional-resources
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -200,4 +200,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

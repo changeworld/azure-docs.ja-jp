@@ -200,7 +200,7 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
 
 	初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。これには数分かかることがあります。
 
-2. Management Studio では、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで _**your_VM_name**\\your_local_administrator_ をそのまま使用します。**[接続]** をクリックします。
+2. Management Studio では、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで _**your_VM_name**\your_local_administrator_ をそのまま使用します。**[接続]** をクリックします。
 
 	![サーバーへの接続][Image19]
 
@@ -299,17 +299,6 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 [Azure の仮想マシンに SQL Server に移行するための準備](http://go.microsoft.com/fwlink/p/?LinkId=294721)
 
-- Azure の仮想マシン間でデータ ディスクを使用して SQL Server のデータベース ファイルとスキーマを移行する方法
-
-[Azure の仮想マシンへの SQL Server のデプロイメント](http://go.microsoft.com/fwlink/p/?LinkId=294722)
-
-- CSUpload を使用してデータ ディスク内の SQL Server データ ファイルおよびセットアップ ファイルをオンプレミスから Azure にコピーする方法
-- Hyper-V を使用してベースとなる仮想マシンをオンプレミスで作成する方法
-- 既にあるオンプレミスの SQL Server を使用して Azure に SQL Server の仮想マシンを作成する方法
-- 既にあるオンプレミスの SQL Server 仮想マシンを使用して Azure に SQL Server の仮想マシンを作成する方法 
-- PowerShell を使用して Azure に SQL Server 仮想マシンを設定する方法 
-- 接続されたデータ ディスクを使用してデータベース ファイルを格納する方法
-
 [Azure の仮想マシンにおける SQL Server の接続に関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294723)
 
 [Azure Virtual Machines における SQL Server のパフォーマンスに関する考慮事項](http://go.microsoft.com/fwlink/?LinkId=294724)
@@ -330,21 +319,13 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 [Azure の仮想マシンでの SQL Server Business Intelligence](http://go.microsoft.com/fwlink/p/?LinkId=294729)
 
-- SQL Server BI と SharePoint 2010 を実行する Azure VM を PowerShell を使用して作成する
-- SQL Server BI と SharePoint 2013 を実行する Azure VM を PowerShell を使用して作成する
-- ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
-
-[Azure の仮想マシンにおける SQL Server データ ウェアハウス](http://msdn.microsoft.com/library/windowsazure/dn387396.aspx)
+[SQL Server Data Warehousing and Transactional Workloads in Azure Virtual Machines (Azure の仮想マシンにおける SQL Server データ ウェアハウスおよびトランザクション ワークロード)](http://msdn.microsoft.com/library/windowsazure/dn387396.aspx)
 
 [Azure の仮想マシンにおける SQL Server に関する技術記事](http://msdn.microsoft.com/library/azure/dn248435.aspx)
 
 - [ホワイト ペーパー: Azure SQL Database と Azure VM 内の SQL Server について](sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)
 
 - [ホワイト ペーパー: Azure の仮想マシンにおける SQL Server のアプリケーション パターンと開発計画](http://msdn.microsoft.com/library/azure/dn574746.aspx)
-
-- [ホワイト ペーパー: Azure の仮想マシンでの SQL Server Business Intelligence のデプロイ](http://msdn.microsoft.com/library/windowsazure/dn321998.aspx)
-
-- [ホワイト ペーパー: Reporting Services レポート ビューアー コントロールと Microsoft Azure 仮想マシン ベースのレポート サーバー](http://msdn.microsoft.com/library/azure/dn753698.aspx)
 
 [Image4]: ./media/virtual-machines-provision-sql-server/4VM-Config.png
 [Image5]: ./media/virtual-machines-provision-sql-server/5VM-Mode.png
@@ -381,4 +362,4 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 [Image38]: ./media/virtual-machines-provision-sql-server/credentials.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

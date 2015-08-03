@@ -71,4 +71,4 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 - [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

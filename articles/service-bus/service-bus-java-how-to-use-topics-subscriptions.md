@@ -247,4 +247,4 @@ Service Bus トピックに送信されたメッセージは、**BrokeredMessage
   [Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/hh367516.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

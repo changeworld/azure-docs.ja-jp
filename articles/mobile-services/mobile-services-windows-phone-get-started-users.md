@@ -90,4 +90,4 @@
 [Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: mobile-services-windows-phone-single-sign-on.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

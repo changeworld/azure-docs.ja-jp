@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2015" 
+	ms.date="07/20/2015" 
 	ms.author="juliako"/>
 
 
@@ -51,7 +51,6 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 - [Microsoft Media Platform: プレーヤー フレームワーク](http://playerframework.codeplex.com/) 
 - [HTML5 プレーヤー フレームワークに関するドキュメント](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 - [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057) 
-- [iOS 用 Media Player Framework](https://github.com/Azure/azure-media-player-framework) 
 - [Licensing Microsoft® Smooth Streaming Client Porting Kit](https://www.microsoft.com/mediaplatform/sspk.aspx) 
 - [Xbox ビデオ アプリケーションの開発](http://xbox.create.msdn.com/) 
  
@@ -66,9 +65,9 @@ Azure Media Services では、Windows メディア プラットフォームの�
 
 コンパニオン – プレーヤーの外部に表示される広告
 
-広告は、メイン ビデオの時系列のどのポイントにも配置できます。広告をいつ再生し、どの広告を再生するかをプレーヤーに通知する必要があります。これは、一連の標準 XML ベース ファイルである Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST)、Digital Video Player Ad Interface Definition (VPAID) を使用して行います。VAST ファイルは、表示する広告を指定します。VMAP ファイルは、各広告をいつ再生するかを指定します。このファイルには VAST XML が含まれています。MAST ファイルを使用して広告の順序を指定することもできます。このファイルにも VAST XML が含まれています。VPAID ファイルは、ビデオ プレーヤーと広告や広告サーバーの間のインターフェイスを定義します。詳細については、「[広告の挿入](https://msdn.microsoft.com/library/dn387398.aspx)」をご覧ください。
+広告は、メイン ビデオの時系列のどのポイントにも配置できます。広告をいつ再生し、どの広告を再生するかをプレーヤーに通知する必要があります。これは、一連の標準 XML ベース ファイルである Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST)、Digital Video Player Ad Interface Definition (VPAID) を使用して行います。VAST ファイルは、表示する広告を指定します。VMAP ファイルは、各広告をいつ再生するかを指定します。このファイルには VAST XML が含まれています。MAST ファイルを使用して広告の順序を指定することもできます。このファイルにも VAST XML が含まれています。VPAID ファイルは、ビデオ プレーヤーと広告や広告サーバーの間のインターフェイスを定義します。詳細については、「[広告の挿入](https://msdn.microsoft.com/library/dn387398.aspx)」を参照してください。
 
-ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)」をご覧ください。
+ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)」を参照してください。
 
 ##関連項目
 
@@ -77,4 +76,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

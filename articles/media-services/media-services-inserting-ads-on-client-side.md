@@ -151,7 +151,7 @@ VAST ファイルは、表示する広告を指定します。次の XML に、�
 	</Creative>
 
  
-**<NonLinearAds>** 要素には 1 つ以上の **<NonLinear>** 要素が含まれており、それぞれ非線形広告を記述できます。**<NonLinear>** 要素は、非線形広告のリソースを指定します。このリソースは、**<StaticResouce>**、**<IFrameResource>**、**<HTMLResouce>** です。**<StaticResource>** は、HTML 以外のリソースを記述し、次のようなリソースの表示方法を指定する creativeType 属性を定義します。
+**<NonLinearAds>** 要素には 1 つ以上の **<NonLinear>** 要素が含まれており、それぞれ非線形広告を記述できます。**<NonLinear>** 要素は、非線形広告のリソースを指定します。このリソースは、**<StaticResouce>**、**<IFrameResource>**、または **<HTMLResouce>** です。**<StaticResource>** は、HTML 以外のリソースを記述し、次のようなリソースの表示方法を指定する creativeType 属性を定義します。
 
 Image/gif、image/jpeg、image/png – リソースが HTML **<img>** タグで表示されます。
 
@@ -804,4 +804,4 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md) [Azure Media Player Framework for iOS の概要](https://channel9.msdn.com/Series/Windows-Azure-Media-Services-Tutorials/An-introduction-to-Azure-Media-Player-Framework-for-IOS)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

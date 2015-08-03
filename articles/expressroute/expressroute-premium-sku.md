@@ -63,7 +63,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 ### 3.ExpressRoute Premium アドオンが有効になったことを確認する
 回線の ExpressRoute Premium アドオンが有効になったかどうかを調べて確認することができます。次の例では、ExpressRoute 回線の ExpressRoute Premium アドオン機能は有効になっていません。アドオンが有効になっている場合は、SKU に「***Premium***」と表示されます。
 
-		PS C:> Get-AzureDedicatedCircuit -ServiceKey *********************************
+		PS C:\> Get-AzureDedicatedCircuit -ServiceKey *********************************
 
 		Bandwidth                        : 200
 		CircuitName                      : TestCircuit
@@ -86,15 +86,15 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 	次の PowerShell コマンドレットを使用して、ExpressRoute 回線の詳細を取得できます。
 		
 
-    	PS C:> Get-AzureDedicatedCircuit
+    	PS C:\> Get-AzureDedicatedCircuit
 	
 	このコマンドは、サブスクリプションで作成したすべての回線の一覧を返します。サービス キーがある場合は、次のコマンドを使用して特定の ExpressRoute 回線の詳細を取得することができます
 
-		 PS C:> Get-AzureDedicatedCircuit -ServiceKey <skey>
+		 PS C:\> Get-AzureDedicatedCircuit -ServiceKey <skey>
 
 	<skey> を実際のサービス キーで置き換えます。
 	
-		PS C:> Get-AzureDedicatedCircuit -ServiceKey *********************************
+		PS C:\> Get-AzureDedicatedCircuit -ServiceKey *********************************
 
 		Bandwidth                        : 200
 		CircuitName                      : TestCircuit
@@ -111,7 +111,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 	次の PowerShell コマンドレットを使用して、既存の回線の ExpressRoute Premium アドオンを有効にできます。
 	
-		PS C:> Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Premium
+		PS C:\> Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Premium
 		
 		Bandwidth                        : 1000
 		CircuitName                      : TestCircuit
@@ -136,15 +136,15 @@ Premium アドオンが有効になっている ExpressRoute 回線の ExpressRo
 	次の PowerShell コマンドレットを使用して、ExpressRoute 回線の詳細を取得できます。
 		
 
-    	PS C:> Get-AzureDedicatedCircuit
+    	PS C:\> Get-AzureDedicatedCircuit
 	
 	このコマンドは、サブスクリプションで作成したすべての回線の一覧を返します。サービス キーがある場合は、次のコマンドを使用して特定の ExpressRoute 回線の詳細を取得することができます
 
-		 PS C:> Get-AzureDedicatedCircuit -ServiceKey <skey>
+		 PS C:\> Get-AzureDedicatedCircuit -ServiceKey <skey>
 
 	<skey> を実際のサービス キーで置き換えます。
 	
-		PS C:> Get-AzureDedicatedCircuit -ServiceKey *********************************
+		PS C:\> Get-AzureDedicatedCircuit -ServiceKey *********************************
 
 		Bandwidth                        : 200
 		CircuitName                      : TestCircuit
@@ -161,7 +161,7 @@ Premium アドオンが有効になっている ExpressRoute 回線の ExpressRo
 
 	次の PowerShell コマンドレットを使用して、既存の回線の ExpressRoute Premium アドオンを無効にできます。
 	
-		PS C:> Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Standard
+		PS C:\> Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Standard
 		
 		Bandwidth                        : 1000
 		CircuitName                      : TestCircuit
@@ -177,4 +177,4 @@ Premium アドオンが有効になっている ExpressRoute 回線の ExpressRo
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

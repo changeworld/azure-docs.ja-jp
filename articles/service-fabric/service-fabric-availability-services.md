@@ -51,4 +51,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [状態の定義と管理](service-fabric-concepts-state.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

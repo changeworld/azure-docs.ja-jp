@@ -44,7 +44,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 	* **JAVA_HOME** または同等のパス
 
-	* **JAVA_HOME\\bin** または同等のパス
+	* **JAVA_HOME\bin** または同等のパス
 
 	* Maven がインストールされているディレクトリ
 
@@ -297,4 +297,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -152,4 +152,4 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 
 [StorSimple のセキュリティ](storsimple-security.md)の詳細を確認する
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

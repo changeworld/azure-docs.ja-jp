@@ -38,7 +38,7 @@
 
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hadoop コマンドを使用して MapReduce ジョブを実行します。
 
-1. HDInsight デスクトップから、**Hadoop コマンド ライン**を起動します。これにより、**c:\\apps\\dist\\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
+1. HDInsight デスクトップから、**Hadoop コマンド ライン**を起動します。これにより、**c:\apps\dist\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
 
 	> [AZURE.NOTE]Hadoop の更新に応じて、バージョン番号が変わります。**HADOOP_HOME** 環境変数を使用して、パスを探します。たとえば、`cd %HADOOP_HOME%` では、バージョン番号がわからなくても、ディレクトリは Hadoop ディレクトリに変更されます。
 
@@ -95,4 +95,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

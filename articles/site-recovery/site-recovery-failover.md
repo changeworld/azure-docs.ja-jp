@@ -279,4 +279,4 @@ Azure にフェールオーバーした場合、仮想マシンは、仮想マ�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

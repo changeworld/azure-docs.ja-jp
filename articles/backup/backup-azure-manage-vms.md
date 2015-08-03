@@ -4,18 +4,11 @@
 	description="Azure 仮想マシンを管理する方法について説明します。"
 	services="backup"
 	documentationCenter=""
-	authors="jimpark"
-	manager="jwhit"
+	authors="aashishr"
+	manager="shreeshd"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/28/2015"
-	ms.author="jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/17/2015" ms.author="aashishr"; "jimpark"/>
 
 # 仮想マシンの管理
 
@@ -158,6 +151,5 @@
 **ダッシュボード** ページでは、Azure 仮想マシン、ストレージ、過去 24 時間以内に関連付けられたジョブに関する情報を確認できます。バックアップの状態と関連付けられているバックアップ エラーを表示できます。
 
   ![ダッシュボード](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
- 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

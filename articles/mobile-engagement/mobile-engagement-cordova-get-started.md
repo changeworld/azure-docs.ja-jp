@@ -233,7 +233,7 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 **(iOS)**
 
-1. iOS では実在するデバイスへのプッシュ通知だけが許可されているため、XCode を使用してアプリをビルドし、デバイスにデプロイして、プッシュ通知をテストします。Cordova プロジェクトを作成した場所の **...\\platforms\\ios** に移動します。XCode でネイティブ .xcodeproj ファイルを開きます。 
+1. iOS では実在するデバイスへのプッシュ通知だけが許可されているため、XCode を使用してアプリをビルドし、デバイスにデプロイして、プッシュ通知をテストします。Cordova プロジェクトを作成した場所の **...\platforms\ios** に移動します。XCode でネイティブ .xcodeproj ファイルを開きます。 
 	
 2. 先ほど Mobile Engagement ポータルにアップロードした証明書と、Cordova アプリの作成中に指定した App Id を含むプロビジョニング プロファイルが設定されたアカウントを使用して、Cordova アプリをビルドして iOS デバイスにデプロイします。XCode で **Resources*-info.plist** ファイルの *Bundle ID* をチェックアウトして、照合することができます。
 
@@ -312,4 +312,4 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [20]: ./media/mobile-engagement-cordova-get-started/native-push-settings.png
 [21]: ./media/mobile-engagement-cordova-get-started/api-key.png
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

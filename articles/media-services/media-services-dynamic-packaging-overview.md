@@ -97,4 +97,4 @@ Media Services Encoder でエンコードされていないアダプティブ �
 - Dolby Digital Plus の MP4 ファイル。
 - Dolby Digital Plus のスムーズ ファイル。 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -32,4 +32,4 @@ Azure AD アプリケーション プロキシは、Azure Active Directory の P
 [Microsoft Azure のブログ](http://azure.microsoft.com/blog/) [アプリケーション プロキシ サービスを有効にする](https://msdn.microsoft.com/library/azure/dn768214.aspx) [アプリケーション プロキシを使用したアプリケーションの発行](https://msdn.microsoft.com/library/azure/dn768220.aspx) [アプリケーション プロキシのトラブルシューティング](https://msdn.microsoft.com/library/azure/dn768218.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

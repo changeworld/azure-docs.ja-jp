@@ -73,4 +73,4 @@
 
 [Azure SQL Database のバックアップと復元](http://msdn.microsoft.com/library/azure/jj650016.aspx)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

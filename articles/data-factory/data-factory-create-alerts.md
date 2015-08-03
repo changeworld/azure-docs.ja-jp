@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/15/2015" 
+	ms.date="07/21/2015" 
 	ms.author="spelluru"/>
 
 # Azure イベントに対するアラートの作成
@@ -109,62 +109,16 @@ StorageAccountName は、デプロイしたアラートの JSON ファイルを�
 
 ## <a name="AvailableOperationsStatuses"></a>使用できる操作の名前と状態値
 
-<table>
-<th align="left">操作の名前</th>
-<th align="left">状態</th>
-<th align="left">副状態</th>
+| 操作の名前 | 状態 | 副状態 |
+| -------------- | ------ | ---------- |
+| RunStarted | 開始済み | Starting |
+| RunFinished | 失敗/成功 |	<p>FailedResourceAllocation </p><p>Succeeded</p><p>FailedExecution</p><p>TimedOut</p><p>Canceled</p><p>FailedValidation</p><p>Abandoned</p> | 
+| SliceOnTime | In Progress | Ontime |
+| SliceDelayed | In Progress | Late |
+| OnDemandClusterCreateStarted | 開始済み | |
+| OnDemandClusterCreateSuccessful | Succeeded | | 
+| OnDemandClusterDeleted | Succeeded | |
 
-<tr>
-<td>RunStarted</td>
-<td>開始済み</td>
-<td>Starting</td>
-</tr>
-
-<tr>
-<td>RunFinished</td>
-<td>Failed / Succeeded</td>
-<td>
-	<p>FailedResourceAllocation </p>
-	<p>Succeeded</p>
-	<p>FailedExecution</p>
-	<p>TimedOut</p>
-	<p>Canceled</p>
-	<p>FailedValidation</p>
-	<p>Abandoned</p>
-</td>
-</tr>
-
-<tr>
-<td>SliceOnTime</td>
-<td>In Progress</td>
-<td>Ontime</td>
-</tr>
-
-<tr>
-<td>SliceDelayed</td>
-<td>In Progress</td>
-<td>Late</td>
-</tr>
-
-<tr>
-<td>OnDemandClusterCreateStarted</td>
-<td>開始済み</td>
-<td></td>
-</tr>
-
-<tr>
-<td>OnDemandClusterCreateSuccessful</td>
-<td>Succeeded</td>
-<td></td>
-</tr>
-
-<tr>
-<td>OnDemandClusterDeleted</td>
-<td>Succeeded</td>
-<td></td>
-</tr>
-
-</table>
 
 ## ユーザー イベントのトラブルシューティング
 生成されたイベントを表示するには、次のコマンドを実行します。
@@ -172,4 +126,4 @@ StorageAccountName は、デプロイしたアラートの JSON ファイルを�
 	Get-AzureResourceGroupLog –Name $ResourceGroup -All | Where-Object EventSource -eq "Microsoft.DataFactory"
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp イメージの要件"
     description="Azure RemoteApp で使用するイメージを作成するための要件について説明します。" 
     services="remoteapp" 
-    documentationCenter="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -43,4 +43,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - スナップショット チェーンからの VHD のアップロードはサポートされていません。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

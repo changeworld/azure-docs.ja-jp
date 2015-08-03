@@ -55,4 +55,4 @@ Azure Active Directory には、ディレクトリ管理者向けに、複数の
  - [Azure Active Directory レポート](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

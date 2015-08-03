@@ -92,4 +92,4 @@
 [既存のアプリケーションへの Mobile Services の追加]: mobile-services-html-get-started-data.md
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

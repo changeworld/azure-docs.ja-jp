@@ -278,4 +278,4 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

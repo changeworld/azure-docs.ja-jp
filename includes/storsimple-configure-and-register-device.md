@@ -1,20 +1,3 @@
-<properties 
-   pageTitle="デバイスを構成して登録する"
-   description="StorSimple 用 Windows PowerShell を使用しデバイスを構成して登録する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="06/19/2015"
-   ms.author="v-sharos" />
-
 
 #### デバイスを構成して登録するには
 
@@ -79,4 +62,4 @@
   
       >[AZURE.NOTE]デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

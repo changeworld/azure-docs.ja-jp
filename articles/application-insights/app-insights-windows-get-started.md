@@ -35,7 +35,7 @@ Visual Studio Application Insights を使用すると、発行されたアプリ
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1\.Application Insights リソースの作成 
+## 1.Application Insights リソースの作成 
 
 [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
 
@@ -50,7 +50,7 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 ![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
 
 
-## 2\.アプリへの Application Insights SDK の追加
+## 2.アプリへの Application Insights SDK の追加
 
 Visual Studio で、適切な SDK をプロジェクトに追加します。
 
@@ -227,4 +227,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -172,4 +172,4 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -192,7 +192,7 @@ Storm UI を使用してトポロジを監視できます。
 
 	詳細については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
-* **サンプル ファイル** - HDInsight Storm クラスターでは、**%STORM_HOME%\\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
+* **サンプル ファイル** - HDInsight Storm クラスターでは、**%STORM_HOME%\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
 
 	* ソース コード - storm-starter-0.9.1.2.1.5.0-2057-sources.jar など
 
@@ -204,7 +204,7 @@ Storm UI を使用してトポロジを監視できます。
 
 	> [AZURE.NOTE]Java ドキュメントは Web ページで構成されます。抽出後、ブラウザーを使用して **index.html** ファイルを表示します。
 
-	これらのサンプルにアクセスするには、HDInsight クラスターの Storm のリモート デスクトップを有効にし、**%STORM_HOME%\\contrib** からファイルをコピーする必要があります。
+	これらのサンプルにアクセスするには、HDInsight クラスターの Storm のリモート デスクトップを有効にし、**%STORM_HOME%\contrib** からファイルをコピーする必要があります。
 
 * 次のドキュメントには、HDInsight の Storm と使用できるその他のサンプルの一覧が含まれています。
 
@@ -217,4 +217,4 @@ Storm UI を使用してトポロジを監視できます。
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

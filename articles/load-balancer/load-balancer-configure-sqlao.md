@@ -62,4 +62,4 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

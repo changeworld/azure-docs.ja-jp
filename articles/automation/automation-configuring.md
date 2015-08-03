@@ -67,4 +67,4 @@ Runbook のすべての[チェックポイント](automation-runbook-execution#c
 - [Azure オートメーション: Azure Active Directory を使用して Azure を認証する](http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

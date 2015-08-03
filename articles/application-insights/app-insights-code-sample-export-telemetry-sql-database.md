@@ -530,4 +530,4 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

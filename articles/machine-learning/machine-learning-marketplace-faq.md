@@ -77,4 +77,4 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

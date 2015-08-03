@@ -25,4 +25,4 @@
 
 [データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-how-to-attach-disk.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

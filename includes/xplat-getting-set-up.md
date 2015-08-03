@@ -1,13 +1,3 @@
-<properties services="virtual-machines" title="Setting up Azure CLI for service management" authors="squillace" solutions="" manager="timlt" editor="tysonn" />
-
-<tags
-   ms.service="virtual-machine"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="linux"
-   ms.workload="infrastructure"
-   ms.date="04/13/2015"
-   ms.author="rasquill" />
 
 ## Azure CLI の使用
 
@@ -34,4 +24,4 @@ Azure CLI のバージョンを更新する場合は、[Azure CLI](https://githu
 
 > [AZURE.NOTE]Azure アカウントはまだ取得しておらず、MSDN サブスクリプションのサブスクリプションのみがある場合は、[ここから MSDN サブスクリプション会員の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化して無料の Azure クレジットを取得するか、無料のアカウントを使用できます。どちらを使用しても Azure にアクセスできます。
 
-<!---HONumber=58_postMigration-->
+<!---HONumber=July15_HO4-->

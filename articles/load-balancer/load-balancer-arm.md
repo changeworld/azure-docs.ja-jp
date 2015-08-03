@@ -35,7 +35,7 @@ ARM を使用する場合、Azure ロード バランサーには次の子リソ
 - 受信 NAT 規則: フロントエンド IP を通過し、バックエンド IP に配信される受信トラフィックを定義する NAT 規則です。
 
 
-![](https://acomdpsstorage.blob.core.windows.net/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/resource-groups-networking/20150429054039/figure5.png)
+![](./media/load-balancer-arm/load-balancer-arm.png)
 
 
 
@@ -67,7 +67,7 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 
 - [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager)
 
-- [ロード バランサー REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+- [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 
 ## 関連項目
@@ -77,4 +77,4 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

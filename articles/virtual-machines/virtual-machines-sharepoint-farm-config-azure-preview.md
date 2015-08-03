@@ -39,7 +39,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	Azure サブスクリプション: 初期構成中に指定されます。
 -	Azure ドメイン名 (クラウド サービスとも呼ばれます): 個別のドメイン名が仮想マシンごとに自動で作成されます。
 -	ストレージ アカウント: 初期構成中に指定されます。
--	仮想ネットワーク 	
+-	Virtual Network 	
 	-   種類: クラウドのみ	
     -	アドレス空間: 10.0.0.0/26    
 
@@ -85,7 +85,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	Azure サブスクリプション: 初期構成中に指定されます。
 -	Azure ドメイン名 (クラウド サービスとも呼ばれます): 個別のドメイン名が、上の図に従って作成されます。
 -	ストレージ アカウント: 初期構成中に指定されます。
--	仮想ネットワーク	
+-	Virtual Network	
 	-	種類: クラウドのみ
 	-	アドレス空間: 10.0.0.0/26	
 
@@ -140,4 +140,4 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

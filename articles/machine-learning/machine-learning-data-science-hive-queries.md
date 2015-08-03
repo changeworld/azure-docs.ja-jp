@@ -2,10 +2,11 @@
 	pageTitle="高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する | Microsoft Azure" 
 	description="ハイブ テーブルからのデータの処理" 
 	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
-	editor="cgronlun" />
+	editor="cgronlun"  />
 
 <tags 
 	ms.service="machine-learning" 
@@ -13,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/29/2015" 
+	ms.date="07/17/2015" 
 	ms.author="hangzh;bradsev" />
 
 #<a name="heading"></a>高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する
 
-このドキュメントでは、Azure の HDInsight サービスで管理される Hadoop クラスターにハイブ クエリを送信するさまざまな方法について説明します。Hive クエリは、以下のものを使用して送信できます。
+このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。Hive クエリは、以下のものを使用して送信できます。
 
 * クラスターのヘッドノードでの Hadoop コマンド ライン
 * IPython Notebook 
@@ -27,40 +28,44 @@
 
 データを調査するため、または埋め込みハイブ ユーザー定義関数 (UDF) を使用する機能を生成するために使用できる汎用的なハイブ クエリが提供されます。
 
-クエリの例 ([NYC Taxi Trip Data](http://chriswhong.com/open-data/foil_nyc_taxi/) シナリオに固有) は、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)でも提供されます。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
+クエリの例 ([NYC Taxi Trip Data](http://chriswhong.com/open-data/foil_nyc_taxi/) シナリオに固有) は、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)でも提供されます。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信してこのシナリオのために実行できる状態になっています。
 
 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについて説明します。
 
 ## 前提条件
 この記事では、以下のことを前提としています。
  
-* Azure のストレージ アカウントを作成している。手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。 
+* Azure のストレージ アカウントを作成している。この作業の手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。 
 * HDInsight サービスで Hadoop クラスターをプロビジョニングしている。手順については、[HDInsight クラスターのプロビジョニング](../hdinsight-get-started.md#provision)に関するページをご覧ください。
-* Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされている。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」に従って Hive テーブルにデータをアップロードします。
+* Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされている。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」にある指示に従って Hive テーブルにデータをアップロードします。
 * クラスターへのリモート アクセスが有効にされている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#remoteaccess)」をご覧ください。 
 
 
-- [Hive クエリを送信する方法](#submit)
-- [データ探索および特徴エンジニアリング](#explore)
-- [高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる](#tuning)
-
 ## <a name="submit"></a>Hive クエリを送信する方法
 
-###1.Hadoop クラスターのヘッド ノードでの Hadoop コマンド ラインの使用
+1. [Hadoop クラスターのヘッド ノードで Hadoop コマンド ラインを使用して Hive クエリを送信する](#headnode)
+2. [Hive エディターで Hive クエリを送信する](#hive-editor)
+3. [Azure PowerShell コマンドで Hive クエリを送信する](#ps)
+ 
+###<a name="headnode"></a> 1.Hadoop クラスターのヘッドノードで Hadoop コマンド ラインを使用して Hive クエリを送信する
 
-クエリが複雑な場合、Hadoop クラスターのヘッド ノードに直接ハイブ クエリを送信することにより、通常、ハイブ エディターまたは Azure PowerShell スクリプトを使用して送信するよりも速度が上がります。
+Hive クエリが複雑な場合、Hadoop クラスターのヘッド ノードに直接クエリを送信することにより、通常、Hive エディターまたは Azure PowerShell スクリプトを使用して送信するよりも速度が上がります。
 
-Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、`cd %hive_home%\bin` コマンドを入力します。
+Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、コマンド `cd %hive_home%\bin` を入力します。
 
 ユーザーには Hadoop コマンド ラインでハイブ クエリを送信する 3 つの方法があります。
 
-####Hadoop コマンド ラインでハイブ クエリを直接送信する 
+* 直接
+* .hql ファイルの使用
+* Hive コマンド コンソールで
+
+#### Hadoop コマンド ラインでハイブ クエリを直接送信する 
 
 ユーザーは、`hive -e "<your hive query>;` のようなコマンドを実行することで、Hadoop コマンド ラインで単純な Hive クエリを直接送信できます。次に例を示します。ここで赤いボックスは Hive クエリを送信するコマンドを囲んでいます。緑色のボックスは Hive クエリの出力を囲んでいます。
 
 ![Create workspace][10]
 
-####.hql ファイルで Hive クエリを送信する
+#### .hql ファイルで Hive クエリを送信する
 
 ハイブ クエリがより複雑で、複数の行が存在する場合、コマンド ラインやハイブ コマンド コンソールでクエリを編集することは実際的ではありません。別の方法として、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリの中の .hql ファイルにハイブ クエリを保存します。次のように `-f` 引数を使用すると、.hql ファイルの Hive クエリを送信できます。
 	
@@ -69,14 +74,14 @@ Hadoop クラスターのヘッド ノードにログインし、ヘッド ノ�
 ![Create workspace][15]
 
 
-####Hive クエリの進行状況ステータス画面の出力を抑制する
+**Hive クエリの進行状況ステータス画面の出力を抑制する**
 
 既定では、Hadoop コマンド ラインでハイブ クエリを送信した後に、マップ/縮小ジョブの進捗が画面に出力されます。マップ/縮小ジョブの進捗の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` ("S" は大文字) を使用します。
 
 	hive -S -f "<path to the .hql file>"
 	hive -S -e "<Hive queries>"
 
-####Hive コマンド コンソールで Hive クエリを送信する。
+#### Hive コマンド コンソールで Hive クエリを送信する。
 
 ユーザーが Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。たとえば次のようになります。この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。緑色のボックスは、Hive クエリからの出力を強調表示しています。
 
@@ -84,7 +89,7 @@ Hadoop クラスターのヘッド ノードにログインし、ヘッド ノ�
 
 前の例では、画面上に直接 Hive クエリの結果を出力しています。ユーザーは、ヘッド ノードにあるローカル ファイルや Azure BLOB に出力を書き込むこともできます。次に、ユーザーはその他のツールを使用して、ハイブ クエリの出力をさらに分析することができます。
 
-####Hive クエリの結果をローカル ファイルに出力する。 
+**Hive クエリの結果をローカル ファイルに出力する。**
 
 Hive クエリの結果をヘッド ノード上のローカル ディレクトリに出力するには、次のように Hadoop コマンド ラインで Hive クエリを送信する必要があります。
 
@@ -94,7 +99,7 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 ![Create workspace][12]
 
-####Hive クエリの結果を Azure BLOB に出力する
+**Hive クエリの結果を Azure BLOB に出力する**
 
 ユーザーは、Hadoop クラスターの既定のコンテナー内にある Azure BLOB に Hive クエリの結果を出力することもできます。ハイブ クエリは、次のように指定する必要があります。
 
@@ -108,17 +113,20 @@ Azure ストレージ エクスプローラーなどのツールを使用して 
 
 ![Create workspace][14]
 
-###2.Hive エディターまたは Azure の PowerShell コマンドを介して
+###<a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
 
-ユーザーは Web ブラウザーに URL (`https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor`) を入力することで、クエリ コンソール (Hive エディター) を使用することもできます (ログインするために Hadoop クラスターの資格情報を入力するよう求められます)。また、[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)こともできます。
+ユーザーは Web ブラウザーに URL (`https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor`) を入力することで、クエリ コンソール (Hive エディター) を使用することもできます (ログインするために Hadoop クラスターの資格情報を入力するよう求められます)。
+
+###<a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
+
+ユーザーは PowerShell を使用して Hive クエリを送信することもできます。手順については、「[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)」を参照してください。
 
 ## <a name="explore"></a>データ探索、特徴エンジニアリング、Hive パラメーターの調整
 
-このセクションでは、Azure HDInsight Hadoop クラスターのハイブを使用して、data wrangling タスクについて、またハイブ クエリのパフォーマンスを向上させるための一部のハイブ パラメーターの調整に関するより高度なトピックについて説明します。
+このセクションでは、Azure HDInsight Hadoop クラスターの Hive を使用した次のデータ処理タスクについて説明します。
 
 1. [データの探索](#hive-dataexploration)
 2. [特徴の生成](#hive-featureengineering)
-3. [高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる](#tune-parameters)
 
 > [AZURE.NOTE]サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」に従って Hive テーブルにデータをアップロードします。
 
@@ -131,7 +139,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 
 3. カテゴリ列内のレベルを取得する `SELECT  distinct <column_name> from <databasename>.<tablename>`
 
-4. 2 つのカテゴリ列の組み合わせ内のレベル数を取得する `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. 2 つのカテゴリ列の組み合わせ内のレベルの数を取得する `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 
 5. 数値型列の分布を取得する `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 
@@ -165,16 +173,16 @@ Hive テーブルでデータを探索するために使用する、いくつか
 ###<a name="hive-featureengineering"></a>特徴の生成
 
 このセクションでは、ハイブ クエリを使用して機能を生成する方法について説明します。
+  
+1. [頻度ベースの特徴の生成](#hive-frequencyfeature)
+2. [二項分類におけるカテゴリ変数のリスク](#hive-riskfeature)
+3. [[Datetime] フィールドからの特徴の抽出](#hive-datefeature)
+4. [[Text] フィールドからの特徴の抽出](#hive-textfeature)
+5. [GPS 座標間の距離の計算](#hive-gpsdistance)
 
 > [AZURE.NOTE]追加の機能を生成したら、それらの機能を既存のテーブルに列として追加するか、追加の機能と主キーで新しいテーブルを作成します。新しいテーブルは、元のテーブルと結合することができます。
 
-1. [頻度ベースの特徴の生成](#hive-frequencyfeature)
-2. [二項分類におけるカテゴリ変数のリスク](#hive-riskfeature)
-3. [[Datetime] フィールドからの特徴の抽出](#hive-datefeatures)
-4. [[Text] フィールドからの特徴の抽出](#hive-textfeatures)
-5. [GPS 座標間の距離の計算](#hive-gpsdistance)
-
-####<a name="hive-frequencyfeature"></a>頻度ベースの特徴の生成
+####<a name="hive-frequencyfeature"></a> 頻度ベースの特徴の生成
 
 場合によっては、カテゴリ変数のレベルの頻度や複数のカテゴリ変数のレベルの組み合わせの頻度を計算することが重要になります。ユーザーは頻度を計算するのに、次のスクリプトを使用できます。
 
@@ -189,7 +197,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 		order by frequency desc;
 	
 
-####<a name="hive-riskfeature"></a>二項分類におけるカテゴリ変数のリスク
+####<a name="hive-riskfeature"></a> 二項分類におけるカテゴリ変数のリスク
 
 バイナリ分類では、数値以外のレベルを数値のリスクで置き換えることによって、数値以外のカテゴリ変数を数値の機能に変換する必要がある場合があります (一部のモデルでは数値機能しか受け入れられないため)。このセクションでは、カテゴリ変数のリスク値 (ログ オッズ) を計算するいくつかの汎用的なハイブ クエリについて説明します。
 
@@ -212,11 +220,11 @@ Hive テーブルでデータを探索するために使用する、いくつか
 	    	group by <column_name1>, <column_name2>
 	    	)b 
 
-この例では、データから計算されたリスク値をスムースにするため、変数 `smooth_param1` と `smooth_param2` が設定されています。リスクは -Inf と Inf の間の範囲になります。Risks>0 は、ターゲットが 1 に等しいことの確率が 0.5 より大きいことを意味します。
+この例では、データから計算されたリスク値をスムーズにするため、変数 `smooth_param1` と `smooth_param2` が設定されています。リスクは -Inf と Inf の間の範囲になります。Risks>0 は、ターゲットが 1 に等しいことの確率が 0.5 より大きいことを意味します。
 
 リスクのテーブルが計算されると、リスクの値をリスクのテーブルと結合して、リスクの値をテーブルに割り当てることができます。ハイブ結合クエリについては、前のセクションで扱われました。
 
-####<a name="hive-datefeature"></a>[Datetime] フィールドからの特徴の抽出
+####<a name="hive-datefeature"></a> [Datetime] フィールドからの特徴の抽出
 
 ハイブには、日時フィールドを処理するための一連の UDF があります。ハイブでは、既定の日時形式は 'yyyy-MM-dd 00:00:00' (例: '1970-01-01 12:21:32') となります。このセクションでは、日時フィールドから月を抽出し、その月から日を抽出する例を示します。また、既定以外の形式の日時文字列を既定の形式の日時文字列に変換する例も示します。
 
@@ -238,14 +246,14 @@ Hive テーブルでデータを探索するために使用する、いくつか
 このクエリの `hivesampletable` は、Azure HDInsight Hadoop クラスターをプロビジョニングしたときに、すべてのクラスターに既定で付属しています。
 
 
-####<a name="hive-textfeature"></a>[Text] フィールドからの特徴の抽出
+####<a name="hive-textfeature"></a> [Text] フィールドからの特徴の抽出
 
 ハイブ テーブルには、スペースで区切られた単語の文字列で成るテキスト フィールドがあることが想定されています。次のクエリでは、文字列の長さ、および文字列内の単語の数の長さを抽出します。
 
     	select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num 
 		from <databasename>.<tablename>;
 
-####<a name="hive-gpsdistance"></a>GPS 座標間の距離の計算
+####<a name="hive-gpsdistance"></a> GPS 座標間の距離の計算
 
 このセクションで説明されるクエリは、NYC Taxi Trip Data に直接適用できます。このクエリの目的は、機能を生成するために、ハイブの埋め込み数学関数を適用する方法を示すことにあります。
 
@@ -273,11 +281,11 @@ Hive テーブルでデータを探索するために使用する、いくつか
 
 Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions)をご覧ください。
 
-## <a name="tuning"></a>高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
+## <a name="tuning"></a> 高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 
 ハイブ クラスターの既定のパラメーター設定では、ハイブ クエリやクエリが処理するデータに適さない場合があります。このセクションでは、ハイブ クエリのパフォーマンスが向上するようにユーザーが調整できるいくつかのパラメーターについて説明します。ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。
 
-1. Java ヒープ スペース: 大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーとして、**ヒープ領域の不足**があります。これを調整するには、パラメーター `mapreduce.map.java.opts` と `mapreduce.task.io.sort.mb` を必要な値に設定します。たとえば次のようになります。
+1. Java ヒープ スペース: 大規模なデータセットの結合または長いレコードの処理を伴うクエリでは、一般的なエラーとして**ヒープ領域の不足**があります。これを調整するには、パラメーター `mapreduce.map.java.opts` と `mapreduce.task.io.sort.mb` を必要な値に設定します。たとえば次のようになります。
 
 		set mapreduce.map.java.opts=-Xmx4096m;
 		set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -318,4 +326,4 @@ Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.ap
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

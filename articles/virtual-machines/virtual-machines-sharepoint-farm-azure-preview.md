@@ -95,4 +95,4 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

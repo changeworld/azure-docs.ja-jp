@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2015"
+	ms.date="07/15/2015"
 	ms.author="genemi"/>
 
 
@@ -244,4 +244,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 [Subheading 1]: #subheading-1
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

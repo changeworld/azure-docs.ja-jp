@@ -66,4 +66,4 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 - [Azure Automation の Runbook をスケジュール設定する](automation-scheduling-a-runbook.md)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

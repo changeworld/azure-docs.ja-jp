@@ -100,4 +100,4 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックして�
 [6]: ./media/app-service-logic-flatfile-encoder/FlatFileEncoder.XmlToFlatFile.PNG
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

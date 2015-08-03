@@ -186,4 +186,4 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 	Console.WriteLine(channelId);
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

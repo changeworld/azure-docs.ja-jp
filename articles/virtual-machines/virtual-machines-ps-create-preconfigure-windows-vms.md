@@ -3,7 +3,7 @@
 	description="Azure PowerShell を使用して、Windows ベースの Azure 仮想マシンを作成と事前構成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="KBDAzure"
 	manager="timlt"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/10/2015"
-	ms.author="josephd"/>
+	ms.author="kathydav"/>
 
 # Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する
 
@@ -23,7 +23,7 @@
 - [Azure Management Portal](virtual-machines-windows-tutorial-classic-portal.md)
 - [PowerShell](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成と事前構成します。このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
+以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
@@ -184,13 +184,13 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 次の条件で Active Directory ドメイン コントローラーに最初の仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
-- Windows Server 2012 R2 Datacenter イメージを使用する
-- 名前は AZDC1
-- スタンドアロン コンピューターである
-- 20 GB の追加データ ディスク容量
-- 静的 IP アドレスは 192.168.244.4
-- AZDatacenter 仮想ネットワークの BackEnd サブネットに属している
-- Azure-TailspinToys クラウド サービスに属している
+- Windows Server 2012 R2 Datacenter イメージを使用する。
+- 名前は AZDC1。
+- スタンドアロン コンピューターである。
+- 20 GB の追加データ ディスク容量。
+- 静的 IP アドレスは 192.168.244.4。
+- AZDatacenter 仮想ネットワークの BackEnd サブネットに属している。
+- Azure-TailspinToys クラウド サービスに属している。
 
 この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。読みやすくするために各ブロックの間に空白行を入れてあります。
 
@@ -221,12 +221,12 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 次の条件で基幹業務サーバー用に仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
-- Windows Server 2012 R2 Datacenter イメージを使用する
-- 名前は LOB1
-- corp.contoso.com ドメインのメンバーである
-- 200 GB の追加データ ディスク容量
-- AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している
-- Azure-TailspinToys クラウド サービスに属している
+- Windows Server 2012 R2 Datacenter イメージを使用する。
+- 名前は LOB1。
+- corp.contoso.com ドメインのメンバーである。
+- 200 GB の追加データ ディスク容量。
+- AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している。
+- Azure-TailspinToys クラウド サービスに属している。
 
 この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。
 
@@ -256,7 +256,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 
 ## その他のリソース
-
+<!-- For section headings, use sentence-case caps -->
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [Azure 仮想マシンに関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
@@ -268,6 +268,5 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -66,4 +66,4 @@
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

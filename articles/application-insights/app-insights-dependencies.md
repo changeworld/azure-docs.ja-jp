@@ -25,30 +25,35 @@
 すぐに使用できる依存関係の監視は現在、次のものに対して使用できます。
 
 * IIS サーバーまたは Azure で実行されている ASP.NET Web アプリおよびサービス
+* [Java Web アプリ](app-insights-java-agent.md)
 
-Java Web アプリやデバイス アプリなど、それ以外の種類では、TrackDependency API を使用して独自のモニターを作成できます。
+デバイス アプリなど、それ以外の種類では、TrackDependency API を使用して独自のモニターを作成できます。
 
 すぐに使用できる依存関係モニターは現在、次の種類の依存関係の呼び出しを報告します。
 
-* SQL データベース
-* HTTP ベースのバインドを使用する ASP.NET Web および WCF サービス
-* ローカルまたはリモートの HTTP 呼び出し
-* Azure DocumentDb、テーブル、BLOB ストレージ、およびキュー
+* ASP.NET
+ * SQL データベース
+ * HTTP ベースのバインドを使用する ASP.NET Web および WCF サービス
+ * ローカルまたはリモートの HTTP 呼び出し
+ * Azure DocumentDb、テーブル、BLOB ストレージ、およびキュー
+* Java
+ * MySQL、SQL Server、PostgreSQL、SQLite など、[JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバーを使用したデータベースの呼び出し
 
 この場合も、他の依存関係を監視するための独自の SDK 呼び出しを作成できます。
 
-## 依存関係の監視のセットアップ
+## 依存関係の監視をセットアップするには
 
-依存関係の監視を取得するには、次のことをする必要があります。
+ホスト サーバー用に適切なエージェントをインストールします。
 
-* IIS サーバーで[状態モニター](app-insights-monitor-performance-live-website-now.md)を使用し、それを使用して監視を有効にします
-* [Application Insights Extension](../insights-perf-analytics.md) を Azure Web App または VM に追加します。
+プラットフォーム | インストール
+---|---
+IIS サーバー | [Status Monitor](app-insights-monitor-performance-live-website-now.md)
+Azure Web アプリ | [Application Insights Extension](../insights-perf-analytics.md)
+Java Web サーバー | [Java Web アプリ](app-insights-java-agent.md)
 
-(Azure VM では、Azure コントロール パネルから拡張機能のインストールを使用するか、コンピューターで行うのとまったく同じように状態モニターをインストールできます。)
+IIS サーバー用の Status Monitor では、Application Insights SDK を使用してソース プロジェクトをリビルドする必要はありません。
 
-既にデプロイされている Web アプリに対して、上記の手順を実行できます。標準的な依存関係の監視を入手するために、ソース プロジェクトに Application Insights を追加する必要はありません。
-
-## 依存関係のパフォーマンスの問題の診断
+## <a name="diagnosis"></a> 依存関係のパフォーマンスの問題の診断
 
 サーバーでの要求のパフォーマンスを評価するには、次のようにします。
 
@@ -124,4 +129,4 @@ Java Web アプリやデバイス アプリなど、それ以外の種類では�
 
 <!--Link references-->
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

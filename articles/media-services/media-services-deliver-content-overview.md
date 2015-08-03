@@ -205,4 +205,4 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

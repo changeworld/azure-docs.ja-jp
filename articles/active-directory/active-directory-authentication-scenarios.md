@@ -466,4 +466,4 @@ Web アプリケーションは、認証コードを使用して JWT アクセ�
 [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

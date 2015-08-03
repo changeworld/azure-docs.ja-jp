@@ -41,20 +41,20 @@ Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグ�
 
 Hybrid Runbook Worker 用に Azure Automation 環境を準備するには、次の手順を実行します。
 
-#### 1\.Azure Operational Insights ワークスペースを作成する
+#### 1.Azure Operational Insights ワークスペースを作成する
 Azure アカウントに Operational Insights ワークスペースがまだない場合は、「[ワークスペースの設定と設定の管理](../operational-insights-setup-workspace)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
 
-#### 2\.Automation ソリューションを配置する
+#### 2.Automation ソリューションを配置する
 Operational Insights の Automation ソリューションは、Runbook 環境の構成とサポートに必要なコンポーネントをプッシュダウンします。**Azure Automation** パックをインストールする場合は、「[Operational Insights ソリューション](../operational-insights-add-solution)」の手順に従ってください。
 
 ### オンプレミス マシンを構成する
 Hybrid Runbook Worker として動作するオンプレミス マシンごとに、次の手順を実行します。
 
 
-#### 1\.Microsoft 管理エージェントをインストールする
+#### 1.Microsoft 管理エージェントをインストールする
 Microsoft 管理エージェントはコンピューターを Operational Insights に接続し、ソリューションのロジックを実行できるようにします。オンプレミス マシンにエージェントをインストールし、それをOperational Insights に接続する場合は、「[オペレーション インサイトにコンピューターを直接接続する](../operational-insights-direct-agent)」の手順に従ってください。
 
-#### 2\.Runbook 環境をインストールして、Azure Automation に接続する
+#### 2.Runbook 環境をインストールして、Azure Automation に接続する
 コンピューターを Operational Insights に追加すると、Automation ソリューションは、**Add-HybridRunbookWorker** コマンドレットを含む **HybridRegistration** PowerShell モジュールをプッシュダウンします。コンピューターに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行してモジュールをインポートします。
@@ -75,7 +75,7 @@ Microsoft 管理エージェントはコンピューターを Operational Insigh
 - **Token** は、[**キーの管理**] ブレードの [**プライマリ アクセス キー**] です。オートメーション アカウントの [要素] パネルにあるキー アイコンをクリックして、[キーの管理] ブレードを開くことができます。<br><br>![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 
-#### 3\.PowerShell モジュールをインストールする
+#### 3.PowerShell モジュールをインストールする
 Runbook は、Azure Automation 環境にインストールされているモジュールで定義されているアクティビティとコマンドレットをすべて使用できます。これらのモジュールはオンプレミス マシンに自動的に配置されないため、手動でインストールする必要があります。ただし、Azure モジュールは既定でインストールされ、すべての Azure サービスのコマンドレットと Azure Automation のアクティビティにアクセスできます。
 
 Hybrid Runbook Worker 機能の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュールをインストールする必要があります。Windows PowerShell モジュールのインストールについては、「[モジュールのインストール](http://msdn.microsoft.com/library/dd878350.aspx)」を参照してください。
@@ -136,4 +136,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

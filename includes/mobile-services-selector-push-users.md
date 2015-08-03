@@ -9,4 +9,4 @@
 - [(Android | .NET)](../articles/mobile-services-dotnet-backend-android-push-notifications-app-users.md)
 - [(Android | JavaScript)](../articles/mobile-services-javascript-backend-android-push-notifications-app-users.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

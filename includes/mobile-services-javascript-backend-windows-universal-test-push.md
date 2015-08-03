@@ -19,4 +19,4 @@
 
    	![](./media/mobile-services-javascript-backend-windows-universal-test-push/mobile-quickstart-push5-wp8.png)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

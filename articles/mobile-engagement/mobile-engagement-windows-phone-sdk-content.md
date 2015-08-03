@@ -37,4 +37,4 @@
 - `EngagementConfiguration.xml`: モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

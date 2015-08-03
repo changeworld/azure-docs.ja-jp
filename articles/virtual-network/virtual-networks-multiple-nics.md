@@ -43,11 +43,11 @@
 |VM のサイズ (標準的な SKU)|NICの数 (VM ごとに許可される最大数)|
 |---|---|
 |Basic のすべてのサイズ|1|
-|A0\\極小|1|
-|A1\\小|1|
-|A2\\中|1|
-|A3\\大|2|
-|A4\\極大|4|
+|A0\極小|1|
+|A1\小|1|
+|A2\中|1|
+|A3\大|2|
+|A4\極大|4|
 |A5|1|
 |A6|2|
 |A7|4|
@@ -252,4 +252,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 
 - [複数の NIC を持つ VM と Azure での VNet アプライアンス](../multiple-vm-nics-and-network-virtual-appliances-in-azure)の使用について学習してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

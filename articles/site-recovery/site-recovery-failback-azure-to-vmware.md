@@ -77,7 +77,7 @@ vContinuum セットアップをダウンロードするには、[ここ](http:/
 
 ![](./media/site-recovery-failback-azure-to-vmware/image5.png)
 
-3.  CS パスフレーズを指定します。パスフレーズは、CS を登録する際にメモされています。パスフレーズは、MT および PS のデプロイメントでも使用しています。パスフレーズを忘れた場合は、Azure 上の CS サーバーにアクセスすると、C:\\Program Files (x86)\\InMage Systems\\private\\connection.passphrase の下で見つかります。
+3.  CS パスフレーズを指定します。パスフレーズは、CS を登録する際にメモされています。パスフレーズは、MT および PS のデプロイメントでも使用しています。パスフレーズを忘れた場合は、Azure 上の CS サーバーにアクセスすると、C:\Program Files (x86)\InMage Systems\private\connection.passphrase の下で見つかります。
 
     ![](./media/site-recovery-failback-azure-to-vmware/image6.png)
 
@@ -365,7 +365,7 @@ Azure ポータルで仮想マシンの状態をチェックし、フェール�
 
     e.保護対象の VM を識別したら、それらを 1 つずつ選択します。
 
-4.  (既に Azure にフェールオーバーしている) 保護対象の仮想マシンを選択すると、仮想マシンの 2 つのエントリがあるポップアップ ウィンドウが表示されます。これは、CS が、登録されている仮想マシンの 2 つのインスタンスを検出しているためです。オンプレミス VM のエントリを削除して、正しい VM を保護できるようにする必要があります。エントリはコンピューター ホスト名を使用して表示されることに注意してください。ここで、正しい Azure VM エントリを識別するには、Azure VM にログインし、C:\\Program Files (x86)\\Microsoft Azure Site Recovery\\Application Data\\etc にアクセスします。ファイル drscout.conf に、Host ID のエントリがあります。vContinuum のダイアログで、VM で見つかったホスト ID を持つエントリを残します。他のエントリはすべて削除します。
+4.  (既に Azure にフェールオーバーしている) 保護対象の仮想マシンを選択すると、仮想マシンの 2 つのエントリがあるポップアップ ウィンドウが表示されます。これは、CS が、登録されている仮想マシンの 2 つのインスタンスを検出しているためです。オンプレミス VM のエントリを削除して、正しい VM を保護できるようにする必要があります。エントリはコンピューター ホスト名を使用して表示されることに注意してください。ここで、正しい Azure VM エントリを識別するには、Azure VM にログインし、C:\Program Files (x86)\Microsoft Azure Site Recovery\Application Data\etc にアクセスします。ファイル drscout.conf に、Host ID のエントリがあります。vContinuum のダイアログで、VM で見つかったホスト ID を持つエントリを残します。他のエントリはすべて削除します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image22.png)
 
@@ -604,4 +604,4 @@ VM に応じて、次のオプションを設定します。
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

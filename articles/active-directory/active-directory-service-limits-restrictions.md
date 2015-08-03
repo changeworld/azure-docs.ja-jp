@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.date="07/13/2015"
 	ms.author="curtand"/>
 
 # Azure AD サービスの制限と制約
@@ -27,4 +27,4 @@
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD の用語](active-directory-terminology.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

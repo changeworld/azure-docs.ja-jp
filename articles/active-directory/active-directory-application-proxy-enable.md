@@ -41,7 +41,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 9090 | コネクタの登録に使用されます (コネクタ登録プロセスでのみ必要)。
 9091 | コネクタの信頼証明書の自動更新に使用されます。
  
-ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。また、NT Authority\\System に対しては必ずポート 8080 を有効にしてください。
+ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。また、NT Authority\System に対しては必ずポート 8080 を有効にしてください。
 
 
 ##手順 1: Azure AD でのアプリケーション プロキシの有効化
@@ -70,4 +70,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 * [Azure への組織としてのサインアップ](..sign-up-organization.md)
 * [Azure ID](..fundamentals-identity.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

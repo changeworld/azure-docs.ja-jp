@@ -72,4 +72,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

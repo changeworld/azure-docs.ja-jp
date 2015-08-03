@@ -8,14 +8,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/27/2015"
-	ms.author="trinadhk"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/17/2015" ms.author="trinadhk"; "jimpark"/>
 
 # 仮想マシンの復元
 復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
@@ -34,11 +27,11 @@
 
 ## 回復ポイントを選択する
 
-1. **[回復ポイントの選択]** 画面で、最新の回復ポイントまたは以前の特定の時点から復元できます。ウィザードが開いたときに選択されている既定のオプションは、最新の回復ポイントです。
+1. **[回復ポイントの選択]** 画面で、最新の回復ポイントまたは以前の特定の時点から復元できます。ウィザードが開いたときに選択されている既定のオプションは、*最新の回復ポイント*です。
 
     ![回復ポイントを選択する](./media/backup-azure-restore-vms/select-recovery-point.png)
 
-2. 以前の特定の時点を選択するには、ドロップダウン リストで **[日付の選択]** オプションを選択し、カレンダー アイコンをクリックしてカレンダー コントロールから日付を選択します。コントロール内の回復ポイントが設定されているすべての日付は、淡い灰色の網掛けで表示され、選択可能です。
+2. 以前の特定の時点を選択するには、ドロップダウン リストで **[日付の選択]** オプションを選択し、**カレンダー アイコン**をクリックしてカレンダー コントロールから日付を選択します。コントロール内の回復ポイントが設定されているすべての日付は、淡い灰色の網掛けで表示され、選択可能です。
 
     ![日付を選択する](./media/backup-azure-restore-vms/select-date.png)
 
@@ -55,9 +48,9 @@
   - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure バックアップからデータを復元します。
   - 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
 
-        Whatever cloud service name is picked should be globally unique. Typically, the cloud service name gets associated with a public-facing URL in the form of [cloudservice].cloudapp.net. Azure will not allow you to create a new cloud service if the name has already been used. If you choose to create select create a new cloud service, it will be given the same name as the virtual machine – in which case the VM name picked should be unique enough to be applied to the associated cloud service.
+        クラウド サービス名はグローバルに見て一意なものを選びます。一般にクラウド サービス名は、[cloudservice].cloudapp.net の形式の対外的な URL と関連付けられます。Azure では、新しいクラウドの名前がすでに使用されていると、クラウド サービスを作成できません。新しいクラウド サービスを作成する場合、選択された VM 名が関連クラウド サービスに適用できる一意の名前の場合には、仮想マシンと同じ名前が指定されます
 
-        We only display cloud services and virtual networks that are not associated with any affinity groups in the restore instance details. [Learn More](https://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx).
+        Azure では、リストア インスタンス詳細のどのアフィニティ グループに関連付けられていないクラウド サービスと仮想ネットワークのみが表示されます。[詳細](https://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx).
 
 2. 仮想マシンのストレージ アカウントを選択する: これは仮想マシンを作成するために必須です。Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
 
@@ -71,7 +64,7 @@
 
     ![仮想ネットワークを作成する](./media/backup-azure-restore-vms/restore-cs-vnet.png)
 
-4. サブネットを選択する: VNET にサブネットがある場合、既定では最初のサブネットが選択されます。ドロップダウン リストのオプションから、任意のサブネットを選択します。サブネットの詳細については、[ポータルのホーム ページ](https://manage.windowsazure.com/)の [Networks] 拡張機能から [Virtual Networks] に移動し、仮想ネットワークを選択して、[構成] をドリルダウンしてサブネットの詳細を表示します。
+4. サブネットを選択する: VNET にサブネットがある場合、既定では最初のサブネットが選択されます。ドロップダウン リストのオプションから、任意のサブネットを選択します。サブネットの詳細については、[ポータルのホーム ページ](https://manage.windowsazure.com/)の [Networks] 拡張機能から **[Virtual Networks]** に移動し、仮想ネットワークを選択して、[構成] をドリルダウンしてサブネットの詳細を表示します。
 
     ![サブネットを選択する](./media/backup-azure-restore-vms/select-subnet.png)
 
@@ -102,6 +95,4 @@
 ## 次のステップ
 - [仮想マシンの管理](backup-azure-manage-vms)
 
- 
-
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -111,7 +111,7 @@ Azure 証明書の詳細については、「[Azure の証明書の概要](http:
 - 米国西部
 - 米国東部
 
-この後のコード例では、場所を文字列としてメソッドに渡しています。ただし、<code>WindowsAzure\\ServiceManagement\\Models\\Locations</code> クラスを使用して、場所を列挙型として渡すこともできます。たとえば、場所を受け取るメソッドに "米国西部" を渡す代わりに、<code>Locations::WEST_US</code> を渡すことができます。
+この後のコード例では、場所を文字列としてメソッドに渡しています。ただし、<code>WindowsAzure\ServiceManagement\Models\Locations</code> クラスを使用して、場所を列挙型として渡すこともできます。たとえば、場所を受け取るメソッドに "米国西部" を渡す代わりに、<code>Locations::WEST_US</code> を渡すことができます。
 
 ## 方法: クラウド サービスの作成
 
@@ -558,4 +558,4 @@ Azure には、2 つの展開環境が用意されています。ステージン
 
 [Windows Azure サービスの構成スキーマ (.cscfg ファイル)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

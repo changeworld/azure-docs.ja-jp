@@ -140,4 +140,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

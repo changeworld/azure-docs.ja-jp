@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure ストレージを使用した SQL Server のバックアップと復元の方法 | Azure" 
-	description="SQL Server および SQL Database を Azure Storage にバックアップします。SQL データベースを Azure ストレージにバックアップすることのメリットについて、また SQL Server および Azure Storage のどのコンポーネントが必要かについて説明します。" 
-	services="sql-database, virtual-machines" 
-	documentationCenter="" 
-	authors="jeffgoll" 
-	manager="jeffreyg" 
+<properties
+	pageTitle="Azure ストレージを使用した SQL Server のバックアップと復元の方法 | Azure"
+	description="SQL Server および SQL Database を Azure Storage にバックアップします。SQL データベースを Azure ストレージにバックアップすることのメリットについて、また SQL Server および Azure Storage のどのコンポーネントが必要かについて説明します。"
+	services="sql-database, virtual-machines"
+	documentationCenter=""
+	authors="carlrabeler"
+	manager="jeffreyg"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/06/2015" 
-	ms.author="jeffreyg"/>
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="vm-windows-sql-server"
+	ms.topic="article"
+	ms.date="07/16/2015"
+	ms.author="carlrab"/>
 
 
 
@@ -43,7 +43,7 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 
 ストレージ アカウントを作成して単純な復元を実行する詳細なチュートリアルについては、「[Windows Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/?LinkId=271615)」を参照してください。
 
-## Azure BLOB ストレージ サービスのコンポーネント 
+## Azure BLOB ストレージ サービスのコンポーネント
 
 * ストレージ アカウント: ストレージ アカウントはすべてのストレージ サービスの出発点となります。Azure BLOB ストレージ サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。ストレージ アカウントの名前とアクセス キー プロパティが Azure BLOB ストレージ サービスとそのコンポーネントに対する認証に必要です。Azure BLOB ストレージ サービスの詳細については、「[How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](http://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)」を参照してください。
 
@@ -69,17 +69,7 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 [チュートリアル: Windows Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/?LinkID=271615 "チュートリアル")
 
 **ベスト プラクティス、トラブルシューティング:**
-	
+
 [バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](http://go.microsoft.com/fwlink/?LinkId=272394)
 
-
-
-
-	
-
-
-
-
- 
-
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

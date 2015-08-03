@@ -241,4 +241,4 @@ Python Tools for Visual Studio、Flask および MongoDB の詳細について�
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

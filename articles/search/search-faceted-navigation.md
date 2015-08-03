@@ -372,4 +372,4 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

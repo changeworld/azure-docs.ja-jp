@@ -76,4 +76,4 @@ $healthServiceSettings.ReloadConfiguration()
 
 - [プロキシとファイアウォール設定の構成 (省略可能)](operational-insights-proxy-firewall.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

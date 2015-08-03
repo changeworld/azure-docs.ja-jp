@@ -135,4 +135,4 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [17MyPage]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

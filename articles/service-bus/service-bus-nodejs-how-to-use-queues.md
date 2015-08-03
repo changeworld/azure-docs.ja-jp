@@ -32,7 +32,7 @@ Azure Service Bus を使用するには、Node.js azure パッケージをダウ
 
 ### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  **Windows PowerShell for Node.js** コマンド ウィンドウを使用して、サンプル アプリケーションを作成した **c:\\node\\sbqueues\\WebRole1** フォルダーに移動します。
+1.  **Windows PowerShell for Node.js** コマンド ウィンドウを使用して、サンプル アプリケーションを作成した **c:\node\sbqueues\WebRole1** フォルダーに移動します。
 
 2.  コマンド ウィンドウに「**npm install azure**」と入力すると、次のような出力が生成されます。
 
@@ -190,4 +190,4 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

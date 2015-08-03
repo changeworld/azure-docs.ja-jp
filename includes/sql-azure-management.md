@@ -166,4 +166,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
         GROUP BY query_stats.query_hash
         ORDER BY 2 DESC;
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

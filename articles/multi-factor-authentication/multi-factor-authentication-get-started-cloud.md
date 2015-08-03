@@ -22,7 +22,7 @@
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-cloud/cloud2.png)</center>
 
-クラウドで多要素認証を使用することを決めたので、早速開始してみましょう。 Multi-Factor Authentication for Office 365 または Multi-Factor Authentication for Azure Administrators を使用している場合、手順 3 にスキップできます。
+クラウドで多要素認証を使用することを決めたので、早速開始してみましょう。 Multi-Factor Authentication for Office 365 または Multi-Factor Authentication for Azure Administrators を使用している場合、手順 3 にスキップできます。また、このドキュメントでは、次に取り組みます。
 
 
 1. **Azure サブスクリプションへのサインアップ**
@@ -156,4 +156,4 @@ Windows PowerShell を使用してユーザーの状態を変更するには、�
 ## 次のステップ
 クラウドでの多要素認証のセットアップが完了したので、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」に移動して次の手順に移動できます。 そこでは、レポート、不正行為のアラート、音声メッセージのカスタマイズ、および Azure Multi-Factor Authentication が提供するすべての機能について学びます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -401,4 +401,4 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Flask のドキュメント]: http://flask.pocoo.org/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

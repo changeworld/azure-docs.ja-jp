@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/23/2015" 
+	ms.date="07/15/2015" 
 	ms.author="selcint"/>
 
 # Azure SQL Database と Azure VM 内の SQL Server について
@@ -186,9 +186,9 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 ###<a name="market"></a>製品化に要する時間
 
-**Azure SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。開発者がデータベースに関連するタスクを理解し構成しやすくなります。たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell のコマンドレット](http://msdn.microsoft.com/library/azure/dn546726.aspx)を使用して、数千のデータベースの管理の操作を自動化し、管理できます。クラウドを柔軟にスケーリングすることで、アプリケーション層に容易に専念し、アプリケーションをより早く市場に提供できます。
+**Azure SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。開発者がデータベースに関連するタスクを理解し構成しやすくなります。たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell のコマンドレット](http://msdn.microsoft.com/library/azure/dn546726.aspx)を使用して、数千のデータベースの管理の操作を自動化し、管理できます。クラウドの[エラスティック スケール](sql-database-elastic-pool.md)機能を活用することで、容易にアプリケーション層に専念し、アプリケーションをより早く市場に提供できます。
 
-**Azure VM 内で実行される SQL Server** は、既存および新規のアプリケーションで SQL Server インスタンスのすべての機能に対するアクセスと制御が必要な場合や、既存の内部設置型アプリケーションとデータベースをクラウドにそのまま移行する場合に最適です。プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。代わりに、VM へのソリューションのすべてのパッケージの移行と、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](http://msdn.microsoft.com/library/azure/dn133149.aspx)」を参照してください。
+**Azure VM 内で実行される SQL Server** は、既存および新規のアプリケーションで SQL Server インスタンスのすべての機能に対するアクセスと制御が必要な場合や、既存の内部設置型アプリケーションとデータベースをクラウドにそのまま移行する場合に最適です。プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。代わりに、VM へのソリューションのすべてのパッケージの移行と、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](http://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。
 
 ##<a name="summary"></a>概要
 
@@ -198,7 +198,7 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 次の場合、**Azure SQL Database** を選択します。
 
-- クラウド ベースの新しいアプリケーションを構築している場合。または、既存の SQL Server データベースを Azure に移行する必要があり、そのデータベースが Azure SQL Database のサポートしていない機能を使用していない場合。詳細については、「[Azure SQL Database Transact-SQL リファレンス](http://msdn.microsoft.com/library/azure/ee336281.aspx)」を参照してください。この方法では、完全に管理されたクラウド サービスの利点が生かされ、製品化に要する時間が確実に短縮されます。
+- クラウド ベースの新しいアプリケーションを構築している場合。または、既存の SQL Server データベースを Azure に移行する必要があり、そのデータベースが Azure SQL Database のサポートしていない機能を使用していない場合。詳細については、「[Azure SQL Database Transact-SQL リファレンス](http://msdn.microsoft.com/library/azure/ee336281.aspx)」をご覧ください。この方法では、完全に管理されたクラウド サービスの利点が生かされ、製品化に要する時間が確実に短縮されます。
 
 - マイクロソフトのサービスを利用して、データベースで一般的な管理操作を実行し、データベースの可用性の SLA を強化する場合。この方法は、管理コストを最小限に抑えることができ、同時にデータベースの可用性を確保します。
 
@@ -208,13 +208,16 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 - 既存の IT リソースがあるため、SQL Server で完全な管理者権限が必要であり、内部設置型 SQL Server との完全な互換性を必要とする場合 (たとえば、一部の機能が Azure SQL Database に存在しない)。この方法では、ほとんどのアプリケーションを柔軟に実行できることで、既存のアプリケーションの開発や変更のコストを最小限に抑えることができます。また、VM、オペレーティング システム、データベースの構成を完全に制御できます。
 
+> [AZURE.NOTE]- SQL Server 2016 CTP2 を試してみますか? Microsoft Azure にサインアップし、[ここ](http://aka.ms/sql2016vm "ここ")に移動して、SQL Server 2016 CTP2 が既にインストールされている仮想マシンにサインアップします。
+
+
 ##<a name="ack"></a>謝辞
 
 この記事は Microsoft Cloud およびエンタープライズ コンテンツ サービスのグループに帰属し、Microsoft コミュニティ内の多くのユーザーの協力の元に作成されました。
 
-**著者**: Selcin Turkarslan
+**著者:** Selcin Turkarslan
 
-**技術寄稿者**: Conor Cunningham
+**技術寄稿者:** Conor Cunningham
 
 **技術校閲者:** Joanne Marone (Hodgins)、Karthika Raman、Lindsey Allen、Lori Clark、Luis Carlos Vargas Herring、Nosheen Syed Wajahatulla Hussain、Pravin Mittal、Shawn Bice、Silvano Coriani、Tony Petrossian、Tracy Daugherty
 
@@ -250,4 +253,4 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 [1]: ./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

@@ -52,7 +52,7 @@ API Apps は、REST ベースの Web Api を開発、デプロイ、発行、使
 
 - **パブリックおよびプライベートのマーケットプレース** - [Azure Marketplace](http://azure.microsoft.com/marketplace/) は、マイクロソフトやサード パーティによって開発された事前にパッケージ済みの API アプリを簡単に見つけて、自分の Azure サブスクリプションにデプロイできるようになります。また、独自に開発した API アプリをパッケージ化して発行できるようになるため、他の開発者はこの API を自らの Azure サブスクリプションにデプロイできます。Azure Marketplace に独自の API を発行するときに、組織の他のメンバーにのみ表示されるようにできるようになります。 
 
-- **依存関係の自動デプロイ** - Marketplace から Azure サブスクリプションに API アプリをデプロイすると、Azure によって依存する API アプリが自動的にデプロイされ、必要なリソースが作成されるようになる予定です。依存する API アプリと必要な Azure のリソースは、API アプリのパッケージによって指定されます。
+- **依存関係の自動デプロイメント** - Marketplace から Azure サブスクリプションに API アプリをデプロイすると、Azure によって依存する API アプリが自動的にデプロイされ、必要なリソースが作成されるようになる予定です。依存する API アプリと必要な Azure のリソースは、API アプリのパッケージによって指定されます。
 
 - **自動更新** - 共有したいずれかの API アプリ パッケージのコードを更新するときに、API アプリをインストールしたユーザーと実行しているユーザー全員に更新プログラムをプッシュできるようになります。これは、重大でない変更の場合に、更新プログラムの受信をオプトインしているユーザーに機能します。
 
@@ -70,10 +70,10 @@ API Apps は、REST ベースの Web Api を開発、デプロイ、発行、使
 
 API アプリの使用を開始するには、[API アプリの作成に関するチュートリアル](app-service-dotnet-create-api-app.md)に従ってください。
 
-API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/en-US/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
+API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/ja-jp/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

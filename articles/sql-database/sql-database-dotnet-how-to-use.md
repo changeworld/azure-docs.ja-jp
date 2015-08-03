@@ -211,4 +211,4 @@ Entity Framework を使用することで、開発者は、リレーショナル
 これで、SQL Database への接続の基本を学習できました。「[Azure SQL データベース開発:操作方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)」をご覧ください。
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

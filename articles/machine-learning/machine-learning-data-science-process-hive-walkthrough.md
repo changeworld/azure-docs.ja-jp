@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="Advanced Analytics Process and Technology の活用: Hadoop クラスターを使用する | Microsoft Azure" 
 	description="HDInsight Hadoop クラスターを使用したエンド ツー エンドのシナリオで Advanced Analytics Process and Technology (ADAPT) を使用し、公開されているデータセットを使ってモデルを作成してデプロイします。"  
-	services="machine-learning,hdinsight"
+	services="machine-learning,hdinsight" 
+	solutions="" 
 	documentationCenter="" 
 	authors="bradsev" 
 	manager="paulettm" 
@@ -23,7 +24,7 @@
 
 HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「[Advanced Analytics Process and Technology の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)」をご覧ください。
 
-iPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。この方法を試してみたい方は、「[Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)」のトピックをご覧ください。
+IPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。この方法を試してみたい方は、「[Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)」のトピックをご覧ください。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
@@ -809,4 +810,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

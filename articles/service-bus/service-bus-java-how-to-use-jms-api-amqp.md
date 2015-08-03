@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.date="07/21/2015" 
 	ms.author="sethm"/>
 
 
@@ -50,104 +50,65 @@ Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョ
 
 JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名と物理名が関連付けられます。2 種類の JMS オブジェクト、ConnectionFactory および Destination が JNDI を使用して解決されます。JNDI で使用されるプロバイダー モデルでは、さまざまなディレクトリ サービスに接続して、名前解決のタスクを処理できます。Apache Qpid JMS AMQP 1.0 ライブラリには、次の形式のプロパティ ファイルを使用して構成されるシンプルなプロパティ ファイル ベースの JNDI Provider が付属しています。
 
-	# servicebus.properties - sample JNDI configuration
+```
+# servicebus.properties - sample JNDI configuration
 	
-	# Register a ConnectionFactory in JNDI using the form:
-	# connectionfactory.[jndi_name] = [ConnectionURL]
-	connectionfactory.SBCF = amqps://[username]:[password]@[namespace].servicebus.windows.net
+# Register a ConnectionFactory in JNDI using the form:
+# connectionfactory.[jndi_name] = [ConnectionURL]
+connectionfactory.SBCF = amqps://[username]:[password]@[namespace].servicebus.windows.net
 	
-	# Register some queues in JNDI using the form
-	# queue.[jndi_name] = [physical_name]
-	# topic.[jndi_name] = [physical_name]
-	queue.QUEUE = queue1
-
+# Register some queues in JNDI using the form
+# queue.[jndi_name] = [physical_name]
+# topic.[jndi_name] = [physical_name]
+queue.QUEUE = queue1
+```
 
 #### ConnectionFactory の構成
 
 Qpid Properties File JNDI Provider で **ConnectionFactory** の定義に使用するエントリは、次のような形式になります。
 
-	connectionfactory.[jndi_name] = [ConnectionURL]
+```
+connectionfactory.[jndi_name] = [ConnectionURL]
+```
 
-ここで、[jndi_name] と [ConnectionURL] には次の意味があります。
+ここで、**[jndi_name]** と **[ConnectionURL]** には次の意味があります。
 
-<table>
-  <tr>
-    <td>[jndi_name]</td>
-    <td>ConnectionFactory の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。</td>
-  </tr>
-  <tr>
-    <td>[ConnectionURL]</td>
-    <td>AMQP ブローカーに必要な情報を JMS ライブラリに渡すための URL。</td>
-  </tr>
-</table>
+- **[jndi_name]**: ConnectionFactory の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
+- **[ConnectionURL]**: AMQP ブローカーに必要な情報を JMS ライブラリに渡すための URL。
 
 **ConnectionURL** の形式は次のようになります。
 
-	amqps://[username]:[password]@[namespace].servicebus.windows.net
+```
+amqps://[username]:[password]@[namespace].servicebus.windows.net
+```
+ここで、**[namespace]**、**[username]**、**[password]** には次の意味があります。
 
-ここで、[namespace]、[username]、[password] には次の意味があります。
+- **[namespace]**: Service Bus 名前空間。
+- **[username]**: Service Bus 発行者名。
+- **[password]**: Service Bus 発行者キーの URL エンコード形式。
 
-<table>
-  <tr>
-    <td>[namespace]</td>
-    <td>Azure 管理ポータルから取得したサービス バス名前空間。</td>
-  </tr>
-  <tr>
-    <td>[username]</td>
-    <td>Azure 管理ポータルから取得したサービス バス発行者名。</td>
-  </tr>
-  <tr>
-    <td>[password]</td>
-    <td>Azure 管理ポータルから取得したサービス バス発行者キーの URL エンコード形式。</td>
-  </tr>
-</table>
-
-**注**: パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
-
-たとえば、Azure 管理ポータルから取得した情報は次のようになります。
-
-<table>
-  <tr>
-    <td>名前空間:</td>
-    <td>foo.servicebus.windows.net</td>
-  </tr>
-  <tr>
-    <td>発行者名:</td>
-    <td>owner</td>
-  </tr>
-  <tr>
-    <td>発行者キー:</td>
-    <td>j9VYv1q33Ea+cbahWsHFYnLkEzrF0yA5SAqcLNvU7KM=</td>
-  </tr>
-</table>
-
-次に、「SBCF」という名前の **ConnectionFactory** を定義するには、構成文字列は次のようになります。
-
-	connectionfactory.SBCF = amqps://owner:j9VYv1q33Ea%2BcbahWsHFYnLkEzrF0yA5SAqcLNvU7KM%3D@foo.servicebus.windows.net
+> [AZURE.NOTE]パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
 #### 送信先の構成
 
 Qpid Properties File JNDI Provider で送信先の定義に使用するエントリは、次のような形式になります。
 
-	queue.[jndi_name] = [physical_name]
+```
+queue.[jndi_name] = [physical_name]
+```
+
 または
 
-	topic.[jndi_name] = [physical_name]
+```
+topic.[jndi_name] = [physical_name]
+```
 
-ここで、[jndi_name] と [physical_name] には次の意味があります。
+ここで、**[jndi_name]** と **[physical_name]** には次の意味があります。
 
-<table>
-  <tr>
-    <td>[jndi_name]</td>
-    <td>送信先の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。</td>
-  </tr>
-  <tr>
-    <td>[physical_name]</td>
-    <td>アプリケーションでメッセージの送信または受信に使用するサービス バス エンティティの名前。</td>
-  </tr>
-</table>
+- **[jndi_name]**: 送信先の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
+- **[physical_name]**: アプリケーションでのメッセージの送受信に使用する Service Bus エンティティの名前。
 
-**注**: Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[サービス バス AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
+> [AZURE.NOTE]Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[サービス バス AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
 
 ### JMS アプリケーションの記述
 
@@ -157,10 +118,12 @@ JMS とサービス バスの使用時に必要になる特殊な API やオプ�
 
 JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。ハッシュ テーブル内の 2 つの必須の要素は Initial Context Factory と Provider URL です。次のコードでは、Qpid Properties File JNDI Provider と、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
 
-	Hashtable<String, String> env = new Hashtable<String, String>(); 
-	env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
-	env.put(Context.PROVIDER_URL, "servicebus.properties"); 
-	InitialContext context = new InitialContext(env); 
+```
+Hashtable<String, String> env = new Hashtable<String, String>(); 
+env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
+env.put(Context.PROVIDER_URL, "servicebus.properties"); 
+InitialContext context = new InitialContext(env);
+``` 
 
 ### Service Bus キューを使用するシンプルな JMS アプリケーション
 
@@ -265,18 +228,20 @@ JNDI 環境を構成するには、構成情報のハッシュ テーブルを j
 
 このアプリケーションを実行すると、次の形式の出力が生成されます。
 
-	> java SimpleSenderReceiver
-	Press [enter] to send a message. Type 'exit' + [enter] to quit.
+```
+> java SimpleSenderReceiver
+Press [enter] to send a message. Type 'exit' + [enter] to quit.
 	
-	Sent message with JMSMessageID = ID:2867600614942270318
-	Received message with JMSMessageID = ID:2867600614942270318
+Sent message with JMSMessageID = ID:2867600614942270318
+Received message with JMSMessageID = ID:2867600614942270318
 	
-	Sent message with JMSMessageID = ID:7578408152750301483
-	Received message with JMSMessageID = ID:7578408152750301483
+Sent message with JMSMessageID = ID:7578408152750301483
+Received message with JMSMessageID = ID:7578408152750301483
 	
-	Sent message with JMSMessageID = ID:956102171969368961
-	Received message with JMSMessageID = ID:956102171969368961
-	exit
+Sent message with JMSMessageID = ID:956102171969368961
+Received message with JMSMessageID = ID:956102171969368961
+exit
+```
 
 ## JMS と .NET の間のクロスプラットフォーム メッセージング
 
@@ -297,21 +262,25 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 
 #### JMS アプリケーションの出力
 
-	> java SimpleSenderReceiver sendonly
-	Press [enter] to send a message. Type 'exit' + [enter] to quit.
-	Sent message with JMSMessageID = ID:4364096528752411591
-	Sent message with JMSMessageID = ID:459252991689389983
-	Sent message with JMSMessageID = ID:1565011046230456854
-	exit
+```
+> java SimpleSenderReceiver sendonly
+Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Sent message with JMSMessageID = ID:4364096528752411591
+Sent message with JMSMessageID = ID:459252991689389983
+Sent message with JMSMessageID = ID:1565011046230456854
+exit
+```
 
 #### .NET アプリケーションの出力
 
-	> SimpleSenderReceiver.exe	
-	Press [enter] to send a message. Type 'exit' + [enter] to quit.
-	Received message with MessageID = 4364096528752411591
-	Received message with MessageID = 459252991689389983
-	Received message with MessageID = 1565011046230456854
-	exit
+```
+> SimpleSenderReceiver.exe	
+Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Received message with MessageID = 4364096528752411591
+Received message with MessageID = 459252991689389983
+Received message with MessageID = 1565011046230456854
+exit
+```
 
 ### .NET から JMS
 
@@ -324,22 +293,25 @@ JMS から .NET のメッセージングを試してみるには、次の手順�
 
 #### .NET アプリケーションの出力
 
-	> SimpleSenderReceiver.exe sendonly
-	Press [enter] to send a message. Type 'exit' + [enter] to quit.
-	Sent message with MessageID = d64e681a310a48a1ae0ce7b017bf1cf3	
-	Sent message with MessageID = 98a39664995b4f74b32e2a0ecccc46bb
-	Sent message with MessageID = acbca67f03c346de9b7893026f97ddeb
-	exit
-
+```
+> SimpleSenderReceiver.exe sendonly
+Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Sent message with MessageID = d64e681a310a48a1ae0ce7b017bf1cf3	
+Sent message with MessageID = 98a39664995b4f74b32e2a0ecccc46bb
+Sent message with MessageID = acbca67f03c346de9b7893026f97ddeb
+exit
+```
 
 #### JMS アプリケーションの出力
 
-	> java SimpleSenderReceiver	
-	Press [enter] to send a message. Type 'exit' + [enter] to quit.
-	Received message with JMSMessageID = ID:d64e681a310a48a1ae0ce7b017bf1cf3
-	Received message with JMSMessageID = ID:98a39664995b4f74b32e2a0ecccc46bb
-	Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
-	exit
+```
+> java SimpleSenderReceiver	
+Press [enter] to send a message. Type 'exit' + [enter] to quit.
+Received message with JMSMessageID = ID:d64e681a310a48a1ae0ce7b017bf1cf3
+Received message with JMSMessageID = ID:98a39664995b4f74b32e2a0ecccc46bb
+Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
+exit
+```
 
 ## サポートされていない機能および制限
 
@@ -366,4 +338,4 @@ JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限�
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

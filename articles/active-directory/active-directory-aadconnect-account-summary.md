@@ -33,7 +33,7 @@ Azure AD Connect のウィザードには次の 2 つの別の設定からアク
 ウィザード ページ | 収集される資格情報 | 必要なアクセス許可| 用途 
 ------------- | ------------- |------------- |------------- |
 Azure AD に接続| Azure AD ディレクトリの資格情報 | Azure AD でのグローバル管理者ロール | <li>Azure AD ディレクトリの同期を有効にします。</li> <li>Azure AD で進行中の同期操作に使用する Azure AD アカウントを作成します。</li>
-AD DS に接続 | オンプレミスの Active Directory の資格情報 | Active Directory 内の Enterprise Admins (EA) グループのメンバー| <li>進行中の同期操作でローカル AD からオブジェクトと属性を読み取るために使用するローカル AD アカウントを作成します。</li> <li>同期とパスワード同期に必要な適切なアクセス許可と Access Control 設定を、上記のアカウントと AD に割り当てます。</li> 
+AD DS に接続 | オンプレミスの Active Directory の資格情報 | Active Directory 内の Enterprise Admins (EA) グループのメンバー| ローカルの AD コネクタのアカウント、つまり同期に必要なディレクトリ情報を読み書きするアカウントとして使用されます。
 該当なし|ウィザードを実行しているユーザーのログオン資格情報| ローカル サーバーの管理者|ウィザードで、ローカル マシンの同期サービス ログオン アカウントとして使用する AD アカウントを作成します。
 
 <br> <br>
@@ -90,4 +90,4 @@ AD FS:GMSA アカウント (aadcsvc$)|ドメイン ユーザー|FS サービス 
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

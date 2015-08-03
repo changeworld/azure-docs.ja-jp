@@ -13,10 +13,253 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="07/16/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory リリース ノート
+
+## Data Factory の 2015 年 7 月 17 日リリース ノート
+2015 年 7 月リリースの Azure PowerShell では、次の JSON の変更が導入されています。
+
+## リンクされているサービス、テーブル、およびアクティビティの種類の更新
+リソースの種類 | JSON での現在の名前 | JSON での新しい名前
+------------- | -------------------- | ----------------
+リンクされているサービス (データ ソース) | AzureSqlLinkedService | AzureSqlDatabase
+リンクされているサービス (データ ソース) | AzureStorageLinkedService | AzureStorage
+リンクされているサービス (データ ソース) | DocumentDbLinkedService | DocumentDb
+リンクされているサービス (データ ソース) | OnPremisesFileSystemLinkedService | OnPremisesFileServer
+リンクされているサービス (データ ソース) | OnPremisesOracleLinkedService | OnPremisesOracle
+リンクされているサービス (データ ソース) | OnPremisesSqlLinkedService | OnPremisesSqlServer
+リンクされているサービス (データ ソース) | OnPremisesMySqlLinkedService | OnPremisesMySql
+リンクされているサービス (データ ソース) | OnPremisesDb2LinkedService | OnPremisesDb2
+リンクされているサービス (データ ソース) | OnPremisesTeradataLinkedService | OnPremisesTeradata
+リンクされているサービス (データ ソース) | OnPremisesSybaseLinkedService | OnPremisesSybase
+リンクされているサービス (データ ソース) | OnPremisesPostgreSqlLinkedService | OnPremisesPostgreSql
+リンクされているサービス (コンピューティング) | AzureMlLinkedService | AzureML
+リンクされているサービス (コンピューティング) | HDInsightBYOCLinkedService | HDInsight
+リンクされているサービス (コンピューティング) | HDInsightOnDemandLinkedService | HDInsightOnDemand
+リンクされているサービス (コンピューティング) | AzureBatchLinkedService | AzureBatch
+Dataset | AzureBlobLocation | AzureBlob
+Dataset | AzureTableLocation | AzureTable
+Dataset | AzureSqlTableLocation | AzureSqlTable
+Dataset | DocumentDbCollectionLocation | DocumentDbCollection 
+Dataset | OnPremisesFileSystemLocation | FileShare
+Dataset | OnPremisesOracleTableLocation | OracleTable
+Dataset | OnPremisesSqlServerTableLocation | SqlServerTable
+Dataset | RelationTableLocation | RelationalTable
+アクティビティ | CopyActivity | コピー
+アクティビティ | HDInsightActivity (Hive 変換) | HDInsightHive
+アクティビティ | HDInsightActivity (Pig 変換) | HDInsightPig
+アクティビティ | HDInsightActivity (MapReduce 変換) | HDInsightMapReduce
+アクティビティ | HDInsightActivity (ストリーミング) | HDInsightHadoopStreaming
+アクティビティ | AzureMLBatchScoringActivity | AzureMLBatchScoring
+アクティビティ | StoredProcedureActivity | SqlServerStoredProcedure
+
+## 新しい typeProperties 要素
+新しい **typeProperties** 要素には、リンクされているサービス/テーブル/アクティビティの型固有のプロパティが含まれています。
+
+### 古いリンクされたサービスの JSON
+	{
+	    "name": "StorageLinkedService",
+	    "properties":
+	    {
+	        "type": "AzureStorageLinkedService",
+	        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>" "
+	    }
+	}
+
+### 新しいリンクされたサービスの JSON
+	{
+	  "name": "StorageLinkedService",
+	  "properties": {
+	    "type": "AzureStorage",
+	    "typeProperties": {
+	      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<Account key>"
+	    }
+	  }
+	}
+
+以下の点に注意してください。
+
+- **type** プロパティは 1 レベル上に移動し、**AzureStorage** (**AzureStorageLinkedService** から **AzureStorage** に変更) に設定されます。 
+- 新しい **typeProperties** 要素には、Azure Storage のリンクされているサービスでサポートされるプロパティを含みます (この例では **connectionString**)。  
+
+### 古いデータセットの JSON
+	{
+	    "name": "EmpTable",
+	    "properties":
+	    {
+	        "location":
+	        {
+	            "type": "AzureTableLocation",
+	            "tableName": "myazuretable",
+	            "linkedServiceName": "MyLinkedService"
+	        },
+	        "availability":
+	        {
+	            "frequency": "Hour",
+	            "interval": 1
+	        }
+	    }
+	}
+
+### 新しいデータセットの JSON
+
+	{
+	    "name": "EmpTable",
+	    "properties": {
+	        "type": "AzureTable",
+	        "linkedServiceName": "MyLinkedServiceName",
+	        "typeProperties": {
+	            "tableName": "myazuretable"
+	        },
+	        "availability": {
+	            "frequency": "Hour",
+	            "interval": "1"
+	        }
+	    }
+	}
+
+次に注意してください。
+
+- **type** プロパティは 1 レベル上に移動し、型の名前 **AzureTableLocation** が **AzureTable** に変更されています。
+- **linkedServiceName**は 1 レベル上に移動します。 
+- **location** 要素は削除され、**location** セクションで指定された **tableName** などの型固有のプロパティが新しい **typeProperties** セクションで指定されています。  
+
+### 古いアクティビティの JSON
+
+	{
+	    "name": "CopyFromSQLtoBlob   ",
+	    "description": "description", 
+	    "type": "CopyActivity",
+	    "inputs":  [ { "name": "InputSqlDA"  } ],
+	    "outputs":  [ { "name": "OutputBlobDA" } ],
+	    "transformation":
+	    {
+	        "source":
+	        {
+	            "type": "SqlSource",
+	            "sqlReaderQuery": "select * from MyTable"
+	        },
+	        "sink":
+	        {
+	            "type": "BlobSink"
+	        }
+	    }
+	}   
+
+### 新しいアクティビティの JSON
+	
+	{
+	    "name": "CopyFromSQLtoBlob   ",
+	    "description": "description", 
+	    "type": "Copy",
+	    "inputs":  [ { "name": "InputSqlDA"  } ],
+	    "outputs":  [ { "name": "OutputBlobDA" } ],
+	    "typeProperties":
+	    {
+	        "source":
+	        {
+	            "type": "SqlSource",
+	            "sqlReaderQuery": "select * from MyTable"
+	        },
+	        "sink":
+	        {
+	            "type": "BlobSink"
+	        }
+	    }
+	}
+
+次に注意してください。
+
+- **transformation** 要素が新しい **typeProperties** 要素に置き換えられています。
+
+## waitOnExternal 要素が削除されている
+**waitOnExternal** 要素は新しい **external** と **externalData** プロパティに置き換えられています。
+
+### 古い JSON
+	{
+	    "name": "EmpTableFromBlob",
+	    "properties":
+	    {
+	        "location": 
+	        {
+	            "type": "AzureBlobLocation",
+	            "folderPath": "adftutorial/",
+	            "format":
+	            {
+	                "type": "TextFormat",
+	                "columnDelimiter": ","
+	            },
+	            "linkedServiceName": "StorageLinkedService"
+	        },
+	        "availability": 
+	        {
+	            "frequency": "hour",
+	            "interval": 1,
+                "waitOnExternal": 
+				{
+			        "retryInterval": "00:01:00",
+			        "retryTimeout": "00:10:00",
+			        "maximumRetry": "3"			
+				}
+	        }
+	    }
+	} 
+
+### 新しい JSON
+	{
+	  "name": "EmpTableFromBlob",
+	  "properties": {
+	    "type": "AzureBlob",
+	    "linkedServiceName": "StorageLinkedService",
+	    "typeProperties": {
+	      "folderPath": "adftutorial/",
+	      "format": {
+	        "type": "TextFormat",
+	        "columnDelimiter": ","
+	      }
+	    },
+	    "external": true,
+	    "availability": {
+	      "frequency": "hour",
+	      "interval": 1
+	    },
+	    "policy": {
+	      "externalData": {
+	        "retryInterval": "00:01:00",
+	        "retryTimeout": "00:10:00",
+	        "maximumRetry": "3"
+	      }
+	    }
+	  }
+	}
+
+次に注意してください。
+
+- **waitOnExternal** プロパティは **availability** セクションから削除されています。 
+- 新しい **external** プロパティは 1 レベル上に追加され、外部テーブルに対して **true** に設定されています。 
+- **retryInterval** などの **waitOnExternal** 要素のプロパティは、**Policy** 要素の新しい **externalData** セクションに追加されています。
+- **externalData** 要素はオプションの要素です。 
+- **externalData** 要素を使用する場合は、**external** プロパティを **true** に設定する必要があります。 
+ 
+
+## BlobSink の新しい copyBehavior プロパティ
+**BlobSink** は **copyBehavior** という名前の新しいプロパティをサポートしています。このプロパティは、ソースが **BlobSource** または **FileSystem** である場合のコピー動作を定義します。**copyBehavior** プロパティには次の 3 つの値を指定できます。
+
+**PreserveHierarchy**: ターゲット フォルダーのファイル階層を保持します。つまり、ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。
+
+
+**FlattenHierarchy**: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルになります。ターゲット ファイルは、自動生成された名前になります。
+
+
+**MergeFiles**: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。
+ 
+## HDInsight のすべてのアクティビティの新しい getDebugInfo プロパティ
+HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリーミング) は、新しいプロパティである **getDebugInfo** プロパティをサポートします。**GetDebugInfo** プロパティは、オプションの要素です。**Failure** に設定されていると、ログは実行エラー時にのみダウンロードされます。**All** に設定されていると、ログは実行状態に関係なく常にダウンロードされます。**None** に設定されていると、ログはダウンロードされません。
+
+  
+     
 
 ## Data Factory の 2015 年 04 月 10 日リリース ノート
 **[テーブル]** ブレードに **[最近更新したスライス]** と **[最近失敗したスライス]** の一覧が表示されるようになりました。これらの一覧は、スライスの更新時間で並べ替えられます。次の状況では、スライスの更新時間が変更されます。
@@ -112,4 +355,4 @@
 
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

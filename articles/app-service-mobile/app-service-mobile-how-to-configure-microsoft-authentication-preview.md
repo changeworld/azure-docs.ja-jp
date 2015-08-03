@@ -18,6 +18,8 @@
 
 # Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
 
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+
 このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
@@ -66,4 +68,4 @@
 [Azure の管理ポータル]: https://portal.azure.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

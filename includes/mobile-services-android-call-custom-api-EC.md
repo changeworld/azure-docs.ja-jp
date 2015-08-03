@@ -1,7 +1,7 @@
 
 ##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. "Complete All" というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Eclipse で、クイック スタート プロジェクトの *res\\layout\\activity_to_do.xml* ファイルを開き、`buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
+1. "Complete All" というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Eclipse で、クイック スタート プロジェクトの *res\layout\activity_to_do.xml* ファイルを開き、`buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
 
 2. 2 番目の **LinearLayout** で、**EditText** 要素を削除し、既存の **Button** 要素の直後に次のコードを追加します。
 
@@ -36,7 +36,7 @@
 	    </LinearLayout>
 	
 
-4. res\\values\\string.xml ファイルを開き、次のコード行を追加します。
+4. res\values\string.xml ファイルを開き、次のコード行を追加します。
 
     	<string name="complete_button_text">Complete All</string>
 
@@ -112,4 +112,4 @@
 
 	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

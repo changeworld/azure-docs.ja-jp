@@ -49,7 +49,7 @@ Microsoft においてデータの保護は最優先事項になります。セ�
 
 ![Operational Insights のデータ収集とセキュリティのイメージ](./media/operational-insights-security/security.png)
 
-### 1\.Operational Insights にサインアップし、データを収集する
+### 1.Operational Insights にサインアップし、データを収集する
 
 組織から Operational Insights にデータを送信する場合、Web サービスに直接接続している場合は Microsoft Monitoring Agent を構成するか、Operations Manager のオペレーション コンソールで構成ウィザードを使用する必要があります。ユーザー (自分自身、別の個別ユーザー、グループ) は、Operational Insights アカウントを 1 つ以上作成し、それぞれを直接接続したエージェントに登録するか、次のアカウントのいずれかを使用して Operations Manager 環境に登録する必要があります。
 
@@ -140,20 +140,20 @@ Operational Insights アカウントは、データが収集、集計、分析�
     </table>
 
 
-### 2\.エージェントからデータを送信する
+### 2.エージェントからデータを送信する
 
 Web サービスに直接接続しているエージェントをキーで登録します。ポート 443 を使用してエージェントと Operational Insights サービスの間にセキュリティで保護された接続を確立します。
 
 Operations Manager では、Operational Insights サービスにアカウントを登録します。ポート 443 を使用して Operations Manager 管理サーバーと、Operational Insights サービスの間にセキュリティで保護された HTTPS 接続を確立します。Operations Manager が何らかの理由でサービスと通信できない場合、収集したデータは一時的なキャッシュに格納されます。管理サーバーでは 2 時間にわたっての 8 分ごとにデータの再送信を試みます。収集されたデータは圧縮され、負荷を追加しないようにオンプレミス データベースをバイパスして、Operational Insights サービスに送信されます。収集したデータが送信されると、データはキャッシュから削除されます。
 
-### 3\.Operational Insights サービスでデータを受信して処理する
+### 3.Operational Insights サービスでデータを受信して処理する
 
 Operational Insights サービスにより、証明書とデータの整合性を検証することによって入力されるデータは信頼できる発行元からのものであることを確認します。未処理の生データはその後、BLOB として [Microsoft Azure Storage](http://azure.microsoft.com/documentation/services/storage/) で保存されます。Operational Insights の各ユーザーにはそのユーザーのみがアクセスできる専用の Azure BLOB があります。保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。
 
 Operational Insights サービスによって生データは処理され、集計処理されたデータは、SQL Database に保存されます。Operational Insights サービスと SQL Database 間の通信は、SQL Database の認証に依存します。
 
-### 4\.Operational Insights を使用して、データにアクセスする
+### 4.Operational Insights を使用して、データにアクセスする
 
 Operational Insights へは、以前に設定したアカウントを使用してサインインできます。Operational Insights と Operational Insights サービス間のすべてのトラフィックはセキュリティで保護された HTTPS チャネルを介して送信されます。
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

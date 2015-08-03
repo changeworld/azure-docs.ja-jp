@@ -324,4 +324,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

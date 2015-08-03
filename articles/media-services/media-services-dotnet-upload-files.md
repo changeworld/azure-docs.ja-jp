@@ -306,4 +306,4 @@ IngestManifestAsset は、アセットを、一括取り込みのための一括
 [メディア プロセッサの取得]: media-services-get-media-processor.md
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

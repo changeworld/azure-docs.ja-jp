@@ -79,4 +79,4 @@ Azure Active Directory アプリケーション プロキシを使用してア�
 
 * [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

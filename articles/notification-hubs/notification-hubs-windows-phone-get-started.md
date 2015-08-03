@@ -114,7 +114,7 @@
 
 	>[AZURE.NOTE]このチュートリアルでは、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、**BindToShellTile** と **BindToShellToast** の両方を呼び出します。
 
-6. ソリューション エクスプローラーで、**[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブをクリックして、**ID___CAP___PUSH_NOTIFICATION** 機能がオンであることを確認します。
+6. ソリューション エクスプローラーで **[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。
 
    	![][14]
 
@@ -215,4 +215,4 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 [Notification Hub - WP Silverlight チュートリアル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

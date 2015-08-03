@@ -214,4 +214,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

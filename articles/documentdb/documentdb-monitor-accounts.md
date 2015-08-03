@@ -99,4 +99,4 @@ DocumentDB の容量の詳細については、[DocumentDB の容量の管理](d
 [Next steps]: #Next-steps
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

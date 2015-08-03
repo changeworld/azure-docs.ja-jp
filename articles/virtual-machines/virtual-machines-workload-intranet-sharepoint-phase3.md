@@ -1,24 +1,25 @@
-<properties 
-	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成" 
-	description="イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 3 フェーズでは、SQL Server クラスター コンピューターとクラスター自体を作成します。" 
+<properties
+	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成"
+	description="イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 3 フェーズでは、SQL Server クラスター コンピューターとクラスター自体を作成します。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
-	editor=""/>
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/05/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/21/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成
 
-イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、2 台の SQL Server コンピューターとクラスター マジョリティ ノード コンピューターを構成し、Windows Server クラスターに統合します。
+イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、サービス管理で 2 台の SQL Server コンピューターとクラスター マジョリティ ノード コンピューターを作成および構成し、Windows Server クラスターに統合します。
 
 [フェーズ 4](virtual-machines-workload-intranet-sharepoint-phase4.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
 
@@ -42,56 +43,56 @@ PowerShell コマンドの次のブロックを使用して、3 つのサーバ�
 	$vmName="<Table M – Item 3 - Virtual machine name column>"
 	$vmSize="<Table M – Item 3 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
 	$availSet="<Table A – Item 2 – Availability set name column>"
-	
+
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Standard on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -ImageName $image -AvailabilitySetName $availSet
-	
+
 	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the first SQL Server computer."
 	$cred2=Get-Credential –Message "Now type the name and password of an account that has permissions to add this virtual machine to the domain."
 	$ADDomainName="<name of the AD domain that the server is joining (example CORP)>"
 	$domainDNS="<FQDN of the AD domain that the server is joining (example corp.contoso.com)>"
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $ADDomainName -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domainDNS
-	
+
 	$diskSize=<size of the additional data disk in GB>
 	$diskLabel="<the label on the disk>"
 	$lun=<Logical Unit Number (LUN) of the disk>
 	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $diskSize -DiskLabel $diskLabel -LUN $lun -HostCaching None
-	
+
 	$subnetName="<Table 6 – Item 1 – Subnet name column>"
 	$vm1 | Set-AzureSubnet -SubnetNames $subnetName
-	
+
 	$serviceName="<Table C – Item 2 – Cloud service name column>"
 	$vnetName="<Table V – Item 1 – Value column>"
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
-	
+
 	# Create the second SQL server
 	$vmName="<Table M – Item 4 - Virtual machine name column>"
 	$vmSize="<Table M – Item 4 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
 	$vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image -AvailabilitySetName $availSet
-	
+
 	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the second SQL Server computer."
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $ADDomainName -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domainDNS
-	
+
 	$diskSize=<size of the additional data disk in GB>
 	$diskLabel="<the label on the disk>"
 	$lun=<Logical Unit Number (LUN) of the disk>
 	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $diskSize -DiskLabel $diskLabel -LUN $lun -HostCaching None
-	
+
 	$vm1 | Set-AzureSubnet -SubnetNames $subnetName
-	
+
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
-	
+
 	# Create the cluster majority node server
 	$vmName="<Table M – Item 5 - Virtual machine name column>"
 	$vmSize="<Table M – Item 5 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -ImageName $image -AvailabilitySetName $availSet
-	
+
 	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the cluster majority node server."
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $ADDomainName -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domainDNS
-	
+
 	$vm1 | Set-AzureSubnet -SubnetNames $subnetName
-	
+
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
 
 ## SQL Server コンピューターの構成
@@ -117,15 +118,15 @@ SQL サーバーごとに次の手順を実行します。
 2.	**[サーバーに接続]** で、**[接続]** をクリックします。
 3.	左ウィンドウで、最上位ノード (コンピューターの名前が付けられた既定のインスタンス) を右クリックし、**[プロパティ]** をクリックします。
 4.	**[サーバーのプロパティ]** で、**[データベースの設定]** をクリックします。
-5.	**[データベースの既定の場所]** で、次の値を設定します。 
-- **[データ]** では、パスを **f:\\Data** に設定します。
-- **[ログ]** では、パスを **f:\\Log** に設定します。
-- **[バックアップ]** では、パスを **f:\\Backup** に設定します。
+5.	**[データベースの既定の場所]** で、次の値を設定します。
+- **[データ]** では、パスを **f:\Data** に設定します。
+- **[ログ]** では、パスを **f:\Log** に設定します。
+- **[バックアップ]** では、パスを **f:\Backup** に設定します。
 - 新しいデータベースでのみ、これらの場所が使用されます。
 6.	**[OK]** をクリックしてウィンドウを閉じます。
 7.	左ウィンドウで、**[セキュリティ]** フォルダーを展開します。
 8.	**[ログイン]** を右クリックし、**[新しいログイン]** をクリックします。
-9.	**[ログイン名]** に「*domain*\\sp_farm_db (*domain* は、sp_farm_db アカウントが作成されたドメインの名前)」と入力します。 
+9.	**[ログイン名]** に「*domain*\sp_farm_db (*domain* は、sp_farm_db アカウントが作成されたドメインの名前)」と入力します。
 10.	**[ページの選択]** で、**[サーバー ロール]**、**[sysadmin]** の順にクリックし、**[OK]** をクリックします。
 11.	SQL Server 2014 Management Studio を閉じます。
 
@@ -134,7 +135,7 @@ SQL サーバーごとに次の手順を実行します。
 1.	スタート画面で **[PC]** を右クリックし、**[プロパティ]** をクリックします。
 2.	**[システム]** ウィンドウで、**[リモートの設定]** をクリックします。
 3.	**[リモート デスクトップ]** セクションで **[ユーザーの選択]** をクリックし、**[追加]** をクリックします。
-4.	**[選択するオブジェクト名を入力してください]** で、「[domain]**\\sp_farm_db**」と入力し、**[OK]** を 3 回クリックします。
+4.	**[選択するオブジェクト名を入力してください]** で、「[domain]**\sp_farm_db**」と入力し、**[OK]** を 3 回クリックします。
 
 SQL Server には、クライアントがデータベース サーバーへのアクセスに使用するポートが必要です。また、SQL Server Management Studio に接続するためのポートと、高可用性グループを管理するためのポートも必要です。次に、管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを 2 回 (SQL サーバーごとに 1 回) 実行して、SQL サーバーへの受信トラフィックを許可するファイアウォール ルールを追加します。
 
@@ -142,7 +143,7 @@ SQL Server には、クライアントがデータベース サーバーへの�
 
 SQL サーバー仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。SharePoint ファームのストレージ アカウントの地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。SharePoint ファームのストレージ アカウントの geo 冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -173,9 +174,9 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 5.	[サーバーの選択] ページで、プライマリ SQL Server コンピューターの名前を入力して **[追加]** をクリックし、**[次へ]** をクリックします。
 6.	[検証の警告] ページで、**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] をクリックして、クラスターの作成を続行します。]** をクリックし、**[次へ]** をクリックします。
 7.	[クラスター管理用のアクセス ポイント] ページで、**[クラスター名]** ボックスにクラスターの名前を入力し、**[次へ]** をクリックします。
-8.	[確認] ページで、**[次へ]** をクリックしてクラスターの作成を開始します。 
+8.	[確認] ページで、**[次へ]** をクリックしてクラスターの作成を開始します。
 9.	[概要] ページで **[完了]** をクリックします。
-10.	左ウィンドウで新しいクラスターをクリックします。コンテンツ ウィンドウの **[クラスター コア リソース]** セクションで、サーバー クラスター名を開きます。**[IP アドレス]** リソースが **[失敗]** 状態で表示されます。クラスターにコンピューター自体と同じ IP アドレスが割り当てられているため、IP アドレス リソースをオンラインにすることができません。その結果、アドレスの重複が発生します。 
+10.	左ウィンドウで新しいクラスターをクリックします。コンテンツ ウィンドウの **[クラスター コア リソース]** セクションで、サーバー クラスター名を開きます。**[IP アドレス]** リソースが **[失敗]** 状態で表示されます。クラスターにコンピューター自体と同じ IP アドレスが割り当てられているため、IP アドレス リソースをオンラインにすることができません。その結果、アドレスの重複が発生します。
 11.	失敗した **IP アドレス** リソースを右クリックし、**[プロパティ]** をクリックします。
 12.	**[IP アドレスのプロパティ]** ダイアログ ボックスで、**[静的 IP アドレス]** をクリックします。
 13.	SQL サーバーが配置されているサブネットに対応するアドレス範囲の未使用の IP を入力し、**[OK]** をクリックします。
@@ -183,9 +184,9 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 15.	AD アカウントが作成されたので、クラスター名をオフラインにします。**[クラスター コア リソース]** でクラスター名を右クリックし、**[オフラインにする]** をクリックします。
 16.	クラスターの IP アドレスを削除するには、**[IP アドレス]** を右クリックして **[削除]** をクリックし、メッセージが表示されたら **[はい]** をクリックします。クラスター リソースは、IP アドレス リソースに依存しているため、オンラインにすることはできなくなります。ただし、可用性グループは、適切に機能するために、クラスター名と IP アドレスのどちらにも依存しません。そのため、クラスター名をオフラインのままにしておくことができます。
 17.	残りのノードをクラスターに追加するには、左ウィンドウでクラスター名をクリックし、**[ノードの追加]** をクリックします。
-18.	[開始する前に] ページで **[次へ]** をクリックします。 
-19.	[サーバーの選択] ページで名前を入力し、**[追加]** をクリックして、セカンダリ SQL サーバーとクラスター マジョリティ ノードをクラスターに追加します。2 台のコンピューターを追加したら、**[次へ]** をクリックします。コンピューターを追加できず、"リモート レジストリは実行されていません" というエラー メッセージが表示された場合は、次の操作を行います。コンピューターにログオンし、サービス スナップイン (services.msc) を開いて、リモート レジストリを有効にします。詳細については、「[リモート レジストリ サービスに接続できない](http://technet.microsoft.com/library/bb266998.aspx)」をご覧ください。 
-20.	[検証の警告] ページで、**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] をクリックして、クラスターの作成を続行します。]** をクリックし、**[次へ]** をクリックします。 
+18.	[開始する前に] ページで **[次へ]** をクリックします。
+19.	[サーバーの選択] ページで名前を入力し、**[追加]** をクリックして、セカンダリ SQL サーバーとクラスター マジョリティ ノードをクラスターに追加します。2 台のコンピューターを追加したら、**[次へ]** をクリックします。コンピューターを追加できず、"リモート レジストリは実行されていません" というエラー メッセージが表示された場合は、次の操作を行います。コンピューターにログオンし、サービス スナップイン (services.msc) を開いて、リモート レジストリを有効にします。詳細については、「[リモート レジストリ サービスに接続できない](http://technet.microsoft.com/library/bb266998.aspx)」をご覧ください。
+20.	[検証の警告] ページで、**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] をクリックして、クラスターの作成を続行します。]** をクリックし、**[次へ]** をクリックします。
 21.	[確認] ページで **[次へ]** をクリックします。
 22.	[概要] ページで **[完了]** をクリックします。
 23.	左ウィンドウで **[ノード]** をクリックします。3 台のコンピューターがすべて表示されます。
@@ -200,16 +201,16 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 2.	スタート画面で「**SQL Server 構成**」と入力し、**[SQL Server 構成マネージャー]** をクリックします。
 3.	左ウィンドウで、**[SQL Server のサービス]** をクリックします。
 4.	コンテンツ ウィンドウで、**[SQL Server (MSSQLSERVER)]** をダブルクリックします。
-5.	**[SQL Server (MSSQLSERVER) のプロパティ]** で、**[AlwaysOn 高可用性]** タブをクリックします。**[AlwaysOn 可用性グループを有効にする]** をオンにして **[適用]** をクリックし、メッセージが表示されたら、**[OK]** をクリックします。プロパティ ウィンドウはまだ閉じないでください。 
-6.	[virtual-machines-manage-availability] タブをクリックし、**[アカウント名]** に「[Domain]**\\sqlservice**」と入力します。**[パスワード]** と **[パスワードの確認]** で sqlservice アカウントのパスワードを入力し、**[OK]** をクリックします。
+5.	**[SQL Server (MSSQLSERVER) のプロパティ]** で、**[AlwaysOn 高可用性]** タブをクリックします。**[AlwaysOn 可用性グループを有効にする]** をオンにして **[適用]** をクリックし、メッセージが表示されたら、**[OK]** をクリックします。プロパティ ウィンドウはまだ閉じないでください。
+6.	[virtual-machines-manage-availability] タブをクリックし、**[アカウント名]** に「[Domain]**\sqlservice**」と入力します。**[パスワード]** と **[パスワードの確認]** で sqlservice アカウントのパスワードを入力し、**[OK]** をクリックします。
 7.	メッセージ ウィンドウで **[はい]** をクリックして、SQL Server サービスを再起動します。
-8.	セカンダリ SQL サーバーにログオンし、このプロセスを繰り返します。 
+8.	セカンダリ SQL サーバーにログオンし、このプロセスを繰り返します。
 
 次の図は、このフェーズが問題なく完了したときの構成を示しています。プレースホルダーにコンピューター名が示されています。
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-phase3/workload-spsqlao_03.png)
 
-## 次の手順
+## 次のステップ
 
 このワークロードを引き続き構成するには、「[フェーズ 4: SharePoint サーバーの構成](virtual-machines-workload-intranet-sharepoint-phase4.md)」に進んでください。
 
@@ -224,6 +225,5 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

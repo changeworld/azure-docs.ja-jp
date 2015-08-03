@@ -270,4 +270,4 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

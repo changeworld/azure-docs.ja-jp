@@ -263,4 +263,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

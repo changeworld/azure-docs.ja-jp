@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2015" 
+	ms.date="07/17/2015" 
 	ms.author="sidneyh"/>
 
 
@@ -31,7 +31,7 @@
 
 [**SQL Server Management Studio**](https://msdn.microsoft.com/library/mt238290.aspx) をダウンロードします。(このツールの詳細については、「[SQL Server Management Studio - 2015 年 6 月のリリース ノート](https://msdn.microsoft.com/library/mt238486.aspx)」を参照してください。)。
 
-Azure SQL Database 上の既存のサーバー。新しいデータベースを (新しいサーバー上に) 作成する方法の手順の詳細については、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。
+既存の **Azure SQL Database サーバー**。サーバーを作成するには、最初に少なくとも 1 つのデータベースを作成する必要があります。データベースを作成するときは、新しいサーバーに作成することも、既存のサーバーに作成することもできます。新しいデータベースを (新しいサーバー上に) 作成する方法の手順の詳細については、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。
 
 ## 内部設置型サーバーに school データベースを作成する
 
@@ -539,10 +539,10 @@ SQL Server Management Studio (SSMS) でこれらのスクリプトを実行し�
 	
 ## Azure SQL へのデータベースのデプロイ 
 	
-1. Management Studio で作成した school データベースを右クリックして、**[タスク]** をポイントし、**[データベースの Microsoft Azure SQL データベースへのデプロイ]** をクリックします。
+1. Management Studio で、作成した school データベースを右クリックして、**[タスク]** をポイントし、**[データベースの Microsoft Azure SQL データベースへのデプロイ]** をクリックします。
 2. **[デプロイの設定]** で、データベースの名前を入力します (*school*など)。
 5. **[接続]** をクリックします。接続の問題を解決するには、この[トラブルシューティング ツール](https://support2.microsoft.com/common/survey.aspx?scid=sw;en;3844&showpage=1)を試してください。
-6. **[サーバー名]** ボックスに、10 文字のサーバー名の後に** .database.windows.net **を付けて入力します。
+6. **[サーバー名]** ボックスに、10 文字のサーバー名の後に **.database.windows.net** を付けて入力します。
 7. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
 8. SQL Database の論理サーバーのプロビジョニング時に作成した、管理者のログイン名とパスワードを入力します。
 9. **[オプション]** をクリックします。
@@ -556,16 +556,16 @@ SQL Server Management Studio (SSMS) でこれらのスクリプトを実行し�
 ## 方法: データベース デプロイを確認する
 	
 1. Management Studio の**オブジェクト エクスプローラー**で **[接続]** アイコンをクリックします。
-2. **サーバー**名ボックスに、後に **.database.windows.net** を付け、Azure SQL Server の名前を入力します。
+2. **サーバー**名ボックスに、Azure SQL Server の名前の後に **.database.windows.net** を付けたものを入力します。
 3. **[認証] **で、**[SQL Server 認証]** を選択します。
 4. 管理者ログイン名と、サーバーのプロビジョニング時に作成したパスワードを入力します。 
 5. **[オプション]** ボタンをクリックします。
-6. **[データベースに接続]** ドロップダウンで、**[サーバーの参照]** をクリックします。次のダイアログ ボックスで **[はい]** をクリックし、サーバーの参照を許可します。
+6. **[データベースへの接続]** ボックスの一覧で、**[サーバーの参照]** をクリックします。次のダイアログ ボックスで **[はい]** をクリックし、サーバーの参照を許可します。
 7. **school** データベースをクリックして選択し、**[OK]** をクリックします。 
-8. 次いで **[接続]** をクリックします。接続の問題を解決するには、この[トラブルシューティング ツール](https://support2.microsoft.com/common/survey.aspx?scid=sw;en;3844&showpage=1)を試してください。
-2. **データベース **フォルダーを展開します。一覧に **school** データベースが表示されます。
+8. 次に、**[接続]** をクリックします。接続の問題を解決するには、この[トラブルシューティング ツール](https://support2.microsoft.com/common/survey.aspx?scid=sw;en;3844&showpage=1)を試してください。
+2. **データベース** フォルダーを展開します。一覧に **school** データベースが表示されます。
 
-	**注** クエリを実行するデータベースには接続している必要があります。 
+	**注** クエリを実行するデータベースに接続している必要があります。 
 3. **school** を右クリックし、**[新しいクエリ]** をクリックします。
 4. 以下のクエリを実行して、データがアクセス可能であることを確認します。
 
@@ -589,8 +589,8 @@ SQL Server Management Studio (SSMS) でこれらのスクリプトを実行し�
 		
 ## 次のステップ
 
-新しい Azure SQL Database の作成に関するチュートリアルについては、「[SQL Database 管理の概要](sql-database-get-started.md)」を参照してください。C# アプリから Azure SQL Database への接続の基本については、「[C# を使用して SQL Database に接続し、照会する](sql-database-connect-query.md)」を参照してください。(PHP など) さまざまなプラットフォームからの接続のその他のチュートリアルについては、「[Azure SQL Database 開発: 操作方法に関するトピック](https://msdn.microsoft.com/library/azure/ee621787.aspx)」を参照してください。
+新しい Azure SQL Database の作成に関するチュートリアルについては、「[最初の Azure SQL データベースを作成する](sql-database-get-started.md)」を参照してください。C# アプリから Azure SQL Database への接続の基本については、「[C# を使用して SQL Database に接続し、照会する](sql-database-connect-query.md)」を参照してください。(PHP など) さまざまなプラットフォームからの接続のその他のチュートリアルについては、「[Azure SQL Database 開発: 操作方法に関するトピック](https://msdn.microsoft.com/library/azure/ee621787.aspx)」を参照してください。
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

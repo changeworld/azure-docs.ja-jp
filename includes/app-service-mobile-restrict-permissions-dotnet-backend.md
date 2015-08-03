@@ -1,31 +1,22 @@
 
 
-既定では、アプリ サービス モバイル アプリのリソースに対するすべての要求を実行するには、クライアントがアプリケーション キーを提出する必要があるという制限が加えられていますが、この方法ではリソースに対するアクセスが厳格に保護されるわけではありません。リソースを保護するには、認証されたクライアントのみにアクセスを制限する必要があります。
+既定で、Mobile App で定義されているエンドポイントは公開されます。リソースを保護するには、認証されたクライアントのみにアクセスを制限する必要があります。
 
-1. Visual Studio で、モバイル アプリ コードを含むプロジェクトを開きます。 
+1. Visual Studio で、Mobile App コードを含むプロジェクトを開きます。 
 
 2. ソリューション エクスプローラーで、Controllers フォルダーを展開し、TodoItemController.cs プロジェクト ファイルを開きます。
 
 	**TodoItemController** クラスは、TodoItem テーブルに対するデータ アクセスを実装します。
 
-3. コード ページの先頭に次の `using` ステートメントを追加します。
+3. `Authorize` 属性を **TodoItemController** クラスに適用します。
 
-		using Microsoft.Azure.Mobile.Security;
-
-4. 次の AuthorizeLevel 属性を **TodoItemController** クラスに適用します。
-
-		[AuthorizeLevel(AuthorizationLevel.User)] 
+        [Authorize]
+        public class TodoItemController : TableController<TodoItem>
 
 	これにより、**TodoItem** テーブルに対するすべての操作には、認証されたユーザーが必要になります。
 
-	>[AZURE.NOTE]コント ローラーによって公開されるメソッドに対して特定の認証レベルを設定するには、個々のメソッドに AuthorizeLevel 属性を適用します。
+	>[AZURE.NOTE]コント ローラーによって公開されるメソッドに対して特定の認証レベルを設定するには、個々のメソッドに Authorize 属性を適用します。
 
-5. ローカルで認証をデバッグする場合は、App_Start フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開いてから、次のコードを **Register** メソッドに追加します。
+4. モバイル アプリ プロジェクトを再発行します。
 
-		config.SetIsHosted(true);
-	
-	この作業により、ローカルのプロジェクトに対して、AuthorizeLevel 設定に従うことも含め、まるで Azure でホストされているかのように動作することを指示します。この設定がない場合は、AuthorizeLevel の設定にかかわりなく、*localhost* に対するすべての HTTP 要求は認証なしで許可されます。
-
-6. モバイル アプリ プロジェクトを再発行します。
-
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

@@ -175,4 +175,4 @@ URL: **Path** + アセット ファイル mp4 名
         OnDemandOrigin = 2,
     } 
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

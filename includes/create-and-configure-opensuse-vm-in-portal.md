@@ -1,3 +1,4 @@
+
 **重要**: 仮想マシンで仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、[Azure Virtual Network の概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)に関するページを参照してください。
 
 
@@ -58,4 +59,4 @@
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

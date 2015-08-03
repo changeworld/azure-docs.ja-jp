@@ -275,4 +275,4 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

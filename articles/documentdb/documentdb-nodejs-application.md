@@ -498,7 +498,7 @@
 	
 	アプリケーションが動作するために必要なコードはこれですべてです。
 
-5. **public\\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
+5. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
 
 		body {
 		  padding: 50px;
@@ -559,4 +559,4 @@
   [Git]: http://git-scm.com/
  
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

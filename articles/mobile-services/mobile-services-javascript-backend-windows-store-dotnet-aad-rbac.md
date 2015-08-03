@@ -285,4 +285,4 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info.md
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

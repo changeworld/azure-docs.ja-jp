@@ -13,15 +13,16 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="06/05/2015"
+ ms.date="07/21/2015"
  ms.author="larryfr"/>
 
-# HDInsight での Apache Storm の Storm トポロジの例
+# HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
 
 HDInsight での Apache Storm の使用に関してマイクロソフトが作成して管理している例の一覧を次に示します。これらの例では、基本的な C# および Java トポロジの作成から、Event Hubs、DocumentDB、Power BI、SQL Database、HDInsight での HBase、Azure Storage などの Azure サービスの使用まで、さまざまなトピックがカバーされています。一部の例では、SignalR や Socket.IO など、Azure 以外、さらにはマイクロソフト以外のテクノロジを使用する方法についても説明されています。
 
 | 説明 | 対象 | 言語/フレームワーク |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:---------------------------|
+| [Event Hub のスパウトとボルト](https://github.com/apache/storm/tree/master/external/storm-eventhubs) | Event Hub のスパウトとボルトのソース | Java |
 | [HDInsight での Apache Storm の Java ベース トポロジの開発][5797064f] | Maven | Java |
 | [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][16fce2d1] | HDInsight Tools for Visual Studio | C#、Java |
 | [C# Storm トポロジでの複数のデータ ストリームの作成][ec5a4064] | 複数のストリーム | C# |
@@ -56,4 +57,4 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

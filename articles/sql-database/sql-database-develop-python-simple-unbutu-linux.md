@@ -112,4 +112,4 @@ SQL Database „ÅÆ [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) „É
 
  
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

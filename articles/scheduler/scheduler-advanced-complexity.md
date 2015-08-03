@@ -198,4 +198,4 @@ _schedule_ の要素を次の表に示します。
  
   
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

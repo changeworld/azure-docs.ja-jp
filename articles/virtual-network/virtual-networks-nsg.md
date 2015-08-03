@@ -138,7 +138,7 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |------|----------|-----------|-------------|----------------|------------------|----------|--------|
-|NO INTERNET|100| VIRTUAL_NETWORK|&\#42;|INTERNET|&\#42;|TCP|DENY| 
+|NO INTERNET|100| VIRTUAL_NETWORK|&#42;|INTERNET|&#42;|TCP|DENY| 
 
 このルールは仮想ネットワークからインターネットへのすべてのアクセスを拒否するので、VM は、SQL Database などのパブリック インターネット エンドポイントを必要とするすべての Azure PaaS サービスにアクセスできません。
 
@@ -146,8 +146,8 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |------|----------|-----------|-------------|----------------|------------------|----------|--------|
-|TO INTERNET|100| VIRTUAL_NETWORK|&\#42;|INTERNET|&\#42;|TCP|ALLOW|
-|FROM INTERNET|110| INTERNET|&\#42;|VIRTUAL_NETWORK|&\#42;|TCP|DENY| 
+|TO INTERNET|100| VIRTUAL_NETWORK|&#42;|INTERNET|&#42;|TCP|ALLOW|
+|FROM INTERNET|110| INTERNET|&#42;|VIRTUAL_NETWORK|&#42;|TCP|DENY| 
 
 
 ## 計画 - ネットワーク セキュリティ グループのワークフロー
@@ -248,4 +248,4 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 	Get-Command *azurenetworksecuritygroup*
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

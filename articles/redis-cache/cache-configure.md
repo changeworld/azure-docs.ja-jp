@@ -138,4 +138,4 @@ Redis コマンドの詳細については、[http://redis.io/commands](http://r
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

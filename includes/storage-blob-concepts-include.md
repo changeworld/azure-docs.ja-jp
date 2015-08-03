@@ -63,4 +63,4 @@ BLOB サービスは、フラット ストレージ スキームに基づいて�
 
 [Blob1]: ./media/storage-blob-concepts-include/blob1.jpg
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

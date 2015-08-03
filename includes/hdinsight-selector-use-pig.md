@@ -3,7 +3,7 @@
 - [PowerShell](../articles/hdinsight/hdinsight-hadoop-use-pig-powershell.md)
 - [SSH](../articles/hdinsight/hdinsight-hadoop-use-pig-ssh.md)
 - [Remote Desktop](../articles/hdinsight/hdinsight-hadoop-use-pig-remote-desktop.md)
-- [.NET SDK for Hadoop](../articles/hdinsight/hdinsight-hadoop-use-pig-dotnet-sdk.md)
+- [.NET](../articles/hdinsight/hdinsight-hadoop-use-pig-dotnet-sdk.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-pig-curl.md)
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

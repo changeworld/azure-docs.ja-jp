@@ -71,7 +71,7 @@ Azure ポータルでは、ロジック アプリ、Web アプリ、またはモ
 2. コネクタを選択します。新しいブレードで **[作成]** を選択します。 
 3. 次のプロパティを入力します。 
 
-	プロパティ | 説明
+プロパティ | 説明
 --- | ---
 名前 | コネクタに任意の名前を入力します。たとえば、*SAPConnector*、*SalesForceGetAccounts*、*QuickBooksGetItems* などの名前にできます。
 パッケージの設定 | *SAP ユーザー名*や *SugarCRM サーバー URL* など、エンタープライズ システムの設定を入力します。このトピックの「[エンタープライズ システムに固有のプロパティ](#AddProperties)」を参照してください。 
@@ -87,7 +87,7 @@ App Service プラン | 支払プランの一覧を表示します。プラン�
 
 > [AZURE.IMPORTANT]各コネクタには、接続するエンタープライズ システム固有のプロパティが必要です。たとえば、SAP に接続する場合には、SAP 固有のプロパティを入力し、Salesforce に接続する場合には、Salesforce 固有のプロパティを入力します。次の表は、各エンタープライズ システムに必要なプロパティを示しています。
 	
-	Enterprise System | Required Properties
+Enterprise System | Required Properties
 --- | ---
 Marketo | <ul><li>エンドポイント</li><li>プロバイダー名</li></ul>
 MongoDB| <ul><li>接続文字列</li><li>ホスト</li><li>ポート</li><li></li>ユーザー名<li>パスワード</li><li>データベース</li><li>SSL 暗号化の使用</li><li>オンプレミス: MongoDb システムがクラウド ベースの場合、False を入力します。オンプレミスの場合は True を入力し、次のプロパティも入力してください。<ul><li>共有アクセス キー名</li><li>Service Bus 名前空間</li><li>リレー パス</li><li>キーの送信</li></ul></li></ul>
@@ -158,4 +158,4 @@ Microsoft Azure App Service は、上記のコネクタが使用できるさま�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/>[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=July15_HO3-->
+<!---HONumber=July15_HO4-->

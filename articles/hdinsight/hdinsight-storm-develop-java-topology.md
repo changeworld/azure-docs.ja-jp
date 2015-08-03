@@ -42,7 +42,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 	* **JAVA_HOME** または同等のパス
 
-	* **JAVA_HOME\\bin** または同等のパス
+	* **JAVA_HOME\bin** または同等のパス
 
 	* Maven がインストールされているディレクトリ
 
@@ -58,17 +58,17 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 * **pom.xml**: Maven プロジェクトの設定が含まれます。
 
-* **src\\main\\java\\com\\microsoft\\example**: アプリケーション コードが含まれます。
+* **src\main\java\com\microsoft\example**: アプリケーション コードが含まれます。
 
-* **src\\test\\java\\com\\microsoft\\example**: アプリケーションのテストが含まれます。今回の例では、テストは作成しません。
+* **src\test\java\com\microsoft\example**: アプリケーションのテストが含まれます。今回の例では、テストは作成しません。
 
 ###サンプル コードを削除する
 
 ここではアプリケーションを作成するため、生成されたテスト ファイルとアプリケーション ファイルを削除します。
 
-*  **src\\test\\java\\com\\microsoft\\example\\AppTest.java**
+*  **src\test\java\com\microsoft\example\AppTest.java**
 
-*  **src\\main\\java\\com\\microsoft\\example\\App.java**
+*  **src\main\java\com\microsoft\example\App.java**
 
 ##依存関係を追加する
 
@@ -153,7 +153,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 >
 > * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm Kafka</a>: Kafka から読み取りを行うスパウトの例
 
-スパウトでは、**src\\main\\java\\com\\microsoft\\example** ディレクトリに **RandomSentenceSpout.java** という名前のファイルを作成し、次の内容をコンテンツとして使用します。
+スパウトでは、**src\main\java\com\microsoft\example** ディレクトリに **RandomSentenceSpout.java** という名前のファイルを作成し、次の内容をコンテンツとして使用します。
 
     /**
      * Licensed to the Apache Software Foundation (ASF) under one
@@ -251,7 +251,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 
 > [AZURE.NOTE]ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
 
-**src\\main\\java\\com\\microsoft\\example** ディレクトリに、**SplitSentence.java** と **WordCount.Java** という 2 つの新しいファイルを作成します。ファイルの内容として、次を使用します。
+**src\main\java\com\microsoft\example** ディレクトリに、**SplitSentence.java** と **WordCount.Java** という 2 つの新しいファイルを作成します。ファイルの内容として、次を使用します。
 
 **SplitSentence**
 
@@ -285,7 +285,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
           //get the word
           String word=sentence.substring(start,end);
           //If a word is whitespace characters, replace it with empty
-          word=word.replaceAll("\\s+","");
+          word=word.replaceAll("\s+","");
           //if it's an actual word, emit it
           if (!word.equals("")) {
             collector.emit(new Values(word));
@@ -352,7 +352,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 
 ![スパウトとボルトの配置を示すダイアグラム](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
 
-トポロジを実装するには、**src\\main\\java\\com\\microsoft\\example** ディレクトリに **WordCountTopology.java** という名前の新しいファイルを作成します。ファイルの内容として、次を使用します。
+トポロジを実装するには、**src\main\java\com\microsoft\example** ディレクトリに **WordCountTopology.java** という名前の新しいファイルを作成します。ファイルの内容として、次を使用します。
 
 	package com.microsoft.example;
 
@@ -466,4 +466,4 @@ Trident アプリケーションの例については、「[HDInsight での Apa
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」をご確認ください。
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

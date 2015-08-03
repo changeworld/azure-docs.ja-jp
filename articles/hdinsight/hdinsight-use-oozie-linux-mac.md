@@ -47,9 +47,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        ja-jp   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        ja-jp   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        ja-jp   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -361,9 +361,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		</configuration>
 
 	* **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
-
-
-	> [AZURE.WARNING] パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
+	> [AZURE.WARNING]パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
 
 	* **JOBTRACKERADDRESS** を、前に返された JobTracker/ResourceManager のアドレスに置き換えます。
 
@@ -727,4 +725,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!-----HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->

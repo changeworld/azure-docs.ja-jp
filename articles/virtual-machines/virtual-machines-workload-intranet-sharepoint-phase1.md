@@ -1,24 +1,25 @@
-<properties 
-	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 1: Azure の構成" 
-	description="イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこの第 1 フェーズでは、Azure Virtual Network および他の Azure インフラストラクチャ要素を作成します。" 
+<properties
+	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 1: Azure の構成"
+	description="イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこの第 1 フェーズでは、Azure Virtual Network および他の Azure インフラストラクチャ要素を作成します。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
-	editor=""/>
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/05/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/21/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 1: Azure の構成
 
-イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 1 フェーズでは、Azure のネットワーキングおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-intranet-sharepoint-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
+イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 1 フェーズでは、Azure サービス管理で Azure のネットワーキングおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-intranet-sharepoint-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
 
 Azure を次の基本的なネットワーク コンポーネントでプロビジョニングする必要があります。
 
@@ -32,8 +33,8 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 仮想ネットワーク (VNet) の設定を表 V に記入します。
 
-項目 | 構成要素 | 説明 | 値 
---- | --- | --- | --- 
+項目 | 構成要素 | 説明 | 値
+--- | --- | --- | ---
 1. | VNet の名前 | Azure Virtual Network に割り当てる名前 (例: SPFarmNet) 。 | __________________
 2. | VNet の場所 | 仮想ネットワークを含む Azure データセンター。 | __________________
 3. | ローカル ネットワークの名前 | 組織のネットワークに割り当てる名前。 | __________________
@@ -44,10 +45,10 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 **表 V: クロスプレミス仮想ネットワークの構成**
 
-このソリューションのサブネットに関する表 S に記入します。サブネットの表示名、仮想ネットワーク アドレス空間に基づく 1 つの IP アドレス空間、および用途の説明を指定します。アドレス空間は、ネットワーク プレフィックス形式とも呼ばれるクラスレス ドメイン間ルーティング (CIDR) 形式である必要があります。たとえば、10.24.64.0/20 のような形式です。IT 部門と相談して、仮想ネットワーク アドレス空間からこのアドレス空間を決定します。
+このソリューションのサブネットに関する表 S に記入します。サブネットの表示名、Virtual Network アドレス空間に基づく 1 つの IP アドレス空間、および用途の説明を指定します。アドレス空間は、ネットワーク プレフィックス形式とも呼ばれるクラスレス ドメイン間ルーティング (CIDR) 形式である必要があります。たとえば、10.24.64.0/20 のような形式です。IT 部門と相談して、仮想ネットワーク アドレス空間からこのアドレス空間を決定します。
 
-項目 | サブネット名 | サブネットのアドレス空間 | 目的 
---- | --- | --- | --- 
+項目 | サブネット名 | サブネットのアドレス空間 | 目的
+--- | --- | --- | ---
 1. | _______________ | _____________________________ | _________________________
 
 **表 S: 仮想ネットワークのサブネット**
@@ -56,10 +57,10 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 仮想ネットワーク内にドメイン コント ローラーを最初にセットアップするときに使用する 2 つのオンプレミス DNS サーバーについて、表 D に記入します。各 DNS サーバーの表示名および単一の IP アドレスを指定します。この表示名は、DNS サーバーのホスト名またはコンピューター名と一致している必要はありません。記入欄は 2 つですが、さらに追加してもかまいません。IT 部門と相談してこのリストを決定します。
 
-項目 | DNS サーバーの表示名 | DNS サーバーの IP アドレス 
+項目 | DNS サーバーの表示名 | DNS サーバーの IP アドレス
 --- | --- | ---
 1. | ___________________________ | ___________________________
-2. | ___________________________ | ___________________________ 
+2. | ___________________________ | ___________________________
 
 **表 D: オンプレミス DNS サーバー**
 
@@ -67,7 +68,7 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 一連のローカル ネットワーク アドレス空間について、表 L に記入します。記入欄は 3 つですが、通常はさらに必要です。IT 部門と相談してこのアドレス空間のリストを決定します。
 
-項目 | ローカル ネットワークのアドレス空間 
+項目 | ローカル ネットワークのアドレス空間
 --- | ---
 1. | ___________________________________
 2. | ___________________________________
@@ -103,7 +104,7 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 次に、この SharePoint ファームに必要な 3 つのクラウド サービスを作成します。表 C に記入します。
 
-項目 | 目的 | クラウド サービス名 
+項目 | 目的 | クラウド サービス名
 --- | --- | ---
 1. | ドメイン コントローラー | ___________________________
 2. | SQL Server | ___________________________
@@ -137,8 +138,8 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 次に、4 つの可用性セットの名前を定義します。表 A に記入します。
 
-項目 | 目的 | 可用性セットの名前 
---- | --- | --- 
+項目 | 目的 | 可用性セットの名前
+--- | --- | ---
 1. | ドメイン コントローラー | ___________________________
 2. | SQL Server | ___________________________
 3. | SharePoint アプリケーション サーバー | ___________________________
@@ -152,7 +153,7 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-phase1/workload-spsqlao_01.png)
 
-## 次の手順
+## 次のステップ
 
 このワークロードを引き続き構成するには、「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」に進んでください。
 
@@ -167,6 +168,5 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 [SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
- 
 
-<!---HONumber=July15_HO2-->
+<!---HONumber=July15_HO4-->
