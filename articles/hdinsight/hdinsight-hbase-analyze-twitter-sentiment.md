@@ -75,11 +75,11 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 
 
 	<table border="1">
-<tr><th>クラスター プロパティ</th><th>説明</th></tr>
-<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
-<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
-<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
-</table>
+	<tr><th>クラスター プロパティ</th><th>説明</th></tr>
+	<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
+	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
+	<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
+	</table>
 
 - Visual Studio 2013 がインストールされている**ワークステーション**。手順については、[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
 
@@ -98,11 +98,13 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 3. **名前**、**説明**、**Web サイト**を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
 
 	<table border="1">
-<tr><th>フィールド</th><th>値</th></tr>
-<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
-<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
-<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
-</table>> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
+	<tr><th>フィールド</th><th>値</th></tr>
+	<tr><td>名前</td><td>MyHDInsightHBaseApp</td></tr>
+	<tr><td>説明</td><td>MyHDInsightHBaseApp</td></tr>
+	<tr><td>Web サイト</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
+	</table>
+
+	> [AZURE.NOTE]Twitter アプリケーションの名前は一意の名前にする必要があります。
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
@@ -161,7 +163,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 	- テンプレート: **Visual C#/Windows デスクトップ/コンソール アプリケーション**
 	- 名前: **TweetSentimentStreaming** 
-	- 場所: **C:\Tutorials**
+	- 場所: **C:\\Tutorials**
 	- ソリューション名: **TweetSentimentStreaming**
 
 4. **[OK]** をクリックして続行します。
@@ -539,7 +541,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 	- テンプレート カテゴリ: **Visual C#/Web**
 	- テンプレート: **ASP.NET Web アプリケーション**
 	- 名前: **TweetSentimentWeb**
-	- 場所: **C:\Tutorials** 
+	- 場所: **C:\\Tutorials** 
 4. **[OK]** をクリックします。
 5. **[テンプレートの選択]** で **[MVC]** をクリックします。 
 6. **[Microsoft Azure]** で **[サブスクリプションの管理]** をクリックします。
@@ -1175,7 +1177,8 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 **layout.cshtml を変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。2. 次のコンテンツに置き換えます。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。
+2. 次のコンテンツに置き換えます。
 
 		<!DOCTYPE html>
 		<html>
@@ -1352,6 +1355,7 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
+
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

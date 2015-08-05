@@ -35,14 +35,14 @@ Azure Active Directory、Office 365、Microsoft Intune が提供する複数の�
 
 以下のトピックでは、組織で条件付きのアクセス ポリシーを設定するときに利用できる各メカニズムについて説明しています。
 
-- [Azure Active Directory Device Registration Overview](https://msdn.microsoft.com/library/azure/dn903763.aspx)
-- [Setting up On-premises Conditional Access using Azure Active Directory Device Registration](https://msdn.microsoft.com/library/azure/dn788908.aspx)
-- [Conditional Access Device Policies for Office 365 services](https://msdn.microsoft.com/library/azure/dn903766.aspx)
-- [Azure Conditional Access Preview for SaaS Apps](https://msdn.microsoft.com/library/azure/dn906877.aspx)
+- [Azure Active Directory Device Registration の概要](https://msdn.microsoft.com/library/azure/dn903763.aspx)
+- [Azure Active Directory Device Registration を使用してオンプレミスの条件付きアクセスを設定する](https://msdn.microsoft.com/library/azure/dn788908.aspx)
+- [Office 365 サービスに対する条件付きアクセスのデバイス ポリシー](https://msdn.microsoft.com/library/azure/dn903766.aspx)
+- [Azure Conditional Access Preview for SaaS アプリ](https://msdn.microsoft.com/library/azure/dn906877.aspx)
 
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

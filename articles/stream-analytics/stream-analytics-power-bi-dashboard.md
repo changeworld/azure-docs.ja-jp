@@ -165,7 +165,8 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データのプッシュが最大で 1 プッシュ/秒となり、クエリがスループット要件の範囲内に収まるようにするには、TumblingWindow または HoppingWindow の使用をお勧めします。また、次の式を使用して、現在のウィンドウに設定する値 (秒) を計算ができます。![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
 
-たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
+たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。
+![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
 
 つまり、元のクエリが次のように変更されます。
 

@@ -92,7 +92,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 5. **[追加]** をクリックします。
 6. **[エンドポイントの追加]** ダイアログ ボックスで、**[スタンドアロン エンドポイントの追加]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
 7. <strong>[エンドポイントの詳細を指定します]</strong> ダイアログ ボックスで、次の操作を行います。
-    1. エンドポイントの [名前] (**HttpIn** など) を指定します。
+    1. エンドポイントの [名前] \(**HttpIn** など) を指定します。
     2. プロトコルに **TCP** を指定します。
     3. [パブリック ポート] に **80** を指定します。
     4. [プライベート ポート] に **8080** を指定します。
@@ -159,4 +159,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

@@ -49,13 +49,17 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
 1. **[新規]** > **[Marketplace]** をクリックして、Azure Marketplace を開きます。  
 <!-- ![Store][button-store] -->
-2. **MongoLab** アドオンをクリックします。![MongoLab][entry-mongolab]
-3. アドオン一覧で **MongoLab** アドオンをクリックし、**[接続文字列]** をクリックします。![ConnectionInfoButton][button-connectioninfo]  
-4. **MONGOLAB_URI** をクリップボードにコピーします。![ConnectionInfoScreen][screen-connectioninfo]
+2. **MongoLab** アドオンをクリックします。
+![MongoLab][entry-mongolab]
+3. アドオン一覧で **MongoLab** アドオンをクリックし、**[接続文字列]** をクリックします。
+![ConnectionInfoButton][button-connectioninfo]  
+4. **MONGOLAB_URI** をクリップボードにコピーします。
+![ConnectionInfoScreen][screen-connectioninfo]
 
 	>[AZURE.NOTE]この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。
 
-5. Azure App Service の Web アプリケーションの **[構成]** メニューで **[接続文字列]** ボックスに値を追加します。![WebAppConnectionStrings][focus-website-connectinfo]
+5. Azure App Service の Web アプリケーションの **[構成]** メニューで **[接続文字列]** ボックスに値を追加します。
+![WebAppConnectionStrings][focus-website-connectinfo]
 6. **[名前]**に、「**MONGOLAB_URI**」と入力します。
 7. **[値]** に、先にコピーした接続文字列を貼り付けます。
 8. [種類] ボックスの一覧の **[カスタム]** をクリックします (既定値の **SQLAzure** の代わりに)。
@@ -445,7 +449,8 @@ Azure CLI を使用する前に、自分のサブスクリプションに関す�
 
 Azure App Service では Web アプリを非常に簡単に作成できます。初めて Azure の Web アプリを作成する場合は、ポータルを使用する必要があります。既に 1 つ以上の Web サイトを作成している場合は、ステップ 7. に進んでください。
 
-1. Azure ポータルで、**[新規]** をクリックします。![新規][button-new]
+1. Azure ポータルで、**[新規]** をクリックします。
+![新規][button-new]
 2. **[コンピューティング]、[Web アプリ]、[簡易作成]** の順に選択します。
 <!-- ![Create Web App][screen-mongolab-newwebsite] -->
 3. URL のプレフィックスを入力します。好みの名前を選択します。ただし、重複した名前は使用できません ("mymongoapp" はおそらく使用できません)。
@@ -570,4 +575,4 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 [mongolab-view]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/mongolab-view.png
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

@@ -28,7 +28,8 @@
 
 Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]
+> このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 
@@ -97,7 +98,8 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 		git init
 
-	> [AZURE.NOTE]**Git コマンドが使用できない場合** [Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")を参照してください。
+	> [AZURE.NOTE]**Git コマンドが使用できない場合** 
+	> [Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")を参照してください。
 
 2. 次のコマンドを使用して、リポジトリにファイルを追加します。
 

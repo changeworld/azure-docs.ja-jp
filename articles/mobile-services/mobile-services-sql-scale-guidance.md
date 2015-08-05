@@ -32,7 +32,7 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 <a name="Diagnosing"></a>
 ## 問題の診断
 
-負荷のある状態でモバイル サービスに問題が発生している疑いがある場合は、まず **Azure の管理ポータル**でサービスの [[ダッシュボード]][] タブを確認します。ここでは、次の点について確認します。
+負荷のある状態でモバイル サービスに問題が発生している疑いがある場合は、まず **Azure の管理ポータル**でサービスの [ダッシュボード][] タブを確認します。ここでは、次の点について確認します。
 
 - **API 呼び出し**や**アクティブなデバイス**の測定値など、使用量の測定値がクォータを超えていない
 - **エンドポイントの監視**ステータスで、サービスが稼働していることが示されている (サービスが Standard 階層を使用し、エンドポイントの監視が有効になっている場合のみ利用できます) 
@@ -444,7 +444,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 <!-- LINKS -->
 
 [Azure の管理ポータル]: http://manage.windowsazure.com
-[[ダッシュボード]]: http://manage.windowsazure.com
+[ダッシュボード]: http://manage.windowsazure.com
 
 [Azure SQL Database のドキュメント]: http://azure.microsoft.com/documentation/services/sql-database/
 [Managing SQL Database using SQL Server Management Studio]: http://go.microsoft.com/fwlink/p/?linkid=309723&clcid=0x409

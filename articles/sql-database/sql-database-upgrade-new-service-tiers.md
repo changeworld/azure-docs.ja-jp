@@ -23,7 +23,7 @@ Azure SQL Web データベースと Business データベースは廃止され�
 
 「[Web and Business Database Migration Guidance Cookbook](http://download.microsoft.com/download/3/C/9/3C9FF3D8-E702-4F5D-A38C-5EFA1DBA73E6/Azure_SQL_Database_Migration_Cookbook.pdf)」をダウンロードしてください。
 
-> [AZURE.NOTE] [Pricing tier recommendations]Ｗeb および Business データベースの (sql-database-service-tier-advisor.md) が使用できるようになりました。
+> [AZURE.NOTE] [Pricing tier recommendations](sql-database-service-tier-advisor.md) Ｗeb および Business データベースのが使用できるようになりました。
 
 ## 概要
 
@@ -161,7 +161,8 @@ DTU の使用率とワークロードに合わせるのに必要な最大エデ�
 
 ![リソース消費][4]
 
-> **注:** さまざまなパフォーマンス レベル間の相対 DTU 数は、[Azure SQL データベース ベンチマーク](http://msdn.microsoft.com/library/azure/dn741327.aspx) ワークロードに基づいています。データベースのワークロードはベンチマークと異なることがあるため、最初に Web/Business データベースに合う新しい階層を求めるときには、上述の計算をガイドラインとして使用する必要があります。データベースを新しい階層に移動させたら、前のセクションに説明のあった処理を使用して、ワークロードのニーズに最適なサービス階層を検証/調整します。
+> **注:**
+> さまざまなパフォーマンス レベル間の相対 DTU 数は、[Azure SQL データベース ベンチマーク](http://msdn.microsoft.com/library/azure/dn741327.aspx) ワークロードに基づいています。データベースのワークロードはベンチマークと異なることがあるため、最初に Web/Business データベースに合う新しい階層を求めるときには、上述の計算をガイドラインとして使用する必要があります。データベースを新しい階層に移動させたら、前のセクションに説明のあった処理を使用して、ワークロードのニーズに最適なサービス階層を検証/調整します。
 > 
 > 推奨される新しいエディションの階層/パフォーマンス レベルには過去 １４ 日分のデータベース アクティビティが考慮されますが、このデータは 5 分間の平均リソース消費データに基づくものです。つまり 5 分に満たない短期間のアクティビティの急増が考慮されないことがあります。そのため、このガイダンスはデータベースをアップグレードするための開始点として使用する必要があります。推奨される階層にデータベースをアップグレードしたら、さらなる監視、テスト、検証を行う必要があります。必要に応じてデータベースを別の階層/パフォーマンス レベルに変更します。
 
@@ -238,7 +239,7 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 ## 5.新しいサービス階層/パフォーマンス レベルにアップグレードする
 お使いの Web と Business データベースに適切なサービス階層とパフォーマンス レベルを決定した後、データベースを新しい階層にアップグレードするには、いくつかの方法があります。
 
-| 管理ツール | データベースのサービス階層とパフォーマンス レベルを変更します。||
+| 管理ツール | データベースのサービス階層とパフォーマンス レベルを変更します。|
 | :---| :---|
 | [Azure 管理ポータル](https://manage.windowsazure.com) | データベースのダッシュボード ページで **[スケール]** タブをクリックします。 |
 | [Azure PowerShell](http://msdn.microsoft.com/library/azure/dn546726.aspx) | [Set-AzureSqlDatabase](http://msdn.microsoft.com/library/azure/dn546732.aspx) コマンドレットを使用します。 |
@@ -249,7 +250,7 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 
 
 ## 6.新しいサービス階層/パフォーマンス レベルへのアップグレードを監視する
-Azure SQL Database では、論理サーバーのマスター データベースの sys.dm_operation_status 動的管理ビューで、データベース上で実行される管理操作 (CREATE、ALTER、DROP など) に関する進行状況の情報を確認できます。論理サーバーには現在のデータベースが配置されます。詳細については、sys.dm _operation _status のドキュメント (http://msdn.microsoft.com/library/azure/dn270022.aspx) を参照してください。データベースのアップグレード操作の進行状況を確認するには、操作ステータス DMV を使用します。このサンプル クエリには、データベース上で実行されるすべての管理操作が表示されます。
+Azure SQL Database では、論理サーバーのマスター データベースの sys.dm_operation_status 動的管理ビューで、データベース上で実行される管理操作 (CREATE、ALTER、DROP など) に関する進行状況の情報を確認できます。論理サーバーには現在のデータベースが配置されます。詳細については、[sys.dm _operation _status のドキュメントを参照してください](http://msdn.microsoft.com/library/azure/dn270022.aspx)。データベースのアップグレード操作の進行状況を確認するには、操作ステータス DMV を使用します。このサンプル クエリには、データベース上で実行されるすべての管理操作が表示されます。
 
     SELECT o.operation, o.state_desc, o.percent_complete
     , o.error_code, o.error_desc, o.error_severity, o.error_state
@@ -309,4 +310,4 @@ Azure SQL データベース サービスでは利用統計データとツール
 
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

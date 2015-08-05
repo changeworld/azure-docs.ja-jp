@@ -121,7 +121,7 @@ API アプリから SaaS プラットフォームへの呼び出しを送信す�
 	 
 			install-package DropboxRestAPI  
 
-1. *Controllers\ValuesController.cs* を開き、ファイル内のすべてのコードを次のコードに置き換えます。
+1. *Controllers\\ValuesController.cs* を開き、ファイル内のすべてのコードを次のコードに置き換えます。
 
 		using DropboxRestAPI;
 		using Microsoft.Azure.AppService.ApiApps.Service;
@@ -376,7 +376,12 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 		browser.Navigate(string.Format(@"{0}/login/aad", GATEWAY_URL));
 
-	他のプロバイダーで使用する値を次に示します: * "microsoftaccount" * "facebook" * "twitter" * "google"<br/><br/>
+	他のプロバイダーで使用する値を次に示します:
+	* "microsoftaccount"
+	* "facebook"
+	* "twitter"
+	* "google"
+<br/><br/>
 
 * `GetConsentLinkAsync()` メソッドの 2 番目のパラメーターは、ユーザーが Dropbox にログインしてユーザー アカウントへのアクセスに同意した後に、同意サーバーによりリダイレクトされるコールバック URL です。
 
@@ -445,6 +450,8 @@ Dropbox ログイン後のリダイレクト URL は、次の例のようにな�
 SaaS プラットフォームに接続する API アプリのコード記述と構成の方法について説明しました。API アプリでの認証を処理する方法に関するその他のチュートリアルへのリンクについては、[API Apps と Mobile Apps の認証に関するページの「次のステップ」](../app-service/app-service-authentication-overview.md#next-steps)を参照してください。
 
 [Azure preview portal]: https://portal.azure.com/
+[Azure プレビュー ポータル]: https://portal.azure.com/
 [Azure portal]: https://manage.windowsazure.com/
+[Azure ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

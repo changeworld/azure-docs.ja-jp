@@ -390,15 +390,15 @@ Net# では、オプションで、共有の重みを持つ複数のバンドル
 -	このネットワークには第 3 の隠れ層 Hid3 があり、これは第 2 の隠れ層 Conv2 に完全結合されます。
 -	出力層である Digit は、第 3 の隠れ層 Hid3 のみに結合されます。キーワード **all** は、出力層が Hid3 に完全結合されることを示しています。
 -	畳み込みのアリティは 3 (**InputShape**、**KernelShape**、**Stride**、**Sharing** から成るタプルの長さ) です。 
--	カーネルごとの重みの数は、_1 + **KernelShape**[0] * **KernelShape**[1] * **KernelShape**[2] = 1 + 1 * 5 * 5 = 26 になります。または、26 * 50 = 1300_ になります。
+-	カーネルごとの重みの数は、_1 + **KernelShape**[0] * **KernelShape**\[1] * **KernelShape**[2] = 1 + 1 * 5 * 5 = 26 になります。または、26 * 50 = 1300_ になります。
 -	それぞれの隠れ層のノードは、次のように計算できます。
 	-	**NodeCount**[0] = (5 - 1) / 1 + 1 = 5.
-	-	**NodeCount**[1] = (13 - 5) / 2 + 1 = 5. 
+	-	**NodeCount**\[1] = (13 - 5) / 2 + 1 = 5. 
 	-	**NodeCount**[2] = (13 - 5) / 2 + 1 = 5. 
--	ノードの合計数は、層の宣言済みディメンショナリティ [50, 5, 5] を使用して次のように計算できます。_**MapCount** * **NodeCount**[0] * **NodeCount**[1] * **NodeCount**[2] = 10 * 5 * 5 * 5_
+-	ノードの合計数は、層の宣言済みディメンショナリティ [50, 5, 5] を使用して次のように計算できます。_**MapCount** * **NodeCount**[0] * **NodeCount**\[1] * **NodeCount**[2] = 10 * 5 * 5 * 5_
 -	ここで、**Sharing**[d] は _d == 0_ の場合にのみ False であるため、カーネルの数は _**MapCount** * **NodeCount**[0] = 10 * 5 = 50_ になります。 
 
 [1]: ./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

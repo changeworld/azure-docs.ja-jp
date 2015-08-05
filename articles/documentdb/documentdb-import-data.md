@@ -81,7 +81,7 @@ JSON ファイルをインポートするためのコマンド ライン サン�
 	dt.exe /s:JsonFile /s.Files:C:\Tweets*.*;C:\LargeDocs***.*;C:\TESessions\Session48172.json;C:\TESessions\Session48173.json;C:\TESessions\Session48174.json;C:\TESessions\Session48175.json;C:\TESessions\Session48177.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:subs /t.CollectionTier:S3
 
 	#Import a single JSON file and partition the data across 4 collections
-	dt.exe /s:JsonFile /s.Files:D:\CompanyData\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionTier:S3
+	dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionTier:S3
 
 ##<a id="MongoDB"></a>MongoDB からのインポート ##
 
@@ -137,7 +137,20 @@ SQL ソース インポーター オプションを使用して、個々の SQL 
 
 Address.AddressType や Address.Location.StateProvinceName などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に Address や Address.Location のサブドキュメントが作成されています。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
 
-*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
+*{
+  "id": "956",
+  "Name": "Finer Sales and Service",
+  "Address": {
+    "AddressType": "Main Office",
+    "AddressLine1": "#500-75 O'Connor Street",
+    "Location": {
+      "City": "Ottawa",
+      "StateProvinceName": "Ontario"
+    },
+    "PostalCode": "K4B 1S2",
+    "CountryRegionName": "Canada"
+  }
+}*
  
 SQL Server からインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 
@@ -159,7 +172,18 @@ SQL ソースの場合と同様、[入れ子の区切り記号] プロパティ�
 
 DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に DomainInfo や RedirectInfo のサブドキュメントが作成されます。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{
+  "DomainInfo": {
+    "Domain_Name": "ACUS.GOV",
+    "Domain_Name_Address": "http://www.ACUS.GOV"
+  },
+  "Federal Agency": "Administrative Conference of the United States",
+  "RedirectInfo": {
+    "Redirecting": "0",
+    "Redirect_Destination": ""
+  },
+  "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"
+}*
 
 インポート ツールは、CSV ファイル内の引用符なしの値の型情報を推測しようとします (引用符で囲まれた値は、常に文字列として扱われます)。型は、数値型、DateTime 型、ブール型の順に識別されます。
 
@@ -247,7 +271,8 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 DocumentDB ソース インポーター オプションには、次の詳細オプションがあります。
 
-1. 内部フィールドを含める: エクスポート内の DocumentDB ドキュメント システム プロパティ (_rid、_ts など) を含めるかどうかを指定します。2. エラー発生時の再試行回数: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を再試行する回数を指定します。
+1. 内部フィールドを含める: エクスポート内の DocumentDB ドキュメント システム プロパティ (_rid、_ts など) を含めるかどうかを指定します。
+2. エラー発生時の再試行回数: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を再試行する回数を指定します。
 3. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を次に再試行するまでの待機時間を指定します。
 4. 接続モード: DocumentDB で使用する接続モードを指定します。使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
 
@@ -476,4 +501,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->
