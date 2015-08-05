@@ -10,6 +10,6 @@ Visual Studio の**サーバー エクスプ ローラー**を使用すると、
 既定では、新しいコンテナーはプライベートなので、このコンテナーから BLOB をダウンロードするにはストレージ アクセス キーを指定する必要があります。コンテナー内のファイルを公開する場合、**[サーバー エクスプ ローラー]** でコンテナーを選択して `F4` を押すと、**[プロパティ]** ウィンドウが表示されます。**[パブリック読み取りアクセス]** を **[BLOB]** に設定します。パブリック コンテナー内の BLOB は、インターネットに接続しているすべてのユーザーが表示できますが、変更または削除できるのは、適切なアクセス キーを持っているユーザーだけです。
 
 
-[Image1]: ./media/vs-storage-getting-started-blobs-include/vs-storage-create-blob-containers-in-Server-Explorer.png
+[Image1]: ./media/vs-create-blob-container-in-server-explorer/vs-storage-create-blob-containers-in-Server-Explorer.png
 
 <!---HONumber=July15_HO4-->
