@@ -310,7 +310,7 @@ Web API で CORS を有効にするプロセスについては、[ASP.NET Web AP
             $scope.refresh();
         });
 
-1. Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
+1, Index.html に追加したコードのベース URL (`http://localhost:1578`) のポート番号を、API プロジェクトの実際のポート番号に置き換えます。
 
 	> **Note** Don't use the port number of the HTML client project. You can right-click the API project and click **Debug > Start New Instance** to get a browser window that shows the port number.
 
