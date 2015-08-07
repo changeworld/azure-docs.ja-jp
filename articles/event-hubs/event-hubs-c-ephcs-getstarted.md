@@ -116,4 +116,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!----HONumber=July15_HO4-->
+<!------HONumber=July15_HO4-->

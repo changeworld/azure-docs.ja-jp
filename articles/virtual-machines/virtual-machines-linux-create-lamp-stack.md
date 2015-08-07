@@ -345,7 +345,7 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 		sudo chgrp lampappgroup /var/www/html/  # Change the ownership to group lampappgroup
 		sudo chmod g+w /var/www/html/                 # grant write permission to group lampappgroup
 
-	>[AZURE.NOTE]
+	>[AZURE.NOTE] /var/www/html/ のファイルを変更すると、再度のログインが必要になる場合があります。
 -	SFTP クライアント (FileZilla など) を使用して仮想マシンの DNS 名 (例: lampdemo.cloudapp.net) に接続し、/**var/www/html** に移動してサイトを公開します。![][18]
 
 
@@ -452,4 +452,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
  
 
-<!---HONumber=July15_HO4-->
+<!-----HONumber=July15_HO4-->

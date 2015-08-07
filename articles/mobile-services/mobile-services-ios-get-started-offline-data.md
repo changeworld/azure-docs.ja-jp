@@ -272,4 +272,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!----HONumber=July15_HO4-->
+<!------HONumber=July15_HO4-->

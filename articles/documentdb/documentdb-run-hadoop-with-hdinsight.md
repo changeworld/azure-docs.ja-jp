@@ -70,7 +70,7 @@
 
 ## <a name="CreateStorage"></a>手順 1: Azure のストレージ アカウントを作成する
 
-> [AZURE.IMPORTANT]**既に** Azure ストレージ アカウントを所有していて、そのアカウント内に BLOB コンテナーを新規作成する場合は、この手順を省略して「[手順 2: カスタマイズした HDInsight クラスターを作成する](#ProvisionHDInsight)」に進んでください。
+> [AZURE.IMPORTANT] **既に** Azure ストレージ アカウントを所有していて、そのアカウント内に BLOB コンテナーを新規作成する場合は、この手順を省略して「[手順 2: カスタマイズした HDInsight クラスターを作成する](#ProvisionHDInsight)」に進んでください。
 
 Azure HDInsight では、データの格納に Azure BLOB ストレージを使用します。これは *WASB* または *Azure ストレージ - BLOB* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
@@ -85,11 +85,11 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 2. 左下隅にある **[+ 新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。][image-storageaccount-quickcreate]
 
-3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。
+3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。 
 	
 	新しいストレージ アカウントがストレージ一覧に表示されます。
 
-	> [AZURE.IMPORTANT]最適なパフォーマンスが得られるように、お使いのストレージ アカウント、HDInsight クラスター、および DocumentDB アカウントが同一の Azure リージョンに配置されていることを確認してください。3 つのサービスすべてをサポートしている Azure リージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、および**米国西部**です。
+	> [AZURE.IMPORTANT] 最適なパフォーマンスが得られるように、お使いのストレージ アカウント、HDInsight クラスター、および DocumentDB アカウントが同一の Azure リージョンに配置されていることを確認してください。3 つのサービスすべてをサポートしている Azure リージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、および**米国西部**です。
 
 4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
 
@@ -204,13 +204,13 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 	3. Azure サブスクリプションのパスワードを入力します。 
 	4. **[サインイン]** をクリックします。
 
-4. 次の図は、Azure PowerShell Scripting Environment の重要な要素を示しています。
+4. 次の図は、Azure PowerShell Scripting Environment の重要な要素を示しています。 
 
 	![図: Azure PowerShell][azure-powershell-diagram]
 
 ## <a name="RunHive"></a>手順 4: DocumentDB と HDInsight を使用して Hive ジョブを実行する
 
-> [AZURE.IMPORTANT]< > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
+> [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 
 1. PowerShell スクリプト ウィンドウで次の変数を設定します。
 
@@ -245,7 +245,8 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 3.  次に、出力コレクション用に Hive テーブルを作成します。出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
 	> [AZURE.NOTE]**ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-    '*DocumentDB.outputCollections*' = '*<DocumentDB Output Collection Name 1>*,*<DocumentDB Output Collection Name 2>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br> ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    '*DocumentDB.outputCollections*' = '*<DocumentDB Output Collection Name 1>*,*<DocumentDB Output Collection Name 2>*' </br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br>
+    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Create a Hive table for the output data to DocumentDB.
 	    $queryStringPart2 = "drop table DocumentDB_analytics; " +
@@ -310,7 +311,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 ## <a name="RunPig"></a>手順 5: DocumentDB と HDInsight を使用して Pig ジョブを実行する
 
-> [AZURE.IMPORTANT]< > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
+> [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 
 1. PowerShell スクリプト ウィンドウで次の変数を設定します。
 
@@ -343,7 +344,8 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 
 4. 最後に、その結果を新しい出力コレクションに格納します。
 
-    > [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br> ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    > [AZURE.NOTE]次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '<DocumentDB Output Collection Name 1>,<DocumentDB Output Collection Name 2>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
+    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Store output data to DocumentDB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +
@@ -489,4 +491,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!----HONumber=July15_HO4-->
+<!-------HONumber=July15_HO4-->
