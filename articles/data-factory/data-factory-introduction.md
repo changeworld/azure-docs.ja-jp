@@ -25,7 +25,9 @@ Data Factory は、データの移動や変換を自動化するクラウド ベ
 
 Data Factory は、オンプレミスとクラウドのデータ ソースおよび SaaS で動作し、データの取り込み、準備、変換、分析、および発行を行います。ビッグ データのコンピューティング ニーズのための [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) や [Azure Batch](http://azure.microsoft.com/documentation/services/batch/) および分析ソリューションを運用可能にするための [Azure Machine Learning](http://azure.microsoft.com/documentation/services/machine-learning/) といったサービスから Data Factory を使用して管理されたデータ フロー パイプラインを作成し、データを変換します。単なる表形式の監視ビューではなく、Data Factory のリッチな視覚化機能を使用してデータ パイプライン間の系列と依存関係をすばやく表示します。1 つの統一されたビューからすべてのデータ フロー パイプラインを監視し、問題を簡単に特定して監視アラートを設定します。
 
-![概要](./media/data-factory-introduction/overview.png) **図 1.** 多くのさまざまなオンプレミス データ ソースからデータを収集し、データを取り込んで準備し、広範な変換でデータを整理して分析し、消費用にすぐ使用できるデータを発行します。
+![概要](./media/data-factory-introduction/data-factory-overview.png) 
+
+**図 1.** 多くのさまざまなオンプレミス データ ソースからデータを収集し、データを取り込んで準備し、広範な変換でデータを整理して分析し、消費用にすぐ使用できるデータを発行します。
 
 必要があればいつでも Data Factory を使用して、異なる形状とサイズのデータを収集し、変換し、発行して深い洞察を抽出することのすべてを、信頼できるスケジュールで実行できます。Data Factory を使用すると、オンライン ショッピング業者が顧客の閲覧行動に基づいて個人用に設定された製品の推奨事項を生成できるようにするといったシナリオ用に、可用性の高いデータ フロー パイプラインを作成できます。
 

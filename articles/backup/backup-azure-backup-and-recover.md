@@ -1,6 +1,19 @@
-<properties pageTitle="Azure Backup - backup and restore from a Windows Server or Windows Client" | Microsoft Azure description="Learn how to backup and restore from a Windows Server or Windows Client.The article also covers alternate server recovery" services="backup" documentationCenter="" authors="Jim-Parker" manager="jwhit" editor=""/>
+<properties 
+	pageTitle="Azure Backup - Windows サーバーまたは Windows クライアントからのバックアップと復元 | Microsoft Azure" description="Windows サーバーまたは Windows クライアントからバックアップと復元を行う方法について説明します。この記事では、代替サーバーの復旧についても説明します" 
+	services="backup" 
+	documentationCenter="" 
+	authors="Jim-Parker" 
+	manager="jwhit" 
+	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt\_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
+<tags 
+	ms.service="backup" 
+	ms.workload="storage-backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/01/2015" 
+	ms.author="jimpark"; "aashishr"/>
 
 # Windows サーバーまたは Windows クライアント コンピューターからのバックアップと復元
 この記事では、Windows サーバーまたは Windows クライアント コンピューターからのバックアップに必要な手順について説明します。また、同じコンピューターにバックアップ ファイルを復元するために必要な手順と、他のコンピューターにバックアップ ファイルを復元するために必要な手順についても説明します。

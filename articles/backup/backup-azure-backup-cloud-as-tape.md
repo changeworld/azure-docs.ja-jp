@@ -1,12 +1,20 @@
 <properties
-   pageTitle="Azure Backup を使用してテープのインフラストラクチャを置換する | Microsoft Azure"
-   description="Azure でのデータのバックアップと復元を可能にするテープのようなセマンティクスを Azure Backup が提供する方法について説明します。"
-   services="backup"
-   documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
-   editor=""/>
-<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt\_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
+	pageTitle="Azure Backup を使用してテープのインフラストラクチャを置換する | Microsoft Azure"
+	description="Azure でのデータのバックアップと復元を可能にするテープのようなセマンティクスを Azure Backup が提供する方法について説明します。"
+	services="backup"
+	documentationCenter=""
+	authors="Jim-Parker"
+	manager="jwhit"
+	editor=""/>
+
+<tags 
+	ms.service="backup" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="storage-backup-recovery" 
+	ms.date="07/01/2015" 
+	ms.author="jimpark"; "aashishr"/>
 
 # Azure Backup を使用してテープのインフラストラクチャを置換する
 Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。 - 組織のニーズに最適なスケジュールでデータをバックアップする - 長期間にわたってバックアップ データを保持する - Azure を長期保持ニーズの一部にする (テープの代わり)

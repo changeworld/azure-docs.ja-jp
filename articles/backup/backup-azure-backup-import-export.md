@@ -1,12 +1,20 @@
 <properties
-   pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理 | Microsoft Azure"
-   description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
-   services="backup"
-   documentationCenter=""
-   authors="aashishr"
-   manager="shreeshd"
-   editor=""/>
-<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt\_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/14/2015" ms.author="aashishr"; "jimpark"/>
+	pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理 | Microsoft Azure"
+	description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
+	services="backup"
+	documentationCenter=""
+	authors="aashishr"
+	manager="shreeshd"
+	editor=""/>
+
+<tags 
+	ms.service="backup" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="storage-backup-recovery" 
+	ms.date="07/14/2015" 
+	ms.author="aashishr"; "jimpark"/>
 
 # Azure Backup でのオフライン バックアップのワークフロー
 

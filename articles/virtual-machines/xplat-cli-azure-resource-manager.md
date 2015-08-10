@@ -7,7 +7,14 @@
 	authors="dlepow"
 	services="virtual-machines"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services"" ms.tgt\_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="06/09/2015" ms.author="danlep"/>
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services"" 
+	ms.tgt_pltfrm="command-line-interface" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/09/2015" 
+	ms.author="danlep"/>
 
 # Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
 

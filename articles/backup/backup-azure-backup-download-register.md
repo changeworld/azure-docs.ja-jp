@@ -1,12 +1,20 @@
 <properties
-   pageTitle="Azure Backup エージェントのダウンロード、インストール、および登録 | Microsoft Azure"
-   description="Azure Backup エージェントをダウンロードする方法と場所、インストール手順、および資格情報コンテナーの資格情報を使用して Azure Backup エージェントを登録する方法について説明します。"
-   services="backup"
-   documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
-   editor=""/>
-<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt\_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
+	pageTitle="Azure Backup エージェントのダウンロード、インストール、および登録 | Microsoft Azure"
+	description="Azure Backup エージェントをダウンロードする方法と場所、インストール手順、および資格情報コンテナーの資格情報を使用して Azure Backup エージェントを登録する方法について説明します。"
+	services="backup"
+	documentationCenter=""
+	authors="Jim-Parker"
+	manager="jwhit"
+	editor=""/>
+
+<tags 
+	ms.service="backup" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="storage-backup-recovery" 
+	ms.date="07/01/2015" 
+	ms.author="jimpark"; "aashishr"/>
 
 # Azure Backup エージェントのダウンロード、インストール、および登録
 Azure Backup 資格情報コンテナーを作成したら、データやアプリケーションを Azure にバックアップするための各オンプレミスのサーバー (Windows Server、Windows クライアントまたは System Center Data Protection Manager サーバー) にエージェントをインストールする必要があります。この記事では、Windows Server または Windows クライアント コンピューターに Azure Backup をセットアップするのに必要な手順について説明します。

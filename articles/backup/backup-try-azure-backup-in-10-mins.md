@@ -1,13 +1,20 @@
 <properties
-   pageTitle="10 分で Azure Backup を試してみる | Microsoft Azure"
-   description="10 分で Azure Backup を使用する"
-   services="backup"
-   documentationCenter=""
-   authors="Jim-Parker"
-   manager="shreeshd"
-   editor=""/>
+	pageTitle="10 分で Azure Backup を試してみる | Microsoft Azure"
+	description="10 分で Azure Backup を使用する"
+	services="backup"
+	documentationCenter=""
+	authors="Jim-Parker"
+	manager="shreeshd"
+	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt\_pltfrm="na" ms.devlang="na" ms.topic="get-started-article" ms.date="07/06/2015" ms.author="aashishr"; "jimpark"/>
+<tags 
+	ms.service="backup" 
+	ms.workload="storage-backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="get-started-article" 
+	ms.date="07/06/2015" 
+	ms.author="aashishr"; "jimpark"/>
 
 # 10 分で Azure Backup を試してみる
 Azure Backup のセットアップはとても簡単です。次の操作方法のビデオは初めて使用する場合に役立ちます。

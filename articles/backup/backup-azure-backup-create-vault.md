@@ -1,13 +1,20 @@
 <properties
-   pageTitle="Azure Backup - バックアップ資格情報コンテナーの作成とストレージ冗長の指定"
-   description="バックアップ資格情報コンテナーを作成し、Azure Backup でストレージ冗長オプションを指定する方法について説明します。"
-   services="backup"
-   documentationCenter=""
-   authors="aashishr"
-   manager="shreeshd"
-   editor=""/>
+	pageTitle="Azure Backup - バックアップ資格情報コンテナーの作成とストレージ冗長の指定"
+	description="バックアップ資格情報コンテナーを作成し、Azure Backup でストレージ冗長オプションを指定する方法について説明します。"
+	services="backup"
+	documentationCenter=""
+	authors="aashishr"
+	manager="shreeshd"
+	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt\_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/28/2015" ms.author="prvijay"; "jimpark"/>
+<tags 
+	ms.service="backup" 
+	ms.workload="storage-backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/28/2015" 
+	ms.author="prvijay"; "jimpark"/>
 
 # バックアップ資格情報コンテナーの作成
 ファイルとデータを Windows Server または System Center Data Protection Manager (SCDPM) から Azure にバックアップしたり、IaaS VM を Azure にバックアップしたりする場合には、データを保存する地理的リージョンにバックアップ資格情報コンテナーを作成する必要があります。　

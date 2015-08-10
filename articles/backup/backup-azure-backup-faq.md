@@ -1,13 +1,20 @@
 <properties
-   pageTitle="Azure Backup の FAQ | Microsoft Azure"
-   description="Azure Backup サービスに関してよく寄せられる質問"
-   services="backup"
-   documentationCenter=""
-   authors="Jim-Parker"
-   manager="shreeshd"
-   editor=""/>
+	pageTitle="Azure Backup の FAQ | Microsoft Azure"
+	description="Azure Backup サービスに関してよく寄せられる質問"
+	services="backup"
+	documentationCenter=""
+	authors="Jim-Parker"
+	manager="shreeshd"
+	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt\_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/23/2015" ms.author="arunak"; "jimpark"; "aashishr"/>
+<tags 
+	ms.service="backup" 
+	ms.workload="storage-backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/23/2015" 
+	ms.author="arunak"; "jimpark"; "aashishr"/>
 
 # Azure Backup - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
