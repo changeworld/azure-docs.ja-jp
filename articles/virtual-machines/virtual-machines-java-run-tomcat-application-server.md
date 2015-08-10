@@ -159,4 +159,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

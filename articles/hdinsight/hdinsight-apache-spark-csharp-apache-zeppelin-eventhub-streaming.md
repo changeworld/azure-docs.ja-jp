@@ -52,7 +52,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 <tr><th>名前</th><th>アクセス許可</th></tr>
 <tr><td>mysendpolicy</td><td>送信</td></tr>
 <tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
+</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (\*\*mysendpolicy\*\*) とリッスン (\*\*myreceivepolicy\*\*) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming/HDI.Spark.Streaming.Event.Hub.Policies.png "Event Hub のポリシーを作成します")
 
@@ -164,4 +164,4 @@ Zeppelin を使用して HDInsight の Spark クラスターでストリーミ�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

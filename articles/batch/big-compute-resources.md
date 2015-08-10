@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ビッグ コンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース | Microsoft Azure"
+   pageTitle="ビッグ コンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース | Microsoft Azure"
    description="Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="07/14/2015"
+   ms.date="07/28/2015"
    ms.author="danlep"/>
 
-# Azure における大規模なコンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
+# Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
 これは、Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソース ガイドです。既存の Batch または HPC ワークロードを Azure クラウドに拡張するか、新しい大規模なコンピューティング ソリューションを Azure サービスを使用して Azure に構築します。
 
 ## ソリューションのオプション
@@ -36,9 +36,9 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [API リファレンス](https://msdn.microsoft.com/library/azure/dn820177.aspx)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+* [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [チュートリアル - .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -48,18 +48,46 @@ Azure の大規模なコンピューティング オプションについて説�
 
 ### Microsoft HPC Pack
 
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) は Microsoft の無料のクラスター マネージャーであり、オンプレミス、ハイブリッド、クラウド ベース HPC のためのジョブ スケジューリング ソリューションです。
+HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料の HPC ソリューションです。
 
-* [HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+* [HPC Pack 2012 R2 Update 2 をダウンロードする](https://www.microsoft.com/ja-jp/download/details.aspx?id=47755)
 
-* [Azure VM の HPC Pack](https://msdn.microsoft.com/library/azure/dn518135.aspx)
+* [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
-* [チュートリアル: Azure での HPC Pack を使用したハイブリッド クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
+* **Azure VM イメージ**
+
+    * [Windows Server 2012 R2 上の HPC Pack](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)
+
+    * [Windows Server 2012 R2 上の HPC Pack コンピューティング ノード](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodeonwindowsserver2012r2/)
+
+    * [Windows Server 2012 R2 上の HPC Pack コンピューティング ノードと Excel](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
+
+* **Azure のクイック スタート テンプレートとスクリプト**
+
+    * [HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
+
+    * [カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
+
+    * [HPC Pack IaaS デプロイメント PowerShell スクリプト](https://www.microsoft.com/download/details.aspx?id=44949)
+
+* **Azure チュートリアル**
+
+    * [チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](../virtual-machines/virtual-machines-linux-cluster-hpcpack.md)
+
+    * [チュートリアル: Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](../virtual-machines/virtual-machines-excel-cluster-hpcpack.md)
+
+    * [Azure で HPC Pack を使用してハイブリッド クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
+
+    * [Azure VM の HPC Pack](https://msdn.microsoft.com/library/azure/dn518135.aspx)
+
+    * [HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+
 
 * [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
 
-### Linux クラスターのソリューション
-Azure リソース マネージャーのテンプレートを使用して、Linux HPC クラスターをデプロイします。
+### Linux と OSS クラスターのソリューション
+
+これらの Azure クイック スタート テンプレートを使用して、オープン ソース ツールを備えた Linux HPC クラスターをデプロイします。
 
 * [SLURM クラスターの起動](http://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 
@@ -83,9 +111,9 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [A8および A9 インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)
+* [A8 および A9 インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)
 
-* [A8 および A9 インスタンス上での MPI アプリケーションの実行](https://msdn.microsoft.com/library/azure/dn592104.aspx)
+* [A8 および A9 インスタンス上で MPI アプリケーションを実行する](https://msdn.microsoft.com/library/azure/dn592104.aspx)
 
 ## アーキテクチャの設計図
 
@@ -118,4 +146,4 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

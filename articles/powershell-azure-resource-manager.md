@@ -228,7 +228,7 @@ Save-AzureResourceGroupGalleryTemplate はテンプレートを保存して、�
 
 ### ステップ 5. リソース グループを作成する
  
-この手順では、リソース グループ テンプレートを使用してリソース グループを作成します。詳細については、ディスク上の New_WebSite_And_Database.json ファイルを開いて、理解してください。テンプレート ファイルは、リソースの正しい ApiVersion など、渡すパラメーターの値を決定するために非常に役立つことがあります。
+この手順では、リソース グループ テンプレートを使用してリソース グループを作成します。詳細については、ディスク上の New\_WebSite\_And\_Database.json ファイルを開いて、理解してください。テンプレート ファイルは、リソースの正しい ApiVersion など、渡すパラメーターの値を決定するために非常に役立つことがあります。
 
 リソース グループを作成するには、**New-AzureResourceGroup** コマンドレットを使用します。
 
@@ -397,4 +397,4 @@ Getting Started (概要)
 - [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)
 - [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

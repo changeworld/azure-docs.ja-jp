@@ -454,4 +454,4 @@ SaaS プラットフォームに接続する API アプリのコード記述と�
 [Azure portal]: https://manage.windowsazure.com/
 [Azure ポータル]: https://manage.windowsazure.com/
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

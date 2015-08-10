@@ -1,12 +1,20 @@
-<properties pageTitle="Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ" description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure でリソースを作成および削除する方法について説明します。" services="virtual-machines,virtual-network,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager/>
+<properties
+	pageTitle="Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ"
+	description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について説明します。"
+	services="virtual-machines,virtual-network,storage"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines" 
+	ms.service="virtual-machines"
 	ms.workload="multiple"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2015"
+	ms.date="07/28/2015"
 	ms.author="davidmu"/>
 
 # Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ
@@ -327,7 +335,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
                   {
                     Name = "myosdisk1",
                     CreateOption = "FromImage",
-                    VirtualHardDisk = new VirtualHardDisk
+                    VirtualHardDisk = new VirtualHardDisk 
                     {
                       Uri = "http://mytestsa1.blob.core.windows.net/vhds/myosdisk1.vhd"
                     }
@@ -380,4 +388,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

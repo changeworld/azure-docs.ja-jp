@@ -58,9 +58,9 @@
 
 ## 方法: コンテナーに BLOB をアップロードする
 
-データを BLOB にアップロードするには、**put_block_blob_from_path**、**put_block_blob_from_file**、**put_block_blob_from_bytes**、または **put_block_blob_from_text** メソッドを使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+データを BLOB にアップロードするには、**put\_block\_blob\_from\_path**、**put\_block\_blob\_from\_file**、**put\_block\_blob\_from\_bytes**、または **put\_block\_blob\_from\_text** メソッドを使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-**put_block_blob_from_path** は、指定のパスからファイルの内容をアップロードし、**put_block_blob_from_file** は既に開いているファイルやストリームから内容をアップロードします。**put_block_blob_from_bytes** は、バイトの配列をアップロードし、**put_block_blob_from_text** は、指定のエンコード (既定では UTF-8) を使用して指定のテキスト値をアップロードします。
+**put\_block\_blob\_from\_path** は、指定のパスからファイルの内容をアップロードし、**put\_block\_blob\_from\_file** は既に開いているファイルやストリームから内容をアップロードします。**put\_block\_blob\_from\_bytes** は、バイトの配列をアップロードし、**put\_block\_blob\_from\_text** は、指定のエンコード (既定では UTF-8) を使用して指定のテキスト値をアップロードします。
 
 次の例では、**sunset.png** ファイルの内容を **myblob** BLOB にアップロードします。
 
@@ -73,24 +73,36 @@
 
 ## 方法: コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、**list_blobs** メソッドを **for** ループで使用して、コンテナー内の各 BLOB の名前を表示します。次のコードでは、コンテナー内の各 BLOB の**名前**と **URL** をコンソールに出力しています。
+コンテナー内の BLOB を一覧表示するには、**list\_blobs** メソッドを **for** ループで使用して、コンテナー内の各 BLOB の名前を表示します。次のコードでは、コンテナー内の各 BLOB の**名前 (name)** をコンソールに出力しています。
 
 	blobs = blob_service.list_blobs('mycontainer')
 	for blob in blobs:
 		print(blob.name)
-		print(blob.url)
+
+**list\_blobs** によって返されるのは最大 5,000 の BLOB のみです。コンテナーに 5,000 を超える BLOB が含まれている場合は、次のコードを使用します。
+
+	blobs = []
+	marker = None
+	while True:
+		batch = blob_service.list_blobs('mycontainer', marker=marker)
+		blobs.extend(batch)
+		if not batch.next_marker:
+			break
+		marker = batch.next_marker
+	for blob in blobs:
+		print(blob.name)
 
 ## 方法: BLOB をダウンロードする
 
-BLOB からデータをダウンロードするには、**get_blob_to_path**、**get_blob_to_file**、**get_blob_to_bytes**、または **get_blob_to_text** を使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+BLOB からデータをダウンロードするには、**get\_blob\_to\_path**、**get\_blob\_to\_file**、**get\_blob\_to\_bytes**、または **get\_blob\_to\_text** を使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-次の例は、**get_blob_to_path** を使用して **myblob** BLOB の内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
+次の例は、**get\_blob\_to\_path** を使用して **myblob** BLOB の内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
 
 	blob_service.get_blob_to_path('mycontainer', 'myblob', 'out-sunset.png')
 
 ## 方法: BLOB を削除する
 
-最後に、BLOB を削除するには、**delete_blob** を呼び出します。
+最後に、BLOB を削除するには、**delete\_blob** を呼び出します。
 
 	blob_service.delete_blob('mycontainer', 'myblob') 
 
@@ -99,11 +111,11 @@ BLOB からデータをダウンロードするには、**get_blob_to_path**、*
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
 -   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure Storage チームのブログ][]
+-   [Azure Storage チーム ブログ][]
 
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-[Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

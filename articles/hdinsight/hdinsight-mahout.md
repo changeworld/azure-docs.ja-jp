@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="07/24/2015"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -92,7 +92,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 	# NOTE: The version number portion of the file path
 	# may change in future versions of HDInsight.
 	# So dynamically grab it using Hive.
-	$mahoutPath = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target*-job.jar' | where {$_.startswith("C:\apps\dist")}
+	$mahoutPath = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar' | where {$_.startswith("C:\apps\dist")}
 	$noCRLF = $mahoutPath -replace "`r`n", ""
 	$cleanedPath = $noCRLF -replace "\", "/"
 	$jarFile = "file:///$cleanedPath"
@@ -285,21 +285,13 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 ###ジョブを実行する
 
-1. このジョブには Hadoop コマンド ラインが必要であるため、最初に [Azure ポータル][management]を介してリモート デスクトップを有効にする必要があります。このポータルで、HDInsight クラスターを選択し、__[構成]__ ページの下部にある __[リモートの有効化]__ を選択します。
-
-    ![enable remote][enableremote]
-
-    メッセージが表示されたら、リモート セッションに使用するユーザー名とパスワードを入力します。
-
-2. リモート アクセスが有効になったら、__[接続]__ を選択して接続を開始します。これにより、リモート デスクトップ セッションの開始に使用できる __.rdp__ ファイルがダウンロードされます。
-
-    ![connect][connect]
+1. このジョブでは、Hadoop コマンドラインが必要です。「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
 3. 接続した後で、__[Hadoop コマンド ライン]__ アイコンを使用して Hadoop コマンド ラインを開きます。
 
 	![hadoop cli][hadoopcli]
 
-3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (__KDDTrain+.info__) を生成します。
+3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (\_\_KDDTrain+.info\_\_) を生成します。
 
 		hadoop jar "c:/apps/dist/mahout-0.9.0.2.1.3.0-1887/examples/target/mahout-examples-0.9.0.2.1.3.0-1887-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
 
@@ -381,7 +373,7 @@ Mahout ジョブの実行中のエラーを回避するには、実行と実行�
 HDInsight 3.1 クラスターには Mahout が含まれていますが、パスとファイル名にはクラスターにインストールされている Mahout のバージョン番号が含まれています。このチュートリアルの Windows PowerShell サンプル スクリプトでは、2014 年 7 月時点で有効なパスを使用していますが、バージョン番号は将来の HDInsight の更新で変わります。使用しているクラスターの Mahout JAR ファイルへの現在のパスを決定するには、次の Windows PowerShell コマンドを使用して、返されるファイル パスを参照するようにスクリプトを変更します。
 
 	Use-AzureHDInsightCluster -Name $clusterName
-	$jarFile = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target*-job.jar'
+	$jarFile = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar'
 
 ###<a name="nopowershell"></a>Windows PowerShell で動作しないクラス
 
@@ -429,4 +421,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

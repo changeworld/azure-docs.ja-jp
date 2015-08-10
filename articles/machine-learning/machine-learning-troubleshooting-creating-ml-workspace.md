@@ -77,4 +77,4 @@ Cookie が削除されたら、ブラウザーを再起動し、[Microsoft Azure
 [screen6]: media/machine-learning-troubleshooting-creating-ml-workspace/screen6.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

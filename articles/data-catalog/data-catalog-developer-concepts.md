@@ -146,7 +146,7 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 **管理者**、**所有者**、**共同作成者** の 3 つのロールがあります。各ロールは、次の表に示すスコープと権限を持ちます。
 
-<table><tr><td><b>役割</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべてのアセットと注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各アセット (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各アセットおよび注釈</td><td>Read Update Delete ViewRoles Note: all the rights are revoked if the Read right on the item is revoked from the Contributor</td></tr></table>
+<table><tr><td><b>役割</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべてのアセットと注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各アセット (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各アセットおよび注釈</td><td>Read Update Delete ViewRoles Note: 項目に対する読み取り権限を共同作成者から取り消すと、すべての権限が取り消されます</td></tr></table>
 
 > [AZURE.NOTE]**Read**、**Update**、**Delete**、**ViewRoles** 権限はいずれの項目 (アセットまたは注釈) にも適用されますが、**TakeOwnership**、**ChangeOwnership**、**ChangeVisibility**、**ViewPermissions** はルート アセットのみに適用されます。
 >
@@ -238,4 +238,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

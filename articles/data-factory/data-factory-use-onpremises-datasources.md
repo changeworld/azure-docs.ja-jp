@@ -117,7 +117,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 	![Gateway - Configure blade][image-data-factory-gateway-configure-blade]
 
-	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\Program Files\Microsoft Data Management Gateway\1.0\Shared** フォルダーにあります。
+	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
 	このブレード内のリンクを使用してゲートウェイのダウンロードとインストールを手動で行い、**[キーで登録]** ボックスに表示されるキーを使用して登録することもできます。
 	
@@ -166,29 +166,33 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 4.	JSON ウィンドウで次の手順を実行します。
 	1.	**gatewayName** プロパティで、「**adftutorialgateway**」と入力して、二重引用符で囲まれたすべてのテキストを置き換えます。  
 	2.	**SQL 認証**を使用している場合は、次の手順を実行します。 
-		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。インスタンス名を指定するには、エスケープ文字 \ を使用します。たとえば、**server\instancename** と指定します。 	
-		2.	JSON ファイルから最後の 2 つのプロパティ (**username** と **password**) を削除し、残りの JSON スクリプトの最後の行の末尾にある**コンマ (,)** を削除します。
+		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。インスタンス名を指定するには、エスケープ文字 \\ を使用します。たとえば、**server\\instancename** と指定します。 	
+		2.	JSON ファイルから最後の 2 つのプロパティ (\*\*username\*\* と **password**) を削除し、残りの JSON スクリプトの最後の行の末尾にある**コンマ (,)** を削除します。
 		
 				{
-	    			"name": "SqlServerLinkedService",
-	    			"properties": {
-		        		"type": "OnPremisesSqlLinkedService",
-		        		"ConnectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
-		        		"gatewayName": "adftutorialgateway"
-	    			}
+				  "name": "SqlServerLinkedService",
+				  "properties": {
+				    "type": "OnPremisesSqlServer",
+				    "typeProperties": {
+				      "ConnectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
+				      "gatewayName": "adftutorialgateway"
+				    }
+				  }
 				}
 	3.	**Windows 認証**を使用している場合は、次の手順を実行します。
 		1. **connectionString** プロパティで、**<servername>** と **<databasename>** をオンプレミスの SQL Server 名とデータベース名に置き換えます。**Integrated Security** を **True** に設定します。接続文字列から **ID** と **Password** を削除します。
 			
 				{
-    				"name": "SqlServerLinkedService",
-    				"properties": {
-        				"type": "OnPremisesSqlLinkedService",
-        				"ConnectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;",
-		   				"gatewayName": "adftutorialgateway",
-				        "username": "<Specify user name if you are using Windows Authentication>",
-				        "password": "<Specify password for the user account>"
-    				}
+				  "name": "SqlServerLinkedService",
+				  "properties": {
+				    "type": "OnPremisesSqlServer",
+				    "typeProperties": {
+				      "ConnectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;",
+				      "gatewayName": "adftutorialgateway",
+				      "username": "<Specify user name if you are using Windows Authentication>",
+				      "password": "<Specify password for the user account>"
+				    }
+				  }
 				}		
 		
 6. ツール バーの **[デプロイ]** をクリックして、SqlServerLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。左側のツリー ビューにも **SqlServerLinkedService** が表示されます。
@@ -223,7 +227,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 ### チュートリアル用に内部設置型の SQL Server を用意します。
 
-1. オンプレミスの SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
+1. オンプレミスの SQL Server リンク サービス (\*\*SqlServerLinkedService\*\*) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
 
         CREATE TABLE dbo.emp
@@ -249,37 +253,35 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 1.	**Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[オンプレミスの SQL]** をクリックします。 
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。    
 
-        {
-    		"name": "EmpOnPremSQLTable",
-    		"properties":
-    		{
-        		"location":
-        		{
-            		"type": "OnPremisesSqlServerTableLocation",
-            		"tableName": "emp",
-            		"linkedServiceName": "SqlServerLinkedService"
-        		},
-        		"availability": 
-        		{
-            		"frequency": "Hour",
-            		"interval": 1,       
-	    			"waitOnExternal":
-	    			{
-        				"retryInterval": "00:01:00",
-	        			"retryTimeout": "00:10:00",
-	        			"maximumRetry": 3
-	    			}
-		  
-        		}
-    		}
+		{
+		  "name": "EmpOnPremSQLTable",
+		  "properties": {
+		    "type": "SqlServerTable",
+		    "linkedServiceName": "SqlServerLinkedService",
+		    "typeProperties": {
+		      "tableName": "emp"
+		    },
+		    "external": true,
+		    "availability": {
+		      "frequency": "Hour",
+		      "interval": 1
+		    },
+		    "policy": {
+		      "externalData": {
+		        "retryInterval": "00:01:00",
+		        "retryTimeout": "00:10:00",
+		        "maximumRetry": 3
+		      }
+		    }
+		  }
 		}
 
 	以下の点に注意してください。
 	
-	- location の **type** を **OnPremisesSqlServerTableLocation** に設定します。
+	- **type** は **SqlServerTable** に設定します。
 	- **tableName** を **emp** に設定します。
 	- **linkedServiceName** を **SqlServerLinkedService** (手順 2. で作成したリンク サービス) に設定します。
-	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、JSON 内で **waitOnExternal** セクションを指定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。   
+	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** プロパティを **true** に設定する必要があります。必要に応じて、**externalData** セクションででポリシーを指定できます。   
 
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス][json-script-reference]を参照してください。
 
@@ -292,36 +294,32 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。 
 
 		{
-    		"name": "OutputBlobTable",
-    		"properties":
-    		{
-        		"location": 
-        		{
-            		"type": "AzureBlobLocation",
-            		"folderPath": "adftutorial/outfromonpremdf",
-            		"format":
-            		{
-                		"type": "TextFormat",
-                		"columnDelimiter": ","
-            		},
-            		"linkedServiceName": "StorageLinkedService"
-        		},
-        		"availability": 
-        		{
-            		"frequency": "Hour",
-            		"interval": 1
-        		}
-    		}
+		  "name": "OutputBlobTable",
+		  "properties": {
+		    "type": "AzureBlob",
+		    "linkedServiceName": "StorageLinkedService",
+		    "typeProperties": {
+		      "folderPath": "adftutorial/outfromonpremdf",
+		      "format": {
+		        "type": "TextFormat",
+		        "columnDelimiter": ","
+		      }
+		    },
+		    "availability": {
+		      "frequency": "Hour",
+		      "interval": 1
+		    }
+		  }
 		}
   
 	以下の点に注意してください。
 	
-	- location の **type** を **AzureBlobLocation** に設定します。
+	- **type** は **AzureBlob** に設定します。
 	- **linkedServiceName** を **StorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。必要な操作は **adftutorial** コンテナーの作成だけです。
-	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
+	- **availability** が **hourly** に設定されています (\*\*frequency\*\* は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
 
-	**入力テーブル**の **fileName** を指定しない場合、入力フォルダー (**folderPath**) 内のすべてのファイル/BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルをご覧ください。
+	**入力テーブル**の **fileName** を指定しない場合、入力フォルダー (\*\*folderPath\*\*) 内のすべてのファイル/BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルをご覧ください。
  
 	**出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
 
@@ -351,57 +349,57 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。   
 
 
-        {
-			"name": "ADFTutorialPipelineOnPrem",
-    		"properties":
-    		{
-        		"description" : "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
-	       		 "activities":
-	        	[
-			    	{
-						"name": "CopyFromSQLtoBlob",
-						"description": "Copy data from on-prem SQL server to blob",		
-						"type": "CopyActivity",
-						"inputs": [ {"name": "EmpOnPremSQLTable"} ],
-						"outputs": [ {"name": "OutputBlobTable"} ],
-						"transformation":
-						{
-							"source":
-							{                               
-								"type": "SqlSource",
-								"sqlReaderQuery": "select * from emp"
-							},
-							"sink":
-							{
-								"type": "BlobSink"
-							}	
-						},
-						"Policy":
-						{
-							"concurrency": 1,
-							"executionPriorityOrder": "NewestFirst",
-							"style": "StartOfInterval",
-							"retry": 0,
-							"timeout": "01:00:00"
-						}		
-
-				     }
-	        	],
-				"start": "2015-02-13T00:00:00Z",
-        		"end": "2015-02-14T00:00:00Z",
-        		"isPaused": false
-			}
+		{
+		  "name": "ADFTutorialPipelineOnPrem",
+		  "properties": {
+		    "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+		    "activities": [
+		      {
+		        "name": "CopyFromSQLtoBlob",
+		        "description": "Copy data from on-prem SQL server to blob",
+		        "type": "Copy",
+		        "inputs": [
+		          {
+		            "name": "EmpOnPremSQLTable"
+		          }
+		        ],
+		        "outputs": [
+		          {
+		            "name": "OutputBlobTable"
+		          }
+		        ],
+		        "typeProperties": {
+		          "source": {
+		            "type": "SqlSource",
+		            "sqlReaderQuery": "select * from emp"
+		          },
+		          "sink": {
+		            "type": "BlobSink"
+		          }
+		        },
+		        "Policy": {
+		          "concurrency": 1,
+		          "executionPriorityOrder": "NewestFirst",
+		          "style": "StartOfInterval",
+		          "retry": 0,
+		          "timeout": "01:00:00"
+		        }
+		      }
+		    ],
+		    "start": "2015-02-13T00:00:00Z",
+		    "end": "2015-02-14T00:00:00Z",
+		    "isPaused": false
+		  }
 		}
-
 	以下の点に注意してください。
  
-	- activities セクションには、**type** が **CopyActivity** に設定されたアクティビティが 1 つだけあります。
+	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink を**指定します。- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink を**指定します。- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select \* from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
-	**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
+	**end** プロパティの値を指定しない場合、"\*\*start + 48 hours\*\*" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 	
 	Azure Data Factory テーブルごとに定義された **Availability** プロパティに基づいて、データ スライスを処理する期間を定義します。
 	
@@ -465,7 +463,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	![Activity Run Details blade][image-data-factory-activity-run-details]
 
 11. **[X]** をクリックしてすべてのブレードを閉じ、**ADFTutorialOnPremDF** のホーム ブレードに戻ります。
-14. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力テーブル (**Produced**) をドリル スルーします。
+14. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (\*\*Consumed\*\*) または出力テーブル (\*\*Produced\*\*) をドリル スルーします。
 15. **Azure Storage Explorer** などのツールを使用して、出力を確認します。
 
 	![Azure ストレージ エクスプローラー][image-data-factory-stroage-explorer]
@@ -512,7 +510,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 		PS C:\> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
 
 	
-4. Azure PowerShell で **C:\Program Files\Microsoft Data Management Gateway\1.0\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+4. Azure PowerShell で **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript\*\* フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
 		PS C:\> .\RegisterGateway.ps1 $Key.GatewayKey
 		
@@ -627,4 +625,4 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

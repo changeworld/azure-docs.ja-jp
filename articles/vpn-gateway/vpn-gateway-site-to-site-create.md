@@ -1,11 +1,12 @@
 <properties
-   pageTitle="サイト間仮想ネットワーク接続の構成 | Microsoft Azure"
+   pageTitle="管理ポータルでサイト間 VPN を使用して仮想ネットワークを作成する | Microsoft Azure"
    description="サイト間 VPN 接続を使用したクロスプレミス構成およびハイブリッド構成の仮想ネットワークを作成します。"
    services="vpn-gateway"
    documentationCenter=""
    authors="cherylmc"
-   manager="adinah"
-   editor=""/>
+   manager="carolz"
+   editor=""
+   tags="azure-service-management"/>
 
 <tags
    ms.service="vpn-gateway"
@@ -13,12 +14,18 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/30/2015"
+   ms.date="07/23/2015"
    ms.author="cherylmc"/>
 
-# サイト間 VPN 接続を使用したVirtual Network の構成
+# 管理ポータルでサイト間 VPN を使用して仮想ネットワークを作成する
+
+> [AZURE.SELECTOR]
+- [Azure Portal](vpn-gateway-site-to-site-create.md)
+- [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 サイト間 VPN 接続を作成すると、仮想ネットワークでオンプレミスの場所を接続することができます。ここでは、仮想ネットワークの作成、および新たに作成された VNet とオンプレミスの場所の間での VPN 接続の作成の手順について説明します。
+
+現在、Azure には Azure サービス管理と Azure リソース マネージャー (ARM) という 2 つの管理モードがあります。サイト間の設定は、仮想ネットワークを作成したモードによって異なります。次の手順は、Azure サービス管理に適用されます。代わりに Azure リソース マネージャーのサイト間 VPN 接続を作成する場合は、「[Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続を作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」を参照してください。
 
 
 ## 作業を開始する前に
@@ -89,4 +96,4 @@ Virtual Network のクロスプレミス接続の詳細については、「[Vir
 RRAS を使用して VNet 接続を構成する場合は、「[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

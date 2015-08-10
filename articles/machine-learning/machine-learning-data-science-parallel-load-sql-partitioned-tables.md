@@ -58,7 +58,7 @@ SQL データベースへのビッグ データの読み込み/転送では、_�
 
 **パーティション テーブルを作成するには、以下の操作を行う必要があります。**
 
-- 個別のパーティション テーブルに含める値/境界の範囲を定義する[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。たとえば、2013 年の月別 (some_datetime_field) にパーティションを制限するには以下のようにします。
+- 個別のパーティション テーブルに含める値/境界の範囲を定義する[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。たとえば、2013 年の月別 (some\_datetime\_field) にパーティションを制限するには以下のようにします。
 
 	    CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
 	    AS RANGE RIGHT FOR VALUES (
@@ -95,7 +95,7 @@ SQL データベースへのビッグ データの読み込み/転送では、_�
 
 - BCP、BULK INSERT、[SQL Server 移行ウィザード](http://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。ここで示されている例では BCP による方法を使用します。
 
-- [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
+- [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK\_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
 
 	    ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
 
@@ -184,4 +184,4 @@ SQL データベースへのビッグ データの読み込み/転送では、_�
 Advanced Analytics Process and Technology (ADAPT) とパブリック データセットを使用した完全なチュートリアルの例については、「[実行中の Advanced Analytics Process and Technology: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

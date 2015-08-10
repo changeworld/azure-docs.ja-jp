@@ -95,15 +95,15 @@
 	![API App Host Application Settings for Local Debug](./media/app-service-api-dotnet-debug/ld-app-settings-for-local-debugging.png)
 
 9. **[アプリケーション設定]** で次の各値を確認し、この値を *web.config* ファイルの **appSettings** セクションに追加します。
-	- **EMA_MicroserviceId**
-	- **EMA_Secret**
-	- **EMA_RuntimeUrl**
+	- **EMA\_MicroserviceId**
+	- **EMA\_Secret**
+	- **EMA\_RuntimeUrl**
 
 	この手順を完了すると、*web.config* の **appSettings** セクションは、次のスクリーンショットのようになります。
 
 	![API App Host Application Settings for Local Debug](./media/app-service-api-dotnet-debug/ld-debug-settings.png)
 
-	**注:** このセクションで *web.config* ファイルに追加した *EMA_* 値には、機密の認証情報が含まれています。したがって、このファイルをパブリックのソース管理メディア (*github* など) にコミットするとこれらの機密情報を他のユーザーが見ることができるようになるため、注意が必要です。詳細については、[ASP.NET と Azure App Service にパスワードや他の機密情報をデプロイするときのベスト プラクティス](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)に関するページをご覧ください。
+	**注:** このセクションで *web.config* ファイルに追加した *EMA\_* 値には、機密の認証情報が含まれています。したがって、このファイルをパブリックのソース管理メディア (*github* など) にコミットするとこれらの機密情報を他のユーザーが見ることができるようになるため、注意が必要です。詳細については、[ASP.NET と Azure App Service にパスワードや他の機密情報をデプロイするときのベスト プラクティス](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)に関するページをご覧ください。
 
 10. API アプリのコントローラーのコード (`Get` メソッドと `Post` メソッド内) に 1 つ以上のブレークポイントを設定します。
 
@@ -139,4 +139,4 @@ App Service API アプリは、Web サービスをホストする追加機能を
 このシリーズで作成した API アプリは、すべてのユーザーが呼び出しに使用できます。認証済みユーザーのみが API アプリを呼び出すことができるように、API アプリを保護する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

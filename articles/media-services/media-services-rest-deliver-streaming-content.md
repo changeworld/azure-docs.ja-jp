@@ -13,18 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="07/23/2015" 
 	ms.author="juliako"/>
 
 
 #方法: ストリーミング コンテンツを配信する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
+> [AZURE.SELECTOR]
+- [.NET](media-services-deliver-streaming-content.md)
+- [REST](media-services-rest-deliver-streaming-content.md)
+- [Portal](media-services-manage-content.md#publish)
 
 ##概要
 
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。ロケーターを作成する前に、[このトピック](media-services-rest-configure-asset-delivery-policy.md)で説明されているようにアセット配信ポリシーを構成する必要があります。
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に、アセット配信ポリシーを構成します ([この](media-services-rest-configure-asset-delivery-policy.md)トピックをご覧ください)。
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
@@ -37,7 +40,7 @@
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
 
 
-   1. アクセス ポリシーを定義します。
+   1. コンテンツが暗号化されている場合は、アクセス ポリシーを定義します。
    2. オンデマンド ストリーミング ロケーターを作成します。
    3. ストリーミングする場合は、アセットのストリーミング マニフェスト ファイル (.ism) を取得します。 
    		
@@ -175,4 +178,4 @@ URL: **Path** + アセット ファイル mp4 名
         OnDemandOrigin = 2,
     } 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

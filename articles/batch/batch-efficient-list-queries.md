@@ -1,19 +1,20 @@
-<properties 
-	pageTitle="効率的なリスト クエリ" 
-	description="リストに返される項目数の削減と各項目で返される情報量の削減について説明します。" 
-	services="batch" 
-	documentationCenter="" 
-	authors="davidmu1" 
-	manager="timlt" 
-	editor="tysonn"/>
+<properties
+	pageTitle="効率的なリスト クエリ"
+	description="リストに返される項目数の削減と各項目で返される情報量の削減について説明します。"
+	services="batch"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager"/>
 
-<tags 
-	ms.service="multiple" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="vm-windows" 
+<tags
+	ms.service="multiple"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
 	ms.workload="multiple"
-	ms.date="05/09/2015" 
+	ms.date="07/28/2015"
 	ms.author="davidmu"/>
 
 # 効率的なリスト クエリ
@@ -80,4 +81,4 @@ API 呼び出し数は、expand 文字列を使用して削減できます。各
 
 > [AZURE.NOTE]アプリケーションに対して最大の効率と最高のパフォーマンスを保証するために、リスト API 呼び出しには常に filter 句と select 句を使用することをお勧めします。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -137,4 +137,4 @@ LDAP を使用するように構成したときに、LDAP ディレクトリが 
 
 ![Multi-Factor-Auth Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -69,8 +69,13 @@
    <td valign="middle"><p>1</p></td>
    <td valign="middle"><p>50</p></td>
 </tr>
+<tr>
+   <td valign="middle"><p>サブスクリプションあたりのアラート ルール数</p></td>
+   <td valign="middle"><p>250</p></td>
+   <td valign="middle"><p>250</p></td>
+</tr>
 </table>
 
 <sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

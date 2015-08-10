@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.date="07/21/2015" 
 	ms.author="billmath"/>
 
 # Building Multi-Factor Authentication into Custom Apps (SDK)
@@ -33,12 +33,11 @@ API は Azure Active Directory に登録されているユーザーにアクセ�
 
 ## Azure Multi-Factor Authentication SDK のダウンロード 
 
-Azure Multi-Factor Authentication Server は 2 つの方法でダウンロードできます。1 番目の方法は Azure ポータルにサインインする方法で、2 番目の方法は [https://pfweb.phonefactor.net](https://pfweb.phonefactor.net) から直接ダウンロードする方法です。SDK のダウンロードに、Azure のサブスクリプションは不要です。
+Azure Multi-Factor Authentication SDK は 2 とおりの方法でダウンロードできます。どちらも Azure ポータルから実行できます。1 つ目の方法では、多要素認証プロバイダーを直接管理します。2 つ目の方法では、サービス設定を使用します。2 つ目の方法には、多要素認証プロバイダーまたは Azure AD Premium ライセンスが必要です。
 
 
+### Azure ポータルから Azure Multi-Factor Authentication SDK をダウンロードするには
 
-### Azure ポータルから Azure Multi-Factor Authentication Server をダウンロードするには
---------------------------------------------------------------------------------
 
 1. Azure ポータルに管理者としてサインインします。
 2. 左側で、[Active Directory] を選択します。
@@ -51,14 +50,18 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 
 
 
-### Azure Multi-Factor Authentication Server から直接ダウンロードするには
---------------------------------------------------------------------------------
+### サービス設定を使用して Azure Multi-Factor Authentication SDK をダウンロードするには
 
-1. [https://pfweb.phonefactor.net](https://pfweb.phonefactor.net) にサインインします。
-2. 左側の下部で、[SDK] をクリックします。
-3. 言語を選択し、関連するダウンロード リンクのいずれかをクリックします。
-4. ダウンロードしたファイルを保存します。
 
+1. Azure ポータルに管理者としてサインインします。
+2. 左側で、[Active Directory] を選択します。
+3. Azure AD のインスタンスをダブルクリックします。
+4. 上部の **[構成]** をクリックします。
+5. 多要素認証の **[サービス設定の管理]** を選択します。![ダウンロード](./media/multi-factor-authentication-sdk/download2.png)
+6. サービス設定ページで、画面の下部にある **[ポータルに移動する]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download3.png)
+7. これにより、新しいページが開きます。左側の下部で、[SDK] をクリックします。
+8. 言語を選択し、関連するダウンロード リンクのいずれかをクリックします。
+9. ダウンロードしたファイルを保存します。
 
 ## Azure Multi-Factor Authentication SDK の内容
 SDK 内には、次の項目があります。
@@ -67,8 +70,8 @@ SDK 内には、次の項目があります。
 - Multi-Factor Authentication の**ソース ファイル**
 - Multi-Factor Authentication サービスとの通信に使用する**クライアント証明書**
 - 証明書の**秘密キー**
-- **呼び出し結果。** 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
-- **例。** Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
+- **呼び出し結果**。 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
+- **例**。 Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
 
 
 >[AZURE.WARNING]クライアント証明書は、特定のユーザー向けに生成された一意のプライベート証明書です。このファイルを共有しないよう、または紛失にはご注意ください。これは、Multi-Factor Authentication サービスとの通信のセキュリティを確保するためのキーです。
@@ -88,7 +91,7 @@ SDK 内には、次の項目があります。
 
 サーバー側のコードでは、手順 2 で標準モード認証を追加します。これにより、標準モード認証に必要なパラメーター (ユーザー名、電話番号、およびモード) を持つ PfAuthParams オブジェクトと、各呼び出しで必要なクライアント証明書へのパス (CertFilePath) が作成されます。PfAuthParams 内のすべてのパラメーターのデモを表示するには、SDK のサンプル ファイルを参照してください。
 
-次に、コードは PfAuthParams オブジェクトを pf_authenticate() 関数に渡します。戻り値は認証の成否を示します。out パラメーター (callStatus と errorID) には、呼び出し結果の追加情報が含まれています。呼び出し結果コードは、SDK の呼び出し結果ファイルで説明しています。
+次に、コードは PfAuthParams オブジェクトを pf\_authenticate() 関数に渡します。戻り値は認証の成否を示します。out パラメーター (callStatus と errorID) には、呼び出し結果の追加情報が含まれています。呼び出し結果コードは、SDK の呼び出し結果ファイルで説明しています。
 
 この最小実装は、わずか数行で記述できます。ただし、運用環境のコードではより高度なエラー処理、追加のデータベース コード、およびより優れたユーザー エクスペリエンスが含まれます。
 
@@ -130,7 +133,7 @@ SDK 内には、次の項目があります。
 
 ### サーバー側コード
 
-次のサーバー側コードでは、手順 2 でMulti-Factor Authentication を構成して実行します。標準モード (MODE_STANDARD) とは、ユーザーが # キーを押して応答する通話のことです。
+次のサーバー側コードでは、手順 2 でMulti-Factor Authentication を構成して実行します。標準モード (MODE\_STANDARD) とは、ユーザーが # キーを押して応答する通話のことです。
 
 	using System;
 	using System.Collections.Generic;
@@ -167,7 +170,7 @@ SDK 内には、次の項目があります。
 	            // NOTE: This file contains the private key for the client
 	            // certificate. It must be stored with appropriate file 
 	            // permissions.
-	            pfAuthParams.CertFilePath = "c:\cert_key.p12";
+	            pfAuthParams.CertFilePath = "c:\\cert_key.p12";
 	
 	            // Perform phone-based authentication
 	            int callStatus;
@@ -188,4 +191,4 @@ SDK 内には、次の項目があります。
 	    }
 	}
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

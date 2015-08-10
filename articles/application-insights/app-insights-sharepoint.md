@@ -41,7 +41,7 @@ Visual Studio Application Insights を使うと、アプリの可用性、パフ
 
 ![](./media/app-insights-sharepoint/02-monitor-web-page.png)
 
-追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。たとえば、ASP.NET MVC プロジェクトで、View\Shared_Layout.cshtml にスクリプトを配置します。
+追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。たとえば、ASP.NET MVC プロジェクトで、View\\Shared\_Layout.cshtml にスクリプトを配置します。
 
 このスクリプトには、Application Insights リソースに利用統計情報を転送するインストルメンテーション キーが含まれています。
 
@@ -108,4 +108,4 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 <!--Link references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

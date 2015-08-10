@@ -45,4 +45,4 @@
 次のサイトで Azure ポータルの詳細を確認しましょう: http://azure.microsoft.com
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

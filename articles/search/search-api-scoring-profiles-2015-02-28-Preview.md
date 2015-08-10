@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)" 
-	description="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
+<properties
+	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Microsoft Azure"
+	description="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="mblythe"
 	editor=""/>
 
-<tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="04/24/2015" 
-	ms.author="heidist"/>
-      
-#スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
+<tags
+	ms.service="search"
+	ms.devlang="rest-api"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.author="heidist"
+	ms.date="07/24/2015" />
 
-> [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。この API に変更がない場合でも、この記事では `2015-02-28-Preview` の完全なドキュメント セットを提供します。
+# スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
+
+> [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。
 
 ## 概要
 
@@ -36,7 +36,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
         "text": {
           "weights": { "hotelName": 5 }
         },
-        "functions": [ 
+        "functions": [
           {
             "type": "distance",
             "boost": 5,
@@ -55,7 +55,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
     GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&api-version=2015-02-28-Preview
 
-このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview.md#SearchDocs)」を参照してください。
+このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview/#SearchDocs.md)」を参照してください。
 
 スコアリング プロファイルの詳細な例を確認するには、「[例](#example)」をクリックします。
 
@@ -108,7 +108,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
             "weights": {
               "albumTitle": 1,
               "genre": 5 ,
-              "artistName": 2 
+              "artistName": 2
             }
           }
 	    },
@@ -144,7 +144,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
           "searchMode": "analyzingInfixMatching",
           "sourceFields": ["albumTitle", "artistName"]
         }
-      ] 
+      ]
     }
 
 
@@ -158,9 +158,50 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 スコアリング プロファイルの本文は、重み付けされたフィールドと関数によって構成されます。
 
-<font> <table> <thead><tr><td><b>要素</b></td><td><b>説明</b></td></tr></thead> <tbody> <tr> <td><b>重み</b></td> <td>相対的な重みをフィールドに割り当てる名前と値のペアを指定します。[例](#example)では、albumTitle、genre、および artistName のフィールドはそれぞれ 1、5、および null でブーストされます。なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか? ある程度同じようなデータに対して検索を実行する場合 (`musicstoreindex` での 'genre' の場合のように)、相対的な重みをより分散することが必要になる可能性があります。たとえば、`musicstoreindex` では、「ロック」はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。</td> </tr> <tr> <td><b>関数</b></td><td>特定のコンテキストに対して追加の計算が必要な場合に使用されます。有効な値は `freshness`、`magnitude`、`distance` および `tag` です。各関数には固有のパラメーターがあります。<p>- 項目の新しさまたは古さに基づいてブーストする場合は、`freshness` を使用してください。この関数は、日時フィールドでのみ使用できます (Edm.DataTimeOffset)。`boostingDuration` 属性は freshness 関数でのみ使用されることに注意してください。</p><p>- 数値の高さまたは低さに基づいてブーストする場合は、`magnitude` を使用してください。この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。</p><p> `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。$100 から $1 の範囲の価格の場合は、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、価格がより低い項目をブーストします。</p><p>- 近接性または地理的場所に基づいてブーストする場合は、`distance` を使用してください。この関数は、`Edm.GeographyPoint` フィールドでのみ使用できます。</p><p>- ドキュメントと検索クエリで共通のタグに基づいてブーストする場合は、`tag` を使用してください。この関数は、`Edm.String` と (Collection(Edm.String) フィールドでのみ使用できます。</p> <p><b>関数を使用するための規則</b></p>関数型 (freshness、magnitude、distance、tag) は小文字にする必要があります。<br/>関数に null または空の値を含めることはできません。具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br/>関数はフィルターの適用が可能なフィールドにのみ適用できます。フィルターの適用が可能なフィールドの詳細については、「[インデックスの作成](search-api-2015-02-28-preview.md#createindex)」を参照してください。<br/>関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。</td> </tr> </tbody> </table> </font>
+<table>
+<thead>
+<tr><td><b>要素</b></td><td><b>説明</b></td></tr></thead>
+  <tbody>
+    <tr>
+      <td>
+        <b>Weights</b>
+      </td>
+      <td>
+        相対的な重みをフィールドに割り当てる名前と値のペアを指定します。[例](#example) では、albumTitle、genre、および artistName のフィールドはそれぞれ 1、5、および null でブーストされます。なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか?  ある程度同じようなデータに対して検索を実行する場合 ('musicstoreindex' での 'genre' の場合のように)、相対的な重みをより分散することが必要になる可能性があります。たとえば、'musicstoreindex' では、'rock' はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>関数</b>
+      </td>
+      <td>
+        特定のコンテキストに対して追加の計算が必要な場合に使用されます。有効な値は、'freshness'、'magnitude'、'distance' および 'tag' です。各関数には、固有のパラメーターがあります。
+        <p>
+          - 'freshness' は、項目の新しさまたは古さによってブーストする場合に使用する必要があります。この関数は、日時フィールドでのみ使用できます (Edm.DataTimeOffset)。'BoostingDuration' 属性は、freshness 関数でのみ使用することに注意してください。
+          </p><p>
+            - 'magnitude' は、数値の高低に基づいてブーストする場合に使用する必要があります。この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。
+          </p><p>
+            'magnitude' 関数では、逆のパターンが必要な場合 (たとえば、価格が高い項目よりも価格が低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。たとえば、価格の範囲が 100 ～ 1 ドルである場合、'boostingRangeStart' を 100 に、'boostingRangeEnd' を 1 に設定して、より低い価格の項目をブーストします。
+          </p><p>
+            - 'distance' は、距離の近さや地理的な場所によってブーストする場合に使用する必要があります。この関数は、'Edm.GeographyPoint' フィールドでのみ使用できます。
+          </p><p>
+            'tag' は、ドキュメントと検索クエリで共通のタグに基づいてブーストする場合に使用する必要があります。この関数は、'Edm.String' フィールドと '(Collection(Edm.String)' フィールドでのみ使用できます。
+          </p>
+             <p><b>関数の使用に関する規則</b>
+			</p>
+            関数型 (freshness、magnitude、distance、tag) は小文字にする必要があります。
+            <br/>
+            関数に null または空の値を含めることはできません。具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。
+            <br/>
+             関数はフィルターの適用が可能なフィールドにのみ適用できます。フィルターの適用が可能なフィールドの詳細については、[インデックスの作成](search-api-2015-02-28/#createindex) を参照してください。
+             <br/>
+             関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。
+         </td>
+</tr>
+  </tbody>
+</table>
 
-インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。これらの操作の手順については、「[インデックスの作成](search-api-2015-02-28-preview.md#createindex)」と「[ドキュメントの追加または更新](search-api-2015-02-28-preview.md#AddOrUpdateDocuments)」を参照してください。インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。
+インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。これらの操作の手順については、「[インデックスの作成](search-api-2015-02-28-preview/#createindex)」と「[ドキュメントの追加または更新](search-api-2015-02-28-preview/#AddOrUpdateDocuments)」を参照してください。インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。
 
 <a name="bkmk_template"></a>
 ##テンプレート
@@ -168,51 +209,51 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
     ...
     "scoringProfiles": [
-      { 
-        "name": "name of scoring profile", 
-        "text": (optional, only applies to searchable fields) { 
-          "weights": { 
-            "searchable_field_name": relative_weight_value (positive #'s), 
-            ... 
-          } 
-        }, 
+      {
+        "name": "name of scoring profile",
+        "text": (optional, only applies to searchable fields) {
+          "weights": {
+            "searchable_field_name": relative_weight_value (positive #'s),
+            ...
+          }
+        },
         "functions": (optional) [
-          { 
-            "type": "magnitude | freshness | distance | tag", 
-            "boost": # (positive number used as multiplier for raw score != 1), 
-            "fieldName": "...", 
-            "interpolation": "constant | linear (default) | quadratic | logarithmic", 
-            
-            "magnitude": { 
-              "boostingRangeStart": #, 
-              "boostingRangeEnd": #, 
-              "constantBoostBeyondRange": true | false (default) 
+          {
+            "type": "magnitude | freshness | distance | tag",
+            "boost": # (positive number used as multiplier for raw score != 1),
+            "fieldName": "...",
+            "interpolation": "constant | linear (default) | quadratic | logarithmic",
+
+            "magnitude": {
+              "boostingRangeStart": #,
+              "boostingRangeEnd": #,
+              "constantBoostBeyondRange": true | false (default)
             }
 
-            // (- or -) 
-    
-            "freshness": { 
-              "boostingDuration": "..." (value representing timespan over which boosting occurs) 
-            } 
+            // (- or -)
 
-            // (- or -) 
+            "freshness": {
+              "boostingDuration": "..." (value representing timespan over which boosting occurs)
+            }
 
-            "distance": { 
-              "referencePointParameter": "...", (parameter to be passed in queries to use as reference location) 
-              "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends) 
-            } 
+            // (- or -)
 
-            // (- or -) 
+            "distance": {
+              "referencePointParameter": "...", (parameter to be passed in queries to use as reference location)
+              "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
+            }
+
+            // (- or -)
 
             "tag": {
               "tagsParameter": "..." (parameter to be passed in queries to specify list of tags to compare against target field)
             }
-          } 
-        ], 
-        "functionAggregation": (optional, applies only when functions are specified) 
-            "sum (default) | average | minimum | maximum | firstMatching" 
-      } 
-    ], 
+          }
+        ],
+        "functionAggregation": (optional, applies only when functions are specified)
+            "sum (default) | average | minimum | maximum | firstMatching"
+      }
+    ],
     "defaultScoringProfile": (optional) "...",
     ...
 
@@ -221,11 +262,10 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 **注**： スコアリング関数はフィルターの適用が可能なフィールドにのみ適用できます。
 
-<table>
-<thead>
+<table border="1">
 <tr>
-<td>属性</td>
-<td>説明</td>
+<th>属性</th>
+<th>説明</th>
 </tr>
 <tr>
 <td>名前</td>	<td>必須。これは、スコアリング プロファイルの名前です。これは、フィールドの場合と同じ名前付け規則に従います。先頭は英文字にする必要があります。ドット、コロン、または @ 記号を含めることはできません。さらに、'azureSearch' (大文字小文字の区別あり) という句で開始することはできません。</td>
@@ -244,9 +284,9 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 </tr><tr>
 <td>Interpolation</td>	<td>スコアリング関数の場合は必須です。スコア ブースティングが範囲の始点から範囲の終点に向かって高くなる場合の傾斜を定義します。有効な値には、線形 (既定値)、定数、二次方程式、および対数があります。詳細については、「補間の設定」(#bkmk_interpolation) を参照してください。</td>
 </tr><tr>
-<td>magnitude</td>	<td>数値フィールドの値の範囲に基づいて順位付けを変更するには、magnitude スコアリング関数を使用します。最も一般的な使用例には、次のようなものがあります。 
+<td>magnitude</td>	<td>数値フィールドの値の範囲に基づいて順位付けを変更するには、magnitude スコアリング関数を使用します。最も一般的な使用例には、次のようなものがあります。
 <br>
-- 星評価: [星評価] フィールド内の値に基づいて、スコアリングを変更します。2 つの項目が該当する場合は、評価の高い方の項目が最初に表示されます。
+- 星評価: "星評価" フィールド内の値に基づいて、スコアリングを変更します。2 つの項目が該当する場合は、評価の高い方の項目が最初に表示されます。
 <br>
 - 利益: 2 つのドキュメントが該当する場合、小売業者は利益が高い方のドキュメントを最初にブーストできます。
 <br>
@@ -257,28 +297,27 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <td>magnitude | boostingRangeStart</td>	<td>magnitude をスコアリングする範囲の開始値を設定します。値は整数または倍精度浮動小数点にする必要があります。1 ～ 4 の星評価を対象とする場合、これは 1 になります。50% を超える利益を対象とする場合、これは 50 になります。</td>
 </tr><tr>
 <td>magnitude | boostingRangeEnd</td>	<td>magnitude をスコアリングする範囲の終了値を設定します。値は整数または倍精度浮動小数点にする必要があります。1 ～ 4 の星評価を対象とする場合、これは 4 になります。</td>
-</tr><tr> 
+</tr><tr>
 <td>magnitude | constantBoostBeyondRange</td>	<td>有効な値は、true または false (既定値) です。true に設定すると、対象フィールドの値が範囲の上限を超えているドキュメントに、フル ブーストが継続的に適用されます。false に設定すると、対象フィールドの値が範囲外にあるドキュメントに対して、この関数のブーストは適用されません。</td>
 </tr><tr>
-<td>freshness</td>	<td>DateTimeOffset フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。適用されるブースティング係数を反転するには、ブースト係数として &lt; 1 を選択します。</td>
+<td>freshness</td>	<td>DateTimeOffset フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。適用されるブースティング係数を反転するには、ブースト係数として 1 未満を選択します。</td>
 </tr><tr>
-<td>freshness | boostingDuration</td>	<td>特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。構文と例については、次のセクションの「boostingDuration の設定」(#bkmk_boostdur) を参照してください。</td>
+<td>freshness | boostingDuration</td>	<td>特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。構文と例については、次のセクションの [boostingDuration の設定][#bkmk_boostdur] を参照してください。</td>
 </tr><tr>
 <td>distance</td>	<td>地理的な参照場所との間の距離に基づいてドキュメントのスコアに影響を与えるには、distance スコアリング関数を使用します。参照場所は、クエリの一部としてパラメーター (’scoringParameterquery’ 文字列オプションを使用) 内に lon,lat 引数で指定します。</td>
 </tr><tr>
-<td>distance | referencePointParameter</td>	<td>参照場所として使用するためにクエリに渡されるパラメーター。scoringParameter はクエリ パラメーターです。クエリ パラメーターの説明については、「ドキュメントの検索」(search-api-2015-02-28-preview.md#SearchDocs) を参照してください。</td>
+<td>distance | referencePointParameter</td>	<td>参照場所として使用するためにクエリに渡されるパラメーター。scoringParameter はクエリ パラメーターです。クエリ パラメーターの説明については、[ドキュメントの検索](search-api-2015-02-28-preview/#SearchDocs) を参照してください。</td>
 </tr><tr>
 <td>distance | boostingDistance</td>	<td>ブースティング範囲が終了する、参照場所からの距離をキロメートルで示す数値。</td>
 </tr><tr>
 <td>tag</td>	<td>ドキュメントと検索クエリのタグに基づいてドキュメントのスコアに影響を与えるには、tag スコアリング関数を使用します。検索クエリと共通のタグを持つドキュメントがブーストされます。検索クエリのタグは、('scoringParameterquery' の文字列オプションを使用して) 各検索要求でスコアリング パラメーターとして提供されます。</td>
 </tr><tr>
-<td>tag | tagsParameter</td>	<td>特定の要求のタグを指定するためにクエリに渡されるパラメーター。scoringParameter はクエリ パラメーターです。クエリ パラメーターの説明については、「ドキュメントの検索」(search-api-2015-02-28-preview.md#SearchDocs) を参照してください。</td>
+<td>tag | tagsParameter</td>	<td>特定の要求のタグを指定するためにクエリに渡されるパラメーター。scoringParameter はクエリ パラメーターです。クエリ パラメーターの説明については、[ドキュメントの検索](search-api-2015-02-28-preview/#SearchDocs) を参照してください。</td>
 </tr><tr>
 <td>functionAggregation</td>	<td>省略可能。関数を指定した場合にのみ適用されます。有効な値には、sum (default)、average、minimum、maximum、および firstMatching があります。検索スコアは、複数の変数 (複数の関数など) から計算される単一の値です。この属性は、すべての関数のブーストを、基本ドキュメント スコアに適用される 1 つの集計ブーストに集約する方法を示します。基本スコアは、ドキュメントと検索クエリから算出される tf-idf 値に基づいています。</td>
 </tr><tr>
 <td>defaultScoringProfile</td>	<td>検索要求の実行時に、スコアリング プロファイルが指定されていない場合は、既定のスコアリングが使用されます (tf-idf のみ)。ここでは既定のスコアリング プロファイル名を設定できます。Azure Search は検索要求に特定のプロファイルが指定されていない場合、そのプロファイルを使用します。</td>
 </tr>
-</tbody>
 </table>
 
 <a name="bkmk_interpolation"></a>
@@ -293,7 +332,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 - `Quadratic` ブーストが一定の割合で低下する線形補間と比較して、二次方程式の場合は、最初は遅いペースで低下しますが、終了範囲に近づくにつれて低下するペースが速くなります。tag スコアリング関数では、この補間オプションは使用できません。
 
 - `Logarithmic` ブーストが一定の割合で低下する線形補間と比較して、対数の場合は、最初は速いペースで低下しますが、終了範囲に近づくにつれて低下するペースが遅くなります。tag スコアリング関数では、この補間オプションは使用できません。
- 
+
 <a name="Figure1"></a> ![][1]
 
 <a name="bkmk_boostdur"></a>
@@ -301,7 +340,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 `boostingDuration` は freshness 関数の属性です。これを使用して特定のドキュメントに対して有効期限を設定します。この期限が過ぎるとブースティングは停止します。たとえば、10 日のプロモーション期間中に製品ラインまたはブランドをブーストするには、該当するドキュメントに対して 10 日の期間を "P10D" で指定します。
 
-`boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。このパターンは、"P(nD)(T(nH)(nM)(nS))" です。
+`boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。このパターンは、"P[nD][T[nH][nM][nS]]" です。
 
 次の表に、いくつかの例を示します。
 
@@ -331,6 +370,4 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

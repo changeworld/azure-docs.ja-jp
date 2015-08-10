@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Jim-Parker"
    manager="shreeshd"
-   editor=""/> <tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
+   editor=""/>
+<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt\_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
 
 # 資格情報コンテナーの資格情報を使用して、Azure Backup サービスで認証する
 データを Azure にバックアップする前に、オンプレミスのサーバー (Windows クライアントまたは Windows Server または SCDPM サーバー) をバックアップ資格情報コンテナーで認証する必要があります。認証は "資格情報コンテナーの資格情報" を使用して実行されます。資格情報コンテナーの資格情報の概念は、Azure PowerShell で使用される "発行の設定" ファイルの概念に似ています。
@@ -40,4 +41,4 @@
 ## 次のステップ
 [Azure Backup エージェントのダウンロード、インストール、および登録](backup-azure-backup-download-register)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

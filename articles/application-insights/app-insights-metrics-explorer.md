@@ -179,8 +179,13 @@
 
 *現時点では、Internet Explorer と Chrome でのみエクスポートできます。その他のブラウザーについてもサポートの追加に向けて対処していおります。*
 
+### 連続エクスポート
+
 データを外部で処理できるよう、連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
 
+### Power BI
+
+データをより機能が豊富なビューで表示する場合は、[Power BI にエクスポート](app-insights-export-power-bi.md)することができます。
 
 ## 次のステップ
 
@@ -196,4 +201,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

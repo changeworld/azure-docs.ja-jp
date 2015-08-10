@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="adinah"
+   manager="carolz"
    editor="tysonn" />
 <tags
    ms.service="expressroute"
@@ -12,10 +12,10 @@
    ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/29/2015"
+   ms.date="07/28/2015"
    ms.author="cherylmc"/>
 
-#  Exchange プロバイダーを通じて ExpressRoute 接続を構成する
+#  Exchange プロバイダーによる ExpressRoute 接続の構成
 
 Exchange プロバイダーを通じて ExpressRoute 接続を構成するには、複数の手順を正しい順序で完了する必要があります。これらの手順は、次の各操作を行う際に役立ちます。
 
@@ -218,7 +218,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 8. **Virtual Network とゲートウェイを構成します。**
 
-	「[ExpressRoute 用の仮想ネットワークとゲートウェイの構成](https://msdn.microsoft.com/library/azure/dn643737.aspx)」を参照してください。ExpressRoute 接続を使用するために、ゲートウェイ サブネットは /28 にする必要があります。
+	「[ExpressRoute 用の仮想ネットワークとゲートウェイの構成](expressroute-configuring-vnet-gateway.md)」を参照してください。ExpressRoute 接続を使用するために、ゲートウェイ サブネットは /28 にする必要があります。
 
 9. **ネットワークを回線にリンクします。** 次に示す手順に進む前に必ず、回線が以下の状態とステータスに移行したことを確認してください。
 	- ServiceProviderProvisioningState: Provisioned
@@ -227,5 +227,8 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 			PS C:\> $Vnet = "MyTestVNet"
 			New-AzureDedicatedCircuitLink -ServiceKey $ServiceKey -VNetName $Vnet
  
+## 次のステップ
 
-<!---HONumber=July15_HO4-->
+- ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
+
+<!---HONumber=July15_HO5-->

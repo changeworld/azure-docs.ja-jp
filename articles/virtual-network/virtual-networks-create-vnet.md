@@ -19,7 +19,7 @@
 
 VNet を作成すると、VNet 内のサービスと VM はインターネットを経由せずに相互に安全な通信を行うことができるようになります。Azure VNet の作成は、他の VNet やオンプレミス ネットワークに接続することを目的としない場合、それほど時間のかからない簡単なプロセスです。これは、VPN デバイスの取得や構成、選択した IP アドレスと他の VNet やローカル ネットワークとの調整が不要のためです。
 
->[AZURE.WARNING]後で他の VNet やオンプレミス ネットワークに接続される VNet を作成する場合は、この手順を使用しないでください。安全なクロスプレミス接続またはハイブリッド接続を作成する場合は、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」をご覧ください。別の VNet に接続する VNet を作成する場合は、「[VNet 間の接続の構成](https://msdn.microsoft.com/library/azure/dn690122.aspx)」をご覧ください。
+>[AZURE.WARNING]後で他の VNet やオンプレミス ネットワークに接続される VNet を作成する場合は、この手順を使用しないでください。安全なクロスプレミス接続またはハイブリッド接続を作成する場合は、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」をご覧ください。別の VNet に接続する VNet を作成する場合は、「[VNet 間の接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」をご覧ください。
 
 ## VNet の構成
 
@@ -66,4 +66,4 @@ VNet を作成すると、VNet 内のサービスと VM はインターネット
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

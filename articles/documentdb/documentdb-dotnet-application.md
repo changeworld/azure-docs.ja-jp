@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="04/29/2015" 
+	ms.date="07/24/2015" 
 	ms.author="ryancraw"/>
 
 #<a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築
@@ -202,7 +202,7 @@
 	- **[テンプレート]** ボックスで、***[一覧]*** を選択します。
 	- **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
 	- **[データ コンテキスト クラス]** ボックスは空のままにします。 
-	- レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
+	- レイアウト ページ ボックスに、「***\~/Views/Shared/\_Layout.cshtml***」と入力します。
 	
 	![[ビューの追加] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image18.png)
 
@@ -219,7 +219,7 @@
     - **[テンプレート]** ボックスで、***[作成]*** を選択します。
     - **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
     - **[データ コンテキスト クラス]** ボックスは空のままにします。
-    - レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
+    - レイアウト ページ ボックスに、「***\~/Views/Shared/\_Layout.cshtml***」と入力します。
     - **[追加]** をクリックします。
 
 #### <a name="_Toc395888515"></a>項目を編集するためのビューを追加する
@@ -233,7 +233,7 @@
     - **[テンプレート]** ボックスで、***[編集]*** を選択します。
     - **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
     - **[データ コンテキスト クラス]** ボックスは空のままにします。 
-    - レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
+    - レイアウト ページ ボックスに、「***\~/Views/Shared/\_Layout.cshtml***」と入力します。
     - **[追加]** をクリックします。
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントをすべて閉じてください。これらのビューは後で使用します。
@@ -441,13 +441,13 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 ここで仮にアプリケーションを実行した場合は、**HomeController** とそのコントローラーの **Index** ビューが表示されます。これは、作業の開始時に選択した MVC テンプレート プロジェクトの既定の動作であって、期待していた動作ではありません。 この MVC アプリケーションのルーティングに手を加えて、この動作を変更しましょう。
 
-***App_Start\RouteConfig.cs*** を開いて、"defaults:" で始まる行を見つけ、以下と同様にその行を変更します。
+***App\_Start\\RouteConfig.cs*** を開いて、"defaults:" で始まる行を見つけ、以下と同様にその行を変更します。
 
     	defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 
 ここでは、ルーティングの動作を制御するための値を URL に指定していない場合、**Home** の代わりに **Item** をコント ローラーとしてユーザー **インデックス**をビューとして使用するように ASP.NET MVC に指示しています。
 
-ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\**Item**\**Index** ビューに対するすべての不完全な項目が返されます。
+ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\\\*\*Item\*\*\\\*\*Index\*\* ビューに対するすべての不完全な項目が返されます。
 
 このプロジェクトをビルドして実行すると、次のように表示されます。
 
@@ -650,7 +650,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 7. これで、[アプリケーションをローカルに実行](#_Toc395637773)し、[Azure Websites](#_Toc395637774) にデプロイできます。
 
 
-[*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
+[\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [GitHub]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
@@ -658,4 +658,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

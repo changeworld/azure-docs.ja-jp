@@ -122,25 +122,25 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 
 Web アプリの診断を有効にしたら、[**構成**] 管理ページの下部にある [**保存**] アイコンをクリックして、設定したオプションを適用します。
 
-> [AZURE.IMPORTANT]ログ記録やトレースを行うと、Web アプリに対する負荷が大幅に増加します。トラブルシューティングを行っている対象の問題を再現した後は、ログ記録およびトレースをオフにしておくことをお勧めします。
+> [AZURE.IMPORTANT]詳細なエラー メッセージと失敗した要求トレースを使用すると、Web アプリの負荷が大きくなります。トラブルシューティングを行っている対象の問題を再現した後は、これらの機能を無効にしておくことをお勧めします。
 
 ### 詳細な構成 ###
 
 診断内容をさらに変更するには、**[構成]** 管理ページの **[アプリケーション設定]** セクションにキーと値のペアを追加します。**[アプリケーション設定]** で構成できる内容は次のとおりです。
 
-**DIAGNOSTICS_TEXTTRACELOGDIRECTORY**
+**DIAGNOSTICS\_TEXTTRACELOGDIRECTORY**
 
 - アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- Default value: ..\..\LogFiles\Application
+- Default value: ..\\..\\LogFiles\\Application
 
-**DIAGNOSTICS_TEXTTRACEMAXBUFFERSIZEBYTES**
+**DIAGNOSTICS\_TEXTTRACEMAXBUFFERSIZEBYTES**
 
 - アプリケーション ログの収集時に使用する最大バッファー サイズ。ログ情報はまずバッファーに書き込まれ、その後でファイルまたはストレージに保存されます。バッファー内の情報がファイルやストレージに保存される前に新しい情報が書き込まれると、既存のログ情報が失われる可能性があります。アプリケーションで大量のログ情報が生成される場合は、バッファー サイズを大きくしてください。
 
 - 既定値: 10 MB
 
-**DIAGNOSTICS_TEXTTRACEMAXLOGFOLDERSIZEBYTES**
+**DIAGNOSTICS\_TEXTTRACEMAXLOGFOLDERSIZEBYTES**
 
 - ファイルに書き込まれたアプリケーション診断を保存する **Application** フォルダーの最大サイズ。
 
@@ -277,4 +277,4 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

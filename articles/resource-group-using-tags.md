@@ -121,4 +121,4 @@ Getting Started (概要)
 - [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)  
   
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

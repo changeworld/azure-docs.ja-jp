@@ -151,15 +151,15 @@ VAST ファイルは、表示する広告を指定します。次の XML に、�
 	</Creative>
 
  
-**<NonLinearAds>** 要素には 1 つ以上の **<NonLinear>** 要素が含まれており、それぞれ非線形広告を記述できます。**<NonLinear>** 要素は、非線形広告のリソースを指定します。このリソースは、**<StaticResouce>**、**<IFrameResource>**、または **<HTMLResouce>** です。**<StaticResource>** は、HTML 以外のリソースを記述し、次のようなリソースの表示方法を指定する creativeType 属性を定義します。
+**<NonLinearAds>** 要素には 1 つ以上の **<NonLinear>** 要素が含まれており、それぞれ非線形広告を記述できます。**<NonLinear>** 要素は、非線形広告のリソースを指定します。このリソースは、**<StaticResouce>**、**<IFrameResource>**、または **<HTMLResouce>** です。\*\*<StaticResource>\*\* は、HTML 以外のリソースを記述し、次のようなリソースの表示方法を指定する creativeType 属性を定義します。
 
 Image/gif、image/jpeg、image/png – リソースが HTML **<img>** タグで表示されます。
 
-Application/x-javascript – リソースが HTML <**script**> タグで表示されます。
+Application/x-javascript – リソースが HTML <\*\*script\*\*> タグで表示されます。
 
 Application/x-shockwave-flash – リソースが Flash プレーヤーで表示されます。
 
-**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。**<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。**<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。**<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。**<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく **<NonLinearAds>** 要素にある点に注意してください。
+**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。**<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。**<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。**<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。**<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく \*\*<NonLinearAds>\*\* 要素にある点に注意してください。
 
 コンパニオン広告は、<CompanionAds> 要素内で定義されます。<CompanionAds> 要素には、1 つ以上の <Companion> 要素を含めることができます。各 <Companion> 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される <StaticResource>、<IFrameResource>、<HTMLResource> を含めることができます。VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
 
@@ -221,13 +221,13 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 1. 開始/終了 – ビデオを表示する前または後に広告を表示することを指定します。
 1. 位置 – 広告の中断のタイミングが不明なとき (ライブ ストリーミングなど) に、広告の中断の順序を指定します。各広告の中断の順序は、#n 形式で指定されます。n は整数 1 以上です。1 は、広告を最初のチャンスに再生することを意味し、2 は広告を 2 番目のチャンスに再生することを意味し、それ以降も同様です。
 
-<**AdBreak**> 要素内には、<**AdSource**> 要素を 1 つ配置できます。<**AdSource**> 要素には、次の属性が含まれています。
+<\*\*AdBreak\*\*> 要素内には、<\*\*AdSource\*\*> 要素を 1 つ配置できます。<\*\*AdSource\*\*> 要素には、次の属性が含まれています。
 
 1. Id – 広告ソースの識別子を指定します。
 1. allowMultipleAds – 広告の中断中に複数の広告を表示できるかどうかを指定するブール値。
 1. followRedirects – ビデオ プレーヤーが広告応答内でリダイレクトを扱うかどうかを指定するオプションのブール値。
 
-<**AdSource**> 要素は、インライン広告応答または広告応答への参照をプレーヤーに提供します。これには、次のいずれかの要素を含めることができます。
+<\*\*AdSource\*\*> 要素は、インライン広告応答または広告応答への参照をプレーヤーに提供します。これには、次のいずれかの要素を含めることができます。
 
 - <VASTAdData> - VAST 広告応答が VMAP ファイル内に埋め込まれていることを示します。
 - <AdTagURI> - 別のシステムからの広告応答を参照する URI。
@@ -235,7 +235,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 
 この例では、VAST 広告応答が含まれる <VASTAdData> 要素を使用してインライン広告応答が指定されます。他の要素の詳細については、「[VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)」をご覧ください。
 
-<**AdBreak**> 要素には、1 つの <**TrackingEvents**> 要素を含めることもできます。<**TrackingEvents**> 要素を使用すると、広告の中断の開始と終了を追跡したり、広告の中断中にエラーが発生したかどうかを追跡することができます。<**TrackingEvents**> 要素には、1 つ以上の <**Tracking**> 要素が含まれており、それぞれ追跡イベントと追跡 URI を指定します。指定できる追跡イベントは、次のとおりです。
+<\*\*AdBreak\*\*> 要素には、1 つの <\*\*TrackingEvents\*\*> 要素を含めることもできます。<\*\*TrackingEvents\*\*> 要素を使用すると、広告の中断の開始と終了を追跡したり、広告の中断中にエラーが発生したかどうかを追跡することができます。<\*\*TrackingEvents\*\*> 要素には、1 つ以上の <\*\*Tracking\*\*> 要素が含まれており、それぞれ追跡イベントと追跡 URI を指定します。指定できる追跡イベントは、次のとおりです。
 
 1. breakStart – 広告の中断の開始を追跡します。
 1. breakEnd – 広告の中断の完了を追跡します。
@@ -264,7 +264,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 	  </vmap:AdBreak>
 	</vmap:VMAP>
 
-<**TrackingEvents**> 要素とその子の詳細については、http://iab.org/VMAP.pdf をご覧ください。
+<\*\*TrackingEvents\*\*> 要素とその子の詳細については、http://iab.org/VMAP.pdf をご覧ください。
 
 ###Media Abstract Sequencing Template (MAST) ファイルの使用
 
@@ -804,4 +804,4 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md) [Azure Media Player Framework for iOS の概要](https://channel9.msdn.com/Series/Windows-Azure-Media-Services-Tutorials/An-introduction-to-Azure-Media-Player-Framework-for-IOS)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

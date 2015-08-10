@@ -1,10 +1,10 @@
-<properties 
+<properties
    pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
-   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。" 
-   services="search" 
-   documentationCenter="na" 
-   authors="HeidiSteen" 
-   manager="mblythe" 
+   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
+   services="search"
+   documentationCenter="na"
+   authors="HeidiSteen"
+   manager="mblythe"
    editor=""/>
 
 <tags
@@ -12,27 +12,28 @@
    ms.devlang="rest-api"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="search" 
-   ms.date="07/10/2015"
+   ms.workload="search"
+   ms.date="07/22/2015"
    ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
-この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在固定されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
+この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
 
 - マイクロソフトの[自然言語プロセッサ](#LanguageSupport) (Office および Bing で使用されるのと同じもの) は、クエリ結果の優れた精度とより多くの言語を提供します。
 - `moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
+- [Search](#SearchDocs) と [Suggestions](#Suggestions) API の両方で GET 構文の代替として POST 構文を使用できます。URL 全体の長さが 8 KB を超える場合に便利です。
 
 `2015-02-28-Preview` のいくつかの追加機能は、別のドキュメントに記載されています。学習した内容は次のとおりです。
 
-- [スコアリング プロファイル](../search-api-scoring-profiles-2015-02-28-preview.md)
-- [インデクサー](../search-api-indexers-2015-02-28-preview.md)
+- [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
+- [インデクサー](search-api-indexers-2015-02-28-preview.md)
 
 Azure Search サービスは複数のバージョンで使用できます。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
 ##このドキュメントの API
 
-Azure Search サービス API では、エンティティの検索に対して 2 種類の構文がサポートされます。簡単な構文と代替の OData 構文です (詳細については「[OData のサポート (Azure Search)](http://msdn.microsoft.com/library/azure/dn798932.aspx)」を参照)。簡単な構文の一覧を次に示します。
+Azure Search サービス API では、エンティティの検索に対して 2 種類の構文がサポートされます。[簡単](https://msdn.microsoft.com/library/dn798920.aspx)な構文と代替の OData 構文です (詳細については「[OData のサポート (Azure Search)](http://msdn.microsoft.com/library/azure/dn798932.aspx)」を参照)。簡単な構文の一覧を次に示します。
 
 [インデックスの作成](#CreateIndex)
 
@@ -65,6 +66,7 @@ Azure Search サービス API では、エンティティの検索に対して 2
 [ドキュメントの検索](#SearchDocs)
 
     GET /indexes/[index name]/docs?[query parameters]
+    POST /indexes/[index name]/docs/search?api-version=2015-02-28-Preview
 
 [ドキュメントの参照](#LookupAPI)
 
@@ -77,6 +79,7 @@ Azure Search サービス API では、エンティティの検索に対して 2
 [検索候補](#Suggestions)
 
     GET /indexes/[index name]/docs/suggest?[query parameters]
+    POST /indexes/[index name]/docs/suggest?api-version=2015-02-28-Preview
 
 ________________________________________
 <a name="IndexOps"></a>
@@ -108,9 +111,9 @@ ________________________________________
        "searchMode": "analyzingInfixMatching",
        "sourceFields": ["hotelName"]
       }
-     ] 
+     ]
     }
- 
+
 インデックスが作成された後、インデックスを設定するドキュメントをアップロードします。この次の手順については、「[ドキュメントの追加、削除、更新](#AddOrUpdateDocuments)」を参照してください。
 
 Azure Search でのインデックス処理の概要に関するビデオについては、「[Channel 9 Cloud Cover episode on Azure Search (チャネル 9: Azure Search に関するクラウド カバー エピソード)](http://go.microsoft.com/fwlink/p/?LinkId=511509)」をご覧ください。
@@ -141,16 +144,16 @@ HTTPS はすべてのサービス要求に必要です。**Create Index** 要求
 
 インデックスの名前は小文字にします。文字または数字で始めます。スラッシュとドットは使用できません。文字数の制限は 128 文字です。インデックスの名前は文字または数字で始め、残りの部分には文字、数字、ダッシュを使用できます。ダッシュは連続することができません。
 
-`api-version` は必須です。現行バージョンは `api-version=2015-02-28` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
+`api-version` は必須です。使用可能なバージョンの一覧については、[Search サービスのバージョン管理](http://msdn.microsoft.com/library/azure/dn864560.aspx)に関するページを参照してください。
 
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `Content-Type`: 必須。これを `application/json` に設定します
-- `api-key`: 必須。`api-key` は、 
-- Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。 
- 
+- `api-key`: 必須。`api-key` は、
+- Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="RequestData"></a> **要求本文の構文**
@@ -199,7 +202,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
           "name": "name of scoring profile",
           "text": (optional, only applies to searchable fields) {
             "weights": {
-              "searchable_field_name": relative_weight_value (positive #'s),
+              "searchable_field_name": relative_weight_value (positive numbers),
               ...
             }
           },
@@ -226,7 +229,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
               }
             }
           ],
-          "functionAggregation": (optional, applies only when functions are specified) 
+          "functionAggregation": (optional, applies only when functions are specified)
             "sum (default) | average | minimum | maximum | firstMatching"
         }
       ],
@@ -235,8 +238,8 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
         "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
         "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
       }
-    }    
-    
+    }
+
 **インデックスの属性**
 
 インデックスを作成するときに、以下の属性を設定できます。スコアリングおよびスコアリング プロファイルの詳細については、「[検索インデックスにスコア付けプロファイルを追加する](https://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
@@ -259,7 +262,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
   - **注**: 上記のどの属性 (`searchable`、`filterable`、`sortable`、`facetable`) も `true` に設定されていないフィールドは、実質的に逆インデックスから除外されます。このオプションは、クエリでは使用されませんが、検索結果には必要なフィールドに便利です。このようなフィールドをインデックスから除外と、パフォーマンスが向上します。
 
-  - `suggestions` - 以前のバージョンの API には `suggestions` プロパティが含まれていました。このブール型プロパティは現在は非推奨になっており、`2015-02-28` または `2015-02-28-Preview` では使用できません。代わりに、[サジェスター API](#Suggesters) を使用してください。`2014-07-31` バージョンでは、`suggestions` プロパティは、`Edm.String` 型または `Collection(Edm.String)` 型のフィールドに対し、フィールドを先行入力のオート コンプリートに使用できるかどうかを指定するために使用されていました。`suggestions` はインデックスで余分な領域を必要とするために既定で `false` でしたが、有効にしていた場合は、新しい API への移行方法を「[Transition from Preview to General Release in Azure Search (Azure Search のプレビューから一般リリースへの移行)](search-transition-from-preview.md)」を参照してください。
+  - `suggestions` - 以前のバージョンの API には `suggestions` プロパティが含まれていました。このブール型プロパティは現在は非推奨になっており、`2015-02-28` または `2015-02-28-Preview` では使用できません。代わりに、[サジェスター API](#Suggesters) を使用してください。`2014-07-31` バージョンでは、`suggestions` プロパティは、`Edm.String` 型または `Collection(Edm.String)` 型のフィールドに対し、フィールドを先行入力のオート コンプリートに使用できるかどうかを指定するために使用されていました。`suggestions` はインデックスで余分な領域を必要とするために既定で `false` でしたが、有効にしていた場合は、新しい API への移行方法について、「[Azure Search のプレビューから一般リリースへの移行](search-transition-from-preview.md)」を参照してください。
 
 `key` - インデックス内のドキュメントに対する一意の識別子を含んでいるものとしてフィールドをマークします。正確に 1 つのフィールドを `key` として選択する必要があり、そのフィールドは `Edm.String` 型でなければなりません。キー フィールドは、[参照 API](#LookupAPI) を使用してドキュメントを直接参照するために使用できます。
 
@@ -279,7 +282,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 Azure Search は、さまざまな言語でのフィールドのインデックス作成をサポートします。各言語には、特定の言語の特性が考慮されている標準以外のテキスト アナライザーが必要です。Azure Search では 2 種類のアナライザーが用意されています。
 
 - 28 個のアナライザーは Lucene によって提供されます。
-- 50 個のアナライザーは、Office および Bing で使用されるマイクロソフト独自の自然言語処理技術によって提供されます。 
+- 50 個のアナライザーは、Office および Bing で使用されるマイクロソフト独自の自然言語処理技術によって提供されます。
 
 開発者によっては、使い慣れた簡単なオープン ソース ソリューションである Lucene を好む場合があります。Lucene は高速ですが、マイクロソフトのアナライザーにはレンマ化などの高度な機能があります。可能であれば、マイクロソフトと Lucene の両方のアナライザーを比較し、より適したものを選んでください。
 
@@ -318,15 +321,15 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>アラビア語</td>
 		<td>ar.microsoft</td>
 		<td>
-		<ul>		
+		<ul>
 			<li>還元的ステマー</li>
 			<li>アラビア語のストップ ワードを除外します</li>
 		</ul>
 		</td>
-	</tr>   
+	</tr>
     <tr>
     	<td>アルメニア語</td>
-    	<td>hy.lucene</td>	
+    	<td>hy.lucene</td>
     	<td>
     	<ul>
       		<li>ライト アルゴリズム ステミングを適用します</li>
@@ -339,7 +342,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>bg.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>			
+			<li>拡張ステマー (レンマ化)</li>
 		</ul>
 		</td>
 	</tr>
@@ -368,7 +371,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>bn.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>			
+			<li>拡張ステマー (レンマ化)</li>
 		</ul>
 		</td>
 	</tr>
@@ -378,7 +381,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
     	<td>
     	<ul>
       		<li>ライト アルゴリズム ステミングを適用します</li>
-      		<li>カタルニア語のストップ ワードを除外します</li>      
+      		<li>カタルニア語のストップ ワードを除外します</li>
       		<li>エリジョンを除去します</li>
    		</ul>
     	</td>
@@ -388,8 +391,8 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>ca.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>		
-			<li>付加記号を削除します</li>	
+			<li>拡張ステマー (レンマ化)</li>
+			<li>付加記号を削除します</li>
 		</ul>
 		</td>
 	</tr>
@@ -504,7 +507,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		</td>
 	</tr>
     <tr>
-		<td>日本語</td>
+		<td>英語</td>
 		<td>en.lucene</td>
 		<td>
 		<ul>
@@ -515,7 +518,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		</td>
 	</tr>
     <tr>
-		<td>日本語</td>
+		<td>英語</td>
 		<td>en.microsoft</td>
 		<td>
 		<ul>
@@ -555,7 +558,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 			<li>複混合化</li>
 		</ul>
 		</td>
-	</tr>	
+	</tr>
     <tr>
 		<td>フランス語</td>
 		<td>fr.lucene</td>
@@ -584,7 +587,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
     	<td>
     	<ul>
     		<li>ライト ステミングを適用します</li>
-      		<li>ガリシア語のストップ ワードを除外します</li>      
+      		<li>ガリシア語のストップ ワードを除外します</li>
     	</ul>
     	</td>
   	</tr>
@@ -666,7 +669,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>
 		<ul>
 			<li>拡張ステマー (レンマ化)</li>
-			<li>ヒンディー語のストップ ワードを除外します</li>			
+			<li>ヒンディー語のストップ ワードを除外します</li>
 		</ul>
 		</td>
 	</tr>
@@ -696,7 +699,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>is.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>			
+			<li>拡張ステマー (レンマ化)</li>
 		</ul>
 		</td>
 	</tr>
@@ -715,7 +718,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>id.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>		
+			<li>拡張ステマー (レンマ化)</li>
 			<li>インドネシア語のストップ ワードを除外します</li>
 		</ul>
 		</td>
@@ -925,7 +928,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>pt-Br.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>			
+			<li>拡張ステマー (レンマ化)</li>
 			<li>ブラジル語のストップ ワードを除外します</li>
 		</ul>
 		</td>
@@ -1015,7 +1018,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>sr-latin.microsoft</td>
 		<td>
 		<ul>
-			<li>拡張ステマー (レンマ化)</li>	
+			<li>拡張ステマー (レンマ化)</li>
 		</ul>
 		</td>
 	</tr>
@@ -1024,8 +1027,8 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>sk.microsoft</td>
 		<td>
 		<ul>
-			<li>還元的ステマー</li>	
-			<li>複混合化</li>		
+			<li>還元的ステマー</li>
+			<li>複混合化</li>
 		</ul>
 		</td>
 	</tr>
@@ -1112,7 +1115,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>タイ語</td>
 		<td>th.microsoft</td>
 		<td>
-		<ul>			
+		<ul>
 			<li>タイ語のストップ ワードを除外します</li>
 		</ul>
 		</td>
@@ -1161,11 +1164,11 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 		<td>vi.microsoft</td>
 		<td>
 		<ul>
-			
+
 		</ul>
 		</td>
 	</tr>
-	<td colspan="3">さらに、Azure Search では言語に依存しないアナライザー構成が提供されます。</td> 
+	<td colspan="3">さらに、Azure Search では言語に依存しないアナライザー構成が提供されます。</td>
     <tr>
 		<td>標準 ASCII フォールディング</td>
 		<td>standardasciifolding.lucene</td>
@@ -1190,7 +1193,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 
 既定のスコアリング プロファイルはバックグラウンドで実行され、検索セットの各項目の検索スコアが計算されます。内部的な名前のないスコアリング プロファイルを使用できます。または、クエリ文字列にカスタム プロファイルが指定されていない場合に常に呼び出される既定値として、カスタム プロファイルを使用するように `defaultScoringProfile` を設定します。
 
-詳細については、「[検索インデックスにスコア付けプロファイルを追加する (Azure Search サービス REST API)](../search-api-scoring-profiles-2015-02-28.md)」を参照してください。
+詳細については、「[検索インデックスにスコア付けプロファイルを追加する (Azure Search サービス REST API)](search-api-scoring-profiles-2015-02-28.md)」を参照してください。
 
 **CORS のオプション**
 
@@ -1201,7 +1204,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 - `maxAgeInSeconds` (省略可能): ブラウザーはこの値を使用して、CORS プレフライト応答をキャッシュする期間 (秒) を決定します。負ではない整数を指定する必要があります。この値が大きいほどパフォーマンスはよくなりますが、CORS ポリシーの変更が有効になるまでの時間は長くなります。これを設定しないと、既定の期間として 5 分が使用されます。
 
 <a name="CreateUpdateIndexExample"></a> **要求本文の例**
- 
+
     {
       "name": "hotels",  
       "fields": [
@@ -1224,7 +1227,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
           "searchMode": "analyzingInfixMatching",
           "sourceFields": ["hotelName"]
         }
-      ] 
+      ]
     }
 
 **応答**
@@ -1265,7 +1268,7 @@ Suggester は、インデックスの一部です。現在のバージョンで 
 		{
 		  "name": "hotels",
 		  "fields": [
-		     . . . 
+		     . . .
 		   ],
 		  "suggesters": [
 		    {
@@ -1275,12 +1278,11 @@ Suggester は、インデックスの一部です。現在のバージョンで 
 		    }
 		  ],
 		  "scoringProfiles": [
-		     . . . 
+		     . . .
 		  ]
 		}
 
-> [AZURE.NOTE]Azure Search のパブリック プレビュー バージョンを使用した場合、`suggesters` は短い文字列 (3 ～ 25 文字) の接頭辞検索候補のみをサポートした古いブール型プロパティ (`"suggestions": false`) を置き換えます。その置き換えである `suggesters` は、フィールドの内容の先頭または途中で一致する語句を検索し、検索文字列の誤りに対する許容範囲が優れた、挿入辞一致をサポートします。これは、検索候補 API の唯一の実装です。`api-version=2014-07-31-Preview` で導入された `suggestions` プロパティは引き続きそのバージョンで動作しますが、Azure Search の `2015-02-28` バージョンでは動作しません。
-
+> [AZURE.NOTE]Azure Search のパブリック プレビュー バージョンを使用した場合、`suggesters` は短い文字列 (3 ～ 25 文字) の接頭辞検索候補のみをサポートした古いブール型プロパティ (`"suggestions": false`) を置き換えます。その置き換えである `suggesters` は、フィールドの内容の先頭または途中で一致する語句を検索し、検索文字列の誤りに対する許容範囲が優れた、挿入辞一致をサポートします。一般公開版のリリース以降は、これが、Suggestions API の唯一の実装です。`api-version=2014-07-31-Preview` で導入された以前の `suggestions` プロパティは引き続きそのバージョンで動作しますが、Azure Search の `2015-02-28` 以降のバージョンでは動作しません。
 
 <a name="UpdateIndex"></a>
 ## インデックスの更新
@@ -1309,7 +1311,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文の構文**
@@ -1345,7 +1347,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
           "name": "name of scoring profile",
           "text": (optional, only applies to searchable fields) {
             "weights": {
-              "searchable_field_name": relative_weight_value (positive #'s),
+              "searchable_field_name": relative_weight_value (positive numbers),
               ...
             }
           },
@@ -1372,7 +1374,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
               }
             }
           ],
-          "functionAggregation": (optional, applies only when functions are specified) 
+          "functionAggregation": (optional, applies only when functions are specified)
             "sum (default) | average | minimum | maximum | firstMatching"
         }
       ],
@@ -1381,7 +1383,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
         "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
         "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
       }
-    }    
+    }
 
 
 **応答**
@@ -1407,9 +1409,9 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
- 
+
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**List Indexes** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
@@ -1466,7 +1468,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 **要求**
 
 サービス要求には HTTPS が必要です。**Get Index** 要求は、GET メソッドを使用して作成できます。
- 
+
 要求 URI の [index name] には、インデックス コレクションから返すインデックスを指定します。
 
 `api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
@@ -1474,7 +1476,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
- 
+
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Get Index** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
 
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
@@ -1496,11 +1498,11 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
     DELETE https://[service name].search.windows.net/indexes/[index name]?api-version=[api-version]
     api-key: [admin key]
-    
+
 **要求**
 
 サービス要求には HTTPS が必要です。**Delete Index** 要求は、DELETE メソッドを使用して作成できます。
- 
+
 要求 URI の [index name] には、インデックス コレクションから削除するインデックスを指定します。
 
 `api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
@@ -1508,9 +1510,9 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
- 
+
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Delete Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
@@ -1541,9 +1543,9 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
- 
+
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Get Index Statistics** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
@@ -1565,18 +1567,15 @@ ________________________________________
 <a name="DocOps"></a>
 ## ドキュメントの操作 #
 
-Azure Search では、インデックスはサービスにアップロードされた JSON ドキュメントを使用して設定されます。アップロードされたすべてのドキュメントが、検索データのコーパスを構成します。ドキュメントにはフィールドが含まれ、その一部はアップロード時に検索語句にトークン化されます。Azure Search API の `/docs` URL セグメントは、インデックス内のドキュメントのコレクションを表します。ドキュメントのアップロード、マージ、削除、クエリなど、コレクションに対して実行される操作はすべて単一インデックスのコンテキストで行われるので、これらの操作の URL は常に特定のインデックス名に対する `/indexes/[index name]/docs` で始まります。
+Azure Search では、インデックスはクラウドに格納され、サービスにアップロードされた JSON ドキュメントを使用して設定されます。アップロードされたすべてのドキュメントが、検索データのコーパスを構成します。ドキュメントにはフィールドが含まれ、その一部はアップロード時に検索語句にトークン化されます。Azure Search API の `/docs` URL セグメントは、インデックス内のドキュメントのコレクションを表します。ドキュメントのアップロード、マージ、削除、クエリなど、コレクションに対して実行される操作はすべて単一インデックスのコンテキストで行われるので、これらの操作の URL は常に特定のインデックス名に対する `/indexes/[index name]/docs` で始まります。
 
-リレーショナル データベースまたはその他の構造化されたデータ ソースからの結果セットを使用して、アプリケーション コードで JSON ドキュメントを生成して Azure Search にアップロードできます。
-
-ほとんどのアプリケーション開発シナリオでは、検索データは分離されて、アプリケーションのデータ層の外部に存在します。アプリケーションでオンプレミス データベースを使用してインベントリのステータスを追跡している場合、Azure Search に保持されるドキュメントには、製品名、価格、利用可能性に関して似た、または同一のデータ値が含まれますが、検索を最適化するために逆インデックスで格納されます。
+アプリケーション コードでは、Azure Search にアップロードする JSON ドキュメントを生成する必要があるか、データ ソースが Azure SQL Database または DocumentDB である場合は、[インデクサー](https://msdn.microsoft.com/library/dn946891.aspx)を使用してドキュメントを読み込むことができます。通常、指定した 1 つのデータセットからインデックスが設定されます。
 
 検索する各項目に対して 1 つのドキュメントを用意するように計画する必要があります。たとえば、映画レンタル アプリケーションでは映画ごとに 1 つのドキュメントを使用し、店舗アプリケーションでは SKU ごとに 1 つのドキュメントを使用し、オンライン コースウェア アプリケーションではコースごとに 1 つのドキュメントを使用し、調査会社ではリポジトリ内の論文ごとに 1 つのドキュメントを使用する、という具合です。
 
-ドキュメントは、1 つまたは複数のフィールドで構成されます。フィールドには、Azure Search によって検索語句にトークン化されるテキスト、およびフィルターまたはスコアリング プロファイルで使用できるトークン化されないテキストまたはテキスト以外の値を格納できます。各フィールドに対してサポートされる名前、データ型、検索機能は、インデックス スキーマによって決まります。各インデックス スキーマのフィールドの 1 つは ID として指定される必要があり、ドキュメントごとにインデックス内でそのドキュメントを一意に識別する ID フィールドの値が必要です。他のすべてのドキュメント フィールドは省略可能であり、指定しないと既定で null 値になります。null 値は、逆インデックスの領域を使用しないことに注意してください。
+ドキュメントは、1 つまたは複数のフィールドで構成されます。フィールドには、Azure Search によって検索語句にトークン化されるテキスト、およびフィルターまたはスコアリング プロファイルで使用できるトークン化されないテキストまたはテキスト以外の値を格納できます。各フィールドに対してサポートされる名前、データ型、検索機能は、インデックス スキーマによって決まります。各インデックス スキーマのフィールドの 1 つは ID として指定される必要があり、ドキュメントごとにインデックス内でそのドキュメントを一意に識別する ID フィールドの値が必要です。他のすべてのドキュメント フィールドは省略可能であり、指定しないと既定で null 値になります。null 値は、検索インデックスの領域を使用しないことに注意してください。
 
 ドキュメントをアップロードする前に、サービスでインデックスを作成しておく必要があります。この最初の手順の詳細については、「[インデックスの作成](#CreateIndex)」を参照してください。
-
 
 <a name="AddOrUpdateDocuments"></a>
 ## ドキュメントの追加、更新、削除
@@ -1586,7 +1585,7 @@ HTTP POST を使用して、指定したインデックスのドキュメント�
     POST https://[service name].search.windows.net/indexes/[index name]/docs/index?api-version=[api-version]
     Content-Type: application/json
     api-key: [admin key]
-    
+
 **要求**
 
 HTTPS はすべてのサービス要求に必要です。HTTP POST を使用して、指定したインデックスのドキュメントのアップロード、マージ、マージまたはアップロード、または削除を行うことができます。
@@ -1601,8 +1600,8 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Add Documents** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
- 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](.search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1619,13 +1618,13 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
         ...
       ]
     }
-    
+
 **ドキュメント アクション**
 
 - `upload`: 更新アクションは、ドキュメントが新しい場合は挿入されて存在する場合は更新/置換される "upsert" に似ています。更新の場合はすべてのフィールドが置換されることに注意してください。
 - `merge`: マージは、指定したフィールドで既存のドキュメントを更新します。ドキュメントが存在しない場合、マージは失敗します。マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。これには、`Collection(Edm.String)` 型のフィールドも含まれます。たとえば、ドキュメントにフィールド "tags" があって値が `["budget"]` である場合、"tags" に値 `["economy", "pool"]` を指定してマージを実行すると、"tags" フィールドの最終的な値は `["economy", "pool"]` になります。`["budget", "economy", "pool"]` では**ありません**。
 - `mergeOrUpload`: 指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同じように動作します。ドキュメントが存在しない場合は、新しいドキュメントの `upload` と同じように動作します。
-- `delete`: インデックスから指定したドキュメントを削除します。`delete` 操作ではキー フィールドの値のみを指定できることに注意してください。他のフィールドを指定すると、HTTP 400 エラーになります。ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に `null` に設定します。 
+- `delete`: インデックスから指定したドキュメントを削除します。`delete` 操作ではキー フィールドの値のみを指定できることに注意してください。他のフィールドを指定すると、HTTP 400 エラーになります。ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に `null` に設定します。
 
 **応答**
 
@@ -1642,7 +1641,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
     }  
 
 状態コード: 1 つ以上の項目のインデックスが正常に作成されなかった場合、207 が返されます (インデックスが作成されなかった項目の "status" フィールドが false に設定されることによって示される状態)。
- 
+
     {
       "value": [
         {
@@ -1668,7 +1667,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
           "hotelId": "1",
           "baseRate": 199.0,
           "description": "Best hotel in town",
-		  "description_fr": "Meilleur hôtel en ville", 
+		  "description_fr": "Meilleur hôtel en ville",
           "hotelName": "Fancy Stay",
 		  "category": "Luxury",
           "tags": ["pool", "view", "wifi", "concierge"],
@@ -1710,18 +1709,26 @@ ________________________________________
 <a name="SearchDocs"></a>
 ## ドキュメントの検索
 
-**Search** 操作は、GET 要求として発行され、一致するドキュメントを選択するための条件を示すクエリ パラメーターを指定します。
+**Search** 操作は、GET 要求または POST 要求として発行され、一致するドキュメントを選択するための条件を示すクエリ パラメーターを指定します。
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?[query parameters]
-    api-key: [admin key]
+    api-key: [admin or query key]
+
+    POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=[api-version]
+    Content-Type: application/json
+    api-key: [admin or query key]
+
+**GET ではなく、POST を使用する場合**
+
+HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。これらのアプリケーションについては、HTTP POST の使用をお勧めします。POST の要求サイズの上限は 17 MB に近いため、最も複雑なクエリでも十分な長さとなります。
 
 **要求**
 
-サービス要求には HTTPS が必要です。**Search** 要求は、GET メソッドを使用して作成できます。
+サービス要求には HTTPS が必要です。**Search** 要求は、GET メソッドまたは POST メソッドを使用して作成できます。
 
-要求 URI は、クエリ パラメーターと一致するすべてのドキュメントについて、クエリするインデックスを指定します。
+要求 URI は、パラメーターと一致するすべてのドキュメントについて、クエリするインデックスを指定します。パラメーターは、GET 要求の場合、クエリ文字列に指定し、POST 要求の場合は要求本文に指定します。
 
-ベスト プラクティスとして、REST API を直接呼び出すときは、[URL エンコード](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx)固有のクエリ パラメーターを忘れないでください。Search Document 操作では、以下が含まれます。
+GET 要求を作成する際のベスト プラクティスとして、REST API を直接呼び出すときは、[URL エンコード](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx)固有のクエリ パラメーターを忘れないでください。**Search** 操作のための API には次があります。
 
 - `$filter`
 - `facet`
@@ -1732,11 +1739,13 @@ ________________________________________
 
 URL エンコードは、上記のクエリ パラメーターにのみ推奨されます。誤ってクエリ文字列全体 (? より後のすべて) を URL エンコードした場合は、要求が中断します。
 
-また、URL エンコードは、REST API を直接呼び出すときにのみ必要です。[.NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用すると、URL エンコードが自動的に処理されます。
+また、URL エンコードは、GET を使用して REST API を直接呼び出すときにのみ必要です。POST を使用して **Search** を呼び出す場合や、URL のエンコーディングを処理する [.NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用する場合は、URL エンコードする必要はありません。
 
 **クエリ パラメーター**
 
-`search=[string]` (省略可能) - 検索するテキスト。`searchFields` を指定しないと、既定ですべての `searchable` フィールドが検索されます。`searchable` フィールドを検索するときは、検索テキスト自体がトークン化されるので、複数の語句を空白で区切ることができます (例: `search=hello world`)。任意の語句と一致させるには、`*` を使用します (これはブール型フィルターのクエリに便利です)。このパラメーターを省略することは、`*` に設定するのと同じ効果を持ちます。検索構文の詳細については、後の「簡単なクエリ構文」を参照してください。
+**Search**は、クエリ条件を提供して検索の動作も指定するいくつかのパラメーターを受け取ります。これらのパラメーターは、GET を介して **Search** を呼び出すときは URL クエリ文字列に指定します。POST を介して **Search** を呼び出すときは要求本文に JSON プロパティとして指定します。いくつかのパラメーターの構文は、GET および POST の間で多少異なります。その違いは、以下で随時説明しています。
+
+`search=[string]` (省略可能) - 検索するテキスト。`searchFields` を指定しないと、既定ですべての `searchable` フィールドが検索されます。`searchable` フィールドを検索するときは、検索テキスト自体がトークン化されるので、複数の語句を空白で区切ることができます (例: `search=hello world`)。任意の語句と一致させるには、`*` を使用します (これはブール型フィルターのクエリに便利です)。このパラメーターを省略することは、`*` に設定するのと同じ効果を持ちます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)に関するページを参照してください。
 
   - **注**: `searchable` フィールドをクエリすると、予想外の結果になることがあります。トークナイザーには、アポストロフィ、数値内のコンマなど、英語テキストで一般的なケースを処理するロジックが含まれています。たとえば、英語ではコンマは大きな数の桁区切り記号として使用されるので、`search=123,456` は、個別の語句 123 および 456 ではなく、1 つの語句 123,456 と一致します。このため、`search` パラメーターで語句を区切るには区切り記号ではなく空白文字を使用することをお勧めします。
 
@@ -1748,19 +1757,31 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `$skip=#` (省略可能) - スキップする検索結果の数。100,000 を超えることはできません。ドキュメントを順番にスキャンする必要があり、この制限のために `$skip` を使用できない場合は、代わりに完全に順序付けられているキーに対する `$orderby` と範囲クエリでの `$filter` を使用することを検討してください。
 
-`$top=#` (省略可能) - 取得する検索結果の数。既定値は 50 です。1000 より大きい値を指定し、結果が 1000 より多い場合、最初の 1000 個の結果だけと、次の結果ページへのリンクが返されます ([後の例](#SearchResponse)の `@odata.nextLink` を参照)。
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `skip` ではなく `$skip` です。
+
+`$top=#` (省略可能) - 取得する検索結果の数。これは、`$skip` と組み合わせて使用して、検索結果のクライアント側のページングを実装できます。
+
+> [AZURE.NOTE]Azure Search では、***サーバー側のページング***を使用して、クエリが一度に大量のドキュメントを取得することを防ぎます。既定のページ サイズは 50 で、最大ページ サイズは 1,000 です。つまり、`$top` を指定しない場合、既定では **Search** は最大で 50 個の結果を返します。50 個を超える結果がある場合は、応答には 最大で 50 個の結果を含む次のページを取得するための情報が含まれています ([次の例](#SearchResponse)の `@odata.nextLink` と `@search.nextPageParameters` を参照)。同様に、`$top` に 1,000 を超える値を指定し、結果が 1,000 個より多い場合は、最初の 1,000 個の結果だけが返されます。その際、最大 1,000 個の結果を含む次のページを取得するための情報も含まれます。
+
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `top` ではなく `$top` です。
 
 `$count=true|false` (省略可能、既定値は `false`) - 結果の合計数を取得するかどうか。この値を `true` に設定すると、パフォーマンスに影響する場合があります。返されるカウントは概数であることに注意してください。
 
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `count` ではなく `$count` です。
+
 `$orderby=[string]` (省略可能) - 結果を並べ替えるための式のコンマ区切りのリスト。各式は、フィールド名または `geo.distance()` 関数の呼び出しです。各式に続いて、昇順を示す `asc` または降順を示す `desc` を指定できます。既定値は昇順です。結び付きは、ドキュメントの一致スコアによって切り離されます。`$orderby` を指定しないと、既定の並べ替え順序はドキュメント一致スコアの降順になります。`$orderby` には 32 句の制限があります。
 
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `orderby` ではなく `$orderby` です。
+
 `$select=[string]` (省略可能) - 取得するフィールドのコンマ区切りリスト。指定しないと、スキーマで取得可能とマークされているすべてのフィールドが含まれます。このパラメーターを `*` に設定することによって、明示的にすべてのフィールドを要求することもできます。
+
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `select` ではなく `$select` です。
 
 `facet=[string]` (0 以上) - ファセットに使用するフィールド。オプションとして、コンマ区切りの `name:value` ペアとして表された、ファセットをカスタマイズするパラメーターを文字列に含めることができます。有効なパラメーターは次のとおりです。
 
 - `count` (ファセット語句の最大数、既定値は 10)。最大値はありませんが、値が大きいとパフォーマンスが低下します。ファセット フィールドに多数の一意の語句が含まれる場合は特にそうです。
   - 例: `facet=category,count:5` はファセット結果の上位 5 カテゴリを取得します。  
-  - **注**: `count` パラメーターが一意の語句の数より小さい、結果が正しくない可能性があります。これは、ファセット クエリがシャード間に分散される方法のためです。`count` を大きくすると、一般に、語句の数の精度は向上しますが、パフォーマンスは低下します。 
+  - **注**: `count` パラメーターが一意の語句の数より小さい、結果が正しくない可能性があります。これは、ファセット クエリがシャード間に分散される方法のためです。`count` を大きくすると、一般に、語句の数の精度は向上しますが、パフォーマンスは低下します。
 - `sort` (カウントの*降順*に並べ替える `count`、カウントの*昇順*に並べ替える `-count`、値の*昇順*に並べ替える `value`、値の*降順*に並べ替える `-value` のいずれか)
   - 例: `facet=category,count:3,sort:count` は、各都市名のドキュメント数を降順に並べ替えたファセット結果の上位 3 カテゴリを取得します。たとえば、上位 3 カテゴリが Budget、Motel、Luxury で、Budget が 5 ヒット、Motel が 6 ヒット、Luxury が 4 ヒットである場合、バケットは Motel、Budget、Luxury の順序になります。
   - 例: `facet=rating,sort:-value` では、値の降順で、すべての可能な評価のバケットが生成されます。たとえば、評価が 1 ～ 5 の場合、各評価に一致したドキュメントの数に関係なく、バケットは 5、4、3、2、1 の順序になります。
@@ -1772,17 +1793,27 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
   - 例: `facet=lastRenovationDate,interval:year` では、ホテルが改装された各年に対して 1 つのバケットが生成されます。
 - **注**: `count` と `sort` を同じファセット指定で組み合わせることができますが、それらを `interval` または `values` と組み合わせることはできず、`interval` と `values` を一緒に組み合わせることはできません。
 
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `facets` ではなく `facet` です。また、各文字列が個々にファセット式の文字列となる JSON 配列の文字列として指定します。
+
 `$filter=[string]` (省略可能) - 標準の OData 構文で構造化された検索式。Azure Search がサポートする OData 式の文法のサブセットの詳細については、「[OData 式の構文](#ODataExpressionSyntax)」を参照してください。
+
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `filter` ではなく `$filter` です。
 
 `highlight=[string]` (省略可能) - ヒットの強調表示に使用されるコンマで区切られたフィールド名のセット。`searchable` フィールドのみが、ヒットの強調表示に使用できます。
 
-  `highlightPreTag=[string]` (省略可能、既定値は `<em>`) - ヒットの強調表示の前に付加する文字列タグ。`highlightPostTag` で設定する必要があります。URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+`highlightPreTag=[string]` (省略可能、既定値は `<em>`) - ヒットの強調表示の前に付加する文字列タグ。`highlightPostTag` で設定する必要があります。
 
-  `highlightPostTag=[string]` (省略可能、既定値は `</em>`) - ヒットの強調表示の後に付加する文字列タグ。`highlightPreTag` で設定する必要があります。URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+> [AZURE.NOTE]GET を使用して **Search** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+
+`highlightPostTag=[string]` (省略可能、既定値は `</em>`) - ヒットの強調表示の後に付加する文字列タグ。`highlightPreTag` で設定する必要があります。
+
+> [AZURE.NOTE]GET を使用して **Search** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
 
 `scoringProfile=[string]` (省略可能) - 結果の並べ替えを目的として一致するドキュメントのマッチ スコアを評価するためのスコアリング プロファイルの。
 
 `scoringParameter=[string]` (0 以上) - 名前:値の形式を使用して、スコアリング関数で定義されている各パラメーターの値を示します (例: `referencePointParameter`)。たとえば、スコアリング プロファイルで "mylocation" という名前のパラメーターを持つ関数が定義されている場合、クエリ文字列のオプションは &scoringParameter=mylocation:-122.2,44.8 になります。
+
+> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `scoringParameters` ではなく `scoringParameter` です。また、各文字列が個々に name:value のペアとなる JSON 配列の文字列として指定します。
 
 `minimumCoverage` (省略可能、既定値は 100) - クエリが成功として報告されるために、検索クエリで照合する必要のあるインデックスの割合を示す 0 ～ 100 の範囲の数値。既定では、インデックス全体が一致する必要があります。そうでないと、`Search` は HTTP 状態コード 503 を返します。`minimumCoverage` を設定し、`Search` が成功した場合は、HTTP 200 が返され、応答にはクエリで照合したインデックスの割合を示す `@search.coverage` 値が含められます。
 
@@ -1790,19 +1821,41 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
-注: この操作の場合、`api-version` はクエリ パラメーターとして指定します。
+注: この操作の場合、GET または POST のどちらを使用して **Search** を呼び出す場合でも、URL にクエリ パラメーターとして `api-version` を指定します。
 
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Search** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
-ありません。
+GET の場合: なし。
+
+POST の場合:
+
+    {
+      "count": true | false (default),
+      "facets": [ "facet_expression_1", "facet_expression_2", ... ],
+      "filter": "odata_filter_expression",
+      "highlight": "highlight_field_1, highlight_field_2, ...",
+      "highlightPreTag": "pre_tag",
+      "highlightPostTag": "post_tag",
+      "minimumCoverage": # (% of index that must be covered to declare query successful; default 100),
+      "moreLikeThis": "document_key" (mutually exclusive with "search" parameter),
+      "orderby": "orderby_expression",
+      "scoringParameters": [ "scoring_parameter_1", "scoring_parameter_2", ... ],
+      "scoringProfile": "scoring_profile_name",
+      "search": "simple_query_expression",
+      "searchFields": "field_name_1, field_name_2, ...",
+      "searchMode": "any" (default) | "all",
+      "select": "field_name_1, field_name_2, ...",
+      "skip": # (default 0),
+      "top": #
+    }
 
 <a name="SearchResponse"></a> **応答**
 
@@ -1822,6 +1875,25 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
         ],
         ...
       },
+      "@search.nextPageParameters": { (request body to fetch the next page of results if result count exceeds page size and Search was called with POST)
+        "count": ... (value from request body if present),
+        "facets": ... (value from request body if present),
+        "filter": ... (value from request body if present),
+        "highlight": ... (value from request body if present),
+        "highlightPreTag": ... (value from request body if present),
+        "highlightPostTag": ... (value from request body if present),
+        "minimumCoverage": ... (value from request body if present),
+        "moreLikeThis": ... (value from request body if present),
+        "orderby": ... (value from request body if present),
+        "scoringParameters": ... (value from request body if present),
+        "scoringProfile": ... (value from request body if present),
+        "search": ... (value from request body if present),
+        "searchFields": ... (value from request body if present),
+        "searchMode": ... (value from request body if present),
+        "select": ... (value from request body if present),
+        "skip": ... (page size plus value from request body if present),
+        "top": ... (value from request body if present minus page size),
+      },
       "value": [
         {
           "@search.score": document_score (if a text query was provided),
@@ -1835,9 +1907,9 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
         },
         ...
       ],
-      "@odata.nextLink": (URL to fetch the next page of results if $top is greater than 1000)
+      "@odata.nextLink": (URL to fetch the next page of results if result count exceeds page size; Applies to both GET and POST)
     }
-    
+
 **例:**
 
 その他の例については、「[Azure Search の OData 式の構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)」を参照してください。
@@ -1846,59 +1918,146 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
     GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "*",
+      "orderby": [ "lastRenovationDate desc" ]
+    }
+
 2) ファセット検索で、インデックスを検索し、カテゴリ、レーティング、タグに対するファセットと、特定の範囲の baseRate の項目を取得します。
 
     GET /indexes/hotels/docs?search=test&facet=category&facet=rating&facet=tags&facet=baseRate,values:80|150|220&api-version=2015-02-28-Preview
+
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "test",
+      "facets": [ "category", "rating", "tags", "baseRate,values:80|150|220" ]
+    }
 
 3) ユーザーがレーティング 3 とカテゴリ "Motel" をクリックした後、フィルターを使用して前のファセット クエリの結果を絞り込みます。
 
     GET /indexes/hotels/docs?search=test&facet=tags&facet=baseRate,values:80|150|220&$filter=rating eq 3 and category eq 'Motel'&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "test",
+      "facets": [ "tags", "baseRate,values:80|150|220" ],
+      "filter": "rating eq 3 and category eq 'Motel'"
+    }
+
 4) ファセット検索で、クエリで返される一意の語句に上限を設定します。既定値は 10 ですが、`facet` 属性の `count` パラメーターを使用してこの値を増減できます。
 
     GET /indexes/hotels/docs?search=test&facet=city,count:5&api-version=2015-02-28-Preview
+
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "test",
+      "facets": [ "city,count:5" ]
+    }
 
 5) 特定のフィールド内のインデックスを検索します (たとえば、言語固有のフィールド)。
 
     GET /indexes/hotels/docs?search=hôtel&searchFields=description_fr&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "hôtel",
+      "searchFields": [ "description_fr" ]
+    }
+
 6) 複数のフィールドにまたがるインデックスを検索します。たとえば、複数の言語の検索可能なフィールドをすべて同じインデックスに格納してクエリできます。英語とフランス語の説明が同じドキュメントに共存している場合、いずれかまたはすべてをクエリ結果で返すことができます。
 
 	GET /indexes/hotels/docs?search=hotel&searchFields=description,description_fr&api-version=2015-02-28-Preview
-	
+
+	POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "hotel",
+      "searchFields": [ "description", "description_fr" ]
+    }
+
 クエリできるのは一度に 1 つのインデックスだけであることに注意してください。一度に 1 つをクエリするのでない限り、言語ごとに複数のインデックスを作成しないでください。
 
 7) ページング - 項目の 1 番目のページを取得します (ページ サイズは 10)。
 
     GET /indexes/hotels/docs?search=*&$skip=0&$top=10&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "*",
+      "skip": 0,
+      "top": 10
+    }
+
 8) ページング - 項目の 2 番目のページを取得します (ページ サイズは 10)。
 
     GET /indexes/hotels/docs?search=*&$skip=10&$top=10&api-version=2015-02-28-Preview
+
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "*",
+      "skip": 10,
+      "top": 10
+    }
 
 9) 特定のフィールドのセットを取得します。
 
     GET /indexes/hotels/docs?search=*&$select=hotelName,description&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "*",
+      "select": [ "hotelName", "description" ]
+    }
+
 10) 特定のフィルター式に一致するドキュメントを取得します。
 
     GET /indexes/hotels/docs?$filter=(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
+    }
+
 11) インデックスを検索し、ヒットを強調表示してフラグメントを返します。
 
     GET /indexes/hotels/docs?search=something&highlight=description&api-version=2015-02-28-Preview
-    
+
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "something",
+      "highlight": "description"
+    }
+
 12) インデックスを検索し、参照場所から近いものから遠いものの順に並べ替えてドキュメントを返します。
 
     GET /indexes/hotels/docs?search=something&$orderby=geo.distance(location, geography'POINT(-122.12315 47.88121)')&api-version=2015-02-28-Preview
+
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "something",
+      "orderby": [ "geo.distance(location, geography'POINT(-122.12315 47.88121)')" ]
+    }
 
 13) 2 つの距離スコアリング関数を含む "geo" という名前のスコアリング プロファイルがあるものとしてインデックスを検索します。1 つの関数は "currentLocation" という名前のパラメーターを定義し、もう 1 つは "lastLocation" という名前のパラメーターを定義しています。
 
     GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&scoringParameter=lastLocation:-121.499,44.2113&api-version=2015-02-28-Preview
 
-14) 簡単なクエリ構文を使用して、インデックス内のドキュメントを検索します。このクエリは、検索可能なフィールドに語句 "comfort" および "location" が含まれていて "motel" が含まれないホテルを返します。
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "something",
+      "scoringProfile": "geo",
+      "scoringParameters": [ "currentLocation:-122.123,44.77233", "lastLocation:-121.499,44.2113" ]
+    }
+
+14) [簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)を使用して、インデックス内のドキュメントを検索します。このクエリは、検索可能なフィールドに語句 "comfort" および "location" が含まれていて "motel" が含まれないホテルを返します。
 
     GET /indexes/hotels/docs?search=comfort +location -motel&searchMode=all&api-version=2015-02-28-Preview
+
+    POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
+    {
+      "search": "comfort +location -motel",
+      "searchMode": "all"
+    }
 
 上の `searchMode=all` の使用に注意してください。このパラメーターを含めると、既定の `searchMode=any` が上書きされて、`-motel` が "OR NOT" ではなく "AND NOT" を意味することが保証されます。`searchMode=all` を指定しないと、検索結果を制限するのではなく拡大する "OR NOT" になり、一部のユーザーにとっては直感に反している可能性があります。
 
@@ -1908,14 +2067,14 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 **Lookup Document** 操作は、Azure Search からドキュメントを取得します。これは、ユーザーが特定の検索結果をクリックして、そのドキュメントに関する詳細を検索するときに役立ちます。
 
-    GET https://[service name].search.windows.net/indexes/[index name]/docs/[key]?[query parameters] 
-    api-key: [admin key]
-    
+    GET https://[service name].search.windows.net/indexes/[index name]/docs/[key]?[query parameters]
+    api-key: [admin or query key]
+
 **要求**
 
 サービス要求には HTTPS が必要です。**Lookup Document** 要求は、次のようにして作成できます。
 
-    GET /indexes/[index name]/docs/key?[query parameters] 
+    GET /indexes/[index name]/docs/key?[query parameters]
 
 または、従来の OData 構文をキー参照に使用することもできます。
 
@@ -1936,7 +2095,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Lookup Document** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
@@ -1950,7 +2109,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
     {
       field_name: field_value (fields matching the default or specified projection)
     }
-    
+
 **例**
 
 キー '2' を持つドキュメントを参照します。
@@ -1968,8 +2127,8 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs/$count?api-version=[api-version]
     Accept: text/plain
-    api-key: [admin key]
-    
+    api-key: [admin or query key]
+
 **要求**
 
 サービス要求には HTTPS が必要です。**Count Documents** 要求は、GET メソッドを使用して作成できます。
@@ -1984,7 +2143,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
 - `Accept`: この値は `text/plain` に設定する必要があります。
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Count Documents** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
- 
+
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
@@ -2004,17 +2163,26 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
 Suggestion 要求はターゲット ドキュメントの検索候補を示すことを目的としているので、複数の候補ドキュメントが同じ検索入力と一致した場合、検索候補のテキストが繰り返される場合があります。`$select` を使用して (ドキュメント キーを含む) 他のドキュメント フィールドを取得し、各検索候補のソースであるドキュメントを示すことができます。
 
-    GET https://[service name].search.windows.net/indexes/[index name]/docs/suggest?[query parameters]
-    api-key: [admin key]
+**Suggestions** 操作は GET または POST 要求として発行されます。
 
+    GET https://[service name].search.windows.net/indexes/[index name]/docs/suggest?[query parameters]
+    api-key: [admin or query key]
+
+    POST https://[service name].search.windows.net/indexes/[index name]/docs/suggest?api-version=[api-version]
+    Content-Type: application/json
+    api-key: [admin or query key]
+
+**GET ではなく、POST を使用する場合**
+
+HTTP GET を使用して **Suggestions** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。これらのアプリケーションについては、HTTP POST の使用をお勧めします。POST の要求サイズの上限は 17 MB に近いため、最も複雑なクエリでも十分な長さとなります。
 
 **要求**
 
-サービス要求には HTTPS が必要です。**Suggestions** 要求は、GET メソッドを使用して作成できます。
+サービス要求には HTTPS が必要です。**Suggestions** 要求は、GET メソッドまたは POST メソッドを使用して作成できます。
 
-要求 URI では、クエリするインデックスの名前を指定します。また、部分的に入力された検索語句もクエリ文字列に含めます。
+要求 URI では、クエリするインデックスの名前を指定します。部分的に入力する検索語のようなパラメーターは、GET 要求の場合はクエリ文字列に指定し、POST 要求の場合は要求本文に指定します。
 
-ベスト プラクティスとして、REST API を直接呼び出すときは、[URL エンコード](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx)固有のクエリ パラメーターを忘れないでください。Suggestions 操作の場合、以下が含まれます。
+GET 要求を作成する際のベスト プラクティスとして、REST API を直接呼び出すときは、[URL エンコード](https://msdn.microsoft.com/library/system.uri.escapedatastring.aspx)固有のクエリ パラメーターを忘れないでください。**Suggestions** 操作の場合、以下が含まれます。
 
 - `$filter`
 - `highlightPreTag`
@@ -2023,15 +2191,21 @@ Suggestion 要求はターゲット ドキュメントの検索候補を示す�
 
 URL エンコードは、上記のクエリ パラメーターにのみ推奨されます。誤ってクエリ文字列全体 (? より後のすべて) を URL エンコードした場合は、要求が中断します。
 
-また、URL エンコードは、REST API を直接呼び出すときにのみ必要です。[.NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用すると、URL エンコードが自動的に処理されます。
+また、URL エンコードは、GET を使用して REST API を直接呼び出すときにのみ必要です。POST を使用して **Suggestions** を呼び出す場合や、URL のエンコーディングを処理する [.NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用する場合は、URL エンコードする必要はありません。
 
 **クエリ パラメーター**
 
-`search=[string]` - クエリの検索候補を示すために使用する検索テキスト。3 文字以上 25 文字以下で指定する必要があります。
+**Suggestions** はクエリ条件を提供して検索の動作も指定するいくつかのパラメーターを受け取ります。これらのパラメーターは、GET を介して **Suggestions** を呼び出すときは URL クエリ文字列に指定します。POST を介して **Suggestions** を呼び出すときは要求本文に JSON プロパティとして指定します。いくつかのパラメーターの構文は、GET および POST の間で多少異なります。その違いは、以下で随時説明しています。
 
-`highlightPreTag=[string]` (省略可能) - 検索ヒットの前に付加する文字列タグ。`highlightPostTag` で設定する必要があります。URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+`search=[string]` - クエリの検索候補を示すために使用する検索テキスト。1 文字以上 100 文字以下で指定する必要があります。
 
-`highlightPostTag=[string]` (省略可能) - 検索ヒットの後に付加する文字列タグ。`highlightPreTag` で設定する必要があります。URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+`highlightPreTag=[string]` (省略可能) - 検索ヒットの前に付加する文字列タグ。`highlightPostTag` で設定する必要があります。
+
+> [AZURE.NOTE]GET を使用して **Suggestions** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+
+`highlightPostTag=[string]` (省略可能) - 検索ヒットの後に付加する文字列タグ。`highlightPreTag` で設定する必要があります。
+
+> [AZURE.NOTE]GET を使用して **Suggestions** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
 
 `suggesterName=[string]` - インデックス定義の一部である `suggesters` コレクションで指定されているサジェスターの名前。`suggester` は、検索候補のクエリ語句がスキャンされるフィールドを決定します。詳細については、「[サジェスター](#Suggesters)」を参照してください。
 
@@ -2041,11 +2215,19 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `$top=#` (省略可能、既定値 = 5) - 取得する検索候補の数。1 ～ 100 の数値を指定する必要があります。
 
+> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `top` ではなく `$top` です。
+
 `$filter=[string]` (省略可能) - 検索候補と考えられるドキュメントをフィルター処理する式。
+
+> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `filter` ではなく `$filter` です。
 
 `$orderby=[string]` (省略可能) - 結果を並べ替えるための式のコンマ区切りのリスト。各式は、フィールド名または `geo.distance()` 関数の呼び出しです。各式に続いて、昇順を示す `asc` または降順を示す `desc` を指定できます。既定値は昇順です。`$orderby` には 32 句の制限があります。
 
+> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `orderby` ではなく `$orderby` です。
+
 `$select=[string]` (省略可能) - 取得するフィールドのコンマ区切りリスト。指定しないと、ドキュメント キーと検索候補テキストのみが返されます。
+
+> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `select` ではなく `$select` です。
 
 `minimumCoverage` (省略可能、既定値は 80) - クエリが成功として報告されるために、検索候補クエリで照合する必要があるインデックスの割合を示す 0 ～ 100 の範囲の数値。既定では、インデックスの 80 % 以上が一致している必要があります。そうでないと、`Suggest` は HTTP 状態コード 503 を返します。`minimumCoverage` を設定し、`Suggest` が成功した場合は、HTTP 200 が返され、応答にはクエリで照合したインデックスの割合を示す `@search.coverage` 値が含められます。
 
@@ -2053,7 +2235,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
-注: この操作の場合、`api-version` はクエリ パラメーターとして指定します。
+注: この操作の場合、GET または POST のどちらを使用して **Suggestions** を呼び出す場合でも、URL にクエリ パラメーターとして `api-version` を指定します。
 
 **要求ヘッダー**
 
@@ -2061,11 +2243,27 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Suggestions** 要求では、`api-key` として管理者キーまたはクエリ キーを指定できます。
 
-  要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
-ありません。
+GET の場合: なし。
+
+POST の場合:
+
+    {
+      "filter": "odata_filter_expression",
+	  "fuzzy": true | false (default),
+      "highlightPreTag": "pre_tag",
+      "highlightPostTag": "post_tag",
+      "minimumCoverage": # (% of index that must be covered to declare query successful; default 80),
+      "orderby": "orderby_expression",
+      "search": "partial_search_input",
+      "searchFields": "field_name_1, field_name_2, ...",
+      "select": "field_name_1, field_name_2, ...",
+	  "suggesterName": "suggester_name",
+      "top": # (default 5)
+    }
 
 **応答**
 
@@ -2096,15 +2294,17 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
       ]
     }
 
- **例**
+**例**
 
 部分的な検索入力が「lux」である場合に、5 個の検索候補を取得します。
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&suggesterName=sg&api-version=2015-02-28-Preview
 
+    POST /indexes/hotels/docs/suggest?api-version=2015-02-28-Preview
+    {
+      "search": "lux",
+      "top": 5,
+      "suggesterName": "sg"
+    }
 
-
-
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

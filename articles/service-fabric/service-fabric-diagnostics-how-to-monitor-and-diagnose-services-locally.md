@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/22/2015"
+   ms.date="07/22/2015"
    ms.author="kunalds"/>
 
 
@@ -36,14 +36,22 @@ Service Fabric は ETW イベントを出力して、アプリケーションの
 1. 次の前提条件がインストールされている必要があります。
    * Visual Studio 2015
    * Service Fabric SDK
-2. Visual Studio を管理者として起動します。
-3. ステートフルまたはステートレスなアクターまたはサービスのプロジェクトを作成します (または既存のプロジェクトを開きます)。![Service Fabric プロジェクトを作成する](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject.png)
 
-4. F5 を押して、アプリケーションをデバッグします。Service Fabric イベントが、[診断イベント] ウィンドウに表示されます。各イベントには、イベントの送信元のノード、アプリケーション、およびサービスを示す標準的なメタデータ情報があります。また、ウィンドウ上部にある [イベントのフィルター] ボックスを使用して、ノード名やサービス名でフィルターするなど、イベントの一覧をフィルターすることもできます。![Visual Studio の診断イベント ビューアー](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+2. Visual Studio を管理者として起動します。
+
+3. ステートフルまたはステートレスなアクターまたはサービスのプロジェクトを作成します (または既存のプロジェクトを開きます)。
+
+  ![Create a Service Fabric Application](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject.png)
+
+  ![Create a Service Fabric Service](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/CreateServiceFabricProject-2.png)
+
+4. F5 を押して、アプリケーションをデバッグします。Service Fabric イベントが、[診断イベント] ウィンドウに表示されます。各イベントには、イベントの送信元のノード、アプリケーション、およびサービスを示す標準的なメタデータ情報があります。また、ウィンドウ上部にある [イベントのフィルター] ボックスを使用して、ノード名やサービス名でフィルターするなど、イベントの一覧をフィルターすることもできます。
+
+  ![Visual Studio の診断イベント ビューアー](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
 5. [診断イベント] ウィンドウが自動的に表示されない場合は、Visual Studio の [サーバー エクスプローラー] タブに移動して、Service Fabric のクラスターを右クリックし、コンテキスト メニューで [診断イベントの表示] を選択します。
 
-![Visual Studio の診断イベント ビューアーを開く](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/ServerExViewDiagEvents.png)
+  ![Visual Studio の診断イベント ビューアーを開く](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/ServerExViewDiagEvents.png)
 
 ## アプリケーション コードの独自のカスタム トレースを追加する
 Service Fabric の Visual Studio プロジェクト テンプレートには、サンプル コードが含まれています。コードは、Visual Studio ETW ビューアーに表示されるカスタム アプリケーション コードの ETW トレースと Service Fabric からのシステム トレースを追加する方法を示しています。このメソッドの利点は、メタデータがトレースに自動的に追加され、Visual Studio の診断ビューアーがそれらを表示するよう既に構成されていることです。
@@ -70,6 +78,5 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Application Insights のセットアップ](service-fabric-diagnostics-application-insights-setup.md)
 * [Azure Service Fabric アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 * [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

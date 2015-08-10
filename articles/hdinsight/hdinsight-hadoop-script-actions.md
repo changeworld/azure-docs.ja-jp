@@ -32,7 +32,7 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 **Spark のインストール** | https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」をご覧ください。
 **R のインストール** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1「[HDInsight Hadoop クラスターに R をインストールして使用する][hdinsight-r-scripts]」をご覧ください。
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」をご覧ください。
-- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。
+\- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。
 
 Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
 
@@ -107,12 +107,12 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 - クラスターのカスタマイズ スクリプトはべき等にする
 
-	HDInsight クラスターのノードはクラスターの有効期間中に再イメージ化されることを予測する必要があります。クラスターのカスタマイズ スクリプトは、クラスターが再イメージ化されるたびに実行されます。再イメージ化の際に、クラスターの最初の作成時に初めてスクリプトが実行された直後と同じカスタマイズ状態に戻ることを確認するという意味で、このスクリプトはべき等であるように設計する必要があります。たとえば、カスタム スクリプトが最初の実行時にアプリケーションを D:\AppLocation にインストールする場合、その後スクリプトを実行するたびに、再イメージ化の際、スクリプトはアプリケーションが D:\AppLocation に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
+	HDInsight クラスターのノードはクラスターの有効期間中に再イメージ化されることを予測する必要があります。クラスターのカスタマイズ スクリプトは、クラスターが再イメージ化されるたびに実行されます。再イメージ化の際に、クラスターの最初の作成時に初めてスクリプトが実行された直後と同じカスタマイズ状態に戻ることを確認するという意味で、このスクリプトはべき等であるように設計する必要があります。たとえば、カスタム スクリプトが最初の実行時にアプリケーションを D:\\AppLocation にインストールする場合、その後スクリプトを実行するたびに、再イメージ化の際、スクリプトはアプリケーションが D:\\AppLocation に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
 
 
 - 最適な場所にカスタム コンポーネントをインストールする
 
-	クラスター ノードが再イメージ化されると、C:\ リソース ドライブと D:\ システム ドライブは再フォーマットされ、それらのドライブにインストールされたデータとアプリケーションが失われる可能性があります。これは、クラスターの一部である Azure 仮想マシン (VM) ノードが停止して、新しいノードに置き換えられた場合にも起こる可能性があります。コンポーネントは D:\ ドライブやクラスタ上の C:\apps にインストールできます。C:\ ドライブのその他の場所はすべて予約されています。クラスターのカスタマイズのスクリプトに、アプリケーションやライブラリがインストールされる場所を指定します。
+	クラスター ノードが再イメージ化されると、C:\\ リソース ドライブと D:\\ システム ドライブは再フォーマットされ、それらのドライブにインストールされたデータとアプリケーションが失われる可能性があります。これは、クラスターの一部である Azure 仮想マシン (VM) ノードが停止して、新しいノードに置き換えられた場合にも起こる可能性があります。コンポーネントは D:\\ ドライブやクラスタ上の C:\\apps にインストールできます。C:\\ ドライブのその他の場所はすべて予約されています。クラスターのカスタマイズのスクリプトに、アプリケーションやライブラリがインストールされる場所を指定します。
 
 
 - クラスターのアーキテクチャの高可用性を確保
@@ -161,7 +161,7 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 	Write-HDILog "Starting environment variable setting at: $(Get-Date)";
 	[Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-このステートメントは、環境変数 **MDS_RUNNER_CUSTOM_CLUSTER** を値 'true' に設定します。またコンピューター全体にこの変数の範囲を設定します。環境変数はコンピューターやユーザーの適切な範囲で設定されていることが重要になることがあります。環境変数の設定の詳細については、[こちら][1]を参照してください。
+このステートメントは、環境変数 **MDS\_RUNNER\_CUSTOM\_CLUSTER** を値 'true' に設定します。またコンピューター全体にこの変数の範囲を設定します。環境変数はコンピューターやユーザーの適切な範囲で設定されていることが重要になることがあります。環境変数の設定の詳細については、[こちら][1]を参照してください。
 
 ### カスタム スクリプトを保管する場所へのアクセス
 
@@ -201,7 +201,7 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 2. スクリプトがべき等に実行されるようにチェックを追加し、スクリプトが同じノードで複数回実行可能にします。
 3. **Write-Output** Azure Powershell コマンドレットを使用して、STDOUT と STDERR に出力します。**Write-Host** を使用しないでください。
 4. $env:TEMP などの一時ファイル フォルダーを使用して、スクリプトで使用するダウンロード済みファイルを維持し、スクリプトの実行後にそれらをクリーンアップします。
-5. カスタム ソフトウェアは D:\ または C:\apps のみにインストールします。C: ドライブのその他の場所は予約されているため使用しないでください。C:\apps フォルダー以外の C: ドライブにファイルをインストールすると、ノードの再イメージ化の際にセットアップが失敗する可能性があります。
+5. カスタム ソフトウェアは D:\\ または C:\\apps のみにインストールします。C: ドライブのその他の場所は予約されているため使用しないでください。C:\\apps フォルダー以外の C: ドライブにファイルをインストールすると、ノードの再イメージ化の際にセットアップが失敗する可能性があります。
 6. OS レベル設定や Hadoop サービス構成ファイルが変更された場合、スクリプトに設定された環境変数などの OS レベル設定を有効にするために、HDInsight サービスを再起動することをお勧めします。
 
 
@@ -239,9 +239,9 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 
 ## カスタム スクリプトをデバッグする
 
-スクリプト エラー ログは、他の出力と共に、クラスターの作成時に指定した既定のストレージ アカウント内に格納されます。ログは、*u<\cluster-name-fragment><\time-stamp>setuplog* という名前のテーブルに格納されます。これらはクラスター内でスクリプトが実行されるすべてのノード (ヘッドノードとワーカー ノード) から取得されたレコードを持つ集計ログです。
+スクリプト エラー ログは、他の出力と共に、クラスターの作成時に指定した既定のストレージ アカウント内に格納されます。ログは、*u<\\cluster-name-fragment><\\time-stamp>setuplog* という名前のテーブルに格納されます。これらはクラスター内でスクリプトが実行されるすべてのノード (ヘッドノードとワーカー ノード) から取得されたレコードを持つ集計ログです。
 
-カスタム スクリプトの STDOUT と STDERR の両方を表示するために、クラスター ノードにリモート接続することもできます。各ノード上のログは、そのノード専用で、**C:\HDInsightLogs\DeploymentAgent.log** に記録されます。これらのログ ファイルには、カスタム スクリプトからのすべての出力が記録されます。Spark Script Action のログ スニペットの例は次のようになります。
+カスタム スクリプトの STDOUT と STDERR の両方を表示するために、クラスター ノードにリモート接続することもできます。各ノード上のログは、そのノード専用で、**C:\\HDInsightLogs\\DeploymentAgent.log** に記録されます。これらのログ ファイルには、カスタム スクリプトからのすべての出力が記録されます。Spark Script Action のログ スニペットの例は次のようになります。
 
 	Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; Details : BEGIN: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.; 
 	Version : 2.1.0.0; 
@@ -304,4 +304,4 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

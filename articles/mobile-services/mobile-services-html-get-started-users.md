@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="認証の使用 (HTML 5) | モバイル デベロッパー センター" 
-	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて HTML アプリのユーザーを認証する方法について説明します。" 
+	pageTitle="HTML/JavaScript アプリへの認証の追加 | Azure Mobile Services" 
+	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft アカウントなどのさまざまな ID プロバイダーを通じて HTML アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.date="07/21/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加 
@@ -53,7 +53,7 @@
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
->[AZURE.NOTE]ログインはポップアップで行われるため、<strong>login</strong> メソッドはボタンのクリック イベントから呼び出す必要があります。そうしないと、多くのブラウザーではログイン ウィンドウが表示されません。
+>[AZURE.NOTE]ログインはポップアップで行われるため、**login** メソッドはボタンのクリック イベントから呼び出す必要があります。そうしないと、多くのブラウザーではログイン ウィンドウが表示されません。
 
 1. プロジェクト ファイル index.html を開き、H1 要素を探して、その下に次のコード スニペットを追加します。
 
@@ -109,7 +109,7 @@
 
 	   ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-	>[AZURE.NOTE]Internet Explorer を使用している場合は、ログイン後に、"<code>ウィンドウの呼び出し元に到達できません。別の Internet Explorer ゾーンにある可能性があります</code>" というエラーが表示される場合があります。これは、ポップアップが localhost (イントラネット) とは異なるセキュリティ ゾーン (インターネット) で実行されているためです。このことがアプリケーションに影響するのは、localhost を使用する開発時だけです。回避策として、<strong>[インターネット オプション]</strong> の <strong>[セキュリティ]</strong> タブを開き、<strong>[ローカル イントラネット]</strong>、<strong>[サイト]</strong> の順にクリックして、<strong>[イントラネットのネットワークを自動的に検出する]</strong> をオフにします。テストが終了したら、この設定を必ず元に戻します。
+	>[AZURE.NOTE]Internet Explorer を使用している場合は、ログイン後に、"<code>ウィンドウの呼び出し元に到達できません。別の Internet Explorer ゾーンにある可能性があります</code>" というエラーが表示される場合があります。これは、ポップアップが localhost (イントラネット) とは異なるセキュリティ ゾーン (インターネット) で実行されているためです。このことがアプリケーションに影響するのは、localhost を使用する開発時だけです。回避策として、**[インターネット オプション]** の **[セキュリティ]** タブを開き、**[ローカル イントラネット]**、**[サイト]** の順にクリックして、**[イントラネットのネットワークを自動的に検出する]** をオフにします。テストが終了したら、この設定を必ず元に戻します。
 
 ## <a name="next-steps"> </a>次のステップ
 
@@ -138,4 +138,4 @@
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

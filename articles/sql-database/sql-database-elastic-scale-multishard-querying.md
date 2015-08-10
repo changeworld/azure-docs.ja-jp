@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="マルチシャード クエリ実行" 
-	description="エラスティック データベース クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。" 
+	description="Elastic Database クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/17/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sidneyh"/>
 
 # マルチシャード クエリ実行
 
 ## 概要
 
-**マルチシャード クエリ実行**は、複数のシャードにまたがるクエリが実行が必要となるデータ収集/レポート作成などのタスクに使用されます(すべての操作を単一のシャード上で実行する[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)と比べてください)。
+**マルチシャード クエリ実行**は、複数のシャードにまたがるクエリが実行が必要となるデータ収集/レポート作成などのタスクに使用されます(すべての操作を単一のシャード上で実行する[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)と比べてください)。 SQL Server Management Studio を使用するには「[Elastic Database クエリの概要](sql-database-elastic-query-getting-started.md)」を参照してください。
 
-エラスティック データベース クライアント ライブラリには、1 つのクエリと結果を使用して複数のシャードを照会する機能を提供する、**Microsoft.Azure.SqlDatabase.ElasticScale.Query** と呼ばれる新しい名前空間が採用されています。この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。
+Elastic Database クライアント ライブラリには、1 つのクエリと結果を使用して複数のシャードを照会する機能を提供する、**Microsoft.Azure.SqlDatabase.ElasticScale.Query** と呼ばれる新しい名前空間が採用されています。この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。
 
 マルチシャード クエリ実行へのメインのエントリ ポイントは、**MultiShardConnection** クラスです。データ依存ルーティングと同様に、API は、**[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient(v=vs.110).aspx)** のクラスとメソッドの慣れ親しんだ操作法を継承しています。**SqlClient** ライブラリの場合、最初に **SqlConnection** を作成し、接続の **SqlCommand** を作成します。次に、**Execute** メソッドのいずれかを使用してコマンドを実行します。最後に、**SqlDataReader** で、コマンドの実行から返された結果セットを反復処理します。マルチシャード クエリ API を操作するには、次の手順に従います。
 
@@ -67,4 +67,4 @@
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

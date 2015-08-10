@@ -96,4 +96,4 @@ Web アプリの復元機能 ([Azure プレビュー ポータル](http://portal
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

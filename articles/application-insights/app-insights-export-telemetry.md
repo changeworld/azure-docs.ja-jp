@@ -74,7 +74,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 ## <a name="format"></a> データ形式
 
-* それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。
+* それぞれの Blob は、"\\n" で区切られた複数の行を含むテキスト ファイルです。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。内容を確認する場合は、Notepad++ のようなビューアーに JSON プラグインを組み合わせることができます。
 
 ![適切なツールでテレメトリを表示します](./media/app-insights-export-telemetry/06-json.png)
@@ -110,17 +110,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」をご覧ください。
 
-#### SQL へのエクスポート
 
-もう 1 つの方法は、SQL データベースにデータを移動して、より強力な分析を実行することです。
-
-Blob ストレージからデータベースにデータを移動する 2 つの方法をサンプルで示します。
-
-* [worker ロールを使用して SQL にエクスポートする][exportcode]
-* [Stream Analytics を使用して SQL にエクスポートする][exportasa]
-
-
-大規模な処理の場合は、[HDInsight](http://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
 
 ## <a name="delete"></a>古いデータの削除
 必要に応じて古いデータを削除するなどしてストレージ容量を管理する責任があることに注意してください。
@@ -134,6 +124,27 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 ![連続エクスポートを編集し、3 つのエクスポート先を開いた後閉じます。](./media/app-insights-export-telemetry/07-resetstore.png)
 
 連続エクスポートが再開されます。
+
+## Power BI へのエクスポート
+
+[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。アプリのパフォーマンスと使用状況に関するテレメトリ データを、Application Insights から Power BI にストリーミングすることができます。
+
+[Power BI への Application Insights のストリーム](app-insights-export-power-bi.md)
+
+![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-telemetry/210.png)
+
+## SQL へのエクスポート
+
+もう 1 つの方法は、SQL データベースにデータを移動して、より強力な分析を実行することです。
+
+Blob ストレージからデータベースにデータを移動する 2 つの方法をサンプルで示します。
+
+* [worker ロールを使用して SQL にエクスポートする][exportcode]
+* [Stream Analytics を使用して SQL にエクスポートする][exportasa]
+
+
+大規模な処理の場合は、[HDInsight](http://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
+
 
 
 ## Q & A
@@ -183,4 +194,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

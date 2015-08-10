@@ -185,7 +185,7 @@ TelemetryClient はスレッド セーフです。
     metrics.put("Score", currentGame.getScore());
     metrics.put("Opponents", currentGame.getOpponentCount());
     
-    telemetry.trackEvent("WinGame", properties, metrics2/7/2015 12:05:25 AM );
+    telemetry.trackEvent("WinGame", properties, metrics);
 
 
 > [AZURE.NOTE]プロパティで個人を特定できる情報を記録しないように注意します。
@@ -561,7 +561,7 @@ ApplicationInsights.config で:
 
 たとえば、Web 向けの Application Insights パッケージでは HTTP 要求に関するテレメトリが収集されます。既定では、応答コードが 400 以上の要求はすべて失敗としてフラグが設定されます。これに対して 400 を成功として処理する場合は、"成功" プロパティを設定するテレメトリ初期化子を指定できます。
 
-テレメトリ初期化子を指定すると、Track*() メソッドのいずれかが呼び出されるたびに、テレメトリ初期化子も呼び出されます。これには、標準のテレメトリ モジュールによって呼び出されるメソッドも含まれます。通常、これらのモジュールでは、初期化子によって既に設定されているプロパティは設定されません。
+テレメトリ初期化子を指定すると、Track\*() メソッドのいずれかが呼び出されるたびに、テレメトリ初期化子も呼び出されます。これには、標準のテレメトリ モジュールによって呼び出されるメソッドも含まれます。通常、これらのモジュールでは、初期化子によって既に設定されているプロパティは設定されません。
 
 **初期化子を定義する**
 
@@ -715,7 +715,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
  * **Id**: [診断検索] でイベントを調べるときに「関連項目」を見つけることができるように、さまざまなイベントを関連付けるために生成される値
  * **Name**: HTTP 要求の URL
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
-* **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
+* **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track\* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
 * **User** によって、ユーザーを数えることができます。Web アプリケーションで、Cookie がある場合、ユーザー Id は Cookie から取得されます。Cookie がない場合は、新しい Id が生成されます。ユーザーがアプリケーションにログインする必要がある場合は、認証済みの ID から Id を設定できます。これにより、ユーザーが別のコンピューターからサインインしている場合でも、正確でより信頼できる数が提供されます。 
 
@@ -740,10 +740,11 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
 * [ASP.NET リファレンス](https://msdn.microsoft.com/library/dn817570.aspx)
 * [Java リファレンス](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [JavaScript リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## 疑問がある場合
 
-* *Track * の呼び出しでは、どのような例外がスローされることがありますか。*
+* *Track \* の呼び出しでは、どのような例外がスローされることがありますか。*
     
     ありません。Catch 句で例外をキャッチする必要はありません。
 
@@ -778,4 +779,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

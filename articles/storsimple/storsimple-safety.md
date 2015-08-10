@@ -34,7 +34,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 |![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **感電の危険** |高電圧|
 |![ヘビー ウェイト アイコン](./media/storsimple-safety/IC740883.png)**ヘビー ウェイト**| |
 |![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png)**ユーザーによる保守不可能な部品**|適切な訓練を受けている場合を除き、触らないでください。|
-|![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)**最初にすべての指示を確認してください**| |
+|![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)\*\*最初にすべての指示を確認してください\*\*| |
 |![危険情報のアイコン](./media/storsimple-safety/IC740886.png) **危険情報**| |
 
 
@@ -179,4 +179,4 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - 8600 デバイスの場合、[8600 デバイスの開梱、ラックへの取り付け、およびケーブル接続](storsimple-8600-hardware-installation)に進んでください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

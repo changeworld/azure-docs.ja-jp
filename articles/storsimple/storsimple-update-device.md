@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="06/15/2015"
+   ms.date="07/28/2015"
    ms.author="v-sharos" />
 
 # StorSimple デバイスの更新
@@ -52,7 +52,6 @@ StorSimple の更新プログラムの機能を使用すると、StorSimple デ�
 
 管理ポータルを使用して、StorSimple デバイスに更新プログラムを適用できます。
 
-
 [AZURE.INCLUDE [storsimple-install-updates-manually](../../includes/storsimple-install-updates-manually.md)]
 
 ## StorSimple 用 Windows PowerShell を使用した通常の更新プログラムのインストール
@@ -91,8 +90,7 @@ StorSimple 用 Windows PowerShell を使用して、メンテナンス モード
 次に、更新プログラムをインストールします。
 
 [AZURE.INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
-
-    
+ 
 ### 手順 4: メンテナンス モードを終了する
 
 最後に、メンテナンス モードを終了します。
@@ -121,4 +119,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 [StorSimple 用 Windows PowerShell](https://msdn.microsoft.com/library/azure/dn772425.aspx) について説明します。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

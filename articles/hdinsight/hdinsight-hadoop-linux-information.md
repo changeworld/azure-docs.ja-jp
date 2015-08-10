@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/27/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法 (プレビュー)
@@ -84,9 +84,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 ### クラスターで使用している BLOB ストレージ
 
-クラスター作成時、既存の Azure ストレージ アカウントとコンテナーを使用するか、新しく作成するかを選択します。後になって、何を選択したかを忘れることもあります。次の方法を使用してストレージ アカウントとコンテナーを確認できます。
-
-**Ambari API の使用**
+クラスター作成時、既存の Azure ストレージ アカウントとコンテナーを使用するか、新しく作成するかを選択します。後になって、何を選択したかを忘れることもあります。Ambari REST API を使用して、既定のストレージ アカウントとコンテナーを調べることができます。
 
 1. 次のコマンドを使用して、HDFS の構成情報を取得します。
 
@@ -110,16 +108,6 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 	>
 	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties as $in | $in | keys[] | select(. | contains("fs.azure.account.key.")) as $item | $item | ltrimstr("fs.azure.account.key.") | { storage_account: ., storage_account_key: $in[$item] }'`
 
-
-**Azure ポータル**
-
-1. [Azure ポータル](https://manage.windowsazure.com/)で HDInsight クラスターを選択します。
-
-2. ページの上部にある **[ダッシュボード]** をクリックします。
-
-3. ストレージ アカウントとコンテナーの一覧が、ページの **[リンク済みリソース]** セクションに表示されます。
-
-	![リンク済みリソース](./media/hdinsight-hadoop-linux-information/storageportal.png)
 
 ### BLOB ストレージにアクセスする方法
 
@@ -150,6 +138,5 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -39,7 +39,7 @@ ASE の作成用 UI にアクセスするには、2 つの方法があります�
 ### Quick create ###
 作成用 UI を開いた後、デプロイメントの名前を入力するだけで ASE をすばやく作成できます。この場合、512 個のアドレスを持つ VNET、その VNET 内に 256 個のアドレスを持つサブネット、ワーカー プール 1 に 2 つのフロントエンドと 2 つのワーカーを持つ ASE 環境が作成されます。システムを配置する場所とそこに配置するサブスクリプションを必ず選択してください。ASE を使用してコンテンツをホストできる唯一のアカウントは、その作成に使用されたサブスクリプションに属している必要があります。
 
-ASE 用に指定した名前は、ASE で作成される Web アプリに使用されます。たとえば、ASE の名前が appsvcenvdemo の場合、ドメイン名は .*appsvcenvdemo.p.azurewebsites.net* になります。ここで mytestapp という名前の Web アプリを作成した場合、この Web アプリのアドレスは *mytestapp.appsvcenvdemo.p.azurewebsites.net* となります。名前に空白文字は使用できません。名前に大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。
+ASE 用に指定した名前は、ASE で作成される Web アプリに使用されます。たとえば、ASE の名前が appsvcenvdemo の場合、ドメイン名は .\*appsvcenvdemo.p.azurewebsites.net\* になります。ここで mytestapp という名前の Web アプリを作成した場合、この Web アプリのアドレスは *mytestapp.appsvcenvdemo.p.azurewebsites.net* となります。名前に空白文字は使用できません。名前に大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。
 
 
 ![][1]
@@ -143,4 +143,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

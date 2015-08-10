@@ -1,33 +1,33 @@
-<properties 
-	pageTitle="基本構成テスト環境" 
-	description="イントラネットをシミュレーションする単純な開発/テスト環境を Microsoft Azure で作成する方法について説明します。" 
+<properties
+	pageTitle="基本構成テスト環境"
+	description="イントラネットをシミュレーションする単純な開発/テスト環境を Microsoft Azure で作成する方法について説明します。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/07/2015"
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
 
-この記事では、サービスマネージメントで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
+この記事では、サービスマネージメントで作成された仮想マシンコンピューターを使用し、Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
 完成したテスト環境は、次の用途に使うことができます。
 
 - アプリケーションの開発とテストを行う。
 - [ハイブリッド クラウド環境をシミュレーション](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)する。
 - 仮想マシンや Azure サービスを追加して拡張し、独自のテスト環境を設計する。
- 
-基本構成テスト環境は、TestLab という、クラウドのみの Azure Virtual Network 内の Corpnet サブネットから成ります。インターネットに接続された単純なプライベート イントラネットが TestLab によってシミュレーションされます。
+
+基本構成テスト環境は、TestLab という、クラウドのみの仮想ネットワーク内の Corpnet サブネットから成ります。インターネットに接続された単純なプライベート イントラネットが TestLab によってシミュレーションされます。
 
 ![](./media/virtual-machines-base-configuration-test-environment/BC_TLG04.png)
 
@@ -39,30 +39,35 @@
 
 この構成では、DC1、APP1、CLIENT1 をはじめとする、Corpnet サブネットに属しているコンピューターに対して、次のことを実行できます。
 
-- インターネットに接続して更新プログラムをインストールする、インターネット リソースにリアルタイムでアクセスする、パブリック クラウド テクノロジ (Microsoft Office 365、各種 Azure サービスなど) を利用する。 
-- インターネットや社内のネットワークに接続されている遠隔コンピューターからリモート デスクトップ接続を介して管理する。 
+- インターネットに接続して更新プログラムをインストールする、インターネット リソースにリアルタイムでアクセスする、パブリック クラウド テクノロジ (Microsoft Office 365、各種 Azure サービスなど) を利用する。
+- インターネットや社内のネットワークに接続されている遠隔コンピューターからリモート デスクトップ接続を介して管理する。
 
 Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを Azure にセットアップする手順は、次の 4 つのフェーズから成ります。
 
-1.	Azure Virtual Network を作成する。
-2.	DC1 を構成する。 
-3.	APP1 を構成する。 
+1.	仮想ネットワークを作成する。
+2.	DC1 を構成する。
+3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
 まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料評価版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 > [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料評価版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
-## フェーズ 1: Azure Virtual Network を作成する
+[AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
 
-まず、基本構成の Corpnet サブネットをホストすることになる TestLab という Azure Virtual Network を作成します。
+- [Azure リソース マネージャーでの基本構成テスト環境](virtual-machines-base-configuration-test-environment-resource-manager.md)
 
-1.	Azure の管理ポータルのタスク バーで、**[新規]、[ネットワーク サービス]、[仮想ネットワーク]、[カスタム作成]** の順にクリックします。
+
+## フェーズ 1: 仮想ネットワークを作成する
+
+まず、基本構成の Corpnet サブネットをホストすることになる TestLab という仮想ネットワークを作成します。
+
+1.	Azure 管理ポータルのタスク バーで、**[新規]、[ネットワーク サービス]、[仮想ネットワーク]、[カスタム作成]** の順にクリックします。
 2.	[仮想ネットワークの詳細] ページの**[名前]** に「**TestLab**」と入力します。
 3.	**[場所]** から適切なリージョンを選択します。
 4.	次へ進む矢印をクリックします。
 5.	[DNS サーバーおよび VPN 接続] ページで、**[DNS サーバー]** の **[名前の選択または入力]** に「**DC1**」と入力し、**[IP アドレス]** に「**10.0.0.4**」と入力して、次へ進む矢印をクリックします。
-6.	[仮想ネットワーク アドレス空間] ページの **[サブネット]** で **[Subnet-1]** をクリックし、名前を「**Corpnet**」に置き換えます。 
+6.	[仮想ネットワーク アドレス空間] ページの **[サブネット]** で **[Subnet-1]** をクリックし、名前を「**Corpnet**」に置き換えます。
 7.	Corpnet サブネットの **[CIDR (アドレス数)]** 列で、**[/24 (256)]** をクリックします。
 8.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
@@ -79,7 +84,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 クラウド サービスには一意の名前を選ぶ必要があります。*クラウド サービスの名前には、文字、数字、ハイフンのみを含めることができます。フィールドの先頭と末尾の文字は、文字または数字としてください。*
 
-たとえば、クラウド サービスに TestLab-*UniqueSequence* (*UniqueSequence* は組織の略称) という名前を付けることができます。たとえば、社名が Tailspin Toys であれば、クラウド サービスの名前を TestLab-Tailspin とします。
+たとえば、クラウド サービスに TestLab-\*UniqueSequence\* (*UniqueSequence* は組織の略称) という名前を付けることができます。たとえば、社名が Tailspin Toys であれば、クラウド サービスの名前を TestLab-Tailspin とします。
 
 次の Azure PowerShell コマンドで名前の一意性を確認することができます。
 
@@ -115,8 +120,8 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 	$serviceName="<your cloud service name>"
 	$cred=Get-Credential –Message "Type the name and password of the local administrator account for DC1."
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
-	$vm1=New-AzureVMConfig -Name DC1 -InstanceSize Small -ImageName $image 
-	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password 
+	$vm1=New-AzureVMConfig -Name DC1 -InstanceSize Small -ImageName $image
+	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel "AD" -LUN 0 -HostCaching None
 	$vm1 | Set-AzureSubnet -SubnetNames Corpnet
 	$vm1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4
@@ -125,11 +130,11 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 続けて、DC1 仮想マシンに接続します。
 
 1.	Azure の管理ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
-2.	タスク バーで、**[接続]** をクリックします。 
+2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-- 名前: **DC1\**[ローカル管理者のアカウント名]
+- 名前: **DC1\\**[ローカル管理者のアカウント名]
 - パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -154,22 +159,22 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
 1.	Azure の管理ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
-2.	タスク バーで、**[接続]** をクリックします。 
+2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-- 名前: **CORP\**[ローカル管理者のアカウント名]
+- 名前: **CORP\\**[ローカル管理者のアカウント名]
 - パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
 次に、CORP ドメインのメンバー コンピューターにログインする際に使用するユーザー アカウントを Active Directory に作成します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを 1 つずつ実行します。
- 
-	New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false 
+
+	New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
 	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
 1 つ目のコマンドを実行すると、User1 アカウントのパスワードを入力するよう求められます。このアカウントは、CORP ドメインに属しているすべてのコンピューターのリモート デスクトップ接続に使用されるため、強力なパスワードを選んでください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
 
-CORP\User1 アカウントを使用して DC1 仮想マシンに再接続します。
+CORP\\User1 アカウントを使用して DC1 仮想マシンに再接続します。
 
 今度は、Ping ツールのトラフィックを許可します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを実行してください。
 
@@ -189,12 +194,12 @@ APP1 は、Web サービスとファイル共有サービスを提供します�
 	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for APP1."
 	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
-	$vm1=New-AzureVMConfig -Name APP1 -InstanceSize Small -ImageName $image 
+	$vm1=New-AzureVMConfig -Name APP1 -InstanceSize Small -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames Corpnet
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName TestLab
 
-次に、CORP\User1 の資格情報で APP1 仮想マシンに接続し、管理者レベルの Windows PowerShell コマンド プロンプトを開きます。
+次に、CORP\\User1 の資格情報で APP1 仮想マシンに接続し、管理者レベルの Windows PowerShell コマンド プロンプトを開きます。
 
 名前解決が正しく実行されることと、APP1 と DC1 間のネットワーク通信を確認するために、「**ping dc1.corp.contoso.com**」コマンドを実行し、応答が 4 回返されることを確認します。
 
@@ -222,23 +227,23 @@ CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タ�
 	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for CLIENT1."
 	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
-	$vm1=New-AzureVMConfig -Name CLIENT1 -InstanceSize Small -ImageName $image 
+	$vm1=New-AzureVMConfig -Name CLIENT1 -InstanceSize Small -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames Corpnet
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName TestLab
 
-次に、CORP\User1 の資格情報を使用して、CLIENT1 仮想マシンに接続します。
+次に、CORP\\User1 の資格情報を使用して、CLIENT1 仮想マシンに接続します。
 
 名前解決が正しく実行されることと、CLIENT1 と DC1 間のネットワーク通信を確認するために、Windows PowerShell コマンド プロンプトから「**ping dc1.corp.contoso.com**」コマンドを実行し、応答が 4 回返されることを確認します。
 
 次に、APP1 上にある Web リソースとファイル共有リソースに CLIENT1 からアクセスできることを確認します。
 
-1.	サーバー マネージャーのツリー ウィンドウで、**[ローカル サーバー]** をクリックします。 
+1.	サーバー マネージャーのツリー ウィンドウで、**[ローカル サーバー]** をクリックします。
 2.	**CLIENT1 のプロパティ**で、**[IE セキュリティ強化の構成]** の横にある **[有効]** をクリックします。
 3.	**[Internet Explorer セキュリティ強化の構成]** で、**[Administrators]** と **[Users]** の **[オフ]** をクリックし、**[OK]** をクリックします。
 4.	スタート画面で、**[Internet Explorer]** をクリックして、**[OK]** をクリックします。
 5.	アドレス バーに「**http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。6.	デスクトップのタスク バーからエクスプローラー アイコンをクリックします。
-7.	アドレス バーに「**\\app1\Files**」と入力し、Enter キーを押します。
+7.	アドレス バーに「**\\\\app1\\Files**」と入力し、Enter キーを押します。
 8.	フォルダー ウィンドウに、Files 共有フォルダー内容が表示されます。
 9.	**[Files]** 共有フォルダー ウィンドウで、**Example.txt** ファイルをダブルクリックします。Example.txt ファイルの内容が表示されます。
 10.	**[example.txt - メモ帳]** ウィンドウと **[Files]** 共有フォルダー ウィンドウを閉じます。
@@ -253,13 +258,14 @@ Azure の基本構成の準備が整いました。アプリケーションの�
 
 [ハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
- 
+[Azure リソース マネージャーでの基本構成テスト環境](virtual-machines-base-configuration-test-environment-resource-manager.md)
+
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
 
 テスト環境の仮想マシンを実行する際に発生するコストは、次のいずれかの方法で最小限に抑えることができます。
 
 - テスト環境の作成および必要なテストとデモンストレーションをできるだけ短時間で実行する。完了したらテスト環境の仮想マシンを削除してください。
-- テスト環境の仮想マシンをシャットダウンして割り当て解除済みの状態にする。 
+- テスト環境の仮想マシンをシャットダウンして割り当て解除済みの状態にする。
 
 Azure PowerShell で仮想マシンをシャットダウンするには、クラウド サービスの名前を入力し、以下のコマンドを実行します。
 
@@ -273,7 +279,7 @@ Azure PowerShell で仮想マシンをシャットダウンするには、クラ
 
 1.	DC1
 2.	APP1
-3.	CLIENT1 
+3.	CLIENT1
 
 Azure PowerShell で順に仮想マシンを起動するには、クラウド サービスの名前を入力し、以下のコマンドを実行します。
 
@@ -281,6 +287,5 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "DC1"
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

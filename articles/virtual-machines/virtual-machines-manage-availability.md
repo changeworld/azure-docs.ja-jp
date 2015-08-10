@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/13/2015"
+	ms.date="07/23/2015"
 	ms.author="kenazk"/>
 
 #仮想マシンの可用性管理
@@ -69,4 +69,4 @@ Azure ロード バランサーと可用性セットを結合することで、�
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
 [仮想マシンの可用性セットを構成する方法]: virtual-machines-how-to-configure-availability.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -118,4 +118,4 @@
 
 「[StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)」
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

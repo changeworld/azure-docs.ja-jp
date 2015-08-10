@@ -12,10 +12,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/10/2015"
+   ms.date="07/22/2015"
    ms.author="joaoma" />
 
 # 内部ロード バランサーの構成の開始
+
+> [AZURE.SELECTOR]
+- [Azure Classic steps](load-balancer-internal-getstarted.md)
+- [Resource Manager Powershell steps](load-balancer-internal-arm-powershell.md)
 
 Azure 内部負荷分散 (ILB) は、リージョン スコープを持つクラウド サービスまたは仮想ネットワーク内にある仮想マシン間に負荷分散を提供します。リージョン スコープを持つ仮想ネットワークの使用と構成については、Azure ブログの「[Regional Virtual Networks (リージョン仮想ネットワーク)](../regional-virtual-networks.md)」をご覧ください。アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。
 
@@ -230,7 +234,7 @@ ILB は仮想マシンとクラウド サービスの両方でサポートされ
 
 ### 手順 1.
 
-Visual Studio でクラウド デプロイメントのサービス構成ファイル (.cscfg) を開き、次のセクションを追加し、ネットワーク構成の最後の "</Role>" 項目の下に ILB を作成します。
+Visual Studio でクラウド デプロイメントのサービス構成ファイル (.cscfg) を開き、次のセクションを追加して、ネットワーク構成の最後の "`</Role>`" 項目の下に ILB を作成します。
 
 
 
@@ -244,7 +248,7 @@ Visual Studio でクラウド デプロイメントのサービス構成ファ�
 	</NetworkConfiguration>
  
 
-ネットワーク構成ファイルの値を追加し、どのように見えるか確認しましょう。この例では、「test_vnet」という名前のサブネットを「test_subnet」という名前のサブネット 10.0.0.0/24 と静的 IP 10.0.0.4 で作成したと仮定します。ロード バランサーの名前は「testLB」になります。
+ネットワーク構成ファイルの値を追加し、どのように見えるか確認しましょう。この例では、「test\_vnet」という名前のサブネットを「test\_subnet」という名前のサブネット 10.0.0.0/24 と静的 IP 10.0.0.4 で作成したと仮定します。ロード バランサーの名前は「testLB」になります。
 
 	<NetworkConfiguration>
 	  <LoadBalancers>
@@ -331,4 +335,4 @@ ILB コマンドレットに関する追加情報を取得するには、Azure W
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

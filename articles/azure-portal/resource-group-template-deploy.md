@@ -1,7 +1,7 @@
 <properties
-   pageTitle="Azure リソース マネージャーのテンプレートを使用したアプリケーションの展開"
+   pageTitle="Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ"
    services="azure-resource-manager"
-   description="Azure リソース マネージャーを使用してアプリケーションを Azure に展開します。テンプレートは JSON ファイルであり、ポータル、PowerShell、Azure コマンドライン インターフェイス (Mac、Linux、Windows 用)、または REST で使用できます。"
+   description="Azure リソース マネージャーを使用してアプリケーションを Azure にデプロイします。テンプレートは JSON ファイルであり、ポータル、PowerShell、Azure コマンドライン インターフェイス (Mac、Linux、Windows 用)、または REST で使用できます。"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
@@ -13,46 +13,49 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2015"
+   ms.date="07/24/2015"
    ms.author="tomfitz"/>
 
-# Azure リソース マネージャーのテンプレートを使用したアプリケーションの展開
+# Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
 
-このトピックでは、Azure リソース マネージャーのテンプレートを使用して Azure にアプリケーションを展開する方法について説明します。また、Azure PowerShell、Azure CLI、REST API、または Microsoft Azure プレビュー ポータルを使用して、アプリケーションを展開する方法も示します。
+このトピックでは、Azure リソース マネージャーのテンプレートを使用して Azure にアプリケーションをデプロイする方法について説明します。また、Azure PowerShell、Azure CLI、REST API、または Microsoft Azure プレビュー ポータルを使用して、アプリケーションをデプロイする方法も示します。
 
-Azure リソース マネージャーのテンプレートを使用すると、宣言型の JSON によって Azure でアプリケーションを迅速かつ簡単にプロビジョニングすることができます。1 つの JSON テンプレートで、Virtual Machines、Virtual Networks、Storage、App Services、およびデータベースなど、複数のサービスを展開できます。アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用して繰り返し一貫した方法でアプリケーションを展開します。
+Azure リソース マネージャーのテンプレートを使用すると、宣言型の JSON によって Azure でアプリケーションを迅速かつ簡単にプロビジョニングすることができます。1 つの JSON テンプレートで、Virtual Machines、Virtual Networks、Storage、App Services、およびデータベースなど、複数のサービスをデプロイできます。アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用して繰り返し一貫した方法でアプリケーションをデプロイします。
 
-アプリケーションの管理を簡素化するために、共通のライフサイクルを共有するすべてのリソースを 1 つのリソース グループにまとめることができます。リソース グループを作成すれば、関連するリソースをまとめて簡単に展開、更新、および削除することができます。ほとんどの場合、リソース グループは 1 つのアプリケーションまたはアプリケーション層 (大規模なアプリケーションの場合) にマップされます。テンプレートを使用して展開されるリソースは、単一リソース グループに配置されます。ただし、これには他のリソース グループでの依存関係を含めることができます。
+アプリケーションの管理を簡素化するために、共通のライフサイクルを共有するすべてのリソースを 1 つのリソース グループにまとめることができます。リソース グループを作成すれば、関連するリソースをまとめて簡単にデプロイ、更新、および削除することができます。ほとんどの場合、リソース グループは 1 つのアプリケーションまたはアプリケーション層 (大規模なアプリケーションの場合) にマップされます。テンプレートを使用してデプロイされるリソースは、単一リソース グループに配置されます。ただし、これには他のリソース グループでの依存関係を含めることができます。
 
-リソース グループ内では、展開の実行を追跡して、展開の状態とテンプレートの実行出力を確認することができます。
+リソース グループ内では、デプロイの実行を追跡して、デプロイの状態とテンプレートの実行出力を確認することができます。
 
-テンプレートを使用してアプリケーションを展開する場合は、パラメーター値を指定することで、リソースの作成方法をカスタマイズすることができます。これらのパラメーターの値は、インラインか、パラメーター ファイルのどちらかで指定します。
+テンプレートを使用してアプリケーションをデプロイする場合は、パラメーター値を指定することで、リソースの作成方法をカスタマイズすることができます。これらのパラメーターの値は、インラインか、パラメーター ファイルのどちらかで指定します。
 
 ## 概念
 
 - リソース グループ - 一般的なライフ サイクルを共有するエンティティのコレクション
-- リソース マネージャーのテンプレート - 展開の目標とする状態を定義した宣言型の JSON ファイル
-- 展開 - リソース マネージャーのテンプレートの実行を追跡する操作
-- パラメーター - 展開を実行するユーザーが展開リソースをカスタマイズするために指定する値
+- リソース マネージャーのテンプレート - デプロイの目標とする状態を定義した宣言型の JSON ファイル
+- デプロイ - リソース マネージャーのテンプレートの実行を追跡する操作
+- パラメーター - デプロイを実行するユーザーがデプロイされたリソースをカスタマイズするために指定する値
 - パラメーター ファイル - パラメーターの名前と値を格納する JSON ファイル 
 
 ## シナリオ
 
 リソース マネージャーのテンプレートを使用すると、次のことができます。
 
-- Microsoft SharePoint など、複雑な多階層アプリケーションを展開します。
-- 一貫した方法で繰り返しアプリケーションを展開します。
+- Microsoft SharePoint など、複雑な多階層アプリケーションをデプロイします。
+- 一貫した方法で繰り返しアプリケーションをデプロイします。
 - 開発、テスト、および実稼働の環境をサポートします。
-- 展開の状態を表示します。
-- 展開監査ログを使用して、展開エラーのトラブルシューティングを行います。
+- デプロイの状態を表示します。
+- デプロイ監査ログを使用して、デプロイ エラーのトラブルシューティングを行います。
 
-## プレビュー ポータルで展開する
+## プレビュー ポータルでデプロイする
 
-ご存知でしょうか。 ギャラリー内のアプリケーションはどれも Azure リソース マネージャーのテンプレートによってサポートされています。 ポータルを使用して Virtual Machine、Virtual Network、Storage Account、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。
+ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して仮想マシン、仮想ネットワーク、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
 
-プレビュー ポータルで展開のトラブルシューティングを行うには、**[参照]** -> **[リソース グループ]** -> *[YourResourceGroupName]* をクリックします。ここで、**[監視]** レンズの下にある **[イベント]** タイルをクリックします。最後に、個別の **[操作]** と **[イベント]** を選択して詳細を表示できます。
+![新規](./media/resource-group-template-deploy/new.png)
 
-## PowerShell で展開する
+Azure リソース マネージャーによるプレビュー ポータルの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+
+
+## PowerShell でデプロイする
 
 リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
@@ -120,7 +123,7 @@ Azure リソース マネージャーのテンプレートを使用すると、�
 
         PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
 
-## Mac、Linux、および Windows 用の Azure CLI で展開する
+## Mac、Linux、および Windows 用の Azure CLI でデプロイする
 
 リソース マネージャーで Azure CLI を使用したことがない場合は、「[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」に関するページを参照してください。
 
@@ -190,7 +193,7 @@ Azure リソース マネージャーのテンプレートを使用すると、�
       
          azure group log show -l -v ExampleResourceGroup
 
-## REST API で展開する
+## REST API でデプロイする
 1. [一般的なパラメーターおよびヘッダー](https://msdn.microsoft.com/library/azure/8d088ecc-26eb-42e9-8acc-fe929ed33563#bk_common) (認証トークンを含む) を設定します。
 2. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なサブスクリプション ID、新しいリソース グループの名前、および場所を指定します。詳細については、「[リソース グループの作成](https://msdn.microsoft.com/library/azure/dn790525.aspx)」を参照してください。
 
@@ -203,7 +206,7 @@ Azure リソース マネージャーのテンプレートを使用すると、�
              }
            }
    
-3. リソース グループの新しい展開を作成します。サブスクリプション ID、展開するリソース グループの名前、展開の名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートの展開を作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
+3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -221,14 +224,14 @@ Azure リソース マネージャーのテンプレートを使用すると、�
               }
             }
    
-4. テンプレートの展開の状態を取得します。詳細については、「[テンプレートの展開に関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)」を参照してください。
+4. テンプレートのデプロイの状態を取得します。詳細については、「[テンプレートのデプロイに関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)」を参照してください。
 
          GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
            <common headers>
 
 ## パラメーター ファイル
 
-展開中にパラメーター ファイルを使用してパラメーター値をテンプレートに渡す場合は、次の例に示すような形式の JSON ファイルを作成する必要があります。
+デプロイ中にパラメーター ファイルを使用してパラメーター値をテンプレートに渡す場合は、次の例に示すような形式の JSON ファイルを作成する必要があります。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -247,13 +250,11 @@ Azure リソース マネージャーのテンプレートを使用すると、�
     }
 
 ## 次のステップ
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)
-- [.NET ライブラリとテンプレートを使用したリソースの展開](../arm-template-deployment.md)
-- [Azure で複雑なアプリケーションを予測どおりに展開する](../app-service-web/app-service-deploy-complex-application-predictably.md)
-- [テンプレートの作成](../resource-group-authoring-templates.md)
-- [テンプレート関数](../resource-group-template-functions.md)
-- [高度なテンプレートの操作](../resource-group-advanced-template.md)  
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリおよびテンプレートを使用したリソースのデプロイ](../arm-template-deployment.md)」を参照してください。
+- アプリケーションのデプロイの詳細な例については、「[Azure でのマイクロサービスの予測どおりのプロビジョニングとデプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
+- Azure リソース マネージャーのテンプレートのセクションについては、「[テンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+- Azure リソース マネージャーのテンプレートで使用できる関数の一覧については、[テンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

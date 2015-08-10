@@ -1,7 +1,7 @@
 
 | レベル: | 無料 | 基本 | 標準 |
 |----|----|----|----|
-| API 呼び出し | 500 K | 1.5 M/ユニット | 15 M/ユニット |
+| API 呼び出し | 500 K | 1\.5 M/ユニット | 15 M/ユニット |
 | アクティブなデバイス | 500 | 無制限 | 無制限 |
 | スケール | 該当なし | 最大 6 ユニット | 無制限のユニット |
 | プッシュ通知 | Notification Hubs の Free レベルが付属、最大で 1 M のプッシュ | Notification Hubs の Basic レベルが付属、最大で 10 M のプッシュ | Notification Hubs の Standard レベルが付属、最大で 10 M のプッシュ |
@@ -14,4 +14,4 @@
 
 これらの制限に関する詳細と価格の詳細については、「[Mobile Services 料金](https://azure.microsoft.com/pricing/details/mobile-services/)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

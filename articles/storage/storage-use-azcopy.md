@@ -682,7 +682,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 	AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z
 
-前に示したように、オプション `/Z` を省略するか、フォルダー パスなしでオプション `/Z` を指定すると、AzCopy は既定の場所である `%SystemDrive%\Users%username%\AppData\Local\Microsoft\Azure\AzCopy` にジャーナル ファイルを作成します。既存のジャーナル ファイルがある場合、このジャーナル ファイルに基づいて AzCopy が操作を再開します。
+前に示したように、オプション `/Z` を省略するか、フォルダー パスなしでオプション `/Z` を指定すると、AzCopy は既定の場所である `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy` にジャーナル ファイルを作成します。既存のジャーナル ファイルがある場合、このジャーナル ファイルに基づいて AzCopy が操作を再開します。
 
 **ジャーナル ファイルにカスタムの場所を指定する**
 
@@ -703,7 +703,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 	AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V
 
-冗長ログへのファイル パスを指定せずにオプション `/V` を指定すると、AzCopy は既定の場所である `%SystemDrive%\Users%username%\AppData\Local\Microsoft\Azure\AzCopy` にログ ファイルを作成します。
+冗長ログへのファイル パスを指定せずにオプション `/V` を指定すると、AzCopy は既定の場所である `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy` にログ ファイルを作成します。
 
 **詳細ログ ファイルをカスタムの場所に書き込む**
 
@@ -741,7 +741,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 既定では、AzCopy は 2 つのストレージ エンドポイント間で非同期でデータをコピーします。そのため、コピー操作は、BLOB のコピー速度に関する SLA のない予備の帯域幅容量を使用してバック グラウンドで実行され、AzCopy はコピーが完了または失敗するまで定期的にコピー状態を確認します。
 
-3.1.0 リリースの新機能である `/SyncCopy` オプションは、一定速度のコピー操作を保証します。AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
+3\.1.0 リリースの新機能である `/SyncCopy` オプションは、一定速度のコピー操作を保証します。AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
 
 	AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
 
@@ -788,7 +788,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 ### Azure File ストレージでファイルを同期的にコピーする
 
-4.1.0-プレビュー バージョンの新しいオプション SyncCopy を使用して、ユーザーはファイルをファイル ストレージ間、ファイル ストレージから BLOB ストレージ、BLOB ストレージからファイル ストレージにコピーできます。
+4\.1.0-プレビュー バージョンの新しいオプション SyncCopy を使用して、ユーザーはファイルをファイル ストレージ間、ファイル ストレージから BLOB ストレージ、BLOB ストレージからファイル ストレージにコピーできます。
 
 	AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
 
@@ -819,7 +819,7 @@ AzCopy は、次の名前付け規則を使用して JSON データ ファイル
 
 生成される JSON データ ファイルは、最小のメタデータ用のペイロード形式に準じます。このペイロード形式の詳細については、「[テーブル サービス操作のペイロード形式](http://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
 
-ストレージ テーブル エンティティをストレージの Blob にエクスポートするとき、AzCopy はまずテーブル エンティティをローカルの一時データ ファイルにエクスポートし、次にそれらのファイルを Blob にアップロードします。このような一時データ ファイルは、既定のパス “<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>” を持つジャーナル ファイル フォルダーに格納されます。/Z:[journal-file-folder] を指定すれば、ジャーナル ファイル フォルダーの場所を変更して、一時データ ファイルの場所を変更することができます。一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは Blob にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
+ストレージ テーブル エンティティをストレージの Blob にエクスポートするとき、AzCopy はまずテーブル エンティティをローカルの一時データ ファイルにエクスポートし、次にそれらのファイルを Blob にアップロードします。このような一時データ ファイルは、既定のパス “<code>%LocalAppData%\\Microsoft\\Azure\\AzCopy</code>” を持つジャーナル ファイル フォルダーに格納されます。/Z:[journal-file-folder] を指定すれば、ジャーナル ファイル フォルダーの場所を変更して、一時データ ファイルの場所を変更することができます。一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは Blob にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
 
 ### エクスポート ファイルを分割する
 
@@ -911,4 +911,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

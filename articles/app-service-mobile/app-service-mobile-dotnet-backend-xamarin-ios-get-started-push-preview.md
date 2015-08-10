@@ -107,9 +107,9 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 
     ![][9]
 
-    メモ: 既定では、ダウンロードした開発証明書ファイルの名前は <strong>aps_development.cer</strong> になっています。
+    メモ: 既定では、ダウンロードした開発証明書ファイルの名前は <strong>aps\_development.cer</strong> になっています。
 
-7. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。
+7. ダウンロードしたプッシュ証明書 **aps\_development.cer** をダブルクリックします。
 
     下図のように、新しい証明書が Keychain にインストールされます。
 
@@ -266,7 +266,7 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 	
 	> [AZURE.NOTE]アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+2. アプリケーションで、タスクを入力し、プラス (\*\*+\*\*) アイコンをクリックします。
 
 3. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
 
@@ -340,4 +340,4 @@ Apple Push Notification Service (APNs) では、証明書を使用してモバ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

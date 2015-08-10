@@ -162,9 +162,9 @@ APNS では、証明書を使用してモバイル サービスを認証しま�
 
     ![][9]
 
-    メモ: 既定では、ダウンロードした開発証明書ファイルの名前は <strong>aps_development.cer</strong> になっています。
+    メモ: 既定では、ダウンロードした開発証明書ファイルの名前は <strong>aps\_development.cer</strong> になっています。
 
-7. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。
+7. ダウンロードしたプッシュ証明書 **aps\_development.cer** をダブルクリックします。
 
     下図のように、新しい証明書が Keychain にインストールされます。
 
@@ -293,7 +293,7 @@ APNS と連携するようにモバイル サービスが構成されました�
             const string template = "{"aps":{"alert":"$(message)"}}";
 
             var expiryDate = DateTime.Now.AddDays(90).ToString
-                (System.Globalization.CultureInfo.CreateSpecificCulture("ja-jp"));
+                (System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
             var push = client.GetPush();
 
@@ -689,7 +689,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 	>[AZURE.NOTE]このチュートリアルでは、モバイル サービスにより、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。
 
-4. App.xaml.cs 内で、**Application_Launching** イベント ハンドラーの先頭に、次に示す新しい **AcquirePushChannel** メソッドへの呼び出しを追加します。
+4. App.xaml.cs 内で、**Application\_Launching** イベント ハンドラーの先頭に、次に示す新しい **AcquirePushChannel** メソッドへの呼び出しを追加します。
 
         AcquirePushChannel();
 
@@ -697,7 +697,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 5. **F5** キーを押してアプリケーションを実行します。登録キーを示すポップアップ ダイアログが表示されます。
   
-6.	ソリューション エクスプローラーで、[**プロパティ**] を展開して WMAppManifest.xml ファイルを開き、[**機能**] タブをクリックして、**ID___CAP___PUSH_NOTIFICATION** 機能がオンであることを確認します。
+6.	ソリューション エクスプローラーで、[**プロパティ**] を展開して WMAppManifest.xml ファイルを開き、[**機能**] タブをクリックして、**ID\_\_\_CAP\_\_\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
 
    	![VS で通知を有効にする](./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-app-enable-push-wp8.png)
 
@@ -847,4 +847,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Completed Xamarin.Forms Azure Push Notification Sample (Xamarin.Forms の Azure プッシュ通知の完全なサンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

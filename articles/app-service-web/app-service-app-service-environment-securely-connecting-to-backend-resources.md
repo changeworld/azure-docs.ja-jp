@@ -97,7 +97,7 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 <!-- LINKS -->
 [virtualnetwork]: https://msdn.microsoft.com/library/azure/dn133803.aspx
 [ControlInboundTraffic]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
-[SiteToSite]: https://msdn.microsoft.com/library/azure/dn133795.aspx
+[SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [NetworkAccessControlLists]: https://msdn.microsoft.com/library/azure/dn376541.aspx
 [NetworkSecurityGroups]: https://msdn.microsoft.com/library/azure/dn848316.aspx
@@ -110,4 +110,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

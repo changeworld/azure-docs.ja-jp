@@ -142,7 +142,7 @@ Azure ファイアウォールを構成するのが初めての場合は、次�
 
     ここでは 2 つのことを行います。- ファイアウォール規則に名前を付けます- 静的 IP アドレスがない場合は IP 範囲を指定します
 
-    > [AZURE.NOTE]指定する IP アドレス範囲は、外部 IP アドレスまたは公開されている IP アドレスです。外部 IP アドレスは、<a href="http://www.whatismyip.com" target="_blank">www.whatismyip.com</a> などの Web サイトで確認できます。
+    > [AZURE.NOTE]指定する IP アドレス範囲は、外部 IP アドレスまたは公開されている IP アドレスです。外部 IP アドレスは、<a href="http://www.whatismyip.com" target="\_blank">www.whatismyip.com</a> などの Web サイトで確認できます。
 
 7. ファイアウォール規則を保存します
 
@@ -166,4 +166,4 @@ Azure ファイアウォールを構成するのが初めての場合は、次�
 [無料評価版]: https://azure.microsoft.com/ja-jp/pricing/free-trial/
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

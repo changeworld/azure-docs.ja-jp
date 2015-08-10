@@ -20,9 +20,9 @@
 
 この記事では、[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で [Azure Active Directory](/services/active-directory/) を ID プロバイダーとして使用して ASP.NET MVC 基幹業務アプリケーションを作成する方法について説明します。また、[Azure Active Directory Graph クライアント ライブラリ](http://blogs.msdn.com/b/aadgraphteam/archive/2014/06/02/azure-active-directory-graph-client-library-1-0-publish.aspx)を使ってアプリケーション内のディレクトリ データを照会する方法についても説明します。
 
-使用する Azure Active Directory テナントを Azure 専用ディレクトリとして使用するか、オンプレミスの Active Directory (AD) とディレクトリを同期して、オンプレミス ユーザーやリモート ユーザーがシングル サインオン環境を構築できます。
+使用する Azure Active Directory テナントを Azure 専用ディレクトリにするか、オンプレミスの Active Directory (AD) とディレクトリを同期して、オンプレミス ユーザーやリモート ユーザーがシングル サインオン環境を構築できます。
 
->[AZURE.NOTE]Azure App Service Web Apps の簡単認証機能では、ボタンを数クリックするだけで、Azure Active Directory テナントに簡単な認証を設定できます。詳細については、「[Azure App Service での認証には、Active Directory を使用します](web-sites-authentication-authorization.md)」を参照してください。
+>[AZURE.NOTE]Azure App Service Web Apps の場合、ボタンを数回クリックするだけで、Azure Active Directory に対する認証を構成できます。詳細については、「[Azure App Service での認証には、Active Directory を使用します](web-sites-authentication-authorization.md)」を参照してください。
 
 <a name="bkmk_build"></a>
 ## 学習内容 ##
@@ -376,4 +376,4 @@ public class GroupClaimContext : DbContext
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

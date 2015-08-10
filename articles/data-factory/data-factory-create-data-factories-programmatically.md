@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="07/22/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
@@ -74,7 +74,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力テーブルと出力テーブル、パイプラインを作成します。また、実行時にテーブルのスライスも監視します。    
 
         // create data factory management client
-        string resourceGroupName = "ADF";
+        string resourceGroupName = "resourcegroupname";
         string dataFactoryName = "APITutorialFactorySP";
 
         TokenCloudCredentials aadTokenCredentials =
@@ -85,6 +85,8 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
 
         DataFactoryManagementClient client = new DataFactoryManagementClient(aadTokenCredentials, resourceManagerUri);
+
+	> [AZURE.NOTE]**resourcegroupname** は Azure リソース グループの名前に置き換えます。リソース グループを作成するには、[New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) コマンドレットを使用します。
 
 7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 
@@ -366,9 +368,9 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         John, Doe
 		Jane, Doe
 	 
-17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**ENTER** を押します。
+17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**Enter** を押します。
 18. Azure プレビュー ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。 
-	- リンクされたサービス: **LinkedService_AzureStorage** 
+	- リンクされたサービス: **LinkedService\_AzureStorage** 
 	- テーブル: **TableBlobSource** と **TableBlobDestination**
 	- パイプライン: **PipelineBlobSample** 
 18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
@@ -392,4 +394,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

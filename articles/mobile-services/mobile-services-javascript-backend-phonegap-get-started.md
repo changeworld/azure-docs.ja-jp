@@ -1,5 +1,5 @@
 <properties
-	pageTitle="PhoneGap での Mobile Services の使用 | モバイル デベロッパー センター"
+	pageTitle="PhoneGap/Cordova アプリ用 Azure Mobile Services の使用"
 	description="このチュートリアルでは、iOS、Android、Windows Phone 用に PhoneGap の開発を行う場合に Azure Mobile Services を使用する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="04/24/2015"
+	ms.date="07/21/2015"
 	ms.author="ggailey777"/>
 
 # Mobile Services の使用
@@ -76,7 +76,7 @@
 
 	+ **Windows Phone 8**
 
-		1. Windows Phone 8: Visual Studio 2012 Express for Windows Phone の **platforms\wp8** フォルダーにある .sln ファイルを開きます。
+		1. Windows Phone 8: Visual Studio 2012 Express for Windows Phone の **platforms\\wp8** フォルダーにある .sln ファイルを開きます。
 
 		2. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
@@ -171,4 +171,4 @@
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

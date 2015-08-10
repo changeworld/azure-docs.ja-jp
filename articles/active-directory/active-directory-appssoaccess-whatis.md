@@ -78,7 +78,7 @@ Azure AD は、HTML ベースのサインイン ページを持つあらゆる�
 
 パスワードベースの SSO は、ブラウザーの拡張機能に依存して、アプリケーションおよびユーザーに固有の情報を Azure AD から安全に取得してサービスに適用します。Azure AD でサポートされているほとんどのサードパーティ SaaS アプリケーションは、この機能をサポートします。
 
-パスワードベースの SSO に対応するエンド ユーザーのブラウザーは、* IE 8、IE9、IE10 (Windows 7 以降) * Chrome (Windows 7 以降または MacOS X 以降) です。
+パスワードベースの SSO に対応するエンド ユーザーのブラウザーは、\* IE 8、IE9、IE10 (Windows 7 以降) \* Chrome (Windows 7 以降または MacOS X 以降) です。
 
 ###既存のシングル サインオン
 
@@ -212,4 +212,4 @@ https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

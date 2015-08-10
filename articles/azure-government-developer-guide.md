@@ -75,31 +75,18 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 
 次の表を使用すると、Microsoft Azure と SQL データベースのパブリック エンドポイントを Azure Government 特定のエンドポイントにマッピングするときに役立ちます。
 
-<table>
-<tr style='font-weight:bold'><td>
-サービスの種類</td><td>	Azure Public</td><td>	Azure Government
-</td></tr><tr><td>
-Azure Government Home</td><td>	windowsazure.com	</td><td>microsoftazure.us
-</td></tr><tr><td>
-管理ポータル</td><td>	manage.windowsazure.com</td><td>	manage.windowsazure.us
-</td></tr><tr><td>
-全般</td><td>	*.windows.net	</td><td>*.usgovcloudapi.net
-</td></tr><tr><td>
-コア	</td><td>*.core.windows.net	</td><td>*.core.usgovcloudapi.net
-</td></tr><tr><td>
-コンピューティング	</td><td>*.cloudapp.net	</td><td>*.usgovcloudapp.net
-</td></tr><tr><td>
-BLOB ストレージ</td><td>	*.blob.core.windows.net</td><td>	*.blob.core.usgovcloudapi.net
-</td></tr><tr><td>
-キュー ストレージ	</td><td>*.queue.core.windows.net</td><td>	*.queue.core.usgovcloudapi.net
-</td></tr><tr><td>
-テーブル ストレージ</td><td>	*.table.core.windows.net	</td><td>*.table.core.usgovcloudapi.net
-</td></tr><tr><td>
-サービス管理</td><td>	management.core.windows.net</td><td>	management.core.usgovcloudapi.net
 
-</td></tr>
-<tr><td>SQL Database</td><td>	*.database.windows.net	</td><td>*.database.usgovcloudapi.net</td></tr>
-</table>
+サービスの種類|Azure Public|Azure Government
+---|---|---
+Azure Government Home|windowsazure.com|microsoftazure.us
+管理ポータル|manage.windowsazure.com|manage.windowsazure.us
+全般|*.windows.net|*.usgovcloudapi.net
+コア|*.core.windows.net|*.core.usgovcloudapi.net
+コンピューティング|*.cloudapp.net|*.usgovcloudapp.net
+BLOB ストレージ|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
+テーブル ストレージ|*.table.core.windows.net|*.table.core.usgovcloudapi.net
+サービス管理|management.core.windows.net|management.core.usgovcloudapi.net
+SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
 
 ## <a name="next"></a>次のステップ
 さらに詳しい情報、Azure Government、組織がアクセス資格を満たすための方法について関心をお持ちの場合は、<A href="http://azure.com/gov">http://www.azure.com/gov</a> に進んでください
@@ -118,4 +105,4 @@ BLOB ストレージ</td><td>	*.blob.core.windows.net</td><td>	*.blob.core.usgov
 [Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

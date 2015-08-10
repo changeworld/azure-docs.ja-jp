@@ -13,10 +13,41 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/09/2015" 
+	ms.date="07/30/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 7 月 30 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+<table border="1">
+<tr>
+<th>タイトル</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>Azure ID から切り離された Power BI の組織 ID</td>
+<td>この機能により、任意の Azure アカウント種類 (Live ID または組織 ID) で ASA ジョブの Power BI 出力が可能です。さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。</td>
+</tr>
+<tr>
+<td>Service Bus キューの出力のサポート</td>
+<td>Service Bus キューの出力を、Stream Analytics ジョブで使用できるようになりました。</td>
+</tr>
+<tr>
+<td>Service Bus トピックの出力のサポート</td>
+<td>Service Bus トピックの出力を、Stream Analytics ジョブで使用できるようになりました。</td>
+</tr>
+<tr>
+<td>新しい配列関数</td>
+<td>配列関数 GetArrayElement、GetArrayElements、GetArrayLength が追加されました。</td>
+</tr>
+<tr>
+<td>新しいレコード関数</td>
+<td>レコード関数 GetRecordProperties、GetRecordPropertyValue が追加されました。</td>
+</tr>
+</table>
 
 ## Stream Analytics の 2015 年 9 月 7 日付けリリースに関するノート ##
 
@@ -110,7 +141,7 @@
 </table>
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -121,4 +152,4 @@
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

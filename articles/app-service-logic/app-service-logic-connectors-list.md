@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="コネクタと API Apps の一覧 | Azure" 
-	description="Azure App Service マイクロサービス アーキテクチャのコネクタと API Apps について説明します。" 
-	services="app-service\logic" 
-	documentationCenter="" 
-	authors="MandiOhlinger" 
-	manager="dwrede" 
+<properties
+	pageTitle="コネクタと API Apps の一覧 | Azure"
+	description="Azure App Service マイクロサービス アーキテクチャのコネクタと API Apps について説明します。"
+	services="app-service\logic"
+	documentationCenter=""
+	authors="MandiOhlinger"
+	manager="dwrede"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="app-service-logic" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/12/2015" 
+<tags
+	ms.service="app-service-logic"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2015"
 	ms.author="mandia"/>
 
 
@@ -31,7 +31,6 @@
 [Azure HDInsight](app-service-logic-connector-hdinsight.md) | このコネクタは、Azure 上で Hadoop クラスターを作成し、Hive、Pig、MapReduce、ストリーミング MapReduce など、さまざまな Hadoop ジョブを送信するために使用します。また、このコネクタを使用して、クラスターのスピン、ジョブの送信を実行できるほか、ジョブの完了を待機できます。
 [Azure の Service Bus](app-service-logic-connector-azureservicebus.md) | このコネクタを使用すると、キュー、トピックなどの Service Bus エンティティからメッセージを送信したり、キュー、サブスクリプションなどの Service Bus エンティティからメッセージを受信したりできます。
 [Azure Storage Blob](app-service-logic-connector-azurestorageblob.md) | BLOB ストレージに接続して、BLOB のアップロード、BLOB の取得、BLOB の削除、コンテナー内の BLOB の一覧の取得、BLOB のスナップショットの作成、BLOB のコピーなどの操作を実行できます。さらに、トリガーを使用して BLOB を取得することができます。
-Azure Web ジョブ | Web ジョブに接続します。
 [Box](app-service-logic-connector-box.md) | Box に接続して、ファイルのアップロード、ファイルの取得、ファイルの削除、ファイルの一覧の取得を実行できます。さらに、トリガーを使用してファイルを取得することができます。
 [Chatter](app-service-logic-connector-chatter.md) | Chatter に接続して、メッセージの投稿、検索などの操作を実行できます。さらに、トリガーを使用して新しいメッセージを取得することができます。
 [Dropbox](app-service-logic-connector-dropbox.md) | Dropbox に接続して、ファイルのアップロード、ファイルの取得、ファイルの削除、ファイルの一覧の取得を実行できます。さらに、トリガーを使用してファイルを取得することができます。
@@ -94,4 +93,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)<br/> [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

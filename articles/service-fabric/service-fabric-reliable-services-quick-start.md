@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="07/23/2015"
    ms.author="vturecek"/>
 
 # Microsoft Azure Service Fabric の Reliable Service の概要
@@ -30,14 +30,18 @@ Service Fabric では、新しい種類のステートフル サービスが導�
 
 ステートレス サービスの作成から始めましょう。
 
-Visual Studio 2015 RC を**管理者**として起動し、*HelloWorld* という名前の新しい **Service Fabric ステートレス サービス** プロジェクトを作成します。
+Visual Studio 2015 RC を**管理者**として起動し、*HelloWorld* という名前の新しい **Service Fabric アプリケーション サービス** プロジェクトを作成します。
 
-![[新しいプロジェクト] ダイアログを使用して、新しい Service Fabric ステートレス サービスを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![[新しいプロジェクト] ダイアログを使用して、新しい Service Fabric アプリケーションを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-作成されたソリューション内には 2 つのプロジェクトが表示されます。
+次に、*HelloWorldStateless* という名前の**ステートレス サービス** プロジェクトを作成します。
 
- + **HelloWorldApplication**: これは*サービス*を含む*アプリケーション* プロジェクトです。また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
- + **HelloWorld**: これはサービス プロジェクトで、ステートレス サービスの実装が含まれています。
+![2 番目のダイアログ ボックスでは、ステートレス サービスを作成します。](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+
+これで、ソリューションには、次の 2 つのプロジェクトが含まれています。
+
+ + **HelloWorld**: これは*サービス*を含む*アプリケーション* プロジェクトです。また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
+ + **HelloWorldStateless**: これはサービス プロジェクトで、ステートレス サービスの実装が含まれています。
 
 
 ## サービスの実装
@@ -88,11 +92,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 - リソース分散のために、サービス インスタンスが切り替わっている場合。
 - コード内でエラーが発生した場合。
 - アプリケーションまたはシステムのアップグレード中。
-- 基礎となるハードウェアで障害が発生した場合。 
+- 基礎となるハードウェアで障害が発生した場合。
 
 このオーケストレーションは、サービスの可用性を高めて適切なバランスを取るために、システムによって管理されます。
 
-`RunAsync()` は独自**タスク**内で実行されます。ここで使用しているコード スニペットでは、**while** ループをすぐに開始しているため、ワークロードのために別のタスクをスケジュール設定する必要はありません。ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。**重要**: システムからキャンセルが要求された場合、キャンセル トークンを利用し、すべての作業を完了してから、できるだけ早く `RunAsync()`を終了します。
+`RunAsync()` は独自**タスク**内で実行されます。ここで使用しているコード スニペットでは、**while** ループをすぐに開始しているため、ワークロードのために別のタスクをスケジュール設定する必要はありません。ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。**重要**: システムからキャンセルが要求された場合、キャンセル トークンを利用し、すべての作業を完了してから、できるだけ早く `RunAsync()` を終了します。
 
 このステートレス サービスの例では、カウントはローカル変数に格納されます。これはステートレス サービスであるため、保存される値は、その値を含むサービス インスタンスの現在のライフサイクルのみで保持されます。このサービスを移動または再起動すると、値は失われます。
 
@@ -148,14 +152,14 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-**IReliableDictionary** は、サービスに状態を信頼性の高い方法で格納できるディクショナリの実装です。これは、Service Fabric の組み込みの [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) に含まれています。Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納することができます。外部の永続ストアは不要なので、データを高可用にする必要はありません。これを達成するために、Service Fabric では、サービスの複数*レプリカ*が作成および管理される一方で、これらのレプリカとその状態遷移の管理上の複雑さを抽象化する API が提供されています。
+**IReliableDictionary** は、サービスに状態を信頼性の高い方法で格納できるディクショナリの実装です。これは、Service Fabric の組み込みの [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) に含まれています。Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納することができます。外部の永続ストアは不要なので、データを高可用にする必要はありません。これを達成するために、Service Fabric では、サービスの複数*レプリカ*が作成および管理される一方で、これらのレプリカとその状態遷移の管理上の複雑さを抽象化する API が提供されています。
 
 Reliable Collection にはカスタム型を含むすべての .NET 型を格納できます。ただし次の点にご注意ください。
 
  1. Service Fabric では、ノード全体で状態を*レプリケート*してローカル ディスクに格納することで、状態が高可用性になります。これはつまり、Reliable Collection に格納されているすべてのデータは*シリアル化*する必要があるということです。既定では、Reliable Collection は [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)ことを確認することは重要です 。
 
  2. Reliable Collection でトランザクションをコミットすると、オブジェクトはレプリケートされて可用性が高まります。Reliable Collection に格納されているオブジェクトはサービスのローカル メモリに保持されるため、オブジェクトへのローカル参照が存在することになります。
- 
+
     トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。これらの変更は自動的にレプリケートされないためです。
 
 Reliable Collection は *StateManager* によって管理されます。サービス内のどこからでも Reliable Collection の名前を指定して StateManager に要求すれば、いつでも必ず参照を取得できます。参照を Reliable Collection インスタンスのクラス メンバーの変数やプロパティに保存することはお勧めしません。サービスのライフサイクルでは常に参照がインスタンスに設定されているように特に注意が必要だからです。この作業は StateManager によって実行され、繰り返されるアクセスに最適化されています。
@@ -173,7 +177,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Reliable Collections には、LINQ など、`System.Collections.Generic` および `System.Collections.Concurrent` の操作と同じ操作が多くあります。ただし、Reliable Collection に対する操作は非同期です。これは Reliable Collection での書き込み操作が*レプリケート*されるためです (操作を別のノード上にあるサービスのレプリカに送信することで高可用性を実現しているということです)。
+Reliable Collection には、LINQ など、`System.Collections.Generic` および `System.Collections.Concurrent` の操作と同じ操作が多くあります。ただし、Reliable Collection に対する操作は非同期です。これは Reliable Collection での書き込み操作が*レプリケート*されるためです (操作を別のノード上にあるサービスのレプリカに送信することで高可用性を実現しているということです)。
 
 *トランザクション*操作もサポートされているため、複数の Reliable Collection 間で状態の整合性を保つことができます。たとえば、1 つのトランザクション内で Reliable Queue から作業項目をデキューし、その項目の操作を実行してから、結果を Reliable Dictionary に保存するとします。これはアトミック操作として処理されるため、すべての操作が成功するかしないかのいずれかになることが決まっています。そのため、項目をデキューした後で、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、その項目はキューに残って処理を待ちます。
 
@@ -199,6 +203,5 @@ Reliable Collections には、LINQ など、`System.Collections.Generic` およ�
 [Service Fabric サービスの管理](service-fabric-manage-your-service-index.md)
 
 [Reliable Service の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

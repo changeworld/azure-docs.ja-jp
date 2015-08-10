@@ -92,4 +92,4 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

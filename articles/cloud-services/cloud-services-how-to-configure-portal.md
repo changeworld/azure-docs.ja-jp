@@ -89,4 +89,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 			
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

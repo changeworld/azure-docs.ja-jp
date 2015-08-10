@@ -51,7 +51,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 「[基本構成テスト環境](../virtual-machines/virtual-machines-base-configuration-test-environment.md)」の手順を使用して、TestLab という Azure Virtual Network で DC1、APP1、および CLIENT1 の各コンピューターを構成します。
 
-ローカル コンピューターで Azure の管理ポータルから CORP\User1 の資格情報を使用して DC1 に接続します。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
+ローカル コンピューターで Azure の管理ポータルから CORP\\User1 の資格情報を使用して DC1 に接続します。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
@@ -79,7 +79,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 次に、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」に記載されている手順に従って、ローカル コンピューターに Azure PowerShell をインストールします
 
-次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、**TestVNET-***UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
+次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、**TestVNET-**\*UniqueSequence\* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
 
 名前が一意かどうかは、ローカル コンピューターで次の Azure PowerShell コマンドを使用することで確認できます。
 
@@ -171,7 +171,7 @@ VPN デバイスの IP アドレス 131.107.0.1 と 131.107.0.2 は、2 つの�
 3.	DC2.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-- 名前: **DC2\**[ローカル管理者アカウントの名前]
+- 名前: **DC2\\**[ローカル管理者アカウントの名前]
 - パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -200,7 +200,7 @@ ping コマンドで IP アドレス 10.0.0.4 からの応答が 4 回成功す�
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 	Install-ADDSDomainController -Credential (Get-Credential CORP\User1) -DomainName "corp.contoso.com" -InstallDns:$true -DatabasePath "F:\NTDS" -LogPath "F:\Logs" -SysvolPath "F:\SYSVOL"
 
-CORP\User1 のパスワードとディレクトリ サービス復元モード (DSRM) のパスワードの両方を入力し、DC2 を再起動するよう求められます。
+CORP\\User1 のパスワードとディレクトリ サービス復元モード (DSRM) のパスワードの両方を入力し、DC2 を再起動するよう求められます。
 
 これで TestVNET 仮想ネットワーク独自の DNS サーバー (DC2) が設定されたので、この DNS サーバーを使用するように TestVNET 仮想ネットワークを構成する必要があります。
 
@@ -226,7 +226,7 @@ CORP\User1 のパスワードとディレクトリ サービス復元モード (
 
 [テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
-[VNet 間の接続の構成](http://msdn.microsoft.com/library/azure/dn690122.aspx)
+[VNet 間の接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 
 [基本構成テスト環境](../virtual-machines/virtual-machines-base-configuration-test-environment.md)
 
@@ -236,7 +236,7 @@ CORP\User1 のパスワードとディレクトリ サービス復元モード (
 
 ## <a id="costs"></a>この環境の継続的な費用を最小限に抑える
 
-この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
+この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
 
 Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](http://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。2 つの VPN ゲートウェイ (それぞれ TestLab 用と TestVNET 用) の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
  
@@ -273,4 +273,4 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

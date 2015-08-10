@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Windows Server が実行されている仮想マシンへのログオン" 
-	description="Azure 管理ポータルを使用して Windows Server が実行されている仮想マシンにログオンする方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="KBDAzure" 
-	manager="timlt" 
+<properties
+	pageTitle="Windows Server が実行されている仮想マシンへのログオン"
+	description="Azure ポータルを使用して Windows Server が実行されている仮想マシンにログオンする方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="KBDAzure"
+	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/12/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/12/2015"
 	ms.author="kathydav"/>
 
 
@@ -35,7 +35,5 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 パスワードに問題がある場合は、ポータルからパスワードをリセットしてください。仮想マシンのダッシュボードで、**[概要]** の **[パスワードのリセット]** をクリックします。
 
 この操作を行っても問題が解決しない場合は、より広範なトラブルシューティングを行う必要があります。手順については、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。
- 
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

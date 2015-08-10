@@ -59,13 +59,15 @@ Traffic Manager プロファイルを構成する際に各種設定を指定す�
 4. **使用する負荷分散方法を決定します**。次の 3 つの異なる負荷分散方法を使用できます。時間をかけて、要件に適合する最適な方法を理解してください。後で方法を変更する必要がある場合は、いつでも変更できます。各方法では、わずかに異なる構成手順が必要であることにも注意してください。負荷分散方法については、[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)を参照してください。
 5. **プロファイルを作成し、設定を構成します**。REST API、Windows PowerShell、または管理ポータルを使用して、Traffic Manager プロファイルを作成し、設定を構成することができます。詳細については、[Traffic Manager 設定の構成方法](#how-to-configure-traffic-manager-settings)を参照してください以下の手順は、管理ポータルの **簡易作成** を使用することを前提としています。 
    - **Traffic Manager プロファイルの作成** - 管理ポータルで簡易作成を使用してプロファイルを作成するには、[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)(traffic-manager-manage-profiles.md) を参照してください。
-   - **負荷分散方法の設定の構成** – 簡易作成で、プロファイルの負荷分散方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順については、負荷分散方法に対応するトピックを参照してください: [パフォーマンス負荷分散構成](traffic-manager-configure-performance-load-balancing.md)、[フェールオーバー負荷分散構成](traffic-manager-configure-failover-load-balancing.md)、[ラウンド ロビン負荷分散を構成](traffic-manager-configure-round-robin-load-balancing.md)。 >[AZURE.NOTE]ラウンド ロビン負荷分散方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
+   - **負荷分散方法の設定の構成** – 簡易作成で、プロファイルの負荷分散方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順については、負荷分散方法に対応するトピックを参照してください: [パフォーマンス負荷分散構成](traffic-manager-configure-performance-load-balancing.md)、[フェールオーバー負荷分散構成](traffic-manager-configure-failover-load-balancing.md)、[ラウンド ロビン負荷分散を構成](traffic-manager-configure-round-robin-load-balancing.md)。
+   
+   >[AZURE.NOTE]ラウンド ロビン負荷分散方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
 
-   - **エンドポイントの構成** – エンドポイントは、簡易作成では構成しません。プロファイルを作成し、負荷分散方法を指定した後で、Traffic Manager に対してエンドポイントを指定する必要があります。エンドポイントを構成する手順については、[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)を参照してください。
+   - **エンドポイントの構成** – エンドポイントは、簡易作成では構成しません。プロファイルを作成し、負荷分散方法を指定した後で、Traffic Manager に対してエンドポイントを指定する必要があります。エンドポイントを構成する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 
-   - **監視設定の構成** –監視設定は、簡易作成では構成しません。プロファイルを作成し、負荷分散方法を指定した後で、Traffic Manager に対して監視対象を指定する必要があります。監視を構成する手順については、[Traffic Manager の監視](traffic-manager-monitoring.md)を参照してください。
-6. **Traffic Manager プロファイルをテストします**。プロファイルとドメインが正常に動作しているかどうかをテストします。これを行う方法については、[Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)を参照してください。
-7. **会社のドメイン名の DNS リソース レコードでプロファイルを参照して、有効にします**。詳細については、[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)を参照してください。
+   - **監視設定の構成** –監視設定は、簡易作成では構成しません。プロファイルを作成し、負荷分散方法を指定した後で、Traffic Manager に対して監視対象を指定する必要があります。監視を構成する手順については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
+6. **Traffic Manager プロファイルをテストします**。プロファイルとドメインが正常に動作しているかどうかをテストします。これを行う方法については、「[Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)」を参照してください。
+7. **会社のドメイン名の DNS リソース レコードでプロファイルを参照して、有効にします**。詳細については、「[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)」を参照してください。
 
 図 1 の例では、会社のドメイン名が Traffic Manager のドメイン名を参照するように、サーバー上の DNS リソース レコードを次のように変更します。www.contoso.com IN CNAME contoso.trafficmanager.net
 
@@ -73,15 +75,15 @@ Traffic Manager プロファイルを構成する際に各種設定を指定す�
 
 Traffic Manager の設定は、管理ポータル、REST API、Windows PowerShell コマンドレットを使用して構成できます。
 
-REST API 要素は管理ポータルには表示されませんが、どちらの方法でも多くの設定を扱えます。REST API の詳細については、 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=313584)を参照してください。
+REST API 要素は管理ポータルには表示されませんが、どちらの方法でも多くの設定を扱えます。REST API の詳細については、「[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=313584)」を参照してください。
 
-Traffic Manager 用の Windows PowerShell コマンドレットの詳細については、[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)に関するページを参照してください。
+Traffic Manager 用の Windows PowerShell コマンドレットの詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。
 
->[AZURE.NOTE]現時点では、管理ポータルで外部エンドポイント (種類 = "Any")、ラウンド ロビン負荷分散方法の重み、および入れ子になったプロファイルを構成することはできません。REST ([Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772) に関するページを参照) と Windows PowerShell ([Add-AzureTrafficManagerEndpoint ](https://msdn.microsoft.com/library/azure/dn690257.aspx)に関するページを参照) のどちらかを使用する必要があります。
+>[AZURE.NOTE]現時点では、管理ポータルで外部エンドポイント (種類 = "Any")、ラウンド ロビン負荷分散方法の重み、および入れ子になったプロファイルを構成することはできません。REST (「[Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772)」を参照) と Windows PowerShell (「[Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/azure/dn690257.aspx)」を参照) のどちらかを使用する必要があります。
 
 ### 管理ポータルでの設定の構成
 
-管理ポータルでは、簡易作成を使用して Traffic Manager プロファイルを作成できます。簡易作成では基本プロファイルの作成が可能です。プロファイルの作成後は、追加設定を構成したり、構成済みの設定を編集したりできます。簡易作成による Traffic Manager プロファイルの作成の詳細については、[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)(traffic-manager-manage-profiles.md) を参照してください。
+管理ポータルでは、簡易作成を使用して Traffic Manager プロファイルを作成できます。簡易作成では基本プロファイルの作成が可能です。プロファイルの作成後は、追加設定を構成したり、構成済みの設定を編集したりできます。簡易作成による Traffic Manager プロファイルの作成の詳細については、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」を参照してください。
 
 管理ポータルでは、次の設定を構成できます。
 
@@ -94,22 +96,22 @@ Traffic Manager 用の Windows PowerShell コマンドレットの詳細につ�
 
 ### REST API を使用した設定の構成
 
-REST API を使用して Traffic Manager プロファイルの作成と構成を実行できます。詳細については、[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)を参照してください。
+REST API を使用して Traffic Manager プロファイルの作成と構成を実行できます。詳細については、「[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)」を参照してください。
 
 - **プロファイル** – プロファイルには、作成するドメイン名プレフィックスが含まれています。各プロファイルはサブスクリプションに対応しています。1 つのサブスクリプションに複数のプロファイルを作成できます。プロファイル名は管理ポータルに表示されます。作成した名前 (プロファイルで構成) は、"Traffic Manager ドメイン" と呼ばれます。
 - **定義** – 定義には、ポリシー設定と監視設定が含まれています。定義はプロファイルに対応しています。1 つのプロファイルには定義を 1 つだけ指定できます。定義に含まれている設定の多くは管理ポータルに表示され、管理ポータルで構成できますが、定義そのものは管理ポータルに表示されません。
 - **DNS オプション** – DNS オプションは各定義に含まれています。ここで DNS TTL を構成します。
-- **監視** – 監視設定は各定義に含まれています。ここで、プロトコル、ポート、相対パス、ファイル名を構成します。監視設定は管理ポータルに表示され、管理ポータルで構成できます。詳細については、[Traffic Manager の監視](traffic-manager-monitoring.md)に関するページを参照してください。
+- **監視** – 監視設定は各定義に含まれています。ここで、プロトコル、ポート、相対パス、ファイル名を構成します。監視設定は管理ポータルに表示され、管理ポータルで構成できます。詳細については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
 - **ポリシー** – ポリシー設定は各定義に含まれます。ポリシーでは、負荷分散方法とエンドポイントを指定します。ポリシーに含まれる設定の一部は管理ポータルに表示され、管理ポータルで構成できますが、ポリシーそのものは管理ポータルに表示されません。詳細については、「[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)」を参照してください。
 
 ## Windows PowerShell を使用した設定の構成
 
-Windows PowerShell を使用して Traffic Manager プロファイルの作成と構成を実行できます。詳細については、[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)に関するページを参照してください。
+Windows PowerShell を使用して Traffic Manager プロファイルの作成と構成を実行できます。詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。
 
 ## ベスト プラクティス
 
 - **一意のわかりやすいプレフィックスを作成する** – Traffic Manager プロファイルの DNS 名は一意にする必要があります。自由に作成できるのは、DNS 名の最初の部分のみです。Traffic Manager ドメイン名は、識別とクライアント要求の転送のみに使用されます。クライアント コンピューターでこれらの名前がエンド ユーザーに表示されることはありません。ただし、プロファイルはこのドメイン名によって識別されるため、管理ポータルのインターフェイスで目的のドメイン名と他のドメイン名をすばやく識別できるようにすることが重要です。
-- **ドットを使用して一意のドメイン名を作成したり、ドメインをわかりやすくする** – ピリオドを使用して、ドメイン名プレフィックスも複数の部分に分割できます。Traffic Manager で複数のポリシーを作成する場合は、サービスを識別できるように、一貫性のある階層を使用します。たとえば、Contoso に、Web、課金、およびユーティリティ管理に関するグローバル サービスがあるとします。この場合、3 つのポリシーは、*web.contoso.trafficmanager.net*, *bill.contoso.trafficmanager.net*, および *util.contoso.trafficmanager.net* のように作成できます。また、クラウド サービスや Web サイトを設定するときは、場所を含んだ名前を使用できます。たとえば、*web-us-contoso.cloudapp.net* や *web-asia-contoso.cloudapp.net* などです。DNS による制約以外に制限事項はありません。ドメイン名は、ドットで区切られた複数のラベルとして指定されることを前提としています (label.label.label.label など)。このドキュメントの作成時点では、Traffic Manager におけるドメイン名の制限事項は次のとおりです。
+- **ドットを使用して一意のドメイン名を作成したり、ドメインをわかりやすくしたりする** – ピリオドを使用して、ドメイン名プレフィックスも複数の部分に分割できます。Traffic Manager で複数のポリシーを作成する場合は、サービスを識別できるように、一貫性のある階層を使用します。たとえば、Contoso に、Web、課金、およびユーティリティ管理に関するグローバル サービスがあるとします。この場合、3 つのポリシーは、*web.contoso.trafficmanager.net*、*bill.contoso.trafficmanager.net*、および *util.contoso.trafficmanager.net* のように作成できます。また、クラウド サービスや Web サイトを設定するときは、場所を含んだ名前を使用できます。たとえば、*web-us-contoso.cloudapp.net* や *web-asia-contoso.cloudapp.net* などです。DNS による制約以外に制限事項はありません。ドメイン名は、ドットで区切られた複数のラベルとして指定されることを前提としています (label.label.label.label など)。このドキュメントの作成時点では、Traffic Manager におけるドメイン名の制限事項は次のとおりです。
    - 各ラベルは、最大 63 文字まで指定できます。
    - 合計で 40 個を超えるラベルを含めることはできません。ラベルのうち 2 つは "trafficmanager.net" で使用されるため、残りの 38 個のラベルをプレフィックスに使用できます。
    - ドメイン名全体では、最大 253 文字まで指定できます。この文字数のうち 19 文字は "trafficmanager.net" で使用されることに注意してください。
@@ -118,9 +120,9 @@ Windows PowerShell を使用して Traffic Manager プロファイルの作成�
 - **運用サービスのみ** – 運用環境にあるエンドポイントのみを使用できます。ステージング環境で実行されているエンドポイントに転送することはできません。プロファイルがトラフィックを転送しているときに仮想 IP (VIP) アドレスのスワップを実行すると、トラフィックは、運用環境にスワップされたエンドポイントを使用します。
 - **エンドポイントに識別しやすい名前を付ける** – 使用する DNS プレフィックスを考慮します。DNS 名はサブスクリプション内で一意であることが保証されていますが、クラウド サービスと Web サイトの名前は一意でない場合があるため、DNS 名が使用されます。混乱を避けるため、クラウド サービスや Web サイトは、名前と DNS プレフィックスに同じまたは類似したものを指定してください。クラウド サービスや Web サイトが 20 以上ある場合、名前の設定を誤ると正しいエンドポイントを見つけることが難しくなります。また、名前の設定が適切でないエンドポイントでは、プロファイルを管理するのが難しくなります。
 - **1 つのプロファイルに含まれるすべてのエンドポイントは同じ操作とポートを処理する必要がある** – エンドポイントが混在していると、要求を処理できないエンドポイントをクライアントが呼び出す可能性が高くなります。
-- **1 つのプロファイルに含まれるすべてのクラウド** – サービスは同じ監視設定を使用する必要がある 1 つの定義内にあるすべてのエンドポイントを監視する際に選択できるパスとファイルは 1 つだけです。**相対パスおよびファイル名** ボックスに "/" を入力すると、監視において既定のパスとファイル名へのアクセスが試行されます。
-- **一時的な変更の場合は、構成を変更するのではなく、エンドポイントを無効にする** – エンドポイントをオフラインにする必要が生じることはたびたびあります。このようなときは、プロファイルからエンドポイントを削除するのではなく、プロファイルに含まれている個々のエンドポイントを無効にします。無効にしても、エンドポイントはプロファイルに含まれたままですが、プロファイルはそのエンドポイントが含まれていないかのように動作します。これは、メンテナンス モードのエンドポイントを一時的に削除したり、エンドポイントを再デプロイしたりする場合に役立ちます。エンドポイントを再度起動して実行すると、有効にすることができます。詳細については、[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)を参照してください。
-- **プロファイルを削除せずに、一時的な変更のためにプロファイルを無効にする** – プロファイル内で指定する個々のエンドポイントだけでなく、プロファイル全体をオフラインにすることができます。そのためには、プロファイルを無効にします。プロファイルを無効にする場合、すべての設定は、管理ポータルで引き続き編集することができ、再度使用するときにプロファイルをすばやく簡単にオンラインに戻すことができます。詳細については、[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)を参照してください。
+- **1 つのプロファイルに含まれるすべてのクラウド** – サービスは同じ監視設定を使用する必要がある 1 つの定義内にあるすべてのエンドポイントを監視する際に選択できるパスとファイルは 1 つだけです。**[相対パスおよびファイル名]** ボックスに「/」を入力すると、監視において既定のパスとファイル名へのアクセスが試行されます。
+- **一時的な変更の場合は、構成を変更するのではなく、エンドポイントを無効にする** – エンドポイントをオフラインにする必要が生じることはたびたびあります。このようなときは、プロファイルからエンドポイントを削除するのではなく、プロファイルに含まれている個々のエンドポイントを無効にします。無効にしても、エンドポイントはプロファイルに含まれたままですが、プロファイルはそのエンドポイントが含まれていないかのように動作します。これは、メンテナンス モードのエンドポイントを一時的に削除したり、エンドポイントを再デプロイしたりする場合に役立ちます。エンドポイントを再度起動して実行すると、有効にすることができます。詳細については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
+- **プロファイルを削除せずに、一時的な変更のためにプロファイルを無効にする** – プロファイル内で指定する個々のエンドポイントだけでなく、プロファイル全体をオフラインにすることができます。そのためには、プロファイルを無効にします。プロファイルを無効にする場合、すべての設定は、管理ポータルで引き続き編集することができ、再度使用するときにプロファイルをすばやく簡単にオンラインに戻すことができます。詳細については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 - **ストレージ** – Traffic Manager を使用する場合、ストレージの場所および分散を設計する方法は、重要な検討事項です。Traffic Manager 用アプリケーションの設計とデプロイを行う際は、エンド ツー エンドのトランザクションとデータのフローを考慮してください。
 - **SQL Azure** – ストレージの設計と同様に、複数の地理的領域にエンドポイントを拡張するときに、アプリケーションの状態とデータ要件を分析します。
 
@@ -154,11 +156,11 @@ Windows PowerShell を使用して Traffic Manager プロファイルの作成�
 
 Traffic Manager が少数の正常なエンドポイントがある子プロファイルにユーザーを転送すると、それらのエンドポイントが過負荷状態になり、パフォーマンスの問題が生じる可能性があります。このような状況を回避するために、親 Traffic Manager プロファイルを構成する際に、正常なエンドポイントのしきい値を設定して、子プロファイル内のいずれかのエンドポイントがトラフィックを受け取れるかどうかを指定できます。たとえば、子プロファイル内に正常なエンドポイントが 3 つ以上あるようにするには、このしきい値を「3」に設定します。図 4 の例であれば、最上位層の Traffic Manager プロファイルにこのしきい値を構成します。
 
-Traffic Manager プロファイルをエンドポイントとして追加し、最小限の数の正常なエンドポイントを構成するには、REST ([Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772) に関するページを参照) または Windows PowerShell ([Add-AzureTrafficManagerEndpoint ](https://msdn.microsoft.com/library/azure/dn690257.aspx)に関するページを参照) を使用する必要があります。管理ポータルは使用できません。
+Traffic Manager プロファイルをエンドポイントとして追加し、最小限の数の正常なエンドポイントを構成するには、REST (「[Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772)」を参照) または Windows PowerShell (「[Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/azure/dn690257.aspx)」を参照) を使用する必要があります。管理ポータルは使用できません。
 
 ## Traffic Manager に関する図
 
-Traffic Manager に関する独自のプレゼンテーション用の PowerPoint スライドとして、または独自の目的に合わせて変更するために、このトピックで扱った図が必要な場合は、[MSDN ドキュメント内の Traffic Manager に関する図](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)を参照してください。
+Traffic Manager に関する独自のプレゼンテーション用の PowerPoint スライドとして、または独自の目的に合わせて変更するために、このトピックで扱った図が必要な場合は、MSDN ドキュメント内の「[Traffic Manager に関する図](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)」を参照してください。
 
 ## 次のステップ
 
@@ -170,4 +172,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

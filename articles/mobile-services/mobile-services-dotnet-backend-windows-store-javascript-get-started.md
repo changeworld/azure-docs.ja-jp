@@ -21,9 +21,12 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
+##概要
 このチュートリアルでは、Azure Mobile Services を使用してユニバーサル Windows アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する HTML および JavaSript の簡単な *To do list* アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「JavaScript バージョン」を参照してください。
 
 [AZURE.INCLUDE [mobile-services-windows-universal-get-started](../../includes/mobile-services-windows-universal-get-started.md)]
+
+##前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -68,26 +71,22 @@
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
 
-<ol start="4">
-<li><p>共通コード プロジェクトで、default.js ファイルを開き、<a href="http://msdn.microsoft.com/library/azure/jj554219.aspx" target="_blank">WindowsAzure.MobileServiceClient</a> インスタンスを作成するコードを見つけて、<em>localhost</em> を使用してこのクライアントを作成するコードをコメント アウトし、リモート モバイル サービス URL を使用してクライアントを作成するコードのコメントを解除すると、次のようになります。</p>
+&nbsp;&nbsp;4.共通コード プロジェクトで、default.js ファイルを開き、[WindowsAzure.MobileServiceClient](http://msdn.microsoft.com/library/azure/jj554219.aspx) インスタンスを作成するコードを見つけて、*localhost* を使用してこのクライアントを作成するコードをコメント アウトし、リモート モバイル サービス URL を使用してクライアントを作成するコードのコメントを解除すると、次のようになります。
 
-        <pre><code>var client = new WindowsAzure.MobileServiceClient(
-            "https://todolist.azure-mobile.net/",
-            "XXXXXX-APPLICATION-KEY-XXXXXX"
-        );</code></pre>
+	var client = new WindowsAzure.MobileServiceClient(
+	    "https://todolist.azure-mobile.net/",
+	    "XXXXXX-APPLICATION-KEY-XXXXXX"
+	);
 
-	<p>クライアントは Azure に発行されたモバイル サービスにアクセスするようになります。</p></li>
+&nbsp;&nbsp;クライアントは Azure に発行されたモバイル サービスにアクセスするようになります。
 
-<li><p><strong>F5</strong> キーを押してプロジェクトをリビルドし、アプリケーションを開始します。</p></li>
+&nbsp;&nbsp;5.**F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
-<li><p>アプリケーションで、<em>[Insert a TodoItem]</em> ボックスに意味のあるテキスト (たとえば、「<strong>チュートリアルの完了</strong>」) を入力し、<strong>[Save]</strong> をクリックします。</p>
+&nbsp;&nbsp;6.アプリケーションで、*[Insert a TodoItem]* ボックスに意味のあるテキスト (たとえば、「**チュートリアルの完了**」) を入力し、**[Save]** をクリックします。
 
-<p>これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。</p>
-</li>
-<li><p>(省略可能) 汎用的な Windows ソリューションで、既定のスタートアップ プロジェクトをもう 1 つのアプリケーションに変更し、<strong>F5</strong> をもう一度押します。</p>
+&nbsp;&nbsp;これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。
 
-	<p>アプリケーションが開始すると、前の手順で保存したデータが、モバイル サービスから読み込まれる点に注目してください。</p></li>
-</ol>
+&nbsp;&nbsp;7.(省略可能) ユニバーサル Windows ソリューションでは、既定のスタート アップ プロジェクトを他のアプリケーションに変更し、**F5** キーをもう一度押すと、アプリケーションの起動後に、前の手順で保存したデータがモバイル サービスから読み込まれます。
 
 ユニバーサル Windows アプリの詳細については、「[Supporting multiple device platforms from a single mobile service (単一のモバイル サービスから複数のデバイス プラットフォームをサポートする)](mobile-services-how-to-use-multiple-clients-single-service.md#shared-vs)」を参照してください。
 
@@ -121,4 +120,4 @@
 [Get started with data in Mobile Services using Visual Studio 2012]: ../mobile-services-windows-store-dotnet-get-started-data-vs2012.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

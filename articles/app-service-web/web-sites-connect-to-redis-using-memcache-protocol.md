@@ -39,31 +39,31 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 
 ![Azure Redis Cache の設定ブレード](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
 
-### REDIS_HOST アプリ設定の追加
+### REDIS\_HOST アプリ設定の追加
 
-最初に、**REDIS_HOST** アプリ設定を作成する必要があります。この設定では、shim がキャッシュ情報を転送する場所を設定します。REDIS_HOST アプリ設定に必要な値は、Redis Cache インスタンスの **[プロパティ]** ブレードから取得できます。
+最初に、**REDIS\_HOST** アプリ設定を作成する必要があります。この設定では、shim がキャッシュ情報を転送する場所を設定します。REDIS\_HOST アプリ設定に必要な値は、Redis Cache インスタンスの **[プロパティ]** ブレードから取得できます。
 
 ![Azure Redis Cache のホスト名](./media/web-sites-connect-to-redis-using-memcache-protocol/2-azure-redis-cache-hostname.png)
 
-アプリ設定のキーを **REDIS_HOST** に設定し、アプリ設定の値を Redis Cache インスタンスの**ホスト名**に設定します。
+アプリ設定のキーを **REDIS\_HOST** に設定し、アプリ設定の値を Redis Cache インスタンスの**ホスト名**に設定します。
 
-![Web Apps のアプリ設定の REDIS_HOST](./media/web-sites-connect-to-redis-using-memcache-protocol/3-azure-website-appsettings-redis-host.png)
+![Web Apps のアプリ設定の REDIS\_HOST](./media/web-sites-connect-to-redis-using-memcache-protocol/3-azure-website-appsettings-redis-host.png)
 
-### REDIS_KEY アプリ設定の追加
+### REDIS\_KEY アプリ設定の追加
 
-次に、**REDIS_KEY** アプリ設定を作成する必要があります。この設定では、Redis Cache インスタンスに安全にアクセスするために必要な認証トークンを提供します。REDIS_KEY アプリ設定に必要な値は、Redis Cache インスタンスの **[アクセス キー]** ブレードから取得できます。
+次に、**REDIS\_KEY** アプリ設定を作成する必要があります。この設定では、Redis Cache インスタンスに安全にアクセスするために必要な認証トークンを提供します。REDIS\_KEY アプリ設定に必要な値は、Redis Cache インスタンスの **[アクセス キー]** ブレードから取得できます。
 
 ![Azure Redis Cache の主キー](./media/web-sites-connect-to-redis-using-memcache-protocol/4-azure-redis-cache-primarykey.png)
 
-アプリ設定のキーを **REDIS_KEY** に設定し、アプリ設定の値を Redis Cache インスタンスの **Primary Key** に設定します。
+アプリ設定のキーを **REDIS\_KEY** に設定し、アプリ設定の値を Redis Cache インスタンスの **Primary Key** に設定します。
 
-![Azure Websites のアプリ設定の REDIS_KEY](./media/web-sites-connect-to-redis-using-memcache-protocol/5-azure-website-appsettings-redis-primarykey.png)
+![Azure Websites のアプリ設定の REDIS\_KEY](./media/web-sites-connect-to-redis-using-memcache-protocol/5-azure-website-appsettings-redis-primarykey.png)
 
-### MEMCACHESHIM_REDIS_ENABLE アプリ設定の追加
+### MEMCACHESHIM\_REDIS\_ENABLE アプリ設定の追加
 
-最後のアプリ設定は Web アプリで Memcache Shim を有効にするために使用します。REDIS_HOST と REDIS_KEY を使用して Azure Redis Cache に接続し、キャッシュの呼び出しを転送します。アプリ設定のキーを **MEMCACHESHIM_REDIS_ENABLE** に設定し、値を **true** に設定します。
+最後のアプリ設定は Web アプリで Memcache Shim を有効にするために使用します。REDIS\_HOST と REDIS\_KEY を使用して Azure Redis Cache に接続し、キャッシュの呼び出しを転送します。アプリ設定のキーを **MEMCACHESHIM\_REDIS\_ENABLE** に設定し、値を **true** に設定します。
 
-![Web アプリのアプリ設定の MEMCACHESHIM_REDIS_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
+![Web アプリのアプリ設定の MEMCACHESHIM\_REDIS\_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
 
 3 つのアプリ設定の追加が完了したら、**[保存]** をクリックします。
 
@@ -71,7 +71,7 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 
 アプリケーションで Memcache プロトコルを使用するには、PHP (WordPress サイトの言語フレームワーク) に Memcache 拡張機能をインストールする必要があります。
 
-### php_memcache 拡張機能のダウンロード
+### php\_memcache 拡張機能のダウンロード
 
 [PECL][6] に移動し、[キャッシュ] カテゴリで [[memcache]][7] をクリックします。[ダウンロード] 列で [DLL] のリンクをクリックします。
 
@@ -81,14 +81,14 @@ Web アプリで有効な PHP バージョンの 非スレッド セーフ (NTS)
 
 ![PHP PECL の Website の Memcache パッケージ](./media/web-sites-connect-to-redis-using-memcache-protocol/8-php-pecl-memcache-package.png)
 
-### php_memcache 拡張機能を有効にする
+### php\_memcache 拡張機能を有効にする
 
-ファイルをダウンロードしたら、**php_memcache.dll** を解凍して **D:\home\site\wwwroot\bin\ext\** ディレクトリにアップロードします。php_memcache.dll を Web アプリにアップロードしたら、拡張機能を PHP ランタイムで有効にする必要があります。Azure ポータルで Memcache 拡張機能を有効にするには、Web アプリの **[アプリケーション設定]** ブレードを開き、**PHP_EXTENSIONS** のキーと **bin\ext\php_memcache.dll** という値を持つ新しいアプリ設定を追加します。
+ファイルをダウンロードしたら、**php\_memcache.dll** を解凍して **D:\\home\\site\\wwwroot\\bin\\ext\\** ディレクトリにアップロードします。php\_memcache.dll を Web アプリにアップロードしたら、拡張機能を PHP ランタイムで有効にする必要があります。Azure ポータルで Memcache 拡張機能を有効にするには、Web アプリの **[アプリケーション設定]** ブレードを開き、**PHP\_EXTENSIONS** のキーと **bin\\ext\\php\_memcache.dll** という値を持つ新しいアプリ設定を追加します。
 
 
-> Web アプリで複数の PHP 拡張機能をロードする必要がある場合、PHP_EXTENSIONS の値は、DLL ファイルへの相対パスをコンマ区切りのリストにする必要があります。
+> Web アプリで複数の PHP 拡張機能をロードする必要がある場合、PHP\_EXTENSIONS の値は、DLL ファイルへの相対パスをコンマ区切りのリストにする必要があります。
 
-![Web アプリのアプリ設定の PHP_EXTENSIONS](./media/web-sites-connect-to-redis-using-memcache-protocol/9-azure-website-appsettings-php-extensions.png)
+![Web アプリのアプリ設定の PHP\_EXTENSIONS](./media/web-sites-connect-to-redis-using-memcache-protocol/9-azure-website-appsettings-php-extensions.png)
 
 完了したら、**[保存]** をクリックします。
 
@@ -197,4 +197,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [13]: http://memcached.org
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング" 
+<properties
+	pageTitle="Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング"
 	description="Linux ベースの Azure 仮想マシンに接続できない場合は、以下の手順を使用して問題の原因を特定してください。"
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
 
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/07/2015"
 	ms.author="josephd"/>
 
 # Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング
@@ -31,7 +31,7 @@
 - SSH 構成をリセットする
 
 それでも SSH クライアントが仮想マシン上の SSH サービスに到達できない場合は、いくつかの原因が考えられます。関連のある一連のコンポーネントを次に示します。
- 
+
 ![](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot1.png)
 
 次のセクションでは、この問題のさまざまな原因を特定して判断する手順を説明しながら、解決策と回避策を紹介します。
@@ -44,12 +44,12 @@ Azure 管理ポータルの操作:
 
 1. **[仮想マシン]** > *VM 名*をクリックします。
 2. 状態を確認する仮想マシンの**ダッシュ ボード**をクリックします。
-3. コンピューティング、記憶域、およびネットワーク リソースの最近のアクティビティを確認するには、**[監視]** をクリックします。 
+3. コンピューティング、記憶域、およびネットワーク リソースの最近のアクティビティを確認するには、**[監視]** をクリックします。
 4. SSH トラフィックのエンドポイントがあることを確認するには、**[エンドポイント]** をクリックします。
 
 Azure プレビュー ポータルの操作:
 
-1. **[参照]** > **[仮想マシン]** > *VM 名*をクリックします。リソース マネージャーで作成された仮想マシンの場合は、**[参照]** > **[仮想マシン (v2)]** > *VM 名*をクリックします。仮想マシンの状態ウィンドウには、"**実行中**" と表示されます。コンピューティング、記憶域、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
+1. **[参照]** > **[仮想マシン]** > *VM 名*をクリックします。Azure リソース マネージャーで作成された仮想マシンの場合は、**[参照]** > **[仮想マシン (v2)]** > *VM 名*をクリックします。仮想マシンの状態ウィンドウには、"**実行中**" と表示されます。コンピューティング、記憶域、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
 2. エンドポイント、IP アドレスなどの設定を確認するには、**[設定]** をクリックします。
 
 ネットワーク接続を確認するには、構成されているエンドポイントを分析します。また、HTTP などの別のプロトコルや、他の既知のサービスを使用して、仮想マシンに到達できるかどうかを確認します。
@@ -58,7 +58,7 @@ Azure プレビュー ポータルの操作:
 
 以上の手順を完了したら、SSH 接続を再試行してください。
 
-## 手順 3: 詳細なトラブルシューティング 
+## 手順 3: 詳細なトラブルシューティング
 
 SSH クライアントから Azure 仮想マシンの SSH サービスに到達できない場合、以下の問題または誤構成のソースが考えられます。
 
@@ -73,7 +73,7 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 問題または誤構成の原因となっているコンピューターを排除するには、そのコンピューターから他のオンプレミスの Linux ベース コンピューターに SSH 接続できることを確認します。
 
 ![](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot2.png)
- 
+
 接続できない場合は、そのコンピューターで以下を確認してください。
 
 - 受信または送信の SSH トラフィック (TCP 22) をブロックしているローカル ファイアウォールの設定
@@ -85,17 +85,17 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 
 証明書認証を使用している場合は、ホーム ディレクトリの .ssh フォルダーに対してこれらのアクセス許可があることを確認します。
 
-- Chmod 700 ~/.ssh
-- Chmod 644 ~/.ssh/*.pub
-- Chmod 600 ~/.ssh/id_rsa (またはプライベート キーが格納されている他のファイル)
-- Chmod 644 ~/.ssh/known_hosts (SSH 経由で接続したホストが含まれます)
+- Chmod 700 \~/.ssh
+- Chmod 644 \~/.ssh/\*.pub
+- Chmod 600 \~/.ssh/id\_rsa (またはプライベート キーが格納されている他のファイル)
+- Chmod 644 \~/.ssh/known\_hosts (SSH 経由で接続したホストが含まれます)
 
 ### ソース 2: 組織のエッジ デバイス
 
 問題または誤構成のソースとなっている組織のエッジ デバイスを排除するには、インターネットに直接接続されているコンピューターから Azure 仮想マシンに SSH 接続できるかを確認します。サイト間 VPN または ExpressRoute 接続で仮想マシンにアクセスする場合は、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
 ![](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot3.png)
- 
+
 インターネットに直接接続されているコンピューターがない場合は、新しい Azure 仮想マシンをリソース グループまたはクラウド サービス内に簡単に作成して使用できます。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」を参照してください。テストの完了後に、そのリソース グループまたは仮想マシンと、クラウド サービスを削除します。
 
 インターネットに直接接続されているコンピューターとの SSH 接続を作成できるのなら、組織のエッジ デバイスで以下を確認してください。
@@ -109,16 +109,16 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 ### ソース 3: クラウド サービス エンドポイントと ACL
 
 サービス管理内で作成された仮想マシンで問題や構成ミスの原因になっているクラウド サービス エンドポイントと ACL を排除する場合、 同じ仮想ネットワーク内にある別の Azure 仮想マシンから自身の Azure 仮想マシンに SSH 接続できるかを確認します。
- 
+
 ![](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot4.png)
 
-> [AZURE.NOTE]リソース マネージャーで作成された仮想マシンについては、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」はスキップしてください。
+> [AZURE.NOTE]Azure リソース マネージャーで作成された仮想マシンについては、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」はスキップしてください。
 
 同じ仮想ネットワーク内に別の仮想マシンがない場合、新しい仮想マシンを簡単に作成することができます。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」を参照してください。テストの完了後に、追加した仮想マシンを削除してください。
 
 同じ仮想ネットワーク内にある仮想マシンに対して SSH 接続を作成できる場合は、次の点を確認します。
 
-- ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、仮想マシン上の SSH サービスがリッスンする TCP ポートと一致する必要があります。この TCP ポートの既定設定は 22 です。リソース マネージャーでテンプレートを使用して作成した仮想マシンの場合は、Azure プレビュー ポータルで **[参照]** > **[仮想マシン (v2)]** > *VM 名* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
+- ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、仮想マシン上の SSH サービスがリッスンする TCP ポートと一致する必要があります。この TCP ポートの既定設定は 22 です。Azure リソース マネージャーでテンプレートを使用して作成した仮想マシンの場合は、Azure プレビュー ポータルで **[参照]** > **[仮想マシン (v2)]** > *VM 名* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
 - ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[ネットワーク アクセス制御リスト (ACL) について](https://msdn.microsoft.com/library/azure/dn376541.aspx)」を参照してください。
 
 問題のソースとしてエンドポイントを排除するには、現在のエンドポイントを削除し、**SSH** 名を指定して、新しいエンドポイントを作成します (パブリックとプライベートのポート番号には TCP ポート 22)。詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-set-up-endpoints.md)」をご覧ください
@@ -127,12 +127,12 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。詳細については、「[ネットワーク セキュリティ グループについて](../traffic-manager/virtual-networks-nsg.md)」を参照してください。
 
-### ソース 5: Linux ベースの Azure 仮想マシン 
+### ソース 5: Linux ベースの Azure 仮想マシン
 
 最後に考えられる問題のソースは、Azure 仮想マシン自体に関連するものです。
 
 ![](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot5.png)
- 
+
 「[Linux 仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md)」をまだ実行していない場合は、指示に従って仮想マシンを操作します。
 
 もう一度、コンピューターから接続を試みてください。接続できなければ、以下の問題が考えられます。
@@ -153,7 +153,7 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 
 仮想マシンを再作成できなければ、Azureサポート インシデントを送信することをお勧めします。
 
-インシデントを送信するには、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)で [**サポートの要求**] をクリックします。
+インシデントを送信するには、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)にアクセスし、[**サポートの要求**] をクリックします。
 
 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
@@ -161,9 +161,8 @@ Azure サポートの使用方法の詳細については、「[Microsoft Azure 
 
 [Linux 仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md)
 
-[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
+[Windows ベースの Azure 仮想マシンへの Windows リモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

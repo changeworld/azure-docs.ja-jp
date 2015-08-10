@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/04/2015" 
+	ms.date="07/28/2015" 
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement の概要
@@ -50,4 +50,4 @@ Azure モバイル エンゲージメントは、Google 社の GCM、Apple 社�
 [概要チュートリアル (開発者)](/documentation/services/mobile-engagement/)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

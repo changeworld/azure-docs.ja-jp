@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/19/2015" 
+	ms.date="07/26/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory で Pig と Hive を使用する
@@ -24,7 +24,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 ### 前提条件
 1. 「[Azure Data Factory を使ってみる][adfgetstarted]」の記事にあるチュートリアルを完了してください。
-2. 以下の内容を記述した **hivequery.hql** ファイルを **C:\ADFGetStarted** の下の **Hive** という名前のサブフォルダー内に作成します。
+2. 以下の内容を記述した **hivequery.hql** ファイルを **C:\\ADFGetStarted** の下の **Hive** という名前のサブフォルダー内に作成します。
     		
     	DROP TABLE IF EXISTS adftutorialhivetable; 
 		CREATE EXTERNAL TABLE  adftutorialhivetable
@@ -39,7 +39,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 		FROM hivesampletable 
 		group by country, state;
 
-	> [AZURE.NOTE]**Tez** エンジンを使用して HQL ファイルで Hive クエリを実行するには、ファイルの先頭に "**set hive.execution.engine=tez**;" を追加します。
+	> [AZURE.NOTE]**Tez** エンジンを使用して HQL ファイルで Hive クエリを実行するには、ファイルの先頭に "\*\*set hive.execution.engine=tez\*\*;" を追加します。
 		
 3.  **hivequery.hql** を BLOB ストレージ内の **adftutorial** コンテナーにアップロードします。
 
@@ -133,14 +133,14 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 						"transformation":
 						{
                     		"type": "Hive",
-                    		"extendedProperties":
+                    		"defines":
                     		{
                         		"RESULTOUTPUT": "wasb://adftutorial@<your storage account>.blob.core.windows.net/hiveoutput/",
 		                        "Year":"$$Text.Format('{0:yyyy}',SliceStart)",
 		                        "Month":"$$Text.Format('{0:%M}',SliceStart)",
 		                        "Day":"$$Text.Format('{0:%d}',SliceStart)"
 		                    },
-		                    "scriptpath": "adftutorial\hivequery.hql",
+		                    "scriptpath": "adftutorial\\hivequery.hql",
 						    "scriptLinkedService": "StorageLinkedService"
 						},
 						"policy":
@@ -184,7 +184,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		{
 			"type": "Pig",
 			"script": "pig script",
-			"extendedProperties":
+			"defines":
 			{	
 				"param1": "param1Value"
  			}
@@ -197,7 +197,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 - **linkedServiceName** が **MyHDInsightLinkedService** に設定されています。HDInsight のリンクされたサービスを作成する方法の詳細については、以下の HDInsight のリンクされたサービスのセクションを参照してください。
 - **transformation** の **type** が **Pig** に設定されています。
 - **script** プロパティに対して Pig スクリプトをインラインで指定するか、または Azure BLOB ストレージ内にスクリプト ファイルを格納し、**scriptPath** プロパティを使用してそのファイルを参照することができますが、詳細については、この記事の後半で説明します。 
-- **extendedProperties** を使用して Pig スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
+- **defines** を使用して Pig スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
 
 
 ## Hive JSON の使用例
@@ -214,7 +214,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		{
 			"type": "Hive",
 			"script": "Hive script",
-			"extendedProperties":
+			"defines":
 			{	
 				"param1": "param1Value"
             }
@@ -227,7 +227,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 - **linkedServiceName** が **MyHDInsightLinkedService** に設定されています。 
 - **transformation** の **type** が **Hive** に設定されています。
 - **script** プロパティに対して Hive スクリプトをインラインで指定するか、または Azure BLOB ストレージ内にスクリプト ファイルを格納し、**scriptPath** プロパティを使用してそのファイルを参照することができますが、詳細については、この記事の後半で説明します。 
-- **extendedProperties** を使用して Hive スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
+- **defines** を使用して Hive スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
 
 > [AZURE.NOTE]コマンドレット、JSON スキーマ、スキーマ内のプロパティの詳細については、[開発者用リファレンス](http://go.microsoft.com/fwlink/?LinkId=516908)を参照してください。
 
@@ -258,9 +258,9 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 					"transformation":
 					{
     					"type": "Hive",
-    					"scriptpath": "adfwalkthrough\scripts\transformdata.hql",    		
+    					"scriptpath": "adfwalkthrough\\scripts\\transformdata.hql",    		
 						"scriptLinkedService": "StorageLinkedService", 
-						"extendedProperties":
+						"defines":
 						{
 						}		
 					},
@@ -277,16 +277,16 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 	}
 
 
-> [AZURE.NOTE]**Tez** エンジンを使用して Hive クエリを実行するには、Hive クエリを実行する前に "**set hive.execution.engine=tez**;" を実行します。
+> [AZURE.NOTE]**Tez** エンジンを使用して Hive クエリを実行するには、Hive クエリを実行する前に "\*\*set hive.execution.engine=tez\*\*;" を実行します。
 > 
 > コマンドレット、JSON スキーマ、スキーマ内のプロパティの詳細については、[開発者用リファレンス](http://go.microsoft.com/fwlink/?LinkId=516908)を参照してください。
 
 ## パラメーター化された Pig および Hive クエリ
-Data Factory の Pig アクティビティと Hive アクティビティでは、**extendedProperties** を使用することで、Pig スクリプトと Hive スクリプト内で使われるパラメーターの値を指定できます。ExtendedProperties セクションは、パラメーター名とパラメーター値で構成されています。
+Data Factory の Pig アクティビティと Hive アクティビティでは、**defines** を使用することで、Pig スクリプトと Hive スクリプト内で使われるパラメーターの値を指定できます。defines セクションは、パラメーター名とパラメーター値で構成されています。
 
-**extendedProperties** を使用して Hive スクリプトのパラメーターを指定する方法については、以下の例を参照してください。パラメーター化された Hive スクリプトを使用するには、次の手順に従います。
+**defines** を使用して Hive スクリプトのパラメーターを指定する方法については、以下の例を参照してください。パラメーター化された Hive スクリプトを使用するには、次の手順に従います。
 
-1.	**extendedProperties** 内でパラメーターを定義します。
+1.	**defines** でパラメーターを定義します。
 2.	インライン Hive スクリプト (または) BLOB ストレージに格納された Hive スクリプト ファイルの中で **${hiveconf:parameterName}** を使用してパラメーターを参照します。
 
    
@@ -307,7 +307,7 @@ Data Factory の Pig アクティビティと Hive アクティビティでは�
 				  		"transformation":
 				  		{
 							"type": "Hive", 
-							"extendedProperties":
+							"defines":
 							{
 								"Param1": "$$Text.Format('{0:yyyy-MM-dd}', SliceStart)",
 								"Param2": "value"
@@ -353,4 +353,4 @@ Data Factory の Pig アクティビティと Hive アクティビティでは�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

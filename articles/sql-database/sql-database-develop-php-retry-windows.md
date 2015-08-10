@@ -40,9 +40,9 @@
 
 デモ プログラムは、接続の試行中に一時的なエラーが生じると再試行が行われるように設計されています。しかし、クエリ コマンドの実行中に一時的なエラーが生じると、プログラムによって接続が破棄され、新しい接続が作成された後、クエリ コマンドが再試行されます。この設計の選択については、推奨も、非推奨もしません。デモ プログラムは、使用可能な設計上の柔軟性をいくつか示しています。
 
-<br>このコード サンプルの内容の大部分は、例外キャッチのロジックの記述です。この Program.cs ファイルの短いバージョンは[ここ](https://azure.microsoft.com/ja-jp/documentation/articles/sql-database-develop-php-simple-windows/)から取得できます。<br>Main メソッドは Program.cs にあります。コールスタックは次のように実行されます。* Main が ConnectAndQuery を呼び出します。* ConnectAndQuery が EstablishConnection を呼び出します。* EstablishConnection が IssueQueryCommand を呼び出します。
+<br>このコード サンプルの内容の大部分は、例外キャッチのロジックの記述です。この Program.cs ファイルの短いバージョンは[ここ](sql-database-develop-php-simple-windows.md)から取得できます。<br>Main メソッドは Program.cs にあります。コールスタックは次のように実行されます。\* Main が ConnectAndQuery を呼び出します。\* ConnectAndQuery が EstablishConnection を呼び出します。\* EstablishConnection が IssueQueryCommand を呼び出します。
 
-[sqlsrv_query()](http://php.net/manual/en/function.sqlsrv-query.php) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリと接続オブジェクトを受け取り、[sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。
+[sqlsrv\_query()](http://php.net/manual/en/function.sqlsrv-query.php) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリと接続オブジェクトを受け取り、[sqlsrv\_fetch\_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。
 
 	<?php
 		// Variables to tune the retry logic.  
@@ -137,4 +137,4 @@ PHP のインストールと使用に関する詳細については、「[Access
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -18,7 +18,7 @@
 # Application Gateway の技術概要 
 
 
-Microsoft Azure Application Gateway は、Azure VPN Gateway と同様に、Azure で管理されるサービスです。Application Gateway は、IIS Application Request Routing (ARR) に基づく、Azure で管理される HTTP の負荷分散ソリューションを提供します。このアプリケーション ゲートウェイ サービスは可用性が高く、従量課金制で使用できます。価格と SLA については、[SLA](http://azure.microsoft.com/support/legal/sla/) と[価格](https://azure.microsoft.com/pricing/details/application-gateway/)のページを参照してください。
+Microsoft Azure Application Gateway は、レイヤ 7 の負荷分散に基づく、Azure で管理される HTTP の負荷分散ソリューションを提供します。アプリケーションの負荷分散では、IT 管理者や開発者は、HTTP に基づくネットワーク トラフィックのルーティング ルールを作成することができます。このアプリケーション ゲートウェイ サービスは可用性が高く、従量課金制で使用できます。価格と SLA については、[SLA](http://azure.microsoft.com/support/legal/sla/) と[価格](https://azure.microsoft.com/pricing/details/application-gateway/)のページを参照してください。
 
 Application Gateway は現在、次のレイヤー 7 アプリケーションの配信をサポートします。
 
@@ -29,8 +29,12 @@ Application Gateway は現在、次のレイヤー 7 アプリケーションの
 ![Application Gateway](./media/application-gateway-introduction/appgateway1.png)
 
 ## HTTP レイヤー 7 の負荷分散
-Azure では、ソフトウェアのロード バランサーを使用したレイヤー 4 の負荷分散を提供します。これは、負荷分散された VIP (パブリックまたは内部) があるすべてのクラウド サービスで暗黙的に発生します。ただし、レイヤー 7 (HTTP) ベースの負荷分散に使用できるアプリケーションは数多く存在します。
 
+Azure では、トランスポート レベル (TCP/UDP) で機能する Azure のロード バランサーを介してレイヤー 4 の負荷分散を提供し、すべての受信ネットワーク トラフィックをアプリ ゲートウェイ サービスに負荷分散させます。Application Gateway は、HTTP トラフィックにルーティング ルールを適用して レベル 7 (HTTP) の負荷分散を提供します。Application Gateway を作成すると、エンドポイント (VIP) が関連付けられ、受信ネットワーク トラフィック用のパブリック IP として使用されます。
+
+Application Gateway は、仮想マシン、クラウド サービス、Web アプリ、外部 IP アドレスのいずれであるかに関わらず、その構成に基づいて HTTP トラフィックをルーティングします。
+
+次の図に、Application Gateway のトラフィックの流れを示します。![Application Gateway2](./media/application-gateway-introduction/appgateway2.png)
 
 HTTP レイヤー 7 の負荷分散は、次の場合に役立ちます。
 
@@ -55,4 +59,4 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 SSL オフロードを構成します。「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="認証されたユーザーへのプッシュ通知の送信" 
-	description="特定の場所にプッシュ通知を送信する方法について説明します。" 
+	pageTitle="認証された Windows Phone Silverlight アプリケーション ユーザーへのプッシュ通知の送信 | Azure Mobile Services" 
+	description="Azure Mobile Services から Windows Phone Silverlight アプリケーションの特定のユーザーにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.date="07/22/2015" 
 	ms.author="glenga"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
 
 [AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
+
+##概要
 
 このトピックでは、登録されたデバイスの認証されたユーザーにプッシュ通知を送信する方法を説明します。前の「[アプリケーションにプッシュ通知を追加する]」チュートリアルとは違い、このチュートリアルでは、プッシュ通知のためにクライアントを通知ハブに登録するには、ユーザーの認証が必要になるようにモバイル サービスを変更します。また、登録を変更して、割り当てられたユーザー ID に基づいてタグが追加されるようにします。最後に、サーバー スクリプトが更新されて、すべての登録に対してではなく、認証されたユーザーにのみ通知が送信されます。
  
@@ -38,13 +40,14 @@
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
 
-<ol start="5"><li><p>insert 関数を次のコードに置き換え、<strong>[保存]</strong> をクリックします。</p>
-<pre><code>function insert(item, user, request) {
+&nbsp;&nbsp;5.insert 関数を次のコードに置き換え、**[保存]** をクリックします。
+
+    function insert(item, user, request) {
 	// Define a payload for the Windows Phone toast notification.
-	var payload = '&lt;?xml version="1.0" encoding="utf-8"?>' +
-		'&lt;wp:Notification xmlns:wp="WPNotification">&lt;wp:Toast>' +
-		'&lt;wp:Text1>New Item&lt;/wp:Text1>&lt;wp:Text2>' + item.text + 
-		'&lt;/wp:Text2>&lt;/wp:Toast>&lt;/wp:Notification>';
+	var payload = '<?xml version="1.0" encoding="utf-8"?>' +
+		'<wp:Notification xmlns:wp="WPNotification"><wp:Toast>' +
+		'<wp:Text1>New Item</wp:Text1><wp:Text2>' + item.text + 
+		'</wp:Text2></wp:Toast></wp:Notification>';
 
 	// Get the ID of the logged-in user.
 	var userId = user.userId;		
@@ -56,17 +59,17 @@
 				success: function(pushResponse) {
 					console.log("Sent push:", pushResponse);
 					request.respond();
-					},             
+					},              
 					error: function (pushResponse) {
 						console.log("Error Sending push:", pushResponse);
 						request.respond(500, { error: pushResponse });
-						{
+						}
 					});
-				{
+				}
 			});      
-}</code></pre>
+	}
 
-<p>この insert スクリプトでは、ユーザー ID タグを使用することで、ログインしているユーザーによって作成されたすべての Windows Phone (MPNS) アプリケーション登録に対してプッシュ通知が (挿入された項目のテキストと共に) 送信されます。</p></li></ol>
+&nbsp;&nbsp;この insert スクリプトでは、ユーザー ID タグを使用することで、ログインしているユーザーによって作成されたすべての Windows Phone (MPNS) アプリケーション登録に対してプッシュ通知が (挿入された項目のテキストと共に) 送信されます。
 
 ##<a name="update-app"></a>登録の前にログインするようにアプリケーションを更新する
 
@@ -91,4 +94,4 @@
 
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

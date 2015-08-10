@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="認証の使用 (Windows Phone) | モバイル デベロッパー センター" 
-	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows Phone アプリのユーザーを認証する方法について説明します。" 
+	pageTitle="Windows Phone Silverlight アプリへの認証の追加 | Azure Mobile Services" 
+	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft アカウントなどのさまざまな ID プロバイダーを通じて Windows Phone Silverlight アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="07/21/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加
@@ -38,12 +38,9 @@
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
-<ol start="6">
-<li>Visual Studio でクライアント アプリケーション プロジェクトを開き、App.xaml.cs で <strong>MobileServiceClient</strong> のインスタンスがモバイル サービスへのクラウド URL で使用されるように設定します。</li> 
-<li><p>F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
-   
-   	<p>この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、<em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
-</ol>
+&nbsp;&nbsp;6.Visual Studio でクライアント アプリケーション プロジェクトを開き、App.xaml.cs で **MobileServiceClient** のインスタンスがモバイル サービスへのクラウド URL で使用されるように設定します。
+
+&nbsp;&nbsp;7.F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、アプリケーションが認証されていないユーザーとして Mobile Services にアクセスしようとしているときに、*TodoItem* テーブルで認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -79,4 +76,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

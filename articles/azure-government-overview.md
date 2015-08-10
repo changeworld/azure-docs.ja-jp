@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="azure-government" 
-   ms.date="03/13/2015"
+   ms.date="07/22/2015"
    ms.author="john.harvey@microsoft.com"/>
 
 #  Microsoft Azure Government の概要 
 
-<p> Microsoft Azure Government は、Microsoft Azure の物理的、ネットワーク的に独立したインスタンスです。この開発者向けガイドには、アプリケーション開発者と管理者が、Azure のこれらの異なるリージョンとやり取りし、操作する必要がある場合の相違点についての詳しい説明が記載されています。
+<p> Microsoft Azure Government は、Microsoft Azure の物理的、ネットワーク的に独立したインスタンスです。この概要は、環境およびサービスへの入門、追加情報へのリンクを提供しています。
 
 
 ## <a name="Overview"></a>概要
@@ -31,7 +31,7 @@ Azure Government は、スピード、規模、セキュリティ、コンプラ
 
 ![][2]
 
-Azure Government には、Infrastructure-as-a-Service (IaaS) や Platform-as-a-Service (PaaS) の主要なコンポーネントが含まれています。主要コンポーネントには、インフラストラクチャ、ネットワーク、ストレージ、データ管理、ID 管理、その他多くのサービスが含まれます。Azure Government は、geo 同期データ複製や自動スケーリングなど、Azure で採用されているものと同じ機能をサポートしています。Microsoft は、<a href="https://www.gartner.com/doc/2575715/magic-quadrant-cloud-infrastructure-service" target="_new">IaaS</a> や <a href="https://www.gartner.com/doc/2645317/magic-quadrant-enterprise-application-platform" target="_new">PaaS</a> などの技術の最先端に立っており、業界をリードしています。
+Azure Government には、Infrastructure-as-a-Service (IaaS) や Platform-as-a-Service (PaaS) の主要なコンポーネントが含まれています。主要コンポーネントには、インフラストラクチャ、ネットワーク、ストレージ、データ管理、ID 管理、その他多くのサービスが含まれます。Azure Government は、geo 同期データ複製や自動スケーリングなど、Azure で採用されているものと同じ機能をサポートしています。Microsoft は、<a href="https://www.gartner.com/doc/2575715/magic-quadrant-cloud-infrastructure-service" target="_new">IaaS</a> や <a href="https://www.gartner.com/doc/2645317/magic-quadrant-enterprise-application-platform" target="_new">PaaS<a/> などの技術の最先端に立っており、業界をリードしています。
 
 Azure で信頼性の高いサービスや機能を公的に提供しているだけでなく、Azure Government で米国政府機関に対して多くの機能を提供し、データの安全性を保証しています。
 
@@ -73,6 +73,7 @@ Azure で信頼性の高いサービスや機能を公的に提供している�
 - Media Services
 - Traffic Manager
 - Service Bus
+- StorSimple
 
 その他のサービスを利用でき、より多くのサービスが継続的に追加される予定です。最新のサービスのリストについては、各リージョンで提供されているサービスを紹介している[リージョンに関するページ](http://azure.microsoft.com/regions/#services)を参照してください。
 
@@ -103,4 +104,4 @@ Azure Government のさらに詳細については、次のページをご覧く
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

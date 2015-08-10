@@ -35,7 +35,7 @@ Visual Studio Application Insights を使用すると、発行されたアプリ
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1.Application Insights リソースの作成 
+## 1\.Application Insights リソースの作成 
 
 [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
 
@@ -50,7 +50,7 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 ![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
 
 
-## 2.アプリへの Application Insights SDK の追加
+## 2\.アプリへの Application Insights SDK の追加
 
 Visual Studio で、適切な SDK をプロジェクトに追加します。
 
@@ -66,18 +66,20 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 
 3. **Windows アプリケーション用の Application Insights** を選択する
 
-4. ソリューションのルートに ApplicationInsights.config ファイルを追加し、上でコピーしたインストルメンテーション キーを挿入します。この構成ファイルのサンプル xml を次に示します。**ApplicationInsights.config ファイルのビルド アクションが [コンテンツ] に、[出力ディレクトリにコピー] が [常にコピーする] になっていることを確認します**。
+4. プロジェクトのルートに ApplicationInsights.config ファイルを追加し、ポータルでコピーしたインストルメンテーション キーを挿入します。この構成ファイルのサンプル xml を次に示します。
 
 	```xml
 		<?xml version="1.0" encoding="utf-8" ?>
 		<ApplicationInsights>
-			<InstrumentationKey>YOUR COPIED KEY FROM ABOVE</InstrumentationKey>
+			<InstrumentationKey>YOUR COPIED INSTRUMENTATION KEY</InstrumentationKey>
 		</ApplicationInsights>
 	```
+
+    ApplicationInsights.config ファイルのプロパティを次のように設定します。[**ビルド アクション**] == [**コンテンツ**]、[**出力ディレクトリにコピー**] == [**常にコピーする**]。
 	
 	![](./media/app-insights-windows-get-started/AIConfigFileSettings.png)
 
-5. 次の初期化コードを追加します。このコードを `App()` コンストラクターに追加することをお勧めします。アプリ コンストラクターでこの初期化を行わないと、pageviews の初期自動収集が行われない可能性があります。
+5. 次の初期化コードを追加します。このコードを `App()` コンストラクターに追加することをお勧めします。他の場所にコピーすると、最初の PageViews のコレクションが失われることがあります。
 
 ```C#
 	public App()
@@ -163,7 +165,7 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
 ```
 
-詳細については、[カスタムのイベントとメトリック][api]に関する記事を参照してください。
+詳細については、[カスタムのイベントとメトリックに関する記事][api]を参照してください。
 
 ## 次の手順
 
@@ -194,7 +196,7 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
 ## SDK の新しいリリースにアップグレードするには
 
-[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを * 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの * Application Insights パッケージを選択し、アップグレード アクションを選択します。
+[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを \* 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの \* Application Insights パッケージを選択し、アップグレード アクションを選択します。
 
 
 ## <a name="usage"></a>次のステップ
@@ -227,4 +229,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

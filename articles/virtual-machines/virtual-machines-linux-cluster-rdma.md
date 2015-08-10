@@ -137,7 +137,7 @@ $ ssh-keygen
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
-/.ssh ディレクトリにある、ssh_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します。
+\~/.ssh ディレクトリにある、ssh\_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します。
 
 ```
 host 10.32.0.*
@@ -256,9 +256,7 @@ private ip address2:16
 次の Intel MPI コマンドを実行すると、Pingpong ベンチマークを使用してクラスター構成を確認することができます。
 
 ```
-/opt/intel/impi_latest/bin64/mpirun -hosts <host1>, <host2> -ppn 1 -n 2 -env I_MPI_FABRICS dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0
-
-/opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
+/opt/intel/impi_latest/bin64/mpirun -hosts <host1>, <host2> -ppn 1 -n 2 -env I_MPI_FABRICS dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 /opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
 ```
 
 2 つのノードで動作中のクラスターに、次のような出力が表示されます。
@@ -341,4 +339,4 @@ private ip address2:16
 
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-jp/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

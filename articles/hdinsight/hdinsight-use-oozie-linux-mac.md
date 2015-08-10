@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/25/2015"
+	ms.date="07/24/2015"
 	ms.author="larryfr"/>
 
 
@@ -47,9 +47,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        ja-jp   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        ja-jp   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        ja-jp   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -215,7 +215,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
         data:    Server Name i1qwc540ts
         info:    sql server create command OK
 
-    > [AZURE.IMPORTANT]このコマンドによって返されるサーバー名 (上記の例では **i1qwc540ts**) に注意してください。 これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。上記の例の場合、FQDN は **i1qwc540ts.database.windows.net** になります。
+    > [AZURE.IMPORTANT]このコマンドによって返されるサーバー名 (上記の例では \*\*i1qwc540ts\*\*) に注意してください。 これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。上記の例の場合、FQDN は **i1qwc540ts.database.windows.net** になります。
 
 2. 次のコマンドを使用して、SQL Database サーバーに **oozietest** という名前のデータベースを作成します。
 
@@ -276,7 +276,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 1. 次のコマンドを使用して、既定のストレージの完全な WASB アドレスを取得します。これは構成ファイルですぐに使用されます。
 
-		sed -n '/<name>fs.default/,/</value>/p' /etc/hadoop/conf/core-site.xml
+		sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
 
 	次のような情報が返されます。
 
@@ -383,7 +383,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 1. 次のコマンドを使用して、Oozie サービスの URL を取得します。
 
-		sed -n '/<name>oozie.base.url/,/</value>/p' /etc/oozie/conf/oozie-site.xml
+		sed -n '/<name>oozie.base.url/,/<\/value>/p' /etc/oozie/conf/oozie-site.xml
 
 	次のような値が返されます。
 
@@ -622,7 +622,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 ###JA009: Cannot initialize cluster (クラスターを初期化できません)
 
-**現象**: ジョブの状態が **SUSPENDED** に変更されます。ジョブの詳細に、RunHiveScript の状態が **START_MANUAL** と示されます。アクションを選択すると、次のエラー メッセージが表示されます。
+**現象**: ジョブの状態が **SUSPENDED** に変更されます。ジョブの詳細に、RunHiveScript の状態が **START\_MANUAL** と示されます。アクションを選択すると、次のエラー メッセージが表示されます。
 
 	JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -632,7 +632,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 ###JA002: Oozie is not allowed to impersonate &lt;USER> (Oozie は &lt;USER> の偽装を許可されていません)
 
-**現象**: ジョブの状態が **SUSPENDED** に変更されます。ジョブの詳細に、RunHiveScript の状態が **START_MANUAL** と示されます。アクションを選択すると、次のエラー メッセージが表示されます。
+**現象**: ジョブの状態が **SUSPENDED** に変更されます。ジョブの詳細に、RunHiveScript の状態が **START\_MANUAL** と示されます。アクションを選択すると、次のエラー メッセージが表示されます。
 
 	JA002: User: oozie is not allowed to impersonate <USER>
 
@@ -686,7 +686,6 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop-mac-linux.md
@@ -704,7 +703,6 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [sqldatabase-create-configue]: sql-database-create-configure.md
 [sqldatabase-get-started]: sql-database-get-started.md
 
-[azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
@@ -725,4 +723,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

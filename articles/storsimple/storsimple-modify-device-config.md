@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="07/20/2015"
+   ms.date="07/24/2015"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
@@ -59,7 +59,7 @@ NTP サーバーの構成時には、データ センターからインターネ
 
 ## DNS 設定の変更
 
-DNS サーバーは、デバイスがクラウド ストレージ サービス プロバイダーと通信しようとする場合に使用されます。可用性を高めるには、デバイスの初期展開時にプライマリ DNS サーバーとセカンダリ DNS サーバーの両方を構成する必要があります。プライマリ DNS サーバーを再構成するには、StorSimple デバイスの Windows PowerShell インターフェイスを使用する必要があります。
+DNS サーバーは、デバイスがクラウド ストレージ サービス プロバイダーと通信しようとする場合に使用されます。可用性を高めるには、デバイスの初期デプロイ時にプライマリ DNS サーバーとセカンダリ DNS サーバーの両方を構成する必要があります。プライマリ DNS サーバーを再構成するには、StorSimple デバイスの Windows PowerShell インターフェイスを使用する必要があります。
 
 セカンダリ DNS サーバーの変更は、管理ポータルを使用して行うことができます。
 
@@ -131,4 +131,4 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
  
      
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

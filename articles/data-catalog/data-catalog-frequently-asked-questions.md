@@ -6,7 +6,8 @@
    authors="dvana"
    manager="mblythe"
    editor=""
-   tags=""/> <tags
+   tags=""/>
+<tags
    ms.service="data-catalog"
    ms.devlang="NA"
    ms.topic="article"
@@ -94,7 +95,7 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 
 <br/>
 
-> [AZURE.NOTE]ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、**Azure Data Catalog** 発行アプリケーションはそのプロパティ値を抽出します。ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、**Azure Data Catalog** 発行アプリケーションはオブジェクトと列の ms_description 拡張プロパティから値を抽出します。詳細については、TechNet 「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
+> [AZURE.NOTE]ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、**Azure Data Catalog** 発行アプリケーションはそのプロパティ値を抽出します。ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、**Azure Data Catalog** 発行アプリケーションはオブジェクトと列の ms\_description 拡張プロパティから値を抽出します。詳細については、TechNet 「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
 
 ## Q: 新しく登録された資産が Azure Data Catalog に表示されるまでにどのくらいの時間がかかりますか。
 
@@ -157,4 +158,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

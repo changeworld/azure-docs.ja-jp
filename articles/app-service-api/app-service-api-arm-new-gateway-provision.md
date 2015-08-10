@@ -126,7 +126,7 @@ API アプリのサービス ホスティング プランを作成します。
             },
             {
               "name": "EmaStorage",
-              "value": "D:\home\data\apiapps"
+              "value": "D:\\home\\data\\apiapps"
             },
             {
               "name": "WEBSITE_START_SCM_ON_SITE_CREATION",
@@ -300,4 +300,4 @@ API アプリを作成します。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

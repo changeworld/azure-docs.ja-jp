@@ -57,13 +57,13 @@
 		
 5. Windows ストア アプリ プロジェクトで、MainPage.xaml プロジェクト ファイルを開き、**[保存]** ボタンを定義する要素の直前に次の **Button** 要素を追加します。
 
-	<Button Name="ButtonLogin" Click="ButtonLogin_Click" 
-                Visibility="Visible">サインイン</Button>
+		<Button Name="ButtonLogin" Click="ButtonLogin_Click" 
+                        Visibility="Visible">Sign in</Button>
 
 6. Windows Phone ストア アプリ プロジェクトで、**ContentPanel** 内の **TextBlock** 要素の後に次の **Button** 要素を追加します。
 
         <Button Grid.Row ="1" Grid.Column="1" Name="ButtonLogin" Click="ButtonLogin_Click" 
-        Margin="10, 0, 0, 0" Visibility="Visible">Sign in</Button>
+        	Margin="10, 0, 0, 0" Visibility="Visible">Sign in</Button>
 
 7. 共有された App.xaml.cs プロジェクト ファイルを開き、次の using ステートメントが存在しない場合はこれを追加します。
 
@@ -94,4 +94,4 @@
 
 10. Windows Phone ストア アプリ プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、Windows Phone ストア アプリも正常に実行していることを確認する前の手順を繰り返します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

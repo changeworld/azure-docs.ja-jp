@@ -19,7 +19,7 @@
 
 #Windows Server を実行する仮想マシンに MongoDB をインストールする
 
-[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure 管理ポータル][AzureManagementPortal]では、Windows Server 2008 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
+[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure ポータル][AzureManagementPortal]では、Windows Server 2008 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
 
 
 ## Windows Server を実行する仮想マシンの作成
@@ -31,7 +31,7 @@
 > [AZURE.NOTE]仮想マシンの作成中に MongoDB のエンドポイントを追加して、**Mongo** という名前を付けることができます。また、プロトコルとして **TCP** を指定し、パブリック ポートとプライベート ポートの両方を **27017** に設定します。
 
 ## データ ディスクの接続
-仮想マシン用のストレージを用意するため、データ ディスクを接続し、Windows で使用できるように初期化します。使用するデータがある場合には既存のディスクを接続できますが、空のディスクも接続できます。
+仮想マシン用のストレージを用意するため、データ ディスクを接続し、Windows で使用できるように初期化します。使用するデータがある場合は既存のディスクを接続するか、空のディスクを接続できます。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
@@ -42,10 +42,10 @@
 [AZURE.INCLUDE [install-and-run-mongo-on-win2k8-vm](../../includes/install-and-run-mongo-on-win2k8-vm.md)]
 
 ##概要
-このチュートリアルでは、Windows Server 仮想マシンを作成する方法、リモートから仮想マシンに接続する方法、データ ディスクを接続する方法について学習しました。Windows 仮想マシンに MongoDB をインストールして構成する方法も学習しました。これで、[MongoDB のドキュメント][MongoDocs]の詳細なトピックに従って、Windows 仮想マシンの MongoDB にアクセスできます。
+このチュートリアルでは、Windows Server を実行する仮想マシンを作成する方法、リモートから仮想マシンに接続する方法、データ ディスクを接続する方法について学習しました。Windows ベースの仮想マシンに MongoDB をインストールして構成する方法も学習しました。これで、[MongoDB のドキュメント][MongoDocs]の詳細なトピックに従って、Windows ベースの仮想マシンの MongoDB にアクセスできます。
 
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
 [AzureManagementPortal]: http://manage.windowsazure.com
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/01/2015" 
+	ms.date="07/21/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -34,14 +34,13 @@
 
 [AZURE.INCLUDE [mobile-services-create-new-push-vs2013](../../includes/mobile-services-create-new-push-vs2013.md)]
 
-<ol start="6">
-<li><p><code>\Services\MobileServices\your_service_name</code> プロジェクト フォルダーに移動し、生成された push.register.cs コード ファイルを開き、デバイスのチャネル URL を通知ハブに登録する <strong>UploadChannel</strong> メソッドを見つけます。</p></li> 
-<li><p>共有 App.xaml.cs コード ファイルを開き、新しい <strong>UploadChannel</strong> メソッドの呼び出しが <strong>OnLaunched</strong> イベント ハンドラーに追加されていることを確認します。</p> <p>これにより、アプリケーションが起動されるたびにデバイスの登録が試行されます。</p></li>
-<li><p>直前の手順を繰り返して、Windows Phone ストア アプリ プロジェクトへのプッシュ通知を追加し、続いて共有 App.xaml.cs ファイルで、<strong>UploadChannel</strong> の余分の呼び出しと残りの <code>#if...#endif</code> 条件付きラッパーを削除します。</p> <p>これで、両方のプロジェクトで <strong>UploadChannel</strong> の 1 回の呼び出しを共有できるようになりました。</p>
-</li>
-</ol>
+&nbsp;&nbsp;6.`\Services\MobileServices\your_service_name` プロジェクト フォルダーに移動し、生成された push.register.cs コード ファイルを開いて、デバイスのチャネル URL を通知ハブに登録する **UploadChannel** メソッドを見つけます。
+ 
+&nbsp;&nbsp;7.共有 App.xaml.cs コード ファイルを開き、新しい **UploadChannel** メソッドの呼び出しが **OnLaunched** イベント ハンドラーに追加されていることを確認します。これにより、アプリケーションが起動されるたびにデバイスの登録が試行されます。
 
-> [AZURE.NOTE]<code>#if...#endif</code> でラップされた [MobileServiceClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) 定義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを単純化することもできます。
+&nbsp;&nbsp;8.前の手順を繰り返して、Windows Phone ストア アプリ プロジェクトへのプッシュ通知を追加し、共有 App.xaml.cs ファイルで、**UploadChannel** の余分な呼び出しと残りの `#if...#endif` 条件付きラッパーを削除します。これで、両方のプロジェクトで **UploadChannel** の 1 回の呼び出しを共有できるようになりました。
+
+> [AZURE.NOTE]`#if...#endif` でラップされた [MobileServiceClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) 定義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを簡素化することもできます。
 
 アプリでプッシュ通知が有効にされたので、プッシュ通知を送信するにはモバイル サービスを更新する必要があります。
 
@@ -59,16 +58,17 @@
 
 >[AZURE.NOTE]運用環境のモバイル サービスをテストや開発作業を行う目的で使用しないでください。モバイル サービス プロジェクトは必ずテスト用の個別のステージング サービスに発行してください。
 
-<ol start="5">
-<li><p>共有 App.xaml.cs プロジェクト ファイルを開き、<a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx">MobileServiceClient</a> クラスの新しいインスタンスを作成して Azure で実行されているモバイル サービスにアクセスするコード行を見つけます。</p></li>
-<li><p>このコードをコメント アウトし、同じ名前でローカル ホストの URL を使用する、次のような新しい <a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx">MobileServiceClient</a> を作成するコードをコンストラクターに追加します。</p>
-<pre><code>// この MobileServiceClient は、デバッグ用のローカル テスト プロジェクト通信するように
-// 構成されています。
-public static MobileServiceClient todolistClient = new MobileServiceClient(
-	"http://localhost:4584"
-);
-</code></pre><p>この <a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx">MobileServiceClient</a> を使用して、アプリは Azure でホストされているバージョンではなく、ローカル サービスに接続するようになります。この設定を戻して、Azure でホストされているモバイル サービスに対してアプリを実行する場合は、元の <a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx">MobileServiceClient</a> 定義に戻します。</p></li>
-</ol>
+&nbsp;&nbsp;5.共有 App.xaml.cs プロジェクト ファイルを開き、[MobileServiceClient] クラスの新しいインスタンスを作成して Azure で実行されているモバイル サービスにアクセスするコード行を見つけます。
+
+&nbsp;&nbsp;6.このコードをコメント アウトし、同じ名前でローカル ホストの URL を使用する、次のような新しい [MobileServiceClient] を作成するコードをコンストラクターに追加します。
+
+	// This MobileServiceClient has been configured to communicate with your local
+	// test project for debugging purposes.
+	public static MobileServiceClient todolistClient = new MobileServiceClient(
+		"http://localhost:4584"
+	);
+
+&nbsp;&nbsp;この [MobileServiceClient] を使用して、アプリは Azure でホストされているバージョンではなく、ローカル サービスに接続するようになります。この設定を戻して、Azure でホストされているモバイル サービスに対してアプリを実行する場合は、元の [MobileServiceClient] 定義に戻します。
 
 ##<a id="test"></a>アプリケーションでプッシュ通知をテストする
 
@@ -76,7 +76,7 @@ public static MobileServiceClient todolistClient = new MobileServiceClient(
 
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルでは、Windows ストア アプリで Mobile Services および Notification Hubs を使用してプッシュ通知を送信できるようにするための基本について説明しました。次は、タグを使用して、プッシュ通知を Mobile Services から認証ユーザーにのみ送信する方法を説明した、次のチュートリアル[認証されたユーザーへのプッシュ通知の送信]を行うことをお勧めします。
+このチュートリアルでは、Windows ストア アプリで Mobile Services および Notification Hubs を使用してプッシュ通知を送信できるようにするための基本について説明しました。次は、タグを使用して、プッシュ通知をモバイル サービスから認証ユーザーにのみ送信する方法を説明した、次のチュートリアル「[プッシュ通知を認証ユーザーに送信する]」を行うことをお勧めします。
 
 Mobile Services と Notification Hubs については次のトピックを参照してください。
 
@@ -84,7 +84,7 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
 * [アプリへの認証の追加][Get started with authentication] <br/>Mobile Services を使用して別の種類のアカウントでアプリケーションのユーザーを認証する方法について説明します。
 
-* [Notification Hubs とは] <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [通知ハブとは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs アプリケーションのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -102,11 +102,11 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Get started with data]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md
 [Get started with authentication]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
 
-[認証されたユーザーへのプッシュ通知の送信]: mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md
+[プッシュ通知を認証ユーザーに送信する]: mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md
 
-[Notification Hubs とは]: ../notification-hubs-overview.md
+[通知ハブとは]: ../notification-hubs-overview.md
 
 [Azure Mobile Services 用の .NET クライアントを使用する方法]: mobile-services-windows-dotnet-how-to-use-client-library.md
- 
+[MobileServiceClient]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

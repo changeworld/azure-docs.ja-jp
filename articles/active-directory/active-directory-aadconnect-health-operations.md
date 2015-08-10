@@ -87,4 +87,4 @@
 1. 確認ボックスにサービス名を入力して確認します (例: sts.contoso.com)。 
 1. [削除] ボタンをクリックします。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

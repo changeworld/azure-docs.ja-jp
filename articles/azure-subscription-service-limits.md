@@ -103,6 +103,10 @@
 
 [AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
+## スケジューラの制限
+
+[AZURE.INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
+
 ## Batch の制限
 
 [AZURE.INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
@@ -198,4 +202,4 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

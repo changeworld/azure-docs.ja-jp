@@ -220,4 +220,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="03/11/2015" 
+	ms.date="07/29/2015" 
 	ms.author="tomfitz"/>
 
 
@@ -51,7 +51,7 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** および **AZURE_STORAGE_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::QueueService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::QueueService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your Azure storage access key>"
@@ -69,7 +69,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 	azure_queue_service = Azure::QueueService.new
 
-**create_queue()** メソッドを使用して、指定した名前のキューを作成します。
+**create\_queue()** メソッドを使用して、指定した名前のキューを作成します。
 
 	begin
 	  azure_queue_service.create_queue("test-queue")
@@ -79,13 +79,13 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## 方法: メッセージをキューに挿入する
 
-キューにメッセージを挿入するには、**create_message()** メソッドを使用し、新しいメッセージを作成してキューに追加します。
+キューにメッセージを挿入するには、**create\_message()** メソッドを使用し、新しいメッセージを作成してキューに追加します。
 
 	azure_queue_service.create_message("test-queue", "test message")
 
 ## 方法: 次のメッセージをピークする
 
-**peek_messages()** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。既定では、**peek_messages()** は 1 つのメッセージを対象としてピークします。ピークするメッセージ数を指定することもできます。
+**peek\_messages()** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。既定では、**peek\_messages()** は 1 つのメッセージを対象としてピークします。ピークするメッセージ数を指定することもできます。
 
 	result = azure_queue_service.peek_messages("test-queue",
 	  {:number_of_messages => 10})
@@ -94,11 +94,11 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 キューからのメッセージの削除は、2 段階の手順で実行できます。
 
-1. **list_messages()** を呼び出すと、既定では、キュー内の次のメッセージを取得します。取得するメッセージ数を指定することもできます。**list_messages()** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。パラメーターとして、表示タイムアウトを秒単位で指定します。
+1. **list\_messages()** を呼び出すと、既定では、キュー内の次のメッセージを取得します。取得するメッセージ数を指定することもできます。**list\_messages()** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。パラメーターとして、表示タイムアウトを秒単位で指定します。
 
-2. また、キューからのメッセージの削除を完了するには、**delete_message()** を呼び出す必要があります。
+2. また、キューからのメッセージの削除を完了するには、**delete\_message()** を呼び出す必要があります。
 
-2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **delete_message()** を呼び出します。
+2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **delete\_message()** を呼び出します。
 
 	messages = azure_queue_service.list_messages("test-queue", 30)
 	azure_queue_service.delete_message("test-queue", 
@@ -106,7 +106,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## 方法: キューに配置されたメッセージの内容を変更する
 
-キュー内のメッセージの内容をインプレースで変更できます。次のコードでは、**update_message()** メソッドを使用してメッセージを更新します。このメソッドは、キュー メッセージの PopReceipt と、メッセージがキューに配置される日時を表す UTC 日付/時刻値を含むタプルを返します。
+キュー内のメッセージの内容をインプレースで変更できます。次のコードでは、**update\_message()** メソッドを使用してメッセージを更新します。このメソッドは、キュー メッセージの PopReceipt と、メッセージがキューに配置される日時を表す UTC 日付/時刻値を含むタプルを返します。
 
 	message = azure_queue_service.list_messages("test-queue", 30)
 	pop_receipt, time_next_visible = azure_queue_service.update_message(
@@ -121,7 +121,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 2. コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。
 
-次のコード例では、**list_messages()** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。その後、各メッセージを出力して削除します。また、各メッセージの非表示タイムアウトを 5 分に設定します。
+次のコード例では、**list\_messages()** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。その後、各メッセージを出力して削除します。また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 	azure_queue_service.list_messages("test-queue", 300
 	  {:number_of_messages => 15}).each do |m|
@@ -131,14 +131,14 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## 方法: キューの長さを取得する
 
-キュー内のメッセージの概数を取得できます。**get_queue_metadata()** メソッドを使用して、おおよそのメッセージ数とキューのメタデータを返すようにキュー サービスに要求します。
+キュー内のメッセージの概数を取得できます。**get\_queue\_metadata()** メソッドを使用して、おおよそのメッセージ数とキューのメタデータを返すようにキュー サービスに要求します。
 
 	message_count, metadata = azure_queue_service.get_queue_metadata(
 	  "test-queue")
 
 ## 方法: キューを削除する
 
-キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **delete_queue()** メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **delete\_queue()** メソッドを呼び出します。
 
 	azure_queue_service.delete_queue("test-queue")
 
@@ -153,4 +153,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較](http://msdn.microsoft.com/library/azure/hh767287.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -92,4 +92,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [7]: ./media/app-service-logic-connector-twitter/img7.png
 [8]: ./media/app-service-logic-connector-twitter/actions.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

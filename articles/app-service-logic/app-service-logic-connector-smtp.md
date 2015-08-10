@@ -99,4 +99,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

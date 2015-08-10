@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2015"
+   ms.date="07/27/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -51,6 +51,12 @@
           "value": "[concat('http://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
         }
     }
+
+## copyIndex
+
+**copyIndex(offset)**
+
+反復処理のループの現在のインデックスを返します。この関数を使用する例については、「[Azure リソース マネージャーにおけるリソースの複数のインスタンスの作成](resource-group-create-multiple.md)」を参照してください。
 
 ## デプロイ
 
@@ -188,7 +194,7 @@
 
 **reference** 関数はその値をランタイム状態から取得するので、変数セクションでは使用できません。これは、テンプレートの出力セクションで使用できます。
 
-参照式を使用して、参照先のリソースが同じテンプレート内でプロビジョニングされる場合に、1 つのリソースが他のリソースに依存していることを宣言します。
+参照式を使用して、参照先のリソースが同じテンプレート内でプロビジョニングされる場合に、1 つのリソースが他のリソースに依存していることを暗黙的に宣言します。**dependsOn** プロパティを一緒に使用する必要はありません。参照先のリソースがデプロイを完了するまでは、式は評価されません。
 
     "outputs": {
       "siteUri": {
@@ -265,7 +271,7 @@
 代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用するときには、多くの場合にこの関数を使用する必要があります。ストレージ アカウントや仮想ネットワークは、複数のリソース グループ間で使用される場合があるので、単一のリソース グループを削除するときにそれらを削除しないでください。次の例は、外部のリソース グループのリソースを簡単に使用する方法を示しています。
 
     {
-      "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
           "virtualNetworkName": {
@@ -377,9 +383,9 @@
 
 
 ## 次のステップ
-- [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)
-- [高度なテンプレートの操作](./resource-group-advanced-template.md)
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
-- [Azure リソース マネージャーの概要](./resource-group-overview.md)
+- Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- 複数のテンプレートをマージするには、「[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
+- リソースの種類を作成するときに、指定した回数を繰り返すには、「[Azure リソース マネージャーにおけるリソースの複数のインスタンスの作成](resource-group-create-multiple.md)」を参照してください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

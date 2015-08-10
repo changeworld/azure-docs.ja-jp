@@ -60,4 +60,4 @@ Azure Automation から[資産](https://msdn.microsoft.com/library/dn939988.aspx
 
 Azure Automation から証明書をエクスポートすることはできません。すべての証明書が Azure の外部で使用できることを確認する必要があります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

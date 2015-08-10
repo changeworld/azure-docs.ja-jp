@@ -121,13 +121,13 @@
 
 ![Open diagnostic search](./media/app-insights-diagnostic-search/appinsights-311search.png)
 
-部分文字列ではなく語句を検索することに注意してください。語句とは、"."、"_" などのいくつかの句読文字を含む、英数字の文字列です。次に例を示します。
+部分文字列ではなく語句を検索することに注意してください。語句とは、"."、"\_" などのいくつかの句読文字を含む、英数字の文字列です。次に例を示します。
 
 語句|一致*しない*|一致する
 ---|---|---
-HomeController.About|about<br/>home|h*about<br/>home*
-IsLocal|local<br/>is<br/>*local|isl*<br/>islocal<br/>i*l*
-New Delay|w d|new<br/>delay<br/>n* AND d*
+HomeController.About|about<br/>home|h\*about<br/>home\*
+IsLocal|local<br/>is<br/>\*local|isl\*<br/>islocal<br/>i\*l\*
+New Delay|w d|new<br/>delay<br/>n\* AND d\*
 
 
 使用できる検索表現を次に示します。
@@ -136,12 +136,12 @@ New Delay|w d|new<br/>delay<br/>n* AND d*
 ---|---
 slow|日付範囲内でフィールドに "slow" という語句が含まれるすべてのイベントを検索します
 database??|database01、databaseAB などに一致します。<br/>? は、検索語句の先頭に使用できません。
-database*|database、database01、databaseNNNN に一致します。<br/>* は、検索語句の先頭に使用できません。
+database\*|database、database01、databaseNNNN に一致します。<br/>\* は、検索語句の先頭に使用できません。
 apple AND banana|両方の語句を含むイベントを検索します。"and" ではなく大文字の "AND" を使用します。
 apple OR banana<br/>apple banana|どちらかの語句を含むイベントを検索します。"or" ではなく "OR" を使用します。</br/>短縮形。
 apple NOT banana<br/>apple -banana|ある用語を含む一方で他方の用語を含まないイベントを検索します。<br/>短縮形。
-app* AND banana -(grape pear)|論理演算子とかっこの使用。
-"Metric": 0 TO 500<br/>"Metric" : 500 TO * | 値範囲内の指定された測定値を含むイベントを検索します。
+app\* AND banana -(grape pear)|論理演算子とかっこの使用。
+"Metric": 0 TO 500<br/>"Metric" : 500 TO \* | 値範囲内の指定された測定値を含むイベントを検索します。
 
 
 ## 検索条件の保存
@@ -198,4 +198,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

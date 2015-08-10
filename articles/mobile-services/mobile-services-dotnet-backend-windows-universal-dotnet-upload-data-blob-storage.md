@@ -71,4 +71,4 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

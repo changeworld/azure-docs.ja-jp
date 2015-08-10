@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="03/11/2015" 
+	ms.date="07/29/2015" 
 	ms.author="tomfitz"/>
 
 # PHP から Queue ストレージを使用する方法
@@ -42,7 +42,7 @@ Azure Queue サービスにアクセスする PHP アプリケーションを作
 
 Azure Queue サービス API を使用するには、次の要件があります。
 
-1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+1. [require\_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
@@ -384,4 +384,4 @@ Azure Queue サービス クライアントをインスタンス化するには�
 [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

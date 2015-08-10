@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="エラスティック データベース クライアント ライブラリの資格情報を管理する" 
-	description="エラスティック データベース アプリケーションの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)。" 
+	pageTitle="Elastic Database クライアント ライブラリの資格情報を管理する" 
+	description="エラスティック データベース アプリの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)。" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/17/2015" 
+	ms.date="04/24/2015" 
 	ms.author="sidneyh"/>
 
-# エラスティック データベース クライアント ライブラリの資格情報を管理する
+# Elastic Database クライアント ライブラリの資格情報を管理する
 
-[エラスティック データベース クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)では、[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)の作成と操作、既存のシャード マップ マネージャーを参照してシャードに関する情報を入手する処理、シャードに接続する処理など、さまざまな種類の処理に資格情報を使用します。ここでは、これらの種類の処理のための資格情報について説明します。
+[Elastic Database クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)では、[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)の作成と操作、既存のシャード マップ マネージャーを参照してシャードに関する情報を入手する処理、シャードに接続する処理など、さまざまな種類の処理に資格情報を使用します。ここでは、これらの種類の処理のための資格情報について説明します。
 
 
 * **シャード マップにアクセスするための管理資格情報**: 管理資格情報は、シャード マップを操作するアプリケーションの**シャード マップ マネージャー** オブジェクトをインスタンス化するときに使用されます。エラスティック スケール クライアント ライブラリのユーザーは、必要な SQL ユーザーと SQL ログインを作成したうえで、グローバル シャード マップ データベースとすべてのシャード データベースに対する読み取り/書き込みアクセス許可がこれらのユーザーに付与されていることを確認する必要があります。これらの資格情報は、シャード マップに変更を加えるときにグローバル シャード マップとローカル シャード マップを維持するために使用されます。たとえば、次のコードに示すように、管理資格情報を使用してシャード マップ マネージャー オブジェクトをインスタンス化します。 
@@ -60,4 +60,4 @@
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

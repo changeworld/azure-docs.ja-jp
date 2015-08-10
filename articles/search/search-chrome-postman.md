@@ -119,4 +119,4 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [6]: ./media/search-chrome-postman/query.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

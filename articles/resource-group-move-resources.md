@@ -44,6 +44,7 @@
 - Mobile Engagement
 - Operational Insights
 - Redis Cache
+- Azure Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
 
 新しいリソース グループへの移動をサポートし、新しいサブスクリプションへの移動はサポートしないサービスは、次のとおりです。
 
@@ -92,7 +93,7 @@
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
 - [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
-- [Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)
+- [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -84,4 +84,4 @@
 
 [Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

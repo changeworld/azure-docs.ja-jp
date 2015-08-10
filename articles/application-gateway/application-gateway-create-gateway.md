@@ -12,7 +12,7 @@
    ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="06/30/2015"
+   ms.date="07/29/2015"
    ms.author="joaoma"/>
 
 # アプリケーション ゲートウェイの作成、起動、または削除
@@ -22,25 +22,39 @@
 ## 開始する前に
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。最新バージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** のセクションからダウンロードしてインストールできます。
-2. 有効なサブネットが存在する作業用の仮想ネットワークがあることを確認します。
-3. 仮想ネットワーク内、またはパブリック IP/VIP が割り当てられたバックエンド サーバーがあることを確認します。
+2. 有効なサブネットが存在する作業用の仮想ネットワークがあることを確認します。仮想マシンまたはクラウド デプロイでサブネットをしていないことを確認します。アプリケーション ゲートウェイそのものが、仮想ネットワーク サブネットに含まれている必要があります。
+3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
+
+## アプリケーション ゲートウェイの作成に必要な構成
+ 
+
+New-AzureApplicationGateway コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成する必要があります。
 
 
-新しいアプリケーション ゲートウェイを作成するには、次の手順を順番に実行します。
+値は次のとおりです。
 
-1. [新しいアプリケーション ゲートウェイの作成](#create-a-new-application-gateway)
-2. [ゲートウェイの構成](#configure-the-gateway)
-3. [ゲートウェイ構成の設定](#set-the-gateway-configuration)
-4. [ゲートウェイの起動](#start-the-gateway)
-4. [ゲートウェイの状態の確認](#verify-the-gateway-status)
+- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。 
+- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 
+- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
-アプリケーション ゲートウェイを削除するには、「[アプリケーション ゲートウェイの削除](#delete-an-application-gateway)」に移動します。
 
+ 
 ## 新しいアプリケーション ゲートウェイの作成
+
+アプリケーション ゲートウェイを作成するために従う必要がある手順には、順序があります。
+
+1. アプリケーション ゲートウェイのリソースを作成します。
+2. 構成 XML ファイルまたは構成オブジェクトを作成します。
+3. 新しく作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
+
+### アプリケーション ゲートウェイのリソースの作成
 
 **ゲートウェイを作成する**には、`New-AzureApplicationGateway` コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-このサンプルの最初の行はコマンドレットを示し、その後に出力が続きます。
+次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しいアプリケーション ゲートウェイを作成する方法を示します。
+
     
 	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 
@@ -50,9 +64,11 @@
 	----       ----------------     ------------                             ----
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
-ゲートウェイが作成されたことを**確認する**には、`Get-AzureApplicationGateway` コマンドレットを使用します。
 
-サンプルでは、*Description*、*InstanceCount*、および*GatewaySize* は省略可能なパラメーターです。*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。その他の値は Small および Large です。ゲートウェイがまだ起動していないため、*Vip* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
+ *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
+
+
+ゲートウェイが作成されたことを**確認する**には、`Get-AzureApplicationGateway` コマンドレットを使用します。
 
 
 
@@ -68,22 +84,71 @@
 	VirtualIPs    : {}
 	DnsName       :
 
+>[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
 
-## ゲートウェイの構成
 
-アプリケーション ゲートウェイの構成は、複数の値で構成されます。値を相互に関連付けて構成を作成します。
+ ゲートウェイがまだ起動していないため、*Vip* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
-値は次のとおりです。
+## アプリケーション ゲートウェイの構成
 
-- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧です。一覧の IP アドレスは、VNet サブネットに属しているか、パブリック IP/VIP である必要があります。 
-- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイに開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 
-- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
+アプリケーション ゲートウェイは、XML または構成オブジェクトを使用して構成することができます。
 
-構成は、構成オブジェクトを作成するか、構成 XML ファイルを使用して構築できます。構成 XML ファイルを使用して構成を構築するには、次のサンプルを使用します。
+## XML を使用するアプリケーション ゲートウェイの構成 
 
- **構成 XML のサンプル**
+次の例では、XML ファイルを使用して、すべてのアプリケーション ゲートウェイ設定を構成し、アプリケーション ゲートウェイのリソースにコミットします。
+
+### 手順 1.  
+
+次のテキストをコピーし、メモ帳に貼り付けます。
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+	    <FrontendPorts>
+	        <FrontendPort>
+	            <Name>(name-of-your-frontend-port)</Name>
+	            <Port>(port number)</Port>
+	        </FrontendPort>
+	    </FrontendPorts>
+	    <BackendAddressPools>
+	        <BackendAddressPool>
+	            <Name>(name-of-your-backend-pool)</Name>
+	            <IPAddresses>
+	                <IPAddress>(your-IP-address-for-backend-pool)</IPAddress>
+	                <IPAddress>(your-second-IP-address-for-backend-pool)</IPAddress>
+	            </IPAddresses>
+	        </BackendAddressPool>
+	    </BackendAddressPools>
+	    <BackendHttpSettingsList>
+	        <BackendHttpSettings>
+	            <Name>(backend-setting-name-to-configure-rule)</Name>
+	            <Port>80</Port>
+	            <Protocol>[Http|Https]</Protocol>
+	            <CookieBasedAffinity>Enabled</CookieBasedAffinity>
+	        </BackendHttpSettings>
+	    </BackendHttpSettingsList>
+	    <HttpListeners>
+	        <HttpListener>
+	            <Name>(name-of-the-listener)</Name>
+	            <FrontendPort>(name-of-your-frontend-port)</FrontendPort>
+	            <Protocol>[Http|Https]</Protocol>
+	        </HttpListener>
+	    </HttpListeners>
+	    <HttpLoadBalancingRules>
+	        <HttpLoadBalancingRule>
+	            <Name>(name-of-load-balancing-rule)</Name>
+	            <Type>basic</Type>
+	            <BackendHttpSettings>(backend-setting-name-to-configure-rule)</BackendHttpSettings>
+	            <Listener>(name-of-the-listener)</Listener>
+	            <BackendAddressPool>(name-of-your-backend-pool)</BackendAddressPool>
+	        </HttpLoadBalancingRule>
+	    </HttpLoadBalancingRules>
+	</ApplicationGatewayConfiguration>
+
+構成項目のかっこに囲まれた値を編集します。拡張子 .xml のファイルに保存します。
+
+>[AZURE.IMPORTANT]プロトコル項目 Http または Https は、大文字小文字を区別します。
+
+次の例では、パブリック ポート 80 で Http トラフィックを負荷分散するアプリケーション ゲートウェイを設定し、2 つの IP アドレスのバックエンド ポート 80 にネットワーク トラフィックを送信する構成ファイルを使用する方法を示します。
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -128,18 +193,127 @@
 	    </HttpLoadBalancingRules>
 	</ApplicationGatewayConfiguration>
 
-## ゲートウェイ構成の設定
-
-次に、アプリケーション ゲートウェイを設定します。構成オブジェクトまたは構成 XML ファイルで `Set-AzureApplicationGatewayConfig` コマンドレットを使用できます。
 
 
-	PS C:\> Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
+
+
+### 手順 2.
+
+次に、アプリケーション ゲートウェイを設定します。`Set-AzureApplicationGatewayConfig` コマンドレットと構成 XML ファイルを使用します。
+
+
+	PS C:\> Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 
 	VERBOSE: 7:54:59 PM - Begin Operation: Set-AzureApplicationGatewayConfig 
 	VERBOSE: 7:55:32 PM - Completed Operation: Set-AzureApplicationGatewayConfig
 	Name       HTTP Status Code     Operation ID                             Error 
 	----       ----------------     ------------                             ----
 	Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
+
+## 構成オブジェクトを使用するアプリケーション ゲートウェイの構成
+
+次の例では、構成オブジェクトを使用してアプリケーション ゲートウェイを構成する方法を示します。すべての構成項目は、個別に構成して、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、`Set-AzureApplicationGateway` コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
+
+>[AZURE.NOTE]各構成オブジェクトに値を割り当てる前に、PowerShell が格納するオブジェクトの種類を宣言する必要があります。個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
+
+### 手順 1.
+
+すべての個別の構成項目を作成します。
+
+フロントエンド IP を作成します。
+
+	PS C:\> $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration 
+	PS C:\> $fip.Name = "fip1" 
+	PS C:\> $fip.Type = "Private" 
+	PS C:\> $fip.StaticIPAddress = "10.0.0.5" 
+
+フロントエンド ポート を作成します。
+	
+	PS C:\> $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort 
+	PS C:\> $fep.Name = "fep1" 
+	PS C:\> $fep.Port = 80
+	
+バックエンド サーバー プールを作成します。
+
+ バックエンド サーバー プールに追加する IP アドレスを定義します。
+
+
+	PS C:\> $servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection 
+	PS C:\> $servers.Add("10.0.0.1") 
+	PS C:\> $servers.Add("10.0.0.2")
+
+ $server オブジェクトを使用して、バックエンド プール オブジェクト ($pool) に値を追加します。
+
+	PS C:\> $pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool 
+	PS C:\> $pool.BackendServers = $servers 
+	PS C:\> $pool.Name = "pool1"
+
+バックエンド サーバー プール設定を作成します。
+
+	PS C:\> $setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings 
+	PS C:\> $setting.Name = "setting1" 
+	PS C:\> $setting.CookieBasedAffinity = "enabled" 
+	PS C:\> $setting.Port = 80 
+	PS C:\> $setting.Protocol = "http"
+
+リスナーを作成します。
+
+	PS C:\> $listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener 
+	PS C:\> $listener.Name = "listener1" 
+	PS C:\> $listener.FrontendPort = "fep1" 
+	PS C:\> $listener.FrontendIP = "fip1" 
+	PS C:\> $listener.Protocol = "http" 
+	PS C:\> $listener.SslCert = ""
+
+ルールを作成します。
+
+	PS C:\> $rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule 
+	PS C:\> $rule.Name = "rule1" 
+	PS C:\> $rule.Type = "basic" 
+	PS C:\> $rule.BackendHttpSettings = "setting1" 
+	PS C:\> $rule.Listener = "listener1" 
+	PS C:\> $rule.BackendAddressPool = "pool1"
+ 
+### 手順 2.
+
+アプリケーション ゲートウェイの構成オブジェクト ($appgwconfig) にすべての個別の構成項目を割り当てます。
+
+フロントエンド IP を構成に追加します。
+
+	PS C:\> $appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
+	PS C:\> $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration]" 
+	PS C:\> $appgwconfig.FrontendIPConfigurations.Add($fip)
+ 
+フロントエンド ポート を構成に追加します。
+
+	PS C:\> $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]" 
+	PS C:\> $appgwconfig.FrontendPorts.Add($fep)
+
+バックエンド サーバー プールを構成に追加します。
+
+	PS C:\> $appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]" 
+	PS C:\> $appgwconfig.BackendAddressPools.Add($pool)  
+
+バックエンド プール設定を構成に追加します。
+
+	PS C:\> $appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]" 
+	PS C:\> $appgwconfig.BackendHttpSettingsList.Add($setting) 
+
+リスナーを構成に追加します。
+
+	PS C:\> $appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]" 
+	PS C:\> $appgwconfig.HttpListeners.Add($listener)
+
+ルールを構成に追加します。
+
+	PS C:\> $appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]" 
+	PS C:\> $appgwconfig.HttpLoadBalancingRules.Add($rule) 
+
+### 手順 3
+
+`Set-AzureApplicationGatewayConfig` を使用して、アプリケーション ゲートウェイのリソースに構成をコミットします。
+ 
+	Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 
 ## ゲートウェイの起動
 
@@ -226,7 +400,7 @@ ILB とともに使用するようにアプリケーション ゲートウェイ
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
-- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
+- [Azure のロード バランサー](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

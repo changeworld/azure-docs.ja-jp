@@ -44,7 +44,7 @@
 
 暗号化によってアセットを保護し、企業ユーザー (オンサイトやリモート) を認証して、ユーザーのアセットの使用を承認します。
 
-[HTTPS] を使用して、内部アセットを盗聴者から保護します。***.azurewebsites.net** ドメイン名には SSL 証明書が既に付属しており、カスタム ドメインを使用する場合は、SSL 証明書を App Service Web Apps に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
+[HTTPS] を使用して、内部アセットを盗聴者から保護します。**\*.azurewebsites.net** ドメイン名には SSL 証明書が既に付属しており、カスタム ドメインを使用する場合は、SSL 証明書を App Service Web Apps に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
 
 企業ディレクトリに対して[ユーザーを認証]します。App Service Web アプリでは、Active Directory フェデレーション サービス (AD FS) などの内部設置型の ID プロバイダーや、企業の Active Directory 展開で同期済みの Azure Active Directory テナントでユーザーを認証できます。ユーザーは、オンサイトでも外出先でもシングル サインオンで Web アプリの Web プロパティにアクセスできます。Office 365、Microsoft Intune などの既存のサービスでは、既に Azure Active Directory が使われています。[Easy Auth (簡単認証)] により、Web アプリで同じ Azure Active Directory テナントを使用した認証を簡単に有効にすることができます。
 
@@ -124,4 +124,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

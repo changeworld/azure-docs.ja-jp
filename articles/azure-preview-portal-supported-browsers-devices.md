@@ -3,8 +3,8 @@
 	description="" 
 	services="" 
 	documentationCenter="" 
-	authors="JustinBeckwith" 
-	manager="carolz" 
+	authors="micflan" 
+	manager="lwelicki" 
 	editor=""/>
 
 <tags 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2014" 
-	ms.author="justbe"/>
+	ms.date="07/23/2015" 
+	ms.author="micflan"/>
 
 #サポートされているブラウザーとデバイス
-Microsoft Azure プレビュー ポータルは、最新の主要なデスクトップ デバイスとタブレット デバイス、および最新の主要なブラウザーで動作します。
+Microsoft Azure ポータルは、最新の主要なデスクトップ デバイスとタブレット デバイス、および最新の主要なブラウザーで動作します。
 
 ### サポートされているデバイス
-プレビュー ポータルは、最新の PC、Mac、およびタブレットで快適に動作します。携帯電話は現時点でサポートされていません。
+ポータルは、最新の PC、Mac、およびタブレットで快適に動作します。携帯電話は現時点でサポートされていません。
 
 ### サポートされているブラウザー
 次のブラウザーの最新バージョンがサポートされています。
@@ -32,4 +32,4 @@ Microsoft Azure プレビュー ポータルは、最新の主要なデスクト
 
 *Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

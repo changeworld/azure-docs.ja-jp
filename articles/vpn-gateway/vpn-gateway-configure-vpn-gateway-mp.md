@@ -149,4 +149,4 @@ Virtual Network のクロスプレミス接続の詳細については、[Virtua
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

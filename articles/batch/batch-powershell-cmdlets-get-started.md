@@ -53,7 +53,7 @@ Azure PowerShell コマンドレットを使用すると、Batch アカウント
 New-AzureResourceGroup –Name MyBatchResourceGroup –location "Central US"
 ```
 
-次に、リソース グループに新しいBatch アカウントを作成し、< * account_name * > にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
+次に、リソース グループに新しいBatch アカウントを作成し、< \* account\_name \* > にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
 
 ```
 New-AzureBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -156,4 +156,4 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 * [Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [効率的なリスト クエリ](batch-efficient-list-queries.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

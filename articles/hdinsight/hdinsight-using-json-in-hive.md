@@ -97,12 +97,12 @@ SELECT ステートメントの出力を次に示します。
 
 Hive は、JSON ドキュメントに対してクエリを実行するための次の 3 つの異なるメカニズムを提供します。
 
-- GET_JSON_OBJECT UDF (ユーザー定義関数) を使用する
-- JSON_TUPLE UDF を使用する
+- GET\_JSON\_OBJECT UDF (ユーザー定義関数) を使用する
+- JSON\_TUPLE UDF を使用する
 - カスタム SerDe を使用する
 - Python またはその他の言語を使用して独自の UDF を作成する独自の Python コードの実行については、[この記事][hdinsight-python]をご覧ください。 
 
-### GET_JSON_OBJECT UDF を使用する
+### GET\_JSON\_OBJECT UDF を使用する
 Hive には、ランタイム処理中に JSON クエリを実行できる [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。このメソッドは 2 つの引数を取ります。テーブル名とメソッド名で、解析することが必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。この UDF の動作を確認する例を見てみましょう。
 
 各学生の姓と名を取得します。
@@ -114,19 +114,19 @@ Hive には、ランタイム処理中に JSON クエリを実行できる [get 
 
 このクエリをコンソール ウィンドウで実行した際の出力を次に示します。
 
-![get_json_object UDF][image-hdi-hivejson-getjsonobject]
+![get\_json\_object UDF][image-hdi-hivejson-getjsonobject]
 
-get-json_object UDF にはいくつかの制限があります。
+get-json\_object UDF にはいくつかの制限があります。
 
 - クエリ内の各フィールドではクエリの再解析が必要なため、パフォーマンスが影響を受けます。
-- GET_JSON_OBJECT() によって、配列の文字列表現が返されます。これを Hive 配列に変換するには、正規表現を使用して、角括弧 ‘[‘ と ‘]’ を置き換え、split を呼び出して配列を取得する必要があります。
+- GET\_JSON\_OBJECT() によって、配列の文字列表現が返されます。これを Hive 配列に変換するには、正規表現を使用して、角括弧 ‘[‘ と ‘]’ を置き換え、split を呼び出して配列を取得する必要があります。
 
 
-このため、Hive Wiki では json_tuple の使用が推奨されています。
+このため、Hive Wiki では json\_tuple の使用が推奨されています。
 
-### JSON_TUPLE UDF を使用する
+### JSON\_TUPLE UDF を使用する
 
-Hive に備わっているもう 1 つの UDF に [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、_get_json_objecthttps://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
+Hive に備わっているもう 1 つの UDF に [json\_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、_get\_json\_objecthttps://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
     SELECT q1.StudentId, q1.Grade 
       FROM StudentsOneLine jt
@@ -135,9 +135,9 @@ Hive に備わっているもう 1 つの UDF に [json_tuple](https://cwiki.apa
 
 Hive コンソールにおけるこのスクリプトの出力:
 
-![json_tuple UDF][image-hdi-hivejson-jsontuple]
+![json\_tuple UDF][image-hdi-hivejson-jsontuple]
 
-JSON_TUPLE では Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文が使用されます。この構文を使用すると、json_tuple は UDT 関数を元のテーブルの各行に適用して仮想テーブルを作成できます。複雑な JSON では LATERAL VIEW が繰り返し使用されるため、処理が難しくなります。また、JSON_TUPLE では入れ子になった JSON を処理できません。
+JSON\_TUPLE では Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文が使用されます。この構文を使用すると、json\_tuple は UDT 関数を元のテーブルの各行に適用して仮想テーブルを作成できます。複雑な JSON では LATERAL VIEW が繰り返し使用されるため、処理が難しくなります。また、JSON\_TUPLE では入れ子になった JSON を処理できません。
 
 
 ###カスタム SerDe を使用する
@@ -146,7 +146,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 **カスタムの SerDe を使用するには:**
 
-1. [Java SE Development Kit 7u55 JDK 1.7.0_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR) をインストールします。HDInsight の Windows デプロイメントを使用する場合は、JDK の Windows X64 バージョンを選択します。
+1. [Java SE Development Kit 7u55 JDK 1.7.0\_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR) をインストールします。HDInsight の Windows デプロイメントを使用する場合は、JDK の Windows X64 バージョンを選択します。
 
 	>[AZURE.WARNING]JDK 1.8 はこの SerDe では機能しません。
 
@@ -154,7 +154,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 	1. Windows 画面から **[システムの詳細設定の表示]** を開きます。
 	2. **[環境変数]** をクリックします。  
-	3. 新しい **JAVA_HOME** 環境変数を追加します。これは、**C:\Program Files\Java\jdk1.7.0_55** または JDK がインストールされている場所を指します。
+	3. 新しい **JAVA\_HOME** 環境変数を追加します。これは、**C:\\Program Files\\Java\\jdk1.7.0\_55** または JDK がインストールされている場所を指します。
 
 	![JDK の適切な構成値の設定][image-hdi-hivejson-jdk]
 
@@ -170,9 +170,9 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 4: このパッケージをダウンロードしたフォルダーに移動して、「mvn package」と入力します。これにより必要な jar ファイルが作成されるので、クラスターにコピーします。
 
-5: パッケージをダウンロードしたルート フォルダーの下にある対象フォルダーに移動します。クラスターのヘッド ノードに json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar ファイルをアップロードします。通常は、Hive バイナリ フォルダーである C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin などに配置します。
+5: パッケージをダウンロードしたルート フォルダーの下にある対象フォルダーに移動します。クラスターのヘッド ノードに json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar ファイルをアップロードします。通常は、Hive バイナリ フォルダーである C:\\apps\\dist\\hive-0.13.0.2.1.11.0-2316\\bin などに配置します。
  
-6: Hive プロンプトで、「add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar」と入力します。この例では jar は C:\apps\dist\hive-0.13.x\bin フォルダーにあるので、次に示す名前の jar を直接追加できます。
+6: Hive プロンプトで、「add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar」と入力します。この例では jar は C:\\apps\\dist\\hive-0.13.x\\bin フォルダーにあるので、次に示す名前の jar を直接追加できます。
 
     add jar json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
 
@@ -223,9 +223,9 @@ Hive コンソールの出力を次に示します。
 
 ![SerDe クエリ 2][image-hdi-hivejson-serde_query2]
 
-特定の学生のスコアが 80 点を超えている科目を検索するには、次のようにします。SELECT jt.StudentClassCollection.ClassId FROM json_table jt lateral view explode(jt.StudentClassCollection.Score) collection as score where score > 80;
+特定の学生のスコアが 80 点を超えている科目を検索するには、次のようにします。SELECT jt.StudentClassCollection.ClassId FROM json\_table jt lateral view explode(jt.StudentClassCollection.Score) collection as score where score > 80;
       
-上記のクエリにより、Hive 配列が戻ります。文字列が返される get_json_object とは異なります。
+上記のクエリにより、Hive 配列が戻ります。文字列が返される get\_json\_object とは異なります。
 
 ![SerDe クエリ 3][image-hdi-hivejson-serde_query3]
 
@@ -237,7 +237,7 @@ Hive コンソールの出力を次に示します。
 
 
 ##概要
-結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF get_json_object を選択できます。検索対象のキーが複数ある場合には、json_tuple を使用できます。入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。
+結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF get\_json\_object を選択できます。検索対象のキーが複数ある場合には、json\_tuple を使用できます。入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。
 
 その他の関連記事については、次を参照してください。
 
@@ -261,4 +261,4 @@ Hive コンソールの出力を次に示します。
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

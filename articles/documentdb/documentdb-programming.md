@@ -641,4 +641,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

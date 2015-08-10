@@ -13,13 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2015" 
+	ms.date="07/23/2015" 
 	ms.author="juliako"/>
 
 
 # Azure 管理ポータルを使用して Azure Media Services でコンテンツを管理する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
 
 このトピックでは、Azure 管理ポータルを使用して、Media Services アカウント内のメディア コンテンツを管理する方法について説明します。
 
@@ -35,6 +34,9 @@
 
 
 ##<a id="upload"></a>方法: コンテンツをアップロードする 
+
+
+[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
 
 1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックします。
@@ -57,6 +59,10 @@
 
 ##<a id="index"></a>方法: コンテンツのインデックスを作成する
 
+> [AZURE.SELECTOR]
+- [.NET](media-services-index-content.md)
+- [Portal](media-services-manage-content.md#index)
+
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。コンテンツのインデックスは、管理ポータルから以下に示した手順で作成できます。ただし、対象となるファイルの選択やインデックス作成ジョブの動作を細かく制御する必要がある場合は、Media Services SDK for .NET または REST API を使用してください。詳細については、「[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)」を参照してください。
 
 管理ポータルを使用してコンテンツのインデックスを作成するには、次の手順を実行します。
@@ -69,6 +75,11 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 	![Process][process]
 
 ##<a id="encode"></a>方法: コンテンツをエンコードする
+
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-encode-asset.md)
+- [REST](media-services-rest-encode-asset.md)
+- [Portal](media-services-manage-content.md#encode)
 
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。Media Services には、コンテンツのエンコード方法 (使用するコーデック、ファイル形式、解像度、ビットレートなど) を指定できるメディア エンコーダーが用意されています。
 
@@ -131,6 +142,11 @@ Media Services で AES キーまたは PlayReady DRM を使用してアセット
 	暗号化を有効にすると、プレーヤーからストリームが要求されるたびに、Media Services は指定されたキーを使用して、AES または PlayReady 暗号化でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 ##<a id="publish"></a>方法: コンテンツを発行する
+
+> [AZURE.SELECTOR]
+- [.NET](media-services-deliver-streaming-content.md)
+- [REST](media-services-rest-deliver-streaming-content.md)
+- [Portal](media-services-manage-content.md#publish)
 
 ###概要
 
@@ -198,4 +214,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

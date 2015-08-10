@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure SQL Database への移行" 
+   pageTitle="Azure SQL Database へのデータベースの移行" 
    description="Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード" 
    services="sql-database" 
    documentationCenter="" 
@@ -16,7 +16,8 @@
    ms.date="07/17/2015"
    ms.author="pehteh"/>
 
-# 概要
+# Azure SQL Database へのデータベースの移行
+
 Azure SQL Database V12 は、SQL Server 2014 とのほぼ完全なエンジン互換性を提供します。そのため、SQL Server から Azure SQL Database にデータベースを移行するタスクが大幅に簡略化されます。大量のデータベースの移行は、簡単な移動操作であり、スキーマの変更がほとんど不要で、アプリケーションの再構築もほとんど、もしくはまったく必要としません。データベースの変更が必要な場合も、変更の範囲は限定的です。
 
 仕様では、SQL Database は、SQL Server のサーバー スコープの機能はサポートしていません。これらに依存するデータベースとアプリケーションは、引き続き移行前に再構築する必要があります。SQL Database V12 と SQL Server との互換性は向上していますが、特に大規模で複雑なデータベースの移行では、慎重に計画し、実行する必要があります。
@@ -81,4 +82,4 @@ Visual Studio の SQL Server ツールを使用して、スキーマ内の各オ
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

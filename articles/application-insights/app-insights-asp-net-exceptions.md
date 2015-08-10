@@ -160,7 +160,7 @@ Web ページにコンテンツ配信ネットワークまたはその他のド�
 
 Web フォームの場合、HTTP モジュールは、CustomErrors で構成されたリダイレクトがないとき、例外を回収できます。
 
-ただし、アクティブなリダイレクトがある場合、次の行を Global.asax.cs の Application_Error 関数に追加します。(Global.asax ファイルがない場合、それを追加します。)
+ただし、アクティブなリダイレクトがある場合、次の行を Global.asax.cs の Application\_Error 関数に追加します。(Global.asax ファイルがない場合、それを追加します。)
 
 *C#*
 
@@ -441,4 +441,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

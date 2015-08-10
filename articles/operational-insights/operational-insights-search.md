@@ -43,9 +43,9 @@ Operational Insights でログ検索を行うときは、以下のテクニッ�
 
 ## 基本的なフィルターを使用する
 
-最初に知るべきことは検索クエリの先頭部分、つまり "|" 縦棒パイプ文字の前は常に ”フィルター” であることです。それは TSQL での WHERE 句と考えることができ、Operational Insights データ ストアから引き出すデータのサブセットは ”何か” を決定します。データ ストアの検索は、ほとんどが抽出するデータの特性を指定することに関係するため、クエリが WHERE 句から始まることは自然なことです。
+最初に知るべきことは検索クエリの先頭部分、つまり "|" 縦棒パイプ文字の前は常に "フィルター" であることです。それは TSQL での WHERE 句と考えることができ、Operational Insights データ ストアから引き出すデータのサブセットは "何か" を決定します。データ ストアの検索は、ほとんどが抽出するデータの特性を指定することに関係するため、クエリが WHERE 句から始まることは自然なことです。
 
-使用できる最も基本的なフィルターは、'error'、'timeout'、コンピューター名などの "キーワード” です。通常、この種の単純なクエリでは、同じ結果セットの中にさまざまな形のデータが返ります。Operational Insights がシステム内に異なる "種類" のデータを持っているのはこのためです。
+使用できる最も基本的なフィルターは、'error'、'timeout'、コンピューター名などの "キーワード" です。通常、この種の単純なクエリでは、同じ結果セットの中にさまざまな形のデータが返ります。Operational Insights がシステム内に異なる "種類" のデータを持っているのはこのためです。
 
 
 ### 単純な検索を実行するには
@@ -65,7 +65,7 @@ Operational Insights でログ検索を行うときは、以下のテクニッ�
 ### プロセッサ時間のパフォーマンス データを検索するには
 - 検索クエリ フィールドに、「`Type=PerfHourly CounterName="% Processor Time"`」と入力します。
 
-もっと詳しく指定することもできます。クエリで **InstanceName=_'Total'** を使用します。これは Windows パフォーマンス カウンターです。ファセットや別の **field:value** を選択することもできます。フィルターは、クエリ バー内のフィルターに自動的に追加されます。これを次の図で確認できます。図は、何も入力せずに **InstanceName:’_Total’** をクエリに追加するためにクリックする場所を示しています。
+もっと詳しく指定することもできます。クエリで **InstanceName=\_'Total'** を使用します。これは Windows パフォーマンス カウンターです。ファセットや別の **field:value** を選択することもできます。フィルターは、クエリ バー内のフィルターに自動的に追加されます。これを次の図で確認できます。図は、何も入力せずに **InstanceName:’\_Total’** をクエリに追加するためにクリックする場所を示しています。
 
 ![ファセットの検索](./media/operational-insights-search/search-facet.png)
 
@@ -81,7 +81,7 @@ CounterName=”% Processor Time” InstanceName=”_Total”
 
 暗黙的な AND 演算子は NOT 演算子を明示的に使用することで簡単に逆転させることができます。次に例を示します。
 
-`Type:Event NOT(EventLog:"Windows PowerShell")` またはそれと同等である `Type=Event EventLog!="Windows PowerShell"` は、Windows PowerShell ログではない （NOT) 他のすべてのログからすべてのイベントを返します。
+`Type:Event NOT(EventLog:"Windows PowerShell")` またはそれと同等である `Type=Event EventLog!="Windows PowerShell"` は、Windows PowerShell ログではない (NOT) 他のすべてのログからすべてのイベントを返します。
 
 または、'OR' などの他のブール演算子を使用できます。次のクエリは、EventLog が Application または (OR) System であるレコードを返します。
 
@@ -467,7 +467,7 @@ Microsoft System Center の Operations Manager に慣れている場合、Where 
 
 filterExpression | command1 | command2 …
 
-フィルター式 (**filterExpression**) は、クエリの "where" 条件を定義します。コマンドは、クエリによって返された結果に適用されます。複数のコマンドは、パイプ文字 (|) で区切る必要があります。
+フィルター式 (\*\*filterExpression\*\*) は、クエリの "where" 条件を定義します。コマンドは、クエリによって返された結果に適用されます。複数のコマンドは、パイプ文字 (|) で区切る必要があります。
 
 #### 一般的な構文の例
 
@@ -614,7 +614,15 @@ Operational Insights のタイムライン グラフ/タイムセレクターは
 
 次の表は、サポートされる日付/時刻の単位を一覧表示しています。
 
-<table border="1" cellspacing="4" cellpadding="4"><table> <tr> <th>日付/時刻の単位</th> <th>説明</th> </tr> <tr> <td> <p>YEAR、YEARS</p> </td> <td> <p>現在の年に丸めるか、指定された年数分オフセットします。</p> </td> </tr> <tr> <td> <p>MONTH、MONTHS</p> </td> <td> <p>現在の月に丸めるか、指定された月数分オフセットします。</p> </td> </tr> <tr> <td> <p>DAY、DAYS、DATE</p> </td> <td> <p>現在の日に丸めるか、指定された日数分オフセットします。</p> </td> </tr> <tr> <td> <p>HOUR、HOURS</p> </td> <td> <p>現在の時に丸めるか、指定された時数分オフセットします。</p> </td> </tr> <tr> <td> <p>MINUTE、MINUTES</p> </td> <td> <p>現在の分に丸めるか、指定された分数分オフセットします。</p> </td> </tr> <tr> <td> <p>SECOND、SECONDS</p> </td> <td> <p>現在の秒に丸めるか、指定された秒数分オフセットします。</p> </td> </tr> <tr> <td> <p>MILLISECOND、MILLISECONDS、MILLI、MILLIS</p> </td> <td> <p>現在のミリ秒に丸めるか、指定されたミリ秒数分オフセットします。</p> </td> </tr> </table>
+日付と時刻の単位|説明
+---|--- 
+YEAR、YEARS|現在の年に丸めるか、指定された年数分オフセットします。
+MONTH、MONTHS|現在の月に丸めるか、指定された月数分オフセットします。
+DAY、DAYS、DATE|現在の日に丸めるか、指定された日数分オフセットします。
+HOUR、HOURS|現在の時に丸めるか、指定された時数分オフセットします。
+MINUTE、MINUTES|現在の分に丸めるか、指定された分数分オフセットします。
+SECOND、SECONDS|現在の秒に丸めるか、指定された秒数分オフセットします。
+MILLISECOND、MILLISECONDS、MILLI、MILLIS|現在のミリ秒に丸めるか、指定されたミリ秒数分オフセットします。
 
 
 #### フィールドのファセット
@@ -690,7 +698,10 @@ Operational Insights のタイムライン グラフ/タイムセレクターは
 最上位レベルのフィルター引数の論理演算子は省略できます。この場合は、AND 演算子とみなされます。
 
 
-<table border="1" cellspacing="4" cellpadding="4"><table> <tr> <th>フィルター式</th> <th>同等</th> </tr> <tr> <td> <p>system error</p> </td> <td> <p>system AND error</p> </td> </tr> <tr> <td> <p>system "; Windows Server"; OR Severity:1</p> </td> <td> <p>system AND (";Windows Server"; OR Severity:1)</p> </td> </tr> </table>
+フィルター式|相当する構文
+---|---
+system error|system AND error
+system "Windows Server" OR Severity:1|system AND ("Windows Server" OR Severity:1)
 
 
 
@@ -754,7 +765,7 @@ Operational Insights のタイムライン グラフ/タイムセレクターは
 
 #### Measure
 
-**Measure** コマンドは、生の検索結果に統計関数を適用するために使用されます。これは、データの*グループ別*の表示を取得するときに非常に役立ちます。**Measure** コマンドを使用すると、Operational Insights では、集計結果が表で示されます。
+**Measure** コマンドは、生の検索結果に統計関数を適用するために使用されます。これは、データの *グループ別*の表示を取得するときに非常に役立ちます。**Measure** コマンドを使用すると、Operational Insights では、集計結果が表で示されます。
 
 構文:
 
@@ -766,7 +777,7 @@ Operational Insights のタイムライン グラフ/タイムセレクターは
 結果を **groupField** 別に集計し、集計されたメジャー値を **aggregatedField** を使用して計算します。
 
 
-<table border="1" cellspacing="4" cellpadding="4"><table> <tr> <th>Measure 統計関数</th> <th>説明</th> </tr> <tr> <td> <p><em>aggregateFunction</em> </p> <p></p> </td> <td> <p>集計関数の名前 (大文字と小文字の区別あり)。次の集計関数がサポートされます。</p> <ul> <li class="unordered">COUNT<br><br></li> <li class="unordered">MAX<br><br></li> <li class="unordered">MIN<br><br></li> <li class="unordered">SUM<br><br></li> <li class="unordered">AVG<br><br></li> <li class="unordered">STDDEV<br><br></li> </ul> </td> </tr> <tr> <td> <p><em>aggregatedField</em> </p> </td> <td> <p>集計されるフィールド。このフィールドは COUNT 集計関数では省略可能ですが、SUM、MAX、MIN、AVG、または STDDEV では既存の数値フィールドである必要があります。</p> </td> </tr> <tr> <td> <p><em>fieldAlias</em> </p> </td> <td> <p>計算される集計の別名 (省略可能)。指定がない場合、フィールド名は <em>AggregatedValue になります。</em></p> </td> </tr> <tr> <td> <p><em>groupField</em> </p> </td> <td> <p>結果セットをグループ化するために使用されるフィールドの名前。</p> </td> </tr> <tr> <td> <p><em>Interval</em> </p> </td> <td> <p>次の書式の期間。</p> <p><em>nnnNAME</em> </p> <p></p> <p>ここで: </p> <p>nnn は正の整数</p> <p><em>NAME</em> は間隔名</p> <p>サポートされる間隔名 (大文字と小文字の区別あり): </p> <ul> <li class="unordered">MILLISECOND[S]<br><br></li> <li class="unordered">SECOND[S]<br><br></li> <li class="unordered">MINUTE[S]<br><br></li> <li class="unordered">HOUR[S]<br><br></li> <li class="unordered">DAY[S]<br><br></li> <li class="unordered">MONTH[S]<br><br></li> <li class="unordered">YEAR[S]<br></li> </ul> </td> </tr> </table>
+<table border="1" cellspacing="4" cellpadding="4"><table> <tr> <th>Measure 統計関数</th> <th>説明</th> </tr> <tr> <td> <p><em>aggregateFunction</em> </p> <p></p> </td> <td> <p>集計関数の名前 (大文字と小文字の区別あり)。次の集計関数がサポートされます。</p> <ul> <li class="unordered">COUNT<br><br></li> <li class="unordered">MAX<br><br></li> <li class="unordered">MIN<br><br></li> <li class="unordered">SUM<br><br></li> <li class="unordered">AVG<br><br></li> <li class="unordered">STDDEV<br><br></li> </ul> </td> </tr> <tr> <td> <p><em>aggregatedField</em> </p> </td> <td> <p>集計されるフィールド。このフィールドは COUNT 集計関数では省略可能ですが、SUM、MAX、MIN、AVG、または STDDEV では既存の数値フィールドである必要があります。</p> </td> </tr> <tr> <td> <p><em>fieldAlias</em> </p> </td> <td> <p>計算される集計値の別名 (省略可能)。指定がない場合、フィールド名は <em>AggregatedValue になります。</em></p> </td> </tr> <tr> <td> <p><em>groupField</em> </p> </td> <td> <p>結果セットをグループ化するために使用されるフィールドの名前。</p> </td> </tr> <tr> <td> <p><em>Interval</em> </p> </td> <td> <p>次の書式の期間。</p> <p><em>nnnNAME</em> </p> <p></p> <p>ここで: </p> <p>nnn は正の整数</p> <p><em>NAME</em> は期間名</p> <p>サポートされる期間名 (大文字と小文字の区別あり): </p> <ul> <li class="unordered">MILLISECOND[S]<br><br></li> <li class="unordered">SECOND[S]<br><br></li> <li class="unordered">MINUTE[S]<br><br></li> <li class="unordered">HOUR[S]<br><br></li> <li class="unordered">DAY[S]<br><br></li> <li class="unordered">MONTH[S]<br><br></li> <li class="unordered">YEAR[S]<br></li> </ul> </td> </tr> </table>
 
 
 
@@ -798,7 +809,7 @@ BY 句は省略されたが (2 番目の構文として) 期間が指定され�
 
 *説明*
 
-前の例と同じですが、 集計フィールドの別名 (**AlertsPerHour**) が使用されています。
+前の例と同じですが、 集計フィールドの別名 (\*\*AlertsPerHour\*\*) が使用されています。
 
 **例 4**
 
@@ -1188,7 +1199,7 @@ PerfHourly を ObjectId によってグループ化し、平均 (avg) を計算�
 		<p>RequiredUpdate</p>
 		</td>
 		<td>
-		<p>更新の種類 (更新プログラムのロールアップ、サービス パックなど)</p>
+		<p>更新の種類 (更新プログラムのロールアップ、Service Pack など)</p>
 		</td>
 	</tr>
 	<tr>
@@ -2038,4 +2049,4 @@ PerfHourly を ObjectId によってグループ化し、平均 (avg) を計算�
 ## その他のリソース
 Stefan Roth が、使いやすい検索チート シートを作成しています。詳しくは彼の[ブログ](http://stefanroth.net/2014/11/05/microsoft-azure-operational-insights-search-data-explorer-cheat-sheet/)を参照してください。チート シートをダウンロードできます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -156,4 +156,4 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 > [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

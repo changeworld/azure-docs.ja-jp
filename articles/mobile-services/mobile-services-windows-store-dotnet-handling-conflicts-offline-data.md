@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Mobiles Services でのオフライン データの競合の処理 (Windows ストア) | モバイル デベロッパー センター" 
-	description="Azure Mobile Services を使用して、Windows ストア アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" 
+	pageTitle="ユニバーサル Windows アプリでのオフライン データの競合の処理 | Azure Mobile Services" 
+	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリケーションでのオフライン データの同期時に発生する競合を処理する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
 	manager="dwrede" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/15/2015" 
-	ms.author="wesmc"/>
+	ms.date="07/23/2015" 
+	ms.author="glenga"/>
 
 
 # モバイル サービスでのオフライン データの同期との競合の処理
@@ -23,15 +23,13 @@
 
 ##概要
 
-<div class="dev-onpage-video-clear clearfix">
-<div class="dev-onpage-left-content">
-<p>このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。</p>
-<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。</p>
-</div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Build-offline-apps-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('http://video.ch9.ms/ch9/ea1c/ffed2371-4db1-4a8e-8869-80013859ea1c/BuildOfflineAppsAzureMobileServices_220.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Build-offline-apps-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">14:36:00</span></div>
-</div>
+このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。
 
-このチュートリアルでは、オフラインの同期で発生する競合の処理をサポートするアプリケーション用に、Windows Universal C# ソリューションをダウンロードします。モバイル サービスとアプリケーションを統合します。次に、Windows ストア 8.1 と Windows Phone 8.1 のクライアントを実行して同期の競合を生成して、これを解決します。
+このチュートリアルのビデオを見る場合は、下のクリップでこのチュートリアルと同じ手順が表示されます。
+
+> [AZURE.VIDEO build-offline-apps-azure-mobile-services]
+
+このチュートリアルでは、オフラインの同期で発生する競合の処理をサポートするアプリケーション用に、ユニバーサル Windows C# ソリューションをダウンロードします。モバイル サービスとアプリケーションを統合します。次に、Windows ストア 8.1 と Windows Phone 8.1 のクライアントを実行して同期の競合を生成して、これを解決します。
 
 このチュートリアルは、前の「[オフライン データの使用]」チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[オフライン データの使用]」チュートリアルを完了している必要があります。
 
@@ -51,7 +49,7 @@
 
 2. 「[オフライン データの使用]」チュートリアルで説明された手順で SQLite for Windows 8.1 および Windows Phone 8.1 をインストールしていない場合は、両方をランタイムでインストールします。
 
-3. Visual Studio 2013 で、*mobile-services-samples\TodoOffline\WindowsUniversal\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
+3. Visual Studio 2013 で、*mobile-services-samples\\TodoOffline\\WindowsUniversal\\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
 
     >[AZURE.NOTE]SQLite ランタイムへの以前の参照を削除し、これを「[オフライン データの使用]」チュートリアルで説明したように、更新された参照で置き換える必要がある場合があります。
 
@@ -166,4 +164,4 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

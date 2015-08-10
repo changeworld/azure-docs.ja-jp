@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Elastic Database ツールの概要" 
-	description="実行が容易なサンプル アプリケーションを含む、Azure SQL データベースの Elastic Database ツール機能の基本説明です。" 
+	description="実行が容易なサンプル アプリケーションを含む、Azure SQL Database の Elastic Database ツール機能の基本説明です。" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/17/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sidneyh@microsoft.com"/>
 
 #Elastic Database ツールの概要
 
 オンデマンドによる容量の拡大や縮小は、クラウド コンピューティングで約束された主要な機能の一つです。データベース アプリケーションの場合、シャーディングとして知られるパターンが、このような拡張性の高いソリューションを構築するための重要な手法となります。この手法では、データは同一の構造を持つ多くのデータベース間で物理的に分割されます。しかし、これまでは、シャーディングを使用するアプリケーションの作成や管理にアプリケーションのビジネス ロジック外での大量のコーディングが必要でした。
 
-Elastic Database ツールにより、Azure SQL DB でのデータベース シャーディングを使用するアプリケーションの作成と管理が簡単になります。このツールには、Elastic Database のクライアント ライブラリと分割/マージ ツールが含まれます。これらのツールを使用して、シャーディングという側面でのインフラトラクチャを実装することで、アプリケーションのビジネス ロジックに集中して取り組むことができます。
+Elastic Database ツールにより、Azure SQL DB でのデータベース シャーディングを使用するアプリケーションの作成と管理が簡単になります。このツールには、Elastic Database クライアント ライブラリと分割/マージ ツールが含まれます。これらのツールを使用して、シャーディングという側面でのインフラトラクチャを実装することで、アプリケーションのビジネス ロジックに集中して取り組むことができます。
 
 このドキュメントでは、Elastic Database クライアント ライブラリを使用する開発者エクスペリエンスを紹介します。
 
@@ -30,21 +30,21 @@ Elastic Database ツールのすべてのトピックの一覧については、
 
 ## Elastic Database のサンプル アプリケーション
 
-サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。このアプリケーションをダウンロードして実行するには、下記またはチャンネル 9 のビデオ「[Elastic Scale with Azure SQL Database: Getting Started (Azure SQL データベースで使用する Elastic Scale: 概要)](http://channel9.msdn.com/Blogs/Windows-Azure/Elastic-Scale-with-Azure-SQL-Database-Getting-Started)」の手順を実行します。
+サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。このアプリケーションをダウンロードして実行するには、下記または [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Blogs/Windows-Azure/Elastic-Scale-with-Azure-SQL-Database-Getting-Started)の手順を実行します。
 
-### 前提条件
+## 前提条件
 サンプル アプリケーションを実行するには、Visual Studio を使用する必要があり、また、Azure 上で実行される Azure SQL データベースへのアクセス権を持っている必要があります。Azure サブスクリプションをまだ取得していない場合でも、[試用サブスクリプション](http://azure.microsoft.com/pricing/free-trial/)でサインアップできます。
-#### Visual Studio および Nuget
+### Visual Studio および Nuget
 
 1. C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
 2. Nuget 2.7 以上。最新版を入手するには、「[Installing NuGet (NuGet のインストール)](http://docs.nuget.org/docs/start-here/installing-nuget)」を参照してください。
-#### Azure SQL データベースの作成
+### Azure SQL データベースの作成
 
-* 詳細については、「[Azure SQL データベースの概要](sql-database-get-started.md)」を参照してください。
+* 詳細については、「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」を参照してください。
 
 ## サンプル アプリケーションのダウンロードと実行
 
-「**Azure SQL で使用する Elastic DB: 概要**」のサンプル アプリケーションは、Azure SQL Elastic Database ツールを使用したシャーディング アプリケーションの開発エクスペリエンスにおける最も重要な側面を表しています。また、主な使用事例として「[Shard Map Management (シャード マップの管理)](sql-database-elastic-scale-shard-map-management.md)」、「[Data Dependent Routing (データ依存ルーティング)](sql-database-elastic-scale-data-dependent-routing.md)、および「[Multi-Shard Querying (マルチシャード クエリ実行)](sql-database-elastic-scale-multishard-querying.md)」に焦点を当てています。サンプルをダウンロードして実行するには、次の手順を実行します。
+**Azure SQL で使用する Elastic Database の概要**のページで示したサンプル アプリケーションでは、Azure SQL Elastic Database ツールを使用したシャーディング アプリケーションの開発エクスペリエンスにおける最も重要な側面を紹介しています。そこでは、主な使用事例として[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)に焦点を当てています。サンプルをダウンロードして実行するには、次の手順を実行します。
 
 1. Visual Studio を開き、**[ファイル]、[新規]、[プロジェクト]** の順に選択します。
 2. ダイアログで、**[オンライン]** をクリックします。
@@ -66,7 +66,7 @@ Elastic Database ツールのすべてのトピックの一覧については、
 
 これで、最初のシャーディング アプリケーションを Elastic Database ツールを使用して正しく Azure SQL Database にビルドし、実行できました。Azure DB Server に Visual Studio または SQL Server Management Studio を接続して、サンプルで作成したシャードの内容を簡単に確認してください。新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
 
-**注** SQL Server Management Studio を持っていない場合は、このツールの入手手順が記載されている「[SQL Server Management Studio を使用した Azure SQL データベースの管理](sql-database-manage-azure-ssms.md)」を参照してください。
+**注** SQL Server Management Studio を持っていない場合は、このツールの入手手順が記載されている「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
 
 ### コード サンプルの主要部
 
@@ -99,7 +99,7 @@ Elastic Database ツールの詳細については、以下のページを参照
     -    [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 -    ブログ: [Elastic Scale の発表](http://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 -    チャンネル 9: [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
--    ディスカッション フォーラム: [Azure SQL データベース フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+-    ディスカッション フォーラム: [Azure SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 
 
 <!--Anchors-->
@@ -115,4 +115,4 @@ Elastic Database ツールの詳細については、以下のページを参照
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -236,7 +236,7 @@ The following table describes the properties that are available.
  **Request:**
 
 ```
-	$savedSearchParametersJson = "{'etag': 'W/`"datetime'2015-04-16T23%3A35%3A35.3182423Z'`"', 'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
+	$savedSearchParametersJson = "{'etag': 'W/`"datetime\'2015-04-16T23%3A35%3A35.3182423Z\'`"', 'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
 	armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2014-10-10 $savedSearchParametersJson
 ```
 
@@ -346,4 +346,4 @@ You may specify the start and end markers that will be used by search to wrap th
 
 上記の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/06/2015" 
+	ms.date="07/22/2015" 
 	ms.author="patshea123"/>
 
 # Azure Active Directory の使用 (.NET プロジェクト)
@@ -22,13 +22,13 @@
 > - [Getting Started](vs-active-directory-dotnet-getting-started.md)
 > - [What Happened](vs-active-directory-dotnet-what-happened.md)
  
-#####コントローラーへのアクセスに対して認証を要求する 
+##コントローラーへのアクセスに対して認証を要求する 
 
 プロジェクトに含まれるすべてのコントローラーには、**Authorize** 属性が設定されています。この属性により、ユーザーがこれらのコントローラーにアクセスする際に認証が求められます。これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。より細かなレベルでアクセス許可を設定するには、コントローラー クラスではなく、認証を必要とするそれぞれのメソッドに対してこの属性を割り当てます。
  
-#####SignIn/SignOut コントロールを追加する 
+##SignIn/SignOut コントロールを追加する 
 
-ビューに SignIn/SignOut コントロールを追加するには、**_LoginPartial.cshtml** 部分ビューを使用して、この機能をいずれかのビューに追加します。この機能を標準 **__Layout.cshtml ** ビューに追加した例を次に示します。(navbar-collapse クラスの div の最後の要素に注目してください):
+ビューに SignIn/SignOut コントロールを追加するには、**_LoginPartial.cshtml\*\* 部分ビューを使用して、この機能をいずれかのビューに追加します。この機能を標準 **_\_Layout.cshtml \*\* ビューに追加した例を次に示します。(navbar-collapse クラスの div の最後の要素に注目してください):
 
 <PRE class="prettyprint">
     &lt;!DOCTYPE html&gt; 
@@ -77,4 +77,4 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

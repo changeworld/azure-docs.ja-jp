@@ -1,5 +1,19 @@
-<properties pageTitle="Azure で Oracle WebLogic Server 12c クラスターを作成する" description="例として Microsoft Azure で Oracle WebLogic Server 12c クラスターを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
+<properties 
+	pageTitle="Azure で Oracle WebLogic Server 12c クラスターを作成する" 
+	description="例として Microsoft Azure で Oracle WebLogic Server 12c クラスターを作成します。" 
+	services="virtual-machines" 
+	authors="bbenz" 
+	documentationCenter=""/>
+
+<tags 
+	ms.service="virtual-machines" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="infrastructure-services" 
+	ms.date="06/22/2015" 
+	ms.author="bbenz" />
+
 #Azure で Oracle WebLogic Server 12c クラスターを作成する
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle WebLogic Server 12c のイメージに基づいて、Azure で Oracle WebLogic Server クラスターを作成する方法を示しています。
 
@@ -99,7 +113,7 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 	2. **[新しいサーバーの作成]** ダイアログ:
 
-		1. **[サーバー名]** に最初の管理対象サーバーの名前を入力します。たとえば**、MYVM2-MANAGED。**
+		1. **[サーバー名]** に最初の管理対象サーバーの名前を入力します。たとえば\*\*、MYVM2-MANAGED。\*\*
 
 		2. **[サーバー リッスン アドレス]** に同じ名前を入力します。
 
@@ -119,7 +133,7 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 9. WebLogic Server 管理コンソールに残ったままで、**[変更を有効にする]** をクリックします。
 
-10. 管理仮想マシン上で**「SERVER_HOME」**という環境変数を作成し、その値を**「C:\Oracle\Middleware\Oracle_Home\wlserver」**に設定します 。 環境変数は次の手順で作成できます。
+10. 管理仮想マシン上で**「SERVER\_HOME」**という環境変数を作成し、その値を**「C:\\Oracle\\Middleware\\Oracle\_Home\\wlserver」**に設定します 。 環境変数は次の手順で作成できます。
 
 	1. **Windows の [スタート]** をクリックし、**「コントロール パネル」**と入力し、**コントロール パネル**アイコンをクリックし、続いて **[システムとセキュリティ]**、**[システム]**、**[システムの詳細設定]** の順にクリックします。
 
@@ -127,13 +141,13 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 	3. **[システム環境変数]** セクションの **[新規]** をクリックして変数を作成します。
 
-	4. **[新しいシステム変数]** ダイアログで、変数の名前に**「SERVER_HOME」**と入力し、値に**「C:\Oracle\Middleware\Oracle_Home\wlserver」**と入力します。
+	4. **[新しいシステム変数]** ダイアログで、変数の名前に**「SERVER\_HOME」**と入力し、値に**「C:\\Oracle\\Middleware\\Oracle\_Home\\wlserver」**と入力します。
 
 	5. **[OK]** クリックすると、新しい環境変数が保存され **[新しいシステム変数]** ダイアログが閉じます。
 
 	6. コントロール パネルで開かれた他のダイアログ ボックスを閉じます。
 
-11. 新しいコマンド プロンプトを開きます (**SERVER_HOME** 環境変数が有効になるように)。
+11. 新しいコマンド プロンプトを開きます (**SERVER\_HOME** 環境変数が有効になるように)。
 
 	>[AZURE.NOTE]残りの手順の一部では、仮想マシンにログオンした後にコマンド プロンプトを使用する必要があります。どのコンピューターにログオンしているかを簡単に把握できるように、コマンド プロンプトを開いた後に **title %COMPUTERNAME%** を実行します。
 	>
@@ -141,9 +155,9 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 12. 次のコマンドを実行します。
 
-		%SERVER_HOME%\common\bin\pack.cmd -managed=true -domain=C:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain -template=c:\mytestdomain.jar -template_name="mytestdomain" 
+		%SERVER\_HOME%\\common\\bin\\pack.cmd -managed=true -domain=C:\\Oracle\\Middleware\\Oracle\_Home\\user\_projects\\domains\\base\_domain -template=c:\\mytestdomain.jar -template\_name="mytestdomain" 
 
-	このコマンドは **c:\mytestdomain.jar** という名前の jar を作成します。 後で、この jar をクラスターの管理対象仮想マシンにコピーします。
+	このコマンドは **c:\\mytestdomain.jar** という名前の jar を作成します。 後で、この jar をクラスターの管理対象仮想マシンにコピーします。
 
 13. ポート 7001 の受信接続をファイアウォールで許可します。
 
@@ -165,19 +179,19 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 	1. 仮想マシンにログインします。
 
-	2. **「SERVER_HOME」**という環境変数を作成し、その値を**「C:\Oracle\Middleware\Oracle_Home\wlserver」**に設定します 。
+	2. **「SERVER\_HOME」**という環境変数を作成し、その値を**「C:\\Oracle\\Middleware\\Oracle\_Home\\wlserver」**に設定します 。
 
-	3. 管理仮想マシンの c:\mytestdomain.jar を管理対象仮想マシンの c:\mytestdomain.jar にコピーします。
+	3. 管理仮想マシンの c:\\mytestdomain.jar を管理対象仮想マシンの c:\\mytestdomain.jar にコピーします。
 
 	4. コマンド プロンプトを開きます (また、どのコンピューターがアクセスされているかを明確にするために必ずコマンド プロンプトで **title %COMPUTERNAME%** を実行します)。
 
 	5. 次のコマンドを実行します。
 
-			%SERVER_HOME%\common\bin\unpack.cmd -domain=C:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain -template=c:\mytestdomain.jar
+			%SERVER\_HOME%\\common\\bin\\unpack.cmd -domain=C:\\Oracle\\Middleware\\Oracle\_Home\\user\_projects\\domains\\base\_domain -template=c:\\mytestdomain.jar
 
-	6. コマンド プロンプトの現在のディレクトリを **C:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain\bin** に変更します。
+	6. コマンド プロンプトの現在のディレクトリを **C:\\Oracle\\Middleware\\Oracle\_Home\\user\_projects\\domains\\base\_domain\\bin** に変更します。
 
-	7. start<<*MACHINENAME*>>.cmd を実行します。<<*MACHINENAME*>> には管理対象コンピューターの名前を指定します。たとえば、**startMYVM2-MANAGED** です。
+	7. start<<\*MACHINENAME\*>>.cmd を実行します。<<\*MACHINENAME\*>> には管理対象コンピューターの名前を指定します。たとえば、**startMYVM2-MANAGED** です。
 
 	8. メッセージが表示されたら、WebLogic Server のユーザー名とパスワードを入力します。
 
@@ -196,7 +210,7 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 	4. **[負荷分散セットの作成]** チェック ボックスをオンにし、続いて **[完了]** をクリックします。
 
-	5. 負荷分散セットの名前を指定し、他のパラメーターは既定値をそのまま使用し、続いて **[完了] をクリックします。**
+	5. 負荷分散セットの名前を指定し、他のパラメーターは既定値をそのまま使用し、続いて **[完了] をクリックします。\*\*
 
 17. 仮想マシンのエンドポイントを作成します。
 
@@ -238,13 +252,13 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 1. WebLogic サーバー クラスターの管理者として機能している仮想マシン (たとえば、**MYVM1-ADMIN**) にログインします。 
 
-2. shoppingcart.war をローカルにコピーします。たとえば、**c:\mywar** という名前のフォルダーを作成し、<http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12-ManageSessions--4478/files/shoppingcart.war> で WAR を **c:\mywar** に保存します。
+2. shoppingcart.war をローカルにコピーします。たとえば、**c:\\mywar** という名前のフォルダーを作成し、<http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12-ManageSessions--4478/files/shoppingcart.war> で WAR を **c:\\mywar** に保存します。
 
 3. **[WebLogic Server 管理コンソール]**、<http://localhost:7001/console> を開きます。メッセージが表示されたら、WebLogic のユーザー名とパスワードを入力します。
 
 4. **WebLogic Server 管理コンソール**で、**[ロックと編集]**、**[デプロイ]**、**[インストール]** の順にクリックします。
 
-5. **[パス]** に**「c:\myway\shoppingcart.war」**と入力します。
+5. **[パス]** に**「c:\\myway\\shoppingcart.war」**と入力します。
 
 	![](media/virtual-machines-creating-oracle-webLogic-server-12c-cluster/image004.png)
 
@@ -305,4 +319,4 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 - [Microsoft Azure で Linux を使用する Oracle WebLogic Server 12c](http://www.oracle.com/technetwork/middleware/weblogic/learnmore/oracle-weblogic-on-azure-wp-2020930.pdf)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

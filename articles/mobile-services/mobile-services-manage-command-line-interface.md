@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="コマンド ラインでの Mobile Services の管理 - Azure チュートリアル" 
+	pageTitle="コマンド ラインでの Mobile Services の管理 | Azure Mobile Services" 
 	description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、管理する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="Mobile" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="07/22/2015" 
 	ms.author="glenga"/>
 
 # コマンド ライン ツールを使用したモバイル サービスの自動化 
@@ -25,10 +25,6 @@
 個々のコマンドを単一のスクリプトまたはバッチ ファイルと組み合わせることにより、モバイル サービスの作成、確認、および削除のプロセスを自動化することができます。
 
 このトピックでは、Azure コマンド ライン ツールでサポートされている一般的な管理タスクを取り上げます。詳細については、[Azure コマンド ライン ツールに関するドキュメント][reference-docs]を参照してください。
-
-<!--+  You must download and install the Azure command-line tools to your local machine. To do this, follow the instructions in the first section of this topic. 
-
-+ (Optional) To be able to execute HTTP requests directly from the command-line, you must use cURL or an equivalent tool. cURL runs on a variety of platforms. Locate and install cURL for your specific platform from the <a href=http://go.microsoft.com/fwlink/p/?LinkId=275676 target="_blank">cURL download  page</a>.-->
 
 ##Azure コマンド ライン ツールのインストール
 
@@ -110,11 +106,7 @@
 
 次のテーブルでは、スクリプトのアクセス許可値と [Azure 管理ポータル]でのアクセス許可値を比較しています。
 
-<table border="1" width="100%"><tr><th>スクリプト値</th><th>管理ポータル値</th></tr>
-<tr><td><code>public</code></td><td>すべてのユーザー</td></tr>
-<tr><td><code>application</code> (既定値)</td><td>アプリケーション キーを持つユーザー</td></tr>
-<tr><td><code>user</code></td><td>認証されたユーザーのみ</td></tr>
-<tr><td><code>admin </code></td><td>スクリプトと管理者のみ</td></tr></table>
+|スクリプト値|管理ポータルの値| |========|========| |`public`|すべてのユーザー| |`application`(既定値)|アプリケーション キーを持つユーザー| |`user`|認証されたユーザーのみ| |`admin`|スクリプトと管理者のみ|
 
 指定されたテーブルが既に存在する場合、`mobile table create` コマンドは失敗します。自動化スクリプト内では、テーブルの再作成を試行する前に、そのテーブルを削除する必要があります。
 
@@ -192,4 +184,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -48,7 +48,7 @@ DocumentDB リソースでサポートされる HTTP 動詞とその標準的な
 ## POST を使用した新しいリソースの作成 
 対話モデルに関する理解を深めるために、新しいリソースの作成 (INSERT) を例に考えてみましょう。新しいリソースを作成するためには、そのリソースの従属先コンテナー フィードの URI に対し、HTTP POST 要求を発行する必要があります。要求本文に、作成するリソースの表現を含めます。この要求に必要なプロパティは、リソースの id だけです。
 
-例として、新規のデータベースを作成するためには (id プロパティに一意の名前を設定することで) /dbs に対してデータベース リソースを POST します。同様に、新しいコレクションを作成するためには /dbs/_rid/colls/ へコレクション リソースを POST するといった具合です。応答には、完全にコミットされたリソースが、システムによって生成されたプロパティと共に格納されます。たとえば、返されたリソースの _self リンクを使用すれば、他のリソースにナビゲートすることができます。ここで、単純な HTTP ベースの対話モデルの例を挙げます。クライアントは、以下のような HTTP 要求を発行することで、アカウント内に新しいデータベースを作成することができます。
+例として、新規のデータベースを作成するためには (id プロパティに一意の名前を設定することで) /dbs に対してデータベース リソースを POST します。同様に、新しいコレクションを作成するためには /dbs/\_rid/colls/ へコレクション リソースを POST するといった具合です。応答には、完全にコミットされたリソースが、システムによって生成されたプロパティと共に格納されます。たとえば、返されたリソースの _self リンクを使用すれば、他のリソースにナビゲートすることができます。ここで、単純な HTTP ベースの対話モデルの例を挙げます。クライアントは、以下のような HTTP 要求を発行することで、アカウント内に新しいデータベースを作成することができます。
 
 	POST https://fabrikam.documents.azure.com/dbs
 	{
@@ -82,7 +82,7 @@ DocumentDB サービスは、さまざまな情報を含んだ応答とデータ
         response.setBody("Hello, World");
      }
 
-MyDb 下のコレクションにストアド プロシージャを登録するには、/dbs/_rid-db/colls/_rid-coll/sprocs に対して POST を発行します。
+MyDb 下のコレクションにストアド プロシージャを登録するには、/dbs/\_rid-db/colls/\_rid-coll/sprocs に対して POST を発行します。
 
 	POST https://fabrikam.documents.azure.com/dbs/UoEi5w==/colls/UoEi5w+upwA=/sprocs HTTP/1.1
 	
@@ -253,13 +253,13 @@ REST API を使用してリソースを操作する方法については、「[A
 - [DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 - [DocumentDB のプログラミング: ストアド プロシージャ、トリガー、UDF](../documentdb-programming/)
 - [Azure DocumentDB リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn781482.aspx)
-- REST [http://en.wikipedia.org/wiki/Representational_state_transfer](http://en.wikipedia.org/wiki/Representational_state_transfer)
+- REST [http://en.wikipedia.org/wiki/Representational\_state\_transfer](http://en.wikipedia.org/wiki/Representational_state_transfer)
 - JSON 仕様 [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt)
 - HTTP 仕様 [http://www.w3.org/Protocols/rfc2616/rfc2616.html](http://www.w3.org/Protocols/rfc2616/rfc2616.html)
-- エンティティ タグ [http://en.wikipedia.org/wiki/HTTP_ETag](http://en.wikipedia.org/wiki/HTTP_ETag)
+- エンティティ タグ [http://en.wikipedia.org/wiki/HTTP\_ETag](http://en.wikipedia.org/wiki/HTTP_ETag)
 
 
 [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

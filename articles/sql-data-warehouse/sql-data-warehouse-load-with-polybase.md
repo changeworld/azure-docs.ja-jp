@@ -49,7 +49,7 @@ CREATE MASTER KEY;
 ## データベース スコープの資格情報の作成
 Azure BLOB ストレージにアクセスするには、Azure ストレージ アカウントの認証情報を格納するデータベース スコープの資格情報を作成する必要があります。Data Warehouse データベースに接続し、アクセスする各 Azure ストレージ アカウントのデータベース スコープ資格情報を作成します。ユーザー名と Azure ストレージ アカウント キーをシークレットとして指定します。ユーザー名は、Azure Storage への認証には影響を及ぼしません。
 
-データベース スコープの資格情報が既に存在するかどうかを確認するには、サーバーの資格情報のみを表示する sys.credentials ではなく sys.database_credentials を使用します。
+データベース スコープの資格情報が既に存在するかどうかを確認するには、サーバーの資格情報のみを表示する sys.credentials ではなく sys.database\_credentials を使用します。
 
 ```
 -- Check for existing database-scoped credentials.
@@ -207,4 +207,4 @@ PolyBase でのロードでは、UTF-8 エンコード スタイルのみがサ�
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189450.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

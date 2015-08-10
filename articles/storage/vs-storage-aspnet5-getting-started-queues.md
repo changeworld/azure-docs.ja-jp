@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Storage の使用" 
-	description="Visual Studio の ASP.NET 5 プロジェクトで Azure キュー ストレージの使用を開始する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+<properties
+	pageTitle="Azure Storage の使用"
+	description="Visual Studio の ASP.NET 5 プロジェクトで Azure キュー ストレージの使用を開始する方法"
+	services="storage"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/20/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="web"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/22/2015"
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (ASP.NET 5 プロジェクト)
@@ -27,11 +27,28 @@
 > - [Queues](vs-storage-aspnet5-getting-started-queues.md)
 > - [Tables](vs-storage-aspnet5-getting-started-tables.md)
 
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)](storage-dotnet-how-to-use-queues.md/ "How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)")」を参照してください。
+##概要
 
-ASP.NET 5 プロジェクトでプログラムを使用してキューにアクセスするには、次の項目を追加する必要があります (存在していない場合)。
+Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
 
-1. プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
+この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET 5 プロジェクトで Azure ストレージ アカウントを作成または参照した後に、Visual Studio で Azure テーブル ストレージの使用を開始する方法について説明します。**接続済みサービスの追加**操作によって、プロジェクト内の Azure ストレージにアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
+
+最初に、ストレージ アカウント内に Azure キューを作成する必要があります。Visual Studio **サーバー エクスプローラー**を使用して、キューを作成する方法を説明します。コードでキューを作成する方法も説明します。
+
+また、キュー メッセージの追加、変更、読み取り、削除などの基本的なキュー操作を実行する方法についても説明します。例は C# のコードで記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。ASP.NET の詳細については、[ASP.NET](http://www.asp.net) に関するページを参照してください。
+
+**注:** ASP.NET 5 で Azure ストレージへの呼び出しを実行する API の一部は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+
+詳細については、「[How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)](storage-dotnet-how-to-use-queues.md/ "How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)")」を参照してください。
+
+##サーバー エクスプローラーでキューを作成する
+[AZURE.INCLUDE [vs-create-queue-in-server-explorer](../../includes/vs-create-queue-in-server-explorer.md)]
+
+##コードでキューにアクセスする
+
+ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
+
+1. C# ファイル冒頭の名前空間宣言に、次の `using` ステートメントが含まれていることを確認してください。
 
 		using Microsoft.Framework.Configuration;
 		using Microsoft.WindowsAzure.Storage;
@@ -39,70 +56,138 @@ ASP.NET 5 プロジェクトでプログラムを使用してキューにアク�
 		using System.Threading.Tasks;
 		using LogLevel = Microsoft.Framework.Logging.LogLevel;
 
-2. 次のコードを使用して構成設定を取得します。
+2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
 
-		 IConfigurationSourceRoot config = new Configuration()
-                .AddJsonFile("config.json")
-                .AddEnvironmentVariables();
+		 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+		   CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
 
-#####ストレージ接続文字列を取得する
-キューの操作を開始するには、キューを格納するストレージ アカウントの接続文字列を取得する必要があります。**CloudStorageAccount** 型を使用してストレージ アカウント情報を表すことができます。ASP.NET 5 プロジェクトを使用する場合、次のコードに示すように、構成オブジェクトの get メソッドを呼び出して Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得することができます。
+3. ストレージ アカウント内のキュー オブジェクトを参照する **CloudQueueClient** オブジェクトを取得します。
 
-**注:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+	    // Create the table client.
+    	CloudQuecClient queueClient = storageAccount.CreateCloudTableClient();
 
-	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-      config.Get("MicrosoftAzureStorage:<storageAccountName>_AzureStorageConnectionString"));
+4. 特定のキューを参照する **CloudQueue** オブジェクトを取得します。
 
-#####キューを作成する
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このトピックのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount メソッド](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx "CloudStorageAccount")に関するドキュメントを参照してください。
+    	// Get a reference to a table named "messageQueue"
+	    CloudTable messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**注:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
-	// Create the queue client.
-	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+**注:** 上記のコードはすべて、以下の例に示すコードの前に使用してください。
 
-**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。コードは "myqueue" という名前のキューを参照しようとします。 この名前のキューが見つからない場合は作成します。
+###コードでキューを作成する
 
-	// Get a reference to a queue named “myqueue”.
-	CloudQueue queue = queueClient.GetQueueReference("myqueue");
+Visual Studio **サーバー エクスプローラー**を使用せずに、コードで Azure キューを作成するには、`CreateIfNotExistsAsync()` への呼び出しを追加します。
 
-	// If the queue isn’t already there, then create it.
+	// Create the CloudTable if it does not exist
 	await queue.CreateIfNotExistsAsync();
 
-**注:** このコードはすべて、以下のセクションのコードの前に使用してください。
+##メッセージをキューに追加する
 
-#####メッセージをキューに挿入する
-既存のキューにメッセージを挿入するには、最初に新しい **CloudQueueMessage** オブジェクトを作成します。次に、AddMessageAsync() メソッドを呼び出します。**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
+既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成し、AddMessageAsync() メソッドを呼び出します。
+
+**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。
+
+次の例では、'Hello, World' というメッセージを挿入します。
+
+	// Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
 
 	// Create a message and add it to the queue.
 	CloudQueueMessage message = new CloudQueueMessage("Hello, World");
 	await queue.AddMessageAsync(message);
 
-#####次のメッセージをピークする
+##キュー内のメッセージを読み取る
+
 PeekMessageAsync() メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
-	// Peek at the next message in the queue.
-	CloudQueueMessage peekedMessage = queue.PeekMessage();
+	// Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
 
 	// Display the message.
-	CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
-
-#####次のメッセージを削除する
-コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
+	CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 
-1. GetMessageAsync() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessageAsync() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。 
-2.	また、キューからのメッセージの削除を完了するには、DeleteMessageAsync() を呼び出します。 
+##キュー内のメッセージを読み取って削除する
+
+コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。1.GetMessageAsync() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessageAsync() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。2.また、キューからのメッセージの削除を完了するには、DeleteMessageAsync() を呼び出します。
 
 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に DeleteMessageAsync() を呼び出します。
 
-	// Get the next message in the queue.
-	CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
+	// Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
 
-	// Process the message in less than 30 seconds, and then delete the message.
+	// Get the next message in the queue.
+	CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
+
+	// Process the message in less than 30 seconds
+
+    // Then delete the message.
 	await queue.DeleteMessageAsync(retrievedMessage);
 
-[Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
- 
+## 追加オプションを利用してメッセージをデキューする
 
-<!---HONumber=July15_HO4-->
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**GetMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**foreach** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**GetMessages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
+
+    // Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
+
+    // Create the queue client.
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+    // Retrieve a reference to a queue.
+    CloudQueue queue = queueClient.GetQueueReference("myqueue");
+
+    foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes(5)))
+    {
+        // Process all messages in less than 5 minutes, deleting each message after processing.
+        queue.DeleteMessage(message);
+    }
+
+## キューの長さを取得する
+
+キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+
+    // Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
+
+	// Fetch the queue attributes.
+	messageQueue.FetchAttributes();
+
+    // Retrieve the cached approximate message count.
+    int? cachedMessageCount = messageQueue.ApproximateMessageCount;
+
+	// Display number of messages.
+	Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
+
+## Async-Await パターンを一般的なキュー API で使用する
+
+この例では、Async-Await パターンを一般的なキュー API で使用する方法を示します。このサンプルは、特定のメソッドの非同期バージョンをそれぞれ呼び出しています。これは、各メソッドの Async 接尾辞によって確認できます。非同期のメソッドを使用するとき、async-await パターンは、呼び出しが完了するまでローカルでの実行を中断します。この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性が向上させることができます。.NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。
+
+    // Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
+
+    // Create a message to put in the queue
+    CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
+
+    // Async enqueue the message
+    await messageQueue.AddMessageAsync(cloudQueueMessage);
+    Console.WriteLine("Message added");
+
+    // Async dequeue the message
+    CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
+    Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
+
+    // Async delete the message
+    await messageQueue.DeleteMessageAsync(retrievedMessage);
+    Console.WriteLine("Deleted message");
+## キューを削除する
+
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **Delete** メソッドを呼び出します。
+
+    // Get a reference to the **CloudQueue** object named 'messageQueue' as described in "Access a queue in code"
+
+    // Delete the queue.
+    messageQueue.Delete();
+
+
+
+##次のステップ
+
+[AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
+			
+
+<!---HONumber=July15_HO5-->

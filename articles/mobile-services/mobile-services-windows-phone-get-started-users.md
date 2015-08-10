@@ -13,26 +13,20 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/01/2015" 
+	ms.date="07/23/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users-legacy](../../includes/mobile-services-selector-get-started-users-legacy.md)]
 
-<div class="dev-onpage-video-clear clearfix">
-<div class="dev-onpage-left-content">
+##概要
 
-<p>このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。</p>
-</div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=298631" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-get-started-authentication-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=298631" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">10:50:00</span></div>
-</div>
+このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
-このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
+次のビデオで、Nick Harris によるこのチュートリアルのデモをご覧いただけます。
 
-1. [アプリケーションを認証に登録し、Mobile Services を構成する]
-2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
-3. [アプリケーションに認証を追加する]
+> [AZURE.VIDEO mobile-authorize-users-in-scripts-windows-phone]
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。
 
@@ -40,20 +34,16 @@
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
-
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
-
 ##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
-
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-<ol start="3">
-<li>Visual Studio 2012 Express for Windows Phone で、チュートリアル「<strong>モバイル サービスの使用</strong>」を実行したときに作成したプロジェクトを開きます。</li>
+&nbsp;&nbsp;3.Visual Studio 2012 Express for Windows Phone で、チュートリアル「[既存のアプリケーションへの Mobile Services の追加](mobile-services-windows-phone-get-started-data.md)」を実行したときに作成したプロジェクトを開きます。
 
-<li>F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、<em>TodoItem</em> テーブルでは認証が要求されるために発生します。</li></ol>
+&nbsp;&nbsp;4.F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、*TodoItem* テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -70,9 +60,9 @@
 次の[モバイル サービス ユーザーのサービス側の認証](mobile-services-javascript-backend-service-side-authorization.md)チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
 
 <!-- Anchors. -->
-[アプリケーションを認証に登録し、Mobile Services を構成する]: #register
-[テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
-[アプリケーションに認証を追加する]: #add-authentication
+[Register your app for authentication and configure Mobile Services]: #register
+[Restrict table permissions to authenticated users]: #permissions
+[Add authentication to the app]: #add-authentication
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -90,4 +80,4 @@
 [Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: mobile-services-windows-phone-single-sign-on.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

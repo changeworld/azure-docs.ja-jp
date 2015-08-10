@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2015"
+   ms.date="07/24/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -38,13 +38,15 @@ Azure リソース マネージャーでは、 アクセス制御が管理プラ
 
 Azure プレビュー ポータルでは、すべての新しいリソースはリソース グループ内で作成されます。Web サイトなどのリソースを 1 つだけ作成した場合でも、そのリソースを既存のグループに追加するのか、またはそのリソース用の新しいグループを作成するのかを決定する必要があります。
 
-次の図は、Web サイト、データベース、および Application Insights を含むリソース グループを示しています。
+次の図は、Application Insights、データベース サーバー、データベース、アプリ サービス プラン、Web サイトを含むリソース グループを示しています。
 
-![リソース グループの概要](./media/resource-group-overview/resourcegroupsummary.png)
+![リソース グループの概要](./media/resource-group-overview/resourcegroupsummary2.png)
 
-リソース グループは、別のリソース グループ内のリソースへもリンクできます。リソースがリンク済みと見なされるのは、異なるリソース グループ内にあるリソースとの間にデプロイの依存関係が存在する場合です。たとえば、 1 つのリソース グループ内の Web アプリが、別のリソース グループ内のデータベースに接続している場合、これらのリソースはリンク済みです。
+リソース グループは、別のリソース グループ内のリソースへもリンクできます。リソースがリンク済みと見なされるのは、異なるリソース グループ内にあるリソースとの間にデプロイの依存関係が存在する場合です。たとえば、 1 つのリソース グループ内の Web アプリが、別のリソース グループ内のデータベースに接続している場合、これらのリソースはリンク済みです。その他のリソース グループ内のリソース間のリンクを明示的に定義することもできます。
 
-![リンク済みリソース](./media/resource-group-overview/linkedresource.png)
+リソースのリンクの詳細については、「[Azure リソース マネージャーでのリソースのリンク](resource-group-link-resources.md)」を参照してください。
+
+新しいリソース グループにリソースを移動する必要がある場合は、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
 プレビュー ポータルでは、コストの参照、イベントの監視、および警告の管理が簡単にできます。次の図は、1 つのグループに対する一括請求を示しています。
 
@@ -68,9 +70,11 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 テンプレートの定義の詳細については、[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)を参照してください。
 
-テンプレートのスキーマについては、「[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)」を参照してください。
+テンプレートのスキーマについては、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
 デプロイにテンプレートを使用する方法については、[Deploy an application with Azure Resource Manager template (Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ)](azure-portal/resource-group-template-deploy.md) と [Deploy a complex application predictably in Azure (Azure での複雑なアプリケーションの予測可能な方法でのデプロイ)](app-service-web/app-service-deploy-complex-application-predictably.md) を参照してください。
+
+テンプレートを構成する方法のガイダンスについては、「[Azure リソース マネージャーのテンプレートのデザインのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
 ## タグ
 
@@ -95,49 +99,31 @@ Azure リソース マネージャーは、組織に対する特定アクショ�
 
 Azure リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。
 
-重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。
+重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。詳細については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-ロールベースのアクセス制御の詳細については、[Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)を参照してください。
+ロールベースのアクセス制御の詳細については、[Microsoft Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)を参照してください。
 
 アクセス ポリシー設定の例については、[Managing and Auditing Access to Resources (リソースへのアクセスの管理および監視)](azure-portal/resource-group-rbac.md) を参照してください。
+
+ベスト プラクティスについては、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
 ## 一貫性のある管理レイヤー
 
 Azure リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
+PowerShell に関する詳細については、[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
 
 Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)を参照してください。
 
 REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。
 
+プレビュー ポータルの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
+
 ## 次のステップ
-Getting Started (概要)
 
-- [リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
-- [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
-- [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
+- テンプレート作成の詳細については、「[テンプレートの作成](./resource-group-authoring-templates.md)」を参照してください。
+- 作成したテンプレートをデプロイするには、「[テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
+- テンプレートで使用できる関数については、「[テンプレート関数](./resource-group-template-functions.md)」を参照してください。
+- テンプレートのデザインのガイダンスについては、「[Azure リソース マネージャーのテンプレートのデザインのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
-アプリケーションの作成とデプロイ
-
-- [テンプレートの作成](./resource-group-authoring-templates.md)
-- [テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)
-- [デプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)
-- [Azure で複雑なアプリケーションを予測どおりにデプロイ](app-service-web/app-service-deploy-complex-application-predictably.md)
-- [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](virtual-machines/arm-template-deployment.md)
-- [テンプレート関数](./resource-group-template-functions.md)
-- [高度なテンプレートの操作](./resource-group-advanced-template.md)
-- [テンプレートのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)
-
-リソースの整理
-
-- [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
-
-アクセスの管理と監査
-
-- [Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md)
-- [Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)
-- [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)
-- [Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

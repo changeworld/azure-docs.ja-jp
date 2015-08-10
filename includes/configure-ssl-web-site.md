@@ -4,11 +4,11 @@
 
 Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。この記事では、クライアント証明書の認証については扱っていません。それにについては、「[How To Configure TLS Mutual Authentication for Web Apps (Web アプリ用に TLS 相互認証を構成する方法)](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」(英語) を参照してください。
 
-##<a name="bkmk_azurewebsites"></a>*.azurewebsites.net ドメインの HTTPS
+##<a name="bkmk_azurewebsites"></a>\*.azurewebsites.net ドメインの HTTPS
 
-カスタム ドメイン名を使用する計画がなく、Azure によって Web アプリに割り当てられた *.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用する計画がある場合は、Microsoft の証明書によって HTTPS が既にサイトで有効に設定されています。アプリにアクセスするには、**https://mywebsite.azurewebsites.net** を使用できます。ただし、*.azurewebsites.net はワイルドカード ドメインです。[すべてのワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)と同様、独自の証明書を持つカスタム ドメインを使用する場合ほど安全ではありません。
+カスタム ドメイン名を使用する計画がなく、Azure によって Web アプリに割り当てられた \*.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用する計画がある場合は、Microsoft の証明書によって HTTPS が既にサイトで有効に設定されています。アプリにアクセスするには、**https://mywebsite.azurewebsites.net** を使用できます。ただし、\*.azurewebsites.net はワイルドカード ドメインです。[すべてのワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)と同様、独自の証明書を持つカスタム ドメインを使用する場合ほど安全ではありません。
 
-このドキュメントの残りの部分では、カスタム ドメイン (**contoso.com**、**www.contoso.com**、***.contoso.com** など) の HTTPS を有効にする方法について詳しく説明します。
+このドキュメントの残りの部分では、カスタム ドメイン (**contoso.com**、**www.contoso.com**、**\*.contoso.com** など) の HTTPS を有効にする方法について詳しく説明します。
 
 ##<a name="bkmk_domainname"></a>カスタム ドメインの SSL を有効にする
 
@@ -38,7 +38,7 @@ Azure App Service で使用する SSL 証明書を取得するには、証明書
 - [OpenSSL を使用した SubjectAltName 証明書の取得](#bkmk_subjectaltname)
 - [自己署名証明書の生成 (テスト目的専用)](#bkmk_selfsigned) 
 
-> [AZURE.NOTE]手順の途中で、`www.contoso.com` などの**共通名**の入力が必要になります。ワイルドカード証明書の場合、この値は *.domainname (*.contoso.com など) にする必要があります。ワイルドカード名 (*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードの subjectAltName 証明書を使用できます。
+> [AZURE.NOTE]手順の途中で、`www.contoso.com` などの**共通名**の入力が必要になります。ワイルドカード証明書の場合、この値は \*.domainname (\*.contoso.com など) にする必要があります。ワイルドカード名 (\*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードの subjectAltName 証明書を使用できます。
 >
 > Azure App Service は楕円曲線暗号 (ECC) 証明書をサポートしています。ただし、この証明書は比較的新しいため、正しい手順で CSR を作成するには証明機関の協力が必要です。
 
@@ -164,7 +164,7 @@ Certreq.exe は、証明書の要求を作成するための Windows ユーテ�
 
 5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して、**myserver.key** と **myserver.crt** を、Azure App Service で必要とされる形式である **myserver.pfx** に変換します。
 
-		openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt
+		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
@@ -174,7 +174,7 @@ Certreq.exe は、証明書の要求を作成するための Windows ユーテ�
 	>
 	>
 	`````
-	openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem
+	openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem
 	`````
 
 	このコマンドを実行すると、Azure App Service での使用に適した **myserver.pfx** ファイルが生成されます。
@@ -236,7 +236,7 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
 
 		subjectAltName=DNS:sales.contoso.com,DNS:support.contoso.com,DNS:fabrikam.com
 
-	commonName_default フィールドを変更する必要はありません。次のステップのいずれかで、共通名を入力するように求められるためです。
+	commonName\_default フィールドを変更する必要はありません。次のステップのいずれかで、共通名を入力するように求められるためです。
 
 2. __sancert.cnf__ ファイルを保存します。
 
@@ -293,7 +293,7 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
 	>
 	> 
 	`````
-	openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem
+	openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem
 	`````
 
 	このコマンドを実行すると、Azure App Service での使用に適した **myserver.pfx** ファイルが生成されます。
@@ -445,7 +445,7 @@ Azure App Service は HTTPS を適用*しません*。訪問者は引き続き H
 
 URL 書き換えルールは、アプリケーションのルートに格納されている **web.config** ファイルに定義されます。次の例には、すべての受信トラフィックに HTTPS の使用を強制する基本的な URL 書き換えルールが含まれています。
 
-<a name="example"></a>**URL 書き換え例の Web.Config**
+<a name="example"></a>\*\*URL 書き換え例の Web.Config\*\*
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
@@ -541,4 +541,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

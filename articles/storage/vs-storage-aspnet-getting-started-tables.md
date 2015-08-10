@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="07/22/2015" 
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (ASP.NET プロジェクト)
@@ -42,12 +42,7 @@ Azure テーブル ストレージ サービスを使用すると、大量の構
 
 ##コードでテーブルにアクセスする 
 
-## プログラムでテーブル ストレージにアクセスする
 
-[AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
-
-### 名前空間宣言
-プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
 
 1. C# ファイル冒頭の名前空間宣言に、次の `using` ステートメントが含まれていることを確認してください。
 
@@ -92,7 +87,7 @@ Visual Studio **サーバー エクスプローラー**を使用せずに、コ�
 
 ##エンティティのバッチを挿入する
 
-1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用して **￼￼￼￼￼￼￼TableBatchOperation￼￼￼￼￼￼￼** オブジェクトに追加します。その後、CloudTable.ExecuteBatchAsync を呼び出して操作を実行します。
+1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用して **TableBatchOperation** オブジェクトにそれらのエンティティ オブジェクトを追加し、CloudTable.ExecuteBatchAsync を呼び出して操作を開始します。
 
 	// Get a reference to a **CloudTable** object named 'peopleTable' as described in "Access a table in code"
 	
@@ -188,7 +183,7 @@ Visual Studio **サーバー エクスプローラー**を使用せずに、コ�
 
 ## 次のステップ
 
-[AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
+[AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
 
 
@@ -215,4 +210,4 @@ Visual Studio **サーバー エクスプローラー**を使用せずに、コ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

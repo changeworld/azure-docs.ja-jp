@@ -1,6 +1,19 @@
-<properties pageTitle="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" description="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" />
+<properties 
+	pageTitle="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" 
+	description="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="mblythe" />
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="07/08/2015" ms.author="heidist" />
+<tags 
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article"  
+	ms.tgt_pltfrm="na" 
+	ms.date="07/08/2015" 
+	ms.author="heidist" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)
 
@@ -657,4 +670,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

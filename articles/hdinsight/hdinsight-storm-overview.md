@@ -1,7 +1,6 @@
 <properties
 	pageTitle="HDInsight での Apache Storm の概要 |Microsoft Azure"
 	description="Apache Storm の概要と、HDInsight で Storm を使用した、クラウドでのリアルタイムのデータ分析ソリューションを構築する方法について説明します。"
-	keywords="apache storm,real time analytics"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
@@ -51,9 +50,7 @@ Storm の使用方法については、「[HDInsight での Storm の使用][get
 
 HDInsight クラスター上に新しい Storm を数分でプロビジョニングできます。クラスター名、サイズ、管理者アカウント、ストレージ アカウントを指定します。Azure は、トポロジのサンプルや Web 管理ダッシュボードを含む、クラスターを作成します。
 
-Azure ポータルを使用して、HDInsight クラスター上の Storm をプロビジョニングする例を次に示します。[Azure PowerShell](../install-configure-powershell.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
-
-![ポータルでクラスターを簡易作成する例](./media/hdinsight-storm-overview/quick-create.png)
+> [AZURE.NOTE][Azure CLI](../xplat-cli.md) または [Azure PowerShell](../powershell-install-configure.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
 
 要求を送信すると、15 分以内には、新しい Storm クラスターが実行され、最初のリアルタイム分析のパイプラインの準備が完了します。
 
@@ -77,7 +74,7 @@ HDInsight クラスター上の各 Storm には、クラスターで実行され
 
 Storm ダッシュボードの使用に関する詳細については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」をご覧ください。
 
-HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、「[Event Hubs の使用](service-bus-event-hubs-c-storm-getstarted.MD)」と「[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.MD)」をご覧ください。
+HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM\_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、「[Event Hubs の使用](service-bus-event-hubs-c-storm-getstarted.MD)」と「[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.MD)」をご覧ください。
 
 ###信頼性
 
@@ -93,7 +90,7 @@ Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。
 
 作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。すべての HDInsight クラスターで、データの処理中でも、クラスター内のノード数を変更できます。
 
-![ポータルでのデータ ノード インスタンスの数](./media/hdinsight-storm-overview/scale.png)
+> [AZURE.NOTE]スケーリングによって追加された新しいノードを利用するには、クラスター サイズを増やす前に開始されていたトポロジを再調整する必要があります。
 
 ###サポート
 
@@ -157,7 +154,7 @@ HDInsight Tools for Visual Studio では、.NET 開発者は、C# のトポロ�
 
 Trident の詳細については、apache.org の「[Trident のチュートリアル](https://storm.incubator.apache.org/documentation/Trident-tutorial.html)」をご覧ください。
 
-未加工の Java と Trident トポロジの例については、HDInsight Storm クラスターの **%storm_home%\contrib\storm-starter** ディレクトリをご覧ください。
+未加工の Java と Trident トポロジの例については、HDInsight Storm クラスターの **%storm\_home%\\contrib\\storm-starter** ディレクトリをご覧ください。
 
 ##一般的な開発パターンの例
 
@@ -210,4 +207,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: ../hdinsight-storm-getting-started.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

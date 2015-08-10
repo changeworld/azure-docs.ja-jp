@@ -1,6 +1,6 @@
 <properties 
    pageTitle="ロード バランサー分散モードの構成 |Microsoft Azure"
-   description="Azure ロード バランサーの分散モードをソース IP アフィニティ (スティッキー セッションとも呼ばれる) をサポートするように構成する方法"
+   description="ソース IP アフィニティをサポートするように Azure ロード バランサーの分散モードを構成する方法"
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
@@ -149,4 +149,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

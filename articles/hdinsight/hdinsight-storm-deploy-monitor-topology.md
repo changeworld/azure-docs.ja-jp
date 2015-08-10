@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm トポロジのデプロイと管理
@@ -42,9 +42,7 @@ Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Stor
 
 ##Storm ダッシュボード
 
-Storm ダッシュボードは、Storm クラスターで使用できます。URL は、**https://&lt;clustername>.azurehdinsight.net/** (**clustername** はお使いの HDInsight クラスターの Storm の名前) です。また、Azure ポータルのクラスター ダッシュボードにある **[Storm ダッシュボード]** リンクからダッシュボードにアクセスできます。
-
-![Storm ダッシュボードが強調表示されたポータル][hdinsight-dashboard]
+Storm ダッシュボードは、Storm クラスターで使用できる Web ページです。URL は、**https://&lt;clustername>.azurehdinsight.net/** (**clustername** はお使いの HDInsight クラスターの Storm の名前) です。
 
 Storm ダッシュボードの上部で、**[トポロジの送信**] を選択します。ページの指示に従ってサンプル トポロジを実行するか、作成したトポロジをアップロードして実行します。
 
@@ -178,4 +176,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

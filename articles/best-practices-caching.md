@@ -630,7 +630,7 @@ foreach (var value in await cache.SetMembersAsync("tag:iot:blog:posts"))
 
 ### 最近アクセスした項目の検索
 
-多くのアプリケーションに伴う共通の問題に、最近アクセスした項目の検索があります。たとえば、あるブログ サイトで最近読まれたブログの投稿を表示する必要があるとしましょう。この機能を実装するには、Redis リストを使用します。Redis リストには、同じキーを共有する複数の項目が含まれていますが、このリストは両端キューとして機能します。LPUSH (左プッシュ) コマンドと RPUSH (右プッシュ) コマンドを使用すると、リストのどちら側の終端にも項目をプッシュできます。LPOP コマンドと RPOP コマンドを使用すると、リストのどちら側の終端からも項目を取得できます。LRANGE コマンドと RRANGE コマンドを使用すると、要素のセットを返すこともできます。以下のコード スニペットに、StackExchange ライブラリを使用してこれらの操作を実行する方法を示します。このコードでは、これまでの例の BlogPost 型を使用します。ブログの投稿がユーザーに読まれると、IDatabase.ListLeftPushAsync メソッドを使用して、ブログの投稿のタイトルが Redis キャッシュの "blog:recent_posts" キーに関連付けられているリストにプッシュされます。
+多くのアプリケーションに伴う共通の問題に、最近アクセスした項目の検索があります。たとえば、あるブログ サイトで最近読まれたブログの投稿を表示する必要があるとしましょう。この機能を実装するには、Redis リストを使用します。Redis リストには、同じキーを共有する複数の項目が含まれていますが、このリストは両端キューとして機能します。LPUSH (左プッシュ) コマンドと RPUSH (右プッシュ) コマンドを使用すると、リストのどちら側の終端にも項目をプッシュできます。LPOP コマンドと RPOP コマンドを使用すると、リストのどちら側の終端からも項目を取得できます。LRANGE コマンドと RRANGE コマンドを使用すると、要素のセットを返すこともできます。以下のコード スニペットに、StackExchange ライブラリを使用してこれらの操作を実行する方法を示します。このコードでは、これまでの例の BlogPost 型を使用します。ブログの投稿がユーザーに読まれると、IDatabase.ListLeftPushAsync メソッドを使用して、ブログの投稿のタイトルが Redis キャッシュの "blog:recent\_posts" キーに関連付けられているリストにプッシュされます。
 
 ```csharp
 ConnectionMultiplexer redisHostConnection = ...;
@@ -777,4 +777,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md)」(Redis のトランザクション) ページ。
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx)」(データのパーティション分割のガイダンス)。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

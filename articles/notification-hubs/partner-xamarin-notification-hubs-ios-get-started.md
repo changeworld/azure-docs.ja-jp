@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="04/14/2015"
+	ms.date="07/28/2015"
 	ms.author="yuaxu"/>
 
 # 通知ハブの使用
@@ -128,9 +128,9 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
   	![][9]
 
-    > [AZURE.NOTE]既定では、ダウンロードした開発証明書ファイルの名前は **aps_development.cer** になっています。
+    > [AZURE.NOTE]既定では、ダウンロードした開発証明書ファイルの名前は **aps\_development.cer** になっています。
 
-7. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。
+7. ダウンロードしたプッシュ証明書 **aps\_development.cer** をダブルクリックします。
 
 	下図のように、新しい証明書が Keychain にインストールされます。
 
@@ -480,4 +480,4 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="hero-article" 
-	ms.date="04/29/2015" 
+	ms.date="07/24/2015" 
 	ms.author="ryancraw"/>
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
@@ -389,7 +389,7 @@
 		
 		module.exports = config;
 
-3. [Microsoft Azure プレビュー ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH_KEY の値を更新します。
+3. [Microsoft Azure プレビュー ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
 
 4. **config.js** ファイルを保存して閉じます。
  
@@ -498,7 +498,7 @@
 	
 	アプリケーションが動作するために必要なコードはこれですべてです。
 
-5. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
+5. **public\\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
 
 		body {
 		  padding: 50px;
@@ -559,4 +559,4 @@
   [Git]: http://git-scm.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

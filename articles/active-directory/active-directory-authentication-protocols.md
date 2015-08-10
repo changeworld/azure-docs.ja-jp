@@ -51,9 +51,9 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-[認証に Azure AD を使用する](https://msdn.microsoft.com/library/azure/dn385718.aspx)
+[認証に Azure AD を使用する](../app-service-web/web-sites-authentication-authorization.md)
 
 [Active Directory のコード例](active-directory-code-samples.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

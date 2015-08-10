@@ -33,8 +33,40 @@
 
 デザイナー ツールを使用して、既定のワークフロー ファイルを変更できます。既定のワークフロー ファイルは[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。フォルダーにはこれらのファイルの説明も含まれています。
 
-次のブログでは、デザイナーの使用方法に関するトレーニング ビデオについて説明しています。
+以下のビデオでは、デザイナーの使用方法を示しています。
+
+###Day 1 - 作業の開始
+
+Day 1 のビデオの内容は次のとおりです。
+
+- デザイナーの概要
+- 基本的なワークフロー - "Hello World"
+- Azure Media Services のストリーミングで使用する複数の出力 MP4 ファイルの作成
+
+> [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-1]
+
+###Day 2
+
+Day 2 のビデオの内容は次のとおりです。
+
+- さまざまなソース ファイル シナリオ - オーディオの処理
+- 高度なロジックを含むワークフロー
+- グラフ ステージ
+
+> [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-2]
+
+###Day 3
+
+Day 3 のビデオの内容は次のとおりです。
+
+- ワークフローと設計図の内部スクリプト
+- 現在のエンコーダの制限事項
+- Q & A
+ 
+> [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-3]
+
+##関連項目
 
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

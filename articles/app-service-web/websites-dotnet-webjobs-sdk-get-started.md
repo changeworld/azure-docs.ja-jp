@@ -312,7 +312,9 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 ### Azure SQL データベースとストレージ アカウントを使用するように Web アプリケーションを構成する
 
-セキュリティ上のベスト プラクティスとして、[接続文字列などの機密情報をソース コード リポジトリに格納されるファイルに含めるのは避ける](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)必要があります。Azure では、接続文字列とその他の設定値を Azure 環境内で設定できます。その後、アプリケーションを Azure 内で実行するときに、ASP.NET 構成 API が自動的にそれらの値を取り出します。このセクションでは、Azure 内で接続文字列値を設定します。
+セキュリティ上のベスト プラクティスとして、[接続文字列などの機密情報をソース コード リポジトリに格納されるファイルに含めるのは避ける](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)必要があります。Azure では、接続文字列とその他の設定値を Azure 環境内で設定できます。その後、アプリケーションを Azure 内で実行するときに、ASP.NET 構成 API が自動的にそれらの値を取り出します。**サーバー エクスプローラー**、ポータル、Windows PowerShell、またはクロスプラットフォーム コマンドライン インターフェイスを使用して、Azure のこれらの値を設定できます。詳細については、「[アプリケーション文字列と接続文字列の動作](/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。
+
+このセクションでは、**サーバー エクスプローラー**を使用して Azure の接続文字列値を設定します。
 
 7. **サーバー エクスプ ローラー**の **[Web Apps]** ノードで、Web アプリを右クリックし、**[設定の表示]** をクリックします。
 
@@ -823,4 +825,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

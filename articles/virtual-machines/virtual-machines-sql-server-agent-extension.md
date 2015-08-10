@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Virtual Machines における SQL Server" 
+	pageTitle="SQL Server IaaS Agent 拡張機能" 
 	description="SQL Server エージェント拡張機能について説明します。この拡張機能を使用すると、Azure のクラウドで SQL Server を実行している仮想マシンは、自動機能を使用できるようになります。また、エージェントがまだ自動的にインストールされていない場合のインストール方法についても説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
@@ -74,4 +74,4 @@ VM からこの拡張機能を削除する場合は、次の Azure Powershell �
 ### 構文
 Remove-AzureVMSqlServerExtension -VM <IPersistentVM> [<CommonParameters>]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

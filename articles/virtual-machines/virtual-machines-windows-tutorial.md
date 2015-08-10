@@ -19,12 +19,12 @@
 # Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する#
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](virtual-machines-windows-tutorial.md)
-- [Azure Portal](virtual-machines-windows-tutorial-classic-portal.md)
-- [PowerShell - Resource Manager](virtual-machines-deploy-rmtemplates-powershell.md)
-- [PowerShell - Service Management](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [Azure preview portal](virtual-machines-windows-tutorial.md)
+- [Azure portal](virtual-machines-windows-tutorial-classic-portal.md)
+- [PowerShell - Resource manager](virtual-machines-deploy-rmtemplates-powershell.md)
+- [PowerShell - Service management](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-このチュートリアルでは、Azure プレビュー ポータルで Azure 仮想マシン (VM) を数分で簡単に作成する方法を示します。Azure リソース マネージャーで VM を作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
+このチュートリアルでは、プレビュー ポータルで Azure 仮想マシン (VM) を数分で簡単に作成する方法を示します。Azure リソース マネージャーで VM を作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
 リソース マネージャーのテンプレートまたは自動化ツールとともに、独自のイメージを使用して VM を作成することもできます。さまざまな方法の詳細については、「[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)」を参照してください。
 
@@ -39,7 +39,7 @@
 
 2. [ハブ] メニューで、**[新規]**、**[Compute]**、**[Windows Server 2012 R2 Datacenter]** の順にクリックします。
 
-	![Marketplace:](./media/virtual-machines-windows-tutorial/marketplace_new.png)
+	![Marketplace](./media/virtual-machines-windows-tutorial/marketplace_new.png)
 
 	>[AZURE.TIP]その他のイメージを見つけるには、**[Marketplace]** をクリックし、使用可能な項目を検索するか、フィルターで抽出します。
 
@@ -102,4 +102,4 @@ VM を作成したら、VM にログオンして、その設定や、そこで�
 * Azure PowerShell と Azure CLI を使用して、[VM イメージの検索と選択](resource-groups-vm-searching.md)を行います。
 * [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と[Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、VM とワークロードのデプロイと管理を自動化します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

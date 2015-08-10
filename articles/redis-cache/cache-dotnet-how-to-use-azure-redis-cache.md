@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/20/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -122,15 +122,13 @@ Azure Redis Cache への接続には、`ConnectionMultiplexer` クラスを使�
 
 Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` インスタンスを取得するには、次の例のように、静的 `Connect` メソッドを呼び出して、キャッシュのエンドポイントとキーを渡します。password パラメーターには、ポータルから生成された Azure キーを使用してください。
 
-	ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,ssl=true,password=...");
+	ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
 >[AZURE.IMPORTANT]警告: ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するためにあえてソース コード内に記述しています。資格情報を保存する方法については、「[How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)][]」を参照してください。
 
-SSL を使用しない場合は、`ssl=false` を設定するか、単にエンドポイントとキーを指定してください。
+SSL を使用しない場合は、`ssl=false` を設定するか、`ssl`パラメーターを省略します。
 
 >[AZURE.NOTE]既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートを有効にする手順については、「[Azure Redis Cache でのキャッシュの構成][]」を参照してください。
-
-	connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,password=...");
 
 高度な接続構成オプションの詳細については、[StackExchange.Redis の構成モデル][]を参照してください。
 
@@ -142,12 +140,12 @@ SSL を使用しない場合は、`ssl=false` を設定するか、単にエン�
 
 接続が確立されたら、`ConnectionMultiplexer.GetDatabase` メソッドを呼び出して Redis Cache データベースへの参照を取得します。
 
-	// connection referes to a previously configured ConnectionMultiplexer
+	// connection refers to a previously configured ConnectionMultiplexer
 	IDatabase cache = connection.GetDatabase();
 
 >[AZURE.NOTE]`GetDatabase` メソッドから返されるオブジェクトは、手付かずで受け渡しされる軽量のオブジェクトであり、保存する必要はありません。
 
-	ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,ssl=true,password=...");
+	ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
 	IDatabase cache = connection.GetDatabase();
 
@@ -161,8 +159,6 @@ SSL を使用しない場合は、`ssl=false` を設定するか、単にエン�
 	int key2 = (int)cache.StringGet("key2");
 
 以上、Azure Redis Cache インスタンスに接続して、キャッシュ データベースへの参照を取得する方法を説明しました。今度は実際にキャッシュを使用してみましょう。
-
-
 
 <a name="add-object"></a>
 ## オブジェクトをキャッシュに追加する、キャッシュから削除する
@@ -273,7 +269,7 @@ Azure Redis セッション状態プロバイダーの構成と使用の詳細�
 
 これで、Azure Redis Cache の基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
--	[キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
+-	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を監視できるようにします。ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 -	[StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
 	-	Azure Redis Cache は、さまざまな Redis クライアントや開発言語からアクセスできます。詳細については、[http://redis.io/clients][] および「[他の言語での Azure Redis Cache の開発][]」を参照してください。
 	-	Azure Redis Cache は、Redsmin などのサービスと共に使用することもできます。詳細については、「[Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法][]」を参照してください。
@@ -372,4 +368,4 @@ Azure Redis セッション状態プロバイダーの構成と使用の詳細�
 
 [Azure の無料評価版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

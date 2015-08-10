@@ -22,7 +22,7 @@
 > - [Getting Started](vs-mobile-services-javascript-getting-started.md)
 > - [What Happened](vs-mobile-services-javascript-what-happened.md)
 
-###<span id="whathappened">プロジェクトの変更点</id>
+###プロジェクトの変更点</id>
 
 #####追加された NuGet パッケージ
 
@@ -46,4 +46,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

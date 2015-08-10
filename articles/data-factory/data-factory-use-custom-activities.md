@@ -19,7 +19,7 @@
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
 Azure Data Factory は、パイプラインで使用してデータの移動や処理を行う、**コピー アクティビティ**や **HDInsight アクティビティ**などの組み込みアクティビティをサポートしています。独自の変換/処理ロジックで .NET カスタム アクティビティを作成し、そのアクティビティをパイプラインで使用することもできます。**Azure HDInsight** クラスターまたは **Azure Batch** サービスを使用して実行するようにアクティビティを構成できます
 
-この記事では、カスタム アクティビティを作成し、Azure Data Factory のパイプラインで使用する方法について説明します。カスタム アクティビティを作成して使用するための詳細なチュートリアルも提供します。チュートリアルでは、HDInsight リンク サービスを使用します。代わりに Azure Batch リンク サービスを使用するには、**AzureBatchLinkedService** 型のリンク サービスを作成し、パイプライン JSON (**linkedServiceName**) のアクティビティ セクションで使用します。カスタム アクティビティでの Azure Batch の使用方法の詳細については、[Azure Batch リンク サービス](#AzureBatch)に関するセクションをご覧ください。
+この記事では、カスタム アクティビティを作成し、Azure Data Factory のパイプラインで使用する方法について説明します。カスタム アクティビティを作成して使用するための詳細なチュートリアルも提供します。チュートリアルでは、HDInsight リンク サービスを使用します。代わりに Azure Batch リンク サービスを使用するには、**AzureBatchLinkedService** 型のリンク サービスを作成し、パイプライン JSON (\*\*linkedServiceName\*\*) のアクティビティ セクションで使用します。カスタム アクティビティでの Azure Batch の使用方法の詳細については、[Azure Batch リンク サービス](#AzureBatch)に関するセクションをご覧ください。
 
 
 ## <a name="walkthrough" />チュートリアル
@@ -224,8 +224,8 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 
 10. プロジェクトをコンパイルします。メニューの **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
-11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\debug** フォルダーまたは **bin\release** フォルダーに移動します。
-12. <project folder>\bin\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。
+11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\\debug** フォルダーまたは **bin\\release** フォルダーに移動します。
+12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。
 13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **MyBlobStore** リンク サービスが使用する Azure BLOB ストレージ内にあります。**blobcustomactivitycontainer** が存在しない場合は、この BLOB コンテナーを作成します。 
 
 
@@ -464,4 +464,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

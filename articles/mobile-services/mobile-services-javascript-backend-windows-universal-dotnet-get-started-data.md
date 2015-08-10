@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="既存のアプリへの Mobile Services の追加 (Windows Universal) | モバイル デベロッパー センター" 
-	description="Mobile Services を使用してユニバーサル Windows アプリでデータを活用する方法について説明します。" 
+	pageTitle="既存のユニバーサル Windows アプリへの Mobile Services の追加 | Azure Mobile Services" 
+	description="既存のユニバーサル Windows アプリを Azure Mobile Services に接続する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/02/2015" 
+	ms.date="07/22/2015" 
 	ms.author="glenga"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -31,7 +31,7 @@
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-dotnet-get-started-data%2F)を参照してください。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Express 2013 for Windows</a> (Update 2 以降のバージョン)。 
+* [Visual Studio Express 2013 for Windows](https://go.microsoft.com/fwLink/p/?LinkID=257546) (Update 2 以降のバージョン)。 
 
 ##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
@@ -42,19 +42,16 @@
 
 [AZURE.INCLUDE [mobile-services-create-new-service-vs2013](../../includes/mobile-services-create-new-service-vs2013.md)]
 
-<ol start="7"><li><p>Solution Explorer で、GetStartedWithData.Shared プロジェクト フォルダーの App.xaml.cs コード ファイルを開き、Windows ストア アプリの条件付きコンパイル ブロック内の <strong>App</strong> クラスに追加された新しい静的フィールドを確認します。これは、次のように表示されます。</p> 
+&nbsp;&nbsp;7.Solution Explorer で、GetStartedWithData.Shared プロジェクト フォルダーの App.xaml.cs コード ファイルを開き、Windows ストア アプリの条件付きコンパイル ブロック内の **App** クラスに追加された新しい静的フィールドを確認します。これは、次のように表示されます。
 
-		<pre><code>public static Microsoft.WindowsAzure.MobileServices.MobileServiceClient 
-		    todolistClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
-		        "https://todolist.azure-mobile.net/",
-		        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-		</code></pre>
+	public static Microsoft.WindowsAzure.MobileServices.MobileServiceClient 
+	    todolistClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
+	        "https://todolist.azure-mobile.net/",
+	        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-	<p>このコードは、<a href="http://go.microsoft.com/fwlink/p/?LinkId=302030">MobileServiceClient クラス</a>のインスタンスを使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。この静的フィールドは、アプリケーションのすべてのページで使用できます。</p>
-</li>
-<li><p>Windows Phone アプリ プロジェクトを右クリックし、<strong>[追加]</strong>、<strong>[接続済みサービス...]</strong> をクリックし、作成されたばかりのモバイル サービスを選択してから、<strong>[OK]</strong> をクリックします。</p>
-<p>同じコードは共有 App.xaml.cs ファイルにも追加されますが、今回は Windows Phone アプリの条件付きコンパイル ブロック内に追加されています。</p></li>
-</ol>
+&nbsp;&nbsp;このコードは、[MobileServiceClient] クラスのインスタンスを使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。この静的フィールドは、アプリケーションのすべてのページで使用できます。
+
+&nbsp;&nbsp;8.Windows Phone アプリ プロジェクトを右クリックし、**[追加]**、**[接続済みサービス...]** をクリックし、作成されたばかりのモバイル サービスを選択してから、**[OK]** をクリックします。同じコードは共有 App.xaml.cs ファイルにも追加されますが、今回は Windows Phone アプリの条件付きコンパイル ブロック内に追加されています。
 
 この時点で、Windows ストア アプリと Windows Phone ストア アプリのどちらも新しいモバイル サービスに接続されます。次の手順は、モバイル サービスで新しい TodoItem テーブルを作成することです。
 
@@ -72,11 +69,10 @@
 
 [AZURE.INCLUDE [mobile-services-windows-universal-test-app](../../includes/mobile-services-windows-universal-test-app.md)]
 
-<ol start="4">
-<li><p><a href="https://manage.windowsazure.com/" target="_blank">管理ポータル</a>で、<strong>[モバイル サービス]</strong> をクリックし、対象のモバイル サービスをクリックします。<p></li>
-<li><p><strong>[データ]</strong> タブをクリックし、<strong>[参照]</strong> をクリックします。</p>
-<p><strong>TodoItem</strong> テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。</p></li>
-</ol>
+&nbsp;&nbsp;4.[Microsoft Azure 管理ポータル]で、**[Mobile Services]** をクリックし、目的のモバイル サービスをクリックします。
+
+&nbsp;&nbsp;5.**[データ]**、**[参照]** の順にクリックします。**TodoItem** テーブルに、Mobile Services によって生成された ID 値を持つデータが含まれており、アプリケーションの TodoItem クラスに対応するように、列が自動的にテーブルに追加されていることを確認します。
+     
 これでチュートリアルは終了します。
 
 ## <a name="next-steps"> </a>次のステップ
@@ -110,12 +106,12 @@
 [プッシュ通知の使用]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
 [Management Portal]: https://manage.windowsazure.com/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
-[Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkID=510826
+[デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 
-[MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
+[MobileServiceClient]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

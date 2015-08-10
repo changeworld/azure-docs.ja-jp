@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/15/2015" 
+	ms.date="07/29/2015" 
 	ms.author="femila"/>
 
 
@@ -59,7 +59,7 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | エラー: 属性がサポートされていません。 | (user.invalidProperty -eq "Value") | (user.department -eq "value")プロパティは、サポートされているプロパティの一覧に示したいずれかのプロパティと一致している必要があります。 |
 | エラー: 属性で演算子がサポートされていません。 | (user.accountEnabled -contains true) | (user.accountEnabled -eq true)プロパティはブール型です。前掲の一覧からブール型でサポートされている演算子 (-eq または -ne) を使用してください。 |
-| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")論理演算子は、サポートされているプロパティ一覧のいずれかと一致している必要があります。(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "@domain.ext$") 正規表現の誤り。 |
+| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "\*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")論理演算子は、サポートされているプロパティ一覧のいずれかと一致している必要があります。(user.userPrincipalName -match ".\*@domain.ext") または (user.userPrincipalName -match "@domain.ext$") 正規表現の誤り。 |
 | エラー: バイナリ式の形式が正しくありません。 | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 | エラー: 動的メンバーシップの設定中に不明なエラーが発生しました。 | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 
@@ -124,7 +124,7 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 | passwordPolicies | なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意の文字列値または $null。 | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意の文字列値または $null。 | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-jp") |
+| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "en-US") |
 | sipProxyAddress | 任意の文字列値または $null。 | (user.sipProxyAddress -eq "value") |
 | state | 任意の文字列値または $null。 | (user.state -eq "value") |
 | streetAddress | 任意の文字列値または $null。 | (user.streetAddress -eq "value") |
@@ -148,14 +148,24 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 | otherMails | 任意の文字列値 | (user.otherMails -contains "alias@domain") |
 | proxyAddresses | SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## 直接の部下のルール
+ユーザーのマネージャー属性に基づいてグループにメンバーを設定できるようになりました。
+"Manager" グループとしてグループを構成するには
+--------------------------------------------------------------------------------
+1. 管理者ポータルで、**[構成]** タブをクリックし、**[高度なルール]** を選択します。 
+2. 次の直属の部下の構文を使用してルールを入力します。*Direct Reports for {UserID\_of\_manager}*
+3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。最初は、グループを設定するのに数分かかることがあることに注意してください。 
+
+
+## 追加情報
 ここでは、Azure Active Directory の追加情報を提供するいくつかのトピックを紹介します。
 
 * [グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
-* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
+* [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 
 * [Azure Active Directory とは](active-directory-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

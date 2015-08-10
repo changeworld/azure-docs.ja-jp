@@ -24,7 +24,7 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 ![Azure 仮想マシンをバックアップするための 3 つの手順](./media/backup-azure-vms/3-steps-for-backup.png)
 
-## 1.Azure 仮想マシンの探索
+## 1\.Azure 仮想マシンの探索
 探索プロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。
 
 > [AZURE.NOTE]この探索プロセスは、常に最初の手順として実行する必要があります。これは、サブスクリプションに追加された新しい仮想マシンが必ず識別されるようにするためです。
@@ -41,7 +41,7 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 5. 探索プロセスが完了すると、トースト通知が表示されます。![discover-done](./media/backup-azure-vms/discovery-complete.png)
 
-##  2.Azure 仮想マシンの登録
+##  2\.Azure 仮想マシンの登録
 仮想マシンを保護するには、事前に Azure Backup サービスに登録する必要があります。この登録プロセスには、次の 2 つの主要な目的があります。
 
 1. バックアップ拡張機能を仮想マシンの VM エージェントに接続する。
@@ -70,7 +70,7 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 7. 操作が完了すると、登録済みの状態を反映するようにポータルの状態が変更されます。![登録状態 2](./media/backup-azure-vms/register-status02.png)
 
-## 3.保護: Azure Virtual Machines のバックアップ
+## 3\.保護: Azure Virtual Machines のバックアップ
 この手順では、仮想マシンのバックアップおよび保持ポリシーを設定します。仮想マシンを保護するには、次の手順を実行します。
 
 ### Azure Virtual Machines をバックアップするには
@@ -143,7 +143,7 @@ VM エージェントを更新するには、単純に [VM エージェント �
 #### VM エージェントのインストールの検証
 Windows VM 上で VM エージェントのバージョンを確認する方法:
 
-1. Azure Virtual Machine にログオンし、フォルダー *C:\WindowsAzure\Packages* に移動します。WaAppAgent.exe ファイルを探します。
+1. Azure Virtual Machine にログオンし、フォルダー *C:\\WindowsAzure\\Packages* に移動します。WaAppAgent.exe ファイルを探します。
 2. このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。
 
 ### ネットワークに関する問題のトラブルシューティング
@@ -183,4 +183,4 @@ Azure Backup の概要については、次のトピックを参照してくだ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンの管理](backup-azure-manage-vms)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

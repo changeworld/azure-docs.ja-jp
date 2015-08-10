@@ -1,9 +1,7 @@
 <properties
 	pageTitle="仮想マシンを IPython Notebook サーバーとしてセットアップする | Microsoft Azure"
 	description="高度な分析のために、IPython Server を含むデータ サイエンス環境で使用できるように Azure 仮想マシンをセットアップします。"
-	metaKeywords=""
 	services="machine-learning"
-	solutions="" 
 	documentationCenter=""
 	authors="msolhab"
 	manager="paulettm"
@@ -26,9 +24,9 @@
 
 Azure 仮想マシンが既にあり、IPython Notebook サーバーをセットアップするだけの場合は、この手順を省略し、「[手順 2： IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する](#add-endpoint)」に進んでかまいません。
 
-Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。マシンの種類と価格については、「[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)」ページをご覧ください。
+Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。マシンの種類と価格については、「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines 価格</a>」ページをご覧ください。
 
-1. https://manage.windowsazure.com にログインし、ページの左下隅にある **[新規]** ボタンをクリックします。ウィンドウがポップアップ表示されます。**[コンピューティング]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
+1. <a href="https://manage.windowsazure.com" target="_blank">Azure ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。ウィンドウがポップアップ表示されます。**[コンピューティング]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
 
 	![Create workspace][24]
 
@@ -41,15 +39,13 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 	![Create workspace][25]
 
-3. 作成する仮想マシンの名前を入力し、マシンで処理するデータのサイズおよびマシンの想定機能 (メモリ サイズと CPU コア数) に基づいてマシンのサイズを選択し、マシンのユーザー名とパスワードを入力します。その後、右向きの矢印をクリックして、次の構成ページに進みます。
+3. 作成する仮想マシンの名前を入力し、マシンで処理するデータのサイズおよびマシンの想定機能 (メモリ サイズと CPU コア数) に基づいてマシンのサイズ (既定: A3) を選択し、マシンのユーザー名とパスワードを入力します。その後、右向きの矢印をクリックして、次の構成ページに進みます。
 
 	![Create workspace][26]
 
-4. この仮想マシンに使用する予定の **[ストレージ アカウント]** を含む **[リージョン/アフィニティ グループ/仮想ネットワーク]** を選択し、そのストレージ アカウントを選択します。下部にある **[エンドポイント]** フィールドで、エンドポイントの名前 (ここでは「IPython」) を入力してエンドポイントを追加します。エンドポイントの **[名前]** として任意の文字列を選択し、**[パブリック ポート]** として**使用可能な** 0 から 65536 までの任意の整数を選択できます。**[プライベート ポート]** は **9999** でなければなりません。ユーザーは、インターネット サービスに既に割り当てられているパブリック ポートの使用を**避ける**必要があります。[インターネット サービス用のポート](http://www.chebucto.ns.ca/~rakerman/port-table.html)に関するページに、使用しないようにする必要がある割り当て済みのポートの一覧があります。
+4. この仮想マシンに使用する予定の **[ストレージ アカウント]** を含む **[リージョン/アフィニティ グループ/仮想ネットワーク]** を選択し、そのストレージ アカウントを選択します。下部にある **[エンドポイント]** フィールドで、エンドポイントの名前 (ここでは「IPython」) を入力してエンドポイントを追加します。エンドポイントの **[名前]** として任意の文字列を選択し、**[パブリック ポート]** として**使用可能な** 0 から 65536 までの任意の整数を選択できます。**[プライベート ポート]** は **9999** でなければなりません。ユーザーは、インターネット サービスに既に割り当てられているパブリック ポートの使用を**避ける**必要があります。<a href="http://www.chebucto.ns.ca/~rakerman/port-table.html" target="_blank">インターネット サービス用のポート</a>に関するページに、使用しないようにする必要がある割り当て済みのポートの一覧があります。
 
 	![Create workspace][27]
-
-	>[AZURE.NOTE]このステップでエンドポイントを追加する場合、[手順 2: IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する](#add-endpoint)を省略できます。
 
 5. 仮想マシンのプロビジョニング プロセスを開始するには、チェック マークをクリックします。
 
@@ -70,24 +66,24 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 ## <a name="run-commands"></a>手順 3: IPython Notebook とその他のサポート ツールをインストールする
 
-仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)」を参照してください。管理者として (Powershell コマンド ウィンドウではなく) **コマンド プロンプト**を開き、次のコマンドを実行します。
+仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)」を参照してください。**管理者**として (Powershell コマンド ウィンドウではなく) **コマンド プロンプト**を開き、次のコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
 	@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-インストールが完了すると、*C:\Users&#60;ユーザー名>\Documents\IPython Notebooks* ディレクトリ内で IPython Notebook サーバーが自動的に起動します。
+インストールが完了すると、*C:\\Users\\<ユーザー名>\\Documents\\IPython Notebooks* ディレクトリ内で IPython Notebook サーバーが自動的に起動します。
 
 メッセージが表示されたら、IPython Notebook のパスワードと、マシン管理者のパスワードを入力します。これにより、IPython Notebook をマシン上のサービスとして実行させることができます。
 
 ## <a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
-IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。ここでは、*&#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。パブリック ポート番号として *443* を選択した場合、URL テキスト ボックスに明示的にポート番号を指定せずに IPython Notebook にアクセスできます。それ以外の場合は、**&#60;パブリック ポート番号>* が必要です。
+IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。ここでは、*&#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
 
 *&#60;仮想マシンの DNS 名>* は、Microsoft Azure 管理ポータルで確認できます。管理ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
 
 ![Create workspace][19]
 
-次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
+次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;DNS 名\*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
 
 Internet Explorer: ![Create workspace][20]
 
@@ -147,4 +143,4 @@ Advanced Analytics Process and Technology における次のステップは、�
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

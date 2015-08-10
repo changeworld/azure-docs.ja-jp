@@ -39,6 +39,9 @@ Application Insights は拡張可能な分析サービスで、ライブ アプ�
 
 ![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
 
+詳細な分析が必要? データを [SQL](app-insights-code-sample-export-telemetry-sql-database.md)、[Power BI](app-insights-export-power-bi.md)、または独自のツールに[エクスポート](app-insights-export-telemetry.md)します。
+
+![Power BI でのデータ表示](./media/app-insights-overview/210.png)
 
 ## プラットフォームと言語
 
@@ -47,7 +50,7 @@ SDK は増え続けるプラットフォームに対応します。最新の一�
  * [ASP.NET サーバー][greenbrown] (Azure または IIS サーバー上)
  * [Azure Cloud Services](app-insights-cloudservices.md)
  * [J2EE サーバー][java]
- * [Web ページ][client]: HTML+JavaScript
+ * [Web ページ][client]\: HTML+JavaScript
  * [Windows Phone、Windows Store、Windows 10 ユニバーサル アプリのほか、Windows 10 開発者向けポータルに直接統合できます][windows]
  * [Windows デスクトップ][desktop]
  * [iOS][ios]
@@ -72,9 +75,12 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 * 再構築または再インストールすることなく、Web アプリを監視します。
 * 依存関係モジュールの呼び出しを追跡します。
 
+
+
 ### オーバーヘッドとは
 
 パフォーマンスへの影響はごく小さいものです。追跡は非ブロッキングを呼び出し、バッチ処理されて、個別のスレッドに送信されます。
+
 
 
 ## 作業を開始するには:
@@ -102,7 +108,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -139,4 +145,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

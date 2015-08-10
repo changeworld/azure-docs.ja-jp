@@ -13,15 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="07/23/2015" 
 	ms.author="juliako"/>
 
 
 
 #.NET を使用した Media Services アカウントへのファイルのアップロード
-[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
+[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
 Media Services で、デジタル ファイルをアセットにアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -42,7 +41,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 
 アセットを **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、アセットの **StorateEncrypted** の **ContentKey** が作成されます。
 
->[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !\*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
 このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services アセットにアップロードする方法を説明します。
 
@@ -214,7 +213,7 @@ IngestManifestAsset は、アセットを、一括取り込みのための一括
 	        CloudBlobClient blobClient = storageaccount.CreateCloudBlobClient();
 	        CloudBlobContainer blobContainer = blobClient.GetContainerReference(destBlobURI);
 	
-	        string[] splitfilename = filename.Split('\');
+	        string[] splitfilename = filename.Split('\\');
 	        var blob = blobContainer.GetBlockBlobReference(splitfilename[splitfilename.Length - 1]);
 	
 	        using (var stream = System.IO.File.OpenRead(filename))
@@ -276,7 +275,7 @@ IngestManifestAsset は、アセットを、一括取り込みのための一括
 
 ##.NET SDK Extensions を使用したファイルのアップロード 
 
-次の例は、.NET SDK Extensions を使用して単一のファイルをアップロードする方法を示しています。この例では、**CreateFromFile** メソッドを使用していますが、非同期バージョン (**CreateFromFileAsync**) のメソッドも使用できます。**CreateFromFile** メソッドには、ファイル名、暗号化オプション、ファイルのアップロードの進行状況をレポートするためのコールバックを指定できます。
+次の例は、.NET SDK Extensions を使用して単一のファイルをアップロードする方法を示しています。この例では、**CreateFromFile** メソッドを使用していますが、非同期バージョン (\*\*CreateFromFileAsync\*\*) のメソッドも使用できます。**CreateFromFile** メソッドには、ファイル名、暗号化オプション、ファイルのアップロードの進行状況をレポートするためのコールバックを指定できます。
 
 
 	static public IAsset UploadFile(string fileName, AssetCreationOptions options)
@@ -306,4 +305,4 @@ IngestManifestAsset は、アセットを、一括取り込みのための一括
 [メディア プロセッサの取得]: media-services-get-media-processor.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

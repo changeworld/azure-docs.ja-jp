@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/06/2015"
+	ms.date="07/22/2015"
 	ms.author="patshea123"/>
 
 # プロジェクトの変更点
@@ -22,11 +22,9 @@
 > - [Getting Started](vs-active-directory-webapi-getting-started.md)
 > - [What Happened](vs-active-directory-webapi-what-happened.md)
 
-###<span id="whathappened">プロジェクトの変更点</span>
+##リファレンスが追加されました
 
-リファレンスが追加されました。
-
-#####NuGet パッケージのリファレンス
+###NuGet パッケージのリファレンス
 
 - `Microsoft.Owin`
 - `Microsoft.Owin.Host.SystemWeb`
@@ -37,7 +35,7 @@
 - `Owin`
 - `System.IdentityModel.Tokens.Jwt`
 
-#####.NET のリファレンス
+###.NET のリファレンス
 
 - `Microsoft.Owin`
 - `Microsoft.Owin.Host.SystemWeb`
@@ -48,16 +46,18 @@
 - `Owin`
 - `System.IdentityModel.Tokens.Jwt`
 
-#####コード ファイルがプロジェクトに追加された
+##コードの変更
 
-認証スタートアップ クラス **App_Start/Startup.Auth.cs** が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。
+###コード ファイルがプロジェクトに追加された
 
-#####スタートアップ コードがプロジェクトに追加された
+認証スタートアップ クラス **App\_Start/Startup.Auth.cs** が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。
+
+###スタートアップ コードがプロジェクトに追加された
 
 既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが更新されて `ConfigureAuth(app)` 呼び出しが含まれています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。
 
 
-#####app.config ファイルまたは web.config ファイルに新しい構成値が含まれる
+###app.config ファイルまたは web.config ファイルに新しい構成値が含まれる
 
 次の構成エントリが追加されました。<pre> `<appSettings>
     		<add key="ida:ClientId" value="ClientId from the new Azure AD App" />
@@ -71,16 +71,16 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-###*[個々のユーザー アカウントの認証を無効にする]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
+##*[個々のユーザー アカウントの認証を無効にする]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
 NuGet パッケージのリファレンスが削除されるほか、ファイルが削除およびバックアップされます。プロジェクトの状態によっては、追加のリファレンスやファイルを手動で削除したり、必要に応じてコードを変更しなければならない場合があります。
 
-#####削除される NuGet パッケージのリファレンス (存在する場合)
+###削除される NuGet パッケージのリファレンス (存在する場合)
 
 - `Microsoft.AspNet.Identity.Core`
 - `Microsoft.AspNet.Identity.EntityFramework`
 - `Microsoft.AspNet.Identity.Owin`
 
-#####バックアップおよび削除されるコード ファイル (存在する場合)
+###バックアップおよび削除されるコード ファイル (存在する場合)
 
 以下の各ファイルがバックアップされ、プロジェクトから削除されます。バックアップ ファイルは、プロジェクト ディレクトリのルートにある "Backup" フォルダーに配置されます。
 
@@ -90,24 +90,24 @@ NuGet パッケージのリファレンスが削除されるほか、ファイ�
 - `Models\IdentityModels.cs`
 - `Providers\ApplicationOAuthProvider.cs`
 
-#####バックアップされるコード ファイル (存在する場合)
+###バックアップされるコード ファイル (存在する場合)
 
 以下の各ファイルがバックアップされてから置き換えられます。バックアップ ファイルは、プロジェクト ディレクトリのルートにある "Backup" フォルダーに配置されます。
 
 - `Startup.cs`
 - `App_Start\Startup.Auth.cs`
 
-###*[ディレクトリ データの読み取り]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
+##*[ディレクトリ データの読み取り]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
 
-#####app.config または web.config にさらに変更が加えられた
+###app.config または web.config にさらに変更が加えられた
 
 次の構成エントリがさらに追加されました。<pre>`<appSettings>
 	    <add key="ida:Password" value="Your Azure AD App's new password" />
 	</appSettings>`</pre>
 
-#####Azure Active Directory アプリが更新された
+###Azure Active Directory アプリが更新された
 Azure Active Directory アプリが更新され、*[ディレクトリ データの読み取り]* アクセス許可が含まれるようになりました。また、`web.config` ファイルで *ida:Password* として使用される追加のキーが作成されました。
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

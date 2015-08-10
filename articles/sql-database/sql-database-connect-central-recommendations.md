@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="07/24/2015" 
 	ms.author="genemi"/>
 
 
@@ -33,7 +33,7 @@
 - 「[プログラムによる Azure SQL Database への接続のガイドライン](http://msdn.microsoft.com/library/azure/ee336282.aspx)」 - 以下の話題が含まれています。
  - ポート
  - ファイアウォール
- - Connection strings
+ - 接続文字列
 - 「[Azure SQL Database のリソース管理](https://msdn.microsoft.com/library/azure/dn338083.aspx)」 - 以下の話題が含まれています。
  - リソース ガバナンス
  - 制限の適用
@@ -88,9 +88,9 @@ Azure とその SQL Database サービスなどのクラウド サービスに�
 SQL Database でエラーが発生した場合、[SqlException](https://msdn.microsoft.com/library/system.data.sqlclient.sqlexception.aspx) がスローされます。`SqlException` の **Number** プロパティには、数値のエラー コードが含まれています。一時的なエラーのエラー コードである場合、プログラムで呼び出しを再試行してください。
 
 
-- [エラー メッセージ (Azure SQL Database)](http://msdn.microsoft.com/library/azure/ff394106.aspx)
+- [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
  - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時エラーのリストが示されています。
- - たとえば、"<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*" などのような番号 40613 のエラーが発生した場合、再試行されます。
+ - たとえば、"<br/>\*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。\*" などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
 一時的な "エラー" は、一時的な "フォールト" とも呼ばれています。このトピックでは、これらの 2 つの語を同義で扱っています。
@@ -133,9 +133,9 @@ V12 では、このゲートウェイが削除されました。これにより�
 
 - [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
  - 再試行のロジックを含むコード サンプルへのリンクと、接続およびクエリを行うより簡単なサンプルへのリンクがあります。
-- [方法: Azure SQL Database への信頼性の高い接続方法](http://msdn.microsoft.com/library/azure/dn864744.aspx)
+- [方法: Azure SQL Database への信頼性の高い接続](http://msdn.microsoft.com/library/azure/dn864744.aspx)
 - [方法: ADO.NET とエンタープライズ ライブラリを使用して Azure SQL Database に接続する](http://msdn.microsoft.com/library/azure/dn961167.aspx)
-- [方法: ADO.NET を使用して Azure SQL Database に接続する](http://msdn.microsoft.com/library/azure/ee336243.aspx)
+- [コード サンプル: SQL Database に接続するための C# の再試行ロジック](sql-database-develop-csharp-retry-windows.md)
 
 
 ## テクノロジ
@@ -157,7 +157,7 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 **エラスティック スケール:** エラスティック スケール データベースへの接続に関する詳細については、次を参照してください。
 
 
-- [Azure SQL データベース Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
+- [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 
 
@@ -174,4 +174,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -12,7 +12,7 @@
    ms.topic="get-started-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/26/2015"
+   ms.date="07/28/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -124,7 +124,7 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 ### 仮想ネットワークを含む複数の Azure サブスクリプションがあります。個別のサブスクリプション内の仮想ネットワークを 1 つの ExpressRoute 回線に接続できますか。
 はい。最大 10 個の Azure サブスクリプションで、1 つの ExpressRoute 回線を使用することを承認できます。ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
 
-詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](https://msdn.microsoft.com/library/azure/dn835110.aspx)」を参照してください。
+詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-share-circuit.md)」を参照してください。
 
 ### 同じ回線に接続されている仮想ネットワークは、互いに分離されていますか。
 いいえ。同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、ルーティングの観点から見た場合、互いに分離されていません。ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
@@ -286,4 +286,4 @@ NSP 経由と EXP 経由の両方で Office 365 サービスへの接続がサ�
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

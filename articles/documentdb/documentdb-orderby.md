@@ -86,7 +86,7 @@ DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサ�
 詳細については、「[DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」を参照してください。
 
 ### すべてのプロパティに対する Order By のインデックスを作成する
-コレクション内の JSON ドキュメント内に表示される任意のまたはすべての数値プロパティまたは文字列プロパティに対する Order By に必要な「すべての範囲」インデックス作成を使用してコレクションを作成する方法を示します。ここで、"/*" はコレクション内のすべての JSON プロパティ/パスを表し、-1 は最大有効桁数を表します。
+コレクション内の JSON ドキュメント内に表示される任意のまたはすべての数値プロパティまたは文字列プロパティに対する Order By に必要な「すべての範囲」インデックス作成を使用してコレクションを作成する方法を示します。ここで、"/\*" はコレクション内のすべての JSON プロパティ/パスを表し、-1 は最大有効桁数を表します。
                    
     booksCollection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
@@ -176,4 +176,4 @@ Order By では参照に DocumentDB インデックスを利用するため、Or
 * [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

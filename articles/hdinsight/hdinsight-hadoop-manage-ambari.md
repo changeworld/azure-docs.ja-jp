@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/01/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 #Ambari を使用した HDInsight クラスターの管理 (プレビュー)
@@ -40,9 +40,7 @@ Ambari は既定で Linux ベースの HDInsight クラスターに付属して�
 
 ##Ambari Web UI
 
-Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成した Linux ベースの各 HDInsight クラスターで利用できます。このページにアクセスするには、Azure ポータルのクラスター ダッシュボードの下部にある **[Ambari Web]** ボタンを使用します。
-
-![ambari web アイコン](./media/hdinsight-hadoop-manage-ambari/ambari-web.png)
+Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成した Linux ベースの各 HDInsight クラスターで利用できます。
 
 ページ認証のプロンプトは 2 回表示されます。最初のプロンプトは HDInsight クラスター用、2 回目は Ambari 用の認証です。
 
@@ -252,4 +250,4 @@ Ambari Web は基になる REST API に依存します。この REST API を活�
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

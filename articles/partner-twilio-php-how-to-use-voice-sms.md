@@ -81,21 +81,21 @@ PHP 用 Twilio ライブラリを使用するようにアプリケーション�
 
 1. GitHub ([https://github.com/twilio/twilio-php][twilio_php]) から PHP 用 Twilio ライブラリをダウンロードし、**Services** ディレクトリをアプリケーションに追加します。
 
-	- または -
+	\- または -
 
 2. PHP 用 Twilio ライブラリを PEAR パッケージとしてインストールします。インストールには、次のコマンドを使用できます。
 
 		$ pear channel-discover twilio.github.com/pear
 		$ pear install twilio/Services_Twilio
 
-PHP 用 Twilio ライブラリをインストールしたら、ライブラリを参照する **require_once** ステートメントを PHP ファイルの先頭に追加できます。
+PHP 用 Twilio ライブラリをインストールしたら、ライブラリを参照する **require\_once** ステートメントを PHP ファイルの先頭に追加できます。
 
     	require_once 'Services/Twilio.php';
 
 詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
 
 ## <a id="howto_make_call"></a>方法: 発信通話する
-次のコードでは、**Services_Twilio** クラスを使用して発信通話を行う方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
+次のコードでは、**Services\_Twilio** クラスを使用して発信通話を行う方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
 
 	// Include the Twilio PHP library.
 	require_once 'Services/Twilio.php';
@@ -143,7 +143,7 @@ PHP 用 Twilio ライブラリをインストールしたら、ライブラリ�
 
 
 ## <a id="howto_send_sms"></a>方法: SMS メッセージを送信する
-次のコードでは、**Services_Twilio** クラスを使用して SMS メッセージを送信する方法を示しています。試用アカウントで SMS メッセージを送信できるように、**From** の番号が Twilio から提供されます。コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
+次のコードでは、**Services\_Twilio** クラスを使用して SMS メッセージを送信する方法を示しています。試用アカウントで SMS メッセージを送信できるように、**From** の番号が Twilio から提供されます。コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
 
 	// Include the Twilio PHP library.
 	require_once 'Services/Twilio.php';
@@ -188,7 +188,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
 		<Say>Hello world.</Say>
 	</Response>
 
-この例からわかるように、TwiML 応答は XML ドキュメントにすぎません。PHP 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。次の例では、前の例と同じ応答が生成されますが、PHP 用 Twilio ライブラリの **Services_Twilio_Twiml** クラスを使用しています。
+この例からわかるように、TwiML 応答は XML ドキュメントにすぎません。PHP 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。次の例では、前の例と同じ応答が生成されますが、PHP 用 Twilio ライブラリの **Services\_Twilio\_Twiml** クラスを使用しています。
 
 	require_once('Services/Twilio.php');
 	
@@ -198,7 +198,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
 
 TwiML の詳細については、[https://www.twilio.com/docs/api/twiml][twiml_reference] を参照してください。
 
-TwiML 応答を返すように PHP ページを設定したら、その PHP ページの URL を、`Services_Twilio->account->calls->create` メソッドに渡します。たとえば、Azure ホステッド サービスにデプロイされた **MyTwiML** という名前の Web アプリケーションがあるとします。その PHP ページの名前が **mytwiml.php** である場合、次の例に示すように URL を **Services_Twilio->account->calls->create** に渡すことができます。
+TwiML 応答を返すように PHP ページを設定したら、その PHP ページの URL を、`Services_Twilio->account->calls->create` メソッドに渡します。たとえば、Azure ホステッド サービスにデプロイされた **MyTwiML** という名前の Web アプリケーションがあるとします。その PHP ページの名前が **mytwiml.php** である場合、次の例に示すように URL を **Services\_Twilio->account->calls->create** に渡すことができます。
 
 	require_once 'Services/Twilio.php';
 
@@ -267,4 +267,4 @@ Azure で PHP に基づいて Twilio を使用する方法の詳細について�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

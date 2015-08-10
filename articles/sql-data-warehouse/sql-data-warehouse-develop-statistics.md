@@ -31,7 +31,7 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 
 複数列統計は、列のリストで作成される統計です。この統計には、リストの最初の列の単一列統計に加え、密度と呼ばれる列間の相関関係情報が含まれます。複合結合やグループ化などの一部の操作では、複数列統計によってクエリのパフォーマンスを向上させることができます。
 
-詳細については、MSDN の [DBCC SHOW_STATISTICS][] に関するページをご覧ください。
+詳細については、MSDN の [DBCC SHOW\_STATISTICS][] に関するページをご覧ください。
 
 ## 統計が必要な理由
 適切な統計がない場合、SQL Data Warehouse で実現されるパフォーマンスは得られません。SQL Data Warehouse では、テーブルと列の統計は自動的には生成されないので、開発者が自分で作成する必要があります。テーブルの作成時に統計を作成し、統計を設定したら統計を更新することをお勧めします。
@@ -152,13 +152,13 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 > [AZURE.NOTE]クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
 
-次の例では、ヒストグラムは *product_category* で使用されます。列間の統計は、*product_category* と *product_sub_c\ategory* で計算されます。
+次の例では、ヒストグラムは *product\_category* で使用されます。列間の統計は、*product\_category* と *product\_sub\_c\\ategory* で計算されます。
 
 ```
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-*product_category* と *product_sub_category* の間には相関関係があるため、これらの列に同時にアクセスする場合は複数列統計が役立ちます。
+*product\_category* と *product\_sub\_category* の間には相関関係があるため、これらの列に同時にアクセスする場合は複数列統計が役立ちます。
 
 ### G.テーブルのすべての列の統計の作成
 
@@ -177,14 +177,14 @@ WITH
   )
 ;
 
-CREATE STATISTICS stats_col1 on dbo.table1;
-CREATE STATISTICS stats_col2 on dbo.table2;
-CREATE STATISTICS stats_col3 on dbo.table3;
+CREATE STATISTICS stats_col1 on dbo.table1 (col1);
+CREATE STATISTICS stats_col2 on dbo.table2 (col2);
+CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
 ### H.ストアド プロシージャを使用した、データベース内のすべての列の統計の作成
 
-SQL Data Warehouse には、SQL Server の [sp_create_stats][] に相当するシステム ストアド プロシージャはありません。このストアド プロシージャは、まだ統計がないデータベースのすべての列の単一列統計オブジェクトを作成します。
+SQL Data Warehouse には、SQL Server の [sp\_create\_stats][] に相当するシステム ストアド プロシージャはありません。このストアド プロシージャは、まだ統計がないデータベースのすべての列の単一列統計オブジェクトを作成します。
 
 これは、データベースの設計を開始する際に役立ちます。ニーズに合わせて、このオブジェクトを自由に変更できます。
 
@@ -325,9 +325,9 @@ UPDATE STATISTICS dbo.table1;
 | [sys.objects][] | データベース内のオブジェクトごとに 1 行。 | |
 | [sys.schemas][] | データベースのスキーマごとに 1 行。 | |
 | [sys.stats][] | 統計オブジェクトごとに 1 行。 |
-| [sys.stats_columns][] | 統計オブジェクトの列ごとに 1 行。sys.columns にリンク。 |
+| [sys.stats\_columns][] | 統計オブジェクトの列ごとに 1 行。sys.columns にリンク。 |
 | [sys.tables][] | テーブル (外部テーブルを含む) ごとに 1 行。 |
-| [sys.table_types][] | データ型ごとに 1 行。 |
+| [sys.table\_types][] | データ型ごとに 1 行。 |
 
 
 ### 統計のシステム関数
@@ -335,12 +335,12 @@ UPDATE STATISTICS dbo.table1;
 
 | システム関数 | 説明 |
 | :-------------- | :---------- |
-| [STATS_DATE][] | 統計オブジェクトの最終更新日。 |
-| [DBCC SHOW_STATISTICS][] | 統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報を提供します。 |
+| [STATS\_DATE][] | 統計オブジェクトの最終更新日。 |
+| [DBCC SHOW\_STATISTICS][] | 統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報を提供します。 |
 
 ### 1 つのビューへの統計列と関数の統合
 
-このビューには、統計に関連する列と、[STATS_DATE()][] 関数の結果が一緒に表示されます。
+このビューには、統計に関連する列と、[STATS\_DATE()][] 関数の結果が一緒に表示されます。
 
 ```
 CREATE VIEW dbo.vstats_columns
@@ -378,9 +378,9 @@ AND     sts.[user_created] = 1
 ;
 ```
 
-## DBCC SHOW_STATISTICS() の例
+## DBCC SHOW\_STATISTICS() の例
 
-DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されているデータを表示します。このデータは 3 つの部分で提供されます。
+DBCC SHOW\_STATISTICS() は、統計オブジェクト内に保持されているデータを表示します。このデータは 3 つの部分で提供されます。
 
 1. ヘッダー
 2. 密度ベクトル
@@ -402,7 +402,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### DBCC SHOW_STATISTICS(); の 1 つ以上の部分の表示
+### DBCC SHOW\_STATISTICS(); の 1 つ以上の部分の表示
 
 特定の部分だけを表示する場合は、`WITH` 句を使用して表示する部分を指定します。
 
@@ -416,13 +416,13 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## DBCC SHOW_STATISTICS() の相違点
-SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がより厳密に実装されています。
+## DBCC SHOW\_STATISTICS() の相違点
+SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() がより厳密に実装されています。
 
 1. ドキュメントに記載されていない機能はサポートされていません。
-- Stats_stream は使用できません。
-- 統計データの特定のサブセットの結果を結合することはできません (STAT_HEADER JOIN DENSITY_VECTOR など)。
-2. メッセージを抑制するために、NO_INFOMSGS を設定することはできません。
+- Stats\_stream は使用できません。
+- 統計データの特定のサブセットの結果を結合することはできません (STAT\_HEADER JOIN DENSITY\_VECTOR など)。
+2. メッセージを抑制するために、NO\_INFOMSGS を設定することはできません。
 3. 統計名を囲む角かっこは使用できません。
 4. 列名を使用して、統計オブジェクトを識別することはできません。
 5. カスタム エラー 2767 はサポートされていません。
@@ -440,16 +440,16 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がよ
 <!-- External Links -->
 [基数推定]: https://msdn.microsoft.com/library/dn600374.aspx
 [CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
-[DBCC SHOW_STATISTICS]: https://msdn.microsoft.com/library/ms174384.aspx
+[DBCC SHOW\_STATISTICS]: https://msdn.microsoft.com/library/ms174384.aspx
 [統計]: https://msdn.microsoft.com/library/ms190397.aspx
-[STATS_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
+[STATS\_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
 [sys.columns]: https://msdn.microsoft.com/library/ms176106.aspx
 [sys.objects]: https://msdn.microsoft.com/library/ms190324.aspx
 [sys.schemas]: https://msdn.microsoft.com/library/ms190324.aspx
 [sys.stats]: https://msdn.microsoft.com/library/ms177623.aspx
-[sys.stats_columns]: https://msdn.microsoft.com/library/ms187340.aspx
+[sys.stats\_columns]: https://msdn.microsoft.com/library/ms187340.aspx
 [sys.tables]: https://msdn.microsoft.com/library/ms187406.aspx
-[sys.table_types]: https://msdn.microsoft.com/library/bb510623.aspx
+[sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="07/15/2015"
+   ms.date="07/24/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
@@ -149,35 +149,13 @@ Azure CLI for Mac, Linux and Windows がインストールされていない場�
     これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
 ## 次のステップ
-Getting Started (概要)
-
-- [Azure リソース マネージャーの概要](./resource-group-overview.md)  
-- [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](virtual-machines/xplat-cli-azure-resource-manager.md)  
-- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)
-
   
-アプリケーションの作成と展開
-  
-- [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)  
-- [Azure でのリソース グループのデプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)  
-- [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)  
-- [高度なテンプレートの操作](./resource-group-advanced-template.md)  
-- [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](virtual-machines/arm-template-deployment.md)
-  
-リソースの整理
-  
-- [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)  
-  
-アクセスの管理と監査
-  
-- [リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)  
-- [Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)  
-  
+- ロールベースのアクセス制御の概要については、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。  
+- ポータルを使用してサービス プリンシパルを操作する方法については、「[Azure ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)」を参照してください。  
+- Azure リソース マネージャーを使用したセキュリティの実装のガイダンスについては、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
 
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

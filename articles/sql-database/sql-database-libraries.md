@@ -39,12 +39,12 @@ Microsoft からリリースされているライブラリを次の表に示し�
 
 | プラットフォーム | オペレーティング システム | ダウンロード用<br/>ライブラリ | ドライバーの<br/>バージョン | ドライバーの<br/>説明 | 詳細<br/>情報 |
 | :--- | :--- | :--- | :--- | :--- | :-- |
-| .NET | クロスプラットフォーム (.NET) | [ADO.NET、System.Data.SqlClient](http://www.microsoft.com/download/details.aspx?id=30653) | 4.5 以降 | .NET Framework 用 SQL Server プロバイダー | . |
-| PHP | Windows | [PHP for SQL Server](http://www.microsoft.com/download/details.aspx?id=20098) | 2.0 以降 | SQL Server 用 PHP ドライバー | [リンク](http://msdn.microsoft.com/library/dn865013.aspx) |
-| Java | Windows | [JDBC for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) | 2.0 以降 | 標準の JDBC API を介してデータベース接続を提供する Type 4 JDBC ドライバー | [リンク](http://msdn.microsoft.com/library/dn425070.aspx) |
-| ODBC | Windows | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=36434) | 11.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](http://msdn.microsoft.com/library/jj730308.aspx) |
-| ODBC | Suse Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11.0 以降 | Microsoft ODBC Driver for SQL Server | . |
-| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11.0 以降 | Microsoft ODBC Driver for SQL Server | . |
+| .NET | クロスプラットフォーム (.NET) | [ADO.NET、System.Data.SqlClient](http://www.microsoft.com/download/details.aspx?id=30653) | 4\.5 以降 | .NET Framework 用 SQL Server プロバイダー | . |
+| PHP | Windows | [PHP for SQL Server](http://www.microsoft.com/download/details.aspx?id=20098) | 2\.0 以降 | SQL Server 用 PHP ドライバー | [リンク](http://msdn.microsoft.com/library/dn865013.aspx) |
+| Java | Windows | [JDBC for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) | 2\.0 以降 | 標準の JDBC API を介してデータベース接続を提供する Type 4 JDBC ドライバー | [リンク](http://msdn.microsoft.com/library/dn425070.aspx) |
+| ODBC | Windows | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=36434) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](http://msdn.microsoft.com/library/jj730308.aspx) |
+| ODBC | Suse Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | . |
+| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | . |
 
 
 ### OLEDB for DB2 および SQL Server (DRDA 設計向け)
@@ -82,4 +82,4 @@ Microsoft OLE DB Provider for DB2 バージョン 5.0 (Data Provider) では、I
 https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
 -->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

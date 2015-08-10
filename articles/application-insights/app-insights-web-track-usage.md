@@ -347,6 +347,11 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 * ユーザーと話をする。 分析は、それだけでは不十分ですが、良好な顧客関係を保つための補完的役割を果たします。
 
 
+## 参照
+
+* [API の使用 - 概要][api]
+* [JavaScript API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
+
 ## ビデオ
 
 > [AZURE.VIDEO usage-monitoring-application-insights]
@@ -366,4 +371,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

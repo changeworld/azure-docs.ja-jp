@@ -2,7 +2,6 @@
 	pageTitle="Advanced Analytics Process and Technology で Hadoop クラスターに Hive クエリを送信する | Microsoft Azure"
 	description="Hive クエリで Hive テーブルからのデータを処理します。"
 	services="machine-learning"
-	solutions=""
 	documentationCenter=""
 	authors="hangzh-msft"
 	manager="paulettm" 
@@ -21,7 +20,7 @@
 
 このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。このタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。いくつかのデータを処理するタスク (データの探索および特徴の生成) について説明します。Azure の HDInsight Hadoop クラスターで Hive を使用してデータの探索や特徴の生成を行う方法を示す汎用の Hive クエリが取り上げられます。これらの Hive クエリでは、用意されている埋め込みの Hive のユーザー定義関数 (UDF) を使用します。
 
-[NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/) シナリオに固有のクエリの例も、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
+<a href="http://chriswhong.com/open-data/foil_nyc_taxi/" target="_blank">NYC タクシー乗車データ</a> シナリオに固有のクエリの例も、<a href="https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts" target="_blank">Github リポジトリ</a>に用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
 
 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについて説明します。
 
@@ -41,6 +40,8 @@ Hive クエリは、以下のものを使用して送信できます。
 * IPython Notebook
 * Hive エディター
 * Azure PowerShell スクリプト
+
+Hive クエリは SQL に似ています。SQL を使い慣れているユーザーには、<a href="http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf" target="_blank">SQL-to-Hive チート シート</a>が役立つ場合があります。
 
 Hive クエリの送信時、Hive クエリの出力先を、画面上、ヘッド ノード上のローカル ファイル、または Azure BLOB のどれにするか制御できます。
 
@@ -70,23 +71,21 @@ Hadoop コマンド ラインで簡単な Hive クエリを直接送信できま
 
 #### .hql ファイルで Hive クエリを送信する
 
-Hive クエリがより複雑で、複数の行がある場合、Hadoop コマンド ラインまたは Hive コマンド コンソールでクエリを編集することは実用的ではありません。別の方法は、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリにある .hql ファイルに Hive クエリを保存することです。続いて、次のように `hive` コマンドで `-f` 引数を使用して、.hql ファイル内の Hive クエリを送信します。
+Hive クエリがより複雑で、複数の行がある場合、Hadoop コマンド ラインまたは Hive コマンド コンソールでクエリを編集することは実用的ではありません。別の方法は、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリにある .hql ファイルに Hive クエリを保存することです。その後、次のように `hive` コマンドで `-f` 引数を使用して、.hql ファイル内の Hive クエリを送信します。
 
 	`hive -f "<path to the .hql file>"`
-
-![Create workspace][15]
 
 
 #### Hive クエリの進行状況ステータス画面の出力を抑制する
 
-既定では、Hive クエリが Hadoop コマンド ライン コンソールで送信されると、 Map/Reduce ジョブの進行状況が画面に出力されます。Map/Reduce ジョブの進行状況の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S`("S" は大文字である必要があります) を使用します。
+既定では、Hive クエリが Hadoop コマンド ライン コンソールで送信されると、 Map/Reduce ジョブの進行状況が画面に出力されます。Map/Reduce ジョブの進行状況の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` (大文字と小文字が区別されます) を使用します。
 
 	hive -S -f "<path to the .hql file>"
 	hive -S -e "<Hive queries>"
 
 #### Hive コマンド コンソールで Hive クエリを送信する。
 
-Hadoop コマンドラインから `hive` コマンドを実行して Hive コマンド コンソールに入った後、Hive コマンド コンソールから Hive クエリを送信することもできます。たとえば次のようになります。
+Hadoop コマンドラインから `hive` コマンドを実行して Hive コマンド コンソールに入った後、Hive コマンド コンソールの **hive>** プロンプトで Hive クエリを送信することもできます。たとえば次のようになります。
 
 ![Create workspace][11]
 
@@ -100,9 +99,6 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 	`hive -e "<hive query>" > <local path in the head node>`
 
-次の例では、Hive クエリの出力が *C:\apps\temp* ディレクトリ内の *hivequeryoutput.txt* ファイルに書き込まれます。
-
-![Create workspace][12]
 
 #### Hive クエリの結果を Azure BLOB に出力する
 
@@ -256,7 +252,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 
 このセクションで指定されたクエリは、NYC タクシー乗車データに直接適用できます。このクエリの目的は、特徴を生成する Hive の組み込みの数学関数を適用する方法を示すことです。
 
-このクエリで使用されているフィールドは、*pickup_longitude*、*pickup_latitude*、*dropoff_longitude*、*dropoff_latitude* という名前の乗車 (pickup) と降車 (dropoff) の位置を示す GPS 座標です。pickup 座標と dropoff 座標間の直線距離を計算するクエリは次のとおりです。
+このクエリで使用されているフィールドは、*pickup\_longitude*、*pickup\_latitude*、*dropoff\_longitude*、*dropoff\_latitude* という名前の乗車 (pickup) と降車 (dropoff) の位置を示す GPS 座標です。pickup 座標と dropoff 座標間の直線距離を計算するクエリは次のとおりです。
 
 		set R=3959;
 		set pi=radians(180);
@@ -274,17 +270,17 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 		and dropoff_latitude between 30 and 90
 		limit 10;
 
-2 つの GPS 座標間の距離を計算する方程式は、Peter Lapisu による [Movable Type Scripts](http://www.movable-type.co.uk/scripts/latlong.html) サイトにあります。彼の Javascript で、関数 `toRad()` は単に *lat_or_lon*pi/180* であり、これは、角度をラジアンに変換します。ここで、*lat_or_lon* は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は [Wikipedia](http://en.wikipedia.org/wiki/Atan2) に記載された定義を使用して、`atan` 関数により実装されています。
+2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。彼の Javascript で、関数 `toRad()` は単に *lat\_or\_lon\*pi/180* であり、これは、角度をラジアンに変換します。ここで、*lat\_or\_lon* は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![Create workspace][1]
 
-Hive の組み込み UDF の完全なリストは、[Apache Hive Wiki](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions) の**組み込み関数**セクションにあります。
+Hive の組み込み UDF のリストは、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の**組み込み関数**のセクションにあります。
 
 ## <a name="tuning"></a>高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 
 Hive クラスターの既定のパラメーター設定は、Hive クエリおよびクエリが処理するデータに適していないことがあります。このセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターのいくつかについて説明します。ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。
 
-1. **Java ヒープ スペース**: 大規模なデータセットの結合または長いレコードの処理を伴うクエリでは、一般的なエラーとして**ヒープ領域の不足**があります。これは、パラメーター *mapreduce.map.java.opts* と *mapreduce.task.io.sort.mb* を必要な値に設定して調整できます。たとえば次のようになります。
+1. **Java ヒープ スペース**: 大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーの 1 つに、**ヒープ領域の不足**があります。これは、パラメーター *mapreduce.map.java.opts* と *mapreduce.task.io.sort.mb* を必要な値に設定して調整できます。たとえば次のようになります。
 
 		set mapreduce.map.java.opts=-Xmx4096m;
 		set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -323,4 +319,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 [15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

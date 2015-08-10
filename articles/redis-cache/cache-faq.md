@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/09/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -95,6 +95,11 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 ## キャッシュを配置するリージョン
 
 最適なパフォーマンスと最も短い待機時間を実現するには、キャッシュ クライアント アプリケーションと同じリージョンに Azure Redis Cache を配置します。
+
+<a name="cache-billing"></a>
+## Azure Redis Cache の課金方法を教えてください。
+
+Azure Redis Cache の価格は[ここ](http://azure.microsoft.com/pricing/details/cache/)を参照してください。料金ページには、1 時間単位の料金が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
 
 <a name="cache-timeouts"></a>
 ## タイムアウトが発生する理由
@@ -204,12 +209,14 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 <a name="cache-commands"></a>
 ## Redis コマンドの実行方法
 
-[Redis コマンド](http://redis.io/commands#)のページに表示されているすべてのコマンドを使用できます。これらのコマンドを実行するには、次のツールを使用できます。
+「[Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)」に示されているコマンドを除いて、「[Redis コマンド](http://redis.io/commands#)」に示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
 
--	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/download/win-2.8.19.1/redis-2.8.19.zip)をダウンロードします。
--	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
-	-	`redis-cli -h <your cache name>.redis.cache.windows.net -a <key>`
--	Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
+-	Standard キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
+-	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
+	-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/download/win-2.8.19.1/redis-2.8.19.zip)をダウンロードします。
+	-	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
+		-	`redis-cli -h <your cache name>.redis.cache.windows.net -a <key>`
+	-	Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
 
 <a name="cache-common-patterns"></a>
 ## いくつかの一般的なキャッシュ パターンと考慮事項
@@ -226,4 +233,4 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

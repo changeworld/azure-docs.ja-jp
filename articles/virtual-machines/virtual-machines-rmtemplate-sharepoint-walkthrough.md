@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="davidmu1"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2015"
+	ms.date="07/28/2015"
 	ms.author="davidmu"/>
 
 # 3 台のサーバーから成る SharePoint ファーム リソース マネージャーのテンプレート
 
 このトピックでは、3 台のサーバーから成る SharePoint ファームの azuredeploy.json テンプレート ファイルの構造について段階的に説明します。[こちら](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-three-vm/azuredeploy.json)からブラウザーでこのテンプレートの内容を見ることができます。
 
-または、azuredeploy.json ファイルのローカル コピーを調べるために、ファイルの場所としてローカル フォルダー (たとえば、C:\Azure\Templates\SharePointFarm) を指定してファイルを作成することもできます。Azure PowerShell のコマンド プロンプトでフォルダー名を入力して次のコマンドを実行します。
+または、azuredeploy.json ファイルのローカル コピーを調べるために、ファイルの場所としてローカル フォルダー (たとえば、C:\\Azure\\Templates\\SharePointFarm) を指定してファイルを作成することもできます。Azure PowerShell のコマンド プロンプトでフォルダー名を入力して次のコマンドを実行します。
 
 	$folderName="<folder name, such as C:\Azure\Templates\SharePointFarm>"
 	$webclient = New-Object System.Net.WebClient
@@ -376,4 +377,4 @@ JSON ファイルの **"resources"** セクションのサブセクションの�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

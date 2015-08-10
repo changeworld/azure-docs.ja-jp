@@ -57,6 +57,13 @@ App Service 環境で発信呼び出しを行うと、IP アドレスが常に�
 - App Service 環境のパブリック VIP は 192.23.1.2 であるため、それは "インターネット" エンドポイントを呼び出す際に使用される発信 IP アドレスです。
 - App Service 環境が含まれるサブネットの CIDR 範囲は 10.0.1.0/26 です。同じ仮想ネットワーク インフラストラクチャ内の他のエンドポイントは、アプリからの呼び出しが、このアドレスの範囲内のどこかから発信されているとみなします。
 
+## App Service 環境間の呼び出し ##
+同じバーチャル ネットワーク内で、複数の App Service 環境をデプロイし、App Service 環境同士で発信呼び出しを行う場合、より複雑なシナリオとなるでしょう。このような交差したタイプの App Service 環境間呼び出しは、”インターネット” 呼び出しとしても扱われます。
+
+さきほどの 192.23.1.2 という発信 IP アドレスを使用する App Service 環境を例に挙げます。App Service 環境で実行中のアプリケーションが、同じバーチャル ネットワークに存在する第 2 の App Service 環境で実行中のアプリケーションに発信呼び出しを行う場合、第 2 の App Service 環境で着信する発信呼び出しは 192.23.1.2(第 1 の App Service 環境のサブネット アドレス範囲ではない) から送信されているように表示されます。
+
+異なる App Service 環境間での呼び出しは ”インターネット” 呼び出しとして扱われるものの、各 App Service 環境が同じ Azure リージョンに位置している場合は、ネットワーク トラフィックは同じリージョンの Azure ネットワーク内にとどまり、物理的にパブリック インターネット上に流出することはありません。そのため、第 2 の App Service 環境のサブネット上にネットワーク セキュリティ グループを設定することができ、192.23.1.2 からの受信呼び出しのみを許可することで、App Service 環境間での安全な通信を確保します。
+
 ## その他のリンクおよび情報 ##
 App Service 環境で使用される着信ポートと、ネットワーク セキュリティ グループを使用した着信トラフィック制御の詳細については、[ここ][controllinginboundtraffic]を参照してください。
 
@@ -72,4 +79,4 @@ App Service 環境への発信インターネット アクセスを許可する�
 [GeneralNetworkFlows]: ./media/app-service-app-service-environment-network-architecture-overview/NetworkOverview-1.png
 [OutboundNetworkAddresses]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundNetworkAddresses-1.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

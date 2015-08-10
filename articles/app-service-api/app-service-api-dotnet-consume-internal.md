@@ -71,7 +71,7 @@
 
 既定では、API アプリ プロジェクトは [Swagger](http://swagger.io/ "公式の Swagger 情報") メタデータの自動生成が有効になりますが、Azure API アプリの新しいプロジェクト テンプレートでは API テスト ページが無効になります。このセクションでは、テスト ページを有効にします。
 
-1. *App_Start/SwaggerConfig.cs* ファイルを開き、**EnableSwaggerUI** を探します。
+1. *App\_Start/SwaggerConfig.cs* ファイルを開き、**EnableSwaggerUI** を探します。
 
 2. 次のコード行をコメント解除します。
 
@@ -265,4 +265,4 @@ App Service SDK は、Swagger API の定義を利用してクライアント ク
 App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

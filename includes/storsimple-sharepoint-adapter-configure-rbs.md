@@ -1,75 +1,59 @@
-<properties 
-   pageTitle="Configure RBS for the StorSimple Adapter for SharePoint | Microsoft Azure"
-   description="Describes how to install the StorSimple Adapter for SharePoint in a SharePoint server farm."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="07/17/2015"
-   ms.author="v-sharos" />
 
->[AZURE.NOTE] When making changes to the StorSimple Adapter for SharePoint RBS configuration, you must be logged on with a user account that belongs to the Domain Admins group. Additionally, you must access the configuration page from a browser running on the same host as Central Administration.
+>[AZURE.NOTE]SharePoint 用 StorSimple アダプターの RBS 構成を変更する際は、Domain Admins グループに属しているユーザー アカウントでログオンする必要があります。さらに、サーバーの全体管理と同じホストで実行されているブラウザーから構成ページにアクセスする必要があります。
 
-#### To configure RBS
+#### RBS を構成するには
 
-1. Open the SharePoint Central Administration page, and browse to **System Settings**. 
+1. SharePoint サーバーの全体管理ページを開き、**[システム設定]** を開きます。 
 
-2. In the **Azure StorSimple** section, click **Configure StorSimple Adapter**.
+2. **[Azure StorSimple]** セクションで、**[StorSimple アダプターの構成]** をクリックします。
 
-    ![Configure the StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
+    ![Configure the StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png)
 
-3. On the **Configure StorSimple Adapter** page:
+3. **[StorSimple アダプターの構成]** ページで、次の手順を実行します。
 
-    1. Make sure that the **Enable editing path** check box is selected.
+    1. **[パスの編集を有効にする]** チェック ボックスがオンになっていることを確認します。
 
-    2. In the text box, type the Universal Naming Convention (UNC) path of the BLOB store.
+    2. ボックスに、BLOB ストアの汎用名前付け規則 (UNC) パスを入力します。
 
-          >[AZURE.NOTE] The BLOB store volume must be hosted on an iSCSI volume configured on the StorSimple device.
+          >[AZURE.NOTE]BLOB ストア ボリュームは、StorSimple デバイス上で構成されている iSCSI ボリュームでホストされている必要があります。
 
-    3. Click the **Enable** button below each of the content databases that you want to configure for remote storage.
+    3. リモート記憶域用に構成する各コンテンツ データベースの下の **[有効]** をクリックします。
 
-          >[AZURE.NOTE] The BLOB store must be shared and reachable by all web front-end (WFE) servers, and the user account that is configured for the SharePoint server farm must have access to the share.
+          >[AZURE.NOTE]BLOB ストアは、すべての Web フロントエンド (WFE) サーバーで共有し、これらのサーバーから到達できる必要があります。また、SharePoint サーバー ファーム用に構成されているユーザー アカウントは、共有にアクセスできる必要があります。
 
           ![Enable the RBS provider](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
 
-           When you enable or disable RBS, you will also see the following message.
+           RBS を有効または無効にすると、次のメッセージも表示されます。
 
           ![Configure StorSimple Adapter Enable Disable](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-    4. Click the **Update** button to apply the configuration. When you click the **Update** button, the RBS configuration status will be updated on all WFE servers, and the entire farm will be RBS-enabled. The following message appears.
+    4. **[更新]** をクリックして構成を適用します。[更新] をクリックすると、すべての WFE サーバー上で RBS 構成状態が更新され、ファーム全体で RBS が有効になります。次のメッセージが表示されます。
 
            ![Adapter configuration message](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
 
-           >[AZURE.NOTE] If you are configuring RBS for a SharePoint farm with a very large number of databases (greater than 200), the SharePoint Central Administration web page might time out. If that occurs, refresh the page. This does not affect the configuration process.
+           >[AZURE.NOTE]大量のデータベース (200 以上) がある SharePoint ファームに対して RBS を構成している場合、[SharePoint サーバーの全体管理] Web ページがタイムアウトする可能性があります。その場合は、ページを更新します。ページを更新しても構成プロセスに影響はありません。
  
-4. Verify the configuration:
+4. 構成を確認します。
 
-    1. Log on to the SharePoint Central Administration website, and browse to the **Configure StorSimple Adapter** page.
+    1. SharePoint サーバーの全体管理 Web サイトにログオンし、**[StorSimple アダプターの構成]** ページに移動します。
 
-    2. Check the configuration details to make sure that they match the settings that you entered. 
+    2. 構成の詳細を表示して、入力した設定に一致しているかどうかを確認します。
 
-5. Verify that RBS works correctly:
+5. RBS が正しく動作することを確認します。
 
-    1. Upload a document to SharePoint. 
+    1. ドキュメントを SharePoint にアップロードします。 
 
-    2. Browse to the UNC path that you configured. Make sure that the RBS directory structure was created and that it contains the uploaded object.
+    2. 構成した UNC パスを参照します。RBS のディレクトリ構造が作成されていること、およびアップロードしたオブジェクトがそこに含まれていることを確認します。
 
-6. (Optional) You can use the Microsoft RBS `Migrate()` PowerShell cmdlet included with SharePoint to migrate existing BLOB content to the StorSimple device. For more information, see [Migrate content into or out of RBS in SharePoint 2013][6] or [Migrate content into or out of RBS (SharePoint Foundation 2010)][7].
+6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。詳細については、「[コンテンツを SharePoint 2013 の RBS 外に移行する][6]」または「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)][7]」を参照してください。
 
-7. (Optional) On test installations, you can verify that the BLOBs were moved out of the content database as follows: 
+7. (省略可能) テスト インストールで、次のように、BLOB がコンテンツ データベースから移動されたことを確認できます。
 
-    1. Start SQL Management Studio.
+    1. SQL Management Studio を起動します。
 
-    2. Run the ListBlobsInDB_2010.sql or ListBlobsInDB_2013.sql query, as follows.
+    2. 次のように、ListBlobsInDB\_2010.sql クエリまたは ListBlobsInDB\_2013.sql クエリを実行します。
 
-     **ListBlobsInDB_2013.sql**
+     **ListBlobsInDB\_2013.sql**
 
          USE WSS_Content
          GO
@@ -87,7 +71,7 @@
          ORDER BY TimeLastModified DESC
          GO
 
-     **ListBlobsInDB_2010.sql**
+     **ListBlobsInDB\_2010.sql**
 
          USE WSS_Content
          GO
@@ -104,17 +88,19 @@
          ORDER BY TimeLastModified DESC
          GO
 
-     If RBS was configured correctly, a NULL value should appear in the SizeOfContentInDB column for any object that was uploaded and successfully externalized with RBS.
+     RBS が正しく構成されている場合は、アップロードされて RBS によって正常に外部化されたすべてのオブジェクトについて、SizeOfContentInDB 列に NULL 値が表示されます。
 
-8. (Optional) After you configure RBS and move all BLOB content to the StorSimple device, you can move the content database to the device. If you choose to move the content database, we recommend that you configure the content database storage on the device as a primary volume. Then, use established SQL Server best practices to migrate the content database to the StorSimple device. 
+8. (省略可能) RBS を構成し、すべての BLOB コンテンツを StorSimple デバイスに移動した後、コンテンツ データベースをデバイスに移動することができます。コンテンツ データベースを移動する場合は、デバイスのコンテンツ データベース ストレージをプライマリ ボリュームとして構成することをお勧めします。次に、SQL Server の移行に関する確立されたベスト プラクティスを使用して、コンテンツ データベースを StorSimple デバイスに移行します。
 
-     >[AZURE.NOTE] Moving the content database to the device is only supported for the StorSimple 8000 series (it is not supported for the 5000 or 7000 series).
+     >[AZURE.NOTE]デバイスへのコンテンツ データベースの移動は、StorSimple 8000 シリーズ デバイスでのみサポートされています (5000 シリーズまたは 7000 シリーズではサポートされていません)。
  
-     If you store BLOBs and the content database in separate volumes on the StorSimple device, we recommend that you configure them in the same volume container. This ensures that they will be backed up together.
+     BLOB とコンテンツ データベースを StorSimple デバイス上の別々のボリュームに保存する場合は、それらのボリュームを同じボリューム コンテナー内に構成することをお勧めします。これにより、これらのボリュームは同時にバックアップされるようになります。
 
-       >[AZURE.WARNING] If you have not enabled RBS, we do not recommend moving the content database to the StorSimple device. This is an untested configuration.
+     >[AZURE.WARNING]RBS を有効にしていない場合は、コンテンツ データベースを StorSimple デバイスに移行することはお勧めしません。このような構成はテストされていません。
  
-9. Go to the next step: [Configure garbage collection](#configure-garbage-collection).
+9. 次の「[ガベージ コレクションを構成する](#configure-garbage-collection)」に進みます。
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx
+
+<!---HONumber=July15_HO5-->

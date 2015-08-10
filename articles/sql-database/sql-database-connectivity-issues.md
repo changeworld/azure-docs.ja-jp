@@ -13,7 +13,7 @@
 	ms.workload="data-management" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="NA" 
-	ms.date="07/17/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sstein"/>
 
 
@@ -64,12 +64,12 @@ SQL Server Management Studio か SQLCMD を使用します。EXE をデータベ
 
 - SQL Database への接続に関する詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」をご覧ください。   
 
-- 特定の接続エラーの詳細については、「[エラー メッセージ (Azure SQL Database)](https://msdn.microsoft.com/library/azure/ff394106.aspx#bkmk_connection_errors)」の**接続が失われるエラー**セクションをご覧ください。
+- 特定の接続エラーの詳細については、「[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md#bkmk_connection_errors)」の**一時的な障害や接続が失われるエラー**に関するセクションをご覧ください。
 
-- 接続イベント データは、[**sys.event_log (Azure SQL Database)**](https://msdn.microsoft.com/library/dn270018.aspx) ビューを使用して、接続イベントを照会して確認できます。
+- 接続イベント データは、[**sys.event\_log (Azure SQL Database)**](https://msdn.microsoft.com/library/dn270018.aspx) ビューを使用して、接続イベントを照会して確認できます。
 
-- データベースの接続イベントのメトリックは、クエリを実行してアクセスできる、[**sys.database_connection_stats (Azure SQL Database)**](https://msdn.microsoft.com/library/dn269986.aspx) ビューを照会して確認できます。
+- データベースの接続イベントのメトリックは、クエリを実行してアクセスできる、[**sys.database\_connection\_stats (Azure SQL Database)**](https://msdn.microsoft.com/library/dn269986.aspx) ビューを照会して確認できます。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -71,10 +71,10 @@ Java を使用して[証明書を作成](../app-service-web/java-create-azure-we
 
 ## 次のステップ
 
-[Azure ポータルにサービス証明書をアップロード](cloud-services-configure-ssl-certificate.md) (または[プレビュー ポータル](cloud-services-configure-ssl-certificate-portal.md)) し、クラウド サービスに構成します。
- 
-[管理 API の証明書](../azure-api-management-certs.md)を Azure ポータルにアップロードします。
+[Azure ポータル (または[プレビュー ポータル](cloud-services-configure-ssl-certificate-portal.md)) ](cloud-services-configure-ssl-certificate.md)にサービス証明書をアップロード し、クラウド サービス用に[構成します](cloud-services-xml-certs.md)。
+
+[管理 API 証明書](../azure-api-management-certs.md)を Azure ポータルにアップロードします。
 
 >[AZURE.NOTE]Azure プレビュー ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

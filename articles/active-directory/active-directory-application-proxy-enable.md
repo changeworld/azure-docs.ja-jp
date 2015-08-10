@@ -17,7 +17,7 @@
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシの有効化
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](https://msdn.microsoft.com/library/azure/dn532272.aspx)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](https://msdn.microsoft.com/library/azure/dn532272.aspx)」をご覧ください。
 
 Microsoft Azure AD アプリケーション プロキシを使用すると、SharePoint サイト、Outlook Web Access、IIS ベースのアプリなどのアプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。従業員は、自宅から自分のデバイスでアプリケーションにログインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
 
@@ -73,4 +73,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 * [Azure への組織としてのサインアップ](..sign-up-organization.md)
 * [Azure ID](..fundamentals-identity.md)
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

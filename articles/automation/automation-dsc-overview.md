@@ -208,7 +208,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure Automation では、複数の PowerShell モジュールを同時に使用することはできません。つまり、Automation アカウント内のすべての構成では、その Automation アカウントにインポートされた最新バージョンの PowerShell モジュールと、構成で使用されるモジュールに含まれる PowerShell DSC リソースを使用する必要があります。
 
-- 従来の PowerShell DSC プル サーバーでは、**ModuleName_Version.zip"** という形式のモジュール zip をプル サーバーに配置する必要があります。Azure Automation では、**ModuleName.zip** という形式の名前の PowerShell モジュールをインポートする必要があります。Azure Automation にモジュールをインポートするために必要な統合モジュールの詳細については、「[このブログの投稿](http://azure.microsoft.com/blog/2014/12/15/authoring-integration-modules-for-azure-automation/)」を参照してください。
+- 従来の PowerShell DSC プル サーバーでは、**ModuleName\_Version.zip"** という形式のモジュール zip をプル サーバーに配置する必要があります。Azure Automation では、**ModuleName.zip** という形式の名前の PowerShell モジュールをインポートする必要があります。Azure Automation にモジュールをインポートするために必要な統合モジュールの詳細については、「[このブログの投稿](http://azure.microsoft.com/blog/2014/12/15/authoring-integration-modules-for-azure-automation/)」を参照してください。
 
 - 「フォルダーごとのバージョン」形式を使用して、モジュール内に複数の DSC リソースを同時に指定する PowerShell モジュールは、現在 Azure Automation では機能しません。
 
@@ -226,4 +226,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure Automation DSC にオンボードされた DSC ノードは、最初、マップされている DSC ノード構成に実際には適合していない場合であっても、「適合」状態を示します。ノードが初めてのプルを実行して、最初の DSC レポートを Azure Automation DSC に送信した後、ノードの状態は正しくなります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

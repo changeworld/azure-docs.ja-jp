@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/07/2015" 
+	ms.date="07/22/2015" 
 	ms.author="awills"/>
  
 # トラブルシューティングと Q & A - Application Insights for ASP.NET
@@ -46,11 +46,18 @@
 
 #### <a name="q02"></a>新しい Web プロジェクトが作成されましたが Application Insights が追加されませんでした
 
-Application Insights ポータルとの通信に失敗した場合やアカウントに問題がある場合にこのような状況になることがあります。
+これは、次の場合に発生することがあります。
 
-+ 適切な Azure アカウントのログイン資格情報を指定していることを確認してください。[新しいプロジェクト] ダイアログで使用される Microsoft Azure 資格情報は、Visual Studio の右上に表示される Visual Studio Online 資格情報とは異なる場合があります。
-+ しばらく待ってから [Application Insights を既存のプロジェクトに追加][start]してください。
-+ Microsoft Azure アカウントの設定を表示し、制限の有無を確認してください。Application Insights アプリケーションを手動で追加できるかどうかご確認ください。
+* Application Insights ポータルとの通信に失敗した場合。つまり、
+* お客様のアカウントになんらかの問題があります。
+* お客様は、[新しいリソースを作成しようとしたサブスクリプションまたはグループに対して読み取りアクセス権](app-insights-resources-roles-access-control.md)しか持っていません。
+
+対応策:
+
++ 適切な Azure アカウントのログイン資格情報を指定していることを確認してください。新しいバージョンのツールでは、[新しいプロジェクト] ダイアログに表示される Microsoft Azure の資格情報と、Visual Studio の右上に表示される Visual Studio Online の資格情報が異なる場合があります。
++ ブラウザーで、[Azure ポータル](https://portal.azure.com)に対するアクセス権があることを確認してください。設定を開き、制限がないかどうか確認してください。
++ [Application Insights を既存のプロジェクトに追加するには][start]\: ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
++ 解決しない場合は、[手動の手順](app-insights-start-monitoring-app-health-usage.md)を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。 
 
 #### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 
@@ -90,7 +97,7 @@ Application Insights をインストールしているとき、またはログ �
 
  - packages.config
 
-+ (新しいプロジェクトのみ。[Application Insights を既存のプロジェクトに追加している場合][start]は、手動でこの操作を行う必要があります)。 これらを Application Insights リソース ID で初期化するためのスニペットを、クライアントとサーバーのコードに挿入します。たとえば、MVC アプリでは、Views/Shared/_Layout.cshtml マスター ページにコードが挿入されます。
++ (新しいプロジェクトのみ。[Application Insights を既存のプロジェクトに追加している場合][start]は、手動でこの操作を行う必要があります)。 これらを Application Insights リソース ID で初期化するためのスニペットを、クライアントとサーバーのコードに挿入します。たとえば、MVC アプリでは、Views/Shared/\_Layout.cshtml マスター ページにコードが挿入されます。
 
 ####<a name="NuGetBuild"></a> 「NuGet パッケージがありません」というエラーがビルド サーバーで出ますが、開発用コンピューターではすべて正常にビルドできます
 
@@ -232,4 +239,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

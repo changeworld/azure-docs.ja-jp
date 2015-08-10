@@ -1,8 +1,7 @@
 <properties 
 	pageTitle="弾力性データベース プールにユーザーを追加する方法" 
 	description="プール内の各 db に特権を持つユーザーを追加する必要があります。" 
-	services="sql-database" 
-	documentationCenter="" 
+	services="sql-database" documentationCenter=""  
 	manager="jeffreyg" 
 	authors="sidneyh"/>
 
@@ -12,7 +11,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sidneyh" />
 
 # エラスティック データベース プールにユーザーを追加する方法
@@ -33,7 +32,7 @@
 
 		CREATE USER admin1 FROM LOGIN login1;
 		
-3. ユーザーには、ジョブに指定されたスクリプトを実行するための十分な権限が必要です。**sp_addrolemember** プロシージャを使用して、ユーザーにスクリプトを正常に実行するために必要な最低限の権限を提供します。
+3. ユーザーには、ジョブに指定されたスクリプトを実行するための十分な権限が必要です。**sp\_addrolemember** プロシージャを使用して、ユーザーにスクリプトを正常に実行するために必要な最低限の権限を提供します。
 
 ## 次のステップ
 
@@ -45,4 +44,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

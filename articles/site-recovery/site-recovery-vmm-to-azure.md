@@ -82,7 +82,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 
 2. [
-3. *[データ サービス]* をクリックし、*[復旧サービス]* を展開し、*[Site Recovery コンテナー]*クリックします。*
+3. *[データ サービス]* をクリックし、*[復旧サービス]* を展開し、*[Site Recovery コンテナー]*クリックします。\*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
 
@@ -321,4 +321,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

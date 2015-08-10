@@ -67,7 +67,7 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 
 ![Dataset visualization][screen1b]
 
-右上隅の "**x**" をクリックして、視覚化ウィンドウを閉じます。
+右上隅の "\*\*x\*\*" をクリックして、視覚化ウィンドウを閉じます。
 
 ## 手順 2: データを前処理する
 
@@ -232,4 +232,4 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

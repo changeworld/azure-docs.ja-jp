@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Jim-Parker"
    manager="jwhit"
-   editor=""/> <tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
+   editor=""/>
+<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt\_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/01/2015" ms.author="jimpark"; "aashishr"/>
 
 # Azure Backup を使用してテープのインフラストラクチャを置換する
 Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。 - 組織のニーズに最適なスケジュールでデータをバックアップする - 長期間にわたってバックアップ データを保持する - Azure を長期保持ニーズの一部にする (テープの代わり)
@@ -57,4 +58,4 @@ Azure Backup について詳しくは、以下をご覧ください。
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 - [Azure Backup を試す](backup-try-azure-backup-in-10-mins)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

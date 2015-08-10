@@ -273,11 +273,11 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
     	{% endblock %}
 
 
-### 構成ファイルの追加と、__init__.py の変更
+### 構成ファイルの追加と、\_\_init\_\_.py の変更
 
 1. プロジェクト [tutorial] を右クリックし、**config.py** ファイルを追加します。この config は、Flask のフォームで必要になります。これを使用して秘密キーを指定することもできます。このチュートリアルでは必要ありません。
 
-2. 次のコードを config.py に追加します。**DOCUMENTDB\_HOST** および **DOCUMENTDB\_KEY** の値を変更します。
+2. 次のコードを config.py に追加します。**DOCUMENTDB\\\_HOST** および **DOCUMENTDB\\\_KEY** の値を変更します。
 
     	CSRF_ENABLED = True
     	SECRET_KEY = 'you-will-never-guess'
@@ -289,7 +289,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
     	DOCUMENTDB_COLLECTION = 'voting collection'
     	DOCUMENTDB_DOCUMENT = 'voting document'
 
-3. 同様に、**__init__.py** の内容を次の内容に置き換えます。
+3. 同様に、**\_\_init\_\_.py** の内容を次の内容に置き換えます。
 
     	from flask import Flask
     	app = Flask(__name__)
@@ -350,4 +350,4 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
   [Azure Management Portal]: http://portal.azure.com
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

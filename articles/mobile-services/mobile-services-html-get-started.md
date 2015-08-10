@@ -13,32 +13,31 @@
 	ms.tgt_pltfrm="mobile-html5"
 	ms.devlang="javascript"
 	ms.topic="article" 
-	ms.date="04/24/2015"
-	ms.author="ggailey777"/>
+	ms.date="07/25/2015"
+	ms.author="glenga"/>
 
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
-<div class="dev-onpage-video-clear clearfix">
-<div class="dev-onpage-left-content">
-<p>このチュートリアルでは、Azure Mobile Services を使用して HTML アプリケーションにクラウドベースのバックエンド サービスを追加する方法について説明します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な <em>To do list</em> アプリケーションの両方を作成します。このチュートリアルのビデオ バージョンを表示するには、右側のクリップをクリックします。</p>
-</div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-html-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">3:51:00</span></div>
-</div>
+##概要 
 
+このチュートリアルでは、Azure Mobile Services を使用して HTML アプリケーションにクラウドベースのバックエンド サービスを追加する方法について説明します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。このチュートリアルの次のビデオ バージョンもご覧ください。
+
+> [AZURE.VIDEO mobile-get-started-html]
+ 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-このチュートリアルを完了することは、HTML アプリの他のすべての Mobile Services チュートリアルの前提条件です。
+このチュートリアルを完了することは、HTML アプリの他のすべての Mobile Services チュートリアルの前提条件です。PhoneGap/Cordova アプリについては、このチュートリアルの [PhoneGap/Cordova バージョン](mobile-services-javascript-backend-phonegap-get-started.md)をご覧ください。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。
+##前提条件
 
-###その他の要件
+このチュートリアルを完了するには、以下が必要です。
 
-+ このチュートリアルでは、ローカル コンピューター上で次のいずれかの Web サーバーが実行されている必要があります。
++ ローカル コンピューターで次のいずれかの Web サーバーが実行されている必要があります。
 
 	+  **Windows**: IIS ExpressIIS Express は、[Microsoft Web プラットフォーム インストーラー]によってインストールされます。
 	+  **MacOS X**: Python。既にインストールされています。
@@ -47,6 +46,7 @@
 	このアプリケーションは任意の Web サーバーを使用してホストすることができますが、これらの Web サーバーは、ダウンロードしたスクリプトでサポートされています。
 
 + HTML5 をサポートする Web ブラウザー。
++ Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。 
 
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
@@ -134,10 +134,6 @@
 <!-- Images. -->
 [0]: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
 
-
-
-
-
 [6]: ./media/mobile-services-html-get-started/mobile-portal-quickstart-html.png
 [7]: ./media/mobile-services-html-get-started/mobile-quickstart-steps-html.png
 
@@ -148,15 +144,15 @@
 
 
 <!-- URLs. -->
-[データの使用]: /develop/mobile/tutorials/get-started-with-data-html
-[認証の使用]: /develop/mobile/tutorials/get-started-with-users-html
+[データの使用]: mobile-services-html-get-started-data.md
+[認証の使用]: mobile-services-html-get-started-users.md
 [HTML アプリケーションからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
 
 [Management Portal]: https://manage.windowsazure.com/
 [Microsoft Web プラットフォーム インストーラー]: http://go.microsoft.com/fwlink/p/?LinkId=286333
 [最新バージョンの Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
-[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /develop/mobile/how-to-guides/work-with-html-js-client
-[Cross-origin resource sharing]: http://msdn.microsoft.com/library/windowsazure/dn155871.aspx
+[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
+[Cross-origin resource sharing]: http://msdn.microsoft.com/library/azure/dn155871.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

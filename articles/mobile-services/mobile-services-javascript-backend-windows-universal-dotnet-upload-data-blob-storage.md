@@ -87,4 +87,4 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

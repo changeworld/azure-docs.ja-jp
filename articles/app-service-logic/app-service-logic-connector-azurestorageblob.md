@@ -110,4 +110,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

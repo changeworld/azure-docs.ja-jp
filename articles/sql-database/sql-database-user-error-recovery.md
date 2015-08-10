@@ -13,21 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="07/14/2015"
+   ms.date="07/23/2015"
    ms.author="elfish"/>
 
 # ユーザー エラーからの Azure SQL Database の復旧
 
 Azure SQL Database は、ユーザー エラーまたは予期しないデータ変更から復旧するための、2 つの中核的な機能を提供します。
 
-- 特定の時点に復元 (PITR) 
+- ポイントインタイム リストア (PITR) 
 - 削除済みデータベースの復元
 
 この[ブログの投稿](http://azure.microsoft.com/blog/2014/10/01/azure-sql-database-point-in-time-restore/)では、これらの機能の詳細について説明します。
 
 Azure SQL Database では、常に新しいデータベースに復元します。これらの復元機能は、Basic、Standard、Premium のすべてのデータベースに提供されます。
-##特定の時点に復元 (PITR) による復旧
-ユーザー エラーや意図しないデータ変更が発生した場合、特定の時点に復元 (PITR) 機能を使用して、データベースの保持期間内の任意の時点にデータベースを復元できます。
+##ポイントインタイム リストア (PITR) による復旧
+ユーザー エラーや意図しないデータ変更が発生した場合、ポイントインタイム リストア (PITR) 機能を使用して、データベースの保持期間内の任意の時点にデータベースを復元できます。
 
 Basic データベースの保持期間は 7 日間、Standard データベースの保持期間は 14 日間、Premium データベースの保持期間は 35 日です。データベースの保持期間の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをお読みください。
 
@@ -43,7 +43,7 @@ Basic データベースの保持期間は 7 日間、Standard データベー�
 ###PowerShell
 PowerShell を使用して、プログラムでデータベースの復元を実行します。
 
-特定の時点に復元 (PITR) 機能を使用してデータベースを復元するには、[Start-AzureSqlDatabaseRestore](https://msdn.microsoft.com/library/dn720218.aspx?f=255&MSPPError=-2147217396) コマンドレットを使用します。手順の詳細については、[方法を示したビデオ](http://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-point-in-time-restore-with-microsoft-azure-powershell/)をご覧ください。
+ポイントインタイム リストア (PITR) 機能を使用してデータベースを復元するには、[Start-AzureSqlDatabaseRestore](https://msdn.microsoft.com/library/dn720218.aspx?f=255&MSPPError=-2147217396) コマンドレットを使用します。手順の詳細については、[方法を示したビデオ](http://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-point-in-time-restore-with-microsoft-azure-powershell/)をご覧ください。
 
 		$Database = Get-AzureSqlDatabase -ServerName "YourServerName" –DatabaseName “YourDatabaseName”
 		$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceDatabase $Database –TargetDatabaseName “NewDatabaseName” –PointInTime “2015-01-01 06:00:00”
@@ -109,4 +109,4 @@ PowerShell を使用して、プログラムでデータベースの復元を実
 復元が終了したら、[復旧データベースの最終処理](sql-database-recovered-finalize.md)に関するガイドに従って、復旧したデータベースを構成できます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

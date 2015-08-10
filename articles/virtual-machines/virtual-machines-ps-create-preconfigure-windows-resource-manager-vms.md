@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.date="07/22/2015"
 	ms.author="kathydav"/>
 
 # リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する
@@ -29,7 +29,7 @@
 
 ## 手順 1. Azure PowerShell をインストールする
 
-また、Azure PowerShell Version 0.9.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](powershell-install-configure.md)で手順を参照してください。
+また、Azure PowerShell Version 0.9.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](../powershell-install-configure.md)で手順を参照してください。
 
 インストールした Azure PowerShell のバージョンは、Azure PowerShell プロンプトで次のコマンドを実行して確認できます。
 
@@ -41,7 +41,7 @@
 	-------
 	0.9.0
 
-バージョン 0.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
+バージョン 0.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページを参照してください。
 
 ## 手順2. サブスクリプションを設定する
 
@@ -119,6 +119,8 @@ DNSNameAvailability が"True"の場合、指定の名前はグローバルに一
 
 	Get-AzureAvailabilitySet –ResourceGroupName $rgName | Sort Name | Select Name
 
+リソース マネージャーを基盤とする仮想マシンは、インターネットから入ってくるトラフィックを許可し、負荷を分散して配置するように受信 NAT ルールで構成できます。いずれの場合でも、ロード バランサーのインスタンスとその他の設定を指定する必要があります。詳細については、「[Azure リソース マネージャーを使用したロード バランサーの作成](../load-balancer/load-balancer-arm-powershell.md)」を参照してください。
+
 リソース マネージャー ベースの仮想マシンには、リソース マネージャー ベースの仮想ネットワークが必要です。必要に応じて、新しい仮想マシンの少なくとも 1 つのサブネットを含む、新しいリソース マネージャー ベースの仮想ネットワークを作成します。次に、frontendSubnet と backendSubnet という 2 つのサブネットを含む新しい仮想ネットワークの例を示します。
 
 	$rgName="LOBServers"
@@ -165,9 +167,9 @@ frontendSubnet のサブネット インデックスは 0 です。backendSubnet
 	$subnetIndex=<index of the subnet on which to create the NIC for the virtual machine>
 	$vnet=Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 
-次に、ネットワーク インターフェイス カード (NIC) を作成し、パブリック IP アドレスを要求し、必要に応じて、DNS ドメイン名ラベルを割り当てます。次の 2 つのオプションのいずれかをコマンド セットにコピーし、NIC 名と DNS ドメイン名ラベルを入力します。
+次に、ネットワーク インターフェイス カード (NIC) を作成します。次のオプションのいずれかをコマンド セットにコピーし、必要な情報を入力します。
 
-オプション 1. NIC 名を指定します。
+### オプション 1: NIC 名を指定し、パブリック IP アドレスを割り当てます。
 
 コマンド セットに次の行をコピーし、NIC の名前を指定します。
 
@@ -175,7 +177,7 @@ frontendSubnet のサブネット インデックスは 0 です。backendSubnet
 	$pip = New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 	$nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
 
-オプション 2: NIC 名と DNS ドメイン名ラベルを指定します。
+### オプション 2: NIC 名と DNS ドメイン名ラベルを指定します。
 
 コマンド セットに次の行をコピーし、NIC の名前とグローバルに一意なドメイン名ラベルを指定します。Azure PowerShell のサービス管理モードで仮想マシンを作成すると、次の手順が自動的に実行されます。
 
@@ -183,6 +185,53 @@ frontendSubnet のサブネット インデックスは 0 です。backendSubnet
 	$domName="<domain name label>"
 	$pip = New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
 	$nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
+
+### オプション 3: NIC 名を指定し、静的なプライベート IP アドレスを割り当てます。
+
+コマンド セットに次の行をコピーし、NIC の名前を指定します。
+
+	$nicName="<name of the NIC of the VM>"
+	$staticIP="<available static IP address on the subnet>"
+	$pip = New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+	$nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id -PrivateIpAddress $staticIP
+
+### オプション 4: NIC 名と受信 NAT ルールのロード バランサーのインスタンスを指定します。
+
+NIC を作成し、受信 NAT ルールのロード バランサーのインスタンスに追加するには、次が必要になります。
+
+- 仮想マシンに転送するトラフィックに対して受信 NAT ルールを持つ、以前に作成されたロード バランサーの名前。
+- NIC に割り当てるロード バランサーのインスタンスのバック エンド アドレス プールのインデックス数。
+- NIC に割り当てる受信 NAT ルールのインデックス番号。
+
+受信 NAT ルールでロード バランサーのインスタンスを作成する方法については、「[Azure リソース マネージャーを使用したロード バランサーの作成](../load-balancer/load-balancer-arm-powershell.md)」を参照してください。
+
+コマンド セットに次の行をコピーし、必要な名前とインデックス番号を指定します。
+
+	$nicName="<name of the NIC of the VM>"
+	$lbName="<name of the load balancer instance>"
+	$bePoolIndex=<index of the back end pool, starting at 0>
+	$natRuleIndex=<index of the inbound NAT rule, starting at 0>
+	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName 
+	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
+
+$NicName 文字列はリソース グループで一意にする必要があります。最良事例は、「LOB07-NIC」のように文字列に仮想マシン名を組み込むことです。
+
+### オプション 5: NIC 名と負荷分散セットのロード バランサーのインスタンスを指定します。
+
+NIC を作成し、負荷分散セットのロード バランサーのインスタンスに追加するには、次が必要になります。
+
+- 負荷分散トラフィックのルールを持つ、以前に作成されたロード バランサーの名前。
+- NIC に割り当てるロード バランサーのインスタンスのバック エンド アドレス プールのインデックス数。
+
+負荷分散トラフィックのルールを持つロード バランサーのインスタンスを作成する方法については、「[Azure リソース マネージャーを使用したロード バランサーの作成](../load-balancer/load-balancer-arm-powershell.md)」を参照してください。
+
+コマンド セットに次の行をコピーし、必要な名前とインデックス番号を指定します。
+
+	$nicName="<name of the NIC of the VM>"
+	$lbName="<name of the load balancer instance>"
+	$bePoolIndex=<index of the back end pool, starting at 0>
+	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName 
+	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
 
 次に、ローカル VM オブジェクトを作成し、必要に応じて可用性セットに追加します。次の 2 つのオプションのいずれかをコマンド セットをコピーし、名前、サイズ、および可用性セット名を入力します。
 
@@ -262,7 +311,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 テキスト エディターでコマンドを構築した場合は、コマンド セットをクリップボードにコピーしてから、開いている Azure PowerShell プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。または、Azure PowerShell ISE のコマンド セットを実行します。
 
-この仮想マシンを作成する場合、またはこれに似た仮想マシンをもう一度作成する場合は、PowerShell スクリプト ファイル (*.ps1) としてこのコマンド セットを保存することができます。
+この仮想マシンを作成する場合、またはこれに似た仮想マシンをもう一度作成する場合は、PowerShell スクリプト ファイル (\*.ps1) としてこのコマンド セットを保存することができます。
 
 ## 例
 
@@ -270,7 +319,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 - 既存の LOBServers リソース グループ内にある
 - Windows Server 2012 R2 Datacenter イメージを使用する
-- 名前は LOB07 で、既存の WEB_AS 可用性セット内にある
+- 名前は LOB07 で、既存の WEB\_AS 可用性セット内にある
 - 既存の AZDatacenter 仮想ネットワークの FrontEnd サブネット (サブネット インデックス 0) 内のパブリック IP アドレスを持つ NIC がある
 - 200 GB の追加データ ディスク容量
 
@@ -282,7 +331,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 	# Set values for existing resource group and storage account names
 	$rgName="LOBServers"
 	$locName="West US"
-	$saName="contosoLOBServersSA"
+	$saName="contosolobserverssa"
 
 	# Set the existing virtual network and subnet index
 	$vnetName="AZDatacenter"
@@ -290,7 +339,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 	$vnet=Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 
 	# Create the NIC
-	$nicName="AzureInterface"
+	$nicName="LOB07-NIC"
 	$domName="contoso-vm-lob07"
 	$pip=New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
 	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
@@ -330,12 +379,12 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure リソース マネージャーの概要](resource-group-overview.md)
+[Azure リソース マネージャーの概要](../resource-group-overview.md)
 
 [リソース マネージャー テンプレートと PowerShell を使用した Azure Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
 [リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template-simple)
 
-[Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -52,7 +52,7 @@ PowerShell ワークフローのコードは PowerShell スクリプト コー�
 
 アクティビティとは、ワークフロー内の特定のタスクです。スクリプトが 1 つまたは複数のコマンドで構成されるのと同様、ワークフローはシーケンスで実行される 1 つまたは複数のアクティビティで構成されます。Windows PowerShell ワークフローは、ワークフローの実行時に多くの Windows PowerShell コマンドレットをアクティビティに自動的に変換します。Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、実際には Windows Workflow Foundation で実行されます。対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。これらの概念の詳細については、「[スクリプト ワークフローでのアクティビティの使用](http://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
 
-ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。ワークフローの共通パラメーターの詳細については、「[about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
+ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。ワークフローの共通パラメーターの詳細については、「[about\_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
 
 ### 位置指定パラメーター
 
@@ -144,7 +144,7 @@ InlineScript アクティビティは特定のワークフローにとって重�
 - InlineScript ブロックの内部で[並列実行](#parallel-execution)を使用することはできません。
 - InlineScript は、InlineScript ブロックの長さ全体について Windows PowerShell セッションを保持するため、ワークフローの拡張性に影響します。
 
-InlineScript の使用の詳細については、「[ワークフローでの Windows PowerShell コマンドの実行](http://technet.microsoft.com/library/jj574197.aspx)」および「[about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx)」を参照してください。
+InlineScript の使用の詳細については、「[ワークフローでの Windows PowerShell コマンドの実行](http://technet.microsoft.com/library/jj574197.aspx)」および「[about\_InlineScript](http://technet.microsoft.com/library/jj649082.aspx)」を参照してください。
 
 
 ## 並列処理
@@ -163,9 +163,9 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 たとえば、ネットワークの宛先に複数のファイルをコピーする次のような PowerShell コマンドについて考えます。1 つのファイルのコピーが終了してから次のコピーが開始するように、これらのコマンドは順番に実行されます。
 
-	$Copy-Item -Path C:\LocalPath\File1.txt -Destination \NetworkPath\File1.txt
-	$Copy-Item -Path C:\LocalPath\File2.txt -Destination \NetworkPath\File2.txt
-	$Copy-Item -Path C:\LocalPath\File3.txt -Destination \NetworkPath\File3.txt
+	$Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
+	$Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
+	$Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 
 次のワークフローでは、同じコマンドが並列に実行されて、すべてのコピーが同時に開始します。すべてが完全にコピーされた後でのみ、完了メッセージが表示されます。
 
@@ -173,9 +173,9 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 	{
 		Parallel 
 		{
-			$Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\NetworkPath"
-			$Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\NetworkPath"
-			$Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\NetworkPath"
+			$Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
+			$Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
+			$Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
 		}
 
 		Write-Output "Files copied."
@@ -199,7 +199,7 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 		ForEach -Parallel ($File in $Files) 
 		{
-			$Copy-Item -Path $File -Destination \NetworkPath
+			$Copy-Item -Path $File -Destination \\NetworkPath
 			Write-Output "$File copied."
 		}
 		
@@ -231,7 +231,7 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 		ForEach ($File in $Files) 
 		{
-			$Copy-Item -Path $File -Destination \NetworkPath
+			$Copy-Item -Path $File -Destination \\NetworkPath
 			Write-Output "$File copied."
 			Checkpoint-Workflow
 		}
@@ -249,4 +249,4 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 - [Windows PowerShell ワークフローの概要](http://technet.microsoft.com/library/jj134242.aspx) 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

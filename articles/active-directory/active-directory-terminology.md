@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure AD の用語" 
-	description="Azure AD に関する用語と定義" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
-	editor="LisaToft"/>
+<properties
+	pageTitle="Azure AD の用語 | Microsoft Azure"
+	description="Azure Active Directory に関する用語と定義"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="TerryLan"
+	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2015"
+	ms.author="curtand"/>
 
 # Azure AD の用語
 
@@ -36,14 +36,11 @@ Microsoft Online Services サインイン アシスタント | サインイン �
 Multi-factor authentication (2 要素認証または 2FA とも呼ばれます) | Multi-Factor Authentication を使用すると、ユーザーのサインインおよびトランザクションに重要な第 2 のセキュリティ層が追加されます。Azure AD のユーザー アカウントで Multi-Factor Authentication を有効にすると、そのユーザーは、組織がサブスクライブしている Microsoft クラウド サービスにサインインして使用するたびに、標準のパスワード資格情報だけでなく、追加のセキュリティ検証方法として、電話を使用する必要があります。
 シングル サインオン | シングル サインオンを使用すると、ユーザーが企業ネットワークにログオンした状態で Microsoft クラウド サービスにアクセスする場合に、よりシームレスな認証が実行されます。シングル サインオンをセットアップするには、組織内にセキュリティ トークン サービスをデプロイする必要があります。シングル サインオンをセットアップすると、ユーザーは Active Directory の企業資格情報 (ユーザー名とパスワード) を使用して、クラウド内のサービスおよび既存のオンプレミス リソースにアクセスできます。
 ユーザー ID | ユーザー ID は、組織がサブスクライブしている Microsoft のクラウド サービスにアクセスするために、ユーザーがサインイン ページで入力する一意識別子です。
-会社または学校のアカウント | 組織 (企業、学校、非営利) によってその構成員 (従業員、学生、顧客) に割り当てられるユーザー アカウントであり、組織がサブスクライブしている 1 つ以上の Microsoft クラウド サービス (Office 365 や Azure など) にサインインしてアクセスできます。これらのアカウントは組織の Azure AD のディレクトリに格納され、通常、ユーザーが組織に在籍しなくなると削除されます。Microsoft アカウントとは異なり、会社または学校のアカウントは、ユーザーではなく組織の管理者によって作成および管理されます。 
+会社または学校のアカウント | 組織 (企業、学校、非営利) によってその構成員 (従業員、学生、顧客) に割り当てられるユーザー アカウントであり、組織がサブスクライブしている 1 つ以上の Microsoft クラウド サービス (Office 365 や Azure など) にサインインしてアクセスできます。これらのアカウントは組織の Azure AD のディレクトリに格納され、通常、ユーザーが組織に在籍しなくなると削除されます。Microsoft アカウントとは異なり、会社または学校のアカウントは、ユーザーではなく組織の管理者によって作成および管理されます。
 
 ## 参照トピック
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD サービスの制限と制約](active-directory-service-limits-restrictions.md)
 
-
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

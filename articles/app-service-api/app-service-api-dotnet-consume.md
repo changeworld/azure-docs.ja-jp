@@ -132,7 +132,7 @@ API アプリを呼び出すには、次の例のように、クライアント 
 
 	![](./media/app-service-api-dotnet-consume/gatewayurl.png)
 
-4. *Form1.cs* ソース コードで、`Form1()` コンストラクターの前に次のコードを追加し、GATEWAY_URL の値を前の手順でコピーした値に置き換えます。末尾のスラッシュ (/) を含めていることを確認します。
+4. *Form1.cs* ソース コードで、`Form1()` コンストラクターの前に次のコードを追加し、GATEWAY\_URL の値を前の手順でコピーした値に置き換えます。末尾のスラッシュ (/) を含めていることを確認します。
 
 		private const string GATEWAY_URL = "https://resourcegroupnameb4f3d966dfa43b6607f30.azurewebsites.net/";
 		private const string URL_TOKEN = "#token=";
@@ -205,4 +205,4 @@ API アプリを呼び出すには、次の例のように、クライアント 
 API アプリで認証を使用する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

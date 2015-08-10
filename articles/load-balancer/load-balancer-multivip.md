@@ -3,7 +3,7 @@
    description="MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法"
    services="load-balancer"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="joaoma"
    manager="adinah"
    editor="tysonn" />
 <tags 
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/01/2015"
-   ms.author="telmos" />
+   ms.date="07/23/2015"
+   ms.author="joaoma" />
 
 # クラウド サービスごとの複数の VIP
 Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。このパブリック IP アドレスは、Azure ロード バランサーにリンクされているため VIP (仮想 IP) と呼ばれますが、実際はクラウド サービス内の VM インスタンスではありません。クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
@@ -38,7 +38,6 @@ PowerShell を使用すると、クラウド サービスで使用される VIP 
 
 - **IaaS のみ**。複数の VIP は、VM を含むクラウド サービスでのみ有効にできます。PaaS のシナリオで、ロール インスタンスと共に複数の VIP を使用することはできません。
 - **PowerShell のみ**。複数の VIP は、PowerShell を使用してのみ管理できます。
-- **ARM ではサポートなし**。Azure リソース マネージャーでは、複数の VIP はサポートされていません。
 
 >[AZURE.IMPORTANT]これらの制限は一時的なものであり、いつでも変更される可能性があります。今後の変更を確認するには、このページに再度アクセスしてください。
 
@@ -156,4 +155,4 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

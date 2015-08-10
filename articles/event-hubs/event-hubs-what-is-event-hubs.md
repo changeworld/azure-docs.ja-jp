@@ -45,4 +45,4 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 [Event Hubs の使用]: service-bus-event-hubs-csharp-ephcs-getstarted.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

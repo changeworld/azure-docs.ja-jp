@@ -3,7 +3,7 @@
 	description="Azure 仮想マシンでは、Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) を実行できます。" 
 	services="active-directory" 
 	documentationCenter="" 
-	authors="Justinha" 
+	authors="markusvi" 
 	manager="terrylan" 
 	editor="LisaToft"
 	tags="azure-classic-portal"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="04/27/2015" 
-	ms.author="justinha"/>
+	ms.date="07/23/2015" 
+	ms.author="markusvi"/>
 
 
 # Azure VM 上の Windows Server Active Directory
@@ -48,4 +48,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -12,14 +12,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/11/2015" 
+	ms.date="07/22/2015" 
 	ms.author="awills"/>
  
 # Application Insights: プラットフォーム
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
-
-#### Application Insights と共に使用できるもの
 
 
 ## 言語
@@ -27,7 +25,7 @@
 + [C#|VB (.NET)](app-insights-start-monitoring-app-health-usage.md)
 + [C#|VB (Windows ストア)](app-insights-windows-get-started.md)
 + [C++ (Windows ストア)](app-insights-windows-cpp.md)
-+ [Java](../app-insights-java.md)
++ [Java](../app-insights-java-get-started.md)
 + [JavaScript Web ページ](app-insights-web-track-usage.md)
 + [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 + [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
@@ -44,6 +42,7 @@
 + [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [Angular](https://www.npmjs.com/package/angular-applicationinsights)
++ [Microsoft CRM](app-insights-sample-mscrm.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
 + [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
 + [SharePoint](app-insights-sharepoint.md)
@@ -73,4 +72,4 @@
 
 <!--Link references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -272,7 +272,7 @@
 | lmPerm | 線形モデルの順列テスト |
 | lmtest | 線形回帰モデルのテスト |
 | locfit | 局所回帰、可能性と密度推定 |
-| lpSolve | 線形 / 整数プログラムを解決するための Lp_solve v. 5.5 のインターフェイス |
+| lpSolve | 線形 / 整数プログラムを解決するための Lp\_solve v. 5.5 のインターフェイス |
 
 
 ###M ～ R で始まる R モジュール
@@ -503,4 +503,4 @@
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

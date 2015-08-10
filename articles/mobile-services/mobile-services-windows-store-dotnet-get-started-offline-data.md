@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Windows ストア) | モバイル デベロッパー センター" 
-	description="Azure Mobile Services を使用して、Windows ストア アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" 
+	pageTitle="ユニバーサル Windows アプリでのオフライン データの使用 | Azure Mobile Services" 
+	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリでオフライン データをキャッシュおよび同期する方法について説明します。" 
 	documentationCenter="mobile-services" 
 	authors="lindydonna" 
 	manager="dwrede" 
@@ -13,39 +13,26 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.date="07/23/2015" 
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
 
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
+このチュートリアルでは、Azure モバイル サービスを使用して、Windows ユニバーサル ストアのアプリケーションにオフライン サポートを追加する方法について説明します。オフライン サポートを使用すると、アプリがオフラインの状況でもローカル データベースと対話できます。アプリがバックエンドのデータベースとオンラインになったときに、オフライン機能を使用したローカルの変更を同期します。
 
-<div class="dev-onpage-video-clear clearfix">
-<div class="dev-onpage-left-content">
-<p>このチュートリアルでは、Azure モバイル サービスを使用して、Windows ユニバーサル ストアのアプリケーションにオフライン サポートを追加する方法について説明します。オフライン サポートを使用すると、アプリがオフラインの状況でもローカル データベースと対話できます。アプリがバックエンドのデータベースとオンラインになったときに、オフライン機能を使用したローカルの変更を同期します。
-</p>
-<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。</p>
-</div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Build-offline-apps-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('http://video.ch9.ms/ch9/ea1c/ffed2371-4db1-4a8e-8869-80013859ea1c/BuildOfflineAppsAzureMobileServices_220.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Build-offline-apps-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">14:36:00</span></div>
-</div>
+右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。
 
+> [AZURE.VIDEO build-offline-apps-azure-mobile-services]
 
-このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用した Universal アプリケーション プロジェクトを更新して Azure Mobile Services のオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
-
+このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用した Universal アプリケーション プロジェクトを更新して、Azure Mobile Services のオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
 
 >[AZURE.NOTE]このチュートリアルの目的は、Azure を使用して Windows ストア アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了する必要があります。
 >
->このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
->
 >以前の Visual Studio 2012 用 Windows Phone 8 チュートリアルも、「[Visual Studio 2012 用 Windows Phone 8 チュートリアル]」で引き続き利用可能です。
 
-
-このチュートリアルでは、次の基本的な手順について説明します。
-
-1. [オフライン機能をサポートするようにアプリケーションを更新する]
-2. [アプリケーションの同期の動作を更新する] 
-3. [モバイル サービスに再接続するようにアプリケーションを更新する]
+##前提条件 
 
 このチュートリアルには、次のものが必要です。
 
@@ -54,8 +41,7 @@
 * [Azure Mobile Services SDK バージョン 1.3.0 (またはこれ以降)][Mobile Services SDK Nuget]
 * [Azure Mobile Services SQLite Store バージョン 1.0.0 (またはこれ以降)][SQLite store nuget]
 * [SQLite for Windows 8.1](www.sqlite.org/downloads)
-
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
+* Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。 
 
 ## <a name="enable-offline-app"></a>オフライン機能をサポートするようにアプリケーションを更新する
 
@@ -194,7 +180,7 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
     この例では、リモート `todoTable` ですべてのレコードを取得しますが、クエリを渡すことによりレコードをフィルタリングすることも可能です。`PullAsync` の最初のパラメーターは増分同期に使用されるクエリ ID ですが、この同期では、`UpdatedAt` タイムスタンプを使用して最後の同期から変更があったレコードのみを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`null` をクエリ ID として渡します。これによってプル操作ごとにすべてのレコードを取得することになり、効率が悪くなる可能性があります。
 
-    >[AZURE.NOTE]* モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。有効にしない場合は、アプリで定期的に `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
+    >[AZURE.NOTE]\* モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。有効にしない場合は、アプリで定期的に `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
 
     `MobileServicePushFailedException` はプッシュ操作とプル操作の両方で発生する場合があることに注意してください。リレーションシップを持つすべてのテーブルに一貫性があることを確認するために、プル操作で内部的にプッシュが実行されることから、この例外はプルで発生する可能性があります。次のチュートリアル「[Mobile Services のオフライン サポートでの競合を処理する]」では、これらの同期関連の例外の処理方法について説明します。
 
@@ -261,9 +247,9 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 * [Mobile Services での論理削除の使用方法][Soft Delete]
 
 <!-- Anchors. -->
-[オフライン機能をサポートするようにアプリケーションを更新する]: #enable-offline-app
-[アプリケーションの同期の動作を更新する]: #update-sync
-[モバイル サービスに再接続するようにアプリケーションを更新する]: #update-online-app
+[Update the app to support offline features]: #enable-offline-app
+[Update the sync behavior of the app]: #update-sync
+[Update the app to reconnect your mobile service]: #update-online-app
 [Next Steps]: #next-steps
 
 <!-- Images -->
@@ -297,4 +283,4 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

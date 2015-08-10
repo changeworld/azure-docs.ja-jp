@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="tbd"
-   ms.date="06/29/2015"
+   ms.date="07/24/2015"
    ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -122,6 +122,8 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 |lua-event-limit|500|これは、スクリプト イベント キューの最大サイズです。|
 |client-output-buffer-limit normalclient-output-buffer-limit pubsub|0 0 032mb 8mb 60|このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。詳細については、[http://redis.io/topics/clients](http://redis.io/topics/clients) を参照してください。|
 
+## Azure Redis Cache でサポートされない Redis コマンド
+
 >[AZURE.IMPORTANT]Azure Redis Cache インスタンスの構成と管理にはAzure ポータルを使用する関係上、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
 >
 >-	BGREWRITEAOF
@@ -135,7 +137,21 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 Redis コマンドの詳細については、[http://redis.io/commands](http://redis.io/commands) を参照してください。
 
-## 次のステップ
--	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
+## Redis コンソール
 
-<!---HONumber=July15_HO4-->
+**Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは Standard キャッシュに対して使用できます。Redis コンソールにアクセスするには、**[Redis Cache]** ブレードの **[コンソール]** をクリックします。
+
+![Redis コンソール](./media/cache-configure/redis-console-menu.png)
+
+>[AZURE.IMPORTANT]Redis コンソールは、Standard キャッシュに対してのみ使用できます。
+
+キャッシュ インスタンスに対してコマンドを発行するには、目的のコマンドをコンソールに入力します。
+
+![Redis コンソール](./media/cache-configure/redis-console.png)
+
+Azure Redis Cache で無効な Redis コマンドの一覧については、前の「[Azure Redis Cache でサポートされない Redis コマンド](#redis-commands-not-supported-in-azure-redis-cache)」セクションを参照してください。Redis コマンドの詳細については、[http://redis.io/commands](http://redis.io/commands) を参照してください。
+
+## 次のステップ
+-	Redis コマンドの使用の詳細については、「[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)」を参照してください。
+
+<!---HONumber=July15_HO5-->

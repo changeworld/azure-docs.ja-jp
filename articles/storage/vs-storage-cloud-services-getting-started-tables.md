@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="07/22/2015" 
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (クラウド サービス プロジェクト)
@@ -31,9 +31,7 @@
 
 Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。
 
-この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して CI プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure テーブル ストレージの使用を開始する方法について説明します。
-
-**接続済みサービスの追加** 操作によって、プロジェクト内の Azure ストレージにアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
+この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用してクラウド サービス プロジェクトで Azure ストレージ アカウントを作成または参照した後に、Visual Studio で Azure テーブル ストレージの使用を開始する方法について説明します。**接続済みサービスの追加**操作によって、プロジェクト内の Azure ストレージにアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
 
 Azure テーブル ストレージの使用についてのより一般的な情報については、[「.NET からテーブル ストレージを使用する方法」](storage-dotnet-how-to-use-tables.md)を参照してください。
 
@@ -120,7 +118,7 @@ Visual Studio **サーバー エクスプローラー**を使用せずに、コ�
 
 ##エンティティのバッチを挿入する
 
-1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用して **￼￼￼￼￼￼￼TableBatchOperation￼￼￼￼￼￼￼** オブジェクトに追加します。その後、CloudTable.ExecuteBatchAsync を呼び出して操作を実行します。
+1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用して **TableBatchOperation** オブジェクトにそれらのエンティティ オブジェクトを追加し、CloudTable.ExecuteBatchAsync を呼び出して操作を開始します。
 
 	// Get a reference to a **CloudTable** object named 'peopleTable' as described in "Access a table in code"
 	
@@ -223,4 +221,4 @@ Visual Studio **サーバー エクスプローラー**を使用せずに、コ�
 [Azure Storage の詳細を確認してください](http://azure.microsoft.com/documentation/services/storage/)。[サーバー エクスプローラーでのストレージ リソースの参照](http://msdn.microsoft.com/library/azure/ff683677.aspx)に関するページと [ASP.NET 5](http://www.asp.net/vnext) に関するページも参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

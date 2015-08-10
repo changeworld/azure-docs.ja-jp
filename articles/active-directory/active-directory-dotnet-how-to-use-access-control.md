@@ -116,7 +116,7 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 1. **[名前]** に、「**MvcACS**」と入力して **[OK]** をクリックします。
 1. 次のダイアログで、**[インターネット アプリケーション]** を選択して **[OK]** をクリックします。
-1. *Views\Shared_LoginPartial.cshtml* ファイルを編集し、その内容を次のコードに置き換えます。
+1. *Views\\Shared\_LoginPartial.cshtml* ファイルを編集し、その内容を次のコードに置き換えます。
 
         @if (Request.IsAuthenticated)
         {
@@ -206,7 +206,7 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 このセクションでは、ACS によって送信されたクレームが参照されるようにアプリケーションを変更します。Identity and Access Tool により、IP からアプリケーションへのすべてのクレームを通過する規則グループが作成されています。ID プロバイダーが異なると送信されるクレームが異なる点に注意してください。
 
-1. *Controllers\HomeController.cs* ファイルを開きます。**System.Threading** の **using** ステートメントを追加します。
+1. *Controllers\\HomeController.cs* ファイルを開きます。**System.Threading** の **using** ステートメントを追加します。
 
  	using System.Threading;
 
@@ -225,7 +225,7 @@ Azure で Active Directory のアクセス制御を使用するには、Access C
 
 1. **[追加]** をクリックします。
 
-1. *Views\Home\Claims.cshtml* ファイルの内容を、次のコードに置き換えます。
+1. *Views\\Home\\Claims.cshtml* ファイルの内容を、次のコードに置き換えます。
 
         @{
             ViewBag.Title = "Claims";
@@ -402,4 +402,4 @@ ACS と統合された Web アプリケーションを作成できました。�
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

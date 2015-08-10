@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Azure Virtual Machines でホストされている Oracle ソフトウェア"
+	pageTitle="Azure 仮想マシンでホストされている Oracle ソフトウェア"
 	description="Windows または Linux ベースの Azure 仮想マシン上で Oracle ソフトウェアを設定する方法についての重要なトピックを参照してください。"
-	documentationCenter=""
 	services="virtual-machines"
+	documentationCenter=""
 	authors="JoeDavies-MSFT"
 	manager="timlt"
 	editor=""
@@ -17,9 +17,9 @@
 	ms.date="07/09/2015"
 	ms.author="josephd"/>
 
-# Azure Virtual Machines でホストされている Oracle ソフトウェア
+# Azure 仮想マシンでホストされている Oracle ソフトウェア
 
-Microsoft Azure インフラストラクチャ サービス内で、仮想マシン上で実行される 1 番目または 2 番目の開発およびテスト、または運用 Oracle データベースを設定します。構成のしやすさ、また Oracle データベースのワークロードをすばやく拡張して新しい容量を含める機能をご活用ください。
+Azure インフラストラクチャ サービス内で、仮想マシン上で実行される 1 番目または 2 番目の開発およびテスト、または運用 Oracle データベースを設定します。構成のしやすさ、また Oracle データベースのワークロードをすばやく拡張して新しい容量を含める機能をご活用ください。
 
 ## Oracle 仮想マシン イメージ
 
@@ -61,4 +61,4 @@ Windows Server ベースの Azure 仮想マシン上の Oracle ソフトウェ�
 
 「[Azure 用の Oracle GoldenGate の構成](virtual-machines-configuring-oracle-goldengate.md)」では、データベースおよびレプリケーションの設定の手順を説明します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -22,7 +22,7 @@
 > - [Getting Started](vs-mobile-services-cordova-getting-started.md)
 > - [What Happened](vs-mobile-services-cordova-what-happened.md)
 
-###<span id="whathappened">プロジェクトの変更点</span>
+###プロジェクトの変更点</span>
 
 #####リファレンスの追加
 
@@ -41,4 +41,4 @@
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

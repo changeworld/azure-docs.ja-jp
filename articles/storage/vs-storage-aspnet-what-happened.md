@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="07/22/2015" 
 	ms.author="patshea123"/>
 
 # プロジェクトの変更点
@@ -22,7 +22,7 @@
 > - [Getting Started](vs-storage-aspnet-getting-started-blobs.md)
 > - [What Happened](vs-storage-aspnet-what-happened.md)
 
-###<span id="whathappened">プロジェクトの変更点</span>
+###プロジェクトの変更点</span>
 
 ##### リファレンスの追加
 
@@ -42,4 +42,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 
 詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

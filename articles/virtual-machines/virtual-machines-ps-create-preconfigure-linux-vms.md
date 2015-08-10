@@ -157,7 +157,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
-- このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
+- このコマンド セットを PowerShell スクリプト ファイル (\*.ps1) として保存する。
 - Microsoft Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
@@ -260,4 +260,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

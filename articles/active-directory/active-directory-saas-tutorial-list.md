@@ -155,4 +155,4 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 
 - [アプリケーションへのアクセス](https://msdn.microsoft.com/library/azure/dn308590.aspx)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -128,7 +128,7 @@ SDK によるデータへのアクセスでは、若干のサポートが必要�
 
 Azure の Web アプリのコントロール パネルで、Application Insights 拡張機能を追加します。
 
-![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
+![Web アプリ、ツール、パフォーマンスの監視、追加、Application Insights で](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
 
 (この拡張機能は、SDK で構築されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
 
@@ -138,11 +138,11 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
 
-#### クライアントが web ブラウザーの場合
+#### クライアントが Web ブラウザーの場合
 
-アプリが Web ページに表示される場合は、JavaScript のスニペットをすべてのページを追加します。コードは次に示す Application Insights のリソースから取得できます。
+アプリが Web ページに表示される場合は、JavaScript のスニペットをすべてのページに追加します。コードは次に示す Application Insights のリソースから取得できます。
 
-![Web アプリでクイック スタートを開き、[Web ページを監視するコードを取得する] をクリックする](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
+![In your web app, open Quick Start and click 'Get code to monitor my web pages'](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
 
 コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
 
@@ -231,4 +231,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

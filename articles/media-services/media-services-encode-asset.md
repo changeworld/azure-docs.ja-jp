@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="07/23/2015" 
 	ms.author="juliako"/>
 
 #Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする
@@ -26,7 +26,7 @@ Media Services は、次のエンコーダーをサポートしてます。
 
 - [メディア エンコーダー スタンダード](#media_encoder_standard)
 - [Azure メディア エンコーダー](#azure_media_encoder)
-- [メディア エンコーダー プレミアム ワークフロー](#media_encoder_premium_workflow) (パブリック プレビュー)
+- [メディア エンコーダー プレミアム ワークフロー](#media_encoder_premium_workflow)
 
 [次のセクション](#compare_encoders)では、サポートされるエンコーダーのエンコード機能を比較します。
 
@@ -61,7 +61,7 @@ Media Services は、次のエンコーダーをサポートしてます。
 [ドルビー デジタル プラスを使ったメディアのエンコード](media-services-encode-with-dolby-digital-plus.md): ドルビー デジタル プラスのエンコーディングを使用してオーディオ トラックをエンコードする方法について説明します。
 
 
-##<a id="media_encoder_premium_wokrflow"></a>メディア エンコーダー プレミアム ワークフロー (プレビュー)
+##<a id="media_encoder_premium_wokrflow"></a>メディア エンコーダー プレミアム ワークフロー 
 
 **注** このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
 
@@ -195,4 +195,4 @@ Media Services は、次のエンコーダーをサポートしてます。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

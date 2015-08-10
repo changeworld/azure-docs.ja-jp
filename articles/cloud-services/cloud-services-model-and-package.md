@@ -206,8 +206,8 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 ###### CSPack ツール(Windows 上) の場所
 | SDK のバージョン | パス |
 | ----------- | ---- |
-| 1.7+ | C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\ |
-| &lt;1.6 | C:\Program Files\Azure SDK\[sdk-version]\bin\ |
+| 1\.7+ | C:\\Program Files\\Microsoft SDKs\\Azure\\.NET SDK\\[sdk-version]\\bin\\ |
+| &lt;1.6 | C:\\Program Files\\Azure SDK\\[sdk-version]\\bin\\ |
 
 >[AZURE.NOTE]CSPack.exe (windows 上) は、SDK にインストール済みの **Microsoft Azure コマンド プロンプト** ショートカットを実行して使用可能です。
 >  
@@ -274,4 +274,4 @@ Visual Studio を使用しているのですが...
 [vs_reconfigure]: https://msdn.microsoft.com/library/ee405486.aspx
 [vs_create]: https://msdn.microsoft.com/ja-jp/library/ee405487.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

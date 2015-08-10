@@ -181,7 +181,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
     4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
-2. ホスト コンピューターで、C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
+2. ホスト コンピューターで、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
     >[AZURE.NOTE]ProgramData は隠しフォルダーです。
  
@@ -197,7 +197,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
     3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
 
-5. ホスト コンピューターで、C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
+5. ホスト コンピューターで、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
 6. カタログ XML ファイルを削除し、作成したバックアップ バージョンで置き換えます。
 
@@ -207,4 +207,4 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
 使用可能な [StorSimple Snapshot Manager のタスクとワークフロー](storsimple-what-is-snapshot-manager.md#storsimple-snapshot-manager-tasks-and-workflows)を確認します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -23,7 +23,7 @@ Excel を Azure SQL Database に接続し、データベース内のデータに
 
 ## 前提条件
 - Azure SQL Database のプロビジョニングと実行。新しい SQL Database を作成するには、「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」をご覧ください。
-- [Microsoft Excel 2013](https://products.office.com/ja-jp/) (または Microsoft Excel 2010)
+- [Microsoft Excel 2013](https://products.office.com/en-US/) (または Microsoft Excel 2010)
 
 ## SQL Database に接続し、レポートを作成する
 1.	Excel を開きます。
@@ -63,4 +63,4 @@ Excel を Azure SQL Database に接続し、データベース内のデータに
 [4]: ./media/sql-database-connect-excel/power-pivot-results.png
 [5]: ./media/sql-database-connect-excel/select-database-and-table.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

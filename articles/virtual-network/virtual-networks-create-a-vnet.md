@@ -52,4 +52,4 @@
 
 -  仮想ネットワークへ [Virtual Machine を追加](../virtual-machines/virtual-machines-create-custom.md)します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

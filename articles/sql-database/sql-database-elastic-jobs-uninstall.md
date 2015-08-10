@@ -25,7 +25,7 @@
 1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)を開きます。
 2. 弾力性ジョブを含むサブスクリプションに移動します。
 3. **[参照]** をクリックして、**[リソース グループ]** をクリックします。
-4. "__ElasticDatabaseJob" という名前のリソース グループを選択します。
+4. "\_\_ElasticDatabaseJob" という名前のリソース グループを選択します。
 5. リソース グループを削除します。
 
 この PowerShell スクリプトを使用することもできます。
@@ -58,4 +58,4 @@
 [1]: ./media/sql-database-elastic-job-uninstall/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

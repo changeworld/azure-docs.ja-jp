@@ -187,8 +187,8 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 
 	![Azure デプロイメント資格情報](./media/web-sites-create-web-app-using-vscode/16-azure-credentials.png)
 
-9. Web アプリのブレードで、**[設定]、[プロパティ]** の順にクリックします。デプロイ先のリモート Git リポジトリの URL は、** の下に表示されます。
-10.  URL**.
+9. Web アプリのブレードで、**[設定]、[プロパティ]** の順にクリックします。デプロイ先のリモート Git リポジトリの URL は、\*\* の下に表示されます。
+10.  URL\*\*.
 
 10. チュートリアルで後で使用するために、**GIT URL** の値をコピーします。
 
@@ -256,4 +256,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)の記事を参照してください。App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

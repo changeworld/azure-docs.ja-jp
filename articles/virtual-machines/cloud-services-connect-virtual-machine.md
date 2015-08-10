@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [howto-connect-vm-cloud-service](../../includes/howto-connect-vm-cloud-service.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

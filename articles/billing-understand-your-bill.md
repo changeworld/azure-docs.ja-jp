@@ -9,7 +9,7 @@
    tags="billing"/>
 
 <tags
-   ms.service="na"
+   ms.service="billing"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -227,7 +227,7 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 - **追加情報**: 使用状況の .csv の [追加情報] 列は、サービス固有のメタデータを示します。たとえば、VM のイメージの種類です。現在、サービスからは、[追加情報]、[サービス情報 1]、[サービス情報 2] フィールドという複数の列にサービス固有のメタデータが出力されます。Microsoft Azure サービスは、[追加情報] 列のみについて、サービス固有のメタデータの出力を標準化します。標準化された形式のスナップショットを次に示します。
 
-![additionalinfo_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
+![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
 - **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](/resource-group-using-tags.md/)を参照してください。タグの生成をサポートするサービスは、次のとおりです。
     - 仮想マシン
@@ -262,4 +262,4 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 <!--Image references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

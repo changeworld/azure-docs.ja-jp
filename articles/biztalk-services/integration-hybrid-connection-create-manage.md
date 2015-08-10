@@ -45,8 +45,8 @@
 
 	プロパティ | 説明
 --- | ---
-名前 | ハイブリッド接続名は一意である必要があり、BizTalk サービスと同じ名前にすることはできません。任意の名前を入力できますが、目的を具体的に示した名前にしてください。たとえば、次のようになります。<br/><br/>Payroll*SQLServer*<br/>SupplyList*SharepointServer*<br/>Customers*OracleServer*
-ホスト名 | 内部設置型リソースの完全修飾ホスト名、ホスト名のみ、または、IPv4 アドレスを入力します。たとえば、次のようになります。<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*yourCompany*.com<br/>10.100.10.10
+名前 | ハイブリッド接続名は一意である必要があり、BizTalk サービスと同じ名前にすることはできません。任意の名前を入力できますが、目的を具体的に示した名前にしてください。たとえば、次のようになります。<br/><br/>Payroll\*SQLServer\*<br/>SupplyList\*SharepointServer\*<br/>Customers\*OracleServer\*
+ホスト名 | 内部設置型リソースの完全修飾ホスト名、ホスト名のみ、または、IPv4 アドレスを入力します。たとえば、次のようになります。<br/><br/>mySQLServer<br/>\*mySQLServer\*.\*Domain\*.corp.\*yourCompany\*.com<br/>\*myHTTPSharePointServer\*<br/>\*myHTTPSharePointServer\*.\*yourCompany\*.com<br/>10.100.10.10
 Port | 内部設置型リソースのポート番号を入力します。たとえば、Web アプリを使用している場合、ポート 80 またはポート 443 を入力します。SQL Server を使用している場合、ポート 1433 を入力します。
 
 5. チェック マークをオンにしてセットアップを完了します。
@@ -124,8 +124,8 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 2. ファイルを解凍します。
 3. グループ ポリシーを変更するコンピューターで、以下の手順を実行します。 
 
-	- .ADMX ファイルを *%WINROOT%\PolicyDefinitions* フォルダーにコピーします。
-	- .ADML ファイルを *%WINROOT%\PolicyDefinitions\ja-jp* フォルダーにコピーします。
+	- .ADMX ファイルを *%WINROOT%\\PolicyDefinitions* フォルダーにコピーします。
+	- .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-jp* フォルダーにコピーします。
 
 コピーが終了すると、グループ ポリシー エディターを使用してポリシーを変更できます。
 
@@ -146,4 +146,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

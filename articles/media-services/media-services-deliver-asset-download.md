@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="メディア アセットを配信する方法" 
-	description="Azure で Media Services にアップロードされたメディア アセットを配信するオプションについて説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
+	pageTitle="メディア アセットのダウンロード" 
+	description="コンピューターへのアセットのダウンロードについて説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="05/23/2015" 
 	ms.author="juliako"/>
 
 #方法: ダウンロードによってアセットを配信する
-
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
 
 このトピックでは、メディア サービスにアップロードされたメディア アセットを配信するためのオプションについて説明します。メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。メディア アセットをダウンロードするか、ロケーターを使用してアクセスすることができます。メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。パフォーマンスとスケーラビリティを高めるために、コンテンツ配信ネットワーク (CDN) を使用してコンテンツを配信することもできます。
 
@@ -74,5 +72,8 @@
 	    Console.WriteLine(string.Format("{0} % download progress. ", e.Progress));
 	}
    
+##関連項目 
 
-<!---HONumber=July15_HO4-->
+[ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)
+
+<!---HONumber=July15_HO5-->

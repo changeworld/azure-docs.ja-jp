@@ -43,4 +43,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - スナップショット チェーンからの VHD のアップロードはサポートされていません。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

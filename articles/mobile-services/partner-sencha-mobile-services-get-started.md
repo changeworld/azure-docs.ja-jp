@@ -20,13 +20,13 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
-<div class="dev-onpage-video-clear clearfix">
-<div class="dev-onpage-left-content">
-<p>このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な To Do List アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。</p>
-<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。このビデオでは、Arthur Kay が Azure Mobile Services バックエンドを使用して Sencha Touch アプリケーションをビルドする方法について説明します。</p>
-</div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=392574" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/partner-sencha-mobile-services-get-started/mobile-sencha-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=392574" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">14:37:00</span></div>
-</div>
+##概要
+
+このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な To Do List アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。
+
+このチュートリアルのビデオを見る場合は、このクリップで、このチュートリアルと同じ手順が表示されます。このビデオでは、Arthur Kay が Azure Mobile Services バックエンドを使用して Sencha Touch アプリケーションをビルドする方法について説明します。
+
+> [AZURE.VIDEO getting-started-with-sencha-touch]
 
 
 完成したアプリケーションのスクリーンショットは次のようになります。
@@ -35,9 +35,9 @@
 
 ##必要条件
 
-- [Sencha Touch](http://wwww.sencha.com/products/touch/download" target="_blank") のダウンロードとインストール。
+- [Sencha Touch](http://wwww.sencha.com/products/touch/download" target="\_blank") のダウンロードとインストール。
 
-- [Sencha Cmd Tool](http://www.sencha.com/products/sencha-cmd/download" target="_blank") のダウンロードとインストール。
+- [Sencha Cmd Tool](http://www.sencha.com/products/sencha-cmd/download" target="\_blank") のダウンロードとインストール。
 
 - Java Runtime Environment (JRE) または Java Development Kit (Android アプリケーションを作成している場合)。
 
@@ -49,7 +49,7 @@
 
 モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、モバイル サービス用に新しいデータベース テーブルを作成できます。
 
-1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. 管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[HTML]** をクリックし、**[新しい HTML アプリを作成する]** を展開します。
 
@@ -684,7 +684,7 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
     ![browse todo table](./media/partner-sencha-mobile-services-get-started/mobile-data-browse.png)
 
 ##次のステップ
-ファースト ステップ ガイドはこれで完了です。Sencha によるモバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
+ファースト ステップ ガイドはこれで完了です。Sencha による Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
 その他のスタイル、および Sencha Touch で可能なその他の機能については、全サンプル アプリケーションを[ダウンロード](https://github.com/arthurakay/sencha-touch-azure-example)してください。
 
@@ -712,4 +712,4 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

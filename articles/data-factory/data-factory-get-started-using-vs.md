@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Data Factory を使い始める" 
+	pageTitle="チュートリアル: Azure BLOB から Azure SQL にデータをコピーする" 
 	description="このチュートリアルでは、BLOB から Azure SQL Database インスタンスにデータをコピーするサンプル データ パイプラインを作成する方法を示します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="07/27/2015" 
 	ms.author="spelluru"/>
 
 # チュートリアル: Visual Studio を使用したデータ ファクトリの作成と監視
@@ -249,4 +249,4 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 
 Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については「[データセットとパイプラインを監視する](data-factory-get-started-using-editor.md/#MonitorDataSetsAndPipeline)」をご覧ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -36,7 +36,7 @@
 
 Service Bus を使用するには、他の WebJobs SDK パッケージに加えて、[Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet パッケージをインストールする必要があります。
 
-また、ストレージ接続文字列に加えて、AzureWebJobsServiceBus 接続文字列を設定する必要もあります。次の例で示すように Web.config ファイルの `connectionStrings` セクションでこれを行うことができます。
+また、ストレージ接続文字列に加えて、AzureWebJobsServiceBus 接続文字列を設定する必要もあります。次の例で示すように App.config ファイルの `connectionStrings` セクションでこれを行うことができます。
 
 		<connectionStrings>
 		    <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
@@ -44,7 +44,9 @@ Service Bus を使用するには、他の WebJobs SDK パッケージに加え�
 		    <add name="AzureWebJobsServiceBus" connectionString="Endpoint=sb://[yourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[yourKey]"/>
 		</connectionStrings>
 
-サンプル プロジェクトについては、[Service Bus の使用例](https://github.com/Azure/azure-webjobs-sdk-samples/tree/master/BasicSamples/ServiceBus)を参照してください。詳細については、[Azure WebJobs SDK の概要](websites-dotnet-webjobs-sdk-get-started.md)に関するページを参照してください。
+App.config ファイルに Service Bus の接続文字列を含むサンプル プロジェクトについては、「[Service Bus の使用例](https://github.com/Azure/azure-webjobs-sdk-samples/tree/master/BasicSamples/ServiceBus)」を参照してください。
+
+接続文字列は Azure 実行時環境でも設定できます。Azure で Web ジョブを実行した場合、Azure 実行時環境の設定は App.config 設定よりも優先されます。詳細については、[Azure Web ジョブ SDK の概要](websites-dotnet-webjobs-sdk-get-started.md#configure-the-web-app-to-use-your-azure-sql-database-and-storage-account)に関するページを参照してください。
 
 ## <a id="trigger"></a> Service Bus キュー メッセージを受信したときに関数をトリガーする方法
 
@@ -157,4 +159,4 @@ Service Bus 以外の WebJobs SDK シナリオについては、「[WebJobs SDK 
 このガイドでは、Azure Service Bus を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

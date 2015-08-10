@@ -39,9 +39,12 @@ AD FS 2.0 以降を使用している場合、Office 365 または Azure AD で�
 
 (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
 
-https://<your_FS_name>/federationmetadata/2007-06/federationmetadata.xml
 
-この `<your_FS_name> ` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。
+https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
+
+この `(your_FS_name) ` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。
+
+例: https://fs.contos.com/federationmetadata/2007-06/federationmetadata.xml
 
 ## AutoCertificateRollover プロパティが False に設定されている場合
 
@@ -64,7 +67,7 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 	
 - 証明書が 1 つしか表示されず、その NotAfter の日付が 5 日以内の場合は、次の手順を実行して新しい証明書を生成する必要があります。
 
-- 新しい証明書を生成するには、PowerShell コマンド プロンプトで次のコマンドを実行します。`PS C:\>Update-ADFSCertificate –CertificateType token-signing`
+- 新しい証明書を生成するには、PowerShell コマンド プロンプトで次のコマンドを実行します: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
 
 - 次のコマンドを再度実行して、更新内容を確認します。PS C:\>Get-ADFSCertificate –CertificateType token-signing
 - 次に、以下の手順に従って、Office 365 フェデレーションの信頼されたプロパティを手動で更新します。
@@ -82,4 +85,4 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 
 >[AZURE.NOTE]contoso.com や fabrikam.com などの複数の最上位のドメインをサポートする必要がある場合は、すべてのコマンドレットで SupportMultipleDomain スイッチを使用する必要があります。詳細については、複数の最上位のドメインのサポートに関するページを参照してください。最後に、すべての Web アプリケーション プロキシ サーバーが[Windows Server 2014 年 5 月](http://support.microsoft.com/kb/2955164)のロールアップで更新されていることを確認します。更新されていない場合は、プロキシが新しい証明書の更新に失敗し、機能が停止する可能性があります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

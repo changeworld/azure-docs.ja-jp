@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="07/22/2015" 
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (ASP.NET プロジェクト)
@@ -27,7 +27,7 @@
 > - [Queues](vs-storage-aspnet-getting-started-queues.md)
 > - [Tables](vs-storage-aspnet-getting-started-tables.md)
 
->[AZURE.NOTE]この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET app で Azure ストレージ アカウントを参照または作成した後に、Azure BLOB ストレージの使用を開始する方法について説明します。Azure テーブル ストレージの使用についてのより一般的な情報については、[「.NET から BLOB ストレージを使用する方法」](storage-dotnet-how-to-use-blobs.md)を参照してください。
+この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET app で Azure ストレージ アカウントを参照または作成した後に、Azure BLOB ストレージの使用を開始する方法について説明します。Azure テーブル ストレージの使用についてのより一般的な情報については、[「.NET から BLOB ストレージを使用する方法」](storage-dotnet-how-to-use-blobs.md)を参照してください。
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 
@@ -36,7 +36,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 この記事では、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure ストレージ クライアント ライブラリを使用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
 
-ASP.NET プロジェクトの詳細については、[「ASP.NET」](http://www.asp.net)を参照してください。
+ASP.NET の詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
 
 ##Visual Studio サーバー エクスプローラーで BLOB コンテナーを作成する
 
@@ -318,4 +318,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

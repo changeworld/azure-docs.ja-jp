@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure でのレプリカ ドメイン コントローラーのインストール" 
-	description="このチュートリアルでは、Azure の仮想マシンに内部設置型の Active Directory フォレストからドメイン コントローラーをインストールする方法について説明します。" 
-	services="virtual-network" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
-	editor="LisaToft"
+<properties
+	pageTitle="Azure でのレプリカ ドメイン コントローラーのインストール | Microsoft Azure"
+	description="このチュートリアルでは、Azure の仮想マシンに内部設置型の Active Directory フォレストからドメイン コントローラーをインストールする方法について説明します。"
+	services="virtual-network"
+	documentationCenter=""
+	authors="curtand"
+	manager="swadwha"
+	editor=""
 	tags="azure-classic-portal"/>
 
-<tags 
-	ms.service="virtual-network" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="virtual-network"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2015"
+	ms.author="curtand"/>
 
 
 # Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
@@ -30,7 +30,7 @@
 
 ## シナリオ図
 
-このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。アプリケーション サーバーとレプリカ DC を実行する VM は、Azure の仮想ネットワーク内にインストールされています。次の図に示すように、仮想ネットワークは[サイト間 VPN](https://msdn.microsoft.com/library/azure/dn133795.aspx) 接続で、内部設置型ネットワークに接続できます。また、接続を高速化するために、[ExpressRoute](../../services/expressroute/) を使用することもできます。
+このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。アプリケーション サーバーとレプリカ DC を実行する VM は、Azure の仮想ネットワーク内にインストールされています。次の図に示すように、仮想ネットワークは[サイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 接続で、内部設置型ネットワークに接続できます。また、接続を高速化するために、[ExpressRoute](../../services/expressroute/) を使用することもできます。
 
 アプリケーション サーバーと DC は、コンピューティング処理を分散するために別々の[クラウド サービス](../cloud-services-what-is.md)内にデプロイされます。また、フォールト トレランスを強化するために[可用性セット](../virtual-machines/virtual-machines-manage-availability.md)内にデプロイされます。DC は、Active Directory レプリケーションを使用して、DC 同士で相互にレプリケートします。また、内部設置型 DC でレプリケートされます。同期ツールは必要ありません。
 
@@ -87,7 +87,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 ## 仮想ネットワークの DNS サーバーを再構成する
 
 1. Azure クラシック ポータルで、仮想ネットワークの名前をクリックし、次に **[構成]** タブをクリックして、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](https://msdn.microsoft.com/library/azure/dn275925.aspx)し、内部設置型 DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
- 
+
 2. 仮想ネットワークのすべてのレプリカ DC VM が仮想ネットワーク上の DNS サーバーを使用するように構成されていることを確認には、**[仮想マシン]** クリックし、VM ごとの [状態] 列をクリックして、**[再起動]** をクリックします。サインインする前に、VM で**実行**状態が表示されるまで待機します。
 
 ## アプリケーション サーバー用の VM を作成する
@@ -121,6 +121,5 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
 <!--Image references-->
 [1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

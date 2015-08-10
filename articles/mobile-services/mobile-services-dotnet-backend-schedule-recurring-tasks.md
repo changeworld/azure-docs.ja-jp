@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
+	pageTitle="Azure Mobile Services での繰り返し発生するジョブのスケジュール" 
 	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/20/2015" 
+	ms.date="07/21/2015" 
 	ms.author="glenga"/>
 
 # モバイル サービスでの繰り返し発生するジョブのスケジュール 
@@ -36,16 +36,14 @@
 
 [AZURE.INCLUDE [mobile-services-register-twitter-access](../../includes/mobile-services-register-twitter-access.md)]
 
-<ol start="7">
-<li><p>Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクトに対応する web.config ファイルを開き、<strong>MS_TwitterConsumerKey</strong> と <strong>MS_TwitterConsumerSecret</strong> の各アプリケーション設定を見つけて、これらのキーの値を、ポータルで設定した Twitter のコンシューマー キーとコンシューマー シークレットの値に置換します。</p></li>
+&nbsp;&nbsp;7.Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクトの web.config ファイルを開き、`MS_TwitterConsumerKey` と `MS_TwitterConsumerSecret` の各アプリケーション設定を見つけて、これらのキーの値を、ポータルで設定した Twitter のコンシューマー キーとコンシューマー シークレットの値に置き換えます。
 
-<li><p>同じセクションで、次の新しいアプリケーション設定を追加し、プレースホルダーを、ポータルのアプリケーション設定で設定した Twitter のアクセス トークンとアクセス トークン シークレットの値に置換します。</p>
+&nbsp;&nbsp;8.同じセクションで、次の新しいアプリケーション設定を追加し、プレースホルダーを、ポータルのアプリケーション設定で設定した Twitter のアクセス トークンとアクセス トークン シークレットの値に置換します。
 
-<pre><code>&lt;add key="TWITTER_ACCESS_TOKEN" value="**your_access_token**" />
-&lt;add key="TWITTER_ACCESS_TOKEN_SECRET" value="**your_access_token_secret**" /></code></pre>
+	<add key="TWITTER_ACCESS_TOKEN" value="**your_access_token**" />
+	<add key="TWITTER_ACCESS_TOKEN_SECRET" value="**your_access_token_secret**" />
 
-<p>モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、スケジュールされたジョブを発行する前にテストすることができます。Azure 内で実行する場合は、モバイル サービスは代わりにポータル内で設定した値を使用し、これら プロジェクト内の設定を無視します。 </p></li>
-</ol>
+モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、スケジュールされたジョブを発行する前にテストすることができます。Azure 内で実行する場合は、モバイル サービスは代わりにポータル内で設定した値を使用し、これら プロジェクト内の設定を無視します。
 
 ##<a name="install-linq2twitter"></a>LINQ to Twitter ライブラリをダウンロードしてインストールする
 
@@ -65,7 +63,7 @@
 
 	これにより、Updates クラスに対応する新しいプロジェクト ファイルが作成されます。
 
-2. **[参照]** を右クリックし、**[参照の追加]** をクリックして **[アセンブリ]** から **[Framework]** を選択します。**[System.ComponentModel.DataAnnotations]** をオンにして **[OK]** をクリックします。
+2. **[参照]** を右クリックし、**[参照の追加]** をクリックして **[アセンブリ]** から **[Framework]** を選択します。**[System.ComponentModel.DataAnnotations]** をオンにし、**[OK]** をクリックします。
 
 	![][7]
 
@@ -88,7 +86,7 @@
 	        public DateTime Date { get; set; }
     	}
 
-4. [モデル] フォルダーを展開し、データ モデルのコンテキスト ファイル (<em>service_name</em>Context.cs という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。
+4. [モデル] フォルダーを展開し、データ モデルのコンテキスト ファイル (*service\_name\*Context.cs という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。
 
 		public DbSet<Updates> Updates { get; set; }
 
@@ -127,7 +125,8 @@
 		        private string accessToken;
 		        private string accessTokenSecret;
 		
-		        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor, CancellationToken cancellationToken)
+		        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor, 
+					CancellationToken cancellationToken)
 		        {
 		            base.Initialize(scheduledJobDescriptor, cancellationToken);
 		
@@ -214,7 +213,7 @@
 		    }
 		}
 
-	上記のコードで、_todolistService_ と _todolistContext_ の各文字列を、ダウンロードしたプロジェクトの名前空間と DbContext に置き換える必要があります。これらはそれぞれ、<em>mobile&#95;service&#95;name</em>Service と <em>mobile&#95;service&#95;name</em>Context です。
+	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&#95;service&#95;name\*Service* と mobile&#95;service&#95;name\*Context) に置き換える必要があります。
    	
 	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
@@ -301,4 +300,4 @@
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

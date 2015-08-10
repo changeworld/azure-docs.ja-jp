@@ -589,4 +589,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -28,8 +28,9 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 ## 前提条件 ##
 
-* 組織 ID を使用している Microsoft Azure アカウント (Power BI は組織 ID のみに対応しています。組織 ID とは、xyz@mycompany.com などの仕事またはビジネス用電子メール アドレスです。xyz@hotmail.com などの個人用電子メールは組織 ID ではありません。組織 ID の詳細については、[こちら](https://msdn.microsoft.com/subscriptions/dn531048.aspx)をご覧ください。[こちら](http://go.microsoft.com/fwlink/?linkid=331007&clcid=0x409)からダウンロード可能な FAQ もあります)。
+* Microsoft Azure アカウント
 * ストリーミング データの使用元となる Stream Analytics ジョブの入力。Stream Analytics は、Azure Event Hubs または Azure BLOB ストレージストアからの入力を受け入れます。  
+* Microsoft Power BI の組織 ID
 
 ## Azure Stream Analytics ジョブの作成 ##
 
@@ -70,7 +71,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 *	次の値を指定します。
   *	**[イベント シリアライザー形式]** - JSON
   *	**[エンコード]** - UTF8
-*	チェック ボタンをクリックしてこのソースを追加し、Stream Analytics がイベント ハブに正常に接続できることを確認します。
+*	チェック ボタンをクリックしてこのソースを追加し、Stream Analytics からイベント ハブに正常に接続できることを確認します。
 
 ## Power BI 出力の追加 ##
 
@@ -78,14 +79,15 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 ![図 2][graphic2]
 
-> [AZURE.NOTE]Power BI 出力は、組織 ID を使用した Azure アカウントでのみ使用可能です。Azure アカウントに組織 ID を使用していない場合 (ライブ ID、個人用 Microsoft アカウントなど)、Power BI 出力オプションは表示されません。
-
 2.  **[Power BI]** を選択してから、右のボタンをクリックします。
 3.  次のような画面が表示されます。
 
 ![図 3][graphic3]
 
-4.  この手順では、Stream Analytics ジョブに使用しているものと同じ組織 ID を慎重に使用する必要があります。現時点では、Power BI 出力は、Stream Analytics ジョブで使用されるものと同じ組織 ID を使用する必要があります。既に同じ組織の ID を使用した Power BI アカウントがある場合は、[今すぐ承認] を選択します。ない場合は、[今すぐサインアップしてください] を選択し、Power BI へのサインアップ時に、Azure アカウントと同じ組織 ID を使用します。[Power BI のサインアップの詳細については、こちらのブログをご覧ください](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
+4.  この手順では、Stream Analytics ジョブ出力用の組織 ID を指定します。既に Power BI アカウントがある場合は、**[今すぐ承認]** を選択します。ない場合は、**[今すぐサインアップ]** を選択します。[Power BI のサインアップの詳細については、こちらのブログをご覧ください](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
+
+![図 11][graphic11]
+
 5.  次のような画面が表示されます。
 
 ![図 4][graphic4]
@@ -186,7 +188,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ ##
 
@@ -207,6 +209,6 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 [graphic8]: ./media/stream-analytics-power-bi-dashboard/8-stream-analytics-power-bi-dashboard.png
 [graphic9]: ./media/stream-analytics-power-bi-dashboard/9-stream-analytics-power-bi-dashboard.png
 [graphic10]: ./media/stream-analytics-power-bi-dashboard/10-stream-analytics-power-bi-dashboard.png
- 
+[graphic11]: ./media/stream-analytics-power-bi-dashboard/11-stream-analytics-power-bi-dashboard.png
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

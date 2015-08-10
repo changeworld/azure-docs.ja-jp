@@ -20,7 +20,9 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
-このチュートリアルでは、サポートされている ID プロバイダーを使用して、[Mobile Services クイックスタート チュートリアル]に認証を追加します。[Mobile Services クイックスタート チュートリアル]を完了しておく必要があります。
+このチュートリアルでは、サポートされている ID プロバイダーを使用して、[Mobile Services クイックスタート チュートリアル]に認証を追加します。
+
+[Mobile Services クイック スタート チュートリアル]を完了しておくことをお勧めします。代わりに、Quick Start iOS プロジェクトをダウンロードすることもできます。Azure ポータルで、**[Mobile Services]**、目的のモバイル サービスの順にクリックし、左上のクラウド マークをクリックします。次に、**[iOS]**、**[新しい iOS アプリを作成する]**、**[アプリケーションをダウンロードして実行する]**、**[Objective-C]**、**[ダウンロード]** の順にクリックします。テーブルをまだ作成していない場合は、**[TodoItem テーブルを作成する]** をクリックしてから、**[ダウンロード]** をクリックしてください。
 
 ##<a name="register"></a>認証用のアプリを登録する
 
@@ -74,6 +76,7 @@
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Single sign-on for Windows Store apps by using Live Connect]: /develop/mobile/tutorials/single-sign-on-windows-8-dotnet
+[Mobile Services クイック スタート チュートリアル]: /develop/mobile/tutorials/get-started-ios
 [Mobile Services クイックスタート チュートリアル]: /develop/mobile/tutorials/get-started-ios
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-ios
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-ios
@@ -82,4 +85,4 @@
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

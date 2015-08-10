@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="05/18/2015"
+   ms.date="07/23/2015"
    ms.author="vturecek"/>
 
 # OWIN 自己ホストによる Microsoft Azure Service Fabric Web API の概要
@@ -35,9 +35,11 @@ Web API アプリケーション自体はここでは変わりありません。
 
 ## Web API アプリケーションの設定
 
-Visual Studio 2015 で新しいステートレス サービスの作成から始めます。
+Visual Studio 2015 で、1 つのステートレス サービスと新しいアプリケーションを作成することから始めます。
 
-![](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
+![Create a new Service Fabric application](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
+
+![Create a single stateless service](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
 
 これにより、Web API アプリケーションをホストする空のステートレス サービスが得られます。アプリケーションを最初からセットアップして、どのようにそれをまとめるかを見ていきます。
 
@@ -47,11 +49,11 @@ Visual Studio 2015 で新しいステートレス サービスの作成から始
 
 パッケージがインストールされたら、基本的な Web API プロジェクト構造の構築を開始できます。Web API を使用していた場合、プロジェクトの構造は非常に馴染みがあるように見えるはずです。基本的な Web API ディレクトリの作成から始めます。
 
- + App_Start
+ + App\_Start
  + コントローラー
  + モデル
 
-App_Start ディレクトリに基本的な Web API 構成クラスを追加します。
+App\_Start ディレクトリに基本的な Web API 構成クラスを追加します。
 
  + FormatterConfig.cs
 
@@ -334,7 +336,7 @@ public class OwinCommunicationListener : ICommunicationListener
 
 Web サーバーのポートを取得する前に、Service Fabric が、アプリケーションとそれが実行される基盤のオペレーティング システム間のバッファーとして機能するアプリケーション層を提供することを理解しておくことが重要です。そのために Service Fabric は、サービスの*エンドポイント*を構成する方法を提供します。Service Fabric は、サービスでエンドポイントを確実に使用できるように準備するため、ユーザーは基盤の OS 環境で、自分でそれを構成する必要はありません。これにより、さまざまな環境で、Service Fabric アプリケーションを変更する必要なく簡単にホストできます (たとえば、Azure や独自のデータ センターで、同じアプリケーションをホストできます)。
 
-PackageRoot\ServiceManifest.xml で HTTP エンドポイントを構成します。
+PackageRoot\\ServiceManifest.xml で HTTP エンドポイントを構成します。
 
 ```xml
 
@@ -447,9 +449,9 @@ protected override ICommunicationListener CreateCommunicationListener()
 
 ```
 
-ここで、Web API *アプリケーション*と OWIN *ホスト*が最終的に接触します。*ホスト* (* * OwinCommunicationListener * *) に*アプリケーション* (**Startup** 経由の Web API) のインスタンスが与えられ、Service Fabric がそのライフサイクルを管理します。この同じパターンは、一般に通信スタックでも従うことができます。
+ここで、Web API *アプリケーション*と OWIN *ホスト*が最終的に接触します。*ホスト* (\* \* OwinCommunicationListener \* \*) に*アプリケーション* (**Startup** 経由の Web API) のインスタンスが与えられ、Service Fabric がそのライフサイクルを管理します。この同じパターンは、一般に通信スタックでも従うことができます。
 
-## すべてをまとめる
+## まとめ
 
 この例では、RunAsync() メソッドで何も実行する必要はないため、オーバーライドを単純に削除できます。
 
@@ -568,7 +570,7 @@ namespace WebApi
 [開発環境を設定](service-fabric-get-started.md)していない場合は、設定します。
 
 
-これでサービスを構築し、展開できます。Visual Studio で **F5** キーを押して、アプリケーションを構築し、展開します。[診断イベント] ウィンドウに、Web サーバーが **http://localhost:80/api** で開かれたことを示すメッセージが表示されるはずです。
+これでサービスを構築し、デプロイできます。Visual Studio で **F5** キーを押して、アプリケーションを構築し、デプロイします。[診断イベント] ウィンドウに、Web サーバーが **http://localhost:80/api** で開かれたことを示すメッセージが表示されるはずです。
 
 
 ![](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
@@ -580,7 +582,7 @@ namespace WebApi
 
 ## スケール アウト
 
-ステートレス Web アプリケーションをスケール アウトすることは、コンピューターを追加して、それらで Web アプリケーションを実行することを意味します。Service Fabric のオーケストレーション エンジンは、新しいノードがクラスターに追加されるたびに、自動的にこれを実行します。ステートレス サービスのインスタンスを作成する場合、作成するインスタンスの数を指定できます。Service Fabric はそれに従って、クラスターのノードにその数のインスタンスを配置し、1 つのノードに複数のインスタンスを作成しないようにします。インスタンス数に「-1」を指定して、常にすべてのノードにインスタンスを作成するように、Service Fabric に指示することもできます。これにより、クラスターにノードを追加して、クラスターをスケールアウトするたびに、新しいノードにステートレス サービスのインスタンスが作成されることが保証されます。この値はサービス インスタンスのプロパティであるため、PowerShell によってサービス インスタンスを作成するときに設定します。
+ステートレス Web アプリをスケール アウトすることは、コンピューターを追加して、それらで Web アプリを実行することを意味します。Service Fabric のオーケストレーション エンジンは、新しいノードがクラスターに追加されるたびに、自動的にこれを実行します。ステートレス サービスのインスタンスを作成する場合、作成するインスタンスの数を指定できます。Service Fabric はそれに従って、クラスターのノードにその数のインスタンスを配置し、1 つのノードに複数のインスタンスを作成しないようにします。インスタンス数に「-1」を指定して、常にすべてのノードにインスタンスを作成するように、Service Fabric に指示することもできます。これにより、クラスターにノードを追加して、クラスターをスケールアウトするたびに、新しいノードにステートレス サービスのインスタンスが作成されることが保証されます。この値はサービス インスタンスのプロパティであるため、PowerShell によってサービス インスタンスを作成するときに設定します。
 
 ```powershell
 
@@ -602,7 +604,7 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
 
 ```
 
-アプリケーションとサービス インスタンスの作成の詳細については、[アプリケーションを展開および削除する方法](service-fabric-deploy-remove-applications.md)を参照してください。
+アプリケーションとサービス インスタンスの作成の詳細については、[アプリケーションをデプロイおよび削除する方法](service-fabric-deploy-remove-applications.md)を参照してください。
 
 ## ASP.NET 5
 
@@ -611,6 +613,5 @@ ASP.NET 5 でも、Web アプリケーションで*ホスト*から*アプリケ
 ## 次のステップ
 
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

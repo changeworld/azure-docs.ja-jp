@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="07/23/2015"
    ms.author="larryfr"/>
 
 # クエリ コンソールを使用して Hive クエリを実行
@@ -23,6 +23,7 @@
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
 > [AZURE.NOTE]クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。
+
 
 ##<a id="prereq"></a>前提条件
 
@@ -34,9 +35,7 @@
 
 ##<a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
 
-1. [Azure ポータル](https://manage.windowsazure.com)を開き、HDInsight クラスターを選択します。ページの下部にある、**[クエリ コンソール]** を選択します。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
-
-    > [AZURE.NOTE]また、ブラウザーで **https://CLUSTERNAME.azurehdinsight.net** と入力することでクエリ コンソールを起動できます。
+1. Web ブラウザーを開き、__https://CLUSTERNAME.azurehdinsight.net__ に移動します。__CLUSTERNAME__ は、HDInsight クラスターの名前です。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
 
 2. ページ上部のリンクから、**[Hive エディター]** を選択します。HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
 
@@ -120,4 +119,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

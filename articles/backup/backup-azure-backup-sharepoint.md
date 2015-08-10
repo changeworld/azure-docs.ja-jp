@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/14/2015" ms.author="sammehta"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt\_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/14/2015" ms.author="sammehta"; "jimpark"/>
 
 
 # Azure への SharePoint ファームのバックアップ
@@ -33,7 +33,7 @@ DPM エージェントを、SharePoint サーバー、SQL サーバー、およ�
 DPM フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。この容量はカタログ生成のために必要です。DPM が特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、リスト項目) を回復できるよう、カタログ生成では各コンテンツ データベースに含まれる URL のリストが作成されます。DPM 管理者コンソールの回復タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
 
 ### SQL Server
-DPM はローカル システムとして実行し、SQL Server データベースをバックアップするには、そのアカウントに SQL Server に対する sysadmin 権限が必要です。バックアップする SQL Server で NT AUTHORITY\SYSTEM を *sysadmin* に設定します。
+DPM はローカル システムとして実行し、SQL Server データベースをバックアップするには、そのアカウントに SQL Server に対する sysadmin 権限が必要です。バックアップする SQL Server で NT AUTHORITY\\SYSTEM を *sysadmin* に設定します。
 
 SharePoint ファームで SQL Server データベースに SQL Server エイリアスが構成されている場合は、DPM によって保護されるフロント エンド Web サーバーに SQL Server クライアント コンポーネントをインストールします。
 
@@ -50,14 +50,14 @@ Azure への SharePoint ファームの保護を開始するには、DPM の更�
 ## SharePoint の保護の構成
 DPM を使用して SharePoint を保護する前に、**ConfigureSharePoint.exe** を使用して SharePoint VSS ライター サービス (WSS ライター サービス) を構成する必要があります。
 
-**ConfigureSharePoint.exe** は、フロント エンド Web サーバー上の [DPM のインストール パス]\bin フォルダーにあります。このツールは、保護エージェントに SharePoint ファームに対する資格情報を提供します。1 つの WFE サーバーでこのツールを実行します。複数の WFE サーバーがある場合は、保護グループを構成するときに 1 つだけ選択します。
+**ConfigureSharePoint.exe** は、フロント エンド Web サーバー上の [DPM のインストール パス]\\bin フォルダーにあります。このツールは、保護エージェントに SharePoint ファームに対する資格情報を提供します。1 つの WFE サーバーでこのツールを実行します。複数の WFE サーバーがある場合は、保護グループを構成するときに 1 つだけ選択します。
 
 ### SharePoint VSS ライター サービスを構成するには
-1. WFE サーバーのコマンド プロンプトで、[DPM のインストール場所]\bin\ に移動します。
+1. WFE サーバーのコマンド プロンプトで、[DPM のインストール場所]\\bin\\ に移動します。
 2. ConfigureSharePoint -EnableSharePointProtection を実行します。
 3. ファーム管理者の資格情報を入力します。このアカウントは、WFE サーバーのローカル管理者グループのメンバーである必要があります。ファーム管理者がローカル管理者ではない場合は、WFE サーバーで次の権限を付与します。
-  - DPM フォルダー (%Program Files%\Microsoft Data Protection Manager\DPM) に対するフル コントロールを WSS_Admin_WPG グループに付与します。
-  - DPM レジストリ キー (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) に対する読み取りアクセスを WSS_Admin_WPG グループに付与します。
+  - DPM フォルダー (%Program Files%\\Microsoft Data Protection Manager\\DPM) に対するフル コントロールを WSS\_Admin\_WPG グループに付与します。
+  - DPM レジストリ キー (HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager) に対する読み取りアクセスを WSS\_Admin\_WPG グループに付与します。
 
 >[AZURE.NOTE]SharePoint ファーム管理者の資格情報に変更がある場合は必ず、ConfigureSharePoint.exe を再実行する必要があります。
 
@@ -107,19 +107,19 @@ DPM を使用して SharePoint を保護する前に、**ConfigureSharePoint.exe
 
 10. **[オンライン バックアップ スケジュールの指定]** 画面で、適切なスケジュールを選択して、**[次へ]** をクリックします。
 
-    ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
+    ![Online\_backup\_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     >[AZURE.NOTE]DPM では、1 日に 2 回、異なる時刻に Azure にバックアップできます。
 
 11. 選択したバックアップ スケジュールに応じて、**[オンライン保持ポリシーの指定]** 画面で、日、週、月、年単位のバックアップ ポイントの保持ポリシーを選択します。
 
-    ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
+    ![Online\_retention\_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
 
     >[AZURE.NOTE]DPM が使用する祖父 - 父 - 子の保有方式では、異なるバックアップ ポイントに対して異なる保持ポリシーを選択できます。
 
 12. ディスクと同様に、Azure でも最初の参照ポイント レプリカを作成する必要があります。Azure に対する初期バックアップ コピーの適切な作成オプションを選択して、**[次へ]** をクリックします。
 
-    ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
+    ![Online\_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 
 13. **[概要]** ページで選択した設定を確認し、**[グループの作成]** をクリックします。保護グループが作成されると、成功メッセージが表示されます。
 
@@ -226,4 +226,4 @@ Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、Shar
 - 「[System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)」をご覧ください
 - 「[System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)」をご覧ください
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

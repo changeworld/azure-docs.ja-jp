@@ -47,8 +47,8 @@ Azure CLI には `azure` コマンドを使用してアクセスします。使�
 
 	info:             _    _____   _ ___ ___
 	info:            /_\  |_  / | | | _ \ __|
-	info:      _ ___/ _ __/ /| |_| |   / _|___ _ _
-	info:    (___  /_/ _/___|___/|_|____| _____)
+	info:      _ ___/ _ \__/ /| |_| |   / _|___ _ _
+	info:    (___  /_/ \_\/___|\___/|_|_\___| _____)
 	info:       (_______ _ _)         _ ______ _)_ _
 	info:              (______________ _ )   (___ _ _)
 	info:
@@ -252,9 +252,7 @@ Azure CLI では、エラー情報を STDERR にログ出力しますが、エ�
 
 ## その他のリソース
 
-* [詳細なサービス管理コマンドの一覧][Using the Azure CLI]
-
-* [Mac、Linux、Windows 用の Azure CLIの使用](cli-cli-azure-resource-manager)
+* [サービス管理での Azure CLI の使用][Using the Azure CLI]
 
 * [リソース マネージャーでの Azure CLI の使用][cliarm]
 
@@ -283,4 +281,4 @@ Azure CLI では、エラー情報を STDERR にログ出力しますが、エ�
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [Using the Azure CLI]: virtual-machines-command-line-tools.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

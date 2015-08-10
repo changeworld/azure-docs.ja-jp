@@ -1,5 +1,19 @@
-<properties pageTitle="Azure での Oracle WebLogic Server 12c 仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c イメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
+<properties 
+	pageTitle="Azure での Oracle WebLogic Server 12c 仮想マシンの作成" 
+	description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c イメージを Microsoft Azure で作成する例の手順を実行します。" 
+	services="virtual-machines" 
+	authors="bbenz" 
+	documentationCenter=""/>
+
+<tags 
+	ms.service="virtual-machines" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="infrastructure-services" 
+	ms.date="06/22/2015" 
+	ms.author="bbenz" />
+
 #Azure での Oracle WebLogic Server 12c 仮想マシンの作成
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の WebLogic Server 12c のイメージに基づいて、Azure で仮想マシンを作成する方法を示しています。
 
@@ -86,13 +100,13 @@
 15.	コマンド プロンプト **startWebLogic.cmd** が起動します。メッセージが表示されたら、WebLogic のユーザー名とパスワードを入力します。
 
 ##Oracle WebLogic Server 12c 仮想マシンでのアプリケーションを Azure にインストールするには
-1.	仮想マシンにログインしたまま、http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12-ManageSessions--4478/files/shoppingcart.war でローカルに使用できる shoppingcart.war の例をコピーします。たとえば、**c:\mywar** という名前のフォルダーを作成し、http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12-ManageSessions--4478/files/shoppingcart.war で WAR を **c:\mywar** に保存します。
+1.	仮想マシンにログインしたまま、http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12-ManageSessions--4478/files/shoppingcart.war でローカルに使用できる shoppingcart.war の例をコピーします。たとえば、**c:\\mywar** という名前のフォルダーを作成し、http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/12-ManageSessions--4478/files/shoppingcart.war で WAR を **c:\\mywar** に保存します。
 
 2.	**[WebLogic Server 管理コンソール]**、http://localhost:7001/console を開きます。メッセージが表示されたら、WebLogic のユーザー名とパスワードを入力します。
 
 3.	**[WebLogic Server 管理コンソール]** で、**[ロックと編集]**、**[デプロイ]**、**[インストール]** の順にクリックします。
 
-4.	**[パス]** に**「c:\mywar\shoppingcart.war」**と入力します。
+4.	**[パス]** に**「c:\\mywar\\shoppingcart.war」**と入力します。
 
 	![](media/virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine/image18.png)
 
@@ -154,7 +168,7 @@
 
 	8.	規則の名前とオプションで説明を指定し、続いて **[完了]** をクリックします。
 
-12.	インターネット上で実行しているショッピングカート アプリケーションを表示するには、ブラウザーを開いて `http://<<unique_domain_name>>/shoppingcart` の形式の URL にアクセスします。([Azure ポータル](https://ms.portal.azure.com/)内で <<*unique_domain_name*>> の値を確定するには、**[仮想マシン]** をクリックし、続いて Oracle WebLogic Server を実行するために使用している仮想マシンを選択します)。
+12.	インターネット上で実行しているショッピングカート アプリケーションを表示するには、ブラウザーを開いて `http://<<unique_domain_name>>/shoppingcart` の形式の URL にアクセスします。([Azure ポータル](https://ms.portal.azure.com/)内で <<\*unique\_domain\_name\*>> の値を確定するには、**[仮想マシン]** をクリックし、続いて Oracle WebLogic Server を実行するために使用している仮想マシンを選択します)。
 
 
 ##その他のリソース
@@ -168,4 +182,4 @@
 
 -	[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

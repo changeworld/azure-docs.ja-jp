@@ -81,23 +81,10 @@ Windows Server を実行する複数のコンピューターが同じフェー�
 
 たとえば、1 日のアップロード サイズがエージェントごとに 100 KB で既定のアーカイブ期間であるとすると、管理グループには次のストレージが必要になります。
 
-<table border="1" cellspacing="4" cellpadding="4">
-    <tbody>
-    <tr align="left" valign="top">
-		<td><b>エージェントの数</b></td>
-		<td><b>管理グループに必要な推定領域</b></td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>5</td>
-		<td>最大 2.5 MB (5 エージェント × 100 KB データ/日 × 5 日 ＝ 2,500 KB)</td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>50</td>
-		<td>最大 25 MB (50 エージェント × 100 KB データ/日 × 5 日 ＝ 25,000 KB)</td>
-    </tr>
-
-    </tbody>
-    </table>
+エージェントの数|管理グループに必要な推定領域
+---|---
+5|最大 2.5 MB (5 エージェント × 100 KB データ/日 × 5 日 ＝ 2,500 KB)
+50|最大 25 MB (50 エージェント × 100 KB データ/日 × 5 日 ＝ 25,000 KB)
 
 ## オペレーション インサイトで使用される Operations Manager の実行アカウント
 
@@ -228,4 +215,4 @@ Open a PowerShell window and run the following script after you’ve updated it 
 
 さまざまな地理的な場所にあるサーバーからのデータを分析する場合は、場所ごとに 1 つの管理グループを設けることを検討してください。エージェントから管理グループへのデータ転送のパフォーマンスを向上させることができます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

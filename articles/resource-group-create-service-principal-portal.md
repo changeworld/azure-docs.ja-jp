@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2015"
+   ms.date="07/24/2015"
    ms.author="tomfitz"/>
 
 # Azure ポータルを使用した Azure サービス プリンシパルの新規作成
@@ -21,7 +21,7 @@
 ## 概要
 サービス プリンシパルは、他のリソースにアクセスする必要がある自動化されたプロセス、アプリケーション、またはサービスです。Azure リソース マネージャーを使用して、サービス プリンシパルにアクセス権限を付与し、それを認証して、サブスクリプション内に存在するリソースに対してまたはテナントとして、許可された管理操作を実行できるようにします。
 
-このトピックでは、Azure ポータルを使用して、新しいサービス プロジェクトを作成する方法について説明します。現時点では、新しいサービス プリンシパルを作成するために Microsoft Azure ポータルを使用する必要があります。この機能は、今後のリリースで、Azure プレビュー ポータルに追加されます。
+このトピックでは、Azure ポータルを使用して、新しいサービス プリンシパルを作成する方法について説明します。現時点では、新しいサービス プリンシパルを作成するために Microsoft Azure ポータルを使用する必要があります。この機能は、今後のリリースで、Azure プレビュー ポータルに追加されます。
 
 ## 概念
 1. Azure Active Directory (AAD) - クラウド用に構築された ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](./active-directory-whatis/)」を参照してください。
@@ -94,30 +94,12 @@
 * **キー** - パスワードとして。
 
 ## 次のステップ
-Getting Started (概要)
 
-- [Azure リソース マネージャーの概要](./resource-group-overview.md)  
-- [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](virtual-machines/xplat-cli-azure-resource-manager.md)  
-- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)  
-  
-アプリケーションの作成と展開
-  
-- [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)  
-- [Azure でのリソース グループのデプロイのトラブルシューティング](virtual-machines/resource-group-deploy-debug.md)  
-- [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)  
-- [高度なテンプレートの操作](./resource-group-advanced-template.md)  
-- [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](virtual-machines/arm-template-deployment.md)
-  
-リソースの整理
-  
-- [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)  
-  
-アクセスの管理と監査
-  
-- [リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)  
-- [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)  
+- セキュリティ ポリシーの指定方法の詳細については、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。  
+- サービス プリンシパルによるリソースへのアクセスを許可する手順については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)」を参照してください。  
+- ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+- Azure リソース マネージャーを使用したセキュリティの実装のガイダンスについては、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
+
 
 <!-- Images. -->
 [1]: ./media/resource-group-create-service-principal-portal/active-directory.png
@@ -134,4 +116,4 @@ Getting Started (概要)
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

@@ -13,11 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/04/2015"
+   ms.date="07/24/2015"
    ms.author="seanmck"/>
 
 # Service Fabric 開発環境の設定
  この記事では、ランタイム、SDK、ツールのインストール、およびローカル クラスターの設定など、[Service Fabric][1] アプリのビルド開始に必要な事柄すべてを説明します。
+
+ >[AZURE.NOTE]次の手順は、新しい PC を設定するためのものです。PC に以前のバージョンの Service Fabric がインストールされている場合は、[開発環境を更新する手順](service-fabric-update-your-development-environment.md)に従ってください。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン:
@@ -29,15 +31,15 @@
 
 ### Visual Studio 2015
 
-Service Fabric Preview 1 のツールは Visual Studio 2015 RC に依存しています。Visual Studio 2015 RC は [ここ][2]から入手できます。
+Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[ここ][2]から入手できます。
 
-> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、PC に Visual Studio 2015 RC をインストールしたくない場合は、VM ギャラリーからのイメージを使用して Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている [Azure 仮想マシンを設定][3]できます。
+> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、PC に Visual Studio 2015 をインストールしたくない場合は、VM ギャラリーからのイメージを使用して Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
 Service Fabric のコンポーネントは、Web Platform Installer によってインストールされます。次の手順に従ってインストールします。
 
-1. [ここ][4]をクリックし、Web Platform Installer を使用して SDK をダウンロードします。
+1. Web Platform Installer を使用して [SDK をダウンロード][3]します。
 
 2. [インストール] をクリックして、インストール プロセスを開始します。
 
@@ -89,8 +91,6 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[3]: http://blogs.msdn.com/b/visualstudioalm/archive/2014/06/04/visual-studio-14-ctp-now-available-in-the-virtual-machine-azure-gallery.aspx "Azure VM"
-[4]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
- 
+[3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

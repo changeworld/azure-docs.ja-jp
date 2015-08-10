@@ -59,4 +59,4 @@ Azure App Service なら、言語の選択と同じくらい簡単に使用で�
 無料ですぐに、[新しい Web アプリを作成してください](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->

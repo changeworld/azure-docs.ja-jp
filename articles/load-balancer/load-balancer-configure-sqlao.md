@@ -15,7 +15,7 @@
    ms.date="05/01/2015"
    ms.author="joaoma" />
 
-# SQL AlwaysOn
+# SQL AlwaysOn のロード バランサーの構成
 
 SQL Server AlwaysOn 可用性グループは、ILB と共に実行できるようになりました。可用性グループは、高可用性と障害復旧を目的とした SQL Server の主要なソリューションです。可用性グループ リスナーによって、クライアント アプリケーションは、構成されているレプリカの数に関係なく、プライマリ レプリカにシームレスに接続できます。
 
@@ -28,7 +28,7 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
 同じ Virtual Network 内のサービスと VM、接続済みのオンプレミス ネットワークのサービスと VM、相互接続された Vnet のサービス と VM
 
-![ILB_SQLAO_NewPic](./media/load-balancer-configure-sqlao/sqlao1.jpg)
+![ILB\_SQLAO\_NewPic](./media/load-balancer-configure-sqlao/sqlao1.jpg)
 
 
 内部ロード バランサーの構成には、PowerShell のみを使用できます。
@@ -47,8 +47,9 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 ## 各 VM で ILB の負荷分散エンドポイントを追加する
 
 	Get-AzureVM -ServiceName SqlSvc -Name sqlsvc1 | Add-AzureEndpoint -Name "LisEUep" -LBSetName "ILBSet1" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 –
-	DirectServerReturn $true -InternalLoadBalancerName ILB_SQL_AO | Update-AzureVM 
-	Get-AzureVM -ServiceName SqlSvc -Name sqlsvc2 | Add-AzureEndpoint -Name "LisEUep" -LBSetName "ILBSet1" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 –DirectServerReturn $true -InternalLoadBalancerName ILB_SQL_AO | Update-AzureVM
+	DirectServerReturn $true -InternalLoadBalancerName ILB_SQL_AO | Update-AzureVM
+
+ 	Get-AzureVM -ServiceName SqlSvc -Name sqlsvc2 | Add-AzureEndpoint -Name "LisEUep" -LBSetName "ILBSet1" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 –DirectServerReturn $true -InternalLoadBalancerName ILB_SQL_AO | Update-AzureVM
 
 
 ## 関連項目
@@ -62,4 +63,4 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=July15_HO5-->
