@@ -11,7 +11,7 @@
 	ms.service="backup" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na" 
 	ms.workload="storage-backup-recovery" 
 	ms.date="07/01/2015" 
 	ms.author="jimpark"; "aashishr"/>
